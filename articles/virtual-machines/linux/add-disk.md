@@ -18,11 +18,11 @@ ms.author: v-yeche
 ms.custom: H1Hack27Feb2017
 ms.subservice: disks
 ms.openlocfilehash: 6b9e4f2c48eb267f12b11cf0d67d6cd71e0a7596
-ms.sourcegitcommit: 8ac3d22ed9be821c51ee26e786894bf5a8736bfc
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68912919"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291312"
 ---
 # <a name="add-a-disk-to-a-linux-vm"></a>将磁盘添加到 Linux VM
 本文介绍了如何将持久性磁盘附加到 VM 以便持久保存数据 - 即使 VM 由于维护或调整大小而重新预配。

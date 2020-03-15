@@ -10,11 +10,11 @@ ms.date: 01/06/2020
 ms.author: v-jay
 ms.reviewer: stewu
 ms.openlocfilehash: 11f2343da7ce679a7ed323f99912d136c10c436d
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75624249"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292753"
 ---
 # <a name="use-distcp-to-copy-data-between-azure-storage-blobs-and-azure-data-lake-storage-gen2"></a>使用 DistCp 在 Azure 存储 Blob 与 Data Lake Storage Gen2 之间复制数据
 

@@ -14,11 +14,11 @@ origin.date: 09/04/2018
 ms.date: 11/11/2019
 ms.author: v-jay
 ms.openlocfilehash: 278bef892bbf1c89b77252419b1340fd6a287bc8
-ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77653257"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292338"
 ---
 # <a name="copy-data-from-amazon-redshift-using-azure-data-factory"></a>使用 Azure 数据工厂从 Amazon Redshift 复制数据
 

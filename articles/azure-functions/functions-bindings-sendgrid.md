@@ -6,11 +6,11 @@ ms.topic: reference
 ms.date: 02/12/2020
 ms.author: v-junlch
 ms.openlocfilehash: 2c0c345a25d566877395f0b5d898cebfab7a841d
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77428215"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292739"
 ---
 # <a name="azure-functions-sendgrid-bindings"></a>Azure Functions SendGrid 绑定
 

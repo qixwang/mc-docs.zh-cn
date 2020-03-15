@@ -12,11 +12,11 @@ origin.date: 12/18/2019
 ms.date: 2/25/2020
 ms.author: v-lingwu
 ms.openlocfilehash: d1b3d460f2944ed6dac80d4da27ab0363cc2b20a
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78154645"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291784"
 ---
 # <a name="language-and-region-support-for-the-text-analytics-api"></a>文本分析 API 的语言和区域支持
 

@@ -17,11 +17,11 @@ ms.date: 10/14/2019
 ms.author: v-yeche
 ms.custom: mvc
 ms.openlocfilehash: 7a6b439f7668ca8d6bc0c41230cbbb5555bfd5ba
-ms.sourcegitcommit: c9398f89b1bb6ff0051870159faf8d335afedab3
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72272525"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293346"
 ---
 # <a name="tutorial-create-and-manage-azure-virtual-networks-for-windows-virtual-machines-with-azure-powershell"></a>教程：使用 Azure PowerShell 为 Windows 虚拟机创建和管理 Azure 虚拟网络
 
@@ -49,7 +49,7 @@ Azure 虚拟网络在虚拟机、Internet 与其他 Azure 服务（例如 Azure 
 - *myFrontendVM* - 用于在 Internet 和 *myBackendVM* 之间进行通信的 VM。
 - *myBackendNSG* - 控制 *myFrontendVM* 和 *myBackendVM* 之间的通信的网络安全组。
 - *myBackendSubnet* - 与 *myBackendNSG* 关联且供后端资源使用的子网。
-- *myBackendNic* - *myBackendVM* 用于与 *myFrontendVM* 通信的网络接口。
+- *myBackendNic* - *myBackendVM* 用于与 *myFrontendVM* 进行通信的网络接口。
 - *myBackendVM* - 使用端口 1433 与 *myFrontendVM* 通信的 VM。
 
 ## <a name="launch-azure-powershell"></a>启动 Azure PowerShell

@@ -1,6 +1,6 @@
 ---
 title: 智能见解性能诊断日志
-description: 智能见解提供 Azure SQL 数据库性能问题的诊断日志
+description: Intelligent Insights 提供 Azure SQL 数据库性能问题的诊断日志
 services: sql-database
 ms.service: sql-database
 ms.subservice: performance
@@ -11,23 +11,23 @@ author: WenJason
 ms.author: v-jay
 ms.reviewer: jrasnik, carlrab
 origin.date: 12/19/2018
-ms.date: 12/16/2019
-ms.openlocfilehash: ebb039cbc13ce6dbda3c53212a76a5b17a3eac44
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.date: 03/16/2020
+ms.openlocfilehash: a4a83fbc732932032b3442e9d39db77f2c4433ee
+ms.sourcegitcommit: dc862610e2169c1fce6fb0ae9eb7dd7567f86a0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75335962"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293700"
 ---
-# <a name="use-the-intelligent-insights-azure-sql-database-performance-diagnostics-log"></a>使用智能见解 Azure SQL 数据库性能诊断日志
+# <a name="use-the-intelligent-insights-azure-sql-database-performance-diagnostics-log"></a>使用 Intelligent Insights Azure SQL 数据库性能诊断日志
 
-本页提供有关如何使用[智能见解](sql-database-intelligent-insights.md)生成的 Azure SQL 数据库性能诊断日志、它的格式和它为满足自定义开发需求所包含的数据的信息。 可将此诊断日志发送到 [Azure 事件中心](../azure-monitor/platform/resource-logs-stream-event-hubs.md)、[Azure 存储](sql-database-metrics-diag-logging.md#stream-into-storage)或第三方解决方案，用于自定义 DevOps 警报和报告功能。
+本页提供有关如何使用 [Intelligent Insights](sql-database-intelligent-insights.md) 生成的 Azure SQL 数据库性能诊断日志、它的格式和它为满足自定义开发需求所包含的数据的信息。 可将此诊断日志发送到 [Azure 事件中心](../azure-monitor/platform/resource-logs-stream-event-hubs.md)、[Azure 存储](sql-database-metrics-diag-logging.md#stream-diagnostic-telemetry-into-azure-storage)或第三方解决方案，用于自定义 DevOps 警报和报告功能。
 
 ## <a name="log-header"></a>日志标头
 
-诊断日志使用 JSON 标准格式输出智能见解的发现成果。 访问智能见解日志的确切类别属性是固定值“SQLInsights”。
+诊断日志使用 JSON 标准格式输出 Intelligent Insights 的发现成果。 访问 Intelligent Insights 日志的确切类别属性是固定值“SQLInsights”。
 
-日志的标头很常见，由时间戳 (TimeGenerated) 组成，它显示条目的创建时间。 它还包括一个引用条目所涉及的特定 SQL 数据库的资源 ID (ResourceId)。 类别 (Category)、级别 (Level) 和操作名称 (OperationName) 为固定属性，其值不会改变。 它们指示日志项目是信息性的，并表示日志项目来自智能见解 (SQLInsights)。
+日志的标头很常见，由时间戳 (TimeGenerated) 组成，它显示条目的创建时间。 它还包括一个引用条目所涉及的特定 SQL 数据库的资源 ID (ResourceId)。 类别 (Category)、级别 (Level) 和操作名称 (OperationName) 为固定属性，其值不会改变。 它们指示日志项目是信息性的，并表示日志项目来自 Intelligent Insights (SQLInsights)。
 
 ```json
 "TimeGenerated" : "2017-9-25 11:00:00", // time stamp of the log entry
@@ -56,7 +56,7 @@ ms.locfileid: "75335962"
 
 ## <a name="detected-issues"></a>检测到的问题
 
-智能见解性能日志的下一部分包括通过内置人工智能检测到的性能问题。 检测结果会在 JSON 诊断日志的属性中公开。 这些检测结果包含问题类别、问题的影响、受影响的查询和指标。 检测属性可能包含多个检测到的性能问题。
+Intelligent Insights 性能日志的下一部分包括通过内置人工智能检测到的性能问题。 检测结果会在 JSON 诊断日志的属性中公开。 这些检测结果包含问题类别、问题的影响、受影响的查询和指标。 检测属性可能包含多个检测到的性能问题。
 
 检测到的性能问题使用以下检测属性结构进行报告：
 
@@ -72,7 +72,7 @@ ms.locfileid: "75335962"
 
 ### <a name="detection-category"></a>检测类别
 
-类别 (category) 属性介绍了可检测性能模式的类别。 请查看下表，了解可检测性能模式的所有可能类别。 有关详细信息，请参阅[使用智能见解排查数据库性能问题](sql-database-intelligent-insights-troubleshoot-performance.md)。
+类别 (category) 属性介绍了可检测性能模式的类别。 请查看下表，了解可检测性能模式的所有可能类别。 有关详细信息，请参阅[使用 Intelligent Insights 排查数据库性能问题](sql-database-intelligent-insights-troubleshoot-performance.md)。
 
 相应地，诊断日志文件中输出的详细信息可能因检测到的性能问题而异。
 
@@ -85,7 +85,7 @@ ms.locfileid: "75335962"
 | 增加的 MAXDOP | <li>查询哈希</li><li>CXP 等待时间</li><li>等待时间</li> |
 | Pagelatch 争用 | <li>导致争用的查询的查询哈希</li> |
 | 缺失的索引 | <li>查询哈希</li> |
-| 新查询 | <li>新查询的查询哈希</li> |
+| 新建查询 | <li>新查询的查询哈希</li> |
 | 异常等待统计信息 | <li>异常等待类型</li><li>查询哈希</li><li>查询等待时间</li> |
 | TempDB 争用 | <li>导致争用的查询的查询哈希</li><li>致使整体数据库 pagelatch 争用等待时间增加的查询 [%]</li> |
 | 弹性池 DTU 不足 | <li>弹性池</li><li>最高的 DTU 消耗数据库</li><li>最高使用者使用的池 DTU 百分比</li> |
@@ -100,7 +100,7 @@ ms.locfileid: "75335962"
 
 ### <a name="impacted-queries"></a>受影响的查询
 
-智能见解日志的下一部分提供关于受检测到的性能问题影响的特定查询信息。 此信息公开为嵌入 impact_s 属性的一组对象。 影响属性包含实体和指标。 实体引用特定查询（类型：Query）。 唯一的查询哈希值在值 (Value) 属性下公开。 此外，每个公开的查询后跟指标和值，指示检测到的性能问题。
+Intelligent Insights 日志的下一部分提供关于受检测到的性能问题影响的特定查询信息。 此信息公开为嵌入 impact_s 属性的一组对象。 影响属性包含实体和指标。 实体引用特定查询（类型：Query）。 唯一的查询哈希值在值 (Value) 属性下公开。 此外，每个公开的查询后跟指标和值，指示检测到的性能问题。
 
 在以下日志示例中，使用哈希 0x9102EXZ4 的查询被检测到其执行持续时间延长（指标：DurationIncreaseSeconds）。 值 110 秒表示此特定查询的执行时间延长 110 秒。 因为可以检测到多个查询，所以此特定日志部分可能包含多个查询条目。
 
@@ -127,7 +127,7 @@ DurationIncreaseSeconds 属性提供以秒为单位的测量单位。 CriticalEr
 
 ## <a name="root-cause-analysis-and-improvement-recommendations"></a>根本原因分析和改进建议
 
-智能见解性能日志的最后部分是对已确定的性能下降问题的根本原因进行自动分析。 以用户友好措辞形式出现的信息会显示在根本原因分析 (rootCauseAnalysis_s) 属性中。 日志中可能包含改进建议。
+Intelligent Insights 性能日志的最后部分是对已确定的性能下降问题的根本原因进行自动分析。 以用户友好措辞形式出现的信息会显示在根本原因分析 (rootCauseAnalysis_s) 属性中。 日志中可能包含改进建议。
 
 ```json
 // example of reported root cause analysis of the detected performance issue, in a human-readable format
@@ -136,8 +136,8 @@ DurationIncreaseSeconds 属性提供以秒为单位的测量单位。 CriticalEr
 ```
 
 ## <a name="next-steps"></a>后续步骤
-- 了解有关[智能见解](sql-database-intelligent-insights.md)的概念。
-- 了解如何[使用智能见解排查 Azure SQL 数据库性能问题](sql-database-intelligent-insights-troubleshoot-performance.md)。
+- 了解有关 [Intelligent Insights](sql-database-intelligent-insights.md) 的概念。
+- 了解如何[使用 Intelligent Insights 解决 Azure SQL 数据库性能问题](sql-database-intelligent-insights-troubleshoot-performance.md)。
 - 了解如何[从 Azure 资源收集和使用日志数据](/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)。
 
 

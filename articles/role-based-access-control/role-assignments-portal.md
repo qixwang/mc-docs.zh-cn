@@ -15,11 +15,11 @@ ms.date: 02/10/2020
 ms.author: v-junlch
 ms.reviewer: bagovind
 ms.openlocfilehash: d0d45d72607ea723393b21f6526c5c26c9589ebf
-ms.sourcegitcommit: 99bd0019c5f01034b8765d7765ad7776c7d5e5ae
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77128843"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292382"
 ---
 # <a name="add-or-remove-role-assignments-using-azure-rbac-and-the-azure-portal"></a>使用 Azure RBAC 和 Azure 门户添加或删除角色分配
 
@@ -27,7 +27,7 @@ ms.locfileid: "77128843"
 
 如需在 Azure Active Directory 中分配管理员角色，请参阅[在 Azure Active Directory 中查看和分配管理员角色](../active-directory/users-groups-roles/directory-manage-roles-portal.md)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要添加或删除角色分配，必须拥有以下权限：
 

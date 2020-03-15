@@ -14,11 +14,11 @@ origin.date: 10/22/2018
 ms.date: 02/10/2020
 ms.author: v-yeche
 ms.openlocfilehash: 5c83af7d01c3611db533eaf91c633f9fb3124231
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77428724"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293266"
 ---
 # <a name="an-internal-error-occurs-when-you-try-to-connect-to-an-azure-vm-through-remote-desktop"></a>尝试通过远程桌面连接到 Azure VM 时发生内部错误
 

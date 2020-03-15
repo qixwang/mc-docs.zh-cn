@@ -16,11 +16,11 @@ origin.date: 01/29/2020
 ms.author: v-tawe
 ms.date: 02/17/2020
 ms.openlocfilehash: 46b5af7cfeba87a02cb260f0fa28e48657ba3dcd
-ms.sourcegitcommit: 888cbc10f2348de401d4839a732586cf266883bf
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77028217"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293384"
 ---
 # <a name="share-azure-dashboards-by-using-role-based-access-control"></a>通过使用基于角色的访问控制来共享 Azure 仪表板
 

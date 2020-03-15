@@ -7,11 +7,11 @@ origin.date: 08/18/2017
 ms.date: 02/24/2020
 ms.author: v-yeche
 ms.openlocfilehash: 7a9beb03db6c942cb14f1ea313ed2409219669c4
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77540485"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292576"
 ---
 # <a name="describe-a-service-fabric-cluster-by-using-cluster-resource-manager"></a>使用群集资源管理器描述 Service Fabric 群集
 Azure Service Fabric 的群集资源管理器功能提供多种机制用于描述群集：

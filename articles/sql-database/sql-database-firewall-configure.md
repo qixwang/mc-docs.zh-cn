@@ -14,11 +14,11 @@ ms.reviewer: carlrab
 origin.date: 03/12/2019
 ms.date: 02/17/2020
 ms.openlocfilehash: f4979fb3b240f823df3722a42ac82f59af1713fa
-ms.sourcegitcommit: d7b86a424b72849fe8ed32893dd05e4696e4fe85
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77155682"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291739"
 ---
 # <a name="azure-sql-database-and-azure-sql-data-warehouse-ip-firewall-rules"></a>Azure SQL 数据库和 Azure SQL 数据仓库 IP 防火墙规则
 

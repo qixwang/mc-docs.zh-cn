@@ -13,11 +13,11 @@ ms.reviewer: ''
 origin.date: 03/20/2019
 ms.date: 02/17/2020
 ms.openlocfilehash: 3d7811c9547c5311bbed965514d0b51caceb5b9b
-ms.sourcegitcommit: d7b86a424b72849fe8ed32893dd05e4696e4fe85
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77155596"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293531"
 ---
 # <a name="resource-limits-for-single-databases-using-the-dtu-purchasing-model"></a>使用 DTU 购买模型的单一数据库的资源限制
 

@@ -14,11 +14,11 @@ ms.custom: seo-lt-2019
 origin.date: 10/24/2019
 ms.date: 01/06/2020
 ms.openlocfilehash: f490f169c68dda760e4974c1529812640dbdbc2c
-ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77653519"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293080"
 ---
 # <a name="copy-data-to-and-from-sql-server-by-using-azure-data-factory"></a>使用 Azure 数据工厂向/从 SQL Server 复制数据
 

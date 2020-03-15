@@ -13,20 +13,20 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 origin.date: 10/29/2019
-ms.date: 12/09/2019
+ms.date: 03/04/2020
 ms.author: v-jay
 ms.custom: seodec18
-ms.openlocfilehash: 17c5b434d714866c9ee0bd3e3f76aceb9aa079d2
-ms.sourcegitcommit: 369038a7d7ee9bbfd26337c07272779c23d0a507
+ms.openlocfilehash: 1ca3007923a99c8dafb78bf9ade972037deefeb9
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74807635"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292852"
 ---
 # <a name="protect-your-content-with-media-services-dynamic-encryption"></a>使用媒体服务动态加密保护内容
 
 > [!NOTE]
-> Google Widevine 目前在中国地区不可用。
+> Google Widevine 内容保护服务目前在 Azure 中国区域不可用。
 
 借助 Azure 媒体服务，在媒体从计算机离开到存储、处理和传送的整个过程中确保其安全。 借助媒体服务，可以传送使用高级加密标准 (AES-128) 或以下两个主要数字版权管理 (DRM) 系统中任意一个动态加密的直播和点播内容：Microsoft PlayReady 和 Apple FairPlay。 媒体服务还提供了用于向已授权客户端传送 AES 密钥和 DRM（PlayReady、Widevine 和 FairPlay）许可证的服务。  
 
@@ -161,7 +161,7 @@ MPEG-DASH 协议支持以下容器格式和加密方案：
 
 常用的浏览器支持以下 DRM 客户端：
 
-|浏览器|Encryption|
+|浏览者|Encryption|
 |---|---|
 |Microsoft Edge、Internet Explorer 11|PlayReady|
 |Safari|FairPlay|

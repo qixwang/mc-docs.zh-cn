@@ -12,11 +12,11 @@ ms.date: 12/09/2019
 ms.author: v-jay
 ms.reviewer: igorstan
 ms.openlocfilehash: 4d2867b1d0c685de16e3c0c224e1c9e0176e9da7
-ms.sourcegitcommit: 369038a7d7ee9bbfd26337c07272779c23d0a507
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74807624"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293077"
 ---
 # <a name="azure-synapse-analytics-formerly-sql-dw-capacity-limits"></a>Azure Synapse Analytics（以前称为 SQL DW）容量限制
 

@@ -16,11 +16,11 @@ origin.date: 03/26/2019
 ms.date: 09/23/2019
 ms.author: v-jay
 ms.openlocfilehash: 9d25df026bb21c98c8d883bf45395f44262fa0a7
-ms.sourcegitcommit: 8248259e4c3947aa0658ad6c28f54988a8aeebf8
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71124400"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292155"
 ---
 # <a name="customizing-media-encoder-standard-presets"></a>自定义 Media Encoder Standard 预设  
 

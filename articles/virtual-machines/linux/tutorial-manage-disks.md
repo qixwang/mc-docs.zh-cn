@@ -18,11 +18,11 @@ ms.author: v-yeche
 ms.custom: mvc
 ms.subservice: disks
 ms.openlocfilehash: 6808651f62f73056cbd9258a5728fc489e10e7e2
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77427990"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293482"
 ---
 # <a name="tutorial---manage-azure-disks-with-the-azure-cli"></a>教程 - 使用 Azure CLI 管理 Azure 磁盘
 

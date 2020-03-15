@@ -12,11 +12,11 @@ origin.date: 02/12/2020
 ms.date: 03/09/2020
 ms.author: v-tawe
 ms.openlocfilehash: 10fa9c0f8a48257b11c2e7653a0161c517290a26
-ms.sourcegitcommit: ced17aa58e800b9e4335276a1595b8045836b256
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77590264"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293287"
 ---
 # <a name="about-the-speech-devices-sdk"></a>关于语音设备 SDK
 

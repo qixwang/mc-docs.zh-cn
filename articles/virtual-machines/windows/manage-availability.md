@@ -17,11 +17,11 @@ ms.date: 02/24/2020
 ms.author: v-yeche
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 65c4b8086f70057ad150ef4b83ce151bc98c7ccb
-ms.sourcegitcommit: 67be241cebe8ef015d4cad9e7bd58656ed3ba9c9
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/24/2020
-ms.locfileid: "77566944"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293543"
 ---
 # <a name="manage-the-availability-of-windows-virtual-machines-in-azure"></a>在 Azure 中管理 Windows 虚拟机的可用性 
 

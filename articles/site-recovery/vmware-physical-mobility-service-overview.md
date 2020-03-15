@@ -9,11 +9,11 @@ origin.date: 03/25/2019
 ms.date: 02/24/2020
 ms.author: v-yeche
 ms.openlocfilehash: 7e3008d5dbf53533f77439f234c375aff7d119d3
-ms.sourcegitcommit: fbc7584f403417d3af7bd6bbbaed7c13a78c57b9
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78411928"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292712"
 ---
 # <a name="about-the-mobility-service-for-vmware-vms-and-physical-servers"></a>关于适用于 VMware VM 和物理服务器的移动服务
 

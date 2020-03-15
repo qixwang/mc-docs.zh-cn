@@ -15,11 +15,11 @@ origin.date: 06/12/2018
 ms.date: 02/10/2020
 ms.author: v-yeche
 ms.openlocfilehash: b20aeb783223f2dfabdc08df1cbf22d3f4edd85d
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77428723"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292819"
 ---
 # <a name="dsc-extension-for-linux-microsoftostcextensionsdscforlinux"></a>适用于 Linux 的 DSC 扩展 (Microsoft.OSTCExtensions.DSCForLinux)
 
@@ -40,7 +40,7 @@ DSCForLinux 扩展由 Azure 发布并提供支持。 该扩展在 Azure 虚拟�
 
 [!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 ### <a name="operating-system"></a>操作系统
 

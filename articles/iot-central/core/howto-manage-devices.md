@@ -10,11 +10,11 @@ ms.service: iot-central
 services: iot-central
 manager: peterpr
 ms.openlocfilehash: afbc03d9d87a5306b4b59ffc2a04ebac0113ac33
-ms.sourcegitcommit: 6ffa4d50cee80c7c0944e215ca917a248f2a4bcd
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74883560"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292756"
 ---
 # <a name="manage-devices-in-your-azure-iot-central-application"></a>在 Azure IoT Central 应用程序中管理设备
 
@@ -43,7 +43,7 @@ ms.locfileid: "74883560"
 
 若要将设备添加到 Azure IoT Central 应用程序：
 
-1. 在左侧窗格中选择“设备”  。
+1. 在左侧窗格中选择“设备”。 
 
 1. 选择要从中创建设备的设备模板。
 
@@ -60,7 +60,7 @@ ms.locfileid: "74883560"
 
 若要在应用程序中批量注册设备：
 
-1. 在左侧窗格中选择“设备”  。
+1. 在左侧窗格中选择“设备”。 
 
 1. 在左面板中，选择要为其批量创建设备的设备模板。
 
@@ -141,7 +141,7 @@ ms.locfileid: "74883560"
 
 若要从 Azure IoT Central 应用程序中删除真实设备或模拟设备：
 
-1. 在左侧窗格中选择“设备”  。
+1. 在左侧窗格中选择“设备”。 
 
 1. 选择要删除的设备的设备模板。
 

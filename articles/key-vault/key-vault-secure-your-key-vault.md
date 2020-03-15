@@ -11,11 +11,11 @@ origin.date: 01/07/2019
 ms.date: 02/17/2020
 ms.author: v-tawe
 ms.openlocfilehash: 46890aa7f496eb956f1e6f525fe28c769943e8d1
-ms.sourcegitcommit: 0b07f1d36ac02da055874630d6edc31cb0a15269
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/10/2020
-ms.locfileid: "77112210"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292253"
 ---
 # <a name="secure-access-to-a-key-vault"></a>保护对密钥保管库的访问
 

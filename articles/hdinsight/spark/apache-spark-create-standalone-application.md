@@ -11,19 +11,19 @@ ms.assetid: b2467a40-a340-4b80-bb00-f2c3339db57b
 ms.service: hdinsight
 ms.custom: hdinsightactive,mvc
 ms.topic: tutorial
-origin.date: 06/26/2019
-ms.date: 10/28/2019
+origin.date: 02/28/2020
+ms.date: 03/23/2020
 ms.author: v-yiso
-ms.openlocfilehash: 0dc03d09d9cf8b3f075242d0e66ec21c5025edb8
-ms.sourcegitcommit: c21b37e8a5e7f833b374d8260b11e2fb2f451782
+ms.openlocfilehash: 1c853761e8743ca8ff7a0cf14fd56a99bafa9739
+ms.sourcegitcommit: 32997a7d7585deaeb0ab7b8f928d397b18b343fa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72584019"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79295858"
 ---
 # <a name="tutorial-create-a-scala-maven-application-for-apache-spark-in-hdinsight-using-intellij"></a>教程：使用 IntelliJ 在 HDInsight 中创建适用于 Apache Spark 的 Scala Maven 应用程序
 
-本教程介绍如何结合使用 [Apache Maven](https://maven.apache.org/) 和 IntelliJ IDEA 创建用 [Scala](https://www.scala-lang.org/) 编写的 [Apache Spark](https://spark.apache.org/) 应用程序。 本文将 Apache Maven 用作生成系统，并从 IntelliJ IDEA 提供的 Scala 现有 Maven 原型开始。  在 IntelliJ IDEA 中创建 Scala 应用程序需要以下步骤：
+本教程介绍如何结合使用 [Apache Maven](https://maven.apache.org/) 和 IntelliJ IDEA 创建用 [Scala](https://www.scala-lang.org/) 编写的 [Apache Spark](./apache-spark-overview.md) 应用程序。 本文将 Apache Maven 用作生成系统，并从 IntelliJ IDEA 提供的 Scala 现有 Maven 原型开始。  在 IntelliJ IDEA 中创建 Scala 应用程序需要以下步骤：
 
 * 将 Maven 用作生成系统。
 * 更新项目对象模型 (POM) 文件以解析 Spark 模块依赖项。
@@ -66,15 +66,15 @@ ms.locfileid: "72584019"
 
 1. 启动 IntelliJ IDEA，选择“创建新项目”打开“新建项目”窗口。  
 
-2. 在左窗格中选择“Azure Spark/HDInsight”  。
+2. 从左侧窗格中选择“Apache Spark/HDInsight”  。
 
 3. 在主窗口中选择“Spark 项目(Scala)”。 
 
-4. 在“生成工具”下拉列表中选择下列其中一项： 
+4. 从“生成工具”  下拉列表中，选择以下值之一：
       * **Maven**：支持 Scala 项目创建向导。
       * **SBT**：用于管理依赖项和生成 Scala 项目。
 
-   ![“新建项目”对话框](./media/apache-spark-create-standalone-application/create-hdi-scala-app.png)
+   ![IntelliJ“新建项目”对话框](./media/apache-spark-create-standalone-application/intellij-project-apache-spark.png)
 
 5. 选择“**下一步**”。
 
@@ -103,14 +103,16 @@ ms.locfileid: "72584019"
 
 5. 从原型列表中，选择“org.scala-tools.archetypes:scala-archetype-simple”  。 此原型会创建适当的目录结构，并下载所需的默认依赖项来编写 Scala 程序。
 
-    ![创建 Maven 项目](./media/apache-spark-create-standalone-application/create-maven-project.png)
+    ![IntelliJ IDEA 创建 Maven 项目](./media/apache-spark-create-standalone-application/intellij-project-create-maven.png)
 
 6. 选择“**下一步**”。
 
-7. 提供 **GroupId**、**ArtifactId** 和 **Version** 的相关值。 本教程涉及以下值：
+7. 展开“项目坐标”  。 提供 **GroupId** 和 **ArtifactId** 的相关值。 **名称**和**位置**将自动填充。 本教程涉及以下值：
 
     - **GroupId:** com.microsoft.spark.example
     - **ArtifactId:** SparkSimpleApp
+
+    ![IntelliJ IDEA 创建 Maven 项目](./media/apache-spark-create-standalone-application/intellij-artifact-coordinates.png)
 
 8. 选择“**下一步**”。
 

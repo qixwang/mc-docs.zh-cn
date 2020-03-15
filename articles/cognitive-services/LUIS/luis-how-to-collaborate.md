@@ -13,11 +13,11 @@ origin.date: 11/19/2019
 ms.date: 12/05/2019
 ms.author: v-lingwu
 ms.openlocfilehash: fe799922e2f207613394e8a74360b06498ea4556
-ms.sourcegitcommit: cf73284534772acbe7a0b985a86a0202bfcc109e
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74884616"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292138"
 ---
 # <a name="add-contributors-to-your-app"></a>向应用添加参与者
 

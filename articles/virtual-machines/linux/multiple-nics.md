@@ -16,11 +16,11 @@ origin.date: 06/07/2018
 ms.date: 02/10/2020
 ms.author: v-yeche
 ms.openlocfilehash: 69ba626778dbf21839f5c96b7568c59147abf69d
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77428581"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293272"
 ---
 # <a name="how-to-create-a-linux-virtual-machine-in-azure-with-multiple-network-interface-cards"></a>如何在 Azure 中创建具有多个网络接口卡的 Linux 虚拟机
 

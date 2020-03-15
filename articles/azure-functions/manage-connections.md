@@ -10,11 +10,11 @@ origin.date: 02/25/2018
 ms.date: 09/29/2019
 ms.author: v-junlch
 ms.openlocfilehash: 1900b51af7e699066052fa57ea09c6f951dc9527
-ms.sourcegitcommit: 73a8bff422741faeb19093467e0a2a608cb896e1
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71673568"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293154"
 ---
 # <a name="manage-connections-in-azure-functions"></a>管理 Azure Functions 中的连接
 

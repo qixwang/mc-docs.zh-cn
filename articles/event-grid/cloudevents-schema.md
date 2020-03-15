@@ -10,11 +10,11 @@ origin.date: 01/21/2020
 ms.date: 02/17/2020
 ms.author: v-yiso
 ms.openlocfilehash: 0c341303117be1fba113f9114ca6016287a2f03f
-ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77067999"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292279"
 ---
 # <a name="use-cloudevents-v10-schema-with-event-grid"></a>将 CloudEvents v1.0 架构与事件网格配合使用
 

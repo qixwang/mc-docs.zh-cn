@@ -12,14 +12,14 @@ ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: big-data
 origin.date: 06/11/2019
-ms.date: 10/28/2019
+ms.date: 03/23/2020
 ms.author: v-yiso
-ms.openlocfilehash: adf0a4e2950d3c06a59ee5fddc6ff1d374e42eb2
-ms.sourcegitcommit: c21b37e8a5e7f833b374d8260b11e2fb2f451782
+ms.openlocfilehash: 0732b14a63ab46bc1420fd79a0e336b046c303f5
+ms.sourcegitcommit: 32997a7d7585deaeb0ab7b8f928d397b18b343fa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72583876"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79295959"
 ---
 # <a name="what-is-apache-hadoop-in-azure-hdinsight"></a>什么是 Azure HDInsight 中的 Apache Hadoop？
 
@@ -43,7 +43,7 @@ Apache Hadoop MapReduce 是一个软件框架，用于编写处理海量数据�
 
 此作业的输出是文本中每个单词出现次数的计数。
 
-* mapper 将输入文本中的每一行作为一个输入并将其拆分为多个单词。 每当一个单词出现时，mapper 发出一个键/值对，其中在该单词后跟一个 1。 输出在发送到化简器之前经过排序。
+* mapper 将输入文本中的每一行作为一个输入并将其拆分为多个单词。 每当一个单词出现时，mapper 发出一个键/值对，其中在该单词后跟一个 1。 然后将输出排序，再发送到 reducer。
 * 随后，化简器会计算每个单词的计数的和并发出一个键/值对（包含单词，后跟该单词的总出现次数）。
 
 MapReduce 可使用多种语言实现。 Java 是最常见的实现，本文档中使用该语言进行演示。
@@ -56,7 +56,7 @@ Hadoop 流式处理通过 STDIN 和 STDOUT 与映射器和化简器通信。 映
 
     [key]/t[value]
 
-有关详细信息，请参阅 [Hadoop Streaming](https://hadoop.apache.org/docs/r1.2.1/streaming.html)（Hadoop 流式处理）。
+有关详细信息，请参阅 [Hadoop Streaming](https://hadoop.apache.org/docs/current/hadoop-streaming/HadoopStreaming.html)（Hadoop 流式处理）。
 
 有关将 Hadoop 流式处理与 HDInsight 配合使用的示例，请参阅以下文档：
 

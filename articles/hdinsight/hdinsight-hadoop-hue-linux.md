@@ -17,12 +17,12 @@ ms.topic: article
 origin.date: 11/28/2019
 ms.date: 02/24/2020
 ms.author: v-yiso
-ms.openlocfilehash: 8b78405976ec34f0bc64f6e4284b18cbf708b231
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.openlocfilehash: 4499fa89260fc647aef470f7c76346666fc1ba7a
+ms.sourcegitcommit: 32997a7d7585deaeb0ab7b8f928d397b18b343fa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77428829"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79295934"
 ---
 # <a name="install-and-use-hue-on-hdinsight-hadoop-clusters"></a>在 HDInsight Hadoop 群集上安装并使用 Hue
 
@@ -137,7 +137,6 @@ Hue 是一组 Web 应用程序，用来与 Apache Hadoop 群集交互。 可以�
 1. 当 HDInsight 群集使用 Azure 存储（使用 `wasbs://`）时，Hue 能识别 WebHDFS。 因此，搭配脚本操作使用的自定义脚本会安装 WebWasb，这是用来与 WASB 通信的 WebHDFS 兼容服务。 因此，即使 Hue 门户中显示 HDFS（例如，将鼠标移到“文件浏览器”  上时），也应该将它解释为 WASB。
 
 ## <a name="next-steps"></a>后续步骤
-* [在 HDInsight 群集上安装 Apache Giraph](hdinsight-hadoop-giraph-install-linux.md)。 使用群集自定义在 HDInsight Hadoop 群集上安装 Giraph。 Giraph 可让你使用 Hadoop 执行图形处理，并可以在 Azure HDInsight 上使用。
 * [在 HDInsight 群集上安装 R](hdinsight-hadoop-r-scripts-linux.md)。 使用群集自定义在 HDInsight Hadoop 群集上安装 R。 R 是一种用于统计计算的开放源代码语言和环境。 它提供了数百个内置统计函数及其自己的编程语言，可结合各方面的函数编程和面向对象的编程。 它还提供了各种图形功能。
 
 [powershell-install-configure]: install-configure-powershell-linux.md

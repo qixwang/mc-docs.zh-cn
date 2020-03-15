@@ -6,11 +6,11 @@ ms.date: 03/09/2020
 ms.author: v-tawe
 ms.topic: sample
 ms.openlocfilehash: 746e64c99279605cae9a30e68f34f397254e9998
-ms.sourcegitcommit: 892137d117bcaf9d88aec0eb7ca756fe39613344
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78048885"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292699"
 ---
 # <a name="azure-policy-built-in-initiative-definitions"></a>Azure Policy 内置计划定义
 

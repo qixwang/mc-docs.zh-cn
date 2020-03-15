@@ -1,7 +1,6 @@
 ---
 title: 使用 Azure Application Insights 诊断性能问题| Microsoft Docs
 description: 本教程介绍如何使用 Azure Application Insights 查找和诊断应用程序中的性能问题。
-ms.service: azure-monitor
 ms.subservice: application-insights
 ms.topic: tutorial
 author: lingliw
@@ -10,12 +9,12 @@ origin.date: 08/13/2019
 ms.date: 11/04/2019
 ms.author: v-lingwu
 ms.custom: mvc
-ms.openlocfilehash: b56671c7b09fdd992519f1001586df7221e3743d
-ms.sourcegitcommit: 13431cf4d69142ed7feb8d12d967a502bf9ff346
+ms.openlocfilehash: 4775496f1d1d63ebc86c78641be725bd8388c574
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75599766"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292677"
 ---
 # <a name="find-and-diagnose-performance-issues-with-azure-application-insights"></a>使用 Azure Application Insights 查找和诊断性能问题
 
@@ -99,7 +98,7 @@ Application Insights 不仅可以识别要优化的服务器进程，还可以�
 ## <a name="use-logs-data-for-client"></a>使用客户端的日志数据
 与针对服务器性能收集的数据一样，Application Insights 允许使用日志深度分析所有客户端数据。
 
-1. 返回到浏览器摘要，单击![“日志”图标](media/tutorial-performance/app-viewinlogs-icon.png)  “在日志中查看(分析)”
+1. 返回到浏览器摘要，单击![“日志”图标](media/tutorial-performance/app-viewinlogs-icon.png)  “在日志(Analytics)中查看”
 
 2. 日志随即打开，包含对面板中每个视图的查询。 第一个查询显示不同页面视图随时间推移的持续时间。
 

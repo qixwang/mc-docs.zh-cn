@@ -12,11 +12,11 @@ ms.date: 10/21/2019
 ms.author: v-jay
 ms.reviewer: igorstan
 ms.openlocfilehash: 1519ceee16d8d0d623e0b66d43b3bbf3acec28a0
-ms.sourcegitcommit: 73f07c008336204bd69b1e0ee188286d0962c1d7
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72914441"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293316"
 ---
 # <a name="quickstart-scale-compute-in-azure-sql-data-warehouse-in-azure-powershell"></a>快速入门：使用 Azure PowerShell 在 Azure SQL 数据仓库中缩放计算资源
 

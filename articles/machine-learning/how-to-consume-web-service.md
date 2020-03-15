@@ -13,11 +13,11 @@ origin.date: 01/07/2020
 ms.date: 03/09/2020
 ms.custom: seodec18
 ms.openlocfilehash: 810bae985c718883612b28bdadd8ae9b7cc0e8ce
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78155017"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292168"
 ---
 # <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>使用部署为 Web 服务的 Azure 机器学习模型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]

@@ -9,11 +9,11 @@ origin.date: 12/12/2019
 ms.date: 02/10/2020
 ms.author: v-jay
 ms.openlocfilehash: 3728d65142d505cded79b0e7fdd4a20f1814b8bb
-ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77068556"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292244"
 ---
 # <a name="configure-openvpn-clients-for-azure-vpn-gateway"></a>为 Azure VPN 网关配置 OpenVPN 客户端
 

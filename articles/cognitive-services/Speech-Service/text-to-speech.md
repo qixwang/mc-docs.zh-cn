@@ -12,11 +12,11 @@ origin.date: 12/10/2019
 ms.date: 03/01/2020
 ms.author: v-tawe
 ms.openlocfilehash: a85db5f897071712709dc1f929e58ac425b109ac
-ms.sourcegitcommit: 892137d117bcaf9d88aec0eb7ca756fe39613344
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78042287"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293282"
 ---
 # <a name="what-is-text-to-speech"></a>什么是文本转语音？
 

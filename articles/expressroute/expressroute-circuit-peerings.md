@@ -9,11 +9,11 @@ origin.date: 12/13/2019
 ms.author: v-yiso
 ms.date: 01/20/2020
 ms.openlocfilehash: 5977aef51b7c50a730bbcce0039a470e60a2123c
-ms.sourcegitcommit: a890a9cca495d332c9f3f53ff3a5259fd5f0c275
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75859580"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292046"
 ---
 # <a name="expressroute-circuits-and-peering"></a>ExpressRoute 线路和对等互连
 

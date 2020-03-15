@@ -9,11 +9,11 @@ origin.date: 07/29/2019
 ms.date: 08/26/2019
 ms.author: v-yeche
 ms.openlocfilehash: e1cee1d54a8b40cf5fcee848eb76704b0603842a
-ms.sourcegitcommit: e0225b4d68a71bfa5bbcb7d8d7e0214b9a17dc5d
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71083188"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293286"
 ---
 # <a name="about-the-azure-site-recovery-deployment-planner-for-vmware-to-azure"></a>关于用于 VMware 到 Azure 部署的 Azure Site Recovery 部署规划器
 本文为适用于 VMware 到 Azure 生产部署的 Azure Site Recovery 部署规划器用户指南。

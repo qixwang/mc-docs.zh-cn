@@ -13,11 +13,11 @@ ms.reviewer: carlrab
 origin.date: 01/22/2020
 ms.date: 02/17/2020
 ms.openlocfilehash: 758f40622e1f6e06417c155d8a96208248f09466
-ms.sourcegitcommit: d7b86a424b72849fe8ed32893dd05e4696e4fe85
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77155695"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291557"
 ---
 # <a name="resource-limits-for-single-databases-using-the-vcore-purchasing-model"></a>使用 vCore 购买模型的单一数据库的资源限制
 

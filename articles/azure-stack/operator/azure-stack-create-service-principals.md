@@ -8,11 +8,11 @@ origin.date: 11/11/2019
 ms.date: 02/24/2020
 ms.lastreviewed: 11/11/2019
 ms.openlocfilehash: 5cabb054866d91ae5694869a816b0c2d2c883e4e
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77540877"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293405"
 ---
 # <a name="use-an-app-identity-to-access-azure-stack-hub-resources"></a>使用应用标识访问 Azure Stack Hub 资源
 

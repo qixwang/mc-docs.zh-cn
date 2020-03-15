@@ -13,11 +13,11 @@ ms.reviewer: ''
 origin.date: 12/18/2018
 ms.date: 11/04/2019
 ms.openlocfilehash: cb57a56ca37b470629b00475e33eaac361c5ee48
-ms.sourcegitcommit: 97fa37512f79417ff8cd86e76fe62bac5d24a1bd
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73041193"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292236"
 ---
 # <a name="quickstarts-azure-sql-database-connect-and-query"></a>快速入门：Azure SQL 数据库连接和查询
 

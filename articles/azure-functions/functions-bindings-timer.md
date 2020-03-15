@@ -8,11 +8,11 @@ ms.date: 02/18/2020
 ms.author: v-junlch
 ms.custom: ''
 ms.openlocfilehash: f510a791c8117bb0396c35ad901e26477d3f0548
-ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77494428"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293202"
 ---
 # <a name="timer-trigger-for-azure-functions"></a>Azure Functions 的计时器触发器 
 

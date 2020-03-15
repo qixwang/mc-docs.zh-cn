@@ -1,21 +1,19 @@
 ---
 title: Azure Application Insights 中的遥测采样 | Azure Docs
 description: 如何使受控制的遥测数据的卷。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: lingliw
 manager: digimobile
 origin.date: 01/17/2020
 ms.date: 2/18/2020
 ms.reviewer: vitalyg
-ms.author: v-lingwu
-ms.openlocfilehash: 2a9d672a0e10dd32f371cf42e9cd42c75dbfa871
-ms.sourcegitcommit: 27eaabd82b12ad6a6840f30763034a6360977186
+ms.custom: fasttrack-edit
+ms.openlocfilehash: de8f198b2c9e3fd3ea500715942af5f0b240e7f7
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77497361"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291709"
 ---
 # <a name="sampling-in-application-insights"></a>在 Application Insights 中采样
 

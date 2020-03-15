@@ -10,11 +10,11 @@ ms.topic: conceptual
 origin.date: 10/28/2019
 ms.date: 11/19/2019
 ms.openlocfilehash: 5080f0364da0466231d631f11c6af5774322bee2
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78155124"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293465"
 ---
 # <a name="understand-and-adjust-streaming-units"></a>了解和调整流式处理单元
 

@@ -15,11 +15,11 @@ ms.date: 09/23/2019
 ms.author: v-yeche
 ms.custom: ''
 ms.openlocfilehash: 253135d8d1b55ed4159765e08ee6d7350a534876
-ms.sourcegitcommit: 0d07175c0b83219a3dbae4d413f8e012b6e604ed
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71306489"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292284"
 ---
 # <a name="virtual-network-service-endpoints"></a>虚拟网络服务终结点
 

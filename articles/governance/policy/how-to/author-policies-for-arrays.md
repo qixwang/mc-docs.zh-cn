@@ -6,11 +6,11 @@ origin.date: 11/26/2019
 ms.date: 03/09/2020
 ms.topic: how-to
 ms.openlocfilehash: e3556b559bbbe783e4c0231729dff1aa1d2147bc
-ms.sourcegitcommit: fbc7584f403417d3af7bd6bbbaed7c13a78c57b9
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78412104"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292719"
 ---
 # <a name="author-policies-for-array-properties-on-azure-resources"></a>针对 Azure 资源中的数组属性创作策略
 

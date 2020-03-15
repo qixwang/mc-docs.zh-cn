@@ -9,11 +9,11 @@ ms.author: v-jay
 ms.reviewer: wfayed
 ms.lastreviewed: 09/12/2018
 ms.openlocfilehash: fd0c0a85747b5a344bb162113103c3485f805c11
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77540919"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292431"
 ---
 # <a name="datacenter-integration-planning-considerations-for-azure-stack-hub-integrated-systems"></a>有关 Azure Stack Hub 集成系统的数据中心集成规划注意事项
 

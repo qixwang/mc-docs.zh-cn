@@ -3,14 +3,14 @@ title: Azure Functions 的缩放和托管
 description: 了解如何在 Azure Functions 消耗计划之间进行选择。
 ms.assetid: 5b63649c-ec7f-4564-b168-e0a74cb7e0f3
 ms.topic: conceptual
-ms.date: 02/18/2020
+ms.date: 03/03/2020
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2393622bb6ad08fd76ea7eecce773d1de53cec22
-ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
+ms.openlocfilehash: 0e14df33449ccc0a43a5e44143c287481453a1e6
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77494186"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292172"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Azure Functions 的缩放和托管
 
@@ -115,7 +115,7 @@ az appservice plan list --query "[?id=='$appServicePlanId'].sku.tier" --output t
 
 ### <a name="runtime-scaling"></a>运行时缩放
 
-Azure Functions 使用名为“缩放控制器”的组件来监视事件率以及确定是要扩大或缩小。  缩放控制器针对每种触发器类型使用试探法。 例如，使用 Azure 队列存储触发器时，它会根据队列长度和最旧队列消息的期限进行缩放。
+Azure Functions 使用名为“缩放控制器”的组件来监视事件率以及确定是要横向扩展还是横向缩减。  缩放控制器针对每种触发器类型使用试探法。 例如，使用 Azure 队列存储触发器时，它会根据队列长度和最旧队列消息的期限进行缩放。
 
 Azure Functions 的缩放单位为函数应用。 横向扩展函数应用时，将分配额外的资源来运行 Azure Functions 主机的多个实例。 相反，计算需求下降时，扩展控制器将删除函数主机实例。 当函数应用中没有运行函数时，实例数最终会*缩减*为零。
 
@@ -131,7 +131,7 @@ Azure Functions 的缩放单位为函数应用。 横向扩展函数应用时，
 
 不同触发器还可能有不同的缩放限制，如下所述：
 
-* [事件中心](functions-bindings-event-hubs.md#trigger---scaling)
+* [事件中心](functions-bindings-event-hubs-trigger.md#scaling)
 
 ### <a name="best-practices-and-patterns-for-scalable-apps"></a>可缩放应用的最佳做法和模式
 
@@ -156,4 +156,4 @@ Azure Functions 的缩放单位为函数应用。 横向扩展函数应用时，
 
 [!INCLUDE [functions-limits](../../includes/functions-limits.md)]
 
-<!-- Update_Description: wording update -->
+<!-- Update_Description: link update -->

@@ -14,11 +14,11 @@ origin.date: 08/23/2019
 ms.date: 11/11/2019
 ms.author: v-yeche
 ms.openlocfilehash: b892d867b985dda71bbb81ea2f2989dfec024e8a
-ms.sourcegitcommit: 1fd822d99b2b487877278a83a9e5b84d9b4a8ce7
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74116893"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293352"
 ---
 # <a name="bitlocker-boot-errors-on-an-azure-vm"></a>Azure VM 上的 BitLocker 启动错误
 

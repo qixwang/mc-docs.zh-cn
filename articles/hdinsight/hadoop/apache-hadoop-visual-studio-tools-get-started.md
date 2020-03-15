@@ -19,11 +19,11 @@ origin.date: 10/29/2019
 ms.date: 12/23/2019
 ms.author: v-yiso
 ms.openlocfilehash: b2a8591280b018ba4bddffe2ffd5873c68943c4a
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75335061"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292781"
 ---
 # <a name="use-data-lake-tools-for-visual-studio-to-connect-to-azure-hdinsight-and-run-apache-hive-queries"></a>使用针对 Visual Studio 的 Data Lake 工具连接到 Azure HDInsight 并运行 Apache Hive 查询
 

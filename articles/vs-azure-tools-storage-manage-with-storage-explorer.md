@@ -10,11 +10,11 @@ origin.date: 11/08/2019
 ms.date: 11/18/2019
 ms.author: v-lingwu
 ms.openlocfilehash: 6719c5b23132b383ba07f7cb2bc871b2e8848231
-ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77068140"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293381"
 ---
 # <a name="get-started-with-storage-explorer"></a>存储资源管理器入门
 
@@ -24,9 +24,9 @@ Microsoft Azure 存储资源管理器是一个独立的应用，使用它可在 
 
 ![Microsoft Azure 存储资源管理器][0]
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
-# <a name="windowstabwindows"></a>[Windows](#tab/windows)
+# <a name="windows"></a>[Windows](#tab/windows)
 
 以下版本的 Windows 支持存储资源管理器：
 
@@ -36,13 +36,13 @@ Microsoft Azure 存储资源管理器是一个独立的应用，使用它可在 
 
 对于所有 Windows 版本，存储资源管理器都需要 .NET Framework 4.6.2 或更高版本。
 
-# <a name="macostabmacos"></a>[macOS](#tab/macos)
+# <a name="macos"></a>[macOS](#tab/macos)
 
 以下版本的 macOS 支持存储资源管理器：
 
 * macOS 10.12 Sierra 和更高版本
 
-# <a name="linuxtablinux"></a>[Linux](#tab/linux)
+# <a name="linux"></a>[Linux](#tab/linux)
 
 最常用 Linux 分发版的 [Snap Store](https://snapcraft.io/storage-explorer) 中都提供了存储资源管理器。 我们建议通过 Snap Store 安装存储资源管理器。 将新版本发布到 Snap Store 时，存储资源管理器内嵌项会安装其所有依赖项和更新。
 

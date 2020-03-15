@@ -11,11 +11,11 @@ origin.date: 12/18/2017
 ms.date: 02/17/2020
 ms.author: v-jay
 ms.openlocfilehash: 66e6c32cf3540f1d7098989b56548031f4708878
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77428866"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293332"
 ---
 # <a name="overview-of-dns-zones-and-records"></a>DNS 区域和记录概述
 

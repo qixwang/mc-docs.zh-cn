@@ -8,12 +8,12 @@ ms.date: 02/24/2020
 ms.author: v-jay
 ms.reviewer: misainat
 ms.lastreviewed: 11/27/2019
-ms.openlocfilehash: 147ccb71d0857eee19857e8a80a42817438bd7e8
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.openlocfilehash: ea63f5011d349ec40fcdcc9ec88bef86689aa5c6
+ms.sourcegitcommit: dc862610e2169c1fce6fb0ae9eb7dd7567f86a0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77540964"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293739"
 ---
 # <a name="what-is-the-azure-stack-development-kit-asdk"></a>什么是 Azure Stack 开发工具包 (ASDK)？
 [Azure Stack Hub 集成系统](../operator/azure-stack-overview.md)的大小范围为 4 到 16 个节点，由硬件合作伙伴和 Azure 共同提供支持。 使用 Azure Stack Hub 集成系统可为生产工作负荷启用新方案。 如果你是 Azure Stack Hub 操作员，想要管理集成系统基础结构并提供服务，请参阅我们的[操作员文档](/azure-stack/operator)。
@@ -28,11 +28,6 @@ ASDK 用于对 Azure Stack Hub 进行单节点部署，可以**免费**下载和
 ASDK 旨在为以下人员提供 Azure 一致性混合云体验：
 - **管理员**（Azure Stack Hub 操作员）：ASDK 是适用于评估和了解可用 Azure Stack Hub 服务的资源。
 - **开发人员**：ASDK 可以用来在本地（开发/测试环境）开发混合应用或新型应用。 这种灵活性提供了在 Azure Stack Hub 产品部署之前或部署时开发体验的可重复性。
-
-观看此短视频，了解有关 ASDK 的详细信息：
-
-> [!VIDEO https://www.youtube.com/embed/dbVWDrl00MM]
-
 
 ## <a name="asdk-and-multi-node-azure-stack-hub-differences"></a>ASDK 和多节点 Azure Stack Hub 的差异
 单节点 ASDK 部署与多节点 Azure Stack Hub 部署在几个重要方面有所不同：

@@ -2,13 +2,13 @@
 title: 使用 Visual Studio 开发 Azure Functions
 description: 了解如何使用 Visual Studio Code 的 Azure Functions 扩展开发和测试 Azure Functions。
 ms.topic: conceptual
-ms.date: 02/18/2020
-ms.openlocfilehash: 9b1ed4e37e2a7dea274da07787c915a47ff2ec8c
-ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
+ms.date: 03/03/2020
+ms.openlocfilehash: 41f36615f309152da05ca57329426ee55e2526d9
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77494524"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293214"
 ---
 # <a name="develop-azure-functions-by-using-visual-studio-code"></a>使用 Visual Studio 开发 Azure Functions
 
@@ -36,7 +36,7 @@ Azure Functions 扩展提供以下优势：
 > [!IMPORTANT]
 > 不要对单个函数应用混合使用本地开发和门户开发。 从本地项目发布到函数应用时，部署过程会覆盖在门户中开发的任何函数。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 在安装并运行 [Azure Functions 扩展][适用于 visual studio code 的 azure functions 扩展]之前，必须符合以下要求：
 
@@ -160,7 +160,7 @@ using Microsoft.Azure.WebJobs.Extensions.Storage;
 
 `msg` 参数为 `ICollector<T>` 类型，表示函数完成时写入输出绑定的消息集合。 将一个或多个消息添加到集合。 函数完成后，这些消息将发送到队列。
 
-有关详细信息，请参阅[队列存储输出绑定](functions-bindings-storage-queue.md#output)文档。
+有关详细信息，请参阅[队列存储输出绑定](functions-bindings-storage-queue-output.md)文档。
 
 # <a name="javascript"></a>[JavaScript](#tab/nodejs)
 
@@ -198,7 +198,7 @@ Visual Studio Code 可让你遵照一组方便的提示将绑定添加到 functi
 context.bindings.msg = "Name passed to the function: " req.query.name;
 ```
 
-有关详细信息，请参阅[队列存储输出绑定](functions-bindings-storage-queue.md#output)参考文章。
+有关详细信息，请参阅[队列存储输出绑定](functions-bindings-storage-queue-output.md)参考文章。
 
 ---
 

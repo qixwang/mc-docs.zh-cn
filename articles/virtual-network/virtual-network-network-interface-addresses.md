@@ -17,11 +17,11 @@ origin.date: 01/22/2020
 ms.date: 02/24/2020
 ms.author: v-yeche
 ms.openlocfilehash: fff0f580735418f19931f0d84c5a3f0a6f0c2f3a
-ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77653494"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292294"
 ---
 # <a name="add-change-or-remove-ip-addresses-for-an-azure-network-interface"></a>为 Azure 网络接口添加、更改或删除 IP 地址
 

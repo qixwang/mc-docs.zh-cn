@@ -14,11 +14,11 @@ origin.date: 04/05/2018
 ms.date: 01/13/2020
 ms.author: v-yeche
 ms.openlocfilehash: db139e637bd12bf5afdd2159f222d4ed61b27d8a
-ms.sourcegitcommit: bc5f8b4f8ccd7c723f64055825508d1dfcc2162b
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75859219"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291899"
 ---
 # <a name="create-change-or-delete-a-network-security-group"></a>创建、更改或删除网络安全组
 

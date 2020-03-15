@@ -3,14 +3,14 @@ title: Azure Functions 绑定表达式和模式
 description: 了解如何基于通用模式创建不同的 Azure Functions 绑定表达式。
 author: craigshoemaker
 ms.topic: reference
-ms.date: 02/12/2020
+ms.date: 03/02/2020
 ms.author: v-junlch
-ms.openlocfilehash: 5146e5c5445e3f9d0953be2d7924cf7154027e39
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.openlocfilehash: bef966a6c0b961ebee7a633f8373b0e29ac6b5a8
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77428737"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292831"
 ---
 # <a name="azure-functions-binding-expression-patterns"></a>Azure Functions 绑定表达式模式
 
@@ -179,7 +179,7 @@ public static void Run(
   ]
 ```
 
-相应参考文章中会详细介绍每种触发器的元数据属性。 有关示例，请参阅[队列触发器元数据](functions-bindings-storage-queue.md#trigger---message-metadata)。 在门户“集成”  选项卡的绑定配置区域下方的“文档”  部分中，还提供了文档。  
+相应参考文章中会详细介绍每种触发器的元数据属性。 有关示例，请参阅[队列触发器元数据](functions-bindings-storage-queue-trigger.md#message-metadata)。 在门户“集成”  选项卡的绑定配置区域下方的“文档”  部分中，还提供了文档。  
 
 ## <a name="json-payloads"></a>JSON 有效负载
 
@@ -321,4 +321,4 @@ public class BlobName
 > [!div class="nextstepaction"]
 > [使用 Azure 函数返回值](./functions-bindings-return-value.md)
 
-<!-- Update_Description: wording update -->
+<!-- Update_Description: link update -->

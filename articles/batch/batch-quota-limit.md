@@ -16,11 +16,11 @@ ms.date: 12/04/2019
 ms.author: v-lingwu
 ms.custom: seodec18
 ms.openlocfilehash: a5a755cab0ac022e3a2f79938318d15f2d6dc5cb
-ms.sourcegitcommit: 21b02b730b00a078a76aeb5b78a8fd76ab4d6af2
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74838999"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292840"
 ---
 # <a name="batch-service-quotas-and-limits"></a>Batch 服务配额和限制
 

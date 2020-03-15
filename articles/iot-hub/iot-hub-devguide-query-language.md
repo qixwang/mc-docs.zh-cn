@@ -10,11 +10,11 @@ origin.date: 10/29/2018
 ms.author: v-yiso
 ms.date: 07/15/2019
 ms.openlocfilehash: 8662b4f98336e34e89a3257498f19dfe0bf037b7
-ms.sourcegitcommit: 5191c30e72cbbfc65a27af7b6251f7e076ba9c88
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67569848"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293434"
 ---
 # <a name="iot-hub-query-language-for-device-and-module-twins-jobs-and-message-routing"></a>用于设备和模块孪生、作业和消息路由的 IoT 中心查询语言
 

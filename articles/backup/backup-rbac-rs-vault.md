@@ -8,11 +8,11 @@ origin.date: 06/24/2019
 ms.date: 09/23/2019
 ms.author: v-lingwu
 ms.openlocfilehash: 030ac15fd9dcf89a00da92c93c1afce63b7cf49b
-ms.sourcegitcommit: fbc7584f403417d3af7bd6bbbaed7c13a78c57b9
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78411740"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292099"
 ---
 # <a name="use-role-based-access-control-to-manage-azure-backup-recovery-points"></a>使用基于角色的访问控制管理 Azure 备份恢复点
 

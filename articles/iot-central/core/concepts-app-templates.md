@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.openlocfilehash: 662eed710a5921161559eb5ba1bd9971cc0b36b3
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75335921"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291786"
 ---
 # <a name="what-are-application-templates"></a>什么是应用程序模板？
 

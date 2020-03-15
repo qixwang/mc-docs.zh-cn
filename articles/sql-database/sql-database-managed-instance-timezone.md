@@ -12,11 +12,11 @@ ms.reviewer: ''
 origin.date: 09/03/2019
 ms.date: 09/30/2019
 ms.openlocfilehash: d40443ffbf989702a11046a06434bfd4a22316b8
-ms.sourcegitcommit: 5c3d7acb4bae02c370f6ba4d9096b68ecdd520dd
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71262949"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293218"
 ---
 # <a name="time-zones-in-azure-sql-database-managed-instance"></a>Azure SQL 数据库托管实例中的时区
 

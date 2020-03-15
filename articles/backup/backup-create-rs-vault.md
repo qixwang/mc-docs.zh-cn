@@ -8,11 +8,11 @@ origin.date: 08/30/2019
 ms.date: 09/23/2019
 ms.author: v-lingwu
 ms.openlocfilehash: 0e88d430e63a3b5770829cce9c31e2c5d2ef363a
-ms.sourcegitcommit: 21b02b730b00a078a76aeb5b78a8fd76ab4d6af2
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74838901"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292105"
 ---
 # <a name="create-a-recovery-services-vault"></a>创建恢复服务保管库
 

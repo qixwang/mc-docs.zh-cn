@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 01/13/2020
 ms.author: v-junlch
 ms.openlocfilehash: 729c0a32492e541161d799eb5085235698d6c331
-ms.sourcegitcommit: 48d51745ca18de7fa05b77501b4a9bf16cea2068
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76116862"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293337"
 ---
 # <a name="azure-functions-networking-options"></a>Azure Functions 网络选项
 

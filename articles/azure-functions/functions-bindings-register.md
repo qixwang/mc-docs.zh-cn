@@ -3,14 +3,14 @@ title: 注册 Azure Functions 绑定扩展
 description: 了解如何根据你的环境注册 Azure Functions 绑定扩展。
 author: craigshoemaker
 ms.topic: reference
-ms.date: 02/12/2020
+ms.date: 03/03/2020
 ms.author: v-junlch
-ms.openlocfilehash: 6ae3de80fcdb440f40ae7edac10eec2f778c5238
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.openlocfilehash: 66c1b8b235935f303df45284531e871553f336aa
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77428216"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293358"
 ---
 # <a name="register-azure-functions-binding-extensions"></a>注册 Azure Functions 绑定扩展
 
@@ -55,7 +55,7 @@ ms.locfileid: "77428216"
 Install-Package Microsoft.Azure.WebJobs.Extensions.ServiceBus -Version <TARGET_VERSION>
 ```
 
-用于给定绑定的包的名称在该绑定的参考文章中提供。 有关示例，请参阅[服务总线绑定参考文章的“包”部分](functions-bindings-service-bus.md#packages---functions-1x)。
+用于给定绑定的包的名称在该绑定的参考文章中提供。 有关示例，请参阅[服务总线绑定参考文章的“包”部分](functions-bindings-service-bus.md#functions-1x)。
 
 将示例中的 `<TARGET_VERSION>` 替换为特定包版本，例如 `3.0.0-beta5`。 在 [NuGet.org](https://nuget.org) 上的单个包页上列出了有效版本。与 Functions 运行时 1.x 或 2.x 对应的主版本在绑定的参考文章中指定。
 
@@ -80,4 +80,4 @@ dotnet add package Microsoft.Azure.WebJobs.Extensions.<BINDING_TYPE_NAME> --vers
 > [Azure Functions 触发器和绑定示例](./functions-bindings-example.md)
 
 
-<!-- Update_Description: wording update -->
+<!-- Update_Description: link update -->

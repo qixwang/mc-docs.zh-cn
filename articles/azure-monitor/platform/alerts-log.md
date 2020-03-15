@@ -10,11 +10,11 @@ ms.date: 07/29/2019
 ms.author: v-lingwu
 ms.subservice: alerts
 ms.openlocfilehash: 4beacb6d881e0c516eb41f368163f23511f2fbc3
-ms.sourcegitcommit: 27eaabd82b12ad6a6840f30763034a6360977186
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77497458"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292854"
 ---
 # <a name="create-view-and-manage-log-alerts-using-azure-monitor"></a>使用 Azure Monitor 创建、查看和管理日志警报
 

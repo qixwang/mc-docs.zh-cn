@@ -13,11 +13,11 @@ origin.date: 05/28/2019
 ms.date: 10/28/2019
 ms.author: v-yiso
 ms.openlocfilehash: d0c724bd20db33d3df904910f94dc226d53c8337
-ms.sourcegitcommit: c21b37e8a5e7f833b374d8260b11e2fb2f451782
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72583838"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292880"
 ---
 # <a name="connect-to-apache-kafka-on-hdinsight-through-an-azure-virtual-network"></a>通过 Azure 虚拟网络连接到 Apache Kafka on HDInsight
 
@@ -297,7 +297,7 @@ HDInsight 不允许通过公共 Internet 直接连接到 Kafka。 Kafka 客户�
 
 若要验证与 Kafka 的连接，请使用以下步骤来创建并运行 Python 生成者和使用者：
 
-1. 使用以下方法之一检索 Kafka 群集中节点的完全限定域名 (FQDN) 和 IP 地址：
+1. 使用以下方法之一检索 Kafka 群集中节点的完全限定的域名 (FQDN) 和 IP 地址：
 
     ```powershell
     $resourceGroupName = "The resource group that contains the virtual network used with HDInsight"

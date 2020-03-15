@@ -11,11 +11,11 @@ ms.author: gopalv
 ms.topic: conceptual
 ms.date: 10/3/2019
 ms.openlocfilehash: cfc7fbcc5ade7b5a3f37df4ea08c8d5b3a4842a6
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75599003"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292640"
 ---
 # <a name="development-tools-on-the-azure-data-science-virtual-machine"></a>Azure Data Science Virtual Machine 上的开发工具
 

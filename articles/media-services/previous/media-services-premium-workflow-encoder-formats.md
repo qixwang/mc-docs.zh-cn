@@ -16,11 +16,11 @@ ms.date: 11/18/2019
 ms.author: v-jay
 ms.reviewer: anilmur
 ms.openlocfilehash: 5397962b7a417fcc0d02cd86de6fc2c783d264ae
-ms.sourcegitcommit: ea2aeb14116769d6f237542c90f44c1b001bcaf3
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74116250"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292377"
 ---
 # <a name="media-encoder-premium-workflow-formats-and-codecs"></a>媒体编码器高级工作流格式和编解码器
 
@@ -102,7 +102,7 @@ Media Encoder Premium Workflow 输出格式和编解码器
 * AES（SMPTE 331M 和 302M、AES3-2003）
 * Dolby® Digital (AC3)
 * Dolby® Digital Plus (E-AC3)，最高支持 7.1
-* AAC(AAC-LC、AAC-HE 和 AAC-HEv2；最高支持 5.1）
+* AAC（AAC-LC、AAC-HE 和 AAC-HEv2；最高支持 5.1）
 * MPEG Layer 2
 * MP3 (MPEG-1 Audio Layer 3)
 * Windows Media 音频

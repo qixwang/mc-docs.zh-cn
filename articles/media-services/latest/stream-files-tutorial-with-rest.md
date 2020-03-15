@@ -14,11 +14,11 @@ origin.date: 11/05/2019
 ms.date: 02/24/2020
 ms.author: v-jay
 ms.openlocfilehash: 78903bd9a184709001411fa264ac41955613f260
-ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77494467"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293223"
 ---
 # <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---rest"></a>教程：基于 URL 对远程文件进行编码并流式传输视频 - REST
 
@@ -41,7 +41,7 @@ ms.locfileid: "77494467"
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 - [创建媒体服务帐户](create-account-cli-how-to.md)。
 

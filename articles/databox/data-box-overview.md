@@ -11,11 +11,11 @@ origin.date: 07/03/2019
 ms.date: 07/22/2019
 ms.author: v-jay
 ms.openlocfilehash: 35a871e03faf39413aab9fb722043b9c82c2b8c5
-ms.sourcegitcommit: 98cc8aa5b8d0e04cd4818b34f5350c72f617a225
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68298142"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292993"
 ---
 # <a name="what-is-azure-data-box"></a>什么是 Azure Data Box？
 

@@ -16,11 +16,11 @@ origin.date: 06/15/2018
 ms.date: 02/24/2020
 ms.author: apimpm
 ms.openlocfilehash: 79d7a11d9e94f44a0adabdd1d4acf36eb124036b
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77428626"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292302"
 ---
 # <a name="monitor-published-apis"></a>监视已发布的 API
 
@@ -33,7 +33,7 @@ ms.locfileid: "77428626"
 > * 查看诊断日志
 > * 查看 API 的指标 
 > * 针对 API 收到的未经授权的调用设置警报规则
->   ## <a name="prerequisites"></a>必备条件
+>   ## <a name="prerequisites"></a>先决条件
 
 + 了解 [Azure API 管理术语](api-management-terminology.md)。
 + 完成以下快速入门：[创建一个 Azure API 管理实例](get-started-create-service-instance.md)。

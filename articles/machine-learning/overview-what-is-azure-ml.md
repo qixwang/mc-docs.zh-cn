@@ -7,13 +7,14 @@ ms.subservice: core
 ms.topic: overview
 author: j-martens
 ms.author: jmartens
-ms.date: 11/04/2019
-ms.openlocfilehash: 48ba5ad5133ad99e1fd820b12b99d3c8d3b4f8bb
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+origin.date: 11/04/2019
+ms.date: 03/16/2020
+ms.openlocfilehash: 0b2e2b8597a596b12b95635d519ae991bc04417a
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78154972"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292882"
 ---
 # <a name="what-is-azure-machine-learning"></a>什么是 Azure 机器学习？
 
@@ -28,7 +29,7 @@ Azure 机器学习可用于任何类型的机器学习，从传统 ml 到深度�
 > [!VIDEO https://channel9.msdn.com/Events/Connect/Microsoft-Connect--2018/D240/player]
 
 > [!Tip]
-> 试用版！   如果没有 Azure 订阅，请在开始之前创建一个免费帐户。 立即试用[免费版或付费版 Azure 机器学习](https://aka.ms/AMLFree)。 你将获得可用于 Azure 服务的赠送额度。 额度用完后，可以保留该帐户并继续使用[免费的 Azure 服务](https://www.azure.cn/pricing/1rmb-trial)。 除非显式更改设置并要求付费，否则不会对信用卡收取任何费用。
+> **免费试用！**  如果没有 Azure 订阅，请在开始之前创建一个免费帐户。 立即试用[免费版或付费版 Azure 机器学习](https://aka.ms/AMLFree)。 你将获得可用于 Azure 服务的赠送额度。 额度用完后，可以保留该帐户并继续使用[免费的 Azure 服务](https://azure.microsoft.com/free/)。 除非显式更改设置并要求付费，否则不会对信用卡收取任何费用。
 
 
 ## <a name="what-is-machine-learning"></a>什么是机器学习？
@@ -46,11 +47,13 @@ Azure 机器学习为其机器学习工作流提供了开发人员和数据科�
 
 + R 脚本或笔记本，其中你使用<a href="https://azure.github.io/azureml-sdk-for-r/reference/index.html" target="_blank">适用于 R 的 SDK</a> 编写自己的代码，或使用设计器中的 R 模块。
 
++ [Visual Studio Code 扩展](tutorial-setup-vscode-extension.md)
+
 + [机器学习 CLI](reference-azure-machine-learning-cli.md)
 
 + 使用开放源代码框架，如 PyTorch、TensorFlow 和 scikit-learn 等
 
-甚至可以使用 [MLflow 跟踪指标并部署模型](service/how-to-use-mlflow.md)或使用 Kubeflow [生成端到端工作流管道](https://www.kubeflow.org/docs/azure/)。
+甚至可以使用 [MLflow 跟踪指标并部署模型](how-to-use-mlflow.md)或使用 Kubeflow [生成端到端工作流管道](https://www.kubeflow.org/docs/azure/)。
 
 ## <a name="build-ml-models-in-python-or-r"></a>在 Python 或 R 中生成 ML 模型
 
@@ -83,7 +86,7 @@ Azure 机器学习为其机器学习工作流提供了开发人员和数据科�
 
 然后，可以使用[适用于 Python 的 Azure 机器学习 SDK](https://aka.ms/aml-sdk)、[Azure 机器学习工作室](https://ml.azure.com)或[机器学习 CLI](reference-azure-machine-learning-cli.md) 来管理已部署的模型。
 
-可以使用这些模型并[实时](how-to-consume-web-service.md)返回对大量数据的预测。
+可以使用这些模型[实时](how-to-consume-web-service.md)返回预测，或者在有大量数据的情况下[异步](how-to-use-parallel-run-step.md)返回预测。
 
 使用高级[机器学习管道](concept-ml-pipelines.md)，可以在每一步（从数据准备、模型训练和评估一直到部署）进行协作。 使用 Pipelines 可以：
 
@@ -102,12 +105,12 @@ Azure 机器学习可与 Azure 平台上的其他服务配合使用，还能与�
 
 + 如 __Azure Kubernetes 服务__、__Azure 容器实例__、__Azure Databricks__、__Azure Data Lake Analytics__和 __Azure HDInsight__ 这样的计算目标。 有关计算目标的详细信息，请参阅[什么是计算目标？](concept-compute-target.md)。
 + __Azure 事件网格__。 有关详细信息，请参阅[使用 Azure 机器学习事件](concept-event-grid-integration.md)。
-+ __Azure Monitor__。 有关详细信息，请参阅[监视 Azure 机器学习](service/monitor-azure-machine-learning.md)。
++ __Azure Monitor__。 有关详细信息，请参阅[监视 Azure 机器学习](monitor-azure-machine-learning.md)。
 + 如 __Azure 存储帐户__、__Azure Data Lake Storage__、__Azure SQL 数据库__、__Azure Database for PostgreSQL__ 和 __Azure 开放数据集__ 这样的数据存储。 有关详细信息，请参阅[访问 Azure 存储服务中的数据](how-to-access-data.md)和[使用 Azure 开放数据集创建数据集](how-to-create-register-datasets.md#create-datasets-with-azure-open-datasets)。
 + __Azure 虚拟网络__。 有关详细信息，请参阅[虚拟网络中的安全试验和推理](how-to-enable-virtual-network.md)。
 + __Azure Pipelines__。 有关详细信息，请参阅[定型和部署机器学习模型](https://docs.microsoft.com/azure/devops/pipelines/targets/azure-machine-learning)。
 + __Git 存储库日志__。 有关详细信息，请参阅 [Git 集成](concept-train-model-git-integration.md)。
-+ __MLFlow__。 有关详细信息，请参阅[使用 MLflow 跟踪指标并部署模型](service/how-to-use-mlflow.md) 
++ __MLFlow__。 有关详细信息，请参阅[使用 MLflow 跟踪指标并部署模型](how-to-use-mlflow.md) 
 + __Kubeflow__。 有关详细信息，请参阅[构建端到端工作流管道](https://www.kubeflow.org/docs/azure/)。
 
 ### <a name="secure-communications"></a>安全通信
@@ -133,10 +136,10 @@ Basic 工作区允许继续使用 Azure 机器学习，并只为在机器学习�
 - 通过首选方法创建首个试验：
   + [使用 Python 笔记本训练和部署 ML 模型](tutorial-1st-experiment-sdk-setup.md)
   + [使用 R Markdown 训练和部署 ML 模型](tutorial-1st-r-experiment.md) 
-  + [使用自动化机器学习训练和部署 ML 模型](  service/tutorial-first-experiment-automated-ml.md) 
+  + [使用自动化机器学习训练和部署 ML 模型](tutorial-first-experiment-automated-ml.md) 
   + [使用设计器的拖放功能进行训练和部署](tutorial-designer-automobile-price-train-score.md) 
   + [使用机器学习 CLI 训练和部署模型](tutorial-train-deploy-model-cli.md)
 
-- 了解[机器学习管道](/machine-learning/service/concept-ml-pipelines)，以便生成、优化和管理机器学习方案。
+- 了解[机器学习管道](concept-ml-pipelines.md)，以便生成、优化和管理机器学习方案。
 
 - 阅读深入的 [Azure 机器学习体系结构和概念](concept-azure-machine-learning-architecture.md)文章。

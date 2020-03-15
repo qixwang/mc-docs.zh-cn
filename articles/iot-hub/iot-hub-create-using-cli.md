@@ -9,11 +9,11 @@ origin.date: 08/23/2018
 ms.author: v-yiso
 ms.date: 10/08/2018
 ms.openlocfilehash: e35b43b7f7a5fd1a7aaaec8116b67ff1aad102e6
-ms.sourcegitcommit: d75065296d301f0851f93d6175a508bdd9fd7afc
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52650177"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293253"
 ---
 # <a name="create-an-iot-hub-using-the-azure-cli"></a>使用 Azure CLI 创建 IoT 中心
 

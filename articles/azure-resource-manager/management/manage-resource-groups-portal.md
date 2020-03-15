@@ -7,11 +7,11 @@ origin.date: 03/26/2019
 ms.date: 01/06/2020
 ms.author: v-yeche
 ms.openlocfilehash: 6d3f1344fc907b3f44daedb2d6b09c515a1a9eae
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75631158"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292492"
 ---
 # <a name="manage-azure-resource-manager-resource-groups-by-using-the-azure-portal"></a>使用 Azure 门户管理 Azure 资源管理器资源组
 
@@ -28,7 +28,7 @@ ms.locfileid: "75631158"
 
 资源组是用于保存 Azure 解决方案相关资源的容器。 资源组可以包含解决方案的所有资源，也可以只包含想要作为组来管理的资源。 根据对组织有利的原则，决定如何将资源分配到资源组。 通常可将共享相同生命周期的资源添加到同一资源组，以便将其作为一个组轻松部署、更新和删除。
 
-资源组存储与资源有关的元数据。 因此，当指定资源组的位置时，也就指定了元数据的存储位置。 出于合规性原因，可能需要确保数据存储在某一特定区域。
+资源组存储与资源有关的元数据。 因此，在指定资源组的位置时，是在指定元数据的存储位置。 出于合规性原因，可能需要确保数据存储在某一特定区域。
 
 <!--MOONCAKE: DUPLICATE ON The resource group stores metadata about the resources. When you specify a location for the resource group, you're specifying where that metadata is stored.-->
 

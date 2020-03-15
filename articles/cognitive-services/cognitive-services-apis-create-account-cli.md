@@ -10,23 +10,23 @@ ms.topic: conceptual
 origin.date: 10/04/2019
 ms.date: 02/02/2020
 ms.author: v-tawe
-ms.openlocfilehash: 79466f6f7acdca29e051ca2436c943f981ecb348
-ms.sourcegitcommit: 888cbc10f2348de401d4839a732586cf266883bf
+ms.openlocfilehash: 81ac6b30dca248e4f7e19835b193739e1573ae82
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77028182"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291839"
 ---
 # <a name="create-a-cognitive-services-resource-using-the-azure-command-line-interfacecli"></a>使用 Azure 命令行接口 (CLI) 创建认知服务资源
 
-使用本快速入门可通过 [Azure 命令行接口 (CLI)](/cli/install-azure-cli?view=azure-cli-latest) 开始使用 Azure 认知服务。 认知服务由你在 Azure 订阅中创建的 Azure [资源](/azure-resource-manager/manage-resources-portal)表示。 创建资源后，请使用生成的密钥和终结点对应用程序进行身份验证。 
+使用本快速入门可通过 [Azure 命令行接口 (CLI)](/cli/install-azure-cli?view=azure-cli-latest) 开始使用 Azure 认知服务。 认知服务由你在 Azure 订阅中创建的 Azure [资源](/azure-resource-manager/resource-group-portal)表示。 创建资源后，请使用生成的密钥和终结点对应用程序进行身份验证。 
 
 
-本快速入门介绍如何使用 [Azure 命令行接口 (CLI)](/cli/install-azure-cli?view=azure-cli-latest) 注册 Azure 认知服务以及创建包含单服务或多服务订阅的帐户。 这些服务由 Azure [资源](/azure-resource-manager/manage-resources-portal)表示，可用于连接到一个或多个 Azure 认知服务 API。
+本快速入门介绍如何使用 [Azure 命令行接口 (CLI)](/cli/install-azure-cli?view=azure-cli-latest) 注册 Azure 认知服务以及创建包含单服务或多服务订阅的帐户。 这些服务由 Azure [资源](/azure-resource-manager/resource-group-portal)表示，可用于连接到一个或多个 Azure 认知服务 API。
 
 [!INCLUDE [cognitive-services-subscription-types](../../includes/cognitive-services-subscription-types.md)]
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * 有效的 Azure 订阅 - [创建 1 元人民币试用帐户](https://www.azure.cn/pricing/1rmb-trial/)。
 * [Azure 命令行接口 (CLI)](/cli/install-azure-cli?view=azure-cli-latest)
@@ -93,11 +93,14 @@ az group create \
 | 计算机视觉            | `ComputerVision`          |
 | 人脸                       | `Face`                    |
 
+<!-- ### Search -->
+
 ### <a name="speech"></a>语音
 
 | 服务            | 种类                 |
 |--------------------|----------------------|
 | 语音服务    | `SpeechServices`     |
+| 语音识别 | `SpeakerRecognition` |
 
 ### <a name="language"></a>语言
 
@@ -179,7 +182,7 @@ az cognitiveservices account list-usage \
 若要删除资源组及其关联的资源，请使用 az group delete 命令。
 
 ```azurecli
-az group delete --name storage-resource-group
+az group delete --name cognitive-services-resource-group
 ```
 
 ## <a name="see-also"></a>另请参阅

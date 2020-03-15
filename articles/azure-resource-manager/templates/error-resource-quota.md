@@ -6,11 +6,11 @@ origin.date: 03/09/2018
 ms.date: 01/20/2020
 ms.author: v-yeche
 ms.openlocfilehash: e242086a4682e2fa89d45d87184c2af86d499eba
-ms.sourcegitcommit: 8de025ca11b62e06ba3762b5d15cc577e0c0f15d
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76165484"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292117"
 ---
 # <a name="resolve-errors-for-resource-quotas"></a>解决资源配额错误
 
@@ -95,7 +95,7 @@ Virtual Machines                             0 10000 Count
 >
 >
 
-1. 选择 **订阅**。
+1. 选择“订阅”。 
 
     ![订阅](./media/error-resource-quota/subscriptions.png)
 

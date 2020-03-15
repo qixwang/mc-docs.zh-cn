@@ -11,11 +11,11 @@ ms.topic: reference
 origin.date: 02/03/2020
 ms.date: 02/24/2020
 ms.openlocfilehash: 4d3732f6a3abf67905b3949815dedb306852cd5a
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77428881"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292414"
 ---
 # <a name="reference-guide-to-using-functions-in-expressions-for-azure-logic-apps-and-power-automate"></a>有关在 Azure 逻辑应用和 Power Automate 的表达式中使用函数的参考指南
 

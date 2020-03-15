@@ -9,11 +9,11 @@ origin.date: 07/31/2019
 ms.date: 09/30/2019
 ms.author: v-yeche
 ms.openlocfilehash: a79d3b263b9aa9874067a374a5fbf746964efbd3
-ms.sourcegitcommit: 332ae4986f49c2e63bd781685dd3e0d49c696456
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71340802"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291699"
 ---
 # <a name="service-updates-in-site-recovery"></a>Site Recovery 中的服务更新
 

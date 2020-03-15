@@ -15,11 +15,11 @@ origin.date: 02/12/2019
 ms.date: 02/24/2020
 ms.author: v-yeche
 ms.openlocfilehash: c00ea30e501df5cf00c54c83ff6f6183fae64c19
-ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77653477"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292058"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Azure 虚拟网络常见问题 (FAQ)
 

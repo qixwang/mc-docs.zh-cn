@@ -9,11 +9,11 @@ origin.date: 01/09/2020
 ms.date: 02/17/2020
 ms.author: v-jay
 ms.openlocfilehash: 7b44f584d47216a8f4dfccdb457c86d3b652cbe9
-ms.sourcegitcommit: 3f9d780a22bb069402b107033f7de78b10f90dde
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77156758"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292504"
 ---
 # <a name="configure-a-point-to-site-connection-by-using-certificate-authentication-classic"></a>使用证书身份验证（经典）配置点到站点连接
 
@@ -36,7 +36,7 @@ ms.locfileid: "77156758"
 
 ![点到站点连接示意图](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/point-to-site-connection-diagram.png)
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 点到站点证书身份验证连接需要以下先决条件：
 

@@ -7,11 +7,11 @@ origin.date: 01/30/2019
 ms.date: 11/20/2019
 ms.author: v-lingwu
 ms.openlocfilehash: 9796884da1c464ce8d4da9b42fe986250cb151fe
-ms.sourcegitcommit: 21b02b730b00a078a76aeb5b78a8fd76ab4d6af2
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74838591"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293041"
 ---
 # <a name="prepare-to-back-up-workloads-to-azure-with-system-center-dpm"></a>使用 System Center DPM 准备将工作负载备份到 Azure
 

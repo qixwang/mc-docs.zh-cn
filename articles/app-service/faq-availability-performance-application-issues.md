@@ -11,11 +11,11 @@ ms.date: 03/09/2020
 ms.author: v-tawe
 ms.custom: seodec18
 ms.openlocfilehash: 9a4e893186ce267e2cd04f4716a9231850735dd9
-ms.sourcegitcommit: ced17aa58e800b9e4335276a1595b8045836b256
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77590192"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293367"
 ---
 # <a name="application-performance-faqs-for-web-apps-in-azure"></a>Azure 中 Web 应用的应用程序性能常见问题解答
 

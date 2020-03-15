@@ -6,11 +6,11 @@ ms.topic: reference
 ms.date: 02/18/2020
 ms.author: v-junlch
 ms.openlocfilehash: 9e94ecc2b1ecb8dcd46084892d010b9ae34ffa28
-ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77494512"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293067"
 ---
 # <a name="azure-functions-c-script-csx-developer-reference"></a>Azure Functions C# 脚本 (.csx) 开发人员参考
 

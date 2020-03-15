@@ -6,11 +6,11 @@ origin.date: 01/23/2020
 ms.date: 02/24/2020
 ms.author: v-yeche
 ms.openlocfilehash: 89ab20b6db500fff20101691de9f5d99e0efcf3c
-ms.sourcegitcommit: 781f68d27903687f0aa9e1ed273eee25c6d129a1
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77611270"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293281"
 ---
 # <a name="about-recovery-plans"></a>关于恢复计划
 

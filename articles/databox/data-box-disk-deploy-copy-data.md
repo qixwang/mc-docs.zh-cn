@@ -12,11 +12,11 @@ ms.author: v-jay
 ms.localizationpriority: high
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
 ms.openlocfilehash: 9a34bb45ceb78697ed8f2e2a5eb0e4e92d6c5d1b
-ms.sourcegitcommit: 8c3bae15a8a5bb621300d81adb34ef08532fe739
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74884016"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293242"
 ---
 ::: zone target="docs"
 

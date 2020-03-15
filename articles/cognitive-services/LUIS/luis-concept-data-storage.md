@@ -13,11 +13,11 @@ origin.date: 07/29/2019
 ms.date: 09/23/2019
 ms.author: v-lingwu
 ms.openlocfilehash: 628d05734473df1734cb46551b631506bbe2d7b4
-ms.sourcegitcommit: cf73284534772acbe7a0b985a86a0202bfcc109e
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74884495"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292730"
 ---
 # <a name="data-storage-and-removal-in-language-understanding-luis-cognitive-services"></a>语言理解 (LUIS) 认知服务中的数据存储和删除
 LUIS 将加密的数据存储在与密钥指定的区域对应的 Azure 数据存储中。 此数据将存储 30 天。 

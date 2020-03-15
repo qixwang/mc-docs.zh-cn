@@ -9,11 +9,11 @@ origin.date: 07/05/2019
 ms.date: 09/02/2019
 ms.author: v-jay
 ms.openlocfilehash: ff0f6231c928271771e667a18412b32168e3f801
-ms.sourcegitcommit: 2f7c24eff74f4de0d4a117fc2c327e00ab77ff88
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70888183"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292503"
 ---
 # <a name="reset-a-vpn-gateway"></a>重置 VPN 网关
 

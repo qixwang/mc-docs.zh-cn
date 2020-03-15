@@ -8,11 +8,11 @@ origin.date: 11/12/2019
 ms.date: 02/10/2020
 ms.author: v-yeche
 ms.openlocfilehash: 6e286a222941780845ad135aed3131c1d6981096
-ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77028930"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292548"
 ---
 <!--Verify successfully-->
 # <a name="manage-azure-cosmos-db-cassandra-api-resources-using-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板管理 Azure Cosmos DB Cassandra API 资源

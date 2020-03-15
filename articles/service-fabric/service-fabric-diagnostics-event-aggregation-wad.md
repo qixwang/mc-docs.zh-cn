@@ -7,11 +7,11 @@ origin.date: 04/03/2018
 ms.date: 02/24/2020
 ms.author: v-yeche
 ms.openlocfilehash: 36400d11e31c868d671200e47151ccfe9cb85afb
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77540685"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292037"
 ---
 # <a name="event-aggregation-and-collection-using-windows-azure-diagnostics"></a>使用 Windows Azure 诊断聚合和集合事件
 > [!div class="op_single_selector"]
@@ -29,7 +29,7 @@ ms.locfileid: "77540685"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 本文中使用了以下工具：
 
 * [Azure Resource Manager](../azure-resource-manager/management/overview.md)

@@ -9,11 +9,11 @@ origin.date: 02/12/2019
 ms.date: 02/17/2020
 ms.author: v-yiso
 ms.openlocfilehash: 5f78190503b1e7aea6c23a25432e493f486a3130
-ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77068319"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292271"
 ---
 # <a name="event-sources-in-azure-event-grid"></a>Azure 事件网格中的事件源
 

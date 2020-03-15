@@ -7,11 +7,11 @@ origin.date: 02/25/2019
 ms.date: 01/13/2020
 ms.author: v-yeche
 ms.openlocfilehash: 354d7de6e9fa53a92e7fcde5f76a461c811e5c45
-ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75741897"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292038"
 ---
 # <a name="monitor-and-diagnose-services-in-a-local-machine-development-setup"></a>在本地计算机开发安装过程中监视和诊断服务
 > [!div class="op_single_selector"]

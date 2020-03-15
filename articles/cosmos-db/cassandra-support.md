@@ -10,11 +10,11 @@ ms.topic: overview
 origin.date: 09/24/2018
 ms.date: 01/20/2020
 ms.openlocfilehash: f01822400a4af8f5f801a83508344bd80208223b
-ms.sourcegitcommit: 304861faf39689348962127b8b56db8082ece2ef
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76270065"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292949"
 ---
 # <a name="apache-cassandra-features-supported-by-azure-cosmos-db-cassandra-api"></a>Azure Cosmos DB Cassandra API 支持的 Apache Cassandra 功能 
 

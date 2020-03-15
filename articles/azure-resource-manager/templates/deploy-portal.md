@@ -6,11 +6,11 @@ origin.date: 06/27/2019
 ms.author: v-yeche
 ms.date: 01/06/2020
 ms.openlocfilehash: a136f2118fd94e83945d967a9201cfe928a073bf
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75631180"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293322"
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-azure-portal"></a>使用 Resource Manager 模板和 Azure 门户部署资源
 

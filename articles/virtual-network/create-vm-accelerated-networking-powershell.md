@@ -16,11 +16,11 @@ origin.date: 01/04/2018
 ms.date: 11/25/2019
 ms.author: v-yeche
 ms.openlocfilehash: fd822207dccb3be9c987d6f7b7fe01c6cf491af8
-ms.sourcegitcommit: 298eab5107c5fb09bf13351efeafab5b18373901
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2019
-ms.locfileid: "74657669"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293341"
 ---
 # <a name="create-a-windows-virtual-machine-with-accelerated-networking-using-azure-powershell"></a>使用 Azure PowerShell 创建具有加速网络的 Windows 虚拟机
 
@@ -56,7 +56,7 @@ ms.locfileid: "74657669"
 
 有关 VM 实例的详细信息，请参阅[Windows VM 大小](../virtual-machines/windows/sizes.md?toc=%2fvirtual-network%2ftoc.json)。
 
-### <a name="regions"></a>Regions
+### <a name="regions"></a>区域
 在所有公共 Azure 区域和 Azure 中国云中均可用。
 
 ### <a name="enabling-accelerated-networking-on-a-running-vm"></a>在正在运行的 VM 上启用加速网络

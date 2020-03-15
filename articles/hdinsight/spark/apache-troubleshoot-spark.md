@@ -17,11 +17,11 @@ origin.date: 08/22/2019
 ms.date: 10/28/2019
 ms.author: v-yiso
 ms.openlocfilehash: bf1327f48d53ad3bf7548047cdbe7ac3e301043e
-ms.sourcegitcommit: c21b37e8a5e7f833b374d8260b11e2fb2f451782
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72583648"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293066"
 ---
 # <a name="troubleshoot-apache-spark-by-using-azure-hdinsight"></a>使用 Azure HDInsight 对 Apache Spark 进行故障排除
 
@@ -45,7 +45,7 @@ ms.locfileid: "72583648"
 
 1. 将值设置为建议的设置。 建议为此设置使用值 **2048m**。
 
-1. 保存值，并保存配置。 选择**保存**。
+1. 保存值，并保存配置。 选择“保存”  。
 
     ![将值更改为 2048m](./media/apache-troubleshoot-spark/apache-spark-ambari-config6a.png)
 

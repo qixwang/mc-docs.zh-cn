@@ -12,11 +12,11 @@ origin.date: 10/31/2018
 ms.date: 02/10/2020
 ms.author: v-yeche
 ms.openlocfilehash: 2b33fe4b13ae320fdd976d50c825b4a76ba1ab9d
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77428743"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291829"
 ---
 # <a name="how-to-use-boot-diagnostics-to-troubleshoot-virtual-machines-in-azure"></a>如何使用启动诊断功能来排查 Azure 中虚拟机的问题
 

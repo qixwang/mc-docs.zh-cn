@@ -17,11 +17,11 @@ origin.date: 04/14/2019
 ms.date: 06/10/2019
 ms.author: v-yeche
 ms.openlocfilehash: 5789e34307c4a3418e919e7a85bef500709c31c3
-ms.sourcegitcommit: df1b896faaa87af1d7b1f06f1c04d036d5259cc2
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66250569"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292281"
 ---
 # <a name="virtual-network-tap"></a>虚拟网络 TAP
 
@@ -66,7 +66,7 @@ ms.locfileid: "66250569"
 
 用于在网络接口上应用 TAP 配置的帐户，必须被赋予[网络参与者](../role-based-access-control/built-in-roles.md?toc=%2fvirtual-network%2ftoc.json#network-contributor)角色或分配有下表中必要操作的[自定义角色](../role-based-access-control/custom-roles.md?toc=%2fvirtual-network%2ftoc.json)：
 
-| 操作 | Name |
+| 操作 | 名称 |
 |---|---|
 | Microsoft.Network/virtualNetworkTaps/* | 在创建、更新、读取和删除虚拟网络 TAP 资源时需要 |
 | Microsoft.Network/networkInterfaces/read | 在读取将配置 TAP 的网络接口资源时需要 |

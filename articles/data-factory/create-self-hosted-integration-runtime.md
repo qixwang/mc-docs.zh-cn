@@ -13,11 +13,11 @@ ms.custom: seo-lt-2019
 origin.date: 06/18/2019
 ms.date: 01/06/2020
 ms.openlocfilehash: 18e9ceb5a481789bfb36307d2a18ec78beb9943b
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75624077"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293207"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>创建和配置自承载集成运行时
 

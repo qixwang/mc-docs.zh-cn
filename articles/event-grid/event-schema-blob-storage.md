@@ -9,11 +9,11 @@ origin.date: 01/17/2019
 ms.date: 02/17/2020
 ms.author: v-yiso
 ms.openlocfilehash: d883d51894831811a728a0b094444653cf70fa67
-ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77068324"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292268"
 ---
 # <a name="azure-event-grid-event-schema-for-blob-storage"></a>Blob 存储的 Azure 事件网格事件架构
 

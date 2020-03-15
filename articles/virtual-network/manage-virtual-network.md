@@ -14,11 +14,11 @@ origin.date: 01/10/2019
 ms.date: 01/13/2020
 ms.author: v-yeche
 ms.openlocfilehash: cc6f677e7d14039f044a00121a7ea9109d93fec9
-ms.sourcegitcommit: bc5f8b4f8ccd7c723f64055825508d1dfcc2162b
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75859215"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293199"
 ---
 # <a name="create-change-or-delete-a-virtual-network"></a>创建、更改或删除虚拟网络
 

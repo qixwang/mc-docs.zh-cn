@@ -15,11 +15,11 @@ origin.date: 01/10/2020
 ms.author: v-yiso
 ms.date: 02/24/2020
 ms.openlocfilehash: f3d786557d8c3f1183a7ff5176d11596be3fcf0c
-ms.sourcegitcommit: 27eaabd82b12ad6a6840f30763034a6360977186
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77497396"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291725"
 ---
 # <a name="api-management-advanced-policies"></a>API 管理高级策略
 

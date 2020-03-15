@@ -10,11 +10,11 @@ ms.date: 01/06/2020
 ms.author: v-jay
 ms.subservice: tables
 ms.openlocfilehash: 838b34f917f42d6ab2e3b99e932c1c4792a839a3
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75624057"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293278"
 ---
 # <a name="design-scalable-and-performant-tables"></a>设计可伸缩的高性能表
 
@@ -25,7 +25,7 @@ ms.locfileid: "75624057"
 ## <a name="about-the-azure-table-service"></a>关于 Azure 表服务
 本部分重点介绍表服务的一些主要功能，这些功能尤其与设计性能和可伸缩性相关。 如果不熟悉 Azure 存储和表服务，请在阅读本文的其他部分之前，先阅读 [Azure 存储简介](../../storage/common/storage-introduction.md)和[通过 .NET 实现 Azure 表存储入门](../../cosmos-db/table-storage-how-to-use-dotnet.md)。 尽管本指南的重点是介绍表服务，但它也包括对 Azure 队列和 Blob 服务的论述，并介绍了如何将它们与表服务一起使用。  
 
-什么是表服务？ 从名称可以推测出，表服务将使用表格格式来存储数据。 在标准术语中，表的每一行表示一个实体，而列存储该实体的各种属性。 每个实体都有唯一地标识它的一对键，还有一个时间戳列，表服务使用该列来跟踪实体的最后更新时间。 时间戳是自动应用的，无法使用任意值手动覆盖它。 表服务使用此上次修改时间戳 (LMT) 来管理开放式并发。  
+什么是表服务？ 从名称可以推测出，表服务使用表格格式来存储数据。 在标准术语中，表的每一行表示一个实体，而列存储该实体的各种属性。 每个实体都有唯一地标识它的一对键，还有一个时间戳列，表服务使用该列来跟踪实体的最后更新时间。 时间戳是自动应用的，无法使用任意值手动覆盖它。 表服务使用此上次修改时间戳 (LMT) 来管理开放式并发。  
 
 > [!NOTE]
 > 表服务 REST API 操作还会返回它从 LMT 推导出的 **ETag** 值。 本文档互换使用术语 ETag 和 LMT，因为它们指的是同一基础数据。  
@@ -162,6 +162,6 @@ EGT 还引入了一个在设计时需要评估的潜在权衡。 那就是，使
 
 - [表设计模式](table-storage-design-patterns.md)
 - [为关系建模](table-storage-design-modeling.md)
-- [针对查询进行设计](table-storage-design-for-query.md)
+- [针对查询的设计](table-storage-design-for-query.md)
 - [对表数据进行加密](table-storage-design-encrypt-data.md)
-- [针对数据修改进行设计](table-storage-design-for-modification.md)
+- [针对数据修改的设计](table-storage-design-for-modification.md)

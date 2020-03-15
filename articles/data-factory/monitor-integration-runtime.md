@@ -13,11 +13,11 @@ author: WenJason
 ms.author: v-jay
 manager: digimobile
 ms.openlocfilehash: 26e5fceae11a604244112b35f377c27057c9a397
-ms.sourcegitcommit: 5191c30e72cbbfc65a27af7b6251f7e076ba9c88
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67570492"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292615"
 ---
 # <a name="monitor-an-integration-runtime-in-azure-data-factory"></a>在 Azure 数据工厂中监视集成运行时  
 **集成运行时**是 Azure 数据工厂用于在不同的网络环境之间提供多种数据集成功能的计算基础结构。 数据工厂提供三种类型的集成运行时：
@@ -44,12 +44,12 @@ Azure 集成运行时的计算资源在 Azure 中以弹性方式受到完全管�
 
 | 属性 | 说明 |
 -------- | ------------- | 
-| Name | Azure 集成运行时的名称。 |  
-| State | Azure 集成运行时的状态。 | 
-| Location | Azure 集成运行时的位置。 有关 Azure 集成运行时位置的详细信息，请参阅[集成运行时简介](concepts-integration-runtime.md)。 |
+| 名称 | Azure 集成运行时的名称。 |  
+| 状态 | Azure 集成运行时的状态。 | 
+| 位置 | Azure 集成运行时的位置。 有关 Azure 集成运行时位置的详细信息，请参阅[集成运行时简介](concepts-integration-runtime.md)。 |
 | DataFactoryName | Azure 集成运行时所属的数据工厂的名称。 | 
 | ResourceGroupName | 数据工厂所属的资源组的名称。  |
-| Description | Azure 集成运行时的说明。  |
+| 说明 | Azure 集成运行时的说明。  |
 
 ### <a name="status"></a>状态
 下表提供了 Azure 集成运行时的可能状态：
@@ -57,7 +57,7 @@ Azure 集成运行时的计算资源在 Azure 中以弹性方式受到完全管�
 | 状态 | 注释/方案 | 
 | ------ | ------------------ |
 | 联机 | Azure 集成运行时处于联机状态，可供使用。 | 
-| 脱机 | 由于内部错误，Azure 集成运行时处于脱机状态。 |
+| Offline | 由于内部错误，Azure 集成运行时处于脱机状态。 |
 
 ## <a name="self-hosted-integration-runtime"></a>自承载集成运行时
 以下部分提供了 Get-AzDataFactoryV2IntegrationRuntime cmdlet 返回的属性的说明。 
@@ -71,7 +71,7 @@ Azure 集成运行时的计算资源在 Azure 中以弹性方式受到完全管�
 
 | 属性 | 说明 | 
 | -------- | ----------- | 
-| Name | 自承载集成运行时的名称及其关联的节点。 节点是装有自承载集成运行时的本地 Windows 计算机。 |  
+| 名称 | 自承载集成运行时的名称及其关联的节点。 节点是装有自承载集成运行时的本地 Windows 计算机。 |  
 | 状态 | 整个自承载集成运行时和每个节点的状态。 示例：联机/脱机/受限等。有关这些状态的信息，请参阅下一个部分。 | 
 | 版本 | 自承载集成运行时和每个节点的版本。 自承载集成运行时的版本根据组中多数节点的版本确定。 如果自承载集成运行时设置中包含不同版本的节点，则只有与逻辑自承载集成运行时的版本号相同的节点能正常运行。 其他节点将处于受限模式，需要手动进行更新（仅当自动更新失败时）。 | 
 | 可用内存 | 自承载集成运行时节点上的可用内存。 此值为近实时快照。 | 
@@ -96,7 +96,7 @@ Azure 集成运行时的计算资源在 Azure 中以弹性方式受到完全管�
 | 状态 | 说明 |
 | ------ | ------------------ | 
 | 联机 | 节点已连接到数据工厂服务。 |
-| 脱机 | 节点处于脱机状态。 |
+| Offline | 节点处于脱机状态。 |
 | 正在升级 | 节点正在进行自动更新。 |
 | 受限制 | 由于连接问题而受限。 可能的原因包括 HTTP 端口 8050 问题、服务总线连接问题或凭据同步问题。 |
 | 非活动 | 节点的配置与其他多数节点的配置不同。 |
@@ -110,7 +110,7 @@ Azure 集成运行时的计算资源在 Azure 中以弹性方式受到完全管�
 | ------ | ----------- | 
 | 需要注册 | 尚未将任何节点注册到此自承载集成运行时。 |
 | 联机 | 所有节点处于联机状态。 |
-| 脱机 | 没有任何节点处于联机状态。 |
+| Offline | 没有任何节点处于联机状态。 |
 | 受限制 | 此自承载集成运行时中的所有节点并非全都处于正常状态。 此状态是一种警告，表示某些节点可能已关闭。 此状态的可能原因是调度程序/辅助角色节点上出现凭据同步问题。 |
 
 使用 **Get-AzDataFactoryV2IntegrationRuntimeMetric** cmdlet 提取包含详细自承载集成运行时属性，以及执行该 cmdlet 期间这些属性的快照值的 JSON 有效负载。
@@ -179,7 +179,7 @@ Azure-SSIS 集成运行时是完全托管的 Azure 虚拟机（或节点）群�
 | 类型 | Azure-SSIS 集成运行时的类型 (Managed/Self-Hosted)。 |
 | ResourceGroupName | 在其中创建了数据工厂和 Azure-SSIS 集成运行时的 Azure 资源组的名称。 |
 | DataFactoryName | Azure 数据工厂的名称。 |
-| Name | Azure-SSIS 集成运行时的名称。 |
+| 名称 | Azure-SSIS 集成运行时的名称。 |
 | 说明 | Azure-SSIS 集成运行时的说明。 |
 
   
@@ -196,9 +196,9 @@ Azure-SSIS 集成运行时是完全托管的 Azure 虚拟机（或节点）群�
 
 | 总体状态 | 说明 | 
 | -------------- | ----------- | 
-| Initial | 尚未分配/准备 Azure-SSIS 集成运行时的节点。 | 
+| 初始 | 尚未分配/准备 Azure-SSIS 集成运行时的节点。 | 
 | 正在启动 | 正在分配/准备 Azure-SSIS 集成运行时的节点，计费已开始。 |
-| 已启动 | 已分配/准备 Azure-SSIS 集成运行时的节点，并可以在其中部署/执行 SSIS 包。 |
+| Started | 已分配/准备 Azure-SSIS 集成运行时的节点，并可以在其中部署/执行 SSIS 包。 |
 | 正在停止  | 正在释放 Azure-SSIS 集成运行时的节点。 |
 | 已停止 | 已释放 Azure-SSIS 集成运行时的节点，计费已停止。 |
 

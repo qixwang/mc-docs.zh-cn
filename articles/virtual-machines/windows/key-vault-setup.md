@@ -16,11 +16,11 @@ origin.date: 01/24/2017
 ms.date: 02/10/2020
 ms.author: v-yeche
 ms.openlocfilehash: 15ec9cc99896fdb1af9c12935a91ad301b97d7b1
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77428649"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293083"
 ---
 # <a name="set-up-key-vault-for-virtual-machines-in-azure-resource-manager"></a>在 Azure Resource Manager 中为虚拟机设置密钥保管库
 

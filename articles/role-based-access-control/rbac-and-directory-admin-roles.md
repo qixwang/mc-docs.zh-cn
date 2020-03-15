@@ -1,5 +1,5 @@
 ---
-title: 经典订阅管理员角色、Azure RBAC 角色和 Azure AD 管理员角色 | Microsoft Docs
+title: 经典订阅管理员角色、Azure RBAC 角色和 Azure AD 管理员角色
 description: 介绍 Azure 中的不同角色 - 经典订阅管理员角色、Azure 基于角色的访问控制 (RBAC) 角色和 Azure Active Directory (Azure AD) 管理员角色
 services: active-directory
 documentationcenter: ''
@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 02/10/2020
+ms.date: 03/04/2020
 ms.author: v-junlch
 ms.reviewer: bagovind
 ms.custom: it-pro;
-ms.openlocfilehash: b6cf3a17c623ac9ed5bb5e2e3bc39e893f3d2807
-ms.sourcegitcommit: 99bd0019c5f01034b8765d7765ad7776c7d5e5ae
+ms.openlocfilehash: c1209c555993dee3215d194082330ce94ae1ffc1
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77128845"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292365"
 ---
 # <a name="classic-subscription-administrator-roles-azure-rbac-roles-and-azure-ad-administrator-roles"></a>经典订阅管理员角色、Azure RBAC 角色和 Azure AD 管理员角色
 
@@ -75,7 +75,7 @@ Azure RBAC 是基于 [Azure 资源管理器](../azure-resource-manager/managemen
 | Azure RBAC 角色 | 权限 | 注释 |
 | --- | --- | --- |
 | [所有者](built-in-roles.md#owner) | <ul><li>对所有资源的完全访问权限</li><li>将访问权限委托给其他人</li></ul> | 服务管理员和共同管理员在订阅范围内分配有“所有者”角色<br>适用于所有资源类型。 |
-| [参与者](built-in-roles.md#contributor) | <ul><li>创建和管理所有类型的 Azure 资源</li><li>无法将访问权限授予其他人</li></ul> | 适用于所有资源类型。 |
+| [参与者](built-in-roles.md#contributor) | <ul><li>创建和管理所有类型的 Azure 资源</li><li>在 Azure Active Directory 中创建一个新租户</li><li>无法将访问权限授予其他人</li></ul> | 适用于所有资源类型。 |
 | [读者](built-in-roles.md#reader) | <ul><li>查看 Azure 资源</li></ul> | 适用于所有资源类型。 |
 | [用户访问管理员](built-in-roles.md#user-access-administrator) | <ul><li>管理用户对 Azure 资源的访问</li></ul> |  |
 
@@ -132,4 +132,3 @@ Azure AD 管理员角色用于管理目录中的 Azure AD 资源，例如，创�
 - [Azure Active Directory 中的管理员角色权限](../active-directory/users-groups-roles/directory-assign-admin-roles.md)
 - [Azure 经典订阅管理员](classic-administrators.md)
 
-<!-- Update_Description: link update -->

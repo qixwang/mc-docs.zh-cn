@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: sample
 origin.date: 09/23/2019
-ms.date: 11/11/2019
-ms.openlocfilehash: 01e4a4e1c088970492be09da19789d3f49687a37
-ms.sourcegitcommit: 642a4ad454db5631e4d4a43555abd9773cae8891
+ms.date: 03/23/2020
+ms.openlocfilehash: fcf56dd98dca21282a34efc6bb7a3af52e3cac66
+ms.sourcegitcommit: 32997a7d7585deaeb0ab7b8f928d397b18b343fa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2019
-ms.locfileid: "73426128"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79295991"
 ---
 # <a name="azure-hdinsight-azure-cli-samples"></a>Azure HDInsight：Azure CLI 示例
 
@@ -91,7 +91,7 @@ az hdinsight create \
     --cluster-users-group-dns $groupDNS
 ```
 
-### <a name="create-a-kafka-cluster-with-disk-encryptionkafkaapache-kafka-byokmd"></a>创建具有[磁盘加密](kafka/apache-kafka-byok.md)功能的 Kafka 群集
+### <a name="create-a-kafka-cluster-with-disk-encryption"></a>创建具有[磁盘加密](./disk-encryption.md)功能的 Kafka 群集
 
 ```azurecli
 export clusterName=CLUSTERNAME

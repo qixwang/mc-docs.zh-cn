@@ -14,11 +14,11 @@ ms.reviewer: carlrab
 origin.date: 02/11/2019
 ms.date: 02/17/2020
 ms.openlocfilehash: 6aecd1fc5f2fbb364ea178fcdb35302777b3fe96
-ms.sourcegitcommit: d7b86a424b72849fe8ed32893dd05e4696e4fe85
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77155693"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293493"
 ---
 # <a name="sql-server-database-migration-to-azure-sql-database"></a>将 SQL Server 数据库迁移到 Azure SQL 数据库
 

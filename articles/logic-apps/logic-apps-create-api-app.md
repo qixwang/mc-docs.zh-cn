@@ -17,11 +17,11 @@ origin.date: 05/26/2017
 ms.date: 12/23/2019
 ms.author: v-yiso
 ms.openlocfilehash: 4983f98115506650d4ecb4d2d3800c320d378c18
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336203"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291525"
 ---
 # <a name="create-custom-apis-you-can-call-from-azure-logic-apps"></a>创建可从 Azure 逻辑应用调用的自定义 API
 

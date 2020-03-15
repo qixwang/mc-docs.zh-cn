@@ -16,11 +16,11 @@ origin.date: 11/01/2018
 ms.date: 11/11/2019
 ms.author: v-yeche
 ms.openlocfilehash: 31437bc5d30eceee54f69d383514f3355713b7c2
-ms.sourcegitcommit: 1fd822d99b2b487877278a83a9e5b84d9b4a8ce7
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74116940"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291947"
 ---
 # <a name="troubleshoot-authentication-errors-when-you-use-rdp-to-connect-to-azure-vm"></a>使用 RDP 连接到 Azure VM 时排查身份验证错误
 

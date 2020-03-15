@@ -11,11 +11,11 @@ ms.author: gopalv
 ms.topic: conceptual
 ms.date: 09/27/2019
 ms.openlocfilehash: a5ceb8d101a65b1e924f397341960bccacc424a7
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75599038"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292645"
 ---
 # <a name="languages-supported-on-the-data-science-virtual-machine"></a>数据科学虚拟机支持的语言 
 

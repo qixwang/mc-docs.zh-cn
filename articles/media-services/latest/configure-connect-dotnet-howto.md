@@ -15,11 +15,11 @@ origin.date: 09/18/2019
 ms.date: 11/04/2019
 ms.author: v-jay
 ms.openlocfilehash: 147fa60de35833bf0910de1f5e53784bb5215c2a
-ms.sourcegitcommit: f9a257e95444cb64c6d68a7a1cfe7e94c5cc5b19
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2019
-ms.locfileid: "73416269"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292853"
 ---
 # <a name="connect-to-media-services-v3-api---net"></a>连接到媒体服务 v3 API - .NET
 

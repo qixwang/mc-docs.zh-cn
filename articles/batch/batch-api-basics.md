@@ -16,11 +16,11 @@ ms.date: 09/20/2019
 ms.author: v-lingwu
 ms.custom: seodec18
 ms.openlocfilehash: 79575f400b204005ffd6608806553abde59c5327
-ms.sourcegitcommit: 27eaabd82b12ad6a6840f30763034a6360977186
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77497537"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293058"
 ---
 # <a name="develop-large-scale-parallel-compute-solutions-with-batch"></a>使用 Batch 开发大规模并行计算解决方案
 

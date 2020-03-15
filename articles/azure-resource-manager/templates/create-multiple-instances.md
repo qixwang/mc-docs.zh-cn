@@ -6,11 +6,11 @@ origin.date: 09/27/2019
 ms.author: v-yeche
 ms.date: 01/06/2020
 ms.openlocfilehash: 1bd6a4e6ec0f617fde09a72b8105b30d16672f4b
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75631238"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293327"
 ---
 # <a name="resource-property-or-variable-iteration-in-azure-resource-manager-templates"></a>Azure 资源管理器模板中的资源、属性或变量迭代
 

@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 12/05/2019
 ms.author: v-lingwu
 ms.openlocfilehash: 86bcb57d12c539de849db835ce90aaac36b133de
-ms.sourcegitcommit: cf73284534772acbe7a0b985a86a0202bfcc109e
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74884610"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292135"
 ---
 # <a name="use-versions-to-edit-and-test-without-impacting-staging-or-production-apps"></a>使用版本进行编辑和测试，而不会影响暂存应用或生产应用
 
@@ -70,7 +70,7 @@ ms.locfileid: "74884610"
 
 ## <a name="other-actions"></a>其他操作
 
-* 若要**删除**某个版本，请从列表中选择一个版本，然后从工具栏中选择“删除”。  选择“确定”。  
+* 若要**删除**某个版本，请从列表中选择一个版本，然后从工具栏中选择“删除”。  选择“确定”  。 
 * 若要**重命名**某个版本，请从列表中选择一个版本，然后从工具栏中选择“重命名”。  输入新名称并选择“完成”  。 
 * 若要**导出**某个版本，请从列表中选择一个版本，然后从工具栏中选择“导出应用”。  选择要导出以备份的 JSON，选择“为容器导出”  以[在 LUIS 容器中使用此应用](luis-container-howto.md)。  
 

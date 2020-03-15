@@ -8,11 +8,11 @@ ms.topic: conceptual
 origin.date: 01/28/2020
 ms.date: 02/10/2020
 ms.openlocfilehash: b74808490a14494126d37bf66a0b88812d1458a4
-ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77068311"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292672"
 ---
 # <a name="slow-query-logs-in-azure-database-for-mysql"></a>Azure Database for MySQL 中的慢查询日志
 

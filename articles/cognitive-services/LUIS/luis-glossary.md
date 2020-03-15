@@ -12,11 +12,11 @@ origin.date: 10/25/2019
 ms.date: 12/04/2019
 ms.author: v-lingwu
 ms.openlocfilehash: 803c4f20be8458d7758db7c66787e99d2f792669
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78154553"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292141"
 ---
 # <a name="language-understanding-glossary-of-common-vocabulary-and-concepts"></a>对包含常见词汇和概念的术语表进行语言理解
 语言理解 (LUIS) 术语表解释使用 LUIS API 服务时可能遇到的术语。

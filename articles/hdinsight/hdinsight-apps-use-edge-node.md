@@ -15,11 +15,11 @@ origin.date: 01/27/2020
 ms.date: 02/24/2020
 ms.author: v-yiso
 ms.openlocfilehash: e5f4e47377e3743274608469f6d06b21c28695b0
-ms.sourcegitcommit: fbc7584f403417d3af7bd6bbbaed7c13a78c57b9
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78412690"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291225"
 ---
 # <a name="use-empty-edge-nodes-on-apache-hadoop-clusters-in-hdinsight"></a>在 HDInsight 中的 Apache Hadoop 群集上使用空边缘节点
 

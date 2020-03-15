@@ -1,5 +1,5 @@
 ---
-title: Azure SQL 作业自动化 | Microsoft Docs
+title: 作业自动化
 description: 使用作业自动化跨一个或多个 Azure SQL 数据库运行 Transact-SQL (T-SQL) 脚本
 services: sql-database
 ms.service: sql-database
@@ -9,14 +9,14 @@ ms.topic: overview
 author: WenJason
 ms.author: v-jay
 ms.reviewer: carlr
-origin.date: 01/25/2019
-ms.date: 09/30/2019
-ms.openlocfilehash: adc0d99d74b94f6ca6252f30812d73feca26bf26
-ms.sourcegitcommit: 5c3d7acb4bae02c370f6ba4d9096b68ecdd520dd
+origin.date: 02/07/2020
+ms.date: 03/16/2020
+ms.openlocfilehash: 6da0bb17987d5bd29708296f4373fa87a80659da
+ms.sourcegitcommit: dc862610e2169c1fce6fb0ae9eb7dd7567f86a0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71262920"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293749"
 ---
 # <a name="automate-management-tasks-using-database-jobs"></a>使用数据库作业自动完成管理任务
 
@@ -203,7 +203,9 @@ EXEC msdb.dbo.sp_update_job @job_name=N'Load data using SSIS',
 
 就目前的预览版来说，需要使用现有的 Azure SQL 数据库（S0 或更高级别）来创建弹性作业代理。
 
- 作业数据库不一定需要是新的，但应该干净且为空，其服务层级应该为 S0 或更高级别。 作业数据库的服务层级建议使用  S1 或更高版本，但在实际应用中取决于作业的性能需求：作业步骤数，以及作业的运行次数和频率。 例如，对于每小时只运行数个作业的作业代理，也许 S0 数据库就够用了，但每分钟运行一个作业在性能上可能不够佳，因此使用更高的服务层级可能会更好。
+ 作业数据库不一定需要是新的，但应该干净且为空，其服务目标应该为 S0 或更高。 作业数据库的服务对象建议使用  S1 或更高，但最佳选择取决于作业的性能需求：作业步骤数，作业目标数，以及作业的运行频率。 例如，对于每小时只运行数个作业且以十个以下数据库为目标的作业代理，也许 S0 数据库就够用了，但 S0 数据库的每分钟运行一个作业的速度可能不够快，因此使用更高的服务层级可能会更好。 
+
+如果针对作业数据库的操作的速度比预期慢，则在出现速度缓慢的情况时使用 Azure 门户或 [sys.dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) DMV [监视](sql-database-monitor-tune-overview.md#monitor-database-performance)作业数据库中的数据库性能和资源利用率。 如果资源（如 CPU、数据 IO 或日志写入）的使用率达到 100%，且与出现缓慢情况的时间段相关，请考虑以增量方式将数据库扩展到更高的服务目标（采用 [DTU 模型](sql-database-service-tiers-dtu.md)或 [vCore 模型](sql-database-service-tiers-vcore.md)），直到工作数据库性能得到充分改进。
 
 
 ##### <a name="job-database-permissions"></a>作业数据库权限
@@ -251,6 +253,10 @@ EXEC msdb.dbo.sp_update_job @job_name=N'Load data using SSIS',
 
 **示例 5** 和**示例 6** 演示高级方案，其中的 Azure SQL Server、弹性池和数据库可以使用包括和排除规则进行组合。<br>
 **示例 7** 表明分片映射中的分片也可在作业运行时进行评估。
+
+> [!NOTE]
+> 作业数据库本身可以是作业的目标。 在这种情况下，会像处理任何其他目标数据库一样处理作业数据库。 必须在作业数据库中创建作业用户并为其授予足够权限，并且该作业用户的数据库范围的凭据也必须存在于作业数据库中，就像任何其他目标数据库的情况一样。
+>
 
 #### <a name="job"></a>作业
 

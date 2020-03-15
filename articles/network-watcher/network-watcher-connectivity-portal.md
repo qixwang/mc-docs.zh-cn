@@ -15,11 +15,11 @@ origin.date: 08/03/2017
 ms.date: 10/19/2018
 ms.author: v-lingwu
 ms.openlocfilehash: d41ad4b31a0edaea01afc386cb05797a5c3af2a1
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78154971"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293391"
 ---
 # <a name="troubleshoot-connections-with-azure-network-watcher-using-the-azure-portal"></a>通过 Azure 门户使用 Azure 网络观察程序排查连接问题
 

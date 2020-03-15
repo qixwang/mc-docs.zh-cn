@@ -14,11 +14,11 @@ origin.date: 07/11/2017
 ms.date: 04/30/2018
 ms.author: v-lingwu
 ms.openlocfilehash: 2225c40e435cbf202f01f834fbe56dd89cbc5c2c
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78154970"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293396"
 ---
 # <a name="introduction-to-connection-troubleshoot-in-azure-network-watcher"></a>Azure 网络观察程序中排查连接问题功能的简介
 

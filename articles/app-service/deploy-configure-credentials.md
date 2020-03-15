@@ -8,11 +8,11 @@ ms.author: v-tawe
 ms.reviewer: byvinyal
 ms.custom: seodec18
 ms.openlocfilehash: cc9322e77bc0a72053234457b128090701e06c36
-ms.sourcegitcommit: ee2a3063185cd4c5dc24901366dbb726119d045d
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76979354"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293082"
 ---
 # <a name="configure-deployment-credentials-for-azure-app-service"></a>为 Azure 应用服务配置部署凭据
 [Azure 应用服务](app-service-web-overview.md)支持两种类型的凭据，这些凭据适用于[本地 GIT 部署](deploy-local-git.md)和 [FTP/S 部署](deploy-ftp.md)。 这些凭据与 Azure 订阅凭据不同。
@@ -29,7 +29,7 @@ ms.locfileid: "76979354"
 
 若要在 [Azure CLI](/cli/) 中配置部署用户，请运行 [az webapp deployment user set](/cli/webapp/deployment/user?view=azure-cli-latest#az-webapp-deployment-user-set) 命令。 将 \<username> 和 \<password> 替换为部署用户名和密码。 
 
-- 用户名必须在 Azure 中唯一，并且为了本地 Git 推送，不能包含“@”符号。 
+- 用户名在 Azure 中必须唯一，并且为了本地Git推送，不能包含“@”符号。 
 - 密码必须至少为 8 个字符，且具有字母、数字和符号这三种元素中的两种。 
 
 ```azurecli

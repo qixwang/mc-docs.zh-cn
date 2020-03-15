@@ -6,21 +6,16 @@ ms.tgt_pltfrm: mobile-android
 ms.devlang: java
 ms.topic: article
 origin.date: 06/25/2019
-ms.date: 12/16/2019
+md.date: 03/23/2020
 ms.author: v-tawe
-ms.openlocfilehash: bf0f72544c95a47ff997aad2f922f35685cce232
-ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
+ms.openlocfilehash: d57a8eeda1c7c96500503313f439a7a487b50247
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75600562"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291275"
 ---
 # <a name="how-to-use-the-azure-mobile-apps-sdk-for-android"></a>如何使用用于 Android 的 Azure 移动应用 SDK
-
-> [!NOTE]
-> Visual Studio App Center 支持以移动应用开发为中心的端到端集成服务。 开发人员可以使用“生成”  、“测试”  和“分发”  服务来设置“持续集成和交付”管道。 部署应用后，开发人员可以使用**分析**和**诊断**服务监视其应用的状态和使用情况，并使用**推送**服务与用户互动。 开发人员还可以利用“身份验证”  对其用户进行身份验证，并使用“数据”  服务在云中保留和同步应用数据。
->
-> 如果希望将云服务集成到移动应用程序中，请立即注册到 [App Center](https://appcenter.ms/signup?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) 中。
 
 本指南说明如何使用用于移动应用的 Android 客户端 SDK 来实现常见方案，例如：
 
@@ -358,7 +353,7 @@ List<ToDoItem> results = mToDoTable
     .get();
 ```
 
-可将谓词与以下逻辑方法相组合：**and**、**or** 和 **not**。 以下示例组合前面的两个示例。
+可将谓词与以下逻辑方法相组合：**and**、**or** 和 **not**。 以下示例组合前述两个示例。
 
 ```java
 List<ToDoItem> results = mToDoTable
@@ -408,7 +403,7 @@ List<ToDoItemNarrow> result = mToDoTable
     .get();
 ```
 
-select 函数的参数是要返回的表列的字符串名称。  **select** 方法需要接在 **where** 和 **orderBy** 等方法的后面。 它可以后接 **skip** 和 **top** 等分页方法。
+Select 函数的参数是要返回的表列的字符串名称。  **select** 方法需要接在 **where** 和 **orderBy** 等方法的后面。 它可以后接 **skip** 和 **top** 等分页方法。
 
 ### <a name="paging"></a>在页中返回数据
 
@@ -472,7 +467,7 @@ List<ToDoItem> results = mToDoTable
         .get();
 ```
 
-必须按照以下顺序排序已链接的查询方法：
+链接的查询方法必须按照以下顺序排序：
 
 1. 筛选 (**where**) 方法。
 2. 排序 (**orderBy**) 方法。
@@ -487,7 +482,7 @@ List<ToDoItem> results = mToDoTable
 * 屏幕布局
 * 将两者关联起来的适配器。
 
-以下示例代码将移动应用 SQL Azure 表 **ToDoItem** 中的数据返回到一个数组中。 此活动是数据应用程序的常见模式。  数据库查询通常会返回行的集合，客户端在列表或数组中获取该集合。 在此示例中，该数组就是数据源。  代码将指定屏幕布局，用于定义设备中显示的数据视图。  这两者与适配器绑定在一起，在此代码中，适配器是 **ArrayAdapter&lt;ToDoItem&gt;** 类的扩展。
+以下示例代码将移动应用 SQL Azure 表 **ToDoItem** 中的数据返回到一个数组中。 此活动是数据应用程序的常见模式。  数据库查询通常会返回行的集合，客户端在列表或数组中获取该集合。 在此示例中，该数组就是数据源。  代码指定屏幕布局，用于定义设备中显示的数据视图。  这两者与适配器绑定在一起，在此代码中，适配器是 **ArrayAdapter&lt;ToDoItem&gt;** 类的扩展。
 
 #### <a name="layout"></a>定义布局
 
@@ -685,7 +680,7 @@ ToDoItem result = mToDoTable
 
 ## <a name="untyped"></a>如何：处理非类型化数据
 
-使用非类型化编程模型可以准确控制 JSON 序列化。  在某些常见方案中，可能会希望使用非类型化编程模型。 例如，如果后端表包含很多列，并且只需引用列的子集。  类型化模型需要在数据类中定义移动应用后端中定义的所有列。  用于访问数据的大多数 API 调用都与类型化编程调用类似。 主要差别在于，在非类型化模型中，要对 **MobileServiceJsonTable** 对象而不是 **MobileServiceTable** 对象调用方法。
+使用非类型化编程模型可以准确控制 JSON 序列化。  在某些常见方案中，可能会希望使用非类型化编程模型。 例如，如果后端表中包含许多列，但只需要引用其中几个列。  类型化模型需要在数据类中定义移动应用后端中定义的所有列。  用于访问数据的大多数 API 调用都与类型化编程调用类似。 主要差别在于，在非类型化模型中，要对 **MobileServiceJsonTable** 对象而不是 **MobileServiceTable** 对象调用方法。
 
 ### <a name="json_instance"></a>创建非类型化表的实例
 
@@ -905,7 +900,7 @@ public void completeItem(View view) {
 
 应用服务支持使用各种外部标识提供者[对应用用户进行身份验证](app-service-mobile-android-get-started-users.md)：Microsoft 帐户和 Azure Active Directory。 可以在表中设置权限，以便将特定操作的访问权限限制给已经过身份验证的用户。 还可以在后端中使用已经过身份验证的用户的标识来实施授权规则。
 
-支持两种身份验证流：**服务器**流和**客户端**流。 服务器流依赖于标识提供者 Web 界面，因此可提供最简便的身份验证体验。  无需其他 SDK 即可实现服务器流身份验证。 服务器流身份验证不会与移动设备深度集成，因此仅建议用于概念验证方案。
+支持两种身份验证流：**服务器**流和**客户端**流。 服务器流依赖于标识提供者的 Web 界面，因此可提供最简单的身份验证体验。  无需其他 SDK 即可实现服务器流身份验证。 服务器流身份验证不会与移动设备深度集成，因此仅建议用于概念验证方案。
 
 客户端流依赖于标识提供者提供的 SDK，因此允许与设备特定的功能（例如单一登录）进行更深入的集成。  例如，可以将 Microsoft 帐户 SDK 集成到移动应用程序中。  移动客户端会切换到 Microsoft 帐户应用并确认你登录，然后再切换回移动应用。
 
@@ -1071,10 +1066,10 @@ MobileServiceUser user = mClient
 
 ### <a name="adal"></a>使用 Active Directory 身份验证库 (ADAL) 对用户进行身份验证
 
-可以借助 Active Directory 身份验证库 (ADAL) 使用 Azure Active Directory 将用户登录到应用程序。 使用客户端流登录通常比使用 `loginAsync()` 方法更有利，因为它提供更直观的 UX 风格，并允许进行其他自定义。
+可以借助 Active Directory 身份验证库 (ADAL) 使用 Azure Active Directory 将用户登录到应用程序。 使用客户端流登录通常比使用 `loginAsync()` 方法更有利，因为它提供更直观的 UX 风格，并允许其他自定义。
 
-1. 根据[如何为 Active Directory 登录配置应用服务][22]教程的说明，为 AAD 登录配置移动应用。 请务必完成注册本机客户端应用程序的可选步骤。
-2. 可通过修改 build.gradle 文件并包含以下定义来安装 ADAL：
+1. 根据 [How to configure App Service for Active Directory login][22] （如何为 Active Directory 登录配置应用服务）教程的说明，为 AAD 登录配置移动应用。 请务必完成注册本机客户端应用程序的可选步骤。
+2. 通过修改 build.gradle 文件并包含以下定义来安装 ADAL：
 
     ```gradle
     repositories {
@@ -1198,7 +1193,7 @@ mClient.setAndroidHttpClientFactory(new OkHttpClientFactory() {
 
 ### <a name="implement-a-progress-filter"></a>实现进度筛选器
 
-可以通过实现 `ServiceFilter` 来截获每个请求。  例如，以下代码将更新预先创建的进度栏：
+可以通过实现 `ServiceFilter` 来截获每个请求。  例如，以下代码更新预先创建的进度栏：
 
 ```java
 private class ProgressFilter implements ServiceFilter {
@@ -1268,7 +1263,7 @@ private class CustomHeaderFilter implements ServiceFilter {
 
 ### <a name="conversions"></a>配置自动序列化
 
-可以使用 [gson][3] API，指定适用于每个列的转换策略。 将数据发送到 Azure 应用服务之前，Android 客户端库会在后台使用 [gson][3] 将 Java 对象序列化为 JSON 数据。  下面的代码使用 **setFieldNamingStrategy()** 方法设置策略。 此示例删除初始字符（“m”），并将每个字段名称的下一个字符小写。 例如，它将“mId”变为“id”。  实现转换策略，减少在大多数字段中使用 `SerializedName()` 批注的需求。
+可以使用 [gson][3] API，指定适用于每个列的转换策略。 将数据发送到 Azure 应用服务之前，Android 客户端库会在后台使用 [gson][3] 将 Java 对象序列化为 JSON 数据。  下面的代码使用 **setFieldNamingStrategy()** 方法设置策略。 此示例删除初始字符（“m”），并将每个字段名称的下一个字符小写。 例如，它会将“mId”变为“id”。  实现转换策略，减少在大多数字段中使用 `SerializedName()` 批注的需求。
 
 ```java
 FieldNamingStrategy namingStrategy = new FieldNamingStrategy() {

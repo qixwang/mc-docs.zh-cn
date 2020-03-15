@@ -16,11 +16,11 @@ origin.date: 06/04/2018
 ms.date: 10/14/2019
 ms.author: v-yeche
 ms.openlocfilehash: 462d5df25a63078723b8d3f2cd308e96fad46e5a
-ms.sourcegitcommit: c9398f89b1bb6ff0051870159faf8d335afedab3
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72272743"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293251"
 ---
 # <a name="backup-and-restore-for-sql-server-in-azure-virtual-machines"></a>Azure 虚拟机中 SQL Server 的备份和还原
 

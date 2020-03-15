@@ -10,11 +10,11 @@ origin.date: 06/17/2019
 ms.date: 07/22/2019
 ms.author: v-jay
 ms.openlocfilehash: d3bbf5d46875eac6b77a9670234c1e8f806d45e3
-ms.sourcegitcommit: 98cc8aa5b8d0e04cd4818b34f5350c72f617a225
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68298217"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293307"
 ---
 # <a name="understand-logs-to-troubleshoot-data-upload-issues-in-azure-data-box-disk"></a>了解如何使用日志排查将数据上传到 Azure Data Box Disk 时出现的问题
 

@@ -11,13 +11,13 @@ author: WenJason
 ms.author: v-jay
 ms.reviewer: jrasnik, carlrab
 origin.date: 12/19/2018
-ms.date: 02/17/2020
-ms.openlocfilehash: 82c02e2f2b103ed6752641a6eb08502ea52c62d0
-ms.sourcegitcommit: d7b86a424b72849fe8ed32893dd05e4696e4fe85
+ms.date: 03/16/2020
+ms.openlocfilehash: b3fbe250e49802a2b633e7f80245ccbec1135818
+ms.sourcegitcommit: dc862610e2169c1fce6fb0ae9eb7dd7567f86a0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77155604"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293740"
 ---
 # <a name="intelligent-insights-using-ai-to-monitor-and-troubleshoot-database-performance-preview"></a>智能见解：使用 AI 监视数据库性能并对其进行故障排除（预览）
 
@@ -91,7 +91,7 @@ Intelligent Insights 与其他产品（Azure 事件中心、Azure 存储或第�
 
 ### <a name="set-up-with-azure-storage"></a>通过 Azure 存储进行设置
 
-若要将 Intelligent Insights 与存储配合使用，配置要流式传输到存储的 Intelligent Insights 日志数据，请参阅[流式传输到 Azure 存储](sql-database-metrics-diag-logging.md#stream-into-storage)。
+若要将 Intelligent Insights 与存储配合使用，配置要流式传输到存储的 Intelligent Insights 日志数据，请参阅[流式传输到 Azure 存储](sql-database-metrics-diag-logging.md#stream-diagnostic-telemetry-into-azure-storage)。
 
 ### <a name="custom-integrations-of-intelligent-insights-log"></a>Intelligent Insights 日志的自定义集成
 

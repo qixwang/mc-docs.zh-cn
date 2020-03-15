@@ -13,11 +13,11 @@ ms.reviewer: carlrab, sstein
 origin.date: 09/09/2019
 ms.date: 02/17/2020
 ms.openlocfilehash: 79ba4862d2f8297b98630923c6daf872b7665b4c
-ms.sourcegitcommit: d7b86a424b72849fe8ed32893dd05e4696e4fe85
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77155709"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293494"
 ---
 # <a name="quickstart-create-a-single-database-in-azure-sql-database-using-the-azure-portal-powershell-and-azure-cli"></a>快速入门：使用 Azure 门户、PowerShell 和 Azure CLI 在 Azure SQL 数据库中创建单一数据库
 

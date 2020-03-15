@@ -14,11 +14,11 @@ origin.date: 09/02/2019
 ms.date: 11/11/2019
 ms.author: v-jay
 ms.openlocfilehash: 2cc718abc34cfcb1fa910d6bef0cc451f2c4fb4c
-ms.sourcegitcommit: ff8dcf27bedb580fc1fcae013ae2ec28557f48ac
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73648807"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293502"
 ---
 # <a name="copy-data-from-an-sap-table-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 SAP 表复制数据
 
@@ -241,7 +241,7 @@ SAP BW Open Hub 链接服务支持以下属性：
 | `EQ` | 等于 |
 | `NE` | 不等于 |
 | `LT` | 小于 |
-| `LE` | 小于等于 |
+| `LE` | 小于或等于 |
 | `GT` | 大于 |
 | `GE` | 大于或等于 |
 | `LIKE` | 例如 `LIKE 'Emma%'` |

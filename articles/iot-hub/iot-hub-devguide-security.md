@@ -10,13 +10,13 @@ origin.date: 07/18/2018
 ms.author: v-yiso
 ms.date: 09/30/2019
 ms.openlocfilehash: 50de3bfa5edda99ad3f65e1fe71090b95894b9de
-ms.sourcegitcommit: 6a62dd239c60596006a74ab2333c50c4db5b62be
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71155995"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293501"
 ---
-# <a name="control-access-to-iot-hub"></a>控制对 IoT 中心的访问
+# <a name="control-access-to-iot-hub"></a>控制 IoT 中心的访问权限
 
 本文介绍用于保护 IoT 中心的选项。 IoT 中心使用 *权限* 向每个 IoT 中心终结点授予访问权限。 权限可根据功能限制对 IoT 中心的访问。
 

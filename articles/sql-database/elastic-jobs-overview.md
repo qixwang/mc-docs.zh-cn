@@ -11,13 +11,13 @@ author: WenJason
 ms.author: v-jay
 ms.reviewer: sstein
 origin.date: 12/18/2018
-ms.date: 12/16/2019
-ms.openlocfilehash: 873364f44f37c06ddadd00747670a74330e6a2e0
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.date: 03/16/2020
+ms.openlocfilehash: 5f58989a8ace4c3158e8d759dc069bb807c8eb59
+ms.sourcegitcommit: dc862610e2169c1fce6fb0ae9eb7dd7567f86a0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336414"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293747"
 ---
 # <a name="create-configure-and-manage-elastic-jobs"></a>创建、配置和管理弹性作业
 
@@ -58,7 +58,7 @@ ms.locfileid: "75336414"
 
 ![弹性作业凭据](media/elastic-jobs-overview/job-credentials.png)
 
-## <a name="security-best-practices"></a>安全最佳实践
+## <a name="security-best-practices"></a>安全最佳做法
 
 使用弹性作业时的一些最佳做法注意事项：
 
@@ -89,7 +89,7 @@ ms.locfileid: "75336414"
 
 
 ```sql
-IF NOT EXIST (some_object)
+IF NOT EXISTS (some_object)
     -- Create the object
     -- If it exists, drop the object before recreating it.
 ```

@@ -10,11 +10,11 @@ origin.date: 06/10/2019
 ms.author: v-yiso
 ms.date: 09/02/2019
 ms.openlocfilehash: d38396e34295403c861a140207427a556dc9ea99
-ms.sourcegitcommit: 599d651afb83026938d1cfe828e9679a9a0fb69f
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69993054"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293447"
 ---
 # <a name="reference---iot-hub-endpoints"></a>参考 - IoT 中心终结点
 

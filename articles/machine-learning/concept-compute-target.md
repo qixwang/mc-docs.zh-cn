@@ -11,11 +11,11 @@ author: sdgilley
 origin.date: 11/04/2019
 ms.date: 03/09/2020
 ms.openlocfilehash: d65e472d5074fa8007526d924f35e3cd1af75b0e
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78155102"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292394"
 ---
 #  <a name="what-are-compute-targets-in-azure-machine-learning"></a>什么是 Azure 机器学习中的计算目标? 
 

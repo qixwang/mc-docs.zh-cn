@@ -14,11 +14,11 @@ origin.date: 04/29/2019
 ms.date: 11/11/2019
 ms.author: v-jay
 ms.openlocfilehash: ef3e51755355c753834c2980121b2f8db1fbe926
-ms.sourcegitcommit: ff8dcf27bedb580fc1fcae013ae2ec28557f48ac
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73648770"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293184"
 ---
 # <a name="schema-mapping-in-copy-activity"></a>复制活动中的架构映射
 
@@ -202,7 +202,7 @@ ms.locfileid: "73648770"
 
 可以指定复制活动 -> `translator` -> `schemaMapping`，以便在分层数据和表格形式的数据之间进行映射（例如，将数据从 MongoDB/REST 复制到文本文件以及从 Oracle 复制到 Auzre Cosmos DB 的 API for MongoDB）。 复制活动 `translator` 部分支持以下属性：
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
 | type | 复制活动转换器的 type 属性必须设置为：**TabularTranslator** | 是 |
 | schemaMapping | 键值对的集合，代表**从源端到接收器端**的映射关系。<br/>- **键：** 代表源。 对于**表格源**，指定数据集结构中定义的列名称；对于**分层源**，指定要提取和映射的每个字段的 JSON 路径表达式。<br>- **值：** 代表接收器。 对于**表格接收器**，指定数据集结构中定义的列名称；对于**分层接收器**，指定要提取和映射的每个字段的 JSON 路径表达式。 <br>在使用分层数据时，对于根对象下的字段，JSON 路径以根 $ 开头；对于按 `collectionReference` 属性选择的数组中的字段，JSON 路径以数组元素开头。  | 是 |

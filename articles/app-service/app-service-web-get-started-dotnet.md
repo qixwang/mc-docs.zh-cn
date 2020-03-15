@@ -8,11 +8,11 @@ ms.date: 01/13/2020
 ms.author: v-tawe
 ms.custom: mvc, devcenter, vs-azure
 ms.openlocfilehash: 3b2496278ec11466926447afefeccfcc6f3ba832
-ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75600517"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292676"
 ---
 # <a name="create-an-aspnet-core-web-app-in-azure"></a>在 Azure 中创建 ASP.NET Core Web 应用
 
@@ -84,7 +84,7 @@ ms.locfileid: "75600517"
 
 1. 在“配置托管计划”  对话框中，输入下表中的值，然后选择“确定”  。
 
-   | 设置 | 建议的值 | 描述 |
+   | 设置 | 建议的值 | 说明 |
    |-|-|-|
    |应用服务计划| myAppServicePlan | 应用服务计划的名称。 |
    | 位置 | 中国东部 | 托管 Web 应用的数据中心。 |

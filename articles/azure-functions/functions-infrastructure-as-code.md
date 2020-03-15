@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 02/13/2020
 ms.custom: fasttrack-edit
 ms.openlocfilehash: 8bb3721d76749abf797706f3c317bd29403eb315
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77428693"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292974"
 ---
 # <a name="automate-resource-deployment-for-your-function-app-in-azure-functions"></a>为 Azure Functions 中的函数应用自动执行资源部署
 

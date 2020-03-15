@@ -10,11 +10,11 @@ origin.date: 12/18/2019
 ms.date: 01/13/2020
 ms.author: v-yiso
 ms.openlocfilehash: 3b565cb415833c66f3eadd56f2e77c02cf5d6cc3
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75631086"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293165"
 ---
 # <a name="deploy-and-manage-apache-storm-topologies-on-azure-hdinsight"></a>在 Azure HDInsight 中部署和管理 Apache Storm 拓扑 
 

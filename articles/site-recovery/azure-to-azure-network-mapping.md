@@ -9,11 +9,11 @@ origin.date: 04/09/2019
 ms.date: 09/30/2019
 ms.author: v-yeche
 ms.openlocfilehash: 726eb51ae0f8ecb05d28fa60bdda7e08e8d15792
-ms.sourcegitcommit: 332ae4986f49c2e63bd781685dd3e0d49c696456
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71340881"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293521"
 ---
 # <a name="set-up-network-mapping-and-ip-addressing-for-vnets"></a>设置 VNet 的网络映射和 IP 寻址
 

@@ -9,11 +9,11 @@ origin.date: 04/30/2019
 ms.date: 11/11/2019
 ms.author: v-yiso
 ms.openlocfilehash: fabbd05f3eb08e1dc894f0c08f3b44d0e80cd9b6
-ms.sourcegitcommit: 9e92bcf6aa02fc9e7b3a29abadf6b6d1a8ece8c4
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74389213"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293045"
 ---
 # <a name="communicate-with-your-iot-hub-by-using-the-amqp-protocol"></a>使用 AMQP 协议来与 IoT 中心通信
 

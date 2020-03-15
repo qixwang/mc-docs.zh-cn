@@ -9,12 +9,12 @@ ms.topic: conceptual
 origin.date: 04/09/2019
 ms.date: 03/02/2020
 ms.author: v-tawe
-ms.openlocfilehash: dfa02ffd928226f9b03c0f74febfc8e013f90716
-ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
+ms.openlocfilehash: 2a13ada1bb53a47d1870aa7f1360f35093e16ea5
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77494134"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291826"
 ---
 # <a name="control-access-to-azure-iot-hub-device-provisioning-service"></a>控制对 Azure IoT 中心设备预配服务的访问
 
@@ -54,7 +54,7 @@ HTTP 是唯一受支持的协议，它通过在“Authorization”请求标头�
 #### <a name="example"></a>示例
 ```csharp
 SharedAccessSignature sr = 
-   mydps.azure-devices-provisioning.net&sig=kPszxZZZZZZZZZZZZZZZZZAhLT%2bV7o%3d&se=1487709501&skn=provisioningserviceowner`\
+   mydps.azure-devices-provisioning.cn&sig=kPszxZZZZZZZZZZZZZZZZZAhLT%2bV7o%3d&se=1487709501&skn=provisioningserviceowner`\
 ```
 
 > [!NOTE]
@@ -80,7 +80,7 @@ SharedAccessSignature sr =
 | --- | --- |
 | {signature} |HMAC-SHA256 签名字符串的格式为： `{URL-encoded-resourceURI} + "\n" + expiry`。 **重要说明**：密钥是从 base64 解码得出的，用作执行 HMAC-SHA256 计算的密钥。|
 | {expiry} |从纪元 1970 年 1 月 1日 00:00:00 UTC 时间至今秒数的 UTF8 字符串。 |
-| {URL-encoded-resourceURI} | 小写资源 URI 的小写 URL 编码。 此令牌可访问的终结点的 URI 前缀（按分段），以 IoT 设备预配服务的主机名开头（无协议）。 例如，`mydps.azure-devices-provisioning.net`。 |
+| {URL-encoded-resourceURI} | 小写资源 URI 的小写 URL 编码。 此令牌可访问的终结点的 URI 前缀（按分段），以 IoT 设备预配服务的主机名开头（无协议）。 例如，`mydps.azure-devices-provisioning.cn`。 |
 | {policyName} |此令牌所引用的共享访问策略名称。 |
 
 **有关前缀的说明**：URI 前缀是按分段而不是按字符计算的。 例如，`/a/b` 是 `/a/b/c` 的前缀，而不是 `/a/bc` 的前缀。
@@ -144,14 +144,14 @@ def generate_sas_token(uri, key, policy_name, expiry=3600):
 
 | 终结点 | 功能 |
 | --- | --- |
-| `{your-service}.azure-devices-provisioning.net/enrollments` |向设备注册操作提供设备预配服务。 |
-| `{your-service}.azure-devices-provisioning.net/enrollmentGroups` |提供用于管理设备注册组的操作。 |
-| `{your-service}.azure-devices-provisioning.net/registrations/{id}` |提供用于检索和管理设备注册状态的操作。 |
+| `{your-service}.azure-devices-provisioning.cn/enrollments` |向设备注册操作提供设备预配服务。 |
+| `{your-service}.azure-devices-provisioning.cn/enrollmentGroups` |提供用于管理设备注册组的操作。 |
+| `{your-service}.azure-devices-provisioning.cn/registrations/{id}` |提供用于检索和管理设备注册状态的操作。 |
 
 
 例如，使用名为 enrollmentread 的预创建共享访问策略生成的服务将使用以下参数创建令牌  ：
 
-* 资源 URI： `{mydps}.azure-devices-provisioning.net`，
+* 资源 URI： `{mydps}.azure-devices-provisioning.cn`，
 * 签名密钥： `enrollmentread` 策略的密钥之一，
 * 策略名称： `enrollmentread`，
 * 任何过期 time.backn
@@ -159,7 +159,7 @@ def generate_sas_token(uri, key, policy_name, expiry=3600):
 ![在门户中为设备预配服务实例创建共享访问策略][img-add-shared-access-policy]
 
 ```javascript
-var endpoint ="mydps.azure-devices-provisioning.net";
+var endpoint ="mydps.azure-devices-provisioning.cn";
 var policyName = 'enrollmentread'; 
 var policyKey = '...';
 
@@ -168,7 +168,7 @@ var token = generateSasToken(endpoint, policyKey, policyName, 60);
 
 授权读取所有注册记录的结果将是：
 
-`SharedAccessSignature sr=mydps.azure-devices-provisioning.net&sig=JdyscqTpXdEJs49elIUCcohw2DlFDR3zfH5KqGJo4r4%3D&se=1456973447&skn=enrollmentread`
+`SharedAccessSignature sr=mydps.azure-devices-provisioning.cn&sig=JdyscqTpXdEJs49elIUCcohw2DlFDR3zfH5KqGJo4r4%3D&se=1456973447&skn=enrollmentread`
 
 ## <a name="reference-topics"></a>参考主题：
 

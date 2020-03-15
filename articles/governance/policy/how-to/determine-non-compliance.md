@@ -6,11 +6,11 @@ origin.date: 04/26/2019
 ms.date: 02/17/2020
 ms.topic: how-to
 ms.openlocfilehash: 2a839f0155192a1ba1af7523fc3dc819489ed1b6
-ms.sourcegitcommit: 0b07f1d36ac02da055874630d6edc31cb0a15269
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/10/2020
-ms.locfileid: "77112181"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293054"
 ---
 # <a name="determine-causes-of-non-compliance"></a>确定导致非符合性的原因
 

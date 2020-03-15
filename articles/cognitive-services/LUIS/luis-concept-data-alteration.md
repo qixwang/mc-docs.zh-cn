@@ -8,11 +8,11 @@ origin.date: 02/11/2020
 ms.date: 02/21/2020
 ms.author: v-lingwu
 ms.openlocfilehash: 0f169ecd492a0f2bee362901fd9cad8e99db2edf
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78154830"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293382"
 ---
 # <a name="alter-utterance-data-before-or-during-prediction"></a>在预测之前或预测期间更改话语数据
 LUIS 提供在预测之前或预测期间操作陈述的方法。 这些方法包括修复拼写，以及修复预生成 datetimeV2 的时区问题。 

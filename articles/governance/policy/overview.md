@@ -7,11 +7,11 @@ ms.date: 02/17/2020
 ms.topic: overview
 ms.custom: fasttrack-edit
 ms.openlocfilehash: cbf6b0ed587920b699ac2561921c4835903691d6
-ms.sourcegitcommit: 0b07f1d36ac02da055874630d6edc31cb0a15269
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/10/2020
-ms.locfileid: "77112178"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292700"
 ---
 # <a name="what-is-azure-policy"></a>什么是 Azure Policy？
 

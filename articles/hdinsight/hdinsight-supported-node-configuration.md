@@ -9,13 +9,13 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 origin.date: 08/26/2019
-ms.date: 01/13/2020
-ms.openlocfilehash: 460e4eb1165022670e7a3a828990e45c3c60aa18
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.date: 03/13/2020
+ms.openlocfilehash: f493392e3fd926d5e235cb8eecc9053f457f14c7
+ms.sourcegitcommit: 32997a7d7585deaeb0ab7b8f928d397b18b343fa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75631449"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79295983"
 ---
 # <a name="what-are-the-default-and-recommended-node-configurations-for-azure-hdinsight"></a>Azure HDInsight 的默认的和建议的节点配置是什么？
 
@@ -31,7 +31,7 @@ ms.locfileid: "75631449"
 
 下表总结了本文档中使用的所有最低建议 VM 类型的规格。
 
-| 大小              | vCPU | 内存：GiB | 临时存储 (SSD) GiB | 最大临时存储吞吐量：IOPS/读取 MBps/写入 MBps | 最大的数据磁盘/吞吐量：IOPS | 最大 NIC 数/预期网络带宽 (Mbps) |
+| 大小              | vCPU | 内存:GiB | 临时存储 (SSD) GiB | 最大临时存储吞吐量：IOPS/读取 MBps/写入 MBps | 最大的数据磁盘/吞吐量：IOPS | 最大 NIC 数/预期网络带宽 (Mbps) |
 |-------------------|-----------|-------------|----------------|----------------------------------------------------------|-----------------------------------|------------------------------|
 | Standard_D3_v2 | 4    | 14          | 200                    | 12000/187/93                                           | 16             / 16x500           | 4 / 3000                                       |
 | Standard_D4_v2 | 8    | 28          | 400                    | 24000/375/187                                          | 32            / 32x500           | 8 / 6000                                       |
@@ -45,45 +45,29 @@ ms.locfileid: "75631449"
 
 有关每种 VM 类型的规格的更多详细信息，请参阅以下文档：
 
-* [常规用途虚拟机大小：Dv2 系列 1-5](../virtual-machines/linux/sizes-general.md#dv2-series)
-* [内存优化虚拟机大小：Dv2 系列 11-15](../virtual-machines/linux/sizes-memory.md#dv2-series-11-15)
-* [常规用途虚拟机大小：Av2 系列 1-8](../virtual-machines/linux/sizes-general.md#av2-series)
+* [常规用途虚拟机大小：Dv2 系列 1-5](../virtual-machines/dv2-dsv2-series.md)
+* [内存优化虚拟机大小：Dv2 系列 11-15](../virtual-machines/dv2-dsv2-series-memory.md)
+* [常规用途虚拟机大小：Av2 系列 1-8](../virtual-machines/av2-series.md)
 
 ### <a name="all-supported-regions-except-brazil-south-and-japan-west"></a>除巴西南部和日本西部外的所有受支持区域
 
 > [!Note]
 > 若要获取用于 PowerShell 和其他脚本的 SKU 标识符，请在下表中将 `Standard_` 添加到所有 VM SKU 的开头。 例如，`D12_v2` 将变为 `Standard_D12_v2`。
 
-| 群集类型 | Hadoop | HBase | 交互式查询 | Storm | Spark | ML Server | Kafka |
+| 群集类型 | Hadoop | HBase | 交互式查询 | Storm | Spark |  Kafka |
 |---|---|---|---|---|---|---|---|
-| 头：默认 VM 大小 | D12_v2 | D12_v2 | D13_v2 | A4_v2 | D12_v2, <br/>D13_v2* | D12_v2 | D3_v2 |
-| 头：建议的最小 VM 大小 | D5_v2 | D3_v2 | D13_v2 | A4_v2 | D12_v2, <br/>D13_v2* | D12_v2 | D3_v2 |
-| 辅助角色：默认 VM 大小 | D4_v2 | D4_v2 | D14_v2 | D3_v2 | D13_v2 | D4_v2 | 4 D12_v2，每个中转站 2 个 S30 磁盘 |
-| 辅助角色：建议的最小 VM 大小 | D5_v2 | D3_v2 | D13_v2 | D3_v2 | D12_v2 | D4_v2 | D3_v2 |
-| Zookeeper：默认 VM 大小 |  | A4_v2 | A4_v2 | A4_v2 |  | A2_v2 | A4_v2 |
-| ZooKeeper：建议的最小 VM 大小 |  | A4_v2 | A4_v2 | A2_v2 |  | A2_v2 | A4_v2 |
-| ML 服务：默认 VM 大小 |  |  |  |  |  | D4_v2 |  |
-| ML 服务：建议的最小 VM 大小 |  |  |  |  |  | D4_v2 |  |
+| 头：默认 VM 大小 | D12_v2 | D12_v2 | D13_v2 | A4_v2 | D12_v2, <br/>D13_v2* | D3_v2 |
+| 头：建议的最小 VM 大小 | D5_v2 | D3_v2 | D13_v2 | A4_v2 | D12_v2, <br/>D13_v2* |D3_v2 |
+| 辅助角色：默认 VM 大小 | D4_v2 | D4_v2 | D14_v2 | D3_v2 | D13_v2 |  4 D12_v2，每个中转站 2 个 S30 磁盘 |
+| 辅助角色：建议的最小 VM 大小 | D5_v2 | D3_v2 | D13_v2 | D3_v2 | D12_v2 |  D3_v2 |
+| Zookeeper：默认 VM 大小 |  | A4_v2 | A4_v2 | A4_v2 |  |  A4_v2 |
+| ZooKeeper：建议的最小 VM 大小 |  | A4_v2 | A4_v2 | A2_v2 |  |  A4_v2 |
+| ML 服务：默认 VM 大小 |  |  |  |  |  |  |
+| ML 服务：建议的最小 VM 大小 |  |  |  |  |  |  |
 
-\* = Spark 企业安全性套餐 (ESP) 群集的 VM 大小
 
-### <a name="brazil-south-and-japan-west-only"></a>仅限巴西南部和日本西部
 
-| 群集类型 | Hadoop | HBase | 交互式查询 | Storm | Spark | ML Services |
-|---|---|---|---|---|---|---|
-| 头：默认 VM 大小 | D12 | D12 | D13 | A4_v2 | D12 | D12 |
-| 头：建议的最小 VM 大小 | D5_v2 | D3_v2 | D13_v2 | A4_v2 | D12_v2 | D12_v2 |
-| 辅助角色：默认 VM 大小 | D4 | D4 | D14 | D3 | D13 | D4 |
-| 辅助角色：建议的最小 VM 大小 | D5_v2 | D3_v2 | D13_v2 | D3_v2 | D12_v2 | D4_v2 |
-| Zookeeper：默认 VM 大小 |  | A4_v2 | A4_v2 | A4_v2 |  | A2_v2 |
-| ZooKeeper：建议的最小 VM 大小 |  | A4_v2 | A4_v2 | A4_v2 |  | A2_v2 |
-| ML 服务：默认 VM 大小 |  |  |  |  |  | D4 |
-| ML 服务：建议的最小 VM 大小 |  |  |  |  |  | D4_v2 |
 
-> [!NOTE]
-> - 头称为 Storm 群集类型的 *Nimbus* 。
-> - 对于 Storm 群集类型，辅助角色称为“主管”。 
-> - 对于 HBase 群集类型，辅助角色称为“区域”。 
 
 ## <a name="next-steps"></a>后续步骤
 

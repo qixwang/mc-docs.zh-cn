@@ -63,8 +63,6 @@
               href: ./hdinsight-hadoop-create-linux-clusters-azure-powershell.md
             - name: 使用 REST API 创建群集
               href: ./hdinsight-hadoop-create-linux-clusters-curl-rest.md
-            - name: 使用 .NET 创建群集
-              href: ./hdinsight-hadoop-create-linux-clusters-dotnet-sdk.md
         - name: 使用群集存储
           items:
             - name: 使用 Azure 存储
@@ -83,8 +81,6 @@
               href: hdinsight-hadoop-script-actions-linux.md
             - name: 添加 Apache Hive 库
               href: hdinsight-hadoop-add-hive-libraries.md
-            - name: 使用 Apache Giraph
-              href: hdinsight-hadoop-giraph-install-linux.md
             - name: 使用 Hue
               href: hdinsight-hadoop-hue-linux.md
             - name: 构建 HDInsight 应用程序
@@ -533,8 +529,6 @@
               href: ./kafka/apache-kafka-connect-vpn-gateway.md
             - name: 复制 Apache Kafka 数据
               href: ./kafka/apache-kafka-mirroring.md
-            - name: 自带密钥
-              href: ./kafka/apache-kafka-byok.md
             - name: SSL 加密和身份验证
               href: ./kafka/apache-kafka-ssl-encryption-authentication.md
         - name: 故障排除

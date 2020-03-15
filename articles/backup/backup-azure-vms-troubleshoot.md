@@ -3,16 +3,16 @@ title: 排查 Azure VM 备份错误
 description: 本文介绍如何解决在备份和还原 Azure 虚拟机时遇到的错误。
 ms.reviewer: srinathv
 author: lingliw
-ms.topic: conceptual
+ms.topic: troubleshooting
 origin.date: 08/30/2019
 ms.date: 09/23/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 1bc08309cad108c0466d83e8e3761e38157679c7
-ms.sourcegitcommit: 27eaabd82b12ad6a6840f30763034a6360977186
+ms.openlocfilehash: 05c918270f331d1dcbc07889caa6eba38e96fee4
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77497586"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292109"
 ---
 # <a name="troubleshooting-backup-failures-on-azure-virtual-machines"></a>排查 Azure 虚拟机上出现的备份失败问题
 

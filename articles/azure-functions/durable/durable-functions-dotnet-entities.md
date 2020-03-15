@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 02/18/2020
 ms.author: v-junlch
 ms.openlocfilehash: 838294f35c6559d3861b8f8e7ea3d73dcc2bab6c
-ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77494033"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292940"
 ---
 # <a name="developers-guide-to-durable-entities-in-net"></a>有关 .NET 中的持久实体的开发人员指南
 

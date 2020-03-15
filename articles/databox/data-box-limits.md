@@ -10,11 +10,11 @@ origin.date: 08/27/2019
 ms.date: 12/02/2019
 ms.author: v-jay
 ms.openlocfilehash: 91885193b6e53edb0acb3882d2cadc62c2b9afc3
-ms.sourcegitcommit: 481542df432d52b7d4823811cef94772e4e0f192
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74530602"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292995"
 ---
 # <a name="azure-data-box-limits"></a>Azure Data Box 限制
 

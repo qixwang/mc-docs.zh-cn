@@ -17,11 +17,11 @@ origin.date: 12/15/2017
 ms.date: 11/25/2019
 ms.author: v-yeche
 ms.openlocfilehash: 48058469ae56908d27fe1e84c2444b7b0f6cbdfc
-ms.sourcegitcommit: 298eab5107c5fb09bf13351efeafab5b18373901
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2019
-ms.locfileid: "74658043"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292286"
 ---
 # <a name="add-network-interfaces-to-or-remove-network-interfaces-from-virtual-machines"></a>在虚拟机中添加或删除网络接口。
 
@@ -78,7 +78,7 @@ ms.locfileid: "74658043"
 ### <a name="commands"></a>命令
 |工具|命令|
 |---|---|
-|CLI|[az vm nic add](https://docs.azure.cn/cli/vm/nic?toc=%2fvirtual-network%2ftoc.json?view=azure-cli-latest#az-vm-nic-add)（引用）或[详细步骤](../virtual-machines/linux/multiple-nics.md?toc=%2fvirtual-network%2ftoc.json#add-a-nic-to-a-vm)|
+|CLI|[az vm nic add](https://docs.azure.cn/cli/vm/nic?toc=%2fvirtual-network%2ftoc.json?view=azure-cli-latest#az-vm-nic-add)（参考）或[详细步骤](../virtual-machines/linux/multiple-nics.md?toc=%2fvirtual-network%2ftoc.json#add-a-nic-to-a-vm)|
 |PowerShell|[Add-AzVMNetworkInterface](https://docs.microsoft.com/powershell/module/az.compute/add-azvmnetworkinterface?toc=%2fvirtual-network%2ftoc.json)（参考）或[详细步骤](../virtual-machines/windows/multiple-nics.md?toc=%2fvirtual-network%2ftoc.json#add-a-nic-to-an-existing-vm)|
 
 <a name="vm-view-nic"></a>
@@ -115,7 +115,7 @@ ms.locfileid: "74658043"
 
 |工具|命令|
 |---|---|
-|CLI|[az vm nic remove](https://docs.azure.cn/cli/vm/nic?toc=%2fvirtual-network%2ftoc.json?view=azure-cli-latest#az-vm-nic-remove)（引用）或[详细步骤](../virtual-machines/linux/multiple-nics.md?toc=%2fvirtual-network%2ftoc.json#remove-a-nic-from-a-vm)|
+|CLI|[az vm nic remove](https://docs.azure.cn/cli/vm/nic?toc=%2fvirtual-network%2ftoc.json?view=azure-cli-latest#az-vm-nic-remove)（参考）或[详细步骤](../virtual-machines/linux/multiple-nics.md?toc=%2fvirtual-network%2ftoc.json#remove-a-nic-from-a-vm)|
 |PowerShell|[Remove-AzVMNetworkInterface](https://docs.microsoft.com/powershell/module/az.compute/remove-azvmnetworkinterface?toc=%2fvirtual-network%2ftoc.json)（参考）或[详细步骤](../virtual-machines/windows/multiple-nics.md?toc=%2fvirtual-network%2ftoc.json#remove-a-nic-from-an-existing-vm)|
 
 ## <a name="constraints"></a>约束

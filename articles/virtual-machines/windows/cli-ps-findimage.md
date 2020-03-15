@@ -16,11 +16,11 @@ origin.date: 01/25/2019
 ms.date: 10/14/2019
 ms.author: v-yeche
 ms.openlocfilehash: 28121c251505b962fadbd5e42da7946a0e971eb9
-ms.sourcegitcommit: c9398f89b1bb6ff0051870159faf8d335afedab3
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72272668"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293085"
 ---
 # <a name="find-windows-vm-images-in-the-azure-marketplace-with-azure-powershell"></a>使用 Azure PowerShell 在 Azure 市场中查找 Windows VM 映像
 

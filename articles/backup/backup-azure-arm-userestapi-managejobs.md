@@ -9,11 +9,11 @@ ms.date: 11/20/2019
 ms.author: v-lingwu
 ms.assetid: b234533e-ac51-4482-9452-d97444f98b38
 ms.openlocfilehash: e1dbfecbad66ea856652a8b954731a3107eef57c
-ms.sourcegitcommit: 21b02b730b00a078a76aeb5b78a8fd76ab4d6af2
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74838955"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291459"
 ---
 # <a name="track-backup-and-restore-jobs-using-rest-api"></a>使用 REST API 跟踪备份和还原作业
 
@@ -49,7 +49,7 @@ GET https://management.chinacloudapi.cn/Subscriptions/{subscriptionId}/resourceG
 
 ### <a name="response"></a>响应
 
-|Name  |类型  |说明  |
+|名称  |类型  |说明  |
 |---------|---------|---------|
 |200 正常     | [JobResource](https://docs.microsoft.com/rest/api/backup/jobdetails/get#jobresource)        | OK        |
 

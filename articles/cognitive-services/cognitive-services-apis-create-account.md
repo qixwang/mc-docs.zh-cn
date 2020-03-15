@@ -11,11 +11,11 @@ origin.date: 10/23/2019
 ms.date: 01/27/2020
 ms.author: v-tawe
 ms.openlocfilehash: 31ae4e458cb716e84bbafeed4b75816eb2d663bb
-ms.sourcegitcommit: 94e1c9621b8f81a7078f1412b3a73281d0a8668b
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76123221"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291838"
 ---
 # <a name="create-a-cognitive-services-resource-using-the-azure-portal"></a>使用 Azure 门户创建认知服务资源
 
@@ -24,7 +24,7 @@ ms.locfileid: "76123221"
 
 [!INCLUDE [cognitive-services-subscription-types](../../includes/cognitive-services-subscription-types.md)]
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * 有效的 Azure 订阅 - [创建 1 元人民币试用帐户](https://www.azure.cn/pricing/1rmb-trial/)。
 
@@ -32,7 +32,7 @@ ms.locfileid: "76123221"
 
 1. 创建资源。
 
-    #### <a name="multi-service-resourcetabmultiservice"></a>[多服务资源](#tab/multiservice)
+    #### <a name="multi-service-resource"></a>[多服务资源](#tab/multiservice)
     
     多服务资源在门户中名为“认知服务”  。 [创建认知服务资源](https://portal.azure.cn/#create/Microsoft.CognitiveServices)。
     
@@ -43,7 +43,7 @@ ms.locfileid: "76123221"
     | 计算机视觉  | 内容审查器                                    | 人脸               | 语言理解 (LUIS) | 文本分析   |
     | 文本翻译  |
     
-    #### <a name="single-service-resourcetabsingleservice"></a>[单服务资源](#tab/singleservice)
+    #### <a name="single-service-resource"></a>[单服务资源](#tab/singleservice)
 
     使用以下链接为可用的认知服务创建资源：
 
@@ -56,7 +56,7 @@ ms.locfileid: "76123221"
 
 3. 在“创建”页中提供以下信息： 
 
-    #### <a name="multi-service-resourcetabmultiservice"></a>[多服务资源](#tab/multiservice)
+    #### <a name="multi-service-resource"></a>[多服务资源](#tab/multiservice)
 
     |    |    |
     |--|--|
@@ -70,7 +70,7 @@ ms.locfileid: "76123221"
 
     单击**创建**。
 
-    #### <a name="single-service-resourcetabsingleservice"></a>[单服务资源](#tab/singleservice)
+    #### <a name="single-service-resource"></a>[单服务资源](#tab/singleservice)
 
     |    |    |
     |--|--|

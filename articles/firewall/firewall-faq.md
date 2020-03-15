@@ -9,11 +9,11 @@ origin.date: 01/29/2020
 ms.date: 02/24/2020
 ms.author: v-yeche
 ms.openlocfilehash: 27d578f2847158a1cd3702ce2b4a605034305c58
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77540234"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293167"
 ---
 # <a name="azure-firewall-faq"></a>Azure 防火墙常见问题解答
 

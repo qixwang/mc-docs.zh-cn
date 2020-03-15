@@ -11,11 +11,11 @@ ms.date: 12/31/2019
 ms.author: v-lingwu
 ms.subservice: logs
 ms.openlocfilehash: 178966e8a9fa1b19db2a73be8ae971a4fe57b179
-ms.sourcegitcommit: 27eaabd82b12ad6a6840f30763034a6360977186
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77497471"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292508"
 ---
 # <a name="view-and-retrieve-azure-activity-log-events"></a>查看和检索 Azure 活动日志事件
 
@@ -160,7 +160,7 @@ GET https://management.azure.com/subscriptions/089bd33f-d4ec-47fe-8ba5-0753aa5c5
 ## <a name="activity-logs-analytics-monitoring-solution"></a>Activity Logs Analytics 监视解决方案
 Azure Log Analytics 监视解决方案包含多个日志查询和视图，用于分析 Log Analytics 工作区中的活动日志记录。
 
-### <a name="prerequisites"></a>必备条件
+### <a name="prerequisites"></a>先决条件
 必须创建一个诊断设置，以便将订阅的活动日志发送到 Log Analytics 工作区。 请参阅[在 Azure Monitor 的 Log Analytics 工作区中收集 Azure 平台日志](resource-logs-collect-workspace.md)。
 
 ### <a name="install-the-solution"></a>安装解决方案

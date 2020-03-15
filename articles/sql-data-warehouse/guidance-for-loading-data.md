@@ -13,11 +13,11 @@ ms.author: v-jay
 ms.reviewer: igorstan
 ms.custom: seoapril2019
 ms.openlocfilehash: 51ea9e3c2b5f1770500d7986e9f5175fe81c7a29
-ms.sourcegitcommit: 3f0c63a02fa72fd5610d34b48a92e280c2cbd24a
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70131874"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293174"
 ---
 # <a name="best-practices-for-loading-data-into-azure-sql-data-warehouse"></a>将数据加载到 Azure SQL 数据仓库中的最佳做法
 

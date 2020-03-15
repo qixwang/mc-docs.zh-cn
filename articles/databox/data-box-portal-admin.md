@@ -10,11 +10,11 @@ origin.date: 08/07/2019
 ms.date: 12/02/2019
 ms.author: v-jay
 ms.openlocfilehash: 279edaa8dac8a667b2a1e380e92f82036249f6cf
-ms.sourcegitcommit: 481542df432d52b7d4823811cef94772e4e0f192
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74530603"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293356"
 ---
 # <a name="use-the-azure-portal-to-administer-your-azure-data-box-and-azure-data-box-heavy"></a>使用 Azure 门户管理 Azure Data Box 和 Azure Data Box Heavy
 

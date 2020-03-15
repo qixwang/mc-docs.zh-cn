@@ -13,11 +13,11 @@ origin.date: 11/11/2019
 ms.date: 12/04/2019
 ms.author: v-lingwu
 ms.openlocfilehash: cfade31efe8fbc4d2361f8d865589138d5a32da7
-ms.sourcegitcommit: cf73284534772acbe7a0b985a86a0202bfcc109e
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74884489"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292718"
 ---
 # <a name="patterns-improve-prediction-accuracy"></a>模式可提高预测的准确性
 模式旨在多条话语非常类似的情况下提升准确性。  使用模式可在不提供更多话语的情况下获得更高的意向准确度。 

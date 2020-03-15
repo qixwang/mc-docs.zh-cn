@@ -8,11 +8,11 @@ ms.author: v-yiso
 origin.date: 08/15/2019
 ms.date: 10/28/2019
 ms.openlocfilehash: d976c0438f1131f197c655247e22d146eccc991e
-ms.sourcegitcommit: c21b37e8a5e7f833b374d8260b11e2fb2f451782
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72583949"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293071"
 ---
 # <a name="outofmemoryerror-exceptions-for-apache-spark-in-azure-hdinsight"></a>Azure HDInsight 中的 Apache Spark 的 OutOfMemoryError 异常
 

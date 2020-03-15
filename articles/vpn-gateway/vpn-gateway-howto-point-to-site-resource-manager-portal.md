@@ -10,11 +10,11 @@ origin.date: 01/10/2020
 ms.date: 02/17/2020
 ms.author: v-jay
 ms.openlocfilehash: a525ee5b3e3f3752f6eca1d3f176211d3a85be32
-ms.sourcegitcommit: 3f9d780a22bb069402b107033f7de78b10f90dde
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77156812"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292245"
 ---
 # <a name="configure-a-point-to-site-vpn-connection-to-a-vnet-using-native-azure-certificate-authentication-azure-portal"></a>使用本机 Azure 证书身份验证配置与 VNet 的点到站点 VPN 连接：Azure 门户
 

@@ -15,11 +15,11 @@ origin.date: 11/08/2019
 ms.date: 03/02/2020
 ms.author: v-yiso
 ms.openlocfilehash: 24ac0f78de9389e323e1de4c6d75c7fa1eeb60c2
-ms.sourcegitcommit: fbc7584f403417d3af7bd6bbbaed7c13a78c57b9
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78411969"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291567"
 ---
 # <a name="troubleshoot-apache-storm-by-using-azure-hdinsight"></a>使用 Azure HDInsight 对 Apache Storm 进行故障排除
 

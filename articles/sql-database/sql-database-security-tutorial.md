@@ -12,11 +12,11 @@ origin.date: 09/03/2019
 ms.date: 02/17/2020
 ms.custom: seoapril2019
 ms.openlocfilehash: fc293edf9e1f3e973cd1bc06d990257a70b261d4
-ms.sourcegitcommit: d7b86a424b72849fe8ed32893dd05e4696e4fe85
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77155724"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293515"
 ---
 # <a name="tutorial-secure-a-single-or-pooled-database"></a>教程：保护单一数据库或共用数据库
 
@@ -43,7 +43,7 @@ Azure SQL 数据库允许你通过以下方式确保单一数据库或共用数�
 > [!TIP]
 > 以下 Microsoft Learn 模块可帮助你免费学习如何[保护 Azure SQL 数据库](https://docs.microsoft.com/learn/modules/secure-your-azure-sql-database/)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要完成本教程，请确保具备以下先决条件：
 

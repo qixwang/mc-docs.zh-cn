@@ -10,11 +10,11 @@ origin.date: 08/12/2019
 ms.date: 10/30/2019
 ms.author: v-tawe
 ms.openlocfilehash: 7aeca956dd816f277234b8a0090dcdeb32f318d7
-ms.sourcegitcommit: 642a4ad454db5631e4d4a43555abd9773cae8891
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2019
-ms.locfileid: "73426036"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292255"
 ---
 # <a name="manage-key-vault-using-the-azure-cli"></a>使用 Azure CLI 管理密钥保管库 
 

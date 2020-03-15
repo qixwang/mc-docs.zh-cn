@@ -8,11 +8,11 @@ ms.date: 03/09/2020
 ms.author: v-tawe
 ms.custom: seodec18
 ms.openlocfilehash: 3da8f9e2c73a447d766f1067038f2003ed0558a9
-ms.sourcegitcommit: 1e68aea05a8d979237d6377a3637bb7654097111
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/24/2020
-ms.locfileid: "77566624"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293349"
 ---
 # <a name="enable-diagnostics-logging-for-apps-in-azure-app-service"></a>为 Azure 应用服务中的应用启用诊断日志记录
 ## <a name="overview"></a>概述

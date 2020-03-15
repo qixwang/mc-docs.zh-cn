@@ -11,11 +11,11 @@ origin.date: 06/07/2019
 ms.date: 11/11/2019
 ms.author: v-yiso
 ms.openlocfilehash: c51cb99e90ceecdfeeb8a80d885bb200c934311e
-ms.sourcegitcommit: 642a4ad454db5631e4d4a43555abd9773cae8891
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2019
-ms.locfileid: "73425954"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292072"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-rest-api"></a>使用 Apache Ambari REST API 管理 HDInsight 群集
 
@@ -191,7 +191,7 @@ foreach($item in $respObj.items) {
 
 创建 HDInsight 群集时，必须使用 Azure 存储帐户或 Data Lake Storage 作为群集的默认存储。 创建群集后，可以使用 Ambari 来检索此信息。 例如，如果要从 HDInsight 外部的容器读取数据或向其写入数据。
 
-以下示例检索群集的默认存储配置：
+以下示例从群集检索默认存储配置：
 
 ```bash
 curl -u admin:$password -sS -G "https://$clusterName.azurehdinsight.cn/api/v1/clusters/$clusterName/configurations/service_config_versions?service_name=HDFS&service_config_version=1" \
@@ -210,7 +210,7 @@ $respObj.items.configurations.properties.'fs.defaultFS'
 
 返回值类似于以下其中一个示例：
 
-* `wasbs://CONTAINER@ACCOUNTNAME.blob.core.chinacloudapi.cn` - 此值表示群集使用 Azure 存储帐户作为默认存储。 值 `ACCOUNTNAME` 是存储帐户的名称。 `CONTAINER` 部分是存储帐户中 Blob 容器的名称。 容器是群集的 HDFS 兼容存储的根。
+* `wasbs://CONTAINER@ACCOUNTNAME.blob.core.chinacloudapi.cn` - 此值指示群集正在将 Azure 存储帐户用于默认存储。 值 `ACCOUNTNAME` 是存储帐户的名称。 `CONTAINER` 部分是存储帐户中 Blob 容器的名称。 容器是群集的 HDFS 兼容存储的根。
 
 * `abfs://CONTAINER@ACCOUNTNAME.dfs.core.chinacloudapi.cn` - 此值表示群集使用 Azure Data Lake Storage Gen2 作为默认存储。 `ACCOUNTNAME` 和 `CONTAINER` 值对于前面提到的 Azure 存储而言意义相同。
 
@@ -285,7 +285,7 @@ $respObj.Content
 
 ### <a name="get-configuration-for-specific-component"></a>获取特定组件的配置
 
-获取你感兴趣的组件的配置。 在以下示例中，将 `INITIAL` 替换为从上一请求返回的标记值。
+获取你感兴趣的组件的配置。 在以下示例中，将 `INITIAL` 替换为从上一个请求返回的标记值。
 
 ```bash
 curl -u admin:$password -sS -G "https://$clusterName.azurehdinsight.cn/api/v1/clusters/$clusterName/configurations?type=livy2-conf&tag=INITIAL"

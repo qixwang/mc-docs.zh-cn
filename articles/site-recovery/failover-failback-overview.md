@@ -6,11 +6,11 @@ origin.date: 12/24/2019
 ms.date: 01/13/2020
 ms.author: v-yeche
 ms.openlocfilehash: 9506ea14b52d27c77f6be0cc5a8666db53326379
-ms.sourcegitcommit: 4f4694991e1c70929c7112ad45a0c404ddfbc8da
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75776770"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292851"
 ---
 # <a name="about-on-premises-disaster-recovery-failoverfailback"></a>关于本地灾难恢复故障转移/故障回复
 

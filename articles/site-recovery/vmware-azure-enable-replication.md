@@ -8,11 +8,11 @@ ms.date: 01/13/2020
 ms.topic: conceptual
 ms.author: v-yeche
 ms.openlocfilehash: 53f1ca80367b68d74cf81a49317ba7145fc19170
-ms.sourcegitcommit: 4f4694991e1c70929c7112ad45a0c404ddfbc8da
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75776696"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291355"
 ---
 # <a name="enable-replication-to-azure-for-vmware-vms"></a>为 VMware VM 启用到 Azure 的复制
 
@@ -24,7 +24,7 @@ ms.locfileid: "75776696"
 * OS 磁盘应是基本磁盘而不是动态磁盘。
 * 对于第 2 代虚拟机/已启用 UEFI 的虚拟机，操作系统系列应是 Windows，并且启动盘应小于 300 GB。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 本文假设用户具备以下条件：
 

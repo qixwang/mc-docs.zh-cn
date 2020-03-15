@@ -1,20 +1,18 @@
 ---
 title: 使用 Azure Application Insights 进行使用情况分析 | Azure docs
 description: 了解用户，以及他们将应用用于哪些目的。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: lingliw
 manager: digimobile
 origin.date: 09/19/2019
 ms.date: 09/20/2019
 ms.author: v-lingwu
-ms.openlocfilehash: c902cd8713f8b8c7d60f555dcb14541bbc7ef737
-ms.sourcegitcommit: 3a9c13eb4b4bcddd1eabca22507476fb34f89405
+ms.openlocfilehash: 94a780081aee95f1bf16b3817ca3d94e711d7523
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74528370"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293024"
 ---
 # <a name="usage-analysis-with-application-insights"></a>Application Insights 使用分析
 
@@ -69,7 +67,7 @@ Web 或移动应用有哪些最热门的功能？ 用户是否使用应用实现
 
 ## <a name="retention---how-many-users-come-back"></a>保留 - 有多少个回头用户？
 
-留存情况可帮助你根据特定时间桶内执行某个业务操作的用户队列，了解用户回头使用其应用的频率。 
+保留可帮助你根据特定时间桶内执行某个业务操作的用户队列，了解用户回头使用其应用的频率。 
 
 - 了解哪些特定的功能导致某些用户比其他用户回来得更频繁 
 - 基于真实的用户数据构成假设 
@@ -175,7 +173,7 @@ Web 或移动应用有哪些最热门的功能？ 用户是否使用应用实现
 ## <a name="next-steps"></a>后续步骤
    - [用户、会话、事件](usage-segmentation.md)
    - [漏斗图](usage-funnels.md)
-   - [保留](usage-retention.md)
+   - [保留期](usage-retention.md)
    - [用户流](usage-flows.md)
    - [工作簿](../../azure-monitor/app/usage-workbooks.md)
    - [添加用户上下文](usage-send-user-context.md)

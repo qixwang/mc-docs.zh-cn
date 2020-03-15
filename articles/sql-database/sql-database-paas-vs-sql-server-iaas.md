@@ -12,13 +12,13 @@ author: WenJason
 ms.author: v-jay
 ms.reviewer: ''
 origin.date: 08/22/2019
-ms.date: 02/17/2020
-ms.openlocfilehash: 3d05b89b4ea17f50ecb9f8ba7a1f86f067800915
-ms.sourcegitcommit: d7b86a424b72849fe8ed32893dd05e4696e4fe85
+ms.date: 03/16/2020
+ms.openlocfilehash: 5287679f80bce8d4f207863067290090a49aa32d
+ms.sourcegitcommit: dc862610e2169c1fce6fb0ae9eb7dd7567f86a0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77155714"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293770"
 ---
 # <a name="choose-the-right-deployment-option-in-azure-sql"></a>在 Azure SQL 中选择适当的部署选项
 

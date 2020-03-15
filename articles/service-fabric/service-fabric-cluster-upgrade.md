@@ -7,11 +7,11 @@ ms.date: 02/24/2020
 ms.author: v-yeche
 ms.custom: sfrev
 ms.openlocfilehash: 8291e38c64b85beb6f0ec0fb170587d03c0215c1
-ms.sourcegitcommit: fbc7584f403417d3af7bd6bbbaed7c13a78c57b9
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78412607"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292562"
 ---
 # <a name="upgrading-and-updating-an-azure-service-fabric-cluster"></a>升级和更新 Azure Service Fabric 群集
 

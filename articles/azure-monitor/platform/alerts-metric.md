@@ -9,11 +9,11 @@ ms.date: 2/18/2020
 ms.author: v-lingwu
 ms.subservice: alerts
 ms.openlocfilehash: f1e9c50c68ee66b103b0fb57f5130d76d901ebe3
-ms.sourcegitcommit: 27eaabd82b12ad6a6840f30763034a6360977186
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77497608"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291675"
 ---
 # <a name="create-view-and-manage-metric-alerts-using-azure-monitor"></a>使用 Azure Monitor 创建、查看和管理指标警报
 
@@ -55,7 +55,7 @@ Azure Monitor 中的指标警报提供了一种在指标超出阈值时获得通
 
 10. （可选）通过调整“聚合粒度”  和“评估频率”  来优化条件。 
 
-11. 单击“完成”  。
+11. 单击“Done”（完成）  。
 
 12. （可选）若要监视复杂的警报规则，请添加另一个条件。 目前，用户可以将警报规则的动态阈值条件作为单一条件。
 

@@ -15,11 +15,11 @@ origin.date: 02/11/2019
 ms.date: 11/11/2019
 ms.author: v-yeche
 ms.openlocfilehash: 457b8ea854d545de1fe9e0acbe668eba3fdc01fe
-ms.sourcegitcommit: 73715ebbaeb96e80046142b8fe5bbc117d85b317
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74593688"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292811"
 ---
 # <a name="nvidia-gpu-driver-extension-for-linux"></a>适用于 Linux 的 NVIDIA GPU 驱动程序扩展
 
@@ -41,7 +41,7 @@ ms.locfileid: "74593688"
 | 分发 | 版本 |
 |---|---|
 | Linux：Ubuntu | 16.04 LTS、18.04 LTS |
-| Linux：CentOS | 7.3, 7.4, 7.5, 7.6 |
+| Linux：CentOS | 版本 7.3、7.4、7.5、7.6 |
 
 <!--Not Available on  Linux: Red Hat Enterprise Linux -->
 
@@ -75,7 +75,7 @@ ms.locfileid: "74593688"
 
 ### <a name="properties"></a>属性
 
-| Name | 值/示例 | 数据类型 |
+| 名称 | 值/示例 | 数据类型 |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
 | publisher | Microsoft.HpcCompute | string |
@@ -86,7 +86,7 @@ ms.locfileid: "74593688"
 
 所有设置都是可选的。 默认行为是，如果安装驱动程序时不要求更新内核，则不进行相应更新，请安装最新的受支持驱动程序和 CUDA 工具包（根据情况）。
 
-| Name | 说明 | 默认值 | 有效值 | 数据类型 |
+| 名称 | 说明 | 默认值 | 有效值 | 数据类型 |
 | ---- | ---- | ---- | ---- | ---- |
 | updateOS | 更新内核，即使安装驱动程序时不需要更新 | false | true、false | boolean |
 | driverVersion | NC：CUDA 工具包版本。 将自动安装所选 CUDA 的最新驱动程序。 | 最新 | CUDA：“10.0.130”、“9.2.88”、“9.1.85” | string |

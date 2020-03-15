@@ -18,11 +18,11 @@ ms.author: v-tawe
 ms.reviewer: jowargo
 ms.lastreviewed: 04/08/2019
 ms.openlocfilehash: f2fe59647f889b6c27e0ed58a4bc0fae17dbf0ce
-ms.sourcegitcommit: 94e1c9621b8f81a7078f1412b3a73281d0a8668b
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76123310"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292670"
 ---
 # <a name="registration-management"></a>注册管理
 

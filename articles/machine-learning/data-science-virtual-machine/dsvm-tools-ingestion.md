@@ -11,11 +11,11 @@ ms.author: gopalv
 ms.topic: conceptual
 ms.date: 10/11/2019
 ms.openlocfilehash: a208d683579762586905217fd2d9d12ee330f172
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75599005"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293425"
 ---
 # <a name="data-science-virtual-machine-data-ingestion-tools"></a>数据科学虚拟机数据引入工具
 

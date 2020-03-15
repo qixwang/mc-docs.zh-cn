@@ -15,11 +15,11 @@ ms.date: 02/10/2020
 ms.author: v-junlch
 ms.reviewer: bagovind
 ms.openlocfilehash: bcde9f00f65e3446c356d75a4f9f4209df7a5e0b
-ms.sourcegitcommit: 99bd0019c5f01034b8765d7765ad7776c7d5e5ae
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77128833"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292323"
 ---
 # <a name="add-or-remove-role-assignments-using-azure-rbac-and-azure-powershell"></a>使用 Azure RBAC 和 Azure PowerShell 添加或删除角色分配
 
@@ -27,7 +27,7 @@ ms.locfileid: "77128833"
 
 [!INCLUDE [az-powershell-update](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要添加或删除角色分配，必须拥有以下权限：
 

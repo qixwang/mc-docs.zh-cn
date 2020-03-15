@@ -9,11 +9,11 @@ origin.date: 08/06/2019
 ms.date: 02/10/2020
 ms.custom: seodec18
 ms.openlocfilehash: b1c05d50e0782309940de28f13848aafa9df79ee
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77428487"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292151"
 ---
 # <a name="azure-disk-encryption-for-linux-vms"></a>适用于 Linux VM 的 Azure 磁盘加密 
 

@@ -6,11 +6,11 @@ ms.topic: reference
 ms.date: 02/17/2020
 ms.author: v-junlch
 ms.openlocfilehash: 85e757529ed1d7f4578c6ab8354ac34af53aea60
-ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77494595"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293213"
 ---
 # <a name="azure-blob-storage-output-binding-for-azure-functions"></a>Azure Functions 的 Azure Blob 存储输出绑定
 

@@ -10,11 +10,11 @@ origin.date: 09/12/2019
 ms.date: 01/13/2020
 ms.author: v-yeche
 ms.openlocfilehash: c65e03dc427a097a70e0ff1dcb9ece11ae145486
-ms.sourcegitcommit: 4f4694991e1c70929c7112ad45a0c404ddfbc8da
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75776732"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292848"
 ---
 # <a name="run-a-failback-for-hyper-v-vms"></a>为 Hyper-V VM 运行故障回复
 

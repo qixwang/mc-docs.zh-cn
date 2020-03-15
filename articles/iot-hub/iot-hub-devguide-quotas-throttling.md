@@ -12,11 +12,11 @@ origin.date: 08/08/2019
 ms.author: v-yiso
 ms.date: 02/17/2020
 ms.openlocfilehash: e0435cad18412d2517469aceb1a858556a7d03f5
-ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77068177"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293433"
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>参考 - IoT 中心配额和限制
 

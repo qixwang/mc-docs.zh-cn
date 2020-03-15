@@ -14,11 +14,11 @@ ms.reviewer: carlrab
 origin.date: 04/08/2019
 ms.date: 12/16/2019
 ms.openlocfilehash: 2980895475fcc0382a1029fd9a0b32a2ff7fbee2
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75334941"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291663"
 ---
 # <a name="what-is-the-azure-sql-database-service"></a>什么是 Azure SQL 数据库服务？
 

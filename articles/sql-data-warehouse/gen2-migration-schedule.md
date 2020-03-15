@@ -13,11 +13,11 @@ origin.date: 01/21/2020
 ms.date: 03/02/2020
 ms.custom: seo-lt-2019
 ms.openlocfilehash: ed0364c2a814b03cfa977854ebb07376ee133480
-ms.sourcegitcommit: 892137d117bcaf9d88aec0eb7ca756fe39613344
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78154394"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293175"
 ---
 # <a name="upgrade-your-data-warehouse-to-gen2"></a>将数据仓库升级到 Gen2
 

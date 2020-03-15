@@ -8,11 +8,11 @@ ms.author: gopalv
 ms.topic: quickstart
 ms.date: 09/10/2019
 ms.openlocfilehash: 601d549f0a8b2032a4c59d55398d9f4d142b0a56
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75599007"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292479"
 ---
 # <a name="quickstart-set-up-the-data-science-virtual-machine-for-linux-ubuntu"></a>快速入门：设置适用于 Linux (Ubuntu) 的 Data Science Virtual Machine
 

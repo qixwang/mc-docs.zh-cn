@@ -15,11 +15,11 @@ origin.date: 04/30/2019
 ms.date: 10/14/2019
 ms.author: v-yeche
 ms.openlocfilehash: 8094acff95f624e8bd09664f17ef6186a1162fc8
-ms.sourcegitcommit: c9398f89b1bb6ff0051870159faf8d335afedab3
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72272417"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292921"
 ---
 # <a name="maintenance-for-virtual-machines-in-azure"></a>Azure 中虚拟机的维护 
 

@@ -11,11 +11,11 @@ ms.date: 09/29/2019
 ms.author: v-junlch
 ms.custom: cc996988-fb4f-47
 ms.openlocfilehash: e3408d094767d9098223c6bca6369372fde1173f
-ms.sourcegitcommit: 73a8bff422741faeb19093467e0a2a608cb896e1
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71673490"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292967"
 ---
 # <a name="manage-your-function-app"></a>管理函数应用 
 

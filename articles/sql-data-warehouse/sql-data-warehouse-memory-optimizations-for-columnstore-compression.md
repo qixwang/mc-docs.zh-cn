@@ -12,11 +12,11 @@ ms.date: 04/01/2019
 ms.author: v-jay
 ms.reviewer: igorstan
 ms.openlocfilehash: 718cc2079989d5feadb1618ff9f7135d17a4c051
-ms.sourcegitcommit: b8fb6890caed87831b28c82738d6cecfe50674fd
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58626703"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293014"
 ---
 # <a name="maximizing-rowgroup-quality-for-columnstore"></a>最大化列存储的行组质量
 

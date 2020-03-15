@@ -10,11 +10,11 @@ origin.date: 05/22/2019
 ms.date: 02/17/2020
 ms.author: v-yiso
 ms.openlocfilehash: 761063dde793c90142d8a692922b1847de2ef31a
-ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77068158"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292303"
 ---
 # <a name="event-grid-security-and-authentication"></a>事件网格安全和身份验证 
 

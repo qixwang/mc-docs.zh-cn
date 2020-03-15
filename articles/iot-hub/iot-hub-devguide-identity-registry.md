@@ -11,11 +11,11 @@ ms.author: v-yiso
 ms.custom: H1Hack27Feb2017
 ms.date: 10/29/2018
 ms.openlocfilehash: 521a08bc2408c9c47360b4921cacc6f9c0d3657b
-ms.sourcegitcommit: 5191c30e72cbbfc65a27af7b6251f7e076ba9c88
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67569851"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293446"
 ---
 # <a name="understand-the-identity-registry-in-your-iot-hub"></a>了解 IoT 中心的标识注册表
 
@@ -62,7 +62,7 @@ IoT 中心标识注册表：
 IoT 解决方案通常具有不同的解决方案特定存储，其中包含应用程序特定的元数据。 例如，智能建筑物解决方案中的解决方案特定存储将记录部署温度感应器的房间信息。
 
 > [!IMPORTANT]
-> 只将标识注册表用于设备管理和预配操作。 运行时的高吞吐量操作不应依赖于在标识注册表中执行操作。 例如，在发送命令前先检查设备的连接状态就是不支持的模式。 请确保检查[限制速率][lnk-quotas] for the identity registry, and the [device heartbeat][lnk-guidance-heartbeat] 模式。
+> 只将标识注册表用于设备管理和预配操作。 运行时的高吞吐量操作不应依赖于在标识注册表中执行操作。 例如，在发送命令前先检查设备的连接状态就是不支持的模式。 请务必检查标识注册表的[限制速率][lnk-quotas]以及[设备检测信号][lnk-guidance-heartbeat]模式。
 > 
 > 
 
@@ -80,13 +80,13 @@ IoT 解决方案通常具有不同的解决方案特定存储，其中包含应�
 
 可以使用 [IoT 中心资源提供程序终结点][lnk-endpoints]上的异步操作，向 IoT 中心的标识注册表批量导入设备标识。 导入是长时间运行的作业，它使用客户提供的 blob 容器中的数据，将设备标识数据写入标识注册表。
 
-有关导入和导出 API 的详细信息，请参阅 [IoT 中心资源提供程序 REST API][lnk-resource-provider-apis]. To learn more about running import and export jobs, see [Bulk management of IoT Hub device identities][lnk-bulk-identity]。
+有关导入和导出 API 的详细信息，请参阅 [IoT 中心资源提供程序 REST API][lnk-resource-provider-apis]。 若要了解有关如何运行导入和导出作业的详细信息，请参阅[批量管理 IoT 中心的设备标识][lnk-bulk-identity]。
 
 ## <a name="device-provisioning"></a>Device Provisioning
 
 给定的 IoT 解决方案存储的设备数据取决于该解决方案的特定要求。 但是，解决方案必须至少存储设备标识和身份验证密钥。 Azure IoT 中心包含标识注册表，可以存储每个设备的值，例如 ID、身份验证密钥和状态代码。 解决方案可以使用其他 Azure 服务（例如表存储、Blob 存储或 Cosmos DB）来存储任何其他设备数据。
 
-*设备预配*是将初始设备数据添加到解决方案中存储中的过程。 要使新设备能够连接到中心，必须将设备 ID 和密钥添加到 IoT 中心的标识注册表。 在预配过程中，可能需要初始化其他解决方案存储中的设备特定数据。
+*设备预配* 是将初始设备数据添加到解决方案中存储中的过程。 要使新设备能够连接到中心，必须将新设备 ID 和密钥添加到 IoT 中心的标识注册表。 在预配过程中，可能需要初始化其他解决方案存储中的设备特定数据。
 
 ## <a name="device-heartbeat"></a>检测信号
 
@@ -95,7 +95,7 @@ IoT 中心标识注册表包含名为 **connectionState**的字段。 开发和�
 如果 IoT 解决方案需要知道设备是否已连接，则可实现*检测信号模式*。
 在检测信号模式下，设备每隔固定时间至少发送一次设备到云的消息（例如，每小时至少一次）。 因此，即使设备没有任何要发送的数据，仍会发送空的设备到云的消息（通常具有可供识别为检测信号的属性）。 在服务端，该解决方案维护着与每个设备收到的最后一个检测信号的映射。 如果解决方案未在预计时间内从设备收到检测信号消息，则它假定设备存在问题。
 
-更复杂的实现可包含来自 [Azure Monitor][lnk-AM] and [Azure Resource Health][lnk-ARH] 的信息，以便识别尝试连接或进行通信但失败的设备，请查阅[使用诊断进行监视][lnk-devguide-mon]指南。 实施检测信号模式时，请务必查看 [IoT 中心配额与限制][lnk-quotas]。
+更复杂的实现可包含来自 [Azure Monitor][lnk-AM] 和 [Azure 资源运行状况][lnk-ARH]的信息，以便识别尝试连接或通信但失败的设备，请查阅[使用诊断进行监视][lnk-devguide-mon]指南。 实施检测信号模式时，请务必查看 [IoT 中心配额与限制][lnk-quotas]。
 
 > [!NOTE]
 > 如果 IoT 解决方案只使用连接状态来决定是否发送云到设备的消息，并且没有把消息广播到大量设备，则考虑使用更简单的较短到期时间  模式。 此模式达到的效果与使用检测信号模式维护设备连接状态注册表达到的效果一样，而且更加有效。 如果请求消息确认，则 IoT 中心可以通知你哪些设备可以接收消息以及哪些设备不能接收。
@@ -108,7 +108,7 @@ IoT 中心标识注册表包含名为 **connectionState**的字段。 开发和�
 
 设备的通知消息：
 
-| Name | Value |
+| 名称 | Value |
 | --- | --- |
 |$content-type | application/json |
 |$iothub-enqueuedtime |  发送通知的时间 |
@@ -144,7 +144,7 @@ IoT 中心标识注册表包含名为 **connectionState**的字段。 开发和�
 ```
 模块的通知消息：
 
-| Name | Value |
+| 名称 | Value |
 | --- | --- |
 $content-type | application/json |
 $iothub-enqueuedtime |  发送通知的时间 |
@@ -193,7 +193,7 @@ iothub-message-schema | moduleLifecycleNotification |
 | 状态 |必填 |访问指示器。 可以是 **Enabled** 或 **Disabled**。 如果是 **Enabled**，则允许设备连接。 如果是 **Disabled**，则此设备无法访问任何面向设备的终结点。 |
 | statusReason |可选 |128 个字符的字符串，用于存储设备标识状态的原因。 允许所有 UTF-8 字符。 |
 | statusUpdateTime |只读 |临时指示器，显示上次状态更新的日期和时间。 |
-| connectionState |只读 |指示连接状态的字段：**Connected** 或 **Disconnected**。 此字段表示设备连接状态的 IoT 中心视图。 **重要说明**：此字段仅应当用于开发/调试目的。 仅使用 MQTT 或 AMQP 的设备才更新连接状态。 此外，它基于协议级别的 ping（MQTT ping 或 AMQP ping），并且最多只有 5 分钟的延迟。 出于这些原因，可能会发生误报，例如将设备报告为已连接，但实际上已断开连接。 |
+| connectionState |只读 |指示连接状态的字段：**Connected** 或 **Disconnected**。 此字段表示设备连接状态的 IoT 中心视图。 **重要说明**：此字段仅应当用于开发/调试目的。 仅使用 MQTT 或 AMQP 的设备才更新连接状态。 此外，它基于协议级别的 ping（MQTT ping 或 AMQP ping），并且最多只有 5 分钟的延迟。 出于这些原因，可能会发生误报，例如，将设备报告为已连接，但实际上已断开连接。 |
 | connectionStateUpdatedTime |只读 |临时指示器，显示上次更新连接状态的日期和时间。 |
 | lastActivityTime |只读 |临时指示器，显示设备上次连接、接收或发送消息的日期和时间。 |
 
@@ -218,7 +218,7 @@ iothub-message-schema | moduleLifecycleNotification |
 | 状态 |必填 |访问指示器。 可以是 **Enabled** 或 **Disabled**。 如果是 **Enabled**，则允许设备连接。 如果是 **Disabled**，则此设备无法访问任何面向设备的终结点。 |
 | statusReason |可选 |128 个字符的字符串，用于存储设备标识状态的原因。 允许所有 UTF-8 字符。 |
 | statusUpdateTime |只读 |临时指示器，显示上次状态更新的日期和时间。 |
-| connectionState |只读 |指示连接状态的字段：**Connected** 或 **Disconnected**。 此字段表示设备连接状态的 IoT 中心视图。 **重要说明**：此字段仅应当用于开发/调试目的。 仅使用 MQTT 或 AMQP 的设备才更新连接状态。 此外，它基于协议级别的 ping（MQTT ping 或 AMQP ping），并且最多只有 5 分钟的延迟。 出于这些原因，可能会发生误报，例如将设备报告为已连接，但实际上已断开连接。 |
+| connectionState |只读 |指示连接状态的字段：**Connected** 或 **Disconnected**。 此字段表示设备连接状态的 IoT 中心视图。 **重要说明**：此字段仅应当用于开发/调试目的。 仅使用 MQTT 或 AMQP 的设备才更新连接状态。 此外，它基于协议级别的 ping（MQTT ping 或 AMQP ping），并且最多只有 5 分钟的延迟。 出于这些原因，可能会发生误报，例如，将设备报告为已连接，但实际上已断开连接。 |
 | connectionStateUpdatedTime |只读 |临时指示器，显示上次更新连接状态的日期和时间。 |
 | lastActivityTime |只读 |临时指示器，显示设备上次连接、接收或发送消息的日期和时间。 |
 

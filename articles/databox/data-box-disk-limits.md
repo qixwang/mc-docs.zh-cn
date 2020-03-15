@@ -10,11 +10,11 @@ origin.date: 11/05/2019
 ms.date: 02/17/2020
 ms.author: v-jay
 ms.openlocfilehash: ccff638ff67811f81db84ac30ddf921e1db2edc9
-ms.sourcegitcommit: fbc7584f403417d3af7bd6bbbaed7c13a78c57b9
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78412481"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293236"
 ---
 # <a name="azure-data-box-disk-limits"></a>Azure Data Box 磁盘限制
 

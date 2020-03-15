@@ -16,11 +16,11 @@ origin.date: 05/11/2019
 ms.date: 02/10/2020
 ms.author: v-yeche
 ms.openlocfilehash: 34deedcb69542c26791ef0eb731922188c2f290a
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77428688"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292805"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>准备好要上传到 Azure 的 Windows VHD 或 VHDX
 

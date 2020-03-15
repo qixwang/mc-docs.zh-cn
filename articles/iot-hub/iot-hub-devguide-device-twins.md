@@ -10,11 +10,11 @@ origin.date: 06/10/2019
 ms.date: 01/13/2020
 ms.author: v-yiso
 ms.openlocfilehash: bd2fb83f172e6cac8fea700a36c3d6cfced8c015
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75631075"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293498"
 ---
 # <a name="understand-and-use-device-twins-in-iot-hub"></a>了解并在 IoT 中心内使用设备孪生
 

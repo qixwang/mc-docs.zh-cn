@@ -16,17 +16,17 @@ origin.date: 09/28/2017
 ms.date: 07/18/2018
 ms.author: v-junlch
 ms.openlocfilehash: fb274091ac2c4f05ecc02a653796a561c7d9862a
-ms.sourcegitcommit: d75065296d301f0851f93d6175a508bdd9fd7afc
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52649416"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291620"
 ---
 # <a name="code-snippets-for-migrating-content-from-power-bi-workspace-collections"></a>从 Power BI 工作区集合中迁移内容的代码片段
 
 本文提供一些内容迁移所需的基本操作代码片段。 有关特定报表类型的相关流，请参阅[如何将 Power BI Embedded 工作区集合内容迁移到 Power BI](migrate-from-power-bi-workspace-collections.md#content-migration)。
 
-可使用“迁移工具”将内容从 Power BI 工作区集合复制到 Power BI Embedded。 尤其是具有大量内容时。 有关详细信息，请参阅 [Power BI Embedded 迁移工具](migrate-tool.md)。
+可使用“迁移工具”将内容从 Power BI 工作区集合复制到 Power BI Embedded  。 尤其是具有大量内容时。 有关详细信息，请参阅 [Power BI Embedded 迁移工具](migrate-tool.md)。
 
 以下代码是使用 C# 和[Power BI.NET SDK](https://www.nuget.org/profiles/powerbi) 的示例。
 

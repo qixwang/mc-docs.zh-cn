@@ -13,11 +13,11 @@ origin.date: 12/12/2019
 ms.date: 01/06/2020
 ms.author: v-jay
 ms.openlocfilehash: bb0e9dad0ad3413af265aa09f4d6b367ebb50282
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75624426"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293210"
 ---
 #  <a name="preserve-metadata-and-acls-using-copy-activity-in-azure-data-factory"></a>使用 Azure 数据工厂中的复制活动保留元数据和 ACL
 

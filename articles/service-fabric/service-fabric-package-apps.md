@@ -6,11 +6,11 @@ origin.date: 02/23/2018
 ms.date: 02/24/2020
 ms.author: v-yeche
 ms.openlocfilehash: b170e6edcc2a9868e6965816da8e21d4ee6701cb
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77540163"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292016"
 ---
 # <a name="package-an-application"></a>打包应用程序
 

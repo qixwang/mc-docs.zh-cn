@@ -16,11 +16,11 @@ origin.date: 11/06/2019
 ms.date: 02/10/2020
 ms.author: v-yeche
 ms.openlocfilehash: 4b65cf6247204b35cedf693406166103687f405e
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77428379"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292800"
 ---
 # <a name="general-purpose-virtual-machine-sizes"></a>常规用途虚拟机大小
 

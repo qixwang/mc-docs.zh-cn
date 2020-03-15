@@ -109,7 +109,7 @@
       items:
         - name: 流式处理概述
           href: apache-spark-streaming-overview.md
-        - name: 结构化流概述
+        - name: 结构化流式处理概述
           href: apache-spark-structured-streaming-overview.md
         - name: 在 Apache Hadoop YARN 中创建高度可用的 Apache Spark 流作业
           href: apache-spark-streaming-high-availability.md
@@ -149,8 +149,6 @@
           href: ../hdinsight-hadoop-script-actions-linux.md?toc=/azure/hdinsight/spark/toc.json&bc=/azure/hdinsight/spark/breadcrumb/toc.json
         - name: 添加 Apache Hive 库
           href: ../hdinsight-hadoop-add-hive-libraries.md?toc=/azure/hdinsight/spark/toc.json&bc=/azure/hdinsight/spark/breadcrumb/toc.json
-        - name: 使用 Apache Giraph
-          href: ../hdinsight-hadoop-giraph-install-linux.md?toc=/azure/hdinsight/spark/toc.json&bc=/azure/hdinsight/spark/breadcrumb/toc.json
         - name: 使用 Hue
           href: ../hdinsight-hadoop-hue-linux.md?toc=/azure/hdinsight/spark/toc.json&bc=/azure/hdinsight/spark/breadcrumb/toc.json
         - name: 使用空边缘节点

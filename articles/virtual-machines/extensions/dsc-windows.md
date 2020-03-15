@@ -15,11 +15,11 @@ origin.date: 03/26/2018
 ms.date: 10/14/2019
 ms.author: v-yeche
 ms.openlocfilehash: 80f6080787a785c8093c36ff7fe04535d9220ce8
-ms.sourcegitcommit: c9398f89b1bb6ff0051870159faf8d335afedab3
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72272780"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292816"
 ---
 # <a name="powershell-dsc-extension"></a>PowerShell DSC 扩展
 
@@ -111,7 +111,7 @@ Windows Server 2019、Windows Server 2016、Windows Server 2012R2、Windows Serv
 
 ### <a name="settings-property-values"></a>设置属性值
 
-| Name | 数据类型 | 说明
+| 名称 | 数据类型 | 说明
 | ---- | ---- | ---- |
 | settings.wmfVersion | string | 指定应在 VM 上安装的 Windows Management Framework 版本。 将此属性设置为“latest”可安装最新版本的 WMF。 目前，此属性的可能值只有“4.0”、“5.0”和“latest”。 这些可能值将来可能会更新。 默认值为“latest”。 |
 | settings.configuration.url | string | 指定要从中下载 DSC 配置 zip 文件的 URL 位置。 如果提供的 URL 需要 SAS 令牌才能访问，必须将 protectedSettings.configurationUrlSasToken 属性设置为 SAS 令牌的值。 如果已定义 settings.configuration.script 和/或 settings.configuration.function，则需要此属性。
@@ -125,7 +125,7 @@ Windows Server 2019、Windows Server 2016、Windows Server 2012R2、Windows Serv
 
 ### <a name="protected-settings-property-values"></a>受保护设置属性值
 
-| Name | 数据类型 | 说明
+| 名称 | 数据类型 | 说明
 | ---- | ---- | ---- |
 | protectedSettings.configurationArguments | string | 定义想要传递到 DSC 配置的任何参数。 将加密此属性。 |
 | protectedSettings.configurationUrlSasToken | string | 指定用于访问 configuration.url 所定义的 URL 的 SAS 令牌。 将加密此属性。 |

@@ -1,5 +1,5 @@
 ---
-title: 将 BACPAC 文件导入 Azure SQL 数据库的PowerShell 示例 | Microsoft Docs
+title: 将 BACPAC 文件导入 Azure SQL 数据库的 PowerShell 示例
 description: 将 BACPAC 文件导入 SQL 数据库的 Azure PowerShell 示例脚本
 services: sql-database
 ms.service: sql-database
@@ -10,15 +10,14 @@ ms.topic: sample
 author: WenJason
 ms.author: v-jay
 ms.reviewer: carlrab
-manager: digimobile
-origin.date: 03/12/2019
-ms.date: 04/29/2019
-ms.openlocfilehash: 7901ca79daea1e488bb259f0681f0368b60fab41
-ms.sourcegitcommit: 9642fa6b5991ee593a326b0e5c4f4f4910f50742
+origin.date: 05/24/2019
+ms.date: 03/16/2020
+ms.openlocfilehash: 16355f2086ac6e1d9c9ceedc0c38e62432406710
+ms.sourcegitcommit: dc862610e2169c1fce6fb0ae9eb7dd7567f86a0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64854927"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293829"
 ---
 # <a name="use-powershell-to-import-a-bacpac-file-into-an-azure-sql-database"></a>使用 PowerShell 将 BACPAC 文件导入 Azure SQL 数据库
 
@@ -99,7 +98,7 @@ $importRequest = New-AzSqlDatabaseImport -ResourceGroupName $resourceGroupName `
     -DatabaseMaxSizeBytes "262144000" `
     -StorageKeyType "StorageAccessKey" `
     -StorageKey $(Get-AzStorageAccountKey -ResourceGroupName $resourceGroupName -StorageAccountName $storageAccountName).Value[0] `
-    -StorageUri "http://$storageaccountname.blob.core.chinacloudapi.cn/$storageContainerName/$bacpacFilename" `
+    -StorageUri "https://$storageaccountname.blob.core.chinacloudapi.cn/$storageContainerName/$bacpacFilename" `
     -Edition "Standard" `
     -ServiceObjectiveName "S3" `
     -AdministratorLogin "$adminSqlLogin" `
@@ -123,6 +122,9 @@ Set-AzSqlDatabase -ResourceGroupName $resourceGroupName `
     -DatabaseName $databaseName  `
     -Edition "Standard" `
     -RequestedServiceObjectiveName "S0"
+
+# Clean up deployment 
+# Remove-AzResourceGroup -ResourceGroupName $resourceGroupName
 ```
 
 ## <a name="clean-up-deployment"></a>清理部署
@@ -150,4 +152,3 @@ Remove-AzResourceGroup -ResourceGroupName $resourcegroupname
 有关 Azure PowerShell 的详细信息，请参阅 [Azure PowerShell 文档](https://docs.microsoft.com/powershell/azure/overview)。
 
 可以在 [Azure SQL 数据库 PowerShell 脚本](../sql-database-powershell-samples.md)中找到更多 SQL 数据库 PowerShell 脚本示例。
-<!--Update_Description: wording update-->

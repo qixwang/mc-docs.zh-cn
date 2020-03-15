@@ -6,11 +6,11 @@ origin.date: 03/12/2019
 ms.date: 02/24/2020
 ms.author: v-yeche
 ms.openlocfilehash: 362671d61b24e971e9f49cac4def823ca84a7aeb
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77540177"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292568"
 ---
 # <a name="scale-a-cluster-in-or-out"></a>缩小或扩大群集
 
@@ -209,7 +209,7 @@ sfctl node remove-state --node-name _nt1vm_5
 > `sfctl node list --query "sort_by(items[*], &name)[-1].isStopped"`
 >
 
-### <a name="scale-in-the-scale-set"></a>缩小规模集
+### <a name="scale-in-the-scale-set"></a>横向缩减规模集
 
 将 Service Fabric 节点从群集中删除后，即可缩小虚拟机规模集。 在下面的示例中，规模集容量缩小了 1。
 

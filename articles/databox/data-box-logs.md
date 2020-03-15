@@ -10,11 +10,11 @@ origin.date: 08/08/2019
 ms.date: 12/02/2019
 ms.author: v-jay
 ms.openlocfilehash: e5ff86243076af6d28017d8ca42bb3711c29a2bb
-ms.sourcegitcommit: 481542df432d52b7d4823811cef94772e4e0f192
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74530600"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293361"
 ---
 # <a name="tracking-and-event-logging-for-your-azure-data-box-and-azure-data-box-heavy"></a>Azure Data Box 和 Azure Data Box Heavy 的跟踪与事件日志记录
 

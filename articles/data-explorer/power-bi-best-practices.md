@@ -9,11 +9,11 @@ ms.topic: conceptual
 origin.date: 09/26/2019
 ms.date: 11/18/2019
 ms.openlocfilehash: bf103181b1e722ca8947ab36d3f99f09376fb835
-ms.sourcegitcommit: c863b31d8ead7e5023671cf9b58415542d9fec9c
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74020976"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292704"
 ---
 # <a name="best-practices-for-using-power-bi-to-query-and-visualize-azure-data-explorer-data"></a>有关使用 Power BI 查询和可视化 Azure 数据资源管理器数据的最佳做法
 

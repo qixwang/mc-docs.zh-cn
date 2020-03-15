@@ -13,11 +13,11 @@ ms.reviewer: sstein, carlrab
 origin.date: 12/03/2019
 ms.date: 02/17/2020
 ms.openlocfilehash: 4244b1f8e6710667cb8342aaf04709aba3d34d58
-ms.sourcegitcommit: d7b86a424b72849fe8ed32893dd05e4696e4fe85
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77155721"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293512"
 ---
 # <a name="azure-sql-database-serverless"></a>Azure SQL 数据库无服务器
 

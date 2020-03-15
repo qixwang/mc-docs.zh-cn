@@ -10,11 +10,11 @@ ms.date: 11/25/2019
 ms.author: v-junlch
 ms.topic: conceptual
 ms.openlocfilehash: 51a1769d4559d0f9474cc0c1089d9c208e6b5333
-ms.sourcegitcommit: e74e8aabc1cbd8a43e462f88d07b041e9c4f31eb
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74461682"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291568"
 ---
 # <a name="web-application-firewall-crs-rule-groups-and-rules"></a>Web 应用程序防火墙 CRS 规则组和规则
 
@@ -95,7 +95,7 @@ CRS 2.2.9 包含下表中所示的 10 个规则组。 每个组包含多个可�
 
 在应用程序网关上使用 Web 应用程序防火墙时可以使用以下规则组和规则。
 
-# <a name="owasp-31tabowasp31"></a>[OWASP 3.1](#tab/owasp31)
+# <a name="owasp-31"></a>[OWASP 3.1](#tab/owasp31)
 
 ## <a name="owasp31"></a> 规则集
 
@@ -341,7 +341,7 @@ CRS 2.2.9 包含下表中所示的 10 个规则组。 每个组包含多个可�
 |944130|可疑的 Java 类|
 |944200|利用 Java 反序列化 Apache Commons|
 
-# <a name="owasp-30tabowasp30"></a>[OWASP 3.0](#tab/owasp30)
+# <a name="owasp-30"></a>[OWASP 3.0](#tab/owasp30)
 
 ## <a name="owasp30"></a> 规则集
 
@@ -541,7 +541,7 @@ CRS 2.2.9 包含下表中所示的 10 个规则组。 每个组包含多个可�
 |943110|可能的会话固定攻击 = 包含域外引用方的 SessionID 参数名称|
 |943120|可能的会话固定攻击 = 不包含引用方的 SessionID 参数名称|
 
-# <a name="owasp-229tabowasp2"></a>[OWASP 2.2.9](#tab/owasp2)
+# <a name="owasp-229"></a>[OWASP 2.2.9](#tab/owasp2)
 
 ## <a name="owasp229"></a> 规则集
 
@@ -563,7 +563,7 @@ CRS 2.2.9 包含下表中所示的 10 个规则组。 每个组包含多个可�
 |958291|范围 = 字段存在并以 0 开始。|
 |958230|范围 = 最后一个字节值无效。|
 |958295|找到了多个/有冲突的连接标头数据。|
-|950107|URL 编码滥用攻击企图|
+|950107|URL 编码滥用攻击尝试|
 |950109|检测到多个 URL 编码|
 |950108|URL 编码滥用攻击尝试|
 |950801|UTF8 编码滥用攻击企图|
@@ -578,7 +578,7 @@ CRS 2.2.9 包含下表中所示的 10 个规则组。 每个组包含多个可�
 |960008|请求缺少 Host 标头|
 |960007|Host 标头为空|
 |960015|请求缺少 Accept 标头|
-|960021|请求包含空 Accept 标头|
+|960021|请求包含空的 Accept 标头|
 |960009|请求缺少用户代理标头|
 |960006|用户代理标头为空|
 |960904|请求包含内容但缺少 Content-Type 标头|

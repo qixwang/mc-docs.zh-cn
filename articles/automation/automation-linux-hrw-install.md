@@ -11,11 +11,11 @@ ms.date: 12/02/2019
 ms.topic: conceptual
 manager: digimobile
 ms.openlocfilehash: cebb2ac7249d0690d89870ba00243433f8dd659b
-ms.sourcegitcommit: 481542df432d52b7d4823811cef94772e4e0f192
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74530631"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292376"
 ---
 # <a name="deploy-a-linux-hybrid-runbook-worker"></a>部署 Linux 混合 Runbook 辅助角色
 

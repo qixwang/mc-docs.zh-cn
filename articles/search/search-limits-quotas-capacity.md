@@ -10,11 +10,11 @@ ms.topic: conceptual
 origin.date: 12/17/2019
 ms.date: 03/16/2020
 ms.openlocfilehash: 5534e9b157736ea5529f74fb9676f853649f0043
-ms.sourcegitcommit: d5eca3c6b03b206e441b599e5b138bd687a91361
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78934803"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292754"
 ---
 # <a name="service-limits-in-azure-cognitive-search"></a>Azure 认知搜索中的服务限制
 

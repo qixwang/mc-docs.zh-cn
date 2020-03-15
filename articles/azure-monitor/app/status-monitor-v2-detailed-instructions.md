@@ -1,20 +1,18 @@
 ---
 title: Azure Application Insights 代理详细说明 | Microsoft Docs
 description: 有关如何开始使用 Application Insights 代理的详细说明。 无需重新部署网站即可监视网站性能。 使用托管在本地、VM 或 Azure 上的 ASP.NET Web 应用。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: lingliw
 manager: digimobile
 origin.date: 04/23/2019
 ms.date: 04/23/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 3e10bd355548966941bcef38a6f1a2f9e1619154
-ms.sourcegitcommit: a89eb0007edd5b4558b98c1748b2bd67ca22f4c9
+ms.openlocfilehash: e8196a017141c121e8f4f9d7eb4e28cf8640ac0d
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73730497"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293027"
 ---
 # <a name="application-insights-agent-formerly-named-status-monitor-v2-detailed-instructions"></a>Application Insights 代理（以前称为状态监视器 v2）：详细说明
 
@@ -79,7 +77,7 @@ SerializationVersion           1.1.0.1
 
 > [!NOTE] 
 > Windows 10、Windows Server 2016 和 PowerShell 6 支持 PowerShell 库。
-> 有关早期版本的信息，请参阅[安装 PowerShellGet](https://docs.microsoft.com/powershell/gallery/installing-psget)。
+> 有关早期版本的信息，请参阅[安装 PowerShellGet](https://docs.microsoft.com/powershell/scripting/gallery/installing-psget)。
 
 
 1. 以管理员身份使用提升的执行策略运行 PowerShell。
@@ -120,7 +118,7 @@ SerializationVersion           1.1.0.1
 
 4. 安装最新版本的 PowerShellGet。
     - 说明:此模块包含用于从 PowerShell 库中获取其他模块的工具。 Windows 10 和 Windows Server 随附了版本 1.0.0.1。 需要 1.6.0 或更高版本。 若要确定安装了哪个版本，请运行 `Get-Command -Module PowerShellGet` 命令。
-    - 参考：[安装 PowerShellGet](https://docs.microsoft.com/powershell/gallery/installing-psget)。
+    - 参考：[安装 PowerShellGet](https://docs.microsoft.com/powershell/scripting/gallery/installing-psget)。
     - 命令：`Install-Module -Name PowerShellGet`。
     - 可选参数：
         - `-Proxy`。 指定请求的代理服务器。
@@ -164,7 +162,7 @@ SerializationVersion           1.1.0.1
 
 ### <a name="option-1-install-into-a-powershell-modules-directory"></a>选项 1：安装到 PowerShell 模块目录中
 将手动下载的 PowerShell 模块安装到 PowerShell 目录中，使之可被 PowerShell 会话发现。
-有关详细信息，请参阅[安装 PowerShell 模块](https://docs.microsoft.com/powershell/developer/module/installing-a-powershell-module)。
+有关详细信息，请参阅[安装 PowerShell 模块](https://docs.microsoft.com/powershell/scripting/developer/module/installing-a-powershell-module)。
 
 
 #### <a name="unzip-nupkg-as-a-zip-file-by-using-expand-archive-v1010"></a>使用 Expand-Archive (v1.0.1.0) 将 nupkg 作为 zip 文件解压缩

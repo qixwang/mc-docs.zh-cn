@@ -10,11 +10,11 @@ origin.date: 12/24/2019
 ms.date: 12/31/2019
 ms.author: v-lingwu
 ms.openlocfilehash: 4ae32392ec5542f78f3be06e62acd4641b440801
-ms.sourcegitcommit: 13431cf4d69142ed7feb8d12d967a502bf9ff346
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75600151"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293267"
 ---
 # <a name="collect-log-data-with-the-log-analytics-agent"></a>使用 Log Analytics 代理收集日志数据
 

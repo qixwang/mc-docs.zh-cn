@@ -6,11 +6,11 @@ origin.date: 07/09/2019
 ms.date: 01/06/2020
 ms.author: v-yeche
 ms.openlocfilehash: 1b77e101026943971e35f61fb5a7b31880047251
-ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75742367"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292638"
 ---
 # <a name="service-fabric-cluster-capacity-planning-considerations"></a>Service Fabric 群集容量规划注意事项
 对于任何生产部署，容量规划都是一个重要的步骤。 下面是在规划过程中必须注意的一些事项。
@@ -109,7 +109,7 @@ Service Fabric 系统服务（例如，群集管理器服务或图像存储服�
 
 - 为任何已启用“黄金”或“白银”耐久性级别的虚拟机规模集保留至少五个节点。
 - 持续性级别为“白银”或“黄金”的每个虚拟机规模集，在 Service Fabric 群集中都必须映射到其自己的节点类型。 将多个虚拟机规模集映射到单个节点类型，将阻碍 Service Fabric 群集和 Azure 基础结构间的协调正常工作。
-- 不要删除随机 VM 实例，请始终使用虚拟机规模集缩减功能。 删除随机 VM 实例可能会造成分布在 UD 和 FD 的 VM 实例失衡。 这一失衡可能会对系统在服务实例/服务副本之间进行适当负载均衡的能力产生负面影响。
+- 不要删除随机 VM 实例，请始终使用虚拟机规模集纵向缩减功能。 删除随机 VM 实例可能会造成分布在 UD 和 FD 的 VM 实例失衡。 这一失衡可能会对系统在服务实例/服务副本之间进行适当负载均衡的能力产生负面影响。
 - 如果使用自动缩放，请设置规则，以便一次只有一个节点执行“缩小规模”操作（删除 VM 实例）。 一次减少多个实例是不安全的。
 - 删除或解除分配主节点类型上的 VM 时，决不应当将已分配的 VM 的数量降低到可靠性层需要的数量之下。 在耐久性级别为“白银”或“黄金”的规模集中，这些操作会被无限期阻止。
 

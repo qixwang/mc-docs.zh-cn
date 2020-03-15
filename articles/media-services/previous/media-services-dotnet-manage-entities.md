@@ -16,11 +16,11 @@ origin.date: 04/01/2019
 ms.date: 09/23/2019
 ms.author: v-jay
 ms.openlocfilehash: 1cd06ce6e0a0c5ec6a1e81f5f5c1ed9113305257
-ms.sourcegitcommit: 8248259e4c3947aa0658ad6c28f54988a8aeebf8
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71124507"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292476"
 ---
 # <a name="managing-assets-and-related-entities-with-media-services-net-sdk"></a>使用媒体服务 .NET SDK 管理资产和相关的实体
 > [!div class="op_single_selector"]
@@ -59,7 +59,7 @@ ms.locfileid: "71124507"
 ```
 
 ## <a name="list-all-assets"></a>列出所有资产
-随着存储中的资产数量的增长，这对列出你的资产很有用。 以下代码示例演示了如何循环访问服务器上下文对象上的资产集合。 对于每个资产，该代码示例还会将其一些属性值写入控制台。 例如，每个资产可以包含多个媒体文件。 代码示例会写出与每个资产关联的所有文件。
+随着存储空间中的资产数量的增长，这对列出资产很有用。 以下代码示例演示了如何循环访问服务器上下文对象上的资产集合。 对于每个资产，该代码示例还会将其一些属性值写入控制台。 例如，每个资产可以包含多个媒体文件。 代码示例会写出与每个资产关联的所有文件。
 
 ```csharp
     static void ListAssets()
@@ -223,12 +223,12 @@ ms.locfileid: "71124507"
     }
 ```
     
-## <a name="limit-access-policies"></a>限制访问策略 
+## <a name="limit-access-policies"></a>限制访问策略数 
 
 >[!NOTE]
 > 不同 AMS 策略的策略限制为 1,000,000 个（例如，对于定位器策略或 ContentKeyAuthorizationPolicy）。 如果始终使用相同的日期/访问权限，则应使用相同的策略 ID，例如，用于要长期就地保留的定位符的策略（非上传策略）。 
 
-例如，可以使用以下代码创建一组一般策略，这些代码只会在应用程序中运行一次。 可以将 ID 记录到日志文件中供以后使用：
+例如，可以使用以下代码创建通用的策略组，该代码在应用程序中只运行一次。 可以将 ID 记录到日志文件中供以后使用：
 
 ```csharp
     double year = 365.25;

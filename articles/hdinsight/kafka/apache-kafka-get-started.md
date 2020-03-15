@@ -3,25 +3,25 @@ title: 使用 Azure 门户设置 Apache Kafka on HDInsight - 快速入门
 description: 在此快速入门中，了解如何在 Azure HDInsight 上使用 Azure 门户创建 Apache Kafka 群集。 还可以了解 Kafka 主题、订阅服务器和使用者。
 ms.service: hdinsight
 author: hrasheed-msft
-ms.author: v-yiso
 ms.custom: mvc,hdinsightactive
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: big-data
-origin.date: 10/01/2019
-ms.date: 12/09/2019
-ms.openlocfilehash: fc888045b2e4b17dd7f8e7ed265318856594a806
-ms.sourcegitcommit: 298eab5107c5fb09bf13351efeafab5b18373901
+origin.date: 02/24/2020
+ms.date: 03/23/2020
+ms.author: v-yiso
+ms.openlocfilehash: 7c2c62799ec2f0989b3ac257d27e8252245401d7
+ms.sourcegitcommit: 32997a7d7585deaeb0ab7b8f928d397b18b343fa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2019
-ms.locfileid: "74657942"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79295954"
 ---
 # <a name="quickstart-create-apache-kafka-cluster-in-azure-hdinsight-using-azure-portal"></a>快速入门：使用 Azure 门户在 Azure HDInsight 中创建 Apache Kafka 群集
 
-Apache Kafka 是开源分布式流式处理平台。 通常用作消息代理，因为它可提供类似于发布-订阅消息队列的功能。 
+[Apache Kafka](./apache-kafka-introduction.md) 是开源分布式流式处理平台。 通常用作消息代理，因为它可提供类似于发布-订阅消息队列的功能。
 
-本快速入门介绍了如何使用 Azure 门户创建 [Apache Kafka](https://kafka.apache.org) 群集。 还介绍了如何使用已包含的实用程序发送并接收使用 Apache Kafka 的信息。
+本快速入门介绍了如何使用 Azure 门户创建 Apache Kafka 群集。 还介绍了如何使用已包含的实用程序发送并接收使用 Apache Kafka 的信息。 有关可用配置的详细说明，请参阅[在 HDInsight 中设置群集](../hdinsight-hadoop-provision-linux-clusters.md)。 有关使用门户创建群集的其他信息，请参阅[在门户中创建群集](../hdinsight-hadoop-create-linux-clusters-portal.md)。
 
 [!INCLUDE [delete-cluster-warning](../../../includes/hdinsight-delete-cluster-warning.md)]
 
@@ -35,23 +35,25 @@ SSH 客户端。 有关详细信息，请参阅[使用 SSH 连接到 HDInsight (
 
 ## <a name="create-an-apache-kafka-cluster"></a>创建 Apache Kafka 群集
 
-若要创建 Apache Kafka on HDInsight 群集，请使用以下步骤：
+若要创建基于 HDInsight 的 Apache Kafka 群集，请使用以下步骤：
 
 1. 登录到 [Azure 门户](https://portal.azure.cn)。
 
-1. 在左侧菜单中，导航到“+ 创建资源” > “Analytics” > “HDInsight”    。
+1. 在顶部菜单中，选择“+ 创建资源”  。
 
-    ![Azure 门户创建资源 HDInsight](./media/apache-kafka-get-started/create-hdinsight-cluster.png)
+    ![Azure 门户创建资源 HDInsight](./media/apache-kafka-get-started/azure-portal-create-resource.png)
 
-1. 在“基本信息”下，输入或选择以下值： 
+1. 选择“分析”   >   “Azure HDInsight”，转到“创建 HDInsight 群集”  页。
+
+1. 在“基本信息”选项卡中提供以下信息： 
 
     |属性  |说明  |
     |---------|---------|
-    |订阅    |  选择 Azure 订阅。 |
+    |订阅    |  从下拉列表中选择用于此群集的 Azure 订阅。 |
     |资源组     | 创建资源组，或选择现有资源组。  资源组是 Azure 组件的容器。  在此示例中，资源组包含 HDInsight 群集和依赖的 Azure 存储帐户。 |
-    |群集名称   | 输入 Hadoop 群集的名称。 由于 HDInsight 中的所有群集共享同一 DNS 命名空间，因此该名称必须唯一。 该名称最多可以有 59 个字符，包括字母、数字和连字符。 名称的第一个和最后一个字符不能为连字符。 |
-    |位置    | 选择要在其中创建群集的 Azure 位置。  为获得更佳性能，请选择离你较近的位置。 |
-    |群集类型| 选择“选择群集类型”  。 然后选择“Kafka”作为群集类型。 |
+    |群集名称   | 输入任何全局唯一的名称。 该名称最多可以有 59 个字符，包括字母、数字和连字符。 名称的第一个和最后一个字符不能为连字符。 |
+    |区域    | 从下拉列表中，选择在其中创建群集的区域。  选择的区域与你越靠近，性能就越好。 |
+    |群集类型| 选择“选择群集类型”，打开一个列表  。 从列表中选择“Kafka”作为群集类型。 |
     |版本|将指定群集类型的默认版本。 若要指定不同的版本，请从下拉列表中选择。|
     |群集登录用户名和密码    | 默认登录名为“admin”  。密码长度不得少于 10 个字符，且至少必须包含一个数字、一个大写字母和一个小写字母、一个非字母数字字符（' " ` \)字符除外）。 请确保不提供常见密码，如“Pass@word1”  。|
     |安全外壳 (SSH) 用户名 | 默认用户名为“sshuser”  。  可以提供其他名称作为 SSH 用户名。 |
@@ -74,15 +76,15 @@ SSH 客户端。 有关详细信息，请参阅[使用 SSH 连接到 HDInsight (
     |主存储帐户|使用下拉列表选择现有存储帐户，或选择“新建”  。 如果创建新帐户，名称的长度必须在 3 到 24 个字符之间，并且只能包含数字和小写字母|
     |容器|使用自动填充的值。|
 
-    ![HDInsight Linux 入门 - 提供群集存储值](./media/apache-kafka-get-started/azure-portal-cluster-storage-blank.png "提供用于创建 HDInsight 群集的存储值")
+    ![HDInsight Linux 入门之提供群集存储值](./media/apache-kafka-get-started/azure-portal-cluster-storage.png "提供用于创建 HDInsight 群集的存储值")
 
     选择“安全性 + 网络”选项卡。 
 
-1. 对于本快速入门，请保留默认的安全设置。 若要详细了解企业安全性套餐，请访问[使用 Azure Active Directory 域服务配置具有企业安全性套餐的 HDInsight 群集](../domain-joined/apache-domain-joined-configure-using-azure-adds.md)。 若要了解如何将自己的密钥用于 Apache Kafka 磁盘加密，请访问[适用于 Apache Kafka on Azure HDInsight 的自带密钥](apache-kafka-byok.md)
+1. 对于本快速入门，请保留默认的安全设置。 
 
    若要将群集连接到虚拟网络，请从“虚拟网络”下拉列表中选择一个虚拟网络。 
 
-   ![将群集添加到虚拟网络](./media/apache-kafka-get-started/azure-portal-cluster-security-networking-kafka-vn.png)
+   ![将群集添加到虚拟网络](./media/apache-kafka-get-started/azure-portal-cluster-security-networking-kafka-vnet.png)
 
     选择“配置 + 定价”选项卡。 
 
@@ -92,7 +94,7 @@ SSH 客户端。 有关详细信息，请参阅[使用 SSH 连接到 HDInsight (
 
    ![设置 Apache Kafka 群集大小](./media/apache-kafka-get-started/azure-portal-cluster-configuration-pricing-kafka.png)
 
-    选择“查看 + 创建”  选项卡。
+    选择“查看 + 创建”选项卡。 
 
 1. 查看群集的配置。 更改所有不正确的设置。 最后，选择“创建”  以创建群集。
 
@@ -102,15 +104,13 @@ SSH 客户端。 有关详细信息，请参阅[使用 SSH 连接到 HDInsight (
 
 ## <a name="connect-to-the-cluster"></a>连接至群集
 
-1. 若要连接到 Apache Kafka 群集的主要头节点，请使用以下命令。 将 `sshuser` 替换为 SSH 用户名。 将 `mykafka` 替换为 Apache Kafka 群集的名称。
+1. 使用 [ssh 命令](../hdinsight-hadoop-linux-use-ssh-unix.md)连接到群集。 编辑以下命令，将 CLUSTERNAME 替换为群集的名称，然后输入该命令：
 
-    ```bash
-    ssh sshuser@mykafka-ssh.azurehdinsight.cn
+    ```cmd
+    ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.cn
     ```
 
-2. 首次连接到群集时，SSH 客户端可能会显示一个警告，提示无法验证主机。 当系统提示时，请键入“yes”，然后按 Enter，将主机添加到 SSH 客户端的受信任服务器列表   。
-
-3. 出现提示时，请输入 SSH 用户名密码。
+1. 出现提示时，请输入 SSH 用户名密码。
 
     连接后，显示的信息类似于以下文本：
     
@@ -258,7 +258,7 @@ Kafka 在主题中存储数据流  。 可以使用 `kafka-topics.sh` 实用工�
 
 ## <a name="produce-and-consume-records"></a>生成和使用记录
 
-Kafka 将记录  存储在主题中。 记录由生成者  生成，由使用者  使用。 生产者与使用者通过 Kafka 代理服务通信  。 HDInsight 群集中的每个工作节点都是 Apache Kafka 代理主机。
+Kafka 将*记录*存储在主题中。 记录由*生成者*生成，由*使用者*使用。 生产者与使用者通过 Kafka 代理服务通信  。 HDInsight 群集中的每个工作节点都是 Apache Kafka 代理主机。
 
 若要将记录存储到之前创建的测试主题，并通过使用者对其进行读取，请使用以下步骤：
 
@@ -278,11 +278,11 @@ Kafka 将记录  存储在主题中。 记录由生成者  生成，由使用者
     /usr/hdp/current/kafka-broker/bin/kafka-console-consumer.sh --bootstrap-server $KAFKABROKERS --topic test --from-beginning
     ```
 
-    此命令从主题中检索并显示记录。 使用 `--from-beginning` 告知使用者从流的开头开始，以检索所有记录。
+    此命令从主题中检索并显示记录。 使用 `--from-beginning` 告知使用者要从流的开头开始读取，以便检索所有记录。
 
     如果使用的是较旧版本的 Kafka，请将 `--bootstrap-server $KAFKABROKERS` 替换为 `--zookeeper $KAFKAZKHOSTS`。
 
-4. 使用 __Ctrl + C__ 阻止使用者。
+4. 使用 __Ctrl + C__ 停止使用者。
 
 还可以以编程方式创建生产者和使用者。 有关如何使用此 API 的示例，请参阅[将 Apache Kafka 生产者和使用者 API 与 HDInsight 配合使用](apache-kafka-producer-consumer-api.md)文档。
 
@@ -296,10 +296,8 @@ Kafka 将记录  存储在主题中。 记录由生成者  生成，由使用者
 2. 找到要删除的资源组，然后右键单击列表右侧的“更多”按钮 (...)。 
 3. 选择“删除资源组”，然后进行确认。 
 
-> [!WARNING]
-> 创建群集后便开始 HDInsight 群集计费，删除群集后停止计费。 HDInsight 群集按分钟收费，因此不再需要使用群集时，应将其删除。
-> 
-> 删除 Apache Kafka on HDInsight 群集会删除存储在 Kafka 中的任何数据。
+> [!WARNING]  
+> 删除基于 HDInsight 的 Apache Kafka 群集会删除存储在 Kafka 中的任何数据。
 
 ## <a name="next-steps"></a>后续步骤
 

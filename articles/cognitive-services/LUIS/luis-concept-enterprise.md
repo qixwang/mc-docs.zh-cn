@@ -13,11 +13,11 @@ origin.date: 07/29/2019
 ms.date: 09/23/2019
 ms.author: v-lingwu
 ms.openlocfilehash: 7312882a538eecb6df3093ea9be7b49a1a70ce4d
-ms.sourcegitcommit: 3d27913e9f896e34bd7511601fb428fc0381998b
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74982057"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292732"
 ---
 # <a name="enterprise-strategies-for-a-luis-app"></a>LUIS 应用的企业策略
 查看企业应用的设计策略。

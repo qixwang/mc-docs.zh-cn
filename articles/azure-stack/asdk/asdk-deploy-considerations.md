@@ -18,11 +18,11 @@ ms.author: v-jay
 ms.reviewer: misainat
 ms.lastreviewed: 05/13/2019
 ms.openlocfilehash: 4964cd601771777b0cb3d01f71aa5ab6c02c1bbd
-ms.sourcegitcommit: 713bd1d1b476cec5ed3a9a5615cfdb126bc585f9
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72578515"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292604"
 ---
 # <a name="asdk-requirements-and-considerations"></a>ASDK 要求和注意事项
 

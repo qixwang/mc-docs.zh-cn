@@ -17,11 +17,11 @@ origin.date: 10/02/2019
 ms.date: 02/24/2020
 ms.author: v-jay
 ms.openlocfilehash: 376749326e8adbb4dc313620c5ecb6db61fb6ca9
-ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77494573"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291626"
 ---
 # <a name="migration-guidance-for-moving-from-media-services-v2-to-v3"></a>有关从媒体服务 v2 迁移到 v3 的指导
 

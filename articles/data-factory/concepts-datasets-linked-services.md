@@ -13,11 +13,11 @@ ms.topic: conceptual
 origin.date: 04/25/2019
 ms.date: 10/14/2019
 ms.openlocfilehash: 19ca1c6d42da2728aaf959764092913ff6260ff5
-ms.sourcegitcommit: aea45739ba114a6b069f782074a70e5dded8a490
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72275533"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292348"
 ---
 # <a name="datasets-in-azure-data-factory"></a>Azure 数据工厂中的数据集
 

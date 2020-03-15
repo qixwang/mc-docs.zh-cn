@@ -10,11 +10,11 @@ origin.date: 01/09/2019
 ms.date: 06/10/2019
 ms.author: v-jay
 ms.openlocfilehash: 300adc47632f1a9c85537f3126d0f4eadfd43bf3
-ms.sourcegitcommit: 98cc8aa5b8d0e04cd4818b34f5350c72f617a225
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68298145"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293357"
 ---
 # <a name="use-azure-portal-to-administer-your-data-box-disk"></a>使用 Azure 门户管理 Data Box Disk
 

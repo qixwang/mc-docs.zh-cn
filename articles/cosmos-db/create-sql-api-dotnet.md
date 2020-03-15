@@ -10,11 +10,11 @@ ms.topic: quickstart
 origin.date: 07/12/2019
 ms.date: 02/10/2020
 ms.openlocfilehash: df530025ea5d5d6701a2f55fee4afc18ae2370ab
-ms.sourcegitcommit: fbc7584f403417d3af7bd6bbbaed7c13a78c57b9
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78410591"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292935"
 ---
 # <a name="quickstart-build-a-net-console-app-to-manage-azure-cosmos-db-sql-api-resources"></a>快速入门：生成 .NET 控制台应用以管理 Azure Cosmos DB SQL API 资源
 

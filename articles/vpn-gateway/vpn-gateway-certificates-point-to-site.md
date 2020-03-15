@@ -9,11 +9,11 @@ origin.date: 10/10/2019
 ms.date: 11/11/2019
 ms.author: v-jay
 ms.openlocfilehash: a01fb2ea886a952c3c42e78dfb607e5437cfa803
-ms.sourcegitcommit: d77d5d8903faa757c42b80ee24e7c9d880950fc3
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73742294"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293279"
 ---
 # <a name="generate-and-export-certificates-for-point-to-site-using-powershell"></a>使用 PowerShell 为点到站点连接生成和导出证书
 

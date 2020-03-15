@@ -14,11 +14,11 @@ origin.date: 04/09/2019
 ms.date: 01/13/2020
 ms.author: v-yeche
 ms.openlocfilehash: 4b25d351599733e78d61e8477568c930b0a6a570
-ms.sourcegitcommit: bc5f8b4f8ccd7c723f64055825508d1dfcc2162b
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75859221"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293342"
 ---
 # <a name="create-a-virtual-network-peering---resource-manager-different-subscriptions"></a>创建虚拟网络对等互连 - 资源管理器，不同的订阅
 

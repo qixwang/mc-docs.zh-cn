@@ -12,11 +12,11 @@ ms.date: 08/19/2019
 ms.author: v-jay
 ms.reviewer: igorstan
 ms.openlocfilehash: 2ba4351734f9d4e8c00edbceae31f3cd65d68e84
-ms.sourcegitcommit: 52ce0d62ea704b5dd968885523d54a36d5787f2d
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69544248"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293017"
 ---
 # <a name="rest-apis-for-azure-sql-data-warehouse"></a>Azure SQL 数据仓库的 REST API
 用于管理 Azure SQL 数据仓库中的计算的 REST API。

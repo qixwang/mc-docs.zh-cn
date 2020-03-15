@@ -7,11 +7,11 @@ origin.date: 06/18/2019
 ms.date: 11/14/2019
 ms.author: v-lingwu
 ms.openlocfilehash: 54352d2ddfecdb265c17a24e9601b7c2964a8847
-ms.sourcegitcommit: 3d27913e9f896e34bd7511601fb428fc0381998b
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74982058"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292599"
 ---
 # <a name="about-sql-server-backup-in-azure-vms"></a>关于 Azure VM 中的 SQL Server 备份
 

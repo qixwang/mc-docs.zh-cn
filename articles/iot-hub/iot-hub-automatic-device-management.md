@@ -10,11 +10,11 @@ origin.date: 12/13/2019
 ms.date: 01/13/2020
 ms.author: v-yiso
 ms.openlocfilehash: 3626811d0189510ea17544ad419faabf60972f78
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75630754"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293256"
 ---
 # <a name="automatic-iot-device-and-module-management-using-the-azure-portal"></a>使用 Azure 门户自动管理 IoT 设备和模块
 

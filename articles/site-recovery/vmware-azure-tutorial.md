@@ -10,11 +10,11 @@ ms.date: 01/13/2020
 ms.author: v-yeche
 ms.custom: MVC
 ms.openlocfilehash: 88ae80f0eda581110bfa094dec437d31803fa761
-ms.sourcegitcommit: 4f4694991e1c70929c7112ad45a0c404ddfbc8da
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75776742"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291694"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-vmware-vms"></a>针对本地 VMware VM 设置到 Azure 的灾难恢复
 

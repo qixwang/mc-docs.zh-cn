@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 02/05/2020
 ms.author: v-junlch
 ms.openlocfilehash: 7690d8faad7f7ac42ed7d51007ca7524a3eea176
-ms.sourcegitcommit: 23dc63b6fea451f6a2bd4e8d0fbd7ed082ba0740
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77028029"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291988"
 ---
 # <a name="how-to-configure-azure-cache-for-redis"></a>如何配置 Azure Redis 缓存
 本主题介绍可用于 Azure Redis 缓存实例的配置。 本主题还介绍了适用于 Azure Redis 缓存实例的默认 Redis 服务器配置。
@@ -41,7 +41,7 @@ ms.locfileid: "77028029"
     * [Azure Redis 缓存顾问](#azure-cache-for-redis-advisor)
     * [缩放](#scale)
     * [群集大小](#cluster-size)
-    * [数据暂留](#redis-data-persistence)
+    * [数据持久性](#redis-data-persistence)
     * [计划更新](#schedule-updates)
     * [异地复制](#geo-replication)
     * [虚拟网络](#virtual-network)

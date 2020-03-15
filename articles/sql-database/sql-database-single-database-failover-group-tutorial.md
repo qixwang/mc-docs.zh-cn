@@ -12,12 +12,12 @@ ms.author: v-jay
 ms.reviewer: sstein, carlrab
 origin.date: 06/19/2019
 ms.date: 02/17/2020
-ms.openlocfilehash: ab874b8ed3721fa7bab48786db02597f0bd8bf48
-ms.sourcegitcommit: d7b86a424b72849fe8ed32893dd05e4696e4fe85
+ms.openlocfilehash: 6143c53d1f8fe07d702461a9f1db2beb0b21dde2
+ms.sourcegitcommit: dc862610e2169c1fce6fb0ae9eb7dd7567f86a0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77155710"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293806"
 ---
 # <a name="tutorial-add-an-azure-sql-database-single-database-to-a-failover-group"></a>教程：将 Azure SQL 数据库单一数据库添加到故障转移组
 
@@ -28,7 +28,7 @@ ms.locfileid: "77155710"
 > - 在两个逻辑 SQL 服务器之间创建单一数据库的[故障转移组](sql-database-auto-failover-group.md)。
 > - 测试故障转移。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 若要完成本教程，请确保做好以下准备： 
@@ -176,45 +176,16 @@ ms.locfileid: "77155710"
 
    ```azurecli
    #!/bin/bash
-   # Set variables
-   # subscriptionID=<SubscriptionID>
-   # resourceGroupName=myResourceGroup-$RANDOM
-   # location=China East 2
-   # adminLogin=azureuser
-   # password="PWD27!"+`openssl rand -base64 18`
-   # serverName=mysqlserver-$RANDOM
-   # databaseName=mySampleDatabase
-   drLocation=China North 2
-   drServerName=mysqlsecondary-$RANDOM
-   failoverGroupName=failovergrouptutorial-$RANDOM
+   # set variables
+   $failoverLocation = "China East 2"
+   $failoverServer = "failoverServer-$randomIdentifier"
+   $failoverGroup = "failoverGroup-$randomIdentifier"
 
-   # Create a secondary server in the failover region
    echo "Creating a secondary logical server in the DR region..."
-   az sql server create \
-      --name $drServerName \
-      --resource-group $resourceGroupName \
-      --location $drLocation  \
-      --admin-user $adminLogin\
-      --admin-password $password
-
-   # Configure a firewall rule for the server
-   echo "Configuring firewall..."
-   az sql server firewall-rule create \
-      --resource-group $resourceGroupName \
-      --server $drServerName \
-      -n AllowYourIp \
-      --start-ip-address $startip \
-      --end-ip-address $endip
+   az sql server create --name $failoverServer --resource-group $resourceGroup --location $failoverLocation --admin-user $login --admin-password $password
    
-   # Create a failover group between the servers and add the database
    echo "Creating a failover group between the two servers..."
-   az sql failover-group create \
-      --name $failoverGroupName  \
-      --partner-server $drServerName \
-      --resource-group $resourceGroupName \
-      --server $serverName \
-      --add-db $databaseName
-      --failover-policy Automatic
+   az sql failover-group create --name $failoverGroup --partner-server $failoverServer --resource-group $resourceGroup --server $server --add-db $database --failover-policy Automatic
    ```
 
 本教程的此部分使用以下 Az CLI cmdlet：
@@ -317,48 +288,24 @@ ms.locfileid: "77155710"
 
    
    ```azurecli
-   # Set variables
-   # resourceGroupName=myResourceGroup-$RANDOM
-   # serverName=mysqlserver-$RANDOM
-   
-   # Verify which server is secondary
    echo "Verifying which server is in the secondary role..."
-   az sql failover-group list \
-      --server $serverName \
-      --resource-group $resourceGroupName
+   az sql failover-group list --server $server --resource-group $resourceGroup
    ```
 
 故障转移到辅助服务器： 
 
    ```azurecli
-   # Set variables
-   # resourceGroupName=myResourceGroup-$RANDOM
-   # drServerName=mysqlsecondary-$RANDOM
-   # failoverGroupName=failovergrouptutorial-$RANDOM
-
-   
    echo "Failing over group to the secondary server..."
-   az sql failover-group set-primary \
-      --name $failoverGroupName \
-      --resource-group $resourceGroupName \
-      --server $drServerName
-   echo "Successfully failed failover group over to" $drServerName
+   az sql failover-group set-primary --name $failoverGroup --resource-group $resourceGroup --server $failoverServer
+   echo "Successfully failed failover group over to" $failoverServer
    ```
 
 将故障转移组还原到主服务器：
 
    ```azurecli
-   # Set variables
-   # resourceGroupName=myResourceGroup-$RANDOM
-   # serverName=mysqlserver-$RANDOM
-   # failoverGroupName=failovergrouptutorial-$RANDOM
-   
    echo "Failing over group back to the primary server..."
-   az sql failover-group set-primary \
-      --name $failoverGroupName \
-      --resource-group $resourceGroupName \
-      --server $serverName
-   echo "Successfully failed failover group back to" $serverName
+   az sql failover-group set-primary --name $failoverGroup --resource-group $resourceGroup --server $server
+   echo "Successfully failed failover group back to" $server
    ```
 
 本教程的此部分使用以下 Az CLI cmdlet：
@@ -384,7 +331,6 @@ ms.locfileid: "77155710"
 
 使用 PowerShell 删除资源组。 
 
-
    ```powershell
    # Set variables
    # $resourceGroupName = "myResourceGroup-$(Get-Random)"
@@ -407,14 +353,9 @@ ms.locfileid: "77155710"
 
 
    ```azurecli
-   # Set variables
-   # resourceGroupName=myResourceGroup-$RANDOM
-   
-   # Clean up resources by removing the resource group
    echo "Cleaning up resources by removing the resource group..."
-   az group delete \
-     --name $resourceGroupName
-   echo "Successfully removed resource group" $resourceGroupName
+   az group delete --name $resourceGroup
+   echo "Successfully removed resource group" $resourceGroup
    ```
 
 本教程的此部分使用以下 Az CLI cmdlet：
@@ -589,8 +530,8 @@ Write-host "Failover group name is" $failoverGroupName
 
 ```cli
 #!/bin/bash
-# Set variables
-subscriptionID=<SubscriptionID>
+
+subscriptionID=<subscriptionId>
 resourceGroupName=myResourceGroup-$RANDOM
 location=China East 2
 adminLogin=azureuser
@@ -606,24 +547,24 @@ failoverGroupName=failovergrouptutorial-$RANDOM
 startip=0.0.0.0
 endip=0.0.0.0
 
-# Print out randomized variables
+# print out randomized variables
 echo Resource group name is $resourceGroupName
 echo Passowrd is $password
 echo Servername is $serverName
 echo DR Server name $drServerName
 echo Failover group name $failoverGroupName
 
-# Set the subscription context for the Azure account
+# set the subscription context for the Azure account
 az account set -s $subscriptionID
 
-# Create a resource group
+# create a resource group
 echo "Creating resource group..."
 az group create \
    --name $resourceGroupName \
    --location $location \
    --tags Owner[=SQLDB-Samples]
 
-# Create a logical server in the resource group
+# create a logical server in the resource group
 echo "Creating primary logical server..."
 az sql server create \
    --name $serverName \
@@ -632,7 +573,7 @@ az sql server create \
    --admin-user $adminLogin \
    --admin-password $password
 
-# Configure a firewall rule for the server
+# configure a firewall rule for the server
 echo "Configuring firewall..."
 az sql server firewall-rule create \
    --resource-group $resourceGroupName \
@@ -641,7 +582,7 @@ az sql server firewall-rule create \
    --start-ip-address $startip \
    --end-ip-address $endip
 
-# Create a gen5 2vCore database in the server 
+# create a gen5 2vCore database in the server 
 echo "Creating a gen5 2 vCore database..."
 az sql db create \
    --resource-group $resourceGroupName \
@@ -652,7 +593,7 @@ az sql db create \
    --family Gen5 \
    --capacity 2
 
-# Create a secondary server in the failover region
+# create a secondary server in the failover region
 echo "Creating a secondary logical server in the DR region..."
 az sql server create \
    --name $drServerName \
@@ -661,7 +602,7 @@ az sql server create \
    --admin-user $adminLogin\
    --admin-password $password
 
-# Create a failover group between the servers and add the database
+# create a failover group between the servers and add the database
 echo "Creating a failover group between the two servers..."
 az sql failover-group create \
    --name $failoverGroupName  \
@@ -671,13 +612,13 @@ az sql failover-group create \
    --add-db $databaseName
    --failover-policy Automatic
 
-# Verify which server is secondary
+# verify which server is secondary
 echo "Verifying which server is in the secondary role..."
 az sql failover-group list \
    --server $serverName \
    --resource-group $resourceGroupName
 
-# Failover to the secondary server
+# failover to the secondary server
 echo "Failing over group to the secondary server..."
 az sql failover-group set-primary \
    --name $failoverGroupName \
@@ -685,7 +626,7 @@ az sql failover-group set-primary \
    --server $drServerName
 echo "Successfully failed failover group over to" $drServerName
 
-# Revert failover group back to the primary server
+# revert failover group back to the primary server
 echo "Failing over group back to the primary server..."
 az sql failover-group set-primary \
    --name $failoverGroupName \
@@ -693,21 +634,12 @@ az sql failover-group set-primary \
    --server $serverName
 echo "Successfully failed failover group back to" $serverName
 
-# Print out randomized variables
-echo Resource group name is $resourceGroupName
-echo Password is $password
-echo Servername is $serverName
-echo DR Server name $drServerName
-echo Failover group name $failoverGroupName
-
-# Clean up resources by removing the resource group
+# clean up resources by removing the resource group
 # echo "Cleaning up resources by removing the resource group..."
-# az group delete \
-#   --name $resourceGroupName 
+# az group delete --name $resourceGroupName 
 # echo "Successfully removed resource group" $resourceGroupName
+This script uses the following commands. Each command in the table links to command specific documentation.
 ```
-
-此脚本使用以下命令。 表中的每条命令均链接到特定于命令的文档。
 
 | 命令 | 注释 |
 |---|---|

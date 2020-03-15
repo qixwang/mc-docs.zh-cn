@@ -16,11 +16,11 @@ origin.date: 11/28/2017
 ms.author: v-yiso
 ms.date: 09/16/2019
 ms.openlocfilehash: 8348b5877f89cbfb38079b7f8ad02716f43123f9
-ms.sourcegitcommit: dd0ff08835dd3f8db3cc55301815ad69ff472b13
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70736738"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292916"
 ---
 # <a name="api-management-cross-domain-policies"></a>API 管理跨域策略
 本主题提供以下 API 管理策略的参考。 有关添加和配置策略的信息，请参阅 [API 管理中的策略](https://go.microsoft.com/fwlink/?LinkID=398186)。
@@ -57,12 +57,12 @@ ms.locfileid: "70736738"
   
 ### <a name="elements"></a>元素  
   
-|Name|说明|必须|  
+|名称|说明|必须|  
 |----------|-----------------|--------------|  
 |cross-domain|根元素。 子元素必须符合 [Adobe 跨域策略文件规范](https://www.adobe.com/devnet/articles/crossdomain_policy_file_spec.html)。|是|
   
 ### <a name="usage"></a>使用情况  
- 此策略可在以下策略[段](./api-management-howto-policies.md#sections)和[范围](./api-management-howto-policies.md#scopes)中使用。  
+ 此策略可在以下策略[节](./api-management-howto-policies.md#sections)和[范围](./api-management-howto-policies.md#scopes)中使用。  
   
 - **策略节：** 入站
   
@@ -93,7 +93,7 @@ ms.locfileid: "70736738"
 ```  
   
 ### <a name="example"></a>示例  
- 此示例演示如何支持预检请求，例如那些具有自定义标头或 GET 和 POST 之外的方法的预检请求。 若要支持自定义标头和其他 HTTP 谓词，请使用 `allowed-methods` 和 `allowed-headers` 部分，如以下示例所示。  
+ 此示例演示如何支持预检请求，例如那些使用自定义标头或 GET 和 POST 之外的方法的预检请求。 若要支持自定义标头和其他 HTTP 谓词，请使用 `allowed-methods` 和 `allowed-headers` 部分，如以下示例所示。  
   
 ```xml  
 <cors allow-credentials="true">  
@@ -127,26 +127,26 @@ ms.locfileid: "70736738"
   
 ### <a name="elements"></a>元素  
   
-|Name|说明|必须|默认|  
+|名称|说明|必须|默认|  
 |----------|-----------------|--------------|-------------|  
 |cors|根元素。|是|不适用|  
-|allowed-origins|包含的 `origin` 元素说明了跨域请求的允许来源。 `allowed-origins` 可能包含单个 `origin` 元素，该元素指定允许任何源的 `*`，或者包含一个或多个内含 URI 的 `origin` 元素。|是|不适用|  
+|allowed-origins|包含的 `origin` 元素说明了跨域请求的允许来源。 `allowed-origins` 可以包含单个 `origin` 元素，该元素指定 `*` 以允许任何源，也可以包含一个或多个内含 URI 的 `origin` 元素。|是|不适用|  
 |origin|值可以是 `*` 以允许所有源，也可以是指定单个源的 URI。 URI 必须包括方案、主机和端口。|是|如果 URI 中省略了端口，则端口 80 用于 HTTP，端口 443 用于 HTTPS。|  
 |allowed-methods|如果允许 GET 或 POST 之外的方法，则此元素是必需的。 包含 `method` 元素，用于指定支持的 HTTP 谓词。|否|如果此部分不存在，则支持 GET 和 POST。|  
-|方法|指定 HTTP 谓词。|如果 `allowed-methods` 部分存在，则至少一个 `method` 元素是必需。|不适用|  
+|方法|指定 HTTP 谓词。|如果 `allowed-methods` 部分存在，则至少一个 `method` 元素是必需的。|不适用|  
 |allowed-headers|此元素包含 `header` 元素，用于指定可以包括在请求中的标头的名称。|否|不适用|  
 |expose-headers|此元素包含 `header` 元素，用于指定可以通过客户端访问的标头的名称。|否|不适用|  
-|标头的值开始缓存响应|指定标头名称。|如果节存在，则 `allowed-headers` 或 `expose-headers` 中至少一个 `header` 元素是必需。|不适用|  
+|标头的值开始缓存响应|指定标头名称。|如果此部分存在，则 `allowed-headers` 或 `expose-headers` 中至少有一个 `header` 元素是必需的。|不适用|  
   
 ### <a name="attributes"></a>属性  
   
-|Name|说明|必须|默认|  
+|名称|说明|必须|默认|  
 |----------|-----------------|--------------|-------------|  
 |allow-credentials|预检响应中的 `Access-Control-Allow-Credentials` 标头将设置为此属性的值，并且会影响客户端在跨域请求中提交凭据的功能。|否|false|  
 |preflight-result-max-age|预检响应中的 `Access-Control-Max-Age` 标头将设置为此属性的值，并且会影响用户代理缓存预检响应的功能。|否|0|  
   
 ### <a name="usage"></a>使用情况  
- 此策略可在以下策略[段](./api-management-howto-policies.md#sections)和[范围](./api-management-howto-policies.md#scopes)中使用。  
+ 此策略可在以下策略[节](./api-management-howto-policies.md#sections)和[范围](./api-management-howto-policies.md#scopes)中使用。  
   
 -   **策略节：** 入站  
   
@@ -173,13 +173,13 @@ ms.locfileid: "70736738"
   
 ### <a name="elements"></a>元素  
   
-|Name|说明|必须|  
+|名称|说明|必须|  
 |----------|-----------------|--------------|  
 |jsonp|根元素。|是|  
   
 ### <a name="attributes"></a>属性  
   
-|Name|说明|必须|默认|  
+|名称|说明|必须|默认|  
 |----------|-----------------|--------------|-------------|  
 |callback-parameter-name|以函数所在的完全限定域名为前缀的跨域 JavaScript 函数调用。|是|不适用|  
   

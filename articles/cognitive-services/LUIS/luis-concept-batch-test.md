@@ -13,11 +13,11 @@ origin.date: 10/25/2019
 ms.date: 12/04/2019
 ms.author: v-lingwu
 ms.openlocfilehash: 750fea9c8c5eb11e497673c4d92a27f6ff2f124c
-ms.sourcegitcommit: cf73284534772acbe7a0b985a86a0202bfcc109e
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74884500"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292237"
 ---
 # <a name="batch-testing-with-1000-utterances-in-luis-portal"></a>对 LUIS 门户中的 1000 个话语执行批处理测试
 

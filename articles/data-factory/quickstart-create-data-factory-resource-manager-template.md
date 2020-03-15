@@ -12,11 +12,11 @@ author: WenJason
 ms.author: v-jay
 manager: digimobile
 ms.openlocfilehash: 26f29104be711d4cb27d2d9bfb2ae6dec2d0b4fb
-ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77653581"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293320"
 ---
 # <a name="tutorial-create-an-azure-data-factory-using-azure-resource-manager-template"></a>教程：使用 Azure 资源管理器模板创建 Azure 数据工厂
 

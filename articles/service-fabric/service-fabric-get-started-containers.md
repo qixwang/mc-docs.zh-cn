@@ -6,11 +6,11 @@ origin.date: 01/25/2019
 ms.date: 02/24/2020
 ms.author: v-yeche
 ms.openlocfilehash: 114915970aa5178ff36f1296907e120e8a5f7374
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77540437"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292031"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-windows"></a>在 Windows 上创建第一个 Service Fabric 容器应用程序
 
@@ -25,7 +25,7 @@ ms.locfileid: "77540437"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * 一台运行以下软件的开发计算机：
     * Visual Studio 2015 或 Visual Studio 2019。

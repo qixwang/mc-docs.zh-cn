@@ -8,11 +8,11 @@ origin.date: 01/23/2020
 ms.date: 2/25/2020
 ms.author: v-lingwu
 ms.openlocfilehash: 3b2d541ff8211b9388fd9101d913f430b38b02b4
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78154829"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292740"
 ---
 # <a name="extract-data-from-utterance-text-with-intents-and-entities"></a>从包含意向和实体的话语文本中提取数据
 使用 LUIS 可以从用户的自然语言陈述中获取信息。 信息以一种程序、应用程序或聊天机器人能够使用其来采取操作的方式进行提取。 在以下部分中，通过 JSON 示例了解从意向和实体返回了什么数据。

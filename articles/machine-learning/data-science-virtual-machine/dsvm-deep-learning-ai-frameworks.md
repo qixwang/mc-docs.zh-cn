@@ -11,16 +11,16 @@ ms.author: gopalv
 ms.topic: conceptual
 ms.date: 10/1/2019
 ms.openlocfilehash: 9414459ebf4380b6689ae4d0279e5bd41cadc7b5
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75599039"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292649"
 ---
 # <a name="deep-learning-and-ai-frameworks-for-the-azure-data-science-vm"></a>适用于 Azure Data Science VM 的深度学习和人工智能框架
 下面列出了 DSVM 上的深度学习框架。
 
-## <a name="caffehttpsgithubcombvlccaffe"></a>[Caffe](https://github.com/BVLC/caffe)
+## <a name="caffe"></a>[Caffe](https://github.com/BVLC/caffe)
 
 |    |           |
 | ------------- | ------------- |
@@ -29,7 +29,7 @@ ms.locfileid: "75599039"
 | 如何在 DSVM 上配置/安装它？  | Caffe 在 `/opt/caffe` 中安装。   示例位于 `/opt/caffe/examples` 中。|
 | 运行方式      | 使用 X2Go 登录 VM，然后启动新终端并输入以下内容：<br/>`cd /opt/caffe/examples`<br/>`source activate root`<br/>`jupyter notebook`<br/><br/>系统将打开显示示例笔记本的新浏览器窗口。 二进制文件安装在 /opt/caffe/build/install/bin 中。<br/><br/>已安装的 Caffe 版本需要使用 Python 2.7，不会使用默认激活的 Python 3.5。 要切换到 Python 2.7，请运行 `source activate root` 以切换到 Anaconda 环境。|    
 
-## <a name="caffe2httpsgithubcomcaffe2caffe2"></a>[Caffe2](https://github.com/caffe2/caffe2)
+## <a name="caffe2"></a>[Caffe2](https://github.com/caffe2/caffe2)
 
 |    |           |
 | ------------- | ------------- |
@@ -38,7 +38,7 @@ ms.locfileid: "75599039"
 | 如何在 DSVM 上配置/安装它？  | Caffe2 安装在 [Python 2.7 (root) conda 环境中。 |
 | 运行方式      | 终端：启动 Python，并导入 Caffe2。 <br/> * JupyterHub：[连接到 JupyterHub](dsvm-ubuntu-intro.md#how-to-access-the-ubuntu-data-science-virtual-machine)，然后导航到 Caffe2 目录，以查找示例笔记本。 某些笔记本需要在 Python 代码中设置 Caffe2 根；输入 /opt/caffe2。 |
 
-## <a name="chainerhttpschainerorg"></a>[Chainer](https://chainer.org/)
+## <a name="chainer"></a>[Chainer](https://chainer.org/)
 
 |    |           |
 | ------------- | ------------- |
@@ -47,7 +47,7 @@ ms.locfileid: "75599039"
 | 如何在 DSVM 上配置/安装它？  | Chainer 安装在 Python 3.5 中。 |
 | 运行方式      | 终端：激活 Python 3.5 环境，运行 `python`，然后运行 `import chainer`。 <br/> * JupyterHub：[连接到 JupyterHub](dsvm-ubuntu-intro.md#how-to-access-the-ubuntu-data-science-virtual-machine)，然后导航到 Chainer 目录，以查找示例笔记本。| 
 
-## <a name="cuda-cudnn-nvidia-driverhttpsdevelopernvidiacomcuda-toolkit"></a>[CUDA、cuDNN、NVIDIA 驱动程序](https://developer.nvidia.com/cuda-toolkit)
+## <a name="cuda-cudnn-nvidia-driver"></a>[CUDA、cuDNN、NVIDIA 驱动程序](https://developer.nvidia.com/cuda-toolkit)
 
 |    |           |
 | ------------- | ------------- |
@@ -57,7 +57,7 @@ ms.locfileid: "75599039"
 | 运行方式      | 打开命令提示符（在 Windows 上）或终端（在 Linux 上），然后运行 nvidia-smi  。 |
 
 
-## <a name="horovodhttpsgithubcomuberhorovod"></a>[Horovod](https://github.com/uber/horovod)
+## <a name="horovod"></a>[Horovod](https://github.com/uber/horovod)
 
 |    |           |
 | ------------- | ------------- |
@@ -66,7 +66,7 @@ ms.locfileid: "75599039"
 | 如何在 DSVM 上配置/安装它？  | Horovod 安装在 Python 3.5 中 |
 | 运行方式      | 在终端上激活正确的环境，然后运行 Python。 |
 
-## <a name="kerashttpskerasio"></a>[Keras](https://keras.io/)
+## <a name="keras"></a>[Keras](https://keras.io/)
 
 |    |           |
 | ------------- | ------------- |
@@ -75,7 +75,7 @@ ms.locfileid: "75599039"
 | 如何在 DSVM 上配置/安装它？  | Keras 在 Windows 上安装于 Python 3.6 中，在 Linux 上安装于 Python 3.5 中 |
 | 运行方式      | 在终端上激活正确的环境，然后运行 Python。 |
 
-## <a name="microsoft-cognitive-toolkit-cntkhttpsdocsmicrosoftcomcognitive-toolkit"></a>[Microsoft Cognitive Toolkit (CNTK)](https://docs.microsoft.com/cognitive-toolkit/)
+## <a name="microsoft-cognitive-toolkit-cntk"></a>[Microsoft Cognitive Toolkit (CNTK)](https://docs.microsoft.com/cognitive-toolkit/)
 
 |    |           |
 | ------------- | ------------- |
@@ -84,7 +84,7 @@ ms.locfileid: "75599039"
 | 如何在 DSVM 上配置/安装它？  | CNTK 在 [Windows 2016](dsvm-languages.md#python-windows-server-2016-edition) 上安装于 Python 3.6 中，在 [Linux](./dsvm-languages.md#python-linux-edition) 上安装于 Python 3.5 中 |
 | 运行方式      | 终端：激活正确的环境，然后运行 Python。 <br/>Jupyter：连接到 [Jupyter](provision-vm.md) 或 [JupyterHub](dsvm-ubuntu-intro.md#how-to-access-the-ubuntu-data-science-virtual-machine)，然后打开 CNTK 目录获取示例。 |
 
-## <a name="mxnethttpsmxnetapacheorg"></a>[MXNet](https://mxnet.apache.org/)
+## <a name="mxnet"></a>[MXNet](https://mxnet.apache.org/)
 |    |           |
 | ------------- | ------------- |
 | 支持的版本 | 1.3.0 |
@@ -92,7 +92,7 @@ ms.locfileid: "75599039"
 | 如何在 DSVM 上配置/安装它？  | MXNet 在 Windows 上安装于 `C:\dsvm\tools\mxnet` 中，在 Ubuntu 上安装于 `/dsvm/tools/mxnet` 中。 Python 绑定在 [Windows 2016](dsvm-languages.md#python-windows-server-2016-edition) 上安装于 Python 3.6 中，在 [Linux](./dsvm-languages.md#python-linux-edition) 上安装于 Python 3.5 中。Ubuntu DSVM 中也包含 R 绑定。 |
 | 运行方式      | 终端：激活正确的 conda 环境，然后运行 `import mxnet`。 <br/>Jupyter：连接到 [Jupyter](provision-vm.md#access-the-dsvm) 或 [JupyterHub](dsvm-ubuntu-intro.md#how-to-access-the-ubuntu-data-science-virtual-machine)，然后打开 `mxnet` 目录获取示例。 |
 
-## <a name="mxnet-model-serverhttpsgithubcomawslabsmxnet-model-serverquick-start"></a>[MXNet 模型服务器](https://github.com/awslabs/mxnet-model-server#quick-start)
+## <a name="mxnet-model-server"></a>[MXNet 模型服务器](https://github.com/awslabs/mxnet-model-server#quick-start)
 
 |    |           |
 | ------------- | ------------- |
@@ -101,7 +101,7 @@ ms.locfileid: "75599039"
 | 如何在 DSVM 上配置/安装它？  | MXNet 模型服务器在 [Windows 2016](dsvm-languages.md#python-windows-server-2016-edition) 上安装于 Python 3.6 中，在 [Linux](./dsvm-languages.md#python-linux-edition) 上安装于 Python 3.5 中 |
 | 运行方式      | 终端：首先，运行 `sudo systemctl stop jupyterhub` 以停止 JupyterHub 服务，因为这两者侦听相同的端口。 然后，激活正确的 conda 环境，并运行 `mxnet-model-server --start --models squeezenet=https://s3.amazonaws.com/model-server/model_archive_1.0/squeezenet_v1.1.mar` |
 
-## <a name="nvidia-system-management-interface-nvidia-smihttpsdevelopernvidiacomnvidia-system-management-interface"></a>[NVidia System Management Interface (nvidia-smi)](https://developer.nvidia.com/nvidia-system-management-interface)
+## <a name="nvidia-system-management-interface-nvidia-smi"></a>[NVidia System Management Interface (nvidia-smi)](https://developer.nvidia.com/nvidia-system-management-interface)
 
 |    |           |
 | ------------- | ------------- |
@@ -111,7 +111,7 @@ ms.locfileid: "75599039"
 | 如何在 DSVM 上配置/安装它？  | `nvidia-smi` 位于系统路径上。 |
 | 运行方式      | 在具有 GPU 的虚拟机上，打开命令提示符（在 Windows 上）或终端（在 Linux 上），然后运行 `nvidia-smi`  。 |
 
-## <a name="pytorchhttpspytorchorg"></a>[PyTorch](https://pytorch.org/)
+## <a name="pytorch"></a>[PyTorch](https://pytorch.org/)
 
 |    |           |
 | ------------- | ------------- |
@@ -120,7 +120,7 @@ ms.locfileid: "75599039"
 | 如何在 DSVM 上配置/安装它？  | 安装在 [Python 3.5](dsvm-languages.md#python-linux-edition) 中。 示例 Jupyter 笔记本包含在内，并且示例位于 /dsvm/samples/pytorch 中。 |
 | 运行方式      | 终端：激活正确的环境，然后运行 Python。<br/>* [JupyterHub](dsvm-ubuntu-intro.md#how-to-access-the-ubuntu-data-science-virtual-machine)：进行连接，然后打开 PyTorch 目录获取示例。  |
 
-## <a name="tensorflowhttpswwwtensorfloworg"></a>[TensorFlow](https://www.tensorflow.org/)
+## <a name="tensorflow"></a>[TensorFlow](https://www.tensorflow.org/)
 
 |    |           |
 | ------------- | ------------- |
@@ -129,7 +129,7 @@ ms.locfileid: "75599039"
 | 如何在 DSVM 上配置/安装它？  | 在 [Linux](dsvm-languages.md#python-linux-edition) 上安装于 Python 3.5 中，在 [Windows 2016](dsvm-languages.md#python-windows-server-2016-edition) 上安装于 Python 3.6 中 |
 | 运行方式      | 终端：激活正确的环境，然后运行 Python。 <br/> * Jupyter：连接到 [Jupyter](provision-vm.md) 或 [JupyterHub](dsvm-ubuntu-intro.md#how-to-access-the-ubuntu-data-science-virtual-machine)，然后打开 TensorFlow 目录获取示例。   |
 
-## <a name="tensorflow-servinghttpswwwtensorfloworgserving"></a>[TensorFlow Serving](https://www.tensorflow.org/serving/)
+## <a name="tensorflow-serving"></a>[TensorFlow Serving](https://www.tensorflow.org/serving/)
 
 |    |           |
 | ------------- | ------------- |
@@ -139,7 +139,7 @@ ms.locfileid: "75599039"
 | 运行方式      |  可以[联机](https://www.tensorflow.org/serving/)获取示例。   |
 
 
-## <a name="theanohttpsgithubcomtheanotheano"></a>[Theano](https://github.com/Theano/Theano)
+## <a name="theano"></a>[Theano](https://github.com/Theano/Theano)
 
 |    |           |
 | ------------- | ------------- |

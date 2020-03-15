@@ -16,11 +16,11 @@ origin.date: 10/08/2018
 ms.date: 02/10/2020
 ms.author: v-yeche
 ms.openlocfilehash: 183c85f2b51f6cd67919eb19cdd364b775770b2d
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77428672"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292512"
 ---
 # <a name="information-for-non-endorsed-distributions"></a>有关未认可分发版的信息
 

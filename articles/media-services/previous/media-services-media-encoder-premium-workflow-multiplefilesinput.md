@@ -17,11 +17,11 @@ ms.date: 09/23/2019
 ms.author: v-jay
 ms.reviewer: anilmur;juliako
 ms.openlocfilehash: 42dbd154dd2dd51f8211a0ed831eaee746a5d432
-ms.sourcegitcommit: 8248259e4c3947aa0658ad6c28f54988a8aeebf8
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71124584"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292409"
 ---
 # <a name="using-multiple-input-files-and-component-properties-with-premium-encoder"></a>在高级编码器中使用多个输入文件和组件属性
 ## <a name="overview"></a>概述
@@ -30,12 +30,12 @@ ms.locfileid: "71124584"
 * 在每个输入视频运行时，覆盖视频中的文本和设置文本值（例如，当前日期）。
 * 自定义剪辑列表 XML（以指定一个或多个包含或不包含剪裁的源文件等）。
 * 对视频进行编码时覆盖输入视频中的徽标图像
-* 多个音频语言编码。
+* 多种音频语言编码。
 
-若要在创建任务或发送多个输入文件时让**媒体编码器高级工作流**知道要更改工作流中的某些属性，必须使用包含 **setRuntimeProperties** 和/或 **transcodeSource** 的配置字符串。 本主题说明其使用方式。
+若要在创建任务或发送多个输入文件时让**媒体编码器高级工作流**知道要更改工作流中的某些属性，必须使用包含 **setRuntimeProperties** 和/或 **transcodeSource** 的配置字符串。 本主题介绍了如何使用这些字符串。
 
 ## <a name="configuration-string-syntax"></a>配置字符串语法
-要在编码任务中设置的配置字符串使用类似以下的 XML 文档：
+要在编码任务中设置的配置字符串使用类似于下面的 XML 文档：
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -80,9 +80,9 @@ task.OutputAssets.AddNew("Output asset", AssetCreationOptions.None);
 ### <a name="property-with-a-simple-value"></a>具有简单值的属性
 在某些情况下，适合在媒体编码器高级工作流将要执行的工作流文件中一起自定义组件属性。
 
-假设设计了一个工作流，用于覆盖视频中文本，而这些文本（例如，当前日期）应在运行时进行设置。 为此，可以从编码任务发送设置为覆盖层组件文本属性的新值的文本。 可使用此机制更改工作流中的组件的其他属性（例如覆盖层的位置或颜色、AVC 编码器的比特率等）。
+假设设计了一个工作流，用于覆盖视频中文本，而这些文本（例如，当前日期）应在运行时进行设置。 若要执行此操作，可以从编码任务发送要设置为覆盖组件的文本属性的新值的文本。 可使用此机制更改工作流中的组件的其他属性（例如覆盖层的位置或颜色、AVC 编码器的比特率等）。
 
-**setRuntimeProperties** 用于覆盖工作流组件中的属性。
+**setRuntimeProperties** 用于覆盖工作流组件的属性。
 
 示例：
 
@@ -136,9 +136,9 @@ task.OutputAssets.AddNew("Output asset", AssetCreationOptions.None);
 
 ### <a name="propertypath-value"></a>propertyPath 值
 在前面的示例中，propertyPath 为“/Media File Input/filename”、“/inactiveTimeout”或“clipListXml”。
-通常是组件名称后接属性名称。 路径可以包含更多或更少的级别，例如“/primarySourceFile”（因为属性位于工作流的根目录）或“/Video Processing/Graphic Overlay/Opacity”（因为覆盖层在组中）。    
+该值通常是组件名称后接属性名称。 路径可以包含更多或更少的级别，例如“/primarySourceFile”（因为属性位于工作流的根目录）或“/Video Processing/Graphic Overlay/Opacity”（因为覆盖层在组中）。    
 
-若要检查路径和属性名称，使用紧靠在每个属性旁边的操作按钮。 可以单击此操作按钮，并选择“编辑”  。 随后会显示属性的实际名称，并在其正上方显示命名空间。
+若要检查路径和属性名称，请使用紧靠在每个属性旁边的操作按钮。 可以单击此操作按钮，并选择“编辑”  。 随后会显示属性的实际名称，并在其正上方显示命名空间。
 
 ![操作/编辑](./media/media-services-media-encoder-premium-workflow-multiplefilesinput/capture6_actionedit.png)
 
@@ -147,7 +147,7 @@ task.OutputAssets.AddNew("Output asset", AssetCreationOptions.None);
 ## <a name="multiple-input-files"></a>多个输入文件
 提交给 **媒体编码器高级工作流** 的每个任务需要两个资产：
 
-* 第一个是工作流资产  ，其中包含工作流文件。 可以使用[工作流设计器](media-services-workflow-designer.md)来设计工作流文件。
+* 第一个是 *工作流资产* ，其中包含工作流文件。 可以使用[工作流设计器](media-services-workflow-designer.md)来设计工作流文件。
 * 第二个是媒体资产  ，其中包含要编码的媒体文件。
 
 将多个媒体文件发送到 **媒体编码器高级工作流** 编码器时存在以下限制：
@@ -273,7 +273,7 @@ task.OutputAssets.AddNew("Output asset", AssetCreationOptions.None);
 ## <a name="example-1--overlay-an-image-on-top-of-the-video"></a>示例 1：覆盖视频顶层的图像
 
 ### <a name="presentation"></a>呈现
-假设要在视频编码时覆盖输入视频中的徽标图像。 此示例中，输入视频命名为“Microsoft_HoloLens_Possibilities_816p24.mp4”，徽标命名为“logo.png”。 执行以下步骤：
+考虑这样一个示例：在对视频进行编码时覆盖输入视频中的徽标图像。 此示例中，输入视频命名为“Microsoft_HoloLens_Possibilities_816p24.mp4”，徽标命名为“logo.png”。 执行以下步骤：
 
 * 创建包含工作流文件的工作流资产（参阅以下示例）。
 * 创建媒体资产，其中包含两个文件：作为主文件的 MyInputVideo.mp4 以及 MyLogo.png。
@@ -302,7 +302,7 @@ task.OutputAssets.AddNew("Output asset", AssetCreationOptions.None);
 
 打开“工作流设计器”  ，并选择“文件”   > “新建工作区”   > “转码蓝图”  。
 
-新工作流显示了三个元素：
+此新工作流显示了 3 个元素：
 
 * 主源文件
 * 剪辑列表 XML
@@ -328,7 +328,7 @@ task.OutputAssets.AddNew("Output asset", AssetCreationOptions.None);
 
 完成此操作之后，媒体文件输入组件检查该文件，并填充其输出引脚，以反映它检查的文件。
 
-下一步是添加一个“视频数据类型更新器”，以将颜色空间指定为 Rec.709。 添加设置为“数据布局/布局类型 = 可配置平面”的“视频格式转换器”。 这会将视频流转换为可以用作覆盖层组件源的格式。
+下一步是添加一个“视频数据类型更新器”，以将颜色空间指定为 Rec.709。 添加“视频格式转换器”，并将其“数据布局/布局类型”设置为“可配置平面”。 这会将视频流转换为可以用作覆盖层组件源的格式。
 
 ![视频数据类型更新器和格式转换器](./media/media-services-media-encoder-premium-workflow-multiplefilesinput/capture12_formatconverter.png)
 
@@ -336,7 +336,7 @@ task.OutputAssets.AddNew("Output asset", AssetCreationOptions.None);
 
 ![布局类型 = 可配置平面](./media/media-services-media-encoder-premium-workflow-multiplefilesinput/capture12_formatconverter2.png)
 
-布局类型是可配置平面 
+*布局类型为可配置平面*
 
 接下来，添加一个视频覆盖层组件，并将（未压缩的）视频插针连接到媒体文件输入的（未压缩的）视频插针。
 
@@ -344,9 +344,9 @@ task.OutputAssets.AddNew("Output asset", AssetCreationOptions.None);
 
 ![覆盖层组件和图像文件源](./media/media-services-media-encoder-premium-workflow-multiplefilesinput/capture13_overlay.png)
 
-覆盖层组件和图像文件源 
+*覆盖层组件和图像文件源*
 
-若要修改视频中徽标的位置（例如，需要将其放在距离视频左上角 10% 处），可清除“手动输入”复选框。 由于使用媒体文件输入为覆盖层组件提供徽标文件，因此可以执行此操作。
+若要修改视频中徽标的位置（例如，需要将其放在距离视频左上角 10% 处），可清除“手动输入”复选框。 由于使用媒体文件输入组件向覆盖组件提供徽标文件，因此可以执行此操作。
 
 ![覆盖层位置](./media/media-services-media-encoder-premium-workflow-multiplefilesinput/capture14_overlay_position.png)
 
@@ -357,7 +357,7 @@ task.OutputAssets.AddNew("Output asset", AssetCreationOptions.None);
 
 ![音频和视频编码器](./media/media-services-media-encoder-premium-workflow-multiplefilesinput/capture15_encoders.png)
 
-音频和视频编码器 
+*音频和视频编码器*
 
 现在，添加“ISO Mpeg-4 多路复用器”  和“文件输出”  组件并连接插针，如下所示。
 
@@ -379,7 +379,7 @@ task.OutputAssets.AddNew("Output asset", AssetCreationOptions.None);
 
 首先，在 Azure 媒体服务中准备包含以下两个文件的资产：视频文件和徽标。 可以使用 .NET 或 REST API 来执行此操作。 也可以使用 Azure 门户或 [Azure 媒体服务资源管理器](https://github.com/Azure/Azure-Media-Services-Explorer) (AMSE) 来执行此操作。
 
-本教程说明如何使用 AMSE 来管理资产。 有两种方式可将文件添加到资产：
+本教程介绍如何使用 AMSE 来管理资产。 有两种方式可将文件添加到资产：
 
 * 创建一个本地文件夹，在其中复制这两个文件，然后将该文件夹拖放到“资产”  选项卡。
 * 将视频文件作为资产上传，显示资产信息，转到文件选项卡，然后上传另一个文件（徽标）。
@@ -471,7 +471,7 @@ public ITask AddNew(string taskName, IMediaProcessor mediaProcessor, string conf
 * [在 Azure 媒体服务中引入高级编码](https://azure.microsoft.com/blog/2015/03/05/introducing-premium-encoding-in-azure-media-services)
 * [如何在 Azure 媒体服务中使用高级编码](https://azure.microsoft.com/blog/2015/03/06/how-to-use-premium-encoding-in-azure-media-services)
 * [使用 Azure 媒体服务对按需内容进行编码](media-services-encode-asset.md#media-encoder-premium-workflow)
-* [媒体编码器高级工作流格式和编解码器](media-services-premium-workflow-encoder-formats.md)
+* [媒体编码器高级工作流的格式和编解码器](media-services-premium-workflow-encoder-formats.md)
 * [示例工作流文件](https://github.com/Azure/azure-media-services-samples)
 * [Azure 媒体服务资源管理器工具](https://aka.ms/amse)
 

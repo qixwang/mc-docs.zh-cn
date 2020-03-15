@@ -6,14 +6,14 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 origin.date: 10/12/2018
-ms.date: 03/09/2020
+ms.date: 03/23/2020
 ms.author: v-yiso
-ms.openlocfilehash: c871b0229e6d29681ca9ba19e0022034068bbe2a
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.openlocfilehash: 400b98f6ec6bb76de8f105c857ca036f7121d739
+ms.sourcegitcommit: 32997a7d7585deaeb0ab7b8f928d397b18b343fa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78154492"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79295985"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>使用 MQTT 协议与 IoT 中心通信
 
@@ -156,8 +156,6 @@ device_client = IoTHubDeviceClient.create_from_connection_string(deviceConnectio
 •   SubscribeMQTTWin32：包含用于在 Windows 计算机上订阅给定 IoT 中心事件的代码。
 
 •   DeviceTwinMQTTWin32：包含用于在 Windows 计算机上查询和订阅 Azure IoT 中心内设备的设备孪生事件的代码。
-
-•   PnPMQTTWin32：包含使用 IoT 即插即用预览设备功能将遥测消息发送到在 Windows 计算机上生成并运行的 Azure IoT 中心的代码。 有关 IoT 即插即用的更多信息，请参阅[此处](https://docs.microsoft.com/en-us/azure/iot-pnp/overview-iot-plug-and-play)
 
 **对于 Linux：**
 
@@ -318,7 +316,7 @@ Request ID 可以是消息属性值的任何有效值（如 [IoT 中心消息传
 
 |状态 | 说明 |
 | ----- | ----------- |
-| 204 | 成功（不返回任何内容） |
+| 200 | Success |
 | 429 | 请求过多（受限），如 [IoT 中心限制][lnk-quotas]中所述 |
 | 5** | 服务器错误 |
 
@@ -349,7 +347,7 @@ Request ID 可以是消息属性值的任何有效值（如 [IoT 中心消息传
 
 |状态 | 说明 |
 | ----- | ----------- |
-| 200 | Success |
+| 204 | 成功（不返回任何内容） |
 | 400 | 错误的请求。 格式不正确的 JSON |
 | 429 | 请求过多（受限），如 [IoT 中心限制][lnk-quotas]中所述 |
 | 5** | 服务器错误 |

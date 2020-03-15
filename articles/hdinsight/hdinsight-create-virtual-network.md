@@ -9,11 +9,11 @@ ms.topic: conceptual
 origin.date: 07/23/2019
 ms.date: 09/16/2019
 ms.openlocfilehash: a97137bb3b0801d0aae7e51e456a7d9e66484f93
-ms.sourcegitcommit: fbc7584f403417d3af7bd6bbbaed7c13a78c57b9
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78412257"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292083"
 ---
 # <a name="create-virtual-networks-for-azure-hdinsight-clusters"></a>为 Azure HDInsight 群集创建虚拟网络
 

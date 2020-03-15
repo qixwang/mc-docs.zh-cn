@@ -12,11 +12,11 @@ origin.date: 02/2/2020
 ms.date: 02/27/2020
 ms.custom: v-lingwu
 ms.openlocfilehash: 149d840567612037e5a5b20da6bc315da7505a9c
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78154621"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292691"
 ---
 # <a name="azure-stream-analytics-output-to-azure-cosmos-db"></a>Azure Cosmos DB 的 Azure 流分析输出  
 流分析可以针对 [Azure Cosmos DB](/documentdb/) 进行 JSON 输出，从而支持对非结构化 JSON 数据进行数据存档和低延迟查询。 本文档包括用于实现此配置的一些最佳做法。

@@ -9,13 +9,14 @@ ms.topic: tutorial
 author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
-ms.date: 11/04/2019
-ms.openlocfilehash: bcb02a86ee7aba10e60ec15f717ca6ebe4301e52
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+origin.date: 11/04/2019
+ms.date: 03/16/2020
+ms.openlocfilehash: 1a71dcec93d30afc7d56999548b93b9bcfeedc0c
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75599174"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293373"
 ---
 # <a name="tutorial-train-your-first-ml-model"></a>教程：训练第一个 ML 模型
 
@@ -35,7 +36,7 @@ ms.locfileid: "75599174"
 
 唯一的先决条件是运行本教程的第一部分：[设置环境和工作区](tutorial-1st-experiment-sdk-setup.md)。
 
-在本教程的这一部分中，你将运行在第一部分结束时打开的示例 Jupyter Notebook `tutorials/tutorial-1st-experiment-sdk-train.ipynb` 中的代码。 本文将介绍此 Notebook 中的相同代码。
+在本教程的这一部分中，你将运行在第一部分末尾打开的示例 Jupyter 笔记本 tutorials/create-first-ml-experiment/tutorial-1st-experiment-sdk-train.ipynb  中的代码。 本文将介绍此 Notebook 中的相同代码。
 
 ## <a name="open-the-notebook"></a>打开笔记本
 
@@ -45,7 +46,7 @@ ms.locfileid: "75599174"
 
 
 > [!Warning]
-> 在 Jupyter 界面中**不**创建*新的*笔记本！ 笔记本`tutorials/tutorial-1st-experiment-sdk-train.ipynb`包含本教程**所需的所有代码和数据**。
+> 在 Jupyter 界面中**不**创建*新的*笔记本！ 笔记本 tutorials/create-first-ml-experiment/tutorial-1st-experiment-sdk-train.ipynb  包含本教程**所需的所有代码和数据**。
 
 ## <a name="connect-workspace-and-create-experiment"></a>连接工作区并创建试验
 
@@ -64,7 +65,7 @@ from azureml.core import Workspace
 ws = Workspace.from_config()
 ```
 
-现在，请在工作区中创建一个试验。 试验是另一项基础云资源，代表一系列试运行（各个模型运行）。 本教程使用试验来创建运行并在 Azure 机器学习工作室中跟踪模型训练。 参数包含工作区引用，以及试验的字符串名称。
+现在，请在工作区中创建一个试验。 试验是代表一系列试运行（各个模型运行）的另一个基础云资源。 本教程使用试验来创建运行并在 Azure 机器学习工作室中跟踪模型训练。 参数包含工作区引用，以及试验的字符串名称。
 
 
 ```python
@@ -89,7 +90,7 @@ X_train, X_test, y_train, y_test = train_test_split(x_df, y_df, test_size=0.2, r
 
 ## <a name="train-a-model"></a>训练模型
 
-进行小规模的训练时，在本地就能轻松训练一个简单的 scikit-learn 学习模型；但是，如果训练涉及数十个不同的特征组合方式和超参数设置并需要进行多次迭代时，就很容易记不清已训练的模型及其训练方式。 以下设计模式演示如何利用 SDK 轻松跟踪云中的训练。
+进行小规模的训练时，在本地就能轻松训练一个简单的 scikit-learn 学习模型；但是，在训练包含数十个不同特征组合方式和超参数设置的多个迭代时，很容易就会失去已训练的模型及其训练方式的跟踪。 以下设计模式演示如何利用 SDK 轻松跟踪云中的训练。
 
 生成一个脚本，用于通过不同的超参数 alpha 值训练循环中的岭回归模型。
 

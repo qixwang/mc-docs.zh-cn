@@ -16,11 +16,11 @@ origin.date: 04/01/2019
 ms.date: 09/23/2019
 ms.author: v-jay
 ms.openlocfilehash: 274c6f068614a8d1255b3062592a15aa8b55f9b0
-ms.sourcegitcommit: 8248259e4c3947aa0658ad6c28f54988a8aeebf8
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71124589"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292375"
 ---
 # <a name="use-aes-128-dynamic-encryption-and-the-key-delivery-service"></a>使用 AES-128 动态加密和密钥传递服务
 > [!div class="op_single_selector"]
@@ -55,7 +55,7 @@ ms.locfileid: "71124589"
 
 5. [为资产配置传送策略](media-services-protect-with-aes128.md#configure_asset_delivery_policy)。 传送策略配置包括密钥获取 URL 和初始化矢量 (IV)。 （进行加密和解密时，AES-128 要求提供同一个 IV。）配置中还包括传送协议（例如 MPEG-DASH、HLS、平滑流式处理或全部）和动态加密类型（例如信封或无动态加密）。
 
-    可以将不同的策略应用到同一资产上的每个协议。 例如，可以将 PlayReady 加密应用到平滑流/DASH，将 AES 信封应用到 HLS。 将阻止流式处理传送策略中未定义的任何协议。 （例如，添加仅将 HLS 指定为协议的单个策略。）如果根本没有定义任何资产传送策略，则属例外。 此时，允许所有明文形式的协议。
+    可以对同一资产上的不同协议应用不同的策略。 例如，可以将 PlayReady 加密应用到平滑流/DASH，将 AES 信封应用到 HLS。 将阻止流式处理传送策略中未定义的任何协议。 （例如，添加仅将 HLS 指定为协议的单个策略。）如果根本没有定义任何资产传送策略，则属例外。 此时，允许所有明文形式的协议。
 
 6. [创建 OnDemand 定位符](media-services-protect-with-aes128.md#create_locator)以获取流式处理 URL。
 
@@ -81,7 +81,7 @@ ms.locfileid: "71124589"
 使用动态加密时，可创建一项资产，其中包含一组多码率 MP4 文件或多比特率平滑流式处理源文件。 然后，按需流式处理服务器会确保以选定的协议按清单或分段请求中的指定格式接收流。 然后，只需存储使用单一存储格式的文件并为其付费。 媒体服务会根据客户端的请求生成并提供适当的响应。 有关详细信息，请参阅[动态打包概述](media-services-dynamic-packaging-overview.md)。
 
 >[!NOTE]
->创建媒体服务帐户时，会将一个处于“已停止”状态的默认流式处理终结点添加到帐户。 若要开始流式传输内容并利用动态打包和动态加密，必须确保流式处理终结点处于“正在运行”状态，以便从其流式传输内容。 
+>创建媒体服务帐户后，一个处于“已停止”状态的默认流式处理终结点会添加到帐户。 若要开始流式传输内容并利用动态打包和动态加密，传出流式传输内容的流式处理终结点必须处于“正在运行”状态。 
 >
 >此外，若要使用动态打包和动态加密，资产必须包含一组自适应比特率 MP4 或自适应比特率平滑流式处理文件。
 

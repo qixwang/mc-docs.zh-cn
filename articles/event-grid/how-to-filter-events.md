@@ -9,11 +9,11 @@ origin.date: 01/21/2020
 ms.author: v-yiso
 ms.date: 02/17/2020
 ms.openlocfilehash: c234db039902bd253ad870dc2a4a5ed6681462da
-ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77068320"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292270"
 ---
 # <a name="filter-events-for-event-grid"></a>筛选事件网格的事件
 

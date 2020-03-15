@@ -1,7 +1,6 @@
 ---
 title: 使用 Azure Monitor 从 Azure 虚拟机收集数据 | Microsoft Docs
 description: 了解如何启用 Log Analytics 代理 VM 扩展，以及启用通过 Log Analytics 从 Azure VM 收集数据的功能。
-ms.service: azure-monitor
 author: lingliw
 manager: digimobile
 ms.subservice: logs
@@ -10,12 +9,12 @@ origin.date: 08/19/2019
 ms.date: 08/22/2019
 ms.author: v-lingwu
 ms.custom: mvc, sec-javascript-october2019
-ms.openlocfilehash: d24266cd6696a1382d9dcfe5da25a337d4d452fe
-ms.sourcegitcommit: 3a9c13eb4b4bcddd1eabca22507476fb34f89405
+ms.openlocfilehash: ef0824763d599a86a48f12f608f5afa36b5cbc22
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74528239"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293406"
 ---
 # <a name="collect-data-from-an-azure-virtual-machine-with-azure-monitor"></a>使用 Azure Monitor 从 Azure 虚拟机收集数据
 
@@ -24,7 +23,7 @@ ms.locfileid: "74528239"
 本快速入门假定你拥有现有 Azure 虚拟机。 如果没有，可根据 VM 快速入门[创建 Windows VM](../../virtual-machines/windows/quick-create-portal.md) 或[创建 Linux VM](../../virtual-machines/linux/quick-create-cli.md)。
 
 ## <a name="sign-in-to-azure-portal"></a>登录到 Azure 门户
-通过 [https://portal.azure.cn](https://portal.azure.cn) 登录到 Azure 门户。 
+在 [https://portal.azure.cn](https://portal.azure.cn) 中登录 Azure 门户。 
 
 ## <a name="create-a-workspace"></a>创建工作区
 

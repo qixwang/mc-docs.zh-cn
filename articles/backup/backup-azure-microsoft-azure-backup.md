@@ -6,12 +6,12 @@ author: lingliw
 origin.date: 11/13/2018
 ms.date: 11/26/2018
 ms.author: v-lingwu
-ms.openlocfilehash: 37ffccf5cd450832bb61e3d8ef78ef8493b12a76
-ms.sourcegitcommit: 27eaabd82b12ad6a6840f30763034a6360977186
+ms.openlocfilehash: 524664bd36c85201a71c1e4b72eebd4fe5eced37
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77497644"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291648"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>安装和升级 Azure 备份服务器 
 <a name="install-and-upgrade-azure-backup-server"></a>
@@ -168,9 +168,6 @@ Azure 备份服务器从 Data Protection Manager (DPM) 继承了大量工作负�
 
     如果发生故障并且系统建议重启计算机，请按说明操作，然后单击“再次检查”  。 如果遇到任何 SQL 配置问题，请根据 SQL 准则重新配置 SQL，然后使用现有的 SQL 实例重试安装/升级 MABS。
 
-   > [!NOTE]
-   > Azure 备份服务器不能与远程 SQL Server 实例配合使用。 Azure 备份服务器使用的实例需在本地。 如果对 MABS 使用现有的 SQL Server，MABS 安装程序仅支持使用 SQL Server 的命名实例。 
-
    **手动配置**
 
    使用自己的 SQL 实例时，请务必将 builtin\Administrators 添加到 master 数据库的 sysadmin 角色。
@@ -222,7 +219,7 @@ Azure 备份服务器从 Data Protection Manager (DPM) 继承了大量工作负�
 
 ### <a name="add-backup-storage"></a>添加备份存储
 
-第一个备份副本保存在已附加到 Azure 备份服务器计算机的存储中。 有关添加磁盘的详细信息，请参阅[配置存储池和磁盘存储](https://docs.microsoft.com/azure/backup/backup-mabs-add-storage)。
+第一个备份副本保存在已附加到 Azure 备份服务器计算机的存储中。 有关添加磁盘的详细信息，请参阅[配置存储池和磁盘存储](/backup/backup-mabs-add-storage)。
 
 > [!NOTE]
 > 即使你打算将数据发送到 Azure，也需要添加备份存储。 在当前的 Azure 备份服务器体系结构中，Azure 备份保管库将保存数据的*第二个*副本，而本地存储将保存第一个（必需的）备份副本。

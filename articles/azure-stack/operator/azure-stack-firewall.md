@@ -9,11 +9,11 @@ ms.author: v-jay
 ms.reviewer: thoroet
 ms.lastreviewed: 11/15/2019
 ms.openlocfilehash: 9d5dc985c0a822bd2fa40167b8ad03a11adf63ed
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77540996"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291449"
 ---
 # <a name="azure-stack-hub-firewall-integration"></a>Azure Stack Hub 防火墙集成
 建议使用防火墙设备来帮助保护 Azure Stack Hub。 防火墙有助于防止分布式拒绝服务 (DDOS) 攻击之类的攻击，以及执行入侵检测和内容检查。 但是，它们也可能成为 Azure 存储服务（例如 Blob、表和队列）的吞吐量瓶颈。

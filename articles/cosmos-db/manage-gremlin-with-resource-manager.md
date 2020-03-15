@@ -8,11 +8,11 @@ origin.date: 11/12/2019
 ms.date: 02/10/2020
 ms.author: v-yeche
 ms.openlocfilehash: a9955f832ffee55c6136e29d8f31bc5ff75d2e7b
-ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77028929"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292542"
 ---
 # <a name="manage-azure-cosmos-db-gremlin-api-resources-using-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板管理 Azure Cosmos DB Gremlin API 资源
 

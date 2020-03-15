@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: big-data
-origin.date: 06/13/2019
-ms.date: 10/28/2019
+origin.date: 02/25/2020
+ms.date: 03/23/2020
 ms.author: v-yiso
-ms.openlocfilehash: e4a0c3007e6a14559c54f3155c7aee7dc5d3fa9b
-ms.sourcegitcommit: c21b37e8a5e7f833b374d8260b11e2fb2f451782
+ms.openlocfilehash: 460e27445878cdb4e464efbd858729e14e8372dc
+ms.sourcegitcommit: 32997a7d7585deaeb0ab7b8f928d397b18b343fa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72583830"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79295951"
 ---
 # <a name="what-is-apache-kafka-in-azure-hdinsight"></a>什么是 Azure HDInsight 中的 Apache Kafka
 
@@ -45,7 +45,7 @@ Kafka on HDInsight 的具体特征如下：
 
     有关详细信息，请参阅[使用 Apache Kafka on HDInsight 实现高可用性](apache-kafka-high-availability.md)。
 
-### <a name="apache-kafka-on-hdinsight-architecture"></a>Apache Kafka on HDInsight 体系结构
+## <a name="apache-kafka-on-hdinsight-architecture"></a>Apache Kafka on HDInsight 体系结构
 
 下图显示了一个典型的 Kafka 配置，该配置利用使用者组、分区和复制提供带容错功能的事件并行读取：
 
@@ -63,41 +63,25 @@ Kafka 将记录（数据）存储在主题中  。 记录由**生成者**生成�
 
 以下是可使用 Kafka on HDInsight 执行的常见任务和模式：
 
-* **Apache Kafka 数据复制**：Kafka 提供了 MirrorMaker 实用工具，用于在 Kafka 群集之间复制数据。
-
-    有关使用 MirrorMaker 的信息，请参阅[使用 Apache Kafka on HDInsight 复制 Apache Kafka 主题](apache-kafka-mirroring.md)。
-
-* **发布-订阅消息传送模式**：Kafka 提供了生成者 API 来用于向 Kafka 主题发布记录。 订阅某个主题时，会用到使用者 API。
-
-    有关详细信息，请参阅 [Apache Kafka on HDInsight 入门](apache-kafka-get-started.md)。
-
-* **流处理**：Kafka 通常与 Apache Storm 或 Spark 配合使用，以实现实时流式处理。 Kafka 0.10.0.0（HDInsight 版本 3.5 和 3.6）引入了流式处理 API，可用于构建流式处理解决方案，而无需使用 Storm 或 Spark。
-
-    有关详细信息，请参阅 [Apache Kafka on HDInsight 入门](apache-kafka-get-started.md)。
-
-* **横向缩放**：Kafka 可将 HDInsight 群集中不同节点之间的流进行分区。 使用者进程可与单个分区相关联，在使用记录时提供负载均衡。
-
-    有关详细信息，请参阅 [Apache Kafka on HDInsight 入门](apache-kafka-get-started.md)。
-
-* **按序送达**：在每个分区中，记录按接收顺序存储在流中。 通过在使用者进程与分区之间建立一对一的关联，可以保证记录按顺序处理。
-
-    有关详细信息，请参阅 [Apache Kafka on HDInsight 入门](apache-kafka-get-started.md)。
-
-## <a name="use-cases"></a>用例
-
-* **消息传送**：由于支持发布-订阅消息模式，Kafka 通常用作消息中转站。
-
-* **活动跟踪**：由于 Kafka 提供有序的日志记录，因此可用于跟踪和重建活动， 例如，网站上或应用程序内的用户操作。
-
-* **聚合**：使用流处理可从不同的流中聚合信息，将信息合并和集中到运营数据中。
-
-* **转换**：使用流处理可将多个输入主题中的数据合并到一个或多个输出主题中，丰富其内容。
+|用途 |说明 |
+|---|---|
+|复制 Apache Kafka 数据|Kafka 提供了 MirrorMaker 实用工具，用于在 Kafka 群集之间复制数据。 有关使用 MirrorMaker 的信息，请参阅[使用 Apache Kafka on HDInsight 复制 Apache Kafka 主题](apache-kafka-mirroring.md)。|
+|发布-订阅消息模式|Kafka 提供了生成者 API 来用于向 Kafka 主题发布记录。 订阅某个主题时，会用到使用者 API。 有关详细信息，请参阅 [Apache Kafka on HDInsight 入门](apache-kafka-get-started.md)。|
+|流处理|Kafka 通常与 Apache Storm 或 Spark 配合使用，以实现实时流式处理。 Kafka 0.10.0.0（HDInsight 版本 3.5 和 3.6）引入了流式处理 API，可用于构建流式处理解决方案，而无需使用 Storm 或 Spark。 有关详细信息，请参阅 [Apache Kafka on HDInsight 入门](apache-kafka-get-started.md)。|
+|横向缩放|Kafka 可将 HDInsight 群集中不同节点之间的流进行分区。 使用者进程可与单个分区相关联，在使用记录时提供负载均衡。 有关详细信息，请参阅 [Apache Kafka on HDInsight 入门](apache-kafka-get-started.md)。|
+|按序送达|在每个分区中，记录按接收顺序存储在流中。 通过在使用者进程与分区之间建立一对一的关联，可以保证记录按顺序处理。 有关详细信息，请参阅 [Apache Kafka on HDInsight 入门](apache-kafka-get-started.md)。|
+|消息传送|由于支持发布-订阅消息模式，Kafka 通常用作消息中转站。|
+|活动跟踪|由于 Kafka 提供有序的日志记录，因此可用于跟踪和重建活动， 例如，网站上或应用程序内的用户操作。|
+|聚合|使用流处理可从不同的流中聚合信息，将信息合并和集中到运营数据中。|
+|转换|使用流处理可将多个输入主题中的数据合并到一个或多个输出主题中，丰富其内容。|
 
 ## <a name="next-steps"></a>后续步骤
 
 单击以下链接了解如何使用 Apache Kafka on HDInsight：
 
 * [快速入门：在 HDInsight 上创建 Apache Kafka](apache-kafka-get-started.md)
+
+* [将 Kafka 与 REST 代理配合使用](rest-proxy.md)
 
 * [教程：在 HDInsight 上将 Apache Spark 与 Apache Kafka 配合使用](../hdinsight-apache-spark-with-kafka.md)
 

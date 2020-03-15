@@ -10,11 +10,11 @@ origin.date: 07/03/2019
 ms.date: 07/22/2019
 ms.author: v-jay
 ms.openlocfilehash: b185921b761ba6d877c31e3777be459f4833aacd
-ms.sourcegitcommit: 98cc8aa5b8d0e04cd4818b34f5350c72f617a225
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68298247"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293375"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-heavy-via-nfs"></a>教程：通过 NFS 将数据复制到 Azure Data Box Heavy
 

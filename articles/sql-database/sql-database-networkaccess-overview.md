@@ -12,13 +12,13 @@ author: WenJason
 ms.author: v-jay
 ms.reviewer: vanto
 origin.date: 08/05/2019
-ms.date: 02/17/2020
-ms.openlocfilehash: 3b1d51869b84fdda2966180acf5e3b6cb69ab502
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.date: 03/16/2020
+ms.openlocfilehash: 8bf2e63f27b5fa447bd6c9866c8a47264b37a33f
+ms.sourcegitcommit: dc862610e2169c1fce6fb0ae9eb7dd7567f86a0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78154847"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293694"
 ---
 # <a name="azure-sql-database-and-data-warehouse-network-access-controls"></a>Azure SQL 数据库和数据仓库网络访问控制
 
@@ -37,7 +37,11 @@ ms.locfileid: "78154847"
 
 
 ## <a name="allow-azure-services"></a>允许 Azure 服务 
-创建 Azure SQL Server 之后，可以按如下所示通过“防火墙”窗格更改此设置。
+[从 Azure 门户](sql-database-single-database-get-started.md)创建新的 Azure SQL Server 期间，此设置将保持未选中状态。
+
+ ![创建新服务器的屏幕截图][1]
+
+创建 Azure SQL Server 之后，也可以按如下所示通过“防火墙”窗格更改此设置。
   
  ![管理服务器防火墙的屏幕截图][2]
 
@@ -104,7 +108,7 @@ start          end
 
 **子网：** 虚拟网络包含**子网**。 你所拥有的任何 Azure 虚拟机 (VM) 都会分配到子网。 一个子网可能包含多个 VM 或其他计算节点。 虚拟网络之外的计算节点不能访问虚拟网络，除非已将安全性配置为允许这样的访问。
 
-**虚拟网络服务终结点：** [虚拟网络服务终结点][vm-virtual-network-service-endpoints-overview-649d] 是一个子网，其属性值包括一个或多个正式的 Azure 服务类型名称。 本文介绍 **Microsoft.Sql** 的类型名称，即名为“SQL 数据库”的 Azure 服务。
+**虚拟网络服务终结点：** [虚拟网络服务终结点](../virtual-network/virtual-network-service-endpoints-overview.md)是一个子网，其属性值包括一个或多个正式的 Azure 服务类型名称。 本文介绍 **Microsoft.Sql** 的类型名称，即名为“SQL 数据库”的 Azure 服务。
 
 **虚拟网络规则：** 适用于 SQL 数据库服务器的虚拟网络规则是一个子网，列在 SQL 数据库服务器的访问控制列表 (ACL) 中。 子网必须包含“Microsoft.Sql”  类型名称才会将其列在 SQL 数据库的 ACL 中。 虚拟网络规则要求 SQL 数据库服务器接受来自子网上所有节点的通信。
 
@@ -113,7 +117,7 @@ start          end
 
 在 Azure SQL Server 防火墙中可以指定 IP 地址范围，处于该范围内的通信可以进入 SQL 数据库。 此方法适用于 Azure 专用网络外部的稳定 IP 地址。 但是，对于 Azure 专用网络中的虚拟机 (VM)，将为其配置动态 IP 地址。  当 VM 重启时，动态 IP 地址可能会更改，从而使得基于 IP 的防火墙规则失效。 处于生产环境中时，在防火墙规则中指定一个动态 IP 地址并不明智。
 
-可以通过获取 VM 的静态 IP 地址来解决此限制。  有关详细信息，请参阅 [使用 Azure 门户为虚拟机配置专用 IP 地址][vm-configure-private-ip-addresses-for-a-virtual-machine-using-the-azure-portal-321w]。但是，静态 IP 方法可能会变得难以管理，在大规模使用时非常昂贵。 
+可以通过获取 VM 的静态 IP 地址来解决此限制。  有关详细信息，请参阅[使用 Azure 门户为虚拟机配置专用 IP 地址](../virtual-network/virtual-networks-static-private-ip-arm-pportal.md)。 但是，静态 IP 方法可能会变得难以管理，在规模大时操作成本高。 
 
 虚拟网络规则更容易建立，使用此类规则可以更轻松地管理从包含你的 VM 的特定子网进行的访问。
 

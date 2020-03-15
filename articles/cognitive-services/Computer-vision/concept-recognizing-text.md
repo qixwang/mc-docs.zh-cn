@@ -13,11 +13,11 @@ ms.date: 06/10/2019
 ms.author: v-junlch
 ms.custom: seodec18
 ms.openlocfilehash: abe421f62b54a2156a16e89604280c9bc3ad827b
-ms.sourcegitcommit: fbc7584f403417d3af7bd6bbbaed7c13a78c57b9
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78412436"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292978"
 ---
 # <a name="recognize-printed-and-handwritten-text"></a>识别打印文本和手写文本
 

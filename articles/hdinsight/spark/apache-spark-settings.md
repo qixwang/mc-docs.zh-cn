@@ -16,11 +16,11 @@ origin.date: 11/06/2018
 ms.author: v-yiso
 ms.date: 05/27/2019
 ms.openlocfilehash: dafa71f6ddd278113374ba2880d9e7564fa73a88
-ms.sourcegitcommit: 99ef971eb118e3c86a6c5299c7b4020e215409b3
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65829328"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292367"
 ---
 # <a name="configure-apache-spark-settings"></a>配置 Apache Spark 设置
 
@@ -64,11 +64,11 @@ Apache Spark 有三个系统配置位置：
 
 ## <a name="view-cluster-configuration-settings"></a>查看群集配置设置
 
-在群集上执行性能优化之前，请验证当前的 HDInsight 群集配置设置。 单击 Spark 群集窗格中的“仪表板”链接，从 Azure 门户启动 HDInsight 仪表板。 使用群集管理员的用户名和密码登录。
+在群集上执行性能优化之前，请验证当前的 HDInsight 群集配置设置。 单击 Spark 群集窗格中的“仪表板”链接，从 Azure 门户启动 HDInsight 仪表板。  使用群集管理员的用户名和密码登录。
 
-此时会显示 Apache Ambari Web UI，其中的仪表板视图显示了重要的群集资源利用率指标。  Ambari 仪表板显示 Apache Spark 配置，以及安装的其他服务。 仪表板包含“配置历史记录”选项卡，可在其中查看所有已安装服务（包括 Spark）的配置信息。
+此时会显示 Apache Ambari Web UI，其中的仪表板视图显示了重要的群集资源利用率指标。  Ambari 仪表板显示 Apache Spark 配置，以及安装的其他服务。 仪表板包含“配置历史记录”选项卡，可在其中查看所有已安装服务（包括 Spark）的配置信息。 
 
-若要查看 Apache Spark 的配置值，请依次选择“配置历史记录”、“Spark2”。  选择“配置”选项卡，然后在服务列表中选择 `Spark` 或 `Spark2`（取决于版本）链接。  此时会显示群集的配置值列表：
+若要查看 Apache Spark 的配置值，请依次选择“配置历史记录”、“Spark2”。    选择“配置”选项卡，然后在服务列表中选择 `Spark` 或 `Spark2`（取决于版本）链接。   此时会显示群集的配置值列表：
 
 ![Spark 配置](./media/apache-spark-settings/spark-config.png)
 
@@ -83,7 +83,7 @@ Apache Spark 有三个系统配置位置：
 如果创建了一组非默认的配置值，则还可以看到配置更新历史记录。  借助此配置历史记录可以确定哪个非默认配置具有最佳性能。
 
 > [!NOTE]
-> 若要查看但不更改常用的 Spark 群集配置设置，请在顶层“Spark 作业 UI”界面上选择“环境”选项卡。
+> 若要查看但不更改常用的 Spark 群集配置设置，请在顶层“Spark 作业 UI”界面上选择“环境”选项卡。  
 
 ## <a name="configuring-spark-executors"></a>配置 Spark 执行器
 
@@ -93,12 +93,12 @@ Apache Spark 有三个系统配置位置：
 
 Spark 作业使用辅助角色资源（具体而言是内存），因此，我们往往会调整工作节点执行器的 Spark 配置值。
 
-我们经常调整 `spark.executor.instances`、`spark.executor.cores` 和 `spark.executor.memory` 这三个关键参数来优化 Spark 配置，以改善应用程序要求。 执行器是针对 Spark 应用程序启动的进程。 执行器在工作节点上运行，负责执行应用程序的任务。 对于每个群集而言，执行器的默认数目和执行器大小是根据工作节点数目和工作节点大小计算的。 这些值存储在群集头节点上的 `spark-defaults.conf` 中。  可以通过在 Ambari Web UI 中选择“自定义 spark-defaults”链接，在运行的群集中编辑这些值。  做出更改后，UI 会提示**重启**所有受影响的服务。
+我们经常调整 `spark.executor.instances`、`spark.executor.cores` 和 `spark.executor.memory` 这三个关键参数来优化 Spark 配置，以改善应用程序要求。 执行器是针对 Spark 应用程序启动的进程。 执行器在工作节点上运行，负责执行应用程序的任务。 对于每个群集而言，执行器的默认数目和执行器大小是根据工作节点数目和工作节点大小计算的。 这些值存储在群集头节点上的 `spark-defaults.conf` 中。  可以通过在 Ambari Web UI 中选择“自定义 spark-defaults”链接，在运行的群集中编辑这些值。   做出更改后，UI 会提示**重启**所有受影响的服务。
 
 > [!NOTE]
 > 这三个配置参数可在群集级别配置（适用于群集中运行的所有应用程序），也可以针对每个应用程序指定。
 
-Spark 应用程序 UI 是有关 Spark 执行器使用的资源的另一个信息源。  在 Spark UI 中，选择“执行器”选项卡可以显示执行器使用的配置和资源的“摘要”与“详细信息”视图。  借助这些视图可以确定是要更改整个群集的 Spark 执行器的默认值，还是更改一组特定的作业执行。
+Spark 应用程序 UI 是有关 Spark 执行器使用的资源的另一个信息源。  在 Spark UI 中，选择“执行器”选项卡可以显示执行器使用的配置和资源的“摘要”与“详细信息”视图。   借助这些视图可以确定是要更改整个群集的 Spark 执行器的默认值，还是更改一组特定的作业执行。
 
 ![Spark 执行器](./media/apache-spark-settings/spark-executors.png)
 

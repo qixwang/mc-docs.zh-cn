@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 02/10/2020
 ms.author: v-junlch
 ms.openlocfilehash: 6538cccf712047e09ccbd29eb26eaf960be7c233
-ms.sourcegitcommit: f388b7b1cdfe06ebda7d9c21cf39943611b62a75
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77155556"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292481"
 ---
 # <a name="back-end-health-and-diagnostic-logs-for-application-gateway"></a>应用程序网关的后端运行状况和诊断日志
 

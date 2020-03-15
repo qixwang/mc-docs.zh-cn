@@ -15,14 +15,14 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: big-data
 origin.date: 06/12/2019
-ms.date: 10/28/2019
+ms.date: 03/23/2020
 ms.author: v-yiso
-ms.openlocfilehash: 87b436b7d1f17419cee68c26a36b7db019c34db4
-ms.sourcegitcommit: c21b37e8a5e7f833b374d8260b11e2fb2f451782
+ms.openlocfilehash: 6a94bcf0f60f16cddb936770a69f9ba49b4566d6
+ms.sourcegitcommit: 32997a7d7585deaeb0ab7b8f928d397b18b343fa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72583605"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79295908"
 ---
 # <a name="what-is-apache-storm-on-azure-hdinsight"></a>什么是 Azure HDInsight 上的 Apache Storm？
 
@@ -44,14 +44,13 @@ Storm on HDInsight 提供以下功能：
 
 * **动态缩放**：可以在不影响 Storm 拓扑运行的情况下添加或删除辅助角色节点。
 
-    > [!NOTE]
-    > 若要利用通过缩放操作添加的新节点，必须停用运行的拓扑，然后再将其重新激活。
+    * 若要利用通过缩放操作添加的新节点，必须停用运行的拓扑，然后再将其重新激活。
 
 * **使用多个 Azure 服务创建流式处理管道**：Storm on HDInsight 集成其他 Azure 服务，例如事件中心、SQL 数据库、Azure 存储、Azure Data Lake Storage。
 
-    如需集成 Azure 服务的示例解决方案，请参阅[使用 Apache Storm on HDInsight 处理事件中心的事件](https://azure.microsoft.com/resources/samples/hdinsight-java-storm-eventhub/)。
+    如需集成 Azure 服务的示例解决方案，请参阅[使用 Apache Storm on HDInsight 处理事件中心的事件](https://github.com/Azure-Samples/hdinsight-java-storm-eventhub)。
 
-有关在实时分析解决方案中使用 Apache Storm 的公司的列表，请参阅[使用 Apache Storm 的公司](https://storm.apache.org/documentation/Powered-By.html)。
+有关在实时分析解决方案中使用 Apache Storm 的公司的列表，请参阅[使用 Apache Storm 的公司](https://storm.apache.org/Powered-By.html)。
 
 若要开始使用 Storm，请参阅[在 Azure HDInsight 中创建和监视 Apache Storm 拓扑](apache-storm-quickstart.md)。
 
@@ -69,7 +68,7 @@ Storm 运行的是拓扑，而不是你可能熟悉的 [Apache Hadoop MapReduce]
 
 Apache Storm 保证每个传入消息始终受到完全处理，即使数据分析分散在数百个节点。
 
-Nimbus 节点提供的功能与 Apache Hadoop JobTracker 类似，它通过 [Apache ZooKeeper](https://zookeeper.apache.org/) 将任务分配给群集中的其他节点。 Zookeeper 节点为群集提供协调功能，并促进 Nimbus 与辅助节点上的 Supervisor 进程进行通信。 如果处理的一个节点出现故障，Nimbus 节点将得到通知，并分配到另一个节点的任务和关联的数据。
+Nimbus 节点提供的功能与 Apache Hadoop JobTracker 类似，它通过 [Apache ZooKeeper](https://zookeeper.apache.org/) 将任务分配给群集中的其他节点。 Zookeeper 节点为群集提供协调功能，并促进 Nimbus 与辅助节点上的 Supervisor 进程进行通信。 如果处理的一个节点出现故障，Nimbus 节点会得到通知，并分配到另一个节点的任务和关联的数据。
 
 Apache Storm 群集的默认配置是只能有一个 Nimbus 节点。 HDInsight 上的 Storm 提供两个 Nimbus 节点。 如果主节点出现故障，Storm 群集将切换到辅助节点，同时主节点将会恢复。 下图说明了 Storm on HDInsight 的任务流配置：
 
@@ -123,7 +122,7 @@ Storm on HDInsight 附带完整的企业级持续支持。 Storm on HDInsight �
 * 搜索
 * 移动应用场景
 
-有关实际方案的信息，请参阅文档 [How companies are using Apache Storm](https://storm.apache.org/documentation/Powered-By.html)（公司如何使用 Apache Storm）。
+有关实际方案的信息，请参阅文档 [How companies are using Apache Storm](https://storm.apache.org/Powered-By.html)（公司如何使用 Apache Storm）。
 
 ## <a name="development"></a>开发
 

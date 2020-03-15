@@ -8,11 +8,11 @@ ms.topic: conceptual
 origin.date: 01/21/2020
 ms.date: 02/10/2020
 ms.openlocfilehash: acb2e0d09de0a30ae859a6283c1f26c68e8d6983
-ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77028752"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291880"
 ---
 # <a name="secure-access-to-data-in-azure-cosmos-db"></a>保护对 Azure Cosmos DB 中数据的访问
 

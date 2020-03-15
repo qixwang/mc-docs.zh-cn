@@ -10,11 +10,11 @@ ms.topic: quickstart
 origin.date: 12/02/2019
 ms.date: 02/10/2020
 ms.openlocfilehash: 508038012b208d932859e2840f2b9684544e84ee
-ms.sourcegitcommit: fbc7584f403417d3af7bd6bbbaed7c13a78c57b9
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78412038"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292944"
 ---
 # <a name="quickstart-create-an-azure-cosmos-account-database-container-and-items-from-the-azure-portal"></a>快速入门：从 Azure 门户创建 Azure Cosmos 帐户、数据库、容器和项
 

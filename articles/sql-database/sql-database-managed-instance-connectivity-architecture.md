@@ -13,11 +13,11 @@ ms.reviewer: sstein, bonova, carlrab
 origin.date: 04/16/2019
 ms.date: 02/17/2020
 ms.openlocfilehash: cb9c6c6cdc06572f05c2fb4a1f9ffcdf62bd442f
-ms.sourcegitcommit: d7b86a424b72849fe8ed32893dd05e4696e4fe85
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77155664"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293485"
 ---
 # <a name="connectivity-architecture-for-a-managed-instance-in-azure-sql-database"></a>Azure SQL 数据库中托管实例的连接体系结构
 

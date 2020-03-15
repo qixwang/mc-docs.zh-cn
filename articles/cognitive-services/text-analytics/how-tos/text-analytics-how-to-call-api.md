@@ -12,11 +12,11 @@ origin.date: 07/30/2019
 ms.date: 02/25/2020
 ms.author: v-lingwu
 ms.openlocfilehash: 40dd9d8ad1ed0e9957ef8e7d4c7bb63ef2243671
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78154495"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292125"
 ---
 # <a name="how-to-call-the-text-analytics-rest-api"></a>如何调用文本分析 REST API
 

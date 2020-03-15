@@ -1,20 +1,19 @@
 ---
 title: Azure Monitor Log Analytics 中的日志查询范围 | Microsoft Docs
 description: 介绍 Azure Monitor Log Analytics 中的日志查询的范围和时间范围。
-ms.service: azure-monitor
-author: bwren
-manager: carmonm
+author: lingli
+manager: digimobile
 ms.subservice: logs
 ms.topic: conceptual
 origin.date: 06/25/2019
 ms.date: 11/04/2019
 ms.author: v-lingwu
-ms.openlocfilehash: d12f0999a09965e9cc277be6aa74e3073329d4c9
-ms.sourcegitcommit: a89eb0007edd5b4558b98c1748b2bd67ca22f4c9
+ms.openlocfilehash: ddfb607beb8571935343945f119554299709f3ca
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73730520"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293520"
 ---
 # <a name="log-query-scope-and-time-range-in-azure-monitor-log-analytics"></a>Azure Monitor Log Analytics 中的日志查询范围和时间范围
 在 [Azure 门户上的 Log Analytics 中](get-started-portal.md)运行[日志查询](log-query-overview.md)时，该查询评估的数据集取决于所选的范围和时间范围。 本文介绍范围和时间范围，以及如何根据要求设置这两项。 本文还介绍了不同范围类型的行为。
@@ -68,7 +67,7 @@ Log Analytics 有助于防止跨多个区域中工作区的查询的过量开销
 ## <a name="time-range"></a>时间范围
 时间范围根据记录的创建时间，指定查询要评估的记录集。 此项设置由工作区或应用程序中每条记录上的标准属性定义，下表指定了这些属性。
 
-| Location | 属性 |
+| 位置 | 属性 |
 |:---|:---|
 | Log Analytics 工作区          | TimeGenerated |
 | Application Insights 应用程序 | timestamp     |

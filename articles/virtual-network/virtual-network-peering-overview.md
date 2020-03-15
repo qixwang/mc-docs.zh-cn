@@ -14,11 +14,11 @@ origin.date: 11/15/2019
 ms.date: 02/24/2020
 ms.author: v-yeche
 ms.openlocfilehash: 536e89a13595a7bcfc0a9b527a458d365b5cb3b5
-ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77653492"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292285"
 ---
 # <a name="virtual-network-peering"></a>虚拟网络对等互连
 

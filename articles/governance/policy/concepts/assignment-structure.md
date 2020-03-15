@@ -6,11 +6,11 @@ origin.date: 09/23/2019
 ms.date: 03/09/2020
 ms.topic: conceptual
 ms.openlocfilehash: 6bde77b51de1e8d3ea9e474307236596b5974e3b
-ms.sourcegitcommit: 892137d117bcaf9d88aec0eb7ca756fe39613344
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78042314"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292787"
 ---
 # <a name="azure-policy-assignment-structure"></a>Azure Policy 分配结构
 

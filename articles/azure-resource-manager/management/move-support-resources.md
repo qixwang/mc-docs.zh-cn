@@ -6,11 +6,11 @@ origin.date: 01/02/2020
 ms.date: 01/20/2020
 ms.author: v-yeche
 ms.openlocfilehash: f69828c7c6d054dfb08a268f9e165c2e07cc2972
-ms.sourcegitcommit: 8de025ca11b62e06ba3762b5d15cc577e0c0f15d
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76165458"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293155"
 ---
 # <a name="move-operation-support-for-resources"></a>支持移动操作的资源
 本文列出某个 Azure 资源类型是否支持移动操作。 它还提供了有关移动资源时要考虑的特殊条件的信息。

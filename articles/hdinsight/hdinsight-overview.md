@@ -7,14 +7,14 @@ ms.author: v-yiso
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017,mvc,seodec18
 ms.topic: overview
-origin.date: 06/11/2019
-ms.date: 10/21/2019
-ms.openlocfilehash: 023459efafc216e199348cdbef227128c5026dc5
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+origin.date: 02/27/2020
+ms.date: 03/23/2020
+ms.openlocfilehash: 8e0b2848ad96501942b6230635d50a1ba8a6d48c
+ms.sourcegitcommit: 32997a7d7585deaeb0ab7b8f928d397b18b343fa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78155053"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79295965"
 ---
 # <a name="what-is-azure-hdinsight"></a>什么是 Azure HDInsight？
 
@@ -129,10 +129,6 @@ HDInsight 群集包括 Spark、HBase、Kafka、Hadoop 和其他群集，支持�
 * [使用 Power Query 将 Excel 连接到 Apache Hadoop](./hadoop/apache-hadoop-connect-excel-power-query.md)（需使用 Windows）
 
 * [使用 Microsoft Hive ODBC 驱动程序将 Excel 连接到 Apache Hadoop](./hadoop/apache-hadoop-connect-excel-hive-odbc-driver.md)（需使用 Windows）
-
-* [将 SQL Server Analysis Services 与 HDInsight 结合使用](https://docs.microsoft.com/previous-versions/msp-n-p/dn749857(v=pandp.10))
-
-* [将 SQL Server Reporting Services 与 HDInsight 结合使用](https://docs.microsoft.com/previous-versions/msp-n-p/dn749856(v=pandp.10))
 
 ## <a name="next-steps"></a>后续步骤
 

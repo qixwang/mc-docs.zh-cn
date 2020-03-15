@@ -10,11 +10,11 @@ origin.date: 08/08/2019
 ms.author: v-yiso
 ms.date: 09/02/2019
 ms.openlocfilehash: fabf42de23e9592acb1fff002e3b55fc119a20f6
-ms.sourcegitcommit: 599d651afb83026938d1cfe828e9679a9a0fb69f
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69993041"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293440"
 ---
 # <a name="read-device-to-cloud-messages-from-the-built-in-endpoint"></a>从内置终结点读取设备到云的消息
 
@@ -50,7 +50,7 @@ IoT 中心向后端服务公开 **messages/events** 内置终结点，让后端�
 
 在门户中，“与事件中心兼容的终结点”字段包含完整的事件中心连接字符串，如下所示：**Endpoint=sb://abcd1234namespace.servicebus.chinacloudapi.cn/;SharedAccessKeyName=iothubowner;SharedAccessKey=keykeykeykeykeykey=;EntityPath=iothub-ehub-abcd-1234-123456**。 如果所用 SDK 需求其他值，则这些值将会是：
 
-| Name | Value |
+| 名称 | Value |
 | ---- | ----- |
 | 终结点 | sb://abcd1234namespace.servicebus.chinacloudapi.cn/ |
 | 主机名 | abcd1234namespace.servicebus.chinacloudapi.cn |

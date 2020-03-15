@@ -10,11 +10,11 @@ origin.date: 08/28/2019
 ms.date: 12/02/2019
 ms.author: v-jay
 ms.openlocfilehash: 110061e3f4867ecdd6f11d9faf3b0b10019954ae
-ms.sourcegitcommit: 481542df432d52b7d4823811cef94772e4e0f192
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74530608"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293360"
 ---
 # <a name="azure-data-box-heavy-limits"></a>Azure Data Box Heavy 限制
 

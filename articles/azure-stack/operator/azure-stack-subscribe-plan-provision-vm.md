@@ -9,11 +9,11 @@ ms.date: 02/24/2020
 ms.author: v-jay
 ms.lastreviewed: 05/10/2019
 ms.openlocfilehash: b6ea465803816e2fb35c7209953919b44f285c9a
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77540277"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291590"
 ---
 # <a name="create-subscriptions-to-offers-in-azure-stack-hub"></a>在 Azure Stack Hub 中创建套餐的订阅
 

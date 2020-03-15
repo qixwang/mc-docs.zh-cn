@@ -14,11 +14,11 @@ ms.custom: seo-lt-2019
 origin.date: 01/28/2020
 ms.date: 03/02/2020
 ms.openlocfilehash: a83b3c137d917374b6fbbc4fa255b5b3eb1fb1c2
-ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77653259"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292395"
 ---
 # <a name="integration-runtime-in-azure-data-factory"></a>Azure 数据工厂中的集成运行时
 集成运行时 (IR) 是 Azure 数据工厂用于在不同的网络环境之间提供以下数据集成功能的计算基础结构：

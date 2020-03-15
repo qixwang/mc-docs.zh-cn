@@ -9,11 +9,11 @@ ms.author: v-jay
 ms.reviewer: xiaofmao
 ms.lastreviewed: 12/07/2018
 ms.openlocfilehash: 27eac2f1511b2cfdca5e225929a232a7c4f69920
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77540359"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293171"
 ---
 # <a name="quota-types-in-azure-stack-hub"></a>Azure Stack Hub 中的配额类型
 

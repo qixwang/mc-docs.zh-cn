@@ -12,11 +12,11 @@ ms.date: 12/09/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
 ms.openlocfilehash: 6f01505a96bfaf1c2f08e12f4b9a7a7afdff858e
-ms.sourcegitcommit: 8c3bae15a8a5bb621300d81adb34ef08532fe739
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74884009"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293239"
 ---
 ::: zone target="docs"
 
@@ -66,11 +66,11 @@ ms.locfileid: "74884009"
 
       ![查看订单详细信息](media/data-box-disk-deploy-picked-up/order-details-resource-group.png)
 
-    转到所记录的资源组，并找到你的托管磁盘。
+    转到记下的资源组，找到托管磁盘。
 
       ![托管磁盘资源组](media/data-box-disk-deploy-picked-up/resource-group-attached-managed-disk.png)
 
-  - 如果复制了 VHDX 或动态/差异 VHD，则 VHDX/VHD 会作为块 blob 上传到临时存储帐户。 转到临时存储帐户 >“Blob”，然后选择适当的容器 - StandardSSD、StandardHDD 或 PremiumSSD。  VHDX/VHD 会在临时存储帐户中显示为块 Blob。
+  - 如果复制了 VHDX 或动态/差分 VHD，则会将 VHDX/VHD 作为块 Blob 上传到临时存储帐户。 转到临时存储帐户 >“Blob”，然后选择适当的容器 - StandardSSD、StandardHDD 或 PremiumSSD。  VHDX/VHD 会在临时存储帐户中显示为块 Blob。
   
 ::: zone-end
 

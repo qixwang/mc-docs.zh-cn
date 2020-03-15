@@ -7,11 +7,11 @@ ms.topic: reference
 ms.date: 12/31/2019
 ms.author: v-junlch
 ms.openlocfilehash: 7ec92a62674689830c406e3c24576566ea9c9a2b
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75624089"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293065"
 ---
 # <a name="azure-functions-f-developer-reference"></a>Azure Functions F# 开发人员参考
 

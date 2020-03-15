@@ -6,11 +6,11 @@ origin.date: 11/04/2019
 ms.date: 01/17/2020
 ms.topic: how-to
 ms.openlocfilehash: 77a974e718bcddc01e17566a69cf5a05c8afccdf
-ms.sourcegitcommit: 94e1c9621b8f81a7078f1412b3a73281d0a8668b
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76123244"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293053"
 ---
 # <a name="use-azure-policy-extension-for-visual-studio-code"></a>使用适用于 Visual Studio Code 的 Azure Policy 扩展
 
@@ -23,7 +23,7 @@ ms.locfileid: "76123244"
 > [!NOTE]
 > 在适用于 Visual Studio Code 的 Azure Policy 扩展中查看的、在本地对策略所做的更改不会同步到 Azure。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 完成本文中的步骤需要以下各项：
 

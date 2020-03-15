@@ -7,11 +7,11 @@ origin.date: 10/12/2017
 ms.date: 01/20/2020
 ms.author: v-yeche
 ms.openlocfilehash: 5e63a95765455ae06c7810dc94ef52544d2196ed
-ms.sourcegitcommit: 8de025ca11b62e06ba3762b5d15cc577e0c0f15d
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76170808"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293018"
 ---
 # <a name="createuidefinition-functions"></a>CreateUiDefinition 函数
 本部分包含 CreateUiDefinition 支持的所有函数的签名。

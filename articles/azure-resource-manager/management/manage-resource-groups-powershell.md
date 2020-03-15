@@ -7,11 +7,11 @@ origin.date: 02/11/2019
 ms.date: 01/06/2020
 ms.author: v-yeche
 ms.openlocfilehash: 4ed26443b7f6b31a6f9f28c845fac7f5edbc9326
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75631155"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292398"
 ---
 # <a name="manage-azure-resource-manager-resource-groups-by-using-azure-powershell"></a>使用 Azure PowerShell 管理 Azure 资源管理器资源组
 

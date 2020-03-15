@@ -18,11 +18,11 @@ ms.author: v-jay
 ms.reviewer: misainat
 ms.lastreviewed: 06/28/2019
 ms.openlocfilehash: 58f4698ecd09f9a6ca7eab236e3dbbb07490c803
-ms.sourcegitcommit: 713bd1d1b476cec5ed3a9a5615cfdb126bc585f9
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72578517"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292605"
 ---
 # <a name="asdk-architecture"></a>ASDK 体系结构
 Azure Stack 开发工具包 (ASDK) 是在单个主计算机上运行的 Azure Stack 的单节点部署。 边缘路由组件安装在主计算机上，为 Azure Stack 提供 NAT 和 VPN 功能。 Azure Stack 基础结构角色在物理主计算机的 Hyper-V 层中运行。
@@ -31,7 +31,7 @@ Azure Stack 开发工具包 (ASDK) 是在单个主计算机上运行的 Azure St
 ## <a name="virtual-machine-roles"></a>虚拟机角色
 ASDK 提供的服务使用托管在开发工具包主机上的以下 VM：
 
-| Name | 说明 |
+| 名称 | 说明 |
 | ----- | ----- |
 | **AzS-ACS01** | Azure Stack 存储服务。|
 | **AzS-ADFS01** | Active Directory 联合身份验证服务 (ADFS)。  |

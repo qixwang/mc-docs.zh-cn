@@ -17,11 +17,11 @@ origin.date: 05/29/2018
 ms.date: 06/10/2019
 ms.author: v-yeche
 ms.openlocfilehash: f96a7b7e64ede6f2466cfac6c0b8468e4293300d
-ms.sourcegitcommit: df1b896faaa87af1d7b1f06f1c04d036d5259cc2
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66250465"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293336"
 ---
 # <a name="diagnose-a-virtual-machine-network-traffic-filter-problem"></a>诊断虚拟机网络流量筛选器问题
 
@@ -181,8 +181,8 @@ az vm show \
 | 目标端口范围 | 80                                                                                 |
 | 协议                | TCP                                                                                |
 | 操作                  | 允许                                                                              |
-| Priority                | 100                                                                                |
-| Name                    | Allow-HTTP-All                                                                     |
+| 优先级                | 100                                                                                |
+| 名称                    | Allow-HTTP-All                                                                     |
 
 创建规则后，允许通过端口 80 从 Internet 进行入站通信，因为该规则的优先级高于名为 *DenyAllInBound* 的默认安全规则（拒绝流量）。 了解如何[创建安全规则](manage-network-security-group.md#create-a-security-rule)。 如果不同的 NSG 已关联到网络接口和子网，则必须在两个 NSG 中创建相同的规则。
 

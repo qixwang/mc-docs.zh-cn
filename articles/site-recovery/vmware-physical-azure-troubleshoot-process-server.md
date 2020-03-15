@@ -9,11 +9,11 @@ origin.date: 09/09/2019
 ms.date: 09/30/2019
 ms.author: v-yeche
 ms.openlocfilehash: 442208c64dceea0cd957643329729e5a2ccd1839
-ms.sourcegitcommit: fbc7584f403417d3af7bd6bbbaed7c13a78c57b9
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78411907"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291833"
 ---
 # <a name="troubleshoot-the-process-server"></a>排查进程服务器问题
 

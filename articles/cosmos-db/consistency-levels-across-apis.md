@@ -9,11 +9,11 @@ origin.date: 07/23/2019
 ms.date: 01/20/2020
 ms.reviewer: sngun
 ms.openlocfilehash: 70cabbbf3c9abb7e06d196910f95b1014d02d908
-ms.sourcegitcommit: 304861faf39689348962127b8b56db8082ece2ef
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76270018"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292947"
 ---
 # <a name="consistency-levels-and-azure-cosmos-db-apis"></a>一致性级别和 Azure Cosmos DB API
 
