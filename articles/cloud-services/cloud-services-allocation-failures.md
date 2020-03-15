@@ -17,11 +17,11 @@ origin.date: 06/15/2018
 ms.date: 07/16/2018
 ms.author: v-yiso
 ms.openlocfilehash: be7c4b0da8186773930e0a074600828650adca44
-ms.sourcegitcommit: b8fb6890caed87831b28c82738d6cecfe50674fd
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58625904"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291400"
 ---
 # <a name="troubleshooting-allocation-failure-when-you-deploy-cloud-services-in-azure"></a>对在 Azure 中部署云服务时的分配失败进行故障排除
 

@@ -16,11 +16,11 @@ origin.date: 11/04/2019
 ms.author: v-yiso
 ms.date: 11/18/2019
 ms.openlocfilehash: cab73d1ac7da94db824eda507fa2780131fea19d
-ms.sourcegitcommit: 5844ad7c1ccb98ff8239369609ea739fb86670a4
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73831397"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292050"
 ---
 # <a name="page-templates-in-azure-api-management"></a>Azure API 管理中的页模板
 通过 Azure API 管理，用户能够使用一组用于配置内容的模板自定义开发人员门户页的内容。 使用 [DotLiquid](http://dotliquidmarkup.org/) 语法和所选编辑器（例如 [DotLiquid for Designers](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers)），以及提供的一组本地化[字符串资源](./api-management-template-resources.md#strings)、[字形资源](./api-management-template-resources.md#glyphs)和[页面控件](./api-management-page-controls.md)，即可根据这些模板的使用需要非常灵活地配置页面内容。  
@@ -100,7 +100,7 @@ ms.locfileid: "73831397"
 ```  
   
 ### <a name="controls"></a>控制  
- 此模板使用以下[页面控件](./api-management-page-controls.md)。  
+ 此模板可使用以下[页面控件](./api-management-page-controls.md)。  
   
 -   [basic-signin](./api-management-page-controls.md#basic-signin)  
   
@@ -230,8 +230,8 @@ ms.locfileid: "73831397"
 |属性|类型|说明|  
 |--------------|----------|-----------------|  
 |referenceCode|string|因内部错误显示此页时生成的代码。|  
-|errorCode|string|因内部错误显示页面时生成的代码。|  
-|emailBody|string|因内部错误显示页面时生成的电子邮件正文。|  
+|errorCode|string|因内部错误显示此页时生成的代码。|  
+|emailBody|string|因内部错误显示此页时生成的电子邮件正文。|  
 |requestedUrl|string|找不到页面时请求的 URL。|  
 |referrerUrl|string|所请求的 URL 的引用 URL。|  
   

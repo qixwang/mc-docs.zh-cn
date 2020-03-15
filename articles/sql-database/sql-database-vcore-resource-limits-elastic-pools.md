@@ -13,11 +13,11 @@ ms.reviewer: carlrab, sstein
 origin.date: 01/09/2020
 ms.date: 02/17/2020
 ms.openlocfilehash: 3668d107b7617b2f2116e9f61b591a75fa9af110
-ms.sourcegitcommit: d7b86a424b72849fe8ed32893dd05e4696e4fe85
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77155699"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291556"
 ---
 # <a name="resource-limits-for-elastic-pools-using-the-vcore-purchasing-model"></a>使用 vCore 购买模型的弹性池的资源限制
 

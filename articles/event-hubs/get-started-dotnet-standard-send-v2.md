@@ -12,14 +12,14 @@ ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
 origin.date: 02/11/2020
-ms.date: 03/09/2020
+ms.date: 03/23/2020
 ms.author: v-tawe
-ms.openlocfilehash: 08bf0d5053b63f77e57b0304b9640ebc4ed8bf71
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.openlocfilehash: 2c5b08d7d233a9c2f17b2e65ef33da2ed33ce7f8
+ms.sourcegitcommit: 4ba6d7c8bed5398f37eb37cf5e2acafcdcc28791
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78155111"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79133852"
 ---
 # <a name="send-events-to-and-receive-events-from-azure-event-hubs---net-core-azuremessagingeventhubs"></a>向/从 Azure 事件中心发送/接收事件 - .NET Core (Azure.Messaging.EventHubs) 
 本快速入门介绍如何使用 **Azure.Messaging.EventHubs** .NET Core 库向事件中心发送事件以及从事件中心接收事件。 
@@ -123,8 +123,8 @@ ms.locfileid: "78155111"
 本快速入门使用 Azure 存储作为检查点存储。 按照以下步骤创建 Azure 存储帐户。 
 
 1. [创建 Azure 存储帐户](/storage/common/storage-account-create?tabs=azure-portal)
-2. [创建一个 blob 容器](/storage/blobs/storage-quickstart-blobs-portal.md#create-a-container)
-3. [获取存储帐户的连接字符串](/storage/common/storage-configure-connection-string?#view-and-copy-a-connection-string)
+2. [创建一个 blob 容器](../storage/blobs/storage-quickstart-blobs-portal.md#create-a-container)
+3. [获取存储帐户的连接字符串](../storage/common/storage-configure-connection-string.md?#view-and-copy-a-connection-string)
 
     请记下该连接字符串和容器名称。 稍后要在接收代码中使用这些信息。 
 

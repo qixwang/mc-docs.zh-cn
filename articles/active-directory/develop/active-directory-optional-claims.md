@@ -8,17 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 01/15/2020
+ms.date: 03/10/2020
 ms.author: v-junlch
 ms.reviewer: paulgarn, hirsin, keyam
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7e2926d07631248175ea5336b880d29a42059844
-ms.sourcegitcommit: 48d51745ca18de7fa05b77501b4a9bf16cea2068
+ms.openlocfilehash: 789df5aa13755e3c2e78db0eb2466ecdef2d7993
+ms.sourcegitcommit: 4ba6d7c8bed5398f37eb37cf5e2acafcdcc28791
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76116737"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79133831"
 ---
 # <a name="how-to-provide-optional-claims-to-your-azure-ad-app"></a>如何：向 Azure AD 应用提供可选声明
 
@@ -207,7 +206,7 @@ ms.locfileid: "76116737"
 | `additionalProperties` | 集合 (Edm.String) | 声明的附加属性。 如果此集合中存在某个属性，该属性将修改 name 属性中指定的可选声明的行为。                                                                                                                                               |
 ## <a name="configuring-directory-extension-optional-claims"></a>配置目录扩展可选声明
 
-除了标准的可选声明集以外，还可将令牌配置为包含扩展。 有关详细信息，请参阅[使用扩展将自定义数据添加到资源](https://docs.microsoft.com/graph/extensibility-overview)。 使用此功能可以附加应用可以使用的附加用户信息 - 例如，用户设置的附加标识符或重要配置选项。 参阅此页面底部的示例。
+除了标准的可选声明集以外，还可将令牌配置为包含扩展。 使用此功能可以附加应用可以使用的附加用户信息 - 例如，用户设置的附加标识符或重要配置选项。 参阅此页面底部的示例。
 
 > [!NOTE]
 > - 目录架构扩展功能只能在 Azure AD 中使用，因此，如果应用程序清单请求自定义扩展，而 MSA 用户登录到你的应用，则不会返回这些扩展。
@@ -420,4 +419,3 @@ Learn more about the standard claims provided by Azure AD.
 - [ID tokens](id-tokens.md)
 - [Access tokens](access-tokens.md)
 
-<!-- Update_Description: wording update -->

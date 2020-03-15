@@ -7,12 +7,12 @@ ms.topic: conceptual
 origin.date: 01/12/2018
 ms.date: 9/23/2019
 ms.author: v-lingwu
-ms.openlocfilehash: aa8854475f3af75a94ae00f27517222aaf936b7c
-ms.sourcegitcommit: 21b02b730b00a078a76aeb5b78a8fd76ab4d6af2
+ms.openlocfilehash: dbb563dfa0b060bde6cdefd954ce5ce0dd4a21f1
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74838903"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79290876"
 ---
 # <a name="application-consistent-backup-of-azure-linux-vms"></a>Azure Linux VM 的应用程序一致性备份
 
@@ -68,7 +68,7 @@ ms.locfileid: "74838903"
 
     - **ScriptsExecutionPollTimeSeconds**：设置在每次轮询到脚本执行之间，扩展必须进入睡眠状态的时间。 例如，如果值为 2，则扩展会每 2 秒检查一次前/后脚本执行是否完成。 它可以采用的最小值和最大值分别为 1 和 5。 该值应严格为一个整数。
 
-6. 现已配置脚本框架。 如果已配置 VM 备份，则下一次备份将调用这些脚本，并触发应用程序一致性备份。 如果未配置 VM 备份，请使用[将 Azure 虚拟机备份到恢复服务保管库](https://docs.microsoft.com/azure/backup/backup-azure-vms-first-look-arm)进行配置。
+6. 现已配置脚本框架。 如果已配置 VM 备份，则下一次备份将调用这些脚本，并触发应用程序一致性备份。 如果未配置 VM 备份，请使用[将 Azure 虚拟机备份到恢复服务保管库](/backup/backup-azure-vms-first-look-arm)进行配置。
 
 ## <a name="troubleshooting"></a>故障排除
 

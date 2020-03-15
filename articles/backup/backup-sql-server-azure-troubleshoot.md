@@ -6,12 +6,12 @@ author: lingliw
 origin.date: 06/18/2019
 ms.date: 11/14/2019
 ms.author: v-lingwu
-ms.openlocfilehash: e8a4dd51cc721c830ba110017066cf6f7f8074b2
-ms.sourcegitcommit: fbc7584f403417d3af7bd6bbbaed7c13a78c57b9
+ms.openlocfilehash: d8b295c7fec8ba7437bb698979a85be46fa5dfc7
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78412203"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292098"
 ---
 # <a name="troubleshoot-sql-server-database-backup-by-using-azure-backup"></a>排查使用 Azure 备份进行 SQL Server 数据库备份的问题
 
@@ -132,7 +132,7 @@ ms.locfileid: "78412203"
 
 | 错误消息 | 可能的原因 | 建议的操作 |
 |---|---|---|
-由于 Internet 连接问题，VM 无法联系 Azure 备份服务。 | VM 需要与 Azure 备份服务、Azure 存储或 Azure Active Directory 服务建立出站连接。| - 如果使用 NSG 来限制连接，则应使用 AzureBackup 服务标记来允许对 Azure 备份服务、Azure 存储或 Azure Active Directory 服务进行出站访问。 请按照这些[步骤](https://docs.microsoft.com/azure/backup/backup-sql-server-database-azure-vms#allow-access-using-nsg-tags)授予访问权限。<br>- 确保 DNS 在解析 Azure 终结点。<br>- 检查 VM 是否在阻止访问 Internet 的负载均衡器后面。 向 VM 分配公共 IP 即可使用发现功能。<br>- 验证是否有防火墙/防病毒/代理在阻止调用上述三个目标服务。
+由于 Internet 连接问题，VM 无法联系 Azure 备份服务。 | VM 需要与 Azure 备份服务、Azure 存储或 Azure Active Directory 服务建立出站连接。| - 如果使用 NSG 来限制连接，则应使用 AzureBackup 服务标记来允许对 Azure 备份服务、Azure 存储或 Azure Active Directory 服务进行出站访问。 请按照这些[步骤](/backup/backup-sql-server-database-azure-vms#allow-access-using-nsg-tags)授予访问权限。<br>- 确保 DNS 在解析 Azure 终结点。<br>- 检查 VM 是否在阻止访问 Internet 的负载均衡器后面。 向 VM 分配公共 IP 即可使用发现功能。<br>- 验证是否有防火墙/防病毒/代理在阻止调用上述三个目标服务。
 
 
 ## <a name="re-registration-failures"></a>重新注册失败

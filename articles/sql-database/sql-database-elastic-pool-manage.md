@@ -13,11 +13,11 @@ ms.reviewer: carlrab
 origin.date: 03/12/2019
 ms.date: 09/30/2019
 ms.openlocfilehash: 504671c083e2ad1d589bc73d805fb675f54ae1f5
-ms.sourcegitcommit: 5c3d7acb4bae02c370f6ba4d9096b68ecdd520dd
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71262965"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292694"
 ---
 # <a name="manage-elastic-pools-in-azure-sql-database"></a>在 Azure SQL 数据库中管理弹性池
 

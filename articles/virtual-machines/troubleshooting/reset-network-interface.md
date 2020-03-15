@@ -14,11 +14,11 @@ origin.date: 11/16/2018
 ms.date: 02/10/2020
 ms.author: v-yeche
 ms.openlocfilehash: 1f40454a141426ced7857739bb349981a466d07f
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77428930"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292521"
 ---
 # <a name="how-to-reset-network-interface-for-azure-windows-vm"></a>如何为 Azure Windows VM 重置网络接口 
 

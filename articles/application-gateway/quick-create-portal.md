@@ -10,11 +10,11 @@ ms.date: 02/10/2020
 ms.author: v-junlch
 ms.custom: mvc
 ms.openlocfilehash: 4c3436d35a2ecfa2dfd3d68ae28a035de22616c7
-ms.sourcegitcommit: f388b7b1cdfe06ebda7d9c21cf39943611b62a75
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77155554"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291485"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway---azure-portal"></a>快速入门：使用 Azure 应用程序网关定向 Web 流量 - Azure 门户
 

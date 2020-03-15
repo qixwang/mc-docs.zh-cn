@@ -16,11 +16,11 @@ origin.date: 01/30/2020
 ms.date: 02/10/2020
 ms.author: v-yeche
 ms.openlocfilehash: 7430de4103ea4cc75fedb8969fea4d52974a59b0
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77428863"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291313"
 ---
 # <a name="azure-monitor-virtual-machine-extension-for-windows"></a>适用于 Windows 的 Azure Monitor 虚拟机扩展
 
@@ -30,7 +30,7 @@ Azure Monitor 日志提供跨云和本地资产的监视功能。 适用于 Wind
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 ### <a name="operating-system"></a>操作系统
 

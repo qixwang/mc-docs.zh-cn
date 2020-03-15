@@ -9,11 +9,11 @@ ms.author: v-jay
 ms.reviewer: wamota
 ms.lastreviewed: 06/04/2019
 ms.openlocfilehash: 23ad4936109ba5dacec1015ab34fb1d8eb25553e
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77540386"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291157"
 ---
 # <a name="network-integration-planning-for-azure-stack-hub"></a>Azure Stack Hub 的网络集成规划
 

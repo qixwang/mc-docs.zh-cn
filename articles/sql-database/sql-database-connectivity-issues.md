@@ -15,11 +15,11 @@ ms.reviewer: carlrab, vanto
 origin.date: 01/14/2020
 ms.date: 02/17/2020
 ms.openlocfilehash: 8112a189041bd8a0acb57ee808c599da86bd6064
-ms.sourcegitcommit: d7b86a424b72849fe8ed32893dd05e4696e4fe85
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77155641"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291441"
 ---
 # <a name="troubleshooting-transient-connection-errors-to-sql-database"></a>排查 SQL 数据库的暂时性连接错误
 

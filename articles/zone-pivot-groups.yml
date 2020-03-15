@@ -1,35 +1,5 @@
-### YamlMime:Yaml
-ms.openlocfilehash: fca1099d0c2b8a623c4d1b0ad17dab24421d8a79
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336052"
+### YamlMime:ZonePivotGroups
 groups:
-- id: programming-languages-set-one
-  title: 编程语言
-  prompt: 选择编程语言
-  pivots:
-  - id: programming-language-csharp
-    title: C#
-  - id: programming-language-java
-    title: Java
-  - id: programming-language-python
-    title: Python
-  - id: programming-language-nodejs
-    title: Node.js
-  - id: programming-language-go
-    title: Go
-- id: cogsvcs-text-analytics-features
-  title: 文本分析功能
-  prompt: 选择文本分析功能产品/服务
-  pivots:
-  - id: text-analytics-key-phrase-extraction
-    title: 关键短语提取
-  - id: text-analytics-language-detection
-    title: 语言检测
-  - id: text-analytics-sentiment-analysis
-    title: 情绪分析
 - id: client-operating-system
   title: 编程语言
   prompt: 选择客户端操作系统
@@ -40,6 +10,28 @@ groups:
     title: MacOS
   - id: client-operating-system-windows
     title: Windows
+- id: URL-test-interface
+  title: URL 测试工具
+  prompt: 选择以下工具之一
+  pivots:
+  - id: url-test-tool-curl
+    title: cURL
+  - id: url-test-tool-postman
+    title: postman
+- id: programming-languages-set-one
+  title: 编程语言
+  prompt: 选择编程语言
+  pivots:
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-go
+    title: Go
+  - id: programming-language-java
+    title: Java
+  - id: programming-language-javascript
+    title: Javascript
+  - id: programming-language-python
+    title: Python
 - id: programming-languages-set-two
   title: 编程语言
   prompt: 选择编程语言
@@ -84,19 +76,136 @@ groups:
   pivots:
   - id: programming-language-csharp
     title: C#
-  - id: programming-language-python
-    title: Python
-  - id: programming-language-nodejs
-    title: Node.js
   - id: programming-language-go
     title: Go
+  - id: programming-language-javascript
+    title: Javascript
+  - id: programming-language-python
+    title: Python
   - id: programming-language-ruby
     title: Ruby
-- id: URL-test-interface
-  title: URL 测试工具
-  prompt: 选择以下工具之一
+- id: programming-languages-set-six
+  title: 编程语言
+  prompt: 选择编程语言
   pivots:
-  - id: url-test-tool-curl
-    title: cURL
-  - id: url-test-tool-postman
-    title: postman
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-javascript
+    title: Javascript
+  - id: programming-language-python
+    title: Python
+- id: programming-languages-set-seven
+  title: 编程语言
+  prompt: 选择编程语言
+  pivots:
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-cpp
+    title: C++
+- id: programming-languages-set-eight
+  title: 编程语言
+  prompt: 选择编程语言
+  pivots:
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-python
+    title: Python
+- id: programming-languages-set-nine
+  title: 编程语言
+  prompt: 选择编程语言
+  pivots:
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-cpp
+    title: C++
+- id: programming-languages-text-analytics
+  title: 编程语言
+  prompt: 选择编程语言。
+  pivots:
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-python
+    title: Python
+  - id: programming-language-javascript
+    title: Javascript
+  - id: programming-language-java
+    title: Java
+  - id: programming-language-other
+    title: 其他语言...
+- id: programming-languages-set-ten
+  title: 编程语言
+  prompt: 选择编程语言
+  pivots:
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-java
+    title: Java
+  - id: programming-language-javascript
+    title: Javascript
+  - id: programming-language-python
+    title: Python
+- id: cogsvcs-text-analytics-features
+  title: 文本分析功能
+  prompt: 选择文本分析功能产品/服务
+  pivots:
+  - id: text-analytics-key-phrase-extraction
+    title: 关键短语提取
+  - id: text-analytics-language-detection
+    title: 语言检测
+  - id: text-analytics-sentiment-analysis
+    title: 情绪分析
+- id: programming-languages-set-functions
+  title: 编程语言
+  prompt: 选择编程语言
+  pivots:
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-javascript
+    title: Javascript
+  - id: programming-language-powershell
+    title: PowerShell
+  - id: programming-language-python
+    title: Python
+  - id: programming-language-typescript
+    title: TypeScript
+- id: programming-languages-text-analytics
+  title: 编程语言
+  prompt: 选择编程语言。
+  pivots:
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-python
+    title: Python
+  - id: programming-language-java
+    title: Java
+  - id: programming-language-javascript
+    title: Javascript
+  - id: programming-language-other
+    title: 其他语言...
+- id: programming-languages-set-diberry-3core
+  title: 编程语言
+  prompt: 选择编程语言
+  pivots:
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-javascript
+    title: Javascript
+  - id: programming-language-python
+    title: Python
+- id: platforms-set-of-three
+  title: 平台
+  prompt: 选择平台
+  pivots:
+  - id: platform-windows
+    title: Windows
+  - id: platform-linux
+    title: Linux
+  - id: platform-android
+    title: Android
+metadata:
+  ms.openlocfilehash: 18af244620a0caac3e29ca9f0870b7b5b4f14e67
+  ms.sourcegitcommit: 4ba6d7c8bed5398f37eb37cf5e2acafcdcc28791
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 03/12/2020
+  ms.locfileid: "79133886"

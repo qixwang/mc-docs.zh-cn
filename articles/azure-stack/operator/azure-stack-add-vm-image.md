@@ -8,12 +8,12 @@ ms.date: 02/24/2020
 ms.author: v-jay
 ms.reviewer: kivenkat
 ms.lastreviewed: 06/08/2018
-ms.openlocfilehash: ea8d1f91c497b0e673814e97e29e8f0af910df40
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.openlocfilehash: 5ad99d4a91eb0ed4986a5c9589d626cc4fe6a0af
+ms.sourcegitcommit: e94ed1c9eff4e88be2ca389909e60b14cc0d92f8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77540896"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79084505"
 ---
 # <a name="add-a-custom-vm-image-to-azure-stack-hub"></a>将自定义 VM 映像添加到 Azure Stack Hub
 
@@ -25,7 +25,7 @@ ms.locfileid: "77540896"
 
 创建自定义的通用化 VHD。
 
-**如果 VHD 来自 Azure 外部**，请遵循[上传通用化 VHD 并使用它在 Azure 中创建新 VM](/azure/virtual-machines/windows/upload-generalized-managed) 中的步骤，正确地对 VHD 执行 **Sysprep** 并使其通用化。
+**如果 VHD 来自 Azure 外部**，请遵循[上传通用化 VHD 并使用它在 Azure 中创建新 VM](/virtual-machines/windows/upload-generalized-managed) 中的步骤，正确地对 VHD 执行 **Sysprep** 并使其通用化。
 
 **如果 VHD 来自 Azure**，请在通用化 VM 之前确保：
 

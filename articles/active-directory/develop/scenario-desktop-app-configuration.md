@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/06/2020
+ms.date: 03/10/2020
 ms.author: v-junlch
 ms.custom: aaddev
-ms.openlocfilehash: 826256caf6eb73215957fff2f8bb6b320bb5a37b
-ms.sourcegitcommit: 7c80405a6b48380814b4b414e9f8a5756c007880
+ms.openlocfilehash: a036c18ee5151329ae11ec7df34d2c42d21b3228
+ms.sourcegitcommit: 4ba6d7c8bed5398f37eb37cf5e2acafcdcc28791
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77067708"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79133813"
 ---
 # <a name="desktop-app-that-calls-web-apis-code-configuration"></a>调用 Web API 的桌面应用：代码配置
 
@@ -40,7 +40,7 @@ ms.locfileid: "77067708"
 
 从代码的角度看，桌面应用程序是公共客户端应用程序。 根据是否使用交互式身份验证，配置将略有不同。
 
-# <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
+# <a name="net"></a>[.NET](#tab/dotnet)
 
 需要生成并操作 MSAL.NET `IPublicClientApplication`。
 
@@ -183,17 +183,16 @@ var app = PublicClientApplicationBuilder.CreateWithApplicationOptions(config.Pub
 
 在调用 `.Build()` 方法之前，可以通过调用 `.WithXXX` 方法来重写配置，如前所示。
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
-下面是 MSAL Java 开发示例中用于配置示例的类：[TestData](https://github.com/AzureAD/microsoft-authentication-library-for-java/blob/dev/src/samples/public-client/TestData.java)。
 
 ```Java
-PublicClientApplication app = PublicClientApplication.builder(TestData.PUBLIC_CLIENT_ID)
-        .authority(TestData.AUTHORITY_COMMON)
+PublicClientApplication pca = PublicClientApplication.builder(CLIENT_ID)
+        .authority(AUTHORITY)
         .build();
 ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 ```Python
 config = json.load(open(sys.argv[1]))
@@ -206,7 +205,7 @@ app = msal.PublicClientApplication(
     )
 ```
 
-# <a name="macostabmacos"></a>[MacOS](#tab/macOS)
+# <a name="macos"></a>[MacOS](#tab/macOS)
 
 以下代码实例化公共客户端应用程序，使用工作或学校帐户在 Azure 公有云中将用户登录。
 
@@ -265,4 +264,3 @@ if let application = try? MSALPublicClientApplication(configuration: config) { /
 > [!div class="nextstepaction"]
 > [获取桌面应用的令牌](scenario-desktop-acquire-token.md)
 
-<!-- Update_Description: wording update -->

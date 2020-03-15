@@ -2,18 +2,16 @@
 title: 使用自己的 TLS 证书在 Azure Kubernetes 服务 (AKS) 群集中进行入口路由
 description: 了解如何在 Azure Kubernetes 服务 (AKS) 群集中安装和配置使用你自己的证书的 NGINX 入口控制器。
 services: container-service
-author: rockboyfor
-ms.service: container-service
 ms.topic: article
 origin.date: 05/24/2019
-ms.date: 10/28/2019
+ms.date: 03/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: 62dfbe4bdb89c8bf2ab24001159cdd2839fb69e1
-ms.sourcegitcommit: 1ac138a9e7dc7834b5c0b62a133ca5ce2ea80054
+ms.openlocfilehash: 9d3c08a7f935917fa1f76df89bfdec971dc0b9ea
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78304637"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79290837"
 ---
 # <a name="create-an-https-ingress-controller-and-use-your-own-tls-certificates-on-azure-kubernetes-service-aks"></a>创建 HTTPS 入口控制器并在 Azure Kubernetes 服务 (AKS) 中使用自己的 TLS 证书
 
@@ -212,11 +210,11 @@ $ curl -v -k --resolve demo.azure.com:443:40.87.46.190 https://demo.azure.com
 ```
 [...]
 * Server certificate:
-*  subject: CN=demo.azure.com; O=aks-ingress-tls
-*  start date: Oct 22 22:13:54 2018 GMT
-*  expire date: Oct 22 22:13:54 2019 GMT
-*  issuer: CN=demo.azure.com; O=aks-ingress-tls
-*  SSL certificate verify result: self signed certificate (18), continuing anyway.
+* subject: CN=demo.azure.com; O=aks-ingress-tls
+* start date: Oct 22 22:13:54 2018 GMT
+* expire date: Oct 22 22:13:54 2019 GMT
+* issuer: CN=demo.azure.com; O=aks-ingress-tls
+* SSL certificate verify result: self signed certificate (18), continuing anyway.
 [...]
 ```
 

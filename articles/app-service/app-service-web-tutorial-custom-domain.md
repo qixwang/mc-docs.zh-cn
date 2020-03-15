@@ -10,11 +10,11 @@ ms.date: 01/13/2020
 ms.author: v-tawe
 ms.custom: mvc
 ms.openlocfilehash: 28dd9a6e0c46e2d727096b24b739ec7b2cfe60bd
-ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75600511"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292752"
 ---
 # <a name="tutorial-map-an-existing-custom-dns-name-to-azure-app-service"></a>教程：将现有的自定义 DNS 名称映射到 Azure 应用服务
 
@@ -55,7 +55,7 @@ ms.locfileid: "75600511"
 
 ### <a name="select-the-app-in-the-azure-portal"></a>在 Azure 门户中选择应用
 
-搜索并选择“应用服务”  。
+搜索并选择“应用服务”。 
 
 ![选择应用服务](./media/app-service-web-tutorial-custom-domain/app-services.png)
 
@@ -171,7 +171,7 @@ ms.locfileid: "75600511"
 
 若要映射 A 记录，需要具有应用的外部 IP 地址。 在 Azure 门户中，可以在应用的“自定义域”页面中找到此 IP 地址。 
 
-在 Azure 门户中的应用页左侧导航窗格中，选择“自定义域”  。
+在 Azure 门户中，在应用页面的左侧导航窗格中，选择“自定义域”。 
 
 ![自定义域菜单](./media/app-service-web-tutorial-custom-domain/custom-domain-menu.png)
 

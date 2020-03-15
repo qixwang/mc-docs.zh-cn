@@ -12,11 +12,11 @@ manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4783f83a2bdad57df2e07aa469656f34c7b0b37a
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: 4ba6d7c8bed5398f37eb37cf5e2acafcdcc28791
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77541116"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79134171"
 ---
 # <a name="conditional-access-session"></a>条件访问：会话
 

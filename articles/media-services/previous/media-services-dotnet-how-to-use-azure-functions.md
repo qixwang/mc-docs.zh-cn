@@ -16,11 +16,11 @@ origin.date: 03/18/2019
 ms.date: 04/01/2019
 ms.author: v-jay
 ms.openlocfilehash: 9402c962c9db755d87870939a070a40b8cf043c4
-ms.sourcegitcommit: fbc7584f403417d3af7bd6bbbaed7c13a78c57b9
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78412474"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292478"
 ---
 # <a name="develop-azure-functions-with-media-services"></a>开发使用媒体服务的 Azure Functions
 

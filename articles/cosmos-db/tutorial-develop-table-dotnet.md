@@ -10,11 +10,11 @@ ms.topic: sample
 origin.date: 12/03/2019
 ms.date: 02/10/2020
 ms.openlocfilehash: 07df4850ce560dba37d01ddb3d796206dac878c8
-ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77067898"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291479"
 ---
 <!--Verify sucessfully-->
 # <a name="get-started-with-azure-cosmos-db-table-api-and-azure-table-storage-using-the-net-sdk"></a>通过 .NET SDK 开始使用 Azure Cosmos DB 表 API 和 Azure 表存储
@@ -27,7 +27,7 @@ ms.locfileid: "77067898"
 
 本教程介绍了一个示例，展示如何将[适用于 .NET 的 Azure Cosmos DB 表库](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table)用于 Azure Cosmos DB 表 API 和 Azure 表存储方案。 必须使用特定于 Azure 服务的连接。 这些方案使用 C# 示例进行讨论，说明了如何创建表、插入/更新数据、查询数据和删除表。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要成功完成此示例，需要以下项：
 

@@ -120,7 +120,7 @@
     - name: 概念
       items:
         - name: PowerShell DSC
-          href: 'https://docs.microsoft.com/powershell/dsc/overview/overview'
+          href: 'https://docs.microsoft.com/powershell/scripting/dsc/overview/overview'
     - name: 快速入门
       items:
         - name: 入门

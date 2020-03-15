@@ -9,17 +9,17 @@ origin.date: 07/13/2019
 ms.date: 02/17/2020
 ms.author: v-jay
 ms.openlocfilehash: 2fa305cc38845c4f56044180150162da414f26b4
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77428754"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291511"
 ---
 # <a name="use-azure-dns-to-provide-custom-domain-settings-for-an-azure-service"></a>使用 Azure DNS 为 Azure 服务提供自定义域设置
 
 Azure DNS 为支持自定义域或具有完全限定域名 (FQDN) 的任何 Azure 资源的自定义域提供 DNS。 例如，你有一个 Azure Web 应用，并且希望用户使用 contoso.com 或 www\.contoso.com 作为 FQDN 来访问它。 本文逐步讲解如何使用 Azure DNS 配置 Azure 服务，以便使用自定义域。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要对自定义域使用 Azure DNS，首先必须将该域委派给 Azure DNS。 有关如何为委派配置名称服务器的说明，请访问[将域委派给 Azure DNS](./dns-delegate-domain-azure-dns.md)。 将域委派给 Azure DNS 区域后，便可以配置所需的 DNS 记录。
 

@@ -9,11 +9,11 @@ origin.date: 09/05/2019
 ms.date: 09/30/2019
 ms.author: v-yeche
 ms.openlocfilehash: f2c16f73732b71ae47a13a973bcb20e057754872
-ms.sourcegitcommit: 332ae4986f49c2e63bd781685dd3e0d49c696456
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71340967"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291692"
 ---
 # <a name="monitor-the-process-server"></a>监视进程服务器
 
@@ -53,7 +53,7 @@ ms.locfileid: "71340967"
 
 **警报类型** | **详细信息**
 --- | ---
-![Healthy][green] | 进程服务器已连接且正常运行。
+![正常][green] | 进程服务器已连接且正常运行。
 ![警告][yellow] | 过去 15 分钟的 CPU 利用率超过 80%
 ![警告][yellow] | 过去 15 分钟的内存使用率超过 80%
 ![警告][yellow] | 过去 15 分钟的缓存文件夹可用空间小于 30%

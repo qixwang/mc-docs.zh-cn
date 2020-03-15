@@ -8,11 +8,11 @@ ms.date: 07/07/2018
 ms.author: v-lingwu
 ms.subservice: autoscale
 ms.openlocfilehash: cf87f08d1997ec2864d347e178a1b299d4a18096
-ms.sourcegitcommit: 27eaabd82b12ad6a6840f30763034a6360977186
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77497607"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291668"
 ---
 # <a name="best-practices-for-autoscale"></a>自动缩放最佳实践
 Azure Monitor 自动缩放仅适用于[虚拟机规模集](/virtual-machine-scale-sets/)、[云服务](/cloud-services/)、[应用服务 - Web 应用](/app-service/)和 [API 管理服务](/api-management/api-management-key-concepts)。
@@ -37,7 +37,7 @@ Azure Monitor 自动缩放仅适用于[虚拟机规模集](/virtual-machine-scal
 如果手动将实例计数更新为高于或低于最大值的值，则自动缩放引擎会自动缩放回最小值（如果低于）或最大值（如果高于）。 例如，将范围设置为 3 到 6。 如果有一个正在运行的实例，则自动缩放引擎会在下次运行时缩放为三个实例。 同样，如果将缩放规模手动设置为八个实例，则自动缩放会在下次运行时收缩回六个实例。  手动缩放效果只是暂时的，除非也重置了自动缩放规则。
 
 ### <a name="always-use-a-scale-out-and-scale-in-rule-combination-that-performs-an-increase-and-decrease"></a>始终使用执行增加和减少的扩大和缩小规则组合
-如果仅使用组合的一个部件，则自动缩放将仅在单个方向采取操作（横向扩展或收缩），直至它达到配置文件中定义的最大或最小实例计数。 这不是最佳的，理想情况下，你希望资源在使用率过高时纵向扩展以确保可用性。 同样，当使用率过低时，你希望资源纵向收缩，以便可以实现成本节省。
+如果仅使用组合的一个部件，则自动缩放将仅在单个方向采取操作（横向扩展或收缩），直至它达到配置文件中定义的最大或最小实例计数。 这不是最佳的，理想情况下，你希望资源在使用率过高时纵向扩展以确保可用性。 同样，当使用率过低时，你希望资源纵向缩减，以便可以实现成本节省。
 
 ### <a name="choose-the-appropriate-statistic-for-your-diagnostics-metric"></a>为诊断指标选择相应统计信息
 对于诊断指标，可以选择“平均值”  、“最小值”  、“最大值”  和“总计”  作为用作缩放依据的指标。 最常见的统计信息是“平均值”  。
@@ -56,7 +56,7 @@ Azure Monitor 自动缩放仅适用于[虚拟机规模集](/virtual-machine-scal
 2. 自动缩放会通过添加第三个实例进行横向扩展。
 3. 接下来，假定实例间的平均线程数下降到 575。
 4. 进行减少之前，自动缩放会尝试估计缩小后的最终状态。 例如，575 x 3（当前实例计数）= 1,725/2（减少后的最终实例数）= 862.5 个线程。 这意味着如果平均线程计数保持不变，甚至只是略有下降，自动缩放就必须立即再次扩大（即使是在缩小后）。 但是，如果它再次增加，则整个过程会重复，从而导致无限循环。
-5. 为了避免这种情况（称之为“波动”），自动缩放根本不会减少。 相反，它会跳过，并在服务作业下次执行时再次重新评估条件。 这种摇摆状态可能会使许多人感到困惑，因为在平均线程计数是 575 时，自动缩放似乎未起作用。
+5. 为了避免这种情况（称之为“波动”），自动缩放根本不会纵向缩减。 相反，它会跳过，并在服务作业下次执行时再次重新评估条件。 这种摇摆状态可能会使许多人感到困惑，因为在平均线程计数是 575 时，自动缩放似乎未起作用。
 
 在缩小期间进行估计是为了避免缩小和扩大操作持续来回切换的“摆动”情况。 为扩大和缩小选择相同阈值时，请记住此行为。
 
@@ -143,10 +143,10 @@ Azure Monitor 自动缩放仅适用于[虚拟机规模集](/virtual-machine-scal
 * 自动缩放服务无法使用指标进行缩放决策。
 * 指标再次可用（恢复）于进行缩放决策。
 
-还可以使用活动日志警报监视自动缩放引擎的运行状况。 下面举例说明如何[创建活动日志警报以监视订阅上的所有自动缩放引擎操作](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-alert)或[创建活动日志警报以监视订阅上所有失败的自动缩放缩小/扩大操作](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-failed-alert)。
+还可以使用活动日志警报监视自动缩放引擎的运行状况。 下面举例说明如何[创建活动日志警报以监视订阅上的所有自动缩放引擎操作](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-alert)或[创建活动日志警报以监视订阅上所有失败的自动横向缩减/横向扩展操作](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-failed-alert)。
 
 除了使用活动日志警报以外，还可以配置电子邮件或 Webhook 通知，以通过自动缩放设置上的通知选项卡获取有关成功缩放操作的通知。
 
 ## <a name="next-steps"></a>后续步骤
 - [创建活动日志警报以监视订阅上的所有自动缩放引擎操作。](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-alert)
-- [创建活动日志警报以监视订阅上所有失败的自动缩放缩小/扩大操作](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-failed-alert)
+- [创建活动日志警报以监视订阅上所有失败的自动横向缩减/横向扩展操作](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-failed-alert)

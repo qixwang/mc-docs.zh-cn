@@ -12,11 +12,11 @@ origin.date: 06/12/2019
 ms.date: 11/11/2019
 ms.author: v-yiso
 ms.openlocfilehash: ac7ae4ad93c8e39d0cbfe828704d10c86a30720c
-ms.sourcegitcommit: 642a4ad454db5631e4d4a43555abd9773cae8891
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2019
-ms.locfileid: "73426030"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291627"
 ---
 # <a name="quickstart-create-apache-hadoop-cluster-in-azure-hdinsight-using-resource-manager-template"></a>快速入门：使用资源管理器模板在 Azure HDInsight 中创建 Apache Hadoop 群集
 
@@ -40,7 +40,7 @@ ms.locfileid: "73426030"
     |属性  |说明  |
     |---------|---------|
     |**订阅**     |  选择 Azure 订阅。 |
-    |**资源组**     | 创建资源组，或选择现有资源组。  资源组是 Azure 组件的容器。  在本例中，资源组包含 HDInsight 群集和依赖的 Azure 存储帐户。 |
+    |**资源组**     | 创建资源组，或选择现有资源组。  资源组是 Azure 组件的容器。  在此示例中，资源组包含 HDInsight 群集和依赖的 Azure 存储帐户。 |
     |**位置**     | 选择要在其中创建群集的 Azure 位置。  为获得更佳性能，请选择离你较近的位置。 |
     |**群集名称**     | 输入 Hadoop 群集的名称。 由于 HDInsight 中的所有群集共享同一 DNS 命名空间，因此该名称必须唯一。 名称只能包含小写字母、数字和连字符，并且必须以字母开头。  每个连字符的前后必须为非连字符字符。  名称的长度还必须介于 3 到 59 个字符之间。 |
     |**群集类型**     | 选择“hadoop”  。 |
@@ -56,13 +56,13 @@ ms.locfileid: "73426030"
 
 3. 选择“我同意上述条款和条件”，并选择“购买”。   你将收到一条通知，指出你的部署正在进行。  创建群集大约需要 20 分钟时间。
 
-4. 创建群集后，将收到“部署成功”的通知，通知中附有“转到资源组”链接   。  **资源组**页面将列出新的 HDInsight 群集以及与此群集关联的默认存储。 每个群集都有一个 [Azure 存储帐户](../hdinsight-hadoop-use-blob-storage.md)依赖项。 该帐户称为默认存储帐户。 HDInsight 群集及其默认存储帐户必须共存于同一个 Azure 区域中。 删除群集不会删除存储帐户。
+4. 创建群集后，你将收到“部署成功”  通知，其中包含“转到资源组”  链接。  **资源组**页面将列出新的 HDInsight 群集以及与此群集关联的默认存储。 每个群集都有一个 [Azure 存储帐户](../hdinsight-hadoop-use-blob-storage.md)依赖项。 该帐户称为默认存储帐户。 HDInsight 群集及其默认存储帐户必须共存于同一个 Azure 区域中。 删除群集不会删除存储帐户。
 
 > [!NOTE]  
 > 如需其他群集创建方法或要了解本快速入门中使用的属性，请参阅[创建 HDInsight 群集](../hdinsight-hadoop-provision-linux-clusters.md)。
 
 ## <a name="clean-up-resources"></a>清理资源
-完成本快速入门后，可以删除群集。 有了 HDInsight，便可以将数据存储在 Azure 存储中，因此可以在群集不用时安全地删除群集。 此外，还需要支付 HDInsight 群集费用，即使未使用。 由于群集费用数倍于存储空间费用，因此在群集不用时删除群集可以节省费用。
+完成本快速入门后，可以删除群集。 有了 HDInsight，便可以将数据存储在 Azure 存储中，因此可以在群集不用时安全地删除群集。 此外，还需要支付 HDInsight 群集费用，即使未使用。 由于群集费用高于存储空间费用数倍，因此在不使用群集时将其删除可以节省费用。
 
 > [!NOTE]
 > 如果立即进行下一教程，了解如何使用 Hadoop on HDInsight 运行 ETL 操作，建议保持群集运行  。 这是因为该教程中必须再次创建 Hadoop 群集。 但是，如果不立即学习下一教程，则必须立即删除该群集。

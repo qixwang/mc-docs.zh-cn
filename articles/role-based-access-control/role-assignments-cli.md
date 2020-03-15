@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/02/2020
+ms.date: 03/04/2020
 ms.author: v-junlch
 ms.reviewer: bagovind
-ms.openlocfilehash: 7a5f2d6708f45887f090119c0219446294914e0a
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.openlocfilehash: 0decf753aec3b4a166b625bb264ec8d14bb6cd10
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75624203"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291844"
 ---
 # <a name="add-or-remove-role-assignments-using-azure-rbac-and-azure-cli"></a>使用 Azure RBAC 和 Azure CLI 添加或删除角色分配
 
@@ -157,7 +157,7 @@ az role assignment create --role "Reader" --assignee annm@example.com --subscrip
 
 ### <a name="user-at-a-management-group-scope"></a>管理组范围内的用户
 
-若要为管理组范围的用户添加角色分配，请使用 [az role assignment create](/cli/role/assignment#az-role-assignment-create)。 若要获取管理组 ID，可以在 Azure 门户中的“管理组”  边栏选项卡上找到它，也可以使用 [az account management-group list](https://docs.microsoft.com/cli/azure/ext/managementgroups/account/management-group#ext-managementgroups-az-account-management-group-list)。
+若要为管理组范围的用户添加角色分配，请使用 [az role assignment create](/cli/role/assignment#az-role-assignment-create)。 若要获取管理组 ID，可以在 Azure 门户中的“管理组”  边栏选项卡上找到它，也可以使用 [az account management-group list](/cli/account/management-group#az-account-management-group-list)。
 
 ```azurecli
 az role assignment create --role <role_name_or_id> --assignee <assignee> --scope /providers/Microsoft.Management/managementGroups/<group_id>
@@ -205,7 +205,7 @@ az role assignment delete --assignee patlong@contoso.com --role "Virtual Machine
 az role assignment delete --assignee 22222222-2222-2222-2222-222222222222 --role "Reader" --subscription 00000000-0000-0000-0000-000000000000
 ```
 
-以下示例将“账单读者”角色  从管理组范围的 *alain\@example.com* 用户中删除。 若要获取管理组的 ID，可以使用 [az account management-group list](https://docs.microsoft.com/cli/azure/ext/managementgroups/account/management-group#ext-managementgroups-az-account-management-group-list)。
+以下示例将“账单读者”角色  从管理组范围的 *alain\@example.com* 用户中删除。 若要获取管理组的 ID，可以使用 [az account management-group list](/cli/account/management-group#az-account-management-group-list)。
 
 ```azurecli
 az role assignment delete --assignee alain@example.com --role "Billing Reader" --scope /providers/Microsoft.Management/managementGroups/marketing-group
@@ -216,4 +216,3 @@ az role assignment delete --assignee alain@example.com --role "Billing Reader" -
 - [使用 Azure RBAC 和 Azure CLI 列出角色分配](role-assignments-list-cli.md)
 - [使用 Azure CLI 管理 Azure 资源和资源组](../azure-resource-manager/cli-azure-resource-manager.md)
 
-<!-- Update_Description: wording update -->

@@ -13,11 +13,11 @@ origin.date: 07/01/2019
 ms.date: 09/23/2019
 ms.author: v-jay
 ms.openlocfilehash: d30909789983a1486de21372ee31ca88e5a6062f
-ms.sourcegitcommit: 8248259e4c3947aa0658ad6c28f54988a8aeebf8
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71124371"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291284"
 ---
 # <a name="azure-storage-accounts"></a>Azure 存储帐户
 

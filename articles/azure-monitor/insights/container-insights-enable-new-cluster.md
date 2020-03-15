@@ -7,11 +7,11 @@ ms.author: v-lingwu
 origin.date: 04/25/2019
 ms.date: 08/19/2019
 ms.openlocfilehash: c3fd751e6977b7547611914dca7a6b151c9ebd3e
-ms.sourcegitcommit: 13431cf4d69142ed7feb8d12d967a502bf9ff346
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75599933"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79290891"
 ---
 # <a name="enable-monitoring-of-a-new-azure-kubernetes-service-aks-cluster"></a>启用对新的 Azure Kubernetes 服务 (AKS) 群集的监视
 

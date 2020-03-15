@@ -13,17 +13,17 @@ origin.date: 11/14/2019
 ms.date: 03/02/2020
 ms.author: v-yiso
 ms.openlocfilehash: 6c2f1c7e15e400fdae256f2bb668a13cf2b6ea1d
-ms.sourcegitcommit: 46fd4297641622c1984011eac4cb5a8f6f94e9f5
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77563362"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292075"
 ---
 # <a name="information-about-using-hdinsight-on-linux"></a>有关在 Linux 上使用 HDInsight 的信息
 
 Azure HDInsight 群集提供了基于熟悉的 Linux 环境并在 Azure 云中运行的 Apache Hadoop。 在大多数情况下，它的工作方式应该与其他任何 Hadoop-on-Linux 安装完全相同。 本文档指出了你应该注意的具体差异。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 本文档中的许多步骤使用以下实用程序，这些程序可能需要在系统上安装。
 

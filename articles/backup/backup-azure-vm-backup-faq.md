@@ -7,12 +7,12 @@ ms.topic: conceptual
 origin.date: 09/17/2019
 ms.date: 09/23/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 21ab91876113d35c6357475ffcac8a9487669b44
-ms.sourcegitcommit: 27eaabd82b12ad6a6840f30763034a6360977186
+ms.openlocfilehash: 3f581a8cfba47957cc7a5cea1e37d5cc6ff1756f
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77497614"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79290795"
 ---
 # <a name="frequently-asked-questions-back-up-azure-vms"></a>常见问题 - 备份 Azure VM
 
@@ -124,13 +124,13 @@ Azure 虚拟机备份策略支持的最小保留期限为 7 天，最长为 9999
 
 ### <a name="what-happens-when-we-change-the-key-vault-settings-for-the-encrypted-vm"></a>更改已加密 VM 的密钥保管库设置时会发生什么情况？
 
-更改已加密 VM 的密钥保管库设置后，备份将继续使用新的详细信息集。 但是，从更改之前的恢复点还原后，必须先在密钥保管库中还原机密，然后才能从中创建 VM。 有关详细信息，请参阅[此文](https://docs.microsoft.com/azure/backup/backup-azure-restore-key-secret)
+更改已加密 VM 的密钥保管库设置后，备份将继续使用新的详细信息集。 但是，从更改之前的恢复点还原后，必须先在密钥保管库中还原机密，然后才能从中创建 VM。 有关详细信息，请参阅[此文](/backup/backup-azure-restore-key-secret)
 
 机密/密钥滚动更新等操作不需要此步骤，并且在还原后可以使用相同的密钥保管库。
 
 ### <a name="can-i-access-the-vm-once-restored-due-to-a-vm-having-broken-relationship-with-domain-controller"></a>在还原后我是否由于 VM 与域控制器的关系被破坏而可以访问 VM？
 
-可以，由于 VM 与域控制器的关系被破坏，因此在还原后可以访问 VM。 有关详细信息，请参阅[此文](https://docs.microsoft.com/azure/backup/backup-azure-arm-restore-vms#post-restore-steps)
+可以，由于 VM 与域控制器的关系被破坏，因此在还原后可以访问 VM。 有关详细信息，请参阅[此文](/backup/backup-azure-arm-restore-vms#post-restore-steps)
 
 ## <a name="manage-vm-backups"></a>管理 VM 备份
 

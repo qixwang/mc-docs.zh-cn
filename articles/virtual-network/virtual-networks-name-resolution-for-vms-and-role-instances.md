@@ -14,11 +14,11 @@ origin.date: 03/25/2019
 ms.date: 02/24/2020
 ms.author: v-yeche
 ms.openlocfilehash: 0492da7ae2630b7dbd940d9b9c0f2112b4cf7736
-ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77653475"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79290980"
 ---
 # <a name="name-resolution-for-resources-in-azure-virtual-networks"></a>Azure 虚拟网络中资源的名称解析
 

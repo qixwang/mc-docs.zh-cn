@@ -9,11 +9,11 @@ ms.date: 02/10/2020
 ms.author: v-jay
 ms.subservice: files
 ms.openlocfilehash: a01ed0cc1eeb5c95c199450482082278f9a21adb
-ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77028869"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79290915"
 ---
 # <a name="troubleshoot-azure-files-problems-in-linux"></a>在 Linux 中排查 Azure 文件问题
 

@@ -2,19 +2,17 @@
 title: 快速入门 - 创建 Azure Kubernetes 服务 (AKS) 群集
 description: 了解如何使用 Azure 资源管理器模板快速创建 Kubernetes 群集，并在 Azure Kubernetes 服务 (AKS) 中部署应用程序
 services: container-service
-author: rockboyfor
-ms.service: container-service
 ms.topic: quickstart
 origin.date: 04/19/2019
-ms.date: 10/28/2019
+ms.date: 03/09/2020
 ms.author: v-yeche
 ms.custom: mvc
-ms.openlocfilehash: 12937548c9f23c8a36c5ad3363f1ab8aa8c50680
-ms.sourcegitcommit: 1d4dc20d24feb74d11d8295e121d6752c2db956e
+ms.openlocfilehash: c5f08f309d00fb78ed2c76ada0a3710f27f3c55e
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73068885"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79290829"
 ---
 <!--Verify successfully-->
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-an-azure-resource-manager-template"></a>快速入门：使用 Azure 资源管理器模板部署 Azure Kubernetes 服务 (AKS) 群集
@@ -118,7 +116,7 @@ az aks install-cli
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 ```
 
-若要验证到群集的连接，请使用 [kubectl get][kubectl-get] 命令返回群集节点的列表。
+若要验证到群集的连接，请使用 [kubectl get][kubectl-get] 命令返回群集节点列表。
 
 ```azurecli
 kubectl get nodes

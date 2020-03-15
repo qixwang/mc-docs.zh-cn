@@ -12,11 +12,11 @@ origin.date: 08/20/2019
 ms.date: 01/13/2020
 ms.author: yiso
 ms.openlocfilehash: 170f58652d86c11b6333bfd5b6c29b90ea99adfa
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75631113"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291566"
 ---
 # <a name="set-up-x509-security-in-your-azure-iot-hub"></a>在 Azure IoT 中心设置 X.509 安全性
 

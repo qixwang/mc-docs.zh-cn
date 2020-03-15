@@ -1,5 +1,5 @@
 ---
-title: 教程：不使用代码引入监视数据 - Azure 数据资源管理器
+title: 教程：不使用代码在 Azure 数据资源管理器中引入监视数据
 description: 本教程介绍如何在不使用任何代码和查询数据的情况下将监视数据引入到 Azure 数据资源管理器。
 author: orspod
 ms.author: v-tawe
@@ -7,13 +7,13 @@ ms.reviewer: kerend
 ms.service: data-explorer
 ms.topic: tutorial
 origin.date: 01/29/2020
-ms.date: 03/09/2020
-ms.openlocfilehash: 506bf6d817c4be7b7c047c90954cd553823ad70a
-ms.sourcegitcommit: ced17aa58e800b9e4335276a1595b8045836b256
+ms.date: 03/23/2020
+ms.openlocfilehash: 03d020a27efea8b784fb7fb5ca8b68a777b9cba8
+ms.sourcegitcommit: 4ba6d7c8bed5398f37eb37cf5e2acafcdcc28791
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77590293"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79133986"
 ---
 # <a name="tutorial-ingest-and-query-monitoring-data-in-azure-data-explorer"></a>教程：在 Azure 数据资源管理器中引入和查询监视数据 
 

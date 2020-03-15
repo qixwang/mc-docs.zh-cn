@@ -4,11 +4,11 @@ description: '了解如何开发使用 C # 的 Azure 功能。'
 ms.topic: reference
 ms.date: 02/18/2020
 ms.openlocfilehash: 23fb7c15a0b913e55781dd74fb9ee6e1c2e8b9fd
-ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77494517"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292988"
 ---
 # <a name="azure-functions-c-developer-reference"></a>Azure Functions C# developer reference（Azure Functions C# 开发人员参考）
 

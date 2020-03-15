@@ -11,11 +11,11 @@ ms.author: gopalv
 ms.topic: conceptual
 ms.date: 10/3/2019
 ms.openlocfilehash: 4b47451993a1af6700bcf82f21578ea79090ebed
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75599040"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292653"
 ---
 # <a name="data-platforms-supported-on-the-data-science-virtual-machine"></a>Data Science Virtual Machine 支持的数据平台
 

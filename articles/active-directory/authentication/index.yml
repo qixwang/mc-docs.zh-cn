@@ -10,14 +10,14 @@ metadata:
   ms.topic: landing-page
   author: iainfoulds
   ms.author: v-junlch
-  ms.date: 02/26/2020
+  ms.date: 03/10/2020
   ms.collection: M365-identity-device-management
-  ms.openlocfilehash: 449a8e63f7926890e41dfc1a4eeac9f4b7c37dd3
-  ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
+  ms.openlocfilehash: 75374b7b9784774e4ab50c4ed5391c3c37ab3848
+  ms.sourcegitcommit: 4ba6d7c8bed5398f37eb37cf5e2acafcdcc28791
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 02/27/2020
-  ms.locfileid: "77653396"
+  ms.lasthandoff: 03/12/2020
+  ms.locfileid: "79133804"
 landingContent:
 - title: 关于身份验证
   linkLists:
@@ -31,14 +31,14 @@ landingContent:
     links:
     - text: 自助式密码重置的工作原理
       url: concept-sspr-howitworks.md
-    - text: 密码写回
+    - text: 密码写回的工作原理
       url: concept-sspr-writeback.md
   - linkListType: tutorial
     links:
     - text: 启用自助式密码重置
       url: tutorial-enable-sspr.md
     - text: 启用向本地进行密码写回
-      url: tutorial-enable-writeback.md
+      url: tutorial-enable-sspr-writeback.md
   - linkListType: deploy
     links:
     - text: 自助式密码重置部署指南

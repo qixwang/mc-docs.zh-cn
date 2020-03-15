@@ -6,7 +6,6 @@ services: network-watcher
 documentationcenter: na
 author: lingliw
 manager: digimobile
-editor: ''
 ms.service: network-watcher
 ms.devlang: na
 ms.topic: article
@@ -15,12 +14,12 @@ ms.workload: infrastructure-services
 origin.date: 07/11/2017
 ms.date: 12/22/2019
 ms.author: v-lingwu
-ms.openlocfilehash: dc3d7781cbdb4a321c5fa5a1a51c740d9a137baf
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: faa4c92afe8815e985a69ff763ff2441a7a87862
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336084"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79290888"
 ---
 # <a name="troubleshoot-connections-with-azure-network-watcher-using-powershell"></a>通过 PowerShell 使用 Azure 网络观察程序排查连接问题
 
@@ -273,7 +272,7 @@ Test-AzNetworkWatcherConnectivity -NetworkWatcher $networkWatcher -SourceId $VM1
 
 ### <a name="response"></a>响应
 
-以下 json 是运行前面 cmdlet 的示例响应。 因为目标可访问，`ConnectionStatus` 属性显示为“可以访问”  。  提供了有关到达存储 blob 所需的跃点数和延迟的详细信息。
+以下 json 是运行前面 cmdlet 的示例响应。 因为目标可访问，`ConnectionStatus` 属性显示为“可以访问”  。  提供了有关到达存储 Blob 所需的跃点数和延迟的详细信息。
 
 ```json
 ConnectionStatus : Reachable

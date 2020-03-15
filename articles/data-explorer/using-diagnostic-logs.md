@@ -7,19 +7,19 @@ ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: conceptual
 origin.date: 09/18/2019
-ms.date: 02/17/2019
-ms.openlocfilehash: f3c9bf1c8daef8813721ee7cedf0ba32c8d76caa
-ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
+ms.date: 03/23/2020
+ms.openlocfilehash: 0bea2fe6aa4265af7a9a963d5ebae4bca9b62b17
+ms.sourcegitcommit: 4ba6d7c8bed5398f37eb37cf5e2acafcdcc28791
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77037945"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79133958"
 ---
 # <a name="monitor-azure-data-explorer-ingestion-operations-using-diagnostic-logs-preview"></a>使用诊断日志监视 Azure 数据资源管理器引入操作（预览版）
 
 Azure 数据资源管理器是一项快速、完全托管的数据分析服务，用于实时分析从应用程序、网站和 IoT 设备等资源流式传输的海量数据。 若要使用 Azure 数据资源管理器，请先创建群集，再在该群集中创建一个或多个数据库。 然后将数据引入（加载）到数据库中的某个表，以便对其运行查询。 [Azure Monitor 诊断日志](/azure-monitor/platform/diagnostic-logs-overview)提供有关 Azure 资源操作的数据。 Azure 数据资源管理器使用诊断日志获取有关引入成功和失败的见解。 可将操作日志导出到 Azure 存储、事件中心或 Log Analytics 以监视引入状态。 可将 Azure 存储和 Azure 事件中心的日志路由到 Azure 数据资源管理器群集中的某个表，以进一步分析。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * 如果没有 Azure 订阅，请创建一个[试用 Azure 帐户](https://www.azure.cn/pricing/1rmb-trial/)。
 * 创建[群集和数据库](create-cluster-database-portal.md)。

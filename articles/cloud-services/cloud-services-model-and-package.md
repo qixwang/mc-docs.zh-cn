@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 02/19/2020
 ms.author: v-junlch
 ms.openlocfilehash: 3c514d0f154c6e39068770feee57483150cedcc0
-ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77494488"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291387"
 ---
 # <a name="what-is-the-cloud-service-model-and-how-do-i-package-it"></a>什么是云服务模型，如何将其打包？
 云服务由以下三个组件创建：服务定义 (.csdef)、服务配置 (.cscfg) 和服务包 (.cspkg)    。 ServiceDefinition.csdef 和 ServiceConfig.cscfg 文件都基于 XML，同时介绍云服务的结构及其配置方式；统称为模型   。 **ServicePackage.cspkg** 是基于 **ServiceDefinition.csdef** 和其他文件生成的 zip 文件，它包含所有必需的基于二进制的依赖项。 Azure 可从 ServicePackage.cspkg 和 ServiceConfig.cscfg 两者创建云服务   。

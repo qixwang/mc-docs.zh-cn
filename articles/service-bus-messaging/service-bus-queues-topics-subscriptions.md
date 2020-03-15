@@ -11,11 +11,11 @@ origin.date: 01/16/2020
 ms.date: 2/6/2020
 ms.author: v-lingwu
 ms.openlocfilehash: 32bb6a31ea2317be9ef524a1aaee86299d66196e
-ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77068000"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291816"
 ---
 # <a name="service-bus-queues-topics-and-subscriptions"></a>服务总线队列、主题和订阅
 

@@ -11,14 +11,15 @@ ms.date: 04/08/2019
 ms.author: v-yeche
 ms.custom: mvc
 keywords: Cosmos DB, Open Service Broker, 用于 Azure 的 Open Service Broker
-ms.openlocfilehash: ab037835a8b5c815fee3b0a1c47bbc8784f52f23
-ms.sourcegitcommit: 878a2d65e042b466c083d3ede1ab0988916eaa3d
+ms.openlocfilehash: 6bd9ac55d242b885b00178af11b7fd47d81a0baa
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65835723"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79290841"
 ---
 <!--IMPORTANT: http_application_routing NOT AVAILABLE ON MOONCAKE-->
+<!--NOT AVAIALBLE ON **Open Service Broker for Azure Container** Image-->
 <!--NOT SUIT FOR MOONCAKE-->
 # <a name="integrate-existing-mongodb-application-with-azure-cosmos-db-api-for-mongodb-and-open-service-broker-for-azure-osba"></a>将现有的 MongoDB 应用程序与用于 MongoDB 的 Azure Cosmos DB API 和用于 Azure 的 Open Service Broker (OSBA) 集成
 
@@ -117,7 +118,7 @@ svcat provision musicdb --class azure-cosmosdb-mongo-account --plan account  --p
 }'
 ```
 
-上一命令在 Azure 中预配 Cosmos DB 数据库，所在的资源组为 MyResourceGroup，所在区域为 chinaeast2。 有关 *resourceGroup*、*location* 以及其他特定于 Azure 的 JSON 参数的详细信息，请参阅 [Cosmos DB 模块参考文档](https://github.com/Azure/open-service-broker-azure/blob/master/docs/modules/cosmosdb.md#provision-3)。
+上一命令在 Azure 中预配 Cosmos DB 数据库，所在的资源组为 MyResourceGroup  ，所在区域为 chinaeast2  。 有关 *resourceGroup*、*location* 以及其他特定于 Azure 的 JSON 参数的详细信息，请参阅 [Cosmos DB 模块参考文档](https://github.com/Azure/open-service-broker-azure/blob/master/docs/modules/cosmosdb.md#provision-3)。
 
 若要验证数据库是否已完成预配，请使用 `svcat get instance` 命令：
 
@@ -129,7 +130,7 @@ $ svcat get instance musicdb
   musicdb   default     azure-cosmosdb-mongo-account   account   Ready
 ```
 
-如果在“状态”下看到“就绪”，则表明数据库已准备就绪。
+如果在“状态”下看到“就绪”，则表明数据库已准备就绪。  
 
 数据库完成预配以后，需将其元数据绑定到 [Kubernetes 机密](https://kubernetes.io/docs/concepts/configuration/secret/)。 在将该数据绑定到机密以后，其他应用程序就可以访问该数据。 若要将数据库的元数据绑定到某个机密，请使用 `svcat bind` 命令：
 
@@ -267,7 +268,7 @@ press Ctrl+C to detach
 ...
 ```
 
-导航到日志中显示的 URL。 在上一示例中，应使用 *http://spring-music.1234567890abcdef1234.chinaeast2.aksapp.io/*。 
+导航到日志中显示的 URL。 在上一示例中，应使用 *http://spring-music.1234567890abcdef1234.chinaeast2.aksapp.io/* 。 
 
 验证是否可以看到应用程序以及你所做的更改。
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/03/2018
 ms.author: v-lingwu
 ms.assetid: b80b3a41-87bf-49ca-8ef2-68e43c04c1a3
-ms.openlocfilehash: e05f8368f301e04d6962a102661ca0db0d2303b2
-ms.sourcegitcommit: 27eaabd82b12ad6a6840f30763034a6360977186
+ms.openlocfilehash: e27618859ff15950dd6ac2b2edacb9881f5fbb51
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77497554"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291461"
 ---
 # <a name="back-up-an-azure-vm-using-azure-backup-via-rest-api"></a>通过 REST API 使用 Azure 备份来备份 Azure VM
 
@@ -40,7 +40,7 @@ POST https://management.chinacloudapi.cn/Subscriptions/00000000-0000-0000-0000-0
 
 #### <a name="responses"></a>响应
 
-“刷新”操作是一种[异步操作](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations)。 这意味着，此操作会创建另一个需要单独跟踪的操作。
+“刷新”操作是一种[异步操作](/azure-resource-manager/resource-manager-async-operations)。 这意味着，此操作会创建另一个需要单独跟踪的操作。
 
 它将返回两个响应：创建另一个操作时为 202（已接受），该操作完成时为 200（正常）。
 

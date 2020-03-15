@@ -7,11 +7,11 @@ origin.date: 12/10/2019
 ms.date: 02/24/2020
 ms.author: v-yeche
 ms.openlocfilehash: 9c1e0077780260478b98c567882f3894a6e371c8
-ms.sourcegitcommit: 781f68d27903687f0aa9e1ed273eee25c6d129a1
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77611269"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291583"
 ---
 # <a name="run-a-failover-from-on-premises-to-azure"></a>运行从本地到 Azure 的故障转移
 

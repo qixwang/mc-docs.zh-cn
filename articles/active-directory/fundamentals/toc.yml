@@ -21,6 +21,8 @@
       href: active-directory-architecture.md
     - name: 默认用户权限
       href: users-default-permissions.md
+    - name: 将 Azure AD 与 ADDS 进行比较
+      href: active-directory-compare-azure-ad-to-ad.md
 - name: 操作指南
   expanded: true
   items:

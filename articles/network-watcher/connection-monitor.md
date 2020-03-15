@@ -17,12 +17,12 @@ origin.date: 10/25/2018
 ms.date: 11/26/2018
 ms.author: v-lingwu
 ms.custom: mvc
-ms.openlocfilehash: 9b89edfb19b97f7f51e035894765d09397f162fd
-ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
+ms.openlocfilehash: 1e530c2db6b60308bbc8f84e977fd89c36449ff0
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77028883"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79290799"
 ---
 # <a name="tutorial-monitor-network-communication-between-two-virtual-machines-using-the-azure-portal"></a>教程：使用 Azure 门户监视两个虚拟机之间的网络通信
 
@@ -54,7 +54,7 @@ ms.locfileid: "77028883"
     |---|---|
     |名称|myVM1|
     |用户名| 输入所选用户名。|
-    |密码| 输入所选密码。 密码必须至少 12 个字符长，且符合[定义的复杂性要求](../virtual-machines/windows/faq.md?toc=%2fnetwork-watcher%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)。|
+    |密码| 输入所选密码。 密码必须至少 12 个字符长，且符合[定义的复杂性要求](../virtual-machines/windows/faq.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)。|
     |订阅| 选择订阅。|
     |资源组| 选择“新建”，并输入 myResourceGroup  |
     |位置| 选择“中国东部” |

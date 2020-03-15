@@ -16,11 +16,11 @@ origin.date: 09/17/2019
 ms.date: 02/24/2020
 ms.author: v-jay
 ms.openlocfilehash: e102a26aba7a240ef084d6e9f8ec7a62462ffbc3
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77540024"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291612"
 ---
 # <a name="load-balancer-health-probes"></a>负载均衡器运行状况探测
 

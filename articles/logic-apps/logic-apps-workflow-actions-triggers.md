@@ -11,11 +11,11 @@ ms.topic: reference
 origin.date: 01/19/2020
 ms.date: 02/24/2020
 ms.openlocfilehash: 6a23a7c716c0235a94c5e2e499a4c6be98106321
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77428936"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291498"
 ---
 # <a name="schema-reference-guide-for-trigger-and-action-types-in-azure-logic-apps"></a>有关 Azure 逻辑应用中触发器和操作类型的架构参考指南
 

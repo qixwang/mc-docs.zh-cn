@@ -10,11 +10,11 @@ origin.date: 02/27/2019
 ms.date: 06/10/2019
 ms.author: v-jay
 ms.openlocfilehash: d818972adf39031ab4d3fa4a7a60033999119e51
-ms.sourcegitcommit: 67a78cae1f34c2d19ef3eeeff2717aa0f78de38e
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66726506"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292771"
 ---
 # <a name="tutorial-use-data-box-to-import-data-as-managed-disks-in-azure"></a>教程：使用 Data Box 将数据导入为 Azure 中的托管磁盘
 

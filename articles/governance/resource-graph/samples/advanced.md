@@ -7,11 +7,11 @@ origin.date: 12/05/2019
 ms.date: 03/02/2020
 ms.topic: sample
 ms.openlocfilehash: 74c69e5019a33028d05a474ff5c6b26dae557bb1
-ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77494556"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291910"
 ---
 # <a name="advanced-resource-graph-query-samples"></a>Advanced Resource Graph 查询示例
 

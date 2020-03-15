@@ -13,11 +13,11 @@ ms.reviewer: vanto
 origin.date: 03/31/2019
 ms.date: 02/17/2020
 ms.openlocfilehash: cf29fd9559e2bcc5fcab24b6250021f79ac8844d
-ms.sourcegitcommit: d7b86a424b72849fe8ed32893dd05e4696e4fe85
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77155590"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292451"
 ---
 # <a name="advanced-data-security-for-azure-sql-database"></a>Azure SQL 数据库的高级数据安全
 

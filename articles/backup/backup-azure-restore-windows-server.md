@@ -8,11 +8,11 @@ origin.date: 09/07/2018
 ms.date: 11/26/2018
 ms.author: v-lingwu
 ms.openlocfilehash: 503943c65850110b81e77c4884a723174f518e0f
-ms.sourcegitcommit: 27eaabd82b12ad6a6840f30763034a6360977186
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77497637"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291641"
 ---
 # <a name="restore-files-to-windows-by-using-the-azure-resource-manager-deployment-model"></a>使用 Azure 资源管理器部署模型将文件还原到 Windows
 

@@ -9,11 +9,11 @@ origin.date: 12/13/2019
 ms.author: v-yiso
 ms.date: 02/25/2020
 ms.openlocfilehash: 45a7e26831ed526cebd02aa0d79ef623a125d6c8
-ms.sourcegitcommit: ced17aa58e800b9e4335276a1595b8045836b256
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77590284"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291752"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute 常见问题
 

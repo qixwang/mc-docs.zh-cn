@@ -7,9 +7,8 @@ metadata:
   services: container-service
   author: rockboyfor
   manager: digimobile
-  ms.service: container-service
   ms.topic: landing-page
-  ms.date: 01/20/2020
+  ms.date: 03/10/2020
   ms.author: v-yeche
 abstract:
   description: Azure Kubernetes 服务 (AKS) 管理托管的 Kubernetes 环境，使用户无需具备容器业务流程专业知识即可快速、轻松地部署和管理容器化的应用程序。 它还通过按需预配、升级和缩放资源，消除了正在进行的操作和维护的负担，而无需使应用程序脱机。

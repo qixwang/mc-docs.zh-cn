@@ -10,11 +10,11 @@ origin.date: 11/27/2018
 ms.date: 02/24/2020
 ms.author: v-yeche
 ms.openlocfilehash: 714bae23d6cceca8e04629d136cdf349c145516d
-ms.sourcegitcommit: 781f68d27903687f0aa9e1ed273eee25c6d129a1
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77611226"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79290900"
 ---
 # <a name="reprotect-failed-over-azure-vms-to-the-primary-region"></a>重新保护已故障转移到主要区域的 Azure VM
 

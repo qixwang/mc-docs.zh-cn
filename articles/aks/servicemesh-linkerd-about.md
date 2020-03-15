@@ -2,17 +2,16 @@
 title: Linkerd 概述
 description: 获取 Linkerd 的概述
 author: rockboyfor
-ms.service: container-service
 ms.topic: article
 origin.date: 10/09/2019
-ms.date: 10/28/2019
+ms.date: 03/09/2020
 ms.author: v-yeche
-ms.openlocfilehash: dc27b4252846cc8ab3500c49ac7d42f5c0971709
-ms.sourcegitcommit: 1d4dc20d24feb74d11d8295e121d6752c2db956e
+ms.openlocfilehash: ef2526e39d23fccffe79849138de74f80824ed30
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73083622"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79290694"
 ---
 # <a name="linkerd"></a>Linkerd
 
@@ -103,5 +102,4 @@ Linkerd 非常适合以下方案，建议将 Linkerd 用于以下方案：
 
 [linkerd-install]: ./servicemesh-linkerd-install.md
 
-<!-- Update_Description: new article about servicemesh linerd about -->
-<!--NEW.date: 11/04/2019-->
+<!-- Update_Description: update meta properties, wording update, update link -->

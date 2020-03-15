@@ -18,11 +18,11 @@ ms.subservice: hybrid
 ms.author: v-junlch
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 448193afa17f6ec81f1e9616d93c63fc2562dfb1
-ms.sourcegitcommit: fbc7584f403417d3af7bd6bbbaed7c13a78c57b9
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78411548"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291002"
 ---
 # <a name="azure-ad-connect-sync-understanding-the-architecture"></a>Azure AD Connect 同步：了解体系结构
 本主题介绍 Azure AD Connect 同步的基本体系结构。在许多方面，它类似于其前身产品 MIIS 2003、ILM 2007 和 FIM 2010。 Azure AD Connect 同步是这些技术的演进。 如果熟悉上述任何早期技术，则也会熟悉本主题的内容。 本主题很适合同步功能的新手。 但是，不一定要了解本主题的详细信息才能成功自定义 Azure AD Connect 同步（在本主题中称为“同步引擎”）。

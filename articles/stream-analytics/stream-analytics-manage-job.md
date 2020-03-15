@@ -8,11 +8,11 @@ ms.topic: tutorial
 origin.date: 06/03/2019
 ms.date: 08/03/2019
 ms.openlocfilehash: 8dc30a2aca766040c1eaf1b936ee1431acb09c52
-ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75856589"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292363"
 ---
 # <a name="tutorial-analyze-phone-call-data-with-stream-analytics-and-visualize-results-in-power-bi-dashboard"></a>教程：使用流分析来分析电话呼叫数据并在 Power BI 仪表板中将结果可视化
 
@@ -28,7 +28,7 @@ ms.locfileid: "75856589"
 > * 测试和启动作业
 > * 在 Power BI 中可视化结果
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 开始之前，请执行以下操作：
 

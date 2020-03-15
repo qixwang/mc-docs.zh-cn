@@ -8,11 +8,11 @@ author: rockboyfor
 ms.topic: conceptual
 ms.author: v-yeche
 ms.openlocfilehash: a97f322ff39f5a7731c54a63bff83fe93929a46b
-ms.sourcegitcommit: e0225b4d68a71bfa5bbcb7d8d7e0214b9a17dc5d
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71083186"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291573"
 ---
 # <a name="retain-ip-addresses-during-failover"></a>在故障转移期间保留 IP 地址
 

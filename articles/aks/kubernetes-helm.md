@@ -3,17 +3,16 @@ title: 使用 Helm 在 Kubernetes on Azure 中部署容器
 description: 了解如何使用 Helm 打包工具在 Azure Kubernetes 服务 (AKS) 群集中部署容器
 services: container-service
 author: rockboyfor
-ms.service: container-service
 ms.topic: article
 origin.date: 11/22/2019
-ms.date: 01/13/2020
+ms.date: 03/09/2020
 ms.author: v-yeche
-ms.openlocfilehash: e41eab9d0ac800283609d193e05abddf1d08b655
-ms.sourcegitcommit: 1ac138a9e7dc7834b5c0b62a133ca5ce2ea80054
+ms.openlocfilehash: b4acadcfb4f7ca4e381f7a48585f9ed91a2b76aa
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78304635"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79290831"
 ---
 # <a name="install-applications-with-helm-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中使用 Helm 安装应用程序
 
@@ -29,6 +28,8 @@ ms.locfileid: "78304635"
 
 > [!IMPORTANT]
 > Helm 要在 Linux 节点上运行。 还需要确保所安装的所有 Helm 图表也计划在正确的节点上运行。 本文中的命令使用[节点选择器][k8s-node-selector]，确保将 Pod 安排到正确的节点，但并非所有 Helm 图表都可以公开节点选择器。 还可以考虑使用群集上的其他选项，例如[排斥][taints]。
+
+<!--Not Avaialble on Windows Server nodes in your cluster-->
 
 ## <a name="verify-your-version-of-helm"></a>验证 Helm 版本
 
@@ -129,14 +130,14 @@ Update Complete. ⎈ Happy Helming!⎈
 
 若要使用 Helm 安装图表，请使用 [helm install][helm-install-command] 命令并指定版本名称和要安装的图表的名称。 若要查看实际安装的 Helm 图表，让我们使用 Helm 图表安装基本的 nginx 部署。
 
+<!--MOONCAKE: Add --set defaultBackend.image.repository=gcr.azk8s.cn/google_containers/defaultbackend-amd64-->
+
 ```console
 helm install my-nginx-ingress stable/nginx-ingress \
     --set controller.nodeSelector."beta\.kubernetes\.io/os"=linux \
     --set defaultBackend.nodeSelector."beta\.kubernetes\.io/os"=linux \
     --set defaultBackend.image.repository=gcr.azk8s.cn/google_containers/defaultbackend-amd64
 ```
-
-<!--MOONCAKE: Add --set defaultBackend.image.repository=gcr.azk8s.cn/google_containers/defaultbackend-amd64-->
 
 以下精简示例输出显示了 Helm 图表创建的 Kubernetes 资源的部署状态：
 

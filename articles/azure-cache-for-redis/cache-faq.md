@@ -7,11 +7,11 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 12/30/2019
 ms.openlocfilehash: 5f8bcc48f4b1f9d0fed942a7603041446be7f60e
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75624359"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291985"
 ---
 # <a name="azure-cache-for-redis-faq"></a>用于 Redis 的 Azure 缓存常见问题解答
 了解 Azure Redis 缓存的常见问题、模式和最佳做法。
@@ -62,7 +62,7 @@ ms.locfileid: "75624359"
 * [启用服务器 GC，以便在使用 StackExchange.Redis 时在客户端上获取更多吞吐量](#enable-server-gc-to-get-more-throughput-on-the-client-when-using-stackexchangeredis)
 * [围绕连接的性能注意事项](#performance-considerations-around-connections)
 
-## <a name="monitoring-and-troubleshooting-faqs"></a>监视和故障排除常见问题
+## <a name="monitoring-and-troubleshooting-faqs"></a>有关监视和故障排除的常见问题
 本部分中的常见问题包括常见的监视和故障排除问题。 有关 Azure Cache for Redis 实例监视和故障排除的详细信息，请参阅[如何监视 Azure Cache for Redis](cache-how-to-monitor.md) 和各种故障排除指南。
 
 * [如何监视缓存的运行状况和性能？](#how-do-i-monitor-the-health-and-performance-of-my-cache)
@@ -98,11 +98,11 @@ Azure Redis 缓存基于热门开源软件 [Redis](https://redis.io/)。 这使�
 * **吞吐量**：高级级别提供的可用吞吐量最大。 如果缓存服务器或客户端达到带宽限制，客户端可能会出现超时。 有关详细信息，请参阅下表。
 * **高可用性/SLA**：Azure Redis 缓存保证标准/高级缓存在至少 99.9% 的时间内都可用。 若要了解有关 SLA 的详细信息，请参阅 [Azure Redis 缓存定价](https://www.azure.cn/support/sla/redis-cache/)。 SLA 仅涉及与缓存终结点的连接。 SLA 不涉及对数据丢失的防护。 我们建议使用高级层中的 Redis 数据暂留功能来增加灵活性，防止数据丢失。
 * **Redis 数据持久性**：高级层允许你将缓存数据暂留在 Azure 存储帐户中。 在基本/标准缓存中，所有数据只存储在内存中。 底层基础结构问题可能会导致潜在的数据丢失。 我们建议使用高级层中的 Redis 数据暂留功能来增加灵活性，防止数据丢失。 Azure Redis 缓存提供可在 Redis 暂留中使用的 RDB 和 AOF（即将推出）选项。 有关详细信息，请参阅[如何为高级 Azure Redis 缓存配置持久性](cache-how-to-premium-persistence.md)。
-* **Redis 群集**：若要创建大于 120 GB 的缓存，或要将数据通过分片的方式分散到多个 Redis 节点，可以使用在高级层中提供的 Redis 群集功能。 每个节点都包含一个主/副缓存对，目的是提高可用性。 有关详细信息，请参阅 [如何为高级 Azure Redis 缓存配置群集功能](cache-how-to-premium-clustering.md)。
-* **增强的安全性和网络独立性**：Azure 虚拟网络 (VNET) 部署为 Azure Redis 缓存提供增强的安全性和隔离性，并提供子网、访问控制策略以及其他进一步限制访问的功能。 有关详细信息，请参阅 [如何为高级 Azure Redis 缓存配置虚拟网络支持](cache-how-to-premium-vnet.md)。
+* **Redis 群集**：若要创建大于 120 GB 的缓存，或要将数据通过分片的方式分散到多个 Redis 节点，可以使用在高级层中提供的 Redis 群集功能。 每个节点都包含一个主/副缓存对，目的是提高可用性。 有关详细信息，请参阅[如何为高级 Azure Redis 缓存配置群集功能](cache-how-to-premium-clustering.md)。
+* **增强的安全性和网络隔离**：Azure 虚拟网络 (VNET) 部署为 Azure Redis 缓存提供增强的安全性和隔离性，并提供子网、访问控制策略以及其他进一步限制访问的功能。 有关详细信息，请参阅 [如何为高级 Azure Redis 缓存配置虚拟网络支持](cache-how-to-premium-vnet.md)。
 * **配置 Redis**：在标准级别和高级级别，都可以针对 Keyspace 通知来配置 Redis。
 * **客户端连接的最大数量**：高级级别提供的可以连接到 Redis 的客户端数量是最大的，缓存大小越大，连接数量越大。 群集不会增加可用于群集缓存的连接数。 有关详细信息，请参阅 [Azure Redis 缓存定价](https://www.azure.cn/pricing/details/redis-cache/)。
-* **专用 Redis 服务器核心**:高级层的所有缓存大小都有针对 Redis 的专用核心。 在基本层/标准层中，C1 以上（含）大小均有针对 Redis 服务器的专用核心。
+* **专用 Redis 服务器核心**：高级层的所有缓存大小都有针对 Redis 的专用核心。 在基本层/标准层中，C1 以上（含）大小均有针对 Redis 服务器的专用核心。
 * **Redis 是单线程的** ，因此与仅使用两个内核相比，使用两个以上的内核并没有额外的优势，但大型 VM 通常提供比小型 VM 更高的带宽。 如果缓存服务器或客户端达到带宽限制，客户端会出现超时。
 * **性能改进**：相较于基本层或标准层，高级层中的缓存部署在处理器速度更快且性能更高的硬件上。 高级级别缓存的吞吐量更高，延迟更低。
 
@@ -286,9 +286,9 @@ Redis 服务器本身不支持 SSL，但 Azure Redis 缓存可提供此支持。
 * 注意与正在运行的不同操作相关的性能成本。 例如，`KEYS` 命令是 O(n) 操作，应当避免。 [redis.io](https://redis.io/commands/) 站点具有关于其支持的每个操作的时间复杂性的详细信息。 单击每个命令以查看每个操作的复杂程度。
 
 #### <a name="configuration-and-concepts"></a>配置和概念
-* 为生产系统使用标准层或高级层。 基本层是没有数据复制和 SLA 的单节点系统。 此外，使用至少一个 C1 缓存。 C0 缓存通常用于简单的开发/测试方案。
+* 针对生产系统使用标准层或高级层。 基本层是没有数据复制和 SLA 的单节点系统。 此外，使用至少一个 C1 缓存。 C0 缓存通常用于简单的开发/测试方案。
 * 请记住，Redis 是 **内存中** 数据存储区。 阅读[本文](https://gist.github.com/JonCole/b6354d92a2d51c141490f10142884ea4#file-whathappenedtomydatainredis-md)，了解可能出现数据丢失的情况。
-* 开发系统以便处理[由于修补和故障转移](https://gist.github.com/JonCole/317fe03805d5802e31cfa37e646e419d#file-azureredis-patchingexplained-md)引起的连接故障。
+* 在开发系统时让它可以处理[由于修补和故障转移](https://gist.github.com/JonCole/317fe03805d5802e31cfa37e646e419d#file-azureredis-patchingexplained-md)出现的连接故障。
 
 #### <a name="performance-testing"></a>性能测试
 * 使用 `redis-benchmark.exe` 启动以在编写性能测试前感受可能的吞吐量。 因为 `redis-benchmark` 不支持 SSL，因此，在运行测试之前必须[通过 Azure 门户启用非 SSL 端口](cache-configure.md#access-ports)。 例如，请参阅 [如何制定基准和测试缓存的性能？](#how-can-i-benchmark-and-test-the-performance-of-my-cache)
@@ -304,7 +304,7 @@ Redis 服务器本身不支持 SSL，但 Azure Redis 缓存可提供此支持。
 
 * 对于某些需要较长时间才能完成的 Redis 命令，在未完全了解这些命令造成的影响的情况下，应避免运行这些命令。 例如，不要在生产环境中运行 [KEYS](https://redis.io/commands/keys) 命令。 它可能需要很长时间才能返回，具体时间取决于键数。 Redis 是单线程服务器，每次只能处理一个命令。 如果在 KEYS 后面发出了其他命令，则这些命令只会在处理完 KEYS 命令后才会得到处理。 [redis.io 站点](https://redis.io/commands/) 具有关于其支持的每个操作的时间复杂性的详细信息。 单击每个命令以查看每个操作的复杂程度。
 * 键大小 - 应使用小键/值还是大键/值？ 这取决于方案。 如果方案需要较大的键，则可调整 ConnectionTimeout，然后重试值并调整重试逻辑。 从 Redis 服务器的角度来看，值越小，性能就越好。
-* 这些考量并不意味着不能在 Redis 中存储较大值，只是要注意以下事项。 延迟会提高。 如果采用一个较大的数据集和一个较小的数据集，则可以使用多个 ConnectionMultiplexer 实例，并根据 [StackExchange.Redis 配置选项有什么作用](#cache-configuration)部分中所述，为每个实例配置一组不同的超时和重试值。
+* 这些考量并不意味着不能在 Redis 中存储较大值，只是要注意以下事项。 延迟会提高。 如果有一个较大的数据集和一个较小的数据集，则可以使用多个 ConnectionMultiplexer 实例，并根据 [StackExchange.Redis 配置选项有什么作用](#cache-configuration) 部分中所述，为每个实例配置一组不同的超时和重试值。
 
 <a name="cache-benchmarking"></a>
 

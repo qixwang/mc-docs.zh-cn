@@ -19,11 +19,11 @@ ms.author: v-junlch
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fb96223e3059ab5fa113fd2b1eb77ea76ef6ea4d
-ms.sourcegitcommit: 46a8da077726a15b5923e4e688fd92153ebe2bf0
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58186677"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79290991"
 ---
 # <a name="using-connectors-with-the-azure-ad-connect-sync-service-manager"></a>将连接器与 Azure AD Connect Sync Service Manager 配合使用
 
@@ -50,9 +50,9 @@ ms.locfileid: "58186677"
 删除操作适用于两种不同的用途。  
 ![Sync Service Manager](./media/how-to-connect-sync-service-manager-ui-connectors/connectordelete.png)
 
-“仅删除连接器空间”选项会删除所有数据，但保留所有配置。
+“仅删除连接器空间”选项会删除所有数据，但保留所有配置。 
 
-“删除连接器和连接器空间”选项会删除数据以及所有配置。 不想再连接到林时可以使用此选项。
+“删除连接器和连接器空间”选项会删除数据以及所有配置。  不想再连接到林时可以使用此选项。
 
 这两个选项都会同步所有对象，并更新 Metaverse 对象。 这是一个长时间运行的操作。
 
@@ -66,11 +66,11 @@ ms.locfileid: "58186677"
 
 ![Sync Service Manager](./media/how-to-connect-sync-service-manager-ui-connectors/cssearch.png)
 
-先选择一个“范围”。 可以基于数据（RDN、DN、定位点、子树）或对象状态（所有其他选项）进行搜索。  
+先选择一个“范围”。  可以基于数据（RDN、DN、定位点、子树）或对象状态（所有其他选项）进行搜索。  
 ![Sync Service Manager](./media/how-to-connect-sync-service-manager-ui-connectors/cssearchscope.png)  
 例如，如果进行子树搜索，会获取某个 OU 中的所有对象。  
 ![Sync Service Manager](./media/how-to-connect-sync-service-manager-ui-connectors/cssearchsubtree.png)  
-可以从此网格中选择一个对象，选择“属性”，并从源连接器空间到 Metaverse 再到目标连接器空间一直[跟踪对象](tshoot-connect-object-not-syncing.md)。
+可以从此网格中选择一个对象，选择“属性”  ，并从源连接器空间到 Metaverse 再到目标连接器空间一直[跟踪对象](tshoot-connect-object-not-syncing.md)。
 
 ### <a name="changing-the-ad-ds-account-password"></a>更改 AD DS 帐户密码
 如果更改帐户密码，Synchronization Service 不再能将更改导入/导出到本地 AD。   可能会看到如下内容：
@@ -83,9 +83,9 @@ ms.locfileid: "58186677"
 
 1. 启动 Synchronization Service Manager（“开始”→ Synchronization Service）。
 </br>![Sync Service Manager](./media/how-to-connect-sync-service-manager-ui-connectors/startmenu.png)
-2. 转到“连接器”选项卡。
+2. 转到“连接器”  选项卡。
 3. 选择配置为使用 AD DS 帐户的 AD 连接器。
-4. 在“操作”下，选择“属性”。
+4. 在“操作”下，选择“属性”  。
 5. 在弹出对话框中，选择“连接到 Active Directory 林”：
 6. 林名称指示相应的本地 AD。
 7. 用户名指示用于同步的 AD DS 帐户。

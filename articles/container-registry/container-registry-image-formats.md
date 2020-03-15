@@ -6,11 +6,11 @@ origin.date: 08/30/2019
 ms.author: v-yeche
 ms.date: 12/09/2019
 ms.openlocfilehash: c642d1d04dd326e8d487e3cadf53fcce11a1d26c
-ms.sourcegitcommit: cf73284534772acbe7a0b985a86a0202bfcc109e
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74885024"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291754"
 ---
 # <a name="content-formats-supported-in-azure-container-registry"></a>Azure 容器注册表中支持的内容格式
 

@@ -9,11 +9,11 @@ ms.date: 03/09/2020
 ms.author: v-tawe
 ms.custom: seodec18
 ms.openlocfilehash: b868972037043f13feae9cbb44567f8ae2bb7702
-ms.sourcegitcommit: 1e68aea05a8d979237d6377a3637bb7654097111
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/24/2020
-ms.locfileid: "77566654"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291938"
 ---
 # <a name="manage-an-app-service-plan-in-azure"></a>在 Azure 中管理应用服务计划
 

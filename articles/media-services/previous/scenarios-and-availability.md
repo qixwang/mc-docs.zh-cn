@@ -12,19 +12,19 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 origin.date: 03/20/2019
-ms.date: 12/02/2019
+ms.date: 03/04/2020
 ms.author: v-jay
-ms.openlocfilehash: bca723ae1e535a3c755f5cfb4d21959fbc85e6ee
-ms.sourcegitcommit: 9597d4da8af58009f9cef148a027ccb7b32ed8cf
+ms.openlocfilehash: ddeff689c1bb273d6f1d5eb016d5e0408b976eeb
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74655224"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292697"
 ---
 # <a name="scenarios-and-availability-of-media-services-features-across-datacenters"></a>媒体服务功能的跨数据中心方案和可用性
 
 > [!NOTE]
-> Google Widevine 目前在中国地区不可用。
+> Google Widevine 内容保护服务目前在 Azure 中国区域不可用。
 
 > [!NOTE]
 > 不会向媒体服务 v2 添加任何新特性或新功能。 <br/>查看最新版本：[媒体服务 v3](/media-services/latest/)。 另请参阅[从 v2 到 v3 的迁移指南](../latest/migrate-from-v2-to-v3.md)
@@ -54,7 +54,7 @@ ms.locfileid: "74655224"
 
 <a href="./media/media-services-overview/media-services-overview-object-model.png" target="_blank"><img src="./media/media-services-overview/media-services-overview-object-model-small.png"></a> 
 
-可以在[此处](https://media.chinacloudapi.cn/API/$metadata?api-version=2.15)查看整个模型。  
+可在 [此处](https://media.chinacloudapi.cn/API/$metadata?api-version=2.15)查看完整模型。  
 
 ## <a name="protect-content-in-storage-and-deliver-streaming-media-in-the-clear-non-encrypted"></a>保护存储中的内容并以明文（非加密）形式交付流式处理媒体
 
@@ -88,7 +88,7 @@ ms.locfileid: "74655224"
 
 若要了解此功能在数据中心的可用性，请参阅[可用性](#availability)部分。
 
-## <a name="use-media-analytics-to-derive-actionable-insights-from-your-videos"></a>使用媒体分析从视频中汲取可以实施的见解
+## <a name="use-media-analytics-to-derive-actionable-insights-from-your-videos"></a>使用媒体分析从视频中汲取可操作的见解
 
 媒体分析是语音和视觉组件的集合，便于组织和企业从视频文件中汲取可操作的见解。 有关详细信息，请参阅 [Azure 媒体服务分析概述](media-services-analytics-overview.md)。
 
@@ -176,7 +176,7 @@ AMS 客户可以缩放其 AMS 帐户中的流式处理终结点、媒体处理�
 
 #### <a name="availability"></a>可用性
 
-|Name|状态|数据中心
+|名称|状态|数据中心
 |---|---|---|
 |标准|GA|全部|
 |高级|GA|全部|
@@ -189,7 +189,7 @@ AMS 客户可以缩放其 AMS 帐户中的流式处理终结点、媒体处理�
 
 ### <a name="encoding-media-processors"></a>编码媒体处理器
 
-AMS 提供两个按需编码器：  Media Encoder Standard 和  Media Encoder Premium Workflow。 有关详细信息，请参阅 [Azure 按需媒体编码器的概述和比较](media-services-encode-asset.md)。 
+AMS 提供两个按需编码器：  Media Encoder Standard 和  Media Encoder Premium Workflow。 有关详细信息，请参阅 [Azure 点播媒体编码器的概述和比较](media-services-encode-asset.md)。 
 
 #### <a name="availability"></a>可用性
 
@@ -207,7 +207,7 @@ AMS 提供两个按需编码器：  Media Encoder Standard 和  Media Encoder Pr
 |媒体处理器名称|状态|数据中心
 |---|---|---|
 |Azure 媒体面部检测器|预览|全部|
-|Azure 媒体索引器|GA|全部|
+|Azure Media Indexer|GA|全部|
 |Azure 媒体动作检测器|预览|全部|
 |Azure 媒体 OCR|预览|全部|
 |Azure 媒体编修器|预览|全部|

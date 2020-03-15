@@ -6,11 +6,11 @@ origin.date: 02/23/2018
 ms.date: 01/13/2020
 ms.author: v-yeche
 ms.openlocfilehash: 65c8eb4cc201f0e44195cd6e76406b5212d280dd
-ms.sourcegitcommit: fbc7584f403417d3af7bd6bbbaed7c13a78c57b9
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78412574"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292462"
 ---
 # <a name="specify-resources-in-a-service-manifest"></a>在服务清单中指定资源
 ## <a name="overview"></a>概述

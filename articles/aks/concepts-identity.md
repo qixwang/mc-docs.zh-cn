@@ -2,18 +2,16 @@
 title: 概念 - Azure Kubernetes 服务 (AKS) 中的访问和标识
 description: 了解 Azure Kubernetes 服务 (AKS) 中的访问和标识，包括 Azure Active Directory 集成、Kubernetes 基于角色的访问控制 (RBAC) 以及角色和绑定。
 services: container-service
-author: rockboyfor
-ms.service: container-service
 ms.topic: conceptual
 origin.date: 02/28/2019
-ms.date: 07/29/2019
+ms.date: 03/09/2020
 ms.author: v-yeche
-ms.openlocfilehash: 945b517618cd9b9fe908985449701e11a1f6bf44
-ms.sourcegitcommit: 84485645f7cc95b8cfb305aa062c0222896ce45d
+ms.openlocfilehash: 36a9c90fc8c1285f8c9a2c46551b9c6f8a8be848
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68731258"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291685"
 ---
 # <a name="access-and-identity-options-for-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS) 的访问和标识选项
 
@@ -84,15 +82,17 @@ ClusterRoleBinding 的工作原理与向用户绑定角色相同，但前者可�
 - [Kubernetes/AKS 安全性][aks-concepts-security]
 - [Kubernetes/AKS 虚拟网络][aks-concepts-network]
 - [Kubernetes/AKS 存储][aks-concepts-storage]
-- [Kubernetes/AKS 缩放][aks-concepts-scale]
+- [Kubernetes/AKS 规模][aks-concepts-scale]
 
 <!-- LINKS - External -->
+
 [kubernetes-authentication]: https://kubernetes.io/docs/reference/access-authn-authz/authentication
 [webhook-token-docs]: https://kubernetes.io/docs/reference/access-authn-authz/authentication/#webhook-token-authentication
 [kubernetes-rbac]: https://kubernetes.io/docs/reference/access-authn-authz/rbac/
 
 <!-- LINKS - Internal -->
-[openid-connect]: ../active-directory/develop/v1-protocols-openid-connect-code.md
+
+[openid-connect]: ../active-directory/develop/v2-protocols-oidc.md
 [az-aks-get-credentials]: https://docs.microsoft.com/cli/azure/aks?view=azure-cli-latest#az-aks-get-credentials
 [azure-rbac]: ../role-based-access-control/overview.md
 [aks-aad]: azure-ad-integration-cli.md
@@ -103,4 +103,4 @@ ClusterRoleBinding 的工作原理与向用户绑定角色相同，但前者可�
 [aks-concepts-network]: concepts-network.md
 [operator-best-practices-identity]: operator-best-practices-identity.md
 
-<!-- Update_Description: update meta properties-->
+<!-- Update_Description: update meta properties, wording update, update link -->

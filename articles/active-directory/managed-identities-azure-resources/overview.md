@@ -12,17 +12,17 @@ ms.subservice: msi
 ms.devlang: ''
 ms.topic: overview
 ms.custom: mvc
-ms.date: 02/06/2020
+ms.date: 03/11/2020
 ms.author: v-junlch
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3fbf992fc26ec8a08045b11cd2f664c05503bc8b
-ms.sourcegitcommit: 7c80405a6b48380814b4b414e9f8a5756c007880
+ms.openlocfilehash: bdb91ac17a653e201a09b8dd0639b5e1d1e03e46
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77067689"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79290960"
 ---
-# <a name="what-is-managed-identities-for-azure-resources"></a>什么是 Azure 资源的托管标识？
+# <a name="what-are-managed-identities-for-azure-resources"></a>什么是 Azure 资源的托管标识？
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
@@ -130,6 +130,8 @@ Azure Active Directory (Azure AD) 中的 Azure 资源托管标识功能可以解
 了解如何将托管标识与其他 Azure 服务配合使用：
 
 * [Azure 应用服务](/app-service/overview-managed-identity)
+* [Azure API 管理](../../api-management/api-management-howto-use-managed-service-identity.md)
+* [Azure 容器实例](../../container-instances/container-instances-managed-identity.md)
 * [Azure 容器注册表任务](../../container-registry/container-registry-tasks-authentication-managed-identity.md)
 * [Azure 事件中心](../../event-hubs/authenticate-managed-identity.md)
 * [Azure Functions](/app-service/overview-managed-identity)
@@ -147,4 +149,3 @@ Azure 资源的托管标识可以用来向支持 Azure AD 身份验证的服务�
 * [使用 Windows VM 系统分配托管标识访问资源管理器](tutorial-windows-vm-access-arm.md)
 * [使用 Linux VM 系统分配托管标识访问资源管理器](tutorial-linux-vm-access-arm.md)
 
-<!-- Update_Description: wording update -->

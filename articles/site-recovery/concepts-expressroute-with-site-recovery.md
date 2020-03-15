@@ -10,11 +10,11 @@ origin.date: 10/13/2019
 ms.date: 01/13/2020
 ms.author: v-yeche
 ms.openlocfilehash: 505508445d923868c929e128f2ef907e6b62f5ee
-ms.sourcegitcommit: fbc7584f403417d3af7bd6bbbaed7c13a78c57b9
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78412557"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292866"
 ---
 # <a name="azure-expressroute-with-azure-site-recovery"></a>将 Azure ExpressRoute 与 Azure Site Recovery 结合使用
 

@@ -3,21 +3,21 @@ title: 短语列表 - 语音服务
 titleSuffix: Azure Cognitive Services
 description: 了解如何使用 `PhraseListGrammar` 对象为语音服务提供短语列表，以便改进语音转文本的识别结果。
 services: cognitive-services
-author: rhurey
+author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-origin.date: 07/05/2019
-ms.date: 01/27/2020
+origin.date: 02/04/2020
+ms.date: 03/23/2020
 ms.author: v-tawe
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 2e0a58f623c85a5aca64fa282f2e656ff1f59977
-ms.sourcegitcommit: 94e1c9621b8f81a7078f1412b3a73281d0a8668b
+ms.openlocfilehash: 6bf8700ce4b28b7b0fbc353bd887d6a5979bec9e
+ms.sourcegitcommit: e94ed1c9eff4e88be2ca389909e60b14cc0d92f8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76123364"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79084533"
 ---
 # <a name="phrase-lists-for-speech-to-text"></a>语音转文本的短语列表
 

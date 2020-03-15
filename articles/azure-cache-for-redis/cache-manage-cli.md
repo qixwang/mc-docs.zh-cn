@@ -16,11 +16,11 @@ origin.date: 01/23/2017
 ms.date: 11/12/2019
 ms.author: v-junlch
 ms.openlocfilehash: 78629a163463aa1b4b39247c500b9138cfb55138
-ms.sourcegitcommit: 40a58a8b9be0c825c03725802e21ed47724aa7d2
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73934239"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291931"
 ---
 # <a name="how-to-create-and-manage-azure-cache-for-redis-using-the-azure-classic-cli"></a>如何使用 Azure 经典 CLI 创建和管理 Azure Redis 缓存
 > [!div class="op_single_selector"]

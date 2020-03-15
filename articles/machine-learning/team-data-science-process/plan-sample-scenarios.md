@@ -12,11 +12,11 @@ ms.date: 11/13/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 8b980e5a2322da3965a892c85d1275079fbfb6a8
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75599689"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292215"
 ---
 # <a name="scenarios-for-advanced-analytics-in-azure-machine-learning"></a>用于 Azure 机器学习中高级分析的方案
 本文概述了各种示例数据源和可通过[团队数据科学过程 (TDSP)](overview.md) 处理的目标场景。 TDSP 为团队提供了一个系统性方法，可协作构建智能应用程序。 此处介绍的情景说明了数据处理工作流中的可用选项，具体取决于 Azure 中的数据特征、源位置和目标存储库。
@@ -186,9 +186,9 @@ ms.locfileid: "75599689"
 
 1. 在源位置分离数据库。 有关详细信息，请参阅[分离数据库](https://technet.microsoft.com/library/ms191491\(v=sql.110\).aspx)。
 1. 在 Windows Explorer 或“Windows 命令提示”窗口中，将分离的一个或多个数据库文件和日志文件复制到 Azure 中 SQL Server VM 上的目标位置。
-1. 将复制的文件附加到目标 SQL Server 实例。 有关详细信息，请参阅[附加数据库](https://technet.microsoft.com/library/ms190209\(v=sql.110\).aspx)。
+1. 将复制的文件附加到目标 SQL Server 实例。 有关详细信息，请参阅 [Attach a Database](https://technet.microsoft.com/library/ms190209\(v=sql.110\).aspx)。
 
-[使用分离和附加移动数据库 (Transact-SQL)](https://technet.microsoft.com/library/ms187858\(v=sql.110\).aspx)
+[通过分离和附加来移动数据库 (Transact-SQL)](https://technet.microsoft.com/library/ms187858\(v=sql.110\).aspx)
 
 ## <a name="largedbtohive"></a>场景 \#7：本地文件中针对 Azure HDInsight Hadoop 群集中 Hive 数据库的大数据
 ![本地目标 Hive 中的大数据][9]

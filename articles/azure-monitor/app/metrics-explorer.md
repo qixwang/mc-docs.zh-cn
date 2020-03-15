@@ -1,20 +1,18 @@
 ---
 title: 在 Azure Application Insights 中浏览指标 | Azure Docs
 description: 如何解释指标资源管理器上的图表，以及如何自定义指标资源管理器边栏选项卡。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: lingliw
 manager: digimobile
 origin.date: 01/22/2019
 ms.date: 6/4/2019
 ms.author: v-lingwu
-ms.openlocfilehash: ade8abe1177e8c6a8ded30581c1789917955ffe4
-ms.sourcegitcommit: a89eb0007edd5b4558b98c1748b2bd67ca22f4c9
+ms.openlocfilehash: da03ffc9890bce4e35b17d4f4963cb9f1b8d5467
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73730435"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291723"
 ---
 # <a name="exploring-metrics-in-application-insights"></a>在 Application Insights 中浏览指标
 [Application Insights][start] 中的指标是从应用程序遥测功能发送的度量值和事件计数。 它们可帮助检测性能问题，观察应用程序的用法趋势。 标准指标的范围很广泛，也可以创建自己的自定义指标和事件。

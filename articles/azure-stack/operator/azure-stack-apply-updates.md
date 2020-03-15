@@ -9,11 +9,11 @@ ms.author: v-jay
 ms.lastreviewed: 09/10/2019
 ms.reviewer: ppacent
 ms.openlocfilehash: 0b46f062598b788362ba8e9be56e886f4ab5d1f2
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77540952"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291992"
 ---
 # <a name="install-azure-stack-hub-updates"></a>安装 Azure Stack Hub 更新
 

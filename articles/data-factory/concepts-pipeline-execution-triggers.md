@@ -13,11 +13,11 @@ ms.topic: conceptual
 origin.date: 07/05/2018
 ms.date: 03/02/2020
 ms.openlocfilehash: ab18cfed50528ccc416ab99021432d602d9418a6
-ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77653258"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292340"
 ---
 # <a name="pipeline-execution-and-triggers-in-azure-data-factory"></a>Azure 数据工厂中的管道执行和触发器
 

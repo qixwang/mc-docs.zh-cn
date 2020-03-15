@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/06/2020
+ms.date: 03/10/2020
 ms.author: v-junlch
 ms.custom: aaddev
-ms.openlocfilehash: dd9df2e15fd6d30a5fede976ab3b1a02b9619722
-ms.sourcegitcommit: 7c80405a6b48380814b4b414e9f8a5756c007880
+ms.openlocfilehash: 78d6710d009b09c63c2cf2bbcb8e7afa0434abda
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77067647"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291041"
 ---
 # <a name="protected-web-api-code-configuration"></a>受保护的 Web API：代码配置
 
@@ -107,7 +107,8 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 该中间件由以下指令添加到 Web API：
 
 ```csharp
- services.AddAzureAdBearer(options => Configuration.Bind("AzureAd", options));
+ services.AddAuthentication(AzureADDefaults.JwtBearerAuthenticationScheme)
+         .AddAzureADBearer(options => Configuration.Bind("AzureAd", options));
 ```
 
  目前，ASP.NET Core 模板会创建可将你的组织或任何组织中的用户登录的 Azure Active Directory (Azure AD) Web API。 但是，你可以通过在 Startup.cs 中添加以下代码，将这些模板更改为使用 Microsoft 标识平台终结点：

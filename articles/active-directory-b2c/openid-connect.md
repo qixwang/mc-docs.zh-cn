@@ -12,11 +12,11 @@ ms.author: v-junlch
 ms.subservice: B2C
 ms.custom: fasttrack-edit
 ms.openlocfilehash: f3a9ee660f1341d12d0cba79708ffa86c851dc72
-ms.sourcegitcommit: 888cbc10f2348de401d4839a732586cf266883bf
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77028325"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291119"
 ---
 # <a name="web-sign-in-with-openid-connect-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用 OpenID Connect 进行 Web 登录
 

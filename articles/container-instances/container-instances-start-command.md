@@ -6,11 +6,11 @@ origin.date: 04/15/2019
 ms.date: 01/15/2020
 ms.author: v-yeche
 ms.openlocfilehash: e8808f1631437c04a7ad8bc1890e95c5a248beb5
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77428051"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291434"
 ---
 <!--Verified successfully-->
 # <a name="set-the-command-line-in-a-container-instance-to-override-the-default-command-line-operation"></a>在容器实例中设置命令行来替代默认的命令行操作

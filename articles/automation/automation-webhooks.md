@@ -7,11 +7,11 @@ origin.date: 01/16/2020
 ms.date: 03/02/2020
 ms.topic: conceptual
 ms.openlocfilehash: c662275fb05263974c46b7cf46291540aa5137f7
-ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77653545"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291652"
 ---
 # <a name="starting-an-azure-automation-runbook-with-a-webhook"></a>使用 webhook 启动 Azure 自动化 runbook
 

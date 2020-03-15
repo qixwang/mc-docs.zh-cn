@@ -18,11 +18,11 @@ ms.author: v-junlch
 ms.reviewer: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 314df1ec8afe33dd7a3fc3c0feeabb075fc34565
-ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77653650"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291103"
 ---
 # <a name="azure-active-directory-code-samples-v10-endpoint"></a>Azure Active Directory 代码示例（v1.0 终结点）
 

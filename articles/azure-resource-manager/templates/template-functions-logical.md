@@ -6,11 +6,11 @@ origin.date: 04/15/2019
 ms.author: v-yeche
 ms.date: 01/06/2020
 ms.openlocfilehash: 4fe9d925d06e98e133fd43e13fabfc17b65229e3
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75631318"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291298"
 ---
 # <a name="logical-functions-for-azure-resource-manager-templates"></a>用于 Azure 资源管理器模板的逻辑函数
 
@@ -32,7 +32,7 @@ Resource Manager 提供了多个用于在模板中进行比较的函数。
 
 | 参数 | 必须 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
-| arg1 |是 |boolean |第一个值，需检查其是否为 true。 |
+| arg1 |是 |boolean |要检查是否为 true 的第一个值。 |
 | arg2 |是 |boolean |要检查是否为 true 的第二个值。 |
 | 其他参数 |否 |boolean |用于检查是否为 true 的其他参数。 |
 
@@ -315,7 +315,7 @@ Resource Manager 提供了多个用于在模板中进行比较的函数。
 
 | 参数 | 必须 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
-| arg1 |是 |boolean |第一个值，需检查其是否为 true。 |
+| arg1 |是 |boolean |要检查是否为 true 的第一个值。 |
 | arg2 |是 |boolean |要检查是否为 true 的第二个值。 |
 | 其他参数 |否 |boolean |用于检查是否为 true 的其他参数。 |
 

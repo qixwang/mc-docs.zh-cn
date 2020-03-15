@@ -15,11 +15,11 @@ origin.date: 11/04/2019
 ms.author: v-yiso
 ms.date: 11/18/2018
 ms.openlocfilehash: 34b5399a9175a5185ad47bae3443e45c918cb0cb
-ms.sourcegitcommit: 5844ad7c1ccb98ff8239369609ea739fb86670a4
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73831414"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291210"
 ---
 # <a name="azure-api-management-page-controls"></a>Azure API 管理页面控件
 Azure API 管理提供以下控件，适用于开发人员门户模板。  

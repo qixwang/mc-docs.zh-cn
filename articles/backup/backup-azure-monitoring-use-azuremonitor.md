@@ -7,12 +7,12 @@ origin.date: 06/04/2019
 ms.date: 03/06/2020
 ms.author: v-lingwu
 ms.assetid: 01169af5-7eb0-4cb0-bbdb-c58ac71bf48b
-ms.openlocfilehash: 2fbc7d436acbabb2309f0f52068e6a0d51f8380b
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.openlocfilehash: c5d5d6219f5ae39fdc8dd282784881e610391f1d
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78850262"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79290875"
 ---
 # <a name="monitor-at-scale-by-using-azure-monitor"></a>使用 Azure Monitor 进行大规模监视
 
@@ -30,7 +30,7 @@ Azure 备份在恢复服务保管库中提供[内置的监视和警报功能](ba
 在 Azure Monitor 中，可以在 Log Analytics 工作区内创建你自己的警报。 在工作区中，可以使用 Azure 操作组来选择首选的通知机制。 
 
 > [!IMPORTANT]
-> 有关创建此查询所产生的成本的信息，请参阅 [Azure Monitor 定价](https://azure.microsoft.com/pricing/details/monitor/)。
+> 有关创建此查询所产生的成本的信息，请参阅 [Azure Monitor 定价](https://www.azure.com/pricing/details/monitor/)。
 
 打开 Log Analytics 工作区的“日志”  部分，编写自己的日志查询。 选择“新建警报规则”时，将打开 Azure Monitor 警报创建页，如下图所示。 
 

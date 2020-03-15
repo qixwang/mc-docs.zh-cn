@@ -6,12 +6,12 @@ origin.date: 09/24/2018
 ms.date: 02/26/2019
 ms.author: v-lingwu
 ms.topic: conceptual
-ms.openlocfilehash: a3bef7ec77675c60e990496dfc45eb42bbb9da69
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.openlocfilehash: 8db6aff011f23f13120b5ffe4f0a6a3599acfddf
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78850479"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79290877"
 ---
 # <a name="log-analytics-data-model-for-azure-backup-data"></a>Azure 备份数据的 Log Analytics 数据模型
 
@@ -21,7 +21,7 @@ ms.locfileid: "78850479"
 
 > [!NOTE]
 >
-> 此数据模型参考了将诊断事件发送到 Log Analytics (LA) 的 Azure 诊断模式。 若要了解新的资源特定模式的数据模型，可以参考以下文章：[Azure 备份诊断事件的数据模型](https://docs.microsoft.com/azure/backup/backup-azure-reports-data-model)
+> 此数据模型参考了将诊断事件发送到 Log Analytics (LA) 的 Azure 诊断模式。 若要了解新的资源特定模式的数据模型，可以参考以下文章：[Azure 备份诊断事件的数据模型](/backup/backup-azure-reports-data-model)
 
 ## <a name="using-azure-backup-data-model"></a>使用 Azure 备份数据模型
 

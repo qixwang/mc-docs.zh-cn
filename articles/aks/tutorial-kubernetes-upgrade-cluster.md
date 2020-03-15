@@ -2,19 +2,17 @@
 title: Azure 上的 Kubernetes 教程 - 升级群集
 description: 此 Azure Kubernetes 服务 (AKS) 教程介绍如何将现有 AKS 群集升级到最新可用的 Kubernetes 版本。
 services: container-service
-author: rockboyfor
-ms.service: container-service
 ms.topic: tutorial
-origin.date: 12/19/2018
-ms.date: 09/23/2019
+origin.date: 02/25/2020
+ms.date: 03/09/2020
 ms.author: v-yeche
 ms.custom: mvc
-ms.openlocfilehash: a0c4c99259db5474a9676ccadeb7e8af7dbb3eca
-ms.sourcegitcommit: 6a62dd239c60596006a74ab2333c50c4db5b62be
+ms.openlocfilehash: 98310ab8cad742a43955727f7cea9fd479b13f49
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71155845"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79290791"
 ---
 # <a name="tutorial-upgrade-kubernetes-in-azure-kubernetes-service-aks"></a>教程：在 Azure Kubernetes 服务 (AKS) 中升级 Kubernetes
 
@@ -41,12 +39,12 @@ ms.locfileid: "71155845"
 az aks get-upgrades --resource-group myResourceGroup --name myAKSCluster --output table
 ```
 
-在以下示例中，当前版本为 1.13.10，可用的版本显示在“升级”列下   。
+在以下示例中，当前版本为 1.14.8，可用版本将显示在“升级”列下   。
 
 ```
 Name     ResourceGroup    MasterVersion    NodePoolVersion    Upgrades
--------  ---------------  ---------------  -----------------  --------------
-default  myResourceGroup  1.13.10          1.13.10            1.14.5, 1.14.6
+------- ---------------  --------------- -----------------  --------------
+default  myResourceGroup  1.14.8           1.14.8             1.15.5, 1.15.7
 ```
 
 ## <a name="upgrade-a-cluster"></a>升级群集
@@ -62,13 +60,13 @@ default  myResourceGroup  1.13.10          1.13.10            1.14.5, 1.14.6
 使用 [az aks upgrade][] 命令升级 AKS 群集。 以下示例将群集升级到 Kubernetes 版本 1.14.6  。
 
 > [!NOTE]
-> 一次只能升级一个次要版本。 例如，可以从 1.12.x 升级到 1.13.x，但不能从 1.12.x 直接升级到 1.14.x     。 若要从 1.12.x 升级到 1.14.x，请先从 1.12.x 升级到 1.13.x，然后再执行一次升级从 1.13.x 升级到 1.14.x       。
+> 一次只能升级一个次要版本。 例如，可以从 1.14.x 升级到 1.15.x，但不能从 1.14.x 直接升级到 1.16.x     。 若要从 1.14.x 升级到 1.16.x，请先从 1.14.x 升级到 1.15.x，然后再执行一次升级从 1.15.x 升级到 1.16.x       。
 
 ```azurecli
-az aks upgrade --resource-group myResourceGroup --name myAKSCluster --kubernetes-version 1.14.6
+az aks upgrade --resource-group myResourceGroup --name myAKSCluster --kubernetes-version 1.15.5
 ```
 
-以下精简示例输出显示 kubernetesVersion 现在报告 1.14.6   ：
+以下精简示例输出显示 kubernetesVersion 现在报告 1.15.5   ：
 
 ```json
 {
@@ -86,7 +84,7 @@ az aks upgrade --resource-group myResourceGroup --name myAKSCluster --kubernetes
   "enableRbac": false,
   "fqdn": "myaksclust-myresourcegroup-19da35-bd54a4be.hcp.chinaeast2.cx.prod.service.azk8s.cn",
   "id": "/subscriptions/<Subscription ID>/resourcegroups/myResourceGroup/providers/Microsoft.ContainerService/managedClusters/myAKSCluster",
-  "kubernetesVersion": "1.14.6",
+  "kubernetesVersion": "1.15.5",
   "location": "chinaeast2",
   "name": "myAKSCluster",
   "type": "Microsoft.ContainerService/ManagedClusters"
@@ -101,12 +99,12 @@ az aks upgrade --resource-group myResourceGroup --name myAKSCluster --kubernetes
 az aks show --resource-group myResourceGroup --name myAKSCluster --output table
 ```
 
-以下示例输出显示 AKS 群集运行 KubernetesVersion 1.14.6  ：
+以下示例输出显示 AKS 群集运行 KubernetesVersion 1.15.5  ：
 
 ```
 Name          Location    ResourceGroup    KubernetesVersion    ProvisioningState    Fqdn
 ------------  ----------  ---------------  -------------------  -------------------  ----------------------------------------------------------------
-myAKSCluster  chinaeast2      myResourceGroup  1.14.6               Succeeded            myaksclust-myresourcegroup-19da35-bd54a4be.hcp.chinaeast2.cx.prod.service.azk8s.cn
+myAKSCluster  chinaeast2      myResourceGroup  1.15.5               Succeeded            myaksclust-myresourcegroup-19da35-bd54a4be.hcp.chinaeast2.cx.prod.service.azk8s.cn
 ```
 
 ## <a name="delete-the-cluster"></a>删除群集
@@ -149,4 +147,4 @@ az group delete --name myResourceGroup --yes --no-wait
 [az-group-delete]: https://docs.azure.cn/cli/group?view=azure-cli-latest#az-group-delete
 [sp-delete]: kubernetes-service-principal.md#additional-considerations
 
-<!-- Update_Description: wording update, update link -->
+<!-- Update_Description: update meta properties, wording update, update link -->

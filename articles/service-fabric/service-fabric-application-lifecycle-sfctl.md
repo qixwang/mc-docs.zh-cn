@@ -7,17 +7,17 @@ origin.date: 07/31/2018
 ms.date: 02/24/2020
 ms.author: v-yeche
 ms.openlocfilehash: 8e42d8b00ff365df59cf4d3c3b002f9ce62c4c51
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77540495"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292374"
 ---
 # <a name="manage-an-azure-service-fabric-application-by-using-azure-service-fabric-cli-sfctl"></a>使用 Azure Service Fabric CLI (sfctl) 管理 Azure Service Fabric 应用程序
 
 了解如何创建和删除在 Azure Service Fabric 群集中运行的应用程序。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * 安装 Service Fabric CLI。 然后选择 Service Fabric 群集。 有关详细信息，请参阅 [Service Fabric CLI 入门](service-fabric-cli.md)。
 

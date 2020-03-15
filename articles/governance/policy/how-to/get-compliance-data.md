@@ -6,11 +6,11 @@ origin.date: 02/01/2019
 ms.date: 12/02/2019
 ms.topic: how-to
 ms.openlocfilehash: a61b170ba830bf8772610cb8c2783d148a7fa828
-ms.sourcegitcommit: fbc7584f403417d3af7bd6bbbaed7c13a78c57b9
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78412604"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291305"
 ---
 # <a name="get-compliance-data-of-azure-resources"></a>获取 Azure 资源的符合性数据
 

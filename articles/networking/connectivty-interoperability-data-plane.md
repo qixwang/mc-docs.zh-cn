@@ -9,14 +9,14 @@ ms.service: virtual-network
 ms.topic: article
 ms.workload: infrastructure-services
 origin.date: 10/18/2018
-ms.date: 01/17/2020
+ms.date: 03/23/2020
 ms.author: v-tawe
-ms.openlocfilehash: 15f71cf487c308fa2b2169adb5b4af8b4d327615
-ms.sourcegitcommit: 94e1c9621b8f81a7078f1412b3a73281d0a8668b
+ms.openlocfilehash: 089c6b185855d52ff0eb5bab1350208127b65c0b
+ms.sourcegitcommit: 4ba6d7c8bed5398f37eb37cf5e2acafcdcc28791
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76123152"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79133975"
 ---
 # <a name="interoperability-in-azure-back-end-connectivity-features-data-plane-analysis"></a>Azure 后端连接功能中的互操作性：数据平面分析
 
@@ -172,14 +172,14 @@ ms.locfileid: "76123152"
 下面列出了从辐射 VNet 到本地位置 2 中某个 VM 的跟踪路由输出：
 
 
-    C:\Users\rb>tracert 10.2.30.10
+    C:\Users\rb>tracert 10.1.31.10
 
-    Tracing route to 10.2.30.10 over a maximum of 30 hops
+    Tracing route to 10.1.31.10 over a maximum of 30 hops
 
-      1    24 ms     2 ms     3 ms  10.10.30.132
+      1    76 ms    75 ms    76 ms  10.10.30.134
       2     *        *        *     Request timed out.
       3     *        *        *     Request timed out.
-      4     3 ms     2 ms     2 ms  10.2.30.10
+      4    75 ms    75 ms    75 ms  10.1.31.10
 
     Trace complete.
 

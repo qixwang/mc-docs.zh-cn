@@ -19,11 +19,11 @@ ms.custom: aaddev
 ms.reviewer: aragra, lenalepa, sureshja
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e6851b8e9cb7ee5b8c44eed69eb7b46bf60da894
-ms.sourcegitcommit: 5f85d6fe825db38579684ee1b621d19b22eeff57
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67568736"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291057"
 ---
 # <a name="quickstart-remove-an-application-registered-with-the-microsoft-identity-platform"></a>快速入门：删除注册到 Microsoft 标识平台的应用程序
 
@@ -64,8 +64,8 @@ ms.locfileid: "67568736"
 了解下述其他相关的应用管理快速入门：
 
 * [将应用程序注册到 Microsoft 标识平台](quickstart-register-app.md)
-* [将客户端应用程序配置为访问 Web API](quickstart-configure-app-access-web-apis.md)
-* [将应用程序配置为公开 Web API](quickstart-configure-app-expose-web-apis.md)
+* [配置客户端应用程序以访问 Web API](quickstart-configure-app-access-web-apis.md)
+* [配置应用程序以公开 Web API](quickstart-configure-app-expose-web-apis.md)
 * [修改应用程序支持的帐户](quickstart-modify-supported-accounts.md)
 
 <!-- Update_Description: wording update -->

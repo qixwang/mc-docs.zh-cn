@@ -2,17 +2,16 @@
 title: Istio 概述
 description: 获取 Istio 的概述
 author: rockboyfor
-ms.service: container-service
 ms.topic: article
 origin.date: 10/09/2019
-ms.date: 10/28/2019
+ms.date: 03/09/2020
 ms.author: v-yeche
-ms.openlocfilehash: 5ef897acacd02f955717af10945f426a171b472b
-ms.sourcegitcommit: 1d4dc20d24feb74d11d8295e121d6752c2db956e
+ms.openlocfilehash: 89df50a7dedaa91141b010501a0879a0781b8bc1
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73083641"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79290695"
 ---
 # <a name="istio"></a>Istio
 
@@ -109,5 +108,4 @@ Istio 非常适合以下方案，建议采用：
 
 [istio-install]: ./servicemesh-istio-install.md
 
-<!-- Update_Description: new article about service mesh istio about -->
-<!--NEW.date: 11/04/2019-->
+<!-- Update_Description: update meta properties, wording update, update link -->

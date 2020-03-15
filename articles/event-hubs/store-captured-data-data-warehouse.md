@@ -7,15 +7,15 @@ manager: ''
 ms.author: v-tawe
 ms.custom: seodec18
 origin.date: 01/15/2020
-ms.date: 02/17/2020
+ms.date: 03/23/2020
 ms.topic: tutorial
 ms.service: event-hubs
-ms.openlocfilehash: e3141b2f72db943e4c36d9b69a87480009064db0
-ms.sourcegitcommit: 7c80405a6b48380814b4b414e9f8a5756c007880
+ms.openlocfilehash: b6452acd9ecba32feed2b657adf01902df2633db
+ms.sourcegitcommit: 4ba6d7c8bed5398f37eb37cf5e2acafcdcc28791
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77067726"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79133677"
 ---
 # <a name="tutorial-migrate-captured-event-hubs-data-to-a-sql-data-warehouse-using-event-grid-and-azure-functions"></a>教程：使用事件网格和 Azure Functions 将捕获的事件中心数据迁移到 SQL 数据仓库
 
@@ -36,7 +36,7 @@ ms.locfileid: "77067726"
 > * 将示例数据流式传输到事件中心。 
 > * 在 SQL 数据仓库中验证捕获的数据
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -77,9 +77,9 @@ ms.locfileid: "77067726"
 ```azurecli
 az group create -l chinanorth -n rgDataMigrationSample
 
-az group deployment create \
-  --resource-group rgDataMigrationSample \
-  --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/event-grid/EventHubsDataMigration.json \
+az group deployment create `
+  --resource-group rgDataMigrationSample `
+  --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/event-grid/EventHubsDataMigration.json `
   --parameters eventHubNamespaceName=<event-hub-namespace> eventHubName=hubdatamigration sqlServerName=<sql-server-name> sqlServerUserName=<user-name> sqlServerPassword=<password> sqlServerDatabaseName=<database-name> storageName=<unique-storage-name> functionAppName=<app-name>
 ```
 

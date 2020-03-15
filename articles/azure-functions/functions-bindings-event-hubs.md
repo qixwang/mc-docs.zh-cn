@@ -1,44 +1,31 @@
 ---
 title: Azure Functions 的 Azure 事件中心绑定
-description: 了解如何在 Azure Functions 中使用 Azure 事件中心绑定。
+description: 了解如何在 Azure Functions 中使用 Azure 事件中心触发器和绑定。
 author: craigshoemaker
 ms.assetid: daf81798-7acc-419a-bc32-b5a41c6db56b
 ms.topic: reference
-ms.date: 12/30/2019
+ms.date: 03/02/2020
 ms.author: v-junlch
-ms.openlocfilehash: 7f9f46b5f395f4e57a9d6fb4010caf592ac51260
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.openlocfilehash: 9db733adb21b77cbf13a460d4a5e4fb268c26328
+ms.sourcegitcommit: 590844334d9e57a8742777235c2c3de8f25f20ab
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75624007"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78964220"
 ---
-# <a name="azure-event-hubs-bindings-for-azure-functions"></a>Azure Functions 的 Azure 事件中心绑定
+# <a name="azure-event-hubs-trigger-and-bindings-for-azure-functions"></a>Azure Functions 的 Azure 事件中心触发器和绑定
 
 本文介绍如何使用 Azure Functions 的 [Azure 事件中心](../event-hubs/event-hubs-what-is-event-hubs.md)绑定。 Azure Functions 支持事件中心的触发器和输出绑定。
 
-[!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
-
-## <a name="packages---functions-1x"></a>包 - Functions 1.x
-
-对于 Azure Functions 版本 1.x，[Microsoft.Azure.WebJobs.ServiceBus](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.ServiceBus) NuGet 包 2.x 版中提供了事件中心绑定。
-[azure-webjobs-sdk](https://github.com/Azure/azure-webjobs-sdk/tree/v2.x/src/Microsoft.Azure.WebJobs.ServiceBus/EventHubs) GitHub 存储库中提供了此包的源代码。
-
-
-[!INCLUDE [functions-package](../../includes/functions-package.md)]
-
-## <a name="packages---functions-2x-and-higher"></a>包 - Functions 2.x 及更高版本
-
-对于 Functions 2.x 及更高版本，请使用版本 3.x 的 [Microsoft.Azure.WebJobs.Extensions.EventHubs](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.EventHubs) 包。
-[azure-webjobs-sdk](https://github.com/Azure/azure-webjobs-sdk/tree/master/src/Microsoft.Azure.WebJobs.Extensions.EventHubs) GitHub 存储库中提供了此包的源代码。
-
-[!INCLUDE [functions-package-v2](../../includes/functions-package-v2.md)]
+| 操作 | 类型 |
+|--------|------|
+| 响应发送到事件中心事件流的事件。 | [触发器](./functions-bindings-event-hubs-trigger.md) |
+| 将事件写入到事件流 | [输出绑定](./functions-bindings-event-hubs-output.md) |
 
 [!INCLUDE [functions-bindings-event-hubs](../../includes/functions-bindings-event-hubs.md)]
 
 ## <a name="next-steps"></a>后续步骤
 
-> [!div class="nextstepaction"]
-> [详细了解 Azure Functions 触发器和绑定](functions-triggers-bindings.md)
+- [响应发送到事件中心事件流的事件（触发器）](./functions-bindings-event-hubs-trigger.md)
+- [将事件写入事件流（输出绑定）](./functions-bindings-event-hubs-output.md)
 
-<!-- Update_Description: wording update -->

@@ -9,11 +9,11 @@ origin.date: 06/18/2019
 ms.date: 07/29/2019
 ms.reviewer: sngun
 ms.openlocfilehash: 283294d72e23c8de7e45da7343a441522dd9d71d
-ms.sourcegitcommit: 5a4a826eea3914911fd93592e0f835efc9173133
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68672206"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292350"
 ---
 <!--Verify sucessfully-->
 # <a name="monitor-and-debug-with-metrics-in-azure-cosmos-db"></a>使用 Azure Cosmos DB 中的指标进行监视和调试

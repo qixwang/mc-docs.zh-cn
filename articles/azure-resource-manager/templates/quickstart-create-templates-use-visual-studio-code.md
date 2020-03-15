@@ -7,11 +7,11 @@ ms.date: 01/06/2020
 ms.topic: quickstart
 ms.author: v-yeche
 ms.openlocfilehash: d4607fdab651653690e0ba0ce1918b9a9385d301
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75631543"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291257"
 ---
 # <a name="quickstart-create-azure-resource-manager-templates-by-using-visual-studio-code"></a>快速入门：使用 Visual Studio Code 创建 Azure 资源管理器模板
 
@@ -95,7 +95,7 @@ ms.locfileid: "75631543"
 
 1. 从 Azure 本地 shell 运行以下命令。 选择用于显示 PowerShell 代码或 CLI 代码的选项卡。
 
-    # <a name="clitabcli"></a>[CLI](#tab/CLI)
+    # <a name="cli"></a>[CLI](#tab/CLI)
     ```azurecli
     az cloud set -n AzureChinaCloud
     az login
@@ -109,7 +109,7 @@ ms.locfileid: "75631543"
     az group deployment create --name $deploymentName --resource-group $resourceGroupName --template-file "azuredeploy.json"
     ```
 
-    # <a name="powershelltabpowershell"></a>[PowerShell](#tab/PowerShell)
+    # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
 
     ```azurepowershell
     Connect-AzAccount -Environment AzureChinaCloud
@@ -127,11 +127,11 @@ ms.locfileid: "75631543"
 
     以下屏幕截图显示了示例部署：
 
-    # <a name="clitabcli"></a>[CLI](#tab/CLI)
+    # <a name="cli"></a>[CLI](#tab/CLI)
 
     ![Azure CLI 部署模板](./media/quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-deploy-template.png)
 
-    # <a name="powershelltabpowershell"></a>[PowerShell](#tab/PowerShell)
+    # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
 
     ![Azure PowerShell 部署模板](./media/quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-deploy-template-powershell.png)
 
@@ -141,7 +141,7 @@ ms.locfileid: "75631543"
 
 2. 运行以下 CLI 或 PowerShell 命令，列出新建的存储帐户：
 
-    # <a name="clitabcli"></a>[CLI](#tab/CLI)
+    # <a name="cli"></a>[CLI](#tab/CLI)
     ```azurecli
     echo "Enter the Resource Group name:" &&
     read resourceGroupName &&
@@ -150,7 +150,7 @@ ms.locfileid: "75631543"
     az storage account show --resource-group $resourceGroupName --name $storageAccountName
     ```
 
-    # <a name="powershelltabpowershell"></a>[PowerShell](#tab/PowerShell)
+    # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
 
     ```azurepowershell
     $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"

@@ -13,11 +13,11 @@ ms.reviewer: sstein, carlrab
 origin.date: 08/27/2019
 ms.date: 02/17/2020
 ms.openlocfilehash: 378a6fbf104862b89c98c5d94fd759885fbde269
-ms.sourcegitcommit: d7b86a424b72849fe8ed32893dd05e4696e4fe85
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77155697"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291207"
 ---
 # <a name="tutorial-add-an-azure-sql-database-elastic-pool-to-a-failover-group"></a>教程：将 Azure SQL 数据库弹性池添加到故障转移组
 
@@ -29,7 +29,7 @@ ms.locfileid: "77155697"
 > - 在两个逻辑 SQL 服务器之间创建两个弹性池的[故障转移组](sql-database-auto-failover-group.md)。
 > - 测试故障转移。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要完成本教程，请确保做好以下准备： 
 

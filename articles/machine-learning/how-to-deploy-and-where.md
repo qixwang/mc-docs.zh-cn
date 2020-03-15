@@ -13,11 +13,11 @@ origin.date: 12/27/2019
 ms.date: 03/09/2020
 ms.custom: seoapril2019
 ms.openlocfilehash: 718455f119790dd7c9e832eb2bfd420bdd3d4bb7
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78155064"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291464"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>使用 Azure 机器学习部署模型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -225,7 +225,7 @@ AZUREML_MODEL_DIR 是在服务部署过程中创建的环境变量。 可以使�
 
 若要在入口脚本中获取某个模型文件的路径，请将此环境变量与要查找的文件路径组合在一起。
 
-**单模型示例**
+**单个模型示例**
 ```python
 # Example when the model is a file
 model_path = os.path.join(os.getenv('AZUREML_MODEL_DIR'), 'sklearn_regression_model.pkl')
@@ -234,7 +234,7 @@ model_path = os.path.join(os.getenv('AZUREML_MODEL_DIR'), 'sklearn_regression_mo
 file_path = os.path.join(os.getenv('AZUREML_MODEL_DIR'), 'my_model_folder', 'sklearn_regression_model.pkl')
 ```
 
-**多模型示例**
+**多个模型示例**
 ```python
 # Example when the model is a file, and the deployment contains multiple models
 model_path = os.path.join(os.getenv('AZUREML_MODEL_DIR'), 'sklearn_model', '1', 'sklearn_regression_model.pkl')

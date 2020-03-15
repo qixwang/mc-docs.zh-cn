@@ -12,11 +12,11 @@ ms.author: v-jay
 ms.reviewer: cbrooks
 ms.subservice: common
 ms.openlocfilehash: e02639c948001b4d39db0a0c7e950430add59b46
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75624155"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291410"
 ---
 # <a name="configure-azure-storage-connection-strings"></a>配置 Azure 存储连接字符串
 
@@ -60,10 +60,10 @@ ms.locfileid: "75624155"
 
 `DefaultEndpointsProtocol=https;AccountName=storagesample;AccountKey=<account-key>;EndpointSuffix=core.chinacloudapi.cn`
 
-尽管 Azure 存储连接字符串同时支持 HTTP 和 HTTPS，但强烈建议使用 HTTPS  。
+尽管 Azure 存储支持在连接字符串中使用 HTTP 和 HTTPS，但我们*强烈建议使用 HTTPS*。
 
 > [!TIP]
-> 可以在 [Azure 门户](https://portal.azure.cn)中找到存储帐户的连接字符串。 导航到存储帐户菜单边栏选项卡中的“设置”   > “访问密钥”  ，查看主访问密钥和辅助访问密钥的连接字符串。
+> 可以在 [Azure 门户](https://portal.azure.cn)中找到存储帐户的连接字符串。 在存储帐户的菜单边栏选项卡中导航到“设置” > “访问密钥”，即可看到主访问密钥和辅助访问密钥的连接字符串。  
 >
 
 ## <a name="create-a-connection-string-using-a-shared-access-signature"></a>使用共享访问签名创建连接字符串

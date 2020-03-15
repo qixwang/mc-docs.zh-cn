@@ -11,11 +11,11 @@ origin.date: 04/09/2019
 ms.date: 06/10/2019
 ms.author: v-yeche
 ms.openlocfilehash: 945686cc9f236ee931e5f4d6deab8c81246b0de2
-ms.sourcegitcommit: 440d53bb61dbed39f2a24cc232023fc831671837
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66390812"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291695"
 ---
 # <a name="set-up-disaster-recovery-for-active-directory-and-dns"></a>为 Active Directory 和 DNS 设置灾难恢复
 

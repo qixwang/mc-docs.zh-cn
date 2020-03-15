@@ -8,11 +8,11 @@ ms.author: gopalv
 ms.topic: quickstart
 ms.date: 09/10/2019
 ms.openlocfilehash: c86ff94799d6ea6dae0b3aa9ffc11cd1152e92e1
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75598001"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291286"
 ---
 # <a name="quickstart-set-up-the-data-science-virtual-machine-for-windows"></a>快速入门：设置适用于 Windows 的 Data Science Virtual Machine
 

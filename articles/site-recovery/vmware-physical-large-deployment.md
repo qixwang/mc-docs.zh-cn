@@ -9,11 +9,11 @@ origin.date: 11/14/2019
 ms.date: 02/24/2020
 ms.author: v-yeche
 ms.openlocfilehash: 3a0d425517eb8563c66887cb2f824a0d317554c1
-ms.sourcegitcommit: 781f68d27903687f0aa9e1ed273eee25c6d129a1
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77611228"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292527"
 ---
 # <a name="set-up-disaster-recovery-at-scale-for-vmware-vmsphysical-servers"></a>为 VMware VM/物理服务器设置大规模灾难恢复
 

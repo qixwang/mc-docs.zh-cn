@@ -1,24 +1,22 @@
 ---
 title: Azure 上的 Kubernetes 教程 - 创建容器注册表
-description: 在本 Azure Kubernetes 服务 (AKS) 教程中，请创建 Azure 容器注册表实例并上传示例应用程序容器映像。
+description: 在本 Azure Kubernetes 服务 (AKS) 教程中，我们将创建一个 Azure 容器注册表实例，并上传一个示例应用程序容器映像。
 services: container-service
-author: rockboyfor
-ms.service: container-service
 ms.topic: tutorial
 origin.date: 12/19/2018
-ms.date: 07/29/2019
+ms.date: 03/09/2020
 ms.author: v-yeche
 ms.custom: mvc
-ms.openlocfilehash: 413719a2bb26001a2f2e1d961efdcae6237ade22
-ms.sourcegitcommit: 57994a3f6a263c95ff3901361d3e48b10cfffcdd
+ms.openlocfilehash: 47bcdc19544df05b107b205775f4906f9b0168c5
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70500702"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291780"
 ---
 # <a name="tutorial-deploy-and-use-azure-container-registry"></a>教程：部署并使用 Azure 容器注册表
 
-Azure 容器注册表 (ACR) 是容器映像的专用注册表。 可以通过专用容器注册表安全地生成和部署应用程序和自定义代码。 本教程的第 2 部分（共 7 部分）介绍如何部署 ACR 实例并向其推送容器映像。 你将学习如何执行以下操作：
+Azure 容器注册表 (ACR) 是容器映像的专用注册表。 使用专用容器注册表可以安全生成和部署应用程序与自定义代码。 在本教程的第二部分（共七个部分），你将部署 ACR 实例，并将一个容器映像推送到其中。 你将学习如何执行以下操作：
 
 > [!div class="checklist"]
 > * 创建 Azure 容器注册表 (ACR) 实例
@@ -44,7 +42,7 @@ Azure 容器注册表 (ACR) 是容器映像的专用注册表。 可以通过专
 az group create --name myResourceGroup --location chinaeast2
 ```
 
-使用 [az acr create][az-acr-create] 命令创建 Azure 容器注册表实例，并提供你自己的注册表名称。 注册表名称在 Azure 中必须唯一，并且包含 5-50 个字母数字字符。 在本教程的剩余部分，请使用 `<acrName>` 作为容器注册表名称的占位符。 提供自己的唯一注册表名称。 “基本”SKU 是一个针对成本优化的入口点，适用于可以对存储和吞吐量进行均衡考虑的开发目的。 
+使用 [az acr create][az-acr-create] 命令创建 Azure 容器注册表实例，并提供你自己的注册表名称。 注册表名称在 Azure 中必须唯一，并且包含 5-50 个字母数字字符。 本教程的余下部分使用 `<acrName>` 作为容器注册表名称的占位符。 提供自己的唯一注册表名称。 “基本”SKU 是用于开发目的的成本优化入口点，可在存储与吞吐量之间实现平衡。 
 
 ```azurecli
 az acr create --resource-group myResourceGroup --name <acrName> --sku Basic
@@ -81,7 +79,7 @@ tiangolo/uwsgi-nginx-flask   flask               788ca94b2313        9 months ag
 az acr list --resource-group myResourceGroup --query "[].{acrLoginServer:loginServer}" --output table
 ```
 
-现在，使用容器注册表的 *acrloginServer* 地址标记本地 *azure-vote-front* 映像。 若要指示映像版本，请将 *:v1* 添加到映像名称的末尾：
+现在，请使用容器注册表的 acrLoginServer  地址标记本地 azure-vote-front  映像。 若要指示映像版本，请将 *:v1* 添加到映像名称的末尾：
 
 ```console
 docker tag azure-vote-front <acrLoginServer>/azure-vote-front:v1
@@ -139,11 +137,11 @@ Result
 v1
 ```
 
-现在，你的容器映像已存储在专用 Azure 容器注册表实例中。 在下一教程中，此映像会从 ACR 部署到 Kubernetes 群集。
+现在，你的容器映像已存储在专用 Azure 容器注册表实例中。 在下一篇教程中，此映像将从 ACR 部署到 Kubernetes 群集。
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，你创建了一个 Azure 容器注册表并推送了可以在 AKS 群集中使用的映像。 你已了解如何：
+在本教程中，你已创建一个 Azure 容器注册表，并推送了一个在 AKS 群集中使用的映像。 你已了解如何：
 
 > [!div class="checklist"]
 > * 创建 Azure 容器注册表 (ACR) 实例
@@ -163,15 +161,15 @@ v1
 
 <!-- LINKS - internal -->
 
-[az-acr-create]: https://docs.azure.cn/zh-cn/cli/acr?view=azure-cli-latest
-[az-acr-list]: https://docs.azure.cn/zh-cn/cli/acr?view=azure-cli-latest
-[az-acr-login]: https://docs.azure.cn/zh-cn/cli/acr?view=azure-cli-latest#az-acr-login
-[az-acr-list]: https://docs.azure.cn/zh-cn/cli/acr?view=azure-cli-latest#az-acr-list
-[az-acr-repository-list]: https://docs.azure.cn/zh-cn/cli/acr/repository?view=azure-cli-latest
-[az-acr-repository-show-tags]: https://docs.azure.cn/zh-cn/cli/acr/repository?view=azure-cli-latest
-[az-group-create]: https://docs.azure.cn/zh-cn/cli/group?view=azure-cli-latest#az-group-create
-[azure-cli-install]: https://docs.azure.cn/zh-cn/cli/install-azure-cli?view=azure-cli-latest
+[az-acr-create]: https://docs.azure.cn/cli/acr?view=azure-cli-latest
+[az-acr-list]: https://docs.azure.cn/cli/acr?view=azure-cli-latest
+[az-acr-login]: https://docs.azure.cn/cli/acr?view=azure-cli-latest#az-acr-login
+[az-acr-list]: https://docs.azure.cn/cli/acr?view=azure-cli-latest#az-acr-list
+[az-acr-repository-list]: https://docs.azure.cn/cli/acr/repository?view=azure-cli-latest
+[az-acr-repository-show-tags]: https://docs.azure.cn/cli/acr/repository?view=azure-cli-latest
+[az-group-create]: https://docs.azure.cn/cli/group?view=azure-cli-latest#az-group-create
+[azure-cli-install]: https://docs.azure.cn/cli/install-azure-cli?view=azure-cli-latest
 [aks-tutorial-deploy-cluster]: ./tutorial-kubernetes-deploy-cluster.md
 [aks-tutorial-prepare-app]: ./tutorial-kubernetes-prepare-app.md
 
-<!-- Update_Description: wording update, update link -->
+<!-- Update_Description: update meta properties, wording update, update link -->

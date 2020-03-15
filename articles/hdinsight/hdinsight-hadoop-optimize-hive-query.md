@@ -12,11 +12,11 @@ origin.date: 03/21/2019
 ms.date: 11/11/2019
 ms.author: v-yiso
 ms.openlocfilehash: 8e0d4fae629ca90ca33a7977fb09fcdce6233169
-ms.sourcegitcommit: 642a4ad454db5631e4d4a43555abd9773cae8891
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2019
-ms.locfileid: "73426057"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292068"
 ---
 # <a name="optimize-apache-hive-queries-in-azure-hdinsight"></a>优化 Azure HDInsight 中的 Apache Hive 查询
 
@@ -179,7 +179,7 @@ FROM lineitem;
 
 向量化可让 Hive 以批的形式同时处理 1024 行，而不是一次处理一行。 这意味着，简单的操作可以更快地完成，因为需要运行的内部代码更少。
 
-若要启用向量化，请在 Hive 查询的前面加上以下设置作为前缀：
+要启用向量化，请在 Hive 查询的前面加上以下设置作为前缀：
 
    ```hive
     set hive.vectorized.execution.enabled = true;

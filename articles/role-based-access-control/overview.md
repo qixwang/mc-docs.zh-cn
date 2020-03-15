@@ -15,11 +15,11 @@ ms.date: 01/02/2020
 ms.author: v-junlch
 ms.reviewer: bagovind
 ms.openlocfilehash: a6787e84030b177264d140b4d1502d5ae7e70a50
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75624297"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292507"
 ---
 # <a name="what-is-role-based-access-control-rbac-for-azure-resources"></a>什么是 Azure 资源的基于角色的访问控制 (RBAC)？
 
@@ -34,11 +34,11 @@ RBAC 是在 [Azure 资源管理器](../azure-resource-manager/resource-group-ove
 - 让一个用户管理订阅中的虚拟机，另一个用户管理虚拟网络
 - 让 DBA 组管理订阅中的 SQL 数据库
 - 让某个用户管理资源组中的所有资源，例如虚拟机、网站和子网
-- 允许某个应用程序访问资源组中的所有资源
+- 让某个应用程序访问资源组中的所有资源
 
 ## <a name="best-practice-for-using-rbac"></a>使用 RBAC 的最佳做法
 
-使用 RBAC，可以在团队中实现职责分离，仅向用户授予执行作业所需的访问权限。 无需向每个人授予 Azure 订阅或资源的无限制权限，可以仅允许在特定的范围执行某些操作。
+使用 RBAC，可以在团队中对职责进行分配，仅向用户授予执行作业所需的访问权限。 请勿向每个人授予 Azure 订阅或资源的无限制权限，只能允许他们在特定的范围执行某些操作。
 
 规划访问控制策略时，最佳做法是授予用户完成工作所需的最低权限。 下图显示了与 RBAC 使用有关的建议模式。
 
@@ -78,7 +78,7 @@ Azure 具有数据操作，通过这些操作可以授予对对象内数据的�
 
 ### <a name="scope"></a>作用域
 
-范围是访问权限适用于的资源集。  分配角色时，可以通过定义范围来进一步限制允许的操作。 如果你想要将某人分配为[网站参与者](built-in-roles.md#website-contributor)，但只针对一个资源组执行此分配，则使用范围就很有帮助。
+范围是访问权限适用于的资源集。  分配角色时，可以通过定义范围来进一步限制允许的操作。 若要将某人分配为[网站参与者](built-in-roles.md#website-contributor)，但只针对一个资源组执行此分配，则可使用范围。
 
 在 Azure 中，可在多个级别指定范围：[管理组](../governance/management-groups/overview.md)、订阅、资源组或资源。 范围采用父子关系结构。
 
@@ -88,7 +88,7 @@ Azure 具有数据操作，通过这些操作可以授予对对象内数据的�
 
 - 如果将[所有者](built-in-roles.md#owner)角色分配给管理组范围的用户，则该用户可以在管理组中管理所有订阅中的一切内容。
 - 如果在订阅范围向某个组分配了[读取者](built-in-roles.md#reader)角色，则该组的成员可以查看订阅中的每个资源组和资源。
-- 如果在资源组范围向某个应用程序分配了[参与者](built-in-roles.md#contributor)角色，则该应用程序可以管理该资源组中所有类型的资源，但不能管理订阅中的其他资源组资源。
+- 如果在资源组范围向某个应用程序分配了[参与者](built-in-roles.md#contributor)角色，则该应用程序可以管理该资源组中所有类型的资源，但不能管理订阅中其他资源组的资源。
 
 ### <a name="role-assignments"></a>角色分配
 

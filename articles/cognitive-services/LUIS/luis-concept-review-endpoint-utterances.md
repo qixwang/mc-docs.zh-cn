@@ -13,11 +13,11 @@ origin.date: 10/10/2019
 ms.date: 12/04/2019
 ms.author: v-lingwu
 ms.openlocfilehash: 8d43971c8c0cbb30db792655c023219fb4d6cf7d
-ms.sourcegitcommit: 3d27913e9f896e34bd7511601fb428fc0381998b
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74982164"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292216"
 ---
 # <a name="concepts-for-enabling-active-learning-by-reviewing-endpoint-utterances"></a>通过评审终结点话语启用主动学习的相关概念
 主动学习是提高预测准确性的三个策略之一，也是最易于实现的策略。 评审终结点话语通过主动学习获取正确的意向和实体。 LUIS 选择它不确定的终结点话语。

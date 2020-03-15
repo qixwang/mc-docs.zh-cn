@@ -20,11 +20,11 @@ ms.author: v-junlch
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fa8b166fae3d716b999ec982b7fb0f9a978825ec
-ms.sourcegitcommit: 74f50c9678e190e2dbb857be530175f25da8905e
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/12/2019
-ms.locfileid: "72292036"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291003"
 ---
 # <a name="manage-and-customize-active-directory-federation-services-by-using-azure-ad-connect"></a>使用 Azure AD Connect 管理和自定义 Active Directory 联合身份验证服务
 本文介绍如何使用 Azure Active Directory (Azure AD) Connect 管理和自定义 Active Directory 联合身份验证服务 (AD FS)。 另外，还介绍了可能需要针对完整的 AD FS 场配置执行的其他常见 AD FS 任务。
@@ -83,7 +83,7 @@ ms.locfileid: "72292036"
 
     ![警告：2012R2 上缺少知识库 (KB)](./media/how-to-connect-fed-management/kbwarning.png)
 
-    要纠正缺少知识库 (KB) 情况下的配置，请安装所需的 [KB2919355](https://go.microsoft.com/fwlink/?LinkID=396590)，并借助[修复 AAD 和 AD FS 信任](#repairthetrust)修复信任。
+    若要纠正缺少知识库 (KB) 情况下的配置，请安装所需的 [KB2919355](https://go.microsoft.com/fwlink/?LinkID=396590)，并借助[修复 AAD 和 AD FS 信任](#repairthetrust)修复信任。
 
 > [!NOTE]
 > 有关 AlternateID 和手动配置步骤的详细信息，请阅读[配置备用登录 ID](https://technet.microsoft.com/windows-server-docs/identity/ad-fs/operations/configuring-alternate-login-id)
@@ -139,7 +139,7 @@ ms.locfileid: "72292036"
 
     ![指定 SSL 证书](./media/how-to-connect-fed-management/WapServer4.PNG)
 
-4. 添加要用作 WAP 服务器的服务器。 由于 WAP 服务器可能未加入域，因此向导将要求为要添加的服务器提供管理凭据。
+4. 添加要用作 WAP 服务器的服务器。 由于 WAP 服务器可能未加入域，因此向导会要求为要添加的服务器提供管理凭据。
 
    ![管理服务器凭据](./media/how-to-connect-fed-management/WapServer5.PNG)
 
@@ -147,7 +147,7 @@ ms.locfileid: "72292036"
 
    ![代理信任凭据](./media/how-to-connect-fed-management/WapServer6.PNG)
 
-6. 在“已准备好配置  ”页上，向导显示将要执行的操作列表。
+6. 在“已准备好配置  ”页上，向导显示要执行的操作列表。
 
    ![已准备好配置](./media/how-to-connect-fed-management/WapServer7.PNG)
 
@@ -157,7 +157,7 @@ ms.locfileid: "72292036"
 
 ## <a name="addfeddomain"></a>添加联合域 
 
-使用 Azure AD Connect 可以轻松添加要与 Azure AD 联合的域。 Azure AD Connect 将添加域用于联合身份验证，并修改声明规则，以便在有多个域与 Azure AD 联合时，正确反映发布者。
+使用 Azure AD Connect 可以轻松添加要与 Azure AD 联合的域。 Azure AD Connect 会添加域用于联合身份验证，并修改声明规则，以便在你有多个域与 Azure AD 联合时，正确反映发布者。
 
 1. 若要添加联合域，请选择任务“添加其他 Azure AD 域”  。
 

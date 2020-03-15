@@ -4,18 +4,18 @@ description: 支持 Azure 资源托管标识和 Azure AD 身份验证的服务�
 services: active-directory
 author: MarkusVi
 ms.author: v-junlch
-ms.date: 02/06/2020
+ms.date: 03/11/2020
 ms.topic: conceptual
 ms.service: active-directory
 ms.subservice: msi
 manager: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 10d90729c4c665dedd8f6b6a4a288b69935aeaac
-ms.sourcegitcommit: 7c80405a6b48380814b4b414e9f8a5756c007880
+ms.openlocfilehash: 2e79498913971824caa008470a99c009f79ecd54
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77067685"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291035"
 ---
 # <a name="services-that-support-managed-identities-for-azure-resources"></a>支持 Azure 资源托管标识的服务
 
@@ -101,7 +101,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
 托管标识类型 | 所有正式发布版<br>全球 Azure 区域 | Azure Government | Azure 德国 | Azure 中国世纪互联 |
 | --- | --- | --- | --- | --- |
-| 系统分配 | 可用 | 不可用 | 不可用 | 不可用 |
+| 系统分配 | 可用 | 可用 | 不可用 | 可用 |
 | 用户分配 | 不可用 | 不可用 | 不可用 | 不可用 |
 
 请参阅以下列表来配置 Azure 数据工厂 V2 的托管标识（在可用的区域中）：
@@ -117,6 +117,23 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 | --- | --- | --- | --- | --- |
 | 系统分配 | 可用 | 可用 | 不可用 | 不可用 |
 | 用户分配 | 不可用 | 不可用 | 不可用 | 不可用 |
+
+请参阅以下列表来配置 Azure API 管理的托管标识（在可用的区域中）：
+
+- [Azure Resource Manager 模板](/api-management/api-management-howto-use-managed-service-identity)
+
+### <a name="azure-container-instances"></a>Azure 容器实例
+
+托管标识类型 | 所有正式发布版<br>全球 Azure 区域 | Azure Government | Azure 德国 | Azure 中国世纪互联 |
+| --- | --- | --- | --- | --- |
+| 系统分配 | Linux：预览<br>Windows:不可用 | 不可用 | 不可用 | 不可用 |
+| 用户分配 | Linux：预览<br>Windows:不可用 | 不可用 | 不可用 | 不可用 |
+
+请参阅以下列表来配置 Azure 容器实例的托管标识（在可用的区域中）：
+
+- [Azure CLI](../../container-instances/container-instances-managed-identity.md)
+- [Azure Resource Manager 模板](../../container-instances/container-instances-managed-identity.md#enable-managed-identity-using-resource-manager-template)
+- [YAML](../../container-instances/container-instances-managed-identity.md#enable-managed-identity-using-yaml-file)
 
 ### <a name="azure-container-registry-tasks"></a>Azure 容器注册表任务
 

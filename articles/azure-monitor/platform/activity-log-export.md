@@ -11,11 +11,11 @@ ms.date: 2/19/2020
 ms.author: v-lingwu
 ms.subservice: logs
 ms.openlocfilehash: 808649bd38593ab9ada8af88c2fb96b64bed30af
-ms.sourcegitcommit: 27eaabd82b12ad6a6840f30763034a6360977186
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77497611"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292711"
 ---
 # <a name="export-azure-activity-log-to-storage-or-azure-event-hubs"></a>将 Azure 活动日志导出到存储或 Azure 事件中心
 > [!IMPORTANT]
@@ -31,7 +31,7 @@ ms.locfileid: "77497611"
 * **流式传输到第三方日志记录和遥测系统**：一段时间后，Azure 事件中心的流式传输就会成为一种机制，用于将活动日志通过管道传输到第三方 SIEM 和日志分析解决方案。
 * **生成自定义遥测和日志记录平台**：如果已经有一个自定义生成的遥测平台，或者正想生成一个，则可利用事件中心高度可缩放的发布-订阅功能，灵活地引入活动日志。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 ### <a name="storage-account"></a>存储帐户
 如果存档活动日志，需要[创建一个存储帐户](../../storage/common/storage-quickstart-create-account.md)（如果尚未创建）。 不应使用其中存储了其他非监视数据的现有存储帐户，以便更好地控制监视数据所需的访问权限。 不过，如果还要将诊断日志和指标存档到存储帐户，则可以选择使用该存储帐户在一个中心位置保留所有监视数据。

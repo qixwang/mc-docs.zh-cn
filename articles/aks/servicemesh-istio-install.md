@@ -2,19 +2,19 @@
 title: 在 Azure Kubernetes 服务 (AKS) 中安装 Istio
 description: 了解如何在 Azure Kubernetes 服务 (AKS) 群集中安装和使用 Istio 来创建服务网格
 author: rockboyfor
-ms.service: container-service
 ms.topic: article
-origin.date: 11/15/2019
-ms.date: 01/20/2020
+origin.date: 02/19/2020
+ms.date: 03/09/2020
 ms.author: v-yeche
 zone_pivot_groups: client-operating-system
-ms.openlocfilehash: 952a0009f81507a222171c62ea9cf974323605b8
-ms.sourcegitcommit: 8de025ca11b62e06ba3762b5d15cc577e0c0f15d
+ms.openlocfilehash: 1bbfc9b81379bdada7f135ead28988343d139538
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76165456"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79290705"
 ---
+<!--CORRECT ON client-operating-system-->
 # <a name="install-and-use-istio-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中安装和使用 Istio
 
 [Istio][istio-github] 是跨 Kubernetes 群集中的微服务提供关键功能集的开源服务网格。 这些功能包括流量管理、服务标识和安全性、策略执行以及可观察性。 有关 Istio 的详细信息，请参阅官方文档[什么是 Istio？][istio-docs-concepts]。
@@ -42,6 +42,8 @@ ms.locfileid: "76165456"
 确保你已阅读 [Istio 性能和可伸缩性](https://istio.io/docs/concepts/performance-and-scalability/)文档，以了解在 AKS 群集中运行 Istio 时的其他资源要求。 核心和内存要求将因特定工作负荷而异。 选择适当数量的节点和 VM 大小以适合你的设置。
 
 本文将 Istio 安装指南分为多个独立步骤。 最终结果的结构与官方 Istio 安装[指南][istio-install-istioctl]相同。
+
+<!--CORRECT ON client-operating-system-->
 
 ::: zone pivot="client-operating-system-linux"
 

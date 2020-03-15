@@ -13,11 +13,11 @@ ms.reviewer: mathoma, carlrab
 origin.date: 02/13/2019
 ms.date: 11/04/2019
 ms.openlocfilehash: 85abf36fddb8e62f61c8fe661c64610a7e46a15c
-ms.sourcegitcommit: 97fa37512f79417ff8cd86e76fe62bac5d24a1bd
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73041167"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292453"
 ---
 # <a name="configure-active-geo-replication-for-azure-sql-database-in-the-azure-portal-and-initiate-failover"></a>在 Azure 门户中为 Azure SQL 数据库配置活动异地复制，并启动故障转移
 

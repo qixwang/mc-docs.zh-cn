@@ -16,11 +16,11 @@ origin.date: 01/21/2020
 ms.date: 2/6/2020
 ms.author: v-lingwu
 ms.openlocfilehash: 6e3abec7f1829fe82fb53fb2d981e33339eba580
-ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77068355"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291470"
 ---
 # <a name="tutorial-expose-an-on-premises-wcf-rest-service-to-external-client-by-using-azure-wcf-relay"></a>教程：使用 Azure WCF 中继向外部客户端公开本地 WCF REST 服务
 
@@ -44,7 +44,7 @@ ms.locfileid: "77068355"
 > * 实现 WCF 客户端。
 > * 运行应用程序。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要完成本教程，需要满足以下先决条件：
 

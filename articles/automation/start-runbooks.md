@@ -11,11 +11,11 @@ ms.date: 12/02/2019
 ms.topic: conceptual
 manager: digimobile
 ms.openlocfilehash: 86528888375ba7a35fc4188528cd7b4d49091b65
-ms.sourcegitcommit: fbc7584f403417d3af7bd6bbbaed7c13a78c57b9
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78412367"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292738"
 ---
 # <a name="start-a-runbook-in-azure-automation"></a>在 Azure 自动化中启动 Runbook
 

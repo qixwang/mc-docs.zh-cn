@@ -8,21 +8,19 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: quickstart
 ms.workload: identity
-ms.date: 02/24/2020
+ms.date: 03/10/2020
 ms.author: v-junlch
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:UWP
-ms.openlocfilehash: 153f4fca2080d081d071d982de8f57305468bb3e
-ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
+ms.openlocfilehash: 56be2b500817c554967d4c5d86d7f2dbd2757a18
+ms.sourcegitcommit: 4ba6d7c8bed5398f37eb37cf5e2acafcdcc28791
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77653412"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79133822"
 ---
 # <a name="quickstart-call-the-microsoft-graph-api-from-a-universal-windows-platform-uwp-application"></a>快速入门：从通用 Windows 平台 (UWP) 应用程序调用 Microsoft Graph API
 
-本快速入门包含了一个代码示例，该示例演示了通用 Windows 平台 (UWP) 应用程序如何让用户使用工作和学校帐户进行登录，获取访问令牌以及调用 Microsoft Graph API。
-
-![显示本快速入门生成的示例应用的工作原理](./media/quickstart-v2-uwp/uwp-intro.svg)
+本快速入门包含了一个代码示例，该示例演示了通用 Windows 平台 (UWP) 应用程序如何让用户使用工作和学校帐户进行登录，获取访问令牌以及调用 Microsoft Graph API。 （有关说明，请参阅[示例工作原理](#how-the-sample-works)。）
 
 > [!div renderon="docs"]
 > ## <a name="register-and-download-your-quickstart-app"></a>注册并下载快速入门应用
@@ -64,22 +62,32 @@ ms.locfileid: "77653412"
 
 #### <a name="step-2-download-your-visual-studio-project"></a>步骤 2：下载 Visual Studio 项目
 
- - [下载 Visual Studio 项目](https://github.com/Azure-Samples/active-directory-dotnet-native-uwp-v2/archive/msal3x.zip)
+> [!div renderon="docs"]
+> [下载 Visual Studio 项目](https://github.com/Azure-Samples/active-directory-dotnet-native-uwp-v2/archive/msal3x.zip)
 
-#### <a name="step-3-configure-your-visual-studio-project"></a>步骤 3：配置 Visual Studio 项目
+> [!div class="sxs-lookup" renderon="portal"]
+> 使用 Visual Studio 2019 运行项目。
+> [!div renderon="portal" id="autoupdate" class="nextstepaction"]
+> [下载代码示例]()
 
-1. 将 zip 文件提取到靠近磁盘根目录的本地文件夹，例如 **C:\Azure-Samples**。
-1. 在 Visual Studio 中打开项目。 系统可能会提示你安装 UWP SDK。 在这种情况下，请接受。
-1. 编辑 **MainPage.Xaml.cs**，替换 `ClientId` 字段的值：
+> [!div class="sxs-lookup" renderon="portal"]
+> #### <a name="step-3-your-app-is-configured-and-ready-to-run"></a>步骤 3：应用已配置并可以运行
+> 我们已经为项目配置了应用属性的值，并且该项目已准备好运行。 
 
-    ```csharp
-    private const string ClientId = "Enter_the_Application_Id_here";
-    ```
 > [!div class="sxs-lookup" renderon="portal"]
 > > [!NOTE]
-> > 本快速入门支持 Enter_the_Supported_Account_Info_Here。    
+> > Enter_the_Supported_Account_Info_Here
 
 > [!div renderon="docs"]
+> #### <a name="step-3-configure-your-visual-studio-project"></a>步骤 3：配置 Visual Studio 项目
+> 
+> 1. 将 zip 文件提取到靠近磁盘根目录的本地文件夹，例如 **C:\Azure-Samples**。
+> 1. 在 Visual Studio 中打开项目。 系统可能会提示你安装 UWP SDK。 在这种情况下，请接受。
+> 1. 编辑 **MainPage.Xaml.cs**，替换 `ClientId` 字段的值：
+>
+>    ```csharp
+>    private const string ClientId = "Enter_the_Application_Id_here";
+>    ```
 > 其中：
 > - `Enter_the_Application_Id_here` - 是已注册应用程序的应用程序 ID。
 >
@@ -90,13 +98,15 @@ ms.locfileid: "77653412"
 
 若要在 Windows 计算机上尝试快速入门，请执行以下操作：
 
-1. 在 Visual Studio 工具栏中，选择适当的平台（可能为 **x64** 或 **x86**，不是 ARM）。
-   > 可以看到目标设备从“设备”更改为“本地计算机”。  
+1. 在 Visual Studio 工具栏中，选择适当的平台（可能为 **x64** 或 **x86**，不是 ARM）。 你将看到目标设备从“设备”  更改为“本地计算机” 
 1. 选择“调试”|  “在不调试的情况下启动”
 
 ## <a name="more-information"></a>详细信息
 
 此部分提供快速入门的详细信息。
+
+### <a name="how-the-sample-works"></a>示例工作原理
+![显示本快速入门生成的示例应用的工作原理](./media/quickstart-v2-uwp/uwp-intro.svg)
 
 ### <a name="msalnet"></a>MSAL.NET
 
@@ -174,5 +184,5 @@ authResult = await App.PublicClientApp.AcquireTokenSilent(scopes, firstAccount)
 > [!div class="nextstepaction"]
 > [UWP - 调用 Graph API 教程](tutorial-v2-windows-uwp.md)
 
-<!-- Update_Description: code update -->
+<!-- Update_Description: wording update -->
 

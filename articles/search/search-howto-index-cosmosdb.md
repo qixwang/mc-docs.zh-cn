@@ -11,11 +11,11 @@ ms.topic: conceptual
 origin.date: 01/02/2020
 ms.date: 03/16/2020
 ms.openlocfilehash: d2c9b718f162e10919cf04fc52b67b7209494b15
-ms.sourcegitcommit: d5eca3c6b03b206e441b599e5b138bd687a91361
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78934872"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292430"
 ---
 # <a name="how-to-index-cosmos-db-data-using-an-indexer-in-azure-cognitive-search"></a>如何使用 Azure 认知搜索中的索引器为 Cosmos DB 数据编制索引 
 

@@ -9,17 +9,16 @@ ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
 ms.devlang: java
-ms.date: 01/06/2020
+ms.date: 03/10/2020
 ms.author: v-junlch
 ms.custom: aaddev
 ms.reviewer: shoatman
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: ac3fcf4a9553abe28cd419e92601c28e83e37ce6
-ms.sourcegitcommit: 1bc154c816a5dff47ee051c431cd94826e57aa60
+ms.openlocfilehash: d81684e093fa2dcc7f2f5c497e15c26ff07b8a78
+ms.sourcegitcommit: 4ba6d7c8bed5398f37eb37cf5e2acafcdcc28791
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75776879"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79133833"
 ---
 # <a name="accounts--tenant-profiles-android"></a>帐户和租户配置文件 (Android)
 
@@ -53,7 +52,7 @@ Microsoft 标识平台中的帐户包括：
 
 ## <a name="account-overview-diagram"></a>帐户概述示意图
 
-![帐户概述示意图](./media/accounts-overview/accounts-overview.png)
+![帐户概述示意图](./media/accounts-overview/accounts-overview.svg)
 
 在上图中：
 
@@ -165,4 +164,3 @@ private IAccount getAccountForPolicy(IPublicClientApplication app, String policy
 }
 ```
 
-<!-- Update_Description: update metedata properties -->

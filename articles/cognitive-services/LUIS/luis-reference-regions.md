@@ -8,11 +8,11 @@ origin.date: 11/19/2019
 ms.date: 12/05/2019
 ms.author: v-lingwu
 ms.openlocfilehash: 47b540dacd695e8afb32d0e47bc0ce422287f5a1
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78154538"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291436"
 ---
 # <a name="authoring-and-publishing-regions-and-the-associated-keys"></a>创作和发布区域及关联的密钥
 

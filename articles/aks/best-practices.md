@@ -2,18 +2,16 @@
 title: 适用于 Azure Kubernetes 服务 (AKS) 的最佳做法
 description: 群集操作员和开发人员最佳做法的集合，用于在 Azure Kubernetes 服务 (AKS) 中生成并管理应用程序
 services: container-service
-author: rockboyfor
-ms.service: container-service
 ms.topic: article
 origin.date: 12/07/2018
-ms.date: 07/29/2019
+ms.date: 03/09/2020
 ms.author: v-yeche
-ms.openlocfilehash: 14edf3e0a17472f2f79231c4bb534cab642522d5
-ms.sourcegitcommit: 84485645f7cc95b8cfb305aa062c0222896ce45d
+ms.openlocfilehash: 8a1a14b209579fe06e39c51035d32e8071fc0602
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68731260"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79290765"
 ---
 # <a name="cluster-operator-and-developer-best-practices-to-build-and-manage-applications-on-azure-kubernetes-service-aks"></a>群集操作员和开发人员的最佳做法，用于在 Azure Kubernetes 服务 (AKS) 中生成并管理应用程序
 

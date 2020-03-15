@@ -14,11 +14,11 @@ origin.date: 03/29/2017
 ms.date: 02/24/2020
 ms.author: v-yeche
 ms.openlocfilehash: 0766d24edcc119faa08ac8b9279c9563c7b8c818
-ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77653216"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291122"
 ---
 # <a name="traffic-manager-endpoints"></a>流量管理器终结点
 

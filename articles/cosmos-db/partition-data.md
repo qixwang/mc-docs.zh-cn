@@ -8,11 +8,11 @@ ms.topic: conceptual
 origin.date: 08/01/2019
 ms.date: 10/28/2019
 ms.openlocfilehash: 8bc69460e2730c099536245eb5f4f5232848396c
-ms.sourcegitcommit: fbc7584f403417d3af7bd6bbbaed7c13a78c57b9
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78412253"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291886"
 ---
 # <a name="partitioning-and-horizontal-scaling-in-azure-cosmos-db"></a>Azure Cosmos DB 中的分区和水平缩放
 

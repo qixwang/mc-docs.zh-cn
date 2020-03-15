@@ -2,19 +2,19 @@
 title: 使用 Istio 在 Azure Kubernetes 服务 (AKS) 中实现智能路由和 Canary 发布
 description: 了解如何使用 Istio 在 Azure Kubernetes 服务 (AKS) 群集中提供智能路由并部署 Canary 发布
 author: rockboyfor
-ms.service: container-service
 ms.topic: article
 origin.date: 10/09/2019
-ms.date: 10/28/2019
+ms.date: 03/09/2020
 ms.author: v-yeche
-zone_pivot_groups: client-operating-system
-ms.openlocfilehash: a48ca39e40c3d444b716405f9cb1d6687aa9c319
-ms.sourcegitcommit: 9597d4da8af58009f9cef148a027ccb7b32ed8cf
+zone_pivot_groups: client-operating-system-aks-lm
+ms.openlocfilehash: 43c72e0da789e6665915ccf8a6b7b0240a63d231
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74655428"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79290708"
 ---
+<!--CORRECT ON client-operating-system-aks-lm-->
 # <a name="use-intelligent-routing-and-canary-releases-with-istio-in-azure-kubernetes-service-aks"></a>借助 Istio 在 Azure Kubernetes 服务 (AKS) 中使用智能路由和 Canary 发布
 
 [Istio][istio-github] 是跨 Kubernetes 群集中的微服务提供关键功能集的开源服务网格。 这些功能包括流量管理、服务标识和安全性、策略执行以及可观察性。 有关 Istio 的详细信息，请参阅官方文档[什么是 Istio？][istio-docs-concepts]。
@@ -119,13 +119,15 @@ voting-storage-1-0-5d8fcc89c4-2jhms     2/2       Running   0          39s   app
 
 为了查看有关 pod 的信息，我们将在标签选择器中使用 [kubectl describe pod][kubectl-describe] 命令来选择 `voting-analytics` pod。 我们将筛选输出以显示 Pod 中存在的两个容器的详细信息：
 
-::: zone pivot="client-operating-system-linux"
+<!--CORRECT ON client-operating-system-aks-lm-->
+
+::: zone pivot="client-operating-system-aks-lm-linux"
 
 [!INCLUDE [Bash - routing scenario - show autoinjected proxy](includes/servicemesh/istio/scenario-routing-show-proxy-bash.md)]
 
 ::: zone-end
 
-::: zone pivot="client-operating-system-macos"
+::: zone pivot="client-operating-system-aks-lm-macos"
 
 [!INCLUDE [Bash - routing scenario - show autoinjected proxy](includes/servicemesh/istio/scenario-routing-show-proxy-bash.md)]
 
@@ -202,13 +204,15 @@ deployment.apps/voting-analytics-1-1 created
 
 可以将 `voting-analytics` 组件的两个版本之间的切换可视化，如下所示。 要记得使用自己的 Istio Ingress 网关的 IP 地址。
 
-::: zone pivot="client-operating-system-linux"
+<!--CORRECT ON client-operating-system-aks-lm-->
+
+::: zone pivot="client-operating-system-aks-lm-linux"
 
 [!INCLUDE [Bash - routing scenario - loop through results](includes/servicemesh/istio/scenario-routing-loop-results-bash.md)]
 
 ::: zone-end
 
-::: zone pivot="client-operating-system-macos"
+::: zone pivot="client-operating-system-aks-lm-macos"
 
 [!INCLUDE [Bash - routing scenario - loop through results](includes/servicemesh/istio/scenario-routing-loop-results-bash.md)]
 
@@ -262,13 +266,15 @@ virtualservice.networking.istio.io/voting-storage created
 
 现在路由到 `voting-analytics` 组件的 `1.1` 版本，可以更加轻松地将此可视化，如下所示。 要记得使用自己的 Istio Ingress 网关的 IP 地址：
 
-::: zone pivot="client-operating-system-linux"
+<!--CORRECT ON client-operating-system-aks-lm-->
+
+::: zone pivot="client-operating-system-aks-lm-linux"
 
 [!INCLUDE [Bash - routing scenario - loop through results](includes/servicemesh/istio/scenario-routing-loop-results-bash.md)]
 
 ::: zone-end
 
-::: zone pivot="client-operating-system-macos"
+::: zone pivot="client-operating-system-aks-lm-macos"
 
 [!INCLUDE [Bash - routing scenario - loop through results](includes/servicemesh/istio/scenario-routing-loop-results-bash.md)]
 
@@ -295,13 +301,15 @@ istioctl authn tls-check <pod-name[.namespace]> [<service>]
 
 此命令集提供有关从命名空间中的所有 Pod 访问指定服务的信息，并匹配一组标签：
 
-::: zone pivot="client-operating-system-linux"
+<!--CORRECT ON client-operating-system-aks-lm-->
+
+::: zone pivot="client-operating-system-aks-lm-linux"
 
 [!INCLUDE [Bash - routing scenario - verify mtls](includes/servicemesh/istio/scenario-routing-verify-mtls-bash.md)]
 
 ::: zone-end
 
-::: zone pivot="client-operating-system-macos"
+::: zone pivot="client-operating-system-aks-lm-macos"
 
 [!INCLUDE [Bash - routing scenario - verify mtls](includes/servicemesh/istio/scenario-routing-verify-mtls-bash.md)]
 
@@ -456,5 +464,4 @@ namespace "voting" deleted
 [aks-quickstart]: ./kubernetes-walkthrough.md
 [istio-install]: ./servicemesh-istio-install.md
 
-<!-- Update_Description: new article about servicemesh istion scenario routing -->
-<!--NEW.date: 11/04/2019-->
+<!-- Update_Description: update meta properties, wording update, update link -->

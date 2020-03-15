@@ -9,11 +9,11 @@ ms.author: v-tawe
 ms.reviewer: yutlin
 ms.custom: seodec18
 ms.openlocfilehash: 3a127eaeaa26f9119ac4d5c9055ed5ca571716c7
-ms.sourcegitcommit: 3f9d780a22bb069402b107033f7de78b10f90dde
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77179317"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291212"
 ---
 # <a name="secure-a-custom-dns-name-with-an-ssl-binding-in-azure-app-service"></a>在 Azure 应用服务中使用 SSL 绑定保护自定义 DNS 名称
 
@@ -35,7 +35,7 @@ ms.locfileid: "77179317"
 > * 强制实施 TLS 1.1/1.2
 > * 使用脚本自动完成 TLS 管理
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 按照本操作方法指南操作：
 

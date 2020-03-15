@@ -7,11 +7,11 @@ origin.date: 10/15/2019
 ms.date: 12/30/2019
 ms.author: v-lingwu
 ms.openlocfilehash: f196bd8c438007c1480e576a8bf1063b27691abf
-ms.sourcegitcommit: 13431cf4d69142ed7feb8d12d967a502bf9ff346
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75599931"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79290898"
 ---
 # <a name="how-to-query-logs-from-azure-monitor-for-containers"></a>如何从用于容器的 Azure Monitor 查询日志
 用于容器的 Azure Monitor 从容器主机和容器收集性能指标、清单数据和运行状况状态信息，并将其转发到 Azure Monitor 中的 Log Analytics 工作区。 每隔三分钟收集数据。 此数据可用于 Azure Monitor 中的[查询](../../azure-monitor/log-query/log-query-overview.md)。 此数据可应用于包括迁移计划、容量分析、发现和按需性能故障排除在内的方案。
@@ -53,7 +53,7 @@ Azure Monitor 日志有助于查找趋势、诊断瓶颈、预测或关联有助
 ### <a name="example-log-search-queries"></a>日志搜索查询示例
 从一两个示例开始生成查询，然后修改它们以适应需求的做法通常很有用。 可使用以下示例查询进行试验，帮助生成更高级的查询：
 
-| 查询 | Description | 
+| 查询 | 说明 | 
 |-------|-------------|
 | ContainerInventory<br> &#124; project Computer, Name, Image, ImageTag, ContainerState, CreatedTime, StartedTime, FinishedTime<br> &#124; render table | 列出容器的所有生命周期信息| 
 | KubeEvents_CL<br> &#124; where not(isempty(Namespace_s))<br> &#124; sort by TimeGenerated desc<br> &#124; render table | Kubernetes 事件|

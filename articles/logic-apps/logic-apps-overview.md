@@ -13,11 +13,11 @@ ms.custom: mvc
 origin.date: 06/29/2018
 ms.date: 11/11/2019
 ms.openlocfilehash: 749f3a4077789060efc1641128dcad7f675aff63
-ms.sourcegitcommit: 642a4ad454db5631e4d4a43555abd9773cae8891
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2019
-ms.locfileid: "73425965"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291507"
 ---
 # <a name="overview---what-is-azure-logic-apps"></a>概述 - 什么是 Azure 逻辑应用？
 

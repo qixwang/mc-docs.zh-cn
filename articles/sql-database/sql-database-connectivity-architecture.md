@@ -14,11 +14,11 @@ ms.reviewer: carlrab, vanto
 origin.date: 07/02/2019
 ms.date: 02/17/2020
 ms.openlocfilehash: 26522d6fbf9af6f049c0bf0786826dc84ca89740
-ms.sourcegitcommit: d7b86a424b72849fe8ed32893dd05e4696e4fe85
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77155646"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292209"
 ---
 # <a name="azure-sql-connectivity-architecture"></a>Azure SQL 连接体系结构
 

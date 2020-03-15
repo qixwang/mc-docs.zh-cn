@@ -2,25 +2,23 @@
 title: Azure Kubernetes 服务简介
 description: 了解 Azure Kubernetes 服务的功能和优势，以便在 Azure 中部署和管理基于容器的应用程序。
 services: container-service
-author: rockboyfor
-ms.service: container-service
 ms.topic: overview
 origin.date: 05/06/2019
-ms.date: 07/29/2019
+ms.date: 03/09/2020
 ms.author: v-yeche
 ms.custom: mvc
-ms.openlocfilehash: 264dfdf5cb1e4565c920e4dcf95fdd2d824fef1c
-ms.sourcegitcommit: b83f604eb98a4b696b0a3ef3db2435f6bf99f411
+ms.openlocfilehash: 3774dafdab4bfd06b9d0a5e941f7c4e289ef1249
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72303274"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79290835"
 ---
 # <a name="azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS)
 
-可以使用 Azure Kubernetes 服务 (AKS) 在 Azure 中轻松地部署托管的 Kubernetes 群集。 AKS 通过将大量管理工作量卸载到 Azure，来降低管理 Kubernetes 所产生的复杂性和操作开销。 作为一个托管 Kubernetes 服务，Azure 可以自动处理运行状况监视和维护等关键任务。 Kubernetes 主节点由 Azure 管理。 你只管理和维护代理节点。 作为托管型 Kubernetes 服务，AKS 是免费的 - 你只需支付群集中的代理节点费，不需支付主节点的费用。
+可以使用 Azure Kubernetes 服务 (AKS) 在 Azure 中轻松地部署托管的 Kubernetes 群集。 AKS 通过将大量管理工作量卸载到 Azure，来降低管理 Kubernetes 所产生的复杂性和操作开销。 作为一个托管 Kubernetes 服务，Azure 可以自动处理运行状况监视和维护等关键任务。 Kubernetes 主节点由 Azure 管理。 用户仅管理和维护代理节点。 作为托管型 Kubernetes 服务，AKS 是免费的 - 你只需支付群集中的代理节点费，不需支付主节点的费用。
 
-可以使用 Azure CLI 或模板驱动型部署选项（例如资源管理器模板）来创建 AKS 群集。 当你部署 AKS 群集时，系统会为你部署和配置 Kubernetes 主节点和所有节点。 另外，也可在部署过程中配置其他功能，例如高级网络、Azure Active Directory 集成、监视。
+可以在 Azure 门户中使用 Azure CLI 或模板驱动型部署选项（例如资源管理器模板）来创建 AKS 群集。 当你部署 AKS 群集时，系统会为你部署和配置 Kubernetes 主节点和所有节点。 另外，也可在部署过程中配置其他功能，例如高级网络、Azure Active Directory 集成、监视。
 
 <!--Not Available on in the Azure portal-->
 <!--MOONCAKE: DUE TO IMPLEMENT THE CLOUD SHELL IN AZURE PORTAL-->
@@ -31,6 +29,8 @@ ms.locfileid: "72303274"
 有关 Kubernetes 基础知识的详细信息，请参阅 [AKS 的 Kubernetes 核心概念][concepts-clusters-workloads]。
 
 若要开始，请[通过 Azure 门户][aks-portal]或者[通过 Azure CLI][aks-cli] 完成 AKS 快速入门。
+
+<!--Not Available on [!INCLUDE [azure-lighthouse-supported-service](../../includes/azure-lighthouse-supported-service.md)]-->
 
 ## <a name="access-security-and-monitoring"></a>访问权限、安全性和监视
 
@@ -129,11 +129,13 @@ Azure Kubernetes 服务 (AKS) 符合 SOC、ISO、PCI DSS 和 HIPAA 规范。 有
 > [AKS 快速入门][aks-cli]
 
 <!-- LINKS - external -->
+
 [aks-engine]: https://github.com/Azure/aks-engine
 [kubectl-overview]: https://kubernetes.io/docs/user-guide/kubectl-overview/
-[compliance-doc]: https://www.trustcenter.cn/zh-cn/cloudservices/azure.html
+[compliance-doc]: https://www.trustcenter.cn/cloudservices/azure.html
 
 <!-- LINKS - internal -->
+
 [acr-docs]: ../container-registry/container-registry-intro.md
 [aks-aad]: ./azure-ad-integration.md
 [aks-cli]: ./kubernetes-walkthrough.md
@@ -163,4 +165,4 @@ Azure Kubernetes 服务 (AKS) 符合 SOC、ISO、PCI DSS 和 HIPAA 规范。 有
 [concepts-identity]: concepts-identity.md
 [concepts-storage]: concepts-storage.md
 
-<!-- Update_Description: wording update -->
+<!-- Update_Description: update meta properties, wording update, update link -->

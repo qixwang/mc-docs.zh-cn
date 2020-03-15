@@ -17,11 +17,11 @@ origin.date: 11/30/2016
 ms.date: 02/24/2020
 ms.author: v-yeche
 ms.openlocfilehash: 5fd89e04fa164883d3ef7e10b55e15ec1600ca44
-ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77653481"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292299"
 ---
 # <a name="assign-multiple-ip-addresses-to-virtual-machines-using-the-azure-portal"></a>使用 Azure 门户将多个 IP 地址分配给虚拟机
 

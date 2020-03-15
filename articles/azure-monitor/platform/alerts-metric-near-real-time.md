@@ -10,11 +10,11 @@ ms.date: 02/19/2020
 ms.author: v-lingwu
 ms.subservice: alerts
 ms.openlocfilehash: ebdacc746a7fbe66ce5ce89664cc2af182ee325e
-ms.sourcegitcommit: 27eaabd82b12ad6a6840f30763034a6360977186
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77497437"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291677"
 ---
 # <a name="supported-resources-for-metric-alerts-in-azure-monitor"></a>Azure Monitor 中的指标警报支持的资源
 

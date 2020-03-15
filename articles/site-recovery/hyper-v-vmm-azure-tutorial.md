@@ -9,11 +9,11 @@ ms.date: 09/30/2019
 ms.author: v-yeche
 ms.custom: MVC
 ms.openlocfilehash: 2f6b0706eb0e8ddce6658d29e8f33668fd92dbc5
-ms.sourcegitcommit: 332ae4986f49c2e63bd781685dd3e0d49c696456
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71340722"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291360"
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-hyper-v-vms-in-vmm-clouds-to-azure"></a>设置 VMM 云中的本地 Hyper-V VM 到 Azure 的灾难恢复
 
@@ -31,7 +31,7 @@ ms.locfileid: "71340722"
 > * 为 VM 启用复制。
 
 > [!NOTE]
-> 教程中介绍了某个方案的最简单部署路径。 它们尽可能使用默认选项，并且不显示所有可能的设置和路径。 有关详细说明，请查看 [Site Recovery 文档](/site-recovery)的“操作指南”部分所列的文章  。
+> 教程介绍了某个方案的最简单部署路径。 它们尽可能使用默认选项，并且不显示所有可能的设置和路径。 有关详细说明，请查看 [Site Recovery 文档](/site-recovery)的“操作指南”部分所列的文章  。
 
 ## <a name="before-you-begin"></a>准备阶段
 

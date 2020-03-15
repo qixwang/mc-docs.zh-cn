@@ -12,11 +12,11 @@ origin.date: 01/16/2020
 ms.date: 2/6/2020
 ms.author: v-lingwu
 ms.openlocfilehash: 89c832641bc8c1817ca86f3d48da74988ed5ceb4
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78154974"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291197"
 ---
 # <a name="best-practices-for-performance-improvements-using-service-bus-messaging"></a>使用服务总线消息传递改进性能的最佳实践
 

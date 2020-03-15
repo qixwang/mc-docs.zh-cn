@@ -16,11 +16,11 @@ origin.date: 05/14/2018
 ms.date: 02/24/2020
 ms.author: v-yiso
 ms.openlocfilehash: c8c3c2e3fda12f2e45bc89556e3bc1d46e81b60a
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77428734"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291228"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-net-sdk"></a>使用 .NET SDK 管理 HDInsight 中的 Apache Hadoop 群集
 [!INCLUDE [selector](../../includes/hdinsight-portal-management-selector.md)]

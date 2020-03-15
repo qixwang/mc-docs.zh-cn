@@ -14,11 +14,11 @@ origin.date: 11/22/2019
 ms.date: 12/16/2019
 ms.author: apimpm
 ms.openlocfilehash: c51daf18263ef0abf315bae5fabd9834be686374
-ms.sourcegitcommit: cf73284534772acbe7a0b985a86a0202bfcc109e
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74884737"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291280"
 ---
 # <a name="access-and-customize-developer-portal"></a>访问和自定义开发人员门户
 

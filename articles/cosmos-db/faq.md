@@ -9,11 +9,11 @@ ms.date: 02/10/2020
 ms.author: v-yeche
 ms.custom: seodec18
 ms.openlocfilehash: 84ddbe0f9ec37d74c88ffa3ece5be0d3dd9f2d99
-ms.sourcegitcommit: 23dc63b6fea451f6a2bd4e8d0fbd7ed082ba0740
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76980536"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292926"
 ---
 # <a name="frequently-asked-questions-about-different-apis-in-azure-cosmos-db"></a>有关 Azure Cosmos DB 中不同 API 的常见问题
 
@@ -458,7 +458,7 @@ Azure Cosmos DB 会在本地区域持续提交数据，然后在几毫秒内将�
 * 要对数据执行提取、转换和加载 (ETL) 操作，或者需在短时间内上传大量数据。
 * 需要后端的容器或容器组提供更大的吞吐量。 例如，发现已用吞吐量超过预配吞吐量，且吞吐量已达到限制。 有关详细信息，请参阅[为 Azure Cosmos 容器设置吞吐量](set-throughput.md)。
 
-### <a name="can-i-scale-up-or-scale-down-the-throughput-of-my-table-api-table"></a>是否可以提高或降低表 API 表的吞吐量？
+### <a name="can-i-scale-up-or-scale-down-the-throughput-of-my-table-api-table"></a>是否可以纵向扩展纵向缩减表 API 表的吞吐量？
 
 是的，可以使用 Azure Cosmos DB 门户的缩放窗格来缩放吞吐量。 有关详细信息，请参阅[设置吞吐量](set-throughput.md)。
 

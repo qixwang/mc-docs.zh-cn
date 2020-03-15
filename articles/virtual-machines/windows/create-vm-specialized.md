@@ -15,11 +15,11 @@ origin.date: 10/10/2019
 ms.date: 02/10/2020
 ms.author: v-yeche
 ms.openlocfilehash: aee98e4e4094a15b59705dcf5e01a7f4ca1c99f3
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77428760"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291817"
 ---
 # <a name="create-a-windows-vm-from-a-specialized-disk-by-using-powershell"></a>使用 PowerShell 从专用磁盘创建 Windows VM
 

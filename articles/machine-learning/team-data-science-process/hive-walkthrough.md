@@ -12,11 +12,11 @@ ms.date: 11/29/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 02a9ec74e509a93e6b2997a840d034a6331dc51f
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75598487"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291605"
 ---
 # <a name="the-team-data-science-process-in-action-use-azure-hdinsight-hadoop-clusters"></a>运行中的 Team Data Science Process：使用 Azure HDInsight Hadoop 群集
 本演练在一个端到端方案中使用 [Team Data Science Process (TDSP)](overview.md)。 其中使用 [Azure HDInsight Hadoop 群集](https://www.andresmh.com/nyctaxitrips/)对公开发布的[纽约市出租车行程](/hdinsight/)数据集中的数据进行存储、探索和实施特性工程，以及对该数据进行下采样。 为了处理二元分类、多类分类和回归预测任务，我们将使用 Azure 机器学习构建数据模型。 
@@ -723,7 +723,7 @@ NYC 出租车数据集中的牌照标识一辆唯一的出租车。 通过询问
 
 **HCatalog 服务器 URI**：如果群集名称为“abc123”，则其 URI 即为： https://abc123.azurehdinsight.net  。
 
-**Hadoop 用户帐户名**：为群集选择的用户名（不是远程访问用户名）。
+**Hadoop 用户帐户名称**：为群集选择的用户名（不是远程访问用户名）。
 
 **Hadoop 用户帐户密码**：为群集选择的密码（不是远程访问密码）。
 

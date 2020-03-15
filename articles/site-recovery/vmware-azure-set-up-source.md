@@ -10,11 +10,11 @@ origin.date: 04/14/2019
 ms.date: 06/10/2019
 ms.author: v-yeche
 ms.openlocfilehash: 61e57c84f51763bc17ba42c4268347679f185e41
-ms.sourcegitcommit: e0225b4d68a71bfa5bbcb7d8d7e0214b9a17dc5d
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71083175"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291337"
 ---
 <a name="set-up-the-source-environment"></a>
 # <a name="set-up-the-source-environment-for-vmware-to-azure-replication"></a>设置源环境以便从 VMware 复制到 Azure
@@ -33,7 +33,7 @@ ms.locfileid: "71083175"
 
 1. 在“恢复服务保管库”  中，选择保管库名称。 我们在此方案中使用 **ContosoVMVault**。
 2. 在“入门”中，选择“Site Recovery”  ， 然后选择“准备基础结构”  。
-3. 在“保护目标” > “计算机所在位置”中，选择“本地”    。
+3. 在“保护目标”   >   “计算机所在位置”中，选择“本地”。 
 4. 在“要将计算机复制到何处?”中，选择“复制到 Azure”   。
 5. 在“计算机是否已虚拟化”中，选择  “是，已使用 VMware vSphere 虚拟机监控程序虚拟化”。  然后选择“确定”。 
 
@@ -83,7 +83,7 @@ ms.locfileid: "71083175"
 4. C:\ProgramData\ASRSetupLogs
 5. C:\ProgramData\LogUploadServiceLogs
 6. C:\ProgramData\Microsoft Azure Site Recovery
-7. ASR 负载均衡进程服务器安装目录，示例：C:\Program Files (x86)\Microsoft Azure Site Recovery
+7. ASR 负载均衡的进程服务器安装目录，示例：C:\Program Files (x86)\Microsoft Azure Site Recovery
 
 ## <a name="next-steps"></a>后续步骤
 [设置目标环境](./vmware-azure-set-up-target.md)

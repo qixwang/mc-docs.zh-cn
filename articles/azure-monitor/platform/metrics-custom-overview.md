@@ -10,11 +10,11 @@ ms.date: 6/4/2019
 ms.author: v-lingwu
 ms.subservice: metrics
 ms.openlocfilehash: 70bf99b9cfe5dbcd2042b955d76ea47d58644969
-ms.sourcegitcommit: 27eaabd82b12ad6a6840f30763034a6360977186
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77497632"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292407"
 ---
 # <a name="custom-metrics-in-azure-monitor"></a>Azure Monitor 中的自定义指标
 

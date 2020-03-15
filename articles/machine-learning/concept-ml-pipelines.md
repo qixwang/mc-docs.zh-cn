@@ -11,11 +11,11 @@ author: lobrien
 origin.date: 11/06/2019
 ms.date: 03/09/2020
 ms.openlocfilehash: 3ec9b680e461345da1e60e04d72bdd05e1a195d3
-ms.sourcegitcommit: fbc7584f403417d3af7bd6bbbaed7c13a78c57b9
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78411635"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292389"
 ---
 # <a name="what-are-azure-machine-learning-pipelines"></a>什么是 Azure 机器学习管道？
 

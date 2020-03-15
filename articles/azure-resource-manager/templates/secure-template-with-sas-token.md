@@ -6,11 +6,11 @@ origin.date: 08/14/2019
 ms.author: v-yeche
 ms.date: 01/06/2020
 ms.openlocfilehash: 9f9b1c68e29e4399b235a21112e553f3d6768fff
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75631338"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291254"
 ---
 <!--Verify successfully-->
 <!--Merge with two files which contain PowerShell and CLI seperated-->
@@ -23,7 +23,7 @@ ms.locfileid: "75631338"
 
 以下脚本创建一个存储帐户和容器，其中的公共访问权限已禁用。
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```powershell
 Connect-AzAccount -Environment AzureChinaCloud
@@ -44,7 +44,7 @@ New-AzStorageContainer `
   -Permission Off
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 [!INCLUDE [azure-cli-2-azurechinacloud-environment-parameter](../../../includes/azure-cli-2-azurechinacloud-environment-parameter.md)]
 
@@ -77,7 +77,7 @@ az storage container create \
 
 现在可以将模板上传到存储帐户了。 提供要使用的模板的路径。
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```powershell
 Set-AzStorageBlobContent `
@@ -85,7 +85,7 @@ Set-AzStorageBlobContent `
   -File c:\Templates\azuredeploy.json
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli
 az storage blob upload \
@@ -105,7 +105,7 @@ az storage blob upload \
 > 只有帐户所有者可以访问包含模板的 Blob。 但是，如果为 blob 创建 SAS 令牌，则拥有该 URI 的任何人都可以访问 blob。 如果其他用户截获了该 URI，则此用户可以访问该模板。 SAS 令牌是限制对模板的访问的好方法，但不应直接在模板中包括密码等敏感数据。
 >
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```powershell
 # get the URI with the SAS token
@@ -121,7 +121,7 @@ New-AzResourceGroupDeployment `
   -TemplateUri $templateuri
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli
 expiretime=$(date -u -d '30 minutes' +%Y-%m-%dT%H:%MZ)

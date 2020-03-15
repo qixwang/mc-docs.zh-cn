@@ -12,11 +12,11 @@ origin.date: 11/29/2019
 ms.date: 02/25/2020
 ms.author: v-lingwu
 ms.openlocfilehash: 1cf2809905090b41198ba970d101b29d85ae2edf
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78154787"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291458"
 ---
 # <a name="example-user-scenarios-for-the-text-analytics-api"></a>文本分析 API 的示例用户方案
 

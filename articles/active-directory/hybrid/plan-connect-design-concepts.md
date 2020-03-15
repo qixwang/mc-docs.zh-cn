@@ -19,11 +19,11 @@ ms.subservice: hybrid
 ms.author: v-junlch
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ca54ec9cbbfd9f6441c6ab6e1ad9f433b155820b
-ms.sourcegitcommit: 74f50c9678e190e2dbb857be530175f25da8905e
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/12/2019
-ms.locfileid: "72292105"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79290988"
 ---
 # <a name="azure-ad-connect-design-concepts"></a>Azure AD Connect：设计概念
 本文档旨在说明 Azure AD Connect 实现设计期间必须考虑到的各个方面。 本文档是特定领域的深入探讨，其他文档中也简要描述了这些概念。
@@ -199,6 +199,6 @@ John 是 contoso.com 中的用户。 将用户同步到 Azure AD 目录 contoso.
 Azure AD Connect 将检测是否在不可路由的域环境中运行，并在适当的情况下警告你不要继续使用快速设置。 如果在不可路由的域中操作，用户的 UPN 可能也包含不可路由的后缀。 例如，如果在 contoso.local 下运行，Azure AD Connect 建议使用自定义设置而不是快速设置。 使用自定义设置，可以在用户同步到 Azure AD 之后，指定要用作 UPN 以供登录 Azure 的属性。
 
 ## <a name="next-steps"></a>后续步骤
-了解有关 [将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)的详细信息。
+了解有关[将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)的详细信息。
 
 <!-- Update_Description: wording update -->

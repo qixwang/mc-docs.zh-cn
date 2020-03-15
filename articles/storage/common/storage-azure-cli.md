@@ -12,11 +12,11 @@ ms.author: v-jay
 ms.reviewer: seguler
 ms.subservice: common
 ms.openlocfilehash: 97a5b2178970e366801cd059cc685c9f12eac548
-ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77028640"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291411"
 ---
 # <a name="using-the-azure-cli-with-azure-storage"></a>将 Azure CLI 用于 Azure 存储
 
@@ -30,7 +30,7 @@ ms.locfileid: "77028640"
 
 [!INCLUDE [storage-cli-versions](../../../includes/storage-cli-versions.md)]
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 本指南假设读者了解 Azure 存储的基本概念。 本指南还假设读者能够满足下面针对 Azure 和存储服务指定的帐户创建要求。
 
 ### <a name="accounts"></a>帐户

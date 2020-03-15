@@ -2,18 +2,16 @@
 title: Azure Kubernetes 服务 (AKS) 中的 API 服务器已授权 IP 范围
 description: 了解如何使用用于访问 Azure Kubernetes 服务 (AKS) 中 API 服务器的 IP 地址范围保护群集
 services: container-service
-author: rockboyfor
-ms.service: container-service
 ms.topic: article
 origin.date: 11/05/2019
-ms.date: 01/13/2020
+ms.date: 03/09/2020
 ms.author: v-yeche
-ms.openlocfilehash: f22de32c6e0acbed44f9f3b75df67c058ceaa70b
-ms.sourcegitcommit: c5af330f13889a18bb8a5b44e6566a3df4aeea49
+ms.openlocfilehash: 8007cb946209deab52a59b68834a4387fa7495f7
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75859880"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79290726"
 ---
 # <a name="secure-access-to-the-api-server-using-authorized-ip-address-ranges-in-azure-kubernetes-service-aks"></a>使用 Azure Kubernetes 服务 (AKS) 中的已授权 IP 地址范围保护对 API 服务器的访问
 
@@ -147,7 +145,7 @@ az aks update \
 
 <!-- LINKS - internal -->
 
-[az-aks-update]: https://docs.azure.cn/cli/ext/aks-preview/aks?view=azure-cli-latest#ext-aks-preview-az-aks-update
+[az-aks-update]: https://docs.microsoft.com/cli/azure/ext/aks-preview/aks?view=azure-cli-latest#ext-aks-preview-az-aks-update
 [az-aks-create]: https://docs.microsoft.com/cli/azure/aks?view=azure-cli-latest#az-aks-create
 [az-network-public-ip-list]: https://docs.azure.cn/cli/network/public-ip?view=azure-cli-latest#az-network-public-ip-list
 [concepts-clusters-workloads]: concepts-clusters-workloads.md

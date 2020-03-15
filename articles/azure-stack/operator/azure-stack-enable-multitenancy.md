@@ -9,11 +9,11 @@ ms.author: v-jay
 ms.reviewer: bryanr
 ms.lastreviewed: 06/10/2019
 ms.openlocfilehash: ed0c2a11256383f618daadcccf33822f7cb6708e
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77540997"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291451"
 ---
 # <a name="configure-multi-tenancy-in-azure-stack-hub"></a>在 Azure Stack Hub 中配置多租户
 

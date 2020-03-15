@@ -10,11 +10,11 @@ ms.topic: overview
 origin.date: 01/30/2020
 ms.date: 03/16/2020
 ms.openlocfilehash: 0f3804abd610dfae6210d5a098ce00dd4946bfde
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78850546"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291140"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Azure 认知搜索中的新增功能
 

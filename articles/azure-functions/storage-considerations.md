@@ -4,11 +4,11 @@ description: 了解 Azure Functions 的存储要求以及如何加密存储的�
 ms.topic: conceptual
 ms.date: 02/18/2020
 ms.openlocfilehash: c01112fe5280b2b5f07ed7c77a391c8ddf5c5454
-ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77494004"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291722"
 ---
 # <a name="storage-considerations-for-azure-functions"></a>Azure Functions 的存储注意事项
 

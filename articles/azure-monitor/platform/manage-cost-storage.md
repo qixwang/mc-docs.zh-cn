@@ -16,11 +16,11 @@ ms.date: 12/04/2019
 ms.author: v-lingwu
 ms.subservice: ''
 ms.openlocfilehash: 8d1cd3a3948015175a11bb95684b64d9c20a7075
-ms.sourcegitcommit: 27eaabd82b12ad6a6840f30763034a6360977186
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77497585"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291649"
 ---
 # 通过 Azure Monitor 日志管理使用情况和成本 <a name="troubleshooting-why-log-analytics-is-no-longer-collecting-data"></a>
 

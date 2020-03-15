@@ -7,11 +7,11 @@ origin.date: 06/29/2018
 ms.date: 02/24/2020
 ms.author: v-yeche
 ms.openlocfilehash: 626f64da8ba02b38f0b7097d2962427f051605c2
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77540427"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292024"
 ---
 # <a name="service-fabric-for-visual-studio-code"></a>Service Fabric for Visual Studio Code
 
@@ -22,7 +22,7 @@ ms.locfileid: "77540427"
 > [!IMPORTANT]
 > 可在 Windows 计算机上开发 Service Fabric Java 应用程序，但只能将其部署到 Azure Linux 群集。 Windows 不支持调试 Java 应用程序。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 必须在所有环境中安装以下必备组件。
 

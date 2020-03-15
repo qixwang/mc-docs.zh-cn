@@ -8,11 +8,11 @@ origin.date: 12/24/2019
 ms.date: 01/13/2020
 ms.author: v-yeche
 ms.openlocfilehash: 33797e28e5c4f7f1ee4d66d8bd44b9704aa0f00e
-ms.sourcegitcommit: 4f4694991e1c70929c7112ad45a0c404ddfbc8da
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75776688"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291351"
 ---
 # <a name="manage-vmware-vcenter-server"></a>管理 VMware vCenter 服务器
 

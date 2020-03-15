@@ -2,11 +2,9 @@
 title: 快速入门：部署 Azure Kubernetes 服务群集
 description: 了解如何使用 Azure CLI 快速创建 Kubernetes 群集、部署应用程序，以及监视 Azure Kubernetes 服务 (AKS) 中的性能。
 services: container-service
-author: rockboyfor
-ms.service: container-service
 ms.topic: quickstart
 origin.date: 09/13/2019
-ms.date: 10/28/2019
+ms.date: 03/09/2020
 ms.author: v-yeche
 ms.custom:
 - H1Hack27Feb2017
@@ -15,12 +13,12 @@ ms.custom:
 - seo-javascript-september2019
 - seo-javascript-october2019
 - seo-python-october2019
-ms.openlocfilehash: a039d97073c7301b8e40ef05d9f3fc8d7cddab48
-ms.sourcegitcommit: 1d4dc20d24feb74d11d8295e121d6752c2db956e
+ms.openlocfilehash: 3d85d8a29f2e508eb8ab1a28d520609edff2165f
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73068882"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292480"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-cluster-using-the-azure-cli"></a>快速入门：使用 Azure CLI 部署 Azure Kubernetes 服务群集
 
@@ -39,14 +37,14 @@ ms.locfileid: "73068882"
 
 [!INCLUDE [azure-cli-2-azurechinacloud-environment-parameter](../../includes/azure-cli-2-azurechinacloud-environment-parameter.md)]
 
-> [!Note]
+> [!NOTE]
 > 如果在本地运行此快速入门中的命令，请确保以管理员身份运行命令。
 
 <!--MOONCAKE: Not Available on (instead of Azure Cloud Shell)-->
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
-Azure 资源组是在其中部署和管理 Azure 资源的逻辑组。 创建资源组时，系统会要求你指定一个位置， 此位置是资源组元数据的存储位置，如果你在创建资源期间未指定另一个区域，则它还是你的资源在 Azure 中的运行位置。 使用 [az group create][az-group-create] 命令创建资源组。
+Azure 资源组是一个逻辑组，用于部署和管理 Azure 资源。 创建资源组时，系统会要求你指定一个位置， 此位置是资源组元数据的存储位置，如果你在创建资源期间未指定另一个区域，则它还是你的资源在 Azure 中的运行位置。 使用 [az group create][az-group-create] 命令创建资源组。
 
 以下示例在“chinaeast2”  位置创建名为“myResourceGroup”  的资源组。
 
@@ -73,13 +71,12 @@ az group create --name myResourceGroup --location chinaeast2
 
 使用 [az aks create][az-aks-create] 命令创建 AKS 群集。 以下示例创建一个具有一个节点的名为  myAKSCluster 的群集。 用于容器的 Azure Monitor也已通过 *--enable-addons monitoring* 参数启用。  此操作将需要几分钟才能完成。
 
-> [注意] 创建 AKS 群集时，会自动创建另一个资源组来存储 AKS 资源。 有关详细信息，请参阅[为什么使用 AKS 创建两个资源组？](/aks/faq#why-are-two-resource-groups-created-with-aks)
+> [!NOTE]
+> 创建 AKS 群集时，会自动创建另一个资源组来存储 AKS 资源。 有关详细信息，请参阅[为什么使用 AKS 创建两个资源组？](/aks/faq#why-are-two-resource-groups-created-with-aks)
 
 ```azurecli
-az aks create --resource-group myResourceGroup --name myAKSCluster --node-count 1 --enable-addons monitoring --generate-ssh-keys --vm-set-type AvailabilitySet
+az aks create --resource-group myResourceGroup --name myAKSCluster --node-count 1 --enable-addons monitoring --generate-ssh-keys
 ```
-
-<!--MOONCAKE: CORRECT TO APPEND --vm-set-type AvailabilitySet Before VMSS feature is valid on Azure China Cloud-->
 
 片刻之后，该命令将会完成，并返回有关群集的 JSON 格式信息。
 
@@ -97,7 +94,7 @@ az aks install-cli
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 ```
 
-若要验证到群集的连接，请使用 [kubectl get][kubectl-get] 命令返回群集节点的列表。
+若要验证到群集的连接，请使用 [kubectl get][kubectl-get] 命令返回群集节点列表。
 
 ```azurecli
 kubectl get nodes

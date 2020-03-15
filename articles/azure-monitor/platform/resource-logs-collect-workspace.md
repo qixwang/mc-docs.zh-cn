@@ -10,11 +10,11 @@ ms.date: 12/31/2019
 ms.author: v-lingwu
 ms.subservice: logs
 ms.openlocfilehash: dd60f88949bf1f82535e62259651bd76ef2075d7
-ms.sourcegitcommit: 27eaabd82b12ad6a6840f30763034a6360977186
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77497551"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291180"
 ---
 # <a name="collect-azure-platform-logs-in-log-analytics-workspace-in-azure-monitor"></a>在 Azure Monitor 的 Log Analytics 工作区中收集 Azure 平台日志
 Azure 中的[平台日志](platform-logs-overview.md)（包括 Azure 活动日志和资源日志）提供 Azure 资源及其所依赖的 Azure 平台的详细诊断和审核信息。 本文介绍如何收集 Log Analytics 工作区中的资源日志，以便可以结合通过强大的日志查询在 Azure Monitor 日志中收集的其他监视数据对其进行分析，并利用其他 Azure Monitor 功能，例如警报和可视化。 
@@ -27,7 +27,7 @@ Azure 中的[平台日志](platform-logs-overview.md)（包括 Azure 活动日�
 * **警报** - 使用 [Azure Monitor 中的日志警报](alerts-log.md)获取在资源日志中识别到的关键状况和模式的主动通知。
 * **可视化** - 将日志查询的结果固定到 Azure 仪表板，或将其作为交互式报告的一部分包含在工作簿中。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 如果没有工作区，需要[创建新的工作区](../learn/quick-create-workspace.md)。 只要配置设置的用户同时拥有两个订阅的相应 RBAC 访问权限，工作区就不必位于发送日志的资源所在的订阅中。
 
 ## <a name="create-a-diagnostic-setting"></a>创建诊断设置

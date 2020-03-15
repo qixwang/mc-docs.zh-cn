@@ -18,11 +18,11 @@ ms.author: v-junlch
 ms.reviewer: ''
 ms.custom: aaddev
 ms.openlocfilehash: 33610444f22632c21e6bac67dca21ecb33b405c7
-ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77653135"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291032"
 ---
 # <a name="how-to-configure-sso-on-macos-and-ios"></a>如何：在 macOS 和 iOS 上配置 SSO
 

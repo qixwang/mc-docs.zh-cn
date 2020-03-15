@@ -13,11 +13,11 @@ origin.date: 03/26/2019
 ms.date: 6/4/2019
 ms.author: v-lingwu
 ms.openlocfilehash: c21ccb4b9a0ed16c76149122e2abb31ece7cbc4d
-ms.sourcegitcommit: 27eaabd82b12ad6a6840f30763034a6360977186
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77497529"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291320"
 ---
 # <a name="logs-in-azure-monitor"></a>Azure Monitor 中的日志
 

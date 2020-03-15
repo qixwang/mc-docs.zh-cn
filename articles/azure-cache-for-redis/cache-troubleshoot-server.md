@@ -16,11 +16,11 @@ origin.date: 10/18/2019
 ms.date: 11/11/2019
 ms.author: v-junlch
 ms.openlocfilehash: a2d8a367773851e29c206b63f59975ce4783b869
-ms.sourcegitcommit: 40a58a8b9be0c825c03725802e21ed47724aa7d2
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73934417"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291928"
 ---
 # <a name="troubleshoot-azure-cache-for-redis-server-side-issues"></a>排查 Azure Cache for Redis 服务器端问题
 

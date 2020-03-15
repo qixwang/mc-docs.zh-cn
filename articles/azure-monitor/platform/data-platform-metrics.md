@@ -13,11 +13,11 @@ origin.date: 03/26/2019
 ms.date: 6/4/2019
 ms.author: v-lingwu
 ms.openlocfilehash: 6ed66c92c030896a3dab8de2b78ecc7563088df9
-ms.sourcegitcommit: b09d4b056ac695ba379119eb9e458a945b0a61d9
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72970945"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291182"
 ---
 # <a name="metrics-in-azure-monitor"></a>Azure Monitor 中的指标
 

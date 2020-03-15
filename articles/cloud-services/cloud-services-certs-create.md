@@ -16,11 +16,11 @@ origin.date: 04/19/2017
 ms.author: v-yiso
 ms.date: 08/12/2019
 ms.openlocfilehash: 7b3bee1bbc098957a241a0684c9126fafce214a5
-ms.sourcegitcommit: fcc768b955bab5c6cb7f898c913bc7ede6815743
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68733520"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291399"
 ---
 # <a name="certificates-overview-for-azure-cloud-services"></a>Azure 云服务证书概述
 证书在 Azure 中用于云服务（[服务证书](#what-are-service-certificates)）以及用于通过管理 API 进行身份验证（[管理证书](#what-are-management-certificates)）。 本主题同时提供了有关这两种证书类型的一般概述，并说明了如何[创建](#create)并将其部署到 Azure。
@@ -33,9 +33,9 @@ Azure 使用的证书可以包含一个私钥或公钥。 证书具有指纹，�
 >Azure 云服务不接受 AES256-SHA256 加密证书。
 
 ## <a name="what-are-service-certificates"></a>什么是服务证书？
-服务证书被附加到云服务，可实现与服务之间的安全通信。 例如，如果部署了 Web 角色，则需要提供可对公开 HTTPS 终结点进行身份验证的证书。 在服务定义中定义的服务证书会自动部署到运行角色实例的虚拟机。 
+将服务证书添加到云服务后可在服务之间实现安全通信。 例如，如果部署了 Web 角色，则需要提供可对公开 HTTPS 终结点进行身份验证的证书。 在服务定义中定义的服务证书会自动部署到运行角色实例的虚拟机。 
 
-可使用 Azure 门户或使用经典部署模型将服务证书上传到 Azure。 服务证书与特定的云服务相关联。 它们在服务定义文件中分配给部署。
+可使用 Azure 门户或使用经典部署模型将服务证书上传到 Azure。 服务证书与特定的云服务相关联。 它们将分配给服务定义文件中的部署。
 
 服务证书可与服务分开管理，且可由不同的人员管理。 例如，开发人员上传的服务包可以使用 IT 管理员以前上传到 Azure 的证书。 IT 管理员可以管理并续订该证书（更改服务配置）而无需上传新的服务包。 在没有新服务包的情况下更新之所以可能是因为证书的逻辑名称、存储名称和存储位置是在服务定义文件中指定的，而证书指纹则是在服务配置文件中指定的。 若要更新证书，只需上传新证书并更改服务配置文件中的指纹值。
 

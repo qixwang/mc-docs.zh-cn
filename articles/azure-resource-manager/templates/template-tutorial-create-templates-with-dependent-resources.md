@@ -7,11 +7,11 @@ ms.date: 01/20/2020
 ms.author: v-yeche
 ms.topic: tutorial
 ms.openlocfilehash: 443b0891b3877f4cf3041fc4fdf81b7890a2e25e
-ms.sourcegitcommit: 8de025ca11b62e06ba3762b5d15cc577e0c0f15d
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76165395"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291238"
 ---
 # <a name="tutorial-create-azure-resource-manager-templates-with-dependent-resources"></a>教程：使用依赖的资源创建 Azure 资源管理器模板
 
@@ -32,7 +32,7 @@ ms.locfileid: "76165395"
 
 如果没有 Azure 订阅，请在开始前[创建一个试用帐户](https://www.azure.cn/pricing/1rmb-trial/)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要完成本文，需要做好以下准备：
 

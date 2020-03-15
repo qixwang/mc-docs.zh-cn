@@ -8,12 +8,12 @@ origin.date: 09/12/2018
 ms.date: 11/20/2019
 ms.author: v-lingwu
 ms.assetid: b8487516-7ac5-4435-9680-674d9ecf5642
-ms.openlocfilehash: d1772787be3bc06852550522cd967394f8737e15
-ms.sourcegitcommit: 21b02b730b00a078a76aeb5b78a8fd76ab4d6af2
+ms.openlocfilehash: 6fb131d6c4fcf862a23b1af24f574025a3297079
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74838954"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79290890"
 ---
 # <a name="restore-azure-virtual-machines-using-rest-api"></a>使用 REST API 还原 Azure 虚拟机
 
@@ -35,7 +35,7 @@ GET https://management.chinacloudapi.cn/Subscriptions/{subscriptionId}/resourceG
 
 ### <a name="responses"></a>响应
 
-|Name  |类型  |说明  |
+|名称  |类型  |说明  |
 |---------|---------|---------|
 |200 正常     |   [RecoveryPointResourceList](https://docs.microsoft.com/rest/api/backup/recoverypoints/list#recoverypointresourcelist)      |       OK  |
 
@@ -135,7 +135,7 @@ POST https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/
 
 若要触发从 Azure VM 备份还原磁盘的操作，需在请求正文中包含以下组成部分。
 
-|Name  |类型  |说明  |
+|名称  |类型  |说明  |
 |---------|---------|---------|
 |properties     | [IaaSVMRestoreRequest](https://docs.microsoft.com/rest/api/backup/restores/trigger#iaasvmrestorerequest)        |    RestoreRequestResourceProperties     |
 
@@ -165,11 +165,11 @@ POST https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/
 
 ### <a name="response"></a>响应
 
-触发磁盘还原是一个[异步操作](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations)。 这意味着，此操作会创建另一个需要单独跟踪的操作。
+触发磁盘还原是一个[异步操作](/azure-resource-manager/resource-manager-async-operations)。 这意味着，此操作会创建另一个需要单独跟踪的操作。
 
 它将返回两个响应：创建另一个操作时为 202（已接受），该操作完成时为 200（正常）。
 
-|Name  |类型  |说明  |
+|名称  |类型  |说明  |
 |---------|---------|---------|
 |202 已接受     |         |     已接受    |
 
@@ -195,7 +195,7 @@ Location: https://management.azure.com/subscriptions//subscriptions/00000000-000
 X-Powered-By: ASP.NET
 ```
 
-然后，可以使用 location 标头或 Azure-AsyncOperation 标头以及简单的 *GET* 命令跟踪生成的操作。
+然后通过简单的 GET 命令并使用 location 标头或 Azure-AsyncOperation 标头跟踪生成的操作  。
 
 ```http
 GET https://management.azure.com/subscriptions//subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/microsoft.recoveryservices/vaults/testVault/backupFabrics/Azure/protectionContainers/iaasvmcontainer;iaasvmcontainerv2;testRG;testVM/protectedItems/vm;testRG;testVM/operationResults/781a0f18-e250-4d73-b059-5e9ffed4069e?api-version=2019-05-13

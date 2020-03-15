@@ -10,11 +10,11 @@ origin.date: 01/15/2020
 ms.date: 02/17/2020
 ms.author: v-jay
 ms.openlocfilehash: f245f29473a8ba359b26aa337da374deb051ccef
-ms.sourcegitcommit: 3f9d780a22bb069402b107033f7de78b10f90dde
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77156782"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291611"
 ---
 # <a name="create-and-install-vpn-client-configuration-files-for-native-azure-certificate-authentication-p2s-configurations"></a>为本机 Azure 证书身份验证 P2S 配置创建并安装 VPN 客户端配置文件
 

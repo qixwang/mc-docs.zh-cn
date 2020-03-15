@@ -9,11 +9,11 @@ ms.author: v-jay
 ms.reviewer: kivenkat
 ms.lastreviewed: 01/05/2019
 ms.openlocfilehash: 706f038096a0b4628315a60d93dbb60a11352e9f
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77540858"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292661"
 ---
 # <a name="introduction-to-azure-stack-hub-vms"></a>Azure Stack Hub VM 简介
 

@@ -9,11 +9,11 @@ origin.date: 10/30/2018
 ms.date: 12/02/2019
 ms.author: v-jay
 ms.openlocfilehash: e97c3de4d067218b604906575eb3c78bde557037
-ms.sourcegitcommit: 481542df432d52b7d4823811cef94772e4e0f192
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74530635"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291443"
 ---
 # <a name="tutorial-host-your-domain-in-azure-dns"></a>教程：在 Azure DNS 中托管域
 
@@ -53,7 +53,7 @@ ms.locfileid: "74530635"
    |**名称**|[你的域名] |购买的域名。 本教程使用 contoso.net 作为示例。|
    |**订阅**|[你的订阅]|选择要在其中创建区域的订阅。|
    |**资源组**|**新建：** contosoRG|创建资源组。 资源组名称必须在所选订阅中唯一。<br>资源组的位置对 DNS 区域没有影响。 DNS 区域位置始终是“全局”，并且不会显示。|
-   |**Location**|中国东部||
+   |**位置**|中国东部||
 
 ## <a name="retrieve-name-servers"></a>检索名称服务器
 

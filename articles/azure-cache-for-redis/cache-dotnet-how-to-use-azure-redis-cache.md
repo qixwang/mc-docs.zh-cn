@@ -17,11 +17,11 @@ ms.date: 09/03/2019
 ms.author: v-junlch
 ms.custom: mvc
 ms.openlocfilehash: 9bd49f2b5387cde386caa4f43b9c06ef4eeb9673
-ms.sourcegitcommit: 7fcf656522eec95d41e699cb257f41c003341f64
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70310815"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291991"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-a-net-framework-application"></a>快速入门：将 Azure Redis 缓存与 .NET Framework 应用程序配合使用
 
@@ -77,7 +77,7 @@ Install-Package StackExchange.Redis
 
 ## <a name="connect-to-the-cache"></a>连接到缓存
 
-在 Visual Studio 中，打开 *App.config* 文件，并对其进行更新以包括引用 *CacheSecrets.config* 文件的 `appSettings` `file` 属性。
+在 Visual Studio 中，打开 App.config  文件并将其更新为包含引用 CacheSecrets.config  文件的 `appSettings` `file` 属性。
 
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>
@@ -248,11 +248,11 @@ class Employee
 > 删除资源组的操作不可逆，资源组以及其中的所有资源将被永久删除。 请确保不会意外删除错误的资源组或资源。 如果在现有资源组（其中包含要保留的资源）中为托管此示例而创建了相关资源，可从各自的边栏选项卡逐个删除这些资源，而不要删除资源组。
 >
 
-登录到 [Azure 门户](https://portal.azure.cn)，并单击“资源组”。 
+登录到 [Azure 门户](https://portal.azure.cn)，然后单击“资源组”。 
 
 在“按名称筛选...”文本框中键入资源组的名称  。 本文的说明使用了名为 *TestResources* 的资源组。 在结果列表中的资源组上，单击“...”，然后单击“删除资源组”   。
 
-![删除](./media/cache-dotnet-how-to-use-azure-redis-cache/cache-delete-resource-group.png)
+![Delete](./media/cache-dotnet-how-to-use-azure-redis-cache/cache-delete-resource-group.png)
 
 系统会要求确认是否删除资源组。 键入资源组的名称进行确认，然后单击“删除”  。
 

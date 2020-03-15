@@ -3,18 +3,19 @@ title: 轮换 Azure Kubernetes 服务 (AKS) 中的证书
 description: 了解如何轮换 Azure Kubernetes 服务 (AKS) 群集中的证书。
 services: container-service
 author: rockboyfor
-ms.service: container-service
 ms.topic: article
 origin.date: 11/15/2019
-ms.date: 01/13/2020
+ms.date: 03/09/2020
 ms.author: v-yeche
-ms.openlocfilehash: 06df78c701a5d5290178061a3a476f901d1a45b2
-ms.sourcegitcommit: c5af330f13889a18bb8a5b44e6566a3df4aeea49
+ms.openlocfilehash: e8ee893e3e023104b64450dbe8b2634d0a34eb25
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75864978"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79290766"
 ---
+<!--NOT SUITABLE FOR MOONCAKE-->
+<!--REASON: PRODUCTION TEAM NOTIFIED-->
 # <a name="rotate-certificates-in-azure-kubernetes-service-aks"></a>轮换 Azure Kubernetes 服务 (AKS) 中的证书
 
 Azure Kubernetes 服务 (AKS) 使用证书对其许多组件进行身份验证。 出于安全或策略原因，可能需要定期轮换这些证书。 例如，某个策略可能每 90 天轮换一次所有证书。
@@ -43,7 +44,7 @@ AKS 生成并使用以下证书、证书颁发机构和服务帐户：
 > 
 > 此外，还可以检查群集证书的到期日期。 例如，以下命令会显示 *myAKSCluster* 群集的证书详细信息。
 > ```console
-> kubectl config view --raw -o jsonpath='{.clusters[?(@.name == "myAKSCluster")].cluster.certificate-authority-data}' | base64 -d > my-cert.crt
+> kubectl config view --raw -o jsonpath="{.clusters[?(@.name == 'myAKSCluster')].cluster.certificate-authority-data}" | base64 -d > my-cert.crt
 > openssl x509 -in my-cert.crt -text
 > ```
 
@@ -86,6 +87,9 @@ az aks get-credentials -g $RESOURCE_GROUP_NAME -n $CLUSTER_NAME --overwrite-exis
 kubectl get no
 ```
 
+<!--Not Available on [Azure Dev Spaces][dev-spaces]-->
+<!--Not Available on [update certificates related to those services][dev-spaces-rotate]-->
+
 ## <a name="next-steps"></a>后续步骤
 
 本文介绍了如何自动轮换群集的证书、CA 和 SA。 有关 AKS 安全最佳做法的详细信息，请参阅[有关 Azure Kubernetes 服务 (AKS) 中的群集安全性和升级的最佳做法][aks-best-practices-security-upgrades]。
@@ -95,6 +99,9 @@ kubectl get no
 [az-extension-add]: https://docs.azure.cn/cli/extension?view=azure-cli-latest#az-extension-add
 [az-extension-update]: https://docs.azure.cn/cli/extension?view=azure-cli-latest#az-extension-update
 [aks-best-practices-security-upgrades]: operator-best-practices-cluster-security.md
+
+<!--Not Available on [dev-spaces]: /dev-spaces/-->
+<!--Not Available on [dev-spaces-rotate]: ../dev-spaces/troubleshooting.md#error-using-dev-spaces-after-rotating-aks-certificates-->
 
 <!-- Update_Description: new article about certificate rotation -->
 <!--NEW.date: 01/13/2020-->

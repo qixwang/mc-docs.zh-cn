@@ -2,19 +2,17 @@
 title: Kubernetes on Azure 教程 - 缩放应用程序
 description: 此 Azure Kubernetes 服务 (AKS) 教程介绍如何缩放 Kubernetes 中的节点和 Pod，以及如何实施水平 Pod 自动缩放。
 services: container-service
-author: rockboyfor
-ms.service: container-service
 ms.topic: tutorial
-origin.date: 12/19/2018
-ms.date: 01/13/2020
+origin.date: 01/14/2019
+ms.date: 03/09/2020
 ms.author: v-yeche
 ms.custom: mvc
-ms.openlocfilehash: 02c40daad9cb52c42ac2a1fb305f530ea3b13714
-ms.sourcegitcommit: c5af330f13889a18bb8a5b44e6566a3df4aeea49
+ms.openlocfilehash: 69431983b9d9cae6fbcc67ebf820e9cc913353a3
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75859843"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79290855"
 ---
 # <a name="tutorial-scale-applications-in-azure-kubernetes-service-aks"></a>教程：在 Azure Kubernetes 服务 (AKS) 中缩放应用程序
 
@@ -58,7 +56,7 @@ kubectl scale --replicas=5 deployment/azure-vote-front
 再次运行 [kubectl get pods][kubectl-get]，验证 AKS 是否创建其他 Pod。 一分钟左右之后，其他 Pod 会在群集中提供：
 
 ```console
-$ kubectl get pods
+kubectl get pods
 
                                     READY     STATUS    RESTARTS   AGE
 azure-vote-back-2606967446-nmpcf    1/1       Running   0          15m
@@ -101,10 +99,46 @@ resources:
 kubectl autoscale deployment azure-vote-front --cpu-percent=50 --min=3 --max=10
 ```
 
+或者，可以创建一个清单文件来定义自动缩放程序的行为和资源限制。 下面名为 `azure-vote-hpa.yaml` 的清单文件的示例。
+
+```yaml
+apiVersion: autoscaling/v1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: azure-vote-back-hpa
+spec:
+  maxReplicas: 10 # define max replica count
+  minReplicas: 3  # define min replica count
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: azure-vote-back
+  targetCPUUtilizationPercentage: 50 # target CPU utilization
+
+apiVersion: autoscaling/v1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: azure-vote-front-hpa
+spec:
+  maxReplicas: 10 # define max replica count
+  minReplicas: 3  # define min replica count
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: azure-vote-front
+  targetCPUUtilizationPercentage: 50 # target CPU utilization
+```
+
+使用 `kubectl apply` 应用 `azure-vote-hpa.yaml` 清单文件中定义的自动缩放程序。
+
+```
+kubectl apply -f azure-vote-hpa.yaml
+```
+
 若要查看自动缩放程序的状态，请使用 `kubectl get hpa` 命令，如下所示：
 
 ```
-$ kubectl get hpa
+kubectl get hpa
 
 NAME               REFERENCE                     TARGETS    MINPODS   MAXPODS   REPLICAS   AGE
 azure-vote-front   Deployment/azure-vote-front   0% / 50%   3         10        3          2m
@@ -171,4 +205,4 @@ az aks scale --resource-group myResourceGroup --name myAKSCluster --node-count 3
 [azure-cli-install]: https://docs.azure.cn/cli/install-azure-cli?view=azure-cli-latest
 [az-aks-show]: https://docs.microsoft.com/cli/azure/aks?view=azure-cli-latest#az-aks-show
 
-<!-- Update_Description: wording update, update link -->
+<!-- Update_Description: update meta properties, wording update, update link -->

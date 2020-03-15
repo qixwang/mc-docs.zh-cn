@@ -6,11 +6,11 @@ origin.date: 11/08/2019
 ms.date: 01/20/2020
 ms.author: v-yeche
 ms.openlocfilehash: c6537fd35188dd82a0be6e21ea757262628ecaa5
-ms.sourcegitcommit: 8de025ca11b62e06ba3762b5d15cc577e0c0f15d
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76165464"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291614"
 ---
 # <a name="move-resources-to-a-new-resource-group-or-subscription"></a>将资源移到新的资源组或订阅
 

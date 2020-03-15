@@ -10,11 +10,11 @@ origin.date: 09/09/2019
 ms.date: 09/30/2019
 ms.author: v-yeche
 ms.openlocfilehash: 7d8c782a1838449b60ed13d2404bb5ce499628c5
-ms.sourcegitcommit: 332ae4986f49c2e63bd781685dd3e0d49c696456
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71340971"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292496"
 ---
 # <a name="about-migration"></a>关于迁移
 

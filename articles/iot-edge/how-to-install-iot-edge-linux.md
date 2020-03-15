@@ -11,11 +11,11 @@ origin.date: 07/22/2019
 ms.date: 03/02/2020
 ms.author: v-tawe
 ms.openlocfilehash: c7729507502eef18c7f54c41bd70cdb15660880b
-ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77494075"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292174"
 ---
 # <a name="install-the-azure-iot-edge-runtime-on-debian-based-linux-systems"></a>在基于 Debian 的 Linux 系统上安装 Azure IoT Edge 运行时
 

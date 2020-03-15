@@ -8,11 +8,11 @@ origin.date: 01/10/2020
 ms.date: 02/24/2020
 ms.author: v-yeche
 ms.openlocfilehash: 0c507b1fb40fc902f6405339c3fb39caa945fefc
-ms.sourcegitcommit: 781f68d27903687f0aa9e1ed273eee25c6d129a1
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77611289"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291370"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-hyper-v-vms-using-powershell-and-azure-resource-manager"></a>使用 PowerShell 和 Azure 资源管理器对 Hyper-V VM 设置到 Azure 的灾难恢复
 

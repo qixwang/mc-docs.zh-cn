@@ -16,11 +16,11 @@ origin.date: 07/18/2017
 ms.author: v-yiso
 ms.date: 12/17/2018
 ms.openlocfilehash: 6cb99bc686f1430796041d003a916944abd8b641
-ms.sourcegitcommit: e77582e79df32272e64c6765fdb3613241671c20
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67135717"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291375"
 ---
 # <a name="sizes-for-cloud-services"></a>云服务的大小
 
@@ -75,7 +75,7 @@ ACU 标有 *使用 Intel® Turbo 技术来增加 CPU 频率，并提升性能。
 下表显示这些虚拟机提供的大小和容量。
 
 * 存储容量的单位为 GiB 或 1024^3 字节。 比较以 GB（1000^3 字节）为单位的磁盘和以 GiB（1024^3 字节）为单位的磁盘时，请记住以 GiB 为单位的容量数显得更小。 例如，1023 GiB = 1098.4 GB
-* 磁盘吞吐量的单位为每秒输入/输出操作数 (IOPS) 和 MBps，其中 MBps = 10^6 字节/秒。
+* 磁盘吞吐量的单位为每秒输入/输出操作数 (IOPS) 和 Mbps，其中 Mbps = 10^6 字节/秒。
 * 数据磁盘可以在缓存或非缓存模式下运行。 对于缓存数据磁盘操作，主机缓存模式设置为 **ReadOnly** 或 **ReadWrite**。  对于非缓存数据磁盘操作，主机缓存模式设置为 **None**。
 * 最大网络带宽是每个 VM 类型分配并分配的最大聚合带宽。 最大带宽提供选择正确 VM 类型的指导原则，以确保有适当的网络容量可用。 在低、中、高和极高之间切换时，吞吐量将随之增加。 实际的网络性能取决于许多因素，包括网络和应用程序负载，以及应用程序的网络设置。
 

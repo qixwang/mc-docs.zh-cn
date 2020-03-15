@@ -8,11 +8,11 @@ origin.date: 09/10/2019
 ms.date: 10/28/2019
 ms.author: v-yeche
 ms.openlocfilehash: d704df2354e85dca61d8354dcaf43064c72e93a7
-ms.sourcegitcommit: 73f07c008336204bd69b1e0ee188286d0962c1d7
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72970254"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292551"
 ---
 # <a name="indexing-policies-in-azure-cosmos-db"></a>Azure Cosmos DB 中的索引策略
 

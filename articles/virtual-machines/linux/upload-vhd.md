@@ -17,11 +17,11 @@ origin.date: 10/10/2019
 ms.date: 11/11/2019
 ms.author: v-yeche
 ms.openlocfilehash: 2614eb25b71ab097323607c37761b1384983d1b4
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77428892"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291971"
 ---
 # <a name="create-a-linux-vm-from-a-custom-disk-with-the-azure-cli"></a>使用 Azure CLI 从自定义磁盘创建 Linux VM
 

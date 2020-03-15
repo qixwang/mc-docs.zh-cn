@@ -1,26 +1,30 @@
 - name: 语音服务文档
-  href: index.md
+  href: index.yml
 - name: 概述
   expanded: true
   items:
     - name: 什么是语音服务？
       href: overview.md
+    - name: 试用语音服务
+      href: get-started.md
     - name: 语言和区域支持
       href: language-support.md
       displayName: 'languages,locales,region,voice,gender,language code,locale,locale code,neural voice (preview),standard voice'
 - name: 语音转文本
   expanded: false
   items:
+    - name: 语音转文本文档
+      href: index-speech-to-text.yml
     - name: 概述
       items:
         - name: 什么是语音转文本？
           href: speech-to-text.md
     - name: 快速入门
       items:
-        - name: 识别音频文件中的语音
-          href: quickstarts/speech-to-text-from-file.md
         - name: 识别来自麦克风输入的语音
           href: quickstarts/speech-to-text-from-microphone.md
+        - name: 识别音频文件中的语音
+          href: quickstarts/speech-to-text-from-file.md
         - name: 识别存储在 Blob 存储中的语音
           href: quickstarts/from-blob.md
     - name: 操作指南
@@ -78,19 +82,21 @@
 - name: 文本转语音
   expanded: false
   items:
+    - name: 文本转语音文档
+      href: index-text-to-speech.yml
     - name: 概述
       items:
         - name: 什么是文本转语音？
           href: text-to-speech.md
     - name: 快速入门
       items:
-        - name: 将语音合成到音频文件
-          href: quickstarts/text-to-speech-audio-file.md
         - name: 将语音合成到扬声器
           href: quickstarts/text-to-speech.md
+        - name: 将语音合成到音频文件
+          href: quickstarts/text-to-speech-audio-file.md
     - name: 操作指南
       items:
-        - name: 使用 SSML 改进输出
+        - name: 通过 SSML 改进合成
           href: speech-synthesis-markup.md
     - name: 参考
       items:
@@ -129,6 +135,8 @@
 - name: 语音翻译
   expanded: false
   items:
+    - name: 语音翻译文档
+      href: index-speech-translation.yml
     - name: 概述
       items:
         - name: 什么是语音翻译？
@@ -174,33 +182,6 @@
       items:
         - name: 语音翻译常见问题解答
           href: 'https://www.microsoft.com/translator/faq.aspx'
-- name: 语音服务
-  expanded: false
-  items:
-    - name: 操作指南
-      items:
-        - name: 试用语音服务
-          href: get-started.md
-        - name: 创建语音服务资源
-          href: 'get-started.md#create-a-speech-resource-in-azure'
-    - name: 示例
-      items:
-        - name: 文本转语音 REST 示例
-          href: 'https://github.com/Azure-Samples/Cognitive-Speech-TTS'
-        - name: 批量听录 REST 示例
-          href: 'https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/batch'
-    - name: 参考
-      items:
-        - name: REST API
-          items:
-            - name: 批量听录和自定义 REST API
-              href: 'https://chinaeast2.cris.azure.cn/swagger/ui/index'
-            - name: 语音转文本 REST API
-              href: rest-speech-to-text.md
-            - name: 文本转语音 REST API
-              href: rest-text-to-speech.md
-        - name: Swagger 文档
-          href: swagger-documentation.md
 - name: 语音 SDK
   expanded: false
   items:
@@ -253,6 +234,8 @@
 - name: 设备
   expanded: false
   items:
+    - name: 语音设备文档
+      href: index-devices.yml
     - name: 概述
       items:
         - name: 关于语音设备 SDK
@@ -267,12 +250,8 @@
           href: speech-devices-sdk-roobo-v1.md
     - name: 快速入门
       items:
-        - name: Windows
-          href: speech-devices-sdk-windows-quickstart.md
-        - name: Linux
-          href: speech-devices-sdk-linux-quickstart.md
-        - name: Android
-          href: speech-devices-sdk-android-quickstart.md
+        - name: 使用语音设备 SDK
+          href: speech-devices-sdk-quickstart.md
     - name: 资源
       items:
         - name: 排查语音设备 SDK 问题
@@ -289,6 +268,8 @@
       displayName: 'support,help,release notes,search,scoped search,azure support,github support,stack overflow,github issues,bugs,feedback,uservoice'
     - name: 区域
       href: regions.md
+    - name: Swagger 文档
+      href: swagger-documentation.md
     - name: 主权云
       href: sovereign-clouds.md
       displayName: 'mooncake,compliant,secret,compliance,dod,china'

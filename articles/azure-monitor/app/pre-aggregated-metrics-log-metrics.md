@@ -1,20 +1,18 @@
 ---
 title: Azure Application Insights 中基于日志的指标和预先聚合的指标 | Azure Docs
 description: 为何要在 Azure Application Insights 中使用基于日志的指标或预先聚合的指标
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: lingliw
 ms.author: v-lingwu
 origin.date: 09/18/2018
 ms.date: 6/4/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: d80cf60dcad34bdbac67c368643846be1e140a18
-ms.sourcegitcommit: 21b02b730b00a078a76aeb5b78a8fd76ab4d6af2
+ms.openlocfilehash: e2b67943704868077c5cc789cdabb1e259b69d68
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74838705"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291710"
 ---
 # <a name="log-based-and-pre-aggregated-metrics-in-application-insights"></a>Application Insights 中基于日志的指标和预先聚合的指标
 

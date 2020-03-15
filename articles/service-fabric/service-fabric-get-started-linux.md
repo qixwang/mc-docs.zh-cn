@@ -6,11 +6,11 @@ origin.date: 02/23/2018
 ms.date: 01/13/2020
 ms.author: v-yeche
 ms.openlocfilehash: 8e38c964bfe3129d9b1f8408a260d877a38f88bd
-ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75742377"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292026"
 ---
 # <a name="prepare-your-development-environment-on-linux"></a>在 Linux 上准备开发环境
 > [!div class="op_single_selector"]
@@ -26,7 +26,7 @@ ms.locfileid: "75742377"
 
 不支持在适用于 Linux 的 Windows 子系统上安装 Service Fabric 运行时和 SDK。 可以使用受支持的 Azure Service Fabric 命令行接口 (CLI) 来管理托管在云中或本地其他位置的 Service Fabric 实体。 有关如何安装 CLI 的信息，请参阅[设置 Service Fabric CLI](./service-fabric-cli.md)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 支持使用以下操作系统版本进行开发。
 

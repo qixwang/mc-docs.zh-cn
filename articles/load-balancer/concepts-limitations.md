@@ -15,11 +15,11 @@ origin.date: 01/14/2020
 ms.date: 02/24/2020
 ms.author: v-jay
 ms.openlocfilehash: b2755cc379c22363a1e467c3fd873bcd81bd1362
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77541112"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291543"
 ---
 # <a name="load-balancer-components-and-limitations"></a>负载均衡器组件和限制
 Azure 负载均衡器包含几个关键组件，用于执行其操作。  可以通过 Azure 门户、Azure CLI 或 Azure PowerShell 在你的订阅中配置这些组件。  

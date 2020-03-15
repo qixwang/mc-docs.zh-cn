@@ -9,11 +9,11 @@ origin.date: 10/05/2019
 ms.date: 11/11/2019
 ms.custom: seodec18
 ms.openlocfilehash: dce1ee7b2bd84350ac4d15df6c216cfef19ff7da
-ms.sourcegitcommit: 73715ebbaeb96e80046142b8fe5bbc117d85b317
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74593689"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292449"
 ---
 # <a name="azure-disk-encryption-for-windows-vms"></a>适用于 Windows VM 的 Azure 磁盘加密 
 

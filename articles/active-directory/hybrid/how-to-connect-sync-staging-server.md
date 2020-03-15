@@ -18,11 +18,11 @@ ms.subservice: hybrid
 ms.author: v-junlch
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b21e345ceadc217e7c270c0f9862f55410c94397
-ms.sourcegitcommit: 74f50c9678e190e2dbb857be530175f25da8905e
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/12/2019
-ms.locfileid: "72292033"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79290990"
 ---
 # <a name="azure-ad-connect-staging-server-and-disaster-recovery"></a>Azure AD Connect：暂存服务器和灾难恢复
 当服务器处于暂存模式时，可以在激活服务器之前更改配置并预览更改。 它还允许运行完全导入和完全同步，以便在生产环境中应用所有更改之前验证这些更改是否符合预期。
@@ -68,7 +68,7 @@ ms.locfileid: "72292033"
 1. 选择“连接器”，并选择第一个 Active Directory 域服务类型的连接器。   单击“运行”，然后依次选择“完全导入”和“确定”。    针对此类型的所有连接器执行这些步骤。
 2. 选择 Azure Active Directory (Microsoft) 类型的连接器。  单击“运行”，然后依次选择“完全导入”和“确定”。   
 3. 确保“连接器”选项卡仍处于选中状态。 针对每个 Active Directory 域服务类型的连接器，单击“运行”，然后依次选择“增量同步”和“确定”。    
-4. 选择 **Azure Active Directory (Microsoft)** 类型的连接器。 单击“运行”，然后依次选择“增量同步”和“确定”。   
+4. 选择 Azure Active Directory (Microsoft) 类型的连接器。  单击“运行”，然后依次选择“增量同步”和“确定”。   
 
 现在，已将导出更改暂存到 Azure AD 和本地 AD（如果你正在使用 Exchange 混合部署）。 后续步骤可让你在实际开始导出到目录之前，检查将要更改的内容。
 
@@ -113,7 +113,7 @@ ms.locfileid: "72292033"
 同步引擎服务器不会存储有关对象的任何状态，因此可以通过 Active Directory 与 Azure AD 中的数据重建数据库。 **sourceAnchor** 属性可用于联接来自本地和云的对象。 如果重新生成包含本地与云中现有对象的服务器，同步引擎会在重新安装时再次同时匹配这些对象。 需要记录和保存的内容是对服务器进行的配置更改，例如筛选和同步规则。 在开始同步之前，必须重新应用这些自定义配置。
 
 ### <a name="have-a-spare-standby-server---staging-mode"></a>具有备用的待机服务器 - 暂存模式
-如果环境更复杂，我们建议使用一个或多个待机服务器。 可以在安装过程中启用服务器的**暂存模式**。
+如果环境更复杂，我们建议使用一个或多个待机服务器。 可以在安装过程中启用服务器的 **暂存模式**。
 
 有关详细信息，请参阅[暂存模式](#staging-mode)。
 
@@ -123,7 +123,7 @@ ms.locfileid: "72292033"
 ### SQL 高可用性 <a name="sql-high-availability"></a>
 如果未使用 Azure AD Connect 随附的 SQL Server Express，还应考虑 SQL Server 的高可用性。 支持的高可用性解决方案包括 SQL 群集和 AOA（Always On 可用性组）。 不支持的解决方案包括镜像。
 
-Azure AD Connect 版本 1.1.524.0 中添加了对 SQL AOA 的支持。 安装 Azure AD Connect 之前，必须启用 SQL AOA。 在安装期间，Azure AD Connect 会检测是否已为提供的 SQL 实例启用 SQL AOA。 如果启用了 SQL AOA，Azure AD Connect 进一步指出如果 SQL AOA 配置为使用同步复制或异步复制。 设置可用性组侦听器时，我们建议将 RegisterAllProvidersIP 属性设置为 0。 这是因为，Azure AD Connect 目前使用 SQL Native Client 连接到 SQL，而 SQL Native Client 不支持使用 MultiSubNetFailover 属性。
+Azure AD Connect 版本 1.1.524.0 中添加了对 SQL AOA 的支持。 安装 Azure AD Connect 之前，必须启用 SQL AOA。 在安装期间，Azure AD Connect 会检测是否已为提供的 SQL 实例启用 SQL AOA。 如果启用了 SQL AOA，Azure AD Connect 会进一步判断 SQL AOA 是配置为使用同步复制还是异步复制。 设置可用性组侦听器时，我们建议将 RegisterAllProvidersIP 属性设置为 0。 这是因为，Azure AD Connect 目前使用 SQL Native Client 连接到 SQL，而 SQL Native Client 不支持使用 MultiSubNetFailover 属性。
 
 ## 附录 CSAnalyzer <a name="appendix-csanalyzer"></a>
 有关如何使用此脚本的信息，请参阅[验证](#verify)部分。

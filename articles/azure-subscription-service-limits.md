@@ -12,11 +12,11 @@ origin.date: 05/30/2019
 ms.date: 09/18/2019
 ms.author: v-lingwu
 ms.openlocfilehash: ebc049202e420d80e4b42db3ec1b993b6d6dfa27
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75624097"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291542"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure 订阅和服务限制、配额和约束
 本文列出了一些最常见的 Azure 限制，有时也称为配额。 本文当前并不涵盖所有 Azure 服务。 随着时间的推移，此列表将进行扩展和更新，以涵盖更多服务。

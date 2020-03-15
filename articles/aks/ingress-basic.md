@@ -2,18 +2,16 @@
 title: 在 Azure Kubernetes 服务 (AKS) 中创建基本的入口控制器
 description: 了解如何在 Azure Kubernetes 服务 (AKS) 群集中安装和配置基本的 NGINX 入口控制器。
 services: container-service
-author: rockboyfor
-ms.service: container-service
 ms.topic: article
 origin.date: 12/20/2019
-ms.date: 01/20/2020
+ms.date: 03/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: 569cf99a6eac095e80a0b3df2ddf5d3899bec47a
-ms.sourcegitcommit: 1ac138a9e7dc7834b5c0b62a133ca5ce2ea80054
+ms.openlocfilehash: d8317592e6788d78223a828cb0e49f534c12a12a
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78304649"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79290827"
 ---
 # <a name="create-an-ingress-controller-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中创建入口控制器
 

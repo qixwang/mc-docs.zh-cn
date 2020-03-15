@@ -1,22 +1,20 @@
 ---
 title: Azure 上的 Kubernetes 教程 - 更新应用程序
-description: 本 Azure Kubernetes 服务 (AKS) 教程介绍如何使用新版应用程序代码将现有应用程序部署更新到 AKS。
+description: 本 Azure Kubernetes 服务 (AKS) 教程介绍如何使用新版应用程序代码更新 AKS 中的现有应用程序部署。
 services: container-service
-author: rockboyfor
-ms.service: container-service
 ms.topic: tutorial
 origin.date: 12/19/2018
-ms.date: 07/29/2019
+ms.date: 03/09/2020
 ms.author: v-yeche
 ms.custom: mvc
-ms.openlocfilehash: be02244729f6562d6afb0ba50213fd50df01ae08
-ms.sourcegitcommit: 57994a3f6a263c95ff3901361d3e48b10cfffcdd
+ms.openlocfilehash: 15e30b3cb391f790d3ee69b8232be567db5b14ca
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70500738"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79290852"
 ---
-# <a name="tutorial-update-an-application-in-azure-kubernetes-service-aks"></a>教程：在 Azure Kubernetes 服务 (AKS) 中更新应用程序
+# <a name="tutorial-update-an-application-in-azure-kubernetes-service-aks"></a>教程：在 Azure Kubernetes 服务 (AKS) 中更新应用程序。
 
 在 Kubernetes 中部署应用程序后，可以指定新的容器映像或映像版本，从而更新应用程序。 更新分阶段进行，因此，只有一部分部署会同时更新。 借助这种暂存更新，可以让应用程序在更新期间继续运行。 如果发生部署故障，还可以利用它的回滚机制。
 
@@ -30,7 +28,7 @@ ms.locfileid: "70500738"
 
 ## <a name="before-you-begin"></a>准备阶段
 
-上一教程中，应用程序已打包到容器映像中。 该映像已上传到 Azure容器注册表，同时，你创建了 AKS 群集。 然后，将应用程序部署到了 AKS 群集。
+上一教程中，应用程序已打包到容器映像中。 该映像已上传到 Azure容器注册表，同时，你创建了 AKS 群集。 然后，应用程序部署到了 AKS 群集。
 
 此外，还克隆了应用程序存储库，其中包括应用程序源代码和本教程中使用的预创建的 Docker Compose 文件。 验证是否已克隆存储库，并且是否已将目录更改为克隆的目录。 如果尚未完成这些步骤，并且想要逐一完成，请先参阅[教程 1 - 创建容器映像][aks-tutorial-prepare-app]。
 
@@ -38,7 +36,7 @@ ms.locfileid: "70500738"
 
 ## <a name="update-an-application"></a>更新应用程序
 
-让我们更改示例应用程序，然后更新已部署到 AKS 群集的版本。 确保在克隆的 *azure-voting-app-redis* 目录中操作。 可在 *azure-vote* 目录中找到示例应用程序的源代码。 使用编辑器（例如 `vi`）打开 *config_file.cfg* 文件：
+让我们对示例应用程序进行更改，然后更新已部署到 AKS 群集的版本。 确保在克隆的 *azure-voting-app-redis* 目录中操作。 可在 *azure-vote* 目录中找到示例应用程序的源代码。 使用编辑器（例如 `vi`）打开 *config_file.cfg* 文件：
 
 ```console
 vi azure-vote/azure-vote/config_file.cfg
@@ -54,7 +52,7 @@ VOTE2VALUE = 'Purple'
 SHOWHOST = 'false'
 ```
 
-保存并关闭该文件。 在 `vi` 中使用 `:wq`。
+保存并关闭该文件。 在 `vi` 中，使用 `:wq`。
 
 ## <a name="update-the-container-image"></a>更新容器映像
 
@@ -66,7 +64,7 @@ docker-compose up --build -d
 
 ## <a name="test-the-application-locally"></a>在本地测试应用程序
 
-若要验证已更新的容器映像是否显示所做的更改，请打开一个本地 Web 浏览器并访问 `http://localhost:8080`。
+若要验证更新后的容器映像是否会显示所做的更改，请打开本地 Web 浏览器并访问 `http://localhost:8080`。
 
 ![Azure 上的 Kubernetes 群集映像](media/container-service-kubernetes-tutorials/vote-app-updated.png)
 
@@ -74,7 +72,7 @@ docker-compose up --build -d
 
 ## <a name="tag-and-push-the-image"></a>标记并推送映像
 
-若要正确使用已更新的映像，请使用 ACR 注册表的登录服务器名称标记 *azure-vote-front* 映像。 运行 [az acr list](https://docs.azure.cn/zh-cn/cli/acr?view=azure-cli-latest#az-acr-list) 命令获取登录服务器名称：
+若要正确使用更新的映像，请使用 ACR 注册表的登录服务器名称标记 *azure-vote-front* 映像。 运行 [az acr list](https://docs.azure.cn/cli/acr?view=azure-cli-latest#az-acr-list) 命令获取登录服务器名称：
 
 ```azurecli
 az acr list --resource-group myResourceGroup --query "[].{acrLoginServer:loginServer}" --output table
@@ -127,7 +125,7 @@ kubectl set image deployment azure-vote-front azure-vote-front=<acrLoginServer>/
 kubectl get pods
 ```
 
-以下示例输出显示，在部署进行时，Pod 正在终止，新实例正在运行：
+以下示例输出显示了部署过程中正在终止的 pod 以及正在运行的新实例：
 
 ```
 $ kubectl get pods
@@ -178,7 +176,7 @@ kubectl get service azure-vote-front
 
 [aks-tutorial-prepare-app]: ./tutorial-kubernetes-prepare-app.md
 [aks-tutorial-upgrade]: ./tutorial-kubernetes-upgrade-cluster.md
-[az-acr-login]: https://docs.azure.cn/zh-cn/cli/acr?view=azure-cli-latest
-[azure-cli-install]: https://docs.azure.cn/zh-cn/cli/install-azure-cli?view=azure-cli-latest
+[az-acr-login]: https://docs.azure.cn/cli/acr?view=azure-cli-latest
+[azure-cli-install]: https://docs.azure.cn/cli/install-azure-cli?view=azure-cli-latest
 
 <!-- Update_Description: wording update, update link -->

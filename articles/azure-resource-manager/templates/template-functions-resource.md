@@ -6,11 +6,11 @@ origin.date: 01/06/2020
 ms.date: 01/20/2020
 ms.author: v-yeche
 ms.openlocfilehash: 82749c2eecf6605d10b0aa02ecc6192de35f857d
-ms.sourcegitcommit: 8de025ca11b62e06ba3762b5d15cc577e0c0f15d
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76165376"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291289"
 ---
 # <a name="resource-functions-for-azure-resource-manager-templates"></a>用于 Azure Resource Manager 模板的资源函数
 

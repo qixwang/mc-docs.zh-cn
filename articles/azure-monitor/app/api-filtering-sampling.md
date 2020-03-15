@@ -1,19 +1,17 @@
 ---
 title: Azure Application Insights SDK 中的筛选和预处理 | Azure Docs
 description: 为 SDK 编写遥测处理器和遥测初始值设定项，以在将遥测发送到 Application Insights 门户之前筛选属性或将其添加到数据。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 origin.date: 11/23/2016
 author: lingliw
 ms.date: 11/18/2019
 ms.author: v-lingwu
-ms.openlocfilehash: bad3088b6277dcd6ae4a64437170072d22c2d00d
-ms.sourcegitcommit: 3a9c13eb4b4bcddd1eabca22507476fb34f89405
+ms.openlocfilehash: ece062eba35a29bf9f54105c7f2a1f75ed67eef3
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74528341"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291777"
 ---
 # <a name="filtering-and-preprocessing-telemetry-in-the-application-insights-sdk"></a>Application Insights SDK 中的筛选和预处理遥测 | Microsoft Azure
 
@@ -438,7 +436,6 @@ public void Initialize(ITelemetry telemetry)
 ## <a name="next"></a>后续步骤
 * [搜索事件和日志](../../azure-monitor/app/diagnostic-search.md)
 * [采样](../../azure-monitor/app/sampling.md)
-* [故障排除](../../azure-monitor/app/troubleshoot-faq.md)
 
 
 

@@ -10,11 +10,11 @@ ms.topic: conceptual
 origin.date: 11/04/2019
 ms.date: 03/02/2020
 ms.openlocfilehash: 4282e8d547ce16a5c8e3fd4413606729e3db9d69
-ms.sourcegitcommit: 094c057878de233180ff3b3a3e3c19bc11c81776
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77501438"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291219"
 ---
 # <a name="security-and-data-privacy-in-azure-cognitive-search"></a>Azure 认知搜索中的安全性和数据隐私
 

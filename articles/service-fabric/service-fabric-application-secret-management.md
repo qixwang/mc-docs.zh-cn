@@ -7,11 +7,11 @@ origin.date: 01/04/2019
 ms.date: 01/06/2020
 ms.author: v-yeche
 ms.openlocfilehash: 0f83fe6bb77d313b1fc22210a125851e08638f17
-ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75742280"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291603"
 ---
 # <a name="manage-encrypted-secrets-in-service-fabric-applications"></a>管理 Service Fabric 应用程序中的已加密机密
 本指南逐步讲解管理 Service Fabric 应用程序中的机密的步骤。 机密可以是任何敏感信息，例如存储连接字符串、密码或其他不应以明文形式处理的值。

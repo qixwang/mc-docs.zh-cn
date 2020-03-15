@@ -6,11 +6,11 @@ origin.date: 12/17/2019
 ms.date: 01/13/2020
 ms.author: v-yeche
 ms.openlocfilehash: 12ce19e9d76212a78e49b5bfd514c086a729235c
-ms.sourcegitcommit: 4f4694991e1c70929c7112ad45a0c404ddfbc8da
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75776771"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292850"
 ---
 <!--Verify successfully, It is splited content of released articles(hyper-v-exclude-disk.md)-->
 # <a name="exclude-disks-from-disaster-recovery"></a>排除磁盘的灾难恢复

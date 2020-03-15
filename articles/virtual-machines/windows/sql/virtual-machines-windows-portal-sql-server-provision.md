@@ -17,11 +17,11 @@ ms.author: v-yeche
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
 ms.openlocfilehash: ea48dcea1a43a577cbbf10eec62d6998bd35ad3d
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77428910"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291428"
 ---
 # <a name="how-to-provision-a-windows-sql-server-virtual-machine-in-the-azure-portal"></a>如何在 Azure 门户中预配 Windows SQL Server 虚拟机
 

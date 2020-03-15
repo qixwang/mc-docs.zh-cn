@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: quickstart
 ms.workload: identity
-ms.date: 02/24/2020
+ms.date: 03/10/2020
 ms.author: v-junlch
 ms.custom: aaddev, scenarios:getting-started, languages:Java
-ms.openlocfilehash: c4a6caba999e76a6e8c0831fc422751d2666cbde
-ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
+ms.openlocfilehash: 487fe7f818f81ea52e3678daf56cc12a526d4b01
+ms.sourcegitcommit: 4ba6d7c8bed5398f37eb37cf5e2acafcdcc28791
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77653415"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79133827"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-java-web-app"></a>快速入门：向 Java Web 应用添加 Microsoft 登录功能
 
@@ -97,6 +97,7 @@ ms.locfileid: "77653415"
     aad.secretKey=Enter_the_Client_Secret_Here
     aad.redirectUriSignin=https://localhost:8080/msal4jsample/secure/aad
     aad.redirectUriGraph=https://localhost:8080/msal4jsample/graph/me
+    aad.msGraphEndpointHost="https://microsoftgraph.chinacloudapi.cn/"
     ```
 
     > [!div renderon="docs"]
@@ -109,13 +110,13 @@ ms.locfileid: "77653415"
  1. 若要将 https 与 localhost 一起使用，请填写 server.ssl.key 属性。 若要生成自签名证书，请使用 keytool 实用工具（包含在 JRE 中）。
 
    ```
-   Example: 
+   Example:
    keytool -genkeypair -alias testCert -keyalg RSA -storetype PKCS12 -keystore keystore.p12 -storepass password
 
    server.ssl.key-store-type=PKCS12  
    server.ssl.key-store=classpath:keystore.p12  
    server.ssl.key-store-password=password  
-   server.ssl.key-alias=testCert 
+   server.ssl.key-alias=testCert
    ```
 
    将生成的 keystore 文件放在“resources”文件夹中。
@@ -186,4 +187,3 @@ import com.microsoft.aad.msal4j.*;
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
 
-<!-- Update_Description: link update -->

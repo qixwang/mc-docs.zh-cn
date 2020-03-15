@@ -16,11 +16,11 @@ origin.date: 03/14/2019
 ms.date: 09/23/2019
 ms.author: v-jay
 ms.openlocfilehash: ad4c2e99885d1cd4f53b526f058049336a4488e6
-ms.sourcegitcommit: 8248259e4c3947aa0658ad6c28f54988a8aeebf8
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71124414"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292716"
 ---
 # <a name="perform-advanced-encoding-by-customizing-mes-presets"></a>通过自定义 MES 预设执行高级编码 
 
@@ -1030,7 +1030,7 @@ Media Encoder Standard 允许在现有视频上覆盖图像。 目前支持以�
 
 另请参阅[此](media-services-mes-schema.md#PreserveResolutionAfterRotation)主题，了解有关触发旋转补偿时，编码器如何解释预设中的宽度和高度设置的信息。
 
-可使用值“0”向编码器指示忽略输入视频中的旋转元数据（如果有）。
+可以使用值“0”指示编码器忽略输入视频中的旋转元数据（如果存在）。
 
 ## <a name="media-services-learning-paths"></a>媒体服务学习路径
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

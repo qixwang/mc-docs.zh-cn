@@ -6,22 +6,17 @@ ms.tgt_pltfrm: mobile-multiple
 ms.devlang: dotnet
 ms.topic: article
 origin.date: 06/25/2019
-ms.date: 12/16/2019
+md.date: 03/23/2020
 ms.author: v-tawe
-ms.openlocfilehash: 1152c09f5a803606ea287fd46a1a22b4c064635f
-ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
+ms.openlocfilehash: 8c516ec4f9d588d4c108e9b789dafda9daa8109f
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75600554"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291274"
 ---
 # <a name="how-to-use-the-managed-client-for-azure-mobile-apps"></a>如何使用 Azure 移动应用的托管客户端
 [!INCLUDE [app-service-mobile-selector-client-library](../../includes/app-service-mobile-selector-client-library.md)]
-
-> [!NOTE]
-> Visual Studio App Center 支持以移动应用开发为中心的端到端集成服务。 开发人员可以使用“生成”  、“测试”  和“分发”  服务来设置“持续集成和交付”管道。 部署应用后，开发人员可以使用**分析**和**诊断**服务监视其应用的状态和使用情况，并使用**推送**服务与用户互动。 开发人员还可以利用“身份验证”  对其用户进行身份验证，并使用“数据”  服务在云中保留和同步应用数据。
->
-> 如果希望将云服务集成到移动应用程序中，请立即注册到 [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) 中。
 
 ## <a name="overview"></a>概述
 本指南说明如何在 Windows 应用和 Xamarin 应用中使用 Azure 应用服务移动应用的托管客户端库执行常见方案。 如果不熟悉移动应用，最好先完成 [Azure Mobile Apps quickstart][1]（Azure 移动应用快速入门）教程。 在本指南中，我们侧重于客户端托管的 SDK。 若要详细了解移动应用的服务器端 SDK，请参阅 [.NET 服务器 SDK][2] 或 [Node.js 服务器 SDK][3] 的文档。
@@ -34,12 +29,12 @@ ms.locfileid: "75600554"
 .NET 平台支持以下平台：
 
 * 适用于 API 19 到 24 的 Xamarin Android 版本（KitKat 到 Nougat）
-* 适用于 iOS 8.0 及更高版本的 Xamarin iOS 版本
+* Xamarin iOS 版支持 iOS 8.0 及更高版本
 * 通用 Windows 平台
 * Windows Phone 8.1
 * Windows Phone 8.0（Silverlight 应用程序除外）
 
-“服务器流”身份验证使用 WebView 显示 UI。  如果设备不能呈现 WebView UI，则需要其他身份验证方法。  因此，此 SDK 不适用于手表类型或类似的受限设备。
+“服务器流”身份验证在呈现的 UI 中使用 WebView。  如果设备不能呈现 WebView UI，则需要其他身份验证方法。  因此这个 SDK 不适用于监视类型或同样受限制的设备。
 
 ## <a name="setup"></a>安装与先决条件
 假设已创建并发布移动应用后端项目（至少包含一个表）。  在本主题使用的代码中，表的名称为 `TodoItem`，其中包含以下列：`Id`、`Text` 和 `Complete`。 此表是完成 [Azure 移动应用快速入门][1]时创建的同一表。
@@ -130,7 +125,7 @@ IMobileServiceTable untypedTodoTable = client.GetTable("TodoItem");
 * [筛选返回的数据](#filtering)
 * [为返回的数据排序](#sorting)
 * [在页中返回数据](#paging)
-* [选择特定列](#selecting)
+* [选择特定的列](#selecting)
 * [按 ID 查找数据](#lookingup)
 
 > [!NOTE]
@@ -196,7 +191,7 @@ List<TodoItem> items = await todoTable
 * 数字精度（Math.Floor、Math.Ceiling），
 * 字符串函数（Length、Substring、Replace、IndexOf、StartsWith、EndsWith），
 * 日期属性（年、月、日、小时、分钟、秒），
-* 对象的属性访问，以及
+* 对象的访问属性，以及
 * 组合上述任意运算的表达式。
 
 在考虑服务器 SDK 支持的操作时，可以参考 [OData v3 文档]。
@@ -217,7 +212,7 @@ List<TodoItem> items = await query.ToListAsync();
 ```
 
 ### <a name="paging"></a>如何：返回多页的数据
-默认情况下，后端只返回前 50 行。 可以通过调用 [Take] 方法来增加返回的行数。 将 `Take`与 [Skip] 方法一起使用可以请求查询返回的总数据集的特定“页”。 执行以下查询后，将返回表中的前三个项。
+默认情况下，后端只返回前 50 行。 可以通过调用 [Take] 方法来增加返回的行数。 将 `Take` 与 [Skip] 方法一起使用可以请求查询返回的总数据集的特定“页”。 执行以下查询后，返回表中的前三个项。
 
 ```csharp
 // Define a filtered query that returns the top 3 items.
@@ -373,11 +368,11 @@ await table.DeleteAsync(jo);
 发出删除请求时，必须指定 ID。 其他属性不会传递到服务，否则服务会将它们忽略。 `DeleteAsync` 调用的结果通常是 `null`。 可以从 `InsertAsync` 调用的结果中获取要传入的 ID。 如果尝试删除项但未指定 `id` 字段，将引发 `MobileServiceInvalidOperationException`。
 
 ### <a name="optimisticconcurrency"></a>如何：使用乐观并发解决冲突
-两个或两个以上客户端可能会同时将更改写入同一项目。 如果没有冲突检测，最后一次写入会覆盖任何以前的更新。 **乐观并发控制** 假设每个事务均可以提交，因此不使用任何资源锁定。  提交事务之前，乐观并发控制验证是否没有其他事务修改了数据。 如果数据已修改，则将回滚正在提交的事务。
+两个或两个以上客户端可能会同时将更改写入同一项目。 如果没有冲突检测，最后一次写入会覆盖任何以前的更新。 **乐观并发控制** 假设每个事务均可以提交，因此不使用任何资源锁定。  提交事务之前，乐观并发控制验证是否没有其他事务修改了数据。 如果数据已修改，则会回滚正在提交的事务。
 
 移动应用通过使用 `version` 系统属性列（该列是为移动应用后端中的每个表定义的）跟踪对每个项的更改来支持乐观并发控制。 每次更新某个记录时，移动应用都将该记录的 `version` 属性设置为新值。 在每次执行更新请求期间，会将该请求包含的记录的 `version` 属性与服务器上的记录的同一属性进行比较。 如果随请求传递的版本与后端不匹配，客户端库会引发 `MobileServicePreconditionFailedException<T>` 异常。 该异常中提供的类型就是包含记录服务器版本的后端中的记录。 然后，应用程序可以借助此信息来确定是否要使用后端中正确的 `version` 值再次执行更新请求以提交更改。
 
-在 `version` 系统属性的表类中定义列，启用乐观并发。 例如：
+在 `version` 系统属性的表类中定义列，以启用开放式并发。 例如：
 
 ```csharp
 public class TodoItem
@@ -396,14 +391,14 @@ public class TodoItem
 }
 ```
 
-使用非类型化表的应用程序通过在表的 `SystemProperties` 中设置 `Version` 标志来启用乐观并发，如下所示。
+使用非类型化表的应用程序通过在表的 `SystemProperties` 中设置 `Version` 标志来启用开放式并发，如下所示。
 
 ```csharp
 //Enable optimistic concurrency by retrieving version
 todoTable.SystemProperties |= MobileServiceSystemProperties.Version;
 ```
 
-除启用开放式并发以外，还必须在调用 [UpdateAsync] 时捕获代码中的 `MobileServicePreconditionFailedException<T>` 异常。  将正确的 `version` 应用到更新的记录，并使用解决的记录调用 [UpdateAsync]，即可解决冲突。 以下代码演示如何解决检测到的写入冲突：
+除启用开放式并发以外，还必须在调用 [UpdateAsync] 时捕获代码中的 `MobileServicePreconditionFailedException<T>` 异常。  将正确的 `version` 应用到更新的记录，并使用解决的记录调用 [UpdateAsync] ，即可解决冲突。 以下代码演示如何解决检测到的写入冲突：
 
 ```csharp
 private async void UpdateToDoItem(TodoItem item)
@@ -514,7 +509,7 @@ PullOptions pullOptions = new PullOptions
 假设已在服务器中使 `PageSize` 等于或大于 100，此时请求最多可返回 100 个项。
 
 ## <a name="#offlinesync"></a>使用脱机表
-脱机表使用本地 SQLite 存储来存储数据，供脱机时使用。  所有表操作都针对本地 SQLite 存储（而不是远程服务器存储）完成。  若要创建脱机表，首先应准备项目：
+脱机表使用本地 SQLite 存储来存储数据，供脱机时使用。  所有表操作都针对本地 SQLite 存储（而不是远程服务器存储）完成。  若要创建脱机表，请先准备项目：
 
 1. 在 Visual Studio 中，右键单击解决方案，再单击“管理解决方案的 NuGet 包…”  ，然后在解决方案的所有项目中搜索并安装 Microsoft.Azure.Mobile.Client.SQLiteStore  NuGet 包。
 2. （可选）若要支持 Windows 设备，请安装以下 SQLite 运行时包之一：
@@ -535,7 +530,7 @@ store.DefineTable<TodoItem>();
 await this.client.SyncContext.InitializeAsync(store);
 ```
 
-存储初始化通常在创建客户端后立即完成。  **OfflineDbPath** 应该是适合在支持的所有平台上使用的文件名。  如果路径是完全限定的路径（即以斜杠开头），则将使用该路径。  如果不是完全限定的路径，则该文件位于平台特定的位置。
+存储初始化通常在创建客户端后立即完成。  **OfflineDbPath** 应该是适合在支持的所有平台上使用的文件名。  如果路径是完全限定的路径（即以斜杠开头），则将使用该路径。  如果路径不是完全限定路径，文件会放在平台特定的位置。
 
 * 对于 iOS 和 Android 设备，默认路径为“个人文件”文件夹。
 * 对于 Windows 设备，默认路径是应用程序特定的“AppData”文件夹。
@@ -601,7 +596,7 @@ public async Task SyncAsync()
 
 SDK 会在提取记录前执行隐式 `PushAsync()` 。
 
-冲突处理会在 `PullAsync()` 方法上发生。  可以使用与联机表相同的方式处理冲突。  生成在调用 `PullAsync()` 时生成，而不是在插入、更新或删除期间生成。 如果发生多个冲突，它们将捆绑成单个 MobileServicePushFailedException。  分别处理每个故障。
+冲突处理会在 `PullAsync()` 方法上发生。  可以使用与联机表相同的方式处理冲突。  生成在调用 `PullAsync()` 时生成，而不是在插入、更新或删除期间生成。 如果发生多个冲突，会将它们绑定到单个 MobileServicePushFailedException。  分别处理每个故障。
 
 ## <a name="#customapi"></a>使用自定义 API
 自定义 API 可让你定义自定义终结点，这些终结点会公开不映射到插入、更新、删除或读取操作的服务器功能。 使用自定义 API 能够以更大的力度控制消息传送，包括读取和设置 HTTP 消息标头，以及定义除 JSON 以外的消息正文格式。
@@ -620,12 +615,12 @@ InvokeApiAsync() 方法在想要调用的 API 前附加“/api/”，除非 API 
 * `InvokeApiAsync("completeAll",...)` 在后端调用 /api/completeAll
 * `InvokeApiAsync("/.auth/me",...)` 在后端调用 /.auth/me
 
-可使用 InvokeApiAsync 调用任意 WebAPI，包括未使用 Azure 移动应用定义的 WebAPI。  使用 InvokeApiAsync() 时，将随请求一起发送相应的标头（包括身份验证标头）。
+可以使用 InvokeApiAsync 调用任何 WebAPI，包括未使用 Azure 移动应用定义的那些 WebAPI。  使用 InvokeApiAsync() 时，将随请求一起发送相应的标头（包括身份验证标头）。
 
 ## <a name="authentication"></a>对用户进行身份验证
 移动应用支持使用外部标识提供者对应用用户进行身份验证和授权：Microsoft 帐户和 Azure Active Directory。 可以在表中设置权限，以便将特定操作的访问权限限制给已经过身份验证的用户。 还可以在服务器脚本中使用已经过身份验证的用户的标识来实施授权规则。 有关详细信息，请参阅 [向应用程序添加身份验证]教程。
 
-支持两种身份验证流：client-managed 和 server-managed 流   。 服务器托管的流依赖于提供者的 Web 身份验证界面，因此可提供最简便的身份验证体验。 客户端托管流依赖于提供者和设备特定的 SDK，因此允许与设备特定的功能进行更深入的集成。
+支持两种身份验证流：client-managed 和 server-managed 流   。 服务器托管流依赖于提供者的 Web 身份验证界面，因此可提供最简便的身份验证体验。 客户端托管流依赖于提供者和设备特定的 SDK，因此允许与设备特定的功能进行更深入的集成。
 
 > [!NOTE]
 > 建议在生产应用中使用客户端托管流。

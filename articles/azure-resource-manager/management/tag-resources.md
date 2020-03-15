@@ -6,11 +6,11 @@ origin.date: 01/03/2020
 ms.date: 01/20/2020
 ms.author: v-yeche
 ms.openlocfilehash: 7fcee922600d175774e1676caed710a7df68f8d7
-ms.sourcegitcommit: 892137d117bcaf9d88aec0eb7ca756fe39613344
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78042309"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291792"
 ---
 # <a name="use-tags-to-organize-your-azure-resources"></a>使用标记整理 Azure 资源
 

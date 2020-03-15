@@ -5,14 +5,14 @@ author: anthonychu
 ms.service: signalr
 ms.topic: conceptual
 origin.date: 03/01/2019
-ms.date: 01/13/2020
+ms.date: 03/23/2020
 ms.author: v-tawe
-ms.openlocfilehash: 7e328e015318f525d427c7d3ad0437989e0f3bdd
-ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
+ms.openlocfilehash: eb4668ce8b362757d0a4215842c3ff2ff0253739
+ms.sourcegitcommit: e94ed1c9eff4e88be2ca389909e60b14cc0d92f8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75600584"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79084493"
 ---
 # <a name="azure-functions-development-and-configuration-with-azure-signalr-service"></a>使用 Azure SignalR 服务进行 Azure Functions 开发和配置
 
@@ -41,7 +41,7 @@ Azure Functions 应用程序可以利用 [Azure SignalR 服务绑定](../azure-f
 
 使用 HTTP 触发的 Azure 函数和 *SignalRConnectionInfo* 输入绑定生成连接信息对象。 该函数必须包含以 `/negotiate` 结尾的 HTTP 路由。
 
-有关如何创建 negotiate 函数的详细信息，请参阅 [*SignalRConnectionInfo* 输入绑定参考](../azure-functions/functions-bindings-signalr-service.md#input)。
+有关如何创建 negotiate 函数的详细信息，请参阅 [*SignalRConnectionInfo* 输入绑定参考](../azure-functions/functions-bindings-signalr-service-input.md)。
 
 若要了解如何创建经过身份验证的令牌，请参阅[使用应用服务身份验证](#using-app-service-authentication)。
 
@@ -51,7 +51,7 @@ Azure Functions 应用程序可以利用 [Azure SignalR 服务绑定](../azure-f
 
 可将用户添加到一个或多个组。 还可以使用 *SignalR* 输出绑定在组中添加或删除用户。
 
-有关详细信息，请参阅 [*SignalR* 输出绑定参考](../azure-functions/functions-bindings-signalr-service.md#output)。
+有关详细信息，请参阅 [*SignalR* 输出绑定参考](../azure-functions/functions-bindings-signalr-service-output.md)。
 
 ### <a name="signalr-hubs"></a>SignalR 中心
 

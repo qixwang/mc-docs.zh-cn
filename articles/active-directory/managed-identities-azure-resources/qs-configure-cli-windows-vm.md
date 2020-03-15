@@ -16,11 +16,11 @@ ms.date: 12/10/2019
 ms.author: v-junlch
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3a6a7725ad5ee65856bb1269580c2beeb5245e95
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75335568"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79290956"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-azure-cli"></a>使用 Azure CLI 在 Azure VM 上配置 Azure 资源托管标识
 
@@ -112,7 +112,7 @@ az vm update -n myVM -g myResourceGroup --set identity.type="none"
 
 若要在 VM 创建期间将用户分配的标识分配给 VM，你的帐户需要[虚拟机参与者](/role-based-access-control/built-in-roles#virtual-machine-contributor)和[托管标识操作员](/role-based-access-control/built-in-roles#managed-identity-operator)角色分配。 无需其他 Azure AD 目录角色分配。
 
-1. 如果已有要使用的资源组，可跳过此步骤。 使用 [az group create](/cli/group/#az-group-create) 创建用于包含和部署用户分配托管标识的[资源组](/azure-resource-manager/resource-group-overview#terminology)。 请务必将 `<RESOURCE GROUP>` 和 `<LOCATION>` 参数值替换为自己的值。 :
+1. 如果已有要使用的资源组，可跳过此步骤。 使用 [az group create](/cli/group/#az-group-create) 创建用于包含和部署用户分配托管标识的[资源组](/azure-resource-manager/resource-group-overview#terminology)。 请务必将 `<RESOURCE GROUP>` 和 `<LOCATION>` 参数值替换为自己的值。 解码的字符：
 
    ```azurecli 
    az group create --name <RESOURCE GROUP> --location <LOCATION>
@@ -155,7 +155,7 @@ az vm update -n myVM -g myResourceGroup --set identity.type="none"
 1. 使用 [az identity create](https://docs.microsoft.com/en-us/cli/azure/identity#az-identity-create) 创建用户分配标识。  `-g` 参数指定要创建用户分配标识的资源组，`-n` 参数指定其名称。 请务必将 `<RESOURCE GROUP>` 和 `<USER ASSIGNED IDENTITY NAME>` 参数值替换为自己的值：
 
     > [!IMPORTANT]
-    > 目前不支持创建名称中具有特殊字符（即下划线）的用户分配托管标识。 请使用字母数字字符。 稍后返回查看更新。  有关详细信息，请参阅 [FAQ 和已知问题](known-issues.md)
+    > 目前不支持创建名称中具有特殊字符（即下划线）的用户分配托管标识。 请使用字母数字字符。 请关注后续更新。  有关详细信息，请参阅 [FAQ 和已知问题](known-issues.md)
 
     ```azurecli
     az identity create -g <RESOURCE GROUP> -n <USER ASSIGNED IDENTITY NAME>

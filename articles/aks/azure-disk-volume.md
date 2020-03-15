@@ -2,18 +2,16 @@
 title: 在 Azure Kubernetes 服务 (AKS) 中创建用于 Pod 的静态卷
 description: 了解如何在 Azure Kubernetes 服务 (AKS) 中使用 Azure 磁盘手动创建卷
 services: container-service
-author: rockboyfor
-ms.service: container-service
 ms.topic: article
 origin.date: 03/01/2019
-ms.date: 07/29/2019
+ms.date: 03/09/2020
 ms.author: v-yeche
-ms.openlocfilehash: 1ef007cbca9124c165bc54e5a6d120de6b6f6276
-ms.sourcegitcommit: 84485645f7cc95b8cfb305aa062c0222896ce45d
+ms.openlocfilehash: fdbff6fbb8203997bddc8e98ba277e50ae9de31f
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68731233"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79290820"
 ---
 # <a name="manually-create-and-use-a-volume-with-azure-disks-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中通过 Azure 磁盘手动创建并使用卷
 
@@ -138,21 +136,23 @@ Events:
 有关 AKS 群集与 Azure 磁盘进行交互的详细信息，请参阅 [Azure 磁盘的 Kubernetes 插件][kubernetes-disks]。
 
 <!-- LINKS - external -->
+
 [kubernetes-disks]: https://github.com/kubernetes/examples/blob/master/staging/volumes/azure_disk/README.md
 [kubernetes-volumes]: https://kubernetes.io/docs/concepts/storage/volumes/
 [managed-disk-pricing-performance]: https://www.azure.cn/pricing/details/storage/
 
 <!-- LINKS - internal -->
-[az-disk-list]: https://docs.azure.cn/zh-cn/cli/disk?view=azure-cli-latest#az-disk-list
-[az-disk-create]: https://docs.azure.cn/zh-cn/cli/disk?view=azure-cli-latest#az-disk-create
-[az-group-list]: https://docs.azure.cn/zh-cn/cli/group?view=azure-cli-latest#az-group-list
-[az-resource-show]: https://docs.azure.cn/zh-cn/cli/resource?view=azure-cli-latest#az-resource-show
+
+[az-disk-list]: https://docs.azure.cn/cli/disk?view=azure-cli-latest#az-disk-list
+[az-disk-create]: https://docs.azure.cn/cli/disk?view=azure-cli-latest#az-disk-create
+[az-group-list]: https://docs.azure.cn/cli/group?view=azure-cli-latest#az-group-list
+[az-resource-show]: https://docs.azure.cn/cli/resource?view=azure-cli-latest#az-resource-show
 [aks-quickstart-cli]: kubernetes-walkthrough.md
 [aks-quickstart-portal]: kubernetes-walkthrough-portal.md
 [az-aks-show]: https://docs.microsoft.com/cli/azure/aks?view=azure-cli-latest#az-aks-show
-[install-azure-cli]: https://docs.azure.cn/zh-cn/cli/install-azure-cli?view=azure-cli-latest
+[install-azure-cli]: https://docs.azure.cn/cli/install-azure-cli?view=azure-cli-latest
 [azure-files-volume]: azure-files-volume.md
 [operator-best-practices-storage]: operator-best-practices-storage.md
 [concepts-storage]: concepts-storage.md
 
-<!-- Update_Description: wording update -->
+<!-- Update_Description: update meta properties, wording update, update link -->

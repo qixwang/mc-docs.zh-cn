@@ -10,11 +10,11 @@ ms.date: 06/30/2019
 ms.author: vinagara
 ms.subservice: alerts
 ms.openlocfilehash: a6fb8036be00ea3196e950b80da101d0c44f1c73
-ms.sourcegitcommit: 27eaabd82b12ad6a6840f30763034a6360977186
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77497448"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291439"
 ---
 # <a name="switch-api-preference-for-log-alerts"></a>切换日志警报的 API 首选项
 

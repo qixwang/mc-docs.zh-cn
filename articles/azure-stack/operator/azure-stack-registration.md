@@ -10,11 +10,11 @@ ms.author: v-jay
 ms.reviewer: avishwan
 ms.lastreviewed: 03/04/2019
 ms.openlocfilehash: afd346014a9265f8d5b9da825c9906e59d249944
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77540345"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292224"
 ---
 # <a name="register-azure-stack-hub-with-azure"></a>将 Azure Stack Hub 注册到 Azure
 
@@ -25,7 +25,7 @@ ms.locfileid: "77540345"
 > [!IMPORTANT]  
 > 需要注册才能支持完整的 Azure Stack Hub 功能，包括在市场中提供商品。 如果在使用预付计费模式时不注册，将违反 Azure Stack Hub 许可条款。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 注册之前，需要具备以下先决条件：
 

@@ -6,27 +6,22 @@ ms.tgt_pltfrm: mobile-xamarin-ios
 ms.devlang: dotnet
 ms.topic: article
 origin.date: 06/25/2019
-ms.date: 12/16/2019
+md.date: 03/23/2020
 ms.author: v-tawe
-ms.openlocfilehash: a41f47b0783fd85c6d3fe1e876c79469424e89d4
-ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
+ms.openlocfilehash: 0ddc59f0dbeadef05b1014288e6132f559470de5
+ms.sourcegitcommit: e94ed1c9eff4e88be2ca389909e60b14cc0d92f8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75600533"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79084498"
 ---
 # <a name="enable-offline-sync-for-your-xamarinios-mobile-app"></a>为 Xamarin.iOS 移动应用启用脱机同步
 [!INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]
 
-> [!NOTE]
-> Visual Studio App Center 支持以移动应用开发为中心的端到端集成服务。 开发人员可以使用“生成”  、“测试”  和“分发”  服务来设置“持续集成和交付”管道。 部署应用后，开发人员可以使用**分析**和**诊断**服务监视其应用的状态和使用情况，并使用**推送**服务与用户互动。 开发人员还可以利用“身份验证”  对其用户进行身份验证，并使用“数据”  服务在云中保留和同步应用数据。
->
-> 如果希望将云服务集成到移动应用程序中，请立即注册到 [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) 中。
-
 ## <a name="overview"></a>概述
 本教程介绍适用于 Xamarin.iOS 的 Azure 移动应用的脱机同步功能。 脱机同步允许最终用户与移动应用交互（查看、添加或修改数据），即使在没有网络连接时也是如此。 在本地数据库中存储更改。 设备重新联机后，这些更改会与远程服务同步。
 
-本教程更新 [创建 Xamarin iOS 应用] 中的 Xamarin.iOS 应用项目，以支持 Azure 移动应用的脱机功能。 如果不使用下载的快速入门服务器项目，必须将数据访问扩展包添加到项目。 有关服务器扩展包的详细信息，请参阅[使用适用于 Azure 移动应用的 .NET 后端服务器 SDK](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md)。
+本教程更新 [创建 Xamarin iOS 应用] 中的 Xamarin.iOS 应用项目，以支持 Azure 移动应用的脱机功能。 如果不使用下载的快速入门服务器项目，必须将数据访问扩展包添加到项目。 有关服务器扩展包的详细信息，请参阅 [Work with the .NET backend server SDK for Azure Mobile Apps](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md)（使用适用于 Azure 移动应用的 .NET 后端服务器 SDK）。
 
 若要了解有关脱机同步功能的详细信息，请参阅 [Azure 移动应用中的脱机数据同步] 主题。
 
@@ -40,7 +35,7 @@ ms.locfileid: "75600533"
 ## <a name="update-sync"></a>更新应用以与后端断开连接
 本部分断开与移动应用后端的连接，以模拟脱机情况。 添加数据项时，异常处理程序会指示该应用处于脱机模式。 在此状态下，新项会添加到本地存储，下次以连接状态运行推送时，这些新项将同步到移动应用后端。
 
-1. 在共享项目中编辑 QSToDoService.cs。 更改 **applicationURL** 以指向无效的 URL：
+1. 在共享项目中编辑 QSToDoService.cs。 将 **applicationURL** 更改为指向无效的 URL：
 
     ```
      const string applicationURL = @"https://your-service.chinacloudsites.fail";

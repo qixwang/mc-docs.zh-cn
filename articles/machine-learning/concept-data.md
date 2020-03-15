@@ -11,11 +11,11 @@ author: nibaccam
 ms.author: nibaccam
 ms.date: 12/09/2019
 ms.openlocfilehash: 290099486840c3f96ed313975c1f9d572eff9d39
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75599092"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292384"
 ---
 # <a name="data-access-in-azure-machine-learning"></a>Azure 机器学习中的数据访问
 

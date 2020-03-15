@@ -7,11 +7,11 @@ origin.date: 11/21/2019
 ms.date: 03/02/2020
 ms.topic: quickstart
 ms.openlocfilehash: 465ba1866ae1221b4cb9e2a73423351151d406f7
-ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77494014"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291741"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-azure-powershell"></a>快速入门：使用 Azure PowerShell 运行首个 Resource Graph 查询
 
@@ -19,7 +19,7 @@ ms.locfileid: "77494014"
 
 在此过程结束时，应该已将模块添加到所选的 Azure PowerShell 安装中，并运行首个 Resource Graph 查询。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 如果没有 Azure 订阅，请在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial)。
 

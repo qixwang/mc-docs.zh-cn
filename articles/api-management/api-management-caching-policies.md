@@ -16,11 +16,11 @@ origin.date: 11/27/2018
 ms.author: v-yiso
 ms.date: 09/16/2019
 ms.openlocfilehash: 6a5952d10e645569430ac22d873e98d5d3652ca6
-ms.sourcegitcommit: dd0ff08835dd3f8db3cc55301815ad69ff472b13
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70736739"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291211"
 ---
 # <a name="api-management-caching-policies"></a>API 管理缓存策略
 本主题提供以下 API 管理策略的参考。 有关添加和配置策略的信息，请参阅 [API 管理中的策略](https://go.microsoft.com/fwlink/?LinkID=398186)。  
@@ -35,11 +35,11 @@ ms.locfileid: "70736739"
   
 -   值缓存策略  
   
-    -   [从缓存中获取值](#GetFromCacheByKey) - 根据密钥检索缓存的项。  
+    -   [从缓存中获取值](#GetFromCacheByKey) - 按密钥检索缓存项。  
   
     -   [在缓存中存储值](#StoreToCacheByKey) - 按密钥在缓存中存储项。  
   
-    -   [从缓存中删除值](#RemoveCacheByKey) - 根据密钥在缓存中删除项。  
+    -   [从缓存中删除值](#RemoveCacheByKey) - 按密钥在缓存中删除项。  
   
 ##  <a name="GetFromCache"></a> 从缓存中获取  
  使用 `cache-lookup` 策略执行缓存查找，并返回有效的缓存响应（如果有）。 当响应内容在某个时间段内保持静态时，即可应用该策略。 响应缓存可以降低后端 Web 服务器需要满足的带宽和处理能力要求，并可以减小 API 使用者能够察觉到的延迟。  
@@ -107,7 +107,7 @@ ms.locfileid: "70736739"
   
 ### <a name="elements"></a>元素  
   
-|Name|说明|必须|  
+|名称|说明|必须|  
 |----------|-----------------|--------------|  
 |cache-lookup|根元素。|是|  
 |vary-by-header|开始按指定标头（例如 Accept、Accept-Charset、Accept-Encoding、Accept-Language、Authorization、Expect、From、Host、If-Match）的值缓存响应。|否|  
@@ -115,7 +115,7 @@ ms.locfileid: "70736739"
   
 ### <a name="attributes"></a>属性  
   
-|Name|说明|必须|默认|  
+|名称|说明|必须|默认|  
 |--------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------|-------------------|
 |allow-private-response-caching|设置为 `true` 即可缓存包含 Authorization 标头的请求。|否|false|  
 | caching-type               | 在以下属性值之间进行选择：<br />- `internal` 使用内置的 API 管理缓存；<br />- `prefer-external` 如果外部缓存已配置，则使用外部缓存，否则使用内部缓存。 | 否       | `prefer-external` |
@@ -125,7 +125,7 @@ ms.locfileid: "70736739"
 | vary-by-developer-groups       | 设置为 `true` 即可按[用户组](/api-management/api-management-howto-create-groups)缓存响应。                                                                                                                                                                                                                                                                                                             | 是      |                   |  
   
 ### <a name="usage"></a>使用情况  
- 此策略可在以下策略[段](./api-management-howto-policies.md#sections)和[范围](./api-management-howto-policies.md#scopes)中使用。  
+ 此策略可在以下策略[节](./api-management-howto-policies.md#sections)和[范围](./api-management-howto-policies.md#scopes)中使用。  
   
 - **策略节：** 入站
 - **策略范围：** 所有范围
@@ -186,13 +186,13 @@ ms.locfileid: "70736739"
   
 ### <a name="elements"></a>元素  
   
-|Name|说明|必须|  
+|名称|说明|必须|  
 |----------|-----------------|--------------|  
 |cache-store|根元素。|是|  
   
 ### <a name="attributes"></a>属性  
   
-|Name|说明|必须|默认|  
+|名称|说明|必须|默认|  
 |----------|-----------------|--------------|-------------|  
 |duration|缓存条目的生存时间，以秒为单位指定。|是|不适用|  
   
@@ -229,15 +229,15 @@ ms.locfileid: "70736739"
   
 ### <a name="elements"></a>元素  
   
-|Name|说明|必须|  
+|名称|说明|必须|  
 |----------|-----------------|--------------|  
 |cache-lookup-value|根元素。|是|  
   
 ### <a name="attributes"></a>属性  
   
-|Name|说明|必须|默认|  
+|名称|说明|必须|默认|  
 |----------|-----------------|--------------|-------------|  
-|default-value|在缓存密钥查找未命中的情况下，会分配给变量的值。 如果未指定此属性，则会分 `null`。|否|`null`|  
+|default-value|在缓存密钥查找未命中的情况下，会分配给变量的值。 如果未指定此属性，则会分配 `null`。|否|`null`|  
 |key|要在查找中使用的缓存密钥值。|是|不适用|  
 |variable-name|在查找成功的情况下，会向其分配查找值的[上下文变量](./api-management-policy-expressions.md#ContextVariables)的名称。 如果查找未命中，则会为此变量分配 `default-value` 属性的值或 `null`（如果省略了 `default-value` 属性）。|是|不适用|  
   
@@ -271,13 +271,13 @@ ms.locfileid: "70736739"
   
 ### <a name="elements"></a>元素  
   
-|Name|说明|必须|  
+|名称|说明|必须|  
 |----------|-----------------|--------------|  
 |cache-store-value|根元素。|是|  
   
 ### <a name="attributes"></a>属性  
   
-|Name|说明|必须|默认|  
+|名称|说明|必须|默认|  
 |----------|-----------------|--------------|-------------|  
 | caching-type | 在以下属性值之间进行选择：<br />- `internal` 使用内置的 API 管理缓存；<br />- `prefer-external` 如果外部缓存已配置，则使用外部缓存，否则使用内部缓存。 | 否       | `prefer-external` |
 |duration|会根据提供的期间值（以秒为单位指定）将值缓存一段时间。|是|不适用|  
@@ -312,13 +312,13 @@ ms.locfileid: "70736739"
   
 #### <a name="elements"></a>元素  
   
-|Name|说明|必须|  
+|名称|说明|必须|  
 |----------|-----------------|--------------|  
 |cache-remove-value|根元素。|是|  
   
 #### <a name="attributes"></a>属性  
   
-|Name|说明|必须|默认|  
+|名称|说明|必须|默认|  
 |----------|-----------------|--------------|-------------|  
 | caching-type | 在以下属性值之间进行选择：<br />- `internal` 使用内置的 API 管理缓存；<br />- `prefer-external` 如果外部缓存已配置，则使用外部缓存，否则使用内部缓存。 | 否       | `prefer-external` |
 |key|以前所缓存的值（将从缓存中删除）的密钥。|是|不适用|  

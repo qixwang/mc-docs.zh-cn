@@ -7,11 +7,11 @@ origin.date: 01/17/2019
 ms.date: 01/13/2020
 ms.author: v-yeche
 ms.openlocfilehash: 24c14a53fc0dae7163639d1c3db225cea78e1521
-ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75742398"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292036"
 ---
 # <a name="monitoring-and-diagnostics-for-azure-service-fabric"></a>Azure Service Fabric 的监视和诊断
 

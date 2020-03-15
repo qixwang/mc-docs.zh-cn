@@ -10,11 +10,11 @@ ms.date: 02/10/2020
 ms.author: v-jay
 ms.subservice: common
 ms.openlocfilehash: 3821a112067d9124d0d36aaeb05202ef0e58095a
-ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77028872"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291409"
 ---
 # <a name="use-azure-importexport-service-to-import-data-to-azure-files"></a>使用 Azure 导入/导出服务将数据导入到 Azure 文件
 
@@ -22,7 +22,7 @@ ms.locfileid: "77028872"
 
 导入/导出服务仅支持将 Azure 文件导入到 Azure 存储。 不支持导出 Azure 文件。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 在创建导入作业来将数据传输到 Azure 文件之前，请仔细查看并完成以下先决条件列表。 必须具备以下条件：
 

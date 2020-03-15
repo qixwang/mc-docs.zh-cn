@@ -12,11 +12,11 @@ origin.date: 09/01/2019
 ms.date: 11/11/2019
 ms.reviewer: klam, LADocs
 ms.openlocfilehash: 6ff6cad64db4ea3f440f777e176ef1b01db7fe9c
-ms.sourcegitcommit: 642a4ad454db5631e4d4a43555abd9773cae8891
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2019
-ms.locfileid: "73425969"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291524"
 ---
 # <a name="data-operation-code-samples-for-azure-logic-apps"></a>Azure 逻辑应用的数据操作代码示例
 

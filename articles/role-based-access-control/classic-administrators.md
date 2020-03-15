@@ -15,11 +15,11 @@ ms.date: 02/10/2020
 ms.author: v-junlch
 ms.reviewer: bagovind
 ms.openlocfilehash: 15f5c5d896298c18d272f1b1f3b34d78f38b7b57
-ms.sourcegitcommit: 99bd0019c5f01034b8765d7765ad7776c7d5e5ae
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77128867"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291371"
 ---
 # <a name="azure-classic-subscription-administrators"></a>Azure 经典订阅管理员
 

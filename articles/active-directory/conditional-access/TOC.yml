@@ -6,8 +6,6 @@
       href: overview.md
 - name: 快速入门
   items:
-    - name: 要求对特定应用执行 MFA
-      href: app-based-mfa.md
     - name: 要求接受使用条款
       href: require-tou.md
 - name: 概念
@@ -37,7 +35,7 @@
       href: location-condition.md
     - name: 假设分析工具
       href: what-if-tool.md
-    - name: 控制
+    - name: 自定义控件
       href: controls.md
     - name: 经典策略迁移
       href: policy-migration.md

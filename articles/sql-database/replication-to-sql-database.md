@@ -13,11 +13,11 @@ ms.reviewer: mathoma
 origin.date: 01/25/2019
 ms.date: 02/17/2020
 ms.openlocfilehash: 44c712c9942b260b2b2d00c49c65479e5944c3f2
-ms.sourcegitcommit: d7b86a424b72849fe8ed32893dd05e4696e4fe85
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77155736"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292264"
 ---
 # <a name="replication-to-sql-database-single-and-pooled-databases"></a>复制到 SQL 数据库的单一数据库和共用数据库
 

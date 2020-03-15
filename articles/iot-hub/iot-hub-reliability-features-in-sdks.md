@@ -14,11 +14,11 @@ manager: timlt
 ms.devlang: na
 ms.custom: mvc
 ms.openlocfilehash: cf5291f15a59867ec9489d8383cb9e95837c03a4
-ms.sourcegitcommit: fbc7584f403417d3af7bd6bbbaed7c13a78c57b9
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78411745"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291563"
 ---
 # <a name="manage-connectivity-and-reliable-messaging-by-using-azure-iot-hub-device-sdks"></a>使用 Azure IoT 中心设备 SDK 管理连接和可靠的消息传送
 

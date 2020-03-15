@@ -12,11 +12,11 @@ origin.date: 06/28/2019
 ms.author: v-yiso
 ms.date: 09/30/2019
 ms.openlocfilehash: f5f76c94152d7bbbe629441ef08499f9c7344987
-ms.sourcegitcommit: fc8a6e0f8eff2ef7b645ae8dc2ac02fdf498086f
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74797565"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291562"
 ---
 # <a name="choose-the-right-iot-hub-tier-for-your-solution"></a>选择适用于解决方案的 IoT 中心层
 

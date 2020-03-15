@@ -8,11 +8,11 @@ origin.date: 01/15/2020
 ms.date: 02/10/2020
 ms.author: v-yeche
 ms.openlocfilehash: 0a31c9b503358983f7faaa951c1e60294054d6a0
-ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77028781"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291944"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net"></a>适用于 Azure Cosmos DB 和 .NET 的性能提示
 

@@ -13,11 +13,11 @@ ms.custom: seo-dt-2019
 origin.date: 01/22/2018
 ms.date: 03/02/2020
 ms.openlocfilehash: a9b1c1e761decba944b6641bc283c1ba4c75005d
-ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77653559"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291267"
 ---
 # <a name="incrementally-load-data-from-an-azure-sql-database-to-azure-blob-storage-using-powershell"></a>使用 PowerShell 以增量方式将 Azure SQL 数据库中的数据加载到 Azure Blob 存储
 

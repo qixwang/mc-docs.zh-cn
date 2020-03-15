@@ -10,11 +10,11 @@ origin.date: 06/14/2019
 ms.date: 07/14/2019
 ms.author: v-lingwu
 ms.openlocfilehash: ab67a8722182142d57e49639cb42b9e85a208051
-ms.sourcegitcommit: 3a9c13eb4b4bcddd1eabca22507476fb34f89405
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74527913"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292510"
 ---
 # <a name="managing-and-maintaining-the-log-analytics-agent-for-windows-and-linux"></a>管理并维护 Windows 和 Linux 的 Log Analytics 代理
 

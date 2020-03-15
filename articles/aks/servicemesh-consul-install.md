@@ -2,19 +2,20 @@
 title: 在 Azure Kubernetes 服务 (AKS) 中安装 Consul
 description: 了解如何在 Azure Kubernetes 服务 (AKS) 群集中安装和使用 Consul 来创建服务网格
 author: rockboyfor
-ms.service: container-service
 ms.topic: article
 origin.date: 10/09/2019
-ms.date: 10/28/2019
+ms.date: 03/09/2020
 ms.author: v-yeche
-zone_pivot_groups: client-operating-system
-ms.openlocfilehash: 30b2dd7d4f3f03992cd05feeff0654a252d2ef9c
-ms.sourcegitcommit: 9597d4da8af58009f9cef148a027ccb7b32ed8cf
+zone_pivot_groups: client-operating-system-aks-lm
+ms.openlocfilehash: 9bb53a64965db2207ec76141abbba909e95ef7c4
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74655425"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79290707"
 ---
+<!--CORRECT ON client-operating-system-aks-lm-->
+
 # <a name="install-and-use-consul-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中安装并使用 Consul
 
 [Consul][consul-github] 是跨 Kubernetes 群集中的微服务提供关键功能集的开源服务网格。 这些功能包括服务发现、运行状况检查、服务分段和可观察性。 有关 Consul 的详细信息，请参阅官方文档[什么是 Consul？][consul-docs-concepts]。
@@ -45,13 +46,15 @@ ms.locfileid: "74655425"
 
 首先，下载 Consul Helm 图表的 `v0.10.0` 版本。 此版本的图表包括 Consul 版本 `1.6.0`。
 
-::: zone pivot="client-operating-system-linux"
+<!--CORRECT ON client-operating-system-aks-lm-->
+
+::: zone pivot="client-operating-system-aks-lm-linux"
 
 [!INCLUDE [Linux - download](includes/servicemesh/consul/download-bash.md)]
 
 ::: zone-end
 
-::: zone pivot="client-operating-system-macos"
+::: zone pivot="client-operating-system-aks-lm-macos"
 
 [!INCLUDE [MacOS - download](includes/servicemesh/consul/download-bash.md)]
 
@@ -60,6 +63,8 @@ ms.locfileid: "74655425"
 <!--MOONCAKE: ONLY LINUX NODE ON AZURE CHINA CLOUD-->
 <!--Not Available on [!INCLUDE [Windows - download](includes/servicemesh/consul/download-powershell.md)]-->
 
+
+<!--CORRECT ON client-operating-system-aks-lm-->
 
 使用 Helm 和下载的 `consul-helm` 图表将 Consul 组件安装到 AKS 群集的 `consul` 命名空间中。 
 
@@ -79,13 +84,15 @@ ms.locfileid: "74655425"
 <!--Not Available on  If you have Windows Server nodes in your cluster, you must ensure that the Consul pods are only scheduled to run on Linux nodes. We'll use [node selectors][kubernetes-node-selectors] to make sure pods are scheduled to the correct nodes.-->
 <!--Not Available on [node selectors][kubernetes-node-selectors]-->
 
-::: zone pivot="client-operating-system-linux"
+<!--CORRECT ON client-operating-system-aks-lm-->
+
+::: zone pivot="client-operating-system-aks-lm-linux"
 
 [!INCLUDE [Bash - install Istio components](includes/servicemesh/consul/install-components-bash.md)]
 
 ::: zone-end
 
-::: zone pivot="client-operating-system-macos"
+::: zone pivot="client-operating-system-aks-lm-macos"
 
 [!INCLUDE [Bash - install Istio components](includes/servicemesh/consul/install-components-bash.md)]
 
@@ -93,6 +100,7 @@ ms.locfileid: "74655425"
 
 <!--MOONCAKE: ONLY LINUX NODE ON AZURE CHINA CLOUD-->
 <!--Not Available on [!INCLUDE [PowerShell - install Istio components](includes/servicemesh/consul/install-components-powershell.md)]-->
+<!--CORRECT ON client-operating-system-aks-lm-->
 
 `Consul` Helm 图表将部署许多对象。 上述 `helm install` 命令的输出会显示对象列表。 部署 Consul 组件可能需要大约 3 分钟才能完成，具体取决于群集环境。
 
@@ -194,5 +202,4 @@ kubectl delete namespace consul
 [consul-scenario-mtls]: ./consul-mtls.md
 [helm-install]: ./kubernetes-helm.md
 
-<!-- Update_Description: new article about servicemesh consul install -->
-<!--NEW.date: 11/04/2019-->
+<!-- Update_Description: update meta properties, wording update, update link -->

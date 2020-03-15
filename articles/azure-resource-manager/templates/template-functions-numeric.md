@@ -6,11 +6,11 @@ origin.date: 11/08/2017
 ms.author: v-yeche
 ms.date: 01/06/2020
 ms.openlocfilehash: 0ae5aa88aff1d90d2b64e95653878620436c9347
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75631317"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291248"
 ---
 # <a name="numeric-functions-for-azure-resource-manager-templates"></a>用于 Azure Resource Manager 模板的数值函数
 
@@ -105,14 +105,14 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 ## <a name="copyindex"></a>copyIndex
 `copyIndex(loopName, offset)`
 
-返回一个迭代循环的索引。 
+返回迭代循环的索引。 
 
 ### <a name="parameters"></a>parameters
 
 | 参数 | 必须 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | loopName | 否 | string | 用于获取迭代的循环的名称。 |
-| offset |否 |int |要添加到从零开始的迭代值的数。 |
+| offset |否 |int |要添加到的从零开始的迭代值的数字。 |
 
 ### <a name="remarks"></a>备注
 
@@ -262,7 +262,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 | 参数 | 必须 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
-| valueToConvert |是 |string 或 int |要转换为整数的值。 |
+| valueToConvert |是 |字符串或整数 |要转换为整数的值。 |
 
 ### <a name="return-value"></a>返回值
 

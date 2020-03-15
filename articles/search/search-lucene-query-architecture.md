@@ -10,11 +10,11 @@ ms.topic: conceptual
 origin.date: 11/04/2019
 ms.date: 12/16/2019
 ms.openlocfilehash: 65f77f9ee8f27a3875d70766be4d33f13fca9916
-ms.sourcegitcommit: fbc7584f403417d3af7bd6bbbaed7c13a78c57b9
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78412704"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291617"
 ---
 # <a name="how-full-text-search-works-in-azure-cognitive-search"></a>Azure 认知搜索中全文搜索的工作原理
 

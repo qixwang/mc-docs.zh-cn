@@ -10,11 +10,11 @@ ms.date: 06/21/2019
 ms.author: v-lingwu
 ms.subservice: alerts
 ms.openlocfilehash: 98c7fcceb169c2e75c8444ac6e3b85cec8bc346c
-ms.sourcegitcommit: 3d27913e9f896e34bd7511601fb428fc0381998b
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74982139"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291679"
 ---
 # <a name="create-metric-alerts-for-logs-in-azure-monitor"></a>在 Azure Monitor 中创建日志的指标警报
 
@@ -55,7 +55,7 @@ Azure Monitor 支持比[经典警报](../../azure-monitor/platform/alerts-classi
 
 在针对 Log Analytics 数据收集的日志指标正常工作之前，必须设置以下各项，并确保这些项可用：
 
-1. **活动的 Log Analytics 工作区**：有效且活动的 Log Analytics 工作区必须存在。 有关详细信息，请参阅[在 Azure 门户中创建 Log Analytics 工作区](../../azure-monitor/learn/quick-create-workspace.md)。
+1. **活动的 Log Analytics 工作区**：必须存在一个有效且活动的 Log Analytics 工作区。 有关详细信息，请参阅[在 Azure 门户中创建 Log Analytics 工作区](../../azure-monitor/learn/quick-create-workspace.md)。
 2. **为 Log Analytics 工作区配置了代理**：需要为 Azure VM 和/或本地 VM 配置代理，以便将数据发送到前一步骤中使用的 Log Analytics 工作区。 有关详细信息，请参阅 [Log Analytics - 代理概述](../../azure-monitor/platform/agents-overview.md)。
 3. **安装了受支持的 Log Analytics 解决方案**：Log Analytics 解决方案应已进行配置并可将数据发送到 Log Analytics 工作区 - 支持的解决方案包括[适用于 Windows 和 Linux 的性能计数器](../../azure-monitor/platform/data-sources-performance-counters.md)、[代理运行状况的检测信号记录](../../azure-monitor/insights/solution-agenthealth.md)和[事件数据](../../azure-monitor/platform/data-sources-windows-events.md)。
 4. **配置为发送日志的 Log Analytics 解决方案**：Log Analytics 解决方案应已启用与 [Log Analytics 工作区支持的指标](../../azure-monitor/platform/metrics-supported.md#microsoftoperationalinsightsworkspaces)对应的所需日志/数据。 例如，必须先在[性能计数器](../../azure-monitor/platform/data-sources-performance-counters.md)解决方案中配置它的“可用内存百分比”计数器。 

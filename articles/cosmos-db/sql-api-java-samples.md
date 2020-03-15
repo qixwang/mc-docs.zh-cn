@@ -10,11 +10,11 @@ origin.date: 02/08/2019
 ms.date: 10/28/2019
 ms.author: v-yeche
 ms.openlocfilehash: 3ea18b1d8e5618499d47fa904a3593d9be1fba34
-ms.sourcegitcommit: 73f07c008336204bd69b1e0ee188286d0962c1d7
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72913219"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291874"
 ---
 # <a name="azure-cosmos-db-java-examples-for-the-sql-api"></a>Azure Cosmos DB：SQL API 的 Java 示例
 

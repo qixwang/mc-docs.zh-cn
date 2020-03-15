@@ -2,18 +2,16 @@
 title: 在 Azure Kubernetes 服务 (AKS) 中使用网络策略保护 Pod
 description: 了解如何在 Azure Kubernetes 服务 (AKS) 中使用 Kubernetes 网络策略保护流入和流出 Pod 的流量
 services: container-service
-author: rockboyfor
-ms.service: container-service
 ms.topic: article
 origin.date: 05/06/2019
-ms.date: 10/17/2019
+ms.date: 03/09/2020
 ms.author: v-yeche
-ms.openlocfilehash: a3fd1dcdca801da79c1f0c1af95fc2ea45c36619
-ms.sourcegitcommit: 1d4dc20d24feb74d11d8295e121d6752c2db956e
+ms.openlocfilehash: 37c58bdc7e52faf5305e32a6b25106435f52d929
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73068850"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79290779"
 ---
 # <a name="secure-traffic-between-pods-using-network-policies-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中使用网络策略保护 Pod 之间的流量
 
@@ -70,7 +68,11 @@ Azure 提供两种方式来实现网络策略。 可以在创建 AKS 群集时�
 * 允许基于 Pod 标签的流量。
 * 允许基于命名空间的流量。
 
-首先，让我们创建一个支持网络策略的 AKS 群集。 只能在创建群集时启用网络策略功能。 无法在现有 AKS 群集上启用网络策略。
+首先，让我们创建一个支持网络策略的 AKS 群集。 
+
+> [!IMPORTANT]
+>
+> 只能在创建群集时启用网络策略功能。 无法在现有 AKS 群集上启用网络策略。
 
 若要使用 Azure 网络策略，必须使用 [Azure CNI 插件][azure-cni]并定义自己的虚拟网络和子网。 有关如何规划所需子网范围的更多详细信息，请参阅[配置高级网络][use-advanced-networking]。 Calico 网络策略可与此 Azure CNI 插件配合使用，也可与 Kubenet CNI 插件配合使用。
 
@@ -132,11 +134,8 @@ az aks create \
     --vnet-subnet-id $SUBNET_ID \
     --service-principal $SP_ID \
     --client-secret $SP_PASSWORD \
-    --network-policy azure \
-    --vm-set-type AvailabilitySet
+    --network-policy azure
 ```
-
-<!--MOONCAKE: CORRECT TO APPEND --vm-set-type AvailabilitySet Before VMSS feature is valid on Azure China Cloud-->
 
 创建群集需要几分钟时间。 群集准备就绪后，使用 [az aks get-credentials][az-aks-get-credentials] 命令将 `kubectl` 配置为连接到 Kubernetes 群集。 此命令将下载凭据，并将 Kubernetes CLI 配置为使用这些凭据：
 
@@ -482,5 +481,4 @@ kubectl delete namespace development
 [az-feature-list]: https://docs.azure.cn/cli/feature?view=azure-cli-latest#az-feature-list
 [az-provider-register]: https://docs.azure.cn/cli/provider?view=azure-cli-latest#az-provider-register
 
-<!--Update_Description: new articles on use network policies -->
-<!--ms.date: 10/17/2019-->
+<!-- Update_Description: update meta properties, wording update, update link -->

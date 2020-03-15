@@ -6,27 +6,22 @@ ms.tgt_pltfrm: mobile-android
 ms.devlang: java
 ms.topic: article
 origin.date: 06/25/2019
-ms.date: 12/16/2019
+md.date: 03/23/2020
 ms.author: v-tawe
-ms.openlocfilehash: 5e5a95aeae89f842622f20184013037f1fb9ad6c
-ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
+ms.openlocfilehash: be18add597b78a30836b9d355491bcbb22ed1b54
+ms.sourcegitcommit: e94ed1c9eff4e88be2ca389909e60b14cc0d92f8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75600566"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79084430"
 ---
 # <a name="enable-offline-sync-for-your-android-mobile-app"></a>为 Android 移动应用启用脱机同步
 [!INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]
 
-> [!NOTE]
-> Visual Studio App Center 支持以移动应用开发为中心的端到端集成服务。 开发人员可以使用“生成”  、“测试”  和“分发”  服务来设置“持续集成和交付”管道。 部署应用后，开发人员可以使用**分析**和**诊断**服务监视其应用的状态和使用情况，并使用**推送**服务与用户互动。 开发人员还可以利用“身份验证”  对其用户进行身份验证，并使用“数据”  服务在云中保留和同步应用数据。
->
-> 如果希望将云服务集成到移动应用程序中，请立即注册到 [App Center](https://appcenter.ms/signup?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) 中。
-
 ## <a name="overview"></a>概述
-本教程介绍适用于 Android 的 Azure 移动应用的脱机同步功能。 脱机同步允许最终用户与移动应用进行交互&mdash;查看、添加或修改数据&mdash;，即使在没有网络连接时也是如此。 在本地数据库中存储更改。 设备重新联机后，这些更改会与远程后端同步。
+本教程介绍适用于 Android 的 Azure 移动应用的脱机同步功能。 借助脱机同步，最终用户即使在没有网络连接时也能够与移动应用进行交互（查看、添加或修改数据）。 在本地数据库中存储更改。 设备重新联机后，这些更改会与远程后端同步。
 
-对于首次体验 Azure 移动应用的读者，请先完成[创建 Android 应用]教程。 如果不使用下载的快速入门服务器项目，必须将数据访问扩展包添加到项目。 有关服务器扩展包的详细信息，请参阅[使用适用于 Azure 移动应用的 .NET 后端服务器 SDK](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md)。
+对于首次体验 Azure 移动应用的读者，请先完成 [创建 Android 应用]（创建 Android 应用）教程。 如果不使用下载的快速入门服务器项目，必须将数据访问扩展包添加到项目。 有关服务器扩展包的详细信息，请参阅 [Work with the .NET backend server SDK for Azure Mobile Apps](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md)（使用适用于 Azure 移动应用的 .NET 后端服务器 SDK）。
 
 若要了解有关脱机同步功能的详细信息，请参阅 [Azure 移动应用中的脱机数据同步]（Azure 移动应用中的脱机数据同步）主题。
 

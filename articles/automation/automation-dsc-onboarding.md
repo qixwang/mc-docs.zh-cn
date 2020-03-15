@@ -11,11 +11,11 @@ origin.date: 12/10/2019
 ms.date: 03/02/2020
 manager: digimobile
 ms.openlocfilehash: d99ac6149b1472f2ac051caa6c97903d6040cddf
-ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77653548"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292628"
 ---
 # <a name="onboarding-machines-for-management-by-azure-automation-state-configuration"></a>加入 Azure Automation State Configuration 管理的计算机
 

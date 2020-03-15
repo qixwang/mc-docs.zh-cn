@@ -6,11 +6,11 @@ origin.date: 08/29/2019
 ms.author: v-yeche
 ms.date: 01/06/2020
 ms.openlocfilehash: ea7e0fbf06103230006ffc1a68f5d492c20a9d32
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75631517"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293001"
 ---
 # <a name="azure-resource-providers-and-types"></a>Azure 资源提供程序和类型
 
@@ -98,7 +98,7 @@ Microsoft.CognitiveServices      Registered
 ...
 ```
 
-通过注册资源提供程序来配置订阅，以供资源提供程序使用。 注册的作用域始终是订阅。 默认情况下，将自动注册许多资源提供程序。 但可能需要手动注册某些资源提供程序。 若要注册资源提供程序，必须具备为资源提供程序执行 `/register/action` 操作的权限。 此操作包含在“参与者”和“所有者”角色中。
+通过注册资源提供程序，将订阅配置为使用资源提供程序。 注册的作用域始终是订阅。 默认情况下，将自动注册许多资源提供程序。 但可能需要手动注册某些资源提供程序。 若要注册资源提供程序，必须具备为资源提供程序执行 `/register/action` 操作的权限。 此操作包含在“参与者”和“所有者”角色中。
 
 ```powershell
 Register-AzResourceProvider -ProviderNamespace Microsoft.Batch
@@ -121,7 +121,7 @@ Locations         : {China East, China North, China East 2, China North 2}
 Get-AzResourceProvider -ProviderNamespace Microsoft.Batch
 ```
 
-这会返回类似于以下的结果：
+这会返回类似于下面的结果：
 
 ```powershell
 {ProviderNamespace : Microsoft.Batch
@@ -202,7 +202,7 @@ Microsoft.CognitiveServices      Registered
 ...
 ```
 
-通过注册资源提供程序来配置订阅，以供资源提供程序使用。 注册的作用域始终是订阅。 默认情况下，将自动注册许多资源提供程序。 但可能需要手动注册某些资源提供程序。 若要注册资源提供程序，必须具备为资源提供程序执行 `/register/action` 操作的权限。 此操作包含在“参与者”和“所有者”角色中。
+通过注册资源提供程序，将订阅配置为使用资源提供程序。 注册的作用域始终是订阅。 默认情况下，将自动注册许多资源提供程序。 但可能需要手动注册某些资源提供程序。 若要注册资源提供程序，必须具备为资源提供程序执行 `/register/action` 操作的权限。 此操作包含在“参与者”和“所有者”角色中。
 
 ```azurecli
 az provider register --namespace Microsoft.Batch
@@ -218,7 +218,7 @@ az provider register --namespace Microsoft.Batch
 az provider show --namespace Microsoft.Batch
 ```
 
-这会返回类似于以下的结果：
+这会返回类似于下面的结果：
 
 ```azurecli
 {

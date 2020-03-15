@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 12/17/2019
 ms.author: diberry
-ms.openlocfilehash: 391679b7aa9dfcfffef50c315a0a8130480682ca
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.openlocfilehash: 6a058d1e65b0eff7d1fe98e9c7b04296b0b213f0
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78155371"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79290798"
 ---
 # <a name="tutorial-build-a-luis-app-to-determine-user-intentions"></a>教程：生成 LUIS 应用以确定用户意向
 
@@ -192,9 +192,3 @@ LUIS 在返回 JSON 响应后，就已经完成了此请求。 LUIS 不提供用
 * [实体类型](luis-concept-entity-types.md)
 * [如何训练](luis-how-to-train.md)
 * [Azure 机器人](https://docs.microsoft.com/azure/bot-service/?view=azure-bot-service-4.0)
-
-
-## <a name="next-steps"></a>后续步骤
-
-本教程创建了 LUIS 应用、创建了意向、向每个意向添加了示例言语、向 None 意向添加了示例言语，并在终结点上进行了训练、发布和测试操作。 这些是生成 LUIS 模型的基本步骤。
-

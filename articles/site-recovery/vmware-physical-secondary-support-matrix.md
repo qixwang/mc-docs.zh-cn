@@ -10,11 +10,11 @@ origin.date: 08/22/2019
 ms.date: 09/30/2019
 ms.author: v-yeche
 ms.openlocfilehash: ccb2c253e9884883938d59d13eeb2505089b1af5
-ms.sourcegitcommit: 332ae4986f49c2e63bd781685dd3e0d49c696456
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71340955"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291981"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-vmware-vms-and-physical-servers-to-a-secondary-site"></a>将 VMware VM 和物理服务器灾难恢复到辅助站点时的支持矩阵
 

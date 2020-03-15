@@ -6,12 +6,12 @@ author: lingliw
 ms.author: v-lingwu
 origin.date: 08/09/2019
 ms.date: 08/19/2019
-ms.openlocfilehash: 8b462106e6f5950dbbe6cc64c0034ab94146de9b
-ms.sourcegitcommit: 13431cf4d69142ed7feb8d12d967a502bf9ff346
+ms.openlocfilehash: b4fe4452686da1389b968575b677495cc319a1f9
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75599928"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79290897"
 ---
 # <a name="how-to-stop-monitoring-your-azure-kubernetes-service-aks-with-azure-monitor-for-containers"></a>如何停止使用用于容器的 Azure Monitor 监视 Azure Kubernetes 服务 (AKS)
 
@@ -29,11 +29,11 @@ az aks disable-addons -a monitoring -n MyExistingManagedCluster -g MyExistingMan
 
 ## <a name="azure-resource-manager-template"></a>Azure Resource Manager 模板
 
-下面提供了两个 Azure 资源管理器模板，以支持在资源组中一致且重复地删除解决方案资源。 一个是 JSON 模板，用于指定配置为“停止监视”，另一个模板包含配置的参数值，用于指定在其中部署群集的 AKS 群集资源 ID 和资源组。 
+下面提供了两个 Azure 资源管理器模板，以支持在资源组中一致且重复地删除解决方案资源。 一个是 JSON 模板，用于指定配置为“停止监视”，另一个模板包含配置的参数值，用于指定在其中部署群集的 AKS 群集资源 ID 和资源组。
 
 如果不熟悉使用模板部署资源的概念，请参阅：
-* [使用 Resource Manager 模板和 Azure PowerShell 部署资源](../../azure-resource-manager/resource-group-template-deploy.md)
-* [使用资源管理器模板和 Azure CLI 部署资源](../../azure-resource-manager/resource-group-template-deploy-cli.md)
+* [使用 Resource Manager 模板和 Azure PowerShell 部署资源](../../azure-resource-manager/templates/deploy-powershell.md)
+* [使用资源管理器模板和 Azure CLI 部署资源](../../azure-resource-manager/templates/deploy-cli.md)
 
 >[!NOTE]
 >模板需要部署在群集所在的资源组中。 如果在使用此模板时省略任何其他属性或加载项，则可能导致从群集中删除这些属性或加载项。 例如，*enableRBAC*（用于群集中实施的 RBAC 策略），或 *aksResourceTagValues*（如果为 AKS 群集指定了标记）。  
@@ -67,6 +67,7 @@ az aks disable-addons -a monitoring -n MyExistingManagedCluster -g MyExistingMan
       "type": "object",
       "metadata": {
         "description": "Existing all tags on AKS Cluster Resource"
+        }
       }
     },
     "resources": [
@@ -74,7 +75,7 @@ az aks disable-addons -a monitoring -n MyExistingManagedCluster -g MyExistingMan
         "name": "[split(parameters('aksResourceId'),'/')[8]]",
         "type": "Microsoft.ContainerService/managedClusters",
         "location": "[parameters('aksResourceLocation')]",
-        "tags": "[parameters('aksResourceTagValues')]"
+        "tags": "[parameters('aksResourceTagValues')]",
         "apiVersion": "2018-03-31",
         "properties": {
           "mode": "Incremental",
@@ -120,14 +121,16 @@ az aks disable-addons -a monitoring -n MyExistingManagedCluster -g MyExistingMan
 
     ![容器属性页面](media/container-insights-optout/container-properties-page.png)
 
-    位于“属性”页时，还请复制“工作区资源 ID”   。 如果决定稍后删除 Log Analytics 工作区，则需要此值。 不在此流程中执行删除 Log Analytics 工作区的操作。 
+    位于“属性”页时，还请复制“工作区资源 ID”   。 如果决定稍后删除 Log Analytics 工作区，则需要此值。 不在此流程中执行删除 Log Analytics 工作区的操作。
 
     编辑 **aksResourceTagValues** 的值，以匹配为 AKS 群集指定的现有标记值。
 
 5. 将此文件以“OptOutParam.json”文件名保存到本地文件夹  。
-6. 已做好部署此模板的准备。 
+
+6. 已做好部署此模板的准备。
 
 ### <a name="remove-the-solution-using-azure-cli"></a>使用 Azure CLI 删除解决方案
+
 在 Linux 上使用 Azure CLI 执行以下命令以删除解决方案并清除 AKS 群集上的配置。
 
 ```azurecli

@@ -17,11 +17,11 @@ ms.date: 02/06/2020
 ms.author: v-junlch
 ms.custom: aaddev
 ms.openlocfilehash: 10075714c9e805279bc4c68c0924abc51dc5c7a4
-ms.sourcegitcommit: 7c80405a6b48380814b4b414e9f8a5756c007880
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77067702"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291039"
 ---
 # <a name="protected-web-api-app-registration"></a>受保护的 Web API：应用注册
 

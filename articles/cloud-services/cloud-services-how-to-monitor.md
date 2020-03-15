@@ -16,11 +16,11 @@ origin.date: 01/29/2018
 ms.date: 02/17/2020
 ms.author: v-yiso
 ms.openlocfilehash: 5c10a5b5cc86bf74e4e0643126696fbe6ae4f233
-ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77067856"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291385"
 ---
 # <a name="introduction-to-cloud-service-monitoring"></a>云服务监视简介
 

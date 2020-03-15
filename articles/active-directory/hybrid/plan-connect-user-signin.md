@@ -18,11 +18,11 @@ ms.subservice: hybrid
 ms.author: v-junlch
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 65503880c52c4b01eaa8315e1fb26104fa2b2656
-ms.sourcegitcommit: 2836cce46ecb3a8473dfc0ad2c55b1c47d2f0fad
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59355895"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79290985"
 ---
 # <a name="azure-ad-connect-user-sign-in-options"></a>Azure AD Connect 用户登录选项
 Azure Active Directory (Azure AD) Connect 可让用户使用同一组密码登录云和本地资源。 本文介绍每个标识模型的重要概念，以帮助你选择登录到 Azure AD 时想要使用的标识。
@@ -112,7 +112,7 @@ Azure AD 登录页列出了为本地 Active directory 定义的 UPN 后缀，并
 | 未验证 |Azure AD Connect 在 Azure AD 中找到了匹配的但未验证的自定义域。 如果域未验证，则在同步后此域的用户的 UPN 后缀将更改为默认的 .partner.onmschina.cn 后缀。 | [在 Azure AD 中验证自定义域。](../fundamentals/add-custom-domain.md#verify-your-custom-domain-name) |
 | 未添加 |Azure AD Connect 未找到对应于 UPN 后缀的自定义域。 如果未在 Azure 中添加域且域未进行验证，则此域的用户的 UPN 后缀将更改为默认的 .partner.onmschina.cn 后缀。 | [添加和验证与 UPN 后缀相对应的自定义域。](../fundamentals/add-custom-domain.md) |
 
-Azure AD 登录页列出了针对本地 Active Directory 定义的 UPN 后缀，以及 Azure AD 中对应的自定义域与当前验证状态。 在自定义安装中，现在可以在“Azure AD 登录”页上选择用户主体名的属性。
+Azure AD 登录页列出了针对本地 Active Directory 定义的 UPN 后缀，以及 Azure AD 中对应的自定义域与当前验证状态。 在自定义安装中，现在可以在“Azure AD 登录”页上选择用户主体名的属性。 
 
 ![Azure AD 登录页](./media/plan-connect-user-signin/custom_azure_sign_in.png)
 
@@ -144,7 +144,7 @@ Azure AD 登录页列出了针对本地 Active Directory 定义的 UPN 后缀，
 ###### <a name="ad-fs-federation"></a>AD FS 联合
 无法使用 Azure AD 中的默认 .partner.onmschina.cn 域或 Azure AD 中未验证的自定义域创建联合。 在运行 Azure AD Connect 向导时，如果选择使用未验证的域创建联合，则 Azure AD Connect 将发出提示，并指出要为域创建的将托管 DNS 的必需记录。 有关详细信息，请参阅[验证选择用于联合的 Azure AD 域](how-to-connect-install-custom.md#verify-the-azure-ad-domain-selected-for-federation)。
 
-如果选择的用户登录选项为“与 AD FS 联合”，则必须有一个自定义域才能继续在 Azure AD 中创建联合。 针对我们的讨论，这意味着我们应在 Azure AD 目录中添加自定义域 contoso.com。
+如果选择的用户登录选项为“与 AD FS 联合”，则必须有一个自定义域才能继续在 Azure AD 中创建联合。  针对我们的讨论，这意味着我们应在 Azure AD 目录中添加自定义域 contoso.com。
 
 | 状态 | 对 Azure 用户登录体验的影响 |
 |:---:|:--- |
@@ -153,7 +153,7 @@ Azure AD 登录页列出了针对本地 Active Directory 定义的 UPN 后缀，
 | 已验证 |在这种情况下，可以继续进行配置，而不需要采取任何进一步的操作。 |
 
 ## 更改用户登录方法 <a name="changing-user-sign-in-method"></a>
-在使用向导完成 Azure AD Connect 的初始配置后，可以使用 Azure AD Connect 中的可用任务将用户的登录方法在“联合”、“密码哈希同步之间切换。 再次运行 Azure AD Connect 向导，随后将看到可执行的任务列表。 在任务列表中选择“更改用户登录”。
+在使用向导完成 Azure AD Connect 的初始配置后，可以使用 Azure AD Connect 中的可用任务将用户的登录方法在“联合”、“密码哈希同步之间切换。 再次运行 Azure AD Connect 向导，随后将看到可执行的任务列表。 在任务列表中选择“更改用户登录”。 
 
 ![更改用户登录](./media/plan-connect-user-signin/changeusersignin.png)
 
@@ -166,7 +166,7 @@ Azure AD 登录页列出了针对本地 Active Directory 定义的 UPN 后缀，
 ![连接到 Azure AD](./media/plan-connect-user-signin/changeusersignin2a.png)
 
 > [!NOTE]
-> 如果只是要暂时切换到密码哈希同步，请选中“请勿切换用户帐户”复选框。 不选中该选项会将每个用户转换为联合用户，并且该操作可能需要花费几小时。
+> 如果只是要暂时切换到密码哈希同步，请选中“请勿切换用户帐户”  复选框。 不选中该选项会将每个用户转换为联合用户，并且该操作可能需要花费几小时。
 >
 >
 

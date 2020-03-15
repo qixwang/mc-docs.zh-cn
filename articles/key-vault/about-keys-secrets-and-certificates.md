@@ -11,11 +11,11 @@ origin.date: 09/04/2019
 ms.date: 02/17/2019
 ms.author: v-tawe
 ms.openlocfilehash: 19ac7e687b7ab84102488645d755dd879a079960
-ms.sourcegitcommit: 0b07f1d36ac02da055874630d6edc31cb0a15269
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/10/2020
-ms.locfileid: "77112172"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291901"
 ---
 # <a name="about-keys-secrets-and-certificates"></a>关于密钥、机密和证书
 

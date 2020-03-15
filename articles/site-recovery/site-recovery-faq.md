@@ -6,11 +6,11 @@ origin.date: 01/24/2020
 ms.date: 02/24/2020
 ms.author: v-yeche
 ms.openlocfilehash: 510ecc4ec261663ceb400a8adfa9b83a676d56b1
-ms.sourcegitcommit: 781f68d27903687f0aa9e1ed273eee25c6d129a1
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77611266"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291580"
 ---
 # <a name="general-questions-about-azure-site-recovery"></a>有关 Azure Site Recovery 的一般问题
 

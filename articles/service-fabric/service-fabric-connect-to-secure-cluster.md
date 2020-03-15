@@ -6,11 +6,11 @@ origin.date: 01/29/2019
 ms.author: v-yeche
 ms.date: 01/06/2020
 ms.openlocfilehash: 687a5d967f79cb11dc9b16ba9d6198a6d0c01590
-ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75741890"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292041"
 ---
 # <a name="connect-to-a-secure-cluster"></a>连接到安全群集
 

@@ -6,11 +6,11 @@ origin.date: 01/10/2020
 ms.date: 02/24/2020
 ms.author: v-yeche
 ms.openlocfilehash: bbba40393060f4991e5894c53894eb9b6812ff0b
-ms.sourcegitcommit: 781f68d27903687f0aa9e1ed273eee25c6d129a1
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77611282"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292875"
 ---
 # <a name="support-matrix-for-azure-vm-disaster-recovery-between-azure-regions"></a>在 Azure 区域之间进行 Azure VM 灾难恢复的支持矩阵
 

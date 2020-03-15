@@ -6,16 +6,16 @@ author: lingliw
 origin.date: 08/18/2019
 ms.date: 12/04/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 068005bf16b6a7db0721f16bfa02088da886937b
-ms.sourcegitcommit: 27eaabd82b12ad6a6840f30763034a6360977186
+ms.openlocfilehash: 7651d39e0b925a9c1a45d4f4d7849ea093030ccc
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77497617"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79290887"
 ---
 # <a name="restore-vmware-virtual-machines"></a>还原 VMware 虚拟机
 
-本文介绍如何使用 Microsoft Azure 备份服务器 (MABS) 还原 VMware VM 恢复点。 有关使用 MABS 恢复数据的概述，请参阅[恢复受保护的数据](https://docs.microsoft.com/azure/backup/backup-azure-alternate-dpm-server)。 在 MABS 管理员控制台中，可通过两种方式查找可恢复的数据 - 搜索或浏览。 恢复数据时，你不一定想要将数据或 VM 还原到相同的位置。 出于此原因，MABS 支持对 VMware VM 备份使用三种恢复选项：
+本文介绍如何使用 Microsoft Azure 备份服务器 (MABS) 还原 VMware VM 恢复点。 有关使用 MABS 恢复数据的概述，请参阅[恢复受保护的数据](/backup/backup-azure-alternate-dpm-server)。 在 MABS 管理员控制台中，可通过两种方式查找可恢复的数据 - 搜索或浏览。 恢复数据时，你不一定想要将数据或 VM 还原到相同的位置。 出于此原因，MABS 支持对 VMware VM 备份使用三种恢复选项：
 
 * **原始位置恢复 (OLR)** - 使用 OLR 可将受保护的 VM 还原到其原始位置。 仅当自备份以来未添加或删除磁盘时，才可以将 VM 还原到其原始位置。 如果已添加或删除磁盘，则必须使用备用位置恢复。
 

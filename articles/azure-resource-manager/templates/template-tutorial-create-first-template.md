@@ -7,11 +7,11 @@ ms.date: 01/06/2020
 ms.topic: tutorial
 ms.author: v-yeche
 ms.openlocfilehash: c5bfaef072008baf7b12cae7322ed6a80e30c7ac
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75631591"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291241"
 ---
 # <a name="tutorial-create-and-deploy-your-first-azure-resource-manager-template"></a>教程：创建和部署第一个 Azure 资源管理器模板
 
@@ -80,13 +80,13 @@ ms.locfileid: "75631591"
 
 若要开始使用 Azure PowerShell/Azure CLI，请使用你的 Azure 凭据登录。
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 Connect-AzAccount -Environment AzureChinaCloud
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli
 az cloud set -n AzureChinaCloud
@@ -98,7 +98,7 @@ az login
 
 部署模板时，请指定一个包含资源的资源组。 在运行部署命令之前，请使用 Azure CLI 或 Azure PowerShell 创建该资源组。 使用以下代码部分中的选项卡在 Azure PowerShell 与 Azure CLI 之间进行选择。
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 New-AzResourceGroup `
@@ -106,7 +106,7 @@ New-AzResourceGroup `
   -Location "China North"
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli
 az group create \
@@ -120,7 +120,7 @@ az group create \
 
 若要部署模板，请使用 Azure CLI 或 Azure PowerShell。 使用创建的资源组。 为部署指定一个适当的名称，以便可以在部署历史记录中轻松识别该部署。 为方便起见，另请创建一个用于存储模板文件路径的变量。 使用此变量可以更轻松地运行部署命令，因为无需在每次部署时重新键入路径。
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 $templateFile = "{provide-the-path-to-the-template-file}"
@@ -130,7 +130,7 @@ New-AzResourceGroupDeployment `
   -TemplateFile $templateFile
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli
 templateFile="{provide-the-path-to-the-template-file}"
@@ -144,11 +144,11 @@ az group deployment create \
 
 部署命令将返回结果。 查看 `ProvisioningState` 以确定部署是否成功。
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ![PowerShell 部署预配状态](./media/template-tutorial-create-first-template/resource-manager-deployment-provisioningstate.png)
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ![Azure CLI 部署预配状态](./media/template-tutorial-create-first-template/azure-cli-provisioning-state.png)
 

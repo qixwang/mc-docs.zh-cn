@@ -5,52 +5,48 @@ ms.reviewer: srinathv
 author: lingliw
 ms.topic: conceptual
 origin.date: 07/08/2019
-ms.date: 11/20/2019
+ms.date: 03/06/2020
 ms.author: v-lingwu
-ms.openlocfilehash: d147f6775283308249665c9c27a35f9a8cfb3f95
-ms.sourcegitcommit: 21b02b730b00a078a76aeb5b78a8fd76ab4d6af2
+ms.openlocfilehash: 64fde6064ca127374852ab4d3f9aad38c6170624
+ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74839059"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850263"
 ---
 # <a name="azure-backup-monitoring-alert---faq"></a>Azure 备份监视警报 - 常见问题解答
 
-本文解答有关 Azure 备份监视警报的常见问题。
+本文解答了有关 Azure 备份监视和报告的常见问题。
 
-## <a name="configure-azure-backup-reports"></a>配置 Azure 备份报表
+## <a name="configure-azure-backup-reports"></a>配置 Azure 备份报告
 
-### <a name="how-do-i-check-if-reporting-data-has-started-flowing-into-a-storage-account"></a>如何确定报表数据是否已开始流向存储帐户？
+### <a name="how-do-i-check-if-reporting-data-has-started-flowing-into-a-log-analytics-la-workspace"></a>如何确定报告数据是否已开始流向 Log Analytics (LA) 工作区？
 
-转到配置的存储帐户，并选择容器。 如果容器包含 insights-logs-azurebackupreport 条目，则表示报表数据已开始流向存储帐户。
+导航到已配置的 LA 工作区，导航到“日志”  菜单项，然后运行查询 CoreAzureBackup | 选择 1。 如果看到返回了记录，则表示数据已开始流入工作区。 初始数据推送可能需要长达 24 小时。
 
-### <a name="what-is-the-frequency-of-data-push-to-a-storage-account-and-the-azure-backup-content-pack-in-power-bi"></a>数据多久向存储帐户和 Power BI 中的 Azure 备份内容包推送一次？
+### <a name="what-is-the-frequency-of-data-push-to-an-la-workspace"></a>向 LA 工作区推送数据的频率是怎样的？
 
-  在用户配置存储帐户后，数据大约需要 24 小时才能推送到存储帐户。 在这一次初始推送完成后，将按下图中所示频率刷新数据。
+保管库中的诊断数据将传送到 Log Analytics 工作区，但会出现一定的延迟。 从恢复服务保管库推送每个事件 20 到 30 分钟后，这些事件将抵达 Log Analytics 工作区。 下面是有关延迟的更多详细信息：
 
-* 与“作业”  、“警报”  、“备份项”  、“保管库”  、“受保护的服务器”  和“策略”  相关的数据：在客户登录时推送到客户存储帐户。
+* 在所有解决方案中，一旦创建备份服务的内置警报，就会立即推送这些警报。 因此，它们通常会在 20 到 30 分钟后显示在 Log Analytics 工作区中。
+* 在所有解决方案中，在完成按需备份作业和还原作业后，会立即推送这些作业。
+* 对于除 SQL 备份以外的所有解决方案，在完成计划的备份作业后，会立即推送这些作业。
+* 对于 SQL 备份，由于日志备份可每隔 15 分钟发生，所有已完成的计划备份作业的信息（包括日志）将每隔 6 小时进行批处理和推送。
+* 在所有解决方案中，备份项、策略、恢复点、存储等其他信息每天至少推送一次。
+* 备份配置发生更改（例如更改策略或编辑策略）会触发所有相关备份信息的推送。
 
-* 与“存储”  相关的数据：每 24 小时推送到客户存储帐户一次。
+### <a name="how-long-can-i-retain-reporting-data"></a>报告数据可以保留多长时间？
 
-    ![Azure 备份报表数据推送频率](./media/backup-azure-configure-reports/reports-data-refresh-cycle.png)
+创建 LA 工作区后，可以选择将数据保留最多 2 年。 默认情况下，LA 工作区将数据保留 31 天。
 
-* Power BI [计划每天刷新一次](https://powerbi.microsoft.com/documentation/powerbi-refresh-data/#what-can-be-refreshed)。 对于内容包，可以在 Power BI 中手动刷新数据。
+### <a name="will-i-see-all-my-data-in-reports-after-i-configure-the-la-workspace"></a>配置 LA 工作区后，报告中是否会显示我的所有数据？
 
-### <a name="how-long-can-i-retain-reports"></a>报表可以保留多长时间？
+ 在你配置诊断设置后生成的所有数据都会推送到 LA 工作区，并会显示在报告中。 不会为报告推送正在进行的作业。 作业完成或失败后，会将其发送到报告。
 
-配置存储帐户时，可以在存储帐户中选择报表数据的保持期。 请按照[配置报表的存储帐户](backup-azure-configure-reports.md#configure-storage-account-for-reports)部分中的步骤 6 执行操作。 此外，还可以[在 Excel 中分析报表](https://powerbi.microsoft.com/documentation/powerbi-service-analyze-in-excel/)，并保存报表以根据需要延长保持期。
+### <a name="can-i-view-reports-across-vaults-and-subscriptions"></a>能否跨保管库和订阅查看报告？
 
-### <a name="will-i-see-all-my-data-in-reports-after-i-configure-the-storage-account"></a>配置存储帐户后，报表中是否会显示我的所有数据？
-
- 配置存储帐户后生成的所有数据都会推送到存储帐户，并会显示在报表中。 不会为报表推送正在进行的作业。 作业完成或失败后，会将其发送到报表。
-
-### <a name="if-i-already-configured-the-storage-account-to-view-reports-can-i-change-the-configuration-to-use-another-storage-account"></a>如果我已配置存储帐户来查看报表，能否更改配置以使用其他存储帐户？
-
-能，可以将配置更改为指向不同的存储帐户。 连接到 Azure 备份内容包时，可使用新配置的存储帐户。 此外，配置其他存储帐户后，新数据便会流向该存储帐户。 更改配置前的旧数据仍会保留在旧存储帐户中。
-
-### <a name="can-i-view-reports-across-vaults-and-subscriptions"></a>能否跨保管库和订阅查看报表？
-
-能，可以跨各种保管库配置同一存储帐户，以便跨保管库查看报表。 此外，还可以跨订阅为保管库配置同一存储帐户。 然后，可以在连接到 Power BI 中的 Azure 备份内容包时使用此存储帐户来查看报表。 所选存储帐户必须位于恢复服务保管库所在的区域。
+能，你可以跨保管库、订阅以及区域查看报告。 你的数据可能驻留在单个 LA 工作区或一组 LA 工作区中。
+能，可以跨各种保管库配置同一存储帐户，以便跨保管库查看报告。 此外，还可以跨订阅为保管库配置同一存储帐户。 然后，可以在连接到 Power BI 中的 Azure 备份内容包时使用此存储帐户来查看报告。 所选存储帐户必须位于恢复服务保管库所在的区域。
 
 ### <a name="how-long-does-it-take-for-the-azure-backup-agent-job-status-to-reflect-in-the-portal"></a>多长时间后，门户中会反映 Azure 备份代理作业状态？
 

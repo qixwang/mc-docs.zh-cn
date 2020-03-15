@@ -19,11 +19,11 @@ ms.subservice: hybrid
 ms.author: v-junlch
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f5cc10e54643a7947021e2417ea1e8d3e94bc191
-ms.sourcegitcommit: 1171a6ab899b26586d1ea4b3a089bb8ca3af2aa2
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74084673"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79290996"
 ---
 # <a name="azure-ad-connect-sync-running-the-installation-wizard-a-second-time"></a>Azure AD Connect 同步：再次运行安装向导
 首次运行 Azure AD Connect 安装向导时，该向导将逐步引导配置安装。 如果再次运行安装向导，它会提供维护选项。
@@ -83,7 +83,7 @@ ms.locfileid: "74084673"
 ![同时显示暂存模式当前状态的选项](./media/how-to-connect-installation-wizard/stagingmodecurrentstate.png)
 
 若要更改状态，请选择此选项，并选中或取消选中复选框。  
-![同时显示过渡模式当前状态的选项](./media/how-to-connect-installation-wizard/stagingmodeenable.png)
+![同时显示暂存模式当前状态的选项](./media/how-to-connect-installation-wizard/stagingmodeenable.png)
 
 ## <a name="change-user-sign-in"></a>更改用户登录
 通过此选项，可将用户登录方式改为密码哈希同步或联合。 但不能更改为“不配置”  。

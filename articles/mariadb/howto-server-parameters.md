@@ -8,11 +8,11 @@ ms.topic: conceptual
 origin.date: 12/9/2019
 ms.date: 01/13/2020
 ms.openlocfilehash: 1d7338ec8d624eca343f93d48f73dfde522bb743
-ms.sourcegitcommit: 4f4694991e1c70929c7112ad45a0c404ddfbc8da
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75776730"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291196"
 ---
 # <a name="how-to-configure-server-parameters-in-azure-database-for-mariadb-by-using-the-azure-portal"></a>如何使用 Azure 门户在 Azure Database for MariaDB 中配置服务器参数
 

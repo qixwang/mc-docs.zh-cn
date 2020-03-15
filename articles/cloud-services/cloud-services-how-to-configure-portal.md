@@ -16,11 +16,11 @@ origin.date: 12/07/2016
 ms.date: 04/09/2018
 ms.author: v-yiso
 ms.openlocfilehash: 6309e30f7d65a19beef1702ff18bfeb66c77f8e8
-ms.sourcegitcommit: d75065296d301f0851f93d6175a508bdd9fd7afc
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52643566"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291393"
 ---
 # <a name="how-to-configure-cloud-services"></a>如何配置云服务
 可以在 Azure 门户中配置最常使用的云服务设置。 或者，如果希望直接更新配置文件，可下载要更新的服务配置文件，并上传更新文件并通过配置更改更新云服务。 无论使用哪种方法，配置更新都会应用于所有角色实例。
@@ -35,7 +35,7 @@ ms.locfileid: "52643566"
 
 ![“设置”页](./media/cloud-services-how-to-configure-portal/cloud-service.png)
 
-可以通过“设置”或“所有设置”链接打开“设置”，在该选项卡中，可以更改“属性”、更改“配置”、管理“证书”、设置“警报规则”，以及管理有权访问该云服务的“用户”。
+可以通过“设置”或“所有设置”链接打开“设置”，在该选项卡中，可以更改“属性”、更改“配置”、管理“证书”、设置“警报规则”，以及管理有权访问该云服务的“用户”         。
 
 ![Azure 云服务设置](./media/cloud-services-how-to-configure-portal/cs-settings-blade.png)
 
@@ -43,7 +43,7 @@ ms.locfileid: "52643566"
 
 默认情况下，Azure 会定期将来宾 OS 更新为 OS 系列（在服务配置 (.cscfg) 中指定）中支持的最新映像，例如 Windows Server 2016。
 
-如果需要设定某一特定 OS 版本，可在“配置”中进行设置。
+如果需要设定某一特定 OS 版本，可在“配置”  中进行设置。
 
 ![设置 OS 版本](./media/cloud-services-how-to-configure-portal/cs-settings-config-guestosversion.png)
 
@@ -53,7 +53,7 @@ ms.locfileid: "52643566"
 
 ## <a name="monitoring"></a>监视
 
-可将警报添加到云服务。 单击“设置” > “警报规则” > “添加警报”。 
+可将警报添加到云服务。 单击“设置”   > “警报规则”   > “添加警报”  。 
 
 ![](./media/cloud-services-how-to-configure-portal/cs-alerts.png)
 
@@ -69,7 +69,7 @@ ms.locfileid: "52643566"
 
 ### <a name="configure-monitoring-from-a-metric-tile"></a>配置从度量值磁贴进行的监视
 
-可以单击“云服务”边栏选项卡的“监视”部分中的某个度量值磁贴，而不必使用“设置” > “警报规则”。
+可以单击“云服务”边栏选项卡的“监视”部分中的某个度量值磁贴，而不必使用“设置” > “警报规则”    。
 
 ![云服务监视](./media/cloud-services-how-to-configure-portal/cs-monitoring.png)
 
@@ -90,7 +90,7 @@ ms.locfileid: "52643566"
 ## <a name="reconfigure-your-cscfg"></a>重新配置 .cscfg
 建议通过 [service config (cscfg)](./cloud-services-model-and-package.md#cscfg) 文件来重新配置云服务。 首先，用户需要下载 .cscfg 文件，对其进行修改，再上传该文件。
 
-1. 单击“设置”图标或“所有设置”链接以打开“设置”。
+1. 单击“设置”图标或“所有设置”链接以打开“设置”    。
 
     ![“设置”页](./media/cloud-services-how-to-configure-portal/cloud-service.png)
 2. 单击“配置”  项。
@@ -102,7 +102,7 @@ ms.locfileid: "52643566"
 4. 更新服务配置文件后，上传并应用配置更新：
 
     ![上传](./media/cloud-services-how-to-configure-portal/cs-settings-config-panel-upload.png)
-5. 选择 .cscfg 文件，并单击“确定” 。
+5. 选择 .cscfg 文件，并单击“确定”  。
 
 ## <a name="next-steps"></a>后续步骤
 

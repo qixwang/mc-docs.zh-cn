@@ -21,11 +21,11 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: aa9b4a9b6e7d7f86dc9e579cd66178826de0df7b
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336503"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79290931"
 ---
 # <a name="odata-filter-syntax-in-azure-cognitive-search"></a>Azure 认知搜索中的 OData $filter 语法
 

@@ -6,22 +6,17 @@ ms.tgt_pltfrm: mobile-xamarin-ios
 ms.devlang: dotnet
 ms.topic: article
 origin.date: 06/25/2019
-ms.date: 12/16/2019
+md.date: 03/23/2020
 ms.author: v-tawe
-ms.openlocfilehash: 2863c6ceedc8fa32ee9a16baee9ddb567918c379
-ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
+ms.openlocfilehash: b308151981383c181f6a6fef8f0d67bdff93886e
+ms.sourcegitcommit: e94ed1c9eff4e88be2ca389909e60b14cc0d92f8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75600536"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79084404"
 ---
 # <a name="enable-offline-sync-for-your-xamarinforms-mobile-app"></a>为 Xamarin.Forms 移动应用启用脱机同步
 [!INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]
-
-> [!NOTE]
-> Visual Studio App Center 支持以移动应用开发为中心的端到端集成服务。 开发人员可以使用“生成”  、“测试”  和“分发”  服务来设置“持续集成和交付”管道。 部署应用后，开发人员可以使用**分析**和**诊断**服务监视其应用的状态和使用情况，并使用**推送**服务与用户互动。 开发人员还可以利用“身份验证”  对其用户进行身份验证，并使用“数据”  服务在云中保留和同步应用数据。
->
-> 如果希望将云服务集成到移动应用程序中，请立即注册到 [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) 中。
 
 ## <a name="overview"></a>概述
 本教程介绍适用于 Xamarin.Forms 的 Azure 移动应用的脱机同步功能。 脱机同步允许最终用户与移动应用交互（查看、添加或修改数据），即使在没有网络连接时也是如此。 在本地数据库中存储更改。 设备重新联机后，这些更改会与远程服务同步。
@@ -70,7 +65,7 @@ ms.locfileid: "75600536"
     **DefineTable** 方法在本地存储中创建一个与所提供类型的字段匹配的表。  该类型无需包括远程数据库中的所有列。 可以只存储列的子集。
 * TodoItemManager 中的 todoTable 字段是 IMobileServiceSyncTable 类型，而不是 IMobileServiceTable 类型     。 此类使用本地数据库进行所有创建、读取、更新和删除 (CRUD) 表操作。 通过调用 IMobileServiceSyncContext 中的 PushAsync，确定这些更改推送到移动应用后端的时间   。 对于调用 PushAsync 时客户端应用修改的所有表，该同步上下文通过跟踪和推送这些表中的更改来帮助保持表关系  。
 
-    将调用以下 **SyncAsync** 方法来与移动应用后端进行同步：
+    调用以下 **SyncAsync** 方法来与移动应用后端进行同步：
 
     ```
     public async Task SyncAsync()
@@ -129,7 +124,7 @@ ms.locfileid: "75600536"
 现已启用脱机同步，可在每个平台上至少运行一次客户端应用程序，以填充本地存储数据库。 稍后，模拟脱机场景，并在应用处于脱机状态时修改本地存储中的数据。
 
 ## <a name="update-the-sync-behavior-of-the-client-app"></a>更新客户端应用的同步行为
-本节对客户端项目进行修改，通过对后端使用无效的应用程序 URL 来模拟脱机场景。 或者可以通过将设备切换到“飞行模式”来关闭网络连接。  添加或更改数据项时，这些更改保存在本地存储中，但在重新建立连接之前，这些更改不会同步到后端数据存储中。
+本节对客户端项目进行修改，通过对后端使用无效的应用程序 URL 来模拟脱机场景。 或者，可以将设备移到“飞行模式”来关闭网络连接。  添加或更改数据项时，这些更改保存在本地存储中，但在重新建立连接之前，这些更改不会同步到后端数据存储中。
 
 1. 在解决方案资源管理器中，从 Portable  项目打开 Constants.cs 项目文件，然后更改 `ApplicationURL` 的值，使其指向无效的 URL：
 
@@ -146,7 +141,7 @@ ms.locfileid: "75600536"
         }
     ```
 
-3. 生成并运行客户端应用。  添加一些新项。 请注意，每次尝试与后端同步时，都会在控制台中记录异常。 这些新项目在推送到移动后端之前，只存在于本地存储中。 客户端应用的行为就像它已连接到支持所有创建、读取、更新、删除 (CRUD) 操作的后端一样。
+3. 生成并运行客户端应用。  添加一些新的项。 请注意，每次尝试与后端同步时，都会在控制台中记录异常。 这些新项目在推送到移动后端之前，只存在于本地存储中。 客户端应用的行为就像它已连接到支持所有创建、读取、更新、删除 (CRUD) 操作的后端一样。
 4. 关闭应用程序并重新启动它，以验证你创建的新项目是否已永久保存到本地存储中。
 5. （可选）使用 Visual Studio 查看 Azure SQL 数据库表，看看后端数据库中的数据是否未更改。
 

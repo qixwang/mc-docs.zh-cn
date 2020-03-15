@@ -15,11 +15,11 @@ ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 30f148b70cb4155f72ce45e4a03ac22366193774
-ms.sourcegitcommit: 1bc154c816a5dff47ee051c431cd94826e57aa60
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75776981"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291067"
 ---
 # <a name="using-web-browsers-msalnet"></a>使用 Web 浏览器 (MSAL.NET)
 

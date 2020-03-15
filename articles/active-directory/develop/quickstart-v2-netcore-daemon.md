@@ -1,36 +1,28 @@
 ---
-title: 使用控制台应用的标识获取令牌并调用 Microsoft Graph API | Azure
+title: 使用控制台应用标识获取令牌并调用 Microsoft Graph | Azure
 titleSuffix: Microsoft identity platform
-description: 了解 .NET Core 进程如何使用应用的自身标识获取访问令牌并调用受 Microsoft 标识平台终结点保护的 API
+description: 了解如何从 .NET Core 应用获取令牌并使用令牌调用受保护的 Microsoft Graph API
 services: active-directory
-documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
-editor: ''
 ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: quickstart
-ms.tgt_pltfrm: na
 ms.workload: identity
-origin.date: 07/16/2019
-ms.date: 11/07/2019
+ms.date: 03/10/2020
 ms.author: v-junlch
 ms.custom: aaddev, identityplatformtop40
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 26154079323c7e8379127a2e0bb75fdebe74bca9
-ms.sourcegitcommit: a88cc623ed0f37731cb7cd378febf3de57cf5b45
+ms.openlocfilehash: 5f853224a4603f7aff64a759f117c8f4bd12369e
+ms.sourcegitcommit: 4ba6d7c8bed5398f37eb37cf5e2acafcdcc28791
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73830941"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79133826"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-using-console-apps-identity"></a>快速入门：使用控制台应用的标识获取令牌并调用 Microsoft Graph API
 
-本快速入门介绍如何编写 .NET Core 应用程序，以便使用应用的自身标识获取访问令牌，然后调用 Microsoft Graph API，以便在目录中显示[用户列表](https://docs.microsoft.com/graph/api/user-list)。 此方案适用于无外设且无人参与的作业或 Windows 服务需要使用应用程序标识而非用户标识运行的情况。
-
-![显示本快速入门生成的示例应用的工作原理](./media/quickstart-v2-netcore-daemon/netcore-daemon-intro.svg)
+本快速入门介绍如何编写 .NET Core 应用程序，以便使用应用的自身标识获取访问令牌，然后调用 Microsoft Graph API，以便在目录中显示[用户列表](https://docs.microsoft.com/graph/api/user-list)。 此方案适用于无外设且无人参与的作业或 Windows 服务需要使用应用程序标识而非用户标识运行的情况。 （有关说明，请参阅[示例工作原理](#how-the-sample-works)。）
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -80,37 +72,44 @@ ms.locfileid: "73830941"
 
 #### <a name="step-2-download-your-visual-studio-project"></a>步骤 2：下载 Visual Studio 项目
 
-[下载 Visual Studio 项目](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/archive/master.zip)
+> [!div renderon="docs"]
+> [下载 Visual Studio 项目](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/archive/master.zip)
 
-#### <a name="step-3-configure-your-visual-studio-project"></a>步骤 3：配置 Visual Studio 项目
+> [!div class="sxs-lookup" renderon="portal"]
+> 使用 Visual Studio 2019 运行项目。
+> [!div renderon="portal" id="autoupdate" class="nextstepaction"]
+> [下载代码示例]()
 
-1. 将 zip 文件提取到靠近磁盘根目录的本地文件夹，例如 **C:\Azure-Samples**。
-1. 在 Visual Studio 中打开解决方案 - **1-Call-MSGraph\daemon-console.sln**（可选）。
-1. 编辑 **appsettings.json**，将字段 `ClientId`、`Tenant`、`ClientSecret` 的值替换为以下内容：
-
-    ```json
-    "Tenant": "Enter_the_Tenant_Id_Here",
-    "ClientId": "Enter_the_Application_Id_Here",
-    "ClientSecret": "Enter_the_Client_Secret_Here"
-    ```
-    > > [!div renderon="portal" id="certandsecretspage" class="sxs-lookup"]
-    > > [生成新的客户端机密]()
+> [!div class="sxs-lookup" renderon="portal"]
+> > [!NOTE]
+> > Enter_the_Supported_Account_Info_Here
     
-    > [!div class="sxs-lookup" renderon="portal"]
-    > > [!NOTE]
-    > > 本快速入门支持 Enter_the_Supported_Account_Info_Here。
-    
-    > [!div renderon="docs"]
-    >> 其中：
-    >> * `Enter_the_Application_Id_Here` - 是已注册应用程序的**应用程序（客户端）ID**。
-    >> * `Enter_the_Tenant_Id_Here` - 将此值替换为**租户 ID** 或**租户名称**（例如 contoso.microsoft.com）
-    >> * `Enter_the_Client_Secret_Here` - 将此值替换为在步骤 1 中创建的客户端机密。
+> [!div renderon="docs"]
+> #### <a name="step-3-configure-your-visual-studio-project"></a>步骤 3：配置 Visual Studio 项目
+> 
+> 1. 将 zip 文件提取到靠近磁盘根目录的本地文件夹，例如 **C:\Azure-Samples**。
+> 1. 在 Visual Studio 中打开解决方案 - **1-Call-MSGraph\daemon-console.sln**（可选）。
+> 1. 编辑 **appsettings.json**，将字段 `ClientId`、`Tenant`、`ClientSecret` 的值替换为以下内容：
+> 
+>    ```json
+>    "Tenant": "Enter_the_Tenant_Id_Here",
+>    "ClientId": "Enter_the_Application_Id_Here",
+>    "ClientSecret": "Enter_the_Client_Secret_Here"
+>    ```
+>   其中：
+>   - `Enter_the_Application_Id_Here` - 是已注册应用程序的**应用程序（客户端）ID**。
+>   - `Enter_the_Tenant_Id_Here` - 将此值替换为**租户 ID** 或**租户名称**（例如 contoso.microsoft.com）
+>   - `Enter_the_Client_Secret_Here` - 将此值替换为在步骤 1 中创建的客户端机密。
 
-    > [!div renderon="docs"]
-    > > [!TIP]
-    > > 若要查找“应用程序(客户端) ID”、“目录(租户) ID”的值，请转到 Azure 门户中应用的“概览”页。    若要生成新密钥，请转到“证书和机密”页。 
-    
-#### <a name="step-4-admin-consent"></a>步骤 4：管理员同意
+> [!div renderon="docs"]
+> > [!TIP]
+> > 若要查找“应用程序(客户端) ID”、“目录(租户) ID”的值，请转到 Azure 门户中应用的“概览”页。    若要生成新密钥，请转到“证书和机密”页。 
+
+> [!div class="sxs-lookup" renderon="portal"]
+> #### <a name="step-3-admin-consent"></a>步骤 3：管理员同意
+
+> [!div renderon="docs"]
+> #### <a name="step-4-admin-consent"></a>步骤 4：管理员同意
 
 如果尝试在此时运行应用程序，则会收到“HTTP 403 - 禁止访问”  错误：`Insufficient privileges to complete the operation`。 之所以发生这种情况，是因为任何仅限应用的权限都需要管理员许可  ，这意味着目录的全局管理员必须为应用程序授予许可。 根据自己的角色选择下面的一个选项：
 
@@ -140,7 +139,11 @@ https://login.partner.microsoftonline.cn/Enter_the_Tenant_Id_Here/adminconsent?c
 > [!NOTE]
 > 在使用前面的 URL 授予应用许可以后，可能会出现错误“AADSTS50011:  未为应用程序注册回复地址”。 之所以发生该错误，是因为此应用程序和 URL 没有重定向 URI - 请忽略该错误。
 
-#### <a name="step-5-run-the-application"></a>步骤 5：运行应用程序
+> [!div class="sxs-lookup" renderon="portal"]
+> #### <a name="step-4-run-the-application"></a>步骤 4：运行应用程序
+
+> [!div renderon="docs"]
+> #### <a name="step-5-run-the-application"></a>步骤 5：运行应用程序
 
 如果使用 Visual Studio，请按 F5 运行该应用程序，否则请通过命令提示符或控制台来运行该应用程序  ：
 
@@ -158,6 +161,9 @@ dotnet run
 > 本快速入门应用程序使用客户端机密将自己标识为机密客户端。 由于客户端机密是以纯文本形式添加到项目文件的，因此为了安全起见，建议在考虑将应用程序用作生产应用程序之前，使用证书来代替客户端机密。 若要详细了解如何使用证书，请参阅 GitHub 存储库中有关此示例的[这些说明](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/#variation-daemon-application-using-client-credentials-with-certificates)。
 
 ## <a name="more-information"></a>详细信息
+
+### <a name="how-the-sample-works"></a>示例工作原理
+![显示本快速入门生成的示例应用的工作原理](./media/quickstart-v2-netcore-daemon/netcore-daemon-intro.svg)
 
 ### <a name="msalnet"></a>MSAL.NET
 

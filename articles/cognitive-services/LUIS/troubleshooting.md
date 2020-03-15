@@ -13,11 +13,11 @@ origin.date: 11/08/2019
 ms.date: 12/05/2019
 ms.author: v-lingwu
 ms.openlocfilehash: 6320c0f8c01b828743f23a63c95b664fab4a0d04
-ms.sourcegitcommit: 3d27913e9f896e34bd7511601fb428fc0381998b
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74982146"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291425"
 ---
 # <a name="language-understanding-frequently-asked-questions-faq"></a>语言理解常见问题解答 (FAQ)
 
@@ -232,7 +232,7 @@ Get-AzCognitiveServicesAccountUsage -ResourceGroupName <your-resource-group> -Na
 
 ### <a name="can-i-delete-data-from-luis"></a>能否从 LUIS 中删除数据？
 
-* 可以随意删除用于训练 LUIS 的示例表述。 如果从 LUIS 应用中删除某个示例表述，则会将其从 LUIS Web 服务中删除，导致其无法导出。
+* 可以随意删除用于训练 LUIS 的示例表述。 如果从 LUIS 应用中删除某个示例陈述，则会将其从 LUIS Web 服务中删除，导致其无法导出。
 * 可以从 LUIS 在“查看终结点表述”页中建议的用户表述列表中删除表述。  从此列表中删除表述可以防止系统再将其作为建议提出来，但不会将其从日志中删除。
 * 如果删除某个帐户，则会删除所有应用及其示例表述和日志。 数据可以保留在服务器上 60 天，然后就会被永久删除。
 

@@ -8,11 +8,11 @@ origin.date: 06/20/2019
 ms.date: 07/29/2019
 ms.author: v-yeche
 ms.openlocfilehash: cdd5b4101272b1b84e0e5ef4e0d11262bf6c737f
-ms.sourcegitcommit: 5a4a826eea3914911fd93592e0f835efc9173133
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68672288"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291667"
 ---
 # <a name="keywords-in-azure-cosmos-db"></a>Azure Cosmos DB 中的关键字
 本文详细介绍可在 Azure Cosmos DB SQL 查询中使用的关键字。
@@ -50,7 +50,7 @@ FROM Families f
 
 在此示例中，查询将投影每个姓氏的值。
 
-其结果是：
+结果有：
 
 ```json
 [
@@ -65,7 +65,7 @@ SELECT DISTINCT f.lastName
 FROM Families f
 ```
 
-其结果是：
+结果有：
 
 ```json
 [
@@ -85,7 +85,7 @@ FROM f
 
 此查询投影包含每个孩子的 givenName 的数组，并删除了重复项。 此数组的别名为 ChildNames，并在外部查询中投影。
 
-其结果是：
+结果有：
 
 ```json
 [
@@ -134,7 +134,7 @@ TOP 关键字以未定义的顺序返回前 `N` 个查询结果。 最佳做法�
     FROM Families f
 ```
 
-其结果是：
+结果有：
 
 ```json
     [{

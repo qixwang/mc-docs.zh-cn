@@ -13,11 +13,11 @@ ms.reviewer: sashan,moslake,josack
 origin.date: 11/19/2019
 ms.date: 02/17/2020
 ms.openlocfilehash: c926692ed8b6c08d2f469816404de6a45b64ca27
-ms.sourcegitcommit: d7b86a424b72849fe8ed32893dd05e4696e4fe85
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77155738"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291492"
 ---
 # <a name="sql-database-resource-limits-for-azure-sql-database-server"></a>Azure SQL 数据库服务器的 SQL 数据库资源限制
 

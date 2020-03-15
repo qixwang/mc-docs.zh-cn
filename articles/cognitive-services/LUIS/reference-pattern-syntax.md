@@ -12,11 +12,11 @@ origin.date: 12/09/2019
 ms.date: 1/2/2020
 ms.author: diberry
 ms.openlocfilehash: a4eaa8d71c488a768d1166389dcd21b3255fea67
-ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75854217"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291775"
 ---
 # <a name="pattern-syntax"></a>模式语法
 

@@ -10,11 +10,11 @@ origin.date: 02/06/2019
 ms.date: 08/29/2019
 ms.author: v-lingwu
 ms.openlocfilehash: de8e47d9aaee7e3ec40353d8711654dc03424362
-ms.sourcegitcommit: 01788fd533b6de9475ef14e84aa5ddd55a1fef27
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70169607"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291762"
 ---
 # <a name="partitioned-queues-and-topics"></a>分区队列和主题
 
@@ -107,7 +107,7 @@ committableTransaction.Commit();
 
 要将事务消息发送到会话感知的主题或队列，消息必须设置 [SessionId](/dotnet/api/microsoft.azure.servicebus.message.sessionid) 属性。 如果还指定了 [PartitionKey](/dotnet/api/microsoft.azure.servicebus.message.partitionkey) 属性，该属性必须与 [SessionId](/dotnet/api/microsoft.azure.servicebus.message.sessionid) 属性相同。 如果它们不同，服务总线会返回无效操作异常。
 
-与常规（非分区）队列或主题不同，不能使用单一事务将多条消息发送到不同会话。 如果进行尝试，服务总线会返回无效操作异常。 例如：
+与常规（非分区）队列或主题不同，不能使用单一事务将多条消息发送到不同会话。 如果进行尝试，服务总线返回无效操作异常。 例如：
 
 ```csharp
 CommittableTransaction committableTransaction = new CommittableTransaction();

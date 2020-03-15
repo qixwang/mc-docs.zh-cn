@@ -6,12 +6,12 @@ author: lingliw
 ms.author: v-lingwu
 origin.date: 09/12/2019
 ms.date: 11/30/2019
-ms.openlocfilehash: 654963aca741f6889e02ee2c26b6887e4a7b1748
-ms.sourcegitcommit: 27eaabd82b12ad6a6840f30763034a6360977186
+ms.openlocfilehash: 9365189809764e9a1dec75eb8a0ef4959848c6a2
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77497420"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79290893"
 ---
 # <a name="enable-monitoring-of-azure-kubernetes-service-aks-cluster-already-deployed"></a>启用对已部署的 Azure Kubernetes 服务 (AKS) 群集的监视
 
@@ -38,7 +38,7 @@ az aks enable-addons -a monitoring -n MyExistingManagedCluster -g MyExistingMana
 
 输出如下所示：
 
-```azurecli
+```output
 provisioningState       : Succeeded
 ```
 
@@ -54,7 +54,7 @@ provisioningState       : Succeeded
 
     输出如下所示：
 
-    ```azurecli
+    ```output
     Name                                  CloudName    SubscriptionId                        State    IsDefault
     ------------------------------------  -----------  ------------------------------------  -------  -----------
     Microsoft Azure                       AzureCloud   68627f8c-91fO-4905-z48q-b032a81f8vy0  Enabled  True
@@ -70,7 +70,7 @@ provisioningState       : Succeeded
 
 3. 以下示例以默认 JSON 格式显示订阅中的工作区列表。
 
-    ```
+    ```azurecli
     az resource list --resource-type Microsoft.OperationalInsights/workspaces -o json
     ```
 
@@ -84,7 +84,7 @@ provisioningState       : Succeeded
 
     输出如下所示：
 
-    ```azurecli
+    ```output
     provisioningState       : Succeeded
     ```
 
@@ -275,7 +275,7 @@ provisioningState       : Succeeded
 
        配置更改可能需要几分钟才能完成。 完成后，系统会显示包含结果的消息，如下所示：
 
-       ```powershell
+       ```output
        provisioningState       : Succeeded
        ```
 
@@ -290,7 +290,7 @@ provisioningState       : Succeeded
 
        配置更改可能需要几分钟才能完成。 完成后，系统会显示包含结果的消息，如下所示：
 
-       ```azurecli
+       ```output
        provisioningState       : Succeeded
        ```
 
@@ -310,7 +310,7 @@ kubectl get ds omsagent --namespace=kube-system
 
 输出应如下所示，指明其已正确部署：
 
-```
+```output
 User@aksuser:~$ kubectl get ds omsagent --namespace=kube-system
 NAME       DESIRED   CURRENT   READY     UP-TO-DATE   AVAILABLE   NODE SELECTOR                 AGE
 omsagent   2         2         2         2            2           beta.kubernetes.io/os=linux   1d
@@ -324,7 +324,7 @@ kubectl get deployment omsagent-rs -n=kube-system
 
 输出应如下所示，指明其已正确部署：
 
-```
+```output
 User@aksuser:~$ kubectl get deployment omsagent-rs -n=kube-system
 NAME       DESIRED   CURRENT   UP-TO-DATE   AVAILABLE    AGE
 omsagent   1         1         1            1            3h
@@ -340,7 +340,7 @@ kubectl get ds omsagent --namespace=kube-system
 
 输出应如下所示，指明其已正确部署：  
 
-```
+```output
 User@aksuser:~$ kubectl get ds omsagent --namespace=kube-system
 NAME       DESIRED   CURRENT   READY     UP-TO-DATE   AVAILABLE   NODE SELECTOR                 AGE
 omsagent   2         2         2         2            2           beta.kubernetes.io/os=linux   1d
@@ -356,7 +356,7 @@ az aks show -g <resourceGroupofAKSCluster> -n <nameofAksCluster>
 
 片刻之后，该命令将会完成，并返回有关解决方案的 JSON 格式信息。  命令结果应显示监视加载项配置文件，并类似于以下示例输出：
 
-```
+```output
 "addonProfiles": {
     "omsagent": {
       "config": {

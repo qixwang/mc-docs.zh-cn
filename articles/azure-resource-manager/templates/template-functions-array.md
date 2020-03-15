@@ -6,11 +6,11 @@ origin.date: 07/31/2019
 ms.author: v-yeche
 ms.date: 01/06/2020
 ms.openlocfilehash: 784f0fbeb321838b9d867c11106a493c0564be09
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75631324"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291250"
 ---
 # <a name="array-and-object-functions-for-azure-resource-manager-templates"></a>用于 Azure Resource Manager 模板的数组和对象函数
 
@@ -128,7 +128,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 | 参数 | 必须 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |int、string、array 或 object |要测试是否为 null 的第一个值。 |
-| 其他参数 |否 |整数、字符串、数组或对象 |要测试是否为 null 的其他值。 |
+| 其他参数 |否 |int、string、array 或 object |要测试是否为 null 的其他值。 |
 
 ### <a name="return-value"></a>返回值
 

@@ -13,11 +13,11 @@ ms.author: v-junlch
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: fe8bb6697992d3f81d43b0920e1fc71d0a4d1e34
-ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77653440"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291066"
 ---
 # <a name="use-microsoft-authenticator-or-intune-company-portal-on-xamarin-applications"></a>在 Xamarin 应用程序中使用 Microsoft Authenticator 或 Intune 公司门户
 

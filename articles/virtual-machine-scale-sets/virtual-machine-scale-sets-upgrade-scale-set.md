@@ -17,11 +17,11 @@ origin.date: 02/14/2018
 ms.date: 03/20/2019
 ms.author: v-junlch
 ms.openlocfilehash: b208ed2dc9cf6afdfdc700581a47c422024bad96
-ms.sourcegitcommit: 5c73061b924d06efa98d562b5296c862ce737cc7
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58256373"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292706"
 ---
 # <a name="modify-a-virtual-machine-scale-set"></a>修改虚拟机规模集
 
@@ -30,7 +30,7 @@ ms.locfileid: "58256373"
 ## <a name="fundamental-concepts"></a>基本概念
 
 ### <a name="the-scale-set-model"></a>规模集模型
-规模集有一个“规模集模型”，用于以整体方式捕获规模集的所需状态。 若要查询规模集的模型，可使用以下命令： 
+规模集有一个“规模集模型”，用于以整体方式捕获规模集的所需状态。  若要查询规模集的模型，可使用以下命令： 
 
 - 如下所示通过 REST API 使用 [compute/virtualmachinescalesets/get](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/get)：
 
@@ -74,7 +74,7 @@ az vmss show --resource-group myResourceGroup --name myScaleSet
 
 
 ### <a name="the-scale-set-instance-view"></a>规模集实例视图
-规模集还有一个“规模集实例视图”，用于以整体方式捕获规模集当前的“运行时”状态。 若要查询规模集的实例视图，可使用以下命令：
+规模集还有一个“规模集实例视图”，用于以整体方式捕获规模集当前的“运行时”状态。  若要查询规模集的实例视图，可使用以下命令：
 
 - 如下所示通过 REST API 使用 [compute/virtualmachinescalesets/getinstanceview](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/getinstanceview)：
 
@@ -317,7 +317,7 @@ $ az vmss get-instance-view --resource-group myResourceGroup --name myScaleSet -
 - 还可以使用特定于语言的 [Azure SDK](/downloads/)。
 
 >[!NOTE]
-> Service Fabric 群集只能使用“自动”模式，但采用不同方式来处理更新。 有关详细信息，请参阅 [Service Fabric 应用程序升级](../service-fabric/service-fabric-application-upgrade.md)。
+> Service Fabric 群集只能使用“自动”模式，但采用不同方式来处理更新。  有关详细信息，请参阅 [Service Fabric 应用程序升级](../service-fabric/service-fabric-application-upgrade.md)。
 
 有一类对全局规模集属性的修改不遵循升级策略。 只能通过 API 版本 *2017-12-01* 或更高版本修改规模集 OS 配置文件（例如管理员用户名和密码）。 这些更改仅适用于在对规模集模型进行更改后创建的 VM。 若要更新现有的 VM，必须对每个现有的 VM 执行“重置映像”操作。 可通过以下方式执行此重置映像操作：
 

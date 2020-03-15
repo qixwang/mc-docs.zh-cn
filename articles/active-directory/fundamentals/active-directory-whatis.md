@@ -12,11 +12,11 @@ ms.author: v-junlch
 ms.custom: it-pro, seodec18, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 133c07c1aa3a1ebb8d214dd6e862da44ca81d142
-ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77653087"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291016"
 ---
 # <a name="what-is-azure-active-directory"></a>什么是 Azure Active Directory？
 

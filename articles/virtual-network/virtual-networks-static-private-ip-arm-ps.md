@@ -18,11 +18,11 @@ ms.date: 06/10/2019
 ms.author: v-yeche
 ms.custom: ''
 ms.openlocfilehash: e87521673f2958868e08e46699ae3cde0a497ca1
-ms.sourcegitcommit: ab87d30f4435c3b7c03f7edd33c9f374b7fe88c9
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67540070"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292054"
 ---
 # <a name="create-a-virtual-machine-with-a-static-private-ip-address-using-powershell"></a>使用 PowerShell 创建具有静态专用 IP 地址的虚拟机
 

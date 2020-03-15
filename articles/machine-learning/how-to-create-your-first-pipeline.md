@@ -13,11 +13,11 @@ origin.date: 12/05/2019
 ms.date: 03/09/2020
 ms.custom: seodec18
 ms.openlocfilehash: 50f0617d63173333ef776baf410237f91c8a2930
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78155013"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292169"
 ---
 # <a name="create-and-run-machine-learning-pipelines-with-azure-machine-learning-sdk"></a>使用 Azure 机器学习 SDK 创建和运行机器学习管道
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]

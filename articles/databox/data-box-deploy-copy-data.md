@@ -11,11 +11,11 @@ ms.date: 12/09/2019
 ms.author: v-jay
 ms.localizationpriority: high
 ms.openlocfilehash: 7ebfbc2c91ab643bd0aeacd7e9578e5b84348612
-ms.sourcegitcommit: 8c3bae15a8a5bb621300d81adb34ef08532fe739
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74884010"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292768"
 ---
 ::: zone target="docs"
 

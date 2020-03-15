@@ -16,11 +16,11 @@ ms.author: v-junlch
 ms.reviewer: bagovind
 ms.custom: seohack1
 ms.openlocfilehash: 7023b909c48a43815ba43ac4cfe26d52c8b3e0dc
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75623793"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292316"
 ---
 # <a name="troubleshoot-rbac-for-azure-resources"></a>对 Azure 资源的 RBAC 问题进行故障排除
 
@@ -146,7 +146,7 @@ Azure 资源管理器有时会缓存配置和数据以提高性能。 创建或�
 * 规模配置（实例数、虚拟机大小、自动缩放设置）  
 * 配额（存储空间、带宽、CPU）  
 
-这些项需要对包含网站的整个**资源组**具有**写**访问权限：  
+这些项需要对包含网站的整个资源组具有写入权限：    
 
 * SSL 证书和绑定（SSL 证书可以在同一资源组和地理位置中的站点之间共享）  
 * 警报规则  

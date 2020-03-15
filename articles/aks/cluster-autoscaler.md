@@ -8,14 +8,15 @@ ms.topic: article
 origin.date: 07/18/2019
 ms.date: 01/19/2020
 ms.author: v-yeche
-ms.openlocfilehash: 088e924f4e291c911b706fe10059ea9e01b574a9
-ms.sourcegitcommit: e99166b2db4b292a7044e5f26b3e3547fef22ee9
+ms.openlocfilehash: 6eb7bbb2a00656c3f3bfbff0c7a083c2b706c0f8
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76269975"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79290770"
 ---
-<!--FEEDBACK TO NOTIFIED RELEASE-->
+<!--NOT SUITABLE FOR MOONCAKE-->
+<!--REASON: PRODUCTION TEAM NOTIFIED-->
 # <a name="automatically-scale-a-cluster-to-meet-application-demands-on-azure-kubernetes-service-aks"></a>自动缩放群集以满足 Azure Kubernetes 服务 (AKS) 中的应用程序需求
 
 若要满足 Azure Kubernetes 服务 (AKS) 中的应用程序需求，可能需要调整运行工作负载的节点数。 群集自动缩放程序组件可以监视群集中由于资源约束而无法进行计划的 Pod。 检测到问题时，节点池中的节点数会增加，以满足应用程序需求。 还会定期检查节点是否缺少正在运行的 Pod，随后根据需要减少节点数。 这种自动增加或减少 AKS 群集中的节点数的功能使你可以运行具有成本效益的高效群集。
@@ -41,7 +42,7 @@ ms.locfileid: "76269975"
 
 ![群集自动缩放程序和水平 Pod 自动缩放程序通常协同工作以支持所需的应用程序需求](media/autoscaler/cluster-autoscaler.png)
 
-水平 Pod 自动缩放程序和群集自动缩放程序随后还可以根据需要减少 Pod 和节点数。 当已有一段时间存在未使用的容量时，群集自动缩放程序会减少节点数。 要由群集自动缩放程序删除的节点上的 Pod 会在群集中的其他位置安全地进行计划。 如果无法移动 Pod，则群集自动缩放程序可能无法减少，如以下情况：
+水平 Pod 自动缩放程序和群集自动缩放程序随后还可以根据需要减少 Pod 和节点数。 当已有一段时间存在未使用的容量时，群集自动缩放程序会减少节点数。 要由群集自动缩放程序删除的节点上的 Pod 会在群集中的其他位置安全地进行计划。 如果无法移动 Pod，则群集自动缩放程序可能无法纵向缩减，如以下情况：
 
 * Pod 直接创建，不由控制器对象（如部署或副本集）提供支持。
 * Pod 中断预算 (PDB) 限制太多，不允许 Pod 数低于特定阈值。

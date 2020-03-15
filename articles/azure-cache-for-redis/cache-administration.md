@@ -16,11 +16,11 @@ origin.date: 07/05/2017
 ms.date: 11/12/2019
 ms.author: v-junlch
 ms.openlocfilehash: c2e2badd793ee9a1ec63edf9d283748bd4000de0
-ms.sourcegitcommit: 40a58a8b9be0c825c03725802e21ed47724aa7d2
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73934148"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291984"
 ---
 # <a name="how-to-administer-azure-cache-for-redis"></a>如何管理 Azure Redis 缓存
 本主题介绍如何为 Azure Redis 缓存实例执行管理任务，如[重启](#reboot)和[计划更新](#schedule-updates)。
@@ -83,7 +83,7 @@ ms.locfileid: "73934148"
 
 ![计划更新](./media/cache-administration/redis-schedule-updates.png)
 
-要指定维护时段，请勾选合适的日期，并指定每天的维护时段开始时间，最后再单击“确定”  。 请注意，维护时段使用 UTC 时间。 
+如果要指定维护时段，请勾选合适的日期，并指定每天的维护时段开始时间，最后再单击“确定”  。 请注意，维护时段使用 UTC 时间。 
 
 更新的默认最小维护时段为 5 小时。 此值不可以在 Azure 门户中配置，但可以在 PowerShell 中使用 [New-AzRmRedisCacheScheduleEntry](https://docs.microsoft.com/powershell/module/az.rediscache/new-azrediscachescheduleentry) cmdlet 的 `MaintenanceWindow` 参数进行配置。 有关详细信息，请参阅是否可以使用 PowerShell、CLI 或其他管理工具管理计划的更新？
 

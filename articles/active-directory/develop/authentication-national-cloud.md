@@ -19,11 +19,11 @@ ms.reviewer: negoe,CelesteDG
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1f6a6b8ab68453c4e10378dbf82e9a2203f5862b
-ms.sourcegitcommit: 74f50c9678e190e2dbb857be530175f25da8905e
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/12/2019
-ms.locfileid: "72292024"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291083"
 ---
 # <a name="national-clouds"></a>国家云
 

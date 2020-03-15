@@ -16,11 +16,11 @@ ms.date: 12/10/2019
 ms.author: v-junlch
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c4d5f08288182308cbbc5fcbc7cc4640fe8772d9
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75335553"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79290954"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-a-virtual-machine-scale-set-using-rest-api-calls"></a>使用 REST API 调用在虚拟机规模集上配置 Azure 资源的托管标识
 
@@ -30,7 +30,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
 本文介绍如何在虚拟机规模集上通过使用 CURL 对 Azure 资源管理器 REST 终结点进行调用来执行以下 Azure 资源的托管标识操作：
 
-- 在 Azure 虚拟机规模集上启用和禁用系统分配的托管标识
+- 在 Azure 虚拟机规模集上启用和禁用系统分配托管标识
 - 在 Azure 虚拟机规模集上添加和删除用户分配托管标识
 
 ## <a name="prerequisites"></a>先决条件
@@ -314,7 +314,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
 本节将介绍如何在 Azure 虚拟机规模集上通过使用 CURL 对 Azure 资源管理器 REST 终结点进行调用来添加和删除用户分配的托管标识。
 
-### <a name="assign-a-user-assigned-managed-identity-during-the-creation-of-a-virtual-machine-scale-set"></a>在创建虚拟机规模集的过程中分配用户分配的托管标识
+### <a name="assign-a-user-assigned-managed-identity-during-the-creation-of-a-virtual-machine-scale-set"></a>在创建虚拟机规模集的过程中分配用户分配托管标识
 
 1. 检索持有者访问令牌，下一步在授权标头中将使用该令牌创建具有系统分配的托管标识的虚拟机规模集。
 

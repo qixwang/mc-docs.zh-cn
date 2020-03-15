@@ -9,11 +9,11 @@ ms.author: v-jay
 ms.reviewer: alfredop
 ms.lastreviewed: 10/15/2018
 ms.openlocfilehash: 31c209b39b31670b8c10d181b9d3df60d9bf46b8
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77540923"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291997"
 ---
 # <a name="manage-usage-and-billing-for-azure-stack-hub-as-a-cloud-solution-provider"></a>管理充当云解决方案提供商的 Azure Stack Hub 的使用情况和计费
 

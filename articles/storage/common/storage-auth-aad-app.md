@@ -11,11 +11,11 @@ ms.date: 01/06/2020
 ms.author: v-jay
 ms.subservice: common
 ms.openlocfilehash: 3a3fc696811b7bbfc4be58ae796d48c76ebea543
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75624170"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291258"
 ---
 # <a name="acquire-a-token-from-azure-ad-for-authorizing-requests-from-a-client-application"></a>从 Azure AD 获取用于从客户端应用程序授权请求的令牌
 

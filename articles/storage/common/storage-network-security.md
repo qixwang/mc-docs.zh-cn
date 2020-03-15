@@ -11,11 +11,11 @@ ms.author: v-jay
 ms.reviewer: santoshc
 ms.subservice: common
 ms.openlocfilehash: 3fff4dbce8403a5996b5114adc5b8c6482d76746
-ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77028937"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291900"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>配置 Azure 存储防火墙和虚拟网络
 

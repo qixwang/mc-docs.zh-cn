@@ -11,11 +11,11 @@ ms.topic: conceptual
 origin.date: 11/04/2019
 ms.date: 03/02/2020
 ms.openlocfilehash: 8730c16cf53946c164eb5b79ce25dc31934e576a
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78850636"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291162"
 ---
 # <a name="service-administration-for-azure-cognitive-search-in-the-azure-portal"></a>Azure 门户中 Azure 认知搜索服务管理
 > [!div class="op_single_selector"]

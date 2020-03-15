@@ -16,11 +16,11 @@ origin.date: 01/27/2020
 ms.date: 2/6/2020
 ms.author: v-lingwu
 ms.openlocfilehash: fbeea56c1c501e2f35a3e7e50d4acb5fa44711a6
-ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77067956"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291474"
 ---
 # <a name="overview-of-service-bus-transaction-processing"></a>服务总线事务处理概述
 

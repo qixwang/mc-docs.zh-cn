@@ -4,15 +4,16 @@ description: 了解 Azure 应用服务中的网络功能，以及需要通过哪
 author: ccompy
 ms.assetid: 5c61eed1-1ad1-4191-9f71-906d610ee5b7
 ms.topic: article
-ms.date: 01/13/2020
+origin.date: 02/27/2020
+ms.date: 03/23/2020
 ms.author: v-tawe
 ms.custom: seodec18
-ms.openlocfilehash: 7f591c7fc85222c05c1c625806cf3d9d7f0b51d8
-ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
+ms.openlocfilehash: fdee7cef30773897f8ae821e0285ee11e2876e58
+ms.sourcegitcommit: d5eca3c6b03b206e441b599e5b138bd687a91361
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75600609"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78934808"
 ---
 # <a name="app-service-networking-features"></a>应用服务网络功能
 
@@ -28,7 +29,7 @@ Azure 应用服务是一种分布式系统。 处理传入 HTTP/HTTPS 请求的�
 |---------------------|-------------------|
 | 应用分配的地址 | 混合连接 |
 | 访问限制 | 需要网关的 VNet 集成 |
-| 服务终结点 | VNet 集成（预览版） |
+| 服务终结点 | VNet 集成 |
 
 除非另有说明，否则所有功能都可以配合使用。 可以混合使用这些功能来解决各种问题。
 
@@ -56,7 +57,9 @@ Azure 应用服务是一种分布式系统。 处理传入 HTTP/HTTPS 请求的�
 | 访问位于不同区域的 Azure 虚拟网络中的资源 | 需要网关的 VNet 集成 </br> ASE 和 VNet 对等互连 |
 | 访问通过服务终结点保护的资源 | VNet 集成 </br> ASE |
 | 访问未连接到 Azure 的专用网络中的资源 | 混合连接 |
-| 跨 ExpressRoute 线路访问资源 | VNet 集成（目前限制为 RFC 1918 地址） </br> ASE | 
+| 跨 ExpressRoute 线路访问资源 | VNet 集成 </br> ASE | 
+| 保护来自 Web 应用的出站流量 | VNet 集成和网络安全组 </br> ASE | 
+| 路由来自 Web 应用的出站流量 | VNet 集成和路由表 </br> ASE | 
 
 
 ### <a name="default-networking-behavior"></a>默认网络行为
@@ -151,10 +154,12 @@ Azure 应用服务缩放单元为每个部署中的多个客户提供支持。 �
 * 访问位于同一区域的资源管理器 VNet 中的资源
 * 访问通过服务终结点保护的资源 
 * 访问可跨 ExpressRoute 或 VPN 连接访问的资源
+* 保护所有出站流量 
+* 强制通过隧道来传输所有出站流量。 
 
 ![VNet 集成](media/networking-features/vnet-integration.png)
 
-此功能目前为预览版，请不要将其用于生产工作负荷。 若要详细了解此功能，请阅读有关[应用服务 VNet 集成][vnetintegration]的文档。
+若要详细了解此功能，请阅读有关[应用服务 VNet 集成][vnetintegration]的文档。
 
 ## <a name="app-service-environment"></a>应用服务环境 
 

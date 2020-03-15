@@ -19,11 +19,11 @@ ms.reviewer: agirling, saeeda, benv
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 11d686fb8484d2dbb1d079b1131717a282f19a5b
-ms.sourcegitcommit: e60779782345a5428dd1a0b248f9526a8d421343
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72912755"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291025"
 ---
 # <a name="microsoft-identity-platform-v20-overview"></a>Microsoft 标识平台 (v2.0) 概述
 

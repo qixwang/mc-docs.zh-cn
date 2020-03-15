@@ -16,11 +16,11 @@ origin.date: 08/05/2019
 ms.date: 02/10/2020
 ms.author: v-yeche
 ms.openlocfilehash: 7dcad0e1cf7845e54e2860a4cf3826c7668932cd
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77428077"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291756"
 ---
 # <a name="frequently-asked-questions-for-sql-server-running-on-windows-virtual-machines-in-azure"></a>Azure 的 Windows 虚拟机上运行的 SQL Server 常见问题解答
 

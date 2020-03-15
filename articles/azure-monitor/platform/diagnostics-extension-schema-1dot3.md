@@ -9,11 +9,11 @@ origin.date: 09/20/2018
 ms.date: 6/4/2019
 ms.author: v-lingwu
 ms.openlocfilehash: 90bf8ab623bb64291ccd8a8e2e1ade8ddcb75560
-ms.sourcegitcommit: 21b02b730b00a078a76aeb5b78a8fd76ab4d6af2
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74838924"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292256"
 ---
 # <a name="azure-diagnostics-13-and-later-configuration-schema"></a>Azure 诊断 1.3 及更高版本的配置架构
 > [!NOTE]
@@ -542,7 +542,7 @@ PublicConfig 和 PrivateConfig 是分开的，因为在大多数使用案例中�
 |子元素|说明|  
 |--------------------|-----------------|  
 |**DefaultEvents**|可选属性：<br/><br/> **eventDestination** -存储事件的表的名称|  
-|**Event**|必需属性：<br /><br /> **id** - 事件 ID。<br /><br /> 可选属性：<br /><br /> **eventDestination** -存储事件的表的名称|  
+|**事件**|必需属性：<br /><br /> **id** - 事件 ID。<br /><br /> 可选属性：<br /><br /> **eventDestination** -存储事件的表的名称|  
 
 
 
@@ -552,7 +552,7 @@ PublicConfig 和 PrivateConfig 是分开的，因为在大多数使用案例中�
 |子元素|说明|  
 |--------------------|-----------------|  
 |**DefaultEvents**|可选属性：<br /><br /> **eventDestination** -存储事件的表的名称|  
-|**Event**|必需属性：<br /><br /> **id** - 事件 ID。<br /><br /> 可选属性：<br /><br /> **eventDestination** -存储事件的表的名称|  
+|**事件**|必需属性：<br /><br /> **id** - 事件 ID。<br /><br /> 可选属性：<br /><br /> **eventDestination** -存储事件的表的名称|  
 
 
 
@@ -610,9 +610,9 @@ PublicConfig 和 PrivateConfig 是分开的，因为在大多数使用案例中�
 |属性|类型|说明|  
 |---------------|----------|-----------------|  
 |**bufferQuotaInMB**|**unsignedInt**|可选。 指定可用于存储指定数据的文件系统存储最大容量。<br /><br /> 默认值为 0。|  
-|**scheduledTransferLogLevelFilter**|**字符串**|可选。 指定传输的日志条目的最低严重级别。 默认值是“未定义”  ，这会传输所有日志。 其他可能的值是（按信息严重级别从高到低排序）“详细”  、“信息”  、“警告”  、“错误”  和“严重”  。|  
+|**scheduledTransferLogLevelFilter**|**string**|可选。 指定传输的日志条目的最低严重级别。 默认值是“未定义”  ，这会传输所有日志。 其他可能的值是（按信息严重级别从高到低排序）“详细”  、“信息”  、“警告”  、“错误”  和“严重”  。|  
 |**scheduledTransferPeriod**|**duration**|可选。 指定计划的数据传输之间的时间间隔，向上舍入为最接近的分钟数。<br /><br /> 默认是 PT0S。|  
-|**sinks** |**字符串**| 在 1.5 中添加。 可选。 指向同时要发送诊断数据的接收器位置。 例如，Application Insights 或事件中心。|  
+|**sinks** |**string**| 在 1.5 中添加。 可选。 指向同时要发送诊断数据的接收器位置。 例如，Application Insights 或事件中心。|  
 
 ## <a name="dockersources"></a>DockerSources
  *树：根 - DiagnosticsConfiguration - PublicConfig - WadCFG - DiagnosticMonitorConfiguration - DockerSources*
@@ -646,7 +646,7 @@ PublicConfig 和 PrivateConfig 是分开的，因为在大多数使用案例中�
 |元素|类型|说明|  
 |-------------|----------|-----------------|  
 |**Application Insights**|string|仅在将数据发送到 Application Insights 时使用。 包含有权访问的有效 Application Insights 帐户的检测密钥。|  
-|**通道**|string|每个对应一个流处理的其他筛选|  
+|通道 |string|每个对应一个流处理的其他筛选|  
 
 ## <a name="channels-element"></a>Channels 元素  
  *树：根 - DiagnosticsConfiguration - PublicConfig - WadCFG - SinksConfig - Sink - Channels*
@@ -668,8 +668,8 @@ PublicConfig 和 PrivateConfig 是分开的，因为在大多数使用案例中�
 
 |属性|类型|说明|  
 |----------------|----------|-----------------|  
-|**logLevel**|**字符串**|指定传输的日志条目的最低严重级别。 默认值是“未定义”  ，这会传输所有日志。 其他可能的值是（按信息严重级别从高到低排序）“详细”  、“信息”  、“警告”  、“错误”  和“严重”  。|  
-|**name**|**字符串**|要引用的通道的唯一名称|  
+|**logLevel**|**string**|指定传输的日志条目的最低严重级别。 默认值是“未定义”  ，这会传输所有日志。 其他可能的值是（按信息严重级别从高到低排序）“详细”  、“信息”  、“警告”  、“错误”  和“严重”  。|  
+|**name**|**string**|要引用的通道的唯一名称|  
 
 
 ## <a name="privateconfig-element"></a>PrivateConfig 元素

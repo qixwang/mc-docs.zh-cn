@@ -7,11 +7,11 @@ author: lingliw
 ms.date: 9/20/2019
 ms.author: v-lingwu
 ms.openlocfilehash: 41e34e1560d2a4785f36122dd10613bcc9a9874a
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78850419"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292582"
 ---
 # <a name="explore-netnet-core-and-python-trace-logs-in-application-insights"></a>在 Application Insights 中浏览 .NET/.NET Core 和 Python 跟踪日志
 

@@ -12,11 +12,11 @@ ms.topic: conceptual
 origin.date: 02/12/2020
 ms.date: 03/02/2020
 ms.openlocfilehash: f8db2ee6f9b84502d2bd3be208635c7a25463b9f
-ms.sourcegitcommit: 46fd4297641622c1984011eac4cb5a8f6f94e9f5
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77563478"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292066"
 ---
 # <a name="set-up-clusters-in-hdinsight-with-apache-hadoop-apache-spark-apache-kafka-and-more"></a>使用 Apache Hadoop、Apache Spark、Apache Kafka 及其他组件在 HDInsight 中设置群集
 
@@ -44,7 +44,7 @@ Hadoop 群集由用于对任务进行分布式处理的多个虚拟机（节点�
 
 本文将指导你完成 [Azure 门户](https://portal.azure.cn)中的设置，你可以在其中使用默认视图或“经典”  创建 HDInsight 群集。
 
-## <a name="basics"></a>基本信息
+## <a name="basics"></a>基础知识
 
 ![hdinsight 创建选项 - 自定义快速创建](./media/hdinsight-hadoop-provision-linux-clusters/azure-portal-cluster-basics-blank-fs.png)
 

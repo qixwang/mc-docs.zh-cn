@@ -6,12 +6,12 @@ author: lingliw
 origin.date: 11/22/2018
 ms.date: 11/20/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 173a00dc99d00af65a7967614254eeed49952093
-ms.sourcegitcommit: 21b02b730b00a078a76aeb5b78a8fd76ab4d6af2
+ms.openlocfilehash: 18b9c6aecd6ccea5a72560bd876e274f34265bc5
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74838893"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79290794"
 ---
 # <a name="release-notes-for-microsoft-azure-backup-server"></a>Microsoft Azure 备份服务器发行说明
 本文提供了 Microsoft Azure 备份服务器 (MABS) V3 的已知的问题和解决方法。
@@ -20,7 +20,7 @@ ms.locfileid: "74838893"
 
 **说明：** 将 MABS V2 升级到 MABS V3 之后，群集化数据源（例如数据库可用性组 (DAG)中的 Hyper-V 群集或 SQL 群集 (SQL Always On) 或 Exchange）的备份/还原失败。
 
-**变通方法：** 若要防止出现此问题，请打开 SQL Server Management Studio (SSMS)) 并在 DPM DB 上运行以下 SQL 脚本：
+**解决方法：** 若要防止出现此问题，请打开 SQL Server Management Studio (SSMS)) 并在 DPM DB 上运行以下 SQL 脚本：
 
 ```sql
     IF EXISTS (SELECT * FROM dbo.sysobjects
@@ -53,13 +53,13 @@ ms.locfileid: "74838893"
 
 **说明：** 从 MABS V2 升级到 MABS V3 在俄罗斯语区域设置中失败并且出现错误代码 **4387**。
 
-**变通方法：** 执行以下步骤以使用俄罗斯语安装包升级到 MABS V3：
+**解决方法：** 执行以下步骤以使用俄罗斯语安装包升级到 MABS V3：
 
 1. [备份](https://docs.microsoft.com/sql/relational-databases/backup-restore/create-a-full-database-backup-sql-server?view=sql-server-2017#SSMSProcedure)你的 SQL 数据库并卸载 MABS V2（在卸载期间选择保留受保护的数据）。
 2. 在升级过程中升级到 SQL 2017（企业版）并卸载报告功能。
 3. [安装](https://docs.microsoft.com/sql/reporting-services/install-windows/install-reporting-services?view=sql-server-2017#install-your-report-server) SQL Server Reporting Services (SSRS)。
 4. [安装](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) SQL Server Management Studio (SSMS)。
-5. 如[使用 SQL 2017 时的 SSRS 配置](https://docs.microsoft.com/azure/backup/backup-azure-microsoft-azure-backup#upgrade-mabs)中所述使用参数配置报告功能。
+5. 如[使用 SQL 2017 时的 SSRS 配置](/backup/backup-azure-microsoft-azure-backup#upgrade-mabs)中所述使用参数配置报告功能。
 6. [安装](backup-azure-microsoft-azure-backup.md) MABS V3。
 7. 使用 SSMS [还原](https://docs.microsoft.com/sql/relational-databases/backup-restore/restore-a-database-backup-using-ssms?view=sql-server-2017) SQL 并如[此处](https://docs.microsoft.com/previous-versions/system-center/data-protection-manager-2010/ff634215(v=technet.10))所述运行 DPM-Sync 工具。
 8. 使用以下命令更新 dbo.tbl_DLS_GlobalSetting 表中的“DataBaseVersion”属性：

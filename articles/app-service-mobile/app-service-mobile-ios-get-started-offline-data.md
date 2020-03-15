@@ -6,34 +6,29 @@ ms.tgt_pltfrm: mobile-ios
 ms.devlang: objective-c
 ms.topic: article
 origin.date: 06/25/2019
-ms.date: 12/16/2019
+md.date: 03/23/2020
 ms.author: v-tawe
-ms.openlocfilehash: 2d3cc241a3ce67c7f99abd3a1aa52c482388c2ed
-ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
+ms.openlocfilehash: f645aedafd3b53d1c05b2d5c904afccb1d7f6d6c
+ms.sourcegitcommit: e94ed1c9eff4e88be2ca389909e60b14cc0d92f8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75600552"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79084420"
 ---
 # <a name="enable-offline-syncing-with-ios-mobile-apps"></a>启用 iOS 移动应用的脱机同步功能
 [!INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]
 
-> [!NOTE]
-> Visual Studio App Center 支持以移动应用开发为中心的端到端集成服务。 开发人员可以使用“生成”  、“测试”  和“分发”  服务来设置“持续集成和交付”管道。 部署应用后，开发人员可以使用**分析**和**诊断**服务监视其应用的状态和使用情况，并使用**推送**服务与用户互动。 开发人员还可以利用“身份验证”  对其用户进行身份验证，并使用“数据”  服务在云中保留和同步应用数据。
->
-> 如果希望将云服务集成到移动应用程序中，请立即注册到 [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) 中。
-
 ## <a name="overview"></a>概述
-本教程介绍 Azure 应用服务 for iOS 的移动应用功能的脱机同步。 通过脱机同步功能，最终用户可在无网络连接的情况下与移动应用进行交互，以查看、添加或修改数据。 更改存储在本地数据库中。 设备重新联机后，这些更改会与远程后端同步。
+本教程介绍 Azure 应用服务 for iOS 的移动应用功能的脱机同步。 通过脱机同步功能，最终用户可在无网络连接的情况下与移动应用进行交互，以查看、添加或修改数据。 在本地数据库中存储更改。 设备重新联机后，这些更改会与远程后端同步。
 
-对于首次体验“移动应用”的用户，请先完成[创建 iOS 应用]教程。 如果不使用下载的快速入门服务器项目，则必须将数据访问扩展包添加到项目。 有关服务器扩展包的详细信息，请参阅[使用适用于 Azure 移动应用的 .NET 后端服务器 SDK](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md)。
+对于首次体验 移动应用的用户，请先完成 [创建 iOS 应用]教程。 如果不使用下载的快速入门服务器项目，则必须将数据访问扩展包添加到项目。 有关服务器扩展包的详细信息，请参阅[使用适用于 Azure 移动应用的 .NET 后端服务器 SDK](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md)。
 
 若要了解有关脱机同步功能的详细信息，请参阅[移动应用中的脱机数据同步]。
 
 ## <a name="review-sync"></a>查看客户端同步代码
-为 [创建 iOS 应用] 教程下载的客户端项目已包含使用基于核心数据的本地数据库支持脱机同步的代码。 本部分汇总了教程代码中已包含的内容。 有关该功能的概念性概述，请参阅[移动应用中的脱机数据同步]。
+为 [创建 iOS 应用] 教程下载的客户端项目已包含使用基于核心数据的本地数据库支持脱机同步的代码。 本节概括了教程代码中包含的内容。 有关该功能的概念性概述，请参阅[移动应用中的脱机数据同步]。
 
-使用移动应用的脱机数据同步功能，即使网络不可访问，最终用户也能够与本地数据库交互。 要在应用中使用这些功能，可以初始化 `MSClient` 的同步上下文，并引用本机存储。 然后通过 **MSSyncTable** 接口引用表。
+使用移动应用的脱机数据同步功能，最终用户可在无法访问网络时仍能够与本地数据库进行交互。 要在应用中使用这些功能，可以初始化 `MSClient` 的同步上下文，并引用本机存储。 然后通过 **MSSyncTable** 接口引用表。
 
 在 QSTodoService.m  (Objective-C) 或 ToDoTableViewController.swift  (Swift) 中，请注意成员 syncTable  的类型为 MSSyncTable  。 脱机同步使用此同步表接口而不是 **MSTable**。 使用同步表时，所有操作将转到本地存储，而且只会与具有显式推送和提取操作的远程后端同步。
 
@@ -128,7 +123,7 @@ ms.locfileid: "75600552"
 
 在 Objective-C 和 Swift 版本中，均可以使用 **pullWithQuery** 方法指定查询，筛选想要检索的记录。 在本示例中，查询检索远程 `TodoItem` 表中的所有记录。
 
-**pullWithQuery** 的第二个参数是用于 *增量同步*的查询 ID。增量同步使用记录的 `UpdatedAt` 时间戳（在本地存储中称为 `updatedAt`）仅检索自上次同步以来修改的记录。查询 ID 应对于应用程序中的每个逻辑查询都是唯一的描述性字符串。 若选择不使用增量同步，请传递 `nil` 作为查询 ID。 此方法的效率可能较低，因为它检索每个提取操作的所有记录。
+**pullWithQuery** 的第二个参数是用于 *增量同步*的查询 ID。增量同步使用记录的 `UpdatedAt` 时间戳（在本地存储中称为 `updatedAt`）仅检索自上次同步以来修改的记录。查询 ID 应对于应用程序中的每个逻辑查询都是唯一的描述性字符串。 若不进行增量同步，请将 `nil` 作为查询 ID 传递。 此方法的效率可能较低，因为它检索每个提取操作的所有记录。
 
 在修改或添加数据、用户执行刷新手势和启动时，Objective-C 应用将进行同步。
 
@@ -137,7 +132,7 @@ ms.locfileid: "75600552"
 由于每当修改数据 (Objective-C) 或启动应用（Objective-C 和 Swift）时应用就会同步，因此，应用假设用户已联机。 在后面的章节中，我们更新应用，以便用户即使在脱机时也能进行编辑。
 
 ## <a name="review-core-data"></a>查看 Core Data 模型
-在使用核心数据脱机存储时，必须在数据模型中定义特定的表和字段。 示例应用已包含具有正确格式的数据模型。 在本部分中，我们会逐步介绍这些表以便说明其用法。
+在使用核心数据脱机存储时，必须在数据模型中定义特定的表和字段。 示例应用已包含具有正确格式的数据模型。 本节我们逐步介绍这些表及其用法。
 
 打开 **QSDataModel.xcdatamodeld**。 已定义四个表，其中三个由 SDK 使用，还有一个供待办事项本身使用：
   * MS_TableOperations：跟踪需要与服务器同步的项。
@@ -174,7 +169,7 @@ MS_TableOperationErrors
 | 属性 | 类型 |
 | --- | --- |
 | id |String |
-| operationId |64 位整数 |
+| operationId |Integer 64 |
 | properties |二进制数据 |
 | tableKind |16 位整数 |
 
@@ -188,7 +183,7 @@ MS_TableOperationErrors
 | key |String |
 | keyType |Integer 64 |
 | 表 |String |
-| value |字符串 |
+| value |String |
 
 ### <a name="data-table"></a>数据表
 
@@ -249,7 +244,7 @@ MS_TableOperationErrors
 
 3. 查看远程 **TodoItem** 表的内容：
    * 对于 Node.js 后端，请转到 [Azure 门户](https://portal.azure.cn/)，在移动应用后端中单击“简易表”   > “TodoItem”  。  
-   * 对于 .NET 后端，请使用 SQL 工具（如 SQL Server Management Studio）或 REST 客户端（如 Fiddler 或 Postman）。  
+   * 对于 .NET 后端，请使用 SQL 工具（如 SQL Server Management Studio）或 REST 客户端（如 Fiddler 或 Poistman）。  
 
 4. 验证新项是否 *未* 同步到服务器。
 

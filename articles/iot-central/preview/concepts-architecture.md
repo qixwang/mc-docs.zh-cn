@@ -10,11 +10,11 @@ ms.service: iot-central
 services: iot-central
 manager: philmea
 ms.openlocfilehash: 5d85384595aff15ee3a0e0c1b5acbcbe716af5c4
-ms.sourcegitcommit: fbc7584f403417d3af7bd6bbbaed7c13a78c57b9
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78412471"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79290926"
 ---
 # <a name="azure-iot-central-architecture-preview-features"></a>Azure IoT Central 体系结构（预览版功能）
 

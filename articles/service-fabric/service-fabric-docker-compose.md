@@ -5,11 +5,11 @@ ms.topic: conceptual
 ms.date: 01/13/2020
 ms.author: v-yeche
 ms.openlocfilehash: 729f3f91d4217357655ff2090125f4edacc48754
-ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75742393"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292030"
 ---
 # <a name="docker-compose-deployment-support-in-azure-service-fabric-preview"></a>Azure Service Fabric 中的 Docker Compose 部署支持（预览版）
 

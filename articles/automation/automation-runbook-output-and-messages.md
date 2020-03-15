@@ -11,11 +11,11 @@ ms.date: 08/26/2019
 ms.topic: conceptual
 manager: digimobile
 ms.openlocfilehash: 9cd8b9dd54ee2afd4a980ffa19c194619491b7a7
-ms.sourcegitcommit: 599d651afb83026938d1cfe828e9679a9a0fb69f
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69993467"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291658"
 ---
 # <a name="runbook-output-and-messages-in-azure-automation"></a>Azure 自动化中的 Runbook 输出和消息
 

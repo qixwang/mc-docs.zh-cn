@@ -6,11 +6,11 @@ origin.date: 01/31/2019
 ms.date: 02/17/2020
 ms.topic: how-to
 ms.openlocfilehash: 92fec15d9a8ce961c4ac5bdd615ea3034f9d5e23
-ms.sourcegitcommit: 0b07f1d36ac02da055874630d6edc31cb0a15269
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/10/2020
-ms.locfileid: "77112170"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291297"
 ---
 # <a name="programmatically-create-policies"></a>以编程方式创建策略
 
@@ -18,7 +18,7 @@ ms.locfileid: "77112170"
 
 有关符合性的信息，请参阅[获取符合性数据](get-compliance-data.md)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 在开始之前，请确保满足以下先决条件：
 

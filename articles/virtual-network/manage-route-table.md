@@ -14,11 +14,11 @@ origin.date: 02/09/2018
 ms.date: 01/13/2020
 ms.author: v-yeche
 ms.openlocfilehash: 3e7bded1b0b5c35f117430e675469ce917a3dcc4
-ms.sourcegitcommit: bc5f8b4f8ccd7c723f64055825508d1dfcc2162b
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75859216"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291790"
 ---
 # <a name="create-change-or-delete-a-route-table"></a>创建、更改或删除路由表
 

@@ -11,11 +11,11 @@ ms.author: gopalv
 ms.topic: conceptual
 ms.date: 10/11/2019
 ms.openlocfilehash: be22ec03468d89ea87387d3c8e1f81d084a3eaa5
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75599001"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292644"
 ---
 # <a name="data-exploration-and-visualization-tools-on-the-azure-data-science-virtual-machine"></a>Azure Data Science Virtual Machine 上的数据浏览和可视化工具
 

@@ -9,11 +9,11 @@ ms.date: 12/16/2019
 ms.author: v-yeche
 ms.custom: seodec18
 ms.openlocfilehash: ce3f9cf7c83e23e2b2e4729dd163719f415b183f
-ms.sourcegitcommit: fbc7584f403417d3af7bd6bbbaed7c13a78c57b9
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78411420"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79290913"
 ---
 # <a name="manage-azure-cosmos-db-sql-api-resources-using-powershell"></a>使用 PowerShell 管理 Azure Cosmos DB SQL API 资源
 

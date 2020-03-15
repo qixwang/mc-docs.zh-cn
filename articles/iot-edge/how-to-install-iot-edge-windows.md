@@ -11,11 +11,11 @@ origin.date: 10/04/2019
 ms.date: 03/02/2020
 ms.author: v-tawe
 ms.openlocfilehash: 34b6081eb0f5b03b20bab9dfc5431d2181b3fc49
-ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77494072"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291607"
 ---
 # <a name="install-the-azure-iot-edge-runtime-on-windows"></a>在 Windows 上安装 Azure IoT Edge 运行时
 
@@ -34,7 +34,7 @@ ms.locfileid: "77494072"
 
 有关最新 IoT Edge 版本包含的功能的信息，请参阅 [Azure IoT Edge 版本](https://github.com/Azure/azure-iotedge/releases)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 参考本部分检查你的 Windows 设备是否支持 IoT Edge，并在安装之前为容器引擎准备好该设备。
 

@@ -13,11 +13,11 @@ ms.date: 07/08/2019
 ms.author: v-junlch
 ms.custom: seodec18
 ms.openlocfilehash: 345d8511e9c7aac0b4c40dda28597de4d11ccbe7
-ms.sourcegitcommit: 8f49da0084910bc97e4590fc1a8fe48dd4028e34
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67844653"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291814"
 ---
 # <a name="quickstart-extract-handwritten-text-using-the-computer-vision-rest-api-and-c"></a>快速入门：使用计算机视觉 REST API 和 C# 提取手写文本
 
@@ -209,7 +209,7 @@ namespace CSHttpClientSample
 
 ## <a name="examine-the-response"></a>检查响应
 
-成功的响应以 JSON 格式返回。 示例应用程序会在控制台窗口中分析和显示成功响应，如下例所示：
+成功响应将以 JSON 格式返回。 示例应用程序会在控制台窗口中分析和显示成功响应，如下例所示：
 
 ```json
 {

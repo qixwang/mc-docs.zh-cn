@@ -8,11 +8,11 @@ author: rockboyfor
 ms.topic: conceptual
 ms.author: v-yeche
 ms.openlocfilehash: f21fc26b88414628d53b8cac97682cdf607cca2c
-ms.sourcegitcommit: e0225b4d68a71bfa5bbcb7d8d7e0214b9a17dc5d
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71083184"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291576"
 ---
 # <a name="manage-site-recovery-access-with-role-based-access-control-rbac"></a>使用基于角色的访问控制 (RBAC) 管理 Site Recovery 访问
 
@@ -60,7 +60,7 @@ Azure Site Recovery 提供了 3 个用于控制 Site Recovery 管理操作的内
 |  |  | Microsoft.Network/virtualNetworks/subnets/join/action |
 |  | 经典 | Microsoft.ClassicNetwork/virtualNetworks/read |
 |  |  | Microsoft.ClassicNetwork/virtualNetworks/join/action |
-| 存储 | 资源管理器 | Microsoft.Storage/storageAccounts/read |
+| 存储 | Resource Manager | Microsoft.Storage/storageAccounts/read |
 |  |  | Microsoft.Storage/storageAccounts/listkeys/action |
 |  | 经典 | Microsoft.ClassicStorage/storageAccounts/read |
 |  |  | Microsoft.ClassicStorage/storageAccounts/listKeys/action |

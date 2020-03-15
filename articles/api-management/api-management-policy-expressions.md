@@ -16,11 +16,11 @@ origin.date: 03/22/2019
 ms.author: v-yiso
 ms.date: 11/04/2019
 ms.openlocfilehash: defbe44d4d3b1140ac27aa294db4f57a09906c01
-ms.sourcegitcommit: 73f07c008336204bd69b1e0ee188286d0962c1d7
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72913252"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291791"
 ---
 # <a name="api-management-policy-expressions"></a>API 管理策略表达式
 本文讨论策略表达式语法 C# 7。 每个表达式都可以访问隐式提供的[上下文](api-management-policy-expressions.md#ContextVariables)变量以及允许的 .NET Framework 类型[子集](api-management-policy-expressions.md#CLRTypes)。
@@ -158,7 +158,7 @@ ms.locfileid: "72913252"
 |System.Security.Cryptography.SymmetricAlgorithm|全部|
 |System.Security.Cryptography.X509Certificates.PublicKey|全部|
 |System.Security.Cryptography.X509Certificates.RSACertificateExtensions|全部|
-|System.Security.Cryptography.X509Certificates.X500DistinguishedName|Name|
+|System.Security.Cryptography.X509Certificates.X500DistinguishedName|名称|
 |System.Security.Cryptography.X509Certificates.X509Certificate|全部|
 |System.Security.Cryptography.X509Certificates.X509Certificate2|全部|
 |System.Security.Cryptography.X509Certificates.X509ContentType|全部|
@@ -216,7 +216,7 @@ ms.locfileid: "72913252"
 |<a id="ref-context-api"></a>context.Api|Id：string<br /><br /> IsCurrentRevision：bool<br /><br />  Name：string<br /><br /> Path：string<br /><br /> Revision: string<br /><br /> ServiceUrl：[IUrl](#ref-iurl)<br /><br /> Version: string |
 |<a id="ref-context-deployment"></a>context.Deployment|Region：string<br /><br /> ServiceName：string<br /><br /> 证书：IReadOnlyDictionary<string, X509Certificate2>|
 |<a id="ref-context-lasterror"></a>context.LastError|Source：string<br /><br /> Reason：string<br /><br /> Message：string<br /><br /> Scope：string<br /><br /> Section：string<br /><br /> Path：string<br /><br /> PolicyId：string<br /><br /> 有关 context.LastError 的详细信息，请参阅[错误处理](api-management-error-handling-policies.md)。|
-|<a id="ref-context-operation"></a>context.Operation|Id：string<br /><br /> Method: 字符串<br /><br /> Name：string<br /><br /> UrlTemplate：string|
+|<a id="ref-context-operation"></a>context.Operation|Id：string<br /><br /> Method：string<br /><br /> Name：string<br /><br /> UrlTemplate：string|
 |<a id="ref-context-product"></a>context.Product|Api：IEnumerable<[IApi](#ref-iapi)\><br /><br /> ApprovalRequired：bool<br /><br /> 组：IEnumerable<[IGroup](#ref-igroup)\><br /><br /> Id：string<br /><br /> Name：string<br /><br /> State：enum ProductState {NotPublished, Published}<br /><br /> SubscriptionLimit：int?<br /><br /> SubscriptionRequired：bool|
 |<a id="ref-context-request"></a>context.Request|正文：[IMessageBody](#ref-imessagebody) 或 `null`（如果请求没有正文）。<br /><br /> 证书：System.Security.Cryptography.X509Certificates.X509Certificate2<br /><br /> [标头](#ref-context-request-headers)：IReadOnlyDictionary<string, string[]><br /><br /> IpAddress：string<br /><br /> MatchedParameters：IReadOnlyDictionary<string, string><br /><br /> Method：string<br /><br /> OriginalUrl：[IUrl](#ref-iurl)<br /><br /> URL：[IUrl](#ref-iurl)|
 |<a id="ref-context-request-headers"></a>string context.Request.Headers.GetValueOrDefault(headerName: string, defaultValue: string)|headerName：string<br /><br /> defaultValue：string<br /><br /> 如果找不到标头，则返回逗号分隔的请求标头值或 `defaultValue`。|

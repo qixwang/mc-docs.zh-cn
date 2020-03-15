@@ -6,22 +6,17 @@ ms.tgt_pltfrm: html
 ms.devlang: javascript
 ms.topic: article
 origin.date: 06/25/2019
-ms.date: 12/16/2019
+md.date: 03/23/2020
 ms.author: v-tawe
-ms.openlocfilehash: 3a3e1ec33405df5784056f97a54a7a0bfdf25279
-ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
+ms.openlocfilehash: a5a89dafb4d0d8a8d52ba5d25c751610df9a71e3
+ms.sourcegitcommit: e94ed1c9eff4e88be2ca389909e60b14cc0d92f8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75600553"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79084426"
 ---
 # <a name="how-to-use-the-javascript-client-library-for-azure-mobile-apps"></a>如何使用适用于 Azure 移动应用的 JavaScript 客户端库
 [!INCLUDE [app-service-mobile-selector-client-library](../../includes/app-service-mobile-selector-client-library.md)]
-
-> [!NOTE]
-> Visual Studio App Center 支持以移动应用开发为中心的端到端集成服务。 开发人员可以使用“生成”  、“测试”  和“分发”  服务来设置“持续集成和交付”管道。 部署应用后，开发人员可以使用**分析**和**诊断**服务监视其应用的状态和使用情况，并使用**推送**服务与用户互动。 开发人员还可以利用“身份验证”  对其用户进行身份验证，并使用“数据”  服务在云中保留和同步应用数据。
->
-> 如果希望将云服务集成到移动应用程序中，请立即注册到 [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) 中。
 
 ## <a name="overview"></a>概述
 本指南介绍如何使用最新的 [Azure 移动应用 JavaScript SDK]执行常见任务。 对于 Azure 移动应用的新手，请先完成 [Azure Mobile Apps Quick Start] （Azure 移动应用快速入门）创建后端和表。 本指南着重介绍如何在 HTML/JavaScript Web 应用程序中使用移动后端。
@@ -29,7 +24,7 @@ ms.locfileid: "75600553"
 ## <a name="supported-platforms"></a>支持的平台
 我们将浏览器支持限制为主要浏览器的当前版本和过去版本：Google Chrome、Microsoft Edge、Microsoft Internet Explorer 和 Mozilla Firefox。  我们预期 SDK 可与任何相对现代的浏览器搭配使用。
 
-由于包已被分发为通用 JavaScript 模块，因此它支持全局、AMD 和 CommonJS 格式。
+包作为通用 JavaScript 模块分发，因此支持全局、AMD 和 CommonJS 格式。
 
 ## <a name="Setup"></a>安装与先决条件
 本指南假设已创建了包含表的后端。 本指南假设该表的架构与这些教程中的表相同。

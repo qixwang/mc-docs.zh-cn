@@ -9,11 +9,11 @@ origin.date: 12/17/2019
 ms.date: 01/13/2020
 ms.author: v-yeche
 ms.openlocfilehash: f98452124059cd5946e6cac6ac3e1ef29ed82be6
-ms.sourcegitcommit: 4f4694991e1c70929c7112ad45a0c404ddfbc8da
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75776725"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291340"
 ---
 # <a name="reprotect-from-azure-to-on-premises"></a>从 Azure 重新保护到本地
 

@@ -2,18 +2,16 @@
 title: 在 Azure Kubernetes 服务 (AKS) 中为多个 Pod 动态创建文件卷
 description: 了解如何使用 Azure 文件动态创建永久性卷，以便与 Azure Kubernetes 服务 (AKS) 中的多个并发 Pod 一起使用
 services: container-service
-author: rockboyfor
-ms.service: container-service
 ms.topic: article
 origin.date: 09/12/2019
-ms.date: 09/23/2019
+ms.date: 03/09/2020
 ms.author: v-yeche
-ms.openlocfilehash: 0e37bed09195bcd3baab63607366f61d60870b52
-ms.sourcegitcommit: 6a62dd239c60596006a74ab2333c50c4db5b62be
+ms.openlocfilehash: 826064b0edfba5b21c00480db14bd1f2396c5356
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71155866"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79290764"
 ---
 # <a name="dynamically-create-and-use-a-persistent-volume-with-azure-files-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中动态创建永久性卷并将其用于 Azure 文件
 
@@ -65,43 +63,6 @@ parameters:
 
 ```console
 kubectl apply -f azure-file-sc.yaml
-```
-
-## <a name="create-a-cluster-role-and-binding"></a>创建群集角色和绑定
-
-AKS 群集使用 Kubernetes 基于角色的访问控制 (RBAC) 来限制可执行的操作。 “角色”定义要授予的权限，“绑定”将其应用到目标用户   。 这些分配可应用于特定命名空间或整个群集。 有关详细信息，请参阅[使用 RBAC 授权][kubernetes-rbac]。
-
-要允许 Azure 平台创建所需的存储资源，请创建 ClusterRole 和 ClusterRoleBinding   。 创建名为 `azure-pvc-roles.yaml` 的文件，并将其复制到以下 YAML 中：
-
-```yaml
----
-apiVersion: rbac.authorization.k8s.io/v1
-kind: ClusterRole
-metadata:
-  name: system:azure-cloud-provider
-rules:
-- apiGroups: ['']
-  resources: ['secrets']
-  verbs:     ['get','create']
----
-apiVersion: rbac.authorization.k8s.io/v1
-kind: ClusterRoleBinding
-metadata:
-  name: system:azure-cloud-provider
-roleRef:
-  kind: ClusterRole
-  apiGroup: rbac.authorization.k8s.io
-  name: system:azure-cloud-provider
-subjects:
-- kind: ServiceAccount
-  name: persistent-volume-binder
-  namespace: kube-system
-```
-
-使用 [kubectl apply][kubectl-apply] 命令分配权限：
-
-```console
-kubectl apply -f azure-pvc-roles.yaml
 ```
 
 ## <a name="create-a-persistent-volume-claim"></a>创建永久性卷声明

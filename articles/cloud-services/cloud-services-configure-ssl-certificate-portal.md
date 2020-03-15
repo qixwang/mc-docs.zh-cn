@@ -16,11 +16,11 @@ origin.date: 05/26/2017
 ms.author: v-yiso
 ms.date: 12/17/2018
 ms.openlocfilehash: 829e748eea51e5ca395333c05c01d817c59ea6f7
-ms.sourcegitcommit: b8fb6890caed87831b28c82738d6cecfe50674fd
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58626422"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291395"
 ---
 # <a name="configuring-ssl-for-an-application-in-azure"></a>在 Azure 中为应用程序配置 SSL
 
@@ -35,16 +35,16 @@ ms.locfileid: "58626422"
 如果尚未创建云服务，请首先阅读[此文章](./cloud-services-how-to-create-deploy-portal.md) 。
 
 ## <a name="step-1-get-an-ssl-certificate"></a>步骤 1：获取 SSL 证书
-若要为应用程序配置 SSL，首先需要获取已由证书颁发机构 (CA)（出于此目的颁发证书的受信任的第三方）签署的 SSL 证书。 如果尚未获取 SSL 证书，将需要从销售 SSL 证书的公司购买一个 SSL 证书。
+若要为应用程序配置 SSL，首先需要获取已由证书颁发机构 (CA)（出于此目的颁发证书的受信任的第三方）签署的 SSL 证书。 如果尚未获取 SSL 证书，需要从销售 SSL 证书的公司购买一个 SSL 证书。
 
 该证书必须满足 Azure 中的以下 SSL 证书要求：
 
 - 证书必须包含私钥。
 - 必须为密钥交换创建证书，并且该证书可导出到个人信息交换 (.pfx) 文件。
-- 证书的使用者名称必须与用于访问云服务的域匹配。 无法从证书颁发机构 (CA) 处获取针对 chinacloudapp.cn 域的 SSL 证书。 必须获取在访问服务时要使用的自定义域名。 从 CA 处请求证书时，该证书的使用者名称必须与用于访问应用程序的自定义域名匹配。 例如，如果自定义域名为 **contoso.com**，则将要从 CA 请求用于 <strong><em>.contoso.com</em>* 或 **www.contoso.com</strong> 的证书。
+- 证书的使用者名称必须与用于访问云服务的域匹配。 无法从证书颁发机构 (CA) 处获取针对 chinacloudapp.cn 域的 SSL 证书。 必须获取在访问服务时要使用的自定义域名。 从 CA 处请求证书时，该证书的使用者名称必须与用于访问应用程序的自定义域名匹配。 例如，如果自定义域名为 **contoso.com**，则将要从 CA 请求用于 <strong><em>.contoso.com</em>* 或 ** www.contoso.com</strong> 的证书。
 - 该证书必须使用至少 2048 位加密。
 
-出于测试目的，可以[创建](./cloud-services-certs-create.md)和使用自签名的证书。 自签名证书不通过 CA 进行身份验证，并且可以使用 chinacloudapp.cn 域作为网站 URL。 例如，以下任务使用公用名 (CN) 为 sslexample.chinacloudapp.cn 的自签名证书。
+出于测试目的，可以[创建](./cloud-services-certs-create.md)和使用自签名的证书。 自签名证书不通过 CA 进行身份验证，并且可以使用 chinacloudapp.cn 域作为网站 URL。 例如，以下任务使用公用名 (CN) 为 sslexample.chinacloudapp.cn  的自签名证书。
 
 接下来，必须在服务定义和服务配置文件中包含有关此证书的信息。
 
@@ -53,7 +53,7 @@ ms.locfileid: "58626422"
 
 必须将应用程序配置为使用该证书，并且必须添加 HTTPS 终结点。 因此，需要更新服务定义和服务配置文件。
 
-1. 在开发环境中，打开服务定义文件 (CSDEF)，在 WebRole 部分中添加“证书”部分，并包含以下关于证书（和中间证书）的信息：
+1. 在开发环境中，打开服务定义文件 (CSDEF)，在 WebRole  部分中添加“证书”  部分，并包含以下关于证书（和中间证书）的信息：
 
    ```xml
    <WebRole name="CertificateTesting" vmsize="Small">
@@ -86,11 +86,11 @@ ms.locfileid: "58626422"
 
    | 权限值  |                         说明                          |
    |-------------------|--------------------------------------------------------------|
-   | limitedOrElevated | （默认）所有角色进程都可以访问该私钥。 |
+   | limitedOrElevated | （默认）  所有角色进程都可以访问该私钥。 |
    |     提升的      |     仅提升的进程可以访问该私钥。      |
 
 
-2. 在服务定义文件中，在“终结点”部分中添加 InputEndpoint 元素以启用 HTTPS：
+2. 在服务定义文件中，在“终结点”  部分中添加 InputEndpoint  元素以启用 HTTPS：
 
    ```xml
    <WebRole name="CertificateTesting" vmsize="Small">
@@ -144,25 +144,25 @@ ms.locfileid: "58626422"
 ## <a name="step-3-upload-a-certificate"></a>步骤 3：上传证书
 连接到 Azure 门户并...
 
-1. 在门户的“所有资源”部分中，选择你的云服务。
+1. 在门户的“所有资源”部分中，选择你的云服务。 
 
     ![发布云服务](./media/cloud-services-configure-ssl-certificate-portal/browse.png)
 
-2. 单击“证书”。
+2. 单击“证书”。 
 
     ![单击证书图标](./media/cloud-services-configure-ssl-certificate-portal/certificate-item.png)
 
-3. 单击证书区域顶部的“上传”。
+3. 单击证书区域顶部的“上传”。 
 
     ![单击“上传”菜单项](./media/cloud-services-configure-ssl-certificate-portal/Upload_menu.png)
 
-4. 指定“文件”、“密码”，然后单击数据输入区域底部的“上传”。
+4. 指定“文件”、“密码”，然后单击数据输入区域底部的“上传”。   
 
 ## <a name="step-4-connect-to-the-role-instance-by-using-https"></a>步骤 4：使用 HTTPS 连接到角色实例
 
 在 Azure 中启动并运行部署后，便可以使用 HTTPS 连接到该部署。
 
-1. 单击“站点 URL”打开 Web 浏览器。
+1. 单击“站点 URL”打开 Web 浏览器。 
 
    ![单击“站点 URL”](./media/cloud-services-configure-ssl-certificate-portal/navigate.png)
 
@@ -176,7 +176,7 @@ ms.locfileid: "58626422"
    ![站点预览](./media/cloud-services-configure-ssl-certificate-portal/show-site.png)
 
    > [!TIP]
-   > 若要对过渡部署而非生产部署使用 SSL，首先需要确定用于过渡部署的 URL。 一旦部署了你的云服务，则过渡环境的 URL 由“部署 ID”GUID 决定，其格式为：`https://deployment-id.cloudapp.net/`  
+   > 若要对过渡部署而非生产部署使用 SSL，首先需要确定用于过渡部署的 URL。 一旦部署了你的云服务，则过渡环境的 URL 由“部署 ID”GUID 决定，其格式为：`https://deployment-id.cloudapp.net/`   
    >
    > 使用与基于 GUID 的 URL（例如 **328187776e774ceda8fc57609d404462.cloudapp.net**）等同的公用名 (CN) 创建证书。 使用门户将证书添加到过渡云服务。 然后，将证书信息添加到 CSDEF 和 CSCFG 文件，重新打包应用程序，并更新过渡部署以使用新的程序包。
    >

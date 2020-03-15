@@ -10,11 +10,11 @@ ms.author: v-jay
 ms.reviewer: fryu
 ms.subservice: common
 ms.openlocfilehash: 4d087b104d480f95e8ad81ff34ec874ad3dc3e79
-ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77028938"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291946"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-azure-storage"></a>对 Azure 存储进行监视、诊断和故障排除
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]

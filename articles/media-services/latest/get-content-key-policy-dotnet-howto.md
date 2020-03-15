@@ -11,19 +11,19 @@ ms.workload: ''
 ms.topic: article
 ms.custom: seodec18
 origin.date: 04/15/2019
-ms.date: 09/23/2019
+ms.date: 03/04/2020
 ms.author: v-jay
-ms.openlocfilehash: fbb4413ea0e0773e6986090252a9673ee035e93e
-ms.sourcegitcommit: 8248259e4c3947aa0658ad6c28f54988a8aeebf8
+ms.openlocfilehash: bdd1211250c1f8661b4b20ebae403b3218a6e3de
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71125583"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291558"
 ---
 # <a name="get-a-signing-key-from-the-existing-policy"></a>从现有策略获取签名密钥
 
 > [!NOTE]
-> Google Widevine 目前在中国地区不可用。
+> Google Widevine 内容保护服务目前在 Azure 中国区域不可用。
 
 V3 API 的主要设计原则之一是使 API 更安全。 v3 API 不会在 **Get** 或 **List** 操作中返回机密或凭据。 请参阅此处的详细说明：有关详细信息，请参阅 [RBAC 和媒体服务帐户](rbac-overview.md)
 

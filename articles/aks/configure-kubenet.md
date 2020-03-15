@@ -2,19 +2,17 @@
 title: 在 Azure Kubernetes 服务 (AKS) 中配置 kubenet 网络
 description: 了解如何在 Azure Kubernetes 服务 (AKS) 中配置 kubenet（基本）网络，以将 AKS 群集部署到现有虚拟网络和子网。
 services: container-service
-author: rockboyfor
-ms.service: container-service
 ms.topic: article
 origin.date: 06/26/2019
-ms.date: 01/13/2020
+ms.date: 03/09/2020
 ms.author: v-yeche
 ms.reviewer: nieberts, jomore
-ms.openlocfilehash: a6a18764a3318b6ed3ee86b3ad01244bd64c57d8
-ms.sourcegitcommit: c5af330f13889a18bb8a5b44e6566a3df4aeea49
+ms.openlocfilehash: d873c857c3de4253e4553dfee40eeee2b654ebfe
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75859861"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79290760"
 ---
 # <a name="use-kubenet-networking-with-your-own-ip-address-ranges-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中结合自己的 IP 地址范围使用 kubenet 网络
 
@@ -24,7 +22,7 @@ ms.locfileid: "75859861"
 
 本文介绍如何使用 *kubenet* 网络来创建和使用 AKS 群集的虚拟网络子网。 有关网络选项和注意事项的详细信息，请参阅 [Kubernetes 和 AKS 的网络概念][aks-network-concepts]。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * AKS 群集的虚拟网络必须允许出站 Internet 连接。
 * 不要在同一子网中创建多个 AKS 群集。
@@ -182,9 +180,6 @@ az aks create \
     --client-secret <password>
 ```
 
-<!--Not Available on --vm-set-type AvailabilitySet-->
-<!--MOONCAKE: CORRECT TO APPEND --vm-set-type AvailabilitySet Before VMSS feature is valid on Azure China Cloud-->
-
 > [!Note]
 > 如果希望启用 AKS 群集以包括 [Calico 网络策略][calico-network-policies]，可以使用以下命令。
 
@@ -202,9 +197,6 @@ az aks create \
     --service-principal <appId> \
     --client-secret <password>
 ```
-
-<!--Not Available on --vm-set-type AvailabilitySet-->
-<!--MOONCAKE: CORRECT TO APPEND --vm-set-type AvailabilitySet Before VMSS feature is valid on Azure China Cloud-->
 
 创建 AKS 群集时，将创建网络安全组和路由表。 这些网络资源可以通过 AKS 控制平面进行管理。 网络安全组自动与节点上的虚拟 NIC 相关联。 路由表自动与虚拟网络子网相关联。 在你创建和公开服务时，系统会自动更新网络安全组规则和路由表。
 

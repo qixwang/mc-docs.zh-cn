@@ -9,11 +9,11 @@ ms.author: v-jay
 ms.reviewer: wamota
 ms.lastreviewed: 12/11/2019
 ms.openlocfilehash: b452034a152394b175da5f483372d71b379a5274
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77540933"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291448"
 ---
 # <a name="publish-azure-stack-hub-services-in-your-datacenter"></a>在数据中心发布 Azure Stack Hub 服务 
 

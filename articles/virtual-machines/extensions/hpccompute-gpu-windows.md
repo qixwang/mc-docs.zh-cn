@@ -15,11 +15,11 @@ origin.date: 01/09/2019
 ms.date: 11/11/2019
 ms.author: v-yeche
 ms.openlocfilehash: b5dffd891c43cdedc1e3a208538a5a515e3bbc68
-ms.sourcegitcommit: 73715ebbaeb96e80046142b8fe5bbc117d85b317
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74593684"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292810"
 ---
 # <a name="nvidia-gpu-driver-extension-for-windows"></a>适用于 Windows 的 NVIDIA GPU 驱动程序扩展
 
@@ -72,7 +72,7 @@ ms.locfileid: "74593684"
 
 ### <a name="properties"></a>属性
 
-| Name | 值/示例 | 数据类型 |
+| 名称 | 值/示例 | 数据类型 |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
 | publisher | Microsoft.HpcCompute | string |

@@ -18,11 +18,11 @@ ms.date: 11/25/2019
 ms.author: v-yeche
 ms.custom: ''
 ms.openlocfilehash: 8a045afaf277aa24ced095fa7b1d63ee2a4eae3f
-ms.sourcegitcommit: 298eab5107c5fb09bf13351efeafab5b18373901
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2019
-ms.locfileid: "74658013"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291979"
 ---
 # <a name="configure-a-virtual-network-classic-using-a-network-configuration-file"></a>使用网络配置文件配置虚拟网络（经典）
 > [!IMPORTANT]
@@ -65,7 +65,7 @@ ms.locfileid: "74658013"
 - 覆盖订阅的所有现有网络设置，因此，在修改时请格外小心。 例如，请参考以下示例网络配置文件。 假设原始文件包含两个 **VirtualNetworkSite** 实例，而我们已按示例中所示更改了此文件。 导入文件时，Azure 会删除我们在该文件中删除的 **VirtualNetworkSite** 的虚拟网络实例。 这种简化方案假设虚拟网络中没有任何资源，如果有，则无法删除虚拟网络，并且导入将会失败。
 
 > [!IMPORTANT]
-> Azure 会将部署有项目的子网视为“**使用中**”。 当某个子网处于“使用中”状态时，不能对其进行修改。 在修改网络配置文件中的子网信息之前，请将已部署到子网的任何内容移到不会进行修改的其他子网。 有关详细信息，请参阅[将 VM 或角色实例移到其他子网](virtual-networks-move-vm-role-to-subnet.md)。
+> Azure 会将部署有项目的子网视为“使用中”  。 当某个子网处于“使用中”状态时，不能对其进行修改。 在修改网络配置文件中的子网信息之前，请将已部署到子网的任何内容移到不会进行修改的其他子网。 有关详细信息，请参阅[将 VM 或角色实例移到其他子网](virtual-networks-move-vm-role-to-subnet.md)。
 
 ### <a name="example-xml-for-use-with-powershell"></a>用于 PowerShell 的示例 XML
 

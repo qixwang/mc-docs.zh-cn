@@ -10,11 +10,11 @@ origin.date: 05/09/2019
 ms.date: 06/10/2019
 ms.author: v-jay
 ms.openlocfilehash: 992ffc28c2204b0c154b337a19a200e73cecdcae
-ms.sourcegitcommit: 481542df432d52b7d4823811cef94772e4e0f192
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74530628"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292769"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-blob-storage-via-rest-apis"></a>教程：通过 REST API 将数据复制到 Azure Data Box Blob 存储  
 

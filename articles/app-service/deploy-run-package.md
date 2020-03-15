@@ -3,20 +3,20 @@ title: 从 ZIP 包运行应用
 description: 部署应用的具有原子性的 ZIP 包。 提高应用在 ZIP 部署过程中的行为的可预测性和可靠性。
 ms.topic: article
 origin.date: 01/14/2020
-ms.date: 02/17/2020
+ms.date: 03/23/2020
 ms.author: v-tawe
-ms.openlocfilehash: eb21e3ed0bc28dc2019d1ecfca9099dceb38e2a6
-ms.sourcegitcommit: ee2a3063185cd4c5dc24901366dbb726119d045d
+ms.openlocfilehash: 070c10cdc04b214db5bb7ebb4b8576f01f08d759
+ms.sourcegitcommit: d5eca3c6b03b206e441b599e5b138bd687a91361
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76979357"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78934708"
 ---
 # <a name="run-your-app-in-azure-app-service-directly-from-a-zip-package"></a>直接从 ZIP 包运行 Azure 应用服务中的应用
 
 在 [Azure 应用服务](overview.md)中，可以直接从部署 ZIP 包文件运行应用。 本文将介绍如何在应用中启用此功能。
 
-应用服务中的所有其他部署方法具有一定的共同之处：文件将部署到应用中的 *D:\home\site\wwwroot*（或 Linux 应用的 */home/site/wwwroot*）。 由于应用在运行时使用同一个目录，因此部署可能会因文件锁定冲突而失败，并且应用可能会由于某些文件尚未更新而出现不可预测的行为。
+应用服务中的所有其他部署方法具有一定的共同之处：文件将部署到应用中的 *D:\home\site\wwwroot*。 由于应用在运行时使用同一个目录，因此部署可能会因文件锁定冲突而失败，并且应用可能会由于某些文件尚未更新而出现不可预测的行为。
 
 相反，直接从包运行时，包中的文件不会复制到 *wwwroot* 目录， 而是将 ZIP 包本身直接装载为只读的 *wwwroot* 目录。 从包直接运行可提供多种好处：
 
@@ -64,6 +64,33 @@ az webapp config appsettings set --name <app-name> --resource-group <resource-gr
 ```
 
 如果将同名的已更新包发布到 Blob 存储，则需要重启应用，以便将更新的包加载到应用服务中。
+
+### <a name="use-key-vault-references"></a>使用 Key Vault 引用
+
+为了增加安全性，可以将 Key Vault 引用与外部 URL 结合使用。 这会使 URL 处于静态加密状态，并允许利用 Key Vault 进行机密管理和轮换。 建议使用 Azure Blob 存储，以便轻松轮换关联的 SAS 密钥。 Azure Blob 存储已静态加密，当应用程序数据未部署到应用服务时，它可确保应用程序数据安全。
+
+1. 创建 Azure 密钥保管库。
+
+    ```azurecli
+    az keyvault create --name "Contoso-Vault" --resource-group <group-name> --location chinaeast
+    ```
+
+1. 将外部 URL 作为机密添加到 Key Vault 中。
+
+    ```azurecli
+    az keyvault secret set --vault-name "Contoso-Vault" --name "external-url" --value "<insert-your-URL>"
+    ```
+
+1. 创建 `WEBSITE_RUN_FROM_PACKAGE` 应用设置，并将该值设为对外部 URL 的 Key Vault 引用。
+
+    ```azurecli
+    az webapp config appsettings set --settings WEBSITE_RUN_FROM_PACKAGE="@Microsoft.KeyVault(SecretUri=https://Contoso-Vault.vault.azure.cn/secrets/external-url/<secret-version>"
+    ```
+
+有关详细信息，请参阅以下文章。
+
+- [应用服务的 Key Vault 引用](app-service-key-vault-references.md)
+- [静态数据的 Azure 存储加密](../storage/common/storage-service-encryption.md)
 
 ## <a name="troubleshooting"></a>故障排除
 

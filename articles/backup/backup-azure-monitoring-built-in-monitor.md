@@ -8,11 +8,11 @@ ms.date: 03/05/2019
 ms.author: v-lingwu
 ms.assetid: 86ebeb03-f5fa-4794-8a5f-aa5cbbf68a81
 ms.openlocfilehash: 6a18a84b80ccb0cb934878d732a855a48fc65f54
-ms.sourcegitcommit: 21b02b730b00a078a76aeb5b78a8fd76ab4d6af2
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74839058"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291643"
 ---
 # <a name="monitoring-azure-backup-workloads"></a>监视 Azure 备份工作负荷
 
@@ -75,7 +75,7 @@ Azure 备份针对 Azure 备份保护的工作负荷提供内置的监视和警�
 根据警报严重性，可以定义三种类型的警报：
 
 - **严重**：原则上，发生任何备份或恢复失败（计划的或用户触发的）都会导致生成警报，并显示为严重警报以及破坏性操作（例如删除备份）。
-- 警告  ：如果备份操作成功但出现了几条警告，则会将这些警报列为“警告”警报。
+- **警告**：如果备份操作成功但出现了几条警告，则会将这些警报列为“警告”警报。
 - **信息性**：目前，Azure 备份服务不会生成任何信息性警报。
 
 ## <a name="notification-for-backup-alerts"></a>备份警报的通知

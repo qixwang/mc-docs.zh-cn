@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: diberry
 ms.openlocfilehash: f11e97d6f19e327ef4f433ad4cb35493c90fe157
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78155332"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292727"
 ---
 # <a name="machine-learned-features"></a>机器习得的特征 
 

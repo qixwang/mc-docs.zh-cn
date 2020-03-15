@@ -15,11 +15,11 @@ ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cb9b45f51ab326132e85cf2bc60132192d634bb0
-ms.sourcegitcommit: 9597d4da8af58009f9cef148a027ccb7b32ed8cf
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74655379"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291014"
 ---
 # <a name="add-or-delete-users-using-azure-active-directory"></a>使用 Azure Active Directory 添加或删除用户
 
@@ -65,7 +65,7 @@ ms.locfileid: "74655379"
 
 ## <a name="add-a-new-user-within-a-hybrid-environment"></a>在混合环境内添加新用户
 
-如果你的环境中同时包含 Azure Active Directory（云）和 Windows Server Active Directory（本地），则可以通过同步现有用户帐户数据来添加新用户。 有关混合环境和用户的详细信息，请参阅[将本地目录与 Azure Active Directory 进行集成](../hybrid/whatis-hybrid-identity.md)。
+如果你的环境中同时包含 Azure Active Directory（云）和 Windows Server Active Directory（本地），则可以通过同步现有用户帐户数据来添加新用户。 有关混合环境和用户的详细信息，请参阅[将本地目录与 Azure Active Directory 集成](../hybrid/whatis-hybrid-identity.md)。
 
 ## <a name="delete-a-user"></a>删除用户
 
@@ -83,7 +83,7 @@ ms.locfileid: "74655379"
 
     ![“用户 - 所有用户”页，其中突出显示了“删除用户”](./media/add-users-azure-active-directory/delete-user-all-users-blade.png)
 
-该用户已删除并不再显示在“用户 - 所有用户”页上  。 可在接下来的 30 天内于“已删除用户”页查看该用户，在此期间可将其还原  。 有关还原用户的详细信息，请参阅[使用 Azure Active Directory 还原或永久删除最近删除的用户](active-directory-users-restore.md)。
+用户将被删除并且不再显示在“用户 - 所有用户”页上。  可在接下来的 30 天内于“已删除用户”页查看该用户，在此期间可将其还原  。 有关还原用户的详细信息，请参阅[使用 Azure Active Directory 还原或永久删除最近删除的用户](active-directory-users-restore.md)。
 
 删除某个用户后，该用户使用的任何许可证可供其他用户使用。
 

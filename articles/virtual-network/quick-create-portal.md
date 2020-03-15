@@ -16,11 +16,11 @@ origin.date: 07/08/2019
 ms.date: 11/25/2019
 ms.author: v-yeche
 ms.openlocfilehash: 28429634e82cf91af5aafb9e8d86d6881df31b93
-ms.sourcegitcommit: 298eab5107c5fb09bf13351efeafab5b18373901
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2019
-ms.locfileid: "74657601"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291632"
 ---
 # <a name="quickstart-create-a-virtual-network-using-the-azure-portal"></a>快速入门：使用 Azure 门户创建虚拟网络
 
@@ -40,9 +40,9 @@ ms.locfileid: "74657601"
 
 3. 在“创建虚拟网络”  中，输入或选择以下信息：
 
-    | 设置 | 值 |
+    | 设置 | Value |
     | ------- | ----- |
-    | Name | 输入 myVirtualNetwork  。 |
+    | 名称 | 输入 myVirtualNetwork  。 |
     | 地址空间 | 输入 10.1.0.0/16  。 |
     | 订阅 | 选择订阅。|
     | 资源组 | 选择“新建”，输入 myResourceGroup，然后选择“确定”    。 |
@@ -88,19 +88,19 @@ ms.locfileid: "74657601"
     | **节省资金** |  |
     | 已有 Windows 许可证？ | 保留默认值“否”  。 |
 
-4. 选择“下一步:**磁盘”** 。
+4. **选择“下一步:磁盘”** 。
 
 5. 在“**创建虚拟机 - 磁盘**”中，保留默认设置，**然后选择“下一步:网络”** 。
 
 6. 在“创建虚拟机 - 基本信息”  中，选择以下信息：
 
-    | 设置 | 值 |
+    | 设置 | Value |
     | ------- | ----- |
     | 虚拟网络 | 保留默认值“myVirtualNetwork”  。 |
     | 子网 | 保留默认值“myVirtualSubnet (10.1.0.0/24)”  。 |
     | 公共 IP | 保留默认值“(new) myVm-ip”  。 |
     | 公共入站端口 | 选择“允许所选端口”  。 |
-    | 选择入站端口 | 选择 HTTP 和 RDP   。
+    | 选择入站端口 | 选择“HTTP”和“RDP”。  
 
 7. **选择“下一步:管理”** 。
 
@@ -108,9 +108,9 @@ ms.locfileid: "74657601"
 
 9. 在“创建存储帐户”中，输入或选择以下信息  ：
 
-    | 设置 | 值 |
+    | 设置 | Value |
     | ------- | ----- |
-    | Name | 输入 myvmstorageaccount  。 如果此名称已被使用，请创建唯一的名称。|
+    | 名称 | 输入 myvmstorageaccount  。 如果此名称已被使用，请创建唯一的名称。|
     | 帐户类型 | 保留默认值“存储(常规用途 v1)”  。 |
     | 性能 | 保留默认值“标准”  。 |
     | 复制 | 保留默认值“本地冗余存储(LRS)”  。 |
@@ -146,7 +146,7 @@ ms.locfileid: "74657601"
 
     选择“连接”按钮后，“连接到虚拟机”随即打开   。
 
-3. 选择“下载 RDP 文件”  。 Azure 创建远程桌面协议 (.rdp) 文件，并下载到计算机  。
+3. 选择“下载 RDP 文件”  。 Azure 会创建远程桌面协议 ( *.rdp*) 文件，并将其下载到计算机。
 
 4. 打开下载的 *.rdp* 文件。
 

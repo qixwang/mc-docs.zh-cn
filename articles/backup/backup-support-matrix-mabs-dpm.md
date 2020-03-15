@@ -6,12 +6,12 @@ origin.date: 02/17/2019
 ms.date: 11/20/2019
 ms.topic: conceptual
 ms.author: v-lingwu
-ms.openlocfilehash: 0193e6809d34108e8728622df08d8cd219cc6678
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.openlocfilehash: 1c2fae74bb4ca013a1475ec03e53b49f8e0d6a52
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78850521"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79290793"
 ---
 # <a name="support-matrix-for-backup-with-microsoft-azure-backup-server-or-system-center-dpm"></a>使用 Microsoft Azure 备份服务器或 System Center DPM 进行备份时的支持矩阵
 
@@ -154,7 +154,7 @@ DPM 服务器/MABS 需要以下 URL 的访问权限：
 
 ## <a name="supported-backups-to-mabs"></a>MABS 支持的备份
 
-有关可以使用 Azure 备份服务器保护的各种服务器和工作负载的信息，请参阅 [Azure 备份服务器保护矩阵](https://docs.microsoft.com/azure/backup/backup-mabs-protection-matrix#protection-support-matrix)。
+有关可以使用 Azure 备份服务器保护的各种服务器和工作负载的信息，请参阅 [Azure 备份服务器保护矩阵](/backup/backup-mabs-protection-matrix#protection-support-matrix)。
 
 ## <a name="supported-backups-to-dpm"></a>DPM 支持的备份
 

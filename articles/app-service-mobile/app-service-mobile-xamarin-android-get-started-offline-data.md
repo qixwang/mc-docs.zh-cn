@@ -6,30 +6,25 @@ ms.tgt_pltfrm: mobile-xamarin-android
 ms.devlang: dotnet
 ms.topic: article
 origin.date: 06/25/2019
-ms.date: 12/16/2019
+md.date: 03/23/2020
 ms.author: v-tawe
-ms.openlocfilehash: 561e2ea2703023b76776dc191c379ac7955f6973
-ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
+ms.openlocfilehash: 52766b537f8d31448b30d29563b9fddb70bff29b
+ms.sourcegitcommit: e94ed1c9eff4e88be2ca389909e60b14cc0d92f8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75600537"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79084523"
 ---
 # <a name="enable-offline-sync-for-your-xamarinandroid-mobile-app"></a>为 Xamarin.Android 移动应用启用脱机同步
 
 [!INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]
-
-> [!NOTE]
-> Visual Studio App Center 支持以移动应用开发为中心的端到端集成服务。 开发人员可以使用“生成”  、“测试”  和“分发”  服务来设置“持续集成和交付”管道。 部署应用后，开发人员可以使用**分析**和**诊断**服务监视其应用的状态和使用情况，并使用**推送**服务与用户互动。 开发人员还可以利用“身份验证”  对其用户进行身份验证，并使用“数据”  服务在云中保留和同步应用数据。
->
-> 如果希望将云服务集成到移动应用程序中，请立即注册到 [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) 中。
 
 ## <a name="overview"></a>概述
 
 本教程介绍适用于 Xamarin.Android 的 Azure 移动应用的脱机同步功能。 脱机同步允许最终用户与移动应用交互（查看、添加或修改数据），即使在没有网络连接时也是如此。 在本地数据库中存储更改。
 设备重新联机后，这些更改会与远程服务同步。
 
-本教程会更新[创建 Xamarin Android 应用] 教程中的客户端项目，支持 Azure 移动应用的脱机功能。 如果不使用下载的快速入门服务器项目，必须将数据访问扩展包添加到项目。 有关服务器扩展包的详细信息，请参阅[使用适用于 Azure 移动应用的 .NET 后端服务器 SDK](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md)。
+本教程会更新[创建 Xamarin Android 应用] 教程中的客户端项目，支持 Azure 移动应用的脱机功能。 如果不使用下载的快速入门服务器项目，必须将数据访问扩展包添加到项目。 有关服务器扩展包的详细信息，请参阅 [Work with the .NET backend server SDK for Azure Mobile Apps](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md)（使用适用于 Azure 移动应用的 .NET 后端服务器 SDK）。
 
 若要了解有关脱机同步功能的详细信息，请参阅 [Azure 移动应用中的脱机数据同步] 主题。
 
@@ -45,7 +40,7 @@ ms.locfileid: "75600537"
 
 本部分断开与移动应用后端的连接，以模拟脱机情况。 添加数据项时，异常处理程序会指示该应用处于脱机模式。 在此状态下，新项会添加到本地存储，并且在以连接状态运行推送时，这些新项将同步到移动应用后端。
 
-1. 在共享项目中编辑 ToDoActivity.cs。 更改 **applicationURL** 以指向无效的 URL：
+1. 在共享项目中编辑 ToDoActivity.cs。 将 **applicationURL** 更改为指向无效的 URL：
 
     ```
      const string applicationURL = @"https://your-service.chinacloudsites.fail";
@@ -104,7 +99,7 @@ ms.locfileid: "75600537"
 
     通过调用 `IMobileServiceSyncContext.PushAsync()` 确定将更改推送到 Azure 移动应用后端的时间。 对于调用 `PushAsync` 时客户端应用修改的所有表，此同步上下文通过跟踪和推送这些表中的更改来帮助保持表关系。
 
-    每当刷新 todoitem 列表或者添加或完成 todoitem 时，所提供的代码便会调用 `ToDoActivity.SyncAsync()` 进行同步。 每次本地更改后，该代码同步。
+    每当刷新 todoitem 列表或者添加或完成 todoitem 时，所提供的代码便会调用 `ToDoActivity.SyncAsync()` 进行同步。 代码在每次本地更改后同步。
 
     在所提供的代码中，将查询远程 `TodoItem` 表中的所有记录，但它还可以筛选记录，只需将查询 ID 和查询传递给 `PushAsync` 即可。 有关详细信息，请参阅 [Azure 移动应用中的脱机数据同步] 中的 *增量同步*部分。
 

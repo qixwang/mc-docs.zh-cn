@@ -8,11 +8,11 @@ ms.author: v-yeche
 origin.date: 07/26/2019
 ms.date: 02/10/2020
 ms.openlocfilehash: 2d6810087e0f5c88504c982de4eeb5ef3218ae78
-ms.sourcegitcommit: 23dc63b6fea451f6a2bd4e8d0fbd7ed082ba0740
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76980441"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292556"
 ---
 # <a name="use-the-azure-cosmos-emulator-for-local-development-and-testing"></a>使用 Azure Cosmos 模拟器进行本地开发和测试
 
@@ -360,7 +360,7 @@ Import-Module Microsoft.Azure.CosmosDB.Emulator
 
 可在用于 Windows 的 Docker 上运行 Azure Cosmos 模拟器。 该模拟器不适合于用于 Oracle Linux 的 Docker。
 
-安装[用于 Windows 的 Docker](https://www.docker.com/docker-windows) 后，通过右键单击工具栏上的 Docker 图标并选择“切换到 Windows 容器”  切换到 Windows 容器。
+安装[用于 Windows 的 Docker](https://www.docker.com/docker-windows) 后，通过右键单击工具栏上的 Docker 图标并选择“切换到 Windows 容器”**切换到 Windows 容器**。
 
 接下来，通过从你喜欢使用的 shell 运行以下命令，从 Docker 中心拉取模拟器映像。
 

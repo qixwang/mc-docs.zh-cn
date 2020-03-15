@@ -9,11 +9,11 @@ origin.date: 03/25/2019
 ms.date: 09/30/2019
 ms.author: v-yeche
 ms.openlocfilehash: 746f71e887ddac3870da42003152d2b51bab5b37
-ms.sourcegitcommit: 332ae4986f49c2e63bd781685dd3e0d49c696456
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71340960"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292311"
 ---
 # <a name="manage-mobility-agent-on-protected-machines"></a>管理受保护计算机上的移动代理
 

@@ -9,11 +9,11 @@ ms.date: 02/10/2020
 ms.author: v-yeche
 ms.reviewer: sngun
 ms.openlocfilehash: ed94a995fe64fdb0fe7e292150ba857cd9e573d9
-ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77068260"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291480"
 ---
 # <a name="stored-procedures-triggers-and-user-defined-functions"></a>存储过程、触发器和用户定义的函数
 

@@ -13,11 +13,11 @@ origin.date: 10/15/2019
 ms.date: 12/04/2019
 ms.author: v-lingwu
 ms.openlocfilehash: 59b7d4f479742bcb1e174f745c2b8c394c7ec78b
-ms.sourcegitcommit: 3d27913e9f896e34bd7511601fb428fc0381998b
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74982052"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292357"
 ---
 # <a name="understand-what-good-utterances-are-for-your-luis-app"></a>了解哪些良好的话语适用于你的 LUIS 应用
 

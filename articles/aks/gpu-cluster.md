@@ -9,12 +9,12 @@ ms.topic: article
 origin.date: 05/16/2019
 ms.date: 09/23/2019
 ms.author: v-yeche
-ms.openlocfilehash: af90caab0366b00de0c3d11d6682fdfdcdaebd9c
-ms.sourcegitcommit: 1d4dc20d24feb74d11d8295e121d6752c2db956e
+ms.openlocfilehash: fd70d924343a7aa4ae5b24ab5879fd07e7bf8b11
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73068893"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79290824"
 ---
 # <a name="use-gpus-for-compute-intensive-workloads-on-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 上将 GPU 用于计算密集型工作负荷
 
@@ -74,19 +74,14 @@ az aks create \
     --resource-group myResourceGroup \
     --name myAKSCluster \
     --node-vm-size Standard_NC6s_v3 \
-    --node-count 1 \
-    --vm-set-type AvailabilitySet
+    --node-count 1
 ```
-
-<!--MOONCAKE: CORRECT TO APPEND --vm-set-type AvailabilitySet Before VMSS feature is valid on Azure China Cloud-->
 
 使用 [az aks get-credentials][az-aks-get-credentials] 命令获取 AKS 群集的凭据：
 
 ```azurecli
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 ```
-
-<!--MOONCAKE Unique content on 03/28/2019-->
 
 ## <a name="install-nvidia-drivers"></a>安装 nVidia 驱动程序
 

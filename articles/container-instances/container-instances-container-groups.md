@@ -6,12 +6,12 @@ origin.date: 11/01/2019
 ms.date: 01/15/2020
 ms.author: v-yeche
 ms.custom: mvc
-ms.openlocfilehash: 2f82e918ed443ae5f6e81f066e1d71cdd3c87c69
-ms.sourcegitcommit: 97fdc3a6529136315605b86a150b345d6817dab9
+ms.openlocfilehash: 9627bf503c1f90bd5d2b1746f88a7d012a80f531
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75965119"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79290910"
 ---
 # <a name="container-groups-in-azure-container-instances"></a>Azure 容器实例中的容器组
 
@@ -34,7 +34,9 @@ Azure 容器实例中的顶层资源是容器组。  本文介绍容器组的定
 * 包含两个 Azure 文件共享作为卷装载，每个容器本地装载一个共享。
 
 > [!NOTE]
-> 多容器组目前仅支持 Linux 容器。 对于 Windows 容器，Azure 容器实例仅支持部署单个容器实例。 虽然我们正致力于为 Windows 容器提供全部功能，但你可在服务[概述](container-instances-overview.md#linux-and-windows-containers)中了解当前的平台差异。
+> 多容器组目前仅支持 Linux 容器。
+
+<!--Not Available on  For Windows containers, Azure Container Instances only supports deployment of a single container instance. While we are working to bring all features to Windows containers, you can find current platform differences in the service [Overview](container-instances-overview.md#linux-and-windows-containers).-->
 
 ## <a name="deployment"></a>部署
 
@@ -70,7 +72,7 @@ Azure 容器实例通过添加组中实例的[资源请求][resource-requests]�
 
 在容器组中，容器实例可以通过任何端口上的本地主机相互访问，即使这些端口未在组的 IP 地址对外公开，或者未从容器公开。
 
-（可选）将容器组部署到 [Azure 虚拟网络][virtual-network]，使容器能够与该虚拟网络中的其他资源安全通信。
+<!--Not Available on  [Azure virtual network][virtual-network]-->
 
 ## <a name="storage"></a>存储
 
@@ -118,7 +120,9 @@ Azure 容器实例通过添加组中实例的[资源请求][resource-requests]�
 [resource-limits]: https://docs.microsoft.com/rest/api/container-instances/containergroups/createorupdate#resourcelimits
 [resource-requirements]: https://docs.microsoft.com/rest/api/container-instances/containergroups/createorupdate#resourcerequirements
 [azure-files]: container-instances-volume-azure-files.md
-[virtual-network]: container-instances-vnet.md
+
+<!--Not Available on [virtual-network]: container-instances-vnet.md-->
+
 [secret]: container-instances-volume-secret.md
 [volume-gitrepo]: container-instances-volume-gitrepo.md
 [gpus]: container-instances-gpu.md

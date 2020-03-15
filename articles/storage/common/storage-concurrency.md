@@ -12,11 +12,11 @@ ms.date: 01/06/2020
 ms.author: v-jay
 ms.subservice: common
 ms.openlocfilehash: 8ad4a3b44a490d5a192566161e64a26367658cfd
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75624156"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291185"
 ---
 # <a name="managing-concurrency-in-azure-storage"></a>在 Azure 存储中管理并发
 

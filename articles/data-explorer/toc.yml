@@ -32,6 +32,10 @@
         - name: 数据引入概述
           displayName: 'pipelines, connectors, plugins, Python, .NET, Java, Node, REST'
           href: ingest-data-overview.md
+    - name: Kusto 查询语言
+      items:
+        - name: 快速参考指南
+          href: kql-quick-reference.md
     - name: 数据可视化概述
       href: viz-overview.md
     - name: 安全概述
@@ -52,6 +56,10 @@
           href: create-cluster-database-resource-manager.md
     - name: 引入数据
       items:
+        - name: 一键式引入
+          href: ingest-data-one-click.md
+        - name: 流式引入
+          href: ingest-data-streaming.md
         - name: 事件中心
           items:
             - name: Azure 门户
@@ -72,8 +80,6 @@
               href: data-connection-iot-hub-python.md
             - name: Azure Resource Manager 模板
               href: data-connection-iot-hub-resource-manager.md
-        - name: 一键式引入
-          href: ingest-data-one-click.md
         - name: 使用 SDK
           items:
             - name: Python
@@ -246,6 +252,8 @@
           href: 'https://techcommunity.microsoft.com/t5/Azure-Data-Explorer/bd-p/Kusto'
         - name: MSDN 论坛
           href: 'https://social.msdn.microsoft.com/Forums/zh-CN/home?forum=windowsazurezhchs'
+    - name: 产品反馈
+      href: 'https://aka.ms/adefeedback'
     - name: 定价和计费
       items:
         - name: 定价页面

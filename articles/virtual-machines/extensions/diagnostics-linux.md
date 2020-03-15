@@ -11,11 +11,11 @@ origin.date: 12/13/2018
 ms.date: 02/10/2020
 ms.author: v-yeche
 ms.openlocfilehash: b0fedf659231727a7499b745e35293444fa28a19
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77428924"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292821"
 ---
 # <a name="use-linux-diagnostic-extension-to-monitor-metrics-and-logs"></a>使用 Linux 诊断扩展监视指标和日志
 
@@ -50,7 +50,7 @@ Linux 诊断扩展可帮助用户监视 Azure 上运行的 Linux VM 的运行状
 
 可下载配置只是一个示例；请根据需要对其进行修改。
 
-### <a name="prerequisites"></a>必备条件
+### <a name="prerequisites"></a>先决条件
 
 * Azure Linux 代理 2.2.0 版或更高版本  。 大部分 Azure VM Linux 库映像包含 2.2.7 或更高版本。 运行 `/usr/sbin/waagent -version` 以确认 VM 上安装的版本。 如果 VM 正在运行较早版本的来宾代理，请按照[以下说明](/virtual-machines/linux/update-agent)将其更新。
 * **Azure CLI**。 在计算机上[设置 Azure CLI](https://docs.azure.cn/cli/install-azure-cli?view=azure-cli-latest) 环境。

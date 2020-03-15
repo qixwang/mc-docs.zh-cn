@@ -11,11 +11,11 @@ ms.date: 04/01/2019
 ms.topic: conceptual
 manager: digimobile
 ms.openlocfilehash: 6770948f020687c7612dffaf1f60aa3c885abfa1
-ms.sourcegitcommit: 599d651afb83026938d1cfe828e9679a9a0fb69f
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69993468"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291895"
 ---
 # <a name="learning-key-windows-powershell-workflow-concepts-for-automation-runbooks"></a>了解重要的适用于自动化 Runbook 的 Windows PowerShell 工作流概念
 
@@ -194,7 +194,7 @@ Workflow Copy-Files
 }
 ```
 
-可以使用 **ForEach-Parallel** 构造同时处理集合中每个项的命令。 尽管脚本块中的命令按顺序运行，但集合中的项是并行处理的。 此脚本块使用如下所示的语法。 在此示例中，将同时对集合中的所有项启动 Activity1。 对于每个项，Activity2 会在 Activity1 完成后启动。 只有在对所有项完成 Activity1 和 Activity2 后，Activity3 才会启动。 我们使用 `ThrottleLimit` 参数来限制并行度。 `ThrottleLimit` 太高会导致问题。 `ThrottleLimit` 参数的理想值取决于环境中的许多因素。 你应该尝试从较低的值开始并尝试不同的增加值，直到找到适合你的特定环境的值。
+可以使用 **ForEach-Parallel** 构造同时处理集合中的每个项的处理命令。 尽管脚本块中的命令按顺序运行，但集合中的项是并行处理的。 此脚本块使用如下所示的语法。 在此示例中，将同时对集合中的所有项启动 Activity1。 对于每个项，Activity2 会在 Activity1 完成后启动。 只有在对所有项完成 Activity1 和 Activity2 后，Activity3 才会启动。 我们使用 `ThrottleLimit` 参数来限制并行度。 `ThrottleLimit` 太高会导致问题。 `ThrottleLimit` 参数的理想值取决于环境中的许多因素。 你应该尝试从较低的值开始并尝试不同的增加值，直到找到适合你的特定环境的值。
 
 ```powershell
 ForEach -Parallel -ThrottleLimit 10 ($<item> in $<collection>)

@@ -12,11 +12,11 @@ ms.topic: article
 ms.reviewer: klam, LADocs
 ms.suite: integration
 ms.openlocfilehash: 28bbc43d9fbfd6ee04b8547e9bb89fd9b6605b9a
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77428885"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291518"
 ---
 # <a name="handle-errors-and-exceptions-in-azure-logic-apps"></a>在 Azure 逻辑应用中处理错误和异常
 
@@ -255,7 +255,7 @@ ms.locfileid: "77428885"
 
 ## <a name="evaluate-actions-with-scopes-and-their-results"></a>评估具有作用域的操作及其结果
 
-与通过 `runAfter` 属性在单个操作之后运行步骤类似，可将操作分组到某个[范围](../logic-apps/logic-apps-control-flow-run-steps-group-scopes.md)内。 如果希望以逻辑方式将各个操作组合在一起，可以使用范围，评估范围的聚合状态，并基于该状态执行操作。 当某个范围内的所有操作都完成运行后，该范围本身也确定了其自己的状态。
+与通过 `runAfter` 属性在单个操作之后运行步骤类似，可将操作分组到某个[范围](../logic-apps/logic-apps-control-flow-run-steps-group-scopes.md)内。 如果希望以逻辑方式将各个操作组合在一起，可以使用作用域，评估作用域的聚合状态，并基于该状态执行操作。 当某个作用域中的所有操作都完成运行后，该作用域本身也确定了其自己的状态。
 
 若要检查范围的状态，可以使用与用来检查逻辑应用运行状态（例如 `Succeeded`、`Failed` 等等）的条件相同的条件。
 

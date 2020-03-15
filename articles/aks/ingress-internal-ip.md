@@ -2,18 +2,16 @@
 title: 在 Azure Kubernetes 服务 (AKS) 中创建适用于内部网络的入口控制器
 description: 了解如何在 Azure Kubernetes 服务 (AKS) 群集中安装和配置适用于内部专用网络的 NGINX 入口控制器。
 services: container-service
-author: rockboyfor
-ms.service: container-service
 ms.topic: article
 origin.date: 05/24/2019
-ms.date: 07/29/2019
+ms.date: 03/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: c4719d3915cb3ba79a5acb0ce215947677c144d4
-ms.sourcegitcommit: 1ac138a9e7dc7834b5c0b62a133ca5ce2ea80054
+ms.openlocfilehash: f0701c8eef47f6782110c3926edc35cd6b641cd8
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78304638"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79290785"
 ---
 # <a name="create-an-ingress-controller-to-an-internal-virtual-network-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中创建内部虚拟网络的入口控制器
 
@@ -42,7 +40,7 @@ ms.locfileid: "78304638"
 
 ```yaml
 controller:
-  service:
+service:
     loadBalancerIP: 10.240.0.42
     annotations:
       service.beta.kubernetes.io/azure-load-balancer-internal: "true"
@@ -277,12 +275,14 @@ kubectl delete namespace ingress-basic
 - [使用静态公共 IP 地址创建入口控制器并配置 Let 's Encrypt 以自动生成 TLS 证书][aks-ingress-static-tls]
 
 <!-- LINKS - external -->
+
 [helm-cli]: /aks/kubernetes-helm
 [nginx-ingress]: https://github.com/kubernetes/ingress-nginx
 
 <!-- LINKS - internal -->
+
 [use-helm]: kubernetes-helm.md
-[azure-cli-install]: https://docs.azure.cn/zh-cn/cli/install-azure-cli?view=azure-cli-latest
+[azure-cli-install]: https://docs.azure.cn/cli/install-azure-cli?view=azure-cli-latest
 [aks-ingress-basic]: ingress-basic.md
 [aks-ingress-tls]: ingress-tls.md
 [aks-ingress-static-tls]: ingress-static-ip.md
@@ -292,4 +292,4 @@ kubectl delete namespace ingress-basic
 [aks-ingress-own-tls]: ingress-own-tls.md
 [client-source-ip]: concepts-network.md#ingress-controllers
 
-<!-- Update_Description: wording update, update link -->
+<!-- Update_Description: update meta properties, wording update, update link -->

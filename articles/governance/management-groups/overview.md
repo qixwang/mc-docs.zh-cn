@@ -8,11 +8,11 @@ origin.date: 04/22/2019
 ms.date: 12/02/2019
 ms.topic: overview
 ms.openlocfilehash: de83fa2e4f617c71ff74dc60d33118f972bd6fe1
-ms.sourcegitcommit: 298eab5107c5fb09bf13351efeafab5b18373901
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2019
-ms.locfileid: "74658179"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292580"
 ---
 # <a name="organize-your-resources-with-azure-management-groups"></a>使用 Azure 管理组来组织资源
 

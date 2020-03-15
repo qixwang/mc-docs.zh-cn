@@ -3,13 +3,13 @@ title: 使用 Visual Studio 开发 Azure Functions
 description: 了解如何使用用于 Visual Studio 2019 的 Azure Functions 工具开发和测试 Azure Functions。
 ms.custom: vs-azure
 ms.topic: conceptual
-ms.date: 02/13/2020
-ms.openlocfilehash: ef645b82b843718f6a626a8b443c69abdc985306
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.date: 03/03/2020
+ms.openlocfilehash: e0ddf5fe47a13e26b6496ed0dcafcf2e4447d81a
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77428757"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292591"
 ---
 # <a name="develop-azure-functions-using-visual-studio"></a>使用 Visual Studio 开发 Azure Functions  
 
@@ -27,7 +27,7 @@ Visual Studio 在开发函数时提供以下优势：
 
 除非另有说明，否则将演示 Visual Studio 2019 的过程和示例。 
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 从 Visual Studio 2017 开始，Azure Functions Tools 包含在 Visual Studio 的 Azure 开发工作负荷中。 请确保在 Visual Studio 安装中包括 **Azure 开发**工作负荷。
 
@@ -136,7 +136,7 @@ Functions 运行时在内部使用 Azure 存储帐户。 对于除 HTTP 和 Webh
     }
     ```
 
-    已向提供给入口点方法的每个绑定参数提供了特定于绑定的属性。 该属性采用绑定信息作为参数。 在上例中，第一个参数具应用了 QueueTrigger 属性，表示触发了队列的函数  。 队列名称和连接字符串设置名称作为参数传递到“QueueTrigger”属性。  有关详细信息，请参阅 [Azure Functions 的 Azure 队列存储绑定](functions-bindings-storage-queue.md#trigger)。
+    已向提供给入口点方法的每个绑定参数提供了特定于绑定的属性。 该属性采用绑定信息作为参数。 在上例中，第一个参数具应用了 QueueTrigger 属性，表示触发了队列的函数  。 队列名称和连接字符串设置名称作为参数传递到“QueueTrigger”属性。  有关详细信息，请参阅 [Azure Functions 的 Azure 队列存储绑定](functions-bindings-storage-queue-trigger.md)。
 
 可以使用上述过程向函数应用项目添加更多的函数。 项目中的每个函数可以有不同的触发器，但每个函数的触发器必须刚好一个。 有关详细信息，请参阅 [Azure Functions 触发器和绑定概念](functions-triggers-bindings.md)。
 

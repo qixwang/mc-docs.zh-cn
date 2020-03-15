@@ -2,28 +2,22 @@
 title: Microsoft 标识平台 iOS 和 macOS 快速入门 | Azure
 description: 了解如何在 iOS 或 macOS 应用程序中将用户登录并查询 Microsoft Graph。
 services: active-directory
-documentationcenter: dev-center-name
-author: TylerMSFT
+author: mmacy
 manager: CelesteDG
-ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: quickstart
-ms.tgt_pltfrm: na
 ms.workload: identity
-origin.date: 09/24/2019
-ms.date: 11/06/2019
+ms.date: 03/10/2020
 ms.author: v-junlch
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:iOS
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 220fc3b583e4d93270f763ccae168a5737d747c6
-ms.sourcegitcommit: a88cc623ed0f37731cb7cd378febf3de57cf5b45
+ms.openlocfilehash: f30d4a5fc1995c9aadc6b3b5b44c7f5a8472f339
+ms.sourcegitcommit: 4ba6d7c8bed5398f37eb37cf5e2acafcdcc28791
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73830943"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79133828"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-ios-or-macos-app"></a>快速入门：从 iOS 或 macOS 应用将用户登录并调用 Microsoft Graph API
 
@@ -97,6 +91,14 @@ ms.locfileid: "73830943"
 >    ```swift
 >    let kClientID = "Enter_the_Application_Id_Here"
 >    ```
+> 1. 编辑 **ViewController.swift** 并将以“let kAuthority”开头的行替换为以下代码片段：
+>    ```swift
+>    let kAuthority = "Enter_the_Authority_Endpoint_Host_HereEnter_the_Tenant_Info_Here"
+>    ```
+> 1. 编辑 **ViewController.swift** 并将以“let kGraphEndpoint”开头的行替换为以下代码片段：
+>    ```swift
+>    let kGraphEndpoint = "Enter_the_MS_Graph_Endpoint_Host_Here"
+>    ```
 > 1. 打开项目设置。 在“标识”部分  ，输入以前在门户中输入的**捆绑标识符**。
 > 1. （仅适用于 iOS）右键单击 **Info.plist**，然后选择“打开为”   > “源代码”。 
 > 1. （仅适用于 iOS）在 dict 根节点下，将 `CFBundleURLSchemes` 替换为你在门户中输入的***捆绑 ID***。
@@ -115,7 +117,7 @@ ms.locfileid: "73830943"
 > 1. 生成并运行应用！
 > [!div class="sxs-lookup" renderon="portal"]
 > > [!NOTE]
-> > 本快速入门支持 Enter_the_Supported_Account_Info_Here。
+> > Enter_the_Supported_Account_Info_Here
 > [!div renderon="docs"]
 >
 > 1. 解压缩 zip 文件并在 XCode 中打开该项目。
@@ -123,6 +125,16 @@ ms.locfileid: "73830943"
 >    ```swift
 >    let kClientID = "Enter_the_Application_Id_Here"
 >    ```
+> 1. 如果为 [Azure AD 国家云](https://docs.microsoft.com/graph/deployments#app-registration-and-token-service-root-endpoints)生成应用，请将以“let kGraphEndpoint”和“let kAuthority”开头的行替换为正确的终结点。 若要进行全局访问，请使用默认值：
+>     ```objective-c
+>     let kGraphEndpoint = "https://microsoftgraph.chinacloudapi.cn/"
+>     let kAuthority = "https://login.partner.microsoftonline.cn/common"
+>     ```
+> 1. [此处](https://docs.microsoft.com/graph/deployments#app-registration-and-token-service-root-endpoints)阐述了其他终结点。 例如，若要使用 Azure AD 德国云运行本快速入门，请使用以下代码：
+>     ```objective-c
+>     let kGraphEndpoint = "https://graph.microsoft.de/"
+>     let kAuthority = "https://login.microsoftonline.de/common"
+>     ```
 > 1. 打开项目设置。 在“标识”部分  ，输入以前在门户中输入的**捆绑标识符**。
 > 1. （仅适用于 iOS）右键单击 **Info.plist**，然后选择“打开为”   > “源代码”。 
 > 1. （仅适用于 iOS）在 dict 根节点下，将 `Enter_the_bundle_Id_Here` 替换为你在门户中使用的***捆绑 ID***。
@@ -280,4 +292,3 @@ self.applicationContext!.acquireTokenSilent(with: silentParams) { (result, error
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
 
-<!-- Update_Description: update metedata properties -->

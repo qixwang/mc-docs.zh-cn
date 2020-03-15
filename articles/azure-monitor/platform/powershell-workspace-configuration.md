@@ -9,11 +9,11 @@ origin.date: 05/19/2019
 ms.date: 06/19/2019
 ms.author: v-lingwu
 ms.openlocfilehash: 1791ee55a17f1e6b17bb27b967cec361f24cba4a
-ms.sourcegitcommit: 13431cf4d69142ed7feb8d12d967a502bf9ff346
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75599917"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291177"
 ---
 # <a name="manage-log-analytics-workspace-in-azure-monitor-using-powershell"></a>使用 PowerShell 管理 Azure Monitor 中的 Log Analytics 工作区
 

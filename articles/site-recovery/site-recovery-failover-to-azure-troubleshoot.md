@@ -11,11 +11,11 @@ origin.date: 01/08/2020
 ms.date: 02/24/2020
 ms.author: v-yeche
 ms.openlocfilehash: 8f746c775c42352e3e243b51136fe848ae6cc1f8
-ms.sourcegitcommit: 781f68d27903687f0aa9e1ed273eee25c6d129a1
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77611236"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291585"
 ---
 # <a name="troubleshoot-errors-when-failing-over-vmware-vm-or-physical-machine-to-azure"></a>解决将 VMware VM 或物理计算机故障转移到 Azure 时出现的错误
 

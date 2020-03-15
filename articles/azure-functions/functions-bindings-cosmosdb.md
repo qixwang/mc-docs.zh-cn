@@ -7,11 +7,11 @@ ms.topic: reference
 ms.date: 02/12/2020
 ms.custom: seodec18
 ms.openlocfilehash: 9df2f470b9c9f813e461a571f9838ef2c5d3aa0f
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77428765"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292776"
 ---
 # <a name="azure-cosmos-db-bindings-for-azure-functions-1x"></a>适用于 Azure Functions 1.x 的 Azure Cosmos DB 绑定
 

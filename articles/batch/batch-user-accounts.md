@@ -16,11 +16,11 @@ ms.date: 12/04/2019
 ms.author: v-lingwu
 ms.custom: seodec18
 ms.openlocfilehash: 40fb9e8a0c541775756046399cc5d00300e1980f
-ms.sourcegitcommit: fbc7584f403417d3af7bd6bbbaed7c13a78c57b9
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78412606"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291544"
 ---
 > [!NOTE] 
 > 出于安全原因，本文中所述的用户帐户与用于远程桌面协议 (RDP) 或安全外壳 (SSH) 的用户帐户不同。 

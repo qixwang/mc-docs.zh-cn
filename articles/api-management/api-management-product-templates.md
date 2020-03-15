@@ -16,11 +16,11 @@ origin.date: 11/04/2019
 ms.author: v-yiso
 ms.date: 11/18/2019
 ms.openlocfilehash: 6feb804e4bbad7160615c4b6428dda2afc3ef1e9
-ms.sourcegitcommit: 5844ad7c1ccb98ff8239369609ea739fb86670a4
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73831416"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291787"
 ---
 # <a name="product-templates-in-azure-api-management"></a>Azure API 管理中的产品模板
 通过 Azure API 管理，用户能够使用一组用于配置内容的模板自定义开发人员门户页的内容。 使用 [DotLiquid](http://dotliquidmarkup.org/) 语法和所选编辑器（例如 [DotLiquid for Designers](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers)），以及提供的一组本地化[字符串资源](./api-management-template-resources.md#strings)、[字形资源](./api-management-template-resources.md#glyphs)和[页面控件](./api-management-page-controls.md)，即可根据这些模板的使用需要非常灵活地配置页面内容。  
@@ -80,9 +80,9 @@ ms.locfileid: "73831416"
   
 |属性|类型|说明|  
 |--------------|----------|-----------------|  
-|Paging|[分页](./api-management-template-data-model-reference.md#Paging)实体。|产品集合的分页信息。|  
+|分页|[分页](./api-management-template-data-model-reference.md#Paging)实体。|产品集合的分页信息。|  
 |筛选|[筛选](./api-management-template-data-model-reference.md#Filtering)实体。|产品列表页的筛选信息。|  
-|Products|[产品](./api-management-template-data-model-reference.md#Product)实体的集合。|对当前用户可见的产品。|  
+|产品|[产品](./api-management-template-data-model-reference.md#Product)实体的集合。|对当前用户可见的产品。|  
   
 ### <a name="sample-template-data"></a>示例模板数据  
   
@@ -197,7 +197,7 @@ ms.locfileid: "73831416"
 ```  
   
 ### <a name="controls"></a>控制  
- `Product list` 模板使用以下[页面控件](./api-management-page-controls.md)。  
+ `Product list` 模板可使用以下[页面控件](./api-management-page-controls.md)。  
   
 -   [subscribe-button](./api-management-page-controls.md#subscribe-button)  
   
@@ -205,17 +205,17 @@ ms.locfileid: "73831416"
   
 |属性|类型|说明|  
 |--------------|----------|-----------------|  
-|Products|[产品](./api-management-template-data-model-reference.md#Product)|指定的产品。|  
-|IsDeveloperSubscribed|布尔值|当前用户是否订阅了此产品。|  
+|产品|[产品](./api-management-template-data-model-reference.md#Product)|指定的产品。|  
+|IsDeveloperSubscribed|boolean|当前用户是否订阅了此产品。|  
 |SubscriptionState|数字|订阅的状态。 可能的状态包括：<br /><br /> -   `0 - suspended` – 订阅被阻止，订阅服务器无法调用产品的任何 API。<br />-   `1 - active` – 订阅处于活动状态。<br />-   `2 - expired` – 订阅已达到其到期日期，因此已停用。<br />-   `3 - submitted` – 开发人员已提交订阅请求，但管理员尚未批准或拒绝该请求。<br />-   `4 - rejected` – 管理员已拒绝订阅请求。<br />-   `5 - cancelled` – 开发人员或管理员已取消订阅。|  
-|Limits|array|此属性已弃用，不应使用。|  
-|DelegatedSubscriptionEnabled|布尔值|是否为此订阅启用了[委派](./api-management-howto-setup-delegation.md)。|  
+|限制|array|此属性已弃用，不应使用。|  
+|DelegatedSubscriptionEnabled|boolean|是否为此订阅启用了[委派](./api-management-howto-setup-delegation.md)。|  
 |DelegatedSubscriptionUrl|string|委派的订阅 URL（如果启用了委派）。|  
-|IsAgreed|布尔值|如果产品有条款，当前用户是否已同意这些条款。|  
-|Subscriptions|[订阅摘要](./api-management-template-data-model-reference.md#SubscriptionSummary)实体的集合。|对产品的订阅。|  
+|IsAgreed|boolean|如果产品有条款，当前用户是否已同意这些条款。|  
+|订阅|[订阅摘要](./api-management-template-data-model-reference.md#SubscriptionSummary)实体的集合。|对产品的订阅。|  
 |Apis|[API](./api-management-template-data-model-reference.md#API) 实体的集合。|此产品中的 API。|  
-|CannotAddBecauseSubscriptionNumberLimitReached|布尔值|当前用户是否符合订阅此产品的条件（考虑到订阅限制）。|  
-|CannotAddBecauseMultipleSubscriptionsNotAllowed|布尔值|当前用户是否符合订阅此产品的条件（考虑到是否允许多个订阅）。|  
+|CannotAddBecauseSubscriptionNumberLimitReached|boolean|当前用户是否符合订阅此产品的条件（考虑到订阅限制）。|  
+|CannotAddBecauseMultipleSubscriptionsNotAllowed|boolean|当前用户是否符合订阅此产品的条件（考虑到是否允许多个订阅）。|  
   
 ### <a name="sample-template-data"></a>示例模板数据  
   

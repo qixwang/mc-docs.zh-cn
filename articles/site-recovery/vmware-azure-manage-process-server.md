@@ -9,11 +9,11 @@ origin.date: 04/28/2019
 ms.date: 07/29/2019
 ms.author: v-yeche
 ms.openlocfilehash: eb6f48db62aef2e46327c4e6342ccfd0efad8a49
-ms.sourcegitcommit: a1c9c946d80b6be66520676327abd825c0253657
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68819654"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291352"
 ---
 # <a name="manage-process-servers"></a>管理进程服务器
 

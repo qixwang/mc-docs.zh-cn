@@ -13,11 +13,11 @@ origin.date: 12/09/2019
 ms.date: 1/2/2020
 ms.author: v-lingwu
 ms.openlocfilehash: ef73ff1dd10440a1804de81e38a7cadf60c74b78
-ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75858144"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292129"
 ---
 # <a name="language-and-region-support-for-luis"></a>LUIS 的语言和区域支持
 

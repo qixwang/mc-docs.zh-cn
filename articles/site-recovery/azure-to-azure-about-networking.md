@@ -10,11 +10,11 @@ origin.date: 01/23/2020
 ms.date: 02/24/2020
 ms.author: v-yeche
 ms.openlocfilehash: 55b2e7afa2cd3824d283cbad81683362eee0842e
-ms.sourcegitcommit: 781f68d27903687f0aa9e1ed273eee25c6d129a1
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77611264"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291435"
 ---
 # <a name="about-networking-in-azure-vm-disaster-recovery"></a>关于如何在 Azure VM 灾难恢复中联网
 

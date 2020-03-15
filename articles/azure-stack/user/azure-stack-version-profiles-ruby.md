@@ -9,11 +9,11 @@ ms.author: v-jay
 ms.reviewer: sijuman
 ms.lastreviewed: 05/16/2019
 ms.openlocfilehash: 74e8990161e63ddfeea5eacf2ddd0284287cd2c2
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77541051"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291169"
 ---
 # <a name="use-api-version-profiles-with-ruby-in-azure-stack-hub"></a>在 Azure Stack Hub 中将 API 版本配置文件与 Ruby 配合使用
 
@@ -79,7 +79,7 @@ Azure 资源管理器 Ruby SDK 为预览版，在即将推出的版本中可能�
 gem install 'azure_sdk'
 ```
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要将 Ruby Azure SDK 与 Azure Stack Hub 配合使用，必须提供以下值，然后使用环境变量来设置值。 若要设置环境变量，请参阅表后针对特定操作系统的说明。
 

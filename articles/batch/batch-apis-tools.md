@@ -10,15 +10,15 @@ origin.date: 12/07/2018
 ms.date: 12/04/2019
 ms.author: v-lingwu
 ms.openlocfilehash: f21141048fcd6d50691f5d3a42384d2b756780d1
-ms.sourcegitcommit: 21b02b730b00a078a76aeb5b78a8fd76ab4d6af2
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74839038"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291545"
 ---
 # <a name="overview-of-batch-apis-and-tools"></a>批处理 API 和工具概述
 
-使用 Azure Batch 处理并行工作负荷通常是使用批处理 API 之一以编程方式实现的。 客户端应用程序或服务可使用 Batch API 与 Batch 服务通信。 Batch API 允许用户创建和管理计算节点（虚拟机或云服务）池。 然后即可计划作业和任务，使之在这些节点上运行。 
+使用 Azure Batch 处理并行工作负荷通常是使用批处理 API 之一以编程方式实现的。 客户端应用程序或服务可使用 Batch API 与 Batch 服务通信。 Batch API 允许用户创建和管理计算节点（虚拟机或云服务）池。 随后可将作业和任务计划为在这些节点上运行。 
 
 可以为组织高效处理大量工作负荷，或提供服务前端给客户，让他们可以在一个、数百个甚至数千个节点上，按需要或按计划运行作业和任务。 
 
@@ -34,7 +34,7 @@ ms.locfileid: "74839038"
 
 ## <a name="batch-service-apis"></a>批处理服务 API
 
-应用程序和服务可以发出直接 REST API 调用或使用一个或多个下述客户端库，以便运行和管理 Azure Batch 工作负荷。
+应用程序和服务可发出直接的 REST API 调用，或使用以下一个或多个客户端库，运行和管理 Azure Batch 工作负荷。
 
 | API | API 参考 | 下载 | 教程 | 代码示例 | 更多信息 |
 | --- | --- | --- | --- | --- | --- |

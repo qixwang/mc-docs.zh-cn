@@ -9,13 +9,14 @@ ms.topic: tutorial
 author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
-ms.date: 09/25/2019
-ms.openlocfilehash: a0a7ebc7529020c0a31229d719da256cb8f04af8
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+origin.date: 02/10/2020
+ms.date: 03/16/2020
+ms.openlocfilehash: 100b24662dd70dd4e8e78e1aa88dee7c7a2e2911
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75599171"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292159"
 ---
 # <a name="tutorial-get-started-creating-your-first-ml-experiment-with-the-python-sdk"></a>教程：开始使用 Python SDK 创建第一个 ML 试验
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -43,10 +44,11 @@ Azure 机器学习工作区是云中的基础资源，用于试验、训练和�
 >[!IMPORTANT] 
 > 记下你的工作区和订阅   。 你将需要这些项才能确保在正确的位置创建试验。 
 
+## <a name="azure"></a>在工作区中运行笔记本
 
-## <a name="azure"></a>克隆笔记本文件夹
+本教程使用工作区中的云笔记本服务器来实现免安装的预配置体验。 如果你希望控制环境、包和依赖项，请使用[自己的环境](how-to-configure-environment.md#local)。
 
-本示例使用工作区中的云笔记本服务器来实现免安装的预配置体验。 如果你希望控制环境、包和依赖项，请使用[自己的环境](how-to-configure-environment.md#local)。
+### <a name="clone-a-notebook-folder"></a>克隆笔记本文件夹
 
 在 Azure 机器学习工作室中完成以下试验设置和运行步骤，该工作室是包含用于为所有技能级别的数据科学实践者执行数据科学方案的机器学习工具的合并界面。
 
@@ -56,9 +58,9 @@ Azure 机器学习工作区是云中的基础资源，用于试验、训练和�
 
 1. 选择左侧的“笔记本”  。
 
-1. 打开“示例”文件夹  。
+1. 打开“Samples”文件夹  。
 
-1. 打开 Python 文件夹  。
+1. 打开“Python”文件夹  。
 
 1. 打开包含版本号的文件夹。  此数字表示 Python SDK 的当前版本。
 
@@ -66,18 +68,18 @@ Azure 机器学习工作区是云中的基础资源，用于试验、训练和�
 
     ![克隆文件夹](./media/tutorial-1st-experiment-sdk-setup/clone-tutorials.png)
 
-1. 将显示文件夹列表，其中显示了访问工作区的每个用户。  选择要将“教程”文件夹克隆到其中的文件夹  。
+1. 将显示文件夹列表，其中显示了访问工作区的每个用户。  选择要将“tutorials”文件夹克隆到其中的文件夹  。
 
-## <a name="a-nameopenopen-the-cloned-notebook"></a><a name="open">打开克隆的笔记本
+### <a name="a-nameopenopen-the-cloned-notebook"></a><a name="open">打开克隆的笔记本
 
-1. 在“用户文件”下打开你的文件夹，然后打开克隆的 **tutorials** 文件夹。 
+1. 在“用户文件”下打开你的文件夹，然后打开克隆的“tutorials”文件夹。  
 
     ![打开 tutorials 文件夹](./media/tutorial-1st-experiment-sdk-setup/expand-user-folder.png)
 
     > [!IMPORTANT]
     > 可以查看 **samples** 文件夹中的笔记本，但无法从此文件夹运行笔记本。  若要运行笔记本，请确保在“用户文件”部分打开笔记本的克隆版本。 
     
-1. 选择 **tutorials** 文件夹中的 **tutorial-1st-experiment-sdk-train.ipynb** 文件。
+1. 选择 **tutorials/create-first-ml-experiment** 文件夹中的 **tutorial-1st-experiment-sdk-train.ipynb** 文件。
 
 1. 在顶部栏上，选择用来运行笔记本的计算实例。 这些 VM 中已预先配置了[运行 Azure 机器学习所需的一切设置](concept-compute-instance.md#contents)。 可以选择任何工作区用户创建的 VM。 
 
@@ -92,10 +94,6 @@ Azure 机器学习工作区是云中的基础资源，用于试验、训练和�
 1. VM 可用后，它将显示在顶部工具栏中。  现在，可以使用工具栏中的“全部运行”，或者在笔记本的代码单元中按 **Shift+Enter**，来运行笔记本。 
 
 如果你有自定义小工具或更喜欢使用 Jupyter/JupyterLab，请选择最右侧的 **Jupyter** 下拉菜单，然后选择 **Jupyter** 或 **JupyterLab**。 此时将打开新的浏览器窗口。
-
-> [!NOTE]
-> 计算实例（预览版）目前仅适用于区域为“美国中北部”或“英国南部”的工作区，即将支持其他区域。  
->如果你的工作区在任何其他区域，则可以继续创建并使用[笔记本 VM](concept-compute-instance.md#notebookvm)。  可以使用笔记本 VM 或计算实例来运行笔记本。
 
 ## <a name="next-steps"></a>后续步骤
 

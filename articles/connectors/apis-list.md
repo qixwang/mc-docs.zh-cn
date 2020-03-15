@@ -12,11 +12,11 @@ ms.date: 10/08/2019
 ms.reviewer: klam, LADocs
 ms.suite: integration
 ms.openlocfilehash: 9af28e323cb4d3f34576e6baafb9ef2c6956cc46
-ms.sourcegitcommit: fc8a6e0f8eff2ef7b645ae8dc2ac02fdf498086f
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74797594"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291834"
 ---
 # <a name="connectors-for-azure-logic-apps"></a>适用于 Azure 逻辑应用的连接器
 
@@ -117,7 +117,7 @@ ms.locfileid: "74797594"
 
 |   |   |   |   |   | 
 |---|---|---|---|---| 
-| ![API 图标][biztalk-server-icon]<br/>**BizTalk**</br> **服务器** | [![API 图标][file-system-icon]<br/>**文件</br>系统**][file-system-doc] | [![API 图标][ibm-db2-icon]<br/>**IBM DB2**][ibm-db2-doc] | [![API 图标][ibm-informix-icon]<br/>**IBM**</br> **Informix**][ibm-informix-doc] | ![API 图标][mysql-icon]<br/>**MySQL** | 
+| ![API 图标][biztalk-server-icon]<br/>**BizTalk**</br> **Server** | [![API 图标][file-system-icon]<br/>**文件</br>系统**][file-system-doc] | [![API 图标][ibm-db2-icon]<br/>**IBM DB2**][ibm-db2-doc] | [![API 图标][ibm-informix-icon]<br/>**IBM**</br> **Informix**][ibm-informix-doc] | ![API 图标][mysql-icon]<br/>**MySQL** | 
 | [![API 图标][oracle-db-icon]<br/>**Oracle DB**][oracle-db-doc] | ![API 图标][postgre-sql-icon]<br/>**PostgreSQL** | [![API 图标][sharepoint-server-icon]<br/>**SharePoint</br> Server**][sharepoint-server-doc] | [![API 图标][sql-server-icon]<br/>**SQL</br> Server**][sql-server-doc] | ![API 图标][teradata-icon]<br/>**Teradata** | 
 |||||
 

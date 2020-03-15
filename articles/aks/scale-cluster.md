@@ -3,17 +3,16 @@ title: 缩放 Azure Kubernetes 服务 (AKS) 群集
 description: 了解如何在 Azure Kubernetes 服务 (AKS) 群集中缩放节点数。
 services: container-service
 author: rockboyfor
-ms.service: container-service
 ms.topic: article
 origin.date: 05/31/2019
-ms.date: 07/29/2019
+ms.date: 03/09/2020
 ms.author: v-yeche
-ms.openlocfilehash: f2a3797182f773bc87d886c1bd130de9ec68caca
-ms.sourcegitcommit: 57994a3f6a263c95ff3901361d3e48b10cfffcdd
+ms.openlocfilehash: 7e834c2cf1a3ee24a8d670311d6a59ee880b5caf
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70500729"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79290713"
 ---
 # <a name="scale-the-node-count-in-an-azure-kubernetes-service-aks-cluster"></a>在 Azure Kubernetes 服务 (AKS) 群集中缩放节点数
 

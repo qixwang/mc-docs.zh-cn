@@ -4,19 +4,20 @@ titleSuffix: Azure Machine Learning
 description: 为机器学习模型训练配置训练环境（计算目标）。 可以轻松地在训练环境之间切换。 在本地开始训练。 如果需要横向扩展，请切换到基于云的计算目标。
 services: machine-learning
 author: sdgilley
-ms.author: sgilley
+ms.author: v-yiso
 ms.reviewer: sgilley
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.date: 11/21/2019
+origin.date: 01/16/2020
+ms.date: 03/16/2020
 ms.custom: seodec18
-ms.openlocfilehash: b5fe09b43279341a5f06467a95387e68bca8d5ef
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.openlocfilehash: 2ecd8b4ce45e39efbe2aabe973f103b195b25a29
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78154954"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291509"
 ---
 # <a name="set-up-and-use-compute-targets-for-model-training"></a>设置并使用模型训练的计算目标 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -105,7 +106,7 @@ Azure 机器学习计算是一个托管的计算基础结构，可让用户轻�
 
 可以使用 Azure 机器学习计算在云中的 CPU 或 GPU 计算节点群集之间分配训练进程。 有关包括 GPU 的 VM 大小的详细信息，请参阅 [GPU 优化的虚拟机大小](/virtual-machines/linux/sizes-gpu)。
 
-Azure 机器学习计算对可以分配的核心数等属性实施默认限制。 有关详细信息，请参阅[管理和请求 Azure 资源的配额](/machine-learning/service/how-to-manage-quotas)。
+Azure 机器学习计算对可以分配的核心数等属性实施默认限制。 有关详细信息，请参阅[管理和请求 Azure 资源的配额](/machine-learning/how-to-manage-quotas)。
 
 
 可以在计划运行时按需创建 Azure 机器学习计算环境，或者将其创建为持久性资源。
@@ -207,7 +208,7 @@ Azure 机器学习还支持将自己的计算资源附加到工作区。 任意�
 
 可以使用系统生成的 conda 环境、现有的 Python 环境或 Docker 容器。 若要在 Docker 容器中执行，必须在 VM 上运行 Docker 引擎。 需要一个比本地计算机更灵活的基于云的开发/试验环境时，此功能特别有用。
 
-请对此方案使用 Data Science Virtual Machine (DSVM) 作为 Azure VM。 此 VM 在 Azure 中预配置了数据科学和 AI 开发环境。 此 VM 提供精选的工具和框架用于满足整个机器学习开发生命周期的需求。 有关如何将 DSVM 与 Azure 机器学习配合使用的详细信息，请参阅[配置开发环境](/machine-learning/service/how-to-configure-environment#dsvm)。
+请对此方案使用 Data Science Virtual Machine (DSVM) 作为 Azure VM。 此 VM 在 Azure 中预配置了数据科学和 AI 开发环境。 此 VM 提供精选的工具和框架用于满足整个机器学习开发生命周期的需求。 有关如何将 DSVM 与 Azure 机器学习配合使用的详细信息，请参阅[配置开发环境](/machine-learning/how-to-configure-environment#dsvm)。
 
 1. **创建**：创建 DSVM，然后使用它来训练模型。 若要创建此资源，请参阅[预配适用于 Linux (Ubuntu) 的 Data Science Virtual Machine](/machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro)。
 
@@ -459,7 +460,9 @@ myvm = ComputeTarget(workspace=ws, name='my-vm-name')
 
 有关详细信息，请参阅[资源管理](reference-azure-machine-learning-cli.md#resource-management)。
 
+## <a name="set-up-with-vs-code"></a>使用 VS Code 进行设置
 
+可以使用适用于 Azure 机器学习的 [VS Code 扩展](tutorial-train-deploy-image-classification-model-vscode.md#configure-compute-targets)访问、创建和管理与工作区关联的计算目标。
 
 ## <a id="submit"></a>使用 Azure 机器学习 SDK 提交训练运行
 
@@ -528,7 +531,7 @@ run.wait_for_completion(show_output = True)
 
 * 根据[使用评估器训练机器学习模型](how-to-train-ml-models.md)中所述，使用 `Estimator` 对象提交试验。
 * 提交用于[超参数优化](how-to-tune-hyperparameters.md)的 HyperDrive 运行。
-
+* 通过 [VS Code 扩展](tutorial-train-deploy-image-classification-model-vscode.md#train-the-model)提交试验。
 
 有关详细信息，请参阅 [ScriptRunConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py) 和 [RunConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfiguration?view=azure-ml-py) 文档。
 

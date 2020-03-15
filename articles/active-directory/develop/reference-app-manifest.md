@@ -18,11 +18,11 @@ ms.author: v-junlch
 ms.custom: aaddev
 ms.reviewer: sureshja
 ms.openlocfilehash: 623352be34e74a32fa1518add023d5a5fb9c97b3
-ms.sourcegitcommit: fbc7584f403417d3af7bd6bbbaed7c13a78c57b9
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78411456"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291051"
 ---
 # <a name="azure-active-directory-app-manifest"></a>Azure Active Directory 应用清单
 

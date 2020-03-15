@@ -6,11 +6,11 @@ origin.date: 02/23/2018
 ms.author: v-yeche
 ms.date: 01/06/2020
 ms.openlocfilehash: ee455b1b50d3f10200a3d8abeeeaad8d07b5d3f9
-ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75742462"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291318"
 ---
 # <a name="service-fabric-application-upgrade"></a>Service Fabric 应用程序升级
 Azure Service Fabric 应用程序是多个服务的集合。 在升级期间，Service Fabric 将新的[应用程序清单](service-fabric-application-and-service-manifests.md)与前一版进行比较，并确定应用程序中的哪些服务需要更新。 Service Fabric 会将服务清单中的版本号与前一版中的版本号进行比较。 如果服务未更改，则不升级服务。

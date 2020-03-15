@@ -2,17 +2,16 @@
 title: 关于服务网格
 description: 获取服务网格的概述、其体系结构和功能，以及在选择要部署的服务网格时应考虑的条件。
 author: rockboyfor
-ms.service: container-service
 ms.topic: article
 origin.date: 10/09/2019
-ms.date: 10/28/2019
+ms.date: 03/09/2020
 ms.author: v-yeche
-ms.openlocfilehash: cc5b2b50c726e00e8bba4022aa35287700d40565
-ms.sourcegitcommit: 1d4dc20d24feb74d11d8295e121d6752c2db956e
+ms.openlocfilehash: c7d68708e423fadc271e6144c00f965400f7d7e9
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73083660"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79290712"
 ---
 # <a name="about-service-meshes"></a>关于服务网格
 
@@ -120,5 +119,4 @@ ms.locfileid: "73083660"
 [linkerd-about]: ./servicemesh-linkerd-about.md
 [consul-about]: ./servicemesh-consul-about.md
 
-<!-- Update_Description: new article about servicemesh about  -->
-<!--NEW.date: 11/04/2019-->
+<!-- Update_Description: update meta properties, wording update, update link -->

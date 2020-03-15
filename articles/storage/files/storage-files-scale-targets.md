@@ -5,15 +5,15 @@ author: WenJason
 ms.service: storage
 ms.topic: conceptual
 origin.date: 10/16/2019
-ms.date: 01/06/2020
+ms.date: 03/09/2020
 ms.author: v-jay
 ms.subservice: files
-ms.openlocfilehash: e6980b141fff6a616d3f608b3308144795455e59
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.openlocfilehash: 8c159e45a6209c1454326669b94b0c9220dce2c4
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75624318"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292828"
 ---
 # <a name="azure-files-scalability-and-performance-targets"></a>Azure 文件可伸缩性和性能目标
 
@@ -56,4 +56,3 @@ Azure 文件共享的父资源是 Azure 存储帐户。 存储帐户表示 Azure
 ## <a name="see-also"></a>另请参阅
 
 - [规划 Azure 文件部署](storage-files-planning.md)
-- [其他存储服务的可伸缩性和性能目标](../common/storage-scalability-targets.md)

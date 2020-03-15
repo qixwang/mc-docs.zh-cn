@@ -7,11 +7,11 @@ origin.date: 08/24/2018
 ms.date: 01/13/2020
 ms.author: v-yeche
 ms.openlocfilehash: 5cf41f731b3b78f2e50db476e2003e8d92d12506
-ms.sourcegitcommit: fbc7584f403417d3af7bd6bbbaed7c13a78c57b9
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78411722"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292004"
 ---
 # <a name="azure-service-fabric-support-options"></a>Azure Service Fabric 支持选项
 

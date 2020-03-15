@@ -11,11 +11,11 @@ ms.date: 09/23/2019
 ms.author: v-lingwu
 ms.custom: mvc
 ms.openlocfilehash: e9f9ec828e8c9e2edcc8f1bd104d8000fb45de4c
-ms.sourcegitcommit: 27eaabd82b12ad6a6840f30763034a6360977186
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77497364"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291402"
 ---
 # <a name="quickstart-run-your-first-batch-job-in-the-azure-portal"></a>快速入门：在 Azure 门户中运行第一个 Batch 作业
 

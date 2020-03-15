@@ -10,11 +10,11 @@ origin.date: 2/14/2018
 ms.date: 04/12/2019
 ms.author: v-lingwu
 ms.openlocfilehash: bc8094fb4663773cb0a71f988fcbfe3b7a1743be
-ms.sourcegitcommit: e9291283ef1dd2ec3cf04e1fe434c8a3479d8b77
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/30/2019
-ms.locfileid: "75545365"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291181"
 ---
 # <a name="azure-monitor-powershell-quick-start-samples"></a>Azure Monitor PowerShell 快速启动示例
 本文说明可帮助访问 Azure Monitor 功能的示例 PowerShell 命令。
@@ -28,7 +28,7 @@ ms.locfileid: "75545365"
 如果尚未安装，请在计算机上安装要运行的 PowerShell。 有关详细信息，请参阅[如何安装和配置 PowerShell](https://docs.microsoft.com/powershell/azure/overview)。
 
 ## <a name="examples-in-this-article"></a>本文中的示例
-本文中的示例演示了如何使用 Azure 监视器 cmdlet。 还可以在 [Azure Monitor (Insights) Cmdlet](https://docs.microsoft.com/powershell/module/az.applicationinsights) 上查看 Azure Monitor PowerShell cmdlet 的完整列表。
+本文中的示例演示如何使用 Azure Monitor cmdlet。 还可以在 [Azure Monitor (Insights) Cmdlet](https://docs.microsoft.com/powershell/module/az.applicationinsights) 上查看 Azure Monitor PowerShell cmdlet 的完整列表。
 
 ## <a name="sign-in-and-use-subscriptions"></a>登录并使用订阅
 首先，登录到 Azure 订阅。
@@ -163,7 +163,7 @@ Get-AzAlertRule -ResourceGroup montest -TargetResourceId /subscriptions/s1/resou
 | WindowSize（hh:mm:ss 格式） |00:05:00 |
 | 聚合（在这种情况下使用平均计数的指标的统计信息） |平均值 |
 | 自定义电子邮件（字符串数组） |'foo@example.com','bar@example.com' |
-| 向所有者、参与者和读者发送电子邮件 |-SendToServiceOwners |
+| 将电子邮件发送给所有者、参与者和读者 |-SendToServiceOwners |
 
 创建电子邮件操作
 
@@ -241,7 +241,7 @@ Set-AzActivityLogAlert -Location 'Global' -Name 'alert on VM create' -ResourceGr
 $rule1 = New-AzAutoscaleRule -MetricName "Percentage CPU" -MetricResourceId /subscriptions/s1/resourceGroups/big2/providers/Microsoft.Compute/virtualMachineScaleSets/big2 -Operator GreaterThan -MetricStatistic Average -Threshold 60 -TimeGrain 00:01:00 -TimeWindow 00:10:00 -ScaleActionCooldown 00:10:00 -ScaleActionDirection Increase -ScaleActionValue 1
 ```        
 
-随后，创建向内扩展规则，实例计数减少。
+随后，创建横向缩减规则，实例计数减少。
 
 ```powershell
 $rule2 = New-AzAutoscaleRule -MetricName "Percentage CPU" -MetricResourceId /subscriptions/s1/resourceGroups/big2/providers/Microsoft.Compute/virtualMachineScaleSets/big2 -Operator GreaterThan -MetricStatistic Average -Threshold 30 -TimeGrain 00:01:00 -TimeWindow 00:10:00 -ScaleActionCooldown 00:10:00 -ScaleActionDirection Decrease -ScaleActionValue 1

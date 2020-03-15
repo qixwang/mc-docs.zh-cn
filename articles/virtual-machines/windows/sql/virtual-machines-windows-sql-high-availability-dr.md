@@ -16,11 +16,11 @@ origin.date: 06/27/2017
 ms.date: 02/10/2020
 ms.author: v-yeche
 ms.openlocfilehash: e6041eb3013a13e5b570eb6cabf1856895d48f7a
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77428101"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291755"
 ---
 # <a name="high-availability-and-disaster-recovery-for-sql-server-in-azure-virtual-machines"></a>Azure 虚拟机中 SQL Server 的高可用性和灾难恢复
 

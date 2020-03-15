@@ -7,12 +7,12 @@ ms.topic: conceptual
 origin.date: 08/20/2019
 ms.date: 11/05/2019
 ms.author: v-lingwu
-ms.openlocfilehash: a6af630a43d4bf9b868591a04c1c02b0d1810a31
-ms.sourcegitcommit: 27eaabd82b12ad6a6840f30763034a6360977186
+ms.openlocfilehash: 73e59baa92d85fb814cce11041bde1aec1fe7975
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77497562"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79290727"
 ---
 # <a name="back-up-azure-files-with-powershell"></a>使用 PowerShell 备份 Azure 文件存储
 
@@ -279,7 +279,7 @@ testAzureFS       Backup               Completed            11/12/2018 2:42:07 P
 
 ### <a name="using-on-demand-backups-to-extend-retention"></a>使用按需备份延长保留期
 
-可以使用按需备份将快照保留 10 年。 计划程序可用于运行可选择保留期的按需 PowerShell 脚本，从而每周、每月或每年定期拍摄快照。 拍摄定期快照时，请参阅[使用 Azure 备份执行按需备份的限制](https://docs.microsoft.com/azure/backup/backup-azure-files-faq#how-many-on-demand-backups-can-i-take-per-file-share)。
+可以使用按需备份将快照保留 10 年。 计划程序可用于运行可选择保留期的按需 PowerShell 脚本，从而每周、每月或每年定期拍摄快照。 拍摄定期快照时，请参阅[使用 Azure 备份执行按需备份的限制](/backup/backup-azure-files-faq#how-many-on-demand-backups-can-i-take-per-file-share)。
 
 如果你正在寻找示例脚本，可以参考 GitHub 上的示例脚本 (<https://github.com/Azure-Samples/Use-PowerShell-for-long-term-retention-of-Azure-Files-Backup>)，该脚本使用 Azure 自动化 Runbook，可让你定期计划备份，甚至最多保留 10 年。
 

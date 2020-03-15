@@ -11,11 +11,11 @@ ms.date: 03/09/2020
 ms.author: robinsh
 ms.custom: mvc
 ms.openlocfilehash: 01931001acf702302d427b44bf428e8e9f7da6da
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78154681"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291704"
 ---
 # <a name="tutorial-set-up-and-use-metrics-and-diagnostic-logs-with-an-iot-hub"></a>教程：通过 IoT 中心设置和使用指标和诊断日志
 

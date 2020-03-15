@@ -9,11 +9,11 @@ ms.author: v-jay
 ms.reviewer: unknown
 ms.lastreviewed: 11/16/2018
 ms.openlocfilehash: 1fb1b23b7b4a9f38e627f8e5cb0e7457fef8bef7
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77540928"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292197"
 ---
 # <a name="add-linux-images-to-the-azure-stack-hub-marketplace"></a>将 Linux 映像添加到 Azure Stack Hub 市场
 

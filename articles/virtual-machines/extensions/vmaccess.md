@@ -17,15 +17,15 @@ origin.date: 05/10/2018
 ms.date: 11/11/2019
 ms.author: v-yeche
 ms.openlocfilehash: e7a7bb9a54975ddcb1e5245b2981e4359b5803ff
-ms.sourcegitcommit: 5844ad7c1ccb98ff8239369609ea739fb86670a4
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73831403"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292802"
 ---
 # <a name="manage-administrative-users-ssh-and-check-or-repair-disks-on-linux-vms-using-the-vmaccess-extension-with-the-azure-cli"></a>配合使用 VMAccess 扩展和 Azure CLI 管理管理用户、SSH，并检查或修复 Linux VM 上的磁盘
 ## <a name="overview"></a>概述
-Linux VM 上的磁盘显示错误。 不知道怎样重置 Linux VM 的根密码，或者不小心删除了 SSH 私钥。 如果在数据中心的时代发生这种情况，则需要开车到那里，并打开 KVM 访问服务器控制台。 请将 Azure VMAccess 扩展想像成该 KVM 交换机，它允许访问控制台以重置 Linux 访问或执行磁盘级维护。
+Linux VM 上的磁盘显示错误。 不知道怎样重置 Linux VM 的根密码，或者不小心删除了 SSH 私钥。 如果在数据中心时代发生这种情况，则需要开车到那里，并打开 KVM 访问服务器控制台。 请将 Azure VMAccess 扩展想像成该 KVM 交换机，它允许访问控制台以重置 Linux 访问或执行磁盘级维护。
 
 本文介绍：如何在 Azure VMAccess Extension 作为 Azure Resource Manager 虚拟机运行时，检查或修复磁盘、重置用户访问权限、管理行政性用户帐户，或更新 Linux 上的 SSH 配置。 如果你需要管理经典虚拟机，可以按照[经典 VM 文档](../linux/classic/reset-access-classic.md)中的说明进行操作。 
 

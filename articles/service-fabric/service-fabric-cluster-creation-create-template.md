@@ -6,11 +6,11 @@ origin.date: 08/16/2018
 ms.author: v-yeche
 ms.date: 01/06/2020
 ms.openlocfilehash: 5a6901b3352ba385dadc2224b4f7075b29a945e5
-ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75742366"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292632"
 ---
 # <a name="create-a-service-fabric-cluster-resource-manager-template"></a>创建 Service Fabric 群集 Resource Manager 模板
 

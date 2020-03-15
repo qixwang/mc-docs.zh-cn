@@ -6,11 +6,11 @@ origin.date: 09/06/2018
 ms.author: v-yeche
 ms.date: 01/06/2020
 ms.openlocfilehash: f5b617c735eeeb987964ff03e361220cfc4a7357
-ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75742298"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292625"
 ---
 # <a name="create-a-service-fabric-cluster-in-azure-using-the-azure-portal"></a>使用 Azure 门户在 Azure 中创建 Service Fabric 群集
 > [!div class="op_single_selector"]

@@ -10,11 +10,11 @@ ms.service: iot-central
 services: iot-central
 manager: corywink
 ms.openlocfilehash: 5a848b5df571dc437bbb6fdf131b8adb9d438495
-ms.sourcegitcommit: 6ffa4d50cee80c7c0944e215ca917a248f2a4bcd
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74883027"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79290928"
 ---
 # <a name="create-webhook-actions-on-rules-in-azure-iot-central-preview-features"></a>在 Azure IoT Central 中基于规则创建 Webhook 操作（预览功能）
 
@@ -79,7 +79,7 @@ ms.locfileid: "74883027"
 }
 ```
 
-## <a name="known-limitations"></a>已知限制
+## <a name="known-limitations"></a>已知的限制
 
 目前，没有通过 API 订阅/取消订阅这些 Webhook 的编程方式。
 

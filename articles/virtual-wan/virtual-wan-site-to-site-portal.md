@@ -10,11 +10,11 @@ ms.date: 02/24/2020
 ms.author: v-yeche
 Customer intent: As someone with a networking background, I want to connect my local site to my VNets using Virtual WAN and I don't want to go through a Virtual WAN partner.
 ms.openlocfilehash: 6c84480b65127a20d4dc8dacc4aa3f1113fc3267
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78155069"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292140"
 ---
 <!--MOONCAKE: NY VS Beijing, London VS Shanghai, LS VS Tianjing-->
 # <a name="tutorial-create-a-site-to-site-connection-using-azure-virtual-wan"></a>教程：使用 Azure 虚拟 WAN 创建站点到站点连接

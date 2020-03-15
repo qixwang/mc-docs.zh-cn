@@ -12,11 +12,11 @@ ms.topic: article
 ms.reviewer: klam, LADocs
 ms.date: 11/11/2019
 ms.openlocfilehash: 437c72b432a544ba0def65ea68745bec7f236884
-ms.sourcegitcommit: 642a4ad454db5631e4d4a43555abd9773cae8891
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2019
-ms.locfileid: "73426026"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291531"
 ---
 # <a name="create-loops-that-repeat-workflow-actions-or-process-arrays-in-azure-logic-apps"></a>在 Azure 逻辑应用中添加循环以重复执行操作或处理数组
 
@@ -169,7 +169,7 @@ ms.locfileid: "73426026"
 > 这些步骤使用 Office 365 Outlook，但也可以使用逻辑应用支持的任何电子邮件提供商。 
 > [检查此处的连接器列表](/connectors/)。 如果使用其他电子邮件帐户，则常规步骤保持不变，但 UI 外观可能稍有不同。 
 
-1. 创建空白逻辑应用。 在逻辑应用设计器的搜索框下，选择“全部”  。 搜索“定期”。 从触发器列表中选择此触发器：“定期 - 计划” 
+1. 创建空白逻辑应用。 在逻辑应用设计器的搜索框下，选择“全部”  。 搜索“定期”。 从触发器列表中选择此触发器：**定期 - 计划**
 
    ![添加“定期 - 计划”触发器](./media/logic-apps-control-flow-loops/do-until-loop-add-trigger.png)
 
@@ -177,9 +177,9 @@ ms.locfileid: "73426026"
 
    ![设置定期计划](./media/logic-apps-control-flow-loops/do-until-loop-set-trigger-properties.png)
 
-   | 属性 | 值 |
+   | 属性 | Value |
    | -------- | ----- |
-   | **间隔** | 1 | 
+   | **时间间隔** | 1 | 
    | **频率** | 日期 |
    | **在这些小时** | 8 |
    ||| 
@@ -192,9 +192,9 @@ ms.locfileid: "73426026"
 
    ![设置变量属性](./media/logic-apps-control-flow-loops/do-until-loop-set-variable-properties.png)
 
-   | 属性 | 值 | 说明 |
+   | 属性 | Value | 说明 |
    | -------- | ----- | ----------- |
-   | **名称** | Limit | 变量的名称 | 
+   | **名称** | 限制 | 变量的名称 | 
    | **类型** | Integer | 变量的数据类型 | 
    | **值** | 0 | 变量的起始值 | 
    |||| 
@@ -231,9 +231,9 @@ ms.locfileid: "73426026"
 
     ![设置电子邮件属性](./media/logic-apps-control-flow-loops/do-until-loop-send-email-settings.png)
 
-    | 属性 | 值 | 说明 |
+    | 属性 | Value | 说明 |
     | -------- | ----- | ----------- | 
-    | **收件人** | *<email-address@domain>* | 收件人的电子邮件地址。 若要进行测试，请使用你自己的电子邮件地址。 | 
+    | **To** | *<email-address@domain>* | 收件人的电子邮件地址。 若要进行测试，请使用你自己的电子邮件地址。 | 
     | **主题** | “限制”的当前值为 **Limit** | 指定电子邮件主题。 对于本例，请确保包括 **Limit** 变量。 | 
     | **正文** | <*email-content*> | 指定你要发送的电子邮件消息内容。 对于本例，输入你喜欢的任何文本。 | 
     |||| 
@@ -250,7 +250,7 @@ Until 循环具有默认限制，用于在发生下列任一条件时停止执�
 
 | 属性 | 默认值 | 说明 | 
 | -------- | ------------- | ----------- | 
-| **Count** | 60 | 在循环退出之前运行的最大循环次数。 默认值为 60 个周期。 | 
+| **计数** | 60 | 在循环退出之前运行的最大循环次数。 默认值为 60 个周期。 | 
 | **超时** | PT1H | 在循环退出之前运行循环的最大时间量。 默认值为一小时，并且是以 ISO 8601 格式指定的。 <p>将针对每个循环周期评估超时值。 如果循环中的任何操作花费的时间超过超时限制，当前循环便不会停止。 但是，由于不满足限制条件，因此下一个循环不会启动。 | 
 |||| 
 

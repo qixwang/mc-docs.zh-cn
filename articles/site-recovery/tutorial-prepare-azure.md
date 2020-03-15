@@ -10,11 +10,11 @@ ms.date: 09/30/2019
 ms.author: v-yeche
 ms.custom: MVC
 ms.openlocfilehash: 7ee00e5b30e5b5c394328d21bc49ff9d4333e402
-ms.sourcegitcommit: 332ae4986f49c2e63bd781685dd3e0d49c696456
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71340909"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291124"
 ---
 # <a name="prepare-azure-resources-for-disaster-recovery-of-on-premises-machines"></a>准备 Azure 资源，以便对本地计算机进行灾难恢复
 
@@ -30,7 +30,7 @@ ms.locfileid: "71340909"
 > * 设置 Azure 虚拟网络 (VNet)。 在故障转移后创建的 Azure VM 将加入此网络。
 
 > [!NOTE]
-> 教程中介绍了某个方案的最简单部署路径。 它们尽可能使用默认选项，并且不显示所有可能的设置和路径。 有关详细说明，请查看 Site Recovery 目录的“操作指南”部分所列的文章。
+> 教程介绍了某个方案的最简单部署路径。 它们尽可能使用默认选项，并且不显示所有可能的设置和路径。 有关详细说明，请查看 Site Recovery 目录的“操作指南”部分所列的文章。
 
 ## <a name="before-you-start"></a>开始之前
 

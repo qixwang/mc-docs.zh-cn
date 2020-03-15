@@ -9,11 +9,11 @@ ms.date: 02/24/2020
 ms.topic: conceptual
 ms.author: v-yeche
 ms.openlocfilehash: 82a80183ccbf72da8c2fa6ddc492cc2398346475
-ms.sourcegitcommit: 781f68d27903687f0aa9e1ed273eee25c6d129a1
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77611273"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291349"
 ---
 # <a name="set-up-disaster-recovery-of-vmware-vms-to-azure-with-powershell"></a>使用 PowerShell 设置 VMware VM 到 Azure 的灾难恢复
 

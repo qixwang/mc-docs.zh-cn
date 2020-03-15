@@ -7,11 +7,11 @@ origin.date: 08/30/2019
 ms.date: 01/06/2020
 ms.author: v-yeche
 ms.openlocfilehash: 154fa99003743f9283e222e3aa3eda2a6991b465
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75631454"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291591"
 ---
 <!--Verify successfully-->
 # <a name="use-visual-studio-code-to-create-azure-resource-manager-templates"></a>使用 Visual Studio Code 创建 Azure 资源管理器模板

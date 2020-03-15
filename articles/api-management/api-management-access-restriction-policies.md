@@ -16,11 +16,11 @@ origin.date: 01/10/2020
 ms.author: v-yiso
 ms.date: 02/24/2020
 ms.openlocfilehash: 1f9a8e791ebac5897737f02f7c801fc0d95f8fbe
-ms.sourcegitcommit: 27eaabd82b12ad6a6840f30763034a6360977186
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77497399"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292895"
 ---
 # <a name="api-management-access-restriction-policies"></a>API 管理访问限制策略
 

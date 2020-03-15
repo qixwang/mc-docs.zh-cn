@@ -12,11 +12,11 @@ ms.custom: seo-lt-2019
 origin.date: 01/16/2020
 ms.date: 03/02/2020
 ms.openlocfilehash: d057e7cac9db6b9d66ed13d32d2f7d327fd32f7d
-ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77653255"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292390"
 ---
 # <a name="copy-and-transform-data-in-azure-blob-storage-by-using-azure-data-factory"></a>使用 Azure 数据工厂在 Azure Blob 存储中复制和转换数据
 

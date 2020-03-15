@@ -9,11 +9,11 @@ origin.date: 09/19/2019
 ms.author: v-yiso
 ms.date: 12/02/2019
 ms.openlocfilehash: a94467597e3e710fa6bfbe6a602f2071ac73a0f6
-ms.sourcegitcommit: 9e92bcf6aa02fc9e7b3a29abadf6b6d1a8ece8c4
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74389444"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291950"
 ---
 # <a name="expressroute-routing-requirements"></a>ExpressRoute 路由要求
 若要使用 ExpressRoute 连接到 Microsoft 云服务，需要设置并管理路由。 某些连接服务提供商以托管服务形式提供路由的设置和管理。 请咨询连接服务提供商，以确定他们是否提供此类服务。 如果不提供，则必须遵守以下要求：
@@ -70,7 +70,7 @@ ms.locfileid: "74389444"
 > Azure 公共对等互连不适用于新线路。
 > 
 
-必须使用自己的公共 IP 地址设置 BGP 会话。 Microsoft 必须能够通过路由 Internet 注册表和 Internet 路由注册表来验证 IP 地址的所有权。 
+必须使用自己的公共 IP 地址设置 BGP 会话。 Microsoft 必须能够通过路由 Internet 注册表和 Internet 路由注册表验证 IP 地址的所有权。 
 
 * 必须使用一个唯一的 /29 子网或两个 /30 子网为每条 ExpressRoute 线路（如果有多个）的每个对等互连设置 BGP 对等互连。 
 * 如果使用 /29 子网，它将拆分成两个 /30 子网。 
@@ -115,7 +115,7 @@ Azure 公共对等互连路径使用户能够通过其公共 IP 地址连接到 
 公共对等互连允许使用专用 AS 编号。
 
 ## <a name="dynamic-route-exchange"></a>动态路由交换
-路由交换将通过 eBGP 协议进行。 在 MSEE 与路由器之间建立 EBGP 会话。 不要求对 BGP 会话进行身份验证。 如果需要，可以配置 MD5 哈希。 有关配置 BGP 会话的信息，请参阅[配置路由](how-to-routefilter-portal.md)及[线路预配工作流和线路状态](expressroute-workflows.md)。
+路由交换会通过 eBGP 协议进行。 在 MSEE 与路由器之间建立 EBGP 会话。 不要求对 BGP 会话进行身份验证。 如果需要，可以配置 MD5 哈希。 有关配置 BGP 会话的信息，请参阅[配置路由](how-to-routefilter-portal.md)及[线路预配工作流和线路状态](expressroute-workflows.md)。
 
 ## <a name="autonomous-system-numbers"></a>自治系统编号
 Microsoft 使用 AS 12076 进行 Azure 公共、Azure 专用和 Microsoft 对等互连。 我们保留了 ASN 65515-65520 供内部使用。 支持 16 和 32 位 AS 编号。
@@ -123,7 +123,7 @@ Microsoft 使用 AS 12076 进行 Azure 公共、Azure 专用和 Microsoft 对等
 数据传输对称没有相关要求。 转发与返回路径可以遍历不同的路由器对。 相同的路由必须从属于你的多个线路对的任何一端播发。 路由指标不需要完全相同。
 
 ## <a name="route-aggregation-and-prefix-limits"></a>路由聚合与前缀限制
-支持通过 Azure 专用对等互连播发最多 4000 个前缀。 如果已启用 ExpressRoute 高级版附加组件，则可增加到 10,000 个前缀。 接受为每个 BGP 会话最多使用 200 个前缀建立 Azure 公共和 Microsoft 对等互连。 
+支持通过 Azure 专用对等互连播发最多 4000 个前缀。 如果启用 ExpressRoute 高级外接程序，则最多可增加 10,000 个前缀。 接受为每个 BGP 会话最多使用 200 个前缀建立 Azure 公共和 Microsoft 对等互连。 
 
 如果前缀数目超过此限制，将丢弃 BGP 会话。 只接受专用对等互连链路上的默认路由。 提供商必须从 Azure 公共和 Microsoft 对等互连路径中筛选默认路由和专用 IP 地址 (RFC 1918)。 
 

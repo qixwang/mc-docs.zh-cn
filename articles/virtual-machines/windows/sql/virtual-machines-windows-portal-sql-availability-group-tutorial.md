@@ -17,11 +17,11 @@ origin.date: 08/30/2018
 ms.date: 02/10/2020
 ms.author: v-yeche
 ms.openlocfilehash: eaf93902838ce525972ce4d49ad4c535e451cf05
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77428668"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291823"
 ---
 # <a name="tutorial-configure-availability-group-on-azure-sql-server-vm-manually"></a>教程：在 Azure SQL Server VM 上手动配置可用性组
 
@@ -33,7 +33,7 @@ ms.locfileid: "77428668"
 
 ![可用性组](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/00-EndstateSampleNoELB.png)
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 本教程假设读者对 SQL Server Always On 可用性组有一个基本的了解。 如需更多信息，请参阅 [Always On 可用性组概述 (SQL Server)](https://msdn.microsoft.com/library/ff877884.aspx)。
 

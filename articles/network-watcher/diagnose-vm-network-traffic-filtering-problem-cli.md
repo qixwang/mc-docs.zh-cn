@@ -1,5 +1,6 @@
 ---
-title: 诊断虚拟机网络流量筛选器问题 - 快速入门 - Azure CLI | Azure
+title: 快速入门：诊断 VM 网络流量筛选器问题 - Azure CLI
+titleSuffix: Azure Network Watcher
 description: 本快速入门介绍了如何使用 Azure 网络观察程序的 IP 流验证功能来诊断虚拟机网络流量筛选器问题。
 services: network-watcher
 documentationcenter: network-watcher
@@ -18,12 +19,12 @@ origin.date: 04/20/2018
 ms.date: 10/19/2018
 ms.author: v-lingli
 ms.custom: mvc
-ms.openlocfilehash: ee59089572f5edd9f2d09852ad5eef88072b105f
-ms.sourcegitcommit: 3d27913e9f896e34bd7511601fb428fc0381998b
+ms.openlocfilehash: a314249faa2601ae48a05fe2e2dfac45dc30559f
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74982169"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79290723"
 ---
 # <a name="quickstart-diagnose-a-virtual-machine-network-traffic-filter-problem---azure-cli"></a>快速入门：诊断虚拟机网络流量筛选器问题 - Azure CLI
 
@@ -170,7 +171,7 @@ az network nic list-effective-nsg \
 },
 ```
 
-可以在上述输出中看到 **destinationAddressPrefix** 为 **Internet**。 尚不清楚 13.107.21.200 与 **Internet** 的关系如何。 可以看到多个地址前缀列在 **expandedDestinationAddressPrefix** 下。 列表中的一个前缀是 **12.0.0.0/6**，涵盖了 IP 地址范围 12.0.0.1-15.255.255.254。 由于 13.107.21.200 在该地址范围内，因此 **AllowInternetOutBound** 规则允许此出站流量。 另外，在上述输出中没有显示优先级更高（数字更小）的可以覆盖此规则的规则。 若要拒绝到某个 IP 地址的出站通信，可以添加一项优先级更高的安全规则，拒绝通过端口 80 向该 IP 地址发送出站流量。
+可以在上述输出中看到 **destinationAddressPrefix** 为 **Internet**。 尚不清楚 13.107.21.200 与 **Internet** 的关系如何。 可以看到多个地址前缀列在 **expandedDestinationAddressPrefix** 下。 列表中的前缀之一为 **12.0.0.0/6**，它涵盖了 IP 地址范围 12.0.0.1-15.255.255.254。 由于 13.107.21.200 在该地址范围内，因此 **AllowInternetOutBound** 规则允许此出站流量。 另外，在上述输出中没有显示优先级更高（数字更小）的可以覆盖此规则的规则。 若要拒绝到某个 IP 地址的出站通信，可以添加一项优先级更高的安全规则，拒绝通过端口 80 向该 IP 地址发送出站流量。
 
 在[使用 IP 流验证](#use-ip-flow-verify)中运行 `az network watcher test-ip-flow` 命令以测试发往 172.131.0.100 的出站通信时，输出指示 **DefaultOutboundDenyAll** 规则拒绝了该通信。 **DefaultOutboundDenyAll** 规则相当于在 `az network nic list-effective-nsg` 命令的以下输出中列出的 **DenyAllOutBound** 规则：
 

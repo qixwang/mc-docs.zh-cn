@@ -9,11 +9,11 @@ origin.date: 04/15/2019
 ms.date: 08/26/2019
 ms.author: v-yeche
 ms.openlocfilehash: ad799c26994706d81bbc57603667432025262a34
-ms.sourcegitcommit: 18a0d2561c8b60819671ca8e4ea8147fe9d41feb
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70134481"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291354"
 ---
 # <a name="manage-the-configuration-server-for-vmware-vm-disaster-recovery"></a>为 VMware VM 灾难恢复管理配置服务器
 

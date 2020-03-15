@@ -11,16 +11,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/06/2020
+ms.date: 03/10/2020
 ms.author: v-junlch
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 099674c8da17b393cb3fd11114836f7867529353
-ms.sourcegitcommit: fbc7584f403417d3af7bd6bbbaed7c13a78c57b9
+ms.openlocfilehash: 962c5b24161222107f0eff1abf5be84403bc2636
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78411347"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291037"
 ---
 # <a name="web-app-that-signs-in-users-code-configuration"></a>可将用户登录的 Web 应用：代码配置
 
@@ -90,7 +89,7 @@ ms.locfileid: "78411347"
     // - "TenantId" as a GUID obtained from the Azure portal to sign in users in your organization
     // - "organizations" to sign in users in any work or school account
     // - "common" to sign in users with any work or school account
-    "TenantId": "[Enter the tenantId here]]",
+    "TenantId": "[Enter the tenantId here]",
 
     // Client ID (application ID) obtained from the Azure portal
     "ClientId": "[Enter the Client Id]",
@@ -398,4 +397,3 @@ Session(app)
 
 ---
 
-<!-- Update_Description: wording update -->

@@ -18,11 +18,11 @@ ms.subservice: hybrid
 ms.author: v-junlch
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6b290a7918854b6f9da9b8129dd72b3419bf4ed6
-ms.sourcegitcommit: 74f50c9678e190e2dbb857be530175f25da8905e
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/12/2019
-ms.locfileid: "72292106"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79290986"
 ---
 # <a name="topologies-for-azure-ad-connect"></a>Azure AD Connect 的拓扑
 本文介绍了使用 Azure AD Connect 同步作为关键集成解决方案的各种本地拓扑和 Azure Active Directory (Azure AD) 拓扑。 此外，介绍支持和不支持的配置。
@@ -37,7 +37,7 @@ ms.locfileid: "72292106"
 | Azure AD Connect 同步服务器 |![Azure AD Connect 同步服务器](./media/plan-connect-topologies/LegendSync1.png) |
 | Azure AD Connect 同步服务器“暂存模式” |![Azure AD Connect 同步服务器“暂存模式”](./media/plan-connect-topologies/LegendSync2.png) |
 | 装有 Forefront Identity Manager (FIM) 2010 或 Microsoft Identity Manager (MIM) 2016 的 GALSync |![使用 FIM 2010 或 MIM 2016 的 GALSync](./media/plan-connect-topologies/LegendSync3.png) |
-| Azure AD Connect 同步服务器（详细说明） |![Azure AD Connect 同步服务器，详细说明](./media/plan-connect-topologies/LegendSync4.png) |
+| Azure AD Connect 同步服务器（详细说明） |![Azure AD Connect 同步服务器（详细说明）](./media/plan-connect-topologies/LegendSync4.png) |
 | Azure AD |![Azure Active Directory](./media/plan-connect-topologies/LegendAAD.png) |
 | 不支持的方案 |![不支持的方案](./media/plan-connect-topologies/LegendUnsupported.png) |
 
@@ -141,8 +141,8 @@ Azure AD Connect 支持以 *暂存模式*安装第二个服务器。 使用此�
 如果想要在不同的数据中心拥有多个备份，也可以配置多个暂存服务器。
 
 ## <a name="multiple-azure-ad-tenants"></a>多个 Azure AD 租户
-我们建议组织在 Azure AD 中部署单个租户。
-在打算使用多个 Azure AD 租户之前，请参阅 [Administrative units management in Azure AD](../users-groups-roles/directory-administrative-units.md)（Azure AD 中的管理单位管理）一文， 其中介绍了可以使用单个租户的常见方案。
+建议组织在 Azure AD 中部署单个租户。
+在打算使用多个 Azure AD 租户之前，请参阅 [Administrative units management in Azure AD](../users-groups-roles/directory-administrative-units.md)（Azure AD 中的管理单位管理）一文， 它涵盖了可以使用单个租户的常见方案。
 
 ![多个林和多个租户的拓扑](./media/plan-connect-topologies/MultiForestMultiDirectory.png)
 

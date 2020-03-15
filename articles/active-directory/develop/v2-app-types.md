@@ -20,11 +20,11 @@ ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 03e29b396be336db52028fbaa6ea1ae51acf9db5
-ms.sourcegitcommit: 9597d4da8af58009f9cef148a027ccb7b32ed8cf
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74655397"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291033"
 ---
 # <a name="application-types-for-microsoft-identity-platform"></a>Microsoft 标识平台的应用程序类型
 
@@ -62,7 +62,7 @@ https://login.partner.microsoftonline.cn/common/oauth2/v2.0/token
 
 ## <a name="web-apps"></a>Web 应用
 
-对于通过浏览器访问的 Web 应用（.NET、PHP、Java、Ruby、Python、Node 等），可以使用 [OpenID Connect](active-directory-v2-protocols.md) 来执行用户登录。 在 OpenID Connect 中，Web 应用接收 ID 令牌。 ID 令牌是一个安全令牌，用于验证用户的标识并以声明形式提供用户相关信息：
+对于通过浏览器访问的 Web 应用（.NET、PHP、Java、Ruby、Python、Node 等），可以使用 [OpenID Connect](active-directory-v2-protocols.md) 来执行用户登录。 在 OpenID Connect 中，Web 应用接收一个 ID 令牌。 ID 令牌是一个安全令牌，用于验证用户的标识并以声明形式提供用户相关信息：
 
 ```
 // Partial raw ID token
@@ -91,7 +91,7 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6ImtyaU1QZG1Cd...
 
 ## <a name="web-apis"></a>Web API
 
-可以使用 Microsoft 标识平台终结点来保护 Web 服务，例如应用的 RESTful Web API。 Web API 可以在多种平台和语言中实现。 它们还可以在 Azure Functions 中使用 HTTP 触发器实现。 Web API 使用 OAuth 2.0 访问令牌而不是 ID 令牌和会话 Cookie 来保护数据以及对传入的请求进行身份验证。 Web API 调用方会在 HTTP 请求的授权标头中附加一个访问令牌，如下所示：
+可以使用 Microsoft 标识平台终结点来保护 Web 服务，例如应用的 RESTful Web API。 Web API 可以在多种平台和语言中实现。 它们还可以在 Azure Functions 中使用 HTTP 触发器实现。 Web API 使用 OAuth 2.0 访问令牌而不是 ID 令牌和会话 Cookie 来保护数据以及对传入的请求进行身份验证。 Web API 调用方会在 HTTP 请求的授权标头中追加一个访问令牌，如下所示：
 
 ```
 GET /api/items HTTP/1.1

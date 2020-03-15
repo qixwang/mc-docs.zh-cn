@@ -8,11 +8,11 @@ origin.date: 12/02/2019
 ms.date: 02/10/2020
 ms.author: v-yeche
 ms.openlocfilehash: 21c70ab10ba3845a6e0191e3dbb88890d0c26a1f
-ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77067866"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291665"
 ---
 # <a name="working-with-arrays-and-objects-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中使用数组和对象
 

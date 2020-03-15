@@ -12,12 +12,12 @@ ms.date: 03/02/2020
 ms.author: v-jay
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 3792ca8d66015318025a84c4751342ccbb10b428
-ms.sourcegitcommit: 892137d117bcaf9d88aec0eb7ca756fe39613344
+ms.openlocfilehash: 878398563142770588e6ac4319593d60ac5a0240
+ms.sourcegitcommit: e94ed1c9eff4e88be2ca389909e60b14cc0d92f8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78154408"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79084395"
 ---
 # <a name="powershell-cmdlets-and-rest-apis-for-sql-data-warehouse"></a>适用于 SQL 数据仓库的 PowerShell cmdlet 和 REST API
 可以使用 Azure PowerShell cmdlet 或 REST API 来管理许多 SQL 数据仓库管理任务。  下面是如何使用 PowerShell 命令自动执行 SQL 数据仓库中的常见任务的一些示例。  如需一些好的 REST 示例，请参阅[使用 REST 管理可伸缩性](sql-data-warehouse-manage-compute-rest-api.md)一文。
@@ -38,7 +38,7 @@ ms.locfileid: "78154408"
 暂停名为“Server01”的服务器上托管的名为“Database02”的数据库。  该服务器位于名为“ResourceGroup1”的 Azure 资源组中。
 
 ```Powershell
-Suspend-AzSqlDatabase �ResourceGroupName "ResourceGroup1" �ServerName "Server01" �DatabaseName "Database02"
+Suspend-AzSqlDatabase -ResourceGroupName "ResourceGroup1" -ServerName "Server01" -DatabaseName "Database02"
 ```
 作为一种变体，此示例通过管道将检索到的对象传递给 [Suspend-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/suspend-azsqldatabase)。  因此会暂停该数据库。 最后一个命令显示结果。
 

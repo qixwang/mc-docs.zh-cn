@@ -2,18 +2,15 @@
 title: 查看 Azure Kubernetes 服务 (AKS) 控制器日志
 description: 了解如何启用和查看 Azure Kubernetes 服务 (AKS) 中 Kubernetes 主节点的日志
 services: container-service
-author: rockboyfor
-ms.service: container-service
 ms.topic: article
-origin.date: 01/03/2019
-ms.date: 11/18/2019
+ms.date: 03/09/2020
 ms.author: v-yeche
-ms.openlocfilehash: 1a6a1b8e94281e4570023ea9be14c5897e3e4d59
-ms.sourcegitcommit: 3a9c13eb4b4bcddd1eabca22507476fb34f89405
+ms.openlocfilehash: d5a8870aa99b34e2f6e67852d9baf52462a1b280
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74527944"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79290780"
 ---
 # <a name="enable-and-review-kubernetes-master-node-logs-in-azure-kubernetes-service-aks"></a>启用和查看 Azure Kubernetes 服务 (AKS) 中 Kubernetes 主节点的日志
 
@@ -122,22 +119,22 @@ AzureDiagnostics
 
 | 字段名称               | 说明 |
 |--------------------------|-------------|
-| *resourceId*             | 生成日志的 Azure 资源 |
-| *time*                   | 上传日志的时间戳 |
-| *category*               | 生成日志的容器/组件的名称 |
-| *operationName*          | Always *Microsoft.ContainerService/managedClusters/diagnosticLogs/Read* |
-| *properties.log*         | 来自组件的日志的完整文本 |
-| *properties.stream*      | *stderr* 或 *stdout* |
-| *properties.pod*         | 日志的来源 pod 名称 |
+| *resourceId* | 生成日志的 Azure 资源 |
+| *time* | 上传日志的时间戳 |
+| *category* | 生成日志的容器/组件的名称 |
+| *operationName* | Always *Microsoft.ContainerService/managedClusters/diagnosticLogs/Read* |
+| *properties.log* | 来自组件的日志的完整文本 |
+| *properties.stream* | *stderr* 或 *stdout* |
+| *properties.pod* | 日志的来源 pod 名称 |
 | *properties.containerID* | 此日志的来源 Docker 容器的 ID |
 
 ## <a name="log-roles"></a>日志角色
 
 | 角色                     | 说明 |
 |--------------------------|-------------|
-| *aksService*             | 审核日志中控制平面操作的显示名称（来自 hcpService） |
-| *masterclient*           | 审核日志中 MasterClientCertificate（通过 az aks get-credentials 获得的证书）的显示名称 |
-| *nodeclient*             | 代理节点使用的 ClientCertificate 的显示名称 |
+| *aksService* | 审核日志中控制平面操作的显示名称（来自 hcpService） |
+| *masterclient* | 审核日志中 MasterClientCertificate（通过 az aks get-credentials 获得的证书）的显示名称 |
+| *nodeclient* | 代理节点使用的 ClientCertificate 的显示名称 |
 
 ## <a name="next-steps"></a>后续步骤
 

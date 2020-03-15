@@ -9,11 +9,11 @@ origin.date: 11/04/2019
 ms.date: 01/20/2020
 ms.author: v-jay
 ms.openlocfilehash: 397454837bb289518146aa5fa13d56d0f191ea02
-ms.sourcegitcommit: 779d674e865b23ae417eb492efca7508675b8ba6
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75939767"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291322"
 ---
 # <a name="about-vpn-gateway-configuration-settings"></a>关于 VPN 网关配置设置
 

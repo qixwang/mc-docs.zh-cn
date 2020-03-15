@@ -2,18 +2,16 @@
 title: 为 Azure Kubernetes 服务 (AKS) 群集重置凭据
 description: 了解如何为 Azure Kubernetes 服务 (AKS) 中的群集更新或重置服务主体凭据
 services: container-service
-author: rockboyfor
-ms.service: container-service
 ms.topic: article
 origin.date: 05/31/2019
-ms.date: 10/28/2019
+ms.date: 03/09/2020
 ms.author: v-yeche
-ms.openlocfilehash: fcb85964b352d74970ca91d51b1973336174d6f9
-ms.sourcegitcommit: 1d4dc20d24feb74d11d8295e121d6752c2db956e
+ms.openlocfilehash: 704b668e18015ffc9d015808ab975b932701dc43
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73068855"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79290842"
 ---
 # <a name="update-or-rotate-the-credentials-for-a-service-principal-in-azure-kubernetes-service-aks"></a>为 Azure Kubernetes 服务 (AKS) 中的服务主体更新或轮换凭据
 
@@ -105,4 +103,4 @@ az aks update-credentials \
 [az-ad-sp-create]: https://docs.azure.cn/cli/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac
 [az-ad-sp-credential-reset]: https://docs.azure.cn/cli/ad/sp/credential?view=azure-cli-latest#az-ad-sp-credential-reset
 
-<!-- Update_Description: wording update, update link -->
+<!-- Update_Description: update meta properties, wording update, update link -->

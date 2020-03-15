@@ -10,11 +10,11 @@ author: rockboyfor
 ms.author: v-yeche
 ms.custom: seodec18
 ms.openlocfilehash: d44d71a201d1efb431b29b7b3e30302034dad227
-ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77068270"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292537"
 ---
 # <a name="azure-table-storage-table-design-guide-scalable-and-performant-tables"></a>Azure 表存储表设计指南：可缩放的高性能表
 

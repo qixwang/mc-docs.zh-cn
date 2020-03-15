@@ -14,11 +14,11 @@ ms.author: v-junlch
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 79897efb36ed80e8c5a0b8135e8284b93cf0010d
-ms.sourcegitcommit: 7c80405a6b48380814b4b414e9f8a5756c007880
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77067714"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291080"
 ---
 # <a name="authentication-flows"></a>身份验证流
 

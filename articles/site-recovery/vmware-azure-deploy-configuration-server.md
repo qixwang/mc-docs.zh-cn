@@ -10,11 +10,11 @@ origin.date: 10/15/2019
 ms.date: 01/13/2020
 ms.author: v-yeche
 ms.openlocfilehash: d8f16e08c5ed05c5787c1e65728ee3c46de082b2
-ms.sourcegitcommit: 671ff43b99572ca295968769278ee726954f1016
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76508763"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291356"
 ---
 # <a name="deploy-a-configuration-server"></a>部署配置服务器
 
@@ -28,7 +28,7 @@ ms.locfileid: "76508763"
 
 必须将配置服务器设置为一个高度可用的 VMware VM，它符合一定的最低硬件和大小调整要求。 为了便于部署，Site Recovery 提供了一个可下载的开放虚拟化应用程序 (OVA) 模板，用于设置符合此处列出的所有强制性要求的配置服务器。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 以下部分汇总了配置服务器的最低硬件要求。
 

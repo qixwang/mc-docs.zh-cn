@@ -19,11 +19,11 @@ ms.subservice: hybrid
 ms.author: v-junlch
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 089dbe2083de00c9586bb8b511b6c75ae49dc6a9
-ms.sourcegitcommit: 1171a6ab899b26586d1ea4b3a089bb8ca3af2aa2
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74084634"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79290978"
 ---
 # <a name="azure-ad-connect-accounts-and-permissions"></a>Azure AD Connect：帐户和权限
 
@@ -171,12 +171,12 @@ AD DS 企业管理员帐户用于配置本地 Active Directory。 这些凭据�
 如果使用自定义设置，则需要负责在开始安装之前创建帐户。  请参阅“创建 AD DS 连接器帐户”。
 
 ### <a name="adsync-service-account"></a>ADSync 服务帐户
-同步服务可在不同的帐户下运行。 它可以在**虚拟服务帐户** (VSA)、**组托管服务帐户** (gMSA/sMSA) 或普通用户帐户下运行。 2017 年 4 月版本的 Connect 的支持选项已更改（若进行全新安装）。 如果从早期版本的 Azure AD Connect 升级，这些附加选项不可用。
+同步服务可在不同的帐户下运行。 它可以在**虚拟服务帐户** (VSA)、**组托管服务帐户** (gMSA/sMSA) 或普通用户帐户下运行。 执行全新安装时，会发现支持的选项已随着 2017 年 4 月版 Connect 的发布而发生变化。 如果从早期版本的 Azure AD Connect 升级，这些附加选项不可用。
 
 | 帐户的类型 | 安装选项 | 说明 |
 | --- | --- | --- |
-| [虚拟服务帐户](#virtual-service-account) | 2017 年 4 月版和更高版本中的快速和自定义安装 | 此选项适用于所有快速安装，在域控制器上的安装除外。 对于自定义安装，除非使用了其他选项，否则它便是默认选项。 |
-| [组托管服务帐户](#group-managed-service-account) | 2017 年 4 月版和更高版本中的自定义安装 | 如果使用远程 SQL Server，则建议使用组托管服务帐户。 |
+| [虚拟服务帐户](#virtual-service-account) | 2017 年 4 月版和更高版本中的快速和自定义安装 | 此选项用于所有快速安装，但域控制器上的安装除外。 对于自定义安装，除非使用了其他选项，否则它便是默认选项。 |
+| [组托管服务帐户](#group-managed-service-account) | 2017 年 4 月版和更高版本中的自定义安装 | 如果使用远程 SQL 服务器，则我们建议使用组托管服务帐户。 |
 | [用户帐户](#user-account) | 2017 年 4 月版和更高版本中的快速和自定义安装 | 仅当在 Windows Server 2008 和域控制器上安装时，才会在安装期间创建带有 AAD_ 前缀的用户帐户。 |
 | [用户帐户](#user-account) | 2017 年 3 月版和更低版本中的快速和自定义安装 | 安装期间创建带有 AAD_ 前缀的本地帐户。 使用自定义安装时，可以指定另一个帐户。 |
 
@@ -214,7 +214,7 @@ VSA 适用于同步引擎与 SQL 位于同一台服务器上的场合。 如果�
 此功能需要 Windows Server 2008 R2 或更高版本。 如果在 Windows Server 2008 上安装 Azure AD Connect，则安装将回退以改用[用户帐户](#user-account)。
 
 #### <a name="group-managed-service-account"></a>组托管服务帐户
-如果使用远程 SQL Server，则建议使用**组托管服务帐户**。 若要详细了解如何为组托管服务帐户准备 Active Directory ，请参阅 [Group Managed Service Accounts Overview](https://technet.microsoft.com/library/hh831782.aspx)（组托管服务帐户概述）。
+如果使用远程 SQL Server，则建议使用**组托管服务帐户**。 有关如何为组托管服务帐户准备 Active Directory 的详细信息，请参阅[组托管服务帐户概述](https://technet.microsoft.com/library/hh831782.aspx)。
 
 若要使用此选项，请[安装所需的组件](how-to-connect-install-custom.md#install-required-components)页上选择“使用现有的服务帐户”，然后选择“托管服务帐户”。    
 ![VSA](./media/reference-connect-accounts-permissions/serviceaccount.png)  
@@ -233,7 +233,7 @@ VSA 适用于同步引擎与 SQL 位于同一台服务器上的场合。 如果�
 
 此帐户用于以安全方式存储其他帐户的密码。 其他这些帐户密码会以加密形式存储在数据库中。 通过使用 Windows 数据保护 API (DPAPI) 的密钥加密服务来保护加密密钥的私钥。
 
-如果使用完整的 SQL Server，服务帐户将是为同步引擎创建的数据库的 DBO。 如果使用其他权限，服务无法按预期工作。 此外会创建 SQL 登录名。
+如果使用完整的 SQL Server，服务帐户是为同步引擎创建的数据库的 DBO。 如果使用其他权限，服务无法按预期工作。 此外会创建 SQL 登录名。
 
 该帐户也会获取对文件、注册表项和与同步引擎相关的其他对象的权限。
 
@@ -267,6 +267,6 @@ Azure AD 将同步服务帐户数目限制为 20 个。 若要在 Azure AD 中�
 |安装后 | [验证安装并分配许可证](how-to-connect-post-installation.md)|
 
 ## <a name="next-steps"></a>后续步骤
-了解有关 [将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)的详细信息。
+了解有关[将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)的详细信息。
 
 <!-- Update_Description: wording update -->

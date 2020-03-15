@@ -7,11 +7,11 @@ origin.date: 01/02/2020
 ms.date: 01/20/2020
 ms.author: v-yeche
 ms.openlocfilehash: 48d0a739cbb7355753814d1e702c7ee3488f7cb3
-ms.sourcegitcommit: 8de025ca11b62e06ba3762b5d15cc577e0c0f15d
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76170690"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292127"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure 订阅和服务限制、配额和约束
 

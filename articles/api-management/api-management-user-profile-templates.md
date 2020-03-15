@@ -16,16 +16,16 @@ origin.date: 11/04/2019
 ms.author: v-yiso
 ms.date: 11/18/2019
 ms.openlocfilehash: f655aca9640dcdeb0a45a41ddb0866573c3addc6
-ms.sourcegitcommit: 5844ad7c1ccb98ff8239369609ea739fb86670a4
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73831363"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291595"
 ---
 # <a name="user-profile-templates-in-azure-api-management"></a>Azure API 管理中的用户配置文件模板
-通过 Azure API 管理，用户能够使用一组用于配置内容的模板自定义开发人员门户页面的内容。 使用 [DotLiquid](http://dotliquidmarkup.org/) 语法和所选编辑器（例如 [DotLiquid for Designers](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers)），以及提供的一组本地化[字符串资源](./api-management-template-resources.md#strings)、[字形资源](./api-management-template-resources.md#glyphs)和[页面控件](./api-management-page-controls.md)，即可根据这些模板的使用需要非常灵活地配置页面内容。  
+通过 Azure API 管理，用户能够使用一组用于配置内容的模板自定义开发人员门户页的内容。 使用 [DotLiquid](http://dotliquidmarkup.org/) 语法和所选编辑器（例如 [DotLiquid for Designers](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers)），以及提供的一组本地化[字符串资源](./api-management-template-resources.md#strings)、[字形资源](./api-management-template-resources.md#glyphs)和[页面控件](./api-management-page-controls.md)，即可根据这些模板的使用需要非常灵活地配置页面内容。  
   
- 本部分中的模板可用于自定义开发人员门户中的用户配置文件页面的内容。  
+ 本部分中的模板可用于自定义开发人员门户中的用户配置文件页的内容。  
   
 -   [Profile](#Profile)  
   
@@ -116,8 +116,8 @@ ms.locfileid: "73831363"
 |`applications`|[应用程序](api-management-template-data-model-reference.md#Application)实体的集合。|当前用户的应用程序。|  
 |`changePasswordUrl`|string|相对 URL，用于更改当前用户的密码。|  
 |`changeNameOrEmailUrl`|string|相对 URL，用于更改当前用户的名称和电子邮件。|  
-|`canChangePassword`|布尔值|当前用户是否可更改其密码。|  
-|`isSystemUser`|布尔值|当前用户是否为某个内置[组](api-management-key-concepts.md#groups)的成员。|  
+|`canChangePassword`|boolean|当前用户是否可更改其密码。|  
+|`isSystemUser`|boolean|当前用户是否为某个内置[组的成员](api-management-key-concepts.md#groups)。|  
   
 ### <a name="sample-template-data"></a>示例模板数据  
   
@@ -337,8 +337,8 @@ ms.locfileid: "73831363"
 |`applications`|[应用程序](api-management-template-data-model-reference.md#Application)实体的集合。|当前用户的应用程序。|  
 |`changePasswordUrl`|string|相对 URL，用于更改当前用户的密码。|  
 |`changeNameOrEmailUrl`|string|相对 URL，用于更改当前用户的名称和电子邮件。|  
-|`canChangePassword`|布尔值|当前用户是否可更改其密码。|  
-|`isSystemUser`|布尔值|当前用户是否为某个内置[组](api-management-key-concepts.md#groups)的成员。|  
+|`canChangePassword`|boolean|当前用户是否可更改其密码。|  
+|`isSystemUser`|boolean|当前用户是否为某个内置[组的成员](api-management-key-concepts.md#groups)。|  
   
 ### <a name="sample-template-data"></a>示例模板数据  
   
@@ -480,7 +480,7 @@ ms.locfileid: "73831363"
 ```  
   
 ### <a name="controls"></a>控制  
- 此模板使用以下[页面控件](./api-management-page-controls.md)。  
+ 此模板可使用以下[页面控件](./api-management-page-controls.md)。  
   
 -   [app-actions](./api-management-page-controls.md#app-actions)  
   
@@ -500,8 +500,8 @@ ms.locfileid: "73831363"
 |`applications`|[应用程序](api-management-template-data-model-reference.md#Application)实体的集合。|当前用户的应用程序。|  
 |`changePasswordUrl`|string|相对 URL，用于更改当前用户的密码。|  
 |`changeNameOrEmailUrl`|string|相对 URL，用于更改当前用户的名称和电子邮件。|  
-|`canChangePassword`|布尔值|当前用户是否可更改其密码。|  
-|`isSystemUser`|布尔值|当前用户是否为某个内置[组](api-management-key-concepts.md#groups)的成员。|  
+|`canChangePassword`|boolean|当前用户是否可更改其密码。|  
+|`isSystemUser`|boolean|当前用户是否为某个内置[组的成员](api-management-key-concepts.md#groups)。|  
   
 ### <a name="sample-template-data"></a>示例模板数据  
   

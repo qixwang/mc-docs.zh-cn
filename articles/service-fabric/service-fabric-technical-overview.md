@@ -8,11 +8,11 @@ ms.date: 02/24/2020
 ms.author: v-yeche
 ms.custom: sfrev
 ms.openlocfilehash: 4ce9e8d150aa91aadda33ef7fff05b288aee4606
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77540000"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292002"
 ---
 # <a name="service-fabric-terminology-overview"></a>Service Fabric 术语概述
 

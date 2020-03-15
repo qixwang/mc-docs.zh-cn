@@ -17,11 +17,11 @@ origin.date: 05/20/2018
 ms.author: v-yiso
 ms.date: 12/02/2019
 ms.openlocfilehash: 01f3115918a198bda89961c5b8db6ccfb4b6e5a4
-ms.sourcegitcommit: 9e92bcf6aa02fc9e7b3a29abadf6b6d1a8ece8c4
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74389451"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291918"
 ---
 # <a name="connect-a-virtual-network-to-an-expressroute-circuit"></a>将虚拟网络连接到 ExpressRoute 线路
 > [!div class="op_single_selector"]
@@ -31,7 +31,7 @@ ms.locfileid: "74389451"
 > * [PowerShell（经典）](expressroute-howto-linkvnet-classic.md)
 >
 
-本文有助于使用资源管理器部署模型和 PowerShell 将虚拟网络 (VNet) 链接到 Azure ExpressRoute 线路。 虚拟网络可以在同一个订阅中，也可以属于另一个订阅。 本文还介绍如何更新虚拟网络链接。 
+本文将帮助你使用 Resource Manager 部署模型和 PowerShell 将虚拟网络 (VNet) 链接到 Azure ExpressRoute 线路。 虚拟网络可以在同一个订阅中，也可以属于另一个订阅。 本文还介绍如何更新虚拟网络链接。 
 
 * 最多可以将 10 个虚拟网络链接到一条标准 ExpressRoute 线路。 使用标准 ExpressRoute 线路时，所有虚拟网络都必须位于同一地缘政治区域。 
 
@@ -42,7 +42,7 @@ ms.locfileid: "74389451"
 
 ## <a name="before-you-begin"></a>准备阶段
 
-* 在开始配置之前，请先查看[先决条件](./expressroute-prerequisites.md)、[路由要求](./expressroute-routing.md)和[工作流](./expressroute-workflows.md)。
+* 在开始配置之前，请查看[先决条件](./expressroute-prerequisites.md)、[路由要求](./expressroute-routing.md)和[工作流](./expressroute-workflows.md)。
 * 必须有一个活动的 ExpressRoute 线路。 
   * 请按说明[创建 ExpressRoute 线路](./expressroute-howto-circuit-arm.md)，并通过连接提供商启用该线路。 
   * 确保为线路配置 Azure 专用对等互连。 有关路由说明，请参阅[配置路由](./expressroute-howto-routing-arm.md)一文。 
@@ -86,7 +86,7 @@ $connection = New-AzVirtualNetworkGatewayConnection -Name "ERConnection" -Resour
 
 **创建授权**
 
-线路所有者创建授权。 这样即可创建授权密钥，供线路用户用来将其虚拟网络网关连接到 ExpressRoute 线路。 一个授权只可用于一个连接。
+线路所有者创建授权。 这样即可创建授权密钥，供线路用户可用来将其虚拟网络网关连接到 ExpressRoute 线路。 一个授权只可用于一个连接。
 
 以下 cmdlet 代码片段演示如何创建授权：
 
@@ -100,7 +100,7 @@ $auth1 = Get-AzExpressRouteCircuitAuthorization -ExpressRouteCircuit $circuit -N
 ```
 
 
-对此操作的响应将包含授权密钥和状态：
+对此操作的响应包含授权密钥和状态：
 
     Name                   : MyAuthorization1
     Id                     : /subscriptions/&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&/resourceGroups/ERCrossSubTestRG/providers/Microsoft.Network/expressRouteCircuits/CrossSubTest/authorizations/MyAuthorization1
@@ -135,7 +135,7 @@ $authorizations = Get-AzExpressRouteCircuitAuthorization -ExpressRouteCircuit $c
 
 **删除授权**
 
-线路所有者可以通过运行以下 cmdlet 来撤消/删除对用户的授权：
+线路所有者可以通过运行以下 cmdlet 撤消/删除对用户的授权：
 
 ```powershell
 Remove-AzExpressRouteCircuitAuthorization -Name "MyAuthorization2" -ExpressRouteCircuit $circuit
@@ -144,7 +144,7 @@ Set-AzExpressRouteCircuit -ExpressRouteCircuit $circuit
 
 ### <a name="circuit-user-operations"></a>线路用户操作
 
-线路用户需有对等 ID 以及线路所有者提供的授权密钥。 授权密钥是一个 GUID。
+线路用户需有对等 ID 和线路所有者提供的授权密钥。 授权密钥是一个 GUID。
 
 可通过以下命令检查对等 ID：
 

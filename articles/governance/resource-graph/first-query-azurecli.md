@@ -7,11 +7,11 @@ origin.date: 11/21/2019
 ms.date: 03/02/2020
 ms.topic: quickstart
 ms.openlocfilehash: a64caff798e99b2de92ad3214a16e73b4d4cf39c
-ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77494011"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291742"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-azure-cli"></a>快速入门：使用 Azure CLI 运行你的第一个 Resource Graph 查询
 
@@ -19,7 +19,7 @@ ms.locfileid: "77494011"
 
 在此过程结束时，你已将该扩展添加到所选的 Azure CLI 安装中，并将运行你的第一个 Resource Graph 查询。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 如果没有 Azure 订阅，请在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial)。
 

@@ -11,11 +11,11 @@ ms.topic: article
 origin.date: 08/01/2019
 ms.date: 02/24/2020
 ms.openlocfilehash: d9a75b62af60cdb56445228a9769fddb7a92ff29
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77428887"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291515"
 ---
 # <a name="deploy-azure-resource-manager-templates-for-azure-logic-apps"></a>为 Azure 逻辑应用部署 Azure 资源管理器模板
 

@@ -116,18 +116,43 @@
         - name: JavaScript 客户端 SDK
           href: 'https://github.com/microsoft/tsiclient/blob/master/docs/API.md'
 - name: 资源
+  expanded: true
   items:
     - name: 客户数据请求
       href: time-series-insights-customer-data-requests.md
-    - name: 定价
-      href: 'https://www.azure.cn/pricing/details/time-series-insights/'
-    - name: 定价计算器
-      href: 'https://www.azure.cn/pricing/calculator/'
-    - name: 上市区域
-      href: 'https://status.azure.com/status'
-    - name: MSDN 论坛
-      href: 'https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureTimeSeriesInsights'
-    - name: Stack Overflow
-      href: 'https://stackoverflow.com/questions/tagged/azure-timeseries-insights'
-    - name: 支持选项
-      href: 'https://support.azure.cn/zh-cn/support/contact'
+    - name: 开发人员资源
+      items:
+        - name: Azure 时序见解代码示例
+          href: 'https://github.com/Azure-Samples/Azure-Time-Series-Insights/'
+        - name: JavaScript 客户端 SDK
+          href: 'https://github.com/Microsoft/tsiclient'
+        - name: 托管客户端示例
+          href: 'https://tsiclientsample.chinacloudsites.cn/'
+        - name: Azure IoT 代码示例
+          href: 'https://docs.microsoft.com/samples/browse/?term=iot'
+    - name: 定价和可用性
+      items:
+        - name: 定价
+          href: 'https://www.azure.cn/pricing/details/time-series-insights/'
+        - name: 定价计算器
+          href: 'https://www.azure.cn/pricing/calculator/'
+        - name: 上市区域
+          href: 'https://azure.microsoft.com/regions/services/'
+    - name: 支持和帮助选项
+      items:
+        - name: Azure 支持选项
+          href: 'https://www.azure.cn/support/contact/'
+        - name: Stack Overflow
+          href: 'https://stackoverflow.com/questions/tagged/azure-timeseries-insights'
+        - name: MSDN 论坛
+          href: 'https://social.msdn.microsoft.com/Forums/home?forum=AzureTimeSeriesInsights'
+    - name: 反馈和论坛
+      items:
+        - name: MSDN 论坛
+          href: 'https://social.msdn.microsoft.com/Forums/home?forum=AzureTimeSeriesInsights'
+        - name: 产品请求和建议
+          href: 'https://feedback.azure.com/forums/906859-azure-time-series-insights'
+    - name: Azure 视频
+      href: 'https://azure.microsoft.com/resources/videos/index/?services=time-series-insights'
+    - name: Channel 9 视频
+      href: 'https://channel9.msdn.com/Search?term=time%20series%20insights'

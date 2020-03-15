@@ -9,11 +9,11 @@ ms.author: v-jay
 ms.reviewer: thoroet
 ms.lastreviewed: 11/11/2019
 ms.openlocfilehash: b7e723e1d07399b4bcad414e6976b2744b415727
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77540384"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291156"
 ---
 # <a name="scale-unit-node-actions-in-azure-stack-hub"></a>Azure Stack Hub 中的缩放单元节点操作
 

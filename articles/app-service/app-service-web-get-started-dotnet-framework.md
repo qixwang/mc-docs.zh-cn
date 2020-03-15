@@ -8,11 +8,11 @@ ms.date: 01/13/2020
 ms.author: v-tawe
 ms.custom: mvc, devcenter
 ms.openlocfilehash: ebfc780a1a14ef694b7cb5ec024c6f96a022cb68
-ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75600519"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292886"
 ---
 # <a name="create-an-aspnet-framework-web-app-in-azure"></a>在 Azure 中创建 ASP.NET Framework Web 应用
 
@@ -45,7 +45,7 @@ ms.locfileid: "75600519"
 
 4. 可将任何类型的 ASP.NET Web 应用部署到 Azure。 对于本快速入门，请选择“MVC”模板。 
 
-5. 确保身份验证设置为“无身份验证”  。 选择“创建”  。
+5. 确保身份验证设置为“不进行身份验证”  。 选择“创建”  。
 
    ![创建 ASP.NET Web 应用程序](./media/app-service-web-get-started-dotnet-framework/select-mvc-template-vs2019.png)
 
@@ -82,7 +82,7 @@ ms.locfileid: "75600519"
 
 1. 在“配置托管计划”  对话框中，输入下表中的值，然后选择“确定”  。
 
-   | 设置 | 建议的值 | 描述 |
+   | 设置 | 建议的值 | 说明 |
    |-|-|-|
    |应用服务计划| myAppServicePlan | 应用服务计划的名称。 |
    | 位置 | 中国东部 | 托管 Web 应用的数据中心。 |

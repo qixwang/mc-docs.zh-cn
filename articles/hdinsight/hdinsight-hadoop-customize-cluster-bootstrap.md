@@ -18,11 +18,11 @@ origin.date: 11/21/2019
 ms.date: 02/24/2020
 ms.author: v-yiso
 ms.openlocfilehash: 16c0628b5446e9a69b1108b9cf7bbacfddc9bffa
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77428830"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292081"
 ---
 # <a name="customize-hdinsight-clusters-using-bootstrap"></a>使用 Bootstrap 自定义 HDInsight 群集
 
@@ -55,7 +55,7 @@ Bootstrap 脚本允许你以编程方式在 Azure HDInsight 中安装和配置�
 
 有关在创建时在 HDInsight 群集上安装其他组件的信息，请参阅[使用脚本操作自定义 HDInsight 群集 (Linux)](hdinsight-hadoop-customize-cluster-linux.md)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * 如果使用 PowerShell，你将需要 [Az 模块](https://docs.microsoft.com/powershell/azure/overview)。
 

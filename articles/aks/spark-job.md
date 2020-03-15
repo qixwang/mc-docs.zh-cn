@@ -1,21 +1,18 @@
 ---
 title: 使用 Azure Kubernetes 服务 (AKS) 运行 Apache Spark 作业
 description: 使用 Azure Kubernetes 服务 (AKS) 运行 Apache Spark 作业
-services: container-service
 author: rockboyfor
-manager: digimobile
-ms.service: container-service
-ms.topic: article
+ms.topic: conceptual
 origin.date: 10/18/2019
-ms.date: 10/28/2019
+ms.date: 03/09/2020
 ms.author: v-yeche
 ms.custom: mvc
-ms.openlocfilehash: 1ba8037551adcf53f0a08c845dd395dd3af05d7c
-ms.sourcegitcommit: 1d4dc20d24feb74d11d8295e121d6752c2db956e
+ms.openlocfilehash: 3d17e4dad8e92901dae62076184b1ebf15c70037
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73068878"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79290693"
 ---
 # <a name="running-apache-spark-jobs-on-aks"></a>在 AKS 中运行 Apache Spark 作业
 
@@ -53,10 +50,8 @@ az ad sp create-for-rbac --name SparkSP
 使用大小为 `Standard_D3_v2` 的节点以及作为服务主体和客户端密码参数传递的 appId 和密码值创建 AKS 群集。
 
 ```azurecli
-az aks create --resource-group mySparkCluster --name mySparkCluster --node-vm-size Standard_D3_v2 --generate-ssh-keys --service-principal <APPID> --client-secret <PASSWORD> --vm-set-type AvailabilitySet
+az aks create --resource-group mySparkCluster --name mySparkCluster --node-vm-size Standard_D3_v2 --generate-ssh-keys --service-principal <APPID> --client-secret <PASSWORD>
 ```
-
-<!--MOONCAKE: CORRECT TO APPEND --vm-set-type AvailabilitySet Before VMSS feature is valid on Azure China Cloud-->
 
 连接到 AKS 群集。
 
@@ -325,6 +320,7 @@ ENTRYPOINT [ "/opt/entrypoint.sh" ]
     --name spark-pi \
     --class org.apache.spark.examples.SparkPi \
     --conf spark.executor.instances=3 \
+    --conf spark.kubernetes.authenticate.driver.serviceAccountName=spark \
     --conf spark.kubernetes.container.image=<spark-image> \
     local:///opt/spark/work-dir/<your-jar-name>.jar
 ```
@@ -356,3 +352,5 @@ ENTRYPOINT [ "/opt/entrypoint.sh" ]
 [aks-quickstart]: /aks/
 [azure-cli]: https://docs.azure.cn/cli/?view=azure-cli-latest?view=azure-cli-latest
 [storage-account]: /storage/common/storage-azure-cli
+
+<!-- Update_Description: update meta properties, wording update, update link -->

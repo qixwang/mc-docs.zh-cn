@@ -14,11 +14,11 @@ ms.author: v-junlch
 ms.reviewer: jmprieur
 ms.custom: aaddev, identityplatformtop40, fasttrack-edit
 ms.openlocfilehash: dd8430622991299f585920e4105ae0d0a416cfa5
-ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77653424"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291061"
 ---
 # <a name="quickstart-set-up-a-tenant"></a>快速入门：设置租户
 

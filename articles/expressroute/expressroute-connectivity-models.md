@@ -1,6 +1,6 @@
 ---
 title: ExpressRoute 连接模型：通过网络服务提供商、交换和以太网提供商连接到 Microsoft Azure | Azure
-description: 本文介绍客户的网络与 Microsoft Azure、Office 365 和 Dynamics 365 服务之间的不同连接模式。 客户可以使用 MPLS 提供程序、云交换和以太网提供商。
+description: 本文介绍客户的网络与 Microsoft Azure、Office 365 和 Dynamics 365 服务之间的不同连接模式。 客户可使用 MPLS 提供商、云交换和以太网提供商。
 documentationcenter: na
 services: expressroute
 author: cherylmc
@@ -16,11 +16,11 @@ origin.date: 09/18/2019
 ms.date: 12/02/2019
 ms.author: v-yiso
 ms.openlocfilehash: 19754dae03b998a8a04d8625eb5aa5b7affe0e56
-ms.sourcegitcommit: 9e92bcf6aa02fc9e7b3a29abadf6b6d1a8ece8c4
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74389458"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292519"
 ---
 # <a name="expressroute-connectivity-models"></a>ExpressRoute 连接模型
 在本地网络和 Microsoft 云之间创建连接时，可以采用三种不同的方式：[CloudExchange 归置](#CloudExchange)、[点到点以太网连接](#Ethernet)、[任意位置之间的 (IPVPN) 连接](#IPVPN)。 连接服务提供商可以提供一个或多个连接模型。 可以咨询连接服务提供商来选择最合适的模型。

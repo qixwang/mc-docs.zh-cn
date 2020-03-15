@@ -9,11 +9,11 @@ origin.date: 03/15/2019
 ms.date: 11/11/2019
 ms.custom: seodec18
 ms.openlocfilehash: 5926e54619339049ad0b576efcf78d7aa08a96b8
-ms.sourcegitcommit: a89eb0007edd5b4558b98c1748b2bd67ca22f4c9
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73730689"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292447"
 ---
 # <a name="creating-and-configuring-a-key-vault-for-azure-disk-encryption-with-azure-ad-previous-release"></a>使用 Azure AD 创建和配置用于 Azure 磁盘加密的密钥保管库（以前版本）
 

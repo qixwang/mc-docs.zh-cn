@@ -10,11 +10,11 @@ ms.date: 02/24/2020
 ms.author: v-yeche
 ms.custom: MVC
 ms.openlocfilehash: b9cb94b1dacf90d7b9896133efeb60ee4f5c9926
-ms.sourcegitcommit: 781f68d27903687f0aa9e1ed273eee25c6d129a1
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77611278"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291696"
 ---
 # <a name="prepare-on-premises-vmware-servers-for-disaster-recovery-to-azure"></a>准备本地 VMware 服务器用于灾难恢复到 Azure
 

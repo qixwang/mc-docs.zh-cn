@@ -9,11 +9,11 @@ ms.date: 06/10/2019
 ms.topic: conceptual
 ms.author: v-yeche
 ms.openlocfilehash: cfc8fa837042d29416b38da1cd6a369c1833b54f
-ms.sourcegitcommit: ea49cb39ed993bb1966559230c785b1e19bd43c5
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72519390"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291578"
 ---
 # <a name="plan-capacity-and-scaling-for-vmware-disaster-recovery-to-azure"></a>规划容量和缩放以便将 VMware 灾难恢复到 Azure
 

@@ -7,11 +7,11 @@ origin.date: 01/10/2018
 ms.date: 02/24/2020
 ms.author: v-yeche
 ms.openlocfilehash: 3fe51057de12c3acc50301f88b848de8b1699757
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77540463"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291421"
 ---
 # <a name="replicas-and-instances"></a>副本和实例 
 本文概述了有状态服务副本和无状态服务实例的生命周期。

@@ -9,11 +9,11 @@ origin.date: 11/04/2019
 ms.date: 01/13/2020
 ms.author: v-yeche
 ms.openlocfilehash: 6f3962b0407af9c629d299615f851b48c5349897
-ms.sourcegitcommit: 4f4694991e1c70929c7112ad45a0c404ddfbc8da
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75776718"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291131"
 ---
 # <a name="analyze-the-deployment-planner-report-for-vmware-disaster-recovery-to-azure"></a>分析部署规划器报表以从 VMware 灾难恢复到 Azure
 

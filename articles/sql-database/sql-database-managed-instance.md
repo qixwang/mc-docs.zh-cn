@@ -13,11 +13,11 @@ ms.reviewer: sstein, carlrab, vanto
 origin.date: 01/21/2020
 ms.date: 02/17/2020
 ms.openlocfilehash: bdbb9eb3c7d82bbda29501d8fb61453a8a604942
-ms.sourcegitcommit: d7b86a424b72849fe8ed32893dd05e4696e4fe85
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77155700"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292830"
 ---
 # <a name="what-is-azure-sql-database-managed-instance"></a>什么是 Azure SQL 数据库托管实例？
 

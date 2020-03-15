@@ -12,11 +12,11 @@ ms.date: 11/11/2018
 ms.reviewer: klam, LADocs
 ms.suite: integration
 ms.openlocfilehash: 97bb7be09b1bd242dcec61ae99506ba8d2de14a0
-ms.sourcegitcommit: 9e92bcf6aa02fc9e7b3a29abadf6b6d1a8ece8c4
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74389372"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291500"
 ---
 # <a name="perform-data-operations-in-azure-logic-apps"></a>在 Azure 逻辑应用中执行数据操作
 
@@ -39,8 +39,8 @@ ms.locfileid: "74389372"
 | [**创建 CSV 表**](#create-csv-table-action) | 从数组创建逗号分隔值 (CSV) 表。 | 
 | [**创建 HTML 表**](#create-html-table-action) | 从数组创建 HTML 表。 | 
 | [**筛选数组**](#filter-array-action) | 基于指定的筛选器或条件从数组创建数组子集。 | 
-| [**联接**](#join-action) | 基于数组中的所有项创建一个字符串，并使用指定的字符分隔每个项。 | 
-| [**选择**](#select-action) | 从不同数组中所有项的指定属性创建一个数组。 | 
+| [Join](#join-action)  | 基于数组中的所有项创建一个字符串，并使用指定的字符分隔每个项。 | 
+| [Select](#select-action)  | 从不同数组中所有项的指定属性创建一个数组。 | 
 ||| 
 
 **JSON 操作**
@@ -50,7 +50,7 @@ ms.locfileid: "74389372"
 | 操作 | 说明 | 
 |--------|-------------| 
 | [Compose](#compose-action)  | 从可能具有不同数据类型的多个输入创建一个消息或字符串。 然后可以使用此字符串作为单个输入，而无需反复输入相同的输入。 例如，可以从各种输入创建单个 JSON 消息。 | 
-| [**分析 JSON**](#parse-json-action) | 为 JSON 内容中的属性创建用户友好的数据令牌，以便在逻辑应用中更轻松地使用这些属性。 | 
+| [Parse JSON](#parse-json-action)  | 为 JSON 内容中的属性创建用户友好的数据令牌，以便在逻辑应用中更轻松地使用这些属性。 | 
 ||| 
 
 

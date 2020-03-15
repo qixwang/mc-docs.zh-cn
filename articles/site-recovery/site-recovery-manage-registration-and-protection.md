@@ -9,11 +9,11 @@ origin.date: 06/18/2019
 ms.date: 08/05/2019
 ms.author: v-yeche
 ms.openlocfilehash: d08e5decf98a65bce4e54b715a26a13f0834045b
-ms.sourcegitcommit: ea49cb39ed993bb1966559230c785b1e19bd43c5
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72519385"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291579"
 ---
 # <a name="remove-servers-and-disable-protection"></a>删除服务器并禁用保护
 
@@ -30,7 +30,7 @@ ms.locfileid: "72519385"
 ## <a name="unregister-a-vmm-server"></a>取消注册 VMM 服务器
 
 1. 停止在要删除的 VMM 服务器上复制云中的虚拟机。
-2. 删除由需要删除的 VMM 服务器上的云使用的任何网络映射。 在“Site Recovery 基础结构”   > “对于 System Center VMM”   > “网络映射”  中，右键单击网络映射 > “删除”  。
+2. 删除由需要删除的 VMM 服务器上的云使用的任何网络映射。 在“Site Recovery 基础结构” > “对于 System Center VMM” > “网络映射”中，右键单击网络映射 >“删除”。    
 3. 记下 VMM 服务器的 ID。
 4. 取消复制策略与要删除的 VMM 服务器上的云的关联。  在“Site Recovery 基础结构” > “对于 System Center VMM” >  “复制策略”中，右键单击关联的策略。    右键单击云 >“取消关联”。 
 5. 删除 VMM 服务器或主动节点。 在“Site Recovery 基础结构” > “对于 System Center VMM” > “VMM 服务器”中，右键单击服务器 >“删除”。    

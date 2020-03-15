@@ -6,11 +6,11 @@ origin.date: 12/16/2019
 ms.date: 03/09/2020
 ms.topic: how-to
 ms.openlocfilehash: 2bb741a72e283e52948b4360080d9ee733b8f8f3
-ms.sourcegitcommit: 892137d117bcaf9d88aec0eb7ca756fe39613344
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78042304"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291301"
 ---
 # <a name="how-to-create-guest-configuration-policies"></a>如何创建 Guest Configuration 策略
 

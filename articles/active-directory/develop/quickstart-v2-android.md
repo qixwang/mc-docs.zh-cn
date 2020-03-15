@@ -2,38 +2,31 @@
 title: Microsoft 标识平台 Android 快速入门 | Azure
 description: 了解 Android 应用程序如何才能通过 Microsoft 标识平台终结点调用需要访问令牌的 API。
 services: active-directory
-documentationcenter: dev-center-name
-author: TylerMSFT
+author: mmacy
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: quickstart
-ms.tgt_pltfrm: na
 ms.workload: identity
-origin.date: 10/15/2019
-ms.date: 11/26/2019
+ms.date: 03/10/2020
 ms.author: v-junlch
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:Android
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: af0899a9fdca1caa4e9f38fe5b0f46ded619a0eb
-ms.sourcegitcommit: 9597d4da8af58009f9cef148a027ccb7b32ed8cf
+ms.openlocfilehash: f490efb182e78ee6a1293f988f44009e9869713a
+ms.sourcegitcommit: 4ba6d7c8bed5398f37eb37cf5e2acafcdcc28791
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74655305"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79133829"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-android-app"></a>快速入门：从 Android 应用登录用户并调用 Microsoft Graph API
 
-本快速入门使用一个代码示例来演示 Android 应用程序如何使用 Microsoft 标识平台将工作或学校帐户登录，然后获取访问令牌并调用 Microsoft Graph API。
+本快速入门使用一个代码示例来演示 Android 应用程序如何使用 Microsoft 标识平台将工作或学校帐户登录，然后获取访问令牌并调用 Microsoft Graph API。 （有关说明，请参阅[示例工作原理](#how-the-sample-works)。）
 
-应用程序必须由 Azure Active Directory 中的应用对象表示，使 Microsoft 标识平台能够与应用程序共享令牌。
+应用程序必须由 Azure Active Directory 中的应用对象表示，以便 Microsoft 标识平台为应用程序提供令牌。
 
 > [!div renderon="docs"]
 > 为方便起见，代码示例在 `AndroidManifest.xml` 文件中预先配置了默认的 `redirect_uri`，因此你无需事先注册自己的应用对象。 `redirect_uri` 在一定程度上基于应用的签名密钥。 示例项目中已预先配置了签名密钥，使提供的 `redirect_uri` 可正常工作。 若要详细了解如何注册应用对象并将其与应用程序集成，请参阅[从 Android 应用将用户登录并调用 Microsoft Graph](tutorial-v2-android.md) 教程。
 
-![示例应用的屏幕截图](./media/quickstart-v2-android/android-intro.svg)
 
 > [!NOTE]
 > **先决条件**
@@ -50,73 +43,14 @@ ms.locfileid: "74655305"
 > > ![已配置](./media/quickstart-v2-android/green-check.png) 应用程序已使用这些属性进行了配置
 >
 > ### <a name="step-2-download-the-project"></a>步骤 2：下载项目 
-> * [下载代码示例](https://github.com/Azure-Samples/ms-identity-android-java/archive/master.zip)
+> [!div class="sxs-lookup" renderon="portal"]
+> 使用 Android Studio 运行项目。
+> [!div renderon="portal" id="autoupdate" class="nextstepaction"]
+> [下载代码示例]()
 >
-> ### <a name="step-3-configure-your-project"></a>步骤 3：配置项目
-> 1. 解压缩该项目并将其在 Android Studio 中打开。
-> 2. 在“app” > “src” > “main” > “res” > “raw”中，打开 auth_config_multiple_account.json 并将其替换为以下代码       ：
-> ```javascript 
-> {
->   "client_id" : "Enter_the_Application_Id_Here",
->   "authorization_user_agent" : "DEFAULT",
->   "redirect_uri" : "Enter_the_Redirect_Uri_Here",
->   "account_mode" : "MULTIPLE",
->   "broker_redirect_uri_registered": true,
->   "authorities" : [
->     {
->       "type": "AAD",
->       "audience": {
->         "type": "Enter_the_Audience_Info_Here",
->         "tenant_id": "Enter_the_Tenant_Info_Here"
->       }
->     }
->   ]
-> }
-> ```
-
 > [!div class="sxs-lookup" renderon="portal"]
-> 3. 在“app” > “源” > “main” > “res” > “raw”中，打开 auth_config_single_account.json 并将其替换为以下代码       ：
-> ```javascript 
-> {
->   "client_id" : "Enter_the_Application_Id_Here",
->   "authorization_user_agent" : "DEFAULT",
->   "redirect_uri" : "Enter_the_Redirect_Uri_Here",
->   "account_mode" : "SINGLE",
->   "broker_redirect_uri_registered": true,
->   "authorities" : [
->     {
->       "type": "AAD",
->       "audience": {
->         "type": "Enter_the_Audience_Info_Here",
->         "tenant_id": "Enter_the_Tenant_Info_Here"
->       }
->     }
->   ]
-> }
-> ```
-
-> [!div class="sxs-lookup" renderon="portal"]
-> 4. 在“app” > “src” > “main”中，打开 AndroidManifest.xml     。
-> 5. 在 manifest\application 节点中，将 activity android:name="com.microsoft.identity.client.BrowserTabActivity" 节点替换为以下内容   ：    
-> ```xml
-> <!--Intent filter to catch Microsoft's callback after Sign In-->
-> <activity android:name="com.microsoft.identity.client.BrowserTabActivity">
->     <intent-filter>
->         <action android:name="android.intent.action.VIEW" />
->         <category android:name="android.intent.category.DEFAULT" />
->         <category android:name="android.intent.category.BROWSABLE" />
->         <!--
->             Add in your scheme/host from registered redirect URI 
->             note that the leading "/" is required for android:path
->         -->
->         <data 
->             android:host="Enter_the_Package_Name"
->             android:path="/Enter_the_Signature_Hash"
->             android:scheme= "msauth" />
->     </intent-filter>
-> </activity>
-> ```
-> 6. 运行应用！   
+> ### <a name="step-3-your-app-is-configured-and-ready-to-run"></a>步骤 3：应用已配置并可以运行
+> 我们已经为项目配置了应用属性的值，并且该项目已准备好运行。 
 > 示例应用将在“单帐户模式”屏幕上启动。  默认情况下，会提供默认范围 **user.read**，在调用 Microsoft Graph API 期间读取你自己的配置文件数据时，将使用该范围。 默认提供 Microsoft Graph API 调用的 URL。 可根据需要更改这两个默认值。
 >
 > ![显示单帐户和多帐户用法的 MSAL 示例应用](./media/quickstart-v2-android/quickstart-sample-app.png)
@@ -132,7 +66,7 @@ ms.locfileid: "74655305"
 
 > [!div class="sxs-lookup" renderon="portal"]
 > > [!NOTE]
-> > 本快速入门支持 Enter_the_Supported_Account_Info_Here。
+> > Enter_the_Supported_Account_Info_Here
 
 > [!div renderon="docs"]
 > ## <a name="step-1-get-the-sample-app"></a>步骤 1：获取示例应用
@@ -157,6 +91,8 @@ ms.locfileid: "74655305"
 > 在多帐户模式下，可以重复相同的步骤。  此外，还可以删除登录的帐户，这也会删除该帐户的缓存令牌。
 
 ## <a name="how-the-sample-works"></a>示例工作原理
+![示例应用的屏幕截图](./media/quickstart-v2-android/android-intro.svg)
+
 
 代码已组织成多个片段，演示如何编写单帐户和多帐户 MSAL 应用。 代码文件的组织方式如下：
 
@@ -177,7 +113,7 @@ ms.locfileid: "74655305"
 MSAL ([com.microsoft.identity.client](https://javadoc.io/doc/com.microsoft.identity.client/msal)) 是一个库，用于用户登录和请求令牌，此类令牌用于访问受 Microsoft 标识平台保护的 API。 将以下内容添加到“Gradle 脚本” > “build.gradle (Module: app)”中的“Dependencies”下时，Gradle 3.0+ 将安装该库：   
 
 ```gradle  
-implementation 'com.microsoft.identity.client:msal:1.0.0'
+implementation 'com.microsoft.identity.client:msal:1.+'
 ```
 
 可以在示例项目的 build.gradle (Module: app) 中看到以下内容：
@@ -185,7 +121,7 @@ implementation 'com.microsoft.identity.client:msal:1.0.0'
 ```java
 dependencies {
     ...
-    implementation 'com.microsoft.identity.client:msal:1.0.+'
+    implementation 'com.microsoft.identity.client:msal:1.+'
     ...
 }
 ```
@@ -488,7 +424,7 @@ mMultipleAccountApp.acquireTokenSilentAsync(getScopes(),
 
 #### <a name="remove-an-account"></a>删除帐户
 
-用于删除帐户以及该帐户的所有已缓存令牌的代码位于“删除帐户”按钮的处理程序的 `initializeUI()` 中的 `MultipleAccountModeFragment.java` 文件内。 在删除帐户之前，需要提供从 `getAccounts()` 和 `acquireToken()` 等 MSAL 方法获取的帐户对象。 由于删除帐户是一个异步操作，因此需提供 `onRemoved` 回调来更新 UI。
+用于删除帐户以及该帐户的所有已缓存令牌的代码位于“删除帐户”按钮的处理程序的 `MultipleAccountModeFragment.java` 文件中的 `initializeUI()` 内。 在删除帐户之前，需要提供从 `getAccounts()` 和 `acquireToken()` 等 MSAL 方法获取的帐户对象。 由于删除帐户是一个异步操作，因此需提供 `onRemoved` 回调来更新 UI。
 
 ```java
 /**

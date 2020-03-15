@@ -12,11 +12,11 @@ origin.date: 12/27/2019
 ms.date: 03/09/2020
 ms.custom: seodec18
 ms.openlocfilehash: ae77640118e269b91c8f2ca33375fa6c0e2b4850
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78154997"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292406"
 ---
 # <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>Azure 机器学习的工作原理：体系结构和概念
 

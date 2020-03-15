@@ -10,11 +10,11 @@ ms.workload: infrastructure-services
 origin.date: 11/05/2019
 ms.date: 02/10/2020
 ms.openlocfilehash: 0380a976a19ee46d248ae89922240dc289f7771b
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77428833"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291310"
 ---
 # <a name="availability-options-for-virtual-machines-in-azure"></a>Azure 中虚拟机的可用性选项
 

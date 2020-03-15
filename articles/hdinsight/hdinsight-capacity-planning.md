@@ -11,11 +11,11 @@ ms.topic: article
 origin.date: 10/15/2019
 ms.date: 11/11/2019
 ms.openlocfilehash: a6fc57e903c245f242c0f70a6436b3faa04c8b4c
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77428731"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291224"
 ---
 # <a name="capacity-planning-for-hdinsight-clusters"></a>HDInsight 群集的容量规划
 

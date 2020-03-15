@@ -11,11 +11,11 @@ ms.date: 12/04/2019
 ms.topic: conceptual
 manager: digimobile
 ms.openlocfilehash: 7fcffd6db2e9f11315c8bd98d329bf784aae1713
-ms.sourcegitcommit: 481542df432d52b7d4823811cef94772e4e0f192
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74530637"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291654"
 ---
 # <a name="azure-automation-runbook-types"></a>Azure 自动化 Runbook 类型
 
@@ -50,7 +50,7 @@ Azure 自动化支持多种类型的 Runbook，下表进行了简要描述。  �
 
 ## <a name="powershell-runbooks"></a>PowerShell Runbook
 
-基于 Windows PowerShell 的 PowerShell Runbook。  可以在 Azure 门户中使用文本编辑器直接编辑 Runbook 的代码。  还可以使用任何脱机文本编辑器，以便[导入 Runbook](manage-runbooks.md) 到 Azure 自动化中。
+基于 Windows PowerShell 的 PowerShell Runbook。  可以在 Azure 门户中使用文本编辑器直接编辑 Runbook 的代码。  还可以使用任何脱机文本编辑器，以便 [导入 Runbook](manage-runbooks.md) 到 Azure 自动化中。
 
 ### <a name="advantages"></a>优点
 
@@ -76,7 +76,7 @@ Azure 自动化支持多种类型的 Runbook，下表进行了简要描述。  �
 
 ## <a name="powershell-workflow-runbooks"></a>PowerShell 工作流 Runbook
 
-PowerShell 工作流 Runbook 是基于 [Windows PowerShell 工作流](automation-powershell-workflow.md)的文本 Runbook。  可以在 Azure 门户中使用文本编辑器直接编辑 Runbook 的代码。  还可以使用任何脱机文本编辑器，以便[导入 Runbook](manage-runbooks.md) 到 Azure 自动化中。
+PowerShell 工作流 Runbook 是基于 [Windows PowerShell 工作流](automation-powershell-workflow.md)的文本 Runbook。  可以在 Azure 门户中使用文本编辑器直接编辑 Runbook 的代码。  还可以使用任何脱机文本编辑器，以便 [导入 Runbook](manage-runbooks.md) 到 Azure 自动化中。
 
 ### <a name="advantages"></a>优点
 
@@ -88,7 +88,7 @@ PowerShell 工作流 Runbook 是基于 [Windows PowerShell 工作流](automation
 ### <a name="limitations"></a>限制
 
 * 作者必须熟悉 PowerShell 工作流。
-* Runbook 还必须处理与 PowerShell 工作流相关的其他复杂问题，例如[反序列化的对象](automation-powershell-workflow.md#code-changes)。
+* Runbook 还必须处理与 PowerShell 工作流相关的其他复杂问题，例如 [反序列化的对象](automation-powershell-workflow.md#code-changes)。
 * 与 PowerShell Runbook 相比，Runbook 需要更长时间来启动，因为它在运行前需要进行编译。
 * 只能通过用于创建新作业的 Start-AzureAutomationRunbook cmdlet 以子 Runbook 的形式包括 PowerShell Runbook。
 * 无法在 Linux 混合 Runbook 辅助角色上运行
@@ -118,6 +118,6 @@ PowerShell 工作流 Runbook 是基于 [Windows PowerShell 工作流](automation
 ## <a name="next-steps"></a>后续步骤
 
 * 若要详细了解图形 Runbook 创作，请参阅 [Azure 自动化中的图形创作](automation-graphical-authoring-intro.md)
-* 若要了解 Runbook 的 PowerShell 和 PowerShell 工作流之间的差异，请参阅[了解 Windows PowerShell 工作流](automation-powershell-workflow.md)
+* 若要了解 Runbook 的 PowerShell 和 PowerShell 工作流之间的差异，请参阅 [了解 Windows PowerShell 工作流](automation-powershell-workflow.md)
 * 有关如何创建或导入 Runbook 的详细信息，请参阅 [创建或导入 Runbook](manage-runbooks.md)
 * 有关 PowerShell 的详细信息（包括语言参考和学习模块），请参阅 [PowerShell 文档](https://docs.microsoft.com/powershell/scripting/overview)。

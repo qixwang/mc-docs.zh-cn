@@ -10,11 +10,11 @@ ms.author: v-jay
 ms.reviewer: harik
 ms.lastreviewed: 01/11/2019
 ms.openlocfilehash: 631320c74254a2d616998dd46286a3ca868b8edf
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77540320"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79290909"
 ---
 # <a name="azure-stack-hub-servicing-policy"></a>Azure Stack Hub 服务策略
 

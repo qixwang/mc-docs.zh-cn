@@ -14,11 +14,11 @@ ms.custom: seo-lt-2019; seo-dt-2019
 origin.date: 08/12/2019
 ms.date: 01/06/2020
 ms.openlocfilehash: a916a9097808a269d571c301560c052290710c73
-ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77653523"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291772"
 ---
 # <a name="copy-data-from-mongodb-using-azure-data-factory"></a>使用 Azure 数据工厂从 MongoDB 复制数据
 

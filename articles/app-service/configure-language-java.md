@@ -6,16 +6,16 @@ author: jasonfreeberg
 ms.devlang: java
 ms.topic: article
 origin.date: 04/12/2019
-ms.date: 01/13/2020
+ms.date: 03/23/2020
 ms.author: v-tawe
 ms.reviewer: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 912c3d0eba43618b0dd0bd13fe63417b15bcb827
-ms.sourcegitcommit: 3f9d780a22bb069402b107033f7de78b10f90dde
+ms.openlocfilehash: b5baa4545802528e5587beaf34646871a991ec34
+ms.sourcegitcommit: d5eca3c6b03b206e441b599e5b138bd687a91361
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77179315"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78934712"
 ---
 # <a name="configure-a-windows-java-app-for-azure-app-service"></a>为 Azure 应用服务配置 Windows Java 应用
 
@@ -25,21 +25,18 @@ Azure 应用服务可让 Java 开发人员在完全托管的基于 Windows 的�
 
 ## <a name="deploying-your-app"></a>部署应用
 
-可以使用 [Azure 应用服务的 Maven 插件](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme)来部署 .war 文件。 [Azure Toolkit for IntelliJ](/java/intellij/azure-toolkit-for-intellij) 或 [Azure Toolkit for Eclipse](/java/eclipse/azure-toolkit-for-eclipse) 还支持通过流行的 IDE 进行部署。
+可以使用[适用于 Maven 的 Azure Web 应用插件](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme)来部署 .war 文件。 [Azure Toolkit for IntelliJ](/java/intellij/azure-toolkit-for-intellij) 或 [Azure Toolkit for Eclipse](/java/eclipse/azure-toolkit-for-eclipse) 还支持通过流行的 IDE 进行部署。
 
 如果不使用这些方法，则部署方法将取决于存档类型：
 
-- 若要将 .war 文件部署到 Tomcat，请使用 `/api/wardeploy/` 终结点对存档文件执行 POST 操作。 有关此 API 的详细信息，请参阅[此文档](/app-service/deploy-zip#deploy-war-file)。
+- 若要将 .war 文件部署到 Tomcat，请使用 `/api/wardeploy/` 终结点对存档文件执行 POST 操作。 有关此 API 的详细信息，请参阅[此文档](https://docs.azure.cn/app-service/deploy-zip#deploy-war-file)。
+- 若要将 .jar 文件部署到 Java SE，请使用 Kudu 站点的 `/api/zipdeploy/` 终结点。 有关此 API 的详细信息，请参阅[此文档](https://docs.azure.cn/app-service/deploy-zip#rest)。
 
 不要使用 FTP 来部署 .war。 FTP 工具设计用来上传启动脚本、依赖项或其他运行时文件。 它不是用于部署 Web 应用的最佳选项。
 
 ## <a name="logging-and-debugging-apps"></a>日志记录和调试应用
 
 可以通过 Azure 门户对每个应用使用性能报告、流量可视化和运行状况检查。
-
-<!--### SSH console access-->
-
-<!--!INCLUDE [Open SSH session in browser](../../includes/app-service-web-ssh-connect-builtin-no-h.md)]-->
 
 <!--### Stream diagnostic logs-->
 
@@ -134,9 +131,9 @@ az webapp start --name <app-name> --resource-group <resource-group-name>
 
 在 Azure 门户中使用“身份验证和授权”选项设置应用身份验证。  在此处，可以使用 Azure Active Directory 或社交登录名（例如 GitHub）启用身份验证。 仅当配置单个身份验证提供程序时，Azure 门户配置才起作用。 有关详细信息，请参阅[将应用服务应用配置为使用 Azure Active Directory 登录](configure-authentication-provider-aad.md)，以及其他标识提供者的相关文章。 如果需要启用多个登录提供程序，请遵照[自定义应用服务身份验证](app-service-authentication-how-to.md)一文中的说明。
 
-#### <a name="tomcat-and-wildfly"></a>Tomcat 和 Wildfly
+#### <a name="tomcat"></a>Tomcat
 
-Tomcat 或 Wildfly 应用程序可以通过将主体对象强制转换为 Map 对象，直接从 servlet 访问用户的声明。 该 Map 对象将每个声明类型映射到该类型的声明集合。 在以下代码中，`request` 是 `HttpServletRequest` 的实例。
+Tomcat 应用程序可以通过将主体对象强制转换为 Map 对象，直接从 servlet 访问用户的声明。 该 Map 对象将每个声明类型映射到该类型的声明集合。 在以下代码中，`request` 是 `HttpServletRequest` 的实例。
 
 ```java
 Map<String, Collection<String>> map = (Map<String, Collection<String>>) request.getUserPrincipal();
@@ -267,6 +264,10 @@ public int getServerPort()
 
 最后，请重启应用服务。 你的部署应当转到 `D:\home\site\wwwroot\webapps`，跟以前完全一样。
 
+## <a name="configure-java-se"></a>配置 Java SE
+
+在 Windows 上的 Java SE 中运行 .JAR 应用程序时，`server.port` 将在应用程序启动时传递为命令行选项。 你可以从环境变量 `HTTP_PLATFORM_PORT` 手动解析 HTTP 端口。 此环境变量的值将是应用程序应侦听的 HTTP 端口。 
+
 ## <a name="java-runtime-statement-of-support"></a>Java 运行时支持声明
 
 ### <a name="jdk-versions-and-maintenance"></a>JDK 版本和维护
@@ -280,6 +281,8 @@ Azure 支持的 Java 开发工具包 (JDK) 为提供 [Azul Systems](https://www.
 ### <a name="security-updates"></a>安全更新
 
 重大安全漏洞的修补程序和修复程序将在 Azul Systems 提供后立即发布。 “重大”漏洞是根据 [NIST 常见漏洞评分系统版本 2](https://nvd.nist.gov/cvss.cfm) 提供的基本评分 9.0 或以上来定义的。
+
+Tomcat 8.0 [已经在 2018 年 9 月 30 日生命周期终止 (EOL)。](https://tomcat.apache.org/tomcat-80-eol.html) 尽管该运行时在 Azure 应用服务上仍然可用，但 Azure 不会为 Tomcat 8.0 应用安全更新。 如果可能，请将你的应用程序迁移到 Tomcat 8.5 或 9.0。 Tomcat 8.5 和 9.0 在 Azure 应用服务上都可用。 有关详细信息，请查看 [Tomcat 官方网站](https://tomcat.apache.org/whichversion.html)。 
 
 ### <a name="deprecation-and-retirement"></a>弃用和停用
 

@@ -6,11 +6,11 @@ origin.date: 12/11/2019
 ms.author: v-yeche
 ms.date: 01/06/2020
 ms.openlocfilehash: 0da0ae7bbe46b02b40148302da4f5923c5522867
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75631518"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292175"
 ---
 # <a name="using-linked-and-nested-templates-when-deploying-azure-resources"></a>部署 Azure 资源时使用链接模版和嵌套模版
 
@@ -283,7 +283,7 @@ ms.locfileid: "75631518"
 >
 > 当作用域设置为 `outer` 时，对于已在嵌套模板中部署的资源，无法在嵌套模板的 outputs 节中使用 `reference` 函数。 若要返回嵌套模板中部署的资源的值，请使用 inner 作用域或将嵌套模板转换为链接模板。
 
-## <a name="linked-template"></a>链接模板
+## <a name="linked-template"></a>链接的模板
 
 若要链接某个模板，请向主模板中添加一个部署资源。 在 **templateLink** 属性中，指定要包括的模板的 URI。 以下示例链接到部署新存储帐户的模板。
 

@@ -10,11 +10,11 @@ origin.date: 05/22/2019
 ms.date: 06/10/2019
 ms.author: v-jay
 ms.openlocfilehash: f1ba67cb6dd52154ec9e32f31c3c685785e5cfb7
-ms.sourcegitcommit: 98cc8aa5b8d0e04cd4818b34f5350c72f617a225
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68298141"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292991"
 ---
 # <a name="azure-data-box-system-requirements"></a>Azure Data Box 系统要求
 
@@ -42,7 +42,7 @@ ms.locfileid: "68298141"
 
 [!INCLUDE [data-box-supported-storage-accounts](../../includes/data-box-supported-storage-accounts.md)]
 
-### <a name="supported-storage-types"></a>支持的存储类型
+### <a name="supported-storage-types"></a>受支持的存储类型
 
 [!INCLUDE [data-box-supported-storage-types](../../includes/data-box-supported-storage-types.md)]
 

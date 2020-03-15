@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 02/14/2020
 ms.author: v-junlch
 ms.openlocfilehash: 8b08cf5b1031de2531053beeed70559a96c51d24
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77428025"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291005"
 ---
 # <a name="http-features"></a>HTTP 功能
 

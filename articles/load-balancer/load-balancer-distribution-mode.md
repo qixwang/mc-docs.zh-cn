@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 origin.date: 11/19/2019
 ms.date: 02/24/2020
 ms.author: v-jay
-ms.openlocfilehash: 7116ac082f6063a2d611af57a0d6666dc2c9b3a2
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.openlocfilehash: f72e50ab554b6a432b1cebf3965b1abe0f668b72
+ms.sourcegitcommit: e94ed1c9eff4e88be2ca389909e60b14cc0d92f8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77540977"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79084494"
 ---
 # <a name="configure-the-distribution-mode-for-azure-load-balancer"></a>配置 Azure 负载均衡器的分配模式
 
@@ -188,7 +188,7 @@ Set-AzureLoadBalancedEndpoint -ServiceName MyService -LBSetName LBSet1 -Protocol
     Cache-Control: no-cache
     Content-Length: 0
     Server: 1.0.6198.146 (rd_rdfe_stable.141015-1306) Microsoft-HTTPAPI/2.0
-    x-ms-servedbyregion: ussouth2
+    x-ms-servedbyregion: chinaeast2
     x-ms-request-id: 9c7bda3e67c621a6b57096323069f7af
     Date: Thu, 16 Oct 2014 22:49:21 GMT
 

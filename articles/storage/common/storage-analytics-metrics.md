@@ -10,11 +10,11 @@ ms.author: v-jay
 ms.reviewer: fryu
 ms.subservice: common
 ms.openlocfilehash: 84d6597220138f452efdcb5970b529aa96335110
-ms.sourcegitcommit: 73f07c008336204bd69b1e0ee188286d0962c1d7
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72914439"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291193"
 ---
 # <a name="azure-storage-analytics-metrics-classic"></a>Azure 存储分析指标（经典）
 

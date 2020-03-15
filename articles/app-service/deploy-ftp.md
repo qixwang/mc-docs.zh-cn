@@ -8,11 +8,11 @@ ms.date: 01/13/2020
 ms.author: v-tawe
 ms.custom: seodec18
 ms.openlocfilehash: 1d9f780f1fbac8e59d1ec04c9498415cf457256c
-ms.sourcegitcommit: 3f9d780a22bb069402b107033f7de78b10f90dde
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77179323"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292743"
 ---
 # <a name="deploy-your-app-to-azure-app-service-using-ftps"></a>使用 FTP/S 将应用部署到 Azure 应用服务
 

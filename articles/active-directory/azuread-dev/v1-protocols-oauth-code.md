@@ -17,11 +17,11 @@ ms.author: v-junlch
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.openlocfilehash: 7da83c86f02a1df62b84f3c3942398679a5b79ab
-ms.sourcegitcommit: fbc7584f403417d3af7bd6bbbaed7c13a78c57b9
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78411399"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291101"
 ---
 # <a name="authorize-access-to-azure-active-directory-web-applications-using-the-oauth-20-code-grant-flow"></a>使用 OAuth 2.0 代码授权流来授权访问 Azure Active Directory Web 应用程序
 

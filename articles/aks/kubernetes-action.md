@@ -3,25 +3,22 @@ title: 使用 GitHub Actions 生成和测试容器并将其部署到 Azure Kuber
 description: 了解如何使用 GitHub Actions 将容器部署到 Kubernetes
 services: container-service
 author: rockboyfor
-ms.service: container-service
 ms.topic: article
 origin.date: 11/04/2019
-ms.date: 01/19/2020
+ms.date: 03/09/2020
 ms.author: v-yeche
-ms.openlocfilehash: fb2cdfeed2b50ee9eaa86356030b756cbf2a80a0
-ms.sourcegitcommit: 304861faf39689348962127b8b56db8082ece2ef
+ms.openlocfilehash: 2729f75376598e7430c2638977e80988d519fdee
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76270108"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79290833"
 ---
+<!--NOT SUITABLE FOR MOONCAKE-->
+<!--REASON: PRODUCTION TEAM NOTIFIED-->
 # <a name="github-actions-for-deploying-to-kubernetes-service"></a>用于将容器部署到 Kubernetes 服务的 GitHub Actions
 
 可以通过 [GitHub Actions](https://help.github.com/en/articles/about-github-actions) 灵活地生成自动化软件开发生命周期工作流。 Kubernetes 操作 [azure/aks-set-context@v1](https://github.com/Azure/aks-set-context) 促进到 Azure Kubernetes 服务群集的部署。 此操作设置目标 AKS 群集上下文，该上下文可供其他操作（例如 [azure/k8s-deploy](https://github.com/Azure/k8s-deploy/tree/master)、[azure/k8s-create-secret](https://github.com/Azure/k8s-create-secret/tree/master) 等）使用，也可运行任何 kubectl 命令。
-
-> [!IMPORTANT]
-> GitHub Actions 目前为 Beta 版。 必须先使用 GitHub 帐户[注册加入预览版](https://github.com/features/actions)。
-> 
 
 工作流通过存储库的 `/.github/workflows/` 路径中的 YAML (.yml) 文件定义。 此定义包含组成工作流的各种步骤和参数。
 
@@ -77,11 +74,11 @@ az ad sp create-for-rbac --name "myApp" --role contributor --scopes /subscriptio
 
     ![kubernetes-secrets](media/kubernetes-action/kubernetes-secrets.png)
 
-##  <a name="build-a-container-image-and-deploy-to-azure-kubernetes-service-cluster"></a>生成容器映像并将其部署到 Azure Kubernetes 服务群集
+## <a name="build-a-container-image-and-deploy-to-azure-kubernetes-service-cluster"></a>生成容器映像并将其部署到 Azure Kubernetes 服务群集
 
 容器映像的生成和推送使用 `Azure/docker-login@v1` 操作完成。 若要将容器映像部署到 AKS，需使用 `Azure/k8s-deploy@v1` 操作。 该操作有五个参数：
 
-| **参数**  | **解释**  |
+| **参数** | **解释** |
 |---------|---------|
 | **namespace** | （可选）选择目标 Kubernetes 命名空间。 如果未提供命名空间，则命令会在默认命名空间中运行 | 
 | **manifests** |  （必需）将要用于部署的清单文件的路径 |

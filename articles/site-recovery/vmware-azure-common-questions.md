@@ -8,12 +8,12 @@ origin.date: 11/14/2019
 ms.date: 02/24/2020
 ms.topic: conceptual
 ms.author: v-yeche
-ms.openlocfilehash: d68cb223053aa415624f20dff6067a1f94c6ca3e
-ms.sourcegitcommit: 781f68d27903687f0aa9e1ed273eee25c6d129a1
+ms.openlocfilehash: 5070c651cf14959f92d0f984c619305eb6ad66bd
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77611274"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291128"
 ---
 # <a name="common-questions-about-vmware-to-azure-replication"></a>有关 VMware 到 Azure 的复制的常见问题
 
@@ -49,7 +49,7 @@ ms.locfileid: "77611274"
 
 ### <a name="can-i-use-a-guest-os-server-license-on-azure"></a>是否可以在 Azure 上使用来宾 OS 服务器许可证？
 
-是，Azure 软件保障客户可以使用 [Azure 混合权益](https://www.azure.cn/pricing/hybrid-use-benefit/)来节省迁移到 Azure 的 Windows Server 计算机的许可成本，或将 Azure 用于灾难恢复。
+是，Azure 软件保障客户可以使用 [Azure 混合权益](https://www.azure.cn/pricing/hybrid-benefit/)来节省迁移到 Azure 的 Windows Server 计算机的许可成本，或将 Azure 用于灾难恢复。
 
 ## <a name="security"></a>安全性
 

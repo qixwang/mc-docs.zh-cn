@@ -6,11 +6,11 @@ origin.date: 11/25/2019
 ms.date: 01/17/2020
 ms.topic: tutorial
 ms.openlocfilehash: 859702a53b8275f97ef841fa7191e1be0fb12716
-ms.sourcegitcommit: 0b07f1d36ac02da055874630d6edc31cb0a15269
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/10/2020
-ms.locfileid: "77112175"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291751"
 ---
 # <a name="tutorial-create-a-custom-policy-definition"></a>教程：创建自定义策略定义
 
@@ -33,7 +33,7 @@ ms.locfileid: "77112175"
 > - 确定要使用的效果
 > - 撰写策略定义
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial)。
 

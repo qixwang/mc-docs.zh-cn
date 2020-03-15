@@ -10,11 +10,11 @@ ms.date: 6/4/2019
 ms.author: v-lingwu
 ms.subservice: metrics
 ms.openlocfilehash: 6836ec26d321be6e6093fe959da958512c92b185
-ms.sourcegitcommit: dd0ff08835dd3f8db3cc55301815ad69ff472b13
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70736776"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292327"
 ---
 # <a name="advanced-features-of-azure-metrics-explorer"></a>Azure 指标资源管理器的高级功能
 
@@ -63,7 +63,7 @@ ms.locfileid: "70736776"
 
 3. 选择想要在绘制图表时包含的维度值（此示例将显示筛选出了成功的存储事务）：
 
-   ![指标图](./media/metrics-charts/00007.png)
+   ![图表上的](./media/metrics-charts/00007.png)
 
 4. 选择筛选值后，在“筛选选择器”之外单击将其关闭。 现在图表将显示失败的存储事务数：
 

@@ -8,11 +8,11 @@ ms.topic: conceptual
 origin.date: 12/02/2019
 ms.date: 02/10/2020
 ms.openlocfilehash: a1404e0cd213deea1180a9189e4f76c661056a1d
-ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77028778"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291888"
 ---
 # <a name="partitioning-in-azure-cosmos-db"></a>Azure Cosmos DB 中的分区
 

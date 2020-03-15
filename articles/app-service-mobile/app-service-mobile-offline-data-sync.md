@@ -6,21 +6,16 @@ ms.assetid: 982fb683-8884-40da-96e6-77eeca2500e3
 ms.devlang: multiple
 ms.topic: article
 origin.date: 10/30/2016
-ms.date: 12/16/2019
+md.date: 03/23/2020
 ms.author: v-tawe
-ms.openlocfilehash: 6f05aa3c3972448f6276ccde9bc0f0057d1fb5c3
-ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
+ms.openlocfilehash: debc731e043db3b6d86bb8eaf9cc8fa5ea5fbed0
+ms.sourcegitcommit: e94ed1c9eff4e88be2ca389909e60b14cc0d92f8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75600546"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79084393"
 ---
 # <a name="offline-data-sync-in-azure-mobile-apps"></a>Azure 移动应用中的脱机数据同步
-
-> [!NOTE]
-> Visual Studio App Center 支持以移动应用开发为中心的端到端集成服务。 开发人员可以使用“生成”  、“测试”  和“分发”  服务来设置“持续集成和交付”管道。 部署应用后，开发人员可以使用**分析**和**诊断**服务监视其应用的状态和使用情况，并使用**推送**服务与用户互动。 开发人员还可以利用“身份验证”  对其用户进行身份验证，并使用“数据”  服务在云中保留和同步应用数据。
->
-> 如果希望将云服务集成到移动应用程序中，请立即注册到 [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) 中。
 
 ## <a name="what-is-offline-data-sync"></a>什么是脱机数据同步？
 脱机数据同步是 Azure 移动应用的客户端和服务器 SDK 功能，可让开发人员创建不需要网络连接就能正常运行的应用。
@@ -65,7 +60,7 @@ ms.locfileid: "75600546"
 ## <a name="how-sync-works"></a>脱机同步的工作原理
 使用同步表时，客户端代码控制本地更改与 Azure 移动应用后端同步的时机。 在发生 *推送* 本地更改的调用之前，不会向后端发送任何内容。 同样，仅当发生了 *提取* 数据的调用时，才在本地存储中填充新数据。
 
-* **推送**：推送是对同步上下文的操作，发送自上一次推送之后的所有 CUD 更改。 请注意，无法做到只发送单个表的更改，否则这些操作可能以无序发送。 推送对 Azure 移动应用后端执行一系列 REST 调用，而这会修改服务器数据库。
+* **Push**：推送是对同步上下文的操作，发送自上一次推送之后的所有 CUD 更改。 请注意，无法做到只发送单个表的更改，否则这些操作可能以无序发送。 推送对 Azure 移动应用后端执行一系列 REST 调用，而这会修改服务器数据库。
 * **拉取**：拉取按表执行并可使用查询进行自定义，以便只检索服务器数据的子集。 然后，Azure 移动客户端 SDK 会将最终数据插入本地存储。
 * **隐式推送**：如果针对包含挂起本地更新的表执行拉取，则拉取操作先对同步上下文执行 `push()`。 此推送有助于最大程度减少已排队的更改与服务器中新数据之间的冲突。
 * 增量同步  ：拉取操作的第一个参数是 query name  ，此参数只在客户端上使用。 如果使用非 null 查询名称，Azure Mobile SDK 将执行增量同步  。每次拉取操作返回结果集时，该结果集中最新的 `updatedAt` 时间戳将存储在 SDK 本地系统表中。 后续拉取操作只检索该时间戳以后的记录。
@@ -87,7 +82,7 @@ ms.locfileid: "75600546"
 * **清除**：可以使用 `IMobileServiceSyncTable.PurgeAsync` 清除本地存储的内容。
   如果客户端数据库包含陈旧的数据，或者需要丢弃所有挂起的更改，可能需要执行清除操作。
 
-  清除操作会从本地存储中清除表。 如果有操作正在等待与服务器数据库的同步，除非设置了 force purge  参数，否则清除将引发异常。
+  清除操作将从本地存储中清除表。 如果有操作正在等待与服务器数据库的同步，除非设置了 force purge  参数，否则清除将引发异常。
 
   客户端包含陈旧数据的示例：假设在“待办事项列表”示例中，Device1 只拉取未完成的项。 “购买牛奶”待办事项由其他设备在服务器上标记为已完成。 但是，Device1 在本地存储中仍有“购买牛奶”待办事项，因为它只拉取未标记为已完成的项。 清除操作会清除这条陈旧项。
 

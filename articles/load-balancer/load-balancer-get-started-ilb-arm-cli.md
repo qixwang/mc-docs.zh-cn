@@ -15,11 +15,11 @@ origin.date: 06/27/2018
 ms.date: 08/26/2019
 ms.author: v-jay
 ms.openlocfilehash: 5680d57a8194b3f7c0c3e2ef807a513ad6d4b9bc
-ms.sourcegitcommit: 599d651afb83026938d1cfe828e9679a9a0fb69f
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69993368"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291532"
 ---
 # <a name="create-an-internal-load-balancer-to-load-balance-vms-using-azure-cli"></a>使用 Azure CLI 创建内部负载均衡器以对 VM 进行负载均衡
 

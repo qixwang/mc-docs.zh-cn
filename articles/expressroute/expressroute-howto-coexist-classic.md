@@ -17,11 +17,11 @@ origin.date: 12/06/2018
 ms.date: 01/20/2020
 ms.author: v-yiso
 ms.openlocfilehash: 64c44d2049441f1d266e88b50574d4a4c0323671
-ms.sourcegitcommit: a890a9cca495d332c9f3f53ff3a5259fd5f0c275
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75859554"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291919"
 ---
 # <a name="configure-expressroute-and-site-to-site-coexisting-connections-classic"></a>配置 ExpressRoute 和站点到站点并存连接（经典）
 > [!div class="op_single_selector"]

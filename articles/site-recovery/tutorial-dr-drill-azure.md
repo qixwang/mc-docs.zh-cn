@@ -11,11 +11,11 @@ ms.date: 09/30/2019
 ms.author: v-yeche
 ms.custom: MVC
 ms.openlocfilehash: a5c20aa373599b7a5fce13cba7d54023ddd67b64
-ms.sourcegitcommit: 332ae4986f49c2e63bd781685dd3e0d49c696456
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71341000"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291130"
 ---
 # <a name="run-a-disaster-recovery-drill-to-azure"></a>运行 Azure 灾难恢复演练
 
@@ -46,7 +46,7 @@ ms.locfileid: "71341000"
 在运行测试故障转移前，请验证 VM 属性，确保 [Hyper-V VM](hyper-v-azure-support-matrix.md#replicated-vms) 或 [VMware VM](vmware-physical-azure-support-matrix.md#replicated-machines) 符合 Azure 要求。
 
 1. 在“受保护的项”  中，单击“复制的项”  ，然后单击 VM。
-2. “复制的项”窗格中具有 VM 信息、运行状况状态和最新可用恢复点的摘要  。 单击“属性”  可查看更多详细信息。
+2. “复制的项”窗格中具有 VM 信息、运行状况状态和最新可用恢复点的摘要  。 单击“属性”  ，查看详细信息。
 3. 在“计算和网络”  中，可修改 Azure 名称、资源组、目标大小、可用性集和托管磁盘设置。
 4. 可查看和修改网络设置，包括在运行故障转移后 Azure VM 所在的网络/子网，以及将分配给它的 IP 地址。
 5. 在“磁盘”  中，可以查看操作系统和 VM 上数据磁盘的相关信息。
@@ -73,13 +73,13 @@ ms.locfileid: "71341000"
 
     <!--MOONCAKE: **Protected Items** to replace **Setting**-->
 
-2. 对于本教程，请选择**最新处理**恢复点。 这会将 VM 故障转移到最近的可用时间点上。 将显示时间戳。 使用此选项时，无需费时处理数据，因此 RTO（恢复时间目标）会较低。
+2. 对于本教程，请选择**最新处理**恢复点。 这会将 VM 故障转移到最新的可用时间点。 将显示时间戳。 使用此选项时，无需费时处理数据，因此 RTO（恢复时间目标）会较低。
 3. 在“测试故障转移”  中，选择 Azure VM 在故障转移之后要连接到的目标 Azure 网络。
 4. 单击“确定”  开始故障转移。 可以通过单击 VM 打开其属性来跟踪进度。 或者，**可以在保管库名称** > **设置** > **作业** >
    **Site Recovery 作业** 中，单击“测试故障转移” 作业。
 5. 故障转移完成后，副本 Azure VM 会显示在 Azure 门户 >“虚拟机”中。  请确保虚拟机的大小适当、已连接到正确的网络，并且正在运行。
 6. 现在应该能够连接到 Azure 中复制的 VM。
-7. 若要删除在测试故障转移期间创建的 Azure VM，请在 VM 上单击“清理测试故障转移”  。 在“说明”中，记录并保存与测试性故障转移相关联的任何观测结果。 
+7. 若要删除在测试故障转移期间创建的 Azure VM，请在 VM 上单击“清理测试故障转移”  。  在“说明”中，记录并保存与测试故障转移相关联的任何观测结果。
 
 在某些情况下，故障转移需要大约八到十分钟的时间完成其他进程。 你可能注意到，VMware Linux 计算机、未启用 DHCP 服务的 VMware VM，以及未安装启动驱动程序（storvsc、vmbus、storflt、intelide、atapi）的 VMware VM 需要更长的测试故障转移时间。
 

@@ -7,11 +7,11 @@ origin.date: 08/10/2017
 ms.date: 02/24/2020
 ms.author: v-yeche
 ms.openlocfilehash: 9715d58c0aeffec9edd7abd1bd45a33bf7318f27
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77540096"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292466"
 ---
 # <a name="connect-to-a-secure-service-with-the-reverse-proxy"></a>使用反向代理连接到安全服务
 

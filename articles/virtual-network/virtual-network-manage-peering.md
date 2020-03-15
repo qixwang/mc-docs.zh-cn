@@ -17,11 +17,11 @@ origin.date: 04/01/2019
 ms.date: 02/24/2020
 ms.author: v-yeche
 ms.openlocfilehash: 0264ccdef3c726ee3734920160cf69586ccd48af
-ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77653264"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292295"
 ---
 # <a name="create-change-or-delete-a-virtual-network-peering"></a>创建、更改或删除虚拟网络对等互连
 
