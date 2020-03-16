@@ -13,11 +13,11 @@ ms.reviewer: nibaccam
 origin.date: 02/04/2020
 ms.date: 03/09/2020
 ms.openlocfilehash: 802ea698d9008ae204e383e6be74a8916b55e98c
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78155014"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292164"
 ---
 # <a name="create-explore-and-deploy-automated-machine-learning-experiments-with-azure-machine-learning-studio"></a>使用 Azure 机器学习工作室创建、探索和部署自动化机器学习试验
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -221,7 +221,7 @@ Variance| 此列数据与其平均值之间的分散程度度量。
 
 1. 填充“部署模型”窗格。 
 
-    字段| 值
+    字段| Value
     ----|----
     名称| 输入部署的唯一名称。
     说明| 输入说明，以更清楚地指出此部署的用途。

@@ -9,11 +9,11 @@ origin.date: 11/04/2019
 ms.date: 11/19/2019
 ms.author: v-junlch
 ms.openlocfilehash: d35183d78b0e00d60c9a3014e8f11746861bbc55
-ms.sourcegitcommit: fdbd1b6df618379dfeab03044a18c373b5fbb8ec
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74328449"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293413"
 ---
 # <a name="enable-multiple-namespace-support-in-an-aks-cluster-with-application-gateway-ingress-controller"></a>在使用应用程序网关入口控制器的 AKS 群集中启用多命名空间支持
 
@@ -84,8 +84,8 @@ spec:
 
 尽管这两个入口资源要求将 `www.contoso.com` 的流量路由到相应的 Kubernetes 命名空间，但只有一个后端能够为该流量提供服务。 AGIC 将会根据“先到者先接受服务”的原则，为其中的一个资源创建配置。 如果同时创建了两个入口资源，则字母顺序靠前的资源将优先接受服务。 在上述示例中，我们只能为 `production` 入口创建设置。 将在应用程序网关中配置以下资源：
 
-  - 侦听器：`fl-www.contoso.com-80`
-  - 路由规则：`rr-www.contoso.com-80`
+  - 侦听器：`fl- www.contoso.com-80`
+  - 路由规则：`rr- www.contoso.com-80`
   - 后端池：`pool-production-contoso-web-service-80-bp-80`
   - HTTP 设置：`bp-production-contoso-web-service-80-80-websocket-ingress`
   - 运行状况探测：`pb-production-contoso-web-service-80-websocket-ingress`

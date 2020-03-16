@@ -7,11 +7,11 @@ origin.date: 06/13/2019
 ms.date: 12/04/2019
 ms.author: v-lingwu
 ms.openlocfilehash: f3fbdd2874bac4cf48ef9d71fa78ff1ef38a5ead
-ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75858199"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292103"
 ---
 # <a name="enable-backup-when-you-create-an-azure-vm"></a>在创建 Azure VM 时启用备份
 

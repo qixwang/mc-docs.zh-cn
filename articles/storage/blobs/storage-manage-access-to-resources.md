@@ -10,11 +10,11 @@ ms.date: 10/28/2019
 ms.author: v-jay
 ms.reviewer: cbrooks
 ms.openlocfilehash: 32a9721410d9b6ccac232765125e3d39c47aeb4a
-ms.sourcegitcommit: 73f07c008336204bd69b1e0ee188286d0962c1d7
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72914472"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293420"
 ---
 # <a name="manage-anonymous-read-access-to-containers-and-blobs"></a>管理对容器和 Blob 的匿名读取访问
 
@@ -56,7 +56,7 @@ ms.locfileid: "72914472"
 - [GetPermissions](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblobcontainer.getpermissions)
 - [GetPermissionsAsync](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblobcontainer.getpermissionsasync)
 
-接下来，设置 GetPermissions  方法返回的 BlobContainerPermissions[](/dotnet/api/microsoft.windowsazure.storage.blob.blobcontainerpermissions) 对象的 PublicAccess  属性。
+接下来，设置 GetPermissions  方法返回的 [BlobContainerPermissions](/dotnet/api/microsoft.windowsazure.storage.blob.blobcontainerpermissions) 对象的 PublicAccess  属性。
 
 最后，调用以下方法之一更新容器的权限：
 

@@ -9,11 +9,11 @@ ms.date: 02/17/2020
 ms.author: v-tawe
 ms.custom: seodec18
 ms.openlocfilehash: 7f940c41b4d23584707cecd597d0b2a704cf7675
-ms.sourcegitcommit: ee2a3063185cd4c5dc24901366dbb726119d045d
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76979333"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291873"
 ---
 # <a name="networking-considerations-for-an-app-service-environment"></a>应用服务环境的网络注意事项 #
 

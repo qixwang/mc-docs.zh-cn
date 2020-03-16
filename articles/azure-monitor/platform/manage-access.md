@@ -10,11 +10,11 @@ origin.date: 10/22/2019
 ms.date: 11/05/2019
 ms.author: v-lingwu
 ms.openlocfilehash: eb13b014b74ddf78a2a0442a4ca1dfcd8771bef1
-ms.sourcegitcommit: 27eaabd82b12ad6a6840f30763034a6360977186
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77497635"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293260"
 ---
 # <a name="manage-access-to-log-data-and-workspaces-in-azure-monitor"></a>管理对 Azure Monitor 中的日志数据和工作区的访问
 

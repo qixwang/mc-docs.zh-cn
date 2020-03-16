@@ -11,11 +11,11 @@ author: sdgilley
 origin.date: 12/13/2019
 ms.date: 03/09/2020
 ms.openlocfilehash: 944c25ebd2f8ddbeaad413fa83740f29bf05ec9c
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78154584"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292401"
 ---
 # <a name="what-is-an-azure-machine-learning-compute-instance"></a>什么是 Azure 机器学习计算实例？
 

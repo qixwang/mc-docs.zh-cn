@@ -9,14 +9,14 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 origin.date: 01/14/2020
-ms.date: 02/17/2020
+ms.date: 03/23/2020
 ms.author: v-tawe
-ms.openlocfilehash: f16701613accef6058f8e9f8538c024bfaaaf634
-ms.sourcegitcommit: 892137d117bcaf9d88aec0eb7ca756fe39613344
+ms.openlocfilehash: 056ccf792d8767ab91dfcb8f7055db0d19bce071
+ms.sourcegitcommit: e94ed1c9eff4e88be2ca389909e60b14cc0d92f8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78042305"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79084509"
 ---
 # <a name="speech-services-with-sovereign-clouds"></a>将语音服务与主权云配合使用
 

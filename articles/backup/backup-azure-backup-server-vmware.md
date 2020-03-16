@@ -8,11 +8,11 @@ origin.date: 12/11/2018
 ms.date: 12/21/2018
 ms.author: v-lingwu
 ms.openlocfilehash: e89fcd29a633760a15f6a612ed060b5da337594e
-ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77028944"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292659"
 ---
 # <a name="back-up-vmware-vms-with-azure-backup-server"></a>使用 Azure 备份服务器备份 VMware VM
 
@@ -150,7 +150,7 @@ Azure 备份服务器需要一个有权访问 V-Center 服务器/ESXi 主机的�
 | Resource. Assign virtual machine to resource pool            | Virtual machine.Configuration.Query unowned files         | VirtualMachine.Config.AdvancedConfig        |
 | Virtual machine.Configuration.Add new disk                   | Virtual machine.Configuration.Swapfile placement          | VirtualMachine.Config.SwapPlacement         |
 | Virtual machine.Configuration.Advanced                       | Virtual machine.Interaction.Power Off                     | Global.ManageCustomFields                   |
-| Virtual machine.Configuration.Disk change tracking           | Virtual machine.Inventory. Create new                     |                                             |
+| Virtual machine.Configuration.Disk change tracking           | Virtual machine.Inventory. 新建                     |                                             |
 | Virtual machine.Configuration.Disk lease                     | Virtual machine.Provisioning.Allow disk access            |                                             |
 | Virtual machine.Configuration.Extend virtual disk            | Virtual machine.Provisioning. Allow read-only disk access |                                             |
 | Virtual machine.Guest Operations.Guest Operation Modifications | Virtual machine.Snapshot management.Create snapshot       |                                             |
@@ -163,7 +163,7 @@ Azure 备份服务器需要一个有权访问 V-Center 服务器/ESXi 主机的�
 | Virtual machine .Provisioning.Allow disk access              |                                                           |                                             |
 | Virtual machine .Provisioning.Allow read-only disk access    |                                                           |                                             |
 | Virtual machine .Provisioning.Allow virtual machine download |                                                           |                                             |
-| Virtual machine .Snapshot management. Create snapshot        |                                                           |                                             |
+| Virtual machine .Snapshot management. 创建快照        |                                                           |                                             |
 | Virtual machine .Snapshot management.Remove Snapshot         |                                                           |                                             |
 | Virtual machine .Snapshot management.Revert to snapshot      |                                                           |                                             |
 | vApp.Add virtual machine                                     |                                                           |                                             |

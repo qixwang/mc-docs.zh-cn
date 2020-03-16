@@ -7,12 +7,12 @@ ms.topic: conceptual
 origin.date: 09/11/2019
 ms.date: 11/14/2019
 ms.author: v-lingwu
-ms.openlocfilehash: cab932bf3a68a54c7c61129626592fe9498b222e
-ms.sourcegitcommit: 27eaabd82b12ad6a6840f30763034a6360977186
+ms.openlocfilehash: 96fff35a1d5bcd4189ee70d2359f0494bf330273
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77497432"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292097"
 ---
 # <a name="back-up-sql-server-databases-in-azure-vms"></a>备份 Azure VM 中的 SQL Server 数据库
 
@@ -28,7 +28,7 @@ SQL Server 数据库属于关键工作负荷，要求较低的恢复点目标 (R
 > * 发现数据库并设置备份。
 > * 为数据库设置自动保护。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 在备份 SQL Server 数据库之前，请检查以下条件：
 
@@ -52,13 +52,13 @@ SQL Server 数据库属于关键工作负荷，要求较低的恢复点目标 (R
 
 #### <a name="allow-access-using-nsg-tags"></a>允许使用 NSG 标记进行访问
 
-如果使用 NSG 来限制连接，则应使用 AzureBackup 服务标记以允许对 Azure 备份进行出站访问。 此外，还应允许使用 Azure AD 和 Azure 存储的[规则](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags)，在连接后进行身份验证和数据传输。 这可以通过 Azure 门户或 PowerShell 来完成。
+如果使用 NSG 来限制连接，则应使用 AzureBackup 服务标记以允许对 Azure 备份进行出站访问。 此外，还应允许使用 Azure AD 和 Azure 存储的[规则](/virtual-network/security-overview#service-tags)，在连接后进行身份验证和数据传输。 这可以通过 Azure 门户或 PowerShell 来完成。
 
 若要使用门户创建规则，请执行以下操作：
 
   1. 在“所有服务”  中转到“网络安全组”  ，然后选择“网络安全组”。
   2. 在“设置”下选择“出站安全规则”。  
-  3. 选择“添加”   。 根据[安全规则设置](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group#security-rule-settings)中所述，输入创建新规则所需的所有详细信息。 确保选项“目标”设置为“服务标记”，“目标服务标记”设置为“AzureBackup”。    
+  3. 选择“添加”   。 根据[安全规则设置](/virtual-network/manage-network-security-group#security-rule-settings)中所述，输入创建新规则所需的所有详细信息。 确保选项“目标”设置为“服务标记”，“目标服务标记”设置为“AzureBackup”。    
   4. 单击“添加”  ，保存新创建的出站安全规则。
 
 若要使用 PowerShell 创建规则，请执行以下操作：
@@ -114,7 +114,7 @@ SQL Server 数据库属于关键工作负荷，要求较低的恢复点目标 (R
 
 如何发现 VM 上运行的数据库：
 
-1. 在 [Azure 门户](https://portal.azure.com)中，打开用于备份数据库的恢复服务保管库。
+1. 在 [Azure 门户](https://portal.azure.cn)中，打开用于备份数据库的恢复服务保管库。
 
 2. 在“恢复服务保管库”仪表板中选择“备份”。  
 

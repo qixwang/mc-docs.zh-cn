@@ -7,11 +7,11 @@ origin.date: 01/21/2020
 ms.date: 02/24/2020
 ms.author: v-yeche
 ms.openlocfilehash: f1568753e33b578fb2fc018abe462e62cebafa17
-ms.sourcegitcommit: 781f68d27903687f0aa9e1ed273eee25c6d129a1
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77611286"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291334"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>将 VMware VM 和物理服务器灾难恢复到 Azure 时的支持矩阵
 

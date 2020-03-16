@@ -16,11 +16,11 @@ origin.date: 11/04/2019
 ms.author: v-yiso
 ms.date: 11/18/2019
 ms.openlocfilehash: e230de285e3cddaf7bb9804de584d5a685ac932d
-ms.sourcegitcommit: 5844ad7c1ccb98ff8239369609ea739fb86670a4
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73831364"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291277"
 ---
 # <a name="azure-api-management-template-data-model-reference"></a>Azure API 管理模板数据模型参考
 本主题介绍数据模型中常用项目的实体和类型表示形式，这些数据模型适用于 Azure API 管理中的开发人员门户模板。  
@@ -36,7 +36,7 @@ ms.locfileid: "73831364"
 -   [应用程序](#Application)  
 -   [附件](#Attachment)  
 -   [代码示例](#Sample)  
--   [评论](#Comment)  
+-   [Comment](#Comment)  
 -   [筛选](#Filtering)  
 -   [标头](#Header)  
 -   [HTTP 请求](#HTTPRequest)  
@@ -168,8 +168,8 @@ ms.locfileid: "73831364"
 |`value`|string|标头值。|  
 |`typeName`|string|标头值的数据类型。|  
 |`options`|string|选项。|  
-|`required`|布尔值|标头是否为必需。|  
-|`readOnly`|布尔值|标头是否为只读。|  
+|`required`|boolean|标头是否为必需。|  
+|`readOnly`|boolean|标头是否为只读。|  
   
 ##  <a name="HTTPRequest"></a> HTTP 请求  
  本部分描述 `request` 表示形式。  
@@ -232,7 +232,7 @@ ms.locfileid: "73831364"
 |`Page`|number|当前页码。|  
 |`PageSize`|number|要显示在单个页面上的最大结果数。|  
 |`TotalItemCount`|number|要显示的项数。|  
-|`ShowAll`|布尔值|是否在单页上显示所有结果。|  
+|`ShowAll`|boolean|是否在单页上显示所有结果。|  
 |`PageCount`|number|结果的页数。|  
   
 ##  <a name="Parameter"></a> 参数  
@@ -244,7 +244,7 @@ ms.locfileid: "73831364"
 |`description`|string|参数说明。|  
 |`value`|string|参数值。|  
 |`options`|字符串数组|为查询参数值定义的值。|  
-|`required`|布尔值|指定参数是否为必需。|  
+|`required`|boolean|指定参数是否为必需。|  
 |`kind`|number|此参数是路径参数 (1)，还是查询字符串参数 (2)。|  
 |`typeName`|string|参数类型。|  
   
@@ -258,7 +258,7 @@ ms.locfileid: "73831364"
 |`Description`|string|产品说明。 不得为空。 可以包含 HTML 格式标记。 最大长度为 1000 个字符。|  
 |`Terms`|string|产品使用条款。 当开发人员尝试订阅此产品时，系统会显示这些条款，开发人员需接受这些条款才能完成订阅过程。|  
 |`ProductState`|number|指定产品是否已发布。 开发人员可以在开发人员门户中发现已发布的产品。 尚未发布的产品只对管理员可见。<br /><br /> 允许用于产品状态的值包括：<br /><br /> - `0 - Not Published`<br /><br /> - `1 - Published`<br /><br /> - `2 - Deleted`|  
-|`AllowMultipleSubscriptions`|布尔值|指定用户是否可以同时拥有此产品的多个订阅。|  
+|`AllowMultipleSubscriptions`|boolean|指定用户是否可以同时拥有此产品的多个订阅。|  
 |`MultipleSubscriptionsCount`|number|允许用户同时拥有此产品订阅的最大数。|  
   
 ##  <a name="Provider"></a> 提供程序  
@@ -291,16 +291,16 @@ ms.locfileid: "73831364"
 |`state`|string|订阅的状态。 可能的状态包括：<br /><br /> - `0 - suspended` – 订阅被阻止，订阅服务器无法调用产品的任何 API。<br /><br /> - `1 - active` – 订阅处于活动状态。<br /><br /> - `2 - expired` – 订阅已达到其到期日期，因此已停用。<br /><br /> - `3 - submitted` – 开发人员已提交订阅请求，但管理员尚未批准或拒绝该请求。<br /><br /> - `4 - rejected` – 管理员已拒绝订阅请求。<br /><br /> - `5 - cancelled` – 开发人员或管理员已取消订阅。|  
 |`DisplayName`|string|订阅的显示名称。|  
 |`CreatedDate`|dateTime|订阅的创建日期，采用 ISO 8601 格式：`2014-06-24T16:25:00Z`。|  
-|`CanBeCancelled`|布尔值|当前用户是否可以取消订阅。|  
-|`IsAwaitingApproval`|布尔值|订阅是否待批。|  
+|`CanBeCancelled`|boolean|当前用户是否可以取消订阅。|  
+|`IsAwaitingApproval`|boolean|订阅是否待批。|  
 |`StartDate`|dateTime|订阅的开始日期，采用 ISO 8601 格式：`2014-06-24T16:25:00Z`。|  
 |`ExpirationDate`|dateTime|订阅的到期日期，采用 ISO 8601 格式：`2014-06-24T16:25:00Z`。|  
 |`NotificationDate`|dateTime|订阅的通知日期，采用 ISO 8601 格式：`2014-06-24T16:25:00Z`。|  
 |`primaryKey`|string|主要订阅密钥。 最大长度为 256 个字符。|  
 |`secondaryKey`|string|辅助订阅密钥。 最大长度为 256 个字符。|  
-|`CanBeRenewed`|布尔值|当前用户是否可以续订订阅。|  
-|`HasExpired`|布尔值|订阅是否已到期。|  
-|`IsRejected`|布尔值|是否已拒绝订阅请求。|  
+|`CanBeRenewed`|boolean|当前用户是否可以续订订阅。|  
+|`HasExpired`|boolean|订阅是否已到期。|  
+|`IsRejected`|boolean|是否已拒绝订阅请求。|  
 |`CancelUrl`|string|用于取消订阅的相对 URL。|  
 |`RenewUrl`|string|用于续订订阅的相对 URL。|  
   
@@ -323,7 +323,7 @@ ms.locfileid: "73831364"
 |`Password`|string|用户帐户密码。|  
 |`NameIdentifier`|string|帐户标识符，与用户电子邮件相同。|  
 |`ProviderName`|string|身份验证提供程序名称。|  
-|`IsBasicAccount`|布尔值|如果此帐户使用电子邮件和密码注册，则为 true；如果此帐户使用提供程序注册，则为 false。|  
+|`IsBasicAccount`|boolean|如果此帐户使用电子邮件和密码注册，则为 true；如果此帐户使用提供程序注册，则为 false。|  
   
 ##  <a name="UseSignIn"></a> 用户登录  
  `user sign in` 实体具有以下属性：  
@@ -333,27 +333,27 @@ ms.locfileid: "73831364"
 |`Email`|string|电子邮件地址。 不得为空，且必须在服务实例中唯一。 最大长度为 254 个字符。|  
 |`Password`|string|用户帐户密码。|  
 |`ReturnUrl`|string|用户单击“登录”时所在页面的 URL。|  
-|`RememberMe`|布尔值|是否保存当前用户的信息。|  
-|`RegistrationEnabled`|布尔值|是否已启用注册。|  
-|`DelegationEnabled`|布尔值|是否已启用委派登录。|  
+|`RememberMe`|boolean|是否保存当前用户的信息。|  
+|`RegistrationEnabled`|boolean|是否已启用注册。|  
+|`DelegationEnabled`|boolean|是否已启用委派登录。|  
 |`DelegationUrl`|string|委派登录 URL（如果已启用）。|  
 |`SsoSignUpUrl`|string|用户的单一登录 URL（如果存在）。|  
 |`AuxServiceUrl`|string|如果当前用户为管理员，则此项为指向 Azure 门户中服务实例的链接。|  
 |`Providers`|[提供程序](#Provider)实体的集合|此用户的身份验证提供程序。|  
 |`UserRegistrationTerms`|string|用户必须在登录之前同意的条款。|  
-|`UserRegistrationTermsEnabled`|布尔值|是否启用条款。|  
+|`UserRegistrationTermsEnabled`|boolean|是否启用条款。|  
   
 ##  <a name="UserSignUp"></a> 用户注册  
  `user sign up` 实体具有以下属性：  
   
 |属性|类型|说明|  
 |--------------|----------|-----------------|  
-|`PasswordConfirm`|布尔值|[注册](api-management-page-controls.md#sign-up)注册控件使用的值。|  
+|`PasswordConfirm`|boolean|[注册](api-management-page-controls.md#sign-up)注册控件使用的值。|  
 |`Password`|string|用户帐户密码。|  
 |`PasswordVerdictLevel`|number|[注册](api-management-page-controls.md#sign-up)注册控件使用的值。|  
 |`UserRegistrationTerms`|string|用户必须在登录之前同意的条款。|  
 |`UserRegistrationTermsOptions`|number|[注册](api-management-page-controls.md#sign-up)注册控件使用的值。|  
-|`ConsentAccepted`|布尔值|[注册](api-management-page-controls.md#sign-up)注册控件使用的值。|  
+|`ConsentAccepted`|boolean|[注册](api-management-page-controls.md#sign-up)注册控件使用的值。|  
 |`Email`|string|电子邮件地址。 不得为空，且必须在服务实例中唯一。 最大长度为 254 个字符。|  
 |`FirstName`|string|名字。 不得为空。 最大长度为 100 个字符。|  
 |`LastName`|string|姓氏。 不得为空。 最大长度为 100 个字符。|  

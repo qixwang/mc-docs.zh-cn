@@ -12,11 +12,11 @@ ms.author: v-yiso
 origin.date: 11/04/2019
 ms.date: 03/09/2020
 ms.openlocfilehash: dde8c8ccb31d73b7b1457026631bd937c0c9a12c
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78155103"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292388"
 ---
 # <a name="what-is-automated-machine-learning"></a>什么是自动化机器学习？
 
@@ -140,7 +140,7 @@ ms.locfileid: "78155103"
 
 考虑以下训练的模型及其相应的训练和测试准确度。
 
-| 模型 | 训练准确度 | 测试准确度 |
+| 型号 | 训练准确度 | 测试准确度 |
 |-------|----------------|---------------|
 | A | 99.9% | 95% |
 | B | 87% | 87% |

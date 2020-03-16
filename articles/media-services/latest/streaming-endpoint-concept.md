@@ -14,11 +14,11 @@ origin.date: 07/11/2019
 ms.date: 12/09/2019
 ms.author: v-jay
 ms.openlocfilehash: 6d573b57d27eacb26043a5d2949dd79ab5b00620
-ms.sourcegitcommit: 369038a7d7ee9bbfd26337c07272779c23d0a507
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74807551"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293222"
 ---
 # <a name="streaming-endpoints-origin-in-azure-media-services"></a>Azure 媒体服务中的流式处理终结点（来源）
 
@@ -66,7 +66,7 @@ ms.locfileid: "74807551"
 缩放|自动扩展到目标吞吐量。|更多的 SU
 IP 筛选/G20/自定义主机 |是|是
 渐进式下载|是|是
-建议的用法 |建议用于绝大多数的流式处理方案。|专业用途。
+建议用途 |建议用于绝大多数流式处理方案。|专业用途。
 
 ## <a name="properties"></a>属性
 

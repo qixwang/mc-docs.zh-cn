@@ -16,7 +16,7 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 03/09/2020
 ms.locfileid: "78934864"
 ---
-# <a name="how-to-create-a-skillset-in-an-ai-enrichment-pipeline-in-azure-cognitive-search"></a>如何在 Azure 认知搜索中的 AI 扩充管道中创建创建技能组 
+# <a name="how-to-create-a-skillset-in-an-ai-enrichment-pipeline-in-azure-cognitive-search"></a>如何在 Azure 认知搜索中的 AI 扩充管道中创建技能组 
 
 AI 扩充可提取和扩充数据，使之能够在 Azure 认知搜索中可供搜索。 我们将提取和扩充步骤称作认知技能，这些技能将合并成索引编制期间所引用的技能集。   技能组可以使用[内置技能](cognitive-search-predefined-skills.md)或自定义技能（请参阅[示例：在 AI 扩充管道中创建自定义技能](cognitive-search-custom-skill-interface.md)来了解详细信息）。
 

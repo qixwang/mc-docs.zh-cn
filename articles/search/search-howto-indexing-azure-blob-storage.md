@@ -12,11 +12,11 @@ origin.date: 11/04/2019
 ms.date: 03/16/2020
 ms.custom: fasttrack-edit
 ms.openlocfilehash: 04bae96cf80bb691b9b025207d22c46a488da2ae
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78850580"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293347"
 ---
 # <a name="how-to-index-documents-in-azure-blob-storage-with-azure-cognitive-search"></a>如何使用 Azure 认知搜索为 Azure Blob 存储中的文档编制索引
 

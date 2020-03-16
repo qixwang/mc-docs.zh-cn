@@ -7,12 +7,12 @@ ms.topic: conceptual
 origin.date: 09/20/2019
 ms.date: 11/06/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 7fdb68cb5462c0d9ba4ca87a31be6b46cf030232
-ms.sourcegitcommit: 27eaabd82b12ad6a6840f30763034a6360977186
+ms.openlocfilehash: 184509cfbf318031985074b6c2d52027d69a87c0
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77497369"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79290754"
 ---
 # <a name="delete-an-azure-backup-recovery-services-vault"></a>删除 Azure 备份恢复服务保管库
 
@@ -314,7 +314,7 @@ ms.locfileid: "77497369"
                        [--yes]
     ```
 
-    有关详细信息，请参阅 [此文](https://docs.microsoft.com/cli/azure/backup/vault?view=azure-cli-latest)
+    有关详细信息，请参阅 [此文](/cli/backup/vault?view=azure-cli-latest)
 
 ## <a name="delete-the-recovery-services-vault-by-using-azure-resource-manager"></a>使用 Azure 资源管理器删除恢复服务保管库
 

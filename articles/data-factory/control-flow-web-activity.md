@@ -13,11 +13,11 @@ ms.topic: conceptual
 origin.date: 12/19/2018
 ms.date: 03/02/2020
 ms.openlocfilehash: 66b9a6aa11284eca51b48d5be0a48f1c7ed886ee
-ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77653515"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293188"
 ---
 # <a name="web-activity-in-azure-data-factory"></a>Azure 数据工厂中的 Web 活动
 Web 活动可用于从数据工厂管道调用自定义的 REST 终结点。 可以传递数据集和链接服务以供活动使用和访问。

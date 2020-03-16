@@ -13,11 +13,11 @@ origin.date: 12/27/2019
 ms.date: 03/09/2020
 ms.custom: seodec18
 ms.openlocfilehash: f51d84531191c015d878b7df3dbb2322306a618f
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78155018"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292186"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>配置 Azure 机器学习的开发环境
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]

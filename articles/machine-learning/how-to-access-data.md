@@ -13,11 +13,11 @@ origin.date: 01/15/2020
 ms.date: 03/09/2020
 ms.custom: seodec18
 ms.openlocfilehash: fbd9d0af25e6b0a7f1a8fa05361d94a70f6e24c7
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78154996"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292173"
 ---
 # <a name="access-data-in-azure-storage-services"></a>访问 Azure 存储服务中的数据
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]

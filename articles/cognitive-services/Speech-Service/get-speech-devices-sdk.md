@@ -12,11 +12,11 @@ origin.date: 07/05/2019
 ms.date: 01/27/2020
 ms.author: v-tawe
 ms.openlocfilehash: 12a2ce9f18b5fdf56aa5469d2c9b20e5fc444ea7
-ms.sourcegitcommit: 94e1c9621b8f81a7078f1412b3a73281d0a8668b
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76123374"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293044"
 ---
 # <a name="get-the-cognitive-services-speech-devices-sdk"></a>获取认知服务语音设备 SDK
 
