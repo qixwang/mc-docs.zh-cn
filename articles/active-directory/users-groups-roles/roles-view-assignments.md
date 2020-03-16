@@ -8,18 +8,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-origin.date: 11/08/2019
-ms.date: 11/26/2019
+ms.date: 03/11/2020
 ms.author: v-junlch
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a448bbe2df9ebfbd0da70abb39f76fe064502ba4
-ms.sourcegitcommit: 9597d4da8af58009f9cef148a027ccb7b32ed8cf
+ms.openlocfilehash: 28cb27b18c9143cdb63fdd7f90655f3b4947dc4a
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74655430"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292265"
 ---
 # <a name="view-custom-role-assignments-in-azure-active-directory"></a>在 Azure Active Directory 中查看自定义角色分配
 
@@ -86,7 +85,7 @@ HTTP 请求，用于获取给定角色定义的角色分配。
 GET
 
 ``` HTTP
-https://graph.chinacloudapi.cn/<tenantDomain-or-tenantId>/roleAssignments?api-version=1.61-internal&$filter=roleDefinitionId eq ‘<object-id-or-template-id-of-role-definition>’
+https://microsoftgraph.chinacloudapi.cn/beta/roleManagement/directory/roleAssignments&$filter=roleDefinitionId eq ‘<object-id-or-template-id-of-role-definition>’
 ```
 
 响应
@@ -124,4 +123,3 @@ HTTP/1.1 200 OK
 * 有关角色以及管理员角色分配的详细信息，请参阅[分配管理员角色](directory-assign-admin-roles.md)。
 * 有关默认用户权限，请参阅[默认来宾和成员用户权限的比较](../fundamentals/users-default-permissions.md)。
 
-<!-- Update_Description: wording update -->

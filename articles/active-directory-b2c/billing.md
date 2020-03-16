@@ -2,20 +2,20 @@
 title: Azure Active Directory B2C 的计费模型
 description: 了解 Azure AD B2C 的月度活跃用户 (MAU) 计费模型，以及如何为特定的 Azure 订阅启用计费。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 02/03/2020
+ms.date: 03/04/2020
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: 4ec5649f43fda61b0460c9435e7c873bc081b9c3
-ms.sourcegitcommit: 888cbc10f2348de401d4839a732586cf266883bf
+ms.openlocfilehash: c87645808bf226bfbe544819c6272ca450ef43d4
+ms.sourcegitcommit: 1ac138a9e7dc7834b5c0b62a133ca5ce2ea80054
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77028244"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78265951"
 ---
 # <a name="billing-model-for-azure-active-directory-b2c"></a>Azure Active Directory B2C 的计费模型
 
@@ -82,7 +82,7 @@ Azure Active Directory B2C (Azure AD B2C) 产生的使用费将从 Azure 订阅�
 
 链接到 Azure AD B2C 租户的订阅可用于对 Azure AD B2C 使用情况或其他 Azure 资源（包括其他 Azure AD B2C 资源）进行计费。 不能使用该订阅在 Azure AD B2C 租户中添加其他基于 Azure 许可证的服务或 Office 365 许可证。
 
-### <a name="prerequisites"></a>必备条件
+### <a name="prerequisites"></a>先决条件
 
 * [Azure 订阅](https://www.azure.cn/pricing/1rmb-trial/)
 * 要链接到订阅的 [Azure AD B2C 租户](tutorial-create-tenant.md)
@@ -137,4 +137,8 @@ Azure AD B2C 中支持 Azure 云解决方案提供商 (CSP) 订阅。 可以使�
 若要了解如何将 Azure 资源（如 Azure AD B2C 租户）移到其他订阅，请参阅[将资源移到新的资源组或订阅](../azure-resource-manager/management/move-resource-group-and-subscription.md)。
 
 在开始移动之前，请务必阅读整篇文章，以充分了解此类移动的限制和要求。 除了移动资源的说明之外，它还包括一些重要信息，如移动前检查清单以及如何验证移动操作。
+
+## <a name="next-steps"></a>后续步骤
+
+有关最新定价信息，请参阅[Azure Active Directory B2C 定价](https://www.azure.cn/pricing/details/active-directory-b2c/)。
 

@@ -3,20 +3,20 @@ title: 自定义策略中的声明解析程序
 titleSuffix: Azure AD B2C
 description: 了解如何在 Azure Active Directory B2C 的自定义策略中使用声明解析程序。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/20/2020
+ms.date: 03/04/2020
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: 0cc86da2048146d462f30c04fbce0d8944fcafe6
-ms.sourcegitcommit: 1bd7711964586b41ff67fd1346dad368fe7383da
+ms.openlocfilehash: 5e7b67fe9c28c89187f7012679eaf364e8029b7b
+ms.sourcegitcommit: 1ac138a9e7dc7834b5c0b62a133ca5ce2ea80054
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77531295"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78265953"
 ---
 # <a name="about-claim-resolvers-in-azure-active-directory-b2c-custom-policies"></a>关于 Azure Active Directory B2C 自定义策略中的声明解析程序
 
@@ -75,6 +75,7 @@ Azure Active Directory B2C (Azure AD B2C) [自定义策略](custom-policy-overvi
 | {OIDC:Prompt} | `prompt` 查询字符串参数。 | 登录 |
 | {OIDC:Resource} |`resource` 查询字符串参数。 | 不适用 |
 | {OIDC:scope} |`scope` 查询字符串参数。 | openid |
+| {OIDC:RedirectUri} |`redirect_uri` 查询字符串参数。 | https://jwt.ms |
 
 ### <a name="context"></a>上下文
 
@@ -85,7 +86,7 @@ Azure Active Directory B2C (Azure AD B2C) [自定义策略](custom-policy-overvi
 | {Context:DateTimeInUtc} |UTC 格式的日期时间。  | 2018/10/10 中午 12:00 |
 | {Context:DeploymentMode} |策略部署模式。  | 生产 |
 | {Context:IPAddress} | 用户 IP 地址。 | 11.111.111.11 |
-
+| {Context:KMSI} | 指示是否选中了“[使我保持登录状态](custom-policy-keep-me-signed-in.md)”复选框。 |  是 |
 
 ### <a name="non-protocol-parameters"></a>非协议参数
 
@@ -104,9 +105,21 @@ Azure Active Directory B2C (Azure AD B2C) [自定义策略](custom-policy-overvi
 | ----- | ----------------------- | --------|
 | {oauth2:access_token} | 访问令牌。 | 不适用 |
 
-## <a name="using-claim-resolvers"></a>使用声明解析程序 
 
-可以将声明解析程序用于以下元素： 
+### <a name="saml"></a>SAML
+
+| 声明 | 说明 | 示例 |
+| ----- | ----------- | --------|
+| {SAML:AuthnContextClassReferences} | SAML 请求中的 `AuthnContextClassRef` 元素值。 | urn:oasis:names:tc:SAML:2.0:ac:classes:PasswordProtectedTransport |
+| {SAML:NameIdPolicyFormat} | SAML 请求的 `NameIDPolicy` 元素中的 `Format` 特性。 | urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress |
+| {SAML:Issuer} |  SAML 请求的 SAML `Issuer` 元素。| https://contoso.com |
+| {SAML:AllowCreate} | SAML 请求的 `NameIDPolicy` 元素中的 `AllowCreate` 特性值。 | True |
+| {SAML:ForceAuthn} | SAML 请求的 `AuthnRequest` 元素中的 `ForceAuthN` 特性值。 | True |
+| {SAML:ProviderName} | SAML 请求的 `AuthnRequest` 元素中的 `ProviderName` 特性值。| Contoso.com |
+
+## <a name="using-claim-resolvers"></a>使用声明解析程序
+
+可以将声明解析程序用于以下元素：
 
 | 项目 | 元素 | 设置 |
 | ----- | ----------------------- | --------|
@@ -121,7 +134,7 @@ Azure Active Directory B2C (Azure AD B2C) [自定义策略](custom-policy-overvi
 |[ContentDefinitionParameters](relyingparty.md#contentdefinitionparameters)| `Parameter` | |
 |[RelyingParty](relyingparty.md#technicalprofile) 技术配置文件| `OutputClaim`| 2 |
 
-设置： 
+设置：
 1. `IncludeClaimResolvingInClaimsHandling` 元数据必须设置为 `true`。
 1. 输入或输出声明属性 `AlwaysUseDefaultValue` 必须设置为 `true`。
 
@@ -181,7 +194,7 @@ Azure Active Directory B2C (Azure AD B2C) [自定义策略](custom-policy-overvi
 
 ### <a name="content-definition"></a>内容定义
 
-在 [ContentDefinition](contentdefinitions.md) `LoadUri` 中，可以发送声明解析程序来根据所使用的参数从不同的位置拉取内容。 
+在 [ContentDefinition](contentdefinitions.md) `LoadUri` 中，可以发送声明解析程序来根据所使用的参数从不同的位置拉取内容。
 
 ```XML
 <ContentDefinition Id="api.signuporsignin">
@@ -192,7 +205,7 @@ Azure Active Directory B2C (Azure AD B2C) [自定义策略](custom-policy-overvi
 
 ### <a name="relying-party-policy"></a>信赖方策略
 
-在[信赖方](relyingparty.md)策略技术配置文件中，你可能希望在 JWT 中将租户 ID 或相关 ID 发送给信赖方应用程序。 
+在[信赖方](relyingparty.md)策略技术配置文件中，你可能希望在 JWT 中将租户 ID 或相关 ID 发送给信赖方应用程序。
 
 ```XML
 <RelyingParty>

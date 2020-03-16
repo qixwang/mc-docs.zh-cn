@@ -6,12 +6,12 @@ author: lingliw
 origin.date: 02/17/2019
 ms.date: 11/06/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 4a2fe4b7fef29b3989c92f674028b8a552f79093
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.openlocfilehash: 1a9e6de184b14677b13b6371931e81e3d932929c
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78850519"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79290792"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Azure 备份的支持矩阵
 
@@ -36,7 +36,7 @@ Azure 备份使用恢复服务保管库来安排和管理备份。 它还使用�
 **保管库存储中的数据源** | 最多 54,400 GB。 Azure VM 备份没有限制。
 **保管库备份** | **Azure VM：** 每天 1 次。<br/><br/>**受 DPM/MABS 保护的计算机：** 一天两次。<br/><br/> **直接使用 MARS 代理备份的计算机：** 一天三次。
 **在保管库之间备份** | 备份在一个区域内进行。<br/><br/> 在包含想要备份的 VM 的每个 Azure 区域中都需要有一个保管库。 无法备份到其他区域。
-**移动保管库** | 可以跨订阅或同一订阅中的资源组之间[移动保管库](https://docs.microsoft.com/azure/backup/backup-azure-move-recovery-services-vault)。 但是，不支持跨区域移动保管库。
+**移动保管库** | 可以跨订阅或同一订阅中的资源组之间[移动保管库](/backup/backup-azure-move-recovery-services-vault)。 但是，不支持跨区域移动保管库。
 **在保管库之间移动数据** | 不支持在保管库之间移动备份的数据。
 **修改保管库存储类型** | 可以在存储备份之前修改保管库的存储复制类型（异地冗余存储或本地冗余存储）。 在保管库中开始备份以后，就不能修改复制类型。
 
@@ -148,11 +148,10 @@ Azure 备份支持对备份流量进行压缩，详细情况汇总在下表中�
 
 ## <a name="cross-region-restore"></a>跨区域还原
 
-Azure 备份添加了“跨区域还原”功能以增强数据可用性和复原能力，使客户能够完全控制将数据还原到次要区域的过程。 若要配置此功能，请访问[“设置跨区域还原”一文](backup-create-rs-vault.md#set-cross-region-restore)。 以下管理类型支持此功能：
+Azure 备份添加了“跨区域还原”功能以增强数据可用性和复原能力，使客户能够完全控制将数据还原到次要区域的过程。 若要配置此功能，请访问[“设置跨区域还原”一文](backup-create-rs-vault.md)。 以下管理类型支持此功能：
 
 | 备份管理类型 | 支持                                                    | 支持的区域 |
 | ---------------------- | ------------------------------------------------------------ | ----------------- |
-| Azure VM               | 是的。 对于加密 VM 和磁盘小于 4 TB 的VM，公共受限预览版支持 | 美国中西部   |
 | MARS 代理/本地 | 否                                                           | 不适用               |
 | SQL/SAP HANA          | 否                                                           | 不适用               |
 | AFS                    | 否                                                           | 不适用               |

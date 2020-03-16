@@ -9,11 +9,11 @@ ms.author: v-jay
 ms.reviewer: avishwan
 ms.lastreviewed: 12/23/2018
 ms.openlocfilehash: 67b666e003996f66bfe067f178efdd53ba317449
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77540999"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291452"
 ---
 # <a name="download-marketplace-items-to-azure-stack-hub"></a>将市场项下载到 Azure Stack Hub 
 
@@ -33,7 +33,7 @@ ms.locfileid: "77540999"
 
 如果 Azure Stack Hub 连接到 Internet，则可以使用管理员门户下载市场项。
 
-### <a name="prerequisites"></a>必备条件
+### <a name="prerequisites"></a>先决条件
 
 Azure Stack Hub 部署必须已建立 Internet 连接，并且已注册到 Azure。
 
@@ -74,7 +74,7 @@ Azure Stack Hub 部署必须已建立 Internet 连接，并且已注册到 Azure
 - **第 1 部分**：从市场项下载。 在能够访问 Internet 的计算机上配置 PowerShell，下载联合工具，然后从 Azure 市场下载项。
 - **第 2 部分**：上传并发布到 Azure Stack Hub 市场。 将下载的文件移到 Azure Stack Hub 环境，然后将其发布到 Azure Stack Hub 市场。
 
-### <a name="prerequisites"></a>必备条件
+### <a name="prerequisites"></a>先决条件
 
 - 联网环境（不必是 Azure Stack Hub）。 需要建立连接才能获取 Azure 中的产品列表及其详细信息，并在本地下载所有项。 完成此操作后，剩余的过程无需建立 Internet 连接。 此过程将创建以前下载的项的目录，供你在离线环境中使用。
 

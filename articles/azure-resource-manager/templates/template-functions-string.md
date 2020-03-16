@@ -6,11 +6,11 @@ origin.date: 07/31/2019
 ms.author: v-yeche
 ms.date: 01/06/2020
 ms.openlocfilehash: dc564866870e599170814ea35251a00d8fb0d15e
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75631634"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291291"
 ---
 # <a name="string-functions-for-azure-resource-manager-templates"></a>用于 Azure Resource Manager 模板的字符串函数
 
@@ -262,7 +262,7 @@ Resource Manager 提供以下用于处理字符串的函数：
 
 ### <a name="return-value"></a>返回值
 
-串联值的字符串或数组。
+由串联值构成的字符串或数组。
 
 ### <a name="examples"></a>示例
 
@@ -420,7 +420,7 @@ Resource Manager 提供以下用于处理字符串的函数：
 
 `dataUri(stringToConvert)`
 
-将值转换为数据 URI。
+将一个值转换为数据 URI。
 
 ### <a name="parameters"></a>parameters
 
