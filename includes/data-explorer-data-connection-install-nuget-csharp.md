@@ -3,17 +3,15 @@ author: orspod
 ms.service: data-explorer
 ms.topic: include
 origin.date: 10/07/2019
-ms.date: 11/18/2019
+ms.date: 03/23/2020
 ms.author: v-tawe
-ms.openlocfilehash: 529957f80327297b457c9addc02fe8cd7bacffe7
-ms.sourcegitcommit: c863b31d8ead7e5023671cf9b58415542d9fec9c
+ms.openlocfilehash: eacfffadd308dcc95886c2cf20554307fa046469
+ms.sourcegitcommit: 4ba6d7c8bed5398f37eb37cf5e2acafcdcc28791
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74020948"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79134123"
 ---
-## <a name="install-c-nuget"></a>安装 C# nuget
+## <a name="install-c-nuget"></a>安装 C# NuGet
 
-* 安装 [Azure 数据资源管理器 (Kusto) NuGet 包](https://www.nuget.org/packages/Microsoft.Azure.Management.Kusto/)。
-
-* 安装 [Microsoft.IdentityModel.Clients.ActiveDirectory NuGet 包](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/)以进行身份验证。
+* 安装 [Microsoft.Azure.Management.Kusto NuGet 包](https://www.nuget.org/packages/Microsoft.Azure.Management.Kusto/)。

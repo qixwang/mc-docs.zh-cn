@@ -9,14 +9,14 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
 origin.date: 12/17/2019
-ms.date: 03/09/2020
+ms.date: 03/23/2020
 ms.author: v-tawe
-ms.openlocfilehash: 1da117d00215c8d8f24896b08fd1de9b57a588a5
-ms.sourcegitcommit: ced17aa58e800b9e4335276a1595b8045836b256
+ms.openlocfilehash: 35b49459a93eedcb77bc7161bc990aa6abe6508e
+ms.sourcegitcommit: e94ed1c9eff4e88be2ca389909e60b14cc0d92f8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77590278"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79084665"
 ---
 ## <a name="prerequisites"></a>先决条件
 
@@ -93,7 +93,7 @@ ms.locfileid: "77590278"
 
 1. 在同一文件中，将字符串 `YourSubscriptionKey` 替换为你的订阅密钥。
 
-1. 将字符串 `YourServiceRegion` 替换为与订阅关联的[区域](~/articles/cognitive-services/Speech-Service/regions.md)中的“语音 SDK 参数”（例如，对于试用版订阅，为 `chinaeast2`）。
+1. 将字符串 `YourServiceRegion` 替换为与订阅关联的[区域](~/articles/cognitive-services/Speech-Service/regions.md)的“区域标识符”（例如，对于试用版订阅，为 `chinaeast2`）。 
 
 1. 在菜单栏中，选择“文件”   > “全部保存”  。
 

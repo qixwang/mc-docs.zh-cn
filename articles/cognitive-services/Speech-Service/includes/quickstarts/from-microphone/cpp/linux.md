@@ -8,14 +8,14 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
 origin.date: 12/17/2019
-ms.date: 03/09/2020
+ms.date: 03/23/2020
 ms.author: v-tawe
-ms.openlocfilehash: f7dbe27c8ea7efa6d5894c62db91cb4c1339eaba
-ms.sourcegitcommit: ced17aa58e800b9e4335276a1595b8045836b256
+ms.openlocfilehash: aceeee828110e0812c4180778e6e5f9fa27fd3ef
+ms.sourcegitcommit: e94ed1c9eff4e88be2ca389909e60b14cc0d92f8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77590275"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79084606"
 ---
 ## <a name="prerequisites"></a>先决条件
 
@@ -83,7 +83,7 @@ ms.locfileid: "77590275"
 
 1. 在此新文件中，将字符串 `YourSubscriptionKey` 替换为你的语音服务订阅密钥。
 
-1. 将字符串 `YourServiceRegion` 替换为与订阅关联的[区域](~/articles/cognitive-services/Speech-Service/regions.md)中的“语音 SDK 参数”（例如，对于试用版订阅，为 `chinaeast2`）。
+1. 将字符串 `YourServiceRegion` 替换为与订阅关联的[区域](~/articles/cognitive-services/Speech-Service/regions.md)的“区域标识符”（例如，对于试用版订阅，为 `chinaeast2`）。 
 
 > [!NOTE]
 > 语音 SDK 将默认使用 en-us 作为语言进行识别。若要了解如何选择源语言，请参阅[指定语音转文本的源语言](../../../../how-to-specify-source-language.md)。
