@@ -1,5 +1,5 @@
 {
-  "need_generate_pdf": false,   
+  "need_generate_pdf": false,
   "need_generate_intellisense": false,
   "docsets_to_publish": [
     {
@@ -26,13 +26,13 @@
     "v-johch@microsoft.com"
   ],
   "branches_to_filter": [
-     "live"
+    "live"
   ],
   "git_repository_url_open_to_public_contributors": "https://github.com/MicrosoftDocs/mc-docs.zh-cn",
   "git_repository_branch_open_to_public_contributors": "master",
   "contribution_branch_mappings": {
-      "live-sxs": "live",
-      "master-sxs": "master"
+    "live-sxs": "live",
+    "master-sxs": "master"
   },
   "skip_source_output_uploading": false,
   "need_preview_pull_request": true,
@@ -55,5 +55,8 @@
       }
     }
   ],
-  "need_generate_pdf_url_template": false
+  "need_generate_pdf_url_template": false,
+  "docs_build_engine": {
+    "name": "docfx_v3"
+  }
 }
