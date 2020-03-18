@@ -1,16 +1,15 @@
 ---
 author: rockboyfor
-ms.service: container-service
 ms.topic: include
 origin.date: 10/09/2019
-ms.date: 10/28/2019
+ms.date: 03/09/2020
 ms.author: v-yeche
-ms.openlocfilehash: 20de0d413962f9fd46b8a14a3ffb770e3fdfda19
-ms.sourcegitcommit: 642a4ad454db5631e4d4a43555abd9773cae8891
+ms.openlocfilehash: 3c17325b1034af83bc21d8e5458da29d47a5b5ed
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2019
-ms.locfileid: "73426399"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79290709"
 ---
 ```bash
 kubectl describe pod -l "app=voting-analytics, version=1.0" -n voting | egrep "istio-proxy:|voting-analytics:" -A2
@@ -28,5 +27,4 @@ Istio 已自动注入 `istio-proxy` 容器，来管理组件的往返网络流�
     Image:         docker.io/istio/proxyv2:1.3.2
 ```
 
-<!--Update_Description: new articles on istio scenario routing show proxy bash -->
-<!--New.date: 11/04/2019-->
+<!-- Update_Description: update meta properties, wording update, update link -->

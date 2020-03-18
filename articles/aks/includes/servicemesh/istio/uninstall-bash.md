@@ -1,28 +1,20 @@
 ---
 author: rockboyfor
-ms.service: container-service
 ms.topic: include
-origin.date: 10/09/2019
-ms.date: 10/28/2019
+origin.date: 11/15/2019
+ms.date: 03/09/2020
 ms.author: v-yeche
-ms.openlocfilehash: 0f26edd9793b667139da2b0fe18ffa5eff66bec5
-ms.sourcegitcommit: 642a4ad454db5631e4d4a43555abd9773cae8891
+ms.openlocfilehash: b4ab78c575e40d6600ca18121f029f662b052073
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2019
-ms.locfileid: "73425885"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79290704"
 ---
-若要删除 CRD，请运行以下命令：
-
-```bash
-kubectl get crds -o name | grep 'istio.io' | xargs -n1 kubectl delete
-```
-
 若要删除机密，请运行以下命令：
 
 ```bash
 kubectl get secret --all-namespaces -o json | jq '.items[].metadata | ["kubectl delete secret -n", .namespace, .name] | join(" ")' -r | fgrep "istio." | xargs -t0 bash -c
 ```
 
-<!--Update_Description: new articles on istio uninstall bash -->
-<!--New.date: 11/04/2019-->
+<!-- Update_Description: update meta properties, wording update, update link -->

@@ -3,14 +3,14 @@ author: rothja
 ms.service: cost-management-billing
 ms.topic: include
 origin.date: 11/09/2018
-ms.date: 03/02/2020
+ms.date: 03/23/2020
 ms.author: v-tawe
-ms.openlocfilehash: 64353499d00f206f9bf252b750be7515ba6a14b6
-ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
+ms.openlocfilehash: c417f31cf315966d14b64542e2ac1754e389d744
+ms.sourcegitcommit: 4ba6d7c8bed5398f37eb37cf5e2acafcdcc28791
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77494165"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79133788"
 ---
 下表列出了适用于 Azure IoT 中心设备预配服务资源的限制。
 
@@ -26,6 +26,9 @@ ms.locfileid: "77494165"
 
 > [!NOTE]
 > 若要增加预配服务上的登记和注册数量，请联系 [Azure 支持](https://www.azure.cn/support/contact/)。
+
+> [!NOTE]
+> 增加 CA 的最大数目不受支持。
 
 超过以下配额时，设备预配服务将限制请求。
 

@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
-origin.date: 12/09/2019
-ms.date: 03/09/2020
+origin.date: 08/19/2019
+ms.date: 03/23/2020
 ms.author: v-tawe
-ms.openlocfilehash: b7c126a8a56280aadbd74670385453b59e7fea19
-ms.sourcegitcommit: ced17aa58e800b9e4335276a1595b8045836b256
+ms.openlocfilehash: 1addfdf22be32937cee69d4afd0224218ac66115
+ms.sourcegitcommit: e94ed1c9eff4e88be2ca389909e60b14cc0d92f8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77590249"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79084639"
 ---
 ## <a name="prerequisites"></a>先决条件
 
@@ -33,11 +33,10 @@ ms.locfileid: "77590249"
 
 1. 将所有代码替换为以下片段：
 
-   ```cpp
+   ```C++
 
     // Creates an instance of a speech config with specified host and subscription key.
-    // Replace with your own subscription key and service region (e.g., "chinaeast2", use the one of SpeechSDKParameters
-    // from here: https://docs.azure.cn/cognitive-services/speech-service/regions).
+    // Replace with your own subscription key and region identifier from here: https://docs.azure.cn/cognitive-services/speech-service/regions
     auto config = SpeechConfig::FromHost("https://YourServiceRegion.tts.speech.azure.cn/", "YourSubscriptionKey");
 
     // Creates a speech synthesizer using file as audio output.

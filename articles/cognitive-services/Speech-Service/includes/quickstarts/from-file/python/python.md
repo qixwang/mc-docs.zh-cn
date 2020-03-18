@@ -8,14 +8,14 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
 origin.date: 01/30/2020
-ms.date: 03/09/2020
+ms.date: 03/23/2020
 ms.author: v-tawe
-ms.openlocfilehash: 82639cbe0b2fbbe439ce69bbacdc2e38df09bd70
-ms.sourcegitcommit: ced17aa58e800b9e4335276a1595b8045836b256
+ms.openlocfilehash: 248bb49946ae4a4a5e420592ae71e250390e1d2e
+ms.sourcegitcommit: e94ed1c9eff4e88be2ca389909e60b14cc0d92f8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77590291"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79084617"
 ---
 ## <a name="prerequisites"></a>先决条件
 
@@ -58,8 +58,7 @@ python quickstart.py
 import azure.cognitiveservices.speech as speechsdk
 
 # Creates an instance of a speech config with specified host and subscription key.
-# Replace with your own subscription key and service region (e.g., "chinaeast2", use the one of SpeechSDKParameters
-# from here: https://docs.azure.cn/cognitive-services/speech-service/regions).
+# Replace with your own subscription key and region identifier from here: https://docs.azure.cn/cognitive-services/speech-service/regions
 speech_host, speech_key = "wss://YourServiceRegion.stt.speech.azure.cn/", "YourSubscriptionKey"
 speech_config = speechsdk.SpeechConfig(host=speech_host, subscription=speech_key)
 

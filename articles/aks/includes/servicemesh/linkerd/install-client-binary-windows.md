@@ -1,16 +1,15 @@
 ---
 author: rockboyfor
-ms.service: container-service
 ms.topic: include
 origin.date: 10/09/2019
-ms.date: 10/28/2019
+ms.date: 03/09/2020
 ms.author: v-yeche
-ms.openlocfilehash: 2968b73fbbc0d3b9f5846bcb239bca78bf9ad4b9
-ms.sourcegitcommit: 642a4ad454db5631e4d4a43555abd9773cae8891
+ms.openlocfilehash: efa4374a54cc2fdbe48b635049680a7865375866
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2019
-ms.locfileid: "73426395"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79290697"
 ---
 ## <a name="download-and-install-the-linkerd-linkerd-client-binary"></a>下载并安装 Linkerd linkerd 客户端二进制文件
 

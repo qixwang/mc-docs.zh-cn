@@ -8,12 +8,12 @@ ms.topic: conceptual
 origin.date: 1/28/2020
 ms.date: 03/06/2020
 ms.author: v-lingwu
-ms.openlocfilehash: 97daa94a4bf58c004b723dc13c32d2b550008b97
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.openlocfilehash: 7f887e73654272ce66b64d645aa8edb8d7a50b10
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78850077"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79290851"
 ---
 # <a name="offline-backup-workflow-for-dpm-and-azure-backup-server"></a>DPM 和 Azure 备份服务器的脱机备份工作流
 
@@ -53,12 +53,12 @@ Azure 备份的脱机种子设定过程与 [Azure 导入/导出服务](../storag
 
 * 已创建[恢复服务保管库](backup-azure-recovery-services-vault-overview.md)。 若要创建保管库，请按照[创建恢复服务保管库](tutorial-backup-windows-server-to-azure.md#create-a-recovery-services-vault)中的步骤操作
 * Windows Server 或 Windows 客户端上已安装 Azure 备份代理、MABS 或 DPM（若适用），并且计算机已注册到恢复服务保管库。 确保仅使用[最新版本的 Azure 备份](https://go.microsoft.com/fwlink/?linkid=229525)。
-* 在你打算从中备份数据的计算机上，[下载 Azure 发布设置文件](https://portal.azure.com/#blade/Microsoft_Azure_ClassicResources/PublishingProfileBlade)。 下载发布设置文件的订阅可以不同于包含恢复服务保管库的订阅。 如果你的订阅位于主权 Azure 云上，请相应地使用以下链接下载 Azure 发布设置文件。
+* 在你打算从中备份数据的计算机上，[下载 Azure 发布设置文件](https://portal.azure.cn/#blade/Microsoft_Azure_ClassicResources/PublishingProfileBlade)。 下载发布设置文件的订阅可以不同于包含恢复服务保管库的订阅。 如果你的订阅位于主权 Azure 云上，请相应地使用以下链接下载 Azure 发布设置文件。
 
     | 主权云区域 | Azure 发布设置文件链接 |
     | --- | --- |
-    | 美国 | [链接](https://portal.azure.us#blade/Microsoft_Azure_ClassicResources/PublishingProfileBlade) |
-    | 中国 | [链接](https://portal.azure.cn/#blade/Microsoft_Azure_ClassicResources/PublishingProfileBlade) |
+    | 美国 | [链接](https://portal.azure.us#blade/Microsoft_Azure_ClassicResources/PublishingProfileBlade)。 |
+    | 中国 | [链接](https://portal.azure.cn/#blade/Microsoft_Azure_ClassicResources/PublishingProfileBlade)。 |
 
 * 在下载发布设置文件的订阅中已创建了采用资源管理器部署模型的 Azure 存储帐户。
 
@@ -71,7 +71,7 @@ Azure 备份的脱机种子设定过程与 [Azure 导入/导出服务](../storag
 ## <a name="prepare-the-server-for-the-offline-backup-process"></a>为脱机备份过程准备服务器
 
 >[!NOTE]
-> 如果在 MARS 代理安装中找不到列出的实用工具（例如 *AzureOfflineBackupCertGen.exe*），请写入 AskAzureBackupTeam@microsoft.com 以获取对这些实用工具的访问权限。
+> 如果在 MARS 代理安装中找不到列出的实用工具（例如 AzureOfflineBackupCertGen.exe  ），请与[支持团队](https://support.azure.cn/zh-cn/support/contact/)联系以获取对这些实用工具的访问权限。
 
 * 在服务器上打开权限提升的命令提示符，并运行以下命令：
 

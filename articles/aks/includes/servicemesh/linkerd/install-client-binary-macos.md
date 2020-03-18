@@ -1,16 +1,15 @@
 ---
 author: rockboyfor
-ms.service: container-service
 ms.topic: include
 origin.date: 10/09/2019
-ms.date: 10/28/2019
+ms.date: 03/09/2020
 ms.author: v-yeche
-ms.openlocfilehash: 8e0f2ca3c2adbfae79a0c401abe197dd3337eb88
-ms.sourcegitcommit: 642a4ad454db5631e4d4a43555abd9773cae8891
+ms.openlocfilehash: 667f82ed754f73e848079bf6db2908eb8755a44b
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2019
-ms.locfileid: "73426394"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79290699"
 ---
 ## <a name="download-and-install-the-linkerd-linkerd-client-binary"></a>下载并安装 Linkerd linkerd 客户端二进制文件
 
@@ -26,7 +25,7 @@ curl -sLO "https://github.com/linkerd/linkerd2/releases/download/$LINKERD_VERSIO
 `linkerd` 客户端二进制文件在客户端计算机上运行，用来与 Linkerd 服务网格交互。 在 MacOS 上基于 bash 的 shell 中使用以下命令安装 Linkerd `linkerd` 客户端二进制文件。 这些命令可将 `linkerd` 客户端二进制文件复制到 `PATH` 中的标准用户程序位置。
 
 ```bash
-sudo cp ./linkerd2-cli-$LINKERD_VERSION-linux /usr/local/bin/linkerd
+sudo cp ./linkerd2-cli-$LINKERD_VERSION-darwin /usr/local/bin/linkerd
 sudo chmod +x /usr/local/bin/linkerd
 ```
 
@@ -42,5 +41,4 @@ source ~/completions/linkerd.bash
 echo "source ~/completions/linkerd.bash" >> ~/.bashrc
 ```
 
-<!--Update_Description: new articles on linkerd install client binary macos -->
-<!--New.date: 11/04/2019-->
+<!-- Update_Description: update meta properties, wording update, update link -->

@@ -8,14 +8,14 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
 origin.date: 12/17/2019
-ms.date: 03/09/2020
+ms.date: 03/23/2020
 ms.author: v-tawe
-ms.openlocfilehash: 13e342f7f280f705ff579df23de87c19d988b288
-ms.sourcegitcommit: ced17aa58e800b9e4335276a1595b8045836b256
+ms.openlocfilehash: 251ef790bf6811ae25d63e15f363e2379e2cd7f1
+ms.sourcegitcommit: e94ed1c9eff4e88be2ca389909e60b14cc0d92f8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77590286"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79084647"
 ---
 ## <a name="prerequisites"></a>先决条件
 
@@ -76,8 +76,7 @@ namespace HelloWorld
 > 语音 SDK 将默认使用 en-us 作为语言进行识别。若要了解如何选择源语言，请参阅[指定语音转文本的源语言](../../../../how-to-specify-source-language.md)。
 
 ```csharp
-// Replace with your own subscription key and service region (e.g., "chinaeast2", use the one of SpeechSDKParameters
-// from here: https://docs.azure.cn/cognitive-services/speech-service/regions).
+// Replace with your own subscription key and region identifier from here: https://docs.azure.cn/cognitive-services/speech-service/regions
 var config = SpeechConfig.FromHost(new Uri("wss://YourServiceRegion.stt.speech.azure.cn/"), "YourSubscriptionKey");
 ```
 

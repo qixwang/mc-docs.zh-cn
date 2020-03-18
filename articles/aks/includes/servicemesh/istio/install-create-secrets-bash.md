@@ -1,16 +1,15 @@
 ---
 author: rockboyfor
-ms.service: container-service
 ms.topic: include
 origin.date: 10/09/2019
-ms.date: 10/28/2019
+ms.date: 03/09/2020
 ms.author: v-yeche
-ms.openlocfilehash: 8c43e1d7ea454569d172a0760b0289c1693bf6ae
-ms.sourcegitcommit: 642a4ad454db5631e4d4a43555abd9773cae8891
+ms.openlocfilehash: fda9f995feb3fe3d2d0fbe6aa1e23c67cd37c9dd
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2019
-ms.locfileid: "73425878"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79290702"
 ---
 ### <a name="add-grafana-secret"></a>添加 Grafana 机密
 
@@ -58,5 +57,4 @@ data:
 EOF
 ```
 
-<!--Update_Description: new articles on istio install create secrets bash -->
-<!--New.date: 11/04/2019-->
+<!-- Update_Description: update meta properties, wording update, update link -->

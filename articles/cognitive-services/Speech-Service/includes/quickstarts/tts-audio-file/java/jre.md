@@ -3,14 +3,14 @@ author: erhopf
 ms.service: cognitive-services
 ms.topic: include
 origin.date: 08/06/2019
-ms.date: 03/09/2020
+ms.date: 03/23/2020
 ms.author: v-tawe
-ms.openlocfilehash: 7f5a556946ad331b81f7a43703f3d790db389756
-ms.sourcegitcommit: ced17aa58e800b9e4335276a1595b8045836b256
+ms.openlocfilehash: a81f2da4dbef82eb9cbe4135cd8638be23451dc4
+ms.sourcegitcommit: e94ed1c9eff4e88be2ca389909e60b14cc0d92f8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77590251"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79084607"
 ---
 ## <a name="prerequisites"></a>先决条件
 
@@ -54,8 +54,7 @@ ms.locfileid: "77590251"
                String text = "Hello world!";
 
                int exitCode = 1;
-               // Replace below with your own service region (e.g., "chinaeast2", use the one of SpeechSDKParameters
-               // from here: https://docs.azure.cn/cognitive-services/speech-service/regions).
+               // Replace below with your own region identifier from here: https://docs.azure.cn/cognitive-services/speech-service/regions
                SpeechConfig config = SpeechConfig.fromHost(new URI("https://YourServiceRegion.tts.speech.azure.cn/"), speechSubscriptionKey);
                assert(config != null);
 

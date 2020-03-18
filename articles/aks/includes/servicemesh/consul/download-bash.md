@@ -1,16 +1,15 @@
 ---
 author: rockboyfor
-ms.service: container-service
 ms.topic: include
 origin.date: 10/09/2019
-ms.date: 10/28/2019
+ms.date: 03/09/2020
 ms.author: v-yeche
-ms.openlocfilehash: f57c786b71b7dcf8a232a6a0335a3ceb871a7652
-ms.sourcegitcommit: 642a4ad454db5631e4d4a43555abd9773cae8891
+ms.openlocfilehash: ae5ec0b0f1fd97a40e88e7505880bb8b2d9cbe8c
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2019
-ms.locfileid: "73426401"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79290706"
 ---
 在 Linux 或[适用于 Linux 的 Windows 子系统][install-wsl]或 MacOS 上的基于 bash 的 shell 中，使用 `curl` 下载 Consul Helm 图表版本，如下所示：
 

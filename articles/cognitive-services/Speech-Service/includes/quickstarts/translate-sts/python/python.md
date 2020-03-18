@@ -9,14 +9,14 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
 origin.date: 12/09/2019
-ms.date: 03/09/2020
+ms.date: 03/23/2020
 ms.author: v-tawe
-ms.openlocfilehash: 851383438a7a72bfa27f525ddc66f62874239adc
-ms.sourcegitcommit: ced17aa58e800b9e4335276a1595b8045836b256
+ms.openlocfilehash: 6335d3a8c969b8f30236a7268330b8b54c82a660
+ms.sourcegitcommit: e94ed1c9eff4e88be2ca389909e60b14cc0d92f8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77590227"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79084657"
 ---
 ## <a name="prerequisites"></a>先决条件
 
@@ -39,8 +39,7 @@ ms.locfileid: "77590227"
     def translate_speech_to_speech():
 
         # Creates an instance of a speech translation config with specified host and subscription key.
-        # Replace with your own subscription key and service region (e.g., "chinaeast2", use the one of SpeechSDKParameters
-        # from here: https://docs.azure.cn/cognitive-services/speech-service/regions).   
+        # Replace with your own subscription key and region identifier from here: https://docs.azure.cn/cognitive-services/speech-service/regions
         speech_host, speech_key = "wss://YourServiceRegion.stt.speech.azure.cn/", "YourSubscriptionKey"
         translation_config = speechsdk.translation.SpeechTranslationConfig(host=speech_host, subscription=speech_key)
 

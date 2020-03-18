@@ -9,14 +9,14 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
 origin.date: 12/09/2019
-ms.date: 03/09/2020
+ms.date: 03/23/2020
 ms.author: v-tawe
-ms.openlocfilehash: 682d7fa4dd21462e3cf1d92ddb3c1b2cce5d9d33
-ms.sourcegitcommit: ced17aa58e800b9e4335276a1595b8045836b256
+ms.openlocfilehash: 640f150dd5731d13fba8b4695370dfadc1280068
+ms.sourcegitcommit: e94ed1c9eff4e88be2ca389909e60b14cc0d92f8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77590213"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79084610"
 ---
 ## <a name="prerequisites"></a>先决条件
 
@@ -44,8 +44,7 @@ ms.locfileid: "77590213"
            public static async Task TranslateSpeechToText()
            {
                // Creates an instance of a speech translation config with specified host and subscription key.
-               // Replace with your own subscription key and service region (e.g., "chinaeast2", use the one of SpeechSDKParameters
-               // from here: https://docs.azure.cn/cognitive-services/speech-service/regions).   
+               // Replace with your own subscription key and region identifier from here: https://docs.azure.cn/cognitive-services/speech-service/regions
                var config = SpeechTranslationConfig.FromHost(new Uri("wss://YourServiceRegion.stt.speech.azure.cn/"), "YourSubscriptionKey");
 
                // Sets source and target languages.

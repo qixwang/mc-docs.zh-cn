@@ -1,16 +1,15 @@
 ---
 author: rockboyfor
-ms.service: container-service
 ms.topic: include
-origin.date: 10/09/2019
-ms.date: 10/28/2019
+origin.date: 11/15/2019
+ms.date: 03/09/2020
 ms.author: v-yeche
-ms.openlocfilehash: 30f888f8b8fa22661f2fcfbeda830e543dfaa258
-ms.sourcegitcommit: 642a4ad454db5631e4d4a43555abd9773cae8891
+ms.openlocfilehash: e21fce9b54b5c657c5c87a41020b2993adb46d60
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2019
-ms.locfileid: "73425886"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79290700"
 ---
 ## <a name="download-and-install-the-istio-istioctl-client-binary"></a>下载并安装 Istio istioctl 客户端二进制文件
 
@@ -18,7 +17,7 @@ ms.locfileid: "73425886"
 
 ```bash
 # Specify the Istio version that will be leveraged throughout these instructions
-ISTIO_VERSION=1.3.2
+ISTIO_VERSION=1.4.0
 
 curl -sL "https://github.com/istio/istio/releases/download/$ISTIO_VERSION/istio-$ISTIO_VERSION-osx.tar.gz" | tar xz
 ```
@@ -43,5 +42,4 @@ source ~/completions/istioctl.bash
 echo "source ~/completions/istioctl.bash" >> ~/.bashrc
 ```
 
-<!--Update_Description: new articles on istio install client binary macos -->
-<!--New.date: 11/04/2019-->
+<!-- Update_Description: update meta properties, wording update, update link -->

@@ -8,14 +8,14 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
 origin.date: 12/17/2019
-ms.date: 03/09/2020
+ms.date: 03/23/2020
 ms.author: v-tawe
-ms.openlocfilehash: e7618e17a9f0e327b0caf8cbf4f9697553ad9e64
-ms.sourcegitcommit: ced17aa58e800b9e4335276a1595b8045836b256
+ms.openlocfilehash: fd5cb78a83204e3363d9cb4dd06ef6393b163858
+ms.sourcegitcommit: e94ed1c9eff4e88be2ca389909e60b14cc0d92f8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77590272"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79084618"
 ---
 ## <a name="prerequisites"></a>先决条件
 
@@ -63,7 +63,7 @@ namespace helloworld
 
 ## <a name="create-a-speech-configuration"></a>创建语音配置
 
-在初始化 `SpeechRecognizer` 对象之前，需要创建一个使用订阅密钥和订阅区域的配置（从[区域](https://docs.azure.cn/cognitive-services/speech-service/regions)中选择“语音 SDK 参数”）。 将此代码插入 `RecognizeSpeechAsync()` 方法。
+在初始化 `SpeechRecognizer` 对象之前，需要创建一个使用订阅密钥和订阅区域的配置（从[区域](https://docs.azure.cn/cognitive-services/speech-service/regions)中选择“区域标识符”）。  将此代码插入 `RecognizeSpeechAsync()` 方法。
 
 > [!NOTE]
 > 此示例使用 `FromHost()` 方法来生成 `SpeechConfig`。 有关可用方法的完整列表，请参阅 [SpeechConfig 类](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig?view=azure-dotnet)。
@@ -81,8 +81,6 @@ using (var recognizer = new SpeechRecognizer(config))
 {
 }
 ```
-
-> 语音 SDK 将默认使用 en-us 作为语言进行识别。若要了解如何选择源语言，请参阅[指定语音转文本的源语言](../../../../how-to-specify-source-language.md)。
 
 ## <a name="recognize-a-phrase"></a>识别短语
 

@@ -3,18 +3,17 @@ title: Azure Monitor 按资源类型支持的指标
 description: 可在 Azure 监视器中为每种资源类型使用的指标的列表。
 author: lingliw
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: reference
 origin.date: 12/18/2019
 ms.date: 12/31/2019
 ms.author: v-lingwu
 ms.subservice: metrics
-ms.openlocfilehash: f6bfaff2b235a171def9fdf3f76087f8094e6c68
-ms.sourcegitcommit: 27eaabd82b12ad6a6840f30763034a6360977186
+ms.openlocfilehash: 9c9371bba4dbc6a4fbfbddf65f9f8d766009ea75
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77497494"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291256"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Azure 监视器支持的指标
 Azure 监视器提供多种方式来与指标交互，包括在门户中制作指标图表、通过 REST API 访问指标，或者使用 PowerShell 或 CLI 查询指标。 下面是目前可在 Azure 监视器的指标管道中使用的完整指标列表。 其他指标可在门户或旧版 API 中使用。 下面的此列表仅包含可以通过合并的 Azure Monitor 指标管道使用的指标。 若要查询和访问这些指标，请使用 [2018-01-01 API 版本](https://docs.microsoft.com/rest/api/monitor/metricdefinitions)
@@ -1291,7 +1290,7 @@ Azure 监视器提供多种方式来与指标交互，包括在门户中制作�
 |已启动的模型部署数|已启动的模型部署数|计数|总计|此工作区中已启动的模型部署数|方案|
 |成功的模型部署数|成功的模型部署数|计数|总计|此工作区中成功的模型部署数|方案|
 |失败的模型部署数|失败的模型部署数|计数|总计|此工作区中失败的模型部署数|Scenario,StatusCode|
-|节点总数|节点总数|计数|平均值|节点总数。 此总数包括一些活动节点、空闲节点、不可用的节点、占用的节点和正在退出的节点|Scenario,ClusterName|
+|节点总数|节点总数|计数|平均值|节点总数。 此总数包括一些活动节点、空闲节点、不可用节点、已占用节点和正在退出的节点|Scenario,ClusterName|
 |活动节点数|活动节点数|计数|平均值|活动节点数。 这些节点是正在运行作业的节点。|Scenario,ClusterName|
 |空闲节点数|空闲节点数|计数|平均值|空闲节点数。 空闲节点是指未运行任何作业，但可以接受新作业（如果可用）的节点。|Scenario,ClusterName|
 |不可用的节点数|不可用的节点数|计数|平均值|不可用的节点数。 不可用的节点是由于存在某种不可解决的问题而无法正常运行的节点。 Azure 将回收这些节点。|Scenario,ClusterName|
@@ -1414,10 +1413,10 @@ Azure 监视器提供多种方式来与指标交互，包括在门户中制作�
 |DDoSTriggerTCPPackets|触发 DDoS 缓解的入站 TCP 数据包|每秒计数|最大值|触发 DDoS 缓解的入站 TCP 数据包|无|
 |DDoSTriggerUDPPackets|触发 DDoS 缓解的入站 UDP 数据包|每秒计数|最大值|触发 DDoS 缓解的入站 UDP 数据包|无|
 |DDoSTriggerSYNPackets|触发 DDoS 缓解的入站 SYN 数据包|每秒计数|最大值|触发 DDoS 缓解的入站 SYN 数据包|无|
-|VipAvailability|数据路径可用性|计数|平均值|每个持续时间的 IP 地址的平均可用性|端口|
-|ByteCount|字节计数|计数|总计|时间段内传输的字节总数|Port,Direction|
-|PacketCount|数据包计数|计数|总计|时间段内传输的数据包总数|Port,Direction|
-|SynCount|SYN 计数|计数|总计|时间段内传输的 SYN 数据包总数|Port,Direction|
+|VipAvailability（目前不支持）|数据路径可用性|计数|平均值|每个持续时间的 IP 地址的平均可用性|端口|
+|ByteCount（目前不支持）|字节计数|计数|总计|时间段内传输的字节总数|Port,Direction|
+|PacketCount（目前不支持）|数据包计数|计数|总计|时间段内传输的数据包总数|Port,Direction|
+|SynCount（目前不支持）|SYN 计数|计数|总计|时间段内传输的 SYN 数据包总数|Port,Direction|
 
 
 
@@ -1843,8 +1842,8 @@ Azure 监视器提供多种方式来与指标交互，包括在门户中制作�
 |dwu_used|已用的 DWU|计数|最大值|已用 DWU。 仅适用于数据仓库。|无|
 |cache_hit_percent|缓存命中百分比|百分比|最大值|缓存命中百分比。 仅适用于数据仓库。|无|
 |cache_used_percent|缓存使用百分比|百分比|最大值|缓存使用百分比。 仅适用于数据仓库。|无|
-|sqlserver_process_core_percent|SQL Server 进程核心百分比|百分比|最大值|CPU 使用率，以 SQL 数据库进程百分比表示。 不适用于数据仓库。|无|
-|sqlserver_process_memory_percent|SQL Server 进程内存百分比|百分比|最大值|内存使用率，以 SQL 数据库进程百分比表示。 不适用于数据仓库。|无|
+|sqlserver_process_core_percent|SQL Server 进程核心百分比|百分比|最大值|SQL Server 进程的 CPU 使用率百分比（由操作系统度量）。 目前仅可用于无服务器数据库。|无|
+|sqlserver_process_memory_percent|SQL Server 进程内存百分比|百分比|最大值|SQL Server 进程的内存使用率百分比（由操作系统度量）。 目前仅可用于无服务器数据库。|无|
 |tempdb_data_size|Tempdb 数据文件大小 (KB)|计数|最大值|Tempdb 数据文件大小 (KB)。 不适用于数据仓库。|无|
 |tempdb_log_size|Tempdb 日志文件大小 (KB)|计数|最大值|Tempdb 日志文件大小 (KB)。 不适用于数据仓库。|无|
 |tempdb_log_used_percent|Tempdb 日志已用百分比|百分比|最大值|Tempdb 日志已用百分比。 不适用于数据仓库。|无|

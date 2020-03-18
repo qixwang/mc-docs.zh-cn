@@ -1,16 +1,15 @@
 ---
 author: rockboyfor
-ms.service: container-service
 ms.topic: include
 origin.date: 10/09/2019
-ms.date: 10/28/2019
+ms.date: 03/09/2020
 ms.author: v-yeche
-ms.openlocfilehash: 179bb82f1c86b1c74fde26370cc4aecd5adc0692
-ms.sourcegitcommit: 642a4ad454db5631e4d4a43555abd9773cae8891
+ms.openlocfilehash: 5b990bd2d57980e6e9c52450d736de4ce1d287ee
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2019
-ms.locfileid: "73426396"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79290698"
 ---
 ## <a name="download-and-install-the-linkerd-linkerd-client-binary"></a>下载并安装 Linkerd linkerd 客户端二进制文件
 
@@ -46,5 +45,4 @@ echo "source ~/completions/linkerd.bash" >> ~/.bashrc
 
 [install-wsl]: https://docs.microsoft.com/windows/wsl/install-win10
 
-<!--Update_Description: new articles on linkerd install client binary linux -->
-<!--New.date: 11/04/2019-->
+<!-- Update_Description: update meta properties, wording update, update link -->

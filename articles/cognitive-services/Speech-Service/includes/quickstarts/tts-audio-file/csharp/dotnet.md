@@ -9,14 +9,14 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
 origin.date: 10/28/2019
-ms.date: 03/09/2020
+ms.date: 03/23/2020
 ms.author: v-tawe
-ms.openlocfilehash: d658ef19ee9305e824c04d73a8af69f0d4cb0310
-ms.sourcegitcommit: ced17aa58e800b9e4335276a1595b8045836b256
+ms.openlocfilehash: 0a4ee3d66b660c3ac4dbc1cf2c2617d8964b7111
+ms.sourcegitcommit: e94ed1c9eff4e88be2ca389909e60b14cc0d92f8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77590250"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79084637"
 ---
 ## <a name="prerequisites"></a>先决条件
 
@@ -66,8 +66,7 @@ namespace helloworld
 在初始化 `SpeechSynthesizer` 对象之前，需要创建一个使用订阅密钥和订阅区域的配置。 将此代码插入 `SynthesisToAudioFileAsync()` 方法。
 
 ````C#
-// Replace with your own subscription key and service region (e.g., "chinaeast", use the one of SpeechSDKParameters
-// from here: https://docs.azure.cn/cognitive-services/speech-service/regions).
+// Replace with your own subscription key and region identifier from here: https://docs.azure.cn/cognitive-services/speech-service/regions
 // The default language is "en-us".
 var config = SpeechConfig.FromHost(new Uri("https://YourServiceRegion.tts.speech.azure.cn/"), "YourSubscriptionKey");
 ````
