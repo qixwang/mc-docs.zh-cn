@@ -22669,6 +22669,11 @@
       "source_path": "articles/sql-database/sql-database-troubleshoot-common-connection-issues.md",
       "redirect_url": "/sql-database/troubleshoot-connectivity-issues-microsoft-azure-sql-database",
       "redirect_document_id": true
+     },
+    {
+      "source_path": "azure-stack/operator/azure-stack-hci-overview.md", 
+      "redirect_url": "/azure-stack/hci/overview", 
+      "redirect_document_id": true 
     },
     {
       "source_path": "articles/azure-monitor/platform/diagnostics-extension-schema.md",
@@ -22679,7 +22684,13 @@
       "source_path": "articles/azure-monitor/platform/diagnostics-extension-schema-1dot3.md",
       "redirect_url": "/azure-monitor/platform/diagnostics-extension-schema-windows",
       "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/app-service/web-sites-traffic-manager-custom-domain-name.md",
+      "redirect_url": "/app-service/configure-domain-traffic-manager",
+      "redirect_document_id": false
     }
+
 
 
   ]
