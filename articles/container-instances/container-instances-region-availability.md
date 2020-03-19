@@ -2,19 +2,19 @@
 title: 资源可用性（按区域）
 description: Azure 容器实例服务的计算和内存资源在不同 Azure 区域的可用性。
 ms.topic: article
-origin.date: 12/17/2019
-ms.date: 01/15/2020
+origin.date: 02/19/2020
+ms.date: 03/02/2020
 ms.author: v-yeche
-ms.openlocfilehash: 349b257aa7cf9585b0604733f1613e8672c9a672
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.openlocfilehash: bd0e0d752bd57cd2affc5de8a8e02826996f3f8f
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77428054"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292525"
 ---
 # <a name="resource-availability-for-azure-container-instances-in-azure-regions"></a>Azure 容器实例在 Azure 区域的资源可用性
 
-本文详述 Azure 容器实例的计算和内存资源在 Azure 区域的可用性。 
+本文按目标操作系统详细介绍了 Azure 容器实例计算、内存和存储资源在 Azure 区域中的可用性。 
 
 提供的值是指部署一个[容器组](container-instances-container-groups.md)时可以使用的最大资源。 在本文发布时，值是最新的。 
 
@@ -25,37 +25,31 @@ ms.locfileid: "77428054"
 
 ## <a name="availability---general"></a>可用性 - 常规
 
-以下区域和资源可供包含 Linux 和[受支持的](container-instances-faq.md#what-windows-base-os-images-are-supported)基于 Windows Server 2016 的容器的容器组使用。
+以下区域和资源可供包含 Linux 容器的容器组使用。
 
-| 区域 | 操作系统 | 最大 CPU | 最大内存 (GB) |
-| -------- | -- | :---: | :-----------: |
-| 中国东部 2、中国北部 2 | Linux | 4 | 16 |
-| 中国东部 2、中国北部 2 | Windows | 2 | 3.5 |
+<!--Not Available on [supported](container-instances-faq.md#what-windows-base-os-images-are-supported) Windows Server 2016-based-->
 
-<!--Need to verified from PG-->
+| 区域 | 操作系统 | 最大 CPU | 最大内存 (GB) | 存储器 (GB) |
+| -------- | -- | :---: | :-----------: | :---: |
+| 中国东部 2 | Linux | 4 | 16 | 50 |
 
-## <a name="availability---windows-server-2019-ltsc-1809-deployments-preview"></a>可用性 - Windows Server 2019 LTSC，1809 部署（预览版）
-
-以下区域和资源可供包含基于 Windows Server 2019 的容器（预览版）的容器组使用。
-
-| 区域 | 操作系统 | 最大 CPU | 最大内存 (GB) |
-| -------- | -- | :---: | :-----------: |
-| 中国东部 2、中国北部 2 | Windows | 4 | 16 |
-| 中国东部 2、中国北部 2 | Windows | 2 | 3.5 |
+<!--CORRECT ON China East 2 for Linux container-->
+<!--Not Available on | China East 2, China North 2 | Windows | 2 | 3.5 |-->
 
 <!--Need to verified from PG-->
+<!--Not Available on ## Availability - Windows Server 2019 LTSC, 1809 deployments (preview)-->
+<!--Need to verified from PG-->
 
-## <a name="availability---virtual-network-deployment"></a>可用性 - 虚拟网络部署
-
-Azure 虚拟网络中部署的容器组可以使用以下区域和资源。
-
+<!--Not Available on ## Availability - Virtual network deployment-->
 <!--Not Available on [Azure 虚拟网络](container-instances-vnet.md)-->
-
-[!INCLUDE [container-instances-vnet-limits](../../includes/container-instances-vnet-limits.md)]
+<!--Not Available on [!INCLUDE [container-instances-vnet-limits](../../includes/container-instances-vnet-limits.md)]-->
 
 ## <a name="availability---gpu-resources-preview"></a>可用性 - GPU 资源（预览版）
 
-以下区域和资源可供与 [GPU 资源](container-instances-gpu.md)（预览版）一起部署的容器组使用。
+以下是使用 [GPU 资源](container-instances-gpu.md)（预览版）部署的容器组可以使用的区域和最大资源数。
+
+> [!IMPORTANT]
+> GPU 资源仅在请求后可用。 若要请求访问 GPU 资源，请提交 [Azure 支持请求][azure-support]。
 
 [!INCLUDE [container-instances-gpu-regions](../../includes/container-instances-gpu-regions.md)]
 [!INCLUDE [container-instances-gpu-limits](../../includes/container-instances-gpu-limits.md)]
@@ -66,5 +60,6 @@ Azure 虚拟网络中部署的容器组可以使用以下区域和资源。
 
 有关容器实例部署故障排除的信息，请参阅[排查 Azure 容器实例的部署问题](container-instances-troubleshooting.md)。
 
-<!-- Update_Description: new article about container instances region availability -->
-<!--NEW.date: 01/15/2020-->
+[azure-support]: https://support.azure.cn/support/support-azure/
+
+<!-- Update_Description: update meta properties, wording update, update link -->

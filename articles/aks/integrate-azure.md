@@ -1,20 +1,16 @@
 ---
 title: 使用 Open Service Broker for Azure (OSBA) 与 Azure 托管服务进行集成
 description: 使用 Open Service Broker for Azure (OSBA) 与 Azure 托管服务进行集成
-services: container-service
 author: rockboyfor
-manager: digimobile
-ms.service: container-service
 ms.topic: overview
-origin.date: 12/05/2017
-ms.date: 05/13/2019
+ms.date: 03/09/2020
 ms.author: v-yeche
-ms.openlocfilehash: d953f09d3bd9f29f7398e2da72cd348d8345fa4d
-ms.sourcegitcommit: 878a2d65e042b466c083d3ede1ab0988916eaa3d
+ms.openlocfilehash: 107bffa0153482e45c147baaf0d4c5e8f75a0277
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65835714"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79290839"
 ---
 <!--IMPORT: NOT AVAILABLE ON MOONCAKE-->
 <!--PLEASE BE KINDLY NOTICE MOONCAKE COMMENTS-->
@@ -40,6 +36,7 @@ ms.locfileid: "65835714"
 ## <a name="install-service-catalog"></a>安装服务目录
 
 第一步是使用 Helm 图表在 Kubernetes 群集中安装服务目录。 按照以下步骤升级群集中的 Tiller（Helm 服务器）安装：
+
 <!--MOONCAKE: TO ADD --tiller-image gcr.azk8s.cn/kubernetes-helm/tiller:v2.13.0-->
 
 ```azurecli
@@ -219,9 +216,10 @@ kubectl get secrets -n wordpress -o yaml
 
 遵照此文章的说明，已将服务目录部署到 Azure Kubernetes 服务 (AKS) 群集。 并使用 Open Service Broker for Azure 部署了 WordPress 安装，后者使用 Azure 托管服务（在此例中为 Azure Database for MySQL）。
 
-请参阅 [Azure/helm-charts][helm-charts] 存储库，以访问其他已更新的基于 OSBA 的 Helm 图表。 如需了解如何创建适用于 OSBA 的图表，请参阅[创建新图表][helm-create-new-chart]。
+请参阅 [Azure/helm-charts][helm-charts] 存储库，以访问其他已更新的基于 OSBA 的 Helm 图表。 如需了解创建适用于 OSBA 的图表，请参阅[创建新图表][helm-create-new-chart]。
 
 <!-- LINKS - external -->
+
 [helm-charts]: https://github.com/Azure/helm-charts
 [helm-cli-install]: https://docs.helm.sh/helm/#helm-install
 [helm-create-new-chart]: https://github.com/Azure/helm-charts#creating-a-new-chart
@@ -230,7 +228,8 @@ kubectl get secrets -n wordpress -o yaml
 [service-catalog-cli]: https://github.com/Azure/service-catalog-cli
 
 <!-- LINKS - internal -->
-[azure-cli-install]: https://docs.azure.cn/zh-cn/cli/install-azure-cli?view=azure-cli-latest
+
+[azure-cli-install]: https://docs.azure.cn/cli/install-azure-cli?view=azure-cli-latest
 
 <!--Not Available on [azure-cloud-shell]: ../cloud-shell/overview.md-->
 

@@ -3,17 +3,16 @@ title: 自定义 Azure Kubernetes 服务 (AKS) 的 CoreDNS
 description: 了解如何使用 Azure Kubernetes 服务 (AKS) 自定义 CoreDNS，以便添加子域或扩展自定义 DNS 终结点
 services: container-service
 author: rockboyfor
-ms.service: container-service
 ms.topic: article
 origin.date: 03/15/2019
-ms.date: 10/28/2019
+ms.date: 03/09/2020
 ms.author: v-yeche
-ms.openlocfilehash: 725094c09b4de42609fba8405bf82f8937708bc3
-ms.sourcegitcommit: 1d4dc20d24feb74d11d8295e121d6752c2db956e
+ms.openlocfilehash: 1e8673defd712bd78ecc08afc0cd0616ba7a1ae4
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73068895"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79290757"
 ---
 # <a name="customize-coredns-with-azure-kubernetes-service"></a>使用 Azure Kubernetes 服务自定义 CoreDNS
 
@@ -50,7 +49,7 @@ data:
         errors
         cache 30
         rewrite name substring <domain to be rewritten>.com default.svc.cluster.local
-        proxy .  /etc/resolv.conf # you can redirect this to a specific DNS server such as 10.0.0.10
+        forward .  /etc/resolv.conf # you can redirect this to a specific DNS server such as 10.0.0.10
     }
 ```
 
@@ -75,9 +74,9 @@ kubectl delete pod --namespace kube-system -l k8s-app=kube-dns
 > [!Note]
 > 以上命令是正确的。 当我们更改 `coredns` 时，部署采用 **kube-dns** 名称。
 
-## <a name="custom-proxy-server"></a>自定义代理服务器
+## <a name="custom-forward-server"></a>自定义转发服务器
 
-如需指定网络流量的代理服务器，可以创建 ConfigMap 来自定义 DNS。 在以下示例中，请将 `proxy` 名称和地址更新为你自己的环境的值。 创建名为 `corednsms.yaml` 的文件并粘贴以下示例配置：
+如需为网络流量指定转发服务器，可以创建 ConfigMap 以自定义 DNS。 在以下示例中，请将 `forward` 名称和地址更新为你自己的环境的值。 创建名为 `corednsms.yaml` 的文件并粘贴以下示例配置：
 
 ```yaml
 apiVersion: v1
@@ -88,7 +87,7 @@ metadata:
 data:
   test.server: | # you may select any name here, but it must end with the .server file extension
     <domain to be rewritten>.com:53 {
-        proxy foo.com 1.1.1.1
+        forward foo.com 1.1.1.1
     }
 ```
 
@@ -96,7 +95,7 @@ data:
 
 ```console
 kubectl apply -f corednsms.yaml
-kubectl delete pod --namespace kube-system --label k8s-app=kube-dns
+kubectl delete pod --namespace kube-system --selector k8s-app=kube-dns
 ```
 
 ## <a name="use-custom-domains"></a>使用自定义域
@@ -116,7 +115,7 @@ data:
     puglife.local:53 {
         errors
         cache 30
-        proxy . 192.11.0.1  # this is my test/dev DNS server
+        forward . 192.11.0.1  # this is my test/dev DNS server
     }
 ```
 
@@ -124,7 +123,7 @@ data:
 
 ```console
 kubectl apply -f corednsms.yaml
-kubectl delete pod --namespace kube-system --label k8s-app=kube-dns
+kubectl delete pod --namespace kube-system --selector k8s-app=kube-dns
 ```
 
 ## <a name="stub-domains"></a>存根域
@@ -142,12 +141,12 @@ data:
     abc.com:53 {
         errors
         cache 30
-        proxy . 1.2.3.4
+        forward . 1.2.3.4
     }
     my.cluster.local:53 {
         errors
         cache 30
-        proxy . 2.3.4.5
+        forward . 2.3.4.5
     }
 
 ```
@@ -156,7 +155,7 @@ data:
 
 ```console
 kubectl apply -f corednsms.yaml
-kubectl delete pod --namespace kube-system --label k8s-app=kube-dns
+kubectl delete pod --namespace kube-system --selector k8s-app=kube-dns
 ```
 
 ## <a name="hosts-plugin"></a>Hosts 插件
@@ -177,6 +176,21 @@ data:
           }
 ```
 
+## <a name="enable-logging-for-dns-query-debugging"></a>启用日志记录以进行 DNS 查询调试 
+
+若要启用 DNS 查询日志记录，请在 coredns-custom ConfigMap 中应用以下配置：
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: coredns-custom
+  namespace: kube-system
+data:
+  log.override: |
+        log
+```
+
 ## <a name="next-steps"></a>后续步骤
 
 本文介绍了一些适用于 CoreDNS 自定义的示例方案。 有关 CoreDNS 项目的信息，请参阅 [CoreDNS 上游项目页][coredns]。
@@ -189,8 +203,6 @@ data:
 [coredns]: https://coredns.io/
 [corednsk8s]: https://kubernetes.io/docs/tasks/administer-cluster/dns-custom-nameservers/#coredns
 [dnscache]: https://coredns.io/plugins/cache/
-[aks-quickstart-cli]: /aks/kubernetes-walkthrough
-[aks-quickstart-portal]: /aks/kubernetes-walkthrough-portal
 [kubectl-apply]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
 [kubectl delete]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#delete
@@ -202,4 +214,4 @@ data:
 [aks-quickstart-cli]: kubernetes-walkthrough.md
 [aks-quickstart-portal]: kubernetes-walkthrough-portal.md
 
-<!-- Update_Description: wording update -->
+<!-- Update_Description: update meta properties, wording update, update link -->

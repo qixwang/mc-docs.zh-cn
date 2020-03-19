@@ -1,26 +1,17 @@
 ---
-title: 排查 Azure Cache for Redis 客户端问题 | Microsoft Docs
-description: 了解如何解决 Azure Cache for Redis 的常见客户端问题
-services: cache
-documentationcenter: ''
+title: 排查 Azure Cache for Redis 客户端问题
+description: 了解如何排查 Azure Cache for Redis 的常见客户端问题，如 Redis 客户端内存压力、流量突发、CPU 使用率过高、带宽有限、大型请求或响应大小过大。
 author: yegu-ms
-manager: maiye
-editor: ''
-ms.assetid: ''
-ms.service: cache
-ms.workload: tbd
-ms.tgt_pltfrm: cache
-ms.devlang: na
-ms.topic: article
-origin.date: 10/18/2019
-ms.date: 11/11/2019
 ms.author: v-junlch
-ms.openlocfilehash: d23931a686aff8f5a6cae04b1b8faeac01d32f62
-ms.sourcegitcommit: 40a58a8b9be0c825c03725802e21ed47724aa7d2
+ms.service: cache
+ms.topic: troubleshooting
+ms.date: 03/04/2020
+ms.openlocfilehash: 7d90600ce10f670aefeb5e8a76169e9afedae027
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73934419"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291929"
 ---
 # <a name="troubleshoot-azure-cache-for-redis-client-side-issues"></a>排查 Azure Cache for Redis 客户端问题
 
@@ -60,7 +51,7 @@ ms.locfileid: "73934419"
 - 请注意，在 `IOCP` 节和 `WORKER` 节中，`Busy` 值大于 `Min` 值。 这种差异意味着 `ThreadPool` 设置需要调整。
 - 也可参看 `in: 64221`。 此值表示客户端的内核套接字层收到了 64,211 字节，但应用程序尚未读取这些字节。 这种差异通常意味着，应用程序（例如 StackExchange.Redis）从网络读取数据的速度没有服务器向你发送数据的速度快。
 
-可以[配置 `ThreadPool` 设置](https://gist.github.com/JonCole/e65411214030f0d823cb)，确保线程池在流量激增的情况下快速扩展。
+可以[配置 `ThreadPool` 设置](cache-faq.md#important-details-about-threadpool-growth)，确保线程池在流量激增的情况下快速扩展。
 
 ## <a name="high-client-cpu-usage"></a>客户端 CPU 使用率过高
 

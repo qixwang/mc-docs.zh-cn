@@ -8,15 +8,15 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-origin.date: 11/05/2019
-ms.date: 12/09/2019
+origin.date: 02/18/2020
+ms.date: 03/23/2020
 ms.author: v-yiso
-ms.openlocfilehash: 699d07f1e7a9c5add7c75f4dc2fc0d23dcf64de2
-ms.sourcegitcommit: 298eab5107c5fb09bf13351efeafab5b18373901
+ms.openlocfilehash: 61fb65369c8df9b82a2fee76013926da429049e2
+ms.sourcegitcommit: 32997a7d7585deaeb0ab7b8f928d397b18b343fa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2019
-ms.locfileid: "74658076"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79295933"
 ---
 # <a name="use-apache-zeppelin-notebooks-with-apache-spark-cluster-on-azure-hdinsight"></a>在 Azure HDInsight 上的 Apache Spark 群集中使用 Apache Zeppelin 笔记本
 
@@ -24,9 +24,8 @@ HDInsight Spark 群集包括可用于运行 [Apache Spark](https://spark.apache.
 
 ## <a name="prerequisites"></a>先决条件
 
-* Azure 订阅。 请参阅[获取 Azure 试用版](https://www.azure.cn/pricing/1rmb-trial/)。
 * HDInsight 上的 Apache Spark 群集。 有关说明，请参阅[在 Azure HDInsight 中创建 Apache Spark 群集](apache-spark-jupyter-spark-sql.md)。
-* 群集主存储的 URI 方案。 对于 Azure Blob 存储，此值为 `wasb://`；对于Azure Data Lake Storage Gen2，此值为 `abfs://`；对于 Azure Data Lake Storage Gen1，此值为 `adl://`。 如果为 Blob 存储或 Data Lake Storage Gen2 启用了安全传输，则 URI 分别是 `wasbs://` 或 `abfss://`。  另请参阅[在 Azure 存储中要求安全传输](../../storage/common/storage-require-secure-transfer.md)了解详细信息。
+* 群集主存储的 URI 方案。 对于 Azure Blob 存储，此值为 `wasb://`；对于 Azure Data Lake Storage Gen2，此值为 `abfs://`。 如果为 Blob 存储启用了安全传输，则 URI 将为 `wasbs://`。  有关详细信息，请参阅[在 Azure 存储中要求安全传输](../../storage/common/storage-require-secure-transfer.md)。
 
 ## <a name="launch-an-apache-zeppelin-notebook"></a>启动 Apache Zeppelin 笔记本
 
@@ -38,6 +37,7 @@ HDInsight Spark 群集包括可用于运行 [Apache Spark](https://spark.apache.
    > `https://CLUSTERNAME.azurehdinsight.cn/zeppelin`
    > 
    > 
+   
 2. 创建新的笔记本。 在标题窗格中，导航到“笔记本” > “创建新笔记”。  
    
     ![创建新的 Zeppelin 笔记本](./media/apache-spark-zeppelin-notebook/hdinsight-create-zeppelin-notebook.png "创建新的 Zeppelin 笔记本")
@@ -156,9 +156,10 @@ Zeppelin 笔记本保存在群集头节点。 因此，如果删除群集，笔�
 此操作可在下载位置将笔记本保存为 JSON 文件。
 
 ## <a name="livy-session-management"></a>Livy 会话管理
-在 Zeppelin 笔记本中运行第一个代码段时，在 HDInsight Spark 群集中创建了新的 Livy 会话。 此会话在随后创建的所有 Zeppelin 笔记本中共享。 如果由于某种原因（群集重新启动等）导致 Livy 会话终止，则无法从 Zeppelin notebook 运行作业。
 
-在这种情况下，必须执行以下步骤，才能从 Zeppelin 笔记本运行作业。 
+在 Zeppelin 笔记本中运行第一个代码段时，在 HDInsight Spark 群集中创建了新的 Livy 会话。 此会话在随后创建的所有 Zeppelin 笔记本中共享。 如果由于某种原因（群集重新启动等）导致 Livy 会话终止，则将无法从 Zeppelin notebook 运行作业。
+
+在这种情况下，必须首先执行以下步骤，才能开始在 Zeppelin 笔记本中运行作业。 
 
 1. 在 Zeppelin 笔记本中重启 Livy 解释器。 为此，请选择右上角的登录用户名打开解释器设置，然后选择“解释器”  。
 
@@ -170,13 +171,49 @@ Zeppelin 笔记本保存在群集头节点。 因此，如果删除群集，笔�
 
 3. 在现有的 Zeppelin 笔记本中运行代码单元。 此操作可在 HDInsight 群集中创建新的 Livy 会话。
 
-## <a name="seealso"></a>另请参阅
-* [概述：Azure HDInsight 上的 Apache Spark](apache-spark-overview.md)
+## <a name="general-information"></a>常规信息
+
+### <a name="validate-service"></a>验证服务
+
+若要从 Ambari 验证服务，请导航到 `https://CLUSTERNAME.azurehdinsight.cn/#/main/services/ZEPPELIN/summary`，其中 CLUSTERNAME 是群集的名称。
+
+若要从命令行验证服务，请通过 SSH 连接到头节点。 使用命令 `sudo su zeppelin` 将用户切换到 zeppelin。 状态命令：
+
+|命令 |说明 |
+|---|---|
+|`/usr/hdp/current/zeppelin-server/bin/zeppelin-daemon.sh status`|服务状态。|
+|`/usr/hdp/current/zeppelin-server/bin/zeppelin-daemon.sh --version`|服务版本。|
+|`ps -aux | grep zeppelin`|标识 PID。|
+
+### <a name="log-locations"></a>日志位置
+
+|服务 |`Path` |
+|---|---|
+|zeppelin-server|/usr/hdp/current/zeppelin-server/|
+|服务器日志|/var/log/zeppelin|
+|配置解释器、Shiro、site.xml、log4j|/usr/hdp/current/zeppelin-server/conf or /etc/zeppelin/conf|
+|PID 目录|/var/run/zeppelin|
+
+### <a name="enable-debug-logging"></a>启用调试日志记录
+
+1. 导航到 `https://CLUSTERNAME.azurehdinsight.cn/#/main/services/ZEPPELIN/summary`，其中 CLUSTERNAME 是群集的名称。
+
+1. 导航到“CONFIGS”   > “Advanced zeppelin-log4j-properties”   > “log4j_properties_content”  。
+
+1. 将 `log4j.appender.dailyfile.Threshold = INFO` 修改为 `log4j.appender.dailyfile.Threshold = DEBUG`。
+
+1. 添加 `log4j.logger.org.apache.zeppelin.realm=DEBUG`。
+
+1. 保存更改并重启服务。
+
+## <a name="next-steps"></a>后续步骤
+
+[概述：Azure HDInsight 上的 Apache Spark](apache-spark-overview.md)
 
 ### <a name="scenarios"></a>方案
-* [Apache Spark 与 BI：将 HDInsight 中的 Spark 与 BI 工具配合使用来执行交互式数据分析](apache-spark-use-bi-tools.md)
-* [Apache Spark 与机器学习：使用 HDInsight 中的 Spark 来通过 HVAC 数据分析建筑物温度](apache-spark-ipython-notebook-machine-learning.md)
-* [Apache Spark 与机器学习：使用 HDInsight 中的 Spark 预测食品检验结果](apache-spark-machine-learning-mllib-ipython.md)
+* [Apache Spark 与 BI：使用 HDInsight 中的 Spark 和 BI 工具执行交互式数据分析](apache-spark-use-bi-tools.md)
+* [Apache Spark 与机器学习：使用 HDInsight 中的 Spark 结合 HVAC 数据分析建筑物温度](apache-spark-ipython-notebook-machine-learning.md)
+* [Apache Spark 与机器学习：使用 HDInsight 中的 Spark 预测食品检查结果](apache-spark-machine-learning-mllib-ipython.md)
 * [使用 HDInsight 中的 Apache Spark 分析网站日志](apache-spark-custom-library-website-log-analysis.md)
 
 ### <a name="create-and-run-applications"></a>创建和运行应用程序

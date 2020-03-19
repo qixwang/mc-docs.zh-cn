@@ -3,13 +3,13 @@ title: Azure Functions JavaScript 开发者参考
 description: 了解如何使用 JavaScript 开发函数。
 ms.assetid: 45dedd78-3ff9-411f-bb4b-16d29a11384c
 ms.topic: reference
-ms.date: 02/13/2020
-ms.openlocfilehash: 21456955aa4370b6edda00716b3acb47cbb05006
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.date: 03/03/2020
+ms.openlocfilehash: 0cf290501fcd490641fb72c4f2e8e396debbd27c
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77428503"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292415"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Azure Functions JavaScript 开发人员指南
 
@@ -232,7 +232,7 @@ context.bindings.myOutput = {
 context.bindingData
 ```
 
-返回包含触发器元数据和函数调用数据（`invocationId`、`sys.methodName`、`sys.utcNow`、`sys.randGuid`）的命名对象。 有关触发器元数据的示例，请参阅此[事件中心示例](functions-bindings-event-hubs.md#trigger)。
+返回包含触发器元数据和函数调用数据（`invocationId`、`sys.methodName`、`sys.utcNow`、`sys.randGuid`）的命名对象。 有关触发器元数据的示例，请参阅此[事件中心示例](functions-bindings-event-hubs-trigger.md)。
 
 ### <a name="contextdone-method"></a>context.done 方法
 
@@ -417,14 +417,17 @@ FUNCTIONS_WORKER_PROCESS_COUNT 适用于 Functions 在横向扩展应用程序�
 
 ## <a name="node-version"></a>Node 版本
 
-下表显示了 Functions 运行时的每个主要版本使用的 Node.js 版本：
+下表按操作系统显示了 Functions 运行时的每个主版本当前支持的 Node.js 版本：
 
-| Functions 版本 | Node.js 版本 | 
-|---|---|
-| 1.x | 6.11.2（运行时锁定） |
-| 2.x  | _活动 LTS_ 和_维护 LTS_ Node.js 版本（建议使用 ~10）。 通过将 WEBSITE_NODE_DEFAULT_VERSION [应用设置](functions-how-to-use-azure-function-app-settings.md#settings)设置为 `~10` 来确定 Azure 中的版本。|
+| Functions 版本 | Node 版本 (Windows) | Node 版本 (Linux) |
+|---|---| --- |
+| 1.x | 6.11.2（运行时锁定） | 不适用 |
+| 2.x  | ~8<br/>~10（建议）<br/>~12<sup>*</sup> | ~8（建议）<br/>~10  |
+| 3.x | ~10<br/>~12（建议）  | ~10<br/>~12（建议） |
 
-可以通过查看上述应用设置或打印任何函数的 `process.version` 来查看运行时正在使用的当前版本。
+<sup>*</sup>Functions 运行时 2.x 版当前支持 Node ~12。 但是，为了获得最佳性能，我们建议将 Function 运行时 3.x 版与 Node ~12 一起使用。 
+
+可以通过查看上述应用设置或打印任何函数的 `process.version` 来查看运行时正在使用的当前版本。 通过将 WEBSITE_NODE_DEFAULT_VERSION [应用设置](functions-how-to-use-azure-function-app-settings.md#settings)设为受支持的 LTS 版本（例如 `~10`）来针对 Azure 中的版本。
 
 ## <a name="dependency-management"></a>依赖项管理
 若要在 JavaScript 代码中使用社区库（如下面的示例所示），需要确保在 Azure 中的 Function App 上安装所有依赖项。

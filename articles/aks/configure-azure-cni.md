@@ -2,18 +2,16 @@
 title: 在 Azure Kubernetes 服务 (AKS) 中配置 Azure CNI 网络
 description: 了解如何在 Azure Kubernetes 服务 (AKS) 中配置 Azure CNI（高级）网络，包括将 AKS 群集部署到现有虚拟网络和子网中。
 services: container-service
-author: rockboyfor
-ms.service: container-service
 ms.topic: article
 origin.date: 06/03/2019
-ms.date: 01/20/2020
+ms.date: 03/09/2020
 ms.author: v-yeche
-ms.openlocfilehash: bb317490085d4941750c152f9039c4beb68cbc01
-ms.sourcegitcommit: 8de025ca11b62e06ba3762b5d15cc577e0c0f15d
+ms.openlocfilehash: d578d618a9f3daf676ee8476f41c3fb86ae3a8c3
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76165452"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291682"
 ---
 # <a name="configure-azure-cni-networking-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中配置 Azure CNI 网络
 
@@ -23,7 +21,7 @@ ms.locfileid: "76165452"
 
 本文展示了如何使用 *Azure CNI* 网络来创建和使用 AKS 群集的虚拟网络子网。 有关网络选项和注意事项的详细信息，请参阅 [Kubernetes 和 AKS 的网络概念][aks-network-concepts]。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * AKS 群集的虚拟网络必须允许出站 Internet 连接。
 * AKS 群集可能不会使用 Kubernetes 服务地址范围的 `169.254.0.0/16`、`172.30.0.0/16`、`172.31.0.0/16` 或 `192.0.2.0/24`。
@@ -55,9 +53,9 @@ AKS 群集 IP 地址计划包括虚拟网络、至少一个节点和 Pod 子网�
 | --------- | ------------- |
 | 虚拟网络 | Azure 虚拟网络的大小可以为 /8，但仅限于 65,536 个已配置的 IP 地址。 |
 | 子网 | 大小必须足以容纳群集中可能预配的节点、Pod 以及所有 Kubernetes 和 Azure 资源。 例如，如果部署内部 Azure 负载均衡器，其前端 IP 分配自群集子网（而不是公共 IP）。 子网大小还应考虑到帐户升级操作或将来的缩放需求。<p />若要计算最小子网大小，包括用于升级操作的其他节点：  `(number of nodes + 1) + ((number of nodes + 1) * maximum pods per node that you configure)`<p/>50 个节点群集的示例：`(51) + (51  * 30 (default)) = 1,581`（/21 或更大）<p/>50 节点群集的示例，其中还包括纵向扩展额外 10 个节点的预配：`(61) + (61 * 30 (default)) = 1,891`（/21 或更大）<p>如果在创建群集时没有指定每个节点的最大 Pod 数，则每个节点的最大 Pod 数将设置为 30  。 所需的最小 IP 地址数取决于该值。 如果基于不同的最大值计算最小 IP 地址要求，请参阅[如何配置每个节点的最大 Pod 数](#configure-maximum---new-clusters)，以便在部署群集时设置此值。 |
-| Kubernetes 服务地址范围 | 此范围不应由此虚拟网络上或连接到此虚拟网络的任何网络元素使用。 服务地址 CIDR 必须小于 /12。 |
+| Kubernetes 服务地址范围 | 此范围不应由此虚拟网络上或连接到此虚拟网络的任何网络元素使用。 服务地址 CIDR 必须小于 /12。 可以在不同 AKS 群集中重复使用此范围。 |
 | Kubernetes DNS 服务 IP 地址 | Kubernetes 服务地址范围内的 IP 地址将由群集服务发现 (kube-dns) 使用。 请勿使用地址范围内的第一个 IP 地址，例如 1。 子网范围内的第一个地址用于 kubernetes.default.svc.cluster.local 地址  。 |
-| Docker 桥地址 | Docker 桥网络地址表示所有 Docker 安装中都存在的默认 docker0  桥网络地址。 虽然 AKS 群集或 Pod 本身不使用 docker0  桥，但必须设置此地址以继续支持 AKS 群集内的 docker build  等方案。 需要为 Docker 桥网络地址选择 CIDR，否则 Docker 会自动选择一个可能与其他 CIDR 冲突的子网。 必须选择一个不与网络上其他 CIDR（包括群集的服务 CIDR 和 Pod CIDR）冲突的地址空间。 默认地址为 172.17.0.1/16。 |
+| Docker 桥地址 | Docker 桥网络地址表示所有 Docker 安装中都存在的默认 docker0  桥网络地址。 虽然 AKS 群集或 Pod 本身不使用 docker0  桥，但必须设置此地址以继续支持 AKS 群集内的 docker build  等方案。 需要为 Docker 桥网络地址选择 CIDR，否则 Docker 会自动选择一个可能与其他 CIDR 冲突的子网。 必须选择一个不与网络上其他 CIDR（包括群集的服务 CIDR 和 Pod CIDR）冲突的地址空间。 默认地址为 172.17.0.1/16。 可以在不同 AKS 群集中重复使用此范围。 |
 
 ## <a name="maximum-pods-per-node"></a>每个节点的最大 Pod 数
 
@@ -227,9 +225,7 @@ az aks create \
 
 [aks-ingress-internal]: ingress-internal-ip.md
 [network-policy]: use-network-policies.md
-
-<!--Not Available on [nodepool-upgrade]: use-multiple-node-pools.md#upgrade-a-node-pool-->
-
+[nodepool-upgrade]: use-multiple-node-pools.md#upgrade-a-node-pool
 [network-comparisons]: concepts-network.md#compare-network-models
 
-<!-- Update_Description: wording update, update link -->
+<!-- Update_Description: update meta properties, wording update, update link -->

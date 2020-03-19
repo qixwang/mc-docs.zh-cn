@@ -1,17 +1,17 @@
 ---
-title: 使用 REST API 更新恢复服务保管库配置属性
+title: 使用 REST API 更新恢复服务保管库配置
 description: 本文介绍如何使用 REST API 更新保管库配置。
 ms.topic: conceptual
 author: lingliw
 origin.date: 12/06/2019
 ms.date: 1/3/2020
 ms.assetid: 9aafa5a0-1e57-4644-bf79-97124db27aa2
-ms.openlocfilehash: c083daca22481c0ec11ab50aa99436e5a1d033df
-ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
+ms.openlocfilehash: 2809b306ddfbc058869f07dea1422a1b955ad3f7
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75859175"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293107"
 ---
 # <a name="update-azure-recovery-services-vault-configurations-using-rest-api"></a>使用 REST API 更新 Azure 恢复服务保管库配置
 

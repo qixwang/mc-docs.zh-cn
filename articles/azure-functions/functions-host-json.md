@@ -2,13 +2,13 @@
 title: Azure Functions 2.x 的 host.json 参考
 description: 使用 v2 运行时的 Azure Functions host.json 文件的参考文档。
 ms.topic: conceptual
-ms.date: 02/18/2020
-ms.openlocfilehash: 4efaa0a86d3be6bcb0a8de8b73dcda6497b0b0a7
-ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
+ms.date: 03/03/2020
+ms.openlocfilehash: 72047f78508ba7bc679daeed10efaf6eea9738aa
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77494514"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292952"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x-and-later"></a>Azure Functions 2.x 及更高版本的 host.json 参考 
 
@@ -21,9 +21,9 @@ ms.locfileid: "77494514"
 > [!NOTE]
 > 本文适用于 Azure Functions 2.x 及更高版本。  有关 Functions 1.x 中 host.json 的参考，请参阅 [Azure Functions 1.x 的 host.json 参考](functions-host-json-v1.md)。
 
-其他函数应用配置选项在[应用设置](functions-app-settings.md)中进行管理。
+其他函数应用配置选项在[应用设置](functions-app-settings.md)（适用于已部署的应用）或 [local.settings.json](functions-run-local.md#local-settings-file) 文件（用于本地开发）中进行管理。
 
-[local.settings.json](functions-run-local.md#local-settings-file) 文件中的某些 host.json 设置仅在本地运行时才使用。
+host.json 中与绑定相关的配置将同样地应用于函数应用中的每个函数。 
 
 ## <a name="sample-hostjson-file"></a>示例 host.json 文件
 
@@ -72,7 +72,7 @@ ms.locfileid: "77494514"
 
 ## <a name="cosmosdb"></a>CosmosDB
 
-可在 [Cosmos DB 触发器和绑定](functions-bindings-cosmosdb-v2.md#host-json)中查找配置设置。
+可在 [Cosmos DB 触发器和绑定](functions-bindings-cosmosdb-v2-output.md#host-json)中查找配置设置。
 
 ## <a name="durabletask"></a>durableTask
 
@@ -80,7 +80,7 @@ ms.locfileid: "77494514"
 
 ## <a name="eventhub"></a>eventHub
 
-可在[事件中心触发器和绑定](functions-bindings-event-hubs.md#host-json)中查找配置设置。 
+可在[事件中心触发器和绑定](functions-bindings-event-hubs-output.md#host-json)中查找配置设置。 
 
 ## <a name="extensions"></a>扩展
 
@@ -157,7 +157,7 @@ ms.locfileid: "77494514"
 
 ## <a name="queues"></a>queues
 
-可在[存储队列触发器和绑定](functions-bindings-storage-queue.md#host-json)中查找设置。  
+可在[存储队列触发器和绑定](functions-bindings-storage-queue-output.md#host-json)中查找设置。  
 
 ## <a name="sendgrid"></a>SendGrid
 
@@ -165,7 +165,7 @@ ms.locfileid: "77494514"
 
 ## <a name="servicebus"></a>serviceBus
 
-可在[服务总线触发器和绑定](functions-bindings-service-bus.md#host-json)中查找配置设置。
+可在[服务总线触发器和绑定](functions-bindings-service-bus-output.md#host-json)中查找配置设置。
 
 ## <a name="singleton"></a>singleton
 
@@ -213,4 +213,4 @@ ms.locfileid: "77494514"
 > [!div class="nextstepaction"]
 > [查看环境变量中的全局设置](functions-app-settings.md)
 
-<!-- Update_Description: wording update -->
+<!-- Update_Description: link update -->

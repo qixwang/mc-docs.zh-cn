@@ -1,19 +1,19 @@
 ---
 title: 将 Azure 文件共享与 Windows 配合使用 | Microsoft Docs
-description: 了解如何将 Azure 文件共享与 Windows 和 Windows Server 配合使用。
+description: 了解如何在 Windows 和 Windows Server 中使用 Azure 文件共享。
 author: WenJason
 ms.service: storage
 ms.topic: conceptual
 origin.date: 06/07/2018
-ms.date: 09/30/2019
+ms.date: 03/09/2020
 ms.author: v-jay
 ms.subservice: files
-ms.openlocfilehash: 3cb1e0af7a49862544c321b5f81bd02857e26c94
-ms.sourcegitcommit: 0d07175c0b83219a3dbae4d413f8e012b6e604ed
+ms.openlocfilehash: 453adb66de908d26c5e6b16a0e0f43b99329791c
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71306782"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293518"
 ---
 # <a name="use-an-azure-file-share-with-windows"></a>在 Windows 中使用 Azure 文件共享
 [Azure 文件](storage-files-introduction.md)是易于使用的云文件系统。 可以在 Windows 和 Windows Server 中无缝使用 Azure 文件共享。 本文介绍在 Windows 和 Windows Server 中使用 Azure 文件共享时的注意事项。
@@ -23,25 +23,23 @@ ms.locfileid: "71306782"
 可在 Azure VM 或本地运行的 Windows 安装中使用 Azure 文件共享。 下表说明了哪些 OS 版本支持在哪个环境中访问文件共享：
 
 | Windows 版本        | SMB 版本 | 可以在 Azure VM 中装载 | 可以在本地装载 |
-|------------------------|-------------|-----------------------|----------------------|
-| Windows Server 2019    | SMB 3.0 | 是 | 是 |
+|------------------------|-------------|-----------------------|-----------------------|
+| Windows Server 2019 | SMB 3.0 | 是 | 是 |
 | Windows 10<sup>1</sup> | SMB 3.0 | 是 | 是 |
 | Windows Server 半年通道<sup>2</sup> | SMB 3.0 | 是 | 是 |
-| Windows Server 2016    | SMB 3.0     | 是                   | 是                  |
-| Windows 8.1            | SMB 3.0     | 是                   | 是                  |
-| Windows Server 2012 R2 | SMB 3.0     | 是                   | 是                  |
-| Windows Server 2012    | SMB 3.0     | 是                   | 是                  |
-| Windows 7              | SMB 2.1     | 是                   | 否                   |
-| Windows Server 2008 R2 | SMB 2.1     | 是                   | 否                   |
+| Windows Server 2016 | SMB 3.0 | 是 | 是 |
+| Windows 8.1 | SMB 3.0 | 是 | 是 |
+| Windows Server 2012 R2 | SMB 3.0 | 是 | 是 |
+| Windows Server 2012 | SMB 3.0 | 是 | 是 |
+| Windows 7<sup>3</sup> | SMB 2.1 | 是 | 否 |
+| Windows Server 2008 R2<sup>3</sup> | SMB 2.1 | 是 | 否 |
 
-<sup>1</sup>Windows 10 版本 1507、1607、1703、1709、1803、1809 和 1903。  
-<sup>2</sup>Windows Server 版本 1803、1809 和 1903。
+<sup>1</sup>Windows 10 版本 1507、1607、1709、1803、1809、1903 和 1909。  
+<sup>2</sup>Windows Server 版本 1809、1903 和 1909。  
+<sup>3</sup>Microsoft 对 Windows 7 和 Windows Server 2008 R2 的常规支持已结束。 只有通过[扩展安全更新 (ESU) 程序](https://support.microsoft.com/help/4497181/lifecycle-faq-extended-security-updates)才能购买对安全更新的附加支持。 我们强烈建议从这些操作系统中迁移。
 
 > [!Note]  
 > 我们始终建议使用相对于 Windows 版本来说最新的 KB。
-
-
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>先决条件 
 * **存储帐户名**：若要装载 Azure 文件共享，需要存储帐户的名称。
@@ -203,7 +201,7 @@ Remove-PSDrive -Name <desired-drive-letter>
 7. 做好卸载 Azure 文件共享的准备后，可在文件资源管理器中右键单击“网络位置”下对应于共享的条目，并选择“断开连接”。  
 
 ### <a name="accessing-share-snapshots-from-windows"></a>从 Windows 访问共享快照
-如果已手动或通过脚本或 Azure 备份等服务自动获取共享快照，则可以从 Windows 上的文件共享查看以前版本的共享、目录或特定文件。 可以通过 [Azure 门户](storage-how-to-use-files-portal.md)、[Azure PowerShell](storage-how-to-use-files-powershell.md) 和 [Azure CLI](storage-how-to-use-files-cli.md) 获取共享快照。
+如果已手动或通过脚本或 Azure 备份等服务自动获取共享快照，则可以从 Windows 上的文件共享查看以前版本的共享、目录或特定文件。 可以通过 [Azure 门户](storage-how-to-use-files-portal.md)、[Azure PowerShell](storage-how-to-use-files-powershell.md) 和 [Azure CLI](storage-how-to-use-files-cli.md) 创建共享快照。
 
 #### <a name="list-previous-versions"></a>列出以前版本
 浏览到需要还原的项或父项。 通过双击转到所需的目录。 右键单击，然后从菜单中选择“属性”。 
@@ -284,7 +282,7 @@ Disable-WindowsOptionalFeature -Online -FeatureName SMB1Protocol
 
 无法在早期版本的 Windows/Windows Server 上完全删除 SMB 1，但可以通过注册表将其禁用。 若要禁用 SMB 1，请创建 `DWORD` 类型的新注册表项 `SMB1`，并在 `HKEY_LOCAL_MACHINE > SYSTEM > CurrentControlSet > Services > LanmanServer > Parameters` 下面添加值 `0`。
 
-也可使用以下 PowerShell cmdlet 轻松完成该操作：
+也可以使用以下 PowerShell cmdlet 轻松实现此目的：
 
 ```powershell
 Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Services\LanmanServer\Parameters" SMB1 -Type DWORD -Value 0 –Force

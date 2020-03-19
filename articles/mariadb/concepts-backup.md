@@ -1,18 +1,18 @@
 ---
-title: 在 Azure Database for MariaDB 中进行备份和还原
+title: 备份和还原 - Azure Database for MariaDB
 description: 了解如何自动备份和还原 Azure Database for MariaDB 服务器。
 author: WenJason
 ms.author: v-jay
 ms.service: mariadb
 ms.topic: conceptual
-origin.date: 09/24/2018
-ms.date: 05/27/2019
-ms.openlocfilehash: 40ab3d4aa6949d59d6f9a96cfb8bbbc6a57e62dd
-ms.sourcegitcommit: 60169f39663ae62016f918bdfa223c411e249883
+origin.date: 02/25/2020
+ms.date: 03/16/2020
+ms.openlocfilehash: da5f791babc24783dad7eaf9ece5bbb7894d3b04
+ms.sourcegitcommit: 32997a7d7585deaeb0ab7b8f928d397b18b343fa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "66173267"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79295953"
 ---
 # <a name="backup-and-restore-in-azure-database-for-mariadb"></a>在 Azure Database for MariaDB 中进行备份和还原
 
@@ -21,6 +21,8 @@ Azure Database for MariaDB 可自动创建服务器备份并将其存储在用�
 ## <a name="backups"></a>备份
 
 Azure Database for MariaDB 可以进行完整备份、差异备份和事务日志备份。 可以通过这些备份将服务器还原到所配置的备份保留期中的任意时间点。 默认的备份保留期为七天。 可以选择将其配置为长达 35 天。 所有备份都使用 AES 256 位加密进行加密。
+
+无法导出这些备份文件。 这些备份只能用于 Azure Database for MariaDB 中的还原操作。 可以使用 [mysqldump](howto-migrate-dump-restore.md) 复制数据库。
 
 ### <a name="backup-frequency"></a>备份频率
 

@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 01/09/2020
+ms.date: 03/10/2020
 ms.author: v-junlch
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a5f07023b9ef0478f869a9b3f2e571c7609c64db
-ms.sourcegitcommit: bc5f8b4f8ccd7c723f64055825508d1dfcc2162b
+ms.openlocfilehash: eef39741d9573f833a3297709b2a5a3dfd120acf
+ms.sourcegitcommit: 4ba6d7c8bed5398f37eb37cf5e2acafcdcc28791
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75859340"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79133799"
 ---
 # <a name="how-to-block-legacy-authentication-to-azure-ad-with-conditional-access"></a>如何：使用条件访问阻止向 Azure AD 进行旧身份验证   
 
@@ -24,7 +24,7 @@ ms.locfileid: "75859340"
 
 如果环境已准备好阻止旧身份验证以提高对租户的保护，则可以使用条件访问来实现此目标。 本文介绍如何配置条件访问策略来阻止对租户的旧身份验证。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 本文假定你熟悉以下内容： 
 
@@ -48,13 +48,30 @@ Azure AD 支持多个最广泛使用的身份验证和授权协议，包括旧�
 
 本部分介绍如何配置条件访问策略以阻止旧身份验证。 
 
-### <a name="identify-legacy-authentication-use"></a>确定旧身份验证使用情况
+### <a name="legacy-authentication-protocols"></a>旧式身份验证协议
+
+以下选项被视为旧身份验证协议
+
+- 经身份验证的 SMTP - 由 POP 和 IMAP 客户端用来发送电子邮件。
+- 自动发现 - 由 Outlook 和 EAS 客户端用来查找和连接 Exchange Online 中的邮箱。
+- Exchange Online PowerShell - 用于通过远程 PowerShell 连接到 Exchange Online。 如果阻止 Exchange Online PowerShell 的基本身份验证，则需使用 Exchange Online PowerShell 模块进行连接。 有关说明，请参阅[使用多重身份验证连接到 Exchange Online PowerShell](https://docs.microsoft.com/powershell/exchange/exchange-online/connect-to-exchange-online-powershell/mfa-connect-to-exchange-online-powershell)。
+- Exchange Web 服务 (EWS) - Outlook、Outlook for Mac 和第三方应用使用的编程接口。
+- IMAP4 - 由 IMAP 电子邮件客户端使用。
+- 基于 HTTP 的 MAPI (MAPI/HTTP) - 由 Outlook 2010 及更高版本使用。
+- 脱机通讯簿 (OAB) - 通过 Outlook 下载并使用的地址列表集合的副本。
+- Outlook Anywhere（基于 HTTP 的 RPC）- 由 Outlook 2016 及更低版本使用。
+- Outlook 服务 - 由 Windows 10 的邮件和日历应用使用。
+- POP3 - 由 POP 电子邮件客户端使用。
+- Reporting Web Services - 用于在 Exchange Online 中检索报表数据。
+- 其他客户端 - 标识为使用旧身份验证的其他协议。
+
+### <a name="identify-legacy-authentication-use"></a>识别旧式身份验证的用法
 
 需要先了解用户是否有使用旧式身份验证的应用，以及它如何影响整个目录，然后才能在目录中阻止旧式身份验证。 可以使用 Azure AD 登录日志来了解是否正在使用旧式身份验证。
 
 1. 导航到“Azure 门户”   > “Azure Active Directory”   > “登录”  。
 1. 单击“列”   > “客户端应用”  添加“客户端应用”列（如果未显示）。
-1. 单击“添加筛选器”   > “客户端应用”  > 选择“其他客户端”  的所有选项，然后单击“应用”  。
+1. 单击“添加筛选器”   > “客户端应用”  > 选择所有旧身份验证协议，然后单击“应用”。 
 
 筛选将仅显示旧式身份验证协议进行的登录尝试。 单击每个单独的登录尝试将显示其他详细信息。 “基本信息”  选项卡下的“客户端应用”  字段将指示使用了哪个旧式身份验证协议。
 

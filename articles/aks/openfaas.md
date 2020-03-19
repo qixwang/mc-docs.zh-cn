@@ -1,25 +1,22 @@
 ---
 title: 结合使用 OpenFaaS 与 Azure Kubernetes 服务 (AKS)
 description: 部署 OpenFaaS 并将其与 Azure Kubernetes 服务 (AKS) 配合使用
-services: container-service
 author: rockboyfor
-manager: digimobile
-ms.service: container-service
-ms.topic: article
+ms.topic: conceptual
 origin.date: 03/05/2018
-ms.date: 04/08/2019
+ms.date: 03/09/2020
 ms.author: v-yeche
 ms.custom: mvc
-ms.openlocfilehash: 85eac869a67c9bcb8de7e6111beb0f3b02f8d63a
-ms.sourcegitcommit: 878a2d65e042b466c083d3ede1ab0988916eaa3d
+ms.openlocfilehash: c0b5a16e0a66aa46268b45cbca39bf2cdf6a9e1a
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65835712"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79290721"
 ---
 # <a name="using-openfaas-on-aks"></a>在 AKS 上使用 OpenFaaS
 
-[OpenFaaS][open-faas] 是一个框架，适用于通过容器构建无服务器函数。 作为一个开源项目，它在社区中大规模采用。 本文档详细介绍了如何在 Azure Kubernetes 服务 (AKS) 群集上安装和使用 OpenFaas。
+[OpenFaaS][open-faas] 是一个通过使用容器构建无服务器函数的框架。 作为一个开源项目，它在社区中大规模采用。 本文档详细介绍了如何在 Azure Kubernetes 服务 (AKS) 群集上安装和使用 OpenFaas。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -49,7 +46,7 @@ helm repo update
 kubectl apply -f https://raw.githubusercontent.com/openfaas/faas-netes/master/namespaces.yml
 ```
 
-为 OpenFaaS 函数创建另一个命名函数。
+生成 OpenFaaS UI 门户和 REST API 的密码：
 
 ```azurecli
 # generate a random password
@@ -96,7 +93,7 @@ To verify that openfaas has started, run:
   kubectl --namespace=openfaas get deployments -l "release=openfaas, app=openfaas"
 ```
 
-创建了一个用于访问 OpenFaaS 网关的公用 IP 地址。 若要检索此 IP 地址，请使用 [kubectl get service][kubectl-get] 命令。 将 IP 地址分配到服务可能需要一分钟时间。
+创建了一个用于访问 OpenFaaS 网关的公共 IP 地址。 若要检索此 IP 地址，请使用 [kubectl get service][kubectl-get] 命令。 将 IP 地址分配到服务可能需要一分钟时间。
 
 ```console
 kubectl get service -l component=gateway --namespace openfaas
@@ -114,7 +111,7 @@ gateway-external   LoadBalancer   10.0.28.18     52.186.64.52   8080:30800/TCP  
 
 ![OpenFaaS UI](media/container-service-serverless/openfaas.png)
 
-最后，安装 OpenFaaS CLI。 此示例使用的是 brew。有关更多选项，请参阅 [OpenFaaS CLI 文档][open-faas-cli]。
+最后，安装 OpenFaaS CLI。 此示例使用了 brew，有关更多选项，请参阅 [OpenFaaS CLI 文档][open-faas-cli]。
 
 ```console
 brew install faas-cli
@@ -137,7 +134,7 @@ echo -n $PASSWORD | faas-cli login -g $OPENFAAS_URL -u admin --password-stdin
 
 现在，OpenFaaS 已可运行，使用 OpenFaas 门户创建一个函数。
 
-单击“部署新函数”并搜索 Figlet。 选择 Figlet 函数，然后单击“部署”。
+单击“部署新函数”并搜索 Figlet   。 选择 Figlet 函数，然后单击“部署”  。
 
 ![Figlet](media/container-service-serverless/figlet.png)
 
@@ -255,8 +252,11 @@ curl -s http://52.186.64.52:8080/function/cosmos-query
 可以在 OpenFaaS 研讨会中通过一系列动手实验室继续学习。这些实验室涵盖的主题包括：如何创建自己的 GitHub 机器人、如何使用机密、如何查看指标，以及如何进行自动缩放。
 
 <!-- LINKS - external -->
+
 [install-mongo]: https://docs.mongodb.com/manual/installation/
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
 [open-faas]: https://www.openfaas.com/
 [open-faas-cli]: https://github.com/openfaas/faas-cli
 [openfaas-workshop]: https://github.com/openfaas/workshop
+
+<!-- Update_Description: update meta properties, wording update, update link -->

@@ -2,20 +2,20 @@
 title: RelyingParty - Azure Active Directory B2C | Microsoft Docs
 description: 在 Azure Active Directory B2C 中指定自定义策略的 RelyingParty 元素。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/21/2020
+ms.date: 03/04/2020
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: cb1a05e18496b16f504546eab0a0fc059a028491
-ms.sourcegitcommit: 1bd7711964586b41ff67fd1346dad368fe7383da
+ms.openlocfilehash: 9b1d47075aca268fe20df05ac1ae552b8339197a
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77531335"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291112"
 ---
 # <a name="relyingparty"></a>RelyingParty
 
@@ -115,6 +115,7 @@ UserJourneyBehaviors  元素包含下列元素：
 | SessionExpiryType |0:1 | 会话的身份验证行为。 可能的值：`Rolling` 或 `Absolute`。 `Rolling` 值（默认值）表示用户保持登录状态，只要用户在应用程序中保持持续活动状态。 `Absolute` 值指示在应用程序会话生命周期指定的时间段后将强制用户重新进行身份验证。 |
 | SessionExpiryInSeconds | 0:1 | 身份验证成功后，存储在用户浏览器上指定为整数的 Azure AD B2C 会话 Cookie 的生存期。 |
 | ContentDefinitionParameters | 0:1 | 要追加到内容定义负载 URI 的键值对列表。 |
+|ScriptExecution| 0:1| 支持的 [JavaScript](javascript-samples.md) 执行模式。 可能的值：`Allow` 或 `Disallow`（默认值）。
 
 ### <a name="singlesignon"></a>SingleSignOn
 
@@ -231,4 +232,3 @@ JWT 令牌包括带用户 objectId 的 `sub` 声明：
 ```
 
 <!-- Update_Description: wording update -->
-

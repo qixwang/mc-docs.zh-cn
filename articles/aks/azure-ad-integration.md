@@ -2,18 +2,16 @@
 title: 将 Azure Active Directory 与 Azure Kubernetes Service 集成
 description: 如何创建支持 Azure Active Directory 的 Azure Kubernetes 服务 (AKS) 群集
 services: container-service
-author: rockboyfor
-ms.service: container-service
 ms.topic: article
-origin.date: 04/26/2019
-ms.date: 10/28/2019
+origin.date: 02/02/2019
+ms.date: 03/09/2020
 ms.author: v-yeche
-ms.openlocfilehash: ae47cd1cde3b77622c047d4fdf50932d13a7ba6c
-ms.sourcegitcommit: 1d4dc20d24feb74d11d8295e121d6752c2db956e
+ms.openlocfilehash: a82c4b4f58919d8d804659818cf233f7713b6a02
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73068928"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79290821"
 ---
 # <a name="integrate-azure-active-directory-with-azure-kubernetes-service"></a>将 Azure Active Directory 与 Azure Kubernetes Service 集成
 
@@ -21,7 +19,7 @@ ms.locfileid: "73068928"
 
 群集管理员可以根据用户标识或目录组成员身份来配置 Kubernetes 基于角色的访问控制 (RBAC)。
 
-本文介绍以下操作：
+本文介绍如何执行以下操作：
 
 - 部署 AKS 和 Azure AD 的必备组件。
 - 部署支持 Azure AD 的群集。
@@ -59,7 +57,7 @@ ms.locfileid: "73068928"
     a. 为应用程序命名，例如 *AKSAzureADServer*。
 
     b. 对于“支持的帐户类型”设置，请选择“仅限此组织目录中的帐户”。  
-
+    
     c. 对于“重定向 URI”类型，请选择“Web”，然后输入任何 URI 格式的值，例如 *https://aksazureadserver* 。 
 
     d. 完成后，选择“注册”。 
@@ -97,7 +95,7 @@ ms.locfileid: "73068928"
     ![权限授予成功的通知](media/aad-integration/permissions-granted.png)
 
 5. 在 Azure AD 应用程序的左窗格中，依次选择“公开 API”、“+ 添加范围”。  
-
+    
     a. 输入**范围名称**、**管理员许可显示名称**和**管理员许可说明**，例如 *AKSAzureADServer*。
 
     b. 确保“状态”设置为“已启用”   。
@@ -122,6 +120,17 @@ ms.locfileid: "73068928"
 
     c. 对于“重定向 URI”类型，请选择“Web”，然后输入任何 URI 格式的值，例如 *https://aksazureadclient* 。 
 
+    <!--MOONCAKE CUSTOMIZED-->
+    
+    >[!NOTE]
+    >若要新建启用了 RBAC 的群集以支持用于容器的 Azure Monitor，请将以下两个附加重定向 URL 作为 **Web** 应用程序类型添加到此列表中。 第一个基 URL 值应为 `https://afd.hosting.portal.chinacloudapi.cn/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html`，第二个基 URL 值应为 `https://monitoring.hosting.portal.chinacloudapi.cn/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html`。
+    >
+    
+    <!--MOONCAKE CUSTOMIZED-->
+    
+    <!--DUPLICATED ON REFERENCE https://afd.hosting.azureportal.chinaloudapi.cn/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html ON AZURE CHINA CLOUD-->
+    <!--Not Available on [How to setup the Live Data (preview) feature](../azure-monitor/insights/container-insights-livedata-setup.md)-->
+    
     d. 完成后，选择“注册”。 
 
 2. 在 Azure AD 应用程序的左窗格中，依次选择“API 权限”、“+ 添加权限”。  
@@ -172,8 +181,7 @@ az aks create \
   --aad-server-app-id b1536b67-29ab-4b63-b60f-9444d0c15df1 \
   --aad-server-app-secret wHYomLe2i1mHR2B3/d4sFrooHwADZccKwfoQwK2QHg= \
   --aad-client-app-id 8aaf8bd5-1bdd-4822-99ad-02bfaa63eea7 \
-  --aad-tenant-id 72f988bf-0000-0000-0000-2d7cd011db47 \
-  --vm-set-type AvailabilitySet
+  --aad-tenant-id 72f988bf-0000-0000-0000-2d7cd011db47
 ```
 
 <!--MOONCAKE: CORRECT TO APPEND --vm-set-type AvailabilitySet Before VMSS feature is valid on Azure China Cloud-->
@@ -230,6 +238,9 @@ kubectl apply -f rbac-aad-user.yaml
 
 创建一个文件（例如 *rbac-aad-group.yaml*），然后粘贴以下内容。 将组对象 ID 更新为 Azure AD 租户中的某个组对象 ID：
 
+<!--UPDATE CAREFULLY-->
+<!--CORRECT THE KIND AND NAME FORMAT-->
+
 ```yaml
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
@@ -241,9 +252,12 @@ roleRef:
   name: cluster-admin
 subjects:
 - apiGroup: rbac.authorization.k8s.io
-   kind: Group
-   name: "894656e1-39f8-4bfe-b16a-510f61af6f41"
+  kind: Group
+  name: "894656e1-39f8-4bfe-b16a-510f61af6f41"
 ```
+
+<!--UPDATE CAREFULLY-->
+<!--CORRECT THE KIND AND NAME FORMAT-->
 
 使用 [kubectl apply][kubectl-apply] 命令应用绑定，如以下示例所示：
 
@@ -308,11 +322,11 @@ error: You must be logged in to the server (Unauthorized)
 [az-aks-create]: https://docs.microsoft.com/cli/azure/aks?view=azure-cli-latest#az-aks-create
 [az-aks-get-credentials]: https://docs.microsoft.com/cli/azure/aks?view=azure-cli-latest#az-aks-get-credentials
 [az-group-create]: https://docs.azure.cn/cli/group?view=azure-cli-latest#az-group-create
-[open-id-connect]:../active-directory/develop/v1-protocols-openid-connect-code.md
+[open-id-connect]: ../active-directory/develop/v2-protocols-oidc.md
 [az-ad-user-show]: https://docs.azure.cn/cli/ad/user?view=azure-cli-latest#az-ad-user-show
 [rbac-authorization]: concepts-identity.md#role-based-access-controls-rbac
 [operator-best-practices-identity]: operator-best-practices-identity.md
 [azure-ad-rbac]: azure-ad-rbac.md
 [azure-ad-cli]: azure-ad-integration-cli.md
 
-<!-- Update_Description: wording update, wording update -->
+<!-- Update_Description: update meta properties, wording update, update link -->

@@ -8,12 +8,12 @@ origin.date: 05/22/2019
 author: lingliw
 ms.date: 6/4/2019
 ms.author: v-lingwu
-ms.openlocfilehash: a63d8457d4564018cf5511040b05658b85dd0aba
-ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
+ms.openlocfilehash: 335de2c998095284ed5c045c3b4c81388dfc5c26
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77028468"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293059"
 ---
 # <a name="application-insights-for-aspnet-core-applications"></a>适用于 ASP.NET Core 应用程序的 Application Insights
 
@@ -35,7 +35,7 @@ ms.locfileid: "77028468"
 > [!NOTE]
 > 如果将 ASP.NET Core 3.0 与 Application Insights 一起使用，请使用 [2.8.0](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore/2.8.0) 或更高版本。 只有此版本支持 ASP.NET Core 3.0。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 - 一个正常运行的 ASP.NET Core 应用程序。 如果需要创建 ASP.NET Core 应用程序，请遵循此 [ASP.NET Core 教程](https://docs.microsoft.com/aspnet/core/getting-started/)。
 - 有效的 Application Insights 检测密钥。 将任何遥测数据发送到 Application Insights 都需要使用此密钥。 如果需要创建新的 Application Insights 资源来获取检测密钥，请参阅[创建 Application Insights 资源](/azure-monitor/app/create-new-resource)。
@@ -276,6 +276,7 @@ Application Insights 使用遥测模块自动收集有关特定工作负荷的�
 * `QuickPulseTelemetryModule` - 收集遥测数据以便在实时指标门户中显示。
 * `AppServicesHeartbeatTelemetryModule` - 收集有关托管应用程序的 Azure 应用服务环境的检测信号（以自定义指标的形式发送）。
 * `AzureInstanceMetadataTelemetryModule` - 收集有关托管应用程序的 Azure VM 环境的检测信号（以自定义指标的形式发送）。
+* `EventCounterCollectionModule` - 收集 EventCounters。 此模块是一项新功能，可在 SDK 版本 2.8.0 及更高版本中使用。
 
 若要配置任何默认的 `TelemetryModule`，请按以下示例中所示使用 `IServiceCollection` 中的扩展方法 `ConfigureTelemetryModule<T>`。
 

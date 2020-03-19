@@ -8,20 +8,29 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-origin.date: 07/05/2019
-ms.date: 01/27/2020
+origin.date: 02/26/2020
+ms.date: 03/23/2020
 ms.author: v-tawe
 ms.custom: seodec18, seo-javascript-october2019
-ms.openlocfilehash: 6eb85b8f734d71e21d25115138405c7f3722b8e6
-ms.sourcegitcommit: 3f2cb2b8fbe60bac19cffea5a1e3e99aa0e309c0
+ms.openlocfilehash: 9e6ada670af229b0efeeeddcbe366fbce3131b2e
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76163010"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293003"
 ---
 # <a name="try-the-speech-service"></a>试用语音服务
 
-以简单、经济的方式开始使用语音服务。  在试用期，只需支付 1 元即可创建一个新的 Azure 帐户。
+在本文中，我们选择一个选项来轻松地免费测试语音服务，以便发现服务的功能：
+
+<!-- - [Option 1](#no-card): Immediately get **free trial** API keys without providing any credit card info (you need to have an existing Azure account). The **free trial** lasts 30 days and data is deleted at the end. This option is best for quick experimentation with the service. -->
+
+- [选项 1](#new-resource)：在 Azure 中创建新的语音资源，使用**免费订阅**（需要信用卡信息）。 **免费订阅**主要有比付费订阅更苛刻的速率限制。 若要测试服务，计划在将来升级到付费订阅，并且不希望丢失数据，则可使用此选项。
+
+<!-- ## <a id="no-card"></a>Try the Speech service without credit card info -->
+## <a id="new-resource"></a>通过创建 Azure 资源来试用语音服务
+
+若要执行以下步骤，你需要一个 Azure 帐户。请转到 [Azure 注册页](https://wd.azure.cn/pricing/1rmb-trial/)，创建一个新的 Azure 帐户。
 
 > [!NOTE]
 > 语音服务有两个服务层级：免费和订阅，它们具有不同的限制和优势。 注册免费的 Azure 帐户时，该帐户附带 1,500 个服务额度，可用于支付长达 30 天的付费语音服务订阅。
@@ -30,21 +39,7 @@ ms.locfileid: "76163010"
 >
 > 有关详细信息，请参阅[认知服务定价 - 语音服务](https://www.azure.cn/pricing/details/cognitive-services/)。
 
-<!--not support Microsoft Account-->
-
-最后，语音服务提供适合用于开发应用程序的免费、低容量层。 服务额度到期后，仍可以保留此免费订阅。
-
-<!--no free trial, use Azure account-->
-## <a name="try-the-speech-service-using-a-new-azure-account"></a>使用新的 Azure 帐户试用语音服务
-
-若要注册新的 Azure 帐户，请转到 [Azure 注册页](https://www.azure.cn/pricing/1rmb-trial/)创建新的 Azure 帐户。
-
-创建 Azure 帐户后，请按照下一部分的步骤开始订阅语音服务。
-
-### <a name="create-a-speech-resource-in-azure"></a>在 Azure 中创建语音资源
-
-> [!NOTE]
-> 可在一个或多个区域中创建数量不受限的标准层订阅。 但是，只能创建一个免费层订阅。 在免费层上进行的模型部署如果连续 7 天处于未使用状态，则会被系统自动停用。
+### <a name="create-the-resource"></a>创建资源
 
 若要将语音服务资源（免费层或付费层）添加到 Azure 帐户，请执行以下步骤：
 
@@ -62,12 +57,15 @@ ms.locfileid: "76163010"
 
 1. 选择“创建”，然后： 
 
-   - 为新资源指定唯一的名称。 名称有助于区分同一服务的多个订阅。
+   - 为新资源指定唯一的名称。 名称有助于区分绑定到同一服务的多个订阅。
    - 选择新资源关联的 Azure 订阅，以确定计费方式。
    - 选择将使用资源的[区域](regions.md)。
    - 选择免费 (F0) 或付费 (S0) 定价层。 若要查看每个层的定价和用量配额的完整信息，请选择“查看全部定价详细信息”  。
    - 为此“语音”订阅创建新的资源组或将订阅分配到现有资源组。 资源组有助于使多种 Azure 订阅保持有序状态。
    - 选择“创建”  。 系统随后会将你转到部署概述，并显示部署进度消息。
+
+> [!NOTE]
+> 可在一个或多个区域中创建数量不受限的标准层订阅。 但是，只能创建一个免费层订阅。 在免费层上进行的模型部署如果连续 7 天处于未使用状态，则会被系统自动停用。
 
 部署新的语音资源需要花费片刻时间。 部署完成后，选择“转到资源”，然后在左侧导航窗格中选择“密钥”以显示语音服务订阅密钥。   每个订阅有两个密钥；可在应用程序中使用任意一个密钥。 若要将密钥快速复制/粘贴到代码编辑器或其他位置，请选择每个密钥旁边的复制按钮，切换窗口，然后将剪贴板中的内容粘贴到所需位置。
 

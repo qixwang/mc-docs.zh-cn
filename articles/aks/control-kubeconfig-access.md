@@ -2,18 +2,16 @@
 title: 限制对 Azure Kubernetes 服务 (AKS) 中的 kubeconfig 的访问
 description: 了解如何控制群集管理员和群集用户对 Kubernetes 配置文件 (kubeconfig) 的访问
 services: container-service
-author: rockboyfor
-ms.service: container-service
 ms.topic: article
-origin.date: 05/31/2019
-ms.date: 07/29/2019
+origin.date: 01/28/2020
+ms.date: 03/09/2020
 ms.author: v-yeche
-ms.openlocfilehash: ded4cfa742946638660e18256e7467a1b0c1c677
-ms.sourcegitcommit: 84485645f7cc95b8cfb305aa062c0222896ce45d
+ms.openlocfilehash: f0384f119a554a98998fb1715a028c3bc1f381df
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68731256"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79290759"
 ---
 # <a name="use-azure-role-based-access-controls-to-define-access-to-the-kubernetes-configuration-file-in-azure-kubernetes-service-aks"></a>使用 Azure 基于角色的访问控制定义对 Azure Kubernetes 服务 (AKS) 中的 Kubernetes 配置文件的访问
 
@@ -44,6 +42,10 @@ ms.locfileid: "68731256"
 
 这些 RBAC 角色可以应用到 Azure Active Directory (AD) 用户或组。
 
+> ![NOTE] 在使用 Azure AD 的群集上，具有 clusterUser  角色的用户有一个提示登录的空 kubeconfig  文件。 登录后，用户可以根据其 Azure AD 用户或组设置进行访问。 具有 clusterAdmin  角色的用户拥有管理员访问权限。
+>
+> 不使用 Azure AD 的群集仅使用 clusterAdmin  角色。
+
 ## <a name="assign-role-permissions-to-a-user-or-group"></a>将角色权限分配给用户或组
 
 若要分配某个可用角色，需要获取 AKS 群集的资源 ID 以及 Azure AD 用户帐户或组的 ID。 以下示例命令：
@@ -60,7 +62,7 @@ AKS_CLUSTER=$(az aks show --resource-group myResourceGroup --name myAKSCluster -
 
 # Get the account credentials for the logged in user
 ACCOUNT_UPN=$(az account show --query user.name -o tsv)
-ACCOUNT_ID=$(az ad user show --upn-or-object-id $ACCOUNT_UPN --query objectId -o tsv)
+ACCOUNT_ID=$(az ad user show --id $ACCOUNT_UPN --query objectId -o tsv)
 
 # Assign the 'Cluster Admin' role to the user
 az role assignment create \
@@ -137,23 +139,25 @@ az role assignment delete --assignee $ACCOUNT_ID --scope $AKS_CLUSTER
 若要增强在访问 AKS 群集时的安全性，请[集成 Azure Active Directory 身份验证][aad-integration]。
 
 <!-- LINKS - external -->
+
 [kubectl-config-use-context]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#config
 [kubectl-config-view]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#config
 
 <!-- LINKS - internal -->
+
 [aks-quickstart-cli]: kubernetes-walkthrough.md
 [aks-quickstart-portal]: kubernetes-walkthrough-portal.md
-[azure-cli-install]: https://docs.azure.cn/zh-cn/cli/install-azure-cli?view=azure-cli-latest
+[azure-cli-install]: https://docs.azure.cn/cli/install-azure-cli?view=azure-cli-latest
 [az-aks-get-credentials]: https://docs.microsoft.com/cli/azure/aks?view=azure-cli-latest#az-aks-get-credentials
 [azure-rbac]: ../role-based-access-control/overview.md
 [api-cluster-admin]: https://docs.microsoft.com/rest/api/aks/managedclusters/listclusteradmincredentials
 [api-cluster-user]: https://docs.microsoft.com/rest/api/aks/managedclusters/listclusterusercredentials
 [az-aks-show]: https://docs.microsoft.com/cli/azure/aks?view=azure-cli-latest#az-aks-show
-[az-account-show]: https://docs.azure.cn/zh-cn/cli/account?view=azure-cli-latest#az-account-show
-[az-ad-user-show]: https://docs.azure.cn/zh-cn/cli/ad/user?view=azure-cli-latest#az-ad-user-show
-[az-role-assignment-create]: https://docs.azure.cn/zh-cn/cli/role/assignment?view=azure-cli-latest#az-role-assignment-create
-[az-role-assignment-delete]: https://docs.azure.cn/zh-cn/cli/role/assignment?view=azure-cli-latest#az-role-assignment-delete
+[az-account-show]: https://docs.azure.cn/cli/account?view=azure-cli-latest#az-account-show
+[az-ad-user-show]: https://docs.azure.cn/cli/ad/user?view=azure-cli-latest#az-ad-user-show
+[az-role-assignment-create]: https://docs.azure.cn/cli/role/assignment?view=azure-cli-latest#az-role-assignment-create
+[az-role-assignment-delete]: https://docs.azure.cn/cli/role/assignment?view=azure-cli-latest#az-role-assignment-delete
 [aad-integration]: azure-ad-integration.md
-[az-ad-group-show]: https://docs.azure.cn/zh-cn/cli/ad/group?view=azure-cli-latest#az-ad-group-show
+[az-ad-group-show]: https://docs.azure.cn/cli/ad/group?view=azure-cli-latest#az-ad-group-show
 
-<!-- Update_Description: wording update, update link -->
+<!-- Update_Description: update meta properties, wording update, update link -->

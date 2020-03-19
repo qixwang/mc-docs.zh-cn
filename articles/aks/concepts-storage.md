@@ -2,18 +2,16 @@
 title: 概念 - Azure Kubernetes 服务 (AKS) 中的存储
 description: 了解 Azure Kubernetes 服务 (AKS) 中的存储，其中包括卷、永久性卷、存储类和声明
 services: container-service
-author: rockboyfor
-ms.service: container-service
 ms.topic: conceptual
 origin.date: 03/01/2019
-ms.date: 01/13/2020
+ms.date: 03/09/2020
 ms.author: v-yeche
-ms.openlocfilehash: 7a325e2a10d422488609aeeda6a80ef247fab9f6
-ms.sourcegitcommit: c5af330f13889a18bb8a5b44e6566a3df4aeea49
+ms.openlocfilehash: f74c71bbfa8f7cb9c762a5fd10a8af5e5650daa2
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75859863"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79290762"
 ---
 # <a name="storage-options-for-applications-in-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS) 中的应用程序存储选项
 
@@ -42,7 +40,7 @@ ms.locfileid: "75859863"
 
 在 Kubernetes 中，卷不仅仅能够表示可以存储和检索信息的传统磁盘。 Kubernetes 卷还可以用于将数据注入 Pod 以供容器使用。 Kubernetes 中常见的其他卷类型包括：
 
-- *emptyDir*：此卷通常用作 Pod 的临时空间。 Pod 中的所有容器都可以访问卷上的数据。 写入此卷类型的数据仅在 Pod 的生命周期内持续保存，当 Pod 被删除时，卷也会删除。 此卷通常使用基础本地节点磁盘存储，但也可以仅存在于节点的内存中。
+- *emptyDir*：此卷通常用作 Pod 的临时空间。 Pod 中的所有容器都可以访问卷上的数据。 写入此卷类型的数据仅在 Pod 的生命周期内持续保存，当 Pod 被删除时，卷也会删除。 此卷通常使用基础本地节点磁盘存储，但它也可以仅存在于节点的内存中。
 - *secret*：此卷用于将敏感数据注入 Pod，例如密码。 首先使用 Kubernetes API 创建机密。 在定义 pod 或部署时，可以请求特定机密。 机密仅提供给所计划的 pod 需要该机密的节点，且机密存储在 *tmpfs* 中，不写入磁盘。 当节点上最后一个需要该机密的 pod 被删除后，将从该节点的 tmpfs 中删除该机密。 机密存储在给定的命名空间中，只有同一命名空间中的 pod 能访问该机密。
 - *configMap*：此卷类型用于将键-值对属性注入 Pod，例如应用程序配置信息。 无需在容器映像中定义应用程序配置信息，而是可以将其定义为 Kubernetes 资源，以便在部署新 Pod 实例时可轻松为其更新并应用。 与使用 secret 一样，必须先使用 Kubernetes API 创建 ConfigMap。 随后可在定义 Pod 或部署时请求此 ConfigMap。 ConfigMap 存储在给定命名空间内，且只能由同一命名空间中的 Pod 访问。
 

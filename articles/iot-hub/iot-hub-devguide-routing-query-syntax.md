@@ -1,20 +1,20 @@
 ---
 title: Azure IoT 中心消息路由查询 | Microsoft 文档
-description: 开发人员指南 - Azure IoT 中心消息路由查询语法。
+description: 了解 IoT 中心消息路由查询语言，该语言可用于向消息应用丰富的查询，以便接收重要的数据。
 author: ash2017
 manager: briz
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 origin.date: 08/13/2018
-ms.date: 03/09/2020
+ms.date: 03/23/2020
 ms.author: v-yiso
-ms.openlocfilehash: b6f6c184cd02a2cbde3e782bceb485e3b9f3c91a
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.openlocfilehash: fe5c0d07eb651c9e25ea1887d8bf7f31216158ed
+ms.sourcegitcommit: 32997a7d7585deaeb0ab7b8f928d397b18b343fa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78154633"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79295987"
 ---
 # <a name="iot-hub-message-routing-query-syntax"></a>IoT 中心消息路由查询语法
 
@@ -142,6 +142,10 @@ deviceClient.sendEvent(message, (err, res) => {
 });
 ```
 
+> [!NOTE] 
+> 这说明了如何处理 javascript 中正文的编码。 若要查看中 C# 的示例，请下载 [Azure IoT C# 示例](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip)。 解压缩 master.zip 文件。 Visual Studio 解决方案 *SimulatedDevice* 的 Program.cs 文件演示如何编码以及如何将消息提交到 IoT 中心。 这是用于测试消息路由的同一示例，如[消息路由教程](tutorial-routing.md)中所述。 在 Program.cs 的底部，它还提供了一个方法，用于在其中一个编码文件中读取内容，对其进行解码，然后将其作为 ASCII 写回，方便你读取。 
+
+
 ### <a name="query-expressions"></a>查询表达式
 
 对消息正文的查询需要以 `$body` 为前缀。 你可以在查询表达式中使用正文引用、正文数组引用或多个正文引用。 查询表达式还可以将正文引用与消息系统属性和消息应用程序属性引用组合在一起。 例如，下面的所有查询表达式都有效： 
@@ -210,6 +214,8 @@ $body.Weather.Temperature = 50 AND $twin.properties.desired.telemetryConfig.send
 ```sql
 $twin.tags.deploymentLocation.floor = 1 
 ```
+
+不支持在有效负载或属性名称中有句点的正文或设备孪生上路由查询。
 
 ## <a name="next-steps"></a>后续步骤
 

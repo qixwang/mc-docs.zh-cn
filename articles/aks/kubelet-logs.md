@@ -2,24 +2,20 @@
 title: 在 Azure Kubernetes 服务 (AKS) 中查看 kubelet 日志
 description: 了解如何在 Azure Kubernetes 服务 (AKS) 节点的 kubelet 日志中查看故障排除信息
 services: container-service
-author: rockboyfor
-ms.service: container-service
 ms.topic: article
 origin.date: 03/05/2019
-ms.date: 07/29/2019
+ms.date: 03/09/2020
 ms.author: v-yeche
-ms.openlocfilehash: f63e5eb82faaa4a89cbb49f27afb36480ee64f04
-ms.sourcegitcommit: 84485645f7cc95b8cfb305aa062c0222896ce45d
+ms.openlocfilehash: fe224549c984b88a259c825c7e05cff49417696c
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68731245"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79290834"
 ---
 # <a name="get-kubelet-logs-from-azure-kubernetes-service-aks-cluster-nodes"></a>从 Azure Kubernetes 服务 (AKS) 群集节点获取 kubelet 日志
 
-在操作 AKS 群集的过程中，可能需要查看日志来排查问题。 Azure 门户内置了查看 [AKS 群集中容器][azure-container-logs]的日志的功能。 有时，可能需要从 AKS 节点获取 *kubelet* 日志以进行故障排除。
-
-<!--Not Available on the [AKS master components][aks-master-logs]-->
+在操作 AKS 群集的过程中，可能需要查看日志来排查问题。 Azure 门户内置了查看 [AKS 主组件][aks-master-logs]或 [AKS 群集中容器][azure-container-logs]的日志的功能。 有时，可能需要从 AKS 节点获取 *kubelet* 日志以进行故障排除。
 
 本文介绍如何在 AJS 节点上使用 `journalctl` 查看 *kubelet* 日志。
 
@@ -65,20 +61,17 @@ I0508 12:28:48.321952    8672 kubelet_node_status.go:497] Using Node Hostname fr
 I0508 12:28:58.344656    8672 kubelet_node_status.go:497] Using Node Hostname from cloudprovider: "aks-agentpool-11482510-0"
 ```
 
-<!--Not Available on ## Next steps-->
+## <a name="next-steps"></a>后续步骤
 
-<!--Not Available on [view Kubernetes master node logs in AKS][aks-master-logs]-->
+如需从 Kubernetes 主节点获取其他故障排除信息，请参阅[在 AKS 中查看 Kubernetes 主节点日志][aks-master-logs]。
 
 <!-- LINKS - internal -->
+
 [aks-ssh]: ssh.md
-
-<!--Not Available on [aks-master-logs]: view-master-logs.md-->
-
+[aks-master-logs]: view-master-logs.md
 [aks-quickstart-cli]: kubernetes-walkthrough.md
 [aks-quickstart-portal]: kubernetes-walkthrough-portal.md
-
-<!--Not Available on[aks-master-logs]: view-master-logs.md-->
-
+[aks-master-logs]: view-master-logs.md
 [azure-container-logs]: ../azure-monitor/insights/container-insights-overview.md
 
-<!-- Update_Description: wording update, update link -->
+<!-- Update_Description: update meta properties, wording update, update link -->

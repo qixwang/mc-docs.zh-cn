@@ -5,14 +5,14 @@ author: WenJason
 ms.author: v-jay
 ms.service: postgresql
 ms.topic: conceptual
-origin.date: 08/21/2019
-ms.date: 01/03/2020
-ms.openlocfilehash: bc054436770eff3cef1d733e4bf76f04e46cb140
-ms.sourcegitcommit: 4f4694991e1c70929c7112ad45a0c404ddfbc8da
+origin.date: 02/25/2020
+ms.date: 03/16/2020
+ms.openlocfilehash: 315022f5dc7e2db5b3149cf9deb15d5e26048bd6
+ms.sourcegitcommit: 32997a7d7585deaeb0ab7b8f928d397b18b343fa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75776661"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79295939"
 ---
 # <a name="backup-and-restore-in-azure-database-for-postgresql---single-server"></a>在 Azure Database for PostgreSQL - 单一服务器中进行备份和还原
 
@@ -22,9 +22,11 @@ Azure Database for PostgreSQL 可自动创建服务器备份并将其存储在�
 
 Azure Database for PostgreSQL 对数据文件和事务日志进行备份。 我们会进行完整备份或差异备份。 可以通过这些备份将服务器还原到所配置的备份保留期中的任意时间点。 默认的备份保留期为七天。 可以选择将其配置为长达 35 天。 所有备份都使用 AES 256 位加密进行加密。
 
+无法导出这些备份文件。 这些备份只能用于 Azure Database for PostgreSQL 中的还原操作。 可以使用 [pg_dump](howto-migrate-using-dump-and-restore.md) 复制数据库。
+
 ### <a name="backup-frequency"></a>备份频率
 
-通常情况下，完整备份每周进行一次，差异备份每天进行两次，事务日志备份每五分钟进行一次。 第一次完整备份在创建服务器后立即进行计划。 初始备份在大型已还原服务器上可能耗时较长。 新服务器可以还原到的最早时间点是完成初始完整备份的时间。
+通常情况下，完整备份每周进行一次，差异备份每天进行两次，事务日志备份每五分钟进行一次。 第一次完整备份在创建服务器后立即进行计划。 在大型还原服务器上，初始完整备份可能需要更长时间。 新服务器可以还原到的最早时间点是完成初始完整备份的时间。
 
 ### <a name="backup-redundancy-options"></a>备份冗余选项
 
@@ -74,7 +76,7 @@ Azure Database for PostgreSQL 最高可以提供 100% 的已预配服务器存�
 从任一恢复机制还原后，都应执行以下任务，然后用户和应用程序才能重新运行：
 
 - 如果需要使用新服务器来替换原始服务器，则请将客户端和客户端应用程序重定向到新服务器
-- 对于要进行连接的用户，请确保设置适当的服务器级防火墙规则
+- 对于要进行连接的用户，请确保设置适当的服务器级防火墙规则和 VNet 规则。 不会从源服务器复制这些规则。
 - 确保设置适当的登录名和数据库级权限
 - 视情况配置警报
 

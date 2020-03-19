@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 02/21/2020
+ms.date: 03/10/2020
 ms.author: v-junlch
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7c58f994099c52b33a6a8408ecf0b0cdd9019d5e
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.openlocfilehash: e6fbc4f7150353bf3050a24cb51dae6ae8864efd
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77541122"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291093"
 ---
 # <a name="conditional-access-conditions"></a>条件访问：Conditions
 
@@ -48,7 +48,9 @@ Azure AD 条件访问支持以下设备平台：
 
 包含**任何位置**时，此选项将包含 Internet 上的任何 IP 地址，而不仅仅是包含配置的命名位置。 选择**任何位置**时，管理员可以选择排除**所有受信任的**或**选定的**位置。
 
-例如，某些组织在其用户连接到受信任位置（例如其总部的实际位置）的网络时，可能会选择不要求执行多重身份验证。 管理员可以创建一个包含任何位置，但排除选定总部网络位置的策略
+例如，某些组织在其用户连接到受信任位置（例如其总部的实际位置）的网络时，可能会选择不要求执行多重身份验证。 管理员可以创建一个包含任何位置，但排除选定总部网络位置的策略。
+
+有关位置的详细信息，可参阅 [Azure Active Directory 条件访问中的位置条件是什么](location-condition.md)一文。
 
 ## <a name="client-apps-preview"></a>客户端应用（预览）
 
@@ -60,9 +62,21 @@ Azure AD 条件访问支持以下设备平台：
    - 新式身份验证客户端
       - 此选项包括 Office 桌面和手机应用程序等应用程序。
    - Exchange ActiveSync 客户端
+      - 默认情况下，这包括 Exchange ActiveSync (EAS) 协议的所有使用。 选择“仅将策略应用于受支持的平台”  会将平台限制为受支持的平台（如 iOS、Android 和 Windows）。
       - 当策略阻止使用 Exchange ActiveSync 时，受影响的用户将收到一封隔离电子邮件。 此电子邮件将提供受阻原因，并提供修正说明（如果可以修正）。
    - 其他客户端
-      - 此选项包括使用基本/旧式身份验证协议（包括 IMAP、MAPI、POP、SMTP）的客户端，以及不支持新式身份验证的旧式 Office 应用程序。
+      - 此选项包括使用那些不支持新式身份验证的基本/旧式身份验证协议的客户端。
+         - 经身份验证的 SMTP - 由 POP 和 IMAP 客户端用来发送电子邮件。
+         - 自动发现 - 由 Outlook 和 EAS 客户端用来查找和连接 Exchange Online 中的邮箱。
+         - Exchange Online PowerShell - 用于通过远程 PowerShell 连接到 Exchange Online。 如果阻止 Exchange Online PowerShell 的基本身份验证，则需使用 Exchange Online PowerShell 模块进行连接。 有关说明，请参阅[使用多重身份验证连接到 Exchange Online PowerShell](https://docs.microsoft.com/powershell/exchange/exchange-online/connect-to-exchange-online-powershell/mfa-connect-to-exchange-online-powershell)。
+         - Exchange Web 服务 (EWS) - Outlook、Outlook for Mac 和第三方应用使用的编程接口。
+         - IMAP4 - 由 IMAP 电子邮件客户端使用。
+         - 基于 HTTP 的 MAPI (MAPI/HTTP) - 由 Outlook 2010 及更高版本使用。
+         - 脱机通讯簿 (OAB) - 通过 Outlook 下载并使用的地址列表集合的副本。
+         - Outlook Anywhere（基于 HTTP 的 RPC）- 由 Outlook 2016 及更低版本使用。
+         - Outlook 服务 - 由 Windows 10 的邮件和日历应用使用。
+         - POP3 - 由 POP 电子邮件客户端使用。
+         - Reporting Web Services - 用于在 Exchange Online 中检索报表数据。
 
 需要使用托管设备、阻止旧式身份验证，以及阻止 Web 应用程序但允许移动应用或桌面应用时，通常会使用这些条件。
 
@@ -135,7 +149,7 @@ Azure AD 条件访问支持以下设备平台：
 | Outlook 2016、Outlook 2013（采用新式身份验证）、Skype for Business（采用新式身份验证） | Office 365 Exchange Online | Windows 8.1、Windows 7 |
 | Outlook 移动应用 | Office 365 Exchange Online | Android、iOS |
 | Power BI 应用 | Power BI 服务 | Windows 10、Windows 8.1、Windows 7、Android 和 iOS |
-| Skype for Business | Office 365 Exchange Online| Android、IOS |
+| Skype for Business | Office 365 Exchange Online| Android、iOS |
 | Visual Studio Team Services 应用 | Visual Studio Team Services | Windows 10、Windows 8.1、Windows 7、iOS 和 Android |
 
 ### <a name="exchange-activesync-clients"></a>Exchange ActiveSync 客户端
@@ -149,6 +163,7 @@ Azure AD 条件访问支持以下设备平台：
 有关详细信息，请参阅以下文章：
 
 - [使用条件访问阻止旧式身份验证](block-legacy-authentication.md)
+- [需要可以进行条件访问且已获批的客户端应用](app-based-conditional-access.md)
 
 ### <a name="other-clients"></a>其他客户端
 

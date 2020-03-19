@@ -1,19 +1,17 @@
 ---
 title: 用于处理自定义事件和指标的 Application Insights API | Azure Docs
 description: 在设备、桌面应用、网页或服务中插入几行代码，即可跟踪使用情况和诊断问题。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: lingliw
 origin.date: 03/27/2019
 ms.date: 08/22/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 4fa479129017b47de1418a027ca90b497a1ed14a
-ms.sourcegitcommit: b09d4b056ac695ba379119eb9e458a945b0a61d9
+ms.openlocfilehash: e8f7d7dcdcb50c67a64d1d3c664f515dc6bbc2de
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72970935"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291847"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>用于处理自定义事件和指标的 Application Insights API
 
@@ -31,7 +29,7 @@ ms.locfileid: "72970935"
 | [`TrackMetric`](#trackmetric) |性能度量，例如与特定事件不相关的队列长度。 |
 | [`TrackException`](#trackexception) |记录诊断的异常。 跟踪与其他事件的相关性，以及检查堆栈跟踪。 |
 | [`TrackRequest`](#trackrequest) |记录服务器请求的频率和持续时间以进行性能分析。 |
-| [`TrackTrace`](#tracktrace) |诊断日志消息。 还可以捕获第三方日志。 |
+| [`TrackTrace`](#tracktrace) |资源诊断日志消息。 还可以捕获第三方日志。 |
 | [`TrackDependency`](#trackdependency) |记录对应用依赖的外部组件的调用持续时间和频率。 |
 
 可以[将属性和指标附加到](#properties)其中的大多数遥测调用。
@@ -50,13 +48,13 @@ ms.locfileid: "72970935"
   * [每个网页中的 JavaScript](../../azure-monitor/app/javascript.md) 
 * 在设备或 Web 服务器代码中包含以下内容：
 
-    *C#：* `using Microsoft.ApplicationInsights;`
+    C#：  `using Microsoft.ApplicationInsights;`
 
     Visual Basic：  `Imports Microsoft.ApplicationInsights`
 
-    *Java：* `import com.microsoft.applicationinsights.TelemetryClient;`
+    Java：  `import com.microsoft.applicationinsights.TelemetryClient;`
 
-    *Node.js：* `var applicationInsights = require("applicationinsights");`
+    Node.js：  `var applicationInsights = require("applicationinsights");`
 
 ## <a name="get-a-telemetryclient-instance"></a>获取 TelemetryClient 实例
 
@@ -569,7 +567,7 @@ telemetry.trackTrace({
 *客户端/浏览器端 JavaScript*
 
 ```javascript
-trackTrace(message: string, properties?: {[string]:string}, severityLevel?: AI.SeverityLevel)
+trackTrace(message: string, properties?: {[string]:string}, severityLevel?: SeverityLevel)
 ```
 
 记录诊断事件，例如进入或离开某个方法。
@@ -614,7 +612,7 @@ telemetry.trackTrace("Slow Database response", SeverityLevel.Warning, properties
 
 ## <a name="trackdependency"></a>TrackDependency
 
-可使用 TrackDependency 调用跟踪响应时间以及调用外部代码片段的成功率。 结果会显示在门户上的依赖项图表中。
+可使用 TrackDependency 调用跟踪响应时间以及调用外部代码片段的成功率。 结果会显示在门户上的依赖项图表中。 需要在进行依赖项调用的任何位置添加以下代码片段。
 
 *C#*
 
@@ -643,20 +641,20 @@ finally
 
 ```java
 boolean success = false;
-long startTime = System.currentTimeMillis();
+Instant startTime = Instant.now();
 try {
     success = dependency.call();
 }
 finally {
-    long endTime = System.currentTimeMillis();
-    long delta = endTime - startTime;
+    Instant endTime = Instant.now();
+    Duration delta = Duration.between(startTime, endTime);
     RemoteDependencyTelemetry dependencyTelemetry = new RemoteDependencyTelemetry("My Dependency", "myCall", delta, success);
-    telemetry.setTimeStamp(startTime);
-    telemetry.trackDependency(dependencyTelemetry);
+    RemoteDependencyTelemetry.setTimeStamp(startTime);
+    RemoteDependencyTelemetry.trackDependency(dependencyTelemetry);
 }
 ```
 
-*JavaScript*
+*Node.js*
 
 ```javascript
 var success = false;
@@ -1014,7 +1012,7 @@ gameTelemetry.TrackEvent({name: "WinGame"});
 
 可以先通过编写代码来处理遥测数据，再从 SDK 发送该数据。 处理包括从标准遥测模块（如 HTTP 请求收集和依赖项收集）发送的数据。
 
-通过实现 `ITelemetryInitializer` [将属性添加到](../../azure-monitor/app/api-filtering-sampling.md#add-properties)遥测。 例如，可添加版本号或从其他属性计算得出的值。
+通过实现 `ITelemetryInitializer`[将属性添加到](../../azure-monitor/app/api-filtering-sampling.md#add-properties)遥测。 例如，可添加版本号或从其他属性计算得出的值。
 
 [筛选](../../azure-monitor/app/api-filtering-sampling.md#filtering)可以先修改或丢弃遥测数据，然后通过实现 `ITelemetryProcessor` 从 SDK 发送遥测数据。 可以控制要发送或丢弃的项，但必须考虑到这会给指标造成怎样的影响。 根据丢弃项的方式，有时你可能无法在相关项之间导航。
 
@@ -1165,14 +1163,14 @@ telemetry.Context.Operation.Name = "MyOperationName";
 * **Component**：应用及其版本。
 * **Device**：有关正在运行应用的设备的数据。 （在 Web 应用中，是指从其中发送遥测的服务器或客户端设备。）
 * **InstrumentationKey**：Azure 中显示遥测数据的 Application Insights 资源。 通常可从 ApplicationInsights.config 中选择。
-* **Location**：设备的地理位置。
+* **位置**：设备的地理位置。
 * **Operation**：在 Web 应用中，为当前的 HTTP 请求。 在其他应用类型中，可将此属性设置为将事件分组在一起。
   * **ID**：一个生成的值，它将不同的事件关联在一起，以便在诊断搜索中检查任何事件时，可以发现相关项。
-  * **Name**：一个标识符，通常是 HTTP 请求的 URL。
+  * **名称**：一个标识符，通常是 HTTP 请求的 URL。
   * **SyntheticSource**：如果不为 null 或空，则此字符串表示请求的源已标识为机器人或 Web 测试。 默认情况下，该属性会从指标资源管理器的计算中排除。
-* **Properties**：与所有遥测数据一起发送的属性。 可在单个 Track* 调用中重写。
+* **属性**：与所有遥测数据一起发送的属性。 可在单个 Track* 调用中重写。
 * **会话一致性**：用户的会话。 ID 设置为生成的值，当用户有一段时间处于非活动状态时，此值会更改。
-* **User**：用户信息。
+* **用户**：用户信息。
 
 ## <a name="limits"></a>限制
 
@@ -1213,7 +1211,6 @@ telemetry.Context.Operation.Name = "MyOperationName";
 ## <a name="next-steps"></a>后续步骤
 
 * [搜索事件和日志](../../azure-monitor/app/diagnostic-search.md)
-* [故障排除](../../azure-monitor/app/troubleshoot-faq.md)
 
 
 

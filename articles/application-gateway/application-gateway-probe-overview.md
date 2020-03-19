@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 02/10/2020
+ms.date: 03/02/2020
 ms.author: v-junlch
-ms.openlocfilehash: dc61f5b0d64933c1ef4f87206a880f37331e97dc
-ms.sourcegitcommit: f388b7b1cdfe06ebda7d9c21cf39943611b62a75
+ms.openlocfilehash: 3c0fdcb3afce9fc7e493d220be0e71b56302e5fd
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77155541"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293408"
 ---
 # <a name="application-gateway-health-monitoring-overview"></a>应用程序网关运行状况监视概述
 
@@ -101,12 +101,15 @@ $match = New-AzApplicationGatewayProbeHealthResponseMatch -Body "Healthy"
 
 ## <a name="nsg-considerations"></a>NSG 注意事项
 
-如果应用程序网关子网上存在网络安全组 (NSG)，则必须在应用程序网关子网上打开端口范围 65503-65534，以便接收入站流量。 这些端口是确保后端运行状况 API 正常工作所必需的。
+对于应用程序网关 v1 SKU，必须允许 TCP 端口 65503-65534 上的传入 Internet 流量，对于目标子网为 **Any** 且源为 **GatewayManager** 服务标记的 v2 SKU，必须允许 TCP 端口 65200-65535 上的传入 Internet 流量。 此端口范围是进行 Azure 基础结构通信所必需的。
 
-此外，不能阻止出站 Internet 连接，并且必须允许来自 AzureLoadBalancer 标记的入站流量。
+此外，不能阻止出站 Internet 连接，并且必须允许来自 **AzureLoadBalancer** 标记的入站流量。
+
+有关详细信息，请参阅[应用程序网关配置概述](configuration-overview.md#network-security-groups-on-the-application-gateway-subnet)。
 
 ## <a name="next-steps"></a>后续步骤
 了解应用程序网关的运行状况监视后，可以在 Azure 门户中配置[自定义运行状况探测](application-gateway-create-probe-portal.md)，或使用 PowerShell 和 Azure Resource Manager 部署模型配置[自定义运行状况探测](application-gateway-create-probe-ps.md)。
 
 [1]: ./media/application-gateway-probe-overview/appgatewayprobe.png
 
+<!-- Update_Description: wording update -->

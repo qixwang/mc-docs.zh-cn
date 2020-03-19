@@ -1,6 +1,6 @@
 ---
 title: 登录名和用户
-description: 了解 SQL 数据库和 SQL 数据仓库安全管理，特别是如何通过服务器级的主体帐户管理数据库的访问和登录安全。
+description: 了解 SQL 数据库和 Azure Synapse 安全管理，特别是如何通过服务器级别主体帐户管理数据库的访问和登录安全性。
 keywords: sql 数据库安全,数据库安全管理,登录安全,数据库安全,数据库访问权限
 services: sql-database
 ms.service: sql-database
@@ -11,21 +11,22 @@ ms.topic: conceptual
 author: WenJason
 ms.author: v-jay
 ms.reviewer: carlrab
-origin.date: 03/26/2019
-ms.date: 12/16/2019
-ms.openlocfilehash: f4bb37590ae3ad858d96a47a138613116c53b402
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+origin.date: 02/06/2020
+ms.date: 03/16/2020
+tags: azure-synapse
+ms.openlocfilehash: 6c3003fe141206023aa427560ec88d05c559a1d2
+ms.sourcegitcommit: dc862610e2169c1fce6fb0ae9eb7dd7567f86a0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336059"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293812"
 ---
-# <a name="controlling-and-granting-database-access-to-sql-database-and-sql-data-warehouse"></a>控制和授予对 SQL 数据库和 SQL 数据仓库的数据库访问权限
+# <a name="controlling-and-granting-database-access-to-sql-database-and-azure-synapse-analytics"></a>控制和授予对 SQL 数据库和 Azure Synapse Analytics 的数据库访问权限
 
-配置防火墙规则后，可以使用数据库中的某个管理员帐户、数据库所有者或数据库用户的身份连接到 Azure [SQL 数据库](sql-database-technical-overview.md)和 [SQL 数据仓库](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md)。  
+配置防火墙规则后，可以数据库中的某个管理员帐户、数据库所有者或数据库用户身份连接到 Azure [SQL 数据库](sql-database-technical-overview.md)和 [Azure Synapse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md)。  
 
 > [!NOTE]  
-> 本主题适用于 Azure SQL 服务器，也适用于在 Azure SQL 服务器中创建的 SQL 数据库和 SQL 数据仓库数据库。 为简单起见，在提到 SQL 数据库和 SQL 数据仓库时，本文统称 SQL 数据库。 
+> 本主题适用于 Azure SQL 服务器，也适用于在 Azure SQL 服务器中创建的 SQL 数据库和 Azure Synapse。 为简单起见，在提到 SQL 数据库和 Azure Synapse 时，本文统称 SQL 数据库。
 > [!TIP]
 > 有关教程，请参阅[保护 Azure SQL 数据库](sql-database-security-tutorial.md)。 本教程不适用于 Azure SQL 数据库托管实例  。
 
@@ -44,7 +45,7 @@ ms.locfileid: "75336059"
 
 - **Azure Active Directory 管理员**
 
-  也可以将某个 Azure Active Directory 帐户（个人帐户或安全组帐户）配置为管理员。 配置 Azure AD 管理员是选择性的，但如果需要使用 Azure AD 帐户连接到 SQL 数据库，则必须配置 Azure AD 管理员。  有关配置 Azure Active Directory 访问权限的详细信息，请参阅[使用 Azure Active Directory 身份验证连接到 SQL 数据库或 SQL 数据仓库](sql-database-aad-authentication.md)和 [SQL 数据库和 SQL 数据仓库针对 Azure AD MFA 的 SSMS 支持](sql-database-ssms-mfa-authentication.md)。
+  也可以将某个 Azure Active Directory 帐户（个人帐户或安全组帐户）配置为管理员。 配置 Azure AD 管理员是选择性的，但如果需要使用 Azure AD 帐户连接到 SQL 数据库，则必须配置 Azure AD 管理员。  有关配置 Azure Active Directory 访问权限的详细信息，请参阅[使用 Azure Active Directory 身份验证连接到 SQL 数据库或 Azure Synapse](sql-database-aad-authentication.md) 和 [SSMS 支持使用 SQL 数据库和 Azure Synapse 进行 Azure AD MFA](sql-database-ssms-mfa-authentication.md)。
 
 **服务器管理员**和 **Azure AD 管理员**帐户具有以下特征：
 
@@ -152,7 +153,7 @@ GRANT ALTER ANY USER TO Mary;
 ALTER ROLE db_owner ADD MEMBER Mary;
 ```
 
-在 Azure SQL 数据仓库中，使用 [EXEC sp_addrolemember](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql)。
+在 Azure Synapse 中，使用 [EXEC sp_addrolemember](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql)。
 ```sql
 EXEC sp_addrolemember 'db_owner', 'Mary';
 ```
@@ -215,7 +216,7 @@ EXEC sp_addrolemember 'db_owner', 'Mary';
   ```
 
 - 在使用 `FOR/FROM LOGIN` 选项执行 `CREATE USER` 语句时，该语句必须是 Transact-SQL 批中的唯一语句。
-- 在使用 `WITH LOGIN` 选项执行 `ALTER USER` 语句时，该语句必须是 Transact-SQL 批处理中的唯一语句。
+- 在使用 `WITH LOGIN` 选项执行 `ALTER USER` 语句时，该语句必须是 Transact-SQL 批中的唯一语句。
 - 若要执行 `CREATE/ALTER/DROP` 操作，用户需要对数据库拥有 `ALTER ANY USER` 权限。
 - 在数据库角色的所有者尝试在该数据库角色中添加或删除其他数据库用户时，可能会发生以下错误：“此数据库中不存在用户或角色‘Name’”  。 在用户对所有者不可见时，将会发生此错误。 若要解决此问题，请向角色所有者授予对该用户的 `VIEW DEFINITION` 权限。 
 

@@ -1,8 +1,6 @@
 ---
 title: 适用于 .NET 应用的 Azure Application Insights 快照调试器 | Azure Docs
 description: 生产 .NET 应用中出现异常时会自动收集调试快照
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: lingliw
 manager: digimobile
@@ -10,15 +8,15 @@ ms.reviewer: brahmnes
 origin.date: 08/06/2019
 ms.date: 08/12/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 529c2f3913b820987f419b905d3a8b172f489ff6
-ms.sourcegitcommit: a89eb0007edd5b4558b98c1748b2bd67ca22f4c9
+ms.openlocfilehash: 19459279835de5dd2de86edd5fab050c02f53663
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73730371"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293028"
 ---
 # <a name="debug-snapshots-on-exceptions-in-net-apps"></a>.NET 应用中发生异常时的调试快照
-发生异常时，可自动从实时 Web 应用程序收集调试快照。 快照显示发生异常时源代码和变量的状态。 [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) 中的快照调试程序（预览版）可监视来自 Web 应用的异常遥测数据。 它可收集常出现的异常的调试快照，为诊断生产中的问题提供所需信息。 请将[快照收集器 NuGet 包](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector)添加到应用程序，并按需在 [ApplicationInsights.config](../../azure-monitor/app/configuration-with-applicationinsights-config.md) 中配置收集参数。快照显示在 Application Insights 门户中的[异常](../../azure-monitor/app/asp-net-exceptions.md)区域中。
+发生异常时，可自动从实时 Web 应用程序收集调试快照。 快照显示发生异常时源代码和变量的状态。 [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) 中的 Snapshot Debugger 可以监视来自 Web 应用的异常遥测。 它可收集常出现的异常的调试快照，为诊断生产中的问题提供所需信息。 请将[快照收集器 NuGet 包](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector)添加到应用程序，并按需在 [ApplicationInsights.config](../../azure-monitor/app/configuration-with-applicationinsights-config.md) 中配置收集参数。快照显示在 Application Insights 门户中的[异常](../../azure-monitor/app/asp-net-exceptions.md)区域中。
 
 可在门户中查看调试快照，查看调用堆栈并检查每个调用堆栈帧中的变量。 若要获取更强大的调试体验与源代码，请在 Visual Studio 2019 Enterprise 中打开快照。 在 Visual Studio 中，还可以[将快照设置为以交互方式拍摄快照](https://aka.ms/snappoint)，而无需等待异常。
 
@@ -35,7 +33,7 @@ ms.locfileid: "73730371"
 * 运行 OS 系列 4 或更高版本的 [Azure 云服务](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json)
 * Windows Server 2012 R2 或更高版本上运行的 [Azure Service Fabric 服务](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json)
 * 运行 Windows Server 2012 R2 或更高版本的 [Azure 虚拟机和虚拟机规模集](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json)
-* 运行 Windows Server 2012 R2 或更高版本的[本地虚拟机或物理计算机](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json)
+* 运行 Windows Server 2012 R2（或更高版本）或 Windows 8.1（或更高版本）的[本地虚拟机或物理计算机](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json)
 
 > [!NOTE]
 > 不支持客户端应用程序（例如，WPF、Windows 窗体或 UWP）。

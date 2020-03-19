@@ -14,11 +14,11 @@ origin.date: 7/17/2019
 ms.date: 12/02/2019
 ms.author: v-jay
 ms.openlocfilehash: cad38f021c92bc1b6c0e4fd7df847f9928b65179
-ms.sourcegitcommit: 481542df432d52b7d4823811cef94772e4e0f192
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74530644"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291527"
 ---
 # <a name="load-balancer-outbound-rules"></a>负载均衡器出站规则
 
@@ -96,7 +96,7 @@ API 版本“2018-07-01”允许按如下所示构建出站规则定义：
 
           "idleTimeoutInMinutes": 60
 
-### <a name="tcprst"></a> <a name="tcpreset"></a>启用空闲超时时的 TCP 重置（预览版）
+### <a name="tcprst"></a> <a name="tcpreset"></a> 在空闲超时时启用 TCP 重置（预览版）
 
 负载均衡器的默认行为是在达到出站空闲超时时以静默方式丢弃流。  使用 enableTCPReset 参数可以启用更有预测性的应用程序行为，并控制在发生出站空闲超时时，是否要发送双向 TCP 重置 (TCP RST)。 
 

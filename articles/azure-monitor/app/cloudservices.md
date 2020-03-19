@@ -8,12 +8,12 @@ author: lingliw
 origin.date: 09/05/2018
 ms.date: 6/4/2019
 ms.author: v-lingwu
-ms.openlocfilehash: b6f9af5297df2ab00303dc91624bbe21b2ba1087
-ms.sourcegitcommit: 3a9c13eb4b4bcddd1eabca22507476fb34f89405
+ms.openlocfilehash: 23546e31e32636e6c21f33e229d0506327720a3f
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74528294"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291724"
 ---
 # <a name="application-insights-for-azure-cloud-services"></a>适用于 Azure 云服务的 Application Insights
 [Application Insights][start] 可以通过将 Application Insights SDK 提供的数据与云服务提供的 [Azure 诊断](../../azure-monitor/platform/diagnostics-extension-overview.md)数据合并，来监视 [Azure 云服务应用](/cloud-services/)的可用性、性能、故障和使用情况。 通过收到的有关应用在现实中的性能和有效性的反馈，可以针对每个开发生命周期确定合理的设计方向。
@@ -236,7 +236,7 @@ ms.locfileid: "74528294"
 * \ASP.NET Applications(??APP_W3SVC_PROC??)\Request Execution Time
 * \ASP.NET Applications(??APP_W3SVC_PROC??)\Requests In Application Queue
 
-可[按此示例所示](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/ApplicationInsights.config#L14)，通过编辑 *ApplicationInsights.config* 来指定其他自定义性能计数器或 Windows 性能计数器。
+可[按此示例所示](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/ApplicationInsights.config#L14)，通过编辑 ApplicationInsights.config  来指定其他自定义性能计数器或其他 Windows 性能计数器。
 
   ![性能计数器](./media/cloudservices/002-servers.png)
 
@@ -283,7 +283,7 @@ ms.locfileid: "74528294"
 [diagnostic]: ../../azure-monitor/app/diagnostic-search.md
 [netlogs]: ../../azure-monitor/app/asp-net-trace-logs.md
 [portal]: https://portal.azure.cn/
-[qna]: ../../azure-monitor/app/troubleshoot-faq.md
+[qna]: ../../azure-monitor/faq.md
 [redfield]: ../../azure-monitor/app/monitor-performance-live-website-now.md
 [start]: ../../azure-monitor/app/app-insights-overview.md 
 

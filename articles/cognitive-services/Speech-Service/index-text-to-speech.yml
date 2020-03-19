@@ -1,0 +1,52 @@
+### YamlMime:Landing
+title: 文本转语音文档
+summary: 语音服务中的文本转语音可让应用程序、工具或设备将文本转换为类似于人类的合成语音。
+metadata:
+  title: 文本转语音文档 - 教程和 API 参考 - Azure 认知服务 | Microsoft Docs
+  titleSuffix: Azure Cognitive Services
+  services: cognitive-services
+  author: IEvangelist
+  manager: nitinme
+  layout: LandingPage
+  ms.service: speech-service
+  ms.topic: landing-page
+  origin.date: 02/11/2020
+  ms.date: 03/23/2020
+  ms.author: v-tawe
+  ms.openlocfilehash: e231871eba2fd197fed2783a8ef6b16ef3b95384
+  ms.sourcegitcommit: e94ed1c9eff4e88be2ca389909e60b14cc0d92f8
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 03/11/2020
+  ms.locfileid: "79084540"
+landingContent:
+- title: 入门
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什么是文本转语音？
+      url: text-to-speech.md
+  - linkListType: quickstart
+    links:
+    - text: 将语音合成到扬声器
+      url: quickstarts/text-to-speech.md
+    - text: 将语音合成到音频文件
+      url: quickstarts/text-to-speech-audio-file.md
+- title: 分步指南
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 通过 SSML 改进合成
+      url: speech-synthesis-markup.md
+    - text: 使用 REST 获取语音列表 (Python)
+      url: quickstart-python-get-text-to-speech-voices.md
+    - text: 使用 REST 将文本转换为语音 (Python)
+      url: quickstart-python-text-to-speech.md
+- title: 参考
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: 语言支持
+      url: language-support.md#text-to-speech
+    - text: 定价
+      url: https://www.azure.cn/pricing/details/cognitive-services/

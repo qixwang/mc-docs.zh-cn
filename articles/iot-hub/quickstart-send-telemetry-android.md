@@ -9,41 +9,38 @@ ms.devlang: java
 ms.topic: quickstart
 ms.custom: mvc
 origin.date: 03/15/2019
-ms.date: 03/09/2020
+ms.date: 03/23/2020
 ms.author: v-yiso
-ms.openlocfilehash: 8512cefce9b9ab86265dd3c17a33c3caff343be5
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.openlocfilehash: 25080919ab35a5e0b6e378672840c0bac6aee0ad
+ms.sourcegitcommit: 32997a7d7585deaeb0ab7b8f928d397b18b343fa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78154725"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79295931"
 ---
 # <a name="quickstart-send-iot-telemetry-from-an-android-device"></a>快速入门：从 Android 设备发送 IoT 遥测数据
 
 [!INCLUDE [iot-hub-quickstarts-1-selector](../../includes/iot-hub-quickstarts-1-selector.md)]
 
-IoT 中心是一项 Azure 服务，用于将大量遥测数据从 IoT 设备引入云中进行存储或处理。 在本快速入门中，请通过运行在物理或模拟设备上的 Android 应用程序将遥测数据发送到 IoT 中心。
-
-本快速入门使用预先编写的 Android 应用程序来发送遥测数据。 遥测数据将通过 Azure Cloud Shell 从 IoT 中心读取。 运行此应用程序前，请先创建 IoT 中心并在中心注册设备。
-
-
-如果没有 Azure 订阅，请在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial)。
+在本快速入门中，请通过运行在物理或模拟设备上的 Android 应用程序将遥测数据发送到 Azure IoT 中心。 IoT 中心是一项 Azure 服务，用于将大量遥测数据从 IoT 设备引入云中进行存储或处理。 本快速入门使用预先编写的 Android 应用程序来发送遥测数据。 遥测数据将通过 Azure Cloud Shell 从 IoT 中心读取。 运行此应用程序前，请先创建 IoT 中心并在中心注册设备。
 
 ## <a name="prerequisites"></a>先决条件
 
-* [https://developer.android.com/studio/](https://developer.android.com/studio/ )提供的 Android Studio。 有关 Android Studio 安装的详细信息，请参阅 [Android 安装](https://developer.android.com/studio/install)。
+* 具有活动订阅的 Azure 帐户。 [创建试用帐户](https://www.azure.cn/pricing/1rmb-trial)。
 
-* 本文中的示例使用 Android SDK 27。 
+* [带 Android SDK 27 的 Android Studio](https://developer.android.com/studio/)。 有关详细信息，请参阅 [Android 安装](https://developer.android.com/studio/install)。 本文中的示例使用 Android SDK 27。
 
-* 运行以下命令将用于 Azure CLI 的 Microsoft Azure IoT 扩展添加到 Cloud Shell 实例。 IoT 扩展会将 IoT 中心、IoT Edge 和 IoT 设备预配服务 (DPS) 特定的命令添加到 Azure CLI。
+* [一个示例 Android 应用程序](https://github.com/Azure-Samples/azure-iot-samples-java/tree/master/iot-hub/Samples/device/AndroidSample)。 此示例是 [azure-iot-samples-java](https://github.com/Azure-Samples/azure-iot-samples-java) 存储库的一部分。
+
+* 端口 8883 在防火墙中处于打开状态。 本快速入门中的设备示例使用 MQTT 协议，该协议通过端口 8883 进行通信。 在某些公司和教育网络环境中，此端口可能被阻止。 有关解决此问题的更多信息和方法，请参阅[连接到 IoT 中心(MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)。
+
+### <a name="add-azure-iot-extension"></a>添加 Azure IoT 扩展
+
+运行以下命令将用于 Azure CLI 的 Microsoft Azure IoT 扩展添加到 Cloud Shell 实例。 IoT 扩展会将 IoT 中心、IoT Edge 和 IoT 设备预配服务 (DPS) 特定的命令添加到 Azure CLI。
 
    ```azurecli
    az extension add --name azure-cli-iot-ext
    ```
-
-* 在本快速入门中运行的[示例 Android 应用程序](https://github.com/Azure-Samples/azure-iot-samples-java/tree/master/iot-hub/Samples/device/AndroidSample)是 GitHub 上 azure-iot-samples-java 存储库的一部分。 请下载或克隆 [azure-iot-samples-java](https://github.com/Azure-Samples/azure-iot-samples-java) 存储库。
-
-* 确保已在防火墙中打开端口 8883。 本快速入门中的设备示例使用 MQTT 协议，该协议通过端口 8883 进行通信。 在某些公司和教育网络环境中，此端口可能被阻止。 有关解决此问题的更多信息和方法，请参阅[连接到 IoT 中心(MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)。
 
 ## <a name="create-an-iot-hub"></a>创建 IoT 中心
 

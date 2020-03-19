@@ -13,24 +13,24 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: big-data
 origin.date: 01/21/2020
-ms.date: 02/24/2020
+ms.date: 03/23/2020
 ms.author: v-yiso
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: 27bef835a4625360d38abd86ccbc1c24c7b62c56
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.openlocfilehash: 22f7f88a745b6f8b38cf625c381fc524d92c97af
+ms.sourcegitcommit: 32997a7d7585deaeb0ab7b8f928d397b18b343fa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77428804"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79295893"
 ---
 # <a name="add-additional-storage-accounts-to-hdinsight"></a>将其他存储帐户添加到 HDInsight
 
-了解如何使用脚本操作，将其他 Azure 存储帐户添加到 HDInsight。  本文档中的步骤会将存储帐户添加到基于 Linux 的现有 HDInsight 群集。  本文适用于存储帐户  （而不是默认的群集存储帐户），并且不适用于额外的存储，例如 [Azure Data Lake Storage Gen2](hdinsight-hadoop-use-data-lake-storage-gen2.md)。
+了解如何使用脚本操作，将其他 Azure 存储帐户添加到 HDInsight。  本文档中的步骤会将存储帐户添加到现有 HDInsight 群集。  本文适用于存储帐户  （而不是默认的群集存储帐户），并且不适用于额外的存储，例如 [Azure Data Lake Storage Gen2](hdinsight-hadoop-use-data-lake-storage-gen2.md)。
 
 > [!IMPORTANT]  
 > 本文档中的信息是关于在创建群集后将其他存储帐户添加到群集。 有关如何在创建群集期间添加存储帐户的信息，请参阅[使用 Apache Hadoop、Apache Spark、Apache Kafka 等设置 HDInsight 中的群集](hdinsight-hadoop-provision-linux-clusters.md)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * HDInsight 上的 Hadoop 群集。 请参阅 [Linux 上的 HDInsight 入门](./hadoop/apache-hadoop-linux-tutorial-get-started.md)。
 * 存储帐户名和密钥。 请参阅[管理存储帐户访问密钥](../storage/common/storage-account-keys-manage.md)。
@@ -55,17 +55,17 @@ ms.locfileid: "77428804"
 
 ## <a name="add-storage-account"></a>添加存储帐户
 
-使用[脚本操作](hdinsight-hadoop-customize-cluster-linux.md#apply-a-script-action-to-a-running-cluster)应用更改时请注意以下事项：
+使用[脚本操作](hdinsight-hadoop-customize-cluster-linux.md#script-action-to-a-running-cluster)应用更改时请注意以下事项：
 
-|属性 | 值 |
+|属性 | Value |
 |---|---|
 |Bash 脚本 URI|`https://hdiconfigactions.blob.core.windows.net/linuxaddstorageaccountv01/add-storage-account-v01.sh`|
 |节点类型|头|
-|参数|`ACCOUNTNAME` `ACCOUNTKEY` `-p`（可选）|
+|parameters|`ACCOUNTNAME` `ACCOUNTKEY` `-p`（可选）|
 
 * `ACCOUNTNAME` 是要添加到 HDInsight 群集的存储帐户的名称。
 * `ACCOUNTKEY` 是 `ACCOUNTNAME` 的访问密钥。
-* `-p` 是可选的。 如果指定此参数，则密钥不会加密，并以纯文本形式存储在 core-site.xml 文件中。
+* `-p` 是可选项。 如果指定此参数，则密钥不会加密，并以纯文本形式存储在 core-site.xml 文件中。
 
 ## <a name="verification"></a>验证
 

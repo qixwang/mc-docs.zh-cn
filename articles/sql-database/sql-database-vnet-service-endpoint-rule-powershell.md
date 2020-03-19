@@ -1,6 +1,6 @@
 ---
 title: 适用于单一数据库和共用数据库 VNet 终结点和规则的 PowerShell
-description: 提供 PowerShell 脚本，用于创建和管理 Azure SQL 数据库和 SQL 数据仓库的虚拟服务终结点。
+description: 提供 PowerShell 脚本为 Azure SQL 数据库和 Azure Synapse 创建和管理虚拟服务终结点。
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
@@ -11,20 +11,21 @@ author: WenJason
 ms.author: v-jay
 ms.reviewer: genemi, vanto
 origin.date: 03/12/2019
-ms.date: 12/16/2019
-ms.openlocfilehash: 8739393201e61eecdfb713e92e64e6dabce06abd
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.date: 03/16/2020
+tags: azure-synapse
+ms.openlocfilehash: bfd43a8ec6f76d991561f463623a2da6b97fd270
+ms.sourcegitcommit: dc862610e2169c1fce6fb0ae9eb7dd7567f86a0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75334597"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293717"
 ---
 # <a name="powershell--create-a-virtual-service-endpoint-and-vnet-rule-for-sql"></a>PowerShell：创建适用于 SQL 的虚拟网络服务终结点和 VNet 规则
 
-*虚拟网络规则*是一种防火墙安全功能，用于控制是否允许 Azure [SQL 数据库](sql-database-technical-overview.md)中你的单一数据库和弹性池的数据库服务器或 [SQL 数据仓库](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md)中你的数据库的数据库服务器接受从虚拟网络中的特定子网发送的通信。
+*虚拟网络规则*是一种防火墙安全功能，用于控制是否允许 Azure [SQL 数据库](sql-database-technical-overview.md)中的单一数据库和弹性池的数据库服务器或 [Azure Synapse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) 中数据库的数据库服务器接受从虚拟网络中的特定子网发送的通信。
 
 > [!IMPORTANT]
-> 本文适用于 Azure SQL 服务器，同时也适用于在 Azure SQL 服务器中创建的 SQL 数据库和 SQL 数据仓库数据库。 为简单起见，在提到 SQL 数据库和 SQL 数据仓库时，本文统称 SQL 数据库。 本文不  适用于 Azure SQL 数据库中的**托管实例**部署，因为它没有与之关联的服务终结点。
+> 本文适用于 Azure SQL 服务器，同时也适用于在 Azure SQL 服务器中创建的 Azure Synapse 中的 SQL 数据库和数据仓库。 为简单起见，在提到 SQL 数据库和 Azure Synapse 时，本文统称 SQL 数据库。 本文不  适用于 Azure SQL 数据库中的**托管实例**部署，因为它没有与之关联的服务终结点。
 
 本文将提供并介绍执行以下操作的 PowerShell 脚本：
 

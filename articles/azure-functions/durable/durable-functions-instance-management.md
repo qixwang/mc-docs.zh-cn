@@ -3,14 +3,14 @@ title: 在 Durable Functions 中管理实例 - Azure
 description: 了解如何在 Azure Functions 的 Durable Functions 扩展中管理实例。
 author: cgillum
 ms.topic: conceptual
-ms.date: 02/14/2020
+ms.date: 03/03/2020
 ms.author: v-junlch
-ms.openlocfilehash: b23a90489a6bb684c60da01daefa0ddbf35fe039
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.openlocfilehash: 531827257115f40432de56ef52317f0de968efb8
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77428020"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79290939"
 ---
 # <a name="manage-instances-in-durable-functions-in-azure"></a>在 Azure 中管理 Durable Functions 中的实例
 
@@ -355,7 +355,7 @@ func durable get-instances --created-after 2018-03-10T13:57:31Z --created-before
 
 如果需要花费太长的时间来运行某个业务流程实例，或者出于某种原因需要提前将其停止，可以选择将其终止。
 
-可以使用[业务流程客户端绑定](durable-functions-bindings.md#orchestration-client)的 `TerminateAsync` (.NET) 或 `terminate` (JavaScript) 方法来终止实例。 两个参数为 `instanceId` 和 `reason` 字符串，将写入日志和实例状态。 终止的实例在达到下一个 `await` (.NET) 或 `yield` (JavaScript) 点时会立即停止运行，或者在已进入 `await` 或 `yield` 点时会立即终止。
+可以使用[业务流程客户端绑定](durable-functions-bindings.md#orchestration-client)的 `TerminateAsync` (.NET) 或 `terminate` (JavaScript) 方法来终止实例。 两个参数为 `instanceId` 和 `reason` 字符串，将写入日志和实例状态。
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -389,6 +389,8 @@ module.exports = async function(context, instanceId) {
 有关 function.json 配置，请参见[启动实例](#javascript-function-json)。
 
 ---
+
+终止的实例最终会转换为 `Terminated` 状态。 但是，这种转换不会立即发生。 而是，终止操作将与该实例的其他操作一起在任务中心排队。 可以使用[实例查询](#query-instances) API 来了解已终止的实例实际何时达到 `Terminated` 状态。
 
 > [!NOTE]
 > 当前不会传播实例终止。 无论调用活动函数和子业务流程的业务流程实例是否已终止，活动函数和子业务流程都将运行至完成状态。
@@ -539,6 +541,7 @@ namespace VSSample
     }
 }
 ```
+
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```Javascript

@@ -3,14 +3,14 @@ title: Azure Functions 的 Azure 表存储绑定
 description: 了解如何在 Azure Functions 中使用 Azure 表存储绑定。
 author: craigshoemaker
 ms.topic: reference
-ms.date: 02/12/2020
+ms.date: 03/03/2020
 ms.author: v-junlch
-ms.openlocfilehash: e354629f6ec040afd98db931cb1b7f74fcc2b866
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.openlocfilehash: a9d785c61842908008d3aa3063c13e0fe3ebfc49
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77428204"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293204"
 ---
 # <a name="azure-table-storage-bindings-for-azure-functions"></a>Azure Functions 的 Azure 表存储绑定
 
@@ -40,7 +40,7 @@ ms.locfileid: "77428204"
 
 ### <a name="one-entity"></a>一个实体
 
-以下示例演示读取单个表行的 [C# 函数](functions-dotnet-class-library.md)。 
+以下示例演示读取单个表行的 [C# 函数](functions-dotnet-class-library.md)。 对于表中插入的每条记录，将触发该函数。
 
 行键值“{queueTrigger}”指示行键来自队列消息字符串。
 
@@ -355,19 +355,70 @@ module.exports = function (context, myQueueItem) {
 
 # <a name="java"></a>[Java](#tab/java)
 
-以下示例显示了 HTTP 触发的函数，该函数返回表存储中指定分区中项的总计数。
+以下示例显示了一个 HTTP 触发函数，该函数返回表存储中指定分区中的 person 对象列表。 在此示例中，分区键将从 http 路由中提取，表名和连接将从函数设置中提取。 
 
 ```java
-@FunctionName("getallcount")
-public int run(
-   @HttpTrigger(name = "req",
-                 methods = {HttpMethod.GET},
-                 authLevel = AuthorizationLevel.ANONYMOUS) Object dummyShouldNotBeUsed,
-   @TableInput(name = "items",
-                tableName = "mytablename",  partitionKey = "myparkey",
-                connection = "myconnvarname") MyItem[] items
-) {
-    return items.length;
+public class Person {
+    private String PartitionKey;
+    private String RowKey;
+    private String Name;
+
+    public String getPartitionKey() { return this.PartitionKey; }
+    public void setPartitionKey(String key) { this.PartitionKey = key; }
+    public String getRowKey() { return this.RowKey; }
+    public void setRowKey(String key) { this.RowKey = key; }
+    public String getName() { return this.Name; }
+    public void setName(String name) { this.Name = name; }
+}
+
+@FunctionName("getPersonsByPartitionKey")
+public Person[] get(
+        @HttpTrigger(name = "getPersons", methods = {HttpMethod.GET}, authLevel = AuthorizationLevel.FUNCTION, route="persons/{partitionKey}") HttpRequestMessage<Optional<String>> request,
+        @BindingName("partitionKey") String partitionKey,
+        @TableInput(name="persons", partitionKey="{partitionKey}", tableName="%MyTableName%", connection="MyConnectionString") Person[] persons,
+        final ExecutionContext context) {
+
+    context.getLogger().info("Got query for person related to persons with partition key: " + partitionKey);
+
+    return persons;
+}
+```
+
+TableInput 注释还可以从请求的 json 正文中提取绑定，如下面的示例所示。
+
+```java
+@FunctionName("GetPersonsByKeysFromRequest")
+public HttpResponseMessage get(
+        @HttpTrigger(name = "getPerson", methods = {HttpMethod.GET}, authLevel = AuthorizationLevel.FUNCTION, route="query") HttpRequestMessage<Optional<String>> request,
+        @TableInput(name="persons", partitionKey="{partitionKey}", rowKey = "{rowKey}", tableName="%MyTableName%", connection="MyConnectionString") Person person,
+        final ExecutionContext context) {
+
+    if (person == null) {
+        return request.createResponseBuilder(HttpStatus.NOT_FOUND)
+                    .body("Person not found.")
+                    .build();
+    }
+
+    return request.createResponseBuilder(HttpStatus.OK)
+                    .header("Content-Type", "application/json")
+                    .body(person)
+                    .build();
+}
+```
+
+下面的示例使用 Filter 在 Azure 表中查询具有特定名称的人员，并将可能的匹配项数目限制为 10 个结果。
+
+```java
+@FunctionName("getPersonsByName")
+public Person[] get(
+        @HttpTrigger(name = "getPersons", methods = {HttpMethod.GET}, authLevel = AuthorizationLevel.FUNCTION, route="filter/{name}") HttpRequestMessage<Optional<String>> request,
+        @BindingName("name") String name,
+        @TableInput(name="persons", filter="Name eq '{name}'", take = "10", tableName="%MyTableName%", connection="MyConnectionString") Person[] persons,
+        final ExecutionContext context) {
+
+    context.getLogger().info("Got query for person related to persons with name: " + name);
+
+    return persons;
 }
 ```
 
@@ -654,7 +705,8 @@ public class Person {
     public String getName() {return this.Name;}
     public void setName(String name) {this.Name = name; }
 }
-    public class AddPerson {
+
+public class AddPerson {
 
     @FunctionName("addPerson")
     public HttpResponseMessage get(
@@ -799,7 +851,7 @@ JavaScript 不支持特性。
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-可以使用 `context.bindings.<name>` 访问输出事件，其中 `<name>` 是在 *function.json* 的 `name` 属性中指定的值。
+使用 `context.bindings.<name>` 访问输出事件，其中 `<name>` 是在 *function.json* 的 `name` 属性中指定的值。
 
 
 # <a name="java"></a>[Java](#tab/java)

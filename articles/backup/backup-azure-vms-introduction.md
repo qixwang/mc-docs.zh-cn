@@ -6,12 +6,12 @@ author: lingliw
 origin.date: 09/13/2019
 ms.date: 09/23/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 8e80a6291d2fe184b1e8ca5e1b6ada1f8144efaf
-ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
+ms.openlocfilehash: 36a016028e84af11a64e8f4b788ecaf634e2f94b
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75858203"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292112"
 ---
 # <a name="an-overview-of-azure-vm-backup"></a>概要了解 Azure VM 备份
 
@@ -61,12 +61,7 @@ ms.locfileid: "75858203"
 
 Azure 备份根据备份计划创建快照。
 
-- **Windows VM：** 对于 Windows VM，备份服务将与 VSS 相配合，来创建 VM 磁盘的应用一致性快照。
-
-  - 默认情况下，Azure 备份创建完整的 VSS 备份。 [了解详细信息](https://blogs.technet.com/b/filecab/archive/2008/05/21/what-is-the-difference-between-vss-full-backup-and-vss-copy-backup-in-windows-server-2008.aspx)。
-  - 若要更改设置，使 Azure 备份创建 VSS 副本备份，请在命令提示符下设置以下注册表项：
-
-    **REG ADD "HKLM\SOFTWARE\Microsoft\BcdrAgent" /v USEVSSCOPYBACKUP /t REG_SZ /d TRUE /f**
+- **Windows VM：** 对于 Windows VM，备份服务将与 VSS 相配合，来创建 VM 磁盘的应用一致性快照。  默认情况下，Azure 备份会执行完整的 VSS 备份（它在备份时会截断 SQL Server 等应用程序的日志，以获取应用程序级别的一致备份）。  如果在 Azure VM 备份时使用 SQL Server 数据库，则可以修改设置以执行 VSS 副本备份（以保留日志）。 有关详细信息，请参阅[此文章](/backup/backup-azure-vms-troubleshoot#troubleshoot-vm-snapshot-issues)。
 
 - **Linux VM：** 若要创建 Linux VM 的应用一致性快照，请使用 Linux 前脚本和后脚本框架编写自己的自定义脚本，以确保一致性。
 
@@ -110,7 +105,7 @@ Azure 备份根据备份计划创建快照。
 我们建议在配置 VM 备份时遵循以下做法：
 
 - 修改策略中设置的默认计划时间。 例如，如果策略中的默认时间是凌晨 12:00，请将时间递增几分钟，确保以最佳方式使用资源。
-- 如果从单个保管库还原 VM，我们强烈建议使用不同的[常规用途 v2 存储帐户](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade)，以确保目标存储帐户不会受到限制。 例如，每个 VM 必须具有不同的存储帐户。 例如，如果还原 10 个 VM，请使用 10 个不同的存储帐户。
+- 如果从单个保管库还原 VM，我们强烈建议使用不同的[常规用途 v2 存储帐户](/storage/common/storage-account-upgrade)，以确保目标存储帐户不会受到限制。 例如，每个 VM 必须具有不同的存储帐户。 例如，如果还原 10 个 VM，请使用 10 个不同的存储帐户。
 - 若要通过 Instant Restore 备份使用高级存储的 VM，建议从总的已分配存储空间中分配 *50%* 的可用空间，这**只**在首次备份时是必需的。 首次备份完成后，50% 的可用空间不再是备份的要求
 - 每个存储帐户的磁盘数限制与基础结构即服务 (IaaS) VM 上运行的应用程序访问磁盘的大小有关。 通常情况下，如果单个存储帐户上存在 5 至 10 个或以上磁盘，则通过将一些磁盘移动到单独的存储帐户以均衡负载。
 

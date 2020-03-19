@@ -7,18 +7,18 @@ ms.topic: conceptual
 origin.date: 10/18/2018
 ms.date: 03/06/2020
 ms.author: v-lingwu
-ms.openlocfilehash: ef780e4344e57fa74b0826b8f6a573ad49afbe8c
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.openlocfilehash: 6f093276b0ed0b6bcc3df26de6051931376e1163
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78850227"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79290850"
 ---
 # <a name="back-up-sql-server-to-azure-as-a-dpm-workload"></a>将 SQL Server 备份到 Azure 作为 DPM 工作负荷
 
 本文将引导你使用 Azure 备份完成 SQL Server 数据库的备份配置步骤。
 
-若要将 SQL Server 数据库备份到 Azure，需要一个 Azure 帐户。 如果没有帐户，只需花费几分钟就能创建一个免费帐户。 有关详细信息，请参阅[创建 Azure 免费帐户](https://azure.microsoft.com/pricing/free-trial/)。
+若要将 SQL Server 数据库备份到 Azure，需要一个 Azure 帐户。 如果没有帐户，只需几分钟就能创建一个试用帐户。 有关详细信息，请参阅[创建 Azure 试用帐户](https://wd.azure.cn/zh-cn/pricing/1rmb-trial-full)。
 
 若要将 SQL Server 数据库备份到 Azure 并从 Azure 恢复该数据库：
 

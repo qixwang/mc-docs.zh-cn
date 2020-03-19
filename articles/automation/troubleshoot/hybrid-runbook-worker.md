@@ -7,15 +7,15 @@ ms.subservice: ''
 author: WenJason
 ms.author: v-jay
 origin.date: 11/25/2019
-ms.date: 03/02/2020
+ms.date: 03/16/2020
 ms.topic: conceptual
 manager: digimobile
-ms.openlocfilehash: 6ad3f00010b4806092e7781455cff4bca7d65671
-ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
+ms.openlocfilehash: 7ea7544bdc28d0d46d7aa58592b69ad1ecfb26e1
+ms.sourcegitcommit: dc862610e2169c1fce6fb0ae9eb7dd7567f86a0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77653054"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293718"
 ---
 # <a name="troubleshoot-hybrid-runbook-workers"></a>对混合 Runbook 辅助角色进行故障排除
 
@@ -49,13 +49,13 @@ Runbook 在三次尝试执行后立刻暂停。 在某些情况下，Runbook 可
 
 #### <a name="resolution"></a>解决方法
 
-确保计算机在端口 443 上对 *.azure-automation.net 有出站访问权限。
+确保计算机在端口 443 上对 *.azure-automation.cn 有出站访问权限。
 
 运行混合 Runbook 辅助角色的计算机应满足最低硬件要求，才能配置它托管此功能。 它们使用的 Runbook 和后台进程可能会导致系统被过度使用，并造成 Runbook 作业延迟或超时。
 
 确认将要运行混合 Runbook 辅助角色功能的计算机满足最低硬件要求。 如果满足，请监视 CPU 和内存使用，以确定混合 Runbook 辅助角色进程的性能和 Windows 之间的任何关联。 如果存在内存或 CPU 压力，这可能意味着需要升级资源。 也可以选择其他支持最低要求的计算资源，并在工作负荷需求指示需要增加时进行扩展。
 
-检查 **Microsoft-SMA** 事件日志中是否有描述为 Win32 Process Exited with code [4294967295]  的相应事件。 此错误的原因是你尚未在 runbook 中配置身份验证，或者未为混合辅助角色组指定运行方式凭据。 请查看 [Runbook 权限](../automation-hrw-run-runbooks.md#runbook-permissions)，确认已正确为 runbook 配置身份验证。
+检查 **Microsoft-SMA** 事件日志中是否有描述为 Win32 Process Exited with code [4294967295]  的相应事件。 此错误的原因是你尚未在 runbook 中配置身份验证，或者未为混合 Runbook 辅助角色组指定运行方式凭据。 在[混合 Runbook 辅助角色上运行 Runbook](../automation-hrw-run-runbooks.md) 中查看 Runbook 权限，以确认已正确配置 Runbook 的身份验证。
 
 ### <a name="no-cert-found"></a>场景：在混合 Runbook 辅助角色上的证书存储中找不到证书
 
@@ -147,7 +147,7 @@ Windows 混合 Runbook 辅助角色依靠[适用于 Windows 的 Log Analytics �
 
 #### <a name="cause"></a>原因
 
-此问题可能是由于代理或网络防火墙阻止与 Azure 的通信造成的。 确保计算机在端口 443 上对 *.azure-automation.net 有出站访问权限。
+此问题可能是由于代理或网络防火墙阻止与 Azure 的通信造成的。 确保计算机在端口 443 上对 *.azure-automation.cn 有出站访问权限。
 
 #### <a name="resolution"></a>解决方法
 

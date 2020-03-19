@@ -11,31 +11,30 @@ ms.custom: mvc, seo-javascript-september2019
 ms.tgt_pltfrm: na
 ms.workload: ns
 origin.date: 06/21/2019
-ms.date: 11/11/2019
+ms.date: 03/23/2020
 ms.author: v-yiso
-ms.openlocfilehash: a5bacae68a0728ea42dfc67702a6816973d17e57
-ms.sourcegitcommit: 642a4ad454db5631e4d4a43555abd9773cae8891
+ms.openlocfilehash: a884f8536c9100589f8ee49354c0073d1f75fe41
+ms.sourcegitcommit: 32997a7d7585deaeb0ab7b8f928d397b18b343fa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2019
-ms.locfileid: "73426084"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79295871"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-it-with-a-back-end-application-nodejs"></a>快速入门：将遥测数据从设备发送到 IoT 中心并使用后端应用程序读取该数据 (Node.js)
 
 [!INCLUDE [iot-hub-quickstarts-1-selector](../../includes/iot-hub-quickstarts-1-selector.md)]
 
-IoT 中心是一项 Azure 服务，用于将大量遥测数据从 IoT 设备引入云中进行存储或处理。 本快速入门会将模拟设备应用程序的遥测数据通过 IoT 中心发送到后端应用程序进行处理。
-
-本快速入门使用两个预先编写的 Node.js 应用程序，一个用于发送遥测数据，一个用于读取中心的遥测数据。 运行这两个应用程序前，请先创建 IoT 中心并在中心注册设备。
-
-
-如果没有 Azure 订阅，请在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial)。
+ 本快速入门会将模拟设备应用程序的遥测数据通过 Azure IoT 中心发送到后端应用程序进行处理。 IoT 中心是一项 Azure 服务，用于将大量遥测数据从 IoT 设备引入云中进行存储或处理。 本快速入门使用两个预先编写的 Node.js 应用程序：一个用于发送遥测数据，一个用于读取中心的遥测数据。 运行这两个应用程序前，请先创建 IoT 中心并在中心注册设备。
 
 ## <a name="prerequisites"></a>先决条件
 
-本快速入门中运行的两个示例应用程序是使用 Node.js 编写的。 开发计算机上需要有 Node.js v10.x.x 或更高版本。
+* 具有活动订阅的 Azure 帐户。 [创建试用帐户](https://www.azure.cn/pricing/1rmb-trial)。
 
-可从 [nodejs.org](https://nodejs.org) 下载适用于多个平台的 Node.js。
+* [Node.js 10+](https://nodejs.org)。 
+
+* [一个示例 Node.js 项目](https://github.com/Azure-Samples/azure-iot-samples-node/archive/master.zip)。
+
+* 端口 8883 在防火墙中处于打开状态。 本快速入门中的设备示例使用 MQTT 协议，该协议通过端口 8883 进行通信。 在某些公司和教育网络环境中，此端口可能被阻止。 有关解决此问题的更多信息和方法，请参阅[连接到 IoT 中心(MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)。
 
 可以使用以下命令验证开发计算机上 Node.js 当前的版本：
 
@@ -43,13 +42,13 @@ IoT 中心是一项 Azure 服务，用于将大量遥测数据从 IoT 设备引�
 node --version
 ```
 
-运行以下命令将用于 Azure CLI 的 Microsoft Azure IoT 扩展添加到 Cloud Shell 实例。 IOT 扩展会将 IoT 中心、IoT Edge 和 IoT 设备预配服务 (DPS) 特定的命令添加到 Azure CLI。
+### <a name="add-azure-iot-extension"></a>添加 Azure IoT 扩展
+
+运行以下命令将用于 Azure CLI 的 Microsoft Azure IoT 扩展添加到 Cloud Shell 实例。 IoT 扩展会将特定于 IoT 中心、IoT Edge 和 IoT 设备预配服务 (DPS) 的命令添加到 Azure CLI。
 
 ```azurecli
 az extension add --name azure-cli-iot-ext
 ```
-
-从 https://github.com/Azure-Samples/azure-iot-samples-node/archive/master.zip 下载示例 Node.js 项目并提取 ZIP 存档。
 
 ## <a name="create-an-iot-hub"></a>创建 IoT 中心
 

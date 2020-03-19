@@ -1,7 +1,6 @@
 ---
 title: Azure Monitor 中的 Azure 网络分析解决方案 | Microsoft Docs
 description: 可以使用 Azure Monitor 中的 Azure 网络分析解决方案来查看 Azure 网络安全组日志和 Azure 应用程序网关日志。
-ms.service: azure-monitor
 author: lingliw
 manager: digimobile
 ms.subservice: logs
@@ -9,12 +8,12 @@ ms.topic: conceptual
 origin.date: 06/21/2018
 ms.date: 04/12/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 8916698fc44e2fa546401e80b846c7cef850dc0b
-ms.sourcegitcommit: e9291283ef1dd2ec3cf04e1fe434c8a3479d8b77
+ms.openlocfilehash: ccecda5301e8760eabe9cd9310f1a47da0154629
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/30/2019
-ms.locfileid: "75545363"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79290895"
 ---
 # <a name="azure-networking-monitoring-solutions-in-azure-monitor"></a>Azure Monitor 中的 Azure 网络监视解决方案
 
@@ -102,7 +101,7 @@ Azure 应用程序网关分析和网络安全组分析管理解决方案直接�
 
 #### <a name="enable-azure-network-diagnostics-using-powershell"></a>使用 PowerShell 启用 Azure 网络诊断
 
-以下 PowerShell 脚本提供如何为应用程序网关启用诊断日志记录的示例。
+以下 PowerShell 脚本提供如何为应用程序网关启用资源日志记录的示例。
 
 ```powershell
 $workspaceId = "/subscriptions/d2e37fee-1234-40b2-5678-0b2199de3b50/resourcegroups/oi-default-CNE2/providers/microsoft.operationalinsights/workspaces/rollingbaskets"
@@ -142,7 +141,7 @@ Set-AzDiagnosticSetting -ResourceId $gateway.ResourceId  -WorkspaceId $workspace
 > [!NOTE]
 > - [Azure 快速入门模板](https://azure.microsoft.com/resources/templates/oms-azurensg-solution/)目前提供该解决方案，但该解决方案很快将从 Azure 市场下架。
 > - 对于已向其工作区添加该解决方案的现有客户，它将继续运行，不会有任何变化。
-> - Microsoft 将继续支持使用“诊断设置”将 NSG 诊断日志发送到你的工作区。
+> - Microsoft 将继续支持使用“诊断设置”将 NSG 资源日志发送到工作区。
 
 网络安全组支持以下日志：
 
@@ -171,7 +170,7 @@ Set-AzDiagnosticSetting -ResourceId $gateway.ResourceId  -WorkspaceId $workspace
 
 ### <a name="enable-azure-network-diagnostics-using-powershell"></a>使用 PowerShell 启用 Azure 网络诊断
 
-以下 PowerShell 脚本提供如何为网络安全组启用诊断日志记录的示例
+以下 PowerShell 脚本提供了如何为网络安全组启用资源日志记录的示例
 ```powershell
 $workspaceId = "/subscriptions/d2e37fee-1234-40b2-5678-0b2199de3b50/resourcegroups/oi-default-CNE2/providers/microsoft.operationalinsights/workspaces/rollingbaskets"
 
@@ -196,7 +195,7 @@ Set-AzDiagnosticSetting -ResourceId $nsg.ResourceId  -WorkspaceId $workspaceId -
 
 在“Azure 网络安全组分析”仪表板上，查看其中一个边栏选项卡中的摘要信息，并单击一项摘要，在日志搜索页查看其详细信息。 
 
-在任何日志搜索页上，都可以按时间、详细结果和日志搜索历史记录查看结果。 还可以按方面进行筛选以缩减搜索结果。
+在任何日志搜索页上，都可以按时间、详细结果和日志搜索历史记录查看结果。 也可以按方面进行筛选以缩减搜索结果。
 
 ## <a name="migrating-from-the-old-networking-analytics-solution"></a>从旧的网络分析解决方案迁移
 2017 年 1 月，将 Azure 应用程序网关和 Azure 网络安全组中的日志发送到 Log Analytics 工作区的受支持方式已发生更改。 这些更改带来了以下优势：
@@ -213,7 +212,7 @@ Set-AzDiagnosticSetting -ResourceId $nsg.ResourceId  -WorkspaceId $workspaceId -
 3. 更新所有已保存的查询、仪表板或警报，以使用的新数据类型
    + 新类型为 AzureDiagnostics。 可以使用 ResourceType 筛选 Azure 网络日志。
 
-     | 不要使用： | 使用： |
+     | 不是： | 使用： |
      | --- | --- |
      | NetworkApplicationgateways &#124; where OperationName=="ApplicationGatewayAccess" | AzureDiagnostics &#124; where ResourceType=="APPLICATIONGATEWAYS" and OperationName=="ApplicationGatewayAccess" |
      | NetworkApplicationgateways &#124; where OperationName=="ApplicationGatewayPerformance" | AzureDiagnostics &#124; where ResourceType=="APPLICATIONGATEWAYS" and OperationName=="ApplicationGatewayPerformance" |

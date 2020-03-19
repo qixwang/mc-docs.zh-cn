@@ -4,27 +4,33 @@ description: 快速入门 - 使用 Java 服务 SDK 将 TPM 设备注册到 Azure
 author: wesmc7777
 ms.author: v-tawe
 origin.date: 11/08/2019
-ms.date: 03/02/2020
+ms.date: 03/23/2020
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 ms.devlang: java
 ms.custom: mvc
-ms.openlocfilehash: f2fd4d4c4a226c3429ce519623aec2670cebdf12
-ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
+ms.openlocfilehash: 52066a0629ed19dd5a508e0dca1dbbb3f3737b1e
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77494399"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291142"
 ---
 # <a name="quickstart-enroll-tpm-device-to-iot-hub-device-provisioning-service-using-java-service-sdk"></a>快速入门：使用 Java 服务 SDK 将 TPM 设备注册到 IoT 中心设备预配服务
 
 [!INCLUDE [iot-dps-selector-quick-enroll-device-tpm](../../includes/iot-dps-selector-quick-enroll-device-tpm.md)]
 
+在本快速入门中，你将借助示例 Java 应用程序，使用 Java 服务 SDK 以编程方式在 Azure IoT 中心设备预配服务中为模拟 TPM 设备创建单个注册。
 
-以下步骤演示了如何借助示例 Java 应用程序，使用 [Java 服务 SDK](https://azure.github.io/azure-iot-sdk-java/service/) 在 Azure IoT 中心设备预配服务中以编程方式为模拟 TPM 设备创建单个注册。 虽然 Java 服务 SDK 在 Windows 和 Linux 计算机上均适用，但本文使用 Windows 开发计算机来演示注册过程。
+## <a name="prerequisites"></a>先决条件
 
-在继续操作之前，请确保[通过 Azure 门户设置 IoT 中心设备预配服务](./quick-setup-auto-provision.md)，并[模拟 TPM 设备](quick-create-simulated-device.md#simulatetpm)。
+- 完成[使用 Azure 门户设置 IoT 中心设备预配服务](./quick-setup-auto-provision.md)。
+- 完成[从 TPM 设备读取加密密钥](quick-create-simulated-device.md#simulatetpm)。
+- 具有活动订阅的 Azure 帐户。 [创建一个试用帐户](https://wd.azure.cn/pricing/1rmb-trial/)。
+- [Java SE 开发工具包 8](https://aka.ms/azure-jdks)。 本快速入门将在下面安装 [Java 服务 SDK](https://azure.github.io/azure-iot-sdk-java/service/)。 它可以在 Windows 和 Linux 上运行。 本快速入门使用 Windows。
+- [Maven 3](https://maven.apache.org/download.cgi)。
+- [Git](https://git-scm.com/download/)。
 
 <a id="setupdevbox"></a>
 
@@ -57,7 +63,7 @@ ms.locfileid: "77494399"
 
 此部分演示如何向示例代码添加 TPM 设备的预配详细信息。 
 
-1. 打开命令提示符。 使用 Java 服务 SDK 克隆设备注册代码示例的 GitHub 存储库：
+1. 打开命令提示符。 使用 [Java 服务 SDK](https://azure.github.io/azure-iot-sdk-java/service/) 克隆设备注册代码示例的 GitHub 存储库：
     
     ```cmd\sh
     git clone https://github.com/Azure/azure-iot-sdk-java.git --recursive

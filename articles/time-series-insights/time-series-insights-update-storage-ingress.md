@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 02/19/2020
+ms.date: 03/10/2020
 ms.custom: seodec18
-ms.openlocfilehash: 931a832b4ea98f63b2ed59f73793de49c6b1903f
-ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
+ms.openlocfilehash: 7af2cce03828028bde8f1846c497f2b6843c2f4a
+ms.sourcegitcommit: 4ba6d7c8bed5398f37eb37cf5e2acafcdcc28791
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77494436"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79133883"
 ---
 # <a name="data-storage-and-ingress-in-azure-time-series-insights-preview"></a>Azure 时序见解预览版中的数据存储和入口
 
@@ -29,7 +29,7 @@ Azure 时序见解环境包含一个用于收集、处理和存储时序数据�
 
 在 Azure 时序见解预览版中，数据引入策略决定了数据可以源自何处，以及应采用哪种格式。
 
-### <a name="ingress-policies"></a>引入策略
+### <a name="ingress-policies"></a>流入策略
 
 数据引入涉及到如何将数据发送到 Azure 时序见解预览版环境。  
 
@@ -151,7 +151,6 @@ Azure 时序见解预览版的引入限制如下所述。
 
 若要详细了解如何优化中心吞吐量和分区，请参阅以下资源：
 
-* [IoT 中心规模](https://docs.microsoft.com/azure/iot-hub/iot-hub-scaling)
 * [事件中心规模](/event-hubs/event-hubs-scalability#throughput-units)
 * [事件中心分区](/event-hubs/event-hubs-features#partitions)
 
@@ -171,7 +170,7 @@ Azure 时序见解预览版的引入限制如下所述。
 
 ### <a name="data-availability"></a>数据可用性
 
-为了实现最佳查询性能，Azure 时序见解预览版会将数据分区并为其编制索引。 数据在编制索引后可供查询。 正在引入的数据量可能会影响这种可用性。
+为了实现最佳查询性能，Azure 时序见解预览版会将数据分区并为其编制索引。 为数据编制索引后，就可以从热存储（如果已启用）和冷存储中查询数据。 正在引入的数据量可能会影响这种可用性。
 
 > [!IMPORTANT]
 > 在预览版中，可能需要等待最长 60 秒才能看到数据。 如果遇到 60 秒以上的较高延迟，请通过 Azure 门户提交支持票证。

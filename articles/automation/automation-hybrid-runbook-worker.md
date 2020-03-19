@@ -4,14 +4,14 @@ description: 本文介绍如何安装和使用混合 Runbook 辅助角色，该�
 services: automation
 ms.subservice: process-automation
 origin.date: 04/05/2019
-ms.date: 03/02/2020
+ms.date: 03/03/2020
 ms.topic: conceptual
-ms.openlocfilehash: df2ef568ffb6e61b44c8caa7eeb260f207c0a64d
-ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
+ms.openlocfilehash: 4062435497625589e9907f81c56d19fdb23dde05
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77653547"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292618"
 ---
 # <a name="automate-resources-in-your-datacenter-or-cloud-by-using-hybrid-runbook-worker"></a>使用混合 Runbook 辅助角色使数据中心或云端的资源实现自动化
 
@@ -104,8 +104,8 @@ sudo python onboarding.py --deregister --endpoint="<URL>" --key="<PrimaryAccessK
 混合 Runbook 辅助角色与自动化通信时需要以下端口和 URL：
 
 * 端口：只需使用 TCP 443 即可进行出站 Internet 访问。
-* 全局 URL：*.azure-automation.net
-* 代理服务： https://\<workspaceId\>.agentsvc.azure-automation.net
+* 全局 URL：*.azure-automation.cn
+* 代理服务： https://\<workspaceId\>.agentsvc.azure-automation.cn
 
 建议在定义例外时使用列出的地址。 对于 IP 地址，可以下载 [Azure 中国数据中心 IP 范围](https://www.microsoft.com/en-us/download/details.aspx?id=42064)。 此文件每周更新，包含当前部署的范围以及即将对 IP 范围进行的更新。
 

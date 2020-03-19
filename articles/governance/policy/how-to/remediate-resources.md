@@ -3,18 +3,18 @@ title: 修正不符合资源
 description: 本指南将指导你完成修正 Azure Policy 中不符合策略的资源的过程。
 ms.author: v-tawe
 origin.date: 09/09/2019
-ms.date: 01/17/2020
+ms.date: 03/23/2020
 ms.topic: how-to
-ms.openlocfilehash: b90628bba9af38ab1460aef857d9b03a3b335add
-ms.sourcegitcommit: 94e1c9621b8f81a7078f1412b3a73281d0a8668b
+ms.openlocfilehash: 109a2204506f3ecba603ff932e3cd1410f222e9c
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76123158"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291292"
 ---
 # <a name="remediate-non-compliant-resources-with-azure-policy"></a>修正 Azure Policy 中的不符合资源
 
-不符合 deployIfNotExists  或 **modify** 策略的资源可以通过修正置于符合状态。  可以通过指示 Azure Policy 在现有资源上运行已分配策略的 deployIfNotExists  效果或 **operations** 标记来完成修正。 本文介绍了使用 Azure Policy 了解并完成修正需要执行的步骤。
+不符合 deployIfNotExists  或 **modify** 策略的资源可以通过修正置于符合状态。  修复是通过指示 Azure Policy 在现有资源上运行所分配策略的 **deployIfNotExists** 效果或标记**操作**来完成的，无论该策略是分配给管理组、订阅、资源组还是单个资源。 本文介绍了使用 Azure Policy 了解并完成修正需要执行的步骤。
 
 ## <a name="how-remediation-security-works"></a>修正安全的工作原理
 
@@ -145,7 +145,7 @@ if ($roleDefinitionIds.Count -gt 0)
 
    ![修正 - 选择要修正的资源](../media/remediate-resources/select-resources.png)
 
-1. 筛选资源后，通过单击“修正”  来启动修正任务。 “策略符合性”页将打开到“修正任务”  选项卡，以显示任务进度的状态。
+1. 筛选资源后，通过单击“修正”  来启动修正任务。 “策略符合性”页将打开到“修正任务”  选项卡，以显示任务进度的状态。 由修正任务创建的部署将立即开始。
 
    ![修正 - 修正任务的进度](../media/remediate-resources/task-progress.png)
 

@@ -4,20 +4,21 @@ titleSuffix: Azure Machine Learning
 description: 监视 Azure ML 试验和运行指标，以便改进模型创建过程。 将日志记录添加到训练脚本并查看运行的记录结果。  使用 run.log、Run.start_logging 或 ScriptRunConfig。
 services: machine-learning
 author: sdgilley
-ms.author: sgilley
+ms.author: v-yiso
 ms.reviewer: sgilley
 ms.service: machine-learning
 ms.subservice: core
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 12/05/2019
+origin.date: 12/05/2019
+ms.date: 03/16/2020
 ms.custom: seodec18
-ms.openlocfilehash: d509e45862fff474d8474ff33053cee49fba1707
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+ms.openlocfilehash: b18d61a58a2494c34ec7b8b6a8e620393b6b6675
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75598089"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292905"
 ---
 # <a name="monitor-azure-ml-experiment-runs-and-metrics"></a>监视 Azure ML 试验运行和指标
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -69,7 +70,7 @@ ms.locfileid: "75598089"
 
 **start_logging** 可创建笔记本等方案中使用的交互式运行。 试验中会话期间记录的任何指标都会添加到运行记录中。
 
-下面的示例在本地 Jupyter 笔记本中本地训练简单的 sklearn 岭模型。 若要详细了解如何将试验提交到不同的环境，请参阅[使用 Azure 机器学习为模型定型设置计算目标](/machine-learning/service/how-to-set-up-training-targets)。
+下面的示例在本地 Jupyter 笔记本中本地训练简单的 sklearn 岭模型。 若要详细了解如何将试验提交到不同的环境，请参阅[使用 Azure 机器学习为模型定型设置计算目标](/machine-learning/how-to-set-up-training-targets)。
 
 1. 在本地 Jupyter 笔记本中创建训练脚本。 
 
@@ -297,7 +298,7 @@ ms.locfileid: "75598089"
 可以使用 ```run.get_metrics()``` 查看训练的模型的指标。 现在可以获取上面示例中记录的所有指标以确定最佳模型。
 
 <a name="view-the-experiment-in-the-web-portal"></a>
-## <a name="view-the-experiment-in-your-workspace-in-azure-machine-learning-studiohttpsmlazurecom"></a>在 [Azure 机器学习工作室](https://ml.azure.com)中查看工作区中的试验
+## <a name="view-the-experiment-in-your-workspace-in-azure-machine-learning-studio"></a>在 [Azure 机器学习工作室](https://ml.azure.com)中查看工作区中的试验
 
 当实验完成运行时，可浏览到试验运行记录。 可在 [Azure 机器学习工作室](https://ml.azure.com)中访问历史记录。
 
@@ -323,7 +324,7 @@ ms.locfileid: "75598089"
 下面的笔记本展示了本文中的概念：
 * [how-to-use-azureml/training/train-within-notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-within-notebook)
 * [how-to-use-azureml/training/train-on-local](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-on-local)
-* [how-to-use-azureml/training/logging-api/logging-api.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/logging-api)
+* [how-to-use-azureml/track-and-monitor-experiments/logging-api](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/track-and-monitor-experiments/logging-api)
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../includes/aml-clone-for-examples.md)]
 

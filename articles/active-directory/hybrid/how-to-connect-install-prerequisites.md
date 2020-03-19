@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/15/2020
+ms.date: 03/11/2020
 ms.subservice: hybrid
 ms.author: v-junlch
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9bca1e2bef4f7cf9d5927f66d8a8b82678da1936
-ms.sourcegitcommit: 48d51745ca18de7fa05b77501b4a9bf16cea2068
+ms.openlocfilehash: ea101209d87a00d914cade15fddfa521160abbd4
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76116767"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291000"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Azure AD Connect 的先决条件
 本主题介绍 Azure AD Connect 的先决条件和硬件要求。
@@ -41,6 +41,7 @@ ms.locfileid: "76116767"
 
 ### <a name="on-premises-active-directory"></a>本地 Active Directory
 * AD 架构版本与林功能级别必须是 Windows Server 2003 或更高版本。 只要符合架构和林级别的要求，域控制器就能运行任何版本。
+* 若打算使用**密码写回**功能，必须在 Windows Server 2008 R2 或更高版本上安装域控制器。
 * Azure AD 使用的域控制器必须可写。 **不支持**使用 RODC（只读域控制器），并且 Azure AD Connect 不会遵循任何写重定向。
 * **不支持**通过“以点分隔的”（名称包含句点“.”）NetBios 名称使用本地林/域。
 * 建议[启用 Active Directory 回收站](how-to-connect-sync-recycle-bin.md)。
@@ -84,8 +85,8 @@ ms.locfileid: "76116767"
 
 ### <a name="accounts"></a>帐户
 * 要集成的 Azure AD 租户的 Azure AD 全局管理员帐户。 该帐户必须是**学校或组织帐户**，而不能是 **Microsoft 帐户**。
-* 如果使用快速设置或者从 DirSync 升级，则必须创建本地 Active Directory 的企业管理员帐户。
-* [Active Directory 中的帐户](reference-connect-accounts-permissions.md)：如果为本地 Active Directory 使用自定义设置安装路径或企业管理员帐户。
+* 如果使用[快速设置](reference-connect-accounts-permissions.md#express-settings-installation)或者从 DirSync 升级，则必须拥有本地 Active Directory 的企业管理员帐户。
+* 如果使用自定义设置安装路径，则可以有更多选项，请参阅 [Active Directory 中的帐户](reference-connect-accounts-permissions.md#custom-installation-settings)
 
 ### <a name="connectivity"></a>连接
 * Azure AD Connect 服务器需要 Intranet 和 Internet 的 DNS 解析。 DNS 服务器必须能够将名称解析成本地 Active Directory 以及 Azure AD 终结点。
@@ -95,31 +96,31 @@ ms.locfileid: "76116767"
 * 在 1.1.614.0 版以前，Azure AD Connect 默认情况下使用 TLS 1.0 对同步引擎和 Azure AD 之间的通信进行加密。 若要更改为 TLS 1.2，请按照[为 Azure AD connect 启用 TLS 1.2](#enable-tls-12-for-azure-ad-connect) 中的步骤进行操作。
 * 如果使用出站代理连接到 Internet，则必须在 **C:\Windows\Microsoft.NET\Framework64\v4.0.30319\Config\machine.config** 文件中添加以下设置，才能将安装向导和 Azure AD Connect 同步连接到 Internet 和 Azure AD。 必须在文件底部输入此文本。 在此代码中，&lt;PROXYADDRESS&gt; 代表实际代理 IP 地址或主机名。
 
-    ```
-        <system.net>
-            <defaultProxy>
-                <proxy
-                usesystemdefault="true"
-                proxyaddress="http://<PROXYADDRESS>:<PROXYPORT>"
-                bypassonlocal="true"
-                />
-            </defaultProxy>
-        </system.net>
-    ```
+```
+    <system.net>
+        <defaultProxy>
+            <proxy
+            usesystemdefault="true"
+            proxyaddress="http://<PROXYADDRESS>:<PROXYPORT>"
+            bypassonlocal="true"
+            />
+        </defaultProxy>
+    </system.net>
+```
 
 * 如果代理服务器要求身份验证，则[服务帐户](reference-connect-accounts-permissions.md#adsync-service-account)必须位于域中，必须使用自定义的设置安装路径来指定[自定义服务帐户](how-to-connect-install-custom.md#install-required-components)。 还需要对 machine.config 进行不同的更改。在 machine.config 中进行此更改之后，安装向导和同步引擎响应来自代理服务器的身份验证请求。 在所有安装向导页中（“配置”页除外）都使用已登录用户的凭据。  在安装向导末尾的“配置”页上，上下文将切换到已创建的[服务帐户](reference-connect-accounts-permissions.md#adsync-service-account)。  machine.config 节应如下所示。
 
-    ```
-        <system.net>
-            <defaultProxy enabled="true" useDefaultCredentials="true">
-                <proxy
-                usesystemdefault="true"
-                proxyaddress="http://<PROXYADDRESS>:<PROXYPORT>"
-                bypassonlocal="true"
-                />
-            </defaultProxy>
-        </system.net>
-    ```
+```
+    <system.net>
+        <defaultProxy enabled="true" useDefaultCredentials="true">
+            <proxy
+            usesystemdefault="true"
+            proxyaddress="http://<PROXYADDRESS>:<PROXYPORT>"
+            bypassonlocal="true"
+            />
+        </defaultProxy>
+    </system.net>
+```
 
 * 当 Azure AD Connect 在目录同步过程中将 Web 请求发送到 Azure AD 时，Azure AD 可能需要最多 5 分钟才能响应。 代理服务器具有连接空闲超时配置很常见。 请确保配置设置为至少 6 分钟或更长时间。
 

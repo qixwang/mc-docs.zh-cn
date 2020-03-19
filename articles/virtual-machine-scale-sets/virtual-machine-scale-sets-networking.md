@@ -6,14 +6,14 @@ tags: azure-resource-manager
 ms.assetid: 76ac7fd7-2e05-4762-88ca-3b499e87906e
 ms.service: virtual-machine-scale-sets
 ms.topic: conceptual
-ms.date: 02/10/2020
+ms.date: 03/10/2020
 ms.author: v-junlch
-ms.openlocfilehash: 3718b510abb8a7311cba0587ae0cd64653147304
-ms.sourcegitcommit: 99bd0019c5f01034b8765d7765ad7776c7d5e5ae
+ms.openlocfilehash: 7f312fa98593d56243363d665c2f152432ff2a12
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77128873"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293097"
 ---
 # <a name="networking-for-azure-virtual-machine-scale-sets"></a>Azure 虚拟机规模集的网络
 
@@ -64,6 +64,8 @@ az vmss create `
     --lb mylb `
     --backend-pool-name mybackendpool
 ```
+>[!NOTE]
+> 创建规模集后，无法为负载均衡器的运行状况探测所用的负载均衡规则修改后端端口。 为了更改端口，可以通过更新 Azure 虚拟机规模集来删除运行状况探测，更新端口，然后重新配置运行状况探测。 
 
 ## <a name="create-a-scale-set-that-references-an-application-gateway"></a>创建引用应用程序网关的规模集
 若要创建使用应用程序网关的规模集，请在规模集的 ipConfigurations 节中引用应用程序网关的后端地址池，如此 ARM 模板配置所示：
@@ -385,4 +387,3 @@ az vmss show `
 ## <a name="next-steps"></a>后续步骤
 有关 Azure 虚拟网络的详细信息，请参阅 [Azure 虚拟网络概述](../virtual-network/virtual-networks-overview.md)。
 
-<!-- Update_Description: link update -->

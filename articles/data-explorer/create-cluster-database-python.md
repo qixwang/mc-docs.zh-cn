@@ -7,13 +7,13 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 origin.date: 06/03/2019
-ms.date: 02/17/2020
-ms.openlocfilehash: 8b86ac7f1a4030aab1e5caddad101e2606dab3cd
-ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
+ms.date: 03/23/2020
+ms.openlocfilehash: 856609373544af2fd4919d5176f28feca8c4819c
+ms.sourcegitcommit: 4ba6d7c8bed5398f37eb37cf5e2acafcdcc28791
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77037939"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79134032"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-database-by-using-python"></a>使用 Python 创建 Azure 数据资源管理器群集和数据库
 
@@ -25,11 +25,15 @@ ms.locfileid: "77037939"
 > * [Python](create-cluster-database-python.md)
 > * [ARM 模板](create-cluster-database-resource-manager.md)
 
-Azure 数据资源管理器是一项快速、完全托管的数据分析服务，用于实时分析从应用程序、网站和 IoT 设备等资源流式传输的海量数据。 若要使用 Azure 数据资源管理器，请先创建群集，再在该群集中创建一个或多个数据库。 然后将数据引入（加载）到数据库，以便对其运行查询。 在本文中，将使用 Python 创建群集和数据库。
+本文将使用 Python 创建 Azure 数据资源管理器群集和数据库。 Azure 数据资源管理器是一项快速、完全托管的数据分析服务，用于实时分析从应用程序、网站和 IoT 设备等资源流式传输的海量数据。 若要使用 Azure 数据资源管理器，请先创建一个群集，并在该群集中创建一个或多个数据库。 然后将数据引入或加载到数据库，以便针对其运行查询。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial)。
+
+* [Python 3.4+](https://www.python.org/downloads/)。
+
+* [可以访问资源的 Azure AD 应用程序和服务主体](https://docs.azure.cn/active-directory/develop/howto-create-service-principal-portal)。 获取 `Directory (tenant) ID`、`Application ID` 和 `Client Secret` 的值。
 
 ## <a name="install-python-package"></a>安装 Python 包
 

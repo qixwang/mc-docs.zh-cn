@@ -4,31 +4,31 @@ description: 快速入门 - 使用适用于 Azure IoT 中心设备预配服务 (
 author: wesmc7777
 ms.author: v-tawe
 origin.date: 11/08/2018
-ms.date: 03/02/2020
+ms.date: 03/23/2020
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: 22aa5ea66706e50f599aba92dbd2bd097d73275e
-ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
+ms.openlocfilehash: e73fdf1c2388a6e4a014a9aa6b1fcee089306606
+ms.sourcegitcommit: 4ba6d7c8bed5398f37eb37cf5e2acafcdcc28791
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77494411"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79133797"
 ---
 # <a name="quickstart-create-and-provision-a-simulated-tpm-device-using-nodejs-device-sdk-for-iot-hub-device-provisioning-service"></a>快速入门：使用适用于 IoT 中心设备预配服务的 Node.js 设备 SDK 创建和预配模拟的 TPM 设备
 
 [!INCLUDE [iot-dps-selector-quick-create-simulated-device-tpm](../../includes/iot-dps-selector-quick-create-simulated-device-tpm.md)]
 
-以下步骤演示了如何在运行 Windows OS 的开发计算机上创建模拟设备、如何将 Windows TPM 模拟器作为设备的[硬件安全模块 (HSM)](https://azure.microsoft.com/blog/azure-iot-supports-new-security-hardware-to-strengthen-iot-security/) 运行，以及如何使用代码示例通过设备预配服务和 IoT 中心连接该模拟设备。 
+在本快速入门中，我们在 Windows 计算机上创建一台模拟 IoT 设备。 此模拟设备包含用作硬件安全模块 (HSM) 的 TPM 模拟器。 我们使用设备预配服务 (DPS) 的单个注册，通过设备示例 Node.js 代码将此模拟设备连接到 IoT 中心。
 
-如果不熟悉自动预配过程，还务必查看[自动预配概念](concepts-auto-provisioning.md)。 另外，在继续操作之前，请确保已完成[通过 Azure 门户设置 IoT 中心设备预配服务](./quick-setup-auto-provision.md)中的步骤。 
+## <a name="prerequisites"></a>先决条件
 
-Azure IoT 设备预配服务支持两类注册：
-- [注册组](concepts-service.md#enrollment-group)：用于注册多个相关设备。
-- [单独注册](concepts-service.md#individual-enrollment)：用于注册单个设备。
-
-本文将演示单个注册。
+- 查看[自动预配概念](concepts-auto-provisioning.md)。
+- 完成[通过 Azure 门户设置 IoT 中心设备预配服务](./quick-setup-auto-provision.md)。
+- 具有活动订阅的 Azure 帐户。 [创建一个试用帐户](https://wd.azure.cn/pricing/1rmb-trial/)。
+- [Node.js v4.0+](https://nodejs.org)。
+- [Git](https://git-scm.com/download/)。
 
 [!INCLUDE [IoT Device Provisioning Service basic](../../includes/iot-dps-basic.md)]
 
@@ -135,6 +135,13 @@ Azure IoT 设备预配服务支持两类注册：
 
 
 ## <a name="create-a-device-entry"></a>创建设备条目
+
+Azure IoT 设备预配服务支持两类注册：
+
+- [注册组](concepts-service.md#enrollment-group)：用于注册多个相关设备。
+- [单个注册](concepts-service.md#individual-enrollment)：用于注册单个设备。
+
+本文演示单个注册。
 
 1. 登录到 Azure 门户，选择左侧菜单上的“所有资源”按钮，打开设备预配服务  。
 

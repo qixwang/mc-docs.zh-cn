@@ -1,26 +1,27 @@
 ---
 title: 动态数据屏蔽
-description: 动态数据掩码通过对 SQL 数据库和数据仓库的非特权用户模糊化敏感数据来限制此类数据的泄露
+description: 动态数据掩码通过对 SQL 数据库和 Azure Synapse 的非特权用户掩码敏感数据来限制此类数据的泄露
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
-titleSuffix: Azure SQL Database and SQL Data Warehouse
+titleSuffix: Azure SQL Database and Azure Synapse
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
 author: WenJason
 ms.author: v-jay
 ms.reviewer: vanto
-origin.date: 03/04/2019
-ms.date: 02/17/2020
-ms.openlocfilehash: afd485d4147901125c828a9b0c5cac0a0e38e09f
-ms.sourcegitcommit: d7b86a424b72849fe8ed32893dd05e4696e4fe85
+origin.date: 02/06/2020
+ms.date: 03/16/2020
+tags: azure-synpase
+ms.openlocfilehash: 47f561e3b77e21c5a582d6a4c27f277c5ed1a0c3
+ms.sourcegitcommit: dc862610e2169c1fce6fb0ae9eb7dd7567f86a0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77155598"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293733"
 ---
-# <a name="dynamic-data-masking-for-azure-sql-database-and-data-warehouse"></a>Azure SQL 数据库和数据仓库的动态数据掩码
+# <a name="dynamic-data-masking-for-azure-sql-database-and-azure-synapse-analytics"></a>Azure SQL 数据库和 Azure Synapse Analytics 的动态数据掩码
 
 SQL 数据库动态数据掩码通过对非特权用户模糊化敏感数据来限制此类数据的泄露。 
 
@@ -30,7 +31,7 @@ SQL 数据库动态数据掩码通过对非特权用户模糊化敏感数据来�
 
 ## <a name="dynamic-data-masking-basics"></a>动态数据掩码基础知识
 
-通过在 SQL 数据库配置边栏选项卡或设置边栏选项卡中选择“动态数据掩码”操作，在 Azure 门户中设置动态数据掩码策略。 不能使用 SQL DW 的门户设置此功能（请使用 Powershell 或 REST API）
+通过在 SQL 数据库配置边栏选项卡或设置边栏选项卡中选择“动态数据掩码”操作，在 Azure 门户中设置动态数据掩码策略。 不能使用门户为 Azure Synapse 设置此功能（请使用 Powershell 或 REST API）
 
 ### <a name="dynamic-data-masking-permissions"></a>动态数据掩码权限
 

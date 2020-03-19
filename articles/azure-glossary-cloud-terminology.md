@@ -17,11 +17,11 @@ origin.date: 08/16/2017
 ms.date: 10/22/2018
 ms.author: v-lingwu
 ms.openlocfilehash: 7325accd06c298c6b54135587a52eee5381a0413
-ms.sourcegitcommit: d75065296d301f0851f93d6175a508bdd9fd7afc
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52655826"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293472"
 ---
 # <a name="azure-glossary-a-dictionary-of-cloud-terminology-on-the-azure-platform"></a>Azure 词汇表：Azure 平台上的云术语字典
 
@@ -37,7 +37,7 @@ Azure 词汇表是适用于 Azure 平台的简短云术语字典。 另请参阅
 又叫[应用服务应用](#app-service-app)。
 
 ## 应用服务应用 <a name="app-service-app"></a>
-[Azure 应用服务](app-service/app-service-web-overview.md)提供的用于托管网站或 Web 应用程序、Web API 或[移动应用后端](app-service-mobile/app-service-mobile-value-prop.md)的计算资源。 应用服务应用也称为“应用服务”、“Web 应用”、“API 应用”和“移动应用”。
+[Azure 应用服务](app-service/app-service-web-overview.md)提供的用于托管网站或 Web 应用程序、Web API 或[移动应用后端](app-service-mobile/app-service-mobile-value-prop.md)的计算资源。 应用服务应用也称为“应用服务”  、“Web 应用”  、“API 应用”  和“移动应用”  。
 
 ## 可用性集 <a name="availability-set"></a>
 可一起管理的、用于提供应用程序冗余和可靠性的虚拟机集合。 使用可用性集可确保在计划内或计划外维护事件期间，至少有一个虚拟机可用。  
@@ -131,7 +131,7 @@ Resource Manager 中的容器，用于保存应用程序的相关资源。 资�
 
 ## <a name="vm-extension"></a>虚拟机扩展
 一个实现行为或功能的资源，可帮助其他程序正常工作，或提供与运行中计算机交互的能力。 例如，可以使用 VM 访问扩展来重置或修改 Azure 虚拟机上的远程访问值。
-请参阅[关于虚拟机扩展和功能 (Windows)](virtual-machines/windows/extensions-features.md)或[关于虚拟机扩展和功能 (Linux)](virtual-machines/linux/extensions-features.md)
+请参阅[关于虚拟机扩展和功能 (Windows)](virtual-machines/windows/extensions-features.md) 或[关于虚拟机扩展和功能 (Linux)](virtual-machines/linux/extensions-features.md)
 
 ## <a name="vnet"></a>虚拟网络
 在 Azure 资源之间提供连接并与其他所有 Azure 租户隔离的网络。 一个[Azure VPN 网关](vpn-gateway/vpn-gateway-about-vpngateways.md)，使用它可以在虚拟网络之间以及[虚拟网络与本地网络之间](vpn-gateway/vpn-gateway-plan-design.md)建立连接。 可以完全控制虚拟网络中的 IP 地址块、DNS 设置、安全策略和路由表。  

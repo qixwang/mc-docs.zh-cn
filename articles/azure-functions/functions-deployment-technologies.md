@@ -4,14 +4,14 @@ description: 了解将代码部署到 Azure Functions 的不同方式。
 author: georgewallace
 ms.custom: vs-azure
 ms.topic: conceptual
-ms.date: 02/18/2020
+ms.date: 03/03/2020
 ms.author: v-junlch
-ms.openlocfilehash: 293a9b9145013d77660437591dac6906c3114380
-ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
+ms.openlocfilehash: bee21a8200c6eeec535a33a334c3b5298448caf0
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77494518"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293229"
 ---
 # <a name="deployment-technologies-in-azure-functions"></a>Azure Functions 中的部署技术
 
@@ -103,7 +103,7 @@ Azure Functions 中提供了以下部署方法。
 
 使用压缩部署可将包含函数应用的 .zip 文件推送到 Azure。 可以选择将应用设置为开始[从包运行](run-functions-from-deployment-package.md)，或者指定进行[远程生成](#remote-build)。
 
->__如何使用：__ 使用偏爱的客户端工具进行部署：[Visual Studio Code](functions-create-first-function-vs-code.md#publish-the-project-to-azure)、[Visual Studio](functions-develop-vs.md#publish-to-azure)、[Azure Functions Core Tools](functions-run-local.md) 或 [Azure CLI](functions-create-first-azure-function-azure-cli.md#deploy-the-function-app-project-to-azure)。 默认情况下，这些工具使用 zip 部署并[从包运行](run-functions-from-deployment-package.md)。 Core Tools 和 Visual Studio Code 扩展在部署到 Linux 时都启用[远程生成](#remote-build)。 若要手动将 .zip 文件部署到函数应用，请遵照[从 .zip 文件或 URL 进行部署](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file-or-url)中的说明操作。
+>__如何使用：__ 使用偏爱的客户端工具进行部署：[Visual Studio Code](functions-develop-vs-code.md#publish-to-azure)、[Visual Studio](functions-develop-vs.md#publish-to-azure)，或从命令行使用 [Azure Functions Core Tools](functions-run-local.md#project-file-deployment)。 默认情况下，这些工具使用 zip 部署并[从包运行](run-functions-from-deployment-package.md)。 Core Tools 和 Visual Studio Code 扩展在部署到 Linux 时都启用[远程生成](#remote-build)。 若要手动将 .zip 文件部署到函数应用，请遵照[从 .zip 文件或 URL 进行部署](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file-or-url)中的说明操作。
 
 >使用压缩部署方法时，可将应用设置为[从包运行](run-functions-from-deployment-package.md)。 若要从包运行，请将 `WEBSITE_RUN_FROM_PACKAGE` 应用程序设置值设置为 `1`。 我们建议使用压缩部署。 此方法可以缩短应用程序加载时间，并且是 VS Code、Visual Studio 和 Azure CLI 的默认部署方法。 
 

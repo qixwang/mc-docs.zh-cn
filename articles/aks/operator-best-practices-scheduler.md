@@ -2,18 +2,16 @@
 title: 操作员最佳做法 - Azure Kubernetes 服务 (AKS) 中的基本计划程序功能
 description: 了解有关使用 Azure Kubernetes 服务 (AKS) 中的基本计划程序功能（例如资源配额和 pod 中断预算）的群集操作员最佳做法
 services: container-service
-author: rockboyfor
-ms.service: container-service
 ms.topic: conceptual
 origin.date: 11/26/2018
-ms.date: 07/29/2019
+ms.date: 03/09/2020
 ms.author: v-yeche
-ms.openlocfilehash: 1ccf1d36d38c55a9505d06ea6eee06f73e112b96
-ms.sourcegitcommit: 57994a3f6a263c95ff3901361d3e48b10cfffcdd
+ms.openlocfilehash: d0218eceaae7ca8b904ee0119922b9aab4fb74df
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70500730"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291327"
 ---
 # <a name="best-practices-for-basic-scheduler-features-in-azure-kubernetes-service-aks"></a>有关 Azure Kubernetes 服务 (AKS) 中的基本计划程序功能的最佳做法
 
@@ -81,7 +79,7 @@ kubectl apply -f dev-app-team-quotas.yaml --namespace dev-apps
 
 如果要升级群集或更新部署模板，Kubernetes 计划程序会确保在其他节点上计划其他 pod，然后，自愿性中断事件可以继续。 在重新启动节点之前，计划程序将一直等到在群集中的其他节点上成功计划了定义的 pod 数为止。
 
-让我们探讨一个副本集示例，其中包含五个运行 NGINX 的 pod。 为该副本集中的 pod 分配了标签 `app: nginx-frontend`。 在发生自愿性中断事件（例如群集升级）期间，你想要确保至少有三个 pod 可继续运行。 *PodDisruptionBudget* 对象的以下 YAML 清单定义了这些要求：
+让我们探讨一个副本集示例，其中包含五个运行 NGINX 的 pod。 将为副本集中的 Pod 指定 `app: nginx-frontend` 标签。 在发生自愿性中断事件（例如群集升级）期间，你想要确保至少有三个 pod 可继续运行。 *PodDisruptionBudget* 对象的以下 YAML 清单定义了这些要求：
 
 ```yaml
 apiVersion: policy/v1beta1
@@ -127,9 +125,7 @@ kubectl apply -f nginx-pdb.yaml
 
 [kube-advisor][kube-advisor] 工具是一个关联的 AKS 开放源代码项目，它将扫描 Kubernetes 群集，并报告它找到的问题。 一项有用的检查是识别未应用资源请求和限制的 pod。
 
-kube-advisor 工具可以报告 PodSpecs for Windows 应用程序以及 Linux 应用程序中缺少的资源请求和限制，但 kube-advisor 工具本身必须在 Linux Pod 上进行计划。
-
-<!--Not Available on [node selector][k8s-node-selector]-->
+kube-advisor 工具可以报告 PodSpecs for Windows 应用程序以及 Linux 应用程序中缺少的资源请求和限制，但 kube-advisor 工具本身必须在 Linux Pod 上进行计划。 可以使用 Pod 配置中的[节点选择器][k8s-node-selector]安排 Pod 在具有特定 OS 的节点池上运行。
 
 在托管多个开发团队和应用程序的 AKS 群集中，可能很难跟踪未设置这些资源请求和限制的 pod。 最佳做法是定期针对 AKS 群集运行 `kube-advisor`，尤其是未向命名空间分配资源配额时。
 
@@ -154,6 +150,6 @@ kube-advisor 工具可以报告 PodSpecs for Windows 应用程序以及 Linux �
 [aks-best-practices-cluster-isolation]: operator-best-practices-cluster-isolation.md
 [aks-best-practices-advanced-scheduler]: operator-best-practices-advanced-scheduler.md
 [aks-best-practices-identity]: operator-best-practices-identity.md
+[k8s-node-selector]: concepts-clusters-workloads.md#node-selectors
 
-<!--Not Available on [k8s-node-selector]: concepts-clusters-workloads.md#node-selectors-->
-<!-- Update_Description: wording update, update link -->
+<!-- Update_Description: update meta properties, wording update, update link -->

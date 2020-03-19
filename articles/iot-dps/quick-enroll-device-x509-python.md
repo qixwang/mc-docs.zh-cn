@@ -10,39 +10,35 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: python
 ms.custom: mvc
-ms.openlocfilehash: 267574f764bb63ba0edce31da6ccf6c0216070ae
-ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
+ms.openlocfilehash: b911759cf70aab136c463e8d70435be18a5215d9
+ms.sourcegitcommit: 4ba6d7c8bed5398f37eb37cf5e2acafcdcc28791
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77494388"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79133787"
 ---
 # <a name="quickstart-enroll-x509-devices-to-the-device-provisioning-service-using-python"></a>快速入门：使用 Python 将 X.509 设备注册到设备预配服务
 
 [!INCLUDE [iot-dps-selector-quick-enroll-device-x509](../../includes/iot-dps-selector-quick-enroll-device-x509.md)]
 
-通过创建[注册组](concepts-service.md#enrollment-group)或[个人注册](concepts-service.md#individual-enrollment)将设备注册到预配服务实例。 本快速入门展示了如何使用 Python 以编程方式创建使用中间或根 CA X.509 证书的[注册组](concepts-service.md#enrollment-group)。 注册组可以控制对设备的预配服务的访问，此类设备在其证书链中共享常用签名证书。 该注册组是使用 [V1 Python 预配服务 SDK](https://github.com/Azure/azure-iot-sdk-python/tree/v1-deprecated/provisioning_service_client) 和一个示例 Python 应用程序创建的。 使用 *Python 预配服务 SDK* 创建个人注册是正在进行的一项工作。 若要了解详细信息，请参阅[使用 X.509 证书控制设备对预配服务的访问](./concepts-security.md#controlling-device-access-to-the-provisioning-service-with-x509-certificates)。 若要详细了解如何将基于 X.509 证书的公钥基础结构 (PKI) 与 Azure IoT 中心和设备预配服务配合使用，请参阅 [X.509 CA 证书安全概述](/iot-hub/iot-hub-x509ca-overview)。
+在本快速入门中，你将使用 Python 以编程方式创建使用中间或根 CA X.509 证书的注册组。 注册组可以控制对设备的预配服务的访问，此类设备在其证书链中共享常用签名证书。 该注册组是使用 Python 预配服务 SDK 和一个示例 Python 应用程序创建的。
+
+## <a name="prerequisites"></a>先决条件
+
+- 完成[使用 Azure 门户设置 IoT 中心设备预配服务](./quick-setup-auto-provision.md)。
+- 具有活动订阅的 Azure 帐户。 [创建一个试用帐户](https://wd.azure.cn/pricing/1rmb-trial/)。
+- [Python 2.x 或 3.x](https://www.python.org/downloads/)。 将 Python 添加到特定于平台的环境变量。 本快速入门将在下面安装 [Python 预配服务 SDK](https://github.com/Azure/azure-iot-sdk-python/tree/v1-deprecated/provisioning_service_client)。
+- [Pip](https://pip.pypa.io/en/stable/installing/)（如果 Python 分发版中未附带）。
+- [Git](https://git-scm.com/download/)。
 
 > [!IMPORTANT]
 > 本文仅适用于已弃用的 V1 Python SDK。 V2 中尚不提供用于 IoT 中心设备预配服务的设备和服务客户端。 该团队目前正在努力使 V2 具有功能奇偶一致性。
 
-
-本快速入门假设你已创建了 IoT 中心和设备预配服务实例。 如果尚未创建这些资源，请先完成[使用 Azure 门户设置 IoT 中心设备预配服务](./quick-setup-auto-provision.md)快速入门，然后再继续学习本文。
-
-虽然本文中的步骤在 Windows 和 Linux 计算机上均适用，但本文是针对 Windows 开发计算机编写的。
-
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
-
-## <a name="prerequisites"></a>必备条件
-
-- 安装 [Python 2.x 或 3.x](https://www.python.org/downloads/)。 请确保根据安装程序的要求，使用 32 位或 64 位安装。 在安装过程中出现提示时，请确保将 Python 添加到特定于平台的环境变量中。
-- [安装或升级 Python 程序包管理系统 *pip*](https://pip.pypa.io/en/stable/installing/)。
-- 安装 [Git](https://git-scm.com/download/)。
-
 ## <a name="prepare-test-certificates"></a>准备测试证书
 
-对于本快速入门，必须具有一个包含中间或根 CA X.509 证书的公共部分的 .pem 或.cer 文件。 此证书必须上传到预配服务，并由该服务进行验证。 
+对于本快速入门，必须具有一个包含中间或根 CA X.509 证书的公共部分的 .pem 或.cer 文件。 此证书必须上传到预配服务，并由该服务进行验证。
 
+若要详细了解如何将基于 X.509 证书的公钥基础结构 (PKI) 与 Azure IoT 中心和设备预配服务配合使用，请参阅 [X.509 CA 证书安全概述](https://docs.azure.cn/iot-hub/iot-hub-x509ca-overview)。
 [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) 包含的测试工具可以帮助你创建 X.509 证书链、从该链上传根证书或中间证书，以及通过服务执行所有权证明操作，对证书进行验证。 根据设计，使用 SDK 工具创建的证书只能用于**开发测试**。 这些证书**不得在生产环境中使用**。 它们包含硬编码的密码（“1234”），在 30 天后过期。 若要了解如何获取适用于生产用途的证书，请参阅 Azure IoT 中心文档中的[如何获取 X.509 CA 证书](/iot-hub/iot-hub-x509ca-overview#how-to-get-an-x509-ca-certificate)。
 
 若要使用此测试工具来生成证书，请执行以下步骤：
@@ -120,6 +116,13 @@ ms.locfileid: "77494388"
  
 
 ## <a name="run-the-sample-group-enrollment"></a>运行示例组注册
+
+Azure IoT 设备预配服务支持两类注册：
+
+- [注册组](concepts-service.md#enrollment-group)：用于注册多个相关设备。
+- [单个注册](concepts-service.md#individual-enrollment)：用于注册单个设备。
+
+使用 [Python 预配服务 SDK](https://github.com/Azure/azure-iot-sdk-python/tree/v1-deprecated/provisioning_service_client) 创建个人注册是正在进行的一项工作。 若要了解详细信息，请参阅[使用 X.509 证书控制设备对预配服务的访问](./concepts-security.md#controlling-device-access-to-the-provisioning-service-with-x509-certificates)。
 
 1. 打开命令提示符，并运行以下命令来安装 [azure-iot-provisioning-device-client](https://pypi.org/project/azure-iot-provisioning-device-client)。
 

@@ -13,20 +13,20 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 origin.date: 01/29/2018
-ms.date: 05/07/2018
+ms.date: 03/23/2020
 ms.author: v-yiso
-ms.openlocfilehash: c4a6bdfe87685af8b6fa60d108a47d5ae147324a
-ms.sourcegitcommit: d75065296d301f0851f93d6175a508bdd9fd7afc
+ms.openlocfilehash: c52426e252ef5f5b6b7f3d627be4ff7117f33860
+ms.sourcegitcommit: 32997a7d7585deaeb0ab7b8f928d397b18b343fa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52644213"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79295866"
 ---
 # <a name="device-to-cloud-communications-guidance"></a>从设备到云通信指南
 将信息从设备应用发送到解决方案后端时，IoT 中心会公开三个选项：
 
 * [设备到云消息][lnk-d2c]，用于时序遥测和警报。
-* [设备克隆的报告属性][lnk-twins]用于报告设备状态信息，例如可用功能、条件或长时间运行的工作流的状态。 例如，配置和软件更新。
+* [设备孪生的报告属性][lnk-twins]，用于报告设备状态信息，例如可用功能、条件或长时间运行的工作流的状态。 例如，配置和软件更新。
 * [文件上传][lnk-fileupload]，用于由间歇性连接的设备上传的或为了节省带宽而压缩的媒体文件和大型遥测批文件。
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
@@ -36,8 +36,8 @@ ms.locfileid: "52644213"
 |  | 设备到云的消息 | 设备克隆的报告属性 | 文件上传 |
 | ---- | ------- | ---------- | ---- |
 | 方案 | 遥测时序和警报。 例如，每隔 5 分钟发送的 256KB 传感器数据批。 | 可用功能和条件。 例如，当前设备连接模式，诸如手机网络或 WiFi。 同步长时间运行的工作流，如配置和软件更新。 | 媒体文件。 大型（通常为压缩的）遥测批。 |
-| 存储和检索 | 通过 IoT 中心临时进行存储，最多存储 7 天。 仅顺序读取。 | 通过 IoT 中心存储在设备孪生中。 可使用 [IoT 中心查询语言][lnk-query]检索。 | 存储在用户提供的 Azure 存储帐户中。 |
-| 大小 | 消息大小最大为 256-KB。 | 报告属性大小最大为 8 KB。 | Azure Blob 存储支持的最大文件大小。 |
+| 存储和检索 | 通过 IoT 中心临时进行存储，最多存储 7 天。 仅顺序读取。 | 通过 IoT 中心存储在设备孪生中。 可使用 [IoT 中心查询语言][lnk-query]进行检索。 | 存储在用户提供的 Azure 存储帐户中。 |
+| 大小 | 消息大小最大为 256-KB。 | 最大报告属性大小为 32 KB。 | Azure Blob 存储支持的最大文件大小。 |
 | 频率 | 高。 有关详细信息，请参阅 [IoT 中心限制][lnk-quotas]。 | 中。 有关详细信息，请参阅 [IoT 中心限制][lnk-quotas]。 | 低。 有关详细信息，请参阅 [IoT 中心限制][lnk-quotas]。 |
 | 协议 | 在所有协议上可用。 | 使用 MQTT 或 AMQP 时可用。 | 在使用任何协议时可用，但设备上必须具备 HTTPS。 |
 

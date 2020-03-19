@@ -7,26 +7,28 @@ author: curtand
 manager: mtillman
 ms.assetid: ''
 ms.service: active-directory
+ms.subservice: pim
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/08/2020
+ms.date: 03/11/2020
 ms.author: v-junlch
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 44b180ed6a42ce2d41bcd2a1678b4ac0002aedb8
-ms.sourcegitcommit: 1bc154c816a5dff47ee051c431cd94826e57aa60
+ms.openlocfilehash: 68c3e82d8ede37ef2e2aeb50050ef150b2040910
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75777095"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79290948"
 ---
 # <a name="management-capabilities-for-azure-ad-roles-in-privileged-identity-management"></a>Privileged Identity Management 中 Azure AD 角色的管理功能
 
 Privileged Identity Management 中 Azure AD 角色的管理体验已更新，以统一 Azure AD 角色和 Azure 资源角色的管理方式。 之前，Azure 资源角色的 Privileged Identity Management 具有几个 Azure AD 角色无法使用的关键功能。
 
 通过当前推出的更新，我们将两者合并为一个单一的管理体验。在此体验中，你可获得与 Azure 资源角色相同的 Azure AD 角色功能。 本文将介绍已更新的功能和任何要求。
+
 
 ## <a name="time-bound-assignments"></a>时限性分配
 
@@ -60,7 +62,7 @@ Privileged Identity Management 中 Azure AD 角色的管理体验已更新，以
 
 ## <a name="powershell-change"></a>PowerShell 更改
 
-对于使用 Azure AD 角色的 Privileged Identity Management PowerShell 模块的客户，PowerShell 将停止更新。 必须使用 Azure AD 预览 PowerShell 模块中的 Privileged Identity Management cmdlet 来替换以前的 cmdlet。 安装 [PowerShell 库](https://www.powershellgallery.com/packages/AzureADPreview/2.0.0.17)中的 Azure AD PowerShell 模块。 cmdlet 在图形 API 的基础之上进行构建。
+对于使用 Azure AD 角色的 Privileged Identity Management PowerShell 模块的客户，PowerShell 将停止更新。 必须使用 Azure AD 预览 PowerShell 模块中的 Privileged Identity Management cmdlet 来替换以前的 cmdlet。 安装 [PowerShell 库](https://www.powershellgallery.com/packages/AzureADPreview/2.0.0.17)中的 Azure AD PowerShell 模块。 现在，可以[在此 PowerShell 模块中阅读 PIM 操作的文档和示例](powershell-for-azure-ad-roles.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

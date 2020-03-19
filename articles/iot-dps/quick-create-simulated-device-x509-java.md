@@ -4,31 +4,33 @@ description: Azure 快速入门 - 使用适用于 IoT 中心设备预配服务 (
 author: wesmc7777
 ms.author: v-tawe
 origin.date: 11/08/2018
-ms.date: 03/02/2020
+ms.date: 03/23/2020
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 ms.devlang: java
 ms.custom: mvc
-ms.openlocfilehash: b8b4415aced8543b59eaf8ffb852261d2c7e6070
-ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
+ms.openlocfilehash: 616b420d80f431e9a615b33482661ec9b114635b
+ms.sourcegitcommit: 4ba6d7c8bed5398f37eb37cf5e2acafcdcc28791
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77494410"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79133795"
 ---
 # <a name="quickstart-create-and-provision-a-simulated-x509-device-using-java-device-sdk-for-iot-hub-device-provisioning-service"></a>快速入门：使用适用于 IoT 中心设备预配服务的 Java 设备 SDK 创建和预配模拟的 X.509 设备
+
 [!INCLUDE [iot-dps-selector-quick-create-simulated-device-x509](../../includes/iot-dps-selector-quick-create-simulated-device-x509.md)]
 
-以下步骤演示了如何在运行 Windows OS 的开发计算机上模拟 X.509 设备，以及如何使用代码示例通过设备预配服务和 IoT 中心连接该模拟设备。 
+在本快速入门中，我们在 Windows 计算机上创建一台模拟 X.509 设备。 我们使用设备预配服务 (DPS) 的单个注册，通过设备示例 Java 代码将此模拟设备连接到 IoT 中心。
 
-如果不熟悉自动预配过程，还务必查看[自动预配概念](concepts-auto-provisioning.md)。 另外，在继续操作之前，请确保已完成[通过 Azure 门户设置 IoT 中心设备预配服务](./quick-setup-auto-provision.md)中的步骤。 
+## <a name="prerequisites"></a>先决条件
 
-Azure IoT 设备预配服务支持两类注册：
-- [注册组](concepts-service.md#enrollment-group)：用于注册多个相关设备。
-- [单独注册](concepts-service.md#individual-enrollment)：用于注册单个设备。
-
-本文将演示单个注册。
+- 查看[自动预配概念](concepts-auto-provisioning.md)。
+- 完成[通过 Azure 门户设置 IoT 中心设备预配服务](./quick-setup-auto-provision.md)。
+- 具有活动订阅的 Azure 帐户。 [创建一个试用帐户](https://wd.azure.cn/pricing/1rmb-trial/)。
+- [Java SE 开发工具包 8](https://aka.ms/azure-jdks)。
+- [Maven](https://maven.apache.org/install.html)。
+- [Git](https://git-scm.com/download/)。
 
 ## <a name="prepare-the-environment"></a>准备环境 
 
@@ -65,6 +67,12 @@ Azure IoT 设备预配服务支持两类注册：
 
 你将使用来自 [Azure IoT SDK for Java](https://github.com/Azure/azure-iot-sdk-java.git) 的示例代码创建要与模拟设备的个体注册条目一起使用的证书。
 
+Azure IoT 设备预配服务支持两类注册：
+
+- [注册组](concepts-service.md#enrollment-group)：用于注册多个相关设备。
+- [单个注册](concepts-service.md#individual-enrollment)：用于注册单个设备。
+
+本文演示单个注册。
 
 1. 使用前面步骤中的命令提示符，导航到 `target` 文件夹，然后执行在上一步中创建的 .jar 文件。
 

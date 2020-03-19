@@ -12,13 +12,13 @@ ms.author: v-jay
 ms.reviewer: sashan, carlrab
 manager: digimobile
 origin.date: 08/27/2019
-ms.date: 02/17/2020
-ms.openlocfilehash: 259c338be65bedbba0f9df5257b19b83bf964de5
-ms.sourcegitcommit: d7b86a424b72849fe8ed32893dd05e4696e4fe85
+ms.date: 03/16/2020
+ms.openlocfilehash: 314c4c1e5ea3da6ae86b77dcc50e2fbf040e5854
+ms.sourcegitcommit: dc862610e2169c1fce6fb0ae9eb7dd7567f86a0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77155717"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293864"
 ---
 # <a name="tutorial-add-a-sql-database-managed-instance-to-a-failover-group"></a>教程：将 SQL 数据库托管实例添加到故障转移组
 
@@ -35,7 +35,7 @@ ms.locfileid: "77155717"
   > - 参与故障转移组的托管实例需要 [ExpressRoute](../expressroute/expressroute-howto-circuit-portal-resource-manager.md) 或两个连接的 VPN 网关。 本教程提供创建和连接 VPN 网关的步骤。 如果已配置 ExpressRoute，请跳过这些步骤。 
 
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 若要完成本教程，请确保做好以下准备： 
@@ -1005,7 +1005,7 @@ ms.locfileid: "77155717"
 使用 Azure 门户测试故障转移。 
 
 
-1. 在 [Azure 门户](https://portal.azure.cn)中导航到你的托管实例，然后在“设置”下选择“实例故障转移组”。  
+1. 在 [Azure 门户](https://portal.azure.cn)中导航到你的辅助托管实例，然后在“设置”下选择“实例故障转移组”   。 
 1. 查看哪个托管实例是主实例，哪个托管实例是辅助实例。 
 1. 选择“故障转移”，然后在有关正在断开 TDS 会话的警告中选择“是”。   
 
@@ -1015,7 +1015,7 @@ ms.locfileid: "77155717"
 
    ![故障转移后托管实例的角色已交换](media/sql-database-managed-instance-failover-group-tutorial/mi-switched-after-failover.png)
 
-1. 再次选择“故障转移”，将主实例故障回复为主角色。  
+1. 转到新的_辅助_托管实例，再次选择“故障转移”，将主实例故障回复为主角色  。 
 
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)

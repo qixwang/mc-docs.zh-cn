@@ -4,35 +4,36 @@ description: 快速入门 - 使用适用于 IoT 中心设备预配服务 (DPS) �
 author: wesmc7777
 ms.author: v-tawe
 origin.date: 11/08/2019
-ms.date: 03/02/2020
+ms.date: 03/23/2020
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 ms.devlang: python
 ms.custom: mvc
-ms.openlocfilehash: 01d3260b423c6df8075eb8241dc663edbf99c2a1
-ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
+ms.openlocfilehash: 3c9a2544a52b68ced30beb276e9b0bc2e3392ddb
+ms.sourcegitcommit: 4ba6d7c8bed5398f37eb37cf5e2acafcdcc28791
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77494091"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79133793"
 ---
 # <a name="quickstart-create-and-provision-a-simulated-x509-device-using-python-device-sdk-for-iot-hub-device-provisioning-service"></a>快速入门：使用适用于 IoT 中心设备预配服务的 Python 设备 SDK 创建和预配模拟的 X.509 设备
 
 [!INCLUDE [iot-dps-selector-quick-create-simulated-device-x509](../../includes/iot-dps-selector-quick-create-simulated-device-x509.md)]
 
-以下步骤演示了如何在运行 Windows OS 的开发计算机上模拟 X.509 设备，以及如何使用 Python 代码示例通过设备预配服务和 IoT 中心连接该模拟设备。 
+在本快速入门中，我们在 Windows 计算机上创建一台模拟 X.509 设备。 我们使用设备预配服务 (DPS) 的单个注册，通过设备示例 Python 代码将此模拟设备连接到 IoT 中心。
+
+## <a name="prerequisites"></a>先决条件
+
+- 查看[自动预配概念](concepts-auto-provisioning.md)。
+- 完成[通过 Azure 门户设置 IoT 中心设备预配服务](./quick-setup-auto-provision.md)。
+- 具有活动订阅的 Azure 帐户。 [创建一个试用帐户](https://wd.azure.cn/pricing/1rmb-trial/)。
+- [Visual Studio 2015+](https://visualstudio.microsoft.com/vs/)，结合使用通过 C++ 进行的桌面开发。
+- [CMake 生成系统](https://cmake.org/download/)。
+- [Git](https://git-scm.com/download/)。
 
 > [!IMPORTANT]
 > 本文仅适用于已弃用的 V1 Python SDK。 V2 中尚不提供用于 IoT 中心设备预配服务的设备和服务客户端。 该团队目前正在努力使 V2 具有功能奇偶一致性。
-
-如果不熟悉自动预配过程，还务必查看[自动预配概念](concepts-auto-provisioning.md)。 另外，在继续操作之前，请确保已完成[通过 Azure 门户设置 IoT 中心设备预配服务](./quick-setup-auto-provision.md)中的步骤。 
-
-Azure IoT 设备预配服务支持两类注册：
-- [注册组](concepts-service.md#enrollment-group)：用于注册多个相关设备。
-- [单独注册](concepts-service.md#individual-enrollment)：用于注册单个设备。
-
-本文将演示单个注册。
 
 [!INCLUDE [IoT Device Provisioning Service basic](../../includes/iot-dps-basic.md)]
 
@@ -73,6 +74,13 @@ Azure IoT 设备预配服务支持两类注册：
 * 自签名证书的默认过期日期为一年。
 
 你将使用来自 Azure IoT C SDK 的示例代码创建要与模拟设备的个人注册条目一起使用的证书。
+
+Azure IoT 设备预配服务支持两类注册：
+
+- [注册组](concepts-service.md#enrollment-group)：用于注册多个相关设备。
+- [单个注册](concepts-service.md#individual-enrollment)：用于注册单个设备。
+
+本文演示单个注册。
 
 1. 打开在  cmake 文件夹中生成的名为 `azure_iot_sdks.sln` 的解决方案，将其内置到 Visual Studio 中。
 

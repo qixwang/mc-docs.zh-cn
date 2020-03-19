@@ -7,15 +7,15 @@ ms.subservice: shared-capabilities
 author: WenJason
 ms.author: v-jay
 origin.date: 05/14/2019
-ms.date: 10/21/2019
+ms.date: 03/16/2020
 ms.topic: conceptual
 manager: digimobile
-ms.openlocfilehash: b4539e3aa4dd47e4da14d8f651cee4e327b39574
-ms.sourcegitcommit: 713bd1d1b476cec5ed3a9a5615cfdb126bc585f9
+ms.openlocfilehash: 15142d001e310bd24d4883a7bc06bae7cdfe8256
+ms.sourcegitcommit: dc862610e2169c1fce6fb0ae9eb7dd7567f86a0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72578523"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293832"
 ---
 # <a name="variable-assets-in-azure-automation"></a>Azure 自动化中的变量资产
 

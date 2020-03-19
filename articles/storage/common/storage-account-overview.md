@@ -7,15 +7,15 @@ author: WenJason
 ms.service: storage
 ms.topic: conceptual
 origin.date: 01/17/2020
-ms.date: 02/10/2020
+ms.date: 03/09/2020
 ms.author: v-jay
 ms.subservice: common
-ms.openlocfilehash: 6c49639407252c6ce87a0fdcac42440941e8cd7e
-ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
+ms.openlocfilehash: 777d705b0e68d230a0fa9e4e4f30104db1d644c4
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77028549"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291488"
 ---
 # <a name="storage-account-overview"></a>存储帐户概述
 
@@ -67,7 +67,7 @@ Azure 存储帐户包含所有的 Azure 存储数据对象：Blob、文件、队
 
 FileStorage 帐户是用于存储和创建高级文件共享的专用存储帐户。 此存储帐户类型支持文件，但不支持块 blob、追加 blob、页 blob、表或队列。
 
-FileStorage 帐户提供了独特的性能特征，例如 IOPS 突发。 有关这些特征的更多信息，请参阅文件规划指南的[文件共享性能层](../files/storage-files-planning.md#file-share-performance-tiers)部分。
+FileStorage 帐户提供了独特的性能专用特征，例如 IOPS 突发。 有关这些特征的更多信息，请参阅文件规划指南的[文件共享存储层](../files/storage-files-planning.md#storage-tiers)部分。
 
 ## <a name="naming-storage-accounts"></a>为存储帐户命名
 
@@ -102,11 +102,9 @@ Azure 存储提供不同的选项，适用于根据使用模型访问块 Blob �
 > [!IMPORTANT]
 > 更改现有存储帐户或 Blob 的访问层可能会产生额外费用。 有关详细信息，请参阅[“存储帐户计费”部分](#storage-account-billing)。
 
-## <a name="replication"></a>复制
+## <a name="redundancy"></a>冗余
 
 [!INCLUDE [storage-common-redundancy-options](../../../includes/storage-common-redundancy-options.md)]
-
-有关存储复制的详细信息，请参阅 [Azure 存储复制](storage-redundancy.md)。
 
 ## <a name="encryption"></a>Encryption
 

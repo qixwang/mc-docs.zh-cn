@@ -3,17 +3,16 @@ title: 检查 Azure 上的 Kubernetes 部署，确定最佳做法的实现情况
 description: 了解如何使用 kube-advisor 检查 Azure Kubernetes 服务上部署的最佳做法实现情况
 services: container-service
 author: rockboyfor
-ms.service: container-service
 ms.topic: troubleshooting
 origin.date: 11/05/2018
-ms.date: 05/13/2019
+ms.date: 03/09/2020
 ms.author: v-yeche
-ms.openlocfilehash: bf035920374fa7f8104428c56cd52137bc044ea6
-ms.sourcegitcommit: 8b9dff249212ca062ec0838bafa77df3bea22cc3
+ms.openlocfilehash: d6e79bed80d33d48795972c6fc3357e3a8771c15
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "65520705"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79290731"
 ---
 # <a name="checking-for-kubernetes-best-practices-in-your-cluster"></a>检查 Kubernetes 群集中的最佳做法
 
@@ -21,7 +20,13 @@ ms.locfileid: "65520705"
 
 ## <a name="about-kube-advisor"></a>关于 kube-advisor
 
-[kube-advisor 工具][kube-advisor-github]是单个容器，为在群集上运行而设计。 它将查询 Kubernetes API 服务器，以了解你的部署，并返回一组建议的改进。
+[kube-advisor 工具][kube-advisor-github]是单个容器，专为在群集上运行而设计。 它将查询 Kubernetes API 服务器，以了解你的部署，并返回一组建议的改进。
+
+kube-advisor 工具可以报告 PodSpecs for Linux 应用程序中缺少的资源请求和限制，并且 kube-advisor 工具本身必须在 Linux Pod 上进行计划。 可以使用 Pod 配置中的[节点选择器][k8s-node-selector]安排 Pod 在具有特定 OS 的节点池上运行。
+
+<!--Not Available on Windows applications as well as-->
+<!--Not Available on but the kube-advisor tool itself must be scheduled on a Linux pod. -->
+
 
 > [!NOTE]
 > Azure 最大程度支持 kube-advisor 工具。 应在 GitHub 上提交的问题和建议。
@@ -52,7 +57,7 @@ kubectl run --rm -i -t kubeadvisor --image=mcr.microsoft.com/aks/kubeadvisor --r
 
 ### <a name="resource-requests-and-limits"></a>资源请求和限制
 
-Kubernetes 支持定义[资源请求和对 pod 规范的限制][kube-cpumem]。 请求定义运行容器所需的最小 CPU 和内存。 限制定义应允许的最大 CPU 和内存。
+Kubernetes 支持定义[针对 pod 规范的资源请求和限制][kube-cpumem]。 请求定义运行容器所需的最小 CPU 和内存。 限制定义应允许的最大 CPU 和内存。
 
 默认情况下，未对 pod 规范设置任何请求或限制。 这可能导致节点被过度安排，而耗尽容器。 kube-advisor 工具可突出显示 pod，并且未设置请求和限制。
 
@@ -74,3 +79,6 @@ kubectl delete -f https://raw.githubusercontent.com/Azure/kube-advisor/master/sa
 
 [kube-cpumem]: https://github.com/Azure/azure-quickstart-templates
 [kube-advisor-github]: https://github.com/azure/kube-advisor
+[k8s-node-selector]: concepts-clusters-workloads.md#node-selectors
+
+<!-- Update_Description: update meta properties, wording update, update link -->

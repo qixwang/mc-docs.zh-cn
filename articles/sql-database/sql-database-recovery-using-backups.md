@@ -11,13 +11,13 @@ author: WenJason
 ms.author: v-jay
 ms.reviewer: mathoma, carlrab, danil
 origin.date: 09/26/2019
-ms.date: 12/16/2019
-ms.openlocfilehash: fdaf9b1e07c77a40b7b292af6e9ce5ce44cb4d1d
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.date: 03/16/2020
+ms.openlocfilehash: 6224d3587047dd027d7a9cdc98d1a98781b775f7
+ms.sourcegitcommit: dc862610e2169c1fce6fb0ae9eb7dd7567f86a0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75334958"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293763"
 ---
 # <a name="recover-an-azure-sql-database-by-using-automated-database-backups"></a>使用自动数据库备份恢复 Azure SQL 数据库
 
@@ -127,7 +127,7 @@ ms.locfileid: "75334958"
 
 #### <a name="managed-instance-database"></a>托管实例数据库
 
-有关演示如何还原已删除的实例数据库的示例 PowerShell 脚本，请参阅[使用 PowerShell 还原托管实例上已删除的数据库](https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../recreate-dropped-database-on-azure-sql-managed-instance)。 
+有关演示如何还原已删除的实例数据库的示例 PowerShell 脚本，请参阅[使用 PowerShell 还原托管实例上已删除的数据库](sql-database-managed-instance-point-in-time-restore.md#restore-a-deleted-database)
 
 > [!TIP]
 > 若要以编程方式还原已删除的数据库，请参阅[使用自动备份以编程方式执行恢复](sql-database-recovery-using-backups.md)。

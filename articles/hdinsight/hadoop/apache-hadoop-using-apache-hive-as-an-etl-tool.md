@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-origin.date: 11/14/2017
-ms.date: 03/26/2018
+origin.date: 11/22/2019
+ms.date: 03/23/2020
 ms.author: v-yiso
-ms.openlocfilehash: 689b3039fd9e69053a62501573eca341924e848a
-ms.sourcegitcommit: d75065296d301f0851f93d6175a508bdd9fd7afc
+ms.openlocfilehash: 12ae64542306b3df4dcc6d544882d98aeef05495
+ms.sourcegitcommit: 32997a7d7585deaeb0ab7b8f928d397b18b343fa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52650632"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79295988"
 ---
 # <a name="use-apache-hive-as-an-extract-transform-and-load-etl-tool"></a>将 Apache Hive 用作提取、转换和加载 (ETL) 工具
 
@@ -90,7 +90,7 @@ ms.locfileid: "52650632"
 
 * 将流数据或大量半结构化或非结构化数据从外部源载入现有数据库或信息系统。
 * 在加载数据之前，先清理、转换和验证这些数据（也许是通过群集使用多个转换阶段执行此操作）。
-* 生成定期更新的报表和可视化效果。  例如，如果在日间生成报表耗时太长，可以安排在夜间运行报告。  可以使用 Azure 计划程序和 PowerShell 自动运行 Hive 查询。
+* 生成定期更新的报表和可视化效果。 例如，如果在日间生成报表耗时太长，可以安排在夜间运行报告。 若要自动运行 Hive 查询，可以使用 [Azure 逻辑应用](../../logic-apps/logic-apps-overview.md)和 PowerShell。
 
 如果数据目标不是数据库，可以在查询中以相应格式（例如 CSV）生成文件。 然后，可将此文件导入 Excel 或 Power BI。
 

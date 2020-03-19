@@ -1,5 +1,5 @@
 ---
-title: 使用 PowerShell 创建 Azure 数据资源管理器群集和数据库
+title: 使用 Powershell 创建 Azure 数据资源管理器群集和数据库
 description: 了解如何使用 PowerShell 创建 Azure 数据资源管理器群集和数据库
 author: lucygoldbergmicrosoft
 ms.author: v-tawe
@@ -7,13 +7,13 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 origin.date: 06/03/2019
-ms.date: 02/17/2020
-ms.openlocfilehash: b0f6a829bd5e5fa4ed65efc8bc0f6c9bbc7e0f3a
-ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
+ms.date: 03/23/2020
+ms.openlocfilehash: 60ad98bec88004fbe479a3b194de29e92d44b5c1
+ms.sourcegitcommit: 4ba6d7c8bed5398f37eb37cf5e2acafcdcc28791
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77037940"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79134033"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-database-by-using-powershell"></a>使用 PowerShell 创建 Azure 数据资源管理器群集和数据库
 
@@ -27,7 +27,7 @@ ms.locfileid: "77037940"
 
 Azure 数据资源管理器是一项快速、完全托管的数据分析服务，用于实时分析从应用程序、网站和 IoT 设备等资源流式传输的海量数据。 若要使用 Azure 数据资源管理器，请先创建群集，再在该群集中创建一个或多个数据库。 然后将数据引入（加载）到数据库，以便对其运行查询。 在本文中，将使用 Powershell 创建群集和数据库。 可以在 Windows、Linux 或 [Azure CLI](https://docs.azure.cn/cli/?view=azure-cli-latest) 中使用 [Az.Kusto](https://docs.microsoft.com/powershell/module/az.kusto/?view=azps-1.4.0#kusto) 运行 PowerShell cmdlet 和脚本，以创建和配置 Azure 数据资源管理器群集和数据库。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 

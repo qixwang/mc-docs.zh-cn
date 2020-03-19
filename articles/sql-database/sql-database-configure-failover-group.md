@@ -11,13 +11,13 @@ author: WenJason
 ms.author: v-jay
 ms.reviewer: sstein, carlrab
 origin.date: 08/14/2019
-ms.date: 02/17/2020
-ms.openlocfilehash: e7e6d8e38986587179993eb6665ad11043b78d2d
-ms.sourcegitcommit: d7b86a424b72849fe8ed32893dd05e4696e4fe85
+ms.date: 03/16/2020
+ms.openlocfilehash: 538e235db0bb96373812b13a019af765826f7c74
+ms.sourcegitcommit: dc862610e2169c1fce6fb0ae9eb7dd7567f86a0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77155673"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293820"
 ---
 # <a name="configure-a-failover-group-for-azure-sql-database"></a>为 Azure SQL 数据库配置故障转移组
 
@@ -26,7 +26,7 @@ ms.locfileid: "77155673"
 ## <a name="single-database"></a>单一数据库
 使用 Azure 门户或 PowerShell 创建故障转移组，并将单一数据库添加到其中。
 
-### <a name="prerequisites"></a>必备条件
+### <a name="prerequisites"></a>先决条件
 
 请注意以下先决条件：
 
@@ -190,7 +190,7 @@ ms.locfileid: "77155673"
 ## <a name="elastic-pool"></a>弹性池
 使用 Azure 门户或 PowerShell 创建故障转移组，并将弹性池添加到其中。  
 
-### <a name="prerequisites"></a>必备条件
+### <a name="prerequisites"></a>先决条件
 
 请注意以下先决条件：
 
@@ -341,7 +341,7 @@ ms.locfileid: "77155673"
 
 需要配置 [ExpressRoute](../expressroute/expressroute-howto-circuit-portal-resource-manager.md) 或为每个托管实例的虚拟网络创建一个网关，连接两个网关，然后创建故障转移组。 
 
-### <a name="prerequisites"></a>必备条件
+### <a name="prerequisites"></a>先决条件
 请注意以下先决条件：
 
 - 辅助托管实例必须为空。
@@ -592,7 +592,7 @@ ms.locfileid: "77155673"
 
 使用 Azure 门户测试故障转移组的故障转移。 
 
-1. 在 [Azure 门户](https://portal.azure.cn)中导航到你的托管实例，然后在“设置”下选择“实例故障转移组”。  
+1. 在 [Azure 门户](https://portal.azure.cn)中导航到你的辅助托管实例，然后在“设置”下选择“实例故障转移组”   。 
 1. 查看哪个托管实例是主实例，哪个托管实例是辅助实例。 
 1. 选择“故障转移”，然后在有关正在断开 TDS 会话的警告中选择“是”。   
 
@@ -602,7 +602,7 @@ ms.locfileid: "77155673"
 
    ![故障转移后托管实例的角色已交换](media/sql-database-managed-instance-failover-group-tutorial/mi-switched-after-failover.png)
 
-1. 再次选择“故障转移”，将主实例故障回复为主角色。  
+1. 转到新的_辅助_托管实例，再次选择“故障转移”，将主实例故障回复为主角色  。 
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 

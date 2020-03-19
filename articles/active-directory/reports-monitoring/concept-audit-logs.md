@@ -13,17 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-origin.date: 07/17/2019
-ms.date: 11/28/2019
+ms.date: 03/11/2020
 ms.author: v-junlch
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0bd14fd05b6464b60bd77b7315462166ab4b6aae
-ms.sourcegitcommit: 9597d4da8af58009f9cef148a027ccb7b32ed8cf
+ms.openlocfilehash: d011e8287cac35b0cd4ad2e0b53e00506a301fdd
+ms.sourcegitcommit: 4ba6d7c8bed5398f37eb37cf5e2acafcdcc28791
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74655414"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79133966"
 ---
 # <a name="audit-activity-reports-in-the-azure-active-directory-portal"></a>Azure Active Directory 门户中的“审核活动”报告 
 
@@ -39,11 +38,11 @@ ms.locfileid: "74655414"
  
 ## <a name="who-can-access-the-data"></a>谁可以访问该数据？
 
-* 具有**安全管理员**、**安全读取者**、**报表读取者**或**全局管理员**角色的用户
+* 具有**安全管理员**、**安全读取者**、**报告读取者**、**全局读取者**或**全局管理员**角色的用户
 
 ## <a name="audit-logs"></a>审核日志
 
-Azure AD 审核日志提供系统活动的记录以实现符合性。 若要访问审核数据，请在 **Azure Active Directory** 的“活动”部分中选择“审核日志”   。 请注意，审核日志的延迟可能长达一个小时，因此在完成任务后，审核活动数据可能需要很长时间才能显示在门户中。
+Azure AD 审核日志提供系统活动的记录以实现符合性。 若要访问审核报告，请在 **Azure Active Directory** 的“监视”部分中选择“审核日志”   。 请注意，审核日志的延迟可能长达一个小时，因此在完成任务后，审核活动数据可能需要很长时间才能显示在门户中。
 
 
 
@@ -103,14 +102,13 @@ Azure AD 审核日志提供系统活动的记录以实现符合性。 若要访�
 - Success
 - 失败
 
-可以通过“目标”筛选器按名称或用户主体名称 (UPN) 搜索特定目标。  目标名称和 UPN 区分大小写。 
+ “目标”筛选器允许你按名称或用户主体名称 (UPN) 的开头来搜索特定目标。 目标名称和 UPN 区分大小写。 
 
-“发起者”筛选器用于定义参与者的名称或通用主体名称 (UPN)。  名称和 UPN 区分大小写。
+“发起者”筛选器允许你定义参与者名称或通用主体名称 (UPN) 的开头。  名称和 UPN 区分大小写。
 
 “日期范围”筛选器用于定义已返回数据的时间范围。   
 可能的值包括：
 
-- 1 个月
 - 7 天
 - 24 小时
 - “自定义”
@@ -148,11 +146,11 @@ Azure AD 审核日志提供系统活动的记录以实现符合性。 若要访�
 
 - 向组或用户分配了哪些许可证？
 
-如果只想查看与用户相关的审核数据，可以在“用户”选项卡的“活动”部分中的“审核日志”下方查找筛选视图    。此入口点已将 **UserManagement** 作为预先选择的类别。
+如果只想查看与用户相关的审核数据，可以在“用户”选项卡“监视”部分中的“审核日志”下找到筛选视图    。此入口点已将 **UserManagement** 作为预先选择的类别。
 
 ![审核日志](./media/concept-audit-logs/users.png "审核日志")
 
-如果只想查看与组相关的审核数据，可以在“组”选项卡的“活动”部分中的“审核日志”下方查找筛选视图    。此入口点已将 **GroupManagement** 作为预先选择的类别。
+如果只想查看与组相关的审核数据，可以在“组”选项卡“监视”部分中的“审核日志”下找到筛选视图    。此入口点已将 **GroupManagement** 作为预先选择的类别。
 
 ![审核日志](./media/concept-audit-logs/groups.png "审核日志")
 

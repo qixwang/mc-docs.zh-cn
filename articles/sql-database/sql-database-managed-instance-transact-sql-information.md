@@ -9,15 +9,15 @@ ms.topic: conceptual
 author: WenJason
 ms.author: v-jay
 ms.reviewer: sstein, carlrab, bonova, danil
-origin.date: 12/30/2019
-ms.date: 02/17/2020
+origin.date: 02/10/2020
+ms.date: 03/16/2020
 ms.custom: seoapril2019
-ms.openlocfilehash: 2d23bba2cf02ab1292a0ca4d08f374d6d509a646
-ms.sourcegitcommit: d7b86a424b72849fe8ed32893dd05e4696e4fe85
+ms.openlocfilehash: 0b58d2962cdb8edbcc9258e1418fdb01162131c5
+ms.sourcegitcommit: dc862610e2169c1fce6fb0ae9eb7dd7567f86a0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77155703"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293729"
 ---
 # <a name="managed-instance-t-sql-differences-limitations-and-known-issues"></a>托管实例的 T-SQL 差异、限制和已知问题
 
@@ -531,6 +531,15 @@ WITH PRIVATE KEY (<private_key_options>)
 托管实例将详细信息放在错误日志中。 有很多内部系统事件记录在错误日志中。 使用自定义过程读取已筛选出某些不相关条目的错误日志。 有关详细信息，请参阅[托管实例 - sp_readmierrorlog](https://blogs.msdn.microsoft.com/sqlcat/2018/05/04/azure-sql-db-managed-instance-sp_readmierrorlog/) 或用于 Azure Data Studio 的[托管实例扩展（预览版）](https://docs.microsoft.com/sql/azure-data-studio/azure-sql-managed-instance-extension#logs)。
 
 ## <a name="Issues"></a> 已知问题
+
+
+### <a name="limitation-of-manual-failover-via-portal-for-failover-groups"></a>通过门户对故障转移组进行手动故障转移的限制
+
+**日期：** 2020 年 1 月
+
+如果故障转移组跨越不同 Azure 订阅或资源组中的实例，则无法从故障转移组中的主实例启动手动故障转移。
+
+**解决方法**：通过门户从异地辅助实例启动故障转移。
 
 ### <a name="sql-agent-roles-need-explicit-execute-permissions-for-non-sysadmin-logins"></a>SQL 代理角色需要拥有对非 sysadmin 登录名的显式 EXECUTE 权限
 

@@ -13,11 +13,11 @@ origin.date: 10/10/2019
 ms.date: 12/05/2019
 ms.author: v-lingwu
 ms.openlocfilehash: 03d73ea42c22ea20539247fe6b014db03c0d181e
-ms.sourcegitcommit: cf73284534772acbe7a0b985a86a0202bfcc109e
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74884491"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292726"
 ---
 # <a name="concepts-about-intents-in-your-luis-app"></a>关于 LUIS 应用中的意向的概念
 

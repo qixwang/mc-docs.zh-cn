@@ -1,20 +1,16 @@
 ---
 title: 有关 Azure Kubernetes 服务 (AKS) 的常见问题解答
 description: 查找有关 Azure Kubernetes 服务 (AKS) 的某些常见问题的解答。
-services: container-service
-author: rockboyfor
-manager: digimobile
-ms.service: container-service
-ms.topic: article
+ms.topic: conceptual
 origin.date: 10/02/2019
-ms.date: 10/28/2019
+ms.date: 03/09/2020
 ms.author: v-yeche
-ms.openlocfilehash: d0a1f34764b5c54f00781220e851dd1c82a04c5d
-ms.sourcegitcommit: 1d4dc20d24feb74d11d8295e121d6752c2db956e
+ms.openlocfilehash: 9ef0ba33a8c86f21cddf14cac21fe4e5912ca72e
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73068894"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292489"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>有关 Azure Kubernetes 服务 (AKS) 的常见问题解答
 
@@ -34,14 +30,17 @@ ms.locfileid: "73068894"
 
 可以，可使用[高级网络功能][aks-advanced-networking]将 AKS 群集部署到现有虚拟网络中。
 
-<!--MOONCAKE: Not Available on Kubernetes API server-->
+## <a name="can-i-limit-who-has-access-to-the-kubernetes-api-server"></a>能否限制哪些人员可以访问 Kubernetes API 服务器？
+
+能，可以使用 [API 服务器授权 IP 范围][api-server-authorized-ip-ranges]来限制对 Kubernetes API 服务器的访问。
+
 ## <a name="can-i-make-the-kubernetes-api-server-accessible-only-within-my-virtual-network"></a>是否可以限制为只能在我的虚拟网络中访问 Kubernetes API 服务器？
 
 目前不可以，但此功能正在规划中。 可以在 [AKS GitHub 存储库][private-clusters-github-issue]中跟踪此项计划的进度。
 
-<!--MOONCAKE: ## Can I have different VM sizes in a single cluster?-->
+## <a name="can-i-have-different-vm-sizes-in-a-single-cluster"></a>能否在单个群集中使用不同 VM 大小？
 
-<!--MOONCAKE: Not Available on [multiple node pools][multi-node-pools]-->
+能，可以通过创建[多个节点池][multi-node-pools]来在 AKS 群集中使用不同虚拟机大小。
 
 ## <a name="are-security-updates-applied-to-aks-agent-nodes"></a>安全更新是否可应用于 AKS 代理节点？
 
@@ -58,7 +57,7 @@ Azure 会按照夜间计划自动将安全修补程序应用于群集中的 Linu
 
 ## <a name="why-are-two-resource-groups-created-with-aks"></a>为什么使用 AKS 创建两个资源组？
 
-AKS 在多个 Azure 基础结构资源之上构建，包括可用性集、虚拟网络和托管磁盘。 这使你能够在 AKS 提供的托管 Kubernetes 环境中利用 Azure 平台的许多核心功能。 
+AKS 在多个 Azure 基础结构资源之上构建，包括虚拟机规模集、虚拟网络和托管磁盘。 这使你能够在 AKS 提供的托管 Kubernetes 环境中利用 Azure 平台的许多核心功能。 
 
 <!--Not Available on virtual machine scale sets-->
 <!--MOONCAKE: REPLACE WITH availability set-->
@@ -105,8 +104,6 @@ AKS 支持以下[许可控制器][admission-controllers]：
 - MutatingAdmissionWebhook 
 - ValidatingAdmissionWebhook 
 - ResourceQuota 
-- DenyEscalatingExec 
-- AlwaysPullImages 
 
 目前无法在 AKS 中修改许可控制器列表。
 
@@ -193,12 +190,8 @@ AKS 目前尚未与 Azure Key Vault 本机集成。 但是，[Kubernetes 项目�
 
 <!-- LINKS - internal -->
 
-[aks-regions]: ./quotas-skus-regions.md#region-availability
 [aks-upgrade]: ./upgrade-cluster.md
 [aks-cluster-autoscale]: ./autoscaler.md
-
-<!--Not Avaialble on [virtual-kubelet]: virtual-kubelet.md-->
-
 [aks-advanced-networking]: ./configure-azure-cni.md
 [aks-rbac-aad]: ./azure-ad-integration.md
 [node-updates-kured]: node-updates-kured.md
@@ -214,12 +207,15 @@ AKS 目前尚未与 Azure Key Vault 本机集成。 但是，[Kubernetes 项目�
 <!--Not Avaialble on [aks-windows-cli]: windows-container-cli.md-->
 <!--Not Avaialble on [aks-windows-limitations]: windows-node-limitations.md-->
 <!--Not Avaialble on [reservation-discounts]: ../billing/billing-save-compute-costs-reservations.md-->
-<!--Not Avaialble on [api-server-authorized-ip-ranges]: ./api-server-authorized-ip-ranges.md-->
-<!--Not Avaialble on [multi-node-pools]: ./use-multiple-node-pools.md-->
+
+[api-server-authorized-ip-ranges]: ./api-server-authorized-ip-ranges.md
+[multi-node-pools]: ./use-multiple-node-pools.md
+
 <!--Not Avaialble on [availability-zones]: ./availability-zones.md-->
 
 <!-- LINKS - external -->
 
+[aks-regions]: https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service&regions=china-non-regional,china-east,china-east-2,china-north,china-north-2
 [auto-scaler]: https://github.com/kubernetes/autoscaler
 [cordon-drain]: https://kubernetes.io/docs/tasks/administer-cluster/safely-drain-node/
 [hexadite]: https://github.com/Hexadite/acs-keyvault-agent
@@ -227,4 +223,4 @@ AKS 目前尚未与 Azure Key Vault 本机集成。 但是，[Kubernetes 项目�
 [keyvault-flexvolume]: https://github.com/Azure/kubernetes-keyvault-flexvol
 [private-clusters-github-issue]: https://github.com/Azure/AKS/issues/948
 
-<!-- Update_Description: wording update, update link -->
+<!-- Update_Description: update meta properties, wording update, update link -->

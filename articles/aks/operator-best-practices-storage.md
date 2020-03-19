@@ -2,18 +2,16 @@
 title: 操作员最佳做法 - Azure Kubernetes 服务 (AKS) 中的存储
 description: 了解有关 Azure Kubernetes 服务 (AKS) 中的存储、数据加密和备份的群集操作员最佳做法
 services: container-service
-author: rockboyfor
-ms.service: container-service
 ms.topic: conceptual
 origin.date: 05/06/2019
-ms.date: 10/28/2019
+ms.date: 03/09/2020
 ms.author: v-yeche
-ms.openlocfilehash: b1e13b60b31f9f11d878ef451ab6dcd4ac870a15
-ms.sourcegitcommit: 1d4dc20d24feb74d11d8295e121d6752c2db956e
+ms.openlocfilehash: 8b5af6cca8e12107e3c3131fe3f003fc176dbab9
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73068879"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79290714"
 ---
 # <a name="best-practices-for-storage-and-backups-in-azure-kubernetes-service-aks"></a>有关 Azure Kubernetes 服务 (AKS) 中的存储和备份的最佳做法
 
@@ -41,8 +39,7 @@ ms.locfileid: "73068879"
 |----------|---------------|-----------------|----------------|-----------------|
 | 共享配置       | Azure 文件   | 是 | 是 | 是 |
 | 结构化应用数据        | Azure 磁盘   | 是 | 否  | 否  |
-
-<!--Not Available on | Unstructured data, file system operations | [BlobFuse (preview)][blobfuse] | Yes | Yes | Yes |-->
+| 非结构化的数据，文件系统操作 | [BlobFuse][blobfuse] | 是 | 是 | 是 |
 
 为 AKS 中的卷提供的两种主要存储类型由 Azure 磁盘或 Azure 文件支持。 为了提高安全性，两种类型的存储都默认使用 Azure 存储服务加密 (SSE) 来加密静态数据。 目前无法使用 AKS 节点级别的 Azure 磁盘加密对磁盘进行加密。
 

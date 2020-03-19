@@ -4,16 +4,16 @@ description: 了解如何与 Azure 防火墙集成，以保护应用服务环境
 author: ccompy
 ms.assetid: 955a4d84-94ca-418d-aa79-b57a5eb8cb85
 ms.topic: article
-origin.date: 01/14/2020
-ms.date: 02/17/2020
+origin.date: 01/24/2020
+ms.date: 03/23/2020
 ms.author: v-tawe
 ms.custom: seodec18
-ms.openlocfilehash: 4f3655dae03dd48099b632fbdb5cae70394e36a2
-ms.sourcegitcommit: ee2a3063185cd4c5dc24901366dbb726119d045d
+ms.openlocfilehash: 0e28f362be30ef08f91e0f2c487c448931acd4db
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76979351"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292444"
 ---
 # <a name="locking-down-an-app-service-environment"></a>锁定应用服务环境
 
@@ -42,9 +42,11 @@ ASE 出站依赖项几乎完全是使用 FQDN 定义的，不附带任何静态�
 
 ## <a name="locking-down-inbound-management-traffic"></a>锁定入站管理流量
 
-如果尚未为 ASE 子网分配 NSG，请创建一个。 在 NSG 中，将第一个规则设置为允许来自端口 454、455 上名为 AppServiceManagement 的服务标记的流量。 这是从公共 IP 管理你的 ASE 所需的唯一条件。 位于该服务标记后面的地址仅用来管理 Azure 应用服务。 流经这些连接的管理流量由身份验证证书提供加密和保护。 此通道上的典型流量包括客户发起的命令和运行状况探测等等。 
+如果尚未为 ASE 子网分配 NSG，请创建一个。 在 NSG 中，将第一个规则设为允许来自端口 454、455 上名为 AppServiceManagement 的服务标记的流量。 若要从公共 IP 管理 ASE，只需设置允许从 AppServiceManagement 标记进行访问的规则。 位于该服务标记后面的地址仅用来管理 Azure 应用服务。 流经这些连接的管理流量由身份验证证书提供加密和保护。 此通道上的典型流量包括客户发起的命令和运行状况探测等等。 
 
 通过门户创建的带有新子网的 ASE 在创建时带有一个 NSG，其中包含 AppServiceManagement 标记的允许规则。  
+
+ASE 还必须允许端口 16001 上来自负载均衡器标记的入站请求。 端口 16001 上来自负载均衡器的请求在负载均衡器和 ASE 前端之间进行保持连接检查。 如果端口 16001 被阻止，则 ASE 将不正常。
 
 ## <a name="configuring-azure-firewall-with-your-ase"></a>在 ASE 中配置 Azure 防火墙 
 

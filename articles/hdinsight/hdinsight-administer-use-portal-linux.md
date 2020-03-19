@@ -1,21 +1,20 @@
 ---
 title: 使用 Azure 门户管理 HDInsight 中的 Apache Hadoop 群集
 description: 了解如何使用 Azure 门户创建和管理 HDInsight 群集。
-services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 origin.date: 02/12/2020
-ms.date: 03/02/2020
+ms.date: 03/23/2020
 ms.author: v-yiso
-ms.openlocfilehash: a6abc4fd7205a3ff3e8f91bfa8727fee784eaba1
-ms.sourcegitcommit: 46fd4297641622c1984011eac4cb5a8f6f94e9f5
+ms.openlocfilehash: 9515b78b1aaa3c663332338f451c608bf71b32b7
+ms.sourcegitcommit: 32997a7d7585deaeb0ab7b8f928d397b18b343fa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77563400"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79295989"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>使用 Azure 门户管理 HDInsight 中的 Apache Hadoop 群集
 
@@ -23,7 +22,7 @@ ms.locfileid: "77563400"
 
 使用 [Azure门户][azure-portal]可以管理 Azure HDInsight 中的 [Apache Hadoop](https://hadoop.apache.org/) 群集。 使用上述选项卡选择器，可以了解如何使用其他工具在 HDInsight 中管理 Hadoop 群集。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 HDInsight 中的现有 Apache Hadoop 群集。  请参阅[使用 Azure 门户在 HDInsight 中创建基于 Linux 的群集](hdinsight-hadoop-create-linux-clusters-portal.md)。
 
@@ -154,7 +153,8 @@ HDInsight 中的现有 Apache Hadoop 群集。  请参阅[使用 Azure 门户在
 
 可以通过许多方式对此过程进行程序性处理：
 
-
+- 用户 Azure 数据工厂。 有关创建按需 HDInsight 链接服务的信息，请参阅[在 HDInsight 中使用 Azure 数据工厂创建基于 Linux 的按需 Apache Hadoop 群集](hdinsight-hadoop-create-linux-clusters-adf.md)。
+- 使用 Azure PowerShell。  请参阅[分析航班延误数据](./interactive-query/interactive-query-tutorial-analyze-flight-data.md)。
 * 使用 Azure CLI。 请参阅[使用 Azure CLI 管理 Azure HDInsight 群集](hdinsight-administer-use-command-line.md)。
 * 使用 HDInsight .NET SDK。 请参阅[提交 Apache Hadoop 作业](hadoop/submit-apache-hadoop-jobs-programmatically.md)。
 
@@ -220,21 +220,11 @@ HDInsight 群集可以有两个用户帐户。 HDInsight 群集用户帐户（HT
    | 脚本类型 | 从下拉列表中选择“- 自定义”。 |
    | 名称 |“更改 ssh 密码” |
    | Bash 脚本 URI |changepassword.sh 文件的 URI |
-   | 节点类型：（头节点、辅助角色节点、Nimbus、监督程序、Zookeeper，等等。） |✓ 适用于所有列出的节点类型 |
+   | 节点类型：（头节点、辅助角色节点、Nimbus 节点、监督器节点或 Zookeeper 节点。） |✓ 适用于所有列出的节点类型 |
    | parameters |输入 SSH 用户名和新密码。 用户名与密码之间应有一个空格。 |
    | 保留此脚本操作... |让此字段保留未选中状态。 |
-5. 选择“创建”  以应用脚本。 完成脚本后，可以使用新密码通过 SSH 连接到群集。
 
-## <a name="grantrevoke-access"></a>授予/撤消访问权限
-HDInsight 群集提供以下 HTTP Web 服务（所有这些服务都有 REST 样式的终结点）：
-
-* ODBC
-* JDBC
-* Ambari
-* Oozie
-* Templeton
-
-默认情况下，这些服务会获得访问授权。 可以使用 [Azure PowerShell](hdinsight-administer-use-powershell.md#grantrevoke-access) 来撤销/授予访问权限。
+6. 选择“创建”  以应用脚本。 脚本完成后，可以使用新密码通过 SSH 连接到群集。
 
 ## <a name="find-the-subscription-id"></a>查找订阅 ID
 每个群集都绑定到一个 Azure 订阅。  Azure 订阅 ID 在[群集主页](#homePage)中可见。

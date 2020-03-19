@@ -1,26 +1,25 @@
 ---
-title: 许可组的 PowerShell 和 Graph 示例 - Azure Active Directory | Microsoft Docs
+title: 组许可的 PowerShell 和 Graph 示例 - Azure AD | Microsoft Docs
 description: Azure Active Directory 基于组的许可的 PowerShell + Graph 示例和方案
 services: active-directory
 keywords: Azure AD 许可
 documentationcenter: ''
 author: curtand
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.subservice: users-groups-roles
 ms.topic: article
 ms.workload: identity
-origin.date: 03/18/2019
-ms.date: 11/14/2019
+ms.date: 03/11/2020
 ms.author: v-junlch
 ms.reviewer: sumitp
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cdabed3bb2c6444ae15d426985394802c7d013aa
-ms.sourcegitcommit: 1171a6ab899b26586d1ea4b3a089bb8ca3af2aa2
+ms.openlocfilehash: 90918def88e22f9b5a3d32437efdf8fc8aace461
+ms.sourcegitcommit: 4ba6d7c8bed5398f37eb37cf5e2acafcdcc28791
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74084734"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79133984"
 ---
 # <a name="powershell-and-graph-examples-for-group-based-licensing-in-azure-ad"></a>Azure AD 中基于组的许可的 PowerShell 和 Graph 示例
 
@@ -83,11 +82,11 @@ HTTP/1.1 200 OK
 
 可通过运行以下命令，查找所有已分配有任意许可证的组：
 ```powershell
-Get-MsolGroup | Where {$_.Licenses}
+Get-MsolGroup -All | Where {$_.Licenses}
 ```
 可显示更多有关分配了哪些产品的详细信息：
 ```powershell
-Get-MsolGroup | Where {$_.Licenses} | Select `
+Get-MsolGroup -All | Where {$_.Licenses} | Select `
     ObjectId, `
     DisplayName, `
     @{Name="Licenses";Expression={$_.Licenses | Select -ExpandProperty SkuPartNumber}}
@@ -164,7 +163,7 @@ Access to Offi... 11151866-5419-4d93-9141-0603bbf78b42 STANDARDPACK             
 ## <a name="get-all-groups-with-license-errors"></a>获取含有许可证错误的所有组
 查找组，这些组中包含一些无法为其分配许可证的用户：
 ```powershell
-Get-MsolGroup -HasLicenseErrorsOnly $true
+Get-MsolGroup -All -HasLicenseErrorsOnly $true
 ```
 输出：
 ```
@@ -286,7 +285,7 @@ Drew Fogarty     f2af28fc-db0b-4909-873d-ddd2ab1fd58c 1ebd5028-6092-41d0-9668-12
 下面是该脚本的另一个版本，它只在包含许可证错误的组中搜索。 预期有问题的组较少的情况下，这可能最适用。
 
 ```powershell
-$groupIds = Get-MsolGroup -HasLicenseErrorsOnly $true
+$groupIds = Get-MsolGroup -All -HasLicenseErrorsOnly $true
     foreach ($groupId in $groupIds) {
     Get-MsolGroupMember -All -GroupObjectId $groupId.ObjectID |
         Get-MsolUser -ObjectId {$_.ObjectId} |
@@ -631,4 +630,3 @@ aadbe4da-c4b5-4d84-800a-9400f31d7371 User has no direct license to remove. Skipp
 * [如何在 Azure Active Directory 中使用基于组的许可在产品许可证之间迁移用户](../users-groups-roles/licensing-groups-change-licenses.md)
 * [Azure Active Directory 中基于组的许可的 PowerShell 示例](../users-groups-roles/licensing-ps-examples.md)
 
-<!-- Update_Description: code update -->

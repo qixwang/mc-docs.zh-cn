@@ -3,20 +3,20 @@ title: ContentDefinitions
 titleSuffix: Azure AD B2C
 description: 在 Azure Active Directory B2C 中指定自定义策略的 ContentDefinitions 元素。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/20/2020
+ms.date: 03/04/2020
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: 4488a2f0070c504b4d561eccd74c410f12a22317
-ms.sourcegitcommit: 1bd7711964586b41ff67fd1346dad368fe7383da
+ms.openlocfilehash: 06b4370fa26708fc4457e3f0aa30aeea3df507a4
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77531298"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291120"
 ---
 # <a name="contentdefinitions"></a>ContentDefinitions
 
@@ -70,7 +70,7 @@ ms.locfileid: "77531298"
 | 元素 | 出现次数 | 说明 |
 | ------- | ----------- | ----------- |
 | LoadUri | 1:1 | 一个字符串，包含内容定义 HTML5 页面的 URL。 |
-| RecoveryUri | 0:1 | 一个字符串，包含用于显示内容定义相关错误的 HTML 页面的 URL。 |
+| RecoveryUri | 1:1 | 一个字符串，包含用于显示内容定义相关错误的 HTML 页面的 URL。 |
 | DataUri | 1:1 | 一个字符串，包含一个 HTML 文件的相对 URL，该文件提供要为步骤调用的用户体验。 |
 | Metadata | 0:1 | 一个键/值对集合，包含内容定义使用的元数据。 |
 | LocalizedResourcesReferences | 0:1 | 本地化的资源引用集合。 使用此元素可以自定义用户界面和声明属性的本地化。 |
@@ -86,7 +86,7 @@ ms.locfileid: "77531298"
 | `unifiedssp` | 显示一个窗体，用于通过基于电子邮件地址或用户名的本地帐户进行登录。 此值还提供“使我保持登录功能”和“忘记了密码?” 链接。 |
 | `unifiedssd` | 显示一个窗体，用于通过基于电子邮件地址或用户名的本地帐户进行登录。 |
 | `multifactor` | 在注册或登录期间使用短信或语音来验证电话号码。 |
-| `selfasserted` | 显示一个窗体，让用户创建或更新其个人资料。 |
+| `selfasserted` | 显示用于从用户收集数据的表单。 例如，让用户创建或更新其个人资料。 |
 
 ### <a name="select-a-page-layout"></a>选择页面布局
 
@@ -143,7 +143,7 @@ ms.locfileid: "77531298"
 
 #### <a name="metadata-keys"></a>元数据键
 
-内容定义支持以下元数据项： 
+内容定义支持以下元数据项：
 
 | 键 | 必须 | 说明 |
 | --------- | -------- | ----------- |

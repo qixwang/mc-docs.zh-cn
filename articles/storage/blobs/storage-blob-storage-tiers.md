@@ -4,17 +4,17 @@ description: Azure 存储帐户的热、冷、存档访问层。
 author: WenJason
 ms.author: v-jay
 origin.date: 03/23/2019
-ms.date: 02/10/2020
+ms.date: 03/09/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: clausjor
-ms.openlocfilehash: 3f8023bdb45448a0c6c3a3420dcd0f19041d853f
-ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
+ms.openlocfilehash: 1e4e112196f7a1ea3b79e9ca3869d5c49c128c03
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77028950"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293422"
 ---
 # <a name="azure-blob-storage-hot-cool-and-archive-access-tiers"></a>Azure Blob 存储：热、冷、存档访问层
 
@@ -27,7 +27,7 @@ Azure 存储提供了不同的访问层，允许以最具成本效益的方式�
 以下注意事项适用于不同的访问层：
 
 - 在帐户级别只能设置热和冷访问层。 存档访问层在帐户级别不可用。
-- 可在 Blob 级别设置热、冷和存档层。
+- 可以在上传期间或上传后在 Blob 级别设置热层、冷层和存档层。
 - 冷访问层中的数据可容许略低的可用性，但仍需类似于热数据的高持久性、检索延迟和吞吐量特征。 对于冷数据，略低的可用性服务级别协议 (SLA) 和较高的访问成本（与热数据相比）对于更低的存储成本而言是可接受的折衷。
 - 存档存储脱机存储数据，其存储费用最低，但数据解冻和访问费用最高。
 
@@ -78,7 +78,7 @@ Blob 存储和 GPv2 帐户在帐户级别公开“访问层”属性  。 使用
 
 ## <a name="blob-level-tiering"></a>Blob 级别分层
 
-使用 Blob 级分层功能即可通过名为[设置 Blob 层](https://docs.microsoft.com/rest/api/storageservices/set-blob-tier)的单一操作在对象级别更改数据的层。 可以在使用模式更改时轻松地在热、冷或存档层之间更改 Blob 的访问层，不需在帐户之间移动数据。 所有层更改请求会立即发生，热和冷之间的层更改是即时的。 但是，从存档层中解除冻结 blob 可能需要几个小时。
+有了 Blob 级别分层，就可以使用 [Put Blob](/rest/api/storageservices/put-blob) 或 [Put 块列表](/rest/api/storageservices/put-block-list)操作将数据上传到所选的访问层，并使用[设置 Blob 层](/rest/api/storageservices/set-blob-tier)操作或[生命周期管理](#blob-lifecycle-management)功能在对象级别更改数据的层。 可以将数据上传到所需的访问层，然后在使用模式更改时轻松地在热、冷或存档层之间更改 Blob 访问层，不需在帐户之间移动数据。 所有层更改请求会立即发生，热和冷之间的层更改是即时的。 但是，从存档层中解除冻结 blob 可能需要几个小时。
 
 上次 Blob 层更改的时间通过 Blob 属性“访问层更改时间”  公开。 覆盖热层或冷层中的 blob 时，除非在创建时显式设置了新的 blob 访问层，否则新创建的 blob 将继承被覆盖的 blob 的层的属性。 如果 Blob 位于存档层中，则无法被覆盖，因此在这种情况下，不允许上传相同的 Blob。 
 
@@ -91,9 +91,11 @@ Blob 存储生命周期管理提供丰富的基于规则的策略，用于将数
 
 ### <a name="blob-level-tiering-billing"></a>Blob 级别分层计费
 
+将 blob 上传或移动到热层、冷层或存档层时，系统会在层更改时立即按相应的费率收费。
+
 将 blob 移到更冷的层（热->冷、热->存档或冷->存档）时，操作按目标层写入操作计费，具体说来就是按目标层的写入操作次数（以 10,000 次为单位）和数据写入量（以 GB 为单位）收费。
 
-将 Blob 移到更暖的层（存档->冷、存档->热或冷->热）时，操作按从源层读取计费，具体说来就是按源层的读取操作次数（以 10,000 次为单位）和数据检索量（以 GB 为单位）收费。 也可能还会收取从池或存档层移出的任何 Blob 的早期删除费用。 下表总结了如何对层更改进行计费。
+将 Blob 移到更暖的层（存档->冷、存档->热或冷->热）时，操作按从源层读取计费，具体说来就是按源层的读取操作次数（以 10,000 次为单位）和数据检索量（以 GB 为单位）收费。 也可能还会收取从池或存档层移出的任何 Blob 的早期删除费用。 [将数据从存档中解除冻结](storage-blob-rehydration.md)需要一段时间，并且数据会按存档价格计费，直到将数据联机还原并将 blob 层更改为热层或冷层为止。 下表总结了如何对层更改进行计费：
 
 | | **写入费用（操作 + 访问）** | **读取费用（操作 + 访问）**
 | ---- | ----- | ----- |
@@ -134,7 +136,7 @@ Blob 存储生命周期管理提供丰富的基于规则的策略，用于将数
 
 ### <a name="change-the-default-account-access-tier-of-a-gpv2-or-blob-storage-account"></a>更改 GPv2 或 Blob 存储帐户的默认帐户访问层
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 1. 登录到 [Azure 门户](https://portal.azure.cn)。
 
 1. 在 Azure 门户中，搜索并选择“所有资源”  。
@@ -149,7 +151,7 @@ Blob 存储生命周期管理提供丰富的基于规则的策略，用于将数
 
 ![更改存储帐户层](media/storage-tiers/account-tier.png)
 
-# <a name="powershelltabazure-powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
 以下 PowerShell 脚本可用于更改帐户层。 必须使用资源组名称初始化 `$rgName` 变量。 必须使用存储帐户名称初始化 `$accountName` 变量。 
 ```powershell
 #Initialize the following with your resource group and storage account names
@@ -162,7 +164,7 @@ Set-AzStorageAccount -ResourceGroupName $rgName -Name $accountName -AccessTier H
 ---
 
 ### <a name="change-the-tier-of-a-blob-in-a-gpv2-or-blob-storage-account"></a>更改 GPv2 或 Blob 存储帐户中 Blob 的层
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 1. 登录到 [Azure 门户](https://portal.azure.cn)。
 
 1. 在 Azure 门户中，搜索并选择“所有资源”  。
@@ -179,7 +181,7 @@ Set-AzStorageAccount -ResourceGroupName $rgName -Name $accountName -AccessTier H
 
 ![更改存储帐户层](media/storage-tiers/blob-access-tier.png)
 
-# <a name="powershelltabazure-powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
 以下 PowerShell 脚本可用于更改 blob 层。 必须使用资源组名称初始化 `$rgName` 变量。 必须使用存储帐户名称初始化 `$accountName` 变量。 必须使用容器名称初始化 `$containerName` 变量。 必须使用 blob 名称初始化 `$blobName` 变量。 
 ```powershell
 #Initialize the following with your resource group, storage account, container, and blob names

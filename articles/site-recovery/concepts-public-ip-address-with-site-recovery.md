@@ -5,16 +5,16 @@ services: site-recovery
 author: rockboyfor
 manager: digimobile
 ms.service: site-recovery
-ms.topic: article
-origin.date: 11/27/2018
-ms.date: 01/21/2019
+ms.topic: conceptual
+origin.date: 04/08/2019
+ms.date: 04/22/2019
 ms.author: v-yeche
-ms.openlocfilehash: ba98a5a2bcec52542587da29e6a9328beb473a0b
-ms.sourcegitcommit: 26957f1f0cd708f4c9e6f18890861c44eb3f8adf
+ms.openlocfilehash: 202432e824aa9af99d8f3e917aac4999b2232557
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54363293"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292864"
 ---
 # <a name="set-up-public-ip-addresses-after-failover"></a>设置故障转移后的公共 IP 地址
 
@@ -33,7 +33,7 @@ ms.locfileid: "54363293"
 
 ## <a name="public-ip-address-assignment-using-recovery-plan"></a>使用恢复计划分配公共 IP 地址
 
-生产应用程序的公共 IP 地址不能在故障转移中保留。 作为故障转移过程的一部分启动的工作负载必须向其分配在目标区域可用的 Azure 公共 IP 资源。 此步骤可手动完成或使用恢复计划自动执行。 恢复计划将计算机汇集到恢复组中。 它可以帮助定义一个系统性恢复过程。 可以通过用于故障转移到 Azure 的 Azure 自动化 runbook 或通过脚本使用恢复计划来维持秩序，自动执行每个步骤所需的操作。
+生产应用程序的公共 IP 地址不能在故障转移中保留  。 作为故障转移过程的一部分启动的工作负载必须向其分配在目标区域可用的 Azure 公共 IP 资源。 此步骤可手动完成或使用恢复计划自动执行。 恢复计划将计算机汇集到恢复组中。 它可以帮助定义一个系统性恢复过程。 可以通过用于故障转移到 Azure 的 Azure 自动化 runbook 或通过脚本使用恢复计划来维持秩序，自动执行每个步骤所需的操作。
 
 设置如下：
 - 创建[恢复计划](../site-recovery/site-recovery-create-recovery-plans.md#create-a-recovery-plan)并根据需要将工作负载分组到计划中。
@@ -49,9 +49,9 @@ Azure 流量管理器在终结点之间启用 DNS 级别路由，可帮助在灾
 
 设置如下：
 - 创建[流量管理器配置文件](../traffic-manager/traffic-manager-create-profile.md)。
-- 利用“优先级”路由方法创建两个终结点 - 针对源的“主要”终结点，针对 Azure 的“故障转移”终结点。 为**主要**终结点分配优先级 1，为**故障转移**终结点分配优先级 2。
-- “主要”终结点可以是 [Azure](../traffic-manager/traffic-manager-endpoint-types.md#azure-endpoints) 或[外部](../traffic-manager/traffic-manager-endpoint-types.md#external-endpoints)终结点，具体取决于源环境在 Azure 内部还是外部。
-- “故障转移”终结点被创建为“Azure”终结点。 使用静态公共 IP 地址，因为这将是灾难事件中流量管理器的面向外部的终结点。
+- 利用“优先级”  路由方法创建两个终结点 - 针对源的“主要”  终结点，针对 Azure 的“故障转移”  终结点。 为**主要**终结点分配优先级 1，为**故障转移**终结点分配优先级 2。
+- “主要”  终结点可以是 [Azure](../traffic-manager/traffic-manager-endpoint-types.md#azure-endpoints) 或[外部](../traffic-manager/traffic-manager-endpoint-types.md#external-endpoints)终结点，具体取决于源环境在 Azure 内部还是外部。
+- “故障转移”  终结点被创建为“Azure”  终结点。 使用静态公共 IP 地址  ，因为这将是灾难事件中流量管理器的面向外部的终结点。
 
 ## <a name="next-steps"></a>后续步骤
 - 详细了解[将流量管理器与 Azure Site Recovery 配合使用](../site-recovery/concepts-traffic-manager-with-site-recovery.md)

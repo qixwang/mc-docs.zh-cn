@@ -11,13 +11,13 @@ author: WenJason
 ms.author: v-jay
 ms.reviewer: mathoma
 origin.date: 02/07/2019
-ms.date: 02/17/2020
-ms.openlocfilehash: 43647b9ced305c51ba3b7761afe33e82840447a5
-ms.sourcegitcommit: d7b86a424b72849fe8ed32893dd05e4696e4fe85
+ms.date: 03/16/2020
+ms.openlocfilehash: 7978d5326154284b80dd03d01c75f0898ebe44ed
+ms.sourcegitcommit: dc862610e2169c1fce6fb0ae9eb7dd7567f86a0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77155688"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293692"
 ---
 # <a name="configure-replication-in-an-azure-sql-database-managed-instance-database"></a>在 Azure SQL 数据库托管实例数据库中配置复制
 
@@ -37,7 +37,7 @@ ms.locfileid: "77155688"
 
   > [!NOTE]
   > - 本文旨在从头到尾地引导用户配置 Azure 数据库托管实例的复制，并从创建资源组开始讲起。 如果已部署托管实例，请跳到[步骤 4](#4---create-a-publisher-database) 以创建发布服务器数据库；如果你已有一个发布服务器数据库和订阅服务器数据库，并已准备好开始配置复制，请跳到[步骤 6](#6---configure-distribution)。  
-  > - 本文在相同的托管实例上配置发布服务器和分发服务器。 
+  > - 本文在相同的托管实例上配置发布服务器和分发服务器。 若要将分发服务器置于单独的托管实例上，请参阅教程[配置 MI 发布服务器与 MI 分发服务器之间的复制](sql-database-managed-instance-configure-replication-tutorial.md)。 
 
 ## <a name="requirements"></a>要求
 
@@ -342,4 +342,5 @@ GO
 ## <a name="see-also"></a>另请参阅
 
 - [事务复制](sql-database-managed-instance-transactional-replication.md)
+- [教程：配置 MI 发布服务器与 SQL Server 订阅服务器之间的事务复制](sql-database-managed-instance-configure-replication-tutorial.md)
 - [什么是托管实例？](sql-database-managed-instance.md)

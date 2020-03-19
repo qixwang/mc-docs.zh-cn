@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 02/17/2020
+ms.date: 03/02/2020
 ms.author: v-junlch
-ms.openlocfilehash: 7386f7db1faaf61a24ff04c29fc92e617870d3f5
-ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
+ms.openlocfilehash: ef6cb64dc405808e4cdb890b310aa61ba44df78d
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77494523"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292742"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway-v2"></a>自动缩放和区域冗余应用程序网关 v2 
 
@@ -26,8 +26,8 @@ ms.locfileid: "77494523"
   仅当 Azure 区域可用时，区域冗余才可用。 在其他区域中，支持所有其他功能。 
 - **静态 VIP**：目前只有应用程序网关 v2 SKU 支持静态 VIP 类型。 这可以确保与应用程序网关关联的 VIP 在部署的整个生命周期内不会更改，即使发生重启。  v1 中没有静态 VIP，因此必须使用应用程序网关 URL（而不是 IP 地址）通过应用程序网关将域名路由到应用服务。
 - **标头重写**：应用程序网关允许使用 v2 SKU 添加、删除或更新 HTTP 请求和响应标头。 有关详细信息，请参阅[重写应用程序网关的 HTTP 标头](rewrite-http-headers.md)。
-- **Key Vault 集成（预览版）** ：应用程序网关 v2 支持与 Key Vault（公共预览版）集成，以获取附加到支持 HTTPS 的侦听器的服务器证书。 有关详细信息，请参阅[使用 Key Vault 证书实现 SSL 终止](key-vault-certs.md)。
-- **Azure Kubernetes 服务入口控制器（预览版）** ：借助应用程序网关 v2 入口控制器，可将 Azure 应用程序网关用作 Azure Kubernetes 服务 (AKS)（称为 AKS 群集）的入口。 有关详细信息，请参阅[文档页](https://azure.github.io/application-gateway-kubernetes-ingress/)。
+- **Key Vault 集成**：应用程序网关 v2 支持与 Key Vault 集成，以获取要附加到支持 HTTPS 的侦听器的服务器证书。 有关详细信息，请参阅[使用 Key Vault 证书实现 SSL 终止](key-vault-certs.md)。
+- **Azure Kubernetes 服务入口控制器**：借助应用程序网关 v2 入口控制器，可将 Azure 应用程序网关用作 Azure Kubernetes 服务 (AKS)（称为 AKS 群集）的入口。 有关详细信息，请参阅[什么是应用程序网关入口控制器？](ingress-controller-overview.md)。
 - **性能增强**：v2 SKU 提供的 SSL 卸载性能比 Standard/WAF SKU 高达 5 倍。
 - **更快的部署和更新速度** v2 SKU 的部署和更新速度比 Standard/WAF SKU 更快。 这还包括了 WAF 配置更改。
 
@@ -115,3 +115,4 @@ PowerShell 库中提供了一个 Azure PowerShell 脚本，以帮助你从 v1 �
 - 了解有关[应用程序网关](overview.md)的详细信息。
 - 了解有关 [Azure 防火墙](../firewall/overview.md)的详细信息。
 
+<!-- Update_Description: wording update -->

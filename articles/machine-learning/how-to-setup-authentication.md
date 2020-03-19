@@ -4,18 +4,19 @@ titleSuffix: Azure Machine Learning
 description: 了解如何为 Azure 机器学习中的各种资源和工作流设置和配置身份验证。 可以通过多种方式在服务中配置和使用身份验证，范围从出于开发或测试目的而进行的基于 UI 的简单身份验证，到完整的 Azure Active Directory 服务主体身份验证不等。
 services: machine-learning
 author: trevorbye
-ms.author: trbye
+ms.author: v-yiso
 ms.reviewer: trbye
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.date: 12/17/2019
-ms.openlocfilehash: ed4fb6026d62972a5eb82f4e18920316de9ebf7b
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+origin.date: 12/17/2019
+ms.date: 03/16/2020
+ms.openlocfilehash: 59553e493ae00227f2d89102d0a234d7199d6fbd
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75598080"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291501"
 ---
 # <a name="set-up-authentication-for-azure-machine-learning-resources-and-workflows"></a>为 Azure 机器学习资源和工作流设置身份验证
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -265,18 +266,22 @@ from azureml.core.webservice import AciWebservice
 
 aci_config = AciWebservice.deploy_configuration(cpu_cores = 1,
                                                 memory_gb = 1,
-                                                auth_enable=True)
+                                                auth_enabled=True)
 ```
 
-然后使用父 `WebService` 类在部署中使用自定义 ACI 配置。
+然后可以通过 `Model` 类在部署中使用自定义 ACI 配置。
 
 ```python
-from azureml.core.webservice import Webservice
+from azureml.core.model import Model, InferenceConfig
 
-aci_service = Webservice.deploy_from_image(deployment_config=aci_config,
-                                           image=image,
-                                           name="aci_service_sample",
-                                           workspace=ws)
+
+inference_config = InferenceConfig(entry_script="score.py",
+                                   environment=myenv)
+aci_service = Model.deploy(workspace=ws,
+                       name="aci_service_sample",
+                       models=[model],
+                       inference_config=inference_config,
+                       deployment_config=aci_config)
 aci_service.wait_for_deployment(True)
 ```
 

@@ -9,15 +9,15 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.devlang: na
 ms.topic: article
-origin.date: 02/02/2020
-ms.date: 03/02/2020
+origin.date: 02/26/2020
+ms.date: 03/23/2020
 ms.author: v-yiso
-ms.openlocfilehash: 0fc734378b8a3ecbfa2ace10f9d62d2f91bbf4f3
-ms.sourcegitcommit: 46fd4297641622c1984011eac4cb5a8f6f94e9f5
+ms.openlocfilehash: bed695d3d3212f6d6830b7d277d127c0ebe07888
+ms.sourcegitcommit: 32997a7d7585deaeb0ab7b8f928d397b18b343fa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77563370"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79295936"
 ---
 # <a name="what-are-the-apache-hadoop-components-and-versions-available-with-hdinsight"></a>HDInsight 提供了哪些 Apache Hadoop 组件和版本？
 
@@ -66,6 +66,12 @@ Azure HDInsight 支持多个可随时部署的 Hadoop 群集版本。 从 2017 �
 请参阅 [HDInsight 发行说明](hdinsight-release-notes.md)，了解 HDInsight 最新版本的更多发行说明。
 
 ## <a name="supported-hdinsight-versions"></a>支持的 HDInsight 版本
+
+### <a name="support-expiration-and-retirement-for-hdinsight-versions"></a>支持 HDInsight 版本的到期和停用
+
+**支持到期**意味着 Microsoft 将不再为指定的 HDInsight 版本提供支持，并且该版本将不再可以通过 Azure 门户创建群集。 但是，仍可以使用 Azure CLI 或各种 SDK 来创建这些版本。 
+
+**停用** HDInsight 版本意味着现有群集将继续按原样运行。 但是，不能通过任何方式（包括 CLI 和 SDK）创建此版本的新群集。 其他控制平面功能（如手动缩放和自动缩放）在版本停用后也可能不起作用。 对已停用的版本不提供支持。
 
 下表列出了 HDInsight 版本。 还提供了支持到期日期和停用日期（如果已知这些日期）。
 

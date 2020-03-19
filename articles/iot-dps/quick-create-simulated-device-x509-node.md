@@ -4,31 +4,33 @@ description: 使用适用于 Azure IoT 中心设备预配服务 (DPS) 的 Node.j
 author: wesmc7777
 ms.author: v-tawe
 origin.date: 11/08/2018
-ms.date: 03/02/2020
+ms.date: 03/23/2020
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 ms.devlang: nodejs
 ms.custom: mvc
-ms.openlocfilehash: e2459985745b85f990b35ebe1d2f02aac21c6f0f
-ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
+ms.openlocfilehash: dc2717cfd91ab15f44d0a1e57165c27ff1944b59
+ms.sourcegitcommit: 4ba6d7c8bed5398f37eb37cf5e2acafcdcc28791
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77494492"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79133794"
 ---
 # <a name="quickstart-create-and-provision-an-x509-simulated-device-using-nodejs-device-sdk-for-iot-hub-device-provisioning-service"></a>快速入门：使用适用于 IoT 中心设备预配服务的 Node.js 设备 SDK 创建和预配 X.509 模拟设备
+
 [!INCLUDE [iot-dps-selector-quick-create-simulated-device-x509](../../includes/iot-dps-selector-quick-create-simulated-device-x509.md)]
 
-这些步骤介绍了如何使用 [Azure IoT 中心 Node.js 设备 SDK](https://github.com/Azure/azure-iot-sdk-node) 在设备预配服务中创建注册条目、在开发计算机上模拟 X.509 设备、将模拟设备与设备预配服务连接，以及在 IoT 中心注册设备。
+在本快速入门中，我们在 Windows 计算机上创建一台模拟 X.509 设备。 我们使用设备预配服务 (DPS) 的单个注册，通过设备示例 Node.js 代码将此模拟设备连接到 IoT 中心。
 
-如果不熟悉自动预配过程，还务必查看[自动预配概念](concepts-auto-provisioning.md)。 另外，在继续操作之前，请确保已完成[通过 Azure 门户设置 IoT 中心设备预配服务](./quick-setup-auto-provision.md)中的步骤。 
+## <a name="prerequisites"></a>先决条件
 
-Azure IoT 设备预配服务支持两类注册：
-- [注册组](concepts-service.md#enrollment-group)：用于注册多个相关设备。
-- [单独注册](concepts-service.md#individual-enrollment)：用于注册单个设备。
-
-本文将演示单个注册。
+- 查看[自动预配概念](concepts-auto-provisioning.md)。
+- 完成[通过 Azure 门户设置 IoT 中心设备预配服务](./quick-setup-auto-provision.md)。
+- 具有活动订阅的 Azure 帐户。 [创建一个试用帐户](https://wd.azure.cn/pricing/1rmb-trial/)。
+- [Node.js v4.0+](https://nodejs.org)。
+- [Git](https://git-scm.com/download/)。
+- [OpenSSL](https://www.openssl.org/)。
 
 [!INCLUDE [IoT Device Provisioning Service basic](../../includes/iot-dps-basic.md)]
 
@@ -55,6 +57,12 @@ Azure IoT 设备预配服务支持两类注册：
 
 你将使用来自 [Azure IoT SDK for Node.js](https://github.com/Azure/azure-iot-sdk-node.git) 的示例代码创建要与模拟设备的个体注册条目一起使用的证书。
 
+Azure IoT 设备预配服务支持两类注册：
+
+- [注册组](concepts-service.md#enrollment-group)：用于注册多个相关设备。
+- [单个注册](concepts-service.md#individual-enrollment)：用于注册单个设备。
+
+本文演示单个注册。
 
 1. 打开命令提示符。 克隆代码示例的 GitHub 存储库：
     

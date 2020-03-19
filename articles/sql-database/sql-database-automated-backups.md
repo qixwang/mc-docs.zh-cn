@@ -12,23 +12,23 @@ ms.author: v-jay
 ms.reviewer: mathoma, carlrab, danil
 manager: craigg
 origin.date: 12/13/2019
-ms.date: 02/17/2020
-ms.openlocfilehash: 490ac4ad96e6f9b8386f738c61dee0317f980710
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.date: 03/16/2020
+ms.openlocfilehash: c0664410e9e960d86dba4601c63a358f224e5875
+ms.sourcegitcommit: dc862610e2169c1fce6fb0ae9eb7dd7567f86a0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78154476"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293815"
 ---
 # <a name="automated-backups"></a>自动备份
 
-SQL 数据库自动创建数据库备份（保留持续时间为配置的保留期），并使用 Azure [读取访问异地冗余存储 (RA-GRS)](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage)，确保即使数据中心不可用也会保留这些备份。 这些备份是自动创建的。 数据库备份是任何业务连续性和灾难恢复策略的基本组成部分，因为数据库备份可以保护数据免遭意外损坏或删除。 如果安全规则要求备份在较长时间（最长 10 年）内可用，可以在单一数据库和弹性池中配置[长期保留](sql-database-long-term-retention.md)。
+SQL 数据库自动创建数据库备份（保留持续时间为配置的保留期），并使用 Azure [读取访问异地冗余存储 (RA-GRS)](../storage/common/storage-redundancy.md)，确保即使数据中心不可用也会保留这些备份。 这些备份是自动创建的。 数据库备份是任何业务连续性和灾难恢复策略的基本组成部分，因为数据库备份可以保护数据免遭意外损坏或删除。 如果安全规则要求备份在较长时间（最长 10 年）内可用，可以在单一数据库和弹性池中配置[长期保留](sql-database-long-term-retention.md)。
 
 [!INCLUDE [GDPR-related guidance](../../includes/gdpr-intro-sentence.md)]
 
 ## <a name="what-is-a-sql-database-backup"></a>什么是 SQL 数据库备份？
 
-SQL 数据库使用 SQL Server 技术，每周创建[完整备份](https://docs.microsoft.com/sql/relational-databases/backup-restore/full-database-backups-sql-server)，每 12 小时创建[差异备份](https://docs.microsoft.com/sql/relational-databases/backup-restore/differential-backups-sql-server)，每 5-10 分钟创建[事务日志备份](https://docs.microsoft.com/sql/relational-databases/backup-restore/transaction-log-backups-sql-server)。 备份存储在 [RA-GRS 存储 blob](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage) 中，这些 blob 将复制到配对数据中心，以防止数据中心服务中断。 还原数据库时，服务会确定需要还原哪些完整、差异和事务日志备份。
+SQL 数据库使用 SQL Server 技术，每周创建[完整备份](https://docs.microsoft.com/sql/relational-databases/backup-restore/full-database-backups-sql-server)，每 12 小时创建[差异备份](https://docs.microsoft.com/sql/relational-databases/backup-restore/differential-backups-sql-server)，每 5-10 分钟创建[事务日志备份](https://docs.microsoft.com/sql/relational-databases/backup-restore/transaction-log-backups-sql-server)。 备份存储在 [RA-GRS 存储 blob](../storage/common/storage-redundancy.md) 中，这些 blob 将复制到配对数据中心，以防止数据中心服务中断。 还原数据库时，服务会确定需要还原哪些完整、差异和事务日志备份。
 
 可使用这些备份：
 
@@ -56,9 +56,9 @@ SQL 数据库使用 SQL Server 技术，每周创建[完整备份](https://docs.
 
 ### <a name="point-in-time-restore"></a>时间点还原
 
-SQL 数据库支持自助时间点还原 (PITR)，可自动创建完整备份、差异备份和事务日志备份。 每周创建一次完整数据库备份，一般每隔 12 小时创建一次差异数据库备份，一般每隔 5 - 10 分钟创建一次事务日志备份，具体频率取决于计算大小和数据库活动量。 会在数据库创建后立即计划第一次完整备份。 完整备份通常可在 30 分钟内完成，但如果数据库很大，花费的时间可能更长。 例如，对已还原的数据库或数据库副本执行初始备份可能需要更长时间。 在完成首次完整备份后，在后台以静默方式自动计划和管理所有后续备份。 在平衡整体系统工作负荷时，SQL 数据库服务会确定所有数据库备份的确切时间。 不能更改或禁用备份作业。 
+SQL 数据库支持自助时间点还原 (PITR)，可自动创建完整备份、差异备份和事务日志备份。 每周创建一次完整数据库备份，一般每隔 12 小时创建一次差异数据库备份，一般每隔 5 - 10 分钟创建一次事务日志备份，具体频率取决于计算大小和数据库活动量。 会在数据库创建后立即计划第一次完整备份。 完整备份通常可在 30 分钟内完成，但如果数据库很大，花费的时间可能更长。 例如，对已还原的数据库或数据库副本执行初始备份可能需要更长时间。 在完成首次完整备份后，在后台以静默方式自动计划和管理所有后续备份。 在平衡整体系统工作负荷时，SQL 数据库服务会确定所有数据库备份的确切时间。 不能更改或禁用备份作业。
 
-PITR 备份是异地冗余的，受 [Azure 存储跨区域复制](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage)的保护
+PITR 备份通过异地冗余存储进行保护。 有关详细信息，请参阅 [Azure 存储冗余](../storage/common/storage-redundancy.md)。
 
 有关详细信息，请参阅[时间点还原](sql-database-recovery-using-backups.md#point-in-time-restore)
 
@@ -66,7 +66,7 @@ PITR 备份是异地冗余的，受 [Azure 存储跨区域复制](../storage/com
 
 单一数据库和共用数据库提供选项，用于在 Azure Blob 存储中将完整备份的长期保留 (LTR) 配置为最多 10 年。 如果已启用 LTR 策略，每周完整备份将自动复制到不同的 RA-GRS 存储容器。 为了满足不同的符合性要求，可为每周、每月和/或每年备份选择不同的保留期。 存储消耗量取决于所选的备份频率和保留期。 可以使用 [LTR 定价计算器](https://azure.cn/pricing/calculator/?service=sql-database)来估算 LTR 存储成本。
 
-与 PITR 一样，LTR 备份是异地冗余的，受 [Azure 存储跨区域复制](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage)的保护。
+与 PITR 一样，LTR 备份通过异地冗余存储进行保护。 有关详细信息，请参阅 [Azure 存储冗余](../storage/common/storage-redundancy.md)。
 
 有关详细信息，请参阅[长期备份保留](sql-database-long-term-retention.md)。
 
@@ -82,10 +82,14 @@ PITR 备份是异地冗余的，受 [Azure 存储跨区域复制](../storage/com
 
 Azure SQL 数据库将保留期内的备份存储总量计算为累积值。 此值每隔一小时报告给 Azure 计费管道，该管道负责聚合此每小时用量，以便在每月底计算消耗量。 删除数据库后，消耗量会随着备份的陈旧而降低。 备份超过保留期后，计费将会停止。 
 
+   > [!IMPORTANT]
+   > 即使已删除数据库，也会保留数据库的备份，保留时间取决于指定的保留期。 频繁删除并重新创建数据库可能会节省存储和计算成本，但可能会增加备份存储成本，因为每次删除一个数据库，我们都会将备份保留指定的时间（即保留期，至少 7 天）。 
 
-### <a name="monitoring-consumption"></a>监视消耗量
 
-每种类型的备份（完整备份、差异备份和日志备份）在数据库监视边栏选项卡上作为单独的指标进行报告。 下图显示了如何监视备份存储消耗量。  
+
+### <a name="monitor-consumption"></a>监视消耗情况
+
+每种类型的备份（完整备份、差异备份和日志备份）在数据库监视边栏选项卡上作为单独的指标进行报告。 下图显示了如何监视单一数据库的备份存储消耗情况。 此功能目前不适用于托管实例。
 
 ![在 Azure 门户的数据库监视边栏选项卡上监视数据库备份消耗量](media/sql-database-automated-backup/backup-metrics.png)
 
@@ -106,6 +110,7 @@ Azure SQL 数据库将保留期内的备份存储总量计算为累积值。 此
 
 ## <a name="storage-costs"></a>存储费用
 
+如果使用 DTU 模型或 vCore 模型，存储的价格会有所不同。 
 
 ### <a name="dtu-model"></a>DTU 模型
 
@@ -120,12 +125,6 @@ Azure SQL 数据库将保留期内的备份存储总量计算为累积值。 此
 假设数据库累积了 744 GB 的备份存储，此数量在整个月内将保持恒定。 若要将此累积存储消耗量转换为每小时用量，可将此数量除以 744.0（每月 31 天 * 每天 24 小时）。 因此，SQL 数据库将报告数据库每小时使用 1 GB 的 PITR 备份。 Azure 计费服务将聚合此数量，显示整月用量为 744 GB，并根据所在区域的每 GB 价格按每月费率显示成本。 
 
 下面是一个更复杂的示例。 假设数据库的保留期在当月的中途增加到了 14 天，（此项假设）会导致备份存储总量翻倍至 1488 GB。 SQL 数据库将报告第 1-372 小时的用量为 1 GB，然后报告第 373-744 小时的用量为 2 GB。 此数量将聚合到每月 1116 GB 的最终帐单中。 
-
-可以使用 Azure 订阅成本分析来确定当前在备份存储上的支出。
-
-![备份存储成本分析](./media/sql-database-automated-backup/check-backup-storage-cost-sql-mi.png)
-
-例如，若要了解托管实例的备份存储成本，请在 Azure 门户中转到订阅，然后打开“成本分析”边栏选项卡。 选择计量子类别“mi pitr 备份存储”，查看当前备份成本和费用预测。  还可以包含其他计量子类别，例如“托管实例常规用途 - 存储”或“托管实例常规用途 - 第 5 代计算”，以将备份存储成本与其他成本类别进行比较。  
 
 ## <a name="backup-retention"></a>备份保留
 

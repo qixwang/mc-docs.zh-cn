@@ -3,16 +3,16 @@ title: 在 Azure Kubernetes 服务 (AKS) 中使用标准 SKU 负载均衡器
 description: 了解如何在 Azure Kubernetes 服务 (AKS) 中使用标准 SKU 负载均衡器来公开服务。
 services: container-service
 author: rockboyfor
-ms.service: container-service
 ms.topic: article
-ms.date: 01/13/2020
+origin.date: 09/27/2019
+ms.date: 03/09/2020
 ms.author: v-yeche
-ms.openlocfilehash: e55c98a2527d2f6c47e041c57e8c407a62174b22
-ms.sourcegitcommit: c5af330f13889a18bb8a5b44e6566a3df4aeea49
+ms.openlocfilehash: bebd1fb6ac0fcafd96db253383a226f91aac83ab
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75859853"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79290826"
 ---
 # <a name="use-a-standard-sku-load-balancer-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中使用标准 SKU 负载均衡器
 
@@ -24,9 +24,11 @@ Azure 负载均衡器以两种 SKU 提供：“基本”和“标准”   。 �
 
 如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial)。
 
-[!INCLUDE [azure-cli-2-azurechinacloud-environment-parameter](../../includes/azure-cli-2-azurechinacloud-environment-parameter.md)]
+<!--REMOVE THE INCLUDES FILE IN NEXT PARAGRAPH-->
 
-如果选择在本地安装并使用 CLI，本文要求运行 Azure CLI 2.0.74 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][install-azure-cli]。
+如果选择在本地安装并使用 CLI，本文要求运行 Azure CLI 2.0.81 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][install-azure-cli]。
+
+[!INCLUDE [azure-cli-2-azurechinacloud-environment-parameter](../../includes/azure-cli-2-azurechinacloud-environment-parameter.md)]
 
 ## <a name="before-you-begin"></a>准备阶段
 
@@ -40,7 +42,7 @@ Azure 负载均衡器以两种 SKU 提供：“基本”和“标准”   。 �
 
 例如，假设只能在创建群集时定义群集的 `load-balancer-sku` 类型，则通过蓝/绿部署迁移群集是常用的做法。 但是，基本 SKU 负载均衡器使用基本 SKU IP 地址，而这些地址与标准 SKU 负载均衡器不兼容，因为这些负载均衡器需要标准 SKU IP 地址。     在迁移群集以升级负载均衡器 SKU 时，需要提供一个具有兼容 IP 地址 SKU 的新 IP 地址。
 
-有关如何迁移群集的更多注意事项，请访问[有关迁移注意事项的文档](acs-aks-migration.md)，以查看迁移时要考虑的重要主题列表。 以下限制也是在 AKS 中使用标准 SKU 负载均衡器时要注意的重要行为差异。
+有关如何迁移群集的更多注意事项，请访问[有关迁移注意事项的文档](aks-migration.md)，以查看迁移时要考虑的重要主题列表。 以下限制也是在 AKS 中使用标准 SKU 负载均衡器时要注意的重要行为差异。
 
 ### <a name="limitations"></a>限制
 
@@ -57,7 +59,7 @@ Azure 负载均衡器以两种 SKU 提供：“基本”和“标准”   。 �
 
 ## <a name="use-the-standard-sku-load-balancer"></a>使用标准 SKU 负载均衡器 
 
-如果创建 AKS 群集，默认情况下，在该群集中运行服务时将使用标准 SKU 负载均衡器。  例如，[使用 Azure CLI 的快速入门][aks-quickstart-cli]部署的是使用标准 SKU 负载均衡器的示例应用程序。  
+如果创建 AKS 群集，默认情况下，在该群集中运行服务时将使用标准 SKU 负载均衡器。  例如，[使用 Azure CLI 的快速入门][aks-quickstart-cli]部署的是使用标准 SKU 负载均衡器的示例应用程序。 
 
 ## <a name="configure-the-load-balancer-to-be-internal"></a>将负载均衡器配置为内部负载均衡器
 
@@ -149,9 +151,6 @@ az aks create \
     --load-balancer-outbound-ips <publicIpId1>,<publicIpId2>
 ```
 
-<!--Not Available on --vm-set-type AvailabilitySet-->
-<!--MOONCAKE: CORRECT TO APPEND --vm-set-type AvailabilitySet Before VMSS feature is valid on Azure China Cloud-->
-
 结合 *load-balancer-outbound-ip-prefixes* 参数使用 *az aks create* 命令可在启动时使用你的公共 IP 前缀创建新的群集。
 
 ```azurecli
@@ -165,12 +164,14 @@ az aks create \
     --load-balancer-outbound-ip-prefixes <publicIpPrefixId1>,<publicIpPrefixId2>
 ```
 
-<!--Not Available on --vm-set-type AvailabilitySet-->
-<!--MOONCAKE: CORRECT TO APPEND --vm-set-type AvailabilitySet Before VMSS feature is valid on Azure China Cloud-->
+## <a name="configure-outbound-ports-and-idle-timeout"></a>配置出站端口和空闲超时
 
-## <a name="show-the-outbound-rule-for-your-load-balancer"></a>显示负载均衡器的出站规则
+> [!WARNING]
+> 以下部分适用于较大规模网络的高级方案，或用于解决默认配置的 SNAT 耗尽问题。 在将 *AllocatedOutboundPorts* 或 *IdleTimeoutInMinutes* 从默认值更改为其他值之前，对于 VM 和 IP 地址的可用配额必须有一个准确的清单，以便维持正常运行的群集。
+> 
+> 更改 *AllocatedOutboundPorts* 和 *IdleTimeoutInMinutes* 的值可能会显著更改负载均衡器的出站规则的行为。 在更新这些值之前请查看[负载均衡器出站规则][azure-lb-outbound-rules-overview]、[负载均衡器出站规则][azure-lb-outbound-rules]和 [Azure 中的出站连接][azure-lb-outbound-connections]，以充分了解更改会带来的影响。
 
-若要显示负载均衡器中创建的出站规则，请使用 [az network lb outbound-rule list][az-network-lb-outbound-rule-list] 并指定 AKS 群集的节点资源组：
+出站已分配端口及其空闲超时用于 [SNAT][azure-lb-outbound-connections]。 默认情况下，“标准”  SKU 负载均衡器[根据后端池大小自动分配出站端口数][azure-lb-outbound-preallocatedports]并为每个端口使用 30 分钟的空闲超时。 若要查看这些值，请使用 [az network lb outbound-rule list][az-network-lb-outbound-rule-list] 显示负载均衡器的出站规则：
 
 ```azurecli
 NODE_RG=$(az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv)
@@ -185,7 +186,46 @@ AllocatedOutboundPorts    EnableTcpReset    IdleTimeoutInMinutes    Name        
 0                         True              30                      aksOutboundRule  All         Succeeded            MC_myResourceGroup_myAKSCluster_chinaeast2  
 ```
 
-在示例输出中，*AllocatedOutboundPorts* 为 0。 *AllocatedOutboundPorts* 的值表示 SNAT 端口分配将根据后端池大小还原为自动分配。 有关更多详细信息，请参阅[负载均衡器出站规则][azure-lb-outbound-rules]和 [Azure 中的出站连接][azure-lb-outbound-connections]。
+示例输出显示了 *AllocatedOutboundPorts* 和 *IdleTimeoutInMinutes* 的默认值。 如果 *AllocatedOutboundPorts* 的值为 0，则会根据后端池大小自动分配出站端口数。 例如，如果群集有 50 个或更少节点，则会为每个节点分配 1024 个端口。
+
+如果你预计采用上述默认配置时会出现 SNAT 耗尽问题，请考虑更改 *allocatedOutboundPorts* 或 *IdleTimeoutInMinutes* 的设置。 每个额外的 IP 地址会启用 64,000 个额外端口用于分配，但在添加更多 IP 地址时，Azure 标准负载均衡器不会自动增加每个节点的端口数。 可以通过设置 *load-balancer-outbound-ports* 和 *load-balancer-idle-timeout* 参数来更改这些值。 例如：
+
+```azurecli
+az aks update \
+    --resource-group myResourceGroup \
+    --name myAKSCluster \
+    --load-balancer-outbound-ports 0 \
+    --load-balancer-idle-timeout 30
+```
+
+> [!IMPORTANT]
+> 在自定义 *allocatedOutboundPorts* 之前，必须[计算所需的配额][calculate-required-quota]以避免连接或缩放问题。 为 *allocatedOutboundPorts* 指定的值还必须是 8 的倍数。
+
+创建群集时也可以使用 *load-balancer-outbound-ports* 和 *load-balancer-idle-timeout* 参数，但还必须同时指定 *load-balancer-managed-outbound-ip-count*、*load-balancer-outbound-ips* 或 *load-balancer-outbound-ip-prefixes*。  例如：
+
+```azurecli
+az aks create \
+    --resource-group myResourceGroup \
+    --name myAKSCluster \
+    --vm-set-type VirtualMachineScaleSets \
+    --node-count 1 \
+    --load-balancer-sku standard \
+    --generate-ssh-keys \
+    --load-balancer-managed-outbound-ip-count 2 \
+    --load-balancer-outbound-ports 0 \
+    --load-balancer-idle-timeout 30
+```
+
+将 *load-balancer-outbound-ports* 和 *load-balancer-idle-timeout* 参数从默认值更改为其他值时，会影响负载均衡器配置文件的行为，这将影响整个群集。
+
+### <a name="required-quota-for-customizing-allocatedoutboundports"></a>自定义 allocatedOutboundPorts 时所需的配额
+你必须有足够的出站 IP 容量，具体取决于节点 VM 和所需的已分配出站端口的数量。 若要验证是否有足够的出站 IP 容量，请使用以下公式： 
+
+*outboundIPs* \* 64,000 \> *nodeVMs* \* *desiredAllocatedOutboundPorts*。
+
+例如，如果你有 3 个 *nodeVM* 和 50,000 个 *desiredAllocatedOutboundPort*，则至少需要有 3 个 *outboundIP*。 建议你在所需容量的基础上增加额外的出站 IP 容量。 此外，在计算出站 IP 容量时，必须考虑群集自动缩放程序和节点池升级的可能性。 对于群集自动缩放程序，请查看当前节点计数和最大节点计数，并使用较高的值。 对于升级，请考虑为允许升级的节点池添加一个额外的节点 VM。
+
+将 *IdleTimeoutInMinutes* 设置为默认值 30 分钟之外的值时，请考虑你的工作负荷多长时间将需要出站连接。 还要考虑在 AKS 外部使用的“标准”  SKU 负载平衡器的默认超时值是 4 分钟。 如果 *idletimeoutminutes* 值较准确地反映你的具体 AKS 工作负载，则有助于降低由于绑定不再使用的连接而导致的 SNAT 耗尽。
 
 ## <a name="restrict-access-to-specific-ip-ranges"></a>仅限特定的 IP 范围进行访问
 
@@ -244,14 +284,17 @@ spec:
 [az-network-public-ip-prefix-show]: https://docs.azure.cn/cli/network/public-ip/prefix?view=azure-cli-latest#az-network-public-ip-prefix-show
 [az-role-assignment-create]: https://docs.azure.cn/cli/role/assignment?view=azure-cli-latest#az-role-assignment-create
 [azure-lb]: ../load-balancer/load-balancer-overview.md
-[azure-lb-comparison]: ../load-balancer/load-balancer-overview.md#skus
+[azure-lb-comparison]: ../load-balancer/concepts-limitations.md#skus
 [azure-lb-outbound-rules]: ../load-balancer/load-balancer-outbound-rules-overview.md#snatports
 [azure-lb-outbound-connections]: ../load-balancer/load-balancer-outbound-connections.md#snat
+[azure-lb-outbound-preallocatedports]: ../load-balancer/load-balancer-outbound-connections.md#preallocatedports
+[azure-lb-outbound-rules-overview]: ../load-balancer/load-balancer-outbound-rules-overview.md
 [install-azure-cli]: https://docs.azure.cn/cli/install-azure-cli?view=azure-cli-latest
 [internal-lb-yaml]: internal-lb.md#create-an-internal-load-balancer
 [kubernetes-concepts]: concepts-clusters-workloads.md
 [use-kubenet]: configure-kubenet.md
 [az-extension-add]: https://docs.azure.cn/cli/extension?view=azure-cli-latest#az-extension-add
 [az-extension-update]: https://docs.azure.cn/cli/extension?view=azure-cli-latest#az-extension-update
+[calculate-required-quota]: #required-quota-for-customizing-allocatedoutboundports
 
 <!-- Update_Description: update meta properties, wording update, update link -->

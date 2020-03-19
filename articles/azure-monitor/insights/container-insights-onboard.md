@@ -6,12 +6,12 @@ author: lingliw
 ms.author: v-lingwu
 origin.date: 11/18/2019
 ms.date: 12/30/2019
-ms.openlocfilehash: 077b39bae7e2992dfe30ac59407fcc918116135c
-ms.sourcegitcommit: 13431cf4d69142ed7feb8d12d967a502bf9ff346
+ms.openlocfilehash: ab74b0eac2aedcc0e0d14e2ccd81451046f2bca4
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75599929"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79290896"
 ---
 # <a name="how-to-enable-azure-monitor-for-containers"></a>如何为容器启用 Azure Monitor  
 
@@ -62,7 +62,7 @@ ms.locfileid: "75599929"
 
 ## <a name="components"></a>组件
 
-监视性能的能力依赖于 Linux 容器化 Log Analytics 代理，该代理专门针对用于容器的 Azure Monitor 开发而来。 此专用代理可从群集中的所有节点处收集性能和事件数据，并且在部署期间，会自动部署该代理，并注册指定 Log Analytics 工作区。 该代理的版本为 microsoft/oms:ciprod04202018 或更高版本，并由采用以下格式的日期表示：mmddyyyy  。
+监视性能的能力依赖于专门为用于容器的 Azure Monitor 开发的用于 Linux 的容器化 Log Analytics 代理。 此专用代理可从群集中的所有节点处收集性能和事件数据，并且在部署期间，会自动部署该代理，并注册指定 Log Analytics 工作区。 该代理的版本为 microsoft/oms:ciprod04202018 或更高版本，并由采用以下格式的日期表示：mmddyyyy  。
 
 >[!NOTE]
 >随着 Windows Server 预览版对 AKS 的支持，带有 Windows Server 节点的 AKS 群集没有安装代理即可收集数据并将数据转发到 Azure Monitor。 但是，在标准部署过程中，自动部署在群集中的 Linux 节点会代表群集中的所有 Windows 节点收集数据并将数据转发到 Azure Monitor。  

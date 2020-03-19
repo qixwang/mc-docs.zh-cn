@@ -9,14 +9,14 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 origin.date: 12/17/2019
-ms.date: 03/09/2020
+ms.date: 03/23/2020
 ms.author: v-tawe
-ms.openlocfilehash: ceeb4f94910b15cabafca51e34be03b262fa5428
-ms.sourcegitcommit: ced17aa58e800b9e4335276a1595b8045836b256
+ms.openlocfilehash: 62a1eafeeb579d2993ced858f2ae5b2169d2ce65
+ms.sourcegitcommit: e94ed1c9eff4e88be2ca389909e60b14cc0d92f8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77590258"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79084409"
 ---
 # <a name="how-to-use-batch-transcription"></a>如何使用批量听录
 
@@ -88,14 +88,55 @@ ms.locfileid: "77590258"
 
 使用以下可选属性来配置听录：
 
-| 参数 | 说明 |
-|-----------|-------------|
-| `ProfanityFilterMode` | 指定如何处理识别结果中的不雅内容。 接受的值为 `None`（禁用不雅内容筛选）、`Masked`（将不雅内容替换为星号）、`Removed`（从结果中删除所有不雅内容）或 `Tags`（添加“不雅内容”标记）。 默认设置为 `Masked`。 |
-| `PunctuationMode` | 指定如何处理识别结果中的标点。 接受的值为 `None`（禁用标点）、`Dictated`（表示使用显式标点）、`Automatic`（允许解码器处理标点）或 `DictatedAndAutomatic`（表示使用专用标点符号或自动使用标点）。 |
-| `AddWordLevelTimestamps` | 指定是否应将字级时间戳添加到输出。 接受的值为 `true`，其支持字级时间戳和 `false`（默认值）禁用它。 |
-| `AddSentiment` | 指定应将情绪添加到言语。 接受的值为 `true`（按言语启用情绪）和 `false`（默认值，禁用情绪）。 |
-| `AddDiarization` | 指定应该对预期为包含两个语音的单声道输入执行分割聚类分析。 接受的值为 `true`（启用分割聚类）和 `false`（默认值，禁用分割聚类）。 还需要将 `AddWordLevelTimestamps` 设置为 true。|
-|`TranscriptionResultsContainerUrl`|Azure 中可写容器的可选 URL（包含[服务 SAS](../../storage/common/storage-sas-overview.md)）。 结果将存储在此容器中。
+:::row:::
+   :::column span="1":::
+      **参数**
+   :::column-end:::
+   :::column span="2":::
+      **说明**
+:::row-end:::
+:::row:::
+   :::column span="1":::
+      `ProfanityFilterMode`
+   :::column-end:::
+   :::column span="2":::
+      指定如何处理识别结果中的不雅内容。 接受的值为 `None`（禁用不雅内容筛选）、`Masked`（将不雅内容替换为星号）、`Removed`（从结果中删除所有不雅内容）或 `Tags`（添加“不雅内容”标记）。 默认设置为 `Masked`。
+:::row-end:::
+:::row:::
+   :::column span="1":::
+      `PunctuationMode`
+   :::column-end:::
+   :::column span="2":::
+      指定如何处理识别结果中的标点。 接受的值为 `None`（禁用标点）、`Dictated`（暗示显式（口述）标点）、`Automatic`（让解码器处理标点），或 `DictatedAndAutomatic`（使用听写标点和自动标点）。 默认设置为 `DictatedAndAutomatic`。
+:::row-end:::
+:::row:::
+   :::column span="1":::
+      `AddWordLevelTimestamps`
+   :::column-end:::
+   :::column span="2":::
+      指定是否应将字级时间戳添加到输出。 接受的值为 `true`（启用字级时间戳）和 `false`（默认值，禁用字级时间戳）。
+:::row-end:::
+:::row:::
+   :::column span="1":::
+      `AddSentiment`
+   :::column-end:::
+   :::column span="2":::
+      指定应将情绪添加到言语。 接受的值为 `true`（为每个言语启用情绪）和 `false`（默认值，为每个言语禁用情绪）。
+:::row-end:::
+:::row:::
+   :::column span="1":::
+      `AddDiarization`
+   :::column-end:::
+   :::column span="2":::
+      指定应该对预期为包含两个语音的单声道输入执行分割聚类分析。 接受的值为 `true`（启用分割聚类）和 `false`（默认值，禁用分割聚类）。 还需要将 `AddWordLevelTimestamps` 设置为 true。
+:::row-end:::
+:::row:::
+   :::column span="1":::
+      `TranscriptionResultsContainerUrl`
+   :::column-end:::
+   :::column span="2":::
+      Azure 中可写容器的可选 URL（包含[服务 SAS](../../storage/common/storage-sas-overview.md)）。 结果将存储在此容器中。
+:::row-end:::
 
 ### <a name="storage"></a>存储
 

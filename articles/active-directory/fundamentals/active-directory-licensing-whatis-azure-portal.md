@@ -9,18 +9,17 @@ ms.service: active-directory
 ms.subservice: fundamentals
 ms.topic: conceptual
 ms.workload: identity
-origin.date: 10/29/2018
-ms.date: 10/25/2019
+ms.date: 03/11/2020
 ms.author: v-junlch
 ms.reviewer: krbain
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ca55652bf71c96499d98b5f9e5ad82515bf91077
-ms.sourcegitcommit: e60779782345a5428dd1a0b248f9526a8d421343
+ms.openlocfilehash: 9632026bfd9b3937a35f3a9e8fe74006c7805f05
+ms.sourcegitcommit: 4ba6d7c8bed5398f37eb37cf5e2acafcdcc28791
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72912752"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79133810"
 ---
 # <a name="what-is-group-based-licensing-in-azure-active-directory"></a>Azure Active Directory 中基于组的许可是什么？
 
@@ -35,7 +34,7 @@ Microsoft 付费云服务（如 Office 365、企业移动性 + 安全性、Dynam
 
 - Azure AD Premium P1 及更高版本的付费订阅
 
-- 付费版 Office 365 企业版 E3 或 Office 365 A3 或 Office 365 GCC G3 及更高版本
+- 付费版 Office 365 企业版 E3 或 Office 365 A3 或 Office 365 GCC G3 或 Office 365 E3 for GCCH 或 Office 365 E3 for DOD 及更高版本
 
 ### <a name="required-number-of-licenses"></a>所需许可证数
 对于分配了许可证的任何组，你还必须具有用于每个唯一成员的许可证。 虽然不是必须为组的每个成员分配一个许可证，但是你必须至少具有足够的许可证来包括所有成员。 例如，如果你的租户中经许可的组有 1,000 个唯一成员，则必须至少具有 1,000 个许可证才满足许可协议。

@@ -3,20 +3,20 @@ title: 自定义策略的字符串声明转换示例
 titleSuffix: Azure AD B2C
 description: Azure Active Directory B2C 的 Identity Experience Framework (IEF) 架构的字符串声明转换示例。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/21/2020
+ms.date: 03/04/2020
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: 2b4d9a33ae79477195680f348057f2126592d3d3
-ms.sourcegitcommit: 1bd7711964586b41ff67fd1346dad368fe7383da
+ms.openlocfilehash: 171c3d649220e3210eca408fcd97422a06b273d0
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77531333"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291110"
 ---
 # <a name="string-claims-transformations"></a>字符串声明转换
 
@@ -34,7 +34,8 @@ ms.locfileid: "77531333"
 | InputClaim | inputClaim2 | string | 要比较的第二个声明的类型。 |
 | InputParameter | stringComparison | string | 字符串比较，值为下列其中一项：Ordinal、OrdinalIgnoreCase。 |
 
-AssertStringClaimsAreEqual  声明转换始终从[验证技术配置文件](validation-technical-profile.md)执行，该文件由[自断言技术配置文件](self-asserted-technical-profile.md)调用。 UserMessageIfClaimsTransformationStringsAreNotEqual  自断言技术配置文件元数据控制向用户显示的错误消息。
+AssertStringClaimsAreEqual  声明转换始终从[验证技术配置文件](validation-technical-profile.md)执行，该文件由[自断言技术配置文件](self-asserted-technical-profile.md)或 [DisplayConrtol](display-controls.md) 调用。 自断言技术配置文件的 `UserMessageIfClaimsTransformationStringsAreNotEqual` 元数据控制向用户显示的错误消息。
+
 
 ![AssertStringClaimsAreEqual 执行](./media/string-transformations/assert-execution.png)
 
@@ -122,11 +123,11 @@ login-NonInteractive  验证技术配置文件调用 AssertEmailAndStrongAuthent
 
 ## <a name="createstringclaim"></a>CreateStringClaim
 
-基于策略中提供的输入参数创建字符串声明。
+基于转换中提供的输入参数创建字符串声明。
 
 | 项目 | TransformationClaimType | 数据类型 | 注释 |
 |----- | ----------------------- | --------- | ----- |
-| InputParameter | value | string | 要设置的字符串 |
+| InputParameter | value | string | 要设置的字符串。 此输入参数支持[字符串声明转换表达式](string-transformations.md#string-claim-transformations-expressions)。 |
 | OutputClaim | createdClaim | string | 调用此声明转换后生成的 ClaimType，其值在输入参数中指定。 |
 
 使用此声明转换设置一个字符串 ClaimType 值。
@@ -296,7 +297,7 @@ login-NonInteractive  验证技术配置文件调用 AssertEmailAndStrongAuthent
 | 项目 | TransformationClaimType | 数据类型 | 注释 |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | inputClaim |string |作为字符串格式 {0} 参数的 ClaimType。 |
-| InputParameter | stringFormat | string | 字符串格式，包括 {0} 参数。 |
+| InputParameter | stringFormat | string | 字符串格式，包括 {0} 参数。 此输入参数支持[字符串声明转换表达式](string-transformations.md#string-claim-transformations-expressions)。  |
 | OutputClaim | outputClaim | string | 调用此声明转换后生成的 ClaimType。 |
 
 使用此声明转换格式化任何带一个参数 {0} 的字符串。 以下示例创建一个 userPrincipalName  。 所有社交标识提供者技术配置文件都调用 **CreateUserPrincipalName** 来生成 **userPrincipalName**。
@@ -332,7 +333,7 @@ login-NonInteractive  验证技术配置文件调用 AssertEmailAndStrongAuthent
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | inputClaim |string | 作为字符串格式 {0} 参数的 ClaimType。 |
 | InputClaim | inputClaim | string | 作为字符串格式 {1} 参数的 ClaimType。 |
-| InputParameter | stringFormat | string | 字符串格式，包括 {0} 和 {1} 参数。 |
+| InputParameter | stringFormat | string | 字符串格式，包括 {0} 和 {1} 参数。 此输入参数支持[字符串声明转换表达式](string-transformations.md#string-claim-transformations-expressions)。   |
 | OutputClaim | outputClaim | string | 调用此声明转换后生成的 ClaimType。 |
 
 使用此声明转换格式化任何带两个参数 {0} 和 {1} 的字符串。 下面的示例创建带指定格式的 displayName  ：
@@ -362,7 +363,7 @@ login-NonInteractive  验证技术配置文件调用 AssertEmailAndStrongAuthent
 - 输出声明：
     - **outputClaim**：Joe Fernando
 
-## <a name="getlocalizedstringstransformation"></a>GetLocalizedStringsTransformation 
+## <a name="getlocalizedstringstransformation"></a>GetLocalizedStringsTransformation
 
 将本地化的字符串复制到声明中。
 
@@ -427,9 +428,9 @@ login-NonInteractive  验证技术配置文件调用 AssertEmailAndStrongAuthent
 
 - 输出声明：
   - **subject**：Contoso 帐户电子邮件验证码
-  - **message**：感谢验证你的帐户！ 
-  - **codeIntro**：你的代码是 
-  - **signature**：此致  
+  - **message**：感谢验证你的帐户！
+  - **codeIntro**：你的代码是
+  - **signature**：此致
 
 
 ## <a name="getmappedvaluefromlocalizedcollection"></a>GetMappedValueFromLocalizedCollection
@@ -517,15 +518,51 @@ login-NonInteractive  验证技术配置文件调用 AssertEmailAndStrongAuthent
 - 输出声明：
     -  outputClaim:  c7026f88-4299-4cdb-965d-3f166464b8a9
 
+将 `errorOnFailedLookup` 输入参数设置为 `true` 时，**LookupValue** 声明转换始终从[验证技术配置文件](validation-technical-profile.md)执行，该文件由[自断言技术配置文件](self-asserted-technical-profile.md)或 [DisplayConrtol](display-controls.md) 调用。 自断言技术配置文件的 `LookupNotFound` 元数据控制向用户显示的错误消息。
+
+![AssertStringClaimsAreEqual 执行](./media/string-transformations/assert-execution.png)
+
+下面的示例在某一个 inputParameters 集合中查找域名。 声明转换查找标识符中的域名，并返回其值（应用程序 ID）或引发错误消息。
+
+```XML
+ <ClaimsTransformation Id="DomainToClientId" TransformationMethod="LookupValue">
+  <InputClaims>
+    <InputClaim ClaimTypeReferenceId="domainName" TransformationClaimType="inputParameterId" />
+  </InputClaims>
+  <InputParameters>
+    <InputParameter Id="contoso.com" DataType="string" Value="13c15f79-8fb1-4e29-a6c9-be0d36ff19f1" />
+    <InputParameter Id="microsoft.com" DataType="string" Value="0213308f-17cb-4398-b97e-01da7bd4804e" />
+    <InputParameter Id="test.com" DataType="string" Value="c7026f88-4299-4cdb-965d-3f166464b8a9" />
+    <InputParameter Id="errorOnFailedLookup" DataType="boolean" Value="true" />
+  </InputParameters>
+  <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="domainAppId" TransformationClaimType="outputClaim" />
+  </OutputClaims>
+</ClaimsTransformation>
+```
+
+### <a name="example"></a>示例
+
+- 输入声明：
+    - **inputParameterId**: live.com
+- 输入参数：
+    - **contoso.com**：13c15f79-8fb1-4e29-a6c9-be0d36ff19f1
+    - **microsoft.com**：0213308f-17cb-4398-b97e-01da7bd4804e
+    -  test.com: c7026f88-4299-4cdb-965d-3f166464b8a9
+    - **errorOnFailedLookup**: true
+- 错误：
+    - 在输入参数 ID 列表中找不到输入声明值的匹配项，errorOnFailedLookup 为 true。
+
+
 ## <a name="nullclaim"></a>NullClaim
 
 清除给定声明的值。
 
 | 项目 | TransformationClaimType | 数据类型 | 注释 |
 | ---- | ----------------------- | --------- | ----- |
-| OutputClaim | claim_to_null | string | 其值为 NULL 的声明。 |
+| OutputClaim | claim_to_null | string | 声明的值设置为 NULL。 |
 
-使用此声明转换可从声明属性包中删除不必要的数据。 因此，会话 cookie 会比较小。 以下示例将删除 `TermsOfService` 声明类型的值。
+使用此声明转换可从声明属性包中删除不必要的数据，因此会话 Cookie 会更小。 以下示例将删除 `TermsOfService` 声明类型的值。
 
 ```XML
 <ClaimsTransformation Id="SetTOSToNull" TransformationMethod="NullClaim">
@@ -581,7 +618,7 @@ login-NonInteractive  验证技术配置文件调用 AssertEmailAndStrongAuthent
 | OutputClaim | outputClaim | string | 如果正则表达式是匹配项，此输出声明包含 `outputClaimIfMatched` 输入参数的值。 如果没有匹配项，则为 null。 |
 | OutputClaim | regexCompareResultClaim | boolean | 正则表达式匹配结果输出声明类型，根据匹配结果设置为 `true` 或 `false`。 |
 
-例如，根据电话号码正则表达式模式检查提供的电话号码是否有效。  
+例如，根据电话号码正则表达式模式检查提供的电话号码是否有效。
 
 ```XML
 <ClaimsTransformation Id="SetIsPhoneRegex" TransformationMethod="setClaimsIfRegexMatch">
@@ -718,7 +755,7 @@ login-NonInteractive  验证技术配置文件调用 AssertEmailAndStrongAuthent
 使用此声明转换可以检查字符串声明类型是否包含某个子字符串。 以下示例检查 `roles` 字符串声明类型是否包含 **admin** 值。
 
 ```XML
-<ClaimsTransformation Id="CheckIsAdmin" TransformationMethod="StringContains"> 
+<ClaimsTransformation Id="CheckIsAdmin" TransformationMethod="StringContains">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="roles" TransformationClaimType="inputClaim"/>
   </InputClaims>
@@ -728,7 +765,7 @@ login-NonInteractive  验证技术配置文件调用 AssertEmailAndStrongAuthent
   </InputParameters>
   <OutputClaims>
     <OutputClaim ClaimTypeReferenceId="isAdmin" TransformationClaimType="outputClaim"/>
-  </OutputClaims>         
+  </OutputClaims>
 </ClaimsTransformation>
 ```
 
@@ -740,7 +777,7 @@ login-NonInteractive  验证技术配置文件调用 AssertEmailAndStrongAuthent
     - **contains**: "admin,"
     -  ignoreCase: true
 - 输出声明：
-    - **outputClaim**: true 
+    - **outputClaim**: true
 
 ## <a name="stringsubstring"></a>StringSubstring
 
@@ -753,7 +790,7 @@ login-NonInteractive  验证技术配置文件调用 AssertEmailAndStrongAuthent
 | InputParameter | length | int | 子字符串中的字符数。 |
 | OutputClaim | outputClaim | boolean | 一个字符串，等效于长度在此实例中从 startIndex 开始的子字符串；如果 startIndex 等于此实例的长度并且长度为零，则为空。 |
 
-例如，获取电话号码的国家/地区前缀。  
+例如，获取电话号码的国家/地区前缀。
 
 
 ```XML
@@ -791,7 +828,7 @@ login-NonInteractive  验证技术配置文件调用 AssertEmailAndStrongAuthent
 | InputParameter | newValue | string | 用于替换出现的所有 `oldValue` 的字符串 |
 | OutputClaim | outputClaim | boolean | 等效于当前字符串的字符串，只不过 oldValue 的所有实例已替换为 newValue。 如果在当前实例中找不到 oldValue，该方法将按原样返回当前实例。 |
 
-例如，通过删除 `-` 字符来规范化某个电话号码  
+例如，通过删除 `-` 字符来规范化某个电话号码
 
 
 ```XML
@@ -827,7 +864,7 @@ login-NonInteractive  验证技术配置文件调用 AssertEmailAndStrongAuthent
 | InputClaim | inputClaim | stringCollection | 包含要串联的字符串的集合。 |
 | InputParameter | delimiter | string | 用作分隔符的字符串，例如逗号 `,`。 |
 | OutputClaim | outputClaim | string | 由 `inputClaim` 字符串集合的成员组成的字符串，以 `delimiter` 输入参数分隔。 |
-  
+
 以下示例提取用户角色的字符串集合，并将其转换为逗号分隔符字符串。 可以使用此方法在 Azure AD 用户帐户中存储字符串集合。 以后在从目录读取帐户时，可以使用 `StringSplit` 将逗号分隔符字符串转换回字符串集合。
 
 ```XML
@@ -863,7 +900,7 @@ login-NonInteractive  验证技术配置文件调用 AssertEmailAndStrongAuthent
 | InputClaim | inputClaim | string | 包含要拆分的子字符串的字符串声明类型。 |
 | InputParameter | delimiter | string | 用作分隔符的字符串，例如逗号 `,`。 |
 | OutputClaim | outputClaim | stringCollection | 一个字符串集合，其元素包含此字符串中由 `delimiter` 输入参数分隔的子字符串。 |
-  
+
 以下示例提取用户角色的逗号分隔符字符串，并将其转换为字符串集合。
 
 ```XML
@@ -888,5 +925,14 @@ login-NonInteractive  验证技术配置文件调用 AssertEmailAndStrongAuthent
   - **delimiter**: ","
 - 输出声明：
   - **outputClaim**: [ "Admin", "Author", "Reader" ]
+
+## <a name="string-claim-transformations-expressions"></a>字符串声明转换表达式
+Azure AD B2C 自定义策略中的声明转换表达式提供了有关租户 ID 和技术配置文件 ID 的上下文信息。
+
+  | 表达式 | 说明 | 示例 |
+ | ----- | ----------- | --------|
+ | `{TechnicalProfileId}` | 技术 profileId 名称。 | |
+ | `{RelyingPartyTenantId}` | 信赖方策略的租户 ID。 | your-tenant.partner.onmschina.cn |
+ | `{TrustFrameworkTenantId}` | 信任框架的租户 ID。 | your-tenant.partner.onmschina.cn |
 
 <!-- Update_Description: wording update -->

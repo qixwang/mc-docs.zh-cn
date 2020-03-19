@@ -8,15 +8,15 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.workload: big-data
 ms.topic: conceptual
 ms.devlang: na
-origin.date: 11/01/2019
-ms.date: 03/02/2020
+origin.date: 02/28/2020
+ms.date: 03/23/2020
 ms.author: v-yiso
-ms.openlocfilehash: a6876c0b0855b1d48b4c089505e4976e221eaf56
-ms.sourcegitcommit: 46fd4297641622c1984011eac4cb5a8f6f94e9f5
+ms.openlocfilehash: b97ce4086a5dcc080ee43e6ba0e323cdbe4d6a5a
+ms.sourcegitcommit: 32997a7d7585deaeb0ab7b8f928d397b18b343fa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77563470"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79295969"
 ---
 # <a name="use-azure-storage-with-azure-hdinsight-clusters"></a>将 Azure 存储与 Azure HDInsight 群集配合使用
 
@@ -24,9 +24,8 @@ ms.locfileid: "77563470"
 
 Apache Hadoop 支持默认文件系统的概念。 默认文件系统意指默认方案和授权。 它还可用于解析相对路径。 在 HDInsight 群集创建过程中，可以指定 Azure 存储中的 Blob 容器作为默认文件系统，或者借助 HDInsight 3.6，可以选择 Azure 存储或 Azure Data Lake Storage Gen 2 作为默认文件系统（有少数例外）。 
 
-本文介绍 Azure 存储如何与 HDInsight 群集配合使用。 若要深入了解如何创建 HDInsight 群集，请参阅[在 HDInsight 中创建 Apache Hadoop 群集](hdinsight-hadoop-provision-linux-clusters.md)。
 
-Azure 存储是一种稳健、通用的存储解决方案，它与 HDInsight 无缝集成。 HDInsight 可将 Azure 存储中的 Blob 容器用作群集的默认文件系统。 通过 Hadoop 分布式的文件系统 (HDFS) 界面，可以针对作为 Blob 存储的结构化或非结构化数据直接运行 HDInsight 中的整套组件。
+本文介绍 Azure 存储如何与 HDInsight 群集配合使用。 若要深入了解如何创建 HDInsight 群集，请参阅[在 HDInsight 中创建 Apache Hadoop 群集](hdinsight-hadoop-provision-linux-clusters.md)。
 
 > [!IMPORTANT]  
 > 存储帐户类型 **BlobStorage** 仅可用作 HDInsight 群集的辅助存储器。
@@ -44,7 +43,7 @@ Azure 存储是一种稳健、通用的存储解决方案，它与 HDInsight 无
 > [!NOTE]  
 > 存档访问层是一个离线层，具有几小时的检索延迟，不建议与 HDInsight 一起使用。 有关详细信息，请参阅[存档访问层](../storage/blobs/storage-blob-storage-tiers.md#archive-access-tier)。
 
-## <a name="access-files-from-the-cluster"></a>从群集访问文件
+## <a name="access-files-from-within-cluster"></a>从群集中访问文件
 
 可以通过多种方法从 HDInsight 群集访问 Data Lake Storage 中的文件。 URI 方案提供了使用 *wasb:* 前缀的未加密访问和使用 *wasbs* 的 SSL 加密访问。 建议尽量使用 *wasbs* ，即使在访问位于同一 Azure 区域内的数据时也是如此。
 
@@ -128,6 +127,17 @@ LOCATION 'wasbs:///example/data/';
 LOCATION '/example/data/';
 ```
 
+## <a name="access-files-from-outside-cluster"></a>从群集外部访问文件
+
+Microsoft 提供以下用于操作 Azure 存储的工具：
+
+| 工具 | Linux | OS X | Windows |
+| --- |:---:|:---:|:---:|
+| [Azure 门户](../storage/blobs/storage-quickstart-blobs-portal.md) |✔ |✔ |✔ |
+| [Azure CLI](../storage/blobs/storage-quickstart-blobs-cli.md) |✔ |✔ |✔ |
+| [Azure PowerShell](../storage/blobs/storage-quickstart-blobs-powershell.md) | | |✔ |
+| [AzCopy](../storage/common/storage-use-azcopy-v10.md) |✔ | |✔ |
+
 ## <a name="identify-storage-path-from-ambari"></a>从 Ambari 标识存储路径
 
 * 若要标识已配置的默认存储的完整路径，请导航到
@@ -138,6 +148,8 @@ LOCATION '/example/data/';
 
     “HDFS”   >   “配置”，然后在筛选器输入框中输入 `blob.core.windows.net`。
 
+若要使用 Ambari REST API 获取路径，请参阅[获取默认存储](./hdinsight-hadoop-manage-ambari-rest-api.md#get-the-default-storage)。
+
 ## <a name="blob-containers"></a>Blob 容器
 
 若要使用 Blob，请先创建 [Azure 存储帐户](../storage/common/storage-create-storage-account.md)。 在此过程中，可指定在其中创建存储帐户的 Azure 区域。 群集和存储帐户必须位于同一区域。 Hive 元存储 SQL Server 数据库和 Apache Oozie 元存储 SQL Server 数据库也必须位于同一区域。
@@ -147,17 +159,6 @@ LOCATION '/example/data/';
 默认的 Blob 容器存储群集特定的信息，如作业历史记录和日志。 请不要多个 HDInsight 群集之间共享默认的 Blob 容器。 这可能会损坏作业历史记录。 建议对每个群集使用不同的容器，并将共享数据放入在所有相关群集的部署中指定的链接存储帐户，而不是放入默认存储帐户。 有关配置链接存储帐户的详细信息，请参阅[创建 HDInsight 群集](hdinsight-hadoop-provision-linux-clusters.md)。 但是，在删除原始的 HDInsight 群集后，可以重用默认存储容器。 对于 HBase 群集，实际上可以通过使用已删除的 HBase 群集使用的默认 Blob 容器创建新的 HBase 群集，从而保留 HBase 表架构和数据。
 
 [!INCLUDE [secure-transfer-enabled-storage-account](../../includes/hdinsight-secure-transfer.md)]
-
-## <a name="interacting-with-azure-storage"></a>与 Azure 存储交互
-
-Microsoft 提供以下用于操作 Azure 存储的工具：
-
-| 工具 | Linux | OS X | Windows |
-| --- |:---:|:---:|:---:|
-| [Azure 门户](../storage/blobs/storage-quickstart-blobs-portal.md) |✔ |✔ |✔ |
-| [Azure CLI](../storage/blobs/storage-quickstart-blobs-cli.md) |✔ |✔ |✔ |
-| [Azure PowerShell](../storage/blobs/storage-quickstart-blobs-powershell.md) | | |✔ |
-| [AzCopy](../storage/common/storage-use-azcopy-v10.md) |✔ | |✔ |
 
 ## <a name="use-additional-storage-accounts"></a>使用其他存储帐户
 

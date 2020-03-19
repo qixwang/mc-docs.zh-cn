@@ -1,18 +1,18 @@
 ---
-title: 在 Azure Database for MySQL 中进行导入和导出
+title: 导入和导出 - Azure Database for MySQL
 description: 本文介绍使用 MySQL Workbench 等工具在 Azure Database for MySQL 导入和导出数据库的常用方法。
 author: WenJason
 ms.author: v-jay
 ms.service: mysql
 ms.topic: conceptual
-origin.date: 06/01/2018
-ms.date: 11/04/2019
-ms.openlocfilehash: f28251a5f09ad28b3e4f6ffc848ee85c36fb20a1
-ms.sourcegitcommit: cb2caa72ec0e0922a57f2fa1056c25e32c61b570
+origin.date: 2/27/2020
+ms.date: 03/16/2020
+ms.openlocfilehash: 02604ba42ec74ba031550abe63b9a0f92244a500
+ms.sourcegitcommit: 32997a7d7585deaeb0ab7b8f928d397b18b343fa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73142133"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79295887"
 ---
 # <a name="migrate-your-mysql-database-by-using-import-and-export"></a>使用导入和导出迁移 MySQL 数据库
 
@@ -24,10 +24,10 @@ ms.locfileid: "73142133"
 ## <a name="before-you-begin"></a>准备阶段
 若要逐步执行本操作方法指南，需要：
 - 按照[使用 Azure 门户创建 Azure Database for MySQL 服务器](quickstart-create-mysql-server-database-using-azure-portal.md)所述创建的 Azure Database for MySQL 服务器。
-- [下载的](https://dev.mysql.com/downloads/workbench/) MySQL Workbench，或用于导入和导出的其他 MySQL 工具。
+- MySQL Workbench [MySQL Workbench 下载](https://dev.mysql.com/downloads/workbench/)或其他用于执行导入/导出的第三方 MySQL 工具。
 
 ## <a name="use-common-tools"></a>使用常用工具
-使用常用工具（例如 MySQL Workbench、Toad 或 Navicat）进行远程连接，并将数据导入或导出到 Azure Database for MySQL。 
+使用常用的实用工具和工具（如 MySQL Workbench 或 mysqldump）进行远程连接，并向/从 Azure Database for MySQL 导入/导出数据。 
 
 在具有 Internet 连接的客户端计算机上使用此类工具连接到 Azure Database for MySQL。 如[在 Azure Database for MySQL 中配置 SSL 连接](concepts-ssl-connection-security.md)中所述，使用具有 SSL 加密的连接是最安全的做法。
 
@@ -116,5 +116,5 @@ ms.locfileid: "73142133"
 2. 单击“开始导入”  开始导入过程。
 
 ## <a name="next-steps"></a>后续步骤
-- 另一种迁移方法，请参阅[在 Azure Database for MySQL 中使用转储和还原来迁移 MySQL 数据库](/dms/)。
+- 另一种迁移方法，请参阅[在 Azure Database for MySQL 中使用转储和还原来迁移 MySQL 数据库](concepts-migrate-dump-restore.md)。
 - 若要详细了解如何将数据库迁移到 Azure Database for MySQL，请参阅[数据库迁移指南](https://aka.ms/datamigration)。 

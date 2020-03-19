@@ -8,12 +8,12 @@ ms.date: 02/24/2020
 ms.author: v-jay
 ms.reviewer: hectorl
 ms.lastreviewed: 11/05/2018
-ms.openlocfilehash: 111c06ece879cb1beba2968253219790158f2e72
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.openlocfilehash: 00fcdc0b7618df1a327d1768745f4063559624bf
+ms.sourcegitcommit: e94ed1c9eff4e88be2ca389909e60b14cc0d92f8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77540886"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79084504"
 ---
 # <a name="recover-from-catastrophic-data-loss"></a>在发生灾难性数据丢失后进行恢复
 
@@ -31,11 +31,11 @@ Azure Stack Hub 在数据中心运行 Azure 服务，并且可以在如同安装
 
 保护 Azure Stack 的过程从分别备份基础结构和应用/租户数据开始。 本文档介绍了如何保护基础结构。 
 
-![Azure Stack Hub 数据恢复工作流 � 部署](media/azure-stack-backup/azure-stack-backup-workflow1.png)
+![Azure Stack Hub 数据恢复工作流 - 部署](media/azure-stack-backup/azure-stack-backup-workflow1.png)
 
 在所有数据均丢失的最差情况中，恢复 Azure Stack Hub 是还原与 Azure Stack Hub 的该部署相关的基础结构数据和所有用户数据的过程。 
 
-![Azure Stack Hub 数据恢复工作流 � 重新部署](media/azure-stack-backup/azure-stack-backup-workflow2.png)
+![Azure Stack Hub 数据恢复工作流 - 重新部署](media/azure-stack-backup/azure-stack-backup-workflow2.png)
 
 ## <a name="restore"></a>还原
 

@@ -3,25 +3,24 @@ title: 使用 Draft 在 Azure Kubernetes 服务 (AKS) 上进行开发
 description: 结合使用 Draft 与 AKS 和 Azure 容器注册表
 services: container-service
 author: rockboyfor
-ms.service: container-service
 ms.topic: article
 origin.date: 06/20/2019
-ms.date: 01/20/2020
+ms.date: 03/09/2020
 ms.author: v-yeche
-ms.openlocfilehash: e5314b31628f47a180af2fc1ee852ea33ee31382
-ms.sourcegitcommit: 8de025ca11b62e06ba3762b5d15cc577e0c0f15d
+ms.openlocfilehash: 75ff026a055e926e612713e47bb8cc070548d715
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76165442"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79290832"
 ---
 # <a name="quickstart-develop-on-azure-kubernetes-service-aks-with-draft"></a>快速入门：使用 Draft 在 Azure Kubernetes 服务 (AKS) 上进行开发
 
 Draft 是一种开源工具，有助于在 Kubernetes 群集中打包和运行应用程序容器。 当代码发生更改时，可以使用 Draft 快速将应用程序重新部署到 Kubernetes，而无需将更改提交到版本控制系统。 有关 Draft 的详细信息，请参阅 [GitHub 上的 Draft 文档][draft-documentation]。
 
-本文介绍如何使用 Draft 在 AKS 上打包和运行应用程序。
+本文介绍如何使用 Draft 在 AKS 中打包和运行应用程序。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * Azure 订阅。 如果你没有 Azure 订阅，可以创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial)。
 * [已安装 Azure CLI](https://docs.azure.cn/cli/install-azure-cli?view=azure-cli-latest)。
@@ -243,7 +242,7 @@ Connect to java:4567 on localhost:49804
 [java]: >> Listening on 0.0.0.0:4567
 ```
 
-在浏览器中使用 `localhost` URL 导航到该应用程序，以查看示例应用程序。 在以上示例中，URL 为 `http://localhost:49804`。 使用 `Ctrl+c` 停止连接。
+在浏览器中使用 `localhost` URL 导航到该应用程序，以查看示例应用程序。 在上面的示例中，URL 为 `http://localhost:49804`。 使用 `Ctrl+c` 停止连接。
 
 ## <a name="access-the-application-on-the-internet"></a>在 Internet 上访问应用程序
 

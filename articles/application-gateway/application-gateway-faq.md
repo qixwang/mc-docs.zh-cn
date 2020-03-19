@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 02/17/2020
+ms.date: 03/02/2020
 ms.author: v-junlch
-ms.openlocfilehash: d0f758c33c7a2c68eb325010073bd23128ac8762
-ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
+ms.openlocfilehash: 35287a136e6ec4954887f053ce0f40c9a7a5919b
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77494541"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293412"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>有关应用程序网关的常见问题解答
 
@@ -405,6 +405,8 @@ Kubernetes 允许创建 `deployment` 和 `service` 资源，以便在群集内�
 
 仅适用于专用 IP 访问的 NSG 配置示例：![仅适用于专用 IP 访问的应用程序网关 V2 NSG 配置](./media/application-gateway-faq/appgw-privip-nsg.png)
 
+### <a name="does-application-gateway-affinity-cookie-support-samesite-attribute"></a>应用程序网关关联 Cookie 是否支持 SameSite 属性？
+支持，[Chromium 浏览器](https://www.chromium.org/Home) [v80 更新](https://chromiumdash.appspot.com/schedule)对没有 SameSite 属性的 HTTP Cookie 引入了一条将其视为 SameSite=Lax 的命令。 这意味着，浏览器不会将应用程序网关关联 Cookie 发送到第三方上下文中。 为了支持此方案，除了现有的 ApplicationGatewayAffinity  Cookie 外，应用程序网关还注入了另一个名为“ApplicationGatewayAffinityCORS”  的 Cookie。  这两个 Cookie 类似，但 ApplicationGatewayAffinityCORS  Cookie 中添加了两个附加属性：*SameSite=None; Secure*。 这些属性甚至可以为跨源请求维护粘性会话。 有关详细信息，请参阅[“基于 Cookie 的关联”部分](configuration-overview.md#cookie-based-affinity)。
 
 ## <a name="next-steps"></a>后续步骤
 

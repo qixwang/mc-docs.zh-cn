@@ -7,14 +7,14 @@ services: iot-hub
 ms.topic: conceptual
 origin.date: 07/17/2018
 ms.custom: H1Hack27Feb2017
-ms.date: 03/09/02020
+ms.date: 03/23/2020
 ms.author: v-yiso
-ms.openlocfilehash: 1faf93f506f4ebb2ec551470a115d7a486a07742
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.openlocfilehash: c01ee7a44612c6ea14518822b3899f5d9779f79a
+ms.sourcegitcommit: 32997a7d7585deaeb0ab7b8f928d397b18b343fa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78154636"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79295930"
 ---
 # <a name="understand-and-invoke-direct-methods-from-iot-hub"></a>了解和调用 IoT 中心的直接方法
 借助 IoT 中心，用户可以从云中对设备调用直接方法。 直接方法表示与设备进行的请求-答复式交互，类似于会立即成功或失败（在用户指定的超时时间后）的 HTTP 调用。 此方法用于即时操作过程不同的情况，即时操作的不同取决于设备能否响应。
@@ -38,7 +38,7 @@ ms.locfileid: "78154636"
 > 
 > 
 
-直接方法是同步的，在超时期限（默认：30 秒，最长可设置为 300 秒）过后，其结果不是成功就是失败。 直接方法适用于交互式场景，即当且仅当设备处于联机状态且可接收命令时，用户希望设备做出响应。 例如，打开手机的灯。 在此类方案中，用户需要立即看到结果是成功还是失败，以便云服务可以尽快根据结果进行操作。 设备可能返回某些消息正文作为方法的结果，但系统不会要求方法一定这样做。 无法保证基于方法调用的排序或者任何并发语义。
+直接方法是同步的，在超时期限（默认：30 秒，可设置为 5 到 300 秒）。 直接方法适用于交互式场景，即当且仅当设备处于联机状态且可接收命令时，用户希望设备做出响应。 例如，打开手机的灯。 在此类方案中，用户需要立即看到结果是成功还是失败，以便云服务可以尽快根据结果进行操作。 设备可能返回某些消息正文作为方法的结果，但系统不会要求方法一定这样做。 无法保证基于方法调用的排序或者任何并发语义。
 
 直接方法从云端只能通过 HTTPS 调用，从设备端可以通过 MQTT 或 AMQP 调用。
 

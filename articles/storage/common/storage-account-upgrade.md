@@ -6,26 +6,26 @@ services: storage
 author: WenJason
 ms.service: storage
 ms.topic: how-to
-origin.date: 12/04/2019
-ms.date: 02/10/2020
+origin.date: 02/25/2019
+ms.date: 03/09/2020
 ms.author: v-jay
-ms.openlocfilehash: da220f0ee9d6fe0c4458a85c44495f55f193bcc1
-ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
+ms.openlocfilehash: 9177fb09fa059c24d69b4e7035be7b19933825e1
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77028548"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291420"
 ---
 # <a name="upgrade-to-a-general-purpose-v2-storage-account"></a>升级到常规用途 v2 存储帐户
 
 常规用途 v2 存储帐户支持最新的 Azure 存储功能，并纳入了常规用途 v1 存储帐户和 Blob 存储帐户的所有功能。 建议将常规用途 v2 帐户用于大多数存储方案。 常规用途 v2 帐户提供适用于 Azure 存储的最低每 GB 容量价格，以及具有行业竞争力的事务价格。 在“热”、“冷”或“存档”分层中，常规用途 v2 帐户支持热/冷和 blob 级别的默认帐户访问层级。
 
-从常规用途 v1 帐户或 Blob 存储帐户升级到常规用途 v2 存储帐户的过程很简单。 可以使用 Azure 门户、PowerShell 或 Azure CLI 升级。
+从常规用途 v1 或 Blob 存储帐户升级到常规用途 v2 存储帐户非常简单。 可以使用 Azure 门户、PowerShell 或 Azure CLI 升级。 升级到常规用途 v2 存储帐户不会有停机或数据丢失的风险。 帐户升级通过更改帐户类型的简单 Azure 资源管理器操作进行。
 
 > [!IMPORTANT]
 > 将常规用途 v1 或 Blob 存储帐户升级到常规用途 v2 是永久性的，不能撤消。
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 1. 登录到 [Azure 门户](https://portal.azure.cn)。
 2. 导航到存储帐户。
@@ -36,7 +36,7 @@ ms.locfileid: "77028548"
 
     ![升级帐户种类](../blobs/media/storage-blob-account-upgrade/upgrade-to-gpv2-account.png)
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -47,7 +47,7 @@ ms.locfileid: "77028548"
 ```powershell
 Set-AzStorageAccount -ResourceGroupName <resource-group> -AccountName <storage-account> -UpgradeToStorageV2 -AccessTier <Hot/Cool>
 ```
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 若要使用 Azure CLI 将常规用途 v1 帐户升级为常规用途 v2 帐户，请先安装最新版的 Azure CLI。 请参阅 [Install the Azure CLI 2.0](/cli/install-azure-cli?view=azure-cli-latest)（安装 Azure CLI 2.0），了解如何安装 CLI。 
 

@@ -4,32 +4,32 @@ description: 快速入门 - 使用 Node.js 服务 SDK 将 TPM 设备注册到 Az
 author: wesmc7777
 ms.author: v-tawe
 origin.date: 11/08/2019
-ms.date: 03/02/2020
+ms.date: 03/23/2020
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 ms.devlang: nodejs
 ms.custom: mvc
-ms.openlocfilehash: 4cc037d8db8b7571b5cecba8a7cf3e54f39d97cb
-ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
+ms.openlocfilehash: 9fbb62971fceeef0d6c2e58100148434725b8ad8
+ms.sourcegitcommit: 4ba6d7c8bed5398f37eb37cf5e2acafcdcc28791
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77494401"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79133792"
 ---
 # <a name="quickstart-enroll-tpm-device-to-iot-hub-device-provisioning-service-using-nodejs-service-sdk"></a>快速入门：使用 Node.js 服务 SDK 将 TPM 设备注册到 IoT 中心设备预配服务
 
 [!INCLUDE [iot-dps-selector-quick-enroll-device-tpm](../../includes/iot-dps-selector-quick-enroll-device-tpm.md)]
 
+在本快速入门中，你将使用 Node.js 服务 SDK 和示例 Node.js 应用程序以编程方式在 Azure IoT 中心设备预配服务中为 TPM 设备创建单个注册。 可以通过该单个注册项，选择性地将模拟的 TPM 设备注册到预配服务。
 
-以下步骤演示了如何使用 [Node.js 服务 SDK](https://github.com/Azure/azure-iot-sdk-node) 和示例 Node.js 应用程序，在 Azure IoT 中心设备预配服务中以编程方式为 TPM 设备创建单个注册。 可以通过该单个注册项，选择性地将模拟的 TPM 设备注册到预配服务。 虽然这些步骤在 Windows 和 Linux 计算机上均适用，但在本文中，我们将使用 Windows 开发计算机。
+## <a name="prerequisites"></a>先决条件
 
-## <a name="prerequisites"></a>必备条件
+- 完成[使用 Azure 门户设置 IoT 中心设备预配服务](./quick-setup-auto-provision.md)。
+- 具有活动订阅的 Azure 帐户。 [创建一个试用帐户](https://wd.azure.cn/pricing/1rmb-trial/)。
+- [Node.js v4.0+](https://nodejs.org)。 本快速入门将在下面安装 [Node.js 服务 SDK](https://github.com/Azure/azure-iot-sdk-node)。
+- 认可密钥（可选）。 按照[创建和预配模拟设备](quick-create-simulated-device.md)中的步骤操作，直到获得该密钥。 请勿使用 Azure 门户创建单个注册。
 
-- 在继续操作之前，请确保完成[通过 Azure 门户设置 IoT 中心设备预配服务](./quick-setup-auto-provision.md)中的步骤。 
--  请确保已在计算机上安装 [Node.js v4.0 或更高版本](https://nodejs.org)。
-- 如需在本快速入门教程末尾注册模拟设备，请执行[创建和预配模拟设备](quick-create-simulated-device.md)中的步骤，一直到获取设备的认可密钥那一步。 请记下认可密钥，本快速入门教程后面会用到它。 **请勿执行通过 Azure 门户创建单个注册的步骤。**
- 
 ## <a name="create-the-individual-enrollment-sample"></a>创建单个注册示例 
 
  
@@ -77,7 +77,7 @@ ms.locfileid: "77494401"
        ![从门户获取预配服务连接字符串](./media/quick-enroll-device-tpm-node/get-service-connection-string.png) 
 
 
-2. 此外还需适用于设备的许可密钥。 如果已按照[创建和预配模拟的设备](quick-create-simulated-device.md)快速入门教程创建模拟的 TPM 设备，请使用为该设备创建的密钥。 否则，若要创建示例性的单个注册，可以使用 SDK 随附的以下许可密钥：
+2. 此外还需适用于设备的许可密钥。 如果已按照[创建和预配模拟的设备](quick-create-simulated-device.md)快速入门教程创建模拟的 TPM 设备，请使用为该设备创建的密钥。 否则，若要创建示例单个注册，可以使用 [Node.js 服务 SDK](https://github.com/Azure/azure-iot-sdk-node) 随附的以下许可密钥：
 
     ```
     AToAAQALAAMAsgAgg3GXZ0SEs/gakMyNRqXXJP1S124GUgtk8qHaGzMUaaoABgCAAEMAEAgAAAAAAAEAxsj2gUScTk1UjuioeTlfGYZrrimExB+bScH75adUMRIi2UOMxG1kw4y+9RW/IVoMl4e620VxZad0ARX2gUqVjYO7KPVt3dyKhZS3dkcvfBisBhP1XH9B33VqHG9SHnbnQXdBUaCgKAfxome8UmBKfe+naTsE5fkvjb/do3/dD6l4sGBwFCnKRdln4XpM03zLpoHFao8zOwt8l/uP3qUIxmCYv9A7m69Ms+5/pCkTu/rK4mRDsfhZ0QLfbzVI6zQFOKF/rwsfBtFeWlWtcuJMKlXdD8TXWElTzgh7JS4qhFzreL0c1mI0GCj+Aws0usZh7dLIVPnlgZcBhgy1SSDQMQ==

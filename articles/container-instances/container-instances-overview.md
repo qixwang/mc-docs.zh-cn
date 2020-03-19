@@ -6,12 +6,12 @@ origin.date: 04/25/2019
 ms.date: 01/15/2020
 ms.author: v-yeche
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 209371fa8d0f4280f70ca2da7565fbde6ca63a7b
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.openlocfilehash: 9a2bc05fbf0ead8efe937def1114d0e2b3cf0287
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77428891"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292234"
 ---
 # <a name="what-is-azure-container-instances"></a>什么是 Azure 容器实例？
 
@@ -44,11 +44,18 @@ ms.locfileid: "77428891"
 
 ## <a name="persistent-storage"></a>持久存储
 
-为了通过 Azure 容器实例来检索和持久保存状态，我们提供由 Azure 存储支持的直接[装载 Azure 文件共享](container-instances-mounting-azure-files-volume.md)功能。
+为了通过 Azure 容器实例来检索和持久保存状态，我们提供由 Azure 存储支持的直接[装载 Azure 文件共享](container-instances-volume-azure-files.md)功能。
 
-## <a name="linux-and-windows-containers"></a>Linux 和 Windows 容器
+<!--URL REDIRECT container-instances-mounting-azure-files-volume.md TO container-instances-volume-azure-files-->
 
-Azure 容器实例可以使用同一 API 来计划 Windows 和 Linux 容器。 直接在创建[容器组](container-instances-container-groups.md)时指定 OS 类型。
+<a name="linux-and-windows-containers">
+## <a name="linux-containers"></a>Linux 容器
+
+<!--Not Available on Windows containers-->
+
+Azure 容器实例可以使用 API 来计划 Linux 容器。 直接在创建[容器组](container-instances-container-groups.md)时指定 OS 类型。
+
+<!--Not Available on both Windows and Linux container -->
 
 某些功能当前仅限于 Linux 容器：
 
@@ -60,10 +67,9 @@ Azure 容器实例可以使用同一 API 来计划 Windows 和 Linux 容器。 �
     
 * [GPU 资源](container-instances-gpu.md)（预览版）
 
-对于 Windows 容器部署，请基于常用 [Windows 基础映像](container-instances-faq.md#what-windows-base-os-images-are-supported)使用映像。
-
-> [!NOTE]
-> 在 Azure 容器实例中使用基于 Windows Server 2019 的映像处于预览状态。
+<!--Not Available on Windows container deployments-->
+<!--Not Available on [Windows base images](container-instances-faq.md#what-windows-base-os-images-are-supported)-->
+<!--Not Available on  Windows Server 2019-based images in Azure Container Instances is in preview.-->
 
 ## <a name="co-scheduled-groups"></a>共同计划组
 

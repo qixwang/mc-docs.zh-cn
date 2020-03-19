@@ -3,20 +3,20 @@ title: TechnicalProfiles
 titleSuffix: Azure AD B2C
 description: 在 Azure Active Directory B2C 中指定自定义策略的 TechnicalProfiles 元素。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/21/2020
+ms.date: 03/04/2020
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: 9350341387d528a20abf325a7c3bd9eb714389f0
-ms.sourcegitcommit: 1bd7711964586b41ff67fd1346dad368fe7383da
+ms.openlocfilehash: 489f20dac87a859807e6cde7d459217b32884d58
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77531326"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291111"
 ---
 # <a name="technicalprofiles"></a>TechnicalProfiles
 
@@ -111,7 +111,7 @@ Protocol  元素包含以下属性：
 
 | 属性 | 必须 | 说明 |
 | --------- | -------- | ----------- |
-| 名称 | 是 | Azure AD B2C 支持的有效协议的名称，用作技术配置文件的一部分。 可能的值：`OAuth1`、`OAuth2`、`SAML2`、`OpenIdConnect`、`Proprietary`、`session management`、`self-asserted` 或 `None`。 |
+| 名称 | 是 | Azure AD B2C 支持的有效协议的名称，用作技术配置文件的一部分。 可能的值：`OAuth1`、`OAuth2`、`SAML2`、`OpenIdConnect`、`Proprietary` 或 `None`。 |
 | Handler | 否 | 当协议名称设置为 `Proprietary` 时，指定 Azure AD B2C 用来确定协议处理程序的程序集的完全限定名称。 |
 
 ## <a name="metadata"></a>Metadata

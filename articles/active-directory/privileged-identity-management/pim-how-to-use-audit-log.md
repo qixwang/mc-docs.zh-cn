@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
-ms.date: 02/25/2020
+ms.date: 03/11/2020
 ms.author: v-junlch
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: beee9136a6e6385d2a6b3296e1e574aeb27f8bb8
-ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
+ms.openlocfilehash: cb2b59e3886a0941efe9f6d945d5618eae52c446
+ms.sourcegitcommit: 4ba6d7c8bed5398f37eb37cf5e2acafcdcc28791
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77653069"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79133876"
 ---
 # <a name="view-audit-history-for-azure-ad-roles-in-pim"></a>在 PIM 中查看 Azure AD 角色的审核历史记录
 
@@ -32,7 +32,7 @@ ms.locfileid: "77653069"
 1. 以具有[特权角色管理员](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator)角色的用户身份登录到 [Azure 门户](https://portal.azure.cn/)。
 1. 打开“Azure AD Privileged Identity Management”。  如果在概述页的顶部有横幅，请按照本文“新版本”选项卡中的说明进行操作  。 否则，请按照“先前版本”选项卡中的说明操作  。
 
-    ![Azure AD 角色新版本](./media/pim-how-to-add-role-to-user/pim-new-version.png)
+    [![](./media/pim-how-to-add-role-to-user/pim-new-version.png "Select Azure AD > Privileged Identity Management")](./media/pim-how-to-add-role-to-user/pim-new-version.png#lightbox)
 
 # <a name="new-version"></a>[新版本](#tab/new)
 
@@ -50,7 +50,7 @@ ms.locfileid: "77653069"
 
 1. 可以使用预定义的日期或自定义范围筛选历史记录。
 
-    ![带筛选器的资源审核列表](./media/azure-pim-resource-rbac/rbac-resource-audit.png)
+    ![带筛选器的资源审核列表](./media/pim-how-to-use-audit-log/resource-audit.png)
 
 ## <a name="view-my-audit"></a>查看我的审核
 
@@ -66,7 +66,7 @@ ms.locfileid: "77653069"
 
 1. 可以使用预定义的日期或自定义范围筛选历史记录。
 
-    ![当前用户的审核列表](./media/azure-pim-resource-rbac/my-audit-time.png)
+    ![当前用户的审核列表](./media/pim-how-to-use-audit-log/audit-time-span.png)
 
 # <a name="previous-version"></a>[先前版本](#tab/previous)
 

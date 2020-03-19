@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 02/10/2020
+ms.date: 03/02/2020
 ms.author: v-junlch
-ms.openlocfilehash: 82edadec7980e1a078705e2282b3afc6525fa4f0
-ms.sourcegitcommit: f388b7b1cdfe06ebda7d9c21cf39943611b62a75
+ms.openlocfilehash: 8d5dd1fe63a084cc30bac28e372de0e604e92697
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77155540"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293387"
 ---
 # <a name="application-gateway-configuration-overview"></a>应用程序网关配置概述
 
@@ -25,7 +25,7 @@ Azure 应用程序网关由多个组件构成，可根据不同的方案以不�
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 ### <a name="azure-virtual-network-and-dedicated-subnet"></a>Azure 虚拟网络和专用子网
 
@@ -210,7 +210,7 @@ Set-AzApplicationGateway -ApplicationGateway $gw
 
 如果为基本规则配置了重定向，则关联的侦听器上的所有请求将重定向到目标。 此过程称为全局重定向。  如果为基于路径的规则配置了重定向，则只会重定向特定站点区域中的请求。 区域的示例包括 */cart/\** 表示的购物车区域。 此过程称为基于路径的重定向。 
 
-有关重定向的详细信息，请参阅[应用程序网关重定向概述](/application-gateway/redirect-overview)。
+有关重定向的详细信息，请参阅[应用程序网关重定向概述](redirect-overview.md)。
 
 #### <a name="redirection-type"></a>重定向类型
 
@@ -227,24 +227,24 @@ Set-AzApplicationGateway -ApplicationGateway $gw
 ![应用程序网关组件对话框](./media/configuration-overview/configure-redirection.png)
 
 有关 HTTP 到 HTTPS 的重定向的详细信息，请参阅：
-- [使用 Azure 门户配置 HTTP 到 HTTPS 的重定向](/application-gateway/redirect-http-to-https-portal)
-- [使用 PowerShell 配置 HTTP 到 HTTPS 的重定向](/application-gateway/redirect-http-to-https-powershell)
-- [使用 Azure CLI 配置 HTTP 到 HTTPS 的重定向](/application-gateway/redirect-http-to-https-cli)
+- [使用 Azure 门户配置 HTTP 到 HTTPS 的重定向](redirect-http-to-https-portal.md)
+- [使用 PowerShell 配置 HTTP 到 HTTPS 的重定向](redirect-http-to-https-powershell.md)
+- [使用 Azure CLI 配置 HTTP 到 HTTPS 的重定向](redirect-http-to-https-cli.md)
 
 ##### <a name="external-site"></a>外部站点
 
 若要将与此类规则关联的侦听器上的流量重定向到外部站点，请选择外部站点。 可以选择在转发到重定向目标的请求中包含来自原始请求的查询字符串。 无法将原始请求中的路径转发到外部站点。
 
 有关重定向的详细信息，请参阅：
-- [使用 PowerShell 将流量重定向到外部站点](/application-gateway/redirect-external-site-powershell)
-- [使用 CLI 将流量重定向到外部站点](/application-gateway/redirect-external-site-cli)
+- [使用 PowerShell 将流量重定向到外部站点](redirect-external-site-powershell.md)
+- [使用 CLI 将流量重定向到外部站点](redirect-external-site-cli.md)
 
 #### <a name="rewrite-the-http-header-setting"></a>重写 HTTP 标头设置
 
 当请求和响应数据包在客户端和后端池之间移动时，此设置将添加、删除或更新 HTTP 请求和响应标头。 有关详细信息，请参阅：
 
- - [重写 HTTP 标头概述](/application-gateway/rewrite-http-headers)
- - [配置 HTTP 标头重写](/application-gateway/rewrite-http-headers-portal)
+ - [重写 HTTP 标头概述](rewrite-http-headers.md)
+ - [配置 HTTP 标头重写](rewrite-http-headers-portal.md)
 
 ## <a name="http-settings"></a>HTTP 设置
 
@@ -252,7 +252,18 @@ Set-AzApplicationGateway -ApplicationGateway $gw
 
 ### <a name="cookie-based-affinity"></a>基于 Cookie 的相关性
 
-需要在同一台服务器上保留用户会话时，此功能非常有用。 使用网关托管的 Cookie，应用程序网关可将来自用户会话的后续流量定向到同一服务器进行处理。 如果用户会话的会话状态保存在服务器本地，则此功能十分重要。 如果应用程序无法处理基于 Cookie 的相关性，则你无法使用此功能。 若要使用此功能，请确保客户端支持 Cookie。
+Azure 应用程序网关使用网关托管 Cookie 来维护用户会话。 当用户将第一个请求发送到应用程序网关时，它会在响应中使用包含会话详细信息的哈希值来设置关联 Cookie，将具有关联 Cookie 的后续请求路由到同一后端服务器，以便保持粘性。 
+
+当要在同一台服务器上保存用户会话时，以及在服务器上以本地方式为用户会话保存会话状态时，可以使用此功能。 如果应用程序无法处理基于 Cookie 的相关性，则你无法使用此功能。 若要使用此功能，请确保客户端支持 Cookie。
+
+[Chromium 浏览器](https://www.chromium.org/Home) [v80 更新](https://chromiumdash.appspot.com/schedule)提出了一个要求：必须将不包含 [SameSite](https://tools.ietf.org/id/draft-ietf-httpbis-rfc6265bis-03.html#rfc.section.5.3.7) 属性的 HTTP Cookie 视为 SameSite=Lax。 对于 CORS（跨源资源共享）请求，如果必须在第三方上下文中发送 Cookie，它必须使用 *SameSite=None; Secure* 属性，并且只应通过 HTTPS 发送它。 否则，在仅限 HTTP 的方案中，浏览器不会在第三方上下文中发送 Cookie。 Chrome 的此更新的目标是增强安全性，避免跨站点请求伪造 (CSRF) 攻击。 
+
+为了支持此更改，从 2020 年 2 月 17 日开始，除了现有的 *ApplicationGatewayAffinity* Cookie 外，应用程序网关（所有 SKU 类型）还会注入另一个名为“ApplicationGatewayAffinityCORS”  的 Cookie。 *ApplicationGatewayAffinityCORS* Cookie 又添加了两个属性 ( *"SameSite=None; Secure"* )，这样即使对于跨域请求也可以保持粘性会话。
+
+请注意，默认关联 Cookie 名称是 *ApplicationGatewayAffinity*，可以对其进行更改。 如果使用自定义相关性 Cookie 名称，则会添加一个以 CORS 为后缀的附加 Cookie。 例如，*CustomCookieNameCORS*。
+
+> [!NOTE]
+> 如果设置了属性 *SameSite = None*，则 Cookie 还必须包含 *Secure* 标志，并且必须通过 HTTPS 发送。  如果需要基于 CORS 的会话相关性，则必须将工作负载迁移到 HTTPS。 请参阅此处提供的针对应用程序网关的 SSL 卸载和端到端 SSL 文档 - [概述](ssl-overview.md)、[如何配置 SSL 卸载](create-ssl-portal.md)、[如何配置端到端 SSL](end-to-end-ssl-portal.md)。
 
 ### <a name="connection-draining"></a>连接清空
 
@@ -262,7 +273,7 @@ Set-AzApplicationGateway -ApplicationGateway $gw
 
 应用程序网关支持使用 HTTP 和 HTTPS 将请求路由到后端服务器。 如果选择了 HTTP 协议，则流量将以未加密的形式传送到后端服务器。 如果不能接受未加密的通信，请选择 HTTPS。
 
-在侦听器中结合 HTTPS 使用此设置将有助于实现[端到端的 SSL](/application-gateway/ssl-overview)。 这样，就可以安全地将敏感数据以加密的形式传输到后端。 后端池中每个已启用端到端 SSL 的后端服务器都必须配置证书，以便能够进行安全的通信。
+在侦听器中结合 HTTPS 使用此设置将有助于实现[端到端的 SSL](ssl-overview.md)。 这样，就可以安全地将敏感数据以加密的形式传输到后端。 后端池中每个已启用端到端 SSL 的后端服务器都必须配置证书，以便能够进行安全的通信。
 
 ### <a name="port"></a>端口
 
@@ -301,7 +312,7 @@ Set-AzApplicationGateway -ApplicationGateway $gw
 
 ### <a name="use-custom-probe"></a>使用自定义探测
 
-此设置用于将[自定义探测](/application-gateway/application-gateway-probe-overview#custom-health-probe)与某个 HTTP 设置相关联。 只能将一个自定义探测关联到某个 HTTP 设置。 如果未显式关联自定义探测，则会使用[默认探测](/application-gateway/application-gateway-probe-overview#default-health-probe-settings)来监视后端的运行状况。 我们建议创建自定义探测，以便更好地控制后端的运行状况监视。
+此设置用于将[自定义探测](application-gateway-probe-overview.md#custom-health-probe)与某个 HTTP 设置相关联。 只能将一个自定义探测关联到某个 HTTP 设置。 如果未显式关联自定义探测，则会使用[默认探测](application-gateway-probe-overview.md#default-health-probe-settings)来监视后端的运行状况。 我们建议创建自定义探测，以便更好地控制后端的运行状况监视。
 
 > [!NOTE]
 > 只有在将相应的 HTTP 设置显式关联到某个侦听器之后，自定义探测才会监视后端池的运行状况。
@@ -335,7 +346,7 @@ Set-AzApplicationGateway -ApplicationGateway $gw
 
 ## <a name="health-probes"></a>运行状况探测
 
-应用程序网关默认会监视其后端中所有资源的运行状况。 但是，我们强烈建议为每个后端 HTTP 设置创建一个自定义探测，以便更好地控制运行状况监视。 若要了解如何配置自定义探测，请参阅[自定义运行状况探测设置](/application-gateway/application-gateway-probe-overview#custom-health-probe-settings)。
+应用程序网关默认会监视其后端中所有资源的运行状况。 但是，我们强烈建议为每个后端 HTTP 设置创建一个自定义探测，以便更好地控制运行状况监视。 若要了解如何配置自定义探测，请参阅[自定义运行状况探测设置](application-gateway-probe-overview.md#custom-health-probe-settings)。
 
 > [!NOTE]
 > 创建自定义运行状况探测后，需将其关联到后端 HTTP 设置。 只有在将相应的 HTTP 设置通过规则显式关联到某个侦听器之后，自定义探测才会监视后端池的运行状况。

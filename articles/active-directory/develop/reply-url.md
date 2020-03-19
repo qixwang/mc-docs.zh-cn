@@ -4,18 +4,18 @@ description: 回复 URL/重定向 URI 的局限性和限制
 author: SureshJa
 ms.author: v-junlch
 manager: CelesteDG
-ms.date: 02/25/2020
+ms.date: 03/10/2020
 ms.topic: conceptual
 ms.subservice: develop
 ms.custom: aaddev
 ms.service: active-directory
 ms.reviewer: lenalepa, manrath
-ms.openlocfilehash: 4ed677df13ebf35f4319e5470a0a67c2789b2f4a
-ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
+ms.openlocfilehash: 35c3fbe01de85bb6f7b97cb0910345fdf061b7e1
+ms.sourcegitcommit: 4ba6d7c8bed5398f37eb37cf5e2acafcdcc28791
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77653173"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79133815"
 ---
 # <a name="redirect-urireply-url-restrictions-and-limitations"></a>重定向 URI/答复 URL 限制和局限
 
@@ -53,7 +53,7 @@ Azure AD 应用程序模型目前支持 HTTP 和 HTTPS 方案，用于在任何�
 > [!NOTE]
 > 新的[应用注册](https://portal.azure.cn/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredAppsPreview)体验不允许开发人员在 UI 中添加通配符 URI。 对于使用工作或学校帐户登录的应用，仅支持通过应用清单编辑器添加通配符 URI。 今后，新应用无法在重定向 URI 中使用通配符。 但是，在重定向 URI 中包含通配符的早期应用可继续正常运行。
 
-如果方案所需的重定向 URI 数目超过允许的最大限制，请不要添加通配符重定向 URI，而是考虑以下方法之一。
+如果方案所需的重定向 URI 数目超过允许的最大限制，请不要添加通配符重定向 URI，而是考虑以下方法。
 
 ### <a name="use-a-state-parameter"></a>使用状态参数
 
@@ -69,10 +69,6 @@ Azure AD 应用程序模型目前支持 HTTP 和 HTTPS 方案，用于在任何�
 
 > [!NOTE]
 > 此方法允许遭到攻击的客户端修改状态参数中发送的其他参数，从而将用户重定向到其他 URL，这就是 RFC 6819 中所述的[开放重定向程序威胁](https://tools.ietf.org/html/rfc6819#section-4.2.4)。 因此，客户端必须加密状态，或通过其他某些方式来验证这些参数（例如，根据令牌验证重定向 URI 中的域名），以此保护这些参数。
-
-### <a name="add-redirect-uris-to-service-principals"></a>将重定向 URI 添加到服务主体
-
-另一种方法是将重定向 URI 添加到表示任何 Azure AD 租户中的应用注册的[服务主体](app-objects-and-service-principals.md#application-and-service-principal-relationship)。 无法使用状态参数，或者方案要求将新的重定向 URI 添加到你支持的每个新租户的应用注册时，可以使用此方法。 
 
 ## <a name="next-steps"></a>后续步骤
 

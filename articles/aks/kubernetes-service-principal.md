@@ -2,18 +2,16 @@
 title: 适用于 Azure Kubernetes 服务 (AKS) 的服务主体
 description: 在 Azure Kubernetes 服务 (AKS) 中为群集创建和管理 Azure Active Directory 服务主体
 services: container-service
-author: rockboyfor
-ms.service: container-service
 ms.topic: conceptual
 origin.date: 04/25/2019
-ms.date: 01/20/2020
+ms.date: 03/09/2020
 ms.author: v-yeche
-ms.openlocfilehash: a9158ce638a2fb3976d744035e8c2252c31ddddd
-ms.sourcegitcommit: 8de025ca11b62e06ba3762b5d15cc577e0c0f15d
+ms.openlocfilehash: 147e0b512759f7388d1bbcc8726d8f6503328c06
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76165441"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292486"
 ---
 # <a name="service-principals-with-azure-kubernetes-service-aks"></a>使用 Azure Kubernetes 服务 (AKS) 的服务主体
 
@@ -70,6 +68,9 @@ az aks create \
     --service-principal <appId> \
     --client-secret <password>
 ```
+
+> [!NOTE]
+> 如果使用的是具有自定义机密的现有服务主体，请确保该机密不超过 190 字节。
 
 如果使用 Azure 门户来部署 AKS 群集，请在“创建 Kubernetes 群集”对话框的“身份验证”页上选择“配置服务主体”。    选择“使用现有”并指定以下值： 
 

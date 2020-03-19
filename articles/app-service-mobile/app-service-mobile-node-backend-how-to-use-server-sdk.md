@@ -6,23 +6,18 @@ ms.tgt_pltfrm: mobile-multiple
 ms.devlang: node
 ms.topic: article
 origin.date: 10/01/2016
-ms.date: 12/16/2019
+md.date: 03/23/2020
 ms.author: v-tawe
-ms.openlocfilehash: 683fb06b79c7d53a80e2d329ce4b1b82920a7b15
-ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
+ms.openlocfilehash: ba7426595c4f0bd0387d73ac70705335a215e23b
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75600548"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292089"
 ---
 # <a name="how-to-use-the-mobile-apps-nodejs-sdk"></a>如何使用移动应用 Node.js SDK
 
 [!INCLUDE [app-service-mobile-selector-server-sdk](../../includes/app-service-mobile-selector-server-sdk.md)]
-
-> [!NOTE]
-> Visual Studio App Center 支持以移动应用开发为中心的端到端集成服务。 开发人员可以使用“生成”  、“测试”  和“分发”  服务来设置“持续集成和交付”管道。 部署应用后，开发人员可以使用**分析**和**诊断**服务监视其应用的状态和使用情况，并使用**推送**服务与用户互动。 开发人员还可以利用“身份验证”  对其用户进行身份验证，并使用“数据”  服务在云中保留和同步应用数据。
->
->  如果希望将云服务集成到移动应用程序中，请立即注册到 [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) 中。
 
 本文提供详细的信息和示例，说明如何在 Azure 应用服务的移动应用功能中使用 Node.js 后端。
 
@@ -47,6 +42,7 @@ Azure 移动应用 Node.js SDK 支持两个数据库驱动程序：
 * sqlite3 驱动程序仅支持单个实例上的 SQLite 数据库。
 
 ### <a name="howto-cmdline-basicapp"></a>使用命令行创建基本 Node.js 后端
+
 每个移动应用 Node.js 后端都以 ExpressJS 应用程序的形式启动。 在适用于 Node.js 的 Web 服务框架中，ExpressJS 最广为使用。 可按以下方式创建基本的 [Express] 应用程序：
 
 1. 在命令窗口或 PowerShell 窗口中，为项目创建目录：

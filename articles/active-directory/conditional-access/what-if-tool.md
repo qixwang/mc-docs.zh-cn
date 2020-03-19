@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: article
-ms.date: 02/25/2020
+ms.date: 03/10/2020
 ms.author: v-junlch
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: nigu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2c7bd46d30d32100e0ad4fed3b65bae893005999
-ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
+ms.openlocfilehash: f786028dd4cf7cc89f7c1e4666f8170cd01a37ae
+ms.sourcegitcommit: 4ba6d7c8bed5398f37eb37cf5e2acafcdcc28791
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77653316"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79133835"
 ---
 # <a name="troubleshoot-using-the-what-if-tool-in-conditional-access"></a>在条件访问中使用 What If 工具进行故障排除
 
@@ -98,7 +98,7 @@ IP 地址为单个 IPv4 地址，用于模拟[位置条件](location-condition.m
 
 如果对于所选云应用，存在[经典策略](policy-migration.md#classic-policies)，则显示一个指示器。 通过单击该指示器，系统会重定向到经典策略页。 在经典策略页上，可以迁移经典策略或仅禁用该策略。 可以通过关闭此页返回到评估结果。
 
-在应用于所选用户的策略列表中，还可以找到用户必须满足的[授权控件](controls.md#grant-controls)和[会话](controls.md#session-controls)控件列表。
+在应用于所选用户的策略列表中，还可以找到用户必须满足的[授权控制](concept-conditional-access-grant.md)和[会话控制](concept-conditional-access-session.md)列表。
 
 在不应用于用户的策略列表中，还可以找到不应用这些策略的原因。 对于列出的每条策略，所列原因表示不满足的首要条件。 不应用策略的可能原因是策略被禁用，因为未经过进一步评估。   
 
@@ -108,4 +108,3 @@ IP 地址为单个 IPv4 地址，用于模拟[位置条件](location-condition.m
 - 如果已准备好针对环境配置条件访问策略，请参阅 [Azure Active Directory 中条件访问的最佳做法](best-practices.md)。 
 - 如果想要迁移经典策略，请参阅[在 Azure 门户中迁移经典策略](policy-migration.md)  
 
-<!-- Update_Description: wording update -->

@@ -2,18 +2,16 @@
 title: 操作员最佳做法 - Azure Kubernetes 服务 (AKS) 中的群集安全性
 description: 了解有关如何在 Azure Kubernetes 服务 (AKS) 中管理群集安全性和升级的群集操作员最佳做法
 services: container-service
-author: rockboyfor
-ms.service: container-service
 ms.topic: conceptual
 origin.date: 12/06/2018
-ms.date: 01/13/2020
+ms.date: 03/09/2020
 ms.author: v-yeche
-ms.openlocfilehash: 0056e03f79045bb661998343da69e0c449e153da
-ms.sourcegitcommit: c5af330f13889a18bb8a5b44e6566a3df4aeea49
+ms.openlocfilehash: 5b22769075134adb42462d8abaa65a16548d9f18
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75859866"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79290719"
 ---
 # <a name="best-practices-for-cluster-security-and-upgrades-in-azure-kubernetes-service-aks"></a>有关 Azure Kubernetes 服务 (AKS) 中的群集安全性和升级的最佳做法
 

@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-origin.date: 01/31/2020
-ms.date: 03/01/2020
+origin.date: 02/25/2020
+ms.date: 03/23/2020
 ms.author: v-tawe
 ms.custom: seodec18
-ms.openlocfilehash: 23d67c3353512c1bfe899f3786416d7def23ef35
-ms.sourcegitcommit: 892137d117bcaf9d88aec0eb7ca756fe39613344
+ms.openlocfilehash: d34f2af5be4c4840778edf930c3697ba7f90828c
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78042307"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293034"
 ---
 # <a name="language-and-region-support-for-the-speech-service"></a>语音服务的语言和区域支持
 
@@ -38,8 +38,8 @@ https://cris.azure.cn -> Click on Adaptation Data -> scroll down to section "Pro
  Locale | 语言 | 支持 | 自定义
 ------|------------|-----------|-------------
 `ar-AE` | 阿拉伯语(阿拉伯联合酋长国) | 是 | 否
-`ar-BH` | 阿拉伯语（巴林） | 是 | 语言模型
-`ar-EG` | 阿拉伯语(埃及)，现代标准 | 是 | 语言模型
+`ar-BH` | 阿拉伯语(巴林)，现代标准 | 是 | 语言模型
+`ar-EG` | 阿拉伯语（埃及） | 是 | 语言模型
 `ar-KW` | 阿拉伯语(科威特) | 是 | 否
 `ar-QA` | 阿拉伯语(卡塔尔) | 是 | 否
 `ar-SA` | 阿拉伯语（沙特阿拉伯） | 是 | 否
@@ -83,7 +83,6 @@ Locale | 语言 | 性别 | 完整服务名称映射 | 短语音名称
 --------|----------|--------|---------|------------
 `de-DE` | 德语（德国） | 女 | "Microsoft Server Speech Text to Speech Voice (de-DE, KatjaNeural)" | "de-DE-KatjaNeural"
 `en-US` | 英语(美国) | 男 | "Microsoft Server Speech Text to Speech Voice (en-US, GuyNeural)" | "en-US-GuyNeural"
-`en-US` | 英语(美国) | 女 | "Microsoft Server Speech Text to Speech Voice (en-US, JessaNeural)" | "en-US-JessaNeural"
 `it-IT` | 意大利语（意大利） | 女 |"Microsoft Server Speech Text to Speech Voice (it-IT, ElsaNeural)" | "it-IT-ElsaNeural"
 `zh-CN` | 中文(中国) | 女 | "Microsoft Server Speech Text to Speech Voice (zh-CN, XiaoxiaoNeural)" | "zh-CN-XiaoxiaoNeural"
 
@@ -174,6 +173,7 @@ Locale | 语言 | 性别 | 完整服务名称映射 | 短名称
 | 朝鲜语      | `ko`          |
 | 俄语      | `ru`          |
 | 西班牙语      | `es`          |
+
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -10,16 +10,16 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: big-data
-origin.date: 10/02/2019
-ms.date: 02/24/2020
+origin.date: 02/28/2020
+ms.date: 03/23/2020
 ms.author: v-yiso
 ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017
-ms.openlocfilehash: 0872e815ac3af387c58038d63d53975aa2319061
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.openlocfilehash: bbbc375a9eeb42b6f9c493c547ce4cf22c6a4e6f
+ms.sourcegitcommit: 32997a7d7585deaeb0ab7b8f928d397b18b343fa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77428828"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79295932"
 ---
 # <a name="connect-to-hdinsight-apache-hadoop-using-ssh"></a>使用 SSH 连接到 HDInsight (Apache Hadoop)
 
@@ -49,7 +49,7 @@ Linux、Unix 和 macOS 系统提供 `ssh` 和 `scp` 命令。 `ssh` 客户端通
 
 默认情况下，Microsoft Windows 不安装任何 SSH 客户端。 `ssh` 和 `scp` 客户端通过以下包提供给 Windows 使用：
 
-* [OpenSSH 客户端](https://docs.microsoft.com/windows-server/administration/openssh/openssh_install_firstuse)。 这是 Windows 10 Fall Creators Update 中引入的可选功能。
+* [OpenSSH 客户端](https://docs.microsoft.com/windows-server/administration/openssh/openssh_install_firstuse)。 此客户端是 Windows 10 Fall Creators Update 中引入的可选功能。
 
 * [Windows 10 版 Bash on Ubuntu](https://docs.microsoft.com/windows/wsl/about)。
 

@@ -2,19 +2,17 @@
 title: 将将容器注册表与 Azure Kubernetes 服务集成
 description: 了解如何将 Azure Kubernetes 服务 (AKS) 与 Azure 容器注册表 (ACR) 集成
 services: container-service
-author: rockboyfor
 manager: digimobile
-ms.service: container-service
 ms.topic: article
-origin.date: 09/17/2018
-ms.date: 10/28/2019
+origin.date: 02/25/2020
+ms.date: 03/09/2020
 ms.author: v-yeche
-ms.openlocfilehash: 5e8494649a212b683f558ce316e1c540f1f3e4d2
-ms.sourcegitcommit: 1d4dc20d24feb74d11d8295e121d6752c2db956e
+ms.openlocfilehash: d5fabd82cfe1d78d0c37518e882abc4238033f99
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73068901"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79290767"
 ---
 <!--Verify successfully-->
 # <a name="authenticate-with-azure-container-registry-from-azure-kubernetes-service"></a>使用 Azure 容器注册表从 Azure Kubernetes 服务进行身份验证
@@ -30,9 +28,11 @@ ms.locfileid: "73068901"
 * **Azure 订阅**上的**所有者**或 **Azure 帐户管理员**角色
 * Azure CLI 2.0.73 版或更高版本
 
+为了避免需要“所有者”  或“Azure 帐户管理员”  角色，可以手动配置服务主体或使用现有服务主体从 AKS 进行 ACR 身份验证。 有关详细信息，请参阅[使用服务主体进行 ACR 身份验证](../container-registry/container-registry-auth-service-principal.md)或[使用请求密码从 Kubernetes 进行身份验证](../container-registry/container-registry-auth-kubernetes.md)。
+
 ## <a name="create-a-new-aks-cluster-with-acr-integration"></a>通过 ACR 集成创建新的 AKS 群集
 
-可以在一开始创建 AKS 群集时设置 AKS 与 ACR 的集成。  若要允许 AKS 群集与 ACR 交互，请使用 Azure Active Directory **服务主体**。 以下 CLI 命令允许你在订阅中授权现有 ACR，并为服务主体配置适当的 **ACRPull** 角色。 为下面的参数提供有效值。  括号中的参数为可选。
+可以在一开始创建 AKS 群集时设置 AKS 与 ACR 的集成。  若要允许 AKS 群集与 ACR 交互，请使用 Azure Active Directory **服务主体**。 以下 CLI 命令允许你在订阅中授权现有 ACR，并为服务主体配置适当的 **ACRPull** 角色。 为下面的参数提供有效值。
 
 [!INCLUDE [azure-cli-2-azurechinacloud-environment-parameter](../../includes/azure-cli-2-azurechinacloud-environment-parameter.md)]
 
@@ -44,21 +44,15 @@ MYACR=myContainerRegistry
 az acr create -n $MYACR -g myContainerRegistryResourceGroup --sku basic
 
 # Create an AKS cluster with ACR integration
-az aks create -n myAKSCluster -g myResourceGroup --attach-acr $MYACR --vm-set-type AvailabilitySet
-
+az aks create -n myAKSCluster -g myResourceGroup --generate-ssh-keys --attach-acr $MYACR
 ```
-
-<!--MOONCAKE: CORRECT TO APPEND --vm-set-type AvailabilitySet Before VMSS feature is valid on Azure China Cloud-->
-
 或者，可以使用 ACR 资源 ID 指定 ACR 名称，其格式如下：
 
-/subscriptions/\<subscription-id\>/resourceGroups/\<resource-group-name\>/providers/Microsoft.ContainerRegistry/registries/\<name\> 
+`/subscriptions/\<subscription-id\>/resourceGroups/\<resource-group-name\>/providers/Microsoft.ContainerRegistry/registries/\<name\>` 
 
 ```azurecli
-az aks create -n myAKSCluster -g myResourceGroup --attach-acr /subscriptions/<subscription-id>/resourceGroups/myContainerRegistryResourceGroup/providers/Microsoft.ContainerRegistry/registries/myContainerRegistry --vm-set-type AvailabilitySet
+az aks create -n myAKSCluster -g myResourceGroup --generate-ssh-keys --attach-acr /subscriptions/<subscription-id>/resourceGroups/myContainerRegistryResourceGroup/providers/Microsoft.ContainerRegistry/registries/myContainerRegistry
 ```
-
-<!--MOONCAKE: CORRECT TO APPEND --vm-set-type AvailabilitySet Before VMSS feature is valid on Azure China Cloud-->
 
 此步骤可能需要几分钟才能完成。
 
@@ -155,4 +149,4 @@ nginx0-deployment-669dfc4d4b-xdpd6   1/1     Running   0          20s
 
 [AKS AKS CLI]: https://docs.microsoft.com/cli/azure/aks?view=azure-cli-latest#az-aks-create
 
-<!-- Update_Description: wording update -->
+<!-- Update_Description: update meta properties, wording update, update link -->

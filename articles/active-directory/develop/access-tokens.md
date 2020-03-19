@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 02/24/2020
+ms.date: 03/10/2020
 ms.author: v-junlch
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40, fasttrack-edit
-ms.openlocfilehash: 8beddac75123f483c7eaf2a715b44f437f266222
-ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
+ms.openlocfilehash: fc2a603cbb73f181cb2e7faea80f19b59c7d5eda
+ms.sourcegitcommit: 4ba6d7c8bed5398f37eb37cf5e2acafcdcc28791
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77653310"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79133837"
 ---
 # <a name="microsoft-identity-platform-access-tokens"></a>Microsoft 标识平台访问令牌
 
@@ -178,7 +178,7 @@ Azure AD 中间件具有验证访问令牌的内置功能，可以浏览我们�
 
 JWT 包含三个段（以 `.` 字符分隔）。 第一个段称为标头，第二个称为主体，第三个称为签名。    签名段可用于验证令牌的真实性，使令牌可获得应用的信任。
 
-Azure AD 颁发的令牌已使用行业标准非对称式加密算法（例如 RSA 256）进行签名。 JWT 的标头包含用于签名令牌的密钥和加密方法的相关信息：
+Azure AD 颁发的令牌已使用行业标准非对称式加密算法（例如 RS256）进行签名。 JWT 的标头包含用于签名令牌的密钥和加密方法的相关信息：
 
 ```json
 {
@@ -271,4 +271,3 @@ https://login.partner.microsoftonline.cn/common/v2.0/.well-known/openid-configur
 * 了解 [Azure AD 中的 `id_tokens`](id-tokens.md)。
 * 了解权限和同意（[v1.0](../azuread-dev/v1-permissions-consent.md)、[v2.0](v2-permissions-and-consent.md)）。
 
-<!-- Update_Description: link update -->

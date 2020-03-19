@@ -9,12 +9,12 @@ ms.date: 11/18/2019
 ms.author: v-jay
 ms.reviewer: anajod
 ms.lastreviewed: 11/05/2019
-ms.openlocfilehash: e34cfc01adbc6f32c011fe6ed3f77af73125469c
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.openlocfilehash: bfa4dccfd4170ec5ffb990e1a95420385cf89373
+ms.sourcegitcommit: e94ed1c9eff4e88be2ca389909e60b14cc0d92f8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75623764"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79084398"
 ---
 # <a name="cross-cloud-scaling-on-premises-data-pattern"></a>跨云缩放（本地数据）模式
 
@@ -57,7 +57,7 @@ ms.locfileid: "75623764"
 
 ### <a name="scalability"></a>可伸缩性 
 
-Azure 和 Azure Stack Hub 的独特性适合用于支持当今全球分布式业务的需求。
+Azure 和 Azure Stack Hub 非常适合支持当今全球分布式业务的需求。
 
 **无障碍的混合云**
 

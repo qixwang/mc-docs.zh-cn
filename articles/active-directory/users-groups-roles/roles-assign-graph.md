@@ -1,5 +1,5 @@
 ---
-title: 使用 Microsoft Graph API 分配和删除自定义管理员角色 - Azure Active Directory | Microsoft Docs
+title: 使用 Microsoft Graph API 分配 Azure AD 管理员角色 | Microsoft Docs
 description: 在 Azure Active Directory 中使用 Graph API 分配和删除 Azure AD 管理员角色
 services: active-directory
 author: curtand
@@ -8,22 +8,21 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-origin.date: 07/31/2019
-ms.date: 08/20/2019
+ms.date: 03/11/2020
 ms.author: v-junlch
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 051587d01d1407dd184d951778692a5868f7539b
-ms.sourcegitcommit: 599d651afb83026938d1cfe828e9679a9a0fb69f
+ms.openlocfilehash: f8b539ad54b0290fc3a113cc357b481a8d42576c
+ms.sourcegitcommit: 4ba6d7c8bed5398f37eb37cf5e2acafcdcc28791
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69993793"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79133973"
 ---
-# <a name="assign-custom-admin-roles-using-graph-api-in-azure-active-directory"></a>在 Azure Active Directory 中使用 Graph API 分配自定义管理员角色 
+# <a name="assign-custom-admin-roles-using-the-microsoft-graph-api-in-azure-active-directory"></a>使用 Microsoft Graph API 在 Azure Active Directory 中分配自定义管理员角色 
 
-可以自动使用 Microsoft Graph API 将角色分配给用户帐户。 本文介绍在 roleAssignments 上进行的 POST、GET 和 DELETE 操作。
+可以使用 Microsoft Graph API 自动将角色分配给用户帐户。 本文介绍在 roleAssignments 上进行的 POST、GET 和 DELETE 操作。
 
 ## <a name="required-permissions"></a>所需的权限
 
@@ -36,7 +35,8 @@ HTTP 请求，用于创建在用户和角色定义之间的角色分配。
 POST
 
 ``` HTTP
-https://graph.chinacloudapi.cn/<tenantDomain-or-tenantId>/roleAssignments?api-version=1.61-internal
+POST https://microsoftgraph.chinacloudapi.cn/beta/roleManagement/directory/roleAssignments
+Content-type: application/json
 ```
 
 正文
@@ -60,7 +60,7 @@ HTTP 请求，用于创建在其中不存在主体或角色定义的角色分配
 POST
 
 ``` HTTP
-https://graph.chinacloudapi.cn/<tenantDomain-or-tenantId>/roleAssignments?api-version=1.61-internal
+https://microsoftgraph.chinacloudapi.cn/beta/roleManagement/directory/roleAssignments
 ```
 
 正文
@@ -87,7 +87,7 @@ HTTP 请求，用于在内置角色定义上创建单资源范围的角色分配
 POST
 
 ``` HTTP
-https://graph.chinacloudapi.cn/<tenantDomain-or-tenantId>/roleAssignments?api-version=1.61-internal
+https://microsoftgraph.chinacloudapi.cn/beta/roleManagement/directory/roleAssignments
 ```
 
 正文
@@ -131,7 +131,7 @@ HTTP 请求，用于获取给定主体的角色分配。
 GET
 
 ``` HTTP
-https://graph.chinacloudapi.cn/<tenantDomain-or-tenantId>/roleAssignments?api-version=1.61-internal&$filter=principalId eq ‘<object-id-of-principal>’
+https://microsoftgraph.chinacloudapi.cn/beta/roleManagement/directory/roleAssignments&$filter=principalId eq ‘<object-id-of-principal>’
 ```
 
 响应
@@ -157,7 +157,7 @@ HTTP 请求，用于获取给定角色定义的角色分配。
 GET
 
 ``` HTTP
-https://graph.chinacloudapi.cn/<tenantDomain-or-tenantId>/roleAssignments?api-version=1.61-internal&$filter=roleDefinitionId eq ‘<object-id-or-template-id-of-role-definition>’
+https://microsoftgraph.chinacloudapi.cn/beta/roleManagement/directory/roleAssignments&$filter=roleDefinitionId eq ‘<object-id-or-template-id-of-role-definition>’
 ```
 
 响应
@@ -177,7 +177,7 @@ HTTP 请求，用于按 ID 获取角色分配。
 GET
 
 ``` HTTP
-https://graph.chinacloudapi.cn/<tenantDomain-or-tenantId>/roleAssignments/<id-of-role-assignment>?api-version=1.61-internal
+GET https://microsoftgraph.chinacloudapi.cn/beta/roleManagement/directory/roleAssignments/lAPpYvVpN0KRkAEhdxReEJC2sEqbR_9Hr48lds9SGHI-1
 ```
 
 响应
@@ -185,7 +185,7 @@ https://graph.chinacloudapi.cn/<tenantDomain-or-tenantId>/roleAssignments/<id-of
 ``` HTTP
 HTTP/1.1 200 OK
 { 
-    "id":"mhxJMipY4UanIzy2yE-r7JIiSDKQoTVJrLE9etXyrY0-1"
+    "id":"mhxJMipY4UanIzy2yE-r7JIiSDKQoTVJrLE9etXyrY0-1",
     "principalId":"ab2e1023-bddc-4038-9ac1-ad4843e7e539",
     "roleDefinitionId":"10dae51f-b6af-4016-8d66-8c2a99b929b3",
     "resourceScopes":["/"]
@@ -196,10 +196,10 @@ HTTP/1.1 200 OK
 
 HTTP 请求，用于删除在用户和角色定义之间的角色分配。
 
-删除
+DELETE
 
 ``` HTTP
-https://graph.chinacloudapi.cn/<tenantDomain-or-tenantId>/roleAssignments/<id-of-role-assignment>?api-version=1.61-internal
+GET https://microsoftgraph.chinacloudapi.cn/beta/roleManagement/directory/roleAssignments/lAPpYvVpN0KRkAEhdxReEJC2sEqbR_9Hr48lds9SGHI-1
 ```
 
 响应
@@ -209,10 +209,10 @@ HTTP/1.1 204 No Content
 
 HTTP 请求，用于删除不再存在的角色分配
 
-删除
+DELETE
 
 ``` HTTP
-https://graph.chinacloudapi.cn/<tenantDomain-or-tenantId>/roleAssignments/<id-of-role-assignment>?api-version=1.61-internal
+GET https://microsoftgraph.chinacloudapi.cn/beta/roleManagement/directory/roleAssignments/lAPpYvVpN0KRkAEhdxReEJC2sEqbR_9Hr48lds9SGHI-1
 ```
 
 响应
@@ -223,10 +223,10 @@ HTTP/1.1 404 Not Found
 
 HTTP 请求，用于删除在自身和内置角色定义之间的角色分配
 
-删除
+DELETE
 
 ``` HTTP
-https://graph.chinacloudapi.cn/<tenantDomain-or-tenantId>/roleAssignments/<id-of-role-assignment>?api-version=1.61-internal
+GET https://microsoftgraph.chinacloudapi.cn/beta/roleManagement/directory/roleAssignments/lAPpYvVpN0KRkAEhdxReEJC2sEqbR_9Hr48lds9SGHI-1
 ```
 
 响应

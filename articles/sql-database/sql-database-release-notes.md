@@ -8,14 +8,14 @@ ms.subservice: service
 ms.devlang: ''
 ms.topic: conceptual
 origin.date: 11/04/2019
-ms.date: 02/17/2020
+ms.date: 03/16/2020
 ms.author: v-jay
-ms.openlocfilehash: 8164d3ad704786a3699a806f401dad06324a5f34
-ms.sourcegitcommit: d7b86a424b72849fe8ed32893dd05e4696e4fe85
+ms.openlocfilehash: ff519683d5532059003e783e1fe2069ab7b10c5e
+ms.sourcegitcommit: dc862610e2169c1fce6fb0ae9eb7dd7567f86a0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77155712"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293759"
 ---
 # <a name="sql-database-release-notes"></a>SQL 数据库发行说明
 
@@ -23,7 +23,7 @@ ms.locfileid: "77155712"
 
 ## <a name="features-in-public-preview"></a>处于公共预览版的功能
 
-### <a name="single-databasetabsingle-database"></a>[单一数据库](#tab/single-database)
+### <a name="single-database"></a>[单一数据库](#tab/single-database)
 
 | 功能 | 详细信息 |
 | ---| --- |
@@ -39,10 +39,11 @@ ms.locfileid: "77155712"
 |表变量延迟编译（在兼容性级别 150 下）|有关信息，请参阅[表变量延迟的编译](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing#table-variable-deferred-compilation)。|
 | &nbsp; |
 
-### <a name="managed-instancetabmanaged-instance"></a>[托管实例](#tab/managed-instance)
+### <a name="managed-instance"></a>[托管实例](#tab/managed-instance)
 
 | 功能 | 详细信息 |
 | ---| --- |
+| <a href="/sql-database/sql-database-managed-instance-connectivity-architecture#service-aided-subnet-configuration">服务辅助的子网配置</a> | 一种安全方便的子网配置管理方法。 |
 | <a href="/sql-database/transparent-data-encryption-byok-azure-sql">使用“创建自己的密钥”(BYOK) 进行透明数据加密 (TDE)</a> |有关信息，请参阅[使用 Azure Key Vault 中由客户管理的密钥进行 Azure SQL 透明数据加密：自带密钥支持](transparent-data-encryption-byok-azure-sql.md)。|
 | <a href="https://aka.ms/managed-instance-aadlogins">实例级 Azure AD 服务器主体（登录名）</a> | 使用 <a href="https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">CREATE LOGIN FROM EXTERNAL PROVIDER</a> 语句创建服务器级登录名。 |
 | [事务复制](sql-database-managed-instance-transactional-replication.md) | 将表中的更改复制到托管实例、单一数据库或 SQL Server 实例上放置的其他数据库中，或者在其他托管实例或 SQL Server 实例中的某些行发生更改时更新表。 有关信息，请参阅[在 Azure SQL 数据库托管实例数据库中配置复制](replication-with-sql-database-managed-instance.md)。 |

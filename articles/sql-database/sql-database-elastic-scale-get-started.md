@@ -11,13 +11,13 @@ author: WenJason
 ms.author: v-jay
 ms.reviewer: sstein
 origin.date: 01/25/2019
-ms.date: 12/16/2019
-ms.openlocfilehash: ec661d86ed84713949dff2c6c99e53ccb02e2c27
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.date: 03/16/2020
+ms.openlocfilehash: 25fee7249152543b5cdfbadb95c21f4100863e76
+ms.sourcegitcommit: dc862610e2169c1fce6fb0ae9eb7dd7567f86a0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336026"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293866"
 ---
 # <a name="get-started-with-elastic-database-tools"></a>弹性数据库工具入门
 
@@ -82,7 +82,7 @@ ms.locfileid: "75336026"
 
 若要下载并运行该示例，请遵循以下步骤： 
 
-1. 从 MSDN 下载 [Elastic DB Tools for Azure SQL - Getting Started sample](https://code.msdn.microsoft.com/windowsapps/Elastic-Scale-with-Azure-a80d8dc6)（Azure SQL 弹性数据库工具 - 入门示例）。 将示例解压缩到所选位置。
+1. 下载 [Elastic DB Tools for Azure SQL - Getting Started sample](https://github.com/Azure/elastic-db-tools)（Azure SQL 弹性数据库工具 - 入门示例）。 将示例解压缩到所选位置。
 
 2. 若要创建项目，请从 C#  目录打开 ElasticScaleStarterKit.sln  解决方案。
 
@@ -128,7 +128,7 @@ ms.locfileid: "75336026"
 有关弹性数据库工具的详细信息，请参阅以下文章：
 
 * 代码示例： 
-  * 弹性数据库工具（[.NET](https://code.msdn.microsoft.com/Elastic-Scale-with-Azure-a80d8dc6?SRC=VSIDE)、[Java](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-elasticdb-tools%22)）
+  * 弹性数据库工具（[.NET](https://github.com/Azure/elastic-db-tools)、[Java](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-elasticdb-tools%22)）
   * [Elastic Database Tools for Azure SQL - Entity Framework Integration](https://code.msdn.microsoft.com/Elastic-Scale-with-Azure-bae904ba?SRC=VSIDE)（Azure SQL 的弹性数据库工具 - 实体框架集成）
   * [脚本中心上的分片弹性](https://gallery.technet.microsoft.com/scriptcenter/Elastic-Scale-Shard-c9530cbe)
 * 博客：[弹性缩放公告](https://azure.microsoft.com/blog/20../../introducing-elastic-scale-preview-for-azure-sql-database/)

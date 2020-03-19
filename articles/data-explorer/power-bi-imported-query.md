@@ -1,5 +1,5 @@
 ---
-title: '使用 Power BI 中已导入的查询直观显示 Azure 数据资源管理器中的数据 '
+title: 使用 Power BI 导入的查询直观显示 Azure 数据资源管理器中的数据
 description: 本文介绍如何使用三个选项中的一个选项在 Power BI 中直观显示数据：从 Azure 数据资源管理器导入查询。
 author: orspod
 ms.author: v-tawe
@@ -7,13 +7,13 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 origin.date: 07/10/2019
-ms.date: 11/18/2019
-ms.openlocfilehash: c5650fbe067d751c65c151c75c515cd370983264
-ms.sourcegitcommit: c863b31d8ead7e5023671cf9b58415542d9fec9c
+ms.date: 03/23/2020
+ms.openlocfilehash: 4cb9f5178cb13f38b44bfb504ca6e475c5fd661b
+ms.sourcegitcommit: 4ba6d7c8bed5398f37eb37cf5e2acafcdcc28791
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74020835"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79133848"
 ---
 # <a name="visualize-data-using-a-query-imported-into-power-bi"></a>使用已导入到 Power BI 中的查询来可视化数据
 

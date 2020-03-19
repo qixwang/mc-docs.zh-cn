@@ -12,16 +12,16 @@ ms.author: v-jay
 ms.reviewer: jrasnik, carlrab
 origin.date: 01/25/2019
 ms.date: 02/17/2020
-ms.openlocfilehash: 493ed47e0888c870b2863f366141c5f48dfc25a3
-ms.sourcegitcommit: d7b86a424b72849fe8ed32893dd05e4696e4fe85
+ms.openlocfilehash: d1dcd769129f65fa0b18d4e623c11cc643ec7e52
+ms.sourcegitcommit: dc862610e2169c1fce6fb0ae9eb7dd7567f86a0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77155595"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293745"
 ---
 # <a name="troubleshoot-azure-sql-database-performance-issues-with-intelligent-insights"></a>使用 Intelligent Insights 排查 Azure SQL 数据库性能问题
 
-本页提供有关通过 [Intelligent Insights](sql-database-intelligent-insights.md) 数据库性能诊断日志检测到的 Azure SQL 数据库和托管实例性能问题的信息。 可将诊断日志遥测数据流式传输到 [Azure 事件中心](../azure-monitor/platform/resource-logs-stream-event-hubs.md)、[Azure 存储](sql-database-metrics-diag-logging.md#stream-into-storage)或第三方解决方案，用于自定义 DevOps 警报和报告功能。
+本页提供有关通过 [Intelligent Insights](sql-database-intelligent-insights.md) 数据库性能诊断日志检测到的 Azure SQL 数据库和托管实例性能问题的信息。 可将诊断日志遥测数据流式传输到 [Azure 事件中心](../azure-monitor/platform/resource-logs-stream-event-hubs.md)、[Azure 存储](sql-database-metrics-diag-logging.md#stream-diagnostic-telemetry-into-azure-storage)或第三方解决方案，用于自定义 DevOps 警报和报告功能。
 
 ## <a name="detectable-database-performance-patterns"></a>可检测的数据库性能模式
 
@@ -31,7 +31,7 @@ ms.locfileid: "77155595"
 | :------------------- | ------------------- | ------------------- |
 | [达到资源限制](sql-database-intelligent-insights-troubleshoot-performance.md#reaching-resource-limits) | 受监视订阅上的可用资源 (DTU)、数据库工作线程或数据库登录会话消耗量已达到限制。 这会影响 SQL 数据库性能。 | CPU 资源的使用达到托管实例限制。 这会影响数据库性能。 |
 | [工作负荷增大](sql-database-intelligent-insights-troubleshoot-performance.md#workload-increase) | 检测到工作负荷增大，或数据库上的工作负荷持续累积。 这会影响 SQL 数据库性能。 | 检测到工作负荷增加。 这会影响数据库性能。 |
-| [内存压力](sql-database-intelligent-insights-troubleshoot-performance.md#memory-pressure) | 请求内存授予的工作线程必须等待内存分配相当长的时间。 否则，请求内存授予的工作线程数会不断增加。 这会影响 SQL 数据库性能。 | 请求内存授予的工作线程会等待内存分配相当长的时间（就统计学意义来说）。 这会影响数据库性能。 |
+| [内存压力](sql-database-intelligent-insights-troubleshoot-performance.md#memory-pressure) | 已请求内存授予的辅助角色必须在统计上显着的时间内等待内存分配，否则已请求内存授予的辅助角色的累积量会增加。 这会影响 SQL 数据库性能。 | 请求内存授予的工作线程会等待内存分配相当长的时间（就统计学意义来说）。 这会影响数据库性能。 |
 | [锁定](sql-database-intelligent-insights-troubleshoot-performance.md#locking) | 检测到过度的数据库锁定，这影响 SQL 数据库性能。 | 检测到过度的数据库锁定，这影响数据库性能。 |
 | [MAXDOP 提升](sql-database-intelligent-insights-troubleshoot-performance.md#increased-maxdop) | 最大并行度选项 (MAXDOP) 发生更改，影响查询执行效率。 这会影响 SQL 数据库性能。 | 最大并行度选项 (MAXDOP) 发生更改，影响查询执行效率。 这会影响数据库性能。 |
 | [Pagelatch 争用](sql-database-intelligent-insights-troubleshoot-performance.md#pagelatch-contention) | 多个线程同时尝试访问相同的内存中数据缓冲区页面，导致等待时间变长并引发 Pagelatch 争用。 这会影响 SQL 数据库性能。 | 多个线程同时尝试访问相同的内存中数据缓冲区页面，导致等待时间变长并引发 Pagelatch 争用。 这会影响数据库性能。 |

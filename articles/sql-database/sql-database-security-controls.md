@@ -7,14 +7,14 @@ manager: digimobile
 ms.service: load-balancer
 ms.topic: conceptual
 origin.date: 09/04/2019
-ms.date: 02/17/2020
+ms.date: 03/16/2020
 ms.author: v-jay
-ms.openlocfilehash: 5153edfb246b0faa5eb9d666ca3ee9b52d5b53cc
-ms.sourcegitcommit: d7b86a424b72849fe8ed32893dd05e4696e4fe85
+ms.openlocfilehash: d43f7649243da01760ae9fb58d892b9d5013af9f
+ms.sourcegitcommit: dc862610e2169c1fce6fb0ae9eb7dd7567f86a0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77155690"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293722"
 ---
 # <a name="security-controls-for-azure-sql-database"></a>Azure SQL 数据库的安全控制
 
@@ -56,7 +56,7 @@ SQL 数据库同时包含[单一数据库](sql-database-single-index.yml)和[托
 | 传输中加密：<ul><li>Azure ExpressRoute 加密</li><li>虚拟网络中的加密</li><li>虚拟网络之间的加密</ul>| 是 | 使用 HTTPS。 |
 | 加密密钥处理，如 CMK 或 BYOK| 是 | 提供服务托管和客户托管密钥处理。 后者通过 [Azure Key Vault](../key-vault/index.yml) 提供。 |
 | Azure 数据服务提供的列级加密| 是 | 通过 [Always Encrypted](sql-database-always-encrypted.md) 进行。 |
-| 加密的 API 调用| 是 | 使用 HTTPS/SSL。 |
+| 加密的 API 调用| 是 | 使用 HTTPS/TLS。 |
 
 ## <a name="configuration-management"></a>配置管理
 

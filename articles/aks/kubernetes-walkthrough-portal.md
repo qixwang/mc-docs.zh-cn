@@ -2,19 +2,17 @@
 title: 快速入门 - 在门户中创建 Azure Kubernetes 服务 (AKS) 群集
 description: 了解如何使用 Azure 门户快速创建 Kubernetes 群集、部署应用程序，以及监视 Azure Kubernetes 服务 (AKS) 中的性能。
 services: container-service
-author: rockboyfor
-ms.service: container-service
 ms.topic: quickstart
-origin.date: 05/31/2019
-ms.date: 10/28/2019
+origin.date: 01/21/2020
+ms.date: 03/09/2020
 ms.author: v-yeche
 ms.custom: mvc, seo-javascript-october2019
-ms.openlocfilehash: 2fa5f70675a47e923c1822329017f1731d5995e1
-ms.sourcegitcommit: 40a58a8b9be0c825c03725802e21ed47724aa7d2
+ms.openlocfilehash: 12055ffe0ba7a3a5ea3f652419776741ecd4350b
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73934219"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79290830"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-the-azure-portal"></a>快速入门：使用 Azure 门户部署 Azure Kubernetes 服务 (AKS) 群集
 
@@ -28,38 +26,34 @@ Azure Kubernetes 服务 (AKS) 是可用于快速部署和管理群集的托管�
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
-通过 https://portal.azure.cn 登录到 Azure 门户。
+在 [https://portal.azure.cn](https://portal.azure.cn) 中登录 Azure 门户。
 
 ## <a name="create-an-aks-cluster"></a>创建 AKS 群集
 
-<!--MOONCAKE: Custmize for MC-->
-
-在 Azure 门户左上角，选择“+ 创建资源”  ，键入“Kubernetes 服务”  ，在“新建”页中选择 Enter 键，然后在“市场”页中选择“Kubernetes 服务”  。
-
-<!--MOONCAKE: Custmize for MC-->
-
 若要创建 AKS 群集，请完成以下步骤：
 
+<!--MOONCAKE: Custmize for MC-->
+
+1. 在 Azure 门户菜单或**主页**上，选择“创建资源”  ，键入“Kubernetes 服务”  并在“新建”页中选择 Enter 键，然后在“市场”页中选择“Kubernetes 服务”  。
+
+    <!--MOONCAKE: Custmize for MC-->
 1. 在“基本信息”页面上，配置以下选项  ：
-    - *项目详细信息*：选择 Azure 订阅，然后选择或创建 Azure 资源组，例如 *myResourceGroup*。 输入 **Kubernetes 群集名称**，例如 *myAKSCluster*。
-    - *群集详细信息*：选择 AKS 群集的区域、Kubernetes 版本和 DNS 名称前缀。
+    - **项目详细信息**：选择 Azure **订阅**，然后选择或创建 Azure **资源组**，例如 *myResourceGroup*。
+    - **群集详细信息**：输入 **Kubernetes 群集名称**，例如 *myAKSCluster*。 选择 AKS 群集的**区域**、**Kubernetes 版本**和 **DNS 名称前缀**。
         
-        <!--MOONCAKE: CORRECT ON *SCALE* TILL ON 08/01/2019-->
-        
-    - *规模*：选择 AKS 节点的 VM 大小。 一旦部署 AKS 群集，不能更改 VM 大小  。
+    - **主节点池**：选择 AKS 节点的 VM **节点大小**。 一旦部署 AKS 群集，则不能更改 VM 大小  。 
         - 选择要部署到群集中的节点数。 对于本快速入门，请将“节点计数”设置为“1”。   部署群集后，可以调整节点计数  。
     
         ![创建 AKS 群集 - 提供基本信息](media/kubernetes-walkthrough-portal/create-cluster-basics.png)
 
-    在完成时选择“下一步:  身份验证”。
-    
-    <!--MOONCAKE: CORRECT ON Next: Authentication TILL ON 08/01/2019-->
-    <!--MOONCAKE: No **Scale** page TILL ON 08/01/2019-->
+    在完成时选择“下一步:**缩放”** 。
+
+4. 在“缩放”  页上，保留默认选项。 单击屏幕底部的“下一步:  身份验证”。
     
     > [!CAUTION]
     > 创建新的 AAD 服务主体可能需要几分钟的时间才能传播并变得可用，这样会导致 Azure 门户中出现“找不到服务主体”错误和验证失败。 如果遇到这种情况，请访问[此处](troubleshooting.md#im-receiving-errors-that-my-service-principal-was-not-found-when-i-try-to-create-a-new-cluster-without-passing-in-an-existing-one)进行缓解。
 
-1. 在“身份验证”  页上，配置以下选项：
+5. 在“身份验证”  页上，配置以下选项：
     - 通过将“服务主体”  字段保留为“(新)默认服务主体”  来创建新的服务主体。 或者，可以选择“配置服务主体”  以使用现有的服务主体。 如果使用现有的服务主体，则需要提供 SPN 客户端 ID 和机密。
     - 启用 Kubernetes 基于角色的访问控制 (RBAC) 所对应的选项。 这样可以对部署在 AKS 群集中的 Kubernetes 资源进行更精细的访问控制。
 
@@ -88,7 +82,7 @@ Azure Kubernetes 服务 (AKS) 是可用于快速部署和管理群集的托管�
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 ```
 
-若要验证到群集的连接，请使用 [kubectl get][kubectl-get] 命令返回群集节点的列表。
+若要验证到群集的连接，请使用 [kubectl get][kubectl-get] 命令返回群集节点列表。
 
 ```azurecli
 kubectl get nodes
@@ -110,7 +104,7 @@ Kubernetes 清单文件定义群集的所需状态，例如，要运行哪些容
 
 <!--Not Available on Line 103  In more real-world scenarios, you can use [Azure Dev Spaces][azure-dev-spaces] to rapidly iterate and debug your code directly in the AKS cluster. You can use Dev Spaces across OS platforms and development environments, and work together with others on your team.-->
 
-在本地 Shell 中，使用 `nano` 或 `vi` 创建名为 `azure-vote.yaml` 的文件，并复制到以下 YAML 定义中：
+在本地 Shell 中，使用 `nano azure-vote.yaml` 或 `vi azure-vote.yaml` 命令创建一个名为 `azure-vote.yaml` 的文件。 然后复制以下 YAML 定义：
 
 <!--Not Available on  In Azure Cloud Shell, create the file using `vi` or `Nano`, as if working on a virtual or physical system:-->
 

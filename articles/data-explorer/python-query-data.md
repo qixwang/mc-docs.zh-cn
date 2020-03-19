@@ -7,25 +7,27 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 origin.date: 08/05/2019
-ms.date: 11/18/2019
-ms.openlocfilehash: 162e81a10284aeb28a4384c854a1292f8fe581a6
-ms.sourcegitcommit: c863b31d8ead7e5023671cf9b58415542d9fec9c
+ms.date: 03/23/2020
+ms.openlocfilehash: 0ecd8a580ba905e25981896f2112ba26c83b78ab
+ms.sourcegitcommit: 4ba6d7c8bed5398f37eb37cf5e2acafcdcc28791
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74020831"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79133847"
 ---
 # <a name="query-data-using-the-azure-data-explorer-python-library"></a>使用 Azure 数据资源管理器 Python 库查询数据
 
-Azure 数据资源管理器是一项快速且高度可缩放的数据探索服务，适用于日志和遥测数据。 Azure 数据资源管理器提供[适用于 Python 的数据客户端库](https://github.com/Azure/azure-kusto-python/tree/master/azure-kusto-data)。 该库允许通过代码查询数据。 在本文中，你将连接到我们为帮助学习而设置的帮助群集上的表  。 然后查询该群集上的表，并返回结果。
+本文介绍如何使用 Azure 数据资源管理器查询数据。 Azure 数据资源管理器是一项快速且高度可缩放的数据探索服务，适用于日志和遥测数据。
+
+Azure 数据资源管理器提供[适用于 Python 的数据客户端库](https://github.com/Azure/azure-kusto-python/tree/master/azure-kusto-data)。 该库允许通过代码查询数据。 连接到我们为帮助学习而设置的帮助群集上的表  。 可以查询该群集上的表，并返回结果。
 
 本文同时也以 [Azure Notebook](https://notebooks.azure.com/ManojRaheja/libraries/KustoPythonSamples/html/QueryKusto.ipynb) 的形式提供。
 
 ## <a name="prerequisites"></a>先决条件
 
-* 组织电子邮件帐户是 Azure Active Directory (AAD) 的成员
+* [Python 3.4+](https://www.python.org/downloads/)
 
-* 已在开发计算机上安装了 [Python](https://www.python.org/downloads/)
+* 组织电子邮件帐户是 Azure Active Directory (AAD) 的成员
 
 ## <a name="install-the-data-library"></a>安装数据的库
 
@@ -69,7 +71,8 @@ KUSTO_DATABASE = "Samples"
 现在构造连接字符串。 此示例使用设备身份验证来访问群集。 此外可以使用 [AAD 应用程序证书](https://github.com/Azure/azure-kusto-python/blob/master/azure-kusto-data/tests/sample.py#L24)、[AAD 应用程序密钥](https://github.com/Azure/azure-kusto-python/blob/master/azure-kusto-data/tests/sample.py#L20)以及 [AAD 用户和密码](https://github.com/Azure/azure-kusto-python/blob/master/azure-kusto-data/tests/sample.py#L34)。
 
 ```python
-KCSB = KustoConnectionStringBuilder.with_aad_device_authentication(KUSTO_CLUSTER)
+KCSB = KustoConnectionStringBuilder.with_aad_device_authentication(
+    KUSTO_CLUSTER)
 KCSB.authority_id = AAD_TENANT_ID
 ```
 

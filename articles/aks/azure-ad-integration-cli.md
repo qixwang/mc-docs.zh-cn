@@ -2,18 +2,16 @@
 title: 将 Azure Active Directory 与 Azure Kubernetes Service 集成
 description: 了解如何使用 Azure CLI 创建支持 Azure Active Directory 的 Azure Kubernetes 服务 (AKS) 群集
 services: container-service
-author: rockboyfor
-ms.service: container-service
 ms.topic: article
 origin.date: 04/16/2019
-ms.date: 07/29/2019
+ms.date: 03/09/2020
 ms.author: v-yeche
-ms.openlocfilehash: 69e1bee4433b18bc6a23368072cf8d5af343cfc4
-ms.sourcegitcommit: 1d4dc20d24feb74d11d8295e121d6752c2db956e
+ms.openlocfilehash: 3ce998761947549c3385a7379e75062f9cf47041
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73068924"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79290822"
 ---
 # <a name="integrate-azure-active-directory-with-azure-kubernetes-service-using-the-azure-cli"></a>使用 Azure CLI 将 Azure Active Directory 与 Azure Kubernetes 服务集成
 
@@ -126,18 +124,18 @@ oAuthPermissionId=$(az ad app show --id $serverApplicationId --query "oauth2Perm
 使用 [az ad app permission add][az-ad-app-permission-add] 命令添加对客户端应用程序和服务器应用程序组件的权限，以使用 oAuth2 通信流。 然后，使用 [az ad app permission grant][az-ad-app-permission-grant] 命令授予客户端应用程序与服务器应用程序通信的权限：
 
 ```azurecli
-az ad app permission add --id $clientApplicationId --api $serverApplicationId --api-permissions $oAuthPermissionId=Scope
+az ad app permission add --id $clientApplicationId --api $serverApplicationId --api-permissions ${oAuthPermissionId}=Scope
 az ad app permission grant --id $clientApplicationId --api $serverApplicationId
 ```
 
 ## <a name="deploy-the-cluster"></a>部署群集
 
-创建两个 Azure AD 应用程序后，请创建 AKS 群集本身。 首先使用 [az group create][az-group-create] 命令创建资源组。 以下示例在 *ChinaEast* 区域中创建资源组：
+创建两个 Azure AD 应用程序后，请创建 AKS 群集本身。 首先使用 [az group create][az-group-create] 命令创建资源组。 以下示例在 ChinaEast2  区域中创建资源组：
 
 为群集创建资源组：
 
 ```azurecli
-az group create --name myResourceGroup --location ChinaEast
+az group create --name myResourceGroup --location ChinaEast2
 ```
 
 使用 [az account show][az-account-show] 命令获取 Azure 订阅的租户 ID。 然后使用 [az aks create][az-aks-create] 命令创建 AKS 群集。 用于创建 AKS 群集的命令可提供服务器和客户端应用程序 ID、服务器应用程序服务主体机密和租户 ID：
@@ -153,8 +151,7 @@ az aks create \
     --aad-server-app-id $serverApplicationId \
     --aad-server-app-secret $serverApplicationSecret \
     --aad-client-app-id $clientApplicationId \
-    --aad-tenant-id $tenantId \
-    --vm-set-type AvailabilitySet
+    --aad-tenant-id $tenantId
 ```
 
 <!--MOONCAKE: CORRECT TO APPEND --vm-set-type AvailabilitySet Before VMSS feature is valid on Azure China Cloud-->
@@ -178,7 +175,7 @@ az ad signed-in-user show --query userPrincipalName -o tsv
 > [!IMPORTANT]
 > 如果为其授予 RBAC 绑定的用户在同一个 Azure AD 租户中，请根据 *userPrincipalName* 分配权限。 如果该用户位于不同的 Azure AD 租户中，请查询并改用 *objectId* 属性。
 
-创建名为 `basic-azure-ad-binding.yaml` 的 YAML 清单并粘贴以下内容。 在最后一行中，请将 *userPrincipalName_or_objectId* 替换为前一命令的 UPN 或对象 ID 输出：
+创建名为 `basic-azure-ad-binding.yaml` 的 YAML 清单并粘贴以下内容。 在最后一行中，请将 userPrincipalName_or_objectId  替换为前一命令的 UPN 或对象 ID 输出：
 
 ```yaml
 apiVersion: rbac.authorization.k8s.io/v1
@@ -220,7 +217,7 @@ kubectl get pods --all-namespaces
 ```console
 $ kubectl get pods --all-namespaces
 
-To sign in, use a web browser to open the page https://microsoft.com/devicelogin and enter the code BYMK7UXVD to authenticate.
+To sign in, use a web browser to open the page https://aka.ms/deviceloginchina and enter the code BYMK7UXVD to authenticate.
 
 NAMESPACE     NAME                                    READY   STATUS    RESTARTS   AGE
 kube-system   coredns-754f947b4-2v75r                 1/1     Running   0          23h
@@ -257,32 +254,34 @@ error: You must be logged in to the server (Unauthorized)
 有关标识和资源控制的最佳做法，请参阅[有关 AKS 中的身份验证和授权的最佳做法][operator-best-practices-identity]。
 
 <!-- LINKS - external -->
+
 [kubernetes-webhook]: https://kubernetes.io/docs/reference/access-authn-authz/authentication/#webhook-token-authentication
 [kubectl-apply]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
 [complete-script]: https://github.com/Azure-Samples/azure-cli-samples/tree/master/aks/azure-ad-integration/azure-ad-integration.sh
 
 <!-- LINKS - internal -->
+
 [az-aks-create]: https://docs.microsoft.com/cli/azure/aks?view=azure-cli-latest#az-aks-create
 [az-aks-get-credentials]: https://docs.microsoft.com/cli/azure/aks?view=azure-cli-latest#az-aks-get-credentials
-[az-group-create]: https://docs.azure.cn/zh-cn/cli/group?view=azure-cli-latest#az-group-create
-[open-id-connect]:../active-directory/develop/v1-protocols-openid-connect-code.md
-[az-ad-user-show]: https://docs.azure.cn/zh-cn/cli/ad/user?view=azure-cli-latest#az-ad-user-show
-[az-ad-app-create]: https://docs.azure.cn/zh-cn/cli/ad/app?view=azure-cli-latest#az-ad-app-create
-[az-ad-app-update]: https://docs.azure.cn/zh-cn/cli/ad/app?view=azure-cli-latest#az-ad-app-update
-[az-ad-sp-create]: https://docs.azure.cn/zh-cn/cli/ad/sp?view=azure-cli-latest#az-ad-sp-create
-[az-ad-app-permission-add]: https://docs.azure.cn/zh-cn/cli/ad/app/permission?view=azure-cli-latest#az-ad-app-permission-add
-[az-ad-app-permission-grant]: https://docs.azure.cn/zh-cn/cli/ad/app/permission?view=azure-cli-latest#az-ad-app-permission-grant
-[az-ad-app-permission-admin-consent]: https://docs.azure.cn/zh-cn/cli/ad/app/permission?view=azure-cli-latest#az-ad-app-permission-admin-consent
-[az-ad-app-show]: https://docs.azure.cn/zh-cn/cli/ad/app?view=azure-cli-latest#az-ad-app-show
-[az-group-create]: https://docs.azure.cn/zh-cn/cli/group?view=azure-cli-latest#az-group-create
-[az-account-show]: https://docs.azure.cn/zh-cn/cli/account?view=azure-cli-latest#az-account-show
-[az-ad-signed-in-user-show]: https://docs.azure.cn/zh-cn/cli/ad/signed-in-user?view=azure-cli-latest#az-ad-signed-in-user-show
+[az-group-create]: https://docs.azure.cn/cli/group?view=azure-cli-latest#az-group-create
+[open-id-connect]:../active-directory/develop/v2-protocols-oidc.md
+[az-ad-user-show]: https://docs.azure.cn/cli/ad/user?view=azure-cli-latest#az-ad-user-show
+[az-ad-app-create]: https://docs.azure.cn/cli/ad/app?view=azure-cli-latest#az-ad-app-create
+[az-ad-app-update]: https://docs.azure.cn/cli/ad/app?view=azure-cli-latest#az-ad-app-update
+[az-ad-sp-create]: https://docs.azure.cn/cli/ad/sp?view=azure-cli-latest#az-ad-sp-create
+[az-ad-app-permission-add]: https://docs.azure.cn/cli/ad/app/permission?view=azure-cli-latest#az-ad-app-permission-add
+[az-ad-app-permission-grant]: https://docs.azure.cn/cli/ad/app/permission?view=azure-cli-latest#az-ad-app-permission-grant
+[az-ad-app-permission-admin-consent]: https://docs.azure.cn/cli/ad/app/permission?view=azure-cli-latest#az-ad-app-permission-admin-consent
+[az-ad-app-show]: https://docs.azure.cn/cli/ad/app?view=azure-cli-latest#az-ad-app-show
+[az-group-create]: https://docs.azure.cn/cli/group?view=azure-cli-latest#az-group-create
+[az-account-show]: https://docs.azure.cn/cli/account?view=azure-cli-latest#az-account-show
+[az-ad-signed-in-user-show]: https://docs.azure.cn/cli/ad/signed-in-user?view=azure-cli-latest#az-ad-signed-in-user-show
 [azure-ad-portal]: azure-ad-integration.md
-[install-azure-cli]: https://docs.azure.cn/zh-cn/cli/install-azure-cli?view=azure-cli-latest
-[az-ad-sp-credential-reset]: https://docs.azure.cn/zh-cn/cli/ad/sp/credential?view=azure-cli-latest#az-ad-sp-credential-reset
+[install-azure-cli]: https://docs.azure.cn/cli/install-azure-cli?view=azure-cli-latest
+[az-ad-sp-credential-reset]: https://docs.azure.cn/cli/ad/sp/credential?view=azure-cli-latest#az-ad-sp-credential-reset
 [rbac-authorization]: concepts-identity.md#role-based-access-controls-rbac
 [operator-best-practices-identity]: operator-best-practices-identity.md
 [azure-ad-rbac]: azure-ad-rbac.md
 
-<!--Update_Description: wording update -->
+<!-- Update_Description: update meta properties, wording update, update link -->

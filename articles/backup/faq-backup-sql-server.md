@@ -7,12 +7,12 @@ ms.topic: conceptual
 origin.date: 04/23/2019
 ms.date: 12/04/2019
 ms.author: v-lingwu
-ms.openlocfilehash: c872b389218f12c5909915aebf210c50aeeaad45
-ms.sourcegitcommit: 21b02b730b00a078a76aeb5b78a8fd76ab4d6af2
+ms.openlocfilehash: a6e9247a2dc6cc8d43299abba869b7c69b9b38c9
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74838878"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292090"
 ---
 # <a name="faq-about-sql-server-databases-that-are-running-on-an-azure-vm-backup"></a>有关备份 Azure VM 上运行的 SQL Server 数据库的常见问题解答
 
@@ -40,13 +40,15 @@ ms.locfileid: "74838878"
 - 保存更改并关闭该文件。
 - 在 SQL Server 实例上打开“管理任务”，然后重启 **AzureWLBackupCoordinatorSvc** 服务。 
 
-## <a name="can-i-control-as-to-how-many-concurrent-backups-run-on-the-sql-server"></a>是否可以控制 SQL Server 上运行的并发备份数？
+## <a name="can-i-control-how-many-concurrent-backups-run-on-the-sql-server"></a>是否可以控制 SQL Server 上运行的并发备份数？
 
 是的。 可以限制备份策略的运行速率，以尽量减少对 SQL Server 实例的影响。 若要更改设置，请执行以下操作：
 
 1. 在 SQL Server 实例上的 *C:\Program Files\Azure Workload Backup\bin* 文件夹中，创建 *ExtensionSettingsOverrides.json* 文件。
 2. 在 *ExtensionSettingsOverrides.json* 文件中，将 **DefaultBackupTasksThreshold** 设置更改为较小的值（例如 5）。 <br>
   `{"DefaultBackupTasksThreshold": 5}`
+<br>
+DefaultBackupTasksThreshold 的默认值为 **20**。
 
 3. 保存更改并关闭该文件。
 4. 在 SQL Server 实例上，打开“任务管理器”。  重启 **AzureWLBackupCoordinatorSvc** 服务。<br/> <br/>

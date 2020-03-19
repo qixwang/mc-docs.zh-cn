@@ -12,12 +12,12 @@ ms.author: v-jay
 ms.reviewer: ''
 origin.date: 10/12/2019
 ms.date: 02/17/2020
-ms.openlocfilehash: d69f2a7adba0034e968742be0d350579111411d7
-ms.sourcegitcommit: fbc7584f403417d3af7bd6bbbaed7c13a78c57b9
+ms.openlocfilehash: b2532a76d22bca050485c7e626334b76943b6376
+ms.sourcegitcommit: dc862610e2169c1fce6fb0ae9eb7dd7567f86a0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78410581"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293793"
 ---
 # <a name="azure-sql-database-hyperscale-faq"></a>Azure SQL 数据库“超大规模”常见问题解答
 
@@ -45,10 +45,10 @@ ms.locfileid: "78410581"
 | **最适用于** |全部|提供以预算导向的、均衡的计算和存储选项。|大多数业务工作负荷。 自动缩放存储大小，最大可达 100 TB，快速的垂直和水平计算缩放，快速数据库还原。|事务率较高、IO 延迟较低的 OLTP 应用程序。 使用多个同步更新的副本提供最高故障复原能力和快速故障转移。|
 |  **资源类型** ||单一数据库/弹性池/托管实例 | 单一数据库 | 单一数据库/弹性池/托管实例 |
 | **计算大小**|单一数据库/弹性池* | 1 - 80 个 vCore | 1 - 80 个 vCore* | 1 - 80 个 vCore |
-| |托管实例 | 8、16、24、32、40、64、80 个 vCore | 不适用 | 8、16、24、32、40、64、80 个 vCore |
+| |托管实例 | 8、16、24、32、40、64、80 个 vCore | 不适用 | 8、16、24 个 vCore |
 | **存储类型** | 全部 |高级远程存储（每个实例） | 具有本地 SSD 缓存的分离的存储（每个实例） | 超快的本地 SSD 存储（每个实例） |
 | **存储大小** | 单一数据库/弹性池*| 5 GB - 4 TB | 最多 100 TB | 5 GB - 4 TB |
-| | 托管实例  | 32 GB - 8 TB | 不适用 | 32 GB - 4 TB |
+| | 托管实例  | 32 GB - 8 TB | 不适用 | 32 GB - 2 TB |
 | **IOPS** | 单一数据库 | 每个 vCore 提供 500 IOPS，最大 7000 IOPS | 超大规模是具有多个级别缓存的多层体系结构。 有效 IOPS 将取决于工作负荷。 | 5000 IOPS，最大 200,000 IOPS|
 | | 托管实例 | 取决于文件大小 | 不适用 | 1375 IOPS/vCore |
 |**可用性**|全部|1 个副本，无读取扩展，无本地缓存 | 多个副本，最多 4 个读取扩展，部分本地缓存 | 3 个副本，1 个读取扩展，完整的本地存储 |

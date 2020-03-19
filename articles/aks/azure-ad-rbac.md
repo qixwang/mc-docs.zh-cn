@@ -2,18 +2,16 @@
 title: 在 Azure Kubernetes 服务中使用 RBAC 和 Azure AD 控制群集资源
 description: 了解如何使用 Azure Active Directory 组成员身份在 Azure Kubernetes 服务 (AKS) 中通过基于角色的访问控制 (RBAC) 来限制对群集资源的访问
 services: container-service
-author: rockboyfor
-ms.service: container-service
 ms.topic: article
 origin.date: 04/16/2019
-ms.date: 07/29/2019
+ms.date: 03/09/2020
 ms.author: v-yeche
-ms.openlocfilehash: 208e953f19edbf75dc104a7737c74f581cd03bb9
-ms.sourcegitcommit: 84485645f7cc95b8cfb305aa062c0222896ce45d
+ms.openlocfilehash: 7c54030348096f24bb300ddaef2a6766efd00c45
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68731263"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79290773"
 ---
 # <a name="control-access-to-cluster-resources-using-role-based-access-control-and-azure-active-directory-identities-in-azure-kubernetes-service"></a>在 Azure Kubernetes 服务中使用基于角色的访问控制和 Azure Active Directory 标识来控制对群集资源的访问
 
@@ -169,7 +167,7 @@ kubectl apply -f role-dev-namespace.yaml
 az ad group show --group appdev --query objectId -o tsv
 ```
 
-现在，为 *appdev* 组创建角色绑定，以使用前面创建的角色来访问命名空间。 创建名为 `rolebinding-dev-namespace.yaml` 的文件并粘贴以下 YAML 清单。 在最后一行中，请将 *groupObjectId* 替换为前一命令的组对象 ID 输出：
+现在，为 *appdev* 组创建角色绑定，以使用前面创建的角色来访问命名空间。 创建名为 `rolebinding-dev-namespace.yaml` 的文件并粘贴以下 YAML 清单。 在最后一行中，请将 groupObjectId  替换为前一命令的组对象 ID 输出：
 
 ```yaml
 kind: RoleBinding
@@ -234,7 +232,7 @@ kubectl apply -f role-sre-namespace.yaml
 az ad group show --group opssre --query objectId -o tsv
 ```
 
-为 *opssre* 组创建角色绑定，以使用前面创建的角色来访问命名空间。 创建名为 `rolebinding-sre-namespace.yaml` 的文件并粘贴以下 YAML 清单。 在最后一行中，请将 *groupObjectId* 替换为前一命令的组对象 ID 输出：
+为 *opssre* 组创建角色绑定，以使用前面创建的角色来访问命名空间。 创建名为 `rolebinding-sre-namespace.yaml` 的文件并粘贴以下 YAML 清单。 在最后一行中，请将 groupObjectId  替换为前一命令的组对象 ID 输出：
 
 ```yaml
 kind: RoleBinding
@@ -279,7 +277,7 @@ kubectl run --generator=run-pod/v1 nginx-dev --image=nginx --namespace dev
 ```console
 $ kubectl run --generator=run-pod/v1 nginx-dev --image=nginx --namespace dev
 
-To sign in, use a web browser to open the page https://microsoft.com/devicelogin and enter the code B24ZD6FP8 to authenticate.
+To sign in, use a web browser to open the page https://aka.ms/deviceloginchina and enter the code B24ZD6FP8 to authenticate.
 
 pod/nginx-dev created
 ```
@@ -345,7 +343,7 @@ kubectl get pods --namespace sre
 ```console
 $ kubectl run --generator=run-pod/v1 nginx-sre --image=nginx --namespace sre
 
-To sign in, use a web browser to open the page https://microsoft.com/devicelogin and enter the code BM4RHP3FD to authenticate.
+To sign in, use a web browser to open the page https://aka.ms/deviceloginchina and enter the code BM4RHP3FD to authenticate.
 
 pod/nginx-sre created
 
@@ -400,22 +398,24 @@ az ad group delete --group opssre
 有关标识和资源控制的最佳做法，请参阅[有关 AKS 中的身份验证和授权的最佳做法][operator-best-practices-identity]。
 
 <!-- LINKS - external -->
+
 [kubectl-create]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#create
 [kubectl-apply]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
 [kubectl-run]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#run
 
 <!-- LINKS - internal -->
+
 [az-aks-get-credentials]: https://docs.microsoft.com/cli/azure/aks?view=azure-cli-latest#az-aks-get-credentials
-[install-azure-cli]: https://docs.azure.cn/zh-cn/cli/install-azure-cli?view=azure-cli-latest
+[install-azure-cli]: https://docs.azure.cn/cli/install-azure-cli?view=azure-cli-latest
 [azure-ad-aks-cli]: azure-ad-integration-cli.md
 [az-aks-show]: https://docs.microsoft.com/cli/azure/aks?view=azure-cli-latest#az-aks-show
-[az-ad-group-create]: https://docs.azure.cn/zh-cn/cli/ad/group?view=azure-cli-latest#az-ad-group-create
-[az-role-assignment-create]: https://docs.azure.cn/zh-cn/cli/role/assignment?view=azure-cli-latest#az-role-assignment-create
-[az-ad-user-create]: https://docs.azure.cn/zh-cn/cli/ad/user?view=azure-cli-latest#az-ad-user-create
-[az-ad-group-member-add]: https://docs.azure.cn/zh-cn/cli/ad/group/member?view=azure-cli-latest#az-ad-group-member-add
-[az-ad-group-show]: https://docs.azure.cn/zh-cn/cli/ad/group?view=azure-cli-latest#az-ad-group-show
+[az-ad-group-create]: https://docs.azure.cn/cli/ad/group?view=azure-cli-latest#az-ad-group-create
+[az-role-assignment-create]: https://docs.azure.cn/cli/role/assignment?view=azure-cli-latest#az-role-assignment-create
+[az-ad-user-create]: https://docs.azure.cn/cli/ad/user?view=azure-cli-latest#az-ad-user-create
+[az-ad-group-member-add]: https://docs.azure.cn/cli/ad/group/member?view=azure-cli-latest#az-ad-group-member-add
+[az-ad-group-show]: https://docs.azure.cn/cli/ad/group?view=azure-cli-latest#az-ad-group-show
 [rbac-authorization]: concepts-identity.md#role-based-access-controls-rbac
 [operator-best-practices-identity]: operator-best-practices-identity.md
 
-<!--Update_Description: wording update -->
+<!-- Update_Description: update meta properties, wording update, update link -->

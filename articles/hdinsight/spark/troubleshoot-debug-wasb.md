@@ -6,14 +6,14 @@ ms.author: v-yiso
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
-origin.date: 02/07/2020
-ms.date: 03/02/2020
-ms.openlocfilehash: 913c788b4e1e963c01fbf12524436cb89f2cc5ff
-ms.sourcegitcommit: 46fd4297641622c1984011eac4cb5a8f6f94e9f5
+origin.date: 02/18/2020
+ms.date: 03/23/2020
+ms.openlocfilehash: 98ad33b7c5cda47bda89375fff2af0f48bfb08ae
+ms.sourcegitcommit: 32997a7d7585deaeb0ab7b8f928d397b18b343fa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77563611"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79295935"
 ---
 # <a name="debug-wasb-file-operations-in-azure-hdinsight"></a>在 Azure HDInsight 中调试 WASB 文件操作
 
@@ -27,19 +27,17 @@ ms.locfileid: "77563611"
 
 ## <a name="turn-on-wasb-debug-log-for-file-operations"></a>为文件操作启用 WASB 调试日志
 
-1. 在 Web 浏览器中，导航到 `https://CLUSTERNAME.azurehdinsight.cn`，其中 `CLUSTERNAME` 是你的 Spark 群集的名称。
+1. 在 Web 浏览器中，导航到 `https://CLUSTERNAME.azurehdinsight.net/#/main/services/SPARK2/configs`，其中 `CLUSTERNAME` 是你的 Spark 群集的名称。
 
-1. 导航到 **Spark2** > **Configs** > **advanced spark2-log4j-properties**。
+1. 导航到“advanced spark2-log4j-properties”  。
 
 1. 将 `log4j.appender.console.Threshold=INFO` 修改为 `log4j.appender.console.Threshold=DEBUG`。
 
+    1. 添加 `log4j.logger.org.apache.hadoop.fs.azure.NativeAzureFileSystem=DEBUG`。
+
 1. 导航到 **Advanced livy2-log4j-properties**。
 
-1. 添加以下属性：
-
-    ```
-    log4j.logger.org.apache.hadoop.fs.azure.NativeAzureFileSystem=DEBUG
-    ```
+    添加 `log4j.logger.org.apache.hadoop.fs.azure.NativeAzureFileSystem=DEBUG`。
 
 1. 保存更改。
 
@@ -65,4 +63,4 @@ log4j.appender.adlsFile.layout.ConversionPattern=%p\t%d{ISO8601}\t%r\t%c\t[%t]\t
 如果你的问题未在本文中列出，或者无法解决问题，请访问以下渠道以获取更多支持：
 
 
-* 如果需要更多帮助，可以从 [Azure 门户](https://portal.azure.cn/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)提交支持请求。 从菜单栏中选择“支持”  ，或打开“帮助 + 支持”  中心。 有关更多详细信息，请参阅[如何创建 Azure 支持请求](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)。 Microsoft Azure 订阅包含对订阅管理和计费支持的访问权限，并且通过 [Azure 支持计划](https://azure.microsoft.com/support/plans/)之一提供技术支持。
+* 如果需要更多帮助，可以从 [Azure 门户](https://portal.azure.cn/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)提交支持请求。

@@ -2,18 +2,16 @@
 title: 概念 - Azure Kubernetes 服务 (AKS) 的 Kubernetes 基础知识
 description: 了解 Kubernetes 的基本群集和工作负荷组件以及它们与 Azure Kubernetes 服务 (AKS) 中各个功能的关系
 services: container-service
-author: rockboyfor
-ms.service: container-service
 ms.topic: conceptual
 origin.date: 06/03/2019
-ms.date: 01/20/2020
+ms.date: 03/09/2020
 ms.author: v-yeche
-ms.openlocfilehash: 1cc6aa03ef397fb708b944ba6fbd91d49a952ae3
-ms.sourcegitcommit: 8de025ca11b62e06ba3762b5d15cc577e0c0f15d
+ms.openlocfilehash: b20fd33dd50bafd37a97078e0a7899f12b62cc8d
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76165454"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291686"
 ---
 # <a name="kubernetes-core-concepts-for-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS) 的 Kubernetes 核心概念
 
@@ -76,9 +74,9 @@ AKS 提供单租户控制平面、专用 API 服务器、计划程序等。你�
 <!--Not Available on Windows Server 2019-->
 <!--Not Available on [Azure reservations][reservation-discounts]-->
 
-如果需要使用不同的主机 OS、容器运行时或包含自定义包，可以使用 [aks-engine][aks-engine] 部署自己的 Kubernetes 群集。 上游 `aks-engine` 正式在 AKS 群集中受支持之前会发布功能并提供配置选项。 例如，如果要使用 Moby 以外的容器运行时，可以使用 `aks-engine` 来配置和部署满足当前需求的 Kubernetes 群集。
+如果需要使用不同的容器运行时或包含自定义包，可以使用 [aks-engine][aks-engine] 部署自己的 Kubernetes 群集。 上游 `aks-engine` 正式在 AKS 群集中受支持之前会发布功能并提供配置选项。 例如，如果要使用 Moby 以外的容器运行时，可以使用 `aks-engine` 来配置和部署满足当前需求的 Kubernetes 群集。
 
-<!--Not Available on Windows containers or-->
+<!--Not Available on a different host OS,-->
 
 ### <a name="resource-reservations"></a>资源预留
 
@@ -112,7 +110,7 @@ kubectl describe node [NODE_NAME]
     - 下一个 112 GB 内存的 6%（最多 128 GB）
     - 128 GB 以上任何内存的 2%
 
-上述内存和 CPU 分配规则用于保持代理节点正常运行，某些托管系统 Pod 对群集运行状况至关重要。 这些分配规则还会使节点报告的可分配内存和 CPU 少于它不是 Kubernetes 群集一部分的情况， 上述资源预留无法更改。
+上述内存和 CPU 分配规则用于保持代理节点正常运行，包括一些对群集运行状况至关重要的托管系统 Pod。 这些分配规则还会使节点报告的可分配内存和 CPU 少于它不是 Kubernetes 群集一部分的情况， 上述资源预留无法更改。
 
 例如，如果一个节点提供 7 GB 内存，它会报告 34% 的内存不可分配（基于硬逐出阈值为 750Mi 的情况）。
 
@@ -137,7 +135,10 @@ kubectl describe node [NODE_NAME]
 
 ### <a name="node-selectors"></a>节点选择器
 
-在包含多个节点池的 AKS 群集中，可能需要告知 Kubernetes 计划程序要将哪个节点池用于给定的资源。 例如，入口控制器不应在 Windows Server 节点（当前在 AKS 中为预览版）上运行。 可以通过节点选择器定义各种参数（如节点 OS），以控制对 Pod 进行计划的位置。
+在包含多个节点池的 AKS 群集中，可能需要告知 Kubernetes 计划程序要将哪个节点池用于给定的资源。 可以通过节点选择器定义各种参数，以控制对 Pod 进行计划的位置。
+
+<!--Not Available on ingress controllers shouldn't run on Windows Server nodes (currently in preview in AKS)-->
+<!--Not Available on  such as the node OS,-->
 
 以下基本示例使用节点选择器 *"beta.kubernetes.io/os": linux* 来计划 Linux 节点上的 NGINX 实例：
 
@@ -232,7 +233,7 @@ Deployment 控制器使用 Kubernetes 计划程序在具有可用资源的任何
 
 ### <a name="statefulsets"></a>StatefulSet
 
-现代应用程序开发通常针对无状态应用程序，但 StatefulSet 可用于有状态应用程序（如包含数据库组件的应用程序）  。 StatefulSet 是类似于创建和管理一个或多个相同 Pod 的部署。 StatefulSet 中的副本按照正常有序的方法来部署、缩放、升级和终止。 使用 StatefulSet，重新计划副本时，命名约定、网络名称和存储将保持不变。
+现代应用程序开发通常针对无状态应用程序，但 StatefulSet 可用于有状态应用程序（如包含数据库组件的应用程序）  。 StatefulSet 是类似于创建和管理一个或多个相同 Pod 的部署。 StatefulSet 中的副本按照正常有序的方法来部署、缩放、升级和终止。 使用 StatefulSet（重新计划副本时），命名约定、网络名称和存储将保持不变。
 
 使用 `kind: StatefulSet` 以 YAML 格式定义应用程序，然后 StatefulSet 控制器处理所需副本的部署和管理。 数据会写入到由 Azure 托管磁盘或 Azure 文件提供的永久性存储。 使用 StatefulSet，删除 StatefulSet 时，基础持久性存储仍然保持不变。
 

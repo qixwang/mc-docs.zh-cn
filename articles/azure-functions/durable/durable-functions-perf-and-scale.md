@@ -1,21 +1,16 @@
 ---
 title: Durable Functions 中的性能和缩放 - Azure
 description: Azure Functions 的 Durable Functions 扩展简介。
-services: functions
 author: cgillum
-manager: jeconnoc
-keywords: ''
-ms.service: azure-functions
 ms.topic: conceptual
-origin.date: 11/03/2019
-ms.date: 11/18/2019
+ms.date: 03/03/2020
 ms.author: v-junlch
-ms.openlocfilehash: d15c82ca6ffee9c302663b96ae7e0154c2c6d4d8
-ms.sourcegitcommit: a4b88888b83bf080752c3ebf370b8650731b01d1
+ms.openlocfilehash: 1df994af966663895744807b5fb79c894543678c
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74178984"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292920"
 ---
 # <a name="performance-and-scale-in-durable-functions-azure-functions"></a>Durable Functions 中的性能和缩放 (Azure Functions)
 
@@ -222,7 +217,7 @@ Azure Functions 支持在单个应用实例中并发执行多个函数。 这种
 
 ### <a name="orchestrator-function-replay"></a>业务流程协调程序函数重播
 
-如前所述，业务流程协调程序函数是使用“历史记录”表的内容重播的。  默认情况下，每当从控制队列中取消一批消息的排队时，都会重播业务流程协调程序函数代码。 启用扩展会话后，业务流程协调程序函数实例将在内存中保存更长时间，同时，无需重播完整历史记录即可处理新消息。
+如前所述，业务流程协调程序函数是使用“历史记录”表的内容重播的。  默认情况下，每当从控制队列中取消一批消息的排队时，都会重播业务流程协调程序函数代码。 即使你使用扇出、扇入模式并等待所有任务完成（例如，在 .NET 中使用 `Task.WhenAll` 或在 JavaScript 中使用 `context.df.Task.all`），也会在一段时间内处理成批任务响应时发生重播。 启用扩展会话后，业务流程协调程序函数实例将在内存中保存更长时间，同时，无需重播完整历史记录即可处理新消息。
 
 对于以下情况，往往可以观测到扩展会话对性能的改进：
 
@@ -255,7 +250,7 @@ Azure Functions 支持在单个应用实例中并发执行多个函数。 这种
 
 下表显示了前面所述方案的预期最大吞吐量数字。  “实例”是指在 Azure 应用服务中单个小型 ([A1](../../virtual-machines/windows/sizes-previous-gen.md#a-series)) VM 上运行的业务流程协调程序函数的单个实例。 在各种情况下，都假设已启用[扩展会话](#orchestrator-function-replay)。 实际结果可能根据函数代码执行的 CPU 或 I/O 工作而异。
 
-| 场景 | 最大吞吐量 |
+| 方案 | 最大吞吐量 |
 |-|-|
 | 顺序活动执行 | 每个实例每秒 5 个活动 |
 | 并行活动执行（扇出） | 每个实例每秒 100 个活动 |
@@ -273,4 +268,3 @@ Azure Functions 支持在单个应用实例中并发执行多个函数。 这种
 > [!div class="nextstepaction"]
 > [了解灾难恢复和异地分发](durable-functions-disaster-recovery-geo-distribution.md)
 
-<!-- Update_Description: wording update -->

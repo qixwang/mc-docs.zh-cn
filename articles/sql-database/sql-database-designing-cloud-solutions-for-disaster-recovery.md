@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure SQL 数据库设计全球可用的服务 | Microsoft Docs
+title: 设计全局可用服务
 description: 了解如何使用 Azure SQL 数据库对应用程序设计高可用性服务。
 keywords: 云灾难恢复, 灾难恢复解决方案, 应用数据备份, 异地复制, 业务连续性规划
 services: sql-database
@@ -11,21 +11,20 @@ ms.topic: conceptual
 author: WenJason
 ms.author: v-jay
 ms.reviewer: carlrab
-manager: digimobile
 origin.date: 12/04/2018
-ms.date: 12/31/2018
-ms.openlocfilehash: 57440bcd8c57bec488ff737ac5dd19f3233ec155
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.date: 03/16/2020
+ms.openlocfilehash: e6440393c9a60494ae0831ee699291ed326cb8c6
+ms.sourcegitcommit: dc862610e2169c1fce6fb0ae9eb7dd7567f86a0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336065"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293662"
 ---
 # <a name="designing-globally-available-services-using-azure-sql-database"></a>使用 Azure SQL 数据库设计全球可用的服务
 
 通过 Azure SQL 数据库生成和部署云服务时，可使用[活动异地复制](sql-database-active-geo-replication.md)和[自动故障转移组](sql-database-auto-failover-group.md)在发生区域性中断和灾难性故障时进行复原。 通过此功能，还可创建针对数据的本地访问进行了优化的全球分布式应用程序。 本文讨论了常见的应用程序模式，包括每种模式的优势和考量因素。
 
-## <a name="scenario-1-using-two-azure-regions-for-business-continuity-with-minimal-downtime"></a>方案 1：使用两个 Azure 区域来实现业务连续性，同时将停机时间减至最小
+## <a name="scenario-1-using-two-azure-regions-for-business-continuity-with-minimal-downtime"></a>应用场景 1：使用两个 Azure 区域来实现业务连续性，同时将停机时间减至最小
 
 在此方案中，应用程序具有以下特征：
 
@@ -67,7 +66,7 @@ ms.locfileid: "75336065"
 
 区域 B 中的应用程序资源大多时间利用不足，这是需要进行权衡的主要考量。 
 
-## <a name="scenario-2-azure-regions-for-business-continuity-with-maximum-data-preservation"></a>方案 2：可实现业务连续性并提供最高数据保存性能的 Azure 区域
+## <a name="scenario-2-azure-regions-for-business-continuity-with-maximum-data-preservation"></a>应用场景 2：可实现业务连续性并提供最高数据保存性能的 Azure 区域
 
 此选项最适合具有以下特征的应用程序：
 
@@ -100,7 +99,7 @@ ms.locfileid: "75336065"
 
 权衡是应用程序必须能够在只读模式下运行。 
 
-## <a name="scenario-3-application-relocation-to-a-different-geography-without-data-loss-and-near-zero-downtime"></a>方案 3：应用程序重新定位到其他地理位置而不发生数据丢失，且停机时间几乎为零
+## <a name="scenario-3-application-relocation-to-a-different-geography-without-data-loss-and-near-zero-downtime"></a>应用场景 3：应用程序重新定位到其他地理位置而不发生数据丢失，且停机时间几乎为零
 
 在此方案中，应用程序具有以下特征：
 
@@ -118,7 +117,7 @@ ms.locfileid: "75336065"
 
 ![方案 3. 美国东部主服务器配置。](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/scenario3-a.png)
 
-一天结束时（例如当地时间晚上 11 点），应将活跃数据库切换至下一个区域（北欧）。 此任务可通过使用 [Azure 计划服务](../scheduler/scheduler-intro.md)实现完全的自动化。  此任务涉及以下步骤：
+一天结束时（例如当地时间晚上 11 点），应将活动数据库切换至下一个区域（北欧）。 此任务可通过使用 [Azure 逻辑应用](../logic-apps/logic-apps-overview.md)实现完全自动化。 此任务涉及以下步骤：
 
 * 使用友好故障转移将故障转移组中的主服务器切换至北欧 (1)
 * 删除美国东部和北欧之间的故障转移组
@@ -129,7 +128,7 @@ ms.locfileid: "75336065"
 
 ![方案 3. 将主服务器切换至北欧。](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/scenario3-b.png)
 
-假如，北欧发生中断，故障转移组启动自动数据库故障转移，可有效将应用程序提前移至下一个区域 (1)。  在此情况下，在北欧回到联机状态前，美国东部是唯一的辅助服务器区域。 剩下两个区域通过转换角色为三个地理区域中的所有用户提供服务。 须相应调整 Azure 计划程序。 由于剩余的区域从欧洲获取额外的用户流量，所以应用程序性能不仅受额外延迟的影响，还受增加的最终用户连接的影响。 北欧的中断问题缓解后，当地的辅助数据库会立即与当前主数据库同步。 下图说明了北欧的服务中断：
+假如，北欧发生中断，故障转移组启动自动数据库故障转移，可有效将应用程序提前移至下一个区域 (1)。  在此情况下，在北欧回到联机状态前，美国东部是唯一的辅助服务器区域。 剩下两个区域通过转换角色为三个地理区域中的所有用户提供服务。 必须相应地调整 Azure 逻辑应用。 由于剩余的区域从欧洲获取额外的用户流量，所以应用程序性能不仅受额外延迟的影响，还受增加的最终用户连接的影响。 北欧的中断问题缓解后，当地的辅助数据库会立即与当前主数据库同步。 下图说明了北欧的服务中断：
 
 ![方案 3. 北欧中断。](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/scenario3-c.png)
 

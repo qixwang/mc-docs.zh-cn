@@ -1,18 +1,18 @@
 ---
-title: Azure Database for PostgreSQL - 单一服务器的定价层
-description: 本文介绍了 Azure Database for PostgreSQL - 单一服务器的定价层。
+title: 定价层 - Azure Database for PostgreSQL（单一服务器）
+description: 本文介绍 Azure Database for PostgreSQL（单一服务器）中的计算和存储选项。
 author: WenJason
 ms.author: v-jay
 ms.service: postgresql
 ms.topic: conceptual
-origin.date: 07/31/2019
-ms.date: 09/02/2019
-ms.openlocfilehash: 7ffb35d39c4f29f42ad94e6d5fdf513a1f8ab08e
-ms.sourcegitcommit: 3f0c63a02fa72fd5610d34b48a92e280c2cbd24a
+origin.date: 02/25/2020
+ms.date: 03/16/2020
+ms.openlocfilehash: 5a5ab7eaab6fe48be25997be3e739a60e85d8359
+ms.sourcegitcommit: 32997a7d7585deaeb0ab7b8f928d397b18b343fa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70131871"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79295970"
 ---
 # <a name="pricing-tiers-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - 单一服务器中的定价层
 
@@ -24,7 +24,6 @@ ms.locfileid: "70131871"
 | vCore 数 | 1, 2 | 2, 4, 8, 16, 32, 64 |2, 4, 8, 16, 32 |
 | 每个 vCore 的内存 | 2 GB | 5 GB | 10 GB |
 | 存储大小 | 5 GB 到 1 TB | 5GB 到 4TB | 5GB 到 4TB |
-| 存储类型 | Azure 标准存储 | Azure 高级存储 | Azure 高级存储 |
 | 数据库备份保留期 | 7 到 35 天 | 7 到 35 天 | 7 到 35 天 |
 
 可以从下表着手来选择定价层。
@@ -47,7 +46,7 @@ ms.locfileid: "70131871"
 
 |    | **基本** | **常规用途** | **内存优化** |
 |:---|:----------|:--------------------|:---------------------|
-| 存储类型 | Azure 标准存储 | Azure 高级存储 | Azure 高级存储 |
+| 存储类型 | 基本存储 | 常规用途存储 | 常规用途存储 |
 | 存储大小 | 5 GB 到 1 TB | 5GB 到 4TB | 5GB 到 4TB |
 | 存储增量大小 | 1 GB | 1 GB | 1 GB |
 | IOPS | 变量 |3 IOPS/GB<br/>至少 100 IOPS<br/>最大 6000 IOPS | 3 IOPS/GB<br/>至少 100 IOPS<br/>最大 6000 IOPS |
@@ -63,7 +62,7 @@ ms.locfileid: "70131871"
 
 ### <a name="reaching-the-storage-limit"></a>达到存储限制
 
-对于预配存储不到 100 GB 的服务器，如果可用存储低于 512MB 或 5% 的预配存储大小，则会将该服务器标记为只读。 对于预配存储超出 100 GB 的服务器，当可用存储不到 5 GB 时，会将该服务器标记为只读。
+如果可用存储小于 512MB 或小于预配存储大小的 5%，则预配存储小于等于 100 GB 的服务器将标记为只读。 对于预配存储超出 100 GB 的服务器，当可用存储不到 5 GB 时，会将该服务器标记为只读。
 
 例如，如果已预配 110 GB 的存储，而实际使用量超过 105 GB，则会将服务器标记为只读。 或者，如果已预配 5 GB 的存储，则当可用存储少于 512 MB 时，服务器会标记为只读。
 
@@ -75,7 +74,7 @@ ms.locfileid: "70131871"
 
 ### <a name="storage-auto-grow"></a>存储自动增长
 
-存储自动增长可防止服务器耗尽存储空间并变为只读。 如果启用了存储自动增长，存储会在不影响工作负荷的情况下自动增长。 对于预配的存储大小小于 100 GB 的服务器，可用存储空间一小于 1 GB 或预配的存储的 10%，预配的存储大小就会立即增加 5 GB。 对于预配的存储大小大于 100 GB 的服务器，可用存储空间一小于预配的存储大小的 5%，预配的存储大小就会立即增加 5%。 适用上面指定的最大存储限制。
+存储自动增长可防止服务器耗尽存储空间并变为只读。 如果启用了存储自动增长，存储会在不影响工作负荷的情况下自动增长。 对于预配存储小于等于 100 GB 的服务器，可用存储小于 1 GB 或预配存储的 10%（以这二者中的较大值为准）后，预配存储大小会立即增加 5 GB。 对于预配存储大于 100 GB 的服务器，当可用存储空间小于 10 GB 或预配存储大小的 5%（以这二者中的较大值为准）时，预配存储大小会增加 5%。 适用上面指定的最大存储限制。
 
 例如，如果已预配 1000 GB 的存储，而实际使用量超过 950 GB，则服务器存储大小会增加到 1050 GB。 或者，如果已预配 10 GB 的存储，则当可用存储少于 1 GB 时，存储大小会增加到 15 GB。
 

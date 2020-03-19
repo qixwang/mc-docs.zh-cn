@@ -8,13 +8,13 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 origin.date: 11/20/2019
-ms.date: 03/02/2020
-ms.openlocfilehash: 07565f1ee09932613144846cd12fb573fc6e0147
-ms.sourcegitcommit: 46fd4297641622c1984011eac4cb5a8f6f94e9f5
+ms.date: 03/23/2020
+ms.openlocfilehash: 552cd21cd8cb55884f82e60cded5abd023520b98
+ms.sourcegitcommit: 32997a7d7585deaeb0ab7b8f928d397b18b343fa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77563598"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79295962"
 ---
 # <a name="managed-identities-in-azure-hdinsight"></a>Azure HDInsight 中的托管标识
 
@@ -22,7 +22,7 @@ ms.locfileid: "77563598"
 
 可以在 Azure HDInsight 中使用托管标识，根据需要访问 Azure AD 域服务或访问 Azure Data Lake Storage Gen2 中的文件。
 
-有两种类型的托管标识：用户分配的托管标识和系统分配的托管标识。 Azure HDInsight 使用用户分配的托管标识。 用户分配的托管标识创建为独立的 Azure 资源，可将其分配到一个或多个 Azure 服务实例。 相比之下，系统分配的托管标识是在 Azure AD 中创建的，系统会自动在特定的 Azure 服务实例上直接启用它。 然后，系统分配的该托管标识的生存期将绑定到启用该托管标识的服务实例的生存期。
+有两种类型的托管标识：用户分配的托管标识和系统分配的托管标识。 Azure HDInsight 仅支持用户分配的托管标识。 HDInsight 不支持系统分配的托管标识。 用户分配的托管标识创建为独立的 Azure 资源，可将其分配到一个或多个 Azure 服务实例。 相比之下，系统分配的托管标识是在 Azure AD 中创建的，系统会自动在特定的 Azure 服务实例上直接启用它。 然后，系统分配的该托管标识的生存期将绑定到启用该托管标识的服务实例的生存期。
 
 ## <a name="hdinsight-managed-identity-implementation"></a>HDInsight 托管标识的实现
 
@@ -45,7 +45,7 @@ Azure HDInsight 中的多种方案都会使用托管标识。 有关详细的设
 
 * [Azure Data Lake Storage Gen2](hdinsight-hadoop-use-data-lake-storage-gen2.md#create-a-user-assigned-managed-identity)
 
-* [Kafka 自带密钥 (BYOK)](kafka/apache-kafka-byok.md#get-started-with-byok)
+* [客户管理的密钥磁盘加密](disk-encryption.md)
 
 ## <a name="faq"></a>常见问题
 ### <a name="what-happens-if-i-delete-the-managed-identity-after-the-cluster-creation"></a>如果在创建群集后删除托管标识，会发生什么情况？

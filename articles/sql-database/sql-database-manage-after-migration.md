@@ -13,11 +13,11 @@ ms.reviewer: carlrab
 origin.date: 02/13/2019
 ms.date: 09/30/2019
 ms.openlocfilehash: 4381ea88c4d3f47abc8ffec3779aa0d2fd118316
-ms.sourcegitcommit: 5c3d7acb4bae02c370f6ba4d9096b68ecdd520dd
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71262935"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293458"
 ---
 # <a name="new-dba-in-the-cloud---managing-your-single-and-pooled-databases-in-azure-sql-database"></a>云中的新 DBA - 管理 Azure SQL 数据库中单一和共用数据库
 
@@ -40,7 +40,7 @@ ms.locfileid: "71262935"
 
 ## <a name="monitor-databases-using-the-azure-portal"></a>使用 Azure 门户监视数据库
 
-在 [Azure 门户](https://portal.azure.cn/)中，可以通过选择数据库并单击“监视”  图表来监视各个数据库的利用率。 这将显示“指标”  窗口，可通过单击“编辑图表”  按钮来对其进行更改。 添加以下指标：
+在 [Azure 门户](https://portal.azure.cn/)中，可以通过选择数据库并单击“监视”  图表来监视单个数据库的利用率。 这将显示“指标”  窗口，可通过单击“编辑图表”  按钮来对其进行更改。 添加以下指标：
 
 - CPU 百分比
 - DTU 百分比
@@ -99,7 +99,7 @@ SQL 数据库严肃对待安全性和隐私性。 SQL 数据库中的安全性�
 
 [Azure 安全中心](/security-center/)为 Azure、本地和其他云中运行的工作负载提供集中式安全管理。 你可以查看是否已在所有资源上配置诸如[审计](sql-database-auditing.md)和[透明数据加密 [TDE]](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)之类的基本 SQL 数据库保护，并根据你自己的需求创建策略。
 
-### <a name="what-user-authentication-methods-are-offered-in-sql-database"></a>SQL 数据库中提供了哪些用户身份验证方法
+### <a name="what-user-authentication-methods-are-offered-in-sql-database"></a>SQL 数据库中提供哪些用户身份验证方法
 
 SQL 数据库中提供[两种身份验证方法](sql-database-control-access.md#authentication)：
 

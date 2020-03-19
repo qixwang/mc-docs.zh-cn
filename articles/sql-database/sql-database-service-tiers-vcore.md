@@ -9,13 +9,13 @@ author: WenJason
 ms.author: v-jay
 ms.reviewer: sashan, moslake, carlrab
 origin.date: 11/27/2019
-ms.date: 02/17/2020
-ms.openlocfilehash: 5ee0b0fa80255811acb25d7f772930d05bd30187
-ms.sourcegitcommit: d7b86a424b72849fe8ed32893dd05e4696e4fe85
+ms.date: 03/16/2020
+ms.openlocfilehash: 78ef3425053fb3af9119c69f9b88086f586080a1
+ms.sourcegitcommit: dc862610e2169c1fce6fb0ae9eb7dd7567f86a0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77155716"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293796"
 ---
 # <a name="vcore-model-overview"></a>vCore 模型概述
 
@@ -81,7 +81,9 @@ vCore 模型中的硬件代系选项包括“第 4 代”和“第 5 代”。 �
 |硬件代次  |计算  |内存  |
 |:---------|:---------|:---------|
 |Gen4     |- Intel E5-2673 v3 (Haswell) 2.4 GHz 处理器<br>- 最多预配 24 个 vCore（1 个 vCore = 1 个物理核心）  |- 每个 vCore 7 GB<br>- 最多预配 168 GB|
-|Gen5     |**预配计算**<br>- Intel E5-2673 v4 (Broadwell) 2.3-GHz 和 Intel SP-8160 (Skylake) 处理器<br>- 最多预配 80 个 vCore（1 个 vCore = 1 个超线程）<br><br>**无服务器计算**<br>- Intel E5-2673 v4 (Broadwell) 2.3-GHz 和 Intel SP-8160 (Skylake) 处理器<br>- 自动扩展为 16 个 vCore（1 个 vCore = 1 个超线程）|**预配计算**<br>- 每个 vCore 5.1 GB<br>- 最多预配 408 GB<br><br>**无服务器计算**<br>- 自动扩展为每个vCore 24 GB<br>- 自动扩展为最大 48 GB|
+|Gen5     |**预配计算**<br>- Intel E5-2673 v4 (Broadwell) 2.3-GHz 和 Intel SP-8160 (Skylake)* 处理器<br>- 最多预配 80 个 vCore（1 个 vCore = 1 个超线程）<br><br>**无服务器计算**<br>- Intel E5-2673 v4 (Broadwell) 2.3-GHz 和 Intel SP-8160 (Skylake)* 处理器<br>- 自动扩展为 16 个 vCore（1 个 vCore = 1 个超线程）|**预配计算**<br>- 每个 vCore 5.1 GB<br>- 最多预配 408 GB<br><br>**无服务器计算**<br>- 自动扩展为每个vCore 24 GB<br>- 自动扩展为最大 48 GB|
+
+\* 在 [sys.dm_user_db_resource_governance](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-user-db-resource-governor-azure-sql-database) 动态管理视图中，使用 Intel SP-8160 (Skylake) 处理器的 Gen5 数据库的硬件代系会显示为 Gen6。 不管处理器类型如何（Broadwell 或 Skylake），所有 Gen5 数据库的资源限制都相同。
 
 有关资源限制的详细信息，请参阅[单一数据库的资源限制 (vCore)](sql-database-vcore-resource-limits-single-databases.md) 或[弹性池的资源限制 (vCore)](sql-database-vcore-resource-limits-elastic-pools.md)。
 
@@ -111,6 +113,46 @@ vCore 模型中的硬件代系选项包括“第 4 代”和“第 5 代”。 �
 对于池，请在“概述”页上选择“配置”。 
 
 遵循相应的步骤更改配置，然后根据前面的步骤所述选择硬件代系。
+
+**创建托管实例时选择硬件代系**
+
+有关详细信息，请参阅[创建托管实例](sql-database-managed-instance-get-started.md)。
+
+在“基本信息”选项卡上，选择“计算 + 存储”部分中的“配置数据库”链接，然后选择所需的硬件代系：   
+
+  ![配置托管实例](media/sql-database-service-tiers-vcore/configure-managed-instance.png)
+  
+**更改现有托管实例的硬件代系**
+
+# <a name="portal"></a>[Portal](#tab/azure-portal)
+
+在“托管实例”页上，选择“设置”部分下的“定价层”  链接
+
+![更改托管实例硬件](media/sql-database-service-tiers-vcore/change-managed-instance-hardware.png)
+
+在“定价层”  页上，可以按前面步骤中所述更改硬件代系。
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+使用以下 PowerShell 脚本：
+
+```powershell
+Set-AzSqlInstance -Name "managedinstance1" -ResourceGroupName "ResourceGroup01" -ComputeGeneration Gen5
+```
+
+有关更多详细信息，请查看 [Set-AzSqlInstance](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlinstance) 命令。
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+使用以下 CLI 命令：
+
+```azurecli
+az sql mi update -g mygroup -n myinstance --family Gen5
+```
+
+有关更多详细信息，请查看 [az sql mi update](/cli/sql/mi#az-sql-mi-update) 命令。
+
+---
 
 ### <a name="hardware-availability"></a>硬件可用性
 

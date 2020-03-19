@@ -1,5 +1,5 @@
 ---
-title: Azure SQL 数据库 - 自动优化 | Microsoft Docs
+title: 自动优化概述
 description: Azure SQL 数据库可分析 SQL 查询并自动适应用户工作负荷。
 services: sql-database
 ms.service: sql-database
@@ -11,13 +11,13 @@ author: WenJason
 ms.author: v-jay
 ms.reviewer: carlrab
 origin.date: 03/06/2019
-ms.date: 11/04/2019
-ms.openlocfilehash: 68913c267973559e2886ba8e33ec2bdb0e08cd36
-ms.sourcegitcommit: 97fa37512f79417ff8cd86e76fe62bac5d24a1bd
+ms.date: 03/16/2020
+ms.openlocfilehash: ccdd39bf35fcce801388abb9d81ef5af6177d619
+ms.sourcegitcommit: dc862610e2169c1fce6fb0ae9eb7dd7567f86a0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73041106"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293814"
 ---
 # <a name="automatic-tuning-in-azure-sql-database"></a>Azure SQL 数据库中的自动优化
 
@@ -79,6 +79,13 @@ Azure SQL 数据库中可用的自动优化选项包括：
 如果通过 T-SQL 应用优化建议，则自动性能验证和反转机制不可用。 以这种方式应用的建议将保持活动状态，并在 24-48 小时显示在优化建议列表中。 将在 24-48 小时内保持活动状态并显示在建议列表中。 如果你想要更快地删除建议，可以通过 Azure 门户放弃它。
 
 每个数据库都可以独立启用或禁用自动优化选项，也可以在 SQL 数据库服务器上配置这些选项，并将其应用于从服务器继承设置的每个数据库。 SQL 数据库服务器可继承 Azure 默认值，用于自动调整设置。 目前 Azure 默认值设为启用 FORCE_LAST_GOOD_PLAN 和 CREATE_INDEX，禁用 DROP_INDEX。
+
+> [!IMPORTANT]
+> 从 2020 年 3 月开始，对用于自动优化的 Azure 默认设置的更改将生效，如下所示：
+> - 新的 Azure 默认设置为 FORCE_LAST_GOOD_PLAN = enabled、CREATE_INDEX = disabled 和 DROP_INDEX = disabled。
+> - 未配置自动优化首选项的现有服务器将自动配置为继承新的 Azure 默认设置。 这适用于当前有用于自动优化的服务器设置处于未定义状态的所有客户。
+> - 创建的新服务器将自动配置为继承新的 Azure 默认设置（与之前创建新服务器时自动优化配置处于未定义状态时不同）。
+>
 
 要配置自动优化，建议在服务器上配置自动优化选项并继承属于父级服务器的数据库设置，因为这会简化对大量数据库的自动优化选项的管理。
 

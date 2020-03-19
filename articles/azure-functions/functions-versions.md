@@ -2,13 +2,13 @@
 title: Azure Functions 运行时版本概述
 description: Azure Functions 支持多个版本的运行时。 了解这些版本之间的差异以及如何选择最适合你的版本。
 ms.topic: conceptual
-ms.date: 02/13/2020
-ms.openlocfilehash: 3b3b0a052c7400a22305d90c6db84ac8e562641e
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.date: 03/03/2020
+ms.openlocfilehash: fb529cb972149d83068c465e3fb49e12c4d86173
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77427959"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292121"
 ---
 # <a name="azure-functions-runtime-versions-overview"></a>Azure Functions 运行时版本概述
 
@@ -38,7 +38,7 @@ Azure Functions 1.x 试验性语言不能使用新模型，因此它们在 2.x �
 
 ## <a name="creating-1x-apps"></a>在特定版本上运行
 
-默认情况下，在 Azure 门户中和通过 Azure CLI 创建的函数应用设置为版本 2.x。 你可以根据需要修改此版本。 只能在创建函数应用之后、添加任何函数之前将运行时版本更改为 1.x。  即使应用具有函数，也允许在 2.x 和 3.x 之间迁移，但仍建议先在新应用中进行测试。
+默认情况下，在 Azure 门户中和通过 Azure CLI 创建的函数应用将设置为版本 3.x。 你可以根据需要修改此版本。 只能在创建函数应用之后、添加任何函数之前将运行时版本更改为 1.x。  即使应用具有函数，也允许在 2.x 和 3.x 之间迁移，但仍建议先在新应用中进行测试。
 
 ## <a name="migrating-from-1x-to-later-versions"></a>从 1.x 迁移到更高版本
 
@@ -58,7 +58,7 @@ Azure Functions 1.x 试验性语言不能使用新模型，因此它们在 2.x �
 
 在版本 2.x 中做出了以下更改：
 
-* 用于调用 HTTP 终结点的密钥始终以加密方式存储在 Azure Blob 存储中。 在版本 1.x 中，密钥默认存储在 Azure 文件存储中。 将应用从版本 1.x 升级到版本 2.x 时，会重置文件存储中的现有机密。
+* 用于调用 HTTP 终结点的密钥始终以加密方式存储在 Azure Blob 存储中。 在版本 1.x 中，密钥将默认存储在 Azure 文件存储中。 将应用从版本 1.x 升级到版本 2.x 时，会重置文件存储中的现有机密。
 
 * 2\.x 版运行时不包含对 Webhook 提供程序的内置支持。 做出此项更改的目的是提高性能。 仍可以使用 HTTP 触发器作为 Webhook 的终结点。
 

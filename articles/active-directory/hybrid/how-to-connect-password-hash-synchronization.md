@@ -9,18 +9,18 @@ ms.assetid: 05f16c3e-9d23-45dc-afca-3d0fa9dbf501
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 02/25/2020
+ms.date: 03/11/2020
 ms.subservice: hybrid
 ms.author: v-junlch
 search.appverid:
 - MET150
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a993c14b967077dc42ed24a24e01ce3768de5dd3
-ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
+ms.openlocfilehash: 36421ba260cb0df8ab61c0c8db94f3181c0f67e5
+ms.sourcegitcommit: 4ba6d7c8bed5398f37eb37cf5e2acafcdcc28791
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77653451"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79133808"
 ---
 # <a name="implement-password-hash-synchronization-with-azure-ad-connect-sync"></a>使用 Azure AD Connect 同步实现密码哈希同步
 本文提供将用户密码从本地 Active Directory 实例同步到基于云的 Azure Active Directory (Azure AD) 实例时所需的信息。
@@ -99,14 +99,15 @@ Active Directory 域服务以实际用户密码的哈希值表示形式存储密
 
 
 若要启用 EnforceCloudPasswordPolicyForPasswordSyncedUsers 功能，请按如下所示使用 MSOnline PowerShell 模块运行以下命令。 你必须为 Enable 参数键入“yes”，如下所示：
+
 ```
-`Set-MsolDirSyncFeature -Feature EnforceCloudPasswordPolicyForPasswordSyncedUsers`
-`cmdlet Set-MsolDirSyncFeature at command pipeline position 1`
-`Supply values for the following parameters:`
-`Enable: yes`
-`Confirm`
-`Continue with this operation?`
-`[Y] Yes [N] No [S] Suspend [?] Help (default is "Y"): y`
+Set-MsolDirSyncFeature -Feature EnforceCloudPasswordPolicyForPasswordSyncedUsers
+cmdlet Set-MsolDirSyncFeature at command pipeline position 1
+Supply values for the following parameters:
+Enable: yes
+Confirm
+Continue with this operation?
+[Y] Yes [N] No [S] Suspend [?] Help (default is "Y"): y
 ```
 
 启用后，Azure AD 不会从每个已同步用户的 PasswordPolicies 属性中删除 `DisablePasswordExpiration` 值。 而是当用户下一次在本地 AD 中更改密码时，在同步每个用户的密码期间将此值设置为 `None`。  
@@ -135,10 +136,10 @@ Azure AD 支持为每个已注册的域单独设置密码过期策略。
 `Set-ADSyncAADCompanyFeature  -ForcePasswordChangeOnLogOn $true`
 
 > [!NOTE]
-> 如果强制用户在下次登录时更改其密码，则同时也需要执行密码更改操作。  AD Connect 本身不会选取强制密码更改标志；它是对密码哈希同步期间检测到的密码更改的补充。
+> 如果强制用户在下次登录时更改其密码，则同时也需要执行密码更改操作。  Azure AD Connect 本身不会选取强制密码更改标志；它是对密码哈希同步期间检测到的密码更改的补充。
 
 > [!CAUTION]
-> 如果未在 Azure AD 中启用自助式密码重置 (SSPR)，当用户在 Azure AD 中重置其密码，然后尝试使用新密码登录 Active Directory 时，其体验会令人困惑，因为新密码在 Active Directory 中尚未生效。 请仅在租户中启用了 SSPR 和密码写回时，才使用此功能。
+> 仅当在租户上启用了 SSPR 和密码写回时，才应使用此功能。  这样，如果用户通过 SSPR 更改其密码，该密码将同步到 Active Directory。
 
 > [!NOTE]
 > 此功能目前以公共预览版提供。
@@ -194,7 +195,7 @@ Azure AD 支持为每个已注册的域单独设置密码过期策略。
     </configuration>
 ```
 
-有关安全性与 FIPS 的信息，请参阅 [Azure AD password hash sync, encryption, and FIPS compliance](https://blogs.technet.microsoft.com/enterprisemobility/2014/06/28/aad-password-sync-encryption-and-fips-compliance/)（Azure AD 密码哈希同步、加密和 FIPS 符合性）。
+
 
 ## <a name="troubleshoot-password-hash-synchronization"></a>排查密码哈希同步问题
 如果遇到密码哈希同步问题，请参阅[排查密码哈希同步问题](tshoot-connect-password-hash-synchronization.md)。

@@ -11,13 +11,13 @@ author: WenJason
 ms.author: v-jay
 ms.reviewer: carlrab
 origin.date: 02/01/2020
-ms.date: 02/17/2020
-ms.openlocfilehash: fb483dffb3448298603462b04c374e9009d71c32
-ms.sourcegitcommit: d7b86a424b72849fe8ed32893dd05e4696e4fe85
+ms.date: 03/16/2020
+ms.openlocfilehash: 737cee699dc7cd12ad4e6615cbb4c711569ff089
+ms.sourcegitcommit: dc862610e2169c1fce6fb0ae9eb7dd7567f86a0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77155689"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293769"
 ---
 # <a name="choose-between-the-vcore-and-the-dtu-purchasing-models"></a>在 vCore 和 DTU 购买模型之间进行选择
 
@@ -78,7 +78,7 @@ ms.locfileid: "77155689"
 
 > [!IMPORTANT]
 > 计算资源、I/O 以及数据和日志存储按数据库或弹性池收费。 备份存储按每个数据库收费。 有关托管实例费用的详细信息，请参阅[托管实例](sql-database-managed-instance.md)。
-> 区域限制：  有关受支持区域的当前列表，请参阅[可用产品(按区域)](https://azure.microsoft.com/global-infrastructure/services/?regions=china-non-regional,china-east,china-east-2,china-north,china-north-2&products=all)。 若要在当前不受支持的区域中创建托管实例，请[通过 Azure 门户发送支持请求](sql-database-managed-instance-resource-limits.md#obtaining-a-larger-quota-for-sql-managed-instance)。
+> 区域限制：  有关受支持区域的当前列表，请参阅[可用产品(按区域)](https://azure.microsoft.com/global-infrastructure/services/?regions=china-non-regional,china-east,china-east-2,china-north,china-north-2&products=all)。 若要在当前不受支持的区域中创建托管实例，请[发送支持请求](https://support.azure.cn/zh-cn/support/support-azure/)。
 
 如果单一数据库或弹性池消耗的 DTU 超过 300 个，则转换为基于 vCore 的购买模型可以降低成本。 可以使用所选的 API 或 Azure 门户进行转换，无需停机。 但是，转换不是必需的并且不会自动完成。 如果基于 DTU 的购买模型可以满足性能和业务要求，应继续使用它。
 
@@ -143,6 +143,20 @@ DTU 最好地解释了在不同计算大小和服务层级为 Azure SQL 数据�
 ### <a name="workloads-that-benefit-from-an-elastic-pool-of-resources"></a>受益于资源弹性池的工作负荷
 
 池很适合用于低平均资源利用率和相对不频繁的使用高峰的数据库。 有关详细信息，请参阅[何时应当考虑使用 SQL 数据库弹性池？](sql-database-elastic-pool.md)。
+
+### <a name="hardware-generations-in-the-dtu-based-purchasing-model"></a>基于 DTU 的购买模型中的硬件代系
+
+在基于 DTU 的购买模型中，客户不能选择用于其数据库的硬件代系。 虽然通常情况下，某个给定的数据库会长时间（通常为多个月）驻留在特定的硬件代系上，但在出现特定事件的情况下，可能必须将数据库转移到另一个硬件代系。
+
+例如，如果数据库需纵向扩展或缩减到另一服务目标、数据中心的当前基础结构正在接近其容量限制，或者当前使用的硬件因寿命已尽而需要停止使用，则可将该数据库转移到另一硬件代系。
+
+如果将数据库移到另一硬件上，工作负载性能可能会变化。 DTU 模型保证 [DTU 基准](/sql-database/sql-database-service-tiers-dtu#dtu-benchmark)工作负载的吞吐量和响应时间在数据库移到另一硬件代系时保持大体相同，前提是其服务目标（DTU 数）保持不变。 
+
+但是，在 Azure SQL 数据库中运行的各种客户工作负载中，对相同服务目标使用不同硬件的影响可能更明显。 不同的工作负载将受益于不同的硬件配置和功能。 因此，对于 DTU 基准以外的工作负载，如果数据库从一个硬件代系转移到另一个硬件代系，则可能会看到性能差异。
+
+例如，如果应用程序对网络延迟敏感，则其在 Gen5 硬件上的性能会优于在Gen4 硬件上的性能，因为在 Gen5 中使用了加速网络；但是，如果应用程序使用密集读取 IO，则其在 Gen4 硬件上的性能会优于在Gen5 硬件上的性能，因为 Gen4 上内存与核心的比率更高。
+
+如果客户的工作负载对硬件变化敏感，或者客户希望控制对其数据库的硬件代系的选择，则客户可以在创建和缩放数据库的过程中使用 [vCore](/sql-database/sql-database-service-tiers-vcore) 模型来选择其首选的硬件代系。 在 vCore 模型中，会记录[单一数据库](/sql-database/sql-database-vcore-resource-limits-single-databases)和[弹性池](/sql-database/sql-database-vcore-resource-limits-elastic-pools)的每个硬件代系上每个服务目标的资源限制。 有关 vCore 模型中的硬件代系的详细信息，请参阅[硬件代系](/sql-database/sql-database-service-tiers-vcore#hardware-generations)。
 
 ## <a name="frequently-asked-questions-faqs"></a>常见问题 (FAQ)
 

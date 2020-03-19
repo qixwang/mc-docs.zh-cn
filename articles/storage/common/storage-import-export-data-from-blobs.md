@@ -6,20 +6,20 @@ services: storage
 ms.service: storage
 ms.topic: article
 origin.date: 04/08/2019
-ms.date: 02/10/2020
+ms.date: 03/16/2020
 ms.author: v-jay
 ms.subservice: common
-ms.openlocfilehash: 5ee7325568f48ae300b2a4c203e06f53012fee30
-ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
+ms.openlocfilehash: 4773ddf183ecb8c143f242c0a57645acf7ed9bbc
+ms.sourcegitcommit: dc862610e2169c1fce6fb0ae9eb7dd7567f86a0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77028875"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293842"
 ---
 # <a name="use-the-azure-importexport-service-to-export-data-from-azure-blob-storage"></a>使用 Azure 导入/导出服务从 Azure Blob 存储导出数据
 本文分步说明如何使用 Azure 导入/导出服务从 Azure Blob 存储安全地导出大量数据。 该服务要求你将空驱动器寄送到 Azure 数据中心。 该服务将数据从存储帐户导出到驱动器，然后将驱动器寄回。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 在创建导出作业以从 Azure Blob 存储传输数据之前，请仔细查看并完成以下此服务的先决条件列表。
 必须具备以下条件：
@@ -52,7 +52,7 @@ ms.locfileid: "77028875"
 
         ![基础知识](./media/storage-import-export-data-from-blobs/export-from-blob3.png)
 
-3. 在“作业详细信息”中  ：
+5. 在“作业详细信息”中  ：
 
     - 选择要导出的数据所在的存储帐户。 使用附近位置的存储帐户。 目前仅在中国东部和中国北部支持此功能。
     - 放置位置会根据选定存储帐户所属的区域自动进行填充。
@@ -75,16 +75,16 @@ ms.locfileid: "77028875"
    > 如果在复制数据时，要导出的 blob 正在使用中，则 Azure 导入/导出服务将生成该 blob 的快照并复制快照。
 
 
-4. 在“回寄信息”中  ：
+6. 在“回寄信息”中  ：
 
     - 从下拉列表中选择承运商。
-    - 输入你已在该承运商那里创建的有效承运商帐户编号。 当导出作业完成后，我们使用此帐户寄回驱动器。 
+    - 输入你已在该承运商那里创建的有效承运商帐户编号。 如果没有承运人帐号，请键入 null 或 unknown。 当导出作业完成后，我们使用此帐户寄回驱动器。 
     - 提供完整、有效的联系人姓名、电话号码、电子邮件地址、街道地址、城市、邮政编码、省/自治区/直辖市和国家/地区。
 
         > [!TIP]
         > 请提供组电子邮件，而非为单个用户指定电子邮件地址。 这可确保即使管理员离开也会收到通知。
 
-5. 在“摘要”中  ：
+7. 在“摘要”中  ：
 
     - 查看作业详细信息。
     - 记下作业名称以及为将磁盘寄送到 Azure 而提供的 Azure 数据中心寄送地址。

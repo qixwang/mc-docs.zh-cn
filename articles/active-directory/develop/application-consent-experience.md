@@ -1,28 +1,25 @@
 ---
-title: 了解 Azure AD 应用程序许可体验 | Microsoft Docs
+title: Azure AD 应用同意体验
+titleSuffix: Microsoft identity platform
 description: 详细了解 Azure AD 许可体验，确定如何在管理和开发基于 Azure AD 的应用程序时使用它
 services: active-directory
-documentationcenter: ''
 author: rwike77
 manager: CelesteDG
 ms.assetid: ''
 ms.service: active-directory
-ms.subservice: app-mgmt
+ms.subservice: develop
+ms.custom: aaddev
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-origin.date: 03/27/2019
-ms.date: 10/25/2019
+ms.topic: conceptual
+ms.date: 03/10/2020
 ms.author: v-junlch
 ms.reviewer: zachowd
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: e95941ac22fed1393d6ed2352fcaa7eeb0edf06f
-ms.sourcegitcommit: e60779782345a5428dd1a0b248f9526a8d421343
+ms.openlocfilehash: 513e69ea9423493c61884a453121b04f9ae9603d
+ms.sourcegitcommit: 4ba6d7c8bed5398f37eb37cf5e2acafcdcc28791
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72912697"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79133830"
 ---
 # <a name="understanding-azure-ad-application-consent-experiences"></a>了解 Azure AD 应用程序许可体验
 
@@ -32,10 +29,10 @@ ms.locfileid: "72912697"
 
 许可是指用户进行应用程序授权，让应用程序代表自己来访问受保护资源的过程。 可以要求管理员或用户同意访问其组织数据/个人数据。
 
-授予许可时的实际用户体验取决于以下因素：在用户的租户上设置的策略、用户的权限范围（或角色）、客户端应用程序请求的[权限](/active-directory/develop/active-directory-permissions)的类型。 这意味着应用程序开发人员和租户管理员可以对许可体验进行某种控制。 管理员可以灵活地设置和禁用租户或应用上的策略，以便控制其租户中的许可体验。 应用程序开发人员可以规定哪些类型的权限可以请求，以及是否需要引导用户完成用户许可流或管理员许可流。
+授予许可时的实际用户体验取决于以下因素：在用户的租户上设置的策略、用户的权限范围（或角色）、客户端应用程序请求的[权限](/active-directory/azuread-dev/v1-permissions-consent)的类型。 这意味着应用程序开发人员和租户管理员可以对许可体验进行某种控制。 管理员可以灵活地设置和禁用租户或应用上的策略，以便控制其租户中的许可体验。 应用程序开发人员可以规定哪些类型的权限可以请求，以及是否需要引导用户完成用户许可流或管理员许可流。
 
 - **用户许可流**：应用程序开发人员将用户引导到授权终结点，目的是只记录当前用户的许可。
-- **管理员许可流**：应用程序开发人员将用户引导到管理员许可终结点，目的是记录整个租户的许可。 若要确保管理员许可流正常工作，应用程序开发人员必须列出应用程序清单中 `RequiredResourceAccess` 属性中的所有权限。 有关详细信息，请参阅[应用程序清单](/active-directory/develop/reference-app-manifest)。
+- **管理员许可流**：应用程序开发人员将用户引导到管理员许可终结点，目的是记录整个租户的许可。 若要确保管理员许可流正常运行，应用程序开发人员必须在应用程序清单的 `RequiredResourceAccess` 属性中列出所有权限。 有关详细信息，请参阅[应用程序清单](/active-directory/develop/reference-app-manifest)。
 
 ## <a name="building-blocks-of-the-consent-prompt"></a>许可提示的构建基块
 
@@ -55,7 +52,6 @@ ms.locfileid: "72912697"
 | 6 | 权限 | 此列表包含客户端应用程序请求的权限。 用户应始终评估请求的权限的类型，以便了解客户端应用程序在获得授权后将要代表用户访问的具体数据，前提是用户接受请求。 作为应用程序开发人员，最好是通过最低特权对请求访问权限进行限制。 |
 | 7 | 权限说明 | 此值由公开权限的服务提供。 若要查看权限说明，必须切换权限旁边的 V 形图标。 |
 | 8 | 应用条款 | 这些条款包含指向服务条款和应用程序隐私声明的链接。 发行商负责在其服务条款中概述其规则。 另外，发行商负责在其隐私声明中披露其使用和共享用户数据的方式。 如果发行商没有为多租户应用程序提供这些值的链接，则会在许可提示中显示一个加粗的警告。 |
-| 9 | `https://myapps.microsoft.com` | 这是供用户查看和删除当前可以访问其数据的非 Microsoft 应用程序的链接。 |
 
 ## <a name="common-consent-scenarios"></a>常见许可场景
 
@@ -89,4 +85,3 @@ ms.locfileid: "72912697"
 - 如需更深入的了解，请参阅[多租户应用程序如何使用许可框架](active-directory-devhowto-multi-tenant-overview.md)来实现“用户”许可和“管理员”许可，为更高级的多层应用程序模式提供支持。
 - 了解[如何配置应用的发布者域](howto-configure-publisher-domain.md)。
 
-<!-- Update_Description: update metedata properties -->

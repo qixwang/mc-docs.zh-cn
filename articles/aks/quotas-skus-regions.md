@@ -2,18 +2,16 @@
 title: Azure Kubernetes 服务 (AKS) 中的配额、SKU 和适用地区
 description: 了解 Azure Kubernetes 服务 (AKS) 中的默认配额、受限制的节点 VM SKU 大小和适用地区。
 services: container-service
-author: rockboyfor
-ms.service: container-service
 ms.topic: conceptual
 origin.date: 04/09/2019
-ms.date: 01/20/2020
+ms.date: 03/09/2020
 ms.author: v-yeche
-ms.openlocfilehash: 010cf0c1353a42f1aa082de55bc0c14fb967789d
-ms.sourcegitcommit: 8de025ca11b62e06ba3762b5d15cc577e0c0f15d
+ms.openlocfilehash: e289628f5fe9ef5a26886089a74177ccafc69ca8
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76165387"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291326"
 ---
 # <a name="quotas-virtual-machine-size-restrictions-and-region-availability-in-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS) 中的配额、虚拟机大小限制和适用地区
 
@@ -37,7 +35,7 @@ ms.locfileid: "76165387"
 
 ## <a name="restricted-vm-sizes"></a>受限制的 VM 大小
 
-AKS 群集中的每个节点都包含固定数量的计算资源，例如 vCPU 和内存。 如果某个 AKS 节点包含的计算资源不足，则 Pod 可能无法正常运行。 若要确保所需的 *kube-system* Pod 和你的应用程序能够可靠地调度，请勿在 AKS 中使用以下 VM SKU：
+AKS 群集中的每个节点都包含固定数量的计算资源，例如 vCPU 和内存。 如果某个 AKS 节点包含的计算资源不足，则 Pod 可能无法正常运行。 若要确保所需的 *kube-system* Pod 和你的应用程序能够可靠地进行计划，**请勿在 AKS 中使用以下 VM SKU**：
 
 - Standard_A0
 - Standard_A1

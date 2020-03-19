@@ -1,5 +1,5 @@
 ---
-title: 使用开放式数据库连接 (ODBC) 连接到 Azure 数据资源管理器以在 Tableau 中直观显示数据
+title: 使用 Azure 数据资源管理器 ODBC 连接器直观显示 Tableau 数据
 description: 本文介绍如何使用开放式数据库连接 (ODBC) 连接到 Azure 数据资源管理器以在 Tableau 中直观显示数据。
 author: orspod
 ms.author: v-tawe
@@ -7,13 +7,13 @@ ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: conceptual
 origin.date: 06/03/2019
-ms.date: 07/22/2019
-ms.openlocfilehash: 017533db6aada0fcc68e19fcba591c9f00bd1719
-ms.sourcegitcommit: 298eab5107c5fb09bf13351efeafab5b18373901
+ms.date: 03/23/2020
+ms.openlocfilehash: c6436eabd6d1ea08e33087208184126ece1c8c92
+ms.sourcegitcommit: 4ba6d7c8bed5398f37eb37cf5e2acafcdcc28791
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2019
-ms.locfileid: "74657658"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79133961"
 ---
 # <a name="visualize-data-from-azure-data-explorer-in-tableau"></a>在 Tableau 中直观显示来自 Azure 数据资源管理器的数据
 

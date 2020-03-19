@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 01/08/2020
+ms.date: 03/11/2020
 ms.author: v-junlch
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: abeaef7562479d15fb4bcf9cd8e4148120b1bcb4
-ms.sourcegitcommit: 1bc154c816a5dff47ee051c431cd94826e57aa60
+ms.openlocfilehash: 5caf38887c4bba9a9f60305ee6fae8edc5194335
+ms.sourcegitcommit: 4ba6d7c8bed5398f37eb37cf5e2acafcdcc28791
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75777082"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79133888"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Azure Active Directory 门户中的“登录活动”报告
 
@@ -34,7 +34,7 @@ Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成�
 
 本文概述了登录报告。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 ### <a name="who-can-access-the-data"></a>谁可以访问该数据？
 
@@ -90,54 +90,95 @@ Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成�
 
 ![登录活动](./media/concept-sign-ins/basic-sign-in.png "登录活动")
 
+> [!NOTE]
+> 客户现在可以通过所有登录报告对条件访问策略进行故障排除。 通过单击登录记录的“条件访问”  选项卡，客户可以查看条件访问状态，并深入了解应用于登录的策略的详细信息以及每个策略的结果。
+
 ## <a name="filter-sign-in-activities"></a>筛选登录活动
 
-首先，将所报告数据的范围缩小到适当的级别。 接下来，使用充当默认筛选器的日期字段筛选登录数据。 Azure AD 提供了一系列可以设置的其他筛选器。
+首先，将所报告数据的范围缩小到适当的级别。 接下来，使用充当默认筛选器的日期字段筛选登录数据。 Azure AD 提供了一系列可以设置的其他筛选器：
 
 ![登录活动](./media/concept-sign-ins/04.png "登录活动")
 
-“用户”筛选器用于指定所关注的用户的名称或用户主体名称 (UPN)。 
+**请求 ID** - 所关注请求的 ID。
 
-“应用程序”  筛选器用于指定所关注的应用程序的名称。
+**用户** - 所关注用户的用户名或用户主体名称 (UPN)。
 
-“登录状态”筛选器用于选择： 
+**应用程序** - 目标应用程序的名称。
+ 
+**状态** - 所关注的登录状态：
 
-- 全部
 - Success
+
 - 失败
 
-“日期”筛选器用于定义已返回数据的时间范围。   
-可能的值包括：
+- 已中断
 
-- 一个月
-- 7 天
-- 24 小时
-- 自定义时间范围
 
-选择自定义时间范围时，可以配置开始时间和结束时间。
+**IP 地址** - 用于连接到租户的设备的 IP 地址。
 
-如果向登录视图添加其他字段，这些字段会自动添加到筛选器列表。 例如，如果向列表添加“客户端应用”字段，则还会获得另一筛选器选项，用于设置以下筛选器：   
-![登录活动](./media/concept-sign-ins/12.png "登录活动")
+**位置** - 从其发起连接的位置：
 
-- **浏览器**  
-    此筛选器显示使用浏览器流执行登录尝试的所有事件。
-- **Exchange ActiveSync（受支持）**  
-    此筛选器显示从支持的平台（如 iOS、Android 和 Windows Phone）尝试 Exchange ActiveSync (EAS) 协议的所有登录尝试。
-- **Exchange ActiveSync（不受支持）**  
-    此筛选器显示从不受支持的平台（如 Linux 发行版）尝试 EAS 协议的所有登录尝试。
-- **移动应用和桌面客户端** 此筛选器显示未使用浏览器流的所有登录尝试。 例如，使用任何协议的任何平台上的移动应用，或者 Windows 或 MacOS 上的 Office 等桌面客户端应用。
-  
-- **其他客户端**
-    - **IMAP**  
-        使用 IMAP 检索电子邮件的旧版邮件客户端。
-    - **MAPI**  
-        启用了 ADAL 并在使用 MAPI 的 Office 2013。
-    - **旧式 Office 客户端**  
-        默认配置为 Office 2013（未启用 ADAL，使用 MAPI），或 Office 2016（已禁用 ADAL）。
-    - **POP**  
-        使用 POP3 检索电子邮件的旧版邮件客户端。
-    - **SMTP**  
-        使用 SMTP 发送电子邮件的旧版邮件客户端。
+- 城市
+
+- 省/自治区/直辖市
+
+- 国家/地区
+
+
+**资源** - 用于登录的服务的名称。
+
+
+**资源 ID** - 用于登录的服务的 ID。
+
+
+**客户端应用** - 用于连接到租户的客户端应用的类型：
+
+![客户端应用筛选器](./media/concept-sign-ins/client-app-filter.png)
+
+
+|名称|新式身份验证|说明|
+|---|:-:|---|
+|经验证的 SMTP| |由 POP 和 IMAP 客户端用来发送电子邮件。|
+|自动发现| |由 Outlook 和 EAS 客户端用来查找和连接 Exchange Online 中的邮箱。|
+|Exchange ActiveSync| |此筛选器显示尝试 EAS 协议的所有登录尝试。|
+|浏览者|![勾选标记](./media/concept-sign-ins/check.png)|显示用户使用 Web 浏览器进行的所有登录尝试|
+|Exchange ActiveSync| | 显示使用客户端应用通过 Exchange ActiceSync 连接到 Exchange Online 的用户进行的所有登录尝试|
+|Exchange Online PowerShell| |用于通过远程 PowerShell 连接到 Exchange Online。 如果阻止 Exchange Online PowerShell 的基本身份验证，则需使用 Exchange Online PowerShell 模块进行连接。 有关说明，请参阅[使用多重身份验证连接到 Exchange Online PowerShell](https://docs.microsoft.com/powershell/exchange/exchange-online/connect-to-exchange-online-powershell/mfa-connect-to-exchange-online-powershell)。|
+|Exchange Web 服务| |Outlook、Outlook for Mac 和第三方应用使用的编程接口。|
+|IMAP4| |使用 IMAP 检索电子邮件的旧版邮件客户端。|
+|基于 HTTP 的 MAPI| |由 Outlook 2010 及更高版本使用。|
+|移动应用和桌面客户端|![勾选标记](./media/concept-sign-ins/check.png)|显示用户使用移动应用和桌面客户端进行的所有登录尝试。|
+|脱机通讯簿| |通过 Outlook 下载并使用的地址列表集合的副本。|
+|Outlook Anywhere（基于 HTTP 的 RPC）| |由 Outlook 2016 及更低版本使用。|
+|Outlook 服务| |由 Windows 10 的邮件和日历应用使用。|
+|POP3| |使用 POP3 检索电子邮件的旧版邮件客户端。|
+|Reporting Web Services| |用于在 Exchange Online 中检索报表数据。|
+|其他客户端| |显示用户的所有登录尝试，客户端应用不包括在其中或未知。|
+
+
+
+**操作系统** - 在设备上运行的用于登录到租户的操作系统。 
+
+
+**设备浏览器** - 如果连接是从浏览器发起的，则可使用此字段按浏览器名称进行筛选。
+
+
+**相关性 ID** - 活动的相关性 ID。
+
+
+**条件访问** - 已应用的条件访问规则的状态
+
+- 未应用 
+
+- Success
+
+- 失败
+
+
+
+
+
+
 
 ## <a name="download-sign-in-activities"></a>下载登录活动
 
@@ -230,4 +271,4 @@ Azure AD 和 Azure 门户都提供登录数据的其他入口点：
 * [Azure AD 数据保留策略](reference-reports-data-retention.md)
 * [Azure AD 报告延迟](reference-reports-latencies.md)
 
-<!-- Update_Description: wording update -->
+

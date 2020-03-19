@@ -1,30 +1,25 @@
 ---
-title: 使用 PowerShell 创建 Azure 应用标识
+title: 创建 Azure 应用标识 (PowerShell) | Azure
 titleSuffix: Microsoft identity platform
 description: 介绍如何使用 Azure PowerShell 创建 Azure Active Directory 应用程序和服务主体，并通过基于角色的访问控制向其授予资源访问权限。 它演示如何使用证书对应用程序进行身份验证。
 services: active-directory
-documentationcenter: na
 author: rwike77
 manager: CelesteDG
 ms.assetid: d2caf121-9fbe-4f00-bf9d-8f3d1f00a6ff
 ms.service: active-directory
 ms.subservice: develop
 ms.custom: aaddev
-ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: multiple
-ms.workload: na
-origin.date: 10/10/2019
-ms.date: 11/05/2019
+ms.date: 03/10/2020
 ms.author: v-junlch
 ms.reviewer: tomfitz
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: e34e547ab73cf409d79b8db4134ab49fcbe84c1a
-ms.sourcegitcommit: a88cc623ed0f37731cb7cd378febf3de57cf5b45
+ms.openlocfilehash: 213a2cf3ca7e265538708b0855eccc1d67c95229
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73830986"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291084"
 ---
 # <a name="how-to-use-azure-powershell-to-create-a-service-principal-with-a-certificate"></a>如何：通过 Azure PowerShell 使用证书创建服务主体
 
@@ -55,7 +50,7 @@ ms.locfileid: "73830986"
 
 ## <a name="create-service-principal-with-self-signed-certificate"></a>使用自签名证书创建服务主体
 
-下面的示例介绍了简单的方案。 它使用 [New-AzADServicePrincipal](https://docs.microsoft.com/powershell/module/az.resources/new-azadserviceprincipal) 创建具有自签名证书的服务主体，并使用 [New-AzureRmRoleAssignment](https://docs.microsoft.com/powershell/module/az.resources/new-azroleassignment) 将[读者](/role-based-access-control/built-in-roles#reader)角色分配给该服务主体。 角色分配的范围限定为当前所选 Azure 订阅。 若要选择其他订阅，请使用 [Set-AzContext](https://docs.microsoft.com/powershell/module/Az.Accounts/Set-AzContext)。
+下面的示例介绍了简单的方案。 它使用 [New-AzADServicePrincipal](https://docs.microsoft.com/powershell/module/az.resources/new-azadserviceprincipal) 创建具有自签名证书的服务主体，并使用 [New-AzRoleAssignment](https://docs.microsoft.com/powershell/module/az.resources/new-azroleassignment) 将[读者](/role-based-access-control/built-in-roles#reader)角色分配给该服务主体。 角色分配的范围限定为当前所选 Azure 订阅。 若要选择其他订阅，请使用 [Set-AzContext](https://docs.microsoft.com/powershell/module/Az.Accounts/Set-AzContext)。
 
 > [!NOTE]
 > New-SelfSignedCertificate cmdlet 和 PKI 模块目前在 PowerShell Core 中不受支持。 
@@ -74,7 +69,7 @@ Sleep 20
 New-AzRoleAssignment -RoleDefinitionName Reader -ServicePrincipalName $sp.ApplicationId
 ```
 
-该示例休眠 20 秒，让新的服务主体有时间传遍 Azure AD。 如果脚本没有等待足够长的时间，则会显示一个错误，指出：“主体 {0} 不存在于目录 {DIR-ID} 中”。 若要解决此错误，请等待片刻，然后重新运行 **New-AzRoleAssignment** 命令。
+该示例休眠 20 秒，让新的服务主体有时间传遍 Azure AD。 如果脚本没有等待足够长的时间，则会显示一个错误，指出：“主体 {ID} 不存在于目录 {DIR-ID} 中”。 若要解决此错误，请等待片刻，然后重新运行 **New-AzRoleAssignment** 命令。
 
 可以使用 **ResourceGroupName** 参数将角色分配范围限制为特定资源组。 还可以使用 **ResourceType** 和 **ResourceName** 参数将范围限制为特定资源。 
 

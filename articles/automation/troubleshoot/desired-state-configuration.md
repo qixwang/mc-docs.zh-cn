@@ -7,43 +7,47 @@ ms.subservice: ''
 author: WenJason
 ms.author: v-jay
 origin.date: 04/16/2019
-ms.date: 03/02/2020
+ms.date: 03/16/2020
 ms.topic: conceptual
 manager: digimobile
-ms.openlocfilehash: d882cd688b8a274e014391581fb21c09fd98cb50
-ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
+ms.openlocfilehash: d61725efd3166db9f310bed84ece79c34427d54d
+ms.sourcegitcommit: dc862610e2169c1fce6fb0ae9eb7dd7567f86a0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77653059"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293719"
 ---
 # <a name="troubleshoot-issues-with-azure-automation-desired-state-configuration-dsc"></a>排查 Azure 自动化 Desired State Configuration (DSC) 问题
 
 本文提供有关 Desired State Configuration (DSC) 问题疑难解答的信息。
 
-## <a name="steps-to-troubleshoot-desired-state-configuration-dsc"></a>Desired State Configuration (DSC) 故障排除步骤
+## <a name="diagnosing-an-issue"></a>诊断问题
 
 如果在 Azure State Configuration 中编译或部署配置时出错，可使用以下步骤来诊断问题。
 
-1. **确保配置在本地计算机上编译成功：** Azure State Configuration 在 PowerShell DSC 基础上构建。 可以在 [PowerShell DSC 文档](https://docs.microsoft.com/powershell/scripting/overview)中找到 DSC 语言和语法的文档。
+### <a name="1-ensure-that-your-configuration-compiles-successfully-on-the-local-machine"></a>1.确保配置在本地计算机上编译成功
 
-   在本地计算机上编译 DSC 配置即可发现并解决常见错误，例如：
+Azure State Configuration 在 PowerShell DSC 基础上构建。 可以在 [PowerShell DSC 文档](https://docs.microsoft.com/powershell/scripting/overview)中找到 DSC 语言和语法的文档。
 
-   - **缺少模块**
-   - **语法错误**
-   - **逻辑错误**
+在本地计算机上编译 DSC 配置即可发现并解决常见错误，例如：
 
-2. **在节点上查看 DSC 日志：** 如果配置编译成功，但在应用到节点时失败，则可在日志中查找详细信息。 若要了解在何处查找 DSC 日志，请参阅 [DSC 事件日志在哪里](https://docs.microsoft.com/powershell/scripting/dsc/troubleshooting/troubleshooting#where-are-dsc-event-logs)。
+   - 缺少模块
+   - 语法错误
+   - 逻辑错误
 
-   另外，[xDscDiagnostics](https://github.com/PowerShell/xDscDiagnostics) 可以帮助你分析 DSC 日志中的详细信息。 如果你联系支持部门，他们会要求你提供这些日志，以便对你的问题进行诊断。
+### <a name="2-view-dsc-logs-on-your-node"></a>2.在节点上查看 DSC 日志
 
-   可以根据[安装稳定版本模块](https://github.com/PowerShell/xDscDiagnostics#install-the-stable-version-module)中提供的说明在本地计算机上安装 **xDscDiagnostics**。
+如果配置编译成功，但在应用到节点时失败，则可在 DSC 日志中查找详细信息。 若要了解在何处查找这些日志，请参阅 [DSC 事件日志在哪里](https://docs.microsoft.com/powershell/scripting/dsc/troubleshooting/troubleshooting#where-are-dsc-event-logs)。
 
-   若要在 Azure 计算机上安装 **xDscDiagnostics**，可以使用 [az vm run-command](/cli/vm/run-command) 或 [Invoke-AzVMRunCommand](https://docs.microsoft.com/powershell/module/azurerm.compute/invoke-azurermvmruncommand)。 也可在门户中使用“运行命令”选项，  只需按照[使用“运行命令”在 Windows VM 中运行 PowerShell 脚本](../../virtual-machines/windows/run-command.md)中的步骤操作即可。
+[xDscDiagnostics](https://github.com/PowerShell/xDscDiagnostics) 模块可以帮助你分析 DSC 日志中的详细信息。 如果你联系支持部门，他们会要求你提供这些日志，以便对你的问题进行诊断。
 
-   若要了解如何使用 **xDscDiagnostics**，请参阅[使用 xDscDiagnostics 分析 DSC 日志](https://docs.microsoft.com/powershell/scripting/dsc/troubleshooting/troubleshooting#using-xdscdiagnostics-to-analyze-dsc-logs)和 [xDscDiagnostics Cmdlet](https://github.com/PowerShell/xDscDiagnostics#cmdlets)。
+可以根据[安装稳定版本模块](https://github.com/PowerShell/xDscDiagnostics#install-the-stable-version-module)中提供的说明在本地计算机上安装 xDscDiagnostics 模块。
 
-## <a name="common-errors-when-working-with-desired-state-configuration-dsc"></a>使用所需状态配置 (DSC) 时的常见错误
+若要在 Azure 计算机上安装 xDscDiagnostics 模块，请使用 [Invoke-AzVMRunCommand](https://docs.microsoft.com/powershell/module/azurerm.compute/invoke-azurermvmruncommand)。 也可在门户中使用“运行命令”选项，  只需按照[使用“运行命令”在 Windows VM 中运行 PowerShell 脚本](../../virtual-machines/windows/run-command.md)中的步骤操作即可。
+
+若要了解如何使用 xDscDiagnostics，请参阅[使用 xDscDiagnostics 分析 DSC 日志](https://docs.microsoft.com/powershell/scripting/dsc/troubleshooting/troubleshooting#using-xdscdiagnostics-to-analyze-dsc-logs)。 另请参阅 [xDscDiagnostics Cmdlet](https://github.com/PowerShell/xDscDiagnostics#cmdlets)。
+
+## <a name="common-errors-when-working-with-dsc"></a>使用 DSC 时的常见错误
 
 ### <a name="unsupported-characters"></a>场景：无法从门户删除带有特殊字符的配置
 
@@ -73,9 +77,9 @@ An error occurred while deleting the DSC configuration '<name>'.  Error-details:
 
 ```error
 Registration of the Dsc Agent with the server
-https://<location>-agentservice-prod-1.azure-automation.net/accounts/00000000-0000-0000-0000-000000000000 failed. The
+https://<location>-agentservice-prod-1.azure-automation.cn/accounts/00000000-0000-0000-0000-000000000000 failed. The
 underlying error is: Failed to register Dsc Agent with AgentId 00000000-0000-0000-0000-000000000000 with the server htt
-ps://<location>-agentservice-prod-1.azure-automation.net/accounts/00000000-0000-0000-0000-000000000000/Nodes(AgentId='00000000-0000-0000-0000-000000000000'). .
+ps://<location>-agentservice-prod-1.azure-automation.cn/accounts/00000000-0000-0000-0000-000000000000/Nodes(AgentId='00000000-0000-0000-0000-000000000000'). .
     + CategoryInfo          : InvalidResult: (root/Microsoft/...gurationManager:String) [], CimException
     + FullyQualifiedErrorId : RegisterDscAgentCommandFailed,Microsoft.PowerShell.DesiredStateConfiguration.Commands.Re
    gisterDscAgentCommand
@@ -97,7 +101,7 @@ ps://<location>-agentservice-prod-1.azure-automation.net/accounts/00000000-0000-
 将某个节点注册到 State Configuration (DSC) 时，收到以下错误消息之一：
 
 ```error
-The attempt to send status report to the server https://{your automation account url}/accounts/xxxxxxxxxxxxxxxxxxxxxx/Nodes(AgentId='xxxxxxxxxxxxxxxxxxxxxxxxx')/SendReport returned unexpected response code Unauthorized.
+The attempt to send status report to the server https://{your Automation account URL}/accounts/xxxxxxxxxxxxxxxxxxxxxx/Nodes(AgentId='xxxxxxxxxxxxxxxxxxxxxxxxx')/SendReport returned unexpected response code Unauthorized.
 ```
 
 ```error
@@ -229,7 +233,7 @@ System.InvalidOperationException error processing property 'Credential' of type 
 
 #### <a name="resolution"></a>解决方法
 
-* 确保传入正确的 **ConfigurationData**，以便将配置中涉及的每个节点配置的 **PSDscAllowPlainTextPassword** 设置为 true。 有关详细信息，请参阅 [Azure 自动化 DSC 中的资产](../automation-dsc-compile.md#working-with-assets-in-azure-automation-during-compilation)。
+* 确保传入正确的 **ConfigurationData**，以便将配置中涉及的每个节点配置的 **PSDscAllowPlainTextPassword** 设置为 true。 有关详细信息，请参阅[在 Automation State Configuration 中编译 DSC 配置](../automation-dsc-compile.md)。
 
 ### <a name="failure-processing-extension"></a>场景：从 dsc 扩展载入时，出现“处理扩展失败”错误
 

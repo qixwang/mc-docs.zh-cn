@@ -16,11 +16,11 @@ origin.date: 07/06/2018
 ms.date: 07/23/2018
 ms.author: v-yeche
 ms.openlocfilehash: aef59112c9b75621599299308fd3238bba12431d
-ms.sourcegitcommit: e575142416298f4d88e3d12cca58b03c80694a32
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67861702"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291132"
 ---
 # <a name="add-azure-automation-runbooks-to-recovery-plans"></a>将 Azure 自动化 Runbook 添加到恢复计划
 本文将介绍 Azure Site Recovery 如何与 Azure 自动化集成，以便扩展恢复计划。 恢复计划可以安排恢复受 Site Recovery 保护的 VM。 恢复计划支持复制到辅助云和复制到 Azure。 恢复计划还有助于实现恢复的**一致准确性**、**可重复性**和**自动化**。 如果从 VM 故障转移到 Azure，与 Azure 自动化集成可以扩展恢复计划。 可用于执行 Runbook，从而提供功能强大的自动化任务。
@@ -30,7 +30,7 @@ ms.locfileid: "67861702"
 <!-- Not Available on [download sample scripts](../automation/automation-runbook-gallery.md)-->
 <!-- Redirect https://azure.microsoft.com/documentation/scripts/ TO ../automation/automation-runbook-gallery.md -->
 
-本文介绍如何将 Azure 自动化 Runbook 集成到恢复计划中。 我们使用示例，自动执行以前需要手动干预的基本任务。 本文还将介绍如何将多步骤恢复过程转换为一键式恢复操作。
+本文介绍如何将 Azure 自动化 Runbook 集成到恢复计划中。 我们使用示例，自动执行以前需要手动干预的基本任务。 本文还介绍如何将多步骤恢复过程转换为一键式恢复操作。
 
 ## <a name="customize-the-recovery-plan"></a>自定义恢复计划
 1. 转到“Site Recovery”  恢复计划资源边栏选项卡。 对于此示例，恢复计划包含两个要恢复的 VM。 若要开始添加 Runbook，请单击“自定义”  选项卡。

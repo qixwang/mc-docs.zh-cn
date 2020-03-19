@@ -1,5 +1,5 @@
 ---
-title: 托管实例 - 时间点还原
+title: 托管实例 - 时间点还原 (PITR)
 description: 将托管实例中的 SQL 数据库还原到以前的某个时间点。
 services: sql-database
 ms.service: sql-database
@@ -11,13 +11,13 @@ author: WenJason
 ms.author: v-jay
 ms.reviewer: sstein, carlrab, mathoma
 origin.date: 08/25/2019
-ms.date: 02/17/2020
-ms.openlocfilehash: 5ccf803b41abe50cbaaf90abbdb1cad4d243ed13
-ms.sourcegitcommit: d7b86a424b72849fe8ed32893dd05e4696e4fe85
+ms.date: 03/16/2020
+ms.openlocfilehash: d995556410ea16dc5298f58bf72639be3be65a53
+ms.sourcegitcommit: dc862610e2169c1fce6fb0ae9eb7dd7567f86a0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77155704"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293663"
 ---
 # <a name="restore-a-sql-database-in-a-managed-instance-to-a-previous-point-in-time"></a>将托管实例中的 SQL 数据库还原到以前的某个时间点
 
@@ -25,22 +25,18 @@ ms.locfileid: "77155704"
 
 可以在恢复方案中使用时间点还原，例如，解决错误导致的事件、错误加载了数据或删除了重要数据等问题。 还可以使用时间点还原进行测试或审核。 备份文件将根据数据库设置保留 7 到 35 天。
 
-时间点还原可以：
+时间点还原可以通过以下方式还原数据库：
 
-- 从现有数据库还原某个数据库。
-- 从已删除的数据库还原某个数据库。
-
-对于托管实例，时间点还原还可以：
-
-- 将数据库还原到同一个托管实例。
-- 将数据库还原到另一个托管实例
-
-> [!NOTE]
-> 无法对整个托管实例执行时间点还原。 本文仅介绍可行的操作：对托管实例上托管的数据库执行时间点还原。
+- 从现有数据库还原。
+- 从已删除的数据库还原。
+- 还原到相同的托管实例或另一个托管实例。 
 
 ## <a name="limitations"></a>限制
 
-从一个托管实例还原到另一个托管实例时，这两个实例必须位于同一个订阅和区域中。 目前不支持跨区域和跨订阅的还原。
+从时间点还原到托管实例具有以下限制：
+
+- 从一个托管实例还原到另一个托管实例时，这两个实例必须位于同一个订阅和区域中。 目前不支持跨区域和跨订阅的还原。
+- 无法对整个托管实例执行时间点还原。 本文仅介绍可行的操作：对托管实例上托管的数据库执行时间点还原。
 
 > [!WARNING]
 > 请注意托管实例的存储大小。 根据要还原数据的大小，可能会耗尽实例存储。 如果没有足够的空间用于存储还原的数据，请使用其他方法。
@@ -49,13 +45,13 @@ ms.locfileid: "77155704"
 
 |           |将现有的数据库还原到同一个托管实例| 将现有的数据库还原到另一个托管实例|将已删除的数据库还原到同一个托管实例|将已删除的数据库还原到另一个托管实例|
 |:----------|:----------|:----------|:----------|:----------|
-|**Azure 门户**| 是|否 |否|否|
+|**Azure 门户**| 是|否 |是|否|
 |**Azure CLI**|是 |是 |否|否|
 |**PowerShell**| 是|是 |是|是|
 
 ## <a name="restore-an-existing-database"></a>还原现有数据库
 
-使用 Azure 门户、Powershell 或 Azure CLI 将现有数据库还原到同一个实例。 若要将数据库还原到另一个实例，请使用 PowerShell 或 Azure CLI，以便可以指定目标托管实例和资源组的属性。 如果不指定这些参数，数据库默认将还原到现有实例。 目前不支持通过 Azure 门户还原到另一个实例。
+使用 Azure 门户、PowerShell 或 Azure CLI 将现有数据库还原到同一个实例。 若要将数据库还原到另一个实例，请使用 PowerShell 或 Azure CLI，以便可以指定目标托管实例和资源组的属性。 如果不指定这些参数，数据库默认将还原到现有实例。 目前不支持通过 Azure 门户还原到另一个实例。
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
@@ -93,7 +89,7 @@ Restore-AzSqlInstanceDatabase -FromPointInTimeBackup `
                               -TargetInstanceDatabaseName $targetDatabase `
 ```
 
-若要将数据库还原到另一个托管实例，另请指定目标资源组和托管实例的名称：  
+若要将数据库还原到另一个托管实例，另请指定目标资源组和目标托管实例的名称：  
 
 ```powershell
 $targetResourceGroupName = "<Resource group of target managed instance>"
@@ -137,9 +133,18 @@ az sql midb restore -g mygroupname --mi myinstancename -n mymanageddbname |
 
 ## <a name="restore-a-deleted-database"></a>还原已删除的数据库
 
-可以使用 PowerShell 或 Azure 门户还原已删除的数据库。请使用此文档通过 [Azure 门户](/sql-database/sql-database-recovery-using-backups#managed-instance-database-1)完成此操作。 可将数据库还原到同一个实例或另一个实例。
+可以使用 PowerShell 或 Azure 门户还原已删除的数据库。 若要将已删除的数据库还原到同一个实例，请使用 Azure 门户或 PowerShell。 若要将已删除的数据库还原到另一个实例，请使用 PowerShell。 
 
-若要使用 PowerShell 还原已删除的数据库，请在以下命令中指定参数值。 然后运行该命令：
+### <a name="portal"></a>门户 
+
+
+若要使用 Azure 门户恢复托管数据库，请打开托管实例概览页，然后选择“删除的数据库”。  选择要还原的已删除数据库，然后键入要使用从备份还原的数据创建的新数据库的名称。
+
+  ![还原已删除的 Azure SQL 实例数据库的屏幕截图](./media/sql-database-recovery-using-backups/restore-deleted-sql-managed-instance-annotated.png)
+
+### <a name="powershell"></a>PowerShell
+
+若要将数据库还原到同一个实例，请更新参数值，然后运行以下 PowerShell 命令： 
 
 ```powershell
 $subscriptionId = "<Subscription ID>"
@@ -149,30 +154,33 @@ Select-AzSubscription -SubscriptionId $subscriptionId
 $resourceGroupName = "<Resource group name>"
 $managedInstanceName = "<Managed instance name>"
 $deletedDatabaseName = "<Source database name>"
+$targetDatabaseName = "<target database name>"
 
-$deleted_db = Get-AzSqlDeletedInstanceDatabaseBackup -ResourceGroupName $resourceGroupName `
-            -InstanceName $managedInstanceName -DatabaseName $deletedDatabaseName 
+$deletedDatabase = Get-AzSqlDeletedInstanceDatabaseBackup -ResourceGroupName $resourceGroupName `
+-InstanceName $managedInstanceName -DatabaseName $deletedDatabaseName
 
-$pointInTime = "2018-06-27T08:51:39.3882806Z"
-$properties = New-Object System.Object
-$properties | Add-Member -type NoteProperty -name CreateMode -Value "PointInTimeRestore"
-$properties | Add-Member -type NoteProperty -name RestorePointInTime -Value $pointInTime
-$properties | Add-Member -type NoteProperty -name RestorableDroppedDatabaseId -Value $deleted_db.Id
+Restore-AzSqlinstanceDatabase -Name $deletedDatabase.Name `
+   -InstanceName $deletedDatabase.ManagedInstanceName `
+   -ResourceGroupName $deletedDatabase.ResourceGroupName `
+   -DeletionDate $deletedDatabase.DeletionDate `
+   -PointInTime UTCDateTime `
+   -TargetInstanceDatabaseName $targetDatabaseName
 ```
 
-若要将已删除的数据库还原到另一个实例，请更改资源组和托管实例的名称。 此外，请确保位置参数应与资源组和托管实例的位置匹配。
+若要将数据库还原到另一个托管实例，另请指定目标资源组和目标托管实例的名称：
 
-```powershell
-$resourceGroupName = "<Second resource group name>"
-$managedInstanceName = "<Second managed instance name>"
+```powershell-interactive
+$targetResourceGroupName = "<Resource group of target managed instance>"
+$targetInstanceName = "<Target managed instance name>"
 
-$location = "China East 2"
-
-$restoredDBName = "WorldWideImportersPITR"
-$resource_id = "subscriptions/$subscriptionId/resourceGroups/$resourceGroupName/providers/Microsoft.Sql/managedInstances/$managedInstanceName/databases/$restoredDBName"
-
-New-AzResource -Location $location -Properties $properties `
-        -ResourceId $resource_id -ApiVersion "2017-03-01-preview" -Force
+Restore-AzSqlinstanceDatabase -Name $deletedDatabase.Name `
+   -InstanceName $deletedDatabase.ManagedInstanceName `
+   -ResourceGroupName $deletedDatabase.ResourceGroupName `
+   -DeletionDate $deletedDatabase.DeletionDate `
+   -PointInTime UTCDateTime `
+   -TargetInstanceDatabaseName $targetDatabaseName `
+   -TargetResourceGroupName $targetResourceGroupName `
+   -TargetInstanceName $targetInstanceName 
 ```
 
 ## <a name="overwrite-an-existing-database"></a>覆盖现有数据库

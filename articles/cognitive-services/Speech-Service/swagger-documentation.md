@@ -9,18 +9,18 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: reference
 origin.date: 07/05/2019
-ms.date: 01/27/2020
+ms.date: 03/23/2020
 ms.author: v-tawe
-ms.openlocfilehash: 30143a6e260285c995780bd60c25f30ca429d8b0
-ms.sourcegitcommit: 94e1c9621b8f81a7078f1412b3a73281d0a8668b
+ms.openlocfilehash: 8117def46769786f81e442f61794199144a66488
+ms.sourcegitcommit: e94ed1c9eff4e88be2ca389909e60b14cc0d92f8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76123342"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79084434"
 ---
 # <a name="swagger-documentation"></a>Swagger 文档
 
-语音服务提供了一个 Swagger 规范，用于与少量 REST API 交互，这些 REST API 用于导入数据、创建模型、测试模型准确性、创建自定义终结点、排列批量听录以及管理订阅。 可使用这些 API 以编程方式完成通过自定义语音门户提供的大部分操作。
+语音服务提供了一个 Swagger 规范，用于与少量 REST API 交互，这些 REST API 用于导入数据、创建模型、测试模型准确性、创建自定义终结点、排列批量听录以及管理订阅。 可使用这些 API 以编程方式完成通过自定义语音识别门户提供的大部分操作。
 
 > [!NOTE]
 > 支持将语音转文本和文本转语音操作作为 REST API，而后者记录在 Swagger 规范中。
@@ -29,7 +29,7 @@ ms.locfileid: "76123342"
 
 [Swagger 规范](https://chinaeast2.cris.azure.cn/swagger/ui/index)包含可快速测试各种路径的选项。 但有时需要为所有路径生成代码，从而创建可基于未来的解决方案的单个调用库。 让我们看看生成 Python 库的过程。
 
-你需要将 Swagger 设置为与语音服务订阅相同的区域。 可在 Azure 门户中的语音服务资源下确认区域。 有关受支持的区域的完整列表，请参阅[区域](regions.md)。
+你需要将 Swagger 设置为与语音服务订阅相同的区域。 可在 Azure 门户中的语音服务资源下确认区域。 有关受支持区域的完整列表，请参阅[区域](regions.md)。
 
 1. 转到 https://editor.swagger.io
 2. 单击“文件”，然后单击“导入”  

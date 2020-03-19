@@ -1,35 +1,32 @@
 ---
-title: 对 Azure 虚拟机规模集使用自定义横向缩减策略 | Microsoft Docs
+title: 对 Azure 虚拟机规模集使用自定义横向缩减策略
 description: 了解如何对使用自动缩放配置管理实例计数的 Azure 虚拟机规模集使用自定义横向缩减策略
 services: virtual-machine-scale-sets
-author: avverma
+author: avirishuv
 manager: vashan
 tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm
-ms.topic: article
-origin.date: 10/11/2019
-ms.date: 10/29/2019
+ms.topic: conceptual
+ms.date: 03/10/2020
 ms.author: v-junlch
-ms.openlocfilehash: 1647e261da0a6e8ebee7a98f25e037c94981bef0
-ms.sourcegitcommit: cb2caa72ec0e0922a57f2fa1056c25e32c61b570
+ms.openlocfilehash: 00f0c3affabc488d3482e07ec536be39ceeb1b5a
+ms.sourcegitcommit: 4ba6d7c8bed5398f37eb37cf5e2acafcdcc28791
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73142191"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79133871"
 ---
-# <a name="preview-use-custom-scale-in-policies-with-azure-virtual-machine-scale-sets"></a>预览版：对 Azure 虚拟机规模集使用自定义横向缩减策略
+# <a name="use-custom-scale-in-policies-with-azure-virtual-machine-scale-sets"></a>对 Azure 虚拟机规模集使用自定义横向缩减策略
 
 可根据一系列指标（包括平台指标和用户定义的自定义指标）横向扩展或缩减虚拟机规模集部署。 在规模集工作负荷的演变过程中，横向扩展可根据规模集模型创建新的虚拟机，而横向缩减会影响正在运行的采用不同配置和/或功能的虚拟机。 
 
-横向缩减策略功能可让用户配置虚拟机的横向缩减顺序。 预览版中引入了三种横向缩减配置： 
+横向缩减策略功能提供三项横向缩减配置，可让用户配置虚拟机的横向缩减顺序： 
 
 1. 默认
 2. NewestVM
 3. OldestVM
-
-此预览版功能不附带服务级别协议，不建议将其用于生产工作负荷。
 
 ### <a name="default-scale-in-policy"></a>Default 横向缩减策略
 
@@ -57,6 +54,17 @@ ms.locfileid: "73142191"
 
 可通过以下方式在虚拟机规模集模型上定义横向缩减策略：
 
+### <a name="azure-portal"></a>Azure 门户
+ 
+以下步骤定义了创建新规模集时的横向缩减策略。 
+ 
+1.  转到“虚拟机规模集”。
+1. 选择“+ 添加”，创建新的规模集  。
+1. 转到“缩放”选项卡。  
+1. 找到“横向缩减策略”部分。 
+1. 从下拉列表中选择横向缩减策略。
+1. 创建完新的规模集后，选择“查看 + 创建”按钮  。
+
 ### <a name="using-api"></a>使用 API
 
 使用 API 2019-03-01 对虚拟机规模集执行 PUT：
@@ -73,6 +81,33 @@ https://management.chinacloudapi.cn/subscriptions/<sub-id>/resourceGroups/<myRG>
         } 
     }    
 } 
+```
+### <a name="azure-powershell"></a>Azure PowerShell
+
+创建一个资源组，然后创建一个新的规模集，并将横向缩减策略设置为 *OldestVM*。
+
+```azurepowershell
+New-AzResourceGroup -ResourceGroupName "myResourceGroup" -Location "<VMSS location>"
+New-AzVmss `
+  -ResourceGroupName "myResourceGroup" `
+  -Location "<VMSS location>" `
+  -VMScaleSetName "myScaleSet" `
+  -ScaleInPolicy “OldestVM”
+```
+
+### <a name="azure-cli-20"></a>Azure CLI 2.0
+
+以下示例添加了创建新规模集时的横向缩减策略。 首先创建一个资源组，然后创建一个新的规模集，将横向缩减策略设置为 *OldestVM*。 
+
+```azurecli
+az group create --name <myResourceGroup> --location <VMSSLocation>
+az vmss create `
+  --resource-group <myResourceGroup> `
+  --name <myVMScaleSet> `
+  --image UbuntuLTS `
+  --admin-username <azureuser> `
+  --generate-ssh-keys `
+  --scale-in-policy OldestVM
 ```
 
 ### <a name="using-template"></a>使用模板
@@ -97,6 +132,15 @@ https://management.chinacloudapi.cn/subscriptions/<sub-id>/resourceGroups/<myRG>
 
 修改横向缩减策略的过程与应用横向缩减策略的过程相同。 例如，如果在上述示例中你要将策略从“OldestVM”更改为“NewestVM”，可执行以下操作：
 
+### <a name="azure-portal"></a>Azure 门户
+
+可以通过 Azure 门户修改现有规模集的横向缩减策略。 
+ 
+1. 在现有的虚拟机规模集中，从左侧菜单中选择“缩放”  。
+1. 选择“横向缩减策略”  选项卡。
+1. 从下拉列表中选择横向缩减策略。
+1. 完成后，选择“保存”  。 
+
 ### <a name="using-api"></a>使用 API
 
 使用 API 2019-03-01 对虚拟机规模集执行 PUT：
@@ -113,6 +157,27 @@ https://management.chinacloudapi.cn/subscriptions/<sub-id>/resourceGroups/<myRG>
         } 
     }    
 }
+```
+### <a name="azure-powershell"></a>Azure PowerShell
+
+更新现有规模集的横向缩减策略：
+
+```azurepowershell
+Update-AzVmss `
+ -ResourceGroupName "myResourceGroup" `
+ -VMScaleSetName "myScaleSet" `
+ -ScaleInPolicy “OldestVM”
+```
+
+### <a name="azure-cli-20"></a>Azure CLI 2.0
+
+下面是一个示例，演示了如何更新现有规模集的横向缩减策略： 
+
+```azurecli
+az vmss update `
+  --resource-group <myResourceGroup> `
+  --name <myVMScaleSet> `
+  --scale-in-policy OldestVM
 ```
 
 ### <a name="using-template"></a>使用模板
@@ -172,7 +237,7 @@ https://management.chinacloudapi.cn/subscriptions/<sub-id>/resourceGroups/<myRG>
 
 ## <a name="troubleshoot"></a>故障排除
 
-1. 启用横向缩减策略失败。如果收到“错误的请求”错误并出现错误消息“在 'properties' 类型的对象中找不到成员 'scaleInPolicy'”，请检查虚拟机规模集使用的 API 版本。 此预览版需要 API 版本 2019-03-01 或更高版本。
+1. 启用横向缩减策略失败。如果收到“错误的请求”错误并出现错误消息“在 'properties' 类型的对象中找不到成员 'scaleInPolicy'”，请检查虚拟机规模集使用的 API 版本。 此功能需要 API 版本 2019-03-01 或更高版本。
 
 2. 错误地选择了要横向缩减的 VM。请参阅上述示例。 如果虚拟机规模集是区域性部署，则会先对不均衡的区域应用横向缩减策略，并在区域均衡后，对整个规模集应用该策略。 如果横向缩减的顺序与上述示例不一致，请咨询虚拟机规模集团队进行故障排除。
 

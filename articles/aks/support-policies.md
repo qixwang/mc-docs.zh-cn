@@ -3,17 +3,16 @@ title: Azure Kubernetes 服务 (AKS) 的支持策略
 description: 了解 Azure Kubernetes 服务 (AKS) 预览版（或者 alpha 或 beta 版）中的支持策略、共担责任和功能。
 services: container-service
 author: rockboyfor
-ms.service: container-service
 ms.topic: article
-origin.date: 04/01/2019
-ms.date: 01/13/2020
+origin.date: 01/24/2020
+ms.date: 03/09/2020
 ms.author: v-yeche
-ms.openlocfilehash: c148dea6ed85ed242aa6f9160f9decbf9f8d23c5
-ms.sourcegitcommit: c5af330f13889a18bb8a5b44e6566a3df4aeea49
+ms.openlocfilehash: cfbac7ae221cd57e34cb8c40182c537d782364fa
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75859846"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79290690"
 ---
 # <a name="support-policies-for-azure-kubernetes-service"></a>Azure Kubernetes 服务的支持策略
 
@@ -47,6 +46,8 @@ AKS 不是完全托管型的群集解决方案。 某些组件（例如工作器
 > [!NOTE]
 > AKS 工作器节点作为常规的 Azure IaaS 资源显示在 Azure 门户中。 但是，这些虚拟机将部署到自定义的 Azure 资源组（带有 MC\\* 前缀）。 无法更改 AKS 工作器节点。 例如，可以使用安全外壳 (SSH) 更改 AKS 工作器节点，如同更改普通虚拟机一样（但是，无法更改基本的 OS 映像，并且更新或重新启动后，更改不会持久保留），并可以将其他 Azure 资源附加到 AKS 工作器节点。 但是，如果更改带外管理和自定义项，AKS 群集可能变得不受支持。  除非 Azure 支持人员指示你进行更改，否则请避免更改工作器节点。
 
+发出上面定义的不受支持的操作（如所有代理节点的带外解除分配）会导致群集不受支持。 对于已配置了“停止支持”规则以将支持期限延长至等于或超过 30 天的控制平面，AKS 保留了将其存档的权利。 AKS 维护群集 etcd 元数据的备份，并可轻松地重新分配群集。 此重新分配可由使群集重新受支持的任何 PUT 操作（例如升级或扩展到活动代理节点）来启动。
+
 ## <a name="shared-responsibility"></a>共担责任
 
 创建群集时，客户需定义 AKS 创建的 Kubernetes 工作器节点。 客户工作负荷将在这些节点上执行。 客户拥有并可以查看或修改工作器节点。
@@ -66,7 +67,7 @@ Azure 提供以下方面的技术支持：
 * 有关控制平面组件（例如 Kubernetes API 服务器、etcd 和 kube-dns）等控制平面组件的自定义问题。
 * 有关网络组件（例如 Azure CNI、kubenet）的问题，或其他网络访问和功能问题。 问题可能包括 DNS 解析、数据包丢失、路由等。 Azure 支持各种网络方案：
     * 群集和关联组件中的 Kubenet（基本）和高级网络 (Azure CNI)
-    * 连接到其他 Azure 服务和应用程序 
+    * 连接到其他 Azure 服务和应用程序
     * 入口控制器以及入口或负载均衡器配置
     * 网络性能和延迟
 

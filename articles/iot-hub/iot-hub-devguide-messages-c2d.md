@@ -10,13 +10,13 @@ ms.tgt_pltfrm: na
 ms.workload: na
 origin.date: 03/15/2018
 ms.author: v-yiso
-ms.date: 09/02/2019
-ms.openlocfilehash: 8542b4a2c960169a08e7cc3bfa280fd5e78c7c49
-ms.sourcegitcommit: 599d651afb83026938d1cfe828e9679a9a0fb69f
+ms.date: 03/23/2020
+ms.openlocfilehash: c92393fc2790cd4506cdaff871c719bf06a6c5b2
+ms.sourcegitcommit: 32997a7d7585deaeb0ab7b8f928d397b18b343fa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69993052"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79295928"
 ---
 # <a name="send-cloud-to-device-messages-from-an-iot-hub"></a>从 IoT 中心发送云到设备的消息
 
@@ -139,9 +139,33 @@ IoT 中心服务向设备发送消息时，该服务会将消息状态设置为�
 | defaultTtlAsIso8601       | 云到设备消息的默认 TTL | ISO_8601 间隔，最大为 2 天（最小为 1 分钟）；默认值：1 小时 |
 | maxDeliveryCount          | 每个设备队列的云到设备最大传送计数 | 1 到 100；默认值：10 个 |
 | feedback.ttlAsIso8601     | 服务绑定反馈消息的保留时间 | ISO_8601 间隔，最大为 2 天（最小为 1 分钟）；默认值：1 小时 |
-| feedback.maxDeliveryCount | 反馈队列的最大传送计数 | 1 到 100；默认值：100 |
+| feedback.maxDeliveryCount | 反馈队列的最大传送计数 | 1 到 100；默认值：10 个 |
+| feedback.lockDurationAsIso8601 | 反馈队列的最大传送计数 | ISO_8601 间隔（5 到 300 秒，最小值 5 秒）；默认值：60 秒。 |
 
-有关如何设置这些配置选项的详细信息，请参阅[创建 IoT 中心][lnk-portal]。
+可以通过以下方式之一来设置配置选项：
+
+* **Azure 门户**：在 IoT 中心的“设置”  下，选择“内置终结点”  ，然后展开“云到设备消息”  。 （Azure 门户当前不支持设置 **feedback.maxDeliveryCount** 和 **feedback.lockDurationAsIso8601** 属性。）
+
+    ![在门户中为云到设备消息设置配置选项](./media/iot-hub-devguide-messages-c2d/c2d-configuration-portal.png)
+
+* **Azure CLI**：使用 [az iot hub update](/cli/iot/hub?view=azure-cli-latest#az-iot-hub-update) 命令：
+
+    ```azurecli
+    az iot hub update --name {your IoT hub name} \
+        --set properties.cloudToDevice.defaultTtlAsIso8601=PT1H0M0S
+
+    az iot hub update --name {your IoT hub name} \
+        --set properties.cloudToDevice.maxDeliveryCount=10
+
+    az iot hub update --name {your IoT hub name} \
+        --set properties.cloudToDevice.feedback.ttlAsIso8601=PT1H0M0S
+
+    az iot hub update --name {your IoT hub name} \
+        --set properties.cloudToDevice.feedback.maxDeliveryCount=10
+
+    az iot hub update --name {your IoT hub name} \
+        --set properties.cloudToDevice.feedback.lockDurationAsIso8601=PT0H1M0S
+    ```
 
 ## <a name="next-steps"></a>后续步骤
 

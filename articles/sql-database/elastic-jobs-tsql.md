@@ -10,14 +10,14 @@ ms.topic: conceptual
 ms.author: v-jay
 author: WenJason
 ms.reviewer: sstein
-origin.date: 01/25/2019
-ms.date: 02/17/2020
-ms.openlocfilehash: e0d6dbad6db7ef9e9db6cc12a9c1a648c64ff4ac
-ms.sourcegitcommit: d7b86a424b72849fe8ed32893dd05e4696e4fe85
+origin.date: 02/07/2020
+ms.date: 03/16/2020
+ms.openlocfilehash: a8487da8fb69531ebaaeda9f5ff007bf08a75c9d
+ms.sourcegitcommit: dc862610e2169c1fce6fb0ae9eb7dd7567f86a0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77155711"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293835"
 ---
 # <a name="use-transact-sql-t-sql-to-create-and-manage-elastic-database-jobs"></a>使用 Transact-SQL (T-SQL) 创建和管理弹性数据库作业
 
@@ -190,10 +190,13 @@ CREATE TABLE [dbo].[Test]([TestId] [int] NOT NULL);',
 
 以下示例创建一个新作业，以便从多个数据库收集性能数据。
 
-默认情况下，作业代理将查找创建表以存储返回的结果。 因此，与用于输出凭据的凭据相关联的登录将需要具有足够的权限来执行此操作。 如果要提前手动创建表，则需要具有以下属性：
+默认情况下，作业代理将创建输出表以存储返回的结果。 因此，与输出凭据关联的数据库主体至少必须具有以下权限：数据库上的 `CREATE TABLE`、输出表或其架构上的 `ALTER`、`SELECT`、`INSERT`、`DELETE`，以及 [sys.indexes](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-indexes-transact-sql) 目录视图上的 `SELECT`。
+
+如果要提前手动创建表，则需要具有以下属性：
 1. 具有结果集的正确名称和数据类型的列。
 2. 数据类型为 uniqueidentifier 的 internal_execution_id 的其他列。
 3. internal_execution_id 列上名为 `IX_<TableName>_Internal_Execution_ID` 的非聚集索引。
+4. 上面列出的所有权限（数据库的 `CREATE TABLE` 权限除外）。
 
 连接到[  作业数据库](sql-database-job-automation-overview.md#job-database)，然后运行以下命令：
 

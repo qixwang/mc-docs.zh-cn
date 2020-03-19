@@ -13,16 +13,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/25/2020
+ms.date: 03/10/2020
 ms.author: v-junlch
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 11f0c8f6e5ad67161d06307f6d57e083c7d2b53a
-ms.sourcegitcommit: fbc7584f403417d3af7bd6bbbaed7c13a78c57b9
+ms.openlocfilehash: dfc96d38bef4bbfb75328d028e245eacd6c1dcd4
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78411441"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291030"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-authorization-code-flow"></a>Microsoft 标识平台和 OAuth 2.0 授权代码流
 
@@ -142,7 +142,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 &code=OAAABAAAAiL9Kn2Z27UubvWFPbm0gLWQJVzCTE9UkP3pSx1aXxUjq3n8b2JRLk4OxVXr...
 &redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F
 &grant_type=authorization_code
-&client_secret=JqQX2PNo9bpM0uEihUPzyrh    // NOTE: Only required for web apps
+&client_secret=JqQX2PNo9bpM0uEihUPzyrh    // NOTE: Only required for web apps. This secret needs to be URL-Encoded.
 ```
 
 > [!TIP]
@@ -156,7 +156,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | `scope`      | 必填   | 范围的空格分隔列表。 在此阶段请求的范围必须相当于或为第一个阶段中所请求的范围子集。 范围必须全部来自单个资源，以及 OIDC范围（`profile`、`openid`、`email`）。 有关范围更加详细的说明，请参阅[权限、许可和范围](v2-permissions-and-consent.md)。 |
 | `code`          | 必填  | 在流的第一个阶段中获取的 authorization_code。 |
 | `redirect_uri`  | 必填  | 用于获取 authorization_code 的相同 redirect_uri 值。 |
-| `client_secret` | 必填（对于 Web 应用） | 在应用注册门户中为应用创建的应用程序机密。 不应在本机应用中使用应用程序机密，因为 client_secrets 不能可靠地存储在设备上。 Web 应用和 Web API 都需要应用程序机密，能够将 client_secret 安全地存储在服务器端。  在发送客户端密码之前必须对其进行 URL 编码。  |
+| `client_secret` | 必填（对于 Web 应用） | 在应用注册门户中为应用创建的应用程序机密。 不应在本机应用中使用应用程序机密，因为 client_secrets 不能可靠地存储在设备上。 Web 应用和 Web API 都需要应用程序机密，能够将 client_secret 安全地存储在服务器端。  在发送客户端密码之前必须对其进行 URL 编码。 有关详细信息，请单击[此处](https://tools.ietf.org/html/rfc3986#page-12)。 |
 | `code_verifier` | 可选  | 即用于获取 authorization_code 的 code_verifier。 如果在授权码授权请求中使用 PKCE，则需要。 有关详细信息，请参阅 [PKCE RFC](https://tools.ietf.org/html/rfc7636)。 |
 
 ### <a name="successful-response"></a>成功的响应
@@ -254,7 +254,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 &scope=https%3A%2F%2Fmicrosoftgraph.chinacloudapi.cn%2Fmail.read
 &refresh_token=OAAABAAAAiL9Kn2Z27UubvWFPbm0gLWQJVzCTE9UkP3pSx1aXxUjq...
 &grant_type=refresh_token
-&client_secret=JqQX2PNo9bpM0uEihUPzyrh      // NOTE: Only required for web apps
+&client_secret=JqQX2PNo9bpM0uEihUPzyrh      // NOTE: Only required for web apps. This secret needs to be URL-Encoded
 ```
 
 > [!TIP]
@@ -268,7 +268,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | `grant_type`    | 必填    | 必须是授权代码流的此阶段的 `refresh_token` 。 |
 | `scope`         | 必填    | 范围的空格分隔列表。 在此阶段请求的范围必须等效于原始 authorization_code 请求阶段中所请求的范围，或者为该范围的子集。 如果这个请求中指定的范围遍及多个资源服务器，Microsoft 标识平台终结点将返回第一个范围内所指定资源的令牌。 有关范围更加详细的说明，请参阅[权限、许可和范围](v2-permissions-and-consent.md)。 |
 | `refresh_token` | 必填    | 在流的第二个阶段获取的 refresh_token。 |
-| `client_secret` | 必填（对于 Web 应用） | 在应用注册门户中为应用创建的应用程序机密。 它不应用于本机应用，因为设备无法可靠地存储 client_secrets。 Web 应用和 Web API 都需要应用程序机密，能够将 client_secret 安全地存储在服务器端。 |
+| `client_secret` | 必填（对于 Web 应用） | 在应用注册门户中为应用创建的应用程序机密。 它不应用于本机应用，因为设备无法可靠地存储 client_secrets。 Web 应用和 Web API 都需要应用程序机密，能够将 client_secret 安全地存储在服务器端。 此机密需要进行 URL 编码，有关详细信息，请单击[此处](https://tools.ietf.org/html/rfc3986#page-12)。 |
 
 #### <a name="successful-response"></a>成功的响应
 

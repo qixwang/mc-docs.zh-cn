@@ -2,17 +2,18 @@
 title: 为 Azure 数据资源管理器群集选择正确的 VM SKU
 description: 本文介绍如何为 Azure 数据资源管理器群集选择最佳 SKU 大小。
 author: avneraa
-ms.author: avnera
+ms.author: v-tawe
 ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 07/14/2019
-ms.openlocfilehash: 423f5e12f9a89058716ccf3a09f3e71f6679f789
-ms.sourcegitcommit: c863b31d8ead7e5023671cf9b58415542d9fec9c
+origin.date: 07/14/2019
+ms.date: 03/23/2020
+ms.openlocfilehash: 98f4d03bce40fe719865bc1badb6407bc810a3e1
+ms.sourcegitcommit: 4ba6d7c8bed5398f37eb37cf5e2acafcdcc28791
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74021004"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79133875"
 ---
 # <a name="select-the-correct-vm-sku-for-your-azure-data-explorer-cluster"></a>为 Azure 数据资源管理器群集选择正确的 VM SKU 
 

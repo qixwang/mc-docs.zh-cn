@@ -7,15 +7,15 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 origin.date: 09/24/2018
-ms.date: 05/01/2019
-ms.openlocfilehash: 7fba53b1fde307793eb170d38e8db06b255eb197
-ms.sourcegitcommit: c863b31d8ead7e5023671cf9b58415542d9fec9c
+ms.date: 03/23/2020
+ms.openlocfilehash: 7ed6ce2e02ec013e9b05637ed6fcbbfdcaf8df78
+ms.sourcegitcommit: 4ba6d7c8bed5398f37eb37cf5e2acafcdcc28791
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74020849"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79133959"
 ---
-# <a name="troubleshoot-failure-to-create-or-delete-a-database-or-table-in-azure-data-explorer"></a>故障排除：无法在 Azure 数据资源管理器中创建或删除数据库或表
+# <a name="troubleshoot-failure-to-create-or-delete-a-database-or-table-in-azure-data-explorer"></a>排除故障：无法在 Azure 数据资源管理器中创建或删除数据库或表
 
 在 Azure 数据资源管理器中，经常会使用数据库和表。 本文针对可能出现的问题提供了疑难解答步骤。
 
@@ -29,11 +29,11 @@ ms.locfileid: "74020849"
 
 ## <a name="deleting-or-renaming-a-database"></a>删除或重命名数据库
 
-请确保具有足够的权限。 若要删除或重命名数据库，你必须是 Azure 订阅的“参与者”  或“所有者”  角色。 如有必要，请与订阅管理员联系，请他们将你添加到相应的角色。
+确保有足够的权限。 若要删除或重命名数据库，你必须是 Azure 订阅的“参与者”  或“所有者”  角色。 如有必要，请与订阅管理员联系，请他们将你添加到相应的角色。
 
 ## <a name="creating-a-table"></a>创建表
 
-1. 请确保具有足够的权限。 若要创建表，你必须是数据库中的“数据库管理员”  或“数据库用户”  角色，或者是 Azure 订阅的“参与者”  或“所有者”  角色。 如有必要，请与订阅或群集管理员联系，以便他们可以将你添加到相应的角色。
+1. 确保有足够的权限。 若要创建表，你必须是数据库中的“数据库管理员”  或“数据库用户”  角色，或者是 Azure 订阅的“参与者”  或“所有者”  角色。 如有必要，请与订阅或群集管理员联系，以便他们可以将你添加到相应的角色。
 
     有关权限的详细信息，请参阅[管理数据库权限](manage-database-permissions.md)。
 
@@ -47,7 +47,7 @@ ms.locfileid: "74020849"
 
 ## <a name="deleting-or-renaming-a-table"></a>删除或重命名表
 
-请确保具有足够的权限。 若要删除或重命名表，你必须是数据库中的“数据库管理员”  或“表管理员”  角色。 如有必要，请与订阅或群集管理员联系，以便他们可以将你添加到相应的角色。
+确保有足够的权限。 若要删除或重命名表，你必须是数据库中的“数据库管理员”  或“表管理员”  角色。 如有必要，请与订阅或群集管理员联系，以便他们可以将你添加到相应的角色。
 
 有关权限的详细信息，请参阅[管理数据库权限](manage-database-permissions.md)。
 

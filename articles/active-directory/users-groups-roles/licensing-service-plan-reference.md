@@ -11,17 +11,17 @@ ms.service: active-directory
 ms.topic: article
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.date: 02/07/2020
+ms.date: 03/11/2020
 ms.author: v-junlch
 ms.reviewer: arjay
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7dfbeda55e7999abd064bf506f40cc2116f1ae7a
-ms.sourcegitcommit: 7c80405a6b48380814b4b414e9f8a5756c007880
+ms.openlocfilehash: 6a817b0e500b94d13d652288aa495b58cb688443
+ms.sourcegitcommit: 4ba6d7c8bed5398f37eb37cf5e2acafcdcc28791
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77067746"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79133895"
 ---
 # <a name="product-names-and-service-plan-identifiers-for-licensing"></a>用于许可的产品名称和服务计划标识符
 
@@ -29,7 +29,7 @@ ms.locfileid: "77067746"
 
 - **产品名称**：在管理门户中使用
 - **字符串 ID**：由 PowerShell v1.0 cmdlet 在对许可证执行操作时使用
-- **GUID**：Azure AD Graph 和 Microsoft Graph 使用的 GUID
+- **GUID**：Microsoft Graph API 使用的 GUID
 - **包含的服务计划**：产品中与字符串 ID 和 GUID 对应的服务计划列表
 - **包含的服务计划（易记名称）** ：产品中与字符串 ID 和 GUID 对应的服务计划列表（易记名称）
 

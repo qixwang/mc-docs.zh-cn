@@ -3,18 +3,17 @@ title: Azure Kubernetes 服务 (AKS) 中的高可用性和灾难恢复
 description: 了解群集操作员的最佳做法，以最大程度实现应用程序的正常运行时间，提供高可用性，并为 Azure Kubernetes 服务 (AKS) 中的灾难恢复情况做好准备。
 services: container-service
 author: rockboyfor
-ms.service: container-service
 ms.topic: conceptual
 origin.date: 11/28/2018
-ms.date: 01/20/2020
+ms.date: 03/09/2020
 ms.author: v-yeche
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 8f8b9d12aefe7bbbf5773a080977a645e465e8af
-ms.sourcegitcommit: 8de025ca11b62e06ba3762b5d15cc577e0c0f15d
+ms.openlocfilehash: 4f5a18fdba929562ea79c6c3180efbb8094cd301
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76165391"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79290716"
 ---
 # <a name="best-practices-for-business-continuity-and-disaster-recovery-in-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS) 中实现业务连续性和灾难恢复的最佳做法
 
@@ -67,9 +66,9 @@ AKS 区域可用性和配对区域是共同考虑的因素。 将 AKS 群集部�
 
 ### <a name="interconnect-regions-with-global-virtual-network-peering"></a>使用虚拟网络对等互连将区域互连
 
-如果群集需要相互通信，则可以通过[虚拟网络对等互连](/virtual-network/virtual-network-peering-overview)来实现两个虚拟网络之间的相互连接。 这项技术将虚拟网络彼此互连，从而在世纪互联的骨干网中甚至在不同地理区域中都提供了高带宽。
+如果群集需要相互通信，则可以通过[虚拟网络对等互连](/virtual-network/virtual-network-peering-overview)来实现两个虚拟网络之间的相互连接。 这项技术将虚拟网络彼此互连，从而在 Azure 的主干网络（甚至在不同地理区域）中提供高带宽。
 
-对等互连虚拟网络（运行 AKS 群集的虚拟网络）的先决条件是在 AKS 群集中使用标准负载均衡器，以便可通过虚拟网络对等互连访问 kubernetes 服务。
+要对等互连运行 AKS 群集的虚拟网络，一个先决条件是在 AKS 群集中使用标准负载均衡器，以便通过虚拟网络对等互连访问 Kubernetes 服务。
 
 ## <a name="enable-geo-replication-for-container-images"></a>为容器映像启用异地复制
 

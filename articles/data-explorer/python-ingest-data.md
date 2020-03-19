@@ -7,27 +7,29 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 origin.date: 06/03/2019
-ms.date: 11/18/2019
-ms.openlocfilehash: b1b21e8d2e657376529047c580be795b1acd883d
-ms.sourcegitcommit: c863b31d8ead7e5023671cf9b58415542d9fec9c
+ms.date: 03/23/2020
+ms.openlocfilehash: d431c7735069d55862152c3039c8cbec3932a6d3
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74020832"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292351"
 ---
 # <a name="ingest-data-using-the-azure-data-explorer-python-library"></a>使用 Azure 数据资源管理器 Python 库引入数据
 
-Azure 数据资源管理器是一项快速且高度可缩放的数据探索服务，适用于日志和遥测数据。 Azure 数据资源管理器为 Python 提供了两个客户端库：[引入库](https://github.com/Azure/azure-kusto-python/tree/master/azure-kusto-ingest)和[数据库](https://github.com/Azure/azure-kusto-python/tree/master/azure-kusto-data)。 可以使用这些库在群集中引入（加载）数据并从代码中查询数据。 本文首先在群集中创建一个表和数据映射。 然后将引入排列到群集并验证结果。
+本文将使用 Azure 数据资源管理器 Python 库引入数据。 Azure 数据资源管理器是一项快速且高度可缩放的数据探索服务，适用于日志和遥测数据。 Azure 数据资源管理器为 Python 提供了两个客户端库：[引入库](https://github.com/Azure/azure-kusto-python/tree/master/azure-kusto-ingest)和[数据库](https://github.com/Azure/azure-kusto-python/tree/master/azure-kusto-data)。 使用这些库，可以从代码将数据引入或加载到群集中并查询数据。
+
+首先，在群集中创建一个表和数据映射。 然后将引入排列到群集并验证结果。
 
 本文同时也以 [Azure Notebook](https://notebooks.azure.com/ManojRaheja/libraries/KustoPythonSamples/html/QueuedIngestSingleBlob.ipynb) 的形式提供。
 
 ## <a name="prerequisites"></a>先决条件
 
-* 如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial)。
+* 具有活动订阅的 Azure 帐户。 [创建试用帐户](https://wd.azure.cn/pricing/1rmb-trial/)。
 
-* [群集和数据库](create-cluster-database-portal.md)
+* [Python 3.4+](https://www.python.org/downloads/)。
 
-* 已在开发计算机上安装了 [Python](https://www.python.org/downloads/)
+* [一个群集和数据库](create-cluster-database-portal.md)。
 
 ## <a name="install-the-data-and-ingest-libraries"></a>安装数据和引入库
 

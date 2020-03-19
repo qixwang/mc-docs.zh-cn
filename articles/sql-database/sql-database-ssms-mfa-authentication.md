@@ -1,33 +1,35 @@
 ---
-title: 对 Azure SQL 数据库和 Azure SQL 数据仓库使用多重 AAD 身份验证 | Microsoft Docs
-description: Azure SQL 数据库和 Azure SQL 数据仓库支持使用 Active Directory 通用身份验证，从 SQL Server Management Studio (SSMS) 进行连接。
+title: 使用多重 AAD 身份验证
+description: Azure SQL 数据库和 Azure Synapse 支持使用 Active Directory 通用身份验证从 SQL Server Management Studio (SSMS) 进行连接。
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
+titleSuffix: Azure SQL Database and Azure Synapse
 ms.custom: seoapril2019
 ms.devlang: ''
 ms.topic: conceptual
 author: WenJason
 ms.author: v-jay
 ms.reviewer: vanto
-origin.date: 10/08/2018
-ms.date: 09/30/2019
-ms.openlocfilehash: 1b6ff82d666646befb7f842f66a6139fdcadc638
-ms.sourcegitcommit: 5c3d7acb4bae02c370f6ba4d9096b68ecdd520dd
+origin.date: 02/06/2020
+ms.date: 03/16/2020
+tags: azure-synapse
+ms.openlocfilehash: f11d48116e5f91eea89a2d67995db52add3e6b8e
+ms.sourcegitcommit: dc862610e2169c1fce6fb0ae9eb7dd7567f86a0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71262912"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293675"
 ---
-# <a name="using-multi-factor-aad-authentication-with-azure-sql-database-and-azure-sql-data-warehouse-ssms-support-for-mfa"></a>对 Azure SQL 数据库和 Azure SQL 数据仓库使用多重 AAD 身份验证（SSMS 支持 MFA）
-Azure SQL 数据库和 Azure SQL 数据仓库支持使用 Active Directory 通用身份验证  ，从 SQL Server Management Studio (SSMS) 进行连接。 本文讨论了各种身份验证选项之间的差异，以及与使用通用身份验证相关的限制。 
+# <a name="using-multi-factor-aad-authentication-with-azure-sql-database-and-azure-synapse-analytics-ssms-support-for-mfa"></a>在 Azure SQL 数据库和 Azure Synapse Analytics 中使用多重 AAD 身份验证（SSMS 支持 MFA）
+Azure SQL 数据库和 Azure Synapse 支持使用 *Active Directory 通用身份验证*从 SQL Server Management Studio (SSMS) 进行连接。 本文讨论了各种身份验证选项之间的差异，以及与使用通用身份验证相关的限制。 
 
 **下载最新 SSMS** - 在客户端计算机上，从[下载 SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/mt238290.aspx) 下载最新版本的 SSMS。 
 
 
 对于本文中讨论的所有功能，请至少使用 2017 年 7 月的版本 17.2。  最新的连接对话框应与下图类似：
  
-  ![1mfa-universal-connect](./media/sql-database-ssms-mfa-auth/1mfa-universal-connect.png "完成“用户名”框。")  
+  ![1mfa-universal-connect](./media/sql-database-ssms-mfa-auth/1mfa-universal-connect.png "填写“用户名”框。")  
 
 ## <a name="the-five-authentication-options"></a>五个身份验证选项  
 
@@ -57,7 +59,7 @@ Azure MFA 可帮助保护对数据和应用程序的访问，同时满足用户�
 
    ![mfa-tenant-ssms](./media/sql-database-ssms-mfa-auth/mfa-no-tenant-ssms.png)
 
-## <a name="universal-authentication-limitations-for-sql-database-and-sql-data-warehouse"></a>SQL 数据库和 SQL 数据仓库的 Active Directory 通用身份验证限制
+## <a name="universal-authentication-limitations-for-sql-database-and-azure-synapse"></a>SQL 数据库和 Azure Synapse 的通用身份验证限制
 - SSMS 和 SqlPackage.exe 是目前唯一通过 Active Directory 通用身份验证针对 MFA 启用的工具。
 - SSMS 版本 17.2 支持使用具有 MFA 的通用身份验证进行多用户并发访问。 版本 17.0 和 17.1 将使用通用身份验证的 SSMS 实例的登录名限制到单个 Azure Active Directory 帐户。 若要以另一个 Azure AD 帐户登录，则必须使用另一个 SSMS 实例。 （此限制仅限于 Active Directory 通用身份验证；如果使用 Active Directory 密码验证、Active Directory 集成身份验证或 SQL Server 身份验证，可以登录到不同的服务器）。
 - 对于对象资源管理器、查询编辑器和查询存储可视化效果，SSMS 支持 Active Directory 通用身份验证。
@@ -72,7 +74,7 @@ Azure MFA 可帮助保护对数据和应用程序的访问，同时满足用户�
 - 有关配置步骤，请参阅[配置 SQL Server Management Studio 的 Azure SQL 数据库多重身份验证](sql-database-ssms-mfa-authentication-configure.md)。
 - 授予其他人对数据库的访问权限：[SQL 数据库身份验证和授权：授予访问权限](sql-database-manage-logins.md)  
 - 确保其他人可以通过防火墙进行连接：[使用 Azure 门户配置 Azure SQL 数据库服务器级防火墙规则](sql-database-configure-firewall-settings.md)  
-- [使用 SQL 数据库或 SQL 数据仓库配置和管理 Azure Active Directory 身份验证](sql-database-aad-authentication-configure.md)  
+- [使用 SQL 数据库或 Azure Synapse 配置和管理 Azure Active Directory 身份验证](sql-database-aad-authentication-configure.md)  
 - [Microsoft SQL Server Data-Tier Application Framework (17.0.0 GA)](https://www.microsoft.com/download/details.aspx?id=55088)  
 - [SQLPackage.exe](https://docs.microsoft.com/sql/tools/sqlpackage)  
 - [将 BACPAC 文件导入到新的 Azure SQL 数据库](../sql-database/sql-database-import.md)  

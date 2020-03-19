@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: reference
-ms.date: 02/26/2020
+ms.date: 03/11/2020
 ms.author: v-junlch
 ms.reviewer: vincesm
 ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2a14536856b4f666d97817917feb2be4abff5633
-ms.sourcegitcommit: fbc7584f403417d3af7bd6bbbaed7c13a78c57b9
+ms.openlocfilehash: 2b3bea822ecc6a052c3b29bd46b2c6b47ed89a67
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78411146"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291637"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory 中的管理员角色权限
 
@@ -29,7 +29,7 @@ ms.locfileid: "78411146"
 
 已分配到全局管理员角色的用户可以读取和修改 Azure AD 组织中的每项管理设置。 默认情况下，系统会将注册 Azure 订阅的人员分配为 Azure AD 组织的全局管理员角色。 只有全局管理员和特权角色管理员可以委托管理员角色。 为了降低业务风险，我们建议仅将此角色分配给组织中尽量少的人员。
 
-作为最佳做法，我们建议将此角色分配给组织中 5 个以下的人员。 如果已将全局管理员角色分配给组织中 5 个以上的用户，可通过以下方法减少该角色的使用。
+建议将此角色分配给组织中五个以下的人员，这是最佳做法。 如果已将“全局管理员”角色分配给组织中五个以上的管理员，可通过以下方法减少该角色的使用。
 
 ### <a name="find-the-role-you-need"></a>找到所需的角色
 
@@ -59,7 +59,7 @@ ms.locfileid: "78411146"
 
 如果应用程序分配给上面未提到的任何其他角色，则应用程序管理员不能管理该应用程序的凭据。 
  
-此角色还可以许可委托的权限和应用程序权限，但对 Microsoft Graph 和 Azure AD Graph 的权限除外。 
+此角色还可以许可委托的权限和应用程序权限，但对 Microsoft Graph API 的权限除外。 
 
 > [!IMPORTANT]
 > 这种例外情况意味着，你仍可以许可对其他应用（例如，第三方应用或已注册的应用）的权限，但不能许可对 Azure AD 本身的权限。  仍可以在应用注册过程中请求这些权限，但授予（即许可）这些权限需要拥有 Azure AD 管理员权限。   这意味着，恶意用户无法轻松提升其权限，例如，通过创建并许可可写入整个目录的应用，然后通过该应用的权限将自己提升为全局管理员。
@@ -125,7 +125,7 @@ ms.locfileid: "78411146"
 
 ### <a name="cloud-application-administrator"></a>[云应用程序管理员](#cloud-application-administrator-permissions)
 
-充当此角色的用户具有与应用程序管理员角色相同的权限，但不包括管理应用程序代理的权限。 此角色授予创建和管理企业应用程序和应用程序注册的所有方面的权限。 此角色还可以同意委派权限，以及除 Microsoft Graph 和 Azure AD Graph 之外的应用程序权限。 在创建新应用程序注册或企业应用程序时，不会将分配到此角色的用户添加为所有者。
+充当此角色的用户具有与应用程序管理员角色相同的权限，但不包括管理应用程序代理的权限。 此角色授予创建和管理企业应用程序和应用程序注册的所有方面的权限。 此角色还可以同意委派权限以及除 Microsoft Graph API 之外的应用程序权限。 在创建新应用程序注册或企业应用程序时，不会将分配到此角色的用户添加为所有者。
 
 云应用程序管理员可以管理用于模拟应用程序的应用程序凭据。 因此，分配了此角色的用户只能管理那些尚未分配给任何 Azure AD 角色或仅分配给以下管理员角色的应用程序的应用程序凭据：
 * 应用程序开发人员
@@ -190,14 +190,14 @@ In | 有权执行的操作
 具有此角色的用户具有 Microsoft Dynamics 365 Online 内的全局权限（如果该服务存在），并且能够管理支持票证和监视服务运行状况。 有关详细信息，请参阅[使用服务管理员角色管理租户](https://docs.microsoft.com/dynamics365/customer-engagement/admin/use-service-admin-role-manage-tenant)。
 
 > [!NOTE]
-> 在 Microsoft 图形 API、Azure AD 图形 API 和 Azure AD PowerShell 中，此角色标识为“Dynamics 365 服务管理员”。 它是 [Azure 门户](https://portal.azure.cn)中的“Dynamics 365 管理员”。
+> 在 Microsoft Graph API 和 Azure AD PowerShell 中，此角色标识为“Dynamics 365 服务管理员”。 它是 [Azure 门户](https://portal.azure.cn)中的“Dynamics 365 管理员”。
 
 ### <a name="exchange-administrator"></a>[Exchange 管理员](#exchange-service-administrator-permissions)
 
 具有此角色的用户具有 Microsoft Exchange Online 内的全局权限（如果该服务存在）。 还能够创建和管理所有 Office 365 组、管理支持票证和监视服务运行状况。 有关详细信息，请参阅 [About Office 365 admin roles](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d)（关于 Office 365 管理员角色）。
 
 > [!NOTE]
-> 在 Microsoft 图形 API、Azure AD 图形 API 和 Azure AD PowerShell 中，此角色标识为“Exchange 服务管理员”。 它是 [Azure 门户](https://portal.azure.cn)中的“Exchange 管理员”。 它是 [Exchange 管理中心](https://go.microsoft.com/fwlink/p/?LinkID=529144)内的“Exchange Online 管理员”。
+> 在 Microsoft Graph API 和 Azure AD PowerShell 中，此角色标识为“Exchange 服务管理员”。 它是 [Azure 门户](https://portal.azure.cn)中的“Exchange 管理员”。 它是 [Exchange 管理中心](https://go.microsoft.com/fwlink/p/?LinkID=529144)内的“Exchange Online 管理员”。
 
 ### <a name="external-identity-provider-administrator"></a>[外部标识提供者管理员](#external-identity-provider-administrator-permissions)
 
@@ -211,7 +211,7 @@ In | 有权执行的操作
 具有此角色的用户有权访问 Azure Active Directory 以及使用 Azure Active Directory 标识的服务（例如 Microsoft 365 安全中心、Microsoft 365 合规中心、Exchange Online、SharePoint Online 和 Skype for Business Online）中的所有管理功能。 注册 Azure Active Directory 租户的人员将成为全局管理员。 公司中可以有多个全局管理员。 全局管理员可以为任何用户和所有其他管理员重置密码。
 
 > [!NOTE]
-> 在 Microsoft 图形 API、Azure AD 图形 API 和 Azure AD PowerShell 中，此角色标识为“公司管理员”。 它是 [Azure 门户](https://portal.azure.cn)中的“全局管理员”。
+> 在 Microsoft Graph API 和 Azure AD PowerShell 中，此角色标识为“公司管理员”。 它是 [Azure 门户](https://portal.azure.cn)中的“全局管理员”。
 >
 >
 
@@ -227,10 +227,9 @@ In | 有权执行的操作
 >- [Azure AD 门户](https://portal.azure.cn/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps/menuId/) - 全局读取者无法读取企业应用的预配模式。
 >- [M365 管理中心](https://admin.microsoft.com/Adminportal/Home#/homepage) - 全局读取者无法读取客户密码箱请求。 在 M365 管理中心左窗格中的“支持”下，看不到“客户密码箱请求”选项卡。  
 >- [M365 安全中心](https://security.microsoft.com/homepage) - 全球读取者无法读取敏感度和保留标签。 在 M365 安全中心的左窗格中看不到“敏感度标签”、“保留标签”和“标签分析”选项卡。   
->- [Office 安全与合规中心](https://sip.protection.office.com/homepage) - 全局读取者不能读取 SCC 审核日志或进行内容搜索。
+>- [Office 安全与合规中心](https://sip.protection.office.com/homepage) - 全局读取者不能读取 SCC 审核日志、进行内容搜索或查看“安全分数”。
 >- [Teams 管理中心](https://admin.teams.microsoft.com) - 全球读取者无法读取“Teams 生命周期”、“分析和报告”、“IP 电话设备管理”和“应用目录”。    
 >- [Privileged Access Management (PAM)](https://docs.microsoft.com/office365/securitycompliance/privileged-access-management-overview) 不支持全局读取者角色。
->- [Azure 信息保护](https://docs.microsoft.com/azure/information-protection/what-is-information-protection) - 仅支持全球读取者执行[中心报告](https://docs.microsoft.com/azure/information-protection/reports-aip)，并且仅当 Azure AD 组织不在[统一标记平台](https://docs.microsoft.com/azure/information-protection/faqs#how-can-i-determine-if-my-tenant-is-on-the-unified-labeling-platform)上时才支持此角色。
 >
 > 这些功能目前正在开发中。
 >
@@ -260,7 +259,7 @@ In | 有权执行的操作
 
 使用[管理单元（现已公开预览）](/active-directory/users-groups-roles/directory-administrative-units)，可以委派对一部分用户的管理权限并将策略应用于一部分用户。
 
-在 [Azure 门户](https://portal.azure.cn/)中，此角色以前称为“密码管理员”。 Azure AD 中的“支持管理员”名称现在与其在 Azure AD PowerShell、Azure AD 图形 API 和 Microsoft Graph API 中的名称匹配。
+在 [Azure 门户](https://portal.azure.cn/)中，此角色以前称为“密码管理员”。 Azure AD 中的“支持管理员”名称现在与其在 Azure AD PowerShell 和 Microsoft Graph API 中的名称匹配。
 
 ### <a name="intune-administrator"></a>[Intune 管理员](#intune-service-administrator-permissions)
 
@@ -269,7 +268,7 @@ In | 有权执行的操作
 此角色可创建和管理所有安全组。 但是，Intune 管理员对 Office 组没有管理员权限。 这意味着管理员无法更新租户中所有 Office 组的所有者或成员身份。 但可以管理他们自己创建的 Office 组，这是其最终用户权限的一部分。 因此，他们创建的任何 Office 组（非安全组）都应根据其 250 的配额进行计数。
 
 > [!NOTE]
-> 在 Microsoft 图形 API、Azure AD 图形 API 和 Azure AD PowerShell 中，此角色标识为“Intune 服务管理员”。 它是 [Azure 门户](https://portal.azure.cn)中的“Intune 管理员”。
+> 在 Microsoft Graph API 和 Azure AD PowerShell 中，此角色标识为“Intune 服务管理员”。 它是 [Azure 门户](https://portal.azure.cn)中的“Intune 管理员”。
 
 ### <a name="kaizala-administrator"></a>[Kaizala 管理员](#kaizala-administrator-permissions)
 
@@ -300,7 +299,7 @@ In | 有权执行的操作
 具有此角色的用户具有 Power BI 内的全局权限（如果该服务存在），并且能够管理支持票证和监视服务运行状况。 有关详细信息，请参阅[了解 Power BI 管理员角色](https://docs.microsoft.com/power-bi/service-admin-role)。
 
 > [!NOTE]
-> 在 Microsoft 图形 API、Azure AD 图形 API 和 Azure AD PowerShell 中，此角色标识为“Power BI 服务管理员”。 它是 [Azure 门户](https://portal.azure.cn)中的“Power BI 管理员”。
+> 在 Microsoft Graph API 和 Azure AD PowerShell 中，此角色标识为“Power BI 服务管理员”。 它是 [Azure 门户](https://portal.azure.cn)中的“Power BI 管理员”。
 
 ### <a name="power-platform-administrator"></a>[Power Platform 管理员](#power-platform-administrator-permissions)
 
@@ -381,21 +380,21 @@ Windows Defender ATP 和 EDR | 查看并调查警报。 在 Windows Defender ATP
 具有此角色的用户可以针对 Azure 和 Office 365 服务提出 Microsoft 支持请求，并可以在 [Azure 门户](https://portal.azure.cn)中查看服务仪表板和消息中心。 有关详细信息，请参阅[关于管理员角色](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d)。
 
 > [!NOTE]
-> 在 Microsoft 图形 API、Azure AD 图形 API 和 Azure AD PowerShell 中，此角色标识为“服务支持管理员”。 此角色是 [Azure 门户](https://portal.azure.cn)中的“服务管理员”。
+> 在 Microsoft Graph API 和 Azure AD PowerShell 中，此角色标识为“服务支持管理员”。 此角色是 [Azure 门户](https://portal.azure.cn)中的“服务管理员”。
 
 ### <a name="sharepoint-administrator"></a>[SharePoint 管理员](#sharepoint-service-administrator-permissions)
 
 具有此角色的用户在 Microsoft SharePoint Online（如果存在此服务）中拥有全局权限，并且能够创建和管理所有 Office 365 组、管理支持票证和监视服务运行状况。 有关详细信息，请参阅[关于管理员角色](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d)。
 
 > [!NOTE]
-> 在 Microsoft 图形 API、Azure AD 图形 API 和 Azure AD PowerShell 中，此角色标识为“SharePoint 服务管理员”。 它是 [Azure 门户](https://portal.azure.cn)中的“SharePoint 管理员”。
+> 在 Microsoft Graph API 和 Azure AD PowerShell 中，此角色标识为“SharePoint 服务管理员”。 它是 [Azure 门户](https://portal.azure.cn)中的“SharePoint 管理员”。
 
 ### <a name="skype-for-business--lync-administrator"></a>[Skype for Business/Lync 管理员](#lync-service-administrator-permissions)
 
 具有此角色的用户具有 Microsoft Skype for Business 中的全局权限，以及管理 Azure Active Directory 中的特定于 Skype 的用户属性。 此外，此角色可授予管理支持票证、监视服务运行状况以及访问 Teams 和 Skype for Business 管理中心的能力。 帐户必须获取 Teams 许可证，否则无法运行 Teams PowerShell cmdlet。 有关详细信息，请参阅[关于 Skype for Business 管理员角色](https://support.office.com/article/about-the-skype-for-business-admin-role-aeb35bda-93fc-49b1-ac2c-c74fbeb737b5)；有关 Teams 许可信息，请参阅 [Skype for Business 和 Microsoft Teams 附加许可](https://docs.microsoft.com/skypeforbusiness/skype-for-business-and-microsoft-teams-add-on-licensing/skype-for-business-and-microsoft-teams-add-on-licensing)
 
 > [!NOTE]
-> 在 Microsoft 图形 API、Azure AD 图形 API 和 Azure AD PowerShell 中，此角色标识为“Lync 服务管理员”。 它是 [Azure 门户](https://portal.azure.cn/)中的“Skype for Business 管理员”。
+> 在 Microsoft Graph API 和 Azure AD PowerShell 中，此角色标识为“Lync 服务管理员”。 它是 [Azure 门户](https://portal.azure.cn/)中的“Skype for Business 管理员”。
 
 ### <a name="teams-communications-administrator"></a>[Teams 通信管理员](#teams-communications-administrator-permissions)
 
@@ -917,7 +916,7 @@ Windows Defender ATP 和 EDR | 查看并调查警报。 在 Windows Defender ATP
 | microsoft.aad.b2c/identityProviders/allTasks | 读取和配置 Azure Active Directory B2C 中的标识提供者。 |
 
 ### <a name="global-reader-permissions"></a>全局读取者权限
-可以读取全局管理员可以读取的所有内容，但不能编辑任何内容。 
+可以读取全局管理员可以读取的所有内容，但不能编辑任何内容。
 
 > [!NOTE]
 > 此角色拥有 Azure Active Directory 外部的其他权限。 有关详细信息，请参阅上面的[角色说明](#global-reader)。
@@ -1503,7 +1502,7 @@ Windows Defender ATP 和 EDR | 查看并调查警报。 在 Windows Defender ATP
 
 ## <a name="role-template-ids"></a>角色模板 ID
 
-角色模板 ID 主要由图形 API 或 PowerShell 用户使用。
+角色模板 ID 主要由 Microsoft Graph API 或 PowerShell 用户使用。
 
 图形 displayName | Azure 门户显示名称 | directoryRoleTemplateId
 ----------------- | ------------------------- | -------------------------

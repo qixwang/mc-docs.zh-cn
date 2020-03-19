@@ -11,13 +11,13 @@ author: WenJason
 ms.author: v-jay
 ms.reviewer: sstein, carlrab
 origin.date: 07/16/2019
-ms.date: 02/17/2020
-ms.openlocfilehash: a424485d1a5c7090942a254212bf885395185bc8
-ms.sourcegitcommit: d7b86a424b72849fe8ed32893dd05e4696e4fe85
+ms.date: 03/16/2020
+ms.openlocfilehash: bf202130dc71e6ac762d2c8787b67d64ec768170
+ms.sourcegitcommit: dc862610e2169c1fce6fb0ae9eb7dd7567f86a0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77155728"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293660"
 ---
 # <a name="sql-database-managed-instance-frequently-asked-questions-faq"></a>SQL 数据库托管实例常见问题解答 (FAQ)
 
@@ -83,21 +83,11 @@ ms.locfileid: "77155728"
 
 如果数据库小于 100 GB，我们建议使用此方法。 如果数据库中的所有表具有主键，则可以使用事务复制。
 
-## <a name="gen-4-vs-gen-5"></a>第 4 代与第 5 代 
-
-**如何在托管实例的第 4 代和第 5 代硬件代系之间进行选择？**
-
-这取决于工作负荷，因为某些硬件代系更适合某些类型的工作负荷。 尽管性能话题比较复杂，很难简述，不过，影响工作负荷性能的硬件代系之间存在以下差异：
-- 与基于 vCore 处理器的第 5 代相比，基于物理处理器的第 4 代提供更好的计算支持。 对于计算密集型工作负荷，第 4 代可能更有优势。
-- 第 5 代支持加速网络，可以提高远程存储的 IO 带宽。 对于常规用途服务层级上的 IO 密集型工作负荷，第 5 代可能更有优势。 与第 4 代相比，第 5 代使用速度更快的 SSD 本地磁盘。 对于业务关键服务层级上的 IO 密集型工作负荷，第 5 代可能更有优势。
-
-强烈建议在将用于生产的实际工作负荷投入使用之前先测试其性能，以确定哪种硬件代系更适合具体的用例。
-
 ## <a name="switch-hardware-generation"></a>切换硬件代系 
 
 **能否在第 4 代和第 5 代托管实例硬件代系之间联机切换？**
 
-如果这两种硬件代系都可以在预配托管实例的区域中使用，则可以在硬件代系之间自动联机切换。 在这种情况下，可以使用介绍如何在硬件代系之间切换的[博客文章中的脚本](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/Change-hardware-generation-on-Managed-Instance/ba-p/699824)。
+如果这两种硬件代系都可以在预配托管实例的区域中使用，则可以在硬件代系之间自动联机切换。 在这种情况下，可以查看[“vCore 模型概述”页](sql-database-service-tiers-vcore.md)，该页说明了如何在硬件代系之间切换。
 
 这是一个长时间运行的操作，因为新托管实例将在后台预配，数据库将在旧实例与新实例之间自动转移，该过程结束时，可以快速故障转移。 
 
@@ -109,8 +99,6 @@ ms.locfileid: "77155728"
 **如何优化托管实例的性能？**
 
 常规用途托管实例使用远程存储，因为数据和日志文件的大小对性能的影响很大。 有关详细信息，请参阅[日志文件大小对常规用途托管实例性能的影响](https://medium.com/azure-sqldb-managed-instance/impact-of-log-file-size-on-general-purpose-managed-instance-performance-21ad170c823e)。
-
-对于 IO 密集型工作负荷，请考虑使用第 5 代硬件，而不要使用适合计算密集型工作负荷的第 4 代硬件。 有关详细信息，请参阅[如何在第 4 代和第 5 代之间做出选择](#gen-4-vs-gen-5)。
 
 如果工作负荷包含大量小型事务，请考虑将连接类型从代理切换为重定向模式。
 

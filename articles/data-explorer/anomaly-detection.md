@@ -1,5 +1,5 @@
 ---
-title: 时序异常情况检测和预测 - Azure 数据资源管理器
+title: 在 Azure 数据资源管理器中进行时序异常情况检测和预测
 description: 了解如何使用 Azure 数据资源管理器分析时序数据以检测和预测异常情况。
 author: orspod
 ms.author: orspodek
@@ -7,13 +7,13 @@ ms.reviewer: adieldar
 ms.service: data-explorer
 ms.topic: conceptual
 origin.date: 04/24/2019
-ms.date: 03/09/2020
-ms.openlocfilehash: f09e9b943dd4320a204c2147f2a8ade1194060c3
-ms.sourcegitcommit: ced17aa58e800b9e4335276a1595b8045836b256
+ms.date: 03/23/2020
+ms.openlocfilehash: 3a5677d21c03fa4bd8fada56940d224ae029fc45
+ms.sourcegitcommit: 4ba6d7c8bed5398f37eb37cf5e2acafcdcc28791
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77590262"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79133980"
 ---
 # <a name="anomaly-detection-and-forecasting-in-azure-data-explorer"></a>在 Azure 数据资源管理器中进行异常情况检测和预测
 

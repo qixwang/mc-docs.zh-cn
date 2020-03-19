@@ -1,19 +1,17 @@
 ---
 title: Azure Application Insights 中的数据保留和存储 | Azure Docs
 description: 保留和隐私政策声明
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: lingliw
 origin.date: 09/29/2019
 ms.date: 11/04/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 52e6b7672782a009ba5c56815b1e9a69888ef4ef
-ms.sourcegitcommit: e9291283ef1dd2ec3cf04e1fe434c8a3479d8b77
+ms.openlocfilehash: 8b7df6ed00afc3b26862bd7bff3edf9eb3b66f6a
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/30/2019
-ms.locfileid: "75545360"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293470"
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Application Insights 中的数据收集、保留和存储
 
@@ -22,7 +20,7 @@ ms.locfileid: "75545360"
 首先，简短的答案是：
 
 * “按原样”运行的标准遥测模块不太可能将敏感数据发送到服务。 遥测考虑到负载、性能和使用指标、异常报告和其他诊断数据。 诊断报告中显示的主要用户数据是 URL；但是，应用在任何情况下都不应该将敏感数据以明文形式放在 URL 中。
-* 可以编写发送其他自定义遥测数据的代码，帮助进行诊断与监视使用情况。 （这种可扩展性是 Application Insights 的突出特性之一）。在编写此代码时，有可能不小心包含个人数据和其他敏感数据。 如果应用程序可处理此类数据，则应对编写的所有代码进行彻底审查。
+* 可以编写发送其他自定义遥测数据的代码，帮助进行诊断与监视使用情况。 （这种可扩展性是 Application Insights 的突出特性之一）。在编写此代码时，有可能不小心包含个人数据和其他敏感数据。 如果应用程序使用此类数据，则应对编写的所有代码进行彻底评审。
 * 开发和测试应用时，可以轻松检查 SDK 发送的内容。 数据会显示在 IDE 和浏览器的调试输出窗口中。 
 * 数据保存在中国的[世纪互联 Azure](https://www.azure.cn) 服务器中。 （但应用可在任何位置运行）。Azure 有[严格的安全过程，并符合各种法规标准](https://www.trustcenter.cn/zh-cn/cloudservices/azure.html)。 只有你和指定的团队可以访问数据。 Azure 工作人员只会在知情的情况下和受限的具体情况下，才对数据拥有受限的访问权限。 将对传输中的静态数据加密。
 *   检查收集的数据，因为这可能包括在某些情况下允许但在其他情况下不允许的数据。  设备名称就是一个很好的例子。 服务器中的设备名称不会对隐私造成影响，而且很有用，但是电话或笔记本电脑中的设备名称可能会对隐私造成影响，而且用处不大。 主要针对目标服务器开发的 SDK 将在默认情况下收集设备名称，该名称可能需要在正常事件和异常中被被覆盖。
@@ -60,7 +58,7 @@ Application Insights SDK 可用于多种应用程序类型：托管在自己的 
 * [异常](../../azure-monitor/app/asp-net-exceptions.md)和崩溃 - **堆栈转储**、`build id`、CPU 类型。 
 * [依赖项](../../azure-monitor/app/asp-net-dependencies.md) - 对外部服务的调用，例如 REST、SQL、AJAX。 URI 或连接字符串、持续时间、成功结果、命令。
 * [可用性测试](../../azure-monitor/app/monitor-web-app-availability.md) - 测试持续时间、步骤、响应。
-* [跟踪日志](../../azure-monitor/app/asp-net-trace-logs.md)和[自定义遥测](../../azure-monitor/app/api-custom-events-metrics.md)  -  **在日志或遥测中编写的任何内容**。
+* [跟踪日志](../../azure-monitor/app/asp-net-trace-logs.md)和[自定义遥测](../../azure-monitor/app/api-custom-events-metrics.md) - **在日志或遥测中编写的任何内容**。
 
 [更多详细信息](#data-sent-by-application-insights)。
 
@@ -119,7 +117,7 @@ Azure 工作人员对数据的访问将受到限制。 我们只有在获得许�
 在数据中心之间移动的所有数据都经过静态加密。
 
 #### <a name="is-the-data-encrypted-in-transit-from-my-application-to-application-insights-servers"></a>从应用程序传输到 Application Insights 服务器的数据是否经过加密？
-是。我们使用 https 将数据从几乎所有 SDK（包括 Web 服务器、设备和 HTTPS 网页）发送到门户。 唯一的例外是从纯 HTTP 网页发送的数据。
+是。我们使用 https 将数据从几乎所有 SDK（包括 Web 服务器、设备和 HTTPS 网页）发送到门户。 
 
 ## <a name="does-the-sdk-create-temporary-local-storage"></a>SDK 是否创建临时本地存储？
 
@@ -224,7 +222,7 @@ openssl s_client -connect bing.com:443 -tls1_2
 [Application Insights 个人数据文章](../../azure-monitor/platform/personal-data-mgmt.md)深入探讨了此问题。
 
 #### <a name="can-my-users-turn-off-application-insights"></a>用户是否可以关闭 Application Insights？
-无法直接关闭。 我们未提供用户可操作的开关来关闭 Application Insights。
+无法直接配合使用。 我们未提供用户可操作的开关来关闭 Application Insights。
 
 但是，可以在应用程序中实现此类功能。 所有 SDK 都包括关闭遥测收集的 API 设置。 
 
@@ -240,7 +238,7 @@ SDK 根据平台的不同而异，可以安装多个组件。 （请参阅 [Appl
 | [将 Application Insights SDK 添加到 Java Web 应用][java] |ServerContext<br/>推断<br/>请求<br/>会话<br/>users |
 | [将 JavaScript SDK 添加到网页][client] |ClientContext <br/>推断<br/>Page<br/>ClientPerf<br/>Ajax |
 | [定义默认属性][apiproperties] |所有标准事件和自定义事件的**属性** |
-| [调用 TrackMetric][api] |数字值<br/>**属性** |
+| [调用 TrackMetric][api] |数值<br/>**属性** |
 | [调用跟踪*][api] |事件名称<br/>**属性** |
 | [调用 TrackException][api] |**异常**<br/>堆栈转储<br/>**属性** |
 | SDK 无法收集数据。 例如： <br/> - 无法访问性能计数器<br/> - 遥测初始值设定项异常 |SDK 诊断 |

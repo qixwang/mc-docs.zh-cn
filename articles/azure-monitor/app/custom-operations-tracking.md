@@ -1,20 +1,18 @@
 ---
-title: 使用 Azure Application Insights .NET SDK 跟踪自定义操作 | Azure Docs
+title: 使用 Azure Application Insights .NET SDK 跟踪自定义操作
 description: 使用 Azure Application Insights .NET SDK 跟踪自定义操作
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: lingliw
 origin.date: 11/26/2019
 ms.date: 12/4/2019
 ms.reviewer: sergkanz
 ms.author: v-lingwu
-ms.openlocfilehash: bde85bffb560160107aa091f638c39a403cd45f4
-ms.sourcegitcommit: 13431cf4d69142ed7feb8d12d967a502bf9ff346
+ms.openlocfilehash: 10715d96f626c975d03f42e0d2939f11c5865f96
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75599757"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293473"
 ---
 # <a name="track-custom-operations-with-application-insights-net-sdk"></a>使用 Application Insights .NET SDK 跟踪自定义操作
 
@@ -269,7 +267,7 @@ public async Task Enqueue(CloudQueue queue, string message)
 若要减少应用程序报告的遥测数或者由于其他原因不想跟踪 `Enqueue` 操作，可直接使用 `Activity` API：
 
 - 创建（并启动）新的 `Activity`，而不是启动 Application Insights 操作。 *无*需在其上分配除操作名称以外的任何属性。
-- 将 `yourActivity.Id` 串行化到消息有效负载，而不是 `operation.Telemetry.Id`。 也可使用 `Activity.Current.Id`。
+- 将 `yourActivity.Id` 串行化到消息有效负载，而不是 `operation.Telemetry.Id`。 还可以使用 `Activity.Current.Id`。
 
 
 #### <a name="dequeue"></a>取消排队

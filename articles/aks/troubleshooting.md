@@ -3,17 +3,16 @@ title: 排查常见的 Azure Kubernetes 服务问题
 description: 了解如何排查和解决在使用 Azure Kubernetes 服务 (AKS) 时遇到的常见问题
 services: container-service
 author: rockboyfor
-ms.service: container-service
 ms.topic: troubleshooting
 origin.date: 12/13/2019
-ms.date: 01/20/2020
+ms.date: 03/09/2020
 ms.author: v-yeche
-ms.openlocfilehash: 0787abc07ef79a9a9b5378379f371c197f1c0c80
-ms.sourcegitcommit: 8de025ca11b62e06ba3762b5d15cc577e0c0f15d
+ms.openlocfilehash: 828b40907c14f4c0a6abe8708154e6e447e1107a
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76165415"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292495"
 ---
 # <a name="aks-troubleshooting"></a>AKS 疑难解答
 
@@ -46,7 +45,7 @@ ms.locfileid: "76165415"
 可能有多种原因导致 Pod 停滞在该模式。 可能通过以下方式查看：
 
 * 使用 `kubectl describe pod <pod-name>` 查看 Pod 本身。
-* 使用 `kubectl log <pod-name>` 查看日志。
+* 使用 `kubectl logs <pod-name>` 查看日志。
 
 有关如何对 Pod 的问题进行故障排除的详细信息，请参阅[调试应用程序](https://kubernetes.io/docs/tasks/debug-application-cluster/debug-application/#debugging-pods)。
 
@@ -123,7 +122,7 @@ Azure 平台和 AKS 都实施了命名限制。 如果资源名称或参数违�
 
 * 群集名称必须为 1-63 个字符。 唯一允许的字符是字母、数字、短划线和下划线。 第一个和最后一个字符必须是字母或数字。
 * AKS *MC_* 资源组名称组合了资源组名称和资源名称。 自动生成的语法 `MC_resourceGroupName_resourceName_AzureRegion` 不能超过 80 个字符。 如果需要，请缩短你的资源组名称或 AKS 群集名称的长度。
-* *dnsPrefix* 的开头和结尾必须是字母数字值。 有效字符包括字母数字值和连字符 (-)。 *dnsPrefix* 不能包含特殊字符，例如句点 (.)。
+* dnsPrefix  必须以字母数字值开头和结尾，并且必须为 1 到 54 个字符。 有效字符包括字母数字值和连字符 (-)。 *dnsPrefix* 不能包含特殊字符，例如句点 (.)。
 
 ## <a name="im-receiving-errors-when-trying-to-create-update-scale-delete-or-upgrade-cluster-that-operation-is-not-allowed-as-another-operation-is-in-progress"></a>我在尝试创建、更新、缩放、删除或升级群集时收到错误，该操作不被允许，因为另一个操作正在进行。
 

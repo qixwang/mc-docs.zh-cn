@@ -7,14 +7,13 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: troubleshooting
 origin.date: 11/19/2019
-ms.date: 02/24/2020
-ms.author: v-yiso
-ms.openlocfilehash: dfecfdc8d74ef95c1343d0d8b311d71ec193e023
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.date: 03/23/2020
+ms.openlocfilehash: fd9aba5a49cce4d63eb89bc801e8a39eb5109214
+ms.sourcegitcommit: 32997a7d7585deaeb0ab7b8f928d397b18b343fa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77428792"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79295990"
 ---
 # <a name="azure-hdinsight-cluster-creation-errors"></a>Azure HDInsight：群集创建错误
 
@@ -173,7 +172,7 @@ HDInsight 服务无法访问作为“创建群集”请求的一部分提供的�
 1. 打开 Azure 门户。
 1. 转到存储帐户。
 1. 查看“访问控制(IAM)”。 
-1. 确保“存储 Blob 数据参与者”或“存储 Blob 数据所有者”角色已经为该订阅的用户分配的托管标识分配了访问权限。
+1. 确保为该用户分配了“存储 Blob 数据参与者”角色或“存储 Blob 数据所有者”角色。
 
 有关详细信息，请参阅[在 Data Lake Storage Gen2 帐户中设置托管标识的权限](hdinsight-hadoop-use-data-lake-storage-gen2.md)。
 

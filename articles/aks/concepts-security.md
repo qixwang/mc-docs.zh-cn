@@ -2,18 +2,16 @@
 title: 概念 - Azure Kubernetes 服务 (AKS) 安全性
 description: 了解 Azure Kubernetes 服务 (AKS) 安全性，包括 master 和节点通信、网络策略和 Kubernetes 机密。
 services: container-service
-author: rockboyfor
-ms.service: container-service
 ms.topic: conceptual
 origin.date: 03/01/2019
-ms.date: 01/13/2020
+ms.date: 03/09/2020
 ms.author: v-yeche
-ms.openlocfilehash: 602fb76cf47515ba000a91c204a8c3e26e6e7775
-ms.sourcegitcommit: a2e13b4f20aa85e5d696fa3233be14e522e76ba6
+ms.openlocfilehash: 54a918c2e3607081ab2f65bf33a11af82b215f1a
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76283260"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79290761"
 ---
 # <a name="security-concepts-for-applications-and-clusters-in-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS) 中应用程序和群集的安全性相关概念
 
@@ -29,11 +27,11 @@ ms.locfileid: "76283260"
 
 ## <a name="master-security"></a>主组件安全
 
-在 AKS 中，Kubernetes 主组件是 Azure 提供的托管服务的一部分。 每个 AKS 群集都有其自己的专用单租户 Kubernetes 主组件，用于提供 API 服务器、计划程序等。此主组件由 Azure 管理和维护。
+在 AKS 中，Kubernetes 主组件是 Azure 提供的托管服务的一部分。 每个 AKS 群集都有其自己的单租户专用 Kubernetes 主组件，用于提供 API 服务器、计划程序等。此主组件由 Azure 管理和维护。
 
 <!--MOONCAKE: Update from Microsoft to Azure-->
 
-默认情况下，Kubernetes API 服务器使用公共 IP 地址，并具有完全限定的域名 (FQDN)。 可使用 Kubernetes 基于角色的访问控制和 Azure Active Directory 控制对 API 服务器的访问。 有关详细信息，请参阅 [Azure AD 与 AKS 集成][aks-aad]。
+默认情况下，Kubernetes API 服务器使用公共 IP 地址和完全限定域名 (FQDN)。 可使用 Kubernetes 基于角色的访问控制和 Azure Active Directory 控制对 API 服务器的访问。 有关详细信息，请参阅 [Azure AD 与 AKS 集成][aks-aad]。
 
 ## <a name="node-security"></a>节点安全性
 
@@ -113,6 +111,6 @@ Kubernetes *机密*用于将敏感数据注入到 pod，例如访问凭据或密
 [cluster-isolation]: operator-best-practices-cluster-isolation.md
 [operator-best-practices-cluster-security]: operator-best-practices-cluster-security.md
 [developer-best-practices-pod-security]: developer-best-practices-pod-security.md
+[nodepool-upgrade]: use-multiple-node-pools.md#upgrade-a-node-pool
 
-<!--Not Available on [nodepool-upgrade]: use-multiple-node-pools.md#upgrade-a-node-pool-->
 <!-- Update_Description: wording update, update link -->

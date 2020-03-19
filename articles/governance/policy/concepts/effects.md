@@ -3,20 +3,25 @@ title: 了解效果的工作原理
 description: Azure Policy 定义具有各种效果，可确定管理和报告合规性的方式。
 ms.author: v-tawe
 origin.date: 11/04/2019
-ms.date: 02/17/2020
+ms.date: 03/23/2020
 ms.topic: conceptual
-ms.openlocfilehash: 2c6f8e9b4f3e09948996754897c244c1921e31af
-ms.sourcegitcommit: 0b07f1d36ac02da055874630d6edc31cb0a15269
+ms.openlocfilehash: 62402aa93701ffd630c3333b0e5475210eb02ee0
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/10/2020
-ms.locfileid: "77112173"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293182"
 ---
 # <a name="understand-azure-policy-effects"></a>了解 Azure Policy 效果
 
 Azure Policy 中的每个策略定义都有单一效果。 该效果确定了在评估匹配的策略规则时发生的情况。 如果这些效果适用于新资源、更新的资源或现有资源，则它们的行为会有所不同。
 
 策略定义目前支持以下效果：
+
+<!--
+- [EnforceOPAConstraint](#enforceopaconstraint) (preview)
+- [EnforceRegoPolicy](#enforceregopolicy) (preview)
+-->
 
 - [Append](#append)
 - [审核](#audit)
@@ -331,7 +336,8 @@ AuditIfNotExists 效果的  “details”属性具有定义要匹配的相关资
 
 ### <a name="deployifnotexists-evaluation"></a>DeployIfNotExists 评估
 
-DeployIfNotExists 在资源提供程序处理资源创建或更新请求并返回成功状态代码后运行。 如果没有相关资源或如果由 **ExistenceCondition** 定义的资源未评估为 true，则会发生模板部署。
+DeployIfNotExists 在资源提供程序处理资源创建或更新请求并返回成功状态代码后大约 15 分钟运行。 如果没有相关资源或如果由 **ExistenceCondition** 定义的资源未评估为 true，则会发生模板部署。
+部署持续时间取决于模板中包含的资源的复杂性。
 
 在评估周期中，具有与资源匹配的 DeployIfNotExists 效果的策略定义被标记为不合规，但不对该资源执行任何操作。
 

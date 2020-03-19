@@ -8,22 +8,21 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-origin.date: 11/08/2019
-ms.date: 11/26/2019
+ms.date: 03/11/2020
 ms.author: v-junlch
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f4d8f609a0bcf71d018fb6b343466daa1eace3bc
-ms.sourcegitcommit: 9597d4da8af58009f9cef148a027ccb7b32ed8cf
+ms.openlocfilehash: 668dbd778b0ff2abcde718b3ae50257793bb6cbc
+ms.sourcegitcommit: 4ba6d7c8bed5398f37eb37cf5e2acafcdcc28791
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74655420"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79133851"
 ---
 # <a name="quickstart-grant-permission-to-create-unlimited-app-registrations"></a>快速入门：授权创建无限数目的应用注册的权限
 
-在本快速入门中，你将创建一个有权创建无限数目的应用注册的自定义角色，然后将该角色分配给某个用户。 然后，分配的用户可以使用 Azure AD 门户、Azure AD PowerShell、Azure AD 图形 API 或 Microsoft 图形 API 创建应用程序注册。 与内置的“应用程序开发人员”角色不同，使用此自定义角色可以创建无限数目的应用程序注册。 “应用程序开发人员”角色授予该能力，但创建的对象总数限制为 250 个，目的是防止达到[目录范围的对象配额](directory-service-limits-restrictions.md)。
+在本快速入门中，你将创建一个有权创建无限数目的应用注册的自定义角色，然后将该角色分配给某个用户。 然后，分配的用户可以使用 Azure AD 门户、Azure AD PowerShell 或 Microsoft Graph API 创建应用程序注册。 与内置的“应用程序开发人员”角色不同，使用此自定义角色可以创建无限数目的应用程序注册。 “应用程序开发人员”角色授予该能力，但创建的对象总数限制为 250 个，目的是防止达到[目录范围的对象配额](directory-service-limits-restrictions.md)。
 
 如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial/)。
 

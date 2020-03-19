@@ -12,19 +12,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/07/2020
+ms.date: 03/11/2020
 ms.subservice: hybrid
 ms.author: v-junlch
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6551b57fbd9c17e80c7c0703114b9528b2d29bb3
-ms.sourcegitcommit: 1bc154c816a5dff47ee051c431cd94826e57aa60
+ms.openlocfilehash: 26829595f7e78df35bac76c19472aad2100580ef
+ms.sourcegitcommit: 4ba6d7c8bed5398f37eb37cf5e2acafcdcc28791
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75776898"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79133811"
 ---
 # <a name="azure-ad-connect-sync-directory-extensions"></a>Azure AD Connect 同步：目录扩展
-通过目录扩展，可以使用本地 Active Directory 中的属性扩展 Azure AD 中的架构。 此功能允许使用继续在本地管理的属性来构建 LOB 应用。 可以通过 [Azure AD Graph API 目录扩展](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-directory-schema-extensions)或 [Microsoft Graph](https://developer.microsoft.com/graph/) 使用这些属性。 可以使用 [Azure AD Graph 资源管理器](https://developer.microsoft.com/zh-cn/graph/graph-explorer-china/)和 [Microsoft Graph 资源管理器](https://developer.microsoft.com/zh-cn/graph/graph-explorer-china)查看可用属性。 
+通过目录扩展，可以使用本地 Active Directory 中的属性扩展 Azure AD 中的架构。 此功能允许使用继续在本地管理的属性来构建 LOB 应用。 可通过[扩展](https://docs.microsoft.com/graph/extensibility-overview)使用这些属性。 可以使用 [Microsoft Graph 浏览器](https://developer.microsoft.com/zh-cn/graph/graph-explorer-china)查看可用属性。 
 
 目前，没有任何 Office 365 工作负荷使用这些属性。
 
@@ -61,16 +61,12 @@ Azure AD 中的对象最多可以有 100 个目录扩展属性。 最大长度�
 
 这些属性的前面带有扩展名 \_{ApplicationId}\_ 前缀  。 对于 Azure AD 租户中的所有属性，ApplicationId 具有相同的值。 本主题中的所有其他方案都需要此值。
 
-## <a name="viewing-attributes-using-graph"></a>使用 Graph 查看属性
+## <a name="viewing-attributes-using-the-microsoft-graph-api"></a>使用 Microsoft Graph API 查看属性
 
-现在可以通过 Azure AD Graph API 使用这些属性。 可以使用 [Azure AD Graph 资源管理器](https://developer.microsoft.com/zh-cn/graph/graph-explorer-china/)查询它们。
-
-![Azure AD Graph 资源管理器](./media/how-to-connect-sync-feature-directory-extensions/extension4.png)
-
-另外，也可以使用 [Microsoft Graph 资源管理器](https://developer.microsoft.com/zh-cn/graph/graph-explorer-china)通过 Microsoft Graph API 查询属性。
+通过使用 [Microsoft Graph 浏览器](https://developer.microsoft.com/zh-cn/graph/graph-explorer-china)，这些属性现在可以通过 Microsoft Graph API 获得。
 
 >[!NOTE]
-> 在 Microsoft Graph 中，你需要请求要返回的属性。 按如下所示显式选择属性：https\://microsoftgraph.chinacloudapi.cn/beta/users/abbie.spencer@fabrikamonline.com?$select=extension_9d98ed114c4840d298fad781915f27e4_employeeID,extension_9d98ed114c4840d298fad781915f27e4_division。
+> 在 Microsoft Graph API 中，你需要请求要返回的属性。 按以下所示显式选择属性：`https://microsoftgraph.chinacloudapi.cn/beta/users/abbie.spencer@fabrikamonline.com?$select=extension_9d98ed114c4840d298fad781915f27e4_employeeID,extension_9d98ed114c4840d298fad781915f27e4_division`。
 >
 > 有关详细信息，请参阅 [Microsoft Graph：使用查询参数](https://developer.microsoft.com/graph/docs/concepts/query_parameters#select-parameter)。
 

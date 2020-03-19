@@ -2,17 +2,16 @@
 title: Consul 概述
 description: 获取 Consul 的概述
 author: rockboyfor
-ms.service: container-service
 ms.topic: article
 origin.date: 10/09/2019
-ms.date: 10/28/2019
+ms.date: 03/09/2020
 ms.author: v-yeche
-ms.openlocfilehash: d747adf163289f7b52d57f6c92c22a001eeb6267
-ms.sourcegitcommit: 1d4dc20d24feb74d11d8295e121d6752c2db956e
+ms.openlocfilehash: 11afff6a8b88108cc5096d053c69a0eed78132dc
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73083655"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79290710"
 ---
 # <a name="consul"></a>Consul
 
@@ -36,7 +35,7 @@ ms.locfileid: "73083655"
 
 ## <a name="selection-criteria"></a>选择条件
 
-在为工作负荷评估 Linkerd 时，请务必了解并考虑以下方面：
+为工作负荷评估 Consul 时，请务必了解并考虑以下方面：
 
 - [Consul 原则](#consul-principles)
 - [功能](#capabilities)
@@ -110,5 +109,4 @@ Consul 非常适合以下方案，建议采用：
 
 [consul-install]: ./servicemesh-consul-install.md
 
-<!-- Update_Description: new article about servicemesh consul about -->
-<!--NEW.date: 11/04/2019-->
+<!-- Update_Description: update meta properties, wording update, update link -->

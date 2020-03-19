@@ -6,15 +6,15 @@ ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 origin.date: 03/11/2019
-ms.date: 01/06/2020
+ms.date: 03/09/2020
 ms.author: v-jay
 ms.reviewer: fryu
-ms.openlocfilehash: e40c81b49846af6d66e93b412397d53deb632138
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.openlocfilehash: 5fdb39f15b28277ea74088c569b20970b49158f7
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75624142"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291413"
 ---
 # <a name="azure-storage-analytics-logging"></a>Azure 存储分析日志记录
 
@@ -181,6 +181,9 @@ queueClient.SetServiceProperties(serviceProperties);
 ## <a name="download-storage-logging-log-data"></a>下载存储日志记录日志数据
 
  若要查看和分析日志数据，应将包含所需日志数据的 Blob 下载到本地计算机。 可以使用许多存储浏览工具从存储帐户下载 Blob；还可以使用 Azure 存储团队提供的命令行 Azure 复制工具 ([AzCopy](storage-use-azcopy-v10.md)) 下载日志数据。  
+ 
+>[!NOTE]
+> `$logs` 容器未与事件网格集成，因此写入日志文件时你不会收到通知。 
 
  为了确保下载所需的日志数据，并避免多次下载相同的日志数据：  
 

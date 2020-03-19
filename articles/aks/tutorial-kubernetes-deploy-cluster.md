@@ -2,19 +2,17 @@
 title: Azure 上的 Kubernetes 教程 - 部署群集
 description: 此 Azure Kubernetes 服务 (AKS) 教程介绍如何创建 AKS 群集并使用 kubectl 连接到 Kubernetes 主节点。
 services: container-service
-author: rockboyfor
-ms.service: container-service
 ms.topic: tutorial
-origin.date: 12/19/2018
-ms.date: 10/28/2019
+origin.date: 02/25/2020
+ms.date: 03/09/2020
 ms.author: v-yeche
 ms.custom: mvc
-ms.openlocfilehash: b453117bb58bfe2c5e62712d01624dbdd6652cdf
-ms.sourcegitcommit: 1d4dc20d24feb74d11d8295e121d6752c2db956e
+ms.openlocfilehash: cf58ea70bbfc9b8e2ad66c101f088da953b5fef8
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73068852"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79290777"
 ---
 # <a name="tutorial-deploy-an-azure-kubernetes-service-aks-cluster"></a>教程：部署 Azure Kubernetes 服务 (AKS) 群集
 
@@ -45,11 +43,12 @@ az aks create \
     --name myAKSCluster \
     --node-count 2 \
     --generate-ssh-keys \
-    --attach-acr <acrName> \
-    --vm-set-type AvailabilitySet
+    --attach-acr <acrName>
 ```
 
-<!--MOONCAKE: CORRECT TO APPEND --vm-set-type AvailabilitySet Before VMSS feature is valid on Azure China Cloud-->
+还可以手动将服务主体配置为从 ACR 中拉取映像。 有关详细信息，请参阅[使用服务主体进行 ACR 身份验证](../container-registry/container-registry-auth-service-principal.md)。
+
+<!--Pending for  or [Authenticate from Kubernetes with a pull secret](../container-registry/container-registry-auth-kubernetes.md)-->
 
 几分钟后，部署完成并返回有关 AKS 部署的 JSON 格式信息。
 
@@ -90,13 +89,13 @@ az aks install-cli --install-location <kubectl-download-path>
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 ```
 
-若要验证与群集之间的连接，请运行 [kubectl get nodes][kubectl-get] 命令：
+若要验证与群集的连接，请运行 [kubectl get nodes][kubectl-get] 命令以返回群集节点列表：
 
 ```
 $ kubectl get nodes
 
 NAME                       STATUS   ROLES   AGE   VERSION
-aks-nodepool1-12345678-0   Ready    agent   32m   v1.13.10
+aks-nodepool1-12345678-0   Ready    agent   32m   v1.14.8
 ```
 
 ## <a name="next-steps"></a>后续步骤
@@ -132,4 +131,4 @@ aks-nodepool1-12345678-0   Ready    agent   32m   v1.13.10
 [azure-cli-install]: https://docs.azure.cn/cli/install-azure-cli?view=azure-cli-latest
 [container-registry-integration]: ./cluster-container-registry-integration.md
 
-<!-- Update_Description: wording update, update link -->
+<!-- Update_Description: update meta properties, wording update, update link -->

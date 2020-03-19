@@ -1,24 +1,22 @@
 ---
 title: 在 Azure Application Insights 中跟踪依赖项 | Azure Docs
 description: 使用 Application Insights 监视来自本地或 Microsoft Azure Web 应用程序的依赖项调用。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: lingliw
 manager: digimobile
 origin.date: 06/25/2019
 ms.date: 08/22/2019
 ms.author: v-lingwu
-ms.openlocfilehash: a332babeda054a797c97a8a21362aabb0d035f1c
-ms.sourcegitcommit: 298eab5107c5fb09bf13351efeafab5b18373901
+ms.openlocfilehash: eb188bcacedc5a0937f9064333583ad0af3fdd69
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2019
-ms.locfileid: "74658115"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291728"
 ---
 # <a name="dependency-tracking-in-azure-application-insights"></a>在 Azure Application Insights 中跟踪依赖项 
 
-*依赖项*是应用调用的外部组件。 它通常是使用 HTTP、数据库或文件系统调用的服务。 [Application Insights](../../azure-monitor/app/app-insights-overview.md) 可以度量依赖项调用的持续时间、调用结果是否失败，以及依赖项名称等附加信息。 可以调查特定的依赖项调用，并将其与请求和异常相关联。
+*依赖项*是应用程序调用的外部组件。 它通常是使用 HTTP、数据库或文件系统调用的服务。 [Application Insights](../../azure-monitor/app/app-insights-overview.md) 可以度量依赖项调用的持续时间、调用结果是否失败，以及依赖项名称等附加信息。 可以调查特定的依赖项调用，并将其与请求和异常相关联。
 
 ## <a name="automatically-tracked-dependencies"></a>自动跟踪的依赖项
 

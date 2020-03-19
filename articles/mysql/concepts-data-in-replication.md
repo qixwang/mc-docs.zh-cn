@@ -1,18 +1,18 @@
 ---
-title: 将数据复制到 Azure Database for MySQL
+title: 数据传入复制 - Azure Database for MySQL
 description: 了解如何使用数据传入复制从外部服务器同步到 Azure Database for MySQL 服务。
 author: WenJason
 ms.author: v-jay
 ms.service: mysql
 ms.topic: conceptual
-origin.date: 09/13/2019
-ms.date: 01/06/2020
-ms.openlocfilehash: 8b715fc8e15da9b1503ee5c50cea5201ea5256fa
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+origin.date: 12/02/2019
+ms.date: 03/16/2020
+ms.openlocfilehash: 902d50de3663949fea95fb38c4eb70d26ac795d1
+ms.sourcegitcommit: 32997a7d7585deaeb0ab7b8f928d397b18b343fa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75624300"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79295925"
 ---
 # <a name="replicate-data-into-azure-database-for-mysql"></a>将数据复制到 Azure Database for MySQL
 
@@ -32,7 +32,7 @@ ms.locfileid: "75624300"
 ## <a name="limitations-and-considerations"></a>限制和注意事项
 
 ### <a name="data-not-replicated"></a>不会复制的数据
-不会复制主服务器上的 [mysql 系统数据库](https://dev.mysql.com/doc/refman/5.7/en/system-database.html)  。 不会复制对主服务器上的帐户和权限所做的更改。 如果在主服务器上创建帐户，并且此帐户需要访问副本服务器，则在副本服务器上手动创建相同的帐户。 若要了解哪些表包含在系统数据库中，请参阅 [MySQL 手册](https://dev.mysql.com/doc/refman/5.7/en/system-database.html)。
+不会复制主服务器上的 [mysql 系统数据库](https://dev.mysql.com/doc/refman/5.7/en/system-schema.html)  。 不会复制对主服务器上的帐户和权限所做的更改。 如果在主服务器上创建帐户，并且此帐户需要访问副本服务器，则在副本服务器上手动创建相同的帐户。 若要了解哪些表包含在系统数据库中，请参阅 [MySQL 手册](https://dev.mysql.com/doc/refman/5.7/en/system-schema.html)。
 
 ### <a name="requirements"></a>要求
 - 主服务器版本必须至少是 MySQL 5.6 版本。 

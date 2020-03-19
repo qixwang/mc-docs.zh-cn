@@ -10,12 +10,12 @@ origin.date: 01/31/2020
 ms.date: 03/02/2020
 ms.topic: conceptual
 manager: digimobile
-ms.openlocfilehash: 6cda91d1580e659ad641c0de227d71fa85ab52e0
-ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
+ms.openlocfilehash: f76ae0571481e8a2a1810ac0071aff0476fe6284
+ms.sourcegitcommit: dc862610e2169c1fce6fb0ae9eb7dd7567f86a0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77653055"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293834"
 ---
 # <a name="credential-assets-in-azure-automation"></a>Azure 自动化中的凭据资产
 
@@ -106,7 +106,7 @@ $securePassword = $myCred.Password
 
 $myPsCred = New-Object System.Management.Automation.PSCredential ($userName,$securePassword)
 
-Login-AzureRmAccount -Credential $myPsCred
+Connect-AzureRmAccount -Credential $myPsCred
 ```
 
 ### <a name="graphical-runbook-sample"></a>图形 Runbook 示例
@@ -115,7 +115,7 @@ Login-AzureRmAccount -Credential $myPsCred
 
 ![将凭据添加到画布](../media/credentials/credential-add-canvas.png)
 
-下图显示了在图形 Runbook 中使用凭据的示例。 在这种情况下，它被该 Runbook 用来对 Azure 资源提供身份验证，如[使用 Azure AD 用户帐户进行 Runbook 身份验证](../automation-create-aduser-account.md)中所述。  第一个活动检索有权访问 Azure 订阅的凭据。  然后， **Add-AzureAccount** 活动使用此凭据对它之后的任何活动提供身份验证。  此处是一个 [管道链接](../automation-graphical-authoring-intro.md#links-and-workflow) ，因为 **Get-AutomationPSCredential** 要求是单个对象。  
+下图显示了在图形 Runbook 中使用凭据的示例。 在这种情况下，它被该 Runbook 用来对 Azure 资源提供身份验证，如[使用 Azure AD 用户帐户进行 Runbook 身份验证](../automation-create-aduser-account.md)中所述。 第一个活动检索有权访问 Azure 订阅的凭据。 然后，**Connect-AzureRmAccount** 活动使用此凭据为它之后的任何活动提供身份验证。 此处是一个 [管道链接](../automation-graphical-authoring-intro.md#links-and-workflow) ，因为 **Get-AutomationPSCredential** 要求是单个对象。  
 
 ![将凭据添加到画布](../media/credentials/get-credential.png)
 

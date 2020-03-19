@@ -5,32 +5,34 @@ services: storage
 author: WenJason
 ms.service: storage
 ms.topic: include
-origin.date: 12/13/2019
-ms.date: 01/06/2020
+origin.date: 02/27/2020
+ms.date: 03/09/2020
 ms.author: v-jay
 ms.custom: include file
-ms.openlocfilehash: 49b27f5c24d7a5cbb7cb8b184787d0de85131266
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.openlocfilehash: a9c1aa0c1d75a1cc8ad2005702a89d1a426b157f
+ms.sourcegitcommit: fbc7584f403417d3af7bd6bbbaed7c13a78c57b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75624095"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78411281"
 ---
 下表介绍 Azure 常规用途 v1、v2 和 Blob 存储帐户的默认限制。 “传入”  限制是指请求中发送到存储帐户的所有数据。 “传出”  限制是指响应中从存储帐户接收的所有数据。
 
 | 资源 | 默认限制 |
 | --- | --- |
 | 每个订阅每个区域的存储帐户数，包括标准帐户和高级帐户 | 250 |
-| 最大存储帐户容量 | 500 TiB（适用于所有其他区域） |
+| 最大存储帐户容量 | 5 PiB <sup>1</sup>|
 | 每个存储帐户的 Blob 容器、Blob、文件共享、表、队列、实体或消息数上限 | 无限制 |
 | 每个存储帐户的最大请求速率<sup>1</sup> | 每秒 20,000 个请求 |
-| 每个存储帐户的最大入口<sup>1</sup> | 5 Gbps<sup>1</sup> |
+| 每个存储帐户的最大入口<sup>1</sup> | 如果已启用 RA-GRS/GRS，则为 5 Gbps；对于 LRS，为 10 Gbps<sup>2</sup> |
 | 常规用途 v2 存储帐户和 Blob 存储帐户的最大出口（所有区域） | 50 Gbps |
-| 常规用途 v1 存储帐户的最大出口（非美国区域） | 10 Gbps<sup>1</sup> |
+| 常规用途 v1 存储帐户的最大出口 | 如果已启用 RA-GRS/GRS，则为 10 Gbps；对于 LRS，为 15 Gbps<sup>2</sup> |
 | 每个存储帐户的最大虚拟网络规则数 | 200 |
 | 每个存储帐户的最大 IP 地址规则数 | 200 |
 
-<sup>1</sup> 如果存储帐户启用了异地冗余存储 (RA-GRS) 的读取访问权限，则辅助位置的出口目标与主位置的出口目标相同。 [Azure 存储复制](/storage/common/storage-redundancy)选项包括：
+<sup>1</sup>Azure 存储标准帐户根据请求支持更高的容量上限和更高的流入量上限。 若要请求提高帐户入口上限，请与 [Azure 支持](https://support.azure.cn/zh-cn/support/contact)联系。
+
+<sup>2</sup> 如果存储帐户启用了异地冗余存储 (RA-GRS) 的读取访问权限，则辅助位置的出口目标与主位置的出口目标相同。 [Azure 存储复制](/storage/common/storage-redundancy)选项包括：
 
 [!INCLUDE [azure-storage-redundancy](azure-storage-redundancy.md)]
 

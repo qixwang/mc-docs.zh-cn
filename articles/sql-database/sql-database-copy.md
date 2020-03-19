@@ -10,14 +10,14 @@ ms.topic: conceptual
 author: WenJason
 ms.author: v-jay
 ms.reviewer: carlrab
-origin.date: 11/14/2019
-ms.date: 02/17/2020
-ms.openlocfilehash: 523ae00a94d10aaa4cc0c3ae3cfca1cf682d9e7b
-ms.sourcegitcommit: d7b86a424b72849fe8ed32893dd05e4696e4fe85
+origin.date: 02/24/2020
+ms.date: 03/16/2020
+ms.openlocfilehash: b022647f51d21f1f3c7891823ac5d9f57dfc826e
+ms.sourcegitcommit: dc862610e2169c1fce6fb0ae9eb7dd7567f86a0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77155627"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293853"
 ---
 # <a name="copy-a-transactionally-consistent-copy-of-an-azure-sql-database"></a>复制 Azure SQL 数据库的事务一致性副本
 
@@ -32,13 +32,13 @@ ms.locfileid: "77155627"
 
 ## <a name="logins-in-the-database-copy"></a>数据库副本中的登录名
 
-将某个数据库复制到同一 SQL 数据库服务器时，可以在这两个数据库上使用相同的登录名。 用于复制该数据库的安全主体将成为新数据库上的数据库所有者。 所有数据库用户、其权限及安全标识符 (SID) 都会复制到数据库副本中。  
+将某个数据库复制到同一 SQL 数据库服务器时，可以在这两个数据库上使用相同的登录名。 用于复制该数据库的安全主体将成为新数据库上的数据库所有者。 
 
-将数据库复制到不同的 SQL 数据库服务器时，新服务器上的安全主体将成为新数据库上的数据库所有者。 如果使用[包含的数据库用户](sql-database-manage-logins.md)进行数据访问，请确保主数据库和辅助数据库始终具有相同的用户凭据，这样在复制完成后，你便可以使用相同的凭据立即访问。
+将数据库复制到其他 SQL 数据库服务器时，由目标服务器上的复制操作启动的安全主体将成为新数据库的所有者。 
 
-如果使用 [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md)，则完全无需管理副本中的凭据。 但是，将数据库复制到新服务器时，基于登录名的访问可能不起作用，因为登录名在新服务器上不存在。 要了解如何在将数据库复制到其他 SQL 数据库服务器时管理登录名，请参阅[灾难恢复后如何管理 Azure SQL 数据库安全性](sql-database-geo-replication-security-config.md)。
+无论目标服务器如何，所有数据库用户、其权限及安全标识符 (SID) 都会复制到数据库副本中。 使用[包含的数据库用户](sql-database-manage-logins.md)进行数据访问可以确保复制的数据库具有相同的用户凭据，这样在复制完成后，你可以使用相同的凭据立即进行访问。
 
-复制成功之后，重新映射其他用户之前，只有启动复制的登录名，即数据库所有者，才能登录到新数据库。 若要在复制操作完成后解析登录名，请参阅[解析登录名](#resolve-logins)。
+如果使用服务器级登录名进行数据访问并将数据库复制到其他服务器，则基于登录名的访问可能无法工作。 出现这种情况的原因可能是目标服务器上不存在登录名，或者其密码和安全标识符 (SID) 不同。 要了解如何在将数据库复制到其他 SQL 数据库服务器时管理登录名，请参阅[灾难恢复后如何管理 Azure SQL 数据库安全性](sql-database-geo-replication-security-config.md)。 在复制到其他服务器操作成功后，但在重新映射其他用户之前，只有与数据库所有者关联的登录名或服务器管理员才能登录到复制的数据库。 若要在复制操作完成后解析登录名并建立数据访问权限，请参阅[解析登录名](#resolve-logins)。
 
 ## <a name="copy-a-database-by-using-the-azure-portal"></a>使用 Azure 门户复制数据库
 
@@ -46,7 +46,7 @@ ms.locfileid: "77155627"
 
    ![数据库复制](./media/sql-database-copy/database-copy.png)
 
-## <a name="copy-a-database-by-using-powershell"></a>使用 PowerShell 复制数据库
+## <a name="copy-a-database-by-using-powershell-or-azure-cli"></a>使用 PowerShell 或 Azure CLI 复制数据库
 
 若要复制数据库，请使用以下示例。
 
@@ -64,6 +64,8 @@ New-AzSqlDatabaseCopy -ResourceGroupName "<resourceGroup>" -ServerName $sourcese
 
 数据库复制是一个异步操作，但在接受请求后会立即创建目标数据库。 如果需要取消仍在进行的复制操作，请使用 [Remove-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/new-azsqldatabase) cmdlet 删除目标数据库。
 
+有关完整的示例 PowerShell 脚本，请参阅[将数据库复制到新的服务器](scripts/sql-database-copy-database-to-new-server-powershell.md)。
+
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azure-cli
@@ -74,8 +76,6 @@ az sql db copy --dest-name "CopyOfMySampleDatabase" --dest-resource-group "myRes
 数据库复制是一个异步操作，但在接受请求后会立即创建目标数据库。 如果需要取消仍在进行的复制操作，请使用 [az sql db delete](/cli/sql/db#az-sql-db-delete) 命令删除目标数据库。
 
 * * *
-
-如需完整的示例脚本，请参阅[将数据库复制到新的服务器](scripts/sql-database-copy-database-to-new-server-powershell.md)。
 
 ## <a name="rbac-roles-to-manage-database-copy"></a>用于管理数据库副本的 RBAC 角色
 
@@ -105,13 +105,17 @@ az sql db copy --dest-name "CopyOfMySampleDatabase" --dest-resource-group "myRes
 
 ## <a name="copy-a-database-by-using-transact-sql"></a>使用 Transact-SQL 复制数据库
 
-使用服务器级别主体登录名或创建了要复制的数据库的登录名登录到 master 数据库。 若要成功复制数据库，非服务器级主体的登录名必须是 dbmanager 角色的成员。 有关登录名和链接到服务器的详细信息，请参阅[管理登录名](sql-database-manage-logins.md)。
+使用服务器管理员登录名或创建了要复制的数据库的登录名登录到 master 数据库。 若要成功复制数据库，非服务器管理员的登录名必须是 `dbmanager` 角色的成员。 有关登录名和链接到服务器的详细信息，请参阅[管理登录名](sql-database-manage-logins.md)。
 
-使用 [CREATE DATABASE](https://msdn.microsoft.com/library/ms176061.aspx) 语句开始复制源数据库。 执行此语句将启动数据库复制过程。 因为复制数据库是一个异步过程，所以，CREATE DATABASE 语句会在数据库完成复制前返回。
+使用 [CREATE DATABASE ...AS COPY OF](https://docs.microsoft.com/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current#copy-a-database) 语句开始复制源数据库。 T-SQL 语句将继续运行，直到数据库复制操作完成。
+
+> [!NOTE]
+> 终止 T-SQL 语句不会终止数据库复制操作。 若要终止该操作，请删除目标数据库。
+>
 
 ### <a name="copy-a-sql-database-to-the-same-server"></a>将 SQL 数据库复制到同一台服务器
 
-使用服务器级别主体登录名或创建了要复制的数据库的登录名登录到 master 数据库。 若要成功复制数据库，非服务器级主体的登录名必须是 dbmanager 角色的成员。
+使用服务器管理员登录名或创建了要复制的数据库的登录名登录到 master 数据库。 若要成功复制数据库，非服务器管理员的登录名必须是 `dbmanager` 角色的成员。
 
 此命令将 Database1 复制到同一服务器上名为 Database2 的新数据库。 根据数据库的大小，复制操作可能需要一些时间才能完成。
 
@@ -122,7 +126,7 @@ az sql db copy --dest-name "CopyOfMySampleDatabase" --dest-resource-group "myRes
 
 ### <a name="copy-a-sql-database-to-a-different-server"></a>将 SQL 数据库复制到不同的服务器
 
-登录到目标服务器（即要创建新数据库的 SQL 数据库服务器）的 master 数据库。 所用登录名的名称和密码应该与源 SQL 数据库服务器上源数据库的数据库所有者的名称和密码相同。 目标服务器上的登录名也必须是 dbmanager 角色的成员或服务器级主体登录名。
+登录到要在其中创建新数据库的目标服务器的 master 数据库。 所用登录名的名称和密码应该与源服务器上源数据库的数据库所有者的名称和密码相同。 目标服务器上的登录名还必须是 `dbmanager` 角色的成员，或者是服务器管理员登录名。
 
 此命令将 server1 上的 Database1 复制到 server2 上名为 Database2 的新数据库。 根据数据库的大小，复制操作可能需要一些时间才能完成。
 
@@ -132,33 +136,33 @@ CREATE DATABASE Database2 AS COPY OF server1.Database1;
 ```
 
 > [!IMPORTANT]
-> 必须将两台服务器的防火墙都配置为允许来自发出 T-SQL COPY 命令的客户端 IP 的入站连接。
+> 必须将两台服务器的防火墙都配置为允许来自发出 T-SQL CREATE DATABASE ...AS COPY OF 命令的客户端 IP 的入站连接。
 
 ### <a name="copy-a-sql-database-to-a-different-subscription"></a>将 SQL 数据库复制到不同的订阅
 
-可以使用上一部分中描述的步骤将数据库复制到不同订阅中的 SQL 数据库服务器。 请确保你使用的登录名具有与源数据库的数据库所有者相同的名称和密码，并且它是 dbmanager 角色的成员或者是服务器级主体登录名。 
+可以使用[将 SQL 数据库复制到其他服务器](#copy-a-sql-database-to-a-different-server)部分中的步骤使用 T-SQL 将数据库复制到其他订阅中的 SQL 数据库服务器。 确保所用登录名的名称和密码与源数据库的数据库所有者的名称和密码相同。 此外，登录名在源服务器和目标服务器上都必须是 `dbmanager` 角色的成员或者是服务器管理员。
 
 > [!NOTE]
-> [Azure 门户](https://portal.azure.cn)不支持复制到其他订阅，因为门户调用 ARM API，并且它使用订阅证书来访问异地复制中涉及的两台服务器。  
+> [Azure 门户](https://portal.azure.cn)、PowerShell 和 Azure CLI 不支持将数据库复制到其他订阅。
 
 ### <a name="monitor-the-progress-of-the-copying-operation"></a>监视复制操作的进度
 
-通过查询 sys.databases 和 sys.dm_database_copies 视图来监视复制过程。 在复制过程中，新数据库的 sys.databases 视图的 **state_desc** 列将设置为 **COPYING**。
+可以通过查询 [sys.databases](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-databases-transact-sql)、[sys.dm_database_copies](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-database-copies-azure-sql-database.md) 和 [sys.dm_operation_status](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database.md) 视图来监视复制过程。 在复制过程中，新数据库的 sys.databases 视图的 **state_desc** 列将设置为 **COPYING**。
 
 * 如果复制失败，新数据库的 sys.databases 视图的 **state_desc** 列将设置为 **SUSPECT**。 对新数据库执行 DROP 语句并稍后重试。
 * 如果复制成功，新数据库的 sys.databases 视图的 **state_desc** 列将设置为 **ONLINE**。 复制已完成并且新数据库是一个常规数据库，可独立于源数据库进行更改。
 
 > [!NOTE]
-> 如果决定在复制过程中取消复制，请对新数据库执行 [DROP DATABASE](https://msdn.microsoft.com/library/ms178613.aspx) 语句。 此外，对源数据库执行 DROP DATABASE 语句也会取消复制过程。
+> 如果决定在复制过程中取消复制，请对新数据库执行 [DROP DATABASE](https://docs.microsoft.com/sql/t-sql/statements/drop-database-transact-sql) 语句。
 
 > [!IMPORTANT]
-> 如果需要使用比源小得多的 SLO 创建副本，则目标数据库可能没有足够的资源来完成种子设定过程，这可能会导致复制操作失败。 在这种情况下，请使用异地还原请求在不同服务器和/或不同区域中创建副本。 有关详细信息，请参阅[使用数据库备份恢复 Azure SQL 数据库](sql-database-recovery-using-backups.md#geo-restore)。
+> 如果需要使用比源小得多的服务目标创建副本，则目标数据库可能没有足够的资源来完成种子设定过程，这可能会导致复制操作失败。 在这种情况下，请使用异地还原请求在不同服务器和/或不同区域中创建副本。 有关详细信息，请参阅[使用数据库备份恢复 Azure SQL 数据库](sql-database-recovery-using-backups.md#geo-restore)。
 
 ## <a name="resolve-logins"></a>解析登录名
 
-当新数据库在目标服务器上联机后，使用 [ALTER USER](https://msdn.microsoft.com/library/ms176060.aspx) 语句将新数据库中的用户重新映射到目标服务器上的登录名。 若要解析孤立用户，请参阅[孤立用户疑难解答](https://msdn.microsoft.com/library/ms175475.aspx)。 另请参阅[灾难恢复后如何管理 Azure SQL 数据库安全性](sql-database-geo-replication-security-config.md)。
+当新数据库在目标服务器上联机后，使用 [ALTER USER](https://docs.microsoft.com/sql/t-sql/statements/alter-user-transact-sql?view=azuresqldb-current) 语句将新数据库中的用户重新映射到目标服务器上的登录名。 若要解析孤立用户，请参阅[孤立用户疑难解答](https://docs.microsoft.com/sql/sql-server/failover-clusters/troubleshoot-orphaned-users-sql-server)。 另请参阅[灾难恢复后如何管理 Azure SQL 数据库安全性](sql-database-geo-replication-security-config.md)。
 
-新数据库中的所有用户都保持他们在源数据库中已有的权限。 启动数据库复制过程的用户成为新数据库的数据库所有者，并且会为该用户分配一个新的安全标识符 (SID)。 复制成功之后，重新映射其他用户之前，只有启动复制的登录名，即数据库所有者，才能登录到新数据库。
+新数据库中的所有用户都保持他们在源数据库中已有的权限。 启动数据库复制过程的用户成为新数据库的数据库所有者。 复制成功之后，重新映射其他用户之前，只有数据库所有者才能登录到新数据库。
 
 要了解如何在将数据库复制到其他 SQL 数据库服务器时管理用户和登录名，请参阅[灾难恢复后如何管理 Azure SQL 数据库的安全性](sql-database-geo-replication-security-config.md)。
 

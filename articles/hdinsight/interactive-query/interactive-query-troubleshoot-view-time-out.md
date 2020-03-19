@@ -1,18 +1,18 @@
 ---
-title: 在 Azure HDInsight 中提取查询结果时，Apache Hive 视图超时
+title: 从查询结果生成 Apache Hive 视图超时 - Azure HDInsight
 description: 在 Azure HDInsight 中提取查询结果时，Apache Hive 视图超时
 ms.service: hdinsight
 ms.topic: troubleshooting
 author: hrasheed-msft
 ms.author: v-yiso
 origin.date: 07/30/2019
-ms.date: 09/23/2019
-ms.openlocfilehash: 3d0dfe43072d10d96c8ad25dbe8925cfa6b11cff
-ms.sourcegitcommit: 43f569aaac795027c2aa583036619ffb8b11b0b9
+ms.date: 03/23/2020
+ms.openlocfilehash: 556599cb7d76e217e1ae58a5782d9a1bfb8e3084
+ms.sourcegitcommit: 32997a7d7585deaeb0ab7b8f928d397b18b343fa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70921349"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79295981"
 ---
 # <a name="scenario-apache-hive-view-times-out-when-fetching-a-query-result-in-azure-hdinsight"></a>方案：在 Azure HDInsight 中提取查询结果时，Apache Hive 视图超时
 
@@ -47,4 +47,4 @@ views.ambari.hive<HIVE_VIEW_INSTANCE_NAME>.result.fetch.timeout=300000
 
 如果你的问题未在本文中列出，或者无法解决问题，请访问以下渠道以获取更多支持：
 
-* 如果需要更多帮助，可以从 [Azure 门户](https://portal.azure.cn/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)提交支持请求。 从菜单栏中选择“支持”  ，或打开“帮助 + 支持”  中心。 有关更多详细信息，请参阅[如何创建 Azure 支持请求](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)。 Microsoft Azure 订阅包含对订阅管理和计费支持的访问权限，并且通过 [Azure 支持计划](https://azure.microsoft.com/support/plans/)之一提供技术支持。
+* 如果需要更多帮助，可以从 [Azure 门户](https://portal.azure.cn/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)提交支持请求。 从菜单栏中选择“支持”  ，或打开“帮助 + 支持”  中心。 有关更多详细信息，请参阅[如何创建 Azure 支持请求](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)。 在 Microsoft Azure 订阅中可以访问订阅管理和计费支持；通过 [Azure 支持计划](https://azure.microsoft.com/support/plans/)之一提供技术支持。

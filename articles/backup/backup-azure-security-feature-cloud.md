@@ -6,23 +6,29 @@ author: lingliw
 origin.date: 09/13/2019
 ms.date: 11/14/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 0cfff1c4a0518ce749398d2099fd78cc3c2a08bd
-ms.sourcegitcommit: 27eaabd82b12ad6a6840f30763034a6360977186
+ms.openlocfilehash: 023c0e05e0d1740a6f70d5a9728d3f7a172b7054
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77497633"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292114"
 ---
 # <a name="security-features-to-help-protect-cloud-workloads-that-use-azure-backup"></a>有助于保护使用 Azure 备份的云工作负荷的安全功能
 
 对安全问题（例如恶意软件、勒索软件、入侵）的关注在逐渐上升。 这些安全问题可能会代价高昂（就金钱和数据来说）。 为了防范此类攻击，Azure 备份现提供可帮助保护备份数据（即使数据已删除）的安全功能。
 
-其中的一项功能是软删除。 在使用软删除的情况下，即使恶意行动者删除了 VM 的备份（或用户意外删除了备份数据），备份数据也仍会保留 14 天，因此可以恢复该备份项，而不会丢失数据。 以“软删除”状态将备份数据额外保留 14 天不会向客户收取任何费用。 Azure 还使用[存储服务加密](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)来加密所有已备份的静态数据，以进一步保护数据。
+其中的一项功能是软删除。 在使用软删除的情况下，即使恶意行动者删除了 VM 的备份（或用户意外删除了备份数据），备份数据也仍会保留 14 天，因此可以恢复该备份项，而不会丢失数据。 以“软删除”状态将备份数据额外保留 14 天不会向客户收取任何费用。 Azure 还使用[存储服务加密](/storage/common/storage-service-encryption)来加密所有已备份的静态数据，以进一步保护数据。
 
 Azure 虚拟机的软删除保护功能已推出正式版。
 
 >[!NOTE]
 >针对 Azure VM 中 SQL 服务器的软删除以及针对 Azure VM 工作负荷中 SAP HANA 的软删除现已推出预览版。<br>
+## <a name="soft-delete"></a>软删除
+
+### <a name="soft-delete-for-vms"></a>VM 的软删除
+
+VM 的软删除可保护 VM 的备份免遭意外删除。 即使删除了备份，这些备份也会以软删除状态再保留 14 天。
+
 > [!NOTE]
 > 软删除只是保护已删除的备份数据。 如果删除未备份的 VM，则软删除功能不会保留数据。 应使用 Azure 备份保护所有资源，以确保能够完全复原。
 >
@@ -118,7 +124,7 @@ WorkloadName     Operation            Status               StartTime            
 AppVM1           Undelete             Completed            12/5/2019 12:47:28 PM     12/5/2019 12:47:40 PM     65311982-3755-46b5-8e53-c82ea4f0d2a2
 ```
 
-备份项的“DeleteState”将还原为“NotDeleted”。 但保护仍处于停止状态。 需要[恢复备份](https://docs.microsoft.com/azure/backup/backup-azure-vms-automation#change-policy-for-backup-items)以重新启用保护。
+备份项的“DeleteState”将还原为“NotDeleted”。 但保护仍处于停止状态。 需要[恢复备份](/backup/backup-azure-vms-automation#change-policy-for-backup-items)以重新启用保护。
 
 ### <a name="soft-delete-for-vms-using-rest-api"></a>使用 REST API 对 VM 进行软删除
 
@@ -127,7 +133,7 @@ AppVM1           Undelete             Completed            12/5/2019 12:47:28 PM
 
 ## <a name="disabling-soft-delete"></a>禁用软删除
 
-软删除在新创建的保管库上默认启用，目的是防止意外或恶意删除备份数据。  建议不要禁用此功能。 唯一应该考虑禁用软删除的情况是，你打算将受保护的项移到新保管库，需要在删除后重新进行保护，因此等不及要求的 14 天（例如在测试环境中）。仅备份管理员可以禁用此功能。 如果禁用此功能，则只要删除受保护的项，就会导致即时删除，不可还原。 如果在禁用此功能之前备份数据处于软删除状态，则会保持软删除状态。 若要立即永久删除这些项，则需先取消删除，然后再次将其删除，这样就可以永久删除它们。
+软删除在新创建的保管库上默认启用，目的是防止意外或恶意删除备份数据。  建议不要禁用此功能。 唯一应该考虑禁用软删除的情况是，你打算将受保护的项移到新保管库，需要在删除后重新进行保护，因此等不及要求的 14 天（例如在测试环境中）。只有保管库所有者可以禁用此功能。 如果禁用此功能，将来删除任何受保护项将导致立即删除，而无法还原。 禁用此功能之前，以软删除状态存在的备份数据将在 14 天内保持软删除状态。 若要立即永久删除这些项，则需先取消删除，然后再次将其删除，这样就可以永久删除它们。
 
 ### <a name="disabling-soft-delete-using-azure-portal"></a>使用 Azure 门户禁用软删除
 
@@ -185,11 +191,11 @@ SoftDeleteFeatureState : Disabled
 
 5. 选择“删除备份数据”，永久删除备份数据  。
 
-![选择“删除备份数据”](https://docs.microsoft.com/azure/backup/media/backup-azure-manage-vms/delete-backup-buttom.png)
+![选择“删除备份数据”](./media/backup-azure-manage-vms/delete-backup-buttom.png)
 
 6. 键入备份项的名称以确认你要删除恢复点。
 
-![键入备份项的名称](https://docs.microsoft.com/azure/backup/media/backup-azure-manage-vms/delete-backup-data1.png)
+![键入备份项的名称](./media/backup-azure-manage-vms/delete-backup-data1.png)
 
 7. 若要删除项的备份数据，请选择“删除”  。 一条通知消息将让你获悉备份数据已删除。
 
@@ -246,7 +252,7 @@ AppVM1           DeleteBackupData     Completed            12/5/2019 12:44:15 PM
 
 在 Azure 中，Azure 存储与保管库之间传输的数据受 HTTPS 保护。 此数据保留在 Azure 主干网络上。
 
-有关详细信息，请参阅[静态数据的 Azure 存储加密](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)。 请参阅 [Azure 备份常见问题解答](https://docs.microsoft.com/azure/backup/backup-azure-backup-faq#encryption)，其中解答了有关加密的任何问题。
+有关详细信息，请参阅[静态数据的 Azure 存储加密](/storage/common/storage-service-encryption)。 请参阅 [Azure 备份常见问题解答](/backup/backup-azure-backup-faq#encryption)，其中解答了有关加密的任何问题。
 
 ### <a name="encryption-of-backup-data-using-customer-managed-keys"></a>使用客户管理的密钥加密备份数据
 
@@ -257,11 +263,11 @@ AppVM1           DeleteBackupData     Completed            12/5/2019 12:44:15 PM
 
 ### <a name="backup-of-managed-disk-vm-encrypted-using-customer-managed-keys"></a>备份使用客户管理的密钥加密的托管磁盘 VM
 
-借助 Azure 备份可以备份包含使用客户管理密钥加密的磁盘的 Azure 虚拟机。 有关详细信息，请参阅[使用客户管理的密钥加密托管磁盘](https://docs.microsoft.com/azure/virtual-machines/windows/disk-encryption#customer-managed-keys)。
+借助 Azure 备份可以备份包含使用客户管理密钥加密的磁盘的 Azure 虚拟机。 有关详细信息，请参阅[使用客户管理的密钥加密托管磁盘](/virtual-machines/windows/disk-encryption#customer-managed-keys)。
 
 ### <a name="backup-of-encrypted-vms"></a>备份加密的 VM
 
-可以使用 Azure 备份服务来备份和还原包含已加密磁盘的 Windows 或 Linux Azure 虚拟机 (VM)。 有关说明，请参阅[使用 Azure 备份来备份和还原已加密的虚拟机](https://docs.microsoft.com/azure/backup/backup-azure-vms-encryption)。
+可以使用 Azure 备份服务来备份和还原包含已加密磁盘的 Windows 或 Linux Azure 虚拟机 (VM)。 有关说明，请参阅[使用 Azure 备份来备份和还原已加密的虚拟机](/backup/backup-azure-vms-encryption)。
 
 ## <a name="other-security-features"></a>其他安全功能
 
@@ -305,7 +311,7 @@ AppVM1           DeleteBackupData     Completed            12/5/2019 12:44:15 PM
 
 #### <a name="can-i-delete-the-data-earlier-than-the-14-days-soft-delete-period-after-deletion"></a>是否可以在删除后的 14 天软删除期之前删除数据？
 
-否。 无法强制删除软删除项，14 天后会自动删除这些项。 启用此安全功能是为了保护备份的数据不被意外删除或恶意删除。  你应等待 14 天，然后再在 VM 上执行任何其他操作。  不会对软删除项收费。  如果需要将 14 天内标记为软删除的 VM 重新保护到新保管库，请联系 Microsoft 支持部门。
+否。 无法强制删除软删除项，14 天后会自动删除这些项。 启用此安全功能是为了保护备份的数据不被意外删除或恶意删除。  你应等待 14 天，然后再在 VM 上执行任何其他操作。  不会对软删除项收费。  如果需要将 14 天内标记为软删除的 VM 重新保护到新保管库，请联系 Microsoft 客户支持。
 
 #### <a name="can-soft-delete-operations-be-performed-in-powershell-or-cli"></a>是否可以在 PowerShell 或 CLI 中执行软删除操作？
 

@@ -2,24 +2,23 @@
 title: 在 Azure Kubernetes 服务 (AKS) 中使用 kured 更新并重启 Linux 节点
 description: 了解如何在 Azure Kubernetes 服务 (AKS) 中使用 kured 更新并自动重启 Linux 节点
 services: container-service
-author: rockboyfor
-ms.service: container-service
 ms.topic: article
 origin.date: 02/28/2019
-ms.date: 07/29/2019
+ms.date: 03/09/2020
 ms.author: v-yeche
-ms.openlocfilehash: ee49b71b4c11b03035719c6abeef3e0392942243
-ms.sourcegitcommit: 57994a3f6a263c95ff3901361d3e48b10cfffcdd
+ms.openlocfilehash: a72d88f8dfb2d5baba1341390d707add91a0bba5
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70500736"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79290724"
 ---
 # <a name="apply-security-and-kernel-updates-to-linux-nodes-in-azure-kubernetes-service-aks"></a>将安全更新和内核更新应用于 Azure Kubernetes 服务 (AKS) 中的 Linux 节点
 
 为保护群集，安全更新会自动应用于 AKS 中的 Linux 节点。 这些更新包括 OS 安全修复项或内核更新。 其中的部分更新需要重启节点才能完成更新进程。 AKS 不会自动重启这些 Linux 节点以完成更新进程。
 
 <!--Not Available on Windows Server nodes (currently in preview in AKS)-->
+
 本文介绍了如何使用开源 [kured (KUbernetes REboot Daemon)][kured] 来查看需要重启的 Linux 节点，然后自动重新调度运行中的 Pod 并处理节点重启进程。
 
 > [!NOTE]
@@ -39,7 +38,7 @@ ms.locfileid: "70500736"
 
 部分安全更新（如内核更新）需要重启节点才能完成更新进程。 需要重启的 Linux 节点会创建名为 /var/run/reboot-required 的文件  。 此重启进程不会自动进行。
 
-你可以使用自己的工作流和进程来重启节点，或使用 `kured` 安排该进程。 使用 `kured`，可以部署在群集每个 Linux 节点上运行 Pod 的 [DaemonSet][DaemonSet]。 DaemonSet 中的这些 pod 可监视是否存在 /var/run/reboot-required 文件，然后启动重启节点的进程  。
+你可以使用自己的工作流和进程来重启节点，或使用 `kured` 安排该进程。 使用 `kured`，可以部署在群集每个 Linux 节点上运行 Pod 的 [DaemonSet][DaemonSet]。 DaemonSet 中的这些 pod 会监视是否存在 /var/run/reboot-required 文件，然后启动重启节点的进程  。
 
 ### <a name="node-upgrades"></a>节点升级
 
@@ -54,13 +53,23 @@ AKS 中还有额外的进程，可通过该进程升级群集  。 升级通常�
 
 ## <a name="deploy-kured-in-an-aks-cluster"></a>在 AKS 群集中部署 kured
 
-要部署 `kured` DaemonSet，请从以下示例 YAML 清单的 GitHub 项目页应用它们。 此清单创建角色、群集角色、绑定和服务帐户，然后使用支持 AKS 群集 1.9 或更高版本的 `kured` 1.1.0 版部署 DaemonSet。
+若要部署 `kured` DaemonSet，请安装以下正式的 Kured Helm 图表。 这将创建角色和群集角色、绑定以及服务帐户，然后使用 `kured` 部署 DaemonSet。
 
 ```console
-kubectl apply -f https://github.com/weaveworks/kured/releases/download/1.2.0/kured-1.2.0-dockerhub.yaml
+# Add the stable Helm repository
+helm repo add stable https://kubernetes-charts.storage.googleapis.com/
+
+# Update your local Helm chart repository cache
+helm repo update
+
+# Create a dedicated namespace where you would like to deploy kured into
+kubectl create namespace kured
+
+# Install kured in that namespace with Helm 3 (only on Linux nodes, kured is not working on Windows nodes)
+helm install kured stable/kured --namespace kured --set nodeSelector."beta\.kubernetes\.io/os"=linux
 ```
 
-也可以为 `kured` 配置其他参数，例如与 Prometheus 或 Slack 集成。 有关其他配置参数的详细信息，请参阅 [kured 安装文档][kured-install]。
+也可以为 `kured` 配置其他参数，例如与 Prometheus 或 Slack 集成。 有关其他配置参数的详细信息，请参阅 [kured Helm 图表][kured-install]。
 
 ## <a name="update-cluster-nodes"></a>更新群集节点
 
@@ -100,18 +109,17 @@ aks-nodepool1-28993262-1   Ready     agent     1h        v1.11.7   10.240.0.5   
 <!-- LINKS - external -->
 
 [kured]: https://github.com/weaveworks/kured
-[kured-install]: https://github.com/weaveworks/kured#installation
+[kured-install]: https://hub.helm.sh/charts/stable/kured
 [kubectl-get-nodes]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
 
 <!-- LINKS - internal -->
 
 [aks-quickstart-cli]: kubernetes-walkthrough.md
 [aks-quickstart-portal]: kubernetes-walkthrough-portal.md
-[install-azure-cli]: https://docs.azure.cn/zh-cn/cli/install-azure-cli?view=azure-cli-latest
+[install-azure-cli]: https://docs.azure.cn/cli/install-azure-cli?view=azure-cli-latest
 [DaemonSet]: concepts-clusters-workloads.md#statefulsets-and-daemonsets
 [aks-ssh]: ssh.md
 [aks-upgrade]: upgrade-cluster.md
+[nodepool-upgrade]: use-multiple-node-pools.md#upgrade-a-node-pool
 
-<!--Not Available on [nodepool-upgrade]: use-multiple-node-pools.md#upgrade-a-node-pool-->
-
-<!-- Update_Description: wording update, update link -->
+<!-- Update_Description: update meta properties, wording update, update link -->

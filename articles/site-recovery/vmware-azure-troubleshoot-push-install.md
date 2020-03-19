@@ -9,11 +9,11 @@ ms.author: v-yeche
 origin.date: 09/11/2019
 ms.date: 09/30/2019
 ms.openlocfilehash: ad0a817a918fcc373e30bd1e2d91d8b162a771f2
-ms.sourcegitcommit: 332ae4986f49c2e63bd781685dd3e0d49c696456
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71340989"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291336"
 ---
 # <a name="troubleshoot-mobility-service-push-installation-issues"></a>解决移动服务推送安装问题
 
@@ -230,7 +230,7 @@ VSS 安装是移动代理安装的一部分。 在生成应用程序一致恢复
 
 ### <a name="vss-error--2147023170-0x800706be---exit-code-511"></a>VSS 错误 -2147023170 [0x800706BE] - 退出代码 511
 
-当防病毒软件阻止了 Azure Site Recovery 服务的操作时通常会出现此问题。 若要解决此问题，请执行以下操作：
+当防病毒软件阻止了 Azure Site Recovery 服务的操作时通常会出现此问题。 若要解决此问题，请执行下列操作：
 
 1. 排除[此处](vmware-azure-set-up-source.md#azure-site-recovery-folder-exclusions-from-antivirus-program)提到的所有文件夹。
 2. 按照你的防病毒软件提供商发布的指南在 Windows 中取消阻止 DLL 的注册。
@@ -276,7 +276,7 @@ VSS 安装是移动代理安装的一部分。 在生成应用程序一致恢复
 
     正在取消注册现有应用程序...创建目录对象  获取应用程序集合 
 
-    错误:
+    错误：
 
     - 错误代码 -2147164145 [0x8004E00F]
     - 退出代码：802

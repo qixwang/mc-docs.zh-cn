@@ -1,5 +1,5 @@
 ---
-title: 在 Azure 数据资源管理器中管理水平缩放（横向扩展）群集以适应不断变化的需求
+title: 在 Azure 数据资源管理器中管理水平缩放（横向扩展）群集以满足需求
 description: 本文介绍如何根据不断变化的需求采用相关步骤对 Azure 数据资源管理器群集进行横向缩放。
 author: orspod
 ms.author: v-tawe
@@ -7,13 +7,13 @@ ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: conceptual
 origin.date: 12/09/2019
-ms.date: 02/17/2020
-ms.openlocfilehash: a6746157667b77a010550ba34c38fe7d1c0bbf3d
-ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
+ms.date: 03/23/2020
+ms.openlocfilehash: e0f9ee7c643fb330604019b5e5af7537ba2a6842
+ms.sourcegitcommit: 4ba6d7c8bed5398f37eb37cf5e2acafcdcc28791
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77037919"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79133874"
 ---
 # <a name="manage-cluster-horizontal-scaling-scale-out-in-azure-data-explorer-to-accommodate-changing-demand"></a>在 Azure 数据资源管理器中管理水平缩放（横向扩展）群集以适应不断变化的需求
 
@@ -71,7 +71,7 @@ ms.locfileid: "77037919"
 
     | 设置 | 说明和值 |
     | --- | --- |
-    | **操作** | 选择进行横向缩放的适当选项。 |
+    | **操作** | 选择进行横向缩减或横向扩展的适当选项。 |
     | **实例计数** | 选择在符合指标条件的情况下，需要添加或删除的节点或实例的数目。 |
     | 冷却（分钟）  | 选择需要在两项缩放操作之间等待的适当时间间隔。 一开始可将默认值设置为 5分钟。 |
     |  |  |

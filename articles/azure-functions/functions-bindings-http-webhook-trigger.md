@@ -3,14 +3,14 @@ title: Azure Functions HTTP 触发器
 description: 了解如何通过 HTTP 调用 Azure 函数。
 author: craigshoemaker
 ms.topic: reference
-ms.date: 02/17/2020
+ms.date: 03/02/2020
 ms.author: v-junlch
-ms.openlocfilehash: 2d3ff9984c9e8615d13413e72d30085bd8f27aba
-ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
+ms.openlocfilehash: 8f42efd1a69c41df164bd974bdd86375b5ab47f1
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77494599"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292319"
 ---
 # <a name="azure-functions-http-trigger"></a>Azure Functions HTTP 触发器
 
@@ -429,11 +429,11 @@ public HttpResponseMessage<String> HttpTrigger(
 | route  | **Route** | 定义路由模板，控制函数将响应的请求 URL。 如果未提供任何值，则默认值为 `<functionname>`。 有关详细信息，请参阅[自定义 HTTP 终结点](#customize-the-http-endpoint)。 |
 | webHookType  | WebHookType  | 仅支持 1.x 版运行时。 <br/><br/>将 HTTP 触发器配置为充当指定提供程序的 [webhook](https://en.wikipedia.org/wiki/Webhook) 接收器。 如果未设置此属性，请不要设置 `methods` 属性。 Webhook 类型可以是以下值之一：<ul><li><code>genericJson</code>&mdash;不包含特定提供程序逻辑的常规用途 webhook 终结点。 此设置会将请求限制为仅请求使用 HTTP POST 以及内容类型为 `application/json`。</li><li><code>github</code>&mdash;该函数响应 [GitHub Webhook](https://developer.github.com/webhooks/)。 不要对 GitHub Webhook 使用 authLevel  属性。 有关详细信息，请参阅本文后面的“GitHub Webhook”部分。</li><li><code>slack</code>&mdash;该函数响应 [Slack Webhook](https://api.slack.com/outgoing-webhooks)。 不要对 Slack Webhook 使用 authLevel  属性。 有关详细信息，请参阅本文后面的“Slack Webhook”部分。</li></ul>|
 
-## <a name="usage"></a>使用情况
+## <a name="payload"></a>有效负载
 
 触发器输入类型声明为 `HttpRequest` 或自定义类型。 如果选择 `HttpRequest`，会获得对请求对象的完全访问权限。 对于自定义类型，运行时会尝试分析 JSON 请求正文，以设置对象属性。
 
-### <a name="customize-the-http-endpoint"></a>自定义 HTTP 终结点
+## <a name="customize-the-http-endpoint"></a>自定义 HTTP 终结点
 
 默认情况下，创建 HTTP 触发器的函数时，可通过以下格式的路由对该函数进行寻址：
 
@@ -564,7 +564,7 @@ public class HttpTriggerJava {
 }
 ```
 
-### <a name="using-route-parameters"></a>使用路由参数
+## <a name="using-route-parameters"></a>使用路由参数
 
 定义了函数的 `route` 模式的路由参数可用于每个绑定。 例如，如果将某个路由定义为 `"route": "products/{id}"`，则表存储绑定可以使用绑定配置中 `{id}` 参数的值。
 
@@ -581,7 +581,7 @@ public class HttpTriggerJava {
 }
 ```
 
-### <a name="working-with-client-identities"></a>使用客户端标识
+## <a name="working-with-client-identities"></a>使用客户端标识
 
 如果函数应用使用[应用服务身份验证/授权](../app-service/overview-authentication-authorization.md)，则可通过代码查看有关已验证身份的客户端的信息。 此信息以[平台注入的请求标头](../app-service/app-service-authentication-how-to.md#access-user-claims)的形式提供。 
 
@@ -663,9 +663,9 @@ public static void Run(JObject input, ClaimsPrincipal principal, ILogger log)
 
 ---
 
-### <a name="authorization-keys"></a>授权密钥
+## <a name="authorization-keys"></a>授权密钥
 
-Functions 允许使用密钥来增大开发期间访问 HTTP 函数终结点的难度。  标准 HTTP 触发器可能要求在请求中提供此类 API 密钥。 
+Functions 允许使用密钥来增大开发期间访问 HTTP 函数终结点的难度。  除非 HTTP 触发的函数的 HTTP 授权级别设置为 `anonymous`，否则请求中必须包含 API 密钥。 
 
 > [!IMPORTANT]
 > 尽管密钥可能有助于在开发期间模糊处理 HTTP 终结点，但它们并不适合用于在生产环境中保护 HTTP 触发器。 有关详细信息，请参阅[在生产环境中保护 HTTP 终结点](#secure-an-http-endpoint-in-production)。
@@ -673,19 +673,24 @@ Functions 允许使用密钥来增大开发期间访问 HTTP 函数终结点的�
 > [!NOTE]
 > 在 Functions 1.x 运行时中，Webhook 提供程序可以使用密钥以多种方式对请求授权，具体取决于提供程序支持何种方式。 [Webhook 和密钥](#webhooks-and-keys)对此进行了说明。 2\.x 及更高版本的 Functions 运行时不包括对 Webhook 提供程序的内置支持。
 
-有两种类型的密钥：
+#### <a name="authorization-scopes-function-level"></a>授权范围（函数级别）
 
-* **主机密钥**：由 Function App 中的所有函数共享这些密钥。 这些密钥用作 API 密钥时，可以访问 Function App 中的任何函数。
-* **函数密钥**：这些密钥仅适用于在其下定义它们的特定函数。 这些密钥用作 API 密钥时，只允许访问该函数。
+函数级密钥有两个授权范围：
+
+* **函数**：这些密钥仅适用于在其下定义它们的特定函数。 这些密钥用作 API 密钥时，只允许访问该函数。
+
+* **主机**：主机范围的密钥可用于访问函数应用中的所有函数。 这些密钥用作 API 密钥时，可以访问 Function App 中的任何函数。 
 
 命名每个密钥方便引用，并且在函数和主机级别存在名为“default”的默认密钥。 函数密钥优先于主机密钥。 如果为两个密钥定义的名称相同，则使用函数密钥。
 
-每个函数应用还有一个特殊的**主密钥**。 此密钥是名为 `_master` 的宿主密钥，提供对运行时 API 的管理访问。 无法撤消此密钥。 设置 `admin` 的授权级别时，请求必须使用主密钥；使用其他任何密钥会导致授权失败。
+#### <a name="master-key-admin-level"></a>主密钥（管理员级别） 
+
+每个函数应用还有一个名为 `_master` 的管理员级主机密钥。 除了提供对应用中所有函数的主机级的访问权限外，主密钥还提供对运行时 REST API 的管理访问权限。 无法撤消此密钥。 设置 `admin` 的授权级别时，请求必须使用主密钥；使用其他任何密钥会导致授权失败。
 
 > [!CAUTION]  
 > 由于主密钥在函数应用中授予提升的权限，不应与第三方共享此密钥或在本机客户端应用程序中分发此密钥。 选择管理员授权级别时，请务必审慎行事。
 
-### <a name="obtaining-keys"></a>获取密钥
+## <a name="obtaining-keys"></a>获取密钥
 
 密钥作为 Function App 的一部分存储在 Azure 中，并进行了静态加密。 若要查看密钥，请创建新的密钥或将密钥滚动到新值，在 [Azure 门户](https://portal.azure.cn)中导航到某个 HTTP 触发的函数，然后选择“管理”。 
 
@@ -693,7 +698,7 @@ Functions 允许使用密钥来增大开发期间访问 HTTP 函数终结点的�
 
 可以使用[密钥管理 API](https://github.com/Azure/azure-functions-host/wiki/Key-management-API) 以编程方式获取函数密钥。
 
-### <a name="api-key-authorization"></a>API 密钥的授权
+## <a name="api-key-authorization"></a>API 密钥的授权
 
 大多数 HTTP 触发器模板要求在请求中提供 API 密钥。 因此，HTTP 请求通常类似于以下 URL：
 
@@ -707,7 +712,7 @@ Functions 允许使用密钥来增大开发期间访问 HTTP 函数终结点的�
 > 在本地运行函数时，不管指定的授权级别设置为何，都会禁用授权。 发布到 Azure 之后，会强制实施触发器中的 `authLevel` 设置。 
 
 
-### <a name="secure-an-http-endpoint-in-production"></a>在生产环境中保护 HTTP 终结点
+## <a name="secure-an-http-endpoint-in-production"></a>在生产环境中保护 HTTP 终结点
 
 若要在生产环境中完全保护函数终结点，应考虑实施以下函数应用级安全选项之一：
 
@@ -719,24 +724,24 @@ Functions 允许使用密钥来增大开发期间访问 HTTP 函数终结点的�
 
 使用其中的某个函数应用级安全方法时，应将 HTTP 触发的函数授权级别设置为 `anonymous`。
 
-### <a name="webhooks"></a>Webhook
+## <a name="webhooks"></a>Webhook
 
 > [!NOTE]
 > Webhook 模式仅适用于 1.x 版 Functions 运行时。 进行此更改是为了提高 2.x 及更高版本中 HTTP 触发器的性能。
 
 在 1.x 版中，Webhook 模板为 Webhook 有效负载提供了额外的验证。 在 2.x 及更高版本中，基本 HTTP 触发器仍正常工作，且是针对 Webhook 的推荐方法。 
 
-#### <a name="github-webhooks"></a>GitHub Webhook
+### <a name="github-webhooks"></a>GitHub Webhook
 
 要响应 GitHub webhook，首先请创建包含 HTTP 触发器的函数，并将 webHookType 属性设置为 `github`  。 然后将其 URL 和 API 密钥复制到 GitHub 存储库的“添加 Webhook”页。  
 
 ![](./media/functions-bindings-http-webhook/github-add-webhook.png)
 
-#### <a name="slack-webhooks"></a>Slack Webhook
+### <a name="slack-webhooks"></a>Slack Webhook
 
 Slack webhook 为用户生成令牌，而非让用户指定它，所以必须使用 Slack 中的令牌配置特定于函数的密钥。 请参阅[授权密钥](#authorization-keys)。
 
-### <a name="webhooks-and-keys"></a>Webhook 和密钥
+## <a name="webhooks-and-keys"></a>Webhook 和密钥
 
 Webhook 授权由属于 HTTP 触发器的 webhook 接收器组件处理，其机制因 webhook 类型而异。 每种机制都依赖于一个密钥。 默认情况下，使用名为“default”的函数密钥。 要使用其他密钥，请将 webhook 提供程序配置为使用以下方式之一的请求发送密钥名称：
 
@@ -745,7 +750,7 @@ Webhook 授权由属于 HTTP 触发器的 webhook 接收器组件处理，其机
 
 ## <a name="limits"></a>限制
 
-HTTP 请求长度限制为 100 MB（104,857,600 字节），并且 URL 长度限制为 4 KB（4,096 字节）。 这些限制由运行时的 [Web.config 文件](https://github.com/Azure/azure-webjobs-sdk-script/blob/v1.x/src/WebJobs.Script.WebHost/Web.config)的 `httpRuntime` 元素指定。
+HTTP 请求长度限制为 100 MB（104,857,600 字节），并且 URL 长度限制为 4 KB（4,096 字节）。 这些限制由运行时的 [Web.config 文件](https://github.com/Azure/azure-functions-host/blob/3.x/src/WebJobs.Script.WebHost/web.config)的 `httpRuntime` 元素指定。
 
 如果使用 HTTP 触发器的函数未在 230 秒内完成，[Azure 负载均衡器](../app-service/faq-availability-performance-application-issues.md#why-does-my-request-time-out-after-230-seconds)将超时并返回 HTTP 502 错误。 该函数将继续运行，但将无法返回 HTTP 响应。 对于长时间运行的函数，我们建议你遵循异步模式，并返回可以 ping 通请求状态的位置。 有关函数可以运行多长时间的信息，请参阅[缩放和托管 - 消耗计划](functions-scale.md#timeout)。
 

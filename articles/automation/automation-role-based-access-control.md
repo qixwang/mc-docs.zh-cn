@@ -3,20 +3,16 @@ title: Azure 自动化中基于角色的访问控制
 description: 基于角色的访问控制 (RBAC) 可用于对 Azure 资源进行访问管理。 本文介绍如何设置 Azure 自动化中的 RBAC。
 keywords: 自动化 rbac, 基于角色的访问控制, azure rbac
 services: automation
-ms.service: automation
 ms.subservice: shared-capabilities
-author: WenJason
-ms.author: v-jay
 origin.date: 05/17/2018
-ms.date: 08/26/2019
+ms.date: 03/16/2020
 ms.topic: conceptual
-manager: digimobile
-ms.openlocfilehash: 4af8d49469afdebc15c87f888b65514cf3c6dd4e
-ms.sourcegitcommit: 599d651afb83026938d1cfe828e9679a9a0fb69f
+ms.openlocfilehash: d6cc8ea3df4ab970e3498bdaa455266062a49bbf
+ms.sourcegitcommit: dc862610e2169c1fce6fb0ae9eb7dd7567f86a0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69993470"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293706"
 ---
 # <a name="role-based-access-control-in-azure-automation"></a>Azure 自动化中基于角色的访问控制
 
@@ -175,7 +171,7 @@ Log Analytics 读者可以查看和搜索所有监视数据并查看监视设置
 |Microsoft.Insights/AlertRules/*|管理警报规则。|
 |Microsoft.Insights/components/*|管理 Application Insights 组件。|
 |Microsoft.Insights/DiagnosticSettings/*|管理诊断设置。|
-|Microsoft.Insights/eventtypes/*|列出订阅中的活动日志事件（管理事件）。 此权限适用于对活动日志的编程和门户访问。|
+|Microsoft.Insights/eventtypes/*|列出订阅中的活动日志事件（管理事件）。 此权限适用于以编程方式和通过门户访问活动日志。|
 |Microsoft.Insights/LogDefinitions/*|此权限对于需要通过门户访问活动日志的用户是必需的。 列出活动日志中的日志类别。|
 |Microsoft.Insights/MetricDefinitions/*|读取指标定义（资源的可用指标类型的列表）。|
 |Microsoft.Insights/Metrics/*|读取资源的指标。|
@@ -211,43 +207,43 @@ Log Analytics 读者可以查看和搜索所有监视数据并查看监视设置
 
 ## <a name="configure-rbac-for-your-automation-account"></a>为自动化帐户配置 RBAC
 
-以下部分演示如何通过[门户](#configure-rbac-using-the-azure-portal)和 [PowerShell](#configure-rbac-using-powershell) 在自动化帐户上配置 RBAC
+以下部分演示如何通过[门户](#configure-rbac-using-the-azure-portal)和 [PowerShell](#configure-rbac-using-powershell) 在自动化帐户上配置 RBAC。
 
 ### <a name="configure-rbac-using-the-azure-portal"></a>使用 Azure 门户配置 RBAC
 
 1. 登录到 [Azure 门户](https://portal.azure.cn/)，然后从“自动化帐户”页打开自动化帐户。  
-2. 单击右上角的“访问控制(IAM)”控件  。 此时会打开“访问控制(IAM)”页，可以在其中添加新的用户、组和应用程序，以便管理自动化帐户并查看可以为自动化帐户配置的现有角色  。
-3. 单击“角色分配”  选项卡。
+2. 单击右上角的“访问控制(IAM)”控件  以打开访问控制 (IAM) 页面。 可以使用此页面添加新的用户、组和应用程序，以便管理自动化帐户并查看可以为自动化帐户配置的现有角色。
+3. 单击“角色分配”选项卡  。
 
    ![访问按钮](media/automation-role-based-access-control/automation-01-access-button.png)
 
 #### <a name="add-a-new-user-and-assign-a-role"></a>添加新用户并分配角色
 
-1. 在“访问控制(IAM)”页中，单击“+ 添加角色分配”打开“添加角色分配”页，以便添加用户、组或应用程序并向其分配角色    。
+1. 从“访问控制(IAM)”页面中，单击“+ 添加角色分配”。  此操作将打开“添加角色分配”页，你可以在其中添加用户、组或应用程序，并分配相应的角色。
 
 2. 从可用角色列表中选择一个角色。 可以选择自动化帐户所支持的任何可用的内置角色，或者定义的任何自定义角色。
 
-3. 在“选择”字段中键入要对其授予权限的用户的用户名  。 从列表中选择用户，然后单击“保存”  。
+3. 在“选择”字段中键入要向其授予权限的用户的用户名  。 从列表中选择用户，然后单击“保存”  。
 
    ![添加用户](media/automation-role-based-access-control/automation-04-add-users.png)
 
-   现在，应当会看到该用户已添加到“用户”  页并且分配有所选角色
+   现在，你应当会看到该用户已添加到“用户”页并且分配有所选角色。
 
    ![列出用户](media/automation-role-based-access-control/automation-05-list-users.png)
 
-   也可以通过“角色”页向用户分配角色  。
-4. 单击“访问控制(IAM)”页中的“角色”打开“角色”页    。 在这里，可以查看角色的名称以及分配给该角色的用户和组的数目。
+   也可以从“角色”页向用户分配角色。
+4. 单击“访问控制(IAM)”页中的“角色”打开“角色”页  。 你可以查看角色的名称以及分配给该角色的用户和组的数目。
 
     ![从用户页分配角色](media/automation-role-based-access-control/automation-06-assign-role-from-users-blade.png)
 
    > [!NOTE]
-   > 基于角色的访问控制只能在自动帐户范围设置，不能在自动帐户下的任何资源上设置。
+   > 只能在自动化帐户范围设置基于角色的访问控制，不能在自动化帐户下的任何资源上设置。
 
 #### <a name="remove-a-user"></a>删除用户
 
 可以删除不管理自动化帐户或不再为组织工作的用户的访问权限。 下面是删除用户的步骤：
 
-1. 在“访问控制 (IAM)”页中，选择要删除的用户，然后单击“删除”   。
+1. 在“访问控制 (IAM)”页中，选择要删除的用户，然后单击“删除”  。
 2. 单击“分配详细信息”页中的“删除”按钮  。
 3. 单击“是”以确认删除  。
 
@@ -257,7 +253,7 @@ Log Analytics 读者可以查看和搜索所有监视数据并查看监视设置
 
 还可以使用以下 [Azure PowerShell cmdlet](../role-based-access-control/role-assignments-powershell.md) 为自动化帐户配置基于角色的访问权限：
 
-[Get-AzureRmRoleDefinition](https://docs.microsoft.com/previous-versions/azure/mt603792(v=azure.100)) 列出 Azure Active Directory 中提供的所有 RBAC 角色。 可以使用此命令和 **Name** 属性来列出特定角色可以执行的所有操作。
+[Get-AzureRmRoleDefinition](https://docs.microsoft.com/previous-versions/azure/mt603792(v=azure.100)) 列出 Azure Active Directory 中提供的所有 RBAC 角色。 可以使用此 cmdlet 和 *Name* 参数来列出特定角色可以执行的所有操作。
 
 ```powershell
 Get-AzureRmRoleDefinition -Name 'Automation Operator'
@@ -276,8 +272,9 @@ NotActions       : {}
 AssignableScopes : {/}
 ```
 
-[Get-AzureRmRoleAssignment](https://docs.microsoft.com/previous-versions/azure/mt619413(v=azure.100)) 列出指定作用域中的 Azure AD RBAC 角色分配。 在没有任何参数的情况下，此命令返回在订阅下进行的所有角色分配。 使用 **ExpandPrincipalGroups** 参数可列出针对指定用户和该用户所在组的访问权限分配。
-    **示例：** 使用以下命令列出自动化帐户中的所有用户及其角色。
+[Get-AzureRmRoleAssignment](https://docs.microsoft.com/previous-versions/azure/mt619413(v=azure.100)) 列出指定作用域中的 Azure AD RBAC 角色分配。 在没有任何参数的情况下，此 cmdlet 返回在订阅下进行的所有角色分配。 使用 *ExpandPrincipalGroups* 参数可列出针对指定用户和该用户所属组的访问权限分配。
+
+**示例：** 使用以下 cmdlet 列出自动化帐户中的所有用户及其角色。
 
 ```powershell
 Get-AzureRMRoleAssignment -scope '/subscriptions/<SubscriptionID>/resourcegroups/<Resource Group Name>/Providers/Microsoft.Automation/automationAccounts/<Automation account name>'
@@ -297,8 +294,9 @@ ObjectId           : 15f26a47-812d-489a-8197-3d4853558347
 ObjectType         : User
 ```
 
-[New-AzureRmRoleAssignment](https://docs.microsoft.com/previous-versions/azure/mt603580(v=azure.100)) 为特定范围内的用户、组和应用程序分配访问权限。
-    **示例：** 使用以下命令为“自动化帐户”范围中的用户分配“自动化操作员”角色。
+使用 [New-AzureRmRoleAssignment](https://docs.microsoft.com/previous-versions/azure/mt603580(v=azure.100)) 向用户、组和应用程序分配对特定作用域的访问权限。
+    
+**示例：** 使用以下命令为“自动化帐户”范围中的用户分配“自动化操作员”角色。
 
 ```powershell
 New-AzureRmRoleAssignment -SignInName <sign-in Id of a user you wish to grant access> -RoleDefinitionName 'Automation operator' -Scope '/subscriptions/<SubscriptionID>/resourcegroups/<Resource Group Name>/Providers/Microsoft.Automation/automationAccounts/<Automation account name>'
@@ -319,56 +317,56 @@ ObjectType         : User
 ```
 
 使用 [Remove-AzureRmRoleAssignment](https://docs.microsoft.com/previous-versions/azure/mt603781(v=azure.100)) 从特定范围中删除指定用户、组或应用程序的访问权限。
-    **示例：** 使用以下命令从“自动化帐户”范围的“自动化操作员”角色中删除用户。
+
+**示例：** 使用以下命令从“自动化帐户”范围的“自动化操作员”角色中删除用户。
 
 ```powershell
 Remove-AzureRmRoleAssignment -SignInName <sign-in Id of a user you wish to remove> -RoleDefinitionName 'Automation Operator' -Scope '/subscriptions/<SubscriptionID>/resourcegroups/<Resource Group Name>/Providers/Microsoft.Automation/automationAccounts/<Automation account name>'
 ```
 
-在上述示例中，请将**登录 ID**、**订阅 ID**、**资源组名称**和**自动化帐户名称**替换为帐户详细信息。 出现提示时选择“是”  以在继续删除用户角色分配前确认。
+在上述示例中，请将你要删除的用户的“登录 ID”、“订阅 ID”、“资源组名称”和“自动化帐户名称”替换为你的帐户详细信息。 出现提示时选择“是”  进行确认，以继续删除用户角色分配。
 
 ### <a name="user-experience-for-automation-operator-role---automation-account"></a>自动化操作员角色的用户体验 - 自动化帐户
 
-在“自动化帐户”范围内分配了“自动化操作员”角色的用户在查看被分配到的自动化帐户时，只能查看在自动化帐户中创建的 Runbook、Runbook 作业和计划的列表，而不能查看其定义。 该用户可以启动、停止、暂停、恢复或计划 Runbook 作业。 该用户无法访问其他自动化资源，例如配置、混合辅助角色组或 DSC 节点。
+在“自动化帐户”范围内分配有“自动化操作员”角色的用户在查看将其分配到的自动化帐户时，只能查看在自动化帐户中创建的 Runbook、Runbook 作业和计划的列表。 此用户无法查看这些项的定义。 此用户可以启动、停止、暂停、恢复或计划 Runbook 作业。 但是，此用户无法访问其他自动化资源，例如配置、混合辅助角色组或 DSC 节点。
 
 ![对资源无访问权限](media/automation-role-based-access-control/automation-10-no-access-to-resources.png)
 
 ## <a name="configure-rbac-for-runbooks"></a>为 Runbook 配置 RBAC
 
-通过 Azure 自动化，可以将 RBAC 分配给特定的 Runbook。 若要执行此操作，运行以下脚本将用户添加到特定 Runbook。 以下脚本可由自动化帐户管理员或租户管理员运行。
+通过 Azure 自动化，可以将 RBAC 分配给特定的 Runbook。 若要执行此操作，运行以下脚本将用户添加到特定 Runbook。 自动化帐户管理员或租户管理员可以运行此脚本。
 
 ```powershell
-$rgName = "<Resource Group Name>" # Resource Group name for the Automation Account
-$automationAccountName ="<Automation Account Name>" # Name of the Automation Account
+$rgName = "<Resource Group Name>" # Resource Group name for the Automation account
+$automationAccountName ="<Automation account name>" # Name of the Automation account
 $rbName = "<Name of Runbook>" # Name of the runbook
 $userId = "<User ObjectId>" # Azure Active Directory (AAD) user's ObjectId from the directory
 
-# Gets the Automation Account resource
+# Gets the Automation account resource
 $aa = Get-AzureRmResource -ResourceGroupName $rgName -ResourceType "Microsoft.Automation/automationAccounts" -ResourceName $automationAccountName
 
 # Get the Runbook resource
 $rb = Get-AzureRmResource -ResourceGroupName $rgName -ResourceType "Microsoft.Automation/automationAccounts/runbooks" -ResourceName "$automationAccountName/$rbName"
 
-# The Automation Job Operator role only needs to be ran once per user.
+# The Automation Job Operator role only needs to be run once per user.
 New-AzureRmRoleAssignment -ObjectId $userId -RoleDefinitionName "Automation Job Operator" -Scope $aa.ResourceId
 
 # Adds the user to the Automation Runbook Operator role to the Runbook scope
 New-AzureRmRoleAssignment -ObjectId $userId -RoleDefinitionName "Automation Runbook Operator" -Scope $rb.ResourceId
 ```
 
-一旦运行，用户可以登录到 Azure 门户并查看“所有资源”  。 在列表中，他们会看到他们在其中被添加为“自动化 Runbook 操作员”  的 Runbook。
+在运行此脚本后，让用户登录到 Azure 门户并查看“所有资源”  。 在列表中，用户可以看到自己作为自动化 Runbook 操作员添加的 Runbook。
 
 ![门户中的 Runbook RBAC](./media/automation-role-based-access-control/runbook-rbac.png)
 
 ### <a name="user-experience-for-automation-operator-role---runbook"></a>自动化操作员角色的用户体验 - Runbook
 
-在“Runbook”范围内分配了“自动化操作员”角色的用户在查看被分配到的 Runbook 时，只能启动 Runbook 和查看 Runbook 作业。
+在 Runbook 范围内分配有“自动化操作员”角色的用户在查看所分配的 Runbook 时，只能启动 Runbook 以及查看 Runbook 作业。
 
 ![仅有权启动](media/automation-role-based-access-control/automation-only-start.png)
 
 ## <a name="next-steps"></a>后续步骤
 
-* 有关为 Azure 自动化配置 RBAC 的不同方式的信息，请参阅 [使用 Azure PowerShell 管理 RBAC](../role-based-access-control/role-assignments-powershell.md)。
-* 有关以不同方式启动 Runbook 的详细信息，请参阅 [启动 Runbook](automation-starting-a-runbook.md)
-* 有关不同 Runbook 类型的信息，请参阅 [Azure 自动化 Runbook 类型](automation-runbook-types.md)
-
+* 有关为 Azure 自动化配置 RBAC 的各种方式的信息，请参阅[使用 Azure PowerShell 管理 RBAC](../role-based-access-control/role-assignments-powershell.md)。
+* 有关启动 Runbook 的各种方式的详细信息，请参阅[启动 Runbook](automation-starting-a-runbook.md)。
+* 有关 Runbook 类型的信息，请参阅 [Azure 自动化 Runbook 类型](automation-runbook-types.md)。

@@ -1,7 +1,7 @@
 ---
 title: 语音转文本 - 语音服务
 titleSuffix: Azure Cognitive Services
-description: 使用语音转文本功能，可将音频流实时听录为文本。 应用程序、工具或设备可以使用、显示和处理此文本输入。
+description: 使用语音转文本功能，可将音频流实时听录为文本。 应用程序、工具或设备可以使用、显示和处理此文本输入。 此服务可与文本转语音（语音合成）和语音翻译功能无缝协作。
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -9,20 +9,27 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 origin.date: 12/11/2019
-ms.date: 01/27/2020
+ms.date: 03/23/2020
 ms.author: v-tawe
-ms.openlocfilehash: b5d90105ff9507d713cedbca3d9b729809098ac1
-ms.sourcegitcommit: e99166b2db4b292a7044e5f26b3e3547fef22ee9
+ms.openlocfilehash: 49e2b6da9f259a13d92512735dda0ac702c17b9a
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76269946"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293284"
 ---
 # <a name="what-is-speech-to-text"></a>什么是语音转文本？
 
 使用语音服务提供的语音转文本（也称为语音识别）功能，可将音频流实时听录为文本。 应用程序、工具或设备可以使用、显示和处理此文本即命令输入。 此服务由 Microsoft 对 Cortana 和 Office 产品使用的同一识别技术提供支持。 它可与<a href="./speech-translation.md" target="_blank">翻译<span class="docon docon-navigate-external x-hidden-focus"></span></a>和<a href="./text-to-speech.md" target="_blank">文本转语音<span class="docon docon-navigate-external x-hidden-focus"></span></a>服务产品无缝地协同工作。 有关可用语音转文本语言的完整列表，请参阅[支持的语言](language-support.md#speech-to-text)。
 
 语音转文本服务默认使用通用语言模型。 此模型已使用 Microsoft 自有的数据训练，部署在云中。 它非常适合用于对话和听写方案。 使用语音转文本在独特的环境中进行识别和听录时，可以创建并训练自定义的声学、语言和发音模型。 自定义有助于解决环境干扰或特定于行业的词汇的问题。
+
+<!-- 
+> [!NOTE]
+> Bing Speech was decommissioned on October 15, 2019. If your applications, tools, or products are using the Bing Speech APIs or Custom Speech, we've created guides to help you migrate to the Speech service.
+> - [Migrate from Bing Speech to the Speech service](how-to-migrate-from-bing-speech.md)
+> - [Migrate from Custom Speech to the Speech service](how-to-migrate-from-custom-speech-service.md)
+-->
 
 ## <a name="get-started-with-speech-to-text"></a>语音转文本入门
 
@@ -45,7 +52,11 @@ GitHub 上提供了语音 SDK 的示例代码。 这些示例涵盖了常见方�
 - [语音转文本示例 (SDK)](https://github.com/Azure-Samples/cognitive-services-speech-sdk)
 - [批量听录示例 (REST)](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/batch)
 
-<!-- ## Customization -->
+## <a name="customization"></a>自定义
+
+除了标准语音服务模型外，还可以创建自定义模型。 自定义有助于克服语音识别障碍，如说话风格、词汇和背景噪音，详见[自定义语音识别](how-to-custom-speech.md)。 自定义选项因语言/区域设置而异，请参阅[支持的语言](supported-languages.md)以验证相关支持。
+
+[!INCLUDE [speech-reference-doc-links](includes/speech-reference-doc-links.md)]
 
 ## <a name="next-steps"></a>后续步骤
 

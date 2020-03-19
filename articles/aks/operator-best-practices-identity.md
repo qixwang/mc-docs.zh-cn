@@ -2,18 +2,16 @@
 title: 操作员最佳做法 - Azure Kubernetes 服务 (AKS) 中的标识
 description: 了解有关为 Azure Kubernetes 服务 (AKS) 中的群集管理身份验证和授权的群集操作员最佳做法
 services: container-service
-author: rockboyfor
-ms.service: container-service
 ms.topic: conceptual
 origin.date: 04/24/2019
-ms.date: 07/29/2019
+ms.date: 03/09/2020
 ms.author: v-yeche
-ms.openlocfilehash: 4def14cac6112ada2e68b15d4c55641244ffea8e
-ms.sourcegitcommit: 57994a3f6a263c95ff3901361d3e48b10cfffcdd
+ms.openlocfilehash: 30dc78a6e70792258ff19eb60e6f884a430ef1a1
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70500739"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79290717"
 ---
 # <a name="best-practices-for-authentication-and-authorization-in-azure-kubernetes-service-aks"></a>有关 Azure Kubernetes 服务 (AKS) 中的身份验证和授权的最佳做法
 
@@ -49,7 +47,7 @@ Kubernetes 群集的开发人员和应用程序所有者需要访问不同的资
 
 **最佳做法指导** - 使用 Kubernetes RBAC 定义用户或组对群集中的资源拥有的权限。 创建角色和绑定，用于分配所需的最少量权限。 与 Azure AD 集成，使用户状态或组成员身份的任何更改可自动更新，并使群集资源访问权限保持最新状态。
 
-在 Kubernetes 中，可以针对群集中的资源提供精细访问控制。 可在群集级别或者针对特定的命名空间定义权限。 可以定义能够使用哪些权限管理哪些资源。 这些角色将结合绑定应用到用户或组。 有关角色、群集角色和绑定的详细信息，请参阅 [Azure Kubernetes 服务 (AKS) 的访问和标识选项][aks-concepts-identity]。   
+在 Kubernetes 中，可以针对群集中的资源提供精细访问控制。 可在群集级别或者针对特定的命名空间定义权限。 可以定义能够使用哪些权限管理哪些资源。 然后，将这些角色通过绑定应用于用户或组。 有关角色、群集角色和绑定的详细信息，请参阅 [Azure Kubernetes 服务 (AKS) 的访问和标识选项][aks-concepts-identity]。   
 
 例如，可以创建一个角色，用于授予对名为 *finance-app* 的命名空间中的资源的完全访问权限，如以下示例 YAML 清单中所示：
 
@@ -123,7 +121,7 @@ roleRef:
 
 有关 AKS 中的群集操作的详细信息，请参阅以下最佳做法：
 
-* [多租户和群集隔离][aks-best-practices-scheduler]
+* [多租户和群集隔离][aks-best-practices-cluster-isolation]
 * [基本 Kubernetes 计划程序功能][aks-best-practices-scheduler]
 * [高级 Kubernetes 计划程序功能][aks-best-practices-advanced-scheduler]
 
@@ -143,4 +141,4 @@ roleRef:
 [aks-best-practices-cluster-isolation]: operator-best-practices-cluster-isolation.md
 [azure-ad-rbac]: azure-ad-rbac.md
 
-<!-- Update_Description: wording update, update link -->
+<!-- Update_Description: update meta properties, wording update, update link -->

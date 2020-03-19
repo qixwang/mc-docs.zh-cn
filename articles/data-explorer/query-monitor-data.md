@@ -8,13 +8,13 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: conceptual
 origin.date: 01/28/2020
-ms.date: 02/17/2020
-ms.openlocfilehash: 7b5def2c6f51f16e122a60aff7611500a062936c
-ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
+ms.date: 03/23/2020
+ms.openlocfilehash: cc0667a157eb9e72307cebbe3b6915c24f08d1a9
+ms.sourcegitcommit: 4ba6d7c8bed5398f37eb37cf5e2acafcdcc28791
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77037944"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79134030"
 ---
 # <a name="query-data-in-azure-monitor-using-azure-data-explorer-preview"></a>使用 Azure 数据资源管理器（预览版）查询 Azure Monitor 中的数据
 
@@ -24,7 +24,7 @@ Azure 数据资源管理器代理流：
 
 ![ADX 代理流](media/adx-proxy/adx-proxy-flow.png)
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 > [!NOTE]
 > ADX 代理处于预览模式。 [连接到代理](#connect-to-the-proxy)，为群集启用 ADX 代理功能。 如果有任何疑问，请联系 [ADXProxy](mailto:adxproxy@microsoft.com) 团队。

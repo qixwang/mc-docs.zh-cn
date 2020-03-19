@@ -1,7 +1,6 @@
 ---
 title: Azure Monitor 中的监视解决方案 | Azure Docs
 description: Azure Monitor 中的监视解决方案是逻辑、可视化效果和数据采集规则的集合，提供围绕特定问题领域制定的指标。  本文提供了有关安装和使用监视解决方案的信息。
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: lingliw
@@ -9,12 +8,12 @@ manager: digimobile
 origin.date: 08/13/2019
 ms.date: 08/23/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 857832dbb64063c95b09d65ec728f4a455a1ca38
-ms.sourcegitcommit: 13431cf4d69142ed7feb8d12d967a502bf9ff346
+ms.openlocfilehash: db7f687c65129f0610584c666ff611e16785bd76
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75599927"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292909"
 ---
 # <a name="monitoring-solutions-in-azure-monitor"></a>Azure Monitor 中的监视解决方案
 监视解决方案利用 Azure 中的服务来提供特定应用程序或服务的更多操作见解。 本文简要概述了 Azure 中的监视解决方案，并详细介绍如何了使用和安装这些解决方案。
@@ -24,15 +23,14 @@ ms.locfileid: "75599927"
 
 监视解决方案通常收集日志数据并提供查询和视图，用于分析收集的数据。 这些解决方案还可以利用 Azure 自动化等其他服务来执行与应用程序或服务相关的操作。
 
-可以在 Azure Monitor 中针对你使用的任何应用程序和服务添加监视解决方案。 这些解决方案是免费提供的，但收集数据可能会产生使用费。 除了由 Microsoft 提供的解决方案以外，合作伙伴和客户还可以[创建管理解决方案](solutions-creating.md)，以便在各自环境中使用或通过社区提供给客户使用。
+可以在 Azure Monitor 中针对你使用的任何应用程序和服务添加监视解决方案。 这些解决方案通常是免费提供的，但收集的数据可能会产生使用费用。 除了由 Microsoft 提供的解决方案以外，合作伙伴和客户还可以[创建管理解决方案](solutions-creating.md)，以便在各自环境中使用或通过社区提供给客户使用。
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="use-monitoring-solutions"></a>使用监视解决方案
 打开 Azure Monitor 的“概述”页来为该工作区中安装的每个解决方案显示一个磁贴  。 
 
-1. 登录到 Azure 门户。
-1. 打开“所有服务”并找到“监视器”   。
+1. 转到 [Azure 门户](https://portal.azure.cn)。 搜索并选择“监视器”  。
 1. 在“见解”菜单下选择“更多”   。
 1. 使用屏幕顶部的下拉框更改工作区或用于磁贴的时间范围。
 1. 单击解决方案的磁贴会打开其视图，其中包含该解决方案收集的数据的更详细分析。
@@ -44,9 +42,8 @@ ms.locfileid: "75599927"
 ## <a name="list-installed-monitoring-solutions"></a>列出已安装的监视解决方案 
 使用以下过程列出订阅中安装的监视解决方案。
 
-1. 登录到 Azure 门户。
-1. 打开“所有服务”并找到“解决方案”   。
-4. 将列出所有工作区中安装的解决方案。 解决方案名称的后面是在其中安装该解决方案的工作区的名称。
+1. 转到 [Azure 门户](https://portal.azure.cn)。 搜索并选择“解决方案”  。
+1. 将列出所有工作区中安装的解决方案。 解决方案名称的后面是在其中安装该解决方案的工作区的名称。
 1. 使用屏幕顶部的下拉框可按订阅或资源组进行筛选。
 
 
@@ -73,7 +70,7 @@ ms.locfileid: "75599927"
 社区成员可以将管理解决方案提交到 Azure 快速入门模板。 可以直接安装这些解决方案，或者下载模板，以便今后安装。
 
 1. 请遵循 [Log Analytics 工作区和自动化帐户](#log-analytics-workspace-and-automation-account)中所述的过程来链接工作区和帐户。
-2. 转到 [Azure 快速入门模板](https://docs.microsoft.com/azure/templates/)。 
+2. 转到 [Azure 快速入门模板](https://azure.microsoft.com/documentation/templates/)。 
 3. 搜索感兴趣的解决方案。
 4. 从结果中选择解决方案以查看其详细信息。
 5. 单击“部署到 Azure”按钮。 

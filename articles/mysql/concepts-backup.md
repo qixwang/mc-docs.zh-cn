@@ -1,18 +1,18 @@
 ---
-title: 在 Azure Database for MySQL 中进行备份和还原
+title: 备份和还原 - Azure Database for MySQL
 description: 了解如何自动备份和还原 Azure Database for MySQL 服务器。
 author: WenJason
 ms.author: v-jay
 ms.service: mysql
 ms.topic: conceptual
-origin.date: 02/28/2018
-ms.date: 12/02/2019
-ms.openlocfilehash: 6bfdb7dc0bc4fd38b3fe005828440cf01dfa9d41
-ms.sourcegitcommit: 481542df432d52b7d4823811cef94772e4e0f192
+origin.date: 12/02/2019
+ms.date: 03/16/2020
+ms.openlocfilehash: 1606e428eaa35d5cf387666f4b4342d1b183c914
+ms.sourcegitcommit: 32997a7d7585deaeb0ab7b8f928d397b18b343fa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74530656"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79295849"
 ---
 # <a name="backup-and-restore-in-azure-database-for-mysql"></a>在 Azure Database for MySQL 中进行备份和还原
 
@@ -25,9 +25,11 @@ Azure Database for MySQL 可自动创建服务器备份并将其存储在用户�
 
 Azure Database for MySQL 对数据文件和事务日志进行备份。 我们会进行完整备份或差异备份。 可以通过这些备份将服务器还原到所配置的备份保留期中的任意时间点。 默认的备份保留期为七天。 可以[选择将其配置](howto-restore-server-portal.md#set-backup-configuration)为长达 35 天。 所有备份都使用 AES 256 位加密进行加密。
 
+无法导出这些备份文件。 这些备份只能用于 Azure Database for MySQL 中的还原操作。 可以使用 [mysqldump](concepts-migrate-dump-restore.md) 复制数据库。
+
 ### <a name="backup-frequency"></a>备份频率
 
-通常情况下，完整备份每周进行一次，差异备份每天进行两次，事务日志备份每五分钟进行一次。 第一次完整备份在创建服务器后立即进行计划。 初始备份在大型已还原服务器上可能耗时较长。 新服务器可以还原到的最早时间点是完成初始完整备份的时间。
+通常情况下，完整备份每周进行一次，差异备份每天进行两次，事务日志备份每五分钟进行一次。 第一次完整备份在创建服务器后立即进行计划。 在大型还原服务器上，初始完整备份可能需要更长时间。 新服务器可以还原到的最早时间点是完成初始完整备份的时间。
 
 ### <a name="backup-redundancy-options"></a>备份冗余选项
 

@@ -11,13 +11,13 @@ author: WenJason
 ms.author: v-jay
 ms.reviewer: sstein, carlrab
 origin.date: 06/03/2019
-ms.date: 12/16/2019
-ms.openlocfilehash: 8635bb850f3e91b4caf977755c9a47ad58b5a44f
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.date: 03/16/2020
+ms.openlocfilehash: 8de6d8b9c3270e19596b8918abb6a69b3430222a
+ms.sourcegitcommit: dc862610e2169c1fce6fb0ae9eb7dd7567f86a0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336126"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293761"
 ---
 # <a name="use-read-only-replicas-to-load-balance-read-only-query-workloads"></a>使用只读副本对只读的查询工作负荷进行负载均衡
 
@@ -36,7 +36,7 @@ ms.locfileid: "75336126"
 如果你希望确保应用程序始终连接到主要副本，而不管 SQL 连接字符串中的 `ApplicationIntent` 设置如何，则必须在创建数据库或更改其配置时显式禁用读取扩展。 例如，如果将数据库从“标准”或“常规用途”层级升级到“高级”、“业务关键”或“超大规模”层级，并想要确保所有连接继续定向到主要副本，请禁用读取扩展。有关如何禁用读取扩展的详细信息，请参阅[启用和禁用读取扩展](#enable-and-disable-read-scale-out)。
 
 > [!NOTE]
-> 只读副本不支持查询数据存储、扩展事件、SQL Profiler 和审核功能。
+> 只读副本不支持查询数据存储、扩展事件和 SQL Profiler 功能。
 
 ## <a name="data-consistency"></a>数据一致性
 

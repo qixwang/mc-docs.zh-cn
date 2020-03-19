@@ -4,42 +4,32 @@ description: 本快速入门使用组注册和单独注册。 在本快速入门
 author: wesmc7777
 ms.author: wesmc
 origin.date: 11/08/2019
-ms.date: 03/02/2020
+ms.date: 03/23/2020
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 ms.devlang: java
 ms.custom: mvc
-ms.openlocfilehash: de6988cef65cea5f3d7dca37442e29be8b13e1fd
-ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
+ms.openlocfilehash: 69a1711ee708d44343c4673755bfac289bf994b8
+ms.sourcegitcommit: 4ba6d7c8bed5398f37eb37cf5e2acafcdcc28791
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77494392"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79133955"
 ---
 # <a name="quickstart-enroll-x509-devices-to-the-device-provisioning-service-using-java"></a>快速入门：使用 Java 将 X.509 设备注册到设备预配服务
 
 [!INCLUDE [iot-dps-selector-quick-enroll-device-x509](../../includes/iot-dps-selector-quick-enroll-device-x509.md)]
 
-本快速入门展示了如何使用 Java 以编程方式将一组 X.509 模拟设备注册到 Azure IoT 中心设备预配服务。 通过创建[注册组](concepts-service.md#enrollment-group)或[个人注册](concepts-service.md#individual-enrollment)将设备注册到预配服务实例。 本快速入门展示了如何创建这两种类型的注册。 该注册是在参考示例 Java 应用程序的情况下使用 [Java 服务 SDK](https://azure.github.io/azure-iot-sdk-java/service/) 创建的。 
+在本快速入门中，你将使用 Java 以编程方式将一组 X.509 模拟设备注册到 Azure IoT 中心设备预配服务。 通过创建注册组或单个注册，将设备注册到预配服务实例。 本快速入门介绍如何使用 Java 服务 SDK 和示例 Java 应用程序创建这两种类型的注册。
 
-本快速入门假设你已创建了 IoT 中心和设备预配服务实例。 如果尚未创建这些资源，请先完成[使用 Azure 门户设置 IoT 中心设备预配服务](./quick-setup-auto-provision.md)快速入门，然后再继续学习本文。
+## <a name="prerequisites"></a>先决条件
 
-虽然 Java 服务 SDK 在 Windows 和 Linux 计算机上均适用，但本文使用 Windows 开发计算机来演示注册过程。
-
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
-
-## <a name="prerequisites"></a>必备条件
-
-* 安装 [Java SE 开发工具包 8](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable)。
-* 安装 [Maven 3](https://maven.apache.org/download.cgi)。 可以通过运行以下命令来验证当前的 Maven 版本：
-
-    ```cmd/sh
-    mvn --version
-    ```
-
-* 安装 [Git](https://git-scm.com/download/)。
-
+- 完成[使用 Azure 门户设置 IoT 中心设备预配服务](./quick-setup-auto-provision.md)。
+- 具有活动订阅的 Azure 帐户。 [创建一个试用帐户](https://wd.azure.cn/pricing/1rmb-trial/)。
+- [Java SE 开发工具包 8](https://aka.ms/azure-jdks)。 本快速入门将在下面安装 [Java 服务 SDK](https://azure.github.io/azure-iot-sdk-java/service/)。 它可以在 Windows 和 Linux 上运行。 本快速入门使用 Windows。
+- [Maven 3](https://maven.apache.org/download.cgi)。
+- [Git](https://git-scm.com/download/)。
 
 <a id="javasample"></a>
 

@@ -11,15 +11,15 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
 ms.topic: article
-origin.date: 10/02/2019
+origin.date: 02/24/2020
 ms.author: v-yiso
-ms.date: 11/11/2019
-ms.openlocfilehash: cb0d6621b81accde7d3a16b22e5fce41bf987588
-ms.sourcegitcommit: 642a4ad454db5631e4d4a43555abd9773cae8891
+ms.date: 03/23/2020
+ms.openlocfilehash: a93304ecc4407f333d83dc9a861805ecb6757310
+ms.sourcegitcommit: 32997a7d7585deaeb0ab7b8f928d397b18b343fa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2019
-ms.locfileid: "73425893"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79295982"
 ---
 # <a name="use-apache-spark-to-read-and-write-apache-hbase-data"></a>使用 Apache Spark 读取和写入 Apache HBase 数据
 
@@ -27,10 +27,10 @@ ms.locfileid: "73425893"
 
 ## <a name="prerequisites"></a>先决条件
 
-* 部署在同一虚拟网络中的两个单独的 HDInsight 群集。 一个HBase 和一个至少安装了 Spark 2.1 (HDInsight 3.6) 的 Spark。 有关详细信息，请参阅[使用 Azure 门户在 HDInsight 中创建基于 Linux 的群集](hdinsight-hadoop-create-linux-clusters-portal.md)。
+* 部署在同一[虚拟网络](./hdinsight-plan-virtual-network-deployment.md)中的两个单独的 HDInsight 群集。 一个HBase 和一个至少安装了 Spark 2.1 (HDInsight 3.6) 的 Spark。 有关详细信息，请参阅[使用 Azure 门户在 HDInsight 中创建基于 Linux 的群集](hdinsight-hadoop-create-linux-clusters-portal.md)。
 
 * SSH 客户端。 有关详细信息，请参阅[使用 SSH 连接到 HDInsight (Apache Hadoop)](hdinsight-hadoop-linux-use-ssh-unix.md)。
-* 群集主存储的 [URI 方案](hdinsight-hadoop-linux-information.md#URI-and-scheme)。 对于 Azure Blob 存储，此值为 wasb://；对于 Azure Data Lake Storage Gen2，此值为 abfs://。 如果为 Blob 存储或 Data Lake Storage Gen2 启用了安全传输，则 URI 分别是 wasbs:// 或 abfss://。另请参阅[安全传输](../storage/common/storage-require-secure-transfer.md)。
+* 群集主存储的 [URI 方案](hdinsight-hadoop-linux-information.md#URI-and-scheme)。 对于 Azure Blob 存储，此方案为 wasb://；对于 Azure Data Lake Storage Gen2，此方案为 abfs://。 如果为 Blob 存储或 Data Lake Storage Gen2 启用了安全传输，则 URI 分别是 wasbs:// 或 abfss://。另请参阅[安全传输](../storage/common/storage-require-secure-transfer.md)。
 
 
 ## <a name="overall-process"></a>整体进程
@@ -100,9 +100,17 @@ hdfs dfs -copyFromLocal /etc/hbase/conf/hbase-site.xml wasbs://SPARK_STORAGE_CON
 
 然后退出与 HBase 群集的 ssh 连接。
 
+```bash
+exit
+```
+
 ## <a name="put-hbase-sitexml-on-your-spark-cluster"></a>将 hbase-site.xml 放置于 Spark 集群上
 
-1. 使用 SSH 连接到 Spark 集群的头节点。
+1. 使用 SSH 连接到 Spark 集群的头节点。 编辑以下命令，将 `SPARKCLUSTER` 替换为 Spark 群集的名称，然后输入该命令：
+
+    ```cmd
+    ssh sshuser@SPARKCLUSTER-ssh.azurehdinsight.cn
+    ```
 
 2. 输入以下命令，将 `hbase-site.xml` 从 Spark 群集的默认存储复制到群集本地存储上的 Spark 2 配置文件夹中：
 

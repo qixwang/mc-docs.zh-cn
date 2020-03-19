@@ -6,15 +6,15 @@ author: WenJason
 ms.service: storage
 ms.topic: conceptual
 origin.date: 10/10/2019
-ms.date: 02/10/2020
+ms.date: 03/09/2020
 ms.author: v-jay
 ms.subservice: blobs
-ms.openlocfilehash: 6bb9f233888cef21020b25020adc4b921eced370
-ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
+ms.openlocfilehash: b7aa1bccec568429918adf4088347dec5ea5a466
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77028897"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292332"
 ---
 # <a name="performance-and-scalability-checklist-for-blob-storage"></a>Blob 存储的性能与可伸缩性查检表
 
@@ -48,6 +48,7 @@ Azure 存储在容量、事务速率和带宽方面存在可伸缩性与性能�
 | &nbsp; |重试 |[对于不可重试的错误，应用程序是否会避免重试？](#non-retryable-errors) |
 | &nbsp; |复制 Blob |[是否以最高效的方式复制 Blob？](#blob-copy-apis) |
 | &nbsp; |复制 Blob |[是否使用最新版本的 AzCopy 执行批量复制操作？](#use-azcopy) |
+| &nbsp; |内容分发 |[是否要使用 CDN 进行内容分发？](#content-distribution) |
 | &nbsp; |使用元数据 |[是否会将频繁使用的有关 Blob 的元数据存储在其元数据中？](#use-metadata) |
 | &nbsp; |快速上传 |[尝试快速上传一个 Blob 时，是否会以并行方式上传块？](#upload-one-large-blob-quickly) |
 | &nbsp; |快速上传 |[尝试快速上传许多 Blob 时，是否会以并行方式上传 Blob？](#upload-many-blobs-quickly) |
@@ -82,11 +83,15 @@ Azure 存储在容量、事务速率和带宽方面存在可伸缩性与性能�
 
 如果有大量的客户端并发访问单个 Blob，则需要要考虑每个 Blob 和每个存储帐户的可伸缩性目标。 可以访问单个 Blob 的客户端的具体数量根据各种因素（例如，同时请求 Blob 的客户端数、Blob 的大小和网络状况）而有所不同。
 
+如果 blob 可以通过 CDN（如从网站提供的图像或视频）分发，则可以使用 CDN。 有关详细信息，请参阅标题为[内容分发](#content-distribution)的部分。
+
 在其他情况下，例如在数据保密的科学模拟下，有两个选项。 第一个选项是错开工作负荷的访问，以确保在某个时间段内访问 Blob，而不是同时访问 Blob。 另一个选项是暂时将 Blob 复制到多个存储帐户，以增加每个 Blob 和存储帐户内的 IOPS 总数。 结果将根据应用程序的行为而异，因此，请务必在设计期间测试并发模式。
 
 ### <a name="bandwidth-and-operations-per-blob"></a>每个 Blob 的带宽和操作
 
 单个 Blob 每秒最多可支持 500 个请求。 如果多个客户端需要读取同一 Blob，而你可能会超过此限制，请考虑使用块 Blob 存储帐户。 块 Blob 存储帐户提供更高的请求速率或每秒 I/O 操作次数 (IOPS)。
+
+还可以使用内容分发网络 (CDN)（例如 Azure CDN）在 Blob 上分发操作。 有关 Azure CDN 的详细信息，请参阅 [Azure CDN 概述](../../cdn/cdn-overview.md)。  
 
 ## <a name="partitioning"></a>分区
 
@@ -131,6 +136,8 @@ Blob 存储使用基于范围的分区方案来进行缩放和负载均衡。 �
 在任何分布式环境中，将客户端放置在服务器附近可提供最佳性能。 要以最低的延迟访问 Azure 存储，则最好是将客户端放置在同一 Azure 区域内。 例如，如果 Azure Web 应用使用 Azure 存储，请将二者放在同一个区域（例如中国东部或中国北部）。 将资源放到一起可降低延迟和成本，因为在同一个区域使用带宽是免费的。  
 
 如果客户端应用程序要访问 Azure 存储但不是托管在 Azure 中（例如移动设备应用或本地企业服务），则将存储帐户放在靠近这些客户端的区域可降低延迟。 如果客户端广泛分布在各地，请考虑在每个区域使用一个存储帐户。 如果应用程序存储的数据是特定于各个用户的，不需要在存储帐户之间复制数据，则此方法更容易实施。
+
+若要广泛地分发 blob 内容，请使用内容分发网络，如 Azure CDN。 有关 Azure CDN 的详细信息，请参阅 [Azure CDN](../../cdn/cdn-overview.md)。  
 
 ## <a name="sas-and-cors"></a>SAS 和 CORS
 
@@ -236,6 +243,12 @@ Azure 存储提供多种解决方案用于在存储帐户内部、在存储帐�
 ### <a name="use-azcopy"></a>使用 AzCopy
 
 AzCopy 命令行实用工具是向/从以及跨存储帐户批量传输 Blob 的简单高效选项。 AzCopy 已针对此方案进行优化，可以实现较高的传输速率。 AzCopy 版本 10 使用 `Put Block From URL` 操作跨存储帐户复制 Blob 数据。 有关详细信息，请参阅[使用 AzCopy v10 将数据复制或移到 Azure 存储](/storage/common/storage-use-azcopy-v10)。  
+
+## <a name="content-distribution"></a>内容分发
+
+有时，应用程序需要向位于同一区域或多个区域的许多用户提供相同的内容（例如网站主页中使用的产品演示视频）。 在这种情况下，使用 Azure CDN 等内容分发网络 (CDN) 按地理位置分发 blob 内容。 与存在于一个区域且无法以低延迟向其他区域交付内容的 Azure 存储帐户不同，Azure CDN 使用位于全世界多个数据中心的服务器。 此外，与单个存储帐户相比，CDN 通常可以支持更高的出口限制。  
+
+有关 Azure CDN 的详细信息，请参阅 [Azure CDN](../../cdn/cdn-overview.md)。
 
 ## <a name="use-metadata"></a>使用元数据
 

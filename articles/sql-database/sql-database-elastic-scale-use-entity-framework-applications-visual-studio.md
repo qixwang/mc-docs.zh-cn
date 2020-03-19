@@ -1,5 +1,5 @@
 ---
-title: 将弹性数据库客户端库与实体框架配合使用 | Microsoft 文档
+title: 将弹性数据库客户端库与实体框架配合使用
 description: 将弹性数据库客户端库和实体框架用于数据库编码
 services: sql-database
 ms.service: sql-database
@@ -10,15 +10,14 @@ ms.topic: conceptual
 author: WenJason
 ms.author: v-jay
 ms.reviewer: ''
-manager: digimobile
 origin.date: 01/04/2019
-ms.date: 08/19/2019
-ms.openlocfilehash: f4bdd69c08400b931062afdb0e7fbd5fe3d0b8f5
-ms.sourcegitcommit: 52ce0d62ea704b5dd968885523d54a36d5787f2d
+ms.date: 03/16/2020
+ms.openlocfilehash: ca3e743011b4b2e32905cfedd35bde2ef4760738
+ms.sourcegitcommit: dc862610e2169c1fce6fb0ae9eb7dd7567f86a0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69544254"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293665"
 ---
 # <a name="elastic-database-client-library-with-entity-framework"></a>弹性数据库客户端库与实体框架
 
@@ -29,7 +28,7 @@ ms.locfileid: "69544254"
 若要下载本文的代码：
 
 * 需要 Visual Studio 2012 或更高版本。 
-* 从 MSDN 下载 [Elastic DB Tools for Azure SQL - Entity Framework Integration sample](https://code.msdn.microsoft.com/windowsapps/Elastic-Scale-with-Azure-bae904ba)（Azure SQL 弹性数据库工具 - Entity Framework 集成示例）。 将示例解压缩到所选位置。
+* 下载 [Elastic DB Tools for Azure SQL - Entity Framework Integration sample](https://github.com/Azure/elastic-db-tools/)（Azure SQL 弹性数据库工具 - 实体框架集成示例）。 将示例解压缩到所选位置。
 * 启动 Visual Studio。 
 * 在 Visual Studio 中，选择“文件”->“打开项目/解决方案”。 
 * 在“打开项目”  对话框中，导航到已下载的示例，并选择 **EntityFrameworkCodeFirst.sln** 打开该示例。 
@@ -80,7 +79,7 @@ ms.locfileid: "69544254"
 * 该应用程序的架构已部署到数据库（如下说明）。 
 * 到数据库的数据相关路由连接由分片映射代理。 
 
-将 **DbContexts** 与数据相关的路由集成以向外缩放：
+将 **DbContext** 与依赖于数据的路由集成以进行扩大：
 
 1. 通过分片映射管理器的弹性数据库客户端接口创建物理数据库连接， 
 2. 使用 **DbContext** 子类包装该连接。
@@ -160,7 +159,7 @@ using (var db = new ElasticScaleContext<int>(
 }
 ```
 
-新的构造函数将打开到该分片的连接，该分片保存由 **tenantid1** 的值标识的 shardlet 的数据。 **using** 块中的代码保持不变以访问 **DbSet**，进而获取有关对 **tenantid1** 的分片使用 EF 的博客。 这改变了 using 块中的代码的语义，因此所有数据库操作的范围现在设置为保留 **tenantid1** 的单个分片。 例如，博客 **DbSet** 上的 LINQ 查询将仅返回当前分片上存储的博客，不返回存储在其他分片上的博客。  
+新的构造函数会打开到该分片的连接，该分片保存由 **tenantid1**的值标识的 shardlet 的数据。 **using** 块中的代码保持不变以访问 **DbSet**，进而获取有关对 **tenantid1** 的分片使用 EF 的博客。 这改变了 using 块中的代码的语义，因此所有数据库操作的范围现在设置为保留 **tenantid1** 的单个分片。 例如，博客 **DbSet** 上的 LINQ 查询将仅返回当前分片上存储的博客，不返回存储在其他分片上的博客。  
 
 #### <a name="transient-faults-handling"></a>暂时性故障处理
 
@@ -194,7 +193,7 @@ SqlDatabaseUtils.SqlRetryPolicy.ExecuteAction(() =>
 
 | 当前构造函数 | 为数据重写构造函数 | 基构造函数 | 注释 |
 | --- | --- | --- | --- |
-| MyContext() |ElasticScaleContext(ShardMap, TKey) |DbContext(DbConnection, bool) |该连接需要是分片映射和数据依赖路由键的一个函数。 需要通过 EF 绕过自动连接创建，并改用分片映射代理该连接。 |
+| MyContext() |ElasticScaleContext(ShardMap, TKey) |DbContext(DbConnection, bool) |该连接需要是分片映射和依赖于数据的路由键的一个函数。 需要通过 EF 绕过自动连接创建，并改用分片映射代理该连接。 |
 | MyContext(string) |ElasticScaleContext(ShardMap, TKey) |DbContext(DbConnection, bool) |该连接是分片映射和依赖于数据的路由键的一个函数。 在它们通过分片映射绕过验证时，固定数据库名称或连接字符串将不起作用。 |
 | MyContext(DbCompiledModel) |ElasticScaleContext(ShardMap, TKey, DbCompiledModel) |DbContext(DbConnection, DbCompiledModel, bool) |会为给定分片映射和分片键创建连接，并提供模型。 编译后的模型会传递到基构造函数。 |
 | MyContext(DbConnection, bool) |ElasticScaleContext(ShardMap, TKey, bool) |DbContext(DbConnection, bool) |该连接需要从分片映射和键推断。 无法将其作为输入提供（除非该输入已经在使用分片映射和键）。 会传递布尔模型。 |

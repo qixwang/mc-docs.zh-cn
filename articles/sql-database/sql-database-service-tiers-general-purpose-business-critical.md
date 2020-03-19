@@ -12,12 +12,12 @@ ms.author: v-jay
 ms.reviewer: sashan, moslake, carlrab
 origin.date: 01/30/2020
 ms.date: 02/17/2020
-ms.openlocfilehash: abd4a613b7f71e1032822740f1e2f2b049fc3398
-ms.sourcegitcommit: d7b86a424b72849fe8ed32893dd05e4696e4fe85
+ms.openlocfilehash: 283fb7262bdd8628f7c21f3a62163aaca266b48a
+ms.sourcegitcommit: dc862610e2169c1fce6fb0ae9eb7dd7567f86a0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77155715"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293790"
 ---
 # <a name="azure-sql-database-service-tiers"></a>Azure SQL 数据库服务层级
 
@@ -45,7 +45,7 @@ Azure SQL 数据库基于 SQL Server 数据库引擎体系结构，该体系结�
 | **存储大小** | 单一数据库/弹性池 | 5 GB - 4 TB | 最多 100 TB | 5 GB - 4 TB |
 | | 托管实例  | 32 GB - 8 TB | 不适用 | 32 GB - 2 TB |
 | **TempDB 大小** | 单一数据库/弹性池 | [每个 vCore 32 GB](sql-database-vcore-resource-limits-single-databases.md#general-purpose---provisioned-compute---gen4) | [每个 vCore 32 GB](sql-database-vcore-resource-limits-single-databases.md#hyperscale---provisioned-compute---gen5) | [每个 vCore 32 GB](sql-database-vcore-resource-limits-single-databases.md#business-critical---provisioned-compute---gen4) |
-| | 托管实例  | [每个 vCore 24 GB](sql-database-managed-instance-resource-limits.md#service-tier-characteristics) | 不适用 | 最大 4 TB - [受存储大小限制](sql-database-managed-instance-resource-limits.md#service-tier-characteristics) |
+| | 托管实例  | [每个 vCore 24 GB](sql-database-managed-instance-resource-limits.md#service-tier-characteristics) | 不适用 | 最大 2 TB - [受存储大小限制](sql-database-managed-instance-resource-limits.md#service-tier-characteristics) |
 | **日志写入吞吐量** | 单一数据库 | [每个 vCore 1.875 MB/秒（最大 30 MB/秒）](sql-database-vcore-resource-limits-single-databases.md#general-purpose---provisioned-compute---gen4) | 100 MB/秒 | [每个 vCore 6 MB/秒（最大 96 MB/秒）](sql-database-vcore-resource-limits-single-databases.md#business-critical---provisioned-compute---gen4) |
 | | 托管实例 | [每个 vCore 3 MB/秒（最大 22 MB/秒）](sql-database-managed-instance-resource-limits.md#service-tier-characteristics) | 不适用 | [每个 vCore 4 MB/秒（最大 48 MB/秒）](sql-database-managed-instance-resource-limits.md#service-tier-characteristics) |
 |**可用性**|全部| 99.99% |  [99.95%（具有一个次要副本），99.99%（具有更多副本）](sql-database-service-tier-hyperscale-faq.md#what-slas-are-provided-for-a-hyperscale-database) | 99.99% <br/> [99.995%（具有区域冗余单一数据库）](https://azure.microsoft.com/blog/understanding-and-leveraging-azure-sql-database-sla/) |

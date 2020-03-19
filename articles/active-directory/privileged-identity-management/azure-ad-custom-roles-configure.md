@@ -1,31 +1,36 @@
 ---
-title: 在 Privileged Identity Management (PIM) 中配置 Azure AD 自定义角色 | Microsoft Docs
+title: 配置 Azure AD 自定义角色 - Privileged Identity Management (PIM)
 description: 如何在 Privileged Identity Management (PIM) 中配置 Azure AD 自定义角色
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: mtillman
+manager: daveba
 ms.assetid: ''
-ms.service: role-based-access-control
+ms.service: active-directory
+ms.subservice: pim
 ms.devlang: na
-ms.topic: overview
+ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-origin.date: 08/06/2019
-ms.date: 08/20/2019
+ms.date: 03/11/2020
 ms.author: v-junlch
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e033f2aecb226ffc1a272da7c8e6e37628584cb2
-ms.sourcegitcommit: 599d651afb83026938d1cfe828e9679a9a0fb69f
+ms.openlocfilehash: 71083ef7641e0a0f68edfc536bee48c7c69522d7
+ms.sourcegitcommit: 4ba6d7c8bed5398f37eb37cf5e2acafcdcc28791
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69993687"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79133956"
 ---
 # <a name="configure-azure-ad-custom-roles-in-privileged-identity-management"></a>在 Privileged Identity Management 中配置 Azure AD 自定义角色
 
 特权角色管理员可以更改当用户激活其自定义角色分配时应用到该用户的角色设置，以及适用于分配自定义角色的其他应用程序管理员的角色设置。
+
+> [!NOTE]
+> 在预览版中，Azure AD 自定义角色未集成内置的目录角色。 此功能的正式版发布后，可在内置的角色体验中进行角色管理。 如果看到以下横幅，则应[在内置角色体验中](pim-how-to-activate-role.md)管理这些角色，而本文不适用：
+>
+> [![](./media/pim-how-to-add-role-to-user/pim-new-version.png "Select Azure AD > Privileged Identity Management")](./media/pim-how-to-add-role-to-user/pim-new-version.png#lightbox)
 
 ## <a name="open-role-settings"></a>打开角色设置
 
@@ -95,7 +100,7 @@ Privileged Identity Management 提供了两种不同的可选 Azure 多重身份
 
 ## <a name="next-steps"></a>后续步骤
 
-- [激活 Azure AD 自定义角色](azure-ad-custom-roles-assign.md)
+- [激活 Azure AD 自定义角色](azure-ad-custom-roles-activate.md)
 - [分配 Azure AD 自定义角色](azure-ad-custom-roles-assign.md)
 - [删除或更新 Azure AD 自定义角色分配](azure-ad-custom-roles-update-remove.md)
 - [Azure AD 中的角色定义](../users-groups-roles/directory-assign-admin-roles.md)

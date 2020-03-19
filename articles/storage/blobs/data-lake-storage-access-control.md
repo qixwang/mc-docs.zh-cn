@@ -6,15 +6,15 @@ ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
 origin.date: 04/23/2019
-ms.date: 11/25/2019
+ms.date: 03/09/2020
 ms.author: v-jay
 ms.reviewer: jamesbak
-ms.openlocfilehash: 99508a542d227e36bc7856f256b614fb038e6f24
-ms.sourcegitcommit: 6a19227dcc0c6e0da5b82c4f69d0227bf38a514a
+ms.openlocfilehash: ea096206c69fabf9c0522badfa7c0ebfe37eda40
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74328731"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293330"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 中的访问控制
 
@@ -59,10 +59,15 @@ SAS 令牌本身就包含允许的权限。 它包含的权限有效地应用到
 
 若要设置文件和目录级权限，请参阅以下任一文章：
 
-|若要使用此工具：    |请参阅此文：    |
+|||
 |--------|-----------|
-|Azure 存储资源管理器    |[使用 Azure 存储资源管理器和 Azure Data Lake Storage Gen2 设置文件和目录级别权限](/storage/blobs/data-lake-storage-how-to-set-permissions-storage-explorer)|
-|REST API    |[路径 - 更新](https://docs.microsoft.com/rest/api/storageservices/datalakestoragegen2/path/update)|
+|Azure 存储资源管理器 |[使用 Azure 存储资源管理器管理 Azure Data Lake Storage Gen2 中的目录、文件和 ACL](data-lake-storage-explorer.md#managing-access)|
+|.NET |[使用 .NET 管理 Azure Data Lake Storage Gen2 中的目录、文件和 ACL](data-lake-storage-directory-file-acl-dotnet.md)|
+|Java|[使用 Java 管理 Azure Data Lake Storage Gen2 中的目录、文件和 ACL](data-lake-storage-directory-file-acl-java.md)|
+|Python|[使用 Python 管理 Azure Data Lake Storage Gen2 中的目录、文件和 ACL](data-lake-storage-directory-file-acl-python.md)|
+|PowerShell|[使用 PowerShell 管理 Azure Data Lake Storage Gen2 中的目录、文件和 ACL](data-lake-storage-directory-file-acl-powershell.md)|
+|Azure CLI|[使用 Azure CLI 管理 Azure Data Lake Storage Gen2 中的目录、文件和 ACL](data-lake-storage-directory-file-acl-cli.md)|
+|REST API |[路径 - 更新](https://docs.microsoft.com/rest/api/storageservices/datalakestoragegen2/path/update)|
 
 > [!IMPORTANT]
 > 如果安全主体是服务主体，则必须使用该服务主体的对象 ID，而不能使用相关应用注册的对象 ID。  若要获取服务主体的对象 ID，请打开 Azure CLI，然后使用此命令：`az ad sp show --id <Your App ID> --query objectId`。 请务必将 `<Your App ID>` 占位符替换为应用注册的应用 ID。

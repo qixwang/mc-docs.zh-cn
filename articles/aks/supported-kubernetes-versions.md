@@ -3,17 +3,16 @@ title: Azure Kubernetes 服务中支持的 Kubernetes 版本
 description: 了解 Azure Kubernetes 服务 (AKS) 中的 Kubernetes 版本支持策略和群集生命周期
 services: container-service
 author: rockboyfor
-ms.service: container-service
 ms.topic: article
 origin.date: 12/09/2019
-ms.date: 01/13/2020
+ms.date: 03/09/2020
 ms.author: v-yeche
-ms.openlocfilehash: 43555fc3f0fc6e7059494aaba2afbfdc4aebaac5
-ms.sourcegitcommit: c5af330f13889a18bb8a5b44e6566a3df4aeea49
+ms.openlocfilehash: ce6bf90f350126106a3940fe6db5e5056f0c3346
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75859841"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79290689"
 ---
 # <a name="supported-kubernetes-versions-in-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS) 中支持的 Kubernetes 版本
 
@@ -97,10 +96,10 @@ New Supported Version List
 * 对于 Kubernetes 的新**次要**版本
     * 在发布新版本以及删除版本之前，我们会公开通知所有用户。
     * 在发布新修补程序版本的同时，会删除最早的修补程序版本。
-    * 客户可以在公告日期起的 **60 天**内升级到支持的次要版本。
+    * 客户自公告之日起 **30 天**内可以升级到受支持的次要版本。
 * 对于 Kubernetes 的新**修补程序**版本
     * 在发布新的修补程序版本以及升级到最新修补程序版本之前，我们会通知所有用户。
-    * 用户可以在 **30 天**内升级到支持的更新版本。 在删除最早的版本之前，用户可以在 **30 天**内升级到支持的修补程序版本。
+    * 用户有 **30 天**时间升级到受支持的新修补程序版本，然后再删除最旧的修补程序版本。
 
 AKS 将“发布版本”定义为正式版本，所有 SLO/服务质量衡量方案都采用此术语，并且在所有区域都是如此。 AKS 可能还支持预览版本，这些版本带有明确的标签，使用时需遵守预览版条款和条件。
 
@@ -143,11 +142,11 @@ az aks get-versions --location chinaeast2 --output table
 如果你当前使用的是 *n-3* 版本，则不再可接受支持，系统会要求你升级。 如果从版本 n-3 成功升级到了 n-2，则你现在涵盖在我们的支持策略中。 例如：
 
 - 如果支持的最低 AKS 版本为 *1.13.a*，而你使用的版本是 *1.12.b* 或更低，则你无法接受支持。
-- 如果从 *1.12.b* 升级到 *1.13.a* 或更高版本成功，则你将重新涵盖在我们的支持策略中。
+- 如果从 1.12.b  升级到 1.13.a  或更高版本成功，则你将重新涵盖在我们的支持策略中。
 
 不支持升级到早于 *N-2* 支持窗口的版本。 在这种情况下，我们会建议客户创建新的 AKS 群集，并使用支持窗口中的版本重新部署其工作负荷。
 
-**“停止支持”是什么意思**
+**“不在支持范围内”是什么意思**
 
 “停止支持”是指运行的版本不在支持的版本列表内，当你请求支持时，系统会要求你将群集升级到支持的版本。 此外，对于受支持版本列表以外的群集，AKS 不会在正常运行时间或其他方面做出任何保证。
 

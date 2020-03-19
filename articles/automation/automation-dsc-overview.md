@@ -8,15 +8,15 @@ ms.subservice: dsc
 author: WenJason
 ms.author: v-jay
 origin.date: 11/06/2018
-ms.date: 12/09/2019
+ms.date: 03/03/2020
 ms.topic: conceptual
 manager: digimobile
-ms.openlocfilehash: 530ad4a331da779adf223522d32549ca2fb8f69b
-ms.sourcegitcommit: 8c3bae15a8a5bb621300d81adb34ef08532fe739
+ms.openlocfilehash: 20ee37508f21a080b19fce88b44c3eb12182997a
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74884046"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292624"
 ---
 # <a name="azure-automation-state-configuration-overview"></a>Azure Automation State Configuration 概述
 
@@ -76,8 +76,8 @@ DSC Linux 扩展支持[支持的 Linux 发行版](https://github.com/Azure/azure
 如果节点位于专用网络中，则 State Configuration (DSC) 需要以下端口和 URL 才能与自动化通信：
 
 * 端口：只需使用 TCP 443 即可进行出站 Internet 访问。
-* 全局 URL：*.azure-automation.net
-* 代理服务： https://\<workspaceId\>.agentsvc.azure-automation.net
+* 全局 URL：*.azure-automation.cn
+* 代理服务： https://\<workspaceId\>.agentsvc.azure-automation.cn
 
 这为托管节点提供网络连接，以与 Azure 自动化通信。
 如果要使用在节点之间通信的 DSC 资源（例如 [WaitFor* 资源](https://docs.microsoft.com/powershell/scripting/dsc/reference/resources/windows/waitForAllResource)），则还需要允许节点间通信。

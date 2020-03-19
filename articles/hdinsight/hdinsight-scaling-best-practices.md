@@ -6,21 +6,21 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-origin.date: 02/05/2020
-ms.date: 03/02/2020
+origin.date: 02/26/2020
+ms.date: 03/23/2020
 ms.author: v-yiso
-ms.openlocfilehash: 19e22893cd18d52b54f3d59fc4ade89ded43bf15
-ms.sourcegitcommit: 46fd4297641622c1984011eac4cb5a8f6f94e9f5
+ms.openlocfilehash: c751a71e52ddfeffc41befad9abbc6b746d4d7e8
+ms.sourcegitcommit: 32997a7d7585deaeb0ab7b8f928d397b18b343fa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77563405"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79295984"
 ---
 # <a name="scale-hdinsight-clusters"></a>缩放 HDInsight 群集
 
-HDInsight 提供弹性，可让你选择扩展和缩减群集中的工作节点数。 这种弹性允许你在若干小时后或者在周末收缩群集，或者在业务需求高峰期扩展群集。
+HDInsight 提供弹性，可让你选择纵向扩展和纵向缩减群集中的工作节点数。 这种弹性允许你在若干小时后或者在周末收缩群集，或者在业务需求高峰期扩展群集。
 
-若要定期进行批处理，则可在该操作之前的几分钟纵向扩展 HDInsight 群集，使群集有足够的内存和 CPU 功率。  在完成处理并且用量再次下降后，可将 HDInsight 群集缩减为更少的工作节点。
+若要定期进行批处理，则可在该操作之前的几分钟纵向扩展 HDInsight 群集，使群集有足够的内存和 CPU 功率。  在完成处理并且用量再次下降后，可将 HDInsight 群集纵向缩减为更少的工作节点。
 
 可以使用下述方法之一手动缩放群集。
 
@@ -35,7 +35,7 @@ Microsoft 提供以下实用程序来缩放群集：
 |---|---|
 |[PowerShell Az](https://docs.microsoft.com/powershell/azure)|[Set-AzHDInsightClusterSize](https://docs.microsoft.com/powershell/module/az.hdinsight/set-azhdinsightclustersize) -ClusterName \<群集名称> -TargetInstanceCount \<NewSize>|
 |[PowerShell AzureRM](https://docs.microsoft.com/powershell/azure/azurerm) |[Set-AzureRmHDInsightClusterSize](https://docs.microsoft.com/powershell/module/azurerm.hdinsight/set-azurermhdinsightclustersize) -ClusterName \<群集名称> -TargetInstanceCount \<NewSize>|
-|[Azure CLI](/cli/?view=azure-cli-latest)|[az hdinsight resize](/cli/hdinsight?view=azure-cli-latest#az-hdinsight-resize) --resource-group \<资源组> --name \<群集名称> --target-instance-count \<NewSize>|
+|[Azure CLI](/cli/?view=azure-cli-latest)|[az hdinsight resize](/cli/hdinsight?view=azure-cli-latest#az-hdinsight-resize) --resource-group \<Resource group> --name \<Cluster Name> --workernode-count \<NewSize>|
 |[Azure CLI](hdinsight-administer-use-command-line.md)|azure hdinsight cluster resize \<clusterName> \<目标实例计数> |
 |[Azure 门户](https://portal.azure.cn)|打开 HDInsight 群集的窗格，在左侧菜单中选择“群集大小”，然后在“群集大小”窗格中键入工作节点数并选择“保存”。 |  
 
@@ -160,9 +160,9 @@ org.apache.http.conn.HttpHostConnectException: Connect to active-headnode-name.s
 
 可通过多种方法防止 HDInsight 保留在安全模式：
 
-* 在缩减 HDInsight 之前停止所有 Hive 作业。 或者，计划好缩减进程，以避免与运行中的 Hive 作业冲突。
+* 在缩减 HDInsight 之前停止所有 Hive 作业。 或者，计划好纵向缩减进程，以避免与运行中的 Hive 作业冲突。
 * 执行缩减操作之前，在 HDFS 中手动清理 Hive 的 scratch `tmp` 目录文件。
-* 只将 HDInsight 缩减为三个工作节点（最少数量）。 避免将工作节点数减少至一个。
+* 只将 HDInsight 纵向缩减为三个工作节点（最少数量）。 避免将工作节点数减少至一个。
 * 根据需要运行命令来退出安全模式。
 
 以下部分将介绍这些选项。

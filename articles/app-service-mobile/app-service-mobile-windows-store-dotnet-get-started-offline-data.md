@@ -6,27 +6,22 @@ ms.tgt_pltfrm: mobile-windows
 ms.devlang: dotnet
 ms.topic: article
 origin.date: 06/25/2019
-ms.date: 12/16/2019
+md.date: 03/23/2020
 ms.author: v-tawe
-ms.openlocfilehash: 1bfb2699f9514838623a11eaaf233b32cf07c5de
-ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
+ms.openlocfilehash: 814ccc7b33e6da99adc77c26e5a317511f23d649
+ms.sourcegitcommit: e94ed1c9eff4e88be2ca389909e60b14cc0d92f8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75600543"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79084414"
 ---
 # <a name="enable-offline-sync-for-your-windows-app"></a>为 Windows 应用启用脱机同步
 [!INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]
 
-> [!NOTE]
-> Visual Studio App Center 支持以移动应用开发为中心的端到端集成服务。 开发人员可以使用“生成”  、“测试”  和“分发”  服务来设置“持续集成和交付”管道。 部署应用后，开发人员可以使用**分析**和**诊断**服务监视其应用的状态和使用情况，并使用**推送**服务与用户互动。 开发人员还可以利用“身份验证”  对其用户进行身份验证，并使用“数据”  服务在云中保留和同步应用数据。
->
-> 如果希望将云服务集成到移动应用程序中，请立即注册到 [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) 中。
-
 ## <a name="overview"></a>概述
 本教程演示如何使用 Azure 移动应用后端为通用 Windows 平台 (UWP) 应用添加脱机支持。 脱机同步允许最终用户与移动应用交互（查看、添加或修改数据），即使在没有网络连接时也是如此。 在本地数据库中存储更改。 设备重新联机后，这些更改会与远程后端同步。
 
-本教程会更新[创建 Windows 应用] 教程中的 UWP 应用项目，支持 Azure 移动应用的脱机功能。 如果不使用下载的快速入门服务器项目，必须将数据访问扩展包添加到项目。 有关服务器扩展包的详细信息，请参阅[使用适用于 Azure 移动应用的 .NET 后端服务器 SDK](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md)。
+本教程会更新[创建 Windows 应用] 教程中的 UWP 应用项目，支持 Azure 移动应用的脱机功能。 如果不使用下载的快速入门服务器项目，必须将数据访问扩展包添加到项目。 有关服务器扩展包的详细信息，请参阅 [Work with the .NET backend server SDK for Azure Mobile Apps](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md)（使用适用于 Azure 移动应用的 .NET 后端服务器 SDK）。
 
 若要了解有关脱机同步功能的详细信息，请参阅主题 [Azure 移动应用中的脱机数据同步]。
 
@@ -44,7 +39,7 @@ ms.locfileid: "75600543"
 1. 安装 [适用于通用 Windows 平台的 SQLite 运行时](https://sqlite.org/2016/sqlite-uwp-3120200.vsix)。
 2. 在 Visual Studio 中，打开在 [创建 Windows 应用] 教程中完成的 UWP 应用项目的 NuGet 包管理器。
     搜索并安装 **Microsoft.Azure.Mobile.Client.SQLiteStore** NuGet 包。
-3. 在解决方案资源管理器中，右键单击“引用”>“添加引用...”   >“通用 Windows”>“扩展”，并同时启用“适用于通用 Windows 平台的 SQLite”和“适用于通用 Windows 平台应用的 Visual C++ 2015 运行时”     。
+3. 在解决方案资源管理器中，右键单击“引用”>“添加引用...”   >“通用 Windows”>“扩展”，然后同时启用“适用于通用 Windows 平台的 SQLite”和“适用于通用 Windows 平台应用的 Visual C++ 2015 运行时”     。
 
     ![添加 SQLite UWP 引用][1]
 4. 打开 MainPage.xaml.cs 文件，并取消注释 `#define OFFLINE_SYNC_ENABLED` 定义。
@@ -69,7 +64,7 @@ ms.locfileid: "75600543"
 ## <a name="update-online-app"></a>更新应用以重新连接移动应用后端
 在本部分中，会将应用重新连接到移动应用后端。 这些更改可模拟应用上的网络重新连接。
 
-首次运行该应用程序时，`OnNavigatedTo` 事件处理程序将调用 `InitLocalStoreAsync`。 而此方法又将调用 `SyncAsync`，将本地存储与后端数据库同步。 应用会尝试在启动时同步。
+首次运行该应用程序时，`OnNavigatedTo` 事件处理程序将调用 `InitLocalStoreAsync`。 而此方法又将调用 `SyncAsync` ，将本地存储与后端数据库同步。 应用会在启动时尝试同步。
 
 1. 在共享项目中，打开 App.xaml.cs，并取消注释 `MobileServiceClient` 之前的初始化，以使用正确的移动应用 URL。
 2. 按 **F5** 键重新生成并运行应用。 执行 `OnNavigatedTo` 事件处理程序时，该应用将使用推送和拉取操作将本地更改与 Azure 移动应用后端进行同步。

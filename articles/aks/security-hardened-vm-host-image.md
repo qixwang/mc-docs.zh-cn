@@ -3,18 +3,17 @@ title: AKS 虚拟主机中的安全强化
 description: 了解 AKS VM 主机 OS 中的安全强化
 services: container-service
 author: rockboyfor
-ms.service: container-service
 ms.topic: article
 origin.date: 09/11/2019
-ms.date: 10/28/2019
+ms.date: 03/09/2020
 ms.author: v-yeche
 ms.custom: mvc
-ms.openlocfilehash: 007a139bb78183a5cc390a1dd38c84c53ee2b939
-ms.sourcegitcommit: 1d4dc20d24feb74d11d8295e121d6752c2db956e
+ms.openlocfilehash: e707ca7f8187c571bd3d45c611ccaea2fca3c6d3
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73083665"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79290711"
 ---
 # <a name="security-hardening-in-aks-virtual-machine-hosts"></a>AKS 虚拟主机中的安全强化 
 
@@ -25,7 +24,7 @@ AKS 群集部署在运行安全优化 OS 的虚拟主机上。 此主机 OS 目�
 安全强化主机 OS 的目标是减少受攻击面，允许以安全方式部署容器。 
 
 > [!Important]
-> 安全强化 OS 未进行 CIS 基准测试。 虽然存在与 CIS 基准重叠的情况，但此目标不需符合 CIS 标准。 主机 OS 强化的目标是在与世纪互联自己的内部主机安全标准相符的安全级别上进行聚合。 
+> 安全强化 OS 未进行 CIS 基准测试。 虽然存在与 CIS 基准重叠的情况，但此目标不需符合 CIS 标准。 主机 OS 强化的目标是在与 Azure 自己的内部主机安全标准一致的安全级别上进行聚合。 
 
 ## <a name="security-hardening-features"></a>安全强化功能 
 
@@ -94,5 +93,4 @@ AKS-Engine 目前不推行或遵循任何特定的安全标准，但为了方便
 
 [AKS 最佳做法](/aks/best-practices)
 
-<!-- Update_Description: new article about security hardened vm host image -->
-<!--NEW.date: 10/28/2019-->
+<!-- Update_Description: update meta properties, wording update, update link -->

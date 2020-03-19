@@ -14,12 +14,12 @@ ms.workload: na
 origin.date: 09/20/2018
 ms.date: 06/22/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 85a121998b71f3cf008d47a09bdc34624a1bb7c0
-ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
+ms.openlocfilehash: 1c7f448fce74074baac7080497eb0d7c03af855b
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75858015"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79290661"
 ---
 # <a name="understand-azure-security-center-container-recommendations"></a>了解 Azure 安全中心容器建议
 
@@ -36,7 +36,7 @@ Azure 安全中心提供以下功能来帮助保护容器：
 
     ![容器选项卡](./media/security-center-container-recommendations/container-cis-benchmark.png)
 
-- **实时容器威胁检测**<br> 安全中心为配备 AuditD 组件的 Linux 计算机上的容器提供实时威胁检测结果。 警报中会指明多种可疑的 Docker 活动，例如，在主机上创建特权容器、指示安全外壳 (SSH) 服务器在 Docker 容器中运行，或使用加密货币采矿程序。 可以使用此信息快速补救安全问题，并提高容器的安全性。
+- **实时容器威胁防护**<br> 安全中心为配备 AuditD 组件的 Linux 计算机上的容器提供实时威胁防护。 警报中会指明多种可疑的 Docker 活动，例如，在主机上创建特权容器、指示安全外壳 (SSH) 服务器在 Docker 容器中运行，或使用加密货币采矿程序。 可以使用此信息快速补救安全问题，并提高容器的安全性。
 
     ![容器选项卡](./media/security-center-container-recommendations/docker-threat-detection.png)
 

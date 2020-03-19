@@ -7,15 +7,15 @@ ms.subservice: shared-capabilities
 author: WenJason
 ms.author: v-jay
 origin.date: 04/04/2019
-ms.date: 05/20/2019
+ms.date: 03/16/2020
 ms.topic: conceptual
 manager: digimobile
-ms.openlocfilehash: a11a6ea375adf8a9b5c52bc2d98ad8eaffc3612d
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.openlocfilehash: 2d35d7f2208d6a31b3b1a6e0a97ebaab9e8a8858
+ms.sourcegitcommit: dc862610e2169c1fce6fb0ae9eb7dd7567f86a0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75624279"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293738"
 ---
 # <a name="scheduling-a-runbook-in-azure-automation"></a>在 Azure 自动化中计划 Runbook
 
@@ -126,7 +126,7 @@ New-AzureRmAutomationSchedule -AutomationAccountName "TestAzureAuto" -Name "1st,
 
 ### <a name="to-link-a-schedule-to-a-runbook-with-powershell"></a>使用 PowerShell 将计划链接到 Runbook
 
-可使用 [Register-AzureRmAutomationScheduledRunbook](https://docs.microsoft.com/powershell/module/azurerm.automation/register-azurermautomationscheduledrunbook) cmdlet 链接计划。 可以使用 Parameters 参数指定 Runbook 参数的值。 有关指定参数值的详细信息，请参阅[在 Azure 自动化中启动 Runbook](../automation-starting-a-runbook.md)。
+可使用 [Register-AzureRmAutomationScheduledRunbook](https://docs.microsoft.com/powershell/module/azurerm.automation/register-azurermautomationscheduledrunbook) cmdlet 链接计划。 可以使用 Parameters 参数为 Runbook 的参数指定值。 有关指定参数值的详细信息，请参阅[在 Azure 自动化中启动 Runbook](../automation-starting-a-runbook.md)。
 以下示例命令演示了如何使用带参数的 Azure Resource Manager cmdlet 将计划链接到 Runbook。
 
 ```powershell
@@ -143,7 +143,7 @@ Register-AzureRmAutomationScheduledRunbook –AutomationAccountName $automationA
 
 可为 Azure 自动化中的计划配置的最频繁间隔为一小时。 如果你需要执行比这更频繁的计划，有两个选项：
 
-* 为 Runbook 创建 [Webhook](../automation-webhooks.md)，并使用 [Azure 计划程序](../../scheduler/scheduler-get-started-portal.md)调用 Webhook。 定义计划时，Azure 计划程序可提供更细的粒度。
+* 为 Runbook 创建 [Webhook](../automation-webhooks.md)，并使用 [Azure 逻辑应用](../../logic-apps/logic-apps-overview.md)调用 Webhook。 定义计划时，Azure 逻辑应用可提供更细的粒度。
 
 * 创建四个计划，全部每隔一小时运行一次，每个运行 15 分钟。 此方案使用不同的计划，可让 Runbook 每隔 15 分钟运行一次。
 

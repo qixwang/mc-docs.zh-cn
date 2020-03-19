@@ -1,22 +1,22 @@
 ---
-title: 排查 Azure 自动化 Runbook 错误
+title: Azure 自动化 Runbook 错误故障排除
 description: 了解如何排查和解决在使用 Azure 自动化 Runbook 时可能遇到的问题。
 services: automation
 author: WenJason
 ms.author: v-jay
 origin.date: 01/24/2019
-ms.date: 03/02/2020
+ms.date: 03/16/2020
 ms.topic: conceptual
 ms.service: automation
 manager: digimobile
-ms.openlocfilehash: 919bb28518962ba923276feb8cd510eb932fec34
-ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
+ms.openlocfilehash: 3d6fbbbdae4bc2834bd9681bd2d4abf3f8331e6e
+ms.sourcegitcommit: dc862610e2169c1fce6fb0ae9eb7dd7567f86a0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77653056"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293680"
 ---
-# <a name="troubleshoot-errors-with-runbooks"></a>排查 Runbook 错误
+# <a name="troubleshoot-errors-with-runbooks"></a>Runbook 错误故障排除
 
 在 Azure 自动化中执行 Runbook 出现错误时，可使用以下步骤来诊断问题。
 
@@ -401,17 +401,17 @@ Runbook 作业失败并显示错误：
 The job was evicted and subsequently reached a Stopped state. The job cannot continue running
 ```
 
-此行为是 Azure 沙盒的设计使然，因为 Azure 自动化中会对进程进行“公平份额”监视。 “公平份额”会自动停止执行时间超过 3 小时的 Runbook。 超过公平份额时间限制的 runbook 的状态因 runbook 类型而异。 PowerShell 和 Python runbook 设置为“已停止”状态  。 PowerShell 工作流 runbook 设置为“失败”  。
+此行为是 Azure 沙盒的设计使然，因为 Azure 自动化中会对进程进行[公平份额](../automation-runbook-execution.md#fair-share)监视。 “公平份额”会自动停止执行时间超过 3 小时的 Runbook。 超过公平份额时间限制的 runbook 的状态因 runbook 类型而异。 PowerShell 和 Python runbook 设置为“已停止”状态  。 PowerShell 工作流 runbook 设置为“失败”  。
 
 ### <a name="cause"></a>原因
 
-Runbook 超出了 Azure 沙盒中公平份额允许的 3 小时限制。
+Runbook 运行时间超出了 Azure 沙盒中公平份额允许的 3 小时限制。
 
 ### <a name="resolution"></a>解决方法
 
 建议的解决方案是在[混合 Runbook 辅助角色](../automation-hrw-run-runbooks.md)上运行 runbook。
 
-混合辅助角色不受[公平份额](../automation-runbook-execution.md#fair-share) 3 小时 Runbook 限制，而 Azure 沙盒受限于此限制。 应开发在混合 Runbook 辅助角色上运行的 Runbook，以便在出现意外的本地基础结构问题时支持重启行为。
+混合辅助角色不受 Azure 沙盒的 3 小时公平份额 runbook 限制。 应开发在混合 Runbook 辅助角色上运行的 Runbook，以便在出现意外的本地基础结构问题时支持重启行为。
 
 另一种选择是通过创建[子 runbook](../automation-child-runbooks.md) 来优化 runbook。 如果 runbook 在多个资源上遍历同一函数，例如在多个数据库上执行某个数据库操作，则可将该函数移到子 runbook。 各个子 runbook 是在单独的进程中并行执行的。 此行为降低了完成父 runbook 所需的时间总量。
 

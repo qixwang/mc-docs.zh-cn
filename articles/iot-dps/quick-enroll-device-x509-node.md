@@ -10,35 +10,32 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: nodejs
 ms.custom: mvc
-ms.openlocfilehash: 7c1a6245469ed7a1ba7d63cbe6393dda7ab3b1f1
-ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
+ms.openlocfilehash: dcd762200b59fce7af5f3733adb957febe1813ef
+ms.sourcegitcommit: 4ba6d7c8bed5398f37eb37cf5e2acafcdcc28791
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77494389"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79133791"
 ---
 # <a name="quickstart-enroll-x509-devices-to-the-device-provisioning-service-using-nodejs"></a>快速入门：使用 Node.js 将 X.509 设备注册到设备预配服务
 
 [!INCLUDE [iot-dps-selector-quick-enroll-device-x509](../../includes/iot-dps-selector-quick-enroll-device-x509.md)]
 
-本快速入门展示了如何使用 Node.js 以编程方式创建使用中间或根 CA X.509 证书的[注册组](concepts-service.md#enrollment-group)。 该注册组是使用 [IoT SDK for Node.js](https://github.com/Azure/azure-iot-sdk-node) 和一个示例 Node.js 应用程序创建的。 注册组可以控制对设备的预配服务的访问，此类设备在其证书链中共享常用签名证书。 若要了解详细信息，请参阅[使用 X.509 证书控制设备对预配服务的访问](./concepts-security.md#controlling-device-access-to-the-provisioning-service-with-x509-certificates)。 若要详细了解如何将基于 X.509 证书的公钥基础结构 (PKI) 与 Azure IoT 中心和设备预配服务配合使用，请参阅 [X.509 CA 证书安全概述](/iot-hub/iot-hub-x509ca-overview)。 
+在本快速入门中，你将使用 Node.js 以编程方式创建使用中间或根 CA X.509 证书的注册组。 该注册组是使用用于 Node.js 的 IoT SDK 和一个示例 Node.js 应用程序创建的。
 
-本快速入门假设你已创建了 IoT 中心和设备预配服务实例。 如果尚未创建这些资源，请先完成[使用 Azure 门户设置 IoT 中心设备预配服务](./quick-setup-auto-provision.md)快速入门，然后再继续学习本文。
+## <a name="prerequisites"></a>先决条件
 
-虽然本文中的步骤在 Windows 和 Linux 计算机上均适用，但本文是针对 Windows 开发计算机编写的。
-
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
-
-
-## <a name="prerequisites"></a>必备条件
-
-- 安装 [Node.js v4.0 或更高版本](https://nodejs.org)。
-- 安装 [Git](https://git-scm.com/download/)。
-
+- 完成[使用 Azure 门户设置 IoT 中心设备预配服务](./quick-setup-auto-provision.md)。
+- 具有活动订阅的 Azure 帐户。 [创建一个试用帐户](https://wd.azure.cn/pricing/1rmb-trial/)。
+- [Node.js v4.0+](https://nodejs.org)。 本快速入门将在下面安装[用于 Node.js 的 IoT SDK](https://github.com/Azure/azure-iot-sdk-node)。
+- [Git](https://git-scm.com/download/)。
+- [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c)。
 
 ## <a name="prepare-test-certificates"></a>准备测试证书
 
-对于本快速入门，必须具有一个包含中间或根 CA X.509 证书的公共部分的 .pem 或.cer 文件。 此证书必须上传到预配服务，并由该服务进行验证。 
+对于本快速入门，必须具有一个包含中间或根 CA X.509 证书的公共部分的 .pem 或.cer 文件。 此证书必须上传到预配服务，并由该服务进行验证。
+
+若要详细了解如何将基于 X.509 证书的公钥基础结构 (PKI) 与 Azure IoT 中心和设备预配服务配合使用，请参阅 [X.509 CA 证书安全概述](https://docs.azure.cn/iot-hub/iot-hub-x509ca-overview)。
 
 [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) 包含的测试工具可以帮助你创建 X.509 证书链、从该链上传根证书或中间证书，以及通过服务执行所有权证明操作，对证书进行验证。 根据设计，使用 SDK 工具创建的证书只能用于**开发测试**。 这些证书**不得在生产环境中使用**。 它们包含硬编码的密码（“1234”），在 30 天后过期。 若要了解如何获取适用于生产用途的证书，请参阅 Azure IoT 中心文档中的[如何获取 X.509 CA 证书](/iot-hub/iot-hub-x509ca-overview#how-to-get-an-x509-ca-certificate)。
 
@@ -64,6 +61,12 @@ ms.locfileid: "77494389"
 
 ## <a name="create-the-enrollment-group-sample"></a>创建注册组示例 
 
+Azure IoT 设备预配服务支持两类注册：
+
+- [注册组](concepts-service.md#enrollment-group)：用于注册多个相关设备。
+- [单个注册](concepts-service.md#individual-enrollment)：用于注册单个设备。
+
+注册组可以控制对设备的预配服务的访问，此类设备在其证书链中共享常用签名证书。 若要了解详细信息，请参阅[使用 X.509 证书控制设备对预配服务的访问](./concepts-security.md#controlling-device-access-to-the-provisioning-service-with-x509-certificates)。
  
 1. 在工作文件夹的命令窗口中，运行以下命令：
   
@@ -126,7 +129,7 @@ ms.locfileid: "77494389"
 
     ![门户中的已验证证书](./media/quick-enroll-device-x509-node/verify-certificate.png) 
 
-1. 若要为证书创建注册组，请运行以下命令（包括命令参数的引号）：
+1. 若要为证书创建[注册组](concepts-service.md#enrollment-group)，请运行以下命令（在命令参数两侧添加引号）：
  
      ```cmd\sh
      node create_enrollment_group.js "<the connection string for your provisioning service>" "<your certificate's .pem file>"

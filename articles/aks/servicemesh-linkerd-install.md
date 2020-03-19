@@ -2,18 +2,17 @@
 title: 在 Azure Kubernetes 服务 (AKS) 中安装 Linkerd
 description: 了解如何在 Azure Kubernetes 服务 (AKS) 群集中安装和使用 Linkerd 来创建服务网格
 author: rockboyfor
-ms.service: container-service
 ms.topic: article
 origin.date: 10/09/2019
-ms.date: 10/28/2019
+ms.date: 03/09/2020
 ms.author: v-yeche
 zone_pivot_groups: client-operating-system
-ms.openlocfilehash: cccd6bf300d4ff2496ef14e9cac47ad3b99f6c65
-ms.sourcegitcommit: 1d4dc20d24feb74d11d8295e121d6752c2db956e
+ms.openlocfilehash: 2223411306741ab07d952c7d49069e5478578134
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73083624"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79290696"
 ---
 # <a name="install-linkerd-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中安装 Linkerd
 
@@ -249,7 +248,7 @@ Opening Linkerd dashboard in the default browser
 > [!WARNING]
 > 从正在运行的系统中删除 Linkerd 可能会导致服务之间出现流量相关的问题。 在继续之前，请确保对系统进行预配，以便在没有 Linkerd 的情况下系统仍可正常运行。
 
-首先，需删除数据平面代理。 请从工作负荷命名空间中删除任何自动代理注入[注释][linkerd-automatic-proxy-injection]，然后推出工作负荷部署。 工作负荷不应该再有任何关联的数据平面组件。
+首先，需删除数据平面代理。 请从工作负荷命名空间中删除任何自动代理注入[注释][linkerd-automatic-proxy-injection]，然后展开工作负荷部署。 工作负荷不应该再有任何关联的数据平面组件。
 
 最后，请删除控制平面，如下所示：
 
@@ -296,5 +295,4 @@ linkerd install --ignore-cluster | kubectl delete -f -
 
 [aks-quickstart]: ./kubernetes-walkthrough.md
 
-<!-- Update_Description: new article about servicemesh linkerd install -->
-<!--NEW.date: 11/04/2019-->
+<!-- Update_Description: update meta properties, wording update, update link -->

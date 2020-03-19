@@ -1,6 +1,6 @@
 ---
-title: 在 HDInsight 群集创建过程中添加 Hive 库 - Azure | Azure
-description: 了解如何在群集创建过程中将 Hive 库（jar 文件）添加到 HDInsight 群集。
+title: 在群集创建过程中添加 Apache Hive 库 - Azure HDInsight
+description: 了解如何在群集创建过程中将 Apache Hive 库（jar 文件）添加到 HDInsight 群集中。
 services: hdinsight
 documentationcenter: ''
 author: Blackmist
@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: big-data
-origin.date: 02/27/2018
-ms.date: 07/22/2019
+origin.date: 02/14/2020
+ms.date: 03/23/2020
 ms.author: v-yiso
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: f8b9bd327e00ef860c2ac0d17a2ca54a5340a59c
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.openlocfilehash: 29d113b64eb6119f9606ed14099c98d4af17ae11
+ms.sourcegitcommit: 32997a7d7585deaeb0ab7b8f928d397b18b343fa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77428902"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79295898"
 ---
 # <a name="add-custom-apache-hive-libraries-when-creating-your-hdinsight-cluster"></a>创建 HDInsight 群集时添加自定义 Apache Hive 库
 
@@ -41,7 +41,7 @@ ms.locfileid: "77428902"
 
 [https://hdiconfigactions.blob.core.windows.net/setupcustomhivelibsv01/setup-customhivelibs-v01.ps1](https://hdiconfigactions.blob.core.windows.net/setupcustomhivelibsv01/setup-customhivelibs-v01.ps1)
 
-**要求**
+### <a name="requirements"></a>要求
 
 * 这些脚本必须同时应用于“头节点”  和“辅助角色节点”  。
 
@@ -58,7 +58,7 @@ ms.locfileid: "77428902"
 
 ## <a name="create-a-cluster-using-the-script"></a>使用脚本创建群集。
 
-1. 使用[预配 Linux 上的 HDInsight 群集](hdinsight-hadoop-provision-linux-clusters.md)中的步骤开始预配群集，但不要完成预配。 也可以使用 Azure PowerShell 或 HDInsight .NET SDK 来使用此脚本创建群集。 有关使用这些方法的详细信息，请参阅[使用脚本操作自定义 HDInsight 群集](hdinsight-hadoop-customize-cluster-linux.md)。 对于 Azure 门户，必须选择“转到经典创建体验”  选项，然后选择“自定义(大小、设置、应用)”  。
+1. 使用[预配 Linux 上的 HDInsight 群集](hdinsight-hadoop-provision-linux-clusters.md)中的步骤开始预配群集，但不要完成预配。 也可以使用 Azure PowerShell 或 HDInsight .NET SDK 来使用此脚本创建群集。 有关使用这些方法的详细信息，请参阅[使用脚本操作自定义 HDInsight 群集](hdinsight-hadoop-customize-cluster-linux.md)。 在 Azure 门户中，从“配置 + 定价”  选项卡中选择“+ 添加脚本操作”  。
 
 1. 对于“存储”  ，如果包含 jar 文件的库的存储帐户将不同于用于群集的帐户，则请完成  “其他存储帐户”。
 
@@ -72,9 +72,12 @@ ms.locfileid: "77428902"
     |节点类型|头节点、工作器节点|
     |parameters|输入包含 jar 的容器和存储帐户的 WASB 地址。 例如，`wasbs://libs@mystorage.blob.core.windows.net/`。|
 
+    > [!NOTE]
+    > 对于 Apache Spark 2.1，请使用此 bash 脚本 URI：`https://hdiconfigactions.blob.core.windows.net/linuxsetupcustomhivelibsv01/setup-customhivelibs-v00.sh`。
+
 1. 继续按[预配 Linux 上的 HDInsight 群集](hdinsight-hadoop-provision-linux-clusters.md)中所述预配群集。
 
-群集创建完成后，你能够使用通过此脚本从 Hive 添加的 jar，而无需使用 `ADD JAR` 语句。
+群集创建完成后，你将能够使用通过此脚本从 Hive 添加的 jar，而无需使用 `ADD JAR` 语句。
 
 ## <a name="next-steps"></a>后续步骤
 
