@@ -1,20 +1,18 @@
 ---
-title: 适用于 JavaScript Web 应用的 Azure Application Insights | Azure Docs
-description: 获取页面视图、会话计数和 Web 客户端数据，以及跟踪使用模式。 检测 JavaScript 网页中的异常和性能问题。
-ms.service: azure-monitor
-ms.subservice: application-insights
+title: 适用于 JavaScript Web 应用的 Azure Application Insights
+description: 获取页面视图和会话计数、Web 客户端数据、单页应用程序 (SPA)，以及跟踪使用模式。 检测 JavaScript 网页中的异常和性能问题。
 ms.topic: conceptual
 author: lingliw
 manager: digimobile
 origin.date: 09/12/2019
 ms.date: 09/20/2019
 ms.author: v-lingwu
-ms.openlocfilehash: e376f3f68b45a8b4a5f10d5460651a90132c3706
-ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
+ms.openlocfilehash: 2d439f3dd659af5efdbf6e63fa2b6c7ddbeb8bdf
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77028440"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292426"
 ---
 # <a name="application-insights-for-web-pages"></a>适用于网页的 Application Insights
 
@@ -31,7 +29,10 @@ ms.locfileid: "77028440"
     * [JavaScript 代码片段](#snippet-based-setup)
 
 > [!IMPORTANT]
-> 只需使用下述方法之一即可将 Application Insights JavaScript SDK 添加到应用程序。 如果使用基于 npm 的设置，请不要使用基于代码片段的设置。 反之亦然，在使用基于代码片段的方法时，请不要使用基于 npm 的设置。 
+> 仅使用一种方法将 JavaScript SDK 添加到应用程序。 如果使用 NPM 安装程序，请不要使用代码片段，反之亦然。
+
+> [!NOTE]
+> NPM 安装程序会将 JavaScript SDK 作为依赖项安装到项目中，启用 IntelliSense，而代码片段则会在运行时获取 SDK。 两者都支持相同的功能。 但是，需要更多自定义事件和配置的开发人员通常会选择 NPM 安装程序，而需要快速启用现成 Web 分析的用户则选择代码片段。
 
 ### <a name="npm-based-setup"></a>基于 npm 的设置
 
@@ -210,15 +211,17 @@ npm i --save @microsoft/applicationinsights-web-basic
 
 ## <a name="examples"></a>示例
 
-有关可运行的示例，请参阅 [Application Insights Javascript SDK 示例](https://github.com/topics/applicationinsights-js-demo)
+有关可运行的示例，请参阅 [Application Insights JavaScript SDK 示例](https://github.com/topics/applicationinsights-js-demo)
 
 ## <a name="upgrading-from-the-old-version-of-application-insights"></a>从旧版 Application Insights 升级
 
 SDK V2 版本中的重大更改：
-- 为了让用户生成更好的 API 签名，某些 API 调用（例如 trackPageView、trackException）已更新。 不支持在 IE8 或更低版本的浏览器中运行。
+- 为了让用户生成更好的 API 签名，某些 API 调用（例如 trackPageView 和 trackException）已更新。 不支持在 Internet Explorer 8 和早期版本的浏览器中运行。
 - 由于数据架构更新，遥测信封的字段名称和结构已更改。
-- 已将 `context.operation` 转移到 `context.telemetryTrace`。 此外还更改了一些字段 (`operation.id` --> `telemetryTrace.traceID`)
-  - 若要手动刷新当前页面视图 ID（例如，在 SPA 应用中），可以使用 `appInsights.properties.context.telemetryTrace.traceID = Util.newId()` 执行此操作
+- 已将 `context.operation` 转移到 `context.telemetryTrace`。 此外还更改了一些字段 (`operation.id` --> `telemetryTrace.traceID`)。
+  - 若要手动刷新当前页面视图 ID（例如，在 SPA 应用中这样做），请使用 `appInsights.properties.context.telemetryTrace.traceID = Util.generateW3CId()`。
+    > [!NOTE]
+    > 为了使跟踪 ID 独一无二，以前使用 `Util.newId()`，现在使用 `Util.generateW3CId()`。 二者最终都会成为操作 ID。
 
 如果你正在使用最新的 Application Insights PRODUCTION SDK (1.0.20)，并想要查看新 SDK 是否可在运行时中正常工作，请根据当前的 SDK 加载方案更新 URL。
 
