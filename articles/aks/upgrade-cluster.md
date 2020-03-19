@@ -2,31 +2,31 @@
 title: 升级 Azure Kubernetes 服务 (AKS) 群集
 description: 了解如何升级 Azure Kubernetes 服务 (AKS) 群集
 services: container-service
-author: rockboyfor
-ms.service: container-service
 ms.topic: article
 origin.date: 05/31/2019
-ms.date: 01/20/2020
+ms.date: 03/09/2020
 ms.author: v-yeche
-ms.openlocfilehash: fb7a67ed758e56c522d31874199fc5226d1fb608
-ms.sourcegitcommit: 8de025ca11b62e06ba3762b5d15cc577e0c0f15d
+ms.openlocfilehash: 579e0576342425c58f78dedebea573f586b83512
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76165413"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79290849"
 ---
 # <a name="upgrade-an-azure-kubernetes-service-aks-cluster"></a>升级 Azure Kubernetes 服务 (AKS) 群集
 
 在 AKS 群集的生命周期中，经常需要升级到最新的 Kubernetes 版本。 必须应用最新的 Kubernetes 安全版本，或者通过升级来获取最新功能。 本文演示如何在 AKS 群集中升级主组件或单个默认的节点池。
 
-<!--Not Available on multiple node pools or Windows Server nodes-->
+对于使用多个节点池的 AKS 群集，请参阅[在 AKS 中升级节点池][nodepool-upgrade]。
+
+<!--Not Available on or Windows Server nodes (currently in preview in AKS)-->
 
 ## <a name="before-you-begin"></a>准备阶段
 
 本文要求运行 Azure CLI 2.0.65 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][azure-cli-install]。
 
 > [!WARNING]
-> AKS 群集升级会触发节点的隔离和排空。 如果可用计算配额较低，则升级可能会失败。  有关详细信息，请参阅[增加配额](https://support.azure.cn/support/support-azure/)。
+> AKS 群集升级会触发节点的隔离和排空。 如果可用计算配额较低，则升级可能会失败。 有关详细信息，请参阅[增加配额](https://support.azure.cn/support/support-azure/)。
 
 <!--MOONCAKE: CORRECT ON (https://support.azure.cn/support/support-azure/)-->
 
@@ -103,7 +103,6 @@ myAKSCluster  chinaeast2      myResourceGroup  1.13.10               Succeeded  
 [az-aks-get-upgrades]: https://docs.microsoft.com/cli/azure/aks?view=azure-cli-latest#az-aks-get-upgrades
 [az-aks-upgrade]: https://docs.microsoft.com/cli/azure/aks?view=azure-cli-latest#az-aks-upgrade
 [az-aks-show]: https://docs.microsoft.com/cli/azure/aks?view=azure-cli-latest#az-aks-show
+[nodepool-upgrade]: use-multiple-node-pools.md#upgrade-a-node-pool
 
-<!--Not Available on [nodepool-upgrade]: use-multiple-node-pools.md#upgrade-a-node-pool-->
-
-<!--Update_Description: wording update-->
+<!-- Update_Description: update meta properties, wording update, update link -->

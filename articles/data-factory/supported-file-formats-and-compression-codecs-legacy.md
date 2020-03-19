@@ -11,20 +11,20 @@ origin.date: 12/10/2019
 ms.date: 01/06/2020
 ms.author: v-jay
 ms.openlocfilehash: 728a1c0d3476ff8cb586e0d5b3ad5f1110b2a932
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75624420"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79292324"
 ---
 # <a name="supported-file-formats-and-compression-codecs-in-azure-data-factory-legacy"></a>Azure 数据工厂（旧版）中支持的文件格式和压缩编解码器
 
 本文适用于以下连接器：  [Amazon S3](connector-amazon-simple-storage-service.md)、[Azure Blob](connector-azure-blob-storage.md)、[Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md)、[Azure 文件存储](connector-azure-file-storage.md)、[文件系统](connector-file-system.md)、[FTP](connector-ftp.md)、[Google 云存储](connector-google-cloud-storage.md)、[HDFS](connector-hdfs.md)、[HTTP](connector-http.md) 和 [SFTP](connector-sftp.md)。
 
 >[!IMPORTANT]
->数据工厂引入基于新格式的数据集模型，有关详细信息，请参阅对应格式的文章： <br>- [Avro 格式](format-avro.md)<br>- 二进制格式[](format-binary.md)<br>- 带分隔符的文本格式[](format-delimited-text.md)<br>- [JSON 格式](format-json.md)<br>- [ORC 格式](format-orc.md)<br>- [Parquet 格式](format-parquet.md)<br>依旧支持本文中提到的其余配置，以实现后向兼容性。 建议你今后使用新模型。 
+>数据工厂引入基于新格式的数据集模型，有关详细信息，请参阅对应格式的文章： <br>- [Avro 格式](format-avro.md)<br>- [二进制格式](format-binary.md)<br>- [带分隔符的文本格式](format-delimited-text.md)<br>- [JSON 格式](format-json.md)<br>- [ORC 格式](format-orc.md)<br>- [Parquet 格式](format-parquet.md)<br>依旧支持本文中提到的其余配置，以实现后向兼容性。 建议你今后使用新模型。 
 
-## <a name="text-format"></a> 文本格式（旧版）
+## <a name="text-format-legacy"></a><a name="text-format"></a> 文本格式（旧版）
 
 >[!NOTE]
 >从[带分隔符的文本格式](format-delimited-text.md)一文中了解新模型。 仍然按原样支持基于文件的数据存储数据集的以下配置，以实现向后兼容性。 建议你今后使用新模型。
@@ -33,15 +33,15 @@ ms.locfileid: "75624420"
 
 | 属性 | 说明 | 允许的值 | 必须 |
 | --- | --- | --- | --- |
-| columnDelimiter |用于分隔文件中的列的字符。 可以考虑使用数据中可能不存在的极少见的不可打印字符。 例如，指定“\u0001”表示标题开头 (SOH)。 |只允许一个字符。 **默认**值为**逗号（“,”）** 。 <br/><br/>若要使用 Unicode 字符，请参阅 [Unicode 字符](https://en.wikipedia.org/wiki/List_of_Unicode_characters)获取相应的代码。 |否 |
-| rowDelimiter |用于分隔文件中的行的字符。 |只允许一个字符。 **默认**值为以下任何一项： **[“\r\n”、“\r”、“\n”]** （读取时）和 **“\r\n”** （写入时）。 |否 |
-| escapeChar |用于转义输入文件内容中的列分隔符的特殊字符。 <br/><br/>不能同时为表指定 escapeChar 和 quoteChar。 |只允许一个字符。 没有默认值。 <br/><br/>示例：如果使用逗号 (',') 作为列分隔符，但希望在文本中包含逗号字符（例如："Hello, world"），可以将“$”定义为转义字符，并在源代码中使用字符串 "Hello$, world"。 |否 |
-| quoteChar |括住字符串值的引号字符。 引号字符内的列和行分隔符被视为字符串值的一部分。 此属性同时适用于输入和输出数据集。<br/><br/>不能同时为表指定 escapeChar 和 quoteChar。 |只允许一个字符。 没有默认值。 <br/><br/>例如，如果以逗号（“,”）作为列分隔符，但想要在文本中使用逗号字符（例如：<Hello, world>），可以将 "（双引号）定义为引号字符，在源中使用字符串“Hello, world”。 |否 |
+| columnDelimiter |用于分隔文件中的列的字符。 可以考虑使用数据中可能不存在的极少见的不可打印字符。 例如，指定“\u0001”表示标题开头 (SOH)。 |只能使用一个字符。 **默认**值为**逗号（“,”）** 。 <br/><br/>若要使用 Unicode 字符，请参阅 [Unicode 字符](https://en.wikipedia.org/wiki/List_of_Unicode_characters)获取相应的代码。 |否 |
+| rowDelimiter |用于分隔文件中的行的字符。 |只能使用一个字符。 **默认**值为以下任何一项： **[“\r\n”、“\r”、“\n”]** （读取时）和 **“\r\n”** （写入时）。 |否 |
+| escapeChar |用于转义输入文件内容中的列分隔符的特殊字符。 <br/><br/>不能同时指定表的 escapeChar 和 quoteChar。 |只能使用一个字符。 没有默认值。 <br/><br/>示例：如果使用逗号 (',') 作为列分隔符，但希望在文本中包含逗号字符（例如："Hello, world"），可以将“$”定义为转义字符，并在源代码中使用字符串 "Hello$, world"。 |否 |
+| quoteChar |将字符串值用引号括起来的字符。 引号字符内的列和行分隔符将被视为字符串值的一部分。 此属性适用于输入和输出数据集。<br/><br/>不能同时指定表的 escapeChar 和 quoteChar。 |只能使用一个字符。 没有默认值。 <br/><br/>例如，如果以逗号（“,”）作为列分隔符，但想要在文本中使用逗号字符（例如：<Hello, world>），可以将 "（双引号）定义为引号字符，在源中使用字符串“Hello, world”。 |否 |
 | nullValue |用于表示 null 值的一个或多个字符。 |一个或多个字符。 **默认**值为 **“\N”和“NULL”** （读取时）及 **“\N”** （写入时）。 |否 |
 | encodingName |指定编码名称。 |有效的编码名称。 请参阅 [Encoding.EncodingName 属性](https://msdn.microsoft.com/library/system.text.encoding.aspx)。 例如：windows-1250 或 shift_jis。 **默认**值为 **UTF-8**。 |否 |
 | firstRowAsHeader |指定是否将第一行视为标头。 对于输入数据集，数据工厂将读取第一行作为标头。 对于输出数据集，数据工厂将写入第一行作为标头。 <br/><br/>有关示例方案，请参阅 [`firstRowAsHeader` 和 `skipLineCount` 使用方案](#scenarios-for-using-firstrowasheader-and-skiplinecount)。 |True<br/><b>False（默认值）</b> |否 |
-| skipLineCount |指示从输入文件读取数据时要跳过的非空行数  。 如果同时指定了 skipLineCount 和 firstRowAsHeader，则先跳过代码行，然后从输入文件读取标头信息。 <br/><br/>有关示例方案，请参阅 [`firstRowAsHeader` 和 `skipLineCount` 使用方案](#scenarios-for-using-firstrowasheader-and-skiplinecount)。 |Integer |否 |
-| treatEmptyAsNull |指定从输入文件读取数据时，是否将 null 或空字符串视为 null 值。 |**True（默认值）**<br/>False |否 |
+| skipLineCount |指示从输入文件读取数据时要跳过的非空行数  。 如果同时指定了 skipLineCount 和 firstRowAsHeader，则先跳过行，然后从输入文件读取标头信息。 <br/><br/>有关示例方案，请参阅 [`firstRowAsHeader` 和 `skipLineCount` 使用方案](#scenarios-for-using-firstrowasheader-and-skiplinecount)。 |Integer |否 |
+| treatEmptyAsNull |指定是否在从输入文件读取数据时将 null 或空字符串视为 null 值。 |**True（默认值）**<br/>False |否 |
 
 ### <a name="textformat-example"></a>TextFormat 示例
 
@@ -78,7 +78,7 @@ ms.locfileid: "75624420"
 * 要从包含标头行的文本文件复制到非文件接收器，并想要删除该行。 请在输入数据集中将 `firstRowAsHeader` 指定为 true。
 * 要从文本文件复制，并想跳过不包含数据或标头信息的开头几行。 通过指定 `skipLineCount` 指明要跳过的行数。 如果文件的剩余部分包含标头行，则也可指定 `firstRowAsHeader`。 如果同时指定了 `skipLineCount` 和 `firstRowAsHeader`，则先跳过代码行，然后从输入文件读取标头信息
 
-## <a name="json-format"></a> JSON 格式（旧版）
+## <a name="json-format-legacy"></a><a name="json-format"></a> JSON 格式（旧版）
 
 >[!NOTE]
 >从 [JSON 格式](format-json.md)一文中了解新模型。 仍然按原样支持基于文件的数据存储数据集的以下配置，以实现向后兼容性。 建议你今后使用新模型。
@@ -227,7 +227,7 @@ ms.locfileid: "75624420"
 | --- | --- | --- | --- | --- |
 | ed0e4960-d9c5-11e6-85dc-d7996816aad3 | PC | Microsoft.Compute/virtualMachines | 827f8aaa-ab72-437c-ba48-d8917a7336a3 | 1/13/2017 11:24:37 AM |
 
-**JsonFormat** 类型的输入数据集定义如下（部分定义，仅包含相关部件）。 更具体说来：
+**JsonFormat** 类型的输入数据集定义如下（部分定义，仅包含相关部件）。 更具体地说：
 
 - `structure` 节定义自定义列名以及在转换为表格数据时的相应数据类型。 本节为**可选**，除非需要进行列映射。 有关详细信息，请参阅[将源数据集列映射到目标数据集列](copy-activity-schema-and-type-mapping.md)。
 - `jsonPathDefinition` 为每个列指定 JSON 路径，表明从何处提取数据。 若要从数组中复制数据，可以使用 `array[x].property` 从 `xth` 对象中提取给定属性的值，或者使用 `array[*].property` 从包含此类属性的任何对象中查找该值。
@@ -302,10 +302,10 @@ ms.locfileid: "75624420"
 | 01 | 20170122 | P3 | 231 | `[{"sanmateo":"No 1"}]` |
 
 
-**JsonFormat** 类型的输入数据集定义如下（部分定义，仅包含相关部件）。 更具体说来：
+**JsonFormat** 类型的输入数据集定义如下（部分定义，仅包含相关部件）。 更具体地说：
 
 - `structure` 节定义自定义列名以及在转换为表格数据时的相应数据类型。 本节为**可选**，除非需要进行列映射。 有关详细信息，请参阅[将源数据集列映射到目标数据集列](copy-activity-schema-and-type-mapping.md)。
-- `jsonNodeReference` 指示进行迭代操作，在**数组**`orderlines`下以同一模式从对象提取数据。
+- `jsonNodeReference` 指示在**数组** `orderlines` 下以同一模式从对象中循环访问数据并提取数据。
 - `jsonPathDefinition` 为每个列指定 JSON 路径，表明从何处提取数据。 在以下示例中，`ordernumber`、`orderdate` 和 `city` 位于 JSON 路径以“`$.`”开头的根对象下，而 `order_pd` 和 `order_price` 在定义时使用的路径派生自没有“`$.`”的数组元素。
 
 ```json
@@ -405,7 +405,7 @@ ms.locfileid: "75624420"
 }
 ```
 
-## <a name="parquet-format"></a> Parquet 格式（旧版）
+## <a name="parquet-format-legacy"></a><a name="parquet-format"></a> Parquet 格式（旧版）
 
 >[!NOTE]
 >从 [Parquet 格式](format-parquet.md)一文中了解新模型。 仍然按原样支持基于文件的数据存储数据集的以下配置，以实现向后兼容性。 建议你今后使用新模型。
@@ -465,7 +465,7 @@ ms.locfileid: "75624420"
 | Char | 二进制 | Utf8 | Utf8 |
 | CharArray | 不支持 | 不适用 | 不适用 |
 
-## <a name="orc-format"></a> ORC 格式（旧版）
+## <a name="orc-format-legacy"></a><a name="orc-format"></a> ORC 格式（旧版）
 
 >[!NOTE]
 >从 [ORC 格式](format-orc.md)一文了解中新模型。 仍然按原样支持基于文件的数据存储数据集的以下配置，以实现向后兼容性。 建议你今后使用新模型。
@@ -517,7 +517,7 @@ ms.locfileid: "75624420"
 | Guid | String |
 | Char | Char(1) |
 
-## <a name="avro-format"></a> AVRO 格式（旧版）
+## <a name="avro-format-legacy"></a><a name="avro-format"></a> AVRO 格式（旧版）
 
 >[!NOTE]
 >从 [Avro 格式](format-avro.md)一文中了解新模型。 仍然按原样支持基于文件的数据存储数据集的以下配置，以实现向后兼容性。 建议你今后使用新模型。
@@ -537,13 +537,13 @@ ms.locfileid: "75624420"
 
 * 不支持[复杂数据类型](https://avro.apache.org/docs/current/spec.html#schema_complex)（记录、枚举、数组、映射、联合与固定值）。
 
-## <a name="compression-support"></a> 压缩支持（旧版）
+## <a name="compression-support-legacy"></a><a name="compression-support"></a> 压缩支持（旧版）
 
 在复制期间，Azure 数据工厂支持压缩/解压缩数据。 在输入数据集中指定 `compression` 属性时，复制活动从源读取压缩的数据并对其进行解压缩；在输出数据集中指定属性时，复制活动将压缩数据并将其写入到接收器。 下面是一些示例方案：
 
 * 从 Azure Blob 读取 GZIP 压缩的数据，将其解压缩，然后将结果数据写入 Azure SQL 数据库。 使用值为 GZIP 的 `compression` `type` 属性定义输入 Azure Blob 数据集。
 * 从来自本地文件系统的纯文本文件读取数据、使用 GZip 格式进行压缩并将压缩的数据写入到 Azure Blob。 使用值为 GZip 的 `compression` `type` 属性定义输出 Azure Blob 数据集。
-* 从 Azure Blob 读取 GZIP 压缩的数据，将其解压缩、使用 BZIP2 将其压缩，然后将结果数据写入 Azure Blob。 使用设置为 GZIP 的 `compression` `type` 定义输入 Azure Blob 数据集，使用设置为 BZIP2 的 `compression` `type` 定义输出数据集。
+* 从 Azure Blob 读取 GZIP 压缩的数据，将其解压缩、使用 BZIP2 将其压缩，然后将结果数据写入 Azure Blob。 通过将 `compression` `type` 设为 GZIP 来定义输入 Azure Blob 数据集，通过将 `compression` `type` 设为 BZIP2 来定义输出数据集。
 
 若要为数据集指定压缩，请在数据集 JSON 中使用 **compression** 属性，如以下示例所示：
 

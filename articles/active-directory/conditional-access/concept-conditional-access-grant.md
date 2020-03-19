@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 02/21/2020
+ms.date: 03/10/2020
 ms.author: v-junlch
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ebd672cdd957295f9d9e15eeab568b5a2048a4a0
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.openlocfilehash: a2917f07003a4a359765ba2d668af55043ae3af0
+ms.sourcegitcommit: 4ba6d7c8bed5398f37eb37cf5e2acafcdcc28791
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77541118"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79134170"
 ---
 # <a name="conditional-access-grant"></a>条件访问：授予
 
@@ -36,6 +36,7 @@ ms.locfileid: "77541118"
 
 - [需要多重身份验证（Azure 多重身份验证）](../authentication/concept-mfa-howitworks.md)
 - [要求将设备标记为合规 (Microsoft Intune)](https://docs.microsoft.com/intune/protect/device-compliance-get-started)
+- [“需要已批准的客户端应用”](app-based-conditional-access.md)
 
 当管理员组合使用这些选项时，可以选择以下方法：
 
@@ -95,9 +96,7 @@ ms.locfileid: "77541118"
 
 ### <a name="require-app-protection-policy"></a>需要应用保护策略
 
-在条件访问策略中，可以要求客户端应用上必须存在应用保护策略，然后才允许所选云应用进行访问。 
-
-![通过应用保护策略来控制访问权限](./media/technical-reference/22.png)
+在条件访问策略中，你可以要求客户端应用上存在 Intune 应用保护策略，然后才能访问所选云应用。 
 
 此设置适用于以下客户端应用：
 

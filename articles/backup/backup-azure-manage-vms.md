@@ -7,12 +7,12 @@ ms.topic: conceptual
 origin.date: 09/18/2019
 ms.date: 09/23/2019
 ms.author: v-lingwu
-ms.openlocfilehash: ccf7527a3f31776b9a173e8a26878414b17530b6
-ms.sourcegitcommit: 21b02b730b00a078a76aeb5b78a8fd76ab4d6af2
+ms.openlocfilehash: 133197b6ccd85633bd1c1a560b77960e76ede6fc
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74839063"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293035"
 ---
 # <a name="manage-azure-vm-backups-with-azure-backup-service"></a>使用 Azure 备份服务管理 Azure VM 备份
 
@@ -40,19 +40,19 @@ ms.locfileid: "74839063"
 3. 为了便于使用，请右键单击保管库，然后选择“固定到仪表板”  。
 4. 打开保管库仪表板。
 
-    ![打开保管库仪表板和“设置”边栏选项卡](./media/backup-azure-manage-vms/full-view-rs-vault.png)
+    ![打开保管库仪表板和“设置”窗格](./media/backup-azure-manage-vms/full-view-rs-vault.png)
 
 5. 在“备份项”  磁贴中，选择“Azure 虚拟机”  。
 
     ![打开“备份项”磁贴](./media/backup-azure-manage-vms/contoso-vault-1606.png)
 
-6. 在“备份项”  边栏选项卡上，可以查看受保护 VM 的列表。 在此示例中，保管库保护着一台虚拟机：demobackup。  
+6. 在“备份项”  窗格上，可以查看受保护 VM 的列表。 在此示例中，保管库保护着一台虚拟机：demobackup。  
 
-    ![查看“备份项”边栏选项卡](./media/backup-azure-manage-vms/backup-items-blade-select-item.png)
+    ![查看“备份项”窗格](./media/backup-azure-manage-vms/backup-items-blade-select-item.png)
 
 7. 从保管库项的仪表板中，修改备份策略，运行按需备份，停止或恢复 VM 保护，删除备份数据，查看还原点，以及运行还原。
 
-    ![“备份项”仪表板和“设置”边栏选项卡](./media/backup-azure-manage-vms/item-dashboard-settings.png)
+    ![“备份项”仪表板和“设置”窗格](./media/backup-azure-manage-vms/item-dashboard-settings.png)
 
 ## <a name="manage-backup-policy-for-a-vm"></a>管理 VM 的备份策略
 
@@ -63,9 +63,9 @@ ms.locfileid: "74839063"
 
     ![打开“备份项”磁贴](./media/backup-azure-manage-vms/contoso-vault-1606.png)
 
-3. 在“备份项”  边栏选项卡上，可以查看受保护 VM 及其上次备份状态和最新还原点时间的列表。
+3. 在“备份项”  窗格上，可以查看受保护 VM 及其上次备份状态和最新还原点时间的列表。
 
-    ![查看“备份项”边栏选项卡](./media/backup-azure-manage-vms/backup-items-blade-select-item.png)
+    ![查看“备份项”窗格](./media/backup-azure-manage-vms/backup-items-blade-select-item.png)
 
 4. 从保管库项的仪表板中，你可以选择备份策略。
 
@@ -87,8 +87,8 @@ ms.locfileid: "74839063"
 
     ![“立即备份”选项](./media/backup-azure-manage-vms/backup-now-button.png)
 
-2. 从“备份管理类型”  下，选择“Azure 虚拟机”  。 “备份项(Azure 虚拟机)”  边栏选项卡随即出现。
-3. 选择一个 VM，选择“立即备份”  来创建一个按需备份。 “立即备份”  边栏选项卡随即出现。
+2. 从“备份管理类型”  下，选择“Azure 虚拟机”  。 “备份项(Azure 虚拟机)”  窗格随即出现。
+3. 选择一个 VM，选择“立即备份”  来创建一个按需备份。 “立即备份”  窗格随即出现。
 4. 在“备份保留截止日期”  字段中，指定要将备份保留到的日期。
 
     ![“立即备份”日历](./media/backup-azure-manage-vms/backup-now-check.png)
@@ -101,7 +101,7 @@ ms.locfileid: "74839063"
 
 可通过两种方法来停止保护 VM：
 
-* **停止保护并保留备份数据**。 此选项将使所有将来的备份作业停止保护你的 VM；但是，Azure 备份服务将保留已备份的恢复点。  你需要付费才能将恢复点保留在保管库中（有关详细信息，请参阅 [Azure 备份定价](https://azure.microsoft.com/pricing/details/backup/)）。 如果需要，你将能够还原 VM。 如果决定恢复 VM 保护，则可以使用“恢复备份”  选项。
+* **停止保护并保留备份数据**。 此选项将使所有将来的备份作业停止保护你的 VM；但是，Azure 备份服务将保留已备份的恢复点。  你需要付费才能将恢复点保留在保管库中（有关详细信息，请参阅 [Azure 备份定价](https://www.azure.cn/pricing/details/backup/index.html)）。 如果需要，你将能够还原 VM。 如果决定恢复 VM 保护，则可以使用“恢复备份”  选项。
 * **停止保护并删除备份数据**。 此选项将使所有将来的备份作业停止保护你的 VM 并删除所有恢复点。 你将无法还原 VM，也无法使用“恢复备份”  选项。
 
 >[!NOTE]
@@ -130,7 +130,7 @@ ms.locfileid: "74839063"
 
 ## <a name="resume-protection-of-a-vm"></a>恢复对 VM 的保护
 
-如果在停止 VM 保护期间选择了“[停止保护并保留备份数据](#stop-protection-and-retain-backup-data)”选项，则可以使用“恢复备份”  。 如果选择了“[停止保护并删除备份数据](#stop-protection-and-delete-backup-data)”选项或“[删除备份数据](#delete-backup-data)”，则此选项不可用。
+如果在停止 VM 保护期间选择了“停止保护并保留备份数据”[](#stop-protection-and-retain-backup-data)选项，则可以使用“恢复备份”  。 如果选择了“[停止保护并删除备份数据](#stop-protection-and-delete-backup-data)”选项或“[删除备份数据](#delete-backup-data)”，则此选项不可用。
 
 若要恢复 VM 保护，请执行以下操作：
 

@@ -5,22 +5,23 @@ services: sql-database
 ms.service: sql-database
 ms.subservice: security
 ms.custom: ''
-titleSuffix: Azure SQL Database and SQL Data Warehouse
+titleSuffix: Azure SQL Database and Azure Synapse
 ms.devlang: ''
 ms.topic: conceptual
 author: WenJason
 ms.author: v-jay
 ms.reviewer: vanto
-origin.date: 08/22/2019
-ms.date: 02/17/2020
-ms.openlocfilehash: 02b434f6d970aa28dd97c4df383b54a89f1696bb
-ms.sourcegitcommit: d7b86a424b72849fe8ed32893dd05e4696e4fe85
+origin.date: 02/05/2020
+ms.date: 03/16/2020
+tags: azure-synapse
+ms.openlocfilehash: 00efe0f0799b41d25b6c7ca5a46f80af17a22cd5
+ms.sourcegitcommit: dc862610e2169c1fce6fb0ae9eb7dd7567f86a0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77155634"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293854"
 ---
-# <a name="azure-sql-database-and-sql-data-warehouse-data-discovery--classification"></a>Azure SQL 数据库和 SQL 数据仓库数据发现和分类
+# <a name="azure-sql-database-and-azure-synapse-analytics-data-discovery--classification"></a>Azure SQL 数据库和 Azure Synapse Analytics 数据发现和分类
 
 数据发现和分类提供了内置于 Azure SQL 数据库的高级功能，可用于发现、分类、标记和报告数据库中的敏感数据。    
 
@@ -33,9 +34,9 @@ ms.locfileid: "77155634"
 数据发现和分类包含在[高级数据安全](sql-database-advanced-data-security.md) (ADS) 产品/服务中，该产品是高级 SQL 安全功能统一软件包。 可通过中心 SQL ADS 门户访问和管理数据发现和分类。
 
 > [!NOTE]
-> 本文档是关于 Azure SQL 数据库和 Azure SQL 数据仓库的。 为简单起见，在提到 SQL 数据库和 SQL 数据仓库时，本文统称 SQL 数据库。 对于 SQL Server（本地），请参阅 [SQL 数据发现和分类](https://go.microsoft.com/fwlink/?linkid=866999)。
+> 本文档与 Azure SQL 数据库和 Azure Synapse 相关。 为简单起见，在提到 SQL 数据库和 Azure Synapse 时，本文统称 SQL 数据库。 对于 SQL Server（本地），请参阅 [SQL 数据发现和分类](https://go.microsoft.com/fwlink/?linkid=866999)。
 
-## <a id="subheading-1"></a>什么是数据发现和分类
+## <a name="what-is-data-discovery--classification"></a><a id="subheading-1"></a>什么是数据发现和分类
 
 数据发现和分类引入了一套高级的服务和新的 SQL 功能，形成了新的 SQL 信息保护模式，旨在保护数据，而不仅仅是数据库：
 
@@ -55,7 +56,7 @@ ms.locfileid: "77155634"
 
   在门户中详细的仪表板中可以查看数据库分类状态。 此外，还可以下载用于符合性和审核目的以及其他需求的报表（Excel 格式）。
 
-## <a id="subheading-2"></a>发现、分类和标记敏感列
+## <a name="discover-classify--label-sensitive-columns"></a><a id="subheading-2"></a>发现、分类和标记敏感列
 
 以下部分介绍如何在数据库中发现包含敏感数据的列并对其进行分类和标记、如何查看数据库的当前分类状态，以及如何导出报表。
 
@@ -122,13 +123,13 @@ SQL 数据发现和分类附带了一组内置的敏感度标签和一组内置�
 
    ![保存](./media/sql-data-discovery-and-classification/10_data_classification_save.png)
 
-## <a id="subheading-3"></a>审核对敏感数据的访问
+## <a name="auditing-access-to-sensitive-data"></a><a id="subheading-3"></a>审核对敏感数据的访问
 
 信息保护范例的一个重要方面是能够监视对敏感数据的访问。 [Azure SQL 数据库审核](sql-database-auditing.md) 已经过增强，在审核日志中包含了名为 data_sensitivity_information 的新字段，该字段会记录查询返回的实际数据的敏感度分类（标签）  。
 
 ![审核日志](./media/sql-data-discovery-and-classification/11_data_classification_audit_log.png)
 
-## <a id="subheading-4"></a>权限
+## <a name="permissions"></a><a id="subheading-4"></a>权限
 
 以下内置角色可以读取 Azure SQL 数据库的数据分类：`Owner`、`Reader`、`Contributor`、`SQL Security Manager`、`User Access Administrator`。
 
@@ -136,7 +137,7 @@ SQL 数据发现和分类附带了一组内置的敏感度标签和一组内置�
 
 详细了解 [Azure 资源的 RBAC](/role-based-access-control/overview)
 
-## <a id="subheading-5"></a>管理分类
+## <a name="manage-classifications"></a><a id="subheading-5"></a>管理分类
 
 # <a name="t-sql"></a>[T-SQL](#tab/azure-t-sql)
 可以使用 T-SQL 添加/删除列分类，以及检索整个数据库的所有分类。
@@ -180,7 +181,7 @@ SQL 数据发现和分类附带了一组内置的敏感度标签和一组内置�
 
 ---
 
-## <a id="subheading-6"></a>后续步骤
+## <a name="next-steps"></a><a id="subheading-6"></a>后续步骤
 
 - 详细了解[高级数据安全](sql-database-advanced-data-security.md)。
 - 请考虑配置 [Azure SQL 数据库审核](sql-database-auditing.md) 来监视和审核对已分类敏感数据的访问。

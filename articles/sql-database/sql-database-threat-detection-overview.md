@@ -10,23 +10,24 @@ ms.topic: conceptual
 author: WenJason
 ms.author: v-jay
 ms.reviewer: vanto, carlrab
-origin.date: 03/31/2019
-ms.date: 01/06/2020
-ms.openlocfilehash: cabbbbd3633320a6b4d4f9401bbed3de6af85056
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+origin.date: 02/05/2020
+ms.date: 03/16/2020
+tags: azure-synapse
+ms.openlocfilehash: 2d3c24ab7b6f79d4b74c6933dfe9a24af4f0c0c6
+ms.sourcegitcommit: dc862610e2169c1fce6fb0ae9eb7dd7567f86a0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75624293"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293734"
 ---
 # <a name="advanced-threat-protection-for-azure-sql-database"></a>Azure SQL 数据库的高级威胁防护
 
-适用于 [Azure SQL 数据库](sql-database-technical-overview.md)和 [SQL 数据仓库](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md)的高级威胁防护可检测异常活动，这些活动指示对数据库的异常和可能有害的访问或利用企图。
+适用于 [Azure SQL 数据库](sql-database-technical-overview.md)和 [Azure Synapse Analytics](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) 的高级威胁防护可检测异常活动，这些活动指示访问或利用数据库的异常和潜在有害尝试。
 
 高级威胁防护包含在[高级数据安全性](sql-database-advanced-data-security.md) (ADS) 产品/服务中，是一个针对高级 SQL 安全功能的统一软件包。 可通过中心 SQL ADS 门户访问和管理高级威胁防护。
 
 > [!NOTE]
-> 本主题适用于 Azure SQL 服务器，同时也适用于在 Azure SQL 服务器中创建的 SQL 数据库和 SQL 数据仓库数据库。 为简单起见，在提到 SQL 数据库和 SQL 数据仓库时，本文统称 SQL 数据库。
+> 本主题适用于 Azure SQL 服务器，同时也适用于在 Azure SQL 服务器中创建的 SQL 数据库和 Azure Synapse。 为简单起见，在提到 SQL 数据库和 Azure Synapse 时，本文统称 SQL 数据库。
 
 ## <a name="what-is-advanced-threat-protection"></a>什么是高级威胁防护
 
@@ -69,7 +70,7 @@ ms.locfileid: "75624293"
 
 高级威胁防护将其警报与 [Azure 安全中心](/security-center/)集成。 Azure 门户中“数据库和 SQL ADS”边栏选项卡内的“实时 SQL 高级威胁防护”磁贴会跟踪活动威胁的状态。
 
-单击“高级威胁防护警报”以启动“Azure 安全中心警报”页，并获取在数据库或数据仓库中检测到的活动 SQL 威胁的概述  。
+单击“高级威胁防护警报”以启动“Azure 安全中心警报”页，并获取在数据库中检测到的活动 SQL 威胁的概述  。
 
    ![高级威胁防护警报](./media/sql-database-threat-detection/threat_detection_alert.png)
 

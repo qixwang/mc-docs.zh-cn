@@ -10,14 +10,14 @@ ms.topic: conceptual
 author: WenJason
 ms.author: v-jay
 ms.reviewer: mathoma, carlrab
-origin.date: 1/05/2020
-ms.date: 02/17/2020
-ms.openlocfilehash: 412e15eea0fa373366af508729ff7f34e1f8cb84
-ms.sourcegitcommit: d7b86a424b72849fe8ed32893dd05e4696e4fe85
+origin.date: 2/10/2020
+ms.date: 03/16/2020
+ms.openlocfilehash: 47cde36bc6d809ee5a5426863d9630380e5b80f6
+ms.sourcegitcommit: dc862610e2169c1fce6fb0ae9eb7dd7567f86a0a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77155732"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79293816"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>使用自动故障转移组可以实现多个数据库的透明、协调式故障转移
 
@@ -243,7 +243,7 @@ ms.locfileid: "77155732"
 可以在两个不同订阅中的托管实例之间创建故障转移组。 使用 PowerShell API 时，可以通过为辅助实例指定 `PartnerSubscriptionId` 参数来执行此操作。 使用 REST API 时，`properties.managedInstancePairs` 参数中包含的每个实例 ID 都可以有自己的订阅 ID。
   
 > [!IMPORTANT]
-> Azure 门户不支持跨不同订阅的故障转移组。
+> Azure 门户不支持创建跨不同订阅的故障转移组。 此外，对于跨不同订阅和/或资源组的现有故障转移组，无法通过门户从主实例手动启动故障转移。 改为从异地辅助实例启动它。
 
 ### <a name="managing-failover-to-secondary-instance"></a>管理到辅助实例的故障转移
 

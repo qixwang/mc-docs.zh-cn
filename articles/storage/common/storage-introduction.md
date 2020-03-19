@@ -5,16 +5,16 @@ services: storage
 author: WenJason
 ms.service: storage
 ms.topic: conceptual
-origin.date: 06/20/2019
-ms.date: 02/10/2020
+origin.date: 01/16/2020
+ms.date: 03/09/2020
 ms.author: v-jay
 ms.subservice: common
-ms.openlocfilehash: 90242123a43fe5cd123aa1c3688650aa24b9fd6d
-ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
+ms.openlocfilehash: 4f97fdd8f96180d7d39075b08417e0058adece7e
+ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77028630"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79291486"
 ---
 # <a name="introduction-to-azure-storage"></a>Azure 存储简介
 
@@ -120,11 +120,9 @@ Azure 存储客户端库提供的方法用于加密客户端库的数据，然�
 
 ## <a name="redundancy"></a>冗余
 
-为了确保数据的持久性，Azure 存储会复制多个数据副本。 设置存储帐户时，可选择冗余选项。
+为了确保数据的持久性，Azure 存储会存储多个数据副本。 设置存储帐户时，可选择冗余选项。
 
 [!INCLUDE [storage-common-redundancy-options](../../../includes/storage-common-redundancy-options.md)]
-
-有关灾难恢复的详细信息，请参阅[在 Azure 存储中断时该怎么办](storage-disaster-recovery-guidance.md)。
 
 ## <a name="transferring-data-to-and-from-azure-storage"></a>将数据传输到和移出 Azure 存储
 
