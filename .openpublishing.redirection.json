@@ -22689,6 +22689,11 @@
       "source_path": "articles/app-service/web-sites-traffic-manager-custom-domain-name.md",
       "redirect_url": "/app-service/configure-domain-traffic-manager",
       "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/azure-subscription-service-limits.md",
+      "redirect_url": "/azure-resource-manager/management/azure-subscription-service-limits",
+      "redirect_document_id": false
     }
 
 
