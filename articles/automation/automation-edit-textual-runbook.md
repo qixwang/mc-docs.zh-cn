@@ -10,12 +10,12 @@ origin.date: 08/01/2018
 ms.date: 03/16/2020
 ms.topic: conceptual
 manager: digimobile
-ms.openlocfilehash: a4205fba4958567257defdce152af75121a81225
-ms.sourcegitcommit: dc862610e2169c1fce6fb0ae9eb7dd7567f86a0a
+ms.openlocfilehash: 417926ec128c05d99a1f4f01ec2d36041b626808
+ms.sourcegitcommit: 71a386ca0d0ecb79a123399b6ab6b8c70ea2aa78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79293840"
+ms.lasthandoff: 03/18/2020
+ms.locfileid: "79497319"
 ---
 # <a name="editing-textual-runbooks-in-azure-automation"></a>在 Azure 自动化中编辑文本 Runbook
 
@@ -65,7 +65,7 @@ Azure 自动化中的每个 Runbook 都有两个版本：草稿版和已发布�
 
 ## <a name="editing-an-azure-automation-runbook-using-windows-powershell"></a>使用 Windows PowerShell 编辑 Azure 自动化 Runbook
 
-若要使用 Windows PowerShell 来编辑 Runbook，请使用所选编辑器进行操作，将 runbook 保存到“.ps1”文件。 可以使用 [Export-AzAutomationRunbook](https://docs.microsoft.com/powershell/module/Az.Automation/Export-AzAutomationRunbook) cmdlet 来检索 runbook 的内容。 可以使用 [Import-AzAutomationRunbook](/powershell/module/Az.Automation/import-azautomationrunbook) cmdlet 将现有的草稿 Runbook 替换为已修改的 Runbook。
+若要使用 Windows PowerShell 来编辑 Runbook，请使用所选编辑器进行操作，将 runbook 保存到“.ps1”文件。 可以使用 [Export-AzAutomationRunbook](https://docs.microsoft.com/powershell/module/Az.Automation/Export-AzAutomationRunbook) cmdlet 来检索 runbook 的内容。 可以使用 [Import-AzAutomationRunbook](https://docs.microsoft.com/powershell/module/Az.Automation/import-azautomationrunbook) cmdlet 将现有的草稿 Runbook 替换为已修改的 Runbook。
 
 ### <a name="retrieve-the-contents-of-a-runbook-using-windows-powershell"></a>使用 Windows PowerShell 检索 Runbook 的内容
 

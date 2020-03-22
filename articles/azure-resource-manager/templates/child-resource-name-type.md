@@ -3,14 +3,14 @@ title: 模板中的子资源
 description: 介绍如何在 Azure 资源管理器模板中设置子资源的名称和类型。
 ms.topic: conceptual
 origin.date: 08/26/2019
+ms.date: 03/23/2020
 ms.author: v-yeche
-ms.date: 01/06/2020
-ms.openlocfilehash: 81b37f0e099b9f86d7fab04a337f886392c41687
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.openlocfilehash: 906634e2cc84ccdd12e83e7d2778428aa70e367c
+ms.sourcegitcommit: 1436f1851342ca5631eb25342eed954adb707af0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75631433"
+ms.lasthandoff: 03/19/2020
+ms.locfileid: "79543734"
 ---
 <!--Verify Successfully-->
 # <a name="set-name-and-type-for-child-resources"></a>设置子资源的名称和类型
@@ -30,7 +30,7 @@ ms.locfileid: "75631433"
 ]
 ```
 
-下一示例显示子资源位于父资源外部。 如果父资源未部署在同一模板中，或者想要使用 [copy](create-multiple-instances.md) 创建多个子资源，可以使用此方法。
+下一示例显示子资源位于父资源外部。 如果父资源未部署在同一模板中，或者想要使用 [copy](copy-resources.md) 创建多个子资源，可以使用此方法。
 
 ```json
 "resources": [
@@ -59,8 +59,8 @@ ms.locfileid: "75631433"
 ```json
 "resources": [
   {
-    "apiVersion": "2018-10-01",
     "type": "Microsoft.Network/virtualNetworks",
+    "apiVersion": "2018-10-01",
     "name": "VNet1",
     "location": "[parameters('location')]",
     "properties": {
@@ -72,10 +72,10 @@ ms.locfileid: "75631433"
     },
     "resources": [
       {
-        "apiVersion": "2018-10-01",
         "type": "subnets",
-        "location": "[parameters('location')]",
+        "apiVersion": "2018-10-01",
         "name": "Subnet1",
+        "location": "[parameters('location')]",
         "dependsOn": [
           "VNet1"
         ],
@@ -106,8 +106,8 @@ ms.locfileid: "75631433"
 ```json
 "resources": [
   {
-    "apiVersion": "2018-10-01",
     "type": "Microsoft.Network/virtualNetworks",
+    "apiVersion": "2018-10-01",
     "name": "VNet1",
     "location": "[parameters('location')]",
     "properties": {
@@ -119,8 +119,8 @@ ms.locfileid: "75631433"
     }
   },
   {
-    "apiVersion": "2018-10-01",
     "type": "Microsoft.Network/virtualNetworks/subnets",
+    "apiVersion": "2018-10-01",
     "location": "[parameters('location')]",
     "name": "VNet1/Subnet1",
     "dependsOn": [
@@ -135,7 +135,7 @@ ms.locfileid: "75631433"
 
 ## <a name="next-steps"></a>后续步骤
 
-* 若要了解有关创建 Azure Resource Manager模板的信息，请参阅[创作模板](template-syntax.md)。 
+* 若要了解有关创建 Azure Resource Manager模板的信息，请参阅[创作模板](template-syntax.md)。
 
 * 若要了解引用资源时的资源名称格式，请参阅[引用函数](template-functions-resource.md#reference)。
 

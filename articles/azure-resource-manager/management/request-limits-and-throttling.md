@@ -3,15 +3,15 @@ title: 请求限制
 description: 介绍在达到订阅限制后如何对 Azure Resource Manager 请求进行限制。
 ms.topic: conceptual
 origin.date: 10/26/2019
-ms.date: 01/20/2020
+ms.date: 03/23/2020
 ms.author: v-yeche
 ms.custom: seodec18
-ms.openlocfilehash: 7f35162b6945bf680acc6dbc175d2bc61f5e03cc
-ms.sourcegitcommit: 8de025ca11b62e06ba3762b5d15cc577e0c0f15d
+ms.openlocfilehash: 4f5b85da083de61a3e67d3a474e6e2a77a72b9f5
+ms.sourcegitcommit: 1436f1851342ca5631eb25342eed954adb707af0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76165459"
+ms.lasthandoff: 03/19/2020
+ms.locfileid: "79543880"
 ---
 # <a name="throttling-resource-manager-requests"></a>限制 Resource Manager 请求数
 
@@ -128,7 +128,7 @@ Get-AzResourceGroup -Debug
 
 这会返回许多值，包括以下响应值：
 
-```powershell
+```output
 DEBUG: ============================ HTTP RESPONSE ============================
 
 Status Code:
@@ -147,7 +147,7 @@ New-AzResourceGroup -Name myresourcegroup -Location chinanorth -Debug
 
 这会返回许多值，包括以下值：
 
-```powershell
+```output
 DEBUG: ============================ HTTP RESPONSE ============================
 
 Status Code:
@@ -166,7 +166,7 @@ az group list --verbose --debug
 
 这会返回许多值，包括以下值：
 
-```azurecli
+```output
 msrest.http_logger : Response status: 200
 msrest.http_logger : Response headers:
 msrest.http_logger :     'Cache-Control': 'no-cache'
@@ -186,7 +186,7 @@ az group create -n myresourcegroup --location chinanorth --verbose --debug
 
 这会返回许多值，包括以下值：
 
-```azurecli
+```output
 msrest.http_logger : Response status: 201
 msrest.http_logger : Response headers:
 msrest.http_logger :     'Cache-Control': 'no-cache'

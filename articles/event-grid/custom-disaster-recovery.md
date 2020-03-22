@@ -1,6 +1,6 @@
 ---
 title: Azure 事件网格中自定义主题的灾难恢复
-description: 发生区域性的服务中断时使 Azure 事件网格保持连接。
+description: 本教程逐步讲解如何设置事件处理体系结构，以便在区域中的事件网格服务运行不正常时能够予以恢复。
 services: event-grid
 author: banisadr
 ms.service: event-grid
@@ -8,12 +8,12 @@ ms.topic: tutorial
 origin.date: 01/21/2020
 ms.date: 02/17/2020
 ms.author: v-yiso
-ms.openlocfilehash: d223834e8cc2bdbc866421ae2872328ef48c3a61
-ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
+ms.openlocfilehash: 0bd182cc52144c17d9ea3496390a562b8ae4889f
+ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77068329"
+ms.lasthandoff: 03/17/2020
+ms.locfileid: "79452528"
 ---
 # <a name="build-your-own-disaster-recovery-for-custom-topics-in-event-grid"></a>为事件网格中的自定义主题构建自己的灾难恢复方案
 

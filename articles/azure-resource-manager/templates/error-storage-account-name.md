@@ -3,14 +3,14 @@ title: 存储帐户名称错误
 description: 说明指定存储帐户名称时可能遇到的错误。
 ms.topic: troubleshooting
 origin.date: 03/09/2018
+ms.date: 03/23/2020
 ms.author: v-yeche
-ms.date: 01/06/2020
-ms.openlocfilehash: 864acfbe8d231023482cec881d74474ace54b3a8
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.openlocfilehash: 035422f38f315a1e7067a271c28163fef7e2098c
+ms.sourcegitcommit: 1436f1851342ca5631eb25342eed954adb707af0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75631355"
+ms.lasthandoff: 03/19/2020
+ms.locfileid: "79543856"
 ---
 # <a name="resolve-errors-for-storage-account-names"></a>解决存储帐户名称错误
 
@@ -52,14 +52,14 @@ Message=The storage account named mystorage is already taken.
 
 ```json
 "parameters": {
-    "storageNamePrefix": {
-      "type": "string",
-      "maxLength": 11,
-      "defaultValue": "storage",
-      "metadata": {
-        "description": "The value to use for starting the storage account name."
-      }
+  "storageNamePrefix": {
+    "type": "string",
+    "maxLength": 11,
+    "defaultValue": "storage",
+    "metadata": {
+      "description": "The value to use for starting the storage account name."
     }
+  }
 }
 ```
 

@@ -3,14 +3,14 @@ title: 从 ZIP 包运行应用
 description: 部署应用的具有原子性的 ZIP 包。 提高应用在 ZIP 部署过程中的行为的可预测性和可靠性。
 ms.topic: article
 origin.date: 01/14/2020
-ms.date: 03/23/2020
+ms.date: 03/16/2020
 ms.author: v-tawe
-ms.openlocfilehash: 070c10cdc04b214db5bb7ebb4b8576f01f08d759
-ms.sourcegitcommit: d5eca3c6b03b206e441b599e5b138bd687a91361
+ms.openlocfilehash: ac9fe029edf00fb4a7b412d7877fb7ca0125b78f
+ms.sourcegitcommit: e500354e2fd8b7ac3dddfae0c825cc543080f476
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78934708"
+ms.lasthandoff: 03/19/2020
+ms.locfileid: "79546971"
 ---
 # <a name="run-your-app-in-azure-app-service-directly-from-a-zip-package"></a>直接从 ZIP 包运行 Azure 应用服务中的应用
 
@@ -64,33 +64,6 @@ az webapp config appsettings set --name <app-name> --resource-group <resource-gr
 ```
 
 如果将同名的已更新包发布到 Blob 存储，则需要重启应用，以便将更新的包加载到应用服务中。
-
-### <a name="use-key-vault-references"></a>使用 Key Vault 引用
-
-为了增加安全性，可以将 Key Vault 引用与外部 URL 结合使用。 这会使 URL 处于静态加密状态，并允许利用 Key Vault 进行机密管理和轮换。 建议使用 Azure Blob 存储，以便轻松轮换关联的 SAS 密钥。 Azure Blob 存储已静态加密，当应用程序数据未部署到应用服务时，它可确保应用程序数据安全。
-
-1. 创建 Azure 密钥保管库。
-
-    ```azurecli
-    az keyvault create --name "Contoso-Vault" --resource-group <group-name> --location chinaeast
-    ```
-
-1. 将外部 URL 作为机密添加到 Key Vault 中。
-
-    ```azurecli
-    az keyvault secret set --vault-name "Contoso-Vault" --name "external-url" --value "<insert-your-URL>"
-    ```
-
-1. 创建 `WEBSITE_RUN_FROM_PACKAGE` 应用设置，并将该值设为对外部 URL 的 Key Vault 引用。
-
-    ```azurecli
-    az webapp config appsettings set --settings WEBSITE_RUN_FROM_PACKAGE="@Microsoft.KeyVault(SecretUri=https://Contoso-Vault.vault.azure.cn/secrets/external-url/<secret-version>"
-    ```
-
-有关详细信息，请参阅以下文章。
-
-- [应用服务的 Key Vault 引用](app-service-key-vault-references.md)
-- [静态数据的 Azure 存储加密](../storage/common/storage-service-encryption.md)
 
 ## <a name="troubleshooting"></a>故障排除
 

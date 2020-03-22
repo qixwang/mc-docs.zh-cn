@@ -8,14 +8,14 @@ ms.author: v-jay
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-origin.date: 06/27/2018
-ms.date: 01/06/2020
-ms.openlocfilehash: 5b0b4adf090e8bb300838aac8e0160236a9eda1d
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+origin.date: 02/10/2020
+ms.date: 03/23/2020
+ms.openlocfilehash: 61f0513a5c02caf14ee625ffd9b9eff99c25c36f
+ms.sourcegitcommit: 71a386ca0d0ecb79a123399b6ab6b8c70ea2aa78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75624061"
+ms.lasthandoff: 03/18/2020
+ms.locfileid: "79497349"
 ---
 # <a name="azure-data-factory-faq"></a>Azure 数据工厂常见问题解答
 本文提供有关 Azure 数据工厂的常见问题解答。  
@@ -102,7 +102,7 @@ ms.locfileid: "75624061"
 有关详细信息，请参阅 [Azure 数据工厂中的集成运行时](concepts-integration-runtime.md)。
 
 ## <a name="what-is-the-limit-on-the-number-of-integration-runtimes"></a>对集成运行时的数目有何限制？
-对于可在数据工厂中使用多少个集成运行时实例，没有硬性限制。 不过，对于集成运行时在每个订阅中可用于执行 SSIS 包的 VM 核心数有限制。 有关详细信息，请参阅[数据工厂限制](../azure-subscription-service-limits.md)。
+对于可在数据工厂中使用多少个集成运行时实例，没有硬性限制。 不过，对于集成运行时在每个订阅中可用于执行 SSIS 包的 VM 核心数有限制。 有关详细信息，请参阅[数据工厂限制](../azure-resource-manager/management/azure-subscription-service-limits.md#data-factory-limits)。
 
 ## <a name="what-are-the-top-level-concepts-of-azure-data-factory"></a>Azure 数据工厂的顶层概念有哪些？
 一个 Azure 订阅可以包含一个或多个 Azure 数据工厂实例（或数据工厂）。 Azure 数据工厂包含四个关键组件，这些组件组合成为一个平台，可在其中编写数据驱动型工作流，以及用来移动和转换数据的步骤。

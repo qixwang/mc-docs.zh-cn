@@ -4,15 +4,16 @@ description: 了解如何使用 Node.js 客户端库在 Azure 密钥保管库中
 author: msmbaldwin
 ms.author: v-tawe
 origin.date: 10/20/2019
-ms.date: 02/17/2020
+ms.date: 03/16/2020
 ms.service: key-vault
+ms.subservice: secrets
 ms.topic: quickstart
-ms.openlocfilehash: 408d00a8f3d03132ecb29c575e0ef0218201db4b
-ms.sourcegitcommit: 0b07f1d36ac02da055874630d6edc31cb0a15269
+ms.openlocfilehash: c4449b110b4e5340aadecd2db5a07ce4ddde62fb
+ms.sourcegitcommit: 764b3d26aedce2de0e1948468a706fd3204a3d5e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/10/2020
-ms.locfileid: "77112202"
+ms.lasthandoff: 03/19/2020
+ms.locfileid: "79543356"
 ---
 # <a name="quickstart-azure-key-vault-client-library-for-nodejs-v4"></a>快速入门：适用于 Node.js 的 Azure Key Vault 客户端库 (v4)
 
@@ -29,7 +30,7 @@ Azure 密钥保管库可帮助保护云应用程序和服务使用的加密密�
 
 [API 参考文档](https://docs.microsoft.com/javascript/api/overview/azure/key-vault?view=azure-node-latest) | [库源代码](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/keyvault) | [包 (npm)](https://www.npmjs.com/package/@azure/keyvault-secrets)
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 - Azure 订阅 - [创建试用订阅](https://www.azure.cn/pricing/1rmb-trial/)。
 - 适用于操作系统的当前 [Node.js](https://nodejs.org)。

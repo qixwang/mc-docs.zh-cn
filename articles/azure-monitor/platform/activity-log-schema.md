@@ -3,18 +3,17 @@ title: Azure 活动日志事件架构
 description: 介绍 Azure 活动日志中每个类别的事件架构。
 author: lingliw
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: reference
 origin.date: 12/04/2019
-ms.date: 12/31/2019
+ms.date: 3/13/2019
 ms.author: v-lingwu
 ms.subservice: logs
-ms.openlocfilehash: fcd1721a6bd2184f7f8060620f2836aedcd42bfa
-ms.sourcegitcommit: 27eaabd82b12ad6a6840f30763034a6360977186
+ms.openlocfilehash: 931602f8998cfa364ea2dade5b1923eb38438ac7
+ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77497468"
+ms.lasthandoff: 03/17/2020
+ms.locfileid: "79452564"
 ---
 # <a name="azure-activity-log-event-schema"></a>Azure 活动日志事件架构
 [Azure 活动日志](platform-logs-overview.md)可以方便用户深入了解 Azure 中发生的任何订阅级别事件。 本文介绍每个类别的事件架构。 
@@ -403,7 +402,7 @@ ms.locfileid: "77497468"
 | properties.MetricUnit | 计算指标预警规则所用的指标的指标单位。 |
 
 ## <a name="autoscale"></a>自动缩放
-此类别包含基于在订阅中定义的任何自动缩放设置的自动缩放引擎操作相关的事件记录。 可在此类别中看到的事件类型示例如“自动缩放扩展操作失败”。 使用自动缩放，可在支持的资源类型中，通过自动缩放设置基于日期和/或负载（指标）数据来自动增加或减少实例的数量。 满足纵向扩展或缩减条件时，开始、成功或失败的事件将记录到此类别中。
+此类别包含基于在订阅中定义的任何自动缩放设置的自动缩放引擎操作相关的事件记录。 可在此类别中看到的事件类型示例如“自动缩放扩展操作失败”。 使用自动缩放，可在支持的资源类型中，通过自动缩放设置基于日期和/或负载（指标）数据来自动横向扩展或横向缩减实例的数量。 满足纵向扩展或缩减条件时，开始、成功或失败的事件将记录到此类别中。
 
 ### <a name="sample-event"></a>示例事件
 ```json

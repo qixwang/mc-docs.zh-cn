@@ -3,21 +3,21 @@ title: 教程 - 将标记添加到模板中的资源
 description: 将标记添加到在 Azure 资源管理器模板中部署的资源。 可以通过标记对资源进行逻辑组织。
 author: rockboyfor
 origin.date: 10/04/2019
-ms.date: 01/20/2020
-ms.author: v-yeche
+ms.date: 03/23/2020
 ms.topic: tutorial
-ms.openlocfilehash: ec1c5192b0cd1c005da24756dd6e93382d84fe90
-ms.sourcegitcommit: 8de025ca11b62e06ba3762b5d15cc577e0c0f15d
+ms.author: v-yeche
+ms.openlocfilehash: 4d5c179219de245cd158f7f38cd61891fe9fdc8f
+ms.sourcegitcommit: 1436f1851342ca5631eb25342eed954adb707af0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76165386"
+ms.lasthandoff: 03/19/2020
+ms.locfileid: "79543848"
 ---
 # <a name="tutorial-add-tags-in-your-resource-manager-template"></a>教程：在资源管理器模板中添加标记
 
 本教程介绍如何将标记添加到模板中的资源。 可以通过[标记](../management/tag-resources.md)对资源进行逻辑组织。 标记值显示在成本报告中。 完成本教程需要 **8 分钟**。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 建议完成[有关快速入门模板的教程](template-tutorial-quickstart-template.md)，但这不是必需的。
 
@@ -115,10 +115,10 @@ ms.locfileid: "76165386"
       "apiVersion": "2018-11-01",
       "name": "[variables('webAppPortalName')]",
       "location": "[parameters('location')]",
-      "kind": "app",
       "dependsOn": [
         "[resourceId('Microsoft.Web/serverfarms', parameters('appServicePlanName'))]"
       ],
+      "kind": "app",
       "properties": {
         "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', parameters('appServicePlanName'))]",
         "siteConfig": {
@@ -220,6 +220,7 @@ ms.locfileid: "76165386"
       "apiVersion": "2016-09-01",
       "name": "[parameters('appServicePlanName')]",
       "location": "[parameters('location')]",
+      "tags": "[parameters('resourceTags')]",
       "sku": {
         "name": "B1",
         "tier": "Basic",
@@ -228,7 +229,6 @@ ms.locfileid: "76165386"
         "capacity": 1
       },
       "kind": "linux",
-      "tags": "[parameters('resourceTags')]",
       "properties": {
         "perSiteScaling": false,
         "reserved": true,
@@ -239,13 +239,13 @@ ms.locfileid: "76165386"
     {
       "type": "Microsoft.Web/sites",
       "apiVersion": "2016-08-01",
-      "kind": "app",
       "name": "[variables('webAppPortalName')]",
       "location": "[parameters('location')]",
       "dependsOn": [
         "[parameters('appServicePlanName')]"
       ],
       "tags": "[parameters('resourceTags')]",
+      "kind": "app",
       "properties": {
         "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', parameters('appServicePlanName'))]",
         "siteConfig": {
@@ -269,7 +269,7 @@ ms.locfileid: "76165386"
 
 如果尚未创建资源组，请参阅[创建资源组](template-tutorial-create-first-template.md#create-resource-group)。 此示例假设已根据[第一篇教程](template-tutorial-create-first-template.md#deploy-template)中所述，将 **templateFile** 变量设置为模板文件的路径。
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 New-AzResourceGroupDeployment `
@@ -281,10 +281,10 @@ New-AzResourceGroupDeployment `
   -webAppName demoapp
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli
-az group deployment create \
+az deployment group create \
   --name addtags \
   --resource-group myResourceGroup \
   --template-file $templateFile \

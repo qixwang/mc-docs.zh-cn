@@ -9,12 +9,12 @@ ms.topic: article
 origin.date: 10/30/2018
 ms.date: 03/23/2020
 ms.author: v-tawe
-ms.openlocfilehash: 90692dd5c86b4099db90b2fe647920a6b57280df
-ms.sourcegitcommit: d5eca3c6b03b206e441b599e5b138bd687a91361
+ms.openlocfilehash: 5a5ffba08abe484e05dcaa55c7635c0fb8363443
+ms.sourcegitcommit: e500354e2fd8b7ac3dddfae0c825cc543080f476
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78934934"
+ms.lasthandoff: 03/19/2020
+ms.locfileid: "79546957"
 ---
 # <a name="configuration-and-management-faqs-for-web-apps-in-azure"></a>Azure Web 应用配置及管理常见问题解答
 
@@ -108,7 +108,7 @@ ms.locfileid: "78934934"
 
 ## <a name="how-do-i-remove-a-header-from-the-http-response"></a>如何从 HTTP 响应中删除标头？
 
-若要从 HTTP 响应中删除标头，请更新站点的 web.config 文件。 有关详细信息，请参阅[在 Azure 网站上删除标准服务器标头](https://azure.microsoft.com/blog/removing-standard-server-headers-on-windows-azure-web-sites/)。
+若要移删除 HTTP 响应的标头，请更新站点的 web.config 文件。 有关详细信息，请参阅[在 Azure 网站上删除标准服务器标头](https://azure.microsoft.com/blog/removing-standard-server-headers-on-windows-azure-web-sites/)。
 
 ## <a name="is-app-service-compliant-with-pci-standard-30-and-31"></a>应用服务是否符合 PCI 标准 3.0 和 3.1？
 
@@ -186,7 +186,7 @@ Exception: System.Data.Entity.Core.EntityException: The underlying provider fail
 ### <a name="f12-console-output"></a>F12 控制台输出
 
 1. 选择“控制台”选项卡。 
-2. 对于每个至少包含一项的选项卡，选择选项卡（“错误”  、“警告”  或“信息”  ）。 如果未选择选项卡，则选项卡图标会在光标离开它时为灰色或黑色。
+2. 对于每个至少包含一项的选项卡，选择选项卡（“错误”  、“警告”  或“信息”  ）。 如果未选中选项卡，移开光标时，选项卡图标呈灰色或黑色。
 3. 右键单击窗格中的信息区域，然后选择“全部复制”  。
 4. 将复制的文本粘贴到文件中，然后保存该文件。
 
@@ -215,7 +215,7 @@ Exception: System.Data.Entity.Core.EntityException: The underlying provider fail
 优势，创建应用服务环境会失败。 在这种情况下，你会在活动日志中看到以下错误：
 ```
 ResourceID: /subscriptions/{SubscriptionID}/resourceGroups/Default-Networking/providers/Microsoft.Web/hostingEnvironments/{ASEname}
-Error:{"error":{"code":"ResourceDeploymentFailure","message":"The resource provision operation did not complete within the allowed timeout period.”}}
+Error:{"error":{"code":"ResourceDeploymentFailure","message":"The resource provision operation did not complete within the allowed timeout period."}}
 ```
 
 若要解决此问题，请确保不存在以下任何情况：

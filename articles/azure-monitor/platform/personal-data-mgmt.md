@@ -1,7 +1,6 @@
 ---
 title: 关于 Azure Log Analytics 中存储的个人数据的指南 | Azure Docs
 description: 本文介绍如何管理存储在 Azure Log Analytics 中的个人数据以及识别和删除这些数据的方法。
-ms.service: azure-monitor
 author: lingliw
 manager: digimobile
 ms.subservice: logs
@@ -9,12 +8,12 @@ ms.topic: conceptual
 origin.date: 05/18/2018
 ms.date: 6/4/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 9a25ecb6e4df0a3f86c9b4182b69e20978d58c53
-ms.sourcegitcommit: a89eb0007edd5b4558b98c1748b2bd67ca22f4c9
+ms.openlocfilehash: 568cb0ee91956eb6e65a0e79a33f0b72352454c5
+ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73730596"
+ms.lasthandoff: 03/17/2020
+ms.locfileid: "79452424"
 ---
 # <a name="guidance-for-personal-data-stored-in-log-analytics-and-application-insights"></a>存储在 Log Analytics 和 Application Insights 中的个人数据指南
 

@@ -1,21 +1,19 @@
 ---
 title: 教程 - 使用 IoT 中心事件触发 Azure 逻辑应用
-description: 教程 - 使用 Azure 事件网格的事件路由服务创建自动化过程，用于根据 IoT 中心事件执行 Azure 逻辑应用操作。
+description: 本教程介绍如何使用 Azure 事件网格的事件路由服务创建自动化过程，用于根据 IoT 中心事件执行 Azure 逻辑应用操作。
 services: iot-hub
 author: robinsh
 ms.service: iot-hub
 ms.topic: tutorial
-ms.tgt_pltfrm: na
-ms.workload: na
 origin.date: 11/21/2019
-ms.date: 12/23/2019
-ms.author: v-yiso
-ms.openlocfilehash: 0f0d893795a8f670bc62bf7f88f8ee4ea95bb5ec
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.date: 3/16/2020
+ms.author: v-lingwu
+ms.openlocfilehash: e22e8fe78e319cea6bd961ffa561332a4d937d3c
+ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75335792"
+ms.lasthandoff: 03/17/2020
+ms.locfileid: "79452604"
 ---
 # <a name="tutorial-send-email-notifications-about-azure-iot-hub-events-using-event-grid-and-logic-apps"></a>教程：使用事件网格和逻辑应用发送有关 Azure IoT 中心事件的电子邮件通知
 
@@ -56,15 +54,16 @@ ms.locfileid: "75335792"
 触发器是启动逻辑应用的特定事件。 在本教程中，触发工作流的触发器通过 HTTP 接收请求。  
 
 1. 在连接器和触发器搜索栏中，键入 **HTTP**。
-2. 选择“请求 - 当收到 HTTP 请求时”作为触发器。  
+
+1. 选择“请求 - 当收到 HTTP 请求时”作为触发器。  
 
    ![选择 HTTP 请求触发器](./media/publish-iot-hub-events-to-logic-apps/http-request-trigger.png)
 
-3. 选择“使用示例有效负载生成架构”。  
+1. 选择“使用示例有效负载生成架构”。  
 
    ![选择 HTTP 请求触发器](./media/publish-iot-hub-events-to-logic-apps/sample-payload.png)
 
-4. 在文本框中粘贴以下示例 JSON 代码，然后选择“完成”： 
+1. 在文本框中粘贴以下示例 JSON 代码，然后选择“完成”： 
 
    ```json
    [{
@@ -112,7 +111,7 @@ ms.locfileid: "75335792"
    }]
    ```
 
-5. 可能会收到一条弹出通知，其中指出，“请记住要在请求中包含设为 application/json 的内容类型标头”。  可以放心忽略此建议，并转到下一部分。 
+1. 可能会收到一条弹出通知，其中指出，“请记住要在请求中包含设为 application/json 的内容类型标头”。  可以放心忽略此建议，并转到下一部分。 
 
 ### <a name="create-an-action"></a>创建操作
 
@@ -120,17 +119,18 @@ ms.locfileid: "75335792"
 
 1. 选择“新建步骤”。  随即会打开一个窗口，供用户“选择操作”  。
 
-2. 搜索“电子邮件”。 
+1. 搜索“电子邮件”。 
 
-3. 根据你的电子邮件提供程序，找到并选择匹配的连接器。 本教程使用 **Office 365 Outlook**。 使用其他电子邮件提供程序时执行的步骤类似。 
+1. 根据你的电子邮件提供程序，找到并选择匹配的连接器。 本教程使用 **Office 365 Outlook**。 使用其他电子邮件提供程序时执行的步骤类似。 
 
    ![选择电子邮件提供程序连接器](./media/publish-iot-hub-events-to-logic-apps/o365-outlook.png)
 
-4. 选择“发送电子邮件”操作。  
+1. 选择“发送电子邮件”操作。  
 
-5. 根据提示登录到电子邮件帐户。 
+1. 根据提示登录到电子邮件帐户。 
 
-6. 生成电子邮件模板。 
+1. 生成电子邮件模板。 
+
    * **收件人**：输入接收通知电子邮件的电子邮件地址。 本教程使用你可以访问的测试电子邮件帐户。 
 
    * **使用者**：填写主题文本。 单击“主题”文本框时，可以选择要包含的动态内容。 例如，本教程使用 `IoT Hub alert: {event Type}`。 如果未看到“动态内容”，请选择“添加动态内容”超链接，该操作可以开启和关闭此超链接  。
@@ -141,18 +141,19 @@ ms.locfileid: "75335792"
 
    ![填写电子邮件信息](./media/publish-iot-hub-events-to-logic-apps/email-content.png)
 
-7. 保存逻辑应用。 
+1. 保存逻辑应用。 
 
 ### <a name="copy-the-http-url"></a>复制 HTTP URL
 
 在退出逻辑应用设计器之前，请复制逻辑应用要侦听的触发器 URL。 稍后要使用此 URL 来配置事件网格。 
 
 1. 单击“当收到 HTTP 请求时”触发器配置框将其展开。  
-2. 选择“HTTP POST URL”旁边的复制按钮复制其值。  
+
+1. 选择“HTTP POST URL”旁边的复制按钮复制其值。  
 
    ![复制 HTTP POST URL](./media/publish-iot-hub-events-to-logic-apps/copy-url.png)
 
-3. 保存此 URL，以便在下一部分可以引用它。 
+1. 保存此 URL，以便在下一部分可以引用它。 
 
 ## <a name="configure-subscription-for-iot-hub-events"></a>为 IoT 中心事件配置订阅
 
@@ -219,7 +220,9 @@ ms.locfileid: "75335792"
 3. 对于“设备 ID”，请输入 `Building1_Floor1_Room1_Light`。 
 
 4. 选择“保存”  。 
+
 5. 可以添加具有不同设备 ID 的多个设备来测试事件订阅筛选器。 尝试以下示例： 
+
    * Building1_Floor1_Room1_Light
    * Building1_Floor2_Room2_Temperature
    * Building2_Floor1_Room1_Temperature
@@ -237,7 +240,7 @@ ms.locfileid: "75335792"
 
 ## <a name="clean-up-resources"></a>清理资源
 
-本教程使用的资源会在 Azure 订阅中产生费用。 学习完本教程并测试结果后，请禁用或删除不再想要保留的资源。 
+本教程使用的资源会在 Azure 订阅中产生费用。 试用完本教程并测试结果后，请禁用或删除不再想要保留的资源。 
 
 若要删除在本教程中创建的所有资源，请删除资源组。 
 
@@ -250,17 +253,21 @@ ms.locfileid: "75335792"
 如果不希望丢弃针对逻辑应用所执行的操作，可以禁用逻辑应用，但不要将其删除。 
 
 1. 导航到逻辑应用。
+
 2. 在“概述”边栏选项卡上，选择“删除”或“禁用”。    
 
 每个订阅可以包含一个免费 IoT 中心。 如果在本教程中创建了一个免费中心，则不需要将其删除，以免产生费用。
 
 1. 导航到 IoT 中心。 
+
 2. 在“概览”边栏选项卡上，选择“删除”。   
 
 即使保留了 IoT 中心中，你也仍可能想要删除创建的事件订阅。 
 
 1. 在 IoT 中心，选择“事件网格”。 
+
 2. 选择要删除的事件订阅。 
+
 3. 选择“删除”  。 
 
 ## <a name="next-steps"></a>后续步骤

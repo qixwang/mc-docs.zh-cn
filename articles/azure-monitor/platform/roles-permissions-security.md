@@ -3,18 +3,17 @@ title: Azure Monitor 中的角色、权限和安全性
 description: 了解如何使用 Azure Monitor 的内置角色和权限限制对监视资源的访问。
 author: lingliw
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 origin.date: 11/27/2017
 ms.date: 6/4/2019
 ms.author: v-lingwu
 ms.subservice: ''
-ms.openlocfilehash: f50edb971e7b779964b35033a9105b9746f20505
-ms.sourcegitcommit: 27eaabd82b12ad6a6840f30763034a6360977186
+ms.openlocfilehash: f315de23be41c49b223139f102ceaee6d300fcfe
+ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77497394"
+ms.lasthandoff: 03/17/2020
+ms.locfileid: "79452551"
 ---
 # <a name="roles-permissions-and-security-in-azure-monitor"></a>Azure Monitor 中的角色、权限和安全性
 

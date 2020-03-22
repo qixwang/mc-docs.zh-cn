@@ -3,18 +3,16 @@ title: 排查 Log Analytics Windows 代理的问题
 description: 描述 Azure Monitor 中 Log Analytics Windows 代理最常见问题的症状、原因和解决方法。
 author: lingliw
 manager: digimobile
-ms.service: azure-monitor
-ms.subservice: ''
 ms.topic: conceptual
 origin.date: 11/21/2019
 ms.date: 12/04/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 39882637637a6855d8843b17f7a183ec77afbfef
-ms.sourcegitcommit: 21b02b730b00a078a76aeb5b78a8fd76ab4d6af2
+ms.openlocfilehash: 8cbf8b4e16b5197e648ea8725c84eb6abcda29d4
+ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74839004"
+ms.lasthandoff: 03/17/2020
+ms.locfileid: "79452580"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-windows"></a>如何排查 Log Analytics Windows 代理的问题 
 

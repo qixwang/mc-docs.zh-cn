@@ -1,22 +1,22 @@
 ---
-title: Azure PowerShell 脚本示例 - 订阅资源组并按资源筛选 | Microsoft Docs
-description: Azure PowerShell 脚本示例 - 订阅资源组并按资源筛选
+title: Azure PowerShell - 订阅资源组
+description: 本文提供了一个示例 Azure PowerShell 脚本，演示如何订阅资源组的事件网格事件，以及如何筛选资源。
 services: event-grid
 documentationcenter: na
-author: tfitzmac
+author: lingliw
 ms.service: event-grid
 ms.devlang: powershell
 ms.topic: sample
 ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 12/10/2018
-ms.author: v-yiso
-ms.openlocfilehash: 5259b3c34b282fe0aedcdc6e74aa63b78f38ab2a
-ms.sourcegitcommit: 5a57f99d978b78c1986c251724b1b04178c12d8c
+origin.date: 01/23/2020
+ms.date: 3/16/2020
+ms.author: v-lingwu
+ms.openlocfilehash: 2f00724934028ce8c1c9f25fb72681aa5c35eb84
+ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/24/2019
-ms.locfileid: "66195319"
+ms.lasthandoff: 03/17/2020
+ms.locfileid: "79452569"
 ---
 # <a name="subscribe-to-events-for-a-resource-group-and-filter-for-a-resource-with-powershell"></a>使用 PowerShell 订阅资源组的事件并筛选出资源
 

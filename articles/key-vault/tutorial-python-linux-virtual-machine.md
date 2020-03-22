@@ -5,23 +5,24 @@ services: key-vault
 author: msmbaldwin
 manager: rajvijan
 ms.service: key-vault
+ms.subservice: secrets
 ms.topic: tutorial
 origin.date: 09/05/2018
-ms.date: 12/09/2019
+ms.date: 03/16/2020
 ms.author: v-tawe
 ms.custom: mvc
-ms.openlocfilehash: e4d3591f5d34de3414107ec29461b310e2d77df9
-ms.sourcegitcommit: 21b02b730b00a078a76aeb5b78a8fd76ab4d6af2
+ms.openlocfilehash: 284d568134a385a97c9de9bed2853bd6469160af
+ms.sourcegitcommit: 764b3d26aedce2de0e1948468a706fd3204a3d5e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74838865"
+ms.lasthandoff: 03/19/2020
+ms.locfileid: "79543367"
 ---
-# <a name="tutorial-use-a-linux-vm-and-a-python-app-to-store-secrets-in-azure-key-vault"></a>教程：使用 Linux VM 和 Python 应用在 Azure 密钥保管库中存储机密
+# <a name="tutorial-use-a-linux-vm-and-a-python-app-to-store-secrets-in-azure-key-vault"></a>教程：使用 Linux VM 和 Python 应用在 Azure Key Vault 中存储机密
 
 Azure Key Vault 用于保护机密，例如访问应用程序、服务和 IT 资源所需的 API 密钥和数据库连接字符串。
 
-在本教程中，你会设置 Azure Web 应用程序以使用 Azure 资源的托管标识从 Azure 密钥保管库读取信息。 你将学习如何执行以下操作：
+在本教程中，你会设置 Azure Web 应用程序以使用 Azure 资源的托管标识从 Azure Key Vault 读取信息。 你将学习如何执行以下操作：
 
 > [!div class="checklist"]
 > * 创建密钥保管库
@@ -31,7 +32,7 @@ Azure Key Vault 用于保护机密，例如访问应用程序、服务和 IT 资
 > * 授予所需的权限，让控制台应用程序从密钥保管库读取数据
 > * 从密钥保管库检索机密
 
-在进一步讨论之前，确保了解[有关密钥保管库的基本概念](basic-concepts.md)。
+在进一步讨论之前，确保了解[有关 Key Vault 的基本概念](basic-concepts.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -42,7 +43,7 @@ Azure Key Vault 用于保护机密，例如访问应用程序、服务和 IT 资
 
 ## <a name="understand-managed-service-identity"></a>了解托管服务标识
 
-Azure Key Vault 可以安全地存储凭据，因此不需要在代码中提供凭据。 若要检索它们，需向 Azure 密钥保管库进行身份验证。 但是，若要向密钥保管库进行身份验证，需提供凭据。 这是经典的启动问题。 通过 Azure 和 Azure Active Directory (Azure AD)，托管服务标识 (MSI) 提供一个“启动标识”，可以简化启动过程。
+Azure Key Vault 可以安全地存储凭据，因此不需要在代码中提供凭据。 若要检索它们，需向 Azure Key Vault 进行身份验证。 但是，若要向 Key Vault 进行身份验证，需提供凭据。 这是经典的启动问题。 通过 Azure 和 Azure Active Directory (Azure AD)，托管服务标识 (MSI) 提供一个“启动标识”，可以简化启动过程。
 
 为 Azure 服务（例如：虚拟机、应用服务或 Functions）启用 MSI 时，Azure 会为 Azure AD 中的服务实例创建一个服务主体。 它会将服务主体的凭据注入服务的实例。
 
@@ -147,9 +148,9 @@ az vm identity assign --name <NameOfYourVirtualMachine> --resource-group <YourRe
 
 记下 `systemAssignedIdentity`。 下一步会使用它。
 
-## <a name="give-the-vm-identity-permission-to-key-vault"></a>为 VM 标识提供密钥保管库访问权限
+## <a name="give-the-vm-identity-permission-to-key-vault"></a>为 VM 标识提供 Key Vault 访问权限
 
-现在可以向所创建的标识提供密钥保管库权限。 运行以下命令：
+现在可以向所创建的标识提供 Key Vault 权限。 运行以下命令：
 
 ```azurecli
 az keyvault set-policy --name '<YourKeyVaultName>' --object-id <VMSystemAssignedIdentity> --secret-permissions get list
@@ -204,7 +205,7 @@ print(kvSecret.json()["value"])
 python Sample.py
 ```
 
-在本教程中，你学习了如何将 Azure 密钥保管库与 Linux 虚拟机上运行的 Python 应用结合使用。
+在本教程中，你学习了如何将 Azure Key Vault 与 Linux 虚拟机上运行的 Python 应用结合使用。
 
 ## <a name="clean-up-resources"></a>清理资源
 

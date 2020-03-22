@@ -1,7 +1,6 @@
 ---
 title: Azure Monitor HTTP 数据收集器 API | Azure Docs
 description: 可以使用 Azure Monitor HTTP 数据收集器 API，从能够调用 REST API 的任何客户端将 POST JSON 数据添加到 Log Analytics 工作区。 本文介绍如何使用 API，并提供关于如何使用不同的编程语言发布数据的示例。
-ms.service: azure-monitor
 author: lingliw
 manager: digimobile
 ms.subservice: logs
@@ -9,12 +8,12 @@ ms.topic: conceptual
 origin.date: 10/01/2019
 ms.date: 11/04/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 0d67ffd9c6a20c48314d1e354450e3bd8ed54563
-ms.sourcegitcommit: 21b02b730b00a078a76aeb5b78a8fd76ab4d6af2
+ms.openlocfilehash: b0866d2055915a6d9f5b17fe03bc376d551f21b5
+ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74838592"
+ms.lasthandoff: 03/17/2020
+ms.locfileid: "79452529"
 ---
 # <a name="send-log-data-to-azure-monitor-with-the-http-data-collector-api-public-preview"></a>使用 HTTP 数据收集器 API（公共预览版）将日志数据发送到 Azure Monitor
 本文介绍如何使用 HTTP 数据收集器 API 从 REST API 客户端将日志数据发送到 Azure Monitor。  其中说明了对于脚本或应用程序收集的数据，如何设置其格式、将其包含在请求中，并由 Azure Monitor 授权该请求。  将针对 PowerShell、C# 和 Python 提供示例。
@@ -48,7 +47,7 @@ Log Analytics 工作区中的所有数据都存储为具有某种特定记录类
 | 参数 | 说明 |
 |:--- |:--- |
 | CustomerID |Log Analytics 工作区的唯一标识符。 |
-| Resource |API 资源名称: /api/logs。 |
+| 资源 |API 资源名称: /api/logs。 |
 | API 版本 |用于此请求的 API 版本。 目前，API 版本为 2016-04-01。 |
 
 ### <a name="request-headers"></a>请求标头
@@ -135,7 +134,7 @@ Signature=Base64(HMAC-SHA256(UTF8(StringToSign)))
 
 为了识别属性的数据类型，Azure Monitor 将为属性名称添加后缀。 如果某个属性包含 null 值，该属性将不包括在该记录中。 下表列出了属性数据类型及相应的后缀：
 
-| 属性数据类型 | 后缀 |
+| 属性数据类型 | Suffix |
 |:--- |:--- |
 | String |_s |
 | 布尔 |_b |

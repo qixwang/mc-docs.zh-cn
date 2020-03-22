@@ -1,6 +1,6 @@
 ---
 title: Azure CLI 脚本示例 - 订阅资源组 | Microsoft Docs
-description: Azure CLI 脚本示例 - 订阅资源组
+description: 本文提供了一个示例 Azure CLI 脚本，演示如何订阅资源组的 Azure 事件网格事件。
 services: event-grid
 documentationcenter: na
 author: tfitzmac
@@ -9,14 +9,15 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/02/2018
-ms.author: v-yiso
-ms.openlocfilehash: 41f7299a2fe3b7d4fd6abe9186aed2d47eb88fd5
-ms.sourcegitcommit: 5a57f99d978b78c1986c251724b1b04178c12d8c
+origin.date: 01/23/2020
+ms.date: 3/16/2020
+ms.author: v-lingwu
+ms.openlocfilehash: 9753ec8bb57f56d87a4cff9bad3663a80a0d6084
+ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/24/2019
-ms.locfileid: "66195330"
+ms.lasthandoff: 03/17/2020
+ms.locfileid: "79452483"
 ---
 # <a name="subscribe-to-events-for-a-resource-group-with-azure-cli"></a>使用 Azure CLI 订阅资源组的事件
 

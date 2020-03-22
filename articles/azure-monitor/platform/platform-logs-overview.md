@@ -3,18 +3,17 @@ title: Azure 平台日志概述 | Microsoft Docs
 description: Azure Monitor 中的日志概述提供了有关 Azure 资源操作的丰富、频繁的数据。
 author: lingliw
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 origin.date: 12/19/2019
 ms.date: 12/31/2019
 ms.author: v-lingwu
 ms.subservice: logs
-ms.openlocfilehash: 4f3e7b1c6863b928e23dfc4791f3f7ac32104ac5
-ms.sourcegitcommit: 27eaabd82b12ad6a6840f30763034a6360977186
+ms.openlocfilehash: 90732289f4223e9da27dacfa712bce7da23cb59a
+ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77497470"
+ms.lasthandoff: 03/17/2020
+ms.locfileid: "79452420"
 ---
 # <a name="overview-of-azure-platform-logs"></a>Azure 平台日志概述
 平台日志提供 Azure 资源及其所依赖的 Azure 平台的详细诊断和审核信息。 它们是自动生成的，虽然你需要配置某些平台日志，以便将其转发到一个或多个目标进行保留。 本文概述了平台日志，其中包括它们提供什么信息，以及如何配置它们以方便收集和分析。
@@ -47,8 +46,10 @@ ms.locfileid: "77497470"
 
 | 目标 | 方案 | 参考 |
 |:---|:---|:---|:---|
-| Log Analytics 工作区 | 借助其他监视数据对日志进行分析，并利用 Azure Monitor 功能（例如日志查询和警报）。 | [活动日志和资源日志](resource-logs-collect-workspace.md) |
-| Azure 存储 | 将日志存档供审核、静态分析或备份。 |[活动日志和资源日志](archive-diagnostic-logs.md)<br>|
+| Log Analytics 工作区 | 借助其他监视数据对日志进行分析，并利用 Azure Monitor 功能（例如日志查询和警报）。 | [活动日志和资源日志](resource-logs-collect-workspace.md)<br> |
+| Azure 存储 | 将日志存档供审核、静态分析或备份。 |[活动日志和资源日志](archive-diagnostic-logs.md)<br> |
+| 事件中心 | 将日志流式传输到第三方日志记录和遥测系统。  |[活动日志和资源日志](resource-logs-stream-event-hubs.md)<br> |
+
 
 
 ## <a name="next-steps"></a>后续步骤

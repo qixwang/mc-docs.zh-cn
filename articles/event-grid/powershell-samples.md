@@ -1,6 +1,6 @@
 ---
 title: Azure PowerShell 示例 - 事件网格 | Microsoft Docs
-description: 事件网格的 Azure PowerShell 示例
+description: 本文包含一个表，其中包含指向 Azure 事件网格的 Azure PowerShell 脚本示例的链接。
 services: event-grid
 author: spelluru
 manager: timlt
@@ -8,15 +8,15 @@ ms.service: event-grid
 ms.devlang: na
 ms.topic: sample
 ms.tgt_pltfrm: na
-origin.date: 01/06/2019
-ms.author: v-yiso
-ms.date: 06/03/2019
-ms.openlocfilehash: 4288598b2c5674c8bc895e8deeaae5c51865c411
-ms.sourcegitcommit: 5a57f99d978b78c1986c251724b1b04178c12d8c
+origin.date: 01/23/2020
+ms.author: v-lingwu
+ms.date: 3/16/2020
+ms.openlocfilehash: 706db56a71ea3cbc1f8d8d666168efe05b676af1
+ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/24/2019
-ms.locfileid: "66195079"
+ms.lasthandoff: 03/17/2020
+ms.locfileid: "79452403"
 ---
 # <a name="azure-powershell-samples-for-event-grid"></a>事件网格的 Azure PowerShell 示例
 

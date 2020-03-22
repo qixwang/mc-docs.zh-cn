@@ -4,18 +4,17 @@ description: 在 Azure Monitor 中查看 Azure 活动日志并使用 PowerShell�
 author: lingliw
 manager: digimobile
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 origin.date: 12/07/2019
-ms.date: 12/31/2019
+ms.date: 3/13/2019
 ms.author: v-lingwu
 ms.subservice: logs
-ms.openlocfilehash: 178966e8a9fa1b19db2a73be8ae971a4fe57b179
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: 323593980b6a4c1e320df79552682db4c0d2e945
+ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79292508"
+ms.lasthandoff: 03/17/2020
+ms.locfileid: "79452584"
 ---
 # <a name="view-and-retrieve-azure-activity-log-events"></a>查看和检索 Azure 活动日志事件
 

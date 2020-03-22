@@ -9,3 +9,6 @@
         - name: Linux
           tocHref: /active-directory/managed-identities-azure-resources/
           topicHref: /virtual-machines/linux/index
+    - name: 虚拟机
+      tocHref: /virtual-machines/
+      topicHref: /virtual-machines/index

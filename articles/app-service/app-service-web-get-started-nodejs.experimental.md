@@ -4,17 +4,17 @@ description: 在数分钟内将第一个 Node.js Hello World 部署到 Azure 应
 ms.assetid: 582bb3c2-164b-42f5-b081-95bfcb7a502a
 ms.topic: quickstart
 origin.date: 08/23/2019
-ms.date: 01/13/2020
+ms.date: 03/16/2020
 ms.author: v-tawe
-ms.custom: mvc, devcenter
+ms.custom: mvc, devcenter, seodec18
 experimental: false
 experiment_id: a231f2b4-2625-4d
-ms.openlocfilehash: 23f09646017f12e2f6ee6187cf4da7bbbc3308e6
-ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
+ms.openlocfilehash: 86f58e164446ad2e143d1788c3fee79e052a9d08
+ms.sourcegitcommit: e500354e2fd8b7ac3dddfae0c825cc543080f476
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75600515"
+ms.lasthandoff: 03/19/2020
+ms.locfileid: "79547001"
 ---
 # <a name="create-a-nodejs-web-app-in-azure"></a>在 Azure 中创建 Node.js Web 应用
 
@@ -31,21 +31,21 @@ ms.locfileid: "75600515"
 
 在 Azure CLI 中，创建一个 quickstart 目录，然后切换到该目录。
 
-```azurecli
+```console
 mkdir quickstart
 
-cd quickstart
+cd $HOME/quickstart
 ```
 
 接下来请运行以下命令，将示例应用存储库克隆到快速入门目录。
 
-```azurecli
+```console
 git clone https://github.com/Azure-Samples/nodejs-docs-hello-world
 ```
 
 运行时，该命令会显示类似于以下示例的信息：
 
-```bash
+```output
 Cloning into 'nodejs-docs-hello-world'...
 remote: Counting objects: 40, done.
 remote: Total 40 (delta 0), reused 0 (delta 0), pack-reused 40
@@ -99,7 +99,7 @@ az webapp config appsettings set --resource-group myResourceGroup --name <app_na
 
 浏览到新建的 Web 应用。 将 `<app_name>` 替换为唯一应用名称。
 
-```
+```http
 http://<app_name>.chinacloudsites.cn
 ```
 
@@ -109,7 +109,7 @@ http://<app_name>.chinacloudsites.cn
 
 在 Azure CLI 中，导航到应用程序的根目录，为示例项目创建新的 ZIP 文件。
 
-```azurecli
+```console
 cd nodejs-docs-hello-world  
 
 zip -r myUpdatedAppFiles.zip *.*
@@ -127,7 +127,7 @@ az webapp deployment source config-zip --resource-group myResourceGroup --name <
 
 使用 Web 浏览器浏览到已部署的应用程序。
 
-```
+```http
 http://<app_name>.chinacloudsites.cn
 ```
 
@@ -136,7 +136,7 @@ Node.js 示例代码正在 Azure 应用服务 Web 应用中运行。
 ![在 Azure 中运行的示例应用](media/app-service-web-get-started-nodejs-poc/hello-world-in-browser.png)
 
 > [!NOTE]
-> 在 Azure 应用服务中，此应用在 IIS 中使用 [iisnode](https://github.com/Azure/iisnode) 运行。 为了让应用能够使用 iisnode 运行，根应用目录包含一个 web.config 文件。 此文件可以由 IIS 读取，与 iisnode 相关的设置记录在 [iisnode GitHub 存储库](https://github.com/Azure/iisnode/blob/master/src/samples/configuration/web.config)中。
+> 在 Azure 应用服务中，此应用在 IIS 中使用 [iisnode](https://github.com/Azure/iisnode) 运行。 为了让应用能够使用 iisnode 运行，根应用目录要包含 web.config 文件。 此文件可以由 IIS 读取，与 iisnode 相关的设置记录在 [iisnode GitHub 存储库](https://github.com/Azure/iisnode/blob/master/src/samples/configuration/web.config)中。
 
 **祝贺你！** 现已将第一个 Node.js 应用部署到应用服务。
 

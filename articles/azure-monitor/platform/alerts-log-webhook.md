@@ -3,18 +3,17 @@ title: 用于 Azure 警报中日志警报的 Webhook 操作
 description: 本文介绍如何使用 Log Analytics 工作区或 Application Insights 创建日志警报规则，警报如何作为 HTTP Webhook 推送数据，以及可能的不同自定义设置的详细信息。
 author: lingliw
 services: monitoring
-ms.service: azure-monitor
 ms.topic: conceptual
 origin.date: 05/30/2019
 ms.date: 06/25/2019
 ms.author: v-lingwu
 ms.subservice: alerts
-ms.openlocfilehash: 2df65d57eef46c6b2fc6b7ff3d6cceffd8eff53e
-ms.sourcegitcommit: dd0ff08835dd3f8db3cc55301815ad69ff472b13
+ms.openlocfilehash: def65328d2f173e4969a33ca8bc982a4caa3b9ea
+ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70737348"
+ms.lasthandoff: 03/17/2020
+ms.locfileid: "79452571"
 ---
 # <a name="webhook-actions-for-log-alert-rules"></a>用于日志警报规则的 Webhook 操作
 [在 Azure 中创建日志警报](alerts-log.md)时，可以选择[使用操作组配置](action-groups.md)以执行一个或多个操作。 本文介绍可用的不同 Webhook 操作，以及如何配置基于 JSON 的自定义 Webhook。
@@ -122,7 +121,7 @@ Webhooks 包括 URL 和 JSON 格式的有效负载（即发送到外部服务的
     "WorkspaceId":"12345a-1234b-123c-123d-12345678e",
     "AlertType": "Metric measurement"
  }
- ```   
+ ```
 
 > [!NOTE]
 > 如果在 Log Analytics 上针对日志警报[切换了 API 首选项](alerts-log-api-switch.md)，则“严重性”字段值可能会更改。

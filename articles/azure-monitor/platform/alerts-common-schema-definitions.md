@@ -2,18 +2,17 @@
 title: Azure Monitor 的通用警报架构定义
 description: 了解 Azure Monitor 的通用警报架构定义
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 author: lingliw
 origin.date: 03/14/2019
 ms.date: 04/14/2019
 ms.author: anantr
-ms.openlocfilehash: 2626f880bb464b75ecf5e515cb4404b40c925004
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: 6c4c523ee2593eb35f245df65ecf2c1cd7e6334f
+ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79293245"
+ms.lasthandoff: 03/17/2020
+ms.locfileid: "79452578"
 ---
 # <a name="common-alert-schema-definitions"></a>常见警报架构定义
 
@@ -152,7 +151,7 @@ ms.locfileid: "79293245"
 ### <a name="log-alerts"></a>日志警报
 
 > [!NOTE]
-> 对于定义了自定义电子邮件主题和/或 JSON 有效负载的日志警报，启用通用架构会将电子邮件主题和/或有效负载架构还原为如下所述的架构。 启用通用架构的警报的大小上限为每个警报 256 KB。 如果搜索结果导致警报大小超出此阈值，则不会将搜索结果嵌入日志警报有效负载中。 可通过检查标记 `IncludedSearchResults` 来确定这一点。 在不包括搜索结果时，应将搜索查询与 [Log Analytics API](https://docs.microsoft.com/rest/api/loganalytics/query/get) 配合使用。 
+> 对于定义了自定义电子邮件主题和/或 JSON 有效负载的日志警报，启用通用架构会将电子邮件主题和/或有效负载架构还原为如下所述的架构。 启用通用架构的警报的大小上限为每个警报 256 KB。 如果搜索结果导致警报大小超出此阈值，则不会将搜索结果嵌入日志警报有效负载中。 可通过检查标记 `IncludeSearchResults` 来确定这一点。 在不包括搜索结果时，应将搜索查询与 [Log Analytics API](https://docs.microsoft.com/rest/api/loganalytics/query/get) 配合使用。 
 
 #### <a name="monitoringservice--log-analytics"></a>`monitoringService` = `Log Analytics`
 
@@ -215,7 +214,7 @@ ms.locfileid: "79293245"
         }
       ]
     },
-    "IncludedSearchResults": "True",
+    "IncludeSearchResults": "True",
     "AlertType": "Number of results"
   }
 }
@@ -278,7 +277,7 @@ ms.locfileid: "79293245"
         }
       ]
     },
-    "IncludedSearchResults": "True",
+    "IncludeSearchResults": "True",
     "AlertType": "Number of results"
   }
 }

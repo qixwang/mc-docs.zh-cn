@@ -1,19 +1,17 @@
 ---
 title: 在 Azure Monitor 中创建、查看和管理活动日志警报
 description: 使用 Azure 门户、Azure 资源管理器模板和 Azure PowerShell 创建活动日志警报。
-ms.service: azure-monitor
-ms.subservice: ''
 ms.topic: conceptual
 author: lingliw
 origin.date: 06/25/2019
 ms.date: 07/25/2019
 ms.author: v-lingwu
-ms.openlocfilehash: fb114c05179a3bd76988bf4f7a7442cc4bbd611e
-ms.sourcegitcommit: b09d4b056ac695ba379119eb9e458a945b0a61d9
+ms.openlocfilehash: 28801533eb2469a24fdf846be1d7fa7daae87f15
+ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72970758"
+ms.lasthandoff: 03/17/2020
+ms.locfileid: "79452567"
 ---
 # <a name="create-view-and-manage-activity-log-alerts-by-using-azure-monitor"></a>使用 Azure Monitor 创建、查看和管理活动日志警报  
 
@@ -31,7 +29,6 @@ ms.locfileid: "72970758"
 - 条件必须是配置警报所依据的级别、状态、调用方、资源组、资源 ID 或资源类型事件类别。
 - 警报配置 JSON 中没有“anyOf”条件或嵌套的条件。 简单而言，只允许一个“allOf”条件，而不允许更多的“allOf”或“anyOf”条件。
 - 当类别是“管理”时，必须在警报中至少指定上述条件之一。 不能创建每次在活动日志中创建事件时激活的警报。
-
 
 ## <a name="azure-portal"></a>Azure 门户
 
@@ -56,7 +53,7 @@ ms.locfileid: "72970758"
 
      > [!NOTE]
      > 
-     > 只能为活动日志信号选择 [Azure 资源管理器](../../azure-resource-manager/resource-group-overview.md)跟踪的资源、资源组或整个订阅。 
+     > 只能为活动日志信号选择 [Azure 资源管理器](../../azure-resource-manager/management/overview.md)跟踪的资源、资源组或整个订阅。 
 
      **警报目标示例视图**
 
@@ -130,7 +127,7 @@ ms.locfileid: "72970758"
 4. 可以启用、禁用或删除规则。 根据步骤 2 中的详述选择规则后，在窗口顶部选择相应的选项。
 
 
-## Azure 资源管理器模板 <a name="manage-alert-rules-for-activity-log-using-azure-resource-template"></a><a name="azure-resource-manager-template"></a>
+## <a name="azure-resource-manager-template"></a>Azure 资源管理器模板 <a name="manage-alert-rules-for-activity-log-using-azure-resource-template"></a><a name="azure-resource-manager-template"></a>
 若要使用 Azure 资源管理器模板创建活动日志警报，需要创建 `microsoft.insights/activityLogAlerts` 类型的资源。 然后，填充所有相关属性。 下面是用于创建活动日志警报的模板：
 
 ```json
@@ -198,7 +195,7 @@ ms.locfileid: "72970758"
   ]
 }
 ```
-上面的示例 JSON 可以保存为（例如）sampleActivityLogAlert.json，并且可以使用 [Azure 门户中的 Azure 资源管理器](../../azure-resource-manager/resource-group-template-deploy-portal.md)进行部署。
+上面的示例 JSON 可以保存为（例如）sampleActivityLogAlert.json，并且可以使用 [Azure 门户中的 Azure 资源管理器](../../azure-resource-manager/templates/deploy-portal.md)进行部署。
 
 > [!NOTE]
 > 新的活动日志警报规则可能需要最多 5 分钟才变为活动状态。

@@ -5,19 +5,18 @@ services: application-gateway
 author: caya
 ms.service: application-gateway
 ms.topic: article
-origin.date: 11/04/2019
-ms.date: 11/19/2019
+ms.date: 03/16/2020
 ms.author: v-junlch
-ms.openlocfilehash: 3c121e5d6153057069bb2480fed07775363087c4
-ms.sourcegitcommit: fdbd1b6df618379dfeab03044a18c373b5fbb8ec
+ms.openlocfilehash: edcaf320b619b7c8c9f5b4a0fc46fc4a125674e1
+ms.sourcegitcommit: 71a386ca0d0ecb79a123399b6ab6b8c70ea2aa78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74328429"
+ms.lasthandoff: 03/18/2020
+ms.locfileid: "79497115"
 ---
 # <a name="expose-a-websocket-server-to-application-gateway"></a>向应用程序网关公开 WebSocket 服务器
 
-如应用程序网关 v2 文档中所述，它[为 WebSocket 和 HTTP/2 协议提供本机支持](/application-gateway/overview#websocket-and-http2-traffic)。 请注意，对于应用程序网关和 Kubernetes 入口，用户都无法通过配置设置来选择性地启用或禁用 WebSocket 支持。
+如应用程序网关 v2 文档中所述，它[为 WebSocket 和 HTTP/2 协议提供本机支持](features.md#websocket-and-http2-traffic)。 请注意，对于应用程序网关和 Kubernetes 入口，用户都无法通过配置设置来选择性地启用或禁用 WebSocket 支持。
 
 下面的 Kubernetes 部署 YAML 显示了用于部署 WebSocket 服务器的最小配置，它与部署常规 Web 服务器相同：
 ```yaml

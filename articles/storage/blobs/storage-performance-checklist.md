@@ -9,12 +9,12 @@ origin.date: 10/10/2019
 ms.date: 03/09/2020
 ms.author: v-jay
 ms.subservice: blobs
-ms.openlocfilehash: b7aa1bccec568429918adf4088347dec5ea5a466
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: ffb7b9cfc559938700e7ac907ea3aefd0ed50ff4
+ms.sourcegitcommit: 305361c96d1d5288d3dda7e81833820640e2afac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79292332"
+ms.lasthandoff: 03/21/2020
+ms.locfileid: "80109779"
 ---
 # <a name="performance-and-scalability-checklist-for-blob-storage"></a>Blob 存储的性能与可伸缩性查检表
 
@@ -91,7 +91,7 @@ Azure 存储在容量、事务速率和带宽方面存在可伸缩性与性能�
 
 单个 Blob 每秒最多可支持 500 个请求。 如果多个客户端需要读取同一 Blob，而你可能会超过此限制，请考虑使用块 Blob 存储帐户。 块 Blob 存储帐户提供更高的请求速率或每秒 I/O 操作次数 (IOPS)。
 
-还可以使用内容分发网络 (CDN)（例如 Azure CDN）在 Blob 上分发操作。 有关 Azure CDN 的详细信息，请参阅 [Azure CDN 概述](../../cdn/cdn-overview.md)。  
+还可以使用内容分发网络 (CDN)（例如 Azure CDN）在 Blob 上分发操作。 有关 Azure CDN 的详细信息，请参阅 [Azure CDN 概述](/cdn/cdn-overview)。  
 
 ## <a name="partitioning"></a>分区
 
@@ -137,7 +137,7 @@ Blob 存储使用基于范围的分区方案来进行缩放和负载均衡。 �
 
 如果客户端应用程序要访问 Azure 存储但不是托管在 Azure 中（例如移动设备应用或本地企业服务），则将存储帐户放在靠近这些客户端的区域可降低延迟。 如果客户端广泛分布在各地，请考虑在每个区域使用一个存储帐户。 如果应用程序存储的数据是特定于各个用户的，不需要在存储帐户之间复制数据，则此方法更容易实施。
 
-若要广泛地分发 blob 内容，请使用内容分发网络，如 Azure CDN。 有关 Azure CDN 的详细信息，请参阅 [Azure CDN](../../cdn/cdn-overview.md)。  
+若要广泛地分发 blob 内容，请使用内容分发网络，如 Azure CDN。 有关 Azure CDN 的详细信息，请参阅 [Azure CDN](/cdn/cdn-overview)。  
 
 ## <a name="sas-and-cors"></a>SAS 和 CORS
 
@@ -248,7 +248,7 @@ AzCopy 命令行实用工具是向/从以及跨存储帐户批量传输 Blob 的
 
 有时，应用程序需要向位于同一区域或多个区域的许多用户提供相同的内容（例如网站主页中使用的产品演示视频）。 在这种情况下，使用 Azure CDN 等内容分发网络 (CDN) 按地理位置分发 blob 内容。 与存在于一个区域且无法以低延迟向其他区域交付内容的 Azure 存储帐户不同，Azure CDN 使用位于全世界多个数据中心的服务器。 此外，与单个存储帐户相比，CDN 通常可以支持更高的出口限制。  
 
-有关 Azure CDN 的详细信息，请参阅 [Azure CDN](../../cdn/cdn-overview.md)。
+有关 Azure CDN 的详细信息，请参阅 [Azure CDN](/cdn/cdn-overview)。
 
 ## <a name="use-metadata"></a>使用元数据
 

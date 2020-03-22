@@ -6,17 +6,18 @@ author: msmbaldwin
 manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
+ms.subservice: general
 ms.topic: conceptual
 origin.date: 04/18/2019
-ms.date: 02/17/2020
+ms.date: 03/16/2020
 ms.author: v-tawe
 Customer intent: As a key vault administrator, I want to learn the options available to secure my vaults
-ms.openlocfilehash: ad1242a776c9a5e0157e31dd82495f1c7be86e71
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: 1fcf084d180b72a496639dc133fff38f859abb3a
+ms.sourcegitcommit: 764b3d26aedce2de0e1948468a706fd3204a3d5e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79292252"
+ms.lasthandoff: 03/19/2020
+ms.locfileid: "79543384"
 ---
 # <a name="azure-key-vault-security"></a>Azure Key Vault 安全性
 

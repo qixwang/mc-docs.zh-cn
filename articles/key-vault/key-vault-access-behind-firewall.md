@@ -6,16 +6,17 @@ author: amitbapat
 manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
+ms.subservice: general
 ms.topic: tutorial
 origin.date: 08/12/2019
-ms.date: 10/25/2019
+ms.date: 03/16/2020
 ms.author: v-tawe
-ms.openlocfilehash: 0a3de5b7495e7c9824a1bc03e39c15d3ab8781ae
-ms.sourcegitcommit: 642a4ad454db5631e4d4a43555abd9773cae8891
+ms.openlocfilehash: 7ac7be9fa0a18f8fd0cb7ca5143f2536b31ec848
+ms.sourcegitcommit: 764b3d26aedce2de0e1948468a706fd3204a3d5e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2019
-ms.locfileid: "73426045"
+ms.lasthandoff: 03/19/2020
+ms.locfileid: "79543362"
 ---
 # <a name="access-azure-key-vault-behind-a-firewall"></a>访问防火墙后面的 Azure Key Vault
 
@@ -39,12 +40,13 @@ ms.locfileid: "73426045"
 
 | 主体类型 | 终结点：端口 |
 | --- | --- |
-| 使用 Microsoft 帐户的用户<br> （例如：user@hotmail.com） |**Azure China：**<br> login.chinacloudapi.cn:443<br><br> 和 <br>login.live.com:443 |
+| 使用 Microsoft 帐户的用户<br> （例如：user@hotmail.com） |**Azure China：**<br> login.chinacloudapi.cn:443<br><br> and <br>login.live.com:443 |
 | 使用 Azure AD 的工作或学校帐户的用户或服务主体（如 user@contoso.com） |**Azure China：**<br> login.chinacloudapi.cn:443<br><br> |
 
 还有其他可能的复杂情况。 有关其他信息，请参阅 [Azure Active Directory 身份验证流](/active-directory/develop/authentication-scenarios)、[将应用程序与 Azure Active Directory 集成](/active-directory/develop/active-directory-how-to-integrate)和 [Active Directory 身份验证协议](/active-directory/develop/active-directory-developers-guide)。  
 
-## <a name="key-vault-management"></a>密钥保管库管理
+## <a name="key-vault-management"></a>Key Vault 管理
+
 对于 Key Vault 管理（CRUD 和设置访问策略），Key Vault 客户端应用程序需要访问 Azure Resource Manager 终结点。  
 
 | 操作类型 | 终结点：端口 |
@@ -54,7 +56,7 @@ ms.locfileid: "73426045"
 
 ## <a name="key-vault-operations"></a>Key Vault 操作
 
-对于所有密钥保管库对象（密钥和密码）管理和加密操作，密钥保管库客户端需要访问密钥保管库终结点。 终结点 DNS 后缀因密钥保管库位置而异。 密钥保管库终结点的格式是 vault-name.region-specific-dns-suffix，如下表所示   。  
+对于所有密钥保管库对象（密钥和密码）管理和加密操作，密钥保管库客户端需要访问密钥保管库终结点。 根据密钥保管库的位置，终结点 DNS 后缀会有所不同。 密钥保管库终结点的格式是 vault-name.region-specific-dns-suffix，如下表所示   。  
 
 | 操作类型 | 终结点：端口 |
 | --- | --- |
@@ -62,7 +64,7 @@ ms.locfileid: "73426045"
 
 ## <a name="ip-address-ranges"></a>IP 地址范围
 
-Key Vault 服务使用其他 Azure 资源，例如 PaaS 基础结构。 因此，不可能提供密钥保管库服务终结点在任何特定时间具有的 IP 地址的特定范围。 如果防火墙仅支持 IP 地址范围，请参阅 [Microsoft Azure 数据中心 IP 范围](https://www.microsoft.com/download/details.aspx?id=41653)文档。 身份验证和标识 (Azure Active Directory) 是一项全球性服务，可能会故障转移到其他区域或移动流量，恕不另行通知。 在这种情况下，[身份验证和标识 IP 地址](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2#bkmk_identity_ip)中列出的所有 IP 范围都应添加到防火墙中。
+Key Vault 服务使用其他 Azure 资源，例如 PaaS 基础结构。 因此，不可能提供 Key Vault 服务终结点在任意特定时间会有的特定 IP 地址范围。 如果防火墙仅支持 IP 地址范围，请参阅 [Microsoft Azure 数据中心 IP 范围](https://www.microsoft.com/download/details.aspx?id=41653)文档。 身份验证和标识 (Azure Active Directory) 是一项全球性服务，可能会故障转移到其他区域或移动流量，恕不另行通知。 在这种情况下，[身份验证和标识 IP 地址](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2#bkmk_identity_ip)中列出的所有 IP 范围都应添加到防火墙中。
 
 ## <a name="next-steps"></a>后续步骤
 

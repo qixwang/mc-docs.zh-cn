@@ -3,14 +3,14 @@ title: 扩展资源类型
 description: 列出用于扩展其他资源类型的功能的 Azure 资源类型。
 ms.topic: conceptual
 origin.date: 01/20/2020
-ms.date: 03/09/2020
+ms.date: 03/23/2020
 ms.author: v-yeche
-ms.openlocfilehash: 36ce062643bf9c423aa18c0ef78c2fa633f1c945
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.openlocfilehash: 579e5e5c5ae6aece530b7d42f0206c5bf858ea83
+ms.sourcegitcommit: 1436f1851342ca5631eb25342eed954adb707af0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78850549"
+ms.lasthandoff: 03/19/2020
+ms.locfileid: "79543899"
 ---
 <!--Verified successfully/Redirect file-->
 # <a name="resource-types-that-extend-capabilities-of-other-resources"></a>用于扩展其他资源的功能的资源类型
@@ -73,8 +73,10 @@ ms.locfileid: "78850549"
 - microsoft.insights/vmInsightsOnboardingStatuses
     
     <!--Not Available on - Microsoft.KubernetesConfiguration/*-->
-    <!--Not Available on - Microsoft.Maintenance/*-->
     
+- Microsoft.Maintenance/applyUpdates
+- Microsoft.Maintenance/configurationAssignments
+- Microsoft.Maintenance/updates
 - Microsoft.ManagedIdentity/Identities
 
     <!--Not Available on - Microsoft.ManagedServices/*-->

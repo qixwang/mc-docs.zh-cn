@@ -8,12 +8,12 @@ ms.topic: conceptual
 origin.date: 01/16/2020
 ms.date: 02/24/2020
 ms.author: v-yeche
-ms.openlocfilehash: 2a1e6650ebf6da6a41a1ad96764e7b0cb59ad1fe
-ms.sourcegitcommit: 69cadf1fa0ed81751c48fbce919a6bb44b1053ce
+ms.openlocfilehash: 47b25bae440ce82e9dcc4f4dea80cadad1847c51
+ms.sourcegitcommit: 305361c96d1d5288d3dda7e81833820640e2afac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78209193"
+ms.lasthandoff: 03/21/2020
+ms.locfileid: "80108512"
 ---
 <!--Verified successfully-->
 
@@ -39,9 +39,7 @@ ms.locfileid: "78209193"
 
     ![权限](./media/openvpn-azure-ad-mfa/user2.jpg)
 
-## <a name="next-steps"></a>后续步骤
-
-若要连接到虚拟网络，必须创建并配置 VPN 客户端配置文件。 请参阅[为与 Azure 的点到站点连接配置 Azure AD 身份验证](virtual-wan-point-to-site-azure-ad.md)。
+<!--Pending on [Configure Azure AD authentication for Point-to-Site connection to Azure](virtual-wan-point-to-site-azure-ad.md)-->
 
 <!-- Update_Description: new article about openvpn azure ad mfa -->
 <!--NEW.date: 02/24/2020-->

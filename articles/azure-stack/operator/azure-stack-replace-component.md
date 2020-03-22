@@ -4,17 +4,17 @@ titleSuffix: Azure Stack Hub
 description: 了解如何更换 Azure Stack Hub 集成系统上的硬件组件。
 author: WenJason
 ms.topic: article
-origin.date: 07/18/2019
-ms.date: 02/24/2020
+origin.date: 03/04/2020
+ms.date: 03/23/2020
 ms.author: v-jay
 ms.reviewer: thoroet
 ms.lastreviewed: 07/18/2019
-ms.openlocfilehash: 23b4b0c0cf81229d3a3d3cf6e50526966dbc726a
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.openlocfilehash: 536a4f35e16f4fc196f604d121d7659aef776ecd
+ms.sourcegitcommit: e500354e2fd8b7ac3dddfae0c825cc543080f476
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77540339"
+ms.lasthandoff: 03/19/2020
+ms.locfileid: "79547028"
 ---
 # <a name="replace-a-hardware-component-on-an-azure-stack-hub-scale-unit-node"></a>更换 Azure Stack Hub 缩放单元节点上的硬件组件
 
@@ -29,7 +29,7 @@ ms.locfileid: "77540339"
 | Dell EMC | 全部 | [Cloud for Azure Stack Hub 14G（需要帐户和登录）](https://support.emc.com/downloads/44615_Cloud-for-Microsoft-Azure-Stack-14G)<br><br>[Cloud for Azure Stack Hub 13G（需要帐户和登录）](https://support.emc.com/downloads/42238_Cloud-for-Microsoft-Azure-Stack-13G) |
 | HPE | 全部 | [HPE ProLiant for Azure Stack Hub](http://www.hpe.com/info/MASupdates) |
 | Lenovo | 全部 | [ThinkAgile SXM 最佳食谱](https://datacentersupport.lenovo.com/us/en/solutions/ht505122)
-| Wortmann |  | [OEM/固件包](https://drive.terracloud.de/dl/fiTdTb66mwDAJWgUXUW8KNsd/OEM)<br>[terra Azure Stack Hub 文档（包括 FRU）](https://drive.terracloud.de/dl/fiWGZwCySZSQyNdykXCFiVCR/TerraAzSDokumentation)
+| Wortmann |  | [OEM/固件包](https://aka.ms/AA6z600)<br>[terra Azure Stack Hub 文档（包括 FRU）](https://aka.ms/aa6zktc)
 
 非热插拔组件包括以下项：
 

@@ -5,16 +5,17 @@ services: key-vault
 author: msmbaldwin
 manager: rkarlin
 ms.service: key-vault
+ms.subservice: general
 ms.topic: tutorial
 origin.date: 08/12/2019
-ms.date: 10/30/2019
+ms.date: 03/16/2020
 ms.author: v-tawe
-ms.openlocfilehash: 7aeca956dd816f277234b8a0090dcdeb32f318d7
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: 57bb0c583b5a6e109537c08797a6a1fd762ccc73
+ms.sourcegitcommit: 764b3d26aedce2de0e1948468a706fd3204a3d5e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79292255"
+ms.lasthandoff: 03/19/2020
+ms.locfileid: "79543358"
 ---
 # <a name="manage-key-vault-using-the-azure-cli"></a>使用 Azure CLI 管理密钥保管库 
 
@@ -27,6 +28,7 @@ ms.locfileid: "79292255"
 - 设置密钥保管库高级访问策略
 - 删除密钥保管库以及关联的密钥和机密
 - 其他 Azure 跨平台命令行接口命令
+
 
 大多数区域都提供了 Azure 密钥保管库。 有关详细信息，请参阅 [密钥保管库定价页](https://www.azure.cn/pricing/details/key-vault/)。
 
@@ -41,9 +43,9 @@ ms.locfileid: "79292255"
 
 若要使用本文中的 Azure CLI 命令，必须准备好以下各项：
 
-- Azure 订阅。 如果没有，可以注册[试用帐户](https://www.azure.cn/pricing/1rmb-trial)。
-- Azure 命令行接口版本 2.0 或更高版本。 若要安装最新版本，请参阅[安装 Azure CLI](/cli/install-azure-cli)。
-- 配置为使用本文中所创建的密钥或密码的应用程序。 可以从 [Microsoft 下载中心](https://www.microsoft.com/download/details.aspx?id=45343)获取示例应用程序。 有关说明，请参阅随附的自述文件。
+* Azure 订阅。 如果没有，可以注册[试用帐户](https://www.azure.cn/pricing/1rmb-trial)。
+* Azure 命令行接口版本 2.0 或更高版本。 若要安装最新版本，请参阅[安装 Azure CLI](/cli/install-azure-cli)。
+* 配置为使用本文中所创建的密钥或密码的应用程序。 可以从 [Microsoft 下载中心](https://www.microsoft.com/download/details.aspx?id=45343)获取示例应用程序。 有关说明，请参阅随附的自述文件。
 
 ### <a name="getting-help-with-azure-cross-platform-command-line-interface"></a>获得 Azure 跨平台命令行接口帮助
 
@@ -128,8 +130,8 @@ az keyvault create --name "ContosoKeyVault" --resource-group "ContosoResourceGro
 
 此命令的输出会显示创建的 Key Vault 的属性。 两个最重要的属性是：
 
-- **name**：在本示例中，名称为 ContosoKeyVault。 将在其他 Key Vault 命令中使用此名称。
-- **vaultUri**：在本示例中，URI 为 https://contosokeyvault.vault.azure.cn 。 通过其 REST API 使用保管库的应用程序必须使用此 URI。
+* **name**：在本示例中，名称为 ContosoKeyVault。 将在其他 Key Vault 命令中使用此名称。
+* **vaultUri**：在本示例中，URI 为 https://contosokeyvault.vault.azure.cn 。 通过其 REST API 使用保管库的应用程序必须使用此 URI。
 
 Azure 帐户现已获取在此密钥保管库上执行任何作业的授权。 到目前为止，尚未授权其他任何人。
 
@@ -194,7 +196,7 @@ az keyvault certificate list --vault-name "ContosoKeyVault"
 
 应用程序必须向 Azure Active Directory 提供这两个值才能获取令牌。 如何将应用程序配置为获取令牌取决于应用程序。 对于 [Key Vault 示例应用程序](https://www.microsoft.com/download/details.aspx?id=45343)，应用程序所有者会在 app.config 文件中设置这些值。
 
-有关将应用程序注册到 Azure Active Directory 的详细步骤，请参阅文章[将应用程序与 Azure Active Directory 集成](../active-directory/develop/active-directory-integrating-applications.md)、[使用门户创建可访问资源的 Azure Active Directory 应用程序和服务主体](../active-directory/develop/howto-create-service-principal-portal.md)以及[使用 Azure CLI 2.0 创建 Azure 服务主体](/cli/create-an-azure-service-principal-azure-cli)。
+有关向 Azure Active Directory 注册应用程序的详细步骤，请查看标题为[将应用程序与 Azure Active Directory 集成](../active-directory/develop/active-directory-integrating-applications.md)、[使用门户创建可访问资源的 Azure ActiveDirectory 应用程序和服务主体](../active-directory/develop/howto-create-service-principal-portal.md)和[使用 Azure CLI 创建 Azure 服务主体](/cli/create-an-azure-service-principal-azure-cli)的文章。
 
 在 Azure Active Directory 中注册应用程序：
 
@@ -219,7 +221,7 @@ az keyvault set-policy --name "ContosoKeyVault" --spn 8f8c4bbd-485b-45fd-98f7-ec
 az keyvault set-policy --name "ContosoKeyVault" --spn 8f8c4bbd-485b-45fd-98f7-ec6300b7b4ed --secret-permissions get
 ```
 
-## <a name="bkmk_KVperCLI"></a> 设置密钥保管库高级访问策略
+## <a name="setting-key-vault-advanced-access-policies"></a><a name="bkmk_KVperCLI"></a> 设置密钥保管库高级访问策略
 
 使用 [az keyvault update](/cli/keyvault#az-keyvault-update) 为 Key Vault 启用高级策略。 
 

@@ -6,16 +6,16 @@ author: banisadr
 manager: timlt
 ms.service: event-grid
 ms.topic: overview
-origin.date: 10/22/2019
-ms.date: 01/20/2020
-ms.author: v-yiso
+origin.date: 02/20/2020
+ms.date: 3/16/2020
+ms.author: v-lingwu
 ms.custom: seodec18
-ms.openlocfilehash: 8892a7736454f2094b71b7ebb2d4b488775272cd
-ms.sourcegitcommit: a890a9cca495d332c9f3f53ff3a5259fd5f0c275
+ms.openlocfilehash: b3757dc9762c80d313fde71084c3af7b9781b224
+ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75859723"
+ms.lasthandoff: 03/17/2020
+ms.locfileid: "79452594"
 ---
 # <a name="what-is-azure-event-grid"></a>什么是 Azure 事件网格？
 
@@ -57,7 +57,6 @@ ms.locfileid: "75859723"
 * [逻辑应用](event-handlers.md#logic-apps)
 * [Microsoft Flow](https://preview.flow.microsoft.com/connectors/shared_azureeventgrid/azure-event-grid/)
 * [队列存储](event-handlers.md#queue-storage)
-* [服务总线](event-handlers.md#service-bus)
 * [WebHook](event-handlers.md#webhooks)
 
 ## <a name="concepts"></a>概念
@@ -115,7 +114,7 @@ Azure 事件网格使用按事件支付的定价模型，因此，你只需为�
 
 ## <a name="next-steps"></a>后续步骤
 
-* [路由存储 Blob 事件](../storage/blobs/storage-blob-event-quickstart.md?toc=%2fevent-grid%2ftoc.json)  
+* [路由存储 Blob 事件](../storage/blobs/storage-blob-event-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json)  
   使用事件网格响应存储 blob 事件。
 * [创建并订阅自定义事件](custom-event-quickstart.md)  
   立即开始使用 Azure 事件网格快速入门，将自己的自定义事件发送到任何终结点。

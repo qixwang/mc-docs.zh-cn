@@ -5,15 +5,15 @@ author: rockboyfor
 ms.service: azure-analysis-services
 ms.topic: tutorial
 origin.date: 10/30/2019
-ms.date: 11/25/2019
+ms.date: 03/23/2020
 ms.author: v-yeche
 ms.reviewer: owend
-ms.openlocfilehash: 742a6b256333396b4e3500b33737b7679658822a
-ms.sourcegitcommit: c5e012385df740bf4a326eaedabb987314c571a1
+ms.openlocfilehash: c31b54b870c70854682668ac35988527359c1327
+ms.sourcegitcommit: 1436f1851342ca5631eb25342eed954adb707af0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74203556"
+ms.lasthandoff: 03/19/2020
+ms.locfileid: "79543739"
 ---
 <!--Notice: Verify successfully-->
 # <a name="tutorial-configure-server-administrator-and-user-roles"></a>教程：配置服务器管理员和用户角色
@@ -88,7 +88,7 @@ ms.locfileid: "74203556"
 
 ## <a name="add-a-user-to-the-model-database-administrator-role"></a>将用户添加到模型数据库管理员角色
 
-在此任务中，请将用户或组帐户添加到已存在于模型中的“Internet 销售管理员”角色。 此角色具有 adventureworks 示例模型数据库的完全控制（管理员）权限。 此任务在为你创建的脚本中使用 [CreateOrReplace](https://docs.microsoft.com/bi-reference/tmsl/createorreplace-command-tmsl) TMSL 命令。
+在此任务中，请将用户或组帐户添加到已存在于模型中的“Internet 销售管理员”角色。 此角色具有 adventureworks 示例模型数据库的完全控制（管理员）权限。 此任务在为你创建的脚本中使用 [CreateOrReplace](https://docs.microsoft.com/analysis-services/tmsl/createorreplace-command-tmsl) TMSL 命令。
 
 1. 在“对象资源管理器”  中，展开“数据库”   > “adventureworks”   >   “角色”。 
 2. 右键单击“Internet 销售管理员”，  然后单击“充当的脚本角色”   > “CREATE OR REPLACE TO”   >   “新建查询编辑器窗口”。
@@ -103,7 +103,7 @@ ms.locfileid: "74203556"
 
 ## <a name="add-a-new-model-database-role-and-add-a-user-or-group"></a>添加新的模型数据库角色并添加用户或组
 
-在此任务中，请使用 TMSL 脚本中的 [Create](https://docs.microsoft.com/bi-reference/tmsl/create-command-tmsl) 命令创建一个新的 Internet 销售全局角色，为该角色指定读取  权限，然后从 Azure AD 添加用户或组帐户。
+在此任务中，请使用 TMSL 脚本中的 [Create](https://docs.microsoft.com/analysis-services/tmsl/create-command-tmsl) 命令创建一个新的 Internet 销售全局角色，为该角色指定读取  权限，然后从 Azure AD 添加用户或组帐户。
 
 1. 在“对象资源管理器”中右键单击“adventureworks”，然后单击“新建查询”   >   “XMLA”。   
 2. 将以下 TMSL 脚本复制并粘贴到查询编辑器中：

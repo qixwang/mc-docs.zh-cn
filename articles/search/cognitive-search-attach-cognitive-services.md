@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 origin.date: 12/17/2019
 ms.date: 03/16/2020
-ms.openlocfilehash: 687114438f704ed0c5ec7463bd473b7da5f984c8
-ms.sourcegitcommit: d5eca3c6b03b206e441b599e5b138bd687a91361
+ms.openlocfilehash: 4c40820597c9381a33764d4b6519ffdd11381774
+ms.sourcegitcommit: 71a386ca0d0ecb79a123399b6ab6b8c70ea2aa78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78934913"
+ms.lasthandoff: 03/18/2020
+ms.locfileid: "79497201"
 ---
 # <a name="attach-a-cognitive-services-resource-to-a-skillset-in-azure-cognitive-search"></a>将认知服务资源附加到 Azure 认知搜索中的技能组 
 
@@ -67,7 +67,7 @@ Azure 认知搜索依赖于认知服务，这包括用于图像分析和光学�
 
 对于每天创建超过 20 个扩充的工作负荷，请确保附加可计费的认知服务资源。 我们建议你始终附加可计费的认知服务资源，即使你从未打算调用认知服务 API 也是如此。 附加资源会重写每日限制。
 
-只有调用认知服务 API 的技能才收费。 [自定义技能](cognitive-search-custom-skill-interface.md)，或者不基于 API 的技能（例如[文本合并器](cognitive-search-skill-textmerger.md)、[文本拆分器](cognitive-search-skill-textsplit.md)和[整形程序](cognitive-search-skill-shaper.md)）不收费。
+只有调用认知服务 API 的技能才收费。 [自定义技能](cognitive-search-create-custom-skill-example.md)，或者不基于 API 的技能（例如[文本合并器](cognitive-search-skill-textmerger.md)、[文本拆分器](cognitive-search-skill-textsplit.md)和[整形程序](cognitive-search-skill-shaper.md)）不收费。
 
 1. 打开导入数据向导，选择数据源，然后转到“添加 AI 扩充(可选)”。 
 

@@ -3,14 +3,14 @@ title: 资源提供程序和资源类型
 description: 介绍支持 Resource Manager 的资源提供程序及其架构和可用 API 版本，以及可托管资源的区域。
 ms.topic: conceptual
 origin.date: 08/29/2019
+ms.date: 03/23/2020
 ms.author: v-yeche
-ms.date: 01/06/2020
-ms.openlocfilehash: ea7e0fbf06103230006ffc1a68f5d492c20a9d32
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: df109e49f59a7bd390b2e09cd765c8f22641c8d4
+ms.sourcegitcommit: 1436f1851342ca5631eb25342eed954adb707af0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79293001"
+ms.lasthandoff: 03/19/2020
+ms.locfileid: "79543889"
 ---
 # <a name="azure-resource-providers-and-types"></a>Azure 资源提供程序和类型
 
@@ -88,7 +88,7 @@ Get-AzResourceProvider -ListAvailable | Select-Object ProviderNamespace, Registr
 
 这会返回类似于下面的结果：
 
-```powershell
+```output
 ProviderNamespace                RegistrationState
 -------------------------------- ------------------
 Microsoft.ClassicCompute         Registered
@@ -106,7 +106,7 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.Batch
 
 这会返回类似于下面的结果：
 
-```powershell
+```output
 ProviderNamespace : Microsoft.Batch
 RegistrationState : Registering
 ResourceTypes     : {batchAccounts, operations, locations, locations/quotas}
@@ -123,7 +123,7 @@ Get-AzResourceProvider -ProviderNamespace Microsoft.Batch
 
 这会返回类似于下面的结果：
 
-```powershell
+```output
 {ProviderNamespace : Microsoft.Batch
 RegistrationState : Registered
 ResourceTypes     : {batchAccounts}
@@ -140,7 +140,7 @@ Locations         : {China East, China North, China East 2, China North 2}
 
 返回：
 
-```powershell
+```output
 batchAccounts
 operations
 locations
@@ -157,7 +157,7 @@ API 版本对应于资源提供程序发布的 REST API 操作版本。 资源�
 
 返回：
 
-```powershell
+```output
 2017-05-01
 2017-01-01
 2015-12-01
@@ -175,7 +175,7 @@ API 版本对应于资源提供程序发布的 REST API 操作版本。 资源�
 
 返回：
 
-```powershell
+```output
 China East
 China North
 China East 2
@@ -192,7 +192,7 @@ az provider list --query "[].{Provider:namespace, Status:registrationState}" --o
 
 这会返回类似于下面的结果：
 
-```azurecli
+```output
 Provider                         Status
 -------------------------------- ----------------
 Microsoft.ClassicCompute         Registered
@@ -220,7 +220,7 @@ az provider show --namespace Microsoft.Batch
 
 这会返回类似于下面的结果：
 
-```azurecli
+```output
 {
     "id": "/subscriptions/####-####/providers/Microsoft.Batch",
     "namespace": "Microsoft.Batch",
@@ -239,7 +239,7 @@ az provider show --namespace Microsoft.Batch --query "resourceTypes[*].resourceT
 
 返回：
 
-```azurecli
+```output
 Result
 ---------------
 batchAccounts
@@ -258,7 +258,7 @@ az provider show --namespace Microsoft.Batch --query "resourceTypes[?resourceTyp
 
 返回：
 
-```azurecli
+```output
 Result
 ---------------
 2017-05-01
@@ -278,7 +278,7 @@ az provider show --namespace Microsoft.Batch --query "resourceTypes[?resourceTyp
 
 返回：
 
-```azurecli
+```output
 Result
 ---------------
 China East

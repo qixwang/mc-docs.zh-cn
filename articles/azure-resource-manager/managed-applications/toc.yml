@@ -17,8 +17,6 @@
       href: publish-service-catalog-app.md
     - name: 发布市场应用程序
       href: publish-marketplace-app.md
-    - name: 创建包含自定义提供程序的托管应用程序
-      href: tutorial-create-managed-app-with-custom-provider.md
 - name: 示例
   items:
     - name: Azure CLI
@@ -110,6 +108,10 @@
               href: microsoft-compute-sizeselector.md
             - name: UserNameTextBox
               href: microsoft-compute-usernametextbox.md
+        - name: 托管标识
+          items:
+            - name: IdentitySelector
+              href: microsoft-managedidentity-identityselector.md
         - name: 网络
           items:
             - name: PublicIPAddressCombo

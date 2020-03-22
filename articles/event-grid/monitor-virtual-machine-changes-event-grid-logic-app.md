@@ -1,21 +1,21 @@
 ---
-title: 监视虚拟机更改 - Azure 事件网格和逻辑应用 | Microsoft 文档
-description: 通过使用 Azure 事件网格和逻辑应用检查虚拟机 (VM) 中的配置更改
+title: 监视虚拟机更改 - Azure 事件网格和逻辑应用
+description: 通过使用 Azure 事件网格和逻辑应用检查虚拟机 (VM) 中的更改
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
 author: ecfan
-ms.author: v-yiso
+ms.author: v-lingwu
 ms.reviewer: klam, LADocs
 ms.topic: tutorial
 origin.date: 10/11/2019
 ms.date: 11/11/2019
-ms.openlocfilehash: c50b902c75783f986f3aa2f412d2ec73e78d5a09
-ms.sourcegitcommit: 642a4ad454db5631e4d4a43555abd9773cae8891
+ms.openlocfilehash: 07d5aac54663f3392076c6a5c41bae7054b4e369
+ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2019
-ms.locfileid: "73426078"
+ms.lasthandoff: 03/17/2020
+ms.locfileid: "79452603"
 ---
 # <a name="tutorial-monitor-virtual-machine-changes-by-using-azure-event-grid-and-logic-apps"></a>教程：通过 Azure 事件网格和逻辑应用监视虚拟机更改
 
@@ -67,7 +67,7 @@ ms.locfileid: "73426078"
    | **名称** | 是 | <*logic-app-name*> | 提供逻辑应用的唯一名称。 |
    | **订阅** | 是 | <*Azure-subscription-name*> | 在本教程中，选择同一 Azure 订阅用于所有服务。 |
    | **资源组** | 是 | <Azure-resource-group>  | 逻辑应用的 Azure 资源组名称，可以在本教程中选择用于所有服务。 |
-   | **Location** | 是 | <*Azure-region*> | 在本教程中，选择同一区域用于所有服务。 |
+   | **位置** | 是 | <*Azure-region*> | 在本教程中，选择同一区域用于所有服务。 |
    |||
 
 1. 在 Azure 部署逻辑应用后，逻辑应用设计器会显示一个包含简介视频和常用触发器的页面。 滚动浏览视频和触发器。
@@ -120,7 +120,7 @@ ms.locfileid: "73426078"
 
 1. 在“逻辑应用设计器”的事件网格触发器下，选择“新步骤”  。
 
-   ![选择“新步骤”](./media/monitor-virtual-machine-changes-event-grid-logic-app/choose-new-step-condition.png)
+   ![选择“新建步骤”](./media/monitor-virtual-machine-changes-event-grid-logic-app/choose-new-step-condition.png)
 
 1. 在“选择操作”  下的搜索框中，输入 `condition` 作为筛选器。 从操作列表中选择“条件”操作。 
 

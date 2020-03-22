@@ -6,32 +6,32 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: quickstart
-origin.date: 11/14/2019
-ms.date: 11/21/2019
+ms.date: 03/16/2020
 ms.author: v-junlch
 ms.custom: mvc
-ms.openlocfilehash: 7730cf121977d8afe96316401609c84ab3f172b5
-ms.sourcegitcommit: fdbd1b6df618379dfeab03044a18c373b5fbb8ec
+ms.openlocfilehash: 1f729246cad222a659dc2b8b97a62880a8d50127
+ms.sourcegitcommit: 71a386ca0d0ecb79a123399b6ab6b8c70ea2aa78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74326682"
+ms.lasthandoff: 03/18/2020
+ms.locfileid: "79497255"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway---azure-cli"></a>快速入门：使用 Azure 应用程序网关定向 Web 流量 - Azure CLI
 
-本快速入门介绍如何使用 Azure CLI 创建应用程序网关。  创建应用程序网关后，可对其进行测试，以确保正常工作。 使用 Azure 应用程序网关可为端口分配侦听器、创建规则以及向后端池添加资源，以便将应用程序 Web 流量定向到特定资源。 本文使用一个简单的设置，其中包含一个公共前端 IP、一个在应用程序网关上托管单个站点的基本侦听器、两个用于后端池的虚拟机，以及一个基本请求传递规则。
+在本快速入门中，你将使用 Azure CLI 创建一个应用程序网关。 然后对其进行测试以确保其正常运行。 
 
-如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial)。
+该应用程序网关将应用程序 Web 流量定向到后端池中的特定资源。 你将向端口分配侦听器，创建规则，并向后端池中添加资源。 为简单起见，本文使用了带有公共前端 IP 的简单设置、一个在应用程序网关上托管单个站点的基本侦听器、一个基本的请求路由规则，以及后端池中的两台虚拟机。
+
+还可以使用 [Azure PowerShell](quick-create-powershell.md) 或 [Azure 门户](quick-create-portal.md)完成本快速入门。
 
 ## <a name="prerequisites"></a>先决条件
 
-### <a name="azure-cli"></a>Azure CLI
+- 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://www.azure.cn/pricing/1rmb-trial)。
+- [Azure CLI 2.0.4 或更高版本](/cli/install-azure-cli)（如果在本地运行 Azure CLI）。
 
-如果选择在本地安装并使用 CLI，请运行 Azure CLI 2.0.4 或更高版本。 若要查找版本，请运行 **az --version**。 有关安装或升级的信息，请参阅[安装 Azure CLI](/cli/install-azure-cli)。
+## <a name="create-resource-group"></a>创建资源组
 
-### <a name="resource-group"></a>资源组
-
-在 Azure 中，可将相关的资源分配到资源组。 使用 [az group create](/cli/group#az-group-create) 创建资源组。 
+在 Azure 中，可将相关的资源分配到资源组。 使用 `az group create` 创建一个资源组。 
 
 以下示例在“chinanorth”  位置创建名为“myResourceGroupAG”  的资源组。
 
@@ -39,11 +39,11 @@ ms.locfileid: "74326682"
 az group create --name myResourceGroupAG --location chinanorth
 ```
 
-### <a name="required-network-resources"></a>所需的网络资源 
+## <a name="create-network-resources"></a>创建网络资源 
 
-Azure 需要一个虚拟网络才能在创建的资源之间通信。  应用程序网关子网只能包含应用程序网关。 不允许其他资源。  可为应用程序网关创建新的子网，或者使用现有的子网。 本示例将创建两个子网：一个用于应用程序网关，另一个用于后端服务器。 可根据用例将应用程序网关的前端 IP 配置为公共或专用 IP。 本示例将选择公共前端 IP。
+Azure 需要一个虚拟网络才能在创建的资源之间通信。  应用程序网关子网只能包含应用程序网关。 不允许其他资源。  可为应用程序网关创建新的子网，或者使用现有的子网。 在此示例中，你将创建两个子网：一个用于应用程序网关，另一个用于后端服务器。 可根据用例将应用程序网关的前端 IP 配置为公共或专用 IP。 在此示例中，你将选择公共前端 IP 地址。
 
-若要创建虚拟网络和子网，请使用 [az network vnet create](/cli/network/vnet#az-network-vnet-create)。 运行 [az network public-ip create](https://docs.azure.cn/zh-cn/cli/network/public-ip?view=azure-cli-latest#az-network-public-ip-create) 即可创建公共 IP 地址。
+若要创建虚拟网络和子网，请使用 `az network vnet create`。 运行 `az network public-ip create` 来创建公共 IP 地址。
 
 ```azurecli
 az network vnet create `
@@ -65,13 +65,13 @@ az network public-ip create `
   --sku Standard
 ```
 
-### <a name="backend-servers"></a>后端服务器
+## <a name="create-the-backend-servers"></a>创建后端服务器
 
 后端可以具有 NIC、虚拟机规模集、公共 IP、内部 IP、完全限定的域名 (FQDN) 和多租户后端（例如 Azure 应用服务）。 在此示例中，你将创建用作应用程序网关的后端服务器的两个虚拟机。 还会在虚拟机上安装 IIS 以测试应用程序网关。
 
 #### <a name="create-two-virtual-machines"></a>创建两个虚拟机
 
-在虚拟机上安装 [NGINX Web 服务器](https://docs.nginx.com/nginx/)，验证是否已成功创建应用程序网关。 可使用 cloud-init 配置文件在 Linux 虚拟机上安装 NGINX 并运行“Hello World”Node.js 应用。 有关 cloud-init 的详细信息，请参阅 [cloud-init 对 Azure 中虚拟机的支持](/virtual-machines/linux/using-cloud-init)。
+在虚拟机上安装 NGINX Web 服务器，验证是否已成功创建应用程序网关。 可使用 cloud-init 配置文件在 Linux 虚拟机上安装 NGINX 并运行“Hello World”Node.js 应用。 有关 cloud-init 的详细信息，请参阅 [cloud-init 对 Azure 中虚拟机的支持](../virtual-machines/linux/using-cloud-init.md)。
 
 在当前的 Shell 中，将以下配置复制并粘贴到名为 *cloud-init.txt* 的文件中。 输入 *editor cloud-init.txt* 即可创建该文件。
 
@@ -117,7 +117,7 @@ runcmd:
   - nodejs index.js
 ```
 
-使用 [az network nic create](/cli/network/nic#az-network-nic-create) 创建网络接口。 若要创建虚拟机，请使用 [az vm create](/cli/vm#az-vm-create)。
+使用 `az network nic create` 创建网络接口。 若要创建虚拟机，请使用 `az vm create`。
 
 ```azurecli
 for i in `seq 1 2`; do
@@ -139,7 +139,7 @@ done
 
 ## <a name="create-the-application-gateway"></a>创建应用程序网关
 
-使用 [az network application-gateway create](/cli/network/application-gateway) 创建应用程序网关。 使用 Azure CLI 创建应用程序网关时，请指定配置信息，例如容量、SKU 和 HTTP 设置。 然后，Azure 将添加网络接口的专用 IP 地址作为应用程序网关后端池中的服务器。
+使用 `az network application-gateway create` 创建应用程序网关。 使用 Azure CLI 创建应用程序网关时，请指定配置信息，例如容量、SKU 和 HTTP 设置。 然后，Azure 将添加网络接口的专用 IP 地址作为应用程序网关后端池中的服务器。
 
 ```azurecli
 address1=$(az network nic show --name myNic1 --resource-group myResourceGroupAG | grep "\"privateIpAddress\":" | grep -oE '[^ ]+$' | tr -d '",')
@@ -167,7 +167,7 @@ Azure 可能需要长达 30 分钟的时间来创建应用程序网关。 创建
 
 ## <a name="test-the-application-gateway"></a>测试应用程序网关
 
-虽然 Azure 不需 NGINX Web 服务器即可创建应用程序网关，但本快速入门中安装了它，用来验证 Azure 是否已成功创建应用程序网关。 若要获取新应用程序网关的公共 IP 地址，请使用 [az network public-ip show](/cli/network/public-ip#az-network-public-ip-show)。 
+虽然 Azure 不需 NGINX Web 服务器即可创建应用程序网关，但本快速入门中安装了它，用来验证 Azure 是否已成功创建应用程序网关。 若要获取新应用程序网关的公共 IP 地址，请使用 `az network public-ip show`。 
 
 ```azurepowershell
 az network public-ip show `
@@ -185,7 +185,7 @@ az network public-ip show `
 
 ## <a name="clean-up-resources"></a>清理资源
 
-如果不再需要通过应用程序网关创建的资源，请使用 [az group delete](/cli/group#az-group-delete) 命令删除资源组。 删除资源组时，也会删除应用程序网关和及其所有的相关资源。
+如果不再需要通过应用程序网关创建的资源，请使用 `az group delete` 命令删除资源组。 删除资源组时，也会删除应用程序网关和及其所有的相关资源。
 
 ```azurecli 
 az group delete --name myResourceGroupAG
@@ -197,4 +197,3 @@ az group delete --name myResourceGroupAG
 > [通过 Azure CLI 使用应用程序网关管理 Web 流量](./tutorial-manage-web-traffic-cli.md)
 
 
-<!-- Update_Description: update metedata properties -->

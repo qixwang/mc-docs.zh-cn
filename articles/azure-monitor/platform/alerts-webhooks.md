@@ -2,19 +2,18 @@
 title: 在 Azure Monitor 中对经典指标警报调用 Webhook
 description: 了解如何将 Azure 指标警报重新路由到其他非 Azure 系统。
 author: snehithm
-services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
 origin.date: 04/03/2017
 ms.date: 02/16/2018
 ms.author: snmuvva
 ms.subservice: alerts
-ms.openlocfilehash: c6dcdbe798f9ece993b067f6fda98039c660b497
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: 3988fd9c9bbe0d74322507895d51e5a194f44f02
+ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79291670"
+ms.lasthandoff: 03/17/2020
+ms.locfileid: "79452368"
 ---
 # <a name="call-a-webhook-with-a-classic-metric-alert-in-azure-monitor"></a>在 Azure Monitor 中对经典指标警报调用 Webhook
 可以使用 Webhook 将 Azure 警报通知路由到其他系统，以便进行后续处理或自定义操作。 可以针对警报使用 Webhook，以将警报路由到可以发送短信的服务，以记录 Bug、通过聊天/消息服务通知团队，或进行各种其他操作。 

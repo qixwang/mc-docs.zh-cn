@@ -3,17 +3,18 @@ title: Azure Key Vault 托管存储帐户 - PowerShell 版本
 description: 托管存储帐户功能在 Azure Key Vault 与 Azure 存储帐户之间提供无缝集成。
 ms.topic: conceptual
 ms.service: key-vault
+ms.subservice: secrets
 author: msmbaldwin
 ms.author: v-tawe
 manager: rkarlin
 origin.date: 09/10/2019
-ms.date: 12/09/2019
-ms.openlocfilehash: c0493c7535628823cafbe644b102f18dd823059b
-ms.sourcegitcommit: 21b02b730b00a078a76aeb5b78a8fd76ab4d6af2
+ms.date: 03/16/2020
+ms.openlocfilehash: 04050ea2b0f3552c46743cb922fc8b1329cd8e09
+ms.sourcegitcommit: 764b3d26aedce2de0e1948468a706fd3204a3d5e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74838869"
+ms.lasthandoff: 03/19/2020
+ms.locfileid: "79543374"
 ---
 # <a name="fetch-shared-access-signature-tokens-in-code"></a>通过编写代码提取共享访问签名令牌
 

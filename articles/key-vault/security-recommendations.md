@@ -5,17 +5,18 @@ services: key-vault
 author: barclayn
 manager: rkarlin
 ms.service: key-vault
+ms.subservice: general
 ms.topic: article
 origin.date: 09/30/2019
-ms.date: 12/09/2019
+ms.date: 03/16/2020
 ms.author: v-tawe
 ms.custom: security-recommendations
-ms.openlocfilehash: 85a83176fe5c15cc85f2219b78c45ff92380584e
-ms.sourcegitcommit: 21b02b730b00a078a76aeb5b78a8fd76ab4d6af2
+ms.openlocfilehash: 6035ea0cfd92d5930450105619ff7ad25235b728
+ms.sourcegitcommit: 764b3d26aedce2de0e1948468a706fd3204a3d5e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74838871"
+ms.lasthandoff: 03/19/2020
+ms.locfileid: "79543368"
 ---
 # <a name="security-recommendations-for-azure-key-vault"></a>适用于 Azure Key Vault 的安全建议
 

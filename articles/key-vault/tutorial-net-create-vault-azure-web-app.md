@@ -5,17 +5,18 @@ services: key-vault
 author: msmbaldwin
 manager: rajvijan
 ms.service: key-vault
+ms.subservice: general
 ms.topic: tutorial
 origin.date: 12/21/2018
-ms.date: 10/30/2019
+ms.date: 03/16/2020
 ms.author: v-tawe
 ms.custom: mvc
-ms.openlocfilehash: b3c158ce9d75f1faa4ae856f7d5d5b352bfeb88c
-ms.sourcegitcommit: 642a4ad454db5631e4d4a43555abd9773cae8891
+ms.openlocfilehash: a3f62187eb22039139a6d5b61e30228773e7a7b7
+ms.sourcegitcommit: 764b3d26aedce2de0e1948468a706fd3204a3d5e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2019
-ms.locfileid: "73425859"
+ms.lasthandoff: 03/19/2020
+ms.locfileid: "79543373"
 ---
 # <a name="tutorial-use-azure-key-vault-with-an-azure-web-app-in-net"></a>教程：如何将 Azure Key Vault 与 .NET Azure Web 应用配合使用
 
@@ -87,7 +88,7 @@ Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。
 
 * Key Vault 名称：由 3 到 24 个字符构成的字符串，可以包含数字 (0-9)、字母 (a-z, A-Z) 和连字符 (-)
 * 资源组名称
-* 位置：**华北**
+* 位置：**中国北部**
 
 在 Azure CLI 中输入以下命令：
 

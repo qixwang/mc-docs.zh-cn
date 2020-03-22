@@ -5,23 +5,24 @@ services: key-vault
 author: msmbaldwin
 manager: rkarlin
 ms.service: key-vault
+ms.subservice: general
 ms.topic: tutorial
 origin.date: 08/12/2019
-ms.date: 10/30/2019
+ms.date: 03/16/2020
 ms.author: v-tawe
-ms.openlocfilehash: cbaa410c6f336307eb8cc082d230f909c0eb4d6f
-ms.sourcegitcommit: 642a4ad454db5631e4d4a43555abd9773cae8891
+ms.openlocfilehash: 7c52e7d8a0a3a61006b00cbc0ae62051cc4eb1e8
+ms.sourcegitcommit: 764b3d26aedce2de0e1948468a706fd3204a3d5e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2019
-ms.locfileid: "73425952"
+ms.lasthandoff: 03/19/2020
+ms.locfileid: "79543336"
 ---
 # <a name="how-to-use-key-vault-soft-delete-with-powershell"></a>如何将 Key Vault 软删除与 PowerShell 配合使用
 
-Azure Key Vault 的软删除功能可以恢复已删除的保管库和保管库对象。 软删除将具体探讨以下方案：
+Azure Key Vault 的软删除功能可以恢复已删除的保管库和保管库对象。 具体而言，软删除可解决以下方案：
 
 - 支持 Key Vault 的可恢复删除
-- 支持密钥保管库对象、密钥、机密和证书的可恢复删除
+- 支持 Key Vault 对象、密钥、机密和证书的可恢复删除
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -42,7 +43,7 @@ Key Vault 操作通过基于角色的访问控制 (RBAC) 权限单独管理，�
 
 | 操作 | 说明 | 用户权限 |
 |:--|:--|:--|
-|列出|列出已删除的密钥保管库。|Microsoft.KeyVault/deletedVaults/read|
+|列出|列出已删除的 Key Vault。|Microsoft.KeyVault/deletedVaults/read|
 |恢复|还原已删除的 Key Vault。|Microsoft.KeyVault/vaults/write|
 |清除|永久移除已删除的 Key Vault 及其所有内容。|Microsoft.KeyVault/locations/deletedVaults/purge/action|
 

@@ -3,15 +3,15 @@ title: 将应用移动到其他区域
 description: 了解如何将应用服务资源从一个区域移动到另一个区域。
 ms.topic: how-to
 origin.date: 02/27/2020
-ms.date: 03/23/2020
+ms.date: 03/16/2020
 ms.author: v-tawe
 ms.custom: subject-moving-resources
-ms.openlocfilehash: 3f3bd367265a7b1c9c403bfb04cae52b938aadcf
-ms.sourcegitcommit: 590844334d9e57a8742777235c2c3de8f25f20ab
+ms.openlocfilehash: 51f258a4a5d0a6a80cbf2e6d1630c85ab36b0d9f
+ms.sourcegitcommit: e500354e2fd8b7ac3dddfae0c825cc543080f476
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "78964213"
+ms.lasthandoff: 03/19/2020
+ms.locfileid: "79546937"
 ---
 # <a name="move-an-app-service-app-to-another-region"></a>将应用服务应用移动到其他区域
 

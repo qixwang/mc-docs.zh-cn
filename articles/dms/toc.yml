@@ -32,7 +32,7 @@
       href: tutorial-mongodb-cosmos-db.md
     - name: 以联机方式将 MongoDB 迁移到 Azure Cosmos DB Mongo API
       href: tutorial-mongodb-cosmos-db-online.md
-    - name: 将 Oracle 联机迁移到 Azure DB for PostgreSQL�单一服务器
+    - name: 将 Oracle 联机迁移到 Azure DB for PostgreSQL 单一服务器
       href: tutorial-oracle-azure-postgresql-online.md
 - name: 操作指南
   items:
@@ -71,7 +71,7 @@
           href: known-issues-azure-mysql-online.md
         - name: 已知问题 - 从 PostgreSQL 联机迁移到 Azure DB for PostgreSQL
           href: known-issues-azure-postgresql-online.md
-        - name: 已知问题 - 从 Oracle 联机迁移到 Azure DB for PostgreSQL � 单一服务器
+        - name: 已知问题 - 从 Oracle 联机迁移到 Azure DB for PostgreSQL - 单一服务器
           href: known-issues-oracle-azure-postgresql-online.md
         - name: 已知问题 - 从 MongoDB 迁移到 Azure Cosmos DB API for MongoDB
           href: tutorial-mongodb-cosmos-db.md

@@ -1,6 +1,6 @@
 ---
-title: 将自定义事件发送到存储队列 - 事件网格、Azure CLI
-description: 使用 Azure 事件网格和 Azure CLI 发布一个主题，然后订阅该事件。 存储队列用于终结点。
+title: 快速入门：将自定义事件发送到存储队列 - 事件网格、Azure CLI
+description: 快速入门：使用 Azure 事件网格和 Azure CLI 发布一个主题，然后订阅该事件。 存储队列用于终结点。
 services: event-grid
 keywords: ''
 author: spelluru
@@ -9,12 +9,12 @@ ms.date: 01/07/2019
 ms.topic: quickstart
 ms.service: event-grid
 ms.custom: seodec18
-ms.openlocfilehash: 8ff305760c33b3d7a8e1f002346b5439c606fea6
-ms.sourcegitcommit: 5a57f99d978b78c1986c251724b1b04178c12d8c
+ms.openlocfilehash: 0819bf39012a3a5ec9255e836c6a97b1044d533f
+ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/24/2019
-ms.locfileid: "66195252"
+ms.lasthandoff: 03/17/2020
+ms.locfileid: "79452537"
 ---
 # <a name="quickstart-route-custom-events-to-azure-queue-storage-with-azure-cli-and-event-grid"></a>快速入门：使用 Azure CLI 和事件网格将自定义事件路由到 Azure 队列存储
 

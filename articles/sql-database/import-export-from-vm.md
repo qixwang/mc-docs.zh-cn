@@ -12,12 +12,12 @@ ms.author: v-jay
 ms.reviewer: ''
 origin.date: 01/08/2020
 ms.date: 02/17/2020
-ms.openlocfilehash: 037b6c558a1cf753e6fc3ded52b690518910ff33
-ms.sourcegitcommit: 3f9d780a22bb069402b107033f7de78b10f90dde
+ms.openlocfilehash: 27bee0f98efffb91bda87c5fb41917eddf9566bc
+ms.sourcegitcommit: 71a386ca0d0ecb79a123399b6ab6b8c70ea2aa78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77156821"
+ms.lasthandoff: 03/18/2020
+ms.locfileid: "79497302"
 ---
 # <a name="import-or-export-an-azure-sql-database-without-allowing-azure-services-to-access-the-server"></a>导入或导出 Azure SQL 数据库但不允许 Azure 服务访问服务器
 
@@ -105,7 +105,7 @@ ms.locfileid: "77156821"
 此示例演示如何通过 Active Directory 通用身份验证，使用 SqlPackage.exe 来导出数据库。 请将占位符替换为环境特定的值。
 
 ```cmd
-SqlPackage.exe /a:Export /tf:testExport.bacpac /scs:"Data Source=<servername>.database.chinacloudapi.cn;Initial Catalog=MyDB;" /ua:True /tid:"apptest.onmschina.cn"
+SqlPackage.exe /a:Export /tf:testExport.bacpac /scs:"Data Source=<servername>.database.chinacloudapi.cn;Initial Catalog=MyDB;" /ua:True /tid:"apptest.partner.onmschina.cn"
 ```
 
 
@@ -129,7 +129,7 @@ sqlpackage.exe /a:import /tcs:"Data Source=<serverName>.database.chinacloudapi.c
 此示例演示如何通过 Active Directory 通用身份验证，使用 SqlPackage 来导入数据库。
 
 ```cmd
-sqlpackage.exe /a:Import /sf:testExport.bacpac /tdn:NewDacFX /tsn:apptestserver.database.chinacloudapi.cn /ua:True /tid:"apptest.onmschina.cn"
+sqlpackage.exe /a:Import /sf:testExport.bacpac /tdn:NewDacFX /tsn:apptestserver.database.chinacloudapi.cn /ua:True /tid:"apptest.partner.onmschina.cn"
 ```
 
 ## <a name="performance-considerations"></a>性能注意事项

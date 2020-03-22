@@ -5,15 +5,15 @@ ms.subservice: logs
 ms.topic: sample
 author: lingliw
 manager: digimobile
-origin.date: 08/22/2019
+origin.date: 09/07/2017
 ms.date: 03/06/2020
 ms.author: v-lingwu
-ms.openlocfilehash: 13d013e9eaf9d62cce4adf4b339fc2fa0ca3adbe
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.openlocfilehash: 567c337938fb48036e47397ba2f6a86d3a29c35a
+ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78850553"
+ms.lasthandoff: 03/17/2020
+ms.locfileid: "79452540"
 ---
 # <a name="create-a-log-analytics-workspace-with-powershell"></a>使用 PowerShell 创建 Log Analytics 工作区
 

@@ -3,21 +3,21 @@ title: 操作组中的短信通知行为
 description: 短信格式，以及回复短信以取消订阅、重新订阅或请求帮助。
 author: dkamstra
 services: monitoring
-ms.service: azure-monitor
 ms.topic: conceptual
 origin.date: 02/16/2018
 ms.date: 02/26/2018
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: bc84d1b79add765d6d3eba1c5e6a312cb146488b
-ms.sourcegitcommit: dd0ff08835dd3f8db3cc55301815ad69ff472b13
+ms.openlocfilehash: d2711f12991f4a6304c16591d118a4816bf890c5
+ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70737339"
+ms.lasthandoff: 03/17/2020
+ms.locfileid: "79452367"
 ---
 # <a name="sms-alert-behavior-in-action-groups"></a>操作组中的短信通知行为
-## <a name="overview"></a>概述 ##
+
+## <a name="overview"></a>概述 
 通过操作组可以配置操作列表。 在定义警报时将使用这些组；确保警报被触发时向特定操作组发送通知。 支持的操作之一是短信；短信通知支持双向通信。 用户可以对短信做出响应来执行以下操作：
 
 - **取消订阅警报：** 用户可以为所有操作组或单个操作组取消订阅所有短信警报。

@@ -2,19 +2,16 @@
 title: Microsoft Azure 和 Azure Monitor 中的经典警报概述
 description: 经典警报将被弃用。 使用警报可以监视 Azure 资源指标、事件或日志，并在符合指定的条件时接收通知。
 author: lingliw
-services: azure-monitor
-ms.service: azure-monitor
-ms.subservice: ''
 ms.topic: conceptual
 origin.date: 05/19/2018
 ms.date: 04/12/2019
 ms.author: v-lingwu
-ms.openlocfilehash: a99dbb502516f474487e13250a053e9fa7787758
-ms.sourcegitcommit: 27eaabd82b12ad6a6840f30763034a6360977186
+ms.openlocfilehash: edfe0cc22e52128989d0fa745b783762e77e4275
+ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77497463"
+ms.lasthandoff: 03/17/2020
+ms.locfileid: "79452561"
 ---
 # <a name="what-are-classic-alerts-in-21vianet-azure"></a>什么是世纪互联 Azure 中的经典警报？
 

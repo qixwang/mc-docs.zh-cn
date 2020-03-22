@@ -3,21 +3,21 @@ title: 在模板中使用 Azure Key Vault
 description: 了解如何在资源管理器模板部署期间使用 Azure Key Vault 来传递安全参数值
 author: rockboyfor
 origin.date: 05/23/2019
-ms.date: 01/06/2020
+ms.date: 03/23/2020
 ms.topic: tutorial
 ms.author: v-yeche
 ms.custom: seodec18
-ms.openlocfilehash: 55a5adba8ff23e79f9a1b706f0b714fb685e3f2d
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.openlocfilehash: b04de819c68ac152ffe6cde854c4fd74881a9b20
+ms.sourcegitcommit: 1436f1851342ca5631eb25342eed954adb707af0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75631474"
+ms.lasthandoff: 03/19/2020
+ms.locfileid: "79543920"
 ---
 <!-- Verify successfully-->
 # <a name="tutorial-integrate-azure-key-vault-in-your-resource-manager-template-deployment"></a>教程：在你的资源管理器模板部署中集成 Azure 密钥保管库
 
-了解部署 Azure 资源管理器时如何从 Azure 密钥保管库检索密钥并将密钥作为参数传递。 该参数值永远不会公开，因为只会引用其密钥保管库 ID。 有关详细信息，请参阅[在部署过程中使用 Azure 密钥保管库传递安全参数值](./key-vault-parameter.md)。
+了解部署 Azure 资源管理器时如何从 Azure 密钥保管库检索密钥并将密钥作为参数传递。 该参数值永远不会公开，因为只会引用其密钥保管库 ID。 有关详细信息，请参阅[在部署过程中使用 Azure Key Vault 传递安全参数值](./key-vault-parameter.md)。
 
 在[设置资源部署顺序](./template-tutorial-create-templates-with-dependent-resources.md)教程中，你需要创建虚拟机 (VM)。 需提供 VM 管理员用户名和密码。 可以不提供密码，而是将密码预先存储在 Azure 密钥保管库中，然后自定义模板，以便在部署过程中从密钥保管库检索密码。
 
@@ -44,7 +44,7 @@ ms.locfileid: "75631474"
 * 包含资源管理器工具扩展的 Visual Studio Code。 请参阅[使用 Visual Studio Code 创建 Azure 资源管理器模板](use-vs-code-to-create-template.md)。
 * 若要增强安全性，请使用为 VM 管理员帐户生成的密码。 以下是密码生成示例：
 
-    ```azurecli
+    ```console
     openssl rand -base64 32
     ```
     验证生成的密码是否符合 VM 密码要求。 每个 Azure 服务具有特定的密码要求。 有关 VM 密码要求，请参阅[创建 VM 时，密码有什么要求？](../../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm)。
@@ -162,7 +162,7 @@ Azure 快速入门模板是资源管理器模板的存储库。 无需从头开�
 
     ![集成密钥保管库和资源管理器模板虚拟机部署参数文件](./media/template-tutorial-use-key-vault/resource-manager-tutorial-create-vm-parameters-file.png)
 
-1. 更新以下值：
+1. 请更新以下值：
 
     * adminUsername  ：虚拟机管理员帐户的名称。
     * dnsLabelPrefix  ：为 dnsLabelPrefix 值命名。
@@ -177,7 +177,7 @@ Azure 快速入门模板是资源管理器模板的存储库。 无需从头开�
 
 <!--Not Available on You need to upload both **azuredeploy.json** and **azuredeploy.parameters.json** to the Cloud shell-->
 
-```powershell
+```azurepowershell
 $projectName = Read-Host -Prompt "Enter the same project name that is used for creating the key vault"
 $location = Read-Host -Prompt "Enter the same location that is used for creating the key vault (i.e. chinaeast)"
 $resourceGroupName = "${projectName}rg"

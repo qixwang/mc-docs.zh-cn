@@ -205,6 +205,8 @@
               href: cognitive-search-custom-skill-interface.md
             - name: 示例 - Azure Functions (Python)
               href: cognitive-search-custom-skill-python.md
+            - name: 示例 - Azure Functions
+              href: cognitive-search-create-custom-skill-example.md
             - name: 示例 - 容器
               href: 'https://github.com/Microsoft/SkillsExtractorCognitiveSearch'
         - name: 设计提示

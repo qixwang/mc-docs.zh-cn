@@ -10,13 +10,13 @@ metadata:
   author: WenJason
   ms.author: v-jay
   origin.date: 11/04/2019
-  ms.date: 11/18/2019
-  ms.openlocfilehash: 869a8b192da4e69de820ae67874bc5d23e7984ac
-  ms.sourcegitcommit: 7dfb76297ac195e57bd8d444df89c0877888fdb8
+  ms.date: 03/23/2019
+  ms.openlocfilehash: eafc932520a154174180b5ad1d67dcfd0d79f490
+  ms.sourcegitcommit: e500354e2fd8b7ac3dddfae0c825cc543080f476
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 11/13/2019
-  ms.locfileid: "74020331"
+  ms.lasthandoff: 03/19/2020
+  ms.locfileid: "79547052"
 highlightedContent:
   items:
   - title: Azure Stack 系列公告
@@ -35,7 +35,7 @@ productDirectory:
   - title: Azure Stack HCI
     imageSrc: media/index/azure-stack-hci.svg
     links:
-    - url: /azure-stack/operator/azure-stack-hci-overview
+    - url: /azure-stack/hci/overview
       text: Azure Stack HCI 概述
 conceptualContent:
   title: 混合模式和解决方案示例
@@ -95,7 +95,7 @@ additionalContent:
         text: 构建应用的重要注意事项
       - url: /azure-stack/user/azure-stack-key-vault-manage-portal
         text: 创建和管理密钥保管库
-    - title: Azure Stack Hub 开发工具包 (ASDK)
+    - title: Azure Stack 开发工具包 (ASDK)
       links:
       - url: /azure-stack/asdk/asdk-deploy-considerations
         text: ASDK 要求和注意事项

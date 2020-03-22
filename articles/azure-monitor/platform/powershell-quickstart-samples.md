@@ -2,19 +2,17 @@
 title: Azure Monitor PowerShell 快速启动示例
 description: 使用 PowerShell 访问 Azure Monitor 功能，如自动缩放、警报、webhook 和搜索活动日志。
 author: lingliw
-services: azure-monitor
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 origin.date: 2/14/2018
 ms.date: 04/12/2019
 ms.author: v-lingwu
-ms.openlocfilehash: bc8094fb4663773cb0a71f988fcbfe3b7a1743be
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: 1eedffbeda422709872620c3230e0ff682f5d694
+ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79291181"
+ms.lasthandoff: 03/17/2020
+ms.locfileid: "79452556"
 ---
 # <a name="azure-monitor-powershell-quick-start-samples"></a>Azure Monitor PowerShell 快速启动示例
 本文说明可帮助访问 Azure Monitor 功能的示例 PowerShell 命令。

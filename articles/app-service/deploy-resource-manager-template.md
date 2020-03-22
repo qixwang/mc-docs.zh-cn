@@ -4,15 +4,15 @@ description: 查找有关创建 Azure 资源管理器模板以预配和部署应
 author: tfitzmac
 ms.topic: article
 origin.date: 01/03/2019
-ms.date: 03/09/2020
+ms.date: 03/16/2020
 ms.author: v-tawe
 ms.custom: seodec18
-ms.openlocfilehash: e18642f2e46aa8d32ef73ee2c24f15116c7137b9
-ms.sourcegitcommit: 1e68aea05a8d979237d6377a3637bb7654097111
+ms.openlocfilehash: 28cd8b0ab8c2d41071c05e40a91f88115be0146f
+ms.sourcegitcommit: e500354e2fd8b7ac3dddfae0c825cc543080f476
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/24/2020
-ms.locfileid: "77566642"
+ms.lasthandoff: 03/19/2020
+ms.locfileid: "79546981"
 ---
 # <a name="guidance-on-deploying-web-apps-by-using-azure-resource-manager-templates"></a>有关使用 Azure 资源管理器模板部署 Web 应用的指南
 

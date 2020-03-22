@@ -4,16 +4,16 @@ description: 了解如何实现从本地 Git 部署到 Azure 应用服务。 从
 ms.assetid: ac50a623-c4b8-4dfd-96b2-a09420770063
 ms.topic: article
 origin.date: 06/18/2019
-ms.date: 03/09/2020
+ms.date: 03/16/2020
 ms.author: v-tawe
 ms.reviewer: dariac
 ms.custom: seodec18
-ms.openlocfilehash: 5b1404084d73d944d899bbb8d26a8b774329cc98
-ms.sourcegitcommit: d5eca3c6b03b206e441b599e5b138bd687a91361
+ms.openlocfilehash: 04cd2231531991e75760eafe486c8021206117db
+ms.sourcegitcommit: e500354e2fd8b7ac3dddfae0c825cc543080f476
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78934709"
+ms.lasthandoff: 03/19/2020
+ms.locfileid: "79546980"
 ---
 # <a name="local-git-deployment-to-azure-app-service"></a>从本地 Git 部署到 Azure 应用服务
 

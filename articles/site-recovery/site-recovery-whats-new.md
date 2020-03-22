@@ -5,12 +5,12 @@ ms.topic: conceptual
 origin.date: 01/31/2020
 ms.date: 02/24/2020
 ms.author: v-yeche
-ms.openlocfilehash: 4b98e8d712060a15d82d39abc5e152ebbea10362
-ms.sourcegitcommit: 781f68d27903687f0aa9e1ed273eee25c6d129a1
+ms.openlocfilehash: 83a2e8b87a25bc6c086010322eb81852e285968f
+ms.sourcegitcommit: 305361c96d1d5288d3dda7e81833820640e2afac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77611272"
+ms.lasthandoff: 03/21/2020
+ms.locfileid: "80108522"
 ---
 # <a name="whats-new-in-site-recovery"></a>Site Recovery 中的新增功能
 
@@ -47,7 +47,9 @@ ms.locfileid: "77611272"
 
 ### <a name="azure-vmware-disaster-recovery"></a>Azure VMware 灾难恢复
 
-Azure 虚拟机现在支持使用客户管理的密钥进行静态加密。 [了解详细信息](azure-to-azure-how-to-enable-replication-cmk-disks.md)。
+Azure 虚拟机现在支持使用客户管理的密钥进行静态加密。 
+
+<!--Not Available on [Learn more](azure-to-azure-how-to-enable-replication-cmk-disks.md)-->
 
 ### <a name="update-rollup-43"></a>更新汇总 43
 

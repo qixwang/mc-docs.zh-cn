@@ -3,15 +3,15 @@ title: 保护模板中的项目
 description: 了解如何保护 Azure 资源管理器模板中使用的项目。
 author: rockboyfor
 origin.date: 12/09/2019
-ms.date: 01/06/2020
+ms.date: 03/23/2020
 ms.topic: tutorial
 ms.author: v-yeche
-ms.openlocfilehash: 7c50a00bedf4ec3bcb3ebbc815e274377a9fc0c2
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.openlocfilehash: 295f0693c0e78a5b52c613af2b84b23fa0dc98d6
+ms.sourcegitcommit: 1436f1851342ca5631eb25342eed954adb707af0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75631330"
+ms.lasthandoff: 03/19/2020
+ms.locfileid: "79543904"
 ---
 # <a name="tutorial-secure-artifacts-in-azure-resource-manager-template-deployments"></a>教程：保护 Azure 资源管理器模板部署中的项目
 
@@ -40,7 +40,7 @@ ms.locfileid: "75631330"
 * 查看[教程：使用 Azure 资源管理器模板导入 SQL BACPAC 文件](./template-tutorial-deploy-sql-extensions-bacpac.md)。 本教程中使用的模板是在该教程中开发的。 本文提供了已完成模板的下载链接。
 * 若要增强安全性，请使用为 SQL Server 管理员帐户生成的密码。 下面是一个可用于生成密码的示例：
 
-    ```azurecli
+    ```console
     openssl rand -base64 32
     ```
 
@@ -224,8 +224,8 @@ ms.locfileid: "75631330"
   },
   "resources": [
     {
-      "apiVersion": "2015-05-01-preview",
       "type": "Microsoft.Sql/servers",
+      "apiVersion": "2015-05-01-preview",
       "name": "[parameters('databaseServerName')]",
       "location": "[parameters('location')]",
       "properties": {
@@ -250,8 +250,8 @@ ms.locfileid: "75631330"
       ]
     },
     {
-      "apiVersion": "2017-10-01-preview",
       "type": "Microsoft.Sql/servers/databases",
+      "apiVersion": "2017-10-01-preview",
       "name": "[concat(string(parameters('databaseServerName')), '/', string(parameters('databaseName')))]",
       "location": "[parameters('location')]",
       "dependsOn": [
@@ -315,7 +315,7 @@ Write-Host "Press [ENTER] to continue ..."
 
 在门户中，从新部署的资源组中选择 SQL 数据库。 选择“查询编辑器(预览)”，然后输入管理员凭据。  此时会看到两个表导入到数据库中。
 
-![查询编辑器（预览）](./media/template-tutorial-deploy-sql-extensions-bacpac/resource-manager-tutorial-deploy-sql-extensions-bacpac-query-editor.png)
+![查询编辑器（预览版）](./media/template-tutorial-deploy-sql-extensions-bacpac/resource-manager-tutorial-deploy-sql-extensions-bacpac-query-editor.png)
 
 ## <a name="clean-up-resources"></a>清理资源
 

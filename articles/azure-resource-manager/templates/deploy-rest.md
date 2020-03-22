@@ -3,18 +3,18 @@ title: 使用 REST API 和模板部署资源
 description: 使用 Azure Resource Manager 和 Resource Manager REST API 将资源部署到 Azure。 资源在 Resource Manager 模板中定义。
 ms.topic: conceptual
 origin.date: 06/04/2019
+ms.date: 03/23/2020
 ms.author: v-yeche
-ms.date: 01/06/2020
-ms.openlocfilehash: fe4988c1041e217c70c566b3313eb6c02fa5e65c
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: 5daa36282c23d0ba52472922b382ff9c4450b3f3
+ms.sourcegitcommit: 1436f1851342ca5631eb25342eed954adb707af0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79292984"
+ms.lasthandoff: 03/19/2020
+ms.locfileid: "79543731"
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-resource-manager-rest-api"></a>使用 Resource Manager 模板和 Resource Manager REST API 部署资源
 
-本文介绍如何将 Resource Manager REST API 与 Resource Manager 模板配合使用向 Azure 部署资源。  
+本文介绍如何将 Resource Manager REST API 与 Resource Manager 模板配合使用向 Azure 部署资源。
 
 可以在请求正文中包含模板或链接到文件。 使用文件时，它可以是本地文件，也可以是通过 URI 提供的外部文件。 如果模板位于存储帐户中，可以限制对该模板的访问，并在部署过程中提供共享访问签名 (SAS) 令牌。
 
@@ -69,7 +69,7 @@ PUT https://management.chinacloudapi.cn/providers/Microsoft.Management/managemen
 
 1. 在执行部署之前，通过运行[验证模板部署](https://docs.microsoft.com/rest/api/resources/deployments/validate)操作来验证部署。 测试部署时，请提供与执行部署时所提供的完全相同的参数（如下一步中所示）。
 
-1. 若要部署模板，请在请求 URI 中提供订阅 ID、资源组名称和部署名称。 
+1. 若要部署模板，请在请求 URI 中提供订阅 ID、资源组名称和部署名称。
 
     ```HTTP
     PUT https://management.chinacloudapi.cn/subscriptions/<YourSubscriptionId>/resourcegroups/<YourResourceGroupName>/providers/Microsoft.Resources/deployments/<YourDeploymentName>?api-version=2019-05-01
@@ -112,7 +112,7 @@ PUT https://management.chinacloudapi.cn/providers/Microsoft.Management/managemen
       "debugSetting": {
         "detailLevel": "requestContent, responseContent"
       }
-    }
+     }
     }
     ```
 
@@ -151,13 +151,14 @@ PUT https://management.chinacloudapi.cn/providers/Microsoft.Management/managemen
           }
         },
         "variables": {
+          
           "storageAccountName": "[concat(uniquestring(resourceGroup().id), 'standardsa')]"
         },
         "resources": [
           {
             "type": "Microsoft.Storage/storageAccounts",
-            "name": "[variables('storageAccountName')]",
             "apiVersion": "2018-02-01",
+            "name": "[variables('storageAccountName')]",
             "location": "[parameters('location')]",
             "sku": {
               "name": "[parameters('storageAccountType')]"
@@ -167,6 +168,7 @@ PUT https://management.chinacloudapi.cn/providers/Microsoft.Management/managemen
           }
         ],
         "outputs": {
+          "storageAccountEndPoint": "https://core.chinacloudapi.cn/",
           "storageAccountName": {
             "type": "string",
             "value": "[variables('storageAccountName')]"
@@ -178,7 +180,7 @@ PUT https://management.chinacloudapi.cn/providers/Microsoft.Management/managemen
           "value": "chinaeast2"
         }
       }
-    }
+     }
     }
     ```
 

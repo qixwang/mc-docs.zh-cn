@@ -1,21 +1,21 @@
 ---
-title: 将自定义事件发送到 Web 终结点 - 事件网格，Azure 门户
-description: 使用 Azure 事件网格和 Azure 门户发布自定义主题，然后订阅该主题的事件。 事件由 Web 应用程序处理。
+title: 快速入门：将自定义事件发送到 Web 终结点 - 事件网格，Azure 门户
+description: 快速入门：使用 Azure 事件网格和 Azure 门户发布自定义主题，然后订阅该主题的事件。 事件由 Web 应用程序处理。
 services: event-grid
 keywords: ''
-author: spelluru
-ms.author: v-yiso
-origin.date: 03/27/2019
-ms.date: 09/30/2019
+author: lingliw
+ms.author: v-lingwu
+origin.date: 11/05/2019
+ms.date: 3/16/2020
 ms.topic: quickstart
 ms.service: event-grid
 ms.custom: seodec18
-ms.openlocfilehash: 3f955cf939e98395da3d778a86883b16cfad77e5
-ms.sourcegitcommit: 6a62dd239c60596006a74ab2333c50c4db5b62be
+ms.openlocfilehash: 68dc55c24c0ee2a72526236ebad474a6050792c3
+ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71156085"
+ms.lasthandoff: 03/17/2020
+ms.locfileid: "79452606"
 ---
 # <a name="quickstart-route-custom-events-to-web-endpoint-with-the-azure-portal-and-event-grid"></a>快速入门：使用 Azure 门户和事件网格将自定义事件路由到 Web 终结点
 

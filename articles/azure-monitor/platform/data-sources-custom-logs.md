@@ -1,7 +1,6 @@
 ---
 title: 在 Azure Monitor 中收集自定义日志 | Azure Docs
 description: Azure Monitor 可以从 Windows 和 Linux 计算机上的文本文件中收集事件。  本文介绍如何定义新的自定义日志，以及这些日志在 Azure Monitor 中创建的记录的详细信息。
-ms.service: azure-monitor
 author: lingliw
 manager: digimobile
 ms.subservice: logs
@@ -9,12 +8,12 @@ ms.topic: conceptual
 origin.date: 09/26/2019
 ms.date: 11/04/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 1987c3ede5890aeafb33d468edead47b6aa28caa
-ms.sourcegitcommit: 13431cf4d69142ed7feb8d12d967a502bf9ff346
+ms.openlocfilehash: 1154977d46290f6aee88cce7341b23599926e52c
+ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75600135"
+ms.lasthandoff: 03/17/2020
+ms.locfileid: "79452535"
 ---
 # <a name="custom-logs-in-azure-monitor"></a>Azure Monitor 中的自定义日志
 Azure Monitor 中的自定义日志数据源可以从 Windows 和 Linux 计算机上的文本文件中收集事件。 许多应用程序将信息记录到文本文件，而不是标准日志记录服务（例如 Windows 事件日志或 Syslog）。 在收集后，可以将数据分析到查询中的各个字段，或者在收集期间将数据提取到各个字段。
@@ -48,7 +47,7 @@ Azure Monitor 中的自定义日志数据源可以从 Windows 和 Linux 计算�
 ## <a name="defining-a-custom-log"></a>定义自定义日志
 使用以下步骤定义自定义日志文件。  请在本文末尾查看添加自定义日志的演示示例。
 
-### <a name="step-1-open-the-custom-log-wizard"></a>步骤 1. 打开自定义日志向导
+### <a name="step-1-open-the-custom-log-wizard"></a>步骤 1。 打开自定义日志向导
 自定义日志向导在 Azure 门户中运行，使用它可以定义要收集的新自定义日志。
 
 1. 在 Azure 门户中，选择“Log Analytics 工作区”> 你的工作区 >“高级设置”   。
@@ -72,7 +71,7 @@ Azure Monitor 中的自定义日志数据源可以从 Windows 和 Linux 计算�
 ### <a name="step-3-add-log-collection-paths"></a>步骤 3. 添加日志集合路径
 必须在可查找自定义日志的代理上定义一个或多个路径；  可以提供日志文件的特定路径和名称，也可以使用通配符为名称指定路径。 这样，应用程序就可以每天创建新文件，或者在某个文件达到一定大小时创建新文件。 还可以为单个日志文件提供多个路径。
 
-例如，应用程序可能会每天创建日志文件，其日期包含在名称中，例如 log20100316.txt。 此类日志的模式可能是 *log\*.txt*，它将按照应用程序命名方案应用于任何日志文件。
+例如，应用程序可能会每天创建日志文件，将日期包括在如 log20100316.txt 的名称中。 此类日志的模式可能是 *log\*.txt*，它将按照应用程序命名方案应用于任何日志文件。
 
 下表提供了有效模式示例，用来指定不同的日志文件。
 
@@ -88,13 +87,13 @@ Azure Monitor 中的自定义日志数据源可以从 Windows 和 Linux 计算�
 3. 其他任何路径请重复此步骤。
 
 ### <a name="step-4-provide-a-name-and-description-for-the-log"></a>步骤 4. 提供日志名称及描述
-指定的名称将用于上述日志类型。  它始终以 _CL 结尾，与自定义日志区分开来。
+指定的名称用于日志类型，如上所述。  它将始终以 _CL 结尾，以将其与自定义日志区分开来。
 
 1. 为日志键入名称。  系统会自动提供 **\_CL** 后缀。
 2. 添加可选“说明”  。
 3. 单击“下一步”  ，保存自定义日志的定义。
 
-### <a name="step-5-validate-that-the-custom-logs-are-being-collected"></a>步骤 5. 验证是否正在收集自定义日志
+### <a name="step-5-validate-that-the-custom-logs-are-being-collected"></a>步骤 5。 验证是否正在收集自定义日志
 新自定义日志的初始数据可能需要一个小时才能在 Azure Monitor 中出现。  它将从指定路径的日志中，收集在自定义日志的定义时间之后生成的条目。  它不会在自定义日志创建过程中保留上传的条目，但是它将收集它找到的日志文件中的现有条目。
 
 Azure Monitor 开始从自定义日志收集后，它的记录将可用于日志查询。  将为自定义日志指定的名称用作查询中的**类型**。
@@ -136,13 +135,13 @@ Azure Monitor 大概每隔 5 分钟就会从每个自定义日志中收集新条
     2019-08-27 01:38:22 302,Error,Application could not connect to database
     2019-08-27 01:31:34 303,Error,Application lost connection to database
 
-### <a name="upload-and-parse-a-sample-log"></a>上传和分析示例日志
-我们提供一个日志文件，可以看到它收集的事件。  在这种情况下，换行是有效的分隔符。  如果日志中的单个条目跨过多行，则需要使用时间戳分隔符。
+### <a name="upload-and-parse-a-sample-log"></a>上载和分析示例日志
+我们提供其中一个日志文件，然后可以看到它将收集的事件。  在这种情况下，换行是有效的分隔符。  如果日志中的单个条目跨过多行，则需要使用时间戳分隔符。
 
-![上传和分析示例日志](media/data-sources-custom-logs/delimiter.png)
+![上载和分析示例日志](media/data-sources-custom-logs/delimiter.png)
 
 ### <a name="add-log-collection-paths"></a>添加日志集合路径
-日志文件位于 *C:\MyApp\Logs*。  每天创建一个新文件，名称为包括日期的 *appYYYYMMDD.log* 模式。  此日志的有效模式是 *C:\MyApp\Logs\\\*.log*。
+日志文件位于 *C:\MyApp\Logs*。  每天将创建一个新文件，名称为包括日期的 *appYYYYMMDD.log* 模式。  此日志的有效模式是 *C:\MyApp\Logs\\\*.log*。
 
 ![日志集合路径](media/data-sources-custom-logs/collection-path.png)
 

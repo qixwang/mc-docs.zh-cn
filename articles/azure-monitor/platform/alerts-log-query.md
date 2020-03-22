@@ -2,19 +2,17 @@
 title: Azure Monitor 中的日志警报 | Azure Docs
 description: 提供有关在 Azure Monitor 更新中编写日志警报的有效查询以及转换现有查询的进程的建议。
 author: lingliw
-services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 origin.date: 02/19/2019
-ms.date: 04/12/2019
+ms.date: 03/13/2020
 ms.author: v-lingwu
 ms.subservice: alerts
-ms.openlocfilehash: 5fc4b938d3a820dcdcb0ec0229012faac0cb87e2
-ms.sourcegitcommit: dd0ff08835dd3f8db3cc55301815ad69ff472b13
+ms.openlocfilehash: 673bddc9bd5680968e594cb7ccd4bf2f05e47daf
+ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70737349"
+ms.lasthandoff: 03/17/2020
+ms.locfileid: "79452572"
 ---
 # <a name="log-alert-queries-in-azure-monitor"></a>Azure Monitor 中的日志警报
 [基于 Azure Monitor 日志的警报规则](alerts-unified-log.md)定期运行，因此应确保这些规则旨在将开销和延迟降至最低。 本文提供了有关编写日志警报的高效查询以及转换现有查询的过程的建议。 

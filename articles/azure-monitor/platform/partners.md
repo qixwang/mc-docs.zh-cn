@@ -2,18 +2,17 @@
 title: 与 Azure Monitor 集成的合作伙伴
 description: 了解 Azure 监视器的合作伙伴，以及如何访问相关文档，以便与它们的产品集成。
 author: lingliw
-services: azure-monitor
-ms.service: azure-monitor
+ms.subservice: ''
 ms.topic: conceptual
 origin.date: 03/14/2019
 ms.date: 12/04/2019
 ms.author: v-lingwu
-ms.openlocfilehash: cb28495711ec384013de01dea34c1c6c72cb8b3d
-ms.sourcegitcommit: 21b02b730b00a078a76aeb5b78a8fd76ab4d6af2
+ms.openlocfilehash: 52c8a1a760b32e7abbf652f5280cb69d1814197e
+ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74839029"
+ms.lasthandoff: 03/17/2020
+ms.locfileid: "79452443"
 ---
 # <a name="azure-monitor-partner-integrations"></a>Azure 监视器合作伙伴集成
 

@@ -1,20 +1,21 @@
 ---
-title: 将自定义事件发送到 Web 终结点 - 事件网格、PowerShell
-description: 使用 Azure 事件网格和 PowerShell 发布自定义主题，然后订阅该主题的事件。 事件由 Web 应用程序处理。
+title: 快速入门：将自定义事件发送到 Web 终结点 - 事件网格、PowerShell
+description: 快速入门：使用 Azure 事件网格和 PowerShell 发布自定义主题，然后订阅该主题的事件。 事件由 Web 应用程序处理。
 services: event-grid
 keywords: ''
-author: spelluru
-ms.author: v-yiso
-ms.date: 12/07/2018
+author: lingliw
+ms.author: v-lingwu
+origin.date: 11/05/2019
+ms.date: 3/16/2020
 ms.topic: quickstart
 ms.service: event-grid
 ms.custom: seodec18
-ms.openlocfilehash: 54030d724ddbf157ac1aa98b2e602035fca31102
-ms.sourcegitcommit: 5a57f99d978b78c1986c251724b1b04178c12d8c
+ms.openlocfilehash: 177d43b4a5e44a9c70d1f3817223b5d5f694488b
+ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/24/2019
-ms.locfileid: "66195285"
+ms.lasthandoff: 03/17/2020
+ms.locfileid: "79452605"
 ---
 # <a name="quickstart-route-custom-events-to-web-endpoint-with-powershell-and-event-grid"></a>快速入门：使用 PowerShell 和事件网格将自定义事件路由到 Web 终结点
 
@@ -28,7 +29,7 @@ Azure 事件网格是针对云的事件处理服务。 在本文中，请使用 
 
 [!INCLUDE [quickstarts-free-trial-note.md](../../includes/quickstarts-free-trial-note.md)]
 
-本文要求运行最新版本的 Azure PowerShell。 如需进行安装或升级，请参阅[安装和配置 Azure PowerShell](https://docs.microsoft.com/en-us/powershell/azure/install-Az-ps)。
+本文要求运行最新版本的 Azure PowerShell。 如需进行安装或升级，请参阅[安装和配置 Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps)。
 
 ## <a name="create-a-resource-group"></a>创建资源组
 

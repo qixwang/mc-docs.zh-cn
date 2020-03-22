@@ -9,12 +9,12 @@ origin.date: 12/18/2019
 ms.date: 12/31/2019
 ms.author: v-lingwu
 ms.subservice: logs
-ms.openlocfilehash: a3cceb932e4ae9a1ec9a1e9b277608e2c641dd5b
-ms.sourcegitcommit: 27eaabd82b12ad6a6840f30763034a6360977186
+ms.openlocfilehash: 8af1b57656dcb2c97f52b36d6d338ed392a9e570
+ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77497506"
+ms.lasthandoff: 03/17/2020
+ms.locfileid: "79452536"
 ---
 # <a name="create-diagnostic-setting-to-collect-platform-logs-and-metrics-in-azure"></a>创建诊断设置以收集 Azure 中的平台日志和指标
 Azure 中的[平台日志](platform-logs-overview.md)（包括 Azure 活动日志和资源日志）提供 Azure 资源及其所依赖的 Azure 平台的详细诊断和审核信息。 本文详细介绍如何创建和配置诊断设置，以将平台日志发送到不同的目标。

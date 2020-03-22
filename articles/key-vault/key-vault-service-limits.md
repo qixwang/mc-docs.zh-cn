@@ -6,16 +6,17 @@ author: msmbaldwin
 manager: rkarlin
 editor: ''
 ms.service: key-vault
+ms.subservice: general
 ms.topic: conceptual
 origin.date: 01/07/2019
-ms.date: 10/30/2019
+ms.date: 03/16/2020
 ms.author: v-tawe
-ms.openlocfilehash: 1250ead52563ef3bee1fcbe6c294d7f3dceb0fc3
-ms.sourcegitcommit: 642a4ad454db5631e4d4a43555abd9773cae8891
+ms.openlocfilehash: d50515f10db3cb1e12a414e1d7e673cff6e848d6
+ms.sourcegitcommit: 764b3d26aedce2de0e1948468a706fd3204a3d5e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2019
-ms.locfileid: "73425872"
+ms.lasthandoff: 03/19/2020
+ms.locfileid: "79543377"
 ---
 # <a name="azure-key-vault-service-limits"></a>Azure Key Vault 服务限制
 

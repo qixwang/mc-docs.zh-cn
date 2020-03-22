@@ -6,19 +6,19 @@ author: cephalin
 ms.service: app-service
 ms.topic: include
 origin.date: 10/15/2018
-ms.date: 03/09/2020
+ms.date: 03/16/2020
 ms.author: v-tawe
 ms.custom: include file
-ms.openlocfilehash: f1e62c9c76a038755ac4898556349478c343cb1e
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.openlocfilehash: c04eeab550f119a89c31c42d4149407abf3dc681
+ms.sourcegitcommit: e500354e2fd8b7ac3dddfae0c825cc543080f476
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78155418"
+ms.lasthandoff: 03/19/2020
+ms.locfileid: "79546988"
 ---
 ## <a name="prepare-your-web-app"></a>准备 Web 应用
 
-若要将自定义 SSL 证书（第三方证书或应用服务证书）绑定到 Web 应用，[应用服务计划](https://www.azure.cn/pricing/details/app-service/)必须位于“基本”、“标准”、“高级”或“独立”层。     在此步骤中，请确保 Web 应用位于受支持的定价层。
+若要为应用服务应用创建自定义安全绑定或启用客户端证书，[应用服务计划](https://www.azure.cn/pricing/details/app-service/)必须位于“基本”  、“标准”  、“高级”  或“独立”  层级。 在此步骤中，请确保 Web 应用位于受支持的定价层。
 
 ### <a name="sign-in-to-azure"></a>登录 Azure
 

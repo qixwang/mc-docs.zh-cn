@@ -2,15 +2,14 @@
 author: ggailey777
 ms.service: azure-functions
 ms.topic: include
-origin.date: 11/14/2019
-ms.date: 11/19/2019
+ms.date: 03/19/2020
 ms.author: v-junlch
-ms.openlocfilehash: cf4bd6eb4e4d99744f05864d046035b5fd1f2985
-ms.sourcegitcommit: a4b88888b83bf080752c3ebf370b8650731b01d1
+ms.openlocfilehash: 561c123940645f548cdd8d58414140646664eca0
+ms.sourcegitcommit: e500354e2fd8b7ac3dddfae0c825cc543080f476
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74178955"
+ms.lasthandoff: 03/19/2020
+ms.locfileid: "79549591"
 ---
 ```json
 {
@@ -22,14 +21,14 @@ ms.locfileid: "74178955"
 }
 ```
 
-以下属性可在 `extensionBundle` 中使用：
+`extensionBundle` 中提供了以下属性：
 
-| 属性 | Description |
+| 属性 | 说明 |
 | -------- | ----------- |
 | id | Azure Functions 扩展捆绑的命名空间。 |
-| 版本 | 要安装的捆绑的版本。 Functions 运行时始终选取按版本范围或间隔定义的最宽松版本。 上述版本值允许使用从 1.0.0 到 2.0.0（不含 2.0.0）的所有捆绑版本。 有关详细信息，请参阅[用于指定版本范围的间隔表示法](https://docs.microsoft.com/nuget/reference/package-versioning#version-ranges-and-wildcards)。 |
+| 版本 | 要安装的捆绑包的版本。 Functions 运行时始终选取按版本范围或间隔定义的最宽松版本。 上述版本值允许使用从 1.0.0 到 2.0.0（不含 2.0.0）的所有捆绑版本。 有关详细信息，请参阅[用于指定版本范围的间隔表示法](https://docs.microsoft.com/nuget/reference/package-versioning#version-ranges)。 |
 
-捆绑中的包发生变化时，捆绑版本将会递增。 当捆绑中的包增加主版本时，就会发生主版本更改。 捆绑中的主版本更改通常与 Functions 运行时的主版本更改一致。  
+随着捆绑包中的包的变化，捆绑包版本递增。 当捆绑中的包增加主版本时，就会发生主版本更改。 捆绑中的主版本更改通常与 Functions 运行时的主版本更改一致。  
 
 默认捆绑安装的当前扩展集将在此 [extensions.json 文件](https://github.com/Azure/azure-functions-extension-bundles/blob/master/src/Microsoft.Azure.Functions.ExtensionBundle/extensions.json)中枚举。
 

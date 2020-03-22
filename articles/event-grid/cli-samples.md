@@ -1,6 +1,6 @@
 ---
 title: Azure CLI 示例 - 事件网格 | Microsoft Docs
-description: 事件网格的 Azure CLI 示例
+description: 本文提供了一个表，其中包含指向事件网格的 Azure 命令行接口 (CLI) 脚本示例的链接。
 services: event-grid
 author: spelluru
 manager: timlt
@@ -8,15 +8,15 @@ ms.service: event-grid
 ms.devlang: na
 ms.topic: sample
 ms.tgt_pltfrm: na
-origin.date: 08/06/2018
-ms.date: 06/03/2019
-ms.author: v-yiso
-ms.openlocfilehash: 4a8ede3c45855dcd4c94fa415d75863dc13c1fae
-ms.sourcegitcommit: 5a57f99d978b78c1986c251724b1b04178c12d8c
+origin.date: 01/21/2020
+ms.date: 3/16/2020
+ms.author: v-lingwu
+ms.openlocfilehash: ed56a9901d810f22db4c83900ed29d72cc251dca
+ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/24/2019
-ms.locfileid: "66195181"
+ms.lasthandoff: 03/17/2020
+ms.locfileid: "79452526"
 ---
 # <a name="azure-cli-samples-for-event-grid"></a>事件网格的 Azure CLI 示例
 

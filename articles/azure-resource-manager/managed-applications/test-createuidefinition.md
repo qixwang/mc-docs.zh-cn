@@ -4,20 +4,20 @@ description: 介绍如何测试通过门户创建 Azure 托管应用程序的用
 author: rockboyfor
 ms.topic: conceptual
 origin.date: 08/06/2019
-ms.date: 01/20/2020
+ms.date: 03/23/2020
 ms.author: v-yeche
-ms.openlocfilehash: 43a9e9ea6f6c6302009fa091ee7e2792a4d86633
-ms.sourcegitcommit: 8de025ca11b62e06ba3762b5d15cc577e0c0f15d
+ms.openlocfilehash: ad1103d2beccb5699627d63c866123fd2905882e
+ms.sourcegitcommit: 1436f1851342ca5631eb25342eed954adb707af0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76170698"
+ms.lasthandoff: 03/19/2020
+ms.locfileid: "79543878"
 ---
 # <a name="test-your-portal-interface-for-azure-managed-applications"></a>测试 Azure 托管应用程序的门户接口
 
 为托管应用程序[创建 createUiDefinition.json 文件](create-uidefinition-overview.md)之后，需要测试用户体验。 为了简化测试，请使用一个可在门户中加载文件的沙盒环境。 不需要真正部署该托管应用程序。 沙盒在当前的全屏门户体验中提供用户界面。 也可使用脚本来测试接口。 本文对这两种方法都进行了介绍。 建议使用沙盒来预览接口。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * 一个 **createUiDefinition.json** 文件。 如果没有此文件，请复制[示例文件](https://github.com/Azure/azure-quickstart-templates/blob/master/100-marketplace-sample/createUiDefinition.json)。
 
@@ -69,7 +69,7 @@ ms.locfileid: "76170698"
 
 对于 Azure CLI，请使用：
 
-```azurecli
+```bash
 ./sideload-createuidef.sh \
   -l chinaeast \
   -a .\100-Marketplace-Sample
@@ -85,7 +85,7 @@ ms.locfileid: "76170698"
 
 对于 Azure CLI，请使用：
 
-```azurecli
+```bash
 ./sideload-createuidef.sh
 ```
 

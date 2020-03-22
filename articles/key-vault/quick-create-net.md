@@ -4,15 +4,16 @@ description: 了解如何使用 .NET 客户端库 (v4) 在 Azure 密钥保管库
 author: msmbaldwin
 ms.author: v-tawe
 origin.date: 05/20/2019
-ms.date: 02/17/2020
+ms.date: 03/16/2020
 ms.service: key-vault
+ms.subservice: secrets
 ms.topic: quickstart
-ms.openlocfilehash: b908b3b324642d148918c650880d6fc877cc1f37
-ms.sourcegitcommit: fbc7584f403417d3af7bd6bbbaed7c13a78c57b9
+ms.openlocfilehash: c2c40baeefc161a05cbe583ae2dd2cf21d80aa7d
+ms.sourcegitcommit: 764b3d26aedce2de0e1948468a706fd3204a3d5e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78412000"
+ms.lasthandoff: 03/19/2020
+ms.locfileid: "79543365"
 ---
 # <a name="quickstart-azure-key-vault-client-library-for-net-sdk-v4"></a>快速入门：适用于 .NET 的 Azure Key Vault 客户端库 (SDK v4)
 

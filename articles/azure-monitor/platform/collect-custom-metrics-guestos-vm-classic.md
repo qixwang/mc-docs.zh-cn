@@ -3,18 +3,17 @@ title: 将经典 Windows VM 指标发送到 Azure Monitor 指标数据库
 description: 将来宾 OS 指标发送到适用于 Windows 虚拟机（经典）的 Azure Monitor 数据存储
 author: lingliw
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 origin.date: 09/09/2019
 ms.date: 09/23/2019
 ms.author: v-lingwu
 ms.subservice: ''
-ms.openlocfilehash: e57517b248564ee8dd0b72d75380779be0406115
-ms.sourcegitcommit: 21b02b730b00a078a76aeb5b78a8fd76ab4d6af2
+ms.openlocfilehash: c3396fcd857ee62d86c8ddc39a809fdeb1b0ae3d
+ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74838910"
+ms.lasthandoff: 03/17/2020
+ms.locfileid: "79452326"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metrics-database-for-a-windows-virtual-machine-classic"></a>将来宾 OS 指标发送到适用于 Windows 虚拟机（经典）的 Azure Monitor 指标数据库
 
@@ -48,7 +47,7 @@ Azure Monitor [诊断扩展](../../azure-monitor/platform/diagnostics-extension-
 
 使用[创建服务主体](../../active-directory/develop/howto-create-service-principal-portal.md)中的说明在 Azure Active Directory 租户中创建一个服务主体。 在完成此过程时记下以下内容： 
 - 为此应用创建新的客户端机密。
-- 保存密钥和客户端 ID，以便在后续步骤中使用。
+- 请保存密钥和客户端 ID，以便在后面的步骤中使用。
 
 为此应用授予对资源的“监视指标发布者”权限，你希望发出该资源的指标。 可以使用资源组或整个订阅。  
 

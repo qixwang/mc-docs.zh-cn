@@ -6,16 +6,17 @@ author: msmbaldwin
 manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
+ms.subservice: general
 ms.topic: conceptual
 origin.date: 09/04/2019
-ms.date: 02/17/2020
+ms.date: 03/16/2020
 ms.author: v-tawe
-ms.openlocfilehash: 0b46b4d66bce45039e57b22bb63221b0ba52f313
-ms.sourcegitcommit: 0b07f1d36ac02da055874630d6edc31cb0a15269
+ms.openlocfilehash: 02f3539bee687309cf8259806e53cc10784cf9bd
+ms.sourcegitcommit: 764b3d26aedce2de0e1948468a706fd3204a3d5e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/10/2020
-ms.locfileid: "77112207"
+ms.lasthandoff: 03/19/2020
+ms.locfileid: "79543385"
 ---
 # <a name="provide-key-vault-authentication-with-a-managed-identity"></a>使用托管标识提供 Key Vault 身份验证
 
@@ -23,7 +24,7 @@ ms.locfileid: "77112207"
 
 本文介绍如何为应用服务应用程序创建托管标识，以及如何使用它来访问 Azure Key Vault。 对于托管在 Azure VM 中的应用程序，请参阅[使用 Windows VM 系统分配的托管标识来访问 Azure Key Vault](../active-directory/managed-identities-azure-resources/tutorial-windows-vm-access-nonaad.md)。
 
-## <a name="prerequisites"></a>必备条件 
+## <a name="prerequisites"></a>先决条件 
 
 若要完成本指南，必须备好以下资源。 
 

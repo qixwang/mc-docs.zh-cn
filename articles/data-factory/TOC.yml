@@ -23,72 +23,82 @@
       href: quickstart-create-data-factory-resource-manager-template.md
 - name: 教程
   items:
-    - name: 复制云中的数据
+    - name: 复制和引入数据
       items:
-        - name: 复制数据工具
-          href: tutorial-copy-data-tool.md
-        - name: 用户界面 (UI)
-          href: tutorial-copy-data-portal.md
-        - name: .NET
-          href: tutorial-copy-data-dot-net.md
-    - name: 将本地数据复制到云中
-      items:
-        - name: 复制数据工具
-          href: tutorial-hybrid-copy-data-tool.md
-        - name: 用户界面 (UI)
-          href: tutorial-hybrid-copy-portal.md
-        - name: Azure PowerShell
-          href: tutorial-hybrid-copy-powershell.md
-    - name: 批量复制数据
-      items:
-        - name: 用户界面 (UI)
-          href: tutorial-bulk-copy-portal.md
-        - name: Azure PowerShell
-          href: tutorial-bulk-copy.md
-    - name: 以增量方式复制数据
-      href: tutorial-incremental-copy-overview.md
-      items:
-        - name: 1 - 从一个表复制
-          items:
-            - name: 用户界面 (UI)
-              href: tutorial-incremental-copy-portal.md
-            - name: Azure PowerShell
-              href: tutorial-incremental-copy-powershell.md
-        - name: 2 - 从多个表复制
-          items:
-            - name: 用户界面 (UI)
-              href: tutorial-incremental-copy-multiple-tables-portal.md
-            - name: Azure PowerShell
-              href: tutorial-incremental-copy-multiple-tables-powershell.md
-        - name: 3 - 使用更改跟踪功能
-          items:
-            - name: 用户界面 (UI)
-              href: tutorial-incremental-copy-change-tracking-feature-portal.md
-            - name: Azure PowerShell
-              href: tutorial-incremental-copy-change-tracking-feature-powershell.md
-        - name: 4 - 按 lastmodifieddate 复制新文件
+        - name: 从 Azure Blob 存储到 Azure SQL 数据库
           items:
             - name: 复制数据工具
+              href: tutorial-copy-data-tool.md
+            - name: 用户界面 (UI)
+              href: tutorial-copy-data-portal.md
+            - name: .NET
+              href: tutorial-copy-data-dot-net.md
+        - name: 从本地 SQL Server 数据库到 Azure Blob 存储
+          items:
+            - name: 复制数据工具
+              href: tutorial-hybrid-copy-data-tool.md
+            - name: 用户界面 (UI)
+              href: tutorial-hybrid-copy-portal.md
+            - name: Azure PowerShell
+              href: tutorial-hybrid-copy-powershell.md
+        - name: 从 Amazon Web Services S3 到 Azure Data Lake Storage
+          items:
+            - name: Azure Data Lake Storage Gen2
+              href: load-azure-data-lake-storage-gen2.md
+        - name: 从 Azure SQL 数据库到 Azure Synapse Analytics
+          href: load-azure-sql-data-warehouse.md
+        - name: 从 SAP BW 到 Azure Data Lake Storage Gen2
+          href: load-sap-bw-data.md
+        - name: 从 Office 365 到 Azure Blob 存储
+          href: load-office-365-data.md
+        - name: 批量复制多个表
+          items:
+            - name: 用户界面 (UI)
+              href: tutorial-bulk-copy-portal.md
+            - name: Azure PowerShell
+              href: tutorial-bulk-copy.md
+        - name: 以增量方式加载数据
+          href: tutorial-incremental-copy-overview.md
+          items:
+            - name: 从一个 Azure SQL 数据库表
+              items:
+                - name: 用户界面 (UI)
+                  href: tutorial-incremental-copy-portal.md
+                - name: Azure PowerShell
+                  href: tutorial-incremental-copy-powershell.md
+            - name: 从多个本地 SQL Server 表
+              items:
+                - name: 用户界面 (UI)
+                  href: tutorial-incremental-copy-multiple-tables-portal.md
+                - name: Azure PowerShell
+                  href: tutorial-incremental-copy-multiple-tables-powershell.md
+            - name: 使用 SQL Server 中的更改跟踪信息
+              items:
+                - name: 用户界面 (UI)
+                  href: tutorial-incremental-copy-change-tracking-feature-portal.md
+                - name: Azure PowerShell
+                  href: tutorial-incremental-copy-change-tracking-feature-powershell.md
+            - name: 按上次修改日期复制新文件
               href: tutorial-incremental-copy-lastmodified-copy-data-tool.md
-        - name: 5 - 按以时间分区的文件名称复制新文件
-          items:
-            - name: 复制数据工具
+            - name: 按以时间分区的文件名称复制新文件
               href: tutorial-incremental-copy-partitioned-file-name-copy-data-tool.md
-    - name: 外部转换
+    - name: 转换数据
       items:
-        - name: HDInsight Spark
+        - name: 使用外部服务
           items:
-            - name: 用户界面 (UI)
-              href: tutorial-transform-data-spark-portal.md
-            - name: Azure PowerShell
-              href: tutorial-transform-data-spark-powershell.md
-    - name: 虚拟网络中的 Hive 转换
-      items:
-        - name: 用户界面 (UI)
-          href: tutorial-transform-data-hive-virtual-network-portal.md
-        - name: Azure PowerShell
-          href: tutorial-transform-data-hive-virtual-network.md
-    - name: 添加分支和链接
+            - name: HDInsight Spark
+              items:
+                - name: 用户界面 (UI)
+                  href: tutorial-transform-data-spark-portal.md
+                - name: Azure PowerShell
+                  href: tutorial-transform-data-spark-powershell.md
+            - name: 虚拟网络中的 Hive 转换
+              items:
+                - name: 用户界面 (UI)
+                  href: tutorial-transform-data-hive-virtual-network-portal.md
+                - name: Azure PowerShell
+                  href: tutorial-transform-data-hive-virtual-network.md
+    - name: 控制流
       items:
         - name: 用户界面 (UI)
           href: tutorial-control-flow-portal.md
@@ -100,14 +110,8 @@
           href: tutorial-deploy-ssis-packages-azure.md
         - name: Azure PowerShell
           href: tutorial-deploy-ssis-packages-azure-powershell.md
-    - name: 加载 Data Lake Storage Gen2
-      href: load-azure-data-lake-storage-gen2.md
-    - name: 加载 SQL 数据仓库
-      href: load-azure-sql-data-warehouse.md
-    - name: 加载 SAP BW 数据
-      href: load-sap-bw-data.md
-    - name: 加载 Office 365 数据
-      href: load-office-365-data.md
+        - name: 加入虚拟网络
+          href: tutorial-deploy-ssis-virtual-network.md
 - name: 示例
   items:
     - name: Azure PowerShell
@@ -152,6 +156,8 @@
           href: format-avro.md
         - name: Azure Blob 存储
           href: connector-azure-blob-storage.md
+        - name: Azure 认知搜索
+          href: connector-azure-search.md
         - name: Azure Cosmos DB SQL API
           href: connector-azure-cosmos-db.md
         - name: Azure Cosmos DB 的用于 MongoDB 的 API
@@ -324,14 +330,22 @@
       items:
         - name: 通过复制活动复制数据
           href: copy-activity-overview.md
+        - name: 监视复制活动
+          href: copy-activity-monitoring.md
         - name: 使用“删除活动”删除文件
           href: delete-activity.md
         - name: 复制数据工具
           href: copy-data-tool.md
         - name: 格式和压缩支持
           href: supported-file-formats-and-compression-codecs.md
-        - name: 性能和优化
-          href: copy-activity-performance.md
+        - name: 复制活动性能
+          items:
+            - name: 性能和可伸缩性指南
+              href: copy-activity-performance.md
+            - name: 排查性能问题
+              href: copy-activity-performance-troubleshooting.md
+            - name: 性能功能
+              href: copy-activity-performance-features.md
         - name: 保留元数据和 ACL
           href: copy-activity-preserve-metadata.md
         - name: 架构和类型映射
@@ -347,6 +361,8 @@
           href: control-flow-azure-function-activity.md
         - name: 自定义活动
           href: transform-data-using-dotnet-custom-activity.md
+        - name: 数据资源管理器命令活动
+          href: /data-explorer/data-factory-command-activity?toc=/azure/data-factory/toc.json
         - name: HDInsight Hive 活动
           href: transform-data-using-hadoop-hive.md
         - name: HDInsight MapReduce 活动
@@ -403,6 +419,8 @@
       items:
         - name: 数据移动安全注意事项
           href: data-movement-security-considerations.md
+        - name: Azure Integration Runtime IP 地址
+          href: azure-integration-runtime-ip-addresses.md
         - name: 在 Azure Key Vault 中存储凭据
           href: store-credentials-in-key-vault.md
         - name: 为自承载集成运行时加密凭据
@@ -447,6 +465,8 @@
           href: how-to-schedule-azure-ssis-integration-runtime.md
         - name: 将 Azure-SSIS IR 加入虚拟网络
           href: join-azure-ssis-integration-runtime-virtual-network.md
+        - name: 将自承载 IR 配置为 Azure-SSIS IR 的代理
+          href: self-hosted-integration-runtime-proxy-ssis.md
         - name: 为 Azure-SSIS IR 启用 Azure AD 身份验证
           href: enable-aad-authentication-azure-ssis-ir.md
         - name: 预配 Azure-SSIS IR 的企业版
@@ -463,6 +483,8 @@
           href: how-to-clean-up-ssisdb-logs-with-elastic-jobs.md
     - name: 创建触发器
       items:
+        - name: 创建基于事件的触发器
+          href: how-to-create-event-trigger.md
         - name: 创建计划触发器
           href: how-to-create-schedule-trigger.md
         - name: 创建翻转窗口触发器
@@ -479,19 +501,23 @@
           href: solution-template-copy-new-files-lastmodifieddate.md
         - name: 从数据库进行批量复制
           href: solution-template-bulk-copy-with-control-table.md
+        - name: 从文件向数据库进行批量复制
+          href: solution-template-bulk-copy-from-files-to-database.md
         - name: 从数据库进行增量复制
           href: solution-template-delta-copy-with-control-table.md
         - name: 将数据从 Amazon S3 迁移到 Azure 存储
           href: solution-template-migration-s3-azure.md
         - name: 移动文件
           href: solution-template-move-files.md
-    - name: 故障排除指南
+    - name: 疑难解答指南
       items:
-        - name: 活动故障排除
+        - name: 活动
           href: data-factory-troubleshoot-guide.md
-        - name: 连接器故障排除
+        - name: 连接器
           href: connector-troubleshoot-guide.md
-        - name: 排查 Azure-SSIS IR 管理问题
+        - name: 自承载集成运行时
+          href: self-hosted-integration-runtime-troubleshoot-guide.md
+        - name: Azure-SSIS 集成运行时
           href: ssis-integration-runtime-management-troubleshoot.md
         - name: 在 Azure-SSIS IR 中排查包执行问题
           href: ssis-integration-runtime-ssis-activity-faq.md
@@ -527,12 +553,12 @@
       href: 'https://docs.microsoft.com/python/api/overview/azure/datafactory?view=azure-python'
 - name: 资源
   items:
-    - name: 提出问题 - MSDN 论坛
-      href: 'https://social.msdn.microsoft.com/Forums/zh-CN/home'
-    - name: 常见问题
-      href: frequently-asked-questions.md
     - name: 白皮书
       href: whitepapers.md
+    - name: 常见问题
+      href: frequently-asked-questions.md
+    - name: 提出问题 - MSDN 论坛
+      href: 'https://social.msdn.microsoft.com/Forums/zh-CN/home'
     - name: 定价
       href: 'https://azure.cn/pricing/details/data-factory/'
     - name: 按区域列出的可用性

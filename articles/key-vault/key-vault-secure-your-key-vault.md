@@ -6,16 +6,17 @@ author: amitbapat
 manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
+ms.subservice: general
 ms.topic: conceptual
 origin.date: 01/07/2019
-ms.date: 02/17/2020
+ms.date: 03/16/2020
 ms.author: v-tawe
-ms.openlocfilehash: 46890aa7f496eb956f1e6f525fe28c769943e8d1
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: 2b0bc3c3976eb250239048203927ca2e2704238a
+ms.sourcegitcommit: 764b3d26aedce2de0e1948468a706fd3204a3d5e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79292253"
+ms.lasthandoff: 03/19/2020
+ms.locfileid: "79543378"
 ---
 # <a name="secure-access-to-a-key-vault"></a>保护对密钥保管库的访问
 

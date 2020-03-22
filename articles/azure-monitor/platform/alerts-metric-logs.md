@@ -2,19 +2,18 @@
 title: 在 Azure Monitor 中创建日志的指标警报
 description: 有关针对常用 Log Analytics 数据创建近实时指标警报的教程。
 author: lingliw
-services: monitoring
 ms.service: azure-monitor
 ms.topic: conceptual
 origin.date: 09/17/2018
 ms.date: 06/21/2019
 ms.author: v-lingwu
 ms.subservice: alerts
-ms.openlocfilehash: 98c7fcceb169c2e75c8444ac6e3b85cec8bc346c
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: e6690ce9d34937dc6d79017a92dd76af5555f4ed
+ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79291679"
+ms.lasthandoff: 03/17/2020
+ms.locfileid: "79452393"
 ---
 # <a name="create-metric-alerts-for-logs-in-azure-monitor"></a>在 Azure Monitor 中创建日志的指标警报
 
@@ -357,7 +356,7 @@ Azure Monitor 支持比[经典警报](../../azure-monitor/platform/alerts-classi
 }
 ```
 
-假设上述参数文件保存为 metricfromLogsAlertStatic.parameters.json，则可以使用 [Azure 门户中用于创建警报的资源模板](../../azure-resource-manager/resource-group-template-deploy-portal.md)来创建日志的指标警报。
+假设上述参数文件保存为 metricfromLogsAlertStatic.parameters.json，则可以使用 [Azure 门户中用于创建警报的资源模板](../../azure-resource-manager/templates/deploy-portal.md)来创建日志的指标警报。
 
 也可以使用以下 Azure Powershell 命令：
 
@@ -367,7 +366,7 @@ New-AzResourceGroupDeployment -ResourceGroupName "myRG" -TemplateFile metricfrom
 
 或使用 Azure CLI 部署资源模板：
 
-```CLI
+```azurecli
 az group deployment create --resource-group myRG --template-file metricfromLogsAlertStatic.json --parameters @metricfromLogsAlertStatic.parameters.json
 ```
 
@@ -673,7 +672,7 @@ az group deployment create --resource-group myRG --template-file metricfromLogsA
 }
 ```
 
-假设上述参数文件保存为 metricfromLogsAlertDynamic.parameters.json，则可以使用 [Azure 门户中用于创建警报的资源模板](../../azure-resource-manager/resource-group-template-deploy-portal.md)来创建日志的指标警报。
+假设上述参数文件保存为 metricfromLogsAlertDynamic.parameters.json，则可以使用 [Azure 门户中用于创建警报的资源模板](../../azure-resource-manager/templates/deploy-portal.md)来创建日志的指标警报。
 
 也可以使用以下 Azure Powershell 命令：
 
@@ -683,7 +682,7 @@ New-AzResourceGroupDeployment -ResourceGroupName "myRG" -TemplateFile metricfrom
 
 或使用 Azure CLI 部署资源模板：
 
-```CLI
+```azurecli
 az group deployment create --resource-group myRG --template-file metricfromLogsAlertDynamic.json --parameters @metricfromLogsAlertDynamic.parameters.json
 ```
 

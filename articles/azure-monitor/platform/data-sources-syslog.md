@@ -1,7 +1,6 @@
 ---
 title: 在 Azure Monitor 中收集和分析 Syslog 消息 | Azure Docs
 description: Syslog 是普遍适用于 Linux 的事件日志记录协议。 本文介绍了如何在 Log Analytics 中配置 Syslog 消息集合以及它们创建的记录的详细信息。
-ms.service: azure-monitor
 author: lingliw
 manager: digimobile
 ms.subservice: logs
@@ -10,12 +9,12 @@ ms.tgt_pltfrm: na
 origin.date: 03/22/2019
 ms.date: 04/22/2019
 ms.author: v-lingwu
-ms.openlocfilehash: e183aa1b1369618fe0b2a804d3265613248cf6d1
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: e79b2bd11293881c298d7c9ae0041d800160c12e
+ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79292204"
+ms.lasthandoff: 03/17/2020
+ms.locfileid: "79452292"
 ---
 # <a name="syslog-data-sources-in-azure-monitor"></a>Azure Monitor 中的 Syslog 数据源
 Syslog 是普遍适用于 Linux 的事件日志记录协议。 应用程序将发送可能存储在本地计算机或传递到 Syslog 收集器的消息。 安装适用于 Linux 的 Log Analytics 代理后，它将配置本地 Syslog 后台程序，以将消息转发到此代理。 然后，此代理将消息发送到 Azure Monitor，将在后者中创建相应的记录。  

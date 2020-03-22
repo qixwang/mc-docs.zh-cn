@@ -3,14 +3,14 @@ title: 模板函数 - 比较
 description: 介绍可在 Azure 资源管理器模板中使用的用于比较值的函数。
 ms.topic: conceptual
 origin.date: 09/05/2017
+ms.date: 03/23/2020
 ms.author: v-yeche
-ms.date: 01/06/2020
-ms.openlocfilehash: b029ed19ffb54c2f838238b53362cf480f129acc
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: 2c1bd6162a7e81a96ab4712b47fb3761914c8ccb
+ms.sourcegitcommit: 1436f1851342ca5631eb25342eed954adb707af0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79291299"
+ms.lasthandoff: 03/19/2020
+ms.locfileid: "79543892"
 ---
 # <a name="comparison-functions-for-azure-resource-manager-templates"></a>用于 Azure 资源管理器模板的比较函数
 

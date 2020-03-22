@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 origin.date: 01/30/2020
-ms.date: 03/02/2020
-ms.openlocfilehash: 11d70be7f8c5297e8942953dfc21f83d834efd28
-ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
+ms.date: 03/23/2020
+ms.openlocfilehash: 33ba25219f9ecd22b21442dce2c1261e357b09a9
+ms.sourcegitcommit: 71a386ca0d0ecb79a123399b6ab6b8c70ea2aa78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77653562"
+ms.lasthandoff: 03/18/2020
+ms.locfileid: "79497104"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-an-azure-sql-database"></a>以递增方式将数据从 SQL Server 中的多个表加载到 Azure SQL 数据库
 

@@ -1,19 +1,18 @@
 ---
 title: 如何将常见警报架构与逻辑应用集成
 description: 了解如何创建一个逻辑应用，以利用常见警报架构来处理所有警报。
-ms.service: azure-monitor
-ms.subservice: alerts
 ms.topic: conceptual
 author: lingliw
 origin.date: 05/27/2019
 ms.date: 06/27/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 0e3cf2400de6bf63109267b10f2e0bbc301ef032
-ms.sourcegitcommit: 3a9c13eb4b4bcddd1eabca22507476fb34f89405
+ms.subservice: alerts
+ms.openlocfilehash: 0ccf80b9de3f4015a8da48921b06e1b6a10c1d7e
+ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74528424"
+ms.lasthandoff: 03/17/2020
+ms.locfileid: "79452501"
 ---
 # <a name="how-to-integrate-the-common-alert-schema-with-logic-apps"></a>如何将常见警报架构与逻辑应用集成
 
@@ -31,6 +30,7 @@ ms.locfileid: "74528424"
 * 设置[操作组](/azure-monitor/platform/action-groups)
 * 从操作组中启用[常见警报架构](/azure-monitor/platform/alerts-common-schema#how-do-i-enable-the-common-alert-schema)
 
+<!-- unavailable -->
     
 
 

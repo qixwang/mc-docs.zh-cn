@@ -5,14 +5,14 @@ author: ggailey777
 ms.devlang: dotnet
 ms.topic: article
 origin.date: 02/18/2019
-ms.date: 03/23/2020
+ms.date: 03/16/2020
 ms.author: v-tawe
-ms.openlocfilehash: 0094af36fdd31dea26138daf106148c9781acd4b
-ms.sourcegitcommit: d5eca3c6b03b206e441b599e5b138bd687a91361
+ms.openlocfilehash: 46bff28855bc5b85eff988e6499be1ecafd05cb1
+ms.sourcegitcommit: e500354e2fd8b7ac3dddfae0c825cc543080f476
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78934914"
+ms.lasthandoff: 03/19/2020
+ms.locfileid: "79546928"
 ---
 # <a name="get-started-with-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>用于事件驱动的后台处理的 Azure WebJobs SDK 入门
 
@@ -424,7 +424,7 @@ WebJobs SDK 在 Azure 的“应用程序设置”中查找存储连接字符串�
 
 1. 关闭控制台窗口。
 
-## <a name="deploy-as-a-webjob"></a>部署到 Azure
+## <a name="deploy-to-azure"></a><a name="deploy-as-a-webjob"></a>部署到 Azure
 
 在部署期间，可以创建一个要在其中运行函数的应用服务实例。 将 .NET Core 控制台应用发布到 Azure 中的应用服务时，该应用会自动以 WebJob 的形式运行。 若要详细了解发布过程，请参阅[使用 Visual Studio 开发和部署 WebJob](webjobs-dotnet-deploy-vs.md)。
 
@@ -439,7 +439,7 @@ WebJobs SDK 在 Azure 的“应用程序设置”中查找存储连接字符串�
 1. 刷新“队列”页后新消息消失，因为它已由 Azure 中运行的函数处理  。
 
    > [!TIP]
-   > 若要在 Azure 中进行测试，请使用[开发模式](webjobs-sdk-how-to.md#host-development-settings)来确保立即调用队列触发函数，并避免[队列轮询指数退让](../azure-functions/functions-bindings-storage-queue.md#trigger---polling-algorithm)导致的延迟。
+   > 若要在 Azure 中进行测试，请使用[开发模式](webjobs-sdk-how-to.md#host-development-settings)来确保立即调用队列触发函数，并避免[队列轮询指数退让](../azure-functions/functions-bindings-storage-queue.md)导致的延迟。
 
 ### <a name="view-logs-in-application-insights"></a>在 Application Insights 中查看日志
 

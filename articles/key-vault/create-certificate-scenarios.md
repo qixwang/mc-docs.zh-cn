@@ -6,21 +6,22 @@ author: msmbaldwin
 manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
+ms.subservice: certificates
 ms.topic: conceptual
 origin.date: 01/07/2019
-ms.date: 10/25/2019
+ms.date: 03/16/2020
 ms.author: v-tawe
-ms.openlocfilehash: 302daeaa4ac8f5f0bfc59b872646bc76eacc92f8
-ms.sourcegitcommit: 642a4ad454db5631e4d4a43555abd9773cae8891
+ms.openlocfilehash: 687fe6c91b559029778aeb3b4d9aedd3c79a9601
+ms.sourcegitcommit: 764b3d26aedce2de0e1948468a706fd3204a3d5e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2019
-ms.locfileid: "73426024"
+ms.lasthandoff: 03/19/2020
+ms.locfileid: "79543369"
 ---
 # <a name="monitor-and-manage-certificate-creation"></a>监视和管理证书创建
 适用于：Azure
 
-以下 
+已搜索 
 
 本文中概述的方案/操作包括：
 
@@ -333,7 +334,7 @@ StatusCode: 200, ReasonPhrase: 'OK'
 
 |方法|请求 URI|
 |------------|-----------------|
-|删除|`https://mykeyvault.vault.azure.cn/certificates/mycert1/pending?api-version={api-version}`|
+|DELETE|`https://mykeyvault.vault.azure.cn/certificates/mycert1/pending?api-version={api-version}`|
 
 ### <a name="request"></a>请求
  DELETE `“https://mykeyvault.vault.azure.cn/certificates/mycert1/pending?api-version={api-version}&request_id=a76827a18b63421c917da80f28e9913d"`
@@ -423,7 +424,7 @@ Location: “https://mykeyvault.vault.azure.cn/certificates/mycert1/pending?api-
 ```
 StatusCode: 201, ReasonPhrase: 'Created'
 Location: “https://mykeyvault.vault.azure.cn/certificates/mycert1?api-version={api-version}"
-{  
+{
 "id": "https mykeyvault.vault.azure.cn/certificates/mycert1/f366e1a9dd774288ad84a45a5f620352",
     "kid": "https:// mykeyvault.vault.azure.cn/keys/mycert1/f366e1a9dd774288ad84a45a5f620352",
     "sid": " mykeyvault.vault.azure.cn/secrets/mycert1/f366e1a9dd774288ad84a45a5f620352",

@@ -3,22 +3,21 @@ title: 将 Azure 资源日志存档到存储帐户 | Microsoft Docs
 description: 了解如何存档 Azure 资源日志，将其长期保留在存储帐户中。
 author: lingliw
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 12/15/2019
 ms.author: v-lingwu
 ms.subservice: logs
-ms.openlocfilehash: 0a5fdd0d01b18bc1df465267180d3e30a312660e
-ms.sourcegitcommit: 27eaabd82b12ad6a6840f30763034a6360977186
+ms.openlocfilehash: ce6849e683d1176fadf1a1383dc5b886f680999f
+ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77497638"
+ms.lasthandoff: 03/17/2020
+ms.locfileid: "79452554"
 ---
 # <a name="archive-azure-resource-logs-to-storage-account"></a>将 Azure 资源日志存档到存储帐户
 Azure 中的[平台日志](platform-logs-overview.md)（包括 Azure 活动日志和资源日志）提供 Azure 资源及其所依赖的 Azure 平台的详细诊断和审核信息。  本文介绍如何将平台日志收集到到 Azure 存储帐户，以便保留要存档的数据。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 需[创建 Azure 存储帐户](../../storage/common/storage-account-create.md)（如果还没有）。 只要配置设置的用户同时拥有两个订阅的相应 RBAC 访问权限，存储帐户就不必位于发送日志的资源所在的订阅中。
 
 
@@ -33,7 +32,7 @@ Azure 中的[平台日志](platform-logs-overview.md)（包括 Azure 活动日�
 
 
 ## <a name="collect-data-from-compute-resources"></a>对来自计算资源的数据进行收集
-诊断设置将收集 Azure 计算资源的资源日志，如收集任何其他资源一样，但不会收集来宾操作系统或工作负载的资源。 若要收集该数据，请安装 [Windows Azure 诊断代理](diagnostics-extension-overview.md)。 有关详细信息，请参阅[在 Azure 存储中存储和查看诊断数据](diagnostics-extension-to-storage.md)。
+诊断设置将收集 Azure 计算资源的资源日志，如收集任何其他资源一样，但不会收集来宾操作系统或工作负载的资源。 若要收集该数据，请安装 [Windows Azure 诊断代理](diagnostics-extension-overview.md)。 
 
 
 ## <a name="schema-of-platform-logs-in-storage-account"></a>存储帐户中的平台日志架构

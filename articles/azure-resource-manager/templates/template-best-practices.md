@@ -3,14 +3,14 @@ title: 模板最佳实践
 description: 介绍创作 Azure 资源管理器模板的建议方法。 提供相关建议，避免在使用模板时出现常见问题。
 ms.topic: conceptual
 origin.date: 12/02/2019
+ms.date: 03/23/2020
 ms.author: v-yeche
-ms.date: 01/06/2020
-ms.openlocfilehash: 3a701f71515d19e53743a004c3a0acd35d29a0dd
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: 717427b96223e5ee79be8ec14fa1f6e188f66fad
+ms.sourcegitcommit: 1436f1851342ca5631eb25342eed954adb707af0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79291252"
+ms.lasthandoff: 03/19/2020
+ms.locfileid: "79543895"
 ---
 # <a name="azure-resource-manager-template-best-practices"></a>Azure 资源管理器模板最佳做法
 
@@ -42,7 +42,7 @@ ms.locfileid: "79291252"
 
 如果资源组的区域临时不可用，则不能更新资源组中的资源，因为元数据不可用。 其他区域中的资源仍可按预期运行，但你不能更新它们。 为了尽量降低风险，请将资源组和资源放入同一个区域。
 
-## <a name="parameters"></a>参数
+## <a name="parameters"></a><a name="parameters"></a>参数
 
 使用[参数](template-parameters.md)时，本部分中的信息可以提供帮助。
 
@@ -160,7 +160,7 @@ ms.locfileid: "79291252"
 
 * 包括的变量适用于必须唯一的资源名称。
 
-* [在变量中使用复制循环](create-multiple-instances.md#variable-iteration)来创建重复的 JSON 对象模式。
+* [在变量中使用复制循环](copy-variables.md)来创建重复的 JSON 对象模式。
 
 * 删除未使用的变量。
 
@@ -178,7 +178,7 @@ ms.locfileid: "79291252"
 
 * 如果某个值可以在部署之前确定，请尝试在没有依赖项的情况下部署资源。 例如，如果某个配置值需要另一资源的名称，则可能不需要依赖项。 本指南并非始终适用，因为某些资源会验证其他资源是否存在。 如果收到错误，请添加一个依赖项。
 
-## <a name="resources"></a>资源
+## <a name="resources"></a><a name="resources"></a>资源
 
 使用[资源](template-syntax.md#resources)时，以下信息可以提供帮助：
 

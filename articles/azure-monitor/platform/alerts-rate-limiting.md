@@ -2,19 +2,18 @@
 title: 短信、电子邮件、Azure 应用推送通知和 Webhook 的速率限制
 description: 了解 Azure 如何限制操作组中可能的短信、电子邮件、Azure 应用推送通知或 webhook 通知数。
 author: dkamstra
-services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
 origin.date: 3/12/2018
 ms.date: 3/12/2019
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: dbefb52966ab579844da3bff82d6e1cac540e1c6
-ms.sourcegitcommit: a89eb0007edd5b4558b98c1748b2bd67ca22f4c9
+ms.openlocfilehash: 4f527cd8fe75717da0fd84734564dc8dfcce7722
+ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73730350"
+ms.lasthandoff: 03/17/2020
+ms.locfileid: "79452371"
 ---
 # <a name="rate-limiting-for-voice-sms-emails-azure-app-push-notifications-and-webhook-posts"></a>语音、短信、电子邮件、Azure 应用推送通知和 webhook 帖子的速率限制
 速率限制是在发送给特定电话号码、电子邮件地址或设备的通知太多时发生的通知挂起。 通过速率限制，确保警报处于管理且可操作状态。

@@ -1,8 +1,8 @@
-- name: Azure 资源管理器模板文档
+- name: ARM 模板文档
   href: index.yml
 - name: 概述
   items:
-    - name: 什么是 Azure 资源管理器模板？
+    - name: 什么是 ARM 模板？
       href: overview.md
 - name: 快速入门
   items:
@@ -10,6 +10,12 @@
       href: quickstart-create-templates-use-the-portal.md
     - name: 创建模板 - VS Code
       href: quickstart-create-templates-use-visual-studio-code.md
+    - name: Azure 服务
+      items:
+        - name: 事件网格
+          href: ../../event-grid/blob-event-quickstart-template.md
+        - name: 密钥保管库
+          href: ../../key-vault/quick-create-template.md
 - name: 教程
   items:
     - name: 初学者
@@ -61,8 +67,6 @@
         - name: 使用 Azure Pipelines 进行持续集成
           displayName: DevOps
           href: template-tutorial-use-azure-pipelines.md
-        - name: 将 VS 部署脚本更新到 Az Powershell
-          href: update-visual-studio-deployment-script.md
         - name: 排查模板部署问题
           href: template-tutorial-troubleshoot.md
 - name: 示例
@@ -79,6 +83,8 @@
       href: templates-cloud-consistency.md
     - name: 部署模式
       href: deployment-modes.md
+    - name: 完整模式删除
+      href: complete-mode-deletion.md
 - name: 如何
   items:
     - name: 创建模板
@@ -112,17 +118,27 @@
           displayName: 'linked templates, nested templates'
           href: linked-templates.md
         - name: 创建多个实例
-          href: create-multiple-instances.md
-        - name: 订阅级资源
-          href: deploy-to-subscription.md
-        - name: 管理组级资源
-          href: deploy-to-management-group.md
+          items:
+            - name: 资源
+              displayName: 'iteration,copy'
+              href: copy-resources.md
+            - name: 属性
+              displayName: 'iteration,copy'
+              href: copy-properties.md
+            - name: 变量
+              displayName: 'iteration,copy'
+              href: copy-variables.md
+            - name: Outputs
+              displayName: 'iteration,copy'
+              href: copy-outputs.md
     - name: 使用创作工具
       items:
         - name: VS Code
           href: use-vs-code-to-create-template.md
         - name: Visual Studio
           href: create-visual-studio-deployment-project.md
+        - name: 将 VS 部署脚本更新到 Az 模块
+          href: update-visual-studio-deployment-script.md
         - name: IntelliJ IDEA
           href: create-templates-use-intellij.md
     - name: 部署模板
@@ -139,12 +155,20 @@
         - name: 部署 - REST API
           displayName: deployment
           href: deploy-rest.md
+        - name: 从 GitHub 进行部署
+          href: deploy-to-azure-button.md
         - name: 出错时重新部署
           displayName: rollback
           href: rollback-on-error.md
         - name: 使用 SAS 令牌保护模板
           href: secure-template-with-sas-token.md
-        - name: 部署到多个资源组或订阅
+    - name: 作用域内部署
+      items:
+        - name: 订阅
+          href: deploy-to-subscription.md
+        - name: 管理组
+          href: deploy-to-management-group.md
+        - name: 多个资源组或订阅
           href: cross-resource-group-deployment.md
     - name: 提供参数
       items:
@@ -213,12 +237,6 @@
           href: template-functions-resource.md
         - name: 字符串函数
           href: template-functions-string.md
-    - name: 资源功能
-      items:
-        - name: 完整模式删除
-          href: complete-mode-deletion.md
-        - name: 扩展资源类型
-          href: extension-resource-types.md
     - name: REST
       href: 'https://docs.microsoft.com/rest/api/resources/'
     - name: Azure PowerShell

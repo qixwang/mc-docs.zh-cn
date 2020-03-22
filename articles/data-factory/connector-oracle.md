@@ -9,15 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-origin.date: 01/09/2020
-ms.date: 03/02/2020
+origin.date: 02/13/2020
+ms.date: 03/23/2020
 ms.author: v-jay
-ms.openlocfilehash: 2529c60d3b4982a0db703899f3048036ff52b03c
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: 6d12822093a5e3f68807a37aae354de0b0da932e
+ms.sourcegitcommit: 71a386ca0d0ecb79a123399b6ab6b8c70ea2aa78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79292185"
+ms.lasthandoff: 03/18/2020
+ms.locfileid: "79497266"
 ---
 # <a name="copy-data-from-and-to-oracle-by-using-azure-data-factory"></a>使用 Azure 数据工厂从/向 Oracle 复制数据
 
@@ -42,7 +42,6 @@ ms.locfileid: "79292185"
     - Oracle 9i R2 (9.2) 和更高版本
     - Oracle 8i R3 (8.1.7) 和更高版本
     - Oracle Database Cloud Exadata Service
-- 使用“基本”或“OID”身份验证复制数据。
 - 从 Oracle 源进行并行复制。 有关详细信息，请参阅[从 Oracle 进行并行复制](#parallel-copy-from-oracle)部分。
 
 > [!Note]

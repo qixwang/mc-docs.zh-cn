@@ -4,15 +4,15 @@ description: 了解如何在 TLS 上对客户端证书进行身份验证。 Azur
 ms.assetid: cd1d15d3-2d9e-4502-9f11-a306dac4453a
 ms.topic: article
 origin.date: 10/01/2019
-ms.date: 03/09/2020
+ms.date: 03/16/2020
 ms.author: v-tawe
 ms.custom: seodec18
-ms.openlocfilehash: d4e16299d69b99432bb9d0d71f4ccecffa4e1ced
-ms.sourcegitcommit: 1e68aea05a8d979237d6377a3637bb7654097111
+ms.openlocfilehash: e344d10dc4e7122f13fbad53cf9ef6142bbcfd61
+ms.sourcegitcommit: e500354e2fd8b7ac3dddfae0c825cc543080f476
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/24/2020
-ms.locfileid: "77566637"
+ms.lasthandoff: 03/19/2020
+ms.locfileid: "79547007"
 ---
 # <a name="configure-tls-mutual-authentication-for-azure-app-service"></a>为 Azure 应用服务配置 TLS 相互身份验证
 
@@ -21,6 +21,8 @@ ms.locfileid: "77566637"
 > [!NOTE]
 > 如果通过 HTTP 而不是 HTTPS 访问站点，不会收到任何客户端证书。 因此，如果应用程序需要客户端证书，则你不应允许通过 HTTP 对应用程序发出请求。
 >
+
+[!INCLUDE [Prepare your web app](../../includes/app-service-ssl-prepare-app.md)]
 
 ## <a name="enable-client-certificates"></a>启用客户端证书
 

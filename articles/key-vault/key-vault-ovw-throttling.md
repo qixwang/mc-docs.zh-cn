@@ -5,16 +5,17 @@ services: key-vault
 author: msmbaldwin
 manager: rkarlin
 ms.service: key-vault
+ms.subservice: general
 ms.topic: conceptual
 origin.date: 12/02/2019
-ms.date: 01/17/2020
+ms.date: 03/16/2020
 ms.author: v-tawe
-ms.openlocfilehash: a85bdd4683d757b4348e86455c17d6bd11f208c0
-ms.sourcegitcommit: 94e1c9621b8f81a7078f1412b3a73281d0a8668b
+ms.openlocfilehash: f8e513627988686edd2d6d642c3852ec462627c5
+ms.sourcegitcommit: 764b3d26aedce2de0e1948468a706fd3204a3d5e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76123304"
+ms.lasthandoff: 03/19/2020
+ms.locfileid: "79543379"
 ---
 # <a name="azure-key-vault-throttling-guidance"></a>Azure Key Vault 限制指南
 

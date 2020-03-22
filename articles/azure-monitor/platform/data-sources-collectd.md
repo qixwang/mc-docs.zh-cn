@@ -1,7 +1,6 @@
 ---
 title: 在 Azure Monitor 中通过 CollectD 收集数据 | Azure Docs
 description: CollectD 是一个开源 Linux 守护程序，它定期从应用程序级和系统级信息中收集数据。  本文介绍了如何在 Azure Monitor 中通过 CollectD 收集数据。
-ms.service: azure-monitor
 author: lingliw
 manager: digimobile
 ms.subservice: logs
@@ -10,12 +9,12 @@ ms.tgt_pltfrm: na
 origin.date: 11/27/2018
 ms.date: 04/12/2019
 ms.author: v-lingwu
-ms.openlocfilehash: fa578fa6e4bc1609a66208640dd190ed3b0ddb26
-ms.sourcegitcommit: a89eb0007edd5b4558b98c1748b2bd67ca22f4c9
+ms.openlocfilehash: 100a30fe1e57b671abc19253acfde6c758f938a6
+ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73730214"
+ms.lasthandoff: 03/17/2020
+ms.locfileid: "79452282"
 ---
 # <a name="collect-data-from-collectd-on-linux-agents-in-azure-monitor"></a>Azure Monitor 中的 Linux 代理上通过 CollectD 收集数据
 [CollectD](https://collectd.org/) 是一个开源 Linux 守护程序，它定期从应用程序级和系统级信息中收集性能指标。 示例应用程序包括 Java 虚拟机 (JVM)、MySQL Server 和 Nginx。 本文介绍了如何在 Azure Monitor 中通过 CollectD 收集性能数据。

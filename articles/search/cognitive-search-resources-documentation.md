@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 origin.date: 02/25/2020
 ms.date: 03/16/2020
-ms.openlocfilehash: d42226f6e60be0ffeac04074c60cc8ff9175961b
-ms.sourcegitcommit: d5eca3c6b03b206e441b599e5b138bd687a91361
+ms.openlocfilehash: c88f7921b348d39b7bef9d129cf5f6e5fc65bafa
+ms.sourcegitcommit: 71a386ca0d0ecb79a123399b6ab6b8c70ea2aa78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78934815"
+ms.lasthandoff: 03/18/2020
+ms.locfileid: "79497195"
 ---
 # <a name="documentation-resources-for-ai-enrichment-in-azure-cognitive-search"></a>Azure 认知搜索中的 AI 扩充文档资源
 
@@ -26,7 +26,7 @@ AI 扩充是 Azure 认知搜索索引的一项功能，用于查找非文本源�
 + [认知搜索中的 AI 简介](cognitive-search-concept-intro.md)
 + [快速入门：在 Azure 门户中创建认知技能集](cognitive-search-quickstart-blob.md)
 + [教程：使用 AI 扩充的索引](cognitive-search-tutorial-blob.md)
-+ [示例：创建 AI 扩充的自定义技能](cognitive-search-custom-skill-python.md)
++ [示例：创建 AI 扩充的自定义技能](cognitive-search-create-custom-skill-example.md)
 
 ## <a name="how-to-guidance"></a>操作说明指南
 + [如何定义技能集](cognitive-search-defining-skillset.md)

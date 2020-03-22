@@ -3,18 +3,17 @@ title: 为 Azure Monitor 资源日志的格式更改做准备
 description: 描述影响以及如何更新工具以处理新的 Azure 资源日志，这些资源日志已于 2018 年 11 月 1 日更改为使用追加 Blob。
 author: lingliw
 services: monitoring
-ms.service: azure-monitor
 ms.topic: conceptual
 origin.date: 07/06/2018
 ms.date: 01/21/2019
 ms.author: v-lingwu
 ms.subservice: logs
-ms.openlocfilehash: 226b63f0967062175b77c35b18483d86e933de47
-ms.sourcegitcommit: 27eaabd82b12ad6a6840f30763034a6360977186
+ms.openlocfilehash: e140a40d1d08e1eea4065d7469edde93df979bff
+ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77497517"
+ms.lasthandoff: 03/17/2020
+ms.locfileid: "79452491"
 ---
 # <a name="prepare-for-format-change-to-azure-monitor-resource-logs-archived-to-a-storage-account"></a>为存档到存储帐户的 Azure Monitor 资源日志的格式更改做准备
 

@@ -1,22 +1,23 @@
 ---
-title: Azure CLI 脚本示例 - 订阅资源组并按资源筛选 | Microsoft Docs
-description: Azure CLI 脚本示例 - 订阅资源组并按资源筛选
+title: Azure CLI - 订阅资源组并按资源筛选
+description: 本文提供了一个示例 Azure CLI 脚本，演示如何订阅资源的事件网格事件，以及如何筛选资源。
 services: event-grid
 documentationcenter: na
-author: tfitzmac
+author: lingliw
 ms.service: event-grid
 ms.devlang: azurecli
 ms.topic: sample
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/02/2018
-ms.author: v-yiso
-ms.openlocfilehash: 943cab6211726b8f1e991b29ea307aa2742603ff
-ms.sourcegitcommit: 5a57f99d978b78c1986c251724b1b04178c12d8c
+origin.date: 01/23/2020
+ms.date: 3/16/2020
+ms.author: v-lingwu
+ms.openlocfilehash: ad5aa73f3abbce62d626d5af082078cc642c1190
+ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/24/2019
-ms.locfileid: "66195334"
+ms.lasthandoff: 03/17/2020
+ms.locfileid: "79452487"
 ---
 # <a name="subscribe-to-events-for-a-resource-group-and-filter-for-a-resource-with-azure-cli"></a>使用 Azure CLI 订阅资源组的事件并筛选出资源
 

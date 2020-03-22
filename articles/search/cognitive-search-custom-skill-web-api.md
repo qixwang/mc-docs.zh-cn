@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 origin.date: 11/04/2019
 ms.date: 03/16/2020
-ms.openlocfilehash: 6c2243e4982211c499001d9560fd3b1bb3464729
-ms.sourcegitcommit: d5eca3c6b03b206e441b599e5b138bd687a91361
+ms.openlocfilehash: 8f335edddcfac01812bff3a2639b64c54eb2f174
+ms.sourcegitcommit: 71a386ca0d0ecb79a123399b6ab6b8c70ea2aa78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78934865"
+ms.lasthandoff: 03/18/2020
+ms.locfileid: "79497194"
 ---
 # <a name="custom-web-api-skill-in-an-azure-cognitive-search-enrichment-pipeline"></a>在 Azure 认知搜索扩充管道中自定义 Web API 技能。
 
@@ -206,4 +206,4 @@ Microsoft.Skills.Custom.WebApiSkill
 
 + [如何定义技能集](cognitive-search-defining-skillset.md)
 + [向 AI 扩充管道添加自定义技能](cognitive-search-custom-skill-interface.md)
-+ [示例：创建 AI 扩充的自定义技能](cognitive-search-custom-skill-interface.md)
++ [示例：创建 AI 扩充的自定义技能](cognitive-search-create-custom-skill-example.md)

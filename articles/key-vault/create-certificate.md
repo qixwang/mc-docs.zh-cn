@@ -6,16 +6,17 @@ author: msmbaldwin
 manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
+ms.subservice: certificates
 ms.topic: conceptual
 origin.date: 01/07/2019
-ms.date: 02/17/2019
+ms.date: 03/16/2020
 ms.author: v-tawe
-ms.openlocfilehash: 33c1ca54b5fe4ff55114dc815f3240bb751f254b
-ms.sourcegitcommit: 0b07f1d36ac02da055874630d6edc31cb0a15269
+ms.openlocfilehash: d07d34746916fd81350af0d14f40b7e120a96b85
+ms.sourcegitcommit: 764b3d26aedce2de0e1948468a706fd3204a3d5e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/10/2020
-ms.locfileid: "77112176"
+ms.lasthandoff: 03/19/2020
+ms.locfileid: "79543364"
 ---
 # <a name="certificate-creation-methods"></a>证书创建方法
 

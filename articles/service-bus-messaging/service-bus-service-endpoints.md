@@ -12,12 +12,12 @@ ms.topic: article
 origin.date: 12/20/2019
 ms.date: 1/20/2020
 ms.author: v-lingwu
-ms.openlocfilehash: 6b08c75848339cd9a8356ddc84af1f01071f1a5c
-ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
+ms.openlocfilehash: 096e6f9594e1bd25e48f71c17eea7a17f53895db
+ms.sourcegitcommit: 305361c96d1d5288d3dda7e81833820640e2afac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75853832"
+ms.lasthandoff: 03/21/2020
+ms.locfileid: "80109749"
 ---
 # <a name="use-virtual-network-service-endpoints-with-azure-service-bus"></a>使用具有 Azure 服务总线的虚拟网络服务终结点
 
@@ -198,5 +198,5 @@ ms.locfileid: "75853832"
 - [Azure 服务总线 IP 筛选][ip-filtering]
 
 [vnet-sep]: ../virtual-network/virtual-network-service-endpoints-overview.md
-[lnk-deploy]: ../azure-resource-manager/resource-group-template-deploy.md
+[lnk-deploy]: ../azure-resource-manager/templates/deploy-powershell.md
 [ip-filtering]: service-bus-ip-filtering.md

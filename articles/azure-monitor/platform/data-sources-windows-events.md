@@ -1,7 +1,6 @@
 ---
 title: 在 Azure Monitor 中收集和分析 Windows 事件日志 | Azure Docs
 description: 介绍了如何通过 Azure Monitor 配置 Windows 事件日志的收集，以及它们创建的记录的详细信息。
-ms.service: azure-monitor
 author: lingliw
 manager: digimobile
 ms.subservice: logs
@@ -10,12 +9,12 @@ ms.tgt_pltfrm: na
 origin.date: 11/28/2018
 ms.date: 01/21/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 1e315de11fc81d137fca4aa3f539498351f1f340
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: 133db6df8d72b5a15a546a65461ba590860a6cac
+ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79292198"
+ms.lasthandoff: 03/17/2020
+ms.locfileid: "79452290"
 ---
 # <a name="windows-event-log-data-sources-in-azure-monitor"></a>Azure Monitor 中的 Windows 事件日志数据源
 由于许多应用程序都会写入 Windows 事件日志，因此 Windows 事件日志是使用 Windows 代理收集数据的最常见[数据源](agent-data-sources.md)之一。  除了指定由需要监视的应用程序创建的任何自定义日志，还可以从标准日志（如系统和应用程序）中收集事件。

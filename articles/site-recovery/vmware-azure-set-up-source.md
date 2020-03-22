@@ -9,12 +9,12 @@ ms.topic: article
 origin.date: 04/14/2019
 ms.date: 06/10/2019
 ms.author: v-yeche
-ms.openlocfilehash: 61e57c84f51763bc17ba42c4268347679f185e41
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: b1ffda1422f18f4efa3f59fb20f1b0006f611e71
+ms.sourcegitcommit: 305361c96d1d5288d3dda7e81833820640e2afac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79291337"
+ms.lasthandoff: 03/21/2020
+ms.locfileid: "80108525"
 ---
 <a name="set-up-the-source-environment"></a>
 # <a name="set-up-the-source-environment-for-vmware-to-azure-replication"></a>设置源环境以便从 VMware 复制到 Azure
@@ -42,7 +42,10 @@ ms.locfileid: "79291337"
 可以通过开放虚拟化应用程序 (OVA) 模板将配置服务器设置为本地 VMware VM。 [详细了解](concepts-vmware-to-azure-architecture.md)将在 VMware VM 上安装的组件。
 
 1. 了解配置服务器部署的[先决条件](vmware-azure-deploy-configuration-server.md#prerequisites)。
-2. [检查容量数字](vmware-azure-deploy-configuration-server.md#capacity-planning)以便进行部署。
+2. [检查容量数字](vmware-azure-deploy-configuration-server.md)以便进行部署。
+
+    <!--Not Available on #capacity-planning-->
+    
 3. [下载](vmware-azure-deploy-configuration-server.md#download-the-template)并[导入](vmware-azure-deploy-configuration-server.md#import-the-template-in-vmware) OVA 模板，设置运行配置服务器的本地 VMware VM。 通过模板提供的许可证是评估许可证，有效期为 180 天。 超过有效期之后，客户需要使用购买的许可证来激活 Windows。
 4. 打开 VMware VM，并将其[注册](vmware-azure-deploy-configuration-server.md#register-the-configuration-server-with-azure-site-recovery-services)到恢复服务保管库中。
 

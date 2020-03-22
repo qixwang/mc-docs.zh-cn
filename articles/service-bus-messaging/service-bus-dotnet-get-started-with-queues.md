@@ -15,12 +15,12 @@ ms.workload: na
 origin.date: 01/24/2020
 ms.date: 2/26/2020
 ms.author: v-lingwu
-ms.openlocfilehash: 9acf2e8037adae36a22891322acfad0f472b303e
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.openlocfilehash: 790513054395a5025c649036d76621cdb3861180
+ms.sourcegitcommit: 305361c96d1d5288d3dda7e81833820640e2afac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78154460"
+ms.lasthandoff: 03/21/2020
+ms.locfileid: "80109774"
 ---
 # <a name="get-started-with-service-bus-queues"></a>服务总线队列入门
 [!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
@@ -205,6 +205,7 @@ namespace CoreSenderApp
 1. 在 *Program.cs* 中将以下 `using` 语句添加到命名空间定义顶部，位于类声明之前：
 
     ```csharp
+    using System;
     using System.Text;
     using System.Threading;
     using System.Threading.Tasks;
@@ -221,18 +222,23 @@ namespace CoreSenderApp
 
     以 `ServiceBusConnectionString` 变量的形式输入命名空间的连接字符串。 输入队列名称。
 
-1. 将 `Main()` 的默认内容替换为以下代码行：
+1. 将 `Main()` 方法替换为以下代码：
 
     ```csharp
-    public static async Task Main(string[] args)
-    {    
+    static void Main(string[] args)
+    {
+        MainAsync().GetAwaiter().GetResult();
+    }
+
+    static async Task MainAsync()
+    {
         queueClient = new QueueClient(ServiceBusConnectionString, QueueName);
 
         Console.WriteLine("======================================================");
         Console.WriteLine("Press ENTER key to exit after receiving all the messages.");
         Console.WriteLine("======================================================");
 
-        // Register the queue message handler and receive messages in a loop
+        // Register QueueClient's MessageHandler and receive messages in a loop
         RegisterOnMessageHandlerAndReceiveMessages();
 
         Console.ReadKey();

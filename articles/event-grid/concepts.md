@@ -8,12 +8,12 @@ ms.topic: conceptual
 origin.date: 08/03/2018
 ms.date: 06/03/2019
 ms.author: v-yiso
-ms.openlocfilehash: 973051a3fb77c3a35b2422e3708fc64ee4259bee
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: 0ce6ab0c7c9b369d2870da1e556306f2b9d80ff7
+ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79292272"
+ms.lasthandoff: 03/17/2020
+ms.locfileid: "79452525"
 ---
 # <a name="concepts-in-azure-event-grid"></a>Azure 事件网格中的概念
 
@@ -60,9 +60,6 @@ ms.locfileid: "79292272"
 有关获取当前事件网格订阅的信息，请参阅[查询事件网格订阅](query-event-subscriptions.md)。
 
 ## <a name="event-subscription-expiration"></a>事件订阅过期
-
-Azure CLI 的[事件网格扩展](/cli/azure-cli-extensions-list)允许你在创建事件订阅时设置过期日期。 如果你使用的是 REST API，请使用 `api-version=2018-09-15-preview`
-
 事件订阅在该日期后自动过期。 为仅在有限时间内需要的事件订阅设置一个过期日期，你不需要担心清理这些订阅。 例如，创建事件订阅来测试某个方案时，你可能想要设置过期日期。 
 
 有关设置过期日期的示例，请参阅[使用高级筛选器进行订阅](how-to-filter-events.md#subscribe-with-advanced-filters)。

@@ -1,7 +1,6 @@
 ---
 title: 删除和恢复 Azure Log Analytics 工作区 | Microsoft Docs
 description: 了解在个人订阅中创建 Log Analytics 工作区后如何删除它，以及如何重构工作区模型。
-ms.service: azure-monitor
 author: lingliw
 manager: digimobile
 ms.subservice: logs
@@ -9,12 +8,12 @@ ms.topic: conceptual
 origin.date: 01/14/2020
 ms.date: 02/19/2020
 ms.author: v-lingwu
-ms.openlocfilehash: b99282bd73dd8cccb5aaa2c715b914d702383c4d
-ms.sourcegitcommit: 27eaabd82b12ad6a6840f30763034a6360977186
+ms.openlocfilehash: 7ea481addcdd9b527997a00e195ecc17998daccb
+ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77497519"
+ms.lasthandoff: 03/17/2020
+ms.locfileid: "79452322"
 ---
 # <a name="delete-and-restore-azure-log-analytics-workspace"></a>删除和还原 Azure Log Analytics 工作区
 

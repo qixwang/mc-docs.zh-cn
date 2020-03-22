@@ -3,15 +3,15 @@ title: 使用模板部署 VM 扩展
 description: 了解如何使用 Azure 资源管理器模板部署虚拟机扩展
 author: rockboyfor
 origin.date: 11/13/2018
-ms.date: 01/06/2020
+ms.date: 03/23/2020
 ms.topic: tutorial
 ms.author: v-yeche
-ms.openlocfilehash: 063031885ba07f619e52d7ad6491a9b8e797081a
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.openlocfilehash: 154e2360feb324ed38213b0c5f32b7fa70e055e7
+ms.sourcegitcommit: 1436f1851342ca5631eb25342eed954adb707af0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75631568"
+ms.lasthandoff: 03/19/2020
+ms.locfileid: "79543906"
 ---
 <!-- Verify Successfully-->
 # <a name="tutorial-deploy-virtual-machine-extensions-with-azure-resource-manager-templates"></a>教程：使用 Azure 资源管理器模板部署虚拟机扩展
@@ -36,7 +36,7 @@ ms.locfileid: "75631568"
 * 包含资源管理器工具扩展的 Visual Studio Code。 请参阅[使用 Visual Studio Code 创建 Azure 资源管理器模板](use-vs-code-to-create-template.md)。
 * 若要提高安全性，请使用为虚拟机管理员帐户生成的密码。 以下是密码生成示例：
 
-    ```azurecli
+    ```console
     openssl rand -base64 32
     ```
 
@@ -44,7 +44,7 @@ ms.locfileid: "75631568"
 
 ## <a name="prepare-a-powershell-script"></a>准备 PowerShell 脚本
 
-从 [Github](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-vm-extension/installWebServer.ps1) 共享了具有以下内容的 PowerShell 脚本：
+从 [GitHub](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-vm-extension/installWebServer.ps1) 共享包含以下内容的 PowerShell 脚本：
 
 ```azurepowershell
 Install-WindowsFeature -name Web-Server -IncludeManagementTools
@@ -87,8 +87,8 @@ Azure 快速入门模板是资源管理器模板的存储库。 无需从头开�
 
 ```json
 {
-    "apiVersion": "2018-06-01",
     "type": "Microsoft.Compute/virtualMachines/extensions",
+    "apiVersion": "2018-06-01",
     "name": "[concat(variables('vmName'),'/', 'InstallWebServer')]",
     "location": "[parameters('location')]",
     "dependsOn": [

@@ -5,12 +5,12 @@ ms.topic: troubleshooting
 origin.date: 03/09/2018
 ms.date: 01/20/2020
 ms.author: v-yeche
-ms.openlocfilehash: e242086a4682e2fa89d45d87184c2af86d499eba
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: f1561d9ae9968c887b108e487ff7672f11738c2f
+ms.sourcegitcommit: 1436f1851342ca5631eb25342eed954adb707af0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79292117"
+ms.lasthandoff: 03/19/2020
+ms.locfileid: "79543873"
 ---
 # <a name="resolve-errors-for-resource-quotas"></a>解决资源配额错误
 
@@ -54,7 +54,7 @@ az vm list-usage --location "China East"
 
 返回：
 
-```azurecli
+```output
 [
   {
     "currentValue": 0,
@@ -78,7 +78,7 @@ Get-AzVMUsage -Location "China East"
 
 返回：
 
-```powershell
+```output
 Name                             Current Value Limit  Unit
 ----                             ------------- -----  ----
 Availability Sets                            0  2000 Count

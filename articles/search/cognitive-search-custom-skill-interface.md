@@ -9,18 +9,18 @@ ms.service: cognitive-search
 ms.topic: conceptual
 origin.date: 02/20/2020
 ms.date: 03/16/2020
-ms.openlocfilehash: dc47878353b565bb2594435b022723ea7dc3c430
-ms.sourcegitcommit: d5eca3c6b03b206e441b599e5b138bd687a91361
+ms.openlocfilehash: 282ed96bbc448e5b957e1103983549dd0de09d7e
+ms.sourcegitcommit: 71a386ca0d0ecb79a123399b6ab6b8c70ea2aa78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78934866"
+ms.lasthandoff: 03/18/2020
+ms.locfileid: "79497196"
 ---
 # <a name="how-to-add-a-custom-skill-to-an-azure-cognitive-search-enrichment-pipeline"></a>如何向 Azure 认知搜索扩充管道添加自定义技能
 
 Azure 认知搜索中的[扩充管道](cognitive-search-concept-intro.md)可以从[内置认知技能](cognitive-search-predefined-skills.md)和你自己创建并添加到管道中的[自定义技能](cognitive-search-custom-skill-web-api.md)进行装配。 在本文中，你将了解如何创建自定义技能并使其公开某个接口，用以将该技能包括在 AI 扩充管道中。 
 
-通过生成自定义技能，可插入对内容唯一的转换。 自定义技能独立执行，可应用所需的任何扩充步骤。 例如，可定义特定于域的自定义实体，生成自定义分类模型来区分商业和金融合同或文档，或者添加语音识别技能来深入了解相关内容的音频文件。 有关分步示例，请参阅[示例：创建用于 AI 扩充的自定义技能](cognitive-search-custom-skill-python.md)。
+通过生成自定义技能，可插入对内容唯一的转换。 自定义技能独立执行，可应用所需的任何扩充步骤。 例如，可定义特定于域的自定义实体，生成自定义分类模型来区分商业和金融合同或文档，或者添加语音识别技能来深入了解相关内容的音频文件。 有关分步示例，请参阅[示例：创建用于 AI 扩充的自定义技能](cognitive-search-create-custom-skill-example.md)。
 
  无论需要哪种自定义功能，都有一个简单明了的接口，可将自定义技能与其余扩充管道相连接。 [技能组合](cognitive-search-defining-skillset.md)中包含的唯一需求是，能够以可在技能组合内作为整体使用的方式接受输入并发出输出。 本文的重点是扩充管道所需的输入和输出格式。
 
@@ -160,7 +160,7 @@ Web API 必须接受要处理的一组记录。 每条记录都必须包含一�
 本文介绍了将自定义技能组成到技能组时所需的接口要求。 单击下面的链接来了解有关自定义技能和技能组构成的详细信息。
 
 + [强大技能：自定义技能的存储库](https://github.com/Azure-Samples/azure-search-power-skills)
-+ [示例：创建用于 AI 扩充的自定义技能](cognitive-search-custom-skill-python.md)
++ [示例：创建 AI 扩充的自定义技能](cognitive-search-create-custom-skill-example.md)
 + [如何定义技能集](cognitive-search-defining-skillset.md)
 + [创建技能组合 (REST)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
 + [如何映射扩充的域](cognitive-search-output-field-mapping.md)

@@ -5,17 +5,18 @@ services: key-vault
 author: msmbaldwin
 manager: rajvijan
 ms.service: key-vault
+ms.subservice: secrets
 ms.topic: tutorial
 origin.date: 12/21/2018
-ms.date: 12/09/2019
+ms.date: 03/16/2020
 ms.author: v-tawe
 ms.custom: mvc
-ms.openlocfilehash: a647ee02c52fcd7d3fba9f4717a26b7ecfe0ca34
-ms.sourcegitcommit: 21b02b730b00a078a76aeb5b78a8fd76ab4d6af2
+ms.openlocfilehash: b3a8088be74dcad8d742f66c155fcb2d4c576607
+ms.sourcegitcommit: 764b3d26aedce2de0e1948468a706fd3204a3d5e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74838867"
+ms.lasthandoff: 03/19/2020
+ms.locfileid: "79543370"
 ---
 # <a name="tutorial-use-a-linux-vm-and-a-net-app-to-store-secrets-in-azure-key-vault"></a>教程：使用 Linux VM 和 .NET 应用在 Azure Key Vault 中存储机密
 
@@ -78,7 +79,7 @@ az group create --name "<YourResourceGroupName>" --location "China North"
 
 * 密钥保管库名称：由 3 到 24 个字符构成的字符串，只能包含数字、字母和连字符（0-9、a-z、A-Z 和 \-）。
 * 资源组名称
-* 位置：**华北**
+* 位置：**中国北部**
 
 ```azurecli
 az keyvault create --name "<YourKeyVaultName>" --resource-group "<YourResourceGroupName>" --location "China North"
@@ -149,7 +150,7 @@ az vm identity assign --name <NameOfYourVirtualMachine> --resource-group <YourRe
 
 ## <a name="give-the-vm-identity-permission-to-key-vault"></a>为 VM 标识提供 Key Vault 访问权限
 
-现在可以向所创建的标识提供密钥保管库权限。 运行以下命令：
+现在可以向所创建的标识提供 Key Vault 权限。 运行以下命令：
 
 ```
 az keyvault set-policy --name '<YourKeyVaultName>' --object-id <VMSystemAssignedIdentity> --secret-permissions get list

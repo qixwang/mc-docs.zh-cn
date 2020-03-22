@@ -461,8 +461,6 @@
                   items:
                     - name: 概述
                       href: platform/diagnostics-extension-overview.md
-                    - name: 发送到 Azure 存储
-                      href: platform/diagnostics-extension-to-storage.md
                     - name: 发送到 Application Insights
                       href: platform/diagnostics-extension-to-application-insights.md
                     - name: 发送到事件中心
@@ -557,8 +555,6 @@
                   href: platform/platform-logs-overview.md
                 - name: 在日志中收集
                   href: platform/resource-logs-collect-workspace.md
-                - name: 从 Azure 存储中收集
-                  href: platform/azure-storage-iis-table.md
                 - name: 存档到存储
                   href: platform/resource-logs-collect-storage.md
                 - name: 将数据流式传输到事件中心
@@ -900,11 +896,9 @@
       items:
         - name: 诊断日志服务、类别和架构
           href: platform/diagnostic-logs-schema.md
-        - name: Azure 诊断扩展架构
-          href: platform/diagnostics-extension-schema.md
           items:
             - name: 1.3 和更高版本
-              href: platform/diagnostics-extension-schema-1dot3.md
+              href: /azure-monitor/platform/diagnostics-extension-schema-windows
 - name: 资源
   items:
     - name: 定价

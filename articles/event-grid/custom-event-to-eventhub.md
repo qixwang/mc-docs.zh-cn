@@ -1,21 +1,21 @@
 ---
-title: 将自定义事件发送到事件中心 - 事件网格、Azure CLI
-description: 使用 Azure 事件网格和 Azure CLI 发布一个主题，然后订阅该事件。 事件中心用于终结点。
+title: 快速入门：将自定义事件发送到事件中心 - 事件网格、Azure CLI
+description: 快速入门：使用 Azure 事件网格和 Azure CLI 发布一个主题，然后订阅该事件。 事件中心用于终结点。
 services: event-grid
 keywords: ''
-author: spelluru
-ms.author: v-yiso
-origin.date: 10/09/2018
-ms.date: 06/03/2019
+author: lingliw
+ms.author: v-lingwu
+origin.date: 11/05/2019
+ms.date: 3/16/2020
 ms.topic: quickstart
 ms.service: event-grid
 ms.custom: seodec18
-ms.openlocfilehash: ef150ffb5be6d6f82533a5066ef2607d9871d567
-ms.sourcegitcommit: 5a57f99d978b78c1986c251724b1b04178c12d8c
+ms.openlocfilehash: c2c6169b3952599f7d521866e2f56ee1ad05f592
+ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/24/2019
-ms.locfileid: "66195280"
+ms.lasthandoff: 03/17/2020
+ms.locfileid: "79452599"
 ---
 # <a name="quickstart-route-custom-events-to-azure-event-hubs-with-azure-cli-and-event-grid"></a>快速入门：使用 Azure CLI 和事件网格将自定义事件路由到 Azure 事件中心
 

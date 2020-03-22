@@ -3,19 +3,18 @@ title: 在 Azure Monitor 中监视使用情况和预估成本
 description: Azure Monitor 中的使用情况和预估成本页的使用过程概述
 author: lingliw
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 origin.date: 10/28/2019
 ms.date: 11/4/2019
 ms.author: v-lingwu
 ms.reviewer: Dale.Koetke
 ms.subservice: ''
-ms.openlocfilehash: 44e1135e73274c0f1c0d63724d26a76d55053598
-ms.sourcegitcommit: 27eaabd82b12ad6a6840f30763034a6360977186
+ms.openlocfilehash: 3c1b4e9c53fc5471626e0dc4ee58831d168e14be
+ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77497389"
+ms.lasthandoff: 03/17/2020
+ms.locfileid: "79452548"
 ---
 # <a name="monitoring-usage-and-estimated-costs-in-azure-monitor"></a>在 Azure Monitor 中监视使用情况和预估成本
 

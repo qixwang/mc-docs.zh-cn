@@ -7,12 +7,12 @@ ms.topic: conceptual
 origin.date: 09/18/2018
 ms.date: 04/12/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 0a24c0203f4042b36cb55fa03a5724e23226677c
-ms.sourcegitcommit: dd0ff08835dd3f8db3cc55301815ad69ff472b13
+ms.openlocfilehash: a52c8b2a3b8a4e47a035e4694b13212dcf1d74d5
+ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70736958"
+ms.lasthandoff: 03/17/2020
+ms.locfileid: "79452562"
 ---
 # <a name="create-view-and-manage-classic-metric-alerts-using-azure-monitor"></a>使用 Azure Monitor 创建、查看和管理经典指标警报
 

@@ -3,14 +3,14 @@ title: 模板资源位置
 description: 介绍如何在 Azure 资源管理器模板中设置资源位置。
 ms.topic: conceptual
 origin.date: 09/04/2019
+ms.date: 03/23/2020
 ms.author: v-yeche
-ms.date: 01/06/2020
-ms.openlocfilehash: 1b75608eaf76f78e3a68e7d17239a91a4d347c2d
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.openlocfilehash: 3128a24d06137ed1de116b5a7cb4a544f322657d
+ms.sourcegitcommit: 1436f1851342ca5631eb25342eed954adb707af0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75631551"
+ms.lasthandoff: 03/19/2020
+ms.locfileid: "79543896"
 ---
 <!--Verify successfully-->
 # <a name="set-resource-location-in-resource-manager-template"></a>在资源管理器模板中设置资源位置
@@ -21,14 +21,14 @@ ms.locfileid: "75631551"
 
 不同位置支持的资源类型不一样。 若要获取资源类型支持的位置，请使用 Azure PowerShell 或 Azure CLI。
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```powershell
 ((Get-AzResourceProvider -ProviderNamespace Microsoft.Batch).ResourceTypes `
   | Where-Object ResourceTypeName -eq batchAccounts).Locations
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli
 az provider show \
@@ -78,9 +78,9 @@ az provider show \
   "resources": [
     {
       "type": "Microsoft.Storage/storageAccounts",
+      "apiVersion": "2018-07-01",
       "name": "[variables('storageAccountName')]",
       "location": "[parameters('location')]",
-      "apiVersion": "2018-07-01",
       "sku": {
         "name": "[parameters('storageAccountType')]"
       },

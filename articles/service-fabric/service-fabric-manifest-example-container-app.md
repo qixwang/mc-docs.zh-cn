@@ -6,12 +6,12 @@ ms.topic: conceptual
 origin.date: 06/08/2018
 ms.date: 02/24/2020
 ms.author: v-yeche
-ms.openlocfilehash: bb3ece253b0caee73c8350a752e6bdb498f51806
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: 09fa4c5ec21a847f2afa4c22947d0a321f81932e
+ms.sourcegitcommit: 305361c96d1d5288d3dda7e81833820640e2afac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79292017"
+ms.lasthandoff: 03/21/2020
+ms.locfileid: "80108521"
 ---
 # <a name="multi-container-application-and-service-manifest-examples"></a>多容器应用程序和服务清单示例
 下面以示例方式说明了多容器 Service Fabric 应用程序的应用程序和服务清单。 这些示例的目的是说明什么设置可用以及如何使用它们。 这些应用程序和服务清单基于 [Windows Server 2016 容器示例](https://github.com/Azure-Samples/service-fabric-containers/tree/master/Windows)清单。
@@ -20,9 +20,11 @@ ms.locfileid: "79292017"
 
 |清单|功能|
 |---|---|
-|[应用程序清单](#application-manifest)| [重写环境变量](service-fabric-get-started-containers.md#configure-and-set-environment-variables)、[配置容器端口到主机的映射](service-fabric-get-started-containers.md#configure-container-port-to-host-port-mapping-and-container-to-container-discovery)、[配置容器注册表身份验证](service-fabric-get-started-containers.md#configure-container-repository-authentication)、[资源调控](service-fabric-resource-governance.md)、[设置隔离模式](service-fabric-get-started-containers.md#configure-isolation-mode)、[指定特定于 OS 内部版本的容器映像](service-fabric-get-started-containers.md#specify-os-build-specific-container-images)| 
+|[应用程序清单](#application-manifest)| [重写环境变量](service-fabric-get-started-containers.md#configure-and-set-environment-variables)、[配置容器端口到主机的映射](service-fabric-get-started-containers.md#configure-container-port-to-host-port-mapping-and-container-to-container-discovery)、[配置容器注册表身份验证](service-fabric-get-started-containers.md)、[资源调控](service-fabric-resource-governance.md)、[设置隔离模式](service-fabric-get-started-containers.md#configure-isolation-mode)、[指定特定于 OS 内部版本的容器映像](service-fabric-get-started-containers.md#specify-os-build-specific-container-images)| 
 |[FrontEndService 服务清单](#frontendservice-service-manifest)| [设置环境变量](service-fabric-get-started-containers.md#configure-and-set-environment-variables)、[配置终结点](service-fabric-get-started-containers.md#configure-communication)、向容器传递命令、[将证书导入到容器中](service-fabric-securing-containers.md)| 
 |[BackEndService 服务清单](#backendservice-service-manifest)|[设置环境变量](service-fabric-get-started-containers.md#configure-and-set-environment-variables)、[配置终结点](service-fabric-get-started-containers.md#configure-communication)、[配置卷驱动程序](service-fabric-containers-volume-logging-drivers.md)| 
+
+<!--Not Available on ##configure-container-repository-authentication-->
 
 请参阅[应用程序清单元素](#application-manifest-elements)、[FrontEndService 服务清单元素](#frontendservice-service-manifest-elements)和 [BackEndService 服务清单元素](#backendservice-service-manifest-elements)，详细了解特定的 XML 元素。
 

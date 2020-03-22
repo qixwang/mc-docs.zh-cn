@@ -6,16 +6,17 @@ author: msmbaldwin
 manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
+ms.subservice: general
 ms.topic: tutorial
 origin.date: 09/27/2019
-ms.date: 01/17/2020
+ms.date: 03/16/2020
 ms.author: v-tawe
-ms.openlocfilehash: baabec84b56439fc8478770ad07b84224e5e26f1
-ms.sourcegitcommit: 94e1c9621b8f81a7078f1412b3a73281d0a8668b
+ms.openlocfilehash: f59f69e4de3c2c0001dd2776a835b9cf0b666697
+ms.sourcegitcommit: 764b3d26aedce2de0e1948468a706fd3204a3d5e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76123170"
+ms.lasthandoff: 03/19/2020
+ms.locfileid: "79543305"
 ---
 # <a name="provide-key-vault-authentication-with-an-access-control-policy"></a>使用访问控制策略提供 Key Vault 身份验证
 
@@ -33,7 +34,7 @@ Key Vault 最多支持 1024 个访问策略条目，每个条目可向“主体�
 
 <!-- [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)] -->
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 - 一个 Key Vault。 可以使用现有的 Key Vault，或者遵循以下快速入门之一中的步骤创建一个新的 Key Vault：
    - [使用 Azure CLI 创建 Key Vault](quick-create-cli.md)

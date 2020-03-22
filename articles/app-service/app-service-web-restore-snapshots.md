@@ -1,20 +1,19 @@
 ---
 title: 从快照还原应用
 description: 了解如何从快照还原应用。 使用自动卷影副本从高级层中的意外数据丢失状况中恢复。
-author: ahmedelnably
 ms.assetid: 4164f9b5-f735-41c6-a2bb-71f15cdda417
 ms.topic: article
 origin.date: 04/04/2018
-ms.date: 01/13/2020
+ms.date: 03/16/2020
 ms.author: v-tawe
 ms.reviewer: nicking
 ms.custom: seodec18
-ms.openlocfilehash: 03fa93e09583f0f0f92163bcef1ca511c2b3e3c9
-ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
+ms.openlocfilehash: 56211f5cd8dbc9cf4c83727604360ae2f585db98
+ms.sourcegitcommit: e500354e2fd8b7ac3dddfae0c825cc543080f476
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75600508"
+ms.lasthandoff: 03/19/2020
+ms.locfileid: "79546997"
 ---
 # <a name="restore-an-app-in-azure-from-a-snapshot"></a>在 Azure 中从快照还原应用
 本文介绍如何在 [Azure 应用服务](../app-service/overview.md)中从快照还原应用。 可以根据应用的某个快照将应用还原到以前的状态。 不需启用快照备份，平台会自动保存所有应用的快照，用于数据恢复。

@@ -3,14 +3,14 @@ title: 资源命名限制
 description: 说明 Azure 资源的命名规则和限制。
 ms.topic: conceptual
 origin.date: 02/11/2020
-ms.date: 03/09/2020
+ms.date: 03/23/2020
 ms.author: v-yeche
-ms.openlocfilehash: d73d277611a51b743e87f10928920f5c1926e29a
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.openlocfilehash: 1f69df55add4910aa31783e8d35b70576d9807e6
+ms.sourcegitcommit: 1436f1851342ca5631eb25342eed954adb707af0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78850515"
+ms.lasthandoff: 03/19/2020
+ms.locfileid: "79543885"
 ---
 # <a name="naming-rules-and-restrictions-for-azure-resources"></a>Azure 资源的命名规则和限制
 
@@ -365,11 +365,6 @@ ms.locfileid: "78850515"
 > | userAssignedIdentities | 资源组 | 3-128 | 字母数字、连字符和下划线<br /><br />以字母或数字开头。 |
 
 <!--Not Avaialble on ## Microsoft.Maps-->
-
-> [!div class="mx-tableFixed"]
-> | 实体 | 作用域 | Length | 有效的字符 |
-> | --- | --- | --- | --- |
-> | accounts | 资源组 | 1-98（针对资源组名称和帐户名称） | 字母数字、下划线、句点和连字符。<br /><br />以字母数字开头。 |
 
 ## <a name="microsoftmedia"></a>Microsoft.Media
 

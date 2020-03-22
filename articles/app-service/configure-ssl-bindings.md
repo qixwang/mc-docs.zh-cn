@@ -4,16 +4,16 @@ description: 通过证书创建 TLS/SSL 绑定，以便保护对自定义域进�
 tags: buy-ssl-certificates
 ms.topic: tutorial
 origin.date: 10/25/2019
-ms.date: 01/13/2020
+ms.date: 03/16/2020
 ms.author: v-tawe
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: 3a127eaeaa26f9119ac4d5c9055ed5ca571716c7
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: 806b1d48caee6fe6f3e19d2af7420932638d8baf
+ms.sourcegitcommit: e500354e2fd8b7ac3dddfae0c825cc543080f476
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79291212"
+ms.lasthandoff: 03/19/2020
+ms.locfileid: "79546990"
 ---
 # <a name="secure-a-custom-dns-name-with-an-ssl-binding-in-azure-app-service"></a>在 Azure 应用服务中使用 SSL 绑定保护自定义 DNS 名称
 
@@ -149,6 +149,10 @@ ms.locfileid: "79291212"
 ![强制实施 TLS 1.1 或 1.2](./media/configure-ssl-bindings/enforce-tls1-2.png)
 
 该操作完成后，你的应用将拒绝使用更低 TLS 版本的所有连接。
+
+## <a name="handle-ssl-termination"></a>处理 SSL 终止
+
+在应用服务中，[SSL 终止](https://wikipedia.org/wiki/TLS_termination_proxy)在网络负载均衡器上发生，因此，所有 HTTPS 请求将以未加密的 HTTP 请求形式访问你的应用。 如果应用逻辑需要检查用户请求是否已加密，可以检查 `X-Forwarded-Proto` 标头。
 
 ## <a name="automate-with-scripts"></a>使用脚本自动执行
 

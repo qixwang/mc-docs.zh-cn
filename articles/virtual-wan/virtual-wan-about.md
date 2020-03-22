@@ -9,12 +9,12 @@ origin.date: 02/05/2020
 ms.date: 02/24/2020
 ms.author: v-yeche
 Customer intent: As someone with a networking background, I want to understand what Virtual WAN is and if it is the right choice for my Azure network.
-ms.openlocfilehash: e89dde5509f31ee5f8b2a0272bebd0392092c152
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.openlocfilehash: 1d46a608f12dd7dcd582acd2f32fa0695aa553eb
+ms.sourcegitcommit: 305361c96d1d5288d3dda7e81833820640e2afac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78155086"
+ms.lasthandoff: 03/21/2020
+ms.locfileid: "80109762"
 ---
 # <a name="about-azure-virtual-wan"></a>关于 Azure 虚拟 WAN
 
@@ -99,7 +99,9 @@ Azure 虚拟 WAN 将许多 Azure 云连接服务（例如，站点到站点 VPN�
 
 <a name="er"></a>
 ### <a name="expressroute-connections"></a>ExpressRoute 连接
-ExpressRoute 允许通过专用连接将本地网络连接到 Azure。 要创建连接，请参阅[使用虚拟 WAN 创建 ExpressRoute 连接](virtual-wan-expressroute-portal.md)。
+ExpressRoute 允许通过专用连接将本地网络连接到 Azure。 
+
+<!--Not Available on To create the connection, see [Create an ExpressRoute connection using Virtual WAN](virtual-wan-expressroute-portal.md)-->
 
 <a name="locations"></a>
 ## <a name="locations"></a>位置

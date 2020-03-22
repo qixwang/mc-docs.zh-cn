@@ -1,19 +1,18 @@
 ---
 title: Azure 资源日志支持的服务和架构
 description: 了解 Azure 资源日志支持的服务和事件架构。
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: reference
 author: lingliw
 ms.author: v-lingwu
 origin.date: 10/22/2019
 ms.date: 12/31/2019
-ms.openlocfilehash: 4e4261829142bc4740836e7337f6af9fffb536c7
-ms.sourcegitcommit: 27eaabd82b12ad6a6840f30763034a6360977186
+ms.openlocfilehash: dfbabbb4e4b0d62b435d76f996f3f26b83f431b1
+ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77497513"
+ms.lasthandoff: 03/17/2020
+ms.locfileid: "79452308"
 ---
 # <a name="supported-services-schemas-and-categories-for-azure-resource-logs"></a>Azure 资源日志支持的服务、架构和类别
 

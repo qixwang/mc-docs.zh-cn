@@ -5,15 +5,15 @@ author: ccompy
 ms.assetid: 5c61eed1-1ad1-4191-9f71-906d610ee5b7
 ms.topic: article
 origin.date: 02/27/2020
-ms.date: 03/23/2020
+ms.date: 03/16/2020
 ms.author: v-tawe
 ms.custom: seodec18
-ms.openlocfilehash: fdee7cef30773897f8ae821e0285ee11e2876e58
-ms.sourcegitcommit: d5eca3c6b03b206e441b599e5b138bd687a91361
+ms.openlocfilehash: 6f68273aacdcf8b39a314399da85a7a547409f59
+ms.sourcegitcommit: e500354e2fd8b7ac3dddfae0c825cc543080f476
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78934808"
+ms.lasthandoff: 03/19/2020
+ms.locfileid: "79546945"
 ---
 # <a name="app-service-networking-features"></a>应用服务网络功能
 

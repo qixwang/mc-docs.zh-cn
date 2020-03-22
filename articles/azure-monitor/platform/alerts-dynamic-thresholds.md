@@ -2,19 +2,17 @@
 title: 在 Azure Monitor 中创建具有动态阈值的警报
 description: 使用基于机器学习的动态阈值创建警报
 author: lingliw
-services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
 origin.date: 02/16/2020
-ms.date: 2/16/2020
+ms.date: 3/13/2020
 ms.author: v-lingwu
-ms.reviewer: mbullwin
-ms.openlocfilehash: 5442a315d189c294d486384314ba4bbe036d23c8
-ms.sourcegitcommit: 27eaabd82b12ad6a6840f30763034a6360977186
+ms.openlocfilehash: bd14650a71639cc85d49ca03171952672cb4f2d1
+ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77497452"
+ms.lasthandoff: 03/17/2020
+ms.locfileid: "79452560"
 ---
 # <a name="metric-alerts-with-dynamic-thresholds-in-azure-monitor"></a>Azure Monitor 中具有动态阈值的指标警报
 

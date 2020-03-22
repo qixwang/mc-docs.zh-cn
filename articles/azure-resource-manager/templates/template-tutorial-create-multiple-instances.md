@@ -3,15 +3,15 @@ title: 创建多个资源实例
 description: 了解如何创建 Azure 资源管理器模板用于创建多个 Azure 资源实例。
 author: rockboyfor
 origin.date: 03/04/2019
-ms.date: 01/06/2020
+ms.date: 03/23/2020
 ms.topic: tutorial
 ms.author: v-yeche
-ms.openlocfilehash: 30f4a1fc5677a730f12f47ed642a38f704e731f1
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: 99df04c087a6d3e1d182515a27bd05f5eeb6eb48
+ms.sourcegitcommit: 1436f1851342ca5631eb25342eed954adb707af0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79291240"
+ms.lasthandoff: 03/19/2020
+ms.locfileid: "79543912"
 ---
 # <a name="tutorial-create-multiple-resource-instances-with-resource-manager-templates"></a>教程：使用资源管理器模板创建多个资源实例
 
@@ -111,7 +111,7 @@ ms.locfileid: "79291240"
 }
 ```
 
-有关创建多个实例的详细信息，请参阅[在 Azure 资源管理器模板中部署一个资源或属性的多个实例](./create-multiple-instances.md)
+有关创建多个实例的详细信息，请参阅[在 Azure 资源管理器模板中部署一个资源或属性的多个实例](./copy-resources.md)
 
 ## <a name="deploy-the-template"></a>部署模板
 

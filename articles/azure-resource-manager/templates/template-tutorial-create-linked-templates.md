@@ -3,15 +3,15 @@ title: 创建链接模板
 description: 了解如何创建 Azure 资源管理器链接模板，以便创建虚拟机。
 author: rockboyfor
 origin.date: 12/03/2019
-ms.date: 01/06/2020
+ms.date: 03/23/2020
 ms.topic: tutorial
 ms.author: v-yeche
-ms.openlocfilehash: 2e30e527f299b8e49927bdbd9c87db0721454548
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.openlocfilehash: 0e37c5857fbe41421e86b35c4a0f21b9ce6b3543
+ms.sourcegitcommit: 1436f1851342ca5631eb25342eed954adb707af0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75631582"
+ms.lasthandoff: 03/19/2020
+ms.locfileid: "79543916"
 ---
 <!--Verify successfully-->
 # <a name="tutorial-create-linked-azure-resource-manager-templates"></a>教程：创建 Azure 资源管理器链接模板
@@ -44,7 +44,7 @@ ms.locfileid: "75631582"
 * 包含资源管理器工具扩展的 Visual Studio Code。 请参阅[使用 Visual Studio Code 创建 Azure 资源管理器模板](use-vs-code-to-create-template.md)。
 * 若要提高安全性，请使用为虚拟机管理员帐户生成的密码。 以下是密码生成示例：
 
-    ```azurecli
+    ```console
     openssl rand -base64 32
     ```
 
@@ -52,7 +52,7 @@ ms.locfileid: "75631582"
 
 ## <a name="open-a-quickstart-template"></a>打开快速入门模板
 
-Azure 快速入门模板是资源管理器模板的存储库。 无需从头开始创建模板，只需找到一个示例模板并对其自定义即可。 本教程中使用的模板称为[部署简单的 Windows VM](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows/)。 这是在[教程：使用依赖的资源创建 Azure 资源管理器模板](./template-tutorial-create-templates-with-dependent-resources.md)中使用的同一模板。 请保存同一模板的两个副本，用作：
+Azure 快速入门模板是资源管理器模板的存储库。 无需从头开始创建模板，只需找到一个示例模板并对其自定义即可。 本教程中使用的模板称为[部署简单的 Windows VM](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows/)。 这是在[教程：使用依赖的资源创建 Azure 资源管理器模板](./template-tutorial-create-templates-with-dependent-resources.md)中使用的。 请保存同一模板的两个副本，用作：
 
 * **主模板**：创建除存储帐户之外的所有资源。
 * **链接模板**：创建存储帐户。
@@ -147,9 +147,9 @@ Azure 快速入门模板是资源管理器模板的存储库。 无需从头开�
           "resources": [
             {
               "type": "Microsoft.Storage/storageAccounts",
+              "apiVersion": "2018-11-01",
               "name": "[parameters('storageAccountName')]",
               "location": "[parameters('location')]",
-              "apiVersion": "2018-11-01",
               "sku": {
                 "name": "Standard_LRS"
               },

@@ -5,12 +5,12 @@ ms.topic: conceptual
 origin.date: 02/11/2020
 ms.date: 02/24/2020
 ms.author: v-yeche
-ms.openlocfilehash: 30d539027b3e25d5b6d64494217580c09071c983
-ms.sourcegitcommit: 781f68d27903687f0aa9e1ed273eee25c6d129a1
+ms.openlocfilehash: 2fcbea89264198c3506d7efb14932d3e6ca6d907
+ms.sourcegitcommit: 305361c96d1d5288d3dda7e81833820640e2afac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77611222"
+ms.lasthandoff: 03/21/2020
+ms.locfileid: "80109764"
 ---
 # <a name="physical-server-to-azure-disaster-recovery-architecture"></a>物理服务器到 Azure 的灾难恢复体系结构
 
@@ -41,10 +41,12 @@ ms.locfileid: "77611222"
     - 配置服务器通过 HTTPS 出站端口 443 与 Azure 协调复制管理。
     - 进程服务器从源计算机接收数据、优化和加密数据，然后通过 HTTPS 出站端口 443 将其发送到 Azure 存储。
     - 如果启用了多 VM 一致性，则复制组中的计算机将通过端口 20004 相互通信。 如果将多台计算机分组到复制组，并且这些组在故障转移时共享崩溃一致且应用一致的恢复点，请使用多 VM 方案。 如果计算机运行相同的工作负载并需要保持一致，则这些组非常有用。
-1. 流量通过 Internet 复制到 Azure 存储公共终结点。 或者，可以使用 Azure ExpressRoute [公共对等互连](../expressroute/about-public-peering.md)。
+1. 流量通过 Internet 复制到 Azure 存储公共终结点。
 
-   > [!NOTE]
-   > 不支持使用站点到站点 VPN 通过本地站点或 Azure ExpressRoute [专用对等互连](concepts-expressroute-with-site-recovery.md#on-premises-to-azure-replication-with-expressroute)进行复制。
+     <!--Not Available on [public peering](../expressroute/about-public-peering.md)-->
+
+    > [!NOTE]
+    > 不支持使用站点到站点 VPN 通过本地站点或 Azure ExpressRoute [专用对等互连](concepts-expressroute-with-site-recovery.md#on-premises-to-azure-replication-with-expressroute)进行复制。
 
 **物理机到 Azure 的复制过程**
 

@@ -5,15 +5,15 @@ author: msangapu-msft
 ms.assetid: 60495cc5-6963-4bf0-8174-52786d226c26
 ms.topic: quickstart
 origin.date: 08/23/2019
-ms.date: 03/23/2020
+ms.date: 03/16/2020
 ms.author: v-tawe
 ms.custom: mvc, cli-validate, seodec18
-ms.openlocfilehash: a88404d34c97e093a3436ef4331a30cc1ee34c86
-ms.sourcegitcommit: d5eca3c6b03b206e441b599e5b138bd687a91361
+ms.openlocfilehash: 259f0a4f01029034ea63e77a89cbcaaded7d7f50
+ms.sourcegitcommit: e500354e2fd8b7ac3dddfae0c825cc543080f476
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78934722"
+ms.lasthandoff: 03/19/2020
+ms.locfileid: "79547003"
 ---
 # <a name="create-a-static-html-web-app-in-azure"></a>在 Azure 中创建静态 HTML Web 应用
 
@@ -49,7 +49,9 @@ git clone https://github.com/Azure-Samples/html-docs-hello-world.git
 
 ```bash
 cd html-docs-hello-world
+```
 
+```azurecli
 az webapp up --location chinaeast --name <app_name> --html
 ```
 
@@ -101,7 +103,7 @@ az webapp up --location chinaeast --name <app_name> --html
 
 现在，需使用同一 `az webapp up` 命令重新部署应用。
 
-```bash
+```azurecli
 az webapp up --location chinaeast --name <app_name> --html
 ```
 
@@ -129,7 +131,7 @@ az webapp up --location chinaeast --name <app_name> --html
 
 在前面的步骤中，在资源组中创建了 Azure 资源。 如果认为将来不需要这些资源，请在 CLI 中运行以下命令以删除资源组。 请记住，资源组名称已在[创建 Web 应用](#create-a-web-app)步骤中自动为你生成。
 
-```bash
+```azurecli
 az group delete --name appsvc_rg_Windows_chinaeast
 ```
 

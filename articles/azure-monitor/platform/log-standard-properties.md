@@ -1,7 +1,6 @@
 ---
 title: Azure Monitor 日志记录中的标准属性 | Microsoft Docs
 description: 介绍 Azure Monitor 日志中多种数据类型共有的属性。
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: lingliw
@@ -9,12 +8,12 @@ manager: digimobile
 origin.date: 07/18/2019
 ms.date: 07/21/2019
 ms.author: v-lingwu
-ms.openlocfilehash: ceadd3f3c39df53c14baac773d6d5159620b3bd4
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: dabcdd0a8df526f879b388db9325ea34a6820b4e
+ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79293262"
+ms.lasthandoff: 03/17/2020
+ms.locfileid: "79452439"
 ---
 # <a name="standard-properties-in-azure-monitor-logs"></a>Azure Monitor 日志中的标准属性
 Azure Monitor 日志中的数据[作为一组记录存储在 Log Analytics 工作区或 Application Insights 应用程序](../log-query/logs-structure.md)中，每条记录都具有特定的数据类型，该数据类型包含一组惟一的属性。 许多数据类型都具有在多种类型中通用的标准属性。 本文介绍这些属性，并提供如何在查询中使用它们的示例。

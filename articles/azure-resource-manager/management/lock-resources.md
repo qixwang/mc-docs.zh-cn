@@ -2,24 +2,22 @@
 title: 锁定资源以防止更改
 description: 通过对所有用户和角色应用锁，来防止用户更新或删除关键 Azure 资源。
 ms.topic: conceptual
-origin.date: 05/14/2019
-ms.date: 01/20/2020
+origin.date: 02/07/2020
+ms.date: 03/23/2020
 ms.author: v-yeche
-ms.openlocfilehash: 8597a4b6cfe24a501194127c128d79bea0310f1a
-ms.sourcegitcommit: 8de025ca11b62e06ba3762b5d15cc577e0c0f15d
+ms.openlocfilehash: 84979999860f0311896ec02281644379364215ed
+ms.sourcegitcommit: 1436f1851342ca5631eb25342eed954adb707af0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76165468"
+ms.lasthandoff: 03/19/2020
+ms.locfileid: "79543898"
 ---
 # <a name="lock-resources-to-prevent-unexpected-changes"></a>锁定资源，以防止意外更改
 
 作为管理员，可能需要锁定订阅、资源组或资源，以防止组织中的其他用户意外删除或修改关键资源。 可以将锁定级别设置为 **CanNotDelete** 或 **ReadOnly**。 在门户中，锁定分别称为**删除**和**只读**。
 
 * **CanNotDelete** 味着经授权的用户仍可读取和修改资源，但不能删除资源。 
-* **ReadOnly** 意味着经授权的用户可以读取资源，但不能删除或更新资源。 应用此锁类似于将所有经授权的用户限制于“读者”  角色授予的权限。 
-
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+* **ReadOnly** 意味着经授权的用户可以读取资源，但不能删除或更新资源。 应用此锁类似于将所有经授权的用户限制于“读者”  角色授予的权限。
 
 ## <a name="how-locks-are-applied"></a>锁的应用方式
 
@@ -38,12 +36,15 @@ Resource Manager 锁仅适用于管理平面内发生的操作，包括发送到
 * 包含虚拟机的资源组上的 **ReadOnly** 锁会阻止所有用户启动或重启虚拟机。 这些操作需要 POST 请求。
 
 ## <a name="who-can-create-or-delete-locks"></a>谁可以创建或删除锁
+
 若要创建或删除管理锁，必须有权执行 `Microsoft.Authorization/*` 或 `Microsoft.Authorization/locks/*` 操作。 在内置角色中，只有“所有者”和“用户访问管理员”有权执行这些操作。  
 
 <!--Not Available on ## Managed Applications and locks-->
 <!--Not Available on Azure Databricks-->
 
+
 ## <a name="portal"></a>门户
+
 [!INCLUDE [resource-manager-lock-resources](../../../includes/resource-manager-lock-resources.md)]
 
 ## <a name="template"></a>模板

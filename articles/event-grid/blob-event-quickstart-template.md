@@ -4,27 +4,31 @@ description: 使用 Azure 事件网格和 Azure 资源管理器模板创建 Blob
 services: event-grid
 keywords: ''
 author: spelluru
-ms.author: v-yiso
-origin.date: 01/15/2020
-ms.date: 02/17/2020
+ms.author: v-lingwu
+origin.date: 02/27/2020
+ms.date: 3/16/2020
 ms.topic: quickstart
 ms.service: event-grid
-ms.openlocfilehash: 9d004408da7feb6cd47b194e531aac9dce1e6b04
-ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
+ms.custom: subject-armqs
+ms.openlocfilehash: 62ebdf289606b36f6124bdb0a57de31ef6b4a052
+ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77068539"
+ms.lasthandoff: 03/17/2020
+ms.locfileid: "79452596"
 ---
 # <a name="route-blob-storage-events-to-web-endpoint-by-using-azure-resource-manager-template"></a>使用 Azure 资源管理器模板将 Blob 存储事件路由到 Web 终结点
+
 Azure 事件网格是针对云的事件处理服务。 在本文中，你将使用 **Azure 资源管理器模板**创建 Blob 存储帐户、订阅该 Blob 存储的事件，并触发事件来查看结果。 通常，你会将事件发送到处理事件数据并执行操作的终结点。 但是，为了简化本文，你将事件发送到收集并显示消息的 Web 应用。
 
-[资源管理器模板](../azure-resource-manager/templates/overview.md)是定义项目基础结构和配置的 JavaScript 对象表示法 (JSON) 文件。 该模板使用声明性语法，使你可以指明要部署的内容，而不需要编写一系列编程命令来创建内容。 若要详细了解如何开发资源管理器模板，请参阅[资源管理器文档](/azure-resource-manager/)。
+[!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
 如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
+
 ### <a name="create-a-message-endpoint"></a>创建消息终结点
+
 在订阅 Blob 存储的事件之前，让我们创建事件消息的终结点。 通常情况下，终结点基于事件数据执行操作。 为了简化此快速入门，将部署用于显示事件消息的[预建的 Web 应用](https://github.com/Azure-Samples/azure-event-grid-viewer)。 所部署的解决方案包括应用服务计划、应用服务 Web 应用和 GitHub 中的源代码。
 
 1. 选择“部署到 Azure”  将解决方案部署到你的订阅。 在 Azure 门户中，为参数提供值。
@@ -36,8 +40,10 @@ Azure 事件网格是针对云的事件处理服务。 在本文中，你将使�
 
    ![查看新站点](./media/blob-event-quickstart-portal/view-site.png)
 
-
 ## <a name="create-a-storage-account-with-an-event-grid-subscription"></a>创建包含事件网格订阅的存储帐户
+
+### <a name="review-the-template"></a>查看模板
+
 本快速入门中使用的模板来自 [Azure 快速入门模板](https://github.com/Azure/azure-quickstart-templates/tree/master/101-event-grid-subscription-and-storage)。
 
 ```JSON
@@ -118,8 +124,10 @@ Azure 事件网格是针对云的事件处理服务。 在本文中，你将使�
 
 该模板中定义了两个 Azure 资源：
 
-* **Microsoft.Storage/storageAccounts**：创建 Azure 存储帐户。
-* **Microsoft.Storage/storageAccounts/providers/eventSubscriptions**：为存储帐户创建 Azure 事件网格订阅。 
+* [**Microsoft.Storage/storageAccounts**](https://docs.microsoft.com/azure/templates/Microsoft.Storage/2019-06-01/storageAccounts)：创建 Azure 存储帐户。
+* [**Microsoft.Storage/storageAccounts/providers/eventSubscriptions**](https://docs.microsoft.com/azure/templates/microsoft.eventgrid/eventsubscriptions)：为存储帐户创建 Azure 事件网格订阅。
+
+### <a name="deploy-the-template"></a>部署模板
 
 1. 选择以下链接登录到 Azure 并打开一个模板。 该模板将创建 Key Vault 和机密。
 
@@ -145,16 +153,16 @@ Azure 事件网格是针对云的事件处理服务。 在本文中，你将使�
 
 ![查看结果](./media/blob-event-quickstart-portal/view-results.png)
 
-
-
 ## <a name="clean-up-resources"></a>清理资源
+
 不再需要资源组时，[可将其删除](../azure-resource-manager/management/delete-resource-group.md?tabs=azure-portal#delete-resource-group
-)。 
+)。
 
 ## <a name="next-steps"></a>后续步骤
+
 有关 Azure 资源管理器模板的详细信息，请参阅以下文章：
 
 - [Azure 资源管理器文档](/azure-resource-manager)
-- [在 Azure 资源管理器模板中定义资源](https://docs.microsoft.com/en-us/azure/templates/)
+- [在 Azure 资源管理器模板中定义资源](https://docs.microsoft.com/azure/templates/)
 - [Azure 快速入门模板](https://azure.microsoft.com/resources/templates/)
 - [Azure 事件网格概述](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Eventgrid)。

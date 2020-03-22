@@ -1,24 +1,25 @@
 ---
 title: 管理警报和智能组状态
 description: 管理警报和智能组实例的状态
-ms.service: azure-monitor
 ms.subservice: alerts
 ms.topic: conceptual
 author: lingliw
 origin.date: 05/30/2019
-ms.date: 09/24/2018
+ms.date: 03/13/2020
 ms.author: v-lingwu
-ms.openlocfilehash: 4f6c197322b48a854d0de5e94c4d6e298eea5f9b
-ms.sourcegitcommit: 27eaabd82b12ad6a6840f30763034a6360977186
+ms.openlocfilehash: 840cf7a1227a6801b5f16045edeacdcdb949126d
+ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77497455"
+ms.lasthandoff: 03/17/2020
+ms.locfileid: "79452509"
 ---
 # <a name="manage-alert-and-smart-group-states"></a>管理警报和智能组状态
+
 Azure Monitor 中的警报现在具有[警报状态和监视条件](https://aka.ms/azure-alerts-overview)，与此类似，智能组具有[智能组状态](https://aka.ms/smart-groups)。 现在，在与相应警报或智能组相关联的历史记录中捕获对状态的更改。 本文将指导完成更改状态（包括警报和智能组）的过程。
 
 ## <a name="change-the-state-of-an-alert"></a>更改警报状态
+
 1. 可按以下不同方式更改警报的状态： 
     * 在“所有警报”页，单击要更改其状态的警报旁边的复选框，然后单击“更改”状态。   
     ![监视](./media/alerts-managing-alert-states/state-all-alerts.jpg)

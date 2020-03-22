@@ -6,17 +6,18 @@ author: msmbaldwin
 manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
+ms.subservice: secrets
 ms.topic: quickstart
 ms.custom: mvc
 origin.date: 09/03/2019
-ms.date: 12/09/2019
+ms.date: 03/16/2020
 ms.author: v-tawe
-ms.openlocfilehash: 5134ec0da21c56a9a90b8f2a176de0afdee7b28b
-ms.sourcegitcommit: 21b02b730b00a078a76aeb5b78a8fd76ab4d6af2
+ms.openlocfilehash: e3689241e1039efef55e3a06e88365d90ec63c48
+ms.sourcegitcommit: 764b3d26aedce2de0e1948468a706fd3204a3d5e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74838943"
+ms.lasthandoff: 03/19/2020
+ms.locfileid: "79543353"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-the-azure-portal"></a>快速入门：使用 Azure 门户在 Azure Key Vault 中设置和检索机密
 

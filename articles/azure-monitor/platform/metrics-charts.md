@@ -3,18 +3,17 @@ title: Azure 指标资源管理器的高级功能
 description: 了解 Azure Monitor 指标资源管理器的高级功能
 author: lingliw
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 origin.date: 01/29/2019
 ms.date: 6/4/2019
 ms.author: v-lingwu
 ms.subservice: metrics
-ms.openlocfilehash: 6836ec26d321be6e6093fe959da958512c92b185
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: e1c51fc17c91e1b92bfa837cc13a78d6eb870edd
+ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79292327"
+ms.lasthandoff: 03/17/2020
+ms.locfileid: "79452405"
 ---
 # <a name="advanced-features-of-azure-metrics-explorer"></a>Azure 指标资源管理器的高级功能
 

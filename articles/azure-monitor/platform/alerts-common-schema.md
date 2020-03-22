@@ -2,18 +2,17 @@
 title: Azure Monitor 警报的通用警报架构
 description: 了解通用警报架构、应该使用它的原因以及启用它的方法
 author: lingliw
-ms.service: azure-monitor
-ms.subservice: alerts
 ms.topic: conceptual
+ms.subservice: alerts
 origin.date: 03/14/2019
 ms.date: 04/14/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 69bef952657d8370e305683971238c89a824dfe4
-ms.sourcegitcommit: 27eaabd82b12ad6a6840f30763034a6360977186
+ms.openlocfilehash: 5a117e6838c80e706dd3daa1c106d4d82e7fd492
+ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77497451"
+ms.lasthandoff: 03/17/2020
+ms.locfileid: "79452576"
 ---
 # <a name="common-alert-schema"></a>常见警报架构
 

@@ -3,18 +3,17 @@ title: 使用 REST API 将指标发送到 Azure Monitor 指标数据库
 description: 使用 REST API 将 Azure 资源的自定义指标发送到 Azure Monitor 指标存储
 author: lingliw
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 origin.date: 09/24/2018
 ms.date: 04/12/2019
 ms.author: v-lingwu
 ms.subservice: metrics
-ms.openlocfilehash: da5765383fd4c25870c58ddc0847a02a880dc061
-ms.sourcegitcommit: 27eaabd82b12ad6a6840f30763034a6360977186
+ms.openlocfilehash: 3b6121b00bf50bd09e4e462d7978d8deb8452823
+ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77497418"
+ms.lasthandoff: 03/17/2020
+ms.locfileid: "79452397"
 ---
 # <a name="send-custom-metrics-for-an-azure-resource-to-the-azure-monitor-metric-store-by-using-a-rest-api"></a>使用 REST API 将 Azure 资源的自定义指标发送到 Azure Monitor 指标存储
 

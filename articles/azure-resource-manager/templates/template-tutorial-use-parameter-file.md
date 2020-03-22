@@ -3,15 +3,15 @@ title: 教程 - 使用参数文件部署模板
 description: 使用参数文件，其中包含的值可用于部署 Azure 资源管理器模板。
 author: rockboyfor
 origin.date: 10/04/2019
-ms.date: 01/06/2020
+ms.date: 03/23/2020
 ms.topic: tutorial
 ms.author: v-yeche
-ms.openlocfilehash: 9b0c796327b182ec8bc809f0c8e444e59895d92e
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.openlocfilehash: a96f0177373fe53c9364c6dbdf155c609c5bbaae
+ms.sourcegitcommit: 1436f1851342ca5631eb25342eed954adb707af0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75631470"
+ms.lasthandoff: 03/19/2020
+ms.locfileid: "79543886"
 ---
 # <a name="tutorial-use-parameter-files-to-deploy-your-resource-manager-template"></a>教程：使用参数文件部署资源管理器模板
 
@@ -21,7 +21,7 @@ ms.locfileid: "75631470"
 
 建议完成[有关标记的教程](template-tutorial-add-tags.md)，但这不是必需的。
 
-必须有包含资源管理器工具扩展的 Visual Studio Code，以及 Azure PowerShell 或 Azure CLI。 有关详细信息，请参阅[模板工具](template-tutorial-create-first-template.md#get-tools)。
+必须已安装带有资源管理器工具扩展的 Visual Studio Code，以及 Azure PowerShell 或 Azure CLI。 有关详细信息，请参阅[模板工具](template-tutorial-create-first-template.md#get-tools)。
 
 ## <a name="review-template"></a>审阅模板
 
@@ -122,19 +122,19 @@ ms.locfileid: "75631470"
     {
       "type": "Microsoft.Web/sites",
       "apiVersion": "2016-08-01",
-      "kind": "app",
       "name": "[variables('webAppPortalName')]",
       "location": "[parameters('location')]",
+      "dependsOn": [
+        "[parameters('appServicePlanName')]"
+      ],
       "tags": "[parameters('resourceTags')]",
+      "kind": "app",
       "properties": {
         "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', parameters('appServicePlanName'))]",
         "siteConfig": {
           "linuxFxVersion": "[parameters('linuxFxVersion')]"
         }
-      },
-      "dependsOn": [
-        "[parameters('appServicePlanName')]"
-      ]
+      }
     }
   ],
   "outputs": {
@@ -156,28 +156,28 @@ ms.locfileid: "75631470"
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "storagePrefix": {
-            "value": "devstore"
-        },
-        "storageSKU": {
-            "value": "Standard_LRS"
-        },
-        "appServicePlanName": {
-            "value": "devplan"
-        },
-        "webAppName": {
-            "value": "devapp"
-        },
-        "resourceTags": {
-            "value": {
-                "Environment": "Dev",
-                "Project": "Tutorial"
-            }
-        }
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "storagePrefix": {
+      "value": "devstore"
+    },
+    "storageSKU": {
+      "value": "Standard_LRS"
+    },
+    "appServicePlanName": {
+      "value": "devplan"
+    },
+    "webAppName": {
+      "value": "devapp"
+    },
+    "resourceTags": {
+      "value": {
+        "Environment": "Dev",
+        "Project": "Tutorial"
+      }
     }
+  }
 }
 ```
 
@@ -187,28 +187,28 @@ ms.locfileid: "75631470"
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "storagePrefix": {
-            "value": "contosodata"
-        },
-        "storageSKU": {
-            "value": "Standard_GRS"
-        },
-        "appServicePlanName": {
-            "value": "contosoplan"
-        },
-        "webAppName": {
-            "value": "contosowebapp"
-        },
-        "resourceTags": {
-            "value": {
-                "Environment": "Production",
-                "Project": "Tutorial"
-            }
-        }
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "storagePrefix": {
+      "value": "contosodata"
+    },
+    "storageSKU": {
+      "value": "Standard_GRS"
+    },
+    "appServicePlanName": {
+      "value": "contosoplan"
+    },
+    "webAppName": {
+      "value": "contosowebapp"
+    },
+    "resourceTags": {
+      "value": {
+        "Environment": "Production",
+        "Project": "Tutorial"
+      }
     }
+  }
 }
 ```
 
@@ -222,7 +222,7 @@ ms.locfileid: "75631470"
 
 首先，我们部署到开发环境。
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 $templateFile = "{provide-the-path-to-the-template-file}"
@@ -237,14 +237,14 @@ New-AzResourceGroupDeployment `
   -TemplateParameterFile $parameterFile
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli
 templateFile="{provide-the-path-to-the-template-file}"
 az group create \
   --name myResourceGroupDev \
   --location "China East"
-az group deployment create \
+az deployment group create \
   --name devenvironment \
   --resource-group myResourceGroupDev \
   --template-file $templateFile \
@@ -255,7 +255,7 @@ az group deployment create \
 
 现在，我们部署到生产环境。
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 $parameterFile="{path-to-azuredeploy.parameters.prod.json}"
@@ -269,13 +269,13 @@ New-AzResourceGroupDeployment `
   -TemplateParameterFile $parameterFile
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli
 az group create \
   --name myResourceGroupProd \
   --location "China North"
-az group deployment create \
+az deployment group create \
   --name prodenvironment \
   --resource-group myResourceGroupProd \
   --template-file $templateFile \
@@ -289,7 +289,7 @@ az group deployment create \
 可以通过在 Azure 门户中浏览资源组来验证部署。
 
 1. 登录到 [Azure 门户](https://portal.azure.cn)。
-1. 从左侧菜单中，选择“资源组”  。
+1. 在左侧菜单中选择“资源组”。 
 1. 可以看到在本教程中部署的两个新资源组。
 1. 选择任一资源组，查看部署的资源。 请注意，这些资源与我们在参数文件中为该环境指定的值匹配。
 

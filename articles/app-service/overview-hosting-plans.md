@@ -5,15 +5,15 @@ keywords: 应用服务, azure 应用服务, 缩放, 可缩放, 可伸缩性, 应
 ms.assetid: dea3f41e-cf35-481b-a6bc-33d7fc9d01b1
 ms.topic: article
 origin.date: 11/09/2017
-ms.date: 02/23/2020
+ms.date: 02/16/2020
 ms.author: v-tawe
 ms.custom: seodec18
-ms.openlocfilehash: 9a2173f140dbc5df16d64793ffef3c9500831791
-ms.sourcegitcommit: d5eca3c6b03b206e441b599e5b138bd687a91361
+ms.openlocfilehash: 5abdc8bd3c4292558ee9e23934651db3f55cd7eb
+ms.sourcegitcommit: e500354e2fd8b7ac3dddfae0c825cc543080f476
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78934797"
+ms.lasthandoff: 03/19/2020
+ms.locfileid: "79546936"
 ---
 # <a name="azure-app-service-plan-overview"></a>Azure 应用服务计划概述
 
@@ -34,9 +34,7 @@ ms.locfileid: "78934797"
 
 [!INCLUDE [app-service-dev-test-note](../../includes/app-service-dev-test-note.md)]
 
-每个层还提供应用服务功能的特定子集。 这些功能包括自定义域和 SSL 证书、自动缩放、部署槽位、备份、流量管理器集成，等等。 层越高，可用的功能越多。
-
-<!-- To find out which features are supported in each pricing tier, see [App Service plan details](https://www.azure.cn/pricing/details/app-service/plans/).-->
+每个层还提供应用服务功能的特定子集。 这些功能包括自定义域和 SSL 证书、自动缩放、部署槽位、备份、流量管理器集成，等等。 层越高，可用的功能越多。 若要了解每个定价层支持的功能，请参阅[应用服务计划详细信息](https://azure.microsoft.com/pricing/details/app-service/)。
 
 <a name="new-pricing-tier-premiumv2"></a>
 

@@ -16,12 +16,12 @@ ms.workload: iaas-sql-server
 origin.date: 08/30/2018
 ms.date: 02/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: eaf93902838ce525972ce4d49ad4c535e451cf05
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: 48b9c5a4a037ec0138791a66c2eda50891091c12
+ms.sourcegitcommit: 305361c96d1d5288d3dda7e81833820640e2afac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79291823"
+ms.lasthandoff: 03/21/2020
+ms.locfileid: "80108527"
 ---
 # <a name="tutorial-configure-availability-group-on-azure-sql-server-vm-manually"></a>教程：在 Azure SQL Server VM 上手动配置可用性组
 
@@ -354,7 +354,9 @@ Repeat these steps on the second SQL Server.
 
 在 Azure 虚拟机上， SQL Server 可用性组需要负载均衡器。 负载均衡器保留可用性组侦听程序和 Windows Server 故障转移群集的 IP 地址。 本部分概述如何在 Azure 门户中创建负载均衡器。
 
-Azure 负载均衡器可以是标准负载均衡器或基本负载均衡器。 标准负载均衡器的功能比基本负载均衡器的功能更多。 对于可用性组，如果使用可用性区域（而不是可用性集），则需要标准负载均衡器。 有关负载均衡器类型之间的差异的详细信息，请参阅[负载均衡器 SKU 比较](../../../load-balancer/load-balancer-overview.md#skus)。
+Azure 负载均衡器可以是标准负载均衡器或基本负载均衡器。 标准负载均衡器的功能比基本负载均衡器的功能更多。 对于可用性组，如果使用可用性区域（而不是可用性集），则需要标准负载均衡器。 有关负载均衡器类型之间的差异的详细信息，请参阅[负载均衡器 SKU 比较](../../../load-balancer/load-balancer-overview.md)。
+
+<!--Not Available on #skus-->
 
 1. 在 Azure 门户中，转到 SQL Server 所在的资源组，然后单击“+ 添加”  。
 1. 搜索“负载均衡器”  。 选择 Microsoft 发布的负载均衡器。

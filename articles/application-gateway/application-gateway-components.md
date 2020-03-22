@@ -5,14 +5,14 @@ services: application-gateway
 author: abshamsft
 ms.service: application-gateway
 ms.topic: article
-ms.date: 12/30/2019
+ms.date: 03/16/2020
 ms.author: v-junlch
-ms.openlocfilehash: fc97c07c05bd11a3780c4c4b94a2954c90c0ffa3
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.openlocfilehash: 811b22660102e1b084e1469a2af1aa1cfb412868
+ms.sourcegitcommit: 71a386ca0d0ecb79a123399b6ab6b8c70ea2aa78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75624329"
+ms.lasthandoff: 03/18/2020
+ms.locfileid: "79497296"
 ---
 # <a name="application-gateway-components"></a>应用程序网关组件
 
@@ -53,7 +53,7 @@ V1 SKU 可以配置为支持静态或动态内部 IP 地址和动态公共 IP �
 >仅针对连接到应用程序网关侦听程序的客户端提供了 HTTP/2 协议支持。 与后端服务器池的通信始终通过 HTTP/1.1 进行。 默认情况下，HTTP/2 支持处于禁用状态。 可以选择启用该协议。
 
 - 在侦听器配置中指定 HTTP 或 HTTPS 协议。
-- 原生支持 [WebSocket 和 HTTP/2 协议](overview.md#websocket-and-http2-traffic)，默认已启用 [WebSocket 支持](application-gateway-websocket.md)。 用户无法通过配置设置来选择性地启用或禁用 WebSocket 支持。 对 HTTP 和 HTTPS 侦听器使用 WebSocket。
+- 原生支持 [WebSocket 和 HTTP/2 协议](features.md#websocket-and-http2-traffic)，默认已启用 [WebSocket 支持](application-gateway-websocket.md)。 用户无法通过配置设置来选择性地启用或禁用 WebSocket 支持。 对 HTTP 和 HTTPS 侦听器使用 WebSocket。
 
 使用 HTTPS 侦听器进行 SSL 终止。 HTTPS 侦听器可将加密和解密工作卸载到应用程序网关，以避免加密和解密开销给 Web 服务器造成负担。
 
@@ -115,9 +115,9 @@ HTTP 设置中使用的端口和协议确定应用程序网关与后端服务器
 
 此组件还用于：
 
-- 使用[基于 Cookie 的会话相关性](overview.md#session-affinity)确定是否要在同一台服务器上保留用户会话。
+- 使用[基于 Cookie 的会话相关性](features.md#session-affinity)确定是否要在同一台服务器上保留用户会话。
 
-- 使用[连接清空](overview.md#connection-draining)正常删除后端池成员。
+- 使用[连接清空](features.md#connection-draining)正常删除后端池成员。
 
 - 关联自定义探测以监视后端运行状况、设置请求超时间隔、替代请求中的主机名和路径，以及一键式指定应用服务后端的设置。
 

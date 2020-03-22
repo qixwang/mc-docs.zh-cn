@@ -1,16 +1,16 @@
 ---
-author: linda33wj
+author: WenJason
 ms.service: data-factory
 ms.topic: include
 origin.date: 11/09/2018
-ms.date: 01/06/2020
+ms.date: 02/23/2020
 ms.author: v-jay
-ms.openlocfilehash: afc560e175e2b9c7b3a2ea3c8283d27937a9ebf5
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.openlocfilehash: ec54123eab609cf8383e2d8713ea5f01adb3abfe
+ms.sourcegitcommit: 71a386ca0d0ecb79a123399b6ab6b8c70ea2aa78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75631694"
+ms.lasthandoff: 03/18/2020
+ms.locfileid: "79497103"
 ---
 ## <a name="create-a-self-hosted-integration-runtime"></a>创建自承载 Integration Runtime
 
@@ -56,7 +56,7 @@ ms.locfileid: "75631694"
    LocalTimeZoneOffset       : 
    InternalChannelEncryption : 
    Capabilities              : {}
-   ServiceUrls               : {eu.frontend.datamovement.azure.cn}
+   ServiceUrls               : {chinae2.frontend.datamovement.azure.cn}
    Nodes                     : {}
    Links                     : {}
    Name                      : ADFTutorialIR
@@ -84,7 +84,8 @@ ms.locfileid: "75631694"
 
 5. 复制其中一个密钥（去除双引号），用于注册将在以下步骤中安装到计算机上的自承载 Integration Runtime。  
 
-## <a name="install-the-integration-runtime"></a>安装 Integration Runtime
+## <a name="install-the-integration-runtime-tool"></a>安装集成运行时工具
+
 1. 如果已在计算机上安装  Integration Runtime，请使用“添加或删除程序”将其卸载。 
 
 2. 将自承载 Integration Runtime [下载](https://www.microsoft.com/download/details.aspx?id=39717)到本地 Windows 计算机上。 进行安装。
@@ -136,5 +137,4 @@ ms.locfileid: "75631694"
     h.如果该值不存在，请单击“添加行”。 若要确认 Integration Runtime 能否连接到 SQL Server，请选择“测试”。  如果连接成功，则会看到绿色复选标记。 如果连接不成功，则会看到错误消息。 请解决问题，确保 Integration Runtime 可以连接到 SQL Server。    
 
     > [!NOTE]
-    > 记下身份验证类型、服务器、数据库、用户和密码的值。 本教程后面会用到它们。 
-    
+    > 记下身份验证类型、服务器、数据库、用户和密码的值。 本教程后面会用到它们。

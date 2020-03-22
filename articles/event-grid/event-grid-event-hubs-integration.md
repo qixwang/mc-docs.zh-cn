@@ -1,19 +1,20 @@
 ---
-title: 将事件中心数据发送到数据仓库 - 事件网格
-description: 介绍了如何使用 Azure 事件网格和事件中心将数据迁移到 SQL 数据仓库。 它使用 Azure 函数来检索 Capture 文件。
+title: 教程：将事件中心数据发送到数据仓库 - 事件网格
+description: 教程：介绍了如何使用 Azure 事件网格和事件中心将数据迁移到 SQL 数据仓库。 它使用 Azure 函数来检索 Capture 文件。
 services: event-grid
 author: spelluru
 manager: timlt
 ms.service: event-grid
 ms.topic: tutorial
-ms.date: 01/13/2019
-ms.author: v-yiso
-ms.openlocfilehash: 2b8ca3364a1b9c6cf069c09cd195f89bf7fb3c15
-ms.sourcegitcommit: 5a57f99d978b78c1986c251724b1b04178c12d8c
+ms.date: 11/05/2019
+origin.date: 3/16/2020
+ms.author: v-lingwu
+ms.openlocfilehash: 30a0c8e18fbe8adacba248b00b66af886b9f1348
+ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/24/2019
-ms.locfileid: "66195238"
+ms.lasthandoff: 03/17/2020
+ms.locfileid: "79452542"
 ---
 # <a name="tutorial-stream-big-data-into-a-data-warehouse"></a>教程：将大数据流式传输到数据仓库
 Azure [事件网格](overview.md)是一项智能事件路由服务，可用于对应用和服务的通知（事件）作出响应。 例如，它可以触发 Azure 函数来处理已捕获到 Azure Blob 存储或 Azure Data Lake Storage 的事件中心数据，并将数据迁移到其他数据存储库。 此[事件中心和事件网格集成示例](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo)展示了如何将事件中心与事件网格结合使用，从而将捕获的事件中心数据从 blob 存储无缝迁移到 SQL 数据仓库。

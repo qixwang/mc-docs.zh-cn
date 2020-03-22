@@ -3,18 +3,17 @@ title: 基于 Azure Application Insights 日志的指标 | Microsoft Docs
 description: 本文列出了 Azure Application Insights 指标以及支持的聚合与维度。 基于日志的指标的详细信息包括底层 Kusto 查询语句。
 author: lingliw
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: reference
 origin.date: 07/03/2019
 ms.date: 8/4/2019
 ms.author: v-lingwu
 ms.subservice: application-insights
-ms.openlocfilehash: 180d93ded31863e267e78e5b87406f6c38f4caf5
-ms.sourcegitcommit: 21b02b730b00a078a76aeb5b78a8fd76ab4d6af2
+ms.openlocfilehash: b3b3ad9cab1e33f972da06606c53bc9c5ab80846
+ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74838598"
+ms.lasthandoff: 03/17/2020
+ms.locfileid: "79452365"
 ---
 # <a name="application-insights-log-based-metrics"></a>基于 Application Insights 日志的指标
 

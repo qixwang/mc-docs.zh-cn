@@ -6,15 +6,15 @@ author: WenJason
 ms.service: data-factory
 ms.topic: include
 origin.date: 06/27/2019
-ms.date: 03/02/2020
+ms.date: 03/23/2020
 ms.author: v-jay
 ms.custom: include file
-ms.openlocfilehash: 2e64cded515784acfa4deb3e6625994e3aae6464
-ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
+ms.openlocfilehash: fa7a0d6512cb144058bf73905d61864d2b14eb8e
+ms.sourcegitcommit: 71a386ca0d0ecb79a123399b6ab6b8c70ea2aa78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77653583"
+ms.lasthandoff: 03/18/2020
+ms.locfileid: "79497206"
 ---
 ## <a name="prerequisites"></a>先决条件
 
@@ -22,7 +22,7 @@ ms.locfileid: "77653583"
 如果没有 Azure 订阅，可在开始前创建一个 [1 元人民币试用帐户](https://www.azure.cn/zh-cn/pricing/1rmb-trial-full/?form-type=identityauth)。
 
 ### <a name="azure-roles"></a>Azure 角色
-若要创建数据工厂实例，用于登录到 Azure 的用户帐户必须属于参与者或所有者角色，或者是 Azure 订阅的管理员。    若要查看你在订阅中拥有的权限，请转到 [Azure 门户](https://portal.azure.cn)，选择右上角的用户名，然后选择“更多选项(...)”，再选择“我的权限”   。 如果可以访问多个订阅，请选择相应的订阅。
+若要创建数据工厂实例，用于登录到 Azure 的用户帐户必须属于参与者或所有者角色，或者是 Azure 订阅的管理员。    若要查看你在订阅中拥有的权限，请转到 [Azure 门户](https://portal.azure.com)，在右上角选择你的用户名，然后选择“...”  图标以显示更多选项，然后选择“我的权限”  。 如果可以访问多个订阅，请选择相应的订阅。
 
 若要为数据工厂创建和管理子资源（包括数据集、链接服务、管道、触发器和集成运行时），以下要求适用：
 
@@ -37,7 +37,7 @@ ms.locfileid: "77653583"
 - [Azure 数据工厂的角色和权限](../articles/data-factory/concepts-roles-permissions.md)
 
 ### <a name="azure-storage-account"></a>Azure 存储帐户
-在本快速入门中，使用通用的 Azure 存储帐户（具体说来就是 Blob 存储）作为源和目标数据存储。   如果没有通用的 Azure 存储帐户，请参阅[创建存储帐户](../articles/storage/common/storage-account-create.md)创建一个。 
+在本快速入门中，使用常规用途的 Azure 存储帐户（具体的说就是 Blob 存储）作为源  和目标  数据存储。 如果没有常规用途的 Azure 存储帐户，请参阅[创建存储帐户](../articles/storage/common/storage-account-create.md)创建一个。 
 
 #### <a name="get-the-storage-account-name"></a>获取存储帐户名称
 在本快速入门中，将需要 Azure 存储帐户的名称。 以下过程提供的步骤用于获取存储帐户的名称： 
@@ -51,9 +51,9 @@ ms.locfileid: "77653583"
 #### <a name="create-a-blob-container"></a>创建 Blob 容器
 本部分介绍如何在 Azure Blob 存储中创建名为 **adftutorial** 的 Blob 容器。
 
-1. 在“存储帐户”页上，选择“概述” > “Blob”。  
-2. 在 \<Account name> - “Blob”页的工具栏中，选择“容器”    。
-3. 在“新建容器”  对话框中，输入 **adftutorial** 作为名称，然后选择“确定”  。 \<Account name> - “Blob”页已更新为包含容器列表中的“adftutorial”    。
+1. 在“存储帐户”页上，选择“概述” > “容器”。  
+2. 在 \<Account name> - “容器”页的工具栏中，选择“容器”    。
+3. 在“新建容器”  对话框中，输入 **adftutorial** 作为名称，然后选择“确定”  。 \<Account name> - “容器”页已更新为在容器列表中包含“adftutorial”    。
 
    ![容器列表](media/data-factory-quickstart-prerequisites/list-of-containers.png)
 
@@ -67,11 +67,11 @@ Jane, Doe
 
 将此文件保存在 C:\ADFv2QuickStartPSH 文件夹中  。 （如果此文件夹不存在，则创建它。）然后返回到 Azure 门户并执行以下步骤：
 
-1. 在上次离开的 \<Account name> - “Blob”页中，选择容器更新列表中的“adftutorial”    。
+1. 在上次离开的 \<Account name> - “容器”页中，选择已更新的容器列表中的“adftutorial”    。
 
    1. 如果关闭了窗口或转到其他页，请再次登录到 [Azure 门户](https://portal.azure.cn)。
    1. 从 Azure 门户菜单中，选择“所有服务”，然后选择“存储” > “存储帐户”    。 此外，也可以在任何页面中搜索和选择“存储帐户”  。
-   1. 选择存储帐户，然后选择“Blobs” > “adftutorial”   。
+   1. 选择存储帐户，然后选择“容器” > “adftutorial”   。
 
 2. 在“adftutorial”容器页面的工具栏上，选择“上传”   。
 3. 在“上传 Blob”页中，选择“文件”框，然后浏览到 emp.txt 文件并进行选择    。

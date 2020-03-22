@@ -1,7 +1,6 @@
 ---
 title: 使用 Log Analytics 网关连接计算机 | Azure Docs
 description: 使用 Log Analytics 网关连接设备和 Operations Manager 监视的计算机，以便在无法访问 Internet 时将数据发送到 Azure 自动化和 Log Analytics 服务。
-ms.service: azure-monitor
 author: lingliw
 manager: digimobile
 ms.subservice: logs
@@ -9,12 +8,12 @@ ms.topic: conceptual
 origin.date: 12/24/2019
 ms.date: 12/31/2019
 ms.author: v-lingwu
-ms.openlocfilehash: f8fbc0d5bad62a8294cd2186696a6f266f0082cd
-ms.sourcegitcommit: 27eaabd82b12ad6a6840f30763034a6360977186
+ms.openlocfilehash: c8ab2c02c6da46aae5f5b70b23fabdd225220d17
+ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77497441"
+ms.lasthandoff: 03/17/2020
+ms.locfileid: "79452465"
 ---
 # <a name="connect-computers-without-internet-access-by-using-the-log-analytics-gateway-in-azure-monitor"></a>在 Azure Monitor 中使用 Log Analytics 网关连接无法访问 Internet 的计算机
 

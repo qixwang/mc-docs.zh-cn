@@ -1,7 +1,6 @@
 ---
 title: Azure Monitor PowerShell 示例 | Microsoft Docs
 description: Azure Monitor PowerShell 示例
-ms.service: azure-monitor
 author: lingliw
 manager: digimobile
 ms.subservice: logs
@@ -10,12 +9,12 @@ origin.date: 09/14/2017
 ms.date: 04/12/2019
 ms.author: v-lingwu
 ms.custom: mvc
-ms.openlocfilehash: 0f5e97b824ff297688c373c0a9e1806f9cd2ea63
-ms.sourcegitcommit: 13431cf4d69142ed7feb8d12d967a502bf9ff346
+ms.openlocfilehash: 06a50f9f23cb58464314f75d5367b841f1863abf
+ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75599916"
+ms.lasthandoff: 03/17/2020
+ms.locfileid: "79452415"
 ---
 # <a name="azure-monitor-powershell-samples"></a>Azure Monitor PowerShell 示例
 

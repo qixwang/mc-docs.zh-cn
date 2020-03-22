@@ -6,16 +6,17 @@ author: msmbaldwin
 manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
+ms.subservice: general
 ms.topic: conceptual
 origin.date: 01/07/2019
-ms.date: 10/25/2019
+ms.date: 03/16/2020
 ms.author: v-tawe
-ms.openlocfilehash: 229270428120d1de4782e0dd09933a4e95db0590
-ms.sourcegitcommit: 642a4ad454db5631e4d4a43555abd9773cae8891
+ms.openlocfilehash: b3c3bcdf21d033a0156ddc1b0ee69f04d41e934a
+ms.sourcegitcommit: 764b3d26aedce2de0e1948468a706fd3204a3d5e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2019
-ms.locfileid: "73426048"
+ms.lasthandoff: 03/19/2020
+ms.locfileid: "79543292"
 ---
 # <a name="common-parameters-and-headers"></a>常见参数和标头
 

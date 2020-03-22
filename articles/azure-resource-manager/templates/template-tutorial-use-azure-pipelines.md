@@ -3,15 +3,15 @@ title: 使用 Azure Pipelines 进行持续集成
 description: 了解如何持续构建、测试和部署 Azure 资源管理器模板。
 author: rockboyfor
 origin.date: 10/29/2019
-ms.date: 01/06/2020
+ms.date: 03/23/2020
 ms.topic: tutorial
 ms.author: v-yeche
-ms.openlocfilehash: 1f6bdcff01d78278e3738b3ee509b003aa537237
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.openlocfilehash: fdcaedbd1ff02ea778faf78758f4daec926f3c9b
+ms.sourcegitcommit: 1436f1851342ca5631eb25342eed954adb707af0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75631491"
+ms.lasthandoff: 03/19/2020
+ms.locfileid: "79543870"
 ---
 <!--Verified successfully on 12/16/2019-->
 # <a name="tutorial-continuous-integration-of-azure-resource-manager-templates-with-azure-pipelines"></a>教程：使用 Azure Pipelines 持续集成 Azure 资源管理器模板
@@ -132,7 +132,7 @@ azuredeploy.json 已添加到本地存储库。 下一步，将模板上传到�
 
 到目前为止，你已经创建了一个 GitHub 存储库并向其中上传模板。
 
-## <a name="create-a-devops-project"></a>创建 DevOps 项目
+## <a name="create-a-devops-project"></a><a name="create-a-devops-project"></a>创建 DevOps 项目
 
 需要 DevOps 组织才能继续进行下一步。  如果没有组织，请参阅[先决条件](#prerequisites)。
 
@@ -167,7 +167,7 @@ azuredeploy.json 已添加到本地存储库。 下一步，将模板上传到�
     > az ad sp create-for-rbac
     > ```
     > 
-    > ![Azure 资源管理器 Azure DevOps 创建服务主体](./media/resource-manager-tutorial-use-azure-pipelines/azure-resource-manager-devops-pipelines-create-sp-chenye.png)
+    > ![Azure 资源管理器 Azure DevOps 创建服务主体](./media/template-tutorial-use-azure-pipelines/azure-resource-manager-devops-pipelines-create-sp-chenye.png)
     
     <!--MOONCAKE CUSTOMIZATION ON 12/16/2019-->
 
@@ -184,7 +184,7 @@ azuredeploy.json 已添加到本地存储库。 下一步，将模板上传到�
     * 允许所有管道使用此连接。  （选定）
     * 选择“验证连接”。 
     
-    ![Azure 资源管理器 Azure DevOps 创建 Azure 连接](./media/resource-manager-tutorial-use-azure-pipelines/azure-resource-manager-devops-pipelines-create-connection-chenye.png)
+    ![Azure 资源管理器 Azure DevOps 创建 Azure 连接](./media/template-tutorial-use-azure-pipelines/azure-resource-manager-devops-pipelines-create-connection-chenye.png)
     
     <!--MOONCAKE CUSTOMIZATION ON 12/16/2019-->
     
@@ -230,7 +230,7 @@ azuredeploy.json 已添加到本地存储库。 下一步，将模板上传到�
 
     进行以下更改：
 
-    * **deloymentScope**：从以下选项中选择部署范围：`Management Group`、`Subscription` 和 `Resource Group`。 在本教程中使用**资源组**。 若要详细了解范围，请参阅[部署范围](deploy-rest.md#deployment-scope)。
+    * **deploymentScope**：从以下选项中选择部署范围：`Management Group`、`Subscription` 和 `Resource Group`。 在本教程中使用**资源组**。 若要详细了解范围，请参阅[部署范围](deploy-rest.md#deployment-scope)。
     * **ConnectedServiceName**：指定前面创建的服务连接名称。
     * **SubscriptionName**：指定目标订阅 ID。
     * **操作**：“创建或更新资源组”操作执行 2 项操作 - 1.  如果提供了新的资源组名称，则创建资源组；2. 部署指定的模板。

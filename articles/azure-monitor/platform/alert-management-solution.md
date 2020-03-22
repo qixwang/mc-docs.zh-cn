@@ -1,7 +1,6 @@
 ---
 title: Azure Log Analytics 中的警报管理解决方案 | Azure Docs
 description: Log Analytics 中的警报管理解决方案有助于分析环境中的所有警报。  除了整合 Log Analytics 内生成的警报之外，它还会将连接的 System Center Operations Manager 管理组中的警报导入到 Log Analytics。
-ms.service: azure-monitor
 author: lingliw
 manager: digimobile
 ms.subservice: logs
@@ -10,12 +9,12 @@ ms.tgt_pltfrm: na
 origin.date: 01/19/2018
 ms.date: 01/21/2019
 ms.author: v-lingwu
-ms.openlocfilehash: a520a93448332aae2e50fb3c190531287be60784
-ms.sourcegitcommit: 27eaabd82b12ad6a6840f30763034a6360977186
+ms.openlocfilehash: 4f26f82cda6a85de1be136d187cb01370e900f51
+ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77497465"
+ms.lasthandoff: 03/17/2020
+ms.locfileid: "79452563"
 ---
 # <a name="alert-management-solution-in-azure-log-analytics"></a>Azure Log Analytics 中的警报管理解决方案
 
@@ -28,7 +27,7 @@ ms.locfileid: "77497465"
 
 警报管理解决方案有助于分析 Log Analytics 存储库中的所有警报。  这些警报可能来自各种源，包括 [Log Analytics 创建](../../azure-monitor/platform/alerts-overview.md)或是[从 Nagios 或 Zabbix 导入](../../azure-monitor/learn/quick-collect-linux-computer.md)的源。 
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 解决方案处理 Log Analytics 存储库中具有 Alert  类型的任何记录，因此必须执行收集这些记录所需的任何配置。
 
 - 对于 Log Analytics 警报，[创建警报规则](../../azure-monitor/platform/alerts-overview.md)以直接在存储库中创建警报记录。

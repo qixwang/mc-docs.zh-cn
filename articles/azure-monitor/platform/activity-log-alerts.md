@@ -1,19 +1,18 @@
 ---
 title: Azure Monitor 中的活动日志警报
 description: 当活动日志中出现某些事件时，通过 SMS、Webhook、短信、电子邮件等方式进行通知。
-ms.service: azure-monitor
 ms.subservice: alerts
 ms.topic: conceptual
 author: lingliw
 origin.date: 09/17/2018
 ms.date: 6/4/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 8589828efbd3d3b8e61105960c45a59d4edd651d
-ms.sourcegitcommit: 27eaabd82b12ad6a6840f30763034a6360977186
+ms.openlocfilehash: cc5fbd6e0fa7b6c572160a304481f1b9abeb470b
+ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77497495"
+ms.lasthandoff: 03/17/2020
+ms.locfileid: "79452285"
 ---
 # <a name="alerts-on-activity-log"></a>根据活动日志发出警报 
 
@@ -32,7 +31,7 @@ ms.locfileid: "77497495"
 
 在上述任何情况下，活动日志警报只监视在其中创建该警报的订阅中的事件。
 
-可以基于活动日志事件的 JSON 对象中的任何顶层属性配置活动日志警报。 有关详细信息，请参阅[活动日志中的类别](activity-log-view.md#categories-in-the-activity-log)。 若要了解有关服务运行状况事件的详细信息，请参阅[接收有关服务通知的活动日志警报](alerts-activity-log-service-notifications.md)。 
+可以基于活动日志事件的 JSON 对象中的任何顶层属性配置活动日志警报。 有关详细信息，请参阅[活动日志中的类别](activity-log-view.md)。 若要了解有关服务运行状况事件的详细信息，请参阅[接收有关服务通知的活动日志警报](alerts-activity-log-service-notifications.md)。 
 
 活动日志警报有几个常见选项：
 

@@ -1,7 +1,6 @@
 ---
 title: 在 Azure Monitor 中收集 Linux 应用程序性能数据 | Azure Docs
 description: 本文提供了有关对 Log Analytics Linux 代理进行配置以收集 MySQL 和 Apache HTTP Server 的性能计数器的详细信息。
-ms.service: azure-monitor
 author: lingliw
 manager: digimobile
 ms.subservice: logs
@@ -9,12 +8,12 @@ ms.topic: conceptual
 origin.date: 05/04/2017
 ms.date: 04/12/2019
 ms.author: v-lingwu
-ms.openlocfilehash: ef36e7778a7b72c3dd6d46411a190137b3618310
-ms.sourcegitcommit: 13431cf4d69142ed7feb8d12d967a502bf9ff346
+ms.openlocfilehash: cd822ab9da159c4efea1bc5f9d74c4a26324c154
+ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75600140"
+ms.lasthandoff: 03/17/2020
+ms.locfileid: "79452531"
 ---
 # <a name="collect-performance-counters-for-linux-applications-in-azure-monitor"></a>在 Azure Monitor 中收集 Linux 应用程序的性能计数器 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
@@ -47,7 +46,7 @@ MySQL 身份验证文件存储在 `/var/opt/microsoft/mysql-cimprov/auth/omsagen
 | 属性 | 说明 |
 |:--|:--|
 | 端口 | 表示 MySQL 实例正在侦听的当前端口。 端口 0 指定后面的属性用于默认实例。 |
-| Bind-Address| 当前 MySQL 绑定地址。 |
+| 绑定地址| 当前 MySQL 绑定地址。 |
 | username| 用来监视 MySQL 服务器实例的 MySQL 用户。 |
 | Base64 编码的密码| MySQL 监视用户的密码（采用 Base64 编码）。 |
 | AutoUpdate| 指定当升级 MySQL OMI 提供程序时，是否将重新扫描 my.cnf 文件中的更改并覆盖 MySQL OMI 身份验证文件。 |

@@ -11,12 +11,12 @@ ms.workload: infrastructure-services
 origin.date: 05/10/2019
 ms.date: 06/03/2019
 ms.author: v-yiso
-ms.openlocfilehash: 990aebd181fe37b57e2149e07bdc192fc938b672
-ms.sourcegitcommit: 5a57f99d978b78c1986c251724b1b04178c12d8c
+ms.openlocfilehash: 059561a41fb5cbc6b6c87d94489fcbcb4c1fd056
+ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/24/2019
-ms.locfileid: "66195241"
+ms.lasthandoff: 03/17/2020
+ms.locfileid: "79452534"
 ---
 # <a name="tutorial-integrate-azure-automation-with-event-grid-and-microsoft-teams"></a>教程：将 Azure 自动化与事件网格和 Microsoft Teams 相集成
 
@@ -107,7 +107,6 @@ ms.locfileid: "66195241"
 
         > [!NOTE] 
         > Azure 资源管理器当前不区分创建和更新，因此在 Azure 订阅中对所有 Microsoft.Resources.ResourceWriteSuccess 事件实现本教程可能会导致大量调用。
-    
     1. 对于“终结点类型”  ，选择 **Webhook**。
     2. 单击“选择终结点”  。 在打开的“选择 Web Hook”  页上，粘贴你为 Watch-VMWrite Runbook 创建的 Webhook URL。
     3. 在“筛选器”下，输入需要在其中查找新创建的 VM 的订阅和资源组  。 它看起来应该如下所示：`/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.Compute/virtualMachines`

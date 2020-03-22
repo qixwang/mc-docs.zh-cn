@@ -2,19 +2,18 @@
 title: 使用 Azure Monitor 创建、查看和管理日志警报 | Azure Docs
 description: 在 Azure 中使用 Azure Monitor 创作、查看和管理日志警报规则。
 author: lingliw
-services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
 origin.date: 4/27/2018
 ms.date: 07/29/2019
 ms.author: v-lingwu
 ms.subservice: alerts
-ms.openlocfilehash: 4beacb6d881e0c516eb41f368163f23511f2fbc3
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: 13fbfd139f1737c9739eea3a11970d27ce971dd4
+ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79292854"
+ms.lasthandoff: 03/17/2020
+ms.locfileid: "79452577"
 ---
 # <a name="create-view-and-manage-log-alerts-using-azure-monitor"></a>使用 Azure Monitor 创建、查看和管理日志警报
 
@@ -83,7 +82,7 @@ ms.locfileid: "79292854"
 1. 第三个步骤（也是最后一个步骤）是指定在满足警报条件的情况下，是否需要对警报规则触发任何**操作组**。 可以选择包含警报的任何现有操作组，也可以创建新的操作组。 根据选定的操作组，触发警报时，Azure 将会：发送电子邮件、发送短信、调用 Webhook、使用 Azure Runbook 进行补救、推送到 ITSM 工具，等等。 详细了解[操作组](action-groups.md)。
 
     > [!NOTE]
-    > 有关通过 Azure 操作组为日志警报触发的 Runbook 有效负载的限制，请参考 [Azure 订阅服务限制](../../azure-subscription-service-limits.md)
+    > 有关通过 Azure 操作组为日志警报触发的 Runbook 有效负载的限制，请参考 [Azure 订阅服务限制](../../azure-resource-manager/management/azure-subscription-service-limits.md)
 
     对于**日志警报**，提供了一些附加功能用于替代默认操作：
 
@@ -193,7 +192,7 @@ Azure Monitor 中的日志警报与资源类型 `Microsoft.Insights/scheduledQue
 
 ```
 
-针对此演练，上面的示例 json 可以保存为（例如）sampleScheduledQueryRule.json，并且可以使用 [Azure 门户中的 Azure 资源管理器](../../azure-resource-manager/resource-group-template-deploy-portal.md#deploy-resources-from-custom-template)进行部署。
+针对此演练，上面的示例 json 可以保存为（例如）sampleScheduledQueryRule.json，并且可以使用 [Azure 门户中的 Azure 资源管理器](../../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template)进行部署。
 
 
 ### <a name="log-alert-with-cross-resource-query-using-azure-resource-template"></a>使用 Azure 资源模板进行跨资源查询的日志警报
@@ -289,7 +288,7 @@ Azure Monitor 中的日志警报与资源类型 `Microsoft.Insights/scheduledQue
 > [!IMPORTANT]
 > 使用日志警报中的跨资源查询时，必须使用 [authorizedResources](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/createorupdate#source) 且用户必须有权访问所述的资源列表
 
-针对此演练，上面的示例 json 可以保存为（例如）sampleScheduledQueryRule.json，并且可以使用 [Azure 门户中的 Azure 资源管理器](../../azure-resource-manager/resource-group-template-deploy-portal.md#deploy-resources-from-custom-template)进行部署。
+针对此演练，上面的示例 json 可以保存为（例如）sampleScheduledQueryRule.json，并且可以使用 [Azure 门户中的 Azure 资源管理器](../../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template)进行部署。
 
 ## <a name="managing-log-alerts-using-powershell"></a>使用 PowerShell 管理日志警报
 

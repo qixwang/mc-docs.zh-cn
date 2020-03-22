@@ -3,18 +3,17 @@ title: Azure 指标资源管理器入门
 description: 了解如何使用 Azure 指标资源管理器创建第一个指标图表。
 author: lingliw
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 origin.date: 02/25/2019
 ms.date: 6/4/2019
 ms.author: v-lingwu
 ms.subservice: metrics
-ms.openlocfilehash: 485b630ed7d078ee543195b6c9f4e1cd11451015
-ms.sourcegitcommit: a89eb0007edd5b4558b98c1748b2bd67ca22f4c9
+ms.openlocfilehash: 66cc331b6fcd915ca07b42210e194680408a9bdf
+ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73730598"
+ms.lasthandoff: 03/17/2020
+ms.locfileid: "79452400"
 ---
 # <a name="getting-started-with-azure-metrics-explorer"></a>Azure 指标资源管理器入门
 

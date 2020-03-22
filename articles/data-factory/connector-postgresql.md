@@ -9,15 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-origin.date: 09/04/2019
-ms.date: 01/06/2020
+origin.date: 02/19/2020
+ms.date: 03/23/2020
 ms.author: v-jay
-ms.openlocfilehash: c039c13c4b81c34c0f94c8af4a5c77487d59e0cc
-ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
+ms.openlocfilehash: 6443ca9f9867de28bcbb68cba8ca2453dbb71128
+ms.sourcegitcommit: 71a386ca0d0ecb79a123399b6ab6b8c70ea2aa78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77653517"
+ms.lasthandoff: 03/18/2020
+ms.locfileid: "79497262"
 ---
 # <a name="copy-data-from-postgresql-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 PostgreSQL 复制数据
 
@@ -38,7 +38,7 @@ ms.locfileid: "77653517"
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
-对于版本低于 3.7 的自承载 IR，则需在集成运行时计算机上安装[用于 PostgreSQL 的 Ngpsql 数据提供程序](https://go.microsoft.com/fwlink/?linkid=282716)（程序版本介于 2.0.12 到 3.1.9 间）。
+集成运行时从版本 3.7 开始提供内置 PostgreSQL 驱动程序，因此无需手动安装任何驱动程序。
 
 ## <a name="getting-started"></a>入门
 

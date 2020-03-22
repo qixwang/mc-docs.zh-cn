@@ -3,23 +3,22 @@ title: 为 Azure Monitor 资源日志的格式更改做准备
 description: Azure 资源日志已于 2018 年 11 月 1 日改为使用追加 blob。
 author: lingliw
 services: monitoring
-ms.service: azure-monitor
 ms.topic: conceptual
 origin.date: 07/06/2018
 ms.date: 07/06/2019
-ms.author: johnkem
+ms.author: v-lingwu
 ms.subservice: v-lingwu
-ms.openlocfilehash: c3d28df259036c53506ac2f5d0e9b3b6d89008ec
-ms.sourcegitcommit: 13431cf4d69142ed7feb8d12d967a502bf9ff346
+ms.openlocfilehash: e6eb4de2b0edd9effcdeb5f00677f730497951d2
+ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75599915"
+ms.lasthandoff: 03/17/2020
+ms.locfileid: "79452409"
 ---
 # <a name="prepare-for-format-change-to-azure-monitor-platform-logs-archived-to-a-storage-account"></a>为存档到存储帐户的 Azure Monitor 平台日志的格式更改做准备
 
 > [!WARNING]
-> 如果[使用诊断设置将 Azure 资源日志或指标发送到存储帐户](resource-logs-collect-storage.md)或[使用日志配置文件将活动日志发送到存储帐户](activity-log-export.md)，则存储帐户中的数据格式将于 2018 年 11 月 1 日更改为 JSON Lines。 以下说明介绍了影响以及如何更新工具以处理新格式。
+> 如果[使用诊断设置将 Azure 资源日志或指标发送到存储帐户](resource-logs-collect-storage.md)或[使用日志配置文件将活动日志发送到存储帐户](resource-logs-collect-storage.md)，则存储帐户中的数据格式将于 2018 年 11 月 1 日更改为 JSON Lines。 以下说明介绍了影响以及如何更新工具以处理新格式。
 >
 
 ## <a name="what-changed"></a>更改内容
@@ -135,6 +134,6 @@ Azure blob 存储中 PT1H.json 文件的当前格式使用 JSON 数组记录。 
 
 ## <a name="next-steps"></a>后续步骤
 
-* 了解如何[将资源诊断日志存档到存储帐户](../../azure-monitor/platform/resource-logs-collect-storage.md)
-* 了解如何[将活动日志数据存档到存储帐户](../../azure-monitor/platform/activity-log-export.md)
+* 了解如何[将资源日志存档到存储帐户](./../../azure-monitor/platform/archive-diagnostic-logs.md)
+* 了解如何[将活动日志数据存档到存储帐户](./../../azure-monitor/platform/activity-log-export.md)
 

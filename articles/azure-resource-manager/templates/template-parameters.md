@@ -3,14 +3,14 @@ title: 模板中的参数
 description: 介绍如何在 Azure 资源管理器模板中定义参数。
 ms.topic: conceptual
 origin.date: 09/05/2019
+ms.date: 03/23/2020
 ms.author: v-yeche
-ms.date: 01/06/2020
-ms.openlocfilehash: ecd03dc2475237da8ca866df02a5a06d62b162c9
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.openlocfilehash: 9c2240582b0f5eb754e02dd2664348913be52896
+ms.sourcegitcommit: 1436f1851342ca5631eb25342eed954adb707af0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75631629"
+ms.lasthandoff: 03/19/2020
+ms.locfileid: "79543733"
 ---
 # <a name="parameters-in-azure-resource-manager-templates"></a>Azure 资源管理器模板中的参数
 
@@ -122,8 +122,8 @@ ms.locfileid: "75631629"
 ```json
 "resources": [
   {
-    "apiVersion": "2015-06-15",
     "type": "Microsoft.Network/virtualNetworks",
+    "apiVersion": "2015-06-15",
     "name": "[parameters('VNetSettings').name]",
     "location": "[parameters('VNetSettings').location]",
     "properties": {

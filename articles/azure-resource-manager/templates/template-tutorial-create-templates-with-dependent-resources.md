@@ -3,15 +3,15 @@ title: 具有依赖资源的模板
 description: 了解如何使用多个资源创建 Azure 资源管理器模板，以及如何使用 Azure 门户部署该模板
 author: rockboyfor
 origin.date: 03/04/2019
-ms.date: 01/20/2020
-ms.author: v-yeche
+ms.date: 03/23/2020
 ms.topic: tutorial
-ms.openlocfilehash: 443b0891b3877f4cf3041fc4fdf81b7890a2e25e
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.author: v-yeche
+ms.openlocfilehash: 27e50ea383a406d8885d5f1ef82a5aecb22daf54
+ms.sourcegitcommit: 1436f1851342ca5631eb25342eed954adb707af0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79291238"
+ms.lasthandoff: 03/19/2020
+ms.locfileid: "79543883"
 ---
 # <a name="tutorial-create-azure-resource-manager-templates-with-dependent-resources"></a>教程：使用依赖的资源创建 Azure 资源管理器模板
 
@@ -39,7 +39,7 @@ ms.locfileid: "79291238"
 * 包含资源管理器工具扩展的 Visual Studio Code。 请参阅[使用 Visual Studio Code 创建 Azure 资源管理器模板](use-vs-code-to-create-template.md)。
 * 若要提高安全性，请使用为虚拟机管理员帐户生成的密码。 以下是密码生成示例：
 
-    ```azurecli
+    ```console
     openssl rand -base64 32
     ```
     Azure Key Vault 旨在保护加密密钥和其他机密。 有关详细信息，请参阅[教程：在资源管理器模板部署中集成 Azure Key Vault](./template-tutorial-use-key-vault.md)。 我们还建议你每三个月更新一次密码。
@@ -166,8 +166,7 @@ Azure 快速入门模板是资源管理器模板的存储库。 无需从头开�
 3. 选择资源组名称。  应会看到，该资源组中总共有六个资源。
 4. 在顶部菜单中选择“删除资源组”。 
 
-<!--Not Available on ## Next steps-->
-<!--Not Available on deployment scripts to perform pre/post deployment operations-->
-<!--Not Available on > [Use deployment script](./template-tutorial-deployment-script.md)-->
+<!--Not Available on  ## Next steps-->
+<!--Not Available on  [Use deployment script](./template-tutorial-deployment-script.md)-->
 
 <!-- Update_Description: update meta properties, wording update, update link -->

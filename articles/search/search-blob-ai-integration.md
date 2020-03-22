@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 origin.date: 11/04/2019
 ms.date: 03/16/2020
-ms.openlocfilehash: c9b6d98ebe312a31b1a7b30b0da3e8745ef6eb8f
-ms.sourcegitcommit: d5eca3c6b03b206e441b599e5b138bd687a91361
+ms.openlocfilehash: ca8bc8aab8af09b2a2cf05ddd73c9bc7102728d2
+ms.sourcegitcommit: 71a386ca0d0ecb79a123399b6ab6b8c70ea2aa78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78934798"
+ms.lasthandoff: 03/18/2020
+ms.locfileid: "79497353"
 ---
 # <a name="use-ai-to-understand-blob-storage-data"></a>使用 AI 了解 Blob 存储数据
 
@@ -75,7 +75,7 @@ AI 扩充是指查找模式或特征，然后相应地执行操作的模块。 �
 
 技能集是在管道中使用的技能的集合，文档破解阶段完成后，将调用技能集来提供内容。  一个索引器可以正好使用一个技能集，但该技能集独立于索引器，因此可以在其他方案中重复使用该技能集。
 
-自定义技能听起来很复杂，但它的实现可能非常简单直接。 如果你通过现有的包提供模式匹配或分类模型，可将从 Blob 提取的内容传递给这些模型进行处理。 由于 AI 扩充基于 Azure，因此模型也应该在 Azure 上。 一些常用的托管方法包括使用 [Azure Functions](cognitive-search-custom-skill-python.md) 或[容器](https://github.com/Microsoft/SkillsExtractorCognitiveSearch)。
+自定义技能听起来很复杂，但它的实现可能非常简单直接。 如果你通过现有的包提供模式匹配或分类模型，可将从 Blob 提取的内容传递给这些模型进行处理。 由于 AI 扩充基于 Azure，因此模型也应该在 Azure 上。 一些常用的托管方法包括使用 [Azure Functions](cognitive-search-create-custom-skill-example.md) 或[容器](https://github.com/Microsoft/SkillsExtractorCognitiveSearch)。
 
 认知服务支持的内置技能需要一个[附加的认知服务](cognitive-search-attach-cognitive-services.md)一体式订阅密钥，使你能够访问资源。 使用一体式密钥可以完成图像分析、语言检测、文本翻译和文本分析。 其他内置技能属于 Azure 认知搜索的功能，不需要额外的服务或密钥。 文本整形器、拆分器和合并器是设计管道时有时需要用到的帮助器技能的示例。
 

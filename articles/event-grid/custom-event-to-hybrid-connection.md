@@ -1,21 +1,21 @@
 ---
-title: 将自定义事件发送到混合连接 - 事件网格，Azure CLI
-description: 使用 Azure 事件网格和 Azure CLI 发布一个主题，然后订阅该事件。 混合连接用于终结点。
+title: 教程：将自定义事件发送到混合连接 - 事件网格
+description: 教程：使用 Azure 事件网格和 Azure CLI 发布一个主题，然后订阅该事件。 混合连接用于终结点。
 services: event-grid
 keywords: ''
-author: spelluru
-ms.author: v-yiso
-origin.date: 02/02/2019
-ms.date: 06/03/2019
+author: lingliw
+ms.author: v-lingwu
+origin.date: 11/05/2019
+ms.date: 3/16/2020
 ms.topic: tutorial
 ms.service: event-grid
 ms.custom: seodec18
-ms.openlocfilehash: 3ca31ad3f7a7db18c421bdb03dd5712af7a3252f
-ms.sourcegitcommit: 5a57f99d978b78c1986c251724b1b04178c12d8c
+ms.openlocfilehash: 27ea3a7cce3b0a30ca06c45289e3620ef6483056
+ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/24/2019
-ms.locfileid: "66195281"
+ms.lasthandoff: 03/17/2020
+ms.locfileid: "79452524"
 ---
 # <a name="tutorial-route-custom-events-to-azure-relay-hybrid-connections-with-azure-cli-and-event-grid"></a>教程：使用 Azure CLI 和事件网格将自定义事件路由到 Azure 中继混合连接
 

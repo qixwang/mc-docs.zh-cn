@@ -5,15 +5,15 @@ author: ccompy
 ms.assetid: 955a4d84-94ca-418d-aa79-b57a5eb8cb85
 ms.topic: article
 origin.date: 01/24/2020
-ms.date: 03/23/2020
+ms.date: 03/16/2020
 ms.author: v-tawe
 ms.custom: seodec18
-ms.openlocfilehash: 0e28f362be30ef08f91e0f2c487c448931acd4db
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: 1038602c57eda6001caf92d785d6ba1bfcfd07a9
+ms.sourcegitcommit: e500354e2fd8b7ac3dddfae0c825cc543080f476
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79292444"
+ms.lasthandoff: 03/19/2020
+ms.locfileid: "79546966"
 ---
 # <a name="locking-down-an-app-service-environment"></a>锁定应用服务环境
 

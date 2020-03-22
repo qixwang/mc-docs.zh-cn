@@ -5,17 +5,18 @@ services: key-vault
 author: msmbaldwin
 manager: rajvijan
 ms.service: key-vault
+ms.subservice: general
 ms.topic: tutorial
 origin.date: 09/05/2018
-ms.date: 12/09/2019
+ms.date: 03/16/2020
 ms.author: v-tawe
 ms.custom: mvc
-ms.openlocfilehash: 6b16a39202f3798b5016883ff1e284f2750059b1
-ms.sourcegitcommit: 21b02b730b00a078a76aeb5b78a8fd76ab4d6af2
+ms.openlocfilehash: 615778d092ef1512c5c02c831ce289f563f1aa5e
+ms.sourcegitcommit: 764b3d26aedce2de0e1948468a706fd3204a3d5e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74838851"
+ms.lasthandoff: 03/19/2020
+ms.locfileid: "79543304"
 ---
 # <a name="tutorial-use-azure-key-vault-with-a-windows-virtual-machine-in-python"></a>教程：将 Azure Key Vault 与通过 Python 编写的 Windows 虚拟机配合使用
 
@@ -134,7 +135,7 @@ az keyvault set-policy --name '<YourKeyVaultName>' --object-id <VMSystemAssigned
 
 ## <a name="log-on-to-the-virtual-machine"></a>登录到虚拟机
 
-若要登录到虚拟机，请遵照[连接并登录到运行 Windows 的 Azure 虚拟机](../virtual-machines/windows/connect-logon.md)中的说明操作。
+若要登录到虚拟机，请按[连接并登录到运行 Windows 的 Azure 虚拟机](../virtual-machines/windows/connect-logon.md)中的说明操作。
 
 ## <a name="create-and-run-a-sample-python-app"></a>创建并运行示例 Python 应用
 

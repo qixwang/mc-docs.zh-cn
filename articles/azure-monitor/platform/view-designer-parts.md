@@ -1,20 +1,19 @@
 ---
 title: Azure Monitor 中视图设计器部件的参考指南 | Azure Docs
 description: 可以通过 Azure Monitor 中的视图设计器创建自定义视图，此类视图在 Azure 门户中显示，包含 Log Analytics 工作区中的多种基于数据的可视化效果。 本文针对自定义视图中可用的可视化部件，提供设置方面的参考指南。
-ms.service: azure-monitor
 author: lingliw
 manager: digimobile
 ms.subservice: logs
 ms.topic: conceptual
-origin.date: 08/22/2019
+origin.date: 03/12/2018
 ms.date: 6/4/2019
 ms.author: v-lingwu
-ms.openlocfilehash: d0963ec0e458a4bd7ecf19d0b07eb93a29c8d593
-ms.sourcegitcommit: a89eb0007edd5b4558b98c1748b2bd67ca22f4c9
+ms.openlocfilehash: 1f8985a2a16250b04b007443428110be957c7b9e
+ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73730612"
+ms.lasthandoff: 03/17/2020
+ms.locfileid: "79452547"
 ---
 # <a name="reference-guide-to-view-designer-visualization-parts-in-azure-monitor"></a>Azure Monitor 中视图设计器可视化部件的参考指南
 在 Azure Monitor 中使用视图设计器即可在 Azure 门户中创建各种自定义视图，使 Log Analytics 工作区中的数据可视化。 本文针对自定义视图中可用的可视化部件，提供设置方面的参考指南。
@@ -84,7 +83,7 @@ ms.locfileid: "73730612"
 | 名称和值分隔符 |若要将文本属性分析为多个值，则为单字符分隔符。 有关详细信息，请参阅[通用设置](#sparklines)。 |
 | 点击导航 | 单击列表中的项时执行的操作。  有关详细信息，请参阅[通用设置](#click-through-navigation)。 |
 | **列表** |**> 列标题** |
-| Name |第一列顶部显示的文本。 |
+| 名称 |第一列顶部显示的文本。 |
 | Value |第二列顶部显示的文本。 |
 | **列表** |**> 阈值** |
 | 启用阈值 |选择此链接可启用阈值。 有关详细信息，请参阅[通用设置](#thresholds)。 |
@@ -115,7 +114,7 @@ ms.locfileid: "73730612"
 | 名称和值分隔符 |若要将文本属性分析为多个值，则为单字符分隔符。 有关详细信息，请参阅[通用设置](#sparklines)。 |
 | 点击导航 | 单击列表中的项时执行的操作。  有关详细信息，请参阅[通用设置](#click-through-navigation)。 |
 | **列表** |**> 列标题** |
-| Name |第一列顶部显示的文本。 |
+| 名称 |第一列顶部显示的文本。 |
 | Value |第二列顶部显示的文本。 |
 | **列表** |**> 阈值** |
 | 启用阈值 |选择此链接可启用阈值。 有关详细信息，请参阅[通用设置](#thresholds)。 |
@@ -156,7 +155,7 @@ ms.locfileid: "73730612"
 | 名称和值分隔符 |若要将文本属性分析为多个值，则为单字符分隔符。 有关详细信息，请参阅[通用设置](#sparklines)。 |
 | 点击导航 | 单击列表中的项时执行的操作。  有关详细信息，请参阅[通用设置](#click-through-navigation)。 |
 | **列表** |**> 列标题** |
-| Name |第一列顶部显示的文本。 |
+| 名称 |第一列顶部显示的文本。 |
 | Value |第二列顶部显示的文本。 |
 | **列表** |**> 阈值** |
 | 启用阈值 |选择此链接可启用阈值。 有关详细信息，请参阅[通用设置](#thresholds)。 |
@@ -188,7 +187,7 @@ ms.locfileid: "73730612"
 | 操作 |对迷你图执行的操作。 有关详细信息，请参阅[通用设置](#sparklines)。 |
 | 点击导航 | 单击列表中的项时执行的操作。  有关详细信息，请参阅[通用设置](#click-through-navigation)。 |
 | **列表** |**> 列标题** |
-| Name |第一列顶部显示的文本。 |
+| 名称 |第一列顶部显示的文本。 |
 | Value |第二列顶部显示的文本。 |
 | **列表** |**> 阈值** |
 | 启用阈值 |选择此链接可启用阈值。 有关详细信息，请参阅[通用设置](#thresholds)。 |
@@ -249,7 +248,7 @@ ms.locfileid: "73730612"
 | 名称和值分隔符 |若要将文本属性分析为多个值，则为单字符分隔符。 有关详细信息，请参阅[通用设置](#sparklines)。 |
 | 点击导航 | 单击列表中的项时执行的操作。  有关详细信息，请参阅[通用设置](#click-through-navigation)。 |
 | **列表** |**> 列标题** |
-| Name |第一列顶部显示的文本。 |
+| 名称 |第一列顶部显示的文本。 |
 | Value |第二列顶部显示的文本。 |
 | **列表** |**> 阈值** |
 | 启用阈值 |选择此链接可启用阈值。 有关详细信息，请参阅[通用设置](#thresholds)。 |
@@ -285,7 +284,7 @@ ms.locfileid: "73730612"
 | 名称和值分隔符 |若要将文本属性分析为多个值，则为单字符分隔符。 有关详细信息，请参阅[通用设置](#sparklines)。 |
 | 点击导航 | 单击列表中的项时执行的操作。  有关详细信息，请参阅[通用设置](#click-through-navigation)。 |
 | **列表** |**> 列标题** |
-| Name |第一列顶部显示的文本。 |
+| 名称 |第一列顶部显示的文本。 |
 | Value |第二列顶部显示的文本。 |
 | **列表** |**> 阈值** |
 | 启用阈值 |选择此链接可启用阈值。 有关详细信息，请参阅[通用设置](#thresholds)。 |
@@ -359,7 +358,7 @@ ms.locfileid: "73730612"
 | 设置 | 说明 |
 |:--- |:--- |
 | 启用阈值 |选择此链接可在每个值的左侧显示颜色图标。 该图标指示其相对于指定阈值的运行状况。 |
-| Name |阈值的名称。 |
+| 名称 |阈值的名称。 |
 | 阈值 |阈值的值。 每个列表项的运行状况颜色设置为项目值超出的最高阈值的颜色。 如果未超出阈值，则使用默认颜色。 |
 | 颜色 |指示阈值的颜色。 |
 

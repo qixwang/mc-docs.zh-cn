@@ -3,18 +3,17 @@ title: 使用资源管理器模板在 Azure 中创建诊断设置
 description: 使用资源管理器模板创建诊断设置，以便将 Azure 平台日志转发到 Azure Monitor 日志、Azure 存储或 Azure 事件中心。
 author: lingliw
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 origin.date: 12/13/2019
 ms.date: 12/31/2019
 ms.author: v-lingwu
 ms.subservice: ''
-ms.openlocfilehash: 6f795a01bb8b89289ee675851a631b54f96fae67
-ms.sourcegitcommit: 27eaabd82b12ad6a6840f30763034a6360977186
+ms.openlocfilehash: 479bc64a796125fd954d4be7585ee7d22c3aeba4
+ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77497511"
+ms.lasthandoff: 03/17/2020
+ms.locfileid: "79452302"
 ---
 # <a name="create-diagnostic-setting-in-azure-using-a-resource-manager-template"></a>使用资源管理器模板在 Azure 中创建诊断设置
 Azure Monitor 中的[诊断设置](diagnostic-settings.md)指定 Azure 资源及其依赖的 Azure 平台所收集的[平台日志](platform-logs-overview.md)的发送位置。 本文详细地举例说明了如何使用 [Azure 资源管理器模板](../../azure-resource-manager/templates/template-syntax.md)将诊断设置创建并配置为将平台日志收集到不同的目标。

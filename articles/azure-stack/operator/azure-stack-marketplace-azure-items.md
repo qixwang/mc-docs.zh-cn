@@ -8,12 +8,12 @@ ms.date: 02/24/2020
 ms.author: v-jay
 ms.reviewer: ihcherie
 ms.lastreviewed: 01/21/2020
-ms.openlocfilehash: 0751b6ac317d9a854367c5dc02060d8c0a0558a5
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.openlocfilehash: 3f2506d066d329496175a136f4e0446829dc8aac
+ms.sourcegitcommit: e500354e2fd8b7ac3dddfae0c825cc543080f476
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77540921"
+ms.lasthandoff: 03/19/2020
+ms.locfileid: "79547049"
 ---
 # <a name="azure-marketplace-items-available-for-azure-stack-hub"></a>可用于 Azure Stack Hub 的 Azure 市场项
 
@@ -86,7 +86,7 @@ Azure Stack Hub 支持下述 Azure 市场 VM 和解决方案模板。 请根据�
 | ![用于 Azure 的 Barracuda CloudGen 防火墙](media/azure-stack-marketplace-azure-items/barracuda.png) | [用于 Azure 的 Barracuda CloudGen 防火墙](https://market.azure.cn/zh-cn/marketplace/apps/vstecscloud.barracuda_cloudgenfirewall?tab=Overview) | 在应用和数据驻留的位置提供防火墙保护，而不是仅仅在连接终止的位置提供保护。 | Barracuda Networks, Inc. |
 | ![Commvault](media/azure-stack-marketplace-azure-items/commvault.png) | [Commvault](https://market.azure.cn/zh-cn/marketplace/apps/vstecscloud.commvault_backup_suite?tab=Overview) | 一个综合性解决方案，适用于备份和恢复、将应用和 VM 迁移到 Azure Stack，以及在单个解决方案中针对 Azure Stack 环境进行灾难恢复。 | Commvault |
 | ![FortiGate 下一代防火墙](media/azure-stack-marketplace-azure-items/fortinetsquare.png) | [FortiGate 下一代防火墙](https://market.azure.cn/zh-cn/marketplace/apps/fortinet-cn.fortinet_fortigate-vm_v6_0?tab=Overview) | 一种防火墙技术，通过一个包含强大安全功能的综合性套件提供完整的内容和网络保护。 可以协调使用应用控制、防病毒、IPS、Web 筛选、VPN 以及多种高级功能（例如漏洞管理），以便确定并缓解最新且复杂的安全威胁。 | Fortinet |
-| ![Service Fabric 群集](media/azure-stack-marketplace-azure-items/servicefrabric.png) | [Service Fabric 群集](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.erpnext) | 此解决方案在虚拟机规模集上部署作为独立群集运行的 Service Fabric。 <br>**此解决方案模板还需要下载 Windows Server 2016 Datacenter**| Microsoft |
+| ![Service Fabric 群集](media/azure-stack-marketplace-azure-items/servicefrabric.png) | [Service Fabric 群集](https://market.azure.cn/zh-cn/marketplace/apps/Microsoft.ServiceFabricCluster?tab=Overview) | 此解决方案在虚拟机规模集上部署作为独立群集运行的 Service Fabric。 <br>**此解决方案模板还需要下载 Windows Server 2016 Datacenter**| Microsoft |
 | ![Palo Alto VM 系列下一代防火墙](media/azure-stack-marketplace-azure-items/paloalto.png) | [Palo Alto VM 系列下一代防火墙](https://market.azure.cn/zh-cn/marketplace/apps/WestconSolutionsChina.vmseries800?tab=Overview) | VM 系列下一代防火墙可以让客户安全地将其应用和数据迁移到 Azure Stack，使用应用允许列表和威胁防范策略，使客户能够防范已知的和未知的威胁。 **此映像需要模板来部署；请参阅此[文章](https://www.paloaltonetworks.com/documentation/81/virtualization/virtualization/set-up-the-vm-series-firewall-on-azure/deploy-the-vm-series-firewalls-on-azure-stack)以获取重要信息。**| Palo Alto Networks, Inc. |
 | ![Quest Rapid Recovery](media/azure-stack-marketplace-azure-items/quest.png) | [Quest Rapid Recovery Core](https://market.azure.cn/zh-cn/marketplace/apps/questchina.rapidrecoverycore?tab=Overview) | Rapid Recovery 高级数据保护在单个易用的软件解决方案中集中了备份、复制和恢复功能。 | Quest Software |
 | ![SIOS DataKeeper Cluster Edition](media/azure-stack-marketplace-azure-items/sioslogo.png) | [SIOS DataKeeper Cluster Edition](https://market.azure.cn/zh-cn/marketplace/apps/vstecscloud.sios_datakeeper_cluster_edition?tab=Overview) | SIOS DataKeeper 在 Azure Stack 中提供高可用性 (HA) 和灾难恢复 (DR)。 直接将 SIOS DataKeeper 软件作为组件添加到 Azure Stack 部署中的 Windows Server 故障转移群集 (WSFC) 环境，这样就不需要共享存储。 | SIOS Technology Corp. |

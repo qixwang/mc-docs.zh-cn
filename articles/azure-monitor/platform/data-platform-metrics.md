@@ -5,19 +5,18 @@ documentationcenter: ''
 author: lingliw
 manager: digimobile
 editor: tysonn
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 03/26/2019
 ms.date: 6/4/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 6ed66c92c030896a3dab8de2b78ecc7563088df9
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: ddb06f81285757af4494a41620e54d008ee69f36
+ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79291182"
+ms.lasthandoff: 03/17/2020
+ms.locfileid: "79452329"
 ---
 # <a name="metrics-in-azure-monitor"></a>Azure Monitor 中的指标
 
@@ -103,11 +102,12 @@ Azure Monitor 从三个基本源收集指标。 在 Azure Monitor 指标数据�
 
 **来宾 OS 指标**
 -   **经典来宾 OS 指标**。 这些是由 [Windows 诊断扩展 (WAD)](../platform/diagnostics-extension-overview.md) 或 [Linux 诊断扩展 (LAD)](../../virtual-machines/extensions/diagnostics-linux.md) 收集并路由到 Azure 存储帐户的性能计数器。 这些指标的保留期为 14 天。
--   **发送到 Azure Monitor 指标的来宾 OS 指标**。 这些是由 Windows 诊断扩展 (WAD) 收集并发送到 [Azure Monitor 接收器](diagnostics-extension-overview.md#data-storage)的性能计数器，或通过 Linux 计算机上的 [InfluxData Telegraf 代理](https://www.influxdata.com/time-series-platform/telegraf/)收集的性能计数器。 这些指标的保留期为 93 天。
+-   **发送到 Azure Monitor 指标的来宾 OS 指标**。 这些是由 Windows 诊断扩展 (WAD) 收集并发送到 [Azure Monitor 接收器](diagnostics-extension-overview.md)的性能计数器，或通过 Linux 计算机上的 [InfluxData Telegraf 代理](https://www.influxdata.com/time-series-platform/telegraf/)收集的性能计数器。 这些指标的保留期为 93 天。
 -   **Log Analytics 代理收集的来宾 OS 指标**。 这些是由 Log Analytics 代理收集并发送到 Log Analytics 工作区的性能计数器。 这些指标的保留期为 31 天，最长可延长到 2 年。
 
 **Application Insights 基于日志的指标**。 
 - 在后台，[基于日志的指标](../app/pre-aggregated-metrics-log-metrics.md)将转换为日志查询。 其保留期与基础日志中事件的保留期相匹配。 对于 Application Insights 资源，日志存储 90 天。
+
 
 > [!NOTE]
 > 可[将 Azure Monitor 资源的平台指标发送到 Log Analytics 工作区](resource-logs-collect-storage.md)以分析长期趋势。

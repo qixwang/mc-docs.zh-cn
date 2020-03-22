@@ -1,23 +1,24 @@
 ---
-title: Azure PowerShell 脚本示例 - 订阅 Blob 存储帐户 | Microsoft Docs
-description: Azure PowerShell 脚本示例 - 订阅 Blob 存储帐户
+title: Azure PowerShell - 订阅 Blob 存储帐户
+description: 本文提供了一个示例 Azure PowerShell 脚本，演示如何订阅 Blob 存储帐户的事件网格事件。
 services: event-grid
 documentationcenter: na
-author: tfitzmac
-manager: timlt
+author: lingliw
+manager: digimobile
 ms.service: event-grid
 ms.devlang: powershell
 ms.topic: sample
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/10/2018
-ms.author: v-yiso
-ms.openlocfilehash: f19f927fd0dcc67388a8529178cf438e4c346e40
-ms.sourcegitcommit: 5a57f99d978b78c1986c251724b1b04178c12d8c
+origin.date: 01/23/2020
+ms.date: 3/16/2020
+ms.author: v-lingwu
+ms.openlocfilehash: 354807c63a495f0ed2dfeb4563e92a0756231fc5
+ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/24/2019
-ms.locfileid: "66195321"
+ms.lasthandoff: 03/17/2020
+ms.locfileid: "79452476"
 ---
 # <a name="subscribe-to-events-for-a-blob-storage-account-with-powershell"></a>使用 PowerShell 订阅 Blob 存储帐户的事件
 

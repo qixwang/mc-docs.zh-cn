@@ -5,16 +5,17 @@ services: key-vault
 author: amitbapat
 manager: rkarlin
 ms.service: key-vault
+ms.subservice: general
 ms.topic: tutorial
 origin.date: 08/12/2019
-ms.date: 10/30/2019
+ms.date: 03/16/2020
 ms.author: v-tawe
-ms.openlocfilehash: 9f70ea6ad9423e24b0fdd30e45bd01e0b57cb663
-ms.sourcegitcommit: 642a4ad454db5631e4d4a43555abd9773cae8891
+ms.openlocfilehash: 2487ca34a36111ee26d38b8285f367592435197a
+ms.sourcegitcommit: 764b3d26aedce2de0e1948468a706fd3204a3d5e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2019
-ms.locfileid: "73426037"
+ms.lasthandoff: 03/19/2020
+ms.locfileid: "79543359"
 ---
 # <a name="configure-azure-key-vault-firewalls-and-virtual-networks"></a>配置 Azure Key Vault 防火墙和虚拟网络
 
@@ -28,7 +29,7 @@ ms.locfileid: "73426037"
 下面介绍了如何使用 Azure 门户配置 Key Vault 防火墙和虚拟网络：
 
 1. 浏览要保护的 Key Vault。
-2. 选择“防火墙和虚拟网络”  。
+2. 选择“网络”，然后选择“防火墙和虚拟网络”信息栏   。
 3. 在“允许的访问来源”  下，选择“所选网络”  。
 4. 若要将现有虚拟网络添加到防火墙和虚拟网络规则，请选择“+ 添加现有虚拟网络”  。
 5. 在打开的新边栏选项卡中，选择可访问此 Key Vault 的订阅、虚拟网络和子网。 如果虚拟网络和选择的子网没有启用服务终结点，确认想要启用服务终结点，并选择“启用”  。 此操作最多可能需要 15 分钟才能生效。
