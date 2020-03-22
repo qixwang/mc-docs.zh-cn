@@ -4,16 +4,16 @@ description: 了解如何在 Azure Stack Hub 中将 API 版本配置文件与 Ja
 author: WenJason
 ms.topic: article
 origin.date: 01/23/2020
-ms.date: 02/24/2020
+ms.date: 03/23/2020
 ms.author: v-jay
 ms.reviewer: sijuman
 ms.lastreviewed: 05/16/2019
-ms.openlocfilehash: 96b13a5e1597821fc54006ab8b5117423abf3ee8
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.openlocfilehash: f1a7b89352144a703becf762c7f342635163cfbb
+ms.sourcegitcommit: e500354e2fd8b7ac3dddfae0c825cc543080f476
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77540740"
+ms.lasthandoff: 03/19/2020
+ms.locfileid: "79547085"
 ---
 # <a name="use-api-version-profiles-with-java-in-azure-stack-hub"></a>在 Azure Stack Hub 中将 API 版本配置文件与 Java 配合使用
 
@@ -41,7 +41,7 @@ API 配置文件是资源提供程序和 API 版本的组合。 可以使用 API
      <dependency>
      <groupId>com.microsoft.azure.profile_2019_03_01_hybrid</groupId>
      <artifactId>azure</artifactId>
-     <version>1.0.0-beta</version>
+     <version>1.0.0-beta-1</version>
      </dependency>
      ```
 
@@ -63,7 +63,7 @@ API 配置文件是资源提供程序和 API 版本的组合。 可以使用 API
    <dependency>
    <groupId>com.microsoft.azure.profile_2019_03_01_hybrid</groupId>
    <artifactId>azure</artifactId>
-   <version>1.0.0-beta</version>
+   <version>1.0.0-beta-1</version>
    </dependency>
    ```
 
@@ -79,11 +79,11 @@ API 配置文件是资源提供程序和 API 版本的组合。 可以使用 API
 
 7. 确保服务主体在订阅上具有“参与者/所有者”角色。 有关如何将角色分配到服务主体的说明，请参阅[提供对 Azure Stack Hub 的应用程序访问权限](../operator/azure-stack-create-service-principals.md)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要将 Azure Java SDK 与 Azure Stack Hub 配合使用，必须提供以下值，然后使用环境变量来设置值。 若要设置环境变量，请参阅表后针对操作系统的说明。
 
-| 值                     | 环境变量 | 说明                                                                                                                                                                                                          |
+| Value                     | 环境变量 | 说明                                                                                                                                                                                                          |
 | ------------------------- | --------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | 租户 ID                 | `AZURE_TENANT_ID`            | Azure Stack Hub [租户 ID](../operator/azure-stack-identity-overview.md)。                                                          |
 | 客户端 ID                 | `AZURE_CLIENT_ID`             | 在上一部分中创建服务主体时保存的服务主体应用程序 ID。                                                                                              |
@@ -296,13 +296,13 @@ public static HashMap<String, String> getActiveDirectorySettings(String armEndpo
 
 6. 在 **Pom.xml** 文件中，添加以下依赖项，以便将 **2019-03-01-hybrid** 配置文件用于 Azure Stack Hub。 此依赖项将为计算、网络、存储、Key Vault 和应用服务资源提供程序安装与此配置文件关联的模块：
 
-   ```xml
-   <dependency>
-   <groupId>com.microsoft.azure.profile_2019_03_01_hybrid</groupId>
-   <artifactId>azure</artifactId>
-   <vers1s.0.0-beta</version>
-   </dependency>
-   ```
+    ```xml
+    <dependency>
+      <groupId>com.microsoft.azure.profile_2019_03_01_hybrid</groupId>
+      <artifactId>azure</artifactId>
+      <version>1.0.0-beta-1</version>
+    </dependency>
+    ```
 
 7. 在打开的用于设置环境变量的命令提示符中，输入以下命令：
 

@@ -5,21 +5,21 @@ author: rockboyfor
 ms.service: azure-analysis-services
 ms.topic: quickstart
 origin.date: 07/29/2019
-ms.date: 01/20/2020
+ms.date: 03/23/2020
 ms.author: v-yeche
 ms.reviewer: minewiskan
-ms.openlocfilehash: 00022b7cadbafc25bb4a1809896e8937410b3b97
-ms.sourcegitcommit: 8de025ca11b62e06ba3762b5d15cc577e0c0f15d
+ms.openlocfilehash: 52f07801cd8ccdf46cf3f2d4b3a3220397f02177
+ms.sourcegitcommit: 1436f1851342ca5631eb25342eed954adb707af0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76165471"
+ms.lasthandoff: 03/19/2020
+ms.locfileid: "79543785"
 ---
 # <a name="quickstart-create-a-server---powershell"></a>快速入门：创建服务器 - PowerShell
 
 本快速入门介绍如何从命令行使用 PowerShell，以便在 Azure 订阅中创建 Azure Analysis Services 服务器。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -53,10 +53,11 @@ New-AzResourceGroup -Name "myResourceGroup" -Location "ChinaNorth"
 
 ## <a name="create-a-server"></a>创建服务器
 
-使用 [New-AzAnalysisServicesServer](https://docs.microsoft.com/powershell/module/az.analysisservices/new-azanalysisservicesserver) 命令创建新的服务器。 以下示例在 ChinaNorth 区域的 myResourceGroup 中的 B0 层创建名为 myServer 的服务器，并指定 philipc@adventureworks.com 为服务器管理员。
-
+<!--MOONCAKE: CUSTOMIZATION-->
 <!--MOONCAKE: REMOVE D1 (free) tier-->
 <!--Notice: ChinaNorth is valid and -Sku should be B0,B1,S0-S4-->
+
+使用 [New-AzAnalysisServicesServer](https://docs.microsoft.com/powershell/module/az.analysisservices/new-azanalysisservicesserver) 命令创建新的服务器。 以下示例在 ChinaNorth 区域的 myResourceGroup 中的 B0 层创建名为 myServer 的服务器，并指定 philipc@adventureworks.com 为服务器管理员。
 
 ```powershell
 New-AzAnalysisServicesServer -ResourceGroupName "myResourceGroup" -Name "myserver" -Location ChinaNorth -Sku B0 -Administrator "philipc@adventure-works.com"
@@ -64,6 +65,7 @@ New-AzAnalysisServicesServer -ResourceGroupName "myResourceGroup" -Name "myserve
 
 <!--Notice: ServerName should be lower charactor-->
 <!--Notice: -Sku should be B0,B1,S0-S4-->
+<!--MOONCAKE: CUSTOMIZATION-->
 
 ## <a name="clean-up-resources"></a>清理资源
 

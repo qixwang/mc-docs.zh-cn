@@ -3,14 +3,14 @@ title: Azure Functions SendGrid 绑定
 description: Azure Functions SendGrid 绑定参考。
 author: craigshoemaker
 ms.topic: reference
-ms.date: 02/12/2020
+ms.date: 03/18/2020
 ms.author: v-junlch
-ms.openlocfilehash: 2c0c345a25d566877395f0b5d898cebfab7a841d
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: cfb2de3f9d753f7edbf3f984ec3bcd74fdf4cd32
+ms.sourcegitcommit: e500354e2fd8b7ac3dddfae0c825cc543080f476
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79292739"
+ms.lasthandoff: 03/19/2020
+ms.locfileid: "79546886"
 ---
 # <a name="azure-functions-sendgrid-bindings"></a>Azure Functions SendGrid 绑定
 
@@ -39,6 +39,10 @@ ms.locfileid: "79292739"
 ### <a name="synchronous"></a>同步
 
 ```cs
+using SendGrid.Helpers.Mail;
+
+...
+
 [FunctionName("SendEmail")]
 public static void Run(
     [ServiceBusTrigger("myqueue", Connection = "ServiceBusConnection")] Message email,
@@ -65,6 +69,10 @@ public class OutgoingEmail
 ### <a name="asynchronous"></a>异步
 
 ```cs
+using SendGrid.Helpers.Mail;
+
+...
+
 [FunctionName("SendEmail")]
 public static async void Run(
  [ServiceBusTrigger("myqueue", Connection = "ServiceBusConnection")] Message email,

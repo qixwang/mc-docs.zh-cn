@@ -1,14 +1,17 @@
 ---
 title: 将 Java 函数连接到 Azure 存储
 description: 了解如何使用队列存储输出绑定将 HTTP 触发的 Java 函数连接到 Azure 存储。
-ms.date: 02/18/2020
+author: KarlErickson
+ms.author: v-junlch
+ms.date: 03/18/2020
 ms.topic: quickstart
-ms.openlocfilehash: 45d6a297a42447bb00e861c8558a4418206513d4
-ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
+zone_pivot_groups: java-build-tools-set
+ms.openlocfilehash: d178ec6dbefd053f02f514f10a9f4a3e0488d203
+ms.sourcegitcommit: e500354e2fd8b7ac3dddfae0c825cc543080f476
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77494570"
+ms.lasthandoff: 03/19/2020
+ms.locfileid: "79546892"
 ---
 # <a name="connect-your-java-function-to-azure-storage"></a>将 Java 函数连接到 Azure 存储
 
@@ -18,7 +21,7 @@ ms.locfileid: "77494570"
 
 大多数绑定都需要一个存储的连接字符串，函数将使用该字符串来访问绑定的服务。 为便于建立此连接，请使用连同函数应用一起创建的存储帐户。 与此帐户建立的连接已存储在名为 `AzureWebJobsStorage` 的应用设置中。  
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 在开始学习本文之前，请完成 [Java 快速入门第 1 部分](functions-create-first-java-maven.md)中的步骤。
 
@@ -112,10 +115,19 @@ final HttpResponseMessage ret = new Function().run(req, msg, context);
 
 如前所述，使用以下命令在本地生成项目并启动 Functions 运行时：
 
+::: zone pivot="java-build-tools-maven"  
 ```bash
 mvn clean package 
 mvn azure-functions:run
 ```
+::: zone-end
+
+::: zone pivot="java-build-tools-gradle"  
+```bash
+gradle jar --info
+gradle azureFunctionsRun
+```
+::: zone-end
 
 > [!NOTE]  
 > 由于已在 host.json 中启用扩展捆绑包，因此在启动期间已下载并安装[存储绑定扩展](functions-bindings-storage-blob.md#add-to-your-functions-app)以及其他 Microsoft 绑定扩展。
@@ -138,9 +150,17 @@ curl -w "\n" http://localhost:7071/api/HttpTrigger-Java --data AzureFunctions
 
 若要更新已发布的应用，请再次运行以下命令：  
 
-```azurecli
+::: zone pivot="java-build-tools-maven"  
+```bash
 mvn azure-functions:deploy
 ```
+::: zone-end
+
+::: zone pivot="java-build-tools-gradle"  
+```bash
+gradle azureFunctionsDeploy
+```
+::: zone-end
 
 同样，可以使用 cURL 来测试已部署的函数。 如前所述，将 POST 请求正文中的值 `AzureFunctions` 传递到 URL，如以下示例所示：
 

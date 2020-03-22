@@ -4,16 +4,17 @@ description: 了解基于 Azure Stack Hub 的应用服务 Update 8 的功能、�
 author: WenJason
 manager: digimobile
 ms.topic: article
-origin.date: 02/10/2020
-ms.date: 02/24/2020
+origin.date: 03/05/2020
+ms.date: 03/23/2020
 ms.author: v-jay
 ms.reviewer: ''
-ms.openlocfilehash: b1e3fb7082a2de3a4558a67331a6e4d940e1550a
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.lastreviewed: 03/25/2019
+ms.openlocfilehash: 82141aecff2d87c15537ad1b8448bd398917b6a1
+ms.sourcegitcommit: e500354e2fd8b7ac3dddfae0c825cc543080f476
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77541146"
+ms.lasthandoff: 03/19/2020
+ms.locfileid: "79547062"
 ---
 # <a name="app-service-on-azure-stack-hub-update-8-release-notes"></a>Azure Stack Hub 上的应用服务 Update 8 发行说明
 
@@ -26,7 +27,7 @@ ms.locfileid: "77541146"
 
 Azure Stack Hub 上的应用服务 Update 8 的内部版本号为 **86.0.2.13**
 
-### <a name="prerequisites"></a>必备条件
+### <a name="prerequisites"></a>先决条件
 
 在开始部署之前，请参阅[准备工作文档](azure-stack-app-service-before-you-get-started.md)。
 
@@ -121,7 +122,7 @@ Azure Stack Hub 上的 Azure 应用服务的所有新部署将对所有虚拟机
 由于此版本中的功能回退，必须将**新部署**的两个应用服务数据库（appservice_hosting 和 appservice_metering）转换为包含的数据库。  这**不会**影响**已升级的**部署。
 
 > [!IMPORTANT]
-> 此过程大约需要花费 5-10 分钟。 此过程涉及终止现有的数据库登录会话。 计划停机时间来进行迁移，并在迁移后验证 Azure Stack Hub 上的 Azure 应用服务
+> 此过程大约需要花费 5-10 分钟。 此过程涉及终止现有的数据库登录会话。 计划迁移所需停机时间，并在迁移后验证基于 Azure Stack Hub 的 Azure 应用服务
 >
 >
 
@@ -177,9 +178,9 @@ Azure Stack Hub 上的 Azure 应用服务的所有新部署将对所有虚拟机
             GO  
 
             /********[appservice_hosting] Migration End********/
-    '''
+    ```
 
-1. Migrate logins to contained database users.
+1. 将登录名迁移到包含的数据库用户。
 
     ```sql
         IF EXISTS(SELECT * FROM sys.databases WHERE Name=DB_NAME() AND containment = 1)
@@ -226,37 +227,42 @@ Azure Stack Hub 上的 Azure 应用服务的所有新部署将对所有虚拟机
 
   新辅助角色无法获取所需的数据库连接字符串。  若要纠正这种情况，请连接到某个控制器实例（例如 CN0-VM），并运行以下 PowerShell 脚本：
 
-  ```powershell
- 
+    ```powershell
+    
     [System.Reflection.Assembly]::LoadWithPartialName("Microsoft.Web.Hosting")
-    $siteManager = New-Object Microsoft.Web.Hosting.SiteManager
-    $builder = New-Object System.Data.SqlClient.SqlConnectionStringBuilder -ArgumentList (Get-AppServiceConnectionString -Type Hosting)
-    $conn = New-Object System.Data.SqlClient.SqlConnection -ArgumentList $builder.ToString()
+    $siteManager = New-Object Microsoft.Web.Hosting.SiteManager
 
-    $siteManager.Workers | ForEach-Object {
-        $worker = $_
-        $dbUserName = "WebWorker_" + $worker.Name
+    $builder = New-Object System.Data.SqlClient.SqlConnectionStringBuilder -ArgumentList (Get-AppServiceConnectionString -Type Hosting)
+    $conn = New-Object System.Data.SqlClient.SqlConnection -ArgumentList $builder.ToString()
 
-        if (!$siteManager.ConnectionContexts[$dbUserName]) {
-            $dbUserPassword = [Microsoft.Web.Hosting.Common.Security.PasswordHelper]::GenerateDatabasePassword()
+    $siteManager.RoleServers | Where-Object {$_.IsWorker} | ForEach-Object {
+        $worker = $_
+        $dbUserName = "WebWorker_" + $worker.Name
+
+        if (!$siteManager.ConnectionContexts[$dbUserName]) {
+            $dbUserPassword = [Microsoft.Web.Hosting.Common.Security.PasswordHelper]::GenerateDatabasePassword()
+
             $conn.Open()
-            $command = $conn.CreateCommand()
-            $command.CommandText = "CREATE USER [$dbUserName] WITH PASSWORD = '$dbUserPassword'"
+            $command = $conn.CreateCommand()
+            $command.CommandText = "CREATE USER [$dbUserName] WITH PASSWORD = '$dbUserPassword'"
             $command.ExecuteNonQuery()
             $conn.Close()
+            
             $conn.Open()
-
-            $command = $conn.CreateCommand()
-            $command.CommandText = "ALTER ROLE [WebWorkerRole] ADD MEMBER [$dbUserName]"
+            $command = $conn.CreateCommand()
+            $command.CommandText = "ALTER ROLE [WebWorkerRole] ADD MEMBER [$dbUserName]"
             $command.ExecuteNonQuery()
             $conn.Close()
-
-            $builder.Password = $dbUserPassword
-            $builder["User ID"] = $dbUserName
-            $siteManager.ConnectionContexts.Add($dbUserName, $builder.ToString())
-        }
+            
+            $builder.Password = $dbUserPassword
+            $builder["User ID"] = $dbUserName
+            
+            $siteManager.ConnectionContexts.Add($dbUserName, $builder.ToString())
+        }
     }
+
     $siteManager.CommitChanges()
+        
     ```
 
 ### <a name="known-issues-for-cloud-admins-operating-azure-app-service-on-azure-stack"></a>云管理员在操作基于 Azure Stack 的 Azure 应用服务时的已知问题

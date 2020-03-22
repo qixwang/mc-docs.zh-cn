@@ -5,14 +5,14 @@ author: ggailey777
 ms.devlang: dotnet
 ms.topic: article
 origin.date: 02/18/2019
-ms.date: 02/17/2020
+ms.date: 03/16/2020
 ms.author: v-tawe
-ms.openlocfilehash: c7adbc69003f17448fee9279dde0caaa9c1b0a52
-ms.sourcegitcommit: d5eca3c6b03b206e441b599e5b138bd687a91361
+ms.openlocfilehash: 3ab44f5c41b939b60d54931406ad42c4dc5d35c6
+ms.sourcegitcommit: e500354e2fd8b7ac3dddfae0c825cc543080f476
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78934915"
+ms.lasthandoff: 03/19/2020
+ms.locfileid: "79546911"
 ---
 # <a name="how-to-use-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>如何使用 Azure WebJobs SDK 进行事件驱动的后台处理
 
@@ -120,7 +120,7 @@ static void Main()
 }
 ```
 
-### <a name="jobhost-servicepointmanager-settings"></a>管理并发连接数（版本 2.*x*）
+### <a name="managing-concurrent-connections-version-2x"></a><a name="jobhost-servicepointmanager-settings"></a>管理并发连接数（版本 2.*x*）
 
 在版本 3.*x* 中，连接限制默认为无限次连接。 如果出于某种原因需要更改此限制，则可以使用 [`WinHttpHandler`](https://docs.microsoft.com/dotnet/api/system.net.http.winhttphandler) 类的 [`MaxConnectionsPerServer`](https://docs.microsoft.com/dotnet/api/system.net.http.winhttphandler.maxconnectionsperserver) 属性。
 
@@ -994,7 +994,7 @@ config.LoggerFactory = new LoggerFactory()
     .AddApplicationInsights(clientFactory);
 ```
 
-## <a id="nextsteps"></a> 后续步骤
+## <a name="next-steps"></a><a id="nextsteps"></a> 后续步骤
 
 本文提供的代码片段演示了如何处理 WebJobs SDK 的常用方案。 有关完整示例，请参阅 [azure-webjobs-sdk-samples](https://github.com/Azure/azure-webjobs-sdk/tree/dev/sample/SampleHost)。
 

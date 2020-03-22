@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 origin.date: 01/22/2018
-ms.date: 03/02/2020
-ms.openlocfilehash: 287ae2f2e7dcadafc72a40cf9ba20454e1341d69
-ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
+ms.date: 03/23/2020
+ms.openlocfilehash: bb02459d7dc641e1759d30d367480120df87bddb
+ms.sourcegitcommit: 71a386ca0d0ecb79a123399b6ab6b8c70ea2aa78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77653568"
+ms.lasthandoff: 03/18/2020
+ms.locfileid: "79497136"
 ---
 # <a name="tutorial-copy-data-from-an-on-premises-sql-server-database-to-azure-blob-storage"></a>教程：将数据从本地 SQL Server 数据库复制到 Azure Blob 存储
 
@@ -227,7 +227,7 @@ ms.locfileid: "77653568"
     LocalTimeZoneOffset       :
     InternalChannelEncryption :
     Capabilities              : {}
-    ServiceUrls               : {chinaeast2.frontend.datamovement.azure.cn}
+    ServiceUrls               : {chinae2.frontend.datamovement.azure.cn}
     Nodes                     : {}
     Links                     : {}
     Name                      : <Integration Runtime name>

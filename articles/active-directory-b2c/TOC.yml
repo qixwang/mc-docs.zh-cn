@@ -37,6 +37,8 @@
   href: code-samples.md
 - name: 概念
   items:
+    - name: Azure AD B2C 最佳做法
+      href: best-practices.md
     - name: 应用程序类型
       href: application-types.md
     - name: 身份验证协议
@@ -141,6 +143,8 @@
               displayName: kmsi
         - name: UX 自定义
           items:
+            - name: 自定义语言
+              href: custom-policy-localization.md
             - name: 启用 JavaScript
               href: javascript-samples.md
         - name: 令牌和会话管理
@@ -228,6 +232,8 @@
                       href: restful-technical-profile.md
                     - name: SAML
                       href: saml-technical-profile.md
+                    - name: SAML 令牌颁发者
+                      href: saml-issuer-technical-profile.md
                     - name: 自断言
                       href: self-asserted-technical-profile.md
                     - name: SSO 会话

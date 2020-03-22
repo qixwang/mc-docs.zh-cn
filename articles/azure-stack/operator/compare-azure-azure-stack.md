@@ -5,16 +5,16 @@ description: 了解全球 Azure、Azure Stack Hub 与 Azure Stack HCI 之间的�
 author: WenJason
 ms.topic: overview
 origin.date: 05/03/2019
-ms.date: 02/24/2020
+ms.date: 03/23/2020
 ms.author: v-jay
 ms.reviewer: unknown
 ms.lastreviewed: 03/29/2019
-ms.openlocfilehash: b41254e2db3569a667b3527848dd385cff94d8ab
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.openlocfilehash: 99716e8a9f6d310bf0a95c0f3eb27acef4bef1aa
+ms.sourcegitcommit: e500354e2fd8b7ac3dddfae0c825cc543080f476
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77540604"
+ms.lasthandoff: 03/19/2020
+ms.locfileid: "79547081"
 ---
 # <a name="differences-between-azure-azure-stack-hub-and-azure-stack-hci"></a>Azure、Azure Stack Hub 与 Azure Stack HCI 之间的差异
 
@@ -68,7 +68,7 @@ Azure Stack Hub 的 PaaS 功能是可选的，因为 Azure Stack Hub 不是由 M
 
 ## <a name="azure-stack-hci"></a>Azure Stack HCI
 
-使用 [Azure Stack HCI](azure-stack-hci-overview.md) 解决方案可以通过超融合基础结构 (HCI) 解决方案在本地运行虚拟机并轻松连接到 Azure。 根据法规或技术要求，在本地使用一致的 Azure 服务来构建和运行云应用。 除了在本地运行虚拟化的应用以外，Azure Stack HCI 还可让你更换与整合过时的服务器基础结构，并使用 Windows 管理中心连接到 Azure 云服务。
+使用 [Azure Stack HCI](../hci/overview.md) 解决方案可以通过超融合基础结构 (HCI) 解决方案在本地运行虚拟机并轻松连接到 Azure。 根据法规或技术要求，在本地使用一致的 Azure 服务来构建和运行云应用。 除了在本地运行虚拟化的应用以外，Azure Stack HCI 还可让你更换与整合过时的服务器基础结构，并使用 Windows 管理中心连接到 Azure 云服务。
 
 Azure Stack HCI 提供经过验证的，采用 Hyper-V、存储空间直通和 Windows Server 2019 软件定义的数据中心 (SDDC) 技术的 HCI 解决方案。 Windows 管理中心用于对 Azure 服务进行管理和集成式访问，例如：
 

@@ -4,14 +4,14 @@ description: 了解如何在创建 Azure 服务总线消息时运行 Azure Funct
 author: craigshoemaker
 ms.assetid: daedacf0-6546-4355-a65c-50873e74f66b
 ms.topic: reference
-ms.date: 03/02/2020
+ms.date: 03/18/2020
 ms.author: v-junlch
-ms.openlocfilehash: f168f34e7a18acd319d0df54b20a32faf4006eb9
-ms.sourcegitcommit: 1ac138a9e7dc7834b5c0b62a133ca5ce2ea80054
+ms.openlocfilehash: 9c45965ad8c225eb2d2a27cb8cf17d2cacfb059d
+ms.sourcegitcommit: e500354e2fd8b7ac3dddfae0c825cc543080f476
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78266123"
+ms.lasthandoff: 03/19/2020
+ms.locfileid: "79546885"
 ---
 # <a name="azure-service-bus-trigger-for-azure-functions"></a>Azure Functions 的 Azure 服务总线触发器
 
@@ -310,9 +310,6 @@ Functions 运行时以 [PeekLock 模式](../service-bus-messaging/service-bus-pe
 |`To`|`string`|发送到地址。|
 |`Label`|`string`|应用程序特定的标签。|
 |`CorrelationId`|`string`|相关 ID。|
-
-> [!NOTE]
-> 目前，与支持会话的队列和订阅配合工作的服务总线触发器以预览版提供。 有关此触发器的任何进一步更新，请跟踪[此项](https://github.com/Azure/azure-webjobs-sdk/issues/529#issuecomment-491113458)。 
 
 请参阅在本文的前面部分使用这些属性的[代码示例](#example)。
 

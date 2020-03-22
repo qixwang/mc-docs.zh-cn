@@ -137,7 +137,7 @@
 - name: 概念
   items:
     - name: Azure Resource Manager
-      href: ../../azure-resource-manager/management/overview.md?toc=/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+      href: ../../azure-resource-manager/management/overview.md?toc=/virtual-machines/windows/toc.json&bc=/virtual-machines/windows/breadcrumb/toc.json
     - name: 区域
       href: regions.md
     - name: 可用性和性能
@@ -147,38 +147,57 @@
         - name: 网络性能
           href: ../../virtual-network/virtual-network-optimize-network-bandwidth.md?toc=/virtual-machines/windows/toc.json&bc=/virtual-machines/windows/breadcrumb/toc.json
     - name: VM 类型和大小
-      href: null
       items:
-        - name: 大小系列
+        - name: VM 大小
           href: sizes.md
         - name: 第 2 代 VM
           href: generation-2.md
         - name: 常规用途
-          href: sizes-general.md
-          displayName: Dsv3 Dv3 DSv2 Dv2 Av2
           items:
+            - name: 概述
+              href: ../sizes-general.md?toc=/virtual-machines/windows/toc.json&bc=/virtual-machines/windows/breadcrumb/toc.json
+            - name: Av2 系列
+              href: ../av2-series.md?toc=/virtual-machines/windows/toc.json&bc=/virtual-machines/windows/breadcrumb/toc.json
             - name: B 系列可突增
-              href: b-series-burstable.md
+              href: ../sizes-b-series-burstable.md?toc=/virtual-machines/windows/toc.json&bc=/virtual-machines/windows/breadcrumb/toc.json
+            - name: Dv2 和 DSv2 系列
+              href: ../dv2-dsv2-series.md?toc=/virtual-machines/windows/toc.json&bc=/virtual-machines/windows/breadcrumb/toc.json
+            - name: Dv3 和 Dsv3 系列
+              href: ../dv3-dsv3-series.md?toc=/virtual-machines/windows/toc.json&bc=/virtual-machines/windows/breadcrumb/toc.json
         - name: 计算优化
-          href: sizes-compute.md
-          displayName: Fsv2 Fs F-series
-        - name: 内存优化
-          href: sizes-memory.md
-          displayName: Esv3 Ev3 M-series DSv2 Dv2
           items:
+            - name: 概述
+              href: ../sizes-compute.md?toc=/virtual-machines/windows/toc.json&bc=/virtual-machines/windows/breadcrumb/toc.json
+            - name: Fsv2 系列
+              href: ../fsv2-series.md?toc=/virtual-machines/windows/toc.json&bc=/virtual-machines/windows/breadcrumb/toc.json
+        - name: 内存优化
+          displayName: Esv3 Ev3 Easv4 Eav4 M-series GS G-series DSv2 Dv2
+          items:
+            - name: 概述
+              href: ../sizes-memory.md?toc=/virtual-machines/windows/toc.json&bc=/virtual-machines/windows/breadcrumb/toc.json
+            - name: Dv2 和 DSv2 系列 11-15
+              href: ../dv2-dsv2-series-memory.md?toc=/virtual-machines/windows/toc.json&bc=/virtual-machines/windows/breadcrumb/toc.json
+            - name: Ev3 和 Esv3 系列
+              href: ../ev3-esv3-series.md?toc=/virtual-machines/windows/toc.json&bc=/virtual-machines/windows/breadcrumb/toc.json
+            - name: M 系列
+              href: ../m-series.md?toc=/virtual-machines/windows/toc.json&bc=/virtual-machines/windows/breadcrumb/toc.json
             - name: 约束的 vCPU
               href: constrained-vcpu.md
-        - name: 加速计算
+        - name: GPU - 加速计算
           items:
-            - name: GPU 优化
-              href: sizes-gpu.md
-            - name: 安装 NVIDIA GPU 驱动程序
+            - name: 概述
+              href: sizes-gpu.md?toc=/virtual-machines/windows/toc.json&bc=/virtual-machines/windows/breadcrumb/toc.json
+            - name: NCv3 系列
+              href: ../ncv3-series.md?toc=/virtual-machines/windows/toc.json&bc=/virtual-machines/windows/breadcrumb/toc.json
+            - name: 安装 GPU 驱动程序
               href: n-series-driver-setup.md
         - name: 前几代
-          href: sizes-previous-gen.md
+          href: ../sizes-previous-gen.md?toc=/virtual-machines/windows/toc.json&bc=/virtual-machines/windows/breadcrumb/toc.json
           displayName: D-series Ds-series A-series Basic
+        - name: 独立大小
+          href: isolation.md
         - name: Azure 计算单元 (ACU)
-          href: acu.md
+          href: ../acu.md?toc=/virtual-machines/windows/toc.json&bc=/virtual-machines/windows/breadcrumb/toc.json
         - name: 基准评分
           href: compute-benchmark-scores.md
         - name: vCPU 配额
@@ -204,7 +223,7 @@
     - name: 网络
       href: network-overview.md
     - name: 规模集
-      href: ../../virtual-machine-scale-sets/overview.md?toc=%2fvirtual-machines%2fwindows%2ftoc.json
+      href: ../../virtual-machine-scale-sets/overview.md?toc=/virtual-machines/windows/toc.json&bc=/virtual-machines/windows/breadcrumb/toc.json
     - name: 基础结构自动化
       href: infrastructure-automation.md
     - name: 安全性
@@ -235,21 +254,40 @@
               href: create-vm-specialized-portal.md
             - name: PowerShell
               href: create-vm-specialized.md
-        - name: '将模板与 C# 配合使用'
+        - name: '将 ARM 模板与 C# 配合使用'
           href: csharp-template.md
+          displayName: Azure Resource Manager
         - name: 使用 Chef 创建 VM
           href: chef-automation.md
         - name: 使用 Java
           href: java.md
         - name: 使用 Python
           href: python.md
-        - name: 使用模板
-          displayName: 'Azure Resource Manager template, ARM'
+        - name: 使用 ARM 模板
+          displayName: Azure Resource Manager template
           href: ps-template.md
         - name: 连接到 VM
           href: connect-logon.md
         - name: 使用 Azure 混合权益许可证
           href: hybrid-use-benefit-licensing.md
+    - name: 从经典部署迁移到 Azure 资源管理器部署
+      items:
+        - name: 从 2023 年 3 月 1 日开始停用
+          href: ../classic-vm-deprecation.md?toc=/virtual-machines/windows/toc.json&bc=/virtual-machines/windows/breadcrumb/toc.json
+        - name: 迁移概述
+          href: migration-classic-resource-manager-overview.md
+        - name: 深入了解迁移
+          href: migration-classic-resource-manager-deep-dive.md
+        - name: 规划迁移
+          href: migration-classic-resource-manager-plan.md
+        - name: 使用 PowerShell 进行迁移
+          href: migration-classic-resource-manager-ps.md
+        - name: 常见的迁移错误
+          href: migration-classic-resource-manager-errors.md
+        - name: 用于迁移的社区工具
+          href: migration-classic-resource-manager-community-tools.md
+        - name: 常见问题
+          href: migration-classic-resource-manager-faq.md
     - name: 保护 VM
       items:
         - name: 建议
@@ -333,7 +371,8 @@
           href: change-drive-letter.md
         - name: 更改可用性集
           href: change-availability-set.md
-        - name: 下载模板
+        - name: 导出 ARM 模板
+          displayName: Azure Resource Manager
           href: download-template.md
         - name: Azure VM 代理
           href: ../extensions/agent-windows.md
@@ -359,6 +398,14 @@
           href: scheduled-events.md
         - name: Windows 计划事件服务
           href: scheduled-event-service.md
+    - name: 监视 VM
+      items:
+        - name: 创建指标警报
+          href: ../../azure-monitor/platform/alerts-metric.md?toc=/virtual-machines/windows/toc.json&bc=/virtual-machines/windows/breadcrumb/toc.json
+        - name: 创建日志警报
+          href: ../../azure-monitor/platform/alerts-log.md?toc=/virtual-machines/windows/toc.json&bc=/virtual-machines/windows/breadcrumb/toc.json
+        - name: 使用 REST 获取使用情况指标
+          href: ../linux/metrics-vm-usage-rest.md?toc=/virtual-machines/windows/toc.json&bc=/virtual-machines/windows/breadcrumb/toc.json
     - name: 使用映像
       items:
         - name: 共享映像
@@ -422,13 +469,14 @@
       items:
         - name: 添加磁盘
           items:
-            - name: Azure Powershell
+            - name: Azure PowerShell
               href: attach-disk-ps.md
             - name: Azure 门户
               href: attach-managed-disk-portal.md
         - name: 分离磁盘
           href: detach-disk.md
-        - name: 使用模板部署磁盘
+        - name: 使用 ARM 模板部署磁盘
+          displayName: Azure Resource Manager
           href: using-managed-disks-template-deployments.md
         - name: 将 vhd 上传到磁盘 - PowerShell
           href: disks-upload-vhd-to-managed-disk-powershell.md
@@ -492,6 +540,7 @@
         - name: PowerShell
           href: /active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm?context=azure/virtual-machines/windows/context/windows-vm-context
         - name: Azure Resource Manager 模板
+          displayName: ARM
           href: /active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm?context=azure/virtual-machines/windows/context/windows-vm-context
         - name: REST
           href: /active-directory/managed-identities-azure-resources/qs-configure-rest-vm?context=azure/virtual-machines/windows/context/windows-vm-context
@@ -499,7 +548,7 @@
           href: /active-directory/managed-identities-azure-resources/qs-configure-sdk-windows-vm?context=azure/virtual-machines/windows/context/windows-vm-context
     - name: 使用 VM 扩展
       href: ../extensions/overview.md
-    - name: 移动和迁移 VM
+    - name: 移动 VM
       items:
         - name: 更改订阅或资源组
           href: move-vm.md
@@ -514,23 +563,8 @@
               href: aws-to-azure.md
             - name: 使用 Azure Site Recovery
               href: ../../site-recovery/site-recovery-migrate-to-azure.md?toc=/virtual-machines/windows/toc.json&bc=/virtual-machines/windows/breadcrumb/toc.json
-        - name: 从经典部署迁移到 Azure Resource Manager 部署
-          href: migration-classic-resource-manager-overview.md
-          items:
-            - name: 深入了解迁移
-              href: migration-classic-resource-manager-deep-dive.md
-            - name: 规划迁移
-              href: migration-classic-resource-manager-plan.md
-            - name: 使用 PowerShell 进行迁移
-              href: migration-classic-resource-manager-ps.md
-            - name: 常见的迁移错误
-              href: migration-classic-resource-manager-errors.md
-            - name: 用于迁移的社区工具
-              href: migration-classic-resource-manager-community-tools.md
-            - name: 常见问题
-              href: migration-classic-resource-manager-faq.md
 - name: 故障排除
-  href: ../troubleshooting/index.md
+  href: ../troubleshooting/index.yml
 - name: 参考
   items:
     - name: Azure CLI
@@ -551,7 +585,8 @@
       href: 'https://docs.microsoft.com/rest/api/compute/disks'
 - name: 资源
   items:
-    - name: 创作模板
+    - name: 创作 ARM 模板
+      displayName: Azure Resource Manager
       href: ../../azure-resource-manager/templates/template-syntax.md?toc=/virtual-machines/windows/toc.json&bc=/virtual-machines/windows/breadcrumb/toc.json
     - name: 定价
       href: 'https://www.azure.cn/pricing/details/virtual-machines/'

@@ -1,15 +1,14 @@
 ---
 title: 在 Azure 中创建用于响应 HTTP 请求的函数
 description: 了解如何通过命令行创建函数，然后将本地项目发布到 Azure Functions 中托管的无服务器实例。
-ms.date: 03/03/2020
+ms.date: 03/18/2020
 ms.topic: quickstart
-zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: df44471a4d99fae259179653466f3fb88d3c7e6c
-ms.sourcegitcommit: 1ac138a9e7dc7834b5c0b62a133ca5ce2ea80054
+ms.openlocfilehash: f0fa8bad8a418e3369eb429fd3e24acbcd6b3282
+ms.sourcegitcommit: e500354e2fd8b7ac3dddfae0c825cc543080f476
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78266034"
+ms.lasthandoff: 03/19/2020
+ms.locfileid: "79546884"
 ---
 # <a name="quickstart-create-a-function-in-azure-that-responds-to-http-requests"></a>快速入门：在 Azure 中创建用于响应 HTTP 请求的函数
 
@@ -23,7 +22,9 @@ ms.locfileid: "78266034"
 
 + 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://www.azure.cn/pricing/1rmb-trial/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 
+::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell"  
 + [Azure Functions Core Tools](./functions-run-local.md#v2) 2.7.1846 或更高的 2.x 版本。
+::: zone-end  
 
 + [Azure CLI](/cli/install-azure-cli) 2.0.76 或更高版本。 
 ::: zone pivot="programming-language-javascript,programming-language-typescript"
@@ -104,7 +105,7 @@ ms.locfileid: "78266034"
 ::: zone pivot="programming-language-csharp"
 #### <a name="httpexamplecs"></a>HttpExample.cs
 
-*HttpExample.cs* 包含一个接收 `req` 变量中的请求数据的 `Run` 方法，该变量是使用](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.http.httprequest) HttpTriggerAttribute  **修饰的 [HttpRequest**，用于定义触发器行为。 
+*HttpExample.cs* 包含一个接收 `req` 变量中的请求数据的 `Run` 方法，该变量是使用 HttpTriggerAttribute  **修饰的 [HttpRequest](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.http.httprequest)** ，用于定义触发器行为。 
 
 ```csharp
 using System;
@@ -299,26 +300,26 @@ Push-OutputBinding -Name Response -Value ([HttpResponseContext]@{
     
     在本快速入门中使用的存储帐户只会产生几美分的费用。
     
-1. 使用 [az functionapp create](/cli/functionapp#az-functionapp-create) 命令创建 Functions 应用。 在以下示例中，请将 `<STORAGE_NAME>` 替换为在上一步骤中使用的帐户的名称，并将 `<APP_NAME>` 替换为适合自己的全局唯一名称。 `<APP_NAME>` 也是函数应用的默认 DNS 域。 
+1. 使用 [az functionapp create](/cli/functionapp#az-functionapp-create) 命令创建函数应用。 在以下示例中，请将 `<STORAGE_NAME>` 替换为在上一步骤中使用的帐户的名称，并将 `<APP_NAME>` 替换为适合自己的全局唯一名称。 `<APP_NAME>` 也是函数应用的默认 DNS 域。 
 
     ::: zone pivot="programming-language-javascript,programming-language-typescript"  
     如果使用 Node.js 8，请同时将 `--runtime-version` 更改为 `8`。
 
     
     ```azurecli
-    az functionapp create --resource-group AzureFunctionsQuickstart-rg --consumption-plan-location chinanorth --runtime node --runtime-version 10 --functions_version 2 --name <APP_NAME> --storage-account <STORAGE_NAME>
+    az functionapp create --resource-group AzureFunctionsQuickstart-rg --consumption-plan-location chinanorth --runtime node --runtime-version 10 --functions-version 2 --name <APP_NAME> --storage-account <STORAGE_NAME>
     ```
     ::: zone-end  
 
     ::: zone pivot="programming-language-csharp"  
     ```azurecli
-    az functionapp create --resource-group AzureFunctionsQuickstart-rg --consumption-plan-location chinanorth --runtime dotnet --functions_version 2 --name <APP_NAME> --storage-account <STORAGE_NAME>
+    az functionapp create --resource-group AzureFunctionsQuickstart-rg --consumption-plan-location chinanorth --runtime dotnet --functions-version 2 --name <APP_NAME> --storage-account <STORAGE_NAME>
     ```
     ::: zone-end  
     
     ::: zone pivot="programming-language-powershell"  
     ```azurecli
-    az functionapp create --resource-group AzureFunctionsQuickstart-rg --consumption-plan-location chinanorth --runtime powershell --functions_version 2 --name <APP_NAME> --storage-account <STORAGE_NAME>
+    az functionapp create --resource-group AzureFunctionsQuickstart-rg --consumption-plan-location chinanorth --runtime powershell --functions-version 2 --name <APP_NAME> --storage-account <STORAGE_NAME>
     ```
     ::: zone-end  
 
@@ -382,7 +383,7 @@ Functions in msdocs-azurefunctions-qs:
 
 ## <a name="clean-up-resources"></a>清理资源
 
-如果继续下一步，请添加 Azure 存储队列输出绑定，将所有资源保留在原位，因为你将在已完成的操作的基础上进行构建。
+若要继续执行下一步骤[添加 Azure 存储队列输出绑定](functions-add-output-binding-storage-queue-cli.md)，请保留到目前为止构建的所有资源。
 
 否则，请使用以下命令删除资源组及其包含的所有资源，以免产生额外的费用。
 

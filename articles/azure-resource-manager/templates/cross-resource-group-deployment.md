@@ -3,14 +3,14 @@ title: 跨订阅和资源组部署资源
 description: 介绍如何在部署期间将多个 Azure 订阅和资源组作为目标。
 ms.topic: conceptual
 origin.date: 12/09/2019
+ms.date: 03/23/2020
 ms.author: v-yeche
-ms.date: 01/06/2020
-ms.openlocfilehash: 9fa89d89c729bb83bd13620759b88cf639d3df59
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.openlocfilehash: 71f8d996ddda441ef149820d26abc38f0c83bfae
+ms.sourcegitcommit: 1436f1851342ca5631eb25342eed954adb707af0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75631230"
+ms.lasthandoff: 03/19/2020
+ms.locfileid: "79543830"
 ---
 # <a name="deploy-azure-resources-to-more-than-one-subscription-or-resource-group"></a>将 Azure 资源部署到多个订阅或资源组
 
@@ -31,14 +31,14 @@ ms.locfileid: "75631230"
 
 ```json
 "resources": [
-    {
-        "apiVersion": "2017-05-10",
-        "name": "nestedTemplate",
-        "type": "Microsoft.Resources/deployments",
-        "resourceGroup": "[parameters('secondResourceGroup')]",
-        "subscriptionId": "[parameters('secondSubscriptionID')]",
-        ...
-    }
+  {
+    "apiVersion": "2017-05-10",
+    "name": "nestedTemplate",
+    "type": "Microsoft.Resources/deployments",
+    "resourceGroup": "[parameters('secondResourceGroup')]",
+    "subscriptionId": "[parameters('secondSubscriptionID')]",
+    ...
+  }
 ]
 ```
 
@@ -48,74 +48,74 @@ ms.locfileid: "75631230"
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "storagePrefix": {
-            "type": "string",
-            "maxLength": 11
-        },
-        "secondResourceGroup": {
-            "type": "string"
-        },
-        "secondSubscriptionID": {
-            "type": "string",
-            "defaultValue": ""
-        },
-        "secondStorageLocation": {
-            "type": "string",
-            "defaultValue": "[resourceGroup().location]"
-        }
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "storagePrefix": {
+      "type": "string",
+      "maxLength": 11
     },
-    "variables": {
-        "firstStorageName": "[concat(parameters('storagePrefix'), uniqueString(resourceGroup().id))]",
-        "secondStorageName": "[concat(parameters('storagePrefix'), uniqueString(parameters('secondSubscriptionID'), parameters('secondResourceGroup')))]"
+    "secondResourceGroup": {
+      "type": "string"
     },
-    "resources": [
-        {
+    "secondSubscriptionID": {
+      "type": "string",
+      "defaultValue": ""
+    },
+    "secondStorageLocation": {
+      "type": "string",
+      "defaultValue": "[resourceGroup().location]"
+    }
+  },
+  "variables": {
+    "firstStorageName": "[concat(parameters('storagePrefix'), uniqueString(resourceGroup().id))]",
+    "secondStorageName": "[concat(parameters('storagePrefix'), uniqueString(parameters('secondSubscriptionID'), parameters('secondResourceGroup')))]"
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Storage/storageAccounts",
+      "apiVersion": "2017-06-01",
+      "name": "[variables('firstStorageName')]",
+      "location": "[resourceGroup().location]",
+      "sku":{
+        "name": "Standard_LRS"
+      },
+      "kind": "Storage",
+      "properties": {
+      }
+    },
+    {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2017-05-10",
+      "name": "nestedTemplate",
+      "resourceGroup": "[parameters('secondResourceGroup')]",
+      "subscriptionId": "[parameters('secondSubscriptionID')]",
+      "properties": {
+      "mode": "Incremental",
+      "template": {
+          "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+          "contentVersion": "1.0.0.0",
+          "parameters": {},
+          "variables": {},
+          "resources": [
+          {
             "type": "Microsoft.Storage/storageAccounts",
-            "name": "[variables('firstStorageName')]",
             "apiVersion": "2017-06-01",
-            "location": "[resourceGroup().location]",
+            "name": "[variables('secondStorageName')]",
+            "location": "[parameters('secondStorageLocation')]",
             "sku":{
-                "name": "Standard_LRS"
+              "name": "Standard_LRS"
             },
             "kind": "Storage",
             "properties": {
             }
-        },
-        {
-            "apiVersion": "2017-05-10",
-            "name": "nestedTemplate",
-            "type": "Microsoft.Resources/deployments",
-            "resourceGroup": "[parameters('secondResourceGroup')]",
-            "subscriptionId": "[parameters('secondSubscriptionID')]",
-            "properties": {
-                "mode": "Incremental",
-                "template": {
-                    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-                    "contentVersion": "1.0.0.0",
-                    "parameters": {},
-                    "variables": {},
-                    "resources": [
-                        {
-                            "type": "Microsoft.Storage/storageAccounts",
-                            "name": "[variables('secondStorageName')]",
-                            "apiVersion": "2017-06-01",
-                            "location": "[parameters('secondStorageLocation')]",
-                            "sku":{
-                                "name": "Standard_LRS"
-                            },
-                            "kind": "Storage",
-                            "properties": {
-                            }
-                        }
-                    ]
-                },
-                "parameters": {}
-            }
-        }
-    ]
+          }
+          ]
+      },
+      "parameters": {}
+      }
+    }
+  ]
 }
 ```
 
@@ -123,7 +123,7 @@ ms.locfileid: "75631230"
 
 若要测试上述模板并查看结果，请使用 PowerShell 或 Azure CLI。
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 若要将两个存储帐户部署到**同一订阅**中的两个资源组，请使用：
 
@@ -166,7 +166,7 @@ New-AzResourceGroupDeployment `
   -secondSubscriptionID $secondSub
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 若要将两个存储帐户部署到**同一订阅**中的两个资源组，请使用：
 
@@ -227,101 +227,101 @@ az group deployment create \
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {},
-    "variables": {},
-    "resources": [
-        {
-            "type": "Microsoft.Resources/deployments",
-            "name": "defaultScopeTemplate",
-            "apiVersion": "2017-05-10",
-            "resourceGroup": "inlineGroup",
-            "properties": {
-                "mode": "Incremental",
-                "template": {
-                    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-                    "contentVersion": "1.0.0.0",
-                    "parameters": {},
-                    "variables": {},
-                    "resources": [
-                    ],
-                    "outputs": {
-                        "resourceGroupOutput": {
-                            "type": "string",
-                            "value": "[resourceGroup().name]"
-                        }
-                    }
-                },
-                "parameters": {}
-            }
-        },
-        {
-            "type": "Microsoft.Resources/deployments",
-            "name": "innerScopeTemplate",
-            "apiVersion": "2017-05-10",
-            "resourceGroup": "inlineGroup",
-            "properties": {
-                "expressionEvaluationOptions": {
-                    "scope": "inner"
-                },
-                "mode": "Incremental",
-                "template": {
-                    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-                    "contentVersion": "1.0.0.0",
-                    "parameters": {},
-                    "variables": {},
-                    "resources": [
-                    ],
-                    "outputs": {
-                        "resourceGroupOutput": {
-                            "type": "string",
-                            "value": "[resourceGroup().name]"
-                        }
-                    }
-                },
-                "parameters": {}
-            }
-        },
-        {
-            "apiVersion": "2017-05-10",
-            "name": "linkedTemplate",
-            "type": "Microsoft.Resources/deployments",
-            "resourceGroup": "linkedGroup",
-            "properties": {
-                "mode": "Incremental",
-                "templateLink": {
-                    "contentVersion": "1.0.0.0",
-                    "uri": "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/resourceGroupName.json"
-                },
-                "parameters": {}
-            }
-        }
-    ],
-    "outputs": {
-        "parentRG": {
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {},
+  "variables": {},
+  "resources": [
+    {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2017-05-10",
+      "name": "defaultScopeTemplate",
+      "resourceGroup": "inlineGroup",
+      "properties": {
+      "mode": "Incremental",
+      "template": {
+          "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+          "contentVersion": "1.0.0.0",
+          "parameters": {},
+          "variables": {},
+          "resources": [
+          ],
+          "outputs": {
+          "resourceGroupOutput": {
             "type": "string",
-            "value": "[concat('Parent resource group is ', resourceGroup().name)]"
-        },
-        "defaultScopeRG": {
+            "value": "[resourceGroup().name]"
+          }
+          }
+      },
+      "parameters": {}
+      }
+    },
+    {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2017-05-10",
+      "name": "innerScopeTemplate",
+      "resourceGroup": "inlineGroup",
+      "properties": {
+      "expressionEvaluationOptions": {
+          "scope": "inner"
+      },
+      "mode": "Incremental",
+      "template": {
+          "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+          "contentVersion": "1.0.0.0",
+          "parameters": {},
+          "variables": {},
+          "resources": [
+          ],
+          "outputs": {
+          "resourceGroupOutput": {
             "type": "string",
-            "value": "[concat('Default scope resource group is ', reference('defaultScopeTemplate').outputs.resourceGroupOutput.value)]"
-        },
-        "innerScopeRG": {
-            "type": "string",
-            "value": "[concat('Inner scope resource group is ', reference('innerScopeTemplate').outputs.resourceGroupOutput.value)]"
-        },
-        "linkedRG": {
-            "type": "string",
-            "value": "[concat('Linked resource group is ', reference('linkedTemplate').outputs.resourceGroupOutput.value)]"
-        }
+            "value": "[resourceGroup().name]"
+          }
+          }
+      },
+      "parameters": {}
+      }
+    },
+    {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2017-05-10",
+      "name": "linkedTemplate",
+      "resourceGroup": "linkedGroup",
+      "properties": {
+      "mode": "Incremental",
+      "templateLink": {
+          "contentVersion": "1.0.0.0",
+          "uri": "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/resourceGroupName.json"
+      },
+      "parameters": {}
+      }
     }
+  ],
+  "outputs": {
+    "parentRG": {
+      "type": "string",
+      "value": "[concat('Parent resource group is ', resourceGroup().name)]"
+    },
+    "defaultScopeRG": {
+      "type": "string",
+      "value": "[concat('Default scope resource group is ', reference('defaultScopeTemplate').outputs.resourceGroupOutput.value)]"
+    },
+    "innerScopeRG": {
+      "type": "string",
+      "value": "[concat('Inner scope resource group is ', reference('innerScopeTemplate').outputs.resourceGroupOutput.value)]"
+    },
+    "linkedRG": {
+      "type": "string",
+      "value": "[concat('Linked resource group is ', reference('linkedTemplate').outputs.resourceGroupOutput.value)]"
+    }
+  }
 }
 ```
 
 若要测试上述模板并查看结果，请使用 PowerShell 或 Azure CLI。
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```powershell
 New-AzResourceGroup -Name parentGroup -Location chinaeast
@@ -335,7 +335,7 @@ New-AzResourceGroupDeployment `
 
 前述示例的输出为：
 
-```powershell
+```output
  Name             Type                       Value
  ===============  =========================  ==========
  parentRG         String                     Parent resource group is parentGroup
@@ -344,7 +344,7 @@ New-AzResourceGroupDeployment `
  linkedRG         String                     Linked resource group is linkedgroup
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli
 az group create --name parentGroup --location chinaeast
@@ -354,12 +354,12 @@ az group create --name linkedGroup --location chinaeast
 az group deployment create \
   --name ExampleDeployment \
   --resource-group parentGroup \
-  --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/crossresourcegroupproperties.json 
+  --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/crossresourcegroupproperties.json
 ```
 
 前述示例的输出为：
 
-```azurecli
+```output
 "outputs": {
   "defaultScopeRG": {
     "type": "String",
@@ -384,7 +384,7 @@ az group deployment create \
 
 ## <a name="next-steps"></a>后续步骤
 
-* 若要了解如何在模板中定义参数，请参阅[了解 Azure 资源管理器模板的结构和语法](template-syntax.md)。
+* 若要了解如何在模板中定义参数，请参阅[了解 Azure Resource Manager 模板的结构和语法](template-syntax.md)。
 * 有关解决常见部署错误的提示，请参阅[排查使用 Azure Resource Manager 时的常见 Azure 部署错误](common-deployment-errors.md)。
 * 有关部署需要 SAS 令牌的模板的信息，请参阅[使用 SAS 令牌部署专用模板](secure-template-with-sas-token.md)。
 

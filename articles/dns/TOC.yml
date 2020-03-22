@@ -33,12 +33,20 @@
           href: dns-delegate-domain-azure-dns.md
         - name: 为 Web 应用创建自定义 DNS 记录
           href: dns-web-sites-custom-domain.md
+        - name: 流量管理器的别名记录
+          href: tutorial-alias-tm.md
+        - name: 公共 IP 地址的别名记录
+          href: tutorial-alias-pip.md
+        - name: 区域记录的别名记录
+          href: tutorial-alias-rr.md
 - name: 概念
   items:
     - name: 公共 DNS
       items:
         - name: 区域和记录
           href: dns-zones-records.md
+        - name: 别名记录
+          href: dns-alias.md
         - name: 使用 Azure DNS 进行委派
           href: dns-domain-delegation.md
         - name: 常见问题
@@ -67,6 +75,8 @@
   items:
     - name: 公共 DNS
       items:
+        - name: 负载均衡的 Web 应用别名记录
+          href: dns-alias-appservice.md
         - name: 管理 DNS 区域
           items:
             - name: Azure 门户
@@ -103,6 +113,10 @@
           href: dns-sdk.md
         - name: Azure 资源的自定义域
           href: dns-custom-domain.md
+    - name: 专用 DNS
+      items:
+        - name: 保护专用 DNS 区域和记录
+          href: dns-protect-private-zones-recordsets.md
     - name: 故障排除
       items:
         - name: 故障排除指南

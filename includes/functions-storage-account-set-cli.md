@@ -2,21 +2,20 @@
 author: ggailey777
 ms.service: azure-functions
 ms.topic: include
-origin.date: 09/26/2019
-ms.date: 10/28/2019
+ms.date: 03/19/2020
 ms.author: v-junlch
-ms.openlocfilehash: 57fdd559ae569f677a053c93a5d7b9cb93e62939
-ms.sourcegitcommit: 7d2ea8a08ee329913015bc5d2f375fc2620578ba
+ms.openlocfilehash: 3e295d70ba354ce5da3b5eaab0acff498ee86d37
+ms.sourcegitcommit: e500354e2fd8b7ac3dddfae0c825cc543080f476
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73034502"
+ms.lasthandoff: 03/19/2020
+ms.locfileid: "79546891"
 ---
 ### <a name="set-the-storage-account-connection"></a>设置存储帐户连接
 
 打开 local.settings.json 文件并复制 `AzureWebJobsStorage` 的值（即存储帐户连接字符串）。 使用以下 Bash 命令将 `AZURE_STORAGE_CONNECTION_STRING` 环境变量设置为该连接字符串：
 
-```azurecli
+```bash
 AZURE_STORAGE_CONNECTION_STRING="<STORAGE_CONNECTION_STRING>"
 ```
 

@@ -4,16 +4,16 @@ description: 了解如何将存储资源管理器连接到 Azure Stack Hub 订�
 author: WenJason
 ms.topic: conceptual
 origin.date: 11/11/2019
-ms.date: 02/24/2020
+ms.date: 03/23/2020
 ms.author: v-jay
 ms.reviewer: xiaofmao
 ms.lastreviewed: 11/11/2019
-ms.openlocfilehash: 51d1c327af82839bd0e08a1cc03f2ea973e6375b
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.openlocfilehash: d6035d7293ee555631183fc1f34084a76ea6897e
+ms.sourcegitcommit: e500354e2fd8b7ac3dddfae0c825cc543080f476
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77541018"
+ms.lasthandoff: 03/19/2020
+ms.locfileid: "79547087"
 ---
 # <a name="connect-storage-explorer-to-an-azure-stack-hub-subscription-or-a-storage-account"></a>将存储资源管理器连接到 Azure Stack Hub 订阅或存储帐户
 
@@ -63,7 +63,7 @@ ms.locfileid: "77541018"
 
 8. 在存储资源管理器重启后，选择“编辑”菜单，并检查是否选择了“目标 Azure Stack Hub API”。   如果没有，请选择“目标 Azure Stack Hub”，然后重启存储资源管理器，使更改生效。  此配置是必需的，否则无法与 Azure Stack Hub 环境兼容。
 
-    ![确保选中“目标 Azure Stack Hub”](./media/azure-stack-storage-connect-se/target-azure-stack.png)
+    ![确保选中“目标 Azure Stack Hub”](./media/azure-stack-storage-connect-se/target-azure-stack-new.png)
 
 ## <a name="connect-to-an-azure-stack-hub-subscription-with-azure-ad"></a>使用 Azure AD 连接到 Azure Stack Hub 订阅
 

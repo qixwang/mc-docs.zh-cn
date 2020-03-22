@@ -1,5 +1,5 @@
 ---
-title: 复制活动中的架构映射 | Microsoft Docs
+title: 复制活动中的架构映射
 description: 了解复制数据时，Azure 数据工厂中的复制活动如何将架构和数据类型从源数据映射到接收器数据。
 services: data-factory
 documentationcenter: ''
@@ -8,17 +8,16 @@ manager: digimobile
 ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
-origin.date: 04/29/2019
-ms.date: 11/11/2019
+origin.date: 02/13/2020
+ms.date: 03/23/2020
 ms.author: v-jay
-ms.openlocfilehash: ef3e51755355c753834c2980121b2f8db1fbe926
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: 1bc7d1ef6b5a474bef81d8acaba0fe9e01af5945
+ms.sourcegitcommit: 71a386ca0d0ecb79a123399b6ab6b8c70ea2aa78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79293184"
+ms.lasthandoff: 03/18/2020
+ms.locfileid: "79497360"
 ---
 # <a name="schema-mapping-in-copy-activity"></a>复制活动中的架构映射
 
@@ -261,11 +260,11 @@ ms.locfileid: "79293184"
         "translator": {
             "type": "TabularTranslator",
             "schemaMapping": {
-                "orderNumber": "$.number",
-                "orderDate": "$.date",
-                "order_pd": "prod",
-                "order_price": "price",
-                "city": " $.city[0].name"
+                "$.number": "orderNumber",
+                "$.date": "orderDate",
+                "prod": "order_pd",
+                "price": "order_price",
+                "$.city[0].name": "city"
             },
             "collectionReference":  "$.orders"
         }

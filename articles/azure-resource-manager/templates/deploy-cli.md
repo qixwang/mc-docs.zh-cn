@@ -3,14 +3,14 @@ title: 使用 Azure CLI 和模板部署资源
 description: 使用 Azure 资源管理器和 Azure CLI 将资源部署到 Azure。 资源在 Resource Manager 模板中定义。
 ms.topic: conceptual
 origin.date: 10/09/2019
+ms.date: 03/23/2020
 ms.author: v-yeche
-ms.date: 01/06/2020
-ms.openlocfilehash: c698b8303c0cd47261c8cc20cf830e60cd8dd4ef
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: a096ad12cbf36947bc94fd141198b78fa589150d
+ms.sourcegitcommit: 1436f1851342ca5631eb25342eed954adb707af0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79293326"
+ms.lasthandoff: 03/19/2020
+ms.locfileid: "79543827"
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-azure-cli"></a>使用 Resource Manager 模板和 Azure CLI 部署资源
 
@@ -67,7 +67,7 @@ az group deployment create \
 
 部署可能需要几分钟才能完成。 完成之后，会看到一条包含以下结果的消息：
 
-```azurecli
+```output
 "provisioningState": "Succeeded",
 ```
 
@@ -151,11 +151,11 @@ az group deployment create \
 ```json
 {
   "type": "Microsoft.Compute/virtualMachines",
+  "apiVersion": "2018-10-01",
   "name": "[variables('vmName')]", // to customize name, change it in variables
   "location": "[
     parameters('location')
     ]", //defaults to resource group location
-  "apiVersion": "2018-10-01",
   /*
     storage account and network interface
     must be deployed first
@@ -179,7 +179,7 @@ az group deployment validate \
 
 如果未检测到错误，则该命令将返回有关测试部署的信息。 需要特别注意的是，**error** 值为 null。
 
-```azurecli
+```output
 {
   "error": null,
   "properties": {
@@ -188,7 +188,7 @@ az group deployment validate \
 
 如果检测到错误，则该命令将返回一条错误消息。 例如，如果为存储帐户 SKU 传递不正确的值，将返回以下错误：
 
-```azurecli
+```output
 {
   "error": {
     "code": "InvalidTemplate",
@@ -204,7 +204,7 @@ az group deployment validate \
 
 如果模板有语法错误，该命令将返回一个错误，指示它无法分析该模板。 该消息会指出分析错误的行号和位置。
 
-```azurecli
+```output
 {
   "error": {
     "code": "InvalidTemplate",

@@ -7,12 +7,12 @@ ms.topic: article
 origin.date: 02/25/2020
 ms.date: 03/09/2020
 ms.author: v-yeche
-ms.openlocfilehash: d5fabd82cfe1d78d0c37518e882abc4238033f99
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: 2294953aa0d9aa1252d9dc42ff0926ee586bac46
+ms.sourcegitcommit: 305361c96d1d5288d3dda7e81833820640e2afac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79290767"
+ms.lasthandoff: 03/21/2020
+ms.locfileid: "80109800"
 ---
 <!--Verify successfully-->
 # <a name="authenticate-with-azure-container-registry-from-azure-kubernetes-service"></a>使用 Azure 容器注册表从 Azure Kubernetes 服务进行身份验证
@@ -28,7 +28,9 @@ ms.locfileid: "79290767"
 * **Azure 订阅**上的**所有者**或 **Azure 帐户管理员**角色
 * Azure CLI 2.0.73 版或更高版本
 
-为了避免需要“所有者”  或“Azure 帐户管理员”  角色，可以手动配置服务主体或使用现有服务主体从 AKS 进行 ACR 身份验证。 有关详细信息，请参阅[使用服务主体进行 ACR 身份验证](../container-registry/container-registry-auth-service-principal.md)或[使用请求密码从 Kubernetes 进行身份验证](../container-registry/container-registry-auth-kubernetes.md)。
+为了避免需要“所有者”  或“Azure 帐户管理员”  角色，可以手动配置服务主体或使用现有服务主体从 AKS 进行 ACR 身份验证。 有关详细信息，请参阅[使用服务主体进行 ACR 身份验证](../container-registry/container-registry-auth-service-principal.md)。
+
+<!--Not Available on [Authenticate from Kubernetes with a pull secret](../container-registry/container-registry-auth-kubernetes.md)-->
 
 ## <a name="create-a-new-aks-cluster-with-acr-integration"></a>通过 ACR 集成创建新的 AKS 群集
 

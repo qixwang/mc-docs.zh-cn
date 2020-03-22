@@ -4,15 +4,15 @@ description: 了解如何启用诊断日志记录并将检测添加到应用程�
 ms.assetid: c9da27b2-47d4-4c33-a3cb-1819955ee43b
 ms.topic: article
 origin.date: 09/17/2019
-ms.date: 03/09/2020
+ms.date: 03/16/2020
 ms.author: v-tawe
 ms.custom: seodec18
-ms.openlocfilehash: 3da8f9e2c73a447d766f1067038f2003ed0558a9
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: 77d21277c1c1017342048945aa7baef48314e797
+ms.sourcegitcommit: e500354e2fd8b7ac3dddfae0c825cc543080f476
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79293349"
+ms.lasthandoff: 03/19/2020
+ms.locfileid: "79546912"
 ---
 # <a name="enable-diagnostics-logging-for-apps-in-azure-app-service"></a>为 Azure 应用服务中的应用启用诊断日志记录
 ## <a name="overview"></a>概述
@@ -186,7 +186,7 @@ az webapp log tail --name appname --resource-group myResourceGroup --path http
 | AppServiceFileAuditLogs | TBA | 通过 FTP 和 Kudu 进行的文件更改 |
 | AppServiceAppLogs | TBA | 应用程序日志 |
 
-## <a name="nextsteps"></a> 后续步骤
+## <a name="next-steps"></a><a name="nextsteps"></a> 后续步骤
 * [使用 Azure Monitor 查询日志](../azure-monitor/log-query/log-query-overview.md)
 * [如何监视 Azure 应用服务](web-sites-monitor.md)
 * [在 Visual Studio 中对 Azure 应用服务进行故障排除](troubleshoot-dotnet-visual-studio.md)

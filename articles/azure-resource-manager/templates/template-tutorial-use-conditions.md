@@ -3,15 +3,15 @@ title: 在模板中使用条件
 description: 了解如何根据条件部署 Azure 资源。 演示如何部署新资源或使用现有资源。
 author: rockboyfor
 origin.date: 05/21/2019
-ms.date: 01/06/2020
+ms.date: 03/23/2020
 ms.topic: tutorial
 ms.author: v-yeche
-ms.openlocfilehash: a90f5449f52f2bdf90bd094281dfe344f625572c
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.openlocfilehash: 94224c3c6ceef78aa6db34bb5b3afe8e67a003c7
+ms.sourcegitcommit: 1436f1851342ca5631eb25342eed954adb707af0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75631481"
+ms.lasthandoff: 03/19/2020
+ms.locfileid: "79543845"
 ---
 <!--Verify sucessfully-->
 # <a name="tutorial-use-condition-in-azure-resource-manager-templates"></a>教程：在 Azure 资源管理器模板中使用条件
@@ -48,7 +48,7 @@ ms.locfileid: "75631481"
 * 包含资源管理器工具扩展的 Visual Studio Code。 请参阅[使用 Visual Studio Code 创建 Azure 资源管理器模板](use-vs-code-to-create-template.md)。
 * 若要提高安全性，请使用为虚拟机管理员帐户生成的密码。 以下是密码生成示例：
 
-    ```azurecli
+    ```console
     openssl rand -base64 32
     ```
 
@@ -166,7 +166,7 @@ New-AzResourceGroupDeployment `
 > [!NOTE]
 > 如果 **newOrExisting** 为 **new**，但具有指定存储帐户名称的存储帐户已存在，则部署将会失败。
 
-通过将 **newOrExisting** 设置为“existing”并指定现有存储帐户来尝试进行另一个部署。 若要提前创建存储帐户，请参阅[创建存储帐户](../../storage/common/storage-quickstart-create-account.md)。
+通过将 **newOrExisting** 设置为“existing”并指定现有存储帐户来尝试进行另一个部署。 若要提前创建存储帐户，请参阅[创建存储帐户](../../storage/common/storage-account-create.md)。
 
 ## <a name="clean-up-resources"></a>清理资源
 

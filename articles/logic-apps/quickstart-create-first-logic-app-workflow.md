@@ -11,12 +11,12 @@ ms.custom: mvc
 origin.date: 10/20/2019
 ms.author: v-yiso
 ms.date: 12/23/2019
-ms.openlocfilehash: 93a4584f61d4ae62ab72f83a92f3ab7f1a6d63fc
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: f07fcf6f613402027c4b1ee2986135b2d30da901
+ms.sourcegitcommit: 305361c96d1d5288d3dda7e81833820640e2afac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75335875"
+ms.lasthandoff: 03/21/2020
+ms.locfileid: "80109802"
 ---
 # <a name="quickstart-create-your-first-workflow-by-using-azure-logic-apps---azure-portal"></a>快速入门：使用 Azure 逻辑应用创建第一个工作流 - Azure 门户
 
@@ -46,7 +46,7 @@ ms.locfileid: "75335875"
 
    ![提供有关新逻辑应用的详细信息](./media/quickstart-create-first-logic-app-workflow/create-logic-app-settings.png)
 
-   | 属性 | 值 | 说明 |
+   | 属性 | Value | 说明 |
    |----------|-------|-------------|
    | **名称** | <*logic-app-name*> | 逻辑应用名称，只能包含字母、数字、连字符 (`-`)、下划线 (`_`)、括号（`(`、`)`）和句点 (`.`)。 此示例使用“My-First-Logic-App”。 |
    | **订阅** | <*Azure-subscription-name*> | Azure 订阅名称 |
@@ -81,11 +81,11 @@ ms.locfileid: "75335875"
 
    ![使用 RSS 源、频率和间隔设置触发器](./media/quickstart-create-first-logic-app-workflow/add-rss-trigger-settings.png)
 
-   | 属性 | 值 | 说明 |
+   | 属性 | Value | 说明 |
    |----------|-------|-------------|
    | **RSS 源 URL** | `http://feeds.reuters.com/reuters/topNews` | 要监视的 RSS 源的链接 |
    | **时间间隔** | 1 | 在两次检查之间需等待的时间间隔数 |
-   | **频率** | 分钟 | 两次检查的间隔的时间单位  |
+   | **频率** | Minute | 两次检查的间隔的时间单位  |
    ||||
 
    时间间隔和频率合在一起，即可定义逻辑应用的触发器的计划。 此逻辑应用每分钟检查一次源。
@@ -94,7 +94,7 @@ ms.locfileid: "75335875"
 
    ![折叠逻辑应用形状即可隐藏详细信息](./media/quickstart-create-first-logic-app-workflow/collapse-trigger-shape.png)
 
-1. 保存逻辑应用。 在设计器工具栏上，选择“保存”  。
+1. 保存逻辑应用。 在设计器工具栏上选择“保存”。 
 
 逻辑应用现已生成，但除了检查 RSS 源，不能执行任何操作。 因此，请添加一项在触发器触发时进行响应的操作。
 
@@ -124,8 +124,9 @@ ms.locfileid: "75335875"
    >
    > * [部署的模板参数](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md#template-parameters)
    > * [授权 OAuth 连接](../logic-apps/logic-apps-deploy-azure-resource-manager-templates.md#authorize-oauth-connections)
-   > * [使用托管标识验证访问](../logic-apps/create-managed-service-identity.md)
    > * [为逻辑应用部署验证连接](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md#authenticate-connections)
+
+    <!--Not Available on [Authenticate access with managed identities](../logic-apps/create-managed-service-identity.md)-->
 
 1. 在“发送电子邮件”操作中，指定需要电子邮件包括的数据。 
 

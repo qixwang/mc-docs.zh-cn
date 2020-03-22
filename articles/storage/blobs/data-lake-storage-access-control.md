@@ -9,12 +9,12 @@ origin.date: 04/23/2019
 ms.date: 03/09/2020
 ms.author: v-jay
 ms.reviewer: jamesbak
-ms.openlocfilehash: ea096206c69fabf9c0522badfa7c0ebfe37eda40
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: dfc3f59ccc2b7b016e1f4db22833941433738e75
+ms.sourcegitcommit: 305361c96d1d5288d3dda7e81833820640e2afac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79293330"
+ms.lasthandoff: 03/21/2020
+ms.locfileid: "80109810"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 中的访问控制
 
@@ -66,7 +66,6 @@ SAS 令牌本身就包含允许的权限。 它包含的权限有效地应用到
 |Java|[使用 Java 管理 Azure Data Lake Storage Gen2 中的目录、文件和 ACL](data-lake-storage-directory-file-acl-java.md)|
 |Python|[使用 Python 管理 Azure Data Lake Storage Gen2 中的目录、文件和 ACL](data-lake-storage-directory-file-acl-python.md)|
 |PowerShell|[使用 PowerShell 管理 Azure Data Lake Storage Gen2 中的目录、文件和 ACL](data-lake-storage-directory-file-acl-powershell.md)|
-|Azure CLI|[使用 Azure CLI 管理 Azure Data Lake Storage Gen2 中的目录、文件和 ACL](data-lake-storage-directory-file-acl-cli.md)|
 |REST API |[路径 - 更新](https://docs.microsoft.com/rest/api/storageservices/datalakestoragegen2/path/update)|
 
 > [!IMPORTANT]

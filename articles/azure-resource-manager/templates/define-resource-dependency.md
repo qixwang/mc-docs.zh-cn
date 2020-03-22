@@ -3,14 +3,14 @@ title: 设置资源的部署顺序
 description: 介绍如何在部署期间将一个资源设置为依赖于另一个资源，以确保按正确的顺序部署资源。
 ms.topic: conceptual
 origin.date: 12/03/2019
+ms.date: 03/23/2020
 ms.author: v-yeche
-ms.date: 01/06/2020
-ms.openlocfilehash: d2115ddec3028cd1d16f41e5702cc03a6cde6be8
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.openlocfilehash: 80e4a018c3c21d38ba97381481183dd9cc5d5943
+ms.sourcegitcommit: 1436f1851342ca5631eb25342eed954adb707af0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75631229"
+ms.lasthandoff: 03/19/2020
+ms.locfileid: "79543795"
 ---
 # <a name="define-the-order-for-deploying-resources-in-azure-resource-manager-templates"></a>定义在 Azure Resource Manager 模板中部署资源的顺序
 
@@ -27,9 +27,9 @@ Resource Manager 将评估资源之间的依赖关系，并根据其依赖顺序
 ```json
 {
   "type": "Microsoft.Compute/virtualMachineScaleSets",
+  "apiVersion": "2016-03-30",
   "name": "[variables('namingInfix')]",
   "location": "[variables('location')]",
-  "apiVersion": "2016-03-30",
   "tags": {
     "displayName": "VMScaleSet"
   },
@@ -42,7 +42,7 @@ Resource Manager 将评估资源之间的依赖关系，并根据其依赖顺序
 }
 ```
 
-在前面的示例中，通过复制名为 **storageLoop**的循环创建的资源包含依赖关系。 有关示例，请参阅 [在 Azure Resource Manager 中创建多个资源实例](create-multiple-instances.md)。
+在前面的示例中，通过复制名为 **storageLoop**的循环创建的资源包含依赖关系。 有关示例，请参阅 [在 Azure Resource Manager 中创建多个资源实例](copy-resources.md)。
 
 定义依赖关系时，可以包含资源提供程序命名空间和资源类型，以避免多义性。 例如，为明确表示可能与其他资源同名的负载均衡器和虚拟网络，可使用以下格式：
 
@@ -67,12 +67,12 @@ Resource Manager 将评估资源之间的依赖关系，并根据其依赖顺序
 "resources": [
   {
     "name": "[variables('sqlserverName')]",
+    "apiVersion": "2014-04-01-preview",
     "type": "Microsoft.Sql/servers",
     "location": "[resourceGroup().location]",
     "tags": {
       "displayName": "SqlServer"
     },
-    "apiVersion": "2014-04-01-preview",
     "properties": {
       "administratorLogin": "[parameters('administratorLogin')]",
       "administratorLoginPassword": "[parameters('administratorLoginPassword')]"
@@ -80,15 +80,15 @@ Resource Manager 将评估资源之间的依赖关系，并根据其依赖顺序
     "resources": [
       {
         "name": "[parameters('databaseName')]",
+        "apiVersion": "2014-04-01-preview",
         "type": "databases",
         "location": "[resourceGroup().location]",
-        "tags": {
-          "displayName": "Database"
-        },
-        "apiVersion": "2014-04-01-preview",
         "dependsOn": [
           "[variables('sqlserverName')]"
         ],
+        "tags": {
+          "displayName": "Database"
+        },
         "properties": {
           "edition": "[parameters('edition')]",
           "collation": "[parameters('collation')]",
@@ -122,15 +122,15 @@ listKeys('resourceName', 'yyyy-mm-dd')
 ```json
 {
     "name": "[variables('endpointName')]",
+    "apiVersion": "2016-04-02",
     "type": "endpoints",
     "location": "[resourceGroup().location]",
-    "apiVersion": "2016-04-02",
     "dependsOn": [
-            "[variables('profileName')]"
+      "[variables('profileName')]"
     ],
     "properties": {
-        "originHostHeader": "[reference(variables('webAppName')).hostNames[0]]",
-        ...
+      "originHostHeader": "[reference(variables('webAppName')).hostNames[0]]",
+      ...
     }
 ```
 
@@ -154,7 +154,7 @@ Resource Manager 可在模板验证过程中确定循环依赖项。 如果收�
 * 相关教程，请参阅[教程：使用从属资源创建 Azure 资源管理器模板](template-tutorial-create-templates-with-dependent-resources.md)。
 * 有关设置依赖项的建议，请参阅 [Azure 资源管理器模板的最佳做法](template-best-practices.md)。
 * 若要了解如何在部署期间排查依赖项故障，请参阅[排查使用 Azure Resource Manager 时的常见 Azure 部署错误](common-deployment-errors.md)。
-* 若要了解有关创建 Azure Resource Manager模板的信息，请参阅[创作模板](template-syntax.md)。 
+* 若要了解有关创建 Azure Resource Manager模板的信息，请参阅[创作模板](template-syntax.md)。
 * 有关模板中的可用函数列表，请参阅[模板函数](template-functions.md)。
 
 <!-- Update_Description: update meta properties, wording update, update link -->

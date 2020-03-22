@@ -1,19 +1,17 @@
 ---
 title: 适用于 Azure 云服务的 Application Insights | Azure Docs
 description: 使用 Application Insights 有效监视 Web 角色和辅助角色
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: lingliw
 origin.date: 09/05/2018
 ms.date: 6/4/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 23546e31e32636e6c21f33e229d0506327720a3f
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: f4a6edb3e1a1a1da0374a6275ba572e36e672da8
+ms.sourcegitcommit: 305361c96d1d5288d3dda7e81833820640e2afac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79291724"
+ms.lasthandoff: 03/21/2020
+ms.locfileid: "80109801"
 ---
 # <a name="application-insights-for-azure-cloud-services"></a>适用于 Azure 云服务的 Application Insights
 [Application Insights][start] 可以通过将 Application Insights SDK 提供的数据与云服务提供的 [Azure 诊断](../../azure-monitor/platform/diagnostics-extension-overview.md)数据合并，来监视 [Azure 云服务应用](/cloud-services/)的可用性、性能、故障和使用情况。 通过收到的有关应用在现实中的性能和有效性的反馈，可以针对每个开发生命周期确定合理的设计方向。

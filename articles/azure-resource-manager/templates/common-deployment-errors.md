@@ -4,14 +4,14 @@ description: 说明如何解决使用 Azure Resource Manager 将资源部署到 
 tags: top-support-issue
 ms.topic: troubleshooting
 origin.date: 10/04/2019
+ms.date: 03/23/2020
 ms.author: v-yeche
-ms.date: 01/06/2020
-ms.openlocfilehash: 3763f1cadc397e776aab30bdec235b50722887d6
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.openlocfilehash: 76bb4b61d0a1ff8ace77f0059f18ce9269a9ee38
+ms.sourcegitcommit: 1436f1851342ca5631eb25342eed954adb707af0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75631432"
+ms.lasthandoff: 03/19/2020
+ms.locfileid: "79543812"
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-resource-manager"></a>排查使用 Azure Resource Manager 时的常见 Azure 部署错误
 
@@ -96,7 +96,7 @@ ms.locfileid: "75631432"
 
 验证错误源于部署之前可确定的方案。 原因包括模板中的语法错误，或尝试部署超出订阅配额的资源。 部署错误起源于部署过程中出现的情况。 原因包括尝试访问并行部署的资源。
 
-两种类型的错误都会返回用于对部署进行故障排除的错误代码。 两种类型的错误都会显示在[活动日志](../management/view-activity-logs.md)中。 但是，验证错误不会显示在部署历史记录中，因为部署从未启动。
+这两种类型的错误都会返回错误代码，可使用该代码来排查部署问题。 两种类型的错误都会显示在[活动日志](../management/view-activity-logs.md)中。 但是，验证错误不会显示在部署历史记录中，因为部署从未启动。
 
 ### <a name="validation-errors"></a>验证错误
 
@@ -208,9 +208,9 @@ az group deployment operation list \
 
 ```json
 {
+    "type": "Microsoft.Resources/deployments",
     "apiVersion": "2016-09-01",
     "name": "nestedTemplate",
-    "type": "Microsoft.Resources/deployments",
     "properties": {
         "mode": "Incremental",
         "templateLink": {

@@ -9,21 +9,21 @@ metadata:
   ms.topic: hub-page
   ms.collection: collection
   author: rockboyfor
+  origin.date: 03/04/2020
+  ms.date: 03/23/2020
   ms.author: v-yeche
-  origin.date: 12/19/2019
-  ms.date: 01/20/2020
-  ms.openlocfilehash: eec34ec5f36fc6db23d1a6f84dbcea3c09d88778
-  ms.sourcegitcommit: 8de025ca11b62e06ba3762b5d15cc577e0c0f15d
+  ms.openlocfilehash: ba26f92db52f17b70e1f739b8ca10a6dc4906122
+  ms.sourcegitcommit: 1436f1851342ca5631eb25342eed954adb707af0
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 01/17/2020
-  ms.locfileid: "76165428"
+  ms.lasthandoff: 03/19/2020
+  ms.locfileid: "79543816"
 highlightedContent:
   items:
   - title: 什么是资源管理器？
     itemType: overview
     url: management/overview.md
-  - title: 什么是模板？
+  - title: 什么是 ARM 模板？
     itemType: overview
     url: templates/overview.md
   - title: 创建第一个模板
@@ -31,7 +31,7 @@ highlightedContent:
     url: templates/template-tutorial-create-first-template.md
 conceptualContent:
   items:
-  - title: 部署资源管理器模板
+  - title: 部署 ARM 模板
     links:
     - url: templates/overview.md
       itemType: overview
