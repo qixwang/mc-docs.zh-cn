@@ -1,7 +1,6 @@
 ---
 title: 面向服务提供商的 Azure Monitor 日志 | Microsoft Docs
 description: Azure Monitor 日志可以帮助托管服务提供商 (MSP)、大型企业、独立软件供应商 (ISV) 和主机托管服务提供商管理和监视客户本地或云基础结构中的服务器。
-ms.service: azure-monitor
 author: lingliw
 manager: digimobile
 ms.subservice: logs
@@ -9,12 +8,12 @@ ms.topic: conceptual
 origin.date: 02/03/2020
 ms.date: 2/18/2020
 ms.author: v-lingwu
-ms.openlocfilehash: 708bea083c63d3c73dc05d1805af86c27ba84221
-ms.sourcegitcommit: 27eaabd82b12ad6a6840f30763034a6360977186
+ms.openlocfilehash: 668b27c6da995788d661a5eb0a75539c7a9a9c85
+ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77497391"
+ms.lasthandoff: 03/17/2020
+ms.locfileid: "79452550"
 ---
 # <a name="azure-monitor-logs-for-service-providers"></a>面向服务提供商的 Azure Monitor 日志
 
@@ -69,7 +68,6 @@ Azure Monitor 中的 Log Analytics 工作区可以帮助托管服务提供商 (M
 * Azure 结构及 Azure 诊断和 Azure 审核日志等 PaaS 服务要求工作区与资源位于同一租户中，因此它们无法将日志发送到中心工作区。
 * 来自所有客户的全部 VM 代理都将使用相同的工作区 ID 和密钥对中心工作区进行身份验证。 无法在不干扰其他客户的情况下阻止来自特定客户的日志。
 
-
 ### <a name="3-hybrid---logs-are-stored-in-workspace-located-in-the-customers-tenant-and-some-of-them-are-pulled-to-a-central-location"></a>3.混合式：日志存储在位于客户租户中的工作区内，且其中一部分日志会被提取到中心位置。
 
 第三种体系结构混合使用两个选项。 它以第一种分布式体系结构为基础，其中日志对于每个客户而言位于本地，但通过某种机制创建了日志的中心存储库。 一部分日志被提取到中心位置用于报告和分析。 此部分可以是少量数据类型，也可以是每日统计数据等活动摘要。
@@ -81,8 +79,11 @@ Azure Monitor 中的 Log Analytics 工作区可以帮助托管服务提供商 (M
 
 
 ## <a name="next-steps"></a>后续步骤
+
 * 使用[Resource Manager 模板](template-workspace-configuration.md)自动执行创建和配置工作区
+
 * 使用 [PowerShell](../../azure-monitor/platform/powershell-workspace-configuration.md) 自动创建工作区 
+
 * 使用[警报](../../azure-monitor/platform/alerts-overview.md)以便与现有系统集成
 
 

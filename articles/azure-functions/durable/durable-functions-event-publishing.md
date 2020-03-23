@@ -2,13 +2,13 @@
 title: 从 Durable Functions 发布到 Azure 事件网格（预览）
 description: 了解如何配置 Durable Functions 的自动 Azure 事件网格发布。
 ms.topic: conceptual
-ms.date: 03/03/2020
-ms.openlocfilehash: aec9f0dd590515052f5dcfe3b5d8467f3f6b811c
-ms.sourcegitcommit: 1ac138a9e7dc7834b5c0b62a133ca5ce2ea80054
+ms.date: 03/19/2020
+ms.openlocfilehash: 9ffdf0108175f1bb7b5b50765b158fcc5dfc53cc
+ms.sourcegitcommit: e500354e2fd8b7ac3dddfae0c825cc543080f476
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78266068"
+ms.lasthandoff: 03/19/2020
+ms.locfileid: "79546893"
 ---
 # <a name="durable-functions-publishing-to-azure-event-grid-preview"></a>从 Durable Functions 发布到 Azure 事件网格（预览）
 
@@ -34,7 +34,7 @@ ms.locfileid: "78266068"
 
 使用 `az group create` 命令创建资源组。 目前，Azure 事件网格不支持所有区域。 有关支持哪些区域的信息，请参阅 [Azure 事件网格概述](../../event-grid/overview.md)。
 
-```bash
+```azurecli
 az group create --name eventResourceGroup --location chinanorth2
 ```
 
@@ -42,7 +42,7 @@ az group create --name eventResourceGroup --location chinanorth2
 
 事件网格主题提供用户定义的终结点，可向该终结点发布事件。 用主题的唯一名称替换 `<topic_name>`。 主题名称必须唯一，因为它将用作 DNS 条目。
 
-```bash
+```azurecli
 az eventgrid topic create --name <topic_name> -l chinanorth2 -g eventResourceGroup
 ```
 
@@ -50,13 +50,13 @@ az eventgrid topic create --name <topic_name> -l chinanorth2 -g eventResourceGro
 
 获取主题的终结点。 将 `<topic_name>` 替换为所选的名称。
 
-```bash
+```azurecli
 az eventgrid topic show --name <topic_name> -g eventResourceGroup --query "endpoint" --output tsv
 ```
 
 获取主题密钥。 将 `<topic_name>` 替换为所选的名称。
 
-```bash
+```azurecli
 az eventgrid topic key list --name <topic_name> -g eventResourceGroup --query "key1" --output tsv
 ```
 

@@ -1,7 +1,6 @@
 ---
 title: 管理 Azure Monitor 中的 Log Analytics 工作区 | Microsoft Docs
 description: 可以使用资源、工作区或表级权限来管理对 Azure Monitor 的 Log Analytics 工作区中存储的数据的访问。 本文详细介绍如何完成这些操作。
-ms.service: azure-monitor
 author: lingliw
 manager: digimobile
 ms.subservice: logs
@@ -9,12 +8,12 @@ ms.topic: conceptual
 origin.date: 10/22/2019
 ms.date: 11/05/2019
 ms.author: v-lingwu
-ms.openlocfilehash: eb13b014b74ddf78a2a0442a4ca1dfcd8771bef1
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: 1615386c2c4ed4178c609cb346b35cefb3817881
+ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79293260"
+ms.lasthandoff: 03/17/2020
+ms.locfileid: "79452442"
 ---
 # <a name="manage-access-to-log-data-and-workspaces-in-azure-monitor"></a>管理对 Azure Monitor 中的日志数据和工作区的访问
 
@@ -26,7 +25,7 @@ Azure Monitor 将[日志](data-platform-logs.md)数据存储在 Log Analytics �
 * 使用 Azure 基于角色的访问控制 (RBAC) 对需要访问特定资源中的日志数据的用户授予访问权限。
 * 使用 Azure RBAC 对需要访问工作区中特定表中的日志数据的用户授予访问权限。
 
-## 配置访问控制模式 <a name="configure-access-control-mode"></a>
+## <a name="configure-access-control-mode"></a>配置访问控制模式 <a name="configure-access-control-mode"></a>
 
 可以通过 Azure 门户或 Azure PowerShell 来查看对工作区配置的访问控制模式。  可使用以下支持的方法之一更改此设置：
 
@@ -36,7 +35,7 @@ Azure Monitor 将[日志](data-platform-logs.md)数据存储在 Log Analytics �
 
 * Azure Resource Manager 模板
 
-### 从 Azure 门户 <a name="access-modes"></a>
+### <a name="from-the-azure-portal"></a>从 Azure 门户 <a name="access-modes"></a>
 
 可以在工作区“概述”页上的“Log Analytics 工作区”菜单中查看当前的工作区访问控制模式。  
 
@@ -91,6 +90,7 @@ if ($_.Properties.features.enableLogAccessUsingOnlyResourcePermissions -eq $null
 else
     { $_.Properties.features.enableLogAccessUsingOnlyResourcePermissions = $true }
 Set-AzResource -ResourceId $_.ResourceId -Properties $_.Properties -Force
+}
 ```
 
 ### <a name="using-a-resource-manager-template"></a>使用资源管理器模板
@@ -100,7 +100,7 @@ Set-AzResource -ResourceId $_.ResourceId -Properties $_.Properties -Force
 * **false**：将工作区设置为工作区上下文权限。 如果未设置该标志，则这是默认设置。
 * **true**：将工作区设置为资源上下文权限。
 
-## 使用工作区权限管理访问 <a name="manage-access-using-workspace-permissions"></a>
+## <a name="manage-access-using-workspace-permissions"></a>使用工作区权限管理访问 <a name="manage-access-using-workspace-permissions"></a>
 
 每个工作区可有多个与其关联的帐户，每个帐户可访问多个工作区。 使用 [Azure 基于角色的访问](../../role-based-access-control/role-assignments-portal.md)来管理访问权限。
 

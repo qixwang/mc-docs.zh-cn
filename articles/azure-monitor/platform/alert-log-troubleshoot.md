@@ -9,12 +9,12 @@ origin.date: 10/29/2018
 ms.date: 04/12/2019
 ms.author: v-lingwu
 ms.subservice: alerts
-ms.openlocfilehash: 3c96a7214a52bd4a785be81da8f87620d7727e08
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: 5eceda0837283d47ecf5b2fd9b644e934891a305
+ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79291855"
+ms.lasthandoff: 03/17/2020
+ms.locfileid: "79452565"
 ---
 # <a name="troubleshoot-log-alerts-in-azure-monitor"></a>在 Azure Monitor 中排查日志警报问题  
 
@@ -53,9 +53,9 @@ ms.locfileid: "79291855"
 
 ### <a name="metric-measurement-alert-rule-is-incorrect"></a>指标度量警报规则不正确
 
-*指标度量日志警报*是日志警报的子类型，具有特殊的功能和受限的警报查询语法。 指标度量日志警报的规则要求查询输出是指标时序。 即，输出是包含等量大小的不同时间段以及相应聚合值的表。 
+*指标度量日志警报*是日志警报的子类型，具有特殊的功能和受限的警报查询语法。 指标度量日志警报的规则要求查询输出是指标时序。 即，输出是包含等量大小的不同时间段以及相应聚合值的表。
 
-可以选择在该表中包含其他变量以及 **AggregatedValue**。 可以使用这些变量来为表排序。 
+可以选择在该表中包含其他变量以及 **AggregatedValue**。 可以使用这些变量来为表排序。
 
 例如，假设指标度量日志警报的规则已配置为：
 
@@ -69,9 +69,9 @@ ms.locfileid: "79291855"
 
 ![包含多个值的指标度量查询执行](media/alert-log-troubleshoot/LogMMQuery.png)
 
-由于**聚合依据**是基于 **$table** 定义的，因此数据已按 **$table** 列排序（如红框所示）。 然后我们进行分组并查看“聚合依据”字段的类型。  
+由于**聚合依据**是基于 **$table** 定义的，因此数据已按 **$table** 列排序（如红框所示）。 然后我们进行分组并查看“聚合依据”字段的类型。 
 
-例如，对于 **$table**，**availabilityResults** 的值将视为一个绘图/实体（如橙色框所示）。 在此绘图/实体值中，警报服务将检查三次连续违规（如绿框所示）。 违规时会对表值 **availabilityResults** 触发警报。 
+例如，对于 **$table**，**availabilityResults** 的值将视为一个绘图/实体（如橙色框所示）。 在此绘图/实体值中，警报服务将检查三次连续违规（如绿框所示）。 违规时会对表值 **availabilityResults** 触发警报。
 
 同样，如果其他任何 **$table** 值发生三次连续违规，则会触发另一条警报通知。 警报服务自动按时间排序一个绘图/实体中的值（如橙色框所示）
 
@@ -92,7 +92,7 @@ ms.locfileid: "79291855"
 
 Log Analytics 和 Application Insights 可能会发生引入和处理延迟。 在运行日志警报查询时，可能发现没有可用的数据，或者只有部分数据可用。 有关详细信息，请参阅 [Azure Monitor 中的日志数据引入时间](../platform/data-ingestion-time.md)。
 
-根据警报规则的配置方式，如果在执行警报时日志中没有数据或者只有部分数据，则可能会错误地激发警报。 在这种情况下，我们建议你更改警报查询或配置。 
+根据警报规则的配置方式，如果在执行警报时日志中没有数据或者只有部分数据，则可能会错误地激发警报。 在这种情况下，我们建议你更改警报查询或配置。
 
 例如，如果日志警报规则配置为当分析查询的结果数小于 5 时触发，则当没有任何数据（零个记录）或只有部分结果（一个记录）时，警报将会触发。 但是，在发生数据引入延迟后，具有完整数据的同一查询可能会提供包含 10 个记录的结果。
 
@@ -188,7 +188,7 @@ Azure 活动日志中的以下示例事件适用于因持续失败而被禁用�
 
 [Azure 顾问](../../advisor/advisor-overview.md)会警告此类行为。 Azure 顾问会在“高可用性”类别下，针对特定的日志警报规则添加一条中度影响性的、说明为“请修复日志警报规则以确保执行监视”的建议。 如果在 Azure 顾问提供建议七天后仍未纠正日志警报规则中的警报查询，则 Azure Monitor 会禁用日志警报，并确保在该规则持续相当长一段时间（例如一周）无法运行时，不会产生不必要的费用。
 
-可以通过查看 [Azure 活动日志](../../azure-resource-manager/resource-group-audit.md)中的事件，来了解 Azure Monitor 禁用日志警报规则的确切时间。
+可以通过查看 [Azure 活动日志](../../azure-resource-manager/management/view-activity-logs.md)中的事件，来了解 Azure Monitor 禁用日志警报规则的确切时间。
 
 ## <a name="next-steps"></a>后续步骤
 

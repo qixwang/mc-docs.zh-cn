@@ -4,15 +4,15 @@ description: 了解如何在 Azure 应用服务中运行 .NET Core 应用，同�
 ms.devlang: dotnet
 ms.topic: tutorial
 origin.date: 08/06/2019
-ms.date: 03/23/2020
+ms.date: 03/16/2020
 ms.author: v-tawe
 ms.custom: mvc, cli-validate, seodec18
-ms.openlocfilehash: d48f0088308276415d82fa9c26c55b2041217eef
-ms.sourcegitcommit: d5eca3c6b03b206e441b599e5b138bd687a91361
+ms.openlocfilehash: d6c1d2794b12d6ac36dfc720235ce12fb71be16f
+ms.sourcegitcommit: e500354e2fd8b7ac3dddfae0c825cc543080f476
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78934718"
+ms.lasthandoff: 03/19/2020
+ms.locfileid: "79546992"
 ---
 # <a name="tutorial-build-an-aspnet-core-and-sql-database-app-in-azure-app-service"></a>教程：在 Azure 应用服务中生成 ASP.NET Core 和 SQL 数据库应用
 
@@ -38,7 +38,7 @@ ms.locfileid: "78934718"
 完成本教程：
 
 * [安装 Git](https://git-scm.com/)
-* [安装 .NET Core](https://www.microsoft.com/net/core/)
+* [安装 .NET Core SDK](https://dotnet.microsoft.com/download)
 
 ## <a name="create-local-net-core-app"></a>创建本地 .NET Core 应用
 

@@ -7,16 +7,16 @@ documentationcenter: ''
 author: WenJason
 ms.topic: article
 origin.date: 01/27/2020
-ms.date: 02/24/2020
+ms.date: 03/23/2020
 ms.author: v-jay
 ms.reviewer: alfredop
 ms.lastreviewed: 02/26/2019
-ms.openlocfilehash: 2a99978cd0b99dfeb278f6e97cbab51846506537
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.openlocfilehash: adcb0d49c06515fe55265ade419dc419ac46a512
+ms.sourcegitcommit: e500354e2fd8b7ac3dddfae0c825cc543080f476
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77540254"
+ms.lasthandoff: 03/19/2020
+ms.locfileid: "79547068"
 ---
 # <a name="frequently-asked-questions-about-azure-stack-hub-usage"></a>有关 Azure Stack Hub 用量的常见问题解答
 
@@ -62,7 +62,7 @@ ms.locfileid: "77540254"
   
 **计量 ID**：B9FF3CD0-28AA-4762-84BB-FF8FBAEA6A90  
 **计量名称**：TableTransactions  
-**单元**：请求计数（以万为单位）  
+**单元**：请求计数以万为单位  
 **注释**：表服务请求数（以 10,000 计）。  
   
 **计量 ID**：50A1AEAF-8ECA-48A0-8973-A5B3077FEE0D  
@@ -245,8 +245,7 @@ ms.locfileid: "77540254"
   
 **计量 ID**：957E9F36-2C14-45A1-B6A1-1723EF71A01D  
 **计量名称**：共享应用服务小时数  
-**单元**：1 小时  
-**注释**：共享应用服务计划的每小时使用情况。 计划按单个应用来计量。  
+**单元**：1 小时 **备注**：共享应用服务计划的每小时使用情况。 计划按单个应用来计量。  
   
 **计量 ID**：539CDEC7-B4F5-49F6-AAC4-1F15CFF0EDA9  
 **计量名称**：免费应用服务小时数  
