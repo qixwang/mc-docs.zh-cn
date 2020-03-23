@@ -7,15 +7,16 @@ manager: rkarlin
 services: key-vault
 ms.author: v-tawe
 origin.date: 08/28/2019
-ms.date: 12/09/2019
+ms.date: 03/16/2020
 ms.topic: conceptual
 ms.service: key-vault
-ms.openlocfilehash: d72cdc397721151fa2f2d5fb4743c04f52d64d90
-ms.sourcegitcommit: 21b02b730b00a078a76aeb5b78a8fd76ab4d6af2
+ms.subservice: general
+ms.openlocfilehash: e1e002019c9a36e13a2fe1016438c51a41d84b9a
+ms.sourcegitcommit: 764b3d26aedce2de0e1948468a706fd3204a3d5e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74838870"
+ms.lasthandoff: 03/19/2020
+ms.locfileid: "79543334"
 ---
 # <a name="service-to-service-authentication-to-azure-key-vault-using-net"></a>使用 .NET 向 Azure Key Vault 进行服务到服务身份验证
 
