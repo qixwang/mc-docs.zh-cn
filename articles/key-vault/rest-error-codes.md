@@ -128,7 +128,7 @@ resource=https%3A%2F%2Fvault.azure.cn&client_id=<registered-app-ID>&client_secre
 HTTP 403 表示请求已完成身份验证（知道请求方标识），但标识无权访问请求的资源。 此错误有两种原因：
 
 - 没有为标识设置访问策略。
-- 请求方资源的 IP 地址未列入 Key Vault 防火墙设置中的白名单。
+- 请求方资源的 IP 地址未列入 Key Vault 防火墙设置中的允许列表。
 
 如果客户的应用程序未使用客户端 ID，但客户认为已使用，则往往会出现 HTTP 403。 这通常意味着，未为实际调用方标识正确设置访问策略。
 

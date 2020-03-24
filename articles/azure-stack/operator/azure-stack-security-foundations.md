@@ -56,7 +56,7 @@ Azure Stack Hub 基础结构对其所有内部证书使用 4096 位 RSA 密钥�
 
 ## <a name="windows-defender-application-control"></a>Windows Defender 应用程序控制
 
-Azure Stack Hub 使用最新的 Windows Server 安全功能。 其中的一项功能是 Windows Defender 应用程序控制（WDAC，前称为“代码完整性”）。此功能提供可执行文件白名单，确保只有已授权的代码可在 Azure Stack Hub 基础结构中运行。
+Azure Stack Hub 使用最新的 Windows Server 安全功能。 其中的一项功能是 Windows Defender 应用程序控制（WDAC，前称为“代码完整性”）。此功能提供可执行文件允许列表，确保只有已授权的代码可在 Azure Stack Hub 基础结构中运行。
 
 经授权的代码是由 Azure 或 OEM 合作伙伴签名的。 已签名的经授权代码包括在由 Azure 定义的策略中指定的允许软件列表中。 换而言之，只能执行已批准在 Azure Stack Hub 基础结构中运行的软件。 系统会阻止任何执行未经授权代码的企图并生成警报。 Azure Stack Hub 强制实施用户模式代码完整性 (UMCI) 和虚拟机监控程序代码完整性 (HVCI)。
 

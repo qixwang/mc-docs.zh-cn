@@ -39,7 +39,7 @@ ms.locfileid: "77531336"
   - 电子邮件字段现在为 `type=email`，移动键盘将提供正确的建议
   - 对 Chrome 转换的支持
 - “统一和自断言”页
-  - “用户名/电子邮件”和“密码”字段现在使用 `form` HTML 元素，以允许 Edge 和 Internet Explorer (IE) 正确保存此信息。
+  - “用户名/电子邮件”和“密码”字段现在使用 `form` HTML 元素，以允许 Microsoft Edge 和 Internet Explorer (IE) 正确保存此信息。
 
 ## <a name="110"></a>1.1.0
 
