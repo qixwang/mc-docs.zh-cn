@@ -5737,7 +5737,7 @@
     },
     {
       "source_path": "articles/app-service-web/app-service-web-app-azure-portal.md",
-      "redirect_url": "https://portal.azure.com/#create/hub",
+      "redirect_url": "https://portal.azure.cn/#create/hub",
       "redirect_document_id": false
     },
     {
@@ -22708,6 +22708,16 @@
     {
       "source_path": "articles/azure-subscription-service-limits.md",
       "redirect_url": "/azure-resource-manager/management/azure-subscription-service-limits",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/event-hubs/event-hubs-authentication-and-security-model-overview.md",
+      "redirect_url": "/event-hubs/authenticate-shared-access-signature",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/logic-apps/logic-apps-enterprise-integration-accounts.md",
+      "redirect_url": "/logic-apps/logic-apps-enterprise-integration-create-integration-account",
       "redirect_document_id": false
     }
 
