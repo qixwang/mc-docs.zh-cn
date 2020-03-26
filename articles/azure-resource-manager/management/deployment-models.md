@@ -2,30 +2,29 @@
 title: 资源管理器部署和经典部署
 description: 介绍 Resource Manager 部署模型与经典（或服务管理）部署模型之间的差异。
 ms.topic: conceptual
-origin.date: 08/22/2019
-ms.date: 01/20/2020
+origin.date: 02/06/2020
+ms.date: 03/23/2020
 ms.author: v-yeche
-ms.openlocfilehash: db6592416c7741ee9d272967a9b74d123e7fbd9b
-ms.sourcegitcommit: 8de025ca11b62e06ba3762b5d15cc577e0c0f15d
+ms.openlocfilehash: 078ca73c2bbb6ae8345d26b496f812b3fbe63306
+ms.sourcegitcommit: 1436f1851342ca5631eb25342eed954adb707af0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76165467"
+ms.lasthandoff: 03/19/2020
+ms.locfileid: "79543901"
 ---
 # <a name="azure-resource-manager-vs-classic-deployment-understand-deployment-models-and-the-state-of-your-resources"></a>Azure 资源管理器和经典部署：了解部署模型和资源状态
 
 > [!NOTE]
 > 仅当从经典部署迁移到 Azure 资源管理器部署时，才会使用本文中提供的信息。
 
-本文介绍 Azure 资源管理器和经典部署模型。 Resource Manager 部署模型和经典部署模型代表两种不同的 Azure 解决方案部署和管理方式。 可以通过两种不同的 API 集使用这两种模型，已部署的资源可能包含重大差异。 这两个模型相互不兼容。 本文介绍这些差异。
+本文介绍 Azure 资源管理器和经典部署模型。 Resource Manager 部署模型和经典部署模型代表两种不同的 Azure 解决方案部署和管理方式。 可以通过两种不同的 API 集使用这两种模型，已部署的资源可能包含重大差异。 这两个模型互不兼容。 本文介绍这些差异。
 
 为了简化资源部署和管理，Azure 建议对所有新资源使用 Resource Manager。 Azure 建议在可能情况下，通过 Resource Manager 重新部署现有资源。
 
 如果不熟悉 Resource Manager，请先查看 [Azure Resource Manager 概述](overview.md)中定义的术语。
 
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
-
 ## <a name="history-of-the-deployment-models"></a>部署模型的历史
+
 Azure 最初只提供经典部署模型。 在此模型中，每个资源彼此独立；无法将相关的资源组合在一起。 因此，必须手动跟踪构成解决方案或应用程序的资源 ，并记得以协调的方式管理。 部署解决方案有两种方式：通过门户单独创建每个资源；或创建一个脚本，以正确的顺序部署所有资源。 若要删除解决方案，必须逐个删除每个资源。 无法轻松应用和更新相关资源的访问控制策略。 最后，无法将标记应用到资源，因此无法使用有助于监视资源和管理计费的术语来标记资源。
 
 Azure 在 2014 年引入了 Resource Manager，增加了资源组这一概念。 资源组是一种容器，专门容纳共享同一生命周期的资源。 Resource Manager 部署模型具有几大优点：
@@ -84,10 +83,10 @@ Get-AzVM -ResourceGroupName ExampleGroup
 
 * 所有资源存在于一个资源组中。
 * 虚拟机依赖在存储资源提供程序中定义的具体存储帐户，在 Blob 存储中存储其磁盘（必需）。
-* 虚拟机引用在网络资源提供程序中定义的具体 NIC（必需）和在计算资源提供程序中定义的可用性集（可选）。
-* NIC 引用虚拟机的指定 IP 地址（必需）、虚拟机的虚拟网络的子网（必需）和网络安全组（可选）。
+* 虚拟机引用在网络资源提供程序中定义的特定网络接口卡（必需）和在计算资源提供程序中定义的可用性集（可选）。
+* 网络接口卡引用虚拟机的分配 IP 地址（必需）、虚拟机虚拟网络的子网（必需）和网络安全组（可选）。
 * 虚拟网络内的子网引用网络安全组（可选）。
-* 负载均衡器实例引用后端 IP 地址池，包括虚拟机的 NIC（可选），并引用负载均衡器的公共或专用 IP 地址（可选）。
+* 负载均衡器实例引用后端 IP 地址池，包括虚拟机的网络接口卡（可选），并引用负载均衡器的公共或专用 IP 地址（可选）。
 
 以下是经典部署的组件及其关系：
 
@@ -95,17 +94,17 @@ Get-AzVM -ResourceGroupName ExampleGroup
 
 托管虚拟机的经典解决方案包括：
 
-* 一项必不可少的云服务，用作宿主虚拟机的容器（计算）。 虚拟机自动配备一个网络接口卡 (NIC) 以及由 Azure 分配的 IP 地址。 此外，云服务包含一个外部负载均衡器实例、一个公共 IP 地址以及若干默认终结点，以支持远程桌面、针对 Windows 虚拟机的远程 PowerShell 流量和针对 Linux 虚拟机的 Secure Shell (SSH) 流量。
-* 一个必不可少的存储帐户，存储虚拟机的 VHD，包括操作系统、临时文件和附加的数据磁盘（存储）。
-* 一个可选的虚拟网络，用作额外的容器，可以在其中创建子网结构并指定虚拟机所在的子网（网络）。
+* 一项必不可少的云服务，用作宿主虚拟机的容器（计算）。 虚拟机自动配备一个网络接口卡以及由 Azure 分配的 IP 地址。 此外，云服务包含一个外部负载均衡器实例、一个公共 IP 地址以及若干默认终结点，以支持远程桌面、针对 Windows 虚拟机的远程 PowerShell 流量和针对 Linux 虚拟机的 Secure Shell (SSH) 流量。
+* 一个必不可少的存储帐户，它用于存储虚拟机的虚拟硬盘，包括操作系统、临时文件和附加的数据磁盘（存储）。
+* 一个可选的虚拟网络，用作额外的容器，可以在其中创建子网结构并选择虚拟机所在的子网（网络）。
 
 下表说明了计算、网络和存储资源提供程序交互方式的变化：
 
 | 项目 | 经典 | Resource Manager |
 | --- | --- | --- |
 | 面向虚拟机的云服务 |云服务是一个容器，用于容纳要求平台可用性和负载均衡的虚拟机。 |使用新模型，云服务不再是创建虚拟机所必需的对象。 |
-| 虚拟网络 |对于虚拟机来说，虚拟网络是可选的。 虚拟网络（如果包括）不能通过 Resource Manager 进行部署。 |虚拟机需要已通过 Resource Manager 部署的虚拟网络。 |
-| 存储帐户 |虚拟机需要一个存储帐户，存储操作系统、临时文件和附加数据磁盘的 VHD。 |虚拟机需要一个存储帐户，在 Blob 存储中存储其磁盘。 |
+| 虚拟网络 |对于虚拟机来说，虚拟网络是可选的。 虚拟网络（如果包括）不能通过资源管理器进行部署。 |虚拟机需要已通过 Resource Manager 部署的虚拟网络。 |
+| 存储帐户 |虚拟机需要一个存储帐户，用于存储操作系统、临时文件和附加数据磁盘的虚拟硬盘。 |虚拟机需要一个存储帐户，在 Blob 存储中存储其磁盘。 |
 | 可用性集 |通过在虚拟机上配置相同的“AvailabilitySetName”来指出平台的可用性。 容错域的最大数量为 2。 |可用性集是 Microsoft.Compute 提供程序提供的一个资源。 要求高可用性的虚拟机必须包含在可用性集中。 现在，容错域的最大数量为 3。 |
 | 地缘组 |创建虚拟网络需要地缘组。 但是，随着区域虚拟网络的引入，不再需要地缘组了。 |为了简单起见，地缘组概念不再存在于通过 Azure Resource Manager 提供的 API 中。 |
 | 负载均衡 |云服务的创建为部署的虚拟机提供了一个隐式负载均衡器。 |负载均衡器是 Microsoft.Network 提供程序提供的一个资源。 需要负载均衡的虚拟机的主网络接口应该引用负载均衡器。 负载均衡器既可以是内部的，也可以是外部的。 负载均衡器实例引用后端 IP 地址池，包括虚拟机的 NIC（可选），引用负载均衡器的公共或专用 IP 地址（可选）。 |
@@ -119,21 +118,23 @@ Get-AzVM -ResourceGroupName ExampleGroup
 若要了解如何从不同部署模型连接虚拟网络，请参阅[从门户中的不同部署模型中连接虚拟网络](../../vpn-gateway/vpn-gateway-connect-different-deployment-models-portal.md)。
 
 ## <a name="migrate-from-classic-to-resource-manager"></a>从经典部署迁移到 Resource Manager 部署
+
 如果已准备好将资源从经典部署迁移到 Resource Manager 部署，请参阅：
 
-1. [平台支持的从经典部署模型迁移到 Azure Resource Manager 的技术深入探讨](../../virtual-machines/windows/migration-classic-resource-manager-deep-dive.md)
+1. [有关平台支持的从经典部署模型到 Azure Resource Manager 部署模型的迁移的技术深入探讨](../../virtual-machines/windows/migration-classic-resource-manager-deep-dive.md)
 2. [平台支持的从经典部署模型到 Azure Resource Manager 部署模型的 IaaS 资源迁移](../../virtual-machines/windows/migration-classic-resource-manager-overview.md)
 3. [使用 Azure PowerShell 将 IaaS 资源从经典部署模型迁移到 Azure Resource Manager 部署模型](../../virtual-machines/windows/migration-classic-resource-manager-ps.md)
 4. [使用 Azure CLI 将 IaaS 资源从经典部署模型迁移到 Azure Resource Manager 部署模型](../../virtual-machines/virtual-machines-linux-cli-migration-classic-resource-manager.md)
 
 ## <a name="frequently-asked-questions"></a>常见问题
+
 **我能使用资源管理器创建虚拟机，以将其部署到使用经典部署创建的虚拟网络中吗？**
 
-不支持该配置。 不能使用资源管理器将虚拟机部署到使用经典部署创建的虚拟网络中。
+此配置不受支持。 不能使用资源管理器将虚拟机部署到使用经典部署创建的虚拟网络中。
 
 **我能使用资源管理器从使用经典部署模型创建的用户映像创建虚拟机吗？**
 
-不支持该配置。 但是，可以从使用经典部署模型创建的存储帐户中复制 VHD 文件，并将其添加到通过资源管理器创建的新帐户中。
+此配置不受支持。 但是，可以从使用经典部署模型创建的存储帐户中复制虚拟硬盘文件，并将其添加到通过资源管理器创建的新帐户中。
 
 **对订阅的配额有何影响？**
 

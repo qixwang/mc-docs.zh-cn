@@ -8,15 +8,15 @@ manager: digimobile
 editor: spelluru
 ms.service: service-bus-messaging
 ms.topic: article
-origin.date: 01/16/2020
-ms.date: 2/6/2020
+origin.date: 03/12/2020
+ms.date: 03/20/2020
 ms.author: v-lingwu
-ms.openlocfilehash: 89c832641bc8c1817ca86f3d48da74988ed5ceb4
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: a6791a6238798a15b83ca7829af131637b6d371d
+ms.sourcegitcommit: 305361c96d1d5288d3dda7e81833820640e2afac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79291197"
+ms.lasthandoff: 03/21/2020
+ms.locfileid: "80109738"
 ---
 # <a name="best-practices-for-performance-improvements-using-service-bus-messaging"></a>使用服务总线消息传递改进性能的最佳实践
 
@@ -32,50 +32,147 @@ ms.locfileid: "79291197"
 
 1. 高级消息队列协议 (AMQP)
 2. 服务总线消息传送协议 (SBMP)
-3. HTTP
+3. 超文本传输协议 (HTTP)
 
-AMQP 和 SBMP 都很高效，因为只要存在消息工厂，就可以保持与服务总线的连接。 它还实现批处理和预提取。 除非明确提到，本文中的所有内容都假定使用 AMQP 或 SBMP。
+AMQP 最有效，因为它可以保持与服务总线的连接。 它还实现批处理和预提取。 除非明确提到，本文中的所有内容都假定使用 AMQP 或 SBMP。
+
+> [!IMPORTANT]
+> SBMP 仅适用于 .NET Framework。 AMQP 是 .NET Standard 的默认设置。
+
+## <a name="choosing-the-appropriate-service-bus-net-sdk"></a>选择适当的服务总线 .NET SDK
+
+有两个受支持的 Azure 服务总线 .NET SDK。 它们的 API 非常相似，选择起来可能很困难。 请参阅下表，了解如何做出决定。 建议使用 Microsoft.Azure.ServiceBus SDK，因为它更新式、性能更高且跨平台兼容。 另外，它支持基于 WebSocket 的 AMQP，并且是包含开源项目的 Azure .NET SDK 集合的一部分。
+
+| NuGet 包 | 主命名空间 | 平台最低版本 | 协议 |
+|---------------|----------------------|---------------------|-------------|
+| <a href="https://www.nuget.org/packages/Microsoft.Azure.ServiceBus" target="_blank">Microsoft.Azure.ServiceBus <span class="docon docon-navigate-external x-hidden-focus"></span></a> | `Microsoft.Azure.ServiceBus`<br>`Microsoft.Azure.ServiceBus.Management` | .NET Core 2.0<br>.NET Framework 4.6.1<br>Mono 5.4<br>Xamarin.iOS 10.14<br>Xamarin.Mac 3.8<br>Xamarin.Android 8.0<br>通用 Windows 平台 10.0.16299 | AMQP<br>HTTP |
+| <a href="https://www.nuget.org/packages/WindowsAzure.ServiceBus" target="_blank">WindowsAzure.ServiceBus <span class="docon docon-navigate-external x-hidden-focus"></span></a> | `Microsoft.ServiceBus`<br>`Microsoft.ServiceBus.Messaging` | .NET Framework 4.6.1 | AMQP<br>SBMP<br>HTTP |
+
+若要详细了解最低的 .NET Standard 平台支持，请参阅 [.NET 实现支持](https://docs.microsoft.com/dotnet/standard/net-standard#net-implementation-support)。
 
 ## <a name="reusing-factories-and-clients"></a>重用工厂和客户端
 
-[QueueClient][QueueClient] 或 [MessageSender][MessageSender] 等服务总线客户端对象是通过 [MessagingFactory][MessagingFactory] 对象创建的，该对象还提供连接的内部管理。 发送消息后，建议不关闭消息工厂或队列、主题和订阅客户端，并在发送下一条消息时再重新创建它们。 关闭消息工厂将删除与服务总线服务的连接，并且会在重新创建工厂时建立新的连接。 建立连接是一项成本高昂的操作，可通过针对多个操作重复使用相同的工厂和客户端对象来避免这一操作。 这些客户端对象可安全地用于并发异步操作及从多个线程安全地使用。 
+# <a name="microsoftazureservicebus-sdk"></a>[Microsoft.Azure.ServiceBus SDK](#tab/net-standard-sdk)
+
+应当将服务总线客户端对象（例如 [`IQueueClient`][QueueClient] 或 [`IMessageSender`][MessageSender] 的实现）注册为单一实例进行依赖关系注入（或将其实例化一次后共享）。 发送消息后，建议不关闭消息工厂或队列、主题和订阅客户端，并在发送下一条消息时再重新创建它们。 关闭消息工厂将删除与服务总线服务的连接，并且会在重新创建工厂时建立新的连接。 建立连接是一项成本高昂的操作，可通过针对多个操作重复使用相同的工厂和客户端对象来避免这一操作。 这些客户端对象可安全地用于并发异步操作及从多个线程安全地使用。
+
+# <a name="windowsazureservicebus-sdk"></a>[WindowsAzure.ServiceBus SDK](#tab/net-framework-sdk)
+
+`QueueClient` 或 `MessageSender` 之类的服务总线客户端对象通过 [MessagingFactory][MessagingFactory] 对象创建，后者还提供对连接的内部管理。 发送消息后，建议不关闭消息工厂或队列、主题和订阅客户端，并在发送下一条消息时再重新创建它们。 关闭消息工厂将删除与服务总线服务的连接，并且会在重新创建工厂时建立新的连接。 建立连接是一项成本高昂的操作，可通过针对多个操作重复使用相同的工厂和客户端对象来避免这一操作。 这些客户端对象可安全地用于并发异步操作及从多个线程安全地使用。
+
+---
 
 ## <a name="concurrent-operations"></a>并发操作
 
-执行某项操作（发送、接收、删除等）需要花费一定时间。 这一时间包括服务总线服务处理该操作的时间，外加延迟处理请求和答复的时间。 若要增加每次操作的数目，操作必须同时执行。 
+执行某项操作（发送、接收、删除等）需要花费一定时间。 这一时间包括服务总线服务处理该操作的时间，外加延迟处理请求和响应的时间。 若要增加每次操作的数目，操作必须同时执行。
 
 客户端通过执行异步操作来计划并发操作。 在前一个请求完成之前便启动下一个请求。 以下代码片段是异步发送操作的示例：
-  
- ```csharp
-  Message m1 = new BrokeredMessage(body);
-  Message m2 = new BrokeredMessage(body);
-  
-  Task send1 = queueClient.SendAsync(m1).ContinueWith((t) => 
-    {
-      Console.WriteLine("Sent message #1");
-    });
-  Task send2 = queueClient.SendAsync(m2).ContinueWith((t) => 
-    {
-      Console.WriteLine("Sent message #2");
-    });
-  Task.WaitAll(send1, send2);
-  Console.WriteLine("All messages sent");
-  ```
-  
-  以下代码是异步接收操作的示例。 请在[此处](https://github.com/Azure/azure-service-bus/blob/master/samples/DotNet/Microsoft.Azure.ServiceBus/SendersReceiversWithQueues)查看完整程序：
-  
-  ```csharp
-  var receiver = new MessageReceiver(connectionString, queueName, ReceiveMode.PeekLock);
-  var doneReceiving = new TaskCompletionSource<bool>();
 
-  receiver.RegisterMessageHandler(...);
-  ```
+# <a name="microsoftazureservicebus-sdk"></a>[Microsoft.Azure.ServiceBus SDK](#tab/net-standard-sdk)
+
+```csharp
+var messageOne = new Message(body);
+var messageTwo = new Message(body);
+
+var sendFirstMessageTask =
+    queueClient.SendAsync(messageOne).ContinueWith(_ =>
+    {
+        Console.WriteLine("Sent message #1");
+    });
+var sendSecondMessageTask =
+    queueClient.SendAsync(messageTwo).ContinueWith(_ =>
+    {
+        Console.WriteLine("Sent message #2");
+    });
+
+await Task.WhenAll(sendFirstMessageTask, sendSecondMessageTask);
+Console.WriteLine("All messages sent");
+```
+
+# <a name="windowsazureservicebus-sdk"></a>[WindowsAzure.ServiceBus SDK](#tab/net-framework-sdk)
+
+```csharp
+var messageOne = new BrokeredMessage(body);
+var messageTwo = new BrokeredMessage(body);
+
+var sendFirstMessageTask =
+    queueClient.SendAsync(messageOne).ContinueWith(_ =>
+    {
+        Console.WriteLine("Sent message #1");
+    });
+var sendSecondMessageTask =
+    queueClient.SendAsync(messageTwo).ContinueWith(_ =>
+    {
+        Console.WriteLine("Sent message #2");
+    });
+
+await Task.WhenAll(sendFirstMessageTask, sendSecondMessageTask);
+Console.WriteLine("All messages sent");
+```
+
+---
+
+以下代码是异步接收操作的示例。
+
+# <a name="microsoftazureservicebus-sdk"></a>[Microsoft.Azure.ServiceBus SDK](#tab/net-standard-sdk)
+
+请参阅 GitHub 存储库，了解完整的<a href="https://github.com/Azure/azure-service-bus/blob/master/samples/DotNet/Microsoft.Azure.ServiceBus/SendersReceiversWithQueues" target="_blank">源代码示例 <span class="docon docon-navigate-external x-hidden-focus"></span></a>：
+
+```csharp
+var receiver = new MessageReceiver(connectionString, queueName, ReceiveMode.PeekLock);
+
+static Task LogErrorAsync(Exception exception)
+{
+    Console.WriteLine(exception);
+    return Task.CompletedTask;
+};
+
+receiver.RegisterMessageHandler(
+    async (message, cancellationToken) =>
+    {
+        Console.WriteLine("Handle message");
+        await receiver.CompleteAsync(message.SystemProperties.LockToken);
+    },
+    new MessageHandlerOptions(e => LogErrorAsync(e.Exception))
+    {
+        AutoComplete = false,
+        MaxConcurrentCalls = 1
+    });
+```
+
+使用连接字符串、队列名称和“扫视锁定”接收模式来实例化 `MessageReceiver` 对象。 接下来，使用 `receiver` 实例注册消息处理程序。
+
+# <a name="windowsazureservicebus-sdk"></a>[WindowsAzure.ServiceBus SDK](#tab/net-framework-sdk)
+
+请参阅 GitHub 存储库，了解完整的<a href="https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/SendersReceiversWithQueues" target="_blank">源代码示例 <span class="docon docon-navigate-external x-hidden-focus"></span></a>：
+
+```csharp
+var factory = MessagingFactory.CreateFromConnectionString(connectionString);
+var receiver = await factory.CreateMessageReceiverAsync(queueName, ReceiveMode.PeekLock);
+
+// Register the handler to receive messages asynchronously
+receiver.OnMessageAsync(
+    async message =>
+    {
+        Console.WriteLine("Handle message");
+        await message.CompleteAsync();
+    },
+    new OnMessageOptions
+    {
+        AutoComplete = false,
+        MaxConcurrentCalls = 1
+    });
+```
+
+`MessagingFactory` 从连接字符串创建 `factory` 对象。 使用 `factory` 实例时，会实例化 `MessageReceiver`。 接下来，使用 `receiver` 实例注册 OnMessage 处理程序。
+
+---
 
 ## <a name="receive-mode"></a>接收模式
 
-创建队列或订阅客户端时，可以指定接收模式：*Peek-lock* 或 *Receive and Delete*。 默认接收模式是 [PeekLock][PeekLock]。 在此模式下操作时，客户端发送请求以从服务总线接收消息。 客户端收到消息后，会发送完成消息的请求。
+创建队列或订阅客户端时，可以指定接收模式：*Peek-lock* 或 *Receive and Delete*。 默认接收模式是 `PeekLock`。 在默认模式下操作时，客户端会发送从服务总线接收消息的请求。 客户端收到消息后，会发送完成消息的请求。
 
-如果将接收模式设置为 [ReceiveAndDelete][ReceiveAndDelete]时，这两个步骤将合并到单个请求中。 这些步骤减少了操作的总体数目，并可以提高总消息吞吐量。 性能提高的同时也会产生丢失消息的风险。
+将接收模式设置为 `ReceiveAndDelete` 时，这两个步骤会合并到单个请求中。 这些步骤减少了操作的总体数目，并可以提高总消息吞吐量。 性能提高的同时也会产生丢失消息的风险。
 
 服务总线不支持“接收并删除”操作的事务。 此外，在客户端想要延迟消息或将其放入[死信队列](service-bus-dead-letter-queues.md)的情况下，需要使用扫视-锁定语义。
 
@@ -83,53 +180,96 @@ AMQP 和 SBMP 都很高效，因为只要存在消息工厂，就可以保持与
 
 客户端批处理使队列或主题客户端可以将发送消息的操作延迟特定的一段时间。 如果客户端在这段时间内发送其他消息，则会将这些消息以单个批次传送。 客户端批处理还会导致队列或订阅客户端将多个**完成**请求批处理为单个请求。 批处理仅适用于异步**发送**和**完成**操作。 同步操作会立即发送到服务总线服务。 不会针对扫视或接收操作执行批处理，也不会跨客户端执行批处理。
 
+# <a name="microsoftazureservicebus-sdk"></a>[Microsoft.Azure.ServiceBus SDK](#tab/net-standard-sdk)
+
+.NET Standard SDK 的批处理功能尚未公开可供操作的属性。
+
+# <a name="windowsazureservicebus-sdk"></a>[WindowsAzure.ServiceBus SDK](#tab/net-framework-sdk)
+
 默认情况下，客户端的批处理间隔时间为 20 毫秒。 可通过在创建消息工厂之前，设置 [BatchFlushInterval][BatchFlushInterval] 属性，更改批处理的间隔时间。 此设置会影响此工厂创建的所有客户端。
 
 要禁用批处理，则将 [BatchFlushInterval][BatchFlushInterval] 属性设置为 **TimeSpan.Zero**。 例如：
 
 ```csharp
-MessagingFactorySettings mfs = new MessagingFactorySettings();
-mfs.TokenProvider = tokenProvider;
-mfs.NetMessagingTransportSettings.BatchFlushInterval = TimeSpan.FromSeconds(0.05);
-MessagingFactory messagingFactory = MessagingFactory.Create(namespaceUri, mfs);
+var settings = new MessagingFactorySettings
+{
+    NetMessagingTransportSettings =
+    {
+        BatchFlushInterval = TimeSpan.Zero
+    }
+};
+var factory = MessagingFactory.Create(namespaceUri, settings);
 ```
 
 批处理不会影响可计费的消息操作的数目，且仅适用于使用 [Microsoft.ServiceBus.Messaging](https://www.nuget.org/packages/WindowsAzure.ServiceBus/) 库的服务总线客户端协议。 HTTP 协议不支持批处理。
 
 > [!NOTE]
-> 设置 BatchFlushInterval 可确保批处理从应用程序的角度来看是隐式的。 例如，应用程序进行 SendAsync() 和 CompleteAsync() 调用而不进行具体的批量调用。
+> 设置 `BatchFlushInterval` 可确保批处理从应用程序的角度来看是隐式的。 例如，应用程序进行 `SendAsync` 和 `CompleteAsync` 调用而不进行具体的批量调用。
 >
-> 显式客户端批处理可以通过利用下述方法调用来实现 - 
+> 显式客户端批处理可以通过利用下述方法调用来实现：
 > ```csharp
-> Task SendBatchAsync (IEnumerable<BrokeredMessage> messages);
+> Task SendBatchAsync(IEnumerable<BrokeredMessage> messages);
 > ```
 > 在这里，消息的组合大小必须小于定价层支持的最大大小。
 
+---
+
 ## <a name="batching-store-access"></a>批处理存储访问
 
-为增加队列、主题或订阅的吞吐量，服务总线在写入其内部存储时会将多个消息进行批处理。 如果在队列或主题上启用了此功能，则会批量将消息写入到存储。 如果在队列或订阅上启用了此功能，则从存储中批量删除消息。 如果对实体启用了批量存储访问，服务总线会将有关此实体的存储写入操作延迟多达 20 毫秒的时间。 
+为增加队列、主题或订阅的吞吐量，服务总线在写入其内部存储时会将多个消息进行批处理。 如果在队列或主题上启用了此功能，则会批量将消息写入到存储。 如果在队列或订阅上启用了此功能，则从存储中批量删除消息。 如果对实体启用了批量存储访问，服务总线会将有关此实体的存储写入操作延迟多达 20 毫秒的时间。
 
 > [!NOTE]
-> 使用批处理不存在丢失消息的风险，即使在 20 毫秒的批处理间隔结束时出现服务总线故障，也是如此。 
+> 使用批处理不存在丢失消息的风险，即使在 20 毫秒的批处理间隔结束时出现服务总线故障，也是如此。
 
 在此间隔期间发生的其他存储操作会被添加到此批中。 批量存储访问仅影响**发送**和**完成**操作；接收操作不会受到影响。 批量存储访问是实体上的一个属性。 将跨所有启用了批量存储访问的实体实施批处理。
 
-创建新队列、主题或订阅时，默认会启用批量存储访问。 要禁用批量存储访问，则在创建实体之前将 [EnableBatchedOperations][EnableBatchedOperations] 属性设置为 **false** 。 例如：
+创建新队列、主题或订阅时，默认会启用批量存储访问。
+
+# <a name="microsoftazureservicebus-sdk"></a>[Microsoft.Azure.ServiceBus SDK](#tab/net-standard-sdk)
+
+若要禁用批量存储访问，需要 `ManagementClient` 的实例。 根据队列说明创建队列，将 `EnableBatchedOperations` 属性设置为 `false`。
 
 ```csharp
-QueueDescription qd = new QueueDescription();
-qd.EnableBatchedOperations = false;
-Queue q = namespaceManager.CreateQueue(qd);
+var queueDescription = new QueueDescription(path)
+{
+    EnableBatchedOperations = false
+};
+var queue = await managementClient.CreateQueueAsync(queueDescription);
 ```
+
+有关详细信息，请参阅以下部分：
+* <a href="https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.management.queuedescription.enablebatchedoperations?view=azure-dotnet" target="_blank">`Microsoft.Azure.ServiceBus.Management.QueueDescription.EnableBatchedOperations` <span class="docon docon-navigate-external x-hidden-focus"></span></a>。
+* <a href="https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.management.subscriptiondescription.enablebatchedoperations?view=azure-dotnet" target="_blank">`Microsoft.Azure.ServiceBus.Management.SubscriptionDescription.EnableBatchedOperations` <span class="docon docon-navigate-external x-hidden-focus"></span></a>。
+* <a href="https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.management.topicdescription.enablebatchedoperations?view=azure-dotnet" target="_blank">`Microsoft.Azure.ServiceBus.Management.TopicDescription.EnableBatchedOperations` <span class="docon docon-navigate-external x-hidden-focus"></span></a>。
+
+# <a name="windowsazureservicebus-sdk"></a>[WindowsAzure.ServiceBus SDK](#tab/net-framework-sdk)
+
+若要禁用批量存储访问，需要 `NamespaceManager` 的实例。 根据队列说明创建队列，将 `EnableBatchedOperations` 属性设置为 `false`。
+
+```csharp
+var queueDescription = new QueueDescription(path)
+{
+    EnableBatchedOperations = false
+};
+var queue = namespaceManager.CreateQueue(queueDescription);
+```
+
+有关详细信息，请参阅以下部分：
+* <a href="https://docs.azure.cn/dotnet/api/microsoft.servicebus.messaging.queuedescription.enablebatchedoperations?view=azure-dotnet" target="_blank">`Microsoft.ServiceBus.Messaging.QueueDescription.EnableBatchedOperations` <span class="docon docon-navigate-external x-hidden-focus"></span></a>。
+* <a href="https://docs.azure.cn/dotnet/api/microsoft.servicebus.messaging.subscriptiondescription.enablebatchedoperations?view=azure-dotnet" target="_blank">`Microsoft.ServiceBus.Messaging.SubscriptionDescription.EnableBatchedOperations` <span class="docon docon-navigate-external x-hidden-focus"></span></a>。
+* <a href="https://docs.azure.cn/dotnet/api/microsoft.servicebus.messaging.topicdescription.enablebatchedoperations?view=azure-dotnet" target="_blank">`Microsoft.ServiceBus.Messaging.TopicDescription.EnableBatchedOperations` <span class="docon docon-navigate-external x-hidden-focus"></span></a>。
+
+---
 
 批量存储访问不影响可计费的消息传送操作的数目，并且是队列、主题或订阅的一个属性。 它不依赖于接收模式以及客户端和服务总线服务之间所使用的协议。
 
 ## <a name="prefetching"></a>预提取
-[预提取](service-bus-prefetch.md)允许队列或订阅客户端在执行接收操作时从服务加载其他消息。 客户端将这些消息存储在本地缓存中。 缓存大小由 [QueueClient.PrefetchCount][QueueClient.PrefetchCount] 属性或 [SubscriptionClient.PrefetchCount][SubscriptionClient.PrefetchCount] 属性决定。 启用预提取的每个客户端维护其自己的缓存。 客户端之间不共享缓存。 如果客户端启动接收操作，而其缓存是空的，则服务会传输一批消息。 批的大小等于缓存的大小或 256 KB，以二者中较小者为准。 如果客户端启动接收操作，并且缓存中包含一条消息，则从缓存中提取该消息。
+
+[预提取](service-bus-prefetch.md)允许队列或订阅客户端在执行接收操作时从服务加载其他消息。 客户端将这些消息存储在本地缓存中。 缓存的大小取决于 `QueueClient.PrefetchCount` 或 `SubscriptionClient.PrefetchCount` 属性。 启用预提取的每个客户端维护其自己的缓存。 客户端之间不共享缓存。 如果客户端启动接收操作，而其缓存是空的，则服务会传输一批消息。 批的大小等于缓存的大小或 256 KB，以二者中较小者为准。 如果客户端启动接收操作，并且缓存中包含一条消息，则从缓存中提取该消息。
 
 预提取一条消息后，服务将锁定此预提取的消息。 通过此锁定操作，其他接收方则无法接收到此预提取的消息。 如果接收方在锁定过期之前无法完成此消息，则该消息便对其他接收方可用。 预提取的消息的副本保留在缓存中。 使用过期的缓存副本的接收方会在尝试完成该消息时收到一个异常。 默认情况下，消息锁定在 60 秒后过期。 此值可延长到 5 分钟。 若要阻止过期消息的使用，缓存大小应始终小于客户端可在锁定超时间隔内使用的消息数。
 
-使用 60 秒的默认锁定时限时，[PrefetchCount][SubscriptionClient.PrefetchCount] 的合理值是工厂所有接收方最大处理速率的 20 倍。 例如，某个工厂创建了 3 个接收方，并且每个接收方每秒可以处理最多 10 个消息。 预提取计数不应超过 20 X 3 X 10 = 600。 默认情况下，[PrefetchCount][QueueClient.PrefetchCount] 设置为 0，这表示不会从服务中提取额外消息。
+使用 60 秒的默认锁定时限时，`PrefetchCount` 的合理值是工厂所有接收方最大处理速率的 20 倍。 例如，某个工厂创建了 3 个接收方，并且每个接收方每秒可以处理最多 10 个消息。 预提取计数不应超过 20 X 3 X 10 = 600。 默认情况下，`PrefetchCount` 设置为 0，这表示不会从服务中提取额外消息。
 
 预提取消息会增加队列或订阅的总体吞吐量，因为它减少了消息操作或往返行程的总数。 但是，提取第一条消息会耗用更长的时间（因消息大小增加所致）。 由于预提取的消息已由客户端下载，因此这些消息的接收速度会变快。
 
@@ -137,17 +277,53 @@ Queue q = namespaceManager.CreateQueue(qd);
 
 预提取不会影响可计费的消息传送操作的数目，且仅适用于服务总线客户端协议。 HTTP 协议不支持预提取。 预提取可用于同步和异步接收操作。
 
+# <a name="microsoftazureservicebus-sdk"></a>[Microsoft.Azure.ServiceBus SDK](#tab/net-standard-sdk)
+
+有关详细信息，请参阅下述 `PrefetchCount` 属性：
+
+* <a href="https://docs.azure.cn/en-us/dotnet/api/microsoft.azure.servicebus.queueclient.prefetchcount?view=azure-dotnet" target="_blank">`Microsoft.Azure.ServiceBus.QueueClient.PrefetchCount` <span class="docon docon-navigate-external x-hidden-focus"></span></a>。
+* <a href="https://docs.azure.cn/en-us/dotnet/api/microsoft.azure.servicebus.subscriptionclient.prefetchcount?view=azure-dotnet" target="_blank">`Microsoft.Azure.ServiceBus.SubscriptionClient.PrefetchCount` <span class="docon docon-navigate-external x-hidden-focus"></span></a>。
+
+# <a name="windowsazureservicebus-sdk"></a>[WindowsAzure.ServiceBus SDK](#tab/net-framework-sdk)
+
+有关详细信息，请参阅下述 `PrefetchCount` 属性：
+
+* <a href="https://docs.azure.cn/en-us/dotnet/api/microsoft.servicebus.messaging.queueclient.prefetchcount?view=azure-dotnet" target="_blank">`Microsoft.ServiceBus.Messaging.QueueClient.PrefetchCount` <span class="docon docon-navigate-external x-hidden-focus"></span></a>。
+* <a href="https://docs.azure.cn/en-us/dotnet/api/microsoft.servicebus.messaging.subscriptionclient.prefetchcount?view=azure-dotnet" target="_blank">`Microsoft.ServiceBus.Messaging.SubscriptionClient.PrefetchCount` <span class="docon docon-navigate-external x-hidden-focus"></span></a>。
+
+---
+
+## <a name="prefetching-and-receivebatch"></a>预提取和 ReceiveBatch
+
+> [!NOTE]
+> 此部分仅适用于 WindowsAzure.ServiceBus SDK，因为 Microsoft.Azure.ServiceBus SDK 不公开批处理函数。
+
+尽管预提取多个消息的概念与成批处理消息 (`ReceiveBatch`) 的语义类似，但在将它们结合使用时，必须注意一些细微的差异。
+
+预提取是客户端（`QueueClient` 和 `SubscriptionClient`）上的配置（或模式），`ReceiveBatch` 是一个操作（具有请求-响应语义）。
+
+将这些结合使用时，请考虑以下情况：
+
+* 预提取的消息数应大于或等于预期从 `ReceiveBatch` 接收的消息数。
+* 预提取的消息数最多可以是每秒处理的消息数的 n/3 倍，其中 n 为默认的锁定持续时间。
+
+使用贪婪方法（即让预提取计数保持在非常高的水平）时存在一些挑战，因为这意味着消息被锁定到特定接收方。 建议在上面提到的阈值之间尝试预提取值，凭经验识别适合的值。
+
 ## <a name="multiple-queues"></a>多个队列
 
 如果预期的负载无法由单个队列或主题处理，则必须使用多个消息实体。 在使用多个实体时，为每个实体创建专用客户端，而不是针对所有实体使用同一个客户端。
 
 ## <a name="development-and-testing-features"></a>开发和测试功能
 
-服务总线具有一项专门用于开发的功能，该功能**永远不应在生产配置中使用**：[TopicDescription.EnableFilteringMessagesBeforePublishing][]。
+> [!NOTE]
+> 此部分仅适用于 WindowsAzure.ServiceBus SDK，因为 Microsoft.Azure.ServiceBus SDK 不公开此功能。
 
-将新的规则或筛选器添加到主题时，可使用 [TopicDescription.EnableFilteringMessagesBeforePublishing][] 验证新的筛选器表达式是否按预期工作。
+服务总线有一项专用于开发但**永远不应在生产配置中使用**的功能：[`TopicDescription.EnableFilteringMessagesBeforePublishing`][TopicDescription.EnableFiltering]。
+
+将新的规则或筛选器添加到主题时，可通过 [`TopicDescription.EnableFilteringMessagesBeforePublishing`][TopicDescription.EnableFiltering] 验证新的筛选器表达式是否可以按预期使用。
 
 ## <a name="scenarios"></a>方案
+
 以下各节介绍典型的消息传送方案，并概述首选服务总线设置。 吞吐速率分为小（小于 1 条消息/秒）、中等（1 条消息/秒或更大，但不超过 100 条消息/秒）和高（100 条消息/秒或更大）。 客户端数分为小（5 个或更少）、中等（5 个以上但小于或等于 20 个）和大（超过 20 个）。
 
 ### <a name="high-throughput-queue"></a>高吞吐量队列
@@ -232,13 +408,9 @@ Queue q = namespaceManager.CreateQueue(qd);
 [QueueClient]: /dotnet/api/microsoft.azure.servicebus.queueclient
 [MessageSender]: /dotnet/api/microsoft.azure.servicebus.core.messagesender
 [MessagingFactory]: /dotnet/api/microsoft.servicebus.messaging.messagingfactory
-[PeekLock]: /dotnet/api/microsoft.azure.servicebus.receivemode
-[ReceiveAndDelete]: /dotnet/api/microsoft.azure.servicebus.receivemode
 [BatchFlushInterval]: /dotnet/api/microsoft.servicebus.messaging.messagesender.batchflushinterval
-[EnableBatchedOperations]: /dotnet/api/microsoft.servicebus.messaging.queuedescription.enablebatchedoperations
-[QueueClient.PrefetchCount]: /dotnet/api/microsoft.azure.servicebus.queueclient.prefetchcount
-[SubscriptionClient.PrefetchCount]: /dotnet/api/microsoft.azure.servicebus.subscriptionclient.prefetchcount
 [ForcePersistence]: /dotnet/api/microsoft.servicebus.messaging.brokeredmessage.forcepersistence
 [EnablePartitioning]: /dotnet/api/microsoft.servicebus.messaging.queuedescription.enablepartitioning
+[TopicDescription.EnableFiltering]: /dotnet/api/microsoft.servicebus.messaging.topicdescription.enablefilteringmessagesbeforepublishing
 [Partitioned messaging entities]: service-bus-partitioning.md
 [TopicDescription.EnableFilteringMessagesBeforePublishing]: /dotnet/api/microsoft.servicebus.messaging.topicdescription.enablefilteringmessagesbeforepublishing

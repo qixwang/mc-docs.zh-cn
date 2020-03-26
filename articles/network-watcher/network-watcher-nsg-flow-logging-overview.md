@@ -12,18 +12,19 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 02/22/2017
-ms.date: 11/26/2018
+ms.date: 3/20/2020
 ms.author: v-lingwu
-ms.openlocfilehash: bb8bedae7fd4f141e9e91070d98ff859c5384ff7
-ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
+ms.openlocfilehash: ed5e044d9f71fa511e0eefd6e9e3248e61385d86
+ms.sourcegitcommit: 305361c96d1d5288d3dda7e81833820640e2afac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77028481"
+ms.lasthandoff: 03/21/2020
+ms.locfileid: "80109782"
 ---
 # <a name="introduction-to-flow-logging-for-network-security-groups"></a>针对网络安全组进行流日志记录简介
 
 网络安全组 (NSG) 流日志是网络观察程序的一项功能，可用于查看有关通过 NSG 的入口和出口 IP 流量的信息。 流日志以 JSON 格式编写，并基于每个规则显示出站和入站流、流所适用的网络接口 (NIC)、有关流的 5 元组信息（源/目标 IP 地址、源/目标端口和协议）、是允许还是拒绝流量，版本 2 中还会显示吞吐量信息（字节和数据包）。
+
 
 ![流日志概述](./media/network-watcher-nsg-flow-logging-overview/figure1.png)
 
@@ -35,10 +36,6 @@ https://{storageAccountName}.blob.core.chinacloudapi.cn/insights-logs-networksec
 可以使用[流量分析](traffic-analytics.md)来分析流日志并获取网络流量的见解。
 
 适用于其他日志的保留策略也适用于流日志。 可以设置日志保留策略，时间范围为 1 天至 365 天。 如果未设置保留策略，则会永久保留日志。
-
-> [!NOTE] 
-> 将 NSG 流日志记录与保留策略功能结合使用可能会导致存储操作量和相关成本增加。 如果不需要使用保留策略功能，我们建议将此值设置为 0。
-
 
 ## <a name="log-file"></a>日志文件
 
@@ -83,6 +80,21 @@ https://{storageAccountName}.blob.core.chinacloudapi.cn/insights-logs-networksec
 对于延续 C 和结束 E 流状态，字节和数据包计数是从上一次流元祖记录时集合的计数   。 引用上一示例会话，传输的数据包的总数是 1021+52+8005+47 = 9125。 传输的字节总数是 588096+29952+4610880+27072 = 5256000。
 
 以下文本是流日志的示例。 可以看到，有多个记录遵循前一部分描述的属性列表。
+
+## <a name="nsg-flow-logging-considerations"></a>NSG 流日志记录注意事项
+
+**存储帐户注意事项**： 
+
+- 位置：所用的存储帐户必须与 NSG 位于同一区域中。
+- 自行管理密钥轮换：如果你更改/轮换存储帐户的访问密钥，则 NSG 流日志将停止工作。 若要解决此问题，必须禁用并重新启用 NSG 流日志。
+
+**在附加到资源的所有 NSG 上启用 NSG 流日志记录**：Azure 中的流日志记录是在 NSG 资源上配置的。 一个流只与一个 NSG 规则相关联。 如果利用多个 NSG，则我们建议在应用资源子网或网络接口的所有 NSG 上启用 NSG 流日志记录，以确保记录所有流量。 有关详细信息，请参阅网络安全组中的[流量评估方式](../virtual-network/security-overview.md#how-traffic-is-evaluated)。
+
+**流日志记录成本**：NSG 流日志记录按生成的日志量计费。 流量较高时，流日志的量和相关成本可能会增大。 NSG 流日志定价不包括基本的存储成本。 将保留策略功能与 NSG 流日志记录配合使用意味着在较长时间内会产生单独的存储成本。 如果不需要使用保留策略功能，我们建议将此值设置为 0。 有关详细信息，请参阅[网络观察程序定价](https://azure.microsoft.com/pricing/details/network-watcher/)和 [Azure 存储定价](https://azure.microsoft.com/pricing/details/storage/)。
+
+**入站流被从 Internet IP 记录到了没有公共 IP 的虚拟机**：对于没有通过与 NIC 关联的公共 IP 地址分配公共 IP 地址作为实例级公共 IP 的虚拟机，或者是属于基本负载均衡器后端池的一部分的虚拟机，请使用[默认SNAT](../load-balancer/load-balancer-outbound-connections.md#defaultsnat)，并使用由 Azure 分配的 IP 地址以便于进行出站连接。 因此，如果流的目的地是分配给 SNAT 的端口范围内的端口，你可能会看到来自 Internet IP 地址的流的流日志条目。 虽然 Azure 不允许将这些流传输到 VM，但是按照设计，该尝试会被记录并显示在网络观察程序的 NSG 流日志中。 我们建议使用 NSG 来显式阻止不需要的入站 Internet 流量。
+
+**无状态流的字节和数据包计数不正确**：[网络安全组 (NSG)](https://docs.microsoft.com/azure/virtual-network/security-overview) 是作为[有状态防火墙](https://en.wikipedia.org/wiki/Stateful_firewall?oldformat=true)实现的。 但是，许多用于控制流量流的默认/内部规则是以无状态方式实现的。 由于平台限制，不会为无状态流（即通过无状态规则的流量）记录字节和数据包计数，只会为有状态流记录它们。 因此，NSG 流日志（和流量分析）中报告的字节数和数据包数可能与实际流不同。 计划在 2020 年 6 月之前修复此限制。
 
 ## <a name="sample-log-records"></a>示例日志记录
 

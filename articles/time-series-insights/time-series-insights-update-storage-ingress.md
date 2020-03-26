@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 03/10/2020
+ms.date: 03/17/2020
 ms.custom: seodec18
-ms.openlocfilehash: 7af2cce03828028bde8f1846c497f2b6843c2f4a
-ms.sourcegitcommit: 4ba6d7c8bed5398f37eb37cf5e2acafcdcc28791
+ms.openlocfilehash: 0e4a4f60768b37ae8456e21ec67be6b8fcac0454
+ms.sourcegitcommit: 71a386ca0d0ecb79a123399b6ab6b8c70ea2aa78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2020
-ms.locfileid: "79133883"
+ms.lasthandoff: 03/18/2020
+ms.locfileid: "79497364"
 ---
 # <a name="data-storage-and-ingress-in-azure-time-series-insights-preview"></a>Azure 时序见解预览版中的数据存储和入口
 
@@ -158,10 +158,10 @@ Azure 时序见解预览版的引入限制如下所述。
 
 创建时序见解预览版即用即付 (PAYG) SKU 环境时，请创建两个 Azure 资源： 
 
-* 可为暖存储配置的 Azure 时序见解预览版环境。
+* 可为暖数据存储配置的 Azure 时序见解预览版环境。
 * 用于存储冷数据的 Azure 存储常规用途 V1 Blob 帐户。
 
-只能通过[时序查询](./time-series-insights-update-tsq.md)使用热存储中的数据。 
+只能通过[时序查询](./time-series-insights-update-tsq.md)使用热存储中的数据。 暖存储会包含在创建时序见解环境时选择的[保留期](./time-series-insights-update-plan.md#the-preview-environment)内的最新数据。
 
 时序见解预览版以 [Parquet 文件格式](#parquet-file-format-and-folder-structure)将冷存储数据保存到 Azure Blob 存储中。 时序见解预览版以独占方式管理此冷存储数据，但允许将这些数据作为标准 Parquet 文件直接进行读取。
 
@@ -185,12 +185,7 @@ Azure 时序见解预览版的引入限制如下所述。
 
 创建 Azure 时序见解预览版 PAYG 环境时，会创建一个 Azure 存储常规用途 V1 Blob 帐户作为长期冷存储。  
 
-Azure 时序见解预览版在 Azure 存储帐户中发布每个事件的最多两个副本。 初始副本包含按引入时间排序的事件。 该事件顺序始终会保留，因此，其他服务无需将问题排序即可访问你的事件。  
-
-> [!NOTE]
-> 还可以使用 Spark、Hadoop 和其他熟悉的工具来处理原始 Parquet 文件。 
-
-时序见解预览版还可将 Parquet 文件重新分区，以针对时序见解查询进行优化。 此重新分区的数据副本也会保存。 
+Azure 时序见解预览版在 Azure 存储帐户中为每个事件保留最多两个副本。 一个副本存储按引入时间排序的事件，始终允许按时序访问事件。 随着时间的推移，时序见解预览版还会创建数据的重新分区的副本，通过优化实现高性能时序见解查询。 
 
 在公共预览版中，数据无限期存储在 Azure 存储帐户中。
 
@@ -198,14 +193,11 @@ Azure 时序见解预览版在 Azure 存储帐户中发布每个事件的最多�
 
 为了确保查询性能和数据可用性，请不要编辑或删除时序见解预览版创建的任何 Blob。
 
-#### <a name="accessing-and-exporting-data-from-time-series-insights-preview"></a>从时序见解预览版访问和导出数据
+#### <a name="accessing-time-series-insights-preview-cold-store-data"></a>访问时序见解预览版冷存储数据 
 
-你可能想要访问时序见解预览版资源管理器中显示的数据，以便与其他服务结合使用这些数据。 例如，可以使用数据在 Power BI 中生成报表，或使用 Azure 机器学习工作室训练机器学习模型。 或者，可以在 Jupyter Notebook 中使用数据进行转换、可视化和建模。
+除了从[时序查询](./time-series-insights-update-tsq.md)访问数据外，还可能需要直接从存储在冷存储中的 Parquet 文件访问数据。 例如，可以在 Jupyter 笔记本中读取、转换和清理数据，然后使用它来训练同一 Spark 工作流中的 Azure 机器学习模型。
 
-可通过三种常规方式访问数据：
-
-* 使用“获取事件”查询通过时序见解预览版 API 访问。 有关此 API 的详细信息，请参阅[时序查询](./time-series-insights-update-tsq.md)。
-* 从 Azure 存储帐户直接访问。 需要对用于访问时序见解预览版数据的任何帐户拥有读取访问权限。 有关详细信息，请参阅[管理对存储帐户资源的访问权限](../storage/blobs/storage-manage-access-to-resources.md)。
+若要直接从 Azure 存储帐户访问数据，需要具有用于存储时序见解预览版数据的帐户的读取访问权限。 然后，可以根据 Parquet 文件的创建时间读取选定的数据，该文件位于下面的 [Parquet 文件格式](#parquet-file-format-and-folder-structure)部分所述的 `PT=Time` 文件夹中。  若要详细了解如何启用对存储帐户的读取访问权限，请参阅[管理对存储帐户资源的访问权限](../storage/blobs/storage-manage-access-to-resources.md)。
 
 #### <a name="data-deletion"></a>数据删除
 
@@ -213,21 +205,21 @@ Azure 时序见解预览版在 Azure 存储帐户中发布每个事件的最多�
 
 ### <a name="parquet-file-format-and-folder-structure"></a>Parquet 文件格式和文件夹结构
 
-Parquet 是一种开源的列式文件格式，旨在提高存储效率和性能。 出于这些原因，时序见解预览版使用 Parquet。 它按时序 ID 将数据分区，以提高大规模查询的性能。  
+Parquet 是一种开源的列式文件格式，旨在提高存储效率和性能。 时序见解预览版使用 Parquet 来大规模启用基于时序 ID 的查询的性能。  
 
 有关 Parquet 文件类型的详细信息，请参阅 [Parquet 文档](https://parquet.apache.org/documentation/latest/)。
 
 时序见解预览版按如下方式存储数据的副本：
 
-* 首先，初始副本按引入时间分区，并大致按抵达顺序存储数据。 数据驻留在 `PT=Time` 文件夹中：
+* 首先，初始副本按引入时间分区，并大致按抵达顺序存储数据。 该数据驻留在 `PT=Time` 文件夹中：
 
   `V=1/PT=Time/Y=<YYYY>/M=<MM>/<YYYYMMDDHHMMSSfff>_<TSI_INTERNAL_SUFFIX>.parquet`
 
-* 其次，重新分区的副本按时序 ID 的分组分区，驻留在 `PT=TsId` 文件夹中：
+* 其次，重新分区的副本按时序 ID 分组，驻留在 `PT=TsId` 文件夹中：
 
   `V=1/PT=TsId/Y=<YYYY>/M=<MM>/<YYYYMMDDHHMMSSfff>_<TSI_INTERNAL_SUFFIX>.parquet`
 
-在这两种情况下，时间值对应于 Blob 创建时间。 将保留 `PT=Time` 文件夹中的数据。 `PT=TsId` 文件夹中的数据将不断针对查询进行优化，而不会保持静态。
+在这两种情况下，Parquet 文件的时间属性对应于 Blob 创建时间。 当数据写入文件以后，将原封不动地保留 `PT=Time` 文件夹中的数据。 `PT=TsId` 文件夹中的数据会不断针对查询进行优化，不是静态的。
 
 > [!NOTE]
 > * `<YYYY>` 映射到四位数的年份表示形式。
@@ -237,10 +229,10 @@ Parquet 是一种开源的列式文件格式，旨在提高存储效率和性能
 时序见解预览版事件按如下所示映射到 Parquet 文件内容：
 
 * 每个事件映射到单个行。
-* 每一行包含带有事件时间戳的**时间戳**列。 时间戳属性永远不会为 null。 如果未在事件源中指定时间戳属性，该属性默认为**事件排队时间**。 时间戳始终为 UTC 时间。
-* 每一行包含创建时序见解环境时定义的时序 ID 列。 属性名称包含 `_string` 后缀。
+* 每一行包含带有事件时间戳的**时间戳**列。 时间戳属性永远不会为 null。 如果未在事件源中指定时间戳属性，该属性默认为**事件排队时间**。 存储的时间戳始终为 UTC 时间。
+* 每一行包含创建时序见解环境时定义的时序 ID (TSID) 列。 TSID 属性名称包含 `_string` 后缀。
 * 作为遥测数据发送的所有其他属性映射到以 `_string`（字符串）、`_bool`（布尔值）、`_datetime`（日期时间）或 `_double`（双精度值）结尾的列名称，具体取决于属性类型。
-* 此映射方案适用于文件格式的第一个版本（以 **V=1** 表示）。 随着此功能的不断演进，名称可能会递增。
+* 此映射架构适用于文件格式的第一个版本（以 **V=1** 表示，存储在使用相同名称的基文件夹中）。 随着此功能的演变，此映射架构可能会更改，引用名称的数字会递增。
 
 ## <a name="next-steps"></a>后续步骤
 
