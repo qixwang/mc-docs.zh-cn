@@ -22719,7 +22719,18 @@
       "source_path": "articles/logic-apps/logic-apps-enterprise-integration-accounts.md",
       "redirect_url": "/logic-apps/logic-apps-enterprise-integration-create-integration-account",
       "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/storage/common/storage-azure-cli.md",
+      "redirect_url": "/storage/blobs/storage-quickstart-blobs-cli",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "articles/storage/common/storage-azure-cli-nodejs.md",
+      "redirect_url": "/storage/blobs/storage-quickstart-blobs-cli",
+      "redirect_document_id": false
     }
+
 
 
 
