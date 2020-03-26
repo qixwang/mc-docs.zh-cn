@@ -9,16 +9,16 @@ ms.service: cognitive-search
 ms.topic: conceptual
 origin.date: 11/04/2019
 ms.date: 03/16/2020
-ms.openlocfilehash: 22744190face60a924939c16b878469ffc8e38cb
-ms.sourcegitcommit: d5eca3c6b03b206e441b599e5b138bd687a91361
+ms.openlocfilehash: 634c4f3a08210845e8672e5e81d62d74cb840635
+ms.sourcegitcommit: 71a386ca0d0ecb79a123399b6ab6b8c70ea2aa78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78934864"
+ms.lasthandoff: 03/18/2020
+ms.locfileid: "79497198"
 ---
 # <a name="how-to-create-a-skillset-in-an-ai-enrichment-pipeline-in-azure-cognitive-search"></a>如何在 Azure 认知搜索中的 AI 扩充管道中创建技能组 
 
-AI 扩充可提取和扩充数据，使之能够在 Azure 认知搜索中可供搜索。 我们将提取和扩充步骤称作认知技能，这些技能将合并成索引编制期间所引用的技能集。   技能组可以使用[内置技能](cognitive-search-predefined-skills.md)或自定义技能（请参阅[示例：在 AI 扩充管道中创建自定义技能](cognitive-search-custom-skill-interface.md)来了解详细信息）。
+AI 扩充可提取和扩充数据，使之能够在 Azure 认知搜索中可供搜索。 我们将提取和扩充步骤称作认知技能，这些技能将合并成索引编制期间所引用的技能集。   技能组可以使用[内置技能](cognitive-search-predefined-skills.md)或自定义技能（请参阅[示例：在 AI 扩充管道中创建自定义技能](cognitive-search-create-custom-skill-example.md)来了解详细信息）。
 
 本文介绍如何对想要使用的技能创建扩充管道。 技能组将附加到 Azure 认知搜索[索引器](search-indexer-overview.md)。 本文介绍的管道设计的一个部分是构造技能集本身。 
 
@@ -35,7 +35,7 @@ AI 扩充可提取和扩充数据，使之能够在 Azure 认知搜索中可供�
 
 建议的初始步骤是确定要从原始数据提取哪些数据，以及如何在搜索解决方案中使用该数据。 创建整个扩充管道的演示有助于确定所需的步骤。
 
-假设我们要处理一系列金融分析师评论。 对于每个文件，我们需要提取公司名称和一般性的评论情绪。 此外，可能还需要编写自定义的扩充器，以便使用必应实体搜索服务来查找有关公司的其他信息，例如，该公司经营哪种业务。 实质上，我们需要提取针对每个文档编制索引的如下所述的信息：
+假设我们要处理一系列金融分析师评论。 对于每个文件，我们需要提取公司名称和一般性的评论情绪。 此外，可能还需要编写自定义的扩充器，以便使用自定义实体搜索来查找有关公司的其他信息，例如，该公司经营哪种业务。 实质上，我们需要提取针对每个文档编制索引的如下所述的信息：
 
 | 记录文本 | 公司 | 情绪 | 公司说明 |
 |--------|-----|-----|-----|
@@ -49,7 +49,7 @@ AI 扩充可提取和扩充数据，使之能够在 Azure 认知搜索中可供�
 对管道包含的内容进行适当的构思后，可以表达用于提供这些步骤的技能集。 在功能上，在将索引器定义上传到 Azure 认知搜索时，即会表达该技能组。 若要详细了解如何上传索引器，请参阅[索引器文档](https://docs.microsoft.com/rest/api/searchservice/create-indexer)。
 
 
-在图中，文档破解步骤会自动发生。  实质上，Azure 认知搜索知道如何打开已知的文件，并创建一个内容字段，其中包含从每个文档中提取的文本。  白框是内置的扩充器，“必应实体搜索”虚线框表示要创建的自定义扩充器。 如图所示，该技能集包含三个技能。
+在图中，文档破解步骤会自动发生。  实质上，Azure 认知搜索知道如何打开已知的文件，并创建一个内容字段，其中包含从每个文档中提取的文本。  白框是内置的扩充器，“自定义实体搜索”虚线框表示要创建的自定义扩充器。 如图所示，该技能集包含三个技能。
 
 ## <a name="skillset-definition-in-rest"></a>REST 中的技能集定义
 
@@ -102,8 +102,8 @@ Content-Type: application/json
     },
     {
       "@odata.type": "#Microsoft.Skills.Custom.WebApiSkill",
-     "description": "Calls an Azure function, which in turn calls Bing Entity Search",
-      "uri": "https://indexer-e2e-webskill.azurewebsites.net/api/InvokeTextAnalyticsV3?code=foo",
+     "description": "Calls an Azure function, which in turn calls Custom Entity Search",
+      "uri": "https://indexer-e2e-webskill.chinacloudsites.cn/api/InvokeTextAnalyticsV3?code=foo",
       "httpHeaders": {
           "Ocp-Apim-Subscription-Key": "foobar"
       },
@@ -178,7 +178,7 @@ Content-Type: application/json
   ["Microsoft", "LinkedIn"]
   ```
 
-在某些情况下，需要单独引用数组的每个元素。 例如，假设我们要将 ```"/document/organizations"``` 的每个元素单独传递给另一个技能（例如自定义的必应实体搜索扩充器）。 可以通过在路径中添加星号，来引用该数组的每个元素：```"/document/organizations/*"``` 
+在某些情况下，需要单独引用数组的每个元素。 例如，假设我们要将 ```"/document/organizations"``` 的每个元素单独传递给另一个技能（例如自定义实体搜索扩充器）。 可以通过在路径中添加星号，来引用该数组的每个元素：```"/document/organizations/*"``` 
 
 第二个情绪提取技能遵循与第一个扩充器相同的模式。 它采用 ```"/document/content"``` 作为输入，并返回每个内容实例的情绪评分。 由于未显式设置 ```"context"``` 字段，输出 (mySentiment) 现在是 ```"/document"``` 的子级。
 
@@ -202,13 +202,13 @@ Content-Type: application/json
 
 ## <a name="add-a-custom-skill"></a>添加自定义技能
 
-回顾自定义必应实体搜索扩充器的结构：
+回顾自定义实体搜索扩充器的结构：
 
 ```json
     {
       "@odata.type": "#Microsoft.Skills.Custom.WebApiSkill",
-     "description": "This skill calls an Azure function, which in turn calls Bing Entity Search",
-      "uri": "https://indexer-e2e-webskill.azurewebsites.net/api/InvokeTextAnalyticsV3?code=foo",
+     "description": "This skill calls an Azure function, which in turn calls Custom Entity Search",
+      "uri": "https://indexer-e2e-webskill.chinacloudsites.cn/api/InvokeTextAnalyticsV3?code=foo",
       "httpHeaders": {
           "Ocp-Apim-Subscription-Key": "foobar"
       },

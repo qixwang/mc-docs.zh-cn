@@ -4,16 +4,16 @@ description: 了解如何使用 Azure 和 Azure Stack Hub 配置混合云连接�
 author: WenJason
 ms.topic: article
 origin.date: 11/05/2019
-ms.date: 02/24/2020
+ms.date: 03/23/2020
 ms.author: v-jay
 ms.reviewer: anajod
 ms.lastreviewed: 11/05/2019
-ms.openlocfilehash: c492e9e36397fb13786b75000e6bdef491fcc0bd
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.openlocfilehash: 1d5238dc2995176581e1986b4da2d878e65e82af
+ms.sourcegitcommit: e500354e2fd8b7ac3dddfae0c825cc543080f476
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77540227"
+ms.lasthandoff: 03/19/2020
+ms.locfileid: "79547013"
 ---
 # <a name="configure-hybrid-cloud-connectivity-using-azure-and-azure-stack-hub"></a>使用 Azure 和 Azure Stack Hub 配置混合云连接
 
@@ -32,13 +32,13 @@ ms.locfileid: "77540227"
 > [混合应用程序的设计注意事项](overview-app-design-considerations.md)一文回顾了设计、部署和运行混合应用程序所需的软件质量要素（位置、可伸缩性、可用性、复原能力、可管理性和安全性）。 这些设计注意事项有助于优化混合应用设计，从而最大限度地减少生产环境中的难题。
 
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 生成混合连接部署需要一些组件。 这其中的某些组件需要时间来准备，因此请进行相应的计划。
 
 **Azure Stack Hub**
 
-Azure OEM/硬件合作伙伴可以部署生产型 Azure Stack Hub，所有用户都可以部署 Azure Stack Hub 开发工具包 (ASDK)。
+Azure OEM/硬件合作伙伴可以部署生产型 Azure Stack Hub，所有用户都可以部署 Azure Stack 开发工具包 (ASDK)。
 
 **Azure Stack Hub 组件**
 
@@ -56,7 +56,7 @@ Azure Stack Hub 操作员必须部署应用服务、创建计划和套餐、创�
 
 ### <a name="azure-stack-hub"></a>Azure Stack Hub
 
- - 使用生产型 Azure Stack Hub，或部署 https://github.com/mattmcspirit/azurestack/blob/master/deployment/ConfigASDK.ps1 提供的 Azure Stack Hub 开发工具包。
+ - 使用生产型 Azure Stack Hub，或从 https://github.com/mattmcspirit/azurestack/blob/master/deployment/ConfigASDK.ps1 部署 Azure Stack 开发工具包。
    >[!Note]
    >部署 ASDK 可能需要长达 7 小时的时间，因此请进行相应的计划。
 

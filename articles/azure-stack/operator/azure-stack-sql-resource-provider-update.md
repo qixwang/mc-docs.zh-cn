@@ -5,16 +5,16 @@ description: 了解如何更新 Azure Stack Hub SQL 资源提供程序。
 author: WenJason
 ms.topic: article
 origin.date: 11/11/2019
-ms.date: 02/24/2020
+ms.date: 03/23/2020
 ms.author: v-jay
 ms.reviewer: xiaofmao
 ms.lastreviewed: 11/11/2019
-ms.openlocfilehash: 62db1e15868029d8af664f7b95e0a10ca045e7e1
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.openlocfilehash: 7502ee727fad8b3538dc741a222e247d26714355
+ms.sourcegitcommit: e500354e2fd8b7ac3dddfae0c825cc543080f476
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77540285"
+ms.lasthandoff: 03/19/2020
+ms.locfileid: "79547050"
 ---
 # <a name="update-the-sql-resource-provider"></a>更新 SQL 资源提供程序
 
@@ -22,7 +22,7 @@ ms.locfileid: "77540285"
 
 从 SQL 资源提供程序 1.1.33.0 版开始，更新是累积性的，只要你从 1.1.24.0 版或更高版本开始，就不需要按照发布的顺序安装更新。 例如，如果运行的是 1.1.24.0 版的 SQL 资源提供程序，则可以升级到 1.1.33.0 版或更高版本，而无需先安装 1.1.30.0 版。 若要查看可用的资源提供程序版本，以及支持它们的 Azure Stack Hub 版本，请参阅[部署资源提供程序的先决条件](./azure-stack-sql-resource-provider-deploy.md#prerequisites)中的版本列表。
 
-若要更新资源提供程序，请使用 *UpdateSQLProvider.ps1* 脚本。 新 SQL 资源提供程序的下载包中提供此脚本。 更新过程类似于[部署资源提供程序](./azure-stack-sql-resource-provider-deploy.md)时使用的过程。 更新脚本与 DeploySqlProvider.ps1 脚本使用相同的参数，你需要提供证书信息。
+若要更新资源提供程序，请使用 *UpdateSQLProvider.ps1* 脚本。 使用具有本地管理权限且是订阅的**所有者**的服务帐户。 新 SQL 资源提供程序的下载包中提供此脚本。 更新过程类似于[部署资源提供程序](./azure-stack-sql-resource-provider-deploy.md)时使用的过程。 更新脚本与 DeploySqlProvider.ps1 脚本使用相同的参数，你需要提供证书信息。
 
  > [!IMPORTANT]
  > 在升级资源提供程序之前，请查看发行说明，了解新功能、修补程序以及任何可能影响部署的已知问题。

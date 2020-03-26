@@ -1,22 +1,22 @@
 ---
 title: Azure 事件网格安全和身份验证
-description: 介绍 Azure 事件网格及其概念。
+description: 本文介绍了对事件网格资源（WebHook、订阅、自定义主题）的访问者进行身份验证的不同方式
 services: event-grid
 author: banisadr
 manager: timlt
 ms.service: event-grid
 ms.topic: conceptual
-origin.date: 05/22/2019
-ms.date: 02/17/2020
-ms.author: v-yiso
-ms.openlocfilehash: 761063dde793c90142d8a692922b1847de2ef31a
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+origin.date: 03/06/2020
+ms.date: 3/16/2020
+ms.author: v-lingwu
+ms.openlocfilehash: a1ca2cfbf3969f4538a9b478c4487f4fd2fdea02
+ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79292303"
+ms.lasthandoff: 03/17/2020
+ms.locfileid: "79452591"
 ---
-# <a name="event-grid-security-and-authentication"></a>事件网格安全和身份验证 
+# <a name="authenticating-access-to-event-grid-resources"></a>对事件网格资源的访问者进行身份验证
 
 Azure 事件网格包含三种类型的身份验证：
 
@@ -44,7 +44,7 @@ Webhook 是从 Azure 事件网格接收事件的多种方式之一。 当新事�
 
    所提供的 URL 的有效期为 5 分钟。 在该时间内，事件订阅的预配状态为 `AwaitingManualAction`。 如果在 5 分钟内未完成手动验证，则配置状态被设为 `Failed`。 你将必须在开始手动验证之前重新创建事件订阅。
 
-    此身份验证机制还要求 Webhook 终结点返回 HTTP 状态代码 200，这样它就知道验证事件的 POST 已被接受，然后它就可以进入手动验证模式。 换句话说，如果终结点返回 200，但没有以编程方式返回验证响应，则此模式会转到手动验证模式。 如果在 5 分钟内在验证 URL 上出现 GET，则可以认为验证握手成功。
+    此身份验证机制还要求 Webhook 终结点返回 HTTP 状态代码 200，这样它就知道验证事件的 POST 已被接受，然后它就可以进入手动验证模式。 换句话说，如果终结点返回 200，但没有以编程方式返回验证响应，则模式将转换为手动验证模式。 如果在 5 分钟内在验证 URL 上出现 GET，则可以认为验证握手成功。
 
 > [!NOTE]
 > 不支持使用自签名证书进行验证。 改用来自证书颁发机构 (CA) 的签名证书。
@@ -86,9 +86,9 @@ Webhook 是从 Azure 事件网格接收事件的多种方式之一。 当新事�
 }
 ```
 
-你必须返回 HTTP 200 OK 响应状态代码。 HTTP 202 Accepted 未被识别为有效的事件网格订阅验证响应。Http 请求必须在 30 秒内完成。 如果操作没有在 30 秒内完成，系统会将该操作取消，并可能在 5 秒后重新尝试它。 如果所有尝试均失败，系统会将它视为验证握手错误。
+你必须返回 HTTP 200 OK 响应状态代码。 HTTP 202 Accepted 未被识别为有效的事件网格订阅验证响应。 http 请求必须在 30 秒内完成。 如果操作未在 30 秒内完成，则该操作将被取消，并可能在 5 秒后重新尝试。 如果所有尝试均失败，系统会将它视为验证握手错误。
 
-另外，还可以通过将 GET 请求发送到验证 URL 来手动验证订阅。 事件订阅将一直处于挂起状态，直到得到验证。验证 Url 使用端口 553。 如果防火墙规则阻止端口 553，则可能需更新规则才能成功进行手动握手。
+另外，还可以通过将 GET 请求发送到验证 URL 来手动验证订阅。 事件订阅将一直处于挂起状态，直到得到验证。 验证 URL 使用端口 553。 如果防火墙规则阻止端口 553，则可能需更新规则才能成功进行手动握手。
 
 有关处理订阅验证握手的示例，请参阅 [C# 示例](https://github.com/Azure-Samples/event-grid-dotnet-publish-consume-events/blob/master/EventGridConsumer/EventGridConsumer/Function1.cs)。
 
@@ -105,7 +105,7 @@ Webhook 是从 Azure 事件网格接收事件的多种方式之一。 当新事�
 
 #### <a name="azure-ad"></a>Azure AD
 
-可以对 Webhook 终结点进行保护，方法是：使用 Azure Active Directory 对事件网格进行身份验证和授权，以便将事件发布到终结点。 需创建 Azure Active Directory 应用程序、在对事件网格授权的应用程序中创建角色和服务主体，以及将事件订阅配置为使用 Azure AD 应用程序。 [了解如何为 AAD 配置事件网格](secure-webhook-delivery.md)。
+可以对 Webhook 终结点进行保护，方法是：使用 Azure Active Directory 对事件网格进行身份验证和授权，以便将事件发布到终结点。 需要创建一个 Azure Active Directory 应用程序，在授权事件网格的应用程序中创建角色和服务主体，并配置事件订阅以使用 Azure AD 应用程序。 [了解如何为 AAD 配置事件网格](secure-webhook-delivery.md)。
 
 #### <a name="query-parameters"></a>查询参数
 在创建事件订阅时，可以通过向 Webhook URL 中添加查询参数来保护 Webhook 终结点。 将这些查询参数之一设置为某个机密，例如[访问令牌](https://en.wikipedia.org/wiki/Access_token)。 Webhook 可以使用该机密来识别事件是否来自具有有效权限的事件网格。 事件网格会在前往 Webhook 的每个事件传递中包括这些查询参数。
@@ -187,172 +187,9 @@ static string BuildSharedAccessSignature(string resource, DateTime expirationUtc
 }
 ```
 
-## <a name="management-access-control"></a>管理访问控制
+### <a name="encryption-at-rest"></a>静态加密
 
-借助 Azure 事件网格，可以控制授予不同用户用来执行各种管理操作的访问级别，例如列出事件订阅、创建新的事件订阅及生成密钥。 事件网格使用 Azure 的基于角色的访问控制 (RBAC)。
-
-### <a name="operation-types"></a>操作类型
-
-事件网格支持下列操作：
-
-* Microsoft.EventGrid/*/read
-* Microsoft.EventGrid/*/write
-* Microsoft.EventGrid/*/delete
-* Microsoft.EventGrid/eventSubscriptions/getFullUrl/action
-* Microsoft.EventGrid/topics/listKeys/action
-* Microsoft.EventGrid/topics/regenerateKey/action
-
-最后三个操作可能会返回从常规读取操作中筛选出的机密信息。 建议限制对这些操作的访问。 
-
-### <a name="built-in-roles"></a>内置角色
-
-事件网格提供了用于管理事件订阅的两个内置角色。 它们在实施[事件域](event-domains.md)时非常重要，因为它们为用户提供了订阅事件域中主题所需的权限。 这些角色专注于事件订阅，不授予对创建主题等操作的访问权限。
-
-你可以[将这些角色分配给用户或组](../role-based-access-control/quickstart-assign-role-user-portal.md)。
-
-**EventGrid EventSubscription 参与者**：管理事件网格订阅操作
-
-```json
-[
-  {
-    "Description": "Lets you manage EventGrid event subscription operations.",
-    "IsBuiltIn": true,
-    "Id": "428e0ff05e574d9ca2212c70d0e0a443",
-    "Name": "EventGrid EventSubscription Contributor",
-    "IsServiceRole": false,
-    "Permissions": [
-      {
-        "Actions": [
-          "Microsoft.Authorization/*/read",
-          "Microsoft.EventGrid/eventSubscriptions/*",
-          "Microsoft.EventGrid/topicTypes/eventSubscriptions/read",
-          "Microsoft.EventGrid/locations/eventSubscriptions/read",
-          "Microsoft.EventGrid/locations/topicTypes/eventSubscriptions/read",
-          "Microsoft.Insights/alertRules/*",
-          "Microsoft.Resources/deployments/*",
-          "Microsoft.Resources/subscriptions/resourceGroups/read",
-          "Microsoft.Support/*"
-        ],
-        "NotActions": [],
-        "DataActions": [],
-        "NotDataActions": [],
-        "Condition": null
-      }
-    ],
-    "Scopes": [
-      "/"
-    ]
-  }
-]
-```
-
-**EventGrid EventSubscription 读者**：读取事件网格订阅
-
-```json
-[
-  {
-    "Description": "Lets you read EventGrid event subscriptions.",
-    "IsBuiltIn": true,
-    "Id": "2414bbcf64974faf8c65045460748405",
-    "Name": "EventGrid EventSubscription Reader",
-    "IsServiceRole": false,
-    "Permissions": [
-      {
-        "Actions": [
-          "Microsoft.Authorization/*/read",
-          "Microsoft.EventGrid/eventSubscriptions/read",
-          "Microsoft.EventGrid/topicTypes/eventSubscriptions/read",
-          "Microsoft.EventGrid/locations/eventSubscriptions/read",
-          "Microsoft.EventGrid/locations/topicTypes/eventSubscriptions/read",
-          "Microsoft.Resources/subscriptions/resourceGroups/read"
-        ],
-        "NotActions": [],
-        "DataActions": [],
-        "NotDataActions": []
-       }
-    ],
-    "Scopes": [
-      "/"
-    ]
-  }
-]
-```
-
-### <a name="custom-roles"></a>自定义角色
-
-如果需要指定不同于内置角色的权限，可以创建自定义角色。
-
-下面是允许用户采取不同操作的示例事件网格角色定义。 这些自定义角色与内置角色不同，因为它们授予比只是事件订阅更广泛的访问权限。
-
-**EventGridReadOnlyRole.json**：仅允许只读操作。
-
-```json
-{
-  "Name": "Event grid read only role",
-  "Id": "7C0B6B59-A278-4B62-BA19-411B70753856",
-  "IsCustom": true,
-  "Description": "Event grid read only role",
-  "Actions": [
-    "Microsoft.EventGrid/*/read"
-  ],
-  "NotActions": [
-  ],
-  "AssignableScopes": [
-    "/subscriptions/<Subscription Id>"
-  ]
-}
-```
-
-**EventGridNoDeleteListKeysRole.json**：允许受限制的发布操作但禁止删除操作。
-
-```json
-{
-  "Name": "Event grid No Delete Listkeys role",
-  "Id": "B9170838-5F9D-4103-A1DE-60496F7C9174",
-  "IsCustom": true,
-  "Description": "Event grid No Delete Listkeys role",
-  "Actions": [
-    "Microsoft.EventGrid/*/write",
-    "Microsoft.EventGrid/eventSubscriptions/getFullUrl/action"
-    "Microsoft.EventGrid/topics/listkeys/action",
-    "Microsoft.EventGrid/topics/regenerateKey/action"
-  ],
-  "NotActions": [
-    "Microsoft.EventGrid/*/delete"
-  ],
-  "AssignableScopes": [
-    "/subscriptions/<Subscription id>"
-  ]
-}
-```
-
-**EventGridContributorRole.json**：允许所有事件网格操作。
-
-```json
-{
-  "Name": "Event grid contributor role",
-  "Id": "4BA6FB33-2955-491B-A74F-53C9126C9514",
-  "IsCustom": true,
-  "Description": "Event grid contributor role",
-  "Actions": [
-    "Microsoft.EventGrid/*/write",
-    "Microsoft.EventGrid/*/delete",
-    "Microsoft.EventGrid/topics/listkeys/action",
-    "Microsoft.EventGrid/topics/regenerateKey/action",
-    "Microsoft.EventGrid/eventSubscriptions/getFullUrl/action"
-  ],
-  "NotActions": [],
-  "AssignableScopes": [
-    "/subscriptions/<Subscription id>"
-  ]
-}
-```
-
-可以使用 [PowerShell](../role-based-access-control/custom-roles-powershell.md)、[Azure CLI](../role-based-access-control/custom-roles-cli.md) 和 [REST](../role-based-access-control/custom-roles-rest.md) 创建自定义角色。
-
-## <a name="encryption-at-rest"></a>静态加密
-
-事件网格服务写入到磁盘的所有事件或数据均由 Microsoft 托管的密钥进行加密，以确保静态加密。 此外，按照[事件网格重试策略](delivery-and-retry.md)，保留事件或数据的最长时间为 24 小时。 事件网格将在 24 小时或事件生存时间（以两者中较小者为准）过后自动删除所有事件或数据。
+事件网格服务写入到磁盘的所有事件或数据均由 Microsoft 托管密钥进行加密，以确保静态加密。 此外，按照[事件网格重试策略](delivery-and-retry.md)，保留事件或数据的最长时间为 24 小时。 事件网格将在 24 小时或事件生存时间（以两者中较小者为准）过后自动删除所有事件或数据。
 
 ## <a name="next-steps"></a>后续步骤
 

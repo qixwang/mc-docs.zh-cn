@@ -13,13 +13,13 @@ ms.workload: infrastructure-services
 origin.date: 06/15/2018
 ms.date: 9/29/2019
 ms.author: v-lingwu
-ms.reviewer: yagup
-ms.openlocfilehash: d80a470a7ee410e14bf3e678e8213a7ba426738a
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.reviewer: vinigam
+ms.openlocfilehash: 9da7903593e73c2759afd0e4a13da279efc9a139
+ms.sourcegitcommit: 305361c96d1d5288d3dda7e81833820640e2afac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78154551"
+ms.lasthandoff: 03/21/2020
+ms.locfileid: "80108529"
 ---
 # <a name="traffic-analytics"></a>流量分析
 
@@ -30,6 +30,8 @@ ms.locfileid: "78154551"
 - 了解 Azure 区域与 Internet 之间的流量流模式，优化网络部署以提高性能和容量。
 - 查明导致网络连接失败的不当网络配置。
 
+> [!NOTE]
+> 流量分析现在支持以 10 分钟的更高频率收集 NSG 流量日志数据
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -136,11 +138,11 @@ New-AzStorageAccount `
 2. 为**流日志版本**选择“版本 2”  。 版本 2 包含流会话统计信息（字节和数据包）
 3. 选择用于存储流日志的现有存储帐户。 若要永久存储数据，请将值设置为 *0*。 存储帐户会产生 Azure 存储费用。 确保存储没有将“Data Lake Storage Gen2 分层命名空间已启用”设置为 true。
 4. 将“保留期”设置为存储数据的天数。 
-    > [!IMPORTANT]
-    > 目前存在一个问题，即：网络观察程序的[网络安全组 (NSG) 流日志](network-watcher-nsg-flow-logging-overview.md)未根据保留策略设置自动从 Blob 存储中删除。 如果你有现有的非零保留策略，我们建议你定期删除超过保留期的存储 blob，以避免产生任何费用。 
 5. 为“流量分析状态”选择“打开”。  
-6. 选择处理时间间隔。 根据你的选择，流日志将从存储帐户收集并由流量分析进行处理。 可以选择每 1 小时或每 10 分钟的处理时间间隔。
+6. 选择处理时间间隔。 根据你的选择，流日志将从存储帐户收集并由流量分析进行处理。 可以选择每 1 小时或每 10 分钟的处理时间间隔。 
 7. 选择现有的 Log Analytics (OMS) 工作区，或选择“创建新工作区”来创建一个新工作区。  流量分析使用 Log Analytics 工作区来存储聚合数据和索引数据，然后，这些数据用于生成分析。 如果选择现有的工作区，该工作区必须位于某个[受支持区域](#supported-regions-log-analytics-workspaces)，并且已升级为新查询语言。 如果不希望升级现有工作区，或者受支持区域中没有工作区，请创建一个新工作区。 
+> [!NOTE]
+>托管流量分析解决方案和 NSG 的 Log Analytics 工作区不一定要位于同一个区域。 例如，可将流量分析部署在西欧区域的某个工作区中，同时将 NSG 部署在美国东部和美国西部。 可在同一工作区中配置多个 NSG。
 8. 选择“保存”  。
 
     ![选择存储帐户和 Log Analytics 工作区并启用流量分析](./media/traffic-analytics/ta-customprocessinginterval.png)
@@ -151,7 +153,7 @@ New-AzStorageAccount `
 
 ## <a name="view-traffic-analytics"></a>查看流量分析
 
-在门户左侧选择“所有服务”，并在“筛选器”框中输入“监视”。    当“监视”出现在搜索结果中时，请选择它。  若要开始浏览流量分析及其功能，请依次选择“网络观察程序”、“流量分析”   。
+若要查看流量分析，请在门户搜索栏中搜索“网络观察程序”  。 进入网络观察程序后，若要探索流量分析及其功能，请从左侧菜单中选择“流量分析”  。 
 
 ![访问流量分析仪表板](./media/traffic-analytics/accessing-the-traffic-analytics-dashboard.png)
 

@@ -4,23 +4,23 @@ description: 了解如何在 Azure Stack Hub 中部署应用服务。
 author: WenJason
 ms.topic: article
 origin.date: 01/13/2020
-ms.date: 02/24/2020
+ms.date: 03/23/2020
 ms.author: v-jay
 ms.reviewer: anwestg
-ms.lastreviewed: 01/13/2020
-ms.openlocfilehash: 15d638f945efdce41a076019cc568c877188d06a
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.lastreviewed: 01/13/2019
+ms.openlocfilehash: ca951baa6b0a70ad81e77afb300bfb15498acb08
+ms.sourcegitcommit: e500354e2fd8b7ac3dddfae0c825cc543080f476
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77540895"
+ms.lasthandoff: 03/19/2020
+ms.locfileid: "79547064"
 ---
 # <a name="deploy-app-service-in-azure-stack-hub"></a>在 Azure Stack Hub 中部署应用服务
 
 本文介绍如何在 Azure Stack Hub 中部署应用服务。
 
 > [!IMPORTANT]
-> 请将 1910 更新应用于 Azure Stack Hub 集成系统，或部署最新的 Azure Stack Hub 开发工具包 (ASDK)，然后部署 Azure 应用服务 1.8。
+> 请将 1910 更新应用于 Azure Stack Hub 集成系统，或部署最新的 Azure Stack 开发工具包 (ASDK)，然后部署 Azure 应用服务 1.8。
 
 可以让用户能够创建 Web 应用程序和 API 应用程序。 若要让用户创建这些应用，必须：
 

@@ -3,18 +3,17 @@ title: 使用模板在 Azure Monitor 中收集 Windows 规模集指标
 description: 使用 Windows 虚拟机规模集的资源管理器模板将来宾 OS 指标发送到 Azure Monitor 指标存储
 author: lingliw
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 origin.date: 09/09/2019
 ms.date: 09/23/2019
 ms.author: v-lingwu
 ms.subservice: metrics
-ms.openlocfilehash: 34118bfc6be7fcd6e2422fab2cb56f7f17c4b7f4
-ms.sourcegitcommit: 21b02b730b00a078a76aeb5b78a8fd76ab4d6af2
+ms.openlocfilehash: 5e369b0fe7d9678207bd8e114d0d7da4d9a40b7a
+ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74838911"
+ms.lasthandoff: 03/17/2020
+ms.locfileid: "79452324"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-by-using-an-azure-resource-manager-template-for-a-windows-virtual-machine-scale-set"></a>使用 Windows 虚拟机规模集的 Azure 资源管理器模板将来宾 OS 指标发送到 Azure Monitor 指标存储
 
@@ -24,7 +23,7 @@ ms.locfileid: "74838911"
 
 本文介绍将 Windows 虚拟机规模集的来宾 OS 性能指标发送到 Azure Monitor 数据存储的过程。 自 Windows Azure 诊断版本 1.11 版起，可将指标直接写入已收集标准平台指标的 Azure Monitor 指标存储。 将它们存储在此位置可以访问可用于平台指标的相同操作。 操作包括近实时警报、图表绘制、路由、从 REST API 访问，等等。 在过去，Windows Azure 诊断扩展将数据写入 Azure 存储而不是 Azure Monitor 数据存储。  
 
-如果你不熟悉资源管理器模板，请了解[模板部署](../../azure-resource-manager/resource-group-overview.md)及其结构和语法。  
+如果你不熟悉资源管理器模板，请了解[模板部署](../../azure-resource-manager/management/overview.md)及其结构和语法。  
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -32,6 +31,7 @@ ms.locfileid: "74838911"
 
 - 需要已安装 [Azure PowerShell](https://docs.microsoft.com/powershell/azure)。 
 
+- VM 资源必须位于[支持自定义指标的区域](metrics-custom-overview.md#supported-regions)中。
 
 ## <a name="set-up-azure-monitor-as-a-data-sink"></a>将 Azure Monitor 设置为数据接收器 
 Azure 诊断扩展使用名为“数据接收器”的功能将指标和日志路由到不同位置。  以下步骤说明如何通过资源管理器模板和 PowerShell 来使用新的 Azure Monitor 数据接收器部署 VM。 

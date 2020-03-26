@@ -4,16 +4,16 @@ description: 了解如何从 Azure 下载市场项并发布到 Azure Stack Hub�
 author: WenJason
 ms.topic: conceptual
 origin.date: 02/04/2020
-ms.date: 02/24/2020
+ms.date: 03/23/2020
 ms.author: v-jay
 ms.reviewer: avishwan
-ms.lastreviewed: 12/23/2018
-ms.openlocfilehash: 67b666e003996f66bfe067f178efdd53ba317449
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.lastreviewed: 12/23/2019
+ms.openlocfilehash: 943d0ad2fd45ba2a566a4da6d8e87e02a34fd017
+ms.sourcegitcommit: e500354e2fd8b7ac3dddfae0c825cc543080f476
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79291452"
+ms.lasthandoff: 03/19/2020
+ms.locfileid: "79547057"
 ---
 # <a name="download-marketplace-items-to-azure-stack-hub"></a>将市场项下载到 Azure Stack Hub 
 
@@ -84,14 +84,16 @@ Azure Stack Hub 部署必须已建立 Internet 连接，并且已注册到 Azure
 
   - Azure Stack Hub 部署必须已注册到 Azure。
 
-  - 已建立 Internet 连接的计算机上必须已安装  **Azure Stack Hub PowerShell 模块版本 1.2.11** 或更高版本。 如果未安装，请 [安装 Azure Stack Hub 特定的 PowerShell 模块](azure-stack-powershell-install.md)。
+  - 已建立 Internet 连接的计算机必须已安装 **Azure Stack Hub PowerShell 模块版本 1.2.11** 或更高版本。 如果未安装，请[安装 Azure Stack Hub 特定的 PowerShell 模块](azure-stack-powershell-install.md)。
 
-  - 若要启用已下载市场项的导入，必须配置  [Azure Stack Hub 操作员的 PowerShell 环境](azure-stack-powershell-configure-admin.md)。
+  - 若要启用导入已下载市场项，必须配置 [Azure Stack Hub 操作员的 PowerShell 环境](azure-stack-powershell-configure-admin.md)。
 
 - 使用以下命令从 PowerShell 库下载 Azs.Syndication.Admin 模块
   ```
   Install-Module -Name Azs.Syndication.Admin
   ```
+  
+- .NET Framework 4.7 或更高版本
 
 注册 Azure Stack 后，可以忽略市场管理边栏选项卡上显示的以下消息，因为此消息与离线用例无关：
 
@@ -104,7 +106,7 @@ Azure Stack Hub 部署必须已建立 Internet 连接，并且已注册到 Azure
 
 1. 在已建立 Internet 连接的计算机上，以管理员身份打开 PowerShell 控制台。
 
-2. 使用用于注册 Azure Stack Hub 的 Azure 帐户，登录到相应的 Azure 中国云和 AzureAD 目录租户。 若要添加帐户，请在 PowerShell 中运行  **Add-AzureRmAccount**。 
+2. 使用用于注册 Azure Stack Hub 的 Azure 帐户，登录到相应的 Azure 云和 AzureAD 目录租户。 若要添加帐户，请在 PowerShell 中运行 **Add-AzureRmAccount**。 
 
    ```powershell  
    Login-AzureRmAccount -Environment AzureChinaCloud -Tenant '<mydirectory>.partner.onmschina.cn'
@@ -136,10 +138,10 @@ Azure Stack Hub 部署必须已建立 Internet 连接，并且已注册到 Azure
 
      ![选择 Azure Stack 注册](media/azure-stack-download-azure-marketplace-item/select-registration.png)
 
-   此时应会看到另一个表格，其中列出了所有可供下载的市场项。 选择要下载的项，并记下“版本”的值。 **** 可以按住  **Ctrl** 键选择多个映像。
+   此时应会看到另一个表格，其中列出了所有可供下载的市场项。 选择要下载的项，并记下**版本**。 可以按住 **Ctrl** 键选择多个映像。
      ![选择 Azure Stack 注册](media/azure-stack-download-azure-marketplace-item/select-products.png)
   
-   也可通过“添加条件”选项来筛选映像的列表。 ****
+   也可通过“添加条件”选项来筛选映像的列表。 
    ![选择 Azure Stack 注册](media/azure-stack-download-azure-marketplace-item/select-products-with-filter.png)
 
    做出选择后，选择“确定”。
@@ -150,7 +152,7 @@ Azure Stack Hub 部署必须已建立 Internet 连接，并且已注册到 Azure
     $products | Export-AzsMarketplaceItem  -RepositoryDir "Destination folder path in quotes"
     ```
 
-7. 所需的下载时间取决于项的大小。 下载完成后，该项会出现在脚本中指定的文件夹内。 下载内容中包括一个 VHD 文件（适用于虚拟机）或 .zip 文件（适用于虚拟机扩展和资源提供程序）。 其中还可能包含一个  *.azpkg* 格式的库包（一个 .zip 文件）。
+7. 所需的下载时间取决于项的大小。 下载完成后，该项会出现在脚本中指定的文件夹内。 下载内容中包括一个 VHD 文件（适用于虚拟机）或 .zip 文件（适用于虚拟机扩展和资源提供程序）。 其中还可能包含一个 .azpkg  格式的库包（一个 .zip 文件）。
 
 8. 如果下载失败，可以重新运行以下 PowerShell cmdlet 来重试下载：
 
@@ -169,13 +171,13 @@ Azure Stack Hub 部署必须已建立 Internet 连接，并且已注册到 Azure
 
 ### <a name="import-the-download-and-publish-to-azure-stack-hub-marketplace-using-powershell"></a>使用 PowerShell 导入下载内容并发布到 Azure Stack Hub 市场
 
-1. 必须将 [前面下载](#use-the-marketplace-syndication-tool-to-download-marketplace-items)到本地的文件移到已与 Azure Stack Hub 环境建立了连接的计算机。 市场联合工具也必须可供 Azure Stack Hub 环境使用，因为你需要使用该工具来执行导入操作。
+1. 必须将[前面下载](#use-the-marketplace-syndication-tool-to-download-marketplace-items)到本地的文件移到已与 Azure Stack Hub 环境建立了连接的计算机。 市场联合工具也必须可供 Azure Stack Hub 环境使用，因为你需要使用该工具来执行导入操作。
 
-   下图显示了文件夹结构示例。 **D:\downloadfolder** 包含所有已下载的市场项。 每个子文件夹是一个市场项（例如 **microsoft.custom-script-linux-arm-2.0.3**），并按产品 ID 命名。 每个子文件夹包含市场项的下载内容。
+   下图显示了文件夹结构示例。 **D:\downloadfolder** 包含所有已下载的市场项。 每个子文件夹都是一个市场项（例如 **microsoft.custom-script-linux-arm-2.0.3**），并按产品 ID 命名。 每个子文件夹包含市场项的下载内容。
 
    ![市场下载目录结构](media/azure-stack-download-azure-marketplace-item/mp1.png)
 
-2. 按照 [此文](azure-stack-powershell-configure-admin.md)中的说明配置 Azure Stack Hub 操作员 PowerShell 会话。
+2. 按照[此文](azure-stack-powershell-configure-admin.md)中的说明配置 Azure Stack Hub 操作员 PowerShell 会话。
 
 3. 使用对“默认提供程序订阅”拥有所有者访问权限的标识登录到 Azure Stack Hub。
 

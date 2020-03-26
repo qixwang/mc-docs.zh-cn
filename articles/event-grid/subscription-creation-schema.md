@@ -1,20 +1,19 @@
 ---
 title: Azure 事件网格订阅架构
-description: 介绍用于通过 Azure 事件网格订阅到事件的属性。
+description: 本文介绍使用 Azure 事件网格订阅事件的属性。 事件网格订阅架构。
 services: event-grid
 author: banisadr
-manager: timlt
 ms.service: event-grid
 ms.topic: reference
-origin.date: 01/02/2019
-ms.date: 09/30/2019
-ms.author: v-yiso
-ms.openlocfilehash: 6bff05d1ff619b09c644e490a30b4f79760ff5bd
-ms.sourcegitcommit: 6a62dd239c60596006a74ab2333c50c4db5b62be
+origin.date: 01/23/2020
+ms.date: 3/16/2020
+ms.author: v-lingwu
+ms.openlocfilehash: 55ee9fc5222c450dac2406e343943960ce63f9fe
+ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71155902"
+ms.lasthandoff: 03/17/2020
+ms.locfileid: "79452590"
 ---
 # <a name="event-grid-subscription-schema"></a>事件网格订阅架构
 

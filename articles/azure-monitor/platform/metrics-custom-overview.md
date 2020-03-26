@@ -3,18 +3,17 @@ title: Azure Monitor 中的自定义指标
 description: 了解 Azure Monitor 中的自定义指标及其建模方式。
 author: lingliw
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 origin.date: 09/09/2019
 ms.date: 6/4/2019
 ms.author: v-lingwu
 ms.subservice: metrics
-ms.openlocfilehash: 70bf99b9cfe5dbcd2042b955d76ea47d58644969
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: b79cd9401d078428479c005367553187f8aa3e2c
+ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79292407"
+ms.lasthandoff: 03/17/2020
+ms.locfileid: "79452395"
 ---
 # <a name="custom-metrics-in-azure-monitor"></a>Azure Monitor 中的自定义指标
 
@@ -157,6 +156,10 @@ Azure Monitor 以一分钟粒度间隔存储所有指标。 我们知道，在�
 
 ## <a name="using-custom-metrics"></a>使用自定义指标
 将自定义指标提交到 Azure Monitor 之后，可以通过 Azure 门户浏览它们，以及通过 Azure Monitor REST API 查询它们。 还可以对其创建警报，以便在满足特定的条件时收到通知。
+
+> [!NOTE]
+> 你需要具有“读者”或“参与者”角色才能查看自定义指标。
+
 ### <a name="browse-your-custom-metrics-via-the-azure-portal"></a>通过 Azure 门户浏览自定义指标
 1.  转到 [Azure 门户](https://portal.azure.cn)。
 2.  选择“监视”窗格。 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 origin.date: 10/12/2018
 ms.date: 6/4/2019
 ms.author: v-lingwu
-ms.openlocfilehash: aec2b00e7a33f3fc8d745300caefba86529a8e52
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.openlocfilehash: c9ab6e8295017f93735137024523aee7cf3fbb63
+ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78850337"
+ms.lasthandoff: 03/17/2020
+ms.locfileid: "79452557"
 ---
 # <a name="continuous-monitoring-with-azure-monitor"></a>使用 Azure Monitor 进行持续监视
 

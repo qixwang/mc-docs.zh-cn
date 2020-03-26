@@ -6,16 +6,17 @@ author: msmbaldwin
 manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
+ms.subservice: general
 ms.topic: conceptual
 origin.date: 09/04/2019
-ms.date: 02/17/2019
+ms.date: 03/16/2019
 ms.author: v-tawe
-ms.openlocfilehash: 19ac7e687b7ab84102488645d755dd879a079960
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: a2f0be46ec77ba63c0a34e9a96e2a2e875102c3d
+ms.sourcegitcommit: 764b3d26aedce2de0e1948468a706fd3204a3d5e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79291901"
+ms.lasthandoff: 03/19/2020
+ms.locfileid: "79543386"
 ---
 # <a name="about-keys-secrets-and-certificates"></a>关于密钥、机密和证书
 
@@ -113,6 +114,7 @@ Key Vault 使用的加密模块经过 FIPS（美国联邦信息处理标准）�
 -   **ES384** - 使用曲线 P-384 创建的 SHA-384 摘要和密钥的 ECDSA。 [RFC7518](https://tools.ietf.org/html/rfc7518) 中描述了此算法。
 -   **ES512** - 使用曲线 P-521 创建的 SHA-512 摘要和密钥的 ECDSA。 [RFC7518](https://tools.ietf.org/html/rfc7518) 中描述了此算法。
 
+
 ###  <a name="rsa-algorithms"></a>RSA 算法  
  Key Vault 中的 RSA 密钥支持以下算法标识符。  
 
@@ -123,6 +125,9 @@ Key Vault 使用的加密模块经过 FIPS（美国联邦信息处理标准）�
 
 #### <a name="signverify"></a>SIGN/VERIFY
 
+-   **PS256** - RSASSA-PSS 将 SHA-256 和 MGF1 与 SHA-256 配合使用，如 [RFC7518](https://tools.ietf.org/html/rfc7518) 中所述。
+-   **PS384** - RSASSA-PSS 将 SHA-384 和 MGF1 与 SHA-384 配合使用，如 [RFC7518](https://tools.ietf.org/html/rfc7518) 中所述。
+-   **PS512** - RSASSA-PSS 将 SHA-512 和 MGF1 与 SHA-512 配合使用，如 [RFC7518](https://tools.ietf.org/html/rfc7518) 中所述。
 -   **RS256** - RSASSA-PKCS-v1_5 使用 SHA-256。 必须使用 SHA-256 计算应用程序提供的摘要值，并且该值的长度必须为 32 字节。  
 -   **RS384** - RSASSA-PKCS-v1_5 使用 SHA-384。 必须使用 SHA-384 计算应用程序提供的摘要值，并且该值的长度必须为 48 字节。  
 -   **RS512** - RSASSA-PKCS-v1_5 使用 SHA-512。 必须使用 SHA-512 计算应用程序提供的摘要值，并且该值的长度必须为 64 字节。  
@@ -357,14 +362,14 @@ Key Vault 证书具有以下属性：
 
 |X.509 密钥使用情况标记 |Key Vault 密钥的操作 |默认行为 |
 |----------|--------|--------|
-|DataEncipherment|加密、解密| 不适用 |
-|DecipherOnly|解密| 不适用  |
+|DataEncipherment|加密、解密| 空值 |
+|DecipherOnly|解密| 空值  |
 |DigitalSignature|签名、验证| Key Vault 在创建证书时默认为无使用规范 | 
 |EncipherOnly|encrypt| 不适用 |
 |KeyCertSign|签名、验证|不适用|
 |KeyEncipherment|包装密钥、解包密钥| Key Vault 在创建证书时默认为无使用规范 | 
 |NonRepudiation|签名、验证| 不适用 |
-|crlsign|签名、验证| 不适用 |
+|crlsign|签名、验证| 空值 |
 
 ### <a name="certificate-issuer"></a>证书颁发者
 

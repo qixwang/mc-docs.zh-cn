@@ -10,12 +10,12 @@ ms.topic: article
 origin.date: 01/27/2020
 ms.date: 2/6/2020
 ms.author: v-lingwu
-ms.openlocfilehash: a1f008a64876af4ea922b2157a98ec94aec05a8b
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.openlocfilehash: dac96c4dfb6183c3fec1be0f925d4c11977f2ce8
+ms.sourcegitcommit: 305361c96d1d5288d3dda7e81833820640e2afac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78154979"
+ms.lasthandoff: 03/21/2020
+ms.locfileid: "80109777"
 ---
 # <a name="azure-service-bus-metrics-in-azure-monitor"></a>Azure Monitor 中的 Azure 服务总线指标
 
@@ -87,6 +87,13 @@ Azure Monitor 提供多种访问指标的方法。 可通过 [Azure 门户](http
 | ActiveMessages| 队列/主题中的活动消息的计数。 <br/><br/> 单元：计数 <br/> 聚合类型：平均值 <br/> 维度：EntityName |
 | 死信消息| 队列/主题中的死信消息计数。 <br/><br/> 单元：计数 <br/> 聚合类型：平均值 <br/>维度：EntityName |
 | 计划的消息| 队列/主题中的计划消息计数。 <br/><br/> 单元：计数 <br/> 聚合类型：平均值  <br/> 维度：EntityName |
+
+> [!NOTE]
+> 以下指标的值是时间点值。 在该时间点之后立即使用的传入消息可能不会反映在这些指标中。 
+> - 消息
+> - 活动消息 
+> - 死信消息 
+> - 计划的消息 
 
 ## <a name="connection-metrics"></a>连接指标
 

@@ -3,17 +3,17 @@ title: 配置 Azure Stack Hub 的时间服务器
 description: 了解如何配置 Azure Stack Hub 的时间服务器。
 author: WenJason
 ms.topic: article
-origin.date: 1/22/2020
-ms.date: 02/24/2020
+origin.date: 2/19/2020
+ms.date: 03/23/2020
 ms.author: v-jay
 ms.reviewer: thoroet
 ms.lastreviewed: 10/10/2019
-ms.openlocfilehash: f746c0ce3593db1610a52387fd0ad7300c56fb72
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.openlocfilehash: a1dc3948c0fa0aa0c58bf12ef5d5487572e8c3ad
+ms.sourcegitcommit: e500354e2fd8b7ac3dddfae0c825cc543080f476
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77540940"
+ms.lasthandoff: 03/19/2020
+ms.locfileid: "79547061"
 ---
 # <a name="configure-the-time-server-for-azure-stack-hub"></a>配置 Azure Stack Hub 的时间服务器
 
@@ -41,10 +41,16 @@ Azure Stack Hub 使用网络时间协议 (NTP) 连接到 Internet 上的时间�
 3. 运行以下命令即可更新 Azure Stack Hub，以便使用新的 NTP 服务器并立即同步时间。
 
     > [!Note]  
-    > 此过程不更新物理交换机上的时间服务器
+    > 此过程不会更新物理交换机上的时间服务器。 如果时间服务器不是基于 Windows 的 NTP 服务器，则需要添加标志 `0x8`。
 
     ```PowerShell
     Set-AzsTimeSource -TimeServer NEWTIMESERVERIP -resync
+    ```
+
+    对于基于 Windows 的时间服务器以外的服务器：
+
+    ```PowerShell
+    Set-AzsTimeSource -TimeServer "NEWTIMESERVERIP,0x8" -resync
     ```
 
 4. 请查看命令输出中是否有错误。

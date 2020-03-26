@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 origin.date: 11/04/2019
 ms.date: 03/16/2020
-ms.openlocfilehash: 477579745c1337ce9e4521fe17a55c54f4232096
-ms.sourcegitcommit: d5eca3c6b03b206e441b599e5b138bd687a91361
+ms.openlocfilehash: 06ac0e564312b34424b6b88f2d5964df2c6da288
+ms.sourcegitcommit: 71a386ca0d0ecb79a123399b6ab6b8c70ea2aa78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78934868"
+ms.lasthandoff: 03/18/2020
+ms.locfileid: "79497200"
 ---
 # <a name="introduction-to-ai-in-azure-cognitive-search"></a>Azure 认知搜索中的 AI 简介
 
@@ -28,7 +28,7 @@ AI 扩充是 Azure 认知搜索索引的一项功能，用于从图像、Blob �
 
 Azure 认知搜索中的认知技能基于认知服务 API 中预先训练的机器学习模型：[计算机视觉](https://docs.azure.cn/cognitive-services/computer-vision/)和[文本分析](https://docs.azure.cn/cognitive-services/text-analytics/overview)。 
 
-数据引入阶段应用了自然语言和图形处理，其结果会成为 Azure 认知搜索的可搜索索引中文档撰写内容的一部分。 数据作为 Azure 数据集的来源，然后使用任意所需的[内置技能](cognitive-search-predefined-skills.md)通过索引管道进行推送。 体系结构可扩展，因此如果内置技能不足，可以创建并附加[自定义技能](cognitive-search-custom-skill-interface.md)，以集成自定义处理。 示例包括面向特定领域（例如金融、科技出版或医疗）的自定义实体模块或文档分类器。
+数据引入阶段应用了自然语言和图形处理，其结果会成为 Azure 认知搜索的可搜索索引中文档撰写内容的一部分。 数据作为 Azure 数据集的来源，然后使用任意所需的[内置技能](cognitive-search-predefined-skills.md)通过索引管道进行推送。 体系结构可扩展，因此如果内置技能不足，可以创建并附加[自定义技能](cognitive-search-create-custom-skill-example.md)，以集成自定义处理。 示例包括面向特定领域（例如金融、科技出版或医疗）的自定义实体模块或文档分类器。
 
 > [!NOTE]
 > 通过增大处理频率、添加更多文档或添加更多 AI 算法来扩大范围时，需要[附加可计费的认知服务资源](cognitive-search-attach-cognitive-services.md)。 调用认知服务中的 API 以及在 Azure 认知搜索中的文档破解阶段提取图像时，会产生费用。 提取文档中的文本不会产生费用。
@@ -59,7 +59,7 @@ Azure 认知搜索中的认知技能基于认知服务 API 中预先训练的机
 
 ### <a name="more-about-custom-skills"></a>有关自定义技能的详细信息
 
-自定义技能可以支持更复杂的方案，例如识别表单，或者使用你提供的模型进行自定义实体检测，以及在[自定义技能 Web 界面](cognitive-search-custom-skill-interface.md)中进行包装。
+自定义技能可以支持更复杂的方案，例如识别表单，或者使用你提供的模型进行自定义实体检测，以及在[自定义技能 Web 界面](cognitive-search-custom-skill-interface.md)中进行包装。 自定义技能的几个示例包括[自定义实体识别](https://github.com/Microsoft/SkillsExtractorCognitiveSearch)。
 
 
 ## <a name="components-of-an-enrichment-pipeline"></a>扩充管道的组件
@@ -80,7 +80,7 @@ Azure 认知搜索中的认知技能基于认知服务 API 中预先训练的机
 
 ![扩充阶段](./media/cognitive-search-intro/enrichment-phase-blowup.png "扩充阶段")
 
-技能集基于你提供的、与该技能集连接的[内置认知技能](cognitive-search-predefined-skills.md)或[自定义技能](cognitive-search-custom-skill-interface.md)。 技能集既可以很精简，也可以很复杂，它不仅确定处理的类型，而且还确定运算的顺序。 技能集以及定义为索引器一部分的字段映射全面指定扩充管道。 有关将所有组成部分一起提取的详细信息，请参阅[定义技能集](cognitive-search-defining-skillset.md)。
+技能集基于你提供的、与该技能集连接的[内置认知技能](cognitive-search-predefined-skills.md)或[自定义技能](cognitive-search-create-custom-skill-example.md)。 技能集既可以很精简，也可以很复杂，它不仅确定处理的类型，而且还确定运算的顺序。 技能集以及定义为索引器一部分的字段映射全面指定扩充管道。 有关将所有组成部分一起提取的详细信息，请参阅[定义技能集](cognitive-search-defining-skillset.md)。
 
 在内部，管道生成扩充文档的集合。 可以确定要将扩充文档的哪些部分映射到搜索索引中可编制索引的字段。 例如，如果应用了关键短语提取和实体识别技能，则这些新字段将成为扩充文档的部分，并可以映射到索引中的字段。 请参阅[注释](cognitive-search-concept-annotations-syntax.md)详细了解输入/输出的形成。
 
@@ -130,7 +130,7 @@ Azure 认知搜索中的认知技能基于认知服务 API 中预先训练的机
 
 + [快速入门（门户）](cognitive-search-quickstart-blob.md)
 + [教程（HTTP 请求）](cognitive-search-tutorial-blob.md)
-+ [示例：创建用于 AI 扩充的自定义技能 (Python)](cognitive-search-custom-skill-python.md)
++ [示例：创建 AI 扩充的自定义技能 (C#)](cognitive-search-create-custom-skill-example.md)
 
 我们建议将免费服务用于学习目的，但是，免费事务的数量限制为每天 20 个文档。 若要多次运行课程，请删除并重新创建索引器，将计数器重置为零。
 

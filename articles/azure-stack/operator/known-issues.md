@@ -3,17 +3,17 @@ title: Azure Stack Hub 已知问题
 description: 了解 Azure Stack Hub 发行版中的已知问题。
 author: WenJason
 ms.topic: article
-origin.date: 12/27/2019
-ms.date: 02/24/2020
+origin.date: 03/12/2020
+ms.date: 03/23/2020
 ms.author: v-jay
 ms.reviewer: prchint
 ms.lastreviewed: 11/21/2019
-ms.openlocfilehash: 2a897b25b0413eacbd84d5cd9711584a7f461900
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.openlocfilehash: a0e4ea04dcc73a3b9465090f22bb4bc4c9959b51
+ms.sourcegitcommit: e500354e2fd8b7ac3dddfae0c825cc543080f476
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77540986"
+ms.lasthandoff: 03/19/2020
+ms.locfileid: "79547075"
 ---
 # <a name="azure-stack-hub-known-issues"></a>Azure Stack Hub 已知问题
 
@@ -160,6 +160,12 @@ ms.locfileid: "77540986"
 - 适用于：此问题适用于运行 1908 或更低版本的阵列。
 - 原因：部署 SQL 资源提供程序 (RP) 版本 1.1.47.0 时，门户不显示与 SQL RP 关联的任何资产。
 - 补救措施：删除 RP、升级阵列，然后重新部署 SQL RP。
+
+### <a name="activity-log-blade"></a>“活动日志”边栏选项卡
+
+- 适用于：此问题适用于运行 1907 或更高版本的阵列。 <!-- Note: Applies to 2002 as well -->
+- 原因：访问活动日志时，门户只显示条目的第一页。 **加载更多结果**将不会加载附加条目。
+- 补救措施：调整筛选器中的时间范围，以查看第一页之后的条目。
 
 ## <a name="networking"></a>网络
 

@@ -1,19 +1,17 @@
 ---
 title: Azure Monitor 警报的操作规则
 description: 了解 Azure Monitor 中的操作规则是什么，以及如何配置和管理操作规则。
-ms.service: azure-monitor
-ms.subservice: alerts
 ms.topic: conceptual
 author: lingliw
 origin.date: 04/25/2019
 ms.date: 10/25/2019
 ms.author: v-lingwu
-ms.openlocfilehash: cdb5dd73bc85b35029c485d23e6d76c4a608aaab
-ms.sourcegitcommit: b09d4b056ac695ba379119eb9e458a945b0a61d9
+ms.openlocfilehash: 4291ed8c58bce2b44970038d5a45f5a7a01c0964
+ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72970764"
+ms.lasthandoff: 03/17/2020
+ms.locfileid: "79452568"
 ---
 # <a name="action-rules-preview"></a>操作规则（预览版）
 
@@ -104,13 +102,13 @@ ms.locfileid: "72970764"
 ### <a name="action-rule-details"></a>操作规则详细信息
 
 最后，配置操作规则的以下详细信息
-* Name
+* 名称
 * 该规则要保存到的资源组
 * 说明 
 
 ## <a name="example-scenarios"></a>示例方案
 
-### <a name="scenario-1-suppression-of-alerts-based-on-severity"></a>方案 1：根据严重性消除警报
+### <a name="scenario-1-suppression-of-alerts-based-on-severity"></a>应用场景 1：根据严重性消除警报
 
 Contoso 希望在每个周末消除其订阅 **ContosoSub** 中所有 VM 上的所有 Sev4 警报的通知。
 
@@ -121,7 +119,7 @@ Contoso 希望在每个周末消除其订阅 **ContosoSub** 中所有 VM 上的�
     * 资源类型 = **虚拟机**
 * 消除重复周期设置为“每周”，并选中“星期六”和“星期日”  
 
-### <a name="scenario-2-suppression-of-alerts-based-on-alert-context-payload"></a>方案 2：根据警报上下文（有效负载）消除警报
+### <a name="scenario-2-suppression-of-alerts-based-on-alert-context-payload"></a>应用场景 2：根据警报上下文（有效负载）消除警报
 
 Contoso 希望无限期消除针对 **ContosoSub** 中 **Computer-01** 生成的所有日志警报的通知，因为该计算机即将接受维护。
 
@@ -132,7 +130,7 @@ Contoso 希望无限期消除针对 **ContosoSub** 中 **Computer-01** 生成的
     * 警报上下文（有效负载）包含 **Computer-01**
 * 消除时间设置为“从现在起(始终)” 
 
-### <a name="scenario-3-action-group-defined-at-a-resource-group"></a>方案 3：在资源组中定义的操作组
+### <a name="scenario-3-action-group-defined-at-a-resource-group"></a>应用场景 3：在资源组中定义的操作组
 
 Contoso [在订阅级别定义了一个指标警报](/azure-monitor/platform/alerts-metric-overview#monitoring-at-scale-using-metric-alerts-in-azure-monitor)。 但是，Contoso 想要定义专用针对其资源组 **ContosoRG** 生成的警报触发的操作。
 

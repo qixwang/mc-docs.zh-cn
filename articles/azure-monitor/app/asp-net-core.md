@@ -1,19 +1,17 @@
 ---
 title: 适用于 ASP.NET Core 的 Azure Application Insights | Azure Docs
 description: 监视 ASP.NET Core Web 应用程序的可用性、性能和使用情况。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 origin.date: 05/22/2019
 author: lingliw
 ms.date: 6/4/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 335de2c998095284ed5c045c3b4c81388dfc5c26
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: 5da7969afdb4967345dfd32fa1d6f1cbdbf17d6b
+ms.sourcegitcommit: 305361c96d1d5288d3dda7e81833820640e2afac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79293059"
+ms.lasthandoff: 03/21/2020
+ms.locfileid: "80109796"
 ---
 # <a name="application-insights-for-aspnet-core-applications"></a>适用于 ASP.NET Core 应用程序的 Application Insights
 
@@ -146,7 +144,7 @@ ms.locfileid: "79293059"
 
 ### <a name="eventcounter"></a>EventCounter
 
-`EventCounterCollectionModule` 默认已启用，它会从 .NET Core 3.0 应用收集默认的计数器集。 
+`EventCounterCollectionModule` 默认已启用，它会从 .NET Core 3.0 应用收集默认的计数器集。 EventCounter 教程列出了收集的默认计数器集。 它还包含有关自定义列表的说明。
 
 ## <a name="enable-client-side-telemetry-for-web-applications"></a>为 Web 应用程序启用客户端遥测
 
@@ -163,6 +161,14 @@ ms.locfileid: "79293059"
     ```cshtml
         @Html.Raw(JavaScriptSnippet.FullScript)
         </head>
+    ```
+    
+从 SDK v2.14 开始，除了使用 `FullScript` 之外，还可以使用 `ScriptBody`。 如果需要控制 `<script>` 标记以设置内容安全策略，请使用此标记：
+
+    ```cshtml
+        <script> // apply custom changes to this script tag.
+            @Html.Raw(JavaScriptSnippet.ScriptBody)
+        </script>
     ```
 
 前面引用的 `.cshtml` 文件名取自默认的 MVC 应用程序模板。 从根本上讲，若要为应用程序正确启用客户端监视，JavaScript 代码片段必须出现在所要监视的应用程序的每个页面的 `<head>` 节中。 将 JavaScript 代码片段添加到 `_Layout.cshtml` 即可实现此应用程序模板的此目标。 
@@ -393,7 +399,7 @@ public class HomeController : Controller
 
 ### <a name="im-deploying-my-aspnet-core-application-to-web-apps-should-i-still-enable-the-application-insights-extension-from-web-apps"></a>我正在将 ASP.NET Core 应用程序部署到 Web 应用。 是否仍要从 Web 应用启用 Application Insights 扩展？
 
-如果在生成时已按本文中所述安装了 SDK，则无需从应用服务门户启用 Application Insights 扩展。 即使安装了扩展，在检测到已将 SDK 添加到应用程序时，该扩展也仍会回退。 如果从扩展启用 Application Insights，则无需安装和更新 SDK。 但是，遵照本文中的说明启用 Application Insights 会更灵活，原因如下：
+如果在生成时已按本文所示安装了 SDK，则无需从应用服务门户启用 [Application Insights 扩展](/azure-monitor/app/azure-web-apps)。 即使安装了扩展，在检测到已将 SDK 添加到应用程序时，该扩展也仍会回退。 如果从扩展启用 Application Insights，则无需安装和更新 SDK。 但是，遵照本文中的说明启用 Application Insights 会更灵活，原因如下：
 
    * Application Insights 遥测功能将在以下位置或模式下继续运行：
        * 所有操作系统，包括 Windows、Linux 和 Mac。
@@ -417,7 +423,7 @@ public class HomeController : Controller
 
 是的。 SDK 的功能支持在所有平台中是相同的，不过存在以下例外情况：
 
-* 只有 Windows 支持性能计数器。
+* 该 SDK 在 Linux 上收集[事件计数器](/azure-monitor/app/eventcounters)，因为[性能计数器](/azure-monitor/app/performance-counters)仅在 Windows 中受支持。 大多数指标是相同的。
 * 尽管默认已启用 `ServerTelemetryChannel`，但如果应用程序在 Linux 或 MacOS 中运行，出现网络问题时，通道不会自动创建本地存储文件夹来暂时保留遥测数据。 由于这种限制，在出现暂时性的网络或服务器时，遥测数据将会丢失。 若要解决此问题，请为通道配置一个本地文件夹：
 
 ```csharp

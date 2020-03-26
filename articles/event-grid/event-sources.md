@@ -1,6 +1,6 @@
 ---
 title: Azure 事件网格事件源
-description: 本文介绍 Azure 事件网格支持的事件源。 事件源即事件发生的位置。
+description: Azure 订阅、容器注册表、自定义主题、事件中心、IoT 中心、Key Vault、媒体服务、资源组、服务总线、存储、Maps、应用配置、Signal R、机器学习。
 services: event-grid
 author: spelluru
 ms.service: event-grid
@@ -8,12 +8,12 @@ ms.topic: conceptual
 origin.date: 02/12/2019
 ms.date: 02/17/2020
 ms.author: v-yiso
-ms.openlocfilehash: 5f78190503b1e7aea6c23a25432e493f486a3130
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: 3e4f337b14a3e2a4a149f9bf40259b53bc48c7ab
+ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79292271"
+ms.lasthandoff: 03/17/2020
+ms.locfileid: "79452598"
 ---
 # <a name="event-sources-in-azure-event-grid"></a>Azure 事件网格中的事件源
 

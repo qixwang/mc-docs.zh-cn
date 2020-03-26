@@ -3,17 +3,17 @@ title: Azure Stack Hub 集成系统的 Azure 联网部署决策
 description: 确定部署规划决策，以便对 Azure Stack Hub 集成系统（包括计费和标识）进行 Azure 连接型部署。
 author: WenJason
 ms.topic: article
-origin.date: 1/22/2020
-ms.date: 02/24/2020
+origin.date: 03/04/2020
+ms.date: 03/23/2020
 ms.author: v-jay
 ms.reviewer: wfayed
-ms.lastreviewed: 11/05/2018
-ms.openlocfilehash: fd78bead239335ff5a20ea6de138460f00483fd0
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.lastreviewed: 11/05/2019
+ms.openlocfilehash: df6046f86a4bd482b8025f829a90be4d64ef127d
+ms.sourcegitcommit: e500354e2fd8b7ac3dddfae0c825cc543080f476
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77540938"
+ms.lasthandoff: 03/19/2020
+ms.locfileid: "79547072"
 ---
 # <a name="azure-connected-deployment-planning-decisions-for-azure-stack-hub-integrated-systems"></a>Azure Stack Hub 集成系统的 Azure 联网部署规划决策
 在决定[如何将 Azure Stack Hub 集成到混合云环境](azure-stack-connection-models.md)后，即可完成 Azure Stack Hub 部署决策。
@@ -44,7 +44,7 @@ ms.locfileid: "77540938"
 可以选择“预付费”或“容量”计费模型。   “预付费”计费模型部署必须能够通过到 Azure 的连接报告使用情况，每 30 天至少报告一次。 因此，“预付费”计费模型仅适用于连接型部署。  
 
 ### <a name="pay-in-advance"></a>提前支付
-使用“预付费”计费模型时，你会收到 Azure 额度，其金额等于你添加到帐户的资金额。 如果这是决定要用的模型，则需一个 Azure 订阅，以及与该订阅相关联的帐户 ID（例如，serviceadmin@contoso.partner.onmschina.cn）。 支持 EA、CSP、CSL 订阅。 使用情况报告在 [Azure Stack 注册](azure-stack-registration.md)期间配置。
+使用“预付费”计费模型时，你会收到 Azure 额度，其金额等于你添加到帐户的资金额。 如果这是决定要用的模型，则需一个 Azure 订阅，以及与该订阅相关联的帐户 ID（例如，serviceadmin@contoso.partner.onmschina.cn）。 支持 EA、CSP、CSL 订阅。 使用情况报告在 [Azure Stack Hub 注册](azure-stack-registration.md)期间配置。
 
 > [!NOTE]
 > 大多数情况下，企业客户会使用 EA 订阅，服务提供商会使用 CSP 或 CSL 订阅。

@@ -1,20 +1,20 @@
 ---
 title: 监视 Azure 事件网格消息传送
-description: 介绍如何监视 Azure 事件网格消息传送。
+description: 本文介绍如何使用 Azure 门户查看 Azure 事件网格消息的传送状态。
 services: event-grid
 author: spelluru
-manager: timlt
+manager: lingliw
 ms.service: event-grid
 ms.topic: conceptual
-origin.date: 01/22/2019
-ms.author: v-yiso
-ms.date: 12/23/2019
-ms.openlocfilehash: f332681c478ea1c25f9cb0a06743599273370a00
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+origin.date: 01/23/2020
+ms.author: v-lingwu
+ms.date: 3/16/2020
+ms.openlocfilehash: c72e20ff64b882bc562ead7e700db1919680a439
+ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75335781"
+ms.lasthandoff: 03/17/2020
+ms.locfileid: "79452533"
 ---
 # <a name="monitor-event-grid-message-delivery"></a>监视事件网格消息传送 
 

@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 数据工厂从 OData 源复制数据 | Microsoft Docs
+title: 使用 Azure 数据工厂从 OData 源复制数据
 description: 了解如何通过在 Azure 数据工厂管道中使用复制活动，将数据从 OData 源复制到支持的接收器数据存储。
 services: data-factory
 documentationcenter: ''
@@ -8,17 +8,16 @@ manager: digimobile
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 origin.date: 09/04/2019
-ms.date: 11/11/2019
+ms.date: 03/23/2020
 ms.author: v-jay
-ms.openlocfilehash: 6e660c0be0ccdf5f48aabcaced0ba9475f30670b
-ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
+ms.openlocfilehash: b5bc367abbe2d3ec7fd4dd51105a67e02c28ae5a
+ms.sourcegitcommit: 71a386ca0d0ecb79a123399b6ab6b8c70ea2aa78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77653522"
+ms.lasthandoff: 03/18/2020
+ms.locfileid: "79497337"
 ---
 # <a name="copy-data-from-an-odata-source-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 OData 源复制数据
 
@@ -36,7 +35,7 @@ ms.locfileid: "77653522"
 具体而言，此 OData 连接器支持：
 
 - OData 3.0 和 4.0 版。
-- 使用以下某种身份验证复制数据：**匿名**、**基本**、**Windows**、**AAD 服务主体**和 **Azure 资源的托管标识**。
+- 使用以下某种身份验证复制数据：**匿名**、**基本**、**Windows** 和 **AAD 服务主体**。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -56,7 +55,7 @@ OData 链接的服务支持以下属性：
 |:--- |:--- |:--- |
 | type | type 属性必须设置为 OData   。 |是 |
 | url | OData 服务的根 URL。 |是 |
-| authenticationType | 用于连接 OData 源的身份验证类型。 允许的值为“Anonymous”  、“Basic”  、“Windows”  、“AadServicePrincipal”  和“ManagedServiceIdentity”  。 不支持基于用户的 OAuth。 | 是 |
+| authenticationType | 用于连接 OData 源的身份验证类型。 允许的值为“Anonymous”  、“Basic”  、“Windows”  和“AadServicePrincipal”  。 不支持基于用户的 OAuth。 | 是 |
 | userName | 如果使用 Basic 或 Windows 身份验证，请指定用户名  。 | 否 |
 | password | 指定为 userName 指定的用户帐户的密码   。 将此字段标记为 SecureString 类型，以便安全地将其存储在数据工厂中  。 此外，还可以[引用 Azure Key Vault 中存储的机密](store-credentials-in-key-vault.md)。 | 否 |
 | servicePrincipalId | 指定 Azure Active Directory 应用程序的客户端 ID。 | 否 |

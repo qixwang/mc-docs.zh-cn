@@ -2,15 +2,15 @@
 title: 找不到资源错误
 description: 说明在使用 Azure 资源管理器模板进行部署时如何解决找不到资源错误。
 ms.topic: troubleshooting
-origin.date: 06/06/2018
+origin.date: 01/21/2020
+ms.date: 03/23/2020
 ms.author: v-yeche
-ms.date: 01/06/2020
-ms.openlocfilehash: d1a53808e49930affccaf1fdbe21bb5170b8ed7e
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.openlocfilehash: b8a3e778ae46eef15debc793bd4149d8a309e4c8
+ms.sourcegitcommit: 1436f1851342ca5631eb25342eed954adb707af0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75631385"
+ms.lasthandoff: 03/19/2020
+ms.locfileid: "79543911"
 ---
 # <a name="resolve-not-found-errors-for-azure-resources"></a>解决 Azure 资源找不到错误
 
@@ -43,8 +43,8 @@ group {resource group name} was not found.
 
 ```json
 {
-  "apiVersion": "2015-08-01",
   "type": "Microsoft.Web/sites",
+  "apiVersion": "2015-08-01",
   "dependsOn": [
     "[variables('hostingPlanName')]"
   ],
@@ -78,8 +78,8 @@ group {resource group name} was not found.
 
 ```json
 "properties": {
-    "name": "[parameters('siteName')]",
-    "serverFarmId": "[resourceId('plangroup', 'Microsoft.Web/serverfarms', parameters('hostingPlanName'))]"
+  "name": "[parameters('siteName')]",
+  "serverFarmId": "[resourceId('plangroup', 'Microsoft.Web/serverfarms', parameters('hostingPlanName'))]"
 }
 ```
 
@@ -89,6 +89,18 @@ group {resource group name} was not found.
 
 ```json
 "[reference(resourceId('exampleResourceGroup', 'Microsoft.Storage/storageAccounts', 'myStorage'), '2017-06-01')]"
+```
+
+## <a name="solution-4---get-managed-identity-from-resource"></a>解决方案 4 - 从资源获取托管标识
+
+如果要部署隐式创建[托管标识](../../active-directory/managed-identities-azure-resources/overview.md)的资源，则必须等到部署该资源后，才能检索托管标识上值。 如果将托管标识名称传递给[引用](template-functions-resource.md#reference)函数，资源管理器会在部署资源和标识之前尝试解析该引用。 请改为应用标识的资源的名称。 此方法可确保在资源管理器解析引用函数之前部署资源和托管标识。
+
+在引用函数中，使用 `Full` 获取包括托管标识在内的所有属性。
+
+例如，若要获取应用于虚拟机规模集的托管标识的租户 ID，请使用：
+
+```json
+"tenantId": "[reference(resourceId('Microsoft.Compute/virtualMachineScaleSets',  variables('vmNodeType0Name')), variables('vmssApiVersion'), 'Full').Identity.tenantId]"
 ```
 
 <!-- Update_Description: update meta properties, wording update, update link -->

@@ -8,14 +8,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm
 ms.topic: quickstart
 ms.custom: H1Hack27Feb2017
-ms.date: 02/10/2020
+ms.date: 03/18/2020
 ms.author: v-junlch
-ms.openlocfilehash: d453738ba1467e19408aaa6d7743329488925e70
-ms.sourcegitcommit: 99bd0019c5f01034b8765d7765ad7776c7d5e5ae
+ms.openlocfilehash: b3f909847a09f422be397b3dbcb72f4ffe84e1bd
+ms.sourcegitcommit: e500354e2fd8b7ac3dddfae0c825cc543080f476
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77128831"
+ms.lasthandoff: 03/19/2020
+ms.locfileid: "79547021"
 ---
 # <a name="quickstart-create-a-virtual-machine-scale-set-in-the-azure-portal"></a>快速入门：在 Azure 门户中创建虚拟机规模集
 
@@ -64,7 +64,7 @@ Azure [负载均衡器](../load-balancer/load-balancer-overview.md)在运行正�
 1. 选择市场映像作为“映像”  。 在此示例中，我们选择了“Ubuntu 服务器 18.04 LTS”  。
 1. 输入所需的用户名，并选择首选的身份验证类型。
    - 密码  长度必须至少为 12 个字符，并且必须满足以下 4 个复杂性要求的其中 3 个：1 个小写字符、1 个大写字符、1 个数字和 1 个特殊字符。 有关详细信息，请参阅[用户名和密码要求](../virtual-machines/windows/faq.md#what-are-the-username-requirements-when-creating-a-vm)。
-   - 如果选择 Linux OS 磁盘映像，可选择 SSH 公钥  。 仅提供公钥，如 *~/.ssh/id_rsa.pub*。 
+   - 如果选择 Linux OS 磁盘映像，可选择 SSH 公钥  。 仅提供公钥，如 *~/.ssh/id_rsa.pub*。 可以[创建和使用 SSH 密钥](../virtual-machines/linux/mac-create-ssh-keys.md)。
    
     ![创建虚拟机规模集](./media/virtual-machine-scale-sets-create-portal/quick-create-scaleset.png)
 
@@ -88,4 +88,3 @@ Azure [负载均衡器](../load-balancer/load-balancer-overview.md)在运行正�
 > [!div class="nextstepaction"]
 > [创建和管理 Azure 虚拟机规模集](tutorial-create-and-manage-powershell.md)
 
-<!-- Update_Description: wording update -->

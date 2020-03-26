@@ -4,15 +4,15 @@ description: 列出可跨 Azure 区域移动的 Azure 资源类型
 author: rockboyfor
 ms.service: azure-resource-manager
 ms.topic: reference
-origin.date: 11/21/2019
-ms.date: 01/06/2020
+origin.date: 01/20/2020
+ms.date: 03/23/2020
 ms.author: v-yeche
-ms.openlocfilehash: 06ece0a168dfc8867c9bd3e064e91da4728cb860
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.openlocfilehash: beecc066da24f34371fda8804d0537a687511205
+ms.sourcegitcommit: 1436f1851342ca5631eb25342eed954adb707af0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75631521"
+ms.lasthandoff: 03/19/2020
+ms.locfileid: "79543801"
 ---
 # <a name="support-for-moving-azure-resources-across-regions"></a>跨区域移动 Azure 资源的支持
 
@@ -30,6 +30,7 @@ ms.locfileid: "75631521"
 > - [Microsoft.AzureActiveDirectory](#microsoftazureactivedirectory)
 > - [Microsoft.AzureStack](#microsoftazurestack)
 > - [Microsoft.Batch](#microsoftbatch)
+> - [Microsoft.Blueprint](#microsoftblueprint)
 > - [Microsoft.Cache](#microsoftcache)
 > - [Microsoft.Cdn](#microsoftcdn)
 > - [Microsoft.ClassicCompute](#microsoftclassiccompute)
@@ -56,6 +57,7 @@ ms.locfileid: "75631521"
 > - [Microsoft.KeyVault](#microsoftkeyvault)
 > - [Microsoft.Kusto](#microsoftkusto)
 > - [Microsoft.Logic](#microsoftlogic)
+> - [Microsoft.MachineLearningServices](#microsoftmachinelearningservices)
 > - [Microsoft.ManagedIdentity](#microsoftmanagedidentity)
 > - [Microsoft.Media](#microsoftmedia)
 > - [Microsoft.Network](#microsoftnetwork)
@@ -115,7 +117,7 @@ ms.locfileid: "75631521"
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 区域移动 | 
 > | ------------- | ----------- |
-> | 服务 | 否 |
+> | 服务 |  是 | 
 
 <!--Not Available on ## Microsoft.AppConfiguration-->
 <!--Not Available on ## Microsoft.AppService-->
@@ -163,7 +165,14 @@ ms.locfileid: "75631521"
 <!--Not Available on ## Microsoft.BingMaps-->
 <!--Not Available on ## Microsoft.BizTalkServices-->
 <!--Not Available on ## Microsoft.Blockchain-->
-<!--Not Available on ## Microsoft.Blueprint-->
+
+## <a name="microsoftblueprint"></a>Microsoft.Blueprint
+
+> [!div class="mx-tableFixed"]
+> | 资源类型 | 区域移动 | 
+> | ------------- | ----------- |
+> | blueprintassignments | 否 | 
+
 <!--Not Available on ## Microsoft.BotService-->
 
 ## <a name="microsoftcache"></a>Microsoft.Cache
@@ -450,8 +459,13 @@ ms.locfileid: "75631521"
 <!--Not Available on ## Microsoft.MachineLearningExperimentation-->
 <!--Not Available on ## Microsoft.MachineLearningModelManagement-->
 <!--Not Available on ## Microsoft.MachineLearningOperationalization-->
-<!--Not Available on ## Microsoft.MachineLearningServices-->
 
+## <a name="microsoftmachinelearningservices"></a>Microsoft.MachineLearningServices
+
+> [!div class="mx-tableFixed"]
+> | 资源类型 | 区域移动 | 
+> | ------------- | ----------- |
+> | workspaces | 否 | 
 ## <a name="microsoftmanagedidentity"></a>Microsoft.ManagedIdentity
 
 > [!div class="mx-tableFixed"]
@@ -581,7 +595,7 @@ ms.locfileid: "75631521"
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 区域移动 | 
 > | ------------- | ----------- |
-> | vaults | 是（我认为是备份保管库） | 
+> | vaults | 否。 为 Site Recovery [禁用保管库并进行重新创建](/site-recovery/move-vaults-across-regions)  | 
 
 ## <a name="microsoftrelay"></a>Microsoft.Relay
 

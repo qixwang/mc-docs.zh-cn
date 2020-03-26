@@ -1,7 +1,6 @@
 ---
 title: Log Analytics 数据安全 | Azure Docs
 description: 了解 Log Analytics 如何保护隐私和数据安全。
-ms.service: azure-monitor
 author: lingliw
 manager: digimobile
 ms.subservice: logs
@@ -9,15 +8,15 @@ ms.topic: conceptual
 origin.date: 03/04/2019
 ms.date: 05/04/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 603eef538dec30934b2bae97a86a55d2ae2dc00b
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: 13f05762e62a53043d6fbaaff5c574acb1965b58
+ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79292678"
+ms.lasthandoff: 03/17/2020
+ms.locfileid: "79452346"
 ---
 # <a name="log-analytics-data-security"></a>Log Analytics 数据安全
-本文档旨在提供特定于 Azure Log Analytics 的信息（Azure Monitor 的功能），用于补充有关 [Azure 信任中心](../../security/security-microsoft-trust-center.md)的信息。  
+本文档旨在提供特定于 Log Analytics（Azure Monitor 的一项功能）的信息，用于补充有关 Azure 信任中心的信息。  
 
 本文介绍 Log Analytics 如何收集、处理和保护数据。 可以使用代理连接到 Web 服务、使用 System Center Operations Manager 收集操作数据或从 Azure 诊断中检索数据供 Log Analytics 使用。 
 
@@ -179,8 +178,4 @@ Log Analytics 服务通过使用 Azure 身份验证对证书和数据完整性�
 * 遵循 [Azure VM 快速入门](../../azure-monitor/learn/quick-collect-azurevm.md)，了解如何使用 Log Analytics 收集 Azure VM 的数据。  
 
 *  如果想要从环境中的 Windows 或 Linux 物理机或虚拟机收集数据，请参阅[适用于 Linux 计算机的快速入门](../../azure-monitor/learn/quick-collect-linux-computer.md)或[适用于 Windows 计算机的快速入门](../../azure-monitor/learn/quick-collect-windows-computer.md)
-
-
-
-
 

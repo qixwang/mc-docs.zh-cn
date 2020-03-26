@@ -5,15 +5,15 @@ author: rockboyfor
 ms.service: azure-analysis-services
 ms.topic: quickstart
 origin.date: 10/30/2019
-ms.date: 11/25/2019
+ms.date: 03/23/2020
 ms.author: v-yeche
 ms.reviewer: minewiskan
-ms.openlocfilehash: 3da8fc639d39b263dee2d14aece547de54c3362b
-ms.sourcegitcommit: c5e012385df740bf4a326eaedabb987314c571a1
+ms.openlocfilehash: 1dc9860c3f95433069266708842ccc9d14ab9539
+ms.sourcegitcommit: 1436f1851342ca5631eb25342eed954adb707af0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74203627"
+ms.lasthandoff: 03/19/2020
+ms.locfileid: "79543751"
 ---
 <!--Notice: Verified successfully-->
 # <a name="quickstart-configure-server-firewall---portal"></a>快速入门：配置服务器防火墙 - 门户
@@ -22,9 +22,9 @@ ms.locfileid: "74203627"
 
 ## <a name="prerequisites"></a>先决条件
 
-- 订阅中的 Analysis Services 服务器。 要了解详细信息，请参阅[快速入门：创建服务器 - 门户](analysis-services-create-server.md)或[快速入门：创建服务器 - PowerShell](analysis-services-create-powershell.md)
+- 订阅中的 Analysis Services 服务器。 若要了解详细信息，请参阅[快速入门：创建服务器 - 门户](analysis-services-create-server.md)或[快速入门：创建服务器 - PowerShell](analysis-services-create-powershell.md)
 - 客户端计算机的一个或多个 IP 地址范围（如果需要）。
-- 请注意，目前不支持从 Power BI Premium 导入方案。
+- 即使启用了“允许从 Power BI 访问”，当前也不支持 Power BI Premium 连接到 Azure Analysis Services 的某些方案，包括数据导入（刷新）和分页报告。 支持从 Power BI Premium 使用 Live Connect 的更常见方案。 支持所有 Power BI Pro 方案。
 
 ## <a name="sign-in-to-the-azure-portal"></a>登录到 Azure 门户 
 
@@ -36,7 +36,7 @@ ms.locfileid: "74203627"
 2. 在“设置”   > “防火墙”   > “启用防火墙”  ，单击“开”  。
 3. 若要允许从 Power BI 服务进行 DirectQuery 访问，请在“允许从Power BI 访问”  中，单击“开”  。  
 4. （可选）指定一个或多个 IP 地址范围。 输入每个范围的名称、起始和结束 IP 地址。 防火墙规则名称应限制为 128 个字符，并且只能包含大写字符、小写字符、数字、下划线和连字符。 不允许使用空格和其他特殊字符。
-5. 单击“ **保存**”。
+5. 单击“保存”  。
 
     ![防火墙设置](./media/analysis-services-qs-firewall/aas-qs-firewall.png)
 
@@ -50,4 +50,4 @@ ms.locfileid: "74203627"
 > [!div class="nextstepaction"]
 > [教程：将示例模型添加到服务器](analysis-services-create-sample-model.md)
 
-<!-- Update_Description: update meta properties, wording update -->
+<!-- Update_Description: update meta properties, wording update, update link -->

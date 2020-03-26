@@ -10,12 +10,12 @@ ms.workload: integration
 origin.date: 10/11/2019
 ms.author: v-yiso
 ms.date: 02/24/2020
-ms.openlocfilehash: 0cb4c47f393d7e7f2f7c23059bd577764c2c5818
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: ec90b7f56f56107f0c6b2822ee4d91b66144e4da
+ms.sourcegitcommit: 305361c96d1d5288d3dda7e81833820640e2afac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79291499"
+ms.lasthandoff: 03/21/2020
+ms.locfileid: "80108528"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>在 Azure 逻辑应用中保护访问和数据
 
@@ -616,13 +616,17 @@ HTTP 和 HTTPS 终结点支持各种身份验证。 根据用于发出访问这�
 |||
 
 > [!NOTE]
-> 在逻辑应用设计器中，“身份验证”属性可能会隐藏在某些可在其中指定身份验证类型的触发器和操作中。  在这种情况下，若要触发器或操作中显示该属性，请打开“添加新参数”列表，然后选择“身份验证”。   有关详细信息，请参阅[使用托管标识对访问进行身份验证](../logic-apps/create-managed-service-identity.md#authenticate-access-with-identity)。
+> 在逻辑应用设计器中，“身份验证”属性可能会隐藏在某些可在其中指定身份验证类型的触发器和操作中。  在这种情况下，若要触发器或操作中显示该属性，请打开“添加新参数”列表，然后选择“身份验证”。   
+
+<!--Not Avaialble on [Authenticate access with managed identity](../logic-apps/create-managed-service-identity.md#authenticate-access-with-identity)-->
 
 <a name="basic-authentication"></a>
 
 ### <a name="basic-authentication"></a>基本身份验证
 
-如果[基本](../active-directory-b2c/secure-rest-api-dotnet-basic-auth.md)选项可用，请指定以下属性值：
+如果基本选项可用，请指定以下属性值：
+
+<!--Not Availble on [Basic](../active-directory-b2c/secure-rest-api-dotnet-basic-auth.md)-->
 
 | 属性（设计器） | 属性 (JSON) | 必须 | Value | 说明 |
 |---------------------|-----------------|----------|-------|-------------|
@@ -685,7 +689,9 @@ HTTP 和 HTTPS 终结点支持各种身份验证。 根据用于发出访问这�
 * [使用 Azure API 管理中的客户端证书身份验证保护 API](../api-management/api-management-howto-mutual-certificates-for-clients.md)
 * [使用 Azure API 管理中的客户端证书身份验证保护后端服务](../api-management/api-management-howto-mutual-certificates.md)
 * [使用客户端证书保护 RESTful 服务](../active-directory-b2c/secure-rest-api-dotnet-certificate-auth.md)
-* [用于应用程序身份验证的证书凭据](../active-directory/develop/active-directory-certificate-credentials.md)
+    
+    <!--Not Available on * [Certificate credentials for application authentication](../active-directory/develop/active-directory-certificate-credentials.md)-->
+    
 * [在 Azure 应用服务的应用程序代码中使用 SSL 证书](../app-service/configure-ssl-certificate-in-code.md)
 
 <a name="azure-active-directory-oauth-authentication"></a>
@@ -777,8 +783,10 @@ Authorization: OAuth realm="Photos",
 
 如果[托管标识](../active-directory/managed-identities-azure-resources/overview.md)选项可用，则逻辑应用可以使用系统分配的标识来验证对其他 Azure Active Directory (Azure AD) 租户中的资源的访问，而无需登录。 由于无需提供或轮换机密，因此 Azure 会为你管理此标识，并且会帮助保护凭据。 详细了解[支持使用托管标识进行 Azure AD 身份验证的 Azure 服务](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)。
 
-1. 在逻辑应用可以使用系统分配的标识之前，请遵循[使用 Azure 逻辑应用中的托管标识验证对 Azure 资源的访问](../logic-apps/create-managed-service-identity.md)中的步骤。 这些步骤将在逻辑应用中启用托管标识，并设置该标识对目标 Azure 资源的访问权限。
-
+1. 请先执行“使用 Azure 逻辑应用中的托管标识验证对 Azure 资源的访问”中的步骤，然后逻辑应用才能使用系统分配的标识。 这些步骤将在逻辑应用中启用托管标识，并设置该标识对目标 Azure 资源的访问权限。
+    
+    <!--Not Available on [Authenticate access to Azure resources by using managed identities in Azure Logic Apps](../logic-apps/create-managed-service-identity.md)-->
+    
 2. 在 Azure 函数可以使用系统分配的标识之前，请先[为 Azure 函数启用身份验证](../logic-apps/logic-apps-azure-functions.md#enable-authentication-for-azure-functions)。
 
 3. 在要使用托管标识的触发器或操作中指定以下属性值：

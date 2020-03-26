@@ -3,17 +3,17 @@ title: Azure Stack Hub 发行说明
 description: Azure Stack Hub 集成系统的发行说明，包括更新和 bug 修复。
 author: WenJason
 ms.topic: article
-origin.date: 02/03/2020
-ms.date: 02/24/2020
+origin.date: 03/16/2020
+ms.date: 03/23/2020
 ms.author: v-jay
 ms.reviewer: prchint
 ms.lastreviewed: 11/22/2019
-ms.openlocfilehash: 706d3a4dd363f8b7f732e8e9b8c35e4683f5bd46
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.openlocfilehash: ddcc86889cee5bc666ea26009a554929fe430713
+ms.sourcegitcommit: e500354e2fd8b7ac3dddfae0c825cc543080f476
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77540866"
+ms.lasthandoff: 03/19/2020
+ms.locfileid: "79547080"
 ---
 # <a name="azure-stack-hub-release-notes"></a>Azure Stack Hub 发行说明
 
@@ -183,6 +183,9 @@ Azure Stack Hub 1910 更新内部版本类型为“快速”  。
 
 Azure Stack Hub 定期发布修补程序。 将 Azure Stack Hub 更新到 1910 之前，请务必先安装 1908 的最新 Azure Stack Hub 修补程序。
 
+> [!NOTE]
+> Azure Stack Hub 修补程序版本是累积性的；你只需安装最新的修补程序即可获取该版本的任何以前修补程序版本中包含的所有修补程序。
+
 Azure Stack Hub 修补程序仅适用于 Azure Stack Hub 集成系统；请勿尝试在 ASDK 上安装修补程序。
 
 ### <a name="prerequisites-before-applying-the-1910-update"></a>先决条件：应用 1910 更新之前
@@ -190,14 +193,14 @@ Azure Stack Hub 修补程序仅适用于 Azure Stack Hub 集成系统；请勿�
 必须在包含以下修补程序的版本 1908 中应用 Azure Stack 版本 1910：
 
 <!-- One of these. Either no updates at all, nothing is required, or the LATEST hotfix that is required-->
-- [Azure Stack Hub 修补程序 1.1908.14.53](https://support.microsoft.com/help/4537661)
+- [Azure Stack Hub 修补程序 1.1908.19.62](https://support.microsoft.com/help/4541349)
 
 ### <a name="after-successfully-applying-the-1910-update"></a>成功应用 1910 更新之后
 
 安装此更新之后，请安装所有适用的修补程序。 有关详细信息，请参阅我们的[服务策略](azure-stack-servicing-policy.md)。
 
 <!-- One of these. Either no updates at all, nothing is required, or the LATEST hotfix that is required-->
-- [Azure Stack Hub 修补程序 1.1910.17.95](https://support.microsoft.com/help/4537833)
+- [Azure Stack Hub 修补程序 1.1910.24.108](https://support.microsoft.com/help/4541350)
 ::: moniker-end
 
 ::: moniker range="azs-1908"
@@ -250,7 +253,7 @@ Azure Stack Hub 1908 更新内部版本类型为“完整”。  因此，1908 �
 
 有关此 Azure Stack Hub 更新中的安全更新的信息，请参阅 [Azure Stack Hub 安全更新](release-notes-security-updates.md)。
 
-## <a name="download-the-update-1908"></a>下载更新
+## <a name="download-the-update"></a><a name="download-the-update-1908"></a>下载更新
 
 可从 [Azure Stack Hub 下载页](https://aka.ms/azurestackupdatedownload)下载 Azure Stack Hub 1908 更新包。
 
@@ -265,7 +268,7 @@ Azure Stack Hub 修补程序仅适用于 Azure Stack Hub 集成系统；请勿�
 必须在包含以下修补程序的版本 1907 中应用 Azure Stack Hub 版本 1908：
 
 <!-- One of these. Either no updates at all, nothing is required, or the LATEST hotfix that is required-->
-- [Azure Stack Hub 修补程序 1.1907.18.56](https://support.microsoft.com/help/4528552)
+- [Azure Stack Hub 修补程序 1.1907.26.70](https://support.microsoft.com/help/4541348)
 
 Azure Stack Hub 1908 更新需要系统硬件提供商提供的 **Azure Stack Hub OEM 2.1 或更高版本**。 OEM 更新包括 Azure Stack Hub 系统硬件的驱动程序和固件更新。 有关应用 OEM 更新的详细信息，请参阅[应用 Azure Stack Hub 原始设备制造商更新](azure-stack-update-oem.md)
 
@@ -274,7 +277,7 @@ Azure Stack Hub 1908 更新需要系统硬件提供商提供的 **Azure Stack Hu
 安装此更新之后，请安装所有适用的修补程序。 有关详细信息，请参阅我们的[服务策略](azure-stack-servicing-policy.md)。
 
 <!-- One of these. Either no updates at all, nothing is required, or the LATEST hotfix that is required-->
-- [Azure Stack Hub 修补程序 1.1908.14.53](https://support.microsoft.com/help/4537661)
+- [Azure Stack Hub 修补程序 1.1908.19.62](https://support.microsoft.com/help/4541349)
 ::: moniker-end
 
 ::: moniker range="azs-1907"
@@ -398,7 +401,7 @@ Azure Stack Hub 修补程序仅适用于 Azure Stack Hub 集成系统；请勿�
 安装此更新之后，请安装所有适用的修补程序。 有关详细信息，请参阅我们的[服务策略](azure-stack-servicing-policy.md)。
 
 <!-- One of these. Either no updates at all, nothing is required, or the LATEST hotfix that is required-->
-- [Azure Stack Hub 修补程序 1.1907.18.56](https://support.microsoft.com/help/4528552)
+- [Azure Stack Hub 修补程序 1.1907.26.70](https://support.microsoft.com/help/4541348)
 ::: moniker-end
 
 ::: moniker range="azs-1906"

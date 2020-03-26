@@ -1,20 +1,19 @@
 ---
-title: 使用 SSL 终端创建应用程序网关 - Azure CLI
+title: 通过 CLI 使用 SSL 终端 - Azure 应用程序网关
 description: 了解如何使用 Azure CLI 创建应用程序网关并为 SSL 终端添加证书。
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-origin.date: 08/01/2019
-ms.date: 09/10/2019
+ms.date: 03/16/2020
 ms.author: v-junlch
 ms.custom: mvc
-ms.openlocfilehash: 131eb75b048996127fcaa4621ba04a6d57e94e87
-ms.sourcegitcommit: 843028f54c4d75eba720ac8874562ab2250d5f4d
+ms.openlocfilehash: 2bb84598e37e9a7dcd999f8c47e3cdf08202326f
+ms.sourcegitcommit: 71a386ca0d0ecb79a123399b6ab6b8c70ea2aa78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70857198"
+ms.lasthandoff: 03/18/2020
+ms.locfileid: "79497346"
 ---
 # <a name="create-an-application-gateway-with-ssl-termination-using-the-azure-cli"></a>通过 Azure CLI 使用 SSL 终端创建应用程序网关
 
@@ -30,7 +29,7 @@ ms.locfileid: "70857198"
 
 如果需要，可以使用 [Azure PowerShell](tutorial-ssl-powershell.md) 完成此过程。
 
-如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial/?WT.mc_id=A261C142F)。
+如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial)。
 
 根据本文的要求，如果选择在本地安装并使用 CLI，则需要运行 Azure CLI 2.0.4 或更高版本。 若要查找版本，请运行 `az --version`。 如果需要进行安装或升级，请参阅[安装 Azure CLI](/cli/install-azure-cli)。
 
@@ -38,13 +37,13 @@ ms.locfileid: "70857198"
 
 为供生产使用，应导入由受信任的提供程序签名的有效证书。 对于本文中的情况，请使用 openssl 命令创建自签名证书和 pfx 文件。
 
-```azurecli
+```console
 openssl req -x509 -sha256 -nodes -days 365 -newkey rsa:2048 -keyout privateKey.key -out appgwcert.crt
 ```
 
 输入对证书有意义的值。 可接受默认值。
 
-```azurecli
+```console
 openssl pkcs12 -export -out appgwcert.pfx -inkey privateKey.key -in appgwcert.crt
 ```
 
@@ -184,4 +183,3 @@ az group delete --name myResourceGroupAG --location chinanorth
 
 [创建托管多个网站的应用程序网关](./tutorial-multiple-sites-cli.md)
 
-<!-- Update_Description: code update -->

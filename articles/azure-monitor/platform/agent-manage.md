@@ -1,20 +1,18 @@
 ---
-title: 管理 Azure Log Analytics 代理 | Azure Docs
+title: 管理 Azure Log Analytics 代理
 description: 本文介绍在计算机上部署的 Log Analytics Windows 或 Linux 代理的生命周期中通常会执行的不同管理任务。
-ms.service: azure-monitor
 author: lingliw
 manager: digimobile
-ms.subservice: logs
 ms.topic: conceptual
 origin.date: 06/14/2019
 ms.date: 07/14/2019
 ms.author: v-lingwu
-ms.openlocfilehash: ab67a8722182142d57e49639cb42b9e85a208051
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: 5e3c8ae3286544dc495710bb6783710809f4359a
+ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79292510"
+ms.lasthandoff: 03/17/2020
+ms.locfileid: "79452581"
 ---
 # <a name="managing-and-maintaining-the-log-analytics-agent-for-windows-and-linux"></a>管理并维护 Windows 和 Linux 的 Log Analytics 代理
 
@@ -92,8 +90,11 @@ ms.locfileid: "79292510"
 #### <a name="update-settings-from-control-panel"></a>从控制面板更新设置
 
 1. 使用具有管理权限的帐户登录到计算机。
+
 2. 打开“控制面板” 
+
 3. 选择“Microsoft Monitoring Agent”，然后单击“Azure Log Analytics”选项卡   。
+
 4. 若要删除工作区，请选中该工作区，然后单击“删除”  。 如果还需代理停止向任何其他工作区报告，请重复此步骤。
 5. 若要添加工作区，请单击“添加”，然后在“添加 Log Analytics 工作区”对话框中粘贴工作区 ID 和工作区密钥（主密钥）   。 如果计算机应向 Azure 中国云中的 Log Analytics 工作区报告，请从“Azure 云”下拉列表中选择“Azure 中国政府”。
 6.  单击“确定”以保存你的更改。
@@ -170,15 +171,18 @@ $mma.ReloadConfiguration()
 #### <a name="update-settings-using-control-panel"></a>使用控制面板更新设置
 
 1. 使用具有管理权限的帐户登录到计算机。
+
 2. 打开“控制面板” 
+
 3. 选择“Microsoft Monitoring Agent”，然后单击“代理设置”选项卡   。
+
 4. 单击“使用代理服务器”，然后提供代理服务器或网关的 URL 和端口号  。 如果代理服务器或 Log Analytics 网关要求身份验证，请键入用户名和密码进行身份验证，然后单击“确定”  。
 
 #### <a name="update-settings-using-powershell"></a>使用 PowerShell 更新设置
 
 复制以下示例 PowerShell 代码，使用特定于自己环境的信息对其进行更新，并使用 PS1 文件扩展名将其保存。 在直接连接到 Azure Monitor 中的 Log Analytics工作区的每台计算机上运行该脚本。
 
-```PowerShell
+```powershell
 param($ProxyDomainName="https://proxy.contoso.com:30443", $cred=(Get-Credential))
 
 # First we get the Health Service configuration object. We need to determine if we
@@ -226,7 +230,9 @@ $healthServiceSettings.SetProxyInfo($ProxyDomainName, $ProxyUserName, $cred.GetN
 
 #### <a name="uninstall-from-control-panel"></a>从控制面板卸载
 1. 使用具有管理权限的帐户登录到计算机。
+
 2. 在“控制面板”中，单击“程序和功能”   。
+
 3. 在“程序和功能”中依次单击“Microsoft Monitoring Agent”、“卸载”、“是”     。
 
 >[!NOTE]
@@ -236,7 +242,9 @@ $healthServiceSettings.SetProxyInfo($ProxyDomainName, $ProxyUserName, $cred.GetN
 下载的代理文件是使用 IExpress 创建的独立安装包。 代理和支持文件的安装程序包含在该包中，需要提取才能使用以下示例中所示的命令行正确卸载。
 
 1. 使用具有管理权限的帐户登录到计算机。
+
 2. 若要提取代理安装文件，请在提升的命令提示符处运行 `extract MMASetup-<platform>.exe`，这会提示要将文件提取到的路径。 或者，可以通过传递参数 `extract MMASetup-<platform>.exe /c:<Path> /t:<Path>` 来指定路径。 若要深入了解 IExpress 支持的命令行开关，请参阅 [IExpress 的命令行开关](https://support.microsoft.com/help/197147/command-line-switches-for-iexpress-software-update-packages)，然后根据需要更新示例。
+
 3. 在提示符下键入 `%WinDir%\System32\msiexec.exe /x <Path>:\MOMAgent.msi /qb`。
 
 ### <a name="linux-agent"></a>Linux 代理
@@ -252,14 +260,23 @@ $healthServiceSettings.SetProxyInfo($ProxyDomainName, $ProxyUserName, $cred.GetN
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
 
 1. 使用具有管理权限的帐户登录到计算机。
+
 2. 打开“控制面板” 
+
 3. 单击“Microsoft Monitoring Agent”，然后单击“Operations Manager”选项卡   。
+
 4. 如果 Operations Manager 服务器与 Active Directory 集成，请单击“**自动更新 AD DS 中的管理组分配**”。
+
 5. 单击“**添加**”以打开“**添加管理组**”对话框。
+
 6. 在“管理组名称”字段，键入管理组的名称  。
+
 7. 在“主管理服务器”字段，键入主管理服务器的计算机名  。
+
 8. 在“管理服务器端口”字段，键入 TCP 端口号  。
+
 9. 在“**代理操作帐户**”下面，选择本地系统帐户或本地域帐户。
+
 10. 单击“**确定**”关闭“**添加管理组**”对话框中，再单击“**确定**”关闭“**Microsoft Monitoring Agent 属性**”对话框。
 
 ### <a name="linux-agent"></a>Linux 代理
@@ -268,7 +285,9 @@ $healthServiceSettings.SetProxyInfo($ProxyDomainName, $ProxyUserName, $cred.GetN
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
 
 1. 编辑 `/etc/opt/omi/conf/omiserver.conf`
+
 2. 确保以 `httpsport=` 开头的行定义了端口 1270。 例如：`httpsport=1270`
+
 3. 重新启动 OMI 服务器：`sudo /opt/omi/bin/service_control restart`
 
 ## <a name="next-steps"></a>后续步骤

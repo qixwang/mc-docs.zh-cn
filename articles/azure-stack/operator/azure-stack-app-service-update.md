@@ -4,21 +4,21 @@ description: 了解如何更新 Azure Stack Hub 上的 Azure 应用服务。
 author: WenJason
 ms.topic: article
 origin.date: 01/13/2019
-ms.date: 02/24/2020
+ms.date: 03/23/2020
 ms.author: v-jay
 ms.reviewer: anwestg
 ms.lastreviewed: 01/13/2019
-ms.openlocfilehash: 3d22754af6f525d4dc0c6faa5ee0a3afd3388155
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.openlocfilehash: 31a793740f9cf927e4578ff502154baf7a856a95
+ms.sourcegitcommit: e500354e2fd8b7ac3dddfae0c825cc543080f476
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77540892"
+ms.lasthandoff: 03/19/2020
+ms.locfileid: "79547070"
 ---
 # <a name="update-azure-app-service-on-azure-stack-hub"></a>更新 Azure Stack Hub 上的 Azure 应用服务
 
 > [!IMPORTANT]
-> 请将 1910 更新应用于 Azure Stack Hub 集成系统，或部署最新的 Azure Stack Hub 开发工具包 (ASDK)，然后部署 Azure 应用服务 1.8。
+> 请将 1910 更新应用于 Azure Stack Hub 集成系统，或部署最新的 Azure Stack 开发工具包 (ASDK)，然后部署 Azure 应用服务 1.8。
 
 本文介绍如何升级部署在通过 Internet 连接的 Azure Stack Hub 环境中的 [Azure 应用服务资源提供程序](azure-stack-app-service-overview.md)。
 

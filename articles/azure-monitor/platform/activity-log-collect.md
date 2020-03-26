@@ -1,7 +1,6 @@
 ---
 title: 收集和分析 Log Analytics 工作区中的 Azure 活动日志 | Microsoft Docs
 description: 收集 Azure Monitor 日志中的 Azure 活动日志，同时使用监视解决方案分析并搜索所有 Azure 订阅的 Azure 活动日志。
-ms.service: azure-monitor
 author: lingliw
 manager: digimobile
 ms.subservice: logs
@@ -9,15 +8,19 @@ ms.topic: conceptual
 origin.date: 09/30/2019
 ms.date: 10/25/2019
 ms.author: v-lingwu
-ms.openlocfilehash: e502a50a09ada6dda72a1ad1225ce751c70eb62b
-ms.sourcegitcommit: 27eaabd82b12ad6a6840f30763034a6360977186
+ms.openlocfilehash: 14ce24be01dfe20ba71cbcdc30a8df5ecb7cf2da
+ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77497424"
+ms.lasthandoff: 03/17/2020
+ms.locfileid: "79452349"
 ---
 # <a name="collect-and-analyze-azure-activity-logs-in-log-analytics-workspace-in-azure-monitor"></a>收集和分析 Azure Monitor 的 Log Analytics 工作区中的 Azure 活动日志
-[Azure 活动日志](platform-logs-overview.md)方便用户深入了解 Azure 订阅中发生的订阅级别事件。 本文介绍如何将活动日志收集到 Log Analytics 工作区，以及如何使用 Activity Log Analytics [监视解决方案](../insights/solutions.md)提供适用于分析此数据的日志查询和视图。 
+
+> [!WARNING]
+> 现在，可以使用与收集资源日志类似的诊断设置将“活动”日志收集到 Log Analytics 工作区中。 请参阅[收集和分析 Azure Monitor 的 Log Analytics 工作区中的 Azure 活动日志](diagnostic-settings-legacy.md)。
+
+[Azure 活动日志](platform-logs-overview.md)提供 Azure 订阅中发生的订阅级事件的见解。 本文介绍如何将活动日志收集到 Log Analytics 工作区，以及如何使用 Activity Log Analytics [监视解决方案](../insights/solutions.md)提供适用于分析此数据的日志查询和视图。 
 
 将活动日志连接到 Log Analytics 工作区有以下好处：
 
@@ -42,7 +45,7 @@ ms.locfileid: "77497424"
     ![连接工作区](media/activity-log-export/connect-workspace.png)
 
 ## <a name="analyze-in-log-analytics-workspace"></a>在 Log Analytics 工作区中进行分析
-将活动日志连接到 Log Analytics 工作区时，条目会写入到工作区的名为 **AzureActivity** 的表中，该表可以使用[日志查询](../log-query/log-query-overview.md)进行检索。 该表的结构因[日志条目类别](platform-logs-overview.md#categories-in-the-activity-log)而异。 有关每个类别的说明，请参阅 [Azure 活动日志事件架构](activity-log-schema.md)。
+将活动日志连接到 Log Analytics 工作区时，条目会写入到工作区的名为 **AzureActivity** 的表中，该表可以使用[日志查询](../log-query/log-query-overview.md)进行检索。 该表的结构因[日志条目类别](platform-logs-overview.md)而异。 有关每个类别的说明，请参阅 [Azure 活动日志事件架构](activity-log-schema.md)。
 
 ## <a name="activity-logs-analytics-monitoring-solution"></a>Activity Logs Analytics 监视解决方案
 Azure Log Analytics 监视解决方案包含多个日志查询和视图，用于分析 Log Analytics 工作区中的活动日志记录。

@@ -4,17 +4,17 @@ titleSuffix: Azure Stack Hub
 description: 了解如何将 Azure Stack Hub 集成系统注册到 Azure，以便可以下载 Azure 市场项并设置数据报告。
 author: WenJason
 ms.topic: article
-origin.date: 2/02/2020
-ms.date: 02/24/2020
+origin.date: 2/25/2020
+ms.date: 03/23/2020
 ms.author: v-jay
 ms.reviewer: avishwan
 ms.lastreviewed: 03/04/2019
-ms.openlocfilehash: afd346014a9265f8d5b9da825c9906e59d249944
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: 31144d4f95ef56a3cfdccce3789877bc83708e5e
+ms.sourcegitcommit: e500354e2fd8b7ac3dddfae0c825cc543080f476
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79292224"
+ms.lasthandoff: 03/19/2020
+ms.locfileid: "79547018"
 ---
 # <a name="register-azure-stack-hub-with-azure"></a>将 Azure Stack Hub 注册到 Azure
 
@@ -504,17 +504,23 @@ Get-AzsRegistrationToken [-PrivilegedEndpointCredential] <PSCredential> [-Privil
 
 在尝试注册 Azure Stack Hub 时，可能会看到以下错误之一：
 
-- 无法检索 $hostName 的必需硬件信息。 请检查物理主机和连接性，然后尝试重新运行注册。
+- 无法检索 `$hostName` 的必需硬件信息。 请检查物理主机和连接性，然后尝试重新运行注册。
 
-- 无法连接到 $hostName 以获取硬件信息 - 请检查物理主机和连接性，然后尝试重新运行注册。
+- 无法连接到 `$hostName` 以获取硬件信息。 请检查物理主机和连接性，然后尝试重新运行注册。
 
-> 原因：这通常是因为我们尝试从主机获取硬件详细信息（例如 UUID、Bios 和 CPU）以尝试激活，但却无法完成它，因为无法连接到物理主机。
+   原因：这通常是因为我们尝试从主机获取硬件详细信息（例如 UUID、Bios 和 CPU）以尝试激活，但却无法完成它，因为无法连接到物理主机。
 
-尝试访问市场管理时，会在尝试同步发布产品时出错。 
-> 原因：当 Azure Stack Hub 无法访问注册资源时，通常会发生这种情况。 这种情况的一种常见原因是，当 Azure 订阅的目录租户更改时，它会重置注册。 如果已更改订阅的目录租户，将无法访问 Azure Stack Hub 市场或报告使用情况。 需要重新注册才能解决此问题。
+- 已注册云标识符 [`GUID`]。 不允许重复使用云标识符。
 
-在你已经通过离线过程注册戳记的情况下，市场管理仍会要求你注册并激活 Azure Stack Hub。
-> 原因：这是离线环境的已知问题。 可以按照[这些步骤](azure-stack-registration.md#verify-azure-stack-hub-registration)验证注册状态。 若要使用市场管理，需使用[脱机工具](azure-stack-download-azure-marketplace-item.md#disconnected-or-a-partially-connected-scenario)。
+   原因：如果 Azure Stack 环境已注册，则会发生这种情况。 若要使用不同的订阅或计费模型重新注册环境，[请参阅这些说明](#change-the-subscription-you-use)。
+
+- 尝试访问市场管理时，会在尝试同步发布产品时出错。
+
+   原因：当 Azure Stack Hub 无法访问注册资源时，通常会发生这种情况。 这种情况的一种常见原因是，当 Azure 订阅的目录租户更改时，它会重置注册。 如果已更改订阅的目录租户，将无法访问 Azure Stack Hub 市场或报告使用情况。 需要重新注册才能解决此问题。
+
+- 在你已经通过离线过程注册戳记的情况下，市场管理仍会要求你注册并激活 Azure Stack Hub。
+
+   原因：这是离线环境的已知问题。 可以[按照这些步骤](azure-stack-registration.md#verify-azure-stack-hub-registration)验证注册状态。 若要使用市场管理，请使用[脱机工具](azure-stack-download-azure-marketplace-item.md#disconnected-or-a-partially-connected-scenario)。
 
 ## <a name="next-steps"></a>后续步骤
 

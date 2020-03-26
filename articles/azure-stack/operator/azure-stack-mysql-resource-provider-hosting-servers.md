@@ -4,16 +4,16 @@ description: 了解如何添加 MySQL 宿主服务器以通过 MySQL 适配器�
 author: WenJason
 ms.topic: article
 origin.date: 11/06/2019
-ms.date: 02/24/2020
+ms.date: 03/23/2020
 ms.author: v-jay
 ms.reviewer: xiaofmao
 ms.lastreviewed: 11/06/2019
-ms.openlocfilehash: 9277f7aeb9719a2b021c6beca58f42f0eea73039
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.openlocfilehash: fbbf395aa1f76f678b9d88230cf61893f30c8f15
+ms.sourcegitcommit: e500354e2fd8b7ac3dddfae0c825cc543080f476
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77540401"
+ms.lasthandoff: 03/19/2020
+ms.locfileid: "79547046"
 ---
 # <a name="add-mysql-hosting-servers-in-azure-stack-hub"></a>在 Azure Stack Hub 中添加 MySQL 宿主服务器
 
@@ -22,7 +22,40 @@ ms.locfileid: "77540401"
 > [!NOTE]
 > MySQL 资源提供程序应在默认提供程序订阅中创建，而 MySQL 宿主服务器则应在可计费用户订阅中创建。 资源提供程序服务器不应用于托管用户数据库。
 
-可以将 MySQL 版本 5.6、5.7 和 8.0 用于宿主服务器。 MySQL RP 不支持 caching_sha2_password 身份验证；下一版本会添加此功能。 必须将 MySQL 8.0 服务器配置为使用 mysql_native_password。 也支持 MariaDB。
+可以将 MySQL 版本 5.6、5.7 和 8.0 用于宿主服务器。 MySQL RP 不支持 caching_sha2_password 身份验证。 必须将 MySQL 8.0 服务器配置为使用 mysql_native_password。
+
+## <a name="configure-external-access-to-the-mysql-hosting-server"></a>配置对 MySQL 宿主服务器的外部访问
+
+必须先启用外部访问，然后才能将 MySQL 服务器添加为 Azure Stack Hub MySQL 服务器主机。 以 Azure Stack Hub 市场中提供的 BitNami MySQL 为例，你可以采取以下步骤配置外部访问。
+
+1. 使用 SSH 客户端（此示例使用 [PuTTY](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html)）从可以访问公共 IP 的计算机登录 MySQL 服务器。
+
+    使用公共 IP 并使用用户名 **bitnami** 和你先前创建的应用程序密码（不带特殊字符）登录到 VM。
+
+   ![LinuxLogin](media/azure-stack-tutorial-mysqlrp/bitnami1.png)
+
+2. 在 SSH 客户端窗口中，使用以下命令确保 bitnami 服务处于活动状态且正在运行。 出现提示时，再次提供 bitnami 密码：
+
+   `sudo service bitnami status`
+
+   ![检查 bitnami 服务](media/azure-stack-tutorial-mysqlrp/bitnami2.png)
+
+3. 创建一个远程访问用户帐户，供 Azure Stack Hub MySQL 宿主服务器用于连接到 MySQL，然后退出 SSH 客户端。
+
+    运行以下命令，使用前面创建的根密码以 root 身份登录 MySQL。 新建一个管理员用户，并根据环境需要替换 \<用户名\>  和 \<密码\>  。 在此示例中，创建的用户名为 **sqlsa**，并使用强密码：
+
+   ```mysql
+   mysql -u root -p
+   create user <username>@'%' identified by '<password>';
+   grant all privileges on *.* to <username>@'%' with grant option;
+   flush privileges;
+   ```
+
+   ![创建管理员用户](media/azure-stack-tutorial-mysqlrp/bitnami3.png)
+
+4. 记录新的 MySQL 用户信息。
+
+Azure Stack Hub 操作员使用此 MySQL 服务器创建 MySQL 宿主服务器时，将使用此用户名和密码。
 
 ## <a name="connect-to-a-mysql-hosting-server"></a>连接到 MySQL 宿主服务器
 

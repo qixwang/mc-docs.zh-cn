@@ -3,14 +3,14 @@ title: 使用模板进行条件部署
 description: 介绍如何在 Azure 资源管理器模板中有条件地部署资源。
 ms.topic: conceptual
 origin.date: 12/03/2019
+ms.date: 03/23/2020
 ms.author: v-yeche
-ms.date: 01/06/2020
-ms.openlocfilehash: db7a2165c59d6cb3fb89a4b2bdb0c9bc53f74cb3
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.openlocfilehash: e975f5d0452bc936cd02d97bd86bbdd17615d350
+ms.sourcegitcommit: 1436f1851342ca5631eb25342eed954adb707af0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75631237"
+ms.lasthandoff: 03/19/2020
+ms.locfileid: "79543732"
 ---
 <!--Verify successfully-->
 # <a name="conditional-deployment-in-resource-manager-templates"></a>资源管理器模板中的条件部署
@@ -25,8 +25,8 @@ ms.locfileid: "75631237"
 {
     "condition": "[equals(parameters('newOrExisting'),'new')]",
     "type": "Microsoft.Storage/storageAccounts",
-    "name": "[variables('storageAccountName')]",
     "apiVersion": "2017-06-01",
+    "name": "[variables('storageAccountName')]",
     "location": "[parameters('location')]",
     "sku": {
         "name": "[variables('storageAccountType')]"
@@ -46,31 +46,31 @@ ms.locfileid: "75631237"
 
 ```json
 {
-    "type": "Microsoft.Sql/servers",
-    "name": "[parameters('serverName')]",
-    "apiVersion": "2015-05-01-preview",
-    "location": "[parameters('location')]",
-    "properties": {
-        "administratorLogin": "[parameters('administratorLogin')]",
-        "administratorLoginPassword": "[parameters('administratorLoginPassword')]",
-        "version": "12.0"
-    },
-    "resources": [
-        {
-            "condition": "[parameters('allowAzureIPs')]",
-            "type": "firewallRules",
-            "name": "AllowAllWindowsAzureIps",
-            "apiVersion": "2015-05-01-preview",
-            "location": "[parameters('location')]",
-            "dependsOn": [
-                "[resourceId('Microsoft.Sql/servers/', parameters('serverName'))]"
-            ],
-            "properties": {
-                "endIpAddress": "0.0.0.0",
-                "startIpAddress": "0.0.0.0"
-            }
-        }
-    ]
+  "type": "Microsoft.Sql/servers",
+  "apiVersion": "2015-05-01-preview",
+  "name": "[parameters('serverName')]",
+  "location": "[parameters('location')]",
+  "properties": {
+    "administratorLogin": "[parameters('administratorLogin')]",
+    "administratorLoginPassword": "[parameters('administratorLoginPassword')]",
+    "version": "12.0"
+  },
+  "resources": [
+    {
+      "condition": "[parameters('allowAzureIPs')]",
+      "type": "firewallRules",
+      "apiVersion": "2015-05-01-preview",
+      "name": "AllowAllWindowsAzureIps",
+      "location": "[parameters('location')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.Sql/servers/', parameters('serverName'))]"
+      ],
+      "properties": {
+        "endIpAddress": "0.0.0.0",
+        "startIpAddress": "0.0.0.0"
+      }
+    }
+  ]
 }
 ```
 
@@ -91,6 +91,6 @@ ms.locfileid: "75631237"
 ## <a name="next-steps"></a>后续步骤
 
 * 有关创建模板的建议，请参阅 [Azure 资源管理器模板的最佳做法](template-best-practices.md)。
-* 若要创建资源的多个实例，请参阅 [Azure 资源管理器模板中的资源、属性或变量迭代](create-multiple-instances.md)。
+* 若要创建资源的多个实例，请参阅 [Azure 资源管理器模板中的资源迭代](copy-resources.md)。
 
 <!-- Update_Description: update meta properties, wording update, update link -->

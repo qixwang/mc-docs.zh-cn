@@ -9,12 +9,12 @@ ms.reviewer: klam, LADocs
 ms.topic: article
 origin.date: 01/18/2020
 ms.date: 02/24/2020
-ms.openlocfilehash: 7f9ae526258ff55c1d9c48c08c3be65cf1656068
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: dfd7756bca1fa8ae7ef008d5e93d244004890c0a
+ms.sourcegitcommit: 305361c96d1d5288d3dda7e81833820640e2afac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79291513"
+ms.lasthandoff: 03/21/2020
+ms.locfileid: "80108507"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Azure 逻辑应用的限制和配置信息
 
@@ -210,10 +210,12 @@ Azure 逻辑应用支持通过网关执行写入操作（包括插入和更新�
 
 | 项目 | 限制 | 注释 |
 | -------- | ----- | ----- |
-| Assembly | 8 MB | 若要上传大于 2 MB 的文件，请使用 [Azure 存储帐户和 blob 容器](../logic-apps/logic-apps-enterprise-integration-schemas.md)。 |
+| Assembly | 8 MB | 若要上传大于 2 MB 的文件，请使用 Azure 存储帐户和 blob 容器。 |
 | 映射（XSLT 文件） | 8 MB | 若要上传大于 2 MB 的文件，请使用 [Azure 逻辑应用 REST API - 映射](https://docs.microsoft.com/rest/api/logic/maps/createorupdate)。 <p><p>**注意**：映射可以成功处理的数据或记录量取决于 Azure 逻辑应用中的消息大小和操作超时限制。 例如，如果使用 HTTP 操作，则根据 [HTTP 消息大小和超时限制](#request-limits)，在操作能够在 HTTP 超时限制内完成的情况下，映射最多可以处理达到 HTTP 消息大小限制的数据量。 |
-| 架构 | 8 MB | 若要上传大于 2 MB 的文件，请使用 [Azure 存储帐户和 blob 容器](../logic-apps/logic-apps-enterprise-integration-schemas.md)。 |
+| 架构 | 8 MB | 若要上传大于 2 MB 的文件，请使用 Azure 存储帐户和 blob 容器。 |
 ||||
+
+<!--Not Available on [Azure storage account and blob container](../logic-apps/logic-apps-enterprise-integration-schemas.md)-->
 
 | 运行时终结点 | 限制 | 注释 |
 |------------------|-------|-------|
@@ -257,7 +259,7 @@ Azure 逻辑应用用于传入和传出调用的 IP 地址取决于逻辑应用�
 
 * 若要支持 [Microsoft 托管的连接器](../connectors/apis-list.md)发出的调用，请根据逻辑应用所在的区域，使用这些连接器所用的所有  [出站](#outbound) IP 地址对防火墙进行设置。 这些地址显示在本部分的“出站”  标题下，并按区域进行排序。 
 
-* 若要为在集成服务环境 (ISE) 中运行的逻辑应用启用通信，请确保[打开这些端口](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#network-ports-for-ise)。
+    <!--Not Available on [open these ports](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#network-ports-for-ise)-->
 
 * 如果逻辑应用无法访问使用[防火墙和防火墙规则](../storage/common/storage-network-security.md)的 Azure 存储帐户，则可通过[各种选项来启用访问权限](../connectors/connectors-create-api-azureblobstorage.md#access-storage-accounts-behind-firewalls)。
 

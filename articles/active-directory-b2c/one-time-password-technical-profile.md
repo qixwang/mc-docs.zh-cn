@@ -3,20 +3,20 @@ title: 启用一次性密码 (OTP) 验证
 titleSuffix: Azure AD B2C
 description: 了解如何使用 Azure AD B2C 自定义策略设置一次性密码 (OTP) 方案。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/20/2020
+ms.date: 03/16/2020
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: afb40dc4e212a29190b4ef011a75d9d83a44c5af
-ms.sourcegitcommit: 1bd7711964586b41ff67fd1346dad368fe7383da
+ms.openlocfilehash: d48fddf094b4d2eaa370a3f5e26b67521ebefb6c
+ms.sourcegitcommit: 71a386ca0d0ecb79a123399b6ab6b8c70ea2aa78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77531323"
+ms.lasthandoff: 03/18/2020
+ms.locfileid: "79497186"
 ---
 # <a name="define-a-one-time-password-technical-profile-in-an-azure-ad-b2c-custom-policy"></a>在 Azure AD B2C 自定义策略中定义一次性密码技术配置文件
 
@@ -69,7 +69,7 @@ OutputClaims 元素包含由一次性密码协议提供程序生成的声明列�
 
 ### <a name="metadata"></a>Metadata
 
-以下设置可用于配置代码生成和维护：
+以下设置可用于配置代码生成模式：
 
 | 属性 | 必须 | 说明 |
 | --------- | -------- | ----------- |
@@ -77,7 +77,7 @@ OutputClaims 元素包含由一次性密码协议提供程序生成的声明列�
 | CodeLength | 否 | 代码的长度。 默认值为 `6`。 |
 | CharacterSet | 否 | 代码的字符集，其格式设置为可在正则表达式中使用。 例如，`a-z0-9A-Z`。 默认值为 `0-9`。 字符集必须在指定的集中至少包含 10 个不同的字符。 |
 | NumRetryAttempts | 否 | 代码被视为无效之前的验证尝试次数。 默认值为 `5`。 |
-| 操作 | 是 | 要执行的操作。 可能的值：`GenerateCode` 或 `VerifyCode`。 |
+| 操作 | 是 | 要执行的操作。 可能的值：`GenerateCode`。 |
 | ReuseSameCode | 否 | 给定代码未过期且仍然有效时，是否应提供重复的代码而不生成新代码。 默认值为 `false`。 |
 
 ### <a name="returning-error-message"></a>返回错误消息
@@ -90,22 +90,22 @@ OutputClaims 元素包含由一次性密码协议提供程序生成的声明列�
 
 ```XML
 <TechnicalProfile Id="GenerateCode">
-    <DisplayName>Generate Code</DisplayName>
-    <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.OneTimePasswordProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
-    <Metadata>
-        <Item Key="Operation">GenerateCode</Item>
-        <Item Key="CodeExpirationInSeconds">600</Item>
-        <Item Key="CodeLength">6</Item>
-        <Item Key="CharacterSet">0-9</Item>
-        <Item Key="NumRetryAttempts">5</Item>
-        <Item Key="ReuseSameCode">false</Item>
-    </Metadata>
-    <InputClaims>
-        <InputClaim ClaimTypeReferenceId="identifier" PartnerClaimType="identifier" />
-    </InputClaims>
-    <OutputClaims>
-        <OutputClaim ClaimTypeReferenceId="otpGenerated" PartnerClaimType="otpGenerated" />
-    </OutputClaims>
+  <DisplayName>Generate Code</DisplayName>
+  <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.OneTimePasswordProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+  <Metadata>
+    <Item Key="Operation">GenerateCode</Item>
+    <Item Key="CodeExpirationInSeconds">600</Item>
+    <Item Key="CodeLength">6</Item>
+    <Item Key="CharacterSet">0-9</Item>
+    <Item Key="NumRetryAttempts">5</Item>
+    <Item Key="ReuseSameCode">false</Item>
+  </Metadata>
+  <InputClaims>
+    <InputClaim ClaimTypeReferenceId="identifier" PartnerClaimType="identifier" />
+  </InputClaims>
+  <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="otpGenerated" PartnerClaimType="otpGenerated" />
+  </OutputClaims>
 </TechnicalProfile>
 ```
 
@@ -132,21 +132,23 @@ InputClaimsTransformations 元素可以包含 InputClaimsTransformation 元素�
 
 ### <a name="metadata"></a>Metadata
 
-以下设置可用于配置代码验证失败时显示的错误消息：
+以下设置可用于代码验证模式：
+
+| 属性 | 必须 | 说明 |
+| --------- | -------- | ----------- |
+| 操作 | 是 | 要执行的操作。 可能的值：`VerifyCode`。 |
+
+
+### <a name="error-messages"></a>错误消息
+
+以下设置可用于配置代码验证失败时显示的错误消息。 元数据应该在[自断言](self-asserted-technical-profile.md)技术配置文件中进行配置。 可以将错误消息[本地化](localization-string-ids.md#one-time-password-error-messages)。
 
 | 属性 | 必须 | 说明 |
 | --------- | -------- | ----------- |
 | UserMessageIfSessionDoesNotExist | 否 | 代码验证会话过期后向用户显示的消息。 代码已过期，或从未为给定标识符生成代码。 |
 | UserMessageIfMaxRetryAttempted | 否 | 用户尝试验证的次数超过允许的最大值时显示的消息。 |
 | UserMessageIfInvalidCode | 否 | 用户提供的代码无效时显示的消息。 |
-
-### <a name="returning-error-message"></a>返回错误消息
-
-如[元数据](#metadata)所述，你可以针对不同的错误情况自定义向用户显示的错误消息。 可以通过为区域设置添加前缀来进一步本地化这些消息，例如：
-
-```XML
-<Item Key="en.UserMessageIfInvalidCode">Wrong code has been entered.</Item>
-```
+|UserMessageIfSessionConflict|否| 无法验证代码时要向用户显示的消息。|
 
 ### <a name="example"></a>示例
 
@@ -154,21 +156,15 @@ InputClaimsTransformations 元素可以包含 InputClaimsTransformation 元素�
 
 ```XML
 <TechnicalProfile Id="VerifyCode">
-    <DisplayName>Verify Code</DisplayName>
-    <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.OneTimePasswordProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
-    <Metadata>
-        <Item Key="Operation">VerifyCode</Item>
-        <Item Key="UserMessageIfInvalidCode">Wrong code has been entered.</Item>
-        <Item Key="UserMessageIfSessionDoesNotExist">Code has expired.</Item>
-        <Item Key="UserMessageIfMaxRetryAttempted">You've tried too many times.</Item>
-    </Metadata>
-    <InputClaims>
-        <InputClaim ClaimTypeReferenceId="identifier" PartnerClaimType="identifier" />
-        <InputClaim ClaimTypeReferenceId="otpGenerated" PartnerClaimType="otpToVerify" />
-    </InputClaims>
+  <DisplayName>Verify Code</DisplayName>
+  <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.OneTimePasswordProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+  <Metadata>
+    <Item Key="Operation">VerifyCode</Item>
+  </Metadata>
+  <InputClaims>
+    <InputClaim ClaimTypeReferenceId="identifier" PartnerClaimType="identifier" />
+    <InputClaim ClaimTypeReferenceId="otpGenerated" PartnerClaimType="otpToVerify" />
+  </InputClaims>
 </TechnicalProfile>
 ```
-
-<!-- Update_Description: wording update -->
-
 

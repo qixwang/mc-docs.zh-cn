@@ -1,20 +1,19 @@
 ---
 title: Azure 流分析兼容性级别
 description: 了解如何设置 Azure 流分析作业的兼容性级别，并了解最新兼容性级别中的重大更改
-services: stream-analytics
 author: lingliw
 ms.author: v-lingwu
 manager: digimobile
 ms.service: stream-analytics
 ms.topic: conceptual
-origin.date: 02/14/2020
-ms.date: 02/27/2020
-ms.openlocfilehash: 89b8438708942fa26c90c278350015ca3e65a2a5
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+origin.date: 03/10/2020
+ms.date: 03/20/2020
+ms.openlocfilehash: a9fa5014197ca3437072d5c76ea68abac6f97842
+ms.sourcegitcommit: 305361c96d1d5288d3dda7e81833820640e2afac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78154618"
+ms.lasthandoff: 03/21/2020
+ms.locfileid: "80109809"
 ---
 # <a name="compatibility-level-for-azure-stream-analytics-jobs"></a>Azure 流分析作业的兼容性级别
 
@@ -28,11 +27,9 @@ ms.locfileid: "78154618"
 
 Azure 流分析目前支持三种兼容性级别：
 
-* 1.0 - 以前的行为
-* 1.1 - 默认行为
+* 1.0 - 最初的兼容性级别，几年前正式发布 Azure 流分析期间引入。
+* 1.1 - 以前的行为
 * 1.2 - 最新行为和最新改进
-
-最初的 1.0 兼容性级别是多年前在正式推出 Azure 流分析期间引入的。
 
 创建新的流分析作业时，最佳做法是使用最新的兼容性级别来创建它。 依赖于最新的行为着手作业设计，以免将来添加更改和增大复杂性。
 
@@ -56,7 +53,11 @@ Azure 流分析目前支持三种兼容性级别：
 
 在兼容性级别 1.2 中引入了以下重大更改：
 
-### <a name="geospatial-functions"></a>地理空间函数 
+###  <a name="amqp-messaging-protocol"></a>AMQP 消息传递协议
+
+**1.2 级别**：Azure 流分析使用[高级消息队列协议 (AMQP)](../service-bus-messaging/service-bus-amqp-overview.md) 消息传递协议将内容写入服务总线队列和主题。 通过 AMQP 可使用开放标准协议构建跨平台的混合应用程序。
+
+### <a name="geospatial-functions"></a>地理空间函数
 
 **以前的级别：** Azure 流分析使用地理计算。
 

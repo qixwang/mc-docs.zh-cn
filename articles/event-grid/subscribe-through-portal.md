@@ -1,18 +1,19 @@
 ---
 title: 通过门户创建 Azure 事件网格订阅
-description: 介绍了如何通过门户创建事件网格订阅。
+description: 本文介绍如何使用 Azure 门户为支持的源（如 Azure Blob 存储）创建事件网格订阅。
 services: event-grid
 author: spelluru
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 01/08/2019
-ms.author: v-yiso
-ms.openlocfilehash: 2940cdb7154308bc08a1b60b74652a3ced4c4897
-ms.sourcegitcommit: 5a57f99d978b78c1986c251724b1b04178c12d8c
+ms.date: 01/23/2020
+origin.date: 3/16/2020
+ms.author: v-lingwu
+ms.openlocfilehash: b46b70d9434e039b1d02d03f738eee359d53f767
+ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/24/2019
-ms.locfileid: "66195136"
+ms.lasthandoff: 03/17/2020
+ms.locfileid: "79452593"
 ---
 # <a name="subscribe-to-events-through-portal"></a>通过门户订阅事件
 
@@ -22,23 +23,23 @@ ms.locfileid: "66195136"
 
 若要针对任何受支持的[事件源](event-sources.md)创建事件网格订阅，请使用以下步骤。 本文展示了如何为 Azure 订阅创建事件网格订阅。
 
-1. 选择“所有服务”。
+1. 选择“所有服务”  。
 
    ![选择所有服务](./media/subscribe-through-portal/select-all-services.png)
 
-1. 搜索“事件网格订阅”，并从可用选项中选择它。
+1. 搜索“事件网格订阅”  ，并从可用选项中选择它。
 
    ![搜索](./media/subscribe-through-portal/search.png)
 
-1. 选择“+ 事件订阅”。
+1. 选择“+ 事件订阅”。 
 
    ![添加订阅](./media/subscribe-through-portal/add-subscription.png)
 
-1. 选择要创建的订阅的类型。 例如，若要订阅你的 Azure 订阅的事件，请选择“Azure 订阅”，然后选择目标订阅。
+1. 选择要创建的订阅的类型。 例如，若要订阅你的 Azure 订阅的事件，请选择“Azure 订阅”  ，然后选择目标订阅。
 
    ![选择 Azure 订阅](./media/subscribe-through-portal/azure-subscription.png)
 
-1. 若要订阅此事件源的所有事件类型，请使“订阅所有事件类型”选项保持选中状态。 否则，请为此订阅选择事件类型。
+1. 若要订阅此事件源的所有事件类型，请使“订阅所有事件类型”  选项保持选中状态。 否则，请为此订阅选择事件类型。
 
    ![选择事件类型](./media/subscribe-through-portal/select-event-types.png)
 
@@ -46,7 +47,7 @@ ms.locfileid: "66195136"
 
    ![提供订阅详细信息](./media/subscribe-through-portal/provide-subscription-details.png)
 
-1. 若要启用死信和自定义重试策略，请选择“其他功能”。
+1. 若要启用死信和自定义重试策略，请选择“其他功能”  。
 
    ![选择其他功能](./media/subscribe-through-portal/select-additional-features.png)
 
@@ -54,11 +55,11 @@ ms.locfileid: "66195136"
 
    ![启用死信并重试](./media/subscribe-through-portal/set-deadletter-retry.png)
 
-1. 完成后，选择“创建”。
+1. 完成后，选择“创建”。 
 
 ## <a name="create-subscription-on-resource"></a>创建关于资源的订阅
 
-某些事件源支持通过该资源的门户界面创建事件订阅。 选择事件源，并在左窗格中查找“事件”。
+某些事件源支持通过该资源的门户界面创建事件订阅。 选择事件源，并在左窗格中查找“事件”  。
 
 ![提供订阅详细信息](./media/subscribe-through-portal/resource-events.png)
 

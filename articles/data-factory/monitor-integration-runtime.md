@@ -1,23 +1,22 @@
 ---
-title: 在 Azure 数据工厂中监视集成运行时 | Microsoft Docs
+title: 在 Azure 数据工厂中监视集成运行时
 description: 了解如何在 Azure 数据工厂中监视不同类型的集成运行时。
 services: data-factory
 documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 origin.date: 07/25/2018
-ms.date: 07/08/2019
-author: WenJason
-ms.author: v-jay
+ms.date: 03/23/2020
+author: v-jay
+ms.author: daperlov
 manager: digimobile
-ms.openlocfilehash: 26e5fceae11a604244112b35f377c27057c9a397
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: d5b36676f7f9e26498a63d8ca345ecb99ad788d7
+ms.sourcegitcommit: 71a386ca0d0ecb79a123399b6ab6b8c70ea2aa78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79292615"
+ms.lasthandoff: 03/18/2020
+ms.locfileid: "79497263"
 ---
 # <a name="monitor-an-integration-runtime-in-azure-data-factory"></a>在 Azure 数据工厂中监视集成运行时  
 **集成运行时**是 Azure 数据工厂用于在不同的网络环境之间提供多种数据集成功能的计算基础结构。 数据工厂提供三种类型的集成运行时：
@@ -116,7 +115,7 @@ Azure 集成运行时的计算资源在 Azure 中以弹性方式受到完全管�
 使用 **Get-AzDataFactoryV2IntegrationRuntimeMetric** cmdlet 提取包含详细自承载集成运行时属性，以及执行该 cmdlet 期间这些属性的快照值的 JSON 有效负载。
 
 ```powershell
-Get-AzDataFactoryV2IntegrationRuntimeMetric -name $integrationRuntimeName -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName  | | ConvertTo-Json 
+Get-AzDataFactoryV2IntegrationRuntimeMetric -name $integrationRuntimeName -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName | ConvertTo-Json 
 ```
 
 示例输出（假设有两个节点与此自承载集成运行时关联）：

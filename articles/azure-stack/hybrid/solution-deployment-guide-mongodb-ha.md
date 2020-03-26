@@ -8,12 +8,12 @@ ms.date: 02/24/2020
 ms.author: v-jay
 ms.reviewer: anajod
 ms.lastreviewed: 11/05/2019
-ms.openlocfilehash: 9fe6d7cae4236262d19f29c99b19eb11ec361038
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.openlocfilehash: a9784fda3004475eb4df21af00da9b95ff7d0678
+ms.sourcegitcommit: e500354e2fd8b7ac3dddfae0c825cc543080f476
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77540646"
+ms.lasthandoff: 03/19/2020
+ms.locfileid: "79547054"
 ---
 # <a name="deploy-a-highly-available-mongodb-solution-to-azure-and-azure-stack-hub"></a>将高度可用的 MongoDB 解决方案部署到 Azure 和 Azure Stack Hub
 
@@ -41,7 +41,7 @@ ms.locfileid: "77540646"
 
 ## <a name="prerequisites-for-mongodb-with-azure-stack-hub"></a>将 MongoDB 与 Azure Stack Hub 配合使用的先决条件
 
-  - 两个连接的 Azure Stack Hub 集成系统 (Azure Stack Hub)，此部署不能在 Azure Stack Hub 开发工具包 (ASDK) 上使用。 若要详细了解 Azure Stack Hub，请参阅[什么是 Azure Stack Hub？](https://azure.cn/overview/azure-stack/)
+  - 两个连接的 Azure Stack Hub 集成系统 (Azure Stack Hub)，此部署不能在 Azure Stack 开发工具包 (ASDK) 上使用。 若要详细了解 Azure Stack Hub，请参阅[什么是 Azure Stack Hub？](https://azure.cn/overview/azure-stack/)
       - 每个 Azure Stack Hub 上有一个租户订阅。    
       - **记下每个订阅 ID 以及每个 Azure Stack Hub 的 Azure 资源管理器终结点。**
   - 一个 Azure Active Directory (Azure AD) 服务主体，该主体有权访问每个 Azure Stack Hub 上的租户订阅。 如果 Azure Stack Hub 是针对不同 Azure AD 租户部署的，则可能需要创建两个服务主体。 若要了解如何为 Azure Stack Hub 创建服务主体，请参阅[创建为应用程序提供 Azure Stack Hub 资源访问权限的服务主体](/azure-stack/user/azure-stack-create-service-principals)。    

@@ -3,21 +3,21 @@ title: 监视 Azure Stack Hub 硬件运行状况
 description: 了解如何监视 Azure Stack Hub 硬件组件的运行状况。
 author: WenJason
 ms.topic: conceptual
-origin.date: 11/21/2019
-ms.date: 02/24/2020
+origin.date: 02/24/2020
+ms.date: 03/23/2020
 ms.author: v-jay
 ms.reviewer: thoroet
 ms.lastreviewed: 11/21/2019
-ms.openlocfilehash: ef7cccc41cd41a0d4c4eae3160daa50aff09f98a
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.openlocfilehash: 0b66a73066fdea24acf4f1dd7be77c6e336f7f7b
+ms.sourcegitcommit: e500354e2fd8b7ac3dddfae0c825cc543080f476
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77540990"
+ms.lasthandoff: 03/19/2020
+ms.locfileid: "79547058"
 ---
 # <a name="monitor-azure-stack-hub-hardware-components"></a>监视 Azure Stack Hub 硬件组件
 
-Azure Stack Hub 的运行状况和监视系统已用于监视存储子系统的状态，并根据需要引发警报。 在 1910 版本的 Azure Stack Hub 中，运行状况和监视系统现在还可以为以下硬件组件引发警报：
+Azure Stack Hub 运行状况和监视系统监视存储子系统的状态，并根据需要引发警报。 运行状况和监视系统还可以为以下硬件组件引发警报：
 
 - 系统风扇
 - 系统温度

@@ -2,20 +2,20 @@
 title: 本地化字符串 ID - Azure Active Directory B2C | Microsoft Docs
 description: 在 Azure Active Directory B2C 中使用自定义策略的 api.signuporsignin ID 指定内容定义的 ID。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/20/2020
+ms.date: 03/16/2020
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: 1027b098280263063b2ce3d210a4bad9c90ef74f
-ms.sourcegitcommit: 1bd7711964586b41ff67fd1346dad368fe7383da
+ms.openlocfilehash: f718aea1dbba57b87e5d31674b97d2f762c27f67
+ms.sourcegitcommit: 71a386ca0d0ecb79a123399b6ab6b8c70ea2aa78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77531320"
+ms.lasthandoff: 03/18/2020
+ms.locfileid: "79497191"
 ---
 # <a name="localization-string-ids"></a>本地化字符串 ID
 
@@ -206,6 +206,23 @@ Localization  元素使你能够在用户旅程的策略中支持多个区域设
 |verification_control_but_send_code |发送验证码 |
 |verification_control_but_send_new_code |发送新代码 |
 |verification_control_but_verify_code |验证验证码 |
+|verification_control_code_sent| 已发送验证码。 请将其复制到下面的输入框。 |
+
+### <a name="example"></a>示例
+
+```XML
+<LocalizedResources Id="api.localaccountsignup.en">
+  <LocalizedStrings>
+    <LocalizedString ElementType="UxElement" StringId="verification_control_but_change_claims">Change</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="verification_control_fail_send_code">Failed to send the code, please try again later.</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="verification_control_fail_verify_code">Failed to verify the code, please try again later.</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="verification_control_but_send_code">Send Code</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="verification_control_but_send_new_code">Send New Code</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="verification_control_but_verify_code">Verify Code</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="verification_control_code_sent">Verification code has been sent. Please copy it to the input box below.</LocalizedString>
+  </LocalizedStrings>
+</LocalizedResources>
+```
 
 ## <a name="one-time-password-error-messages"></a>一次性密码错误消息
 以下是[一次性密码技术配置文件](one-time-password-technical-profile.md)错误消息的 ID
@@ -217,8 +234,20 @@ Localization  元素使你能够在用户旅程的策略中支持多个区域设
 |UserMessageIfSessionConflict |一次性密码验证会话存在冲突 |
 |UserMessageIfInvalidCode |为验证提供的一次性密码不正确 |
 
+### <a name="example"></a>示例
 
-<!-- Update_Description: wording update -->
+```XML
+<LocalizedResources Id="api.localaccountsignup.en">
+  <LocalizedStrings>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfSessionDoesNotExist">You have exceed the maximum time allowed.</LocalizedString>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfMaxRetryAttempted">You have exceed the number of retries allowed.</LocalizedString>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfInvalidCode">You have entered the wrong code.</LocalizedString>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfSessionConflict">Cannot verify the code, please try again later.</LocalizedString>
+  </LocalizedStrings>
+</LocalizedResources>
+```
+
+
 
 
 

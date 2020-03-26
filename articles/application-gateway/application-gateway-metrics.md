@@ -5,14 +5,14 @@ services: application-gateway
 author: abshamsft
 ms.service: application-gateway
 ms.topic: article
-ms.date: 03/02/2020
+ms.date: 03/16/2020
 ms.author: v-junlch
-ms.openlocfilehash: 4a207814a4f14a7dbe75a26031de470e90b84a5e
-ms.sourcegitcommit: 1ac138a9e7dc7834b5c0b62a133ca5ce2ea80054
+ms.openlocfilehash: 502074bb95b01dde90dafcf08fd2b603cbdb2a4f
+ms.sourcegitcommit: 71a386ca0d0ecb79a123399b6ab6b8c70ea2aa78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78266076"
+ms.lasthandoff: 03/18/2020
+ms.locfileid: "79497299"
 ---
 # <a name="metrics-for-application-gateway"></a>应用程序网关的指标
 
@@ -125,10 +125,6 @@ ms.locfileid: "78266076"
 
    应用程序网关已提供服务的成功请求计数。 可以进一步筛选请求计数，以显示每个/特定后端池 http 设置组合的计数。
 
-- **Web 应用程序防火墙匹配的规则**
-
-- **Web 应用程序防火墙触发的规则**
-
 ### <a name="backend-metrics"></a>后端指标
 
 应用程序网关支持以下指标：
@@ -180,9 +176,9 @@ ms.locfileid: "78266076"
 
   应用程序网关已提供服务的成功请求计数。 可以进一步筛选请求计数，以显示每个/特定后端池 http 设置组合的计数。
 
-- **Web 应用程序防火墙匹配的规则**
-
-- **Web 应用程序防火墙触发的规则**
+- **Web 应用程序防火墙阻止的请求计数**
+- **Web 应用程序防火墙阻止的请求分发**
+- **Web 应用程序防火墙规则分发总数**
 
 ### <a name="backend-metrics"></a>后端指标
 

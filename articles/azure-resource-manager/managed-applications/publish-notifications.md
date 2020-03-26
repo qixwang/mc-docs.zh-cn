@@ -4,14 +4,14 @@ description: 使用 Webhook 终结点配置托管应用程序，以接收有关�
 ms.topic: conceptual
 author: rockboyfor
 origin.date: 11/01/2019
-ms.date: 01/20/2020
+ms.date: 03/23/2020
 ms.author: v-yeche
-ms.openlocfilehash: e8a427e9813c05cba7e548cb1b531a823305d879
-ms.sourcegitcommit: 69cadf1fa0ed81751c48fbce919a6bb44b1053ce
+ms.openlocfilehash: 90a7c537f50293bad2334ac0efb04d5b752e79ce
+ms.sourcegitcommit: 1436f1851342ca5631eb25342eed954adb707af0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78209156"
+ms.lasthandoff: 03/19/2020
+ms.locfileid: "79543877"
 ---
 # <a name="azure-managed-applications-with-notifications"></a>提供通知的 Azure 托管应用程序
 
@@ -193,7 +193,7 @@ billingDetails | 仅为 Azure 市场托管应用程序指定。  托管应用程
 
 ## <a name="endpoint-authentication"></a>终结点身份验证
 若要保护 Webhook 终结点并确保通知的真实性：
-1. 在 Webhook URI 的顶部提供一个查询参数，如下所示： https://your-endpoint.com?sig=Guid 。 对于每个通知，请检查查询参数 `sig` 是否包含预期值 `Guid`。
+1. 在 Webhook URI 的基础上提供一个查询参数，如下所示：https\://your-endpoint.com?sig=Guid。 对于每个通知，请检查查询参数 `sig` 是否包含预期值 `Guid`。
 2. 使用 applicationId 对托管应用程序实例发出 GET。 验证 provisioningState 是否与通知的 provisioningState 相匹配，以确保一致性。
 
 ## <a name="notification-retries"></a>通知重试

@@ -2,26 +2,21 @@
 title: Azure 中的警报和通知监视概述
 description: Azure 中的警报概述。 警报、经典警报和警报界面。
 author: lingliw
-services: monitoring
-ms.service: azure-monitor
 ms.subservice: alerts
 ms.topic: conceptual
 origin.date: 01/28/2018
 ms.date: 9/23/2019
 ms.author: v-lingwu
-ms.openlocfilehash: bf2bb68981892f3491cebf5b1a4980b3b2b715e8
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: bb928893023cb5c63357bd84e0eaab38746b76d7
+ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79291672"
+ms.lasthandoff: 03/17/2020
+ms.locfileid: "79452379"
 ---
 # <a name="overview-of-alerts-in-21vianet-azure"></a>世纪互联 Azure 中的警报概述 
 
 本文介绍什么是警报及其优点，以及如何开始使用警报。  
-
-
-
 
 ## <a name="what-are-alerts-in-microsoft-azure"></a>什么是 Microsoft Azure 中的警报？
 在监视数据中发现重要情况时，警报会以主动的方式通知你。 有了警报，你就可以在系统的用户注意到问题之前确定和解决这些问题。 
@@ -43,20 +38,22 @@ ms.locfileid: "79291672"
 **信号**：由目标资源发出。 信号可以是以下类型：指标、活动日志、Application Insights 和日志。
 
 **条件**：应用于目标资源的信号和逻辑的组合。 示例: 
-   - CPU 百分比 > 70%
-   - 服务器响应时间 > 4 毫秒 
-   - 日志查询的结果计数 > 100
+
+- CPU 百分比 > 70%
+- 服务器响应时间 > 4 毫秒 
+- 日志查询的结果计数 > 100
 
 **警报名称**：用户配置的警报规则的具体名称。
 
 **警报说明**：用户配置的警报规则的说明。
 
 **严重性**：警报规则中指定的条件符合后确定的警报严重性。 严重性的范围为 0 到 4。
-   - 严重性为 0 = 严重
-   - 严重性为 1 = 错误
-   - 严重性为 2 = 警告
-   - 严重性为 3 = 信息
-   - 严重性为 4 = 详细 
+
+- 严重性为 0 = 严重
+- 严重性为 1 = 错误
+- 严重性为 2 = 警告
+- 严重性为 3 = 信息
+- 严重性为 4 = 详细 
 
 **操作**：触发警报时执行的特定操作。 有关详细信息，请参阅[操作组](../../azure-monitor/platform/action-groups.md)。
 
@@ -71,7 +68,7 @@ ms.locfileid: "79291672"
 
 以前，Azure Monitor 指标、Application Insights、Log Analytics 和服务运行状况都有单独的警报功能。 随着时间推移，Azure 改进并组合了用户界面和不同的警报方法。 此整合仍在进行中。 因此，仍有一些警报功能未出现在新的警报系统中。  
 
-| **监视器源** | **信号类型**  | **说明** | 
+| **监视器源** | **信号类型**  | **说明** |
 |-------------|----------------|-------------|
 | 服务运行状况 | 活动日志  | 不支持。 请参阅[创建有关服务通知的活动日志警报](../../azure-monitor/platform/alerts-activity-log-service-notifications.md)。  |
 | Application Insights | Web 可用性测试 | 不支持。 请参阅 [Web 测试警报](../../azure-monitor/app/monitor-web-app-availability.md)。 适用于任何经检测可将数据发送到 Application Insights 的网站。 网站的可用性或响应度低于预期时，就会收到通知。 |
@@ -186,7 +183,7 @@ ms.locfileid: "79291672"
 
 你可能希望以编程方式查询针对订阅生成的警报。 这可以是在 Azure 门户之外创建自定义视图，也可以是分析警报以确定模式和趋势。
 
-可以使用[警报管理 REST API](https://aka.ms/alert-management-api) 或[用于警报的 Azure Resource Graph REST API](https://docs.microsoft.com/rest/api/azureresourcegraph/resourcegraph(2018-09-01-preview)/resources/resources) 查询针对订阅生成的警报。
+可以使用[警报管理 REST API](https://aka.ms/alert-management-api) 或 [Azure Resource Graph](../../governance/resource-graph/overview.md) 和[用于资源的 REST API](https://docs.microsoft.com/rest/api/azureresourcegraph/resourcegraph(2019-04-01)/resources/resources) 查询针对订阅生成的警报。
 
 用于资源的 Resource Graph REST API 可用于大规模查询警报实例。 如果必须管理跨多个订阅生成的警报，建议使用此 API。 
 
@@ -210,6 +207,7 @@ ms.locfileid: "79291672"
 - [了解操作组](../../azure-monitor/platform/action-groups.md)
 - [在 Azure 中管理警报实例](https://aka.ms/managing-alert-instances)
 - [Managing Smart Groups](https://aka.ms/managing-smart-groups)（管理智能组）
+- [详细了解 Azure 警报定价](https://www.azure.cn/pricing/details/monitor/index.html)
 
 
 

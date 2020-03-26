@@ -1,27 +1,19 @@
 ---
-title: 快速入门：了解如何将 Azure Redis 缓存与 .NET 应用配合使用 | Microsoft Docs
+title: 快速入门：通过 .NET 应用使用 Azure Cache for Redis
 description: 本快速入门介绍如何从 .NET 应用访问 Azure Redis 缓存
-services: cache,app-service
-documentationcenter: ''
 author: yegu-ms
-manager: jhubbard
-editor: ''
-ms.assetid: c502f74c-44de-4087-8303-1b1f43da12d5
+ms.author: v-junlch
 ms.service: cache
-ms.workload: tbd
-ms.tgt_pltfrm: cache
 ms.devlang: dotnet
 ms.topic: quickstart
-origin.date: 05/18/2018
-ms.date: 09/03/2019
-ms.author: v-junlch
 ms.custom: mvc
-ms.openlocfilehash: 9bd49f2b5387cde386caa4f43b9c06ef4eeb9673
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.date: 03/17/2020
+ms.openlocfilehash: 90ca79b5ba44fe588b136d0d69377a439fca9f27
+ms.sourcegitcommit: 71a386ca0d0ecb79a123399b6ab6b8c70ea2aa78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79291991"
+ms.lasthandoff: 03/18/2020
+ms.locfileid: "79497174"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-a-net-framework-application"></a>快速入门：将 Azure Redis 缓存与 .NET Framework 应用程序配合使用
 
@@ -57,8 +49,7 @@ ms.locfileid: "79291991"
 
 在 Visual Studio 中，单击“文件”   > “新建”   > “项目”  。
 
-在“Visual C#”  下，单击“Windows 经典桌面”  ，然后依次单击“控制台应用”  和“确定”  来创建新的控制台应用程序。
-
+选择“控制台应用(.NET Framework)”  ，然后选择“下一步”  以配置应用。 输入**项目名称**，然后单击“创建”  以创建新的控制台应用程序。
 
 <a name="configure-the-cache-clients"></a>
 
@@ -136,7 +127,7 @@ static void Main(string[] args)
 {
     // Connection refers to a property that returns a ConnectionMultiplexer
     // as shown in the previous example.
-    IDatabase cache = lazyConnection.Value.GetDatabase();
+    IDatabase cache = Connection.GetDatabase();
 
     // Perform cache operations using the cache object...
 

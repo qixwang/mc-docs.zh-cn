@@ -6,16 +6,17 @@ author: msmbaldwin
 manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
+ms.subservice: general
 ms.topic: conceptual
 origin.date: 01/18/2019
-ms.date: 10/30/2019
+ms.date: 03/16/2020
 ms.author: v-tawe
-ms.openlocfilehash: 70e514bbccbc4fba4803976a0c82b736b0dac9f5
-ms.sourcegitcommit: 642a4ad454db5631e4d4a43555abd9773cae8891
+ms.openlocfilehash: b8ce3e44b2679c773ec351415deafabc06a09124
+ms.sourcegitcommit: 764b3d26aedce2de0e1948468a706fd3204a3d5e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2019
-ms.locfileid: "73426122"
+ms.lasthandoff: 03/19/2020
+ms.locfileid: "79543376"
 ---
 # <a name="azure-key-vault-basic-concepts"></a>Azure Key Vault 基本概念
 

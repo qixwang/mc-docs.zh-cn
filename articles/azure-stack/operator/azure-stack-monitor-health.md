@@ -2,17 +2,17 @@
 title: 在 Azure Stack Hub 中监视运行状况和警报
 description: 了解如何在 Azure Stack Hub 中监视运行状况和警报。
 author: WenJason
-ms.topic: article
-origin.date: 1/22/2020
-ms.date: 02/24/2020
+ms.topic: how-to
+origin.date: 03/04/2020
+ms.date: 03/23/2020
 ms.author: v-jay
 ms.lastreviewed: 01/18/2019
-ms.openlocfilehash: 2073e2a742f021ed53fc12596c8ad60a7f617412
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.openlocfilehash: 4dc2749a914b6ea35eb6e4065e84379dcb95c5a2
+ms.sourcegitcommit: e500354e2fd8b7ac3dddfae0c825cc543080f476
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77540911"
+ms.lasthandoff: 03/19/2020
+ms.locfileid: "79547048"
 ---
 # <a name="monitor-health-and-alerts-in-azure-stack-hub"></a>在 Azure Stack Hub 中监视运行状况和警报
 
@@ -46,14 +46,14 @@ Azure Stack Hub 引发的警报只有两个严重级别：**警告**和**严重*
 可以单击资源提供程序或基础结构角色来查看更详细的信息。
 
 > [!WARNING]  
-> 如果单击基础结构角色，然后单击角色实例，则会看到“启动”、“重启”或“关机”选项。    对集成系统应用更新时，请勿使用这些操作。 此外，**请勿**在 Azure Stack 开发工具包 (ASDK) 环境中使用这些选项。 这些选项是针对每个基础结构角色具有多个角色实例的集成系统环境设计的。 在 ASDK 中重启角色实例（特别是 AzS-Xrp01）会导致系统不稳定。 如需故障排除方面的帮助，请在 [Azure Stack 论坛](https://social.msdn.microsoft.com/Forums/azure/zh-CN/home)中提问。
+> 如果单击基础结构角色，然后单击角色实例，则会看到“启动”、“重启”或“关机”选项。    对集成系统应用更新时，请勿使用这些操作。 此外，**请勿**在 Azure Stack 开发工具包 (ASDK) 环境中使用这些选项。 这些选项是针对每个基础结构角色具有多个角色实例的集成系统环境设计的。 在 ASDK 中重启角色实例（特别是 AzS-Xrp01）会导致系统不稳定。 如需故障排除方面的帮助，请在 [Azure Stack Hub 论坛](https://social.msdn.microsoft.com/Forums/azure/zh-CN/home)中提问。
 >
 
 ## <a name="view-alerts"></a>查看警报
 
-可直接从“区域管理”边栏选项卡查看每个 Azure Stack 区域的活动警报列表。  默认配置中的第一个磁贴是“警报”磁贴，其中显示区域的严重警报和警告警报摘要。  如同此边栏选项卡中的其他磁贴一样，可将“警报”磁贴固定到仪表板，以便快速访问。
+可直接从“区域管理”边栏选项卡查看每个 Azure Stack Hub 区域的活动警报列表。  默认配置中的第一个磁贴是“警报”磁贴，其中显示区域的严重警报和警告警报摘要。  如同此边栏选项卡中的其他磁贴一样，可将“警报”磁贴固定到仪表板，以便快速访问。
 
-![Azure Stack 管理员门户中显示警告的“警报”磁贴](media/azure-stack-monitor-health/image3.png)
+![Azure Stack Hub 管理员门户中显示警告的“警报”磁贴](media/azure-stack-monitor-health/image3.png)
 
  若要查看区域的所有活动警报的列表，请选择“警报”磁贴的顶部。  若要查看警报的筛选列表（“严重”或“警告”），请选择磁贴中的“严重”或“警告”行项。  
 
@@ -62,13 +62,13 @@ Azure Stack Hub 引发的警报只有两个严重级别：**警告**和**严重*
 >[!Note]
 >如果某个警报保持活动状态，但超过一天仍未更新，可运行 [Test-AzureStack](azure-stack-diagnostic-test.md)，如果未报告问题，则可关闭该警报。
 
-![在 Azure Stack 管理员门户的“筛选器”窗格中按严重或警告状态进行筛选](media/azure-stack-monitor-health/alert-view.png)
+![在 Azure Stack Hub 管理员门户的“筛选器”窗格中按严重或警告状态进行筛选](media/azure-stack-monitor-health/alert-view.png)
 
 “视图 API”操作显示用于生成列表视图的 REST API。  借助此操作可以快速熟悉可用于查询警报的 REST API 语法。 可在自动化中使用此 API，或者将它与现有的数据中心监视、报告和票证解决方案相集成。
 
 可以单击特定的警报来查看警报详细信息。 警报详细信息显示与警报关联的所有字段，并可让用户快速导航到受影响的组件和警报源。 例如，如果某个基础结构角色实例脱机或不可访问，则会发生以下警报。  
 
-![Azure Stack 管理员门户中的“警报详细信息”边栏选项卡](media/azure-stack-monitor-health/alert-detail.png)
+![Azure Stack Hub 管理员门户中的“警报详细信息”边栏选项卡](media/azure-stack-monitor-health/alert-detail.png)
 
 ## <a name="repair-alerts"></a>修复警报
 
@@ -82,12 +82,10 @@ Azure Stack Hub 引发的警报只有两个严重级别：**警告**和**严重*
 
 ![“修复”操作成功完成](media/azure-stack-monitor-health/repair-completed.png)
 
-基础结构角色实例重新联机后，会自动关闭此警报。 在根本问题得到解决后，许多（但并非所有）警报会自动关闭。 如果 Azure Stack 解决了问题，提供“修复”操作按钮的警报会自动关闭。 对于所有其他警报，请在执行补救步骤之后选择“关闭警报”。  如果问题仍然存在，Azure Stack 会生成新警报。 如果解决了问题，警报将保持关闭，无需采取其他步骤。
+基础结构角色实例重新联机后，会自动关闭此警报。 在根本问题得到解决后，许多（但并非所有）警报会自动关闭。 如果 Azure Stack Hub 解决了问题，提供“修复”操作按钮的警报会自动关闭。 对于所有其他警报，请在执行补救步骤之后选择“关闭警报”。  如果问题仍然存在，Azure Stack Hub 会生成新警报。 如果解决了问题，警报将保持关闭，无需采取其他步骤。
 
 ## <a name="next-steps"></a>后续步骤
 
-[在 Azure Stack 中管理更新](azure-stack-updates.md)
+[在 Azure Stack Hub 中管理更新](azure-stack-updates.md)
 
-[Azure Stack 中的区域管理](azure-stack-region-management.md)
-
-<!-- Update_Description: wording update -->
+[Azure Stack Hub 中的区域管理](azure-stack-region-management.md)

@@ -9,12 +9,12 @@ origin.date: 2/22/2020
 ms.date: 03/09/2020
 ms.author: v-jay
 ms.subservice: files
-ms.openlocfilehash: 70e07c16bb1b384afca2f8ad5b52756fd3577442
-ms.sourcegitcommit: fbc7584f403417d3af7bd6bbbaed7c13a78c57b9
+ms.openlocfilehash: 153eaa115d5180df7fcf24652a9213b708e81fdb
+ms.sourcegitcommit: e500354e2fd8b7ac3dddfae0c825cc543080f476
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78412302"
+ms.lasthandoff: 03/19/2020
+ms.locfileid: "79547059"
 ---
 # <a name="create-an-azure-file-share"></a>创建 Azure 文件共享
 若要创建 Azure 文件共享，需要回答有关你将如何使用它的三个问题：
@@ -54,7 +54,7 @@ Azure 文件共享将部署到存储帐户。存储帐户是代表存储共享�
 - **资源组**：要部署到的存储帐户所在的资源组。 可以创建新的资源组，也可以使用现有资源组。 资源组是对 Azure 资源进行分组的逻辑容器。 在创建存储帐户时，可以选择创建新的资源组，也可以使用现有资源组。
 - **存储帐户名称**：要创建的存储帐户资源的名称。 此名称必须全局唯一，但可以是所需的任何名称。 通过 SMB 装载 Azure 文件共享时，存储帐户名称将用作服务器名称。
 - **位置**：要部署到的存储帐户所在的区域。 此区域可以是与资源组关联的区域，也可以是任何其他可用区域。
-- **复制**：尽管此字段的标签为“复制”，但它实际上指的是“冗余”；这是所需的冗余级别：本地冗余 (LRS) 和异地冗余 (GRS)。  此下拉列表还包含不适用于 Azure 文件共享的读取访问异地冗余 (RA-GRS)；在选择这些选项的情况下在存储帐户中创建的任何文件共享实际上是异地冗余的。 根据所在的区域或所选的存储帐户类型，可能不允许使用某些冗余选项。
+- **复制**：尽管此字段的标签为“复制”，但它实际上指的是“冗余”；这是所需的冗余级别：本地冗余 (LRS) 和异地冗余 (GRS)。  此下拉列表还包含读取访问权限异地冗余存储 (RA-GRS)，它不适用于 Azure 文件共享；在选择这些选项的情况下在存储帐户中创建的任何文件共享实际上是异地冗余的。 根据所在的区域或所选的存储帐户类型，可能不允许使用某些冗余选项。
 - **访问层**：此字段不适用于 Azure 文件存储，因此可以选中任一单选按钮。
 
 #### <a name="the-networking-blade"></a>“网络”边栏选项卡
@@ -70,7 +70,7 @@ Azure 文件共享将部署到存储帐户。存储帐户是代表存储共享�
 
 “高级”选项卡中提供的其他设置（Blob 软删除、Azure Data Lake Storage Gen 2 的分层命名空间，以及 Blob 存储的 NFSv3）不适用于 Azure 文件存储。
 
-#### <a name="tags"></a>标记
+#### <a name="tags"></a>Tags
 标记是名称/值对，可让你通过将相同的标记应用到多个资源和资源组，对资源进行分类并查看合并的账单。 这些设置是可选的，可以在创建存储帐户后应用。
 
 #### <a name="review--create"></a>查看 + 创建
@@ -117,7 +117,7 @@ az storage account create \
     --resource-group $resourceGroupName \
     --name $storageAccountName \
     --kind StorageV2 \
-    --sku Standard_ZRS \
+    --sku Standard_LRS \
     --enable-large-file-share \
     --output none
 ```

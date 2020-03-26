@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/04/2020
+ms.date: 03/16/2020
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: 171c3d649220e3210eca408fcd97422a06b273d0
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: 44e0ca1e8c1ff93fa4677aef48519b4b1738d53f
+ms.sourcegitcommit: 71a386ca0d0ecb79a123399b6ab6b8c70ea2aa78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79291110"
+ms.lasthandoff: 03/18/2020
+ms.locfileid: "79497184"
 ---
 # <a name="string-claims-transformations"></a>字符串声明转换
 
@@ -374,7 +374,7 @@ login-NonInteractive  验证技术配置文件调用 AssertEmailAndStrongAuthent
 若要使用 GetLocalizedStringsTransformation 声明转换：
 
 1. 定义一个[本地化字符串](localization.md)，并将其关联到某个[自我断言技术配置文件](self-asserted-technical-profile.md)。
-1. `LocalizedString` 元素的 `ElementType` 必须设置为 `GetLocalizedStringsTransformationClaimType`。
+1. `LocalizedString` 元素的 `ElementType` 必须设为 `GetLocalizedStringsTransformationClaimType`。
 1. `StringId` 是定义的唯一标识符，稍后将在声明转换中使用它。
 1. 在声明转换中，指定要使用本地化字符串设置的声明列表。 `ClaimTypeReferenceId` 是对在策略的 ClaimsSchema 节中已定义的 ClaimType 的引用。 `TransformationClaimType` 是在 `LocalizedString` 元素的 `StringId` 中定义的已本地化字符串的名称。
 1. 在[自我断言技术配置文件](self-asserted-technical-profile.md)或[显示控制](display-controls.md)输入或输出声明转换中引用你的声明转换。

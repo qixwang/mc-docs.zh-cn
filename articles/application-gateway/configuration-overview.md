@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 03/02/2020
+ms.date: 03/16/2020
 ms.author: v-junlch
-ms.openlocfilehash: 8d5dd1fe63a084cc30bac28e372de0e604e92697
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: 12f291e68760e31b1d3343eb24dd27b69d12bfd1
+ms.sourcegitcommit: 71a386ca0d0ecb79a123399b6ab6b8c70ea2aa78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79293387"
+ms.lasthandoff: 03/18/2020
+ms.locfileid: "79497305"
 ---
 # <a name="application-gateway-configuration-overview"></a>应用程序网关配置概述
 
@@ -127,7 +127,7 @@ Azure 应用程序网关由多个组件构成，可根据不同的方案以不�
 
 - 如果选择 HTTP，则客户端与应用程序网关之间的流量将不会加密。
 
-- 如果想要实现 [SSL 终止](/application-gateway/overview#secure-sockets-layer-ssltls-termination)或[端到端 SSL 加密](/application-gateway/ssl-overview)，请选择 HTTPS。 客户端与应用程序网关之间的流量将会加密。 SSL 连接将在应用程序网关上终止。 若要实现端到端的 SSL 加密，必须选择 HTTPS，并配置**后端 HTTP** 设置。 这可以确保流量在从应用程序网关传输到后端时重新得到加密。
+- 如果想要实现 [SSL 终止](features.md#secure-sockets-layer-ssltls-termination)或[端到端 SSL 加密](/application-gateway/ssl-overview)，请选择 HTTPS。 客户端与应用程序网关之间的流量将会加密。 SSL 连接将在应用程序网关上终止。 若要实现端到端的 SSL 加密，必须选择 HTTPS，并配置**后端 HTTP** 设置。 这可以确保流量在从应用程序网关传输到后端时重新得到加密。
 
 若要配置 SSL 终止和端到端 SSL 加密，必须将一个证书添加到侦听器，使应用程序网关能够派生对称密钥。 派生过程中根据 SSL 协议规范进行的。 使用该对称密钥可以加密和解密发送到网关的流量。 网关证书必须采用个人信息交换 (PFX) 格式。 使用此格式可以导出私钥，供网关用来加密和解密流量。
 
@@ -317,7 +317,7 @@ Azure 应用程序网关使用网关托管 Cookie 来维护用户会话。 当�
 > [!NOTE]
 > 只有在将相应的 HTTP 设置显式关联到某个侦听器之后，自定义探测才会监视后端池的运行状况。
 
-### <a id="pick"/></a>从后端地址中选取主机名
+### <a name="pick-host-name-from-back-end-address"></a><a id="pick"/></a>从后端地址中选取主机名
 
 此功能将请求中的 *host* 标头动态设置为后端池的主机名。 主机名使用 IP 地址或 FQDN。
 
@@ -340,7 +340,7 @@ Azure 应用程序网关使用网关托管 Cookie 来维护用户会话。 当�
 
 ## <a name="back-end-pool"></a>后端池
 
-可将后端池指向四种类型的后端成员：特定的虚拟机、虚拟机规模集、IP 地址/FQDN 或应用服务。 每个后端池可以指向同一类型的多个成员。 不支持指向同一后端池中不同类型的成员。
+可将后端池指向四种类型的后端成员：特定的虚拟机、虚拟机规模集、IP 地址/FQDN 或应用服务。 
 
 创建后端池后，必须将其关联到一个或多个请求路由规则。 此外，必须为应用程序网关上的每个后端池配置运行状况探测。 满足请求路由规则条件时，应用程序网关会将流量转发到相应后端池中正常运行的服务器（是否正常由运行状况探测决定）。
 

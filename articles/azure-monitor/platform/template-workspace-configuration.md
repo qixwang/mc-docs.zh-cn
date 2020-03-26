@@ -1,7 +1,6 @@
 ---
 title: 使用 Azure 资源管理器模板创建和配置 Log Analytics 工作区 | Azure Docs
 description: 可以使用 Azure 资源管理器模板创建和配置 Log Analytics 工作区。
-ms.service: azure-monitor
 author: lingliw
 manager: digimobile
 ms.subservice: logs
@@ -9,12 +8,12 @@ ms.topic: conceptual
 origin.date: 01/09/2020
 ms.date: 2/18/2020
 ms.author: v-lingwu
-ms.openlocfilehash: 26b80b86c9609f494774ccbfdae49a0c19f16b59
-ms.sourcegitcommit: 27eaabd82b12ad6a6840f30763034a6360977186
+ms.openlocfilehash: c235eaa7e0aa83a52cd223f4bff1ee99ccf6b690
+ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77497393"
+ms.lasthandoff: 03/17/2020
+ms.locfileid: "79452549"
 ---
 # <a name="manage-log-analytics-workspace-using-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板管理 Log Analytics 工作区
 
@@ -111,9 +110,8 @@ ms.locfileid: "77497393"
             "apiVersion": "2017-03-15-preview",
             "location": "[parameters('location')]",
             "properties": {
-                "sku": { 
-                    "name": "CapacityReservation",
-                    "capacityReservationLevel": 100
+                "sku": {
+          "name": "[parameters('pricingTier')]"
                 },
                 "retentionInDays": 120,
                 "features": {
@@ -126,6 +124,13 @@ ms.locfileid: "77497393"
        ]
     }
     ```
+
+> [Information] 对于产能预留设置，请在“sku”下使用以下属性：
+
+>   "name":"CapacityReservation",
+
+>   "capacityReservationLevel":100
+
 
 2. 按要求编辑模板。 查看 [Microsoft.OperationalInsights/workspaces 模板](https://docs.microsoft.com/azure/templates/microsoft.operationalinsights/workspaces)参考，了解支持的属性和值。 
 3. 在本地文件夹中将此文件另存为 **deploylaworkspacetemplate.json**。
@@ -208,7 +213,10 @@ ms.locfileid: "77497393"
       "allowedValues": [
         "China East 2",
 
-      ]
+      ],
+      "metadata": {
+        "description": "Specifies the location in which to create the workspace."
+      }
     },
     "applicationDiagnosticsStorageAccountName": {
         "type": "string",

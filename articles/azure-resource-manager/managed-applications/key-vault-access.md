@@ -4,14 +4,14 @@ description: 演示在部署托管应用程序时如何使用 Azure Key Vault �
 author: rockboyfor
 ms.topic: conceptual
 origin.date: 01/30/2019
-ms.date: 01/20/2020
+ms.date: 03/23/2020
 ms.author: v-yeche
-ms.openlocfilehash: 7ef8850448f47b0f461cb1cdc021740b26e5cd3b
-ms.sourcegitcommit: 8de025ca11b62e06ba3762b5d15cc577e0c0f15d
+ms.openlocfilehash: fda013686140d5ff110b5349aa1a29c10d6f9238
+ms.sourcegitcommit: 1436f1851342ca5631eb25342eed954adb707af0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76170632"
+ms.lasthandoff: 03/19/2020
+ms.locfileid: "79543872"
 ---
 # <a name="access-key-vault-secret-when-deploying-azure-managed-applications"></a>部署 Azure 托管应用程序时访问 Key Vault 机密
 
@@ -53,33 +53,114 @@ ms.locfileid: "76170632"
 
 ## <a name="reference-key-vault-secret"></a>引用 Key Vault 机密
 
-若要将 Key Vault 中的机密传递给托管应用程序中的模板，必须使用[链接模板](../templates/linked-templates.md)并在链接模板的参数中引用 Key Vault。 提供 Key Vault 的资源 ID 和机密名称。
+若要将 Key Vault 中的机密传递给托管应用程序中的模板，必须使用[链接模板或嵌套模板](../templates/linked-templates.md)并在链接模板或嵌套模板的参数中引用 Key Vault。 提供 Key Vault 的资源 ID 和机密名称。
 
 ```json
-"resources": [{
-  "apiVersion": "2015-01-01",
-  "name": "linkedTemplate",
-  "type": "Microsoft.Resources/deployments",
-  "properties": {
-    "mode": "incremental",
-    "templateLink": {
-      "uri": "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/keyvaultparameter/sqlserver.json",
-      "contentVersion": "1.0.0.0"
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "location": {
+      "type": "string",
+      "defaultValue": "[resourceGroup().location]",
+      "metadata": {
+        "description": "The location where the resources will be deployed."
+      }
     },
-    "parameters": {
-      "adminPassword": {
-        "reference": {
-          "keyVault": {
-            "id": "/subscriptions/<subscription-id>/resourceGroups/<rg-name>/providers/Microsoft.KeyVault/vaults/<key-vault-name>"
-          },
-          "secretName": "<secret-name>"
-        }
-      },
-      "adminLogin": { "value": "[parameters('adminLogin')]" },
-      "sqlServerName": {"value": "[parameters('sqlServerName')]"}
+    "vaultName": {
+      "type": "string",
+      "metadata": {
+        "description": "The name of the keyvault that contains the secret."
+      }
+    },
+    "secretName": {
+      "type": "string",
+      "metadata": {
+        "description": "The name of the secret."
+      }
+    },
+    "vaultResourceGroupName": {
+      "type": "string",
+      "metadata": {
+        "description": "The name of the resource group that contains the keyvault."
+      }
+    },
+    "vaultSubscription": {
+      "type": "string",
+      "defaultValue": "[subscription().subscriptionId]",
+      "metadata": {
+        "description": "The name of the subscription that contains the keyvault."
+      }
     }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2018-05-01",
+      "name": "dynamicSecret",
+      "properties": {
+        "mode": "Incremental",
+        "expressionEvaluationOptions": {
+          "scope": "inner"
+        },
+        "template": {
+          "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+          "contentVersion": "1.0.0.0",
+          "parameters": {
+            "adminLogin": {
+              "type": "string"
+            },
+            "adminPassword": {
+              "type": "securestring"
+            },
+            "location": {
+              "type": "string"
+            }
+          },
+          "variables": {
+            "sqlServerName": "[concat('sql-', uniqueString(resourceGroup().id, 'sql'))]"
+          },
+          "resources": [
+            {
+              "type": "Microsoft.Sql/servers",
+              "apiVersion": "2018-06-01-preview",
+              "name": "[variables('sqlServerName')]",
+              "location": "[parameters('location')]",
+              "properties": {
+                "administratorLogin": "[parameters('adminLogin')]",
+                "administratorLoginPassword": "[parameters('adminPassword')]"
+              }
+            }
+          ],
+          "outputs": {
+            "sqlFQDN": {
+              "type": "string",
+              "value": "[reference(variables('sqlServerName')).fullyQualifiedDomainName]"
+            }
+          }
+        },
+        "parameters": {
+          "location": {
+            "value": "[parameters('location')]"
+          },
+          "adminLogin": {
+            "value": "ghuser"
+          },
+          "adminPassword": {
+            "reference": {
+              "keyVault": {
+                "id": "[resourceId(parameters('vaultSubscription'), parameters('vaultResourceGroupName'), 'Microsoft.KeyVault/vaults', parameters('vaultName'))]"
+              },
+              "secretName": "[parameters('secretName')]"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "outputs": {
   }
-}],
+}
 ```
 
 ## <a name="next-steps"></a>后续步骤

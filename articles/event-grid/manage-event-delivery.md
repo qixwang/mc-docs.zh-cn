@@ -1,19 +1,19 @@
 ---
-title: Azure 事件网格订阅的死信与重试策略
+title: 死信和重试策略 - Azure 事件网格
 description: 介绍了如何自定义事件网格的事件传递设置。 设置死信目标并指定重试传递的时间间隔。
 services: event-grid
 author: spelluru
 ms.service: event-grid
 ms.topic: conceptual
-origin.date: 01/06/2019
+origin.date: 10/22/2019
 ms.author: v-yiso
-ms.date: 09/02/2019
-ms.openlocfilehash: c9f19af39b94c1c0cfc2db347344a545aba6b4a1
-ms.sourcegitcommit: 599d651afb83026938d1cfe828e9679a9a0fb69f
+ms.date: 3/16/2020
+ms.openlocfilehash: 6b6512c6c08f51e48f22f5062f7641837c0eadfd
+ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69993272"
+ms.lasthandoff: 03/17/2020
+ms.locfileid: "79452296"
 ---
 # <a name="dead-letter-and-retry-policies"></a>死信与重试策略
 

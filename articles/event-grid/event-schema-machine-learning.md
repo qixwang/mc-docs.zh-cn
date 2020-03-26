@@ -8,12 +8,12 @@ ms.topic: reference
 origin.date: 10/18/2019
 ms.date: 01/20/2020
 ms.author: v-yiso
-ms.openlocfilehash: e8d19525f2f2493935183f53d7d49dfe32d0b569
-ms.sourcegitcommit: a890a9cca495d332c9f3f53ff3a5259fd5f0c275
+ms.openlocfilehash: 688e587e9121aeff436b52602c188b53c9e5ba4a
+ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75859770"
+ms.lasthandoff: 03/17/2020
+ms.locfileid: "79452301"
 ---
 # <a name="azure-event-grid-event-schema-for-azure-machine-learning"></a>Azure 机器学习的 Azure 事件网格事件架构
 
@@ -149,6 +149,46 @@ Azure 机器学习发出以下事件类型：
 }]
 ```
 
+### <a name="microsoftmachinelearningservicesrunstatuschanged-event"></a>Microsoft.MachineLearningServices.RunStatusChanged 事件
+
+```json
+[{
+  "topic": "/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.MachineLearningServices/workspaces/{workspace-name}",
+  "subject": "experiments/0fa9dfaa-cba3-4fa7-b590-23e48548f5c1/runs/AutoML_ad912b2d-6467-4f32-a616-dbe4af6dd8fc_5",
+  "eventType": "Microsoft.MachineLearningServices.RunCompleted",
+  "eventTime": "2017-06-26T18:41:00.9584103Z",
+  "id": "831e1650-001e-001b-66ab-eeb76e069631",
+  "data": {
+    "ExperimentId": "0fa9dfaa-cba3-4fa7-b590-23e48548f5c1",
+    "ExperimentName": "automl-local-regression",
+    "RunId": "AutoML_ad912b2d-6467-4f32-a616-dbe4af6dd8fc_5",
+    "RunType": null,
+    "RunTags": {},
+    "RunProperties": {
+        "runTemplate": "automl_child",
+        "pipeline_id": "5adc0a4fe02504a586f09a4fcbb241f9a4012062",
+        "pipeline_spec": "{\"objects\": [{\"class_name\": \"StandardScaler\", \"module\": \"sklearn.preprocessing\", \"param_args\": [], \"param_kwargs\": {\"with_mean\": true, \"with_std\": false}, \"prepared_kwargs\": {}, \"spec_class\": \"preproc\"}, {\"class_name\": \"LassoLars\", \"module\": \"sklearn.linear_model\", \"param_args\": [], \"param_kwargs\": {\"alpha\": 0.001, \"normalize\": true}, \"prepared_kwargs\": {}, \"spec_class\": \"sklearn\"}], \"pipeline_id\": \"5adc0a4fe02504a586f09a4fcbb241f9a4012062\"}",
+        "training_percent": "100",
+        "predicted_cost": "0.062226144097381045",
+        "iteration": "5",
+        "run_template": "automl_child",
+        "run_preprocessor": "StandardScalerWrapper",
+        "run_algorithm": "LassoLars",
+        "conda_env_data_location": "aml://artifact/ExperimentRun/dcid.AutoML_ad912b2d-6467-4f32-a616-dbe4af6dd8fc_5/outputs/conda_env_v_1_0_0.yml",
+        "model_name": "AutoMLad912b2d65",
+        "scoring_data_location": "aml://artifact/ExperimentRun/dcid.AutoML_ad912b2d-6467-4f32-a616-dbe4af6dd8fc_5/outputs/scoring_file_v_1_0_0.py",
+        "model_data_location": "aml://artifact/ExperimentRun/dcid.AutoML_ad912b2d-6467-4f32-a616-dbe4af6dd8fc_5/outputs/model.pkl"
+    },
+   "RunStatus": "failed"
+   },
+  "dataVersion": "",
+  "metadataVersion": "1"
+}]
+```
+
+
+
+
 ## <a name="event-properties"></a>事件属性
 
 事件具有以下顶级数据：
@@ -171,7 +211,7 @@ Azure 机器学习发出以下事件类型：
 | 属性 | 类型 | 说明 |
 | -------- | ---- | ----------- |
 | ModelName | string | 已注册模型的名称。 |
-| ModelVersion | int | 已注册模型的版本。 |
+| ModelVersion | string | 已注册模型的版本。 |
 | ModelTags | object | 已注册模型的标记。 |
 | ModelProperties | object | 已注册模型的属性。 |
 
@@ -181,7 +221,7 @@ Azure 机器学习发出以下事件类型：
 | -------- | ---- | ----------- |
 | ServiceName | string | 已部署服务的名称。 |
 | ServiceComputeType | string | 已部署服务的计算类型（例如 ACI、AKS）。 |
-| ModelIds | string | 模型 ID 的逗号分隔列表。 服务中部署的模型的 ID。 |
+  | ModelIds | string | 模型 ID 的逗号分隔列表。 服务中部署的模型的 ID。 |
 | ServiceTags | object | 已部署服务的标记。 |
 | ServiceProperties | object | 已部署服务的属性。 |
 
@@ -209,6 +249,17 @@ Azure 机器学习发出以下事件类型：
 | StartTime | datetime | 导致了偏移检测的目标数据集时序的开始时间。  |
 | EndTime | datetime | 导致了偏移检测的目标数据集时序的结束时间。 |
 
+### <a name="microsoftmachinelearningservicesrunstatuschanged"></a>Microsoft.MachineLearningServices.RunStatusChanged
+
+| 属性 | 类型 | 说明 |
+| -------- | ---- | ----------- |
+| ExperimentId | string | 此运行所属的试验的 ID。 |
+| ExperimentName | string | 此运行所属的试验的名称。 |
+| RunId | string | 已完成的运行的 ID。 |
+| RunType | string | 已完成的运行的运行类型。 |
+| RunTags | object | 已完成的运行的标记。 |
+| RunProperties | object | 已完成的运行的属性。 |
+| RunStatus | string | 运行的状态。 |
 
 ## <a name="next-steps"></a>后续步骤
 

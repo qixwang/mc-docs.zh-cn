@@ -1,22 +1,22 @@
 ---
-title: Azure Application Insights | Azure Docs
-description: ''
+title: Azure Application Insights | Microsoft Docs
+description: 将 Application Insights 中的数据与其他数据集（如数据扩充或查找表、非 Application Insights 数据源和自定义数据）关联。
 ms.topic: conceptual
 author: lingliw
 origin.date: 08/08/2018
 ms.date: 6/4/2019
 ms.reviewer: mbullwin
 ms.author: v-lingwu
-ms.openlocfilehash: e47434be9440e35ece3037a305a33359c08bf048
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.openlocfilehash: a4865db5860d2698d21a57979452242c1b56daac
+ms.sourcegitcommit: 305361c96d1d5288d3dda7e81833820640e2afac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78850442"
+ms.lasthandoff: 03/21/2020
+ms.locfileid: "80108524"
 ---
 # <a name="correlating-application-insights-data-with-custom-data-sources"></a>将 Application Insights 数据与自定义数据源相关联
 
-Application Insights 收集多种不同的数据类型：异常、跟踪、页面视图等。 虽然通常情况下这对调查应用程序的性能、可靠性和使用情况来说已足够，但有时候，将存储在 Application Insights 中的数据与其他完全自定义的数据集相关联会很有用。
+Application Insights 收集多种不同的数据类型：异常、跟踪、页面视图等。 虽然通常情况下这对调查应用程序的性能、可靠性和使用情况来说已足够，但有时候，将 Application Insights 中存储的数据与其他完全自定义的数据集相关联会很有用。
 
 下述情况可能需要自定义数据：
 
@@ -32,7 +32,7 @@ Application Insights 收集多种不同的数据类型：异常、跟踪、页�
 
 在此部分，我们会讨论如何将数据引入 Azure Monitor 日志中。
 
-如果还没有 Log Analytics 工作区，请预配一个新的，只需根据[这些说明](../learn/quick-collect-azurevm.md)操作并包括“创建工作区”步骤即可。
+如果还没有 Log Analytics 工作区，请预配一个新的，只需按照[这些说明](../learn/quick-collect-azurevm.md)操作并包括“创建工作区”步骤即可。
 
 开始将日志数据发送到 Azure Monitor。 存在多个选项：
 
@@ -46,7 +46,7 @@ Application Insights 收集多种不同的数据类型：异常、跟踪、页�
 
 Application Insights 基于 Azure Monitor 日志平台。 因此，我们可以使用[跨资源联接](/azure-monitor/log-query/cross-workspace-query)将已引入到 Azure Monitor 中的任何数据与 Application Insights 数据相关联。
 
-例如，可以将实验室库存和位置引入名为“myLA”的 Log Analytics 工作区的名为“LabLocations_CL”的表中。 然后，如果我们需要查看在名为“myAI”的 Application Insights 应用中跟踪的请求，并将处理请求的计算机名称与存储在前述自定义表中的这些计算机的位置相关联，则可在 Application Insights 或 Azure Monitor 上下文中运行以下查询：
+例如，可以将实验室清单和位置引入名为“myLA”的 Log Analytics 工作区的名为“LabLocations_CL”的表中。 然后，如果我们需要查看在名为“myAI”的 Application Insights 应用中跟踪的请求，并将处理请求的计算机名称与前述自定义表中存储的这些计算机位置相关联，则可在 Application Insights 或 Azure Monitor 上下文中运行以下查询：
 
 ```
 app('myAI').requests

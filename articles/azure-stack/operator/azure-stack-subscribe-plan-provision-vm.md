@@ -5,15 +5,15 @@ description: 了解如何在 Azure Stack Hub 中创建套餐的订阅。
 author: WenJason
 ms.topic: conceptual
 origin.date: 10/05/2019
-ms.date: 02/24/2020
+ms.date: 03/23/2020
 ms.author: v-jay
 ms.lastreviewed: 05/10/2019
-ms.openlocfilehash: b6ea465803816e2fb35c7209953919b44f285c9a
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: 08e7fe397a1c20d9d015f075491092aba851018e
+ms.sourcegitcommit: e500354e2fd8b7ac3dddfae0c825cc543080f476
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79291590"
+ms.lasthandoff: 03/19/2020
+ms.locfileid: "79547008"
 ---
 # <a name="create-subscriptions-to-offers-in-azure-stack-hub"></a>在 Azure Stack Hub 中创建套餐的订阅
 
@@ -52,7 +52,7 @@ ms.locfileid: "79291590"
 
 云操作员随时可将计划添加到以前创建的订阅：
 
-1. 在管理门户中，选择“所有服务”  ，然后在“管理资源”  类别下，选择“用户订阅”  。 选择想要更改的订阅。
+1. 在管理员门户中，选择“所有服务”  ，然后在“管理资源”  类别下，选择“用户订阅”  。 选择想要更改的订阅。
 
 2. 依次选择“附加计划”、“+添加”。    
 

@@ -4,20 +4,20 @@ description: 了解如何使用 ExpressRoute 将 Azure Stack Hub 中的虚拟网
 author: WenJason
 ms.topic: conceptual
 origin.date: 01/23/2020
-ms.date: 02/24/2020
+ms.date: 03/23/2020
 ms.author: v-jay
 ms.reviewer: unknown
-ms.lastreviewed: 10/22/2018
-ms.openlocfilehash: 428d75b61f0b5ff1160c2118f725411448a938c1
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.lastreviewed: 10/22/2019
+ms.openlocfilehash: 350f34a29b93e926d68b8d93cfafbda812e2e4c1
+ms.sourcegitcommit: e500354e2fd8b7ac3dddfae0c825cc543080f476
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77540943"
+ms.lasthandoff: 03/19/2020
+ms.locfileid: "79547074"
 ---
 # <a name="connect-azure-stack-hub-to-azure-using-azure-expressroute"></a>使用 Azure ExpressRoute 将 Azure Stack Hub 连接到 Azure
 
-本文介绍如何使用 [Azure ExpressRoute](/expressroute/) 直接连接将 Azure Stack 虚拟网络连接到 Azure 虚拟网络。
+本文介绍如何使用 [Azure ExpressRoute](/expressroute/) 直接连接将 Azure Stack Hub 虚拟网络连接到 Azure 虚拟网络。
 
 可以使用本文作为教程，并使用示例设置相同的测试环境。 或者，可以使用本文作为引导性的演练来设置自己的 ExpressRoute 环境。
 
@@ -35,7 +35,7 @@ ms.locfileid: "77540943"
 * 对 Azure Stack Hub 有基本的了解。
 * 对网络有基本的了解。
 
-### <a name="prerequisites"></a>必备条件
+### <a name="prerequisites"></a>先决条件
 
 若要使用 ExpressRoute 连接 Azure Stack Hub 和 Azure，必须满足以下要求：
 

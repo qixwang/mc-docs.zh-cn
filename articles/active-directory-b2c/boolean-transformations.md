@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/04/2020
+ms.date: 03/16/2020
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: 266de08ce4a49f07171793e61fa24d18d67f3f22
-ms.sourcegitcommit: 1ac138a9e7dc7834b5c0b62a133ca5ce2ea80054
+ms.openlocfilehash: aaed23c492d3208a5dceeea617ed06df629a233e
+ms.sourcegitcommit: 71a386ca0d0ecb79a123399b6ab6b8c70ea2aa78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78265950"
+ms.lasthandoff: 03/18/2020
+ms.locfileid: "79497120"
 ---
 # <a name="boolean-claims-transformations"></a>布尔型声明转换
 
@@ -116,7 +116,7 @@ AssertBooleanClaimIsEqualToValue  声明转换始终从[验证技术配置文件
 
 ## <a name="comparebooleanclaimtovalue"></a>CompareBooleanClaimToValue
 
-检查声明的布尔值是否等于 `true` 或 `false`，并返回压缩结果。
+检查声明的布尔值是等于 `true` 还是 `false`，并返回压缩结果。
 
 | 项目 | TransformationClaimType  | 数据类型  | 注释 |
 | ---- | ------------------------ | ---------- | ----- |
@@ -213,5 +213,3 @@ AssertBooleanClaimIsEqualToValue  声明转换始终从[验证技术配置文件
 - 输出声明：
     - **outputClaim**: true
 
-
-<!-- Update_Description: wording update -->

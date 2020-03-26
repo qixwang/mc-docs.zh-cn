@@ -3,24 +3,23 @@ title: 使用 Resource Manager 模板创建指标警报
 description: 了解如何使用资源管理器模板创建指标警报。
 author: lingliw
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
-origin.date: 1/14/2020
-ms.date: 2/18/2020
+origin.date: 2/24/2020
+ms.date: 03/13/2020
 ms.author: v-lingwu
 ms.subservice: alerts
-ms.openlocfilehash: 7a1facce0aa92d682a95063a429367667f77f8f8
-ms.sourcegitcommit: 27eaabd82b12ad6a6840f30763034a6360977186
+ms.openlocfilehash: 7da75802f91638403118b15ba1602e9d72e32150
+ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77497449"
+ms.lasthandoff: 03/17/2020
+ms.locfileid: "79452392"
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>使用 Resource Manager 模板创建指标警报
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-本文介绍如何在 Azure Monitor 中使用 [Azure 资源管理器模板](../../azure-resource-manager/resource-group-authoring-templates.md)配置[较新的指标警报](../../azure-monitor/platform/alerts-metric-near-real-time.md)。 使用资源管理器模板可以通过编程方式在多个环境中设置一致且可重现的警报。 较新的指标警报当前适用于[这套资源类型](../../azure-monitor/platform/alerts-metric-near-real-time.md#metrics-and-dimensions-supported)。
+本文介绍如何在 Azure Monitor 中使用 [Azure 资源管理器模板](../../azure-resource-manager/templates/template-syntax.md)配置[较新的指标警报](../../azure-monitor/platform/alerts-metric-near-real-time.md)。 使用资源管理器模板可以通过编程方式在多个环境中设置一致且可重现的警报。 较新的指标警报当前适用于[这套资源类型](../../azure-monitor/platform/alerts-metric-near-real-time.md#metrics-and-dimensions-supported)。
 
 > [!IMPORTANT]
 > 用于针对资源类型创建指标警报的资源模板：Azure Log Analytics 工作区（即 `Microsoft.OperationalInsights/workspaces`）需要执行其他步骤。 有关详细信息，请参阅有关[日志指标警报 - 资源模板](../../azure-monitor/platform/alerts-metric-logs.md#resource-template-for-metric-alerts-for-logs)的文章。
@@ -29,6 +28,7 @@ ms.locfileid: "77497449"
 
 1. 将以下某个模板用作描述如何创建警报的 JSON 文件。
 2. 编辑相应的参数文件并将其用作 JSON 来自定义警报。
+3. 有关 `metricName` 参数，请参阅 [Azure Monitor 支持的指标](/azure-monitor/platform/metrics-supported)中提供的指标。
 4. 使用[任意部署方法](../../azure-resource-manager/templates/deploy-powershell.md)部署模板。
 
 ## <a name="template-for-a-simple-static-threshold-metric-alert"></a>用于简单静态阈值指标警报的模板
@@ -107,8 +107,8 @@ ms.locfileid: "77497449"
             }
         },
         "threshold": {
-            "type": "double",
-            "defaultValue": 0,
+            "type": "string",
+            "defaultValue": "0",
             "metadata": {
                 "description": "The threshold value at which the alert is activated."
             }
@@ -1253,7 +1253,7 @@ az group deployment create \
 
 若要详细了解 Azure Monitor 中的自定义指标，请参阅 [Azure Monitor 中的自定义指标](/azure-monitor/platform/metrics-custom-overview)。
 
-针对自定义指标创建警报规则时，需要同时指定指标名称和指标命名空间。
+针对自定义指标创建警报规则时，需要同时指定指标名称和指标命名空间。 还应确保已报告自定义指标，因为无法针对尚不存在的自定义指标创建警报规则。
 
 为进行本次演练，请将下面的 json 保存为 customstaticmetricalert.json。
 
@@ -1512,7 +1512,7 @@ az group deployment create \
 
 ## <a name="template-for-a-metric-alert-that-monitors-multiple-resources"></a>用于监视多个资源的指标警报的模板
 
-上一部分中已介绍了一些示例 Azure 资源管理器模板，它们用来创建用于监视单个资源的指标警报。 Azure Monitor 现在支持使用单个指标警报规则监视多个资源。 此功能当前仅在 Azure 公共云中受支持，并且仅适用于虚拟机、SQL 数据库、SQL 弹性池和 Databox Edge 设备。
+上一部分中已介绍了一些示例 Azure 资源管理器模板，它们用来创建用于监视单个资源的指标警报。 对于存在于同一 Azure 区域中的资源，Azure Monitor 现在支持使用一个指标警报规则监视多个资源（属于同一类型）。 该功能目前仅在 Azure 公有云中受支持，并且仅适用于虚拟机、SQL Server 数据库、SQL Server 弹性池和 Databox 边缘设备。 此外，此功能仅适用于平台指标，自定义指标不支持此功能。
 
 动态阈值警报规则还可以帮助一次为数百个指标系列（甚至不同类型）创建定制阈值，从而减少需要管理的警报规则。
 
@@ -1618,8 +1618,8 @@ az group deployment create \
             }
         },
         "threshold": {
-            "type": "double",
-            "defaultValue": 0,
+            "type": "string",
+            "defaultValue": "0",
             "metadata": {
                 "description": "The threshold value at which the alert is activated."
             }
@@ -2184,8 +2184,8 @@ az group deployment create \
             }
         },
         "threshold": {
-            "type": "double",
-            "defaultValue": 0,
+            "type": "string",
+            "defaultValue": "0",
             "metadata": {
                 "description": "The threshold value at which the alert is activated."
             }
@@ -2744,8 +2744,8 @@ az group deployment create \
             }
         },
         "threshold": {
-            "type": "double",
-            "defaultValue": 0,
+            "type": "string",
+            "defaultValue": "0",
             "metadata": {
                 "description": "The threshold value at which the alert is activated."
             }

@@ -4,16 +4,16 @@ description: Azure Stack Hub 市场中的更改和更新。
 author: WenJason
 ms.topic: article
 origin.date: 01/22/2020
-ms.date: 02/24/2020
+ms.date: 03/23/2020
 ms.author: v-jay
 ms.reviewer: ihcherie
 ms.lastreviewed: 10/01/2019
-ms.openlocfilehash: 451595b08930ce597d6dcef12ac08a3af753e247
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.openlocfilehash: b924dec36b6f119db0dbfd208ecec3cb0eca929e
+ms.sourcegitcommit: e500354e2fd8b7ac3dddfae0c825cc543080f476
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77540910"
+ms.lasthandoff: 03/19/2020
+ms.locfileid: "79547047"
 ---
 # <a name="azure-stack-hub-marketplace-changes"></a>Azure Stack Hub 市场更改
 
@@ -23,7 +23,9 @@ ms.locfileid: "77540910"
 
 ## <a name="new-marketplace-items"></a>新增市场项
 
+- 06/27/2019：SIOS Datakeeper Cluster Edition
 - 06/27/2019：Veeam 备份和复制
+- 10/16/2019：SIOS DataKeeper Cluster Edition
 
 ## <a name="deprecated-marketplace-items"></a>弃用市场项
 

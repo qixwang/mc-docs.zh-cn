@@ -2,15 +2,15 @@
 title: 完整模式删除
 description: 显示资源类型如何在 Azure 资源管理器模板中进行完全模式删除。
 ms.topic: conceptual
-origin.date: 11/19/2019
+origin.date: 02/26/2020
+ms.date: 03/23/2020
 ms.author: v-yeche
-ms.date: 01/06/2020
-ms.openlocfilehash: 061eb8c5758882d8a8ccec542ffb895516faf044
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.openlocfilehash: 27ce16f7ba4eb4e5aa26c53f0e53dd3eb90f4d0b
+ms.sourcegitcommit: 1436f1851342ca5631eb25342eed954adb707af0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75631255"
+ms.lasthandoff: 03/19/2020
+ms.locfileid: "79543720"
 ---
 # <a name="deletion-of-azure-resources-for-complete-mode-deployments"></a>针对完全模式部署的 Azure 资源删除
 
@@ -34,6 +34,7 @@ ms.locfileid: "75631255"
 > - [Microsoft.AzureActiveDirectory](#microsoftazureactivedirectory)
 > - [Microsoft.AzureStack](#microsoftazurestack)
 > - [Microsoft.Batch](#microsoftbatch)
+> - [Microsoft.Blueprint](#microsoftblueprint)
 > - [Microsoft.Cache](#microsoftcache)
 > - [Microsoft.Cdn](#microsoftcdn)
 > - [Microsoft.ClassicCompute](#microsoftclassiccompute)
@@ -62,6 +63,7 @@ ms.locfileid: "75631255"
 > - [Microsoft.KeyVault](#microsoftkeyvault)
 > - [Microsoft.Kusto](#microsoftkusto)
 > - [Microsoft.Logic](#microsoftlogic)
+> - [Microsoft.MachineLearningServices](#microsoftmachinelearningservices)
 > - [Microsoft.ManagedIdentity](#microsoftmanagedidentity)
 > - [Microsoft.Management](#microsoftmanagement)
 > - [Microsoft.Media](#microsoftmedia)
@@ -78,7 +80,6 @@ ms.locfileid: "75631255"
 > - [Microsoft.ResourceGraph](#microsoftresourcegraph)
 > - [Microsoft.ResourceHealth](#microsoftresourcehealth)
 > - [Microsoft.Resources](#microsoftresources)
-> - [Microsoft.Scheduler](#microsoftscheduler)
 > - [Microsoft.Search](#microsoftsearch)
 > - [Microsoft.Security](#microsoftsecurity)
 > - [Microsoft.ServiceBus](#microsoftservicebus)
@@ -168,6 +169,7 @@ ms.locfileid: "75631255"
 > | policySetDefinitions | 否 |
 > | providerOperations | 否 |
 > | roleAssignments | 否 |
+> | roleAssignmentsUsageMetrics | 否 |
 > | roleDefinitions | 否 |
 
 ## <a name="microsoftautomation"></a>Microsoft.Automation
@@ -178,6 +180,9 @@ ms.locfileid: "75631255"
 > | automationAccounts | 是 |
 > | automationAccounts / configurations | 是 |
 > | automationAccounts / jobs | 否 |
+> | automationAccounts / privateEndpointConnectionProxies | 否 |
+> | automationAccounts / privateEndpointConnections | 否 |
+> | automationAccounts / privateLinkResources | 否 |
 > | automationAccounts / runbooks | 是 |
 > | automationAccounts / softwareUpdateConfigurations | 否 |
 > | automationAccounts / webhooks | 否 |
@@ -216,7 +221,20 @@ ms.locfileid: "75631255"
 <!--Not Available on ## Microsoft.Billing-->
 <!--Not Available on ## ## Microsoft.BingMaps-->
 <!--Not Available on ## Microsoft.Blockchain-->
-<!--Not Available on ## Microsoft.Blueprint-->
+
+## <a name="microsoftblueprint"></a>Microsoft.Blueprint
+
+> [!div class="mx-tableFixed"]
+> | 资源类型 | 完整模式删除 |
+> | ------------- | ----------- |
+> | blueprintAssignments | 否 |
+> | blueprintAssignments / assignmentOperations | 否 |
+> | blueprintAssignments / operations | 否 |
+> | blueprints | 否 |
+> | blueprints / artifacts | 否 |
+> | blueprints / versions | 否 |
+> | blueprints / versions / artifacts | 否 |
+
 <!--Not Available on ## Microsoft.BotService-->
 
 
@@ -226,7 +244,7 @@ ms.locfileid: "75631255"
 > | 资源类型 | 完整模式删除 |
 > | ------------- | ----------- |
 > | Redis | 是 |
-> | RedisConfigDefinition | 否 |
+
 
 <!--Not Available on ## Microsoft.Capacity-->
 
@@ -387,6 +405,10 @@ ms.locfileid: "75631255"
 > | registries / getBuildSourceUploadUrl | 否 |
 > | registries / GetCredentials | 否 |
 > | registries / importImage | 否 |
+> | registries / privateEndpointConnectionProxies | 否 |
+> | registries / privateEndpointConnectionProxies / validate | 否 |
+> | registries / privateEndpointConnections | 否 |
+> | registries / privateLinkResources | 否 |
 > | registries / queueBuild | 否 |
 > | registries / regenerateCredential | 否 |
 > | registries / regenerateCredentials | 否 |
@@ -453,6 +475,7 @@ ms.locfileid: "75631255"
 > | ------------- | ----------- |
 > | servers | 是 |
 > | servers / advisors | 否 |
+> | servers / keys | 否 |
 > | servers / privateEndpointConnectionProxies | 否 |
 > | servers / privateEndpointConnections | 否 |
 > | servers / privateLinkResources | 否 |
@@ -469,6 +492,7 @@ ms.locfileid: "75631255"
 > | ------------- | ----------- |
 > | servers | 是 |
 > | servers / advisors | 否 |
+> | servers / keys | 否 |
 > | servers / privateEndpointConnectionProxies | 否 |
 > | servers / privateEndpointConnections | 否 |
 > | servers / privateLinkResources | 否 |
@@ -506,8 +530,10 @@ ms.locfileid: "75631255"
 > | ------------- | ----------- |
 > | ElasticPools | 是 |
 > | ElasticPools / IotHubTenants | 是 |
+> | ElasticPools / IotHubTenants / securitySettings | 否 |
 > | IotHubs | 是 |
 > | IotHubs / eventGridFilters | 否 |
+> | IotHubs / securitySettings | 否 |
 > | ProvisioningServices | 是 |
 > | usages | 否 |
 
@@ -537,6 +563,13 @@ ms.locfileid: "75631255"
 > | domains / topics | 否 |
 > | eventSubscriptions | 否 |
 > | extensionTopics | 否 |
+> | partnerNamespaces | 是 |
+> | partnerNamespaces / eventChannels | 否 |
+> | partnerRegistrations | 是 |
+> | partnerTopics | 是 |
+> | partnerTopics / eventSubscriptions | 否 |
+> | systemTopics | 是 |
+> | systemTopics / eventSubscriptions | 否 |
 > | topics | 是 |
 > | topicTypes | 否 |
 
@@ -571,6 +604,8 @@ ms.locfileid: "75631255"
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 完整模式删除 |
 > | ------------- | ----------- |
+> | autoManagedAccounts | 是 |
+> | autoManagedVmConfigurationProfiles | 是 |
 > | configurationProfileAssignments | 否 |
 > | guestConfigurationAssignments | 否 |
 > | software | 否 |
@@ -635,6 +670,8 @@ ms.locfileid: "75631255"
 > | clusters / databases | 否 |
 > | clusters / databases / dataconnections | 否 |
 > | clusters / databases / eventhubconnections | 否 |
+> | clusters / databases / principalassignments | 否 |
+> | clusters / principalassignments | 否 |
 > | clusters / sharedidentities | 否 |
 
 <!--Not Available on ## Microsoft.LabServices-->
@@ -652,7 +689,15 @@ ms.locfileid: "75631255"
 > | workflows | 是 |
 
 <!--Not Available on ## Microsoft.MachineLearning-->
-<!--Not Available on ## Microsoft.MachineLearningServices-->
+
+## <a name="microsoftmachinelearningservices"></a>Microsoft.MachineLearningServices
+
+> [!div class="mx-tableFixed"]
+> | 资源类型 | 完整模式删除 |
+> | ------------- | ----------- |
+> | workspaces | 是 |
+> | workspaces / computes | 否 |
+> | workspaces / eventGridFilters | 否 |
 
 ## <a name="microsoftmanagedidentity"></a>Microsoft.ManagedIdentity
 
@@ -671,6 +716,7 @@ ms.locfileid: "75631255"
 > | ------------- | ----------- |
 > | getEntities | 否 |
 > | managementGroups | 否 |
+> | managementGroups / settings | 否 |
 > | resources | 否 |
 > | startTenantBackfill | 否 |
 > | tenantBackfillStatus | 否 |
@@ -810,13 +856,17 @@ ms.locfileid: "75631255"
 > | 资源类型 | 完整模式删除 |
 > | ------------- | ----------- |
 > | clusters | 是 |
-> | devices | 否 |
 > | linkTargets | 否 |
 > | storageInsightConfigs | 否 |
 > | workspaces | 是 |
+> | workspaces / dataExports | 否 |
 > | workspaces / dataSources | 否 |
 > | workspaces / linkedServices | 否 |
+> | workspaces / privateEndpointConnectionProxies | 否 |
+> | workspaces / privateEndpointConnections | 否 |
+> | workspaces / privateLinkResources | 否 |
 > | workspaces / query | 否 |
+> | workspaces / scopedPrivateLinkProxies | 否 |
 
 ## <a name="microsoftoperationsmanagement"></a>Microsoft.OperationsManagement
 
@@ -906,6 +956,7 @@ ms.locfileid: "75631255"
 > | availabilityStatuses | 否 |
 > | childAvailabilityStatuses | 否 |
 > | childResources | 否 |
+> | emergingissues | 否 |
 > | events | 否 |
 > | impactedResources | 否 |
 > | metadata | 否 |
@@ -920,27 +971,14 @@ ms.locfileid: "75631255"
 > | deployments / operations | 否 |
 > | deploymentScripts | 是 |
 > | deploymentScripts / logs | 否 |
-> | links | 否 |
+> | 链接 | 否 |
 > | notifyResourceJobs | 否 |
 > | providers | 否 |
 > | resourceGroups | 否 |
-> | resources | 否 |
 > | subscriptions | 否 |
-> | subscriptions / providers | 否 |
-> | subscriptions / resources | 否 |
-> | subscriptions / tagnames | 否 |
-> | subscriptions / tagNames / tagValues | 否 |
 > | tenants | 否 |
 
 <!--Not Available on ## Microsoft.SaaS-->
-
-
-## <a name="microsoftscheduler"></a>Microsoft.Scheduler
-
-> [!div class="mx-tableFixed"]
-> | 资源类型 | 完整模式删除 |
-> | ------------- | ----------- |
-> | jobcollections | 是 |
 
 ## <a name="microsoftsearch"></a>Microsoft.Search
 
@@ -1029,6 +1067,8 @@ ms.locfileid: "75631255"
 > | containerGroupSets | 是 |
 > | edgeclusters | 是 |
 > | edgeclusters / applications | 否 |
+> | managedclusters | 是 |
+> | managedclusters / nodetypes | 否 |
 > | networks | 是 |
 > | secretstores | 是 |
 > | secretstores / certificates | 否 |
@@ -1057,6 +1097,7 @@ ms.locfileid: "75631255"
 > | applicationDefinitions | 是 |
 > | applications | 是 |
 > | jitRequests | 是 |
+
 
 ## <a name="microsoftsql"></a>Microsoft.SQL
 
@@ -1150,8 +1191,8 @@ ms.locfileid: "75631255"
 > | connections | 是 |
 > | customApis | 是 |
 > | deletedSites | 否 |
-> | functions | 否 |
 > | hostingEnvironments | 是 |
+> | hostingEnvironments / eventGridFilters | 否 |
 > | hostingEnvironments / multiRolePools | 否 |
 > | hostingEnvironments / workerPools | 否 |
 > | publishingUsers | 否 |
@@ -1171,6 +1212,7 @@ ms.locfileid: "75631255"
 > | sites / slots / hostNameBindings | 否 |
 > | sites / slots / networkConfig | 否 |
 > | sourceControls | 否 |
+> | staticSites | 是 |
 > | validate | 否 |
 > | verifyHostingEnvironmentVnet | 否 |
 

@@ -8,12 +8,12 @@ ms.date: 03/02/2020
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: d358ef70667f95e22ec6a068fe9c257bb4bfb2d7
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.openlocfilehash: 799fa6f8aeb7caa6c8eec817a8e14c3a3aaeb09a
+ms.sourcegitcommit: 764b3d26aedce2de0e1948468a706fd3204a3d5e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78850606"
+ms.lasthandoff: 03/19/2020
+ms.locfileid: "79543313"
 ---
 # <a name="how-to-provision-for-multitenancy"></a>如何预配多租户 
 
@@ -27,9 +27,9 @@ ms.locfileid: "78850606"
 
 本文使用 [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) 中的模拟设备示例来演示如何在跨区域的多租户方案中预配设备。 你将在本文中执行以下步骤：
 
-* 使用 Azure CLI 创建两个区域 IoT 中心（**中国东部**和**美国东部**）
+* 使用 Azure CLI 创建两个区域 IoT 中心（**中国东部**和**中国北部**）
 * 创建多租户注册
-* 使用 Azure CLI 创建两个区域 Linux VM，以充当相同区域（**中国东部**和**美国东部**）中的设备
+* 使用 Azure CLI 创建两个区域 Linux VM，以充当相同区域（**中国东部**和**中国北部**）中的设备
 * 在这两个 Linux VM 上为 Azure IoT C SDK 设置开发环境
 * 模拟设备，以确保为最近区域中同一租户预配设备。
 
@@ -45,7 +45,7 @@ ms.locfileid: "78850606"
 
 ## <a name="create-two-regional-iot-hubs"></a>创建两个区域 IoT 中心
 
-在此部分中，你将使用 Azure CLI 在“中国东部”  和“美国东部”  区域为租户创建两个新的区域 IoT 中心。
+在此部分中，你将使用 Azure CLI 在“中国东部”  和“中国北部”  区域中为租户创建两个新的区域 IoT 中心。
 
 
 1. 在 Azure CLI 中，使用 [az group create](/cli/group#az-group-create) 命令创建资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。 
@@ -124,11 +124,11 @@ ms.locfileid: "78850606"
 
 在这一部分，你将创建两个区域 Linux 虚拟机 (VM)。 这些 VM 将从每个区域运行设备模拟示例，以演示这两个区域中针对租户设备的设备预配。
 
-为了更易清理资源，这些 VM 将被添加到包含创建的 IoT 中心的同一资源组 contoso-us-resource-group  。 但是，这些 VM 将在不同的区域（中国东部  和美国东部  ）中运行。
+为了更易清理资源，这些 VM 将被添加到包含创建的 IoT 中心的同一资源组 contoso-us-resource-group  。 但是，这些 VM 将在不同的区域（**中国东部**和**中国北部**）中运行。
 
-1. 在 Azure CLI 中，在命令中更改以下参数后，执行该命令以创建美国东部  区域 VM：
+1. 在 Azure CLI 中，在命令中更改以下参数后，执行该命令以创建“中国北部”  区域 VM：
 
-    **--name**：为“美国东部”  区域设备 VM 输入一个唯一名称。 
+    **--name**：为“中国北部”  区域设备 VM 输入一个唯一名称。 
 
     **--admin-username**：使用你自己的管理员用户名称。
 
@@ -145,7 +145,7 @@ ms.locfileid: "78850606"
     --authentication-type password
     ```
 
-    此命令需要花费几分钟时间完成。 完成该命令后，请记下美国东部区域 VM 的 publicIpAddress  值。
+    此命令需要花费几分钟时间完成。 该命令完成后，请记下“中国北部”区域 VM 的 publicIpAddress  值。
 
 1. 在 Azure CLI 中，对该命令进行以下参数更改后，执行该命令以创建“中国东部”  区域 VM：
 
@@ -335,7 +335,7 @@ J5n4NY2GiBYy7Mp4lDDa5CbEe6zDU/c62rhjCuFWxnc=
 
     取消注释这些函数调用，并将占位符值（包括尖括号）替换为每个设备的唯一注册 ID 以及派生设备密钥。 下面显示的密钥仅用作示例。 请使用你之前生成的密钥。
 
-    美国东部：
+    中国北部：
     ```c
     // Set the symmetric key if using they auth type
     prov_dev_set_symmetric_key_info("contoso-simdevice-east", "p3w2DQr9WqEGBLUSlFi1jPQ7UWQL4siAGy75HFTFbf8=");
@@ -363,7 +363,7 @@ J5n4NY2GiBYy7Mp4lDDa5CbEe6zDU/c62rhjCuFWxnc=
     ~/azure-iot-sdk-c/cmake/provisioning_client/samples/prov_dev_client_sample/prov_dev_client_sample
     ```
 
-    来自美国东部 VM 的示例输出：
+    中国北部 VM 的示例输出：
 
     ```bash
     contosoadmin@ContosoSimDeviceEast:~/azure-iot-sdk-c/cmake/provisioning_client/samples/prov_dev_client_sample$ ./prov_dev_client_sample

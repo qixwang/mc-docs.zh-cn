@@ -1,5 +1,5 @@
 ---
-title: 使用事件域管理 Azure 事件网格中的大型主题集
+title: 使用事件域向 Azure 事件网格发布事件
 description: 展示了如何使用事件域管理 Azure 事件网格中的大型主题集并向其发布事件。
 services: event-grid
 author: banisadr
@@ -8,12 +8,12 @@ ms.author: v-yiso
 ms.topic: conceptual
 origin.date: 01/17/2019
 ms.date: 06/03/2019
-ms.openlocfilehash: 046a9a80af324123272141096072151a53fca1bc
-ms.sourcegitcommit: 5a57f99d978b78c1986c251724b1b04178c12d8c
+ms.openlocfilehash: c0d8ecec559af5db81229211bbb63df9fd5589d5
+ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/24/2019
-ms.locfileid: "66195198"
+ms.lasthandoff: 03/17/2020
+ms.locfileid: "79452283"
 ---
 # <a name="manage-topics-and-publish-events-using-event-domains"></a>使用事件域管理主题和发布事件
 

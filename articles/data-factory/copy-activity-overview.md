@@ -9,15 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-origin.date: 01/08/2020
-ms.date: 03/02/2020
+origin.date: 03/11/2020
+ms.date: 03/23/2020
 ms.author: v-jay
-ms.openlocfilehash: e5a1dfdccec7013946a07652fa91093ce9324af4
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: e5a4a97b61bc4465ccff48753c08021141cea8f5
+ms.sourcegitcommit: 71a386ca0d0ecb79a123399b6ab6b8c70ea2aa78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79293219"
+ms.lasthandoff: 03/18/2020
+ms.locfileid: "79497354"
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Azure 数据工厂中的复制活动
 
@@ -62,9 +62,11 @@ ms.locfileid: "79293219"
 
 ## <a name="configuration"></a>配置
 
-若要使用 Azure 数据工厂中的复制活动，需要执行以下操作：
+[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-1. **创建用于源数据存储和接收器数据存储的链接服务。** 有关配置信息和支持的属性，请参阅连接器文章的“链接服务属性”部分。 在本文的[支持的数据存储和格式](#supported-data-stores-and-formats)部分可以找到支持的连接器列表。
+通常，若要使用 Azure 数据工厂中的复制活动，需要执行以下操作：
+
+1. **创建用于源数据存储和接收器数据存储的链接服务。** 在本文的[支持的数据存储和格式](#supported-data-stores-and-formats)部分可以找到支持的连接器列表。 有关配置信息和支持的属性，请参阅连接器文章的“链接服务属性”部分。 
 2. **为源和接收器创建数据集。** 有关配置信息和支持的属性，请参阅源和接收器连接器文章的“数据集属性”部分。
 3. **创建包含复制活动的管道。** 接下来的部分将提供示例。
 
@@ -137,102 +139,7 @@ ms.locfileid: "79293219"
 
 ## <a name="monitoring"></a>监视
 
-可通过编程方式或在 Azure 数据工厂的“创作和监视”UI 上监视复制活动运行。 
-
-### <a name="monitor-visually"></a>直观地监视
-
-若要直观监视复制活动运行，请转到数据工厂，然后转到“创作和监视”。  在“监视”选项卡上，可以看到一个管道运行列表，其“操作”列中提供了“查看活动运行”按钮：   
-
-![监视管道运行](./media/load-data-into-azure-data-lake-store/monitor-pipeline-runs.png)
-
-选择“查看管道运行”以查看管道运行中的活动列表。  在“操作”列中，可以看到复制活动输入、输出、错误（如果复制活动运行失败）和详细信息的链接： 
-
-![监视活动运行](./media/load-data-into-azure-data-lake-store/monitor-activity-runs.png)
-
-选择“操作”列中的“详细信息”按钮，查看复制活动的执行详细信息和性能特征。   你将看到以下信息：从源复制到接收器的数据的数量/行数/文件数、吞吐量、复制活动执行的步骤数和相应的持续时间，以及复制方案使用的配置。
-
->[!TIP]
->在某些方案中，你还会在复制监视页的顶部看到“性能优化提示”。  这些提示告知已识别到的瓶颈，并提供一些信息来帮助你做出更改，以提升复制吞吐量。 有关示例，请参阅本文的[性能和优化](#performance-and-tuning)部分。
-
-**示例：从 Amazon S3 复制到 Azure Data Lake Store**
-![监视活动运行详细信息](./media/copy-activity-overview/monitor-activity-run-details-adls.png)
-
-**示例：使用分阶段复制从 Azure SQL 数据库复制到 Azure SQL 数据仓库**
-![监视活动运行详细信息](./media/copy-activity-overview/monitor-activity-run-details-sql-dw.png)
-
-### <a name="monitor-programmatically"></a>以编程方式监视
-
-“复制活动运行结果” > “输出”部分中也会返回复制活动执行详细信息和性能特征。   下面是可能返回的属性的完整列表。 只会显示适用于你的复制方案的属性。 有关如何监视活动运行的信息，请参阅[监视管道运行](quickstart-create-data-factory-dot-net.md#monitor-a-pipeline-run)。
-
-| 属性名称  | 说明 | 计价单位 |
-|:--- |:--- |:--- |
-| dataRead | 从源读取的数据量。 | Int64 值，以字节为单位 |
-| DataWritten | 写入接收器的数据量。 | Int64 值，以字节为单位 |
-| filesRead | 从文件存储复制过程中复制的文件数。 | Int64 值（未指定单位） |
-| filesWritten | 复制到文件存储过程中复制的文件数。 | Int64 值（未指定单位） |
-| sourcePeakConnections | 复制活动运行期间与源数据存储建立的并发连接峰值数量。 | Int64 值（未指定单位） |
-| sinkPeakConnections | 复制活动运行期间与接收器数据存储建立的并发连接峰值数量。 | Int64 值（未指定单位） |
-| rowsRead | 从源读取的行数（不适用于二进制副本）。 | Int64 值（未指定单位） |
-| rowsCopied | 复制到接收器的行数（不适用于二进制副本）。 | Int64 值（未指定单位） |
-| rowsSkipped | 跳过的不兼容行数。 可通过将 `enableSkipIncompatibleRow` 设置为 true 来跳过不兼容的行。 | Int64 值（未指定单位） |
-| copyDuration | 复制运行的持续时间。 | Int32 值，以秒为单位 |
-| throughput | 数据传输速率。 | 浮点数，以 KBps 为单位 |
-| sourcePeakConnections | 复制活动运行期间与源数据存储建立的并发连接峰值数量。 | Int32 值（无单位） |
-| sinkPeakConnections| 复制活动运行期间与接收器数据存储建立的并发连接峰值数量。| Int32 值（无单位） |
-| sqlDwPolyBase | 将数据复制到 SQL 数据仓库时是否使用了 PolyBase。 | 布尔 |
-| redshiftUnload | 从 Redshift 复制数据时是否使用了 UNLOAD。 | 布尔 |
-| hdfsDistcp | 从 HDFS 复制数据时是否使用了 DistCp。 | 布尔 |
-| effectiveIntegrationRuntime | 用来为活动运行提供支持的一个或多个集成运行时 (IR)，采用 `<IR name> (<region if it's Azure IR>)` 格式。 | 文本（字符串） |
-| usedDataIntegrationUnits | 复制期间的有效数据集成单位。 | Int32 值 |
-| usedParallelCopies | 复制期间的有效 parallelCopies。 | Int32 值 |
-| redirectRowPath | 在 `redirectIncompatibleRowSettings` 中配置的 Blob 存储中已跳过的不兼容行的日志路径。 请参阅本文稍后的[容错](#fault-tolerance)。 | 文本（字符串） |
-| executionDetails | 有关复制活动经历的各个阶段、相应步骤、持续时间、配置等的更多详细信息。 不建议分析此节，因为它有可能发生更改。<br/><br/>数据工厂还会在 `detailedDurations` 下报告各个阶段花费的详细持续时间（以秒为单位）。 这些步骤的持续时间各不相同。 只显示适用于给定复制活动运行的持续时间：<br/>**排队持续时间** (`queuingDuration`)：在集成运行时中实际启动复制活动之前经过的时间。 如果使用自承载 IR，而此值较大，请检查 IR 容量和用量，并根据工作负荷进行纵向或横向扩展。 <br/>**复制前脚本持续时间** (`preCopyScriptDuration`)：在 IR 中启动复制活动之后、复制活动在接收器数据存储中完成运行复制前脚本之前所经过的时间。 配置复制前脚本时适用。 <br/>**距第一字节的时间** (`timeToFirstByte`)：在前一步骤结束之后、IR 从源数据存储收到第一个字节之前所经过的时间。 适用于不是基于文件的源。 如果此值很大，请检查并优化查询或服务器。<br/>**传输持续时间** (`transferDuration`)：在前一步骤结束之后、IR 将所有数据从源传输到接收器之前所经过的时间。 | Array |
-| perfRecommendation | 复制性能优化提示。 有关详细信息，请参阅[性能和优化](#performance-and-tuning)。 | Array |
-
-```json
-"output": {
-    "dataRead": 6198358,
-    "dataWritten": 19169324,
-    "filesRead": 1,
-    "sourcePeakConnections": 1,
-    "sinkPeakConnections": 2,
-    "rowsRead": 39614,
-    "rowsCopied": 39614,
-    "copyDuration": 1325,
-    "throughput": 4.568,
-    "errors": [],
-    "effectiveIntegrationRuntime": "DefaultIntegrationRuntime (China East 2)",
-    "usedDataIntegrationUnits": 4,
-    "usedParallelCopies": 1,
-    "executionDetails": [
-        {
-            "source": {
-                "type": "AzureBlobStorage"
-            },
-            "sink": {
-                "type": "AzureSqlDatabase"
-            },
-            "status": "Succeeded",
-            "start": "2019-08-06T01:01:36.7778286Z",
-            "duration": 1325,
-            "usedDataIntegrationUnits": 4,
-            "usedParallelCopies": 1,
-            "detailedDurations": {
-                "queuingDuration": 2,
-                "preCopyScriptDuration": 12,
-                "transferDuration": 1311
-            }
-        }
-    ],
-    "perfRecommendation": [
-        {
-            "Tip": "Sink Azure SQL Database: The DTU utilization was high during the copy activity run. To achieve better performance, you are suggested to scale the database to a higher tier than the current 1600 DTUs.",
-            "ReferUrl": "https://docs.azure.cn/zh-cn/sql-database/sql-database-purchase-models",
-            "RuleName": "AzureDBTierUpgradePerfRecommendRule"
-        }
-    ]
-}
-```
+可通过视觉和编程方式监视在 Azure 数据工厂中运行的复制活动。 有关详细信息，请参阅[监视复制活动](copy-activity-monitoring.md)。
 
 ## <a name="incremental-copy"></a>增量复制
 
@@ -240,15 +147,7 @@ ms.locfileid: "79293219"
 
 ## <a name="performance-and-tuning"></a>性能和优化
 
-[复制活动性能和可伸缩性指南](copy-activity-performance.md)中描述了哪些关键因素会影响通过 Azure 数据工厂中的复制活动移动数据时的性能。 其中还列出了在测试期间观测到的性能值，并介绍了如何优化复制活动的性能。
-
-在某些方案中，当你运行数据工厂中的复制活动时，将在[复制活动监视页](#monitor-visually)的顶部看到“性能调优提示”，如以下示例所示。  这些提示告知针对给定复制运行识别到的瓶颈。 其中还提供了一些信息来帮助你做出更改，以提升复制吞吐量。 性能优化提示目前提供如下建议：在将数据复制到 Azure SQL 数据仓库时使用 PolyBase；在数据存储端资源出现瓶颈时增加 Azure Cosmos DB RU 或 Azure SQL 数据库 DTU；删除不必要的暂存副本。
-
-**示例：复制到 Azure SQL 数据库时的性能优化提示**
-
-在此示例中，在复制运行期间，数据工厂发现接收器 Azure SQL 数据库的 DTU 利用率很高。 这种状况会减慢写入操作的速度。 建议增加 Azure SQL 数据库层上的 DTU：
-
-![包含性能优化提示的复制监视](./media/copy-activity-overview/copy-monitoring-with-performance-tuning-tips.png)
+[复制活动监视](copy-activity-monitoring.md)体验向你显示每个活动运行的复制性能统计信息。 [复制活动性能和可伸缩性指南](copy-activity-performance.md)中描述了哪些关键因素会影响通过 Azure 数据工厂中的复制活动移动数据时的性能。 其中还列出了在测试期间观测到的性能值，并介绍了如何优化复制活动的性能。
 
 ## <a name="resume-from-last-failed-run"></a>从上次失败的运行恢复
 

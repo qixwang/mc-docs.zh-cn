@@ -6,15 +6,15 @@ author: rockboyfor
 manager: digimobile
 ms.service: site-recovery
 ms.topic: article
-origin.date: 01/23/2020
-ms.date: 02/24/2020
+origin.date: 03/13/2020
+ms.date: 03/30/2020
 ms.author: v-yeche
-ms.openlocfilehash: 55b2e7afa2cd3824d283cbad81683362eee0842e
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: 93c25bbde40155caaabfab3534e59e2471578a89
+ms.sourcegitcommit: 983b29ed50f8de3dddbcb1186947806354035cc4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79291435"
+ms.lasthandoff: 03/19/2020
+ms.locfileid: "79543999"
 ---
 # <a name="about-networking-in-azure-vm-disaster-recovery"></a>关于如何在 Azure VM 灾难恢复中联网
 
@@ -49,6 +49,8 @@ ms.locfileid: "79291435"
 login.chinacloudapi.cn | 对于 Site Recovery 服务 URL 的授权和身份验证而言是必需的。
 *.hypervrecoverymanager.windowsazure.cn | 必需，以便从 VM 进行 Site Recovery 服务通信。
 *.servicebus.chinacloudapi.cn | 必需，以便从 VM 写入 Site Recovery 监视和诊断数据。
+*.vault.azure.cn | 允许访问，以便通过门户为支持 ADE 的虚拟机启用复制
+*.automation.ext.azure.com | 允许通过门户为复制项启用移动代理自动升级
 
 <a name="outbound-connectivity-for-azure-site-recovery-ip-ranges"></a>
 ## <a name="outbound-connectivity-for-ip-address-ranges"></a>IP 地址范围的出站连接
@@ -61,10 +63,16 @@ login.chinacloudapi.cn | 对于 Site Recovery 服务 URL 的授权和身份验�
 - 创建一个基于 [Azure Active Directory (AAD) 服务标记](../virtual-network/security-overview.md#service-tags)的 NSG 规则以允许访问与 AAD 对应的所有 IP 地址
 - 为目标区域创建基于 EventsHub 服务标记的 NSG 规则，这样就可以访问 Site Recovery 监视功能。
 - 创建 Site Recovery 服务终结点 IP 地址，这样就可以访问任何区域中的 Site Recovery 服务。 - 在[中国的 Site Recovery 服务终结点](#site-recovery-ip-in-china)中提供，具体取决于目标位置。
-
+- 创建基于 AzureKeyVault 服务标记的 NSG 规则。 仅在通过门户为支持 ADE 的虚拟机启用复制时才需要这样做。
+- 创建基于 GuestAndHybridManagement 服务终结点 IP 地址的 NSG 规则。 仅在通过门户为复制项启用移动代理自动升级时才需要这样做。
+    
     <!--MOONCAKE: CORRECT ON URL [Site Recovery service endpoint in China](#site-recovery-ip-in-china)-->
     
 - 在生产 NSG 中创建所需的 NSG 规则之前，建议先在测试 NSG 中创建这些规则，并确保没有任何问题。
+
+> [!NOTE]
+> 对于在为 IP 地址范围创建出站连接时未显示在**目标服务标记**中的那些不受支持的服务标记。
+> 可以在 [Azure IP 范围和服务标记 - 中国云](https://www.microsoft.com/download/confirmation.aspx?id=57062)中按服务标记找到有效的终结点 IP 地址。
 
 Site Recovery IP 地址范围如下：
 
@@ -115,6 +123,8 @@ Site Recovery IP 地址范围如下：
     **位置** | **Site Recovery IP 地址** |  **Site Recovery 监视 IP 地址**
     --- | --- | ---
     中国北部 | 40.125.202.254 | 42.159.4.151
+    
+    ![site-recovery-ip-address](./media/azure-to-azure-about-networking/site-recovery-ip-address-chenye.png)
     
     <!--MOONCAKE: CORRECT ON China North | 40.125.202.254 | 42.159.4.151-->
 

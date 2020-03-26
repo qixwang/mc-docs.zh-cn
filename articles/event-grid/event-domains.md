@@ -1,19 +1,19 @@
 ---
 title: Azure 事件网格中的事件域
-description: 介绍如何使用事件域来管理 Azure 事件网格中的主题。
+description: 本文介绍如何使用事件域来管理各种业务组织、客户或应用程序的自定义事件流。
 services: event-grid
 author: banisadr
 ms.service: event-grid
-ms.author: v-yiso
+ms.author: v-lingwu
 ms.topic: conceptual
-origin.date: 01/08/2019
-ms.date: 09/02/2019
-ms.openlocfilehash: 1358880c7bace7b2456338b5c6d74fae9ade4d8d
-ms.sourcegitcommit: 599d651afb83026938d1cfe828e9679a9a0fb69f
+origin.date: 01/21/2020
+ms.date: 3/16/2020
+ms.openlocfilehash: 7f5353e9ec66781df8d75568a8f876c25a5078bb
+ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69993273"
+ms.lasthandoff: 03/17/2020
+ms.locfileid: "79452348"
 ---
 # <a name="understand-event-domains-for-managing-event-grid-topics"></a>了解用于管理事件网格主题的事件域
 
@@ -32,7 +32,7 @@ ms.locfileid: "69993273"
 
 ### <a name="example-use-case"></a>示例用例
 
-解释事件域最简单的方法是采用示例。 假设你经营着 Contoso 建筑机械公司，公司制造拖拉机、挖掘设备和其他重型机械。 运营业务时，可向客户推送有关设备维护、系统运行状况、合同更新的实时信息。 所有这些信息都会发布到各种终结点，包括应用、客户终结点以及客户已安装的其他基础结构。
+解释事件域最简单的方法是采用示例。 假设你经营着 Contoso 建筑机械公司，你在其中制造拖拉机、挖掘设备和其他重型机械。 运营业务时，可向客户推送有关设备维护、系统运行状况、合同更新的实时信息。 所有这些信息都会发布到各种终结点，包括应用、客户终结点以及客户已安装的其他基础结构。
 
 事件域允许将 Contoso 建筑机械公司建模为单个事件实体。 每个客户表示为域中的主题。 使用 Azure Active Directory 处理身份验证和授权。 每个客户都可订阅他们的主题并获取传送的事件。 通过事件域管理访问权限可确保客户仅能访问其主题。
 
@@ -44,13 +44,13 @@ ms.locfileid: "69993273"
 
 使用域，可通过 Azure 的基于角色的访问控制 (RBAC) 精细控制每个主题的授权和身份验证情况。 这些角色可用于将应用程序中的每个租户限制为仅可访问经授权的主题。
 
-事件域中 RBAC 的工作方式与[托管访问控制](security-authentication.md#management-access-control)在事件网格和 Azure 的其余部分中的工作方式相同。 使用 RBAC 在事件域中创建和强制实施自定义角色定义。
+事件域中 RBAC 的工作方式与托管访问控制在事件网格和 Azure 的其余部分中的工作方式相同。 使用 RBAC 在事件域中创建和强制实施自定义角色定义。
 
 ### <a name="built-in-roles"></a>内置角色
 
 事件网格提供两个内置角色定义，使 RBAC 可更方便地用于事件域。 这些角色是“EventGrid EventSubscription 参与者（预览版）”和“EventGrid EventSubscription 读取者（预览版）”。   将这些角色分配到需要订阅事件域中的主题的用户。 将角色分配的范围仅限于用户需要订阅的主题。
 
-有关这些角色的信息，请参阅[事件网格的内置角色](security-authentication.md#built-in-roles)。
+
 
 ## <a name="subscribing-to-topics"></a>订阅主题
 

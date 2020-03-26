@@ -4,15 +4,15 @@ description: 了解并配置 Azure Stack Hub 的 VPN 网关设置。
 author: WenJason
 ms.topic: conceptual
 origin.date: 01/23/2020
-ms.date: 02/24/2020
+ms.date: 03/23/2020
 ms.author: v-jay
-ms.lastreviewed: 12/27/2018
-ms.openlocfilehash: c4ea614540324cf664907e1f30d3a3fe90e360d0
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.lastreviewed: 12/27/2019
+ms.openlocfilehash: 2444278f4a43be290d993788c65be9754976a4ab
+ms.sourcegitcommit: e500354e2fd8b7ac3dddfae0c825cc543080f476
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79291164"
+ms.lasthandoff: 03/19/2020
+ms.locfileid: "79547086"
 ---
 # <a name="configure-vpn-gateway-settings-for-azure-stack-hub"></a>配置 Azure Stack Hub 的 VPN 网关设置
 
@@ -155,6 +155,10 @@ New-AzureRmLocalNetworkGateway -Name LocalSite -ResourceGroupName testrg `
 在 Azure Stack Hub 中设置 VPN 连接时，必须在两端配置连接。 若要配置 Azure Stack Hub 与硬件设备（例如用作 VPN 网关的交换机或路由器）之间的 VPN 连接，该设备可能会要求你提供其他设置。
 
 Azure Stack Hub 默认情况下仅支持一个套餐，这与 Azure 不同，后者支持将多个套餐用作发起程序和响应程序。 如需使用适合 VPN 设备的不同 IPSec/IKE 设置，则可通过其他设置来手动配置连接。 有关详细信息，请参阅[为站点到站点 VPN 连接配置 IPsec/IKE 策略](azure-stack-vpn-s2s.md)。
+
+> [!IMPORTANT] 
+> 使用 S2S 隧道时，数据包会通过附加的标头进一步封装，从而增加了数据包的总大小。 在这些情况下，必须将 TCP **MSS** 固定在 **1350**。 或者，如果 VPN 设备不支持 MSS 固定，则可以改为在隧道接口上将 **MTU** 设置为 **1400** 字节。 有关详细信息，请参阅[虚拟网络 TCPIP 性能优化](/virtual-network/virtual-network-tcpip-performance-tuning)。 
+>
 
 ### <a name="ike-phase-1-main-mode-parameters"></a>IKE 阶段 1（主模式）参数
 

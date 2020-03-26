@@ -4,20 +4,20 @@ description: 有关离线更新 Azure Stack Hub 上的 Azure 应用服务的详�
 author: WenJason
 ms.topic: article
 origin.date: 01/13/2020
-ms.date: 02/24/2020
+ms.date: 03/23/2020
 ms.author: v-jay
-ms.reviewer: anwestg
-ms.openlocfilehash: 4da38b01006ec766ce168e60f11f8a3e1c42ca3d
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.reviewer: anwe
+ms.openlocfilehash: 3acb6c03bb3bda2b0d2619ca71780fb88df3ad27
+ms.sourcegitcommit: e500354e2fd8b7ac3dddfae0c825cc543080f476
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77540953"
+ms.lasthandoff: 03/19/2020
+ms.locfileid: "79547069"
 ---
 # <a name="offline-update-of-azure-app-service-on-azure-stack-hub"></a>离线更新 Azure Stack Hub 上的 Azure 应用服务
 
 > [!IMPORTANT]
-> 请将 1910 更新或更高版本应用于 Azure Stack Hub 集成系统，或部署最新的 Azure Stack Hub 开发工具包，然后部署 Azure 应用服务 1.8。
+> 请将 1910 更新或更高版本应用于 Azure Stack Hub 集成系统，或部署最新的 Azure Stack 开发工具包，然后部署 Azure 应用服务 1.8。
 
 遵循本文中的说明可以升级部署在处于以下状态的 Azure Stack Hub 环境中的 [Azure 应用服务资源提供程序](azure-stack-app-service-overview.md)：
 
@@ -78,13 +78,13 @@ ms.locfileid: "77540953"
 
 5. 查看并接受第三方许可条款，然后单击“下一步”  。
 
-6. 确保 Azure Stack Hub Azure 资源管理器终结点和 Active Directory 租户信息正确。 如果在 Azure Stack Hub 开发工具包部署过程中使用了默认设置，可以接受此处的默认值。 但是，如果在部署 Azure Stack Hub 时自定义了选项，则必须编辑此窗口中的值。 例如，如果使用域后缀 *mycloud.com*，则必须将 Azure Stack Hub Azure 资源管理器终结点更改为 *management.region.mycloud.com*。 确认信息后，单击“下一步”  。
+6. 确保 Azure Stack Hub Azure 资源管理器终结点和 Active Directory 租户信息正确。 如果在 Azure Stack 开发工具包部署过程中使用了默认设置，可以接受此处的默认值。 但是，如果在部署 Azure Stack Hub 时自定义了选项，则必须编辑此窗口中的值。 例如，如果使用域后缀 *mycloud.com*，则必须将 Azure Stack Hub Azure 资源管理器终结点更改为 *management.region.mycloud.com*。 确认信息后，单击“下一步”  。
 
     ![Azure Stack Hub 云信息][3]
 
 7. 在下一页上执行以下操作：
 
-   1. 选择要使用的连接方法-“凭据”或“服务主体”  
+   1. 选择要使用的连接方法 - “凭据”或“服务主体”  
         - **凭据**
             - 如果使用 Azure Active Directory (Azure AD)，请输入在部署 Azure Stack Hub 时提供的 Azure AD 管理员帐户和密码。 选择“连接”  。
             - 如果使用 Active Directory 联合身份验证服务 (AD FS)，请提供管理员帐户。 例如，cloudadmin@azurestack.local。 输入密码，然后选择“连接”  。

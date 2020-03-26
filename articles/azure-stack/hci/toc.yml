@@ -1,0 +1,50 @@
+- name: Azure Stack HCI 文档
+  href: overview.md
+- name: 概述
+  items:
+    - name: 什么是 Azure Stack HCI？
+      href: overview.md
+- name: 管理
+  items:
+    - name: 创建卷
+      href: manage/create-volumes.md
+    - name: 扩展卷
+      href: manage/extend-volumes.md
+    - name: 删除卷
+      href: manage/delete-volumes.md
+    - name: 更换驱动器
+      href: manage/replace-drives.md
+- name: 概念
+  items:
+    - name: 选择驱动器
+      href: concepts/choose-drives.md
+    - name: 规划卷
+      href: concepts/plan-volumes.md
+    - name: 了解缓存
+      href: concepts/cache.md
+    - name: 容错和存储效率
+      href: concepts/fault-tolerance.md
+    - name: 群集和存储池仲裁
+      href: concepts/quorum.md
+- name: 参考
+  items:
+    - name: Hyper-V PowerShell 命令
+      href: 'https://docs.microsoft.com/powershell/module/hyper-v'
+    - name: 存储 PowerShell 命令
+      href: 'https://docs.microsoft.com/powershell/module/storage'
+- name: 相关内容
+  items:
+    - name: Azure Stack 系列
+      href: ../index.yml
+    - name: Windows 管理中心
+      href: 'https://docs.microsoft.com/windows-server/manage/windows-admin-center/understand/windows-admin-center'
+    - name: Azure 混合服务
+      href: 'https://docs.microsoft.com/windows-server/manage/windows-admin-center/azure'
+    - name: 存储空间直通
+      href: 'https://docs.microsoft.com/windows-server/storage/storage-spaces/storage-spaces-direct-overview'
+    - name: 故障转移群集
+      href: 'https://docs.microsoft.com/windows-server/failover-clustering/failover-clustering-overview'
+    - name: Hyper-V
+      href: 'https://docs.microsoft.com/windows-server/virtualization/hyper-v/hyper-v-on-windows-server'
+    - name: 软件定义的网络
+      href: 'https://docs.microsoft.com/windows-server/networking/sdn'

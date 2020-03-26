@@ -10,12 +10,12 @@ ms.topic: article
 origin.date: 10/01/2019
 ms.date: 10/23/2019
 ms.reviewer: klam, LADocs
-ms.openlocfilehash: d1af80aeba496bd91a10cf451d625d3b639add94
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: aa39cab2ed8b4cf3e5d5ca8dedce2551aea697cf
+ms.sourcegitcommit: 305361c96d1d5288d3dda7e81833820640e2afac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79291534"
+ms.lasthandoff: 03/21/2020
+ms.locfileid: "80109789"
 ---
 # <a name="call-azure-functions-from-azure-logic-apps"></a>从 Azure 逻辑应用调用 Azure 函数
 
@@ -207,7 +207,9 @@ function convertToDateString(request, response){
 
 若要对函数设置并使用系统分配的标识，请执行以下步骤：
 
-1. 在逻辑应用中启用系统分配的标识，并设置该标识对目标资源的访问权限。 请参阅[在 Azure 逻辑应用中使用托管标识验证对 Azure 资源的访问](../logic-apps/create-managed-service-identity.md)。
+1. 在逻辑应用中启用系统分配的标识，并设置该标识对目标资源的访问权限。
+
+    <!--Not Available on   [Authenticate access to Azure resources by using managed identities in Azure Logic Apps](../logic-apps/create-managed-service-identity.md)-->
 
 1. 执行以下步骤，在 Azure 函数和函数应用中启用身份验证：
 
@@ -252,7 +254,9 @@ function convertToDateString(request, response){
 
 * 为表示逻辑应用的系统分配标识生成的对象 ID
 
-  * 若要生成此对象 ID，请[启用逻辑应用的系统分配标识](../logic-apps/create-managed-service-identity.md#azure-portal-system-logic-app)。
+  * 若要生成此对象 ID，请启用逻辑应用的系统分配标识。
+  
+    <!--Not Avaialble on [enable your logic app's system-assigned identity](../logic-apps/create-managed-service-identity.md#azure-portal-system-logic-app)-->
 
   * 否则，若要查找此对象 ID，请在逻辑应用设计器中打开逻辑应用。 在逻辑应用菜单中的“设置”下，选择“标识” > “系统分配”。   
 
@@ -277,7 +281,9 @@ function convertToDateString(request, response){
   > [!IMPORTANT]
   > 此资源 ID 必须与 Azure AD 所需的值完全匹配，包括所有必需的尾部斜杠。
 
-  稍后在[设置函数操作以使用系统分配的标识](../logic-apps/create-managed-service-identity.md#authenticate-access-with-identity)时，也要在“受众”属性中使用此资源 ID。 
+  稍后在设置函数操作以使用系统分配的标识时，也要在“受众”属性中使用此同一个资源 ID 值。 
+  
+  <!--Not Available on [set up your function action to use the system-assigned identity](../logic-apps/create-managed-service-identity.md#authenticate-access-with-identity)-->
 
 现已准备好为函数应用设置 Azure AD 身份验证。
 
@@ -303,15 +309,19 @@ function convertToDateString(request, response){
 
    1. 在“允许的令牌受众”属性中，输入要访问的目标资源的资源 ID。 
 
-      稍后在[设置函数操作以使用系统分配的标识](../logic-apps/create-managed-service-identity.md#authenticate-access-with-identity)时，需在“受众”属性中使用此同一个资源 ID 值。 
-
+      稍后在设置函数操作以使用系统分配的标识时，需在“受众”属性中使用此同一个资源 ID 值。 
+      
+      <!--Not Available on [set up your function action to use the system-assigned identity](../logic-apps/create-managed-service-identity.md#authenticate-access-with-identity)-->
+      
    现在，你的版本如以下示例所示：
 
    ![Azure Active Directory 身份验证设置](./media/logic-apps-azure-functions/azure-active-directory-authentication-settings.png)
 
 1. 完成后，请选择“确定”  。
 
-1. 返回逻辑应用设计器，并遵循[使用托管标识对访问进行身份验证的步骤](../logic-apps/create-managed-service-identity.md#authenticate-access-with-identity)操作。
+1. 返回逻辑应用设计器，并按照使用托管标识对访问者进行身份验证的步骤进行操作。
+
+    <!--Not Available on [steps to authenticate access with the managed identity](../logic-apps/create-managed-service-identity.md#authenticate-access-with-identity)-->
 
 ## <a name="next-steps"></a>后续步骤
 

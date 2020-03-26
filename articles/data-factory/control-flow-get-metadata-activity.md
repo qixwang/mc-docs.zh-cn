@@ -9,17 +9,16 @@ ms.reviewer: ''
 ms.assetid: 1c46ed69-4049-44ec-9b46-e90e964a4a8e
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
-origin.date: 11/26/2019
-ms.date: 01/06/2020
+origin.date: 03/02/2020
+ms.date: 03/23/2020
 ms.author: v-jay
-ms.openlocfilehash: 2446d0e948e42762a5eb99bf0e7b2d9965b7062d
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.openlocfilehash: b04ddb19bd231e57d879ea97e402016612a4df37
+ms.sourcegitcommit: 71a386ca0d0ecb79a123399b6ab6b8c70ea2aa78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75624308"
+ms.lasthandoff: 03/18/2020
+ms.locfileid: "79497239"
 ---
 # <a name="get-metadata-activity-in-azure-data-factory"></a>Azure 数据工厂中的“获取元数据”活动
 
@@ -35,7 +34,7 @@ ms.locfileid: "75624308"
 
 ## <a name="capabilities"></a>功能
 
-“获取元数据”活动采用数据集作为输入，并返回元数据信息作为输出。 目前支持以下连接器以及对应的可检索元数据。 返回的元数据的最大大小为 1 MB。
+“获取元数据”活动采用数据集作为输入，并返回元数据信息作为输出。 目前支持以下连接器以及对应的可检索元数据。 返回的元数据的最大大小为 2 MB。
 
 >[!NOTE]
 >如果在自承载集成运行时中运行“获取元数据”活动，3.6 或更高版本将支持最新的功能。
@@ -110,7 +109,7 @@ ms.locfileid: "75624308"
 }
 ```
 
-**Dataset**
+**数据集**
 
 ```json
 {

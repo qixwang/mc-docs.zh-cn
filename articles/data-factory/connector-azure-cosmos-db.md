@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 origin.date: 12/11/2019
-ms.date: 01/06/2020
-ms.openlocfilehash: 613da29fbad456d10532fef4ecf6e37a5763e467
-ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
+ms.date: 03/23/2020
+ms.openlocfilehash: 554cdc837a013cbe1fa413428ed3b7954fcc9064
+ms.sourcegitcommit: 71a386ca0d0ecb79a123399b6ab6b8c70ea2aa78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77653249"
+ms.lasthandoff: 03/18/2020
+ms.locfileid: "79497273"
 ---
 # <a name="copy-and-transform-data-in-azure-cosmos-db-sql-api-by-using-azure-data-factory"></a>使用 Azure 数据工厂在 Azure Cosmos DB (SQL API) 中复制和转换数据
 
@@ -264,7 +264,7 @@ Azure Cosmos DB (SQL API) 数据集支持以下属性：
 
 ## <a name="migrate-from-relational-database-to-cosmos-db"></a>从关系数据库迁移到 Cosmos DB
 
-从关系数据库（例如 SQL Server）迁移到 Azure Cosmos DB 时，复制活动可以轻松地从源映射表格数据，以在 Cosmos DB 中平展 JSON 文档。 某些情况下，你可能希望根据 [Azure Cosmos DB 中的数据建模](../cosmos-db/modeling-data.md)重新设计数据模型，以便来针对 NoSQL 用例对其进行优化，例如，通过将所有相关子项嵌入到一个 JSON 文档中来使数据非规范化。
+从关系数据库（例如 SQL Server）迁移到 Azure Cosmos DB 时，复制活动可以轻松地从源映射表格数据，以在 Cosmos DB 中平展 JSON 文档。 某些情况下，你可能希望根据 [Azure Cosmos DB 中的数据建模](../cosmos-db/modeling-data.md)重新设计数据模型，以便来针对 NoSQL 用例对其进行优化，例如，通过将所有相关子项嵌入到一个 JSON 文档中来使数据非规范化。 对于这种情况，请参阅[此文](../cosmos-db/migrate-relational-to-cosmos-db-sql-api.md)，其中演练了如何使用 Azure 数据工厂复制活动实现此目的。
 
 ## <a name="next-steps"></a>后续步骤
 

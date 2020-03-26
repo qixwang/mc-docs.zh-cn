@@ -3,18 +3,17 @@ title: 排查 Azure Monitor 指标图表问题
 description: 排查创建、自定义或解释指标图表时出现的问题
 author: lingliw
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 origin.date: 04/23/2019
 ms.date: 06/20/2019
 ms.author: v-lingwu
 ms.subservice: metrics
-ms.openlocfilehash: 035ffbb36892035d8dee93d8cad4f30e8bdc4466
-ms.sourcegitcommit: 27eaabd82b12ad6a6840f30763034a6360977186
+ms.openlocfilehash: 4dbdfc0d6859eb373aab1c58d59bf13e24c84d49
+ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77497479"
+ms.lasthandoff: 03/17/2020
+ms.locfileid: "79452429"
 ---
 # <a name="troubleshooting-metrics-charts"></a>排查指标图表问题
 
@@ -108,9 +107,10 @@ Azure 指标图表使用虚线样式来指示两个已知时间粒度数据点�
     > [!WARNING]
     > 无法使用 [Log Analytics 代理](agents-overview.md#log-analytics-agent)（也称为 Microsoft Monitoring Agent 或“MMA”）将“来宾 OS”指标发送到存储帐户。 
 
-1. 验证存储帐户是否不受防火墙的保护。
+1. 请确保已[为订阅注册](metrics-troubleshoot.md#microsoftinsights-resource-provider-isnt-registered-for-your-subscription) Microsoft.Insights 资源提供程序  。
 
-1. 如果未收集指标，请遵循 [Azure 诊断扩展故障排除指南](diagnostics-extension-troubleshooting.md#metric-data-doesnt-appear-in-the-azure-portal)。
+1. 验证存储帐户是否不受防火墙的保护。 Azure 门户需要对存储帐户的访问权限才能检索指标数据和绘制图表。
+
 
 ## <a name="next-steps"></a>后续步骤
 

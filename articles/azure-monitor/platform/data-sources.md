@@ -3,18 +3,17 @@ title: Azure Monitor 中的数据的来源 | Azure Docs
 description: 介绍用于监视 Azure 资源及其上运行的应用程序的运行状况和性能的数据。
 author: lingliw
 manager: digimobile
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 origin.date: 12/19/2019
 ms.date: 02/19/2020
 ms.author: v-lingwu
-ms.openlocfilehash: cf48da9531b93851662d1be5f60fce5e7836f850
-ms.sourcegitcommit: 27eaabd82b12ad6a6840f30763034a6360977186
+ms.openlocfilehash: 95efd813aae3b9717da5d8d7aa1728b5c84b9455
+ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77497524"
+ms.lasthandoff: 03/17/2020
+ms.locfileid: "79452298"
 ---
 # <a name="sources-of-monitoring-data-for-azure-monitor"></a>Azure Monitor 的监视数据源
 Azure Monitor 基于包含[日志](data-platform-logs.md)和[指标](data-platform-metrics.md)的[通用监视数据平台](data-platform.md)。 将数据收集到此平台后，可以使用 Azure Monitor 中的一组通用工具统一分析来自多个资源的数据。 还可以将监视数据发送到其他位置以支持特定的方案，某些资源可能会将数据写入到其他位置，然后可以在日志或指标中收集数据。
@@ -65,8 +64,8 @@ Azure 应用程序中的监视数据源可以组织为层，最高的层是应�
 |:---|:---|
 | 活动日志 | 活动日志将收集到其自身的数据存储中，可以通过 Azure Monitor 菜单查看这些日志，或使用它来创建活动日志警报。 | [在 Azure 门户中查询活动日志](activity-log-view.md#azure-portal) |
 | Azure Monitor 日志 | 配置 Azure Monitor 日志来收集活动日志，以结合其他监视数据对其进行分析。 | [收集和分析 Azure Monitor 的 Log Analytics 工作区中的 Azure 活动日志](activity-log-collect.md) |
-| Azure 存储 | 将活动日志导出到 Azure 存储进行存档。 | [存档活动日志](activity-log-export.md#archive-activity-log)  |
-| 事件中心 | 使用事件中心将活动日志流式传输到其他位置 | [将活动日志流式传输到事件中心](activity-log-export.md#stream-activity-log-to-event-hub) |
+| Azure 存储 | 将活动日志导出到 Azure 存储进行存档。 | [存档活动日志](resource-logs-collect-storage.md)  |
+| 事件中心 | 使用事件中心将活动日志流式传输到其他位置 | [将活动日志流式传输到事件中心](resource-logs-stream-event-hubs.md) |
 
 ### <a name="azure-service-health"></a>Azure 服务运行状况
 [Azure 服务运行状况](../../service-health/service-health-overview.md)提供订阅中应用程序和资源所依赖的 Azure 服务的运行状况信息。
@@ -112,10 +111,11 @@ Azure 中的、其他云中的以及本地的计算资源都有要监视的来�
 
 | 目标 | 说明 | 参考 |
 |:---|:---|:---|
-| 存储 | 启用诊断扩展后，默认情况下，它会将数据写入存储帐户。 | [在 Azure 存储中存储和查看诊断数据](diagnostics-extension-to-storage.md) |
+| 存储 | Azure 诊断扩展始终写入 Azure 存储帐户。 | [安装并配置 Windows Azure 诊断扩展 (WAD)](diagnostics-extension-windows-install.md)<br>[使用 Linux 诊断扩展监视指标和日志](../../virtual-machines/extensions/diagnostics-linux.md) |
 | Azure Monitor 指标 | 配置用于收集性能计数器的诊断扩展时，这些计数器将写入到 Azure Monitor 指标数据库。 | [使用 Windows 虚拟机的资源管理器模板将来宾 OS 指标发送到 Azure Monitor 指标存储](collect-custom-metrics-guestos-resource-manager-vm.md) |
+| 事件中心 | 配置诊断扩展，以使用事件中心将数据流式传输到其他位置。  | [使用事件中心流式传输 Azure 诊断数据](diagnostics-extension-stream-event-hubs.md)<br>[使用 Linux 诊断扩展监视指标和日志](../../virtual-machines/extensions/diagnostics-linux.md) |
 | Application Insights 日志 | 从支持应用程序的计算资源收集日志和性能计数器，以结合其他应用程序数据对其进行分析。 | [将云服务、虚拟机或 Service Fabric 诊断数据发送到 Application Insights](diagnostics-extension-to-application-insights.md) |
-| 事件中心 | 配置诊断扩展，以使用事件中心将数据流式传输到其他位置。  | [使用事件中心流式处理热路径中的 Azure 诊断数据](diagnostics-extension-stream-event-hubs.md) |
+
 
 ### <a name="log-analytics-agent"></a>Log Analytics 代理 
 安装 Log Analytics 代理，以便对 Windows 或 Linux 虚拟机进行全面的监视和管理。 虚拟机可以在 Azure 中运行，也可以在其他云中或本地运行。

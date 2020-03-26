@@ -1,26 +1,14 @@
 ---
-title: 通过 Azure 资源运行状况支持的资源类型
+title: 通过 Azure 资源运行状况支持的资源类型 | Microsoft Docs
 description: 通过 Azure 资源运行状况支持的资源类型
-services: Resource health
-documentationcenter: ''
-author: stephbaron
-manager: ''
-editor: ''
-ms.assetid: 85cc88a4-80fd-4b9b-a30a-34ff3782855f
-ms.service: service-health
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: Supportability
-origin.date: 01/29/2019
-ms.author: v-yiso
-ms.date: 02/17/2020
-ms.openlocfilehash: 121c4f9992a1b470ad5d9592afbfd63ff380edee
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.date: 03/17/2020
+ms.openlocfilehash: 359572b3507abbf8927cdafbaf83bcc5894e07e5
+ms.sourcegitcommit: 71a386ca0d0ecb79a123399b6ab6b8c70ea2aa78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79291875"
+ms.lasthandoff: 03/18/2020
+ms.locfileid: "79497090"
 ---
 # <a name="resource-types-and-health-checks-in-azure-resource-health"></a>Azure 资源运行状况中的资源类型和运行状况检查
 下面是通过资源运行状况执行的所有检查（按资源类型）的完整列表。
@@ -40,7 +28,7 @@ ms.locfileid: "79291875"
 |---|
 |<ul><li>Batch 帐户是否已启动并正在运行？</li><li>此 Batch 帐户是否超出了池配额？</li></ul>|
 
-## <a name="microsoftcacheredisredis"></a>Microsoft.CacheRedis/Redis
+## <a name="microsoftcacheredis"></a>Microsoft.Cache/Redis
 |执行的检查|
 |---|
 |<ul><li>所有缓存节点是否都已启用并正在运行？</li><li>是否可从数据中心内访问缓存？</li><li>缓存是否已达到最大连接数？</li><li> 缓存是否已用完可用内存？ </li><li>缓存是否遇到大量页面错误？</li><li>缓存是否负载过大？</li></ul>|
@@ -53,7 +41,7 @@ ms.locfileid: "79291875"
 ## <a name="microsoftclassiccomputevirtualmachines"></a>Microsoft.classiccompute/virtualmachines
 |执行的检查|
 |---|
-|<ul><li>主机服务器是否已启动并正在运行？</li><li>主机 OS 启动是否已完成？</li><li>是否已配置并启动虚拟机容器？</li><li>主机和存储帐户之间是否有网络连接？</li><li>来宾 OS 启动是否已完成？</li><li>是否存在持续的计划内维护？</li></ul>|
+|<ul><li>主机服务器是否已启动并正在运行？</li><li>主机 OS 启动是否已完成？</li><li>是否已配置并启动虚拟机容器？</li><li>主机和存储帐户之间是否有网络连接？</li><li>来宾 OS 启动是否已完成？</li><li>是否存在持续的计划内维护？</li><li>主机硬件是否已降级并预计很快会发生故障？</li></ul>|
 
 ## <a name="microsoftcognitiveservicesaccounts"></a>Microsoft.cognitiveservices/accounts
 |执行的检查|
@@ -63,7 +51,12 @@ ms.locfileid: "79291875"
 ## <a name="microsoftcomputevirtualmachines"></a>Microsoft.compute/virtualmachines
 |执行的检查|
 |---|
-|<ul><li>托管此虚拟机的服务器是否已启动并运行？</li><li>主机 OS 启动是否已完成？</li><li>是否已配置并启动虚拟机容器？</li><li>主机和存储帐户之间是否有网络连接？</li><li>来宾 OS 启动是否已完成？</li><li>是否存在持续的计划内维护？</li></ul>|
+|<ul><li>托管此虚拟机的服务器是否已启动并运行？</li><li>主机 OS 启动是否已完成？</li><li>是否已配置并启动虚拟机容器？</li><li>主机和存储帐户之间是否有网络连接？</li><li>来宾 OS 启动是否已完成？</li><li>是否存在持续的计划内维护？</li><li>主机硬件是否已降级并预计很快会发生故障？</li></ul>|
+
+## <a name="microsoftdatafactoryfactories"></a>Microsoft.datafactory/factories
+|执行的检查|
+|---|
+|<ul><li>是否有管道运行失败？</li><li>托管数据工厂的群集是否正常？</li></ul>|
 
 ## <a name="microsoftdatalakeanalyticsaccounts"></a>Microsoft.datalakeanalytics/accounts
 |执行的检查|
@@ -76,6 +69,21 @@ ms.locfileid: "79291875"
 |---|
 |<ul><li>是否有用户无法将数据上传到 Data Lake Store？</li><li>是否有用户无法从 Data Lake Store 下载数据？</li></ul>|
 
+## <a name="microsoftdatamigrationservices"></a>Microsoft.datamigration/services
+|执行的检查|
+|---|
+|<ul><li>数据库迁移服务是否无法预配？</li><li>数据库迁移服务是否由于不活动或用户请求而已停止？</li></ul>|
+
+## <a name="microsoftdatashareaccounts"></a>Microsoft.DataShare/accounts
+|执行的检查|
+|---|
+|<ul><li>Data Share 帐户是否已启动且正在运行？</li><li>托管 Data Share 的群集是否可用？</li></ul>|
+
+## <a name="microsoftdbformariadbservers"></a>Microsoft.DBforMariaDB/servers
+|执行的检查|
+|---|
+|<ul><li>服务器是否因维护而不可用？</li><li>服务器是否因重新配置而不可用？</li></ul>|
+
 ## <a name="microsoftdbformysqlservers"></a>Microsoft.DBforMySQL/servers
 |执行的检查|
 |---|
@@ -87,7 +95,6 @@ ms.locfileid: "79291875"
 |<ul><li>服务器是否因维护而不可用？</li><li>服务器是否因重新配置而不可用？</li></ul>|
 
 ## <a name="microsoftdevicesiothubs"></a>Microsoft.devices/iothubs
-
 |执行的检查|
 |---|
 |<ul><li>IoT 中心在正常运行吗？</li></ul>|
@@ -170,7 +177,7 @@ ms.locfileid: "79291875"
 ## <a name="microsoftpowerbiworkspacecollections"></a>Microsoft.PowerBI/workspaceCollections
 |执行的检查|
 |---|
-|<ul><li>主机 OS 是否已启动并正在运行？</li><li>是否可从数据中心外部访问 workspaceCollection？</li><li>PowerBI 资源提供程序是否可用？</li><li>PowerBI 服务在相应区域中是否可用？</li></ul>|
+|<ul><li>主机 OS 是否已启动并正在运行？</li><li>是否可从数据中心外部访问 workspaceCollection？</li><li>Power BI 资源提供程序是否可用？</li><li>Power BI 服务在相应区域中是否可用？</li></ul>|
 
 ## <a name="microsoftsearchsearchservices"></a>Microsoft.search/searchServices
 |执行的检查|
@@ -182,6 +189,11 @@ ms.locfileid: "79291875"
 |---|
 |<ul><li>客户是否遇到用户生成的服务总线错误？</li><li>用户是否遇到由于服务总线命名空间升级导致的暂时性错误增加？</li></ul>|
 
+## <a name="microsoftservicefabricclusters"></a>Microsoft.ServiceFabric/clusters
+|执行的检查|
+|---|
+|<ul><li>Service Fabric 群集是否已启动且正在运行？</li><li>Service Fabric 群集是否可以通过 Azure 资源管理器进行管理？</li></ul>|
+
 ## <a name="microsoftsqlmanagedinstancesdatabases"></a>Microsoft.SQL/managedInstances/databases
 |执行的检查|
 |---|
@@ -190,7 +202,7 @@ ms.locfileid: "79291875"
 ## <a name="microsoftsqlserverdatabases"></a>Microsoft.SQL/Server/databases
 |执行的检查|
 |---|
-|<ul><li> 是否存在到数据库的登录？</li></ul>|
+|<ul><li>是否存在到数据库的登录？</li></ul>|
 
 ## <a name="microsoftstoragestorageaccounts"></a>Microsoft.Storage/storageAccounts
 |执行的检查|
@@ -216,3 +228,4 @@ ms.locfileid: "79291875"
 -  请参阅 [Azure 服务运行状况仪表板简介](service-health-overview.md)和 [Azure 资源运行状况简介](resource-health-overview.md)，了解更多相关信息。 
 -  [有关 Azure 资源运行状况的常见问题解答](resource-health-faq.md)
 - 设置警报，以便收到运行状况问题的通知。 有关详细信息，请参阅[配置服务运行状况事件的警报](../azure-monitor/platform/alerts-activity-log-service-notifications.md)。 
+

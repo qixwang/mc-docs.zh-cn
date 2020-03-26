@@ -3,22 +3,22 @@ title: 允许应用访问 Azure Stack Hub Key Vault 机密
 description: 了解如何运行从 Azure Stack Hub 中的密钥保管库检索密钥和机密的示例应用。
 author: WenJason
 ms.topic: conceptual
-origin.date: 01/06/2020
-ms.date: 02/24/2020
+origin.date: 02/19/2020
+ms.date: 03/23/2020
 ms.author: v-jay
 ms.lastreviewed: 04/08/2019
-ms.openlocfilehash: b212e4a48c5c280b7ce9dff88873813569925b11
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.openlocfilehash: 8905575ae1d245089de73191496aabc09c000a58
+ms.sourcegitcommit: e500354e2fd8b7ac3dddfae0c825cc543080f476
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77540782"
+ms.lasthandoff: 03/19/2020
+ms.locfileid: "79547083"
 ---
 # <a name="allow-apps-to-access-azure-stack-hub-key-vault-secrets"></a>允许应用访问 Azure Stack Hub Key Vault 机密
 
 按照本文中的步骤运行示例应用 **HelloKeyVault**，从 Azure Stack Hub 中的密钥保管库检索密钥和机密。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 如果已[通过 VPN 建立连接](../asdk/asdk-connect.md#connect-to-azure-stack-using-vpn)，可以从 [Azure Stack 开发工具包](../asdk/asdk-connect.md#connect-to-azure-stack-using-rdp)或从基于 Windows 的外部客户端安装以下必备组件：
 
@@ -143,9 +143,17 @@ Write-Host
 在 Visual Studio 中：
 
 1. 打开 HelloKeyVault\App.config 文件，找到 `<appSettings>` 元素。
-2. 使用创建密钥保管库时返回的值更新 **VaultUrl**、**AuthClientId** 和 **AuthClientSecret** 密钥。 默认情况下，App.config 文件有一个用于 `AuthCertThumbprint` 的占位符。 请将此占位符替换为 `AuthClientSecret`。
+2. 使用创建密钥保管库时返回的值更新 **VaultUrl**、**AuthClientId** 和 **AuthCertThumbprint** 密钥。 默认情况下，App.config 文件有一个用于 `AuthCertThumbprint` 的占位符。 请将此占位符替换为 `AuthClientSecret`。
 
-   ![应用设置](media/azure-stack-key-vault-sample-app/appconfig.png)
+   ```xml
+   <appSettings>
+    <!-- Update these settings for your test environment -->
+    <add key="VaultUrl" value="URL to your Vault" />
+    <add key="AuthClientId" value="Client Id of your Service Principal" />
+    <add key="AuthCertThumbprint" value="Thumbprint of the certificate used for authentication" />
+    <add key="TracingEnabled" value="false" />
+   </appSettings>
+   ```
 
 3. 重新生成解决方案。
 

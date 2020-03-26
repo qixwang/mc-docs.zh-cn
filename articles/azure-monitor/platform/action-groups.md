@@ -3,16 +3,16 @@ title: 在 Azure 门户中创建和管理器操作组
 description: 了解如何在 Azure 门户中创建和管理操作组。
 author: lingliw
 ms.topic: conceptual
-origin.date: 8/19/2019
+origin.date: 2/18/2020
 ms.date: 9/23/2019
 ms.author: v-lingwu
 ms.subservice: alerts
-ms.openlocfilehash: fa272cd83025210811600f5779b1e9e0d643acff
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: 365d870de1487758f0116fac70d7cf043f16ea42
+ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79292791"
+ms.lasthandoff: 03/17/2020
+ms.locfileid: "79452530"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>在 Azure 门户中创建和管理器操作组
 操作组是由 Azure 订阅的所有者定义的通知首选项的集合。 Azure Monitor 和服务运行状况警报使用操作组来通知用户某个警报已触发。 各种警报可以使用相同的操作组或不同的操作组，具体取决于用户的要求。 可以在订阅中最多配置 2,000 个操作组。
@@ -87,12 +87,12 @@ ms.locfileid: "79292791"
 一个操作组中可以存在有限数量的电子邮件操作。 请参阅[速率限制信息](../../azure-monitor/platform/alerts-rate-limiting.md)一文。
 
 ### <a name="email-azure-resource-manager-role"></a>电子邮件 Azure 资源管理器角色
-向订阅角色的成员发送电子邮件。
+向订阅角色的成员发送电子邮件。 电子邮件将仅发送给该角色的 **Azure AD 用户**成员。 电子邮件将不会发送给 Azure AD 组或服务主体。
 
 一个操作组中可以存在有限数量的电子邮件操作。 请参阅[速率限制信息](./../../azure-monitor/platform/alerts-rate-limiting.md)一文。
 
 ### <a name="function"></a>函数
-配置为操作的 Function App 的函数密钥通过函数 API 读取。目前，这需要 v2 函数应用将应用设置“AzureWebJobsSecretStorageType”配置为“files”。 有关详细信息，请参阅 [Functions V2 中对密钥管理的更改]( https://aka.ms/funcsecrets)。
+在 [Azure Functions](../../azure-functions/functions-create-first-azure-function.md#create-a-function-app) 中调用现有的 HTTP 触发终结点。
 
 一个操作组中可以存在有限数量的 Function 操作。
 
@@ -100,8 +100,6 @@ ms.locfileid: "79292791"
 一个操作组中可以存在有限数量的逻辑应用操作。
 
 ### <a name="secure-webhook"></a>安全 Webhook
-**安全 Webhook 功能目前为预览版。**
-
 可以通过“操作组 Webhook”操作利用 Azure Active Directory 来保护操作组和受保护 Web API（Webhook 终结点）之间的连接。 利用此功能的完整工作流如下所述。 有关 Azure AD 应用程序和服务主体的概述，请参阅 [Microsoft 标识平台 (v2.0) 概述](/active-directory/develop/v2-overview)。
 
 1. 针对受保护的 Web API 创建 Azure AD 应用程序。 [请参阅](/active-directory/develop/scenario-protected-web-api-overview)。

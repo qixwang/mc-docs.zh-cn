@@ -4,27 +4,26 @@ description: 介绍如何使用 Azure Analysis Services REST API 对模型数据
 author: rockboyfor
 ms.service: azure-analysis-services
 ms.topic: conceptual
-origin.date: 10/28/2019
-ms.date: 11/25/2019
+ms.date: 03/23/2020
 ms.author: v-yeche
 ms.reviewer: minewiskan
-ms.openlocfilehash: 89bec9f1e9556c326ffc4bef4ac6a741215d26ad
-ms.sourcegitcommit: c5e012385df740bf4a326eaedabb987314c571a1
+ms.openlocfilehash: 311df26e7629051f326dd0d744e4bc5df76b95b0
+ms.sourcegitcommit: 1436f1851342ca5631eb25342eed954adb707af0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74203601"
+ms.lasthandoff: 03/19/2020
+ms.locfileid: "79543788"
 ---
 <!--Verify successfully-->
 # <a name="asynchronous-refresh-with-the-rest-api"></a>使用 REST API 执行异步刷新
 
 使用支持 REST 调用的任何编程语言，可以针对 Azure Analysis Services 表格模型执行异步数据刷新操作。 这包括同步只读副本以进行查询扩展。 
 
-数据刷新操作可能需要一段时间，具体取决于多种因素，包括数据卷、使用分区的优化级别，等等。在传统上，这些操作是使用现有方法调用的，例如，使用 [TOM](https://docs.microsoft.com/bi-reference/tom/introduction-to-the-tabular-object-model-tom-in-analysis-services-amo)（表格对象模型）、[PowerShell](https://docs.microsoft.com/analysis-services/powershell/analysis-services-powershell-reference) cmdlet，或 [TMSL](https://docs.microsoft.com/bi-reference/tmsl/tabular-model-scripting-language-tmsl-reference)（表格模型脚本语言）。 但是，这些方法可能需要通常不可靠的且长时间运行的 HTTP 连接。
+数据刷新操作可能需要一段时间，具体取决于多种因素，包括数据卷、使用分区的优化级别，等等。在传统上，这些操作是使用现有方法调用的，例如，使用 [TOM](https://docs.microsoft.com/analysis-services/tom/introduction-to-the-tabular-object-model-tom-in-analysis-services-amo)（表格对象模型）、[PowerShell](https://docs.microsoft.com/analysis-services/powershell/analysis-services-powershell-reference) cmdlet，或 [TMSL](https://docs.microsoft.com/analysis-services/tmsl/tabular-model-scripting-language-tmsl-reference)（表格模型脚本语言）。 但是，这些方法可能需要通常不可靠的且长时间运行的 HTTP 连接。
 
 使用 Azure Analysis Services 的 REST API 能够以异步方式执行数据刷新操作。 如果使用 REST API，则不需要从客户端应用程序建立长时间运行的 HTTP 连接。 还有其他内置功能可以确保可靠性，例如自动重试和分批提交。
 
-## <a name="base-url"></a>基 URL
+## <a name="base-url"></a><a name="base-url"></a>基 URL
 
 基 URL 遵循以下格式：
 
@@ -32,7 +31,7 @@ ms.locfileid: "74203601"
 https://<rollout>.asazure.chinacloudapi.cn/servers/<serverName>/models/<resource>/
 ```
 
-例如，假设某个模型名为 AdventureWorks，位于中国北部 Azure 区域中名为 myserver 的服务器上。 此服务器名称为：
+例如，假设某个模型名为 AdventureWorks，位于中国北部 Azure 区域中名为 `myserver` 的服务器上。 此服务器名称为：
 
 ```
 asazure://chinanorth.asazure.chinacloudapi.cn/myserver 
@@ -58,7 +57,7 @@ https://chinanorth.asazure.chinacloudapi.cn/servers/myserver/models/AdventureWor
 https://chinanorth.asazure.chinacloudapi.cn/servers/myserver/models/AdventureWorks/refreshes
 ```
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>身份验证
 
 所有调用必须使用 Authorization 标头中的有效 Azure Active Directory (OAuth 2) 令牌进行身份验证，并且必须满足以下要求：
 
@@ -99,12 +98,12 @@ https://chinanorth.asazure.chinacloudapi.cn/servers/myserver/models/AdventureWor
 
 不需要指定参数。 将应用默认值。
 
-| Name             | 类型  | 说明  |默认  |
+| 名称             | 类型  | 说明  |默认  |
 |------------------|-------|--------------|---------|
-| `Type`           | 枚举  | 要执行的处理类型。 类型与 TMSL [refresh 命令](https://docs.microsoft.com/bi-reference/tmsl/refresh-command-tmsl)类型相符：full、clearValues、calculate、dataOnly、automatic 和 defragment。 Add 类型不受支持。      |   automatic      |
+| `Type`           | 枚举  | 要执行的处理类型。 类型与 TMSL [refresh 命令](https://docs.microsoft.com/analysis-services/tmsl/refresh-command-tmsl)类型相符：full、clearValues、calculate、dataOnly、automatic 和 defragment。 Add 类型不受支持。      |   automatic      |
 | `CommitMode`     | 枚举  | 确定是要分批提交对象，还是只在完成时才提交。 模式包括：default、transactional、partialBatch。  |  transactional       |
-| `MaxParallelism` | Int   | 此值确定用于并行运行处理命令的最大线程数。 此值与 MaxParallelism 属性（可以在 TMSL [Sequence 命令](https://docs.microsoft.com/bi-reference/tmsl/sequence-command-tmsl)中或使用其他方法设置此属性）相符。       | 10        |
-| `RetryCount`     | Int   | 指示操作在失败之前要重试的次数。      |     0    |
+| `MaxParallelism` | int   | 此值确定用于并行运行处理命令的最大线程数。 此值与 MaxParallelism 属性（可以在 TMSL [Sequence 命令](https://docs.microsoft.com/analysis-services/tmsl/sequence-command-tmsl)中或使用其他方法设置此属性）相符。       | 10 个        |
+| `RetryCount`     | int   | 指示操作在失败之前要重试的次数。      |     0    |
 | `Objects`        | Array | 要处理的对象数组。 每个对象包含：“table”（处理整个表时），或者“table”和“partition”（处理分区时）。 如果未指定任何对象，则会刷新整个模型。 |   处理整个模型      |
 
 CommitMode 等于 partialBatch。 针对大型数据集执行可能需要几个小时的初始加载时，将会使用 CommitMode。 如果在成功提交一个或多个批之后刷新操作失败，则成功提交的批将保留已提交状态（不会回滚已成功提交的批）。
@@ -112,9 +111,20 @@ CommitMode 等于 partialBatch。 针对大型数据集执行可能需要几个�
 > [!NOTE]
 > 在撰写本文时，批大小为 MaxParallelism 值，但可以更改此值。
 
+### <a name="status-values"></a>状态值
+
+|状态值  |说明  |
+|---------|---------|
+|`notStarted`    |   操作尚未开始。      |
+|`inProgress`     |   操作正在进行。      |
+|`timedOut`     |    根据用户指定的超时，操作已超时。     |
+|`cancelled`     |   用户或系统已取消操作。      |
+|`failed`     |   操作失败。      |
+|`succeeded`      |   操作成功。      |
+
 ## <a name="get-refreshesrefreshid"></a>GET /refreshes/\<refreshId>
 
-若要检查刷新操作的状态，可以在刷新 ID 中使用 GET 谓词。 下面是响应正文的示例。 如果操作正在进行，则会在状态中返回 **inProgress**。
+若要检查刷新操作的状态，可以在刷新 ID 中使用 GET 谓词。 下面是响应正文的示例。 如果操作正在进行，则会在状态中返回 `inProgress`。
 
 ```
 {
@@ -190,8 +200,8 @@ CommitMode 等于 partialBatch。 针对大型数据集执行可能需要几个�
 - 0：正在复制。 正在将数据库文件复制到目标文件夹。
 - 1:正在解冻。 正在只读的服务器实例上解冻数据库。
 - 2:已完成。 同步操作已成功完成。
-- 3：已失败。 同步操作失败。
-- 4：正在完成。 同步操作已完成，但正在执行清理步骤。
+- 3:已失败。 同步操作失败。
+- 4:正在完成。 同步操作已完成，但正在执行清理步骤。
 
 ## <a name="code-sample"></a>代码示例
 
@@ -210,7 +220,7 @@ CommitMode 等于 partialBatch。 针对大型数据集执行可能需要几个�
 
 <!--MOONCAKE: CUSTOMIZED-->
 
-1.  在代码示例中，查找**字符串 authority = …** ，将 **login.windows.net** 替换为 **login.chinacloudapi.cn**，将 **common** 替换为你的组织的租户 ID。
+1.  在代码示例中，查找 **string authority = …** ，将 **login.windows.net** 替换为 **login.chinacloudapi.cn**，并将 **common** 替换为你组织的租户 ID。
     
     >[!NOTE]
     > 必须修改从 [GitHub 上的 RestApiSample](https://github.com/Microsoft/Analysis-Services/tree/master/RestApiSample) 下载或引用的代码示例，以适合 Azure 中国云环境。 例如，替换某些终结点（将“blob.core.windows.net”替换为“blob.core.chinacloudapi.cn”，将“cloudapp.azure.com”替换为“chinacloudapp.cn”）；必要时更改某些不受支持的 VM 映像、VM 大小、SKU 以及资源提供程序的 API 版本。
@@ -218,7 +228,7 @@ CommitMode 等于 partialBatch。 针对大型数据集执行可能需要几个�
     <!--MOONCAKE: CUSTOMIZED-->
     
 2. 注释/取消注释，以便使用 ClientCredential 类来实例化 cred 对象。 确保以安全方式访问 \<App ID> 和 \<App Key> 值，或者对服务主体使用基于证书的身份验证。
-3. 运行示例。
+3. 运行该示例。
 
 ## <a name="see-also"></a>另请参阅
 

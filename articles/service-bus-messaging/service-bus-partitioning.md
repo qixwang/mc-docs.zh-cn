@@ -4,17 +4,18 @@ description: 介绍如何使用多个消息中转站对服务总线队列和主�
 services: service-bus-messaging
 author: lingliw
 manager: digimobile
+editor: spelluru
 ms.service: service-bus-messaging
 ms.topic: article
-origin.date: 02/06/2019
-ms.date: 08/29/2019
+origin.date: 02/06/2020
+ms.date: 03/20/2020
 ms.author: v-lingwu
-ms.openlocfilehash: de8e47d9aaee7e3ec40353d8711654dc03424362
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: a539d62b24ea0e972cfe32fcf734887c49aeb81a
+ms.sourcegitcommit: 305361c96d1d5288d3dda7e81833820640e2afac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79291762"
+ms.lasthandoff: 03/21/2020
+ms.locfileid: "80109735"
 ---
 # <a name="partitioned-queues-and-topics"></a>分区队列和主题
 
@@ -128,7 +129,7 @@ committableTransaction.Commit();
 ## <a name="considerations-and-guidelines"></a>注意事项和指南
 * **高度一致性功能**：如果实体使用会话、重复检测或显式控制分区键等功能，则消息传送操作一定会路由至特定的分区。 如果任何分区遇到过高的流量，或基础存储处于不正常状态，这些操作将失败，可用性会降低。 整体来说，一致性仍然远高于非分区实体；只有一部分流量会遇到问题，而不是所有流量。 有关详细信息，请参阅此处[对可用性和一致性的讨论](../event-hubs/event-hubs-availability-and-consistency.md)。
 * **管理**：必须对实体的所有分区执行创建、更新及删除等操作。 如果任何分区处于不正常状态，可能会导致这些操作失败。 以“获取”操作来说，必须汇总来自所有分区的信息，例如消息计数。 如果任何分区处于不正常状态，则实体可用性状态会报告为受限制。
-* **少量消息的情况**：对于这类情况，尤其是使用 HTTP 协议时，可能必须执行多次接收操作，才能获取所有消息。 对于接收请求，前端会在所有分区上执行接收，并缓存所有收到的响应。 相同连接上的后续接收请求将受益于此缓存，而且接收延迟会缩短。 不过，如果有多个连接或使用 HTTP，则会针对每个请求建立新的连接。 因此，不保证抵达相同的节点。 如果现有的所有消息均被锁定，而且在另一个前端中缓存，则接收操作返回 **null**。 消息最后会到期，可以再次接收它们。 建议使用 HTTP 保持连接。
+* **少量消息的情况**：对于这类情况，尤其是使用 HTTP 协议时，可能必须执行多次接收操作，才能获取所有消息。 对于接收请求，前端会在所有分区上执行接收，并缓存所有收到的响应。 相同连接上的后续接收请求将受益于此缓存，而且接收延迟会缩短。 不过，如果有多个连接或使用 HTTP，则会针对每个请求建立新的连接。 因此，不保证抵达相同的节点。 如果现有的所有消息均被锁定，而且在另一个前端中缓存，则接收操作返回 **null**。 消息最后会到期，可以再次接收它们。 建议使用 HTTP 保持连接。 在低容量场景中使用分区时，接收操作所用时间可能比预期的长。 因此，我们建议不要在这些场景中使用分区。 删除任何现有的分区实体，并在禁用分区的情况下重新创建它们，以提高性能。
 * **浏览/扫视消息**：仅在较旧的 [WindowsAzure.ServiceBus](https://www.nuget.org/packages/WindowsAzure.ServiceBus/) 库中可用。 [PeekBatch](/dotnet/api/microsoft.servicebus.messaging.queueclient.peekbatch) 不一定返回 [MessageCount](/dotnet/api/microsoft.servicebus.messaging.queuedescription.messagecount) 属性中指定的消息数目。 此行为有两个常见的原因。 其中一个原因是消息集合的汇总大小超过设置的 256 KB 上限。 另一个原因是，如果队列或主题的 [EnablePartitioning 属性](/dotnet/api/microsoft.servicebus.messaging.queuedescription.enablepartitioning) 设为 **true**，则分区可能没有足够的消息来完成所请求的消息数目。 一般情况下，如果应用程序想要接收特定数目的消息，它应该重复调用 [PeekBatch](/dotnet/api/microsoft.servicebus.messaging.queueclient.peekbatch) ，直到获得该数目的消息，或者已没有更多消息可速览为止。 有关详细信息，包括代码示例，请参阅 [QueueClient.PeekBatch](/dotnet/api/microsoft.servicebus.messaging.queueclient.peekbatch) 或 [SubscriptionClient.PeekBatch](/dotnet/api/microsoft.servicebus.messaging.subscriptionclient.peekbatch) API 文档。
 
 ## <a name="latest-added-features"></a>最新添加的功能
@@ -146,6 +147,7 @@ committableTransaction.Commit();
 * 服务总线当前允许为每个命名空间最多创建 100 个分区队列或主题。 每个分区队列或主题都会计入每个命名空间的 10,000 个实体的配额（不适用于高级层）。
 
 ## <a name="next-steps"></a>后续步骤
+
 在 [AMQP 1.0 协议指南](service-bus-amqp-protocol-guide.md)中了解 AMQP 1.0 消息传送规范的核心概念。
 
 [Azure portal]: https://portal.azure.cn

@@ -1,16 +1,16 @@
 ---
 title: Azure Functions 的缩放和托管
-description: 了解如何在 Azure Functions 消耗计划之间进行选择。
+description: 了解如何在 Azure Functions 消耗计划和高级计划之间进行选择。
 ms.assetid: 5b63649c-ec7f-4564-b168-e0a74cb7e0f3
 ms.topic: conceptual
-ms.date: 03/03/2020
+ms.date: 03/19/2020
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0e14df33449ccc0a43a5e44143c287481453a1e6
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: 5d1b73c9c4d44917cecf61dad327c0e5350e22ab
+ms.sourcegitcommit: e500354e2fd8b7ac3dddfae0c825cc543080f476
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79292172"
+ms.lasthandoff: 03/19/2020
+ms.locfileid: "79546875"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Azure Functions 的缩放和托管
 
@@ -55,7 +55,7 @@ ms.locfileid: "79292172"
 
 若要详细了解在消耗计划中运行时如何估算成本，请参阅[了解消耗计划成本](functions-consumption-costs.md)。
 
-## <a name="app-service-plan"></a>专用（应用服务）计划
+## <a name="dedicated-app-service-plan"></a><a name="app-service-plan"></a>专用（应用服务）计划
 
 函数应用也可以像其他应用服务应用（基本、标准和隔离 SKU）一样在相同的专用 VM 上运行。
 
@@ -71,7 +71,7 @@ ms.locfileid: "79292172"
 在应用服务计划上运行 JavaScript 函数时，应选择具有较少 vCPU 的计划。 有关详细信息，请参阅[选择单核应用服务计划](functions-reference-node.md#choose-single-vcpu-app-service-plans)。 
 <!-- Note: the portal links to this section via fwlink https://go.microsoft.com/fwlink/?linkid=830855 --> 
 
-### <a name="always-on"></a> Always On
+### <a name="always-on"></a><a name="always-on"></a> Always On
 
 如果在应用服务计划上运行，应启用 AlwaysOn 设置，使函数应用能正常运行  。 在应用服务计划中，如果函数运行时处于不活动状态，几分钟后就会进入空闲状态，因此只有 HTTP 触发器才能“唤醒”函数。 只能对应用服务计划使用始终可用。 在消耗计划中，平台会自动激活函数应用。
 
@@ -128,10 +128,8 @@ Azure Functions 的缩放单位为函数应用。 横向扩展函数应用时，
 * 单个函数应用最多只能横向扩展到 200 个实例。 不过，单个实例每次可以处理多个消息或请求，因此，对并发执行数没有规定的限制。
 * 对于 HTTP 触发器，将最多每隔 1 秒分配一次新实例。
 * 对于非 HTTP 触发器，将最多每隔 30 秒分配一次新实例。
-
-不同触发器还可能有不同的缩放限制，如下所述：
-
-* [事件中心](functions-bindings-event-hubs-trigger.md#scaling)
+* 对于服务总线触发器，请使用资源的_管理_权限，以实现最有效的缩放。 使用_侦听_权限时，由于队列长度不能用于通知缩放决策，缩放不够准确。 若要详细了解如何在服务总线访问策略中设置权限，请参阅[共享访问授权策略](../service-bus-messaging/service-bus-sas.md#shared-access-authorization-policies)。
+* 有关事件中心触发器，请参阅参考文章中的[缩放指南](functions-bindings-event-hubs-trigger.md#scaling)。 
 
 ### <a name="best-practices-and-patterns-for-scalable-apps"></a>可缩放应用的最佳做法和模式
 
@@ -156,4 +154,3 @@ Azure Functions 的缩放单位为函数应用。 横向扩展函数应用时，
 
 [!INCLUDE [functions-limits](../../includes/functions-limits.md)]
 
-<!-- Update_Description: link update -->

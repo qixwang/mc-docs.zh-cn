@@ -6,17 +6,17 @@ services: azure-stack
 documentationcenter: ''
 author: WenJason
 ms.topic: article
-origin.date: 07/23/2019
-ms.date: 02/24/2020
+origin.date: 03/04/2020
+ms.date: 03/23/2020
 ms.author: v-jay
 ms.reviewer: ppacent
 ms.lastreviewed: 01/08/2019
-ms.openlocfilehash: fd8355192af5090260d1f0c56440a5bef17eafad
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.openlocfilehash: 51ea6a15bedf927f0af05855feb94e28ec7ba203
+ms.sourcegitcommit: e500354e2fd8b7ac3dddfae0c825cc543080f476
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77540247"
+ms.lasthandoff: 03/19/2020
+ms.locfileid: "79547077"
 ---
 # <a name="validate-azure-stack-hub-pki-certificates"></a>验证 Azure Stack Hub PKI 证书
 
@@ -48,7 +48,7 @@ ms.locfileid: "77540247"
 > [!IMPORTANT]  
 > PKI 证书是一个 PFX 文件，其密码应被视为敏感信息。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 在验证用于 Azure Stack Hub 部署的 PKI 证书之前，系统应符合以下先决条件：
 
@@ -90,7 +90,7 @@ ms.locfileid: "77540247"
         - `C:\Certificates\Deployment\Admin Portal\CustomerCertificate.pfx`
         - `C:\Certificates\Deployment\ARM Admin\CustomerCertificate.pfx`
 
-3. 在 PowerShell 窗口中，更改 `RegionName` 和 `FQDN` 的值使其适合 Azure Stack Hub 环境，然后运行以下 cmdlet：
+3. 在 PowerShell 窗口中，更改 `RegionName`、`FQDN` 和 `IdentitySystem` 的值使其适合 Azure Stack Hub 环境，然后运行以下 cmdlet：
 
     ```powershell  
     $pfxPassword = Read-Host -Prompt "Enter PFX Password" -AsSecureString 
@@ -239,7 +239,7 @@ ms.locfileid: "77540247"
 
 | Directory | 证书 |
 | ---    | ----        |
-| acsBlob | `wildcard_blob_<region>_<externalFQDN>` |
+| ACSBlob | `wildcard_blob_<region>_<externalFQDN>` |
 | ACSQueue  |  `wildcard_queue_<region>_<externalFQDN>` |
 | ACSTable  |  `wildcard_table_<region>_<externalFQDN>` |
 | 管理扩展主机  |  `wildcard_adminhosting_<region>_<externalFQDN>` |

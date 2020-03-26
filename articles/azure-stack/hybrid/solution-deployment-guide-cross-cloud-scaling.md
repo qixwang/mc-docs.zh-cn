@@ -4,16 +4,16 @@ description: 了解如何使用 Azure 和 Azure Stack Hub 部署可跨云缩放�
 author: WenJason
 ms.topic: article
 origin.date: 11/05/2019
-ms.date: 02/24/2020
+ms.date: 03/23/2020
 ms.author: v-jay
 ms.reviewer: anajod
 ms.lastreviewed: 11/05/2019
-ms.openlocfilehash: 337a2fb30b480f363736e0f0b177e3fa427849d1
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.openlocfilehash: 5e9de6ad0ad47e483ba562a52f0ce05c8ccee03a
+ms.sourcegitcommit: e500354e2fd8b7ac3dddfae0c825cc543080f476
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77541064"
+ms.lasthandoff: 03/19/2020
+ms.locfileid: "79547065"
 ---
 # <a name="deploy-an-app-that-scales-cross-cloud-using-azure-and-azure-stack-hub"></a>使用 Azure 和 Azure Stack Hub 部署可跨云缩放的应用
 
@@ -36,12 +36,12 @@ ms.locfileid: "77541064"
 > 
 > [混合应用程序的设计注意事项](overview-app-design-considerations.md)一文回顾了设计、部署和运行混合应用程序所需的软件质量要素（位置、可伸缩性、可用性、复原能力、可管理性和安全性）。 这些设计注意事项有助于优化混合应用设计，从而最大限度地减少生产环境中的难题。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 -   Azure 订阅。 如果需要，请在开始之前先创建 [1 元试用帐户](https://www.azure.cn/zh-cn/pricing/1rmb-trial-full/?form-type=identityauth)。
 
-- 使用 Azure Stack Hub 集成系统，或部署 Azure Stack Hub 开发工具包。
-    - 有关安装 Azure Stack Hub 的说明，请参阅[安装 Azure Stack Hub 开发工具包](../asdk/asdk-install.md)。
+- Azure Stack Hub 集成系统，或部署 Azure Stack 开发工具包。
+    - 有关安装 Azure Stack Hub 的说明，请参阅[安装 Azure Stack 开发工具包](../asdk/asdk-install.md)。
     - 有关 ASDK 部署后自动化脚本，请参阅：[https://github.com/mattmcspirit/azurestack/blob/master/deployment/ConfigASDK.ps1](https://github.com/mattmcspirit/azurestack/blob/master/deployment/ConfigASDK.ps1) 
     - 此项安装可能需要几个小时才能完成。
 
@@ -108,7 +108,7 @@ Azure Repos
 
 ### <a name="create-self-contained-web-app-deployment-for-app-services-in-both-clouds"></a>为这两个云中的应用服务创建独立的 Web 应用部署
 
-1.  编辑 **WebApplication.csproj** 文件。 选择 `Runtimeidentifier` 并添加 `win10-x64`。 （请参阅[独立部署](https://docs.microsoft.com/dotnet/core/deploying/#self-contained-deployments-scd)文档。） 
+1.  编辑 **WebApplication.csproj** 文件。 选择 `Runtimeidentifier` 并添加 `win10-x64`。 （请参阅[独立部署](https://docs.microsoft.com/dotnet/core/deploying/deploy-with-vs#simpleSelf)文档。） 
 
     ![编辑 Web 应用项目文件](media/solution-deployment-guide-cross-cloud-scaling/image3.png)
 
@@ -124,7 +124,7 @@ Azure Repos
 
     ![将代码添加到 Web 应用](media/solution-deployment-guide-cross-cloud-scaling/image4.png)
 
-3. 运行生成。 [独立部署生成](https://docs.microsoft.com/dotnet/core/deploying/#self-contained-deployments-scd)过程将发布可在 Azure 和 Azure Stack Hub 上运行的项目。
+3. 运行生成。 [独立部署生成](https://docs.microsoft.com/dotnet/core/deploying/deploy-with-vs#simpleSelf)过程将发布可在 Azure 和 Azure Stack Hub 上运行的项目。
 
 ## <a name="use-an-azure-hosted-agent"></a>使用 Azure 托管代理
 
@@ -267,7 +267,7 @@ Azure Pipelines 和 Azure DevOps Services 提供高度可配置、可管理的�
 
 #### <a name="create-self-contained-web-app-deployment-for-app-services-in-both-clouds"></a>为这两个云中的应用服务创建独立的 Web 应用部署
 
-1.  编辑 **WebApplication.csproj** 文件：选择 `Runtimeidentifier` 并添加 `win10-x64`。 有关详细信息，请参阅[独立部署](https://docs.microsoft.com/dotnet/core/deploying/#self-contained-deployments-scd)文档。
+1.  编辑 **WebApplication.csproj** 文件：选择 `Runtimeidentifier` 并添加 `win10-x64`。 有关详细信息，请参阅[独立部署](https://docs.microsoft.com/dotnet/core/deploying/deploy-with-vs#simpleSelf)文档。
 
 2.  使用团队资源管理器将代码签入 Azure Repos。
 
@@ -281,7 +281,7 @@ Azure Pipelines 和 Azure DevOps Services 提供高度可配置、可管理的�
 
 3.  在“参数”中，  添加 **-r win10-x64** 代码。 在 .NET Core 中触发独立部署时需要添加此代码。
 
-4.  运行生成。 [独立部署生成](https://docs.microsoft.com/dotnet/core/deploying/#self-contained-deployments-scd)过程将发布可在 Azure 和 Azure Stack Hub 上运行的项目。
+4.  运行生成。 [独立部署生成](https://docs.microsoft.com/dotnet/core/deploying/deploy-with-vs#simpleSelf)过程将发布可在 Azure 和 Azure Stack Hub 上运行的项目。
 
 #### <a name="use-an-azure-hosted-build-agent"></a>使用 Azure 托管生成代理
 

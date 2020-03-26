@@ -1,19 +1,18 @@
 ---
 title: 将 Azure 诊断数据发送到 Application Insights
 description: 更新 Azure 诊断公共配置，以将数据发送到 Application Insights。
-ms.service: azure-monitor
 ms.subservice: diagnostic-extension
 ms.topic: conceptual
 author: lingliw
 origin.date: 03/19/2016
 ms.date: 6/4/2019
 ms.author: v-lingwu
-ms.openlocfilehash: ea56b3cd1e87ed9774c356961d282feaf330c1bf
-ms.sourcegitcommit: 21b02b730b00a078a76aeb5b78a8fd76ab4d6af2
+ms.openlocfilehash: 60556305d12a86137648d2335df3e91db0e08642
+ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74838925"
+ms.lasthandoff: 03/17/2020
+ms.locfileid: "79452461"
 ---
 # <a name="send-cloud-service-virtual-machine-or-service-fabric-diagnostic-data-to-application-insights"></a>将云服务、虚拟机或 Service Fabric 诊断数据发送到 Application Insights
 云服务、虚拟机、虚拟机规模集和 Service Fabric 都使用 Azure 诊断扩展来收集数据。  Azure 诊断将数据发送到 Azure 存储表。  但是，也可以 Azure 诊断扩展 1.5 或更高版本，通过管道将所有或一部分数据发送到其他位置。
@@ -58,7 +57,7 @@ Application Insights 接收器的示例配置：
     ]
 }
 ```
-- **接收器**的 *name* 属性是用于唯一标识该接收器的字符串值。
+- **接收器**的 name  属性是用于唯一标识该接收器的字符串值。
 
 - **ApplicationInsights** 元素指定要将 Azure 诊断数据发送到的 Application Insights 资源的检测键。
     - 如果没有 Application Insights 资源，请参阅[创建新的 Application Insights 资源](../../azure-monitor/app/create-new-resource.md )，了解有关创建资源和获取检测键的详细信息。

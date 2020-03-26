@@ -2,15 +2,15 @@
 title: 模板中的输出
 description: 介绍如何在 Azure 资源管理器模板中定义输出值。
 ms.topic: conceptual
-origin.date: 09/05/2019
+origin.date: 02/25/2020
+ms.date: 03/23/2020
 ms.author: v-yeche
-ms.date: 01/06/2020
-ms.openlocfilehash: d801f3d061af65200b187e9982643e08ce76c807
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.openlocfilehash: 1a5df2d26565649fb7c01b8de3396c39365c843f
+ms.sourcegitcommit: 1436f1851342ca5631eb25342eed954adb707af0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75631631"
+ms.lasthandoff: 03/19/2020
+ms.locfileid: "79543729"
 ---
 # <a name="outputs-in-azure-resource-manager-template"></a>Azure 资源管理器模板中的输出
 
@@ -45,6 +45,24 @@ ms.locfileid: "75631631"
 
 有关条件输出的简单示例，请参阅[条件输出模板](https://github.com/bmoore-msft/AzureRM-Samples/blob/master/conditional-output/azuredeploy.json)。
 
+## <a name="dynamic-number-of-outputs"></a>动态输出数量
+
+在某些情况下，创建模板时你不知道需要返回的值的实例数量。 可以使用 **copy** 元素返回可变的值数。
+
+```json
+"outputs": {
+  "storageEndpoints": {
+    "type": "array",
+    "copy": {
+      "count": "[parameters('storageCount')]",
+      "input": "[reference(concat(copyIndex(), variables('baseName'))).primaryEndpoints.blob]"
+    }
+  }
+}
+```
+
+有关详细信息，请参阅 [Azure 资源管理器模板中的输出迭代](copy-outputs.md)。
+
 ## <a name="linked-templates"></a>链接的模板
 
 若要从链接模板中检索输出值，请在父模板中使用 [reference](template-functions-resource.md#reference) 函数。 父模板中的语法为：
@@ -71,7 +89,7 @@ ms.locfileid: "75631631"
 
 若要从部署历史记录中获取输出值，可以使用脚本。
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```powershell
 (Get-AzResourceGroupDeployment `
@@ -79,7 +97,7 @@ ms.locfileid: "75631631"
   -Name <deployment-name>).Outputs.resourceID.value
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli
 az group deployment show \

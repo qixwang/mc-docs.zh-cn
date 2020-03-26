@@ -6,12 +6,12 @@ origin.date: 07/23/2018
 ms.date: 6/4/2019
 ms.author: v-lingwu
 author: lingliw
-ms.openlocfilehash: d2fc09cc08fe41cb9ba4f8df1441f0cb815ade2b
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.openlocfilehash: a4ced7b214bf141fc62dc88c1b4ffce351434955
+ms.sourcegitcommit: 305361c96d1d5288d3dda7e81833820640e2afac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78850452"
+ms.lasthandoff: 03/21/2020
+ms.locfileid: "80109781"
 ---
 # <a name="troubleshooting-no-data---application-insights-for-netnet-core"></a>排查无数据问题 - 用于 .NET/.NET Core 的 Application Insights
 
@@ -23,12 +23,13 @@ ms.locfileid: "78850452"
 
 *我随机遇到数据丢失。*
 
+* 检查是否在[遥测通道](telemetry-channels.md#does-the-application-insights-channel-guarantee-telemetry-delivery-if-not-what-are-the-scenarios-in-which-telemetry-can-be-lost)遇到数据丢失
 
 * 检查遥测通道 [GitHub 存储库](https://github.com/Microsoft/ApplicationInsights-dotnet/issues)中是否存在任何已知问题
 
 *当应用程序即将停止时，我在控制台应用或 Web 应用中遇到数据丢失。*
 
-* SDK 通道将遥测数据保存在缓冲区中，并分批发送。 
+* SDK 通道将遥测数据保存在缓冲区中，并分批发送。 如果应用程序正在关闭，你可能需要显式调用 [Flush()](api-custom-events-metrics.md#flushing-data)。 `Flush()` 的行为取决于实际使用的[通道](telemetry-channels.md#built-in-telemetry-channels)。
 
 ## <a name="no-data-from-my-server"></a>服务器未提供数据
 *我已在 Web 服务器上安装应用，但未看到服务器提供任何遥测数据。服务器在开发计算机上正常运行。*
@@ -236,7 +237,7 @@ Microsoft.ApplicationInsights.AspNetCore 的最新版本为 2.8.2，它引用 Mi
 4. 完成后还原这些更改。
 
 
-## <a name="PerfView"></a> 使用 PerfView 收集日志
+## <a name="collect-logs-with-perfview"></a><a name="PerfView"></a> 使用 PerfView 收集日志
 [PerfView](https://github.com/Microsoft/perfview) 是一款免费的诊断和性能分析工具，可通过收集和可视化来自多个源的诊断信息来帮助确定 CPU、内存和其他问题。
 
 Application Insights SDK 记录可由 PerfView 捕获的 EventSource 自我故障排除日志。

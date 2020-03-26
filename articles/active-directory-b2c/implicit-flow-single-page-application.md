@@ -3,20 +3,20 @@ title: 使用隐式流的单页登录
 titleSuffix: Azure AD B2C
 description: 了解如何通过 Azure Active Directory B2C 添加使用 OAuth 2.0 隐式流的单页登录。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 02/04/2020
+ms.date: 03/16/2020
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: 17ec0b5068307daa34f55c7dac79781c432d4726
-ms.sourcegitcommit: 888cbc10f2348de401d4839a732586cf266883bf
+ms.openlocfilehash: 87fe62ba1c92a82070bd963d64a5293b2ee74042
+ms.sourcegitcommit: 71a386ca0d0ecb79a123399b6ab6b8c70ea2aa78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77028336"
+ms.lasthandoff: 03/18/2020
+ms.locfileid: "79497189"
 ---
 # <a name="single-page-sign-in-using-the-oauth-20-implicit-flow-in-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 中的 OAuth 2.0 隐式流的单页登录
 
@@ -238,18 +238,18 @@ GET https://{tenant}.b2clogin.cn/{tenant}.partner.onmschina.cn/{policy}/oauth2/v
 
 
 > [!NOTE]
-> 将用户定向到 `end_session_endpoint` 会清除用户的某些 Azure AD B2C 单一登录状态。 但是，不会从用户的社交标识提供者会话中注销该用户。 如果用户在后续登录中选择相同的标识提供者，用户将重新进行身份验证，且无需输入其凭据。 但是，如果是本地帐户，则会以正确的方式结束用户的会话。
+> 将用户定向到 `end_session_endpoint` 会清除用户的某些 Azure AD B2C 单一登录状态。 但是，不会从用户的社交标识提供者会话中注销该用户。 如果用户在后续登录中选择相同的标识提供者，用户将重新进行身份验证，且无需输入其凭据。 如果用户要注销 Azure AD B2C 应用程序，并不表示他们想要完全注销其帐户。 但是，如果是本地帐户，则会以正确的方式结束用户的会话。
 >
 
 ## <a name="next-steps"></a>后续步骤
 
-### <a name="code-sample-hellojs-with-azure-ad-b2c"></a>代码示例：适用于 Azure AD B2C 的 node.js
+### <a name="code-sample-azure-ad-b2c-with-microsoft-authentication-library-for-javascript"></a>代码示例：Azure AD B2C（带有适用于 JavaScript 的 Microsoft 身份验证库）
 
-[使用 Azure AD B2C 在 node.js 中构建的单页应用程序][github-hello-js-example] (GitHub)
+[使用 msal.js 为 Azure AD B2C 构建的单页应用程序][github-msal-js-example] (GitHub)
 
-GitHub 上的此示例旨在帮助你在以 [hello.js][github-hello-js] 构建的简单 Web 应用程序中开始使用 Azure AD B2C，以及使用弹出式身份验证。
+GitHub 上的此示例旨在帮助你在以 [msal.js][github-msal-js] 构建的简单 Web 应用程序中开始使用 Azure AD B2C，以及使用弹出式身份验证。
 
 <!-- Links - EXTERNAL -->
-[github-hello-js-example]: https://github.com/Azure-Samples/active-directory-b2c-javascript-hellojs-singlepageapp
-[github-hello-js]: https://github.com/MrSwitch/hello.js
+[github-msal-js-example]: https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp
+[github-msal-js]: https://github.com/AzureAD/microsoft-authentication-library-for-js
 

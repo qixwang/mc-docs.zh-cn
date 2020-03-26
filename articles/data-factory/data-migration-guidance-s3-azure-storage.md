@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 origin.date: 8/04/2019
-ms.date: 03/02/2020
-ms.openlocfilehash: 30bbe97b18f68bb789ee181910e7c90f78d75d2c
-ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
+ms.date: 03/16/2020
+ms.openlocfilehash: e5c926bcb2844aead3fd0c47c00207be82f1bafd
+ms.sourcegitcommit: 71a386ca0d0ecb79a123399b6ab6b8c70ea2aa78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77653503"
+ms.lasthandoff: 03/18/2020
+ms.locfileid: "79497359"
 ---
 # <a name="use-azure-data-factory-to-migrate-data-from-amazon-s3-to-azure-storage"></a>使用 Azure 数据工厂将数据从 Amazon S3 迁移到 Azure 存储 
 
@@ -87,7 +87,7 @@ ADF 默认通过 HTTPS 协议使用加密的连接将数据从 Amazon S3 传输�
 
 ### <a name="initial-snapshot-data-migration"></a>初始快照数据迁移 
 
-建议使用数据分区，尤其是在迁移 10 TB 以上的数据时。  若要将数据分区，请利用“前缀”设置按名称筛选 Amazon S3 中的文件夹和文件，然后，每个 ADF 复制作业一次可以复制一个分区。  可以并行运行多个 ADF 复制作业，以获得更好的吞吐量。 
+建议使用数据分区，尤其是在迁移 100 TB 以上的数据时。  若要将数据分区，请利用“前缀”设置按名称筛选 Amazon S3 中的文件夹和文件，然后，每个 ADF 复制作业一次可以复制一个分区。  可以并行运行多个 ADF 复制作业，以获得更好的吞吐量。 
 
 如果网络或数据存储的暂时性问题导致任何复制作业失败，你可以重新运行失败的复制作业，以再次从 AWS S3 中加载特定的分区。  加载其他分区的所有其他复制作业不受影响。 
 

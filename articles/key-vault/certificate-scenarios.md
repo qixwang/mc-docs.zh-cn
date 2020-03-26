@@ -6,16 +6,17 @@ author: msmbaldwin
 manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
+ms.subservice: certificates
 ms.topic: conceptual
 origin.date: 01/07/2019
-ms.date: 10/25/2019
+ms.date: 03/16/2020
 ms.author: v-tawe
-ms.openlocfilehash: 29dd38e869ccd4d3d9b8b7c2b4423873e97c1722
-ms.sourcegitcommit: 642a4ad454db5631e4d4a43555abd9773cae8891
+ms.openlocfilehash: 4c487bfa5d6d07135b8145dadcc84b7ce7e21855
+ms.sourcegitcommit: 764b3d26aedce2de0e1948468a706fd3204a3d5e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2019
-ms.locfileid: "73426027"
+ms.lasthandoff: 03/19/2020
+ms.locfileid: "79543303"
 ---
 # <a name="get-started-with-key-vault-certificates"></a>Key Vault 证书入门
 以下方案概述了 Key Vault 的证书管理服务的多种主要使用方式，包括在密钥保管库中创建第一个证书所需的其他步骤。
@@ -39,10 +40,10 @@ ms.locfileid: "73426027"
 **步骤 1** - 证书颁发机构 (CA) 提供者  
 -   对于任何给定公司（例如 Contoso）来说，以 IT 管理员、PKI 管理员或任何可以使用 CA 来管理帐户的人员的身份加入 是使用 Key Vault 证书的先决条件。  
     以下 CA 是目前可以与 Key Vault 配合使用的提供者：  
-    -   DigiCert - Key Vault 提供 DigiCert 的 OV SSL 证书。  
-    -   GlobalSign - Key Vault 提供 GlobalSign 的 OV SSL 证书。  
+    -   DigiCert - Key Vault 提供 DigiCert 的 OV TLS/SSL 证书。  
+    -   GlobalSign - Key Vault 提供 GlobalSign 的 OV TLS/SSL 证书。  
 
-**步骤 2** - CA 提供者的帐户管理员创建可供 Key Vault 使用的凭据，以便通过 Key Vault 注册、续订和使用 SSL 证书。
+**步骤 2** - CA 提供商的帐户管理员创建可供 Key Vault 使用的凭据，以便通过 Key Vault 注册、续订和使用 TLS/SSL 证书。
 
 **步骤 3** - Contoso 管理员以及拥有证书（取决于 CA）的 Contoso 员工（Key Vault 用户）可以从管理员处获取证书，也可以直接从 CA 的帐户获取。  
 
@@ -59,13 +60,13 @@ ms.locfileid: "73426027"
 
 ## <a name="creating-a-certificate-with-a-ca-partnered-with-key-vault"></a>使用与 Key Vault 配合使用的 CA 创建证书
 
-![使用与 Key Vault 配合使用的证书颁发机构创建证书](./media/certificate-authority-2.png)
+![通过与 Key Vault 配合使用的证书颁发机构创建证书](media/certificate-authority-2.png)
 
 **步骤 4** - 以下说明对应于上图中绿色数字代表的步骤。  
   (1) - 在上图中，应用程序在创建证书时，是在内部以在密钥保管库中创建密钥开始的。  
-  (2) - Key Vault 向 CA 发送 SSL 证书请求。  
-  (3) - 应用程序会在循环和等待过程中轮询 Key Vault 至证书完成。 当 Key Vault 收到 CA 的 x509 证书响应时，证书创建完成。  
-  (4) - CA 使用 X509 SSL 证书对 Key Vault 的 SSL 证书请求进行响应。  
+  (2) - Key Vault 向 CA 发送 TLS/SSL 证书请求。  
+  (3) - 应用程序会在循环和等待过程中轮询 Key Vault 至证书完成。 当 Key Vault 通过 x509 证书收到 CA 的响应时，证书创建完成。  
+  (4) - CA 通过 X509 TLS/SSL 证书对 Key Vault 的 TLS/SSL 证书请求进行响应。  
   (5) - 与 CA 的 X509 证书合并以后，新证书的创建过程即告完成。  
 
   Key Vault 用户 - 通过指定策略来创建证书

@@ -10,14 +10,14 @@ author: WenJason
 manager: digimobile
 ms.reviewer: douglasl
 ms.custom: seo-lt-2019
-origin.date: 09/09/2019
-ms.date: 01/06/2020
-ms.openlocfilehash: 2fcad3715d3c6b4daf9aec0e8749d258f4b4507d
-ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
+origin.date: 03/12/2020
+ms.date: 03/23/2020
+ms.openlocfilehash: 15871cf5934bccfef62ec989b25a3043e7e9139a
+ms.sourcegitcommit: 71a386ca0d0ecb79a123399b6ab6b8c70ea2aa78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77653538"
+ms.lasthandoff: 03/18/2020
+ms.locfileid: "79497257"
 ---
 # <a name="copy-data-to-and-from-azure-sql-database-managed-instance-by-using-azure-data-factory"></a>使用 Azure 数据工厂向/从 Azure SQL 数据库托管实例复制数据
 
@@ -41,9 +41,6 @@ ms.locfileid: "77653538"
 
 >[!NOTE]
 >目前此连接器不支持 Azure SQL 数据库托管实例 [Always Encrypted](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine?view=azuresqldb-mi-current)。 为了解决此问题，可以通过自承载 Integration Runtime 使用[泛型 ODBC 连接器](connector-odbc.md)和 SQL Server ODBC 驱动程序。 按照[此指南](https://docs.microsoft.com/sql/connect/odbc/using-always-encrypted-with-the-odbc-driver?view=azuresqldb-mi-current)完成 ODBC 驱动程序下载和连接字符串配置。
-
->[!NOTE]
->此连接器目前不支持服务主体和托管标识身份验证。 若要解决此问题，可以选择 Azure SQL 数据库连接器并手动指定托管实例的服务器。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -178,7 +175,7 @@ Azure SQL 数据库托管实例链接的服务支持以下属性：
 }
 ```
 
-### <a name="managed-identity"></a> Azure 资源的托管标识身份验证
+### <a name="managed-identities-for-azure-resources-authentication"></a><a name="managed-identity"></a> Azure 资源的托管标识身份验证
 
 可将数据工厂与代表此特定数据工厂的 [Azure 资源托管标识](data-factory-service-identity.md)相关联。 可将此托管标识用于 Azure SQL 数据库托管实例身份验证。 指定的工厂可以使用此标识访问数据库数据或从/向数据库复制数据。
 
@@ -272,6 +269,7 @@ Azure SQL 数据库托管实例链接的服务支持以下属性：
 | sqlReaderQuery |此属性使用自定义 SQL 查询来读取数据。 例如 `select * from MyTable`。 |否 |
 | sqlReaderStoredProcedureName |此属性是从源表读取数据的存储过程的名称。 最后一个 SQL 语句必须是存储过程中的 SELECT 语句。 |否 |
 | storedProcedureParameters |这些参数用于存储过程。<br/>允许的值为名称或值对。 参数的名称和大小写必须与存储过程参数的名称和大小写匹配。 |否 |
+| isolationLevel | 指定 SQL 源的事务锁定行为。 允许的值为：**ReadCommitted**（默认值）、**ReadUncommitted**、**RepeatableRead**、**Serializable**、**Snapshot**。 请参阅[此文档](https://docs.microsoft.com/dotnet/api/system.data.isolationlevel)了解更多详细信息。 | 否 |
 
 **请注意以下几点：**
 
@@ -515,7 +513,7 @@ END
 - 先加载到临时表，然后调用存储过程。
 - 在复制过程中调用存储过程。
 
-## <a name="invoke-a-stored-procedure-from-a-sql-sink"></a> 调用 SQL 接收器的存储过程
+## <a name="invoke-a-stored-procedure-from-a-sql-sink"></a><a name="invoke-a-stored-procedure-from-a-sql-sink"></a> 调用 SQL 接收器的存储过程
 
 将数据复制到 Azure SQL 数据库托管实例时，还可通过其他参数配置并调用某个用户指定的存储过程。 存储过程功能利用[表值参数](https://msdn.microsoft.com/library/bb675163.aspx)。
 

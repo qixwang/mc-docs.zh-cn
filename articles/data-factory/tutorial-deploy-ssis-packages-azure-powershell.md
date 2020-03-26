@@ -10,22 +10,22 @@ ms.devlang: powershell
 ms.topic: tutorial
 ms.custom: seo-lt-2019
 origin.date: 02/01/2020
-ms.date: 03/02/2020
+ms.date: 03/23/2020
 author: v-jay
 ms.author: v-jay
 ms.reviewer: douglasl
 manager: digimobile
-ms.openlocfilehash: 9472f646ab34b5c3a4e3296f06e6b9e637d20347
-ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
+ms.openlocfilehash: 7e00b602f6753ae562efa41507a0befc9e17dccb
+ms.sourcegitcommit: 71a386ca0d0ecb79a123399b6ab6b8c70ea2aa78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77653571"
+ms.lasthandoff: 03/18/2020
+ms.locfileid: "79497135"
 ---
 # <a name="set-up-an-azure-ssis-ir-in-azure-data-factory-by-using-powershell"></a>使用 PowerShell 在 Azure 数据工厂中设置 Azure-SSIS IR
 
 本教程介绍如何在 Azure 数据工厂中设置 Azure-SQL Server Integration Services Integration Runtime (Azure-SSIS IR)。 Azure-SSIS IR 支持运行部署到以下位置的包：
-* 由 Azure SQL 数据库服务器实例（项目部署模型）托管的 SSIS 目录 (SSISDB)。
+* 由 Azure SQL 数据库服务器实例或托管实例承载的 SSIS 目录 (SSISDB)（项目部署模型）。
 * 文件系统、文件共享或 Azure 文件存储共享（包部署模型）。 
 
 设置 Azure-SSIS IR 后，可以使用熟悉的工具（例如 SQL Server Data Tools (SSDT) 和 SQL Server Management Studio (SSMS) 在 Azure 中部署并运行包。 也可以使用命令行实用工具，例如 `dtinstall`、`dtutil` 和 `dtexec`。  
@@ -48,7 +48,7 @@ ms.locfileid: "77653571"
 - Azure 订阅。 如果没有 Azure 订阅，可在开始前创建一个 [1 元人民币试用](https://www.azure.cn/zh-cn/pricing/1rmb-trial-full/?form-type=identityauth)帐户。 有关 Azure-SSIS IR 的概念性信息，请参阅 [Azure-SSIS Integration Runtime 概述](concepts-integration-runtime.md#azure-ssis-integration-runtime)。
 
 - （可选）Azure SQL 数据库服务器。 如果还没有数据库服务器，请在启动之前在 Azure 门户中创建一个。 Azure 数据工厂进而会在此数据库服务器上创建 SSISDB。 建议在集成运行时所在的同一 Azure 区域中创建数据库服务器。 此配置允许集成运行时将执行日志写入 SSISDB 而无需跨 Azure 区域。 
-    - 根据所选的数据库服务器，系统可以代表你将 SSISDB 创建为单一数据库或弹性池的一部分，用户可以在公共网络中或通过加入虚拟网络对其进行访问。 有关如何选择用于承载 SSISDB 的数据库服务器类型的指导，请参阅[比较 Azure SQL 数据库单一数据库、弹性池和托管实例](../data-factory/create-azure-ssis-integration-runtime.md)。 
+    - 根据所选的数据库服务器，系统可以代表你将 SSISDB 创建为单一数据库、弹性池的一部分，或者在托管实例中创建。 有关如何选择用于承载 SSISDB 的数据库服务器类型的指导，请参阅[比较 Azure SQL 数据库单一数据库、弹性池和托管实例](../data-factory/create-azure-ssis-integration-runtime.md#comparison-of-a-sql-database-single-database-elastic-pool-and-managed-instance)。
     
       如果使用包含 IP 防火墙或虚拟网络服务终结点的 Azure SQL 数据库服务器，或者需要在未配置自承载 IR 的情况下访问本地数据，请将 Azure-SSIS IR 加入虚拟网络。 有关详细信息，请参阅[在虚拟网络中创建 Azure-SSIS IR](/data-factory/create-azure-ssis-integration-runtime)。
     - 确认为数据库服务器启用了“允许访问 Azure 服务”设置。  使用包含 IP 防火墙规则或虚拟网络服务终结点的 Azure SQL 数据库服务器来承载 SSISDB 时，此设置不适用。 有关详细信息，请参阅[保护 Azure SQL 数据库](../sql-database/sql-database-security-tutorial.md#create-firewall-rules)。 若要通过 PowerShell 来启用此设置，请参阅 [New-AzSqlServerFirewallRule](https://docs.microsoft.com/powershell/module/az.sql/new-azsqlserverfirewallrule)。
@@ -104,6 +104,11 @@ $SSISDBServerAdminUserName = "[your server admin username for SQL authentication
 $SSISDBServerAdminPassword = "[your server admin password for SQL authentication]"
 # For the basic pricing tier, specify "Basic", not "B" - For standard/premium/elastic pool tiers, specify "S0", "S1", "S2", "S3", etc., see https://docs.azure.cn/sql-database/sql-database-resource-limits-database-server
 $SSISDBPricingTier = "[Basic|S0|S1|S2|S3|S4|S6|S7|S9|S12|P1|P2|P4|P6|P11|P15|…|ELASTIC_POOL(name = <elastic_pool_name>) for Azure SQL Database server or leave it empty for managed instance]"
+
+### Self-hosted integration runtime info - This can be configured as a proxy for on-premises data access 
+$DataProxyIntegrationRuntimeName = "" # OPTIONAL to configure a proxy for on-premises data access 
+$DataProxyStagingLinkedServiceName = "" # OPTIONAL to configure a proxy for on-premises data access 
+$DataProxyStagingPath = "" # OPTIONAL to configure a proxy for on-premises data access 
 ```
 
 ## <a name="sign-in-and-select-your-subscription"></a>登录并选择你的订阅。
@@ -255,6 +260,23 @@ if(![string]::IsNullOrEmpty($ExpressCustomSetup))
         -ExpressCustomSetup $setups
 }
 
+# Add self-hosted integration runtime parameters if you configure a proxy for on-premises data access
+if(![string]::IsNullOrEmpty($DataProxyIntegrationRuntimeName) -and ![string]::IsNullOrEmpty($DataProxyStagingLinkedServiceName))
+{
+    Set-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $ResourceGroupName `
+        -DataFactoryName $DataFactoryName `
+        -Name $AzureSSISName `
+        -DataProxyIntegrationRuntimeName $DataProxyIntegrationRuntimeName `
+        -DataProxyStagingLinkedServiceName $DataProxyStagingLinkedServiceName
+
+    if(![string]::IsNullOrEmpty($DataProxyStagingPath))
+    {
+        Set-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $ResourceGroupName `
+            -DataFactoryName $DataFactoryName `
+            -Name $AzureSSISName `
+            -DataProxyStagingPath $DataProxyStagingPath
+    }
+}
 ```
 
 ## <a name="start-the-azure-ssis-integration-runtime"></a>启动 Azure-SSIS Integration Runtime
@@ -329,6 +351,11 @@ $SSISDBServerAdminUserName = "[your server admin username for SQL authentication
 $SSISDBServerAdminPassword = "[your server admin password for SQL authentication]"
 # For the basic pricing tier, specify "Basic", not "B" - For standard/premium/elastic pool tiers, specify "S0", "S1", "S2", "S3", etc., see https://docs.azure.cn/sql-database/sql-database-resource-limits-database-server
 $SSISDBPricingTier = "[Basic|S0|S1|S2|S3|S4|S6|S7|S9|S12|P1|P2|P4|P6|P11|P15|…|ELASTIC_POOL(name = <elastic_pool_name>) for Azure SQL Database server or leave it empty for managed instance]"
+
+### Self-hosted integration runtime info - This can be configured as a proxy for on-premises data access 
+$DataProxyIntegrationRuntimeName = "" # OPTIONAL to configure a proxy for on-premises data access 
+$DataProxyStagingLinkedServiceName = "" # OPTIONAL to configure a proxy for on-premises data access 
+$DataProxyStagingPath = "" # OPTIONAL to configure a proxy for on-premises data access 
 
 ### Sign in and select subscription
 Connect-AzAccount -Environment AzureChinaCloud
@@ -435,6 +462,24 @@ if(![string]::IsNullOrEmpty($ExpressCustomSetup))
         -ExpressCustomSetup $setups
 }
 
+# Add self-hosted integration runtime parameters if you configure a proxy for on-premises data access
+if(![string]::IsNullOrEmpty($DataProxyIntegrationRuntimeName) -and ![string]::IsNullOrEmpty($DataProxyStagingLinkedServiceName))
+{
+    Set-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $ResourceGroupName `
+        -DataFactoryName $DataFactoryName `
+        -Name $AzureSSISName `
+        -DataProxyIntegrationRuntimeName $DataProxyIntegrationRuntimeName `
+        -DataProxyStagingLinkedServiceName $DataProxyStagingLinkedServiceName
+
+    if(![string]::IsNullOrEmpty($DataProxyStagingPath))
+    {
+        Set-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $ResourceGroupName `
+            -DataFactoryName $DataFactoryName `
+            -Name $AzureSSISName `
+            -DataProxyStagingPath $DataProxyStagingPath
+    }
+}
+
 ### Start integration runtime
 write-host("##### Starting #####")
 Start-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $ResourceGroupName `
@@ -455,7 +500,7 @@ write-host("If any cmdlet is unsuccessful, please consider using -Debug option f
 
 ## <a name="deploy-ssis-packages"></a>部署 SSIS 包
 
-如果使用 SSISDB，可将包部署到其中，并使用 SQL Server Data Tools (SSDT) 或 SQL Server Management Studio (SSMS) 工具（这些工具通过其服务器终结点连接到数据库服务器）在 Azure-SSIS IR 上运行这些包。 对于包含公共终结点的 Azure SQL 数据库服务器实例，服务器终结点格式分别为“<server name>.database.chinacloudapi.cn”  和“<server name>.public.<dns prefix>.database.chinacloudapi.cn,3342”  。 
+如果使用 SSISDB，可将包部署到其中，并使用 SQL Server Data Tools (SSDT) 或 SQL Server Management Studio (SSMS) 工具（这些工具通过其服务器终结点连接到数据库服务器）在 Azure-SSIS IR 上运行这些包。 对于包含公共终结点的 Azure SQL 数据库服务器实例或托管实例，服务器终结点格式分别为“<server name>.database.chinacloudapi.cn”  和“<server name>.public.<dns prefix>.database.chinacloudapi.cn,3342”  。 
 
 如果不使用 SSISDB，则可以将包部署到文件系统、文件共享或 Azure 文件存储共享中，并使用 `dtinstall`/`dtutil`/`dtexec` 命令行实用工具在 Azure-SSIS IR 中运行它们。 有关详细信息，请参阅[部署 SSIS 包](https://docs.microsoft.com/sql/integration-services/packages/deploy-integration-services-ssis-projects-and-packages#deploy-packages-to-integration-services-server)。 
 

@@ -9,12 +9,12 @@ ms.topic: reference
 origin.date: 01/21/2020
 ms.date: 02/17/2020
 ms.author: v-yiso
-ms.openlocfilehash: 8c3b58bbf0d7e76b9cb3ed100deb2dbcae6a4357
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: 0eefdf937f207a9c90a189b7d315d8c9ed5cbb71
+ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79292269"
+ms.lasthandoff: 03/17/2020
+ms.locfileid: "79452343"
 ---
 # <a name="azure-event-grid-event-schema"></a>Azure 事件网格事件架构
 
@@ -84,16 +84,16 @@ ms.locfileid: "79292269"
 
 所有事件均具有以下相同的顶级数据：
 
-| 属性 | 类型 | 说明 |
-| -------- | ---- | ----------- |
-| 主题 | string | 事件源的完整资源路径。 此字段不可写入。 事件网格提供此值。 |
-| subject | string | 事件主题的发布者定义路径。 |
-| eventType | string | 此事件源的一个注册事件类型。 |
-| EventTime | string | 基于提供程序 UTC 时间的事件生成时间。 |
-| id | string | 事件的唯一标识符。 |
-| 数据 | object | 特定于资源提供程序的事件数据。 |
-| dataVersion | string | 数据对象的架构版本。 发布者定义架构版本。 |
-| metadataVersion | string | 事件元数据的架构版本。 事件网格定义顶级属性的架构。 事件网格提供此值。 |
+| 属性 | 类型 | 必须 | 说明 |
+| -------- | ---- | -------- | ----------- |
+| 主题 | string | 否，但如果包含，则必须与事件网格主题 Azure 资源管理器 ID 完全匹配。 如果不包含，事件网格将标记到事件上。 | 事件源的完整资源路径。 此字段不可写入。 事件网格提供此值。 |
+| subject | string | 是 | 事件主题的发布者定义路径。 |
+| eventType | string | 是 | 此事件源的一个注册事件类型。 |
+| EventTime | string | 是 | 基于提供程序 UTC 时间的事件生成时间。 |
+| id | string | 是 | 事件的唯一标识符。 |
+| 数据 | object | 否 | 特定于资源提供程序的事件数据。 |
+| dataVersion | string | 否，但将使用空值进行标记。 | 数据对象的架构版本。 发布者定义架构版本。 |
+| metadataVersion | string | 不是必需的，但如果包含，则必须与事件网格架构 `metadataVersion` 完全匹配（目前仅为 `1`）。 如果不包含，事件网格将标记到事件上。 | 事件元数据的架构版本。 事件网格定义顶级属性的架构。 事件网格提供此值。 |
 
 若要了解数据对象中的属性，请参阅事件源：
 

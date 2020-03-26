@@ -4,18 +4,17 @@ description: 将 Azure 活动日志导出到存储以进行存档，或导出到
 author: lingliw
 manager: digimobile
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 origin.date: 01/23/2020
 ms.date: 2/19/2020
 ms.author: v-lingwu
 ms.subservice: logs
-ms.openlocfilehash: 808649bd38593ab9ada8af88c2fb96b64bed30af
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: 07872101070ef35e7fc1c15f19427d6b6775ab59
+ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79292711"
+ms.lasthandoff: 03/17/2020
+ms.locfileid: "79452352"
 ---
 # <a name="export-azure-activity-log-to-storage-or-azure-event-hubs"></a>将 Azure 活动日志导出到存储或 Azure 事件中心
 > [!IMPORTANT]
@@ -34,11 +33,12 @@ ms.locfileid: "79292711"
 ## <a name="prerequisites"></a>先决条件
 
 ### <a name="storage-account"></a>存储帐户
-如果存档活动日志，需要[创建一个存储帐户](../../storage/common/storage-quickstart-create-account.md)（如果尚未创建）。 不应使用其中存储了其他非监视数据的现有存储帐户，以便更好地控制监视数据所需的访问权限。 不过，如果还要将诊断日志和指标存档到存储帐户，则可以选择使用该存储帐户在一个中心位置保留所有监视数据。
+如果存档活动日志，需要[创建一个存储帐户](../../storage/common/storage-account-create.md)（如果尚未创建）。 不应使用其中存储了其他非监视数据的现有存储帐户，以便更好地控制监视数据所需的访问权限。 但是，如果还将日志和指标存档到存储帐户，则可以选择使用该同一存储帐户将所有监视数据保存在中心位置。
 
 只要配置设置的用户同时拥有两个订阅的相应 RBAC 访问权限，存储帐户就不必位于发出日志的的订阅中。 
-> [!NOTE]
->  当前无法将数据存档到受保护虚拟网络后面的存储帐户。
+
+> [!TIP]
+> 请参阅[配置 Azure 存储防火墙和虚拟网络](/storage/common/storage-network-security#exceptions)，以提供对受保护虚拟网络后面的存储帐户的访问权限。
 
 ### <a name="event-hubs"></a>事件中心
 如果要将活动日志发送到事件中心，则需要[创建一个事件中心](../../event-hubs/event-hubs-create.md)（如果尚未创建）。 如果先前已将活动日志事件流式传输到此事件中心命名空间，则会重用该事件中心。
@@ -173,5 +173,5 @@ ms.locfileid: "79292711"
 
 ## <a name="next-steps"></a>后续步骤
 
-* [了解有关活动日志的更多信息](../../azure-resource-manager/resource-group-audit.md)
+* [了解有关活动日志的更多信息](../../azure-resource-manager/management/view-activity-logs.md)
 * [将活动日志收集到 Azure Monitor 中](activity-log-collect.md)

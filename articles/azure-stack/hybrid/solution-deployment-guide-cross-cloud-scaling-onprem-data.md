@@ -4,16 +4,16 @@ description: 了解如何部署使用本地数据的应用程序，并使用 Azu
 author: WenJason
 ms.topic: article
 origin.date: 11/05/2019
-ms.date: 02/24/2020
+ms.date: 03/23/2020
 ms.author: v-jay
 ms.reviewer: anajod
 ms.lastreviewed: 11/05/2019
-ms.openlocfilehash: f657e7acc85b905be1589f70b02ce908e81824f5
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.openlocfilehash: 03f182bafbf3532a89664813bdce082456c4193b
+ms.sourcegitcommit: e500354e2fd8b7ac3dddfae0c825cc543080f476
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77540093"
+ms.lasthandoff: 03/19/2020
+ms.locfileid: "79547067"
 ---
 # <a name="deploy-an-app-that-uses-on-premises-data-and-scales-cross-cloud-using-azure-and-azure-stack-hub"></a>部署使用本地数据的应用程序，并使用 Azure 和 Azure Stack Hub 进行跨云缩放
 
@@ -52,11 +52,11 @@ ms.locfileid: "77540093"
 
 本教程还假设你有一个 Azure 订阅。 如果没有订阅，可在开始之前[创建一个 1 元试用帐户](https://www.azure.cn/zh-cn/pricing/1rmb-trial-full/?form-type=identityauth)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 在开始此解决方案之前，请确保符合以下要求：
 
-- Azure Stack Hub 开发工具包 (ASDK)，或 Azure Stack Hub 集成系统的订阅。 若要部署 Azure Stack Hub 开发工具包，请根据[使用安装程序部署 ASDK](../asdk/asdk-install.md) 中的说明操作。
+- Azure Stack 开发工具包 (ASDK) 或 Azure Stack Hub 集成系统的订阅。 若要部署 Azure Stack 开发工具包，请遵照[使用安装程序部署 ASDK](../asdk/asdk-install.md) 中的说明操作。
 - Azure Stack Hub 安装中应包含以下组件：
   - Azure 应用服务。 请与 Azure Stack Hub 操作员协作，在环境中部署并配置 Azure 应用服务。 在本教程中，应用服务必须至少有一 (1) 个可用的专用辅助角色。
   - Windows Server 2016 映像。
@@ -261,7 +261,7 @@ Azure Stack Hub 上的应用服务必须可从公共 Internet 进行路由，使
 Web 应用的每个实例都会使用不同的方法连接到 SQL 数据库。 Azure 中的应用使用 SQL Server 虚拟机 (VM) 的专用 IP 地址，Azure Stack Hub 中的应用使用 SQL Server VM 的公共 IP 地址。
 
 > [!Note]  
-> 在 Azure Stack Hub 集成系统上，公共 IP 地址不应通过 Internet 路由。 在 Azure Stack Hub 开发工具包 (ASDK) 上，公共 IP 地址不能在 ASDK 外部路由。
+> 在 Azure Stack Hub 集成系统上，公共 IP 地址不应通过 Internet 路由。 在 Azure Stack 开发工具包 (ASDK) 上，公共 IP 地址不能在 ASDK 外部路由。
 
 可以使用应用服务环境变量将不同的连接字符串传递给应用的每个实例。
 

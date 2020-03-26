@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 03/02/2020
+ms.date: 03/16/2020
 ms.author: v-junlch
-ms.openlocfilehash: 35287a136e6ec4954887f053ce0f40c9a7a5919b
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: b04687dff1e8dd6ef142508737df4d8ab2eb8139
+ms.sourcegitcommit: 71a386ca0d0ecb79a123399b6ab6b8c70ea2aa78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79293412"
+ms.lasthandoff: 03/18/2020
+ms.locfileid: "79497303"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>有关应用程序网关的常见问题解答
 
@@ -65,6 +65,8 @@ Azure 应用程序网关以服务形式提供应用程序传送控制器 (ADC)�
 ### <a name="where-do-i-find-the-application-gateway-ip-and-dns"></a>在何处可以找到应用程序网关的 IP 和 DNS？
 
 如果使用公共 IP 地址作为终结点，可以在公共 IP 地址资源中找到 IP 和 DNS 信息。 或者可以在门户中应用程序网关的概述页上找到它。 如果使用内部 IP 地址，可在概述页上找到该信息。
+
+对于 v2 SKU，请打开公共 IP 资源，然后选择“配置”  。 “DNS 名称标签(可选)”  字段可用于配置 DNS 名称。
 
 ### <a name="what-are-the-settings-for-keep-alive-timeout-and-tcp-idle-timeout"></a>Keep-Alive 超时和 TCP 空闲超时的设置是什么？
 
@@ -130,7 +132,7 @@ v2 SKU 可以自动确保新实例分布到各个容错域和更新域中。 如
 
 ### <a name="does-application-gateway-support-connection-draining"></a>应用程序网关是否支持连接排出？
 
-是的。 可设置连接排出以更改后端池内的成员，而无需中断操作。 有关详细信息，请参阅[应用程序网关的“连接排出”部分](overview.md#connection-draining)。
+是的。 可设置连接排出以更改后端池内的成员，而无需中断操作。 有关详细信息，请参阅[应用程序网关的“连接排出”部分](features.md#connection-draining)。
 
 ### <a name="can-i-change-instance-size-from-medium-to-large-without-disruption"></a>是否可以在不造成中断的情况下，将实例大小从中型更改为大型？
 

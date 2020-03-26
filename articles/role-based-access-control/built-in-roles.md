@@ -1,6 +1,6 @@
 ---
 title: 适用于 Azure RBAC 的 Azure 内置角色
-description: 介绍适用于 Azure 基于角色的访问控制 (Azure RBAC) 的 Azure 内置角色。 列出 Actions、NotActions、DataActions 和 NotDataActions。
+description: 本文介绍适用于 Azure 基于角色的访问控制 (RBAC) 的 Azure 内置角色。 其中列出了 Actions、NotActions、DataActions 和 NotDataActions。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -11,26 +11,26 @@ ms.devlang: ''
 ms.topic: reference
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 03/04/2020
+ms.date: 03/17/2020
 ms.author: v-junlch
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: 972cdb81aad59151902c3cefe5bfac06a79502d4
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: f7a2b8ad0c7c6b3cc29cf0b7c6c3a2295302d3c5
+ms.sourcegitcommit: 71a386ca0d0ecb79a123399b6ab6b8c70ea2aa78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79291853"
+ms.lasthandoff: 03/18/2020
+ms.locfileid: "79497166"
 ---
 # <a name="azure-built-in-roles"></a>Azure 内置角色
 
-[Azure 基于角色的访问控制 (Azure RBAC)](overview.md) 拥有多个 Azure 内置角色，可将其分配给用户、组、服务主体和托管标识。 角色分配是控制对 Azure 资源的访问的方式。 如果内置角色不能满足组织的具体需求，则可创建自己的 [Azure 自定义角色](custom-roles.md)。
+[Azure 基于角色的访问控制 (RBAC)](overview.md) 有多个 Azure 内置角色，可将其分配给用户、组、服务主体和托管标识。 角色分配是控制对 Azure 资源的访问的方式。 如果内置角色不能满足组织的具体需求，则可创建自己的 [Azure 自定义角色](custom-roles.md)。
 
-本文列出了 Azure 资源的内置角色，这些角色总是在不断发展。 若要获取最新角色，请使用 [Get-AzRoleDefinition](https://docs.microsoft.com/powershell/module/az.resources/get-azroledefinition) 或 [az role definition list](/cli/role/definition#az-role-definition-list)。 如果你正在寻找 Azure Active Directory 的管理员角色，请参阅 [Azure Active Directory 中的管理员角色权限](../active-directory/users-groups-roles/directory-assign-admin-roles.md)。
+本文列出了 Azure 资源的内置角色，这些角色总是在不断发展。 若要获取最新角色，请使用 [Get-AzRoleDefinition](https://docs.microsoft.com/powershell/module/az.resources/get-azroledefinition) 或 [az role definition list](/cli/role/definition#az-role-definition-list)。 如果你正在查找 Azure Active Directory (Azure AD) 的管理员角色，请参阅 [Azure Active Directory 中的管理员角色权限](../active-directory/users-groups-roles/directory-assign-admin-roles.md)。
 
 ## <a name="descriptions-and-ids"></a>说明和 ID
 
-下表提供了每个内置角色的简短说明和唯一 ID。 单击角色名称，查看每个角色的 `Actions`、`NotActions`、`DataActions` 和 `NotDataActions` 列表。 有关这些操作的含义以及它们如何应用于管理和数据平面的信息，请参阅[了解 Azure 资源的角色定义](role-definitions.md)。
+下表提供了每个内置角色的简短说明和唯一 ID。 选择角色名称可查看每个角色的 `Actions`、`NotActions`、`DataActions` 和 `NotDataActions` 列表。 有关这些操作的含义以及它们如何应用于管理和数据平面的信息，请参阅[了解 Azure 资源的角色定义](role-definitions.md)。
 
 
 > [!div class="mx-tableFixed"]
@@ -145,7 +145,7 @@ ms.locfileid: "79291853"
 > | [空间定位点帐户所有者](#spatial-anchors-account-owner) | 允许管理帐户中的空间定位点，包括删除它们 | 70bbe301-9835-447d-afdd-19eb3167307c |
 > | [空间定位点帐户读取者](#spatial-anchors-account-reader) | 允许在帐户中查找和读取空间定位点的属性 | 5d51204f-eb77-4b1c-b86a-2ec626c49413 |
 > | [SQL DB 参与者](#sql-db-contributor) | 允许管理 SQL 数据库，但不允许访问这些数据库。 此外，不允许管理其安全相关的策略或其父 SQL 服务器。 | 9b7fa17d-e63e-47b0-bb0a-15c516ac86ec |
-> | [SQL 托管实例参与者](#sql-managed-instance-contributor) | 允许你管理 SQL 托管实例和所需的网络配置，但无法向其他人授予访问权限。 | 4939a1f6-9ae0-4e48-a1e0-f2cbe897382d |
+> | [SQL 托管实例参与者](#sql-managed-instance-contributor) | 允许管理 SQL 托管实例和所需的网络配置，但不能向其他人授予访问权限。 | 4939a1f6-9ae0-4e48-a1e0-f2cbe897382d |
 > | [SQL 安全管理器](#sql-security-manager) | 允许管理 SQL 服务器和数据库的安全相关策略，但不允许访问它们。 | 056cd41c-7e88-42e1-933e-88ba6a50c9c3 |
 > | [SQL Server 参与者](#sql-server-contributor) | 允许管理 SQL 服务器和数据库，但不允许访问它们及其安全相关的策略。 | 6d8ee4ec-f05a-4a1d-8b00-a9b17e38b437 |
 > | [存储帐户参与者](#storage-account-contributor) | 允许管理存储帐户。 提供对帐户密钥的访问权限，而帐户密钥可以用来通过共享密钥授权对数据进行访问。 | 17d1049b-9a84-46fb-8f53-869881c3d3ab |
@@ -1059,7 +1059,7 @@ Log Analytics 读者可以查看和搜索所有监视数据并查看监视设置
   "assignableScopes": [
     "/"
   ],
-  "description": "Lets you manage classic virtual machines, but not access to them, and not the virtual network or storage account they’re connected to.",
+  "description": "Lets you manage classic virtual machines, but not access to them, and not the virtual network or storage account they're connected to.",
   "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/d73bb868-a0df-4d4d-bd69-98a00b01fccb",
   "name": "d73bb868-a0df-4d4d-bd69-98a00b01fccb",
   "permissions": [
@@ -2020,7 +2020,7 @@ ACR 隔离数据编写器
 
 ### <a name="sql-managed-instance-contributor"></a>SQL 托管实例参与者
 
-允许你管理 SQL 托管实例和所需的网络配置，但无法向其他人授予访问权限。
+允许管理 SQL 托管实例和所需的网络配置，但不能向其他人授予访问权限。
 
 > [!div class="mx-tableFixed"]
 > |  |  |
@@ -2052,7 +2052,7 @@ ACR 隔离数据编写器
   "assignableScopes": [
     "/"
   ],
-  "description": "Lets you manage SQL Managed Instances and required network configuration, but can’t give access to others.",
+  "description": "Lets you manage SQL Managed Instances and required network configuration, but can't give access to others.",
   "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/4939a1f6-9ae0-4e48-a1e0-f2cbe897382d",
   "name": "4939a1f6-9ae0-4e48-a1e0-f2cbe897382d",
   "permissions": [
@@ -3853,10 +3853,7 @@ ACR 隔离数据编写器
 
 ### <a name="blueprint-operator"></a>蓝图操作员
 
-可以分配现有已发布的蓝图，但不能创建新蓝图。 
-
-> [!NOTE] 
-> 仅当使用用户分配的托管标识完成分配时，这才有效。
+可以分配现有已发布的蓝图，但不能创建新蓝图。 注意：仅当使用用户分配的托管标识完成分配时，此操作才有效。
 
 > [!div class="mx-tableFixed"]
 > |  |  |
@@ -4316,6 +4313,8 @@ ACR 隔离数据编写器
 > | Microsoft.WorkloadMonitor/monitors/* |  |
 > | Microsoft.WorkloadMonitor/notificationSettings/* |  |
 > | Microsoft.AlertsManagement/smartDetectorAlertRules/* |  |
+> | Microsoft.AlertsManagement/actionRules/* |  |
+> | Microsoft.AlertsManagement/smartGroups/* |  |
 > | **不操作** |  |
 > | *无* |  |
 > | **DataActions** |  |
@@ -4359,7 +4358,9 @@ ACR 隔离数据编写器
         "Microsoft.Support/*",
         "Microsoft.WorkloadMonitor/monitors/*",
         "Microsoft.WorkloadMonitor/notificationSettings/*",
-        "Microsoft.AlertsManagement/smartDetectorAlertRules/*"
+        "Microsoft.AlertsManagement/smartDetectorAlertRules/*",
+        "Microsoft.AlertsManagement/actionRules/*",
+        "Microsoft.AlertsManagement/smartGroups/*"
       ],
       "notActions": [],
       "dataActions": [],
@@ -5322,7 +5323,7 @@ ACR 隔离数据编写器
   "assignableScopes": [
     "/"
   ],
-  "description": "Can manage CDN endpoints, but can’t grant access to other users.",
+  "description": "Can manage CDN endpoints, but can't grant access to other users.",
   "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/426e0c7f-0c7e-4658-b36f-ff54d6c29b45",
   "name": "426e0c7f-0c7e-4658-b36f-ff54d6c29b45",
   "permissions": [
@@ -5376,7 +5377,7 @@ ACR 隔离数据编写器
   "assignableScopes": [
     "/"
   ],
-  "description": "Can view CDN endpoints, but can’t make changes.",
+  "description": "Can view CDN endpoints, but can't make changes.",
   "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/871e35f6-b5c1-49cc-a043-bde969a0f2cd",
   "name": "871e35f6-b5c1-49cc-a043-bde969a0f2cd",
   "permissions": [
@@ -5430,7 +5431,7 @@ ACR 隔离数据编写器
   "assignableScopes": [
     "/"
   ],
-  "description": "Can manage CDN profiles and their endpoints, but can’t grant access to other users.",
+  "description": "Can manage CDN profiles and their endpoints, but can't grant access to other users.",
   "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/ec156ff8-a8d1-4d15-830c-5b80698ca432",
   "name": "ec156ff8-a8d1-4d15-830c-5b80698ca432",
   "permissions": [
@@ -5484,7 +5485,7 @@ ACR 隔离数据编写器
   "assignableScopes": [
     "/"
   ],
-  "description": "Can view CDN profiles and their endpoints, but can’t make changes.",
+  "description": "Can view CDN profiles and their endpoints, but can't make changes.",
   "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/8f96442b-4075-438f-813d-ad51ab4019af",
   "name": "8f96442b-4075-438f-813d-ad51ab4019af",
   "permissions": [
@@ -5731,7 +5732,7 @@ Azure Sentinel 参与者
 > | **操作** |  |
 > | Microsoft.SecurityInsights/* |  |
 > | Microsoft.OperationalInsights/workspaces/analytics/query/action | 使用新引擎进行搜索。 |
-> | Microsoft.OperationalInsights/workspaces/read | 获取现有工作区 |
+> | Microsoft.OperationalInsights/workspaces/*/read | 查看日志分析数据 |
 > | Microsoft.OperationalInsights/workspaces/savedSearches/* |  |
 > | Microsoft.OperationsManagement/solutions/read | 获取现有的 OMS 解决方案 |
 > | Microsoft.OperationalInsights/workspaces/query/read | 对工作区中的数据运行查询 |
@@ -5763,7 +5764,7 @@ Azure Sentinel 参与者
       "actions": [
         "Microsoft.SecurityInsights/*",
         "Microsoft.OperationalInsights/workspaces/analytics/query/action",
-        "Microsoft.OperationalInsights/workspaces/read",
+        "Microsoft.OperationalInsights/workspaces/*/read",
         "Microsoft.OperationalInsights/workspaces/savedSearches/*",
         "Microsoft.OperationsManagement/solutions/read",
         "Microsoft.OperationalInsights/workspaces/query/read",
@@ -5797,7 +5798,8 @@ Azure Sentinel 读取者
 > | **操作** |  |
 > | Microsoft.SecurityInsights/*/read |  |
 > | Microsoft.OperationalInsights/workspaces/analytics/query/action | 使用新引擎进行搜索。 |
-> | Microsoft.OperationalInsights/workspaces/read | 获取现有工作区 |
+> | Microsoft.OperationalInsights/workspaces/*/read | 查看日志分析数据 |
+> | Microsoft.OperationalInsights/workspaces/LinkedServices/read | 获取给定工作区下的链接服务。 |
 > | Microsoft.OperationalInsights/workspaces/savedSearches/read | 获取保存的搜索查询 |
 > | Microsoft.OperationsManagement/solutions/read | 获取现有的 OMS 解决方案 |
 > | Microsoft.OperationalInsights/workspaces/query/read | 对工作区中的数据运行查询 |
@@ -5829,7 +5831,8 @@ Azure Sentinel 读取者
       "actions": [
         "Microsoft.SecurityInsights/*/read",
         "Microsoft.OperationalInsights/workspaces/analytics/query/action",
-        "Microsoft.OperationalInsights/workspaces/read",
+        "Microsoft.OperationalInsights/workspaces/*/read",
+        "Microsoft.OperationalInsights/workspaces/LinkedServices/read",
         "Microsoft.OperationalInsights/workspaces/savedSearches/read",
         "Microsoft.OperationsManagement/solutions/read",
         "Microsoft.OperationalInsights/workspaces/query/read",
@@ -5863,8 +5866,9 @@ Azure Sentinel 响应方
 > | **操作** |  |
 > | Microsoft.SecurityInsights/*/read |  |
 > | Microsoft.SecurityInsights/cases/* |  |
+> | Microsoft.SecurityInsights/incidents/* |  |
 > | Microsoft.OperationalInsights/workspaces/analytics/query/action | 使用新引擎进行搜索。 |
-> | Microsoft.OperationalInsights/workspaces/read | 获取现有工作区 |
+> | Microsoft.OperationalInsights/workspaces/*/read | 查看日志分析数据 |
 > | Microsoft.OperationalInsights/workspaces/dataSources/read | 获取工作区下面的数据源。 |
 > | Microsoft.OperationalInsights/workspaces/savedSearches/read | 获取保存的搜索查询 |
 > | Microsoft.OperationsManagement/solutions/read | 获取现有的 OMS 解决方案 |
@@ -5897,8 +5901,9 @@ Azure Sentinel 响应方
       "actions": [
         "Microsoft.SecurityInsights/*/read",
         "Microsoft.SecurityInsights/cases/*",
+        "Microsoft.SecurityInsights/incidents/*",
         "Microsoft.OperationalInsights/workspaces/analytics/query/action",
-        "Microsoft.OperationalInsights/workspaces/read",
+        "Microsoft.OperationalInsights/workspaces/*/read",
         "Microsoft.OperationalInsights/workspaces/dataSources/read",
         "Microsoft.OperationalInsights/workspaces/savedSearches/read",
         "Microsoft.OperationsManagement/solutions/read",
@@ -6653,6 +6658,7 @@ Azure Sentinel 响应方
 > | Microsoft.RecoveryServices/locations/operationStatus/read | 获取给定操作的操作状态 |
 > | Microsoft.RecoveryServices/Vaults/backupProtectionIntents/read | 列出所有备份保护意向 |
 > | Microsoft.RecoveryServices/Vaults/usages/read | 返回恢复服务保管库的使用情况详细信息。 |
+> | Microsoft.RecoveryServices/locations/backupValidateFeatures/action | 验证功能 |
 > | **不操作** |  |
 > | *无* |  |
 > | **DataActions** |  |
@@ -6707,7 +6713,8 @@ Azure Sentinel 响应方
         "Microsoft.RecoveryServices/operations/read",
         "Microsoft.RecoveryServices/locations/operationStatus/read",
         "Microsoft.RecoveryServices/Vaults/backupProtectionIntents/read",
-        "Microsoft.RecoveryServices/Vaults/usages/read"
+        "Microsoft.RecoveryServices/Vaults/usages/read",
+        "Microsoft.RecoveryServices/locations/backupValidateFeatures/action"
       ],
       "notActions": [],
       "dataActions": [],

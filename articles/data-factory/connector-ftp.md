@@ -9,15 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-origin.date: 12/01/2019
-ms.date: 03/02/2020
+origin.date: 03/02/2020
+ms.date: 03/23/2020
 ms.author: v-jay
-ms.openlocfilehash: 87c012b49ace3ce5e84410676e120517f00fb08f
-ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
+ms.openlocfilehash: 382df7b4fbc8332ccf2db3ba7718a946e904ad71
+ms.sourcegitcommit: 71a386ca0d0ecb79a123399b6ab6b8c70ea2aa78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77653534"
+ms.lasthandoff: 03/18/2020
+ms.locfileid: "79497356"
 ---
 # <a name="copy-data-from-ftp-server-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 FTP 服务器复制数据
 
@@ -36,6 +36,8 @@ ms.locfileid: "77653534"
 
 - 使用 **Basic** 或 **Anonymous** 身份验证复制文件。
 - 按原样复制文件，或者使用[支持的文件格式和压缩编解码器](supported-file-formats-and-compression-codecs.md)分析文件。
+
+FTP 连接器支持以被动模式运行的 FTP 服务器。 不支持主动模式。
 
 ## <a name="prerequisites"></a>先决条件
 

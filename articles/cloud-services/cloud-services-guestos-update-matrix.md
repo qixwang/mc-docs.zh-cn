@@ -1,5 +1,5 @@
 ---
-title: 了解最新的 Azure 来宾 OS 版本
+title: 了解最新的 Azure 来宾 OS 版本 | Microsoft Docs
 description: 有关 Azure 云服务来宾 OS 的最新发行新闻以及 SDK 兼容性。
 services: cloud-services
 documentationcenter: na
@@ -7,19 +7,17 @@ author: raiye
 editor: ''
 ms.assetid: 6306cafe-1153-44c7-8554-623b03d59a34
 ms.service: cloud-services
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-origin.date: 01/24/2020
-ms.author: v-yiso
-ms.date: 02/17/2020
-ms.openlocfilehash: 162786f7d5756848b855c4affd91590bea3ae1ae
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.date: 03/17/2020
+ms.author: v-junlch
+ms.openlocfilehash: d0c34175dde6d0d328ab86411b35339e2dfeaa8d
+ms.sourcegitcommit: 71a386ca0d0ecb79a123399b6ab6b8c70ea2aa78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79291391"
+ms.lasthandoff: 03/18/2020
+ms.locfileid: "79497163"
 ---
 # <a name="azure-guest-os-releases-and-sdk-compatibility-matrix"></a>Azure 来宾 OS 版本和 SDK 兼容性对照表
 提供适用于云服务的最新 Azure 来宾 OS 版本的最新信息。 此信息可帮助在禁用来宾 OS 之前规划升级路径。 如果根据 [Azure 来宾 OS 更新设置][Azure Guest OS Update Settings]中所述将角色配置为使用*自动*进行来宾 OS 更新，则不一定要阅读本页面。
@@ -43,6 +41,9 @@ ms.locfileid: "79291391"
 不确定如何更新来宾 OS？ 请查阅[此文][cloud updates]。
 
 ## <a name="news-updates"></a>新闻更新
+
+###### <a name="march-5-2020"></a>**2020 年 3 月 5 日**
+1 月版来宾 OS 已发布。 
 
 ###### <a name="january-24-2020"></a>**2020 年 1 月 24 日**
 1 月版来宾 OS 已发布。 
@@ -106,11 +107,11 @@ ms.locfileid: "79291391"
 已安装的 .NET Framework：3.5、4.7.2
 
 > [!NOTE]
-> Windows Azure SDK for .NET 3.0 可在[此处][Windows Azure SDK]下载。
+> Azure SDK for .NET 3.0 可在[此处][Azure SDK]下载。
 >
 >安装步骤：
 >1. 请卸载任何旧版本的 MicrosoftAzureAuthoringTools*.msi
->2. 安装[用于 .NET 的 Azure SDK - 3.0][Windows Azure SDK]
+>2. 安装[用于 .NET 的 Azure SDK - 3.0][Azure SDK]
 >3. 重启计算机
 >4. 创建新的云服务项目并添加单个辅助角色
 >5. 将 OS 系列更改为 6 并生成一个包
@@ -120,8 +121,9 @@ ms.locfileid: "79291391"
 
 | 配置字符串 | 发行日期 | 停用日期 |
 | --- | --- | --- |
+|  WA-GUEST-OS-6.16_202001-01  |  2020 年 3 月 5 日  |  6\.17 版发行后  |  
 |  WA-GUEST-OS-6.15_202001-01  |  2020 年 1 月 24 日  |  6\.17 版发行后  |  
-| WA-GUEST-OS-6.14_201912-01 | 2020 年 1 月 8 日 | 6\.16 版发行后 |  
+|~~WA-GUEST-OS-6.14_201912-01~~| 2020 年 1 月 8 日 | 2020 年 3 月 5 日 |  
 |~~WA-GUEST-OS-6.13_201911-01~~| 2019 年 12 月 5 日 | 2020 年 1 月 24 日 |  
 |~~WA-GUEST-OS-6.12_201910-01~~| 2019 年 11 月 1 日 | 2020 年 1 月 8 日 |  
 |~~WA-GUEST-OS-6.11_201909-01~~| 2019 年 10 月 7 日 | 2019 年 12 月 5 日 |  
@@ -148,8 +150,9 @@ ms.locfileid: "79291391"
 
 | 配置字符串 | 发行日期 | 停用日期 |
 | --- | --- | --- |
+|  WA-GUEST-OS-5.40_202002-01  |  2020 年 3 月 5 日  |  5\.41 版发行后  |  
 |  WA-GUEST-OS-5.39_202001-01  |  2020 年 1 月 24 日  |  5\.41 版发行后  |  
-| WA-GUEST-OS-5.38_201912-01 | 2020 年 1 月 8 日 | 5\.40 版发行后 |  
+|~~WA-GUEST-OS-5.38_201912-01~~| 2020 年 1 月 8 日 | 2020 年 3 月 5 日 |  
 |~~WA-GUEST-OS-5.37_201911-01~~| 2019 年 12 月 5 日 | 2020 年 1 月 24 日 |  
 |~~WA-GUEST-OS-5.36_201910-01~~| 2019 年 11 月 1 日 | 2020 年 1 月 8 日 |  
 |~~WA-GUEST-OS-5.35_201909-01~~| 2019 年 10 月 7 日 | 2019 年 12 月 5 日 |  
@@ -173,8 +176,9 @@ ms.locfileid: "79291391"
 
 | 配置字符串 | 发行日期 | 停用日期 |
 | --- | --- | --- |
+|  WA-GUEST-OS-4.75_202002-01  |  2020 年 3 月 5 日  |  4\.76 版发行后  |  
 |  WA-GUEST-OS-4.74_202001-01  |  2020 年 1 月 24 日  |  4\.76 版发行后  |  
-| WA-GUEST-OS-4.73_201912-01 | 2020 年 1 月 8 日 | 4\.75 版发行后 |  
+|~~WA-GUEST-OS-4.73_201912-01~~| 2020 年 1 月 8 日 | 2020 年 3 月 5 日 |  
 |~~WA-GUEST-OS-4.72_201911-01~~| 2019 年 12 月 5 日 | 2020 年 1 月 24 日 |  
 |~~WA-GUEST-OS-4.71_201910-01~~| 2019 年 11 月 1 日 | 2020 年 1 月 8 日 |  
 |~~WA-GUEST-OS-4.70_201909-01~~| 2019 年 10 月 7 日 | 2019 年 12 月 5 日 |  
@@ -198,8 +202,9 @@ ms.locfileid: "79291391"
 
 | 配置字符串 | 发行日期 | 停用日期 |
 | --- | --- | --- |
+|  WA-GUEST-OS-3.82_202002-01  |  2020 年 3 月 5 日  |  3\.83 版发行后  |  
 |  WA-GUEST-OS-3.81_202001-01  |  2020 年 1 月 24 日  |  3\.83 版发行后  |  
-| WA-GUEST-OS-3.80_201912-01 | 2020 年 1 月 8 日 | 3\.82 版发行后 |  
+|~~WA-GUEST-OS-3.80_201912-01~~| 2020 年 1 月 8 日 | 2020 年 3 月 5 日 |  
 |~~WA-GUEST-OS-3.79_201911-01~~| 2019 年 12 月 5 日 | 2020 年 1 月 24 日 |  
 |~~WA-GUEST-OS-3.78_201910-01~~| 2019 年 11 月 1 日 | 2020 年 1 月 8 日 |  
 |~~WA-GUEST-OS-3.77_201909-01~~| 2019 年 10 月 7 日 | 2019 年 12 月 5 日 |  
@@ -223,8 +228,9 @@ ms.locfileid: "79291391"
 
 | 配置字符串 | 发行日期 | 停用日期 |
 | --- | --- | --- |
+|  WA-GUEST-OS-2.95_202002-01  |  2020 年 3 月 5 日  |  2\.97 版发行后  |  
 |  WA-GUEST-OS-2.94_202001-01  |  2020 年 1 月 24 日  |  2\.96 版发行后  |  
-| WA-GUEST-OS-2.93_201912-01 | 2020 年 1 月 8 日 | 2\.95 版发行后 |  
+|~~WA-GUEST-OS-2.93_201912-01~~| 2020 年 1 月 8 日 | 2020 年 3 月 5 日 |  
 |~~WA-GUEST-OS-2.92_201911-01~~| 2019 年 12 月 5 日 | 2020 年 1 月 24 日 |  
 |~~WA-GUEST-OS-2.91_201910-01~~| 2019 年 11 月 1 日 | 2020 年 1 月 8 日 |  
 |~~WA-GUEST-OS-2.90_201909-01~~| 2019 年 10 月 7 日 | 2019 年 12 月 5 日 |  
@@ -245,7 +251,7 @@ ms.locfileid: "79291391"
 [此处][patches]提供了每月来宾 OS 版本随附的修补程序列表。
 
 ## <a name="sdk-support"></a>SDK 支持
-尽管 [Azure SDK 停用策略][retire policy sdk]指出仅支持 2.2 以上的版本，但特定的来宾 OS 系列允许使用早期版本。 应该始终使用最新的受支持 SDK。 
+尽管 [Azure SDK 停用策略][retire policy sdk]指出仅支持 2.2 以上的版本，但特定的来宾 OS 系列允许使用早期版本。 应该始终使用最新的受支持 SDK。
 
 | 来宾 OS 系列 | 兼容的 SDK 版本 |
 | --- | --- |
@@ -269,8 +275,8 @@ ms.locfileid: "79291391"
 * **Guest OS family**  
   ：来宾 OS 所基于的 Windows Server 操作系统发行版。 例如， *系列 3* 基于 Windows Server 2012。
 * **来宾 OS 版本**  
-  特定于来宾 OS 系列映像以及在生成新的来宾 OS 版本之日可用的相关 [Microsoft 安全响应中心 (MSRC)][msrc] 修补程序。 并非提供了所有修补程序。 
-  
+  特定于来宾 OS 系列映像以及在生成新的来宾 OS 版本之日可用的相关 [Microsoft 安全响应中心 (MSRC)][msrc] 修补程序。 并非提供了所有修补程序。
+
     版本号从 0 开始，并在每次添加新的一组更新时增加 1。 仅在比较重要时，才会显示尾随零。 即，2.10 版是与 2.1 版不同的版本，并且比它晚得多。
 * **来宾 OS 发行版**  
   ：来宾 OS 版本的再发行版。 如果 Microsoft 在测试期间发现需要更改的问题，就会出现再发行版。 最新的发行版始终会取代任何以前的发行版（无论是否公开）。 Azure 门户将只允许用户选取给定版本的最新发行版。 通常，不会对运行在以前版本上的部署进行强制升级，具体取决于 Bug 的严重性。
@@ -281,7 +287,7 @@ ms.locfileid: "79291391"
 
 **此发行版本的配置字符串** - WA-GUEST-OS-2.12_201208-02
 
-来宾 OS 的配置字符串嵌入了该相同信息，以及显示考虑为该发行版本包括哪些 MSRC 修补程序的日期。 在此示例中，考虑包括 2012 年 8 月之前（含该日期）为 Windows Server 2008 R2 开发的 MSRC 修补程序。 仅包括专门应用于该版本的 Windows Server 的修补程序。 例如，如果某个 MSRC 修补程序应用于 Microsoft Office，则它不会包括在内，因为该产品不属于 Windows Server 基本映像。 
+来宾 OS 的配置字符串嵌入了该相同信息，以及显示考虑为该发行版本包括哪些 MSRC 修补程序的日期。 在此示例中，考虑包括 2012 年 8 月之前（含该日期）为 Windows Server 2008 R2 开发的 MSRC 修补程序。 仅包括专门应用于该版本的 Windows Server 的修补程序。 例如，如果某个 MSRC 修补程序应用于 Microsoft Office，则它不会包括在内，因为该产品不属于 Windows Server 基本映像。
 
 ## <a name="guest-os-system-update-process"></a>来宾 OS 系统更新过程
 本页包含有关即将发布的来宾 OS 版本的信息。 客户已表明想知道什么时候发行版本，因为如果未设为“自动”更新，他们的云服务角色将重新启动。 来宾 OS 发行版本通常会在每月第二个星期二发布 MSRC 更新之后的 2-3 周发布。 新版本包含针对每个来宾 OS 系列的所有相关 MSRC 修补程序。
@@ -299,25 +305,22 @@ Azure 不断地发布更新。 来宾 OS 只不过是此类更新的其中一种
 
 [cloud updates]: /cloud-services/cloud-services-update-azure-service
 [来宾 OS 更新 RSS 源]: https://raw.githubusercontent.com/MicrosoftDocs/azure-cloud-services-files/master/GuestOS/GuestOSFeed.xml
-[Install .NET on a Cloud Service Role]: https://azure.microsoft.com/en-us/documentation/articles/cloud-services-dotnet-install-dotnet/?WT.mc_id=azurebg_email_Trans_963_RevisedNET_Update
+[Install .NET on a Cloud Service Role]: /cloud-services/cloud-services-dotnet-install-dotnet
 [Azure Guest OS Update Settings]: cloud-services-how-to-configure-portal.md
-[ssl3 announcement]: http://azure.microsoft.com/blog/2014/12/09/azure-security-ssl-3-0-update/
-[Microsoft Security Advisory 3009008]: https://technet.microsoft.com/zh-cn/library/security/3009008.aspx
-[ssl3-fixit]: http://go.microsoft.com/?linkid=9863266
-[MS14-066]: https://technet.microsoft.com/zh-cn/library/security/ms14-066.aspx
-[MS14-046]: https://technet.microsoft.com/zh-cn/library/security/ms14-046.aspx
-[retire policy sdk]: https://msdn.microsoft.com/zh-cn/library/dn479282.aspx
-[server and gos]: https://msdn.microsoft.com/zh-cn/library/dn775043.aspx
-[azuresupport]: https://www.azure.cn/support/options/
-[net install pkg]: http://www.microsoft.com/zh-cn/download/details.aspx?id=42643
-[msrc]: http://www.microsoft.com/security/msrc/default.aspx
-[update guest os portal]: https://msdn.microsoft.com/zh-cn/library/gg433101.aspx
-[update guest os svc]: https://msdn.microsoft.com/zh-cn/library/gg456324.aspx
-[restarts]: http://blogs.msdn.com/b/kwill/archive/2012/09/19/role-instance-restarts-due-to-os-upgrades.aspx
-[patches]:./cloud-services-guestos-msrc-releases.md
-[retirepolicy]:./cloud-services-guestos-retirement-policy.md
-[fam1retire]:./cloud-services-guestos-family1-retirement.md
-[fix]: https://technet.microsoft.com/en-us/library/security/ms17-010.aspx
-[Windows Azure SDK]: https://www.microsoft.com/en-us/download/details.aspx?id=54917
+[ssl3 announcement]: https://azure.microsoft.com/blog/2014/12/09/azure-security-ssl-3-0-update/
+[Microsoft Security Advisory 3009008]: https://technet.microsoft.com/library/security/3009008.aspx
+[ssl3-fixit]: https://go.microsoft.com/?linkid=9863266
+[MS14-066]: https://technet.microsoft.com/library/security/ms14-066.aspx
+[MS14-046]: https://technet.microsoft.com/library/security/ms14-046.aspx
+[retire policy sdk]: https://msdn.microsoft.com/library/dn479282.aspx
+[azuresupport]: https://www.azure.cn/support/contact/
+[net install pkg]: https://www.microsoft.com/download/details.aspx?id=42643
+[msrc]: https://technet.microsoft.com/security/dn440717.aspx
+[restarts]: https://blogs.msdn.com/b/kwill/archive/2012/09/19/role-instance-restarts-due-to-os-upgrades.aspx
+[patches]: cloud-services-guestos-msrc-releases.md
+[retirepolicy]: cloud-services-guestos-retirement-policy.md
+[fam1retire]: cloud-services-guestos-family1-retirement.md
+[fix]: https://technet.microsoft.com/library/security/ms17-010.aspx
+[Azure SDK]: https://www.microsoft.com/en-us/download/details.aspx?id=54917
 
 <!--Update_Description: update wording-->

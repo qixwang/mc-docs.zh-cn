@@ -5,15 +5,15 @@ author: ccompy
 ms.assetid: a22450c4-9b8b-41d4-9568-c4646f4cf66b
 ms.topic: article
 origin.date: 01/01/2020
-ms.date: 03/23/2020
+ms.date: 03/16/2020
 ms.author: v-tawe
 ms.custom: seodec18
-ms.openlocfilehash: 200717e6c9bd615995d6494a1c969c5b4831be86
-ms.sourcegitcommit: 4ba6d7c8bed5398f37eb37cf5e2acafcdcc28791
+ms.openlocfilehash: 70c2217d954570e5eecb1807c278540040cc0b21
+ms.sourcegitcommit: e500354e2fd8b7ac3dddfae0c825cc543080f476
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2020
-ms.locfileid: "79133850"
+ms.lasthandoff: 03/19/2020
+ms.locfileid: "79546961"
 ---
 # <a name="use-an-app-service-environment"></a>使用应用服务环境 #
 
@@ -202,7 +202,7 @@ The upgradePreferences feature really makes the most sense when you have multipl
 
 例如，如果将缩放比率调整到 10，则会为应用服务计划中的每 10 个实例添加 1 个前端。 该统一费用涵盖针对每 15 个实例添加 1 个前端的缩放比率。 如果缩放比率为 10，则需要支付针对 10 个应用服务计划实例添加的第三个前端的费用。 如果达到了 15 个实例，则不需要支付该费用，因为前端会自动添加。
 
-如果将前端的大小调整为 2 个核心，但不调整比率，则需要为额外的核心付费。  对于使用 2 个前端创建的 ASE，即使低于自动缩放阈值，也需在将大小增加到 2 个核心的前端时为 2 个额外的核心付费。
+如果将前端的大小调整为两个核心，但不调整比率，则需要为额外的核心付费。  ASE 是用两个前端创建的，因此，如果将大小增加到两个核心前端，即使低于自动阈值阈值，你也要为两个额外的核心付费。
 
 有关详细信息，请参阅 [Azure 应用服务定价][Pricing]。
 
@@ -238,7 +238,7 @@ The upgradePreferences feature really makes the most sense when you have multipl
 [ASEv1Intro]: app-service-app-service-environment-intro.md
 [Functions]: ../../azure-functions/index.yml
 [Pricing]: https://www.azure.cn/pricing/details/app-service/
-[ARMOverview]: ../../azure-resource-manager/resource-group-overview.md
+[ARMOverview]: ../../azure-resource-manager/management/overview.md
 [ConfigureSSL]: ../configure-ssl-certificate.md
 [Kudu]: https://azure.microsoft.com/resources/videos/super-secret-kudu-debug-console-for-azure-web-sites/
 [AppDeploy]: ../deploy-local-git.md

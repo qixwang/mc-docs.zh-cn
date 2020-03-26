@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-origin.date: 12/12/2019
-ms.date: 03/02/2020
-ms.openlocfilehash: 03cc07302cdae2897f5d1a59c67c4c5662d04ebb
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+origin.date: 03/12/2020
+ms.date: 03/23/2020
+ms.openlocfilehash: 2cd8626250ee9a02ba42e33ca75706e81755afe0
+ms.sourcegitcommit: 71a386ca0d0ecb79a123399b6ab6b8c70ea2aa78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79291827"
+ms.lasthandoff: 03/18/2020
+ms.locfileid: "79497355"
 ---
 # <a name="copy-and-transform-data-in-azure-synapse-analytics-formerly-azure-sql-data-warehouse-by-using-azure-data-factory"></a>使用 Azure 数据工厂在 Azure Synapse Analytics（前称为 Azure SQL 数据仓库）中复制和转换数据 
 
@@ -153,7 +153,7 @@ Azure Synapse Analytics 链接服务支持以下属性：
     "properties": {
         "type": "AzureSqlDW",
         "typeProperties": {
-            "connectionString": "Server=tcp:<servername>.database.chinacloudapi.cn,1433;Database=<databasename>;Connection Timeout=30"
+            "connectionString": "Server=tcp:<servername>.database.chinacloudapi.cn,1433;Database=<databasename>;Connection Timeout=30",
             "servicePrincipalId": "<service principal id>",
             "servicePrincipalKey": {
                 "type": "SecureString",
@@ -169,7 +169,7 @@ Azure Synapse Analytics 链接服务支持以下属性：
 }
 ```
 
-### <a name="managed-identity"></a> Azure 资源的托管标识身份验证
+### <a name="managed-identities-for-azure-resources-authentication"></a><a name="managed-identity"></a> Azure 资源的托管标识身份验证
 
 可将数据工厂与代表此特定工厂的 [Azure 资源托管标识](data-factory-service-identity.md)相关联。 可将此托管标识用于 Azure Synapse Analytics 身份验证。 指定工厂可使用此标识访问数据仓库数据并从或向其中复制数据。
 
@@ -257,6 +257,7 @@ Azure Synapse Analytics 数据集支持以下属性：
 | sqlReaderQuery               | 使用自定义 SQL 查询读取数据。 示例：`select * from MyTable`。 | 否       |
 | sqlReaderStoredProcedureName | 从源表读取数据的存储过程的名称。 最后一个 SQL 语句必须是存储过程中的 SELECT 语句。 | 否       |
 | storedProcedureParameters    | 存储过程的参数。<br/>允许的值为名称或值对。 参数的名称和大小写必须与存储过程参数的名称和大小写匹配。 | 否       |
+| isolationLevel | 指定 SQL 源的事务锁定行为。 允许的值为：**ReadCommitted**（默认值）、**ReadUncommitted**、**RepeatableRead**、**Serializable**、**Snapshot**。 请参阅[此文档](https://docs.microsoft.com/dotnet/api/system.data.isolationlevel)了解更多详细信息。 | 否 |
 
 **示例：使用 SQL 查询**
 
@@ -345,7 +346,7 @@ END
 GO
 ```
 
-### <a name="azure-sql-data-warehouse-as-sink"></a> Azure Synapse Analytics 用作接收器
+### <a name="azure-synapse-analytics-as-sink"></a><a name="azure-sql-data-warehouse-as-sink"></a> Azure Synapse Analytics 用作接收器
 
 Azure 数据工厂支持通过三种方式将数据载入 SQL 数据仓库。
 
@@ -580,7 +581,7 @@ All columns of the table must be specified in the INSERT BULK statement.
 
 NULL 值是特殊形式的默认值。 如果列可为 null，则该列的 Blob 中的输入数据可能为空。 但输入数据集中不能缺少该数据。 PolyBase 在 Azure Synapse Analytics 中插入 NULL 来表示缺少的值。
 
-## <a name="use-copy-statement"></a> 使用 COPY 语句将数据载入 Azure SQL 数据仓库（预览版）
+## <a name="use-copy-statement-to-load-data-into-azure-sql-data-warehouse-preview"></a><a name="use-copy-statement"></a> 使用 COPY 语句将数据载入 Azure SQL 数据仓库（预览版）
 
 SQL 数据仓库 [COPY 语句](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest)（预览版）直接支持从 **Azure Blob 和 Azure Data Lake Storage Gen2** 加载数据。 如果源数据符合本部分所述的条件，则你可以选择使用 ADF 中的 COPY 语句将数据载入 Azure SQL 数据仓库。 Azure 数据工厂将检查设置，如果不符合条件，复制活动运行将会失败。
 

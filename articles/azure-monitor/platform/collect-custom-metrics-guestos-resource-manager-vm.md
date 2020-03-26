@@ -3,18 +3,17 @@ title: 使用模板在 Azure Monitor 中收集 Windows VM 指标
 description: 使用 Windows 虚拟机的资源管理器模板将来宾 OS 指标发送到 Azure Monitor 指标存储
 author: lingliw
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 origin.date: 08/22/2019
 ms.date: 01/21/2019
 ms.author: v-lingwu
 ms.subservice: metrics
-ms.openlocfilehash: b3847fe6c5891340211fbece0bf960d4988bf8bf
-ms.sourcegitcommit: 21b02b730b00a078a76aeb5b78a8fd76ab4d6af2
+ms.openlocfilehash: 426fbcaacf51d0974ac5dd5023f56f7dbb509825
+ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74838913"
+ms.lasthandoff: 03/17/2020
+ms.locfileid: "79452354"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-using-a-resource-manager-template-for-a-windows-virtual-machine"></a>使用 Windows 虚拟机的资源管理器模板将来宾 OS 指标发送到 Azure Monitor 指标存储
 
@@ -26,13 +25,14 @@ ms.locfileid: "74838913"
 
 将它们存储在此位置可以访问平台指标的相同操作。 操作包括近实时警报、图表绘制、路由、从 REST API 访问，等等。 在过去，诊断扩展将数据写入 Azure 存储而不是 Azure Monitor 数据存储。
 
-如果你不熟悉资源管理器模板，请了解[模板部署](../../azure-resource-manager/resource-group-overview.md)及其结构和语法。
+如果你不熟悉资源管理器模板，请了解[模板部署](../../azure-resource-manager/management/overview.md)及其结构和语法。
 
 ## <a name="prerequisites"></a>先决条件
 
 - 你的订阅必须已注册到 [Microsoft.Insights](/azure-resource-manager/resource-manager-supported-services#portal)。
 
 - 需要安装任一个 [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview?view=azurermps-6.8.1)。
+- VM 资源必须位于[支持自定义指标的区域](metrics-custom-overview.md#supported-regions)中。 
 
 
 ## <a name="set-up-azure-monitor-as-a-data-sink"></a>将 Azure Monitor 设置为数据接收器
@@ -48,7 +48,7 @@ Azure 诊断扩展使用名为“数据接收器”的功能将指标和日志�
 下载这两个文件并在本地保存。
 
 ### <a name="modify-azuredeployparametersjson"></a>修改 azuredeploy.parameters.json
-打开 azuredeploy.parameters.json 文件 
+打开 *azuredeploy.parameters.json* 文件
 
 1. 输入 VM 的“adminUsername”和“adminPassword”的值   。 这些参数用于对 VM 进行远程访问。 为了避免 VM 被劫持，请勿使用此模板中的值。 机器人在 Internet 上扫描公共 GitHub 存储库中的用户名和密码。 它们可能会使用这些默认值测试 VM。
 

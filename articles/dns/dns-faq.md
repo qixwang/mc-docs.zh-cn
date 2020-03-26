@@ -6,14 +6,14 @@ author: WenJason
 ms.service: dns
 ms.topic: article
 origin.date: 06/15/2019
-ms.date: 02/17/2020
+ms.date: 03/23/2020
 ms.author: v-jay
-ms.openlocfilehash: 433c3a8a53c2f250113192346a056dafeaf0b721
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.openlocfilehash: 57b47520b6d29f7222b340cfe8202f420ea73271
+ms.sourcegitcommit: 305361c96d1d5288d3dda7e81833820640e2afac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77428752"
+ms.lasthandoff: 03/21/2020
+ms.locfileid: "80109808"
 ---
 # <a name="azure-dns-faq"></a>Azure DNS 常见问题解答
 
@@ -101,6 +101,47 @@ Azure DNS 仅支持托管静态 DNS 域，其中对某给定的 DNS 记录来说
 
 此支持目前不适用于通过 Azure 门户创建的 TXT 记录。
 
+## <a name="alias-records"></a>别名记录
+
+### <a name="what-are-some-scenarios-where-alias-records-are-useful"></a>别名记录在哪些方案中有用？
+
+请参阅 [Azure DNS 别名记录概述](dns-alias.md)中的方案部分。
+
+### <a name="what-record-types-are-supported-for-alias-record-sets"></a>别名记录集支持哪些记录类型？
+
+在 Azure DNS 区域中，别名记录集支持以下记录类型：
+ 
+- A 
+- AAAA
+- CNAME 
+
+### <a name="what-resources-are-supported-as-targets-for-alias-record-sets"></a>支持哪些资源作为别名记录集的目标？
+
+- **从 DNS A/AAAA 记录集指向公共 IP 资源**。 可以创建一个 A/AAAA 记录集，并使其成为指向公共 IP 资源的别名记录集。
+- **从 DNS A/AAAA/CNAME 记录集指向流量管理器配置文件**。 可以从 DNS CNAME 记录集指向流量管理器配置文件的 CNAME。 例如，contoso.trafficmanager.cn。 现在，还可以从 DNS 区域中的 A 或 AAAA 记录集指向包含外部终结点的流量管理器配置文件。
+- **指向 Azure 内容分发网络 (CDN) 终结点**。 使用 Azure 存储和 Azure CDN 创建静态网站时，这非常有用。
+- **指向同一区域中的另一 DNS 记录集**。 别名记录可引用相同类型的其他记录集。 例如，可以使 DNS CNAME 记录集成为相同类型的另一 CNAME 记录集的别名。 如果希望有些记录集是别名，有些记录集不是别名，则这种安排会很有用。
+
+### <a name="can-i-create-and-update-alias-records-from-the-azure-portal"></a>是否可以从 Azure 门户创建和更新别名记录？
+
+是的。 除了 Azure REST API、PowerShell、CLI 和 SDK 以外，还可以在 Azure 门户中创建或管理别名记录。
+
+### <a name="will-alias-records-help-to-make-sure-my-dns-record-set-is-deleted-when-the-underlying-public-ip-is-deleted"></a>别名记录是否有助于确保在删除基础公共 IP 时，删除我的 DNS 记录集？
+
+是的。 此功能是别名记录的一项核心功能。 它有助于避免应用程序用户遇到中断。
+
+### <a name="will-alias-records-help-to-make-sure-my-dns-record-set-is-updated-to-the-correct-ip-address-when-the-underlying-public-ip-address-changes"></a>当基础公共 IP 地址发生变化时，别名记录是否有助于确保我的 DNS 记录集更新为正确的 IP 地址？
+
+是的。 此功能是别名记录的一项核心功能。 它有助于避免应用程序出现中断或安全风险。
+
+### <a name="are-there-any-restrictions-when-using-alias-record-sets-for-a-or-aaaa-records-to-point-to-traffic-manager"></a>使用 A 或 AAAA 记录的别名记录集指向流量管理器时，是否存在任何限制？
+
+是的。 若要以别名形式从 A 或 AAAA 记录集指向流量管理器配置文件，流量管理器配置文件只能使用外部终结点。 在流量管理器中创建外部终结点时，请提供终结点的实际 IP 地址。
+
+### <a name="is-there-an-additional-charge-to-use-alias-records"></a>使用别名记录是否会产生额外的费用？
+
+别名记录是对有效 DNS 记录集的限定。 别名记录不会产生额外的费用。
+
 ## <a name="use-azure-dns"></a>使用 Azure DNS
 
 ### <a name="can-i-co-host-a-domain-by-using-azure-dns-and-another-dns-provider"></a>是否可以使用 Azure DNS 和其他 DNS 提供程序共同托管域？
@@ -109,7 +150,7 @@ Azure DNS 仅支持托管静态 DNS 域，其中对某给定的 DNS 记录来说
 
 若要设置共同托管，请将域的 NS 记录修改为指向这两个提供程序的名称服务器。 名称服务器 (NS) 记录控制哪些提供程序接收域的 DNS 查询。 可在 Azure DNS、另一提供程序以及父区域中修改这些 NS 记录。 父区域通常是通过域名注册机构配置的。 有关 DNS 委派的详细信息，请参阅[DNS 域委派](dns-domain-delegation.md)。
 
-此外，请确保域的 DNS 记录在 DNS 提供程序之间进行同步。 Azure DNS 目前不支持 DNS 区域传送。 必须使用 [Azure DNS 管理门户](dns-operations-recordsets-portal.md)、[REST API](https://docs.microsoft.com/powershell/module/az.dns)、[SDK](dns-sdk.md)、[PowerShell cmdlets](dns-operations-recordsets.md) 或 [CLI 工具](dns-operations-recordsets-cli.md)同步 DNS 记录。
+此外，请确保域的 DNS 记录在 DNS 提供程序之间进行同步。 Azure DNS 目前不支持 DNS 区域传送。 必须使用 [Azure DNS 管理门户](dns-operations-recordsets-portal.md)、[REST API](https://docs.microsoft.com/rest/api/dns/)、[SDK](dns-sdk.md)、[PowerShell cmdlets](dns-operations-recordsets.md) 或 [CLI 工具](dns-operations-recordsets-cli.md)同步 DNS 记录。
 
 ### <a name="do-i-have-to-delegate-my-domain-to-all-four-azure-dns-name-servers"></a>是否需向全部四个 Azure DNS 名称服务器委托我的域？
 

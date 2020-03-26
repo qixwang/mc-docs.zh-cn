@@ -3,20 +3,20 @@ title: 在自定义策略中定义 Azure AD 技术配置文件
 titleSuffix: Azure AD B2C
 description: 在 Azure Active Directory B2C 的自定义策略中定义 Azure Active Directory 技术配置文件。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/20/2020
+ms.date: 03/16/2020
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: b9cfc005e94dffc39b503cae54df451203eb13da
-ms.sourcegitcommit: 1bd7711964586b41ff67fd1346dad368fe7383da
+ms.openlocfilehash: 47d5a4273fa236d039bc6d73442cbdf2622b664b
+ms.sourcegitcommit: 71a386ca0d0ecb79a123399b6ab6b8c70ea2aa78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77531286"
+ms.lasthandoff: 03/18/2020
+ms.locfileid: "79497117"
 ---
 # <a name="define-an-azure-active-directory-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>在 Azure Active Directory B2C 自定义策略中定义 Azure Active Directory 技术配置文件
 
@@ -28,8 +28,8 @@ Azure Active Directory B2C (Azure AD B2C) 为 Azure Active Directory 用户管�
 
 “Protocol”  元素的“Name”  属性必须设置为 `Proprietary`。 **handler** 属性必须包含协议处理程序程序集 `Web.TPEngine.Providers.AzureActiveDirectoryProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null` 的完全限定名称。
 
-所有 Azure AD 的技术配置文件包括 **AAD-Common** 技术配置文件。 以下技术配置文件不会指定协议，因为协议是在 **AAD-Common** 技术配置文件中配置的：
-
+以下自定义策略初学者包 Azure AD 技术配置文件包含 **AAD-Common** 技术配置文件。 Azure AD 技术配置文件不会指定协议，因为协议在 **AAD-Common** 技术配置文件中进行配置：
+ 
 - **AAD-UserReadUsingAlternativeSecurityId** 和 **AAD-UserReadUsingAlternativeSecurityId-NoError** - 在目录中查找社交帐户。
 - **AAD-UserWriteUsingAlternativeSecurityId** - 创建新的社交帐户。
 - **AAD-UserReadUsingEmailAddress** - 在目录中查找本地帐户。
@@ -56,21 +56,21 @@ Azure Active Directory B2C (Azure AD B2C) 为 Azure Active Directory 用户管�
 </TechnicalProfile>
 ```
 
-## <a name="input-claims"></a>输入声明
+## <a name="inputclaims"></a>InputClaims
 
-以下技术配置文件包含社交和本地帐户的 **InputClaims**：
+InputClaims 元素包含一个声明，该声明用于在目录中查找帐户，或创建一个新帐户。 所有 Azure AD 技术配置文件的输入声明集合中必须有且只有一个 InputClaim 元素。 可能需要将策略中定义的声明名称映射到 Azure Active Directory 中定义的名称。
 
-- 社交帐户技术配置文件 **AAD-UserReadUsingAlternativeSecurityId** 和 **AAD-UserWriteUsingAlternativeSecurityId** 包含 **AlternativeSecurityId** 声明。 此声明包含社交帐户用户标识符。
-- 本地帐户技术配置文件 **AAD-UserReadUsingEmailAddress** 和 **AAD-UserWriteUsingLogonEmail** 包含 **email** 声明。 此声明包含本地帐户的登录名。
-- 统一（本地和社交）技术配置文件 **AAD-UserReadUsingObjectId**、**AAD-UserWritePasswordUsingObjectId**、**AAD-UserWriteProfileUsingObjectId** 和 **AAD-UserWritePhoneNumberUsingObjectId** 包含 **objectId** 声明。 帐户的唯一标识符。
+若要读取、更新或删除现有用户帐户，输入声明是在 Azure AD 目录中唯一标识该帐户的键。 例如，**objectId**、**userPrincipalName**、**signInNames.emailAddress**、**signInNames.userName** 或 **alternativeSecurityId**。 
 
-**InputClaimsTransformations** 元素可以包含用于修改输入声明或生成新输入声明的 **InputClaimsTransformation** 元素集合。
+若要新建用户帐户，输入声明是唯一标识本地帐户或联合帐户的键。 例如，对于本地帐户，为：**signInNames.emailAddress** 或 **signInNames.userName**。 对于联合帐户，为：**alternativeSecurityId**。
 
-## <a name="output-claims"></a>输出声明
+[InputClaimsTransformations](technicalprofiles.md#inputclaimstransformations) 元素可以包含一组输入声明转换元素，这些元素用于修改输入声明或生成新的声明。
+
+## <a name="outputclaims"></a>OutputClaims
 
 **OutputClaims** 元素包含 Azure AD 技术配置文件返回的声明列表。 可能需要将策略中定义的声明名称映射到 Azure Active Directory 中定义的名称。 如果设置了 `DefaultValue` 属性，则还可以包含 Azure Active Directory 不会返回的声明。
 
-**OutputClaimsTransformations** 元素可能包含用于修改输出声明或生成新输出声明的 **OutputClaimsTransformation** 元素集合。
+[OutputClaimsTransformations](technicalprofiles.md#outputclaimstransformations) 元素可能包含用于修改输出声明或生成新输出声明的 **OutputClaimsTransformation** 元素集合。
 
 例如，**AAD-UserWriteUsingLogonEmail** 技术配置文件可创建本地帐户并返回以下声明：
 
@@ -92,7 +92,7 @@ Azure Active Directory B2C (Azure AD B2C) 为 Azure Active Directory 用户管�
 
 ## <a name="persistedclaims"></a>PersistedClaims
 
-**PersistedClaims** 元素包含 Azure AD 应保存的所有值，以及策略的 ClaimsSchema 节中已定义的声明类型与 Azure AD 属性名称之间可能存在的映射的信息。
+**PersistedClaims** 元素包含 Azure AD 应持久保存的所有值，以及策略的 [ClaimsSchema](claimsschema.md) 节中已定义的声明类型与 Azure AD 属性名称之间可能的映射信息。
 
 **AAD-UserWriteUsingLogonEmail** 技术配置文件，它可以创建新本地帐户并保存以下声明：
 
@@ -123,9 +123,7 @@ Azure Active Directory B2C (Azure AD B2C) 为 Azure Active Directory 用户管�
 
 ### <a name="read"></a>读取
 
-**Read** 操作读取有关单个用户帐户的数据。 若要读取用户数据，需要提供一个键作为输入声明，例如 **objectId**、**userPrincipalName**、**signInNames**（任何类型，可以是用户名和基于电子邮件的帐户）或 **alternativeSecurityId**。
-
-以下技术配置文件使用用户的 objectId 读取有关用户帐户的数据：
+**Read** 操作读取有关单个用户帐户的数据。 以下技术配置文件使用用户的 objectId 读取有关用户帐户的数据：
 
 ```XML
 <TechnicalProfile Id="AAD-UserReadUsingObjectId">
@@ -155,9 +153,7 @@ Azure Active Directory B2C (Azure AD B2C) 为 Azure Active Directory 用户管�
 
 ### <a name="write"></a>写入
 
-**Write** 操作创建或更新单个用户帐户。 若要写入用户帐户，需要提供一个键作为输入声明，例如 **objectId**、**userPrincipalName**、**signInNames.emailAddress** 或 **alternativeSecurityId**。
-
-以下技术配置文件创建新社交帐户：
+**Write** 操作创建或更新单个用户帐户。 以下技术配置文件创建新社交帐户：
 
 ```XML
 <TechnicalProfile Id="AAD-UserWriteUsingAlternativeSecurityId">
@@ -197,9 +193,7 @@ Azure Active Directory B2C (Azure AD B2C) 为 Azure Active Directory 用户管�
 
 ### <a name="deleteclaims"></a>DeleteClaims
 
-**DeleteClaims** 操作从提供的声明列表中清除信息。 若要从声明中删除信息，需要提供一个键作为输入声明，例如 **objectId**、**userPrincipalName**、**signInNames.emailAddress** 或 **alternativeSecurityId**。
-
-以下技术配置文件删除声明：
+**DeleteClaims** 操作从提供的声明列表中清除信息。 以下技术配置文件删除声明：
 
 ```XML
 <TechnicalProfile Id="AAD-DeleteClaimsUsingObjectId">
@@ -220,9 +214,7 @@ Azure Active Directory B2C (Azure AD B2C) 为 Azure Active Directory 用户管�
 
 ### <a name="deleteclaimsprincipal"></a>DeleteClaimsPrincipal
 
-**DeleteClaimsPrincipal** 操作从目录中删除单个用户帐户。 若要删除用户帐户，需要提供一个键作为输入声明，例如 **objectId**、**userPrincipalName**、**signInNames.emailAddress** 或 **alternativeSecurityId**。
-
-以下技术配置文件使用用户主体名称从目录中删除用户帐户：
+**DeleteClaimsPrincipal** 操作从目录中删除单个用户帐户。 以下技术配置文件使用用户主体名称从目录中删除用户帐户：
 
 ```XML
 <TechnicalProfile Id="AAD-DeleteUserUsingObjectId">
@@ -257,14 +249,22 @@ Azure Active Directory B2C (Azure AD B2C) 为 Azure Active Directory 用户管�
 | --------- | -------- | ----------- |
 | 操作 | 是 | 要执行的操作。 可能的值：`Read`、`Write`、`DeleteClaims` 或 `DeleteClaimsPrincipal`。 |
 | RaiseErrorIfClaimsPrincipalDoesNotExist | 否 | 如果目录中不存在该用户对象，则引发错误。 可能的值：`true` 或 `false`。 |
-| UserMessageIfClaimsPrincipalDoesNotExist | 否 | 如果要引发错误（参阅 RaiseErrorIfClaimsPrincipalDoesNotExist 属性说明），则指定当用户对象不存在时要向用户显示的消息。 可将值[本地化](localization.md)。|
 | RaiseErrorIfClaimsPrincipalAlreadyExists | 否 | 如果该用户对象已存在，则引发错误。 可能的值：`true` 或 `false`。|
-| UserMessageIfClaimsPrincipalAlreadyExists | 否 | 如果要引发错误（参阅 RaiseErrorIfClaimsPrincipalAlreadyExists 属性说明），则指定当用户对象已存在时要向用户显示的消息。 可将值[本地化](localization.md)。|
-| ApplicationObjectId | 否 | 扩展属性的应用程序对象标识符。 值：应用程序的 ObjectId。  | 
+| ApplicationObjectId | 否 | 扩展属性的应用程序对象标识符。 值：应用程序的 ObjectId。 |
 | ClientId | 否 | 作为第三方访问租户的客户端标识符。 |
 | IncludeClaimResolvingInClaimsHandling  | 否 | 对于输入和输出声明，指定[声明解析](claim-resolver-overview.md)是否包含在技术配置文件中。 可能的值：`true` 或 `false` （默认值）。 若要使用技术配置文件中的声明解析程序，请将此项设为 `true`。 |
 
-<!-- Update_Description: wording update -->
+### <a name="error-messages"></a>错误消息
+ 
+以下设置可用于配置失败时显示的错误消息。 元数据应该在[自断言](self-asserted-technical-profile.md)技术配置文件中进行配置。 可以将错误消息[本地化](localization.md)。
+
+| 属性 | 必须 | 说明 |
+| --------- | -------- | ----------- |
+| UserMessageIfClaimsPrincipalAlreadyExists | 否 | 如果要引发错误（参阅 RaiseErrorIfClaimsPrincipalAlreadyExists 属性说明），则指定当用户对象已存在时要向用户显示的消息。 |
+| UserMessageIfClaimsPrincipalDoesNotExist | 否 | 如果要引发错误（参阅 RaiseErrorIfClaimsPrincipalDoesNotExist 属性说明），则指定当用户对象不存在时要向用户显示的消息。 |
+
+
+
 
 
 

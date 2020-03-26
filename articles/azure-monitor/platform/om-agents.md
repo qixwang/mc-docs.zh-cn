@@ -1,18 +1,19 @@
 ---
 title: 将 Operations Manager 连接到 Azure Monitor | Microsoft Docs
 description: 若要保持 System Center Operations Manager 中的现有投资并将扩展功能用于 Log Analytics，可将 Operations Manager 与工作区集成。
-ms.service: azure-monitor
+author: lingliw
+services: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
-author: bwren
-ms.author: bwren
-ms.date: 08/13/2019
-ms.openlocfilehash: 062b92463019a055cd880b676fc31bc42e62c13c
-ms.sourcegitcommit: 27eaabd82b12ad6a6840f30763034a6360977186
+origin.date: 08/13/2019
+ms.date: 12/04/2019
+ms.author: v-lingwu
+ms.openlocfilehash: 48b143ddd07d8419f823eef295a3bc3b03e40927
+ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77500912"
+ms.lasthandoff: 03/17/2020
+ms.locfileid: "79452428"
 ---
 # <a name="connect-operations-manager-to-azure-monitor"></a>将 Operations Manager 连接到 Azure Monitor
 
@@ -34,7 +35,7 @@ ms.locfileid: "77500912"
 
 如果 IT 安全策略不允许网络上的计算机连接到 Internet，可将管理服务器配置为连接到 Log Analytics 网关，以根据启用的解决方案接收配置信息并发送收集的数据。 有关如何将 Operations Manager 管理组配置为通过 Log Analytics 网关与 Azure Monitor 通信的详细信息和步骤，请参阅[使用 Log Analytics 网关将计算机连接到 Azure Monitor](../../azure-monitor/platform/gateway.md)。  
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 在开始之前，请查看以下要求。
 
@@ -44,17 +45,7 @@ ms.locfileid: "77500912"
 * Log Analytics 工作区。 有关详细信息，请查看 [Log Analytics 工作区概述](design-logs-deployment.md)。 
 * 使用 [Log Analytics 参与者角色](manage-access.md#manage-access-using-azure-permissions)成员帐户在 Azure 中进行身份验证。
 
-* 支持的区域 - System Center Operations Manager 仅支持以下 Azure 区域连接到 Log Analytics 工作区：
-    - 美国中西部
-    - 澳大利亚东南部
-    - 西欧
-    - 美国东部
-    - 东南亚
-    - 日本东部
-    - 英国南部
-    - 印度中部
-    - 加拿大中部
-    - 美国西部 2
+
 
 >[!NOTE]
 >最近对 Azure API 所做的最新会阻止客户在其管理组与 Azure Monitor 之间成功配置首次集成。 对于已将其管理组与该服务进行集成的客户，除非需要重新配置现有连接，否则他们不受影响。  
@@ -73,23 +64,23 @@ ms.locfileid: "77500912"
 |资源 | 端口号| 绕过 HTTP 检查|  
 |---------|------|-----------------------|  
 |**代理**|||  
-|\*.ods.opinsights.azure.com| 443 |是|  
-|\*.oms.opinsights.azure.com| 443|是|  
-|\*.blob.core.windows.net| 443|是|  
+|\*.ods.opinsights.chinacloudapp.cn| 443 |是|  
+|\*.oms.opinsights.chinacloudapp.cn| 443|是|  
+|\*.blob.core.chinacloudapi.cn| 443|是|  
 |\*.azure-automation.net| 443|是|  
 |**管理服务器**|||  
-|\*.service.opinsights.azure.com| 443||  
-|\*.blob.core.windows.net| 443| 是|  
-|\*.ods.opinsights.azure.com| 443| 是|  
+|\*.service.opinsights.chinacloudapp.cn| 443||  
+|\*.blob.core.chinacloudapi.cn| 443| 是|  
+|\*.ods.opinsights.chinacloudapp.cn| 443| 是|  
 |\* .azure-automation.net | 443| 是|  
 |**Operations Manager 控制台到 Azure Monitor**|||  
 |service.systemcenteradvisor.com| 443||  
-|\*.service.opinsights.azure.com| 443||  
+|\*.service.opinsights.chinacloudapp.cn| 443||  
 |\*.live.com| 80 和 443||  
 |\*.microsoft.com| 80 和 443||  
 |\*.microsoftonline.com| 80 和 443||  
 |\*.mms.microsoft.com| 80 和 443||  
-|login.windows.net| 80 和 443||  
+|login.chinacloudapi.cn| 80 和 443||  
 |portal.loganalytics.io| 80 和 443||
 |api.loganalytics.io| 80 和 443||
 |docs.loganalytics.io| 80 和 443||  
@@ -180,7 +171,7 @@ ms.locfileid: "77500912"
 
 ## <a name="switch-an-operations-manager-group-to-a-new-log-analytics-workspace"></a>将 Operations Manager 组切换到新的 Log Analytics 工作区
 
-1. 在 [https://portal.azure.com](https://portal.azure.com) 中登录 Azure 门户。
+1. 在 [https://portal.azure.cn](https://portal.azure.cn) 中登录 Azure 门户。
 1. 在 Azure 门户中，单击左下角的“更多服务”  。 在资源列表中，键入“Log Analytics”  。 开始键入时，会根据输入筛选该列表。 选择“Log Analytics”，然后创建一个工作区。   
 1. 使用属于 Operations Manager 管理员角色成员的帐户打开 Operations Manager 控制台，并选择“**管理**”工作区。
 1. 展开 Log Analytics，然后选择“连接”  。

@@ -2,25 +2,38 @@
 title: 将资源部署到管理组
 description: 介绍如何通过 Azure 资源管理器模板在管理组范围部署资源。
 ms.topic: conceptual
-origin.date: 11/07/2019
+origin.date: 03/09/2020
+ms.date: 03/23/2020
 ms.author: v-yeche
-ms.date: 01/06/2020
-ms.openlocfilehash: 51763cfe5156ed8bd8e240aaa002ff051ab77be6
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.openlocfilehash: b94938848d94f111b100448b3290aee0b4e6939e
+ms.sourcegitcommit: 1436f1851342ca5631eb25342eed954adb707af0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75631225"
+ms.lasthandoff: 03/19/2020
+ms.locfileid: "79543722"
 ---
 # <a name="create-resources-at-the-management-group-level"></a>在管理组级别创建资源
 
-通常情况下，你可将 Azure 资源部署到 Azure 订阅中的资源组。 但是，也可在管理组级别创建资源。 可以使用管理组级别部署来执行在该级别合理的操作，例如分配[基于角色的访问控制](../../role-based-access-control/overview.md)或应用[策略](../../governance/policy/overview.md)。
-
-目前，若要在管理组级别部署模板，必须使用 REST API。
+随着组织的成熟，你能需要为管理组定义和分配[策略](../../governance/policy/overview.md)或[基于角色的访问控制](../../role-based-access-control/overview.md)。 使用管理组级别的模板，可以声明方式在管理组级别应用策略和分配角色。
 
 ## <a name="supported-resources"></a>支持的资源
 
-<!--Not Available on Microsoft Azure Template content -->
+可以在管理组级别部署以下资源类型：
+
+* 部署 - 适用于部署到订阅或资源组的嵌套模板。
+* policyAssignments
+* policyDefinitions
+* policySetDefinitions
+* roleAssignments
+* roleDefinitions
+
+<!--Not Avaiable on   [deployments](https://docs.microsoft.com/azure/templates/microsoft.resources/deployments)-->
+<!--Not Avaiable on   [policyAssignments](https://docs.microsoft.com/azure/templates/microsoft.authorization/policyassignments)-->
+<!--Not Avaiable on   [policyDefinitions](https://docs.microsoft.com/azure/templates/microsoft.authorization/policydefinitions)-->
+<!--Not Avaiable on   [policySetDefinitions](https://docs.microsoft.com/azure/templates/microsoft.authorization/policysetdefinitions)-->
+<!--Not Avaiable on   [roleAssignments](https://docs.microsoft.com/azure/templates/microsoft.authorization/roleassignments)-->
+<!--Not Avaiable on   [roleDefinitions](https://docs.microsoft.com/azure/templates/microsoft.authorization/roledefinitions)-->
+
 
 ### <a name="schema"></a>架构
 
@@ -32,15 +45,24 @@ ms.locfileid: "75631225"
 https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentTemplate.json#
 ```
 
-对于参数文件，请使用：
+对于所有部署范围，参数文件的架构都相同。 对于参数文件，请使用：
 
 ```json
-https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentParameters.json#
+https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#
 ```
 
 ## <a name="deployment-commands"></a>部署命令
 
-用于管理组部署的命令不同于资源组部署的命令。
+管理组部署的命令与资源组部署的命令不同。
+
+对于 Azure PowerShell，请使用 [New-AzManagementGroupDeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azmanagementgroupdeployment)。 
+
+```powershell
+New-AzManagementGroupDeployment `
+  -ManagementGroupId "myMG" `
+  -Location "China North" `
+  -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/management-level-deployment/azuredeploy.json
+```
 
 对于 REST API，请使用[部署 - 在管理组范围内创建](https://docs.microsoft.com/rest/api/resources/deployments/createorupdateatmanagementgroupscope)。
 
@@ -58,8 +80,20 @@ https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeployment
 
 * 不支持 [resourceGroup()](template-functions-resource.md#resourcegroup) 函数。 
 * **不**支持 [subscription()](template-functions-resource.md#subscription) 函数。
-* 支持 [resourceId()](template-functions-resource.md#resourceid) 函数。 可以使用它获取在管理组级别部署中使用的资源的资源 ID。 例如，使用 `resourceId('Microsoft.Authorization/roleDefinitions/', parameters('roleDefinition'))` 获取策略定义的资源 ID。 它返回 `/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}` 格式的资源 ID。
 * 支持 [reference()](template-functions-resource.md#reference) 和 [list()](template-functions-resource.md#list) 函数。
+* 支持 [resourceId()](template-functions-resource.md#resourceid) 函数。 可以使用它获取在管理组级别部署中使用的资源的资源 ID。 不要为资源组参数提供值。
+
+    例如，若要获取策略定义的资源 ID，请使用：
+
+    ```json
+    resourceId('Microsoft.Authorization/policyDefinitions/', parameters('policyDefinition'))
+    ```
+
+    返回的资源 ID 具有以下格式：
+
+    ```json
+    /providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+    ```
 
 ## <a name="create-policies"></a>创建策略
 
@@ -69,30 +103,30 @@ https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeployment
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {},
-    "variables": {},
-    "resources": [
-        {
-            "type": "Microsoft.Authorization/policyDefinitions",
-            "name": "locationpolicy",
-            "apiVersion": "2018-05-01",
-            "properties": {
-                "policyType": "Custom",
-                "parameters": {},
-                "policyRule": {
-                    "if": {
-                        "field": "location",
-                        "equals": "northeurope"
-                    },
-                    "then": {
-                        "effect": "deny"
-                    }
-                }
-            }
+  "$schema": "https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {},
+  "variables": {},
+  "resources": [
+    {
+      "type": "Microsoft.Authorization/policyDefinitions",
+      "apiVersion": "2018-05-01",
+      "name": "locationpolicy",
+      "properties": {
+        "policyType": "Custom",
+        "parameters": {},
+        "policyRule": {
+          "if": {
+            "field": "location",
+            "equals": "chinaeast2"
+          },
+          "then": {
+            "effect": "deny"
+          }
         }
-    ]
+      }
+    }
+  ]
 }
 ```
 
@@ -102,41 +136,46 @@ https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeployment
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "policyDefinitionID": {
-            "type": "string"
-        },
-        "policyName": {
-            "type": "string"
-        },
-        "policyParameters": {
-            "type": "object",
-            "defaultValue": {}
-        }
+  "$schema": "https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "policyDefinitionID": {
+      "type": "string"
     },
-    "variables": {},
-    "resources": [
-        {
-            "type": "Microsoft.Authorization/policyAssignments",
-            "name": "[parameters('policyName')]",
-            "apiVersion": "2018-03-01",
-            "properties": {
-                "policyDefinitionId": "[parameters('policyDefinitionID')]",
-                "parameters": "[parameters('policyParameters')]"
-            }
-        }
-    ]
+    "policyName": {
+      "type": "string"
+    },
+    "policyParameters": {
+      "type": "object",
+      "defaultValue": {}
+    }
+  },
+  "variables": {},
+  "resources": [
+    {
+      "type": "Microsoft.Authorization/policyAssignments",
+      "apiVersion": "2018-03-01",
+      "name": "[parameters('policyName')]",
+      "properties": {
+        "policyDefinitionId": "[parameters('policyDefinitionID')]",
+        "parameters": "[parameters('policyParameters')]"
+      }
+    }
+  ]
 }
 ```
+
+## <a name="template-sample"></a>模板示例
+
+* [创建资源组、策略和策略分配](https://github.com/Azure/azure-docs-json-samples/blob/master/management-level-deployment/azuredeploy.json)。
 
 ## <a name="next-steps"></a>后续步骤
 
 * 若要了解如何分配角色，请参阅[使用 RBAC 和 Azure 资源管理器模板管理对 Azure 资源的访问权限](../../role-based-access-control/role-assignments-template.md)。
 * 若要通过示例来了解如何为 Azure 安全中心部署工作区设置，请参阅 [deployASCwithWorkspaceSettings.json](https://github.com/krnese/AzureDeploy/blob/master/ARM/deployments/deployASCwithWorkspaceSettings.json)。
-* 若要了解有关创建 Azure Resource Manager模板的信息，请参阅[创作模板](template-syntax.md)。 
-* 有关模板中的可用函数列表，请参阅[模板函数](template-functions.md)。
+* 还可以[在订阅级别部署模板](deploy-to-subscription.md)。
+
+<!--Pending on  and [tenant level](deploy-to-tenant.md)-->
 
 <!-- Update_Description: new article about deploy to management group -->
 <!--NEW.date: 11/25/2019-->

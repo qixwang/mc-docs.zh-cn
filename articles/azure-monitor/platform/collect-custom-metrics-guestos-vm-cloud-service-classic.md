@@ -3,18 +3,17 @@ title: 将经典云服务指标发送到 Azure Monitor 指标数据库
 description: 介绍将 Azure 经典云服务的来宾 OS 性能指标发送到 Azure Monitor 指标存储的过程。
 author: lingliw
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 origin.date: 09/09/2019
 ms.date: 09/23/2019
 ms.author: v-lingwu
 ms.subservice: metrics
-ms.openlocfilehash: b09c2e38a77aec035cd268a44ce8406805d85f06
-ms.sourcegitcommit: 21b02b730b00a078a76aeb5b78a8fd76ab4d6af2
+ms.openlocfilehash: 8ef94c6fb72e7dd6c2d9dfb1e814a35e5260f81d
+ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74838595"
+ms.lasthandoff: 03/17/2020
+ms.locfileid: "79452316"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-classic-cloud-services"></a>将来宾 OS 指标发送到 Azure Monitor 指标存储经典云服务 
 
@@ -36,6 +35,8 @@ ms.locfileid: "74838595"
 
 - 你需要具备任一个 [Azure PowerShell](https://docs.microsoft.com/powershell/azure)。
 
+- 云服务必须位于[支持自定义指标的区域](metrics-custom-overview.md#supported-regions)中。
+
 ## <a name="provision-a-cloud-service-and-storage-account"></a>预配云服务和存储帐户 
 
 1. 创建并部署经典云服务 可在 [Azure 云服务和 ASP.NET 入门](../../cloud-services/cloud-services-dotnet-get-started.md)中找到经典云服务应用程序和部署示例。 
@@ -50,7 +51,7 @@ ms.locfileid: "74838595"
 
 - 可以输入任何 URL 作为登录 URL。  
 - 为此应用创建新的客户端机密。  
-- 保存密钥和客户端 ID，以便在后续步骤中使用。  
+- 请保存密钥和客户端 ID，以便在后面的步骤中使用。  
 
 对于在前面步骤中创建的应用，请为其授予你希望发布其指标的资源的“监视指标发布者”权限。  如果你计划使用此应用为许多资源发布自定义指标，则可以在资源组或订阅级别授予这些权限。  
 

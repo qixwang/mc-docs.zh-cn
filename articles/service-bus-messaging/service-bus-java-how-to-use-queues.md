@@ -14,12 +14,13 @@ ms.topic: quickstart
 origin.date: 01/24/2020
 ms.date: 2/6/2020
 ms.author: v-lingwu
-ms.openlocfilehash: fdd52fd68926244d2a22a5cb003b5cb7e7555bc9
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019
+ms.openlocfilehash: f89947a9255d5c50eae3b74df8ee604b1a3512ec
+ms.sourcegitcommit: 305361c96d1d5288d3dda7e81833820640e2afac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78154978"
+ms.lasthandoff: 03/21/2020
+ms.locfileid: "80109773"
 ---
 # <a name="quickstart-use-azure-service-bus-queues-with-java-to-send-and-receive-messages"></a>快速入门：通过 Java 使用 Azure 服务总线队列发送和接收消息
 
@@ -118,7 +119,6 @@ public void run() throws Exception {
 服务总线队列在[标准层](service-bus-premium-messaging.md)中支持的最大消息大小为 256 KB，在[高级层](service-bus-premium-messaging.md)中则为 1 MB。 标头最大大小为 64 KB，其中包括标准和自定义应用程序属性。 一个队列中包含的消息数量不受限制，但消息的总大小受限制。 此队列大小是在创建时定义的，上限为 5 GB。
 
 ## <a name="receive-messages-from-a-queue"></a>从队列接收消息
-
 从队列接收消息的主要方法是使用 **ServiceBusContract** 对象。 收到的消息可在两种不同模式下工作：**ReceiveAndDelete** 和 **PeekLock**。
 
 当使用 **ReceiveAndDelete** 模式时，接收是一项单次操作，即，服务总线接收到队列中某条消息的读取请求时，会将该消息标记为“已使用”并将其返回给应用程序。 **ReceiveAndDelete** 模式（默认模式）是最简单的模式，最适合应用程序可容忍出现故障时不处理消息的情景。 为了理解这一点，可以考虑这样一种情形：使用方发出接收请求，但在处理该请求前发生了崩溃。
@@ -126,7 +126,7 @@ public void run() throws Exception {
 
 在 **PeekLock** 模式下，接收变成了一个两阶段操作，从而有可能支持无法允许遗漏消息的应用程序。 当 Service Bus 收到请求时，它会查找下一条要使用的消息，锁定该消息以防其他使用者接收，并将该消息返回到应用程序。 应用程序完成消息处理（或可靠地存储消息以供将来处理）后，它将通过对收到的消息调用 **complete()** 完成接收过程的第二个阶段。 看到 **complete()** 调用时，服务总线会将消息标记为“已使用”，并将消息从队列中删除。 
 
-以下示例演示如何使用 **PeekLock** 模式（非默认模式）接收和处理消息。 下面的示例使用带有已注册消息处理程序的回调模型，并在消息到达 `TestQueue` 时处理它们。 此模式在回调正常返回时自动调用 **complete()** ，如果回调引发了异常，则会调用 **abandon()** 。 
+以下示例演示如何使用 **PeekLock** 模式（非默认模式）接收和处理消息。 下面的示例将回调模型与已注册消息处理程序配合使用，并在消息到达我们的 `TestQueue` 时对其进行处理。 此模式在回调正常返回时自动调用 **complete()** ，如果回调引发了异常，则会调用 **abandon()** 。 
 
 ```java
     public void run() throws Exception {

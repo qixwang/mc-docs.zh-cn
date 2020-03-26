@@ -4,34 +4,34 @@ description: 如果 Azure 中的 Analysis Services 服务器要连接到本地�
 author: rockboyfor
 ms.service: azure-analysis-services
 ms.topic: conceptual
-origin.date: 10/29/2019
-ms.date: 01/20/2020
+origin.date: 01/21/2020
+ms.date: 03/23/2020
 ms.author: v-yeche
 ms.reviewer: minewiskan
-ms.openlocfilehash: a058df1a9e237b6382f1eec75a575c6b519a02f1
-ms.sourcegitcommit: 8de025ca11b62e06ba3762b5d15cc577e0c0f15d
+ms.openlocfilehash: 9fc5cabc1629469d03b557283a7490cd77180444
+ms.sourcegitcommit: 1436f1851342ca5631eb25342eed954adb707af0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76165422"
+ms.lasthandoff: 03/19/2020
+ms.locfileid: "79543764"
 ---
 # <a name="connecting-to-on-premises-data-sources-with-on-premises-data-gateway"></a>使用本地数据网关连接到本地数据源
 
-本地数据网关提供本地数据源与云中的 Azure Analysis Services 服务器之间的安全数据传输。 除了适用于同一区域中的多个 Azure Analysis Services 服务器以外，最新版本的网关还适用于 Azure 逻辑应用、Power BI、Power Apps 和 Power Automate。 可将同一订阅和同一区域中的多个服务与单个网关相关联。 虽然在所有这些服务中安装的网关是相同的，但 Azure Analysis Services 和逻辑应用有一些额外的步骤。
+本地数据网关提供本地数据源与云中的 Azure Analysis Services 服务器之间的安全数据传输。 除了适用于同一区域中的多个 Azure Analysis Services 服务器以外，最新版本的网关还适用于 Azure 逻辑应用、Power BI、Power Apps 和 Power Automate。 虽然在所有这些服务中安装的网关是相同的，但 Azure Analysis Services 和逻辑应用有一些额外的步骤。
+
+此处提供的信息特定于 Azure Analysis Services 如何与本地数据网关配合使用。 若要详细了解网关的一般信息以及它如何与其他服务一起使用，请参阅[什么是本地数据网关？](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem)。
 
 就 Azure Analysis Services 来说，首次安装网关的过程由四个部分组成：
 
 - **下载并运行安装程序** - 此步骤在组织中的计算机上安装网关服务。 还在[租户的](https://docs.microsoft.com/previous-versions/azure/azure-services/jj573650(v=azure.100)#what-is-an-azure-ad-tenant) Azure AD 中使用帐户登录到 Azure。 不支持 Azure B2B（来宾）帐户。
-    
-    <!--MOONCAKE: AVAILABLE ON  [tenant's](https://docs.microsoft.com/previous-versions/azure/azure-services/jj573650(v=azure.100)#BKMK_WhatIsAnAzureADTenant)-->
 
-- **注册网关** - 在这一步中，指定网关的名称和恢复密钥，然后选择区域，在网关云服务中注册你的网关。 网关资源可以注册在任何区域中，但我们建议处于与 Analysis Services 服务器位于同一区域。 
+- **注册网关** - 在这一步中，指定网关的名称和恢复密钥，然后选择区域，在网关云服务中注册你的网关。 网关资源可以在任何区域中注册，但是建议将它与 Analysis Services 服务器位于同一区域中。 
 
-- **在 Azure 中创建网关资源** - 此步骤在 Azure 订阅中创建网关资源。
+- **在 Azure 中创建网关资源** - 此步骤在 Azure 中创建网关资源。
 
-- **将服务器连接到网关资源** - 在订阅中创建网关资源后，可以开始将服务器连接到该资源。 可以连接多个服务器和其他资源，前提是它们位于同一订阅和同一区域中。
+- **将服务器连接到网关资源** - 拥有网关资源后，可以开始将服务器连接到该资源。 可以连接多个服务器和其他资源，前提是它们位于同一区域中。
 
-## <a name="how-it-works"> </a>工作原理
+## <a name="how-it-works"></a><a name="how-it-works"> </a>工作原理
 在组织中的计算机上安装的网关以 Windows 服务（**本地数据网关**）的形式运行。 此本地服务已通过 Azure 服务总线注册到网关云服务。 然后，为 Azure 订阅创建本地数据网关资源。 Azure Analysis Services 服务器随后会连接到 Azure 网关资源。 如果服务器上的模型需要连接到本地数据源以执行查询或处理，查询和数据流会遍历网关资源、Azure 服务总线、本地数据网关服务和数据源。 
 
 ![工作原理](./media/analysis-services-gateway/aas-gateway-how-it-works.png)

@@ -2,21 +2,23 @@
 title: 模板函数
 description: 介绍在 Azure Resource Manager 模板中检索值、处理字符串和数字以及检索部署信息时所用的函数。
 ms.topic: conceptual
-origin.date: 11/19/2019
+origin.date: 02/13/2020
+ms.date: 03/23/2020
 ms.author: v-yeche
-ms.date: 01/06/2020
-ms.openlocfilehash: 15364047cff5bbc3435a60eb01b560bc878579ea
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.openlocfilehash: b0c974265ab8f3a779b64351106152c62ac0718c
+ms.sourcegitcommit: 1436f1851342ca5631eb25342eed954adb707af0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75631632"
+ms.lasthandoff: 03/19/2020
+ms.locfileid: "79543730"
 ---
 # <a name="azure-resource-manager-template-functions"></a>Azure Resource Manager 模板函数
 
 本文介绍可以在 Azure 资源管理器模板中使用的所有函数。 若要了解如何在模板中使用函数，请参阅[模板语法](template-expressions.md)。
 
 若要创建自己的函数，请参阅[用户定义函数](template-syntax.md#functions)。
+
+大多数函数在部署到资源组、订阅、管理组或租户时工作方式相同。 某些函数并非可以在所有范围内使用。 下表对这些函数进行了说明。
 
 <a name="array" aria-hidden="true" />
 <a name="coalesce" aria-hidden="true" />
@@ -37,6 +39,7 @@ ms.locfileid: "75631632"
 <a name="union" aria-hidden="true" />
 
 ## <a name="array-and-object-functions"></a>数组和对象函数
+
 Resource Manager 提供以下用于处理数组和对象的函数。
 
 * [array](template-functions-array.md#array)
@@ -64,6 +67,7 @@ Resource Manager 提供以下用于处理数组和对象的函数。
 <a name="greaterorequals" aria-hidden="true" />
 
 ## <a name="comparison-functions"></a>比较函数
+
 Resource Manager 提供了多个用于在模板中进行比较的函数。
 
 * [equals](template-functions-comparison.md#equals)
@@ -77,6 +81,7 @@ Resource Manager 提供了多个用于在模板中进行比较的函数。
 <a name="variables" aria-hidden="true" />
 
 ## <a name="deployment-value-functions"></a>部署值函数
+
 Resource Manager 提供以下函数，用于从与部署相关的模板和值部分获取值：
 
 * [部署](template-functions-deployment.md#deployment)
@@ -91,6 +96,7 @@ Resource Manager 提供以下函数，用于从与部署相关的模板和值部
 <a name="or" aria-hidden="true" />
 
 ## <a name="logical-functions"></a>逻辑函数
+
 资源管理器提供以下用于处理逻辑条件的函数：
 
 * [and](template-functions-logical.md#and)
@@ -111,6 +117,7 @@ Resource Manager 提供以下函数，用于从与部署相关的模板和值部
 <a name="sub" aria-hidden="true" />
 
 ## <a name="numeric-functions"></a>数值函数
+
 Resource Manager 提供以下用于处理整数的函数：
 
 * [add](template-functions-numeric.md#add)
@@ -136,6 +143,7 @@ Resource Manager 提供以下用于处理整数的函数：
 <a name="tenantResourceId" aria-hidden="true" />
 
 ## <a name="resource-functions"></a>Resource functions
+
 Resource Manager 提供以下用于获取资源值的函数：
 
 * [extensionResourceId](template-functions-resource.md#extensionresourceid)
@@ -145,9 +153,9 @@ Resource Manager 提供以下用于获取资源值的函数：
 * [list*](template-functions-resource.md#list)
 * [providers](template-functions-resource.md#providers)
 * [reference](template-functions-resource.md#reference)
-* [resourceGroup](template-functions-resource.md#resourcegroup)
-* [resourceId](template-functions-resource.md#resourceid)
-* [subscription](template-functions-resource.md#subscription)
+* [resourceGroup](template-functions-resource.md#resourcegroup) - 只能在部署到资源组时使用。
+* [resourceId](template-functions-resource.md#resourceid) - 可以在任何范围内使用，但有效参数会根据范围而发生变化。
+* [subscription](template-functions-resource.md#subscription) - 只能在部署到资源组或订阅时使用。
 * [subscriptionResourceId](template-functions-resource.md#subscriptionresourceid)
 * [tenantResourceId](template-functions-resource.md#tenantresourceid)
 
@@ -183,6 +191,7 @@ Resource Manager 提供以下用于获取资源值的函数：
 <a name="uricomponenttostring" aria-hidden="true" />
 
 ## <a name="string-functions"></a>字符串函数
+
 Resource Manager 提供以下用于处理字符串的函数：
 
 * [base64](template-functions-string.md#base64)
@@ -222,8 +231,8 @@ Resource Manager 提供以下用于处理字符串的函数：
 ## <a name="next-steps"></a>后续步骤
 
 * 有关 Azure Resource Manager 模板中各部分的说明，请参阅 [Authoring Azure Resource Manager templates](template-syntax.md)（创作 Azure Resource Manager 模板）
-* 要合并多个模板，请参阅[将链接的模板与 Azure 资源管理器配合使用](linked-templates.md)
-* 若要在创建资源类型时迭代指定的次数，请参阅 [Create multiple instances of resources in Azure Resource Manager](create-multiple-instances.md)（在 Azure Resource Manager 中创建多个资源实例）
+* 若要合并多个模板，请参阅 [Using linked templates with Azure Resource Manager](linked-templates.md)（将链接模板与 Azure 资源管理器配合使用）
+* 若要在创建资源类型时迭代指定的次数，请参阅[在 Azure 资源管理器中创建多个资源实例](copy-resources.md)。
 * 若要查看如何部署已创建的模板，请参阅[使用 Azure 资源管理器模板部署应用程序](deploy-powershell.md)
 
 <!-- Update_Description: update meta properties, wording update, update link -->

@@ -1,18 +1,19 @@
 ---
 title: Azure Key Vault 软删除 | Azure
 ms.service: key-vault
+ms.subservice: general
 ms.topic: conceptual
 author: msmbaldwin
 ms.author: v-tawe
 manager: rkarlin
 origin.date: 03/19/2019
-ms.date: 02/17/2019
-ms.openlocfilehash: dea207a315b100ce456eb29e93b51bb3dc890ccb
-ms.sourcegitcommit: 0b07f1d36ac02da055874630d6edc31cb0a15269
+ms.date: 03/16/2020
+ms.openlocfilehash: 3385e98049940ae0a1942da56eaebe75461dbc48
+ms.sourcegitcommit: 764b3d26aedce2de0e1948468a706fd3204a3d5e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/10/2020
-ms.locfileid: "77112211"
+ms.lasthandoff: 03/19/2020
+ms.locfileid: "79543381"
 ---
 # <a name="azure-key-vault-soft-delete-overview"></a>Azure Key Vault 软删除概述
 
@@ -35,15 +36,13 @@ Azure Key Vault 是由 Azure Resource Manager 管理的跟踪资源。 Azure Res
 
 ### <a name="soft-delete-behavior"></a>软删除行为
 
-有此功能时，对 Key Vault 或 Key Vault 对象的 DELETE 操作是软删除，因此可以有效地在给定保留期（90 天）内保留资源，同时通过外观提示已删除对象。 该服务进一步提供了用于恢复已删除对象的机制，实质上是撤消删除。 
+启用软删除后，标记为“已删除资源”的资源将保留指定的时间（默认为 90 天）。 该服务进一步提供了用于恢复已删除对象的机制，实质上是撤消删除。
 
-现在，默认会为新建的 Key Vault 启用软删除。 可以通过 [Azure CLI](key-vault-soft-delete-cli.md) 或 [Azure PowerShell](key-vault-soft-delete-powershell.md) 禁用软删除。
+创建新的密钥保管库时，默认情况下将启用软删除。 可以通过 [Azure CLI](key-vault-soft-delete-cli.md) 或 [Azure Powershell](key-vault-soft-delete-powershell.md) 创建不带软删除的密钥保管库。 在密钥保管库上启用软删除后，便无法将其禁用
 
-默认保留期为 90 天，但可以通过 Azure 门户将保留策略间隔设置为 7 到 90 天的值。 清除保护保留策略使用相同的间隔。 
+默认保留期为 90 天，但在创建密钥保管库期间可通过 Azure 门户将保留策略间隔设为 7 到 90 天的值。 清除保护保留策略使用相同的间隔。 设置保留策略间隔后，将无法更改。
 
-对 Key Vault 设置软删除后，无法禁用软删除，并且无法更改保留策略间隔。 
-
-在保留期结束之前，无法重复使用已软删除的 Key Vault 的名称。 
+在保留期结束之前，无法重复使用已软删除的 Key Vault 的名称。
 
 ### <a name="purge-protection"></a>清除保护 
 
