@@ -1,20 +1,15 @@
 ---
-title: 通过 Azure 门户创建 Function App | Microsoft Docs
+title: 通过 Azure 门户创建函数应用
 description: 通过门户在 Azure 中创建新的函数应用。
-author: ggailey777
-manager: gwallace
-ms.service: azure-functions
 ms.topic: conceptual
-origin.date: 08/29/2019
-ms.date: 09/29/2019
-ms.author: v-junlch
+ms.date: 03/19/2020
 ms.custom: mvc
-ms.openlocfilehash: 73177ceb154ef44ebf4913a8936f858609f82e08
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: cdb19a24453390dbc955793c392405a7675ba68b
+ms.sourcegitcommit: e500354e2fd8b7ac3dddfae0c825cc543080f476
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79293192"
+ms.lasthandoff: 03/19/2020
+ms.locfileid: "79546881"
 ---
 # <a name="create-a-function-app-from-the-azure-portal"></a>通过 Azure 门户创建 Function App
 
@@ -23,10 +18,6 @@ ms.locfileid: "79293192"
 ## <a name="create-a-function-app"></a>创建函数应用
 
 [!INCLUDE [functions-create-function-app-portal](../../includes/functions-create-function-app-portal.md)]
-
-创建 Function App 时，需提供有效的**应用名称**，其中只能包含字母、数字和连字符。 下划线 ( **_** ) 是不允许的字符。
-
-存储帐户名称必须为 3 到 24 个字符，并且只能包含数字和小写字母。 存储帐户名称在 Azure 中必须是唯一的。 
 
 创建 Function App 后，可以使用一种或多种不同的语言创建各个函数。 [通过使用门户](functions-create-first-azure-function.md#create-function)或通过[使用 FTP 上传](https://github.com/projectkudu/kudu/wiki/Accessing-files-via-ftp)来创建函数。
 

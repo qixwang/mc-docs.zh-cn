@@ -3,15 +3,15 @@ title: 设置过渡环境
 description: 了解如何将应用部署到非生产槽并自动交换到生产环境中。 提高可靠性并消除部署中的应用停机时间。
 ms.assetid: e224fc4f-800d-469a-8d6a-72bcde612450
 ms.topic: article
-origin.date: 09/19/2019
-ms.date: 01/13/2020
+origin.date: 03/04/2020
+ms.date: 03/16/2020
 ms.author: v-tawe
-ms.openlocfilehash: 548b1348eeafd1b5656867d41a25e7549aaee561
-ms.sourcegitcommit: 3f9d780a22bb069402b107033f7de78b10f90dde
+ms.openlocfilehash: 72202a6621bfaa029b2ae9b1de59ca1dbc5597dd
+ms.sourcegitcommit: e500354e2fd8b7ac3dddfae0c825cc543080f476
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77179326"
+ms.lasthandoff: 03/19/2020
+ms.locfileid: "79546974"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>设置 Azure 应用服务中的过渡环境
 <a name="Overview"></a>
@@ -33,7 +33,11 @@ ms.locfileid: "77179326"
 ## <a name="add-a-slot"></a>添加槽
 应用必须在“标准”、“高级”或“独立”层中运行，才能启用多个部署槽位    。
 
-1. 在 [Azure 门户](https://portal.azure.cn/)中，打开应用的[资源页](../azure-resource-manager/management/manage-resources-portal.md#manage-resources)。
+
+1. 在 [Azure 门户](https://portal.azure.cn/)中搜索并选择“应用服务”  ，然后选择应用。 
+   
+    ![搜索应用服务](./media/web-sites-staged-publishing/search-for-app-services.png)
+   
 
 2. 在左窗格中，选择“部署槽” > “添加槽”   。
    
@@ -243,7 +247,7 @@ ms.locfileid: "77179326"
 客户端自动路由到特定槽后，在该客户端会话生存期内都将“固定”到该槽。 在客户端浏览器上，可以通过查看 HTTP 标头中的 `x-ms-routing-name` cookie 来查看会话固定到哪个槽。 路由到“暂存”槽的请求具有 cookie `x-ms-routing-name=staging`。 路由到生产槽的请求具有 cookie `x-ms-routing-name=self`。
 
    > [!NOTE]
-   > 除了 Azure 门户之外，还可以使用 Azure CLI 中的 [`az webapp traffic-routing set`](/cli/webapp/traffic-routing#az-webapp-traffic-routing-set) 命令设置 DevOps 管道或其他自动化系统等 CI/CD 工具的路由百分比。
+   > 除了 Azure 门户之外，还可以在 Azure CLI 中使用 [`az webapp traffic-routing set`](/cli/webapp/traffic-routing#az-webapp-traffic-routing-set) 命令设置 CI/CD 工具（如 DevOps 管道或其他自动化系统）的路由百分比。
    > 
 
 ### <a name="route-production-traffic-manually"></a>手动路由生产流量
@@ -329,16 +333,16 @@ Get-AzLog -ResourceGroup [resource group name] -StartTime 2018-03-07 -Caller Slo
 Remove-AzResource -ResourceGroupName [resource group name] -ResourceType Microsoft.Web/sites/slots –Name [app name]/[slot name] -ApiVersion 2015-07-01
 ```
 
-## <a name="automate-with-arm-templates"></a>使用 ARM 模板实现自动化
+## <a name="automate-with-resource-manager-templates"></a>使用资源管理器模板自动执行
 
-[ARM 模板](/azure-resource-manager/template-deployment-overview)是用于自动部署和配置 Azure 资源的声明性 JSON 文件。 若要使用 ARM 模板交换槽，请在 *Microsoft.Web/sites/slots* 和 *Microsoft.Web/sites* 资源中设置两个属性：
+[Azure 资源管理器模板](/azure-resource-manager/template-deployment-overview)是用于自动部署和配置 Azure 资源的声明性 JSON 文件。 为了使用资源管理器模板交换槽，你将在 Microsoft.Web/sites/slots  和 Microsoft.Web/sites  资源中设置两个属性：
 
 - `buildVersion`：这是一个字符串属性，表示槽中部署的应用的当前版本。 例如：“v1”、“1.0.0.1”或“2019-09-20T11:53:25.2887393-07:00”。
 - `targetBuildVersion`：这是一个字符串属性，指定槽应使用哪个 `buildVersion`。 如果 targetBuildVersion 不等于当前的 `buildVersion`，则此属性会通过查找指定了 `buildVersion` 的槽来触发交换操作。
 
-### <a name="example-arm-template"></a>示例 ARM 模板
+### <a name="example-resource-manager-template"></a>示例资源管理器模板
 
-以下 ARM 模板将更新过渡槽的 `buildVersion`，并在生产槽中设置 `targetBuildVersion`。 这会交换两个槽。 该模板假设已使用名为“staging”的槽创建了一个 Web 应用。
+以下资源管理器模板将更新过渡槽的 `buildVersion`，并在生产槽中设置 `targetBuildVersion`。 这会交换两个槽。 该模板假设已使用名为“staging”的槽创建了一个 Web 应用。
 
 ```json
 {
@@ -382,7 +386,7 @@ Remove-AzResource -ResourceGroupName [resource group name] -ResourceType Microso
 }
 ```
 
-此 ARM 模板是幂等的，这意味着，它可以重复执行，并生成相同的槽状态。 首次执行后，`targetBuildVersion` 将与当前的 `buildVersion` 匹配，因此不会触发交换。
+此资源管理器模板是幂等的，这意味着，它可以重复执行，并生成相同的槽状态。 首次执行后，`targetBuildVersion` 将与当前的 `buildVersion` 匹配，因此不会触发交换。
 
 <!-- ======== Azure CLI =========== -->
 

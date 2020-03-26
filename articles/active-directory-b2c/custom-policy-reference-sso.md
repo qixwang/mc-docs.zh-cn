@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/04/2020
+ms.date: 03/16/2020
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: 4e57dbb027f3118e8ff5894571ef47ff05f0df9d
-ms.sourcegitcommit: 1ac138a9e7dc7834b5c0b62a133ca5ce2ea80054
+ms.openlocfilehash: c6ecfcfb47e3f01e60a1f38f51296b98cb86e7d7
+ms.sourcegitcommit: 71a386ca0d0ecb79a123399b6ab6b8c70ea2aa78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78265961"
+ms.lasthandoff: 03/18/2020
+ms.locfileid: "79497160"
 ---
 # <a name="single-sign-on-session-management-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 中的单一登录会话管理
 
@@ -24,7 +24,7 @@ ms.locfileid: "78265961"
 
 使用 Azure Active Directory B2C (Azure AD B2C) 中的单一登录 (SSO) 会话管理，管理员可在用户已通过身份验证之后控制与用户的交互。 例如，管理员可以控制是否显示所选的标识提供者，或是否需要再次输入本地帐户详细信息。 本文介绍如何配置 Azure AD B2C SSO 的设置。
 
-SSO 会话管理包括两个部分。 第一个部分处理用户与 Azure AD B2C 之间的直接交互，另一个部分处理用户与外部参与方之间的交互。 Azure AD B2C 不会重写或绕过外部参与方可能保留的 SSO 会话。 通过 Azure AD B2C 转到外部参与方的路由将被“记住”，因此无需重新提示用户选择其社交或企业标识提供者。 最终的 SSO 决策仍由外部参与方做出。
+SSO 会话管理包括两个部分。 第一个部分处理用户与 Azure AD B2C 之间的直接交互，另一个部分处理用户与外部参与方之间的交互。 Azure AD B2C 不会重写或绕过外部参与方可能保留的 SSO 会话。 更确切地说，通过 Azure AD B2C 转到外部参与方的路由将被�记住�，因此无需重新提示用户选择其社交或企业标识提供者。 最终的 SSO 决策仍由外部参与方做出。
 
 SSO 会话管理使用的语义，与自定义策略中其他任何技术配置文件使用的语义相同。 执行某个业务流程步骤时，会在与该步骤关联的技术配置文件中查询 `UseTechnicalProfileForSessionManagement` 引用。 如果存在该引用，则会检查引用的 SSO 会话提供程序，确定用户是否为会话参与者。 如果是，则使用 SSO 会话提供程序来重新填充会话。 同样，在完成执行某个业务流程步骤后，如果已指定 SSO 会话提供程序，则使用该提供程序将信息存储在会话中。
 
@@ -124,22 +124,21 @@ SSO 管理类是使用技术配置文件的 `<UseTechnicalProfileForSessionManag
 
 ### <a name="samlssosessionprovider"></a>SamlSSOSessionProvider
 
-此提供程序用于管理信赖方应用程序或联合 SAML 标识提供者之间的 Azure AD B2C SAML 会话。 使用 SSO 提供程序存储 SAML 标识提供者会话时，`IncludeSessionIndex` 和 `RegisterServiceProviders` 必须设为 `false`。 以下 `SM-Saml-idp` 技术配置文件由 [SAML 技术配置文件](saml-technical-profile.md)使用。
+此提供程序用于管理信赖方应用程序或联合 SAML 标识提供者之间的 Azure AD B2C SAML 会话。 使用 SSO 提供程序存储 SAML 标识提供者会话时，`RegisterServiceProviders` 必须设为 `false`。 以下 `SM-Saml-idp` 技术配置文件由 [SAML 技术配置文件](saml-technical-profile.md)使用。
 
 ```XML
 <TechnicalProfile Id="SM-Saml-idp">
   <DisplayName>Session Management Provider</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.SSO.SamlSSOSessionProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
   <Metadata>
-    <Item Key="IncludeSessionIndex">false</Item>
     <Item Key="RegisterServiceProviders">false</Item>
   </Metadata>
 </TechnicalProfile>
 ```
 
-使用提供程序存储 B2C SAML 会话时，`IncludeSessionIndex` 和 `RegisterServiceProviders` 必须设为 `true`。 需要 `SessionIndex` 和 `NameID` 才能完成 SAML 会话注销。
+使用提供程序存储 B2C SAML 会话时，`RegisterServiceProviders` 必须设为 `true`。 需要 `SessionIndex` 和 `NameID` 才能完成 SAML 会话注销。
 
-以下 `SM-Saml-idp` 技术配置文件由 SAML 颁发者技术配置文件使用
+以下 `SM-Saml-idp` 技术配置文件由 [SAML 颁发者技术配置文件](saml-issuer-technical-profile.md)使用
 
 ```XML
 <TechnicalProfile Id="SM-Saml-sp">
@@ -151,7 +150,7 @@ SSO 管理类是使用技术配置文件的 `<UseTechnicalProfileForSessionManag
 
 | 属性 | 必须 | 说明|
 | --- | --- | --- |
-| IncludeSessionIndex | 否 | 向提供程序指出应存储会话索引。 可能的值为 `true`（默认）或 `false`。|
+| IncludeSessionIndex | 否 | 当前未使用，可以忽略。|
 | RegisterServiceProviders | 否 | 指示提供程序应注册已颁发断言的所有 SAML 服务提供程序。 可能的值为 `true`（默认）或 `false`。|
 
 

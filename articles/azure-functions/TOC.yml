@@ -20,7 +20,7 @@
           href: functions-create-your-first-function-visual-studio.md
         - name: 命令行
           href: functions-create-first-azure-function-azure-cli.md
-        - name: Maven (Java)
+        - name: Maven/Gradle (Java)
           href: functions-create-first-java-maven.md
     - name: 连接到存储
       items:
@@ -30,7 +30,7 @@
           href: functions-add-output-binding-storage-queue-vs.md
         - name: 命令行
           href: functions-add-output-binding-storage-queue-cli.md
-        - name: Maven (Java)
+        - name: Maven/Gradle (Java)
           href: functions-add-output-binding-storage-queue-java.md
 - name: 教程
   items:
@@ -108,7 +108,7 @@
       displayName: best practice
     - name: 存储注意事项
       href: storage-considerations.md
-      displayName: 'encryption, keys'
+      displayName: 'encryption, keys, mount, files'
     - name: Functions 代理
       href: functions-proxies.md
     - name: 网络选项
@@ -221,6 +221,8 @@
           href: ../app-service/overview-managed-identity.md
         - name: 从 Key Vault 引用机密
           href: ../app-service/app-service-key-vault-references.md
+        - name: 加密站点数据
+          href: configure-encrypt-at-rest-using-cmk.md
     - name: 集成
       items:
         - name: 添加绑定
@@ -352,10 +354,10 @@
             - name: 概述
               href: functions-bindings-signalr-service.md
               displayName: SignalR Service
-            - name: 概述
+            - name: 输入
               href: functions-bindings-signalr-service-input.md
               displayName: SignalR Service
-            - name: 概述
+            - name: 输出
               href: functions-bindings-signalr-service-output.md
               displayName: SignalR Service
         - name: 表存储

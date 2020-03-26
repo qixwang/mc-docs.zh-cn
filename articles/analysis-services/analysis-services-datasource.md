@@ -4,16 +4,16 @@ description: 介绍 Azure Analysis Services 中的表格 1200 和更高版本数
 author: rockboyfor
 ms.service: azure-analysis-services
 ms.topic: conceptual
-origin.date: 12/02/2019
-ms.date: 01/20/2020
+origin.date: 02/20/2019
+ms.date: 03/23/2020
 ms.author: v-yeche
 ms.reviewer: minewiskan
-ms.openlocfilehash: 9d0bdc6a4eddcaf8883d9363d10e6ee41cf2bc1c
-ms.sourcegitcommit: 8de025ca11b62e06ba3762b5d15cc577e0c0f15d
+ms.openlocfilehash: bf6540b6ae69c6e996bdaecb5dc86e0a7c4efb96
+ms.sourcegitcommit: 1436f1851342ca5631eb25342eed954adb707af0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76165421"
+ms.lasthandoff: 03/19/2020
+ms.locfileid: "79543774"
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>Azure Analysis Services 中支持的数据源
 
@@ -21,10 +21,10 @@ ms.locfileid: "76165421"
 
 ## <a name="azure-data-sources"></a>Azure 数据源
 
-|数据源  |内存中  |DirectQuery  |说明 |
+|数据源  |内存中  |直接连接  |注释 |
 |---------|---------|---------|---------|
 |Azure SQL 数据库      |   是      |    是      |<sup>[2](#azprovider)</sup>、<sup>[3](#azsqlmanaged)</sup>|
-|Azure SQL 数据仓库      |   是      |   是       |<sup>[2](#azprovider)</sup>|
+|Azure Synapse Analytics（SQL 数据仓库）      |   是      |   是       |<sup>[2](#azprovider)</sup>|
 |Azure Blob 存储      |   是       |    否      | <sup>[1](#tab1400a)</sup> |
 |Azure 表存储     |   是       |    否      | <sup>[1](#tab1400a)</sup>|
 |Azure Cosmos DB     |  是        |  否        |<sup>[1](#tab1400a)</sup> |
@@ -36,7 +36,7 @@ ms.locfileid: "76165421"
 <!--Not Available on |Azure Data Lake Store Gen2       |   Yes       |    No      |<sup>[1](#tab1400a)</sup>, <sup>[5](#gen2)</sup>|-->
 
 **说明：**    
-<a name="tab1400a">1</a> - 仅限表格 1400 和更高版本的模型。  
+<a name="tab1400a">1</a> - 仅限表格 1400 和更高模型。  
 <a name="azprovider">2</a> - 在表格 1200 和更高版本的模型中指定为“提供程序”  数据源时，内存中模型和 DirectQuery 模型都需要 Microsoft OLE DB Driver for SQL Server MSOLEDBSQL（推荐）、SQL Server Native Client 11.0 或 .NET Framework Data Provider for SQL Server。    
 <a name="azsqlmanaged">3</a> - 支持 Azure SQL 数据库托管实例。 由于托管实例使用专用 IP 地址在 Azure VNet 中运行，因此必须在实例上启用公共终结点。 如果未启用，则需要[本地数据网关](analysis-services-gateway.md)。    
 
@@ -45,7 +45,7 @@ ms.locfileid: "76165421"
 
 ## <a name="other-data-sources"></a>其他数据源
 
-|数据源 | 内存中 | DirectQuery |说明   |
+|数据源 | 内存中 | 直接连接 |注释   |
 |  --- | --- | --- | --- |
 |Access 数据库     |  是 | 否 |  |
 |Active Directory     |  是 | 否 | <sup>[6](#tab1400b)</sup>  |
@@ -122,7 +122,9 @@ ms.locfileid: "76165421"
 
 ## <a name="oauth-credentials"></a>OAuth 凭据
 
-对于 1400 及更高兼容级别的表格模型，Azure SQL 数据库、Azure SQL 数据仓库、Dynamics 365 和 SharePoint 列表支持 OAuth 凭据。 Azure Analysis Services 管理 OAuth 数据源的令牌刷新，以避免长时间运行的刷新操作超时。 若要生成有效的令牌，请使用 SSMS 设置凭据。
+对于内存中模式下的 1400 和更高兼容性级别的表格模型，Azure SQL 数据库、Azure Synapse Analytics（SQL 数据仓库）、Dynamics 365 和 SharePoint 列表支持 OAuth 凭据。 Azure Analysis Services 管理 OAuth 数据源的令牌刷新，以避免长时间运行的刷新操作超时。 若要生成有效的令牌，请使用 SSMS 设置凭据。
+
+OAuth 凭据不支持直接查询模式。
 
 ## <a name="next-steps"></a>后续步骤
 [本地网关](analysis-services-gateway.md)   

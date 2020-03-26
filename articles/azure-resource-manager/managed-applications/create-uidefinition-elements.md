@@ -3,15 +3,15 @@ title: 创建 UI 定义元素
 description: 介绍了为 Azure 门户构造 UI 定义时要使用的元素。
 author: rockboyfor
 ms.topic: conceptual
-origin.date: 11/11/2019
-ms.date: 01/20/2020
+origin.date: 02/06/2020
+ms.date: 03/23/2020
 ms.author: v-yeche
-ms.openlocfilehash: 6fb59153e7ced4303b9c3e2f5712237a9fd3225a
-ms.sourcegitcommit: 8de025ca11b62e06ba3762b5d15cc577e0c0f15d
+ms.openlocfilehash: efd39cb1af2e1ed8a2a50a7aecb45da407f3877b
+ms.sourcegitcommit: 1436f1851342ca5631eb25342eed954adb707af0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76170809"
+ms.lasthandoff: 03/19/2020
+ms.locfileid: "79543867"
 ---
 # <a name="createuidefinition-elements"></a>CreateUiDefinition 元素
 
@@ -61,6 +61,7 @@ ms.locfileid: "76170809"
 - [Microsoft.Compute.CredentialsCombo](microsoft-compute-credentialscombo.md)
 - [Microsoft.Compute.SizeSelector](microsoft-compute-sizeselector.md)
 - [Microsoft.Compute.UserNameTextBox](microsoft-compute-usernametextbox.md)
+- [Microsoft.ManagedIdentity.IdentitySelector](microsoft-managedidentity-identityselector.md)
 - [Microsoft.Network.PublicIpAddressCombo](microsoft-network-publicipaddresscombo.md)
 - [Microsoft.Network.VirtualNetworkCombo](microsoft-network-virtualnetworkcombo.md)
 - [Microsoft.Storage.MultiStorageAccountCombo](microsoft-storage-multistorageaccountcombo.md)

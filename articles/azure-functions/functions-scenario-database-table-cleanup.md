@@ -3,13 +3,13 @@ title: 使用 Azure Functions 执行数据库清理任务
 description: 使用 Azure Functions 计划连接到 Azure SQL 数据库的任务，以定期清理行。
 ms.assetid: 076f5f95-f8d2-42c7-b7fd-6798856ba0bb
 ms.topic: conceptual
-ms.date: 12/31/2019
-ms.openlocfilehash: c6e06a23756058264eed763c510fdea91320ca5f
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.date: 03/19/2020
+ms.openlocfilehash: d94febaf408aff9c875d8987f50ab67a1fb15c4c
+ms.sourcegitcommit: e500354e2fd8b7ac3dddfae0c825cc543080f476
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75624290"
+ms.lasthandoff: 03/19/2020
+ms.locfileid: "79546869"
 ---
 # <a name="use-azure-functions-to-connect-to-an-azure-sql-database"></a>使用 Azure Functions 连接 Azure SQL 数据库
 
@@ -43,7 +43,7 @@ Function App 在 Azure 中托管函数的执行。 这是在函数应用设置�
 
 但前提是必须已将应用发布到 Azure。 若尚未执行此操作，[请将函数应用发布到 Azure ](functions-develop-vs.md#publish-to-azure)。
 
-1. 在解决方案资源管理器中，右键单击函数应用项目，选择“发布” > “管理应用程序设置...”   。选择“添加设置”，在“新建应用设置名称”中键入 `sqldb_connection`然后选择“确认”    。
+1. 在解决方案资源管理器中，右键单击函数应用项目，选择“发布” > “编辑 Azure 应用服务设置”   。 选择“添加设置”，在“新建应用设置名称”中键入 `sqldb_connection`然后选择“确认”    。
 
     ![函数应用的应用程序设置。](./media/functions-scenario-database-table-cleanup/functions-app-service-add-setting.png)
 
@@ -131,4 +131,3 @@ Function App 在 Azure 中托管函数的执行。 这是在函数应用设置�
 + [测试 Azure Functions](functions-test-a-function.md)  
   介绍可用于测试函数的各种工具和技巧。  
 
-<!-- Update_Description: wording update -->

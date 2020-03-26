@@ -7,15 +7,15 @@ tags: top-support-issue
 ms.assetid: 2fa5ee6b-51a6-4237-805f-518e6c57d11b
 ms.topic: article
 origin.date: 10/31/2018
-ms.date: 03/09/2020
+ms.date: 03/16/2020
 ms.author: v-tawe
 ms.custom: seodec18
-ms.openlocfilehash: 9a4e893186ce267e2cd04f4716a9231850735dd9
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: 2b1ddddf35f1945fc002d64bbcbce27cedf5e91f
+ms.sourcegitcommit: e500354e2fd8b7ac3dddfae0c825cc543080f476
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79293367"
+ms.lasthandoff: 03/19/2020
+ms.locfileid: "79546956"
 ---
 # <a name="application-performance-faqs-for-web-apps-in-azure"></a>Azure 中 Web 应用的应用程序性能常见问题解答
 
@@ -92,8 +92,9 @@ ms.locfileid: "79293367"
 默认情况下，如果 Web 应用已处于空闲状态相当一段时间，则其处于未加载的状态。 这样，系统可以节省资源。 其缺点是：Web 应用处于未加载的状态后，对第一个请求的响应时间较长，需要等待 Web 应用加载和启动处理响应。 在基本和标准服务计划中，可启用“始终打开”  设置，使应用保持加载状态。 这样就无需在应用处于空闲状态后重新加载应用。 若要更改“始终打开”  设置，请执行以下操作：
 
 1. 在 Azure 门户中，转到自己的 Web 应用。
-2. 选择“应用程序设置”  。
-3. 对于“始终打开”  ，选择“打开”  。
+2. 选择“配置” 
+3. 选择“常规设置”  。
+4. 对于“始终打开”  ，选择“打开”  。
 
 ## <a name="how-do-i-turn-on-failed-request-tracing"></a>如何打开失败请求跟踪？
 

@@ -3,15 +3,15 @@ title: 使用 Java 和 IntelliJ 创建 Azure 函数
 description: 了解如何使用 Java 和 IntelliJ 在 Azure 上创建和发布简单的 HTTP 触发式无服务器应用。
 author: jeffhollan
 ms.topic: conceptual
-ms.date: 03/03/2020
+ms.date: 03/19/2020
 ms.author: v-junlch
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 1a9551c835215ca2aec3a8456968401145668b36
-ms.sourcegitcommit: 1ac138a9e7dc7834b5c0b62a133ca5ce2ea80054
+ms.openlocfilehash: 883173c8b818de149c4e9cd9f76617231a31664c
+ms.sourcegitcommit: e500354e2fd8b7ac3dddfae0c825cc543080f476
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78266030"
+ms.lasthandoff: 03/19/2020
+ms.locfileid: "79546874"
 ---
 # <a name="create-your-first-azure-function-with-java-and-intellij"></a>使用 Java 和 IntelliJ 创建第一个 Azure 函数
 
@@ -46,8 +46,8 @@ ms.locfileid: "78266030"
 1. 在“Add Archetype”（添加 Archetype）窗口中完成相关字段，如下所示： 
     - _GroupId_：com.microsoft.azure
     - _ArtifactId_：azure-functions-archetype
-    - _版本_：使用[中央存储库](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-archetype)
-    中的最新版本 **1.22** ![在 IntelliJ IDEA 中根据 archetype 创建 Maven 项目](./media/functions-create-first-java-intellij/functions-create-intellij.png)  
+    - _版本_：检查和使用[中央存储库](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-archetype)中的最新版本
+    ![在 IntelliJ IDEA 中基于原型创建 Maven 项目](./media/functions-create-first-java-intellij/functions-create-intellij.png)  
 1. 选择“确定”  ，然后选择“下一步”  。
 1. 输入当前项目的详细信息，然后选择“Finish”（完成）  。
 

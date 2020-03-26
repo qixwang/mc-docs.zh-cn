@@ -1,24 +1,17 @@
 ---
-title: 使用 Java 和 Eclipse 创建 Azure 函数应用 | Microsoft Docs
+title: 使用 Java 和 Eclipse 创建 Azure 函数应用
 description: 介绍如何使用 Java 和 Eclipse 创建简单的 HTTP 触发式无服务器应用并将其发布到 Azure Functions 的操作说明指南。
-services: functions
-documentationcenter: na
 author: jeffhollan
-manager: jpconnock
-keywords: azure functions, functions, 事件处理, 计算, 无服务器体系结构, java
-ms.service: azure-functions
 ms.topic: conceptual
-ms.devlang: java
-origin.date: 07/01/2018
-ms.date: 11/11/2019
+ms.date: 03/19/2020
 ms.author: v-junlch
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 3d665482f3196fbeb71119b9c3b3a71273aa8902
-ms.sourcegitcommit: 40a58a8b9be0c825c03725802e21ed47724aa7d2
+ms.openlocfilehash: dde27c140df92492318a1a62f8540c695e891387
+ms.sourcegitcommit: e500354e2fd8b7ac3dddfae0c825cc543080f476
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73934251"
+ms.lasthandoff: 03/19/2020
+ms.locfileid: "79546879"
 ---
 # <a name="create-your-first-function-with-java-and-eclipse"></a>使用 Java 和 Eclipse 创建第一个函数 
 
@@ -49,8 +42,8 @@ ms.locfileid: "73934251"
 1. 选择“添加原型”，并为 [azure-functions-archetype](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-archetype) 添加条目。 
     - 原型组 ID：com.microsoft.azure
     - 原型项目 ID：azure-functions-archetype
-    - 版本：使用[中央存储库](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-archetype)
-    中的最新版本 **1.22** ![Eclipse Maven 创建](./media/functions-create-first-java-eclipse/functions-create-eclipse.png)  
+    - 版本：检查和使用[中央存储库](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-archetype)中的最新版本
+    ![Eclipse Maven 创建](./media/functions-create-first-java-eclipse/functions-create-eclipse.png)  
 1. 单击“确定”，然后单击“下一步”。    请确保填写包括 `resourceGroup`、`appName` 和 `appRegion` 在内的所有字段的值（请使用 **fabrikam-function-20170920120101928** 之外的其他 appName），并最终单击“完成”  。
     ![Eclipse Maven 创建 2](./media/functions-create-first-java-eclipse/functions-create-eclipse2.png)  
 

@@ -4,21 +4,21 @@ description: 了解如何在受 AD FS 保护的离线 Azure Stack Hub 环境中�
 author: WenJason
 ms.topic: article
 origin.date: 01/13/2020
-ms.date: 02/24/2020
+ms.date: 03/23/2020
 ms.author: v-jay
 ms.reviewer: anwestg
-ms.lastreviewed: 01/13/2020
-ms.openlocfilehash: f5eda6bc69ffefb65009e131881cf5860f3b57b5
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.lastreviewed: 01/13/2019
+ms.openlocfilehash: bdeb7a8eeea1ff62d0586b5cf92ea16d040013ee
+ms.sourcegitcommit: e500354e2fd8b7ac3dddfae0c825cc543080f476
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77540963"
+ms.lasthandoff: 03/19/2020
+ms.locfileid: "79546852"
 ---
 # <a name="deploy-azure-app-service-in-an-offline-environment-in-azure-stack-hub"></a>在 Azure Stack Hub 离线环境中部署 Azure 应用服务
 
 > [!IMPORTANT]
-> 请将 1910 更新应用于 Azure Stack Hub 集成系统，或部署最新的 Azure Stack Hub 开发工具包 (ASDK)，然后部署 Azure 应用服务 1.8。
+> 请将 1910 更新应用于 Azure Stack Hub 集成系统，或部署最新的 Azure Stack 开发工具包 (ASDK)，然后部署 Azure 应用服务 1.8。
 
 根据本文中的说明可将 [Azure 应用服务资源提供程序](azure-stack-app-service-overview.md)部署到符合以下条件的 Azure Stack Hub 环境：
 - 未连接到 Internet。

@@ -2,15 +2,15 @@
 title: 模板语法和表达式
 description: 介绍 Azure 资源管理器模板的声明性 JSON 语法。
 ms.topic: conceptual
-origin.date: 09/03/2019
+origin.date: 02/13/2020
+ms.date: 03/23/2020
 ms.author: v-yeche
-ms.date: 01/06/2020
-ms.openlocfilehash: e5ade99673fc31a9ae599a647aa041b54868d274
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.openlocfilehash: d8bcb55e8acaefd12839c332c50ac714bf725b90
+ms.sourcegitcommit: 1436f1851342ca5631eb25342eed954adb707af0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75631332"
+ms.lasthandoff: 03/19/2020
+ms.locfileid: "79543894"
 ---
 # <a name="syntax-and-expressions-in-azure-resource-manager-templates"></a>Azure 资源管理器模板中的语法和表达式
 
@@ -20,7 +20,7 @@ ms.locfileid: "75631332"
 
 ## <a name="use-functions"></a>使用函数
 
-以下示例演示了参数默认值中的表达式：
+Azure 资源管理器提供了可在模板中使用的[函数](template-functions.md)。 以下示例显示了一个在参数的默认值中使用函数的表达式：
 
 ```json
 "parameters": {
@@ -40,6 +40,12 @@ ms.locfileid: "75631332"
 ```json
 "name": "[concat('storage', uniqueString(resourceGroup().id))]"
 ```
+
+无论是部署到资源组、订阅、管理组还是租户，大多数函数的工作原理都相同。 以下函数根据范围有限制：
+
+* [resourceGroup](template-functions-resource.md#resourcegroup) - 只能在部署到资源组时使用。
+* [resourceId](template-functions-resource.md#resourceid) - 可以在任何范围内使用，但有效参数会根据范围而发生变化。
+* [subscription](template-functions-resource.md#subscription) - 只能在部署到资源组或订阅时使用。
 
 ## <a name="escape-characters"></a>转义字符
 
@@ -65,6 +71,15 @@ ms.locfileid: "75631332"
 "tags": {
     "CostCenter": "{\"Dept\":\"Finance\",\"Environment\":\"Production\"}"
 },
+```
+
+## <a name="null-values"></a>Null 值
+
+若要将属性设置为 null，可以使用 **null** 或 **[json('null')]** 。 将 `null` 作为参数提供时，[json 函数](template-functions-array.md#json)返回空对象。 在这两种情况下，资源管理器模板都会按照属性不存在的情况进行处理。
+
+```json
+"stringValue": null,
+"objectValue": "[json('null')]"
 ```
 
 ## <a name="next-steps"></a>后续步骤

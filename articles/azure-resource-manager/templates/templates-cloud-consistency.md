@@ -4,15 +4,15 @@ description: 开发可针对不同的云环境一致地工作的 Azure 资源管
 author: rockboyfor
 ms.topic: conceptual
 origin.date: 12/09/2018
-ms.date: 01/06/2020
+ms.date: 03/23/2020
 ms.author: v-yeche
 ms.custom: seodec18
-ms.openlocfilehash: ff7dd933a0b19afd538aaa87ce4c586c3395656c
-ms.sourcegitcommit: 8de025ca11b62e06ba3762b5d15cc577e0c0f15d
+ms.openlocfilehash: 7dcf69248c9bd1d26cd0ec413bd54a072a8690c4
+ms.sourcegitcommit: 1436f1851342ca5631eb25342eed954adb707af0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76165440"
+ms.lasthandoff: 03/19/2020
+ms.locfileid: "79543910"
 ---
 # <a name="develop-azure-resource-manager-templates-for-cloud-consistency"></a>开发用于实现云一致性的 Azure 资源管理器模板
 
@@ -26,7 +26,7 @@ Azure 在很多位置提供了面向企业的智能云服务，其中包括：
 
     <!--MOONCAKE: CORRECT ON Microsoft-managed Azure platform-->
     
-* 独立主权云，例如 Azure 德国、Azure 美国政府和 Azure 中国（由世纪互联运营的 Azure）。 主权云提供具有大部分相同的强大功能的一致平台，全球 Azure 客户均有权访问。
+* 独立主权云，例如 Azure 德国、Azure 美国政府和 Azure 中国世纪互联。 主权云提供具有大部分相同的强大功能的一致平台，全球 Azure 客户均有权访问。
     
     <!--MOONCAKE: sovereign cloud correct-->
     
@@ -54,16 +54,18 @@ Azure 在很多位置提供了面向企业的智能云服务，其中包括：
 
 资源管理器模板的基本语法是 JSON。 模板使用 JSON 的超集，通过表达式和函数扩展语法。 模板语言处理器经常更新以支持附加的模板函数。 有关可用模板函数的详细说明，请参阅 [Azure 资源管理器模板函数](template-functions.md)。
 
-Azure 资源管理器中引入的新模板函数在主权云或 Azure Stack 中不会立即可用。 要成功部署模板，模板中引用的所有函数都必须在目标云中可用。 
+Azure 资源管理器中引入的新模板函数在主权云或 Azure Stack 中不会立即可用。 要成功部署模板，模板中引用的所有函数都必须在目标云中可用。
 
-Azure 资源管理器的功能始终会首先引入到全球 Azure。 使用以下 PowerShell 脚本可以验证新引入的模板函数在 Azure Stack 中是否可用： 
+Azure 资源管理器的功能始终会首先引入到全球 Azure。 使用以下 PowerShell 脚本可以验证新引入的模板函数在 Azure Stack 中是否可用：
 
 1. 克隆 GitHub 存储库：[https://github.com/marcvaneijk/arm-template-functions](https://github.com/marcvaneijk/arm-template-functions)
 
 1. 本地克隆存储库后，使用 PowerShell 连接到目标的 Azure 资源管理器。
 
 1. 导入 psm1 模块并执行 Test-AzureRmTemplateFunctions cmdlet：
-
+    
+    <!-- Notice: we should add ChinaNorth location for cmdlet of Test-AzureRmTemplateFunctions-->
+     
     ```powershell
     # Import the module
     Import-module <path to local clone>\AzTemplateFunctions.psm1
@@ -78,7 +80,7 @@ Azure 资源管理器的功能始终会首先引入到全球 Azure。 使用以�
 
 ## <a name="working-with-linked-artifacts"></a>使用链接项目
 
-模板可以包含对链接项目的引用以及链接到另一个模板的部署资源。 资源管理器在运行时会检索链接模板（也称为嵌套模板）。 模板也可以包含对虚拟机 (VM) 扩展的项目的引用。 在 VM 内运行的 VM 扩展会检索这些项目，以便在目标部署过程中配置 VM 扩展 
+模板可以包含对链接项目的引用以及链接到另一个模板的部署资源。 资源管理器在运行时会检索链接模板（也称为嵌套模板）。 模板也可以包含对虚拟机 (VM) 扩展的项目的引用。 在 VM 内运行的 VM 扩展会检索这些项目，以便在目标部署过程中配置 VM 扩展
 
 以下部分介绍在开发模板过程中，当该模板包含与主要部署模板不相关的项目时云一致性的注意事项。
 
@@ -91,9 +93,9 @@ Azure 资源管理器的功能始终会首先引入到全球 Azure。 使用以�
 ```json
 "resources": [
   {
+     "type": "Microsoft.Resources/deployments",
      "apiVersion": "2017-05-10",
      "name": "linkedTemplate",
-     "type": "Microsoft.Resources/deployments",
      "properties": {
        "mode": "incremental",
        "templateLink": {
@@ -109,9 +111,9 @@ Azure 资源管理器在运行时评估主要模板并检索和评估每个嵌�
 
 ### <a name="make-linked-templates-accessible-across-clouds"></a>使链接模板可跨云访问
 
-请考虑所用的任何链接模板的存储位置和方式。 在运行时，Azure 资源管理器会提取任意链接模板，因此需要该模板的直接访问权限。 常见的一种做法是使用 GitHub 存储嵌套模板。 GitHub 存储库可以包含可通过 URL 公开访问的文件。 虽然此方法适用于公有云和主权云，但 Azure Stack 环境可能位于企业网络或断开连接的远程位置，无任何出站 Internet 访问权限。 在这些情况下，Azure 资源管理器无法检索嵌套模板。 
+请考虑所用的任何链接模板的存储位置和方式。 在运行时，Azure 资源管理器会提取任意链接模板，因此需要该模板的直接访问权限。 常见的一种做法是使用 GitHub 存储嵌套模板。 GitHub 存储库可以包含可通过 URL 公开访问的文件。 虽然此方法适用于公有云和主权云，但 Azure Stack 环境可能位于企业网络或断开连接的远程位置，无任何出站 Internet 访问权限。 在这些情况下，Azure 资源管理器无法检索嵌套模板。
 
-适合跨云部署的更好做法是将链接模板存储在目标云可访问的位置。 理想情况是在持续集成/持续开发 (CI/CD) 管道中维护和部署所有部署项目。 或者，可以将嵌套模板存储在 blob 存储容器中，Azure 资源管理器可从其中检索它们。 
+适合跨云部署的更好做法是将链接模板存储在目标云可访问的位置。 理想情况是在持续集成/持续开发 (CI/CD) 管道中维护和部署所有部署项目。 或者，可以将嵌套模板存储在 blob 存储容器中，Azure 资源管理器可从其中检索它们。
 
 由于每个云上的 blob 存储使用不同的终结点完全限定的域名 (FQDN)，因此请使用两个参数配置具有链接模板位置的模板。 参数可以接受部署时的用户输入。 模板一般由多人创作和共享，因此最佳做法是对这些参数使用标准名称。 命名约定有助于提高模板在区域、云和作者之间的可重用性。
 
@@ -141,9 +143,9 @@ Azure 资源管理器在运行时评估主要模板并检索和评估每个嵌�
 ```json
 "resources": [
   {
-    "name": "shared",
     "type": "Microsoft.Resources/deployments",
     "apiVersion": "2015-01-01",
+    "name": "shared",
     "properties": {
       "mode": "Incremental",
       "templateLink": {
@@ -159,7 +161,7 @@ Azure 资源管理器在运行时评估主要模板并检索和评估每个嵌�
 
 ### <a name="use-_artifactslocation-instead-of-hardcoding-links"></a>使用 _artifactsLocation 取代硬编码链接
 
-`_artifactsLocation` 参数中的 URL 除了用于嵌套模板，还可用作部署模板的所有相关项目的基。 某些 VM 扩展包含存储在模板外的脚本的链接。 对于这些扩展，不应对链接进行硬编码。 例如，自定义脚本和 PowerShell DSC 扩展可能链接到 GitHub 上的外部脚本，如下所示： 
+`_artifactsLocation` 参数中的 URL 除了用于嵌套模板，还可用作部署模板的所有相关项目的基。 某些 VM 扩展包含存储在模板外的脚本的链接。 对于这些扩展，不应对链接进行硬编码。 例如，自定义脚本和 PowerShell DSC 扩展可能链接到 GitHub 上的外部脚本，如下所示：
 
 ```json
 "properties": {
@@ -224,7 +226,7 @@ Azure 资源管理器在运行时评估主要模板并检索和评估每个嵌�
 
 模板部署和配置资源。 资源类型由资源提供程序提供。 例如，计算资源提供程序 (Microsoft.Compute) 提供多个资源类型，例如 virtualMachines 和 availabilitySets。 每个资源提供程序均可向常见协定定义的 Azure 资源管理器提供一个 API，从而可以跨所有资源提供程序实现一致、统一的创作体验。 但全球 Azure 中可用的资源提供程序在主权云或 Azure Stack 区域中可能不可用。
 
-![资源提供程序](./media/templates-cloud-consistency/resource-providers.png) 
+![资源提供程序](./media/templates-cloud-consistency/resource-providers.png)
 
 要验证资源提供程序在给定云中是否可用，请在 Azure 命令行界面 ([CLI](https://docs.azure.cn/cli/install-azure-cli?view=azure-cli-latest)) 中运行以下脚本：
 
@@ -262,7 +264,7 @@ Get-AzureRmResourceProvider | select-object ProviderNamespace -ExpandProperty Re
 
 在模板中指定资源属性时，虽然可以对区域名称进行硬编码，但此方法不保证可以将模板部署到其他 Azure Stack 环境，因为那里很可能不存在区域名称。
 
-为了适应不同的区域，请将输入参数位置添加到具有默认值的模板。 如果在部署期间未指定任何值，则使用默认值。 
+为了适应不同的区域，请将输入参数位置添加到具有默认值的模板。 如果在部署期间未指定任何值，则使用默认值。
 
 模板函数 `[resourceGroup()]` 返回一个对象，其中包含以下键值对：
 
@@ -293,9 +295,9 @@ Get-AzureRmResourceProvider | select-object ProviderNamespace -ExpandProperty Re
 },
 "resources": [
   {
-    "name": "storageaccount1",
     "type": "Microsoft.Storage/storageAccounts",
     "apiVersion": "2015-06-15",
+    "name": "storageaccount1",
     "location": "[parameters('location')]",
     ...
 ```
@@ -310,40 +312,40 @@ Get-AzureRmResourceProvider | select-object ProviderNamespace -ExpandProperty Re
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "location": {
-            "type": "string",
-            "metadata": {
-                "description": "Location the resources will be deployed to."
-            },
-            "defaultValue": "[resourceGroup().location]"
-        }
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "location": {
+      "type": "string",
+      "metadata": {
+          "description": "Location the resources will be deployed to."
+      },
+      "defaultValue": "[resourceGroup().location]"
+    }
+  },
+  "variables": {},
+  "resources": [
+    {
+      "type": "Microsoft.Storage/storageAccounts",
+      "apiVersion": "2016-01-01",
+      "name": "mystorageaccount",
+      "location": "[parameters('location')]",
+      "properties": {
+        "accountType": "Standard_LRS"
+      }
     },
-    "variables": {},
-    "resources": [
-        {
-            "name": "mystorageaccount",
-            "type": "Microsoft.Storage/storageAccounts",
-            "apiVersion": "2016-01-01",
-            "location": "[parameters('location')]",
-            "properties": {
-                "accountType": "Standard_LRS"
-            }
-        },
-        {
-            "name": "myavailabilityset",
-            "type": "Microsoft.Compute/availabilitySets",
-            "apiVersion": "2016-03-30",
-            "location": "[parameters('location')]",
-            "properties": {
-                "platformFaultDomainCount": 2,
-                "platformUpdateDomainCount": 2
-            }
-        }
-    ],
-    "outputs": {}
+    {
+      "type": "Microsoft.Compute/availabilitySets",
+      "apiVersion": "2016-03-30",
+      "name": "myavailabilityset",
+      "location": "[parameters('location')]",
+      "properties": {
+        "platformFaultDomainCount": 2,
+        "platformUpdateDomainCount": 2
+      }
+    }
+  ],
+  "outputs": {}
 }
 ```
 
@@ -366,16 +368,16 @@ API 配置文件版本充当 Azure 和 Azure Stack 通用的每种资源类型�
     "variables": {},
     "resources": [
         {
-            "name": "mystorageaccount",
             "type": "Microsoft.Storage/storageAccounts",
+            "name": "mystorageaccount",
             "location": "[parameters('location')]",
             "properties": {
                 "accountType": "Standard_LRS"
             }
         },
         {
-            "name": "myavailabilityset",
             "type": "Microsoft.Compute/availabilitySets",
+            "name": "myavailabilityset",
             "location": "[parameters('location')]",
             "properties": {
                 "platformFaultDomainCount": 2,
@@ -408,17 +410,17 @@ API 配置文件可确保 API 版本可跨位置使用，因此不需要手动�
     "variables": {},
     "resources": [
         {
-            "name": "mystorageaccount",
             "type": "Microsoft.Storage/storageAccounts",
             "apiVersion": "2016-01-01",
+            "name": "mystorageaccount",
             "location": "[parameters('location')]",
             "properties": {
                 "accountType": "Standard_LRS"
             }
         },
         {
-            "name": "myavailabilityset",
             "type": "Microsoft.Compute/availabilitySets",
+            "name": "myavailabilityset",
             "location": "[parameters('location')]",
             "properties": {
                 "platformFaultDomainCount": 2,
@@ -432,7 +434,7 @@ API 配置文件可确保 API 版本可跨位置使用，因此不需要手动�
 
 ## <a name="check-endpoint-references"></a>检查终结点引用
 
-资源可以具有对平台上其他服务的引用。 例如，公共 IP 可以分配获得公共 DNS 名称。 公有云、主权云和 Azure Stack 解决方案有自己不同的终结点命名空间。 在大多数情况下，资源仅需要一个前缀作为模板中的输入。 在运行时，Azure 资源管理器将终结点值追加到其中。 某些终结点值需要在模板中显式指定。 
+资源可以具有对平台上其他服务的引用。 例如，公共 IP 可以分配获得公共 DNS 名称。 公有云、主权云和 Azure Stack 解决方案有自己不同的终结点命名空间。 在大多数情况下，资源仅需要一个前缀作为模板中的输入。 在运行时，Azure 资源管理器将终结点值追加到其中。 某些终结点值需要在模板中显式指定。
 
 > [!NOTE]
 > 为了开发用于实现一致性的模板，请勿对终结点命名空间进行硬编码。
@@ -452,23 +454,25 @@ API 配置文件可确保 API 版本可跨位置使用，因此不需要手动�
 
 一般情况下，请避免在模板中使用硬编码终结点。 最佳做法是使用引用模板函数动态检索终结点。 例如，最常进行硬编码的终结点是存储帐户的终结点命名空间。 每个存储帐户均有唯一的 FQDN，它通过连接存储帐户的名称与终结点命名空间来构造。 名为 mystorageaccount1 的 blob 存储帐户会因为云的不同而产生不同的 FQDN：
 
+<!--Notice: Global Azure Cloud should be mystorageaccount1.blob.core.windows.net-->
+
 * 在全球 Azure 云上创建时会产生 mystorageaccount1.blob.core.windows.net  。
     
     <!--Notice: Global Azure Cloud should be mystorageaccount1.blob.core.windows.net-->
     
-* 在 Azure 中国云中创建时会产生 mystorageaccount1.blob.core.chinacloudapi.cn  。
+* 在 Azure 中国世纪互联云创建时会产生 mystorageaccount1.blob.core.chinacloudapi.cn  。
 
 以下引用模板函数从存储资源提供程序中检索终结点命名空间：
 
 ```json
-"diskUri":"[concat(reference(concat('Microsoft.Storage/storageAccounts/', variables('storageAccountName')), '2015-06-15').primaryEndpoints.blob, 'container/myosdisk.vhd')]"
+"diskUri":"[concat(reference(resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName'))).primaryEndpoints.blob, 'container/myosdisk.vhd')]"
 ```
 
 通过将存储帐户终结点的硬编码值替换为 `reference` 模板函数，可以使用同一个模板成功部署到不同环境，无需对终结点引用进行任何更改。
 
 ### <a name="refer-to-existing-resources-by-unique-id"></a>通过唯一 ID 引用现有资源
 
-还可以从同一或另一个资源组、在同一或另一订阅中以及在同一云的同一租户中引用现有资源。 要检索资源属性，必须使用该资源本身的唯一标识符。 如以下代码所示，`resourceId` 模板函数检索 SQL Server 等资源的唯一 ID： 
+还可以从同一或另一个资源组、在同一或另一订阅中以及在同一云的同一租户中引用现有资源。 要检索资源属性，必须使用该资源本身的唯一标识符。 如以下代码所示，`resourceId` 模板函数检索 SQL Server 等资源的唯一 ID：
 
 ```json
 "outputs": {
@@ -542,7 +546,7 @@ az vm list-sizes --location "China North"
 Get-AzureRmVMSize -Location "China North"
 ```
 
-如需可用服务的完整列表，请参阅[可用产品(按区域)](https://www.azure.cn/home/features/products-by-region)。
+如需可用服务的完整列表，请参阅[可用产品(按区域)](https://azure.microsoft.com/global-infrastructure/services/?cdn=disable)。
 
 ### <a name="check-use-of-azure-managed-disks-in-azure-stack"></a>检查 Azure Stack 中 Azure 托管磁盘的使用情况
 
@@ -618,8 +622,8 @@ Get-AzureRmVmImagePublisher -Location 'chinanorth' | Get-AzureRmVMExtensionImage
 
 ```json
 {
-    "apiVersion": "2015-06-15",
     "type": "Microsoft.Compute/virtualMachines/extensions",
+    "apiVersion": "2015-06-15",
     "name": "myExtension",
     "location": "[parameters('location')]",
     ...
@@ -643,9 +647,9 @@ Get-AzureRmResourceProvider -ProviderNamespace "Microsoft.Compute" | Select-Obje
 
 ```json
 {
-    "name": "MyCustomScriptExtension",
     "type": "extensions",
     "apiVersion": "2016-03-30",
+    "name": "MyCustomScriptExtension",
     "location": "[parameters('location')]",
     "dependsOn": [
         "[concat('Microsoft.Compute/virtualMachines/myVM', copyindex())]"
@@ -654,7 +658,7 @@ Get-AzureRmResourceProvider -ProviderNamespace "Microsoft.Compute" | Select-Obje
         "publisher": "Microsoft.Compute",
         "type": "CustomScriptExtension",
         "typeHandlerVersion": "1.7",
-        ...   
+        ...
 ```
 
 要检索特定 VM 扩展的可用版本列表，请使用 [Get AzureRmVMExtensionImage](https://docs.microsoft.com/powershell/module/az.compute/get-azvmextensionimage) cmdlet。 以下示例从 myLocation 检索 PowerShell DSC（所需状态配置）VM 扩展的可用版本  ：
@@ -671,12 +675,12 @@ Get-AzureRmVMExtensionImage -Location myLocation -PublisherName Microsoft.PowerS
 
 下图展示了团队使用集成开发环境 (IDE) 的开发过程的典型示例。 在时间线中的不同阶段执行不同的测试类型。 在这里，两名开发者正在处理同一解决方案，但这种情况同样适用于单个开发者或一个大型团队。 每个开发者通常会创建中央存储库的本地副本，这样每个人都可以处理本地副本，并且不会影响可能使用同一文件的其他用户。
 
-![工作流](./media/templates-cloud-consistency/workflow.png) 
+![工作流](./media/templates-cloud-consistency/workflow.png)
 
 请考虑以下用于测试和自动化的提示：
 
 * 务必使用测试工具。 例如，Visual Studio Code 和 Visual Studio 包括 IntelliSense 以及可帮助你验证模板的其他功能。
-* 要在本地 IDE 上进行开发期间提高代码质量，请通过单元测试和集成测试执行静态代码分析。 
+* 要在本地 IDE 上进行开发期间提高代码质量，请通过单元测试和集成测试执行静态代码分析。
 * 为了在初始开发期间获得更好的体验，单元测试和集成测试应仅在发现问题时发出警告，然后继续进行测试。 这样一来，可以确定要解决的问题并设置更改的优先顺序，也称为测试驱动的部署 (TDD)。
 * 请注意，在未连接到 Azure 资源管理器的情况下也可执行某些测试。 其他测试（如测试模板部署）需要资源管理器执行的某些操作无法脱机完成。
 * 针对验证 API 测试部署模板不等于实际的部署。 此外，即使从本地文件部署模板，资源管理器也会直接检索对模板中嵌套模板的任何引用，并且在部署的 VM 内运行的 VM 代理也会检索 VM 扩展引用的项目。

@@ -4,16 +4,16 @@ description: 了解如何在 Azure 中管理 Analysis Services 服务器上的�
 author: rockboyfor
 ms.service: azure-analysis-services
 ms.topic: conceptual
-origin.date: 10/29/2019
-ms.date: 11/25/2019
+origin.date: 01/30/2020
+ms.date: 03/23/2020
 ms.author: v-yeche
 ms.reviewer: minewiskan
-ms.openlocfilehash: 9563cf5e188f3033bc8bdfeba08b595f3d799472
-ms.sourcegitcommit: c5e012385df740bf4a326eaedabb987314c571a1
+ms.openlocfilehash: 6d6631b01bf2963029b1b94e4dc4aad88ef64b3d
+ms.sourcegitcommit: 1436f1851342ca5631eb25342eed954adb707af0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74203600"
+ms.lasthandoff: 03/19/2020
+ms.locfileid: "79543773"
 ---
 # <a name="manage-database-roles-and-users"></a>管理数据库角色和用户
 
@@ -22,11 +22,11 @@ ms.locfileid: "74203600"
 定义角色的方式根据使用的工具有所差异，但效果却是相同的。
 
 角色权限包括：
-* 管理员 - 用户对数据库具有完全的权限。  具有管理员权限的数据库角色不同于服务器管理员。
-* 进程 - 用户可以连接到数据库并对其执行处理操作，分析模型数据库数据。 
+* **管理员** - 用户对数据库具有完全的权限。 具有管理员权限的数据库角色不同于服务器管理员。
+* **处理** - 用户可以连接到数据库并对其执行处理操作，分析模型数据库数据。
 * **读取** - 用户可以使用客户端应用程序连接到模型数据库数据并进行分析。
 
-创建表格模型项目时，可以通过将 Visual Studio 中的“角色管理器”与 Analysis Services 项目一起使用来创建角色并将用户或组添加到这些角色。 部署到服务器时，可以使用 SQL Server Management Studio (SSMS)、[Analysis Services PowerShell cmdlet](https://docs.microsoft.com/analysis-services/powershell/analysis-services-powershell-reference) 或[表格模型脚本语言](https://docs.microsoft.com/bi-reference/tmsl/tabular-model-scripting-language-tmsl-reference) (TMSL) 来添加或删除角色和用户成员。
+创建表格模型项目时，可以通过将 Visual Studio 中的“角色管理器”与 Analysis Services 项目一起使用来创建角色并将用户或组添加到这些角色。 部署到服务器时，可以使用 SQL Server Management Studio (SSMS)、[Analysis Services PowerShell cmdlet](https://docs.microsoft.com/analysis-services/powershell/analysis-services-powershell-reference) 或[表格模型脚本语言](https://docs.microsoft.com/analysis-services/tmsl/tabular-model-scripting-language-tmsl-reference) (TMSL) 来添加或删除角色和用户成员。
 
 **安全组**必须[已启用邮件](https://docs.microsoft.com/exchange/recipients-in-exchange-online/manage-mail-enabled-security-groups)且 `MailEnabled` 属性设置为 `True`。 按电子邮件地址指定组时，请使用 `obj:groupid@tenantid`。
 
@@ -44,13 +44,13 @@ ms.locfileid: "74203600"
 
     |权限|说明|  
     |----------------|-----------------|  
-    |**无**|成员无法修改模型架构，也无法查询数据。|  
+    |**无**|成员无法读取或修改模型架构，也无法查询数据。|  
     |**读取**|成员可以（基于行筛选器）查询数据，但无法修改模型架构。|  
-    |读取和处理 |成员可以（基于行级筛选器）查询数据并运行“处理”和“全部处理”操作，但无法修改模型架构。|  
-    |**处理**|成员可以运行“处理”和“全部处理”操作。 无法修改模型架构，也无法查询数据。|  
-    |管理员 |成员可以修改模型架构并查询所有数据。|   
+    |**读取和处理**|成员可以（基于行级筛选器）查询数据并运行“处理”和“全部处理”操作，但无法修改模型架构。|  
+    |**处理**|成员可以运行“处理”和“全部处理”操作。 无法读取或修改模型架构，也无法查询数据。|  
+    |**管理员**|成员可以修改模型架构并查询所有数据。|   
 
-5. 如果正在创建的角色具有“读取”或“读取和处理”权限，可以使用 DAX 公式添加行筛选器。 单击“行筛选器”  选项卡，选择表，再单击“DAX 筛选器”  字段，然后键入一个 DAX 公式。
+5. 如果正在创建的角色具有“读取”或“读取和处理”权限，可以使用 DAX 公式添加行筛选器。 单击“行筛选器”  选项卡，选择表，单击“DAX 筛选器”  字段，并键入一个 DAX 公式。
 
 6. 单击“成员”   > “添加外部成员”   
 
@@ -66,25 +66,25 @@ ms.locfileid: "74203600"
 
 1. 在对象资源管理器中，右击“角色”   > “新建角色”  。
 
-2. 在“创建角色”  中，输入角色名称和描述。
+2. 在“创建角色”  中，输入角色名称和说明。
 
 3. 选择权限。
 
     |权限|说明|  
     |----------------|-----------------|  
-    |完全控制（管理员） |成员可以修改模型架构，处理并查询所有数据。| 
-    |处理数据库 |成员可以运行“处理”和“全部处理”操作。 无法修改模型架构，也无法查询数据。|  
+    |**完全控制（管理员）**|成员可以修改模型架构，处理并查询所有数据。| 
+    |**处理数据库**|成员可以运行“处理”和“全部处理”操作。 无法修改模型架构，也无法查询数据。|  
     |**读取**|成员可以（基于行筛选器）查询数据，但无法修改模型架构。|  
 
-4. 单击“成员资格”  ，然后按电子邮件地址在租户 Azure AD 中输入用户或组。
+4. 单击“成员资格”  ，并按电子邮件地址在租户 Azure AD 中输入用户或组。
 
     ![添加用户](./media/analysis-services-database-users/aas-roles-adduser-ssms.png)
 
-5. 如果正在创建的角色具有“读取”权限，可以使用 DAX 公式添加行筛选器。 单击“行筛选器”  ，选择表，然后在“DAX 筛选器”  字段中输入 DAX 公式。 
+5. 如果正在创建的角色具有“读取”权限，可以使用 DAX 公式添加行筛选器。 单击“行筛选器”  ，选择表，并在“DAX 筛选器”  字段中键入 DAX 公式。 
 
 ## <a name="to-add-roles-and-users-by-using-a-tmsl-script"></a>使用 TMSL 脚本添加角色和用户
 
-可在 SSMS 中的 XMLA 窗口中运行 TMSL 脚本或使用 PowerShell。 使用 [CreateOrReplace](https://docs.microsoft.com/bi-reference/tmsl/createorreplace-command-tmsl) 命令和 [Roles](https://docs.microsoft.com/bi-reference/tmsl/roles-object-tmsl) 对象。
+可在 SSMS 中的 XMLA 窗口中运行 TMSL 脚本或使用 PowerShell。 使用 [CreateOrReplace](https://docs.microsoft.com/analysis-services/tmsl/createorreplace-command-tmsl) 命令和 [Roles](https://docs.microsoft.com/analysis-services/tmsl/roles-object-tmsl) 对象。
 
 **示例 TMSL 脚本**
 
@@ -123,7 +123,7 @@ ms.locfileid: "74203600"
 |Cmdlet|说明|
 |------------|-----------------| 
 |[Add-RoleMember](https://docs.microsoft.com/powershell/module/sqlserver/Add-RoleMember)|向数据库角色添加成员。| 
-|[Remove-RoleMember](https://docs.microsoft.com/powershell/module/sqlserver/remove-rolemember)|从数据库角色删除成员。|   
+|[Remove-RoleMember](https://docs.microsoft.com/powershell/module/sqlserver/remove-rolemember)|从数据库角色中删除成员。|   
 |[Invoke-ASCmd](https://docs.microsoft.com/powershell/module/sqlserver/invoke-ascmd)|执行 TMSL 脚本。|
 
 ## <a name="row-filters"></a>行筛选器  
@@ -154,6 +154,6 @@ ms.locfileid: "74203600"
 
   [管理服务器管理员](analysis-services-server-admins.md)   
   [使用 PowerShell 管理 Azure Analysis Services](analysis-services-powershell.md)  
-  [表格模型脚本语言 (TMSL) 参考](https://docs.microsoft.com/bi-reference/tmsl/tabular-model-scripting-language-tmsl-reference)
+  [表格模型脚本语言 (TMSL) 参考](https://docs.microsoft.com/analysis-services/tmsl/tabular-model-scripting-language-tmsl-reference)
 
 <!-- Update_Description: update meta properties, wording update, update link -->

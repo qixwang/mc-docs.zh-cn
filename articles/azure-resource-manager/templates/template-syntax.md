@@ -2,15 +2,15 @@
 title: 模板结构和语法
 description: 使用声明性 JSON 语法描述 Azure Resource Manager 模板的结构和属性。
 ms.topic: conceptual
-origin.date: 11/12/2019
+origin.date: 02/25/2020
+ms.date: 03/23/2020
 ms.author: v-yeche
-ms.date: 01/06/2020
-ms.openlocfilehash: 585f7e5973a98a023efc7b1116643a0e904b9440
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: b3ac152a5d4e1f13545c8356d0841fb2ff8f4f21
+ms.sourcegitcommit: 1436f1851342ca5631eb25342eed954adb707af0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79291242"
+ms.lasthandoff: 03/19/2020
+ms.locfileid: "79543866"
 ---
 # <a name="understand-the-structure-and-syntax-of-azure-resource-manager-templates"></a>了解 Azure Resource Manager 模板的结构和语法
 
@@ -49,7 +49,7 @@ ms.locfileid: "79291242"
 
 每个元素均有可设置的属性。 本文稍后将更详细地介绍模板的各个节。
 
-## <a name="parameters"></a>参数
+## <a name="parameters"></a><a name="parameters"></a>参数
 
 在模板的 parameters 节中，可以指定在部署资源时能够输入的值。 一个模板中最多可以有 256 个参数。 可以通过使用包含多个属性的对象来减少参数的数目。
 
@@ -86,7 +86,7 @@ ms.locfileid: "79291242"
 
 有关如何使用参数的示例，请参阅 [Azure 资源管理器模板中的参数](template-parameters.md)。
 
-### <a name="data-types"></a>数据类型
+### <a name="data-types"></a><a name="data-types"></a>数据类型
 
 对于作为内联参数传递的整数，值的范围可能受限于用于部署的 SDK 或命令行工具。 例如，使用 PowerShell 部署模板时，整数类型的范围可能为 -2147483648 到 2147483647。 为了避免此限制，请在[参数文件](parameter-files.md)中指定大的整数值。 资源类型会针对整数属性应用其自己的限制。
 
@@ -98,7 +98,7 @@ ms.locfileid: "79291242"
 
 如需通过示例了解如何设置数据类型的格式，请参阅[参数类型格式](parameter-files.md#parameter-type-formats)。
 
-## <a name="variables"></a>变量
+## <a name="variables"></a><a name="variables"></a>变量
 
 在 variables 节中构造可在整个模板中使用的值。 不需要定义变量，但使用变量可以减少复杂的表达式，从而简化模板。
 
@@ -129,11 +129,11 @@ ms.locfileid: "79291242"
 }
 ```
 
-有关使用 `copy` 为变量创建多个值的信息，请参阅[变量迭代](create-multiple-instances.md#variable-iteration)。
+有关使用 `copy` 为变量创建多个值的信息，请参阅[变量迭代](copy-variables.md)。
 
 有关如何使用变量的示例，请参阅 [Azure 资源管理器模板中的变量](template-variables.md)。
 
-## <a name="functions"></a>函数
+## <a name="functions"></a><a name="functions"></a>函数
 
 在模板中，可以创建自己的函数。 这些函数可在模板中使用。 通常，定义不想要在整个模板中重复执行的复杂表达式。 从模板中支持的表达式和[函数](template-functions.md)创建用户定义函数。
 
@@ -188,33 +188,17 @@ ms.locfileid: "79291242"
 "resources": [
   {
       "condition": "<true-to-deploy-this-resource>",
-      "apiVersion": "<api-version-of-resource>",
       "type": "<resource-provider-namespace/resource-type-name>",
+      "apiVersion": "<api-version-of-resource>",
       "name": "<name-of-the-resource>",
-      "location": "<location-of-resource>",
-      "tags": {
-          "<tag-name1>": "<tag-value1>",
-          "<tag-name2>": "<tag-value2>"
-      },
       "comments": "<your-reference-notes>",
-      "copy": {
-          "name": "<name-of-copy-loop>",
-          "count": <number-of-iterations>,
-          "mode": "<serial-or-parallel>",
-          "batchSize": <number-to-deploy-serially>
-      },
+      "location": "<location-of-resource>",
       "dependsOn": [
           "<array-of-related-resource-names>"
       ],
-      "properties": {
-          "<settings-for-the-resource>",
-          "copy": [
-              {
-                  "name": ,
-                  "count": ,
-                  "input": {}
-              }
-          ]
+      "tags": {
+          "<tag-name1>": "<tag-value1>",
+          "<tag-name2>": "<tag-value2>"
       },
       "sku": {
           "name": "<sku-name>",
@@ -224,12 +208,28 @@ ms.locfileid: "79291242"
           "capacity": <sku-capacity>
       },
       "kind": "<type-of-resource>",
+      "copy": {
+          "name": "<name-of-copy-loop>",
+          "count": <number-of-iterations>,
+          "mode": "<serial-or-parallel>",
+          "batchSize": <number-to-deploy-serially>
+      },
       "plan": {
           "name": "<plan-name>",
           "promotionCode": "<plan-promotion-code>",
           "publisher": "<plan-publisher>",
           "product": "<plan-product>",
           "version": "<plan-version>"
+      },
+      "properties": {
+          "<settings-for-the-resource>",
+          "copy": [
+              {
+                  "name": ,
+                  "count": ,
+                  "input": {}
+              }
+          ]
       },
       "resources": [
           "<array-of-child-resources>"
@@ -241,23 +241,23 @@ ms.locfileid: "79291242"
 | 元素名称 | 必须 | 说明 |
 |:--- |:--- |:--- |
 | condition | 否 | 布尔值，该值指示在此部署期间是否将预配资源。 为 `true` 时，在部署期间创建资源。 为 `false` 时，此部署将跳过资源。 请参阅[条件](conditional-resource-deployment.md)。 |
-| apiVersion |是 |用于创建资源的 REST API 版本。|
 | type |是 |资源的类型。 此值是资源提供程序的命名空间和资源类型（例如 **Microsoft.Storage/storageAccounts**）的组合。 对于子资源，类型的格式取决于该资源是嵌套在父资源中，还是在父资源的外部定义。 请参阅[设置子资源的名称和类型](child-resource-name-type.md)。 |
+| apiVersion |是 |用于创建资源的 REST API 版本。|
 | name |是 |资源的名称。 该名称必须遵循 RFC3986 中定义的 URI 构成部分限制。 向外部各方公开资源名称的 Azure 服务会验证名称，以确保它不是试图窃取另一标识。 对于子资源，名称的格式取决于该资源是嵌套在父资源中，还是在父资源的外部定义。 请参阅[设置子资源的名称和类型](child-resource-name-type.md)。 |
-| location |多种多样 |提供的资源支持的地理位置。 可以选择任何可用位置，但通常选取靠近用户的位置。 通常还会将彼此交互的资源置于同一区域。 大多数资源类型需要一个位置，但某些类型（如角色分配）不需要位置。 请参阅[设置资源位置](resource-location.md)。 |
-| tags |否 |与资源关联的标记。 应用可以在订阅中对资源进行逻辑组织的标记。 |
 | comments |否 |用于描述模板中资源的注释。 有关详细信息，请参阅[模板中的注释](template-syntax.md#comments)。 |
-| copy |否 |如果需要多个实例，则为要创建的资源数。 默认模式为并行。 若不想同时部署所有资源，请指定为串行模式。 有关详细信息，请参阅[在 Azure 资源管理器中创建多个资源实例](create-multiple-instances.md)。 |
+| location |多种多样 |提供的资源支持的地理位置。 可以选择任何可用位置，但通常选取靠近用户的位置。 通常还会将彼此交互的资源置于同一区域。 大多数资源类型需要一个位置，但某些类型（如角色分配）不需要位置。 请参阅[设置资源位置](resource-location.md)。 |
 | dependsOn |否 |部署此资源之前必须部署的资源。 Resource Manager 会评估资源之间的依赖关系，并按正确的顺序部署资源。 如果资源互不依赖，则会并行部署资源。 该值可以是资源名称或资源唯一标识符的逗号分隔列表。 在此模板中仅部署列出的资源。 未在此模板中定义的资源必须是已存在的资源。 避免添加不必要的依赖项，因为这些依赖项可能会降低部署速度并创建循环依赖项。 有关设置依赖项的指导，请参阅[在 Azure Resource Manager 模板中定义依赖项](define-resource-dependency.md)。 |
-| properties |否 |特定于资源的配置设置。 properties 的值与创建资源时，在 REST API 操作（PUT 方法）的请求正文中提供的值相同。 还可以指定副本数组，为一个属性创建多个实例。 |
+| tags |否 |与资源关联的标记。 应用可以在订阅中对资源进行逻辑组织的标记。 |
 | sku | 否 | 某些资源接受定义了要部署的 SKU 的值。 例如，可以为存储帐户指定冗余类型。 |
 | kind | 否 | 某些资源接受定义了你部署的资源类型的值。 例如，可以指定要创建的 Cosmos DB 的类型。 |
+| copy |否 |如果需要多个实例，则为要创建的资源数。 默认模式为并行。 若不想同时部署所有资源，请指定为串行模式。 有关详细信息，请参阅[在 Azure 资源管理器中创建多个资源实例](copy-resources.md)。 |
 | plan | 否 | 某些资源接受定义了要部署的计划的值。 例如，可以为虚拟机指定市场映像。 |
+| properties |否 |特定于资源的配置设置。 properties 的值与创建资源时，在 REST API 操作（PUT 方法）的请求正文中提供的值相同。 还可以指定副本数组，为一个属性创建多个实例。 |
 | resources |否 |依赖于所定义的资源的子资源。 只能提供父资源的架构允许的资源类型。 不隐式表示对父资源的依赖。 必须显式定义该依赖关系。 请参阅[设置子资源的名称和类型](child-resource-name-type.md)。 |
 
 <!--Not Available on Line 237,238,249 To determine available values, see [template reference](https://docs.microsoft.com/azure/templates/)-->
 
-## <a name="outputs"></a>输出
+## <a name="outputs"></a><a name="outputs"></a>输出
 
 在 Outputs 节中，可以指定从部署返回的值。 一般情况下，将从已部署的资源返回值。
 
@@ -265,10 +265,14 @@ ms.locfileid: "79291242"
 
 ```json
 "outputs": {
-  "<output-name>" : {
+  "<output-name>": {
     "condition": "<boolean-value-whether-to-output-value>",
-    "type" : "<type-of-output-value>",
-    "value": "<output-value-expression>"
+    "type": "<type-of-output-value>",
+    "value": "<output-value-expression>",
+    "copy": {
+      "count": <number-of-iterations>,
+      "input": <values-for-the-variable>
+    }
   }
 }
 ```
@@ -278,7 +282,8 @@ ms.locfileid: "79291242"
 | output-name |是 |输出值的名称。 必须是有效的 JavaScript 标识符。 |
 | condition |否 | 指示此输出值是否返回的布尔值。 如果为 `true`，则该值包含在部署的输出中。 如果为 `false`，则此部署将跳过输出值。 如果未指定，则默认值为 `true`。 |
 | type |是 |输出值的类型。 输出值支持的类型与模板输入参数相同。 如果指定 **securestring** 作为输出类型，则值不会显示在部署历史记录中，并且无法从另一个模板检索。 若要在多个模板中使用机密值，请在 Key Vault 中存储该机密，并在参数文件中引用该机密。 有关详细信息，请参阅[在部署过程中使用 Azure Key Vault 传递安全参数值](key-vault-parameter.md)。 |
-| value |是 |要求值并作为输出值返回的模板语言表达式。 |
+| value |否 |要求值并作为输出值返回的模板语言表达式。 请指定 **value** 或 **copy**。 |
+| copy |否 | 用于返回多个值作为输出。 请指定 **value** 或 **copy**。 有关详细信息，请参阅 [Azure 资源管理器模板中的输出迭代](copy-outputs.md)。 |
 
 有关如何使用输出的示例，请参阅 [Azure 资源管理器模板中的输出](template-outputs.md)。
 
@@ -298,9 +303,9 @@ ms.locfileid: "79291242"
 ```json
 {
   "type": "Microsoft.Compute/virtualMachines",
+  "apiVersion": "2018-10-01",
   "name": "[variables('vmName')]", // to customize name, change it in variables
   "location": "[parameters('location')]", //defaults to resource group location
-  "apiVersion": "2018-10-01",
   "dependsOn": [ /* storage account and network interface must be deployed first */
     "[resourceId('Microsoft.Storage/storageAccounts/', variables('storageAccountName'))]",
     "[resourceId('Microsoft.Network/networkInterfaces/', variables('nicName'))]"
@@ -346,10 +351,10 @@ ms.locfileid: "79291242"
 ```json
 "resources": [
   {
-    "comments": "Storage account used to store VM disks",
-    "apiVersion": "2018-07-01",
     "type": "Microsoft.Storage/storageAccounts",
+    "apiVersion": "2018-07-01",
     "name": "[concat('storage', uniqueString(resourceGroup().id))]",
+    "comments": "Storage account used to store VM disks",
     "location": "[parameters('location')]",
     "metadata": {
       "comments": "These tags are needed for policy compliance."
@@ -384,16 +389,16 @@ ms.locfileid: "79291242"
 
 ## <a name="multi-line-strings"></a>多行字符串
 
-可将一个字符串分成多个行。 例如，以下 JSON 示例中的 Location 属性和注释之一。
+可将一个字符串分成多个行。 例如，请参见以下 JSON 示例中的 location 属性和注释之一。
 
 ```json
 {
   "type": "Microsoft.Compute/virtualMachines",
+  "apiVersion": "2018-10-01",
   "name": "[variables('vmName')]", // to customize name, change it in variables
   "location": "[
     parameters('location')
     ]", //defaults to resource group location
-  "apiVersion": "2018-10-01",
   /*
     storage account and network interface
     must be deployed first

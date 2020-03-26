@@ -2,15 +2,15 @@
 title: 将资源移动到新的订阅或资源组
 description: 使用 Azure Resource Manager 将资源移到新的资源组或订阅。
 ms.topic: conceptual
-origin.date: 11/08/2019
-ms.date: 01/20/2020
+origin.date: 03/02/2020
+ms.date: 03/23/2020
 ms.author: v-yeche
-ms.openlocfilehash: c6537fd35188dd82a0be6e21ea757262628ecaa5
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: ebf7475514c32f3de6d79a4804dab89555dd54d9
+ms.sourcegitcommit: 1436f1851342ca5631eb25342eed954adb707af0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79291614"
+ms.lasthandoff: 03/19/2020
+ms.locfileid: "79543891"
 ---
 # <a name="move-resources-to-a-new-resource-group-or-subscription"></a>将资源移到新的资源组或订阅
 
@@ -37,8 +37,10 @@ ms.locfileid: "79291614"
     * [恢复服务移动指南](../../backup/backup-azure-move-recovery-services-vault.md?toc=/azure-resource-manager/toc.json)
     * [虚拟机移动指南](./move-limitations/virtual-machines-move-limitations.md)
 
-1. 源订阅和目标订阅必须处于活动状态。 如果在启用已禁用的帐户时遇到问题，请[创建 Azure 支持请求](https://support.azure.cn/support/support-azure/)。 选择“订阅管理”  作为问题类型。
+1. 源订阅和目标订阅必须处于活动状态。 如果在启用已禁用的帐户时遇到问题，请[创建 Azure 支持请求](https://support.azure.cn/support/support-azure/)。 在**支持类型**中选择“订阅管理”  作为问题类型。
 
+    <!--CORRECT ON **Support type** category-->
+    
 1. 源订阅与目标订阅必须在同一个 [Azure Active Directory 租户](../../active-directory/develop/quickstart-create-new-tenant.md)中。 若要检查这两个订阅是否具有相同的租户 ID，请使用 Azure PowerShell 或 Azure CLI。
 
     对于 Azure PowerShell，请使用：
@@ -104,7 +106,7 @@ ms.locfileid: "79291614"
 
     有关详细信息，请参阅[跨订阅移动方案](#scenario-for-move-across-subscriptions)。
 
-## <a name="scenario-for-move-across-subscriptions"></a>跨订阅移动方案
+## <a name="scenario-for-move-across-subscriptions"></a><a name="scenario-for-move-across-subscriptions"></a>跨订阅移动方案
 
 将资源从一个订阅移到另一个订阅分为三步：
 

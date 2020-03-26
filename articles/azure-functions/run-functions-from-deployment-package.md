@@ -2,13 +2,13 @@
 title: 从包运行 Azure Functions
 description: 通过装载包含函数应用项目文件的部署包文件，让 Azure Functions 运行时运行函数。
 ms.topic: conceptual
-ms.date: 03/03/2020
-ms.openlocfilehash: aeab853fe90251952db387caa2a28d73931107d5
-ms.sourcegitcommit: 1ac138a9e7dc7834b5c0b62a133ca5ce2ea80054
+ms.date: 03/19/2020
+ms.openlocfilehash: 7ee1437a19f66ad7d477ffefb6732e9aaeb683da
+ms.sourcegitcommit: e500354e2fd8b7ac3dddfae0c825cc543080f476
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78266013"
+ms.lasthandoff: 03/19/2020
+ms.locfileid: "79546854"
 ---
 # <a name="run-your-azure-functions-from-a-package-file"></a>从包文件运行 Azure Functions
 
@@ -55,32 +55,6 @@ ms.locfileid: "78266013"
 
 [!INCLUDE [Function app settings](../../includes/functions-app-settings.md)]
 
-### <a name="use-key-vault-references"></a>使用 Key Vault 引用
-
-为了增加安全性，可以将 Key Vault 引用与外部 URL 结合使用。 这会使 URL 处于静态加密状态，并允许利用 Key Vault 进行机密管理和轮换。 建议使用 Azure Blob 存储，以便轻松轮换关联的 SAS 密钥。 Azure Blob 存储已静态加密，这可在应用程序数据未部署到应用服务时确保应用程序数据安全。
-
-1. 创建 Azure 密钥保管库。
-
-    ```azurecli
-    az keyvault create --name "Contoso-Vault" --resource-group <group-name> --location chinanorth
-    ```
-
-1. 添加外部 URL 作为 Key Vault 中的机密。
-
-    ```azurecli
-    az keyvault secret set --vault-name "Contoso-Vault" --name "external-url" --value "<insert-your-URL>"
-    ```
-
-1. 创建 `WEBSITE_RUN_FROM_PACKAGE` 应用设置，并将该值设为对外部 URL 的 Key Vault 引用。
-
-    ```azurecli
-    az webapp config appsettings set --settings WEBSITE_RUN_FROM_PACKAGE="@Microsoft.KeyVault(SecretUri=https://Contoso-Vault.vault.azure.cn/secrets/external-url/<secret-version>"
-    ```
-
-有关详细信息，请参阅以下文章。
-
-- [应用服务的 Key Vault 引用](../app-service/app-service-key-vault-references.md)
-- [静态数据的 Azure 存储加密](../storage/common/storage-service-encryption.md)
 
 ## <a name="troubleshooting"></a>故障排除
 
@@ -88,6 +62,7 @@ ms.locfileid: "78266013"
 - 不支持 Tar 和 gzip 格式。
 - 此功能不与本地缓存组合。
 - 若要提高冷启动性能，请使用本地 Zip 选项 (`WEBSITE_RUN_FROM_PACKAGE`=1)。
+- “从包运行”与部署自定义选项 (`SCM_DO_BUILD_DURING_DEPLOYMENT=true`) 不兼容，在部署期间将忽略生成步骤。
 
 [Zip deployment for Azure Functions]: deployment-zip-push.md
 

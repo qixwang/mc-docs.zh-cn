@@ -4,16 +4,16 @@ description: 了解如何在发生灾难性数据丢失后恢复和还原 Azure 
 author: WenJason
 ms.topic: article
 origin.date: 02/12/2019
-ms.date: 02/24/2020
+ms.date: 03/23/2020
 ms.author: v-jay
 ms.reviewer: hectorl
-ms.lastreviewed: 11/05/2018
-ms.openlocfilehash: 00fcdc0b7618df1a327d1768745f4063559624bf
-ms.sourcegitcommit: e94ed1c9eff4e88be2ca389909e60b14cc0d92f8
+ms.lastreviewed: 11/05/2019
+ms.openlocfilehash: b9d29c2f0a54e3f6dc7ba7f640876bf08c2eaf02
+ms.sourcegitcommit: e500354e2fd8b7ac3dddfae0c825cc543080f476
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79084504"
+ms.lasthandoff: 03/19/2020
+ms.locfileid: "79546848"
 ---
 # <a name="recover-from-catastrophic-data-loss"></a>在发生灾难性数据丢失后进行恢复
 
@@ -29,7 +29,7 @@ Azure Stack Hub 在数据中心运行 Azure 服务，并且可以在如同安装
 
 ## <a name="workflows"></a>工作流
 
-保护 Azure Stack 的过程从分别备份基础结构和应用/租户数据开始。 本文档介绍了如何保护基础结构。 
+保护 Azure Stack Hub 的历程从分别备份基础结构和应用/租户数据开始。 本文档介绍了如何保护基础结构。 
 
 ![Azure Stack Hub 数据恢复工作流 - 部署](media/azure-stack-backup/azure-stack-backup-workflow1.png)
 

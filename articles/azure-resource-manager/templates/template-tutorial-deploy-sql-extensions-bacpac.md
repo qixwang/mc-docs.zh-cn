@@ -3,15 +3,15 @@ title: 使用模板导入 SQL BACPAC 文件
 description: 了解如何使用 Azure SQL 数据库扩展，以通过 Azure 资源管理器模板导入 SQL BACPAC 文件。
 author: rockboyfor
 origin.date: 12/09/2019
-ms.date: 01/06/2020
+ms.date: 03/23/2020
 ms.topic: tutorial
 ms.author: v-yeche
-ms.openlocfilehash: e7f67c69a5d44b22f7da6f01296323491270421d
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.openlocfilehash: 146dae15bb826f567573e8cc53c03613e391bb57
+ms.sourcegitcommit: 1436f1851342ca5631eb25342eed954adb707af0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75631569"
+ms.lasthandoff: 03/19/2020
+ms.locfileid: "79543864"
 ---
 <!--Verify successfully-->
 # <a name="tutorial-import-sql-bacpac-files-with-azure-resource-manager-templates"></a>教程：使用 Azure 资源管理器模板导入 SQL BACPAC 文件
@@ -38,7 +38,7 @@ ms.locfileid: "75631569"
 * 包含资源管理器工具扩展的 Visual Studio Code。 请参阅[使用 Visual Studio Code 创建 Azure 资源管理器模板](./use-vs-code-to-create-template.md)。
 * 若要增强安全性，请使用为 Azure SQL Server 管理员帐户生成的密码。 下面是一个可用于生成密码的示例：
 
-    ```azurecli
+    ```console
     openssl rand -base64 32
     ```
 
@@ -56,7 +56,7 @@ BACPAC 文件在 [GitHub](https://github.com/Azure/azure-docs-json-samples/raw/m
 * 将 BACPAC 文件上传到该容器。
 * 显示存储帐户密钥和 blob URL。
 
-1. 将以下 PowerShell 脚本复制并粘贴到 Shell 窗口中。
+1. 将以下 PowerShell 脚本复制并粘贴到 PowerShell 窗口中。
 
     ```powershell
     # Sign in the Azure China Cloud
@@ -264,8 +264,8 @@ BACPAC 文件在 [GitHub](https://github.com/Azure/azure-docs-json-samples/raw/m
   },
   "resources": [
     {
-      "apiVersion": "2015-05-01-preview",
       "type": "Microsoft.Sql/servers",
+      "apiVersion": "2015-05-01-preview",
       "name": "[parameters('databaseServerName')]",
       "location": "[parameters('location')]",
       "properties": {
@@ -290,8 +290,8 @@ BACPAC 文件在 [GitHub](https://github.com/Azure/azure-docs-json-samples/raw/m
       ]
     },
     {
-      "apiVersion": "2017-10-01-preview",
       "type": "Microsoft.Sql/servers/databases",
+      "apiVersion": "2017-10-01-preview",
       "name": "[concat(string(parameters('databaseServerName')), '/', string(parameters('databaseName')))]",
       "location": "[parameters('location')]",
       "dependsOn": [

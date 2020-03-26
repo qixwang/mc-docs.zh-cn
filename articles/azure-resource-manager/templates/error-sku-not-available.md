@@ -2,19 +2,21 @@
 title: SKU 不可用错误
 description: 介绍在使用 Azure 资源管理器部署资源时如何解决 SKU 不可用错误。
 ms.topic: troubleshooting
-origin.date: 10/19/2018
+origin.date: 02/18/2020
+ms.date: 03/23/2020
 ms.author: v-yeche
-ms.date: 01/06/2020
-ms.openlocfilehash: dc4a42ae2b08bbc9ef520e7c4618bfa92f3f748c
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.openlocfilehash: 5634597465817208ca20c265a67e58e8636f0d0b
+ms.sourcegitcommit: 1436f1851342ca5631eb25342eed954adb707af0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75631357"
+ms.lasthandoff: 03/19/2020
+ms.locfileid: "79543914"
 ---
 # <a name="resolve-errors-for-sku-not-available"></a>解决 SKU 不可用错误
 
 本文介绍如何解决 **SkuNotAvailable** 错误。 如果在该区域或满足业务需求的备用区域中找不到合适的 SKU，请将 [SKU 请求](https://support.azure.cn/support/support-azure/)提交到 Azure 支持。
+
+<!--Not Available on zone-->
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -24,7 +26,7 @@ ms.locfileid: "75631357"
 
 ```
 Code: SkuNotAvailable
-Message: The requested tier for resource '<resource>' is currently not available in location '<location>' 
+Message: The requested tier for resource '<resource>' is currently not available in location '<location>'
 for subscription '<subscriptionID>'. Please try another tier or deploy to a different location.
 ```
 
@@ -38,19 +40,30 @@ for subscription '<subscriptionID>'. Please try another tier or deploy to a diff
 
 要确定区域中可用的 SKU，请使用 [Get-AzComputeResourceSku](https://docs.microsoft.com/powershell/module/az.compute/get-azcomputeresourcesku) 命令。 按位置对结果进行筛选。 必须安装最新版本 PowerShell 才能运行此命令。
 
+<!--Not Available on zone-->
+
 ```powershell
 Get-AzComputeResourceSku | where {$_.Locations -icontains "chinaeast"}
 ```
 
 结果包括位置的 SKU 列表以及针对该 SKU 的任何限制。 请注意，SKU 可能被列为 `NotAvailableForSubscription`。
 
-```powershell
-ResourceType          Name        Locations   Restriction                      Capability           Value
-------------          ----        ---------   -----------                      ----------           -----
-virtualMachines       Standard_A0 chinaeast   NotAvailableForSubscription      MaxResourceVolumeMB   20480
-virtualMachines       Standard_A1 chinaeast   NotAvailableForSubscription      MaxResourceVolumeMB   71680
-virtualMachines       Standard_A2 chinaeast   NotAvailableForSubscription      MaxResourceVolumeMB  138240
+```output
+ResourceType          Name           Locations   Zone      Restriction                      Capability           Value
+------------          ----           ---------   ----      -----------                      ----------           -----
+virtualMachines       Standard_A0    chinaeast             NotAvailableForSubscription      MaxResourceVolumeMB   20480
+virtualMachines       Standard_A1    chinaeast             NotAvailableForSubscription      MaxResourceVolumeMB   71680
+virtualMachines       Standard_A2    chinaeast             NotAvailableForSubscription      MaxResourceVolumeMB  138240
 ```
+
+一些其他示例：
+
+```powershell
+Get-AzComputeResourceSku | where {$_.Locations.Contains("chinaeast") -and $_.ResourceType.Contains("virtualMachines") -and $_.Name.Contains("Standard_DS14_v2")}
+Get-AzComputeResourceSku | where {$_.Locations.Contains("chinaeast") -and $_.ResourceType.Contains("virtualMachines") -and $_.Name.Contains("v3")} | fc
+```
+
+在末尾追加“fc”会返回更多详细信息。
 
 ## <a name="solution-2---azure-cli"></a>解决方案 2 - Azure CLI
 
@@ -62,7 +75,7 @@ az vm list-skus --location chinaeast --size Standard_F --output table
 
 该命令将返回类似下面的结果：
 
-```azurecli
+```output
 ResourceType     Locations       Name              Zones    Capabilities    Restrictions
 ---------------  --------------  ----------------  -------  --------------  --------------
 virtualMachines  chinaeast  Standard_F1                ...             None

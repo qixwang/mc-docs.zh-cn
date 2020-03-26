@@ -2,15 +2,15 @@
 title: 资源的标记支持
 description: 显示支持标记的 Azure资源类型。 提供所有 Azure 服务的详细信息。
 ms.topic: conceptual
-origin.date: 11/22/2019
+origin.date: 02/26/2020
+ms.date: 03/23/2020
 ms.author: v-yeche
-ms.date: 01/06/2020
-ms.openlocfilehash: 537a3f3dbbc2399e061940f1f6efc59634d074d9
-ms.sourcegitcommit: de60969043e6dd8ef706ed13e0684a7c35b26bdb
+ms.openlocfilehash: 033975548acc32eefc77e77fd0a406cf0599ec54
+ms.sourcegitcommit: 1436f1851342ca5631eb25342eed954adb707af0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76550222"
+ms.lasthandoff: 03/19/2020
+ms.locfileid: "79543805"
 ---
 # <a name="tag-support-for-azure-resources"></a>Azure 资源的标记支持
 本文介绍某一资源类型是否支持[标记](tag-resources.md)。 标记为“支持标记”  的列指示资源类型是否具有标记的属性。 
@@ -31,6 +31,7 @@ ms.locfileid: "76550222"
 > - [Microsoft.AzureActiveDirectory](#microsoftazureactivedirectory)
 > - [Microsoft.AzureStack](#microsoftazurestack)
 > - [Microsoft.Batch](#microsoftbatch)
+> - [Microsoft.Blueprint](#microsoftblueprint)
 > - [Microsoft.Cache](#microsoftcache)
 > - [Microsoft.Cdn](#microsoftcdn)
 > - [Microsoft.ClassicCompute](#microsoftclassiccompute)
@@ -59,6 +60,7 @@ ms.locfileid: "76550222"
 > - [Microsoft.KeyVault](#microsoftkeyvault)
 > - [Microsoft.Kusto](#microsoftkusto)
 > - [Microsoft.Logic](#microsoftlogic)
+> - [Microsoft.MachineLearningServices](#microsoftmachinelearningservices)
 > - [Microsoft.ManagedIdentity](#microsoftmanagedidentity)
 > - [Microsoft.Management](#microsoftmanagement)
 > - [Microsoft.Media](#microsoftmedia)
@@ -75,7 +77,6 @@ ms.locfileid: "76550222"
 > - [Microsoft.ResourceGraph](#microsoftresourcegraph)
 > - [Microsoft.ResourceHealth](#microsoftresourcehealth)
 > - [Microsoft.Resources](#microsoftresources)
-> - [Microsoft.Scheduler](#microsoftscheduler)
 > - [Microsoft.Search](#microsoftsearch)
 > - [Microsoft.Security](#microsoftsecurity)
 > - [Microsoft.ServiceBus](#microsoftservicebus)
@@ -163,6 +164,7 @@ ms.locfileid: "76550222"
 > | policySetDefinitions | 否 | 否 |
 > | providerOperations | 否 | 否 |
 > | roleAssignments | 否 | 否 |
+> | roleAssignmentsUsageMetrics | 否 | 否 |
 > | roleDefinitions | 否 | 否 |
 
 ## <a name="microsoftautomation"></a>Microsoft.Automation
@@ -173,6 +175,9 @@ ms.locfileid: "76550222"
 > | automationAccounts | 是 | 是 |
 > | automationAccounts / configurations | 是 | 是 |
 > | automationAccounts / jobs | 否 | 否 |
+> | automationAccounts / privateEndpointConnectionProxies | 否 | 否 |
+> | automationAccounts / privateEndpointConnections | 否 | 否 |
+> | automationAccounts / privateLinkResources | 否 | 否 |
 > | automationAccounts / runbooks | 是 | 是 |
 > | automationAccounts / softwareUpdateConfigurations | 否 | 否 |
 > | automationAccounts / webhooks | 否 | 否 |
@@ -211,8 +216,20 @@ ms.locfileid: "76550222"
 <!--Not Available on ## Microsoft.BingMaps-->
 <!--Not Available on ## Microsoft.BizTalkServices-->
 <!--Not Available on ## Microsoft.Blockchain-->
-<!--Not Available on ## Microsoft.Blueprint-->
-<!--Not Available on ## Microsoft.Blueprint-->
+
+## <a name="microsoftblueprint"></a>Microsoft.Blueprint
+
+> [!div class="mx-tableFixed"]
+> | 资源类型 | 支持标记 | 在成本报表中标记 |
+> | ------------- | ----------- | ----------- |
+> | blueprintAssignments | 否 | 否 |
+> | blueprintAssignments / assignmentOperations | 否 | 否 |
+> | blueprintAssignments / operations | 否 | 否 |
+> | blueprints | 否 | 否 |
+> | blueprints / artifacts | 否 | 否 |
+> | blueprints / versions | 否 | 否 |
+> | blueprints / versions / artifacts | 否 | 否 |
+
 <!--Not Available on ## Microsoft.BotService-->
 
 ## <a name="microsoftcache"></a>Microsoft.Cache
@@ -221,7 +238,6 @@ ms.locfileid: "76550222"
 > | 资源类型 | 支持标记 | 在成本报表中标记 |
 > | ------------- | ----------- | ----------- |
 > | Redis | 是 | 是 |
-> | RedisConfigDefinition | 否 | 否 |
 
 <!--Not Available on ## Microsoft.Capacity-->
 
@@ -324,6 +340,7 @@ ms.locfileid: "76550222"
 > | accounts | 是 | 是 |
 
 <!--Not Available on ## Microsoft.Commerce-->
+
 ## <a name="microsoftcompute"></a>Microsoft.Compute
 
 > [!div class="mx-tableFixed"]
@@ -382,6 +399,10 @@ ms.locfileid: "76550222"
 > | registries / getBuildSourceUploadUrl | 否 | 否 |
 > | registries / GetCredentials | 否 | 否 |
 > | registries / importImage | 否 | 否 |
+> | registries / privateEndpointConnectionProxies | 否 | 否 |
+> | registries / privateEndpointConnectionProxies / validate | 否 | 否 |
+> | registries / privateEndpointConnections | 否 | 否 |
+> | registries / privateLinkResources | 否 | 否 |
 > | registries / queueBuild | 否 | 否 |
 > | registries / regenerateCredential | 否 | 否 |
 > | registries / regenerateCredentials | 否 | 否 |
@@ -452,6 +473,7 @@ ms.locfileid: "76550222"
 > | ------------- | ----------- | ----------- |
 > | servers | 是 | 是 |
 > | servers / advisors | 否 | 否 |
+> | servers / keys | 否 | 否 |
 > | servers / privateEndpointConnectionProxies | 否 | 否 |
 > | servers / privateEndpointConnections | 否 | 否 |
 > | servers / privateLinkResources | 否 | 否 |
@@ -468,6 +490,7 @@ ms.locfileid: "76550222"
 > | ------------- | ----------- | ----------- |
 > | servers | 是 | 是 |
 > | servers / advisors | 否 | 否 |
+> | servers / keys | 否 | 否 |
 > | servers / privateEndpointConnectionProxies | 否 | 否 |
 > | servers / privateEndpointConnections | 否 | 否 |
 > | servers / privateLinkResources | 否 | 否 |
@@ -506,8 +529,10 @@ ms.locfileid: "76550222"
 > | ------------- | ----------- | ----------- |
 > | ElasticPools | 是 | 是 |
 > | ElasticPools / IotHubTenants | 是 | 是 |
+> | ElasticPools / IotHubTenants / securitySettings | 否 | 否 |
 > | IotHubs | 是 | 是 |
 > | IotHubs / eventGridFilters | 否 | 否 |
+> | IotHubs / securitySettings | 否 | 否 |
 > | ProvisioningServices | 是 | 是 |
 > | usages | 否 | 否 |
 
@@ -536,6 +561,13 @@ ms.locfileid: "76550222"
 > | domains / topics | 否 | 否 |
 > | eventSubscriptions | 否 | 否 |
 > | extensionTopics | 否 | 否 |
+> | partnerNamespaces | 是 | 是 |
+> | partnerNamespaces / eventChannels | 否 | 否 |
+> | partnerRegistrations | 是 | 是 |
+> | partnerTopics | 是 | 是 |
+> | partnerTopics / eventSubscriptions | 否 | 否 |
+> | systemTopics | 是 | 是 |
+> | systemTopics / eventSubscriptions | 否 | 否 |
 > | topics | 是 | 是 |
 > | topicTypes | 否 | 否 |
 
@@ -570,6 +602,8 @@ ms.locfileid: "76550222"
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 支持标记 | 在成本报表中标记 |
 > | ------------- | ----------- | ----------- |
+> | autoManagedAccounts | 是 | 是 |
+> | autoManagedVmConfigurationProfiles | 是 | 是 |
 > | configurationProfileAssignments | 否 | 否 |
 > | guestConfigurationAssignments | 否 | 否 |
 > | software | 否 | 否 |
@@ -633,6 +667,8 @@ ms.locfileid: "76550222"
 > | clusters / databases | 否 | 否 |
 > | clusters / databases / dataconnections | 否 | 否 |
 > | clusters / databases / eventhubconnections | 否 | 否 |
+> | clusters / databases / principalassignments | 否 | 否 |
+> | clusters / principalassignments | 否 | 否 |
 > | clusters / sharedidentities | 否 | 否 |
 
 <!--Not Available on  ## Microsoft.LabServices-->
@@ -650,7 +686,15 @@ ms.locfileid: "76550222"
 > | workflows | 是 | 是 |
 
 <!--Not Available on ## Microsoft.MachineLearning-->
-<!--Not Available on ## Microsoft.MachineLearningServices-->
+
+## <a name="microsoftmachinelearningservices"></a>Microsoft.MachineLearningServices
+
+> [!div class="mx-tableFixed"]
+> | 资源类型 | 支持标记 | 在成本报表中标记 |
+> | ------------- | ----------- | ----------- |
+> | workspaces | 是 | 是 |
+> | workspaces / computes | 否 | 否 |
+> | workspaces / eventGridFilters | 否 | 否 |
 
 ## <a name="microsoftmanagedidentity"></a>Microsoft.ManagedIdentity
 
@@ -670,6 +714,7 @@ ms.locfileid: "76550222"
 > | ------------- | ----------- | ----------- |
 > | getEntities | 否 | 否 |
 > | managementGroups | 否 | 否 |
+> | managementGroups / settings | 否 | 否 |
 > | resources | 否 | 否 |
 > | startTenantBackfill | 否 | 否 |
 > | tenantBackfillStatus | 否 | 否 |
@@ -812,13 +857,17 @@ ms.locfileid: "76550222"
 > | 资源类型 | 支持标记 | 在成本报表中标记 |
 > | ------------- | ----------- | ----------- |
 > | clusters | 是 | 是 |
-> | devices | 否 | 否 |
 > | linkTargets | 否 | 否 |
 > | storageInsightConfigs | 否 | 否 |
 > | workspaces | 是 | 是 |
+> | workspaces / dataExports | 否 | 否 |
 > | workspaces / dataSources | 否 | 否 |
 > | workspaces / linkedServices | 否 | 否 |
+> | workspaces / privateEndpointConnectionProxies | 否 | 否 |
+> | workspaces / privateEndpointConnections | 否 | 否 |
+> | workspaces / privateLinkResources | 否 | 否 |
 > | workspaces / query | 否 | 否 |
+> | workspaces / scopedPrivateLinkProxies | 否 | 否 |
 
 ## <a name="microsoftoperationsmanagement"></a>Microsoft.OperationsManagement
 
@@ -908,6 +957,7 @@ ms.locfileid: "76550222"
 > | availabilityStatuses | 否 | 否 |
 > | childAvailabilityStatuses | 否 | 否 |
 > | childResources | 否 | 否 |
+> | emergingissues | 否 | 否 |
 > | events | 否 | 否 |
 > | impactedResources | 否 | 否 |
 > | metadata | 否 | 否 |
@@ -926,17 +976,10 @@ ms.locfileid: "76550222"
 > | notifyResourceJobs | 否 | 否 |
 > | providers | 否 | 否 |
 > | resourceGroups | 是 | 否 |
-> | subscriptions | 否 | 否 |
+> | subscriptions | 是 | 否 |
 > | tenants | 否 | 否 |
 
 <!--Not Available on  ## Microsoft.SaaS-->
-
-## <a name="microsoftscheduler"></a>Microsoft.Scheduler
-
-> [!div class="mx-tableFixed"]
-> | 资源类型 | 支持标记 | 在成本报表中标记 |
-> | ------------- | ----------- | ----------- |
-> | jobcollections | 是 | 是 |
 
 ## <a name="microsoftsearch"></a>Microsoft.Search
 
@@ -1023,6 +1066,8 @@ ms.locfileid: "76550222"
 > | containerGroupSets | 是 | 是 |
 > | edgeclusters | 是 | 是 |
 > | edgeclusters / applications | 否 | 否 |
+> | managedclusters | 是 | 是 |
+> | managedclusters / nodetypes | 否 | 否 |
 > | networks | 是 | 是 |
 > | secretstores | 是 | 是 |
 > | secretstores / certificates | 否 | 否 |
@@ -1049,7 +1094,7 @@ ms.locfileid: "76550222"
 > | 资源类型 | 支持标记 | 在成本报表中标记 |
 > | ------------- | ----------- | ----------- |
 > | managedInstances | 是 | 是 |
-> | managedInstances / databases | 否 | 否 |
+> | managedInstances / databases | 是（请参见[下面的注释](#sqlnote)） | 是 |
 > | managedInstances / databases / backupShortTermRetentionPolicies | 否 | 否 |
 > | managedInstances / databases / schemas / tables / columns / sensitivityLabels | 否 | 否 |
 > | managedInstances / databases / vulnerabilityAssessments | 否 | 否 |
@@ -1143,8 +1188,8 @@ ms.locfileid: "76550222"
 > | connections | 是 | 是 |
 > | customApis | 是 | 是 |
 > | deletedSites | 否 | 否 |
-> | functions | 否 | 否 |
 > | hostingEnvironments | 是 | 是 |
+> | hostingEnvironments / eventGridFilters | 否 | 否 |
 > | hostingEnvironments / multiRolePools | 否 | 否 |
 > | hostingEnvironments / workerPools | 否 | 否 |
 > | publishingUsers | 否 | 否 |
@@ -1164,6 +1209,7 @@ ms.locfileid: "76550222"
 > | sites / slots / hostNameBindings | 否 | 否 |
 > | sites / slots / networkConfig | 否 | 否 |
 > | sourceControls | 否 | 否 |
+> | staticSites | 是 | 是 |
 > | validate | 否 | 否 |
 > | verifyHostingEnvironmentVnet | 否 | 否 |
 

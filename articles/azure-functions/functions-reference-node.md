@@ -3,13 +3,13 @@ title: Azure Functions JavaScript 开发者参考
 description: 了解如何使用 JavaScript 开发函数。
 ms.assetid: 45dedd78-3ff9-411f-bb4b-16d29a11384c
 ms.topic: reference
-ms.date: 03/03/2020
-ms.openlocfilehash: 0cf290501fcd490641fb72c4f2e8e396debbd27c
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.date: 03/19/2020
+ms.openlocfilehash: 5259625ed9d7965b8e49589d5cb9af24775b5bbc
+ms.sourcegitcommit: e500354e2fd8b7ac3dddfae0c825cc543080f476
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79292415"
+ms.lasthandoff: 03/19/2020
+ms.locfileid: "79546868"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Azure Functions JavaScript 开发人员指南
 
@@ -362,6 +362,7 @@ HTTP 和 webhook 触发器以及 HTTP 输出绑定使用请求和响应对象来
 | _headers_ | 一个包含响应标头的对象。             |
 | _isRaw_   | 指示是否为响应跳过格式设置。    |
 | _status_  | 响应的 HTTP 状态代码。                     |
+| _cookies_ | 在响应中设置的 HTTP cookie 对象的数组。 HTTP cookie 对象有 `name`、`value` 和其他 cookie 属性（如 `maxAge` 或 `sameSite`）。 |
 
 ### <a name="accessing-the-request-and-response"></a>访问请求和响应 
 
@@ -703,4 +704,3 @@ module.exports = async function (context) {
 
 [`func azure functionapp publish`]: functions-run-local.md#project-file-deployment
 
-<!-- Update_Description: link update -->

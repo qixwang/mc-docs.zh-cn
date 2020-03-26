@@ -3,17 +3,17 @@ title: 管理更新
 description: 了解如何在 Azure Stack Hub 中管理更新
 author: WenJason
 ms.topic: article
-origin.date: 10/01/2019
-ms.date: 02/24/2020
+origin.date: 03/04/2020
+ms.date: 03/23/2020
 ms.author: v-jay
 ms.lastreviewed: 09/10/2019
 ms.reviewer: ppacent
-ms.openlocfilehash: fcc924e3baa339b4ccc667d4493885e1489bb478
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: a250248e6949a31561f6977b3e6cb50cbed9e2a4
+ms.sourcegitcommit: e500354e2fd8b7ac3dddfae0c825cc543080f476
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79293481"
+ms.lasthandoff: 03/19/2020
+ms.locfileid: "79546847"
 ---
 # <a name="manage-updates-in-azure-stack-hub"></a>在 Azure Stack Hub 中管理更新
 
@@ -34,7 +34,7 @@ ms.locfileid: "79293481"
 
     **快速**更新包有范围限制，不更新基础的物理主机操作系统。
 
-- **Azure Stack Hub 修补程序**。 Azure 提供 Azure Stack Hub 的修补程序（通常是预防性或时效性的程序）来解决具体的问题。 发布的每个修补程序都附带相应的 Microsoft 知识库文章，其中详细描述了问题、原因和解决方法。 可以像下载和安装普通的 Azure Stack Hub 完整更新包一样下载和安装修补程序。 修补程序是累积性的，在几分钟内即可完成安装。
+- **Azure Stack Hub 修补程序**。 Azure 提供 Azure Stack Hub 的修补程序（通常是预防性或时效性的程序）来解决特定问题。 发布的每个修补程序都附带相应的 Microsoft 知识库文章，其中详细描述了问题、原因和解决方法。 可以像下载和安装普通的 Azure Stack Hub 完整更新包一样下载和安装修补程序。 修补程序是累积性的，在几分钟内即可完成安装。
 
 - **OEM 硬件供应商提供的更新**。 Azure Stack Hub 硬件合作伙伴负责硬件相关固件和驱动程序更新包的端到端服务生命周期（包括指导）。 此外，对于硬件生命周期主机上的所有软件和硬件，Azure Stack Hub 硬件合作伙伴拥有并维护指导。 OEM 硬件供应商在自己的下载站点上托管这些更新包。
 

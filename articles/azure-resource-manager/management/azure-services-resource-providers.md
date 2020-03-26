@@ -2,15 +2,15 @@
 title: 按 Azure 服务列出的资源提供程序
 description: 列出 Azure 资源管理器的所有资源提供程序命名空间，并显示该命名空间的 Azure 服务。
 ms.topic: conceptual
-origin.date: 11/11/2019
-ms.date: 01/20/2020
+origin.date: 03/12/2020
+ms.date: 03/23/2020
 ms.author: v-yeche
-ms.openlocfilehash: a577994c3637a2fa9c8e458469fa61fbf2e1e451
-ms.sourcegitcommit: 8de025ca11b62e06ba3762b5d15cc577e0c0f15d
+ms.openlocfilehash: 5f4a66ab57774eb84bd82e9f5ca9f86af7801a7c
+ms.sourcegitcommit: 1436f1851342ca5631eb25342eed954adb707af0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76165466"
+ms.lasthandoff: 03/19/2020
+ms.locfileid: "79543900"
 ---
 <!--Verify sucessfully-->
 # <a name="resource-providers-for-azure-services"></a>Azure 服务的资源提供程序
@@ -59,8 +59,11 @@ ms.locfileid: "76165466"
 | microsoft.insights | [Azure Monitor](../../azure-monitor/index.yml) |
 | Microsoft.IoTCentral | IoT Central |
 | Microsoft.KeyVault | [密钥保管库](../../key-vault/index.yml) |
+| Microsoft.Kubernetes | [Azure Kubernetes 服务 (AKS)](/aks/) |
 | Microsoft.Kusto | [Azure 数据资源管理器](../../data-explorer/index.yml) |
 | Microsoft.Logic | [逻辑应用](../../logic-apps/index.yml) |
+| Microsoft.MachineLearningServices | [Azure 机器学习](../../machine-learning/index.yml) |
+| Microsoft.Maintenance | Azure Maintenance |
 | Microsoft.ManagedIdentity | [Azure 资源的托管标识](../../active-directory/managed-identities-azure-resources/index.yml) |
 | Microsoft.Management | [管理组](/governance/management-groups/) |
 | Microsoft.Media | [媒体服务](../../media-services/index.yml) |
@@ -72,10 +75,10 @@ ms.locfileid: "76165466"
 | Microsoft.Portal | [Azure 门户](/azure-portal/) |
 | Microsoft.PowerBI | [Power BI](https://docs.microsoft.com/power-bi/power-bi-overview) |
 | Microsoft.PowerBIDedicated | [Power BI Embedded](/power-bi-embedded/) |
-| Microsoft.RecoveryServices | [站点恢复](../../site-recovery/index.yml) |
+| Microsoft.RecoveryServices | [Azure Site Recovery](../../site-recovery/index.yml) |
 | Microsoft.Relay | [Azure 中继](../../service-bus-relay/relay-what-is-it.md) |
 | Microsoft.ResourceGraph | [Azure Resource Graph](/governance/resource-graph/) |
-| Microsoft.ResourceHealth | core |
+| Microsoft.ResourceHealth | [Azure 服务运行状况](/service-health/)|
 | Microsoft.Resources | [Azure Resource Manager](../index.yml) |
 | Microsoft.Scheduler | [计划程序](/scheduler/) |
 | Microsoft.Search | [Azure 搜索](../../search/index.yml) |
@@ -83,9 +86,8 @@ ms.locfileid: "76165466"
 | Microsoft.ServiceBus | [服务总线](/service-bus/) |
 | Microsoft.ServiceFabric | [Service Fabric](../../service-fabric/index.yml) |
 | Microsoft.SignalRService | [Azure SignalR 服务](../../azure-signalr/index.yml) |
-| Microsoft.SiteRecovery | [站点恢复](../../site-recovery/index.yml) |
 | Microsoft.Solutions | [Azure 托管应用程序](../managed-applications/index.yml) |
-| Microsoft.Sql | [Azure SQL 数据库](../../sql-database/index.yml)<br />[SQL 数据仓库](/sql-data-warehouse/) |
+| Microsoft.Sql | [Azure SQL 数据库](../../sql-database/index.yml)<br />[Azure Synapse Analytics](/sql-data-warehouse/) |
 | Microsoft.Storage | [存储](../../storage/index.yml) |
 | Microsoft.StreamAnalytics | [流分析](../../stream-analytics/index.yml) |
 | Microsoft.TimeSeriesInsights | [时序见解](../../time-series-insights/index.yml) |

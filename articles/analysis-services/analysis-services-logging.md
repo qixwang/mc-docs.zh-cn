@@ -5,20 +5,20 @@ author: rockboyfor
 ms.service: azure-analysis-services
 ms.topic: conceptual
 origin.date: 10/31/2019
-ms.date: 01/20/2020
+ms.date: 03/23/2020
 ms.author: v-yeche
 ms.reviewer: minewiskan
-ms.openlocfilehash: c835bf096d162019fb6ed208d8f16c06f6d44ed7
-ms.sourcegitcommit: 8de025ca11b62e06ba3762b5d15cc577e0c0f15d
+ms.openlocfilehash: 13f419c58939371e38e51f9b049583e9863737d8
+ms.sourcegitcommit: 1436f1851342ca5631eb25342eed954adb707af0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76165398"
+ms.lasthandoff: 03/19/2020
+ms.locfileid: "79543767"
 ---
 <!--Verify successfully-->
 # <a name="setup-diagnostic-logging"></a>设置诊断日志记录
 
-监视服务器性能对于任何 Analysis Services 解决方案都至关重要。 通过 [Azure 资源诊断日志记录](../azure-monitor/platform/platform-logs-overview.md)，可监视日志并将其发送到 [Azure 存储](https://www.azure.cn/home/features/storage/)，将其流式处理到 [Azure 事件中心](https://www.azure.cn/home/features/event-hubs/)，并将其导出到 [Azure Monitor 日志](../azure-monitor/azure-monitor-log-hub.md)。
+监视服务器性能对于任何 Analysis Services 解决方案都至关重要。 借助 [Azure 资源日志](../azure-monitor/platform/platform-logs-overview.md)，可监视日志并将其发送到 [Azure 存储](https://www.azure.cn/home/features/storage/)，将日志流式传输到 [Azure 事件中心](https://www.azure.cn/home/features/event-hubs/)，以及将其导出到 [Azure Monitor 日志](../azure-monitor/azure-monitor-log-hub.md)。
 
 ![存储、事件中心或 Azure Monitor 日志的诊断日志记录](./media/analysis-services-logging/aas-logging-overview.png)
 
@@ -26,9 +26,9 @@ ms.locfileid: "76165398"
 
 ## <a name="whats-logged"></a>会记录哪些内容？
 
-可选择“引擎”  、“服务”  类别。
+<!--CORRECT ON SHOW **Metrics** category-->
 
-<!--Not Available on , and **Metrics** -->
+可选择“引擎”  “服务”  和“指标”  类别。
 
 ### <a name="engine"></a>引擎
 
@@ -68,8 +68,9 @@ ms.locfileid: "76165398"
 |GetServerLogFiles    |    用户通过 PowerShell 导出服务器日志     |
 |ExportModel     |   用户通过在 Visual Studio 中使用 Open 在门户中导出模型     |
 
-<!--Not Available on ### All metrics-->
-<!--MOONCAKE: No All metrics option in Azure China Portal-->
+### <a name="all-metrics"></a>所有指标
+
+“指标”类别会将相同的[服务器指标](analysis-services-monitor.md#server-metrics)记录到 AzureMetrics 表中。 如果使用的是查询[横向扩展](analysis-services-scale-out.md)，并且需要为每个只读副本分离指标，请改用 AzureDiagnostics 表（其中 **OperationName** 等于 **LogMetric**）。
 
 ## <a name="setup-diagnostics-logging"></a>设置诊断日志记录
 
@@ -91,10 +92,7 @@ ms.locfileid: "76165398"
         
         * **引擎** 选择此选项以记录 Xevent。 若要存档到存储帐户，可以选择诊断日志的保留期。 保留期到期后会自动删除日志。
         * **服务**。 选择此选项以记录服务级别事件。 若要存档到存储帐户，可以选择诊断日志的保留期。 保留期到期后会自动删除日志。
-        
-        <!--Not Available on * **Metrics** -->
-        <!--Not Available on [Metrics](analysis-services-monitor.md#server-metrics) -->
-        
+        * **指标** 选择此选项可在[指标](analysis-services-monitor.md#server-metrics)中存储详细数据。 若要存档到存储帐户，可以选择诊断日志的保留期。 保留期到期后会自动删除日志。
 
 3. 单击“保存”  。
 
@@ -223,7 +221,7 @@ window
 
 在此快速教程中，你将在 Analysis Services 服务器所在订阅和资源组中创建存储帐户。 然后使用 Set-AzDiagnosticSetting 启用诊断日志记录，将输出发送到新的存储帐户。
 
-### <a name="prerequisites"></a>必备条件
+### <a name="prerequisites"></a>先决条件
 要完成本教程，必须备好以下资源：
 
 * 现有 Azure Analysis Services 服务器。 有关创建服务器资源的说明，请参阅[在 Azure 门户中创建服务器](analysis-services-create-server.md)或[使用 PowerShell 创建 Azure Analysis Services 服务器](analysis-services-create-powershell.md)。
