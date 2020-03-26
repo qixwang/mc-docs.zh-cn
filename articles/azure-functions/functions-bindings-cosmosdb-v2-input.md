@@ -3,14 +3,14 @@ title: 适用于 Functions 2.x 的 Azure Cosmos DB 输入绑定
 description: 了解如何在 Azure Functions 中使用 Azure Cosmos DB 输入绑定。
 author: craigshoemaker
 ms.topic: reference
-ms.date: 03/02/2020
+ms.date: 03/18/2020
 ms.author: v-junlch
-ms.openlocfilehash: f37d0f5099e5e93150b84c34b9920b96b5da3993
-ms.sourcegitcommit: 1ac138a9e7dc7834b5c0b62a133ca5ce2ea80054
+ms.openlocfilehash: f823443a20a3cc729153ae4892bf3399e0084a09
+ms.sourcegitcommit: e500354e2fd8b7ac3dddfae0c825cc543080f476
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78266131"
+ms.lasthandoff: 03/19/2020
+ms.locfileid: "79546889"
 ---
 # <a name="azure-cosmos-db-input-binding-for-azure-functions-2x"></a>适用于 Azure Functions 2.x 的 Azure Cosmos DB 输入绑定
 
@@ -1226,8 +1226,9 @@ JavaScript 不支持特性。
 |**collectionName** |**CollectionName** | 包含文档的集合的名称。 |
 |**id**    | Id  | 要检索的文档的 ID。 此属性支持[绑定表达式](./functions-bindings-expressions-patterns.md)。 不要同时设置 `id` 和 **sqlQuery** 属性。 如果上述两个属性都未设置，则会检索整个集合。 |
 |**sqlQuery**  |**SqlQuery**  | 用于检索多个文档的 Azure Cosmos DB SQL 查询。 该属性支持运行时绑定，如以下示例中所示：`SELECT * FROM c where c.departmentId = {departmentId}`。 不要同时设置 `id` 和 `sqlQuery` 属性。 如果上述两个属性都未设置，则会检索整个集合。|
-|**connectionStringSetting**     |**ConnectionStringSetting**|内含 Azure Cosmos DB 连接字符串的应用设置的名称。        |
+|**connectionStringSetting**     |**ConnectionStringSetting**|内含 Azure Cosmos DB 连接字符串的应用设置的名称。 |
 |**partitionKey**|**PartitionKey**|指定用于查找分区键值。 可以包含绑定参数。 它是在[分区的](../cosmos-db/partition-data.md#logical-partitions)集合中进行查询所需的。|
+|**preferredLocations**| **PreferredLocations**| （可选）为 Azure Cosmos DB 服务中的异地复制数据库帐户定义首选位置（区域）。 值应以逗号分隔。 |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 

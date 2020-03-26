@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 origin.date: 08/05/2019
 ms.date: 02/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: 7dcad0e1cf7845e54e2860a4cf3826c7668932cd
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: fd12d56e3ddb5ed77047fc6b72f2f4e9e3760676
+ms.sourcegitcommit: 305361c96d1d5288d3dda7e81833820640e2afac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79291756"
+ms.lasthandoff: 03/21/2020
+ms.locfileid: "80109803"
 ---
 # <a name="frequently-asked-questions-for-sql-server-running-on-windows-virtual-machines-in-azure"></a>Azure 的 Windows 虚拟机上运行的 SQL Server 常见问题解答
 
@@ -165,9 +165,9 @@ ms.locfileid: "79291756"
 
 1. **Azure VM 是否支持 SQL Server 故障转移群集实例 (FCI)？**
 
-    是的。 可以使用[高级文件共享 (PFS)](virtual-machines-windows-portal-sql-create-failover-cluster-premium-file-share.md) 或[存储空间直通 (S2D)](virtual-machines-windows-portal-sql-create-failover-cluster.md)（用于存储子系统）来安装故障转移群集实例。 高级文件共享提供符合许多工作负荷需求的 IOPS 和吞吐量。 或者，可使用第三方群集或存储解决方案，如 [Azure 虚拟机中 SQL Server 的高可用性和灾难恢复](virtual-machines-windows-sql-high-availability-dr.md#azure-only-high-availability-solutions)中所述。
-    
-    <!--Not Available on For IO-intensive workloads, consider using storage spaces direct based on manged premium or ultra-disks-->
+    是的。 可以使用存储子系统的[存储空间直通 (S2D)](virtual-machines-windows-portal-sql-create-failover-cluster.md) 安装故障转移群集实例。 高级文件共享提供符合许多工作负荷需求的 IOPS 和吞吐量。 或者，可使用第三方群集或存储解决方案，如 [Azure 虚拟机中 SQL Server 的高可用性和灾难恢复](virtual-machines-windows-sql-high-availability-dr.md#azure-only-high-availability-solutions)中所述。
+
+    <!--Not Available on [premium file shares (PFS)](virtual-machines-windows-portal-sql-create-failover-cluster-premium-file-share.md)-->  <!--Not Available on For IO-intensive workloads, consider using storage spaces direct based on manged premium or ultra-disks-->
     
     > [!IMPORTANT]
     > 目前，Azure 上的 SQL Server FCI 不支持_完整的_ [SQL Server IaaS 代理扩展](virtual-machines-windows-sql-server-agent-extension.md)。 我们建议你从参与 FCI 的 VM 中卸载_完整_扩展，并改为在_轻型_模式下安装该扩展。 此扩展支持自动备份和修补之类的功能，以及适用于 SQL Server 的某些门户功能。 卸载_完整_代理以后，这些功能将不适用于 SQL Server VM。

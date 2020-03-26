@@ -5,15 +5,15 @@ services: event-grid
 author: spelluru
 ms.service: event-grid
 ms.topic: conceptual
-origin.date: 05/15/2019
-ms.date: 07/29/2019
+origin.date: 02/27/2020
+ms.date: 3/16/2020
 ms.author: v-yiso
-ms.openlocfilehash: a7aef362ef0826999aae1674e6c6e4e51e334b28
-ms.sourcegitcommit: 5fea6210f7456215f75a9b093393390d47c3c78d
+ms.openlocfilehash: a5a6e739a16684e89ed7afc94e68b16abe37a7ea
+ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68337298"
+ms.lasthandoff: 03/17/2020
+ms.locfileid: "79452586"
 ---
 # <a name="event-grid-message-delivery-and-retry"></a>事件网格消息传送和重试
 
@@ -21,7 +21,39 @@ ms.locfileid: "68337298"
 
 事件网格提供持久传送。 它会将每个订阅的每条消息至少发送一次。 事件会立即发送到每个订阅的已注册终结点。 如果终结点未确认收到事件，事件网格会重试传送事件。
 
-目前，事件网格单独将每个事件发送到订阅者。 订阅者接收包含单个事件的数组。
+## <a name="batched-event-delivery"></a>批量事件传送
+
+默认情况下，事件网格单独将每个事件发送给订阅者。 订阅者接收包含单个事件的数组。 你可以将事件网格配置为批量处理要传送的事件，以在高吞吐量方案中提高 HTTP 性能。
+
+批量传送有两个设置：
+
+* **每批最大事件数** - 事件网格每批将传送的最大事件数。 永远不会超过此数目，但是，如果在发布时没有更多事件，则可能会传送较少的事件。 如果只有较少的事件，事件网格不会为了创建某个批而延迟事件传送。 必须介于 1 到 5,000 之间。
+* **首选批大小(KB)** - 批大小的目标上限 (KB)。 与最大事件数类似，如果发布时没有更多的事件，则批大小可能会较小。 *如果*单个事件大于首选大小，则批可能会大于首选批大小。 例如，如果首选大小为 4 KB，并且一个 10 KB 的事件推送到了事件网格，则 10 KB 事件将会在其自己的批中传送，而不会被删除。
+
+可以通过门户、CLI、PowerShell 或 SDK 以每事件订阅为基础配置批量传送。
+
+### <a name="azure-portal"></a>Azure 门户： 
+![文件传送设置](./media/delivery-and-retry/batch-settings.png)
+
+### <a name="azure-cli"></a>Azure CLI
+创建事件订阅时，请使用以下参数： 
+
+- **max-events-per-batch** - 每批的最大事件数。 必须是介于 1 和 5000 之间的数字。
+- **preferred-batch-size-in-kilobytes** - 首选批大小 (KB)。 必须是介于 1 和 1024 之间的数字。
+
+```azurecli
+storageid=$(az storage account show --name <storage_account_name> --resource-group <resource_group_name> --query id --output tsv)
+endpoint=https://$sitename.azurewebsites.net/api/updates
+
+az eventgrid event-subscription create \
+  --resource-id $storageid \
+  --name <event_subscription_name> \
+  --endpoint $endpoint \
+  --max-events-per-batch 1000 \
+  --preferred-batch-size-in-kilobytes 512
+```
+
+有关将 Azure CLI 与事件网格配合使用的详细信息，请参阅[使用 Azure CLI 将存储事件路由到 Web 终结点](../storage/blobs/storage-blob-event-quickstart.md)。
 
 ## <a name="retry-schedule-and-duration"></a>重试计划和持续时间
 

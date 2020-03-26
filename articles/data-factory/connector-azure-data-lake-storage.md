@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-origin.date: 01/16/2020
-ms.date: 03/02/2020
-ms.openlocfilehash: 2a11312ee1e9bda7d31250f8e7e4e2386a3adb80
-ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
+origin.date: 02/17/2020
+ms.date: 03/23/2020
+ms.openlocfilehash: 3f2548400175846145ac113246e6a0c42030c2a8
+ms.sourcegitcommit: 71a386ca0d0ecb79a123399b6ab6b8c70ea2aa78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77653250"
+ms.lasthandoff: 03/18/2020
+ms.locfileid: "79497265"
 ---
 # <a name="copy-and-transform-data-in-azure-data-lake-storage-gen2-using-azure-data-factory"></a>使用 Azure 数据工厂在 Azure Data Lake Storage Gen2 中复制和转换数据
 
@@ -155,7 +155,7 @@ Azure Data Lake Storage Gen2 连接器支持以下身份验证类型。 请参�
 }
 ```
 
-### <a name="managed-identity"></a> Azure 资源的托管标识身份验证
+### <a name="managed-identities-for-azure-resources-authentication"></a><a name="managed-identity"></a> Azure 资源的托管标识身份验证
 
 可将数据工厂与代表此特定数据工厂的 [Azure 资源托管标识](data-factory-service-identity.md)相关联。 可以像使用自己的服务主体一样，直接使用此托管标识进行 Data Lake Storage Gen2 身份验证。 此指定工厂可通过此方法访问以及向/从 Data Lake Storage Gen2 复制数据。
 
@@ -313,6 +313,7 @@ Azure Data Lake Storage Gen2 连接器支持以下身份验证类型。 请参�
 | ------------------------ | ------------------------------------------------------------ | -------- |
 | type                     | `storeSettings` 下的 type 属性必须设置为 **AzureBlobFSWriteSettings**。 | 是      |
 | copyBehavior             | 定义以基于文件的数据存储中的文件为源时的复制行为。<br/><br/>允许值包括：<br/><b>- PreserveHierarchy（默认）</b>：将文件层次结构保留到目标文件夹中。 指向源文件夹的源文件相对路径与指向目标文件夹的目标文件相对路径相同。<br/><b>- FlattenHierarchy</b>：源文件夹中的所有文件都位于目标文件夹的第一级中。 目标文件具有自动生成的名称。 <br/><b>- MergeFiles</b>：将源文件夹中的所有文件合并到一个文件中。 如果指定了文件名，则合并文件的名称为指定名称。 否则，它是自动生成的文件名。 | 否       |
+| blockSizeInMB | 指定用于将数据写入 ADLS Gen2 的块大小（以 MB 为单位）。 详细了解[块 Blob](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-block-blobs)。 <br/>允许值为 **4 到 100 MB**。 <br/>默认情况下，ADF 会根据源存储类型和数据自动确定块大小。 对于以非二进制格式复制到 ADLS Gen2，默认块大小为 100 MB，这样，最多可达 4.95 TB 的数据便可以容纳它。 当数据不大时，它可能并非最优，特别是当你在网络状况不佳的情况下使用自承载集成运行时的时候，这会导致操作超时或性能问题。 可以显式指定块大小，同时确保 blockSizeInMB*50000 足以存储数据，否则复制活动运行将失败。 | 否 |
 | maxConcurrentConnections | 可以同时连接到数据存储的连接数。 仅在要限制与数据存储的并发连接时指定。 | 否       |
 
 **示例：**

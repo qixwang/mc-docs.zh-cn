@@ -5,15 +5,15 @@ author: ccompy
 ms.assetid: 955a4d84-94ca-418d-aa79-b57a5eb8cb85
 ms.topic: article
 origin.date: 01/24/2020
-ms.date: 02/17/2020
+ms.date: 03/19/2020
 ms.author: v-tawe
 ms.custom: seodec18
-ms.openlocfilehash: 7f940c41b4d23584707cecd597d0b2a704cf7675
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: cdc154a5656ed4929ace39c69a75f090bdee506b
+ms.sourcegitcommit: e500354e2fd8b7ac3dddfae0c825cc543080f476
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79291873"
+ms.lasthandoff: 03/19/2020
+ms.locfileid: "79546965"
 ---
 # <a name="networking-considerations-for-an-app-service-environment"></a>应用服务环境的网络注意事项 #
 
@@ -234,4 +234,4 @@ ASE 具有一些需要注意的 IP 地址。 它们具有以下特点：
 <!--Links-->
 <!-- [ConfigureSSL]: ../web-sites-purchase-ssl-web-site.md -->
 <!--[Kudu]: https://azure.microsoft.com/resources/videos/super-secret-kudu-debug-console-for-azure-web-sites/-->
-[Intro]: ./intro.md [MakeExternalASE]: ./create-external-ase.md [MakeASEfromTemplate]: ./create-from-template.md [MakeILBASE]: ./create-ilb-ase.md [ASENetwork]: ./network-info.md [UsingASE]: ./using-an-ase.md [UDRs]: ../../virtual-network/virtual-networks-udr-overview.md [NSGs]: ../../virtual-network/security-overview.md [mobileapps]: ../../app-service-mobile/app-service-mobile-value-prop.md [Functions]: ../../azure-functions/index.yml [Pricing]: https://www.azure.cn/pricing/details/app-service/ [ARMOverview]: ../../azure-resource-manager/resource-group-overview.md [ASEWAF]: app-service-app-service-environment-web-application-firewall.md [AppGW]: ../../application-gateway/application-gateway-web-application-firewall-overview.md [ASEManagement]: ./management-addresses.md [serviceendpoints]: ../../virtual-network/virtual-network-service-endpoints-overview.md [forcedtunnel]: ./forced-tunnel-support.md [serviceendpoints]: ../../virtual-network/virtual-network-service-endpoints-overview.md
+[Intro]: ./intro.md [MakeExternalASE]: ./create-external-ase.md [MakeASEfromTemplate]: ./create-from-template.md [MakeILBASE]: ./create-ilb-ase.md [ASENetwork]: ./network-info.md [UsingASE]: ./using-an-ase.md [UDRs]: ../../virtual-network/virtual-networks-udr-overview.md [NSGs]: ../../virtual-network/security-overview.md [mobileapps]: ../../app-service-mobile/app-service-mobile-value-prop.md [Functions]: ../../azure-functions/index.yml [Pricing]: https://www.azure.cn/pricing/details/app-service/ [ARMOverview]: ../../azure-resource-manager/management/overview.md [ASEWAF]: app-service-app-service-environment-web-application-firewall.md [AppGW]: ../../application-gateway/application-gateway-web-application-firewall-overview.md [ASEManagement]: ./management-addresses.md [serviceendpoints]: ../../virtual-network/virtual-network-service-endpoints-overview.md [forcedtunnel]: ./forced-tunnel-support.md [serviceendpoints]: ../../virtual-network/virtual-network-service-endpoints-overview.md

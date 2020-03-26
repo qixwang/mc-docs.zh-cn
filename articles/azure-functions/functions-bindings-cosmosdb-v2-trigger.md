@@ -3,14 +3,14 @@ title: 适用于 Functions 2.x 的 Azure Cosmos DB 触发器
 description: 了解如何在 Azure Functions 中使用 Azure Cosmos DB 触发器。
 author: craigshoemaker
 ms.topic: reference
-ms.date: 03/02/2020
+ms.date: 03/18/2020
 ms.author: v-junlch
-ms.openlocfilehash: 9fdb3abcd267bb6cacdee454a8300908062c678c
-ms.sourcegitcommit: 1ac138a9e7dc7834b5c0b62a133ca5ce2ea80054
+ms.openlocfilehash: 967e46da14b6cce90a241cb320fa30a456d1e809
+ms.sourcegitcommit: e500354e2fd8b7ac3dddfae0c825cc543080f476
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78266129"
+ms.lasthandoff: 03/19/2020
+ms.locfileid: "79546887"
 ---
 # <a name="azure-cosmos-db-trigger-for-azure-functions-2x"></a>适用于 Azure Functions 2.x 的 Azure Cosmos DB 触发器
 
@@ -201,7 +201,8 @@ JavaScript 不支持特性。
 |**leaseRenewInterval**| **LeaseRenewInterval**| （可选）设置后，此项以毫秒为单位定义当前由实例拥有的分区的所有租用的续订时间间隔。 默认为 17000（17 秒）。
 |**checkpointFrequency**| **CheckpointFrequency**| （可选）设置后，此项以毫秒为单位定义租用检查点的时间间隔。 默认为始终在进行每个 Function 调用之后进行检查。
 |**maxItemsPerInvocation**| **MaxItemsPerInvocation**| （可选）设置后，此属性会对每次函数调用收到的项目的最大数目进行设置。 如果受监视集合中的操作通过存储过程执行，则在从更改源读取项时，会保留[事务范围](../cosmos-db/stored-procedures-triggers-udfs.md#transactions)。 因此，收到的项数可能高于指定的值，通过同一事务更改的项会通过某个原子批处理操作返回。
-|**startFromBeginning**| **StartFromBeginning**| （可选）此选项告知触发器要从集合的更改历史记录开头位置读取更改，而不是从当前时间开始读取。 从开头位置读取仅在触发器首次启动时起作用，因为在后续运行中，已存储检查点。 如果已经创建租约，则将此选项设置为 `true` 将不起作用。
+|**startFromBeginning**| **StartFromBeginning**| （可选）此选项告知触发器要从集合的更改历史记录开头位置读取更改，而不是从当前时间开始读取。 从开头位置读取仅在触发器首次启动时起作用，因为在后续运行中，已存储检查点。 如果已经创建租约，则将此选项设置为 `true` 将不起作用。 |
+|**preferredLocations**| **PreferredLocations**| （可选）为 Azure Cosmos DB 服务中的异地复制数据库帐户定义首选位置（区域）。 值应以逗号分隔。 |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 

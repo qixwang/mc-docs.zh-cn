@@ -5,15 +5,15 @@ author: ccompy
 ms.assetid: 6eb7d43d-e820-4a47-818c-80ff7d3b6f8e
 ms.topic: article
 origin.date: 06/13/2017
-ms.date: 01/13/2020
+ms.date: 03/19/2020
 ms.author: v-tawe
 ms.custom: seodec18
-ms.openlocfilehash: df48dda6f3ba69ef57744cb5cad925ed9c9dae3d
-ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
+ms.openlocfilehash: b7ec7926deef4869258dc33606e55c977dc572f7
+ms.sourcegitcommit: e500354e2fd8b7ac3dddfae0c825cc543080f476
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75600480"
+ms.lasthandoff: 03/19/2020
+ms.locfileid: "79546969"
 ---
 # <a name="create-an-ase-by-using-an-azure-resource-manager-template"></a>使用 Azure 资源管理器模板创建 ASE
 
@@ -157,4 +157,4 @@ New-AzResourceGroupDeployment -Name "CHANGEME" -ResourceGroupName "YOUR-RG-NAME-
 <!--Links-->
 <!-- [ConfigureSSL]: ../web-sites-purchase-ssl-web-site.md -->
 <!-- [Kudu]: https://azure.microsoft.com/resources/videos/super-secret-kudu-debug-console-for-azure-web-sites/ -->
-[quickstartilbasecreate]\: https://azure.microsoft.com/resources/templates/201-web-app-asev2-ilb-create/ [quickstartasev2create]: https://azure.microsoft.com/resources/templates/201-web-app-asev2-create/ [quickstartconfiguressl]: https://azure.microsoft.com/resources/templates/201-web-app-ase-ilb-configure-default-ssl/ [quickstartwebapponasev2create]: https://azure.microsoft.com/resources/templates/201-web-app-asp-app-on-asev2-create/ [examplebase64encoding]: https://powershellscripts.blogspot.com/2007/02/base64-encode-file.html [configuringDefaultSSLCertificate]: https://azure.microsoft.com/resources/templates/201-web-app-ase-ilb-configure-default-ssl/ [Intro]: ./intro.md [MakeExternalASE]: ./create-external-ase.md [MakeASEfromTemplate]: ./create-from-template.md [MakeILBASE]: ./create-ilb-ase.md [ASENetwork]: ./network-info.md [UsingASE]: ./using-an-ase.md [UDRs]: ../../virtual-network/virtual-networks-udr-overview.md [NSGs]: ../../virtual-network/security-overview.md [mobileapps]: ../../app-service-mobile/app-service-mobile-value-prop.md [Functions]: ../../azure-functions/index.yml [Pricing]: https://www.azure.cn/pricing/details/app-service/ [ARMOverview]: ../../azure-resource-manager/resource-group-overview.md [ASEWAF]: app-service-app-service-environment-web-application-firewall.md [AppGW]: ../../application-gateway/application-gateway-web-application-firewall-overview.md
+[quickstartilbasecreate]: https://azure.microsoft.com/resources/templates/201-web-app-asev2-ilb-create/ [quickstartasev2create]: https://azure.microsoft.com/resources/templates/201-web-app-asev2-create/ [quickstartconfiguressl]: https://azure.microsoft.com/resources/templates/201-web-app-ase-ilb-configure-default-ssl/ [quickstartwebapponasev2create]: https://azure.microsoft.com/resources/templates/201-web-app-asp-app-on-asev2-create/ [examplebase64encoding]: https://powershellscripts.blogspot.com/2007/02/base64-encode-file.html [configuringDefaultSSLCertificate]: https://azure.microsoft.com/resources/templates/201-web-app-ase-ilb-configure-default-ssl/ [Intro]: ./intro.md [MakeExternalASE]: ./create-external-ase.md [MakeASEfromTemplate]: ./create-from-template.md [MakeILBASE]: ./create-ilb-ase.md [ASENetwork]: ./network-info.md [UsingASE]: ./using-an-ase.md [UDRs]: ../../virtual-network/virtual-networks-udr-overview.md [NSGs]: ../../virtual-network/security-overview.md [mobileapps]: ../../app-service-mobile/app-service-mobile-value-prop.md [Functions]: ../../azure-functions/index.yml [Pricing]: https://www.azure.cn/pricing/details/app-service/ [ARMOverview]: ../../azure-resource-manager/management/overview.md [ASEWAF]: app-service-app-service-environment-web-application-firewall.md [AppGW]: ../../application-gateway/application-gateway-web-application-firewall-overview.md

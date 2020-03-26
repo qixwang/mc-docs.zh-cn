@@ -6,12 +6,12 @@ origin.date: 04/26/2019
 author: lingliw
 ms.date: 6/4/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 99854d8bb0fa83293c652175458fd7f5e6b20683
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.openlocfilehash: ad86b90bcf0939712149bb6a49f8f9a1e5490571
+ms.sourcegitcommit: 305361c96d1d5288d3dda7e81833820640e2afac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78850445"
+ms.lasthandoff: 03/21/2020
+ms.locfileid: "80109804"
 ---
 # <a name="monitor-azure-app-service-performance"></a>监视 Azure 应用服务性能
 
@@ -34,7 +34,7 @@ ms.locfileid: "78850445"
     * 如果需要发出自定义 API 调用来跟踪基于代理的监视在默认情况下不会捕获的事件/依赖项，则需要使用此方法。 有关详细信息，请查看 [自定义事件和指标的 API](/azure-monitor/app/api-custom-events-metrics) 一文。
 
 > [!NOTE]
-> 如果同时检测到了基于代理的监视和基于手动 SDK 的检测，则只会遵循手动检测设置， 这是为了防止发送重复数据。 有关详细信息，请查看下面的[故障排除部分](/azure-monitor/app/azure-web-apps#troubleshooting)。
+> 如果同时检测到了基于代理的监视和基于手动 SDK 的检测，则只会采用手动检测设置， 这是为了防止发送重复数据。 有关详细信息，请查看下面的[故障排除部分](/azure-monitor/app/azure-web-apps#troubleshooting)。
 
 ## <a name="enable-agent-based-monitoring"></a>启用基于代理的监视
 
