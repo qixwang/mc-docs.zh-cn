@@ -22729,7 +22729,168 @@
       "source_path": "articles/storage/common/storage-azure-cli-nodejs.md",
       "redirect_url": "/storage/blobs/storage-quickstart-blobs-cli",
       "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/sql-database/sql-database-control-access.md",
+      "redirect_url": "/sql-database/sql-database-manage-logins",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "articles/sql-database/sql-database-operate-query-store.md",
+      "redirect_url": "https://docs.microsoft.com/sql/relational-databases/performance/best-practice-with-the-query-store#Insight",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/sql-database/sql-database-performance.md",
+      "redirect_url": "/sql-database/sql-database-monitor-overview",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/cognitive-services/Translator/quickstart-csharp-detect.md",
+      "redirect_url": "/cognitive-services/Translator/quickstart-detect?pivots=programming-language-csharp",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/cognitive-services/Translator/quickstart-csharp-dictionary.md",
+      "redirect_url": "/cognitive-services/Translator/quickstart-dictionary?pivots=programming-language-csharp",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/cognitive-services/Translator/quickstart-csharp-languages.md",
+      "redirect_url": "/cognitive-services/Translator/quickstart-languages?pivots=programming-language-csharp",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/cognitive-services/Translator/quickstart-csharp-sentences.md",
+      "redirect_url": "/cognitive-services/Translator/quickstart-sentences?pivots=programming-language-csharp",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/cognitive-services/Translator/quickstart-csharp-translate.md",
+      "redirect_url": "/cognitive-services/Translator/quickstart-translate?pivots=programming-language-csharp",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/cognitive-services/Translator/quickstart-csharp-transliterate.md",
+      "redirect_url": "/cognitive-services/Translator/quickstart-transliterate?pivots=programming-language-csharp",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/cognitive-services/Translator/quickstart-go-detect.md",
+      "redirect_url": "/cognitive-services/Translator/quickstart-detect?pivots=programming-language-csharp",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/cognitive-services/Translator/quickstart-go-dictionary.md",
+      "redirect_url": "/cognitive-services/Translator/quickstart-dictionary?pivots=programming-language-csharp",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/cognitive-services/Translator/quickstart-go-languages.md",
+      "redirect_url": "/cognitive-services/Translator/quickstart-languages?pivots=programming-language-csharp",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/cognitive-services/Translator/quickstart-go-sentences.md",
+      "redirect_url": "/cognitive-services/Translator/quickstart-sentences?pivots=programming-language-csharp",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/cognitive-services/Translator/quickstart-go-translate.md",
+      "redirect_url": "/cognitive-services/Translator/quickstart-translate?pivots=programming-language-csharp",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/cognitive-services/Translator/quickstart-go-transliterate.md",
+      "redirect_url": "/cognitive-services/Translator/quickstart-transliterate?pivots=programming-language-csharp",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/cognitive-services/Translator/quickstart-java-detect.md",
+      "redirect_url": "/cognitive-services/Translator/quickstart-dictionary?pivots=programming-language-csharp",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/cognitive-services/Translator/quickstart-java-languages.md",
+      "redirect_url": "/cognitive-services/Translator/quickstart-languages?pivots=programming-language-csharp",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/cognitive-services/Translator/quickstart-java-sentences.md",
+      "redirect_url": "/cognitive-services/Translator/quickstart-sentences?pivots=programming-language-csharp",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/cognitive-services/Translator/quickstart-java-translate.md",
+      "redirect_url": "/cognitive-services/Translator/quickstart-translate?pivots=programming-language-csharp",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/cognitive-services/Translator/quickstart-java-transliterate.md",
+      "redirect_url": "/cognitive-services/Translator/quickstart-transliterate?pivots=programming-language-csharp",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/cognitive-services/Translator/quickstart-nodejs-detect.md",
+      "redirect_url": "/cognitive-services/Translator/quickstart-detect?pivots=programming-language-csharp",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/cognitive-services/Translator/quickstart-nodejs-dictionary.md",
+      "redirect_url": "/cognitive-services/Translator/quickstart-dictionary?pivots=programming-language-csharp",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/cognitive-services/Translator/quickstart-nodejs-languages.md",
+      "redirect_url": "/cognitive-services/Translator/quickstart-languages?pivots=programming-language-csharp",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/cognitive-services/Translator/quickstart-nodejs-sentences.md",
+      "redirect_url": "/cognitive-services/Translator/quickstart-sentences?pivots=programming-language-csharp",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/cognitive-services/Translator/quickstart-nodejs-translate.md",
+      "redirect_url": "/cognitive-services/Translator/quickstart-translate?pivots=programming-language-csharp",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/cognitive-services/Translator/quickstart-nodejs-transliterate.md",
+      "redirect_url": "/cognitive-services/Translator/quickstart-transliterate?pivots=programming-language-csharp",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/cognitive-services/Translator/quickstart-python-detect.md",
+      "redirect_url": "/cognitive-services/Translator/quickstart-detect?pivots=programming-language-csharp",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/cognitive-services/Translator/quickstart-python-dictionary.md",
+      "redirect_url": "/cognitive-services/Translator/quickstart-dictionary?pivots=programming-language-csharp",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/cognitive-services/Translator/quickstart-python-languages.md",
+      "redirect_url": "/cognitive-services/Translator/quickstart-languages?pivots=programming-language-csharp",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/cognitive-services/Translator/quickstart-python-sentences.md",
+      "redirect_url": "/cognitive-services/Translator/quickstart-sentences?pivots=programming-language-csharp",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/cognitive-services/Translator/quickstart-python-translate.md",
+      "redirect_url": "/cognitive-services/Translator/quickstart-translate?pivots=programming-language-csharp",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/cognitive-services/Translator/quickstart-python-transliterate.md",
+      "redirect_url": "/cognitive-services/Translator/quickstart-transliterate?pivots=programming-language-csharp",
+      "redirect_document_id": false
     }
+
 
 
 
