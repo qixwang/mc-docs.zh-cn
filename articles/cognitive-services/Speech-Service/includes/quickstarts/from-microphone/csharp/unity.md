@@ -8,14 +8,14 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
 origin.date: 12/17/2019
-ms.date: 03/23/2020
+ms.date: 03/16/2020
 ms.author: v-tawe
-ms.openlocfilehash: a8540655c80d3fb51bd8d909c61c8b86d20436c9
-ms.sourcegitcommit: e94ed1c9eff4e88be2ca389909e60b14cc0d92f8
+ms.openlocfilehash: 731973bb5c5f6868064f5da3b6c2b740cbd96636
+ms.sourcegitcommit: b2f2bb08ab1b5ccb3c596d84b3b6ddca5bba3903
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79084646"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80151636"
 ---
 > [!NOTE]
 > 适用于 Unity 的语音 SDK 支持 Windows 桌面版（x86 和 x64）或通用 Windows 平台（x86、x64、ARM/ARM64）、Android（x86、ARM32/64）或 iOS（x64 模拟器、ARM32 和 ARM64）
@@ -26,8 +26,7 @@ ms.locfileid: "79084646"
 
 > [!div class="checklist"]
 > * [创建一个 Azure 搜索资源](../../../../get-started.md)
-> * [设置开发环境](../../../../quickstarts/setup-platform.md?tabs=unity)
-> * [创建空示例项目](../../../../quickstarts/create-project.md?tabs=unity)
+> * [设置开发环境并创建空项目](../../../../quickstarts/setup-platform.md?tabs=unity)
 > * 请确保你有权访问麦克风，以便进行音频捕获
 
 如果尚未执行此操作，很好！ 让我们继续。

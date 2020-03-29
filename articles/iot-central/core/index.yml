@@ -8,14 +8,14 @@ metadata:
   ms.service: iot-central
   ms.topic: landing-page
   author: philmea
-  ms.author: v-yiso
-  origin.date: 10/25/2019
-  ms.openlocfilehash: 591a682a06475ad260c948a6c3a962b1ef084a06
-  ms.sourcegitcommit: 6ffa4d50cee80c7c0944e215ca917a248f2a4bcd
+  ms.author: philmea
+  ms.date: 02/18/2020
+  ms.openlocfilehash: f12b117f5fe7548278b6b4c5a0ad097d8a1ef6ce
+  ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 12/06/2019
-  ms.locfileid: "74883816"
+  ms.lasthandoff: 03/27/2020
+  ms.locfileid: "80343147"
 landingContent:
 - title: 关于 Azure IoT Central
   linkLists:
@@ -23,14 +23,14 @@ landingContent:
     links:
     - text: 什么是 Azure IoT Central？
       url: overview-iot-central.md
-    - text: IoT 解决方案选项
-      url: overview-iot-central-tour.md
     - text: 浏览 UI
       url: overview-iot-central-tour.md
   - linkListType: architecture
     links:
     - text: Azure IoT Central 体系结构
       url: concepts-architecture.md
+    - text: 应用程序模板
+      url: concepts-app-templates.md
   - linkListType: quickstart
     links:
     - text: 创建新应用程序
@@ -39,12 +39,14 @@ landingContent:
   linkLists:
   - linkListType: tutorial
     links:
-    - text: 设置设备模板
-      url: howto-set-up-template.md
-    - text: 连接 IoT 即插即用设备
-      url: tutorial-add-device.md
+    - text: 连接一个设备
+      url: tutorial-connect-device.md
+    - text: 连接 IoT 即插即用（预览版）设备
+      url: tutorial-connect-pnp-device.md
   - linkListType: how-to-guide
     links:
+    - text: 设置设备模板
+      url: howto-set-up-template.md
     - text: 准备和连接 MX Chip IoT DevKit
       url: howto-connect-devkit.md
     - text: 连接其他 IoT 云
@@ -53,8 +55,8 @@ landingContent:
   linkLists:
   - linkListType: tutorial
     links:
-    - text: 使用设备集
-      url: howto-use-device-sets.md
+    - text: 使用设备组
+      url: tutorial-use-device-groups.md
   - linkListType: how-to-guide
     links:
     - text: 管理设备
@@ -68,13 +70,17 @@ landingContent:
   - linkListType: tutorial
     links:
     - text: 创建遥测规则
-      url: howto-create-telemetry-rules.md
-    - text: 导出到 Blob 存储
-      url: howto-export-data-blob-storage.md
+      url: tutorial-create-telemetry-rules.md
+    - text: 将数据导出到 Azure 中的目标
+      url: howto-export-data.md
+    - text: 探索 IoT Central API
+      url: https://docs.microsoft.com/learn/modules/manage-iot-central-apps-with-rest-api/
   - linkListType: how-to-guide
     links:
     - text: 创建自定义规则
       url: howto-create-custom-rules.md
+    - text: 创建自定义分析
+      url: howto-create-custom-analytics.md
 - title: 管理
   linkLists:
   - linkListType: how-to-guide

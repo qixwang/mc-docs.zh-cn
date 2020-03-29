@@ -13,16 +13,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/06/2020
+ms.date: 03/23/2020
 ms.author: v-junlch
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: f1af5df5479e63c3f281c1c7ad316ac588bc1f40
-ms.sourcegitcommit: 1bc154c816a5dff47ee051c431cd94826e57aa60
+ms.openlocfilehash: 95fdc258fadb61c56925ebb0d1b5b04b2e9b5769
+ms.sourcegitcommit: 6568c59433d7e80ab06e9fe76d4791f761ed6775
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75776914"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80243092"
 ---
 # <a name="tutorial-build-a-multitenant-daemon-that-uses-the-microsoft-identity-platform-endpoint"></a>教程：生成使用 Microsoft 标识平台终结点的多租户守护程序
 
@@ -40,7 +39,8 @@ ms.locfileid: "75776914"
 
 本示例中的“守护程序”组件是 API 控制器 `SyncController.cs`。 调用该控制器时，它会从 Microsoft Graph 提取客户的 Azure Active Directory (Azure AD) 租户中的用户列表。 `SyncController.cs` 由 Web 应用程序中的 AJAX 调用触发。 它使用[适用于 .NET 的 Microsoft 身份验证库 (MSAL)](msal-overview.md) 获取 Microsoft Graph 的访问令牌。
 
-对于更简单的控制台守护程序应用程序，请参阅 [.NET Core 守护程序快速入门](quickstart-v2-netcore-daemon.md)。
+>[!NOTE]
+> 如果你不熟悉 Microsoft 标识平台，我们建议你从 [.NET Core 守护程序快速入门](quickstart-v2-netcore-daemon.md)开始。
 
 ## <a name="scenario"></a>方案
 
@@ -50,7 +50,7 @@ ms.locfileid: "75776914"
 
 有关此示例中使用的概念的详细信息，请阅读[标识平台终结点的客户端凭据协议文档](v2-oauth2-client-creds-grant-flow.md)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要运行本快速入门中的示例，你将需要：
 
@@ -106,7 +106,7 @@ git clone https://github.com/Azure-Samples/active-directory-dotnet-daemon-v2.git
 
 ### <a name="register-the-client-app-dotnet-web-daemon-v2"></a>注册客户端应用 (dotnet-web-daemon-v2)
 
-1. 转到[应用注册](https://portal.azure.cn/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredAppsPreview)页。
+1. 转到面向开发人员的 Microsoft 标识平台中的[应用注册](https://portal.azure.cn/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredAppsPreview)页。
 1. 选择“新注册”。 
 1. “注册应用程序”页出现后，请输入应用程序的注册信息： 
    - 在“名称”部分输入一个会显示给应用用户的有意义的应用程序名称。  例如，输入 **dotnet-web-daemon-v2**。

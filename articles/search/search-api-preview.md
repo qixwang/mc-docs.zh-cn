@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 origin.date: 02/11/2020
 ms.date: 03/16/2020
-ms.openlocfilehash: b9ad59d5f241cd24c5aaab8225be83edd2af642b
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.openlocfilehash: ed34f60e844b342174a3dc324e2af747a9efdda2
+ms.sourcegitcommit: 1d3d8dfdaf6281f06640cbee7124a1e8bf102c50
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78850642"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80243714"
 ---
 # <a name="preview-features-in-azure-cognitive-search"></a>Azure 认知搜索中的预览版功能
 
@@ -50,6 +50,8 @@ ms.locfileid: "78850642"
 | [moreLikeThis 查询参数（预览版）](search-more-like-this.md) | 查找与特定文档相关的文档。 早期预览版中已有此功能。 | 
 
 ## <a name="management-features"></a>管理功能
+
+<!-- | [Private Endpoint support](service-create-private-endpoint.md) | You can create a virtual network with a secure client (such as a virtual machine), and then create a search service that uses Private Endpoint. | -->
 
 |||
 |-|-|

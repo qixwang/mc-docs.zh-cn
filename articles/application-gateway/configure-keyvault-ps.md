@@ -6,14 +6,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 03/02/2020
+ms.date: 03/24/2020
 ms.author: v-junlch
-ms.openlocfilehash: 34a12fa28bbdb14456ab33379905a6b478f2f6cb
-ms.sourcegitcommit: 1ac138a9e7dc7834b5c0b62a133ca5ce2ea80054
+ms.openlocfilehash: 5f08db0afd56f113ee8ad044dff19919ce20eb02
+ms.sourcegitcommit: 6568c59433d7e80ab06e9fe76d4791f761ed6775
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78266074"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80243191"
 ---
 # <a name="configure-ssl-termination-with-key-vault-certificates-by-using-azure-powershell"></a>通过 Azure PowerShell 使用 KeyVault 证书配置 SSL 终止
 
@@ -43,7 +43,7 @@ Select-AzSubscription -Subscription <your subscription>
 
 ```azurepowershell
 $rgname = "KeyVaultTest"
-$location = "China North"
+$location = "China North 2"
 $kv = "TestKeyVaultAppGw"
 $appgwName = "AppGwKVIntegration"
 ```

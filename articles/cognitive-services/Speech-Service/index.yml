@@ -12,14 +12,14 @@ metadata:
   ms.service: speech-service
   ms.topic: hub-page
   origin.date: 02/11/2020
-  ms.date: 03/23/2020
+  ms.date: 03/16/2020
   ms.author: v-tawe
-  ms.openlocfilehash: 0184276ec9be0b11063dfaeff55b2584345fbd6d
-  ms.sourcegitcommit: e94ed1c9eff4e88be2ca389909e60b14cc0d92f8
+  ms.openlocfilehash: 16feed3d1b3f4be8016bdf33f7c2c91d19aaa4c0
+  ms.sourcegitcommit: b2f2bb08ab1b5ccb3c596d84b3b6ddca5bba3903
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 03/11/2020
-  ms.locfileid: "79084524"
+  ms.lasthandoff: 03/24/2020
+  ms.locfileid: "80151680"
 highlightedContent:
   items:
   - title: 什么是语音服务？
@@ -38,15 +38,12 @@ conceptualContent:
   items:
   - title: 语音转文本
     links:
+    - itemType: how-to-guide
+      text: 语音识别基础知识
+      url: speech-to-text-basics.md
     - itemType: quickstart
-      text: 识别来自麦克风输入的语音
+      text: 识别来自麦克风的语音
       url: quickstarts/speech-to-text-from-microphone.md
-    - itemType: quickstart
-      text: 识别音频文件中的语音
-      url: quickstarts/speech-to-text-from-file.md
-    - itemType: quickstart
-      text: 识别存储在 Blob 存储中的语音
-      url: quickstarts/from-blob.md
     footerLink:
       text: 查看更多
       url: index-speech-to-text.yml

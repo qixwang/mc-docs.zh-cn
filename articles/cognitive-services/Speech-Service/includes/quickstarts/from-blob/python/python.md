@@ -1,31 +1,23 @@
 ---
-title: 快速入门：识别存储在 Blob 存储中的语音，C# - 语音服务
-titleSuffix: Azure Cognitive Services
-description: TBD
-services: cognitive-services
 author: IEvangelist
-manager: nitinme
 ms.service: cognitive-services
-ms.subservice: speech-service
 ms.topic: include
 origin.date: 01/13/2020
-ms.date: 02/17/2020
+ms.date: 03/16/2020
 ms.author: v-tawe
-zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 87628264c24bdb0be4cfdb6ac650e3e83cccb573
-ms.sourcegitcommit: 888cbc10f2348de401d4839a732586cf266883bf
+ms.openlocfilehash: ce68687ebd9d6aaf620f6c14bbfc8637ca2557bd
+ms.sourcegitcommit: b2f2bb08ab1b5ccb3c596d84b3b6ddca5bba3903
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77029310"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80151594"
 ---
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 在开始之前，请务必：
 
 > [!div class="checklist"]
-> * [设置开发环境](../../../../quickstarts/setup-platform.md)
-> * [创建空示例项目](../../../../quickstarts/create-project.md)
+> * [设置开发环境并创建空项目](../../../../quickstarts/setup-platform.md)
 > * [创建 Azure 语音资源](../../../../get-started.md)
 > * [将源文件上传到 Azure blob](https://docs.azure.cn/storage/blobs/storage-quickstart-blobs-portal)
 
@@ -45,8 +37,8 @@ ms.locfileid: "77029310"
 1. 已安装的名为 `swagger_client` 的包。 可以使用命令 `python -c "import swagger_client"` 来检查安装是否正常工作。
 
 > [!NOTE]
-> 由于 `swagger_client`Swagger 自动生成中的已知 bug](https://github.com/swagger-api/swagger-codegen/issues/7541)，导入  包时可能会遇到错误。
-> 这些错误可以通过从已安装的包中删除
+> 由于 [Swagger 自动生成中的已知 bug](https://github.com/swagger-api/swagger-codegen/issues/7541)，导入 `swagger_client` 包时可能会遇到错误。
+> 这些错误可以通过从已安装的包中删除文件 中包含以下内容的行
 > ```py
 > from swagger_client.models.model import Model  # noqa: F401,E501
 > ```

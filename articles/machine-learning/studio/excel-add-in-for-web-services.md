@@ -10,14 +10,16 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 02/01/2018
-ms.openlocfilehash: fbb2bc9218f4b0abf31da8000b0e7057e6657356
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+ms.openlocfilehash: 15ed6b9c1870f41af63fd1bc8682bd37215d386f
+ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75598650"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80343286"
 ---
 # <a name="excel-add-in-for-azure-machine-learning-studio-classic-web-services"></a>适用于 Azure 机器学习工作室（经典）Web 服务的 Excel 加载项
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 Excel 可以直接轻松调用 Web 服务，而无需编写任何代码。
 
 ## <a name="steps-to-use-an-existing-web-service-in-the-workbook"></a>在工作簿中使用现有 Web 服务的步骤

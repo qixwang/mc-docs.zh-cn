@@ -8,14 +8,14 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
 origin.date: 12/17/2019
-ms.date: 01/13/2020
+ms.date: 03/16/2020
 ms.author: v-tawe
-ms.openlocfilehash: 6ba92612e70538b2a46c95af8cf9d2c94da771cf
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.openlocfilehash: 20cea91625d32caaf7be7d11e77b193bbee300fb
+ms.sourcegitcommit: b2f2bb08ab1b5ccb3c596d84b3b6ddca5bba3903
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75631068"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80151604"
 ---
 [!INCLUDE [jre](./jre.md)]
 

@@ -12,15 +12,15 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: na
 origin.date: 06/21/2019
-ms.date: 03/09/2020
+ms.date: 04/06/2020
 ms.author: v-yiso
 ms.custom: mvc
-ms.openlocfilehash: ea09cc9f2058c6bdda0ebd8c252d9961aadd394c
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.openlocfilehash: a02552d9196756c3eb892a74dabe140d6433a6f5
+ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78154716"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80343610"
 ---
 <!-- **TODO** Update publish config with repo paths before publishing! -->
 
@@ -69,7 +69,7 @@ hubname=tutorial-iot-hub
 location=chinaeast
 
 # Install the IoT extension if it's not already installed:
-az extension add --name azure-cli-iot-ext
+az extension add --name azure-iot
 
 # Create a resource group:
 az group create --name tutorial-iot-hub-rg --location $location

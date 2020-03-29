@@ -9,15 +9,15 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 origin.date: 02/26/2020
-ms.date: 03/23/2020
+ms.date: 03/16/2020
 ms.author: v-tawe
 ms.custom: seodec18, seo-javascript-october2019
-ms.openlocfilehash: 9e6ada670af229b0efeeeddcbe366fbce3131b2e
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: ba55a69a6d56f5f5ca6f38c8be449ec8fe0bf971
+ms.sourcegitcommit: b2f2bb08ab1b5ccb3c596d84b3b6ddca5bba3903
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79293003"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80151708"
 ---
 # <a name="try-the-speech-service"></a>试用语音服务
 
@@ -28,7 +28,7 @@ ms.locfileid: "79293003"
 - [选项 1](#new-resource)：在 Azure 中创建新的语音资源，使用**免费订阅**（需要信用卡信息）。 **免费订阅**主要有比付费订阅更苛刻的速率限制。 若要测试服务，计划在将来升级到付费订阅，并且不希望丢失数据，则可使用此选项。
 
 <!-- ## <a id="no-card"></a>Try the Speech service without credit card info -->
-## <a id="new-resource"></a>通过创建 Azure 资源来试用语音服务
+## <a name="try-the-speech-service-by-creating-an-azure-resource"></a><a id="new-resource"></a>通过创建 Azure 资源来试用语音服务
 
 若要执行以下步骤，你需要一个 Azure 帐户。请转到 [Azure 注册页](https://wd.azure.cn/pricing/1rmb-trial/)，创建一个新的 Azure 帐户。
 

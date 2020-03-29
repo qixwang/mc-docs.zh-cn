@@ -8,15 +8,15 @@ ms.subservice: dsc
 author: WenJason
 ms.author: v-jay
 origin.date: 08/08/2019
-ms.date: 01/06/2020
+ms.date: 03/30/2020
 ms.topic: conceptual
 manager: digimobile
-ms.openlocfilehash: c9cd02d784d6188dc1c407b0a5c7113b26dd0e0a
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.openlocfilehash: 1e2447ea0dcd37c077e3e9ca83d5569197a77a99
+ms.sourcegitcommit: 90d01d08faf8adb20083363a8e4e5aab139cd9b2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75624265"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80290379"
 ---
 # <a name="convert-configurations-to-composite-resources"></a>将配置转换为复合资源
 
@@ -48,7 +48,7 @@ CompositeResource 会自动完成从配置创建新模块的过程。
 接下来，使用 CompositeResource 模块提供的函数自动进行转换，而不是运行此配置来生成 MOF 文件。
 此 cmdlet 会加载配置的内容、获取参数列表，以及生成包含所需的一切内容的新模块。
 
-生成模块以后，每次进行更改并将其发布到你自己的 [PowerShellGet 存储库](https://kevinmarquette.github.io/2018-03-03-Powershell-Using-a-NuGet-server-for-a-PSRepository/?utm_source=blog&utm_medium=blog&utm_content=psscriptrepo)时，就可以将版本递增并添加发行说明。
+生成模块以后，每次进行更改并将其发布到你自己的 [PowerShellGet 存储库](https://powershellexplained.com/2018-03-03-Powershell-Using-a-NuGet-server-for-a-PSRepository/?utm_source=blog&utm_medium=blog&utm_content=psscriptrepo)时，就可以将版本递增并添加发行说明。
 
 创建包含一个或多个配置的复合资源模块以后，即可在 Azure 中的[可组合创作体验](/automation/compose-configurationwithcompositeresources)中使用它们，或者将它们添加到 [DSC 配置脚本](https://docs.microsoft.com/powershell/scripting/dsc/configurations/configurations)，以便生成 MOF 文件并[将 MOF 文件上传到 Azure 自动化](/automation/tutorial-configure-servers-desired-state#create-and-upload-a-configuration-to-azure-automation)。
 然后从[本地](/automation/automation-dsc-onboarding#physicalvirtual-windows-machines-on-premises-or-in-a-cloud-other-than-azure)或[在 Azure 中](/automation/automation-dsc-onboarding#azure-virtual-machines)注册服务器以拉取配置。

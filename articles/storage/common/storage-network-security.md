@@ -6,16 +6,16 @@ author: WenJason
 ms.service: storage
 ms.topic: conceptual
 origin.date: 01/21/2020
-ms.date: 02/10/2020
+ms.date: 03/30/2020
 ms.author: v-jay
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 3fff4dbce8403a5996b5114adc5b8c6482d76746
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: 7ceb3eae602679b78b30f17685822762b7d3d8b0
+ms.sourcegitcommit: 90d01d08faf8adb20083363a8e4e5aab139cd9b2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79291900"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80290433"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>配置 Azure 存储防火墙和虚拟网络
 
@@ -385,7 +385,7 @@ IP 网络规则仅适用于**公共 Internet** IP 地址。 IP 规则不允许�
 | 服务                        | 资源提供程序名称          | 目的            |
 | :----------------------------- | :------------------------------------- | :---------- |
 | Azure 数据工厂             | Microsoft.DataFactory/factories        | 用于通过 ADF 运行时访问存储帐户。 |
-| Azure 逻辑应用         | Microsoft.Logic/workflows       | 使逻辑应用能够访问存储帐户。 |
+| Azure 逻辑应用               | Microsoft.Logic/workflows              | 使逻辑应用能够访问存储帐户。 [了解详细信息](/logic-apps/create-managed-service-identity.md#authenticate-access-with-managed-identity)。 |
 | Azure SQL 数据仓库 | Microsoft.Sql                   | 用于通过 PolyBase 从特定 SQL 数据库实例导入和导出数据。 [了解详细信息](/sql-database/sql-database-vnet-service-endpoint-rule-overview)。 |
 | Azure 流分析         | Microsoft.StreamAnalytics             | 用于将流式处理作业中的数据写入 Blob 存储。 此功能目前以预览版提供。 [了解详细信息](/stream-analytics/blob-output-managed-identity)。 |
 | Azure Synapse Analytics        | Microsoft.Synapse/workspaces          | 允许从 Synapse Analytics 访问 Azure 存储中的数据。 |

@@ -7,13 +7,13 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 origin.date: 02/18/2019
-ms.date: 03/09/2020
-ms.openlocfilehash: 6605091653109bf6130c7015a36056b77d7691f6
-ms.sourcegitcommit: ced17aa58e800b9e4335276a1595b8045836b256
+ms.date: 03/16/2020
+ms.openlocfilehash: aff18d2334f61dbfd93d3a89b3157c911fdb1ccf
+ms.sourcegitcommit: 1d3d8dfdaf6281f06640cbee7124a1e8bf102c50
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77590270"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80243963"
 ---
 # <a name="azure-data-explorer-data-ingestion"></a>Azure 数据资源管理器数据引入
 
@@ -141,6 +141,11 @@ Kusto 提供可与以下项一起用于引入和查询数据的客户端 SDK：
 
 > [!div class="nextstepaction"]
 > [将数据从事件中心引入到 Azure 数据资源管理器](ingest-data-event-hub.md)
+
+<!--
+> [!div class="nextstepaction"]
+> [Ingest data using Event Grid subscription into Azure Data Explorer](ingest-data-event-grid.md)
+-->
 
 > [!div class="nextstepaction"]
 > [将数据从 Kafka 引入到 Azure 数据资源管理器](ingest-data-kafka.md)

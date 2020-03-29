@@ -6,15 +6,15 @@ author: rockboyfor
 ms.service: virtual-wan
 ms.topic: include
 origin.date: 10/17/2019
-ms.date: 02/24/2020
+ms.date: 03/30/2020
 ms.author: v-yeche
 ms.custom: include file
-ms.openlocfilehash: 7efa0c6539e46a91428a936c2fc87076834d7ee1
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.openlocfilehash: 144d9e991b62adcb36ebe842378d8205aa3165ec
+ms.sourcegitcommit: 4810b75d1e1db78d9747e99735468a6ab861be2d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78155084"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80291274"
 ---
 ### <a name="what-is-the-difference-between-an-azure-virtual-network-gateway-vpn-gateway-and-an-azure-virtual-wan-vpn-gateway"></a>Azure 虚拟网络网关（VPN 网关）和 Azure 虚拟 WAN VPN 网关之间有什么区别？
 

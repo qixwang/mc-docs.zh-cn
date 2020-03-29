@@ -8,7 +8,7 @@ ms.author: v-tawe
 ms.service: cognitive-search
 ms.topic: conceptual
 origin.date: 02/10/2020
-ms.date: 03/02/2020
+ms.date: 03/16/2020
 translation.priority.mt:
 - de-de
 - es-es
@@ -20,12 +20,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: e1fb407e47d66c24d233c378ab0d63150a1e64cb
-ms.sourcegitcommit: 094c057878de233180ff3b3a3e3c19bc11c81776
+ms.openlocfilehash: ff81aa06bc46b496d823e8b8dda491c731cc8906
+ms.sourcegitcommit: 1d3d8dfdaf6281f06640cbee7124a1e8bf102c50
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77501436"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80243715"
 ---
 # <a name="simple-query-syntax-in-azure-cognitive-search"></a>Azure 认知搜索中的简单查询语法
 

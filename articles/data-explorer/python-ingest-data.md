@@ -7,13 +7,13 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 origin.date: 06/03/2019
-ms.date: 03/23/2020
-ms.openlocfilehash: d431c7735069d55862152c3039c8cbec3932a6d3
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.date: 03/16/2020
+ms.openlocfilehash: 8bf2bfa4dada02a01463ee55cb2ad4e9211f2eb8
+ms.sourcegitcommit: 1d3d8dfdaf6281f06640cbee7124a1e8bf102c50
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79292351"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80243951"
 ---
 # <a name="ingest-data-using-the-azure-data-explorer-python-library"></a>使用 Azure 数据资源管理器 Python 库引入数据
 

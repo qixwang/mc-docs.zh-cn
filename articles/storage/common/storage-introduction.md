@@ -6,15 +6,15 @@ author: WenJason
 ms.service: storage
 ms.topic: conceptual
 origin.date: 01/16/2020
-ms.date: 03/09/2020
+ms.date: 03/30/2020
 ms.author: v-jay
 ms.subservice: common
-ms.openlocfilehash: 4f97fdd8f96180d7d39075b08417e0058adece7e
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: 7883728e800c5f8c69253c9747177d2a72db06ca
+ms.sourcegitcommit: 90d01d08faf8adb20083363a8e4e5aab139cd9b2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79291486"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80290377"
 ---
 # <a name="introduction-to-azure-storage"></a>Azure 存储简介
 
@@ -141,7 +141,7 @@ Azure 存储资源可以通过任何发出 HTTP/HTTPS 请求的语言来进行�
 - [Azure 存储 REST API](https://docs.microsoft.com/rest/api/storageservices/)
 - [适用于 .NET 的 Azure 存储客户端库](/dotnet/api/overview/storage)
 - [适用于 Java/Android 的 Azure 存储客户端库](https://docs.microsoft.com/java/api/overview/azure/storage)
-- [适用于 Node.js 的 Azure 存储客户端库](https://docs.microsoft.com/javascript/api/overview/azure/storage)
+- [适用于 Node.js 的 Azure 存储客户端库](https://docs.microsoft.com/javascript/api/overview/azure/storage-overview)
 - [适用于 Python 的 Azure 存储客户端库](https://github.com/Azure/azure-storage-python)
 - [适用于 PHP 的 Azure 存储客户端库](https://github.com/Azure/azure-storage-php)
 - [适用于 Ruby 的 Azure 存储客户端库](https://github.com/Azure/azure-storage-ruby)

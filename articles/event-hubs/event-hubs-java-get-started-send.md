@@ -7,14 +7,14 @@ ms.service: event-hubs
 ms.workload: core
 ms.topic: quickstart
 origin.date: 02/11/2020
-ms.date: 03/09/2020
+ms.date: 03/16/2020
 ms.author: v-tawe
-ms.openlocfilehash: 2f9494f5e2f9bae24920187c7dd49d10199266a1
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.openlocfilehash: 1481b74492db81c49bb47b1312fafa45a1256ed0
+ms.sourcegitcommit: 1d3d8dfdaf6281f06640cbee7124a1e8bf102c50
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78154736"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80243926"
 ---
 # <a name="use-java-to-send-events-to-or-receive-events-from-azure-event-hubs-azure-eventhubs"></a>使用 Java 向/从 Azure 事件中心 (azure-eventhubs) 发送/接收事件
 

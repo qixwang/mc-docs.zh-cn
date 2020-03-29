@@ -9,18 +9,20 @@ ms.service: cognitive-search
 ms.topic: conceptual
 origin.date: 02/14/2020
 ms.date: 03/16/2020
-ms.openlocfilehash: 7b51578b50cc48157027e5c1553a436de4620acd
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.openlocfilehash: 3b6c2ad51432f06038217731f1e09c3eeca084eb
+ms.sourcegitcommit: 1d3d8dfdaf6281f06640cbee7124a1e8bf102c50
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78850539"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80243713"
 ---
 # <a name="adjust-capacity-in-azure-cognitive-search"></a>在 Azure 认知搜索中调整容量
 
 在[预配搜索服务](search-create-service-portal.md)和锁定特定的定价层之前，请花几分钟时间了解服务中的副本和分区的角色，以及如何调整服务来适应资源需求的高峰和低谷。
 
 容量是[所选层](search-sku-tier.md)（层确定硬件特征）以及预期工作负荷所需的副本和分区组合的一个功能因素。 增加或减少容量所需的时间为 15 分钟到几个小时，具体取决于调整的层和大小。 
+
+修改副本和分区的分配时，建议使用 Azure 门户。 该门户针对允许的组合强制实施限制，使其低于层的上限。 但是，如果需要使用基于脚本或基于代码的预配方法，[Azure PowerShell](search-manage-powershell.md) 或[管理 REST API](https://docs.microsoft.com/rest/api/searchmanagement/services) 是替代的解决方案。
 
 ## <a name="terminology-replicas-and-partitions"></a>术语：副本和分区
 
@@ -33,7 +35,7 @@ ms.locfileid: "78850539"
 
 最初为服务分配了由一个分区和一个副本组成的最低级别的资源。 
 
-单个服务必须具有足够的资源才能处理所有工作负荷（索引和查询）。 没有任何工作负荷在后台运行。 可将索引编制安排在查询请求在性质上不频繁的时候，但如果不这样做，服务也不会排定任务的优先级。 此外，在内部更新服务或节点时，一定程度的冗余也会销蚀查询性能。
+单个服务必须具有足够的资源才能处理所有工作负荷（索引和查询）。 没有任何工作负荷在后台运行。 如果查询请求在性质上不频繁，则可以计划索引编制，但如果不这样做，服务也不会排定任务的优先级。 此外，在内部更新服务或节点时，一定程度的冗余也会销蚀查询性能。
 
 根据惯例，搜索应用程序所需的副本数往往多过分区数，尤其是在服务操作偏向于查询工作负荷的情况下。 [高可用性](#HA)部分将解释原因。
 
@@ -85,9 +87,9 @@ ms.locfileid: "78850539"
 | **2 个副本** |2 SU |4 SU |6 SU |8 SU |12 SU |24 SU |
 | **3 个副本** |3 SU |6 SU |9 SU |12 SU |18 SU |36 个 SU |
 | **4 个副本** |4 SU |8 SU |12 SU |16 SU |24 SU |不适用 |
-| **5 副本** |5 SU |10 SU |15 SU |20 SU |30 SU |不适用 |
-| **6 个副本** |6 SU |12 SU |18 SU |24 SU |36 个 SU |不适用 |
-| **12 副本** |12 SU |24 SU |36 个 SU |不适用 |不适用 |不适用 |
+| **5 副本** |5 SU |10 SU |15 SU |20 SU |30 SU |空值 |
+| **6 个副本** |6 SU |12 SU |18 SU |24 SU |36 个 SU |空值 |
+| **12 副本** |12 SU |24 SU |36 个 SU |空值 |空值 |空值 |
 
 Azure 网站上详细说明了 SU、定价和容量。 有关详细信息，请参阅 [Pricing Details](https://www.azure.cn/pricing/details/search/)（定价详细信息）。
 

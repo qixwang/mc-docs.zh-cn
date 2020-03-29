@@ -8,12 +8,12 @@ ms.topic: article
 origin.date: 06/25/2019
 md.date: 03/23/2020
 ms.author: v-tawe
-ms.openlocfilehash: b87789f64634ffb59253421bd2ea78e51d190709
-ms.sourcegitcommit: e94ed1c9eff4e88be2ca389909e60b14cc0d92f8
+ms.openlocfilehash: f1d3c188dbef87b289063a6b858cba0f4bd803f5
+ms.sourcegitcommit: b2f2bb08ab1b5ccb3c596d84b3b6ddca5bba3903
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79084531"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80151744"
 ---
 # <a name="add-push-notifications-to-your-xamarinforms-app"></a>向 Xamarin.Forms 应用添加推送通知
 
@@ -29,7 +29,7 @@ ms.locfileid: "79084531"
 
 对于 iOS，用户需要 [Apple Developer Program 会员资格](https://developer.apple.com/programs/ios/) 和物理 iOS 设备。 [iOS 模拟器不支持推送通知](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/iOS_Simulator_Guide/TestingontheiOSSimulator.html)。
 
-## <a name="configure-hub"></a>配置通知中心
+## <a name="configure-a-notification-hub"></a><a name="configure-hub"></a>配置通知中心
 
 [!INCLUDE [app-service-mobile-configure-notification-hub](../../includes/app-service-mobile-configure-notification-hub.md)]
 
@@ -210,7 +210,8 @@ ms.locfileid: "79084531"
 
 深入了解推送通知：
 
-
+* [从 Azure 移动应用发送推送通知](https://developer.xamarin.com/guides/xamarin-forms/cloud-services/push-notifications/azure/)
+* [使用 Firebase Cloud Messaging 发送远程通知](https://developer.xamarin.com/guides/android/data-and-cloud-services/google-messaging/remote-notifications-with-fcm/)
 * [诊断推送通知问题](../notification-hubs/notification-hubs-push-notification-fixer.md)  
   有多种原因可能导致通知被丢弃或最终未到达设备。 本主题演示如何分析和确定推送通知失败的根本原因。
 

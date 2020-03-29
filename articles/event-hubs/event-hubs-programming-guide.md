@@ -8,20 +8,20 @@ ms.service: event-hubs
 ms.custom: seodec18
 ms.topic: article
 origin.date: 01/15/2020
-ms.date: 02/17/2020
+ms.date: 03/16/2020
 ms.author: v-tawe
-ms.openlocfilehash: a0c40d88ac02b625cdd7188cde372d8767e4a7cf
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: 26713d717dcb34e3a8693c72e28ba2f08f24c806
+ms.sourcegitcommit: 1d3d8dfdaf6281f06640cbee7124a1e8bf102c50
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79291806"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80243922"
 ---
 # <a name="net-programming-guide-for-azure-event-hubs-legacy-microsoftazureeventhubs-package"></a>Azure 事件中心的 .NET 编程指南（旧版 Microsoft.Azure.EventHubs 包）
 本文介绍使用 Azure 事件中心编写代码时的一些常见情况。 内容假设你对事件中心已有初步的了解。 有关事件中心的概念概述，请参阅 [事件中心概述](event-hubs-what-is-event-hubs.md)。
 
 > [!WARNING]
-> 本指南适用于旧 **Microsoft.Azure.EventHubs** 包。 建议[迁移](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/MIGRATIONGUIDE.md)代码以使用最新 [Azure.Messaging.EventHubs](get-started-dotnet-standard-send-v2.md) 包。  
+> 本指南适用于旧 **Microsoft.Azure.EventHubs** 包。 建议[迁移](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/MigrationGuide.md)代码以使用最新 [Azure.Messaging.EventHubs](get-started-dotnet-standard-send-v2.md) 包。  
 
 
 ## <a name="event-publishers"></a>事件发布者

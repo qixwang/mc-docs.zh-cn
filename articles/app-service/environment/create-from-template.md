@@ -8,12 +8,12 @@ origin.date: 06/13/2017
 ms.date: 03/19/2020
 ms.author: v-tawe
 ms.custom: seodec18
-ms.openlocfilehash: b7ec7926deef4869258dc33606e55c977dc572f7
-ms.sourcegitcommit: e500354e2fd8b7ac3dddfae0c825cc543080f476
+ms.openlocfilehash: c8984c0f04e9d0010de6dfb2721c20eede074371
+ms.sourcegitcommit: 303a16c7117b6f3495ef0493b4ae8ccb67d7dbba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2020
-ms.locfileid: "79546969"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80342362"
 ---
 # <a name="create-an-ase-by-using-an-azure-resource-manager-template"></a>使用 Azure 资源管理器模板创建 ASE
 
@@ -23,7 +23,7 @@ ms.locfileid: "79546969"
 
 可通过能访问 Internet 的终结点或 Azure 虚拟网络 (VNet) 内部地址上的终结点创建 Azure 应用服务环境 (ASE)。 使用内部终结点创建时，该终结点由被称为内部负载均衡器 (ILB) 的 Azure 组件提供。 内部 IP 地址上的 ASE 被称为 ILB ASE。 具有公共终结点的 ASE 被称为外部 ASE。 
 
-可使用 Azure 门户或 Azure 资源管理器模板创建 ASE。 本文介绍使用资源管理器模板创建外部 ESE 或 ILB ASE 所需的步骤和语法。 若要了解如何在 Azure 门户中创建 ASE，请参阅[生成外部 ASE][MakeExternalASE] 或[生成 ILB ASE][MakeILBASE]。
+可使用 Azure 门户或 Azure 资源管理器模板创建 ASE。 本文介绍使用资源管理器模板创建外部 ESE 或 ILB ASE 所需的步骤和语法。 要了解如何在 Azure 门户中创建 ASE，请参阅[创建外部 ASE][MakeExternalASE] 或[创建 ILB ASE][MakeILBASE]。
 
 在 Azure 门户中创建 ASE 时，可同时创建自己的 VNet 或选择要部署到的预先存在的 VNet。 基于模板创建 ASE 时，必须首先具有： 
 
@@ -45,7 +45,7 @@ ms.locfileid: "79546969"
 ## <a name="create-the-ase"></a>创建 ASE
 有关用于创建 ASE 的资源管理器模板及其关联的参数文件，可参阅 GitHub 上的[示例][quickstartasev2create]。
 
-若要生成 ILB ASE，请使用这些资源管理器模板[示例][quickstartilbasecreate]。 它们适用于该用例。 azuredeploy.parameters.json 文件中的大部分参数常用于创建 ILB ASE 和外部 ASE。  创建 ILB ASE 时，以下列表会调出特殊注释的参数或唯一的参数：
+要创建 ILB ASE，请使用这些资源管理器模板[示例][quickstartilbasecreate]。 它们适用于该用例。 azuredeploy.parameters.json 文件中的大部分参数常用于创建 ILB ASE 和外部 ASE。  创建 ILB ASE 时，以下列表会调出特殊注释的参数或唯一的参数：
 
 * internalLoadBalancingMode  ：此属性多数情况下设置为 3，这表示端口 80/443 上的 HTTP/HTTPS 流量以及 ASE 上的 FTP 服务所侦听的控制/数据通道端口将绑定到 ILB 分配的虚拟网络内部地址。 如果此属性设置为 2，则仅将与 FTP 服务相关的端口（包括控制和数据信道）绑定至 ILB 地址。 HTTP/HTTPS 流量保留在公共 VIP 中。
 * dnsSuffix  ：此参数定义要分配给 ASE 的默认根域。 在 Azure 应用服务的公共变体中，所有 Web 应用的默认根域均为 .chinacloudsites.cn*。 由于 ILB ASE 位于客户虚拟网络的内部，因此不适合使用公共服务的默认根域。 而应当具有适合在公司的内部虚拟网络中使用的默认根域。 例如，Contoso Corporation 可能会将 internal-contoso.com 的默认根域用于只能在 Contoso 虚拟网络内解析和访问的应用。  
@@ -81,7 +81,7 @@ SSL 证书必须与 ASE 关联，作为用于建立应用的 SSL 连接的“默
 * 将 .pfx 文件转换为 base64 编码的字符串。
 * 将 base64 编码的字符串保存到单独的文件。 
 
-此 base64 编码的 PowerShell 代码改写自 [PowerShell 脚本博客][examplebase64encoding]：
+base64 编码的 PowerShell 代码改写自 [PowerShell 脚本博客][examplebase64encoding]：
 
 ```powershell
 $certificate = New-SelfSignedCertificate -certstorelocation cert:\localmachine\my -dnsname "*.internal-contoso.com","*.scm.internal-contoso.com"
@@ -153,8 +153,27 @@ New-AzResourceGroupDeployment -Name "CHANGEME" -ResourceGroupName "YOUR-RG-NAME-
 但是，就像公共多租户服务上运行的应用一样，开发者可为单个应用配置自定义主机名。 还可为单个应用配置唯一的 SNI SSL 证书绑定。
 
 <!-- ## App Service Environment v1 ## -->
-
-<!--Links-->
 <!-- [ConfigureSSL]: ../web-sites-purchase-ssl-web-site.md -->
 <!-- [Kudu]: https://azure.microsoft.com/resources/videos/super-secret-kudu-debug-console-for-azure-web-sites/ -->
-[quickstartilbasecreate]: https://azure.microsoft.com/resources/templates/201-web-app-asev2-ilb-create/ [quickstartasev2create]: https://azure.microsoft.com/resources/templates/201-web-app-asev2-create/ [quickstartconfiguressl]: https://azure.microsoft.com/resources/templates/201-web-app-ase-ilb-configure-default-ssl/ [quickstartwebapponasev2create]: https://azure.microsoft.com/resources/templates/201-web-app-asp-app-on-asev2-create/ [examplebase64encoding]: https://powershellscripts.blogspot.com/2007/02/base64-encode-file.html [configuringDefaultSSLCertificate]: https://azure.microsoft.com/resources/templates/201-web-app-ase-ilb-configure-default-ssl/ [Intro]: ./intro.md [MakeExternalASE]: ./create-external-ase.md [MakeASEfromTemplate]: ./create-from-template.md [MakeILBASE]: ./create-ilb-ase.md [ASENetwork]: ./network-info.md [UsingASE]: ./using-an-ase.md [UDRs]: ../../virtual-network/virtual-networks-udr-overview.md [NSGs]: ../../virtual-network/security-overview.md [mobileapps]: ../../app-service-mobile/app-service-mobile-value-prop.md [Functions]: ../../azure-functions/index.yml [Pricing]: https://www.azure.cn/pricing/details/app-service/ [ARMOverview]: ../../azure-resource-manager/management/overview.md [ASEWAF]: app-service-app-service-environment-web-application-firewall.md [AppGW]: ../../application-gateway/application-gateway-web-application-firewall-overview.md
+
+<!--Links-->
+[quickstartilbasecreate]: https://azure.microsoft.com/resources/templates/201-web-app-asev2-ilb-create/
+[quickstartasev2create]: https://azure.microsoft.com/resources/templates/201-web-app-asev2-create/
+[quickstartconfiguressl]: https://azure.microsoft.com/resources/templates/201-web-app-ase-ilb-configure-default-ssl/
+[quickstartwebapponasev2create]: https://azure.microsoft.com/resources/templates/201-web-app-asp-app-on-asev2-create/
+[examplebase64encoding]: https://powershellscripts.blogspot.com/2007/02/base64-encode-file.html 
+[configuringDefaultSSLCertificate]: https://azure.microsoft.com/resources/templates/201-web-app-ase-ilb-configure-default-ssl/
+[Intro]: ./intro.md
+[MakeExternalASE]: ./create-external-ase.md
+[MakeASEfromTemplate]: ./create-from-template.md
+[MakeILBASE]: ./create-ilb-ase.md
+[ASENetwork]: ./network-info.md
+[UsingASE]: ./using-an-ase.md
+[UDRs]: ../../virtual-network/virtual-networks-udr-overview.md
+[NSGs]: ../../virtual-network/security-overview.md
+[mobileapps]: ../../app-service-mobile/app-service-mobile-value-prop.md
+[Functions]: ../../azure-functions/index.yml
+[Pricing]: https://www.azure.cn/pricing/details/app-service/
+[ARMOverview]: ../../azure-resource-manager/management/overview.md
+[ASEWAF]: app-service-app-service-environment-web-application-firewall.md
+[AppGW]: ../../application-gateway/application-gateway-web-application-firewall-overview.md

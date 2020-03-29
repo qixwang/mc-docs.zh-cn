@@ -5,17 +5,17 @@ author: kgremban
 manager: philmea
 ms.author: v-tawe
 origin.date: 11/06/2019
-ms.date: 03/02/2020
+ms.date: 03/16/2020
 ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: face5b7b4af1de3a8266d3f493115e03edcc6d9d
-ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
+ms.openlocfilehash: e3c005fb8dabe5342eb7949f65b31ca31c449da1
+ms.sourcegitcommit: 1d3d8dfdaf6281f06640cbee7124a1e8bf102c50
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77494564"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80243890"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-virtual-windows-device"></a>快速入门：将第一个 IoT Edge 模块部署到虚拟 Windows 设备
 
@@ -34,7 +34,7 @@ ms.locfileid: "77494564"
 
 如果没有可用的 Azure 订阅，可以在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial)。
 
-
+<!-- [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)] -->
 
 你将使用 Azure CLI 完成本快速入门中的许多步骤。 Azure IoT 具有启用附加功能的扩展。
 
@@ -44,7 +44,9 @@ ms.locfileid: "77494564"
    az extension add --name azure-cli-iot-ext
    ```
 
-## <a name="prerequisites"></a>必备条件
+[!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
+
+## <a name="prerequisites"></a>先决条件
 
 云资源：
 

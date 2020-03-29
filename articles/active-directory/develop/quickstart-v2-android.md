@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: quickstart
 ms.workload: identity
-ms.date: 03/10/2020
+ms.date: 03/20/2020
 ms.author: v-junlch
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:Android
-ms.openlocfilehash: f490efb182e78ee6a1293f988f44009e9869713a
-ms.sourcegitcommit: 4ba6d7c8bed5398f37eb37cf5e2acafcdcc28791
+ms.openlocfilehash: 49e18eb51c09029702fda8f2a756206e71bbf954
+ms.sourcegitcommit: 6568c59433d7e80ab06e9fe76d4791f761ed6775
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2020
-ms.locfileid: "79133829"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80243146"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-android-app"></a>快速入门：从 Android 应用登录用户并调用 Microsoft Graph API
 
@@ -46,7 +46,7 @@ ms.locfileid: "79133829"
 > [!div class="sxs-lookup" renderon="portal"]
 > 使用 Android Studio 运行项目。
 > [!div renderon="portal" id="autoupdate" class="nextstepaction"]
-> [下载代码示例]()
+> [下载代码示例](https://github.com/Azure-Samples/ms-identity-android-java/archive/master.zip)
 >
 > [!div class="sxs-lookup" renderon="portal"]
 > ### <a name="step-3-your-app-is-configured-and-ready-to-run"></a>步骤 3：应用已配置并可以运行

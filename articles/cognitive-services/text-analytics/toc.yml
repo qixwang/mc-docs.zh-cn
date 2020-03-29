@@ -88,7 +88,7 @@
     - name: 定价
       href: 'https://www.azure.cn/pricing/details/cognitive-services/'
     - name: 区域可用性
-      href: 'https://azure.microsoft.com/global-infrastructure/services/'
+      href: 'https://azure.microsoft.com/global-infrastructure/services/?products=all&regions=china-non-regional,china-north,china-north-2,china-east,china-east-2'
     - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/text-analytics-api'
     - name: 试试看！

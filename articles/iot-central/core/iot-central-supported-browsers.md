@@ -2,19 +2,18 @@
 title: Azure IoT Central 支持的浏览器 | Microsoft Docs
 description: 可以跨现代台式计算机、平板电脑和浏览器访问 Azure IoT Central。 本文概述了支持的浏览器的列表。
 author: lmasieri
-ms.author: v-yiso
-origin.date: 04/24/2019
-ms.date: 12/16/2019
+ms.author: lmasieri
+ms.date: 04/24/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 13c7e762d64789eeb742d08c22c8e6fc2260d19b
-ms.sourcegitcommit: 6ffa4d50cee80c7c0944e215ca917a248f2a4bcd
+ms.openlocfilehash: 9ea89ccf5937983728b9f78ca1af09518e5d8f2f
+ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74883805"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80343137"
 ---
 # <a name="supported-browsers-for-azure-iot-central"></a>Azure IoT Central 支持的浏览器
 

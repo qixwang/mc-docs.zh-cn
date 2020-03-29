@@ -12,14 +12,16 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
 ms.date: 03/28/2017
-ms.openlocfilehash: 489b3ae54ae80a89399f12a9b889dd5c6ff3c407
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+ms.openlocfilehash: a3f425a1522624a275da80add7b917a8d05a0433
+ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75598563"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80343318"
 ---
 # <a name="deploy-azure-machine-learning-studio-classic-web-services-that-use-data-import-and-data-export-modules"></a>部署使用数据导入和数据导出模块的 Azure 机器学习工作室（经典）Web 服务
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 创建预测性实验时，通常添加 Web 服务输入和输出。 部署实验时，使用者可通过输入和输出从 Web 服务发送和接收数据。 对于某些应用程序，使用者的数据可能从数据源提供或已经驻留在外部数据源（如 Azure Blob 存储）中。 在这些情况下，它们不需要使用 Web 服务输入和输出读取和写入数据。 它们可以改为使用批处理执行服务 (BES)，使用导入数据模块从数据源读取数据，使用导出数据模块将评分结果写入不同的数据位置。
 
@@ -100,7 +102,7 @@ ms.locfileid: "75598563"
 2. 当运行已完成时，单击“部署 Web 服务”  ，并选择“部署 Web 服务 [经典]”  。
 3. 在 Web 服务仪表板上，找到 API 密钥。 复制并保存它以供以后使用。
 4. 在“默认终结点”  表中，单击“批处理执行”  链接打开 API 帮助页。
-5. 在 Visual Studio 中，创建 C# 控制台应用程序：“新建” > “项目” > “Visual C#” > “Windows 经典桌面” > “控制台应用 (.NET Framework)”      。
+5. 在 Visual Studio 中，创建 C# 控制台应用程序：“新建” > “项目” > “Visual C#” > “Windows 经典桌面” > “控制台应用(.NET Framework)”      。
 6. 在 API 帮助页上，找到页面底部的“示例代码”  部分。
 7. 将 C# 示例代码复制并粘贴到 Program.cs 文件中，并删除对 blob 存储的所有引用。
 8. 使用之前保存的 API 密钥更新 *apiKey* 变量的值。
@@ -129,7 +131,7 @@ ms.locfileid: "75598563"
 3. 在“部署实验”页上，输入 Web 服务的名称并选择定价计划，并单击“部署”  。
 4. 在“快速启动”  页上，单击“使用”  。
 5. 在“示例代码”  部分中，单击“批处理”  。
-6. 在 Visual Studio 中，创建 C# 控制台应用程序：“新建” > “项目” > “Visual C#” > “Windows 经典桌面” > “控制台应用 (.NET Framework)”      。
+6. 在 Visual Studio 中，创建 C# 控制台应用程序：“新建” > “项目” > “Visual C#” > “Windows 经典桌面” > “控制台应用(.NET Framework)”      。
 7. 将 C# 示例代码复制并粘贴到 Program.cs 文件中。
 8. 使用位于“基本使用信息”  部分中的**主键**替换 *apiKey* 变量的值。
 9. 找到 *scoreRequest* 声明并更新传递到*导入数据*和*导出数据*模块的值。 在此示例中，将使用原始查询，但定义新的表名。

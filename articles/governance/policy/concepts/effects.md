@@ -3,14 +3,14 @@ title: 了解效果的工作原理
 description: Azure Policy 定义具有各种效果，可确定管理和报告合规性的方式。
 ms.author: v-tawe
 origin.date: 11/04/2019
-ms.date: 03/23/2020
+ms.date: 03/16/2020
 ms.topic: conceptual
-ms.openlocfilehash: 62402aa93701ffd630c3333b0e5475210eb02ee0
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: 786b882352c7fb98192b3a6eb3c29bcfe0e8d0b9
+ms.sourcegitcommit: 1d3d8dfdaf6281f06640cbee7124a1e8bf102c50
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79293182"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80243917"
 ---
 # <a name="understand-azure-policy-effects"></a>了解 Azure Policy 效果
 

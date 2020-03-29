@@ -9,14 +9,16 @@ ms.topic: conceptual
 author: peterclu
 ms.author: amlstudiodocs
 ms.date: 01/18/2019
-ms.openlocfilehash: 1b06da729e24bc0b62c7dffc512cb40facdef550
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+ms.openlocfilehash: f37aacc00ad6cc89d956cdad28880533031494a2
+ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75598311"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80343349"
 ---
 # <a name="get-support-and-training-for-azure-machine-learning-studio-classic"></a>获取 Azure 机器学习工作室（经典）的支持和培训
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 本文介绍如何了解有关 Azure 机器学习工作室（经典）的详细信息，以及如何获取相关问题的支持。
 

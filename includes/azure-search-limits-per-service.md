@@ -6,19 +6,19 @@ author: HeidiSteen
 ms.service: search
 ms.topic: include
 origin.date: 05/06/2019
-ms.date: 09/30/2019
+ms.date: 03/16/2020
 ms.author: v-tawe
 ms.custom: include file
-ms.openlocfilehash: 0bb7b7c3f674960a79a4579f9625becbc9de5210
-ms.sourcegitcommit: c72fba1cacef1444eb12e828161ad103da338bb1
+ms.openlocfilehash: e237dd345ca03c4e39837db7bb06fc0c04ba68f4
+ms.sourcegitcommit: 1d3d8dfdaf6281f06640cbee7124a1e8bf102c50
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71696146"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80272903"
 ---
 存储受磁盘空间限制，或者受索引、文档或其他高级资源的*最大数目*的硬性限制，具体取决于哪一个限制先实施。 下表描述了存储限制。 有关索引、文档和其他对象的最大限制，请参阅[按资源限制](../articles/search/search-limits-quotas-capacity.md#index-limits)。
 
-| Resource | 免费 | 基本<sup>1</sup> | S1 | S2 | S3 | S3&nbsp;HD<sup>2</sup> | L1 | L2 |
+| 资源 | 免费 | 基本<sup>1</sup> | S1 | S2 | S3 | S3&nbsp;HD<sup>2</sup> | L1 | L2 |
 | -------- | --- | --- | --- | --- | --- | --- | --- | --- |
 | 服务级别协议 (SLA)<sup>3</sup>  |否 |是 |是 |是 |是 |是 |是 |是 |
 | 每个分区的存储空间 |50 MB |2 GB |25 GB |100 GB |200 GB |200 GB |1 TB |2 TB |

@@ -9,16 +9,16 @@ ms.topic: overview
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: a1c50eeeb3722c5b88744d72b511a99abdf311fc
-ms.sourcegitcommit: 6ffa4d50cee80c7c0944e215ca917a248f2a4bcd
+ms.openlocfilehash: e41b310d7a7d786070fd521ecba2295be81cdeb7
+ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74883237"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80343442"
 ---
 # <a name="azure-iot-central---solar-panel-app-architecture"></a>Azure IoT Central - 太阳能板应用体系结构
 
-[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
+
 
 
 本文提供了太阳能电池板监视应用模板体系结构的概述。 下图显示了在 Azure 中使用 IoT Central 平台的太阳能电池板应用的常用体系结构。
@@ -30,7 +30,7 @@ ms.locfileid: "74883237"
 
 ## <a name="solar-panels-and-connectivity"></a>太阳能电池板和连接 
 
-太阳能板是可再生能源的重要来源之一。 根据太阳能电池板的类型和设置，可以通过网关或其他中间设备和专用系统来连接它。 可能需要构建 IoT Central 设备桥以连接无法直接连接的设备。 IoT Central 设备桥是一种开放源代码解决方案，你可以在[此处](/iot-central/core/howto-build-iotc-device-bridge)找到完整的详细信息。 
+太阳能板是可再生能源的重要来源之一。 根据太阳能电池板的类型和设置，可以使用网关或其他中间设备和专用系统来连接它。 可能需要构建 IoT Central 设备网桥以连接无法直接连接的设备。 IoT Central 设备桥是一种开放源代码解决方案，你可以在[此处](/iot-central/core/howto-build-iotc-device-bridge)找到完整的详细信息。 
 
 
 

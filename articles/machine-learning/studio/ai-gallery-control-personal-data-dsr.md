@@ -11,14 +11,16 @@ ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 05/25/2018
 ms.reviewer: jmartens, mldocs
-ms.openlocfilehash: 4241eceed40277db6b59cd772bbb31b7d20db244
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+ms.openlocfilehash: 2c26d4574b6ac791884d16ec1ce59786935ff69f
+ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75598027"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80343313"
 ---
 # <a name="view-and-delete-in-product-user-data-from-azure-ai-gallery"></a>从 Azure AI 库中查看和删除产品内用户数据
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 可以使用界面或 AI 库目录 API 从 Azure AI 库中查看和删除产品内用户数据。 本文介绍了相关实现方法。
 

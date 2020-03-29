@@ -13,12 +13,12 @@ ms.topic: article
 origin.date: 08/26/2019
 ms.date: 02/24/2020
 ms.author: apimpm
-ms.openlocfilehash: 13338d4a8a212dfd032dd0dd5953c864bf87deb8
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.openlocfilehash: c8709221922e06489efe2df1b008ad6425f748f5
+ms.sourcegitcommit: 7f8acc663bf3429b391c2c615bed0d1b2107fd7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77428633"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80290082"
 ---
 # <a name="ip-addresses-of-azure-api-management"></a>Azure API 管理的 IP 地址
 
@@ -37,7 +37,7 @@ ms.locfileid: "77428633"
 也可以使用以下 API 调用以编程方式提取 IP 地址：
 
 ```
-GET https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.ApiManagement/service/<service-name>?api-version=<api-version>
+GET https://management.chinacloudapi.cn/subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.ApiManagement/service/<service-name>?api-version=<api-version>
 ```
 
 公共 IP 地址将包含在响应中：
@@ -72,7 +72,7 @@ Azure 门户和 API 调用响应中会显示两种类型的地址：
 
 
 ```json
-GET https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.ApiManagement/service/<service-name>?api-version=<api-version>
+GET https://management.chinacloudapi.cn/subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.ApiManagement/service/<service-name>?api-version=<api-version>
 
 {
   ...

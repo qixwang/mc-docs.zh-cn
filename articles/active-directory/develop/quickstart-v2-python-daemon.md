@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: quickstart
 ms.workload: identity
-ms.date: 03/10/2020
+ms.date: 03/20/2020
 ms.author: v-junlch
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:Python
-ms.openlocfilehash: 1acad9b6d32949766ee0088f95ecfe6c8b9f01e7
-ms.sourcegitcommit: 4ba6d7c8bed5398f37eb37cf5e2acafcdcc28791
+ms.openlocfilehash: 6a84338968c61fa3ec7421ae9705aca6c3bb68e7
+ms.sourcegitcommit: 6568c59433d7e80ab06e9fe76d4791f761ed6775
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2020
-ms.locfileid: "79133824"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80243126"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-python-console-app-using-apps-identity"></a>快速入门：使用应用的标识获取令牌并从 Python 控制台应用中调用 Microsoft Graph API
 
@@ -80,7 +80,7 @@ ms.locfileid: "79133824"
 > [下载 Python 守护程序项目](https://github.com/Azure-Samples/ms-identity-python-daemon/archive/master.zip)
 
 > [!div renderon="portal" id="autoupdate" class="nextstepaction"]
-> [下载代码示例]()
+> [下载代码示例](https://github.com/Azure-Samples/ms-identity-python-daemon/archive/master.zip)
 
 > [!div class="sxs-lookup" renderon="portal"]
 > > [!NOTE]

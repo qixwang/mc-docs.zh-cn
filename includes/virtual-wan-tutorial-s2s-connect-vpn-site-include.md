@@ -6,30 +6,30 @@ author: rockboyfor
 ms.service: virtual-wan
 ms.topic: include
 origin.date: 11/04/2019
-ms.date: 03/02/2020
+ms.date: 03/30/2020
 ms.author: v-yeche
 ms.custom: include file
-ms.openlocfilehash: a2646f5ddf5d387898e34d8c05322c88d1aea390
-ms.sourcegitcommit: 69cadf1fa0ed81751c48fbce919a6bb44b1053ce
+ms.openlocfilehash: abaf38938e9a50c0d29ea97079a84987f91c4b3a
+ms.sourcegitcommit: 4810b75d1e1db78d9747e99735468a6ab861be2d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78209171"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80291297"
 ---
 1. 选择“连接 VPN 站点”来打开“连接站点”页   。
 
     ![connect](./media/virtual-wan-tutorial-connect-vpn-site-include/connect.png "连接")
 
-   完成以下字段：
+    完成以下字段：
 
-   * 输入预共享密钥。 如果未输入密钥，Azure 会自动生成一个。
-   * 选择“协议”和“IPsec 设置”。 请参阅 [默认/自定义 IPSec 详细信息] (https://docs.azure.cn/virtual-wan/virtual-wan-ipsec)
-   * 选择适合“传播默认路由”的选项  。 “启用”选项允许虚拟中心将获知的默认路由传播到此连接  。 只有当虚拟 WAN 中心由于在中心部署防火墙而获知默认路由或另一个连接的站点已启用强制隧道时，此标志才会将默认路由传播到连接。 默认路由不源自虚拟 WAN 中心。
+    * 输入预共享密钥。 如果未输入密钥，Azure 会自动生成一个。
+    * 选择“协议”和“IPsec 设置”。 请参阅 [默认/自定义 IPSec 详细信息] (https://docs.azure.cn/virtual-wan/virtual-wan-ipsec)
+    * 选择适合“传播默认路由”的选项  。 “启用”选项允许虚拟中心将获知的默认路由传播到此连接  。 只有当虚拟 WAN 中心由于在中心部署防火墙而获知默认路由或另一个连接的站点已启用强制隧道时，此标志才会将默认路由传播到连接。 默认路由不源自虚拟 WAN 中心。
 
 2. 选择“连接”  。
 3. 几分钟后，该站点将显示连接和连接状态。
 
-   ![status](./media/virtual-wan-tutorial-connect-vpn-site-include/status.png "状态")
+    ![status](./media/virtual-wan-tutorial-connect-vpn-site-include/status.png "状态")
 
     **连接状态：** 这是将 VPN 站点连接到 Azure 中心 VPN 网关的连接的 Azure 资源状态。 控制平面操作成功后，Azure VPN 网关和本地 VPN 设备将继续建立连接。
 

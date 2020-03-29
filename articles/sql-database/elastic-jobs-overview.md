@@ -11,13 +11,13 @@ author: WenJason
 ms.author: v-jay
 ms.reviewer: sstein
 origin.date: 12/18/2018
-ms.date: 03/16/2020
-ms.openlocfilehash: 5f58989a8ace4c3158e8d759dc069bb807c8eb59
-ms.sourcegitcommit: dc862610e2169c1fce6fb0ae9eb7dd7567f86a0a
+ms.date: 03/30/2020
+ms.openlocfilehash: a474cf6df2800aa2d9d5ec7ed4a717a68cace921
+ms.sourcegitcommit: 90660563b5d65731a64c099b32fb9ec0ce2c51c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79293747"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80341709"
 ---
 # <a name="create-configure-and-manage-elastic-jobs"></a>创建、配置和管理弹性作业
 
@@ -36,7 +36,7 @@ ms.locfileid: "79293747"
 
 1.  使用 [PowerShell](elastic-jobs-powershell.md) 或 [T-SQL](elastic-jobs-tsql.md#create-a-credential-for-job-execution) 在作业数据库中创建执行作业所需的凭据。
 2. 使用 [PowerShell](elastic-jobs-powershell.md) 或 [T-SQL](elastic-jobs-tsql.md#create-a-target-group-servers) 定义目标组（需对其运行作业的数据库）。
-3. 在作业将运行的每个数据库中创建作业代理凭据[（向组中的每个数据库添加用户（或角色））](sql-database-control-access.md)。 有关示例，请参阅 [PowerShell 教程](elastic-jobs-powershell.md)。
+3. 在作业将运行的每个数据库中创建作业代理凭据[（向组中的每个数据库添加用户（或角色））](sql-database-manage-logins.md)。 有关示例，请参阅 [PowerShell 教程](elastic-jobs-powershell.md)。
 4. 使用 [PowerShell](elastic-jobs-powershell.md) 或 [T-SQL](elastic-jobs-tsql.md#deploy-new-schema-to-many-databases) 创建作业。
 5. 使用 [PowerShell](elastic-jobs-powershell.md) 或 [T-SQL](elastic-jobs-tsql.md#deploy-new-schema-to-many-databases) 添加作业步骤。
 6. 使用 [PowerShell](elastic-jobs-powershell.md#run-the-job) 或 [T-SQL](elastic-jobs-tsql.md#begin-ad-hoc-execution-of-a-job) 运行作业。

@@ -5,17 +5,17 @@ author: WenJason
 ms.service: storage
 ms.author: v-jay
 origin.date: 09/17/2019
-ms.date: 01/06/2020
+ms.date: 03/30/2020
 ms.subservice: queues
 ms.topic: conceptual
 ms.reviewer: cbrooks
 ms.custom: seo-javascript-october2019
-ms.openlocfilehash: 4d9347d9a57ac3dce5abe69da74d7f3218abd5d2
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.openlocfilehash: 4199a193c7205284ef23966ce4c2e5a6e6d81008
+ms.sourcegitcommit: 90d01d08faf8adb20083363a8e4e5aab139cd9b2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75624094"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80290348"
 ---
 # <a name="how-to-use-azure-queue-storage-v21-from-python"></a>如何通过 Python 使用 Azure 队列存储 v2.1
 
@@ -42,7 +42,7 @@ ms.locfileid: "75624094"
 要通过 Python 包索引 (PyPI) 安装，请键入：
 
 ```bash
-pip install azure-storage-blob==2.1.0
+pip install azure-storage-queue==2.1.0
 ```
 
 > [!NOTE]

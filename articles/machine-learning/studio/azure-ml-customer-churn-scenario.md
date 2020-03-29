@@ -10,14 +10,17 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 12/18/2017
-ms.openlocfilehash: eee2c5850c9cc0019bb84cf68dd1e36f14c2afde
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+ms.openlocfilehash: 384d4a3c383e4f5afa43493569ad471335968eb2
+ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75598698"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80343316"
 ---
 # <a name="analyze-customer-churn-using-azure-machine-learning-studio-classic"></a>使用 Azure 机器学习工作室（经典版）分析客户流失
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
+
 ## <a name="overview"></a>概述
 本文介绍使用 Azure 机器学习工作室（经典版）生成的客户流失分析项目的参考实现。 本文讨论用于整体解决行业客户流失问题的关联通用模型。 还将衡量使用机器学习生成的模型的准确性，并对进一步开发方向进行评估。  
 

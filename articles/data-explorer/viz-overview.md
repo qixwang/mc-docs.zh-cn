@@ -8,13 +8,13 @@ ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: conceptual
 origin.date: 01/30/2020
-ms.date: 03/09/2020
-ms.openlocfilehash: 95e9d4c7930e63e87d5750a89c9b7972d08e34a6
-ms.sourcegitcommit: ced17aa58e800b9e4335276a1595b8045836b256
+ms.date: 03/16/2020
+ms.openlocfilehash: e032013ad8922f8f88972a99e1a4c5d38d873eab
+ms.sourcegitcommit: 1d3d8dfdaf6281f06640cbee7124a1e8bf102c50
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77590190"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80243944"
 ---
 # <a name="data-visualization-with-azure-data-explorer"></a>使用 Azure 数据资源管理器进行数据可视化 
 

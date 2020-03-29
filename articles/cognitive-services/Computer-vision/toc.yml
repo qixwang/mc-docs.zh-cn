@@ -176,8 +176,8 @@
     - name: 定价和限制
       href: 'https://www.azure.cn/pricing/details/cognitive-services/'
     - name: UserVoice
-      href: 'https://cognitive.uservoice.com/forums/430309-computer-vision-api'
+      href: 'https://support.azure.cn/zh-cn/support/contact/'
     - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/microsoft-cognitive'
     - name: 区域可用性
-      href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
+      href: 'https://azure.microsoft.com/global-infrastructure/services/?products=all&regions=china-non-regional,china-north,china-north-2,china-east,china-east-2'

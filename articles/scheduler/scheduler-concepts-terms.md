@@ -1,27 +1,28 @@
 ---
-title: 概念、术语和实体 - Azure 计划程序 | Microsoft Docs
+title: 概念、术语和实体
 description: 了解 Azure 计划程序的概念、术语和实体层次结构，包括作业和作业集合
 services: scheduler
 ms.service: scheduler
 ms.suite: infrastructure-services
 author: WenJason
 ms.author: v-jay
-ms.reviewer: klam
-ms.assetid: 3ef16fab-d18a-48ba-8e56-3f3e0a1bcb92
+ms.reviewer: klam, estfan
 ms.topic: conceptual
 origin.date: 08/18/2016
-ms.date: 11/04/2019
-ms.openlocfilehash: cee673fc332e1b8258a76ea2536cd280689a545f
-ms.sourcegitcommit: f9a257e95444cb64c6d68a7a1cfe7e94c5cc5b19
+ms.date: 03/30/2020
+ms.openlocfilehash: 3bb3b47ae840b07497e508214bc378b3d706f165
+ms.sourcegitcommit: 90660563b5d65731a64c099b32fb9ec0ce2c51c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2019
-ms.locfileid: "73416278"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80341698"
 ---
 # <a name="concepts-terminology-and-entities-in-azure-scheduler"></a>Azure 计划程序的概念、术语和实体
 
 > [!IMPORTANT]
-> [Azure 逻辑应用](../logic-apps/logic-apps-overview.md)将替换[即将停用](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date)的 Azure 计划程序。 若要继续使用在计划程序中设置的作业，请尽快[迁移到 Azure 逻辑应用](../scheduler/migrate-from-scheduler-to-logic-apps.md)。
+> [Azure 逻辑应用](../logic-apps/logic-apps-overview.md)将替换[即将停用](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date)的 Azure 计划程序。 若要继续使用在计划程序中设置的作业，请尽快[迁移到 Azure 逻辑应用](../scheduler/migrate-from-scheduler-to-logic-apps.md)。 
+>
+> 计划程序在 Azure 门户中不再可用，但 [REST API](https://docs.microsoft.com/rest/api/scheduler) 和 [Azure 计划程序 PowerShell cmdlet](scheduler-powershell-reference.md) 目前仍可用，以便你可以管理作业和作业集合。
 
 ## <a name="entity-hierarchy"></a>实体层次结构
 
@@ -320,11 +321,9 @@ Azure 计划程序支持多个作业类型：
 }
 ```
 
-## <a name="see-also"></a>另请参阅
+## <a name="next-steps"></a>后续步骤
 
-* [什么是 Azure 计划程序？](scheduler-intro.md)
-* [概念、术语和实体层次结构](scheduler-concepts-terms.md)
 * [构建复杂的计划和高级重复周期](scheduler-advanced-complexity.md)
-* [限制、配额、默认值和错误代码](scheduler-limits-defaults-errors.md)
 * [Azure 计划程序 REST API 参考](https://docs.microsoft.com/rest/api/scheduler)
 * [Azure 计划程序 PowerShell cmdlet 参考](scheduler-powershell-reference.md)
+* [限制、配额、默认值和错误代码](scheduler-limits-defaults-errors.md)

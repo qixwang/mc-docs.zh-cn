@@ -11,14 +11,16 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: overview
 ms.date: 10/17/2019
-ms.openlocfilehash: 9edc5a2b9887f2b16eb64b4a289177111b40a18e
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+ms.openlocfilehash: b530dbb7c0dd449228844c0cc84f380bce0412b2
+ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75598557"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80343319"
 ---
 # <a name="what-is-machine-learning-studio-classic"></a>什么是机器学习工作室（经典版）？
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 [!INCLUDE [Designer notice](../../../includes/designer-notice.md)]
 

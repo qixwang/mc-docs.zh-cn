@@ -1,23 +1,22 @@
 ---
-author: erhopf
+author: IEvangelist
 ms.service: cognitive-services
 ms.topic: include
-origin.date: 01/14/2020
-ms.date: 03/23/2020
+origin.date: 03/10/2020
+ms.date: 03/16/2020
 ms.author: v-tawe
-ms.openlocfilehash: 45f4018206bf7ccd471f0e3be8bda0b6d3a09b23
-ms.sourcegitcommit: e94ed1c9eff4e88be2ca389909e60b14cc0d92f8
+ms.openlocfilehash: 2b4da9b48a06c5c5c1ea68ed98e323f87df10e46
+ms.sourcegitcommit: b2f2bb08ab1b5ccb3c596d84b3b6ddca5bba3903
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79084631"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80151605"
 ---
 ## <a name="prerequisites"></a>先决条件
 
 > [!div class="checklist"]
 > * [创建 Azure 语音资源](../../../../get-started.md)
-> * [设置开发环境](../../../../quickstarts/setup-platform.md?tabs=jre)
-> * [创建空示例项目](../../../../quickstarts/create-project.md?tabs=jre)
+> * [设置开发环境并创建空项目](../../../../quickstarts/setup-platform.md?tabs=jre)
 
 [!INCLUDE [Audio input format](~/articles/cognitive-services/speech-service/includes/audio-input-format-chart.md)]
 

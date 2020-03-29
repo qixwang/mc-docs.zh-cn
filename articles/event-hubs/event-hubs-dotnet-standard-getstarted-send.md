@@ -12,14 +12,14 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 origin.date: 02/11/2020
-ms.date: 03/09/2020
+ms.date: 03/16/2020
 ms.author: v-tawe
-ms.openlocfilehash: 470a934568f3b83c1ffc4ac7ac708c24e4a54182
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.openlocfilehash: 38eae1f11c1f75e23e390d86907343b397253bfa
+ms.sourcegitcommit: 1d3d8dfdaf6281f06640cbee7124a1e8bf102c50
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78154760"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80243930"
 ---
 # <a name="send-events-to-or-receive-events-from-azure-event-hubs-using-net-core-microsoftazureeventhubs"></a>使用 .NET Core (Microsoft.Azure.EventHubs) 向/从 Azure 事件中心发送/接收事件
 本快速入门介绍如何使用 **Microsoft.Azure.EventHubs** .NET Core 库向/从事件中心发送/接收事件。

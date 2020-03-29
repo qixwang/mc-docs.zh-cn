@@ -1,28 +1,29 @@
 ---
-title: Azure 计划程序文档 - 教程、API 参考 | Microsoft 文档
-description: 了解如何使用计划程序计划和调用作业，例如定期应用程序操作和日常维护。 教程、API 参考和其他资源。
+title: Azure 计划程序文档
+description: 在云中创建、计划并运行自动化作业，如定期应用程序操作和例行维护
 services: scheduler
-author: WenJason
-manager: digimobile
-layout: LandingPage
-ms.assetid: ''
 ms.service: scheduler
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: landing-page
-origin.date: 01/23/2017
-ms.date: 11/12/2018
+author: WenJason
 ms.author: v-jay
-ms.openlocfilehash: 1d69365bcf145035b9f81440260645749e9c9fde
-ms.sourcegitcommit: d75065296d301f0851f93d6175a508bdd9fd7afc
+layout: LandingPage
+ms.topic: landing-page
+origin.date: 02/23/2020
+ms.date: 03/30/2020
+ms.openlocfilehash: e8ccdaa3a353b9449534e7ef3d99d732590468d7
+ms.sourcegitcommit: 90660563b5d65731a64c099b32fb9ec0ce2c51c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52648935"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80341708"
 ---
 # <a name="scheduler-documentation"></a>计划程序文档
 
-了解如何使用计划程序计划和自动调用云中的定期作业。 教程、API 参考和其他文档介绍了如何计划及监视重复性应用程序操作和例行维护等作业。
+> [!IMPORTANT]
+> [Azure 逻辑应用](../logic-apps/logic-apps-overview.md)将替代[即将停用](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date)的 Azure 计划程序。 若要继续使用在计划程序中设置的作业，请尽快[迁移到 Azure 逻辑应用](../scheduler/migrate-from-scheduler-to-logic-apps.md)。 
+>
+> 计划程序在 Azure 门户中不再可用，但 [REST API](https://docs.microsoft.com/rest/api/scheduler) 和 [Azure 计划程序 PowerShell cmdlet](scheduler-powershell-reference.md) 目前仍可用，以便你可以管理作业和作业集合。
+
+了解如何在云中创建、计划、运行、管理和更新自动化定期作业。 教程、API 参考和其他文档介绍了如何计划及监视重复性应用程序操作和例行维护等作业。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -44,7 +45,7 @@ ms.locfileid: "52648935"
         </a>
     </li>
     <li>
-        <a href="/scheduler/scheduler-get-started-portal">
+        <a href="/scheduler/migrate-from-scheduler-to-logic-apps">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -54,14 +55,13 @@ ms.locfileid: "52648935"
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Azure 计划程序入门</h3>
+                        <h3>从 Azure 计划程序迁移到 Azure 逻辑应用</h3>
                     </div>
                 </div>
             </div>
         </div>
         </a>
     </li>
-</ul>
 
 ---
 

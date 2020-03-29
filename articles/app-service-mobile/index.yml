@@ -7,16 +7,16 @@ metadata:
   ms.topic: landing-page
   ms.service: app-service-mobile
   author: georgewallace
+  ms.author: v-tawe
   manager: gwallace
   origin.date: 02/19/2020
   ms.date: 03/23/2020
-  ms.author: v-tawe
-  ms.openlocfilehash: 90ecb30b2eace51b7bdcb25623265a6a0300e3d8
-  ms.sourcegitcommit: e94ed1c9eff4e88be2ca389909e60b14cc0d92f8
+  ms.openlocfilehash: 29255599be0b5718a388795069dd33410f3755f1
+  ms.sourcegitcommit: b2f2bb08ab1b5ccb3c596d84b3b6ddca5bba3903
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 03/11/2020
-  ms.locfileid: "79084458"
+  ms.lasthandoff: 03/24/2020
+  ms.locfileid: "80151724"
 landingContent:
 - title: 概述
   linkLists:

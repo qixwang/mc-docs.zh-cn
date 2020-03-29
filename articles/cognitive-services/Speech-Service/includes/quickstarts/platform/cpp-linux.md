@@ -9,14 +9,14 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
 origin.date: 10/14/2019
-ms.date: 01/13/2020
+ms.date: 03/16/2020
 ms.author: v-tawe
-ms.openlocfilehash: ed5e7476a72933bda3e1cc4d2b586b33f7295db7
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.openlocfilehash: bea6daeb26c3facee28d94080118697507328d37
+ms.sourcegitcommit: b2f2bb08ab1b5ccb3c596d84b3b6ddca5bba3903
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75631050"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80151670"
 ---
 本指南介绍如何安装用于 Linux 的[语音 SDK](~/articles/cognitive-services/speech-service/speech-sdk.md)
 
@@ -24,7 +24,7 @@ ms.locfileid: "75631050"
 
 ## <a name="system-requirements"></a>系统要求
 
-Linux（Ubuntu 16.04、Ubuntu 18.04、Debian 9）
+Linux（Ubuntu 16.04、Ubuntu 18.04、Debian 9、RHEL 8、CentOS 8）
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -47,6 +47,17 @@ Linux（Ubuntu 16.04、Ubuntu 18.04、Debian 9）
      sudo apt-get update
      sudo apt-get install build-essential libssl1.0.2 libasound2 wget
      ```
+
+   * 在 RHEL/CentOS 8 上：
+
+     ```sh
+     sudo yum update
+     sudo yum groupinstall "Development tools"
+     sudo yum install alsa-lib openssl wget
+     ```
+
+> [!NOTE]
+> 在 RHEL/CentOS 8 上，按照[如何配置 OpenSSL for Linux](~/articles/cognitive-services/speech-service/how-to-configure-openssl-linux.md) 上的说明进行操作。
 
 ## <a name="install-speech-sdk"></a>安装语音 SDK
 

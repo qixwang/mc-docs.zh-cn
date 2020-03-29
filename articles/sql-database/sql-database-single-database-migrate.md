@@ -12,13 +12,13 @@ author: WenJason
 ms.author: v-jay
 ms.reviewer: carlrab
 origin.date: 02/11/2019
-ms.date: 02/17/2020
-ms.openlocfilehash: 6aecd1fc5f2fbb364ea178fcdb35302777b3fe96
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.date: 03/30/2020
+ms.openlocfilehash: 05b1bc70edd655237fbd6877054c3fd2f52bc37e
+ms.sourcegitcommit: 90660563b5d65731a64c099b32fb9ec0ce2c51c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79293493"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80341765"
 ---
 # <a name="sql-server-database-migration-to-azure-sql-database"></a>将 SQL Server 数据库迁移到 Azure SQL 数据库
 
@@ -63,7 +63,7 @@ ms.locfileid: "79293493"
 
 ### <a name="optimize-performance-after-the-migration-completes"></a>迁移完成后优化性能
 
-在迁移完成后[更新统计信息](https://msdn.microsoft.com/library/ms187348.aspx)并进行完全扫描。
+在迁移完成后[更新统计信息](https://docs.microsoft.com/sql/t-sql/statements/update-statistics-transact-sql)并进行完全扫描。
 
 ## <a name="method-2-use-transactional-replication"></a>方法 2：使用事务复制
 

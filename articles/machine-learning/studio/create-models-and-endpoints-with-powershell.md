@@ -10,14 +10,16 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 04/04/2017
-ms.openlocfilehash: 8b38716821d6968bf3a15f6ea5b1a0f206a1676a
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+ms.openlocfilehash: 1b3f2cf66fbc378c75954ad1e8777de99f6f8d45
+ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75599532"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80343085"
 ---
 # <a name="use-powershell-to-create-studio-classic-models-and-web-service-endpoints-from-one-experiment"></a>使用 PowerShell 从一个试验创建多个工作室（经典）模型和 Web 服务终结点
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 这是一个常见的机器学习问题：你需要创建具有相同训练工作流并使用相同算法的多个模型， 但是需要它们使用不同的训练数据集作为输入。 本文演示如何仅使用单个试验在 Azure 机器学习工作室（经典）中大规模地执行此操作。
 

@@ -8,12 +8,12 @@ ms.topic: article
 origin.date: 06/25/2019
 md.date: 03/23/2020
 ms.author: v-tawe
-ms.openlocfilehash: 52766b537f8d31448b30d29563b9fddb70bff29b
-ms.sourcegitcommit: e94ed1c9eff4e88be2ca389909e60b14cc0d92f8
+ms.openlocfilehash: 5a12fedc943bb3e46296c998b594beef1f9bba80
+ms.sourcegitcommit: b2f2bb08ab1b5ccb3c596d84b3b6ddca5bba3903
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79084523"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80151734"
 ---
 # <a name="enable-offline-sync-for-your-xamarinandroid-mobile-app"></a>为 Xamarin.Android 移动应用启用脱机同步
 
@@ -36,15 +36,13 @@ ms.locfileid: "79084523"
 2. 打开 ToDoActivity.cs 文件，并取消评论 `#define OFFLINE_SYNC_ENABLED` 定义。
 3. 在 Visual Studio 中，按 **F5** 键重新生成并运行客户端应用。 应用的工作方式与启用脱机同步之前一样。但是，本地数据库中现在填充了可以在脱机方案中使用的数据。
 
-## <a name="update-sync"></a>更新应用以与后端断开连接
+## <a name="update-the-app-to-disconnect-from-the-backend"></a><a name="update-sync"></a>更新应用以与后端断开连接
 
 本部分断开与移动应用后端的连接，以模拟脱机情况。 添加数据项时，异常处理程序会指示该应用处于脱机模式。 在此状态下，新项会添加到本地存储，并且在以连接状态运行推送时，这些新项将同步到移动应用后端。
 
 1. 在共享项目中编辑 ToDoActivity.cs。 将 **applicationURL** 更改为指向无效的 URL：
 
-    ```
-     const string applicationURL = @"https://your-service.chinacloudsites.fail";
-    ```
+         const string applicationURL = @"https://your-service.chinacloudsites.fail";
 
     还可以通过在设备上禁用 wifi 和手机网络或使用飞行模式来演示脱机行为。
 2. 按 **F5** 生成并运行应用。 请注意，在应用启动时，同步刷新将失败。
@@ -53,7 +51,7 @@ ms.locfileid: "79084523"
 5. （可选）在 Visual Studio 中，打开“服务器资源管理器”  。 导航到“Azure”  ->“SQL 数据库”  中的数据库。 右键单击数据库并选择“在 SQL Server 对象资源管理器中打开”  。 现在便可以浏览 SQL 数据库表及其内容。 验证确认后端数据库中的数据未更改。
 6. （可选）通过 Fiddler 或 Postman 之类的 REST 工具使用 `https://<your-mobile-app-backend-name>.chinacloudsites.cn/tables/TodoItem` 格式的 GET 查询，查询移动后端。
 
-## <a name="update-online-app"></a>更新应用以重新连接移动应用后端
+## <a name="update-the-app-to-reconnect-your-mobile-app-backend"></a><a name="update-online-app"></a>更新应用以重新连接移动应用后端
 
 本部分将应用重新连接到移动应用后端。 首次运行该应用程序时，`OnCreate` 事件处理程序将调用 `OnRefreshItemsSelected`。 而此方法会调用 `SyncAsync` ，将本地存储与后端数据库同步。
 
@@ -72,29 +70,26 @@ ms.locfileid: "79084523"
 
     `DefineTable` 方法与所提供类型（此例中为 `ToDoItem`）中的字段相匹配的本地存储中创建一个表。 该类型无需包括远程数据库中的所有列。 可以只存储列的子集。
 
-    ```
-    // ToDoActivity.cs
-    private async Task InitLocalStoreAsync()
-    {
-        // new code to initialize the SQLite store
-        string path = Path.Combine(System.Environment
-            .GetFolderPath(System.Environment.SpecialFolder.Personal), localDbFilename);
-
-        if (!File.Exists(path))
+        // ToDoActivity.cs
+        private async Task InitLocalStoreAsync()
         {
-            File.Create(path).Dispose();
+            // new code to initialize the SQLite store
+            string path = Path.Combine(System.Environment
+                .GetFolderPath(System.Environment.SpecialFolder.Personal), localDbFilename);
+
+            if (!File.Exists(path))
+            {
+                File.Create(path).Dispose();
+            }
+
+            var store = new MobileServiceSQLiteStore(path);
+            store.DefineTable<ToDoItem>();
+
+            // Uses the default conflict handler, which fails on conflict
+            // To use a different conflict handler, pass a parameter to InitializeAsync.
+            // For more details, see https://go.microsoft.com/fwlink/?LinkId=521416.
+            await client.SyncContext.InitializeAsync(store);
         }
-
-        var store = new MobileServiceSQLiteStore(path);
-        store.DefineTable<ToDoItem>();
-
-        // Uses the default conflict handler, which fails on conflict
-        // To use a different conflict handler, pass a parameter to InitializeAsync.
-        // For more details, see https://go.microsoft.com/fwlink/?LinkId=521416.
-        await client.SyncContext.InitializeAsync(store);
-    }
-    ```
-
 * `ToDoActivity` 的 `toDoTable` 成员属于 `IMobileServiceSyncTable` 类型而不是 `IMobileServiceTable` 类型。 IMobileServiceSyncTable 会将所有创建、读取、更新和删除 (CRUD) 表操作定向到本地存储数据库。
 
     通过调用 `IMobileServiceSyncContext.PushAsync()` 确定将更改推送到 Azure 移动应用后端的时间。 对于调用 `PushAsync` 时客户端应用修改的所有表，此同步上下文通过跟踪和推送这些表中的更改来帮助保持表关系。
@@ -103,20 +98,18 @@ ms.locfileid: "79084523"
 
     在所提供的代码中，将查询远程 `TodoItem` 表中的所有记录，但它还可以筛选记录，只需将查询 ID 和查询传递给 `PushAsync` 即可。 有关详细信息，请参阅 [Azure 移动应用中的脱机数据同步] 中的 *增量同步*部分。
 
-    ```
-    // ToDoActivity.cs
-    private async Task SyncAsync()
-    {
-        try {
-            await client.SyncContext.PushAsync();
-            await toDoTable.PullAsync("allTodoItems", toDoTable.CreateQuery()); // query ID is used for incremental sync
-        } catch (Java.Net.MalformedURLException) {
-            CreateAndShowDialog (new Exception ("There was an error creating the Mobile Service. Verify the URL"), "Error");
-        } catch (Exception e) {
-            CreateAndShowDialog (e, "Error");
+        // ToDoActivity.cs
+        private async Task SyncAsync()
+        {
+            try {
+                await client.SyncContext.PushAsync();
+                await toDoTable.PullAsync("allTodoItems", toDoTable.CreateQuery()); // query ID is used for incremental sync
+            } catch (Java.Net.MalformedURLException) {
+                CreateAndShowDialog (new Exception ("There was an error creating the Mobile Service. Verify the URL"), "Error");
+            } catch (Exception e) {
+                CreateAndShowDialog (e, "Error");
+            }
         }
-    }
-    ```
 
 ## <a name="additional-resources"></a>其他资源
 

@@ -1,23 +1,23 @@
 ### YamlMime:Hub
 title: Azure 认知服务文档
 summary: 了解如何将支持的智能算法构建到应用、网站和机器人中，以便观察、倾听、说出、理解和解释用户需求。
+brand: azure
 metadata:
   title: Azure 认知服务文档
   description: 了解如何将支持的智能算法构建到应用、网站和机器人中，以便观察、倾听、说出、理解和解释用户需求。
   ms.service: cognitive-services
   ms.topic: hub-page
-  brand: azure
   author: nitinme
   ms.author: v-tawe
   manager: nitinme
   origin.date: 01/21/2020
-  ms.date: 03/23/2020
-  ms.openlocfilehash: 6e38f3ccf39e4172a839c59891a9bfabf1d00c0b
-  ms.sourcegitcommit: e94ed1c9eff4e88be2ca389909e60b14cc0d92f8
+  ms.date: 03/16/2020
+  ms.openlocfilehash: 32d4d0bfeeb6e7865667cd94d6be0165224329fd
+  ms.sourcegitcommit: b2f2bb08ab1b5ccb3c596d84b3b6ddca5bba3903
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 03/11/2020
-  ms.locfileid: "79084394"
+  ms.lasthandoff: 03/24/2020
+  ms.locfileid: "80151495"
 highlightedContent:
   items:
   - title: 什么是认知服务？

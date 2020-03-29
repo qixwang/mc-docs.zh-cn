@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: big-data
-origin.date: 06/12/2019
-ms.date: 03/23/2020
+origin.date: 03/02/2020
+ms.date: 04/06/2020
 ms.author: v-yiso
-ms.openlocfilehash: 6a94bcf0f60f16cddb936770a69f9ba49b4566d6
-ms.sourcegitcommit: 32997a7d7585deaeb0ab7b8f928d397b18b343fa
+ms.openlocfilehash: 2595ccc6a39aed18c2b3d10ff1c0a03fde9f9ab4
+ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79295908"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80343591"
 ---
 # <a name="what-is-apache-storm-on-azure-hdinsight"></a>什么是 Azure HDInsight 上的 Apache Storm？
 
@@ -42,13 +42,9 @@ Storm on HDInsight 提供以下功能：
 
     * 支持 Trident Java 接口。 可以创建支持一次性消息处理、事务性数据存储持久性和一组常见流分析操作的 Storm 拓扑。
 
-* **动态缩放**：可以在不影响 Storm 拓扑运行的情况下添加或删除辅助角色节点。
+* **动态缩放**：可以在不影响 Storm 拓扑运行的情况下添加或删除辅助角色节点。 若要利用通过缩放操作添加的新节点，必须停用运行的拓扑，然后再将其重新激活。
 
-    * 若要利用通过缩放操作添加的新节点，必须停用运行的拓扑，然后再将其重新激活。
-
-* **使用多个 Azure 服务创建流式处理管道**：Storm on HDInsight 集成其他 Azure 服务，例如事件中心、SQL 数据库、Azure 存储、Azure Data Lake Storage。
-
-    如需集成 Azure 服务的示例解决方案，请参阅[使用 Apache Storm on HDInsight 处理事件中心的事件](https://github.com/Azure-Samples/hdinsight-java-storm-eventhub)。
+* **使用多个 Azure 服务创建流式处理管道**：Storm on HDInsight 集成其他 Azure 服务，例如事件中心、SQL 数据库、Azure 存储、Azure Data Lake Storage。 如需集成 Azure 服务的示例解决方案，请参阅[使用 Apache Storm on HDInsight 处理事件中心的事件](https://github.com/Azure-Samples/hdinsight-java-storm-eventhub)。
 
 有关在实时分析解决方案中使用 Apache Storm 的公司的列表，请参阅[使用 Apache Storm 的公司](https://storm.apache.org/Powered-By.html)。
 
@@ -80,17 +76,12 @@ Apache Storm 群集的默认配置是只能有一个 Nimbus 节点。 HDInsight 
 
 ## <a name="ease-of-use"></a>易于使用
 
-* __安全外壳 (SSH) 连接__：可以使用 SSH 通过 Internet 访问 Storm 群集的头节点。 可以使用 SSH 直接在群集上运行命令。
-
-  有关详细信息，请参阅 [将 SSH 与 HDInsight 配合使用](../hdinsight-hadoop-linux-use-ssh-unix.md)。
-
-* __Web 连接__：所有 HDInsight 群集都提供 Ambari Web UI。 可以使用 Ambari Web UI 在群集上轻松监视、配置和管理服务。 Storm 群集还提供 Storm UI。 可以使用 Storm UI，通过浏览器监视和管理 Storm 拓扑的运行。
-
-  有关详细信息，请参阅[使用 Apache Ambari Web UI 管理 HDInsight](../hdinsight-hadoop-manage-ambari.md) 和[使用 Apache Storm UI 进行监视和管理](apache-storm-deploy-monitor-topology-linux.md#monitor-and-manage-storm-ui)文档。
-
-* __Azure PowerShell 和 Azure 经典 CLI__：PowerShell 和经典 CLI 都提供命令行实用工具，可在客户端系统中使用这些工具来操作 HDInsight 和其他 Azure 服务。
-
-* __Visual Studio 集成__：针对 Visual Studio 的 Azure Data Lake 工具包含用于通过 SCP.Net Framework 创建 C# Storm 拓扑的项目模板。 Data Lake 工具还提供用于通过 Storm on HDInsight 部署、监视和管理解决方案的工具。
+|用途 |说明 |
+|---|---|
+|安全外壳 (SSH) 连接|可以使用 SSH 通过 Internet 访问 Storm 群集的头节点。 可以使用 SSH 直接在群集上运行命令。 有关详细信息，请参阅 [将 SSH 与 HDInsight 配合使用](../hdinsight-hadoop-linux-use-ssh-unix.md)。|
+|Web 连接|所有 HDInsight 群集都提供 Ambari Web UI。 可以使用 Ambari Web UI 在群集上轻松监视、配置和管理服务。 Storm 群集还提供 Storm UI。 可以使用 Storm UI，通过浏览器监视和管理 Storm 拓扑的运行。 有关详细信息，请参阅[使用 Apache Ambari Web UI 管理 HDInsight](../hdinsight-hadoop-manage-ambari.md) 和[使用 Apache Storm UI 进行监视和管理](apache-storm-deploy-monitor-topology-linux.md#monitor-and-manage-a-topology-using-the-storm-ui)文档。|
+|Azure PowerShell 和 Azure CLI|PowerShell 和 Azure CLI 都提供命令行实用工具，可在客户端系统中使用这些工具来操作 HDInsight 和其他 Azure 服务。|
+|Visual Studio 集成|针对 Visual Studio 的 Azure Data Lake 工具包含用于通过 SCP.NET Framework 创建 C# Storm 拓扑的项目模板。 Data Lake 工具还提供用于通过 Storm on HDInsight 部署、监视和管理解决方案的工具。 有关详细信息，请参阅 [Develop C# Storm topologies with the HDInsight Tools for Visual Studio](apache-storm-develop-csharp-visual-studio-topology.md)（使用用于 Visual Studio 的 HDInsight 工具开发 C# Storm 拓扑）。|
 
   有关详细信息，请参阅 [Develop C# Storm topologies with the HDInsight Tools for Visual Studio](apache-storm-develop-csharp-visual-studio-topology.md)（使用用于 Visual Studio 的 HDInsight 工具开发 C# Storm 拓扑）。
 
@@ -98,7 +89,7 @@ Apache Storm 群集的默认配置是只能有一个 Nimbus 节点。 HDInsight 
 
 * __事件中心__：有关将事件中心与 Storm 群集配合使用的示例，请参阅以下示例：
 
-    * [使用 Apache Storm on HDInsight 从 Azure 事件中心处理事件 (Java)](https://azure.microsoft.com/resources/samples/hdinsight-java-storm-eventhub/)
+    * [使用 Apache Storm on HDInsight 从 Azure 事件中心处理事件 (Java)](https://github.com/Azure-Samples/hdinsight-java-storm-eventhub)
 
     * [使用 Apache Storm on HDInsight 从 Azure 事件中心处理事件 (C#)](apache-storm-develop-csharp-event-hub-topology.md)
 

@@ -9,12 +9,12 @@ ms.custom: hdinsightactive,hdiseo17may2017,mvc,seodec18
 ms.topic: overview
 origin.date: 02/27/2020
 ms.date: 03/23/2020
-ms.openlocfilehash: 8e0b2848ad96501942b6230635d50a1ba8a6d48c
-ms.sourcegitcommit: 32997a7d7585deaeb0ab7b8f928d397b18b343fa
+ms.openlocfilehash: 330941ac9698698dd9cb3d318a3379998d8e3e35
+ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79295965"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80343566"
 ---
 # <a name="what-is-azure-hdinsight"></a>什么是 Azure HDInsight？
 
@@ -37,7 +37,7 @@ Azure HDInsight 是 Hadoop 组件的云分发版。 可以通过 Azure HDInsight
 |功能  |说明  |
 |---------|---------|
 |云原生     |     可以使用 Azure HDInsight 在 Azure 上为 [Hadoop](./hadoop/apache-hadoop-linux-tutorial-get-started.md)、 [Spark](./spark/apache-spark-jupyter-spark-sql.md)、 [交互式查询 (LLAP)](./interactive-query/apache-interactive-query-get-started.md)、 [Kafka](./kafka/apache-kafka-get-started.md)、 [Storm](./storm/apache-storm-tutorial-get-started-linux.md)、 [HBase](./hbase/apache-hbase-tutorial-get-started-linux.md) 创建优化群集。 HDInsight 还在所有生产工作负荷上提供端到端 SLA。  |
-|低成本且可缩放     | 可以通过 HDInsight 纵向[缩放](./hdinsight-administer-use-portal-linux.md#scale-clusters) 工作负荷。 可以通过创建按需群集来降低成本，只为自己使用的资源付费。 还可以生成数据管道，使作业可操作化。 使计算和存储分离，提高性能和灵活性。 |
+|低成本且可缩放     | 可以通过 HDInsight 纵向[缩放](./hdinsight-administer-use-portal-linux.md#scale-clusters) 工作负荷。 可以通过 [创建按需群集](./hdinsight-hadoop-create-linux-clusters-adf.md) 来降低成本，只为自己使用的东西付费。 还可以生成数据管道，使作业可操作化。 使计算和存储分离，提高性能和灵活性。 |
 |既安全又合规    | HDInsight 允许通过 [Azure 虚拟网络](./hdinsight-plan-virtual-network-deployment.md)、[加密](./hdinsight-hadoop-create-linux-clusters-with-secure-transfer-storage.md)以及与 Azure Active Directory 集成来保护企业数据资产。 HDInsight 还满足最常用的行业和政府[符合性标准](https://azure.microsoft.com/overview/trusted-cloud)。        |
 |监视    | Azure HDInsight 集成 Azure Monitor 日志，可以通过单个界面来监视所有群集。        |
 |全球推出 | 提供 HDInsight 的 [区域](https://azure.microsoft.com/regions/services/) 要多于提供任何其他大数据分析产品/服务的区域。 Azure HDInsight 还在中国和德国的 Azure 政府版中提供，满足关键主权领域的企业需求。 |  
@@ -82,13 +82,12 @@ HDInsight 包括特定的群集类型和群集自定义功能，例如添加组�
 
 |群集类型 | 说明 |
 |---|---|
-|[Apache Hadoop](https://hadoop.apache.org/)|一个框架，使用 HDFS、YARN 资源管理和简单的 MapReduce 编程模型并行处理和分析批处理数据。|
-|[Apache Spark](https://spark.apache.org/)|一种开源并行处理框架，支持使用内存中处理来提升大数据分析应用程序的性能。 请参阅[什么是 HDInsight 中的 Apache Spark？](./spark/apache-spark-overview.md)|
-|[Apache HBase](https://hbase.apache.org/)|构建于 Hadoop 上的 NoSQL 数据库，用于为大量非结构化和半结构化数据（可能为数十亿行乘以数百万列）提供随机访问和高度一致性。 请参阅[什么是 HBase on HDInsight？](./hbase/apache-hbase-overview.md)|
-|[ML Services](https://docs.microsoft.com/machine-learning-server/rebranding-microsoft-r-server)|用于托管和管理并行分布式 R 进程的服务器。 它可让数据科研人员、统计人员和 R 程序员根据需要访问 HDInsight 上可缩放的分布式分析方法。 |
-|[Apache Storm](https://storm.incubator.apache.org/)|分布式实时计算系统，用于快速处理大型数据流。 Storm 以 HDInsight 中的托管群集形式提供。 请参阅 [使用 Storm 和 Hadoop 分析实时传感器数据](./storm/apache-storm-sensor-data-analysis.md)。|
-|[Apache 交互式查询](https://cwiki.apache.org/confluence/display/Hive/LLAP)|用于实现更快的交互式 Hive 查询的内存中缓存。 请参阅[在 HDInsight 中使用交互式查询](./interactive-query/apache-interactive-query-get-started.md)。|
-|[Apache Kafka](https://kafka.apache.org/)|一种开源平台，用于生成流式处理的数据管道和应用程序。 Kafka 还提供了消息队列功能，可用于发布和订阅数据流。 请参阅 [Apache Kafka on HDInsight 简介](./kafka/apache-kafka-introduction.md)。|
+|[Apache Hadoop](./hadoop/apache-hadoop-introduction.md)|一个框架，使用 HDFS、YARN 资源管理和简单的 MapReduce 编程模型并行处理和分析批处理数据。|
+|[Apache Spark](./spark/apache-spark-overview.md)|一种开源并行处理框架，支持使用内存中处理来提升大数据分析应用程序的性能。 请参阅[什么是 HDInsight 中的 Apache Spark？](./spark/apache-spark-overview.md)|
+|[Apache HBase](./hbase/apache-hbase-overview.md)|构建于 Hadoop 上的 NoSQL 数据库，用于为大量非结构化和半结构化数据（可能为数十亿行乘以数百万列）提供随机访问和高度一致性。 请参阅[什么是 HBase on HDInsight？](./hbase/apache-hbase-overview.md)|
+|[Apache Storm](./storm/apache-storm-overview.md)|分布式实时计算系统，用于快速处理大型数据流。 Storm 以 HDInsight 中的托管群集形式提供。 请参阅 [使用 Storm 和 Hadoop 分析实时传感器数据](./storm/apache-storm-overview.md)。|
+|[Apache 交互式查询](./interactive-query/apache-interactive-query-get-started.md)|用于实现更快的交互式 Hive 查询的内存中缓存。 请参阅[在 HDInsight 中使用交互式查询](./interactive-query/apache-interactive-query-get-started.md)。|
+|[Apache Kafka](./kafka/apache-kafka-introduction.md)|一种开源平台，用于生成流式处理的数据管道和应用程序。 Kafka 还提供了消息队列功能，可用于发布和订阅数据流。 请参阅 [Apache Kafka on HDInsight 简介](./kafka/apache-kafka-introduction.md)。|
 
 ## <a name="open-source-components-in-hdinsight"></a>HDInsight 中的开源组件
 

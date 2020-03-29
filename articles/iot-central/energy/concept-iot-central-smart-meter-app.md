@@ -9,16 +9,16 @@ ms.topic: overview
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: 8087fe553f8d728095a8d6d24af14df0e4840f35
-ms.sourcegitcommit: 6ffa4d50cee80c7c0944e215ca917a248f2a4bcd
+ms.openlocfilehash: 215b2d94bd0da398684ac9163c27cdeb872cfb80
+ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74883248"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80343451"
 ---
 # <a name="azure-iot-central---smart-meter-app-architecture"></a>Azure IoT Central - 智能仪表应用体系结构
 
-[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
+
 
 本文概述了监视应用模板体系结构的智能仪表。 下图显示了 Azure 中使用 IoT Central 平台的智能仪表应用的常用体系结构。
 

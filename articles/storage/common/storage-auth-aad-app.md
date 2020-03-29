@@ -7,15 +7,15 @@ author: WenJason
 ms.service: storage
 ms.topic: how-to
 origin.date: 12/04/2019
-ms.date: 01/06/2020
+ms.date: 03/30/2020
 ms.author: v-jay
 ms.subservice: common
-ms.openlocfilehash: 3a3fc696811b7bbfc4be58ae796d48c76ebea543
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: 19d3a3209138b451a7c0b8aabc0019513212a9a7
+ms.sourcegitcommit: 90d01d08faf8adb20083363a8e4e5aab139cd9b2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79291258"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80290464"
 ---
 # <a name="acquire-a-token-from-azure-ad-for-authorizing-requests-from-a-client-application"></a>从 Azure AD 获取用于从客户端应用程序授权请求的令牌
 
@@ -125,7 +125,7 @@ ms.locfileid: "79291258"
 
 #### <a name="add-references-and-using-statements"></a>添加引用和 using 语句  
 
-在 Visual Studio 中安装 Azure 存储客户端库。 在“工具”菜单中，依次选择“NuGet 包管理器”和“包管理器控制台”    。 在控制台窗口中键入以下命令，以安装适用于 .NET 的 Azure 存储客户端库中的所需包：
+在 Visual Studio 中安装 Azure 存储客户端库。 在“工具”菜单中选择“NuGet 包管理器”，然后选择“包管理器控制台”    。 在控制台窗口中键入以下命令，以安装适用于 .NET 的 Azure 存储客户端库中的所需包：
 
 ```console
 Install-Package Microsoft.Azure.Storage.Blob
@@ -203,7 +203,7 @@ public async Task<IActionResult> Blob()
 }
 ```
 
-许可是指用户进行应用程序授权，让应用程序代表自己来访问受保护资源的过程。 Microsoft 标识平台 2.0 支持增量许可，这意味着，安全主体最初可以请求极少量的一组权限，以后可按需添加权限。 当代码请求访问令牌时，请在 `scope` 参数中指定应用在任意给定时间所需的权限范围。 有关增量许可的详细信息，请参阅[为何要更新到 Microsoft 标识平台 (v2.0)？](../../active-directory/develop/azure-ad-endpoint-comparison.md#incremental-and-dynamic-consent)中的“增量许可和动态许可”部分。 
+许可是指用户进行应用程序授权，让应用程序代表自己来访问受保护资源的过程。 Microsoft 标识平台 2.0 支持增量许可，这意味着，安全主体最初可以请求极少量的一组权限，以后可按需添加权限。 当代码请求访问令牌时，请在 `scope` 参数中指定应用在任意给定时间所需的权限范围。 有关增量许可的详细信息，请参阅[为何要更新到 Microsoft 标识平台 (v2.0)？](../../active-directory/azuread-dev/azure-ad-endpoint-comparison.md#incremental-and-dynamic-consent)中的“增量许可和动态许可”部分。 
 
 以下方法将会构造用于请求增量许可的身份验证属性：
 

@@ -1,32 +1,33 @@
 ---
-title: iOS 和 macOS 入门 - Microsoft 标识平台 | Azure
-description: iOS 和 macOS (Swift) 应用程序如何使用 Microsoft 标识平台调用需要访问令牌的 API
+title: 用于 iOS 和 macOS 的 MSAL 教程 - Microsoft 标识平台 | Azure
+description: 了解 iOS 和 macOS (Swift) 应用如何使用 Microsoft 标识平台调用需要访问令牌的 API
 services: active-directory
 documentationcenter: dev-center-name
-author: tylermsft
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: tutorial
 ms.workload: identity
-origin.date: 08/30/2019
-ms.date: 11/26/2019
+ms.date: 03/23/2020
 ms.author: v-junlch
 ms.reviewer: oldalton
 ms.custom: aaddev, identityplatformtop40
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2a80a66d1bab587c94f6e6b7d43ae40d986c27d1
-ms.sourcegitcommit: 9597d4da8af58009f9cef148a027ccb7b32ed8cf
+ms.openlocfilehash: 8a79101a14191fbd40597dcf65a6ff22f4995c0f
+ms.sourcegitcommit: 6568c59433d7e80ab06e9fe76d4791f761ed6775
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2019
-ms.locfileid: "74655398"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80243088"
 ---
 # <a name="sign-in-users-and-call-the-microsoft-graph-from-an-ios-or-macos-app"></a>从 iOS 或 macOS 应用将用户登录并调用 Microsoft Graph
 
 本教程介绍如何将 iOS 或 macOS 应用与 Microsoft 标识平台集成。 应用会将用户登录，获取用于调用 Microsoft Graph API 的访问令牌，并针对 Microsoft Graph API 发出请求。  
 
 完成本指南后，该应用程序将接受任何公司或组织中使用 Azure Active Directory 的工作或学校帐户进行登录。
+
+>[!NOTE]
+> 如果你不熟悉 Microsoft 标识平台，我们建议你从[从 iOS 或 macOS 应用登录用户并调用 Microsoft Graph API](quickstart-v2-ios.md) 开始。
 
 ## <a name="how-this-tutorial-works"></a>本教程的工作原理
 

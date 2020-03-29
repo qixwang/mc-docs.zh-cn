@@ -8,12 +8,12 @@ ms.topic: article
 origin.date: 06/25/2019
 md.date: 03/23/2020
 ms.author: v-tawe
-ms.openlocfilehash: f645aedafd3b53d1c05b2d5c904afccb1d7f6d6c
-ms.sourcegitcommit: e94ed1c9eff4e88be2ca389909e60b14cc0d92f8
+ms.openlocfilehash: d58a9e087014ae04412f53d672449e0ae26ae4b9
+ms.sourcegitcommit: b2f2bb08ab1b5ccb3c596d84b3b6ddca5bba3903
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79084420"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80151740"
 ---
 # <a name="enable-offline-syncing-with-ios-mobile-apps"></a>启用 iOS 移动应用的脱机同步功能
 [!INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]
@@ -25,7 +25,7 @@ ms.locfileid: "79084420"
 
 若要了解有关脱机同步功能的详细信息，请参阅[移动应用中的脱机数据同步]。
 
-## <a name="review-sync"></a>查看客户端同步代码
+## <a name="review-the-client-sync-code"></a><a name="review-sync"></a>查看客户端同步代码
 为 [创建 iOS 应用] 教程下载的客户端项目已包含使用基于核心数据的本地数据库支持脱机同步的代码。 本节概括了教程代码中包含的内容。 有关该功能的概念性概述，请参阅[移动应用中的脱机数据同步]。
 
 使用移动应用的脱机数据同步功能，最终用户可在无法访问网络时仍能够与本地数据库进行交互。 要在应用中使用这些功能，可以初始化 `MSClient` 的同步上下文，并引用本机存储。 然后通过 **MSSyncTable** 接口引用表。
@@ -131,7 +131,7 @@ ms.locfileid: "79084420"
 
 由于每当修改数据 (Objective-C) 或启动应用（Objective-C 和 Swift）时应用就会同步，因此，应用假设用户已联机。 在后面的章节中，我们更新应用，以便用户即使在脱机时也能进行编辑。
 
-## <a name="review-core-data"></a>查看 Core Data 模型
+## <a name="review-the-core-data-model"></a><a name="review-core-data"></a>查看 Core Data 模型
 在使用核心数据脱机存储时，必须在数据模型中定义特定的表和字段。 示例应用已包含具有正确格式的数据模型。 本节我们逐步介绍这些表及其用法。
 
 打开 **QSDataModel.xcdatamodeld**。 已定义四个表，其中三个由 SDK 使用，还有一个供待办事项本身使用：
@@ -198,7 +198,7 @@ MS_TableOperationErrors
 | updatedAt | Date | （可选）映射到 updatedAt 系统属性  |
 | 版本 | String | （可选）用于检测冲突，映射到版本 |
 
-## <a name="setup-sync"></a>更改应用的同步行为
+## <a name="change-the-sync-behavior-of-the-app"></a><a name="setup-sync"></a>更改应用的同步行为
 本节将修改应用，使其在启动应用或插入和更新项时不进行同步。 仅在按下刷新手势按钮时进行同步。
 
 **Objective-C**：
@@ -227,18 +227,18 @@ MS_TableOperationErrors
   self.onRefresh(self.refreshControl)
 ```
 
-## <a name="test-app"></a>测试应用程序
+## <a name="test-the-app"></a><a name="test-app"></a>测试应用程序
 本节会连接到无效的 URL，以模拟脱机场景。 添加数据项时，数据项保存在本地核心数据存储中，而不与移动应用后端进行同步。
 
 1. 将 **QSTodoService.m** 中的移动应用 URL 更改为无效 URL，再次运行该应用：
 
    **Objective-C**。 在 QSTodoService.m 中：
    ```objc
-   self.client = [MSClient clientWithApplicationURLString:@"https://sitename.chinacloudsites.net.fail"];
+   self.client = [MSClient clientWithApplicationURLString:@"https://sitename.chinacloudsites.cn.fail"];
    ```
    **Swift**。 在 ToDoTableViewController.swift 中：
    ```swift
-   let client = MSClient(applicationURLString: "https://sitename.chinacloudsites.net.fail")
+   let client = MSClient(applicationURLString: "https://sitename.chinacloudsites.cn.fail")
    ```
 2. 添加一些待办事项。 退出模拟器（或强行关闭应用），然后重启。 验证更改是否已保存。
 

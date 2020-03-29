@@ -8,12 +8,12 @@ ms.topic: article
 origin.date: 10/30/2016
 md.date: 03/23/2020
 ms.author: v-tawe
-ms.openlocfilehash: debc731e043db3b6d86bb8eaf9cc8fa5ea5fbed0
-ms.sourcegitcommit: e94ed1c9eff4e88be2ca389909e60b14cc0d92f8
+ms.openlocfilehash: 613a06f19bbaa6f89122d111c28f654b5ad7f86f
+ms.sourcegitcommit: b2f2bb08ab1b5ccb3c596d84b3b6ddca5bba3903
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79084393"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80151738"
 ---
 # <a name="offline-data-sync-in-azure-mobile-apps"></a>Azure 移动应用中的脱机数据同步
 
@@ -57,7 +57,7 @@ ms.locfileid: "79084393"
 
 本地存储使用初始化方法（例如 [.NET 客户端 SDK] 中的 `IMobileServicesSyncContext.InitializeAsync(localstore)`）来与同步上下文关联。
 
-## <a name="how-sync-works"></a>脱机同步的工作原理
+## <a name="how-offline-synchronization-works"></a><a name="how-sync-works"></a>脱机同步的工作原理
 使用同步表时，客户端代码控制本地更改与 Azure 移动应用后端同步的时机。 在发生 *推送* 本地更改的调用之前，不会向后端发送任何内容。 同样，仅当发生了 *提取* 数据的调用时，才在本地存储中填充新数据。
 
 * **Push**：推送是对同步上下文的操作，发送自上一次推送之后的所有 CUD 更改。 请注意，无法做到只发送单个表的更改，否则这些操作可能以无序发送。 推送对 Azure 移动应用后端执行一系列 REST 调用，而这会修改服务器数据库。
@@ -73,10 +73,8 @@ ms.locfileid: "79084393"
   如果查询具有参数，创建唯一查询名称的方法之一是包含该参数值。
   例如，如果要按 userid 筛选，可以使用如下所示的查询名称（在 C# 中）：
 
-  ```
-    await todoTable.PullAsync("todoItems" + userid,
-        syncTable.Where(u => u.UserId == userid));
-  ```
+        await todoTable.PullAsync("todoItems" + userid,
+            syncTable.Where(u => u.UserId == userid));
 
   如果想要选择退出增量同步，请将 `null` 作为查询 ID 传递。 在此情况下，在对 `PullAsync` 的每次调用中将检索所有记录，这可能会降低效率。
 * **清除**：可以使用 `IMobileServiceSyncTable.PurgeAsync` 清除本地存储的内容。

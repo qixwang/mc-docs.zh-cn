@@ -2,22 +2,22 @@
 title: 将 Raspberry Pi 连接到云中的 Azure IoT 中心 (Node.js)
 description: 在本教程中了解如何设置 Raspberry Pi 并将其连接到 Azure IoT 中心，使其能够将数据发送到 Azure 云平台。
 author: wesmc7777
-manager: philmea
+manager: eliotgra
 keywords: Azure IoT Raspberry Pi, Raspberry Pi IoT 中心, Raspberry Pi 将数据发送到云, 连接到云的 Raspberry Pi
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: nodejs
 ms.topic: conceptual
-origin.date: 07/17/2019
+origin.date: 03/13/2020
 ms.author: v-yiso
 ms.custom: H1Hack27Feb2017
-ms.date: 01/13/2020
-ms.openlocfilehash: 80fe44947196afa59fbf058b2c53c4df57a490e1
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.date: 04/06/2020
+ms.openlocfilehash: 75273607d8aa2f1237d117ba6a9928b2247632bc
+ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75631115"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80343579"
 ---
 # <a name="connect-raspberry-pi-to-azure-iot-hub-nodejs"></a>将 Raspberry Pi 连接到 Azure IoT 中心 (Node.js)
 
@@ -149,7 +149,7 @@ BME280 传感器可以收集温度和湿度数据。 当设备向云发送消息
 ![已连接到有线网络](./media/iot-hub-raspberry-pi-kit-node-get-started/5-power-on-pi.png)
 
 > [!NOTE]
-> 确保 Pi 与计算机连接到同一网络。 例如，如果计算机连接到无线网络，而 Pi 连接到有线网络，则在 devdisco 输出中可能看不到 IP 地址。
+> 确保 Pi 与计算机连接到同一网络。 例如，如果计算机连接到无线网络，而 Pi 连接到有线网络，则可能看不到 devdisco 输出中的 IP 地址。
 
 ## <a name="run-a-sample-application-on-pi"></a>在 Pi 上运行示例应用程序
 
@@ -189,13 +189,13 @@ BME280 传感器可以收集温度和湿度数据。 当设备向云发送消息
 3. 克隆示例应用程序。
 
    ```bash
-   git clone https://github.com/Azure-Samples/iot-hub-node-raspberrypi-client-app
+   git clone https://github.com/Azure-Samples/azure-iot-samples-node.git
    ```
 
 4. 安装示例的所有程序包。 安装包括 Azure IoT 设备 SDK、BME280 传感器库和接线 Pi 库。
 
    ```bash
-   cd iot-hub-node-raspberrypi-client-app
+   cd azure-iot-samples-node/iot-hub/Tutorials/RaspberryPiApp
    npm install
    ```
    > [!NOTE]
@@ -215,7 +215,7 @@ BME280 传感器可以收集温度和湿度数据。 当设备向云发送消息
 
    如果**没有传感器**，请将 `simulatedData` 值设置为 `true`，使示例应用程序创建和使用模拟的传感器数据。
 
-   *注意：默认情况下，本教程中使用的 i2c 地址为 0x77。根据配置，它也可能是 0x76：如果遇到 i2c 错误，请尝试将该值更改为 118，然后看看效果是否更好。若要查看传感器使用的地址，请在 raspberry pi 上的 shell 中运行 `sudo i2cdetect -y 1`*
+   注意：*默认情况下，本教程中使用的 i2c 地址为 0x77。根据配置，它也可能是 0x76：如果遇到 i2c 错误，请尝试将该值更改为 118，然后看看效果是否更好。若要查看传感器使用的地址，请在 raspberry pi 上的 shell 中运行 `sudo i2cdetect -y 1`*
 
 2. 通过按“Ctrl-O”>“Enter”>“Ctrl-X”保存并退出。
 

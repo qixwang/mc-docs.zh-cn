@@ -1,26 +1,27 @@
 ---
-title: 计划和计费 - Azure 计划程序
+title: 计划和计费
 description: 了解有关 Azure 计划程序的计划和计费
 services: scheduler
 ms.service: scheduler
 author: WenJason
 ms.author: v-jay
 ms.reviewer: klam
-ms.assetid: 13a2be8c-dc14-46cc-ab7d-5075bfd4d724
 ms.topic: article
 origin.date: 08/18/2016
-ms.date: 11/04/2019
-ms.openlocfilehash: 564086a1d8e3758288395566bb03d4b2029f2326
-ms.sourcegitcommit: f9a257e95444cb64c6d68a7a1cfe7e94c5cc5b19
+ms.date: 03/30/2020
+ms.openlocfilehash: 04562c5d6d8c13e90c413ff24f679a9568f56b18
+ms.sourcegitcommit: 90660563b5d65731a64c099b32fb9ec0ce2c51c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2019
-ms.locfileid: "73416275"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80341690"
 ---
 # <a name="plans-and-billing-for-azure-scheduler"></a>Azure 计划程序的计划和计费
 
 > [!IMPORTANT]
-> [Azure 逻辑应用](../logic-apps/logic-apps-overview.md)将替换[即将停用](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date)的 Azure 计划程序。 若要继续使用在计划程序中设置的作业，请尽快[迁移到 Azure 逻辑应用](../scheduler/migrate-from-scheduler-to-logic-apps.md)。
+> [Azure 逻辑应用](../logic-apps/logic-apps-overview.md)将替换[即将停用](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date)的 Azure 计划程序。 若要继续使用在计划程序中设置的作业，请尽快[迁移到 Azure 逻辑应用](../scheduler/migrate-from-scheduler-to-logic-apps.md)。 
+>
+> 计划程序在 Azure 门户中不再可用，但 [REST API](https://docs.microsoft.com/rest/api/scheduler) 和 [Azure 计划程序 PowerShell cmdlet](scheduler-powershell-reference.md) 目前仍可用，以便你可以管理作业和作业集合。
 
 ## <a name="job-collection-plans"></a>作业集合计划
 
@@ -81,8 +82,7 @@ P20 高级版作业集合提供的功能与 P10 高级版作业集合相同，�
 
   计划程序服务根据设置为标准或高级的活动作业集合数计费。
 
-## <a name="see-also"></a>另请参阅
+## <a name="next-steps"></a>后续步骤
 
-* [什么是 Azure 计划程序？](scheduler-intro.md)
 * [Azure 计划程序的概念、术语和实体层次结构](scheduler-concepts-terms.md)
 * [Azure 计划程序的限制、默认值和错误代码](scheduler-limits-defaults-errors.md)

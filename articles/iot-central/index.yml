@@ -10,72 +10,72 @@ metadata:
   author: philmea
   ms.author: v-yiso
   origin.date: 10/25/2019
-  ms.openlocfilehash: 8e74151c517928a3dacc194b45f087770c34ba32
-  ms.sourcegitcommit: 6ffa4d50cee80c7c0944e215ca917a248f2a4bcd
+  ms.openlocfilehash: 29de2e274ac2d51a75f5fb676ab3d65685066cb9
+  ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 12/06/2019
-  ms.locfileid: "74883096"
+  ms.lasthandoff: 03/27/2020
+  ms.locfileid: "80343438"
 highlightedContent:
   items:
   - title: 什么是 IoT Central？
     itemType: overview
-    url: ./preview/overview-iot-central.md
+    url: ./core/overview-iot-central.md
   - title: 什么是应用程序模板？
     itemType: concept
     url: ./core/concepts-app-templates.md
   - title: Azure IoT Central 体系结构
     itemType: architecture
-    url: ./preview/concepts-architecture.md
+    url: ./core/concepts-architecture.md
   - title: 创建新应用程序
     itemType: quickstart
-    url: ./preview/quick-deploy-iot-central.md
+    url: ./core/quick-deploy-iot-central.md
   - title: 定义设备类型并添加设备
     itemType: tutorial
-    url: ./preview/howto-set-up-template.md
+    url: ./core/howto-set-up-template.md
   - title: 监视设备
     itemType: tutorial
-    url: ./preview/tutorial-create-telemetry-rules.md
+    url: ./core/tutorial-create-telemetry-rules.md
 conceptualContent:
   items:
-  - title: 建立连接（预览功能）
+  - title: 建立连接
     links:
-    - url: ./preview/howto-set-up-template.md
+    - url: ./core/howto-set-up-template.md
       itemType: how-to-guide
       text: 设置设备模板
-    - url: ./preview/tutorial-connect-pnp-device.md
+    - url: ./core/tutorial-connect-pnp-device.md
       itemType: tutorial
-      text: 连接 IoT 即插即用设备
+      text: 连接 IoT 即插即用（预览版）设备
     footerLink:
-      url: ./preview/index.yml
+      url: ./core/index.yml
       text: 查看更多
-  - title: 保持连接（预览功能）
+  - title: 保持连接
     links:
-    - url: ./preview/tutorial-use-device-groups.md
+    - url: ./core/tutorial-use-device-groups.md
       itemType: how-to-guide
       text: 使用设备组
-    - url: ./preview/howto-manage-devices.md
+    - url: ./core/howto-manage-devices.md
       itemType: how-to-guide
       text: 管理设备
     - url: ./core/howto-run-a-job.md
       itemType: concept
       text: 如何运行作业
-    - url: ./preview/howto-create-analytics.md
+    - url: ./core/howto-create-analytics.md
       itemType: how-to-guide
       text: 分析设备数据
     footerLink:
-      url: ./preview/index.yml
+      url: ./core/index.yml
       text: 查看更多
-  - title: 转换（预览功能）
+  - title: 转换
     links:
-    - url: ./preview/tutorial-create-telemetry-rules.md
+    - url: ./core/tutorial-create-telemetry-rules.md
       itemType: how-to-guide
       text: 创建遥测规则
-    - url: ./preview/howto-export-data.md
+    - url: ./core/howto-export-data.md
       itemType: how-to-guide
-      text: 配置连续数据导出
+      text: 将数据导出到 Azure 中的目标
     footerLink:
-      url: ./preview/index.yml
+      url: ./core/index.yml
       text: 查看更多
 productDirectory:
   title: 使用行业应用程序模板开始生成

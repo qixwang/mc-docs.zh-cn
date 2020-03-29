@@ -8,15 +8,15 @@ metadata:
   ms.service: virtual-wan
   ms.topic: landing-page
   author: rockboyfor
+  origin.date: 11/13/2019
+  ms.date: 03/30/2020
   ms.author: v-yeche
-  origin.date: 08/28/2019
-  ms.date: 09/23/2019
-  ms.openlocfilehash: 55c62197b47049abdd36cdd74d01ca64f0988d4e
-  ms.sourcegitcommit: 1b4cb23c9bce2e9073e34eb9fb8b6765b9357d83
+  ms.openlocfilehash: 894c90063c6bd6c3e78c719deaf68b42735c772e
+  ms.sourcegitcommit: 4810b75d1e1db78d9747e99735468a6ab861be2d
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 10/09/2019
-  ms.locfileid: "72170801"
+  ms.lasthandoff: 03/26/2020
+  ms.locfileid: "80291305"
 landingContent:
 - title: 关于虚拟 WAN
   linkLists:

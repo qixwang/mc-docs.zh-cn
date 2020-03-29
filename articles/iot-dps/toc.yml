@@ -97,6 +97,8 @@
       href: concepts-security.md
     - name: 服务
       href: concepts-service.md
+    - name: 了解 DPS IP 地址
+      href: iot-dps-understand-ip-address.md
     - name: TPM 证明
       href: concepts-tpm-attestation.md
     - name: 对称密钥证明
@@ -127,6 +129,8 @@
           href: how-to-manage-dps-with-cli.md
         - name: 控制对预配服务 API 的访问
           href: how-to-control-access.md
+        - name: 配置 IP 筛选
+          href: iot-dps-ip-filtering.md
     - name: 预配 IoT Edge 设备
       items:
         - name: Linux
@@ -217,3 +221,9 @@
       href: 'https://www.azure.cn/pricing/details/iot-hub/'
     - name: 定价计算器
       href: 'https://www.azure.cn/pricing/calculator/'
+    - name: 服务更新
+      href: 'https://updates.azure.cn'
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/questions/tagged/azure-iot-hub'
+    - name: 技术案例研究
+      href: 'https://microsoft.github.io/techcasestudies/#technology=IoT&sortBy=featured'

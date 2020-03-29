@@ -9,14 +9,14 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: how-to
 origin.date: 02/10/2020
-ms.date: 03/01/2020
+ms.date: 03/16/2020
 ms.author: v-tawe
-ms.openlocfilehash: e5490488f5c8b8a824b1ceafe57c21daa22f839d
-ms.sourcegitcommit: 892137d117bcaf9d88aec0eb7ca756fe39613344
+ms.openlocfilehash: cc3e7ee62df0f47d22b15bb48c62321ac8fcb5e4
+ms.sourcegitcommit: b2f2bb08ab1b5ccb3c596d84b3b6ddca5bba3903
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78042308"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80151658"
 ---
 # <a name="get-the-list-of-text-to-speech-voices-using-python"></a>使用 Python 获取“文本转语音”语音的列表
 

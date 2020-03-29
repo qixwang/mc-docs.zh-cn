@@ -10,12 +10,12 @@ ms.service: cognitive-search
 ms.topic: quickstart
 origin.date: 02/25/2020
 ms.date: 03/16/2020
-ms.openlocfilehash: 743bdf71aa8dba5e6147a4f7679f1c98f3aaa004
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.openlocfilehash: 0d7709d544ea2bd9804abd067ce485f49f5f7ad3
+ms.sourcegitcommit: 1d3d8dfdaf6281f06640cbee7124a1e8bf102c50
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78850577"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80243712"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-java-using-rest-apis"></a>快速入门：使用 REST API 在 Java 中创建 Azure 认知搜索索引
 > [!div class="op_single_selector"]
@@ -193,6 +193,7 @@ ms.locfileid: "78850577"
                         config.getProperty("ApiVersion"),
                         config.getProperty("IndexName")
                 );
+    
     
     //Uncomment the next 3 lines in the 1 - Create Index section of the quickstart
     //            if(client.indexExists()){ client.deleteIndex();}
@@ -618,7 +619,7 @@ hotels 索引定义包含简单字段和一个复杂字段。 例如，“酒店
           "@search.action": "upload",
           "HotelId": "3",
           "HotelName": "Triple Landscape Hotel",
-          "Description": "The Hotel stands out for its gastronomic excellence under the management of William Dough, who advises on and oversees all of the Hotel's restaurant services.",
+          "Description": "The Hotel stands out for its gastronomic excellence under the management of William Dough, who advises on and oversees all of the Hotel’s restaurant services.",
           "Description_fr": "L'hôtel est situé dans une place du XIXe siècle, qui a été agrandie et rénovée aux plus hautes normes architecturales pour créer un hôtel moderne, fonctionnel et de première classe dans lequel l'art et les éléments historiques uniques coexistent avec le confort le plus moderne.",
           "Category": "Resort and Spa",
           "Tags": [ "air conditioning", "bar", "continental breakfast" ],

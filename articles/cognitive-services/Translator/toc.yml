@@ -76,7 +76,7 @@
         - name: 定价
           href: 'https://www.azure.cn/pricing/details/cognitive-services/'
         - name: 区域可用性
-          href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
+          href: 'https://azure.microsoft.com/global-infrastructure/services/?products=all&regions=china-non-regional,china-north,china-north-2,china-east,china-east-2'
         - name: 请求限制
           href: request-limits.md
         - name: Stack Overflow

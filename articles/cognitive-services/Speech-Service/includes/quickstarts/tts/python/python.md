@@ -8,24 +8,23 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
-origin.date: 01/14/2020
-ms.date: 02/17/2020
+origin.date: 09/14/2020
+ms.date: 03/16/2020
 ms.author: v-tawe
-ms.openlocfilehash: c37c57e7963f263dc8585c5e6da2fc37a2940237
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.openlocfilehash: 5be1f89d99da7916dd09c77e0ebe0d80020da9aa
+ms.sourcegitcommit: b2f2bb08ab1b5ccb3c596d84b3b6ddca5bba3903
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77430119"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80151626"
 ---
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 在开始之前，请务必：
 
 > [!div class="checklist"]
 > * [创建一个 Azure 搜索资源](../../../../get-started.md)
-> * [设置开发环境](../../../../quickstarts/setup-platform.md)
-> * [创建空示例项目](../../../../quickstarts/create-project.md)
+> * [设置开发环境并创建空项目](../../../../quickstarts/setup-platform.md)
 
 ## <a name="support-and-updates"></a>支持和更新
 
@@ -82,7 +81,7 @@ elif result.reason == speechsdk.ResultReason.Canceled:
 
 ### <a name="install-and-use-the-speech-sdk-with-visual-studio-code"></a>通过 Visual Studio Code 安装并使用语音 SDK
 
-1. 在计算机上下载并安装 64 位版本的 [Python](https://www.python.org/downloads/)（3.5 或更高版本）。
+1. 在计算机上下载并安装 64 位版本的 [Python](https://www.python.org/downloads/)（3.5 到 3.8）。
 1. 下载并安装 [Visual Studio Code](https://code.visualstudio.com/Download)。
 1. 打开 Visual Studio Code 并安装 Python 扩展。 在菜单中选择“文件”   >   “首选项” >   “扩展”。 搜索 **Python**。
 

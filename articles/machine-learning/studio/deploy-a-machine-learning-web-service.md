@@ -10,14 +10,16 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 01/06/2017
-ms.openlocfilehash: 31cd8f742baa06aea3999024af9817195d354109
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+ms.openlocfilehash: 3438c877d1f20f2f083179c23f6019762cbc22b2
+ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75598360"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80343090"
 ---
 # <a name="deploy-an-azure-machine-learning-studio-classic-web-service"></a>部署 Azure 机器学习工作室（经典）Web 服务
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 可以使用 Azure 机器学习工作室（经典）构建和测试预测分析解决方案。 然后，可以将该解决方案部署为 Web 服务。
 
@@ -123,7 +125,7 @@ RRS 测试页显示你为试验定义的输入、输出和任何全局参数。 
 
 可以通过机器学习工作室（经典）Web 服务门户管理新的 Web 服务。 在[主门户页](https://services.azureml.net/)中，单击“Web 服务”  。 在 Web 服务页中，可删除或复制服务。 要监视特定服务，请单击该服务，并单击“仪表板”  。 若要监视与 Web 服务相关联的 Batch 作业，请单击“Batch 请求日志”  。
 
-### <a id="multi-region"></a> 将新的 Web 服务部署到多个区域
+### <a name="deploy-your-new-web-service-to-multiple-regions"></a><a id="multi-region"></a> 将新的 Web 服务部署到多个区域
 
 无需多个订阅或工作区即可轻松地将新的 Web 服务部署到多个区域。
 
@@ -145,7 +147,7 @@ RRS 测试页显示你为试验定义的输入、输出和任何全局参数。 
 
 1. 在 Microsoft Azure 机器学习 Web 服务页上，单击“Web 服务”  菜单选项。
 2. 选择要部署到新区域的 Web 服务。
-3. 单击“复制”  。
+3. 单击 **“复制”** 。
 4. 在“Web 服务名称”  中，键入 Web 服务的新名称。
 5. 在“Web 服务描述”  中，键入 Web 服务的描述。
 6. 从“订阅”  下拉列表中，选择新的 Web 服务将驻留的订阅。
@@ -153,7 +155,7 @@ RRS 测试页显示你为试验定义的输入、输出和任何全局参数。 
 8. 从“区域”  下拉列表中，选择要部署 Web 服务的区域。
 9. 从“存储帐户”  下拉列表中，选择要存储 Web 服务的存储帐户。
 10. 从“价格计划”  下拉列表中，选择步骤 8 中所选的区域中的计划。
-11. 单击“复制”。 
+11. 单击 **“复制”** 。
 
 ## <a name="deploy-it-as-a-classic-web-service"></a>部署为经典 Web 服务
 

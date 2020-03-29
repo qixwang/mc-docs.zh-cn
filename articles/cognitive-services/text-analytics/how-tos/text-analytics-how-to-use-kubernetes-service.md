@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 11/21/2019
 ms.author: dapine
-ms.openlocfilehash: f5a957d6c8da1559cc014dfcab1f871a49b07172
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.openlocfilehash: 33bbb5bbab49adaeb49a849f12be2f7ad0bde248
+ms.sourcegitcommit: 303a16c7117b6f3495ef0493b4ae8ccb67d7dbba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78155367"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80342377"
 ---
 # <a name="deploy-a-text-analytics-container-to-azure-kubernetes-service"></a>将文本分析容器部署到 Azure Kubernetes 服务
 
@@ -25,9 +25,9 @@ ms.locfileid: "78155367"
 
 此过程要求必须在本地安装和运行多个工具。 请勿使用 Azure Cloud Shell。 需要满足以下条件：
 
-* Azure 订阅。 如果没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/)。
+* Azure 订阅。 如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://wd.azure.cn/zh-cn/pricing/1rmb-trial-full)。
 * 文本编辑器，例如 [Visual Studio Code](https://code.visualstudio.com/download)。
-* 已安装 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
+* 已安装 [Azure CLI](/cli/install-azure-cli?view=azure-cli-latest)。
 * 已安装 [Kubernetes CLI](https://kubernetes.io/docs/tasks/tools/install-kubectl/)。
 * 具有适当定价层的 Azure 资源。 并非所有定价层都适用于此容器：
     * 仅具有 F0 或标准定价层的 Azure 文本分析资源  。

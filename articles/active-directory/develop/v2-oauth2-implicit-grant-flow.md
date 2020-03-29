@@ -13,16 +13,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/25/2020
+ms.date: 03/23/2020
 ms.author: v-junlch
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 98b5ea67884eaf5719b6383d6366cd90ffe65a43
-ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
+ms.openlocfilehash: ad7fded27b1eaa0d39b4075b5b9db31efc7a9759
+ms.sourcegitcommit: 6568c59433d7e80ab06e9fe76d4791f761ed6775
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77653125"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80243080"
 ---
 # <a name="microsoft-identity-platform-and-implicit-grant-flow"></a>Microsoft 标识平台和隐式授权流
 
@@ -195,7 +195,7 @@ access_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q..
 &state=12345
 &token_type=Bearer
 &expires_in=3599
-&scope=https%3A%2F%2Fgraph.chinacloudapi.cn%2Fdirectory.read
+&scope=https%3A%2F%2Fmicrosoftgraph.chinacloudapi.cn%2Fdirectory.read
 ```
 
 | 参数 | 说明 |

@@ -9,16 +9,16 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
 origin.date: 10/10/2019
-ms.date: 01/13/2020
+ms.date: 03/16/2020
 ms.author: v-tawe
-ms.openlocfilehash: 29e10ee79a098516c6d44815a62508a2305d5eea
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.openlocfilehash: 1f51d65a4cce9a722591e919cfeb648b266e2750
+ms.sourcegitcommit: b2f2bb08ab1b5ccb3c596d84b3b6ddca5bba3903
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75631032"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80151663"
 ---
-本指南介绍如何安装用于 .NET Framework (Windows) 的[语音 SDK](~/articles/cognitive-services/speech-service/speech-sdk.md)。
+本指南介绍如何安装用于 .NET Framework (Windows) 的[语音 SDK](~/articles/cognitive-services/speech-service/speech-sdk.md)。 如果只是需要包名称以便自行开始，请在 NuGet 控制台中运行 `Install-Package Microsoft.CognitiveServices.Speech`。
 
 [!INCLUDE [License Notice](~/includes/cognitive-services-speech-service-license-notice.md)]
 
@@ -58,7 +58,7 @@ ms.locfileid: "75631032"
 
    ![NuGet 包管理器](~/articles/cognitive-services/speech-service/media/sdk/vs-nuget-package-manager.png)
 
-1. 在右上角找到“包源”  下拉框，确保选择了 **`nuget.org`** 。
+1. 在右上角找到“包源”下拉框，确保选择了 `nuget.org`   。
 
 1. 在左上角，选择“浏览”  。
 
@@ -72,7 +72,21 @@ ms.locfileid: "75631032"
 
    安装此包后，“包管理器控制台”  窗口中将显示一条确认消息。
 
-现在可以继续完成下面的[后续步骤](#next-steps)。
+### <a name="choose-target-architecture"></a>选择目标体系结构
+
+若要生成并运行控制台应用程序，请创建与计算机体系结构匹配的平台配置。
+
+1. 在菜单栏中，选择“生成” > “配置管理器”   。 此时将显示“配置管理器”  对话框。
+
+   ![“配置管理器”对话框](~/articles/cognitive-services/speech-service/media/sdk/vs-configuration-manager-dialog-box.png)
+
+1. 在“活动解决方案平台”下拉框中，选择“新建”   。 此时将显示“新建解决方案平台”  对话框。
+
+1. 在“键入或选择新平台”  下拉框中：
+   - 如果运行的是 64 位 Windows，请选择 **x64**。
+   - 如果运行的是 32 位 Windows，请选择 **x86**。
+
+1. 选择“确定”，然后选择“关闭”。  
 
 ## <a name="next-steps"></a>后续步骤
 

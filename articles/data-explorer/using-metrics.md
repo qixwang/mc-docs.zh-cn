@@ -7,13 +7,13 @@ ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: conceptual
 origin.date: 01/19/2020
-ms.date: 03/23/2020
-ms.openlocfilehash: c9c48c522b866859647f897dd5c80a6732388ca9
-ms.sourcegitcommit: 4ba6d7c8bed5398f37eb37cf5e2acafcdcc28791
+ms.date: 03/16/2020
+ms.openlocfilehash: 0a56de909bcd9d8afda4d0b4c8d1fa29ea40645b
+ms.sourcegitcommit: 1d3d8dfdaf6281f06640cbee7124a1e8bf102c50
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2020
-ms.locfileid: "79133957"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80243946"
 ---
 # <a name="monitor-azure-data-explorer-performance-health-and-usage-with-metrics"></a>使用指标监视 Azure 数据资源管理器的性能、运行状况和使用情况
 

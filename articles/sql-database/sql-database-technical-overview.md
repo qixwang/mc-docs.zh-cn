@@ -12,13 +12,13 @@ author: WenJason
 ms.author: v-jay
 ms.reviewer: carlrab
 origin.date: 04/08/2019
-ms.date: 12/16/2019
-ms.openlocfilehash: 2980895475fcc0382a1029fd9a0b32a2ff7fbee2
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.date: 03/30/2020
+ms.openlocfilehash: 079398027cddea5da409ce6bb094fd49e902bd5f
+ms.sourcegitcommit: 90660563b5d65731a64c099b32fb9ec0ce2c51c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79291663"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80341751"
 ---
 # <a name="what-is-the-azure-sql-database-service"></a>什么是 Azure SQL 数据库服务？
 
@@ -96,7 +96,7 @@ Azure SQL 数据库提供高级监视和故障排除功能，可帮助你更深�
  - 最新版本的 SQL Server 数据库引擎提供的内置监视功能。 它们可让你找到实时性能见解。 
  - Azure 提供的 PaaS 监视功能，可让你监视大量的数据库实例并对其进行故障排除。
 
-[查询存储](sql-database-operate-query-store.md) - 内置的 SQL Server 监视功能，它可以实时记录查询性能，并使你能够识别潜在的性能问题和排名靠前的资源使用者。 自动优化和建议提供有关性能退化以及存在缺失或重复索引的查询的建议。 使用 Azure SQL 数据库中的自动优化可以手动应用脚本来解决问题，或者让 Azure SQL 数据库应用修复措施。 SQL 数据库还可以测试并验证该修复措施是否起了作用，并根据结果保留或还原更改。 除了查询存储和自动优化功能外，还可以使用标准的 [DMV 和 XEvent](sql-database-monitoring-with-dmvs.md) 来监视工作负荷性能。
+[查询存储](https://docs.microsoft.com/sql/relational-databases/performance/best-practice-with-the-query-store) - 内置的 SQL Server 监视功能，它可以实时记录查询性能，并使你能够识别潜在的性能问题和排名靠前的资源使用者。 自动优化和建议提供有关性能退化以及存在缺失或重复索引的查询的建议。 使用 Azure SQL 数据库中的自动优化可以手动应用脚本来解决问题，或者让 Azure SQL 数据库应用修复措施。 SQL 数据库还可以测试并验证该修复措施是否起了作用，并根据结果保留或还原更改。 除了查询存储和自动优化功能外，还可以使用标准的 [DMV 和 XEvent](sql-database-monitoring-with-dmvs.md) 来监视工作负荷性能。
 
 Azure 提供[内置的性能监视](sql-database-performance.md)和[警报](sql-database-insights-alerts-portal.md)工具，将它们与性能评分相结合，可以监视数千个数据库的状态。 使用这些工具，可以根据当前的或预计的性能需求，快速评估纵向扩展或纵向缩减产生的影响。 此外，SQL 数据库可[发出指标和诊断日志](sql-database-metrics-diag-logging.md)，以便更轻松地监视。 可配置 SQL 数据库，将资源使用情况、辅助角色和会话以及连接性存储到以下 Azure 资源之一：
 

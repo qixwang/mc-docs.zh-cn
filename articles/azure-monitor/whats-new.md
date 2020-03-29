@@ -8,17 +8,17 @@ ms.topic: overview
 origin.date: 03/05/2020
 ms.date: 03/16/2020
 ms.author: v-lingwu
-ms.openlocfilehash: 62625c3dc56cb1af105cbc04db9644a61285a371
-ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
+ms.openlocfilehash: 7aa9f240fda4d99fe419097e2890ce2165f27a1b
+ms.sourcegitcommit: 7f8acc663bf3429b391c2c615bed0d1b2107fd7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/17/2020
-ms.locfileid: "79453262"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80290087"
 ---
 # <a name="whats-new-in-azure-monitor-documentation"></a>Azure Monitor 文档中有哪些新增内容？
 本文提供新的或已经过重大更新的 Azure Monitor 文章列表。 在每个月的第一周，本文将会刷新，以包含上个月的文章更新。
 
-## <a name="march-2020"></a>2020 年 3 月
+## <a name="february-2020"></a>2020 年 2 月
 
 ### <a name="agents"></a>代理
 通过重新编写诊断扩展内容进行了多处更新。

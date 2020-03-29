@@ -9,14 +9,17 @@ ms.topic: conceptual
 author: xiaoharper
 ms.author: amlstudiodocs
 ms.date: 10/27/2016
-ms.openlocfilehash: 0b561e2a2f4e11886b5b94c2946bed996491b57e
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+ms.openlocfilehash: a12def9488413a0d9fb449c7c22e4ed12a3554cb
+ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75598229"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80343329"
 ---
 # <a name="application-lifecycle-management-in-azure-machine-learning-studio-classic"></a>Azure 机器学习工作室（经典版）中的应用程序生命周期管理
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
+
 Azure 机器学习工作室（经典版）是一个在 Azure 云平台中运行的工具，用于开发机器学习实验。 它类似于将 Visual Studio IDE 和可缩放云服务合并到单个平台。 可以将标准的应用程序生命周期管理 (ALM) 实践（从各种资产的版本管理到自动执行和部署）合并到 Azure 机器学习工作室（经典版）中。 本文介绍一些选项和方法。
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]

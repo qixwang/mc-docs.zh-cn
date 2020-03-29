@@ -7,15 +7,15 @@ manager: timlt
 ms.author: v-yiso
 ms.custom: mvc
 origin.date: 02/22/2019
-ms.date: 03/09/2020
+ms.date: 04/06/2020
 ms.topic: tutorial
 ms.service: iot-hub
-ms.openlocfilehash: 1d30ce2d609f8877acc396162435b8a7e8c6c1b8
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.openlocfilehash: ba9d5ff009c4e44dc9063e597aeecd89ee496c2d
+ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78154708"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80343615"
 ---
 # <a name="tutorial-use-a-simulated-device-to-test-connectivity-with-your-iot-hub"></a>教程：使用模拟设备测试与 IoT 中心的连接
 
@@ -36,8 +36,10 @@ ms.locfileid: "78154708"
 本教程中运行的 CLI 脚本使用[适用于 Azure CLI 的 Microsoft Azure IoT 扩展](https://github.com/Azure/azure-iot-cli-extension/blob/master/README.md)。 若要安装此扩展，请运行以下 CLI 命令：
 
 ```azurecli
-az extension add --name azure-cli-iot-ext
+az extension add --name azure-iot
 ```
+
+[!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 
 本教程中运行的设备模拟器应用程序是使用 Node.js 编写的。 开发计算机上需要有 Node.js v10.x.x 或更高版本。
 
@@ -103,7 +105,7 @@ node SimulatedDevice-1.js "{your device connection string}"
 read key < <(date +%s | sha256sum | base64 | head -c 32)
 
 # Requires the IoT Extension for Azure CLI
-# az extension add --name azure-cli-iot-ext
+# az extension add --name azure-iot
 
 # Reset the primary device key for MyTestDevice
 az iot hub device-identity update --device-id MyTestDevice --set authentication.symmetricKey.primaryKey=$key --hub-name {YourIoTHubName}

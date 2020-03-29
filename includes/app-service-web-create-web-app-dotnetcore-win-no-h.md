@@ -6,15 +6,15 @@ author: cephalin
 ms.service: app-service
 ms.topic: include
 origin.date: 02/02/2018
-ms.date: 03/23/2020
+ms.date: 03/16/2020
 ms.author: v-tawe
 ms.custom: include file
-ms.openlocfilehash: 59392aecb9d7b9226adab2fe5d4a039a08c35e2e
-ms.sourcegitcommit: d5eca3c6b03b206e441b599e5b138bd687a91361
+ms.openlocfilehash: 815729f2ef9ce4083fee7f0a9865dda48d70f097
+ms.sourcegitcommit: 1d3d8dfdaf6281f06640cbee7124a1e8bf102c50
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78934714"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80272694"
 ---
 在 `myAppServicePlan` 应用服务计划中创建一个 Web 应用。 
 

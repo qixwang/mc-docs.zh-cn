@@ -8,16 +8,16 @@ ms.subservice: iot-central-retail
 ms.topic: overview
 origin.date: 10/20/2019
 ms.date: 12/16/2019
-ms.openlocfilehash: 492e03a99b9998289cc25ff0f035c2eb91f3481a
-ms.sourcegitcommit: 6ffa4d50cee80c7c0944e215ca917a248f2a4bcd
+ms.openlocfilehash: 7c3b5eb01d2f89a1d3ea1e34d2bb5c548d96bc11
+ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74883483"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80343120"
 ---
 # <a name="tutorial-deploy-and-walk-through-a-digital-distribution-center-application-template"></a>教程：部署并演练数字分发中心应用程序模板
 
-[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
+
 
 本教程介绍如何开始部署 IoT Central 数字分发中心应用程序模板  。 你将了解如何部署模板、有哪些现成的内容以及接下来要执行哪些操作。
 
@@ -35,19 +35,22 @@ ms.locfileid: "74883483"
 
 1. 导航到 Azure IoT Central 应用程序管理器网站。 从左侧导航栏中选择“生成”，然后单击“零售”选项卡   。
 
-> [!div class="mx-imgBorder"]
-> ![数字分发中心](./media/tutorial-iot-central-ddc/iotc-retail-homepage.png)
+    > [!div class="mx-imgBorder"]
+    > ![数字分发中心](./media/tutorial-iot-central-ddc/iotc-retail-homepage.png)
 
-2. 选择“零售”选项卡，然后在“数字分发中心应用程序”下选择“创建应用”   ****
+2. 选择“零售”选项卡，然后在“数字分发中心应用程序”下选择“创建应用”   
 
 3. “创建应用”将打开“新建应用程序”窗体，并按如下所示填写所需的详细信息  。
    **应用程序名称**：可以使用默认的建议名称，也可以输入易记的应用程序名称。
-   **URL**：可以使用建议的默认 URL，也可以输入唯一且容易记住的 URL。 接下来，如果已经具有 Azure 订阅，则建议使用默认设置。 否则，可以开始使用七天免费试用版，并选择在免费试用到期之前的任何时间内转换为即用即付。
+   **URL**：可以使用建议的默认 URL，也可以输入唯一且容易记住的 URL。 接下来，如果已经具有 Azure 订阅，则建议使用默认设置。 你可以从 7 天免费试用定价计划开始，然后选择在免费试用过期之前随时转换为标准定价计划。
    **计费信息**：必须提供目录、Azure 订阅和区域详细信息才能配置资源。
    **创建**：选择页面底部的“创建”以部署应用程序。
 
-> [!div class="mx-imgBorder"]
-> ![数字分发中心](./media/tutorial-iot-central-ddc/ddc-create.png)
+    > [!div class="mx-imgBorder"]
+    > ![数字分发中心](./media/tutorial-iot-central-ddc/ddc-create.png)
+
+    > [!div class="mx-imgBorder"]
+    > ![数字分发计费信息](./media/tutorial-iot-central-ddc/ddc-create-billinginfo.png)
 
 ## <a name="walk-through-the-application-dashboard"></a>演练应用程序仪表板 
 
@@ -114,4 +117,4 @@ ms.locfileid: "74883483"
 ## <a name="next-steps"></a>后续步骤
 * 详细了解数字分发中心解决方案体系结构[数字分发中心的概念](./architecture-digital-distribution-center-pnp.md)
 * 详细了解其他 [IoT Central 零售模板](./overview-iot-central-retail-pnp.md)
-* 请参阅 [IoT Central 概述](../preview/overview-iot-central.md)，详细了解 IoT Central
+* 请参阅 [IoT Central 概述](../core/overview-iot-central.md)，详细了解 IoT Central

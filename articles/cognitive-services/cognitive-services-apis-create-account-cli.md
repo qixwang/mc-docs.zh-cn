@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
 origin.date: 10/04/2019
-ms.date: 02/02/2020
+ms.date: 03/16/2020
 ms.author: v-tawe
-ms.openlocfilehash: 81ac6b30dca248e4f7e19835b193739e1573ae82
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: 061c2d839811cd040465c0cf53b58d3ad7c3adb6
+ms.sourcegitcommit: 303a16c7117b6f3495ef0493b4ae8ccb67d7dbba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79291839"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80342380"
 ---
 # <a name="create-a-cognitive-services-resource-using-the-azure-command-line-interfacecli"></a>使用 Azure 命令行接口 (CLI) 创建认知服务资源
 
@@ -35,7 +35,7 @@ ms.locfileid: "79291839"
 
 安装 [Azure CLI](/cli/install-azure-cli?view=azure-cli-latest)。 若要登录到本地安装的 CLI，请运行 [az login](/cli/reference-index#az-login) 命令：
 
-```console
+```azurecli
 az cloud set -n AzureChinaCloud
 az login
 ```
@@ -52,7 +52,7 @@ az login
 
 > [!IMPORTANT]
 > * 请记住选择的 Azure 位置，因为在调用 Azure 认知服务时需要用到。
-> * 某些认知服务的可用性因区域而异。 有关详细信息，请参阅 [Azure 产品在各区域中的推出情况](https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services)。  
+> * 某些认知服务的可用性因区域而异。 有关详细信息，请参阅 [Azure 产品在各区域中的推出情况](https://azure.microsoft.com/global-infrastructure/services/?products=all&regions=china-non-regional,china-north,china-north-2,china-east,china-east-2)。  
 
 ```azurecli
 az account list-locations \
@@ -142,7 +142,7 @@ az cognitiveservices account create \
 
 若要登录到本地安装的命令行接口 (CLI)，请使用 [az login](/cli/reference-index?view=azure-cli-latest#az-login) 命令。
 
-```console
+```azurecli
 az cloud set -n AzureChinaCloud
 az login
 ```
@@ -166,7 +166,7 @@ az login
 
 ## <a name="get-current-quota-usage-for-your-resource"></a>获取资源的当前配额使用情况
 
-使用 [az cognitiveservices account list-usage](https://docs.microsoft.com/cli/azure/cognitiveservices/account?view=azure-cli-latest#az-cognitiveservices-account-list-usage) 命令获取认知服务资源的使用情况。
+使用 [az cognitiveservices account list-usage](/cli/cognitiveservices/account?view=azure-cli-latest#az-cognitiveservices-account-list-usage) 命令获取认知服务资源的使用情况。
 
 ```azurecli
 az cognitiveservices account list-usage \

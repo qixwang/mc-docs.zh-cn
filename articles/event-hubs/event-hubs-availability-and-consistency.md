@@ -14,19 +14,19 @@ ms.workload: na
 origin.date: 01/29/2020
 ms.date: 02/17/2020
 ms.author: v-tawe
-ms.openlocfilehash: c771abf9ffaff31e676c618c7c63e427ebb2359e
-ms.sourcegitcommit: 7c80405a6b48380814b4b414e9f8a5756c007880
+ms.openlocfilehash: 36f45a89479053fd7fb11bb6f8f81d323daaf0f9
+ms.sourcegitcommit: b2f2bb08ab1b5ccb3c596d84b3b6ddca5bba3903
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77067740"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80151757"
 ---
 # <a name="availability-and-consistency-in-event-hubs"></a>事件中心内的可用性和一致性
 
 ## <a name="overview"></a>概述
 Azure 事件中心使用[分区模型](event-hubs-scalability.md#partitions)在单个事件中心内提高可用性和并行化。 例如，如果事件中心具有四个分区，并且其中一个分区要在负载均衡操作中从一台服务器移动到另一台服务器，则仍可以通过其他三个分区进行发送和接收。 此外，具有更多分区可以让更多并发读取器处理数据，从而提高聚合吞吐量。 了解分布式系统中分区和排序的意义是解决方案设计的重要方面。
 
-为了帮助说明排序与可用性之间的权衡，请参阅 [CAP 定理](https://en.wikipedia.org/wiki/CAP_theorem)（也称为 Brewer 的定理）。 此定理论述了如何在一致性、可用性和分区容差之间进行选择。 它指出对于由网络分区的系统，始终在一致性与可用性之间作出权衡。
+为了帮助说明排序与可用性之间的权衡，请参阅 [CAP 定理](https://wikipedia.org/wiki/CAP_theorem)（也称为 Brewer 的定理）。 此定理论述了如何在一致性、可用性和分区容差之间进行选择。 它指出对于由网络分区的系统，始终在一致性与可用性之间作出权衡。
 
 Brewer 的定理按如下所示定义一致性和可用性：
 * 分区容差：系统即使在出现分区故障时也能继续处理数据的数据处理能力。
@@ -48,7 +48,7 @@ Brewer 的定理按如下所示定义一致性和可用性：
 
 确保排序的一个可能解决方法（同时还最大限度地延长运行时间）是将事件作为事件处理应用程序的一部分进行聚合。 实现此目的的最简单方法是使用自定义序号属性标记事件。 以下代码展示一个示例：
 
-#### <a name="azuremessagingeventhubs-500-or-latertablatest"></a>[Azure.Messaging.EventHubs（5.0.0 或更高版本）](#tab/latest)
+#### <a name="azuremessagingeventhubs-500-or-later"></a>[Azure.Messaging.EventHubs（5.0.0 或更高版本）](#tab/latest)
 
 ```csharp
 // create a producer client that you can use to send events to an event hub
@@ -74,7 +74,7 @@ await using (var producerClient = new EventHubProducerClient(connectionString, e
 }
 ```
 
-#### <a name="microsoftazureeventhubs-410-or-earliertabold"></a>[Microsoft.Azure.EventHubs（4.1.0 或更早版本）](#tab/old)
+#### <a name="microsoftazureeventhubs-410-or-earlier"></a>[Microsoft.Azure.EventHubs（4.1.0 或更早版本）](#tab/old)
 ```csharp
 // Create an Event Hubs client
 var client = new EventHubClient(connectionString, eventHubName);

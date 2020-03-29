@@ -4,17 +4,17 @@ description: 介绍如何使用设备预配服务 (DPS) 和 IoT 中心在 Azure 
 author: wesmc7777
 ms.author: v-tawe
 origin.date: 04/04/2019
-ms.date: 03/02/2020
+ms.date: 03/16/2020
 ms.topic: overview
 ms.service: iot-dps
 services: iot-dps
 manager: eliotgra
-ms.openlocfilehash: 6ceebc76598941af330e49801a6af59db483c6bd
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: ff91bf45f331e9ebc3b03d991d4d21eecdd1fbba
+ms.sourcegitcommit: 1d3d8dfdaf6281f06640cbee7124a1e8bf102c50
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79292899"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80243903"
 ---
 # <a name="provisioning-devices-with-azure-iot-hub-device-provisioning-service"></a>使用 Azure IoT 中心设备预配服务预配设备
 Microsoft Azure 提供一套丰富的集成公有云服务，满足所有 IoT 解决方案需求。 IoT 中心设备预配服务 (DPS) 是 IoT 中心的帮助器服务，支持零接触、实时预配到适当的 IoT 中心，不需要人为干预。 使用 DPS 能够以安全且可缩放的方式预配数百万台设备。

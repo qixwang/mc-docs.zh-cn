@@ -1,31 +1,23 @@
 ---
-title: 快速入门：识别存储在 Blob 存储中的语音，Java - 语音服务
-titleSuffix: Azure Cognitive Services
-description: TBD
-services: cognitive-services
 author: IEvangelist
-manager: nitinme
 ms.service: cognitive-services
-ms.subservice: speech-service
 ms.topic: include
 origin.date: 01/13/2020
-ms.date: 02/17/2020
+ms.date: 03/16/2020
 ms.author: v-tawe
-zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: a889b61574c20d9d302c306917d4ed673208da64
-ms.sourcegitcommit: 888cbc10f2348de401d4839a732586cf266883bf
+ms.openlocfilehash: 24460d69d6b9a67c65b1143c59458a86cd691593
+ms.sourcegitcommit: b2f2bb08ab1b5ccb3c596d84b3b6ddca5bba3903
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77029073"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80151592"
 ---
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 在开始之前，请务必：
 
 > [!div class="checklist"]
-> * [设置开发环境](../../../../quickstarts/setup-platform.md?tabs=jre&pivots=programmming-language-java)
-> * [创建空示例项目](../../../../quickstarts/create-project.md?pivots=programmming-language-java)
+> * [设置开发环境并创建空项目](../../../../quickstarts/setup-platform.md?tabs=jre&pivots=programmming-language-java)
 > * [创建 Azure 语音资源](../../../../get-started.md)
 > * [将源文件上传到 Azure blob](https://docs.azure.cn/storage/blobs/storage-quickstart-blobs-portal)
 
@@ -40,7 +32,8 @@ ms.locfileid: "77029073"
 ## <a name="add-a-reference-to-gson"></a>添加对 Gson 的引用
 本快速入门中将使用外部 JSON 序列化程序/反序列化程序。 对于 Java，我们选择了 [Gson](https://github.com/google/gson)。
 
-打开 pom.xml 并添加以下引用：
+打开 pom.xml 并添加以下引用。
+
 ```xml
 <dependencies>
 <dependency>
@@ -191,6 +184,7 @@ postConnection.setRequestProperty("Ocp-Apim-Subscription-Key", subscriptionKey);
 
 ## <a name="generate-a-transcription-request"></a>生成听录请求
 接下来，我们将生成听录请求。 将此代码添加到 `Main`
+
 ```java
 TranscriptionDefinition definition = TranscriptionDefinition.Create(Name, Description, Locale,
         new URL(RecordingsBlobUri));
@@ -198,6 +192,7 @@ TranscriptionDefinition definition = TranscriptionDefinition.Create(Name, Descri
 
 ## <a name="send-the-request-and-check-its-status"></a>发送请求并查看其状态
 现在我们将请求发布到语音服务并检查初始响应代码。 此响应代码将仅指示服务是否已收到请求。 该服务将在响应标头中返回一个 URL，这是它将存储听录状态的位置。
+
 ```java
 Gson gson = new Gson();
 
@@ -219,6 +214,7 @@ if (statusCode != HttpURLConnection.HTTP_ACCEPTED) {
 通过检索在发布请求时收到的 URL 中的内容，可以查看状态。 内容返回后，我们将其反序列化为一个帮助程序类，使其便于交互。
 
 下面是一个轮询代码，其中显示了除成功完成之外的所有状态，我们会在下一步完成该操作。
+
 ```java
 String transcriptionLocation = postConnection.getHeaderField("location");
 
@@ -267,6 +263,7 @@ while (!completed) {
 服务成功完成听录后，结果将存储在可从状态响应中获取的其他 URL 中。
 
 我们将下载该 URL 的所有内容，对 JSON 进行反序列化，并循环遍历不断输出显示文本的结果。
+
 ```java
 package quickstart;
 
@@ -479,6 +476,7 @@ public class Main {
 
 ## <a name="check-your-code"></a>查看代码
 此时，代码应如下所示：（我们已向此版本添加了一些注释）
+
 ```java
 package quickstart;
 

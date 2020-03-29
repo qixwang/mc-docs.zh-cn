@@ -9,14 +9,14 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 origin.date: 02/17/2020
-ms.date: 03/23/2020
+ms.date: 03/16/2020
 ms.author: v-tawe
-ms.openlocfilehash: eaf9ff50c14b715301ed2dd2f6ef8d6b0b814fca
-ms.sourcegitcommit: e94ed1c9eff4e88be2ca389909e60b14cc0d92f8
+ms.openlocfilehash: 22198aa185acd1a8e8efe7be43b6ce4e03c8c6af
+ms.sourcegitcommit: b2f2bb08ab1b5ccb3c596d84b3b6ddca5bba3903
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79084535"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80151695"
 ---
 # <a name="what-is-custom-speech"></a>什么是自定义语音识别？
 

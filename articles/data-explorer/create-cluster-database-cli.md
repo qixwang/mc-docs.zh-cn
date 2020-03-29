@@ -7,13 +7,13 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 origin.date: 06/03/2019
-ms.date: 03/23/2020
-ms.openlocfilehash: 7e8e87b6901c13695de196dc1fc94e5f7c743033
-ms.sourcegitcommit: 4ba6d7c8bed5398f37eb37cf5e2acafcdcc28791
+ms.date: 03/16/2020
+ms.openlocfilehash: 1169982cf1d8ac9c86e956b8a8d5e63bff6a5863
+ms.sourcegitcommit: 1d3d8dfdaf6281f06640cbee7124a1e8bf102c50
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2020
-ms.locfileid: "79133853"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80243978"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-database-by-using-azure-cli"></a>使用 Azure CLI 创建 Azure 数据资源管理器群集和数据库
 

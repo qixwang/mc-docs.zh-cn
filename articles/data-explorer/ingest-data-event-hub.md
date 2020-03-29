@@ -7,13 +7,13 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 origin.date: 01/08/2020
-ms.date: 03/09/2020
-ms.openlocfilehash: 4a1425987e46dcb1f87aa1b35afc45956e50ab4e
-ms.sourcegitcommit: ced17aa58e800b9e4335276a1595b8045836b256
+ms.date: 03/16/2020
+ms.openlocfilehash: 05adbe8876707f20eb3b56adf2606228601f4c58
+ms.sourcegitcommit: 1d3d8dfdaf6281f06640cbee7124a1e8bf102c50
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77590260"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80243970"
 ---
 # <a name="ingest-data-from-event-hub-into-azure-data-explorer"></a>将数据从事件中心引入到 Azure 数据资源管理器
 
@@ -118,7 +118,7 @@ Azure 数据资源管理器是一项快速且高度可缩放的数据探索服�
     | 事件中心命名空间 | 唯一的命名空间名称 | 先前选择的用于标识命名空间的名称。 |
     | 事件中心 | test-hub  | 你创建的事件中心。 |
     | 使用者组 | test-group  | 在创建的事件中心定义的使用者组。 |
-    | 事件系统属性 | 选择相关属性 | [事件中心系统属性](/service-bus-messaging/service-bus-amqp-protocol-guide#message-annotations)。 如果每个事件消息有多个记录，则系统属性将添加到第一个记录中。 添加系统属性时，[创建](https://docs.microsoft.com/azure/kusto/management/tables#create-table)或[更新](https://docs.microsoft.com/azure/kusto/management/tables#alter-table-and-alter-merge-table)表架构和[映射](https://docs.microsoft.com/azure/kusto/management/mappings)以包括所选属性。 |
+    | 事件系统属性 | 选择相关属性 | [事件中心系统属性](/service-bus-messaging/service-bus-amqp-protocol-guide#message-annotations)。 如果每个事件消息有多个记录，则系统属性将添加到第一个记录中。 添加系统属性时，[创建](https://docs.microsoft.com/azure/kusto/management/create-table-command)或[更新](https://docs.microsoft.com/azure/kusto/management/alter-table-command)表架构和[映射](https://docs.microsoft.com/azure/kusto/management/mappings)以包括所选属性。 |
     | 压缩 | *无* | 事件中心消息有效负载的压缩类型。 支持的压缩类型：None、GZip  。|
     | | |
 

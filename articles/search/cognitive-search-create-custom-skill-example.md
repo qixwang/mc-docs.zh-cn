@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 68f664da6c194fcda9bf413370615a169f21cc66
-ms.sourcegitcommit: 71a386ca0d0ecb79a123399b6ab6b8c70ea2aa78
+ms.openlocfilehash: a8c59bd0f94ec69cf20d66fef7c942b3015ef055
+ms.sourcegitcommit: 1d3d8dfdaf6281f06640cbee7124a1e8bf102c50
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2020
-ms.locfileid: "79497392"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80243739"
 ---
 # <a name="example-create-a-custom-skill-using-the-custom-entity-search-api"></a>示例：使用自定义实体搜索 API 创建自定义技能
 
@@ -383,7 +383,7 @@ POST https://localhost:7071/api/EntitySearch
 
 1. 部署完成后，请记下站点 URL。 这是 Azure 中你的函数应用的地址。 
 
-1. 在 [Azure 门户](https://portal.azure.com)中，导航到资源组，然后查找你发布的 `EntitySearch` 函数。 在“管理”部分下，应可看到主机密钥  。 对默认主机密钥选择“复制”图标   。  
+1. 在 [Azure 门户](https://portal.azure.cn)中，导航到资源组，然后查找你发布的 `EntitySearch` 函数。 在“管理”部分下，应可看到主机密钥  。 对默认主机密钥选择“复制”图标   。  
 
 ## <a name="test-the-function-in-azure"></a>在 Azure 中测试函数
 

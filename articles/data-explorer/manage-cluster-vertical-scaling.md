@@ -7,13 +7,13 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 origin.date: 07/14/2019
-ms.date: 03/23/2020
-ms.openlocfilehash: d631d87f9f9996da934cd7b53ca04c15c1279c59
-ms.sourcegitcommit: 4ba6d7c8bed5398f37eb37cf5e2acafcdcc28791
+ms.date: 03/16/2020
+ms.openlocfilehash: dfa73858cb5e2ecd26eee3ae659eaa1d5b7b0c8c
+ms.sourcegitcommit: 1d3d8dfdaf6281f06640cbee7124a1e8bf102c50
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2020
-ms.locfileid: "79133873"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80243958"
 ---
 # <a name="manage-cluster-vertical-scaling-scale-up-in-azure-data-explorer-to-accommodate-changing-demand"></a>在 Azure 数据资源管理器中管理纵向扩展（缩减）群集以适应不断变化的需求
 

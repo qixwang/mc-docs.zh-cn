@@ -9,14 +9,14 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: reference
 origin.date: 07/05/2019
-ms.date: 03/23/2020
+ms.date: 03/16/2020
 ms.author: v-tawe
-ms.openlocfilehash: 8117def46769786f81e442f61794199144a66488
-ms.sourcegitcommit: e94ed1c9eff4e88be2ca389909e60b14cc0d92f8
+ms.openlocfilehash: 3837c4fd957d3a820fdb631afb90a60a24348990
+ms.sourcegitcommit: b2f2bb08ab1b5ccb3c596d84b3b6ddca5bba3903
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79084434"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80151507"
 ---
 # <a name="swagger-documentation"></a>Swagger 文档
 

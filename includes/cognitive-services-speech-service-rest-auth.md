@@ -3,14 +3,14 @@ author: erhopf
 ms.service: cognitive-services
 ms.topic: include
 origin.date: 03/29/2019
-ms.date: 03/09/2020
+ms.date: 03/16/2020
 ms.author: v-tawe
-ms.openlocfilehash: b0766874d18e0308e6d62c94bc34b9bfe9de7aa2
-ms.sourcegitcommit: ced17aa58e800b9e4335276a1595b8045836b256
+ms.openlocfilehash: 54fd4c7b7fcd0fbffff8b6dde31f59f8f3f0f6e4
+ms.sourcegitcommit: b2f2bb08ab1b5ccb3c596d84b3b6ddca5bba3903
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77590281"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80151535"
 ---
 ## <a name="authentication"></a>身份验证
 
@@ -23,7 +23,7 @@ ms.locfileid: "77590281"
 
 使用 `Ocp-Apim-Subscription-Key` 标头时，只需提供订阅密钥。 例如：
 
-```
+```http
 'Ocp-Apim-Subscription-Key': 'YOUR_SUBSCRIPTION_KEY'
 ```
 
@@ -35,7 +35,7 @@ ms.locfileid: "77590281"
 
 `issueToken` 终结点具有以下格式：
 
-```
+```http
 https://<REGION_IDENTIFIER>.api.cognitive.azure.cn/sts/v1.0/issueToken
 ```
 
@@ -63,7 +63,7 @@ Content-Length: 0
 
 此示例是获取访问令牌的简单 PowerShell 脚本。 请将 `YOUR_SUBSCRIPTION_KEY` 替换为语音服务订阅密钥。 请务必使用与订阅匹配的正确区域终结点。 此示例目前设置为“美国西部”。
 
-```Powershell
+```powershell
 $FetchTokenHeader = @{
   'Content-type'='application/x-www-form-urlencoded';
   'Content-Length'= '0';
@@ -82,7 +82,7 @@ $OAuthToken
 
 cURL 是 Linux（及面向 Linux 的 Windows 子系统）中提供的一种命令行工具。 此 cURL 命令演示如何获取访问令牌。 请将 `YOUR_SUBSCRIPTION_KEY` 替换为语音服务订阅密钥。 请务必使用与订阅匹配的正确区域终结点。 此示例目前设置为“美国西部”。
 
-```cli
+```console
 curl -v -X POST
  "https://chinaeast2.api.cognitive.azure.cn/sts/v1.0/issueToken" \
  -H "Content-type: application/x-www-form-urlencoded" \
@@ -94,7 +94,7 @@ curl -v -X POST
 
 此 C# 类演示如何获取访问令牌。 实例化该类时，请传递语音服务订阅密钥。 如果订阅不在美国西部区域，请更改 `FetchTokenUri` 的值，以便与订阅的区域相匹配。
 
-```cs
+```csharp
 public class Authentication
 {
     public static readonly string FetchTokenUri =

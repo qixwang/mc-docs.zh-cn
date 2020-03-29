@@ -1,21 +1,16 @@
 ---
-title: 快速入门：从音频文件中识别语音，C# (.NET) - 语音服务
-titleSuffix: Azure Cognitive Services
-services: cognitive-services
 author: IEvangelist
-manager: nitinme
 ms.service: cognitive-services
-ms.subservice: speech-service
 ms.topic: include
-origin.date: 12/17/2019
-ms.date: 03/23/2020
+origin.date: 03/10/2020
+ms.date: 03/16/2020
 ms.author: v-tawe
-ms.openlocfilehash: 251ef790bf6811ae25d63e15f363e2379e2cd7f1
-ms.sourcegitcommit: e94ed1c9eff4e88be2ca389909e60b14cc0d92f8
+ms.openlocfilehash: 508f8cbd83daa834d45e2e620e6580128e317dbd
+ms.sourcegitcommit: b2f2bb08ab1b5ccb3c596d84b3b6ddca5bba3903
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79084647"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80151606"
 ---
 ## <a name="prerequisites"></a>先决条件
 
@@ -23,8 +18,7 @@ ms.locfileid: "79084647"
 
 > [!div class="checklist"]
 > * [创建 Azure 语音资源](../../../../get-started.md)
-> * [设置开发环境](../../../../quickstarts/setup-platform.md?tabs=dotnet)
-> * [创建空示例项目](../../../../quickstarts/create-project.md?tabs=vs)
+> * [设置开发环境并创建空项目](../../../../quickstarts/setup-platform.md?tabs=dotnet)
 
 [!INCLUDE [Audio input format](~/articles/cognitive-services/speech-service/includes/audio-input-format-chart.md)]
 

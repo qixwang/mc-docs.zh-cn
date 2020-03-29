@@ -7,13 +7,13 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 origin.date: 01/06/2020
-ms.date: 03/09/2020
-ms.openlocfilehash: 5152f17b3c8d4e54073fa89d21a66950fcf23bac
-ms.sourcegitcommit: ced17aa58e800b9e4335276a1595b8045836b256
+ms.date: 03/16/2020
+ms.openlocfilehash: 4f866126e2156b1cdfcdd4bd64cdd538c14115cf
+ms.sourcegitcommit: 1d3d8dfdaf6281f06640cbee7124a1e8bf102c50
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77590235"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80243955"
 ---
 # <a name="configure-managed-identities-for-your-azure-data-explorer-cluster"></a>配置 Azure 数据资源管理器群集的托管标识
 

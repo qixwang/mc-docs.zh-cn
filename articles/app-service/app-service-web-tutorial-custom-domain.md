@@ -9,12 +9,12 @@ origin.date: 06/06/2019
 ms.date: 01/13/2020
 ms.author: v-tawe
 ms.custom: mvc
-ms.openlocfilehash: 28dd9a6e0c46e2d727096b24b739ec7b2cfe60bd
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: b6b6781c8c1549299f0241b75043b7f8e45babe3
+ms.sourcegitcommit: b2f2bb08ab1b5ccb3c596d84b3b6ddca5bba3903
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79292752"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80151732"
 ---
 # <a name="tutorial-map-an-existing-custom-dns-name-to-azure-app-service"></a>教程：将现有的自定义 DNS 名称映射到 Azure 应用服务
 
@@ -247,7 +247,7 @@ ms.locfileid: "79292752"
 
 ### <a name="map-a-wildcard-domain"></a>映射通配符域
 
-在教程示例中，你将通过添加 CNAME 记录将[通配符 DNS 名称](https://en.wikipedia.org/wiki/Wildcard_DNS_record)（例如 `*.contoso.com`）映射到应用服务应用。
+在教程示例中，你将通过添加 CNAME 记录将[通配符 DNS 名称](https://wikipedia.org/wiki/Wildcard_DNS_record)（例如 `*.contoso.com`）映射到应用服务应用。
 
 #### <a name="access-dns-records-with-domain-provider"></a>通过域提供商访问 DNS 记录
 

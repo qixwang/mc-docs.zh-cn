@@ -7,13 +7,13 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 origin.date: 10/07/2019
-ms.date: 03/23/2020
-ms.openlocfilehash: 7e41ca1e246c345fee9bf1bf3caaeb54bbb4a675
-ms.sourcegitcommit: 4ba6d7c8bed5398f37eb37cf5e2acafcdcc28791
+ms.date: 03/16/2020
+ms.openlocfilehash: 620a7ca8e02110a25d43363a79efcfeb72c51f7d
+ms.sourcegitcommit: 1d3d8dfdaf6281f06640cbee7124a1e8bf102c50
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2020
-ms.locfileid: "79133951"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80243972"
 ---
 # <a name="create-an-iot-hub-data-connection-for-azure-data-explorer-by-using-python-preview"></a>使用 Python 为 Azure 数据资源管理器创建 IoT 中心数据连接（预览版）
 
@@ -27,7 +27,7 @@ ms.locfileid: "79133951"
 
 ## <a name="prerequisites"></a>先决条件
 
-* 如果没有 Azure 订阅，请在开始前创建一个[试用 Azure 帐户](https://www.azure.cn/pricing/1rmb-trial/)。
+* 具有活动订阅的 Azure 帐户。 [创建试用帐户](https://www.azure.cn/pricing/1rmb-trial/)。
 
 * [Python 3.4+](https://www.python.org/downloads/)。
 

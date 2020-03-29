@@ -6,14 +6,14 @@ ms.service: signalr
 ms.devlang: javascript
 ms.topic: quickstart
 origin.date: 12/14/2019
-ms.date: 03/09/2020
+ms.date: 03/16/2020
 ms.author: v-tawe
-ms.openlocfilehash: 373796366526518d787d1d1bffa283f01bc043d2
-ms.sourcegitcommit: 60e32ec1b1e62de6e84f7c6e43bb1400bd42c9cf
+ms.openlocfilehash: c2c860f29a37ec21438c0a37a1eed6cb962479b1
+ms.sourcegitcommit: b2f2bb08ab1b5ccb3c596d84b3b6ddca5bba3903
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/24/2020
-ms.locfileid: "77567196"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80151716"
 ---
 # <a name="quickstart-use-javascript-to-create-a-chat-room-with-azure-functions-and-signalr-service"></a>快速入门：通过 JavaScript 使用 Azure Functions 和 SignalR 服务创建聊天室
 

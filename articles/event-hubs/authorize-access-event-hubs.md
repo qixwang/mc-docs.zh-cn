@@ -7,14 +7,14 @@ documentationcenter: ''
 author: spelluru
 ms.topic: conceptual
 origin.date: 02/12/2020
-ms.date: 03/09/2020
+ms.date: 03/16/2020
 ms.author: v-tawe
-ms.openlocfilehash: 752c715a3fc0d092d7b2f756f0cf0858a9a81e4d
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.openlocfilehash: bbc90909f189a4017143315fc1f12da3267c5896
+ms.sourcegitcommit: 1d3d8dfdaf6281f06640cbee7124a1e8bf102c50
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78154752"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80243936"
 ---
 # <a name="authorize-access-to-azure-event-hubs"></a>授予对 Azure 事件中心的访问权限
 每次你发布或使用事件中心的事件/数据时，客户端会尝试访问事件中心资源。 每个对安全资源的请求都必须经过授权，以便服务确保客户端具有发布/使用数据所需的权限。 

@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/25/2020
+ms.date: 03/24/2020
 ms.author: v-junlch
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 04c9e48f117ab2b5da5cc7b76813ef3e9572fbeb
-ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
+ms.openlocfilehash: c6143b59528d8845b84e7ed57e2867dfb28b7a92
+ms.sourcegitcommit: 6568c59433d7e80ab06e9fe76d4791f761ed6775
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77653453"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80243059"
 ---
 # <a name="view-the-service-principal-of-a-managed-identity-in-the-azure-portal"></a>在 Azure 门户中查看托管标识的服务主体
 
@@ -35,7 +35,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
 - 如果不熟悉 Azure 资源的托管标识，请查阅[概述部分](overview.md)。
 - 如果还没有 Azure 帐户，请注册[试用帐户](https://www.azure.cn/pricing/1rmb-trial/)。
-- 在[虚拟机](/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm#system-assigned-managed-identity)或[应用程序](/app-service/overview-managed-identity#adding-a-system-assigned-identity)上启用系统分配的标识。
+- 在[虚拟机](/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm#system-assigned-managed-identity)或[应用程序](/app-service/overview-managed-identity#add-a-system-assigned-identity)上启用系统分配的标识。
 
 ## <a name="view-the-service-principal"></a>查看服务主体
 
@@ -52,4 +52,3 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 [Azure 资源的托管标识](/active-directory/managed-identities-azure-resources/overview)
 
 
-<!-- Update_Description: wording update -->

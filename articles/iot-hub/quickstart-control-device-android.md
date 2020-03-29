@@ -9,14 +9,14 @@ ms.devlang: java
 ms.topic: quickstart
 ms.custom: mvc
 origin.date: 06/21/2019
-ms.date: 03/23/2020
+ms.date: 04/06/2020
 ms.author: v-yiso
-ms.openlocfilehash: c737f490308a37e49c478e97bacbc0c992280806
-ms.sourcegitcommit: 32997a7d7585deaeb0ab7b8f928d397b18b343fa
+ms.openlocfilehash: 40f66f2200a8cf6c8bde86cb5f6bf413fdf06df1
+ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79296009"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80343623"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub-android"></a>快速入门：控制连接到 IoT 中心的设备 (Android)
 
@@ -44,8 +44,10 @@ ms.locfileid: "79296009"
 * 运行以下命令将用于 Azure CLI 的 Microsoft Azure IoT 扩展添加到 Cloud Shell 实例。 IoT 扩展会将 IoT 中心、IoT Edge 和 IoT 设备预配服务 (DPS) 特定的命令添加到 Azure CLI。
 
    ```azurecli
-   az extension add --name azure-cli-iot-ext
+az extension add --name azure-iot
    ```
+
+[!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 
 ## <a name="create-an-iot-hub"></a>创建 IoT 中心
 
@@ -194,8 +196,6 @@ IoT 中心后端服务应用程序通常在云中运行，这样可以更轻松�
 6. 应用会收到一个表明方法是否已成功执行的确认。
 
     ![直接方法确认](media/quickstart-control-device-android/direct-method-ack.png)
-
-
 
 ## <a name="clean-up-resources"></a>清理资源
 

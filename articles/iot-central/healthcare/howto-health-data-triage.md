@@ -8,18 +8,18 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: eliotgra
-ms.openlocfilehash: 083207e13703c047d417e2c5d3f1bcde918a6821
-ms.sourcegitcommit: 6ffa4d50cee80c7c0944e215ca917a248f2a4bcd
+ms.openlocfilehash: 464d1e957d307c1eb43c800ebdb134d9b90d207d
+ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74882919"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80343627"
 ---
 # <a name="tutorial-build-a-power-bi-provider-dashboard"></a>教程：构建 Power BI 提供程序仪表板
 
-[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
 
-在构建患者持续监视解决方案时，你还可能希望为医护团队创建一个仪表板，以将患者数据可视化。 本教程逐步讲解如何通过 IoT Central 患者持续监视应用程序模板创建 Power BI 实时流仪表板。
+
+构建持续患者监视解决方案时，还可以为医护团队创建一个仪表板，以将患者数据可视化。 本教程介绍如何通过 IoT Central 持续患者监视应用程序模板创建 Power BI 实时流式处理仪表板。
 
 >[!div class="mx-imgBorder"]
 >![仪表板 GIF](media/dashboard-gif-3.gif)
@@ -40,7 +40,7 @@ ms.locfileid: "74882919"
 
 ## <a name="prerequisites"></a>先决条件
 
-* Azure 订阅。 如果没有 Azure 订阅，请[注册一个免费 Azure 帐户](https://www.azure.cn/pricing/1rmb-trial/)。
+* Azure 订阅。 如果没有 Azure 订阅，请[注册一个免费 Azure 帐户](https://azure.microsoft.com/free/)。
 
 * Azure IoT Central 患者持续监视应用程序模板。 如果没有所需的应用程序模板，可以遵循[部署应用程序模板](overview-iot-central-healthcare.md)的步骤。
 
@@ -48,10 +48,10 @@ ms.locfileid: "74882919"
 
 * 用于访问事件中心的逻辑应用。 若要使用 Azure 事件中心触发器启动逻辑应用，需要一个[空白逻辑应用](/logic-apps/quickstart-create-first-logic-app-workflow)。
 
-* 一个 Power BI 服务帐户。 如果没有该帐户，可以[创建 Power BI 服务的试用帐户](https://app.powerbi.com/)。 如果你以前未用过 Power BI，请浏览 [Power BI 入门](https://docs.microsoft.com/power-bi/service-get-started)。
+* 一个 Power BI 服务帐户。 如果没有该帐户，可以[创建 Power BI 服务的免费试用帐户](https://app.powerbi.com/)。 如果你以前未用过 Power BI，请浏览 [Power BI 入门](https://docs.microsoft.com/power-bi/service-get-started)。
 
 ## <a name="set-up-a-continuous-data-export-to-azure-event-hubs"></a>设置到 Azure 事件中心的持续数据导出
-首先需要在订阅中设置从 Azure IoT Central 应用程序模板到 Azure 事件中心的持续数据导出。 可以遵循本 Azure IoT Central 教程所述的[导出到事件中心](/iot-central/preview/howto-export-data)的步骤来完成此设置。 对于本教程，只需导出遥测数据。
+首先需要在订阅中设置从 Azure IoT Central 应用程序模板到 Azure 事件中心的持续数据导出。 可以遵循本 Azure IoT Central 教程所述的[导出到事件中心](/iot-central/core/howto-export-data)的步骤来完成此设置。 对于本教程，只需导出遥测数据。
 
 ## <a name="create-a-power-bi-streaming-dataset"></a>创建 Power BI 流数据集
 
@@ -75,7 +75,7 @@ ms.locfileid: "74882919"
 若要详细了解 Power BI 中的流数据集，可以阅读这篇有关 [Power BI 中的实时流](https://docs.microsoft.com/power-bi/service-real-time-streaming)的文档。
 
 ## <a name="connect-your-logic-app-to-azure-event-hubs"></a>将逻辑应用连接到 Azure 事件中心
-若要将逻辑应用连接到 Azure 事件中心，可以按照这篇有关[使用 Azure 事件中心和 Azure 逻辑应用发送事件](https://docs.microsoft.com/azure/connectors/connectors-create-api-azure-event-hubs#add-event-hubs-action)的文档中的说明操作。 下面是一些建议的参数：
+若要将逻辑应用连接到 Azure 事件中心，可以按照这篇有关[使用 Azure 事件中心和 Azure 逻辑应用发送事件](/connectors/connectors-create-api-azure-event-hubs#add-event-hubs-action)的文档中的说明操作。 下面是一些建议的参数：
 
 |参数|Value|
 |---|---|
@@ -91,7 +91,7 @@ ms.locfileid: "74882919"
 ## <a name="stream-data-to-power-bi-from-your-logic-app"></a>将数据从逻辑应用流式传输到 Power BI
 下一步是分析来自事件中心的数据，以将其流式传输到前面创建的 Power BI 数据集。
 
-1. 在执行此操作之前，需要了解从设备发送到事件中心的 JSON 有效负载。 为此，可以查看此[示例架构](/iot-central/preview/howto-export-data#telemetry)并根据自己的架构对其进行修改，或使用[服务总线资源管理器](https://github.com/paolosalvatori/ServiceBusExplorer)检查消息。 如果使用的是患者持续监视应用程序，则消息将如下所示：
+1. 在执行此操作之前，需要了解从设备发送到事件中心的 JSON 有效负载。 为此，可以查看此[示例架构](/iot-central/core/howto-export-data#telemetry)并根据自己的架构对其进行修改，或使用[服务总线资源管理器](https://github.com/paolosalvatori/ServiceBusExplorer)检查消息。 如果使用的是患者持续监视应用程序，则消息将如下所示：
 
 **Smart Vitals Patch 遥测数据**
 
@@ -143,7 +143,7 @@ ms.locfileid: "74882919"
 
     |参数|Value|
     |---|---|
-    |Name|接口名称|
+    |名称|接口名称|
     |类型|String|
 
     点击“保存”。  

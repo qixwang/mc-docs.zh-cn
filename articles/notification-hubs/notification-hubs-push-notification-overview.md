@@ -14,16 +14,16 @@ ms.devlang: multiple
 ms.topic: overview
 ms.custom: mvc
 origin.date: 02/20/2020
-ms.date: 03/23/2020
+ms.date: 03/16/2020
 ms.author: v-tawe
 ms.reviewer: thsomasu
 ms.lastreviewed: 04/30/2019
-ms.openlocfilehash: ee9cb2d77ccab28631b6a6a0ce93ecae2f27fbdf
-ms.sourcegitcommit: 4ba6d7c8bed5398f37eb37cf5e2acafcdcc28791
+ms.openlocfilehash: ce0053958d0e2464118fbb2c36241d6a36dd119a
+ms.sourcegitcommit: 1d3d8dfdaf6281f06640cbee7124a1e8bf102c50
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2020
-ms.locfileid: "79133981"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80243743"
 ---
 # <a name="what-is-azure-notification-hubs"></a>什么是 Azure 通知中心？
 

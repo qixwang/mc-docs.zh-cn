@@ -10,14 +10,16 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 02/15/2019
-ms.openlocfilehash: 1ed783dcc00fc890cb31583bed524227ef1d7646
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+ms.openlocfilehash: 6110e1049faff4234f73a618a3bde8e2d11328df
+ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75599533"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80343088"
 ---
 # <a name="create-endpoints-for-deployed-azure-machine-learning-studio-classic-web-services"></a>为部署的 Azure 机器学习工作室（经典）Web 服务创建终结点
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 > [!NOTE]
 > 本主题介绍适用于经典机器学习 Web 服务的技术  。
@@ -37,7 +39,7 @@ Web 服务中的每个终结点都是独立处理、限制和托管的。 每个
 3. 单击“新建”  。
 4. 键入新终结点的名称及说明。 终结点名称的长度必须少于或等于 24 个字符，并且必须由小写字母或数字组成。 选择日志记录级别以及是否启用示例数据。 有关日志记录的详细信息，请参阅[为机器学习 Web 服务启用日志记录](web-services-logging.md)。
 
-## <a id="scaling"></a> 通过添加其他终结点来扩展 Web 服务
+## <a name="scale-a-web-service-by-adding-additional-endpoints"></a><a id="scaling"></a> 通过添加其他终结点来扩展 Web 服务
 
 默认情况下，每个已发布的 Web 服务配置为支持 20 个并发请求，并且最高可达 200 个并发请求。 Azure 机器学习工作室（经典）自动优化设置以为 Web 服务提供最佳性能，并忽略门户值。
 

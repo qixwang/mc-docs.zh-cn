@@ -6,14 +6,14 @@ ms.service: signalr
 ms.devlang: java
 ms.topic: quickstart
 origin.date: 03/04/2019
-ms.date: 03/09/2020
+ms.date: 03/16/2020
 ms.author: v-tawe
-ms.openlocfilehash: c88d56ffe901e20cdccc205b393989f4f6639cd5
-ms.sourcegitcommit: 60e32ec1b1e62de6e84f7c6e43bb1400bd42c9cf
+ms.openlocfilehash: 5b488cd52c9a54bd78e1272f56a270e579232c39
+ms.sourcegitcommit: b2f2bb08ab1b5ccb3c596d84b3b6ddca5bba3903
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/24/2020
-ms.locfileid: "77567195"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80151718"
 ---
 # <a name="quickstart-use-java-to-create-a-chat-room-with-azure-functions-and-signalr-service"></a>快速入门：通过 Java 使用 Azure Functions 和 SignalR 服务创建聊天室
 

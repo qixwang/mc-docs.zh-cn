@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: quickstart
 ms.workload: identity
-ms.date: 03/10/2020
+ms.date: 03/20/2020
 ms.author: v-junlch
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:UWP
-ms.openlocfilehash: 56be2b500817c554967d4c5d86d7f2dbd2757a18
-ms.sourcegitcommit: 4ba6d7c8bed5398f37eb37cf5e2acafcdcc28791
+ms.openlocfilehash: 48ed0abdccb7ae9b4279e3bcfac482258aef16de
+ms.sourcegitcommit: 6568c59433d7e80ab06e9fe76d4791f761ed6775
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2020
-ms.locfileid: "79133822"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80243120"
 ---
 # <a name="quickstart-call-the-microsoft-graph-api-from-a-universal-windows-platform-uwp-application"></a>快速入门：从通用 Windows 平台 (UWP) 应用程序调用 Microsoft Graph API
 
@@ -68,7 +68,7 @@ ms.locfileid: "79133822"
 > [!div class="sxs-lookup" renderon="portal"]
 > 使用 Visual Studio 2019 运行项目。
 > [!div renderon="portal" id="autoupdate" class="nextstepaction"]
-> [下载代码示例]()
+> [下载代码示例](https://github.com/Azure-Samples/active-directory-dotnet-native-uwp-v2/archive/msal3x.zip)
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-3-your-app-is-configured-and-ready-to-run"></a>步骤 3：应用已配置并可以运行

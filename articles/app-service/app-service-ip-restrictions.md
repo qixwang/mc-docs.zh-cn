@@ -8,12 +8,12 @@ origin.date: 06/06/2019
 ms.date: 01/13/2020
 ms.author: v-tawe
 ms.custom: seodec18
-ms.openlocfilehash: 53a1fac4ba470a8b0797520509044fe2fd1f7e8e
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: 1293c70eaee16ddc2914edccdd9575acb82372ce
+ms.sourcegitcommit: b2f2bb08ab1b5ccb3c596d84b3b6ddca5bba3903
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79291868"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80151727"
 ---
 # <a name="azure-app-service-access-restrictions"></a>Azure 应用服务访问限制 #
 
@@ -21,7 +21,7 @@ ms.locfileid: "79291868"
 
 访问限制功能适用于所有应用服务托管的工作负载，包括 Web 应用、API 应用和 Functions。
 
-向应用发出请求时，将会根据访问限制列表中的 IP 地址规则评估 FROM IP 地址。 如果 FROM 地址位于配置为使用 Microsoft.Web 服务终结点的子网中，则会根据访问限制列表中的虚拟网络规则比较源子网。 如果列表中的规则不允许访问该地址，则服务会以 [HTTP 403](https://en.wikipedia.org/wiki/HTTP_403) 状态代码进行答复。
+向应用发出请求时，将会根据访问限制列表中的 IP 地址规则评估 FROM IP 地址。 如果 FROM 地址位于配置为使用 Microsoft.Web 服务终结点的子网中，则会根据访问限制列表中的虚拟网络规则比较源子网。 如果列表中的规则不允许访问该地址，则服务会以 [HTTP 403](https://wikipedia.org/wiki/HTTP_403) 状态代码进行答复。
 
 访问限制功能是在应用服务前端角色（即代码运行所在的辅助角色主机中的上游）中实现的。 因此，访问限制是有效的网络 ACL。
 
@@ -49,7 +49,7 @@ ms.locfileid: "79291868"
 
 ![添加 IP 访问限制规则](media/app-service-ip-restrictions/access-restrictions-ip-add.png)
 
-若要设置基于 IP 地址的规则，请选择 IPv4 或 IPv6 类型。 对于 IPv4 和 IPv6 地址，必须在 CIDR 表示法中指定 IP 地址表示法。 若要指定确切的地址，可以使用类似 1.2.3.4/32 的格式，其中前四个八位字节代表自己的 IP 地址，/32 为掩码。 所有地址的 IPv4 CIDR 表示法都为 0.0.0.0/0。 要详细了解 CIDR 表示法，请阅读[无类别域际路由选择](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)。 
+若要设置基于 IP 地址的规则，请选择 IPv4 或 IPv6 类型。 对于 IPv4 和 IPv6 地址，必须在 CIDR 表示法中指定 IP 地址表示法。 若要指定确切的地址，可以使用类似 1.2.3.4/32 的格式，其中前四个八位字节代表自己的 IP 地址，/32 为掩码。 所有地址的 IPv4 CIDR 表示法都为 0.0.0.0/0。 要详细了解 CIDR 表示法，请阅读[无类别域际路由选择](https://wikipedia.org/wiki/Classless_Inter-Domain_Routing)。 
 
 ## <a name="service-endpoints"></a>服务终结点
 

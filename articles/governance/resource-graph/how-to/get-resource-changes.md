@@ -6,12 +6,12 @@ ms.author: v-tawe
 origin.date: 10/09/2019
 ms.date: 03/02/2020
 ms.topic: how-to
-ms.openlocfilehash: c59cae2a6bf9ede980773a82df8b847972522ecc
-ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
+ms.openlocfilehash: d47ae409692a2c7f4f0c3050c3e637861a2aef60
+ms.sourcegitcommit: 1d3d8dfdaf6281f06640cbee7124a1e8bf102c50
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77494559"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80243904"
 ---
 # <a name="get-resource-changes"></a>获取资源更改
 
@@ -28,8 +28,7 @@ ms.locfileid: "77494559"
 - 使配置管理数据库（简称为 CMDB）保持最新。 无需按计划的频率刷新所有资源及其完整的属性集，只获取更改的内容。
 - 了解当某个资源更改了合规状态时可能已更改的其他属性。 评估这些附加属性可以洞察可能需要通过 Azure Policy 定义进行管理的其他属性。
 
-本文介绍如何通过 Resource Graph 的 SDK 收集此信息。 若要在 Azure 门户中查看此信息，请参阅 Azure Policy 的[更改历史记录](../../policy/how-to/determine-non-compliance.md#change-history-preview)或 Azure 活动日志[更改历史记录](../../../azure-monitor/platform/activity-log-view.md#azure-portal)。
-
+本文介绍如何通过 Resource Graph 的 SDK 收集此信息。
 
 > [!NOTE]
 > Resource Graph 中的更改详细信息适用于资源管理器属性。 若要跟踪虚拟机内部的更改，请参阅 Azure Policy 的 [VM 的来宾配置](../../policy/concepts/guest-configuration.md)。

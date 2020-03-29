@@ -9,14 +9,14 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
 origin.date: 12/17/2019
-ms.date: 03/23/2020
+ms.date: 03/16/2020
 ms.author: v-tawe
-ms.openlocfilehash: 35b49459a93eedcb77bc7161bc990aa6abe6508e
-ms.sourcegitcommit: e94ed1c9eff4e88be2ca389909e60b14cc0d92f8
+ms.openlocfilehash: 065a2881772ec7707669e2cb75947d2b60a13f2d
+ms.sourcegitcommit: b2f2bb08ab1b5ccb3c596d84b3b6ddca5bba3903
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79084665"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80151642"
 ---
 ## <a name="prerequisites"></a>先决条件
 
@@ -24,8 +24,7 @@ ms.locfileid: "79084665"
 
 > [!div class="checklist"]
 > * [创建一个 Azure 搜索资源](../../../../get-started.md)
-> * [设置开发环境](../../../../quickstarts/setup-platform.md?tabs=windows)
-> * [创建空示例项目](../../../../quickstarts/create-project.md?tabs=windows)
+> * [设置开发环境并创建空项目](../../../../quickstarts/setup-platform.md?tabs=windows)
 > * 请确保你有权访问麦克风，以便进行音频捕获
 
 ## <a name="add-sample-code"></a>添加示例代码

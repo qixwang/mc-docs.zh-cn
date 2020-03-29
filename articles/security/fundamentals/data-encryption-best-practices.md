@@ -16,12 +16,12 @@ ms.workload: na
 origin.date: 05/06/2019
 ms.date: 03/02/2020
 ms.author: v-lingwu
-ms.openlocfilehash: 9b42401860150298c60a892add37cf8061f82271
-ms.sourcegitcommit: 2b4507745b98b45f1ce3f3d30f397521148ef35a
+ms.openlocfilehash: fbfab1f215cd004ff2baebb771ea3b718625678b
+ms.sourcegitcommit: 7f8acc663bf3429b391c2c615bed0d1b2107fd7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78213790"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80290085"
 ---
 # <a name="azure-data-security-and-encryption-best-practices"></a>Azure 数据安全与加密最佳做法
 本文介绍了针对数据安全和加密的最佳做法。
@@ -38,7 +38,7 @@ ms.locfileid: "78213790"
 
 保护密钥对保护云中的数据至关重要。
 
-[Azure Key Vault](/azure/key-vault/key-vault-overview) 可帮助保护云应用程序和服务使用的加密密钥和机密。 密钥保管库简化了密钥管理过程，可让你控制用于访问和加密数据的密钥。 开发人员可以在几分钟内创建用于开发和测试的密钥，然后将其迁移到生产密钥。 安全管理员可以根据需要授予（和吊销）密钥权限。
+[Azure Key Vault](/key-vault/key-vault-overview) 可帮助保护云应用程序和服务使用的加密密钥和机密。 密钥保管库简化了密钥管理过程，可让你控制用于访问和加密数据的密钥。 开发人员可以在几分钟内创建用于开发和测试的密钥，然后将其迁移到生产密钥。 安全管理员可以根据需要授予（和吊销）密钥权限。
 
 可以使用 Key Vault 创建多个安全容器（称为保管库）。 这些保管库受 HSM 支持。 保管库可以集中存储应用程序机密，降低安全信息意外丢失的可能性。 Key vault 还控制并记录外界对其所存储内容的访问。 Azure Key Vault 负责处理传输层安全性 (TLS) 证书的请求和续订事宜。 它为可靠的证书生命周期管理解决方案提供相关功能。
 
@@ -47,7 +47,7 @@ Azure Key Vault 旨在支持应用程序密钥和机密。 Key Vault 不应用�
 以下是使用 Key Vaul 的安全最佳做法。
 
 **最佳做法**：向特定范围内的用户、组和应用程序授予访问权限。   
-**详细信息**：使用 RBAC 的预定义角色。 例如，要向用户授予管理密钥保管库的访问权限，需要将预定义的角色[密钥保管库参与者](/azure/role-based-access-control/built-in-roles)分配给位于特定范围内的此用户。 在此情况下，该范围可以是订阅、资源组，或只是特定的密钥保管库。 如果预定义角色不符合需求，可以[定义自己的角色](/azure/role-based-access-control/custom-roles)。
+**详细信息**：使用 RBAC 的预定义角色。 例如，要向用户授予管理密钥保管库的访问权限，需要将预定义的角色[密钥保管库参与者](/role-based-access-control/built-in-roles)分配给位于特定范围内的此用户。 在此情况下，该范围可以是订阅、资源组，或只是特定的密钥保管库。 如果预定义角色不符合需求，可以[定义自己的角色](/role-based-access-control/custom-roles)。
 
 **最佳做法**：控制用户有权访问的内容。   
 **详细信息**：可通过以下两个独立接口来控制对密钥保管库的访问：管理平面和数据平面。 管理平面访问控制与数据平面访问控制相互独立。
@@ -85,7 +85,7 @@ Azure Key Vault 旨在支持应用程序密钥和机密。 Key Vault 不应用�
 [静态数据加密](https://cloudblogs.microsoft.com/microsoftsecure/2015/09/10/cloud-security-controls-series-encrypting-data-at-rest/)是实现数据隐私性、符合性和数据主权的必要措施。
 
 **最佳做法**：使用磁盘加密来帮助保护数据。   
-**详细信息**：使用 [Azure 磁盘加密](/azure/security/azure-security-disk-encryption-overview)。 它使 IT 管理员能够加密 Windows 和 Linux IaaS VM 磁盘。 磁盘加密利用符合行业标准的 Windows BitLocker 功能和 Linux dm-crypt 功能为 OS 和数据磁盘提供卷加密。
+**详细信息**：使用 [Azure 磁盘加密](/security/azure-security-disk-encryption-overview)。 它使 IT 管理员能够加密 Windows 和 Linux IaaS VM 磁盘。 磁盘加密利用符合行业标准的 Windows BitLocker 功能和 Linux dm-crypt 功能为 OS 和数据磁盘提供卷加密。
 
 Azure 存储和 Azure SQL 数据库默认对静态数据进行加密，并且许多服务都将加密作为选项提供。 可以使用 Azure Key Vault 来持续控制用于访问和加密数据的密钥。
 
@@ -103,13 +103,13 @@ Azure 存储和 Azure SQL 数据库默认对静态数据进行加密，并且许
 以下是特定于使用 Azure VPN 网关、SSL/TLS 和 HTTPS 的最佳做法。
 
 **最佳做法**：从位于本地的多个工作站安全访问 Azure 虚拟网络。   
-**详细信息**：使用[站点到站点 VPN](/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal)。
+**详细信息**：使用[站点到站点 VPN](/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal)。
 
 **最佳做法**：从位于本地的单个工作站安全访问 Azure 虚拟网络。   
-**详细信息**：使用[点到站点 VPN](/azure/vpn-gateway/vpn-gateway-point-to-site-create)。
+**详细信息**：使用[点到站点 VPN](/vpn-gateway/vpn-gateway-point-to-site-create)。
 
 **最佳做法**：通过专用高速 WAN 链路移动大型数据集。   
-**详细信息**：使用 [ExpressRoute](/azure/expressroute/expressroute-introduction)。 如果选择使用 ExpressRoute，则还可以使用 [SSL/TLS](https://support.microsoft.com/kb/257591) 或其他协议在应用程序级别加密数据，以提供额外的保护。
+**详细信息**：使用 [ExpressRoute](/expressroute/expressroute-introduction)。 如果选择使用 ExpressRoute，则还可以使用 [SSL/TLS](https://support.microsoft.com/kb/257591) 或其他协议在应用程序级别加密数据，以提供额外的保护。
 
 **最佳做法**：通过 Azure 门户与 Azure 存储交互。   
 **详细信息**：所有事务都通过 HTTPS 进行。 也可通过 HTTPS 使用[存储 REST API](https://msdn.microsoft.com/library/azure/dd179355.aspx) 与 [Azure 存储](https://azure.microsoft.com/services/storage/)进行交互。
@@ -118,19 +118,10 @@ Azure 存储和 Azure SQL 数据库默认对静态数据进行加密，并且许
 
 ## <a name="secure-email-documents-and-sensitive-data"></a>保护电子邮件、文档和敏感数据
 
-你希望控制并帮助保护在公司外部共享的电子邮件、文档和敏感数据。 [Azure 信息保护](/azure/information-protection/)是基于云的解决方案，可帮助组织对其文档和电子邮件进行分类、标记和保护。 这可以由定义了规则和条件的管理员自动执行、由用户手动执行，或者以组合方式执行，在组合方式中，用户可获得建议。
+你希望控制并帮助保护在公司外部共享的电子邮件、文档和敏感数据。 
 
 分类始终是可标识的，而无论数据的存储位置或数据的共享人员。 标签包括视觉标记，如页眉、页脚或水印。 元数据以明文形式添加到文件和电子邮件标题中。 明文形式确保其他服务（如防止数据丢失的解决方案）可以识别分类并采取相应的操作。
 
-保护技术使用 Azure Rights Management (Azure RMS)。 此技术与其他 Microsoft 云服务和应用程序（如 Office 365 和 Azure Active Directory）集成。 此保护技术使用加密、标识和授权策略。 通过 Azure RMS 应用的保护与文档和电子邮件保留在一起，不受位置影响，也无论是在组织、网络、文件服务器和应用程序内部还是外部。
-
-此信息保护解决方案可用于控制数据，即使是与他人共享的数据，也可控制。 还可以将 Azure RMS 用于自己的业务线应用程序和软件供应商提供的信息保护解决方案，而无论这些应用程序和解决方案是在本地还是在云中。
-
-建议：
-
-- 为组织[部署 Azure 信息保护](/azure/information-protection/deployment-roadmap)。
-- 应用可反映业务需求的标签。 例如：将名为“高度机密”的标签应用于包含绝密数据的所有文档和电子邮件，以对这些数据进行分类和保护。 然后，只有授权的用户才能访问此数据，并具有指定的任何限制。
-- 配置 [Azure RMS 的使用情况日志记录](/azure/information-protection/log-analyze-usage)，以便监视组织使用保护服务的方式。
 
 [数据分类](https://download.microsoft.com/download/0/A/3/0A3BE969-85C5-4DD2-83B6-366AA71D1FE3/Data-Classification-for-Cloud-Readiness.pdf)和文件保护能力不佳的组织可能更容易遭到数据泄漏或数据滥用。 使用适当的文件保护，可以分析数据流，以深入了解业务、检测风险行为并采取纠正措施、跟踪对文档的访问等等。
 

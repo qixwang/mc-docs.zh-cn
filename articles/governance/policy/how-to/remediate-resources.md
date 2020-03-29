@@ -2,15 +2,15 @@
 title: 修正不符合资源
 description: 本指南将指导你完成修正 Azure Policy 中不符合策略的资源的过程。
 ms.author: v-tawe
-origin.date: 09/09/2019
-ms.date: 03/23/2020
+origin.date: 02/26/2020
+ms.date: 03/16/2020
 ms.topic: how-to
-ms.openlocfilehash: 109a2204506f3ecba603ff932e3cd1410f222e9c
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: e8d66cfa23eccc43b2356d2e74575d3f615dabfa
+ms.sourcegitcommit: 1d3d8dfdaf6281f06640cbee7124a1e8bf102c50
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79291292"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80243912"
 ---
 # <a name="remediate-non-compliant-resources-with-azure-policy"></a>修正 Azure Policy 中的不符合资源
 
@@ -191,5 +191,5 @@ Start-AzPolicyRemediation -Name 'myRemedation' -PolicyAssignmentId '/subscriptio
 - 查看 [Azure Policy 定义结构](../concepts/definition-structure.md)。
 - 查看[了解策略效果](../concepts/effects.md)。
 - 了解如何[以编程方式创建策略](programmatically-create.md)。
-- 了解如何 [获取符合性数据](get-compliance-data.md
+- 了解如何[获取符合性数据](get-compliance-data.md)。
 - 参阅[使用 Azure 管理组来组织资源](../../management-groups/overview.md)，了解什么是管理组。

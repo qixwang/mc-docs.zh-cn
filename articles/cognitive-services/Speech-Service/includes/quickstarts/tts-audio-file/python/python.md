@@ -9,23 +9,23 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
 origin.date: 07/05/2019
-ms.date: 03/23/2020
+ms.date: 03/16/2020
 ms.author: v-tawe
-ms.openlocfilehash: ec0539be7126564c3dff9b76051a23772412a57b
-ms.sourcegitcommit: e94ed1c9eff4e88be2ca389909e60b14cc0d92f8
+ms.openlocfilehash: bdffc7a1d7c8dbd6ee326c64e19e98c641f9475c
+ms.sourcegitcommit: b2f2bb08ab1b5ccb3c596d84b3b6ddca5bba3903
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79084670"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80151588"
 ---
 ## <a name="prerequisites"></a>先决条件
 
 * 语音服务的 Azure 订阅密钥。 [获取一个试用版](~/articles/cognitive-services/Speech-Service/get-started.md)。
-* [Python 3.5 或更高版本](https://www.python.org/downloads/)。
+* [Python 3.5 到 3.8](https://www.python.org/downloads/)。
 * Python 语音 SDK 包适用于以下操作系统：
     * Windows：x64 和 x86。
     * Mac：macOS X 10.12 或更高版本。
-    * Linux：x64 上的 Ubuntu 16.04、Ubuntu 18.04、Debian 9。
+    * Linux：基于 x64 的 Ubuntu 16.04、Ubuntu 18.04、Debian 9、RHEL 8、CentOS 8。
 * 在 Linux 上，请运行以下命令安装所需的包：
 
   * 在 Ubuntu 上：
@@ -41,6 +41,16 @@ ms.locfileid: "79084670"
     sudo apt-get update
     sudo apt-get install build-essential libssl1.0.2 libasound2
     ```
+
+  * 在 RHEL/CentOS 8 上：
+
+    ```sh
+    sudo yum update
+    sudo yum install alsa-lib openssl python3
+    ```
+
+> [!NOTE]
+> 在 RHEL/CentOS 8 上，按照[如何配置 OpenSSL for Linux](~/articles/cognitive-services/speech-service/how-to-configure-openssl-linux.md) 上的说明进行操作。
 
 * 在 Windows 上，需要安装适用于平台的 [Microsoft Visual C++ Redistributable for Visual Studio 2019](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads)。
 

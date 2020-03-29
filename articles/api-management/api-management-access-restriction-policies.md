@@ -15,18 +15,18 @@ ms.topic: article
 origin.date: 01/10/2020
 ms.author: v-yiso
 ms.date: 02/24/2020
-ms.openlocfilehash: 1f9a8e791ebac5897737f02f7c801fc0d95f8fbe
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: 40758ced16c3e821761eb52e041c4cee68025e0a
+ms.sourcegitcommit: 7f8acc663bf3429b391c2c615bed0d1b2107fd7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79292895"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80290086"
 ---
 # <a name="api-management-access-restriction-policies"></a>API 管理访问限制策略
 
 本主题提供以下 API 管理策略的参考。 有关添加和配置策略的信息，请参阅 [API 管理中的策略](https://go.microsoft.com/fwlink/?LinkID=398186)。
 
-## <a name="AccessRestrictionPolicies"></a>访问限制策略
+## <a name="access-restriction-policies"></a><a name="AccessRestrictionPolicies"></a>访问限制策略
 
 -   [检查 HTTP 标头](api-management-access-restriction-policies.md#CheckHTTPHeader) - 强制必须存在 HTTP 标头和/或强制采用 HTTP 标头的值。
 -   [按订阅限制调用速率](api-management-access-restriction-policies.md#LimitCallRate) - 根据订阅限制调用速率，避免 API 使用量暴增。
@@ -39,7 +39,7 @@ ms.locfileid: "79292895"
 > [!TIP]
 > 可以在不同的范围内为不同的目的使用访问限制策略。 例如，可以通过在 API 级别上应用 `validate-jwt` 策略来使用 AAD 身份验证保护整个 API，也可以在 API 操作级别上应用它并使用 `claims` 进行更细粒度的控制。
 
-## <a name="CheckHTTPHeader"></a>检查 HTTP 标头
+## <a name="check-http-header"></a><a name="CheckHTTPHeader"></a>检查 HTTP 标头
 
 使用 `check-header` 策略强制请求具有指定的 HTTP 标头。 可以选择性地查看标头是否具有特定值，或者检查是否存在一系列允许的值。 如果检查失败，此策略会终止请求处理，并返回其所指定的 HTTP 状态代码和错误消息。
 
@@ -84,7 +84,7 @@ ms.locfileid: "79292895"
 
 -   **策略范围：** 所有范围
 
-## <a name="LimitCallRate"></a>按订阅限制调用速率
+## <a name="limit-call-rate-by-subscription"></a><a name="LimitCallRate"></a>按订阅限制调用速率
 
 `rate-limit` 策略可以对调用速率进行限制，使每个指定时段的调用不超出指定的数目，避免单个订阅的 API 使用量暴增。 触发此策略时，调用方会收到 `429 Too Many Requests` 响应状态代码。
 
@@ -144,7 +144,7 @@ ms.locfileid: "79292895"
 
 -   **策略范围：** 产品、API、操作
 
-## <a name="LimitCallRateByKey"></a>按密钥限制调用速率
+## <a name="limit-call-rate-by-key"></a><a name="LimitCallRateByKey"></a>按密钥限制调用速率
 
 > [!IMPORTANT]
 > 此功能在 API 管理的“消耗”  层中不可用。
@@ -196,9 +196,9 @@ ms.locfileid: "79292895"
 | 名称                | 说明                                                                                           | 必须 | 默认 |
 | ------------------- | ----------------------------------------------------------------------------------------------------- | -------- | ------- |
 | calls               | 在 `renewal-period` 所指定的时间间隔内允许的最大总调用数。 | 是      | 不适用     |
-| counter-key         | 用于速率限制策略的密钥。                                                             | 是      | 不适用     |
+| counter-key         | 用于速率限制策略的密钥。                                                             | 是      | 空值     |
 | increment-condition | 一个布尔表达式，指定在判断请求数是否达到配额时是否应计入该请求 (`true`)。        | 否       | 不适用     |
-| renewal-period      | 在重置配额之前等待的时间长度，以秒为单位。                                              | 是      | 不适用     |
+| renewal-period      | 在重置配额之前等待的时间长度，以秒为单位。                                              | 是      | 空值     |
 
 ### <a name="usage"></a>使用情况
 
@@ -208,7 +208,7 @@ ms.locfileid: "79292895"
 
 -   **策略范围：** 所有范围
 
-## <a name="RestrictCallerIPs"></a>限制调用方 IP
+## <a name="restrict-caller-ips"></a><a name="RestrictCallerIPs"></a>限制调用方 IP
 
 `ip-filter` 策略筛选（允许/拒绝）来自特定 IP 地址和/或地址范围的调用。
 
@@ -254,7 +254,7 @@ ms.locfileid: "79292895"
 -   **策略节：** 入站
 -   **策略范围：** 所有范围
 
-## <a name="SetUsageQuota"></a>按订阅设置使用量配额
+## <a name="set-usage-quota-by-subscription"></a><a name="SetUsageQuota"></a>按订阅设置使用量配额
 
 `quota` 策略允许根据订阅强制实施可续订或有生存期的调用量和/或带宽配额。
 
@@ -300,7 +300,7 @@ ms.locfileid: "79292895"
 | 名称           | 说明                                                                                               | 必须                                                         | 默认 |
 | -------------- | --------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------- | ------- |
 | name           | 要向其应用配额的 API 或操作的名称。                                             | 是                                                              | 不适用     |
-| bandwidth      | 在 `renewal-period` 所指定的时间间隔内允许的最大总字节数（千字节）。 | 必须指定 `calls` 和/或 `bandwidth`。 | 不适用     |
+| bandwidth      | 在 `renewal-period` 所指定的时间间隔内允许的最大总字节数（千字节）。 | 必须指定 `calls` 和/或 `bandwidth`。 | 空值     |
 | calls          | 在 `renewal-period` 所指定的时间间隔内允许的最大总调用数。     | 必须指定 `calls` 和/或 `bandwidth`。 | 不适用     |
 | renewal-period | 在重置配额之前等待的时间长度，以秒为单位。                                                  | 是                                                              | 不适用     |
 
@@ -311,7 +311,7 @@ ms.locfileid: "79292895"
 -   **策略节：** 入站
 -   **策略范围：** 产品
 
-## <a name="SetUsageQuotaByKey"></a>按密钥设置使用量配额
+## <a name="set-usage-quota-by-key"></a><a name="SetUsageQuotaByKey"></a>按密钥设置使用量配额
 
 > [!IMPORTANT]
 > 此功能在 API 管理的“消耗”  层中不可用。
@@ -359,11 +359,11 @@ ms.locfileid: "79292895"
 
 | 名称                | 说明                                                                                               | 必须                                                         | 默认 |
 | ------------------- | --------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------- | ------- |
-| bandwidth           | 在 `renewal-period` 所指定的时间间隔内允许的最大总字节数（千字节）。 | 必须指定 `calls` 和/或 `bandwidth`。 | 不适用     |
-| calls               | 在 `renewal-period` 所指定的时间间隔内允许的最大总调用数。     | 必须指定 `calls` 和/或 `bandwidth`。 | 不适用     |
-| counter-key         | 用于配额策略的密钥。                                                                      | 是                                                              | 不适用     |
+| bandwidth           | 在 `renewal-period` 所指定的时间间隔内允许的最大总字节数（千字节）。 | 必须指定 `calls` 和/或 `bandwidth`。 | 空值     |
+| calls               | 在 `renewal-period` 所指定的时间间隔内允许的最大总调用数。     | 必须指定 `calls` 和/或 `bandwidth`。 | 空值     |
+| counter-key         | 用于配额策略的密钥。                                                                      | 是                                                              | 空值     |
 | increment-condition | 一个布尔表达式，指定在判断请求数是否达到配额时是否应计入该请求 (`true`)             | 否                                                               | 不适用     |
-| renewal-period      | 在重置配额之前等待的时间长度，以秒为单位。                                                  | 是                                                              | 不适用     |
+| renewal-period      | 在重置配额之前等待的时间长度，以秒为单位。                                                  | 是                                                              | 空值     |
 
 ### <a name="usage"></a>使用情况
 
@@ -372,7 +372,7 @@ ms.locfileid: "79292895"
 -   **策略节：** 入站
 -   **策略范围：** 所有范围
 
-## <a name="ValidateJWT"></a>验证 JWT
+## <a name="validate-jwt"></a><a name="ValidateJWT"></a>验证 JWT
 
 `validate-jwt` 策略强制从指定 HTTP 标头或指定查询参数提取的 JWT 必须存在且有效。
 
@@ -444,7 +444,7 @@ ms.locfileid: "79292895"
 
 ```xml
 <validate-jwt header-name="Authorization" failed-validation-httpcode="401" failed-validation-error-message="Unauthorized. Access token is missing or invalid.">
-    <openid-config url="https://login.microsoftonline.com/contoso.onmicrosoft.com/.well-known/openid-configuration" />
+    <openid-config url="https://login.partner.microsoftonline.cn/contoso.onmicrosoft.com/.well-known/openid-configuration" />
     <audiences>
         <audience>25eef6e4-c905-4a07-8eb4-0d08d5df8b3f</audience>
     </audiences>
@@ -460,7 +460,7 @@ ms.locfileid: "79292895"
 
 ```xml
 <validate-jwt header-name="Authorization" failed-validation-httpcode="401" failed-validation-error-message="Unauthorized. Access token is missing or invalid.">
-    <openid-config url="https://login.microsoftonline.com/tfp/contoso.onmicrosoft.com/b2c_1_signin/v2.0/.well-known/openid-configuration" />
+    <openid-config url="https://login.partner.microsoftonline.cn/tfp/contoso.onmicrosoft.com/b2c_1_signin/v2.0/.well-known/openid-configuration" />
     <audiences>
         <audience>d313c4e4-de5f-4197-9470-e509a2f0b806</audience>
     </audiences>
@@ -532,7 +532,7 @@ ms.locfileid: "79292895"
 | require-scheme                  | 令牌方案的名称，例如“Bearer”。 设置了此属性时，策略将确保 Authorization 标头值中存在指定的方案。                                                                                                                                                                                                                                                                                    | 否                                                                               | 不适用                                                                               |
 | require-signed-tokens           | 布尔值。 指定令牌是否需要签名。                                                                                                                                                                                                                                                                                                                                                                                           | 否                                                                               | 是                                                                              |
 | separator                       | 字符串。 指定要用于从多值声明中提取一组值的分隔符（例如 ","）。                                                                                                                                                                                                                                                                                                                                          | 否                                                                               | 不适用                                                                               |
-| url                             | Open ID 配置终结点 URL，从中可以获取 Open ID 配置元数据。 响应应符合以下 URL 中定义的规范：`https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata`。 对于 Azure Active Directory，请使用以下 URL：`https://login.microsoftonline.com/{tenant-name}/.well-known/openid-configuration`，将其中的 {tenant-name} 替换为你的目录租户名称，例如 `contoso.onmicrosoft.com`。 | 是                                                                              | 不适用                                                                               |
+| url                             | Open ID 配置终结点 URL，从中可以获取 Open ID 配置元数据。 响应应符合以下 URL 中定义的规范：`https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata`。 对于 Azure Active Directory，请使用以下 URL：`https://login.partner.microsoftonline.cn/{tenant-name}/.well-known/openid-configuration`，将其中的 {tenant-name} 替换为你的目录租户名称，例如 `contoso.onmicrosoft.com`。 | 是                                                                              | 不适用                                                                               |
 | output-token-variable-name      | 字符串。 成功进行令牌验证后，将作为 [`Jwt`](api-management-policy-expressions.md) 类型的对象接收令牌值的上下文变量的名称                                                                                                                                                                                                                                                                                     | 否                                                                               | 不适用                                                                               |
 
 ### <a name="usage"></a>使用情况

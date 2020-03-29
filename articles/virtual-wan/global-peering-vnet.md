@@ -8,13 +8,14 @@ ms.topic: conceptual
 origin.date: 11/04/2019
 ms.date: 03/02/2020
 ms.author: v-yeche
-ms.openlocfilehash: 26b11c5c4896f689d151e227d5a599e3facbe46f
-ms.sourcegitcommit: 69cadf1fa0ed81751c48fbce919a6bb44b1053ce
+ms.openlocfilehash: 1b524494ef89131f5ba993c1f75b15865fe4bfd8
+ms.sourcegitcommit: 303a16c7117b6f3495ef0493b4ae8ccb67d7dbba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78209250"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80342423"
 ---
+<!--Release before CONFIRM-->
 # <a name="configure-global-vnet-peering-cross-region-vnet-for-virtual-wan"></a>为虚拟 WAN 配置全局 VNet 对等互连（跨区域 VNet）
 
 可以将不同区域中的 VNet 连接到虚拟 WAN 中心。
@@ -29,7 +30,9 @@ ms.locfileid: "78209250"
 <a name="register"></a>
 ## <a name="register-this-feature"></a>注册此功能
 
-可以使用 PowerShell 注册此功能。 如果在下面的示例中选择“试用”，则会打开 Azure Cloud Shell，无需在计算机本地安装 PowerShell cmdlet。 如有必要，可以使用 'Select-AzSubscription -SubscriptionId <subid>' cmdlet 更改订阅。
+可以使用 PowerShell 注册此功能。 如有必要，可以使用 'Select-AzSubscription -SubscriptionId <subid>' cmdlet 更改订阅。
+
+<!--Not Avaialble on If you select "Try It" from the example below, Azure Cloud-Shell opens and you won't need to install the PowerShell cmdlets locally to your computer.-->
 
 ```powershell
 Register-AzProviderFeature -FeatureName AllowCortexGlobalVnetPeering -ProviderNamespace Microsoft.Network

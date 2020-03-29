@@ -7,14 +7,14 @@ author: hrasheed-msft
 ms.author: v-yiso
 ms.reviewer: jasonh
 ms.topic: howto
-origin.date: 10/23/2019
-ms.date: 02/24/2020
-ms.openlocfilehash: 88be4fb1a371fd8f2fe200f611ce8f5858676204
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+origin.date: 03/11/2020
+ms.date: 04/06/2020
+ms.openlocfilehash: 020bf0c5623fabac3c53d10ea441960cf68a278e
+ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77428701"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80343607"
 ---
 # <a name="configure-outbound-network-traffic-for-azure-hdinsight-clusters-using-firewall-preview"></a>使用防火墙配置 Azure HDInsight 群集的出站网络流量（预览）
 
@@ -33,6 +33,8 @@ HDInsight 出站流量依赖项几乎完全是使用 FQDN 定义的，而这些 
 ## <a name="configuring-azure-firewall-with-hdinsight"></a>在 HDInsight 中配置 Azure 防火墙
 
 使用 Azure 防火墙锁定现有 HDInsight 的传出流量的步骤摘要如下：
+
+1. 创建子网。
 1. 创建防火墙。
 1. 将应用程序规则添加到防火墙
 1. 将网络规则添加到防火墙。

@@ -3,14 +3,14 @@ author: erhopf
 ms.service: cognitive-services
 ms.topic: include
 origin.date: 02/20/2019
-ms.date: 03/09/2020
+ms.date: 03/16/2020
 ms.author: v-tawe
-ms.openlocfilehash: 961868627344affda295a9226e111a2479409448
-ms.sourcegitcommit: ced17aa58e800b9e4335276a1595b8045836b256
+ms.openlocfilehash: a665ec19d0446dfcf9da9416ec289eb4b1578f96
+ms.sourcegitcommit: b2f2bb08ab1b5ccb3c596d84b3b6ddca5bba3903
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77590757"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80151672"
 ---
 1. 启动 Eclipse。
 

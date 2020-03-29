@@ -10,14 +10,14 @@ ms.subservice: develop
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:JavaScript
 ms.topic: quickstart
 ms.workload: identity
-ms.date: 03/10/2020
+ms.date: 03/20/2020
 ms.author: v-junlch
-ms.openlocfilehash: 1d7b21a232bad390eb28317ce5b485e32f0ca23c
-ms.sourcegitcommit: 4ba6d7c8bed5398f37eb37cf5e2acafcdcc28791
+ms.openlocfilehash: 5917fdc2bbb32a6dd3da95a1c8e86e99fdc077a7
+ms.sourcegitcommit: 6568c59433d7e80ab06e9fe76d4791f761ed6775
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2020
-ms.locfileid: "79133825"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80243123"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-javascript-spa"></a>快速入门：在 JavaScript SPA 中登录用户并获得访问令牌
 
@@ -28,6 +28,7 @@ ms.locfileid: "79133825"
 * Azure 订阅 - [创建订阅](https://www.azure.cn/pricing/1rmb-trial)
 * [Node.js](https://nodejs.org/en/download/)。
 * [Visual Studio Code](https://code.visualstudio.com/download)（用于编辑项目文件）
+
 
 > [!div renderon="docs"]
 > ## <a name="register-and-download-your-quickstart-application"></a>注册并下载快速入门应用程序
@@ -71,38 +72,41 @@ ms.locfileid: "79133825"
 
 #### <a name="step-2-download-the-project"></a>步骤 2：下载项目
 
-选择适合你的开发环境的选项：
+> [!div renderon="docs"]
+> 若要使用 Node.js 在 Web 服务器中运行项目，请[下载核心项目文件](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/archive/quickstart.zip)。
 
-* 若要使用 Node.js 在 Web 服务器中运行项目，请[下载核心项目文件](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/archive/quickstart.zip)。 若要打开这些文件，请使用 [Visual Studio Code](https://code.visualstudio.com/) 之类的编辑器。
+> [!div renderon="portal"]
+> 使用 Node.js 在 Web 服务器中运行项目
 
-#### <a name="step-3-configure-your-javascript-app"></a>步骤 3：配置 JavaScript 应用
+> [!div renderon="portal" id="autoupdate" class="nextstepaction"]
+> [下载代码示例]()
 
 > [!div renderon="docs"]
-> 编辑 *JavaScriptSPA* 文件夹中的 *authConfig.js*，并设置 `msalConfig` 下的 `clientID` 和 `authority` 值。
 
-> [!div class="sxs-lookup" renderon="portal"]
-> 在 JavaScriptSPA  文件夹中，编辑 authConfig.js  ，并将 `msalConfig` 替换为以下代码：
+> #### <a name="step-3-configure-your-javascript-app"></a>步骤 3：配置 JavaScript 应用
+>
+> 在 JavaScriptSPA  文件夹中，编辑 authConfig.js  ，并在 `msalConfig` 下设置 `clientID`、`authority` 和 `redirectUri` 值。
+>
+> ```javascript
+>
+>  // Config object to be passed to Msal on creation
+>  const msalConfig = {
+>    auth: {
+>      clientId: "Enter_the_Application_Id_Here",
+>      authority: "Enter_the_Cloud_Instance_Id_HereEnter_the_Tenant_Info_Here",
+>      redirectUri: "Enter_the_Redirect_Uri_Here",
+>    },
+>    cache: {
+>      cacheLocation: "sessionStorage", // This configures where your cache will be stored
+>      storeAuthStateInCookie: false, // Set this to "true" if you are having issues on IE11 or Edge
+>    }
+>  };  
+>
+>```
 
-```javascript
-
-  // Config object to be passed to Msal on creation
-  const msalConfig = {
-    auth: {
-      clientId: "Enter_the_Application_Id_Here",
-      authority: "Enter_the_Cloud_Instance_Id_HereEnter_the_Tenant_Info_Here",
-      redirectUri: "Enter_the_Redirect_Uri_Here",
-    },
-    cache: {
-      cacheLocation: "sessionStorage", // This configures where your cache will be stored
-      storeAuthStateInCookie: false, // Set this to "true" if you are having issues on IE11 or Edge
-      forceRefresh: false // Set this to "true" to skip a cached token and go to the server to get a new
-    }
-  };  
-
-```
 > [!div renderon="portal"]
 > > [!NOTE]
-> > 本快速入门支持 Enter_the_Supported_Account_Info_Here。
+> > Enter_the_Supported_Account_Info_Here
 
 > [!div renderon="docs"]
 >
@@ -117,19 +121,43 @@ ms.locfileid: "79133825"
 > > [!TIP]
 > > 若要查找“应用程序(客户端) ID”、“目录(租户) ID”和“支持的帐户类型”的值，请转到 Azure 门户中应用的“概述”页。    
 >
+> [!div class="sxs-lookup" renderon="portal"]
+> #### <a name="step-3-your-app-is-configured-and-ready-to-run"></a>步骤 3：应用已配置并可以运行
+> 我们已经为项目配置了应用属性的值。 
 
-#### <a name="step-4-run-the-project"></a>步骤 4：运行项目
+> [!div renderon="docs"]
+> 
+> 然后，仍在同一文件夹中，编辑 graphConfig.js  文件，以便为 `apiConfig` 对象设置 `graphMeEndpoint` 和 `graphMeEndpoint`。
+> ```javascript
+>   // Add here the endpoints for MS Graph API services you would like to use.
+>   const graphConfig = {
+>     graphMeEndpoint: "Enter_the_Graph_Endpoint_Herev1.0/me",
+>     graphMailEndpoint: "Enter_the_Graph_Endpoint_Herev1.0/me/messages"
+>   };
+>
+>   // Add here scopes for access token to be used at MS Graph API endpoints.
+>   const tokenRequest = {
+>       scopes: ["Mail.Read"]
+>   };
+> ```
+>
 
-如果使用 [Node.js](https://nodejs.org/en/download/)：
+> [!div renderon="docs"]
+>
+> 其中：
+> - \<Enter_the_Graph_Endpoint_Here>  是将针对其进行 API 调用的终结点。 对于主要或全局 Microsoft Graph API 服务，只需输入 `https://microsoftgraph.chinacloudapi.cn`。 有关详细信息，请参阅[国家云部署](https://docs.microsoft.com/graph/deployments)
+>
+> #### <a name="step-4-run-the-project"></a>步骤 4：运行项目
+
+使用 [Node.js](https://nodejs.org/en/download/) 在 Web 服务器中运行项目：
 
 1. 若要启动服务器，请从项目目录运行以下命令：
-
-   ```batch
-   npm install
-   npm start
-   ```
-
+    ```batch
+    npm install
+    npm start
+    ```
 1. 打开 Web 浏览器并转到 `http://localhost:3000/`。
+
 1. 选择“登录”  开始登录，然后调用 Microsoft Graph API。
 
 在浏览器加载应用程序后，选择“登录”。  首次登录时，系统会提示你同意允许应用程序访问你的个人资料并登录。 成功登录后，你的用户个人资料信息应会显示在页面上。
@@ -149,7 +177,6 @@ MSAL 库会将登录用户，并请求用于访问受 Microsoft 标识平台保�
 ```
 > [!TIP]
 > 可将上述版本替换为 [MSAL.js 版本](https://github.com/AzureAD/microsoft-authentication-library-for-js/releases)中列出的最新发布版本。
-
 
 另外，如果已安装 Node.js，则可通过 Node.js 包管理器 (npm) 下载最新版本：
 
@@ -172,7 +199,6 @@ npm install msal
     cache: {
       cacheLocation: "sessionStorage", // This configures where your cache will be stored
       storeAuthStateInCookie: false, // Set this to "true" if you are having issues on IE11 or Edge
-      forceRefresh: false // Set this to "true" to skip a cached token and go to the server to get a new
     }
   };  
 
@@ -223,7 +249,7 @@ MSAL 使用三个方法来获取令牌：`acquireTokenRedirect`、`acquireTokenP
 `acquireTokenSilent` 方法处理令牌获取和续订，无需进行任何用户交互。 首次执行 `loginRedirect` 或 `loginPopup` 方法后，通常使用 `acquireTokenSilent` 方法获取用于访问受保护资源的令牌，以便进行后续调用。 进行请求或续订令牌的调用时，以静默方式进行。
 
 ```javascript
-// Add scopes for the access token to be used at Microsoft Graph API endpoints.
+
 const tokenRequest = {
     scopes: ["https://microsoftgraph.chinacloudapi.cn/Mail.Read"]
 };

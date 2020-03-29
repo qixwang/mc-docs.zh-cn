@@ -9,18 +9,18 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: 07bdfc462f5352c6a0affa1a2b3f1b6c42f8fa5d
-ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
+ms.openlocfilehash: 527ae8d927c9e482253321e02405e53fcb162ac2
+ms.sourcegitcommit: b2f2bb08ab1b5ccb3c596d84b3b6ddca5bba3903
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77494375"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80151753"
 ---
 # <a name="how-to-use-different-attestation-mechanisms-with-device-provisioning-service-client-sdk-for-c"></a>如何将不同的证明机制与用于 C 的设备预配服务客户端 SDK 配合使用
 
 本文展示了如何将不同的[证明机制](concepts-security.md#attestation-mechanism)与用于 C 的设备预配服务客户端 SDK 配合使用。可以使用物理设备，也可以使用模拟器。 预配服务支持下述两类证据机制的身份验证：X.509 和受信任的平台模块 (TPM)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 根据[创建和预配模拟设备](./quick-create-simulated-device.md)指南中“准备开发环境”部分的说明准备开发环境。
 
@@ -28,7 +28,7 @@ ms.locfileid: "77494375"
 
 作为设备制造商，首先需要基于受支持类型之一选择一种证明机制。 目前，[用于 C 的设备预配服务客户端 SDK](https://github.com/Azure/azure-iot-sdk-c/tree/master/provisioning_client) 支持以下证明机制： 
 
-- [受信任的平台模块 (TPM)](https://en.wikipedia.org/wiki/Trusted_Platform_Module)：TPM 是适用于大多数基于 Windows 的设备平台和几种基于 Linux/Ubuntu 的设备的标准模块。 作为设备制造商，如果其设备上运行以上任一种 OS，并且正在寻找某种已建立的标准，则可以选择此证明机制。 使用 TPM 芯片可以向设备预配服务单独注册每台设备。 出于开发目的，可以在 Windows 或 Linux 开发计算机上使用 TPM 模拟器。
+- [受信任的平台模块 (TPM)](https://wikipedia.org/wiki/Trusted_Platform_Module)：TPM 是适用于大多数基于 Windows 的设备平台和几种基于 Linux/Ubuntu 的设备的标准模块。 作为设备制造商，如果其设备上运行以上任一种 OS，并且正在寻找某种已建立的标准，则可以选择此证明机制。 使用 TPM 芯片可以向设备预配服务单独注册每台设备。 出于开发目的，可以在 Windows 或 Linux 开发计算机上使用 TPM 模拟器。
 
 - [X.509](https://cryptography.io/en/latest/x509/)：X.509 证书可以存储在称为[硬件安全模块 (HSM)](concepts-security.md#hardware-security-module) 的相对较新的芯片中。 Microsoft 内部也正开展基于 RIoT 或 DICE 芯片的工作，目的是实施 X.509 证书。 使用 X.509 芯片可以在门户中进行批量设备注册。 它还支持 Windows 以外的某些 OS，如 embedOS。 出于开发目的，设备预配服务客户端 SDK 支持 X.509 设备模拟器。 
 

@@ -4,26 +4,26 @@ description: 了解如何使用 Azure IoT Central 应用程序模板构建智能
 author: miriambrus
 ms.author: v-yiso
 origin.date: 10/23/2019
-ms.date: 12/16/2019
+ms.date: 04/06/2020
 ms.topic: overview
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 5eed0370764b9ce1ce7aff81d6c5d98195ed7098
-ms.sourcegitcommit: 6ffa4d50cee80c7c0944e215ca917a248f2a4bcd
+ms.openlocfilehash: 46ca2e5b42d4557c28e5807ed2f6356d25dcb438
+ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74883693"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80343104"
 ---
 # <a name="building-government-solutions-with-azure-iot-central"></a>使用 Azure IoT Central 生成政府解决方案
 
-[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
+
 
 使用 Azure IoT Central 应用程序模板开始构建智能城市解决方案。 立即开始体验**水质监测**、**用水量监测**和**联网废弃物管理**解决方案。
 
 ## <a name="what-is-water-quality-monitoring-application-template"></a>什么是水质监测应用程序模板？   
 
-传统的水质监测依赖于人工采样方法和现场实验室分析，这种方法非常耗时且成本高昂。 通过实时远程监测水质，可以在居民受到影响之前对水质进行监管。 此外，借助高级分析，自来水公司和环保机构可以提前针对潜在的水质问题发出警告，并提前规划净水处理措施。  
+传统的水质监测依赖于人工采样方法和现场实验室分析，这种方法非常耗时且成本高昂。 通过实时远程监测水质，可以在居民受到影响之前对水质问题进行管理。 此外，借助高级分析，自来水公司和环保机构可以提前针对潜在的水质问题发出警告，并提前规划净水处理措施。  
 
 水质监测应用是一个 IoT Central 应用模板，可帮助你立即开始进行 IoT 解决方案开发，使自来水公司能够对智能城市中的水质进行数字化监测。 
 

@@ -4,16 +4,16 @@ description: 本文档介绍如何在设备与设备预配服务 (DPS) 之间传
 author: menchi
 ms.author: v-tawe
 origin.date: 02/11/2020
-ms.date: 03/02/2020
+ms.date: 03/16/2020
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: 938b1e5542dce6360134dfbd8ddf4afa178e409e
-ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
+ms.openlocfilehash: a0e5c15f98be37f9a0bd1abc6582d9f26458a1a0
+ms.sourcegitcommit: 1d3d8dfdaf6281f06640cbee7124a1e8bf102c50
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77494109"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80243899"
 ---
 # <a name="how-to-transfer-a-payload-between-device-and-dps"></a>如何在设备与 DPS 之间传输有效负载
 有时，DPS 需要设备中的更多数据才能正常地将设备预配到适当的 IoT 中心，而这些数据需由设备提供。 反之，DPS 可将数据返回给设备，以便为客户端逻辑提供辅助。 

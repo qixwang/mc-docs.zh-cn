@@ -16,12 +16,12 @@ ms.workload: na
 origin.date: 10/31/2019
 ms.date: 03/02/2020
 ms.author: v-lingwu
-ms.openlocfilehash: 8dc69ecf89993e45bd230beaf49946a73cc03d21
-ms.sourcegitcommit: 2b4507745b98b45f1ce3f3d30f397521148ef35a
+ms.openlocfilehash: 424d504d381041d55bcfc5060bf33d7e824c7cc7
+ms.sourcegitcommit: 7f8acc663bf3429b391c2c615bed0d1b2107fd7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78213797"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80290088"
 ---
 # <a name="security-management-in-azure"></a>Azure 中的安全管理
 Azure 订阅者可从多个设备管理他们的云环境，这些设备包括管理工作站、开发人员电脑，甚至是具有特定于任务的权限的特权最终用户设备。 在某些情况下，可通过基于 Web 的控制台（例如 [Azure 门户](https://azure.microsoft.com/features/azure-portal/)）来执行管理功能。 在其他情况下，可能存在通过虚拟专用网络 (VPN)、终端服务、客户端应用程序协议或（以编程方式）通过 Azure 服务管理 API (SMAPI) 从本地系统直接连接到 Azure。 此外，客户端终结点（例如平板电脑或智能手机）可以加入域或者受到隔离且不受管理。
@@ -101,7 +101,7 @@ Azure 提供了安全机制来帮助管理员管理 Azure 云服务和虚拟机�
 
 虚拟机部署的应用程序将根据需要提供自身的客户端工具和界面（例如 Microsoft Management Console (MMC)）、企业管理控制台（例如 Microsoft System Center 或 Windows Intune）或其他管理应用程序（例如 Microsoft SQL Server Management Studio）。 这些工具通常驻留在企业环境或客户端网络中。 它们可能依赖于需要直接有状态连接的特定网络协议，例如远程桌面协议 (RDP)。 有些可能包含不应该通过 Internet 公开发布或访问的具有 Web 功能的接口。
 
-可以使用[多重身份验证](/azure/active-directory/authentication/multi-factor-authentication)、[X.509 管理证书](https://blogs.msdn.microsoft.com/azuresecurity/2015/07/13/certificate-management-in-azure-dos-and-donts/)和防火墙规则来限制访问 Azure 中的基础结构和平台服务管理。 Azure 门户和 SMAPI 需要传输层安全性 (TLS)。 但是，部署到 Azure 的服务和应用程序需要根据应用程序采取适当的保护措施。 可以通过标准化的强化后工作站配置更轻松地经常启用这些机制。
+可以使用[多重身份验证](/active-directory/authentication/multi-factor-authentication)、[X.509 管理证书](https://blogs.msdn.microsoft.com/azuresecurity/2015/07/13/certificate-management-in-azure-dos-and-donts/)和防火墙规则来限制访问 Azure 中的基础结构和平台服务管理。 Azure 门户和 SMAPI 需要传输层安全性 (TLS)。 但是，部署到 Azure 的服务和应用程序需要根据应用程序采取适当的保护措施。 可以通过标准化的强化后工作站配置更轻松地经常启用这些机制。
 
 ### <a name="management-gateway"></a>管理网关
 若要集中管理所有管理访问权限并简化监视与日志记录，可以在本地网络中部署连接到 Azure 环境的专用 [Remote Desktop Gateway](https://technet.microsoft.com/library/dd560672)（远程桌面网关）（RD 网关）服务器。
@@ -111,9 +111,9 @@ Azure 提供了安全机制来帮助管理员管理 Azure 云服务和虚拟机�
 * 在 RD 网关上预配 [Azure 管理证书](https://msdn.microsoft.com/library/azure/gg551722.aspx)，使它成为可以访问 Azure 门户的唯一主机。
 * 将 RD 网关加入管理员工作站所在的同一个[管理域](https://technet.microsoft.com/library/bb727085.aspx)。 在具有对 Azure AD 的单向信任的域中使用站点到站点 IPsec VPN 或 ExpressRoute 时，或者要联合本地 AD DS 实例与 Azure AD 之间的凭据时，就必须这样做。
 * 配置[客户端连接授权策略](https://technet.microsoft.com/library/cc753324.aspx)，以让 RD 网关验证客户端计算机名称是否有效（已加入域）并可以访问 Azure 门户。
-* 针对 [Azure VPN](https://azure.microsoft.com/documentation/services/vpn-gateway/) 使用 IPsec 以进一步防止管理流量遭到窃听和令牌失窃，或考虑使用通过 [Azure ExpressRoute](https://azure.microsoft.com/documentation/services/expressroute/) 隔离的 Internet 链接。
-* 针对通过 RD 网关登录的管理员启用多重身份验证（通过 [Azure 多重身份验证](/azure/active-directory/authentication/multi-factor-authentication)）或智能卡身份验证。
-* 在 Azure 中配置源 [IP 地址限制](https://azure.microsoft.com/blog/2013/08/27/confirming-dynamic-ip-address-restrictions-in-windows-azure-web-sites/)或[网络安全组](/azure/virtual-network/security-overview)，将允许的管理终结点数降到最低。
+* 针对 [Azure VPN](/vpn-gateway/) 使用 IPsec 以进一步防止管理流量遭到窃听和令牌失窃，或考虑使用通过 [Azure ExpressRoute](/expressroute/) 隔离的 Internet 链接。
+* 针对通过 RD 网关登录的管理员启用多重身份验证（通过 [Azure 多重身份验证](/active-directory/authentication/multi-factor-authentication)）或智能卡身份验证。
+* 在 Azure 中配置源 [IP 地址限制](https://azure.microsoft.com/blog/2013/08/27/confirming-dynamic-ip-address-restrictions-in-windows-azure-web-sites/)或[网络安全组](/virtual-network/security-overview)，将允许的管理终结点数降到最低。
 
 ## <a name="security-guidelines"></a>安全指导原则
 一般情况下，帮助保护用于云的管理员工作站的做法，与用于任何本地工作站的做法类似 — 例如，最小化生成和限制权限。 云管理的某些独特之处更类似于远程或带外企业管理。 这些特点包括使用和审核凭据、增强安全的远程访问以及威胁检测和响应。
@@ -124,7 +124,7 @@ Azure 提供了安全机制来帮助管理员管理 Azure 云服务和虚拟机�
 部署到 Azure 的某些应用程序或服务可能会针对用户和管理员访问拥有自己的身份验证机制，而其他应用程序或服务则会充分利用 Azure AD。 根据是通过 Active Directory 联合身份验证服务 (AD FS)、使用目录同步还是仅在云中维护用户帐户来联合凭据，使用 [Microsoft Identity Manager](https://technet.microsoft.com/library/mt218776.aspx)（Azure AD 高级版中已随附）可帮助管理资源之间的标识生命周期。
 
 ### <a name="connectivity"></a>连接
-有多种机制可供帮助保护客户端与 Azure 虚拟网络的连接。 在这些机制中，有两个机制（[站点到站点 VPN](https://channel9.msdn.com/series/Azure-Site-to-Site-VPN) (S2S) 和[点到站点 VPN](/azure/vpn-gateway/vpn-gateway-point-to-site-create) (P2S)）支持使用行业标准 IPsec (S2S) 或[安全套接字隧道协议](https://technet.microsoft.com/magazine/2007.06.cableguy.aspx) (SSTP) (P2S) 来进行加密和隧道传输。 当 Azure 连接到面向公众的 Azure 服务管理（例如 Azure 门户）时，Azure 需要超文本安全传输协议 (HTTPS)。
+有多种机制可供帮助保护客户端与 Azure 虚拟网络的连接。 在这些机制中，有两个机制（[站点到站点 VPN](https://channel9.msdn.com/series/Azure-Site-to-Site-VPN) (S2S) 和[点到站点 VPN](/vpn-gateway/vpn-gateway-point-to-site-create) (P2S)）支持使用行业标准 IPsec (S2S) 或[安全套接字隧道协议](https://technet.microsoft.com/magazine/2007.06.cableguy.aspx) (SSTP) (P2S) 来进行加密和隧道传输。 当 Azure 连接到面向公众的 Azure 服务管理（例如 Azure 门户）时，Azure 需要超文本安全传输协议 (HTTPS)。
 
 未通过 RD 网关连接到 Azure 的独立强化工作站应使用基于 SSTP 的点到站点 VPN 来与 Azure 虚拟网络建立初始连接，并从 VPN 隧道与各个虚拟机建立 RDP 连接。
 

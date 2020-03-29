@@ -7,14 +7,14 @@ ms.service: event-hubs
 ms.workload: core
 ms.topic: quickstart
 origin.date: 01/15/2020
-ms.date: 03/09/2020
+ms.date: 03/16/2020
 ms.author: v-tawe
-ms.openlocfilehash: fe272d6effaa9edc147701fba670a0aa963b2adc
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.openlocfilehash: 3d51d2b2bb0f85333c7ff769df40935bd75479d2
+ms.sourcegitcommit: 1d3d8dfdaf6281f06640cbee7124a1e8bf102c50
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78155119"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80243923"
 ---
 # <a name="quickstart-send-events-to-or-receive-events-from-azure-event-hubs-using-javascript-azureevent-hubs-version-2"></a>快速入门：使用 JavaScript（@azure/event-hubs 版本 2）向/从 Azure 事件中心发送/接收事件
 本快速入门介绍了如何使用 azure/event-hubs 版本 2 JavaScript 程序包创建 JavaScript 应用程序，向事件中心发送事件以及从事件中心接收事件。 

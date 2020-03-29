@@ -7,13 +7,13 @@ ms.reviewer: kerend
 ms.service: data-explorer
 ms.topic: tutorial
 origin.date: 01/29/2020
-ms.date: 03/23/2020
-ms.openlocfilehash: 03d020a27efea8b784fb7fb5ca8b68a777b9cba8
-ms.sourcegitcommit: 4ba6d7c8bed5398f37eb37cf5e2acafcdcc28791
+ms.date: 03/16/2020
+ms.openlocfilehash: a9241a0cde51fac9c1e5973355966891531842e5
+ms.sourcegitcommit: 1d3d8dfdaf6281f06640cbee7124a1e8bf102c50
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2020
-ms.locfileid: "79133986"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80243966"
 ---
 # <a name="tutorial-ingest-and-query-monitoring-data-in-azure-data-explorer"></a>教程：在 Azure 数据资源管理器中引入和查询监视数据 
 

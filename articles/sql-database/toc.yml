@@ -67,13 +67,9 @@
           displayName: 'compliance, fedramp, soc, fact, fisc, hitrust, pci, iso'
         - name: 安全最佳做法
           href: sql-database-security-best-practice.md
-        - name: 访问管理
-          items:
-            - name: 访问控制
-              href: sql-database-control-access.md
-            - name: 登录名和用户
-              href: sql-database-manage-logins.md
-        - name: 身份验证
+        - name: 登录名、用户帐户、角色和权限
+          href: sql-database-manage-logins.md
+        - name: Azure AD 身份验证
           href: sql-database-aad-authentication.md
           items:
             - name: 配置 Azure AD 身份验证
@@ -104,12 +100,12 @@
                   href: sql-database-always-encrypted.md
                 - name: 使用 Azure Key Vault
                   href: sql-database-always-encrypted-azure-key-vault.md
-        - name: 监视、日志记录和审核
+        - name: 审核
           items:
-            - name: 审核
-              items:
-                - name: SQL 数据库审核入门
-                  href: sql-database-auditing.md
+            - name: SQL 数据库审核入门
+              href: sql-database-auditing.md
+            - name: 审核日志格式
+              href: sql-database-audit-log-format.md
         - name: 安全管理
           items:
             - name: 高级数据安全
@@ -134,8 +130,6 @@
                   href: sql-database-vnet-service-endpoint-rule-overview.md
                 - name: vNet 终结点 - PowerShell
                   href: sql-database-vnet-service-endpoint-rule-powershell.md
-            - name: 审核日志格式
-              href: sql-database-audit-log-format.md
         - name: 托管实例安全性
           items:
             - name: 保护公共终结点
@@ -228,34 +222,36 @@
           href: sql-database-monitoring-tuning-index.yml
         - name: 监视和性能概述
           href: sql-database-monitor-tune-overview.md
-        - name: 性能监视
+        - name: 数据库顾问和 Query Performance Insight
           items:
-            - name: 诊断遥测日志记录
-              href: sql-database-metrics-diag-logging.md
-        - name: 智能性能
-          items:
-            - name: 自动优化
-              href: sql-database-automatic-tuning.md
-            - name: 针对性能的智能见解
-              href: sql-database-intelligent-insights.md
-            - name: 优化操作和建议
-              href: sql-database-performance.md
             - name: 数据库顾问性能建议
               href: sql-database-advisor.md
-        - name: 监视和优化数据库
+            - name: 查询性能见解
+              href: sql-database-query-performance.md
+        - name: 自动优化
+          href: sql-database-automatic-tuning.md
+        - name: 智能见解和 SQL Analytics
           items:
-            - name: 手动优化
+            - name: 针对性能的智能见解
+              href: sql-database-intelligent-insights.md
+            - name: 诊断遥测日志记录
+              href: sql-database-metrics-diag-logging.md
+            - name: 使用智能见解诊断日志
+              href: sql-database-intelligent-insights-use-diagnostics-log.md
+            - name: 使用智能见解排查性能问题
+              href: sql-database-intelligent-insights-troubleshoot-performance.md
+        - name: 手动监视和优化
+          items:
+            - name: 识别查询性能问题
+              href: sql-database-identify-query-performance-issues.md
+            - name: 应用程序和数据库优化指南
               href: sql-database-performance-guidance.md
             - name: 使用 DMV 监视性能
               href: sql-database-monitoring-with-dmvs.md
-            - name: 使用查询存储监视性能
-              href: sql-database-operate-query-store.md
-            - name: 使用智能见解排查性能问题
-              href: sql-database-intelligent-insights-troubleshoot-performance.md
-            - name: 使用智能见解诊断日志
-              href: sql-database-intelligent-insights-use-diagnostics-log.md
             - name: 监视内存中 OLTP 空间
               href: sql-database-in-memory-oltp-monitoring.md
+            - name: 超大规模性能诊断
+              href: sql-database-hyperscale-performance-diagnostics.md
             - name: 扩展的事件
               items:
                 - name: 扩展的事件
@@ -264,8 +260,6 @@
                   href: sql-database-xevent-code-event-file.md
                 - name: 扩展的事件 - 环形缓冲区
                   href: sql-database-xevent-code-ring-buffer.md
-        - name: 超大规模性能诊断
-          href: sql-database-hyperscale-performance-diagnostics.md
     - name: 可伸缩性
       items:
         - name: 可伸缩性文档
@@ -351,6 +345,8 @@
               href: /connectors/connectors-create-api-sqlazure?toc=/sql-database/toc.json
             - name: 使用 Spark 连接器
               href: sql-database-spark-connector.md
+            - name: 使用 Azure 认知搜索编制索引
+              href: /azure/search/search-howto-connecting-azure-sql-database-to-azure-search-using-indexers?toc=/sql-database/toc.json
             - name: 配置时态保留策略
               href: sql-database-temporal-tables-retention-policy.md
             - name: 应用身份验证
@@ -464,10 +460,6 @@
               href: sql-database-best-practices-data-sync.md
             - name: 数据同步故障排除
               href: sql-database-troubleshoot-data-sync.md
-        - name: 性能监视
-          items:
-            - name: Query Performance Insight
-              href: sql-database-query-performance.md
         - name: T-SQL 的差异
           href: sql-database-transact-sql-information.md
         - name: 功能
@@ -605,6 +597,8 @@
           items:
             - name: MI 公网到 MI 子网
               href: replication-with-sql-database-managed-instance.md
+            - name: MI 公网、MI 区域、SQL 子网
+              href: sql-database-managed-instance-configure-replication-tutorial.md
     - name: 概念
       items:
         - name: 管理 API 参考

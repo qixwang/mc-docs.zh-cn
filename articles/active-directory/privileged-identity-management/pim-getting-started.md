@@ -10,17 +10,16 @@ ms.service: active-directory
 ms.subservice: pim
 ms.topic: conceptual
 ms.workload: identity
-origin.date: 04/09/2019
-ms.date: 11/05/2019
+ms.date: 03/25/2020
 ms.author: v-junlch
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0ece22357908063f5cf6c49e38e85a5a430f6b8b
-ms.sourcegitcommit: a88cc623ed0f37731cb7cd378febf3de57cf5b45
+ms.openlocfilehash: 73e071fa810db2d7d9e4908697a90aaece26d2f0
+ms.sourcegitcommit: 6568c59433d7e80ab06e9fe76d4791f761ed6775
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73830850"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80243195"
 ---
 # <a name="start-using-privileged-identity-management"></a>开始使用 Privileged Identity Management
 
@@ -63,7 +62,7 @@ ms.locfileid: "73830850"
 
     ![用于验证身份的“选取帐户”窗口](./media/pim-getting-started/pick-account.png)
 
-1. 如果需要更多信息才能进行验证，系统会引导你完成相关过程。 有关详细信息，请参阅[获取有关双重验证的帮助](https://go.microsoft.com/fwlink/p/?LinkId=708614)。
+1. 如果需要更多信息才能进行验证，系统会引导你完成相关过程。 有关详细信息，请参阅[获取有关双重验证的帮助](../user-help/multi-factor-authentication-end-user-troubleshoot.md)。
 
     ![如果组织需要更多信息，则显示“需要更多信息”窗口](./media/pim-getting-started/more-information-required.png)
 
@@ -108,6 +107,7 @@ ms.locfileid: "73830850"
 | **我的角色**  | 显示已向你分配的符合条件的活动角色列表。 可以在此处激活任何符合条件的已分配角色。 |
 | **我的请求** | 显示要激活符合条件的角色分配的挂起的请求。 |
 | **审批请求** | 按用户显示你的目录中指定由你进行审批的要激活符合条件的角色的请求列表。 |
+| **审阅访问权限** | 列出指定要由你完成的活动访问审阅（无论你是审阅自己还是审阅其他人的访问权限）。 |
 | **Azure AD 角色** | 为特权角色管理员显示用来管理 Azure AD 角色分配的仪表板和设置。 此仪表板对非特权角色管理员禁用。 这些用户可以访问标题为“我的视图”的特殊仪表板。 “我的视图”仪表板仅显示正在访问此仪表板的用户的相关信息，而非整个租户的相关信息。 |
 | **Azure 资源** | 为特权角色管理员显示用来管理 Azure 资源角色分配的仪表板和设置。 此仪表板对非特权角色管理员禁用。 这些用户可以访问标题为“我的视图”的特殊仪表板。 “我的视图”仪表板仅显示正在访问此仪表板的用户的相关信息，而非整个租户的相关信息。 |
 

@@ -14,12 +14,12 @@ ms.topic: article
 origin.date: 05/21/2019
 ms.date: 02/24/2020
 ms.author: v-yiso
-ms.openlocfilehash: 972044eb7159abc36912dfe81619349dc8ab516a
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.openlocfilehash: 062202d92cbdd77fda746c8be30ef10dec3461ab
+ms.sourcegitcommit: 7f8acc663bf3429b391c2c615bed0d1b2107fd7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77428622"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80290094"
 ---
 # <a name="protect-an-api-by-using-oauth-20-with-azure-active-directory-and-api-management"></a>结合 Azure Active Directory 和 API 管理使用 OAuth 2.0 保护 API
 
@@ -28,7 +28,7 @@ ms.locfileid: "77428622"
 > [!NOTE]
 > 此功能在 API 管理的“开发人员”  、“标准”  和“高级”  层中可用。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 若要执行本文中的步骤，必须提供：
 * API 管理实例
 * 使用 API 管理实例发布的 API
@@ -64,7 +64,7 @@ ms.locfileid: "77428622"
 
 1. 选择“公开 API”  ，并将“应用程序 ID URI”  设为默认值。 记下此值以备将来使用。
 
-1. 选择“添加作用域”  按钮以显示“添加作用域”  页面。 然后创建该 API 支持的一个新作用域（例如 `Files.Read`）。 最后，选择“添加作用域”  按钮来创建作用域。 重复此步骤以添加你的 API 支持的所有作用域。
+1. 选择“添加作用域”  按钮以显示“添加作用域”  页面。 然后创建该 API 支持的一个新作用域（例如 `Files.Read`）。 最后，选择“添加作用域”  按钮来创建作用域。 重复此步骤以添加 API 支持的所有范围。
 
 1. 创建作用域后，请记下它们，以便在后续步骤中使用。 
 
@@ -200,7 +200,7 @@ ms.locfileid: "77428622"
 
 ```xml
 <validate-jwt header-name="Authorization" failed-validation-httpcode="401" failed-validation-error-message="Unauthorized. Access token is missing or invalid.">
-    <openid-config url="https://login.microsoftonline.com/{aad-tenant}/.well-known/openid-configuration" />
+    <openid-config url="https://login.microsoftonline.cn/{aad-tenant}/.well-known/openid-configuration" />
     <required-claims>
         <claim name="aud">
             <value>{Application ID URI of backend-app}</value>
@@ -209,7 +209,7 @@ ms.locfileid: "77428622"
 </validate-jwt>
 ```
 > [!NOTE]
-> 此 `openid-config` URL 对应于 v1 终结点。 对于 v2 `openid-config`终结点，请使用 `https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration`。
+> 此 `openid-config` URL 对应于 v1 终结点。 对于 v2 `openid-config`终结点，请使用 `https://login.microsoftonline.cn/common/v2.0/.well-known/openid-configuration`。
 
 ## <a name="build-an-application-to-call-the-api"></a>生成应用程序来调用 API
 

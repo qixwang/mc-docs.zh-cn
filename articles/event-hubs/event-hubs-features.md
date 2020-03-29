@@ -14,12 +14,12 @@ ms.workload: na
 origin.date: 12/06/2018
 ms.date: 03/09/2020
 ms.author: v-tawe
-ms.openlocfilehash: 7d40729f6f807215295b342a92425bfb3826601e
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: fe6eb85ac93f51cf9eb1e15abdfc95b8a07d8ac0
+ms.sourcegitcommit: b2f2bb08ab1b5ccb3c596d84b3b6ddca5bba3903
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79291866"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80151490"
 ---
 # <a name="features-and-terminology-in-azure-event-hubs"></a>Azure 事件中心的功能和术语
 
@@ -28,7 +28,7 @@ Azure 事件中心是可缩放的事件处理服务，它引入并处理大量�
 本文基于[概述文章](event-hubs-what-is-event-hubs.md)中的信息编写，并提供有关事件中心组件和功能的技术和实现详细信息。
 
 ## <a name="namespace"></a>命名空间
-事件中心命名空间提供唯一的范围容器，可以通过其[完全限定的域名](https://en.wikipedia.org/wiki/Fully_qualified_domain_name)进行引用，而在该容器中，可以创建一个或多个事件中心主题。 
+事件中心命名空间提供唯一的范围容器，可以通过其[完全限定的域名](https://wikipedia.org/wiki/Fully_qualified_domain_name)进行引用，而在该容器中，可以创建一个或多个事件中心主题。 
 
 <!-- Not Available on Kafka -->
 

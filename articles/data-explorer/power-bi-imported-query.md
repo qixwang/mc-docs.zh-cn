@@ -7,13 +7,13 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 origin.date: 07/10/2019
-ms.date: 03/23/2020
-ms.openlocfilehash: 4cb9f5178cb13f38b44bfb504ca6e475c5fd661b
-ms.sourcegitcommit: 4ba6d7c8bed5398f37eb37cf5e2acafcdcc28791
+ms.date: 03/16/2020
+ms.openlocfilehash: 8ac7e752f95794bd8c394a4ee2e7ee0e7245dba4
+ms.sourcegitcommit: 1d3d8dfdaf6281f06640cbee7124a1e8bf102c50
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2020
-ms.locfileid: "79133848"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80243960"
 ---
 # <a name="visualize-data-using-a-query-imported-into-power-bi"></a>使用已导入到 Power BI 中的查询来可视化数据
 

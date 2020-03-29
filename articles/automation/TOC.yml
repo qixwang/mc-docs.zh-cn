@@ -13,6 +13,8 @@
     - name: 管理自动化运行方式帐户
       href: manage-runas-account.md
       displayName: certificate renewal
+    - name: 加密 Azure 自动化中的安全资产
+      href: automation-secure-asset-encryption.md
     - name: 管理基于角色的访问控制
       href: automation-role-based-access-control.md
       displayName: RBAC
@@ -66,7 +68,7 @@
             - name: 从 Webhook 启动 Runbook
               href: automation-webhooks.md
             - name: 配置 Runbook 输入参数
-              href: automation-runbook-input-parameters.md
+              href: runbook-input-parameters.md
             - name: 子 Runbook
               href: automation-child-runbooks.md
             - name: 将 JSON 对象传递到 Azure 自动化 Runbook
@@ -97,13 +99,7 @@
               href: source-control-integration.md
               displayName: 'github, vsts, azure devops, personal access token'
             - name: 源代码管理集成 - 传统
-              href: automation-source-control-integration-legacy.md
-              displayname: github
-            - name: 源代码管理与 GitHub Enterprise 的集成
-              href: automation-scenario-source-control-integration-with-github-ent.md
-              displayName: 'CI, runbooks'
-            - name: 源代码管理与 Azure DevOps 的集成
-              href: automation-scenario-source-control-integration-with-VSTS.md
+              href: source-control-integration-legacy.md
     - name: 故障排除
       items:
         - name: 对混合 Runbook 辅助角色进行故障排除
@@ -177,15 +173,15 @@
 - name: 管理共享资源
   items:
     - name: 证书
-      href: automation-certificates.md
+      href: shared-resources/certificates.md
     - name: 连接
       href: automation-connections.md
     - name: 凭据
-      href: automation-credentials.md
+      href: shared-resources/credentials.md
     - name: 计划
-      href: automation-schedules.md
+      href: shared-resources/schedules.md
     - name: 变量
-      href: automation-variables.md
+      href: shared-resources/variables.md
     - name: 管理 Python 2 程序包
       href: python-packages.md
 - name: 跨组件方案

@@ -9,14 +9,14 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: tutorial
 origin.date: 02/10/2020
-ms.date: 03/09/2020
+ms.date: 03/16/2020
 ms.author: v-tawe
-ms.openlocfilehash: ceec9ae25a553a43ba74b3fbb5d6cf7d01db7596
-ms.sourcegitcommit: ced17aa58e800b9e4335276a1595b8045836b256
+ms.openlocfilehash: 082c988254dd36210612ebc500819045260112d8
+ms.sourcegitcommit: b2f2bb08ab1b5ccb3c596d84b3b6ddca5bba3903
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77590247"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80151630"
 ---
 # <a name="quickstart-getting-a-luis-endpoint-key"></a>快速入门：获取 LUIS 终结点密钥
 

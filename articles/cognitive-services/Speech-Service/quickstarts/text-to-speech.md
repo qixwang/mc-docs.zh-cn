@@ -9,15 +9,15 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
 origin.date: 02/10/2020
-ms.date: 03/09/2020
+ms.date: 03/16/2020
 ms.author: v-tawe
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 66a3702cf1da86ae0cf1d9f791e201818e7cfd5b
-ms.sourcegitcommit: ced17aa58e800b9e4335276a1595b8045836b256
+ms.openlocfilehash: 1ad67c1b04eed2ff1f35bae79a4c091fee22a0b6
+ms.sourcegitcommit: b2f2bb08ab1b5ccb3c596d84b3b6ddca5bba3903
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77590240"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80151619"
 ---
 # <a name="quickstart-synthesize-speech-to-a-speaker"></a>快速入门：将语音合成到扬声器
 

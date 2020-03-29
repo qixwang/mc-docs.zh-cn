@@ -6,16 +6,16 @@ author: kgremban
 manager: philmea
 ms.author: v-tawe
 origin.date: 03/28/2019
-ms.date: 03/02/2020
+ms.date: 03/16/2020
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: cfe85dbee51e7256a574766bf603619d6fdc2646
-ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
+ms.openlocfilehash: d2affa050be48588bcc64152229dc903455a624d
+ms.sourcegitcommit: 1d3d8dfdaf6281f06640cbee7124a1e8bf102c50
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77494580"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80243887"
 ---
 # <a name="tutorial-store-data-at-the-edge-with-sql-server-databases"></a>教程：使用 SQL Server 数据库存储边缘中的数据
 
@@ -36,7 +36,7 @@ ms.locfileid: "77494580"
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 在开始学习本教程之前，应已完成上一篇教程来设置用于开发 Linux 容器的开发环境：[开发适用于 Linux 设备的 IoT Edge 模块](tutorial-develop-for-linux.md)。 完成该教程后，已应准备好以下必备组件：
 
@@ -49,7 +49,7 @@ ms.locfileid: "77494580"
 
 本教程使用 Azure Functions 模块将数据发送到 SQL Server。 若要通过 Azure Functions 开发 IoT Edge 模块，请在开发计算机上安装下述额外的必备组件：
 
-* [适用于 Visual Studio Code 的 C#（由 OmniSharp 提供支持）扩展](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)。
+* [适用于 Visual Studio Code 的 C#（由 OmniSharp 提供支持）扩展](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)。
 * [.NET Core 2.1 SDK](https://www.microsoft.com/net/download)。
 
 ## <a name="create-a-function-project"></a>创建函数项目

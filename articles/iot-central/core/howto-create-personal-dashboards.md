@@ -2,19 +2,18 @@
 title: 创建 Azure IoT Central 个人仪表板 | Microsoft Docs
 description: 本文为用户介绍如何创建和管理个人仪表板。
 author: mavoge
-ms.author: v-yiso
-origin.date: 10/17/2019
-ms.date: 12/16/2019
+ms.author: mavoge
+ms.date: 10/17/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 6093d559459074c4024fcc45b2fca778bf899762
-ms.sourcegitcommit: 6ffa4d50cee80c7c0944e215ca917a248f2a4bcd
+ms.openlocfilehash: eb9b50cfd5bfd758f215fc100c68c62fcd4727eb
+ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74883344"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80343280"
 ---
 # <a name="create-and-manage-multiple-dashboards"></a>创建和管理多个仪表板
 

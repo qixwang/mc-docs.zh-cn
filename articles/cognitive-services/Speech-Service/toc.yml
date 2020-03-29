@@ -7,11 +7,12 @@
       href: overview.md
     - name: 试用语音服务
       href: get-started.md
-    - name: 语言和区域支持
+    - name: 语言和语音支持
+      displayName: 'languages,locales,voice,gender,language code,locale,locale code,neural voice,standard voice'
       href: language-support.md
-      displayName: 'languages,locales,region,voice,gender,language code,locale,locale code,neural voice (preview),standard voice'
+    - name: 区域支持
+      href: regions.md
 - name: 语音转文本
-  expanded: false
   items:
     - name: 语音转文本文档
       href: index-speech-to-text.yml
@@ -19,6 +20,8 @@
       items:
         - name: 什么是语音转文本？
           href: speech-to-text.md
+        - name: 语音识别基础知识
+          href: speech-to-text-basics.md
     - name: 快速入门
       items:
         - name: 识别来自麦克风输入的语音
@@ -29,58 +32,59 @@
           href: quickstarts/from-blob.md
     - name: 操作指南
       items:
+        - name: 选择语音识别模式
+          href: how-to-choose-recognition-mode.md
         - name: 更改语音识别源语言
           href: how-to-specify-source-language.md
+        - name: 使用自定义语音识别提高准确性
+          href: how-to-custom-speech.md
+        - name: 使用压缩的音频输入格式
+          href: how-to-use-codec-compressed-audio-input-streams.md
         - name: 使用短语列表提高准确性
           href: how-to-phrase-lists.md
         - name: 选择特定的麦克风输入设备
           href: how-to-select-audio-input-devices.md
         - name: 使用自动源语言检测
           href: how-to-automatic-language-detection.md
-        - name: 使用压缩的音频输入格式
-          href: how-to-use-codec-compressed-audio-input-streams.md
-        - name: 使用压缩的音频输入格式 (iOS)
-          href: how-to-use-codec-compressed-audio-input-streams-ios.md
-        - name: 使用压缩的音频输入格式 (Android)
-          href: how-to-use-codec-compressed-audio-input-streams-android.md
     - name: 参考
       items:
         - name: 语音 SDK API
           items:
             - name: C++
-              href: 'https://docs.microsoft.com/cpp/cognitive-services/speech/index'
               displayName: 'C++ SDK,C++ dev kit,reference,reference docs,ref documentation'
+              href: 'https://docs.microsoft.com/cpp/cognitive-services/speech/'
             - name: 'C#'
-              href: 'https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech?view=azure-dotnet'
               displayName: 'CSharp SDK,.NET SDK,C# SDK,C# dev kit,reference,reference docs,ref documentation'
+              href: 'https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech?view=azure-dotnet'
             - name: Java
-              href: 'https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech?view=azure-java-stable'
               displayName: 'Java SDK,Java dev kit,reference,reference docs,ref documentation'
+              href: 'https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech?view=azure-java-stable'
             - name: Javascript
+              displayName: 'Node, Node.js, NodeJS, JS SDK,JavaScript SDK,JavaScript dev kit,reference,reference docs,ref documentation'
               href: 'https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/?view=azure-node-latest'
-              displayName: 'JS SDK,JavaScript SDK,JavaScript dev kit,reference,reference docs,ref documentation'
             - name: Objective-C
-              href: 'https://docs.microsoft.com/objectivec/cognitive-services/speech/'
               displayName: 'Objective-C SDK,Objective-C dev kit,reference,reference docs,ref documentation'
+              href: 'https://docs.microsoft.com/objectivec/cognitive-services/speech/'
             - name: Python
-              href: 'https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/?view=azure-python'
               displayName: 'Python SDK,Python dev kit,reference,reference docs,ref documentation'
+              href: 'https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/?view=azure-python'
             - name: 发行说明
-              href: releasenotes.md
               displayName: 'release notes,updates,what''s new,what is new,changes'
+              href: releasenotes.md
         - name: REST API
           items:
             - name: 语音转文本 REST API
               href: rest-speech-to-text.md
             - name: 批量听录 REST API
               href: batch-transcription.md
+        - name: 语言支持
+          href: 'language-support.md#speech-to-text'
     - name: 资源
       items:
         - name: 语音转文本常见问题解答
-          href: faq-stt.md
           displayName: 'FAQ,STT FAQ,SR FAQ,frequently asked questions'
+          href: faq-stt.md
 - name: 文本转语音
-  expanded: false
   items:
     - name: 文本转语音文档
       href: index-text-to-speech.yml
@@ -98,42 +102,51 @@
       items:
         - name: 通过 SSML 改进合成
           href: speech-synthesis-markup.md
+        - name: 使用 REST 获取语音列表 (Python)
+          href: quickstart-python-get-text-to-speech-voices.md
+        - name: 使用 REST 将文本转换为语音 (Python)
+          href: quickstart-python-text-to-speech.md
     - name: 参考
       items:
         - name: 语音 SDK
           items:
             - name: C++
-              href: 'https://docs.microsoft.com/cpp/cognitive-services/speech/index'
               displayName: 'C++ SDK,C++ dev kit,reference,reference docs,ref documentation'
+              href: 'https://docs.microsoft.com/cpp/cognitive-services/speech/'
             - name: 'C#'
-              href: 'https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech?view=azure-dotnet'
               displayName: 'CSharp SDK,.NET SDK,C# SDK,C# dev kit,reference,reference docs,ref documentation'
+              href: 'https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech?view=azure-dotnet'
             - name: Java
-              href: 'https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech?view=azure-java-stable'
               displayName: 'Java SDK,Java dev kit,reference,reference docs,ref documentation'
+              href: 'https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech?view=azure-java-stable'
             - name: Javascript
+              displayName: 'Node, Node.js, NodeJS, JS SDK,JavaScript SDK,JavaScript dev kit,reference,reference docs,ref documentation'
               href: 'https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/?view=azure-node-latest'
-              displayName: 'JS SDK,JavaScript SDK,JavaScript dev kit,reference,reference docs,ref documentation'
             - name: Objective-C
-              href: 'https://docs.microsoft.com/objectivec/cognitive-services/speech/'
               displayName: 'Objective-C SDK,Objective-C dev kit,reference,reference docs,ref documentation'
+              href: 'https://docs.microsoft.com/objectivec/cognitive-services/speech/'
             - name: Python
-              href: 'https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/?view=azure-python'
               displayName: 'Python SDK,Python dev kit,reference,reference docs,ref documentation'
+              href: 'https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/?view=azure-python'
             - name: 发行说明
-              href: releasenotes.md
               displayName: 'release notes,updates,what''s new,what is new,changes'
+              href: releasenotes.md
         - name: REST API
           items:
             - name: 文本转语音 REST API
               href: rest-text-to-speech.md
+        - name: 标准语音支持
+          href: 'language-support.md#standard-voices'
+        - name: 神经语音支持
+          href: 'language-support.md#neural-voices'
+        - name: SSML 语音集
+          href: speech-ssml-phonetic-sets.md
     - name: 资源
       items:
         - name: 文本转语音常见问题解答
-          href: faq-text-to-speech.md
           displayName: 'FAQ,TTS FAQ,SS FAQ,frequently asked questions'
+          href: faq-text-to-speech.md
 - name: 语音翻译
-  expanded: false
   items:
     - name: 语音翻译文档
       href: index-speech-translation.yml
@@ -151,39 +164,36 @@
           href: quickstarts/translate-speech-to-speech.md
     - name: 教程
       items:
-        - name: 生成 Flask 应用以使用 REST API 翻译和合成文本
+        - name: 使用 REST API 翻译和合成文本
           href: ../translator/tutorial-build-flask-app-translation-synthesis.md?toc=%2fcognitive-services%2fspeech-service%2ftoc.json&bc=%2fcognitive-services%2fspeech-service%2fbreadcrumb%2ftoc.json
     - name: 参考
       items:
         - name: 语音 SDK
           items:
             - name: C++
-              href: 'https://docs.microsoft.com/cpp/cognitive-services/speech/index'
               displayName: 'C++ SDK,C++ dev kit,reference,reference docs,ref documentation'
+              href: 'https://docs.microsoft.com/cpp/cognitive-services/speech/'
             - name: 'C#'
-              href: 'https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech?view=azure-dotnet'
               displayName: 'CSharp SDK,.NET SDK,C# SDK,C# dev kit,reference,reference docs,ref documentation'
+              href: 'https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech?view=azure-dotnet'
             - name: Java
-              href: 'https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech?view=azure-java-stable'
               displayName: 'Java SDK,Java dev kit,reference,reference docs,ref documentation'
+              href: 'https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech?view=azure-java-stable'
             - name: Javascript
+              displayName: 'Node, Node.js, NodeJS, JS SDK,JavaScript SDK,JavaScript dev kit,reference,reference docs,ref documentation'
               href: 'https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/?view=azure-node-latest'
-              displayName: 'JS SDK,JavaScript SDK,JavaScript dev kit,reference,reference docs,ref documentation'
             - name: Objective-C
-              href: 'https://docs.microsoft.com/objectivec/cognitive-services/speech/'
               displayName: 'Objective-C SDK,Objective-C dev kit,reference,reference docs,ref documentation'
+              href: 'https://docs.microsoft.com/objectivec/cognitive-services/speech/'
             - name: Python
-              href: 'https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/?view=azure-python'
               displayName: 'Python SDK,Python dev kit,reference,reference docs,ref documentation'
+              href: 'https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/?view=azure-python'
             - name: 发行说明
-              href: releasenotes.md
               displayName: 'release notes,updates,what''s new,what is new,changes'
-    - name: 资源
-      items:
-        - name: 语音翻译常见问题解答
-          href: 'https://www.microsoft.com/translator/faq.aspx'
+              href: releasenotes.md
+        - name: 语言支持
+          href: 'language-support.md#speech-translation'
 - name: 语音 SDK
-  expanded: false
   items:
     - name: 概述
       items:
@@ -195,11 +205,9 @@
           href: ship-application.md
     - name: 快速入门
       items:
-        - name: 创建一个项目
-          href: quickstarts/create-project.md
         - name: 安装语音 SDK
-          href: quickstarts/setup-platform.md
           displayName: 'install the speech sdk, install the speech sdk java, install the speech sdk C#, install the speech sdk python, install the speech sdk C++, setup speech sdk, install, install C#, install C++, install Python, install Java, install Javascript'
+          href: quickstarts/setup-platform.md
     - name: 操作指南
       items:
         - name: 启用日志记录
@@ -207,8 +215,8 @@
         - name: 跟踪内存使用情况
           href: how-to-track-speech-sdk-memory-usage.md
         - name: 为 Linux 配置 OpenSSL
-          href: how-to-configure-openssl-linux.md
           displayName: 'memory usage, memory consumption, object logging, object tracking, memory, openssl'
+          href: how-to-configure-openssl-linux.md
     - name: 示例
       items:
         - name: 语音 SDK 示例 (GitHub)
@@ -218,7 +226,7 @@
     - name: 参考
       items:
         - name: C++
-          href: 'https://docs.microsoft.com/cpp/cognitive-services/speech/index'
+          href: 'https://docs.microsoft.com/cpp/cognitive-services/speech/'
         - name: 'C#'
           href: 'https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech?view=azure-dotnet'
         - name: Java
@@ -232,13 +240,12 @@
         - name: 语音 SDK 发行说明
           href: releasenotes.md
 - name: 设备
-  expanded: false
   items:
     - name: 语音设备文档
       href: index-devices.yml
     - name: 概述
       items:
-        - name: 关于语音设备 SDK
+        - name: 什么是语音设备 SDK？
           href: speech-devices-sdk.md
         - name: 获取语音设备 SDK
           href: get-speech-devices-sdk.md
@@ -246,8 +253,10 @@
       items:
         - name: 麦克风阵列建议
           href: speech-devices-sdk-microphone.md
-        - name: Roobo v1 工具包
+        - name: Roobo v1 详细信息
           href: speech-devices-sdk-roobo-v1.md
+        - name: Roobo v2 详细信息
+          href: speech-devices-sdk-roobo-v2.md
     - name: 快速入门
       items:
         - name: 使用语音设备 SDK
@@ -261,21 +270,22 @@
         - name: 语音设备 SDK 发行说明
           href: devices-sdk-release-notes.md
 - name: 资源
-  expanded: false
   items:
     - name: 支持
-      href: support.md
       displayName: 'support,help,release notes,search,scoped search,azure support,github support,stack overflow,github issues,bugs,feedback,uservoice'
+      href: support.md
     - name: 区域
       href: regions.md
     - name: Swagger 文档
       href: swagger-documentation.md
     - name: 主权云
-      href: sovereign-clouds.md
       displayName: 'mooncake,compliant,secret,compliance,dod,china'
+      href: sovereign-clouds.md
     - name: 定价和限制
       href: 'https://www.azure.cn/pricing/details/cognitive-services/'
     - name: 合规性
       href: 'https://www.azure.cn/support/sla/cognitive-services/'
+    - name: Encryption
+      href: speech-encryption-of-data-at-rest.md
     - name: 隐私和 Cookie
       href: 'https://www.azure.cn/support/legal/privacy-statement'

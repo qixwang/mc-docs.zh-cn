@@ -4,17 +4,17 @@ description: 本快速入门介绍如何使用 .NET 的 Azure 存储客户端库
 author: WenJason
 ms.author: v-jay
 origin.date: 02/06/2018
-ms.date: 01/06/2020
+ms.date: 03/30/2020
 ms.service: storage
 ms.subservice: queues
 ms.topic: quickstart
 ms.reviewer: cbrooks
-ms.openlocfilehash: 514ab1943bece2ff20523961ffba8f9ee87a82bf
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.openlocfilehash: 96edc3f05bab9a5e56af7c4ab205a69dcf2923d7
+ms.sourcegitcommit: 90d01d08faf8adb20083363a8e4e5aab139cd9b2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75624429"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80290347"
 ---
 # <a name="quickstart-use-the-azure-storage-sdk-v11-for-net-to-manage-a-queue"></a>快速入门：使用适用于 .NET 的 Azure 存储 SDK v11 管理队列
 
@@ -36,7 +36,7 @@ ms.locfileid: "75624429"
 ### <a name="linux"></a>Linux
 
 - 安装[用于 Linux 的 .NET Core](https://www.microsoft.com/net/download/linux)
-- （可选）安装 [Visual Studio Code](https://www.visualstudio.com/) 和 [C# 扩展](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp&dotnetid=963890049.1518206068)
+- （可选）安装 [Visual Studio Code](https://www.visualstudio.com/) 和 [C# 扩展](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)
 
 ### <a name="macos"></a>macOS
 

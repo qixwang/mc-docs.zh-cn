@@ -5,15 +5,16 @@ services: virtual-wan
 author: rockboyfor
 ms.service: virtual-wan
 ms.topic: include
-ms.date: 09/26/2019
+origin.date: 09/26/2019
+ms.date: 03/30/2020
 ms.author: v-yeche
 ms.custom: include file
-ms.openlocfilehash: c4527a483e016f1c31ed79d597c7535c783f0afe
-ms.sourcegitcommit: 8de025ca11b62e06ba3762b5d15cc577e0c0f15d
+ms.openlocfilehash: 922d315dec77a5a3579797d8b913fab5ff92c5c3
+ms.sourcegitcommit: 4810b75d1e1db78d9747e99735468a6ab861be2d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76170695"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80321850"
 ---
 | 资源 |  限制 |
 | --- | --- |
@@ -24,4 +25,6 @@ ms.locfileid: "76170695"
 | 每个中心的点到站点用户数|10,000 |
 | 每个虚拟 WAN VPN 网关的聚合吞吐量 |20 Gbps |
 | 每个虚拟 WAN VPN 连接的吞吐量（2 个隧道） | 2 Gbps 和 1 Gbps/IPsec 隧道 |
-| 每个虚拟 WAN ExpressRoute 网关的聚合吞吐量 |20 Gbps 
+| 每个虚拟 WAN ExpressRoute 网关的聚合吞吐量 |20 Gbps
+
+<!-- Update_Description: update meta properties, wording update, update link -->

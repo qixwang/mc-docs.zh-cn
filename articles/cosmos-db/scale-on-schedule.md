@@ -5,14 +5,14 @@ author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
 origin.date: 01/13/2020
-ms.date: 03/09/2020
+ms.date: 03/30/2020
 ms.author: v-yeche
-ms.openlocfilehash: 972b26423420ed4fd198875c3e046d8b1484a845
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.openlocfilehash: 74c9eaa8318c283e6be264f2cd2333184ec6fa93
+ms.sourcegitcommit: 303a16c7117b6f3495ef0493b4ae8ccb67d7dbba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78850554"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80342363"
 ---
 # <a name="scale-azure-cosmos-db-throughput-by-using-azure-functions-timer-trigger"></a>使用 Azure Functions 计时器触发器缩放 Azure Cosmos DB 吞吐量
 

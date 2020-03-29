@@ -6,15 +6,15 @@ author: rockboyfor
 ms.service: virtual-wan
 ms.topic: tutorial
 origin.date: 11/04/2019
-ms.date: 02/24/2020
+ms.date: 03/30/2020
 ms.author: v-yeche
 Customer intent: As someone with a networking background, I want to connect my local site to my VNets using Virtual WAN and I don't want to go through a Virtual WAN partner.
-ms.openlocfilehash: 6c84480b65127a20d4dc8dacc4aa3f1113fc3267
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: 66a8300c04bf712ee750557535203b4f02021f9f
+ms.sourcegitcommit: 4810b75d1e1db78d9747e99735468a6ab861be2d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79292140"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80291298"
 ---
 <!--MOONCAKE: NY VS Beijing, London VS Shanghai, LS VS Tianjing-->
 # <a name="tutorial-create-a-site-to-site-connection-using-azure-virtual-wan"></a>教程：使用 Azure 虚拟 WAN 创建站点到站点连接
@@ -34,7 +34,7 @@ ms.locfileid: "79292140"
 > * 查看虚拟 WAN
 
 > [!NOTE]
-> 如果你有多个站点，则通常会使用[虚拟 WAN 合作伙伴](https://azure.microsoft.com/en-us/services/virtual-wan/)来创建此配置。 但是，如果你熟悉网络技术并能够熟练配置自己的 VPN 设备，则可以自行创建此配置。
+> 如果你有多个站点，则通常会使用[虚拟 WAN 合作伙伴](https://azure.microsoft.com/services/virtual-wan/)来创建此配置。 但是，如果你熟悉网络技术并能够熟练配置自己的 VPN 设备，则可以自行创建此配置。
 >
 
 ![虚拟 WAN 示意图](./media/virtual-wan-about/virtualwan.png)
@@ -157,7 +157,7 @@ ms.locfileid: "79292140"
          { 
             "hubConfiguration":{ 
                "AddressSpace":"10.1.0.0/24",
-               "Region":"China North",
+               "Region":"China North 2",
                "ConnectedSubnets":[ 
                   "10.2.0.0/16",
                   "10.3.0.0/16"
@@ -193,7 +193,7 @@ ms.locfileid: "79292140"
          { 
             "hubConfiguration":{ 
                "AddressSpace":"10.1.0.0/24",
-               "Region":"China North"
+               "Region":"China North 2"
             },
             "gatewayConfiguration":{ 
                "IpAddresses":{ 
@@ -225,7 +225,7 @@ ms.locfileid: "79292140"
          { 
             "hubConfiguration":{ 
                "AddressSpace":"10.1.0.0/24",
-               "Region":"China North"
+               "Region":"China North 2"
             },
             "gatewayConfiguration":{ 
                "IpAddresses":{ 

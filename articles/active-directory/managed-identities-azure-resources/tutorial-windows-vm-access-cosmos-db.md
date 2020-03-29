@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/06/2020
+ms.date: 03/24/2020
 ms.author: v-junlch
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c85149ba3ea0a4dfb3d18a2e1f5f0168f70ebcbe
-ms.sourcegitcommit: 7c80405a6b48380814b4b414e9f8a5756c007880
+ms.openlocfilehash: a3c5d8f080a879236a8770933c5c50919ec1b482
+ms.sourcegitcommit: 6568c59433d7e80ab06e9fe76d4791f761ed6775
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77067592"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80243036"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-cosmos-db"></a>教程：使用 Windows VM 系统分配的托管标识访问 Azure Cosmos DB
 
@@ -34,7 +34,7 @@ ms.locfileid: "77067592"
 > * 使用 Windows VM 系统分配的托管标识获取访问令牌来调用 Azure 资源管理器
 > * 从 Azure 资源管理器中获取访问密钥，以便进行 Cosmos DB 调用
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 [!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
 
@@ -128,13 +128,13 @@ Invoke-WebRequest -Uri 'https://management.chinacloudapi.cn/subscriptions/<SUBSC
 ```
 有了 Cosmos DB 帐户的访问密钥以后，即可将其传递给 Cosmos DB SDK 并通过调用来访问该帐户。  如需快速示例，可将该访问密钥传递给 Azure CLI。  在 Azure 门户中，可以从 Cosmos DB 帐户边栏选项卡上的“概览”选项卡获取 `<COSMOS DB CONNECTION URL>`。   将 `<ACCESS KEY>` 替换为在上面获取的值：
 
-```bash
+```azurecli
 az cosmosdb collection show -c <COLLECTION ID> -d <DATABASE ID> --url-connection "<COSMOS DB CONNECTION URL>" --key <ACCESS KEY>
 ```
 
 此 CLI 命令返回有关集合的详细信息：
 
-```bash
+```output
 {
   "collection": {
     "_conflicts": "conflicts/",
@@ -207,4 +207,4 @@ az cosmosdb collection show -c <COLLECTION ID> -d <DATABASE ID> --url-connection
 >[Azure Cosmos DB 概述](/cosmos-db/introduction)
 
 
-<!-- Update_Description: wording update -->
+

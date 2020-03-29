@@ -9,18 +9,18 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: eliotgra
-ms.openlocfilehash: bf8d1eaa6df408473c7086a42106b60745dc7664
-ms.sourcegitcommit: 6ffa4d50cee80c7c0944e215ca917a248f2a4bcd
+ms.openlocfilehash: 4a47b6d5f617bc907175835a6d4ea05ea1dcbefc
+ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74883099"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80343445"
 ---
 # <a name="tutorial-deploy-and-walkthrough-a-continuous-patient-monitoring-app-template"></a>教程：部署和演练持续患者监视应用模板
 
-[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
 
-本教程向解决方案构建人员介绍如何通过部署 IoT Central 持续患者监视应用程序模板开始入门。 你将了解如何部署模板、有哪些现成的内容以及接下来要执行哪些操作。
+
+本教程向解决方案构建人员介绍如何通过部署 IoT Central 持续患者监视应用程序模板开始入门。 你将了解如何部署模板、有哪些现成的内容以及接下来要做什么。
 
 本教程介绍如何执行下列操作：
 
@@ -35,16 +35,17 @@ ms.locfileid: "74883099"
 >[!div class="mx-imgBorder"] 
 >![应用管理器医疗保健](media/app-manager-health.png)
 
-单击“创建应用”按钮开始创建应用程序，然后使用 Microsoft 个人、工作或学校帐户登录  。 此时将转到“新应用程序”页  。
+单击“创建应用”按钮开始创建应用程序，然后使用 Microsoft 个人、工作或学校帐户登录  。 这会转到“新建应用程序”  页。
 
->[!div class="mx-imgBorder"] 
->![创建应用程序医疗保健](media/app-manager-health-create.png)
+![创建应用程序医疗保健](media/app-manager-health-create.png)
+
+![创建应用程序医疗保健计费信息](media/app-manager-health-create-billinginfo.png)
 
 创建应用程序：
 
 1. Azure IoT Central 会根据所选模板自动建议应用程序名称。 你可以接受此名称或输入自己的友好应用程序名称，例如“持续患者监视”  。 Azure IoT Central 还会根据应用程序名称为你生成唯一的 URL 前缀。 如果你愿意，可以自由地将此 URL 前缀更改为更令人难忘的内容。
 
-2. 可选择创建试用版应用程序或即用即付应用程序   。 试用版应用程序的免费 7 天，然后过期，最多可在 5 台设备上免费使用  。 它们可以在到期之前随时转换为即用即付。 若要创建试用版应用程序，则需要输入联系信息并选择是否接收 Microsoft 发送的信息和使用技巧。 即用即付应用程序最多支持两个免费设备，且要求输入 Azure 订阅信息  。
+2. 你可以选择是使用“免费”  定价计划还是使用“标准”  定价计划之一创建应用程序。 使用免费计划创建的应用程序免费 7 天，然后过期，最多可在 5 台设备上免费使用。 你可以在应用程序到期前随时将其从免费计划移动到标准定价计划。 如果选择了免费计划，则需要输入联系信息并选择是否接收 Microsoft 发送的信息和使用技巧。 使用标准计划创建的应用程序支持最多两个免费设备，并且要求你输入 Azure 订阅信息以便计费。
 
 3. 选择页面底部的“创建”以部署应用程序  。
 
@@ -78,7 +79,7 @@ ms.locfileid: "74883099"
 
 如果单击“设备模板”选项卡，则会看到模板中包含两种不同的设备类型  ：
 
-* **Smart Vitals Patch**：此设备表示一个修补程序，用于测量可用于监视医院内外患者的各种生命体征。 如果单击模板，除了发送设备数据（如电池电量和设备温度）外，修补程序还会发送患者健康状况数据（如呼吸频率和血压）。
+* **Smart Vitals Patch**：此设备提供一个修补程序，用以测量不同类型的生命体征。 它可用于监视医院内外的患者。 如果单击模板，除了发送设备数据（如电池电量和设备温度）外，修补程序还会发送患者健康状况数据（如呼吸频率和血压）。
 
 * **Smart Knee Brace**：此设备表示患者在从膝关节置换手术中恢复过来时可能使用的膝盖支架。 如果单击此模板，除了设备数据外，还将看到诸如运动范围和加速之类的功能。
 
@@ -102,7 +103,7 @@ ms.locfileid: "74883099"
 
 ### <a name="devices"></a>设备
 
-单击“设备”选项卡，然后选择 Smart Knee Brace 的实例   。 你将看到有三个视图可用于浏览所选特定设备的相关信息。 构建设备的设备模板时，会创建并发布这些视图。 这意味着它们将在连接或模拟的所有设备上保持一致。
+单击“设备”选项卡，然后选择 Smart Knee Brace 的实例   。 你将看到有三个视图可用于浏览所选特定设备的相关信息。 在为你的设备生成设备模板时，会创建并发布这些视图，这意味着它们在你连接或模拟的所有设备中将保持一致。
 
 “仪表板”视图提供了来自面向操作员的设备的遥测和属性的概述  。
 

@@ -8,12 +8,12 @@ origin.date: 08/05/2019
 ms.date: 03/19/2020
 ms.author: v-tawe
 ms.custom: mvc
-ms.openlocfilehash: a5b1f6b03e85718f758587db21d319519a3f829e
-ms.sourcegitcommit: e500354e2fd8b7ac3dddfae0c825cc543080f476
+ms.openlocfilehash: 49b62840f861d540f3a6a11d3e6ceea69691f248
+ms.sourcegitcommit: 303a16c7117b6f3495ef0493b4ae8ccb67d7dbba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2020
-ms.locfileid: "79546967"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80342358"
 ---
 # <a name="create-and-use-an-internal-load-balancer-app-service-environment"></a>创建和使用内部负载均衡器应用服务环境 
 
@@ -123,7 +123,7 @@ ILB ASE 中应用的发布终结点使用创建该 ILB ASE 所用的域。 此�
 
 可将 Web 应用程序防火墙 (WAF) 设备与 ILB ASE 相结合，以便仅公开可通过 Internet 访问的应用，使其他应用只能从 VNet 内部访问。 这样，便可以生成安全的多层应用程序并实现其他目的。
 
-若要详细了解如何在 ILB ASE 中配置 WAF 设备，请参阅 [在应用服务环境中配置 Web 应用程序防火墙][ASEWAF]。 本文介绍如何在 ASE 中使用 Barracuda 虚拟设备。 另一种做法是使用 Azure 应用程序网关。 应用程序网关使用 OWASP 核心规则来保护放置在它后面的任何应用程序。 有关应用程序网关的详细信息，请参阅 [Azure Web 应用程序防火墙简介][AppGW]。
+若要详细了解如何在 ILB ASE 中配置 WAF 设备，请参阅[在应用服务环境中配置 Web 应用程序防火墙][ASEWAF]。 本文介绍如何在 ASE 中使用 Barracuda 虚拟设备。 另一种做法是使用 Azure 应用程序网关。 应用程序网关使用 OWASP 核心规则来保护放置在它后面的任何应用程序。 有关应用程序网关的详细信息，请参阅 [Azure Web 应用程序防火墙简介][AppGW]。
 
 ## <a name="ilb-ases-made-before-may-2019"></a>在 2019 年 5 之前创建的 ILB ASE
 
@@ -138,8 +138,24 @@ ILB ASE 中应用的发布终结点使用创建该 ILB ASE 所用的域。 此�
 [2]: ./media/creating_and_using_an_internal_load_balancer_with_app_service_environment/createilbase-webapp.png
 [5]: ./media/creating_and_using_an_internal_load_balancer_with_app_service_environment/createilbase-ipaddresses.png
 
-<!--Links-->
 <!-- [ConfigureSSL]: ../web-sites-purchase-ssl-web-site.md -->
 <!-- [Kudu]: https://azure.microsoft.com/resources/videos/super-secret-kudu-debug-console-for-azure-web-sites/ -->
-[Intro]: ./intro.md [MakeExternalASE]: ./create-external-ase.md [MakeASEfromTemplate]: ./create-from-template.md [MakeILBASE]: ./create-ilb-ase.md [ASENetwork]: ./network-info.md [UsingASE]: ./using-an-ase.md [UDRs]: ../../virtual-network/virtual-networks-udr-overview.md [NSGs]: ../../virtual-network/security-overview.md [webapps]: ../overview.md [mobileapps]: ../../app-service-mobile/app-service-mobile-value-prop.md [Functions]: ../../azure-functions/index.yml [Pricing]: https://www.azure.cn/pricing/details/app-service/ [ARMOverview]: ../../azure-resource-manager/management/overview.md [ASEWAF]: app-service-app-service-environment-web-application-firewall.md [AppGW]: ../../application-gateway/application-gateway-web-application-firewall-overview.md [customdomain]: ../app-service-web-tutorial-custom-domain.md
 <!-- [linuxapp]: ../containers/app-service-linux-intro.md -->
+
+<!--Links-->
+[Intro]: ./intro.md
+[MakeExternalASE]: ./create-external-ase.md
+[MakeASEfromTemplate]: ./create-from-template.md
+[MakeILBASE]: ./create-ilb-ase.md
+[ASENetwork]: ./network-info.md
+[UsingASE]: ./using-an-ase.md
+[UDRs]: ../../virtual-network/virtual-networks-udr-overview.md
+[NSGs]: ../../virtual-network/security-overview.md
+[webapps]: ../overview.md
+[mobileapps]: ../../app-service-mobile/app-service-mobile-value-prop.md
+[Functions]: ../../azure-functions/index.yml
+[Pricing]: https://www.azure.cn/pricing/details/app-service/
+[ARMOverview]: ../../azure-resource-manager/management/overview.md
+[ASEWAF]: app-service-app-service-environment-web-application-firewall.md
+[AppGW]: ../../application-gateway/application-gateway-web-application-firewall-overview.md
+[customdomain]: ../app-service-web-tutorial-custom-domain.md

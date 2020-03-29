@@ -9,14 +9,14 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 origin.date: 09/06/2019
-ms.date: 03/02/2020
+ms.date: 03/16/2020
 ms.author: v-tawe
-ms.openlocfilehash: ad7ad83d4aba4e9e8c4c5a221abb8d25ab341531
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.openlocfilehash: 022948d9492ef40f5cf15e8eea4034b8243ec58f
+ms.sourcegitcommit: b2f2bb08ab1b5ccb3c596d84b3b6ddca5bba3903
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77541130"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80151694"
 ---
 # <a name="train-a-model-for-custom-speech"></a>训练自定义语音识别模型
 
@@ -39,8 +39,8 @@ ms.locfileid: "77541130"
 
 训练模型的第一步是上传训练数据。 请参阅[准备和测试数据](how-to-custom-speech-test-data.md)以获取分步说明，了解如何准备人为标记的听录和相关的文本（言语和发音）。 上传训练数据以后，请按以下说明开始训练模型：
 
-1. 登录到[“自定义语音识别”门户](https://speech.azure.cn/customspeech)。
-2. 导航到“语音转文本”>“自定义语音识别”>“训练”。 
+1. 登录到[自定义语音识别门户](https://speech.azure.cn/customspeech)。
+2. 导航到“语音转文本”&gt;“自定义语音识别”&gt;“训练”。 
 3. 单击“训练模型”。 
 4. 接下来，为训练提供**名称**和**说明**。
 5. 从“方案和基线模型”  下拉菜单中，选择最适合你的领域的方案。 如果不确定要选择哪个方案，请选择“通用”。  该基线模型是训练的起点。 如果没有首选项，可以使用最新的。

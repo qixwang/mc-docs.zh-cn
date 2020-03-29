@@ -9,14 +9,14 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
 origin.date: 10/28/2019
-ms.date: 03/23/2020
+ms.date: 03/16/2020
 ms.author: v-tawe
-ms.openlocfilehash: 0a4ee3d66b660c3ac4dbc1cf2c2617d8964b7111
-ms.sourcegitcommit: e94ed1c9eff4e88be2ca389909e60b14cc0d92f8
+ms.openlocfilehash: 2d9429a28e2ed4f90684b46ae0223430ab6da257
+ms.sourcegitcommit: b2f2bb08ab1b5ccb3c596d84b3b6ddca5bba3903
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79084637"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80151587"
 ---
 ## <a name="prerequisites"></a>先决条件
 
@@ -24,8 +24,7 @@ ms.locfileid: "79084637"
 
 > [!div class="checklist"]
 > * [创建一个 Azure 搜索资源](../../../../get-started.md)
-> * [设置开发环境](../../../../quickstarts/setup-platform.md?tabs=dotnet)
-> * [创建空示例项目](../../../../quickstarts/create-project.md?tabs=dotnet)
+> * [设置开发环境并创建空项目](../../../../quickstarts/setup-platform.md?tabs=dotnet)
 
 ## <a name="open-your-project-in-visual-studio"></a>在 Visual Studio 中打开项目
 

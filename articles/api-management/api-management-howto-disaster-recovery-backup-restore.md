@@ -14,12 +14,12 @@ ms.topic: article
 origin.date: 02/03/2020
 ms.author: v-lingwu
 ms.date: 2/25/2020
-ms.openlocfilehash: 351e9b67a3b80cabe216b4cf307177022a7377bd
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.openlocfilehash: eb896ecfb2f716c2b2112c814a5382fc1ad2afbb
+ms.sourcegitcommit: 7f8acc663bf3429b391c2c615bed0d1b2107fd7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78155088"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80290089"
 ---
 # <a name="how-to-implement-disaster-recovery-using-service-backup-and-restore-in-azure-api-management"></a>如何使用 Azure API 管理中的服务备份和还原实现灾难恢复
 
@@ -101,8 +101,8 @@ namespace GetTokenResourceManagerRequests
     {
         static void Main(string[] args)
         {
-            var authenticationContext = new AuthenticationContext("https://login.microsoftonline.com/{tenant id}");
-            var result = authenticationContext.AcquireTokenAsync("https://management.azure.com/", "{application id}", new Uri("{redirect uri}"), new PlatformParameters(PromptBehavior.Auto)).Result;
+            var authenticationContext = new AuthenticationContext("https://login.partner.microsoftonline.cn/{tenant id}");
+            var result = authenticationContext.AcquireTokenAsync("https://management.chinacloudapi.cn/", "{application id}", new Uri("{redirect uri}"), new PlatformParameters(PromptBehavior.Auto)).Result;
 
             if (result == null) {
                 throw new InvalidOperationException("Failed to obtain the JWT token");
@@ -142,7 +142,7 @@ REST API 为 [Api 管理服务 - 备份](https://docs.microsoft.com/rest/api/api
 request.Headers.Add(HttpRequestHeader.Authorization, "Bearer " + token);
 ```
 
-### <a name="step1"> </a>备份 API 管理服务
+### <a name="back-up-an-api-management-service"></a><a name="step1"> </a>备份 API 管理服务
 若要备份 API 管理服务问题，请发送以下 HTTP 请求：
 
 ```http
@@ -185,7 +185,7 @@ POST https://management.azure.cn/subscriptions/{subscriptionId}/resourceGroups/{
 > [!NOTE]
 > 如果尝试使用启用了[防火墙][azure-storage-ip-firewall]的存储帐户执行通过 API 管理服务进行的备份/还原，则在同一 Azure 区域中，这将不起作用。 这是因为对 Azure 存储的请求不会通过“计算”>（Azure API 管理控制平面）以 SNAT 方式转换成公共 IP。 跨区域存储请求将进行 SNAT 转换。
 
-### <a name="step2"> </a>还原 API 管理服务
+### <a name="restore-an-api-management-service"></a><a name="step2"> </a>还原 API 管理服务
 
 若要从之前创建的备份还原 API 管理服务，请发出以下 HTTP 请求：
 

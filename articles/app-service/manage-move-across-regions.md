@@ -6,12 +6,12 @@ origin.date: 02/27/2020
 ms.date: 03/16/2020
 ms.author: v-tawe
 ms.custom: subject-moving-resources
-ms.openlocfilehash: 51f258a4a5d0a6a80cbf2e6d1630c85ab36b0d9f
-ms.sourcegitcommit: e500354e2fd8b7ac3dddfae0c825cc543080f476
+ms.openlocfilehash: 47cacf8cfd0509def39bfb25af6e96d7a26d65c9
+ms.sourcegitcommit: b2f2bb08ab1b5ccb3c596d84b3b6ddca5bba3903
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2020
-ms.locfileid: "79546937"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80151721"
 ---
 # <a name="move-an-app-service-app-to-another-region"></a>将应用服务应用移动到其他区域
 
@@ -75,7 +75,7 @@ ms.locfileid: "79546937"
     {
         "type": "Microsoft.Web/sites/hostNameBindings",
         "apiVersion": "2018-11-01",
-        "name": "[concat(parameters('sites_webapp_name'), '/', parameters('sites_webapp_name'), '.azurewebsites.net')]",
+        "name": "[concat(parameters('sites_webapp_name'), '/', parameters('sites_webapp_name'), '.chinacloudsites.cn')]",
         "location": "West Europe",
         "dependsOn": [
             "[resourceId('Microsoft.Web/sites', parameters('sites_webapp_name'))]"

@@ -12,19 +12,19 @@ ms.devlang: ''
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: big-data
-origin.date: 10/08/2019
-ms.date: 11/11/2019
+origin.date: 03/11/2020
+ms.date: 04/06/2020
 ms.author: v-yiso
-ms.openlocfilehash: c49a4c98d2d98224ff888522a14adcac875d4abe
-ms.sourcegitcommit: 642a4ad454db5631e4d4a43555abd9773cae8891
+ms.openlocfilehash: 89c312d65bdd8e3e8381cc9d14dd3881eb17aaa2
+ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2019
-ms.locfileid: "73425955"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80343581"
 ---
 # <a name="tutorial-use-apache-spark-structured-streaming-with-apache-kafka-on-hdinsight"></a>教程：将 Apache Spark 结构化流式处理与 Apache Kafka on HDInsight 配合使用
 
-本教程说明如何使用 [Apache Spark 结构化流式处理](https://spark.apache.org/docs/latest/structured-streaming-programming-guide)和 [Apache Kafka](https://kafka.apache.org/) on Azure HDInsight 来读取和写入数据。
+本教程说明如何使用 [Apache Spark 结构化流式处理](https://spark.apache.org/docs/latest/structured-streaming-programming-guide)和 [Apache Kafka](./kafka/apache-kafka-introduction.md) on Azure HDInsight 来读取和写入数据。
 
 Spark 结构化流式处理是建立在 Spark SQL 上的流处理引擎。 这允许以与批量计算相同的方式表达针对静态数据的流式计算。  
 
@@ -149,7 +149,7 @@ Apache Kafka on HDInsight 不提供通过公共 Internet 访问 Kafka 中转站�
     | --- | --- |
     | 订阅 | Azure 订阅 |
     | 资源组 | 包含资源的资源组。 |
-    | Location | 创建资源时所在的 Azure 区域。 |
+    | 位置 | 创建资源时所在的 Azure 区域。 |
     | Spark 群集名称 | Spark 群集的名称。 前六个字符必须与 Kafka 群集名称不同。 |
     | Kafka 群集名称 | Kafka 群集的名称。 前六个字符必须与 Spark 群集名称不同。 |
     | 群集登录用户名 | 群集的管理员用户名。 |
@@ -173,6 +173,8 @@ Apache Kafka on HDInsight 不提供通过公共 Internet 访问 Kafka 中转站�
 1. 收集主机信息。 使用下面的 curl 和 [jq](https://stedolan.github.io/jq/) 命令获取 Kafka ZooKeeper 主机和代理主机信息。 这些命令设计用于 Windows 命令提示符，在其他环境中需要进行细微的更改。 将 `KafkaCluster` 替换为 Kafka 群集的名称，并将 `KafkaPassword` 替换为群集登录密码。 另外，将 `C:\HDI\jq-win64.exe` 替换为 jq 安装的实际路径。 在 Windows 命令提示符中输入命令，然后保存输出，以便在后续步骤中使用。
 
     ```cmd
+    REM Enter cluster name in lowercase
+
     set CLUSTERNAME=KafkaCluster
     set PASSWORD=KafkaPassword
     
@@ -181,13 +183,9 @@ Apache Kafka on HDInsight 不提供通过公共 Internet 访问 Kafka 中转站�
     curl -u admin:%PASSWORD% -G "https://%CLUSTERNAME%.azurehdinsight.cn/api/v1/clusters/%CLUSTERNAME%/services/KAFKA/components/KAFKA_BROKER" | C:\HDI\jq-win64.exe -r "["""\(.host_components[].HostRoles.host_name):9092"""] | join(""",""")"
     ```
 
-1. 在 Web 浏览器中，连接到 Spark 群集上的 Jupyter Notebook。 在下列 URL 中，将 `CLUSTERNAME` 替换为你的 __Spark__ 群集名：
+1. 在 Web 浏览器中，导航到 `https://CLUSTERNAME.azurehdinsight.cn/jupyter`，其中 `CLUSTERNAME` 是群集的名称。 出现提示时，输入创建群集时使用的群集登录名（管理员）和密码。
 
-        https://CLUSTERNAME.azurehdinsight.cn/jupyter
-
-    出现提示时，输入创建群集时使用的群集登录名（管理员）和密码。
-
-3. 选择“新建”>“Spark”，创建一个笔记本。 
+1. 选择“新建”>“Spark”，创建一个笔记本。 
 
 4. Spark 流式处理具有微型批处理，这意味着数据是成批传入的，而执行程序则对这批数据运行。 如果执行程序的空闲超时少于处理批处理所需的时间，则将不断添加和删除执行程序。 如果执行程序的空闲超时大于批处理持续时间，则不会删除执行程序。 因此，**我们建议你在运行流式处理应用程序时通过将 spark.dynamicAllocation.enabled 设置为 false 来禁用动态分配。**
 
@@ -332,7 +330,7 @@ Apache Kafka on HDInsight 不提供通过公共 Internet 访问 Kafka 中转站�
 3. 选择“删除资源组”，然后进行确认。 
 
 > [!WARNING]
-> 创建群集后便开始 HDInsight 群集计费，删除群集后停止计费。 群集以每分钟按比例收费，因此无需再使用群集时，应始终将其删除。
+> HDInsight 群集计费在创建群集之后便会开始，删除群集后才会停止。 HDInsight 群集按分钟收费，因此不再需要使用群集时，应将其删除。
 > 
 > 删除 Kafka on HDInsight 群集会删除存储在 Kafka 中的任何数据。
 

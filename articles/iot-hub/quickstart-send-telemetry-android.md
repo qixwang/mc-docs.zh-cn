@@ -9,14 +9,14 @@ ms.devlang: java
 ms.topic: quickstart
 ms.custom: mvc
 origin.date: 03/15/2019
-ms.date: 03/23/2020
+ms.date: 04/06/2020
 ms.author: v-yiso
-ms.openlocfilehash: 25080919ab35a5e0b6e378672840c0bac6aee0ad
-ms.sourcegitcommit: 32997a7d7585deaeb0ab7b8f928d397b18b343fa
+ms.openlocfilehash: 665472cb555eda090dffb9abe938a1d1034c97eb
+ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79295931"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80343102"
 ---
 # <a name="quickstart-send-iot-telemetry-from-an-android-device"></a>快速入门：从 Android 设备发送 IoT 遥测数据
 
@@ -39,8 +39,10 @@ ms.locfileid: "79295931"
 运行以下命令将用于 Azure CLI 的 Microsoft Azure IoT 扩展添加到 Cloud Shell 实例。 IoT 扩展会将 IoT 中心、IoT Edge 和 IoT 设备预配服务 (DPS) 特定的命令添加到 Azure CLI。
 
    ```azurecli
-   az extension add --name azure-cli-iot-ext
-   ```
+az extension add --name azure-iot
+```
+
+[!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 
 ## <a name="create-an-iot-hub"></a>创建 IoT 中心
 

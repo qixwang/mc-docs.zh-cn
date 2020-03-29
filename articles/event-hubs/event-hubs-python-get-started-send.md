@@ -8,14 +8,14 @@ ms.service: event-hubs
 ms.workload: core
 ms.topic: quickstart
 origin.date: 01/15/2020
-ms.date: 03/09/2020
+ms.date: 03/16/2020
 ms.author: v-tawe
-ms.openlocfilehash: bc0427d207be5b0b677085735b40ccca660353c0
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.openlocfilehash: 11b3ee6ea4572d8462fc7ea41569ac5a94ba8fbb
+ms.sourcegitcommit: 1d3d8dfdaf6281f06640cbee7124a1e8bf102c50
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78155117"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80243921"
 ---
 # <a name="quickstart-send-and-receive-events-with-event-hubs-using-python-azure-eventhub-version-1"></a>快速入门：使用 Python（azure-eventhub 版本 1）向/从事件中心发送/接收事件
 本快速入门介绍如何使用 **azure-eventhub 版本 1** Python 包向事件中心发送事件以及从事件中心接收事件。 

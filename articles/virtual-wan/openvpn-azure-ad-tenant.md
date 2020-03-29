@@ -8,12 +8,12 @@ ms.topic: conceptual
 origin.date: 12/27/2019
 ms.date: 02/24/2020
 ms.author: v-yeche
-ms.openlocfilehash: b4206da306847ffd9d3855ff50f2bfc3d2046571
-ms.sourcegitcommit: 69cadf1fa0ed81751c48fbce919a6bb44b1053ce
+ms.openlocfilehash: 4a13b2ac71f3423e74b94476c1cc6814761d436e
+ms.sourcegitcommit: 303a16c7117b6f3495ef0493b4ae8ccb67d7dbba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78209186"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80342424"
 ---
 # <a name="create-an-azure-active-directory-tenant-for-p2s-openvpn-protocol-connections"></a>为 P2S OpenVPN 协议连接创建 Azure Active Directory 租户
 
@@ -31,9 +31,9 @@ ms.locfileid: "78209186"
 * 组织名称
 * 初始域名
 
-示例：
+    示例：
 
-   ![新 Azure AD 租户](./media/openvpn-create-azure-ad-tenant/newtenant.png)
+    ![新 Azure AD 租户](./media/openvpn-create-azure-ad-tenant/newtenant.png)
 
 <a name="users"></a>
 ## <a name="2-create-azure-ad-tenant-users"></a>2.创建 Azure AD 租户用户

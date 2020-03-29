@@ -2,19 +2,18 @@
 title: Azure IoT Central 中的客户数据请求功能 | Microsoft Docs
 description: 本文介绍如何在 Azure IoT Central 应用程序中识别、删除和导出客户数据。
 author: dominicbetts
-ms.author: v-yiso
-origin.date: 08/23/2019
-ms.date: 12/16/2019
+ms.author: dobett
+ms.date: 08/23/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: timlt
-ms.openlocfilehash: 40833a69db86f767656678a70ef9b0da821271fd
-ms.sourcegitcommit: 6ffa4d50cee80c7c0944e215ca917a248f2a4bcd
+ms.openlocfilehash: ede46e38c39c4518d1d8019fb2cbc541eb09a5c4
+ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74883810"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80343143"
 ---
 # <a name="summary-of-customer-data-request-features"></a>客户数据请求功能摘要
 
@@ -37,8 +36,6 @@ Azure Active Directory 对象 ID 用于标识用户和分配角色。 Azure IoT 
 只能通过 IoT Central 管理页删除用户数据。 应用程序管理员可以选择要删除的用户，然后选择应用程序右上角的“删除”来删除记录。  应用程序管理员也可以删除不再与相关应用程序关联的个人帐户。
 
 删除用户后，不会向其发送电子邮件警报。 但是，必须从每个配置的警报中一个个地删除其电子邮件地址。
-
-有关详细信息，请参阅[配置设备的规则和操作](tutorial-configure-rules.md)。
 
 ## <a name="exporting-customer-data"></a>导出客户数据
 

@@ -11,14 +11,14 @@ ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: ns
 origin.date: 06/21/2019
-ms.date: 03/23/2020
+ms.date: 04/06/2020
 ms.author: v-yiso
-ms.openlocfilehash: 0713492d46ee794ed39f0d496966965565bab36d
-ms.sourcegitcommit: 32997a7d7585deaeb0ab7b8f928d397b18b343fa
+ms.openlocfilehash: be96d628538e48435e6da15fb6ee1fb258f6e338
+ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79296008"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80343621"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-azure-iot-hub-with-java"></a>快速入门：使用 Java 控制连接到 Azure IoT 中心的设备
 
@@ -55,8 +55,10 @@ mvn --version
 运行以下命令将用于 Azure CLI 的 Microsoft Azure IoT 扩展添加到 Cloud Shell 实例。 IoT 扩展会将特定于 IoT 中心、IoT Edge 和 IoT 设备预配服务 (DPS) 的命令添加到 Azure CLI。
 
 ```azurecli
-az extension add --name azure-cli-iot-ext
+az extension add --name azure-iot
 ```
+
+[!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 
 ## <a name="create-an-iot-hub"></a>创建 IoT 中心
 

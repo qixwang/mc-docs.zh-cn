@@ -9,16 +9,16 @@ origin.date: 12/12/2017
 ms.date: 01/13/2020
 ms.author: v-tawe
 ms.custom: mvc
-ms.openlocfilehash: 06a1856b771b1d8527ef9254474b74b967c6e340
-ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
+ms.openlocfilehash: 2688893dd6763b4169251c73ac9704af3df415ff
+ms.sourcegitcommit: b2f2bb08ab1b5ccb3c596d84b3b6ddca5bba3903
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75600352"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80151719"
 ---
 # <a name="create-an-app-service-app-and-deploy-files-with-ftp-using-azure-cli"></a>使用 Azure CLI 创建应用服务应用并通过 FTP 部署文件
 
-本示例脚本使用其相关资源，在应用服务中创建应用，然后使用 FTP 部署静态 HTML 页。 脚本使用 [cURL](https://en.wikipedia.org/wiki/CURL) 作为 FTP 上传的示例。 可以使用任意 FTP 工具来上传文件。
+本示例脚本使用其相关资源，在应用服务中创建应用，然后使用 FTP 部署静态 HTML 页。 脚本使用 [cURL](https://wikipedia.org/wiki/CURL) 作为 FTP 上传的示例。 可以使用任意 FTP 工具来上传文件。
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 

@@ -17,8 +17,6 @@
           href: grant-admin-consent.md
         - name: 应用程序类型
           href: application-types.md
-        - name: 用于将用户和组分配到应用的方法
-          href: methods-for-assigning-users-and-groups.md
         - name: 将用户分配到应用
           href: assign-user-or-group-access-portal.md
         - name: 分配了意外的用户

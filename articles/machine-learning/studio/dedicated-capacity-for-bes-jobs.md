@@ -10,14 +10,16 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18, previous-title='Dedicated capacity for batch execution service jobs - Azure Machine Learning Studio (classic) | Microsoft Docs'
 ms.date: 04/19/2017
-ms.openlocfilehash: 83fa36bfb8d5d1368ad7e73617d32a71e9462df0
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+ms.openlocfilehash: 1efd8618be5f11b15343963c71a31711bbf0f43e
+ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75599470"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80343077"
 ---
 # <a name="azure-batch-service-for-azure-machine-learning-studio-classic-jobs"></a>适用于 Azure 机器学习工作室（经典）作业的 Azure Batch 服务
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 机器学习批处理池处理为 Azure 机器学习批处理执行服务提供客户管理的缩放。 适用于机器学习的经典批处理发生在多租户环境中，限制了可以提交的并发作业的数目，作业按先进先出的原则排队处理。 这种不确定性意味着无法准确地预测作业何时会运行。
 

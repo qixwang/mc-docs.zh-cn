@@ -5,17 +5,17 @@ author: kgremban
 manager: philmea
 ms.author: v-tawe
 origin.date: 11/06/2019
-ms.date: 03/02/2020
+ms.date: 03/16/2020
 ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: f9ce25ab59fadc08d94a4fcb5832f499ab630dd6
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: 75ce8f8fb6cb1a1e9c0ec7347cd9d0b93f314f7f
+ms.sourcegitcommit: 1d3d8dfdaf6281f06640cbee7124a1e8bf102c50
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79291959"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80243893"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-virtual-linux-device"></a>快速入门：将第一个 IoT Edge 模块部署到虚拟 Linux 设备
 
@@ -34,7 +34,7 @@ ms.locfileid: "79291959"
 
 如果没有可用的 Azure 订阅，可以在开始前创建一个[免费帐户](https://www.azure.cn/pricing/1rmb-trial/)。
 
-
+<!-- [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)] -->
 
 请使用 Azure CLI 完成本快速入门中的多个步骤。Azure IoT 有一个可以启用其他功能的扩展。
 
@@ -43,6 +43,8 @@ ms.locfileid: "79291959"
    ```azurecli
    az extension add --name azure-cli-iot-ext
    ```
+   
+[!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 
 ## <a name="prerequisites"></a>先决条件
 

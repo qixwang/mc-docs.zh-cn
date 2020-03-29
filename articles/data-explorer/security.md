@@ -7,13 +7,13 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 origin.date: 01/06/2020
-ms.date: 03/09/2020
-ms.openlocfilehash: a815d16daefdbccf13e815298a122d6124aeca89
-ms.sourcegitcommit: ced17aa58e800b9e4335276a1595b8045836b256
+ms.date: 03/16/2020
+ms.openlocfilehash: a007a02654212bb0b98500b7d0bc689004b220fe
+ms.sourcegitcommit: 1d3d8dfdaf6281f06640cbee7124a1e8bf102c50
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77590202"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80243948"
 ---
 # <a name="secure-azure-data-explorer-clusters-in-azure"></a>在 Azure 中保护 Azure 数据资源管理器群集
 

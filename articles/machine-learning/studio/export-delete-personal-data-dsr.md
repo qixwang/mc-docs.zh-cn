@@ -10,14 +10,16 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 05/25/2018
-ms.openlocfilehash: 41e8839215f03d48393fda70db5ca516930cf114
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: ce8d5d6d9ca3b346800972955e1baa7951224f0d
+ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79292526"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80343358"
 ---
 # <a name="export-and-delete-in-product-user-data-from-azure-machine-learning-studio-classic"></a>从 Azure 机器学习工作室（经典版）中导出和删除产品内用户数据
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 可以使用 Azure 门户、工作室（经典版）界面、PowerShell 和经过验证的 REST API 删除或导出 Azure 机器学习工作室（经典版）存储的产品内数据。 本文介绍了相关实现方法。 
 
@@ -53,7 +55,7 @@ ms.locfileid: "79292526"
     - 可以通过 UI、REST API 或 PowerShell 包导出个人及客户数据
     - 可以在 Azure 门户中删除数据。
 
-## <a name="delete"></a>删除工作室（经典版）中的工作区数据 
+## <a name="delete-workspace-data-in-studio-classic"></a><a name="delete"></a>删除工作室（经典版）中的工作区数据 
 
 ### <a name="delete-individual-assets"></a>删除各项资产
 

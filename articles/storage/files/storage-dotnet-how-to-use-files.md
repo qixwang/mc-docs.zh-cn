@@ -6,15 +6,15 @@ ms.service: storage
 ms.devlang: dotnet
 ms.topic: conceptual
 origin.date: 10/07/2019
-ms.date: 01/06/2020
+ms.date: 03/30/2020
 ms.author: v-jay
 ms.subservice: files
-ms.openlocfilehash: 56ccfa31afbbaa5679fe8b375b1afd55bb7b24af
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.openlocfilehash: 7f281c8960d97ee8590a545d632443331cf2328c
+ms.sourcegitcommit: 90d01d08faf8adb20083363a8e4e5aab139cd9b2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75624105"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80290462"
 ---
 # <a name="develop-for-azure-files-with-net"></a>使用 .NET 针对 Azure 文件进行开发
 
@@ -421,7 +421,7 @@ fileInliveShare.StartCopyAsync(new Uri(sourceUri));
 CloudFileShare mySnapshot = fClient.GetShareReference(baseShareName, snapshotTime); mySnapshot.Delete(null, null, null);
 ```
 
-## 使用指标排查 Azure 文件存储问题<a name="troubleshooting-azure-files-using-metrics"></a>
+## <a name="troubleshoot-azure-files-by-using-metrics"></a>使用指标排查 Azure 文件存储问题<a name="troubleshooting-azure-files-using-metrics"></a>
 
 Azure 存储分析现在支持用于 Azure 文件的指标。 使用指标数据，可以跟踪请求和诊断问题。
 
@@ -492,7 +492,6 @@ Console.WriteLine(serviceProperties.MinuteMetrics.Version);
 ### <a name="tooling-support-for-file-storage"></a>文件存储的工具支持
 
 * [AzCopy 入门](../common/storage-use-azcopy.md?toc=%2fstorage%2ffiles%2ftoc.json)
-* [将 Azure CLI 用于 Azure 存储](../common/storage-azure-cli.md?toc=%2fstorage%2ffiles%2ftoc.json#create-and-manage-file-shares)
 * [在 Windows 中排查 Azure 文件问题](/storage/storage-troubleshoot-file-connection-problems)
 
 ### <a name="reference"></a>参考

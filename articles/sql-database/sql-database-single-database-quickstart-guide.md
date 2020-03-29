@@ -1,5 +1,5 @@
 ---
-title: 快速入门 - Azure SQL 数据库中的单一数据库 | Microsoft Docs
+title: 快速入门 - 单一数据库
 description: 了解如何快速开始使用 Azure SQL 数据库中的单一数据库
 services: sql-database
 ms.service: sql-database
@@ -10,15 +10,14 @@ ms.topic: quickstart
 author: WenJason
 ms.author: v-jay
 ms.reviewer: carlr
-manager: digimobile
-origin.date: 02/04/2019
-ms.date: 08/26/2019
-ms.openlocfilehash: 3d3ef39e5fb6363a7a887ee805fd858c30594e99
-ms.sourcegitcommit: b418463868dac6b3c82b292f70d4a17bc5e01e95
+origin.date: 07/29/2019
+ms.date: 03/30/2020
+ms.openlocfilehash: 56b68d337b2fb58a757c5951e905080db8e057cb
+ms.sourcegitcommit: 90660563b5d65731a64c099b32fb9ec0ce2c51c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69578567"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80341758"
 ---
 # <a name="getting-started-with-single-databases-in-azure-sql-database"></a>开始使用 Azure SQL 数据库中的单一数据库
 
@@ -36,10 +35,8 @@ ms.locfileid: "69578567"
 
 可以使用 PowerShell 或 Azure CLI 创建、配置和缩放数据库。
 
-- [使用 PowerShell 创建和配置单一数据库](scripts/sql-database-create-and-configure-database-powershell.md)
-- [使用 Azure CLI 创建和配置单一数据库](scripts/sql-database-create-and-configure-database-cli.md)
-- [使用 PowerShell 更新单一数据库和缩放资源](scripts/sql-database-monitor-and-scale-database-powershell.md)
-- [使用 Azure CLI 更新单一数据库和缩放资源](scripts/sql-database-monitor-and-scale-database-cli.md)
+- [使用 PowerShell](scripts/sql-database-create-and-configure-database-powershell.md) 或 [Azure CLI](scripts/sql-database-create-and-configure-database-cli.md) 创建和配置单一数据库
+- [使用 PowerShell](scripts/sql-database-monitor-and-scale-database-powershell.md) 或 [Azure CLI](scripts/sql-database-monitor-and-scale-database-cli.md) 更新单一数据库和缩放资源
 
 ## <a name="migrating-to-a-single-database-with-minimal-downtime"></a>在尽量缩短停机时间的情况下迁移到单一数据库
 

@@ -8,12 +8,12 @@ ms.topic: article
 origin.date: 06/25/2019
 md.date: 03/23/2020
 ms.author: v-tawe
-ms.openlocfilehash: a5a89dafb4d0d8a8d52ba5d25c751610df9a71e3
-ms.sourcegitcommit: e94ed1c9eff4e88be2ca389909e60b14cc0d92f8
+ms.openlocfilehash: 53b3e301209da97ef4485d8ade23140139441da6
+ms.sourcegitcommit: b2f2bb08ab1b5ccb3c596d84b3b6ddca5bba3903
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79084426"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80151742"
 ---
 # <a name="how-to-use-the-javascript-client-library-for-azure-mobile-apps"></a>如何使用适用于 Azure 移动应用的 JavaScript 客户端库
 [!INCLUDE [app-service-mobile-selector-client-library](../../includes/app-service-mobile-selector-client-library.md)]
@@ -26,7 +26,7 @@ ms.locfileid: "79084426"
 
 包作为通用 JavaScript 模块分发，因此支持全局、AMD 和 CommonJS 格式。
 
-## <a name="Setup"></a>安装与先决条件
+## <a name="setup-and-prerequisites"></a><a name="Setup"></a>安装与先决条件
 本指南假设已创建了包含表的后端。 本指南假设该表的架构与这些教程中的表相同。
 
 可以通过 `npm` 命令安装 Azure 移动应用 JavaScript SDK：
@@ -52,14 +52,14 @@ import * as WindowsAzure from 'azure-mobile-apps-client';
 
 [!INCLUDE [app-service-mobile-html-js-library](../../includes/app-service-mobile-html-js-library.md)]
 
-## <a name="auth"></a>如何：对用户进行身份验证
+## <a name="how-to-authenticate-users"></a><a name="auth"></a>如何：对用户进行身份验证
 Azure 应用服务支持使用各种外部标识提供者对应用用户进行身份验证和授权：Microsoft 帐户。 可以在表中设置权限，以便将特定操作的访问权限限制给已经过身份验证的用户。 还可以在服务器脚本中使用已经过身份验证的用户的标识来实施授权规则。 有关详细信息，请参阅 [身份验证入门] 教程。
 
 支持两种身份验证流：服务器流和客户端流。  服务器流依赖于提供者的 Web 身份验证界面，因此可提供最简便的身份验证体验。 客户端流依赖于提供程序特定的 SDK，因此允许与设备特定的功能（例如单一登录）进行更深入的集成。
 
 [!INCLUDE [app-service-mobile-html-js-auth-library](../../includes/app-service-mobile-html-js-auth-library.md)]
 
-### <a name="configure-external-redirect-urls"></a>如何：为外部重定向 URL 配置移动应用服务。
+### <a name="how-to-configure-your-mobile-app-service-for-external-redirect-urls"></a><a name="configure-external-redirect-urls"></a>如何：为外部重定向 URL 配置移动应用服务。
 有多种类型的 JavaScript 应用程序使用环回功能来处理 OAuth UI 流。  这些功能包括：
 
 * 在本地运行服务
@@ -76,12 +76,10 @@ Azure 应用服务支持使用各种外部标识提供者对应用用户进行�
 6. 单击“编辑”  按钮启用对资源的编辑。
 7. 查找 **allowedExternalRedirectUrls** 元素，此元素应为 null。 在数组中添加 URL：
 
-    ```json
-     "allowedExternalRedirectUrls": [
-         "http://localhost:3000",
-         "https://localhost:3000"
-     ],
-    ```
+         "allowedExternalRedirectUrls": [
+             "http://localhost:3000",
+             "https://localhost:3000"
+         ],
 
     将数组中的 URL 替换为服务的 URL，在本示例中为本地 Node.js 示例服务的 `http://localhost:3000` 。 对于 Ripple 服务，也可以根据应用的配置方式，使用 `http://localhost:4400` 或其他某个 URL。
 8. 在页面顶部，单击“读/写”  ，然后单击“PUT”  保存更新。

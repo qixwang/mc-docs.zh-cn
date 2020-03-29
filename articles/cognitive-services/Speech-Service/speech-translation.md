@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-origin.date: 07/05/2019
-ms.date: 01/27/2020
+origin.date: 03/11/2020
+ms.date: 03/16/2020
 ms.author: v-tawe
-ms.openlocfilehash: 938e3fc18f794259ed508d5bc6b70fa3ae9628e5
-ms.sourcegitcommit: 94e1c9621b8f81a7078f1412b3a73281d0a8668b
+ms.openlocfilehash: 19880aac5114c37585181948e89ca50863f6eceb
+ms.sourcegitcommit: b2f2bb08ab1b5ccb3c596d84b3b6ddca5bba3903
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76123442"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80151512"
 ---
 # <a name="what-is-speech-translation"></a>什么是语音翻译？
 

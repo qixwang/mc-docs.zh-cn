@@ -9,15 +9,15 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
 origin.date: 02/10/2020
-ms.date: 03/09/2020
+ms.date: 03/16/2020
 ms.author: v-tawe
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 0c47bc695853051e9c82277ff1fd470897c26dd8
-ms.sourcegitcommit: ced17aa58e800b9e4335276a1595b8045836b256
+ms.openlocfilehash: b724a7d7c5abeff5252213645547b9f60c68f37c
+ms.sourcegitcommit: b2f2bb08ab1b5ccb3c596d84b3b6ddca5bba3903
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77590273"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80151641"
 ---
 # <a name="quickstart-recognize-speech-from-a-microphone"></a>快速入门：识别来自麦克风的语音
 

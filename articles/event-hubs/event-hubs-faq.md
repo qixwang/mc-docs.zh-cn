@@ -10,19 +10,19 @@ ms.topic: article
 origin.date: 12/02/2019
 ms.date: 01/17/2020
 ms.author: v-tawe
-ms.openlocfilehash: ae378b5b57eee31c1310c174dd229181becc1465
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: e92a911cda508658a878bbe29ce8d0eba1ca4b5e
+ms.sourcegitcommit: b2f2bb08ab1b5ccb3c596d84b3b6ddca5bba3903
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79291808"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80151489"
 ---
 # <a name="event-hubs-frequently-asked-questions"></a>事件中心常见问题
 
 ## <a name="general"></a>常规
 
 ### <a name="what-is-an-event-hubs-namespace"></a>什么是事件中心命名空间？
-命名空间是事件中心主题的范围容器。 它提供唯一的 [FQDN](https://en.wikipedia.org/wiki/Fully_qualified_domain_name)。 命名空间充当容装多个事件中心主题的应用程序容器。 
+命名空间是事件中心主题的范围容器。 它提供唯一的 [FQDN](https://wikipedia.org/wiki/Fully_qualified_domain_name)。 命名空间充当容装多个事件中心主题的应用程序容器。 
 
 ### <a name="when-do-i-create-a-new-namespace-vs-use-an-existing-namespace"></a>何时创建新的命名空间而不是使用现有的命名空间？
 容量分配（[吞吐量单位 (TU)](#throughput-units)）在命名空间级别进行计费。 命名空间也与区域相关联。

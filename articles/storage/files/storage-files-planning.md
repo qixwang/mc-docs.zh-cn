@@ -5,15 +5,15 @@ author: WenJason
 ms.service: storage
 ms.topic: conceptual
 origin.date: 1/3/2020
-ms.date: 03/09/2020
+ms.date: 03/30/2020
 ms.author: v-jay
 ms.subservice: files
-ms.openlocfilehash: d361207c289fcd06645813917f36d044c038263f
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: f8043ae9c97648c77c79213290ea204fd33e4989
+ms.sourcegitcommit: 90d01d08faf8adb20083363a8e4e5aab139cd9b2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79291707"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80290392"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>规划 Azure 文件部署
 可通过以下主要方式部署 [Azure 文件存储](storage-files-introduction.md)：直接装载无服务器 Azure 文件共享。
@@ -34,12 +34,12 @@ ms.locfileid: "79291707"
 - 仅当在环境中发现了 GPv2 帐户以及 GPv1 和经典存储帐户时，才部署和升级这些帐户。 
 
 ## <a name="identity"></a>标识
-若要访问某个 Azure 文件共享，该文件共享的用户必须完成身份验证，并已获得授权。 这种授权是根据访问文件共享的用户的标识完成的。 Azure 文件存储与三个主要标识提供者集成：**Azure 存储帐户密钥**：使用 Azure 存储帐户密钥装载 Azure 文件共享。 若要以这种方式装载文件共享，需使用存储帐户名称作为用户名，使用存储帐户密钥作为密码。 使用存储帐户密钥装载 Azure 文件共享实际上是一项管理员操作，因为装载的文件共享对其上的所有文件和文件夹拥有完全权限，即使对这些文件和文件夹应用了 ACL。 使用存储帐户密钥通过 SMB 装载时，将使用 NTLMv2 身份验证协议。
+若要访问某个 Azure 文件共享，该文件共享的用户必须完成身份验证，并已获得授权。 这种授权是根据访问文件共享的用户的标识完成的。 使用 Azure 存储帐户密钥装载 Azure 文件共享。 若要以这种方式装载文件共享，需使用存储帐户名称作为用户名，使用存储帐户密钥作为密码。 使用存储帐户密钥装载 Azure 文件共享实际上是一项管理员操作，因为装载的文件共享对其上的所有文件和文件夹拥有完全权限，即使对这些文件和文件夹应用了 ACL。 使用存储帐户密钥通过 SMB 装载时，将使用 NTLMv2 身份验证协议。
 
 我们建议根据[网络](#networking)部分中所述使用服务终结点。
 
 ## <a name="networking"></a>网络
-可在任意位置通过存储帐户的公共终结点访问 Azure 文件共享。 这意味着，已经过身份验证的请求（例如已由用户登录标识授权的请求）可以安全地从 Azure 内部或外部发起。 在许多客户环境中，最初在本地工作站上装载 Azure 文件共享的操作会失败，尽管可以成功地从 Azure VM 装载。 其原因是，许多组织和 Internet 服务提供商 (ISP) 阻止 SMB 用来通信的端口 445。 
+可在任意位置通过存储帐户的公共终结点访问 Azure 文件共享。 这意味着，已经过身份验证的请求（例如已由用户登录标识授权的请求）可以安全地从 Azure 内部或外部发起。 在许多客户环境中，最初在本地工作站上装载 Azure 文件共享的操作会失败，尽管可以成功地从 Azure VM 装载。 其原因是，许多组织和 Internet 服务提供商 (ISP) 阻止 SMB 用来通信的端口 445。 如需大致了解允许或禁止从端口 445 进行访问的 ISP，请访问 [TechNet](https://social.technet.microsoft.com/wiki/contents/articles/32346.azure-summary-of-isps-that-allow-disallow-access-from-port-445.aspx)。
 
 若要取消阻止对 Azure 文件共享的访问，可以采用两种做法：
 

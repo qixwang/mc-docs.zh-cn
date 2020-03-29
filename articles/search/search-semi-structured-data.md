@@ -6,15 +6,15 @@ manager: nitinme
 author: HeidiSteen
 ms.author: v-tawe
 ms.service: cognitive-search
-ms.topic: conceptual
+ms.topic: tutorial
 origin.date: 02/28/2020
 ms.date: 03/16/2020
-ms.openlocfilehash: d8feff330ac856a04515920586d3fae12511e001
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.openlocfilehash: 6ed280dacb99d07c3db850620bbbf90bb03a1da9
+ms.sourcegitcommit: 1d3d8dfdaf6281f06640cbee7124a1e8bf102c50
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78850615"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80243703"
 ---
 # <a name="tutorial-index-json-blobs-from-azure-storage-using-rest"></a>教程：使用 REST 为 Azure 存储中的 JSON Blob 编制索引
 

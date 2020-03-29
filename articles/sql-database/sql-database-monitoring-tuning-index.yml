@@ -10,14 +10,14 @@ metadata:
   ms.collection: performance
   author: WenJason
   ms.author: v-jay
-  origin.date: 01/25/2020
-  ms.date: 02/17/2020
-  ms.openlocfilehash: 88328169a7f39c28d802e7f38e934e41521632aa
-  ms.sourcegitcommit: 3f9d780a22bb069402b107033f7de78b10f90dde
+  origin.date: 03/10/2020
+  ms.date: 03/30/2020
+  ms.openlocfilehash: 147a72f4595ef34b8d1eb35ecc23c9630baa9646
+  ms.sourcegitcommit: 90660563b5d65731a64c099b32fb9ec0ce2c51c6
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 02/12/2020
-  ms.locfileid: "77156764"
+  ms.lasthandoff: 03/27/2020
+  ms.locfileid: "80341807"
 landingContent:
 - title: 关于监视和性能优化
   linkLists:
@@ -29,14 +29,16 @@ landingContent:
     links:
     - text: Microsoft Azure 数据库监视演练手册
       url: https://app.pluralsight.com/library/courses/microsoft-azure-database-playbook-monitoring
-- title: 收集指标和日志
+- title: 智能性能建议
   linkLists:
   - linkListType: concept
     links:
-    - text: 指标和诊断日志记录
-      url: sql-database-metrics-diag-logging.md
-    - text: 了解性能诊断日志
-      url: sql-database-intelligent-insights-use-diagnostics-log.md
+    - text: SQL 数据库顾问优化建议
+      url: sql-database-advisor.md
+    - text: 自动优化
+      url: sql-database-automatic-tuning.md
+    - text: Query Performance Insight
+      url: sql-database-query-performance.md
 - title: 资源限制
   linkLists:
   - linkListType: concept
@@ -51,42 +53,40 @@ landingContent:
       url: sql-database-dtu-resource-limits-elastic-pools.md
     - text: 托管实例资源限制
       url: sql-database-managed-instance-resource-limits.md
-- title: 入门 - Azure 门户
+- title: 智能性能分析
   linkLists:
   - linkListType: overview
     links:
-    - text: 使用 AI 监视和优化
-      url: sql-database-performance.md
+    - text: 使用 AI 的智能见解
+      url: sql-database-intelligent-insights.md
   - linkListType: concept
     links:
-    - text: SQL 数据库顾问优化建议
-      url: sql-database-advisor.md
-    - text: Query Performance Insight
-      url: sql-database-query-performance.md
-    - text: Intelligent Insights
-      url: sql-database-intelligent-insights.md
+    - text: 指标和诊断日志记录
+      url: sql-database-metrics-diag-logging.md
+    - text: 了解性能诊断日志
+      url: sql-database-intelligent-insights-use-diagnostics-log.md
     - text: 可检测性能模式
       url: sql-database-intelligent-insights-troubleshoot-performance.md
-    - text: 自动优化
-      url: sql-database-automatic-tuning.md
+    - text: 智能查询处理
+      url: https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing
 - title: 手动性能优化
   linkLists:
   - linkListType: overview
     links:
-    - text: 手动性能优化指南
-      url: sql-database-performance-guidance.md
+    - text: 识别查询性能问题
+      url: sql-database-identify-query-performance-issues.md
   - linkListType: concept
     links:
+    - text: 使用 DMV 进行监视
+      url: sql-database-monitoring-with-dmvs.md
+    - text: 应用程序和数据库优化
+      url: sql-database-performance-guidance.md
     - text: 使用“查询存储”
       url: https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store
-    - text: 使用 DMV
-      url: sql-database-monitoring-with-dmvs.md
     - text: 使用扩展事件
       url: sql-database-xevent-db-diff-from-svr.md
     - text: 超大规模性能诊断
       url: sql-database-hyperscale-performance-diagnostics.md
-    - text: 智能查询处理
-      url: https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing
 - title: 资源缩放
   linkLists:
   - linkListType: overview

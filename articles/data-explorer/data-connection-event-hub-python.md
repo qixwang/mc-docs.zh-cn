@@ -7,13 +7,13 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 origin.date: 10/07/2019
-ms.date: 03/23/2020
-ms.openlocfilehash: 8efd4632ec73292909ca016530df614f8cb5eca9
-ms.sourcegitcommit: 4ba6d7c8bed5398f37eb37cf5e2acafcdcc28791
+ms.date: 03/16/2020
+ms.openlocfilehash: ad367fce2d2756132c0f63d1559ca49902e57f6a
+ms.sourcegitcommit: 1d3d8dfdaf6281f06640cbee7124a1e8bf102c50
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2020
-ms.locfileid: "79133967"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80243974"
 ---
 # <a name="create-an-event-hub-data-connection-for-azure-data-explorer-by-using-python"></a>使用 Python 为 Azure 数据资源管理器创建事件中心数据连接
 
@@ -27,7 +27,7 @@ ms.locfileid: "79133967"
 
 ## <a name="prerequisites"></a>先决条件
 
-* 如果没有 Azure 订阅，请在开始前创建一个[试用 Azure 帐户](https://www.azure.cn/pricing/1rmb-trial/)。
+* 具有活动订阅的 Azure 帐户。 [创建试用帐户](https://www.azure.cn/pricing/1rmb-trial/)。
 
 * [Python 3.4+](https://www.python.org/downloads/)。
 

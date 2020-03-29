@@ -7,15 +7,15 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: tutorial
 origin.date: 03/25/2019
-ms.date: 12/02/2019
+ms.date: 04/06/2020
 ms.author: v-yiso
 ms.custom: mvc
-ms.openlocfilehash: f6799c777a49e4cfa79d53722490eaecc2af9e89
-ms.sourcegitcommit: 9e92bcf6aa02fc9e7b3a29abadf6b6d1a8ece8c4
+ms.openlocfilehash: bf9d8f658881b2d58bce7662539bc12bdb6fa92b
+ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74389397"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80343611"
 ---
 # <a name="tutorial-use-the-azure-cli-to-configure-iot-hub-message-routing"></a>教程：使用 Azure CLI 配置 IoT 中心消息路由
 
@@ -56,7 +56,7 @@ randomValue=$RANDOM
 # This command installs the IOT Extension for Azure CLI.
 # You only need to install this the first time.
 # You need it to create the device identity. 
-az extension add --name azure-cli-iot-ext
+az extension add --name azure-iot
 
 # Set the values for the resource names that 
 #   don't have to be globally unique.

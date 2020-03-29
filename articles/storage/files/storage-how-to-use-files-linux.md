@@ -5,15 +5,15 @@ author: WenJason
 ms.service: storage
 ms.topic: conceptual
 origin.date: 10/19/2019
-ms.date: 02/10/2020
+ms.date: 03/30/2020
 ms.author: v-jay
 ms.subservice: files
-ms.openlocfilehash: e49f454ce267c6873a1231d38cece194ae1e76e5
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: a61b1eab45d5fb0a233ff44557caac575215074e
+ms.sourcegitcommit: 90d01d08faf8adb20083363a8e4e5aab139cd9b2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79291660"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80290341"
 ---
 # <a name="use-azure-files-with-linux"></a>通过 Linux 使用 Azure 文件
 [Azure 文件](storage-files-introduction.md)是易于使用的云文件系统。 可以使用 [SMB 内核客户端](https://wiki.samba.org/index.php/LinuxCIFS)在 Linux 分发版中装载 Azure 文件共享。 本文介绍装载 Azure 文件共享的两种方法：使用 `mount` 命令按需装载，以及通过在 `/etc/fstab` 中创建一个条目在启动时装载。
@@ -277,7 +277,7 @@ cat /sys/module/cifs/parameters/disable_legacy_dialects
 ## <a name="feedback"></a>反馈
 Linux 用户，我们希望倾听意见！
 
-针对 Linux 用户组的 Azure 文件提供了一个论坛，在 Linux 上评估和采用文件存储时，可以在该论坛上共享反馈。 向 [Azure 文件 Linux 用户](mailto:azurefileslinuxusers@microsoft.com)发送电子邮件可加入该用户组。
+针对 Linux 用户组的 Azure 文件提供了一个论坛，在 Linux 上评估和采用文件存储时，可以在该论坛上共享反馈。 向 [Azure 文件 Linux 用户](mailto:azurefiles@microsoft.com)发送电子邮件可加入该用户组。
 
 ## <a name="next-steps"></a>后续步骤
 请参阅以下链接，获取有关 Azure 文件的更多信息：

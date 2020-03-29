@@ -9,16 +9,16 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
 origin.date: 10/10/2019
-ms.date: 01/13/2020
+ms.date: 03/16/2020
 ms.author: v-tawe
-ms.openlocfilehash: 1a07dc6fe3a2e5df7b8a41979165ac39a31341cd
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.openlocfilehash: e90c7e90fc4986e28c6890711c853955487359d3
+ms.sourcegitcommit: b2f2bb08ab1b5ccb3c596d84b3b6ddca5bba3903
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75631030"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80151661"
 ---
-本指南介绍如何安装用于 C# 通用 Windows 平台 (UWP) 的[语音 SDK](~/articles/cognitive-services/speech-service/speech-sdk.md)。
+本指南介绍如何安装用于 C# 通用 Windows 平台 (UWP) 的[语音 SDK](~/articles/cognitive-services/speech-service/speech-sdk.md)。 如果只是需要包名称以便自行开始，请在 NuGet 控制台中运行 `Install-Package Microsoft.CognitiveServices.Speech`。
 
 > [!NOTE]
 > 通用 Windows 平台允许开发在支持 Windows 10 的任何设备上运行的应用，包括电脑、Xbox、Surface Hub 和其他设备。

@@ -8,27 +8,26 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
-origin.date: 12/09/2019
-ms.date: 01/27/2020
+origin.date: 08/19/2019
+ms.date: 03/16/2020
 ms.author: v-tawe
-ms.openlocfilehash: c600a08d5ff161132848096f6f5ee3b59de9d88f
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.openlocfilehash: 1c9a0385844b13b72a8a10547e437f6053602347
+ms.sourcegitcommit: b2f2bb08ab1b5ccb3c596d84b3b6ddca5bba3903
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77430024"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80151624"
 ---
 > [!NOTE]
 > 通用 Windows 平台允许开发在支持 Windows 10 的任何设备上运行的应用，包括电脑、Xbox、Surface Hub 和其他设备。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 在开始之前，请务必：
 
 > [!div class="checklist"]
 > * [创建一个 Azure 搜索资源](../../../../get-started.md)
-> * [设置开发环境](../../../../quickstarts/setup-platform.md?tabs=uwp)
-> * [创建空示例项目](../../../../quickstarts/create-project.md?tabs=uwp)
+> * [设置开发环境并创建空项目](../../../../quickstarts/setup-platform.md?tabs=uwp)
 
 ## <a name="add-sample-code"></a>添加示例代码
 

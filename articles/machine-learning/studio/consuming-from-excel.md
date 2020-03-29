@@ -10,14 +10,16 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 02/01/2018
-ms.openlocfilehash: 47bbfba1747f85a2557f77e6f174896b6bcda129
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+ms.openlocfilehash: 698d020ab1946046a27ebce01a12b030cdfab25c
+ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75599554"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80343097"
 ---
 # <a name="consuming-an-azure-machine-learning-studio-classic-web-service-from-excel"></a>从 Excel 使用 Azure 机器学习工作室（经典）Web 服务
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
  使用 Azure 机器学习工作室（经典）可以轻松地直接从 Excel 调用 Web 服务，而无需编写任何代码。
 

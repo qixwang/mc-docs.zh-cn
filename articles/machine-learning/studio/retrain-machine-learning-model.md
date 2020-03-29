@@ -10,14 +10,16 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 02/14/2019
-ms.openlocfilehash: 10d121303af9ae3fd9209dc2f360f3f907b81e1a
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+ms.openlocfilehash: df6dd2d46f4a4867648d66d26b3f5c27f52da334
+ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75598304"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80343354"
 ---
 # <a name="retrain-and-deploy-a-machine-learning-model"></a>重新训练和部署机器学习模型
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 重新训练是确保机器学习模型保持准确的一种方法，该方法基于最相关的可用数据。 本文展示了如何在工作室（经典版）中重新训练机器学习模型并将其部署为新的 Web 服务。 如果要重新训练经典 Web 服务，请参阅[此操作说明文章](retrain-classic-web-service.md)。
 

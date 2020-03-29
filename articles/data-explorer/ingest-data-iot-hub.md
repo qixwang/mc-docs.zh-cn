@@ -7,13 +7,13 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 origin.date: 01/08/2020
-ms.date: 03/09/2020
-ms.openlocfilehash: 5c570ed56f52fa65743022585f15bd4c5904f210
-ms.sourcegitcommit: ced17aa58e800b9e4335276a1595b8045836b256
+ms.date: 03/16/2020
+ms.openlocfilehash: 81215259965a6044ffec66272bb48cf623385ec2
+ms.sourcegitcommit: 1d3d8dfdaf6281f06640cbee7124a1e8bf102c50
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77590259"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80243971"
 ---
 # <a name="ingest-data-from-iot-hub-into-azure-data-explorer"></a>将数据从 IoT 中心引入到 Azure 数据资源管理器 
 

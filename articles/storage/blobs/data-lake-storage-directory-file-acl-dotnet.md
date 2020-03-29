@@ -4,17 +4,17 @@ description: 使用 Azure 存储客户端库在启用了分层命名空间 (HNS)
 author: WenJason
 ms.service: storage
 origin.date: 01/09/2020
-ms.date: 02/10/2020
+ms.date: 03/30/2020
 ms.author: v-jay
 ms.topic: article
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
-ms.openlocfilehash: bbfa87af6f5f0b39d95e945bfd2a7f4f7b56a57b
-ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
+ms.openlocfilehash: 3dac5dd764c9daab1a6365b76301b3082ea06f76
+ms.sourcegitcommit: 90d01d08faf8adb20083363a8e4e5aab139cd9b2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77028495"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80290370"
 ---
 # <a name="use-net-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2-preview"></a>使用 .NET 管理 Azure Data Lake Storage Gen2（预览版）中的目录、文件和 ACL
 
@@ -25,7 +25,7 @@ ms.locfileid: "77028495"
 
 [包 (NuGet)](https://www.nuget.org/packages/Azure.Storage.Files.DataLake) | [示例](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake) | [API 参考](https://docs.microsoft.com/dotnet/api/azure.storage.files.datalake) | [提供反馈](https://github.com/Azure/azure-sdk-for-net/issues)
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 > [!div class="checklist"]
 > * Azure 订阅。 请参阅[获取 Azure 1 元人民币的试用订阅](https://www.azure.cn/zh-cn/pricing/1rmb-trial-full/?form-type=identityauth)。
@@ -42,6 +42,7 @@ ms.locfileid: "77028495"
 ```csharp
 using Azure.Storage.Files.DataLake;
 using Azure.Storage.Files.DataLake.Models;
+using Azure.Storage;
 using System.IO;
 using Azure;
 ```

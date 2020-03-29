@@ -9,14 +9,14 @@ ms.devlang: java
 ms.topic: quickstart
 ms.custom: seodec18
 origin.date: 02/11/2020
-ms.date: 03/09/2020
+ms.date: 03/16/2020
 ms.author: v-tawe
-ms.openlocfilehash: 2b18782746c80967a6ad24b99dd9f57de7a0dcda
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.openlocfilehash: 70bcde132db078651110f3cccba6e39618039dab
+ms.sourcegitcommit: 1d3d8dfdaf6281f06640cbee7124a1e8bf102c50
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78155116"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80243920"
 ---
 # <a name="quickstart-create-an-event-hub-using-azure-cli"></a>快速入门：使用 Azure CLI 创建事件中心
 

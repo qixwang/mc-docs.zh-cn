@@ -9,12 +9,12 @@ ms.topic: conceptual
 origin.date: 07/26/2019
 ms.date: 03/30/2020
 ms.author: v-yeche
-ms.openlocfilehash: 752dc730be3577375ca92479c94d0c0bd93609af
-ms.sourcegitcommit: 305361c96d1d5288d3dda7e81833820640e2afac
+ms.openlocfilehash: 283f38b51707e833937f3c0deeffdc9e2e8108d1
+ms.sourcegitcommit: 2b084933215d0e7702456730f168d97e00c882a0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2020
-ms.locfileid: "80115815"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80243269"
 ---
 <!--Verfied successfully-->
 # <a name="create-and-manage-integration-accounts-for-b2b-enterprise-integrations-in-azure-logic-apps"></a>创建和管理 Azure 逻辑应用中用于 B2B 企业集成的集成帐户
@@ -23,8 +23,9 @@ ms.locfileid: "80115815"
 
 例如，可以创建、存储和管理 B2B 项目，包括贸易合作伙伴、协议、映射、架构、证书和批配置。 此外，只有在[将集成帐户链接](#link-account)到逻辑应用之后，逻辑应用才可以处理这些项目和使用逻辑应用 B2B 连接器。 集成帐户和逻辑应用必须位于同一位置或区域。 
 
-> [!TIP]
-> 若要在[集成服务环境](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)中创建集成帐户，请参阅[在 ISE 中创建集成帐户](../logic-apps/add-artifacts-integration-service-environment-ise.md#create-integration-account-environment)。
+
+<!--Not Available on [integration service environment](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)-->
+<!--Not Available on [Create integration accounts in an ISE](../logic-apps/add-artifacts-integration-service-environment-ise.md#create-integration-account-environment)-->
 
 本主题介绍如何执行以下任务：
 
@@ -63,10 +64,14 @@ ms.locfileid: "80115815"
     | **订阅** | 是 | <*Azure-subscription-name*> | Azure 订阅的名称 |
     | **资源组** | 是 | <*Azure-resource-group-name*> | 用于组织相关资源的 [Azure 资源组](../azure-resource-manager/management/overview.md)的名称。 对于本示例，请创建名为“FabrikamIntegration-RG”的新资源组。 |
     | **定价层** | 是 | <*定价级别*> | 集成帐户的定价层，以后可以更改。 对于本示例，请选择“免费”。  有关详细信息，请参阅以下主题： <p>- [逻辑应用定价模型](../logic-apps/logic-apps-pricing.md#integration-accounts) <p>- [逻辑应用限制和配置](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits) <p>- [逻辑应用定价](https://www.azure.cn/pricing/details/logic-apps/) |
-    | **位置** | 是 | <*Azure-region*> | 用于存储集成帐户元数据的区域。 请选择逻辑应用所在的同一位置，或者在集成帐户所在的同一位置创建逻辑应用。 对于本示例，请使用“中国北部”。 <p>**注意**：若要在某个[集成服务环境 (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) 中创建集成帐户，请选择该 ISE 作为位置。 有关详细信息，请参阅[在 ISE 中创建集成帐户](../logic-apps/add-artifacts-integration-service-environment-ise.md#create-integration-account-environment)。 |
+    | **位置** | 是 | <*Azure-region*> | 用于存储集成帐户元数据的区域。 请选择逻辑应用所在的同一位置，或者在集成帐户所在的同一位置创建逻辑应用。 对于本示例，请使用“中国北部”。  |
     | **Log Analytics** | 否 | 关闭、打开 | 对于本示例，请保留“关闭”设置。  |
     |||||
 
+    <!--Not Available on [integration service environment (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)-->
+    <!--Not Available on [Create integration accounts in an ISE](../logic-apps/add-artifacts-integration-service-environment-ise.md#create-integration-account-environment)-->
+
+    
 1. 完成后，选择“创建”  。
 
     部署完成后，Azure 将打开你的集成帐户。
@@ -168,15 +173,15 @@ ms.locfileid: "80115815"
 
 1. 在命令提示符下输入 [**az resource** 命令](https://docs.azure.cn/cli/resource?view=azure-cli-latest#az-resource-update)，并将 `skuName` 设置为所需的更低层。
 
-   ```azurecli
-   az resource update --resource-group <resourceGroupName> --resource-type Microsoft.Logic/integrationAccounts --name <integrationAccountName> --subscription <AzureSubscriptionID> --set sku.name=<skuName>
-   ```
+    ```azurecli
+    az resource update --resource-group <resourceGroupName> --resource-type Microsoft.Logic/integrationAccounts --name <integrationAccountName> --subscription <AzureSubscriptionID> --set sku.name=<skuName>
+    ```
 
-   例如，如果目前使用的是“标准”层，可将 `skuName` 设置为 `Basic`：
+    例如，如果目前使用的是“标准”层，可将 `skuName` 设置为 `Basic`：
 
-   ```azurecli
-   az resource update --resource-group FabrikamIntegration-RG --resource-type Microsoft.Logic/integrationAccounts --name Fabrikam-Integration --subscription XXXXXXXXXXXXXXXXX --set sku.name=Basic
-   ```
+    ```azurecli
+    az resource update --resource-group FabrikamIntegration-RG --resource-type Microsoft.Logic/integrationAccounts --name Fabrikam-Integration --subscription XXXXXXXXXXXXXXXXX --set sku.name=Basic
+    ```
 
 <!--Not Available on ## Unlink from logic app-->
 
@@ -190,25 +195,25 @@ ms.locfileid: "80115815"
 
 1. 在 Azure 主要搜索框中，输入“集成帐户”作为筛选器，然后选择“集成帐户”。 
 
-   ![查找集成帐户](./media/logic-apps-enterprise-integration-create-integration-account/find-integration-account.png)
+    ![查找集成帐户](./media/logic-apps-enterprise-integration-create-integration-account/find-integration-account.png)
 
-   Azure 将显示你的 Azure 订阅中的所有集成帐户。
+    Azure 将显示你的 Azure 订阅中的所有集成帐户。
 
 1. 在“集成帐户”下，选择要移动的集成帐户。  在集成帐户菜单中选择“概述”。 
 
-   ![在集成帐户菜单中选择“概述”](./media/logic-apps-enterprise-integration-create-integration-account/integration-account-overview.png)
+    ![在集成帐户菜单中选择“概述”](./media/logic-apps-enterprise-integration-create-integration-account/integration-account-overview.png)
 
 1. 在“资源组”或“订阅名称”旁边选择“更改”。   
 
-   ![更改资源组或订阅](./media/logic-apps-enterprise-integration-create-integration-account/change-resource-group-subscription.png)
+    ![更改资源组或订阅](./media/logic-apps-enterprise-integration-create-integration-account/change-resource-group-subscription.png)
 
 1. 选择还要移动的任何相关资源。
 
 1. 根据所做的选择，执行以下步骤来更改资源组或订阅：
 
-   * 资源组：在“资源组”列表中选择目标资源组。  若要创建不同的资源组，请选择“创建新的资源组”。 
+    * 资源组：在“资源组”列表中选择目标资源组。  若要创建不同的资源组，请选择“创建新的资源组”。 
 
-   * 订阅：在“订阅”列表中选择目标订阅。  在“资源组”列表中选择目标资源组。  若要创建不同的资源组，请选择“创建新的资源组”。 
+    * 订阅：在“订阅”列表中选择目标订阅。  在“资源组”列表中选择目标资源组。  若要创建不同的资源组，请选择“创建新的资源组”。 
 
 1. 为了确认你已知道在使用新资源 ID 更新与所要移动的资源关联的任何脚本或工具之前，这些脚本或工具不会正常运行，请选中确认框，然后选择“确定”。 
 

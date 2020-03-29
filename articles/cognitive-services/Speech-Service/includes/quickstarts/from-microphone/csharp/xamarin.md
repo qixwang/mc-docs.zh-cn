@@ -9,14 +9,14 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
 origin.date: 10/28/2019
-ms.date: 03/23/2020
+ms.date: 03/16/2020
 ms.author: v-tawe
-ms.openlocfilehash: 005789912233bca04a4310076a58b32243f2d1bf
-ms.sourcegitcommit: e94ed1c9eff4e88be2ca389909e60b14cc0d92f8
+ms.openlocfilehash: dc13e4e1b03aee6681d15c2e9d79dc341bccce43
+ms.sourcegitcommit: b2f2bb08ab1b5ccb3c596d84b3b6ddca5bba3903
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79084636"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80151645"
 ---
 ## <a name="prerequisites"></a>先决条件
 
@@ -24,8 +24,7 @@ ms.locfileid: "79084636"
 
 > [!div class="checklist"]
 > * [创建一个 Azure 搜索资源](../../../../get-started.md)
-> * [设置开发环境](../../../../quickstarts/setup-platform.md?tabs=xamarin)
-> * [创建空示例项目](../../../../quickstarts/create-project.md?tabs=xamarin)
+> * [设置开发环境并创建空项目](../../../../quickstarts/setup-platform.md?tabs=xamarin)
 > * 请确保你有权访问麦克风，以便进行音频捕获
 
 如果尚未执行此操作，很好！ 让我们继续。

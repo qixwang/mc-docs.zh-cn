@@ -10,16 +10,15 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
-origin.date: 10/18/2019
-ms.date: 11/04/2019
+ms.date: 03/25/2020
 ms.author: v-junlch
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c0edc705ec7fe7188d7902a70e23b49214f91f22
-ms.sourcegitcommit: a88cc623ed0f37731cb7cd378febf3de57cf5b45
+ms.openlocfilehash: 70384f2d7e81749fe13c8d8b2bb0534d23507d14
+ms.sourcegitcommit: 6568c59433d7e80ab06e9fe76d4791f761ed6775
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73831005"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80243188"
 ---
 # <a name="troubleshoot-a-problem-with-privileged-identity-management"></a>排查 Privileged Identity Management 问题
 
@@ -37,7 +36,7 @@ ms.locfileid: "73831005"
 
 ### <a name="resolution"></a>解决方法
 
-在订阅级别将“用户访问管理员”角色分配给 Privileged identity Management 服务主体名称 (MS-PIM)。 此分配应允许 Privileged identity Management 服务访问 Azure 资源。 根据你的要求，可以在管理组级别或订阅级别分配角色。 有关服务主体的详细信息，请参阅[将应用程序分配给角色](/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role)。
+在订阅级别将“用户访问管理员”角色分配给 Privileged identity Management 服务主体名称 (MS-PIM)。 此分配应允许 Privileged identity Management 服务访问 Azure 资源。 根据你的要求，可以在管理组级别或订阅级别分配角色。 有关服务主体的详细信息，请参阅[将应用程序分配给角色](/active-directory/develop/howto-create-service-principal-portal#assign-a-role-to-the-application)。
 
 ## <a name="next-steps"></a>后续步骤
 

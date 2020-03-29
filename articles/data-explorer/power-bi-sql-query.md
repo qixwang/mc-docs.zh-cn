@@ -7,13 +7,13 @@ ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: conceptual
 origin.date: 07/10/2019
-ms.date: 03/23/2020
-ms.openlocfilehash: 65481a574b4165cbc40d159cd7b6936dfc5b0bce
-ms.sourcegitcommit: 4ba6d7c8bed5398f37eb37cf5e2acafcdcc28791
+ms.date: 03/16/2020
+ms.openlocfilehash: e526bfcbc1a518407b5fb117c55bb49111d14203
+ms.sourcegitcommit: 1d3d8dfdaf6281f06640cbee7124a1e8bf102c50
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2020
-ms.locfileid: "79134031"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80243961"
 ---
 # <a name="visualize-data-from-azure-data-explorer-using-a-sql-query-in-power-bi"></a>在 Power BI 中使用 SQL 查询直观显示 Azure 数据资源管理器中的数据
 

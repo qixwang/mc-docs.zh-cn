@@ -7,13 +7,13 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 origin.date: 06/03/2019
-ms.date: 03/23/2020
-ms.openlocfilehash: 60ad98bec88004fbe479a3b194de29e92d44b5c1
-ms.sourcegitcommit: 4ba6d7c8bed5398f37eb37cf5e2acafcdcc28791
+ms.date: 03/16/2020
+ms.openlocfilehash: 4f58b3a453fa0221708bcf116d22f3997d6109d5
+ms.sourcegitcommit: 1d3d8dfdaf6281f06640cbee7124a1e8bf102c50
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2020
-ms.locfileid: "79134033"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80243975"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-database-by-using-powershell"></a>使用 PowerShell 创建 Azure 数据资源管理器群集和数据库
 

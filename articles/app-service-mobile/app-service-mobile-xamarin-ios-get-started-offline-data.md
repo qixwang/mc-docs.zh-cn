@@ -8,12 +8,12 @@ ms.topic: article
 origin.date: 06/25/2019
 md.date: 03/23/2020
 ms.author: v-tawe
-ms.openlocfilehash: 0ddc59f0dbeadef05b1014288e6132f559470de5
-ms.sourcegitcommit: e94ed1c9eff4e88be2ca389909e60b14cc0d92f8
+ms.openlocfilehash: 7492625a960dded2ffb81ee30d40b6168052cd37
+ms.sourcegitcommit: b2f2bb08ab1b5ccb3c596d84b3b6ddca5bba3903
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79084498"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80151725"
 ---
 # <a name="enable-offline-sync-for-your-xamarinios-mobile-app"></a>为 Xamarin.iOS 移动应用启用脱机同步
 [!INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]
@@ -32,14 +32,12 @@ ms.locfileid: "79084498"
 2. 打开 QSTodoService.cs 文件，并取消注释 `#define OFFLINE_SYNC_ENABLED` 定义。
 3. 重新生成并运行客户端应用。 应用的工作方式与启用脱机同步之前一样。但是，本地数据库中现在填充了可以在脱机方案中使用的数据。
 
-## <a name="update-sync"></a>更新应用以与后端断开连接
+## <a name="update-the-app-to-disconnect-from-the-backend"></a><a name="update-sync"></a>更新应用以与后端断开连接
 本部分断开与移动应用后端的连接，以模拟脱机情况。 添加数据项时，异常处理程序会指示该应用处于脱机模式。 在此状态下，新项会添加到本地存储，下次以连接状态运行推送时，这些新项将同步到移动应用后端。
 
 1. 在共享项目中编辑 QSToDoService.cs。 将 **applicationURL** 更改为指向无效的 URL：
 
-    ```
-     const string applicationURL = @"https://your-service.chinacloudsites.fail";
-    ```
+         const string applicationURL = @"https://your-service.chinacloudsites.fail";
 
     还可以通过在设备上禁用 wifi 和手机网络或使用飞行模式来演示脱机行为。
 2. 构建并运行应用程序。 请注意，在应用启动时，同步刷新将失败。
@@ -48,7 +46,7 @@ ms.locfileid: "79084498"
 5. （可选）如果电脑上装有 Visual Studio，打开“服务器资源管理器”  。 导航到“Azure”  -> “SQL 数据库”  中的数据库。 右键单击数据库并选择“在 SQL Server 对象资源管理器中打开”  。 现在便可以浏览 SQL 数据库表及其内容。 验证确认后端数据库中的数据未更改。
 6. （可选）通过 Fiddler 或 Postman 之类的 REST 工具使用 `https://<your-mobile-app-backend-name>.chinacloudsites.cn/tables/TodoItem` 格式的 GET 查询，查询移动后端。
 
-## <a name="update-online-app"></a>更新应用以重新连接移动应用后端
+## <a name="update-the-app-to-reconnect-your-mobile-app-backend"></a><a name="update-online-app"></a>更新应用以重新连接移动应用后端
 本部分将应用重新连接到移动应用后端。 这模拟的是通过移动应用后端从脱机状态转为联机状态的应用。   如果是通过关闭网络连接来模拟网络中断，则不需更改任何代码。
 重新打开网络。  首次运行该应用程序时，调用 `RefreshDataAsync` 方法。 而此操作又将调用 `SyncAsync` ，将本地存储与后端数据库同步。
 
@@ -67,19 +65,16 @@ ms.locfileid: "79084498"
 
     `DefineTable` 方法与所提供类型（此例中为 `ToDoItem`）中的字段相匹配的本地存储中创建一个表。 该类型无需包括远程数据库中的所有列。 可以只存储列的子集。
 
-    ```
-    // QSTodoService.cs
+        // QSTodoService.cs
 
-    public async Task InitializeStoreAsync()
-    {
-        var store = new MobileServiceSQLiteStore(localDbPath);
-        store.DefineTable<ToDoItem>();
+        public async Task InitializeStoreAsync()
+        {
+            var store = new MobileServiceSQLiteStore(localDbPath);
+            store.DefineTable<ToDoItem>();
 
-        // Uses the default conflict handler, which fails on conflict
-        await client.SyncContext.InitializeAsync(store);
-    }
-    ```
-
+            // Uses the default conflict handler, which fails on conflict
+            await client.SyncContext.InitializeAsync(store);
+        }
 * `QSTodoService` 的 `todoTable` 成员属于 `IMobileServiceSyncTable` 类型而不是 `IMobileServiceTable` 类型。 IMobileServiceSyncTable 会将所有创建、读取、更新和删除 (CRUD) 表操作定向到本地存储数据库。
 
     通过调用 `IMobileServiceSyncContext.PushAsync()`确定将这些更改推送到 Azure 移动应用后端的时间。 对于调用 `PushAsync` 时客户端应用修改的所有表，此同步上下文通过跟踪和推送这些表中的更改来帮助保持表关系。
@@ -88,23 +83,20 @@ ms.locfileid: "79084498"
 
     在所提供的代码中，将查询远程 `TodoItem` 表中的所有记录，但它还可以筛选记录，只需将查询 ID 和查询传递给 `PushAsync` 即可。 有关详细信息，请参阅 [Azure 移动应用中的脱机数据同步] 中的 *增量同步*部分。
 
-    ```
-    // QSTodoService.cs
-
-    public async Task SyncAsync()
-    {
-        try
+        // QSTodoService.cs
+        public async Task SyncAsync()
         {
-            await client.SyncContext.PushAsync();
-            await todoTable.PullAsync("allTodoItems", todoTable.CreateQuery()); // query ID is used for incremental sync
-        }
+            try
+            {
+                await client.SyncContext.PushAsync();
+                await todoTable.PullAsync("allTodoItems", todoTable.CreateQuery()); // query ID is used for incremental sync
+            }
 
-        catch (MobileServiceInvalidOperationException e)
-        {
-            Console.Error.WriteLine(@"Sync Failed: {0}", e.Message);
+            catch (MobileServiceInvalidOperationException e)
+            {
+                Console.Error.WriteLine(@"Sync Failed: {0}", e.Message);
+            }
         }
-    }
-    ```
 
 ## <a name="additional-resources"></a>其他资源
 * [Azure 移动应用中的脱机数据同步]

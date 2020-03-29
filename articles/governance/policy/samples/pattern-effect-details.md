@@ -5,12 +5,12 @@ origin.date: 01/31/2020
 ms.date: 03/09/2020
 ms.author: v-tawe
 ms.topic: sample
-ms.openlocfilehash: 0d6981d700b516f19b3db907f9af657881bcd24d
-ms.sourcegitcommit: 892137d117bcaf9d88aec0eb7ca756fe39613344
+ms.openlocfilehash: 4f985df2d71a74399547fb20a6f8691893ca657f
+ms.sourcegitcommit: 303a16c7117b6f3495ef0493b4ae8ccb67d7dbba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78048871"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80342357"
 ---
 # <a name="azure-policy-pattern-effects"></a>Azure Policy 模式：效果
 
@@ -80,11 +80,18 @@ Azure Policy 有很多[效果](../concepts/effects.md)，这些效果决定了�
 ### <a name="sample-1-explanation"></a>示例 1：说明
 
 ```json
-   "field": "type",
-   "equals": "Microsoft.Resources/subscriptions/resourceGroups"
-},
-{
-   "field": "[concat('tags[', parameters('tagName'), ']')]",
+"then": {
+"effect": "modify",
+"details": {
+   "roleDefinitionIds": [
+       "/providers/microsoft.authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c"
+   ],
+   "operations": [{
+       "operation": "add",
+       "field": "[concat('tags[', parameters('tagName'), ']')]",
+       "value": "[parameters('tagValue')]"
+   }]
+}
 ```
 
 **modify** 效果需要 **policyRule.then.details** 块，该块定义 **roleDefinitionIds** 和 **operations**。 这些参数会告知 Azure Policy 需要哪些角色才能添加标记和修正资源，以及要执行哪项 **modify** 操作。 在此示例中，**operation** 为 _add_，参数用于设置标记和值。

@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: quickstart
 ms.workload: identity
-ms.date: 03/10/2020
+ms.date: 03/20/2020
 ms.author: v-junlch
 ms.custom: aaddev
-ms.openlocfilehash: f3e691b68530bb932c52756ccaeb0f5e5d18bd3e
-ms.sourcegitcommit: 4ba6d7c8bed5398f37eb37cf5e2acafcdcc28791
+ms.openlocfilehash: 7a7b700e96a54be9802fefd4577be7d446a28677
+ms.sourcegitcommit: 6568c59433d7e80ab06e9fe76d4791f761ed6775
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2020
-ms.locfileid: "79133823"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80243124"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-python-web-app"></a>快速入门：向 Python Web 应用添加 Microsoft 登录功能
 
@@ -97,7 +97,7 @@ ms.locfileid: "79133823"
 > [!div class="sxs-lookup" renderon="portal"]
 > 下载项目并将 zip 文件解压缩到更靠近根文件夹的本地文件夹（例如，**C:\Azure-Samples**）
 > [!div renderon="portal" id="autoupdate" class="nextstepaction"]
-> [下载代码示例]()
+> [下载代码示例](https://github.com/Azure-Samples/ms-identity-python-webapp/archive/master.zip)
 
 > [!div renderon="docs"]
 > #### <a name="step-3-configure-the-application"></a>步骤 3：配置应用程序
@@ -166,4 +166,4 @@ import msal
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
 
-<!-- Update_Description: wording update -->
+<!-- Update_Description: link update -->

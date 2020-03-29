@@ -1,11 +1,15 @@
 ---
-ms.openlocfilehash: d898373a825484adb96079cab518793316ea8aa4
-ms.sourcegitcommit: 892137d117bcaf9d88aec0eb7ca756fe39613344
+ms.openlocfilehash: 4b345d128891206a5c2e4b92e0d7135a10c84192
+ms.sourcegitcommit: 1d3d8dfdaf6281f06640cbee7124a1e8bf102c50
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78048880"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80272724"
 ---
+## <a name="app-configuration"></a>应用配置
+
+[!INCLUDE [azure-policy-samples-policies-app-configuration](azure-policy-samples-policies-app-configuration.md)]
+
 ## <a name="app-platform"></a>应用平台
 
 [!INCLUDE [azure-policy-samples-policies-app-platform](azure-policy-samples-policies-app-platform.md)]
@@ -17,6 +21,10 @@ ms.locfileid: "78048880"
 ## <a name="automation"></a>自动化
 
 [!INCLUDE [azure-policy-samples-policies-automation](azure-policy-samples-policies-automation.md)]
+
+## <a name="backup"></a>Backup
+
+[!INCLUDE [azure-policy-samples-policies-backup](azure-policy-samples-policies-backup.md)]
 
 ## <a name="batch"></a>批处理
 

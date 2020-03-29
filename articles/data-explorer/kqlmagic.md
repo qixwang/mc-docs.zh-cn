@@ -7,13 +7,13 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 origin.date: 07/10/2019
-ms.date: 03/09/2020
-ms.openlocfilehash: 3bc3a729f6bb0254a2ab343c91db88a38ae2664d
-ms.sourcegitcommit: ced17aa58e800b9e4335276a1595b8045836b256
+ms.date: 03/16/2020
+ms.openlocfilehash: 2580a250d492d51aa4af2e944ca5f6367b0cb4a9
+ms.sourcegitcommit: 1d3d8dfdaf6281f06640cbee7124a1e8bf102c50
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77590292"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80243957"
 ---
 # <a name="use-a-jupyter-notebook-and-kqlmagic-extension-to-analyze-data-in-azure-data-explorer"></a>使用 Jupyter Notebook 和 Kqlmagic 扩展分析 Azure 数据资源管理器中的数据
 

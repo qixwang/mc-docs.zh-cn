@@ -146,7 +146,7 @@
             - name: 映射自己的自定义域
               href: ../app-service/app-service-web-tutorial-custom-domain.md?toc=%2fapp-service-mobile%2ftoc.json
             - name: 在流量管理器中使用自定义域
-              href: ../app-service/web-sites-traffic-manager-custom-domain-name.md?toc=%2fapp-service-mobile%2ftoc.json
+              href: ../app-service/configure-domain-traffic-manager.md?toc=%2fapp-service-mobile%2ftoc.json
         - name: 克隆现有应用
           href: ../app-service/app-service-web-app-cloning.md?toc=%2fapp-service-mobile%2ftoc.json
         - name: Azure 虚拟网络
@@ -235,6 +235,8 @@
       href: 'https://www.azure.cn/pricing/details/app-service/'
     - name: 定价计算器
       href: 'https://www.azure.cn/pricing/calculator/'
+    - name: 服务更新
+      href: 'https://updates.azure.cn'
     - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-mobile-services'
     - name: 示例

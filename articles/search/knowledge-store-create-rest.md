@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: tutorial
 origin.date: 12/30/2019
 ms.date: 03/16/2020
-ms.openlocfilehash: f7f2c31698ad10481542922760ee5f225624bc29
-ms.sourcegitcommit: d5eca3c6b03b206e441b599e5b138bd687a91361
+ms.openlocfilehash: b7f8402945c5d5cb244e45366fe102a3c9a31485
+ms.sourcegitcommit: 1d3d8dfdaf6281f06640cbee7124a1e8bf102c50
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78934919"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80243726"
 ---
 # <a name="create-a-knowledge-store-using-rest-and-postman"></a>使用 REST 和 Postman 创建知识库
 

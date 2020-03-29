@@ -10,12 +10,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 origin.date: 02/10/2020
 ms.date: 03/16/2020
-ms.openlocfilehash: 9a62cbbe069e897a280ec59d31b4bcfa870a3ad6
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.openlocfilehash: f7fd8676dd4707020daa64afe660e91d2e046b30
+ms.sourcegitcommit: 1d3d8dfdaf6281f06640cbee7124a1e8bf102c50
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78850251"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80243708"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-c-using-the-net-sdk"></a>快速入门：使用 C# 通过 .NET SDK 创建 Azure 认知搜索索引
 > [!div class="op_single_selector"]
@@ -364,7 +364,7 @@ ms.locfileid: "78850251"
                 {
                     HotelId = "3",
                     HotelName = "Triple Landscape Hotel",
-                    Description = "The Hotel stands out for its gastronomic excellence under the management of William Dough, who advises on and oversees all of the Hotel's restaurant services.",
+                    Description = "The Hotel stands out for its gastronomic excellence under the management of William Dough, who advises on and oversees all of the Hotel’s restaurant services.",
                     DescriptionFr = "L'hôtel est situé dans une place du XIXe siècle, qui a été agrandie et rénovée aux plus hautes normes architecturales pour créer un hôtel moderne, fonctionnel et de première classe dans lequel l'art et les éléments historiques uniques coexistent avec le confort le plus moderne.",
                     Category = "Resort and Spa",
                     Tags = new[] { "air conditioning", "bar", "continental breakfast" },

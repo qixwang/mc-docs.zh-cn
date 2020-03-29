@@ -8,27 +8,26 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
-origin.date: 12/09/2019
-ms.date: 01/27/2020
+origin.date: 09/19/2019
+ms.date: 03/16/2020
 ms.author: v-tawe
-ms.openlocfilehash: cc3c1bf347bd90555c3d27571ab826528c85c50c
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.openlocfilehash: 2b6ba3f3e88e14cf6e5f684a2789c39e0fcdc519
+ms.sourcegitcommit: b2f2bb08ab1b5ccb3c596d84b3b6ddca5bba3903
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77430074"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80151622"
 ---
 > [!NOTE]
 > Unity 支持 Windows 桌面版（x86 和 x64）或通用 Windows 平台（x86、x64、ARM/ARM64）、Android（x86、ARM32/64）或 iOS（x64 模拟器、ARM32 和 ARM64）。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 在开始之前，请务必：
 
 > [!div class="checklist"]
 > * [创建一个 Azure 搜索资源](../../../../get-started.md)
-> * [设置开发环境](../../../../quickstarts/setup-platform.md?tabs=unity)
-> * [创建空示例项目](../../../../quickstarts/create-project.md?tabs=unity)
+> * [设置开发环境并创建空项目](../../../../quickstarts/setup-platform.md?tabs=unity)
 
 ## <a name="add-a-ui"></a>添加 UI
 

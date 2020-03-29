@@ -10,14 +10,17 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 11/03/2017
-ms.openlocfilehash: 81d22543d2b9f49d34a7a5ad87798479cfde9d15
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.openlocfilehash: 0bbf0ec854ef0767d96bff92192085c39ed0ea0a
+ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78850629"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80343135"
 ---
 # <a name="manage-azure-machine-learning-studio-classic-web-services-using-api-management"></a>使用 API 管理以管理 Azure 机器学习工作室（经典版）Web 服务
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
+
 ## <a name="overview"></a>概述
 本指南介绍如何快速入门，即使用 API 管理来管理 Azure 机器学习工作室（经典版）Web 服务。
 
@@ -245,9 +248,9 @@ AzureML Web 服务包含 RSS（请求/响应服务）和 BES（批处理执行�
 
     import urllib2
     import json
-    workspace = "<REPLACE WITH YOUR EXPERIMENT’S WEB SERVICE WORKSPACE ID>"
-    service = "<REPLACE WITH YOUR EXPERIMENT’S WEB SERVICE SERVICE ID>"
-    api_key = "<REPLACE WITH YOUR EXPERIMENT’S WEB SERVICE API KEY>"
+    workspace = "<REPLACE WITH YOUR EXPERIMENT'S WEB SERVICE WORKSPACE ID>"
+    service = "<REPLACE WITH YOUR EXPERIMENT'S WEB SERVICE SERVICE ID>"
+    api_key = "<REPLACE WITH YOUR EXPERIMENT'S WEB SERVICE API KEY>"
     data = {
     "Inputs": {
         "input1": {

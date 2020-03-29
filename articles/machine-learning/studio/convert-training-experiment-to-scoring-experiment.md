@@ -9,14 +9,16 @@ ms.topic: conceptual
 author: xiaoharper
 ms.author: amlstudiodocs
 ms.date: 03/28/2017
-ms.openlocfilehash: 2a0d0cf21c48d03d19603ee827d950ee7f2aad7b
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+ms.openlocfilehash: 6063f261809d3028f8ca86ad6d307e8d32d988d9
+ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75599542"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80343092"
 ---
 # <a name="how-to-prepare-your-model-for-deployment-in-azure-machine-learning-studio-classic"></a>如何准备在 Azure 机器学习工作室（经典版）中部署的模型
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 Azure 机器学习工作室（经典版）提供必需的工具，方便你开发预测分析模型并将其部署为 Azure Web 服务，使其可以操作。
 

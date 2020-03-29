@@ -6,14 +6,14 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 origin.date: 01/30/2019
-ms.date: 07/15/2019
+ms.date: 04/06/2019
 ms.author: v-yiso
-ms.openlocfilehash: 3f835f5e798e6f0400b886daa898901073e23f49
-ms.sourcegitcommit: 9e92bcf6aa02fc9e7b3a29abadf6b6d1a8ece8c4
+ms.openlocfilehash: 9b9819273c28d1e4a5e97e00b3019ac844c86e35
+ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74389360"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80343399"
 ---
 # <a name="develop-for-android-things-platform-using-azure-iot-sdks"></a>使用 Azure IoT SDK 针对 Android Things 平台进行开发
 [Azure IoT 中心 SDK](/iot-hub/iot-hub-devguide-sdks) 为 Windows、Linux、OSX、MBED 等流行平台，以及 Android 和 iOS 等移动平台提供第一层支持。  作为我们在 IoT 部署中实现更多选择和灵活性的承诺的一部分，Java SDK 还支持 [Android Things](https://developer.android.com/things/) 平台。  使用 [Azure IoT 中心](/iot-hub/about-iot-hub)作为可扩展到数百万个同时连接的设备的中央消息中心时，开发人员可以在设备端利用 Android Things 操作系统的好处。 
@@ -42,7 +42,7 @@ ms.locfileid: "74389360"
    **MyAndroidThingsDevice**：这是为注册的设备提供的名称。 如图所示使用 MyAndroidThingsDevice。 如果为设备选择不同名称，则可能还需要在本文中从头至尾使用该名称，并在运行示例应用程序之前在其中更新设备名称。
 
     ```azurecli-interactive
-    az extension add --name azure-cli-iot-ext
+    az extension add --name azure-iot
     az iot hub device-identity create --hub-name YourIoTHubName --device-id MyAndroidThingsDevice
     ```
 

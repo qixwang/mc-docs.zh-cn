@@ -4,16 +4,16 @@ description: 本快速入门介绍如何使用适用于 Java 的 Azure Blob 存�
 author: WenJason
 ms.author: v-jay
 origin.date: 01/27/2020
-ms.date: 03/09/2020
+ms.date: 03/30/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: 9c8351bd1e44e3736a93d1adc8c25b321f04cc9b
-ms.sourcegitcommit: fbc7584f403417d3af7bd6bbbaed7c13a78c57b9
+ms.openlocfilehash: c732534f58dee3ea14ef8e4b6d01262ff9e1a79b
+ms.sourcegitcommit: 90d01d08faf8adb20083363a8e4e5aab139cd9b2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78411949"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80290339"
 ---
 # <a name="quickstart-manage-blobs-with-java-v12-sdk"></a>快速入门：使用 Java v12 SDK 管理 blob
 
@@ -153,7 +153,7 @@ Azure Blob 存储最适合存储巨量的非结构化数据。 非结构化数�
 
 以下图示显示了这些资源之间的关系。
 
-![Blob 存储体系结构的图示](./media/storage-blob-introduction/blob1.png)
+![Blob 存储体系结构的图示](./media/storage-blobs-introduction/blob1.png)
 
 使用以下 Java 类与这些资源进行交互：
 

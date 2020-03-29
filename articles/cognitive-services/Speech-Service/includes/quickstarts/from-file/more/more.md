@@ -1,21 +1,16 @@
 ---
-title: 快速入门：识别音频文件中的语音 - 语音服务
-titleSuffix: Azure Cognitive Services
-services: cognitive-services
-author: erhopf
-manager: nitinme
+author: IEvangelist
 ms.service: cognitive-services
-ms.subservice: speech-service
 ms.topic: include
-origin.date: 12/17/2019
-ms.date: 02/17/2020
+origin.date: 03/13/2020
+ms.date: 03/16/2020
 ms.author: v-tawe
-ms.openlocfilehash: a28f6109f3c2274506af34da9df83356f2f3031d
-ms.sourcegitcommit: 888cbc10f2348de401d4839a732586cf266883bf
+ms.openlocfilehash: 011e476ae223fa784803045b0cf4f2311971de31
+ms.sourcegitcommit: b2f2bb08ab1b5ccb3c596d84b3b6ddca5bba3903
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77029115"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80151603"
 ---
 ## <a name="additional-language-and-platform-support"></a>其他语言和平台支持
 
@@ -23,8 +18,8 @@ ms.locfileid: "77029115"
 
 | 语言 | 其他快速入门 | 代码示例 |
 |----------|------------------------|--------------|
-| C++ | | [Windows](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/cpp/windows)、[Linux](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/cpp/linux)、[macOS](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/cpp/macos) |
 | C# | |[.NET Framework](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/csharp/dotnet)、[.NET Core](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/csharp/dotnetcore)、[UWP](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/csharp/uwp)、[Unity](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/csharp/unity) 和 [Xamarin](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/csharp/xamarin) |
+| C++ | | [Windows](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/cpp/windows)、[Linux](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/cpp/linux)、[macOS](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/cpp/macos) |
 | Java | |[Android](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/java/android)、[JRE](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/java/jre) |
 | JavaScript| | [浏览器](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/javascript) |
 | Node.js | |[Windows、Linux 和 macOS](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/javascript) |

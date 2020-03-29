@@ -10,14 +10,16 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 03/14/2017
-ms.openlocfilehash: 4f2bdbfa7d653937faa6c23c99aa7e0395ac35f9
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+ms.openlocfilehash: b865b9b4cc4d70b79baa632b70c26a1c083fa848
+ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75599477"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80343078"
 ---
 # <a name="debug-your-model-in-azure-machine-learning-studio-classic"></a>在 Azure 机器学习工作室（经典）中调试模型
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 运行模型时，可能会遇到以下错误：
 

@@ -3,14 +3,14 @@ author: erhopf
 ms.service: cognitive-services
 ms.topic: include
 origin.date: 08/06/2019
-ms.date: 03/23/2020
+ms.date: 03/16/2020
 ms.author: v-tawe
-ms.openlocfilehash: 95ca142ced1aef5b50ff6db0e4d050fedeeebb89
-ms.sourcegitcommit: e94ed1c9eff4e88be2ca389909e60b14cc0d92f8
+ms.openlocfilehash: 30f8ef83c692111098b90e1882a1e00eab8ce11b
+ms.sourcegitcommit: b2f2bb08ab1b5ccb3c596d84b3b6ddca5bba3903
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79084614"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80151640"
 ---
 ## <a name="prerequisites"></a>先决条件
 
@@ -18,8 +18,7 @@ ms.locfileid: "79084614"
 
 > [!div class="checklist"]
 > * [创建一个 Azure 搜索资源](../../../../get-started.md)
-> * [设置开发环境](../../../../quickstarts/setup-platform.md?tabs=jre)
-> * [创建空示例项目](../../../../quickstarts/create-project.md?tabs=jre)
+> * [设置开发环境并创建空项目](../../../../quickstarts/setup-platform.md?tabs=jre)
 > * 请确保你有权访问麦克风，以便进行音频捕获
 
 ## <a name="add-sample-code"></a>添加示例代码

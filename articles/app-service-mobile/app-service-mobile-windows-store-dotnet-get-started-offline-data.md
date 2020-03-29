@@ -8,12 +8,12 @@ ms.topic: article
 origin.date: 06/25/2019
 md.date: 03/23/2020
 ms.author: v-tawe
-ms.openlocfilehash: 814ccc7b33e6da99adc77c26e5a317511f23d649
-ms.sourcegitcommit: e94ed1c9eff4e88be2ca389909e60b14cc0d92f8
+ms.openlocfilehash: 622fdf5731a5f372ee0b5fc0c0ff97a210909b42
+ms.sourcegitcommit: b2f2bb08ab1b5ccb3c596d84b3b6ddca5bba3903
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79084414"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80151737"
 ---
 # <a name="enable-offline-sync-for-your-windows-app"></a>为 Windows 应用启用脱机同步
 [!INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]
@@ -45,14 +45,12 @@ ms.locfileid: "79084414"
 4. 打开 MainPage.xaml.cs 文件，并取消注释 `#define OFFLINE_SYNC_ENABLED` 定义。
 5. 在 Visual Studio 中，按 **F5** 键重新生成并运行客户端应用。 应用的工作方式与启用脱机同步之前一样。但是，本地数据库中现在填充了可以在脱机方案中使用的数据。
 
-## <a name="update-sync"></a>更新应用以与后端断开连接
+## <a name="update-the-app-to-disconnect-from-the-backend"></a><a name="update-sync"></a>更新应用以与后端断开连接
 本部分断开与移动应用后端的连接，以模拟脱机情况。 添加数据项时，异常处理程序会指示该应用处于脱机模式。 在此状态下，新项会添加到本地存储，下次以连接状态运行推送时，这些新项将同步到移动应用后端。
 
 1. 编辑共享项目中的 App.xaml.cs。 注释掉 MobileServiceClient  的初始化并添加使用无效移动应用 URL 的以下行：
 
-    ```
-     public static MobileServiceClient MobileService = new MobileServiceClient("https://your-service.chinacloudsites.fail");
-    ```
+         public static MobileServiceClient MobileService = new MobileServiceClient("https://your-service.chinacloudsites.fail");
 
     还可以通过在设备上禁用 wifi 和手机网络或使用飞行模式来演示脱机行为。
 2. 按 **F5** 生成并运行应用。 请注意，在应用启动时，同步刷新将失败。
@@ -61,7 +59,7 @@ ms.locfileid: "79084414"
 5. （可选）在 Visual Studio 中，打开“服务器资源管理器”  。 导航到“Azure”  ->“SQL 数据库”  中的数据库。 右键单击数据库并选择“在 SQL Server 对象资源管理器中打开”  。 现在便可以浏览 SQL 数据库表及其内容。 验证确认后端数据库中的数据未更改。
 6. （可选）通过 Fiddler 或 Postman 之类的 REST 工具使用 `https://<your-mobile-app-backend-name>.chinacloudsites.cn/tables/TodoItem` 格式的 GET 查询，查询移动后端。
 
-## <a name="update-online-app"></a>更新应用以重新连接移动应用后端
+## <a name="update-the-app-to-reconnect-your-mobile-app-backend"></a><a name="update-online-app"></a>更新应用以重新连接移动应用后端
 在本部分中，会将应用重新连接到移动应用后端。 这些更改可模拟应用上的网络重新连接。
 
 首次运行该应用程序时，`OnNavigatedTo` 事件处理程序将调用 `InitLocalStoreAsync`。 而此方法又将调用 `SyncAsync` ，将本地存储与后端数据库同步。 应用会在启动时尝试同步。

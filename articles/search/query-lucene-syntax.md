@@ -8,7 +8,7 @@ ms.author: v-tawe
 ms.service: cognitive-search
 ms.topic: conceptual
 origin.date: 02/10/2020
-ms.date: 03/02/2020
+ms.date: 03/16/2020
 translation.priority.mt:
 - de-de
 - es-es
@@ -20,12 +20,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 2106aacc33fd9991212ced66d145b4ad17bb95a6
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: dfeb83084223480ddf1a27872fc88c5dcb09d818
+ms.sourcegitcommit: 1d3d8dfdaf6281f06640cbee7124a1e8bf102c50
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79293390"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80243722"
 ---
 # <a name="lucene-query-syntax-in-azure-cognitive-search"></a>Azure 认知搜索中的 Lucene 查询语法
 
@@ -66,7 +66,7 @@ POST /indexes/hotels/docs/search?api-version=2019-05-06
 > [!NOTE]  
 >  Azure 认知搜索还支持[简单查询语法](query-simple-syntax.md)，即可用于简单关键字搜索的简易可靠的查询语言。  
 
-##  <a name="bkmk_syntax"></a> 语法基础  
+##  <a name="syntax-fundamentals"></a><a name="bkmk_syntax"></a> 语法基础  
  下面的语法基础适用于所有使用 Lucene 语法的查询。  
 
 ### <a name="operator-evaluation-in-context"></a>上下文中的运算符评估
@@ -100,7 +100,7 @@ POST /indexes/hotels/docs/search?api-version=2019-05-06
 ### <a name="searchmode-parameter-considerations"></a>SearchMode 参数注意事项  
  如 [Azure 认知搜索中的简单查询语法](query-simple-syntax.md)中所述，`searchMode` 对查询的影响同样适用于 Lucene 查询语法。 也就是说，如果不清楚设置参数的方法的含义，那么 `searchMode` 与 NOT 运算符结合使用可能会导致查询结果异常。 如果保留默认值 `searchMode=any`，并使用 NOT 运算符，则该操作会作为 OR 操作进行计算，这样“New York”NOT“Seattle”会返回所有不是西雅图的城市。  
 
-##  <a name="bkmk_boolean"></a> 布尔运算符（AND、OR、NOT） 
+##  <a name="boolean-operators-and-or-not"></a><a name="bkmk_boolean"></a> 布尔运算符（AND、OR、NOT） 
  始终全部以大写字母指定文本布尔运算符 (AND、OR、NOT)。  
 
 ### <a name="or-operator-or-or-"></a>OR 运算符 `OR` 或 `||`
@@ -120,13 +120,13 @@ NOT 运算符为感叹号或减号。 例如：`wifi !luxury` 将搜索包含“
 
 使用 `searchMode=all` 可以以包含更少结果的方式提高查询的精确度，且默认情况下将解释为“AND NOT”。 例如，`wifi -luxury` 将匹配包含术语 `wifi` 或不包含术语 `luxury` 的文档。 这对于 - 运算符来说可能是更直观的行为。 因此，如果希望优化搜索的精确度（而非查全率），且用户在搜索中频繁使用 `-` 运算符，那么应考虑选择 `searchMode=all` 而不是 `searchMode=any`  。
 
-##  <a name="bkmk_querysizelimits"></a> 查询大小限制  
+##  <a name="query-size-limitations"></a><a name="bkmk_querysizelimits"></a> 查询大小限制  
  存在对可以发送到 Azure 认知搜索的查询大小的限制。 具体而言，最多可以有 1024 条子句（以 AND、OR 等分隔的表达式）。 此外，查询中任何单个术语的大小限制为大约 32 KB。 如果应用程序以编程方式生成搜索查询，则建议将其设计为不会生成无限大小的查询。  
 
-##  <a name="bkmk_searchscoreforwildcardandregexqueries"></a> 对通配符和正则表达式查询评分
+##  <a name="scoring-wildcard-and-regex-queries"></a><a name="bkmk_searchscoreforwildcardandregexqueries"></a> 对通配符和正则表达式查询评分
  Azure 认知搜索使用基于频率评分 ([TF-IDF](https://en.wikipedia.org/wiki/Tf%E2%80%93idf)) 进行文本查询。 但是，对于术语范围可能很广的通配符和正则表达式查询，则忽略频率因子，以防止排名偏向于比较少见的术语匹配。 通配符和正则表达式搜索对所有匹配项和正则表达式搜索进行相同处理。
 
-##  <a name="bkmk_fields"></a> 字段化搜索  
+##  <a name="fielded-search"></a><a name="bkmk_fields"></a> 字段化搜索  
 可以使用 `fieldName:searchExpression` 语法定义字段化搜索操作，其中的搜索表达式可以是单个词，也可以是一个短语，或者是括号中的更复杂的表达式，可以选择使用布尔运算符。 下面是部分示例：  
 
 - 流派：爵士乐无历史记录  
@@ -140,7 +140,7 @@ NOT 运算符为感叹号或减号。 例如：`wifi !luxury` 将搜索包含“
 > [!NOTE]
 > 使用字段化搜索表达式时，不需使用 `searchFields` 参数，因为每个字段化搜索表达式都有一个显式指定的字段名称。 但是，如果需要运行查询，则仍可使用 `searchFields` 参数，其中的某些部分局限于特定字段，其余部分可以应用到多个字段。 例如，查询 `search=genre:jazz NOT history&searchFields=description` 只将 `jazz` 匹配到 `genre` 字段，而它则会将 `NOT history` 与 `description` 字段匹配。 在 `fieldName:searchExpression` 中提供的字段名称始终优先于 `searchFields` 参数，这就是在此示例中我们不需在 `searchFields` 参数中包括 `genre` 的原因。
 
-##  <a name="bkmk_fuzzy"></a> 模糊搜索  
+##  <a name="fuzzy-search"></a><a name="bkmk_fuzzy"></a> 模糊搜索  
  模糊搜索在构造相似的术语中查找匹配项。 对于 [Lucene 文档](https://lucene.apache.org/core/6_6_1/queryparser/org/apache/lucene/queryparser/classic/package-summary.html)，模糊搜索基于 [Damerau-Levenshtein 距离](https://en.wikipedia.org/wiki/Damerau%E2%80%93Levenshtein_distance)。 模糊搜索可以将满足距离条件的项扩展到最多 50 个字词。 
 
  若要进行模糊搜索，请在单个词末尾使用“~”波形符，另附带指定编辑距离的可选参数（0 到 2 [默认] 之间的值）。 例如“blue~”或“blue~1”会返回“blue”、“blues”和“glue”。
@@ -148,23 +148,23 @@ NOT 运算符为感叹号或减号。 例如：`wifi !luxury` 将搜索包含“
  模糊搜索只能应用于术语，不能应用于短语，但是你可以在包含多个部分的名称或短语中将波形符单独追加到每个术语。 例如，“Unviersty~ of~ "Wshington~”会与“University of Washington”匹配。
  
 
-##  <a name="bkmk_proximity"></a> 邻近搜索  
+##  <a name="proximity-search"></a><a name="bkmk_proximity"></a> 邻近搜索  
  邻近搜索用于搜索文档中彼此邻近的术语。 在短语末尾插入波形符“~”，后跟创建邻近边界的词数。 例如 `"hotel airport"~5` 将查找文档中彼此相距 5 个字以内的术语“酒店”和“机场”。  
 
 
-##  <a name="bkmk_termboost"></a> 术语提升  
+##  <a name="term-boosting"></a><a name="bkmk_termboost"></a> 术语提升  
  术语提升是指相对于不包含术语的文档，提高包含提升术语的文档排名。 这不同于计分配置文件，因为计分配置文件提升某些字段，而非特定术语。  
 
 以下示例有助于解释这些差异。 假设某个字段中存在提升匹配度的计分概要文件，例如 [musicstoreindex 示例](index-add-scoring-profiles.md#bkmk_ex)中的“流派”  。 术语提升可用于进一步提升高于其他术语的某些搜索词。 例如 `rock^2 electronic` 将提升“流派”字段（高于搜索中其他搜索字段）中包含搜索词的文档。 另外，由于术语提升值 (2)，包含搜索词“rock”的文档的排名要比包含搜索词“electronic”的要高   。  
 
  若要提升术语，请使用插入符号“^”，并且所搜索术语末尾还要附加提升系数（数字）。 还可以提升短语。 提升系数越高，术语相对于其他搜索词的相关性也越大。 默认情况下，提升系数是 1。 虽然提升系数必须是正数，但可以小于 1（例如 0.20）。  
 
-##  <a name="bkmk_regex"></a> 正则表达式搜索  
+##  <a name="regular-expression-search"></a><a name="bkmk_regex"></a> 正则表达式搜索  
  正则表达式搜索基于正斜杠“/”之间的内容查找匹配项，如在 [RegExp 类](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/util/automaton/RegExp.html)中所记录的那样。  
 
  例如，若要查找包含“汽车旅馆”或“酒店”的文档，请指定 `/[mh]otel/`。  正则表达式搜索与单个词匹配。   
 
-##  <a name="bkmk_wildcard"></a> 通配符搜索  
+##  <a name="wildcard-search"></a><a name="bkmk_wildcard"></a> 通配符搜索  
  可将通常可识别的语法用于多个 (*) 或单个 (?) 字符通配符搜索。 请注意，Lucene 查询分析器支持将这些符号与单个术语一起使用，但不能与短语一起使用。  
 
  例如，若要查找前缀为“note”的词（如“notebook”或“notepad”）的文档，请指定“note*”。  

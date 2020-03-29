@@ -9,14 +9,16 @@ ms.topic: conceptual
 author: xiaoharper
 ms.author: amlstudiodocs
 ms.date: 04/25/2019
-ms.openlocfilehash: d3995dd43c7429d2ae5b00866bd5df9ee159d880
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+ms.openlocfilehash: 1a93f23305c40d0a2a9804b4eb5b49a36390aef7
+ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75599431"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80343454"
 ---
 # <a name="powershell-modules-for-azure-machine-learning-studio-classic"></a>Azure 机器学习工作室（经典）PowerShell 模块
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 使用 PowerShell 模块，可采用编程方式管理工作室（经典）资源和资产，例如工作区、数据集和 Web 服务。
 
@@ -30,7 +32,7 @@ ms.locfileid: "75599431"
 
 检查下面的[支持表](#support-table)，查看每个模块支持哪些资源。 
 
-## <a name="az-rm"></a> Azure PowerShell Az 和 AzureRM
+## <a name="azure-powershell-az-and-azurerm"></a><a name="az-rm"></a> Azure PowerShell Az 和 AzureRM
 
 Az 现在是与 Azure 交互的 PowerShell 模块，它包含 AzureRM 以前的所有功能。 AzureRM 将继续接收 bug 修复，但它不会接收任何新的 cmdlet 或功能。  Az 和 AzureRM 都管理使用 Azure 资源管理器  部署模型部署的解决方案。 这些资源包括工作室（经典）工作区和工作室（经典）新的 Web 服务。 
 
@@ -38,7 +40,7 @@ PowerShell 经典版可与 Az 或 AzureRM 一起安装，以处理新的和经�
 
 若要开始使用 Az，请按照 [Azure Az 的安装说明](https://docs.microsoft.com/powershell/azure/install-az-ps)操作。
 
-## <a name="classic"></a> PowerShell（经典）
+## <a name="powershell-classic"></a><a name="classic"></a> PowerShell（经典）
 
 借助工作室（经典）[PowerShell 经典模块](https://aka.ms/amlps)，可管理使用经典部署模型  部署的资源。 这些资源包括工作室（经典）用户资产、经典 Web 服务和经典 Web 服务终结点。
 
@@ -48,7 +50,7 @@ PowerShell 经典版可与 Az 或 AzureRM 一起安装，以处理新的和经�
 
 PowerShell 经典版可与 Az 或 AzureRM 一起安装，以处理新的和经典的资源类型。
 
-## <a name="support-table"></a> PowerShell 支持表
+## <a name="powershell-support-table"></a><a name="support-table"></a> PowerShell 支持表
 
 
 | | **Az** |  **PowerShell 经典** |

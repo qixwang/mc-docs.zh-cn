@@ -9,12 +9,12 @@ origin.date: 04/11/2018
 ms.date: 03/16/2020
 ms.author: v-tawe
 ms.custom: seodec18
-ms.openlocfilehash: 1df286f5b17acf897c2d216f9bfeb6c218b6d2d4
-ms.sourcegitcommit: e500354e2fd8b7ac3dddfae0c825cc543080f476
+ms.openlocfilehash: 654e3f963a64e6997fe2323b617f803f189fb0ef
+ms.sourcegitcommit: 1d3d8dfdaf6281f06640cbee7124a1e8bf102c50
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2020
-ms.locfileid: "79546914"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80243981"
 ---
 # <a name="configure-php-in-azure-app-service"></a>在 Azure 应用服务中配置 PHP
 
@@ -47,7 +47,7 @@ PHP 7.0 和 PHP 7.2 也可用，但它们在默认情况下不启用。 若要�
 
 1. 检查受支持运行时的列表。
 
-        az webapp list-runtimes | grep php
+        az webapp list-runtimes
 
 2. 设置应用的 PHP 版本。
 

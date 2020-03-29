@@ -12,12 +12,12 @@ ms.author: v-jay
 ms.reviewer: sstein, carlrab, mathoma
 origin.date: 08/25/2019
 ms.date: 03/16/2020
-ms.openlocfilehash: d995556410ea16dc5298f58bf72639be3be65a53
-ms.sourcegitcommit: dc862610e2169c1fce6fb0ae9eb7dd7567f86a0a
+ms.openlocfilehash: 9040b9221dd9c9e76cc45a4a74f231994614f4ed
+ms.sourcegitcommit: 90660563b5d65731a64c099b32fb9ec0ce2c51c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79293663"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80341812"
 ---
 # <a name="restore-a-sql-database-in-a-managed-instance-to-a-previous-point-in-time"></a>将托管实例中的 SQL 数据库还原到以前的某个时间点
 
@@ -169,7 +169,7 @@ Restore-AzSqlinstanceDatabase -Name $deletedDatabase.Name `
 
 若要将数据库还原到另一个托管实例，另请指定目标资源组和目标托管实例的名称：
 
-```powershell-interactive
+```powershell
 $targetResourceGroupName = "<Resource group of target managed instance>"
 $targetInstanceName = "<Target managed instance name>"
 

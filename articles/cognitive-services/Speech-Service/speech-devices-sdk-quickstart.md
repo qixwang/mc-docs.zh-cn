@@ -9,15 +9,15 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
 origin.date: 02/20/2020
-ms.date: 03/23/2020
+ms.date: 03/16/2020
 ms.author: v-tawe
 zone_pivot_groups: platforms-set-of-three
-ms.openlocfilehash: c9584bf1fe9161598f998e606550542b9561e9d3
-ms.sourcegitcommit: e94ed1c9eff4e88be2ca389909e60b14cc0d92f8
+ms.openlocfilehash: 0b68f0dd2c60ea8952f37623b9d303af030f081b
+ms.sourcegitcommit: b2f2bb08ab1b5ccb3c596d84b3b6ddca5bba3903
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79084461"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80151550"
 ---
 # <a name="quickstart-run-the-speech-devices-sdk-sample-app-on-windows-linux-or-android"></a>快速入门：在 Windows、Linux 或 Android 上运行语音设备 SDK 示例应用
 

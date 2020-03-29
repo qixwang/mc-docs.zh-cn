@@ -11,13 +11,13 @@ author: WenJason
 ms.author: v-jay
 ms.reviewer: sstein
 origin.date: 11/14/2019
-ms.date: 12/16/2019
-ms.openlocfilehash: 86327f07b153bd4da49cf90fe147112c3360fc45
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.date: 03/30/2020
+ms.openlocfilehash: 9049153acb71de6ca2487b9c9d98479981f9d744
+ms.sourcegitcommit: 90660563b5d65731a64c099b32fb9ec0ce2c51c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336280"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80341813"
 ---
 # <a name="how-to-use-azure-sql-database"></a>如何使用 Azure SQL 数据库
 
@@ -43,7 +43,7 @@ ms.locfileid: "75336280"
 
 - [手动优化](sql-database-performance-guidance.md)
 - [使用 DMV 监视性能](sql-database-monitoring-with-dmvs.md)
-- [使用查询存储监视性能](sql-database-operate-query-store.md)
+- [使用查询存储监视性能](https://docs.microsoft.com/sql/relational-databases/performance/best-practice-with-the-query-store#Insight)
 - [使用智能见解排查性能问题](sql-database-intelligent-insights-troubleshoot-performance.md)
 - [使用智能见解诊断日志](sql-database-intelligent-insights-use-diagnostics-log.md)
 - [监视内存中 OLTP 空间](sql-database-in-memory-oltp-monitoring.md)

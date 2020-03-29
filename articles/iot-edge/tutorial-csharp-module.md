@@ -6,16 +6,16 @@ author: kgremban
 manager: philmea
 ms.author: v-tawe
 origin.date: 04/23/2019
-ms.date: 03/02/2020
+ms.date: 03/16/2020
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 9d6d0c252cc24593dea7a18c035b9c1179c4e107
-ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
+ms.openlocfilehash: 334e6f556ba681267d225fe6d7f5bf0d9b3dc93b
+ms.sourcegitcommit: 1d3d8dfdaf6281f06640cbee7124a1e8bf102c50
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77494533"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80243889"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-for-linux-devices"></a>教程：开发适用于 Linux 设备的 C# IoT Edge 模块
 
@@ -48,7 +48,7 @@ ms.locfileid: "77494533"
 >[!NOTE]
 >公共预览版中提供了对 Linux ARM64 设备的支持。 有关详细信息，请参阅[在 Visual Studio Code（预览版）中开发和调试 ARM64 IoT Edge 模块](https://devblogs.microsoft.com/iotdev/develop-and-debug-arm64-iot-edge-modules-in-visual-studio-code-preview)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 在开始学习本教程之前，应已完成上一篇教程[开发适用于 Linux 设备的 IoT Edge 模块](tutorial-develop-for-linux.md)来设置开发环境。 完成该教程后，已应准备好以下必备组件：
 
@@ -60,7 +60,7 @@ ms.locfileid: "77494533"
 
 若要完成这些教程，请在开发计算机上准备好以下附加必备组件：
 
-* [适用于 Visual Studio Code 的 C# 扩展（由 OmniSharp 提供支持）](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)。
+* [适用于 Visual Studio Code 的 C# 扩展（由 OmniSharp 提供支持）](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)。
 * [.NET Core 2.1 SDK](https://www.microsoft.com/net/download)。
 
 ## <a name="create-a-module-project"></a>创建模块项目

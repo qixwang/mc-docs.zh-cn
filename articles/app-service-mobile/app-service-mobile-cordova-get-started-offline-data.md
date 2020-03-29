@@ -8,12 +8,12 @@ ms.topic: article
 origin.date: 06/25/2019
 md.date: 03/23/2020
 ms.author: v-tawe
-ms.openlocfilehash: 71d201953efd349aec32e2a74b2be02ea20bea59
-ms.sourcegitcommit: e94ed1c9eff4e88be2ca389909e60b14cc0d92f8
+ms.openlocfilehash: d1c79be291ff1611d3ebae4579291211d9dc0840
+ms.sourcegitcommit: b2f2bb08ab1b5ccb3c596d84b3b6ddca5bba3903
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79084424"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80151749"
 ---
 # <a name="enable-offline-sync-for-your-cordova-mobile-app"></a>为 Cordova 移动应用启用脱机同步
 [!INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]
@@ -30,45 +30,36 @@ ms.locfileid: "79084424"
 
 1. 在 Visual Studio 解决方案资源管理器中，打开 index.js，并将以下代码
 
-    ```
-    var client,            // Connection to the Azure Mobile App backend
-      todoItemTable;      // Reference to a table endpoint on backend
-    ```
+        var client,            // Connection to the Azure Mobile App backend
+           todoItemTable;      // Reference to a table endpoint on backend
 
     替换为此代码：
 
-    ```
-    var client,            // Connection to the Azure Mobile App backend
-       todoItemTable,      // Reference to a table endpoint on backend
-       syncContext;        // Reference to offline data sync context
-    ```
+        var client,            // Connection to the Azure Mobile App backend
+           todoItemTable,      // Reference to a table endpoint on backend
+           syncContext;        // Reference to offline data sync context
 
 2. 接下来，将以下代码：
 
-    ```
-    client = new WindowsAzure.MobileServiceClient('http://yourmobileapp.chinacloudsites.cn');
-    ```
+        client = new WindowsAzure.MobileServiceClient('http://yourmobileapp.chinacloudsites.cn');
 
     替换为此代码：
 
-    ```
-    client = new WindowsAzure.MobileServiceClient('http://yourmobileapp.chinacloudsites.cn');
+        client = new WindowsAzure.MobileServiceClient('http://yourmobileapp.chinacloudsites.cn');
+        var store = new WindowsAzure.MobileServiceSqliteStore('store.db');
 
-    var store = new WindowsAzure.MobileServiceSqliteStore('store.db');
+        store.defineTable({
+          name: 'todoitem',
+          columnDefinitions: {
+              id: 'string',
+              text: 'string',
+              complete: 'boolean',
+              version: 'string'
+          }
+        });
 
-    store.defineTable({
-      name: 'todoitem',
-      columnDefinitions: {
-          id: 'string',
-          text: 'string',
-          complete: 'boolean',
-          version: 'string'
-      }
-    });
-
-    // Get the sync context from the client
-    syncContext = client.getSyncContext();
-    ```
+        // Get the sync context from the client
+        syncContext = client.getSyncContext();
 
     前面增加的代码会初始化本地存储，并定义与 Azure 后端中使用的列值匹配的本地表。 （无需在此代码中包含所有列值。）） `version` 字段由移动后端维护并用于冲突解决方案。
 
@@ -78,43 +69,39 @@ ms.locfileid: "79084424"
 
 4. 接下来，将此代码：
 
-    ```
-    todoItemTable = client.getTable('todoitem'); // todoitem is the table name
-    ```
+        todoItemTable = client.getTable('todoitem'); // todoitem is the table name
 
     替换为此代码：
 
-    ```
-    // Initialize the sync context with the store
-    syncContext.initialize(store).then(function () {
+        // Initialize the sync context with the store
+        syncContext.initialize(store).then(function () {
 
-    // Get the local table reference.
-    todoItemTable = client.getSyncTable('todoitem');
+        // Get the local table reference.
+        todoItemTable = client.getSyncTable('todoitem');
 
-    syncContext.pushHandler = {
-        onConflict: function (pushError) {
-            // Handle the conflict.
-            console.log("Sync conflict! " + pushError.getError().message);
-            // Update failed, revert to server's copy.
-            pushError.cancelAndDiscard();
-          },
-          onError: function (pushError) {
-              // Handle the error
-              // In the simulated offline state, you get "Sync error! Unexpected connection failure."
-              console.log("Sync error! " + pushError.getError().message);
-          }
-    };
+        syncContext.pushHandler = {
+            onConflict: function (pushError) {
+                // Handle the conflict.
+                console.log("Sync conflict! " + pushError.getError().message);
+                // Update failed, revert to server's copy.
+                pushError.cancelAndDiscard();
+              },
+              onError: function (pushError) {
+                  // Handle the error
+                  // In the simulated offline state, you get "Sync error! Unexpected connection failure."
+                  console.log("Sync error! " + pushError.getError().message);
+              }
+        };
 
-    // Call a function to perform the actual sync
-    syncBackend();
+        // Call a function to perform the actual sync
+        syncBackend();
 
-    // Refresh the todoItems
-    refreshDisplay();
+        // Refresh the todoItems
+        refreshDisplay();
 
-    // Wire up the UI Event Handler for the Add Item
-    $('#add-item').submit(addItemHandler);
-    $('#refresh').on('click', refreshDisplay);
-    ```
+        // Wire up the UI Event Handler for the Add Item
+        $('#add-item').submit(addItemHandler);
+        $('#refresh').on('click', refreshDisplay);
 
     前面的代码会初始化同步上下文，然后调用 getSyncTable（而不是 getTable）来获取对本地表的引用。
 
@@ -124,19 +111,17 @@ ms.locfileid: "79084424"
 
 5. 接下来，添加此函数以执行实际同步操作。
 
-    ```
-    function syncBackend() {
+        function syncBackend() {
 
-      // Sync local store to Azure table when app loads, or when login complete.
-      syncContext.push().then(function () {
-          // Push completed
+          // Sync local store to Azure table when app loads, or when login complete.
+          syncContext.push().then(function () {
+              // Push completed
 
-      });
+          });
 
-      // Pull items from the Azure table after syncing to Azure.
-      syncContext.pull(new WindowsAzure.Query('todoitem'));
-    }
-    ```
+          // Pull items from the Azure table after syncing to Azure.
+          syncContext.pull(new WindowsAzure.Query('todoitem'));
+        }
 
     调用 syncContext.push()  可决定何时将更改推送到移动应用后端。 例如，在绑定到同步按钮的按钮事件处理程序中，可调用 **syncBackend** 。
 
@@ -152,16 +137,14 @@ ms.locfileid: "79084424"
 
 如果不想在测试脱机同步功能之前设置身份验证，请注释禁止登录的回调函数，但让回调函数内部的代码保持取消注释状态。  注释禁止登录行后，该代码应如下所示：
 
-```
-// Login to the service.
-// client.login('microsoftaccount')
-//    .then(function () {
-syncContext.initialize(store).then(function () {
-// Leave the rest of the code in this callback function  uncommented.
-    ...
-});
-// }, handleError);
-```
+      // Login to the service.
+      // client.login('microsoftaccount')
+      //    .then(function () {
+        syncContext.initialize(store).then(function () {
+          // Leave the rest of the code in this callback function  uncommented.
+                ...
+        });
+      // }, handleError);
 
 现在，应用会在运行应用时与 Azure 后端同步。
 
@@ -173,15 +156,11 @@ syncContext.initialize(store).then(function () {
 
 1. 在解决方案资源管理器中，打开 index.js 项目文件，并更改应用程序 URL，使其指向无效的 URL，如以下代码所示：
 
-    ```
-    client = new WindowsAzure.MobileServiceClient('http://yourmobileapp.chinacloudsites.cn-fail');
-    ```
+        client = new WindowsAzure.MobileServiceClient('http://yourmobileapp.chinacloudsites.cn-fail');
 
 2. 在 index.html 中，使用同一无效的 URL 更新 CSP `<meta>` 元素。
 
-    ```
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: http://yourmobileapp.chinacloudsites.cn-fail; style-src 'self'; media-src *">
-    ```
+        <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: http://yourmobileapp.chinacloudsites.cn-fail; style-src 'self'; media-src *">
 
 3. 生成并运行客户端应用，请注意，如果应用在登录后尝试与后端同步，则会在控制台中记录异常。 添加的任何新项在推送到移动后端之前，只存在于本地存储中。 客户端应用的行为就像它已连接到后端一样。
 

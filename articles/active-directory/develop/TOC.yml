@@ -1,8 +1,8 @@
-- name: Microsoft 标识平台（针对开发人员的 Azure Active Directory）
+- name: Microsoft 标识平台文档
   href: index.yml
 - name: 概述
   items:
-    - name: 概述
+    - name: 什么是 Microsoft 标识平台？
       href: v2-overview.md
     - name: Microsoft 标识平台的发展
       href: about-microsoft-identity-platform.md
@@ -24,6 +24,7 @@
         - name: 删除应用
           href: quickstart-remove-app.md
     - name: 单页应用
+      displayName: SPA
       items:
         - name: Javascript
           href: quickstart-v2-javascript.md
@@ -53,6 +54,7 @@
         - name: iOS 和 macOS
           href: quickstart-v2-ios.md
         - name: 通用 Windows 平台
+          displayName: UWP
           href: quickstart-v2-uwp.md
         - name: Windows 桌面 .NET
           href: quickstart-v2-windows-desktop.md
@@ -65,6 +67,7 @@
 - name: 教程
   items:
     - name: 单页应用
+      displayName: SPA
       items:
         - name: Javascript
           href: tutorial-v2-javascript-spa.md
@@ -79,6 +82,7 @@
         - name: iOS 和 macOS
           href: tutorial-v2-ios.md
         - name: 通用 Windows 平台
+          displayName: UWP
           href: tutorial-v2-windows-uwp.md
         - name: Windows 桌面 .NET
           href: tutorial-v2-windows-desktop.md
@@ -94,16 +98,20 @@
   expanded: true
   items:
     - name: 身份验证基础知识
+      displayName: Auth basics
       href: authentication-scenarios.md
     - name: 身份验证流和应用方案
+      displayName: Auth flows
       href: authentication-flows-app-scenarios.md
     - name: 标识平台最佳做法
       href: identity-platform-integration-checklist.md
     - name: 应用程序方案
+      displayName: App scenarios
       items:
         - name: 登录受众
           href: v2-supported-account-types.md
         - name: 单页应用
+          displayName: SPA
           items:
             - name: 概述
               href: scenario-spa-overview.md
@@ -220,7 +228,7 @@
                 - name: Xamarin iOS
                   href: msal-net-xamarin-ios-considerations.md
                 - name: 将代理与 Xamarin iOS 和 Android 配合使用
-                  displayName: Microsoft Authenticator Microsoft Intune
+                  displayName: 'Microsoft Authenticator Microsoft Intune, Authenticator'
                   href: msal-net-use-brokers-with-xamarin-apps.md
                 - name: 通用 Windows 平台
                   href: msal-net-uwp-considerations.md
@@ -234,11 +242,11 @@
       items:
         - name: 概述
           href: msal-overview.md
-        - name: 帐户和租户配置文件 (Android)
+        - name: 帐户和租户配置文件 - Android
           href: accounts-overview.md
-        - name: 授权代理 (Android)
+        - name: 授权代理 - Android
           href: authorization-agents.md
-        - name: 中转身份验证 (Android)
+        - name: 中转身份验证 - Android
           href: brokered-auth.md
         - name: 迁移
           items:
@@ -269,6 +277,7 @@
             - name: v1.0 应用的作用域
               href: msal-v1-app-scopes.md
         - name: 客户端应用程序
+          displayName: Client apps
           items:
             - name: 自定义声明 - PowerShell
               href: active-directory-claims-mapping.md
@@ -277,22 +286,24 @@
             - name: 在 Chrome 浏览器中处理 SameSite Cookie 更改
               href: howto-handle-samesite-cookie-changes-chrome-browser.md
         - name: 应用程序配置
+          displayName: App configuration
           items:
             - name: 客户端应用程序
               href: msal-client-applications.md
             - name: 应用程序配置
               href: msal-client-application-configuration.md
-            - name: 初始化应用程序 (.NET)
+            - name: 初始化应用程序 - .NET
               href: msal-net-initializing-client-applications.md
-            - name: 客户端断言 (.NET)
+            - name: 客户端断言 - .NET
               href: msal-net-client-assertions.md
-            - name: 初始化应用程序 (JS)
+            - name: 初始化应用程序 - JavaScript
               href: msal-js-initializing-client-applications.md
         - name: 处理错误和异常
           href: msal-handling-exceptions.md
         - name: 日志记录
           href: msal-logging.md
         - name: 单一登录
+          displayName: SSO
           items:
             - name: 使用 MSAL.js 进行单一登录
               href: msal-js-sso.md
@@ -303,6 +314,7 @@
                 - name: ADAL 与 MSAL 应用之间的 SSO
                   href: sso-between-adal-msal-apps-macos-ios.md
         - name: 与 ADFS 集成
+          displayName: Active Directory Federation Services
           items:
             - name: MSAL.NET 中的 ADFS 支持
               href: msal-net-adfs-support.md
@@ -328,7 +340,7 @@
                   href: msal-net-web-browsers.md
             - name: MSAL.js
               items:
-                - name: 使用 IE 时的注意事项
+                - name: 注意事项 - IE
                   href: msal-js-use-ie-browser.md
                 - name: 已知问题 - IE 和 Microsoft Edge
                   href: msal-js-known-issues-ie-edge-browsers.md
@@ -337,42 +349,50 @@
             - name: 排查 SSL 问题 (MSAL iOS/macOS)
               href: ssl-issues.md
     - name: 身份验证协议
+      displayName: Auth protocol
       items:
-        - name: 应用程序类型和 OAuth2.0
+        - name: 应用程序类型和 OAuth 2.0
+          displayName: 'App types, OAuth'
           href: v2-app-types.md
         - name: OAuth 2.0 和 OpenID Connect 协议
-          href: active-directory-v2-protocols.md
-        - name: OpenID Connect
-          href: v2-protocols-oidc.md
-        - name: OAuth 2.0 隐式授予流
-          href: v2-oauth2-implicit-grant-flow.md
-        - name: OAuth 2.0 授权代码授予
-          href: v2-oauth2-auth-code-flow.md
-        - name: OAuth 2.0 代理流
-          href: v2-oauth2-on-behalf-of-flow.md
-        - name: OAuth 2.0 客户端凭据授予
-          href: v2-oauth2-client-creds-grant-flow.md
-        - name: OAuth 2.0 设备代码流
-          href: v2-oauth2-device-code.md
-        - name: OAuth 2.0 资源所有者密码凭据授予
-          href: v2-oauth-ropc.md
-        - name: OAuth 2.0 SAML 持有者断言流
-          href: v2-saml-bearer-assertion.md
-        - name: 签名密钥滚动更新
-          href: active-directory-signing-key-rollover.md
-        - name: ID 令牌
-          href: id-tokens.md
-        - name: 访问令牌
-          href: access-tokens.md
-        - name: 证书凭据
-          href: active-directory-certificate-credentials.md
+          items:
+            - name: OAuth 2.0 和 OpenID Connect
+              href: active-directory-v2-protocols.md
+            - name: OpenID Connect
+              href: v2-protocols-oidc.md
+            - name: OAuth 2.0 隐式授予流
+              href: v2-oauth2-implicit-grant-flow.md
+            - name: OAuth 2.0 授权代码授予
+              href: v2-oauth2-auth-code-flow.md
+            - name: OAuth 2.0 代理流
+              displayName: OBO
+              href: v2-oauth2-on-behalf-of-flow.md
+            - name: OAuth 2.0 客户端凭据授予
+              href: v2-oauth2-client-creds-grant-flow.md
+            - name: OAuth 2.0 设备代码流
+              href: v2-oauth2-device-code.md
+            - name: OAuth 2.0 资源所有者密码凭据授予
+              displayName: ROPC
+              href: v2-oauth-ropc.md
+            - name: OAuth 2.0 SAML 持有者断言流
+              href: v2-saml-bearer-assertion.md
+            - name: 签名密钥滚动更新
+              href: active-directory-signing-key-rollover.md
+            - name: ID 令牌
+              href: id-tokens.md
+            - name: 访问令牌
+              href: access-tokens.md
+            - name: 证书凭据
+              href: active-directory-certificate-credentials.md
         - name: SAML 2.0 协议
           items:
             - name: SAML 令牌
               href: reference-saml-tokens.md
     - name: 应用程序配置
+      displayName: App configuration
       items:
         - name: 应用程序和服务主体
+          displayName: 'Apps, service principals'
           href: app-objects-and-service-principals.md
         - name: 将应用添加到 Azure AD 的方式及原因
           href: active-directory-how-applications-are-added.md
@@ -392,6 +412,7 @@
         - name: 管理员同意
           href: v2-admin-consent.md
         - name: 应用程序同意体验
+          displayName: App consent experiences
           href: application-consent-experience.md
     - name: 国家云
       items:
@@ -406,8 +427,9 @@
         - name: 配置可选声明
           href: active-directory-optional-claims.md
     - name: 应用程序配置
+      displayName: App configuration
       items:
-        - name: 新的 Azure 门户应用注册培训指南
+        - name: Azure 门户应用注册培训指南
           href: app-registrations-training-guide-for-app-registrations-legacy-users.md
         - name: 将单租户应用转换为多租户应用
           href: howto-convert-app-to-be-multi-tenant.md
@@ -421,13 +443,15 @@
           href: howto-restrict-your-app-to-a-set-of-users.md
         - name: 在应用程序中添加应用角色
           href: howto-add-app-roles-in-azure-ad-apps.md
-        - name: 品牌准则
+        - name: 遵循品牌准则
+          displayName: Add branding
           href: howto-add-branding-in-azure-ad-apps.md
         - name: 配置发布服务器域
           href: howto-configure-publisher-domain.md
-        - name: 服务条款和隐私声明
+        - name: 配置服务条款和隐私声明
           href: howto-add-terms-of-service-privacy-statement.md
     - name: 使用 Microsoft 身份验证库
+      displayName: MSAL
       items:
         - name: MSAL.NET
           items:
@@ -491,16 +515,18 @@
           href: vs-active-directory-error.md
 - name: 参考
   items:
+    - name: 应用程序清单
+      href: reference-app-manifest.md
+      displayName: app manifest
+    - name: Android MSAL 配置文件
+      href: msal-configuration.md
     - name: 身份验证库
-      displayName: MSAL
+      displayName: 'MSAL, auth library, SDK'
       href: reference-v2-libraries.md
     - name: Microsoft Graph 中的标识和访问 API
       href: 'https://docs.microsoft.com/graph/api/resources/azure-ad-overview?view=graph-rest-beta'
-    - name: 应用程序清单
-      href: reference-app-manifest.md
-    - name: Android MSAL 配置文件
-      href: msal-configuration.md
     - name: 身份验证和授权错误代码
+      displayName: AADSTS
       href: reference-aadsts-error-codes.md
     - name: 重大变化
       href: reference-breaking-changes.md
@@ -508,10 +534,10 @@
   items:
     - name: 术语表
       href: developer-glossary.md
-    - name: Azure AD 博客
-      href: 'https://cloudblogs.microsoft.com/enterprisemobility/?product=azure-active-directory'
     - name: Microsoft 标识平台开发人员博客
       href: 'https://developer.microsoft.com/en-us/identity/blogs/'
+    - name: Azure AD 博客
+      href: 'https://cloudblogs.microsoft.com/enterprisemobility/?product=azure-active-directory'
     - name: Azure 路线图
       href: 'https://azure.microsoft.com/roadmap/?category=security-identity'
     - name: Azure 资源的托管标识

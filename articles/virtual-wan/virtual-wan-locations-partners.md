@@ -6,15 +6,15 @@ author: rockboyfor
 ms.service: virtual-wan
 ms.topic: conceptual
 origin.date: 02/12/2020
-ms.date: 02/24/2020
+ms.date: 03/30/2020
 ms.author: v-yeche
 Customer intent: As someone with a networking background, I want to find a Virtual WAN partner
-ms.openlocfilehash: 3b19304f6c58565a818bd1ef47d8cbcba7c1352e
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.openlocfilehash: f2bdbaa58224bc54bc1dd94778d9f83604b4b27a
+ms.sourcegitcommit: 4810b75d1e1db78d9747e99735468a6ab861be2d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78155071"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80291276"
 ---
 # <a name="virtual-wan-partners-and-virtual-hub-locations"></a>虚拟 WAN 合作伙伴和虚拟中心位置
 

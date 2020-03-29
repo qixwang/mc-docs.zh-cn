@@ -7,13 +7,13 @@ ms.reviewer: gabilehner
 ms.service: data-explorer
 ms.topic: conceptual
 origin.date: 11/07/2019
-ms.date: 03/09/2020
-ms.openlocfilehash: 270dce1538a520cf4877cf87ab9a7d811ef834cc
-ms.sourcegitcommit: ced17aa58e800b9e4335276a1595b8045836b256
+ms.date: 03/16/2020
+ms.openlocfilehash: fc5a824bb4c9d327f8376fec140e92b82039543a
+ms.sourcegitcommit: 1d3d8dfdaf6281f06640cbee7124a1e8bf102c50
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77590257"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80243967"
 ---
 # <a name="use-follower-database-to-attach-databases-in-azure-data-explorer"></a>在 Azure 数据资源管理器中使用后继数据库来附加数据库
 
@@ -165,7 +165,7 @@ poller = kusto_management_client.attached_database_configurations.create_or_upda
         },
         "defaultPrincipalsModificationKind": {
             "type": "string",
-            "defaultValue": "",
+            "defaultValue": "Union",
             "metadata": {
                 "description": "The default principal modification kind."
             }
@@ -181,13 +181,10 @@ poller = kusto_management_client.attached_database_configurations.create_or_upda
     "variables": {},
     "resources": [
         {
-            "name": "[parameters('attachedDatabaseConfigurationsName')]",
+            "name": "[concat(parameters('followerClusterName'), '/', parameters('attachedDatabaseConfigurationsName'))]",
             "type": "Microsoft.Kusto/clusters/attachedDatabaseConfigurations",
             "apiVersion": "2019-09-07",
             "location": "[parameters('location')]",
-            "dependsOn": [
-                "[resourceId('Microsoft.Kusto/clusters', parameters('followerClusterName'))]"
-            ],
             "properties": {
                 "databaseName": "[parameters('databaseName')]",
                 "clusterResourceId": "[parameters('leaderClusterResourceId')]",

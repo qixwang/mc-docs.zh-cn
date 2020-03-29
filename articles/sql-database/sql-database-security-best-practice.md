@@ -10,12 +10,12 @@ ms.topic: article
 origin.date: 02/20/2020
 ms.date: 03/16/2020
 ms.reviewer: ''
-ms.openlocfilehash: f99c9f2ef0b6fa5c38eb14ef50a491de37f89048
-ms.sourcegitcommit: dc862610e2169c1fce6fb0ae9eb7dd7567f86a0a
+ms.openlocfilehash: 850f02927b83c68a215b96e75cce617dfec20e56
+ms.sourcegitcommit: 90660563b5d65731a64c099b32fb9ec0ce2c51c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79293730"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80341794"
 ---
 # <a name="playbook-for-addressing-common-security-requirements-with-azure-sql-database"></a>用于解决 Azure SQL 数据库常见安全要求的 playbook
 
@@ -47,7 +47,7 @@ ms.locfileid: "79293730"
 - 隐私主管
 - 安全工程师
 
-### <a id="using"></a> 使用本指南
+### <a name="using-this-guide"></a><a id="using"></a> 使用本指南
 
 本文档旨在用作现有 [Azure SQL 数据库安全性](sql-database-security-overview.md)文档的配套资源。
 
@@ -126,7 +126,6 @@ Azure 多重身份验证 (MFA) 要求完成多种形式的身份验证，以此�
 **最佳做法**：
 
 - 创建 Azure AD 组，并使用 Azure AD 条件访问为选定的组启用 MFA 策略。 
-  - 请参阅[规划条件访问部署](../active-directory/conditional-access/plan-conditional-access.md)一文。 
 
 - 可为整个 Azure AD 或者与 Azure AD 联合的整个 Active Directory 启用 MFA。 
 

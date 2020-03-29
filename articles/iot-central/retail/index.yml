@@ -10,12 +10,12 @@ metadata:
   author: philmea
   ms.author: v-yiso
   origin.date: 10/25/2019
-  ms.openlocfilehash: a1a473efb5b71658647fd7cec6ade13a6ba1ac27
-  ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+  ms.openlocfilehash: 99e7420b9b45b0096e3b6b5b3f38ac159ceb307c
+  ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 12/25/2019
-  ms.locfileid: "75335718"
+  ms.lasthandoff: 03/27/2020
+  ms.locfileid: "80343421"
 landingContent:
 - title: 生成零售解决方案
   linkLists:
@@ -46,13 +46,15 @@ landingContent:
   - linkListType: tutorial
     links:
     - text: 设置设备模板
-      url: ../preview/howto-set-up-template.md
-    - text: 连接 IoT 即插即用设备
-      url: ../preview/tutorial-connect-pnp-device.md
+      url: ../core/howto-set-up-template.md
+    - text: 连接一个设备
+      url: ../core/tutorial-connect-device.md
+    - text: 连接 IoT 即插即用（预览版）设备
+      url: ../core/tutorial-connect-pnp-device.md
   - linkListType: how-to-guide
     links:
     - text: 准备和连接 MXChip IoT DevKit
-      url: ../preview/howto-connect-devkit.md
+      url: ../core/howto-connect-devkit.md
     - text: 连接其他 IoT 云
       url: ../core/howto-build-iotc-device-bridge.md
 - title: 保持连接
@@ -60,44 +62,46 @@ landingContent:
   - linkListType: tutorial
     links:
     - text: 使用设备组
-      url: ../preview/tutorial-use-device-groups.md
+      url: ../core/tutorial-use-device-groups.md
   - linkListType: how-to-guide
     links:
     - text: 管理设备
-      url: ../preview/howto-manage-devices.md
+      url: ../core/howto-manage-devices.md
     - text: 运行作业
       url: ../core/howto-run-a-job.md
     - text: 分析设备数据
-      url: ../preview/howto-create-analytics.md
+      url: ../core/howto-create-analytics.md
 - title: 转换
   linkLists:
   - linkListType: tutorial
     links:
     - text: 创建规则
-      url: ../preview/quick-configure-rules.md
+      url: ../core/quick-configure-rules.md
     - text: 创建遥测规则
-      url: ../preview/tutorial-create-telemetry-rules.md
+      url: ../core/tutorial-create-telemetry-rules.md
     - text: 导出到 Blob 存储
-      url: ../preview/howto-export-data.md
+      url: ../core/howto-export-data.md
   - linkListType: how-to-guide
     links:
     - text: 创建自定义规则
-      url: ../preview/howto-create-custom-rules.md
+      url: ../core/howto-create-custom-rules.md
+    - text: 创建自定义分析
+      url: ../core/howto-create-custom-analytics.md
 - title: 管理
   linkLists:
   - linkListType: how-to-guide
     links:
     - text: 管理应用程序
-      url: ../preview/howto-administer.md
+      url: ../core/howto-administer.md
     - text: 管理用户和角色
-      url: ../preview/howto-manage-users-roles.md
+      url: ../core/howto-manage-users-roles.md
     - text: 查看帐单
-      url: ../preview/howto-view-bill.md
+      url: ../core/howto-view-bill.md
     - text: 自定义应用程序 UI
-      url: ../preview/howto-customize-ui.md
+      url: ../core/howto-customize-ui.md
     - text: 配置个人仪表板
       url: ../core/howto-create-personal-dashboards.md
     - text: 使用仪表板磁贴
       url: ../core/howto-add-tiles-to-your-dashboard.md
     - text: 使用应用程序模板
-      url: ../preview/howto-use-app-templates.md
+      url: ../core/howto-use-app-templates.md

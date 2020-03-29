@@ -1,19 +1,19 @@
 ---
 title: KQL 快速参考
 description: 有用的 KQL 函数的列表及其定义与语法示例。
-author: yossi-karp
+author: orspod
 ms.author: v-tawe
 ms.reviewer: ''
 ms.service: data-explorer
 ms.topic: conceptual
 origin.date: 01/19/2020
-ms.date: 03/23/2020
-ms.openlocfilehash: 2f8ecd860548a20336fb2546290cab92f60f90be
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.date: 03/16/2020
+ms.openlocfilehash: 0587cadfa019dca44365a1d838c271fc7053f70d
+ms.sourcegitcommit: 1d3d8dfdaf6281f06640cbee7124a1e8bf102c50
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79292183"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80243956"
 ---
 # <a name="kql-quick-reference"></a>KQL 快速参考
 
@@ -39,7 +39,7 @@ ms.locfileid: "79292183"
 | [extend](https://docs.microsoft.com/azure/kusto/query/extendoperator)                    | 创建一个计算列并将其添加到结果集 | `T | extend [ColumnName | (ColumnName[, ...]) =] Expression [, ...]` |
 | **对数据集进行排序和聚合**                 |**_通过以有意义的方式对数据进行排序或分组来重构数据_**|                  |
 | [sort](https://docs.microsoft.com/azure/kusto/query/sortoperator)                        | 根据一个或多个列按升序或降序为输入表的行排序 | `T | sort by expression1 [asc|desc], expression2 [asc|desc], …` |
-| [top](https://docs.microsoft.com/azure/kusto/query/topoperator)                          | 当使用 `by` 对数据集进行排序时返回数据集的前 N 行 | `T | top numberOfRows by expression [asc|desc] [nulls first|last]` |
+| [返回页首](https://docs.microsoft.com/azure/kusto/query/topoperator)                          | 当使用 `by` 对数据集进行排序时返回数据集的前 N 行 | `T | top numberOfRows by expression [asc|desc] [nulls first|last]` |
 | [summarize](https://docs.microsoft.com/azure/kusto/query/summarizeoperator)              | 根据 `by` 分组列对行进行分组，并计算每个组的聚合 | `T | summarize [[Column =] Aggregation [, ...]] [by [Column =] GroupExpression [, ...]]` |
 | [count](https://docs.microsoft.com/azure/kusto/query/countoperator)                       | 对输入表中的记录进行计数（例如 T）<br>此运算符是 `summarize count() ` 的简写| `T | count` |
 | [join](https://docs.microsoft.com/azure/kusto/query/joinoperator)                        | 通过匹配每个表中指定列的值，合并两个表的行以组成新表。 支持完整范围的联接类型：`flouter`、`inner`、`innerunique`、`leftanti`、`leftantisemi`、`leftouter`、`leftsemi`、`rightanti`、`rightantisemi`、`rightouter`、`rightsemi` | `LeftTable | join [JoinParameters] ( RightTable ) on Attributes` |

@@ -4,16 +4,16 @@ description: 本快速入门介绍如何使用适用于 .NET 的 Azure Blob 存�
 author: WenJason
 ms.author: v-jay
 origin.date: 11/05/2019
-ms.date: 03/09/2020
+ms.date: 03/30/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: 8e4142214328a800eac47240c184e0e17214c00b
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: 61ea06b063193e9c624450d91b8ccceb388d9983
+ms.sourcegitcommit: 90d01d08faf8adb20083363a8e4e5aab139cd9b2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79292333"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80290330"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v12-for-net"></a>快速入门：适用于 .NET 的 Azure Blob 存储客户端库 v12
 
@@ -115,7 +115,7 @@ Azure Blob 存储最适合存储巨量的非结构化数据。 非结构化数�
 
 以下图示显示了这些资源之间的关系。
 
-![Blob 存储体系结构的图示](./media/storage-blob-introduction/blob1.png)
+![Blob 存储体系结构的图示](./media/storage-blobs-introduction/blob1.png)
 
 使用以下 .NET 类与这些资源进行交互：
 
@@ -181,7 +181,7 @@ BlobContainerClient containerClient = await blobServiceClient.CreateBlobContaine
 
 1. 在本地 data 目录中创建文本文件  。
 1. 对在[创建容器](#create-a-container)部分创建的容器调用 [GetBlobClient](https://docs.microsoft.com/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobclient) 方法，获取对 [BlobClient](https://docs.microsoft.com/dotnet/api/azure.storage.blobs.blobclient) 对象的引用。
-1. 通过调用 [UploadAsync](https://docs.microsoft.com/dotnet/api/azure.storage.blobs.blobclient.uploadasync) 方法将本地文本文件上传到 blob。 此方法将创建 Blob（如果该 Blob 尚不存在），或者覆盖 Blob（如果该 Blob 已存在）。
+1. 通过调用 [UploadAsync](https://docs.microsoft.com/dotnet/api/azure.storage.blobs.blobclient.uploadasync#Azure_Storage_Blobs_BlobClient_UploadAsync_System_IO_Stream_System_Boolean_System_Threading_CancellationToken_) 方法将本地文本文件上传到 blob。 此方法将创建 Blob（如果该 Blob 尚不存在），或者覆盖 Blob（如果该 Blob 已存在）。
 
 将此代码添加到 `Main` 方法的末尾：
 
@@ -238,9 +238,11 @@ Console.WriteLine("\nDownloading blob to\n\t{0}\n", downloadFilePath);
 // Download the blob's contents and save it to a file
 BlobDownloadInfo download = await blobClient.DownloadAsync();
 
-using FileStream downloadFileStream = File.OpenWrite(downloadFilePath);
-await download.Content.CopyToAsync(downloadFileStream);
-downloadFileStream.Close();
+using (FileStream downloadFileStream = File.OpenWrite(downloadFilePath))
+{
+    await download.Content.CopyToAsync(downloadFileStream);
+    downloadFileStream.Close();
+}
 ```
 
 ### <a name="delete-a-container"></a>删除容器

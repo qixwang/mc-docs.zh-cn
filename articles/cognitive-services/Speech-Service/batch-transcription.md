@@ -9,14 +9,14 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 origin.date: 12/17/2019
-ms.date: 03/23/2020
+ms.date: 03/16/2020
 ms.author: v-tawe
-ms.openlocfilehash: 62a1eafeeb579d2993ced858f2ae5b2169d2ce65
-ms.sourcegitcommit: e94ed1c9eff4e88be2ca389909e60b14cc0d92f8
+ms.openlocfilehash: b6440bce52cf372caedb3a03c07e63d181c97a41
+ms.sourcegitcommit: b2f2bb08ab1b5ccb3c596d84b3b6ddca5bba3903
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79084409"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80151712"
 ---
 # <a name="how-to-use-batch-transcription"></a>如何使用批量听录
 

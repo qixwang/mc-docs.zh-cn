@@ -7,13 +7,13 @@ ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: conceptual
 origin.date: 06/03/2019
-ms.date: 03/23/2020
-ms.openlocfilehash: c6436eabd6d1ea08e33087208184126ece1c8c92
-ms.sourcegitcommit: 4ba6d7c8bed5398f37eb37cf5e2acafcdcc28791
+ms.date: 03/16/2020
+ms.openlocfilehash: 7c6368fa6e624640b903df56080ac2823cca0129
+ms.sourcegitcommit: 1d3d8dfdaf6281f06640cbee7124a1e8bf102c50
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2020
-ms.locfileid: "79133961"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80243949"
 ---
 # <a name="visualize-data-from-azure-data-explorer-in-tableau"></a>在 Tableau 中直观显示来自 Azure 数据资源管理器的数据
 

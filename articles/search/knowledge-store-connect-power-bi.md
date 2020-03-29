@@ -6,15 +6,15 @@ author: HeidiSteen
 ms.author: v-tawe
 manager: nitinme
 ms.service: cognitive-search
-ms.topic: tutorial
+ms.topic: conceptual
 origin.date: 11/26/2019
 ms.date: 03/16/2020
-ms.openlocfilehash: b3f61532207336b3682c2950d695954f9f923bc7
-ms.sourcegitcommit: d5eca3c6b03b206e441b599e5b138bd687a91361
+ms.openlocfilehash: f31781fb06c7aeaf9e27a1e71b49a50bcc8081a7
+ms.sourcegitcommit: 1d3d8dfdaf6281f06640cbee7124a1e8bf102c50
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78934852"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80243727"
 ---
 # <a name="connect-a-knowledge-store-with-power-bi"></a>使用 Power BI 连接知识存储
 

@@ -7,13 +7,13 @@ ms.reviewer: michazag
 ms.service: data-explorer
 ms.topic: conceptual
 origin.date: 01/14/2020
-ms.date: 03/23/2020
-ms.openlocfilehash: e09bb60e33f9ca71e1627e41f40f3acbf2ed2261
-ms.sourcegitcommit: 4ba6d7c8bed5398f37eb37cf5e2acafcdcc28791
+ms.date: 03/16/2020
+ms.openlocfilehash: 6a457bdcb91f64341fc97e9b2420a1411b978590
+ms.sourcegitcommit: 1d3d8dfdaf6281f06640cbee7124a1e8bf102c50
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2020
-ms.locfileid: "79133963"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80243950"
 ---
 # <a name="azure-data-explorer-connector-for-apache-spark"></a>适用于 Apache Spark 的 Azure 数据资源管理器连接器
 

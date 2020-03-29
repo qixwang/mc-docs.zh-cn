@@ -3,21 +3,20 @@ author: erhopf
 ms.service: cognitive-services
 ms.topic: include
 origin.date: 08/06/2019
-ms.date: 03/23/2020
+ms.date: 03/16/2020
 ms.author: v-tawe
-ms.openlocfilehash: a81f2da4dbef82eb9cbe4135cd8638be23451dc4
-ms.sourcegitcommit: e94ed1c9eff4e88be2ca389909e60b14cc0d92f8
+ms.openlocfilehash: 19c22ede8eaa7e1b6346399bf0788fe240cc44bb
+ms.sourcegitcommit: b2f2bb08ab1b5ccb3c596d84b3b6ddca5bba3903
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79084607"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80151584"
 ---
 ## <a name="prerequisites"></a>先决条件
 
 > [!div class="checklist"]
 > * [创建一个 Azure 搜索资源](../../../../get-started.md)
-> * [设置开发环境](../../../../quickstarts/setup-platform.md?tabs=jre)
-> * [创建空示例项目](../../../../quickstarts/create-project.md?tabs=jre)
+> * [设置开发环境并创建空项目](../../../../quickstarts/setup-platform.md?tabs=jre)
 
 ## <a name="add-sample-code"></a>添加示例代码
 

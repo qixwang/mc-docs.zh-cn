@@ -8,7 +8,7 @@ ms.author: v-tawe
 ms.service: cognitive-search
 ms.topic: conceptual
 origin.date: 02/10/2020
-ms.date: 03/02/2020
+ms.date: 03/16/2020
 translation.priority.mt:
 - de-de
 - es-es
@@ -20,12 +20,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: d84e261056b3991fea44d07561bb813a24f4ae2d
-ms.sourcegitcommit: 094c057878de233180ff3b3a3e3c19bc11c81776
+ms.openlocfilehash: 2657c01710f6d66d62ec04664c2b0bce301c10b2
+ms.sourcegitcommit: 1d3d8dfdaf6281f06640cbee7124a1e8bf102c50
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77501435"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80243716"
 ---
 # <a name="odata-language-overview-for-filter-orderby-and-select-in-azure-cognitive-search"></a>Azure 认知搜索中 `$filter`、`$orderby` 和 `$select` 的 OData 语言概述
 

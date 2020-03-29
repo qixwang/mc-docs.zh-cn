@@ -4,21 +4,21 @@ description: 教程：了解如何使用 Azure IoT Central 应用程序模板创
 author: miriambrus
 ms.author: v-yiso
 origin.date: 11/12/2019
-ms.date: 12/16/2019
+ms.date: 04/06/2020
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: 1451769869533d809e739e62cbe2ecfeea62d098
-ms.sourcegitcommit: 6ffa4d50cee80c7c0944e215ca917a248f2a4bcd
+ms.openlocfilehash: 5a916c4b853b87c447f02ed5aa7f6f69e301534f
+ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74883241"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80343629"
 ---
 # <a name="tutorial-create-a-water-quality-monitoring-application-in-azure-iot-central"></a>教程：在 Azure IoT Central 中创建水质监测应用程序
 
-[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
+
 
 本教程将为你提供分步指导，帮助你在 Azure IoT Central 中创建水质监测应用程序。 可从 Azure IoT Central 水质监测应用程序模板创建应用程序  。
 
@@ -59,10 +59,13 @@ ms.locfileid: "74883241"
     * **URL**：可以输入所需的任何 URL，也可以稍后更改 URL 值。
     * 如果你有一个 Azure 订阅，请输入目录、Azure 订阅和区域的值    。 如果你没有订阅，则可以启用 7 天免费试用版并填写所需的联系人信息  。
 
+    有关目录和订阅的详细信息，请参阅[创建应用程序](../core/quick-deploy-iot-central-pnp.md?toc=/iot-central-pnp/toc.json&bc=/iot-central-pnp/breadcrumb/toc.json)快速入门。
 
 1. 选择页面左下方的“创建”按钮  。
 
     ![Azure IoT Central 新建应用程序页](./media/tutorial-waterqualitymonitoring/new-application-waterqualitymonitoring1.png)
+
+    ![Azure IoT Central 新建应用程序 - 计费信息](./media/tutorial-waterqualitymonitoring/new-application-waterqualitymonitoring1-billinginfo.png)
 
 现已通过使用 Azure IoT Central 水质监测模板创建了一个水质监测应用程序  。
 

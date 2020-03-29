@@ -9,15 +9,15 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 origin.date: 02/04/2020
-ms.date: 03/23/2020
+ms.date: 03/16/2020
 ms.author: v-tawe
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 6bf8700ce4b28b7b0fbc353bd887d6a5979bec9e
-ms.sourcegitcommit: e94ed1c9eff4e88be2ca389909e60b14cc0d92f8
+ms.openlocfilehash: 931e6224dc75feab6cd8f3129a163e6bda258f91
+ms.sourcegitcommit: b2f2bb08ab1b5ccb3c596d84b3b6ddca5bba3903
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79084533"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80151692"
 ---
 # <a name="phrase-lists-for-speech-to-text"></a>语音转文本的短语列表
 

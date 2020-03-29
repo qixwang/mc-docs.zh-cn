@@ -7,13 +7,13 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 origin.date: 06/03/2019
-ms.date: 03/23/2020
-ms.openlocfilehash: ed8099fdd30768cb4431e115d3ef590154e0686a
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.date: 03/16/2020
+ms.openlocfilehash: 722a527a269fea79b546e83a3a2a542dc8f3201c
+ms.sourcegitcommit: 1d3d8dfdaf6281f06640cbee7124a1e8bf102c50
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79291586"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80243953"
 ---
 # <a name="ingest-data-using-the-azure-data-explorer-net-standard-sdk-preview"></a>使用 Azure 数据资源管理器 .NET Standard SDK（预览版）引入数据
 
@@ -124,7 +124,7 @@ using (var kustoClient = KustoClientFactory.CreateCslAdminProvider(kustoConnecti
 ## <a name="define-ingestion-mapping"></a>定义引入映射
 
 将传入的 CSV 数据映射到创建表时使用的列名称。
-在该表上预配 [CSV 列映射对象](https://docs.microsoft.com/azure/kusto/management/tables#create-ingestion-mapping)
+在该表上预配 [CSV 列映射对象](https://docs.microsoft.com/azure/kusto/management/create-ingestion-mapping-command)
 
 ```csharp
 var tableMapping = "StormEvents_CSV_Mapping";

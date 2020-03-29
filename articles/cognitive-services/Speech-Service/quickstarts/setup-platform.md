@@ -9,15 +9,15 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
 origin.date: 02/19/2020
-ms.date: 03/23/2020
+ms.date: 03/16/2020
 ms.author: v-tawe
 zone_pivot_groups: programming-languages-set-three
-ms.openlocfilehash: 3dddff7ca229abe52f5e54f4c15e4bb1fa572f14
-ms.sourcegitcommit: e94ed1c9eff4e88be2ca389909e60b14cc0d92f8
+ms.openlocfilehash: 6a68e123ce383d8f728ba68d57c8f22126f49f65
+ms.sourcegitcommit: b2f2bb08ab1b5ccb3c596d84b3b6ddca5bba3903
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79084396"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80151666"
 ---
 # <a name="quickstart-setup-development-environment"></a>快速入门：安装开发环境
 

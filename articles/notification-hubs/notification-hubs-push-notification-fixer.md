@@ -12,17 +12,17 @@ ms.workload: mobile
 ms.tgt_pltfrm: NA
 ms.devlang: multiple
 ms.topic: article
-origin.date: 02/23/2020
-ms.date: 03/23/2020
+origin.date: 02/25/2020
+ms.date: 03/16/2020
 ms.author: v-tawe
 ms.reviewer: jowargo
 ms.lastreviewed: 04/04/2019
-ms.openlocfilehash: 8e2a019ac5769755ca9bdf33e4eb99a2bae58d9c
-ms.sourcegitcommit: 4ba6d7c8bed5398f37eb37cf5e2acafcdcc28791
+ms.openlocfilehash: 824d6dd91709df2a41c0df38549f30be0b89a80f
+ms.sourcegitcommit: 303a16c7117b6f3495ef0493b4ae8ccb67d7dbba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2020
-ms.locfileid: "79133982"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80342425"
 ---
 # <a name="diagnose-dropped-notifications-in-azure-notification-hubs"></a>诊断 Azure 通知中心内删除通知的问题
 
@@ -278,10 +278,17 @@ The Token obtained from the Token Provider is wrong
 [9]: ./media/notification-hubs-push-notification-fixer/vsserverexplorer.png
 [10]: ./media/notification-hubs-push-notification-fixer/VSTestNotification.png
 
+<!-- [About FCM messages]: https://firebase.google.com/docs/cloud-messaging/concept-options -->
+
 <!-- LINKS -->
 [通知中心概述]: notification-hubs-push-notification-overview.md
 [Azure 通知中心入门]: notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md
 [模板]: https://msdn.microsoft.com/library/dn530748.aspx
 [APNs 概述]: https://developer.apple.com/library/content/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/APNSOverview.html
-<!-- [About FCM messages]: https://firebase.google.com/docs/cloud-messaging/concept-options -->
-[批量导出和修改注册]: https://msdn.microsoft.com/library/dn790624.aspx [服务总线资源管理器代码]: https://code.msdn.microsoft.com/windowsazure/Service-Bus-Explorer-f2abca5a [查看通知中心的设备注册]: https://msdn.microsoft.com/library/windows/apps/xaml/dn792122.aspx [深入探讨：Visual Studio 2013 Update 2 RC 和 Azure SDK 2.3]： https://azure.microsoft.com/blog/2014/04/09/deep-dive-visual-studio-2013-update-2-rc-and-azure-sdk-2-3/#NotificationHubs [宣布发布 Visual Studio 2013 Update 3 和 Azure SDK 2.4]： https://azure.microsoft.com/blog/2014/08/04/announcing-release-of-visual-studio-2013-update-3-and-azure-sdk-2-4/ [EnableTestSend]： https://docs.azure.cn/dotnet/api/microsoft.azure.notificationhubs.notificationhubclient.enabletestsend?view=azure-dotnet [编程遥测访问]： https://msdn.microsoft.com/library/azure/dn458823.aspx
+[Export and modify registrations in bulk]: https://msdn.microsoft.com/library/dn790624.aspx
+[Service Bus Explorer code]: https://code.msdn.microsoft.com/windowsazure/Service-Bus-Explorer-f2abca5a
+[View device registrations for notification hubs]: https://msdn.microsoft.com/library/windows/apps/xaml/dn792122.aspx
+[深入探讨：Visual Studio 2013 Update 2 RC 和 Azure SDK 2.3]: https://azure.microsoft.com/blog/2014/04/09/deep-dive-visual-studio-2013-update-2-rc-and-azure-sdk-2-3/#NotificationHubs
+[宣布推出 Visual Studio 2013 Update 3 和 Azure SDK 2.4]: https://azure.microsoft.com/blog/2014/08/04/announcing-release-of-visual-studio-2013-update-3-and-azure-sdk-2-4/
+[EnableTestSend]: https://docs.azure.cn/dotnet/api/microsoft.azure.notificationhubs.notificationhubclient.enabletestsend?view=azure-dotnet
+[Programmatic telemetry access]: https://msdn.microsoft.com/library/azure/dn458823.aspx

@@ -2,22 +2,23 @@
 title: 通过自定义规则和通知扩展 Azure IoT Central | Microsoft Docs
 description: 解决方案开发人员将配置一个 IoT Central 应用程序，以便在设备停止发送遥测数据时发送电子邮件通知。 此解决方案使用 Azure 流分析、Azure Functions 和 SendGrid。
 author: dominicbetts
-ms.author: v-yiso
-origin.date: 08/23/2019
-ms.date: 12/16/2019
+ms.author: dobett
+ms.date: 12/02/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: 721fe6c5bfaf20ba1f2f4b97318dd572d66e7e0f
-ms.sourcegitcommit: 6ffa4d50cee80c7c0944e215ca917a248f2a4bcd
+ms.openlocfilehash: 4736df5678932fdefdbff68e0cceb449f0cf3459
+ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74883364"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80343283"
 ---
 # <a name="extend-azure-iot-central-with-custom-rules-using-stream-analytics-azure-functions-and-sendgrid"></a>使用流分析、Azure Functions 和 SendGrid 通过自定义规则扩展 Azure IoT Central
+
+
 
 本操作指南向解决方案开发人员介绍如何使用自定义规则和通知来扩展 IoT Central 应用程序。 本示例演示如何在设备停止发送遥测数据时向操作员发送通知。 该解决方案使用 [Azure 流分析](/stream-analytics/)查询来检测设备何时已停止发送遥测数据。 流分析作业使用 [Azure Functions](/azure-functions/) 通过 [SendGrid](https://sendgrid.com/docs/for-developers/partners/microsoft-azure/) 发送通知电子邮件。
 
@@ -41,15 +42,17 @@ ms.locfileid: "74883364"
 
 | 设置 | Value |
 | ------- | ----- |
-| 付款计划 | 即用即付 |
-| 应用程序模板 | 示例 Contoso |
+| 定价计划 | 标准 |
+| 应用程序模板 | 店内分析 – 条件监视 |
 | 应用程序名称 | 接受默认设置，或选择自己的名称 |
 | URL | 接受默认设置，或选择自己的唯一 URL 前缀 |
 | Directory | Azure Active Directory 租户 |
 | Azure 订阅 | Azure 订阅 |
-| 区域 | 中国东部 |
+| 区域 | 离你最近的区域 |
 
+本文中的示例和屏幕截图使用“美国”区域。  选择靠近你的位置，并确保在同一区域中创建所有资源。
 
+此应用程序模板包含两个可发送遥测数据的模拟恒温器设备。
 
 ### <a name="resource-group"></a>资源组
 
@@ -59,9 +62,9 @@ ms.locfileid: "74883364"
 
 在 [Azure 门户中使用以下设置创建一个事件中心命名空间](https://portal.azure.cn/#create/Microsoft.EventHub)：
 
-| 设置 | 值 |
+| 设置 | Value |
 | ------- | ----- |
-| Name    | 选择命名空间名称 |
+| 名称    | 选择命名空间名称 |
 | 定价层 | 基本 |
 | 订阅 | 你的订阅 |
 | 资源组 | DetectStoppedDevices |
@@ -72,9 +75,9 @@ ms.locfileid: "74883364"
 
 在 [Azure 门户中使用以下设置创建一个流分析作业](https://portal.azure.cn/#create/Microsoft.StreamAnalyticsJob)：
 
-| 设置 | 值 |
+| 设置 | Value |
 | ------- | ----- |
-| Name    | 选择作业名称 |
+| 名称    | 选择作业名称 |
 | 订阅 | 你的订阅 |
 | 资源组 | DetectStoppedDevices |
 | 位置 | 中国东部 |
@@ -85,7 +88,7 @@ ms.locfileid: "74883364"
 
 在 [Azure 门户中使用以下设置创建一个函数应用](https://portal.azure.cn/#create/Microsoft.FunctionApp)：
 
-| 设置 | 值 |
+| 设置 | Value |
 | ------- | ----- |
 | 应用程序名称    | 选择函数应用名称 |
 | 订阅 | 你的订阅 |
@@ -100,9 +103,9 @@ ms.locfileid: "74883364"
 
 在 [Azure 门户中使用以下设置创建一个 SendGrid 帐户](https://portal.azure.cn/#create/Sendgrid.sendgrid)：
 
-| 设置 | 值 |
+| 设置 | Value |
 | ------- | ----- |
-| Name    | 选择 SendGrid 帐户名称 |
+| 名称    | 选择 SendGrid 帐户名称 |
 | 密码 | 创建密码 |
 | 订阅 | 你的订阅 |
 | 资源组 | DetectStoppedDevices |
@@ -308,7 +311,7 @@ test-device-3   2019-05-02T14:24:28.919Z
 
 在 [Azure IoT Central 应用程序管理器](https://aka.ms/iotcentral)网站上，导航到从 Contoso 模板创建的 IoT Central 应用程序。 在本部分，你将配置应用程序，以将其模拟设备发来的遥测数据流式传输到事件中心。 若要配置导出：
 
-1. 导航到“连续数据导出”页，依次选择“+ 新建”、“Azure 事件中心”。   
+1. 导航到“数据导出”页，依次选择“+ 新建”、“Azure 事件中心”。   
 1. 使用以下设置配置导出，然后选择“保存”： 
 
     | 设置 | Value |
@@ -329,15 +332,15 @@ test-device-3   2019-05-02T14:24:28.919Z
 
 若要测试该解决方案，可以禁用从 IoT Central 到已停止的模拟设备的连续数据导出：
 
-1. 在 IoT Central 应用程序中，导航到“连续数据导出”页，并选择“导出到事件中心”导出配置。  
+1. 在 IoT Central 应用程序中，导航到“数据导出”页，并选择“导出到事件中心”导出配置。  
 1. 将“已启用”设置为“关闭”，然后选择“保存”。   
 1. 在至少两分钟后，“收件人”电子邮件地址将收到一封或多封类似于以下示例内容的电子邮件： 
 
     ```txt
     The following device(s) have stopped sending telemetry:
 
-    Device ID   Time
-    7b169aee-c843-4d41-9f25-7a02671ee659    2019-05-09T14:28:59.954Z
+    Device ID         Time
+    Thermostat-Zone1  2019-11-01T12:45:14.686Z
     ```
 
 ## <a name="tidy-up"></a>整理
@@ -354,3 +357,4 @@ test-device-3   2019-05-02T14:24:28.919Z
 * 创建一个流分析查询用于检测设备何时已停止发送数据。
 * 使用 Azure Functions 和 SendGrid 服务发送电子邮件通知。
 
+了解如何创建自定义规则和通知后，建议接下来了解如何[使用自定义分析扩展 Azure IoT Central](howto-create-custom-analytics.md)。

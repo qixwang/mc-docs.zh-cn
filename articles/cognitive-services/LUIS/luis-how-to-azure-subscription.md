@@ -12,12 +12,12 @@ ms.topic: conceptual
 origin.date: 11/19/2019
 ms.date: 12/05/2019
 ms.author: v-lingwu
-ms.openlocfilehash: dfcfa18cde6f497256a63035e04cf6069a3c6ed4
-ms.sourcegitcommit: 3d27913e9f896e34bd7511601fb428fc0381998b
+ms.openlocfilehash: 90f33ebbc89f2a9dc0549bd0c372f25c8be5caa2
+ms.sourcegitcommit: 303a16c7117b6f3495ef0493b4ae8ccb67d7dbba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74982154"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80342417"
 ---
 # <a name="using-authoring-and-runtime-resource-keys"></a>使用创作和运行时资源密钥
 
@@ -52,13 +52,13 @@ ms.locfileid: "74982154"
 
 ## <a name="create-resources-in-the-azure-portal"></a>在 Azure 门户中创建资源
 
-1. 使用[此链接](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne)打开 Azure 门户以创建资源。
+1. 使用[此链接](https://ms.portal.azure.cn/#create/Microsoft.CognitiveServicesLUISAllInOne)打开 Azure 门户以创建资源。
 1. 选择“两者”，以便创建创作密钥和预测终结点运行时密钥。  
 1. 输入创建资源所需的信息，然后选择“创建”以完成此过程。 
 
     ![创建语言理解资源](./media/luis-how-to-azure-subscription/create-resource-in-azure.png)
 
-    |Name|目的|
+    |名称|目的|
     |--|--|
     |资源名称| 你选择的自定义名称，用作创作和预测终结点查询的 URL 的一部分。|
     |订阅名称| 将对其收取资源费用的订阅。|

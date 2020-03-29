@@ -12,14 +12,17 @@ ms.subservice: studio
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/12/2017
-ms.openlocfilehash: 7f89b870648c5cf3d504c98637c6a9bf7e57f7b3
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+ms.openlocfilehash: 8919cb99bad62e8ad06d8639c8575ea2d2d48fd9
+ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75598215"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80343321"
 ---
 # <a name="use-azure-machine-learning-studio-classic-web-service-parameters"></a>使用 Azure 机器学习工作室（经典）Web 服务参数
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
+
 发布包含可配置参数的模块的实验，创建 Azure 机器学习 Web 服务。 在某些情况下，当 Web 服务在运行时，可能会要更改模块行为。 *Web 服务参数*允许执行此任务。 
 
 一个常见的示例是设置[导入数据][reader]模块，以便在访问 Web 服务时，已发布 Web 服务的用户可以指定不同数据源。 或配置[导出数据][writer]模块，以便可以指定不同目标。 其他一些示例包括为[特征哈希][feature-hashing]模块更改位数或为[基于筛选器的特征选择][filter-based-feature-selection]模块更改所需特征数。 
@@ -63,7 +66,7 @@ Web 服务的 API 文档包括向 Web 服务用户提供的有关访问 Web 服�
 5. 要提供 Web 服务参数的默认值，请单击名称右侧的图标、选择“提供默认值”、输入值（例如“container1/output1.csv”），并按“Enter”  键。
    
    ![Web 服务参数](./media/web-service-parameters/parameter.png)
-6. 单击“运行”  。 
+6. 单击 **“运行”** 。 
 7. 单击“部署 Web 服务”  时，并选择“部署 Web 服务[经典]”  或“部署 Web 服务[新]”  ，部署 Web 服务。
 
 > [!NOTE] 

@@ -10,12 +10,12 @@ ms.service: cognitive-search
 ms.topic: quickstart
 origin.date: 02/25/2020
 ms.date: 03/16/2020
-ms.openlocfilehash: 06bce5367014a4823eb8af6c827f20a4f57a6ccc
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.openlocfilehash: 0ebc6e46727655d7a0218033f5315ed0869d1f6a
+ms.sourcegitcommit: 1d3d8dfdaf6281f06640cbee7124a1e8bf102c50
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78850097"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80243709"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-nodejs-using-rest-apis"></a>快速入门：使用 REST API 在 Node.js 中创建 Azure 认知搜索索引
 > [!div class="op_single_selector"]
@@ -539,7 +539,7 @@ async postDataAsync(hotelsData) {
         {
             "HotelId": "3",
             "HotelName": "Triple Landscape Hotel",
-            "Description": "The Hotel stands out for its gastronomic excellence under the management of William Dough, who advises on and oversees all of the Hotel's restaurant services.",
+            "Description": "The Hotel stands out for its gastronomic excellence under the management of William Dough, who advises on and oversees all of the Hotel’s restaurant services.",
             "Description_fr": "L'hôtel est situé dans une place du XIXe siècle, qui a été agrandie et rénovée aux plus hautes normes architecturales pour créer un hôtel moderne, fonctionnel et de première classe dans lequel l'art et les éléments historiques uniques coexistent avec le confort le plus moderne.",
             "Category": "Resort and Spa",
             "Tags": ["air conditioning", "bar", "continental breakfast"],

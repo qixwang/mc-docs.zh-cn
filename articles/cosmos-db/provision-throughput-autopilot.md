@@ -2,20 +2,19 @@
 title: 在 autopilot 模式下创建 Azure Cosmos 容器和数据库。
 description: 了解在 autopilot 模式下预配 Azure Cosmos 数据库和容器的优势、用例和方法。
 author: rockboyfor
-ms.author: v-yeche
 ms.service: cosmos-db
 ms.topic: conceptual
 origin.date: 11/04/2019
-ms.date: 02/10/2020
-ms.openlocfilehash: d002ec48691bf5eb8973097d0dba96a965cf0696
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.date: 03/30/2020
+ms.author: v-yeche
+ms.openlocfilehash: 95bcaae3b9132bbcb490013a86d1b5bd601c109b
+ms.sourcegitcommit: 303a16c7117b6f3495ef0493b4ae8ccb67d7dbba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79291885"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80342368"
 ---
-<!--PENDING on AZURE CHINA CLOUD currently-->
-<!--CONFIRM BEFORE RELEASEMENT-->
+<!--Verified successfully-->
 # <a name="create-azure-cosmos-containers-and-databases-in-autopilot-mode-preview"></a>在 autopilot 模式下创建 Azure Cosmos 容器和数据库（预览版）
 
 Azure Cosmos DB 允许在手动或 autopilot 模式下对容器预配吞吐量。 本文介绍 autopilot 模式的优势和用例。

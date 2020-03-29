@@ -48,7 +48,7 @@
           href: event-hubs-python-get-started-send.md
         - name: JavaScript（azure/event-hubs 版本 2）
           href: event-hubs-node-get-started-send.md
-        - name: .NET Framework (Microsoft.Azure.EventHubs)
+        - name: .NET Framework (Microsoft.ServiceBus)
           href: event-hubs-dotnet-framework-getstarted-send.md
     - name: 捕获事件
       items:
@@ -144,9 +144,9 @@
         - name: 客户端库
           items:
             - name: 从 Microsoft.Azure.EventHubs 迁移到 Azure.Messaging.EventHubs
-              href: 'https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/MIGRATIONGUIDE.md'
+              href: 'https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/MigrationGuide.md'
             - name: Azure.Messaging.EventHubs（最新）
-              href: /dotnet/api/azure.messaging.eventhubs?view=azure-dotnet-preview
+              href: /dotnet/api/azure.messaging.eventhubs
             - name: Microsoft.Azure.EventHubs（旧版）
               href: /dotnet/api/microsoft.azure.eventhubs
             - name: Microsoft.ServiceBus.Messaging（旧版）
@@ -172,9 +172,9 @@
         - name: 客户端库
           items:
             - name: azure-eventhub 版本 5
-              href: 'https://docs.microsoft.com/python/api/azure-eventhub/?view=azure-python-preview'
+              href: 'https://docs.microsoft.com/python/api/overview/azure/eventhub/client'
             - name: azure-eventhub 版本 1
-              href: 'https://docs.microsoft.com/python/api/azure-eventhub/?view=azure-python'
+              href: 'https://docs.microsoft.com/python/api/azure-eventhub/?view=azure-python-previous'
         - name: 管理库
           href: 'https://docs.microsoft.com/python/api/overview/azure/event-hub?view=azure-python'
     - name: Javascript
@@ -184,15 +184,15 @@
         - name: 客户端库
           items:
             - name: azure/eventhubs 版本 5
-              href: 'https://docs.microsoft.com/javascript/api/@azure/event-hubs/?view=azure-node-preview'
-            - name: azure/eventhubs 版本 2
               href: 'https://docs.microsoft.com/javascript/api/@azure/event-hubs/?view=azure-node-latest'
+            - name: azure/eventhubs 版本 2
+              href: 'https://docs.microsoft.com/javascript/api/@azure/event-hubs/?view=azure-node-legacy'
         - name: 管理库
           href: 'https://docs.microsoft.com/javascript/api/@azure/arm-eventhub/?view=azure-node-latest'
     - name: REST
       href: 'https://docs.microsoft.com/rest/api/eventhub'
     - name: Resource Manager 模板
-      href: 'https://docs.microsoft.com//azure/templates/microsoft.eventhub/allversion'
+      href: 'https://docs.microsoft.com//azure/templates/microsoft.eventhub/allversions'
     - name: 配额
       href: event-hubs-quotas.md
 - name: 资源

@@ -12,16 +12,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/06/2020
+ms.date: 03/23/2020
 ms.author: v-junlch
 ms.custom: aaddev, identityplatformtop40
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: c464cf854cb2404a0fbc2b7a5ae4655f322902a6
-ms.sourcegitcommit: 1bc154c816a5dff47ee051c431cd94826e57aa60
+ms.openlocfilehash: 1bf3e713cdf88fbd1d8c42e4f5001acb87969fbe
+ms.sourcegitcommit: 6568c59433d7e80ab06e9fe76d4791f761ed6775
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75777029"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80243100"
 ---
 # <a name="call-microsoft-graph-api-from-a-universal-windows-platform-application-xaml"></a>从通用 Windows 平台应用程序 (XAML) 调用 Microsoft 图形 API
 
@@ -31,6 +30,9 @@ ms.locfileid: "75777029"
 
 >[!NOTE]
 > 本指南需要安装了通用 Windows 平台开发的 Visual Studio。 请参阅[设置](https://docs.microsoft.com/windows/uwp/get-started/get-set-up)，获取有关如何下载和配置 Visual Studio 以开发通用 Windows 平台应用的说明。
+
+>[!NOTE]
+> 如果你不熟悉 Microsoft 标识平台，我们建议你从[从通用 Windows 平台 (UWP) 应用程序调用 Microsoft Graph API 快速入门](quickstart-v2-uwp.md)开始。
 
 ## <a name="how-this-guide-works"></a>本指南的工作原理
 
@@ -200,7 +202,7 @@ Visual Studio 创建 *MainPage.xaml* 作为项目模板的一部分。 打开此
     }
     ```
 
-#### 以交互方式获取用户令牌<a name="more-information"></a>
+#### <a name="get-a-user-token-interactively"></a>以交互方式获取用户令牌<a name="more-information"></a>
 
 `AcquireTokenInteractive` 方法会生成提示用户登录的窗口。 应用程序通常要求用户首次登录访问受保护的资源时采用交互方式。 当用于获取令牌的无提示操作失败时，用户也可能需要登录。 例如，当用户的密码过期时。
 
@@ -289,7 +291,7 @@ Visual Studio 创建 *MainPage.xaml* 作为项目模板的一部分。 打开此
 > [!NOTE]
 > MSAL.NET 使用异步方法来获取令牌或操作帐户。 你需要在 UI 线程中支持 UI 操作。 因此，需要进行 `Dispatcher.RunAsync` 调用，并在调用 `ConfigureAwait(false)` 之前采取预防措施。
 
-#### 有关注销的详细信息<a name="more-information-on-sign-out"></a>
+#### <a name="more-information-about-signing-out"></a>有关注销的详细信息<a name="more-information-on-sign-out"></a>
 
 `SignOutButton_Click` 方法从 MSAL 用户缓存中删除用户。 此方法有效告知 MSAL 要忘记当前用户。 在未来发出获取令牌的请求时，必须采用交互方式才能成功。
 
@@ -314,7 +316,7 @@ Visual Studio 创建 *MainPage.xaml* 作为项目模板的一部分。 打开此
    }
    ```
 
-#### 详细信息<a name="more-information-1"></a>
+#### <a name="more-information"></a>详细信息<a name="more-information-1"></a>
 
 通过 **OpenID Connect** 获取的 ID 令牌还包含与用户相关的一小部分信息。 `DisplayBasicTokenInfo` 显示令牌中包含的基本信息。 该信息包含用户的显示名称和 ID。 它还包含令牌到期日期，以及表示访问令牌本身的字符串。 如果多次选择“调用 Microsoft Graph API”按钮，将会发现后续请求重复使用了同一令牌。  而且还会发现，在 MSAL 决定续订令牌时，过期日期也延长了。
 

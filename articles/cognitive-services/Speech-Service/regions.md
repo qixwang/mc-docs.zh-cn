@@ -9,15 +9,15 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 origin.date: 11/05/2019
-ms.date: 03/23/2020
+ms.date: 03/16/2020
 ms.author: v-tawe
 ms.custom: seodec18
-ms.openlocfilehash: 93cc72bf2a93d99dbaec76e108148a5c906719ee
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: 2d7d934f7ce476c08c52c6db3a663c95eb35ea25
+ms.sourcegitcommit: b2f2bb08ab1b5ccb3c596d84b3b6ddca5bba3903
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79293300"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80151540"
 ---
 # <a name="speech-service-supported-regions"></a>语音服务支持的区域
 

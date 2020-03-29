@@ -7,12 +7,12 @@ ms.reviewer: mbullwin
 origin.date: 11/27/2019
 ms.date: 12/04/2019
 ms.author: v-lingwu
-ms.openlocfilehash: b63ec85644f4e5ff995a5cae392cbc4bddfe2abd
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: e29b8444bf2af5596de891ebf208dbb1ddac3a12
+ms.sourcegitcommit: 7f8acc663bf3429b391c2c615bed0d1b2107fd7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79293410"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80290090"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>管理 Application Insights 的使用情况和成本
 
@@ -262,15 +262,14 @@ Application Insights 资源的默认保留期为 90 天。 可以为每个 Appli
 | 5 节点 Azure Service Fabric 群集运行 50 个微服务；每个微服务运行 3 个实例 | 5|
 
 * 若要进行精确的节点计数，必须了解应用程序在使用哪个 Application Insights SDK。 
-  * 在 SDK 2.2 及更高版本中，Application Insights [Core SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights/) 或 [Web SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web/) 都会将每个应用程序主机作为节点进行报告。 例如，会报告物理服务器和 VM 主机的计算机名称，而对于云服务，则报告实例名称。  唯一的例外是应用程序仅使用 [.NET Core](https://dotnet.github.io/) 和 Application Insights Core SDK。 在这种情况下，所有主机只会报告一个节点，因为主机名不可用。 
-  * 就早期版本的 SDK 来说，[Web SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web/) 的行为与新版 SDK 并无二致，而 [Core SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights/) 则只会报告一个节点，不管应用程序主机的数目是多少。 
-  * 如果应用程序通过 SDK 将 **roleInstance** 设置为自定义值，则会默认使用该值确定节点计数。 
-  * 如果对从客户端计算机或移动设备运行的应用使用新版 SDK，则节点计数可能会返回很大的数目（因为客户端计算机或移动设备数目很大）。 
+  * 在 SDK 2.2 及更高版本中，Application Insights [Core SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights/) 或 [Web SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web/) 都会将每个应用程序主机作为节点进行报告。 例如，会报告物理服务器和 VM 主机的计算机名称，而对于云服务，则报告实例名称。  唯一的例外是应用程序仅使用 [.NET Core](https://dotnet.github.io/) 和 Application Insights Core SDK。 在这种情况下，所有主机只会报告一个节点，因为主机名不可用。
+  * 就早期版本的 SDK 来说，[Web SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web/) 的行为与新版 SDK 并无二致，而 [Core SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights/) 则只会报告一个节点，不管应用程序主机的数目是多少。
+  * 如果应用程序通过 SDK 将 **roleInstance** 设置为自定义值，则会默认使用该值确定节点计数。
+  * 如果对从客户端计算机或移动设备运行的应用使用新版 SDK，则节点计数可能会返回很大的数目（因为客户端计算机或移动设备数目很大）。
 
 ## <a name="automation"></a>自动化
 
 可使用 Azure 资源管理编写脚本来设置定价层。 [了解操作方法](powershell.md#price)。
-
 
 ## <a name="next-steps"></a>后续步骤
 

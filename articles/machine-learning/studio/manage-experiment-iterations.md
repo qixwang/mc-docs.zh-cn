@@ -10,14 +10,17 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 03/20/2017
-ms.openlocfilehash: 92bea06fbba2df5307366f4de4afd2263d5e2477
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+ms.openlocfilehash: daabe8c432bd8b42f5e72aa7f8d832897ab73b40
+ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75598436"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80343364"
 ---
 # <a name="manage-experiment-iterations-in-azure-machine-learning-studio-classic"></a>在 Azure 机器学习工作室（经典）中管理试验迭代
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
+
 开发预测分析模型是一个迭代过程 - 在修改试验的各种函数和参数时，结果会不断聚合，直到对经过培训的有效模型感到满意为止。 此过程的关键是跟踪试验参数和配置的各种迭代。
 
 

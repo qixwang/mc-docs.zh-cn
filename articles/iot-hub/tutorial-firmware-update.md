@@ -10,15 +10,15 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: na
 origin.date: 06/28/2019
-ms.date: 03/09/2020
+ms.date: 04/06/2020
 ms.author: v-yiso
 ms.custom: mvc
-ms.openlocfilehash: eec6fc9f1f6cc4a84583f32987bc530c4bce05eb
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.openlocfilehash: 0ffe989b56c0d8b9f1b5805cf464e7fd7d4ad4fa
+ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78154699"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80343609"
 ---
 # <a name="tutorial-implement-a-device-firmware-update-process"></a>教程：实现设备固件更新过程
 
@@ -66,7 +66,7 @@ hubname=tutorial-iot-hub
 location=chinaeast
 
 # Install the IoT extension if it's not already installed
-az extension add --name azure-cli-iot-ext
+az extension add --name azure-iot
 
 # Create a resource group
 az group create --name tutorial-iot-hub-rg --location $location
@@ -75,7 +75,7 @@ az group create --name tutorial-iot-hub-rg --location $location
 az iot hub create --name $hubname --location $location --resource-group tutorial-iot-hub-rg --sku F1
 
 # Make a note of the service connection string, you need it later
-az iot hub show-connection-string --name $hubname -policy-name service -o table
+az iot hub show-connection-string --name $hubname --policy-name service -o table
 
 ```
 

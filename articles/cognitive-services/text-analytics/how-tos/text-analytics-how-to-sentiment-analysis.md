@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: sample
-origin.date: 02/10/2020
-ms.date: 02/25/2020
-ms.author: v-junlch
-ms.openlocfilehash: 04649e44ffd69801278a45613d6043c6e7883cb3
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+origin.date: 03/09/2020
+ms.date: 03/26/2020
+ms.author: v-lingwu
+ms.openlocfilehash: c5582f3c64493630cf56ed623ede355424ee7fea
+ms.sourcegitcommit: 303a16c7117b6f3495ef0493b4ae8ccb67d7dbba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78154650"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80342376"
 ---
 # <a name="how-to-detect-sentiment-using-the-text-analytics-api"></a>如何：使用文本分析 API 检测情绪
 

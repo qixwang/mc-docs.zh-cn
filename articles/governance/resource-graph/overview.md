@@ -1,17 +1,16 @@
 ---
 title: Azure Resource Graph 概述
 description: 了解如何使用 Azure Resource Graph 服务跨订阅和租户对资源进行大规模的复杂查询。
-author: DCtheGeek
 ms.author: v-tawe
-origin.date: 10/21/2019
-ms.date: 03/02/2020
+origin.date: 03/02/2020
+ms.date: 03/16/2020
 ms.topic: overview
-ms.openlocfilehash: c838520d431bac0d5a6048bf02835342f8179381
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: 6aa29612213d0d692a666fd794a0d5b230c68916
+ms.sourcegitcommit: 1d3d8dfdaf6281f06640cbee7124a1e8bf102c50
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79291737"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80243902"
 ---
 # <a name="what-is-azure-resource-graph"></a>什么是 Azure Resource Graph？
 
@@ -25,15 +24,16 @@ Azure Resource Graph 是 Azure 中的一项服务，旨在通过提供高效和�
 在本文档中，你将逐一了解各项功能的详细信息。
 
 > [!NOTE]
-> Azure Resource Graph 支持 Azure 门户的搜索栏、全新的浏览“所有资源”体验以及 Azure Policy 的[更改历史记录](../policy/how-to/determine-non-compliance.md#change-history-preview)
->   视觉差异。 它旨在帮助客户管理大规模环境。
+> Azure Resource Graph 支持 Azure 门户的搜索栏、全新的浏览“所有资源”体验。
+> 它旨在帮助客户管理大规模环境。
 
+<!-- [!INCLUDE [azure-lighthouse-supported-service](../../../includes/azure-lighthouse-supported-service.md)] -->
 
 ## <a name="how-does-resource-graph-complement-azure-resource-manager"></a>Resource Graph 如何补充了 Azure 资源管理器
 
 Azure 资源管理器目前支持对基本的资源字段进行查询，具体说来，这些字段包括“资源名称”、“ID”、“类型”、“资源组”、“订阅”和“位置”。 资源管理器还提供设施，用于调用各个资源提供程序以获取详细的属性，每次仅限一个资源。
 
-使用 Azure Resource Graph，可以访问资源提供程序返回的这些属性，无需对资源提供程序进行单独调用。 如需支持的资源类型的列表，请在[完整模式部署的资源](../../azure-resource-manager/templates/complete-mode-deletion.md)表中查找“是”  。 可在相关 [Resource Graph 表](./concepts/query-language.md#resource-graph-tables)中找到其他资源类型。 若要查看支持的资源类型，另一种方法是通过 [Azure Resource Graph 资源管理器架构浏览器](./first-query-portal.md#schema-browser)。
+使用 Azure Resource Graph，可以访问资源提供程序返回的这些属性，无需对资源提供程序进行单独调用。 有关支持的资源类型列表，请查阅[表和资源类型参考](./reference/supported-tables-resources.md)。 若要查看支持的资源类型，另一种方法是通过 [Azure Resource Graph 资源管理器架构浏览器](./first-query-portal.md#schema-browser)。
 
 使用 Azure Resource Graph，可以：
 

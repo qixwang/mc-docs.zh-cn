@@ -1,26 +1,27 @@
 ---
-title: 出站身份验证 - Azure 计划程序
+title: 出站身份验证
 description: 了解如何设置或删除 Azure 计划程序的出站身份验证
 services: scheduler
 ms.service: scheduler
 author: WenJason
 ms.author: v-jay
 ms.reviewer: klam
-ms.assetid: 6707f82b-7e32-401b-a960-02aae7bb59cc
 ms.topic: article
 origin.date: 08/15/2016
-ms.date: 11/04/2019
-ms.openlocfilehash: 1da0b552d6aa270ccf8394c05925a16bee8dbd10
-ms.sourcegitcommit: f9a257e95444cb64c6d68a7a1cfe7e94c5cc5b19
+ms.date: 03/30/2020
+ms.openlocfilehash: d687dbe5941c73e2760ba59f6b6c53eec2c5e06c
+ms.sourcegitcommit: 90660563b5d65731a64c099b32fb9ec0ce2c51c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2019
-ms.locfileid: "73416284"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80341692"
 ---
 # <a name="outbound-authentication-for-azure-scheduler"></a>Azure 计划程序的出站身份验证
 
 > [!IMPORTANT]
-> [Azure 逻辑应用](../logic-apps/logic-apps-overview.md)将替换[即将停用](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date)的 Azure 计划程序。 若要继续使用在计划程序中设置的作业，请尽快[迁移到 Azure 逻辑应用](../scheduler/migrate-from-scheduler-to-logic-apps.md)。
+> [Azure 逻辑应用](../logic-apps/logic-apps-overview.md)将替换[即将停用](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date)的 Azure 计划程序。 若要继续使用在计划程序中设置的作业，请尽快[迁移到 Azure 逻辑应用](../scheduler/migrate-from-scheduler-to-logic-apps.md)。 
+>
+> 计划程序在 Azure 门户中不再可用，但 [REST API](https://docs.microsoft.com/rest/api/scheduler) 和 [Azure 计划程序 PowerShell cmdlet](scheduler-powershell-reference.md) 目前仍可用，以便你可以管理作业和作业集合。
 
 Azure 计划程序作业必须调用需要进行身份验证的服务，例如其他 Azure 服务、Salesforce.com、Facebook 和安全自定义网站。 被调用的服务可以确定计划程序作业是否可以访问请求的资源。 
 
@@ -405,10 +406,9 @@ Date: Wed, 16 Mar 2016 19:10:02 GMT
 }
 ```
 
-## <a name="see-also"></a>另请参阅
+## <a name="next-steps"></a>后续步骤
 
-* [什么是 Azure 计划程序？](scheduler-intro.md)
 * [Azure 计划程序的概念、术语和实体层次结构](scheduler-concepts-terms.md)
 * [Azure 计划程序的限制、默认值和错误代码](scheduler-limits-defaults-errors.md)
-* [Azure 计划程序 REST API](https://msdn.microsoft.com/library/mt629143)
+* [Azure 计划程序 REST API 参考](https://docs.microsoft.com/rest/api/scheduler)
 * [Azure 计划程序 PowerShell cmdlet 参考](scheduler-powershell-reference.md)

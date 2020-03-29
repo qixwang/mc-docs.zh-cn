@@ -8,26 +8,28 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: overview
-origin.date: 06/04/2019
-ms.date: 07/11/2019
-ms.author: v-junlch
+origin.date: 12/09/2019
+ms.date: 03/26/2020
+ms.author: v-lingwu
 ms.custom: seodec18
-ms.openlocfilehash: 65a1a23ed82e4c8d47599e25967c9eac258626f7
-ms.sourcegitcommit: 8f49da0084910bc97e4590fc1a8fe48dd4028e34
+ms.openlocfilehash: 7d71a3abb8c93633a98c9fe91330d1b45bd27447
+ms.sourcegitcommit: 303a16c7117b6f3495ef0493b4ae8ccb67d7dbba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67844628"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80342384"
 ---
 # <a name="what-is-the-translator-text-api"></a>什么是文本翻译 API？
 
 文本翻译 API 可以轻松地集成到应用程序、网站、工具和解决方案中。 它允许你使用 [60 多种语言](language-support.md)添加多语言用户体验，可以在任何硬件平台上使用，以及在任何操作系统中使用，用于文本到文本语言翻译。
 
-文本翻译 API 是云中机器学习和 AI 算法的 Azure [认知服务 API](https://docs.microsoft.com/azure/#pivot=products&panel=ai) 集合的一部分，可随时在开发项目中使用。
+文本翻译 API 是云中机器学习和 AI 算法的 Azure [认知服务 API](/#pivot=products&panel=ai) 集合的一部分，可随时在开发项目中使用。
 
 ## <a name="about-microsoft-translator"></a>关于 Microsoft Translator
 
 Microsoft Translator 是基于云的机器翻译服务。 核心服务是文本翻译 API，该 API 为各种 Microsoft 产品和服务提供支持，并已在全球数千家企业的应用程序和工作流中使用，使他们的内容可传播到全球的受众。
+
+语音翻译由文本翻译 API 提供支持，也通过 [Microsoft 语音服务](/cognitive-services/speech-service/)提供。 它将语音翻译 API 和自定义语音服务的功能组合成了一项统一的可完全自定义的服务。 语音服务将替换语音翻译 API，后者自 2019 年 10 月 15 日起停用。
 
 ## <a name="language-support"></a>语言支持
 

@@ -4,14 +4,14 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
 origin.date: 02/20/2020
-ms.date: 03/23/2020
+ms.date: 03/16/2020
 ms.author: v-tawe
-ms.openlocfilehash: 5364bba07a9ff1deca33d5672f171422a65d8389
-ms.sourcegitcommit: e94ed1c9eff4e88be2ca389909e60b14cc0d92f8
+ms.openlocfilehash: 3a8fdb4f3bc181e265f256243ec681524a9fad24
+ms.sourcegitcommit: b2f2bb08ab1b5ccb3c596d84b3b6ddca5bba3903
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79084460"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80151552"
 ---
 本快速入门介绍如何使用适用于 Android 的语音设备 SDK 来生成支持语音的产品。
 
@@ -36,7 +36,7 @@ ms.locfileid: "79084460"
 
 <!-- - If you plan to use the Conversation Transcription you must use a [circular microphone device](../get-speech-devices-sdk.md) and this feature is currently only available for "en-US" and "zh-CN" in regions, "chinaeast2". You must have a speech key in one of those regions to use Conversation Transcription. -->
 
-<!-- - If you plan to use the Speech service to identify intents (or actions) from user utterances, you'll need a [Language Understanding Service (LUIS)](https://docs.microsoft.com/azure/cognitive-services/luis/azureibizasubscription) subscription. To learn more about LUIS and intent recognition, see [Recognize speech intents with LUIS, C#](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-recognize-intents-from-speech-csharp). -->
+<!-- - If you plan to use the Speech service to identify intents (or actions) from user utterances, you'll need a [Language Understanding Service (LUIS)](https://docs.microsoft.com/azure/cognitive-services/luis/azureibizasubscription) subscription. To learn more about LUIS and intent recognition, see [Recognize speech intents with LUIS, C#](https://docs.azure.cn/cognitive-services/speech-service/how-to-recognize-intents-from-speech-csharp). -->
 
   <!-- You can [create a simple LUIS model](https://docs.microsoft.com/azure/cognitive-services/luis/) or use the sample LUIS model, LUIS-example.json. The sample LUIS model is available from the [Speech Devices SDK download site](https://aka.ms/sdsdk-luis). To upload your model's JSON file to the [LUIS portal](https://www.luis.ai/home), select **Import new app**, and then select the JSON file. -->
 ""
@@ -97,7 +97,7 @@ ms.locfileid: "79084460"
     通过将以下行添加到 dependencies 节来更新 **build.gradle(Module:app)** 。 
 
     ```xml
-    implementation'com.microsoft.cognitiveservices.speech:client-sdk:1.9.0'
+    implementation'com.microsoft.cognitiveservices.speech:client-sdk:1.10.0'
     ```
 
 1. 将语音订阅密钥添加到源代码。
@@ -152,7 +152,8 @@ ms.locfileid: "79084460"
 1. 语音设备 SDK 示例应用程序将会启动，并显示以下选项：
 
    ![示例语音设备 SDK 的示例应用程序和选项](../media/speech-devices-sdk/qsg-8.png)
-<!-- 1. Try the new Conversation Transcription demo. Start transcribing with 'Start Session'. By default everyone is a guest. However, if you have participant's voice signatures they can be put into a file `/video/participants.properties` on the device. To generate the voice signature, look at [Transcribe conversations (SDK)](../how-to-use-conversation-transcription-service.md). -->
+
+   <!-- 1. Try the new Conversation Transcription demo. Start transcribing with 'Start Session'. By default everyone is a guest. However, if you have participant's voice signatures they can be put into a file `/video/participants.properties` on the device. To generate the voice signature, look at [Transcribe conversations (SDK)](../how-to-use-conversation-transcription-service.md). -->
 
    <!-- ![Demo Conversation Transcription application](../media/speech-devices-sdk/qsg-15.png) -->
 
@@ -170,4 +171,3 @@ ms.locfileid: "79084460"
 > 此命令使用 Android Debug Bridge `adb.exe`，它是 Android Studio 安装的一部分。 此工具位于 C:\Users\[用户名]\AppData\Local\Android\Sdk\platform-tools 中。 可将该目录添加到你的路径，以便更轻松地调用 `adb`。 否则，必须在调用 `adb` 必须在每个调用 adb 的命令中指定到 adb.exe 的完整安装路径。
 >
 > 如果看到 `no devices/emulators found` 错误，请检查 USB 电缆是否已连接，并确保使用了高品质的电缆。
-            

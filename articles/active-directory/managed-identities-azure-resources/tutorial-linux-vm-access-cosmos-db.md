@@ -1,5 +1,5 @@
 ---
-title: 使用 Linux VM 系统分配托管标识访问 Azure Cosmos DB
+title: 教程`:`使用托管标识访问 Azure Cosmos DB - Linux - Azure AD
 description: 本教程将指导你完成使用 Linux VM 系统分配托管标识访问 Azure Cosmos DB 的过程。
 services: active-directory
 documentationcenter: ''
@@ -12,20 +12,20 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-origin.date: 04/09/2018
-ms.date: 08/05/2019
+ms.date: 03/24/2020
 ms.author: v-junlch
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4baf5c68efc2f320e38f13883b3cb586a151a20c
-ms.sourcegitcommit: 461c7b2e798d0c6f1fe9c43043464080fb8e8246
+ms.openlocfilehash: 0351aac60fcd8a6082db453c21f1a0316eeeae4a
+ms.sourcegitcommit: 6568c59433d7e80ab06e9fe76d4791f761ed6775
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68818623"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80243039"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-cosmos-db"></a>教程：使用 Linux VM 系统分配托管标识访问 Azure Cosmos DB 
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
+
 
 本教程介绍如何使用 Linux 虚拟机 (VM) 的系统分配托管标识访问 Azure Cosmos DB。 你将学习如何执行以下操作：
 
@@ -71,7 +71,7 @@ az resource show --id /subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE 
 ```
 响应包括系统分配托管标识的详细信息（请记下 principalID，因为下一部分中将使用它）：
 
-```bash  
+```output  
 {
     "id": "/subscriptions/<SUBSCRIPTION ID>/<RESOURCE GROUP>/providers/Microsoft.Compute/virtualMachines/<VM NAMe>",
   "identity": {
@@ -93,7 +93,7 @@ az role assignment create --assignee <MI PRINCIPALID> --role '<ROLE NAME>' --sco
 
 响应包括所创建的角色分配的详细信息：
 
-```
+```output
 {
   "id": "/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.DocumentDB/databaseAccounts/<COSMOS DB ACCOUNT>/providers/Microsoft.Authorization/roleAssignments/5b44e628-394e-4e7b-bbc3-d6cd4f28f15b",
   "name": "5b44e628-394e-4e7b-bbc3-d6cd4f28f15b",
@@ -156,13 +156,13 @@ CURL 响应提供一个密钥列表。  例如，如果获取只读密钥：
 
 有了 Cosmos DB 帐户的访问密钥以后，即可将其传递给 Cosmos DB SDK 并通过调用来访问该帐户。  如需快速示例，可将该访问密钥传递给 Azure CLI。  在 Azure 门户中，可以从 Cosmos DB 帐户边栏选项卡上的“概览”选项卡获取 `<COSMOS DB CONNECTION URL>`。   将 `<ACCESS KEY>` 替换为在上面获取的值：
 
-```bash
+```azurecli
 az cosmosdb collection show -c <COLLECTION ID> -d <DATABASE ID> --url-connection "<COSMOS DB CONNECTION URL>" --key <ACCESS KEY>
 ```
 
 此 CLI 命令返回有关集合的详细信息：
 
-```bash
+```output
 {
   "collection": {
     "_conflicts": "conflicts/",

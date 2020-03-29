@@ -4,16 +4,16 @@ description: 使用适用于 JavaScript 的 Azure 存储客户端库 v10 在 Nod
 author: WenJason
 ms.author: v-jay
 origin.date: 01/24/2020
-ms.date: 03/09/2020
+ms.date: 03/30/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: 8cd02e79e8a0bd9aa4972b53f8b5ed8d259a3bf7
-ms.sourcegitcommit: fbc7584f403417d3af7bd6bbbaed7c13a78c57b9
+ms.openlocfilehash: 585c7a4627c47c58dc31c37bd545694f639b200b
+ms.sourcegitcommit: 90d01d08faf8adb20083363a8e4e5aab139cd9b2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78411947"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80290384"
 ---
 # <a name="quickstart-manage-blobs-with-javascript-v10-sdk-in-nodejs"></a>快速入门：在 Node.js 中使用 JavaScript v10 SDK 管理 blob
 
@@ -410,4 +410,4 @@ console.log(`Container "${containerName}" is deleted`);
 
 > [!div class="nextstepaction"]
 > [Azure Storage v10 SDK for JavaScript 存储库](https://github.com/Azure/azure-storage-js)
-> [Azure 存储 JavaScript API 参考](https://docs.microsoft.com/javascript/api/overview/azure/storage?view=azure-node-legacy)
+> [Azure 存储 JavaScript API 参考](https://docs.microsoft.com/javascript/api/overview/azure/storage-overview)

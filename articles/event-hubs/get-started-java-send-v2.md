@@ -7,14 +7,14 @@ ms.service: event-hubs
 ms.workload: core
 ms.topic: quickstart
 origin.date: 02/11/2020
-ms.date: 03/09/2020
+ms.date: 03/16/2020
 ms.author: v-tawe
-ms.openlocfilehash: d7705d329ad1c9de0c0450a05a9c4f8890b8ddfd
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.openlocfilehash: c4b02eec66a55eaa77606444e38dcfe5d25bce54
+ms.sourcegitcommit: 1d3d8dfdaf6281f06640cbee7124a1e8bf102c50
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78155377"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80243919"
 ---
 # <a name="use-java-to-send-events-to-or-receive-events-from-azure-event-hubs-azure-messaging-eventhubs"></a>使用 Java 向/从 Azure 事件中心 (azure-messaging-eventhubs) 发送/接收事件
 本快速入门介绍如何使用 **azure-messaging-eventhubs** Java 包向事件中心发送事件以及从事件中心接收事件。
@@ -56,7 +56,7 @@ import com.azure.messaging.eventhubs.*;
 import static java.nio.charset.StandardCharsets.UTF_8;
 
 public class Sender {
-    public static void main(String[] args) {
+       public static void main(String[] args) {
     }
 }
 ```
@@ -209,7 +209,7 @@ public class Sender {
      }
     ```
     
-2. 从 [GitHub](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/eventhubs/azure-messaging-eventhubs/src/samples/java/com/azure/messaging/eventhubs) 下载 **InMemoryCheckpointStore.java** 文件，并将其添加到项目。 
+2. 从 [GitHub](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs/src/samples/java/com/azure/messaging/eventhubs/InMemoryCheckpointStore.java) 下载 **InMemoryCheckpointStore.java** 文件，并将其添加到项目。 
 3. 生成程序，并确保没有引发任何错误。 
 
 ## <a name="run-the-applications"></a>运行应用程序

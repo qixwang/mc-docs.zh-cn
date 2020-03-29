@@ -10,14 +10,16 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 12/07/2017
-ms.openlocfilehash: 1b616e0e45283767126e800947277264dd429d06
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+ms.openlocfilehash: 231308225f67c2b84824a6c67040d60fa90e323e
+ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75599516"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80343083"
 ---
 # <a name="create-and-share-an-azure-machine-learning-studio-classic-workspace"></a>创建并共享 Azure 机器学习工作室（经典）工作区
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 若要使用 Azure 机器学习工作室（经典版），你必须拥有一个机器学习工作室（经典）工作区。 此工作区包含创建、管理和发布试验所需的工具。
 

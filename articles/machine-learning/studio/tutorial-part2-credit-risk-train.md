@@ -10,14 +10,16 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: tutorial
 ms.date: 02/11/2019
-ms.openlocfilehash: 77ffce2dd03a9d926175bc4e7f828014af00f9ec
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+ms.openlocfilehash: 8b79c36e1a13c2886e5a85e4cc4881234606ab46
+ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75598254"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80343341"
 ---
 # <a name="tutorial-2-train-credit-risk-models---azure-machine-learning-studio-classic"></a>教程 2：训练信用风险模型 - Azure 机器学习工作室（经典版）
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 在本教程中，我们将深入探讨开发预测分析解决方案的过程。 我们将在机器学习工作室（经典版）中开发一个简单模型。  然后将该模型部署为 Azure 机器学习 Web 服务。  部署的模型将使用新数据进行预测。 本教程是**由三个部分构成的系列教程的第二部分**。
 
@@ -42,7 +44,7 @@ ms.locfileid: "75598254"
 
 完成[本教程的第一部分](tutorial-part1-credit-risk.md)。
 
-## <a name="train"></a>训练多个模型
+## <a name="train-multiple-models"></a><a name="train"></a>训练多个模型
 
 使用 Azure 机器学习工作室（经典）创建机器学习模型的优势之一是，能够在单个试验中一次性尝试多种模型并比较结果。 此类型的实验有助于找到最适合解决问题的解决方案。
 

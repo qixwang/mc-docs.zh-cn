@@ -202,10 +202,22 @@ groups:
     title: Linux
   - id: platform-android
     title: Android
+- id: programming-languages-set-twelve
+  title: 编程语言
+  prompt: 选择编程语言
+  pivots:
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-cpp
+    title: C+
+  - id: programming-language-java
+    title: Java
+  - id: programming-language-objectivec
+    title: Objective-C
 metadata:
-  ms.openlocfilehash: 18af244620a0caac3e29ca9f0870b7b5b4f14e67
-  ms.sourcegitcommit: 4ba6d7c8bed5398f37eb37cf5e2acafcdcc28791
+  ms.openlocfilehash: b88d722c704c2d6c8be32b6c235903a1ca6198c8
+  ms.sourcegitcommit: b2f2bb08ab1b5ccb3c596d84b3b6ddca5bba3903
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 03/12/2020
-  ms.locfileid: "79133886"
+  ms.lasthandoff: 03/24/2020
+  ms.locfileid: "80151752"

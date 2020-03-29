@@ -6,15 +6,15 @@ author: rockboyfor
 ms.service: virtual-wan
 ms.topic: conceptual
 origin.date: 11/12/2019
-ms.date: 02/24/2020
+ms.date: 03/30/2020
 ms.author: v-yeche
 Customer intent: As someone with a networking background, I want to work with routing tables for NVA.
-ms.openlocfilehash: 26bdddb700b2d9eb2aa9d02372ff9362e175095b
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.openlocfilehash: 1e5499ced836563338f2de7f997e9964904e4762
+ms.sourcegitcommit: 4810b75d1e1db78d9747e99735468a6ab861be2d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78155019"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80291271"
 ---
 # <a name="create-a-virtual-hub-route-table-to-steer-traffic-to-a-network-virtual-appliance"></a>创建一个虚拟中心路由表来将流量引导到网络虚拟设备。
 
@@ -71,17 +71,17 @@ ms.locfileid: "78155019"
 1. 创建资源组。
 
     ```powershell
-    New-AzResourceGroup -Location "China North" -Name "testRG"
+    New-AzResourceGroup -Location "China North 2" -Name "testRG"
     ```
 2. 创建虚拟 WAN。
 
     ```powershell
-    $virtualWan = New-AzVirtualWan -ResourceGroupName "testRG" -Name "myVirtualWAN" -Location "China North"
+    $virtualWan = New-AzVirtualWan -ResourceGroupName "testRG" -Name "myVirtualWAN" -Location "China North 2"
     ```
 3. 创建虚拟中心。
 
     ```powershell
-    New-AzVirtualHub -VirtualWan $virtualWan -ResourceGroupName "testRG" -Name "chinanorthhub" -AddressPrefix "10.0.1.0/24" -Location "chinanorth"
+    New-AzVirtualHub -VirtualWan $virtualWan -ResourceGroupName "testRG" -Name "chinanorth2hub" -AddressPrefix "10.0.1.0/24" -Location "China North 2"
     ```
 
 <a name="connections"></a>
@@ -94,9 +94,9 @@ $remoteVirtualNetwork1= Get-AzVirtualNetwork -Name "indirectspoke1" -ResourceGro
 $remoteVirtualNetwork2= Get-AzVirtualNetwork -Name "indirectspoke2" -ResourceGroupName "testRG"
 $remoteVirtualNetwork3= Get-AzVirtualNetwork -Name "dmzvnet" -ResourceGroupName "testRG"
 
-New-AzVirtualHubVnetConnection -ResourceGroupName "testRG" -VirtualHubName "chinanorthhub" -Name  "testvnetconnection1" -RemoteVirtualNetwork $remoteVirtualNetwork1
-New-AzVirtualHubVnetConnection -ResourceGroupName "testRG" -VirtualHubName "chinanorthhub" -Name  "testvnetconnection2" -RemoteVirtualNetwork $remoteVirtualNetwork2
-New-AzVirtualHubVnetConnection -ResourceGroupName "testRG" -VirtualHubName "chinanorthhub" -Name  "testvnetconnection3" -RemoteVirtualNetwork $remoteVirtualNetwork3
+New-AzVirtualHubVnetConnection -ResourceGroupName "testRG" -VirtualHubName "chinanorth2hub" -Name  "testvnetconnection1" -RemoteVirtualNetwork $remoteVirtualNetwork1
+New-AzVirtualHubVnetConnection -ResourceGroupName "testRG" -VirtualHubName "chinanorth2hub" -Name  "testvnetconnection2" -RemoteVirtualNetwork $remoteVirtualNetwork2
+New-AzVirtualHubVnetConnection -ResourceGroupName "testRG" -VirtualHubName "chinanorth2hub" -Name  "testvnetconnection3" -RemoteVirtualNetwork $remoteVirtualNetwork3
 ```
 
 <a name="route"></a>
@@ -123,7 +123,7 @@ $routeTable = New-AzVirtualHubRouteTable -Route @($route1)
 将更改提交到虚拟中心。
 
 ```powershell
-Update-AzVirtualHub -ResourceGroupName "testRG" -Name "chinanorthhub" -RouteTable $routeTable
+Update-AzVirtualHub -ResourceGroupName "testRG" -Name "chinanorth2hub" -RouteTable $routeTable
 ```
 
 ## <a name="next-steps"></a>后续步骤

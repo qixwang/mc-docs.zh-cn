@@ -9,15 +9,15 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
 origin.date: 02/10/2020
-ms.date: 03/09/2020
+ms.date: 03/16/2020
 ms.author: v-tawe
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 648c0c345360255ec714a46dc08fbd1602befa88
-ms.sourcegitcommit: ced17aa58e800b9e4335276a1595b8045836b256
+ms.openlocfilehash: f0e0354615ef32c885bc707f92f45ecbf68591bf
+ms.sourcegitcommit: b2f2bb08ab1b5ccb3c596d84b3b6ddca5bba3903
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77590226"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80151583"
 ---
 # <a name="quickstart-translate-speech-to-speech"></a>快速入门：将语音翻译为语音
 

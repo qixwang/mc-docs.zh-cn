@@ -8,12 +8,12 @@ ms.topic: conceptual
 origin.date: 10/01/2019
 ms.date: 11/04/2019
 ms.author: v-lingwu
-ms.openlocfilehash: b0866d2055915a6d9f5b17fe03bc376d551f21b5
-ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
+ms.openlocfilehash: 7538901f5f8d17c7106d40ddd5de372bc5dfb8f6
+ms.sourcegitcommit: d1734f6b9871ac5343971a99dabc40e88c1ac8ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/17/2020
-ms.locfileid: "79452529"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80118543"
 ---
 # <a name="send-log-data-to-azure-monitor-with-the-http-data-collector-api-public-preview"></a>使用 HTTP 数据收集器 API（公共预览版）将日志数据发送到 Azure Monitor
 本文介绍如何使用 HTTP 数据收集器 API 从 REST API 客户端将日志数据发送到 Azure Monitor。  其中说明了对于脚本或应用程序收集的数据，如何设置其格式、将其包含在请求中，并由 Azure Monitor 授权该请求。  将针对 PowerShell、C# 和 Python 提供示例。
@@ -475,8 +475,3 @@ post_data(customer_id, shared_key, body, log_type)
 | Azure Monitor Logs 中的[数据收集器 API](/azure-monitor/platform/data-collector-api) | Azure Monitor Logs 中的数据收集器 API 是一种用于引入数据的完全开放式方法。 采用 JSON 对象格式的任何数据均可发送到此处。 在发送后，这些数据将被处理，并在 Logs 中可用来与 Logs 中的其他数据关联，或与其他 Application Insights 数据进行对比。 <br/><br/> 将数据作为文件上传到 Azure Blob 相当容易，这些文件将在这里被处理并上传到 Log Analytics。 请参阅[本文](/azure-monitor/platform/create-pipeline-datacollector-api)，了解此类管道的示例实现。 | <ul><li> 不一定是在使用 Application Insights 检测的应用程序中生成的数据。</li><li> 示例包括查找和事实数据表、参考数据、预先聚合的统计信息等。 </li><li> 适用于要针对其他 Azure Monitor 数据（例如，Application Insights、其他 Logs 数据类型、安全中心、适用于容器/VM 的 Azure Monitor 等）进行交叉引用的数据。 </li></ul> |
 | [Azure 数据资源管理器](/data-explorer/ingest-data-overview) | Azure 数据资源管理器 (ADX) 是为 Application Insights Analytics 和 Azure Monitor Logs 提供强大支持的数据平台。 目前，正式版（“GA”）使用原始形式的数据平台，让你可以十分灵活地对群集（RBAC、保有率、架构等）执行各项操作（但需要管理开销）。 ADX 提供了很多[引入选项](/data-explorer/ingest-data-overview#ingestion-methods)，其中包括 [CSV、TSV 和 JSON](https://docs.microsoft.com/azure/kusto/management/mappings?branch=master) 文件。 | <ul><li> 与 Application Insights 或 Logs 下的任何其他数据无关联的数据。 </li><li> 需要 Azure Monitor Logs 中目前未提供的高级引入或处理功能的数据。 </li></ul> |
 
-
-## <a name="next-steps"></a>后续步骤
-- 使用[日志搜索 API](../log-query/log-query-overview.md) 从 Log Analytics 工作区中检索数据。
-
-- 详细了解如何使用 Azure Monitor 的逻辑应用工作流[通过数据收集器 API 创建数据管道](create-pipeline-datacollector-api.md)。

@@ -8,12 +8,12 @@ ms.topic: conceptual
 origin.date: 02/12/2020
 ms.date: 02/24/2020
 ms.author: v-yeche
-ms.openlocfilehash: 3c1e1de4b64cf07417a38d2bde77b026caa4f0d9
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.openlocfilehash: 77a10b9d88116ec7ee319e7bbc52f91f52b0e7d5
+ms.sourcegitcommit: 4810b75d1e1db78d9747e99735468a6ab861be2d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78154968"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80291302"
 ---
 # <a name="automation-guidelines-for-virtual-wan-partners"></a>适用于虚拟 WAN 合作伙伴的自动化指南
 
@@ -21,7 +21,7 @@ ms.locfileid: "78154968"
 
 分支设备（客户的本地 VPN 设备或 SDWAN CPE）通常使用需要预配的控制器/设备仪表板。 SD-WAN 解决方案管理员通常可以使用管理控制台来提前预配一个设备，然后再将该设备加入到网络中。 这个支持 VPN 的设备从控制器获取其控制平面逻辑。 VPN 设备或 SD-WAN 控制器可使用 Azure API 自动连接到 Azure 虚拟 WAN。 此类型的连接要求本地设备分配有一个面向外部的公共 IP 地址。
 
-## <a name ="before"></a>开始自动化操作之前
+## <a name="before-you-begin-automating"></a><a name ="before"></a>开始自动化操作之前
 
 * 验证设备是否支持 IPsec IKEv1/IKEv2。 请参阅[默认策略](#default)。
 * 查看用来自动连接到 Azure 虚拟 WAN 的 [REST API](#additional)。
@@ -32,14 +32,14 @@ ms.locfileid: "78154968"
     * 将分支设备信息上传到 Azure 虚拟 WAN
     * 下载 Azure 配置，并设置从分支设备到 Azure 虚拟 WAN 的连接
 
-### <a name ="additional"></a>其他信息
+### <a name="additional-information"></a><a name ="additional"></a>其他信息
 
 * 用来自动创建虚拟中心的 [REST API](https://docs.microsoft.com/rest/api/virtualwan/virtualhubs)
 * 用来为虚拟 WAN 自动实现 Azure VPN 网关的 [REST API](https://docs.microsoft.com/rest/api/virtualwan/vpngateways)
 * 用来将 VPNSite 连接到 Azure VPN 中心的 [REST API](https://docs.microsoft.com/rest/api/virtualwan/vpnconnections)
 * [默认的 IPsec 策略](#default)
 
-## <a name ="ae"></a>客户体验
+## <a name="customer-experience"></a><a name ="ae"></a>客户体验
 
 了解客户在结合 Azure 虚拟 WAN 进行操作时的预期体验。
 
@@ -121,7 +121,7 @@ ms.locfileid: "78154968"
          { 
             "hubConfiguration":{ 
                "AddressSpace":"10.1.0.0/24",
-               "Region":"China North",
+               "Region":"China North 2",
                "ConnectedSubnets":[ 
                   "10.2.0.0/16",
                   "10.3.0.0/16"
@@ -157,7 +157,7 @@ ms.locfileid: "78154968"
          { 
             "hubConfiguration":{ 
                "AddressSpace":"10.1.0.0/24",
-               "Region":"China North"
+               "Region":"China North 2"
             },
             "gatewayConfiguration":{ 
                "IpAddresses":{ 
@@ -189,7 +189,7 @@ ms.locfileid: "78154968"
          { 
             "hubConfiguration":{ 
                "AddressSpace":"10.1.0.0/24",
-               "Region":"China North"
+               "Region":"China North 2"
             },
             "gatewayConfiguration":{ 
                "IpAddresses":{ 

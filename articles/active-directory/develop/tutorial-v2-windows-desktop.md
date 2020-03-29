@@ -12,16 +12,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/06/2020
+ms.date: 03/23/2020
 ms.author: v-junlch
 ms.custom: aaddev, identityplatformtop40
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: bf7854bb39fbc13d2f680e75d31c274d21c21ac0
-ms.sourcegitcommit: 1bc154c816a5dff47ee051c431cd94826e57aa60
+ms.openlocfilehash: 9f83082a39fee46c4caf3fa629419c7bfc5ba13c
+ms.sourcegitcommit: 6568c59433d7e80ab06e9fe76d4791f761ed6775
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75777031"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80243102"
 ---
 # <a name="call-the-microsoft-graph-api-from-a-windows-desktop-app"></a>从 Windows 桌面应用调用 Microsoft Graph API
 
@@ -29,6 +28,9 @@ ms.locfileid: "75777031"
 
 > [!NOTE]
 > 本指南需要 Visual Studio 2015 Update 3、Visual Studio 2017 或 Visual Studio 2019。 没有这些版本？ [免费下载 Visual Studio 2019](https://www.visualstudio.com/downloads/)。
+
+>[!NOTE]
+> 如果你不熟悉 Microsoft 标识平台，我们建议你从[从 Windows 桌面应用获取令牌并调用 Microsoft Graph API](quickstart-v2-windows-desktop.md) 开始。
 
 ## <a name="how-the-sample-app-generated-by-this-guide-works"></a>本指南生成的示例应用的工作原理
 

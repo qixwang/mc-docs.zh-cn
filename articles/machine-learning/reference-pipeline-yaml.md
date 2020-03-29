@@ -11,12 +11,12 @@ ms.author: sanpil
 author: sanpil
 origin.date: 11/11/2019
 ms.date: 03/16/2020
-ms.openlocfilehash: 91a573cfed83153a6f27a415622785e10df584c0
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.openlocfilehash: 3c52df5775bdd98d53f711fb0867977fad8d702b
+ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78850631"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80343315"
 ---
 # <a name="define-machine-learning-pipelines-in-yaml"></a>在 YAML 中定义机器学习管道
 
@@ -33,7 +33,7 @@ ms.locfileid: "78850631"
 | DataTransferStep | 是 |
 | AutoMLStep | 否 |
 | HyperDriveStep | 否 |
-| ModuleStep | 否 |
+| ModuleStep | 是 |
 | MPIStep | 否 |
 | EstimatorStep | 否 |
 

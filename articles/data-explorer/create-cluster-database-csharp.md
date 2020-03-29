@@ -7,13 +7,13 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 origin.data: 06/03/2019
-ms.date: 03/23/2020
-ms.openlocfilehash: 630a10efa8a1ba9e49d8e6c2eb50aac1fb9b0d14
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.date: 03/16/2020
+ms.openlocfilehash: de2c5280b8a6f5d84e08b9144a48cec94a9c8f6c
+ms.sourcegitcommit: 1d3d8dfdaf6281f06640cbee7124a1e8bf102c50
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79291148"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80243977"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-database-by-using-c"></a>使用 C# 创建 Azure 数据资源管理器群集和数据库
 

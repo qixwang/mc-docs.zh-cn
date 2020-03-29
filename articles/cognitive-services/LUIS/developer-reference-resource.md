@@ -7,12 +7,12 @@ ms.topic: reference
 origin.date: 02/11/2020
 ms.date: 02/25/2020
 ms.author: v-lingwu
-ms.openlocfilehash: 543d6572332f55e4a7c6987bbb97bace5dba72d1
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.openlocfilehash: 309a93e065b1d04095cf8107d4cfd519ab94664a
+ms.sourcegitcommit: 303a16c7117b6f3495ef0493b4ae8ccb67d7dbba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78154669"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80342415"
 ---
 # <a name="sdk-rest-and-cli-developer-resources-for-language-understanding-luis"></a>用于语言理解 (LUIS) 的 SDK、REST 和 CLI 开发人员资源
 
@@ -62,10 +62,10 @@ LUIS 目前有 2 种类型的终结点：
 
 |目的|URL|
 |--|--|
-|在训练终结点上进行创作|`https://{your-resource-name}.api.cognitive.microsoft.com/luis/api/v2.0/apps/{appID}/`|
-|V2 运行时 - 运行时终结点上的所有预测|`https://{your-resource-name}.api.cognitive.microsoft.com/luis/v2.0/apps/{appId}?q={q}[&timezoneOffset][&verbose][&spellCheck][&staging][&bing-spell-check-subscription-key][&log]`|
-|V3 运行时 - 运行时终结点上的版本预测|`https://{your-resource-name}.api.cognitive.microsoft.com/luis/prediction/v3.0/apps/{appId}/versions/{versionId}/predict?query={query}[&verbose][&log][&show-all-intents]`|
-|V3 运行时 - 运行时终结点上的槽预测|`https://{your-resource-name}.api.cognitive.microsoft.com/luis/prediction/v3.0/apps/{appId}/slots/{slotName}/predict?query={query}[&verbose][&log][&show-all-intents]`|
+|在训练终结点上进行创作|`https://{your-resource-name}.api.cognitive.azure.cn/luis/api/v2.0/apps/{appID}/`|
+|V2 运行时 - 运行时终结点上的所有预测|`https://{your-resource-name}.api.cognitive.azure.cn/luis/v2.0/apps/{appId}?q={q}[&timezoneOffset][&verbose][&spellCheck][&staging][&bing-spell-check-subscription-key][&log]`|
+|V3 运行时 - 运行时终结点上的版本预测|`https://{your-resource-name}.api.cognitive.azure.cn/luis/prediction/v3.0/apps/{appId}/versions/{versionId}/predict?query={query}[&verbose][&log][&show-all-intents]`|
+|V3 运行时 - 运行时终结点上的槽预测|`https://{your-resource-name}.api.cognitive.azure.cn/luis/prediction/v3.0/apps/{appId}/slots/{slotName}/predict?query={query}[&verbose][&log][&show-all-intents]`|
 
 下表说明了上表中用大括号 `{}` 表示的参数。
 

@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.custom: seodec18
 origin.date: 01/10/2020
-ms.date: 03/09/2020
+ms.date: 03/16/2020
 ms.author: v-tawe
-ms.openlocfilehash: f65b19e76d67d3f5476ca9f63230dc4ddadd2bab
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.openlocfilehash: 68dde124e431d3bea829df0699faed82483e92da
+ms.sourcegitcommit: 1d3d8dfdaf6281f06640cbee7124a1e8bf102c50
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78154754"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80243927"
 ---
 # <a name="event-processor-host"></a>事件处理程序主机
 > [!NOTE]

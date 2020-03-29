@@ -4,15 +4,15 @@ description: 有关从 CouchBase 迁移到 Azure Cosmos DB SQL API 的分步指�
 ms.service: cosmos-db
 ms.topic: conceptual
 origin.date: 02/11/2020
-ms.date: 03/09/2020
+ms.date: 03/30/2020
 ms.author: v-yeche
 author: rockboyfor
-ms.openlocfilehash: 0b8df8e5f447d87eabe21459daed6ad3186b3c6b
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.openlocfilehash: 2ce421d31e8f9280ddabbec4bacdd181a0fa4584
+ms.sourcegitcommit: 303a16c7117b6f3495ef0493b4ae8ccb67d7dbba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78850514"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80342373"
 ---
 # <a name="migrate-from-couchbase-to-azure-cosmos-db-sql-api"></a>从 CouchBase 迁移到 Azure Cosmos DB SQL API
 
@@ -29,7 +29,7 @@ Azure Cosmos DB 是可缩放的多区域分布式完全托管型数据库。 它
 |桶           | 容器/集合 |
 |JSON 文档    | 项/文档 |
 
-## <a name="key-differences"></a>主要差别
+## <a name="key-differences"></a>主要区别
 
 * Azure Cosmos DB 在文档中有一个“ID”字段，而 Couchbase 将 ID 用作桶的一部分。 “ID”字段在整个分区中是唯一的。
 
@@ -188,6 +188,8 @@ Azure Cosmos DB 提供以下 SDK 来支持不同的 Java 框架：
 |N1QL 查询 | Azure CosmosDB 查询|
 |-------------------|-------------------|
 |SELECT META(`TravelDocument`).id AS id, `TravelDocument`.* FROM `TravelDocument` WHERE `_type` = "com.xx.xx.xx.xxx.xxx.xxxx " and country = 'India' and ANY m in Visas SATISFIES m.type == 'Multi-Entry' and m.Country IN ['India', 'Bhutan'] ORDER BY ` Validity` DESC LIMIT 25 OFFSET 0  | SELECT c.id,c FROM c JOIN m in  c.country='India' WHERE c._type = " com.xx.xx.xx.xxx.xxx.xxxx" and c.country = 'India' and m.type = 'Multi-Entry' and m.Country IN ('India', 'Bhutan') ORDER BY c.Validity DESC OFFSET 0 LIMIT 25 |
+
+<!--CORRECT ON 'Bhutan'-->
 
 在 N1QL 查询中，可以注意到以下更改：
 

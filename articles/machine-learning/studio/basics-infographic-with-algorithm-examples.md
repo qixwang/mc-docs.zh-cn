@@ -10,14 +10,16 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodc18
 ms.date: 03/04/2019
-ms.openlocfilehash: 84a07ac744bfce233e39a8fa5e542dbad2eb6340
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+ms.openlocfilehash: c3a2f9d1775cdd7c11f637492e87a9b5a142e80e
+ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75599569"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80343218"
 ---
 # <a name="downloadable-infographic-machine-learning-basics-with-algorithm-examples"></a>可下载信息图：包含算法示例的机器学习基础知识
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 下载此易于理解的机器学习基础知识信息图概述，以了解用于解答常见机器学习问题的常用算法。 算法示例可帮助机器学习初学者了解可使用的算法及其用途。
 

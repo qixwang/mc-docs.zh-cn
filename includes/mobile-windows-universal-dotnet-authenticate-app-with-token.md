@@ -1,3 +1,11 @@
+---
+ms.openlocfilehash: 583c8431125a29f9f6f8062721055acbf096cf86
+ms.sourcegitcommit: b2f2bb08ab1b5ccb3c596d84b3b6ddca5bba3903
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80151736"
+---
 
 1. 在 MainPage.xaml.cs 项目文件中，添加以下 **using** 语句：
    
@@ -10,8 +18,8 @@
             string message;
             bool success = false;
    
-            // This sample uses the Facebook provider.
-            var provider = MobileServiceAuthenticationProvider.Facebook;
+            // This sample uses the Microsoft provider.
+            var provider = MobileServiceAuthenticationProvider.MicrosoftAccount;
    
             // Use the PasswordVault to securely store and access credentials.
             PasswordVault vault = new PasswordVault();
@@ -38,7 +46,7 @@
                 App.MobileService.CurrentUser = user;
    
                 // Consider adding a check to determine if the token is 
-                // expired, as shown in this post: http://aka.ms/jww5vp.
+                // expired, as shown in this post: https://docs.microsoft.com/archive/blogs/.
    
                 success = true;
                 message = string.Format("Cached credentials for user - {0}", user.UserId);
@@ -75,7 +83,7 @@
     在此版本的 **AuthenticateAsync** 中，应用将尝试使用存储在 **PasswordVault** 中的凭据来访问服务。 没有存储任何凭据时，也执行常规登录。
    
    > [!NOTE]
-   > 缓存的令牌可能已过期，正在使用应用时，在身份验证之后也可能会发生令牌到期。 若要了解如何确定令牌是否已过期，请参阅[检查过期的身份验证令牌](http://aka.ms/jww5vp)。 有关用于处理到期令牌相关的授权错误的解决方案，请参阅文章[在 Azure 移动服务托管 SDK 中缓存和处理到期令牌](http://blogs.msdn.com/b/carlosfigueira/archive/2014/03/13/caching-and-handling-expired-tokens-in-azure-mobile-services-managed-sdk.aspx)。 
+   > 缓存的令牌可能已过期，正在使用应用时，在身份验证之后也可能会发生令牌到期。 若要了解如何确定令牌是否已过期，请参阅[检查过期的身份验证令牌](https://docs.microsoft.com/archive/blogs/)。 有关用于处理到期令牌相关的授权错误的解决方案，请参阅文章[在 Azure 移动服务托管 SDK 中缓存和处理到期令牌](http://blogs.msdn.com/b/carlosfigueira/archive/2014/03/13/caching-and-handling-expired-tokens-in-azure-mobile-services-managed-sdk.aspx)。 
    > 
    > 
 3. 两次重新启动此应用。

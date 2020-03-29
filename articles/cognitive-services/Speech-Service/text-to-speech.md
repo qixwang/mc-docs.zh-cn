@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-origin.date: 12/10/2019
-ms.date: 03/01/2020
+origin.date: 03/11/2020
+ms.date: 03/16/2020
 ms.author: v-tawe
-ms.openlocfilehash: a85db5f897071712709dc1f929e58ac425b109ac
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: aaa07e3db0d55b144c3ab5e63aeb8822914c0c90
+ms.sourcegitcommit: b2f2bb08ab1b5ccb3c596d84b3b6ddca5bba3903
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79293282"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80151506"
 ---
 # <a name="what-is-text-to-speech"></a>什么是文本转语音？
 

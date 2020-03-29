@@ -4,14 +4,14 @@ description: 了解 Azure Policy 如何使用来宾配置代理审核虚拟机�
 author: DCtheGeek
 ms.author: v-tawe
 origin.date: 11/04/2019
-ms.date: 03/09/2020
+ms.date: 03/16/2020
 ms.topic: conceptual
-ms.openlocfilehash: 2bc994144c0dd2c6c1e7ddc3c3d029dfc2abd144
-ms.sourcegitcommit: 892137d117bcaf9d88aec0eb7ca756fe39613344
+ms.openlocfilehash: 0df86addced664b9c215a1925556b5e858c3a566
+ms.sourcegitcommit: 1d3d8dfdaf6281f06640cbee7124a1e8bf102c50
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78042315"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80243915"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>了解 Azure Policy 的来宾配置
 

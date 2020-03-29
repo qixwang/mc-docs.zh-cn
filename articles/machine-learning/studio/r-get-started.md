@@ -10,14 +10,16 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/01/2019
-ms.openlocfilehash: 10a633ba920322aa7bfe80682a2bf408a155cb9e
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+ms.openlocfilehash: 7f598349855fba4ea9b30dd8bfb498d7dfae1169
+ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75598331"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80343360"
 ---
 # <a name="getting-started-with-the-r-programming-language-in-azure-machine-learning-studio-classic"></a>Azure 机器学习工作室（经典版）中的 R 编程语言入门
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 <!-- Stephen F Elston, Ph.D. -->
 
@@ -47,7 +49,7 @@ Azure 机器学习工作室（经典版）包含许多功能强大的机器学�
 * 准备好数据之后，在数据集的几个变量之间执行相关性分析。
 * 最后，我们创建牛奶生产的季节性时序预测模型。
 
-## <a id="mlstudio"></a>在机器学习工作室（经典版）中与 R 语言交互
+## <a name="interact-with-r-language-in-machine-learning-studio-classic"></a><a id="mlstudio"></a>在机器学习工作室（经典版）中与 R 语言交互
 
 本部分介绍在机器学习工作室（经典版）环境中与 R 编程语言交互的一些基础知识。 R 语言提供了功能强大的工具，可用于在 Azure 机器学习工作室（经典版）环境中创建自定义的分析和数据操作模块。
 
@@ -139,7 +141,7 @@ RStudio 是广泛使用的针对 R 语言的集成开发环境 (IDE)。我会使
 
 我在下面的 [RStudio 指南文档](#appendixa)中提供了有关使用 RStudio 的更多信息。  
 
-## <a id="scriptmodule"></a>获取执行 R 脚本模块中的输入和输出数据
+## <a name="get-data-in-and-out-of-the-execute-r-script-module"></a><a id="scriptmodule"></a>获取执行 R 脚本模块中的输入和输出数据
 
 本部分介绍如何在[执行 R 脚本][execute-r-script]模块中输入和输出数据。 我们将复习如何在[执行 R 脚本][execute-r-script]模块中处理各种数据类型的输入和输出。
 
@@ -147,7 +149,7 @@ RStudio 是广泛使用的针对 R 语言的集成开发环境 (IDE)。我会使
 
 ### <a name="load-and-check-data-in-machine-learning-studio-classic"></a>在机器学习工作室（经典版）中加载和检查数据
 
-#### <a id="loading"></a>加载数据集
+#### <a name="load-the-dataset"></a><a id="loading"></a>加载数据集
 
 我们首先将 **csdairydata.csv** 文件载入 Azure 机器学习工作室（经典版）。
 
@@ -347,7 +349,7 @@ maml.mapOutputPort('cadairydata')
 
 *图 8.来自 R 设备端口的图形输出*  
 
-## <a id="filtering"></a>数据筛选和转换
+## <a name="data-filtering-and-transformation"></a><a id="filtering"></a>数据筛选和转换
 
 本节将对加利福尼亚州乳品数据执行一些基本的数据筛选和转换操作。 本节末尾我们将具有适合生成分析模型的格式的数据。  
 
@@ -643,7 +645,7 @@ cadairydata <- na.omit(cadairydata)
 
 此时数据已清理，我们可以进行一些建模操作。 查看[执行 R 脚本][execute-r-script]模块的结果数据集输出的可视化摘要，会看到“Month”列的类型为“分类”，具有 12 个唯一值，这又和我们希望的一样。
 
-## <a id="timeseries"></a>时序对象和相关性分析
+## <a name="time-series-objects-and-correlation-analysis"></a><a id="timeseries"></a>时序对象和相关性分析
 
 本节我们将探讨几个基本的 R 时序对象，并分析一些变量之间的相关性。 我们的目的是输出包含几个滞后时间内的成对相关性信息的数据框。
 
@@ -942,7 +944,7 @@ outframe
 
 *图 19.相关性分析的结果输出*
 
-## <a id="seasonalforecasting"></a>时序示例：季节性预测
+## <a name="time-series-example-seasonal-forecasting"></a><a id="seasonalforecasting"></a>时序示例：季节性预测
 
 现在我们的数据格式已适合分析，并且我们已确定变量之间没有显著的相关性。 让我们继续并创建时序预测模型。 使用此模型可以预测 2013年 12 个月的加利福尼亚州的牛奶生产。
 
@@ -1300,7 +1302,7 @@ maml.mapOutputPort('RMS.df')
 
 从这些结果可以看出，向模型中添加季节性因子使 RMS 误差显著减少。 不出所料，训练数据的 RMS 误差略小于预测数据的误差。
 
-## <a id="appendixa"></a>RStudio 指南文档
+## <a name="guide-to-rstudio-documentation"></a><a id="appendixa"></a>RStudio 指南文档
 
 RStudio 随附了齐备的文档。 下面提供了 RStudio 文档中关键部分的链接，以帮助你入门。
 
@@ -1308,7 +1310,7 @@ RStudio 随附了齐备的文档。 下面提供了 RStudio 文档中关键部�
 * **编辑和执行 R 代码** - RStudio 提供了一个集成环境，用于编辑和执行 R 代码。 有关详细信息，请参阅[编辑和执行代码](https://support.rstudio.com/hc/articles/200484448-Editing-and-Executing-Code)。
 * **调试** - RStudio 具有强大的调试功能。 有关这些功能的详细信息，请参阅[使用 RStudio 进行调试](https://support.rstudio.com/hc/articles/200713843-Debugging-with-RStudio)。 有关断点故障排除功能的信息，请参阅[断点故障排除](https://support.rstudio.com/hc/articles/200534337-Breakpoint-Troubleshooting)。
 
-## <a id="appendixb"></a>延伸阅读
+## <a name="further-reading"></a><a id="appendixb"></a>延伸阅读
 
 本 R 编程教程介绍了在 Azure 机器学习工作室（经典版）中使用 R 语言所需的基础知识。 如果不熟悉 R 语言，CRAN 上提供了两个简介：
 

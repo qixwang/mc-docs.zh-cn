@@ -7,15 +7,15 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: tutorial
 origin.date: 03/13/2019
-ms.date: 03/09/2020
+ms.date: 04/06/2020
 ms.author: robinsh
 ms.custom: mvc
-ms.openlocfilehash: 01931001acf702302d427b44bf428e8e9f7da6da
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: e91b9c77703f4d4c7b3b187a97fe7edceb319820
+ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79291704"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80343590"
 ---
 # <a name="tutorial-set-up-and-use-metrics-and-diagnostic-logs-with-an-iot-hub"></a>教程：通过 IoT 中心设置和使用指标和诊断日志
 
@@ -71,7 +71,7 @@ ms.locfileid: "79291704"
 # This is the IOT Extension for Azure CLI.
 # You only need to install this the first time.
 # You need it to create the device identity. 
-az extension add --name azure-cli-iot-ext
+az extension add --name azure-iot
 
 # Set the values for the resource names that don't have to be globally unique.
 # The resources that have to have unique names are named in the script below

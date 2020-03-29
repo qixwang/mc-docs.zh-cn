@@ -5,16 +5,16 @@ author: WenJason
 ms.service: storage
 ms.topic: conceptual
 origin.date: 03/03/2017
-ms.date: 02/10/2020
+ms.date: 03/30/2020
 ms.author: v-jay
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: c34ccefbeb440720f39bb7ad1801cd980d5efb27
-ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
+ms.openlocfilehash: 9c0488e0b77d50565d0f2e780ceb12562a9eaf2d
+ms.sourcegitcommit: 90d01d08faf8adb20083363a8e4e5aab139cd9b2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77028890"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80290376"
 ---
 # <a name="storage-analytics"></a>存储分析
 
@@ -43,7 +43,7 @@ Azure 存储分析执行日志记录并为存储帐户提供指标数据。 可�
 
 ### <a name="understanding-billable-requests"></a>了解计费请求
 
-向帐户的存储服务发出的每个请求是应计费或不计费的。 存储分析记录向服务发出的每个请求，包括指示如何处理请求的状态消息。 同样，存储分析存储服务及其 API 操作的度量数据，包括某些状态消息的百分比和计数。 总之，这些功能可以帮助分析计费请求、对应用程序进行改进，以及诊断服务请求相关问题。 有关计费的详细信息，请参阅 [Understanding Azure Storage Billing - Bandwidth, Transactions, and Capacity](https://blogs.msdn.com/b/windowsazurestorage/archive/2010/07/09/understanding-windows-azure-storage-billing-bandwidth-transactions-and-capacity.aspx)（了解 Azure 存储计费 - 带宽、事务和容量）。
+向帐户的存储服务发出的每个请求是应计费或不计费的。 存储分析记录向服务发出的每个请求，包括指示如何处理请求的状态消息。 同样，存储分析存储服务及其 API 操作的度量数据，包括某些状态消息的百分比和计数。 总之，这些功能可以帮助分析计费请求、对应用程序进行改进，以及诊断服务请求相关问题。 有关计费的详细信息，请参阅 [Understanding Azure Storage Billing - Bandwidth, Transactions, and Capacity](https://docs.microsoft.com/archive/blogs/windowsazurestorage/understanding-windows-azure-storage-billing-bandwidth-transactions-and-capacity)（了解 Azure 存储计费 - 带宽、事务和容量）。
 
 查看存储分析数据时，可以使用 [存储分析记录的操作和状态消息](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages) 主题中的表来确定计费的请求。 然后，可以将日志和指标数据与状态消息进行比较，以查看是否对你的特定请求进行收费。 也可以使用前述主题中的表来调查存储服务或各个 API 操作的可用性。
 

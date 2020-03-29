@@ -9,15 +9,15 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 origin.date: 01/13/2020
-ms.date: 03/23/2020
+ms.date: 03/16/2020
 ms.author: v-tawe
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 4f093f7b133a4c2727d7d4a5c42281a66a1f639b
-ms.sourcegitcommit: e94ed1c9eff4e88be2ca389909e60b14cc0d92f8
+ms.openlocfilehash: 6ebaed105ba16f7ac5b06bc20cd4e13e76c9e352
+ms.sourcegitcommit: b2f2bb08ab1b5ccb3c596d84b3b6ddca5bba3903
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79084538"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80151707"
 ---
 # <a name="choose-a-speech-recognition-mode"></a>选择语音识别模式
 
@@ -34,7 +34,7 @@ ms.locfileid: "79084538"
 有关如何使用 `RecognizeOnceAsync` 函数的详细信息，请参阅 [.NET 语音 SDK 文档](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechrecognizer.recognizeonceasync?view=azure-dotnet#Microsoft_CognitiveServices_Speech_SpeechRecognizer_RecognizeOnceAsync)。
 
 ```csharp
-var result = await recognizer.RecognizeOnceAsync().ConfigureAwait(false);
+var result = await recognizer.RecognizeOnceAsync();
 ```
 
 ::: zone-end
@@ -73,7 +73,7 @@ result = speech_recognizer.recognize_once()
 
 ## <a name="continuous"></a>连续
 
-如果需要长时间运行的识别，请使用启动函数和相应的停止函数进行连续识别。 启动函数会启动并持续处理所有言语，直到你调用停止函数或者静默时间过长为止。 使用连续模式时，请确保注册到进行语音识别时会触发的各种事件。 例如，进行语音识别时，会触发“已识别”事件。 需要有一个事件处理程序来处理识别。 每个会话由语音服务强制执行的总语音识别时间限制为 10 分钟。
+如果需要长时间运行的识别，请使用启动函数和相应的停止函数进行连续识别。 启动函数会启动并持续处理所有言语，直到你调用停止函数或者静默时间过长为止。 使用连续模式时，请确保注册到进行语音识别时会触发的各种事件。 例如，进行语音识别时，会触发“已识别”事件。 需要有一个事件处理程序来处理识别。
 
 ::: zone pivot="programming-language-csharp"
 
@@ -89,10 +89,10 @@ recognizer.Recognized += (s, e) =>
 };
 
 // Start continuous speech recognition
-await recognizer.StartContinuousRecognitionAsync().ConfigureAwait(false);
+await recognizer.StartContinuousRecognitionAsync();
 
 // Stop continuous speech recognition
-await recognizer.StopContinuousRecognitionAsync().ConfigureAwait(false);
+await recognizer.StopContinuousRecognitionAsync();
 ```
 
 ::: zone-end

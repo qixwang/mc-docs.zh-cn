@@ -7,13 +7,13 @@ ms.reviewer: adieldar
 ms.service: data-explorer
 ms.topic: conceptual
 origin.date: 04/24/2019
-ms.date: 03/23/2020
-ms.openlocfilehash: 3a5677d21c03fa4bd8fada56940d224ae029fc45
-ms.sourcegitcommit: 4ba6d7c8bed5398f37eb37cf5e2acafcdcc28791
+ms.date: 03/16/2020
+ms.openlocfilehash: 5c4c3708dbccce572f84fd5ba1c0804dfd488fb3
+ms.sourcegitcommit: 1d3d8dfdaf6281f06640cbee7124a1e8bf102c50
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2020
-ms.locfileid: "79133980"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80243979"
 ---
 # <a name="anomaly-detection-and-forecasting-in-azure-data-explorer"></a>在 Azure 数据资源管理器中进行异常情况检测和预测
 

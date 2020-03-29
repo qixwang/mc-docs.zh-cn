@@ -6,15 +6,15 @@ author: msmbaldwin
 ms.service: virtual-machines
 ms.topic: include
 origin.date: 10/06/2019
-ms.date: 01/17/2020
+ms.date: 03/16/2020
 ms.author: v-tawe
 ms.custom: include file
-ms.openlocfilehash: e509df88a3e61beff8173895f68fe1b6c5db30fb
-ms.sourcegitcommit: de60969043e6dd8ef706ed13e0684a7c35b26bdb
+ms.openlocfilehash: 1483be677fd9bdfd0bc549f933ee4ce5c9ea8c49
+ms.sourcegitcommit: 1d3d8dfdaf6281f06640cbee7124a1e8bf102c50
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76550249"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80272820"
 ---
 ## <a name="create-a-resource-group"></a>创建资源组
 
@@ -67,7 +67,8 @@ New-AzKeyvault -name "<your-unique-keyvault-name>" -ResourceGroupName "myResourc
 1. 在 Azure 快速入门模板中，单击“部署到 Azure”。 
 2. 选择订阅、资源组、资源组位置、Key Vault 名称、对象 ID、法律条款和协议，然后单击“购买”。  
 
-## <a name="set-key-vault-advanced-access-policies"></a>设置 Key Vault 高级访问策略
+
+##  <a name="set-key-vault-advanced-access-policies"></a>设置 Key Vault 高级访问策略
 
 Azure 平台需要访问 Key Vault 中的加密密钥或机密，才能使这些密钥和机密可供 VM 用来启动和解密卷。 
 

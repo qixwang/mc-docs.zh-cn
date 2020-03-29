@@ -9,12 +9,12 @@ origin.date: 02/05/2020
 ms.date: 02/24/2020
 ms.author: v-yeche
 Customer intent: As someone with a networking background, I want to understand what Virtual WAN is and if it is the right choice for my Azure network.
-ms.openlocfilehash: 1d46a608f12dd7dcd582acd2f32fa0695aa553eb
-ms.sourcegitcommit: 305361c96d1d5288d3dda7e81833820640e2afac
+ms.openlocfilehash: 745bc85b9438c2d7ba2ded0ac7173b95e40e0a27
+ms.sourcegitcommit: 4810b75d1e1db78d9747e99735468a6ab861be2d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2020
-ms.locfileid: "80109762"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80291303"
 ---
 # <a name="about-azure-virtual-wan"></a>关于 Azure 虚拟 WAN
 
@@ -43,6 +43,7 @@ Azure 虚拟 WAN 将许多 Azure 云连接服务（例如，站点到站点 VPN�
 ## <a name="architecture"></a>体系结构
 
 有关虚拟 WAN 体系结构以及如何迁移到虚拟 WAN 的信息，请参阅以下文章：
+
 <!--Not Available on * [Virtual WAN architecture](migrate-from-hub-spoke-topology.md)-->
 
 * [全局传输网络体系结构](virtual-wan-global-transit-network-architecture.md)

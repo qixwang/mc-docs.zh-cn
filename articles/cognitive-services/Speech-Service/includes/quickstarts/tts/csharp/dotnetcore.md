@@ -8,27 +8,27 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
-origin.date: 12/09/2019
-ms.date: 01/27/2020
+origin.date: 06/24/2019
+ms.date: 03/16/2020
 ms.author: v-tawe
-ms.openlocfilehash: f56e392e9bcecbafe9e37c544487da64fbd61362
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.openlocfilehash: 18c8dac026a6a1da2d1359730f5af4b73e6e3ea8
+ms.sourcegitcommit: b2f2bb08ab1b5ccb3c596d84b3b6ddca5bba3903
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77430029"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80151620"
 ---
 > [!NOTE]
 > .NET Core 是一个实现了 [.NET Standard](https://docs.microsoft.com/dotnet/standard/net-standard) 规范的开源跨平台 .NET 平台。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 在开始之前，请务必：
 
 > [!div class="checklist"]
 > * [创建一个 Azure 搜索资源](../../../../get-started.md)
-> * [设置开发环境](../../../../quickstarts/setup-platform.md?tabs=dotnetcore)
-> * [创建空示例项目](../../../../quickstarts/create-project.md?tabs=dotnetcore)
+> * [设置开发环境并创建空项目](../../../../quickstarts/setup-platform.md?tabs=dotnetcore)
+
 ## <a name="add-sample-code"></a>添加示例代码
 
 1. 打开 `Program.cs` 并将其中的所有代码替换为以下内容。

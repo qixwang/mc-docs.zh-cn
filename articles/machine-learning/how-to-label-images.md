@@ -8,12 +8,12 @@ ms.service: machine-learning
 ms.topic: tutorial
 origin.date: 11/04/2019
 ms.date: 03/16/2020
-ms.openlocfilehash: 059beb8986661275a2baac10d5caf53e2a892eda
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.openlocfilehash: 891e0c9528a49dcc0d5f146afc256348d53ee620
+ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78850217"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80343385"
 ---
 # <a name="tag-images-in-a-labeling-project"></a>在标记项目中标记图像
 
@@ -58,6 +58,16 @@ ms.locfileid: "78850217"
 当你在页面上标记所有图像时，Azure 会启用“提交”  按钮。 选择“提交”以保存工作。 
 
 提交手头数据的标记后，Azure 将使用工作队列中的一组新图像刷新页面。
+
+### <a name="assisted-machine-learning"></a>辅助机器学习 
+
+在执行多类或多标签分类任务期间，可能会触发机器学习算法。 如果在项目中启用了这些算法，你可能会看到以下内容：
+
+* 在标记了一定数量的图像后，你可能会在屏幕顶部的项目名称旁边看到“群集任务”  。  这意味着这些图像被分组到一起，在同一页面上呈现相似的图像。  如果是这样，请切换到多个图像视图中的一个来利用分组。  
+
+* 稍后，你可能会在项目名称旁边看到“预标记任务”  。  然后，图像将显示一个来自机器学习分类模型的建议标签。 任何机器学习模型都达不到 100% 的准确度。 虽然我们只使用模型有信心识别的图像，但这些图像仍然可能没有正确地预标记。  看到这些标签时，请在提交页面之前更正任何错误的标签。  
+
+特别是在标记项目的早期阶段，机器学习模型可能只能准确地预标记一小部分图像。 在标记这些图像后，标记项目将返回到手动标记，为下一轮模型训练收集更多数据。 随着时间的推移，模型将对更高比例的图像更有信心，从而在项目的后期产生更多的预标记任务。
 
 ## <a name="tag-images-for-multi-class-classification"></a>标记图像以进行多类分类
 
@@ -116,4 +126,4 @@ ms.locfileid: "78850217"
 ## <a name="next-steps"></a>后续步骤
 
 * 了解[在 Azure 中训练图像分类模型](/machine-learning/tutorial-train-models-with-aml)
-* 了解如何[使用 Azure 和“快速 R-CNN”技术进行对象检测](https://www.microsoft.com/developerblog/2017/10/24/bird-detection-with-azure-ml-workbench/)
+

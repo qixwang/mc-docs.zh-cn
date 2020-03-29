@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: azuread-dev
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 02/24/2020
+ms.date: 03/23/2020
 ms.author: v-junlch
 ms.reviewer: saeeda, hirsin, jmprieur, sureshja, jesakowi, lenalepa, kkrishna, negoe
 ms.custom: aaddev
-ms.openlocfilehash: 9ce32cf2d660ed10442787ae4ddb9aa554de2d22
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: d9305bd51b02c2e66ca6afd47e4523c0465f6f8f
+ms.sourcegitcommit: 6568c59433d7e80ab06e9fe76d4791f761ed6775
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79291102"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80243180"
 ---
 # <a name="why-update-to-microsoft-identity-platform-v20"></a>为何更新为 Microsoft 标识平台 (v2.0)？
 
@@ -69,7 +69,7 @@ ms.locfileid: "79291102"
 ```text
 GET https://login.partner.microsoftonline.cn/common/oauth2/authorize?
 client_id=2d4d11a2-f814-46a7-890a-274a72a7309e
-&resource=https://graph.chinacloudapi.cn/
+&resource=https://microsoftgraph.chinacloudapi.cn/
 ...
 ```
 
@@ -80,7 +80,7 @@ client_id=2d4d11a2-f814-46a7-890a-274a72a7309e
 ```text
 GET https://login.partner.microsoftonline.cn/common/oauth2/v2.0/authorize?
 client_id=2d4d11a2-f814-46a7-890a-274a72a7309e
-&scope=https://graph.chinacloudapi.cn/directory.read%20https://graph.chinacloudapi.cn/directory.write
+&scope=https://microsoftgraph.chinacloudapi.cn/directory.read%20https://microsoftgraph.chinacloudapi.cn/directory.write
 ...
 ```
 

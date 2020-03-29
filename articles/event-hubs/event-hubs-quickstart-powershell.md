@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: quickstart
 ms.custom: seodec18
 origin.date: 11/05/2019
-ms.date: 03/09/2020
+ms.date: 03/16/2020
 ms.author: v-tawe
-ms.openlocfilehash: 01b0f9eeff84bf8cf74f13566bf3d96612d0efc9
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.openlocfilehash: 1fef330ccd6d3b72937f447096a2d2440a99bd51
+ms.sourcegitcommit: 1d3d8dfdaf6281f06640cbee7124a1e8bf102c50
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78155115"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80243924"
 ---
 # <a name="quickstart-create-an-event-hub-using-azure-powershell"></a>快速入门：使用 Azure PowerShell 创建事件中心
 

@@ -6,14 +6,14 @@ ms.author: v-yiso
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-origin.date: 12/05/2019
-ms.date: 01/13/2020
-ms.openlocfilehash: cd3b61a3cc393414afec8299d5bb64bab9affcd6
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+origin.date: 03/10/2020
+ms.date: 04/06/2020
+ms.openlocfilehash: a229e9caa3c27af20b9b93720f4f4eadf046f7ab
+ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75631450"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80343608"
 ---
 # <a name="network-security-group-nsg-service-tags-for-azure-hdinsight"></a>Azure HDInsight 的网络安全组 (NSG) 服务标记
 
@@ -41,7 +41,7 @@ ms.locfileid: "75631450"
 
 1. 在“源服务标记”下拉列表中，选择“HDInsight”。  
 
-    ![Azure 门户添加服务标记](./media/hdinisght-service-tags/azure-portal-add-service-tag.png)
+    ![Azure 门户添加服务标记](./media/hdinsight-service-tags/azure-portal-add-service-tag.png)
 
 此标记包含可使用 HDInsight 的所有区域中运行状况和管理服务的 IP 地址，并确保群集可以与必要的运行状况和管理服务进行通信（无论群集是在哪里创建的）。
 
@@ -57,26 +57,8 @@ ms.locfileid: "75631450"
 
 | 国家/地区 | 区域 | 服务标记 |
 | ---- | ---- | ---- |
-| 澳大利亚 | 澳大利亚东部 | HDInsight.AustraliaEast |
-| &nbsp; | 澳大利亚东南部 | HDInsight.AustraliaSoutheast |
-| &nbsp; | 澳大利亚中部 | HDInsight.AustraliaCentral |
 | 中国 | 中国东部 2 | HDInsight.ChinaEast2 |
 | &nbsp; | 中国北部 2 | HDInsight.ChinaNorth2 |
-| 美国 | 美国中北部 | HDInsight.NorthCentralUS |
-| &nbsp; | 美国西部 2 | HDInsight.WestUS2 |
-| &nbsp; | 美国中西部 | HDInsight.WestCentralUS |
-| 加拿大 | 加拿大东部 | HDInsight.CanadaEast |
-| 巴西 | 巴西南部 | HDInsight.BrazilSouth |
-| 韩国 | 韩国中部 | HDInsight.KoreaCentral |
-| &nbsp; | 韩国南部 | HDInsight.KoreaSouth |
-| 印度 | 印度中部 | HDInsight.CentralIndia |
-| &nbsp; | 印度南部 | HDInsight.SouthIndia |
-| 日本 | 日本西部 | HDInsight.JapanWest |
-| 法国 | 法国中部| HDInsight.FranceCentral |
-| 英国 | 英国南部 | HDInsight.UKSouth |
-| Azure Government | USDoD 中部   | HDInsight.USDoDCentral |
-| &nbsp; | 美国德克萨斯州政府 | HDInsight.USGovTexas |
-| &nbsp; | UsDoD 东部 | HDInsight.USDoDEast |
 
 ### <a name="use-multiple-regional-service-tags"></a>使用多个区域性服务标记
 

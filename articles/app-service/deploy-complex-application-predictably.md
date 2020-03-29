@@ -7,15 +7,15 @@ origin.date: 01/06/2016
 ms.date: 03/16/2020
 ms.author: v-tawe
 ms.custom: seodec18
-ms.openlocfilehash: a6f3210e5353fc38a34943eeeee6e173675f91b9
-ms.sourcegitcommit: e500354e2fd8b7ac3dddfae0c825cc543080f476
+ms.openlocfilehash: a65336390507506ee9678359ab8beb4e95471e30
+ms.sourcegitcommit: b2f2bb08ab1b5ccb3c596d84b3b6ddca5bba3903
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2020
-ms.locfileid: "79546991"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80151731"
 ---
 # <a name="provision-and-deploy-microservices-predictably-in-azure"></a>按可预见的方式在 Azure 中设置和部署微服务
-本教程演示如何通过使用 JSON 资源组模板和 PowerShell 脚本以一种可预见的方式，在 [Azure App Service](https://www.azure.cn/home/features/app-service/) 中将由[微服务](https://en.wikipedia.org/wiki/Microservices)构成的应用程序设置并部署为单个单元。 
+本教程演示如何通过使用 JSON 资源组模板和 PowerShell 脚本以一种可预见的方式，在 [Azure App Service](https://www.azure.cn/home/features/app-service/) 中将由[微服务](https://wikipedia.org/wiki/Microservices)构成的应用程序设置并部署为单个单元。 
 
 在设置和部署由高度分离的微服务构成的高扩展性应用程序时，可重复性和可预见性对成功至关重要。 使用 [Azure 应用服务](https://www.azure.cn/home/features/app-service/)，可以创建包括 Web 应用、移动后端和 API 应用在内的微服务。 使用 [Azure Resource Manager](../azure-resource-manager/management/overview.md) 可以将所有微服务作为一个单元与资源依赖项（如数据库和源代码管理设置）一起进行管理。 现在，还可以使用 JSON 模板和简单的 PowerShell 脚本部署此类应用程序。 
 
