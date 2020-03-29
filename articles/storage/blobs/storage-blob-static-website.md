@@ -7,18 +7,20 @@ ms.topic: conceptual
 ms.author: v-jay
 ms.reviewer: dineshm
 origin.date: 05/29/2019
-ms.date: 03/09/2020
+ms.date: 03/30/2020
 ms.subservice: blobs
-ms.openlocfilehash: 548a3e1de29cd3865be4b18cb9ad6d69d487ce8a
-ms.sourcegitcommit: fbc7584f403417d3af7bd6bbbaed7c13a78c57b9
+ms.openlocfilehash: df3a378e9feea129fc38b83e8886610070c1c79c
+ms.sourcegitcommit: 90d01d08faf8adb20083363a8e4e5aab139cd9b2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78412533"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80290444"
 ---
 # <a name="static-website-hosting-in-azure-storage"></a>Azure 存储中的静态网站托管
 
 可以直接通过名为 *$web* 的存储容器提供静态内容（HTML、CSS、JavaScript 和图像文件）。 通过将内容托管在 Azure 存储中，你可以使用无服务器体系结构，包括 [Azure Functions](/azure-functions/functions-overview) 和其他平台即服务 (PaaS) 服务。
+
+[!INCLUDE [updated-for-az](../../../includes/storage-data-lake-gen2-support.md)]
 
 > [!NOTE]
 > 如果你的站点依赖于服务器端代码，请改用 [Azure 应用服务](/app-service/overview)。

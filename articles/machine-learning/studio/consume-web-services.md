@@ -10,14 +10,16 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 06/02/2017
-ms.openlocfilehash: fed2e3f90bb936dcaea6e534af59fecf3058d309
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+ms.openlocfilehash: e9ee75573b954beb8a80a92d9674bf88c34df533
+ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75599566"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80343214"
 ---
 # <a name="how-to-consume-an-azure-machine-learning-studio-classic-web-service"></a>如何使用 Azure 机器学习工作室（经典版）Web 服务
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 将 Azure 机器学习工作室（经典版）预测模型部署为 Web 服务后，可以使用 REST API 向其发送数据并获取预测。 可以实时或者以批处理模式发送数据。
 
@@ -67,7 +69,7 @@ Azure 机器学习工作室（经典版）有两种类型的服务：
 1. 在机器学习工作室（经典版）左侧，单击“Web 服务”  。
 2. 单击一个 Web 服务。 “API 密钥”  位于“仪表板”  选项卡。
 
-## <a id="connect"></a>连接到机器学习 Web 服务
+## <a name="connect-to-a-machine-learning-web-service"></a><a id="connect"></a>连接到机器学习 Web 服务
 可使用支持 HTTP 请求和响应的编程语言连接到机器学习 Web 服务。 可从机器学习 Web 服务帮助页，查看 C#、Python 和 R 示例。
 
 **机器学习 API 帮助**部署 Web 服务时会创建机器学习 API 帮助。 请参阅[教程 3：部署信用风险模型](tutorial-part3-credit-risk-deploy.md)。
@@ -204,7 +206,7 @@ namespace CallRequestResponseService
 
  以下是完整请求的示例。
 ```python
-import urllib2 # urllib.request for Python 3.X
+import urllib2 # urllib.request and urllib.error for Python 3.X
 import json
 
 data = {
@@ -228,7 +230,7 @@ url = '<your-api-uri>'
 api_key = '<your-api-key>'
 headers = {'Content-Type':'application/json', 'Authorization':('Bearer '+ api_key)}
 
-# "urllib.request.Request(uri, body, headers)" for Python 3.X
+# "urllib.request.Request(url, body, headers)" for Python 3.X
 req = urllib2.Request(url, body, headers)
 
 try:

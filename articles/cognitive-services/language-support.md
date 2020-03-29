@@ -11,12 +11,12 @@ origin.date: 03/03/2020
 ms.date: 3/11/2020
 ms.author: v-lingwu
 ms.custom: seodec18
-ms.openlocfilehash: 896940828d5abfa1c3d8be4fca277846eb32011f
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: 5e5701a64f4296d35c9f77dfa098871feae6c260
+ms.sourcegitcommit: 90d01d08faf8adb20083363a8e4e5aab139cd9b2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79290781"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80290458"
 ---
 # <a name="natural-language-support-for-azure-cognitive-services"></a>Azure 认知服务的自然语言支持
 
@@ -30,16 +30,15 @@ ms.locfileid: "79290781"
 
 ## <a name="speech"></a>语音
 
-* [自定义语音识别](/cognitive-services/custom-speech-service/customspeech-how-to-topics/cognitive-services-custom-speech-change-locale)
+* [自定义语音识别](/cognitive-services/speech-service/)
 * [语音服务：语音转文本](/cognitive-services/speech-service/supported-languages#speech-to-text)
 * [语音服务：文本转语音](/cognitive-services/speech-service/supported-languages#text-to-speech)
 * [语音服务：语音翻译](/cognitive-services/speech-service/supported-languages#speech-translation)
 
 ## <a name="language"></a>语言
 
-* [语言理解 (LUIS)](/cognitive-services/luis/luis-supported-languages)
-* [QnA Maker](/cognitive-services/qnamaker/overview/languages-supported)
-* [文本翻译](/cognitive-services/translator/languages)
+* [语言理解 (LUIS)](/cognitive-services/LUIS/luis-language-support)
+* [文本翻译](/cognitive-services/Translator/language-support)
 * [文本分析](/cognitive-services/text-analytics/text-analytics-supported-languages)
 
 

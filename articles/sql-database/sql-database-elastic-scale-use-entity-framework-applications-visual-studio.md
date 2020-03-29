@@ -12,12 +12,12 @@ ms.author: v-jay
 ms.reviewer: ''
 origin.date: 01/04/2019
 ms.date: 03/16/2020
-ms.openlocfilehash: ca3e743011b4b2e32905cfedd35bde2ef4760738
-ms.sourcegitcommit: dc862610e2169c1fce6fb0ae9eb7dd7567f86a0a
+ms.openlocfilehash: fa90e4e4af09be42b34675d6ec16e32974a46e26
+ms.sourcegitcommit: 90660563b5d65731a64c099b32fb9ec0ce2c51c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79293665"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80341830"
 ---
 # <a name="elastic-database-client-library-with-entity-framework"></a>弹性数据库客户端库与实体框架
 
@@ -155,7 +155,7 @@ using (var db = new ElasticScaleContext<int>(
     var query = from b in db.Blogs 
                 orderby b.Name 
                 select b; 
-    � 
+    ... 
 }
 ```
 
@@ -178,7 +178,7 @@ SqlDatabaseUtils.SqlRetryPolicy.ExecuteAction(() =>
                 var blog = new Blog { Name = name }; 
                 db.Blogs.Add(blog); 
                 db.SaveChanges(); 
-        � 
+        ...
         } 
     }); 
 ```

@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 9955d2a91176837b176a3d5c7a178df4baa7d196
-ms.sourcegitcommit: 599d651afb83026938d1cfe828e9679a9a0fb69f
+ms.openlocfilehash: 25e60b5ab7d551e6b26a393d93d2189e45f56ce9
+ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69993070"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80343490"
 ---
 在本部分中，将使用 Azure CLI 为本文创建设备标识。 设备 ID 区分大小写。
 
@@ -13,7 +13,7 @@ ms.locfileid: "69993070"
 1. 运行以下命令以安装适用于 Azure CLI 的 Microsoft Azure IoT 扩展：
 
     ```azurecli
-    az extension add --name azure-cli-iot-ext
+    az extension add --name azure-iot
     ```
 
 2. 使用以下命令创建一个名为 `myDeviceId` 的新设备标识并检索设备连接字符串：

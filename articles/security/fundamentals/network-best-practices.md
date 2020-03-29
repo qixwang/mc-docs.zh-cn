@@ -1,6 +1,6 @@
 ---
 title: 网络安全最佳做法 - Microsoft Azure
-description: 本文提供一系列有关使用内置 Azure 功能提高网络安全性的最佳做法。
+description: 本文提供一系列有关使用内置 Azure 功能提高网络安全性的最佳实践。
 services: security
 author: lingliw
 manager: digimobile
@@ -15,12 +15,12 @@ ms.workload: na
 origin.date: 10/02/2019
 ms.date: 03/02/2020
 ms.author: v-lingwu
-ms.openlocfilehash: f9286ab34ac4baebb6b7a9adfdd77c0a807eb3cb
-ms.sourcegitcommit: 2b4507745b98b45f1ce3f3d30f397521148ef35a
+ms.openlocfilehash: 8be6716caa6583f6228bf9351648990dafae5c25
+ms.sourcegitcommit: 303a16c7117b6f3495ef0493b4ae8ccb67d7dbba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78213782"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80342343"
 ---
 # <a name="azure-best-practices-for-network-security"></a>Azure 网络安全最佳做法
 本文介绍一系列有关增强网络安全性的 Azure 最佳做法。 这些最佳实践衍生自我们的 Azure 网络经验和客户的经验。
@@ -57,7 +57,7 @@ Azure 虚拟网络类似于本地网络上的 LAN。 Azure 虚拟网络背后的
 **详细信息**：使用基于 [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) 的子网原理来创建子网。
 
 **最佳做法**：在子网之间创建网络访问控制。 子网之间的路由会自动发生，不需要手动配置路由表。 默认情况下，在 Azure 虚拟网络上创建的子网之间没有任何网络访问控制。   
-**详细信息**：使用[网络安全组](/azure/virtual-network/virtual-networks-nsg)来防范未经请求的流量进入 Azure 子网。 网络安全组是简单的有状态数据包检查设备，使用 5 元组（源 IP、源端口、目标 IP、目标端口和第 4 层协议）的方法来为网络流量创建允许/拒绝规则。 可以允许或拒绝流往或来自单个 IP 地址、多个 IP 地址或整个子网的流量。
+**详细信息**：使用[网络安全组](/virtual-network/virtual-networks-nsg)来防范未经请求的流量进入 Azure 子网。 网络安全组是简单的有状态数据包检查设备，使用 5 元组（源 IP、源端口、目标 IP、目标端口和第 4 层协议）的方法来为网络流量创建允许/拒绝规则。 可以允许或拒绝流往或来自单个 IP 地址、多个 IP 地址或整个子网的流量。
 
 将网络安全组用于子网之间的网络访问控制时，可将属于同一安全区域或角色的资源置于其本身的子网中。
 
@@ -75,7 +75,7 @@ Azure 虚拟网络类似于本地网络上的 LAN。 Azure 虚拟网络背后的
 最佳做法为：
 
 **最佳做法**：基于设备、标识、保障、网络位置等因素授予对资源的条件访问。  
-**详细信息**：[Azure AD 条件访问](/azure/active-directory/conditional-access/overview)可让你根据所需的条件实施自动访问控制决策，以此应用适当的访问控制。 
+**详细信息**：[Azure AD 条件访问](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)可让你根据所需的条件实施自动访问控制决策，以此应用适当的访问控制。 
 
 **最佳做法**：仅在工作流获批准后才启用端口访问。  
 **详细信息**：可以使用 [Azure 安全中心内的适时 VM 访问](../../security-center/security-center-just-in-time.md)来锁定发往 Azure VM 的入站流量，降低遭受攻击的可能性，同时在需要时轻松连接到 VM。
@@ -112,7 +112,7 @@ Azure 网络安全设备可提供比网络级控制所提供的更高的安全�
 * 防病毒
 * 僵尸网络防护
 
-要查找可用的 Azure 虚拟网络安全设备，请转到 [Azure 市场](https://azure.microsoft.com/marketplace/)并搜索“安全”和“网络安全”。
+要查找可用的 Azure 虚拟网络安全设备，请转到 [Azure 市场](https://market.azure.cn/zh-cn)并搜索“安全”和“网络安全”。
 
 ## <a name="deploy-perimeter-networks-for-security-zones"></a>为安全区部署外围网络
 [外围网格](https://docs.microsoft.com/azure/architecture/vdc/networking-virtual-datacenter)（也称为 DMZ）是物理或逻辑网络区段，可在资产与 Internet 之间提供额外的安全层。 外围网络边缘的专用网络访问控制设备只允许所需流量流入虚拟网络。
@@ -123,8 +123,8 @@ Azure 网络安全设备可提供比网络级控制所提供的更高的安全�
 
 根据前面所述的零信任概念，我们建议考虑对所有高安全性部署使用外围网络，以增强网络安全级别，以及对 Azure 资源的访问控制。 可以使用 Azure 或第三方解决方案在资产与 Internet 之间提供额外的安全层：
 
-- Azure 本地控制措施。 [Azure 防火墙](/azure/firewall/overview)和[应用程序网关中的 Web 应用程序防火墙](/azure/application-gateway/overview#web-application-firewall)提供基本的安全功能，其中包括服务形式的完全有状态防火墙、内置高可用性、无限的云可伸缩性、FQDN 筛选、对 OWASP 核心规则集的支持，以及简单的设置和配置。
-- 第三方产品/服务。 在 [Azure 市场](https://azuremarketplace.microsoft.com/)中，搜索可提供用户熟悉的安全工具并明显增强网络安全级别的下一代防火墙 (NGFW) 和其他第三方产品/服务。 配置可能更复杂，但第三方产品/服务可能允许使用现有的功能和技能集。
+- Azure 本地控制措施。 [Azure 防火墙](/firewall/overview)和[应用程序网关中的 Web 应用程序防火墙](/application-gateway/overview#web-application-firewall)提供基本的安全功能，其中包括服务形式的完全有状态防火墙、内置高可用性、无限的云可伸缩性、FQDN 筛选、对 OWASP 核心规则集的支持，以及简单的设置和配置。
+- 第三方产品/服务。 在 [Azure 市场](https://market.azure.cn/zh-cn)中，搜索可提供用户熟悉的安全工具并明显增强网络安全级别的下一代防火墙 (NGFW) 和其他第三方产品/服务。 配置可能更复杂，但第三方产品/服务可能允许使用现有的功能和技能集。
 
 ## <a name="avoid-exposure-to-the-internet-with-dedicated-wan-links"></a>避免使用专用 WAN 链接向 Internet 透露信息
 许多组织选择了混合 IT 路由。 使用混合 IT 时，公司的一部分信息资产将位于 Azure 中，其他资产则保留在本地。 在许多情况下，服务的某些组件在 Azure 中运行，而其他组件则维持在本地。
@@ -154,7 +154,7 @@ ExpressRoute 连接的位置可能影响防火墙容量、可伸缩性、可靠�
 - 仅接受安全连接，因此与服务器进行未加密的通信是不可接受的选项。
 - 要求将长时间运行的同一 TCP 连接上多个 HTTP 请求路由到或负载均衡到不同的后端服务器。
 
-**负载均衡选项**：使用 [Azure 应用程序网关](/azure/application-gateway/application-gateway-introduction)，一个 HTTP Web 流量负载均衡器。 应用程序网关支持网关上的端到端 SSL 加密和 [SSL 终止](/azure/application-gateway/application-gateway-introduction)。 然后，Web 服务器可以免受加密和解密开销以及未加密流向后端服务器的流量的负担。
+**负载均衡选项**：使用 [Azure 应用程序网关](/application-gateway/application-gateway-introduction)，一个 HTTP Web 流量负载均衡器。 应用程序网关支持网关上的端到端 SSL 加密和 [SSL 终止](/application-gateway/application-gateway-introduction)。 然后，Web 服务器可以免受加密和解密开销以及未加密流向后端服务器的流量的负担。
 
 **情形**：需要在位于 Azure 虚拟网络中的服务器之间对来自 Internet 的传入连接进行负载均衡。 也就是说当：
 
@@ -183,15 +183,15 @@ ExpressRoute 连接的位置可能影响防火墙容量、可伸缩性、可靠�
 我们建议禁用从 Internet 对 Azure 虚拟机的直接 RDP 和 SSH 访问。 禁用从 Internet 的直接 RDP 和 SSH 访问之后，有其他选项可用于访问这些 VM 以便进行远程管理。
 
 **情形**：可让单个用户通过 Internet 连接到 Azure 虚拟网络。   
-**选项**：[点到站点 VPN](/azure/vpn-gateway/vpn-gateway-point-to-site-create) 是远程访问 VPN 客户端/服务器连接的另一种说法。 建立点到站点连接之后，用户能够使用 RDP 或 SSH 连接到位于用户通过点到站点 VPN 连接的 Azure 虚拟网络上的任何 VM。 此处假设用户有权访问这些 VM。
+**选项**：[点到站点 VPN](/vpn-gateway/vpn-gateway-point-to-site-create) 是远程访问 VPN 客户端/服务器连接的另一种说法。 建立点到站点连接之后，用户能够使用 RDP 或 SSH 连接到位于用户通过点到站点 VPN 连接的 Azure 虚拟网络上的任何 VM。 此处假设用户有权访问这些 VM。
 
 点到站点 VPN 比直接 RDP 或 SSH 连接更安全，因为用户必须事先通过两次身份验证才将连接到 VM。 首先，用户需要进行身份验证（并获得授权）以建立点到站点 VPN 连接。 其次，用户需要进行身份验证（并获得授权）以建立 RDP 或 SSH 会话。
 
 **情形**：使本地网络上的用户能够连接到 Azure 虚拟网络上的 VM。   
-**选项**：[站点到站点 VPN](/azure/vpn-gateway/vpn-gateway-site-to-site-create) 通过 Internet 将整个网络连接到另一个网络。 可以使用站点到站点 VPN 将本地网络连接到 Azure 虚拟网络。 本地网络上的用户通过站点到站点 VPN 使用 RDP 或 SSH 协议进行连接。 不必允许通过 Internet 进行的直接 RDP 或 SSH 访问。
+**选项**：[站点到站点 VPN](/vpn-gateway/vpn-gateway-site-to-site-create) 通过 Internet 将整个网络连接到另一个网络。 可以使用站点到站点 VPN 将本地网络连接到 Azure 虚拟网络。 本地网络上的用户通过站点到站点 VPN 使用 RDP 或 SSH 协议进行连接。 不必允许通过 Internet 进行的直接 RDP 或 SSH 访问。
 
 **情形**：使用专用的 WAN 链接提供类似于站点到站点 VPN 的功能。   
-**选项**：使用 [ExpressRoute](https://azure.microsoft.com/documentation/services/expressroute/)。 它提供类似于站点到站点 VPN 的功能。 它们的主要区别包括：
+**选项**：使用 [ExpressRoute](/expressroute/)。 它提供类似于站点到站点 VPN 的功能。 它们的主要区别包括：
 
 - 专用的 WAN 链接不会遍历 Internet。
 - 专用的 WAN 链接通常更稳定且性能更佳。

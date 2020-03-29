@@ -45,8 +45,11 @@
       items:
         - name: 安全建议
           href: security-recommendations.md
-        - name: Azure 存储加密
+        - name: Azure 存储静态加密
           href: ../common/storage-service-encryption.md?toc=%2fstorage%2fqueues%2ftoc.json
+          items:
+            - name: 客户管理的密钥和 Azure Key Vault
+              href: ../common/encryption-customer-managed-keys.md?toc=%2fstorage%2fqueues%2ftoc.json
         - name: 授权数据操作
           href: ../common/storage-auth.md?toc=%2fstorage%2fqueues%2ftoc.json
           items:
@@ -135,18 +138,6 @@
                   href: ../common/storage-configure-connection-string.md?toc=%2fstorage%2fqueues%2ftoc.json
                 - name: 使用 Azure 存储 REST API
                   href: ../common/storage-rest-api-auth.md?toc=%2fstorage%2fqueues%2ftoc.json
-        - name: 管理 Azure 存储加密
-          items:
-            - name: 配置客户管理的密钥
-              items:
-                - name: 门户
-                  href: ../common/storage-encryption-keys-portal.md?toc=%2fstorage%2fqueues%2ftoc.json
-                - name: PowerShell
-                  href: ../common/storage-encryption-keys-powershell.md?toc=%2fstorage%2fqueues%2ftoc.json
-                - name: Azure CLI
-                  href: ../common/storage-encryption-keys-cli.md?toc=%2fstorage%2fqueues%2ftoc.json
-            - name: 检查帐户的加密密钥模型
-              href: ../common/storage-encryption-key-model-get.md?toc=%2fstorage%2fqueues%2ftoc.json
         - name: 配置客户端加密
           items:
             - name: .NET

@@ -13,12 +13,12 @@ metadata:
   ms.author: v-jay
   origin.date: 08/20/2019
   ms.date: 01/06/2020
-  ms.openlocfilehash: 60ade4f0e8c7b0cd76e37badd965c28a84a2556b
-  ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
+  ms.openlocfilehash: 2f01add7b1badfc73570831fea4de811bc02a088
+  ms.sourcegitcommit: 90d01d08faf8adb20083363a8e4e5aab139cd9b2
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 02/05/2020
-  ms.locfileid: "77028881"
+  ms.lasthandoff: 03/26/2020
+  ms.locfileid: "80290430"
 landingContent:
 - title: 关于 Blob 存储
   linkLists:
@@ -43,9 +43,17 @@ landingContent:
   - linkListType: how-to-guide
     links:
     - text: 创建存储帐户
-      url: ../common/storage-quickstart-create-account.md?toc=%2fstorage%2fblobs%2ftoc.json
+      url: ../common/storage-account-create.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
     - text: 配置自定义域
       url: storage-custom-domain-name.md
+- title: 搜索和了解 Blob 数据
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 使用 AI 了解 Blob 数据
+      url: ../../search/search-blob-ai-integration.md?toc=%2fstorage%2fblobs%2ftoc.json
+    - text: 搜索 Blob 内容
+      url: ../../search/search-blob-storage-integration.md?toc=%2fstorage%2fblobs%2ftoc.json
 - title: 分析和见解
   linkLists:
   - linkListType: overview
@@ -84,10 +92,14 @@ landingContent:
       url: storage-quickstart-blobs-nodejs.md
     - text: 将事件路由到 Web 终结点
       url: ../../event-grid/blob-event-quickstart-portal.md
+    - text: 托管静态网站
+      url: storage-blob-static-website-how-to.md
   - linkListType: concept
     links:
     - text: 处理事件
       url: storage-blob-event-overview.md
+    - text: 静态网站
+      url: storage-blob-static-website.md
   - linkListType: tutorial
     links:
     - text: 创建 Web 应用以上传图像数据
@@ -125,9 +137,9 @@ landingContent:
   - linkListType: concept
     links:
     - text: 可伸缩性和性能
-      url: ../common/storage-scalability-targets.md?toc=%2fstorage%2fblobs%2ftoc.json
+      url: scalability-targets.md
     - text: 性能和可伸缩性清单
-      url: ../common/storage-performance-checklist.md?toc=%2fstorage%2fblobs%2ftoc.json
+      url: storage-performance-checklist.md
   - linkListType: tutorial
     links:
     - text: 针对性能和可伸缩性进行优化

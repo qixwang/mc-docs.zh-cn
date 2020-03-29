@@ -4,20 +4,20 @@ description: 了解使用 Azure IoT Central 构建的水质监测解决方案的
 author: miriambrus
 ms.author: v-yiso
 origin.date: 10/23/2019
-ms.date: 12/16/2019
+ms.date: 04/06/2020
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 325f47ff5d25ba903b92e634e6536393323cc860
-ms.sourcegitcommit: 6ffa4d50cee80c7c0944e215ca917a248f2a4bcd
+ms.openlocfilehash: 724314812b72932be25059e1b1d5e8a65364d26c
+ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74883417"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80343475"
 ---
 # <a name="water-quality-monitoring-reference-architecture"></a>水质检测参考体系结构 
 
-[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
+
 
 可以将 Azure IoT Central 应用模板用作快速入门 IoT 应用程序来构建水质监测解决方案  。 本文提供有关构建端到端解决方案的概要性参考体系结构指南。 
 
@@ -36,7 +36,7 @@ ms.locfileid: "74883417"
 ## <a name="devices-and-connectivity"></a>设备和连接 
 在本节中，我们将把用于水质监测或用水量监测的设备称为智能水务设备。 智能水务设备可以是流量计、水质监测仪、智能阀门、检漏仪等。
 
-智能水务解决方案中使用的设备一般可以通过第三方网络运营商提供的低功耗广域网 (LPWAN) 进行连接。 对于此类设备，可以利用 [Azure IoT Central 设备网桥](/iot-central/core/howto-build-iotc-device-bridge)将设备数据发送到 Azure IoT Central 中的 IoT 应用程序。 还可以使用支持 IP 的设备网关，或者直接连接到 IoT Central。
+智能水务解决方案中使用的设备一般将通过第三方网络运营商提供的低功耗广域网 (LPWAN) 进行连接。 对于此类设备，可以利用 [Azure IoT Central 设备网桥](/iot-central/core/howto-build-iotc-device-bridge)将设备数据发送到 Azure IoT Central 中的 IoT 应用程序。 还可以使用支持 IP 的设备网关，或者直接连接到 IoT Central。
 
 ## <a name="iot-central"></a>IoT Central 
 Azure IoT Central 是一个 IoT 应用平台，可让你快速启动和运行 IoT 解决方案。 你可以设计、自定义解决方案，并将其与第三方服务相集成。
@@ -45,7 +45,7 @@ Azure IoT Central 是一个 IoT 应用平台，可让你快速启动和运行 Io
 ## <a name="extensibility-and-integrations"></a>扩展性和集成 
 可以在 IoT Central 中扩展 IoT 应用程序，并可根据需要执行以下操作：
 * 转换和集成 IoT 数据以进行高级分析，例如，通过从 IoT Central 应用程序持续导出的数据训练机器学习模型
-* 通过 Microsoft Flow 或 IoT Central 应用程序中的 Webhook 触发操作，在其他系统中自动运行工作流
+* 通过 Microsoft Flow 或 IoT Central 应用程序中的 Webhook 触发操作，在其他系统中自动执行工作流
 * 通过 IoT Central API 以编程方式访问 IoT Central 中的 IoT 应用程序
 
 ## <a name="business-applications"></a>业务应用程序 

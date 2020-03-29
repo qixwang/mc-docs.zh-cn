@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: peterlu
 author: peterclu
 ms.date: 11/12/2019
-ms.openlocfilehash: a9e9aedf12439a3ea5faeedbfb01227d31c9fc89
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+ms.openlocfilehash: 015571bbe962962ca240bf0368298aef80f5751d
+ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75599085"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80343534"
 ---
 # <a name="what-is-azure-machine-learning-designer-preview"></a>什么是 Azure 机器学习设计器（预览版）？ 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -84,7 +84,7 @@ ms.locfileid: "75599085"
 
 在浏览可用的机器学习算法库时如需帮助，请参阅[算法和模块参考概述](algorithm-module-reference/module-reference.md)
 
-## <a name="compute"></a> 计算资源
+## <a name="compute-resources"></a><a name="compute"></a> 计算资源
 
 使用工作区中的计算资源来运行管道，并将已部署的模型作为实时终结点或管道终结点托管（用于批量推理）。 支持的计算目标为：
 
@@ -135,13 +135,5 @@ ms.locfileid: "75599085"
 ## <a name="next-steps"></a>后续步骤
 
 * 要了解预测分析和机器学习的基本知识，请参考[教程：使用设计器预测汽车价格](tutorial-designer-automobile-price-train-score.md)
-* 使用其中一个示例，并根据需要进行修改：
-
-- [示例 1 - 回归：预测汽车的价格](how-to-designer-sample-regression-automobile-price-basic.md)
-- [示例 2 - 回归：比较汽车价格预测的算法](how-to-designer-sample-regression-automobile-price-compare-algorithms.md)
-- [示例 3 - 通过特征选择进行分类：收入预测](how-to-designer-sample-classification-predict-income.md)
-- [示例 4 - 分类：预测信用风险（成本敏感）](how-to-designer-sample-classification-credit-risk-cost-sensitive.md)
-- [示例 5 - 分类：预测变动率](how-to-designer-sample-classification-churn.md)
-- [示例 6 - 分类：预测航班延误](how-to-designer-sample-classification-flight-delay.md)
-- [示例 7 - 文本分类：维基百科 SP 500 数据集](how-to-designer-sample-text-classification.md)
+* 了解如何根据自己的需求修改现有的[设计器示例](samples-designer.md)。
 

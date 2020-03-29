@@ -10,14 +10,14 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 origin.date: 08/16/2019
-ms.date: 03/09/2020
+ms.date: 04/06/2020
 ms.author: v-yiso
-ms.openlocfilehash: 6f33fab6555c73436ad793adab0c8bbaa5658171
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.openlocfilehash: 09f2a7e4d9005f93853269c0a2a55a690bcad061
+ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78155135"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80343491"
 ---
 # <a name="schedule-and-broadcast-jobs-nodejs"></a>计划和广播作业 (Node.js)
 

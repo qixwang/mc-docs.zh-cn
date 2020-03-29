@@ -7,12 +7,12 @@ ms.author: v-jay
 ms.localizationpriority: medium
 origin.date: 11/04/2019
 ms.date: 03/23/2020
-ms.openlocfilehash: ca705c7f6226c846114bd9bb974fa38811c0a9f5
-ms.sourcegitcommit: e500354e2fd8b7ac3dddfae0c825cc543080f476
+ms.openlocfilehash: 80e5a42b0af58afc27ba712d8f40774ac09313c9
+ms.sourcegitcommit: 90d01d08faf8adb20083363a8e4e5aab139cd9b2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2020
-ms.locfileid: "79547127"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80290421"
 ---
 # <a name="azure-stack-hci-overview"></a>Azure Stack HCI 概述
 
@@ -98,22 +98,6 @@ Azure Stack HCI 与 Azure Stack Hub 使用相同的虚拟化和软件定义存�
 可以从 20 家合作伙伴购买运行 Windows Server 2019 的已验证 Azure Stack HCI 解决方案。 首选的 Microsoft 合作伙伴可帮助你正常运行解决方案，消除冗长的设计和生成时间。 他们还可提供单一联络点来帮助你完成服务的实施与支持。
 
 请访问 [Azure Stack HCI 网站](https://azure.microsoft.com/overview/azure-stack/hci)，以查看这些 Microsoft 合作伙伴目前提供的 70 多种 Azure Stack HCI 解决方案：ASUS、Axellio、bluechip、DataON、Dell EMC、Fujitsu、HPE、Hitachi、华为、联想、NEC、primeLine Solutions、QCT、SecureGUARD 和 Supermicro。
-
-## <a name="video-based-learning"></a>基于视频的学习
-
-以下是 Microsoft Ignite 2019 大会的一些视频：
-
-- [Microsoft Ignite Live 2019 - Azure Stack HCI 入门](https://www.youtube.com/watch?v=vueHIBqNIEU)
-- [发现 Azure Stack HCI](https://www.youtube.com/watch?v=4aGZK0Ndmh8&list=PLQXpv_NQsPICdXZoH-EzlIFa4P6VS5m11&index=13&t=0s)
-- [使用 Azure Stack HCI 实现零售店或分支机构的现代化](https://www.youtube.com/watch?v=-JzLhjfkhmM&list=PLQXpv_NQsPICdXZoH-EzlIFa4P6VS5m11&index=9&t=0s)
-- [Azure Stack HCI 的新增功能：45 分钟内完成 45 件事](https://www.youtube.com/watch?v=C5J4IEnlS_E&list=PLQXpv_NQsPICdXZoH-EzlIFa4P6VS5m11&index=12&t=0s)
-- [快速启动 Azure Stack HCI 部署](https://www.youtube.com/watch?v=gxaPJLrWy5w&list=PLQXpv_NQsPICdXZoH-EzlIFa4P6VS5m11&index=11&t=0s)
-- [缩减数据的用例：Azure Stack HCI 中的重复数据删除](https://www.youtube.com/watch?v=fmm4iDbDiY4&list=PLQXpv_NQsPICdXZoH-EzlIFa4P6VS5m11&index=23&t=0s)
-- [Dave Kawula 有关 Azure Stack HCI 的现场说明](https://www.youtube.com/watch?v=OXv7fLlz0ew&list=PLQXpv_NQsPICdXZoH-EzlIFa4P6VS5m11&index=2&t=0s)
-
-下面是混合云虚拟活动的视频：
-
-- [Azure Stack HCI | 混合云虚拟活动](https://www.youtube.com/watch?v=nxpoEva-R2Y)
 
 ## <a name="faq"></a>常见问题
 

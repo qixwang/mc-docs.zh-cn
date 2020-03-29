@@ -31,8 +31,11 @@
       href: storage-snapshots-files.md
     - name: 可伸缩性和性能目标
       href: storage-files-scale-targets.md
-    - name: 静态加密
+    - name: Azure 存储静态加密
       href: ../common/storage-service-encryption.md?toc=%2fstorage%2ffiles%2ftoc.json
+      items:
+        - name: 客户管理的密钥与 Azure Key Vault
+          href: ../common/encryption-customer-managed-keys.md?toc=%2fstorage%2ffiles%2ftoc.json
     - name: 开发
       items:
         - name: 管理并发

@@ -16,12 +16,12 @@ ms.workload: na
 origin.date: 10/29/2018
 ms.date: 03/02/2020
 ms.author: v-lingwu
-ms.openlocfilehash: 994400455da30969c626c12354dacf837e843c73
-ms.sourcegitcommit: 2b4507745b98b45f1ce3f3d30f397521148ef35a
+ms.openlocfilehash: ece0c5b53da3c9b032e929dc5d3e3df7e1349282
+ms.sourcegitcommit: 303a16c7117b6f3495ef0493b4ae8ccb67d7dbba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78213781"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80342336"
 ---
 # <a name="azure-network-security-overview"></a>Azure 网络安全概述
 
@@ -79,7 +79,7 @@ NSG 不提供应用程序层检查或经过身份验证的访问控制。
 
 #### <a name="asc-just-in-time-vm-access"></a>ASC 实时 VM 访问
 
-Azure 安全中心可以管理 VM 上的 NSG，并将对 VM 的访问权限锁定到具有相应基于角色的访问控制 [RBAC](/azure/role-based-access-control/overview) 权限的用户请求访问为止。 如果成功为该用户授权，则 ASC 会对 NSG 进行修改，以允许在指定的时间访问选定的端口。 该时间过后，NSG 将还原到其以前的受保护状态。
+Azure 安全中心可以管理 VM 上的 NSG，并将对 VM 的访问权限锁定到具有相应基于角色的访问控制 [RBAC](/role-based-access-control/overview) 权限的用户请求访问为止。 如果成功为该用户授权，则 ASC 会对 NSG 进行修改，以允许在指定的时间访问选定的端口。 该时间过后，NSG 将还原到其以前的受保护状态。
 
 了解详细信息：
 
@@ -91,7 +91,7 @@ Azure 安全中心可以管理 VM 上的 NSG，并将对 VM 的访问权限锁�
 
 了解详细信息：
 
-* [服务终结点](../../virtual-network/virtual-network-service-endpoints-overview.md#secure-azure-services-to-virtual-networks)
+* [服务终结点](../../virtual-network/virtual-network-service-endpoints-overview.md)
 
 ### <a name="route-control-and-forced-tunneling"></a>路由控制和强制隧道
 
@@ -126,7 +126,7 @@ Azure 网络支持在虚拟网络上为流量自定义路由行为。 由此可�
 * 应用程序访问控制
 * 其他 DDoS 防护（除了 Azure 结构自身提供的 DDoS 防护以外）
 
-可以使用 Azure 合作伙伴解决方案来访问这些增强的网络安全功能。 通过访问 [Azure 市场](https://azure.microsoft.com/marketplace/)并搜索“安全”和“网络安全”，可以找到最新的 Azure 合作伙伴网络安全解决方案。
+可以使用 Azure 合作伙伴解决方案来访问这些增强的网络安全功能。 通过访问 [Azure 市场](https://market.azure.cn/zh-cn)并搜索“安全”和“网络安全”，可以找到最新的 Azure 合作伙伴网络安全解决方案。
 
 ## <a name="azure-firewall"></a>Azure 防火墙
 
@@ -139,7 +139,7 @@ Azure 防火墙是托管的基于云的网络安全服务，可保护 Azure 虚�
 
 了解详细信息：
 
-* [Azure 防火墙概述](/azure/firewall/overview)
+* [Azure 防火墙概述](/firewall/overview)
 
 ## <a name="secure-remote-access-and-cross-premises-connectivity"></a>安全远程访问和跨界连接
 
@@ -233,7 +233,7 @@ Azure 应用程序网关为基于 Web 的服务提供了基于 HTTP 的负载均
 
 了解详细信息：
 
-* [应用程序网关概述](/azure/application-gateway/application-gateway-introduction)
+* [应用程序网关概述](/application-gateway/application-gateway-introduction)
 
 ### <a name="network-level-load-balancing"></a>网络级别负载均衡
 
@@ -248,8 +248,8 @@ Azure 应用程序网关为基于 Web 的服务提供了基于 HTTP 的负载均
 
 了解详细信息：
 
-* [多个虚拟机或服务之间的面向 Internet 的负载均衡器](/azure/load-balancer/load-balancer-internet-overview)
-* [内部负载均衡器概述](/azure/load-balancer/load-balancer-internal-overview)
+* [多个虚拟机或服务之间的面向 Internet 的负载均衡器](/load-balancer/load-balancer-internet-overview)
+* [内部负载均衡器概述](/load-balancer/load-balancer-internal-overview)
 
 ### <a name="global-load-balancing"></a>全局负载均衡
 
@@ -373,10 +373,6 @@ Azure 安全中心帮助你预防、检测和响应威胁，同时提高 Azure �
 ### <a name="virtual-network-tap"></a>虚拟网络 TAP
 
 通过 Azure 虚拟网络 TAP（终端接入点），可让你持续将虚拟机网络流量流式传输到网络数据包收集器或分析工具。 收集器或分析工具是由网络虚拟设备合作伙伴提供的。 你可以使用相同的虚拟网络 TAP 资源来聚合来自相同或不同订阅的多个网络接口的流量。
-
-了解详细信息：
-
-* [虚拟网络 TAP](../../virtual-network/virtual-network-tap-overview.md)
 
 ### <a name="logging"></a>日志记录
 

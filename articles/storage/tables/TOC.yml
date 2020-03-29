@@ -45,6 +45,11 @@
   items:
     - name: 存储帐户
       href: ../common/storage-account-overview.md?toc=%2fstorage%2ftables%2ftoc.json
+    - name: Azure 存储静态加密
+      href: ../common/storage-service-encryption.md?toc=%2fstorage%2ftables%2ftoc.json
+      items:
+        - name: 客户管理的密钥和 Azure Key Vault
+          href: ../common/encryption-customer-managed-keys.md?toc=%2fstorage%2fblobs%2ftoc.json
     - name: 数据冗余
       items:
         - name: 数据冗余
@@ -92,16 +97,6 @@
               href: ../common/storage-configure-connection-string.md?toc=%2fstorage%2ftables%2ftoc.json
             - name: 使用 Azure 存储 REST API
               href: ../common/storage-rest-api-auth.md?toc=%2fstorage%2ftables%2ftoc.json
-            - name: 配置客户管理的密钥
-              items:
-                - name: 门户
-                  href: ../common/storage-encryption-keys-portal.md?toc=%2fstorage%2ftables%2ftoc.json
-                - name: PowerShell
-                  href: ../common/storage-encryption-keys-powershell.md?toc=%2fstorage%2ftables%2ftoc.json
-                - name: Azure CLI
-                  href: ../common/storage-encryption-keys-cli.md?toc=%2fstorage%2ftables%2ftoc.json
-            - name: 检查帐户的加密密钥模型
-              href: ../common/storage-encryption-key-model-get.md?toc=%2fstorage%2ftables%2ftoc.json
         - name: 配置客户端加密
           items:
             - name: .NET
@@ -126,12 +121,10 @@
           href: ../common/last-sync-time-get.md?toc=%2fstorage%2ftables%2ftoc.json
     - name: 传输数据
       items:
-        - name: AzCopy (v10)
-          href: ../common/storage-use-azcopy-v10.md?toc=%2fstorage%2ftables%2ftoc.json
         - name: Windows 上的 AzCopy (v8)
-          href: ../common/storage-use-azcopy.md?toc=%2fstorage%2ftables%2ftoc.json
+          href: 'https://docs.microsoft.com/previous-versions/azure/storage/storage-use-azcopy'
         - name: Linux 上的 AzCopy (v8)
-          href: ../common/storage-use-azcopy-linux.md?toc=%2fstorage%2ftables%2ftoc.json
+          href: 'https://docs.microsoft.com/previous-versions/azure/storage/storage-use-azcopy-linux'
     - name: 故障排除
       items:
         - name: 延迟问题

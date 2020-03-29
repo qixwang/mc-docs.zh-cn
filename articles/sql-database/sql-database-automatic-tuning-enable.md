@@ -11,13 +11,13 @@ author: WenJason
 ms.author: v-jay
 ms.reviewer: jrasnik, carlrab
 origin.date: 12/03/2019
-ms.date: 02/17/2020
-ms.openlocfilehash: 288b9258c9bb97fd52f893633ca1a1b50becaacf
-ms.sourcegitcommit: d7b86a424b72849fe8ed32893dd05e4696e4fe85
+ms.date: 03/30/2020
+ms.openlocfilehash: 80340da0ebd66d2f26cb40879fd8c17189841997
+ms.sourcegitcommit: 90660563b5d65731a64c099b32fb9ec0ce2c51c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77155731"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80341840"
 ---
 # <a name="enable-automatic-tuning-to-monitor-queries-and-improve-workload-performance"></a>启用自动优化以监视查询并提高工作负荷性能
 
@@ -34,6 +34,13 @@ Azure SQL 数据库是一种自动托管的数据服务，它会不断监视查�
 ## <a name="enable-automatic-tuning-on-server"></a>在服务器上启用自动优化
 
 在服务器级别上，可选择从“Azure 默认值”继承自动优化配置，或选择不继承配置。 Azure 默认值为启用 FORCE_LAST_GOOD_PLAN 和 CREATE_INDEX，禁用 DROP_INDEX。
+
+> [!IMPORTANT]
+> 从 2020 年 3 月开始，对用于自动优化的 Azure 默认设置的更改将生效，如下所示：
+>
+> - 新的 Azure 默认设置为 FORCE_LAST_GOOD_PLAN = enabled、CREATE_INDEX = disabled 和 DROP_INDEX = disabled。
+> - 未配置自动优化首选项的现有服务器将自动配置为继承新的 Azure 默认设置。 这适用于当前有用于自动优化的服务器设置处于未定义状态的所有客户。
+> - 创建的新服务器将自动配置为继承新的 Azure 默认设置（与之前创建新服务器时自动优化配置处于未定义状态时不同）。
 
 ### <a name="azure-portal"></a>Azure 门户
 

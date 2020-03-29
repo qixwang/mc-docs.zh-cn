@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: tutorial
 origin.date: 10/08/2019
 ms.author: v-yiso
-ms.date: 03/02/2020
-ms.openlocfilehash: 3d803087f5ef466bcfb0ce61f184a2f951f040fc
-ms.sourcegitcommit: 46fd4297641622c1984011eac4cb5a8f6f94e9f5
+ms.date: 04/06/2020
+ms.openlocfilehash: 344869a9f6bcd5948c503730e3c1bea23f385e3c
+ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77563388"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80343529"
 ---
 # <a name="tutorial-use-the-apache-kafka-producer-and-consumer-apis"></a>教程：使用 Apache Kafka 生成者和使用者 API
 
@@ -30,14 +30,14 @@ Kafka 生成者 API 允许应用程序将数据流发送到 Kafka 群集。 Kafk
 本教程介绍如何执行下列操作：
 
 > [!div class="checklist"]
-> * 必备条件
+> * 先决条件
 > * 了解代码
 > * 生成并部署应用程序
 > * 在群集上运行应用程序
 
 有关这些 API 的详细信息，请参阅有关[生成者 API](https://kafka.apache.org/documentation/#producerapi) 和[使用者 API](https://kafka.apache.org/documentation/#consumerapi) 的 Apache 文档。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * Apache Kafka on HDInsight 群集。 若要了解如何创建该群集，请参阅 [Apache Kafka on HDInsight 入门](apache-kafka-get-started.md)。
 * [Java Developer Kit (JDK) 版本 8](https://aka.ms/azure-jdks) 或等效工具，例如 OpenJDK。
@@ -139,7 +139,7 @@ consumer = new KafkaConsumer<>(properties);
     scp ./target/kafka-producer-consumer-1.0-SNAPSHOT.jar SSHUSER@CLUSTERNAME-ssh.azurehdinsight.cn:kafka-producer-consumer.jar
     ```
 
-## <a id="run"></a> 运行示例
+## <a name="run-the-example"></a><a id="run"></a> 运行示例
 
 1. 将 `sshuser` 替换为群集的 SSH 用户，并将 `CLUSTERNAME` 替换为群集的名称。 输入以下命令，打开到群集的 SSH 连接。 出现提示时，输入 SSH 用户帐户的密码。
 
@@ -219,4 +219,9 @@ Kafka 中存储的记录将按接收顺序存储在分区中。 若要 *在分�
 2. 找到要删除的资源组，然后右键单击列表右侧的“更多”按钮 (...)。 
 3. 选择“删除资源组”，然后进行确认。 
 
+## <a name="next-steps"></a>后续步骤
 
+本文档介绍了如何将 Apache Kafka 生成者和使用者 API 与 Kafka on HDInsight 配合使用。 请参阅以下资源了解有关使用 Kafka 的详细信息：
+
+* [使用 Kafka REST 代理](rest-proxy.md)
+* [分析 Apache Kafka 日志](apache-kafka-log-analytics-operations-management.md)

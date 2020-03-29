@@ -5,16 +5,16 @@ services: storage
 author: WenJason
 ms.author: v-jay
 origin.date: 08/09/2019
-ms.date: 10/28/2019
+ms.date: 03/30/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
-ms.openlocfilehash: 080367a8e9a239751481571b3d89fe77f117cec8
-ms.sourcegitcommit: 73f07c008336204bd69b1e0ee188286d0962c1d7
+ms.openlocfilehash: 98cdb296269c2857fcf76132f73e13131914483a
+ms.sourcegitcommit: 90d01d08faf8adb20083363a8e4e5aab139cd9b2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72914819"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80290447"
 ---
 # <a name="manage-blob-properties-and-metadata-with-net"></a>使用 .NET 管理 blob 属性和元数据
 
@@ -164,4 +164,4 @@ public static async Task ReadBlobMetadataAsync(CloudBlob blob)
 - [设置 Blob 属性操作](https://docs.microsoft.com/rest/api/storageservices/set-blob-properties)
 - [获取 Blob 属性操作](https://docs.microsoft.com/rest/api/storageservices/get-blob-properties)
 - [设置 Blob 元数据操作](https://docs.microsoft.com/rest/api/storageservices/set-blob-metadata)
-- [获取 Blob 元数据操作](https://docs.microsoft.com/rest/api/storageservices/set-blob-metadata)
+- [获取 Blob 元数据操作](https://docs.microsoft.com/rest/api/storageservices/get-blob-metadata)

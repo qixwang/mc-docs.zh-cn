@@ -8,12 +8,12 @@ origin.date: 04/19/2018
 ms.date: 03/09/2020
 ms.author: v-tawe
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 06e3aa0b587fabcae8822afe46f0e1249e4b97db
-ms.sourcegitcommit: 1e68aea05a8d979237d6377a3637bb7654097111
+ms.openlocfilehash: 405b141924dab32f06bd500bbf9f66fd26430be3
+ms.sourcegitcommit: 303a16c7117b6f3495ef0493b4ae8ccb67d7dbba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/24/2020
-ms.locfileid: "77566635"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80342339"
 ---
 # <a name="introduction-to-the-app-service-environments"></a>应用服务环境简介 #
  
@@ -46,7 +46,7 @@ ASE 可在隔离后只运行单个客户的应用程序，并可始终部署到�
 * 可使用多个 ASE 进行水平缩放。 有关详细信息，请参阅[如何设置异地分布式应用布局](app-service-app-service-environment-geo-distributed-scale.md)。
 * 可使用 ASE 配置安全体系结构，如“AzureCon 深入探讨”中所示。
 * 在 ASE 中运行的应用的访问权限可能受到 Web 应用程序防火墙 (WAF) 等上游设备的管制。 有关详细信息，请参阅 [Web 应用程序防火墙 (WAF)][AppGW]。
-* 可以使用区域固定将应用服务环境部署到可用性区域 (AZ) 中。  有关更多详细信息，请参阅 [应用服务环境对可用性区域的支持][ASEAZ]。
+* 可以使用区域固定将应用服务环境部署到可用性区域 (AZ) 中。  有关更多详细信息，请参阅[应用服务环境对可用性区域的支持][ASEAZ]。
 
 ## <a name="dedicated-environment"></a>专用环境 ##
 
@@ -62,7 +62,7 @@ ASE 由前端和辅助角色组成。 前端负责处理 HTTP/HTTPS 终止以及
 
 客户无需管理前端和辅助角色。 客户扩展其应用服务计划时，会自动添加所有基础结构。 在 ASE 中创建或缩放应用服务计划时，将在适当的情况下添加或删除所需的基础结构。
 
-ASE 每月会产生统一的基础结构使用费，该费率不会随 ASE 的大小变化而改变。 此外，每个应用服务计划 vCPU 也会产生费用。 ASE 中托管的所有应用都在“隔离”定价 SKU 中。 有关 ASE 定价的信息，请参阅 [应用服务定价][Pricing] 页并查看 ASE 的可用选项。
+ASE 每月会产生统一的基础结构使用费，该费率不会随 ASE 的大小变化而改变。 此外，每个应用服务计划 vCPU 也会产生费用。 ASE 中托管的所有应用都在“隔离”定价 SKU 中。 有关 ASE 定价的信息，请参阅[应用服务定价][Pricing]页并查看 ASE 的可用选项。
 
 ## <a name="virtual-network-support"></a>虚拟网络支持 ##
 
@@ -70,19 +70,36 @@ ASE 功能直接将 Azure 应用服务部署到客户的 Azure 资源管理器�
 
 ASE 既可以是面向 Internet 的（使用公共 IP 地址），也可以是面向内部的（只使用 Azure 内部负载均衡器 (ILB) 地址）。
 
-[网络安全组][NSGs] 将入站网络通信限制为 ASE 所在的子网。 可以在上游设备和服务（例如 WAF 和网络 SaaS 提供程序）后使用 NSG 来运行应用。
+[网络安全组][NSGs]将入站网络通信限制为 ASE 所在的子网。 可以在上游设备和服务（例如 WAF 和网络 SaaS 提供程序）后使用 NSG 来运行应用。
 
 应用还经常需要访问公司资源，例如内部数据库和 Web 服务。 如果在包含本地网络的 VPN 连接的虚拟网络中部署 ASE，ASE 中的应用可以访问本地资源。 无论 VPN 是[站点到站点](https://docs.azure.cn/vpn-gateway/vpn-gateway-multi-site) VPN，还是 [Azure ExpressRoute](https://www.azure.cn/home/features/expressroute/) VPN，都可以使用此功能。
 
-有关如何在虚拟网络和本地网络中使用 ASE 的详细信息，请参阅 [应用服务环境网络注意事项][ASENetwork]。
+有关如何在虚拟网络和本地网络中使用 ASE 的详细信息，请参阅[应用服务环境网络注意事项][ASENetwork]。
 
 <!-- > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-Application-Service-Environments-v2-Private-PaaS-Environments-in-the-Cloud/player] -->
 
 <!-- ## App Service Environment v1 ## -->
 
-<!--Links-->
 <!-- [App Service Environments v2]: https://channel9.msdn.com/Blogs/Azure/Azure-Application-Service-Environments-v2-Private-PaaS-Environments-in-the-Cloud?term=app%20service%20environment -->
 <!-- [Isolated offering]: https://channel9.msdn.com/Shows/Azure-Friday/Security-and-Horsepower-with-App-Service-The-New-Isolated-Offering?term=app%20service%20environment -->
 <!-- [ConfigureSSL]: ../web-sites-purchase-ssl-web-site.md -->
 <!-- [Kudu]: https://azure.microsoft.com/resources/videos/super-secret-kudu-debug-console-for-azure-web-sites/ -->
-[Intro]: ./intro.md [MakeExternalASE]: ./create-external-ase.md [MakeASEfromTemplate]: ./create-from-template.md [MakeILBASE]: ./create-ilb-ase.md [ASENetwork]: ./network-info.md [UsingASE]: ./using-an-ase.md [UDRs]: ../../virtual-network/virtual-networks-udr-overview.md [NSGs]: ../../virtual-network/security-overview.md [webapps]: ../overview.md [mobileapps]: ../../app-service-mobile/app-service-mobile-value-prop.md [Functions]: ../../azure-functions/index.yml [Pricing]: https://www.azure.cn/pricing/details/app-service/ [ARMOverview]: ../../azure-resource-manager/management/overview.md [ConfigureSSL]: ../configure-ssl-certificate.md [ASEWAF]: app-service-app-service-environment-web-application-firewall.md [AppGW]: ../../application-gateway/waf-overview.md [ASEAZ]: https://azure.github.io/AppService/2019/12/12/App-Service-Environment-Support-for-Availability-Zones.html
+
+<!--Links-->
+[Intro]: ./intro.md
+[MakeExternalASE]: ./create-external-ase.md
+[MakeASEfromTemplate]: ./create-from-template.md
+[MakeILBASE]: ./create-ilb-ase.md
+[ASENetwork]: ./network-info.md
+[UsingASE]: ./using-an-ase.md
+[UDRs]: ../../virtual-network/virtual-networks-udr-overview.md
+[NSGs]: ../../virtual-network/security-overview.md
+[webapps]: ../overview.md
+[mobileapps]: ../../app-service-mobile/app-service-mobile-value-prop.md
+[Functions]: ../../azure-functions/index.yml
+[Pricing]: https://www.azure.cn/pricing/details/app-service/
+[ARMOverview]: ../../azure-resource-manager/management/overview.md
+[ConfigureSSL]: ../configure-ssl-certificate.md
+[ASEWAF]: app-service-app-service-environment-web-application-firewall.md
+[AppGW]: ../../application-gateway/waf-overview.md
+[ASEAZ]: https://azure.github.io/AppService/2019/12/12/App-Service-Environment-Support-for-Availability-Zones.html

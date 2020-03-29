@@ -12,12 +12,12 @@ ms.date: 02/07/2020
 ms.subservice: hybrid
 ms.author: v-junlch
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1c60eebf94f3a4b1d2261fbb45cf6afb3e14df9e
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: 849ad8ba44a806060dbc063286529c25b9fd7339
+ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79290973"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80343211"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect：版本发行历史记录
 Azure Active Directory (Azure AD) 团队会定期更新 Azure AD Sync 的新特性和功能。 并非所有的新增内容都适用于所有受众。
@@ -489,7 +489,7 @@ Azure Active Directory (Azure AD) 团队会定期更新 Azure AD Sync 的新特�
 >[!NOTE]
 >此版本只能消除 Azure AD Connect 全新安装（其中的服务帐户由安装过程创建）的漏洞。 对于现有安装，或者在你自行提供帐户的情况下，应确保此漏洞不存在。
 
-#### <a name="lock"></a>锁定对 AD DS 帐户的访问
+#### <a name="lock-down-access-to-the-ad-ds-account"></a><a name="lock"></a>锁定对 AD DS 帐户的访问
 可以通过在本地 AD 中实现以下权限更改，来锁定对 AD DS 帐户的访问：  
 
 *   禁用指定对象上的继承
@@ -1154,8 +1154,8 @@ AD FS 管理
 
 * 适用于快速设置客户的[自动升级](how-to-connect-install-automatic-upgrade.md)功能。
 * 使用安装向导中的 Azure 多重身份验证和 Privileged Identity Management 来提供全局管理员支持。
-  * 如果使用多重身份验证，则代理也需要允许发往 https://secure.aadcdn.parter.microsoftonline-p.cn 的流量。
-  * 需要将 https://secure.aadcdn.parter.microsoftonline-p.cn 添加到受信任的站点列表，这样多重身份验证才能正常工作。
+  * 如果使用多重身份验证，则代理也需要允许发往 https://secure.aadcdn.partner.microsoftonline-p.cn 的流量。
+  * 需要将 https://secure.aadcdn.partner.microsoftonline-p.cn 添加到受信任的站点列表，这样多重身份验证才能正常工作。
 * 允许在初始安装之后更改用户的登录方法。
 * 允许在安装向导中使用[域和 OU 筛选](how-to-connect-install-custom.md#domain-and-ou-filtering)。 这也允许连接到并非所有域都可供使用的林。
 * [计划程序](how-to-connect-sync-feature-scheduler.md)是同步引擎的内置功能。

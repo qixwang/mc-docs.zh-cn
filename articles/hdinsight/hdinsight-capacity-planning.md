@@ -9,13 +9,13 @@ ms.custom: hdinsightactive
 ms.devlang: na
 ms.topic: article
 origin.date: 10/15/2019
-ms.date: 11/11/2019
-ms.openlocfilehash: a6fc57e903c245f242c0f70a6436b3faa04c8b4c
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.date: 04/06/2020
+ms.openlocfilehash: e831e218f44b8cda072532c7a374006b2df27880
+ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79291224"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80343208"
 ---
 # <a name="capacity-planning-for-hdinsight-clusters"></a>HDInsight 群集的容量规划
 
@@ -58,7 +58,7 @@ Azure 存储具有某些[容量限制](../azure-resource-manager/management/azur
 * 想要将已上传到 Blob 容器的数据提供给群集使用时。
 * 出于安全原因想要隔离存储的不同部分，或要简化管理时。
 
-对于 48 节点群集，我们建议使用 4 到 8 个存储帐户。 尽管存储总量可能已足够，但每个存储帐户能够为计算节点提供额外的网络带宽。 如果有多个存储帐户，请为每个存储帐户使用不带前缀的随机名称。 使用随机名称的目的是降低出现存储瓶颈（限制）或所有帐户发生共模故障的可能性。 为提高性能，请对每个存储帐户仅使用一个容器。
+为提高性能，请对每个存储帐户仅使用一个容器。
 
 ## <a name="choose-a-cluster-type"></a>选择群集类型
 
@@ -82,7 +82,7 @@ Azure 存储具有某些[容量限制](../azure-resource-manager/management/azur
 
 ### <a name="cluster-lifecycle"></a>群集生命周期
 
-在群集的生存期内会产生费用。 可以创建用于预配和删除群集的 PowerShell 脚本，然后使用 [Azure 自动化](/automation/)安排这些脚本的执行时间。
+在群集的生存期内会产生费用。 如果只是需要在特定的时间启动并运行群集，可以使用 [Azure 数据工厂创建按需群集](hdinsight-hadoop-create-linux-clusters-adf.md)。 还可以创建 PowerShell 脚本用于预配和删除群集，然后使用 [Azure 自动化](https://azure.microsoft.com/services/automation/)计划这些脚本。
 
 > [!NOTE]  
 > 删除某个群集时，也会一并删除其默认 Hive 元存储。 若要保留元存储供下一次重新创建群集时使用，可以使用 Azure 数据库或 [Apache Oozie](https://oozie.apache.org/) 等外部元数据存储。
@@ -95,7 +95,7 @@ Azure 存储具有某些[容量限制](../azure-resource-manager/management/azur
 
 ## <a name="quotas"></a>配额
 
-确定目标群集 VM 大小、规模和类型之后，请检查订阅的当前配额容量限制。 达到配额限制时，可能无法部署新群集，或通过添加更多工作节点来横向扩展现有群集。 唯一存在配额限制的是每个订阅的区域级别的 CPU 核心配额。 例如，订阅可能会在美国东部区域有 30 个核心的限制。 如果需要请求增加配额，请执行以下操作：
+确定目标群集 VM 大小、规模和类型之后，请检查订阅的当前配额容量限制。 达到配额限制时，可能无法部署新群集，或通过添加更多工作节点来横向扩展现有群集。 唯一存在配额限制的是每个订阅的区域级别的 CPU 核心配额。 例如，订阅可能会在美国东部区域有 30 个核心的限制。 
 
 若要检查可用核心数，请执行以下步骤：
 

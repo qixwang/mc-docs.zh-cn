@@ -6,15 +6,15 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: tutorial
 origin.date: 1/22/2020
-ms.date: 03/09/2020
+ms.date: 03/30/2020
 ms.author: v-jay
 ms.reviewer: dineshm
-ms.openlocfilehash: d7d23efb1f958c4a633aeaa4040bd9354a594ca1
-ms.sourcegitcommit: fbc7584f403417d3af7bd6bbbaed7c13a78c57b9
+ms.openlocfilehash: cecf21e8ee55a7923235a8b289e7b77423d89d9a
+ms.sourcegitcommit: 90d01d08faf8adb20083363a8e4e5aab139cd9b2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78412534"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80290446"
 ---
 <!---Customer intent: I want to host files for a static website in Blob storage and access the website from an Azure endpoint.--->
 
@@ -94,9 +94,7 @@ ms.locfileid: "78412534"
 
 Visual Studio Code 现在会将文件上传到 Web 终结点，并显示成功状态栏。 启动网站，在 Azure 中查看它。
 
-![在 Azure 中查看静态网站部署](media/storage-blob-static-website-host/view-static-website-endpoint.png)
-
-你已成功完成本教程并已将静态网站部署到 Azure。
+你已成功完成本教程并将静态网站部署到 Azure。
 
 ## <a name="next-steps"></a>后续步骤
 

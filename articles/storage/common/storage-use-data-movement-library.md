@@ -8,15 +8,15 @@ ms.service: storage
 ms.devlang: dotnet
 ms.topic: how-to
 origin.date: 12/04/2019
-ms.date: 02/10/2020
+ms.date: 03/30/2020
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 56365e569cbe383f45f93ebfe635d2ed18deb7b4
-ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
+ms.openlocfilehash: ca462d8479c39c87e27195afb85b136763e9ae2f
+ms.sourcegitcommit: 90d01d08faf8adb20083363a8e4e5aab139cd9b2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77028526"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80290461"
 ---
 # <a name="transfer-data-with-the-data-movement-library"></a>通过数据移动库传输数据
 
@@ -33,7 +33,7 @@ Azure 存储数据移动库是一个高性能的跨平台开源库，用于上�
 - 将文件从 URL 复制到 Blob 存储。
 - 从 Blob 存储复制到 Blob 存储。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 - [Visual Studio Code](https://code.visualstudio.com/)
 - 一个 [Azure 存储帐户](storage-account-create.md)
@@ -43,7 +43,7 @@ Azure 存储数据移动库是一个高性能的跨平台开源库，用于上�
 1. 访问 [.NET Core 安装指南](https://www.microsoft.com/net/core) 安装 .NET Core。 选择环境时，请选择命令行选项。
 2. 通过命令行创建项目的目录。 导航到此目录，然后键入 `dotnet new console -o <sample-project-name>` 创建 C# 控制台项目。
 3. 在 Visual Studio Code 中打开此目录。 通过在 Windows 中命令行上键入 `code .` 可快速完成此步骤。
-4. 从 Visual Studio Code Marketplace 安装 [C# 扩展](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)。 重新启动 Visual Studio Code。
+4. 从 Visual Studio Code Marketplace 安装 [C# 扩展](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)。 重新启动 Visual Studio Code。
 5. 此时，应会出现两条提示。 其中一条提示指出要“添加所需的资产用于生成和调试。 ” 请单击“是”。 另一条提示指出要还原未解析的依赖项。 请单击“还原”。
 6. 修改 `.vscode` 下的 `launch.json`，将外部终端用作控制台。 此设置应为 `"console": "externalTerminal"`
 7. 可以使用 Visual Studio Code 调试 .NET Core 应用程序。 点击 `F5` 运行应用程序，然后验证设置是否正常运行。 应会看到“Hello World!” 列显在控制台上。
@@ -192,7 +192,7 @@ public static async Task TransferLocalFileToAzureBlob(CloudStorageAccount accoun
 
 此代码提示我们输入本地文件的路径、新的或现有容器的名称，以及新 Blob 的名称。 `TransferManager.UploadAsync` 方法使用此信息执行上传。
 
-点击 `F5` 运行应用程序。 可通过使用 [Azure 存储资源管理器](https://storageexplorer.com/)查看存储帐户，来验证是否已发生上传。
+点击 `F5` 运行应用程序。 可通过使用 [Microsoft Azure 存储资源管理器](https://storageexplorer.com/)查看存储帐户，来验证是否已发生上传。
 
 ## <a name="set-the-number-of-parallel-operations"></a>设置并行操作数目
 

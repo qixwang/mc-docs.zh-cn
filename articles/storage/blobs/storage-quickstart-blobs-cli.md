@@ -7,15 +7,15 @@ author: WenJason
 ms.custom: mvc
 ms.service: storage
 ms.topic: quickstart
-origin.date: 12/04/2019
-ms.date: 03/09/2020
+origin.date: 02/26/2020
+ms.date: 03/30/2020
 ms.author: v-jay
-ms.openlocfilehash: 000ca6548af54e57644a85dd5c91598992ddf103
-ms.sourcegitcommit: fbc7584f403417d3af7bd6bbbaed7c13a78c57b9
+ms.openlocfilehash: 665460bfaf09babda3577361e04bb9b9f482b49c
+ms.sourcegitcommit: 90d01d08faf8adb20083363a8e4e5aab139cd9b2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78411948"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80290437"
 ---
 # <a name="quickstart-create-download-and-list-blobs-with-azure-cli"></a>快速入门：使用 Azure CLI 创建、下载和列出 blob
 
@@ -144,7 +144,7 @@ azcopy copy 'C:\myDirectory\myTextFile.txt' 'https://mystorageaccount.blob.core.
 
 ## <a name="clean-up-resources"></a>清理资源
 
-如果不再需要资源组中的任何资源（包括在本快速入门中创建的存储帐户），请使用 [az group delete](/cli/group) 命令删除该资源组。 请务必将尖括号中的占位符值替换为你自己的值：
+若要删除在本快速入门中创建的资源（包括存储帐户），请使用 [az group delete](/cli/group) 命令删除资源组。 请务必将尖括号中的占位符值替换为你自己的值：
 
 ```azurecli
 az group delete \
