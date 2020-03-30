@@ -8,14 +8,14 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
-origin.date: 01/29/2020
-ms.date: 03/02/2020
-ms.openlocfilehash: 25399092eaf1f7b8ae2be885381aae0a0770404c
-ms.sourcegitcommit: 46fd4297641622c1984011eac4cb5a8f6f94e9f5
+origin.date: 03/13/2020
+ms.date: 04/06/2020
+ms.openlocfilehash: 733838bf573a81f55239085c6c71a2f7acf0078c
+ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77563488"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80343612"
 ---
 # <a name="release-notes"></a>发行说明
 
@@ -65,38 +65,3 @@ HDInsight 会持续改善群集的可靠性和性能。
 
 ## <a name="component-version-change"></a>组件版本更改
 此发行版未发生组件版本更改。 可在此处查找 HDInsight 4.0 和 HDInsight 3.6 的当前组件版本。
-
-## <a name="known-issues"></a>已知问题
-
-从 2020 年 1 月 29 日起，在尝试使用 Jupyter 笔记本时，可能会收到错误。 请执行以下步骤来解决该问题。 还可以参阅此 [MSDN 文章](https://social.msdn.microsoft.com/Forums/en-us/8c763fb4-79a9-496f-a75c-44a125e934ac/hdinshight-create-not-create-jupyter-notebook?forum=hdinsight)或 [StackOverflow 文章](https://stackoverflow.com/questions/59687614/azure-hdinsight-jupyter-notebook-not-working/59831103)了解最新信息，或提出其他问题。 解决问题后，此页将会更新。
-
-**错误**
-
-* 值错误：无法将笔记本转换为 v5，因为该版本不存在
-* 加载笔记本时出错 加载此笔记本时出现未知错误。 此版本可以加载格式为 v4 或更早版本的笔记本
-
-**原因** 
-
-群集上的 _version.py 文件已更新为 5.x.x，而不是 4.4.x.## 或需要重启 Ambari。
-
-**解决方案**
-
-如果在创建新的 Jupyter 笔记本时遇到上面列出的某个错误，请执行以下步骤来解决问题。
-
-1. 转到 `https://CLUSTERNAME.azurehdinsight.net`（其中 CLUSTERNAME 是群集的名称），在 Web 浏览器中打开 Ambari。
-1. 在 Ambari 的左侧菜单中单击“Jupyter”，然后在“服务操作”中单击“停止”。   
-1. 通过 SSH 连接到运行 Jupyter 服务的群集头节点。
-1. 在 sudo 模式下打开 /usr/bin/anaconda/lib/python2.7/site-packages/nbformat/_version.py 文件。
-1. 检查 version_info 的值。
-1. 如果 version_info 的值设置为： 
-
-    version_info = (5, 0, 3)
-
-    请将该条目修改为以下内容： 
-    
-    version_info = (4, 4, 0)
-
-    保存文件。 
-
-    如果 version_info 已设置为 (4, 4, 0)，则继续执行下一步，因为只需要重启 Ambari，不需要进行其他更改。
-1. 返回到 Ambari，在“服务操作”中单击“全部重启”。  

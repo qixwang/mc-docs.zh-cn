@@ -9,14 +9,14 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 origin.date: 01/14/2020
-ms.date: 03/23/2020
+ms.date: 03/16/2020
 ms.author: v-tawe
-ms.openlocfilehash: 056ccf792d8767ab91dfcb8f7055db0d19bce071
-ms.sourcegitcommit: e94ed1c9eff4e88be2ca389909e60b14cc0d92f8
+ms.openlocfilehash: 893184233d91f4e7d3a60c22a4ad53220d132947
+ms.sourcegitcommit: b2f2bb08ab1b5ccb3c596d84b3b6ddca5bba3903
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79084509"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80151531"
 ---
 # <a name="speech-services-with-sovereign-clouds"></a>将语音服务与主权云配合使用
 
@@ -28,7 +28,7 @@ ms.locfileid: "79084509"
 - SpeechSDK 中的 TTS：*config.FromHost("https[]()://chinaeast2.tts.speech.azure.cn", "\<your-key\>");*
 - 身份验证令牌：https[]()://chinaeast2.api.cognitive.azure.cn/sts/v1.0/issueToken
 - Azure 门户： https://portal.azure.cn
-- 自定义语音识别门户： https://speech.azure.cn/customspeech
+- 自定义语音识别门户： https://speech.azure.cn/CustomSpeech
 - 可用的 SKU：S0
 - 支持的功能：
   - 语音转文本
