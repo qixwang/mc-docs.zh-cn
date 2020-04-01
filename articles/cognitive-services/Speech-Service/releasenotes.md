@@ -3,23 +3,49 @@ title: 发行说明 - 语音服务
 titleSuffix: Azure Cognitive Services
 description: 不断更新的语音服务功能版本、改进、bug 修复和已知问题的日志。
 services: cognitive-services
-author: oscholz
-manager: nitinme
+author: brianem
+manager: jhakulin
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-origin.date: 01/15/2020
-ms.date: 03/09/2020
+origin.date: 02/25/2020
+ms.date: 03/16/2020
 ms.author: v-tawe
 ms.custom: seodec18
-ms.openlocfilehash: b109b5072e5db79d13da1dfe90a1069bf2a5cbc5
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: 5a2036ef59d01f2cc30788dae4cf7872d20ecb81
+ms.sourcegitcommit: b2f2bb08ab1b5ccb3c596d84b3b6ddca5bba3903
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79293294"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80151529"
 ---
 # <a name="release-notes"></a>发行说明
+## <a name="speech-sdk-1100-2020-february-release"></a>语音 SDK 1.10.0：2020 年 2 月版
+
+**新功能**
+ - 添加了 Python 包以支持新的 3.8 版 Python。
+ - Red Hat Enterprise Linux (RHEL)/CentOS 8 x64 支持（C++、C#、Java、Python）。
+   > [!NOTE] 
+   > 客户必须根据[这些说明](https://docs.azure.cn/cognitive-services/speech-service/how-to-configure-openssl-linux)配置 OpenSSL。
+ - 针对 Debian 和 Ubuntu 的 Linux ARM32 支持。
+ - DialogServiceConnector 现在支持 BotFrameworkConfig 上的可选“bot ID”参数。 此参数允许将多个 Direct Line 语音机器人与单个 Azure 语音资源配合使用。 如果未指定此参数，则会使用默认机器人（取决于 Direct Line 语音通道配置页）。
+ - DialogServiceConnector 现在有一个 SpeechActivityTemplate 属性。 Direct Line 语音会使用此 JSON 字符串的内容来预填充到达 Direct Line 语音机器人的所有活动（包括为了响应语音识别之类的事件而自动生成的活动）中的各种受支持的字段。
+ - TTS 现在使用订阅密钥进行身份验证，降低了创建合成器后第一个合成结果的第一个字节延迟。
+ - 更新了 19 个区域设置的语音识别模型，平均单词错误率降低了 18.6%（es-ES、es-MX、fr-CA、fr-FR、it-IT、ja-JP、ko-KR、pt-BR、zh-CN、zh-HK、nb-NO、fi-FL、ru-RU、pl-PL、ca-ES、zh-TW、th-TH、pt-PT、tr-TR）。 新模型在多个领域提供了重大改进，其中包括听写、呼叫中心脚本和视频索引方案。
+
+**Bug 修复**
+ - 修复了在 JAVA API 中聊天听录器未正确等待的 Bug 
+ - Android x86 仿真器修复（针对 Xamarin [GitHub 问题](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/363)）
+ - 为 AudioConfig 添加了缺失的 (Get|Set)Property 方法
+ - 修复了无法在连接失败时停止 audioDataStream 的 TTS Bug
+ - 使用无区域的终结点会导致聊天翻译器出现 USP 故障
+ - 现在，在通用 Windows 应用程序中生成 ID 时会使用适当的唯一 GUID 算法；它以前无意中默认为存根实现，这种实现通常会在大型交互集上造成冲突。
+ 
+ **示例**
+ - Unity 示例，可以将语音 SDK 与 [Unity 麦克风和推送模式流式处理](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/unity/from-unitymicrophone)结合使用
+
+**其他更改**
+ - [适用于 Linux 的 OpenSSL 配置文档已更新](https://docs.azure.cn/cognitive-services/speech-service/how-to-configure-openssl-linux)
 
 ## <a name="speech-sdk-190-2020-january-release"></a>语音 SDK 1.9.0：2020 年 1 月版
 

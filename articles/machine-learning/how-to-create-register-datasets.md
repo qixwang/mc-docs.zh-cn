@@ -12,12 +12,12 @@ manager: cgronlun
 ms.reviewer: nibaccam
 origin.date: 02/10/2020
 ms.date: 03/09/2020
-ms.openlocfilehash: 9a3b7b3fbad418bda026dff5642ac7b64ea85e2d
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: bd81284f9fa5c0b093cd317430a4d691ec9f1add
+ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79292163"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80343557"
 ---
 # <a name="create-azure-machine-learning-datasets"></a>创建 Azure 机器学习数据集
 
@@ -46,6 +46,16 @@ ms.locfileid: "79292163"
 > [!NOTE]
 > 某些数据集类依赖于 [azureml-dataprep](https://docs.microsoft.com/python/api/azureml-dataprep/?view=azure-ml-py) 包。 对于 Linux 用户，只有以下分发版支持这些类：Red Hat Enterprise Linux、Ubuntu、Fedora 和 CentOS。
 
+## <a name="compute-size-guidance"></a>计算大小指南
+
+创建数据集时，请检查计算处理能力和内存中的数据大小。 存储中的数据大小不同于数据帧中的数据大小。 例如，CSV 文件中的数据在数据帧中最多可以扩展到 10 倍，因此，1 GB 的 CSV 文件在数据帧中可能会变成 10 GB。 
+
+主要因素是数据集（即作为数据帧的数据集）在内存中的大小。 建议将计算大小和处理能力设置为包含 2 倍大小的 RAM。 因此，如果数据帧为 10 GB，则需要一个 20+ GB RAM 的计算目标，确保可以将数据帧恰当地置于内存中并对其进行处理。 如果数据已压缩，则可进一步让其扩展；以压缩 parquet 格式存储的 20 GB 相对稀疏的数据可以在内存中扩展到大约 800 GB。 由于 Parquet 文件以纵栏格式存储数据，因此，如果只需要一半的列，则只需在内存中加载大约 400 GB。
+ 
+如果使用的是 Pandas，则没有理由使用超过 1 个 vCPU，因为它只需要使用这么多。 只需将 `import pandas as pd` 改为 `import modin.pandas as pd`，即可根据需要通过 Modin 和 Dask/Ray 轻松地在单个 Azure 机器学习计算实例/节点上并行化为多个 vCPU，并横向扩展成大群集。 
+ 
+如果无法为数据获得足够大的虚拟空间，则可使用以下两个选项：使用 Spark 或 Dask 等框架在“内存不足”的情况下对数据进行处理，也就是说，数据帧按分区加载到 RAM 分区中并进行处理，在最后再将最终结果收集到一起。 如果这太慢，则可使用 Spark 或 Dask 横向扩展成仍可以交互方式使用的群集。 
+
 ## <a name="dataset-types"></a>数据集类型
 
 根据用户在训练中使用数据集的方式，存在两种数据集类型：
@@ -58,7 +68,7 @@ ms.locfileid: "79292163"
 
 ## <a name="create-datasets"></a>创建数据集
 
-创建数据集时，将会创建对数据源位置的引用及其元数据的副本。 由于数据保留在其现有位置，因此不会产生额外的存储成本。 可以使用 Python SDK 或工作区登陆页（预览版）创建 `TabularDataset` 和 `FileDataset` 数据集。
+创建数据集时，将会创建对数据源位置的引用及其元数据的副本。 由于数据保留在其现有位置，因此不会产生额外的存储成本。 可以通过 Python SDK 或 https://ml.azure.com 创建 `TabularDataset` 和 `FileDataset` 数据集。
 
 要使数据可供 Azure 机器学习访问，必须从 [Azure 数据存储](how-to-access-data.md)或公共 Web URL 中的路径创建数据集。
 
@@ -74,8 +84,6 @@ ms.locfileid: "79292163"
 
 
 #### <a name="create-a-tabulardataset"></a>创建 TabularDataset
-
-可以通过 SDK 或使用 Azure 机器学习工作室创建 TabularDataset。 
 
 使用 `TabularDatasetFactory` 类中的 [`from_delimited_files()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory?view=azure-ml-py#from-delimited-files-path--validate-true--include-path-false--infer-column-types-true--set-column-types-none--separator------header-true--partition-format-none-) 方法可以读取 .csv 或 .tsv 格式的文件，以及创建未注册的 TabularDataset。 如果从多个文件进行读取，结果将聚合为一种表格表示形式。
 
@@ -97,7 +105,10 @@ datastore_paths = [(datastore, 'ather/2018/11.csv'),
 weather_ds = Dataset.Tabular.from_delimited_files(path=datastore_paths)
 ```
 
-默认情况下，在创建 TabularDataset 时，将自动推断列数据类型。 如果推断出的类型与预期不符，可以使用以下代码指定列类型。 还可以[详细了解支持的数据类型](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.datatype?view=azure-ml-py)。
+默认情况下，在创建 TabularDataset 时，将自动推断列数据类型。 如果推断出的类型与预期不符，可以使用以下代码指定列类型。 参数 `infer_column_type` 仅适用于从分隔文件创建的数据集。你也可以[详细了解支持的数据类型](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.datatype?view=azure-ml-py)。
+
+> [!IMPORTANT] 
+> 如果存储位于虚拟网络或防火墙后面，则仅支持通过 SDK 创建数据集。 若要创建数据集，请确保 `from_delimited_files()` 方法中包含参数 `validate=False` 和 `infer_column_types=False`。 这会绕过初始验证检查，确保可以从这些安全文件创建数据集。 
 
 ```Python
 from azureml.data.dataset_factory import DataType
@@ -115,6 +126,32 @@ titanic_ds.take(3).to_pandas_dataframe()
 0|1|False|3|Braund, Mr. Owen Harris|男|22.0|1|0|A/5 21171|7.2500||S
 1|2|True|1|Cumings, Mrs. John Bradley (Florence Briggs Th...|女|38.0|1|0|PC 17599|71.2833|C85|C
 2|3|True|3|Heikkinen, Miss. Laina|女|26.0|0|0|STON/O2. 3101282|7.9250||S
+
+
+若要从内存中 pandas 数据帧创建数据集，请将数据写入本地文件（例如 csv），然后从该文件创建数据集。 下面的代码演示了此工作流。
+
+```python
+local_path = 'data/prepared.csv'
+dataframe.to_csv(local_path)
+upload the local file to a datastore on the cloud
+# azureml-core of version 1.0.72 or higher is required
+# azureml-dataprep[pandas] of version 1.1.34 or higher is required
+from azureml.core import Workspace, Dataset
+
+subscription_id = 'xxxxxxxxxxxxxxxxxxxxx'
+resource_group = 'xxxxxx'
+workspace_name = 'xxxxxxxxxxxxxxxx'
+
+workspace = Workspace(subscription_id, resource_group, workspace_name)
+
+# get the datastore to upload prepared data
+datastore = workspace.get_default_datastore()
+
+# upload the local file from src_dir to the target_path in datastore
+datastore.upload(src_dir='data', target_path='data')
+# create a dataset referencing the cloud location
+dataset = Dataset.Tabular.from_delimited_files(datastore.path('data/prepared.csv'))
+```
 
 使用 `TabularDatasetFactory` 类中的 [`from_sql_query()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory?view=azure-ml-py#from-sql-query-query--validate-true--set-column-types-none-) 方法可从 Azure SQL 数据库进行读取：
 
@@ -150,7 +187,7 @@ data_slice = dataset.time_recent(timedelta(weeks=1, days=1))
 
 #### <a name="create-a-filedataset"></a>创建 FileDataset
 
-使用 `FileDatasetFactory` 类中的 [`from_files()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.filedatasetfactory?view=azure-ml-py#from-files-path--validate-true-) 方法可以加载任意格式的文件并创建未注册的 FileDataset：
+使用 `FileDatasetFactory` 类中的 [`from_files()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.filedatasetfactory?view=azure-ml-py#from-files-path--validate-true-) 方法可以加载任意格式的文件并创建未注册的 FileDataset。 如果存储位于虚拟网络或防火墙后面，请在 `from_files()` 方法中设置参数 `validate =False`。 这会绕过初始验证步骤，确保可以从这些安全文件创建数据集。
 
 ```Python
 # create a FileDataset pointing to files in 'animals' folder and its subfolders recursively
@@ -175,7 +212,7 @@ mnist_ds = Dataset.File.from_files(path=web_paths)
 1. 为“数据集类型”选择“表格”或“文件”。  
 1. 选择“下一步”，  打开“数据存储和文件选择”  窗体。 在此窗体上，可以选择在创建数据集后保留数据集的位置，还可以选择要用于数据集的具体数据文件。 
 1. 选择“下一步”以填充“设置和预览”以及“架构”窗体；它们是根据文件类型智能填充的。在这些窗体上进行创建之前，可以进一步配置数据集。    
-1. 选择“下一步”，  查看“确认详细信息”  窗体。 检查所做的选择，为数据集创建可选的数据配置文件。 详细了解[数据分析](how-to-create-portal-experiments.md#profile)。 
+1. 选择“下一步”，  查看“确认详细信息”  窗体。 检查所做的选择，为数据集创建可选的数据配置文件。 详细了解[数据分析](how-to-use-automated-ml-for-ml-models.md#profile)。 
 1. 选择“创建”以完成数据集的创建。 
 
 ## <a name="register-datasets"></a>注册数据集

@@ -8,12 +8,12 @@ ms.topic: conceptual
 origin.date: 03/02/2020
 ms.date: 03/02/2020
 ms.author: v-yeche
-ms.openlocfilehash: 3d0cdc6f5d917e5d74690347d7a238898f4c2023
-ms.sourcegitcommit: 69cadf1fa0ed81751c48fbce919a6bb44b1053ce
+ms.openlocfilehash: 377ba4fc4291542e3aed451042e756ef6dc75d5a
+ms.sourcegitcommit: 4810b75d1e1db78d9747e99735468a6ab861be2d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78209182"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80291313"
 ---
 # <a name="view-effective-routes-of-a-virtual-hub"></a>查看虚拟中心的有效路由
 
@@ -24,13 +24,13 @@ ms.locfileid: "78209182"
 
 以下示例可帮助你更好地了解虚拟 WAN 路由的显示方式。
 
-<!-- West Europe Mapping China North and West US mapping China North 2-->
+<!-- US East Mapping China East, West Europe Mapping China North, and West US mapping China North 2-->
 
 在此示例中，我们有一个具有三个中心的虚拟 WAN。 第一个中心在“中国东部”区域，第二个中心在“中国北部”区域，第三个中心在“中国北部 2”区域。 在虚拟 WAN 中，所有中心都是互联的。 在此示例中，我们假设“中国东部”和“中国北部”中心与本地分支（辐射）和 Azure 虚拟网络（辐射）之间都有连接。
 
 包含网络虚拟设备 (10.4.0.6) 的 Azure VNet 辐射 (10.4.0.0/16) 进一步对等互连到一个 VNet (10.5.0.0/16)。 有关中心路由表的详细信息，请参阅本文下文中的[其他信息](#abouthubroute)。
 
-在此示例中，我们还假设“中国北部分支 1”连接到“中国东部”中心以及“中国北部”中心。 “中国东部”中的一个 ExpressRoute 线路将分支 2 连接到“中国东部”中心。
+在此示例中，我们还假设“中国北部 2 分支 1”连接到“中国东部”中心以及“中国北部”中心。 “中国东部”中的一个 ExpressRoute 线路将分支 2 连接到“中国东部”中心。
 
 ![示意图](./media/effective-routes-virtual-hub/diagram.png)
 
@@ -46,7 +46,7 @@ ms.locfileid: "78209182"
 
 可以使用表底部的滚动条查看“AS 路径”。
 
-| **前缀** |  **下一跃点类型** | **下一跃点** |  **路由原点** |**AS 路径** |
+| **Prefix** |  **下一跃点类型** | **下一跃点** |  **路由原点** |**AS 路径** |
 | --- | --- | --- | --- | --- |
 | 10.20.1.0/24|VPN |10.1.0.6、10.1.0.7| /subscriptions/`<sub>`/resourceGroups/`<rg>`/providers/Microsoft.Network/vpnGateways/343a19aa6ac74e4d81f05ccccf1536cf-chinaeast-gw| 20000|
 |10.21.1.0/24 |ExpressRoute|10.1.0.10、10.1.0.11|/subscriptions/`<sub>`/resourceGroups/`<rg>`/providers/Microsoft.Network/expressRouteGateways/4444a6ac74e4d85555-chinaeast-gw|21000|

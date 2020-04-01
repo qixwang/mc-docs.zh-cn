@@ -1,7 +1,7 @@
 ---
-title: Azure 门户：使用查询编辑器进行查询
-description: 了解如何在 Azure 门户中使用 SQL 查询编辑器连接到 SQL 数据库。 然后，通过运行 Transact-SQL (T-SQL) 语句来查询和编辑数据。
-keywords: 连接到 sql 数据库,azure 门户, 门户, 查询编辑器
+title: 在 Azure 门户中使用查询编辑器查询 SQL 数据库
+description: 了解如何使用查询编辑器对 Azure SQL 数据库运行 Transact-SQL (T-SQL) 查询。
+keywords: 连接到 sql 数据库, 查询 sql 数据库, azure 门户, 门户, 查询编辑器
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
@@ -11,87 +11,93 @@ ms.topic: quickstart
 author: WenJason
 ms.author: v-jay
 ms.reviewer: carlrab
-origin.date: 10/24/2019
-ms.date: 12/16/2019
-ms.openlocfilehash: a16cfe234ba12eb036a37adf9ce0fad8d74c312f
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+origin.date: 03/12/2020
+ms.date: 03/30/2020
+ms.openlocfilehash: 9e9d4558afecd8251904adc042f8635601ed02ad
+ms.sourcegitcommit: 90660563b5d65731a64c099b32fb9ec0ce2c51c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336076"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80341838"
 ---
-# <a name="quickstart-use-the-azure-portals-sql-query-editor-to-connect-and-query-data"></a>快速入门：使用 Azure 门户的 SQL 查询编辑器进行连接并查询数据
+# <a name="quickstart-use-the-azure-portals-query-editor-to-query-a-sql-database"></a>快速入门：使用 Azure 门户的查询编辑器查询 SQL 数据库
 
-SQL 查询编辑器是一个 Azure 门户浏览器工具，它提供了一种在 Azure SQL 数据库或 Azure SQL 数据仓库上执行 SQL 查询的简便方法。 在本快速入门中，将使用查询编辑器连接到 SQL 数据库，然后运行 Transact-SQL 语句以查询、插入、更新和删除数据。
+查询编辑器是 Azure 门户中的一种工具，用于针对 Azure SQL 数据库或 Azure SQL 数据仓库运行 SQL 查询。 
+
+在本快速入门中，我们将使用查询编辑器对 Azure SQL 数据库运行 Transact-SQL (T-SQL) 查询。
+
 
 ## <a name="prerequisites"></a>先决条件
 
-要完成本教程，需要：
+完成本快速入门需要 AdventureWorksLT 示例数据库。 如果没有 AdventureWorksLT SQL 数据库的工作副本，可以根据以下快速入门快速创建一个：
 
-- Azure SQL 数据库。 可以根据下述快速入门之一，在 Azure SQL 数据库中创建数据库，然后对其进行配置：
+- [快速入门：使用 Azure 门户、PowerShell 或 Azure CLI 创建单个 Azure SQL 数据库](sql-database-single-database-get-started.md) 
 
-  || 单一数据库 |
-  |:--- |:--- |
-  | 创建| [Portal](sql-database-single-database-get-started.md) |
-  || [CLI](scripts/sql-database-create-and-configure-database-cli.md) |
-  || [PowerShell](scripts/sql-database-create-and-configure-database-powershell.md) |
-  | 配置 | [服务器级别 IP 防火墙规则](sql-database-server-level-firewall-rule.md)|
-  |||
+### <a name="configure-network-settings"></a>配置网络设置
 
-> [!NOTE]
-> 查询编辑器使用端口 443 和 1443 进行通信。  请确保已在这些端口上启用出站 HTTPS 流量。 还需要将出站 IP 地址添加到服务器的允许防火墙规则中，以访问你的数据库和数据仓库。
+如果在查询编辑器中收到以下错误之一：“本地网络设置可能正在阻止查询编辑器发出查询。请单击此处了解有关如何配置网络设置的说明”  或“无法与服务器建立连接。这可能表示本地防火墙配置或网络代理设置存在问题”  ，则应遵循以下指示来解决问题：
 
-## <a name="sign-in-the-azure-portal"></a>登录 Azure 门户
+> [!IMPORTANT]
+> 查询编辑器使用端口 443 和 1443 进行通信。 请确保已在这些端口上启用出站 HTTPS 流量。 还需要[将出站 IP 地址添加到服务器的允许防火墙规则中](sql-database-server-level-firewall-rule.md)，以访问你的数据库和数据仓库。
 
-登录到 [Azure 门户](https://portal.azure.cn/)。
 
-## <a name="connect-using-sql-authentication"></a>使用 SQL 身份验证进行连接
+## <a name="open-the-sql-database-query-editor"></a>打开 SQL 数据库查询编辑器
 
-1. 转到 Azure 门户以连接到 SQL 数据库。 搜索并选择“SQL 数据库”  。
+1. 登录到 [Azure 门户](https://portal.azure.cn/)，选择要查询的 SQL 数据库。
 
-    ![导航到 SQL 数据库列表，Azure 门户](./media/sql-database-connect-query-portal/search-for-sql-databases.png)
-
-2. 选择 SQL 数据库。
-
-    ![选择 SQL 数据库，Azure 门户](./media/sql-database-connect-query-portal/select-a-sql-database.png)
-
-3. 在“SQL 数据库”菜单中，选择“查询编辑器(预览)”   。
+2. 在“SQL 数据库”菜单中，选择“查询编辑器(预览)”   。
 
     ![查找查询编辑器](./media/sql-database-connect-query-portal/find-query-editor.PNG)
 
-4. 在“登录”页面的“SQL Server 身份验证”标签下，输入用于创建数据库的服务器管理员帐户的登录 ID 和密码     。 然后选择“确定”。 
+
+## <a name="establish-a-connection-to-the-database"></a>建立到数据库的连接
+
+即使你已登录到门户，仍需提供凭据才能访问 SQL 数据库。 可以使用 SQL 身份验证或 Azure Active Directory 连接到数据库。
+
+### <a name="connect-using-sql-authentication"></a>使用 SQL 身份验证进行连接
+
+1. 在“登录”页中的“SQL Server 身份验证”下，输入有权访问数据库的用户的“登录名”和“密码”     。 如果不确定，请使用数据库服务器的服务器管理员的登录名和密码。
 
     ![登录](./media/sql-database-connect-query-portal/login-menu.png)
 
-## <a name="connect-using-azure-active-directory"></a>使用 Azure Active Directory 进行连接
+2. 选择“确定”  。
 
-配置一个 Azure Active Directory (Azure AD) 管理员即可使用单个标识登录到 Azure 门户和 SQL 数据库。 请按照以下步骤配置 SQL Server 的 Azure AD 管理员。
+
+### <a name="connect-using-azure-active-directory"></a>使用 Azure Active Directory 进行连接
+
+配置一个 Azure Active Directory (Azure AD) 管理员即可使用单个标识登录到 Azure 门户和 SQL 数据库。 若要使用 Azure AD 连接到数据库，请按照以下步骤配置 SQL Server 的 Azure AD 管理员。
 
 > [!NOTE]
 > * Azure AD 管理员尚不支持电子邮件帐户（例如，outlook.com、gmail.com、yahoo.com 等）。 请确保选择在 Azure AD 中本机创建或联合到 Azure AD 中的用户。
 > * Azure AD 管理员登录不适用于已启用双因素身份验证的帐户。
 
-1. 在 Azure 门户菜单或“主页”页上，选择“所有资源”   。
+#### <a name="set-an-active-directory-admin-for-the-database-server"></a>设置数据库服务器的 Active Directory 管理员
 
-2. 选择 SQL Server。
+1. 在 Azure 门户中，选择你的 SQL Server。
 
-3. 从“SQL Server”菜单的“设置”中，选择“Active Directory 管理员”    。
+2. 在“SQL Server”  菜单上，选择“Active Directory 管理员”  。
 
-4. 在 SQL Server“Active Directory 管理员”页工具栏中，选择“设置管理员”，然后选择用户或组作为 Azure AD 管理员   。
+3. 在 SQL Server“Active Directory 管理员”页工具栏上，选择“设置管理员”，然后选择用户或组作为 Azure AD 管理员   。
 
     ![选择 active directory](./media/sql-database-connect-query-portal/select-active-directory.png)
 
-5. 在“添加管理员”页面的搜索框中，输入要查找的用户或组，选择其作为管理员，然后选择“选择”按钮   。
+4. 在“添加管理员”页的搜索框中，输入要查找的用户或组，选择其作为管理员，然后选择“选择”按钮   。
 
-6. 返回 SQL Server“Active Directory 管理员”页工具栏中，选择“保存”   。
+5. 返回 SQL Server“Active Directory 管理员”页工具栏中，选择“保存”   。
 
-7. 在“SQL Server”菜单中，选择“SQL 数据库”，然后选择 SQL数据库   。
+### <a name="connect-to-the-database"></a>连接到数据库
 
-8. 在“SQL 数据库”菜单中，选择“查询编辑器(预览)”   。 在“登录”页面中的“Active Directory 身份验证”标签下，将显示一条消息，说明你已登录（如果你是 Azure AD 管理员）   。然后选择“按 \<用户或组 ID> 身份继续”按钮   。
+6. 在“SQL Server”菜单中，选择“SQL 数据库”，然后选择 SQL数据库   。
 
-## <a name="view-data"></a>查看数据
+7. 在“SQL 数据库”菜单中，选择“查询编辑器(预览)”   。 在“登录”页面中的“Active Directory 身份验证”标签下，将显示一条消息，说明你已登录（如果你是 Azure AD 管理员）   。然后选择“以 \<用户或组 ID> 身份继续”按钮   。 如果该页指示你尚未成功登录，则可能需要刷新页面。
 
-1. 完成身份验证后，在查询编辑器中粘贴以下 SQL，按类别检索排名前 20 的产品。
+## <a name="query-a-sql-database"></a>查询 SQL 数据库
+
+应该可以针对 AdventureWorksLT 示例数据库成功运行以下示例查询。
+
+### <a name="run-a-select-query"></a>运行 SELECT 查询
+
+1. 将以下查询粘贴到查询编辑器中：
 
    ```sql
     SELECT TOP 20 pc.Name as CategoryName, p.name as ProductName
@@ -100,13 +106,15 @@ SQL 查询编辑器是一个 Azure 门户浏览器工具，它提供了一种在
     ON pc.productcategoryid = p.productcategoryid;
    ```
 
-2. 在工具栏上，选择“运行”，然后查看“结果”窗格中的输出   。
+2. 选择“运行”，然后查看“结果”窗格中的输出   。
 
    ![查询编辑器结果](./media/sql-database-connect-query-portal/query-editor-results.png)
 
-## <a name="insert-data"></a>插入数据
+3. 可以选择将查询另存为 .sql 文件，或者将返回的数据导出为 .json、.csv 或 .xml 文件。
 
-运行以下 [INSERT](https://msdn.microsoft.com/library/ms174335.aspx) Transact-SQL 语句，将新产品添加到 `SalesLT.Product` 表中。
+### <a name="run-an-insert-query"></a>运行 INSERT 查询
+
+运行以下 [INSERT](https://docs.microsoft.com/sql/t-sql/statements/insert-transact-sql/) T-SQL 语句，将新产品添加到 `SalesLT.Product` 表中。
 
 1. 将之前的查询替换为此查询。
 
@@ -131,12 +139,12 @@ SQL 查询编辑器是一个 Azure 门户浏览器工具，它提供了一种在
    ```
 
 
-2. 选择“运行”在 `Product` 表中插入新行  。 “消息”窗格显示“查询已成功  ：受影响的行：1”。**
+2. 选择“运行”在 `Product` 表中插入新行  。 “消息”窗格显示“查询已成功  ：受影响的行：1” **。**
 
 
-## <a name="update-data"></a>更新数据
+### <a name="run-an-update-query"></a>运行 UPDATE 查询
 
-运行以下 [UPDATE](https://msdn.microsoft.com/library/ms177523.aspx) Transact-SQL 语句修改新产品。
+运行以下 [UPDATE](https://docs.microsoft.com/sql/t-sql/queries/update-transact-sql/) T-SQL 语句来修改新产品。
 
 1. 将之前的查询替换为此查询。
 
@@ -146,11 +154,11 @@ SQL 查询编辑器是一个 Azure 门户浏览器工具，它提供了一种在
    WHERE Name = 'myNewProduct';
    ```
 
-2. 选择“运行”更新 `Product` 表中的指定行  。 “消息”窗格显示“查询已成功  ：受影响的行：1”。**
+2. 选择“运行”更新 `Product` 表中的指定行  。 “消息”窗格显示“查询已成功  ：受影响的行：1” **。**
 
-## <a name="delete-data"></a>删除数据
+### <a name="run-a-delete-query"></a>运行 DELETE 查询
 
-运行以下 [DELETE](https://msdn.microsoft.com/library/ms189835.aspx) Transact-SQL 语句删除新产品。
+运行以下 [DELETE](https://docs.microsoft.com/sql/t-sql/statements/delete-transact-sql/) T-SQL 语句来删除新产品。
 
 1. 将之前的查询替换为此查询：
 
@@ -159,16 +167,16 @@ SQL 查询编辑器是一个 Azure 门户浏览器工具，它提供了一种在
    WHERE Name = 'myNewProduct';
    ```
 
-2. 选择“运行”删除 `Product` 表中的指定行  。 “消息”窗格显示“查询已成功  ：受影响的行：1”。**
+2. 选择“运行”删除 `Product` 表中的指定行  。 “消息”窗格显示“查询已成功  ：受影响的行：1” **。**
 
 
 ## <a name="query-editor-considerations"></a>查询编辑器注意事项
 
 使用查询编辑器时，需要注意以下要点。
 
-* 查询编辑器使用端口 443 和 1443 进行通信。  请确保已在这些端口上启用出站 HTTPS 流量。 还需要将出站 IP 地址添加到服务器的允许防火墙规则中，以访问你的数据库和数据仓库。
+* 查询编辑器使用端口 443 和 1443 进行通信。 请确保已在这些端口上启用出站 HTTPS 流量。 还需要将出站 IP 地址添加到服务器的允许防火墙规则中，以访问你的数据库和数据仓库。
 
-* 按 F5 刷新查询编辑器页，任何正在处理的查询都将丢失。
+* 按 **F5** 刷新查询编辑器页，任何正在处理的查询都将丢失。
 
 * 查询编辑器不支持连接到 `master` 数据库。
 
@@ -176,9 +184,9 @@ SQL 查询编辑器是一个 Azure 门户浏览器工具，它提供了一种在
 
 * 查询编辑器仅支持地理数据类型的柱面投影。
 
-* 不支持适用于数据库表和视图的 IntelliSense。 但是，此编辑器支持对已键入的名称启用自动完成功能。
+* 不支持针对数据库表和视图的 IntelliSense，但此编辑器支持对已键入的名称启用自动完成功能。
 
 
 ## <a name="next-steps"></a>后续步骤
 
-若要了解有关 Azure SQL 数据库支持的 Transact-SQL 的详细信息，请参阅[解析迁移到 SQL 数据库的过程中的 Transact-SQL 差异](sql-database-transact-sql-information.md)。
+若要详细了解 Azure SQL 数据库支持的 Transact-SQL (T-SQL)，请参阅[解决迁移到 SQL 数据库的过程中的 Transact-SQL 差异](sql-database-transact-sql-information.md)。

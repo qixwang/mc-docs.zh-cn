@@ -1,0 +1,53 @@
+### YamlMime:Landing
+title: Azure API for FHIR 文档
+summary: Azure API for FHIR 是基于标准且符合规范的托管式 API，可用于处理临床健康数据，并实现可操作的分析和机器学习解决方案。
+metadata:
+  title: Azure API for FHIR 文档 - 教程和操作指南
+  description: Azure API for FHIR 是基于标准且符合规范的托管式 API，可用于处理临床健康数据，并实现可操作的分析和机器学习解决方案。
+  services: healthcare-apis
+  ms.service: healthcare-apis
+  ms.subservice: fhir
+  ms.topic: landing-page
+  ms.collection: collection
+  author: hansenms
+  ms.author: mihansen
+  ms.date: 11/06/2019
+  ms.openlocfilehash: 15192a5911de6a2609b641f3eea6c0c7d81174e0
+  ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 03/27/2020
+  ms.locfileid: "80343830"
+landingContent:
+- title: 开始使用 Azure API for FHIR
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什么是 Azure API for FHIR？
+      url: overview.md
+  - linkListType: quickstart
+    links:
+    - text: 部署 API Server for FHIR
+      url: fhir-paas-portal-quickstart.md
+- title: 设置教程
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: 部署用于从 FHIR 服务读取数据的 JavaScript 应用
+      url: tutorial-web-app-fhir-server.md
+    - text: 使用 Postman 访问 FHIR API
+      url: access-fhir-postman-tutorial.md
+    - text: 第三方应用和医疗记录的 SMART 集成
+      url: use-smart-on-fhir-proxy.md
+- title: 注册应用以进行 AD 身份验证
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 注册资源应用
+      url: register-resource-azure-ad-client-app.md
+    - text: 注册机密客户端应用
+      url: register-confidential-azure-ad-client-app.md
+    - text: 注册公共客户端应用
+      url: register-public-azure-ad-client-app.md
+    - text: 注册服务客户端应用
+      url: register-service-azure-ad-client-app.md

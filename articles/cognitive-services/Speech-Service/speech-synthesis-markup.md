@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-origin.date: 02/18/2020
-ms.date: 03/23/2020
+origin.date: 03/05/2020
+ms.date: 03/16/2020
 ms.author: v-tawe
-ms.openlocfilehash: d7c4f8929ec0eb1fd995bb0d966fea53ba0b531e
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: bd9fc0ba521c174e3e0f0ba8b8884d4f75f5f6a7
+ms.sourcegitcommit: b2f2bb08ab1b5ccb3c596d84b3b6ddca5bba3903
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79293293"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80151515"
 ---
 # <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>通过语音合成标记语言 (SSML) 改善合成
 
@@ -36,7 +36,7 @@ SSML 的语音服务实现基于万维网联合会的[语音合成标记语言�
 
 请从标准语音和神经语音中进行选择，50 多种标准语音已在 10 种以上的语言和区域设置中提供，5 种神经语音已在 4 种语言和区域设置中提供。 有关支持的语言、区域设置和语音（神经和标准）的完整列表，请参阅[语言支持](language-support.md)。
 
-若要详细了解标准语音，请参阅[文本转语音概述](text-to-speech.md)。
+若要详细了解标准语音和神经语音，请参阅[文本转语音概述](text-to-speech.md)。
 
 ## <a name="special-characters"></a>特殊字符
 
@@ -201,6 +201,7 @@ speechConfig!.setPropertyTo(
 
 目前，支持调整以下神经语音的讲话风格：
 * `en-US-JessaNeural`
+* `pt-BR-FranciscaNeural`
 * `zh-CN-XiaoxiaoNeural`
 
 更改将在句子级别应用，风格因语音而异。 如果某种风格不受支持，该服务将以默认的中性讲话风格返回语音。
@@ -226,6 +227,7 @@ speechConfig!.setPropertyTo(
 | | `type="chat"` | 以一种随性、放松的音调讲话 |
 | | `type="newscast"` | 以正式的音调表达，类似于新闻发布会 |
 | | `type="customerservice"` | 作为客户服务以友好且耐心的方式讲话 |
+| `pt-BR-FranciscaNeural` | `type="cheerful"` | 表达积极和愉快的情感 |
 | `zh-CN-XiaoxiaoNeural` | `type="newscast"` | 以正式的音调表达，类似于新闻发布会 |
 | | `type="sentiment"` | 传达感人的祝词或经历 |
 
@@ -333,7 +335,7 @@ speechConfig!.setPropertyTo(
 
 | 属性 | 说明 | 必需/可选 |
 |-----------|-------------|---------------------|
-| `alphabet` | 指定在 `ph` 属性中合成字符串发音时要使用的音标。 指定音标的字符串必须以小写字母指定。 下面是可以指定的可能音标。<ul><li>ipa &ndash; 国际音标</li><li>sapi &ndash; 语音 API 音素集</li><li>ups &ndash; 通用音素集</li></ul>音标仅适用于元素中的音素。 有关详细信息，请参阅[音标参考](https://msdn.microsoft.com/library/hh362879(v=office.14).aspx)。 | 可选 |
+| `alphabet` | 指定在 `ph` 属性中合成字符串发音时要使用的音标。 指定音标的字符串必须以小写字母指定。 下面是可以指定的可能音标。<ul><li>`ipa` &ndash; 国际音标</li><li>`sapi` &ndash; 语音服务音标</li><li>`ups` &ndash; 通用音素集</li></ul><br>音标仅适用于元素中的 `phoneme`。 有关详细信息，请参阅[音标参考](https://en.wikipedia.org/wiki/International_Phonetic_Alphabet)。 | 可选 |
 | `ph` | 一个字符串，包含用于在 `phoneme` 元素中指定单词发音的音素。 如果指定的字符串包含无法识别的音素，则文本转语音 (TTS) 服务将拒绝整个 SSML 文档，并且不会生成文档中指定的任何语音输出。 | 如果使用音素，则此属性是必需的。 |
 
 **示例**
@@ -353,6 +355,101 @@ speechConfig!.setPropertyTo(
     </voice>
 </speak>
 ```
+
+## <a name="use-custom-lexicon-to-improve-pronunciation"></a>使用自定义词典改善发音
+
+TTS 有时不能准确地对某个词发音，例如，公司名称或外文名称。 开发人员可以使用 `phoneme` 和 `sub` 标记在 SSML 中定义这些实体的读取，或使用 `lexicon` 标记来引用自定义词典文件以定义多个实体的读取。
+
+**语法**
+
+```XML
+<lexicon uri="string"/>
+```
+
+**属性**
+
+| 属性 | 说明 | 必需/可选 |
+|-----------|-------------|---------------------|
+| `uri` | 外部 PLS 文档的地址。 | 必需。 |
+
+**使用情况**
+
+步骤 1：定义自定义词典 
+
+可以按自定义字典项的列表（存储为 .xml 或 .pls 文件）定义实体的读取。
+
+**示例**
+
+```xml
+<?xml version="1.0" encoding="UTF-16"?>
+<lexicon version="1.0" 
+      xmlns="http://www.w3.org/2005/01/pronunciation-lexicon"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+      xsi:schemaLocation="http://www.w3.org/2005/01/pronunciation-lexicon 
+        http://www.w3.org/TR/2007/CR-pronunciation-lexicon-20071212/pls.xsd"
+      alphabet="ipa" xml:lang="en-US">
+  <lexeme>
+    <grapheme>BTW</grapheme> 
+    <alias>By the way</alias> 
+  </lexeme>
+  <lexeme>
+    <grapheme> Benigni </grapheme> 
+    <phoneme> bɛˈniːnji</phoneme>
+  </lexeme>
+</lexicon>
+```
+
+每个 `lexeme` 元素都是一个词典项。 `grapheme` 包含描述 `lexeme` 的拼字法的文本。 读出形式可作为 `alias` 提供。 可以在 `phoneme` 元素中提供语音字符串。
+
+`lexicon` 元素包含至少一个 `lexeme` 元素。 每个 `lexeme` 元素包含至少一个 `grapheme` 元素以及一个或多个 `grapheme`、`alais` 和 `phoneme` 元素。 `grapheme` 元素包含描述<a href="https://www.w3.org/TR/pronunciation-lexicon/#term-Orthography" target="_blank">拼字法 <span class="docon docon-navigate-external x-hidden-focus"></span></a> 的文本。 `alias` 元素用于指示某个首字母缩写词或某个缩写词的发音。 `phoneme` 元素提供了描述 `lexeme` 发音方式的文本。
+
+有关自定义词典文件的详细信息，请参阅 W3C 网站上的 [Pronunciation Lexicon Specification (PLS) Version 1.0](https://www.w3.org/TR/pronunciation-lexicon/)（发音词典规范 (PLS) 版本 1.0）。
+
+步骤 2：将在步骤 1 中创建的自定义词典文件上传到网上。可以将其存储在任何位置。建议你将其存储在 Microsoft Azure（例如 [Azure Blob 存储](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)）中。
+
+步骤 3：请参阅 SSML 中的自定义词典文件
+
+```xml
+<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" 
+          xmlns:mstts="http://www.w3.org/2001/mstts" 
+          xml:lang="en-US">
+<lexicon uri="http://www.example.com/customlexicon.xml"/>
+BTW, we will be there probably 8:00 tomorrow morning.
+Could you help leave a message to Robert Benigni for me?
+</speak>
+```
+“BTW”将读作“By the way”。 “Benigni”将通过提供的 IPA“bɛˈniːnji”朗读。  
+
+**限制**
+- 文件大小：自定义词典文件大小的最大限制为 100KB。如果超过此大小，合成请求会失败。
+- 词典缓存刷新：自定义词典在缓存时会将 URI 用作 TTS 服务上的密钥（在首次加载它时）。 不会在 15 分钟内重新加载具有相同 URI 的词典。因此，如果希望自定义词典更改生效，最多需要等待 15 分钟。
+
+**语音服务语音集**
+
+在上面的示例中，我们使用的是国际音标（也称为 IPA 语音集）。 我们建议开发人员使用 IPA，因为它是国际标准。 考虑到 IPA 不容易记住，语音服务为七种语言（`en-US`、`fr-FR`、`de-DE`、`es-ES`、`ja-JP`、`zh-CN`和 `zh-TW`）定义语音集。
+
+可以使用 `sapi` 作为 `alphabet` 属性的值，而自定义词典则如下所示：
+
+```xml
+<?xml version="1.0" encoding="UTF-16"?>
+<lexicon version="1.0" 
+      xmlns="http://www.w3.org/2005/01/pronunciation-lexicon"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+      xsi:schemaLocation="http://www.w3.org/2005/01/pronunciation-lexicon 
+        http://www.w3.org/TR/2007/CR-pronunciation-lexicon-20071212/pls.xsd"
+      alphabet="sapi" xml:lang="en-US">
+  <lexeme>
+    <grapheme>BTW</grapheme> 
+    <alias> By the way </alias> 
+  </lexeme>
+  <lexeme>
+    <grapheme> Benigni </grapheme>
+    <phoneme> b eh 1 - n iy - n y iy </phoneme>
+  </lexeme>
+</lexicon>
+```
+
+有关详细的语音服务音标的更多信息，请参阅[语音服务语音集](speech-ssml-phonetic-sets.md)。
 
 ## <a name="adjust-prosody"></a>调整韵律
 
