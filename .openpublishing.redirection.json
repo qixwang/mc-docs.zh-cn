@@ -22889,11 +22889,11 @@
       "source_path": "articles/cognitive-services/Translator/quickstart-python-transliterate.md",
       "redirect_url": "/cognitive-services/Translator/quickstart-transliterate?pivots=programming-language-csharp",
       "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/iot-edge/how-to-install-production-certificates.md",
+      "redirect_url": "/iot-edge/how-to-manage-device-certificates",
+      "redirect_document_id": true
     }
-
-
-
-
-
   ]
 }
