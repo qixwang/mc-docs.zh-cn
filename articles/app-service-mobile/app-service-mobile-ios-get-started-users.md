@@ -1,6 +1,6 @@
 ---
 title: 在 iOS 上添加身份验证
-description: 了解如何使用 Azure 移动应用通过标识提供者（如 AAD、Google、Facebook、Twitter 和 Microsoft）对 iOS 应用的用户进行身份验证。
+description: 了解如何使用 Azure 移动应用通过标识提供者（如 AAD 和 Microsoft）对 iOS 应用的用户进行身份验证。
 ms.assetid: ef3d3cbe-e7ca-45f9-987f-80c44209dc06
 ms.tgt_pltfrm: mobile-ios
 ms.devlang: dotnet
@@ -8,22 +8,22 @@ ms.topic: article
 origin.date: 06/25/2019
 md.date: 03/23/2020
 ms.author: v-tawe
-ms.openlocfilehash: ff2bba30d4681d8e19338c952f6e80a07e3e42e5
-ms.sourcegitcommit: e94ed1c9eff4e88be2ca389909e60b14cc0d92f8
+ms.openlocfilehash: 90f5019ad6e43337dbfe713bb0d9daf1b06796e3
+ms.sourcegitcommit: b2f2bb08ab1b5ccb3c596d84b3b6ddca5bba3903
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79084417"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80151739"
 ---
 # <a name="add-authentication-to-your-ios-app"></a>Add authentication to your iOS app（将身份验证添加到 iOS 应用）
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
 
 本教程介绍如何使用支持的标识提供者向 [iOS 快速入门] 项目添加身份验证。 本教程基于 [iOS 快速入门] 教程，必须先完成该教程。
 
-## <a name="register"></a>注册应用以进行身份验证并配置应用服务
+## <a name="register-your-app-for-authentication-and-configure-the-app-service"></a><a name="register"></a>注册应用以进行身份验证并配置应用服务
 [!INCLUDE [app-service-mobile-register-authentication](../../includes/app-service-mobile-register-authentication.md)]
 
-## <a name="redirecturl"></a>将应用添加到允许的外部重定向 URL
+## <a name="add-your-app-to-the-allowed-external-redirect-urls"></a><a name="redirecturl"></a>将应用添加到允许的外部重定向 URL
 
 安全身份验证要求为应用定义新的 URL 方案。  此方案允许在完成身份验证过程后，身份验证系统重定向到应用。  在本教程中，我们自始至终使用 URL 方案 _appname_ 。  但是，可以使用任何你所选的 URL 方案。  该方案是移动应用的唯一方案。  在服务器端启用重定向：
 
@@ -41,12 +41,12 @@ ms.locfileid: "79084417"
 
 7. 单击“保存”  。
 
-## <a name="permissions"></a>将权限限制给已经过身份验证的用户
+## <a name="restrict-permissions-to-authenticated-users"></a><a name="permissions"></a>将权限限制给已经过身份验证的用户
 [!INCLUDE [app-service-mobile-restrict-permissions-dotnet-backend](../../includes/app-service-mobile-restrict-permissions-dotnet-backend.md)]
 
 在 Xcode 中，按“运行”  启动应用。 将引发一个异常，因为应用尝试以未经身份验证的用户身份访问后端，但 TodoItem  表现在要求身份验证。
 
-## <a name="add-authentication"></a>向应用程序添加身份验证
+## <a name="add-authentication-to-app"></a><a name="add-authentication"></a>向应用程序添加身份验证
 **Objective-C**：
 
 1. 在 Mac 的 Xcode 中打开 *QSTodoListViewController.m* 并添加以下方法：

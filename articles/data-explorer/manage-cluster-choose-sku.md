@@ -7,13 +7,13 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 origin.date: 07/14/2019
-ms.date: 03/23/2020
-ms.openlocfilehash: 98f4d03bce40fe719865bc1badb6407bc810a3e1
-ms.sourcegitcommit: 4ba6d7c8bed5398f37eb37cf5e2acafcdcc28791
+ms.date: 03/16/2020
+ms.openlocfilehash: 5595d4695db9d80d334bf830c1f3e68b7a84b6c2
+ms.sourcegitcommit: 1d3d8dfdaf6281f06640cbee7124a1e8bf102c50
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2020
-ms.locfileid: "79133875"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80243954"
 ---
 # <a name="select-the-correct-vm-sku-for-your-azure-data-explorer-cluster"></a>为 Azure 数据资源管理器群集选择正确的 VM SKU 
 
@@ -22,6 +22,9 @@ ms.locfileid: "79133875"
 数据管理群集的大小和 VM SKU 完全由 Azure 数据资源管理器服务进行管理。 它们由引擎的 VM 大小和引入工作负荷等因素决定。 
 
 随时可以通过[纵向扩展群集](manage-cluster-vertical-scaling.md)来更改引擎群集的 VM SKU。 最好是从适合初始方案的最小 SKU 大小开始。 请注意，使用新的 VM SKU 重新创建群集时，纵向扩展群集会导致最长 30 分钟的停机。
+
+> [!TIP]
+> 计算[预留实例 (RI) 数](https://docs.microsoft.com/azure/virtual-machines/windows/prepay-reserved-vm-instances)适用于 Azure 数据资源管理器群集。  
 
 本文介绍各个 VM SKU 选项，并提供技术详细信息来帮助你做出最佳选择。
 
@@ -45,11 +48,12 @@ Azure 数据资源管理器提供两种类型的群集：
 
 下表描述了可用 SKU 类型的主要差别：
  
-| 属性 | D SKU |
-|---|---
-|**小型 SKU**|最小大小为 D11，提供两个核心|
-|**可用性**|在所有区域可用（DS + PS 版本的可用性限制更高）|
-|**每核心每&nbsp;GB 缓存成本**|D SKU 的成本较高，DS + PS 版本的成本较低|
+| 属性 | D SKU | L SKU |
+|---|---|---
+|**小型 SKU**|最小大小为 D11，提供两个核心|最小大小为 L4，具有四个核心 |
+|**可用性**|在所有区域可用（DS + PS 版本的可用性限制更高）|在几个区域中可用 |
+|**每核心每&nbsp;GB 缓存成本**|D SKU 的成本较高，DS + PS 版本的成本较低|使用即用即付选项的成本最低 |
+|**预留实例 (RI) 定价**|高折扣（如果承诺使用期为三年，则折扣超过 55%）|较低折扣（如果承诺使用期为三年，则折扣为 20%） |  
 
 ## <a name="select-your-cluster-vm"></a>选择群集 VM 
 
@@ -75,6 +79,9 @@ Azure 数据资源管理器提供两种类型的群集：
 |DS13 v2 + 2&nbsp;TB&nbsp;PS| 存储优化 | 2&nbsp;TB | 8 | 56&nbsp;GB | 2 | 2 | 1,000
 |DS14 v2 + 3&nbsp;TB&nbsp;PS| 存储优化 | 3&nbsp;TB | 16 | 112&nbsp;GB | 2 | 2 | 1,000
 |DS14 v2 + 4&nbsp;TB&nbsp;PS| 存储优化 | 4&nbsp;TB | 16 | 112&nbsp;GB | 4 | 2 | 1,000
+|L4s v1| 存储优化 | 650&nbsp;GB | 4 | 32&nbsp;GB | 0 | 2 | 16
+|L8s v1| 存储优化 | 1.3&nbsp;TB | 8 | 64&nbsp;GB | 0 | 2 | 1,000
+|L16s_1| 存储优化 | 2.6&nbsp;TB | 16| 128&nbsp;GB | 0 | 2 | 1,000
 
 * 可以使用 Azure 数据资源管理器 [ListSkus API](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.kusto.clustersoperationsextensions.listskus?view=azure-dotnet) 查看每个区域的已更新 VM SKU 列表。 
 * 详细了解[各种 SKU](/virtual-machines/windows/sizes)。 
