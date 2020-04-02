@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.reviewer: trbye
 origin.date: 07/12/2019
 ms.date: 03/16/2020
-ms.openlocfilehash: 3680eebb3711f6676b85770f107ed37196d7986f
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.openlocfilehash: 7bf5f9fed4141610d215edbf7e54c4b59bde286d
+ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78850594"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80343384"
 ---
 # <a name="enable-logging-in-azure-machine-learning"></a>在 Azure 机器学习中启用日志记录
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -102,7 +102,7 @@ logs = service.get_logs()
 service.update(enable_app_insights=True)
 ```
 
-有关如何在 Azure 机器学习工作室中使用 Application Insights 的详细信息，请参阅[操作指南](how-to-enable-app-insights.md)。
+有关详细信息，请参阅[监视机器学习 Web 服务终结点并从中收集数据](how-to-enable-app-insights.md)。
 
 ## <a name="python-native-logging-settings"></a>Python 本机日志记录设置
 
@@ -112,3 +112,7 @@ SDK 中的某些日志可能包含一个错误，指示你将日志记录级别�
 import logging
 logging.basicConfig(level=logging.DEBUG)
 ```
+
+## <a name="next-steps"></a>后续步骤
+
+* [监视机器学习 Web 服务终结点并从中收集数据](how-to-enable-app-insights.md)

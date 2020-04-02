@@ -10,14 +10,14 @@ ms.topic: conceptual
 author: WenJason
 ms.author: v-jay
 ms.reviewer: carlrab
-origin.date: 02/01/2020
-ms.date: 03/16/2020
-ms.openlocfilehash: 737cee699dc7cd12ad4e6615cbb4c711569ff089
-ms.sourcegitcommit: dc862610e2169c1fce6fb0ae9eb7dd7567f86a0a
+origin.date: 03/09/2020
+ms.date: 03/30/2020
+ms.openlocfilehash: 40a5a546bdcefa881cdb95f36bcea235734f1a44
+ms.sourcegitcommit: 90660563b5d65731a64c099b32fb9ec0ce2c51c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79293769"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80341804"
 ---
 # <a name="choose-between-the-vcore-and-the-dtu-purchasing-models"></a>在 vCore 和 DTU 购买模型之间进行选择
 
@@ -86,6 +86,11 @@ ms.locfileid: "79293769"
 
 - 标准层级中的每 100 个 DTU 至少需要“常规用途”服务层级中的 1 个 vCore。
 - 高级层级中的每 125 个 DTU 至少需要“业务关键”服务层级中的 1 个 vCore。
+
+> [!NOTE]
+> 从 DTU 到 vCore 的大小调整准则是近似的，旨在帮助初步估计目标数据库服务目标。 目标数据库的最佳配置取决于工作负荷。 
+> 
+> 要达到最佳性价比，可能需要利用 vCore 模型的灵活性来调整 vCore 数、[硬件代系](sql-database-service-tiers-vcore.md#hardware-generations)、[服务](sql-database-service-tiers-vcore.md#service-tiers)和[计算](sql-database-service-tiers-vcore.md#compute-tiers)层，以及优化其他数据库配置参数（例如，[最大并行度](https://docs.microsoft.com/sql/relational-databases/query-processing-architecture-guide#parallel-query-processing)）。
 
 ## <a name="dtu-based-purchasing-model"></a>基于 DTU 的购买模型
 

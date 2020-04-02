@@ -1,6 +1,6 @@
 ---
 title: 在 Android 上添加身份验证
-description: 了解如何使用 Azure 应用服务通过标识提供者（如 Google、Facebook、Twitter 和 Microsoft）对 Android 应用的用户进行身份验证。
+description: 了解如何使用 Azure 应用服务通过标识提供者（如 Microsoft）对 Android 应用的用户进行身份验证。
 ms.assetid: 1fc8e7c1-6c3c-40f4-9967-9cf5e21fc4e1
 ms.tgt_pltfrm: mobile-android
 ms.devlang: java
@@ -8,12 +8,12 @@ ms.topic: article
 origin.date: 06/25/2019
 md.date: 03/23/2020
 ms.author: v-tawe
-ms.openlocfilehash: f8f6276a15440c5bfad2a82e92bd7af39d4b9dae
-ms.sourcegitcommit: e94ed1c9eff4e88be2ca389909e60b14cc0d92f8
+ms.openlocfilehash: fc258ae46788b1f805d85a03d12c3560b7bc76b0
+ms.sourcegitcommit: b2f2bb08ab1b5ccb3c596d84b3b6ddca5bba3903
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79084432"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80151754"
 ---
 # <a name="add-authentication-to-your-android-app"></a>将身份验证添加到 Android 应用
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
@@ -21,10 +21,10 @@ ms.locfileid: "79084432"
 ## <a name="summary"></a>摘要
 本教程介绍如何使用支持的标识提供者将身份验证添加到 Android 上的待办事项列表快速入门项目。 本教程基于 [Get started with Mobile Apps] （移动应用入门）教程，必须先完成该教程。
 
-## <a name="register"></a>注册应用以进行身份验证并配置 Azure 应用服务
+## <a name="register-your-app-for-authentication-and-configure-azure-app-service"></a><a name="register"></a>注册应用以进行身份验证并配置 Azure 应用服务
 [!INCLUDE [app-service-mobile-register-authentication](../../includes/app-service-mobile-register-authentication.md)]
 
-## <a name="redirecturl"></a>将应用添加到允许的外部重定向 URL
+## <a name="add-your-app-to-the-allowed-external-redirect-urls"></a><a name="redirecturl"></a>将应用添加到允许的外部重定向 URL
 
 安全身份验证要求为应用定义新的 URL 方案。 此方案允许在完成身份验证过程后，身份验证系统重定向到应用。 在本教程中，我们自始至终使用 URL 方案 _appname_ 。 但是，可以使用任何你所选的 URL 方案。 对于移动应用程序而言，它应是唯一的。 在服务器端启用重定向：
 
@@ -38,7 +38,7 @@ ms.locfileid: "79084432"
 
 5. 单击“保存”  。
 
-## <a name="permissions"></a>将权限限制给已经过身份验证的用户
+## <a name="restrict-permissions-to-authenticated-users"></a><a name="permissions"></a>将权限限制给已经过身份验证的用户
 [!INCLUDE [app-service-mobile-restrict-permissions-dotnet-backend](../../includes/app-service-mobile-restrict-permissions-dotnet-backend.md)]
 
 * 在 Android Studio 中，打开你按照[Get started with Mobile Apps]教程完成的项目。 从“运行”  菜单中单击“运行应用”  ；验证启动该应用后，是否会引发状态代码为 401（“未授权”）的未经处理的异常。
@@ -52,7 +52,7 @@ ms.locfileid: "79084432"
 
 
 
-## <a name="cache-tokens"></a>在客户端上缓存身份验证令牌
+## <a name="cache-authentication-tokens-on-the-client"></a><a name="cache-tokens"></a>在客户端上缓存身份验证令牌
 [!INCLUDE [mobile-android-authenticate-app-with-token](../../includes/mobile-android-authenticate-app-with-token.md)]
 
 ## <a name="next-steps"></a>后续步骤

@@ -9,14 +9,14 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 origin.date: 02/13/2020
-ms.date: 03/09/2020
+ms.date: 03/16/2020
 ms.author: v-tawe
-ms.openlocfilehash: 801dcb1f4b31bd6e87b19333259056e94a6e6947
-ms.sourcegitcommit: ced17aa58e800b9e4335276a1595b8045836b256
+ms.openlocfilehash: 0b4128713f6ad337bdfb76c7a3cbdcab07ce6b8b
+ms.sourcegitcommit: b2f2bb08ab1b5ccb3c596d84b3b6ddca5bba3903
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77590263"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80151520"
 ---
 # <a name="about-the-speech-sdk"></a>关于语音 SDK
 
@@ -46,9 +46,9 @@ ms.locfileid: "77590263"
 # <a name="linux"></a>[Linux](#tab/linux)
 
 > [!NOTE]
-> 目前，我们在以下目标体系结构上仅支持 Ubuntu 16.04、Ubuntu 18.04 和 Debian 9：
-> - 用于 C++ 开发的 x86、x64 和 ARM64
-> - 用于 Java 的 x64 和 ARM64
+> 目前，我们在以下目标体系结构上仅支持 Ubuntu 16.04、Ubuntu 18.04、Debian 9、Red Hat Enterprise Linux (RHEL) 8 和 CentOS 8：
+> - 用于 C++ 开发的 x86 (Debian/Ubuntu)、x64、ARM32 (Debian/Ubuntu) 和 ARM64 (Debian/Ubuntu)
+> - 用于 Java 的 x64、ARM32 (Debian/Ubuntu) 和 ARM64 (Debian/Ubuntu)
 > - 用于 .NET Core 和 Python 的 x64
 
 通过运行以下 shell 命令确保你安装了必需的库：
@@ -66,6 +66,16 @@ sudo apt-get install libssl1.0.0 libasound2
 sudo apt-get update
 sudo apt-get install libssl1.0.2 libasound2
 ```
+
+在 RHEL/CentOS 8 上：
+
+```sh
+sudo yum update
+sudo yum install alsa-lib openssl
+```
+
+> [!NOTE]
+> 在 RHEL/CentOS 8 上，按照[如何配置 OpenSSL for Linux](~/articles/cognitive-services/speech-service/how-to-configure-openssl-linux.md) 上的说明进行操作。
 
 * C#：可以引用和使用语音 SDK NuGet 包的最新版本。 若要引用该 SDK，请向你的项目中添加以下包引用：
 

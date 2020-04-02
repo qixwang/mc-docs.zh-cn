@@ -9,15 +9,15 @@ ms.topic: conceptual
 author: WenJason
 ms.author: v-jay
 ms.reviewer: sstein, carlrab, bonova, danil
-origin.date: 02/10/2020
-ms.date: 03/16/2020
+origin.date: 03/11/2020
+ms.date: 03/30/2020
 ms.custom: seoapril2019
-ms.openlocfilehash: 0b58d2962cdb8edbcc9258e1418fdb01162131c5
-ms.sourcegitcommit: dc862610e2169c1fce6fb0ae9eb7dd7567f86a0a
+ms.openlocfilehash: 305438e8c77411aa7e1fae1d07750cf35a38c3ee
+ms.sourcegitcommit: 90660563b5d65731a64c099b32fb9ec0ce2c51c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79293729"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80341811"
 ---
 # <a name="managed-instance-t-sql-differences-limitations-and-known-issues"></a>托管实例的 T-SQL 差异、限制和已知问题
 
@@ -39,7 +39,7 @@ ms.locfileid: "79293729"
 
 ## <a name="availability"></a>可用性
 
-### <a name="always-on-availability-groups"></a>Always On 可用性组
+### <a name="always-on-availability-groups"></a><a name="always-on-availability-groups"></a>Always On 可用性组
 
 [高可用性](sql-database-high-availability.md)内置在托管实例中，用户无法控制。 不支持以下语句：
 
@@ -65,7 +65,7 @@ ms.locfileid: "79293729"
 的限制： 
 
 - 使用托管实例可将数据库备份到最多包含 32 个条带的备份，如果使用备份压缩，则这种方法对于不超过 4 TB 的数据库而言已足够。
-- 不能在使用服务托管透明数据加密 (TDE) 加密的数据库上执行 `BACKUP DATABASE ... WITH COPY_ONLY`。 服务托管的 TDE 强制使用内部 TDE 密钥对备份进行加密。 无法导出该密钥，因此无法还原备份。 使用自动备份和时间点还原，或者改用[客户托管 (BYOK) TDE](/sql-database/transparent-data-encryption-azure-sql#customer-managed-transparent-data-encryption---bring-your-own-key)。 也可以在数据库上禁用加密。
+- 不能在使用服务托管透明数据加密 (TDE) 加密的数据库上执行 `BACKUP DATABASE ... WITH COPY_ONLY`。 服务托管的 TDE 强制使用内部 TDE 密钥对备份进行加密。 无法导出该密钥，因此无法还原备份。 使用自动备份和时间点还原，或者改用[客户托管 (BYOK) TDE](transparent-data-encryption-azure-sql.md#customer-managed-transparent-data-encryption---bring-your-own-key)。 也可以在数据库上禁用加密。
 - 在托管实例中使用 `BACKUP` 命令最大可以设置 195 GB 的备份条带大小（即最大 Blob 大小）。 增加备份命令中的带状线数量以缩小单个带状线大小，将其保持在限制范围内。
 
     > [!TIP]
@@ -140,8 +140,8 @@ WITH PRIVATE KEY (<private_key_options>)
     托管实例支持使用语法 `CREATE USER [AADUser/AAD group] FROM EXTERNAL PROVIDER` 的 Azure AD 数据库主体。 此功能也称为 Azure AD 包含的数据库用户。
 
 - 不支持使用 `CREATE LOGIN ... FROM WINDOWS` 语法创建的 Windows 登录名。 使用 Azure Active Directory 登录名和用户。
-- 创建实例的 Azure AD 用户具有[不受限制的管理特权](sql-database-manage-logins.md#unrestricted-administrative-accounts)。
-- 可以使用 `CREATE USER ... FROM EXTERNAL PROVIDER` 语法创建非管理员 Azure AD 数据库级用户。 请参阅 [CREATE USER ...FROM EXTERNAL PROVIDER](sql-database-manage-logins.md#non-administrator-users)。
+- 创建实例的 Azure AD 用户具有[不受限制的管理特权](sql-database-manage-logins.md)。
+- 可以使用 `CREATE USER ... FROM EXTERNAL PROVIDER` 语法创建非管理员 Azure AD 数据库级用户。 请参阅 [CREATE USER ...FROM EXTERNAL PROVIDER](sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities)。
 - Azure AD 服务器主体（登录名）仅支持一个托管实例中的 SQL 功能。 无论是在相同还是不同的 Azure AD 租户中，需要跨实例交互的功能都不支持 Azure AD 用户。 此类功能的示例包括：
 
   - SQL 事务复制。
@@ -412,6 +412,7 @@ WITH PRIVATE KEY (<private_key_options>)
 
 有关配置事务复制的详细信息，请参阅以下教程：
 - [MI 发布服务器与订阅服务器之间的复制](replication-with-sql-database-managed-instance.md)
+- [MI 发布服务器、MI 分发服务器和 SQL Server 订阅服务器之间的复制](sql-database-managed-instance-configure-replication-tutorial.md)
 
 ### <a name="restore-statement"></a>RESTORE 语句 
 
@@ -469,6 +470,7 @@ WITH PRIVATE KEY (<private_key_options>)
   - `allow polybase export`
   - `allow updates`
   - `filestream_access_level`
+  - `remote access`
   - `remote data archive`
   - `remote proc trans`
 - 不支持 `sp_execute_external_scripts`。 请参阅 [sp_execute_external_scripts](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql#examples)。
@@ -488,7 +490,7 @@ WITH PRIVATE KEY (<private_key_options>)
 - 支持 `SUSER_ID`。 如果 Azure AD 登录名不在 sys.syslogins 中，则返回 NULL。 请参阅 [SUSER_ID](https://docs.microsoft.com/sql/t-sql/functions/suser-id-transact-sql)。 
 - 不支持 `SUSER_SID`。 将返回错误数据，这是暂时性的已知问题。 请参阅 [SUSER_SID](https://docs.microsoft.com/sql/t-sql/functions/suser-sid-transact-sql)。 
 
-## <a name="Environment"></a>环境约束
+## <a name="environment-constraints"></a><a name="Environment"></a>环境约束
 
 ### <a name="subnet"></a>子网
 -  在部署托管实例的子网中，无法放置任何其他资源（例如虚拟机）。 请使用其他子网部署这些资源。
@@ -530,7 +532,7 @@ WITH PRIVATE KEY (<private_key_options>)
 
 托管实例将详细信息放在错误日志中。 有很多内部系统事件记录在错误日志中。 使用自定义过程读取已筛选出某些不相关条目的错误日志。 有关详细信息，请参阅[托管实例 - sp_readmierrorlog](https://blogs.msdn.microsoft.com/sqlcat/2018/05/04/azure-sql-db-managed-instance-sp_readmierrorlog/) 或用于 Azure Data Studio 的[托管实例扩展（预览版）](https://docs.microsoft.com/sql/azure-data-studio/azure-sql-managed-instance-extension#logs)。
 
-## <a name="Issues"></a> 已知问题
+## <a name="known-issues"></a><a name="Issues"></a> 已知问题
 
 
 ### <a name="limitation-of-manual-failover-via-portal-for-failover-groups"></a>通过门户对故障转移组进行手动故障转移的限制

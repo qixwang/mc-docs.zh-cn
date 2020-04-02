@@ -4,17 +4,17 @@ description: 使用 Azure 事件网格订阅 Blob 存储事件。 将事件发�
 author: WenJason
 ms.author: v-jay
 ms.reviewer: cbrooks
-origin.date: 12/06/2018
-ms.date: 09/09/2019
+origin.date: 03/05/2020
+ms.date: 03/30/2020
 ms.topic: quickstart
 ms.service: storage
 ms.subservice: blobs
-ms.openlocfilehash: f9ba0a70566263d8df5dae5f3f53b662282fbc62
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: 5fd3bb4d45128efc89cdcb9b9765bad9d8d38f4b
+ms.sourcegitcommit: 90d01d08faf8adb20083363a8e4e5aab139cd9b2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79291634"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80290450"
 ---
 # <a name="quickstart-route-storage-events-to-web-endpoint-with-azure-cli"></a>快速入门：使用 Azure CLI 将存储事件路由到 Web 终结点
 
@@ -28,7 +28,7 @@ Azure 事件网格是针对云的事件处理服务。 在本文中，请使用 
 
 [!INCLUDE [quickstarts-free-trial-note.md](../../../includes/quickstarts-free-trial-note.md)]
 
-本文要求运行最新版本的 Azure CLI（2.0.24 或更高版本）。 若要查找版本，请运行 `az --version`。 如果需要进行安装或升级，请参阅[安装 Azure CLI](/cli/install-azure-cli)。
+本文要求运行最新版本的 Azure CLI（2.0.70 或更高版本）。 若要查找版本，请运行 `az --version`。 如果需要进行安装或升级，请参阅[安装 Azure CLI](/cli/install-azure-cli)。
 
 必须先使用 `az login` 登录。
 

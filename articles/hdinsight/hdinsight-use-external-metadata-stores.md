@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: big-data
-origin.date: 10/29/2019
+origin.date: 03/02/2020
 ms.author: v-yiso
-ms.date: 12/23/2019
-ms.openlocfilehash: abbb0863552d10fd6f76fb87cbb1b3f30716b03e
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.date: 04/06/2020
+ms.openlocfilehash: d4d7314b6ed02979d0224d55d5a8f8921c34e6b9
+ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79293078"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80343613"
 ---
 # <a name="use-external-metadata-stores-in-azure-hdinsight"></a>使用外部元数据存储 - Azure HDInsight
 
@@ -55,6 +55,7 @@ HDInsight 还支持自定义元存储，建议对生产群集使用此项：
 - 通过自定义元存储，可将多个群集和群集类型附加到元存储。 例如，可跨交互式查询、Hive 和 HDInsight 中的群集的 Spark 共享单个元存储。
 - 根据所选的性能级别收取元存储 (Azure SQL DB) 的费用。
 - 可按需增加元存储。
+- 群集和外部元存储必须托管在同一区域中。
 
 ![HDInsight Hive 元数据存储使用案例](./media/hdinsight-use-external-metadata-stores/metadata-store-use-case.png)
 
@@ -96,6 +97,9 @@ Apache Oozie 是一个管理 Hadoop 作业的工作流协调系统。  Oozie 支
 
 若要了解如何使用 Azure SQL 数据库创建 Oozie 元存储，请参阅[使用 Apache Oozie 处理工作流](hdinsight-use-oozie-linux-mac.md)。
 
+## <a name="custom-ambari-db"></a>自定义 Ambari DB
+
+若要在 Apache Ambari on HDInsight 上使用自己的外部数据库，请参阅[自定义 Apache Ambari 数据库](hdinsight-custom-ambari-db.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

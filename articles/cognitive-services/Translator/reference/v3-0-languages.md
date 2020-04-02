@@ -1,7 +1,7 @@
 ---
 title: 文本翻译 API 语言方法
-titlesuffix: Azure Cognitive Services
-description: 使用文本翻译 API 语言方法。
+titleSuffix: Azure Cognitive Services
+description: 语言方法可获取文本翻译 API 的其他操作当前支持的语言集。
 services: cognitive-services
 author: rajdeep-in
 manager: nitinme
@@ -11,12 +11,12 @@ ms.topic: reference
 origin.date: 02/01/2019
 ms.date: 06/11/2019
 ms.author: v-junlch
-ms.openlocfilehash: 24e93cb7e963cddbeb8b804efa282af56d7bd6ac
-ms.sourcegitcommit: 259c97c9322da7add9de9f955eac275d743c9424
+ms.openlocfilehash: 0d1ae58fe317f7cf8093fda307dbb62b45f5a743
+ms.sourcegitcommit: 303a16c7117b6f3495ef0493b4ae8ccb67d7dbba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2019
-ms.locfileid: "66830100"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80342398"
 ---
 # <a name="translator-text-api-30-languages"></a>文本翻译 API 3.0：语言
 
@@ -38,27 +38,27 @@ https://api.translator.azure.cn/languages?api-version=3.0
   <th>说明</th>
   <tr>
     <td>api-version</td>
-    <td>必需参数。<br/>客户端所请求的 API 的版本。 值必须是 <code>3.0</code>。</td>
+    <td>必需参数。<br/>客户端所请求的 API 的版本。 值必须是 `3.0`。</td>
   </tr>
   <tr>
     <td>scope</td>
-    <td>可选参数。<br/>逗号分隔的名称列表，用于定义要返回的语言组。 允许的组名称为：<code>translation</code>、<code>transliteration</code> 和 <code>dictionary</code>。 如果未指定范围，则返回所有组，这相当于传递了 <code>scope=translation,transliteration,dictionary</code>。 若要确定哪个支持的语言集适合你的场景，请参阅<a href="#response-body" data-raw-source="[response object](#response-body)">响应对象</a>的说明。</td>
+    <td> 可选参数。<br/>逗号分隔的名称列表，用于定义要返回的语言组。 允许的组名称为：`translation`、`transliteration` 和 `dictionary`。 如果未指定范围，则返回所有组，这相当于传递了 `scope=translation,transliteration,dictionary`。 若要确定哪个支持的语言集适合你的场景，请参阅[响应对象](#response-body)的说明。</td>
   </tr>
 </table> 
 
 请求标头为：
 
 <table width="100%">
-  <th width="20%">标头</th>
+  <th width="20%">头文件</th>
   <th>说明</th>
   <tr>
     <td>Accept-Language</td>
-    <td>可选请求标头。<br/>要用于用户界面字符串的语言。 响应中的某些字段是语言的名称，或区域的名称。 使用此参数可以定义要以哪种语言返回这些名称。 通过提供格式正确的 BCP 47 语言标记来指定语言。 例如，使用值 <code>fr</code> 来请求法语名称，或使用值 <code>zh-Hant</code> 来请求繁体中文名称。<br/>如果未指定目标语言或者本地化不可用，则以英语提供名称。
+    <td>可选请求标头。<br/>可用于用户界面字符串的语言。 响应中的某些字段是语言的名称，或区域的名称。 使用此参数可以定义要以哪种语言返回这些名称。 通过提供格式正确的 BCP 47 语言标记来指定语言。 例如，使用值 <code>fr</code> 来请求法语名称，或使用值 <code>zh-Hant</code> 来请求繁体中文名称。<br/>如果未指定目标语言或者本地化不可用，则以英语提供名称。
     </td>
   </tr>
   <tr>
     <td>X-ClientTraceId</td>
-    <td>可选请求标头。<br/>客户端生成的 GUID，用于唯一地标识请求。</td>
+    <td>可选请求标头。<br/>客户端生成的 GUID，用于唯一标识请求。</td>
   </tr>
 </table> 
 
@@ -230,7 +230,7 @@ https://api.translator.azure.cn/languages?api-version=3.0
 ## <a name="response-headers"></a>响应标头
 
 <table width="100%">
-  <th width="20%">标头</th>
+  <th width="20%">头文件</th>
   <th>说明</th>
   <tr>
     <td>ETag</td>
@@ -282,7 +282,7 @@ https://api.translator.azure.cn/languages?api-version=3.0
 
 以下示例演示如何检索文本翻译支持的语言。
 
-# <a name="curltabcurl"></a>[curl](#tab/curl)
+# <a name="curl"></a>[curl](#tab/curl)
 
 ```
 curl "https://api.translator.azure.cn/languages?api-version=3.0&scope=translation"

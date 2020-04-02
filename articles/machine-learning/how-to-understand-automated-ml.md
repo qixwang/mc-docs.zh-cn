@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 12/05/2019
-ms.openlocfilehash: e846bb17186577098d8d053ab1f6ffdf689b9c46
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: 80524cb55f4d7b82985a57efd49a7224d1bb6ca8
+ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79293031"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80343115"
 ---
 # <a name="understand-automated-machine-learning-results"></a>了解自动化机器学习的结果
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -34,7 +34,7 @@ ms.locfileid: "79293031"
 * 使用 SDK 或 Azure 机器学习工作室为自动化机器学习运行创建试验。
 
     * 使用 SDK 生成[分类模型](how-to-auto-train-remote.md)或[回归模型](tutorial-auto-train-models.md)
-    * 使用 [Azure 机器学习工作室](how-to-create-portal-experiments.md)通过上传相应的数据来创建分类模型或回归模型。
+    * 使用 [Azure 机器学习工作室](how-to-use-automated-ml-for-ml-models.md)通过上传相应的数据来创建分类模型或回归模型。
 
 ## <a name="view-the-run"></a>查看运行
 
@@ -60,7 +60,7 @@ ms.locfileid: "79293031"
 
 使用 `RunDetails`[Jupyter 小组件](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py)运行期间，会看到相同的结果。
 
-## <a name="classification"></a> 分类结果
+## <a name="classification-results"></a><a name="classification"></a> 分类结果
 
 对于使用 Azure 机器学习的自动化机器学习功能生成的每个分类模型，将提供以下指标和图表
 
@@ -190,7 +190,7 @@ weighted_accuracy|加权准确度是当分配给每个示例的权重等于该�
 ### <a name="calibration-chart"></a>校准图
 
 #### <a name="what-is-a-calibration-chart"></a>什么是校准图？
-校准图用于显示预测模型的置信度。 为此，它会显示预测概率与实际概率之间的关系。其中，“概率”表示特定实例属于某个标签的可能性。
+校准图用于显示预测模型的置信度。 它通过显示预测概率和实际概率之间的关系来实现，其中“概率”表示一个特定实例属于某个标签的可能性。
 #### <a name="what-does-automated-ml-do-with-the-calibration-chart"></a>自动化 ML 如何处理校准图？
 对于所有分类问题，可以查看微观平均、宏观平均以及给定预测模型中每个类的校准行。
 
@@ -205,7 +205,7 @@ weighted_accuracy|加权准确度是当分配给每个示例的权重等于该�
 ##### <a name="example-2-an-over-confident-model"></a>示例 2：置信度过高的模型
 ![置信度过高的模型](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-calib-curve2.png)
 
-## <a name="regression"></a> 回归结果
+## <a name="regression-results"></a><a name="regression"></a> 回归结果
 
 对于使用 Azure 机器学习的自动化机器学习功能生成的每个回归模型，将提供以下指标和图表
 
@@ -214,7 +214,7 @@ weighted_accuracy|加权准确度是当分配给每个示例的权重等于该�
 + [残差直方图](#histo)
 
 
-### <a name="reg-metrics"></a> 回归指标
+### <a name="regression-metrics"></a><a name="reg-metrics"></a> 回归指标
 
 在回归或预测任务的每次运行迭代中保存以下指标。
 
@@ -232,7 +232,7 @@ normalized_root_mean_squared_error|规范化均方根误差是均方根误差除
 root_mean_squared_log_error|均方根对数误差是预期平方对数误差的平方根|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_log_error.html)|无|
 normalized_root_mean_squared_log_error|规范化均方根对数误差指均方根对数误差除以数据范围后的值|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_log_error.html)|除以数据范围|
 
-### <a name="pvt"></a> 预测值与真实值图
+### <a name="predicted-vs-true-chart"></a><a name="pvt"></a> 预测值与真实值图
 #### <a name="what-is-a-predicted-vs-true-chart"></a>什么是预测值与真实值图？
 预测与“真实”显示回归问题的预测值与其相关真实值之间的关系。 可以使用此图形来衡量模型的性能，因为预测值与 y=x 行越接近，预测模型的准确度就越高。
 
@@ -248,7 +248,7 @@ normalized_root_mean_squared_log_error|规范化均方根对数误差指均方�
 
 
 
-### <a name="histo"></a> 残差直方图
+### <a name="histogram-of-residuals-chart"></a><a name="histo"></a> 残差直方图
 #### <a name="what-is-a-residuals-chart"></a>什么是残差图？
 残差表示观测到的 y - 预测的 y。 若要显示偏差较小的误差边际，应该以 0 为中心，将残差直方图绘制成钟形曲线。 
 #### <a name="what-does-automated-ml-do-with-the-residuals-chart"></a>自动化 ML 如何处理残差图？
@@ -262,7 +262,7 @@ normalized_root_mean_squared_log_error|规范化均方根对数误差指均方�
 ##### <a name="example-2-a-regression-model-with-more-even-distribution-of-errors"></a>示例 2：误差较均匀分布的回归模型
 ![误差较均匀分布的回归模型](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-regression4.png)
 
-## <a name="explain-model"></a> 模型可解释性和特征重要性
+## <a name="model-interpretability-and-feature-importance"></a><a name="explain-model"></a> 模型可解释性和特征重要性
 自动化 ML 为运行提供机器学习可解释性仪表板。
 有关启用可解释性功能的详细信息，请参阅有关在自动化 ML 试验中启用可解释性的[操作指南](how-to-machine-learning-interpretability-automl.md)。
 

@@ -11,13 +11,13 @@ author: WenJason
 ms.author: v-jay
 ms.reviewer: ''
 origin.date: 04/08/2019
-ms.date: 12/16/2019
-ms.openlocfilehash: 6658829a48a1dc3783421caae0607967984bc92c
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.date: 03/30/2020
+ms.openlocfilehash: f861c3d1852268727bdb8c62af49f34b83db0a9c
+ms.sourcegitcommit: 90660563b5d65731a64c099b32fb9ec0ce2c51c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75334946"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80341756"
 ---
 # <a name="what-is-a-single-database-in-azure-sql-database"></a>什么是 Azure SQL 数据库中的单一数据库
 
@@ -38,7 +38,7 @@ ms.locfileid: "75334946"
 
 ## <a name="monitoring-and-alerting"></a>监视和警报
 
-将内置的[性能监视](sql-database-performance.md)和[警报工具](sql-database-insights-alerts-portal.md)与性能等级组合使用。 使用这些工具，可以根据当前需求或项目性能的需求，快速评估调高或调低性能产生的影响。 此外，SQL 数据库可[发出指标和诊断日志](sql-database-metrics-diag-logging.md)，以便更轻松地监视。
+将内置的[性能监视](sql-database-performance.md)和[警报工具](sql-database-insights-alerts-portal.md)与性能等级组合使用。 使用这些工具，可以根据当前需求或项目性能的需求，快速评估调高或调低性能产生的影响。 此外，SQL 数据库可[发出指标和资源日志](sql-database-metrics-diag-logging.md)，以便于监视。
 
 ## <a name="availability-capabilities"></a>可用性功能
 

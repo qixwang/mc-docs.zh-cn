@@ -6,16 +6,16 @@ keywords: 设置, 超时
 author: mgblythe
 ms.author: v-tawe
 origin.date: 02/10/2020
-ms.date: 03/09/2020
+ms.date: 03/16/2020
 ms.topic: conceptual
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: e894b192d26dbe594dc9b349b72c06eb9e5941a1
-ms.sourcegitcommit: 60e32ec1b1e62de6e84f7c6e43bb1400bd42c9cf
+ms.openlocfilehash: 1adc66cd6d099c8d9acc5803c2ada83c725252e2
+ms.sourcegitcommit: b2f2bb08ab1b5ccb3c596d84b3b6ddca5bba3903
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/24/2020
-ms.locfileid: "77567193"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80151717"
 ---
 # <a name="set-directory-level-inactivity-timeout"></a>设置目录级别的非活动超时
 
@@ -44,7 +44,7 @@ ms.locfileid: "77567193"
 设置对新会话生效。 它不会立即应用于已登录的任何用户。
 
 > [!NOTE]
-> 如果管理员配置了目录级别的超时设置，则用户可以重写策略，设置其自己的非活动注销持续时间。 但是，用户必须选择小于目录级别设置值的时间间隔。
+> 如果全局管理员配置了目录级别的超时设置，则用户可以重写策略并设置其自己的非活动注销持续时间。 但是，用户必须选择小于全局管理员在目录级别设置值的时间间隔。
 >
 
 ## <a name="next-steps"></a>后续步骤

@@ -7,14 +7,14 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 origin.date: 05/15/2019
-ms.date: 12/02/2019
+ms.date: 04/06/2020
 ms.author: v-yiso
-ms.openlocfilehash: a665e70461b6ec1ac4ee7574960b879699c26261
-ms.sourcegitcommit: 9e92bcf6aa02fc9e7b3a29abadf6b6d1a8ece8c4
+ms.openlocfilehash: ec471a4618f15ddb2109604862c107266e2a5bae
+ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74388971"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80343575"
 ---
 # <a name="use-iot-hub-message-routing-to-send-device-to-cloud-messages-to-different-endpoints"></a>使用 IoT 中心消息路由将设备到云消息发送到不同的终结点
 
@@ -28,7 +28,7 @@ ms.locfileid: "74388971"
 
 IoT 中心需要这些服务终结点的写入权限，以便使用消息路由。 如果通过 Azure 门户配置终结点，则为你添加必要权限。 请确保将服务配置为支持预期吞吐量。 例如，如果使用事件中心作为自定义终结点，则必须为该事件中心配置**吞吐量单位**，以便它可以处理你计划通过 IoT 中心消息路由发送的事件流入量。 同样，使用服务总线队列作为终结点时，必须配置**最大大小**，以确保队列可以容纳所有流入的数据，直到它被使用者传出。 在首次配置 IoT 解决方案时，可能需要监视附加终结点，并针对实际负载进行任意的必要调整。
 
-IoT 中心为所有“设备到云”消息传递定义[通用格式](iot-hub-devguide-messages-construct.md)，以实现跨协议的互操作性。 如果某条消息与多个路由匹配，而这些路由指向同一终结点，则 IoT 中心仅向该终结点传递一次消息。 因此无需在服务总线队列或主题中配置重复数据删除。 在分区队列中，分区相关性可保障消息排序。 使用本教程了解如何[配置消息路由](tutorial-routing.md)。
+IoT 中心为所有设备到云的消息传送定义了[格式](iot-hub-devguide-messages-construct.md)，以便实现跨协议互操作性。 如果某条消息与多个路由匹配，而这些路由指向同一终结点，则 IoT 中心仅向该终结点传递一次消息。 因此无需在服务总线队列或主题中配置重复数据删除。 在分区队列中，分区相关性可保障消息排序。 使用本教程了解如何[配置消息路由](tutorial-routing.md)。
 
 ## <a name="routing-endpoints"></a>路由终结点
 
@@ -76,6 +76,9 @@ public void ListBlobsInContainer(string containerName, string iothub)
 }
 ```
 
+> [!NOTE]
+> 如果存储帐户具有限制 IoT 中心连接的防火墙配置，请考虑使用 [Microsoft 信任的第一方例外](./virtual-network-support.md#egress-connectivity-to-storage-account-endpoints-for-routing)（在具有托管服务标识的 IoT 中心的选定区域中可用）。
+
 若要创建与 Azure Data Lake Gen2 兼容的存储帐户，请创建新的 V2 存储帐户，并在“高级”  选项卡的“分层命名空间”  字段上选择“启用”  ，如下图所示：
 
 ![选择 Azure Date Lake Gen2 存储](./media/iot-hub-devguide-messages-d2c/selectadls2storage.png)
@@ -85,9 +88,17 @@ public void ListBlobsInContainer(string containerName, string iothub)
 
 用作 IoT 中心终结点的服务总线队列和主题不能启用“会话”  或“重复项检测”  。 如果启用了其中任一选项，该终结点将在 Azure 门户中显示为“无法访问”  。
 
+> [!NOTE]
+> 如果服务总线资源具有限制 IoT 中心连接的防火墙配置，请考虑使用 [Microsoft 信任的第一方例外](./virtual-network-support.md#egress-connectivity-to-service-bus-endpoints-for-routing)（在具有托管服务标识的 IoT 中心的选定区域中可用）。
+
+
 ### <a name="event-hubs"></a>事件中心
 
 除了与事件中心兼容的内置终结点外，还可以将数据路由到事件中心类型的自定义终结点。 
+
+> [!NOTE]
+> 如果事件中心资源具有限制 IoT 中心连接的防火墙配置，请考虑使用 [Microsoft 信任的第一方例外](./virtual-network-support.md#egress-connectivity-to-event-hubs-endpoints-for-routing)（在具有托管服务标识的 IoT 中心的选定区域中可用）。
+
 
 ## <a name="reading-data-that-has-been-routed"></a>读取已路由的数据
 

@@ -13,16 +13,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/24/2020
+ms.date: 03/23/2020
 ms.author: v-junlch
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 3d445ef4b304a8830dba630c68afff15b50d6300
-ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
+ms.openlocfilehash: d3c533137efcef1bd9204efa6ea525bfee89ce8d
+ms.sourcegitcommit: 6568c59433d7e80ab06e9fe76d4791f761ed6775
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77653177"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80243115"
 ---
 # <a name="whats-new-for-authentication"></a>身份验证的新增功能 
 
@@ -41,6 +41,28 @@ ms.locfileid: "77653177"
 ## <a name="upcoming-changes"></a>即将推出的更改
 
 目前没有计划。  请参阅下面的内容，了解已经进入或即将进入生产环境中的变更。 
+
+## <a name="march-2020"></a>2020 年 3 月 
+
+### <a name="user-passwords-will-be-restricted-to-256-characters"></a>用户密码将限制为 256 个字符。
+
+**生效日期**：2020 年 3 月 13 日
+
+**受影响的终结点**：v1.0 和 v2.0
+
+**受影响的协议**：所有用户流。 
+
+从 2020 年 3 月 13 日开始，直接登录 Azure AD（而不是像 ADFS 这样的联合 IDP）的密码超过 256 个字符的用户将无法登录，并被要求重置其密码。  管理员可能会收到要求帮助重置用户密码的请求。 
+
+登录日志中的错误将为 AADSTS 50052：InvalidPasswordExceedsMaxLength
+
+消息：`The password entered exceeds the maximum length of 256. Please reach out to your admin to reset the password.`
+
+补救措施：
+
+用户无法登录，因为其密码超过了允许的最大长度。 他们应该联系管理员以重置密码。 如果已为其租户启用了 SSPR，则他们可以通过打开“忘记密码”链接来重置其密码。
+
+
 
 ## <a name="february-2020"></a>2020 年 2 月 
 
@@ -177,4 +199,3 @@ ms.locfileid: "77653177"
 1. 客户端应用程序通过 `response_type=id_token` 请求 id_token 时，还会请求上面创建的 Web API 的访问令牌 (`response_type=token`)。 因此，使用 v2.0 终结点时，`scope` 参数应与 `api://GUID/SCOPE` 类似。 在 v1.0 终结点上，`resource` 参数应为 Web API 应用 URI。
 1. 将此访问令牌传递到中间层，代替 id_token。  
 
-<!-- Update_Description: link update -->

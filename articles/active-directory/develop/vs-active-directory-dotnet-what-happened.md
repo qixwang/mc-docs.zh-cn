@@ -8,15 +8,15 @@ ms.prod: visual-studio-windows
 ms.technology: vs-azure
 ms.workload: azure-vs
 ms.topic: conceptual
-ms.date: 02/25/2020
+ms.date: 03/23/2020
 ms.author: v-junlch
 ms.custom: aaddev, vs-azure
-ms.openlocfilehash: 7378ea37c52b3d21b7ad9fe209715037782a4bf5
-ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
+ms.openlocfilehash: ff13c54f3b0951dc2c8e332a20bcf3fec2e3af65
+ms.sourcegitcommit: 6568c59433d7e80ab06e9fe76d4791f761ed6775
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77653109"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80243064"
 ---
 # <a name="what-happened-to-my-mvc-project-visual-studio-azure-active-directory-connected-service"></a>我的 MVC 项目（Visual Studio Azure Active Directory 连接服务）发生了什么情况？
 
@@ -30,7 +30,7 @@ ms.locfileid: "77653109"
 
 ## <a name="added-references"></a>添加的引用
 
-影响项目文件 *.NET 引用和 `packages.config`（NuGet 引用）。
+影响项目文件（*.NET 引用）和 `packages.config`（NuGet 引用）。
 
 | 类型 | 参考 |
 | --- | --- |
@@ -166,4 +166,3 @@ ms.locfileid: "77653109"
 - [Azure Active Directory 的身份验证方案](authentication-scenarios.md)
 - [向 ASP.NET Web 应用添加 Microsoft 登录功能](quickstart-v2-aspnet-webapp.md)
 
-<!-- Update_Description: link update -->

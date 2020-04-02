@@ -11,13 +11,13 @@ author: WenJason
 ms.author: v-jay
 ms.reviewer: vanto, carlrab, emlisa
 origin.date: 05/14/2019
-ms.date: 02/17/2020
-ms.openlocfilehash: 27ad3469e8eaf36ec222dd26e6fc2744cde2ea95
-ms.sourcegitcommit: d7b86a424b72849fe8ed32893dd05e4696e4fe85
+ms.date: 03/30/2020
+ms.openlocfilehash: ee6acfb2026aad1f4d9e0a5fc078b710ea25615e
+ms.sourcegitcommit: 90660563b5d65731a64c099b32fb9ec0ce2c51c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77155723"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80341793"
 ---
 # <a name="an-overview-of-azure-sql-database-security-capabilities"></a>Azure SQL 数据库安全功能概述
 
@@ -153,6 +153,6 @@ SQL 数据库动态数据掩码通过对非特权用户模糊化敏感数据来�
 
 ## <a name="next-steps"></a>后续步骤
 
-- 有关使用 SQL 数据库中的访问控制功能的介绍，请参阅[控制访问](sql-database-control-access.md)。
+- 有关在 SQL 数据库中使用登录名、用户帐户、数据库角色和权限的讨论，请参见[管理登录名和用户帐户](sql-database-manage-logins.md)。
 - 有关数据库审核的讨论，请参阅 [SQL 数据库审核](sql-database-auditing.md)。
 - 有关威胁检测的介绍，请参阅 [SQL 数据库威胁检测](sql-database-threat-detection.md)。

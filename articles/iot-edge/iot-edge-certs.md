@@ -5,16 +5,16 @@ author: stevebus
 manager: philmea
 ms.author: v-tawe
 origin.date: 10/29/2019
-ms.date: 03/02/2020
+ms.date: 03/16/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: f2036cd5cca31b3d28cd9f96578467a09f1ea3b2
-ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
+ms.openlocfilehash: eab77f47eac7a6faa7c6ddefbf9f9a1d7c0d15a5
+ms.sourcegitcommit: 1d3d8dfdaf6281f06640cbee7124a1e8bf102c50
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77494472"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80243892"
 ---
 # <a name="understand-how-azure-iot-edge-uses-certificates"></a>了解 Azure IoT Edge 如何使用证书
 
@@ -70,7 +70,7 @@ IoT Edge 中心服务器证书是向叶设备和模块提供的实际证书，�
 
 * 对于任何基于证书的流程，在推出 IoT Edge 设备的整个过程中，应保护和监视根 CA 证书和所有中间 CA 证书。 IoT Edge 设备制造商应制定可靠的流程来正确存储和使用其中间证书。 此外，设备 CA 证书应存储在设备上尽可能安全的存储中，最好是硬件安全模块。
 
-* IoT Edge 中心服务器证书由 IoT Edge 中心提供给连接客户端设备和模块。 设备 CA 证书的公用名 (CN) **不得**与要在 IoT Edge 设备上的 config.yaml 中使用的“hostname”相同。 客户端用于连接到 IoT Edge（例如，通过连接字符串的 GatewayHostName 参数或 MQTT 中的 CONNECT 命令）的名称**不能**与设备 CA 证书中使用的公用名相同。 之所以实施此限制，是因为 IoT Edge 中心提供其整个证书链让客户端验证。 如果 IoT Edge 中心服务器证书和设备 CA 证书具有相同的 CN，则会陷入验证循环，并且证书将会失效。
+* IoT Edge 中心服务器证书由 IoT Edge 中心提供给连接客户端设备和模块。 设备 CA 证书的公用名 (CN) **不得**与要在 IoT Edge 设备上的 config.yaml 中使用的“hostname”相同。 客户端用于连接到 IoT Edge（例如，通过连接字符串的 GatewayHostName 参数或 MQTT 中的 CONNECT 命令）的名称不能  与设备 CA 证书中使用的公用名相同。 之所以实施此限制，是因为 IoT Edge 中心提供其整个证书链让客户端验证。 如果 IoT Edge 中心服务器证书和设备 CA 证书具有相同的 CN，则会陷入验证循环，并且证书将会失效。
 
 * 由于 IoT Edge 安全守护程序使用设备 CA 证书生成最终的 IoT Edge 证书，因此它本身必须是签名证书，这意味着它具有证书签名功能。 将“V3 基本约束 CA:True”应用到设备 CA 证书会自动设置所需的密钥用法属性。
 

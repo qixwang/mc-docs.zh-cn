@@ -9,14 +9,14 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 origin.date: 01/16/2020
-ms.date: 03/09/2020
+ms.date: 03/16/2020
 ms.author: v-tawe
-ms.openlocfilehash: a5891aa8c0e16b9b3c1b41860b5bd26634b69baf
-ms.sourcegitcommit: ced17aa58e800b9e4335276a1595b8045836b256
+ms.openlocfilehash: 825a6bac9f5c54036413b2d9eb2192abc2be9414
+ms.sourcegitcommit: b2f2bb08ab1b5ccb3c596d84b3b6ddca5bba3903
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77590271"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80151706"
 ---
 # <a name="configure-openssl-for-linux"></a>为 Linux 配置 OpenSSL
 
@@ -43,13 +43,13 @@ OPENSSLDIR: "/usr/lib/ssl"
 - OPENSSLDIR 为 `/opt/ssl`。 存在 `certs` 子目录，其中包含许多 `.crt` 或 `.pem` 文件。
 在运行使用语音 SDK 的程序之前，请将环境变量 `SSL_CERT_DIR` 设置为指向 `/opt/ssl/certs`。 例如：
 ```bash
-SSL_CERT_DIR=/opt/ssl/certs ./helloworld
+export SSL_CERT_DIR=/opt/ssl/certs
 ```
 
-- OPENSSLDIR 为 `/etc/pki/tls`。 存在证书绑定文件，例如 `ca-bundle.pem` 或 `ca-bundle.crt`。
-在运行使用语音 SDK 的程序之前，请将环境变量 `SSL_CERT_FILE` 设置为指向 `/etc/pki/tls/ca-bundle.pem`。 例如：
+- OPENSSLDIR 是 `/etc/pki/tls`（类似于基于 RHEL/CentOS 的系统）。 存在 `certs` 子目录，其中包含证书绑定文件（例如 `ca-bundle.crt`）。
+在运行使用语音 SDK 的程序之前，请将环境变量 `SSL_CERT_FILE` 设置为指向该文件。 例如：
 ```bash
-SSL_CERT_FILE=/etc/pki/tls/ca-bundle.pem ./helloworld
+export SSL_CERT_FILE=/etc/pki/tls/certs/ca-bundle.crt
 ```
 
 ## <a name="next-steps"></a>后续步骤

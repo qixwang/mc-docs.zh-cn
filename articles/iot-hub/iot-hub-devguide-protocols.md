@@ -10,13 +10,13 @@ ms.tgt_pltfrm: na
 ms.workload: na
 origin.date: 01/29/2018
 ms.author: v-yiso
-ms.date: 10/29/2018
-ms.openlocfilehash: 8b3b3397c36ccdf53618806419d3193fb8ee0c88
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.date: 04/06/2020
+ms.openlocfilehash: 7f7ab4303c6a5344b6000868dd375cf1ba9ebbb1
+ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79293436"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80343589"
 ---
 # <a name="reference---choose-a-communication-protocol"></a>参考 - 选择通信协议
 
@@ -47,7 +47,7 @@ IoT 中心允许设备使用以下协议进行设备端通信：
 * **有效负载大小**。 MQTT 和 AMQP 是二进制协议，因此，其有效负载比 HTTPS 的有效负载更精简。
 
 > [!WARNING]
-> 使用 HTTPS 时，每台设备应每 25 分钟或更长时间轮询一次从云到设备的消息。 但在开发期间，可按低于 25 分钟的更高频率进行轮询。
+> 使用 HTTPS 时，每台设备应每 25 分钟或更短时间轮询一次云到设备消息。 在开发中，每台设备都可以根据需要更频繁地轮询。
 
 ## <a name="port-numbers"></a>端口号
 

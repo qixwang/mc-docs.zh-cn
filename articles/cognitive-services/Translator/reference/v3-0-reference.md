@@ -1,26 +1,26 @@
 ---
 title: 文本翻译 API V3.0 参考
-titlesuffix: Azure Cognitive Services
-description: 文本翻译 API v3.0 参考文档。
+titleSuffix: Azure Cognitive Services
+description: 文本翻译 API v3.0 参考文档。 文本翻译 API 版本 3 提供了基于 JSON 的新型 Web API。
 services: cognitive-services
 author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
-origin.date: 03/29/2018
-ms.date: 07/23/2019
+origin.date: 3/13/2020
+ms.date: 03/26/2020
 ms.author: v-junlch
-ms.openlocfilehash: 33f31db3728566185ef1d880c01482844893f1e3
-ms.sourcegitcommit: 9a330fa5ee7445b98e4e157997e592a0d0f63f4c
+ms.openlocfilehash: 9c85a56a5e1f2686c18feed28c8a5429390a6bb2
+ms.sourcegitcommit: 303a16c7117b6f3495ef0493b4ae8ccb67d7dbba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68439906"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80342397"
 ---
 # <a name="translator-text-api-v30"></a>文本翻译 API v3.0
 
-## <a name="whats-new"></a>新增功能
+## <a name="whats-new"></a>新增功能？
 
 文本翻译 API 版本 3 提供了基于 JSON 的新型 Web API。 它通过将现有功能合并到更少的操作中来提高可用性和性能，并提供新功能。
 
@@ -32,7 +32,7 @@ ms.locfileid: "68439906"
 
 ## <a name="base-urls"></a>基 URL
 
-Microsoft Translator 位于多个数据中心位置之外。 目前它们位于 10 个 [Azure 地理区域](https://azure.microsoft.com/global-infrastructure/regions)：
+Microsoft Translator 位于多个数据中心位置之外。 目前它们位于 10 个 [Azure 地理区域](https://azure.microsoft.com/global-infrastructure/services/?products=all&regions=china-non-regional,china-north,china-north-2,china-east,china-east-2)：
 
 * **中国：** 中国北部和中国东部 2 
 
@@ -52,7 +52,7 @@ Microsoft Translator 位于多个数据中心位置之外。 目前它们位于 
 
 有三个标头可用于对你的订阅进行身份验证。 下表介绍了每个标头的使用方式：
 
-|标头|说明|
+|头文件|说明|
 |:----|:----|
 |Ocp-Apim-Subscription-Key|如果要传递密钥，请与认知服务订阅一起使用  。<br/>该值是文本翻译 API 订阅的 Azure 密钥。|
 |授权|如果要传递身份验证令牌，请与认知服务订阅一起使用  。<br/>该值是持有者令牌：`Bearer <token>`。|
@@ -70,7 +70,7 @@ Microsoft Translator 位于多个数据中心位置之外。 目前它们位于 
 
 以下是根据给定密钥获取令牌的示例请求：
 
-```
+```curl
 // Pass secret key using header
 curl --header 'Ocp-Apim-Subscription-Key: <your-key>' --data "" 'https://<your region>.api.cognitive.azure.cn/sts/v1.0/issueToken'
 
@@ -80,7 +80,7 @@ curl --data "" 'https://<your region>.api.cognitive.azure.cn/sts/v1.0/issueToken
 
 成功的请求会在响应正文中将编码的访问令牌作为纯文本返回。 有效的令牌在授权中作为持有者令牌传递给翻译服务。
 
-```
+```http
 Authorization: Bearer <Base64-access_token>
 ```
 
@@ -92,12 +92,11 @@ Authorization: Bearer <Base64-access_token>
 标准错误响应是具有名为 `error` 的名称/值对的 JSON 对象。 该值也是具有以下属性的 JSON 对象：
 
   * `code`：服务器定义的错误代码。
-
   * `message`：一个提供人类可读的错误表示形式的字符串。
 
 例如，拥有试用版订阅的客户会在免费配额用尽后收到以下错误：
 
-```
+```json
 {
   "error": {
     "code":403001,

@@ -1,6 +1,6 @@
 ---
 title: Xamarin Forms 应用中的身份验证入门
-description: 了解如何使用移动应用通过标识提供者（如 AAD、Google、Facebook、Twitter 和 Microsoft）对 Xamarin Forms 应用的用户进行身份验证。
+description: 了解如何使用移动应用通过标识提供者（如 AAD 和 Microsoft）对 Xamarin Forms 应用的用户进行身份验证。
 ms.assetid: 9c55e192-c761-4ff2-8d88-72260e9f6179
 ms.tgt_pltfrm: mobile-xamarin
 ms.devlang: dotnet
@@ -8,12 +8,12 @@ ms.topic: article
 origin.date: 06/25/2019
 md.date: 03/23/2020
 ms.author: v-tawe
-ms.openlocfilehash: 61bc5b35c37a13bef93279dae22bc752e28e484b
-ms.sourcegitcommit: e94ed1c9eff4e88be2ca389909e60b14cc0d92f8
+ms.openlocfilehash: af8dbfa2d92bcdb81f38f912918c56cea1f194d2
+ms.sourcegitcommit: b2f2bb08ab1b5ccb3c596d84b3b6ddca5bba3903
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79084405"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80151728"
 ---
 # <a name="add-authentication-to-your-xamarin-forms-app"></a>向 Xamarin Forms 应用添加身份验证
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
@@ -29,7 +29,7 @@ ms.locfileid: "79084405"
 ## <a name="register-your-app-for-authentication-and-configure-app-services"></a>注册应用以进行身份验证并配置应用服务
 [!INCLUDE [app-service-mobile-register-authentication](../../includes/app-service-mobile-register-authentication.md)]
 
-## <a name="redirecturl"></a>将应用添加到允许的外部重定向 URL
+## <a name="add-your-app-to-the-allowed-external-redirect-urls"></a><a name="redirecturl"></a>将应用添加到允许的外部重定向 URL
 
 安全身份验证要求为应用定义新的 URL 方案。 此方案允许在完成身份验证过程后，身份验证系统重定向到应用。 在本教程中，我们自始至终使用 URL 方案 _appname_ 。 但是，可以使用任何你所选的 URL 方案。 对于移动应用程序而言，它应是唯一的。 在服务器端启用重定向：
 
@@ -55,80 +55,61 @@ ms.locfileid: "79084405"
 
 1. 在 Visual Studio 或 Xamarin Studio 中，从名称中包含 Portable 的项目（该项目是可移植类库项目）中打开 App.cs，然后添加以下 `using` 语句  ：
 
-    ```
-    using System.Threading.Tasks;
-    ```
+        using System.Threading.Tasks;
 2. 在 App.cs 中，在 `App` 类定义前添加以下 `IAuthenticate` 接口定义。
 
-    ```
-    public interface IAuthenticate
-    {
-        Task<bool> Authenticate();
-    }
-    ```
-
+        public interface IAuthenticate
+        {
+            Task<bool> Authenticate();
+        }
 3. 若要使用平台特定的实现初始化接口，可向 **App** 类添加以下静态成员。
 
-    ```
-    public static IAuthenticate Authenticator { get; private set; }
+        public static IAuthenticate Authenticator { get; private set; }
 
-    public static void Init(IAuthenticate authenticator)
-    {
-        Authenticator = authenticator;
-    }
-    ```
+        public static void Init(IAuthenticate authenticator)
+        {
+            Authenticator = authenticator;
+        }
+4. 从可移植类库项目中打开 TodoList.xaml，在 **buttonsPanel** 布局元素中现有按钮之后添加以下 *Button* 元素：
 
-4. 从可移植类库项目中打开 TodoList.xaml，在 **buttonsPanel** 布局元素中现有按钮之后添加以下 *Button* 元素： 
-
-    ```
-      <Button x:Name="loginButton" Text="Sign-in" MinimumHeightRequest="30" 
-        Clicked="loginButton_Clicked"/>
-    ```
+          <Button x:Name="loginButton" Text="Sign-in" MinimumHeightRequest="30"
+            Clicked="loginButton_Clicked"/>
 
     此按钮通过移动应用后端触发服务器托管的身份验证。
-
 5. 从可移植类库项目中打开 TodoList.xaml.cs，并将以下字段添加到 `TodoList` 类：
 
-    ```
-    // Track whether the user has authenticated. 
-    bool authenticated = false;
-    ```
-
+        // Track whether the user has authenticated.
+        bool authenticated = false;
 6. 将 **OnAppearing** 方法替换为以下代码：
 
-    ```
-    protected override async void OnAppearing()
-    {
-        base.OnAppearing();
-
-        // Refresh items only when authenticated.
-        if (authenticated == true)
+        protected override async void OnAppearing()
         {
-            // Set syncItems to true in order to synchronize the data 
-            // on startup when running in offline mode.
-            await RefreshItems(true, syncItems: false);
+            base.OnAppearing();
 
-            // Hide the Sign-in button.
-            this.loginButton.IsVisible = false;
+            // Refresh items only when authenticated.
+            if (authenticated == true)
+            {
+                // Set syncItems to true in order to synchronize the data
+                // on startup when running in offline mode.
+                await RefreshItems(true, syncItems: false);
+
+                // Hide the Sign-in button.
+                this.loginButton.IsVisible = false;
+            }
         }
-    }
-    ```
 
     该代码可确保仅在用户经过身份验证后，才从服务刷新数据。
 7. 在 TodoList 类中为 Clicked 事件添加以下处理程序   ：
 
-    ```
-    async void loginButton_Clicked(object sender, EventArgs e)
-    {
-        if (App.Authenticator != null)
-            authenticated = await App.Authenticator.Authenticate();
+        async void loginButton_Clicked(object sender, EventArgs e)
+        {
+            if (App.Authenticator != null)
+                authenticated = await App.Authenticator.Authenticate();
 
-        // Set syncItems to true to synchronize the data on startup when offline is enabled.
-        if (authenticated == true)
-            await RefreshItems(true, syncItems: false);
-    }
-    ```
-
+            // Set syncItems to true to synchronize the data on startup when offline is enabled.
+            if (authenticated == true)
+                await RefreshItems(true, syncItems: false);
+        }
 8. 保存更改，重新生成可移植类库项目，并验证没有错误。
 
 ## <a name="add-authentication-to-the-android-app"></a>向 Android 应用添加身份验证
@@ -138,55 +119,47 @@ ms.locfileid: "79084405"
 2. 按 F5 在调试器中启动项目，然后验证启动该应用后，是否会引发状态代码为 401（“未授权”）的未处理异常。 之所以会生成 401 代码，是因为对后端的访问仅限于授权用户。
 3. 在 Android 项目中打开 MainActivity.cs，并添加以下 `using` 语句：
 
-    ```
-    using Microsoft.WindowsAzure.MobileServices;
-    using System.Threading.Tasks;
-    ```
-
+        using Microsoft.WindowsAzure.MobileServices;
+        using System.Threading.Tasks;
 4. 更新 MainActivity 类，实现 IAuthenticate 接口，如下所示   ：
 
-    ```
-    public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsApplicationActivity, IAuthenticate
-    ```
-
+        public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsApplicationActivity, IAuthenticate
 5. 通过添加 MobileServiceUser 字段和 IAuthenticate 接口所需的 Authenticate 方法，更新 MainActivity 类，如下所示     ：
 
-    ```
-    // Define a authenticated user.
-    private MobileServiceUser user;
+        // Define an authenticated user.
+        private MobileServiceUser user;
 
-    public async Task<bool> Authenticate()
-    {
-        var success = false;
-        var message = string.Empty;
-        try
+        public async Task<bool> Authenticate()
         {
-                // Sign in with MicrosoftAccount login using a server-managed flow.
-            user = await TodoItemManager.DefaultManager.CurrentClient.LoginAsync(this,
-                    MobileServiceAuthenticationProvider.MicrosoftAccount, "{url_scheme_of_your_app}");
-            if (user != null)
+            var success = false;
+            var message = string.Empty;
+            try
             {
-                message = string.Format("you are now signed-in as {0}.",
-                    user.UserId);
-                success = true;
+                // Sign in with MicrosoftAccount login using a server-managed flow.
+                user = await TodoItemManager.DefaultManager.CurrentClient.LoginAsync(this, 
+                    MobileServiceAuthenticationProvider.MicrosoftAccount, "{url_scheme_of_your_app}");
+                if (user != null)
+                {
+                    message = string.Format("you are now signed-in as {0}.",
+                        user.UserId);
+                    success = true;
+                }
             }
+            catch (Exception ex)
+            {
+                message = ex.Message;
+            }
+
+            // Display the success or failure message.
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.SetMessage(message);
+            builder.SetTitle("Sign-in result");
+            builder.Create().Show();
+
+            return success;
         }
-        catch (Exception ex)
-        {
-            message = ex.Message;
-        }
 
-        // Display the success or failure message.
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.SetMessage(message);
-        builder.SetTitle("Sign-in result");
-        builder.Create().Show();
-
-        return success;
-    }
-    ```
-
-    如果使用的是 MicrosoftAccount 以外的其他标识提供者，请为 [MobileServiceAuthenticationProvider] 选择不同的值。
+    如果使用的是 MicrosoftAccount 以外的其他标识提供者，请为 [MobileServiceAuthenticationProvider][7] 选择不同的值。
 
 6. 在 `<application>` 元素内添加以下 XML，更新 **AndroidManifest.xml** 文件：
 
@@ -222,68 +195,60 @@ ms.locfileid: "79084405"
 2. 按 F5 在调试器中启动项目，然后验证启动该应用后，是否会引发状态代码为 401（“未授权”）的未处理异常。 之所以会生成 401 响应，是因为对后端的访问仅限于授权用户。
 3. 打开 iOS 项目中的 AppDelegate.cs，并添加以下 `using` 语句：
 
-    ```
-    using Microsoft.WindowsAzure.MobileServices;
-    using System.Threading.Tasks;
-    ```
+        using Microsoft.WindowsAzure.MobileServices;
+        using System.Threading.Tasks;
 4. 更新 AppDelegate 类，实现 IAuthenticate 接口，如下所示   ：
 
-    ```
-    public partial class AppDelegate : global::Xamarin.Forms.Platform.iOS.FormsApplicationDelegate, IAuthenticate
-    ```
+        public partial class AppDelegate : global::Xamarin.Forms.Platform.iOS.FormsApplicationDelegate, IAuthenticate
 5. 通过添加 MobileServiceUser 字段和 IAuthenticate 接口所需的 Authenticate 方法，更新 AppDelegate 类，如下所示     ：
 
-    ```
-    // Define an authenticated user.
-    private MobileServiceUser user;
+        // Define an authenticated user.
+        private MobileServiceUser user;
 
-    public async Task<bool> Authenticate()
-    {
-        var success = false;
-        var message = string.Empty;
-        try
+        public async Task<bool> Authenticate()
         {
-            // Sign in with MicrosoftAccount login using a server-managed flow.
-            if (user == null)
+            var success = false;
+            var message = string.Empty;
+            try
             {
-                user = await TodoItemManager.DefaultManager.CurrentClient
-                    .LoginAsync(UIApplication.SharedApplication.KeyWindow.RootViewController,
-                        MobileServiceAuthenticationProvider.MicrosoftAccount, "{url_scheme_of_your_app}");
-                if (user != null)
+                // Sign in with MicrosoftAccount login using a server-managed flow.
+                if (user == null)
                 {
-                    message = string.Format("You are now signed-in as {0}.", user.UserId);
-                    success = true;                        
+                    user = await TodoItemManager.DefaultManager.CurrentClient
+                        .LoginAsync(UIApplication.SharedApplication.KeyWindow.RootViewController,
+                        MobileServiceAuthenticationProvider.MicrosoftAccount, "{url_scheme_of_your_app}");
+                    if (user != null)
+                    {
+                        message = string.Format("You are now signed-in as {0}.", user.UserId);
+                        success = true;
+                    }
                 }
-            }        
-        }
-        catch (Exception ex)
-        {
-           message = ex.Message;
-        }
+            }
+            catch (Exception ex)
+            {
+               message = ex.Message;
+            }
 
-        // Display the success or failure message.
-        UIAlertController avAlert = UIAlertController.Create("Sign-in result", message, UIAlertControllerStyle.Alert);
-        avAlert.AddAction(UIAlertAction.Create("OK", UIAlertActionStyle.Default, null));
-        UIApplication.SharedApplication.KeyWindow.RootViewController.PresentViewController(avAlert, true, null);
+            // Display the success or failure message.
+            UIAlertController avAlert = UIAlertController.Create("Sign-in result", message, UIAlertControllerStyle.Alert);
+            avAlert.AddAction(UIAlertAction.Create("OK", UIAlertActionStyle.Default, null));
+            UIApplication.SharedApplication.KeyWindow.RootViewController.PresentViewController(avAlert, true, null);
 
-        return success;
-    }
-    ```
+            return success;
+        }
 
     如果使用的是 MicrosoftAccount 以外的其他标识提供者，请为 [MobileServiceAuthenticationProvider] 选择不同的值。
-
+    
 6. 通过添加 **OpenUrl** 方法重载更新 **AppDelegate** 类，如下所示：
 
         public override bool OpenUrl(UIApplication app, NSUrl url, NSDictionary options)
         {
             return TodoItemManager.DefaultManager.CurrentClient.ResumeWithURL(url);
         }
-
+   
 7. 调用 `LoadApplication()` 之前，向 FinishedLaunching 方法添加以下代码行  ：
 
-    ```
-    App.Init(this);
-    ```
+        App.Init(this);
 
     该代码可确保验证器在应用加载前进行初始化。
 
@@ -298,66 +263,57 @@ ms.locfileid: "79084405"
 2. 按 F5 在调试器中启动项目，然后验证启动该应用后，是否会引发状态代码为 401（“未授权”）的未处理异常。 之所以会发生此 401 响应，是因为对后端的访问仅限于授权用户。
 3. 打开 Windows 应用项目的 MainPage.xaml.cs，并添加以下 `using` 语句：
 
-    ```
-    using Microsoft.WindowsAzure.MobileServices;
-    using System.Threading.Tasks;
-    using Windows.UI.Popups;
-    using <your_Portable_Class_Library_namespace>;
-    ```
+        using Microsoft.WindowsAzure.MobileServices;
+        using System.Threading.Tasks;
+        using Windows.UI.Popups;
+        using <your_Portable_Class_Library_namespace>;
 
     将 `<your_Portable_Class_Library_namespace>` 替换为可移植类库的命名空间。
-
 4. 更新 MainPage 类，实现 IAuthenticate 接口，如下所示   ：
 
-    ```
-    public sealed partial class MainPage : IAuthenticate
-    ```
+        public sealed partial class MainPage : IAuthenticate
 5. 通过添加 MobileServiceUser 字段和 IAuthenticate 接口所需的 Authenticate 方法，更新 MainPage 类，如下所示     ：
 
-    ```
-    // Define a authenticated user.
-    private MobileServiceUser user;
+        // Define an authenticated user.
+        private MobileServiceUser user;
 
-    public async Task<bool> Authenticate()
-    {
-        string message = string.Empty;
-        var success = false;
-
-        try
+        public async Task<bool> Authenticate()
         {
-            // Sign in with MicrosoftAccount login using a server-managed flow.
-            if (user == null)
+            string message = string.Empty;
+            var success = false;
+
+            try
             {
-                user = await TodoItemManager.DefaultManager.CurrentClient
-                        .LoginAsync(MobileServiceAuthenticationProvider.MicrosoftAccount, "{url_scheme_of_your_app}");
-                if (user != null)
+                // Sign in with MicrosoftAccount login using a server-managed flow.
+                if (user == null)
                 {
-                    success = true;
-                    message = string.Format("You are now signed-in as {0}.", user.UserId);
+                    user = await TodoItemManager.DefaultManager.CurrentClient
+                        .LoginAsync(MobileServiceAuthenticationProvider.MicrosoftAccount, "{url_scheme_of_your_app}");
+                    if (user != null)
+                    {
+                        success = true;
+                        message = string.Format("You are now signed-in as {0}.", user.UserId);
+                    }
                 }
+
+            }
+            catch (Exception ex)
+            {
+                message = string.Format("Authentication Failed: {0}", ex.Message);
             }
 
+            // Display the success or failure message.
+            await new MessageDialog(message, "Sign-in result").ShowAsync();
+
+            return success;
         }
-        catch (Exception ex)
-        {
-            message = string.Format("Authentication Failed: {0}", ex.Message);
-        }
 
-        // Display the success or failure message.
-        await new MessageDialog(message, "Sign-in result").ShowAsync();
-
-        return success;
-    }
-    ```
-
-    如果使用的是 MicrosoftAccount 以外的其他标识提供者，请为 [MobileServiceAuthenticationProvider] 选择不同的值。
+    如果使用的是 MicrosoftAccount 以外的其他标识提供者，请为 [MobileServiceAuthenticationProvider][7] 选择不同的值。
 
 1. 调用 `LoadApplication()` 之前，在 MainPage 类的构造函数中添加以下代码行  ：
 
-    ```
-    // Initialize the authenticator before loading the app.
-    <your_Portable_Class_Library_namespace>.App.Init(this);
-    ```
+        // Initialize the authenticator before loading the app.
+        <your_Portable_Class_Library_namespace>.App.Init(this);
 
     将 `<your_Portable_Class_Library_namespace>` 替换为可移植类库的命名空间。
 

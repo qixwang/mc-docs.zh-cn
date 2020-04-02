@@ -1,31 +1,23 @@
 ---
-title: 快速入门：识别存储在 Blob 存储中的语音，C++ - 语音服务
-titleSuffix: Azure Cognitive Services
-description: TBD
-services: cognitive-services
 author: IEvangelist
-manager: nitinme
 ms.service: cognitive-services
-ms.subservice: speech-service
 ms.topic: include
 origin.date: 01/13/2020
-ms.date: 02/17/2020
+ms.date: 03/16/2020
 ms.author: v-tawe
-zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 792992a62c5f56d3c3d5a4c5a63e274ea2bc5a78
-ms.sourcegitcommit: 888cbc10f2348de401d4839a732586cf266883bf
+ms.openlocfilehash: 7e7332a3f10c1a393c4d240ab5c316b6bb10d119
+ms.sourcegitcommit: b2f2bb08ab1b5ccb3c596d84b3b6ddca5bba3903
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77029133"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80151595"
 ---
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 在开始之前，请务必：
 
 > [!div class="checklist"]
-> * [设置开发环境](../../../../quickstarts/setup-platform.md?tabs=linux&pivots=programmming-language-cpp)
-> * [创建空示例项目](../../../../quickstarts/create-project.md?pivots=programmming-language-cpp)
+> * [设置开发环境并创建空项目](../../../../quickstarts/setup-platform.md?tabs=linux&pivots=programmming-language-cpp)
 > * [创建 Azure 语音资源](../../../../get-started.md)
 > * [将源文件上传到 Azure blob](https://docs.azure.cn/storage/blobs/storage-quickstart-blobs-portal)
 
@@ -102,7 +94,7 @@ int wmain()
 由于 REST API 采用 JSON 格式的请求并且也返回 JSON 结果，因此我们可以仅使用字符串与之进行交互，但不建议这样做。
 为了使请求和响应更易于管理，我们将声明一些用于对 JSON 进行序列化/反序列化处理的类，以及一些可帮助 nlohmann/json 的方法。
 
-开始操作并在 `recognizeSpeech` 之前放置声明。
+继续操作并将其声明放在 `recognizeSpeech` 之前
 
 ```cpp
 class TranscriptionDefinition {

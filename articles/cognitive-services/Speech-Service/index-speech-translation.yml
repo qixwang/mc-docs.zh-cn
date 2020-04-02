@@ -7,20 +7,19 @@ metadata:
   services: cognitive-services
   author: IEvangelist
   manager: nitinme
-  layout: LandingPage
   ms.service: speech-service
   ms.topic: landing-page
-  origin.date: 02/11/2020
-  ms.date: 03/23/2020
+  origin.date: 03/10/2020
+  ms.date: 03/16/2020
   ms.author: v-tawe
-  ms.openlocfilehash: 310a38cd659f09b7214cb9a5251224255fe82804
-  ms.sourcegitcommit: e94ed1c9eff4e88be2ca389909e60b14cc0d92f8
+  ms.openlocfilehash: 14d1cb8c1493a990140e38f3604a01fb23a82281
+  ms.sourcegitcommit: b2f2bb08ab1b5ccb3c596d84b3b6ddca5bba3903
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 03/11/2020
-  ms.locfileid: "79084525"
+  ms.lasthandoff: 03/24/2020
+  ms.locfileid: "80151682"
 landingContent:
-- title: 入门
+- title: 关于语音翻译
   linkLists:
   - linkListType: overview
     links:
@@ -34,7 +33,7 @@ landingContent:
       url: quickstarts/translate-speech-to-text-multiple-languages.md
     - text: 将语音翻译为语音
       url: quickstarts/translate-speech-to-speech.md
-- title: 分步指南
+- title: 使用语音翻译进行开发
   linkLists:
   - linkListType: tutorial
     links:
@@ -46,5 +45,5 @@ landingContent:
     links:
     - text: 语言支持
       url: language-support.md#speech-translation
-    - text: 定价
+    - text: 语音翻译定价
       url: https://www.azure.cn/pricing/details/cognitive-services/

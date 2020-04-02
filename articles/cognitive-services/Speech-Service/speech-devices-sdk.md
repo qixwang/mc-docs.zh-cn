@@ -1,5 +1,5 @@
 ---
-title: 关于语音设备 SDK - 语音服务
+title: 语音设备 SDK - 语音服务
 titleSuffix: Azure Cognitive Services
 description: 语音设备 SDK 入门。 “语音服务”适用于多种设备和音频源。 语音设备 SDK 是与特制的麦克风阵列开发工具包配对的一个预优化库。
 services: cognitive-services
@@ -8,17 +8,17 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-origin.date: 02/12/2020
-ms.date: 03/09/2020
+origin.date: 03/11/2020
+ms.date: 03/16/2020
 ms.author: v-tawe
-ms.openlocfilehash: 10fa9c0f8a48257b11c2e7653a0161c517290a26
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: e29d7d8ce96f1f3e6a35c5641715eb34d4a3c0cc
+ms.sourcegitcommit: b2f2bb08ab1b5ccb3c596d84b3b6ddca5bba3903
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79293287"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80151514"
 ---
-# <a name="about-the-speech-devices-sdk"></a>关于语音设备 SDK
+# <a name="what-is-the-speech-devices-sdk"></a>什么是语音设备 SDK？
 
 [语音服务](overview.md)适用于多种设备和音频源。 现在，可以通过匹配的硬件和软件进一步利用语音应用程序。 语音设备 SDK 是与特制的麦克风阵列开发工具包配对的一个预优化库。
 
@@ -48,9 +48,9 @@ ms.locfileid: "79293287"
 ### <a name="linux"></a>Linux
 
 对于 Linux，示例应用程序以跨平台 Java 应用程序的形式提供。 下载最新版本的 [JRE 语音设备 SDK](https://aka.ms/sdsdk-download-JRE)。
-该应用程序是使用语音 SDK 程序包和 Eclipse Java IDE (v4) 在 64 位 Linux（Ubuntu 16.04、Ubuntu 18.04、Debian 9）上构建的。 它在 64 位 Java 8 运行时环境 (JRE) 中运行。
+该应用程序是使用语音 SDK 程序包和 Eclipse Java IDE (v4) 在 64 位 Linux（Ubuntu 16.04、Ubuntu 18.04、Debian 9、RHEL 8、CentOS 8）上构建的。 它在 64 位 Java 8 运行时环境 (JRE) 中运行。
 
-提供了其他二进制文件来支持即将推出的设备，例如 [Roobo v2 DDK](https://aka.ms/sdsdk-download-roobov2) 和 [Urbetter DDK](https://aka.ms/sdsdk-download-urbetter)。
+提供了其他二进制文件来支持即将推出的设备，例如 [Roobo v2 DDK](https://aka.ms/sdsdk-download-roobov2)、[Urbetter DDK](https://aka.ms/sdsdk-download-urbetter) 和 [GGEC 扬声器](https://aka.ms/sdsdk-download-speaker)。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -12,13 +12,13 @@ author: WenJason
 ms.author: v-jay
 ms.reviewer: mathoma, carlrab
 origin.date: 06/25/2019
-ms.date: 12/16/2019
-ms.openlocfilehash: aa48bbfc11f8e84e27d6a0a384d6fe34ae0ad614
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.date: 03/30/2020
+ms.openlocfilehash: 62afebcca2701021d625a6161680e0dc796ea1ad
+ms.sourcegitcommit: 90660563b5d65731a64c099b32fb9ec0ce2c51c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336439"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80341837"
 ---
 # <a name="overview-of-business-continuity-with-azure-sql-database"></a>使用 Azure SQL 数据库确保业务连续性的相关概述
 
@@ -66,7 +66,7 @@ SQL 数据库还提供多种业务连续性功能，用于缓解各种计划外�
 |:---------------------------------------------| :-------------- | :----------------|
 | 自动故障转移                           |     否          |      是         |
 | 同时故障转移多个数据库  |     否          |      是         |
-| 在故障转移后更新连接字符串      |     是         |      否          |
+| 用户必须在故障转移后更新连接字符串      |     是         |      否          |
 | 支持托管实例                   |     否          |      是         |
 | 可以与主服务器位于同一区域             |     是         |      否          |
 | 多个副本                            |     是         |      否          |

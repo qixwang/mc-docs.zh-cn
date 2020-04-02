@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: quickstart
-ms.date: 02/24/2020
+ms.date: 03/20/2020
 ms.author: v-junlch
 ms.reviewer: jmprieur
 ms.custom: aaddev, identityplatformtop40, fasttrack-edit
-ms.openlocfilehash: dd8430622991299f585920e4105ae0d0a416cfa5
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: 39e1ecdbcc945be1defdf9fde37bde365e10efe7
+ms.sourcegitcommit: 6568c59433d7e80ab06e9fe76d4791f761ed6775
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79291061"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80243143"
 ---
 # <a name="quickstart-set-up-a-tenant"></a>快速入门：设置租户
 
@@ -72,8 +72,7 @@ Microsoft 标识平台可让开发人员生成面向各种自定义 Microsoft 36
 
 ## <a name="next-steps"></a>后续步骤
 
-* 尝试编写快速入门代码并开始对用户进行身份验证。 
-* 有关更多深入的代码示例，请参阅文档的“教程”部分  。
+* [注册应用](quickstart-register-app.md)并与 Microsoft 标识平台集成。 
+* 了解[身份验证的基础知识](authentication-scenarios.md)。
+* 若要了解订阅和 Azure AD 租户之间的详细关系，请参阅 [How Azure subscriptions are associated with Azure Active Directory](../fundamentals/active-directory-how-subscriptions-associated-directory.md) （Azure 订阅与 Azure Active Directory 的关联方式）。
 
-
-<!-- Update_Description: wording update -->

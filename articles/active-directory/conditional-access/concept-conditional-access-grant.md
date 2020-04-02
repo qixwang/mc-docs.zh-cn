@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 03/10/2020
+ms.date: 03/23/2020
 ms.author: v-junlch
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a2917f07003a4a359765ba2d668af55043ae3af0
-ms.sourcegitcommit: 4ba6d7c8bed5398f37eb37cf5e2acafcdcc28791
+ms.openlocfilehash: 9be31cb9b4c6127661be3fdf32b969bcb648066d
+ms.sourcegitcommit: 6568c59433d7e80ab06e9fe76d4791f761ed6775
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2020
-ms.locfileid: "79134170"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80243169"
 ---
 # <a name="conditional-access-grant"></a>条件访问：授予
 
@@ -57,7 +57,7 @@ ms.locfileid: "79134170"
 
 组织可以要求只能尝试从已批准的客户端应用访问选定的云应用。
 
-此设置适用于以下客户端应用：
+此设置适用于以下 iOS 和 Android 应用：
 
 - Azure 信息保护
 - Microsoft Bookings
@@ -70,6 +70,7 @@ ms.locfileid: "79134170"
 - Microsoft Invoicing
 - Microsoft Kaizala
 - Microsoft Launcher
+- Microsoft Office
 - Microsoft OneDrive
 - Microsoft OneNote
 - Microsoft Outlook
@@ -94,9 +95,11 @@ ms.locfileid: "79134170"
    - 仅支持 iOS 和 Android 作为设备平台条件。
 - 条件访问无法将 InPrivate 模式下的 Microsoft Edge 视为已批准的客户端应用。
 
+请参阅文章[如何：使用条件访问要求使用批准的设备应用访问云应用](app-based-conditional-access.md)，以获取配置示例。
+
 ### <a name="require-app-protection-policy"></a>需要应用保护策略
 
-在条件访问策略中，你可以要求客户端应用上存在 Intune 应用保护策略，然后才能访问所选云应用。 
+在条件访问策略中，你可以要求客户端应用上先存在 [Intune 应用保护策略](https://docs.microsoft.com/intune/app-protection-policy)，然后才能访问所选云应用。 
 
 此设置适用于以下客户端应用：
 

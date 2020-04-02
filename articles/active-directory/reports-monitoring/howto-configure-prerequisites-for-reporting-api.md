@@ -1,9 +1,9 @@
 ---
-title: 访问 Azure Active Directory 报告 API 的先决条件 | Microsoft 文档
+title: Azure Active Directory 报告 API 的先决条件 | Microsoft Docs
 description: 了解有关访问 Azure AD 报告 API 的先决条件
 services: active-directory
 documentationcenter: ''
-author: cawrites
+author: MarkusVi
 manager: daveba
 editor: ''
 ms.assetid: ada19f69-665c-452a-8452-701029bf4252
@@ -13,17 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-origin.date: 08/30/2019
-ms.date: 10/11/2019
+ms.date: 03/25/2020
 ms.author: v-junlch
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 704176ce2224a4868cb849ccb4bcb00a85dc25ff
-ms.sourcegitcommit: 74f50c9678e190e2dbb857be530175f25da8905e
+ms.openlocfilehash: 00b3d37f1f5a11f2658ce17041b709cbcfc053e9
+ms.sourcegitcommit: 6568c59433d7e80ab06e9fe76d4791f761ed6775
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/12/2019
-ms.locfileid: "72292107"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80243189"
 ---
 # <a name="prerequisites-to-access-the-azure-active-directory-reporting-api"></a>访问 Azure Active Directory 报告 API 的先决条件
 
@@ -190,11 +189,7 @@ ms.locfileid: "72292107"
 
 ## <a name="troubleshoot-errors-in-the-reporting-api"></a>排查报告 API 中的错误
 
-本部分列出了使用 MS Graph API 访问活动报告时可能遇到的常见错误消息及其解决步骤。
-
-### <a name="500-http-internal-server-error-while-accessing-microsoft-graph-v2-endpoint"></a>访问 Microsoft Graph V2 终结点时出现 500 HTTP 内部服务器错误
-
-目前，我们不支持 Microsoft Graph v2 终结点，请务必使用 Microsoft Graph v1 终结点访问活动日志。
+本部分列出了使用 Microsoft Graph API 访问活动报告时可能遇到的常见错误消息及其解决步骤。
 
 ### <a name="error-tenant-is-not-b2c-or-tenant-doesnt-have-premium-license"></a>错误：租户不是 B2C，或者租户没有 Premium 许可证
 
@@ -206,7 +201,7 @@ ms.locfileid: "72292107"
 
 ### <a name="error-application-missing-aad-read-directory-data-permission"></a>错误：应用程序缺少 AAD“读取目录数据”权限 
 
-### <a name="error-application-missing-msgraph-api-read-all-audit-log-data-permission"></a>错误：应用程序缺少 MSGraph API“读取所有审核日志数据”权限
+### <a name="error-application-missing-microsoft-graph-api-read-all-audit-log-data-permission"></a>错误：应用程序缺少 Microsoft Graph API“读取所有审核日志数据”权限
 
 按照[访问 Azure Active Directory 报告 API 的先决条件](howto-configure-prerequisites-for-reporting-api.md)中的步骤操作，确保应用程序使用正确的权限集运行。 
 

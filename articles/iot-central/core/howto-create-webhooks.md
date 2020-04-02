@@ -2,25 +2,22 @@
 title: 在 Azure IoT Central 中基于规则创建 Webhook | Microsoft Docs
 description: 在 Azure IoT Central 中创建 Webhook，以便在规则触发时自动通知其他应用程序。
 author: viv-liu
-ms.author: v-yiso
-origin.date: 06/16/2019
-ms.date: 12/16/2019
+ms.author: viviali
+ms.date: 12/02/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
-manager: peterpr
-ms.openlocfilehash: 36f31761c5bb9499f2e9c476fd34a7b7737cfaec
-ms.sourcegitcommit: 6ffa4d50cee80c7c0944e215ca917a248f2a4bcd
+manager: corywink
+ms.openlocfilehash: b1bc05e8578c1b7e43399b3c524a258a2a02ae61
+ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74882993"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80343269"
 ---
 # <a name="create-webhook-actions-on-rules-in-azure-iot-central"></a>在 Azure IoT Central 中基于规则创建 Webhook 操作
 
 本主题适用于构建者和管理员  。
-
-[!INCLUDE [iot-central-original-pnp](../../../includes/iot-central-original-pnp-note.md)]
 
 使用 Webhook 可以将 IoT Central 应用连接到其他应用程序和服务，以便进行远程监视和通知。 只要在 IoT Central 应用中触发了规则，Webhook 就会自动通知你连接的其他应用程序和服务。 每当触发规则时，IoT Central 应用就会向其他应用程序的 HTTP 终结点发送 POST 请求。 有效负载包含设备详细信息和规则触发详细信息。
 
@@ -32,7 +29,7 @@ ms.locfileid: "74882993"
 
 1. 创建一个新的 RequestBin 并复制 **Bin URL**。
 
-1. 创建[遥测规则](howto-create-telemetry-rules.md)或[事件规则](howto-create-event-rules.md)。 保存规则并添加新操作。
+1. 创建[遥测规则](tutorial-create-telemetry-rules.md)。 保存规则并添加新操作。
 
     ![Webhook 创建屏幕](media/howto-create-webhooks/webhookcreate.png)
 
@@ -44,60 +41,49 @@ ms.locfileid: "74882993"
 
 ## <a name="payload"></a>有效负载
 
-触发规则时，会向包含 json 有效负载的回调 URL 发出 HTTP POST 请求，其中包含度量、设备、规则和应用程序详细信息。 对于遥测规则，有效负载如下所示：
+触发规则时，会向包含 json 有效负载的回调 URL 发出 HTTP POST 请求，其中包含遥测数据、设备、规则和应用程序详细信息。 有效负载可能如下所示：
 
 ```json
 {
-    "id": "ID",
-    "timestamp": "date-time",
-    "device" : {
-        "id":"ID",
-        "name":  "Refrigerator1",
-        "simulated" : true,
-        "deviceId": "deviceID",
-        "deviceTemplate":{
-            "id": "ID",
-            "version":"1.0.0"
-        },
-        "properties":{
-            "device":{
-                "firmwareversion":"1.0"
-            },
-            "cloud":{
-                "location":"One Microsoft Way"
-            }
-        },
-        "measurements":{
-            "telemetry":{
-                "temperature":20,
-                "pressure":10
-            }
-        }
-
-    },
+    "id": "<id>",
+    "displayName": "Webhook 1",
+    "timestamp": "2019-10-24T18:27:13.538Z",
     "rule": {
-        "id": "ID",
-        "name": "High temperature alert",
-        "enabled": true,
-        "deviceTemplate": {
-            "id":"GUID",
-            "version":"1.0.0"
-        }
+        "id": "<id>",
+        "displayName": "High temp alert",
+        "enabled": true
     },
+    "device": {
+        "id": "mx1",
+        "displayName": "MXChip IoT DevKit - mx1",
+        "instanceOf": "<device-template-id>",
+        "simulated": true,
+        "provisioned": true,
+        "approved": true
+    },
+    "data": [{
+        "@id": "<id>",
+        "@type": ["Telemetry"],
+        "name": "temperature",
+        "displayName": "Temperature",
+        "value": 66.27310467496761,
+        "interfaceInstanceName": "sensors"
+    }],
     "application": {
-        "id": "ID",
-        "name": "Contoso app",
-        "subdomain":"contoso-app"
+        "id": "<id>",
+        "displayName": "x - Store Analytics Checkout---PnP",
+        "subdomain": "<subdomain>",
+        "host": "<host>"
     }
 }
 ```
 
-## <a name="known-limitations"></a>已知限制
+## <a name="known-limitations"></a>已知的限制
 
 目前，没有通过 API 订阅/取消订阅这些 Webhook 的编程方式。
 
-如果你对如何改进此功能有任何想法，请将你的建议发布到我们的 [Uservoice 论坛](https://feedback.azure.com/forums/911455-azure-iot-central)。
+如果你对如何改进此功能有任何想法，请将你的建议发布到我们的 [User Voice 论坛](https://feedback.azure.com/forums/911455-azure-iot-central)。
 
 ## <a name="next-steps"></a>后续步骤
 
-现在，你已了解如何设置和使用 Webhook，建议下一步是探索如何[在 Microsoft Flow 中生成工作流](howto-add-microsoft-flow.md)。
+现在，你已了解如何设置和使用 Webhook，建议下一步是探索如何[配置 Azure Monitor 操作组](howto-use-action-groups.md)。

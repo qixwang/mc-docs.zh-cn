@@ -9,14 +9,14 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 origin.date: 12/04/2019
-ms.date: 02/17/2020
+ms.date: 03/16/2020
 ms.author: v-tawe
-ms.openlocfilehash: e69325d282c6ae6b45bbaeeebd4ec2bf73d7da79
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.openlocfilehash: 01fc9ce81f8141884a991c3165c9c226ac74758d
+ms.sourcegitcommit: b2f2bb08ab1b5ccb3c596d84b3b6ddca5bba3903
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77540869"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80151709"
 ---
 # <a name="speech-to-text-frequently-asked-questions"></a>语音转文本常见问题解答
 
@@ -32,7 +32,7 @@ ms.locfileid: "77540869"
 
 **答**：首先，获取[订阅密钥](get-started.md)。 如果想要对预先部署的基线模型进行 REST 调用，请参阅 [REST API](rest-apis.md)。 如果想要使用 WebSocket，请[下载 SDK](speech-sdk.md)。
 
-**问：是否始终需要生成自定义语音模型？**
+**问：是否始终需要生成自定义语音识别模型？**
 
 **答**：否。 如果应用程序使用通用的日常语言，则无需自定义模型。 如果应用程序用于背景噪音很小或无背景噪音的环境，则无需自定义模型。
 
@@ -46,7 +46,7 @@ ms.locfileid: "77540869"
 
 **答**：集合中可以拥有的模型数量没有限制。
 
-**问：我意识到自己犯了一个错误。** 如何取消正在进行的数据导入或模型创建？
+**问：我意识到自己犯了一个错误。如何取消正在进行的数据导入或模型创建？**
 
 **答**：当前无法回滚声学或语言适应过程。 可以在导入的数据和模型处于终点状态时删除它们。
 
@@ -83,7 +83,7 @@ ms.locfileid: "77540869"
 **答**：如果你单独提交每个声道（每个声道在其自己的文件中），则将按每个文件的持续时间对你收费。 如果你提交单个文件，其中每个声道都一起多路复用，则按单个文件的持续时间对你收费。 有关定价的详细信息，请参阅 [Azure 认知服务定价页](https://www.azure.cn/pricing/details/cognitive-services/)。
 
 > [!IMPORTANT]
-> 如果有禁止使用自定义语音服务的其他隐私问题，请联系其中一个支持渠道。
+> 如果有禁止使用自定义语音识别服务的其他隐私问题，请联系其中一个支持渠道。
 
 ## <a name="increasing-concurrency"></a>提高并发性
 
@@ -97,7 +97,7 @@ ms.locfileid: "77540869"
 
 - 部署模型的区域；
 - 已部署模型的终结点 ID：
-  - 转到[自定义语音门户](https://speech.azure.cn/customspeech)；
+  - 转到[自定义语音识别门户](https://speech.azure.cn/customspeech)，
   - 视需要登录；
   - 选择项目和部署；
   - 选择需要增加其并发性的终结点；
@@ -164,7 +164,7 @@ ms.locfileid: "77540869"
 
 **问：什么是字错误率 (WER) 以及如何计算此错误率？**
 
-**答**：WER 是用于语音识别的评估指标。 WER 由错误总数（包括插入、删除和替换）除以引用听录中的总字数得出。 有关详细信息，请参阅[字错误率](https://en.wikipedia.org/wiki/Word_error_rate)。
+**答**：WER 是用于语音识别的评估指标。 WER 由错误总数（包括插入、删除和替换）除以引用听录中的总字数得出。 有关详细信息，请参阅[字错误率](https://wikipedia.org/wiki/Word_error_rate)。
 
 **问：如何确定准确度测试的结果是否良好？**
 

@@ -1,7 +1,7 @@
 ---
 title: 动态字典 - 文本翻译 API
-titlesuffix: Azure Cognitive Services
-description: 如何使用文本翻译 API 的动态字典功能。
+titleSuffix: Azure Cognitive Services
+description: 本文介绍如何使用 Azure 认知服务文本翻译 API 的动态字典功能。
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -11,12 +11,12 @@ ms.topic: conceptual
 origin.date: 06/04/2019
 ms.date: 07/23/2019
 ms.author: v-junlch
-ms.openlocfilehash: 5f992a7d63a5cf85a4b8bdad658fed445005031d
-ms.sourcegitcommit: 9a330fa5ee7445b98e4e157997e592a0d0f63f4c
+ms.openlocfilehash: a6623e4bd558ee72dab96bc06447820466727c37
+ms.sourcegitcommit: 303a16c7117b6f3495ef0493b4ae8ccb67d7dbba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68439974"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80342413"
 ---
 # <a name="how-to-use-a-dynamic-dictionary"></a>如何使用动态字典
 

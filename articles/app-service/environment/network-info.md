@@ -8,18 +8,18 @@ origin.date: 01/24/2020
 ms.date: 03/19/2020
 ms.author: v-tawe
 ms.custom: seodec18
-ms.openlocfilehash: cdc154a5656ed4929ace39c69a75f090bdee506b
-ms.sourcegitcommit: e500354e2fd8b7ac3dddfae0c825cc543080f476
+ms.openlocfilehash: cab15bfcfe388cdfe2d5a3827dfded8aeb6a161a
+ms.sourcegitcommit: 303a16c7117b6f3495ef0493b4ae8ccb67d7dbba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2020
-ms.locfileid: "79546965"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80342349"
 ---
 # <a name="networking-considerations-for-an-app-service-environment"></a>应用服务环境的网络注意事项 #
 
 ## <a name="overview"></a>概述 ##
 
- Azure [应用服务环境][简介] 将 Azure 应用服务部署到 Azure 虚拟网络 (VNet) 中的子网。 应用服务环境 (ASE) 具有两种部署类型：
+ Azure [应用服务环境][Intro]是指将 Azure 应用服务部署到 Azure 虚拟网络 (VNet) 的子网中。 应用服务环境 (ASE) 具有两种部署类型：
 
 - **外部 ASE**：在 Internet 可访问的 IP 地址上公开 ASE 托管的应用。 有关详细信息，请参阅[创建外部 ASE][MakeExternalASE]。
 - **ILB ASE**：在 VNet 中的 IP 地址上公开 ASE 托管的应用。 内部终结点是一个内部负载均衡器 (ILB)，因此该类部署被称为 ILB ASE。 有关详细信息，请参阅[创建和使用 ILB ASE][MakeILBASE]。
@@ -62,7 +62,7 @@ ms.locfileid: "79546965"
 
 执行端口扫描时，还有其他 2 个端口可能显示为打开状态：7654 和 1221。 它们的回复中包含 IP 地址，此外不会包含任何其他信息。 可按需阻止这些端口。 
 
-除系统监视以外，入站管理流量还提供对 ASE 的指挥与控制。 [ASE 管理地址][ASEManagement] 文档中列出了此流量的源地址。 网络安全配置需要允许从端口 454 和 455 上的 ASE 管理地址进行访问。 如果阻止从这些地址进行访问，则 ASE 会变得不正常，然后变成暂停状态。 从端口 454 和 455 进来的 TCP 流量必须从同一 VIP 回去，否则会出现非对称路由问题。 
+除系统监视以外，入站管理流量还提供对 ASE 的指挥与控制。 [ASE 管理地址][ASEManagement]文档中列出了此流量的源地址。 网络安全配置需要允许从端口 454 和 455 上的 ASE 管理地址进行访问。 如果阻止从这些地址进行访问，则 ASE 会变得不正常，然后变成暂停状态。 从端口 454 和 455 进来的 TCP 流量必须从同一 VIP 回去，否则会出现非对称路由问题。 
 
 在 ASE 子网内，有多个用于内部组件通信的端口，并且可以更改。 这要求 ASE 子网中的所有端口均可从 ASE 子网访问。 
 
@@ -145,7 +145,7 @@ ASE 具有一些需要注意的 IP 地址。 它们具有以下特点：
 
 ## <a name="network-security-groups"></a>网络安全组 ##
 
-使用[网络安全组][NSG] 可以控制 VNet 中的网络访问。 使用门户时，有一个最低优先级的隐式拒绝规则可拒绝任何流量。 因此，只需生成允许规则。
+[网络安全组][NSGs]可用于控制 VNet 中的网络访问。 使用门户时，有一个最低优先级的隐式拒绝规则可拒绝任何流量。 因此，只需生成允许规则。
 
 在 ASE 中，你无权访问用于托管 ASE 本身的 VM。 它们位于 Microsoft 管理订阅中。 若要限制对 ASE 上的应用的访问，请在 ASE 子网中设置 NSG。 操作时，需特别注意 ASE 依赖项。 如果阻止任何依赖项，ASE 将停止工作。
 
@@ -190,7 +190,7 @@ ASE 具有一些需要注意的 IP 地址。 它们具有以下特点：
 
 ## <a name="routes"></a>路由 ##
 
-强制隧道是指，在 VNet 中设置路由时，使出站流量不直接前往 Internet，而是前往诸如 ExpressRoute 网关或虚拟设备的其他位置。  如果需要以这样的方式配置 ASE，请阅读有关 [为应用服务环境配置强制隧道][forcedtunnel] 的文档。  该文档将介绍可用于 ExpressRoute 和强制隧道的选项。
+强制隧道是指，在 VNet 中设置路由时，使出站流量不直接前往 Internet，而是前往诸如 ExpressRoute 网关或虚拟设备的其他位置。  如果需要以这样的方式配置 ASE，请阅读有关[为应用服务环境配置强制隧道][forcedtunnel]的文档。  该文档将介绍可用于 ExpressRoute 和强制隧道的选项。
 
 在门户中创建 ASE 时，我们还在随 ASE 创建的子网上创建一组路由表。  这些路由只是指示将出站流量直接发送到 Internet。  
 若要手动创建同样的路由，请执行以下步骤：
@@ -213,7 +213,7 @@ ASE 具有一些需要注意的 IP 地址。 它们具有以下特点：
 
 ## <a name="service-endpoints"></a>服务终结点 ##
 
-可以通过服务终结点将多租户服务的访问权限限制给一组 Azure 虚拟网络和子网。 若要详细了解服务终结点，请参阅 [虚拟网络服务终结点]\[serviceendpoints] 文档。 
+可以通过服务终结点将多租户服务的访问权限限制给一组 Azure 虚拟网络和子网。 若要详细了解服务终结点，请参阅[虚拟网络服务终结点][serviceendpoints]文档。 
 
 在资源上启用服务终结点时，有些已创建路由的优先级高于所有其他路由。 如果在包含强制隧道 ASE 的任意 Azure 服务中使用服务终结点，则不会对发往这些服务的流量应用强制隧道。 
 
@@ -231,7 +231,25 @@ ASE 具有一些需要注意的 IP 地址。 它们具有以下特点：
 [7]: ./media/network_considerations_with_an_app_service_environment/networkase-subnet.png
 [8]: ./media/network_considerations_with_an_app_service_environment/serviceendpoint.png
 
-<!--Links-->
 <!-- [ConfigureSSL]: ../web-sites-purchase-ssl-web-site.md -->
 <!--[Kudu]: https://azure.microsoft.com/resources/videos/super-secret-kudu-debug-console-for-azure-web-sites/-->
-[Intro]: ./intro.md [MakeExternalASE]: ./create-external-ase.md [MakeASEfromTemplate]: ./create-from-template.md [MakeILBASE]: ./create-ilb-ase.md [ASENetwork]: ./network-info.md [UsingASE]: ./using-an-ase.md [UDRs]: ../../virtual-network/virtual-networks-udr-overview.md [NSGs]: ../../virtual-network/security-overview.md [mobileapps]: ../../app-service-mobile/app-service-mobile-value-prop.md [Functions]: ../../azure-functions/index.yml [Pricing]: https://www.azure.cn/pricing/details/app-service/ [ARMOverview]: ../../azure-resource-manager/management/overview.md [ASEWAF]: app-service-app-service-environment-web-application-firewall.md [AppGW]: ../../application-gateway/application-gateway-web-application-firewall-overview.md [ASEManagement]: ./management-addresses.md [serviceendpoints]: ../../virtual-network/virtual-network-service-endpoints-overview.md [forcedtunnel]: ./forced-tunnel-support.md [serviceendpoints]: ../../virtual-network/virtual-network-service-endpoints-overview.md
+
+<!--Links-->
+[Intro]: ./intro.md
+[MakeExternalASE]: ./create-external-ase.md
+[MakeASEfromTemplate]: ./create-from-template.md
+[MakeILBASE]: ./create-ilb-ase.md
+[ASENetwork]: ./network-info.md
+[UsingASE]: ./using-an-ase.md
+[UDRs]: ../../virtual-network/virtual-networks-udr-overview.md
+[NSGs]: ../../virtual-network/security-overview.md
+[mobileapps]: ../../app-service-mobile/app-service-mobile-value-prop.md
+[Functions]: ../../azure-functions/index.yml
+[Pricing]: https://www.azure.cn/pricing/details/app-service/
+[ARMOverview]: ../../azure-resource-manager/management/overview.md
+[ASEWAF]: app-service-app-service-environment-web-application-firewall.md
+[AppGW]: ../../application-gateway/application-gateway-web-application-firewall-overview.md
+[ASEManagement]: ./management-addresses.md
+[serviceendpoints]: ../../virtual-network/virtual-network-service-endpoints-overview.md
+[forcedtunnel]: ./forced-tunnel-support.md
+[serviceendpoints]: ../../virtual-network/virtual-network-service-endpoints-overview.md

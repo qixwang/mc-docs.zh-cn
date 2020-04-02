@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 origin.date: 02/17/2020
-ms.date: 03/09/2020
-ms.openlocfilehash: d89056d00aa2eacae97ce50c478f082eeece0cbe
-ms.sourcegitcommit: df370a03d71b94c876e19294d75d4ff77809da11
+ms.date: 03/30/2020
+ms.openlocfilehash: a40bbdc2864bf0f0fdc053c85b38260bddfd7032
+ms.sourcegitcommit: 90660563b5d65731a64c099b32fb9ec0ce2c51c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78238530"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80341714"
 ---
 # <a name="tutorial-migrate-postgresql-to-azure-db-for-postgresql-online-using-dms-via-the-azure-cli"></a>教程：通过 Azure CLI 使用 DMS 将 PostgreSQL 联机迁移到 Azure DB for PostgreSQL
 
@@ -34,7 +34,7 @@ ms.locfileid: "78238530"
 > * 监视迁移。
 
 > [!NOTE]
-> 使用 Azure 数据库迁移服务执行联机迁移需要基于“高级”定价层创建实例。
+> 使用 Azure 数据库迁移服务执行联机迁移需要基于“高级”定价层创建实例。 我们对磁盘进行加密，以防止在迁移过程中数据被盗。
 
 > [!IMPORTANT]
 > 为获得最佳迁移体验，Azure 建议在目标数据库所在的 Azure 区域中创建 Azure 数据库迁移服务的实例。 跨区域或地理位置移动数据可能会减慢迁移过程并引入错误。
@@ -97,7 +97,7 @@ ms.locfileid: "78238530"
 
 2. 在目标环境中创建一个空数据库，即 Azure Database for PostgreSQL。
 
-    请参阅[在 Azure 门户中创建 Azure Database for PostgreSQL 服务器](/postgresql/quickstart-create-server-database-portal)一文，详细了解如何连接数据库，以及如何创建数据库。
+    有关如何连接和创建数据库的详细信息，请参阅[在 Azure 门户中创建 Azure Database for PostgreSQL 服务器](/postgresql/quickstart-create-server-database-portal)一文。
 
 3. 通过还原架构转储文件，将架构导入已创建的目标数据库。
 

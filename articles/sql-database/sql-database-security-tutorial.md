@@ -9,14 +9,14 @@ author: WenJason
 ms.author: v-jay
 ms.reviewer: carlrab
 origin.date: 09/03/2019
-ms.date: 02/17/2020
+ms.date: 03/30/2020
 ms.custom: seoapril2019
-ms.openlocfilehash: fc293edf9e1f3e973cd1bc06d990257a70b261d4
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: 9369bee950a54b5e16eb553846c7cab2b3af18b2
+ms.sourcegitcommit: 90660563b5d65731a64c099b32fb9ec0ce2c51c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79293515"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80341797"
 ---
 # <a name="tutorial-secure-a-single-or-pooled-database"></a>教程：保护单一数据库或共用数据库
 
@@ -150,7 +150,7 @@ SQL 数据库受 Azure 中的防火墙保护。 默认情况下，将拒绝与�
 
 ## <a name="manage-database-access"></a>管理数据库访问
 
-管理数据库访问的方法是：将用户添加到数据库，或者允许用户使用安全的连接字符串进行访问。 连接字符串用于外部应用程序。 若要了解详细信息，请参阅 [Azure SQL 访问控制](sql-database-control-access.md)和 [AD 身份验证](sql-database-aad-authentication.md)。
+管理数据库访问的方法是：将用户添加到数据库，或者允许用户使用安全的连接字符串进行访问。 连接字符串用于外部应用程序。 若要了解详细信息，请参阅[管理登录名和用户帐户](sql-database-manage-logins.md)和 [AD 身份验证](sql-database-aad-authentication.md)。
 
 若要添加用户，请选择数据库身份验证类型：
 

@@ -11,12 +11,12 @@ ms.reviewer: trbye
 ms.topic: conceptual
 origin.date: 11/04/2019
 ms.date: 03/09/2020
-ms.openlocfilehash: 09f7100ebea32c4c5fb2bc5e27839bdfa8ce6668
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.openlocfilehash: fe5807ca96add3638e92bc6912ee03d1397e43bf
+ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78850254"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80343559"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>自动训练时序预测模型
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -114,7 +114,7 @@ test_labels = test_data.pop(label).values
 
 [`AutoMLConfig`](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py) 对象定义自动化机器学习任务所需的设置和数据。 与回归问题类似，需定义标准训练参数，如任务类型、迭代数、训练数据和交叉验证次数。 对于预测任务，还必须设置对试验有影响的其他参数。 下表阐释了每个参数及其用途。
 
-| Param | 说明 | 必须 |
+| 参数&nbsp;名称 | 说明 | 必须 |
 |-------|-------|-------|
 |`time_column_name`|用于指定输入数据中用于生成时序的日期时间列并推断其频率。|✓|
 |`grain_column_names`|定义输入数据中各个序列组的名称。 如果未定义粒度，则假定数据集为一个时序。||
@@ -179,13 +179,14 @@ best_run, fitted_model = local_run.get_output()
 ### <a name="configure-a-dnn-enable-forecasting-experiment"></a>配置启用 DNN 的预测试验
 
 > [!NOTE]
-> 自动化机器学习中用于预测的 DNN 支持处于预览阶段。
+> DNN 对自动机器学习的预测支持处于预览状态，不支持本地运行。
 
 为了利用 DNN 进行预测，需要将 AutoMLConfig 中的 `enable_dnn` 参数设置为 true。 
 
-为了使用 DNN，建议使用包含多个 GPU SKU 和至少 2 个节点的 AML 计算群集作为计算目标。 请参阅 [AML 计算文档](how-to-set-up-training-targets.md#amlcompute)以了解详细信息。 请参阅 [GPU 优化的虚拟机大小](/virtual-machines/linux/sizes-gpu)，以详细了解包含 GPU 的 VM 大小。
+我们建议使用包含 GPU SKU 和至少两个节点的 AML 计算群集作为计算目标。 为了留出足够的时间让 DNN 训练完成，我们建议至少将试验超时值设为几小时。
+有关包含 GPU 的 AML 计算和 VM 大小的详细信息，请参阅 [AML 计算文档](how-to-set-up-training-targets.md#amlcompute)和 [GPU 优化的虚拟机大小文档](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu)。
 
-为了留出足够的时间让 DNN 训练完成，建议至少将试验超时设置为数小时。
+查看[饮料生产预测笔记本](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-beer-remote/auto-ml-forecasting-beer-remote.ipynb)以获取利用 DNN 的详细代码示例。
 
 ### <a name="view-feature-engineering-summary"></a>查看特征工程摘要
 

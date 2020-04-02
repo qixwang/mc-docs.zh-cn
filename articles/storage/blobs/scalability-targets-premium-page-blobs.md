@@ -7,15 +7,15 @@ author: WenJason
 ms.service: storage
 ms.topic: conceptual
 origin.date: 12/18/2019
-ms.date: 02/10/2020
+ms.date: 03/30/2020
 ms.author: v-jay
 ms.subservice: common
-ms.openlocfilehash: 9852b0d9c58bef253608355298d08687a94ba61c
-ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
+ms.openlocfilehash: a5897587bd032014589643336a86c0d6d90d6aea
+ms.sourcegitcommit: 90d01d08faf8adb20083363a8e4e5aab139cd9b2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77028909"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80290452"
 ---
 # <a name="scalability-and-performance-targets-for-premium-page-blob-storage-accounts"></a>高级页 blob 存储帐户的可伸缩性和性能目标
 
@@ -47,4 +47,5 @@ ms.locfileid: "77028909"
 ## <a name="see-also"></a>另请参阅
 
 - [标准存储帐户的可伸缩性和性能目标](../common/scalability-targets-standard-account.md)
+- [高级块 blob 存储帐户的可伸缩性目标](../blobs/scalability-targets-premium-block-blobs.md)
 - [Azure 订阅限制和配额](../../azure-resource-manager/management/azure-subscription-service-limits.md)

@@ -1,30 +1,25 @@
 ---
-title: 如何以及为何将应用程序添加到 Azure Active Directory
+title: 将应用添加到 Azure AD 的方式及原因
 titleSuffix: Microsoft identity platform
 description: 为何要将应用程序添加到 Azure AD，如何添加？
 services: active-directory
-documentationcenter: ''
 author: rwike77
 manager: CelesteDG
-editor: ''
 ms.assetid: 3321d130-f2a8-4e38-b35e-0959693f3576
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/09/2019
+ms.date: 03/20/2020
 ms.author: v-junlch
 ms.custom: aaddev
 ms.reviewer: lenalepa, sureshja
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: f058749113c4e81025b05bf785b383765ff5f808
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 8f93977ad673127aa799c8dc604c8ba00e111eeb
+ms.sourcegitcommit: 6568c59433d7e80ab06e9fe76d4791f761ed6775
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75334914"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80243163"
 ---
 # <a name="how-and-why-applications-are-added-to-azure-ad"></a>如何以及为何将应用程序添加到 Azure AD
 
@@ -79,7 +74,7 @@ Azure AD 中的应用程序有两种表示形式：
   * 订阅 Office 365 或开始试用时，会在目录中创建一个或多个服务主体，表示传递所有与 Office 365 关联的功能的各种服务。
   * 某些 Office 365 服务（如 SharePoint）会不断地创建服务主体，以允许在组件（包括工作流）之间进行安全通信。
 * 当管理员从应用库添加应用程序时（这也会创建基础应用对象）
-* 通过 Azure AD 图形 API 或 PowerShell 以编程方式实现
+* 通过 Microsoft Graph API 或 PowerShell 以编程方式实现
 
 ## <a name="how-are-application-objects-and-service-principals-related-to-each-other"></a>如何将应用程序对象与服务主体彼此相关？
 
@@ -102,13 +97,13 @@ Azure AD 中的应用程序有两种表示形式：
 
 ### <a name="notes-and-exceptions"></a>备注和例外情况
 
-* 并非所有服务主体都会往后指向应用程序对象。 最初生成 Azure AD 时，提供给应用程序的服务存在更多的限制，使用服务主体便足以建立应用程序标识。 原始服务主体在形式上更接近于 Windows Server Active Directory 服务帐户。 出于此原因，仍可以通过不同的途径创建服务主体（例如使用 Azure AD PowerShell），而无需首先创建应用程序对象。 Azure AD 图形 API 在创建服务主体之前需要一个应用程序对象。
+* 并非所有服务主体都会往后指向应用程序对象。 最初生成 Azure AD 时，提供给应用程序的服务存在更多的限制，使用服务主体便足以建立应用程序标识。 原始服务主体在形式上更接近于 Windows Server Active Directory 服务帐户。 出于此原因，仍可以通过不同的途径创建服务主体（例如使用 Azure AD PowerShell），而无需首先创建应用程序对象。 Microsoft Graph API 在创建服务主体之前需要一个应用程序对象。
 * 上述信息当前并非全部都是以编程方式公开的。 只能在 UI 中使用以下功能：
   * 声明转换规则
   * 属性映射（用户预配）
-* 有关服务主体和应用程序对象的详细信息，请参阅 Azure AD 图形 REST API 参考文档：
-  * [应用程序](https://docs.microsoft.com/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#application-entity)
-  * [服务主体](https://docs.microsoft.com/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#serviceprincipal-entity)
+* 有关服务主体和应用程序对象的详细信息，请参阅 Microsoft Graph API 参考文档：
+  * [应用程序](https://docs.microsoft.com/graph/api/resources/application?view=graph-rest-1.0)
+  * [服务主体](https://docs.microsoft.com/graph/api/resources/serviceprincipal?view=graph-rest-beta)
 
 ## <a name="why-do-applications-integrate-with-azure-ad"></a>应用程序为何要与 Azure AD 集成？
 

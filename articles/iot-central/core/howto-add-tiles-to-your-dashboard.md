@@ -2,23 +2,22 @@
 title: 将磁贴添加到仪表板 | Microsoft Docs
 description: 本文为构建人员介绍如何配置默认的 Azure IoT Central 应用程序仪表板。
 author: mavoge
-ms.author: v-yiso
-origin.date: 10/17/2019
-ms.date: 12/16/2019
+ms.author: mavoge
+ms.date: 10/17/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 8c7be55c8f368fabaf3bb898adf4574d550871e9
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 50f61504d03a0eac5feef3d8ece6d3c1a4172f7e
+ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75335920"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80343234"
 ---
 # <a name="configure-the-application-dashboard"></a>配置应用程序仪表板
 
-“仪表板”是当有权访问应用程序的用户导航到应用程序的 URL 时加载的页面。  如果应用程序是从某个**应用程序模板**创建的，则该应用程序中预定义了一个要启动的仪表板。 如果应用程序是从**自定义应用程序**应用程序模板创建的，则要启动的仪表板是空白的。
+“仪表板”是当有权访问应用程序的用户导航到应用程序的 URL 时加载的页面。  如果应用程序是从某个**应用程序模板**创建的，则该应用程序中预定义了一个要启动的仪表板。 如果从“旧版应用程序”  应用程序模板创建了应用程序，则仪表板最初为空。
 
 > [!NOTE]
 > 除了默认的应用程序仪表板以外，用户还可以[创建多个仪表板](howto-create-personal-dashboards.md)。 这些仪表板仅供用户个人使用，或者在应用程序的所有用户之间共享。 
@@ -49,7 +48,6 @@ ms.locfileid: "75335920"
 > [!div class="mx-imgBorder"]
 > ![包含显示的磁贴设置和属性的“仪表板”选项卡](media/howto-add-tiles-to-your-dashboard/settings-and-properties.png)
 
-
 ## <a name="edit-tiles"></a>编辑磁贴
 
 若要编辑仪表板上的磁贴，请先单击页面左上角的“编辑”，打开仪表板及其所有磁贴的编辑模式。  
@@ -76,6 +74,7 @@ ms.locfileid: "75335920"
 | 内容 | 应用程序和设备集仪表板 |Markdown 支持的磁贴是可单击的磁贴，其中会显示标题和说明文本。 还可以使用此磁贴作为链接磁贴，使用户能够导航到与你的应用程序相关的 URL。|
 | 映像 | 应用程序和设备集仪表板 |“图像”磁贴显示自定义图像，是可单击的。 使用图像磁贴可将图形添加到仪表板，有时还使用户能够导航到与你的应用程序相关的 URL。|
 | Label | 应用程序仪表板 |“标签”磁贴显示仪表板上的自定义文本。 可以选择文本大小。 使用标签磁贴可将说明、联系人详细信息或帮助等相关信息添加到仪表板。|
+| 映射 | 应用程序和设备集仪表板 |“地图”磁贴显示设备在地图上的位置和状态。 例如，可以显示设备的位置，以及其风扇是否已打开。|
 | 折线图 | 应用程序和设备仪表板 |“折线图”磁贴显示设备在一段时间内的聚合测量图表。 例如，可以在折线图中显示设备在过去一小时的平均温度和压力。|
 | 条形图 | 应用程序和设备仪表板 |“条形图”磁贴显示设备在一段时间内的聚合测量图表。 例如，可以在条形图中显示设备在过去一小时的平均温度和压力。|
 | 饼图 | 应用程序和设备集仪表板 |“饼图”磁贴显示设备在一段时间内的聚合测量图表。|
@@ -87,4 +86,4 @@ ms.locfileid: "75335920"
 
 ## <a name="next-steps"></a>后续步骤
 
-了解如何配置 Azure IoT Central 的默认应用程序仪表板后，接下来可以[了解如何准备和上传图像](howto-prepare-images.md)。
+了解如何配置 Azure IoT Central 的默认应用程序仪表板后，接下来可以[了解如何创建个人仪表板](howto-create-personal-dashboards.md)。

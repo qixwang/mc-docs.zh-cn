@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 origin.date: 11/04/2019
 ms.date: 03/16/2020
-ms.openlocfilehash: 5352af45440525ccf6c9af1cfde9f75928b1cb70
-ms.sourcegitcommit: d5eca3c6b03b206e441b599e5b138bd687a91361
+ms.openlocfilehash: d7d9a3d09879faf3cdb303c4769c00e556873c25
+ms.sourcegitcommit: 1d3d8dfdaf6281f06640cbee7124a1e8bf102c50
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78934870"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80243741"
 ---
 # <a name="troubleshooting-common-indexer-errors-and-warnings-in-azure-cognitive-search"></a>排查 Azure 认知搜索中的常见索引器错误和警告
 
@@ -49,7 +49,7 @@ ms.locfileid: "78934870"
 
 | Reason | 详细信息/示例 | 解决方法 |
 | --- | --- | --- |
-| 不同文档中的字段类型不一致 | 值的类型与列类型不匹配。 无法将 `'{47.6,-122.1}'` 存储在 authors 列中。  预期的类型为 JArray。 | 确保不同文档中每个字段的类型相同。 例如，如果第一个文档的 `'startTime'` 字段是日期时间，而在第二个文档中，该字段是字符串，则就会出现此错误。 |
+| 不同文档中的字段类型不一致 | “值的类型与列类型不匹配。 无法将 `'{47.6,-122.1}'` 存储在 authors 列中。  预期的类型为 JArray。”  “从数据类型 nvarchar 转换为 float 时出错。”  “将 nvarchar 值 '12 months' 转换为数据类型 int 时转换失败。”  “将表达式转换为数据类型 int 时发生算术溢出错误。” | 确保不同文档中每个字段的类型相同。 例如，如果第一个文档的 `'startTime'` 字段是日期时间，而在第二个文档中，该字段是字符串，则就会出现此错误。 |
 | 数据源的底层服务发生的错误 | （来自 Cosmos DB）`{"Errors":["Request rate is large"]}` | 检查存储实例，确保其正常运行。 可能需要调整缩放/分区。 |
 | 暂时性问题 | 在接收来自服务器的结果时发生传输级错误。 （提供程序：TCP 提供程序，错误:0 - 远程主机强行关闭了现有连接 | 偶尔出现意外的连接问题。 稍后再次尝试通过索引器运行文档。 |
 
@@ -63,7 +63,7 @@ ms.locfileid: "78934870"
 | Blob 超过大小限制 | 文档大小为 `'150441598'` 字节，这超过了当前服务层级支持的最大文档提取大小（`'134217728'` 字节）。 | [Blob 索引错误](search-howto-indexing-azure-blob-storage.md#dealing-with-errors) |
 | Blob 采用了不受支持的内容类型 | 文档采用了不受支持的内容类型 `'image/png'` | [Blob 索引错误](search-howto-indexing-azure-blob-storage.md#dealing-with-errors) |
 | Blob 已加密 | 无法处理文档 - 它可能已加密或者受密码保护。 | 可以使用 [Blob 设置](search-howto-indexing-azure-blob-storage.md#controlling-which-parts-of-the-blob-are-indexed)跳过 Blob。 |
-| 暂时性问题 | “处理 Blob 时出错:请求已中止:请求已被取消。” “在处理期间文档超时。” | 偶尔出现意外的连接问题。 稍后再次尝试通过索引器运行文档。 |
+| 暂时性问题 | “处理 Blob 时出错:请求已中止：请求已被取消。” “在处理期间文档超时。” | 偶尔出现意外的连接问题。 稍后再次尝试通过索引器运行文档。 |
 
 <a name="could-not-parse-document"/>
 

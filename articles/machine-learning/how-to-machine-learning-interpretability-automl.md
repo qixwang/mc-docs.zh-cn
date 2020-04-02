@@ -11,18 +11,20 @@ author: mesameki
 ms.reviewer: trbye
 origin.date: 10/25/2019
 ms.date: 03/16/2020
-ms.openlocfilehash: 2fffc65914efb1f644f8d8907fbe942f541b3eab
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.openlocfilehash: 03cb67b4b3f2602159f60e49ef953b1ce2de2898
+ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78850228"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80343379"
 ---
 # <a name="model-interpretability-in-automated-machine-learning"></a>自动化机器学习中的模型可解释性
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-本文介绍如何在 Azure 机器学习中启用自动机器学习 (ML) 的可解释性功能。 自动化 ML 可帮助你了解原始特征和工程特征的重要性。 若要使用模型可解释性，请在 `AutoMLConfig` 对象中设置 `model_explainability=True`。  
+本文介绍如何在 Azure 机器学习中启用自动机器学习 (ML) 的可解释性功能。 自动化 ML 可帮助你了解工程特征重要性。 
+
+默认情况下，1.0.85 之后的所有 SDK 版本设置 `model_explainability=True`。 在 SDK 版本 1.0.85 及更早版本中，用户需要在 `AutoMLConfig` 对象中设置 `model_explainability=True`，才能使用模型可解释性。 
 
 在本文中，学习如何：
 
@@ -37,14 +39,14 @@ ms.locfileid: "78850228"
 
 ## <a name="interpretability-during-training-for-the-best-model"></a>训练最佳模型过程中的可解释性
 
-从 `best_run` 中检索解释，其中包括工程特征和原始特征的解释。
+从 `best_run` 中检索解释，其中包括工程特征的解释。
 
 ### <a name="download-engineered-feature-importance-from-artifact-store"></a>从项目存储下载工程特征重要性
 
-可以使用 `ExplanationClient` 从 `best_run` 的项目存储下载工程特征解释。 若要获取原始特征的解释，请设置 `raw=True`。
+可以使用 `ExplanationClient` 从 `best_run` 的项目存储下载工程特征解释。 
 
 ```python
-from azureml.contrib.interpret.explanation.explanation_client import ExplanationClient
+from azureml.explain.model._internal.explanation_client import ExplanationClient
 
 client = ExplanationClient.from_run(best_run)
 engineered_explanations = client.download_model_explanation(raw=False)
@@ -53,26 +55,26 @@ print(engineered_explanations.get_feature_importance_dict())
 
 ## <a name="interpretability-during-training-for-any-model"></a>训练任意模型过程中的可解释性 
 
-计算模型解释并将其可视化时，并不局限于自动化 ML 模型的现有模型解释。 还可以获取使用不同测试数据的模型的解释。 本部分中的步骤说明如何根据测试数据计算并可视化工程特征重要性和原始特征重要性。
+计算模型解释并将其可视化时，并不局限于自动化 ML 模型的现有模型解释。 还可以获取使用不同测试数据的模型的解释。 本部分中的步骤说明如何根据测试数据计算工程特征重要性并将其可视化。
 
 ### <a name="retrieve-any-other-automl-model-from-training"></a>从训练中检索任何其他自动化 ML 模型
 
 ```python
-automl_run, fitted_model = local_run.get_output(metric='r2_score')
+automl_run, fitted_model = local_run.get_output(metric='accuracy')
 ```
 
 ### <a name="set-up-the-model-explanations"></a>设置模型解释
 
-使用 `automl_setup_model_explanations` 获取工程特征和原始特征的解释。 `fitted_model` 可生成以下项：
+使用 `automl_setup_model_explanations` 获取工程解释。 `fitted_model` 可生成以下项：
 
 - 从已训练的样本或测试样本生成有特征的数据
-- 工程特征和原始特征名称列表
+- 工程特征名称列表
 - 分类方案中带标签列内的可查找类
 
 `automl_explainer_setup_obj` 包含上述列表中的所有结构。
 
 ```python
-from azureml.train.automl.runtime.automl_explain_utilities import AutoMLExplainerSetupClass, automl_setup_model_explanations
+from azureml.train.automl.runtime.automl_explain_utilities import automl_setup_model_explanations
 
 automl_explainer_setup_obj = automl_setup_model_explanations(fitted_model, X=X_train, 
                                                              X_test=X_test, y=y_train, 
@@ -87,7 +89,7 @@ automl_explainer_setup_obj = automl_setup_model_explanations(fitted_model, X=X_t
 - 工作区
 - 一个 LightGBM 模型，充当 `fitted_model` 自动化 ML 模型的代理项
 
-MimicWrapper 还采用 `automl_run` 对象，原始特征和工程特征的解释将上传到该对象。
+MimicWrapper 还获取 `automl_run` 对象，工程解释将上传到该对象。
 
 ```python
 from azureml.explain.model.mimic.models.lightgbm_model import LGBMExplainableModel
@@ -106,27 +108,8 @@ explainer = MimicWrapper(ws, automl_explainer_setup_obj.automl_estimator, LGBMEx
 可以结合转换的测试样本在 MimicWrapper 中调用 `explain()` 方法，以获取生成的工程特征的特征重要性。 还可以使用 `ExplanationDashboard` 通过自动化 ML 特征化器来查看生成的工程特征的特征重要性值仪表板可视化效果。
 
 ```python
-from azureml.contrib.interpret.visualize import ExplanationDashboard
-engineered_explanations = explainer.explain(['local', 'global'],              
-                                            eval_dataset=automl_explainer_setup_obj.X_test_transform)
-
+engineered_explanations = explainer.explain(['local', 'global'], eval_dataset=automl_explainer_setup_obj.X_test_transform)
 print(engineered_explanations.get_feature_importance_dict())
-ExplanationDashboard(engineered_explanations, automl_explainer_setup_obj.automl_estimator, automl_explainer_setup_obj.X_test_transform)
-```
-
-### <a name="use-mimic-explainer-for-computing-and-visualizing-raw-feature-importance"></a>使用模拟解释器来计算并可视化原始特征重要性
-
-可以结合转换的测试样本再次在 MimicWrapper 中调用 `explain()` 方法，并设置 `get_raw=True` 来获取原始特征的特征重要性。 还可以使用 `ExplanationDashboard` 来查看原始特征的特征重要性值的仪表板可视化效果。
-
-```python
-from azureml.contrib.interpret.visualize import ExplanationDashboard
-
-raw_explanations = explainer.explain(['local', 'global'], get_raw=True, 
-                                     raw_feature_names=automl_explainer_setup_obj.raw_feature_names,
-                                     eval_dataset=automl_explainer_setup_obj.X_test_transform)
-
-print(raw_explanations.get_feature_importance_dict())
-ExplanationDashboard(raw_explanations, automl_explainer_setup_obj.automl_pipeline, automl_explainer_setup_obj.X_test_raw)
 ```
 
 ### <a name="interpretability-during-inference"></a>推理过程中的可解释性
@@ -135,7 +118,7 @@ ExplanationDashboard(raw_explanations, automl_explainer_setup_obj.automl_pipelin
 
 ### <a name="register-the-model-and-the-scoring-explainer"></a>注册模型和评分解释器
 
-使用 `TreeScoringExplainer` 创建评分解释器，用于在推理时计算原始特征和工程特征的重要性值。 使用前面计算出的 `feature_map` 初始化评分解释器。 评分解释器使用 `feature_map` 返回原始特征重要性。
+使用 `TreeScoringExplainer` 创建评分解释器，用于在推理时计算工程特征重要性值。 使用前面计算出的 `feature_map` 初始化评分解释器。 
 
 保存评分解释器，然后将模型和评分解释器注册到模型管理服务。 运行以下代码：
 
@@ -209,21 +192,19 @@ service.wait_for_deployment(show_output=True)
 
 ### <a name="inference-with-test-data"></a>使用测试数据执行推理
 
-使用一些测试数据执行推理，以查看自动化 ML 模型提供的预测值。 查看预测值的工程特征重要性，以及预测值的原始特征重要性。
+使用一些测试数据执行推理，以查看自动化 ML 模型提供的预测值。 查看预测值的工程特征重要性。
 
 ```python
 if service.state == 'Healthy':
     # Serialize the first row of the test data into json
     X_test_json = X_test[:1].to_json(orient='records')
     print(X_test_json)
-    # Call the service to get the predictions and the engineered and raw explanations
+    # Call the service to get the predictions and the engineered explanations
     output = service.run(X_test_json)
     # Print the predicted value
     print(output['predictions'])
     # Print the engineered feature importances for the predicted value
     print(output['engineered_local_importance_values'])
-    # Print the raw feature importances for the predicted value
-    print(output['raw_local_importance_values'])
 ```
 
 ### <a name="visualize-to-discover-patterns-in-data-and-explanations-at-training-time"></a>在训练时进行可视化以发现数据和解释中的模式

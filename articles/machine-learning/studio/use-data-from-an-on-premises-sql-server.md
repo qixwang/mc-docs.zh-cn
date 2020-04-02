@@ -10,14 +10,16 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 03/13/2017
-ms.openlocfilehash: 9e3b758bddb263fd654ad1f6810d75aef54724a8
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+ms.openlocfilehash: ebf89c5767f27b54bd72ae86b76302e8f1aaa266
+ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75598242"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80343333"
 ---
 # <a name="perform-analytics-with-azure-machine-learning-studio-classic-using-an-on-premises-sql-server-database"></a>在 Azure 机器学习工作室（经典版）中使用本地 SQL Server 数据库执行分析
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 通常，使用本地数据的企业希望利用云的规模和灵活性来平衡其机器学习工作负荷。 但他们并不希望在将企业的本地数据移动到云时中断其当前业务处理和工作流。 Azure 机器学习工作室（经典版）现在支持从本地 SQL Server 数据库读取数据，并使用该数据训练和评分模型。 再也不必在云和本地服务器之间手动复制并同步数据。 相反，Azure 机器学习工作室（经典版）中的**导入数据**模块现在可以为训练和评分作业直接从本地 SQL Server 数据库中读取。
 
@@ -43,15 +45,15 @@ ms.locfileid: "75598242"
 * 数据工厂自承载运行时需要带有 .NET Framework 4.6.1 或更高版本的 64 位操作系统。
 * 支持的 Windows 操作系统版本有 Windows 10、Windows Server 2012、Windows Server 2012 R2 和 Windows Server 2016。 
 * IR 计算机的推荐配置至少为：2 GHz、4 核 CPU、8 GB RAM 和 80 GB 磁盘。
-* 如果主机计算机进入休眠状态，则 IR 不会响应数据请求。 因此，安装 IR 之前，请在计算机上配置相应的电源计划。 如果计算机配置为休眠，则 IR 安装会显示一条消息。
-* 由于复制活动按特定频率发生，因此计算机上的资源使用率（CPU、内存）也遵循相同的高峰期和空闲期模式。 资源利用率很大程度上还取决于正在移动的数据量。 进行多个复制作业时，将观察到资源使用率在高峰期上升。 尽管以上所列最低配置从技术上讲足够，但你可能希望具有更多资源的配置（相对于最低配置），具体取决于数据移动的特定负载。
+* 如果主计算机进入休眠状态，则 IR 不会响应数据请求。 因此，安装 IR 之前，请在计算机上配置相应的电源计划。 如果计算机配置为休眠，则 IR 安装会显示一条消息。
+* 由于复制活动按特定频率发生，因此计算机上的资源使用率（CPU、内存）也遵循相同的高峰期和空闲期模式。 资源利用率还很大程度上取决于正在移动的数据量。 进行多个复制作业时，将观察到资源使用率在高峰期上升。 尽管以上所列最低配置从技术上讲足够，但你可能希望具有更多资源的配置（相对于最低配置），具体取决于数据移动的特定负载。
 
 在设置并使用数据工厂自承载集成运行时的时候，请注意以下几点：
 
 * 一台计算机上只能安装一个 IR 实例。
 * 可以将单个 IR 用于多个本地数据源。
 * 可以将不同计算机上的多个 IR 连接到同一个本地数据源。
-* 一次只能为一个工作区配置 IR。 目前不能跨工作区共享 IR。
+* 一次只能为一个工作区配置 IR。 目前，IR 不能跨工作区共享。
 * 可以为单个工作区配置多个 IR。 例如，在开发期间可能希望使用与测试数据源连接的 IR，而在准备实施时则希望使用生产 IR。
 * IR 不需要位于数据源所在的计算机上。 但是，如果离数据源较近，可以减少网关连接到数据源的时间。 建议不要在托管本地数据源的计算机上安装 IR，从而避免 IR 和数据源之间的资源争用。
 * 如果已在计算机中安装了服务于 Power BI 或 Azure 数据工厂方案的 IR，请在其他计算机上安装用于 Azure 机器学习工作室（经典版）的独立 IR。

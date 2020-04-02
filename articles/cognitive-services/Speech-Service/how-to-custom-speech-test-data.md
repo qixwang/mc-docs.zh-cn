@@ -9,14 +9,14 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 origin.date: 12/17/2019
-ms.date: 03/02/2020
+ms.date: 03/16/2020
 ms.author: v-tawe
-ms.openlocfilehash: ba854041259374109adad6327f40c9b5d59d0d64
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.openlocfilehash: ed340e93626338789dc09ddcc3c51acff87ccc54
+ms.sourcegitcommit: b2f2bb08ab1b5ccb3c596d84b3b6ddca5bba3903
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77541131"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80151705"
 ---
 # <a name="prepare-data-for-custom-speech"></a>准备自定义语音识别的数据
 
@@ -35,15 +35,15 @@ ms.locfileid: "77541131"
 文件应按类型分组成数据集，并作为 .zip 文件上传。 每个数据集只能包含一种数据类型。
 
 > [!TIP]
-> 若要快速开始使用，请考虑使用示例数据。 请参阅此 GitHub 存储库，了解<a href="https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/sampledata/customspeech" target="_target">“自定义语音识别”数据示例<span class="docon docon-navigate-external x-hidden-focus"></span></a>
+> 若要快速开始使用，请考虑使用示例数据。 请参阅此 GitHub 存储库，了解<a href="https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/sampledata/customspeech" target="_target">自定义语音识别数据示例<span class="docon docon-navigate-external x-hidden-focus"></span></a>
 
 ## <a name="upload-data"></a>上传数据
 
-若要上传数据，请导航到<a href="https://speech.azure.cn/customspeech" target="_blank">“自定义语音识别”门户<span class="docon docon-navigate-external x-hidden-focus"></span></a>。 在门户中，单击“上传数据”启动向导并创建第一个数据集  。 在上传数据之前，系统会要求你为数据集选择语音数据类型。
+若要上传数据，请导航到<a href="https://speech.azure.cn/customspeech" target="_blank">自定义语音识别门户<span class="docon docon-navigate-external x-hidden-focus"></span></a>。 在门户中，单击“上传数据”启动向导并创建第一个数据集  。 在上传数据之前，系统会要求你为数据集选择语音数据类型。
 
 ![从语音门户选择音频](./media/custom-speech/custom-speech-select-audio.png)
 
-上传的每个数据集必须符合所选数据类型的要求。 必须先将数据设置为正确格式再上传它。 格式正确的数据可确保“自定义语音识别”服务对其进行准确处理。 以下部分列出了要求。
+上传的每个数据集必须符合所选数据类型的要求。 必须先将数据设置为正确格式再上传它。 格式正确的数据可确保自定义语音识别服务对其进行准确处理。 以下部分列出了要求。
 
 上传数据集后，可以使用几个选项：
 
@@ -56,15 +56,17 @@ ms.locfileid: "77541131"
 
 参考下表来确保正确设置用于自定义语音识别的音频文件的格式：
 
-| 属性 | Value |
-|----------|-------|
-| 文件格式 | RIFF (WAV) |
-| 采样速率 | 8,000 Hz 或 16,000 Hz |
-| 声道 | 1（单音） |
-| 每个音频的最大长度 | 2 小时 |
-| 示例格式 | PCM，16 位 |
-| 存档格式 | .zip |
-| 最大存档大小 | 2 GB |
+| 属性                 | Value                 |
+|--------------------------|-----------------------|
+| 文件格式              | RIFF (WAV)            |
+| 采样速率              | 8,000 Hz 或 16,000 Hz |
+| 声道                 | 1（单音）              |
+| 每个音频的最大长度 | 2 小时               |
+| 示例格式            | PCM，16 位           |
+| 存档格式           | .zip                  |
+| 最大存档大小     | 2 GB                  |
+
+[!INCLUDE [supported-audio-formats](includes/supported-audio-formats.md)]
 
 > [!TIP]
 > 上传训练和测试数据时，.zip 文件大小不能超过 2 GB。 如果需要更多数据来进行训练，请将其划分为多个 .zip 文件并分别上传。 稍后，可选择从多个数据集进行训练  。 但是，只能从单个数据集进行测试  。
@@ -80,18 +82,20 @@ ms.locfileid: "77541131"
 
 若要在处理音频文件时测量 Microsoft 语音转文本的准确度，必须提供人为标记的听录内容（逐字对照）进行比较。 尽管人为标记的听录往往很耗时，但有必要评估准确度并根据用例训练模型。 请记住，识别能力的改善程度以提供的数据质量为界限。 出于此原因，只能上传优质的听录内容，这一点非常重要。
 
-| 属性 | Value |
-|----------|-------|
-| 文件格式 | RIFF (WAV) |
-| 采样速率 | 8,000 Hz 或 16,000 Hz |
-| 声道 | 1（单音） |
+| 属性                 | Value                               |
+|--------------------------|-------------------------------------|
+| 文件格式              | RIFF (WAV)                          |
+| 采样速率              | 8,000 Hz 或 16,000 Hz               |
+| 声道                 | 1（单音）                            |
 | 每个音频的最大长度 | 2 小时（测试）/ 60 秒（训练） |
-| 示例格式 | PCM，16 位 |
-| 存档格式 | .zip |
-| 最大 zip 大小 | 2 GB |
+| 示例格式            | PCM，16 位                         |
+| 存档格式           | .zip                                |
+| 最大 zip 大小         | 2 GB                                |
+
+[!INCLUDE [supported-audio-formats](includes/supported-audio-formats.md)]
 
 > [!NOTE]
-> 上传训练和测试数据时，.zip 文件大小不能超过 2 GB。 只能从单个数据集进行测试，请确保将其保持在适当的文件大小  。
+> 上传训练和测试数据时，.zip 文件大小不能超过 2 GB。 只能从单个  数据集进行测试，请确保将其保持在适当的文件大小内。 另外，每个训练文件不能超过 60 秒，否则将出错。
 
 若要解决字词删除或替换等问题，需要提供大量的数据来改善识别能力。 通常，我们建议为大约 10 到 1,000 小时的音频提供逐字对照的听录。 应在单个纯文本文件中包含所有 WAV 文件的听录。 听录文件的每一行应包含一个音频文件的名称，后接相应的听录。 文件名和听录应以制表符 (\t) 分隔。
 
@@ -107,7 +111,7 @@ ms.locfileid: "77541131"
 
 听录内容应经过文本规范化，以便可由系统处理。 但是，将数据上传到 Speech Studio 之前，必须完成一些重要的规范化操作。 有关在准备听录内容时可用的适当语言，请参阅[如何创建人为标记的听录内容](how-to-custom-speech-human-labeled-transcriptions.md)
 
-收集音频文件和相应的听录内容后，应将其打包成单个 .zip 文件，然后上传到<a href="https://speech.azure.cn/customspeech" target="_blank">“自定义语音识别”门户<span class="docon docon-navigate-external x-hidden-focus"></span></a>。 下面是一个示例数据集，其中包含三个音频文件和一个人为标记的听录文件：
+收集音频文件和相应的听录内容后，应将其打包成单个 .zip 文件，然后上传到<a href="https://speech.azure.cn/customspeech" target="_blank">自定义语音识别门户<span class="docon docon-navigate-external x-hidden-focus"></span></a>。 下面是一个示例数据集，其中包含三个音频文件和一个人为标记的听录文件：
 
 > [!div class="mx-imgBorder"]
 > ![从语音门户选择音频](./media/custom-speech/custom-speech-audio-transcript-pairs.png)
@@ -121,7 +125,7 @@ ms.locfileid: "77541131"
 | 句子（言语） | 在识别句子上下文中的产品名称或行业特定的词汇时，可以提高准确度。 |
 | 发音 | 改善不常见字词、缩写词或其他未定义发音的单词的发音。 |
 
-可将言语作为单个或多个文本文件提供。 若要提高准确性，请使用较接近预期口头言语的文本数据。 应以单个文本文件的形式提供发音。 可将所有内容打包成单个 zip 文件，并上传到<a href="https://speech.azure.cn/customspeech" target="_blank">“自定义语音识别”门户<span class="docon docon-navigate-external x-hidden-focus"></span></a>。
+可将言语作为单个或多个文本文件提供。 若要提高准确性，请使用较接近预期口头言语的文本数据。 应以单个文本文件的形式提供发音。 可将所有内容打包成单个 zip 文件，并上传到<a href="https://speech.azure.cn/customspeech" target="_blank">自定义语音识别门户<span class="docon docon-navigate-external x-hidden-focus"></span></a>。
 
 ### <a name="guidelines-to-create-a-sentences-file"></a>有关创建句子文件的指导原则
 

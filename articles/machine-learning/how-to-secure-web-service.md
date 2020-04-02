@@ -12,14 +12,14 @@ author: aashishb
 origin.date: 08/12/2019
 ms.date: 03/16/2020
 ms.custom: seodec18
-ms.openlocfilehash: 47bc2853a3f05c224feef8692bc035047642408f
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.openlocfilehash: 2822ad0dccbc0a62494c729c5e8daadc5df43256
+ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78850210"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80343376"
 ---
-# <a name="use-ssl-to-secure-a-web-service-through-azure-machine-learning"></a>使用 SSL 保护通过 Azure 机器学习部署的 Web 服务
+# <a name="use-tls-to-secure-a-web-service-through-azure-machine-learning"></a>使用 TLS 保护通过 Azure 机器学习部署的 Web 服务
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 本文介绍如何保护通过 Azure 机器学习部署的 Web 服务。
@@ -72,7 +72,7 @@ TLS 和 SSL 均依赖数字证书，这有助于加密和身份验证  。 有�
 > [!WARNING]
 > 自签名证书只能用于开发  。 请勿在生产环境中使用这些证书。 自签名证书可能会导致客户端应用程序出现问题。 有关详细信息，请参阅客户端应用程序使用的网络库的文档。
 
-## <a id="enable"></a> 启用 SSL 并进行部署
+## <a name="enable-ssl-and-deploy"></a><a id="enable"></a> 启用 SSL 并进行部署
 
 若要部署（或重新部署）启用了 SSL 的服务，请在适当的位置将 ssl_enabled 参数设置为“True”  。 将 ssl_certificate 参数设置为证书文件的值   。 将 ssl_key 设置为密钥文件的值   。
 
@@ -84,7 +84,7 @@ TLS 和 SSL 均依赖数字证书，这有助于加密和身份验证  。 有�
 部署到 AKS 时，可以创建新的 AKS 群集或附加现有群集。 有关创建或附加群集的详细信息，请参阅[将模型部署到 Azure Kubernetes 服务群集](how-to-deploy-azure-kubernetes-service.md)。
   
 -  如果创建新群集，请使用 **[AksCompute.provisioning_configuration()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py#provisioning-configuration-agent-count-none--vm-size-none--ssl-cname-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--location-none--vnet-resourcegroup-name-none--vnet-name-none--subnet-name-none--service-cidr-none--dns-service-ip-none--docker-bridge-cidr-none--cluster-purpose-none--load-balancer-type-none--load-balancer-subnet-none-)** 。
-- 如果附加现有群集，请使用 **[AksCompute.attach_configuration()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py#attach-configuration-resource-group-none--cluster-name-none--resource-id-none--cluster-purpose-none--load-balancer-type-none-)** 。 这两个方法都返回包含 enable_ssl 方法的配置对象  。
+- 如果附加现有群集，请使用 **[AksCompute.attach_configuration()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py#attach-configuration-resource-group-none--cluster-name-none--resource-id-none--cluster-purpose-none-)** 。 这两个方法都返回包含 enable_ssl 方法的配置对象  。
 
 enable_ssl 方法可以使用 Microsoft 提供的证书或你购买的证书  。
 

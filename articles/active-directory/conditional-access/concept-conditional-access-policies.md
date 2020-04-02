@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 02/25/2020
+ms.date: 03/23/2020
 ms.author: v-junlch
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1ae1b1514b7e7dce8716a97a3dcdce9b70324d62
-ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
+ms.openlocfilehash: e1652344583fb7f84eaf47a30fc20baeb113fafc
+ms.sourcegitcommit: 6568c59433d7e80ab06e9fe76d4791f761ed6775
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77653332"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80243170"
 ---
 # <a name="building-a-conditional-access-policy"></a>生成条件访问策略
 
@@ -128,6 +128,7 @@ ms.locfileid: "77653332"
 
 [规划基于云的 Azure 多重身份验证部署](../authentication/howto-mfa-getstarted.md)
 
+[使用 Intune 管理设备合规性](https://docs.microsoft.com/intune/device-compliance-get-started)
+
 [Microsoft Cloud App Security 和条件访问](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
 
-<!-- Update_Description: wording update -->

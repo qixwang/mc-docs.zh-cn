@@ -11,12 +11,12 @@ author: Blackmist
 origin.date: 11/04/2019
 ms.date: 03/09/2020
 ms.custom: seoapril2019
-ms.openlocfilehash: 8dbcf6147008820eb0c1383e0ff432a9c5213037
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.openlocfilehash: 42ba993da2ec819f19e4d46205e027362f09bbfc
+ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78155011"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80343556"
 ---
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
@@ -196,9 +196,11 @@ ms.locfileid: "78155011"
     其他服务的名称将随机生成。
 
 > [!TIP]
-> 尽管与此文档关联的模板会创建新的 Azure 容器注册表，但你也可以创建新的工作区，而无需创建容器注册表。 如果工作区中存在容器注册表，则执行需要容器注册表的操作时，会创建一个。 例如，训练或部署模型。
+> 尽管与此文档关联的模板会创建新的 Azure 容器注册表，但你也可以创建新的工作区，而无需创建容器注册表。 当你执行需要容器注册表的操作时，会创建容器注册表。 例如，训练或部署模型。
 >
 > 还可以在 Azure 资源管理器模板中引用现有的容器注册表或存储帐户，而不是创建一个新的。
+
+[!INCLUDE [machine-learning-delete-acr](../../includes/machine-learning-delete-acr.md)]
 
 有关模板的详细信息，请参阅以下文章：
 

@@ -5,16 +5,16 @@ author: WenJason
 ms.service: storage
 ms.topic: conceptual
 origin.date: 10/22/2019
-ms.date: 02/10/2020
+ms.date: 03/30/2020
 ms.author: v-jay
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: 17946b60093f6ab9354e1528cd09b1819c424050
-ms.sourcegitcommit: fbc7584f403417d3af7bd6bbbaed7c13a78c57b9
+ms.openlocfilehash: 3c8743966aa231fd76c24cfd6189ccb880b847f3
+ms.sourcegitcommit: 90d01d08faf8adb20083363a8e4e5aab139cd9b2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78412241"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80290459"
 ---
 # <a name="transfer-data-with-azcopy-and-blob-storage"></a>使用 AzCopy 和 Blob 存储传输数据
 
@@ -74,7 +74,8 @@ AzCopy 是一个命令行实用工具，可用于向/从存储帐户复制数据
 还可以在文件路径或文件名中的任意位置使用通配符 (*) 来上传文件。 例如：`'C:\myDirectory\*.txt'` 或 `C:\my*\*.txt`。
 
 > [!NOTE]
-> 默认情况下，AzCopy 将数据上传到块 Blob 中。 若要将文件作为追加 Blob 或页 Blob 上传，请使用 `--blob-type=[BlockBlob|PageBlob|AppendBlob]` 标志。
+> 默认情况下，AzCopy 将数据作为块 blob 上传。 若要将文件作为追加 Blob 或页 Blob 上传，请使用标志 `--blob-type=[BlockBlob|PageBlob|AppendBlob]`。
+> 默认情况下，AzCopy 将上传你的数据以继承帐户访问层。 若要将文件上传到特定[访问层](../blobs/storage-blob-storage-tiers.md)，请使用标志 `--block-blob-tier=[Hot|Cool|Archive]`。
 
 ### <a name="upload-a-directory"></a>上传目录
 

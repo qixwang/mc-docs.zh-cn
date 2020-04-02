@@ -11,12 +11,12 @@ author: maxluk
 origin.date: 08/20/2019
 ms.date: 03/16/2020
 ms.custom: seodec18
-ms.openlocfilehash: a13f4620f2ee055c7d3dab54a6a9590882c0df0d
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.openlocfilehash: 8eff532bde36328dc55dec02e9e01b512a65f1c3
+ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78850211"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80343366"
 ---
 # <a name="build-a-tensorflow-deep-learning-model-at-scale-with-azure-machine-learning"></a>使用 Azure 机器学习大规模构建 TensorFlow 深度学习模型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -306,11 +306,11 @@ cluster_spec = tf.train.ClusterSpec(cluster)
 
 ```
 
-## <a name="deployment"></a>部署
+## <a name="deploy-a-tensorflow-model"></a>部署 TensorFlow 模型
 
 无论使用哪种估算器进行训练，都可以采用与 Azure 机器学习中任何其他已注册模型完全相同的方式部署你刚才注册的模型。 部署指南包含有关模型注册的部分，但由于你已有一个已注册的模型，因而可以直接跳到[创建计算目标](how-to-deploy-and-where.md#choose-a-compute-target)进行部署。
 
-### <a name="preview-no-code-model-deployment"></a>（预览版）无代码模型部署
+## <a name="preview-no-code-model-deployment"></a>（预览版）无代码模型部署
 
 除了传统的部署路线之外，还可以为 Tensorflow 使用无代码部署功能（预览版）。 通过如上所示使用 `model_framework`、`model_framework_version` 和 `resource_configuration` 参数注册你的模型，可以简单地使用 `deploy()` 静态函数来部署模型。
 

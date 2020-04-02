@@ -6,17 +6,17 @@ services: storage
 author: WenJason
 ms.service: storage
 ms.topic: how-to
-origin.date: 01/10/2020
-ms.date: 02/10/2020
+origin.date: 03/10/2020
+ms.date: 03/30/2020
 ms.author: v-jay
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 35c9ceb32cde8451add9d91408c3cb689e8ef8c1
-ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
+ms.openlocfilehash: a385e8205434f3a3024fbe6266e585a4340bbbc2
+ms.sourcegitcommit: 90d01d08faf8adb20083363a8e4e5aab139cd9b2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77028523"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80290391"
 ---
 # <a name="configure-customer-managed-keys-with-azure-key-vault-by-using-azure-cli"></a>通过 Azure CLI 使用 Azure Key Vault 配置客户管理的密钥
 
@@ -121,11 +121,21 @@ az storage account update
 
 若要更改用于 Azure 存储加密的密钥，请调用 [az storage account update](/cli/storage/account#az-storage-account-update)（如[使用客户托管密钥配置加密](#configure-encryption-with-customer-managed-keys)中所示），并提供新的密钥名称和版本。 如果新密钥位于不同的密钥保管库中，还需要更新密钥保管库 URI。
 
+## <a name="revoke-customer-managed-keys"></a>撤销客户托管密钥
+
+如果你认为密钥可能已泄露，则可以通过删除密钥保管库访问策略来撤销客户托管密钥。 若要撤销客户托管密钥，请调用 [az keyvault delete-policy](/cli/keyvault#az-keyvault-delete-policy) 命令，如下例所示。 请记得将括号中的占位符值替换为自己的值，并使用前面示例中定义的变量。
+
+```azurecli
+az keyvault delete-policy \
+    --name <key-vault> \
+    --object-id $storage_account_principal
+```
+
 ## <a name="disable-customer-managed-keys"></a>禁用客户托管密钥
 
 禁用客户托管密钥后，将使用 Microsoft 托管密钥对存储帐户加密。 若要禁用客户托管密钥，请调用 [az storage account update](/cli/storage/account#az-storage-account-update) 并将 `--encryption-key-source parameter` 设置为 `Microsoft.Storage`，如以下示例所示。 请记得将括号中的占位符值替换为自己的值，并使用前面示例中定义的变量。
 
-```powershell
+```azurecli
 az storage account update
     --name <storage-account> \
     --resource-group <resource_group> \

@@ -10,14 +10,16 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: tutorial
 ms.date: 02/11/2019
-ms.openlocfilehash: 7db228979b0dee477a7c23b16445c757c9d34054
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+ms.openlocfilehash: fad8858074652d33cf03a8f5ea16374f51d85d62
+ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75598259"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80343347"
 ---
 # <a name="tutorial-1-predict-credit-risk---azure-machine-learning-studio-classic"></a>教程 1：预测信用风险 - Azure 机器学习工作室（经典版）
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 [!INCLUDE [Designer notice](../../../includes/designer-notice.md)]
 
@@ -66,7 +68,7 @@ ms.locfileid: "75598259"
 > 在“设置”  页上，单击“用户”  ，并在窗口底部单击“邀请更多用户”  。
 > 
 
-## <a name="upload"></a>上传现有数据
+## <a name="upload-existing-data"></a><a name="upload"></a>上传现有数据
 
 若要开发用于信用风险的预测模型，我们需要用于训练和测试模型的数据。 对于本教程，我们将使用 UC Irvine 机器学习存储库的“UCI Statlog(德国信用数据)数据集”。 可在此处找到以下内容：  
 <a href="https://archive.ics.uci.edu/ml/datasets/Statlog+(German+Credit+Data)">https://archive.ics.uci.edu/ml/datasets/Statlog+(German+Credit+Data)</a>
@@ -129,9 +131,9 @@ UCI 网站上的数据集说明提及了如果我们对人员的信用风险进�
 
 8. 对于数据类型，请选择“没有标题的一般 CSV 文件(.nh.csv)”  。
 
-9. 如果需要，可添加描述。
+9. 添加说明（如果需要）。
 
-10. 单击“确定”  复选标记。  
+10. 单击**确定**复选标记。  
 
     ![上传数据集](./media/tutorial-part1-credit-risk/upload-dataset.png)
 

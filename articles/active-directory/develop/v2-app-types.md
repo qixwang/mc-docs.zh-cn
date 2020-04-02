@@ -13,18 +13,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-origin.date: 04/06/2019
-ms.date: 11/26/2019
+ms.date: 03/23/2020
 ms.author: v-junlch
 ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 03e29b396be336db52028fbaa6ea1ae51acf9db5
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: 0a4dcfd284af67cfd6864035b1a56fbd9f3ab256
+ms.sourcegitcommit: 6568c59433d7e80ab06e9fe76d4791f761ed6775
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79291033"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80243091"
 ---
 # <a name="application-types-for-microsoft-identity-platform"></a>Microsoft 标识平台的应用程序类型
 
@@ -45,7 +43,7 @@ Microsoft 标识平台 (v2.0) 终结点支持各种现代应用体系结构的�
 
 注册应用后，应用将通过向终结点发送请求来与 Microsoft 标识平台通信。 我们提供了用于处理这些请求详细信息的开源框架和库。 也可以通过针对这些终结点创建请求，来自行实现身份验证逻辑：
 
-```
+```HTTP
 https://login.partner.microsoftonline.cn/common/oauth2/v2.0/authorize
 https://login.partner.microsoftonline.cn/common/oauth2/v2.0/token
 ```
@@ -64,7 +62,7 @@ https://login.partner.microsoftonline.cn/common/oauth2/v2.0/token
 
 对于通过浏览器访问的 Web 应用（.NET、PHP、Java、Ruby、Python、Node 等），可以使用 [OpenID Connect](active-directory-v2-protocols.md) 来执行用户登录。 在 OpenID Connect 中，Web 应用接收一个 ID 令牌。 ID 令牌是一个安全令牌，用于验证用户的标识并以声明形式提供用户相关信息：
 
-```
+```JSON
 // Partial raw ID token
 eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6ImtyaU1QZG1Cd...
 
@@ -93,7 +91,7 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6ImtyaU1QZG1Cd...
 
 可以使用 Microsoft 标识平台终结点来保护 Web 服务，例如应用的 RESTful Web API。 Web API 可以在多种平台和语言中实现。 它们还可以在 Azure Functions 中使用 HTTP 触发器实现。 Web API 使用 OAuth 2.0 访问令牌而不是 ID 令牌和会话 Cookie 来保护数据以及对传入的请求进行身份验证。 Web API 调用方会在 HTTP 请求的授权标头中追加一个访问令牌，如下所示：
 
-```
+```HTTP
 GET /api/items HTTP/1.1
 Host: www.mywebapi.com
 Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6...
@@ -101,7 +99,7 @@ Accept: application/json
 ...
 ```
 
-Web API 使用此访问令牌来验证 API 调用方的标识，并从访问令牌中编码的声明提取调用方的相关信息。 有关 Microsoft 标识平台终结点中使用的不同类型令牌的更多详细信息，请参阅[访问令牌](access-tokens.md)参考和 [id_token 参考](id-tokens.md)
+Web API 使用此访问令牌来验证 API 调用方的标识，并从访问令牌中编码的声明提取调用方的相关信息。 有关 Microsoft 标识平台终结点中使用的不同类型令牌的更多详细信息，请参阅[访问令牌](access-tokens.md)参考和 [id_token](id-tokens.md) 参考。
 
 Web API 可让用户通过公开权限（也称为[范围](v2-permissions-and-consent.md)）来选择添加/排除特定的功能或数据。 为了使调用应用能够获取某个范围的权限，用户必须在执行流的过程中许可该范围。 Microsoft 标识平台终结点向用户请求权限，并将这些权限记录在 Web API 收到的所有访问令牌中。 Web API 将验证每次调用后收到的访问令牌，并执行授权检查。
 
@@ -123,7 +121,7 @@ Web API 可以从各种应用接收访问令牌，其中包括 Web 服务器应�
 
 ## <a name="daemons-and-server-side-apps"></a>守护程序和服务器端应用
 
-包含长时间运行的进程或不需要与用户交互的应用也需要通过一种方法来访问受保护的资源，例如 Web API。 这些应用可以通过 OAuth 2.0 客户端凭据流，使用应用的标识（而不是用户的委托标识）来进行身份验证和获取令牌。 可以使用客户端机密或证书证明应用的身份。 有关详细信息，请参阅[在守护程序应用中使用证书对 Microsoft 标识平台进行身份验证](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential/)。
+包含长时间运行的进程或不需要与用户交互的应用也需要通过一种方法来访问受保护的资源，例如 Web API。 这些应用可以通过 OAuth 2.0 客户端凭据流，使用应用的标识（而不是用户的委托标识）来进行身份验证和获取令牌。 可以使用客户端机密或证书证明应用的身份。 有关详细信息，请参阅[使用 Microsoft 标识平台的 .NET Core 守护程序控制台应用程序](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2)。
 
 在此流中，应用通过直接与 `/token` 终结点交互来获取访问权限：
 

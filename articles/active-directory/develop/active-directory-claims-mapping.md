@@ -1,5 +1,5 @@
 ---
-title: 自定义 Azure AD 租户应用声明 (Powershell)
+title: 自定义 Azure AD 租户应用声明 (PowerShell)
 titleSuffix: Microsoft identity platform
 description: 本页介绍 Azure Active Directory 声明映射。
 services: active-directory
@@ -10,16 +10,15 @@ ms.subservice: develop
 ms.custom: aaddev
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 01/06/2020
+ms.date: 03/20/2020
 ms.author: v-junlch
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: cd82d0a16f564541c17e21acdb99f4bac8543ea1
-ms.sourcegitcommit: 1bc154c816a5dff47ee051c431cd94826e57aa60
+ms.openlocfilehash: 0961106ef4fe8b59cf6dbbe89de48481efca261a
+ms.sourcegitcommit: 6568c59433d7e80ab06e9fe76d4791f761ed6775
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75776866"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80243160"
 ---
 # <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>如何：为租户中的特定应用自定义在令牌中发出的声明（预览版）
 
@@ -416,7 +415,7 @@ ID 元素标识源中用于为声明提供值的属性。 下表列出对 Source
 
 ### <a name="custom-signing-key"></a>自定义签名密钥
 
-必须为服务主体对象分配自定义签名密钥，否则声明映射策略无法生效。 这可以确保确认令牌是由声明映射策略的创建者修改的，并防止应用程序被恶意参与者创建的声明映射策略破坏。 若要添加自定义签名密钥，可以使用 Azure Powershell cmdlet `new-azureadapplicationkeycredential` 为应用程序对象创建对称密钥凭据。 有关此 Azure Powershell cmdlet 的详细信息，请单击[此处](https://docs.microsoft.com/powershell/module/Azuread/New-AzureADApplicationKeyCredential?view=azureadps-2.0)。
+必须为服务主体对象分配自定义签名密钥，否则声明映射策略无法生效。 这可以确保确认令牌是由声明映射策略的创建者修改的，并防止应用程序被恶意参与者创建的声明映射策略破坏。 若要添加自定义签名密钥，可以使用 Azure PowerShell cmdlet `new-azureadapplicationkeycredential` 为应用程序对象创建对称密钥凭据。 有关此 Azure PowerShell cmdlet 的详细信息，请参阅 [New-AzureADApplicationKeyCredential](https://docs.microsoft.com/powerShell/module/Azuread/New-AzureADApplicationKeyCredential?view=azureadps-2.0)。
 
 启用了声明映射的应用必须通过将 `appid={client_id}` 追加到其 [OpenID 连接元数据请求](v2-protocols-oidc.md#fetch-the-openid-connect-metadata-document)来验证其令牌签名密钥。 下面是你应该使用的 OpenID 连接元数据文档的格式： 
 
@@ -436,7 +435,7 @@ https://login.partner.microsoftonline.cn/{tenant}/v2.0/.well-known/openid-config
 
 在 Azure AD 中，在可以为特定服务主体自定义令牌中发出的声明时，可以实现许多方案。 在此部分中，我们会演练几个常见方案，它们可帮助你理解如何使用声明映射策略类型。
 
-#### <a name="prerequisites"></a>必备条件
+#### <a name="prerequisites"></a>先决条件
 
 以下示例将创建、更新、链接和删除服务主体的策略。 如果你是 Azure AD 新手，我们建议在继续学习这些示例之前，先[了解如何获取 Azure AD 租户](quickstart-create-new-tenant.md)。
 
@@ -470,7 +469,7 @@ https://login.partner.microsoftonline.cn/{tenant}/v2.0/.well-known/openid-config
       Get-AzureADPolicy
       ```
 1. 将策略分配到服务主体。 还需要获取服务主体的 ObjectId。
-   1. 若要查看组织的所有服务主体，可以查询 Microsoft Graph。 或者，在 [Graph Explorer](https://developer.microsoft.com/zh-cn/graph/graph-explorer-china) 中登录到 Azure AD 帐户。
+   1. 若要查看组织的所有服务主体，可以查询 Microsoft Graph API。 或者，在 [Microsoft Graph Explorer](https://developer.microsoft.com/zh-cn/graph/graph-explorer-china) 中登录到 Azure AD 帐户。
    2. 获取服务主体的 ObjectId 后，运行以下命令：  
      
       ``` powershell
@@ -494,7 +493,7 @@ https://login.partner.microsoftonline.cn/{tenant}/v2.0/.well-known/openid-config
       Get-AzureADPolicy
       ```
 1. 将策略分配到服务主体。 还需要获取服务主体的 ObjectId。 
-   1. 若要查看组织的所有服务主体，可以查询 Microsoft Graph。 或者，在 [Graph Explorer](https://developer.microsoft.com/zh-cn/graph/graph-explorer-china) 中登录到 Azure AD 帐户。
+   1. 若要查看组织的所有服务主体，可以查询 Microsoft Graph API。 或者，在 [Microsoft Graph Explorer](https://developer.microsoft.com/zh-cn/graph/graph-explorer-china) 中登录到 Azure AD 帐户。
    2. 获取服务主体的 ObjectId 后，运行以下命令：  
      
       ``` powershell
@@ -518,7 +517,7 @@ https://login.partner.microsoftonline.cn/{tenant}/v2.0/.well-known/openid-config
       Get-AzureADPolicy
       ```
 1. 将策略分配到服务主体。 还需要获取服务主体的 ObjectId。 
-   1. 若要查看组织的所有服务主体，可以查询 Microsoft Graph。 或者，在 [Graph Explorer](https://developer.microsoft.com/zh-cn/graph/graph-explorer-china) 中登录到 Azure AD 帐户。
+   1. 若要查看组织的所有服务主体，可以查询 Microsoft Graph API。 或者，在 [Microsoft Graph Explorer](https://developer.microsoft.com/zh-cn/graph/graph-explorer-china) 中登录到 Azure AD 帐户。
    2. 获取服务主体的 ObjectId 后，运行以下命令： 
      
       ``` powershell

@@ -5,16 +5,16 @@ author: WenJason
 ms.service: storage
 ms.topic: reference
 origin.date: 10/16/2019
-ms.date: 02/10/2020
+ms.date: 03/30/2020
 ms.author: v-jay
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 0668f00dfdefe76c0d9fb313f0704c82b083393c
-ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
+ms.openlocfilehash: ae1241bedb7a7ba002701dbb822c225670353e60
+ms.sourcegitcommit: 90d01d08faf8adb20083363a8e4e5aab139cd9b2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77028999"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80290428"
 ---
 # <a name="azcopy-copy"></a>azcopy copy
 
@@ -172,7 +172,7 @@ azcopy copy [source] [destination] [flags]
 
 **--blob-type** 字符串                     定义目标中的 Blob 类型。 此选项用于上传 Blob 以及在帐户之间进行复制（默认值为“Detect”）。 有效值包括“Detect”、“BlockBlob”、“PageBlob”和“AppendBlob”。 在帐户之间复制时，使用值“Detect”会导致 AzCopy 使用源 Blob 的类型来确定目标 Blob 的类型。 上传文件时，“Detect”会根据文件扩展名确定文件是 VHD 文件还是 VHDX 文件。 如果文件是 VHD 或 VHDX 文件，则 AzCopy 会将该文件视为页 Blob。 （默认值为“Detect”）
 
-**--block-blob-tier** 字符串               使用此 Blob 层将块 Blob 上传到 Azure 存储。 （默认值为“None”）
+**--block-blob-tier** 字符串               将块 Blob 直接上传到所选的[访问层](../blobs/storage-blob-storage-tiers.md)。 （默认值为“None”）。 有效值包括“None”、“Hot”、“Cool”和“Archive”。 如果传递“None”或未传递任何层，则 blob 将继承存储帐户的层。
 
 **--block-size-mb** 浮点数                  在上传到 Azure 存储以及从 Azure 存储下载时使用此块大小（以 MiB 为单位）。 默认值是根据文件大小自动计算的。 允许使用小数（例如：0.25）。
 

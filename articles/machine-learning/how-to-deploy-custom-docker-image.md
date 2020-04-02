@@ -10,12 +10,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 08/22/2019
-ms.openlocfilehash: f97493e8d2d9988f997e8a716cc2b833dd62a878
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.openlocfilehash: fc988c5577157b7997deaf05d88ae24ffe181d18
+ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78155059"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80343294"
 ---
 # <a name="deploy-a-model-using-a-custom-docker-base-image"></a>使用自定义 Docker 基础映像部署模型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -155,6 +155,9 @@ Azure 机器学习提供了一个默认的 Docker 基础映像，因此你无需
     az acr build --image myimage:v1 --registry <registry_name> --file Dockerfile .
     ```
 
+    > [!TIP]
+    > 在此示例中，标记 `:v1` 将应用于映像。 如果未提供标记，则应用标记 `:latest`。
+
     在生成过程中，信息将被流式传输回命令行。 如果生成成功，你将收到类似于以下文本的消息：
 
     ```text
@@ -170,6 +173,10 @@ Azure 机器学习提供了一个默认的 Docker 基础映像，因此你无需
 若要使用自定义映像，需要以下信息：
 
 * 映像名称  。 例如，`mcr.microsoft.com/azureml/o16n-sample-user-base/ubuntu-miniconda` 是 Microsoft 提供的基础 Docker 映像的路径。
+
+    > [!IMPORTANT]
+    > 对于已创建的自定义映像，请确保包含用于该映像的任何标记。 例如，如果映像是使用特定标记（如 `:v1`）创建的。 如果创建映像时未使用特定标记，则应用标记 `:latest`。
+
 * 如果映像位于“专用存储库”中，则需要以下信息  ：
 
     * 注册表地址  。 例如，`myregistry.azureecr.io`。

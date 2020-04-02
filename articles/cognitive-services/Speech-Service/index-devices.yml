@@ -7,24 +7,23 @@ metadata:
   services: cognitive-services
   author: IEvangelist
   manager: nitinme
-  layout: LandingPage
   ms.service: speech-service
   ms.topic: landing-page
-  origin.date: 02/11/2020
-  ms.date: 03/23/2020
+  origin.date: 03/10/2020
+  ms.date: 03/16/2020
   ms.author: v-tawe
-  ms.openlocfilehash: 2200fcb4ad80aab1e90013a196cf6c6a094f2e77
-  ms.sourcegitcommit: e94ed1c9eff4e88be2ca389909e60b14cc0d92f8
+  ms.openlocfilehash: 191eaf12cbaad9c8e8a4a0197a10f792c99708ba
+  ms.sourcegitcommit: b2f2bb08ab1b5ccb3c596d84b3b6ddca5bba3903
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 03/11/2020
-  ms.locfileid: "79084530"
+  ms.lasthandoff: 03/24/2020
+  ms.locfileid: "80151689"
 landingContent:
-- title: 入门
+- title: 关于语音设备 SDK
   linkLists:
   - linkListType: overview
     links:
-    - text: 关于语音设备 SDK
+    - text: 什么是语音设备 SDK？
       url: speech-devices-sdk.md
   - linkListType: quickstart
     links:
@@ -34,7 +33,7 @@ landingContent:
       url: speech-devices-sdk-quickstart.md?pivots=platform-linux
     - text: 使用语音设备 SDK (Android)
       url: speech-devices-sdk-quickstart.md?pivots=platform-android
-- title: 分步指南
+- title: 使用语音设备 SDK 进行开发
   linkLists:
   - linkListType: how-to-guide
     links:

@@ -1,20 +1,16 @@
 ---
 title: 理解查询语言
 description: 介绍 Resource Graph 表和所提供的可以与 Azure Resource Graph 配合使用的 Kusto 数据类型、运算符和函数。
-author: DCtheGeek
-ms.author: v-yiso
-origin.date: 12/05/2019
-ms.date: 01/20/2020
+ms.author: v-tawe
+origin.date: 03/07/2020
+ms.date: 03/16/2020
 ms.topic: conceptual
-ms.service: resource-graph
-manager: carmonm
-ms.custom: seodec18
-ms.openlocfilehash: 80a58bda01d0d78a73bbe883322348c9ac3aceb3
-ms.sourcegitcommit: 4ba6d7c8bed5398f37eb37cf5e2acafcdcc28791
+ms.openlocfilehash: 69b05afaeb4bfa204c5a7f266cdfdad61bf324ae
+ms.sourcegitcommit: 1d3d8dfdaf6281f06640cbee7124a1e8bf102c50
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2020
-ms.locfileid: "79133898"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80243905"
 ---
 # <a name="understanding-the-azure-resource-graph-query-language"></a>了解 Azure Resource Graph 查询语言
 
@@ -33,9 +29,13 @@ Resource Graph 为其存储的有关资源管理器资源类型及其属性的�
 |Resource Graph 表 |说明 |
 |---|---|
 |资源 |默认表（如果查询中未定义任何表）。 大多数资源管理器资源类型和属性都在这里。 |
-|ResourceContainers |包含订阅 (`Microsoft.Resources/subscriptions`) 和资源组 (`Microsoft.Resources/subscriptions/resourcegroups`) 的资源类型和数据。 |
+|ResourceContainers |包括订阅（在预览版中为 `Microsoft.Resources/subscriptions`）和资源组 (`Microsoft.Resources/subscriptions/resourcegroups`) 资源类型和数据。 |
+|AdvisorResources |包含与  `Microsoft.Advisor` 相关的资源。 |
 |AlertsManagementResources |包含与  `Microsoft.AlertsManagement` 相关的资源。 |
+|MaintenanceResources |包含与  `Microsoft.Maintenance` 相关的资源。 |
 |SecurityResources |包含与  `Microsoft.Security` 相关的资源。 |
+
+有关包含资源类型的完整列表，请参阅[参考：支持的表和资源类型](../reference/supported-tables-resources.md)。
 
 > [!NOTE]
 > _Resources_ 是默认表。 查询 _Resources_ 表时，不需提供表名，除非使用了 `join` 或 `union`。 不过，建议的做法是始终在查询中包含初始表。
@@ -54,8 +54,8 @@ Resources
 
 ```kusto
 Resources
-| join (ResourceContainers | where type=='microsoft.resources/subscriptions' | project SubName=name, subscriptionId) on subscriptionId
 | where type == 'microsoft.keyvault/vaults'
+| join (ResourceContainers | where type=='microsoft.resources/subscriptions' | project SubName=name, subscriptionId) on subscriptionId
 | project type, name, SubName
 | limit 1
 ```

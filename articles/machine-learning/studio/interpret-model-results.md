@@ -10,14 +10,16 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 11/29/2017
-ms.openlocfilehash: 1fa2207811a60fc01a3cf68e9aab4dc5eb23bc2e
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+ms.openlocfilehash: ba0b766f2ce8aa6030fdcb2e74d31e6d290970b1
+ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75598442"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80343363"
 ---
 # <a name="interpret-model-results-in-azure-machine-learning-studio-classic"></a>在 Azure 机器学习工作室（经典版）中解释模型结果
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 本主题说明如何在 Azure 机器学习工作室（经典版）中可视化和解释预测结果。 训练模型并根据它进行预测（“为模型评分”）后，需要了解并解释预测结果。
 
 
@@ -115,7 +117,7 @@ Azure 机器学习工作室（经典版）具有不同的模块用于处理其�
 
 **结果解释**
 
-左边的 16 个列表示测试集的特征值。 名称为“类“XX”的评分概率”之类的列类似于双类案例中的“评分概率”列。 它们显示对应的项归入特定类的概率。 例如，对于第一个项，它是“A”的概率为 0.003571，它是“B”的概率为 0.000451，以此类推。 最后一列（评分标签）与双类案例中的评分标签相同。 它选择具有最大评分概率的类作为对应项的预测类。 例如，对于第一个项，评分标签为“F”，因为它是“F”的概率最大 (0.916995)。
+左边的 16 个列表示测试集的特征值。 名称为“类“XX”的评分概率”之类的列类似于双类案例中的“评分概率”列。 它们显示对应的项归入特定类的概率。 例如，对于第一个项，它是“A”的概率为 0.003571，它是“B”的概率为 0.000451，以此类推。 最后一列（评分标签）与双类案例中的评分标签相同。 它选择具有最大评分概率的类作为对应项的预测类。 例如，对于第一个项，评分标签为“F”，因为它是“F”的概率 (0.916995) 最大。
 
 **Web 服务发布**
 
@@ -127,7 +129,7 @@ Azure 机器学习工作室（经典版）具有不同的模块用于处理其�
 
 ![实验结果](./media/interpret-model-results/9.png)
 
-图 9。 字母识别多类分类问题的最终评分实验
+图 9. 字母识别多类分类问题的最终评分实验
 
 发布和运行 Web 服务并输入某些输入特征值后，返回的结果类似于图 10。 此手写字母及其提取的 16 个特征预测为“T”，概率为 0.9715。
 

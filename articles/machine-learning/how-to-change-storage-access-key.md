@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 11/06/2019
-ms.openlocfilehash: 1ac8da855e51cfb77f519b611b1676f64bc03ddd
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+ms.openlocfilehash: 785cdd3b13c66562e0ccf6239cd7a2091ad40a90
+ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75598848"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80343562"
 ---
 # <a name="regenerate-storage-account-access-keys"></a>重新生成存储帐户访问密钥
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -31,6 +31,9 @@ ms.locfileid: "75598848"
 * [Azure 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)。
 
 * [Azure 机器学习 CLI 扩展](reference-azure-machine-learning-cli.md)。
+
+> [!NOTE]
+> 本文档中的代码片段已使用 Python SDK 版本 1.0.83 进行测试。
 
 <a id="whattoupdate"></a> 
 

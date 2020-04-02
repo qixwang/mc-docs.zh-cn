@@ -10,14 +10,16 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18, previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/20/2017
-ms.openlocfilehash: 8dc93f837df2985d78cc6350548c9f17da45893f
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+ms.openlocfilehash: 0f1885274ea2ddeda0990227f92dd71a6e0d14c5
+ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75598667"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80343296"
 ---
 # <a name="how-to-evaluate-model-performance-in-azure-machine-learning-studio-classic"></a>如何在 Azure 机器学习工作室（经典版）中评估模型性能
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 本文演示了如何在 Azure 机器学习工作室（经典）中评估模型的性能，并提供了可用于此任务的指标的简短说明。 显示了三个常见的监督学习方案： 
 
@@ -74,7 +76,7 @@ Azure 机器学习工作室（经典）通过它的两个主要机器学习模�
 
 ![交叉验证回归模型](./media/evaluate-model-performance/3.png)
 
-图 3。 交叉验证回归模型。
+图 3. 交叉验证回归模型。
 
 运行实验后，可通过单击[交叉验证模型][cross-validate-model]模块的右输出端口检查评估结果。 这会提供每次迭代（折）的指标的详细视图和每个指标的平均结果（图 4）。
 

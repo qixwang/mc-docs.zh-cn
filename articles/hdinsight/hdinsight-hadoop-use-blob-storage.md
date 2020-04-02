@@ -9,14 +9,14 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.devlang: na
 origin.date: 02/28/2020
-ms.date: 03/23/2020
+ms.date: 04/06/2020
 ms.author: v-yiso
-ms.openlocfilehash: b97ce4086a5dcc080ee43e6ba0e323cdbe4d6a5a
-ms.sourcegitcommit: 32997a7d7585deaeb0ab7b8f928d397b18b343fa
+ms.openlocfilehash: 70ab68c78167754e47a478bff6c7d5d86405c2a1
+ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79295969"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80343568"
 ---
 # <a name="use-azure-storage-with-azure-hdinsight-clusters"></a>将 Azure 存储与 Azure HDInsight 群集配合使用
 
@@ -30,11 +30,11 @@ Apache Hadoop 支持默认文件系统的概念。 默认文件系统意指默�
 > [!IMPORTANT]  
 > 存储帐户类型 **BlobStorage** 仅可用作 HDInsight 群集的辅助存储器。
 
-| 存储帐户类型 | 支持的服务 | 支持的性能层 | 支持的访问层 |
-|----------------------|--------------------|-----------------------------|------------------------|
-| StorageV2（常规用途 v2）  | Blob     | 标准                    | 热、冷、存档\*   |
-| 存储（常规用途 v1）   | Blob     | 标准                    | 不适用                    |
-| BlobStorage                    | Blob     | 标准                    | 热、冷、存档\*   |
+| 存储帐户类型 | 支持的服务 | 支持的性能层 |不支持的性能层| 支持的访问层 |
+|----------------------|--------------------|-----------------------------|---|------------------------|
+| StorageV2（常规用途 v2）  | Blob     | 标准                    |高级| 热、冷、存档\*   |
+| 存储（常规用途 v1）   | Blob     | 标准                    |高级| 不适用                    |
+| BlobStorage                    | Blob     | 标准                    |高级| 热、冷、存档\*   |
 
 建议不要使用默认 blob 容器来存储业务数据。 最佳做法是每次使用之后删除默认 Blob 容器以降低存储成本。 默认容器包含应用程序日志和系统日志。 请确保在删除该容器之前检索日志。
 
@@ -175,7 +175,6 @@ Microsoft 提供以下用于操作 Azure 存储的工具：
 * [Azure HDInsight 入门][hdinsight-get-started]
 * [将数据上传到 HDInsight][hdinsight-upload-data]
 * [将 Apache Hive 与 HDInsight 配合使用][hdinsight-use-hive]
-* [将 Apache Pig 与 HDInsight 配合使用][hdinsight-use-pig]
 * [使用 Azure 存储共享访问签名来限制使用 HDInsight 访问数据][hdinsight-use-sas]
 * [将 Azure Data Lake Storage Gen2 用于 Azure HDInsight 群集](hdinsight-hadoop-use-data-lake-storage-gen2.md)
 * [教程：在 Azure HDInsight 中使用交互式查询提取、转换和加载数据](./interactive-query/interactive-query-tutorial-analyze-flight-data.md) [hdinsight-use-sas]: hdinsight-storage-sharedaccesssignature-permissions.md [powershell-install]: https://docs.microsoft.com/powershell/azureps-cmdlets-docs [hdinsight-creation]: hdinsight-hadoop-provision-linux-clusters.md [hdinsight-get-started]:hadoop/apache-hadoop-linux-tutorial-get-started.md [hdinsight-upload-data]: hdinsight-upload-data.md [hdinsight-use-hive]:hadoop/hdinsight-use-hive.md [hdinsight-use-pig]:hadoop/hdinsight-use-pig.md

@@ -11,12 +11,12 @@ ms.author: clauren
 ms.reviewer: jmartens
 ms.date: 10/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: d356fbc8f1c53f53ee5d615fdfe08eaf30a5a161
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.openlocfilehash: e7c73962d72896ea4c30c6f41ab6b25e99c8733b
+ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78850200"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80343216"
 ---
 # <a name="troubleshooting-azure-machine-learning-azure-kubernetes-service-and-azure-container-instances-deployment"></a>Azure 机器学习 Azure Kubernetes 服务和 Azure 容器实例部署的故障排除
 
@@ -169,7 +169,7 @@ service.update([different_model], inference_config, deployment_config)
 
 要删除服务，请使用 [delete()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py#delete--)。
 
-### <a id="dockerlog"></a> 检查 Docker 日志
+### <a name="inspect-the-docker-log"></a><a id="dockerlog"></a> 检查 Docker 日志
 
 可以通过服务对象打印详细的 Docker 引擎日志消息。 可以查看 ACI、AKS 和 Local 部署的日志。 以下示例演示如何打印日志。
 
@@ -221,6 +221,10 @@ def run(input_data):
 
 **注意**：通过 `run(input_data)` 调用返回错误消息应仅用于调试目的。 出于安全原因，不应在生成环境中按此方法返回错误消息。
 
+## <a name="http-status-code-502"></a>HTTP 状态代码 502
+
+502 状态代码指示服务在 score.py 文件的 `run()` 方法中引发了异常或已崩溃。 使用本文中的信息调试该文件。
+
 ## <a name="http-status-code-503"></a>HTTP 状态代码 503
 
 Azure Kubernetes 服务部署支持自动缩放，这允许添加副本以支持额外的负载。 但是，自动缩放程序旨在处理负载中的逐步更改  。 如果每秒收到大量请求，客户端可能会收到 HTTP 状态代码 503。
@@ -262,6 +266,11 @@ Azure Kubernetes 服务部署支持自动缩放，这允许添加副本以支持
 
 有关设置 `autoscale_target_utilization`、`autoscale_max_replicas` 和 `autoscale_min_replicas` 的详细信息，请参阅 [AksWebservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.akswebservice?view=azure-ml-py) 模块参考。
 
+## <a name="http-status-code-504"></a>HTTP 状态代码 504
+
+504 状态代码指示请求已超时。默认超时值为 1 分钟。
+
+可以通过修改 score.py 删除不必要的调用来增加超时值或尝试加快服务速度。 如果这些操作不能解决问题，请使用本文中的信息调试 score.py 文件。 代码可能处于挂起状态或为无限循环。
 
 ## <a name="advanced-debugging"></a>高级调试
 

@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: conceptual
 origin.date: 09/18/2019
 ms.date: 03/09/2020
-ms.openlocfilehash: c288c906c88198f9774717005b17eb7385f5a66e
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.openlocfilehash: cab0fb34f276efcc08ad464f5756607ccf1ef305
+ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78154568"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80343300"
 ---
 # <a name="train-models-with-azure-machine-learning"></a>使用 Azure 机器学习训练模型
 
@@ -29,6 +29,8 @@ Azure 机器学习提供了多种用于训练模型的方法，其中包括使�
     | [自动化机器学习](#automated-machine-learning) | 通过自动化机器学习，无需具备大量的数据科学知识或编程知识即可训练模型  。 对于拥有数据科学和编程背景的人员，它提供了一种方法，可通过自动化算法选择和超参数优化来节省时间和资源。 使用自动化机器学习时，无需考虑定义运行配置。 |
     | [评估器](#estimators) | 利用评估器类，可以基于常用机器学习框架轻松地训练模型  。 有适用于 Scikit-learn、PyTorch、TensorFlow 和 Chainer 的评估器类     。 还有一个常规评估器，可用于尚无专用评估器类的框架。 使用评估器时，你无需考虑定义运行配置。 |
     | [机器学习管道](#machine-learning-pipeline) | 管道不是一种特殊的训练方法，而是一种使用模块化可重用步骤来定义工作流的方法，它可以将训练包含在工作流中  。 机器学习管道支持通过使用自动化机器学习、评估器和运行配置来训练模型。 由于管道并非专门用于训练，因此使用管道而不使用其他训练方法的原因更多样化。 通常，有以下情况时可以使用管道：<br>* 需要计划无人参与的过程，例如长时间运行的训练作业或数据准备  。<br>* 使用跨异类计算资源和存储位置协调的多个步骤  。<br>* 将管道用作针对特定方案的可重用模板，如重新训练或批量评分  。<br>* 跟踪工作流的数据源、输入和输出并对其进行版本控制  。<br>* 工作流由单独执行特定步骤的不同团队实现  。 然后，可以在管道中将步骤联接在一起以实现工作流。 |
+
++ [适用于 Python 的 Azure 机器学习 SDK](#r-sdk)：该 SDK 使用 reticulate 包绑定到 Azure 机器学习的 Python SDK。 这样，便可以从任何 R 环境访问 Python SDK 中实现的核心对象和方法。
 
 + **设计器**：Azure 机器学习设计器（预览版）为机器学习提供了一个简单的入口点，用于构建概念证明或提供给缺乏编码经验的用户。 借助设计器，可以使用基于 Web 的拖放式 UI 来训练模型。 可以在设计过程中使用 Python 代码，也可以在不编写任何代码的情况下训练模型。
 
@@ -68,9 +70,9 @@ Azure 机器学习提供了多种用于训练模型的方法，其中包括使�
 * [示例：Jupyter Notebook 自动化机器学习示例](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning)
 * [如何：用 Python 配置自动化 ML 试验](how-to-configure-auto-train.md)
 * [如何：自动训练时序预测模型](how-to-auto-train-forecast.md)
-* [如何：使用 [Azure 机器学习工作室](how-to-create-portal-experiments.md)创建、探索和部署自动化机器学习试验
+* [如何：使用 Azure 机器学习工作室创建、探索和部署自动化机器学习试验](how-to-use-automated-ml-for-ml-models.md)
 
-### <a name="estimators"></a>评估器
+### <a name="estimators"></a>估算器
 
 借助评估器，你可以轻松地使用常用 ML 框架训练模型。 如果使用 Scikit-learn、PyTorch、TensorFlow 或 Chainer，应考虑使将评估器用于训练     。 还有一个常规评估器，可用于尚无专用评估器类的框架。 使用评估器时，你无需考虑定义运行配置。
 
@@ -89,6 +91,15 @@ Azure 机器学习提供了多种用于训练模型的方法，其中包括使�
 * [示例：Jupyter Notebook 机器学习管道示例](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/machine-learning-pipelines)
 * [示例：使用自动化机器学习的管道](https://aka.ms/pl-automl)
 * [示例：使用评估器的管道](https://aka.ms/pl-estimator)
+
+## <a name="r-sdk"></a>R SDK
+
+使用 R SDK 可以将 R 语言与 Azure 机器学习配合使用。 该 SDK 使用 reticulate 包绑定到 Azure 机器学习的 Python SDK。 这样，便可以从任何 R 环境访问 Python SDK 中实现的核心对象和方法。
+
+有关详细信息，请参阅以下文章：
+
+* [教程：创建逻辑回归模型](tutorial-1st-r-experiment.md)
+* [适用于 R 的 Azure 机器学习 SDK 参考](https://azure.github.io/azureml-sdk-for-r/index.html)
 
 ## <a name="azure-machine-learning-designer"></a>Azure 机器学习设计器
 

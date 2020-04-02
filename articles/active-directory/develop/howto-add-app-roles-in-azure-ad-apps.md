@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 02/06/2020
+ms.date: 03/20/2020
 ms.author: v-junlch
 ms.reviewer: kkrishna, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 20e319a642a906185851be1ebba45354760a241e
-ms.sourcegitcommit: 7c80405a6b48380814b4b414e9f8a5756c007880
+ms.openlocfilehash: 6ef6f73c685d2e3cc21be9713865846045c8563e
+ms.sourcegitcommit: 6568c59433d7e80ab06e9fe76d4791f761ed6775
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77067523"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80243158"
 ---
 # <a name="how-to-add-app-roles-in-your-application-and-receive-them-in-the-token"></a>如何：在应用程序中添加应用角色并在令牌中接收它们
 
@@ -44,10 +44,10 @@ ms.locfileid: "77067523"
 1. 编辑应用清单，方法是先查找 `appRoles` 设置，然后添加所有应用程序角色。
 
      > [!NOTE]
-     > 此清单中的每个应用角色定义都必须在 `id` 属性的清单上下文中有不同的有效 GUID。    
-     > 
+     > 此清单中的每个应用角色定义都必须在 `id` 属性的清单上下文中有不同的有效 GUID。
+     >
      > 每个应用角色定义的 `value` 属性应该与应用程序的代码中使用的字符串完全匹配。 `value` 属性不能包含空格。 如果包含，则在保存清单时会收到错误消息。
-     
+
 1. 保存清单。
 
 ### <a name="examples"></a>示例
@@ -122,7 +122,7 @@ ms.locfileid: "77067523"
 
 ## <a name="more-information"></a>详细信息
 
-- [使用 Azure AD 应用程序角色在 Web 应用中授权 &amp; 角色声明（示例）](https://github.com/Azure-Samples/active-directory-dotnet-webapp-roleclaims)
+- [使用应用角色和角色声明向 ASP.NET Core Web 应用添加授权](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/5-WebApp-AuthZ/5-1-Roles)
 - [Azure Active Directory 现在可以与组声明和应用程序角色配合使用](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Azure-Active-Directory-now-with-Group-Claims-and-Application/ba-p/243862)
 - [Azure Active Directory 应用清单](/active-directory/develop/reference-app-manifest)
 - [AAD 访问令牌](access-tokens.md)

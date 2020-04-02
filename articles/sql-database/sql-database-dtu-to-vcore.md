@@ -8,14 +8,14 @@ ms.topic: conceptual
 author: WenJason
 ms.author: v-jay
 ms.reviewer: sashan, moslake, carlrab
-origin.date: 10/08/2019
-ms.date: 12/16/2019
-ms.openlocfilehash: 72c89ab9310a56ccc229acf9d9ff398f8807d8b0
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+origin.date: 03/09/2020
+ms.date: 03/30/2020
+ms.openlocfilehash: 5dc30c3b4a3f3fbb53fd92e91b8f8d7407b684ee
+ms.sourcegitcommit: 90660563b5d65731a64c099b32fb9ec0ce2c51c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75348573"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80341831"
 ---
 # <a name="migrate-from-the-dtu-based-model-to-the-vcore-based-model"></a>从基于 DTU 的模型迁移到基于 vCore 的模型
 
@@ -46,7 +46,7 @@ ms.locfileid: "75348573"
 |常规用途|业务关键|升级|必须先迁移辅助数据库|
 ||||
 
-\* 标准层中的每 100 个 DTU 至少需要 1 个 vCore，高级层中的每 125 个 DTU 至少需要 1 个 vCore。
+\* 根据经验法则，标准层中的每 100 个 DTU 至少需要 1 个 vCore，高级层中的每 125 个 DTU 至少需要 1 个 vCore。 有关详细信息，请参阅[基于 vCore 的购买模型](/sql-database/sql-database-purchase-models#vcore-based-purchasing-model)。
 
 ## <a name="migrate-failover-groups"></a>迁移故障转移组
 

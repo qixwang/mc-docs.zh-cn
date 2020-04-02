@@ -6,40 +6,34 @@ ms.subservice: data-science-vm
 author: gvashishtha
 ms.author: gopalv
 ms.topic: quickstart
-ms.date: 09/10/2019
-ms.openlocfilehash: 601d549f0a8b2032a4c59d55398d9f4d142b0a56
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.date: 03/10/2020
+ms.openlocfilehash: 7c25d66b853996a2ce6568cd83ad7606854db5b3
+ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79292479"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80343220"
 ---
 # <a name="quickstart-set-up-the-data-science-virtual-machine-for-linux-ubuntu"></a>快速入门：设置适用于 Linux (Ubuntu) 的 Data Science Virtual Machine
 
-启动并运行 Ubuntu Data Science Virtual Machine。
+启动并运行 Ubuntu 18.04 Data Science Virtual Machine。
 
 ## <a name="prerequisites"></a>先决条件
 
-若要创建 Windows Data Science Virtual Machine，必须具备 Azure 订阅。 [免费试用 Azure](https://azure.com/free)。
+要创建 Ubuntu 18.04 Data Science Virtual Machine，必须具备 Azure 订阅。 [免费试用 Azure](https://azure.com/free)。
 请注意，Azure 免费帐户不支持启用 GPU 的虚拟机 SKU。
 
 ## <a name="create-your-data-science-virtual-machine-for-linux"></a>创建适用于 Linux 的数据科学虚拟机
 
-以下步骤用于创建适用于 Linux 的数据科学虚拟机的实例：
+以下步骤用于创建 Data Science Virtual Machine Ubuntu 18.04 的实例：
 
 1. 转到 [Azure 门户](https://portal.azure.cn) 如果你尚未登录到 Azure 帐户，系统可能会提示你登录。
-1. 通过键入“data Science virtual machine”并选择“Data Science Virtual Machine for Linux (Ubuntu)”来查找虚拟机列表。
-    
-    ![Ubuntu VM 列表](./media/dsvm-ubuntu-intro/search-ubuntu.png)
+1. 通过键入“data Science virtual machine”并选择“Data Science Virtual Machine - Ubuntu 18.04”来查找虚拟机列表。
 
 1. 在随后的窗口中，选择“创建”  。
 
-   [![](media/dsvm-ubuntu-intro/create-linux.png "Button to create an Ubuntu machine")](media/dsvm-ubuntu-intro/create-linux-expanded.png#lightbox)
-
 1. 你应该被重定向到“创建虚拟机”边栏选项卡。
    
-   ![Ubuntu 虚拟机所对应的“基本信息”选项卡](./media/dsvm-ubuntu-intro/review-create-ubuntu.png)
-
 1. 输入以下信息以配置向导的每个步骤：
 
     1. **基本信息**：
@@ -123,13 +117,14 @@ Ubuntu DSVM 运行 [JupyterHub](https://github.com/jupyterhub/jupyterhub)，一�
       ![Ubuntu 计算机 IP 地址](./media/dsvm-ubuntu-intro/ubuntu-ip-address.png)
 
    1. 在本地计算机上，打开 Web 浏览器，然后导航到 https:\//your-vm-ip:8000，将“your-vm-ip”替换为之前记下的 IP 地址。
+   1. 浏览器可能会阻止你直接打开页面，并告知你存在证书错误。 DSVM 通过自签名证书提供安全性。 大多数浏览器都允许你在此警告后单击浏览余下内容。 许多浏览器会继续在整个 Web 会话中提供有关证书的某种视觉警告。
    1. 输入用于创建 VM 的用户名和密码，然后登录。 
 
       ![输入 Jupyter 登录名](./media/dsvm-ubuntu-intro/jupyter-login.png)
 
    1. 浏览许多可用的示例笔记本。
 
-也会提供 JupyterLab（下一代的 Jupyter 笔记本和 JupyterHub）。 若要访问它，请登录到 JupyterHub，然后浏览到 URL https:\//your-vm-ip:8000/user/your-username/lab，将“your-username”替换为在配置 VM 时选择的用户名。
+也会提供 JupyterLab（下一代的 Jupyter 笔记本和 JupyterHub）。 若要访问它，请登录到 JupyterHub，然后浏览到 URL https:\//your-vm-ip:8000/user/your-username/lab，将“your-username”替换为在配置 VM 时选择的用户名。 同样，由于证书错误，系统一开始可能就会阻止你访问站点。
 
 可以通过将此行添加到 `/etc/jupyterhub/jupyterhub_config.py`，将 JupyterLab 设置为默认 Notebook 服务器：
 

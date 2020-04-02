@@ -1,7 +1,7 @@
 ---
 title: 文本翻译 API 检测方法
-titlesuffix: Azure Cognitive Services
-description: 使用文本翻译 API 检测方法。
+titleSuffix: Azure Cognitive Services
+description: 使用 Azure 认知服务文本翻译 API 检测方法识别一段文本的语言。
 services: cognitive-services
 author: rajdeep-in
 manager: nitinme
@@ -11,12 +11,12 @@ ms.topic: reference
 origin.date: 02/01/2019
 ms.date: 06/11/2019
 ms.author: v-junlch
-ms.openlocfilehash: df966f7f489c31bb26a52a405183cda37076d5cf
-ms.sourcegitcommit: 259c97c9322da7add9de9f955eac275d743c9424
+ms.openlocfilehash: 90f593abeec7426104559c27f25f7fec443c4cdc
+ms.sourcegitcommit: 303a16c7117b6f3495ef0493b4ae8ccb67d7dbba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2019
-ms.locfileid: "66830103"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80342401"
 ---
 # <a name="translator-text-api-30-detect"></a>文本翻译 API 3.0：Detect
 
@@ -46,7 +46,7 @@ https://api.translator.azure.cn/detect?api-version=3.0
 请求标头包括：
 
 <table width="100%">
-  <th width="20%">标头</th>
+  <th width="20%">头文件</th>
   <th>说明</th>
   <tr>
     <td>身份验证标头</td>
@@ -126,7 +126,7 @@ https://api.translator.azure.cn/detect?api-version=3.0
 ## <a name="response-headers"></a>响应标头
 
 <table width="100%">
-  <th width="20%">标头</th>
+  <th width="20%">头文件</th>
   <th>说明</th>
   <tr>
     <td>X-RequestId</td>
@@ -163,11 +163,11 @@ https://api.translator.azure.cn/detect?api-version=3.0
   </tr>
   <tr>
     <td>500</td>
-    <td>发生了意外错误。 如果错误持续存在，请报告相关信息：发生故障的日期和时间、响应标头 <code>X-RequestId</code> 中的请求标识符、请求标头 <code>X-ClientTraceId</code> 中的客户端标识符。</td>
+    <td>发生了意外错误。 如果错误持续存在，请报告相关信息：发生故障的日期和时间、响应标头 `X-RequestId` 中的请求标识符、请求标头 `X-ClientTraceId` 中的客户端标识符。</td>
   </tr>
   <tr>
     <td>503</td>
-    <td>服务器暂不可用。 重试请求。 如果错误持续存在，请报告相关信息：发生故障的日期和时间、响应标头 <code>X-RequestId</code> 中的请求标识符、请求标头 <code>X-ClientTraceId</code> 中的客户端标识符。</td>
+    <td>服务器暂不可用。 重试请求。 如果错误持续存在，请报告相关信息：发生故障的日期和时间、响应标头 `X-RequestId` 中的请求标识符、请求标头 `X-ClientTraceId` 中的客户端标识符。</td>
   </tr>
 </table> 
 
@@ -177,7 +177,7 @@ https://api.translator.azure.cn/detect?api-version=3.0
 
 以下示例演示如何检索文本翻译支持的语言。
 
-# <a name="curltabcurl"></a>[curl](#tab/curl)
+# <a name="curl"></a>[curl](#tab/curl)
 
 ```
 curl -X POST "https://api.translator.azure.cn/detect?api-version=3.0" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Ocp-Apim-Subscription-Region: your-region" -H "Content-Type: application/json" -d "[{'Text':'What language is this text written in?'}]"

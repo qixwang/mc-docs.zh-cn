@@ -10,14 +10,17 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/19/2018
-ms.openlocfilehash: f416a12d0ad808813822dde877088263b403fc68
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+ms.openlocfilehash: ec8800b210474dfeceb108a5451f005b99eb9b82
+ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75598234"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80343326"
 ---
 # <a name="use-the-sample-datasets-in-azure-machine-learning-studio-classic"></a>在 Azure 机器学习工作室（经典）中使用示例数据集
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
+
 [top]: #machine-learning-sample-datasets
 
 在 Azure 机器学习工作室（经典）中创建新工作区时，默认包含大量的示例数据集和试验。 其中许多示例数据集由 [Azure AI 库](https://gallery.azure.ai/)中的示例模型使用。 其他示例数据集作为通常在机器学习中使用的各种类型数据的示例包含在内。
@@ -316,8 +319,8 @@ Yeh, I-Cheng, Yang, King-Jang, 和 Ting, Tao-Ming, “Knowledge discovery on RFM
 已预处理数据，创建细长的群集，其中长轴朝向相机中心。 该椭圆的特征（通常称为 Hillas 参数）是可以用于辨别的图像参数。
 <p></p>
 <b>用途：</b>预测淋浴图像表示信号，还是表示背景噪声。
-<p></p>
-<b>说明：</b>简单的分类精度对于该数据没有意义，因为与将信号事件分类为背景相比，更糟糕的是将背景事件分类为信号。 为了比较不同的分类器，应当使用 ROC 图。 接受背景事件作为信号的概率必须低于以下阈值之一：0.01、0.02、0.05、0.1 或 0.2。
+<p></p>注意：
+<b></b>简单的分类精度对于该数据没有意义，因为与将信号事件分类为背景相比，更糟糕的是将背景事件分类为信号。 为了比较不同的分类器，应当使用 ROC 图。 接受背景事件作为信号的概率必须低于以下阈值之一：0.01、0.02、0.05、0.1 或 0.2。
 <p></p>
 另请注意，背景事件的数目（h 表示强子淋浴）被低估。 在实际测量中，h 或噪声类代表大部分事件。 
 <p></p>
@@ -374,7 +377,7 @@ RCV1-V2 路透社新闻数据集中测试示例的特征。 该数据集中具�
 <tr>
   <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/lyrl2004_tokens_train.csv">lyrl2004_tokens_train.csv</a></td>
   <td>
-RCV1-V2 路透社新闻数据集中训练示例的特征。 该数据集中具有 23K 个新闻文章及其 ID（数据集的第一列）。 每篇文章已经过标记化、设置了停用词并去除了枝枝叶叶。 数据集由 David 提供。 D. Lewis。
+RCV1-V2 路透社新闻数据集中训练示例的特征。 该数据集中具有 23K 个新闻文章及其 ID（数据集的第一列）。 每篇文章已经过标记化、设置了停用词和去除枝枝叶叶。 数据集由 David 提供。 D. Lewis。
   </td>
 </tr>
 

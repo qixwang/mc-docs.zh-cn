@@ -7,13 +7,13 @@ author: hrasheed-msft
 ms.author: v-yiso
 ms.reviewer: jasonh
 origin.date: 08/20/2019
-ms.date: 12/23/2019
-ms.openlocfilehash: 7a052610006f3c7f03fb89a1316031c24156db7d
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.date: 04/06/2020
+ms.openlocfilehash: 4772865dcd3d6d0e23aa8b3bf129cd70f03c9d9e
+ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75348543"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80343565"
 ---
 # <a name="apache-zookeeper-server-fails-to-form-a-quorum-in-azure-hdinsight"></a>Apache ZooKeeper 服务器无法在 Azure HDInsight 中形成仲裁
 
@@ -21,11 +21,18 @@ ms.locfileid: "75348543"
 
 ## <a name="issue"></a>问题
 
-Apache ZooKeeper 服务器运行不正常，症状可能包括：资源管理器/名称节点处于备用模式、简单的 HDFS 操作不起作用、`zkFailoverController` 处于停止状态且无法启动、Yarn/Spark/Livy 作业因 Zookeeper 错误而失败。 可能会看到如下所示的错误消息：
+Apache ZooKeeper 服务器运行不正常，症状可能包括：资源管理器/名称节点处于备用模式、简单的 HDFS 操作不起作用、`zkFailoverController` 处于停止状态且无法启动、Yarn/Spark/Livy 作业因 Zookeeper 错误而失败。 LLAP 守护程序也可能无法在 Secure Spark 或 Interactive Hive 群集上启动。 可能会看到如下所示的错误消息：
 
 ```
 19/06/19 08:27:08 ERROR ZooKeeperStateStore: Fatal Zookeeper error. Shutting down Livy server.
 19/06/19 08:27:08 INFO LivyServer: Shutting down Livy server.
+```
+
+在 Zookeeper 服务器中登录到任何 Zookeeper 主机，在 /var/log/zookeeper/zookeeper-zookeeper-server-\*.out 中，还可能会看到以下错误：
+
+```
+2020-02-12 00:31:52,513 - ERROR [CommitProcessor:1:NIOServerCnxn@178] - Unexpected Exception:
+java.nio.channels.CancelledKeyException
 ```
 
 ## <a name="cause"></a>原因

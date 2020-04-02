@@ -6,14 +6,14 @@ ms.author: hrasheed
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-origin.date: 12/16/2019
-ms.date: 02/24/2020
-ms.openlocfilehash: af03d664b69750538c30195fff281c6812f85778
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+origin.date: 03/03/2020
+ms.date: 04/06/2020
+ms.openlocfilehash: 585f93e0c5c866879df1f25b91e54a7c30427cf4
+ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77428702"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80343567"
 ---
 # <a name="hdinsight-management-ip-addresses"></a>HDInsight 管理 IP 地址
 
@@ -89,3 +89,4 @@ ms.locfileid: "77428702"
 ## <a name="next-steps"></a>后续步骤
 
 * [为 Azure HDInsight 群集创建虚拟网络](hdinsight-create-virtual-network.md)
+* [Azure HDInsight 的网络安全组 (NSG) 服务标记](hdinsight-service-tags.md)

@@ -4,17 +4,17 @@ description: 使用 Azure 事件网格订阅 Blob 存储事件。
 author: WenJason
 ms.author: v-jay
 origin.date: 01/30/2018
-ms.date: 02/10/2020
+ms.date: 03/30/2020
 ms.topic: conceptual
 ms.service: storage
 ms.subservice: blobs
 ms.reviewer: cbrooks
-ms.openlocfilehash: 7183fd5364cf862f411959bd0b9bf3b0005e54f1
-ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
+ms.openlocfilehash: a7101e57855bf7a8b0a78e39ddea93f016c178d9
+ms.sourcegitcommit: 90d01d08faf8adb20083363a8e4e5aab139cd9b2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77028954"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80290335"
 ---
 # <a name="reacting-to-blob-storage-events"></a>响应 Blob 存储事件
 
@@ -92,7 +92,8 @@ Blob 存储事件使用者使用的格式：
 > [!div class="checklist"]
 > * 由于可将多个订阅配置为将事件路由至相同的事件处理程序，因此请勿假定事件来自特定的源，而是应检查消息的主题，确保它来自所期望的存储帐户。
 > * 同样，检查 eventType 是否为准备处理的项，并且不假定所接收的全部事件都是期望的类型。
-> * 消息在一段延迟时间后会无序到达，请使用 etag 字段来了解对象的相关信息是否是最新的。  此外，还可使用 sequencer 字段来了解任何特定对象的事件顺序。
+> * 由于消息可能在一段延迟后到达，请使用 etag 字段了解对象的相关信息是否仍然是最新的。 若要了解如何使用 etag 字段，请参阅[在 Blob 存储中管理并发](/storage/common/storage-concurrency?toc=%2fstorage%2fblobs%2ftoc.json#managing-concurrency-in-blob-storage)。 
+> * 由于消息可能无序到达，请使用 sequencer 字段来了解任何特定对象的事件顺序。 sequencer 字段是一个字符串值，表示任何特定 blob 名称的事件逻辑顺序。 你可以使用标准字符串比较，了解同一个 blob 名称上两个事件的相对顺序。
 > * 使用 blobType 字段可了解 blob 中允许何种类型的操作，以及应当使用哪种客户端库类型来访问该 blob。 有效值为 `BlockBlob` 或 `PageBlob`。 
 > * 将 URL 字段与 `CloudBlockBlob` 和 `CloudAppendBlob` 构造函数配合使用，以访问 blob。
 > * 忽略不了解的字段。 此做法有助于适应将来可能添加的新功能。

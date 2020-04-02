@@ -9,12 +9,12 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 07/16/2018
-ms.openlocfilehash: 495ba4c81e9118916eae93e4af63b5ae71790f86
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+ms.openlocfilehash: 984d4aeb51acae395dcb4fb8381f964aabb1a4f0
+ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75598988"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80343584"
 ---
 # <a name="data-science-with-a-linux-data-science-virtual-machine-in-azure"></a>Azure 上的 Linux Data Science Virtual Machine 中的数据科学
 
@@ -187,6 +187,8 @@ ms.locfileid: "75598988"
    ![Azure 机器学习工作室（经典版）主授权令牌](./media/linux-dsvm-walkthrough/workspace-token.png)
 1. 加载 AzureML 包，并使用 DSVM 上 R 会话中的令牌和工作区 ID 设置变量的值  ：
 
+        if(!require("devtools")) install.packages("devtools")
+        devtools::install_github("RevolutionAnalytics/AzureML")
         if(!require("AzureML")) install.packages("AzureML")
         require(AzureML)
         wsAuth = "<authorization-token>"
@@ -206,9 +208,23 @@ ms.locfileid: "75598988"
         return(colnames(predictDF)[apply(predictDF, 1, which.max)])
         }
 
+1. 为此工作区创建一个 settings.json 文件：
+
+        vim ~/.azureml/settings.json
+
+1. 确保将以下内容放入 settings.json 中：
+
+         {"workspace":{
+           "id": "<workspace-id>",
+           "authorization_token": "<authorization-token>",
+           "api_endpoint": "https://studioapi.azureml.net",
+           "management_endpoint": "https://management.azureml.net"
+         }
+
 
 1. 使用 publishWebService 函数将 predictSpam 函数发布到 AzureML   ：
 
+        ws <- workspace()
         spamWebService <- publishWebService(ws, fun = predictSpam, name="spamWebService", inputSchema = smallTrainSet, data.frame=TRUE)
 
 1. 此函数会采用 predictSpam 函数创建一个名为 spamWebService 并且定义了输入和输出的 web 服务，然后返回有关新的终结点的信息   。

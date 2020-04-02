@@ -5,22 +5,23 @@ services: scheduler
 ms.service: scheduler
 author: WenJason
 ms.author: v-jay
-ms.reviewer: klam
-ms.assetid: 88f4a3e9-6dbd-4943-8543-f0649d423061
+ms.reviewer: klam, estfan
 ms.topic: article
 origin.date: 08/18/2016
-ms.date: 11/04/2019
-ms.openlocfilehash: 08795c479d441304c786c2ba2c9b1890bba1ba5c
-ms.sourcegitcommit: f9a257e95444cb64c6d68a7a1cfe7e94c5cc5b19
+ms.date: 03/30/2020
+ms.openlocfilehash: 5f979b7db9e7fd25ff1ad4fe4d0b8ad9fee161b3
+ms.sourcegitcommit: 90660563b5d65731a64c099b32fb9ec0ce2c51c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2019
-ms.locfileid: "73416276"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80341696"
 ---
 # <a name="limits-quotas-and-throttle-thresholds-in-azure-scheduler"></a>Azure 计划程序中的限制、配额和限制阈值
 
 > [!IMPORTANT]
-> [Azure 逻辑应用](../logic-apps/logic-apps-overview.md)将替换[即将停用](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date)的 Azure 计划程序。 若要继续使用在计划程序中设置的作业，请尽快[迁移到 Azure 逻辑应用](../scheduler/migrate-from-scheduler-to-logic-apps.md)。
+> [Azure 逻辑应用](../logic-apps/logic-apps-overview.md)将替换[即将停用](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date)的 Azure 计划程序。 若要继续使用在计划程序中设置的作业，请尽快[迁移到 Azure 逻辑应用](../scheduler/migrate-from-scheduler-to-logic-apps.md)。 
+>
+> 计划程序在 Azure 门户中不再可用，但 [REST API](https://docs.microsoft.com/rest/api/scheduler) 和 [Azure 计划程序 PowerShell cmdlet](scheduler-powershell-reference.md) 目前仍可用，以便你可以管理作业和作业集合。
 
 ## <a name="limits-quotas-and-thresholds"></a>限制、配额和阈值
 
@@ -35,7 +36,9 @@ ms.locfileid: "73416276"
 * Azure 订阅、作业集合和作业的标识符 
 * 请求尝试的操作类型
 
-## <a name="see-also"></a>另请参阅
+## <a name="next-steps"></a>后续步骤
 
-* [什么是 Azure 计划程序？](scheduler-intro.md)
 * [Azure 计划程序的概念、术语和实体层次结构](scheduler-concepts-terms.md)
+* [Azure 计划程序的计划和计费](scheduler-plans-billing.md)
+* [Azure 计划程序 REST API 参考](https://docs.microsoft.com/rest/api/scheduler)
+* [Azure 计划程序 PowerShell cmdlet 参考](scheduler-powershell-reference.md)

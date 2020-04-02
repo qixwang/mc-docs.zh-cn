@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 origin.date: 11/04/2019
 ms.date: 03/16/2020
-ms.openlocfilehash: 5d00920870b2b53dbaecc90c76d10809c5cb7619
-ms.sourcegitcommit: d5eca3c6b03b206e441b599e5b138bd687a91361
+ms.openlocfilehash: 81a76d02c79f64ae067571b744ac3278040c8987
+ms.sourcegitcommit: 1d3d8dfdaf6281f06640cbee7124a1e8bf102c50
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78934850"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80243740"
 ---
 # <a name="image-analysis-cognitive-skill"></a>图像分析认知技能
 
@@ -36,7 +36,7 @@ Microsoft.Skills.Vision.ImageAnalysisSkill
 | 参数名称     | 说明 |
 |--------------------|-------------|
 | defaultLanguageCode   |  表示要返回的语言的字符串。 该服务以指定的语言返回识别结果。 如果未指定此属性，则默认值为“en”。 <br/><br/>支持的语言为： <br/>en - 英语（默认）  <br/> *es* - 西班牙语 <br/> *ja* - 日语 <br/> *pt* - 葡萄牙语 <br/> zh - 简体中文 |
-| visualFeatures |  表示要返回的可视特征类型的一组字符串。 有效的可视特征类型包括：  <ul><li>*adult* - 检测图片是否具有色情性质（描绘裸体或性行为），以及是否具有血腥内容（描绘极端暴力或血腥）。 还会检测性暗示内容（即不雅内容）。</li><li>*brands* - 检测图像中的各种品牌，包括大致位置。 *brands* 视觉功能仅在英文版本中提供。</li><li> *categories* - 根据认知服务[计算机视觉文档](https://docs.azure.cn/cognitive-services/computer-vision/category-taxonomy)中定义的分类对图像内容进行分类。 </li><li>    *color* - 确定主题色、主色以及图像是否为黑白。</li><li>*description* - 用受支持的语言以完整的句子描述图像内容。</li><li>*faces* - 检测人脸是否存在。 如果存在，则生成坐标、性别和年龄。</li><li>  *imageType* - 检测图像是剪贴画还是素描。</li><li>  *objects* - 检测图像中的各种对象，包括大致位置。 *objects* 视觉功能仅在英文版本中提供。</li><li> tags - 使用与图像内容相关字词的详细列表来标记图像  。</li></ul> 可视特征的名称区分大小写。|
+| visualFeatures |  表示要返回的可视特征类型的一组字符串。 有效的可视特征类型包括：  <ul><li>*adult* - 检测图片是否具有色情性质（描绘裸体或性行为），以及是否具有血腥内容（描绘极端暴力或血腥）。 还会检测性暗示内容（即不雅内容）。</li><li>*brands* - 检测图像中的各种品牌，包括大致位置。 *brands* 视觉功能仅在英文版本中提供。</li><li> *categories* - 根据认知服务[计算机视觉文档](https://docs.microsoft.com/azure/cognitive-services/computer-vision/category-taxonomy)中定义的分类对图像内容进行分类。 </li><li>*description* - 用受支持的语言以完整的句子描述图像内容。</li><li>*faces* - 检测人脸是否存在。 如果存在，则生成坐标、性别和年龄。</li><li> *objects* - 检测图像中的各种对象，包括大致位置。 *objects* 视觉功能仅在英文版本中提供。</li><li> tags - 使用与图像内容相关字词的详细列表来标记图像  。</li></ul> 可视特征的名称区分大小写。 请注意，color  和 imageType  视觉特征已弃用，但仍可通过[自定义技能](https://go.microsoft.com/fwlink/?linkid=2121117)来访问此功能。|
 | 详细信息   | 表示要返回的特定于域的详细信息的一组字符串。 有效的可视特征类型包括： <ul><li>*celebrities* - 识别在图像中检测到的名人。</li><li>*landmarks* - 识别在图像中检测到的地标。 </li></ul> |
 
 ## <a name="skill-inputs"></a>技能输入
@@ -471,20 +471,6 @@ Microsoft.Skills.Vision.ImageAnalysisSkill
             ]
           }
         ],
-        "color": {
-          "dominantColorForeground": "Brown",
-          "dominantColorBackground": "Brown",
-          "dominantColors": [
-            "Brown",
-            "Black"
-          ],
-          "accentColor": "873B59",
-          "isBwImg": false
-        },
-        "imageType": {
-          "clipArtType": 0,
-          "lineDrawingType": 0
-        },
         "objects": [
           {
             "rectangle": {

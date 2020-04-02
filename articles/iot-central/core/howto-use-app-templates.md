@@ -1,26 +1,49 @@
 ---
-title: 在 Azure IoT Central 中使用应用程序模板 | Microsoft Docs
-description: 如何以操作员的身份在 Azure IoT Central 应用程序中使用设备集。
+title: 导出 Azure IoT Central 应用程序 | Microsoft Docs
+description: 作为解决方案经理，我想要导出某个应用程序模板以便能够重复使用它。
 author: dominicbetts
-ms.author: v-yiso
-origin.date: 05/30/2019
-ms.date: 12/16/2019
+ms.author: dobett
+ms.date: 12/09/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: fb44cf46bb24ae8de32d9a22d69c6c193e49c9d9
-ms.sourcegitcommit: 6ffa4d50cee80c7c0944e215ca917a248f2a4bcd
+ms.openlocfilehash: c5c0121c4a7bfcea269c4881dbcbf69c7f8efa08
+ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74883147"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80343153"
 ---
-# <a name="use-application-templates"></a>使用应用程序模板
+# <a name="export-your-application"></a>导出应用程序
 
-[!INCLUDE [iot-central-original-pnp](../../../includes/iot-central-original-pnp-note.md)]
 
-本文介绍解决方案经理如何创建和使用应用程序模板。
+
+本文为解决方案经理介绍如何导出 IoT Central 应用程序，以便能够重复使用它。
+
+可以使用两个选项：
+
+- 如果只需创建应用程序的重复副本，则可以创建应用程序的副本。
+- 如果你打算创建多个副本，可以从应用程序创建一个应用程序模板。
+
+## <a name="copy-your-application"></a>复制应用程序
+
+可以创建任一应用程序的副本，但其中不会包括任何设备实例、设备数据历史记录和用户数据。 该副本使用将向你收费的标准定价计划。 无法通过复制应用程序来创建使用免费定价计划的应用程序。
+
+选择“复制”。  在对话框中，输入新应用程序的详细信息。 再次选择“复制”以确认要继续操作。  若要详细了解窗体中的字段，请参阅[创建应用程序](quick-deploy-iot-central.md)快速入门。
+
+![“应用程序设置”页](media/howto-use-app-templates/appcopy2.png)
+
+应用复制操作成功后，可以使用链接导航到新应用程序。
+
+![“应用程序设置”页](media/howto-use-app-templates/appcopy3a.png)
+
+复制某个应用程序也会复制规则和电子邮件操作的定义。 某些操作（例如 Flow 和逻辑应用）通过规则 ID 与特定的规则相关联。 将某个规则复制到另一应用程序后，该规则将获得自身的规则 ID。 在这种情况下，用户必须创建一个新的操作，然后将新规则与该操作相关联。 一般而言，最好是检查规则和操作，以确保它们在新应用中是最新的。
+
+> [!WARNING]
+> 如果仪表板包含显示特定设备相关信息的磁贴，则这些磁贴会在新应用程序中显示“找不到请求的资源”。  必须重新配置这些磁贴才能显示有关新应用程序中设备的信息。
+
+## <a name="create-an-application-template"></a>创建应用程序模板
 
 创建 Azure IoT Central 应用程序时，可以选择内置的示例模板。 也可以从现有的 IoT Central 应用程序创建自己的应用程序模板。 然后，可以在创建新应用程序时使用自己的应用程序模板。
 
@@ -43,8 +66,6 @@ ms.locfileid: "74883147"
 
 需手动将这些项添加到从应用程序模板创建的任何应用程序。
 
-## <a name="create-an-application-template"></a>创建应用程序模板
-
 若要从现有的 IoT Central 应用程序创建应用程序模板：
 
 1. 在应用程序中转到“管理”部分。 
@@ -54,15 +75,15 @@ ms.locfileid: "74883147"
 
 ![创建应用程序模板](media/howto-use-app-templates/create-template.png)
 
-## <a name="use-an-application-template"></a>使用应用程序模板
+### <a name="use-an-application-template"></a>使用应用程序模板
 
 若要使用应用程序模板创建新的 IoT Central 应用程序，需要事先创建一个**可共享的链接**。 将该**可共享的链接**粘贴到浏览器的地址栏中。 随后会显示“创建应用程序”页，其中已选择你的自定义应用程序模板： 
 
 ![从模板创建应用程序](media/howto-use-app-templates/create-app.png)
 
-选择付款计划，并填写窗体中的其他字段。 然后选择“创建”，从应用程序模板创建新的 IoT Central 应用程序。 
+选择定价计划，并填写窗体中的其他字段。 然后选择“创建”，从应用程序模板创建新的 IoT Central 应用程序。 
 
-## <a name="manage-application-templates"></a>管理应用程序模板
+### <a name="manage-application-templates"></a>管理应用程序模板
 
 在“应用程序模板导出”页上，可以删除或更新应用程序模板。 
 

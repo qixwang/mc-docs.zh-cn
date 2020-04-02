@@ -3,22 +3,22 @@ title: Azure IoT Central 中的体系结构概念 | Microsoft Docs
 description: 本文介绍与 Azure IoT Central 的体系结构相关的重要概念
 author: dominicbetts
 ms.author: v-yiso
-origin.date: 05/31/2019
+origin.date: 11/27/2019
 ms.date: 12/16/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: e0b4979f548b7e81e72dc8055db3cd8970c11dbd
-ms.sourcegitcommit: 6ffa4d50cee80c7c0944e215ca917a248f2a4bcd
+ms.openlocfilehash: b9ac2f80d7985d9ea1b8c8e2fcbe731afda38eab
+ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74883216"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80343257"
 ---
 # <a name="azure-iot-central-architecture"></a>Azure IoT Central 体系结构
 
-[!INCLUDE [iot-central-original-pnp](../../../includes/iot-central-original-pnp-note.md)]
+
 
 本文概述 Microsoft Azure IoT Central 体系结构。
 
@@ -33,7 +33,69 @@ ms.locfileid: "74883216"
 
 在 Azure IoT Central 中，设备可以与应用程序交换的数据在设备模板中指定。 有关设备模板的详细信息，请参阅[元数据管理](#metadata-management)。
 
-若要详细了解设备如何连接到 Azure IoT Central 应用程序，请参阅[设备连接](concepts-connectivity.md)。
+若要详细了解设备如何连接到 Azure IoT Central 应用程序，请参阅[设备连接](concepts-get-connected.md)。
+
+## <a name="azure-iot-edge-devices"></a>Azure IoT Edge 设备
+
+除了使用 [Azure IoT SDK](https://github.com/Azure/azure-iot-sdks) 创建的设备之外，还可以将 [Azure IoT Edge 设备](../../iot-edge/about-iot-edge.md)连接到 IoT Central 应用程序。 使用 IoT Edge 可以直接在 IoT Central 管理的 IoT 设备上运行云智能和自定义逻辑。 IoT Edge 运行时使你能够：
+
+- 在设备上安装和更新工作负荷。
+- 维护设备上的 IoT Edge 安全标准。
+- 确保 IoT Edge 模块始终处于运行状态。
+- 将模块运行状况报告给云以进行远程监视。
+- 管理下游叶设备与 IoT Edge 设备之间、IoT Edge 设备上的模块之间以及 IoT Edge 设备与云之间的通信。
+
+![包含 Azure IoT Edge 的 Azure IoT Central](./media/concepts-architecture/iotedge.png)
+
+IoT Central 为 IoT Edge 设备启用以下功能：
+
+- 设备模板，用于描述 IoT Edge 设备的功能，例如：
+  - 部署清单上传功能，可帮助管理设备群的清单。
+  - 在 IoT Edge 设备上运行的模块。
+  - 每个模块发送的遥测数据。
+  - 每个模块报告的属性。
+  - 每个模块响应的命令。
+  - Azure IoT Edge 网关设备功能模型与下游设备功能模型之间的关系。
+  - 不存储在 IoT Edge 设备上的云属性。
+  - 属于 IoT Central 应用程序的自定义、仪表板和窗体。
+
+  有关详细信息，请参阅[将 Azure IoT Edge 设备连接到 Azure IoT Central 应用程序](./concepts-iot-edge.md)一文。
+
+- 使用 Azure IoT 设备预配服务大规模预配 Azure IoT Edge 设备的功能
+- 规则和操作。
+- 自定义仪表板和分析。
+- 从 Azure IoT Edge 设备连续导出遥测数据。
+
+### <a name="iot-edge-device-types"></a>IoT Edge 设备类型
+
+IoT Central 将 IoT Edge 设备类型分类为：
+
+- 叶设备。 IoT Edge 设备可以包含下游叶设备，但这些设备不会在 IoT Central 中预配。
+- 包含下游设备的网关设备。 网关设备和下游设备均在 IoT Central 中进行预配
+
+![包含 IoT Edge 的 IoT Central 概述](./media/concepts-architecture/gatewayedge.png)
+
+### <a name="iot-edge-patterns"></a>IoT Edge 模式
+
+IoT Central 支持以下 IoT Edge 设备模式：
+
+#### <a name="iot-edge-as-leaf-device"></a>用作叶设备的 IoT Edge
+
+![用作叶设备的 IoT Edge](./media/concepts-architecture/edgeasleafdevice.png)
+
+IoT Edge 设备在 IoT Central 中预配，任何下游设备及其遥测均表示为来自 IoT Edge 设备。 已连接到 IoT Edge 设备的下游设备不会在 IoT Central 中预配。
+
+#### <a name="iot-edge-gateway-device-connected-to-downstream-devices-with-identity"></a>已连接到有标识下游设备的 IoT Edge 网关设备
+
+![有下游设备标识的 IoT Edge](./media/concepts-architecture/edgewithdownstreamdeviceidentity.png)
+
+IoT Edge 设备连同已连接到该设备的下游设备一起在 IoT Central 中预配。 用于通过网关预配下游设备的运行时支持当前不受支持。
+
+#### <a name="iot-edge-gateway-device-connected-to-downstream-devices-with-identity-provided-by-the-iot-edge-gateway"></a>已连接到具有 IoT Edge 网关所提供标识的下游设备的 IoT Edge 网关设备
+
+![包含无标识下游设备的 IoT Edge](./media/concepts-architecture/edgewithoutdownstreamdeviceidentity.png)
+
+IoT Edge 设备连同已连接到该设备的下游设备一起在 IoT Central 中预配。 用于为下游设备提供标识和预配下游设备的网关运行时支持当前不受支持。 如果你引入自己的标识转换模块，则 IoT Central 可以支持此模式。
 
 ## <a name="cloud-gateway"></a>云网关
 
@@ -45,7 +107,7 @@ Azure IoT Central 使用 Azure IoT 中心作为启用设备连接的云网关。
 
 若要详细了解 IoT 中心，请参阅 [Azure IoT 中心](/iot-hub/)。
 
-若要详细了解 Azure IoT Central 中的设备连接，请参阅[设备连接](concepts-connectivity.md)。
+若要详细了解 Azure IoT Central 中的设备连接，请参阅[设备连接](concepts-get-connected.md)。
 
 ## <a name="data-stores"></a>数据存储
 
@@ -60,31 +122,30 @@ Azure IoT Central 将时序存储用于从设备发送的度量数据。 设备�
 
 ## <a name="analytics"></a>分析
 
-分析服务负责生成应用程序显示的自定义报告数据。 操作员可以[自定义在应用程序中显示的分析](howto-create-analytics.md)。 分析服务在 [Azure 时序见解](/time-series-insights/)基础上构建，可以处理从设备发送的度量数据。
+分析服务负责生成应用程序显示的自定义报告数据。 操作员可以[自定义在应用程序中显示的分析](howto-create-analytics.md)。 分析服务在 [Azure 时序见解](https://azure.microsoft.com/services/time-series-insights/)基础上构建，可以处理从设备发送的度量数据。
 
 ## <a name="rules-and-actions"></a>规则和操作
 
-[规则和操作](howto-create-telemetry-rules.md)可以紧密地配合使用，以便自动完成应用程序中的任务。 开发者可以根据设备遥测（例如温度超过定义的阈值）来定义规则。 Azure IoT Central 使用流处理器来确定何时满足规则条件。 规则条件在得到满足的情况下，会触发开发者定义的操作。 例如，可以通过某个操作向工程师发送通知电子邮件，告知对方设备中的温度过高。
+[规则和操作](tutorial-create-telemetry-rules.md)可以紧密地配合使用，以便自动完成应用程序中的任务。 开发者可以根据设备遥测（例如温度超过定义的阈值）来定义规则。 Azure IoT Central 使用流处理器来确定何时满足规则条件。 规则条件在得到满足的情况下，会触发开发者定义的操作。 例如，可以通过某个操作向工程师发送通知电子邮件，告知对方设备中的温度过高。
 
 ## <a name="metadata-management"></a>元数据管理
 
 在 Azure IoT Central 应用程序中，设备模板用于定义设备类型的行为和功能。 例如，致冷器设备模板指定致冷器发送给应用程序的遥测。
 
-![模板体系结构](media/concepts-architecture/template_architecture.png)
+![模板体系结构](media/concepts-architecture/template-architecture.png)
 
-在设备模板中：
+在 IoT Central 应用程序设备模板中包含：
 
-- **度量**指定设备发送给应用程序的遥测。
-- **设置**指定操作员可以设置的配置。
-- **属性**指定操作员可以设置的元数据。
-- **规则**根据从设备发送的数据自动设置应用程序中的行为。
-- **仪表板**是可以在应用程序中自定义的设备视图。
+- **设备功能模型**指定设备的功能，例如它发送的遥测数据、用于定义设备状态的属性，以及设备响应的命令。 设备功能已组织到一个或多个界面中。 
+- **云属性**指定 IoT Central 为设备存储的属性。 这些属性只存储在 IoT Central 中，而不会发送到设备。
+- **视图**指定生成器创建的、让操作员监视和管理设备的仪表板和窗体。
+- **自定义项**让生成器替代设备功能模型中的某些定义，使之与 IoT Central 应用程序更相关。
 
 一个应用程序可以有一个或多个基于每个设备模板的模拟设备和真实设备。
 
 ## <a name="data-export"></a>数据导出
 
-在 Azure IoT Central 应用程序中，可以[连续将数据导出](howto-export-data-event-hubs-service-bus.md)到自己的 Azure 事件中心、Azure 服务总线和 Azure Blob 存储实例。 IoT Central 可以导出度量、设备和设备模板。
+在 Azure IoT Central 应用程序中，可以[连续将数据导出](howto-export-data.md)到自己的 Azure 事件中心和 Azure 服务总线实例。 还可以定期将数据导出到 Azure Blob 存储帐户。 IoT Central 可以导出度量、设备和设备模板。
 
 ## <a name="batch-device-updates"></a>设备批量更新
 
@@ -92,7 +153,7 @@ Azure IoT Central 将时序存储用于从设备发送的度量数据。 设备�
 
 ## <a name="role-based-access-control-rbac"></a>基于角色的访问控制 (RBAC)
 
-[管理员可以使用预定义的角色定义适用于 Azure IoT Central 应用程序的访问规则](howto-administer.md)。 管理员可以通过为用户分配角色来决定用户可以访问的应用程序的具体区域。
+管理员可以使用预定义角色之一或通过创建自定义角色来为 Azure IoT Central 应用程序[定义访问规则](howto-manage-users-roles.md)。 角色确定用户有权访问的应用程序区域以及可执行的操作。
 
 ## <a name="security"></a>安全性
 
@@ -112,4 +173,4 @@ UI Shell 是一个现代的基于 HTML5 浏览器的应用程序，响应速度�
 
 ## <a name="next-steps"></a>后续步骤
 
-了解 Azure IoT Central 的体系结构后，建议接下来了解 Azure IoT Central 中的[设备连接](concepts-connectivity.md)。
+了解 Azure IoT Central 的体系结构后，建议接下来了解 Azure IoT Central 中的[设备连接](concepts-get-connected.md)。

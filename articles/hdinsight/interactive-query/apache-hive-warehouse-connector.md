@@ -8,12 +8,12 @@ ms.author: v-yiso
 ms.topic: conceptual
 origin.date: 10/08/2019
 ms.date: 03/02/2020
-ms.openlocfilehash: e197c538976396b37590d012303d5f974c2496e7
-ms.sourcegitcommit: 46fd4297641622c1984011eac4cb5a8f6f94e9f5
+ms.openlocfilehash: 0543b724494c15ea1588df72e2dd2894937024de
+ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77563428"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80343605"
 ---
 # <a name="integrate-apache-spark-and-apache-hive-with-the-hive-warehouse-connector"></a>将 Apache Spark 和 Apache Hive 与 Hive 仓库连接器相集成
 
@@ -55,17 +55,17 @@ Hive 仓库连接器支持的部分操作如下：
 
 #### <a name="from-your-interactive-query-cluster"></a>在交互式查询群集中
 
-1. 使用 `https://LLAPCLUSTERNAME.azurehdinsight.net` 导航到群集的 Apache Ambari 主页，其中的 `LLAPCLUSTERNAME` 是交互式查询群集的名称。
+1. 使用 `https://LLAPCLUSTERNAME.azurehdinsight.cn/#/main/services/HIVE/configs` 导航到群集的 Apache Ambari Hive 页，其中 `LLAPCLUSTERNAME` 是 Interactive Query 群集的名称。
 
-1. 导航到“Hive”   >   “CONFIGS” >   “高级” >   “高级 hive-site” > **hive.zookeeper.quorum**，然后记下该值。 该值可能类似于 `zk0-iqgiro.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.cloudapp.net:2181,zk1-iqgiro.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.cloudapp.net:2181,zk4-iqgiro.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.cloudapp.net:2181`。
+1. 导航到“高级”   > “常规”   > “hive.metastore.uris”  ，然后记下该值。 该值可能类似于 `thrift://iqgiro.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.chinacloudapp.cn:9083,thrift://hn1-iqgiro.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.chinacloudapp.cn:9083`。
 
-1. 导航到“Hive”   >   “CONFIGS” >   “高级” >   “常规” > **hive.metastore.uris**，然后记下该值。 该值可能类似于 `thrift://iqgiro.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.chinacloudapp.cn:9083,thrift://hn1-iqgiro.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.chinacloudapp.cn:9083`。
+1. 导航到“高级”   > “高级 hive-site”   > “hive.zookeeper.quorum”  ，然后记下该值。 该值可能类似于 `zk0-iqgiro.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.chinacloudapp.cn:2181,zk1-iqgiro.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.chinacloudapp.cn:2181,zk4-iqgiro.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.chinacloudapp.cn:2181`。
 
 #### <a name="from-your-apache-spark-cluster"></a>在 Apache Spark 群集中
 
-1. 使用 `https://SPARKCLUSTERNAME.azurehdinsight.cn` 导航到群集的 Apache Ambari 主页，其中的 `SPARKCLUSTERNAME` 是 Apache Spark 群集的名称。
+1. 使用 `https://SPARKCLUSTERNAME.azurehdinsight.net/#/main/services/HIVE/configs` 导航到群集的 Apache Ambari Hive 页，其中 `SPARKCLUSTERNAME` 是 Apache Spark 群集的名称。
 
-1. 导航到“Hive”   >   “CONFIGS” >   “高级” >   “高级 hive-interactive-site” > **hive.llap.daemon.service.hosts**，然后记下该值。 该值可能类似于 `@llap0`。
+1. 导航到“高级”   > “高级 hive-interactive-site”   > “hive.llap.daemon.service.hosts”  ，然后记下该值。 该值可能类似于 `@llap0`。
 
 ### <a name="configure-spark-cluster-settings"></a>配置 Spark 群集设置
 

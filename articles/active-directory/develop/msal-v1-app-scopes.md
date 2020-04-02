@@ -2,23 +2,22 @@
 title: v1.0 应用的范围 (MSAL) | Azure
 description: 了解使用 Microsoft 身份验证库 (MSAL) 的 v1.0 应用程序的范围。
 services: active-directory
-author: TylerMSFT
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 01/06/2020
+ms.date: 03/20/2020
 ms.author: v-junlch
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: c462d91d73ce288d3dbf933714af56deda978929
-ms.sourcegitcommit: 1bc154c816a5dff47ee051c431cd94826e57aa60
+ms.openlocfilehash: e1a3b9b51d33b5451307f44c55ea1daf49f5f552
+ms.sourcegitcommit: 6568c59433d7e80ab06e9fe76d4791f761ed6775
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75776969"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80243147"
 ---
 # <a name="scopes-for-a-web-api-accepting-v10-tokens"></a>接受 v1.0 令牌中的 Web API 的范围
 
@@ -26,7 +25,7 @@ OAuth2 权限是适用于开发人员的 Azure Active Directory (Azure AD) (v1.0
 
 ## <a name="scopes-to-request-access-to-specific-oauth2-permissions-of-a-v10-application"></a>将请求访问权限范围限定为 v1.0 应用程序的特定 OAuth2 权限
 
-若要获取 v1.0 应用程序（例如 Azure AD Graph，网址为 https://graph.chinacloudapi.cn) ）的特定范围的令牌，请将所需资源标识符与该资源的所需 OAuth2 权限相连接以创建范围。
+若要获取 v1.0 应用程序（例如 Microsoft Graph API，网址为 https://microsoftgraph.chinacloudapi.cn) 的特定范围的令牌，请将所需资源标识符与该资源所需的 OAuth2 权限进行连接以创建范围。
 
 例如，若要以用户的身份访问应用 ID URI 为 `ResourceId` 的 v1.0 Web API，请执行以下操作：
 
@@ -38,15 +37,15 @@ var scopes = new [] {  ResourceId+"/user_impersonation"};
 var scopes = [ ResourceId + "/user_impersonation"];
 ```
 
-若要使用 Azure AD Graph API (https:\//graph.chinacloudapi.cn/) 通过 MSAL.NET Azure AD 进行读取和写入，需按以下示例所示创建范围列表：
+若要使用 Microsoft Graph API (https:\//microsoftgraph.chinacloudapi.cn/) 通过 MSAL.NET Azure AD 进行读取和写入，需按以下示例所示创建范围列表：
 
 ```csharp
-string ResourceId = "https://graph.chinacloudapi.cn/";
+string ResourceId = "https://microsoftgraph.chinacloudapi.cn/";
 var scopes = new [] { ResourceId + "Directory.Read", ResourceID + "Directory.Write"}
 ```
 
 ```javascript
-var ResourceId = "https://graph.chinacloudapi.cn/";
+var ResourceId = "https://microsoftgraph.chinacloudapi.cn/";
 var scopes = [ ResourceId + "Directory.Read", ResourceID + "Directory.Write"];
 ```
 

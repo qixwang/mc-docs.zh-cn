@@ -12,14 +12,16 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: reference
 ms.date: 11/16/2016
-ms.openlocfilehash: 79b8afeed284606781f96035f0eb8ba71b6b86c9
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+ms.openlocfilehash: f9898aacbb9b421e97b91fa0f1bfe785d17dd46a
+ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75598228"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80343320"
 ---
 # <a name="azure-machine-learning-studio-classic-rest-api-error-codes"></a>Azure 机器学习工作室（经典）REST API 错误代码
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
  
 在 Azure 机器学习工作室（经典）Web 服务中执行操作时，可能会返回以下错误代码。
  
@@ -27,7 +29,7 @@ ms.locfileid: "75598228"
  
 提供的参数无效。
  
-出现此类错误表示某处提供的参数无效。 这可能是某个对象传递给 Web 服务的凭据或 Azure 存储位置。 请查看“details”节中的错误“code”字段，诊断是哪个具体的参数无效。
+出现此类错误表示某处提供的参数无效。 这可能是某个对象传递给 Web 服务的凭据或 Azure 存储位置。 请查看“details”节中的错误“code”字段，诊断是哪个具体参数无效。
  
 | 错误代码 | 用户消息 |
 | ---------- |--------------|

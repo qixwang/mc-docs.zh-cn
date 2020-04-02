@@ -10,18 +10,18 @@ ms.topic: conceptual
 author: WenJason
 ms.author: v-jay
 ms.reviewer: jrasnik, carlrab
-origin.date: 12/19/2018
-ms.date: 03/16/2020
-ms.openlocfilehash: a4a83fbc732932032b3442e9d39db77f2c4433ee
-ms.sourcegitcommit: dc862610e2169c1fce6fb0ae9eb7dd7567f86a0a
+origin.date: 03/10/2020
+ms.date: 03/30/2020
+ms.openlocfilehash: a5b1055a1cdb0b4ead3d6283993a413cca747faa
+ms.sourcegitcommit: 90660563b5d65731a64c099b32fb9ec0ce2c51c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79293700"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80341822"
 ---
 # <a name="use-the-intelligent-insights-azure-sql-database-performance-diagnostics-log"></a>使用 Intelligent Insights Azure SQL 数据库性能诊断日志
 
-本页提供有关如何使用 [Intelligent Insights](sql-database-intelligent-insights.md) 生成的 Azure SQL 数据库性能诊断日志、它的格式和它为满足自定义开发需求所包含的数据的信息。 可将此诊断日志发送到 [Azure 事件中心](../azure-monitor/platform/resource-logs-stream-event-hubs.md)、[Azure 存储](sql-database-metrics-diag-logging.md#stream-diagnostic-telemetry-into-azure-storage)或第三方解决方案，用于自定义 DevOps 警报和报告功能。
+本页提供有关如何使用 [Intelligent Insights](sql-database-intelligent-insights.md) 生成的 Azure SQL 数据库性能诊断日志、它的格式和它为满足自定义开发需求所包含的数据的信息。 可将此诊断日志发送到 [Azure 事件中心](../azure-monitor/platform/resource-logs-stream-event-hubs.md)、[Azure 存储](sql-database-metrics-diag-logging.md#stream-into-azure-storage)或第三方解决方案，用于自定义 DevOps 警报和报告功能。
 
 ## <a name="log-header"></a>日志标头
 
@@ -48,8 +48,8 @@ ms.locfileid: "79293700"
 ```json
 "intervalStartTime_t": "2017-9-25 11:00", // start of the issue reported time stamp
 "intervalEndTme_t":"2017-9-25 12:00", // end of the issue reported time stamp
-"elasticPoolName_s" : "", // resource elastic pool (if applicable) 
-"databaseName_s" : "db_name",  // database name
+"elasticPoolName_s" : "", // resource elastic pool (if applicable)
+"databaseName_s" : "db_name", // database name
 "issueId_d" : 1525, // unique ID of the issue detected
 "status_s" : "Active" // status of the issue - possible values: "Active", "Verifying", and "Complete"
 ```
@@ -65,7 +65,7 @@ Intelligent Insights 性能日志的下一部分包括通过内置人工智能�
 "impact" : 1 to 3, // impact of the issue detected, possible values 1-3 (1 low, 2 moderate, 3 high impact)
 "category" : "Detectable performance pattern", // performance issue detected, see the table
 "details": <Details outputted> // details of an issue (see the table)
-}] 
+}]
 ```
 
 下表提供了输出到诊断日志的可检测性能模式和详细信息。
@@ -106,7 +106,7 @@ Intelligent Insights 日志的下一部分提供关于受检测到的性能问�
 
 ```json
 "impact" : [{
-"entity" : { 
+"entity" : {
 "Type" : "Query", // type of entity - query
 "Value" : "query hash value", // for example "0x9102EXZ4" query hash value },
 "Metric" : "DurationIncreaseSeconds", // measured metric and the measurement unit (in this case seconds)
@@ -136,9 +136,7 @@ Intelligent Insights 性能日志的最后部分是对已确定的性能下降�
 ```
 
 ## <a name="next-steps"></a>后续步骤
+
 - 了解有关 [Intelligent Insights](sql-database-intelligent-insights.md) 的概念。
 - 了解如何[使用 Intelligent Insights 解决 Azure SQL 数据库性能问题](sql-database-intelligent-insights-troubleshoot-performance.md)。
 - 了解如何[从 Azure 资源收集和使用日志数据](/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)。
-
-
-

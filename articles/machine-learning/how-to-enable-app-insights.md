@@ -9,19 +9,23 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 ms.author: v-yiso
 author: peterclu
-origin.date: 11/12/2019
+origin.date: 03/12/2020
 ms.date: 03/16/2020
-ms.openlocfilehash: 4899c4cf96f46b45cf49abb27c04665107a311d2
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.openlocfilehash: b4e1e53ab5ab58e1091b03ec95c3b28bc041cc1a
+ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78850596"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80343390"
 ---
 # <a name="monitor-and-collect-data-from-ml-web-service-endpoints"></a>监视机器学习 Web 服务终结点以及从中收集数据
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-在本文中，你将了解如何通过启用 Azure Application Insights，监视部署到 Azure Kubernetes 服务 (AKS) 或 Azure 容器实例 (ACI) 中 Web 服务终结点的模型以及从中收集数据。 除了收集终结点的输入数据和响应之外，还可以监视：
+本文介绍如何通过以下方式启用 Azure Application Insights，监视部署到 Azure Kubernetes 服务 (AKS) 或 Azure 容器实例 (ACI) 中 Web 服务终结点的模型以及从中收集数据： 
+* [Azure 机器学习 Python SDK](#python)
+* [Azure 机器学习工作室](#studio) (https://ml.azure.com )
+
+除了收集终结点的输出数据和响应之外，还可以监视：
 
 * 请求速率、响应时间和失败率
 * 依赖项速率、响应时间和失败率
@@ -43,6 +47,7 @@ ms.locfileid: "78850596"
 > Azure Application Insights 仅记录最多 64kb 的有效负载。 如果达到此限制，则只会记录模型的最新输出。 
 
 元数据和对服务的响应（对应于 Web 服务元数据和模型的预测）记录到消息 `"model_data_collection"` 下的 Azure Application Insights 跟踪中。 你可以直接查询 Azure Application Insights 来访问此数据，或者设置到存储帐户的[连续导出](/azure-monitor/app/export-telemetry)以保留更长时间或进一步进行处理。 然后，可以在 Azure 机器学习中使用模型数据来设置标签、重新训练、可解释性、数据分析或其他用途。 
+<a name="python"></a>
 
 ## <a name="use-python-sdk-to-configure"></a>使用 Python SDK 进行配置 
 
@@ -87,6 +92,22 @@ ms.locfileid: "78850596"
 <service_name>.update(enable_app_insights=False)
 ```
 
+<a name="studio"></a>
+
+## <a name="use-azure-machine-learning-studio-to-configure"></a>使用 Azure 机器学习工作室配置
+
+当你准备好按照以下步骤部署模型时，还可以从 Azure 机器学习工作室启用 Azure Application Insights。
+
+1. 登录到你的工作区 (https://ml.azure.com/ )
+1. 转到“模型”  并选择要部署的模型
+1. 选择“+部署” 
+1. 填充“部署模型”窗体 
+1. 展开“高级”菜单 
+
+    ![“部署”窗体](./media/how-to-enable-app-insights/deploy-form.png)
+1. 选择“启用 Application Insights 诊断和数据收集” 
+
+    ![启用 App Insights](./media/how-to-enable-app-insights/enable-app-insights.png)
 ## <a name="evaluate-data"></a>评估数据
 服务的数据将存储在 Azure Application Insights 帐户中，此帐户与 Azure 机器学习位于同一资源组。
 查看数据：

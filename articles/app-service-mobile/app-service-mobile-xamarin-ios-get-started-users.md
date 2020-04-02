@@ -1,6 +1,6 @@
 ---
 title: Xamarin iOS 中的身份验证入门
-description: 了解如何使用移动应用通过标识提供者（如 AAD、Google、Facebook、Twitter 和 Microsoft）对 Xamarin iOS 应用的用户进行身份验证。
+description: 了解如何使用移动应用通过标识提供者（如 AAD 和 Microsoft）对 Xamarin iOS 应用的用户进行身份验证。
 ms.assetid: 180cc61b-19c5-48bf-a16c-7181aef3eacc
 ms.tgt_pltfrm: mobile-xamarin-ios
 ms.devlang: dotnet
@@ -8,12 +8,12 @@ ms.topic: article
 orgin.date: 06/25/2019
 md.date: 03/23/2020
 ms.author: v-tawe
-ms.openlocfilehash: 10e404a1fa75163d96017bbf2469d316c707b96e
-ms.sourcegitcommit: e94ed1c9eff4e88be2ca389909e60b14cc0d92f8
+ms.openlocfilehash: f52d47088054c63aae516997db89dccf08a9fb65
+ms.sourcegitcommit: b2f2bb08ab1b5ccb3c596d84b3b6ddca5bba3903
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79084497"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80151726"
 ---
 # <a name="add-authentication-to-your-xamarinios-app"></a>向 Xamarin.iOS 应用添加身份验证
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]

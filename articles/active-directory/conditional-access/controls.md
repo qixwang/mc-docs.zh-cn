@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: article
-ms.date: 03/10/2020
+ms.date: 03/23/2020
 ms.author: v-junlch
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e0fcf634801c8a758a7e8620b9d7c8ee86d2f1a8
-ms.sourcegitcommit: 4ba6d7c8bed5398f37eb37cf5e2acafcdcc28791
+ms.openlocfilehash: 0da0fc13012838e2bf6397d0b090545a6e862e3c
+ms.sourcegitcommit: 6568c59433d7e80ab06e9fe76d4791f761ed6775
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2020
-ms.locfileid: "79134172"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80243168"
 ---
 # <a name="custom-controls-preview"></a>自定义控件（预览版）
 
@@ -65,24 +65,9 @@ ms.locfileid: "79134172"
 
 若要编辑自定义控件，必须删除当前控件，然后使用更新的信息创建新控件。
 
-## <a name="session-controls"></a>会话控制
-
-通过会话控制，可以限制云应用程序中的体验。 会话控制由云应用强制实施，取决于由 Azure AD 提供给应用的有关会话的其他信息。
-
-![控制](./media/controls/31.png)
-
-### <a name="use-app-enforced-restrictions"></a>使用应用所强制实施的限制
-
-可以使用此控制要求 Azure AD 将设备信息传递给所选云应用。 设备信息使云应用能够知道连接是从兼容设备还是已加入域设备发起的。 此控制仅支持将 SharePoint Online 和 Exchange Online 作为选定的云应用。 选择后，云应用会使用设备信息为用户提供有限或完整的体验，具体取决于设备状态。
-
-若要了解更多信息，请参阅以下文章：
-
-- [使用 SharePoint Online 启用受限访问](https://aka.ms/spolimitedaccessdocs)
-- [使用 Exchange Online 启用受限访问](https://aka.ms/owalimitedaccess)
-
 ## <a name="next-steps"></a>后续步骤
 
-- 若要了解如何配置条件访问策略，请参阅[通过 Azure Active Directory 条件访问要求特定应用必须使用 MFA](app-based-mfa.md)。
-- 如果已准备好针对环境配置条件访问策略，请参阅 [Azure Active Directory 中条件访问的最佳做法](best-practices.md)。
+- [条件访问常见策略](concept-conditional-access-policy-common.md)
 
-<!-- Update_Description: wording update -->
+- [使用条件访问 What If 工具模拟登录行为](troubleshoot-conditional-access-what-if.md)
+

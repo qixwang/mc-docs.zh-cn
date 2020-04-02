@@ -1,6 +1,6 @@
 ---
 title: 在 Apache Cordova 中添加身份验证
-description: 了解如何使用 Azure 应用服务中的移动应用通过标识提供者（如 Google、Facebook、Twitter 和 Microsoft）对 Apache Cordova 应用的用户进行身份验证。
+description: 了解如何使用 Azure 应用服务中的移动应用通过标识提供者（如 Microsoft）对 Apache Cordova 应用的用户进行身份验证。
 ms.assetid: 10dd6dc9-ddf5-423d-8205-00ad74929f0d
 ms.tgt_pltfrm: mobile-html
 ms.devlang: javascript
@@ -8,12 +8,12 @@ ms.topic: article
 origin.date: 06/25/2019
 md.date: 03/23/2020
 ms.author: v-tawe
-ms.openlocfilehash: 8f61da4f006b86bb293b65000a51c6b5e81312a7
-ms.sourcegitcommit: e94ed1c9eff4e88be2ca389909e60b14cc0d92f8
+ms.openlocfilehash: 172927735e386fbcc40bf5a058a399c00251c570
+ms.sourcegitcommit: b2f2bb08ab1b5ccb3c596d84b3b6ddca5bba3903
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79084422"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80151746"
 ---
 # <a name="add-authentication-to-your-apache-cordova-app"></a>将身份验证添加到 Apache Cordova 应用
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
@@ -21,12 +21,12 @@ ms.locfileid: "79084422"
 ## <a name="summary"></a>摘要
 本教程介绍如何使用支持的标识提供者将身份验证添加到 Apache Cordova 上的待办事项列表快速入门项目。 本教程基于 [Get started with Mobile Apps] （移动应用入门）教程，必须先完成该教程。
 
-## <a name="register"></a>注册应用以进行身份验证并配置应用服务
+## <a name="register-your-app-for-authentication-and-configure-the-app-service"></a><a name="register"></a>注册应用以进行身份验证并配置应用服务
 [!INCLUDE [app-service-mobile-register-authentication](../../includes/app-service-mobile-register-authentication.md)]
 
 
 
-## <a name="permissions"></a>将权限限制给已经过身份验证的用户
+## <a name="restrict-permissions-to-authenticated-users"></a><a name="permissions"></a>将权限限制给已经过身份验证的用户
 [!INCLUDE [app-service-mobile-restrict-permissions-dotnet-backend](../../includes/app-service-mobile-restrict-permissions-dotnet-backend.md)]
 
 现在，可以验证是否已禁用对后端的匿名访问。 在 Visual Studio 中：
@@ -37,7 +37,7 @@ ms.locfileid: "79084422"
 
 接下来，请更新应用，以便在从移动应用后端请求资源之前对用户进行身份验证。
 
-## <a name="add-authentication"></a>向应用程序添加身份验证
+## <a name="add-authentication-to-the-app"></a><a name="add-authentication"></a>向应用程序添加身份验证
 1. 在 **Visual Studio** 中打开项目，然后打开 `www/index.html` 文件进行编辑。
 2. 找到 head 节中的 `Content-Security-Policy` 元标记。  将 OAuth 主机添加到允许的源列表。
 
@@ -48,37 +48,34 @@ ms.locfileid: "79084422"
 
     下面显示了 Content-Security-Policy（针对 Azure Active Directory 实现）的示例：
 
-    ```
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'
-        data: gap: https://login.chinacloudapi.cn https://yourapp.chinacloudsites.cn; style-src 'self'">
-    ```
+        <meta http-equiv="Content-Security-Policy" content="default-src 'self'
+            data: gap: https://login.chinacloudapi.cn https://yourapp.chinacloudsites.cn; style-src 'self'">
 
     将 `https://login.chinacloudapi.cn` 替换为上表中的 OAuth 主机。  有关 content-security-policy 元标记的详细信息，请参阅 [Content-Security-Policy 文档]。
 
+    在相应的移动设备上使用时，某些身份验证提供程序不需要 Content-Security-Policy 更改。
 
 3. 打开 `www/js/index.js` 文件进行编辑，找到 `onDeviceReady()` 方法，然后在客户端创建代码下添加以下代码：
 
-    ```
-    // Login to the service
-    client.login('SDK_Provider_Name')
-        .then(function () {
+        // Login to the service
+        client.login('SDK_Provider_Name')
+            .then(function () {
 
-            // BEGINNING OF ORIGINAL CODE
+                // BEGINNING OF ORIGINAL CODE
 
-            // Create a table reference
-            todoItemTable = client.getTable('todoitem');
+                // Create a table reference
+                todoItemTable = client.getTable('todoitem');
 
-            // Refresh the todoItems
-            refreshDisplay();
+                // Refresh the todoItems
+                refreshDisplay();
 
-            // Wire up the UI Event Handler for the Add Item
-            $('#add-item').submit(addItemHandler);
-            $('#refresh').on('click', refreshDisplay);
+                // Wire up the UI Event Handler for the Add Item
+                $('#add-item').submit(addItemHandler);
+                $('#refresh').on('click', refreshDisplay);
 
-            // END OF ORIGINAL CODE
+                // END OF ORIGINAL CODE
 
-        }, handleError);
-    ```
+            }, handleError);
 
     此代码替换用于创建表引用和刷新 UI 的现有代码。
 
@@ -87,7 +84,7 @@ ms.locfileid: "79084422"
 4. 在刚刚添加的代码中，将 `SDK_Provider_Name` 替换为登录提供程序的名称。 例如，对于 Azure Active Directory，请使用 `client.login('aad')`。
 5. 运行项目。  项目完成初始化后，应用程序针对所选的身份验证提供程序显示 OAuth 登录页。
 
-## <a name="next-steps"></a>后续步骤
+## <a name="next-steps"></a><a name="next-steps"></a>后续步骤
 * 了解 [有关 Azure 应用服务身份验证] 的详细信息。
 
 了解如何使用 SDK。

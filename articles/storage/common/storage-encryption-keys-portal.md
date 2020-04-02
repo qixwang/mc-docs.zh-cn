@@ -6,17 +6,17 @@ services: storage
 author: WenJason
 ms.service: storage
 ms.topic: how-to
-origin.date: 12/04/2019
-ms.date: 02/10/2020
+origin.date: 01/02/2020
+ms.date: 03/30/2020
 ms.author: v-jay
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 0f2fe0a739f09147e02436c5f58bee868675ff0b
-ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
+ms.openlocfilehash: 4e3e26ff909130a881aa137524b857ab9673e0f4
+ms.sourcegitcommit: 90d01d08faf8adb20083363a8e4e5aab139cd9b2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77028634"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80290393"
 ---
 # <a name="configure-customer-managed-keys-with-azure-key-vault-by-using-the-azure-portal"></a>通过 Azure 门户使用 Azure Key Vault 配置客户管理的密钥
 
@@ -95,7 +95,7 @@ Azure 存储加密仅支持大小为 2048 的 RSA 密钥。 有关密钥的详�
 
 ## <a name="disable-customer-managed-keys"></a>禁用客户托管密钥
 
-禁用客户托管密钥后，将使用 Microsoft 托管密钥对存储帐户加密。 若要禁用客户托管密钥，请执行以下步骤：
+禁用客户托管密钥时，将再次使用 Microsoft 托管密钥对存储帐户进行加密。 若要禁用客户托管密钥，请执行以下步骤：
 
 1. 导航到你的存储帐户，并显示“加密”设置。 
 1. 取消选中“使用自己的密钥”设置旁边的复选框。 

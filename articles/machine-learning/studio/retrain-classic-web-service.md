@@ -10,14 +10,16 @@ author: peterclu
 ms.author: amlstudiodocs
 ms.custom: seodec18, previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 02/14/2019
-ms.openlocfilehash: 739f36b17c9558c12899b66798d0d19d1b92e9b5
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+ms.openlocfilehash: 8008764ed3ac70a78d4c2bfd5153e775bc0e158c
+ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75598308"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80343355"
 ---
 # <a name="retrain-and-deploy-a-classic-studio-classic-web-service"></a>重新训练和部署经典工作室（经典）Web 服务
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 重新训练机器学习模型是确保它们保持准确并基于最相关的数据的一种方法。 本文介绍如何重新训练经典工作室（经典）Web 服务。 有关如何重新训练新的工作室（经典）Web 服务的指南，请[查看此操作指南文章](retrain-machine-learning-model.md)。
 
@@ -52,19 +54,6 @@ ms.locfileid: "75598308"
 ## <a name="update-the-added-endpoints-trained-model"></a>更新已添加终结点的训练模型
 
 ### <a name="retrieve-patch-url"></a>检索修补程序 URL
-
-### <a name="option-1-programmatically"></a>选项 1：以编程方式
-
-要以编程方式获取正确的修补程序 URL，请按照下列步骤操作：
-
-1. 运行 [AddEndpoint](https://github.com/raymondlaghaeian/AML_EndpointMgmt/blob/master/Program.cs) 示例代码。
-1. 从 AddEndpoint 的输出中，查找 *HelpLocation* 值并复制 URL。
-
-   ![addEndpoint 的输出中的 HelpLocation 示例。](./media/retrain-classic/addEndpoint-output.png)
-1. 将 URL 粘贴到浏览器中，以导航到提供 Web 服务帮助链接的页面。
-1. 单击“更新资源”  链接，打开修补程序帮助页面。
-
-### <a name="option-2-use-the-azure-machine-learning-web-services-portal"></a>选项 2：使用 Azure 机器学习 Web 服务门户
 
 请按照以下步骤使用 Web 门户获取正确的修补程序 URL：
 
@@ -101,8 +90,8 @@ ms.locfileid: "75598308"
                     Location = new AzureBlobDataReference()
                     {
                         BaseLocation = "https://esintussouthsus.blob.core.windows.net/",
-                        RelativeLocation = "your endpoint relative location", //from the output, for example: “experimentoutput/8946abfd-79d6-4438-89a9-3e5d109183/8946abfd-79d6-4438-89a9-3e5d109183.ilearner”
-                        SasBlobToken = "your endpoint SAS blob token" //from the output, for example: “?sv=2013-08-15&sr=c&sig=37lTTfngRwxCcf94%3D&st=2015-01-30T22%3A53%3A06Z&se=2015-01-31T22%3A58%3A06Z&sp=rl”
+                        RelativeLocation = "your endpoint relative location", //from the output, for example: "experimentoutput/8946abfd-79d6-4438-89a9-3e5d109183/8946abfd-79d6-4438-89a9-3e5d109183.ilearner"
+                        SasBlobToken = "your endpoint SAS blob token" //from the output, for example: "?sv=2013-08-15&sr=c&sig=37lTTfngRwxCcf94%3D&st=2015-01-30T22%3A53%3A06Z&se=2015-01-31T22%3A58%3A06Z&sp=rl"
                     }
                 }
             }

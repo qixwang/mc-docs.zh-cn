@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 02/24/2020
+ms.date: 03/20/2020
 ms.author: v-junlch
 ms.reviewer: jmprieur
 ms.custom: aaddev, seoapril2019
-ms.openlocfilehash: 29f6133f1e629fc643652290858a6c42296827b2
-ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
+ms.openlocfilehash: 775328844af003841616e92c6d80d6f3a1c2ffe8
+ms.sourcegitcommit: 6568c59433d7e80ab06e9fe76d4791f761ed6775
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77653309"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80243161"
 ---
 # <a name="integrating-with-azure-active-directory"></a>与 Azure Active Directory 集成
 
@@ -38,13 +38,13 @@ ms.locfileid: "77653309"
 
 ### <a name="browse-for-users-manage-user-provisioning-and-control-access-to-your-application"></a>浏览用户，管理用户预配，以及控制对应用程序的访问
 
-**浏览目录中的用户。**  在邀请其他人或授予访问权限时，可以使用图形 API 来帮助用户搜索和浏览其组织中的其他人员，而无需键入电子邮件地址。 用户可以使用熟悉的通讯簿样式界面进行浏览，包括查看组织层次结构的详细信息。 深入了解[图形 API](active-directory-graph-api.md)。
+**浏览目录中的用户。**  在邀请其他人或授予访问权限时，可以使用 Microsoft Graph API 来帮助用户搜索和浏览其组织中的其他人员，而无需用户键入电子邮件地址。 用户可以使用熟悉的通讯簿样式界面进行浏览，包括查看组织层次结构的详细信息。 详细了解 [Microsoft Graph API](https://docs.microsoft.com/graph/overview)。
 
-**重复使用客户正在管理的 Active Directory 组和通讯组列表。**  Azure AD 包含客户已用于电子邮件分发和管理访问权限的组。 使用图形 API 时，可以重复使用这些组，而无需要求客户在应用程序中创建并管理一系列不同的组。 还可以在登录令牌中向应用程序发送组信息。 了解有关 [图形 API](active-directory-graph-api.md)的详细信息。
+**重复使用客户正在管理的 Active Directory 组和通讯组列表。**  Azure AD 包含客户已用于电子邮件分发和管理访问权限的组。 使用 Microsoft Graph API 时，可以重复使用这些组，而无需要求客户在应用程序中创建并管理一系列不同的组。 还可以在登录令牌中向应用程序发送组信息。 详细了解 [Microsoft Graph API](https://docs.microsoft.com/graph/overview)。
 
-**使用 Azure AD 控制谁有权访问应用程序。**  Azure AD 中的管理员和应用程序所有者可以将应用程序访问权限分配给特定的用户和组。 使用图形 API，可以读取此列表并使用它来控制资源的设置和取消设置，以及应用程序中的访问权限。
+**使用 Azure AD 控制谁有权访问应用程序。**  Azure AD 中的管理员和应用程序所有者可以将应用程序访问权限分配给特定的用户和组。 使用 Microsoft Graph API，可以读取此列表并使用它来控制资源的预配和取消预配，以及应用程序中的访问权限。
 
-**使用 Azure AD 进行基于角色的访问控制。**  管理员和应用程序所有者可以向你在 Azure AD 中注册应用程序时定义的角色分配用户和组。 角色信息会在登录令牌中发送到应用程序，并可使用图形 API 来读取。 了解有关 [使用 Azure AD 进行授权](https://cloudblogs.microsoft.com/enterprisemobility/2014/12/18/azure-active-directory-now-with-group-claims-and-application-roles/)的详细信息。
+**使用 Azure AD 进行基于角色的访问控制。**  管理员和应用程序所有者可以向你在 Azure AD 中注册应用程序时定义的角色分配用户和组。 角色信息会在登录令牌中发送到应用程序，并可使用 Microsoft Graph API 来读取。 了解有关 [使用 Azure AD 进行授权](https://cloudblogs.microsoft.com/enterprisemobility/2014/12/18/azure-active-directory-now-with-group-claims-and-application-roles/)的详细信息。
 
 ### <a name="get-access-to-users-profile-calendar-email-contacts-files-and-more"></a>获取对用户配置文件、日历、电子邮件、联系人、文件等的访问权限
 
@@ -52,7 +52,7 @@ ms.locfileid: "77653309"
 
 ### <a name="promote-your-application-in-the-azure-and-office-365-marketplaces"></a>在 Azure 和 Office 365 市场中推广你的应用程序
 
-**向数百万个已在使用 Azure AD 的组织推广应用程序。**  搜索和浏览这些市场的用户已在使用一个或多个云服务，这让他们成为合格的云服务客户。 深入了解如何在 [Azure 市场](https://azure.microsoft.com/marketplace/partner-program/)中推广应用程序。
+**向数百万个已在使用 Azure AD 的组织推广应用程序。**  搜索和浏览这些市场的用户已在使用一个或多个云服务，这让他们成为合格的云服务客户。 详细了解如何在 Azure 市场中促销应用程序。
 
 **用户注册应用程序后，该程序会在其 Azure AD 访问面板和 Office 365 应用启动器中显示。**  之后，用户能够快速轻松地返回应用程序，提高了用户参与度。  
 
@@ -92,4 +92,4 @@ ms.locfileid: "77653309"
 
 [使用 Microsoft 标识平台将用户登录](authentication-scenarios.md)
 
-<!-- Update_Description: link update -->
+

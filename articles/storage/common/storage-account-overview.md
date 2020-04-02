@@ -7,15 +7,15 @@ author: WenJason
 ms.service: storage
 ms.topic: conceptual
 origin.date: 01/17/2020
-ms.date: 03/09/2020
+ms.date: 03/30/2020
 ms.author: v-jay
 ms.subservice: common
-ms.openlocfilehash: 777d705b0e68d230a0fa9e4e4f30104db1d644c4
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: 44fc3796ef96cefaf6d41784634ffbdc31f9d838
+ms.sourcegitcommit: 90d01d08faf8adb20083363a8e4e5aab139cd9b2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79291488"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80290340"
 ---
 # <a name="storage-account-overview"></a>存储帐户概述
 
@@ -95,7 +95,7 @@ Azure 存储提供不同的选项，适用于根据使用模型访问块 Blob �
 
 - **热**访问层。 此层已优化，适合频繁访问存储帐户中的对象。 访问热层中的数据最经济高效，但存储费用较高。 新的存储帐户默认在热层中创建。
 - **冷**访问层。 此层已优化，适合存储大量不常访问且存储时间至少为 30 天的数据。 将数据存储在冷层中更经济高效，但与访问热层中的数据相比，访问该数据的费用可能较高。
-- **存档**层。 此层仅适用于单个块 blob 和追加 blob。 存档层已优化，适合可以容忍数小时的检索延迟且会保留在存档层至少 180 天的数据。 存档层是最经济高效的数据存储选项。 但是，访问这些数据的开销比访问热层或冷层中的数据要高。
+- **存档**层。 此层仅适用于单个块 Blob。 存档层已针对可以容忍数小时的检索延迟且会保留在存档层至少 180 天的数据进行优化。 存档层是最经济高效的数据存储选项。 但是，访问这些数据的开销比访问热层或冷层中的数据要高。
 
 如果数据的使用模式有所更改，可以随时在这些访问层之间切换。 有关访问层的详细信息，请参阅 [Azure Blob 存储：热、冷和存档访问层](../blobs/storage-blob-storage-tiers.md)。
 

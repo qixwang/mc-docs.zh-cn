@@ -2,20 +2,16 @@
 title: Azure 自动化 Linux 混合 Runbook 辅助角色
 description: 本文介绍如何安装 Azure 自动化混合 Runbook 辅助角色，以便在本地数据中心或云环境的基于 Linux 的计算机上运行 Runbook。
 services: automation
-ms.service: automation
 ms.subservice: process-automation
-author: WenJason
-ms.author: v-jay
-origin.date: 06/28/2018
-ms.date: 12/02/2019
+origin.date: 03/02/2020
+ms.date: 03/30/2020
 ms.topic: conceptual
-manager: digimobile
-ms.openlocfilehash: cebb2ac7249d0690d89870ba00243433f8dd659b
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: 09c96510ce8823d4226cf56dc5482fdcaaf51a8f
+ms.sourcegitcommit: 90d01d08faf8adb20083363a8e4e5aab139cd9b2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79292376"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80290351"
 ---
 # <a name="deploy-a-linux-hybrid-runbook-worker"></a>部署 Linux 混合 Runbook 辅助角色
 
@@ -32,7 +28,7 @@ ms.locfileid: "79292376"
 * Oracle Linux 5、6 和 7 (x86/x64)
 * Red Hat Enterprise Linux Server 5、6 和 7 (x86/x64)
 * Debian GNU/Linux 6、7 和 8 (x86/x64)
-* Ubuntu 12.04 LTS、14.04 LTS 和 16.04 LTS (x86/x64)
+* Ubuntu 12.04 LTS、14.04 LTS、16.04 LTS 和 18.04 (x86/x64)
 * SUSE Linux Enterprise Server 11 和 12 (x86/x64)
 
 ## <a name="installing-a-linux-hybrid-runbook-worker"></a>安装 Linux 混合 Runbook 辅助角色

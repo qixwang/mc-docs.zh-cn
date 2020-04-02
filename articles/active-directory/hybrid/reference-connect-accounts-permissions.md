@@ -13,17 +13,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-origin.date: 10/03/2019
-ms.date: 11/13/2019
+ms.date: 03/24/2020
 ms.subservice: hybrid
 ms.author: v-junlch
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 089dbe2083de00c9586bb8b511b6c75ae49dc6a9
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: 4c1b5c2d7cbc9cfaf9aa74c92f3eb7b3e532de4b
+ms.sourcegitcommit: 6568c59433d7e80ab06e9fe76d4791f761ed6775
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79290978"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80243057"
 ---
 # <a name="azure-ad-connect-accounts-and-permissions"></a>Azure AD Connect：帐户和权限
 
@@ -57,7 +56,6 @@ Azure AD Connect 使用 3 个帐户，将信息从本地或 Windows Server Activ
 > 支持从 ESAE 管理林（也称为“红林”）管理 Azure AD Connect 中使用的管理帐户。
 > 专用管理林允许组织在具有比生产环境更强的安全控制的环境中托管管理帐户、工作站和组。
 > 若要详细了解专用管理林，请参阅 [ESAE 管理林设计方法](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material#esae-administrative-forest-design-approach)
->>>>>>> e683a61b0ed62ae739941410f658a127534e2481
 
 > [!NOTE]
 > 初始设置后不需要全局管理员角色，唯一需要的帐户将是“目录同步帐户”  角色帐户。 这并不意味着你只需要删除具有全局管理员角色的帐户。 最好将角色更改为功能较弱的角色，因为如果需要再次运行向导，完全删除帐户可能会带来问题。 减小角色的权限后，如果你需要再次利用 Azure AD Connect 向导，则始终可以重新提升权限。 
@@ -94,6 +92,7 @@ AD DS 企业管理员帐户用于配置本地 Active Directory。 这些凭据�
 | 读取/写入所有 iNetOrgPerson 属性 |导入和执行 Exchange 混合部署 |
 | 读取/写入所有组属性 |导入和执行 Exchange 混合部署 |
 | 读取/写入所有联系人属性 |导入和执行 Exchange 混合部署 |
+| 重置密码 |准备启用密码写回 |
 
 ### <a name="express-installation-wizard-summary"></a>快速安装向导摘要
 
@@ -103,7 +102,7 @@ AD DS 企业管理员帐户用于配置本地 Active Directory。 这些凭据�
 
 | 向导页 | 收集的凭据 | 所需的权限 | 用途 |
 | --- | --- | --- | --- |
-| 不适用 |运行安装向导的用户 |本地服务器的管理员 |<li>创建用于运行同步服务的 ADSync 服务帐户。 |
+| 空值 |运行安装向导的用户 |本地服务器的管理员 |<li>创建用于运行同步服务的 ADSync 服务帐户。 |
 | 连接到 Azure AD |Azure AD 目录凭据 |Azure AD 中的全局管理员角色 |<li>在 Azure AD 目录中启用同步。</li>  <li>创建在 Azure AD 中用于持续同步操作的 Azure AD 连接器帐户。</li> |
 | 连接到 AD DS |本地 Active Directory 凭据 |Active Directory 中企业管理员 (EA) 组的成员 |<li>在 Active Directory 中创建 AD DS 连接器帐户并向其授予权限。 同步期间，所创建的该帐户用于读取和写入目录信息。</li> |
 
@@ -148,6 +147,7 @@ AD DS 企业管理员帐户用于配置本地 Active Directory。 这些凭据�
 | 密码哈希同步 |<li>复制目录更改</li>  <li>复制所有目录更改 |
 | Exchange 混合部署 |针对用户、组和联系人的属性的写入权限，详见[Exchange 混合写回](reference-connect-sync-attributes-synchronized.md#exchange-hybrid-writeback)。 |
 | Exchange 邮件公共文件夹 |对 [Exchange 邮件公共文件夹](reference-connect-sync-attributes-synchronized.md#exchange-mail-public-folder)中所述的公共文件夹属性的读取权限。 | 
+| 密码写回 |[密码管理入门](../authentication/howto-sspr-writeback.md) 中叙述了对用户的属性的写入权限。 |
 
 ## <a name="upgrade"></a>升级
 从 Azure AD Connect 的一个版本升级到新版本时，需要拥有以下权限：

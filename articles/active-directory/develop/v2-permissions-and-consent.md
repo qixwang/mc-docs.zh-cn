@@ -13,16 +13,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/25/2020
+ms.date: 03/23/2020
 ms.author: v-junlch
 ms.reviewer: hirsin, jesakowi, jmprieur
 ms.custom: fasttrack-edit
-ms.openlocfilehash: f53a03c5a3b73397834ad63143c69cc393210a39
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: fc144853ab0907b9a0f47fd0670e92d141197895
+ms.sourcegitcommit: 6568c59433d7e80ab06e9fe76d4791f761ed6775
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79291021"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80243066"
 ---
 # <a name="permissions-and-consent-in-the-microsoft-identity-platform-endpoint"></a>Microsoft 标识平台终结点中的权限和许可
 
@@ -37,11 +37,10 @@ Microsoft 标识平台实现 [OAuth 2.0](active-directory-v2-protocols.md) 授�
 
 * Microsoft Graph： `https://microsoftgraph.chinacloudapi.cn`
 * Office 365 邮件 API：`https://outlook.office.com`
-* Azure AD Graph：`https://graph.chinacloudapi.cn`
 * Azure Key Vault：`https://vault.azure.cn`
 
 > [!NOTE]
-> 我们强烈建议使用 Microsoft Graph，而不要使用 Azure AD Graph、Office 365 邮件 API 等。
+> 我们强烈建议你使用 Microsoft Graph，而不要使用 Office 365 邮件 API 等。
 
 这同样适用于已与 Microsoft 标识平台集成的任何第三方资源。 以上任意资源还可以定义一组可用于将该资源的功能划分成较小区块的权限。 例如， [Microsoft Graph](https://microsoftgraph.chinacloudapi.cn) 已定义执行以下任务及其他任务所需的权限：
 
@@ -123,7 +122,7 @@ https%3A%2F%2Fmicrosoftgraph.chinacloudapi.cn%2Fmail.send
 在用户输入其凭据之后，Microsoft 标识平台终结点将检查是否有匹配的 *用户许可*记录。 如果用户未曾许可所请求权限的任何一项，并且管理员尚未代表整个组织许可这些权限，则 Microsoft 标识平台终结点将请求用户授予请求的权限。
 
 > [!NOTE]
-> 在此期间，`offline_access`（“维持对已授予访问权限的数据的访问”）和 `user.read`（“登录并读取配置文件”）权限将自动包含在对应用程序的初始许可中。  这些权限通常是应用功能正常所必需 - `offline_access` 授予应用对刷新令牌（对本机和 Web 应用十分重要）的访问权限，而 `user.read` 授予对 `sub` 声明的访问权限，允许客户端或应用随时间推移正确标识用户并访问基本用户信息。  
+>在此期间，`offline_access`（“维持对已授予访问权限的数据的访问”）和 `user.read`（“登录并读取配置文件”）权限将自动包含在对应用程序的初始许可中。  这些权限通常是应用功能正常所必需 - `offline_access` 授予应用对刷新令牌（对本机和 Web 应用十分重要）的访问权限，而 `user.read` 授予对 `sub` 声明的访问权限，允许客户端或应用随时间推移正确标识用户并访问基本用户信息。  
 
 ![显示工作帐户同意的示例屏幕截图](./media/v2-permissions-and-consent/work_account_consent.png)
 
@@ -169,18 +168,18 @@ https%3A%2F%2Fmicrosoftgraph.chinacloudapi.cn%2Fmail.send
 应用程序可以在门户中记下它们需要的权限（委托的权限和应用程序权限）。  这样，便可以使用 `/.default` 范围和 Azure 门户的“授予管理员许可”选项。  通常，最佳做法是确保为给定应用程序静态定义的权限是它动态/增量请求的权限的超集。
 
 > [!NOTE]
-只能使用 [`/.default`](#the-default-scope) 来请求应用程序权限 - 因此，如果应用需要应用程序权限，请确保这些权限已在应用注册门户中列出。  
+>只能使用 [`/.default`](#the-default-scope) 来请求应用程序权限 - 因此，如果应用需要应用程序权限，请确保这些权限已在应用注册门户中列出。
 
 #### <a name="to-configure-the-list-of-statically-requested-permissions-for-an-application"></a>配置应用程序的静态请求权限列表
 
 1. 在 [Azure 门户 - 应用注册](https://portal.azure.cn/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredAppsPreview)体验中转到你的应用程序，或[创建一个应用](quickstart-register-app.md)（如果尚未创建）。
 2. 找到“API 权限”部分  ，然后在“API 权限”中单击“添加权限”。
-3. 从可用 API 列表中选择首选的资源（例如“Microsoft Graph”），然后添加应用所需的权限。 
+3. 从可用 API 列表中选择 **Microsoft Graph**，然后添加应用所需的权限。
 3. **保存** 应用注册。
 
 ### <a name="recommended-sign-the-user-into-your-app"></a>建议：让用户登录到应用
 
-在构建使用管理员许可终结点的应用程序时，应用通常需要一个页面或视图，使管理员能够批准应用的权限。 此页面可以是应用注册流的一部分、应用设置的一部分，或者专用的“连接”流。 在许多情况下，合理的结果是只有在用户使用工作或学校帐户登录后，应用才显示此“连接”视图。
+在构建使用管理员许可终结点的应用程序时，应用通常需要一个页面或视图，使管理员能够批准应用的权限。 此页面可以是应用注册流的一部分、应用设置的一部分，或者专用的“连接”流。 在许多情况下，合理的结果是应用只在用户使用工作或学校 Microsoft 帐户登录之后才显示此“连接”视图。
 
 将用户登录到应用后，便可识别管理员所属的组织，然后要求他们批准必要的权限。 尽管在严格意义上不需要这样做，但这有助于为组织用户带来更直观的体验。 若要将用户登录，请遵循 [Microsoft 标识平台协议教程](active-directory-v2-protocols.md)。
 
@@ -265,7 +264,7 @@ Content-Type: application/json
 
 ## <a name="the-default-scope"></a>/.default 范围
 
-可以使用 `/.default` 范围，帮助将应用从 v1.0 终结点迁移到 Microsoft 标识平台终结点。 这是每个引用应用程序注册时配置的权限静态列表的应用程序的内置范围。 值为 `scope` 的 `https://microsoftgraph.chinacloudapi.cn/.default` 从功能上与 v1.0 终结点 `resource=https://microsoftgraph.chinacloudapi.cn` 相同 - 也就是说，它请求具有 Microsoft Graph 上的范围的令牌，应用程序在 Azure 门户中已注册 Microsoft Graph。  它是使用资源 URI + `/.default` 构造的（例如，如果资源 URI 为 `https://contosoApp.com`，则请求的范围为 `https://contosoApp.com/.default`）。  如果必须包含另一个斜杠，请参阅[有关尾部斜杠的部分](#trailing-slash-and-default)，以正确请求令牌。  
+可以使用 `/.default` 范围，帮助将应用从 v1.0 终结点迁移到 Microsoft 标识平台终结点。 这是每个引用应用程序注册时配置的权限静态列表的应用程序的内置范围。 值为 `scope` 的 `https://microsoftgraph.chinacloudapi.cn/.default` 从功能上与 v1.0 终结点 `resource=https://microsoftgraph.chinacloudapi.cn` 相同 - 也就是说，它请求具有 Microsoft Graph 上的范围的令牌，应用程序在 Azure 门户中已注册 Microsoft Graph。  它是使用资源 URI + `/.default` 构造的（例如，如果资源 URI 为 `https://contosoApp.com`，则请求的范围为 `https://contosoApp.com/.default`）。  如果必须包含另一个斜杠，请参阅[有关尾部斜杠的部分](#trailing-slash-and-default)，以正确请求令牌。
 
 可在任何 OAuth 2.0 流中使用 /.default 范围，但在[代理流](v2-oauth2-on-behalf-of-flow.md)和[客户端凭据流](v2-oauth2-client-creds-grant-flow.md)中，以及在使用 v2 管理员许可终结点请求应用程序权限时，必须使用该范围。  
 
@@ -286,7 +285,7 @@ Content-Type: application/json
 
 #### <a name="example-2-the-user-hasnt-granted-permissions-between-the-client-and-the-resource"></a>示例 2：用户在客户端和资源之间未授予权限
 
-在此示例中，客户端和 Microsoft Graph 之间不存在任何用户许可。 客户端已针对 `user.read` 和 `contacts.read` 权限，以及 Azure Key Vault 范围`https://vault.azure.cn/user_impersonation`注册。 当客户端请求用于 `scope=https://microsoftgraph.chinacloudapi.cn/.default` 的令牌时，用户将看到用于 `user.read`、`contacts.read`和 Key Vault `user_impersonation` 范围的许可屏幕。 返回的令牌仅包含 `user.read` 和 `contacts.read` 范围，仅对 Microsoft Graph 可用。 
+在此示例中，客户端和 Microsoft Graph 之间不存在任何用户许可。 客户端已针对 `user.read` 和 `contacts.read` 权限，以及 Azure Key Vault 范围`https://vault.azure.cn/user_impersonation`注册。 当客户端请求用于 `scope=https://microsoftgraph.chinacloudapi.cn/.default` 的令牌时，用户将看到用于 `user.read`、`contacts.read`和 Key Vault `user_impersonation` 范围的许可屏幕。 返回的令牌仅包含 `user.read` 和 `contacts.read` 范围，仅对 Microsoft Graph 可用。
 
 #### <a name="example-3-the-user-has-consented-and-the-client-requests-additional-scopes"></a>示例 3：用户已同意且客户端请求了其他范围
 
@@ -313,7 +312,7 @@ response_type=token            //code or a hybrid flow is also possible here
 
 某些资源 URI 包含尾部斜杠（`https://contoso.com/` 而不是 `https://contoso.com`），这可能导致验证令牌时出现问题。  这种情况主要发生在请求 Azure 资源管理 (`https://management.chinacloudapi.cn/`) 的令牌时。资源管理的资源 URI 包含一个尾部斜杠，请求令牌时需要提供此斜杠。  因此，在请求 `https://management.chinacloudapi.cn/` 的令牌和使用 `/.default` 时，必须请求 `https://management.chinacloudapi.cn//.default` - 注意双斜杠！ 
 
-一般情况下，如果已验证令牌正在颁发，但应该接受该令牌的 API 却拒绝了它，请考虑添加另一个斜杠并重试。 之所以出现这种情况，是因为登录服务器发出的令牌包含与 `scope` 参数中的 URI 匹配的受众，并删除了末尾的 `/.default`。  如果删除了尾部斜杠，则登录服务器仍会处理请求，并根据资源 URI 对其进行验证，即使 URI 不再匹配 - 这是非标准的验证，应用程序不应依赖这种验证。 
+一般情况下，如果已验证令牌正在颁发，但应该接受该令牌的 API 却拒绝了它，请考虑添加另一个斜杠并重试。 之所以出现这种情况，是因为登录服务器发出的令牌包含与 `scope` 参数中的 URI 匹配的受众，并删除了末尾的 `/.default`。  如果删除了尾部斜杠，则登录服务器仍会处理请求，并根据资源 URI 对其进行验证，即使 URI 不再匹配 - 这是非标准的验证，应用程序不应依赖这种验证。  
 
 ## <a name="troubleshooting-permissions-and-consent"></a>权限和许可故障排除
 

@@ -9,17 +9,16 @@ ms.reviewer: darora10
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-origin.date: 03/21/2019
-ms.date: 07/04/2019
+ms.date: 03/24/2020
 ms.subservice: hybrid
 ms.author: v-junlch
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c46d9e6003b5c942950fabce20bbd8b39dd75073
-ms.sourcegitcommit: 5f85d6fe825db38579684ee1b621d19b22eeff57
+ms.openlocfilehash: 9791c89ba70326716bd9ab54a29cf71c544b9c67
+ms.sourcegitcommit: 6568c59433d7e80ab06e9fe76d4791f761ed6775
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67568646"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80243065"
 ---
 # <a name="fix-modified-default-rules-in-azure-ad-connect"></a>在 Azure AD Connect 中修复已修改的默认规则
 
@@ -51,8 +50,7 @@ Azure Active Directory (Azure AD) Connect 使用默认规则进行同步。  遗
 更改任何规则之前：
 
 - 禁用同步计划程序。 默认情况下，计划程序每隔 30 分钟运行一次。 进行更改以及排查新规则错误时，需要确保其未启动。 若要暂时禁用计划程序，请启动 PowerShell 并运行 `Set-ADSyncScheduler -SyncCycleEnabled $false`。
-
-     ![用于禁用同步计划程序的 PowerShell 命令](./media/how-to-connect-fix-default-rules/default3.png)
+ ![用于禁用同步计划程序的 PowerShell 命令](./media/how-to-connect-fix-default-rules/default3.png)
 
 - 更改范围筛选器可能会导致删除目标目录中的对象。 在对对象范围进行任何更改之前请保持谨慎。 我们建议先对暂存服务器进行更改，然后再对活动服务器进行更改。
 - 添加任何新规则之后，请根据[验证同步规则](#validate-sync-rule)部分所述，对单个对象运行预览。
@@ -75,7 +73,7 @@ Azure Active Directory (Azure AD) Connect 使用默认规则进行同步。  遗
 #### <a name="add-an-inbound-sync-rule"></a>添加入站同步规则
 入站同步规则表示属性的源是连接器空间，目标是 Metaverse。 例如，若要将本地 Active Directory 中的某个新属性流送到 Azure Active Directory，请创建一个新的入站同步规则。 启动“同步规则编辑器”，选择“入站”作为方向，然后选择“添加新规则”。    
 
- !同步规则编辑器](./media/how-to-connect-fix-default-rules/default3a.png)
+ ![同步规则编辑器](./media/how-to-connect-fix-default-rules/default3a.png)
 
 遵循自己的命名约定为规则命名。 此处我们使用了“Custom In from AD - User”。  这表示该规则是自定义规则，并且是从 Active Directory 连接器空间到 Metaverse 的入站规则。   
 

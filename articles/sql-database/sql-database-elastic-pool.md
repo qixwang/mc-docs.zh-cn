@@ -1,5 +1,5 @@
 ---
-title: 管理多个具有弹性池的 SQL 数据库 - Azure | Microsoft 文档
+title: 使用弹性池管理多个数据库
 description: 使用弹性池管理和缩放多个 SQL 数据库（成千上万的）。 可以按一个价格将资源分布到需要的任何位置。
 services: sql-database
 ms.service: sql-database
@@ -11,13 +11,13 @@ author: WenJason
 ms.author: v-jay
 ms.reviewer: ninarn, carlrab
 origin.date: 08/06/2019
-ms.date: 09/30/2019
-ms.openlocfilehash: 6896b3118b363c00e3aaecebb9f01e435fb1f371
-ms.sourcegitcommit: 5c3d7acb4bae02c370f6ba4d9096b68ecdd520dd
+ms.date: 03/30/2020
+ms.openlocfilehash: 1d41319b51fb0e00ad69fe51f6b49b82f595b64f
+ms.sourcegitcommit: 90660563b5d65731a64c099b32fb9ec0ce2c51c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71262964"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80341832"
 ---
 # <a name="elastic-pools-help-you-manage-and-scale-multiple-azure-sql-databases"></a>弹性池有助于管理和缩放多个 Azure SQL 数据库
 
@@ -25,7 +25,7 @@ SQL 数据库弹性池是一种简单且经济高效的解决方案，用于管�
 
 ## <a name="what-are-sql-elastic-pools"></a>什么是 SQL 弹性池
 
-SaaS 开发人员构建在由多个数据库组成的大规模数据层上的应用程序。 常见的应用程序模式是为每位客户设置单一数据库。 但不同的客户通常拥有不同和不可预测的使用模式，很难预测每位数据库用户的资源需求。 传统上，有两个选择：
+SaaS 开发人员构建在由多个数据库组成的大规模数据层上的应用程序。 常见的应用程序模式是为每位客户设置单一数据库。 但不同的客户通常有不同的和不可预测的使用模式，并且很难预测每个数据库用户的资源需求。 传统上，有两个选择：
 
 - 基于高峰使用情况和付款情况过度预配资源或
 - 采用低配节省成本，但这样会牺牲高峰期的性能和客户满意度。
@@ -44,7 +44,7 @@ SaaS 开发人员构建在由多个数据库组成的大规模数据层上的应
 
 池很适合具有特定使用模式的大量数据库。 对于给定的数据库，此模式的特征是低平均使用量与相对不频繁的使用高峰。
 
-可以加入池的数据库越多，就可以节省更多的成本。 具体取决于应用程序使用模式，可能会看到与使用两个 S3 数据库相同的成本节约。
+可以加入池的数据库越多，就可以节省更多的成本。 可能只需两个 S3 数据库就可以节省开支，具体取决于应用程序使用模式。
 
 以下各部分有助于了解如何评估特定的数据库集合是否会因使用池而受益。 这些示例使用标准池，但同样的原理也适用于基本和高级池。
 
@@ -70,7 +70,7 @@ SaaS 开发人员构建在由多个数据库组成的大规模数据层上的应
 
 - 每一数据库之间的高峰使用量和平均使用量有相当大的差异。
 - 每个数据库的高峰使用量在不同时间点发生。
-- eDTU 在多个数据库之间共享。
+- eDTU 会在多个数据库之间共享。
 
 池的价格取决于池的 eDTU。 尽管池的 eDTU 单位价格比单一数据库的 DTU 单位价格多 1.5 倍，但 **池 eDTU 可由多个数据库共享，因而所需的 eDTU 总数更少**。 定价方面和 eDTU 共享的这些差异是池可以提供成本节省可能性的基础。
 

@@ -13,24 +13,26 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/06/2020
+ms.date: 03/23/2020
 ms.author: v-junlch
 ms.custom: aaddev, identityplatformtop40
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3783a0bd6ea600610dad6a0509f428ebc7f3a7cb
-ms.sourcegitcommit: 1bc154c816a5dff47ee051c431cd94826e57aa60
+ms.openlocfilehash: f73e6d7439029d4f37217c2ec920cb9176829877
+ms.sourcegitcommit: 6568c59433d7e80ab06e9fe76d4791f761ed6775
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75777034"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80243098"
 ---
 # <a name="add-sign-in-to-microsoft-to-an-aspnet-web-app"></a>向 ASP.NET Web 应用添加 Microsoft 登录功能
 
 本指南演示如何使用基于传统 Web 浏览器的应用程序和 OpenID Connect，通过 ASP.NET MVC 解决方案实现 Microsoft 登录。
 
-完成本指南的操作后，应用程序能够接受通过任何公司或组织的工作和学校帐户登录。
+完成本指南后，你的应用程序将能够接受来自与 Microsoft 标识平台集成的任何公司或组织的工作和学校帐户的登录，并且这些帐户将能够登录到你的应用。
 
 > 本指南需要 Microsoft Visual Studio 2019。  尚未安装？  [免费下载 Visual Studio 2019](https://www.visualstudio.com/downloads/)。
+
+>[!NOTE]
+> 如果你不熟悉 Microsoft 标识平台，我们建议你从[将 Microsoft 标识平台登录添加到 ASP.NET Web 应用](quickstart-v2-aspnet-webapp.md)开始。
 
 ## <a name="how-the-sample-app-generated-by-this-guide-works"></a>本指南生成的示例应用的工作原理
 
@@ -74,7 +76,7 @@ ms.locfileid: "75777034"
 
 <!--start-collapse-->
 > ### <a name="about-these-libraries"></a>关于这些库
-> 完成身份验证后，代表用户的令牌会发送到应用程序，OWIN 中间件会创建会话 Cookie。 浏览器随后对后续请求使用此 Cookie，这样一来，用户就无需重新键入密码，也不需要任何其他验证。
+> 这些库通过基于 Cookie 的身份验证使用 OpenID Connect 启用单一登录 (SSO)。 完成身份验证后，代表用户的令牌会发送到应用程序，OWIN 中间件会创建会话 Cookie。 浏览器随后对后续请求使用此 Cookie，这样一来，用户就无需重新键入密码，也不需要任何其他验证。
 <!--end-collapse-->
 
 ## <a name="configure-the-authentication-pipeline"></a>配置身份验证管道

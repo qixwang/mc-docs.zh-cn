@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: big-data
-origin.date: 04/04/2019
-ms.date: 10/21/2019
+origin.date: 03/04/2020
+ms.date: 04/06/2020
 ms.author: v-yiso
-ms.openlocfilehash: 3863fb6fb6c9bff0a60e1098014a20b076bd1990
-ms.sourcegitcommit: b83f604eb98a4b696b0a3ef3db2435f6bf99f411
+ms.openlocfilehash: 299d1c439eb10c99e540014a6bb0c5f5283d6bd0
+ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/12/2019
-ms.locfileid: "72292379"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80343555"
 ---
 # <a name="connect-hdinsight-to-your-on-premises-network"></a>将 HDInsight 连接到本地网络
 
@@ -48,7 +48,7 @@ ms.locfileid: "72292379"
 
 * 将完全限定的域名（其中包含虚拟网络的 DNS 后缀）的请求转发到自定义 DNS 服务器。  自定义 DNS 服务器然后会将这些请求转发到 Azure 递归解析程序，由后者返回 IP 地址。
 
-* 将所有其他请求转发到本地 DNS 服务器。 甚至对公共 Internet 资源（如 microsoft.com）的请求也将因名称解析转发至本地 DNS 服务器。
+* 将所有其他请求转发到本地 DNS 服务器。 甚至会将对公共 Internet 资源（例如 microsoft.com）的请求转发到本地 DNS 服务器进行名称解析。
 
 在下面的关系图中，绿线表示以虚拟网络的 DNS 后缀结尾的资源请求。 蓝线表示本地网络或公共 Internet 上的资源请求。
 
@@ -77,9 +77,11 @@ ms.locfileid: "72292379"
 
 1. 登录到 [Azure 门户](https://portal.azure.cn)。
   
-2. 在左侧菜单中，导航到“+创建资源”   > “计算”   > “Ubuntu Server 18.04 LTS”  。
+1. 在顶部菜单中，选择“+ 创建资源”  。
 
-    ![创建 Ubuntu 虚拟机](./media/connect-on-premises-network/create-ubuntu-virtual-machine.png)
+    ![创建 Ubuntu 虚拟机](./media/connect-on-premises-network/azure-portal-create-resource.png)
+
+1. 选择“计算”   > “虚拟机”  ，以转到“创建虚拟机”  页。
 
 3. 在“基本信息”选项卡中输入以下信息：   
   
@@ -252,7 +254,7 @@ ms.locfileid: "72292379"
 
 4. 选择“自定义”，然后输入自定义 DNS 服务器的专用 IP 地址   。   
 
-5. 选择__保存__。  <br />  
+5. 选择“保存”  。  <br />  
 
     ![设置网络的自定义 DNS 服务器](./media/connect-on-premises-network/configure-custom-dns.png)
 

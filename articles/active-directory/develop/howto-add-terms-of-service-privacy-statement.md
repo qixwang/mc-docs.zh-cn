@@ -2,28 +2,22 @@
 title: 应用的服务条款和隐私声明 | Azure
 description: 了解如何为注册为使用 Azure AD 的应用配置服务条款和隐私声明。
 services: active-directory
-documentationcenter: dev-center-name
 author: rwike77
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
-origin.date: 05/22/2019
-ms.date: 08/23/2019
+ms.date: 03/20/2020
 ms.author: v-junlch
 ms.reviwer: lenalepa, sureshja
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: db2b30bd44b8c487b09e36f7cfc96dd1d5b588a9
-ms.sourcegitcommit: 599d651afb83026938d1cfe828e9679a9a0fb69f
+ms.openlocfilehash: 5a0b21f6e2a14b72e44d5f49c00391b6cdc9f2a2
+ms.sourcegitcommit: 6568c59433d7e80ab06e9fe76d4791f761ed6775
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69993220"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80243156"
 ---
 # <a name="how-to-configure-terms-of-service-and-privacy-statement-for-an-app"></a>如何：配置应用的服务条款和隐私声明
 
@@ -59,9 +53,9 @@ ms.locfileid: "69993220"
 
 * [通过 Azure 门户 添加](#azure-portal)
 * [使用应用对象 JSON](#app-object-json)
-* [使用 MSGraph beta REST API](#msgraph-beta-rest-api)
+* [使用 Microsoft Graph API](#msgraph-rest-api)
 
-### <a name="azure-portal"></a>使用 Azure 门户
+### <a name="using-the-azure-portal"></a><a name="azure-portal"></a>使用 Azure 门户
 在 Azure 门户中执行以下步骤。
 
 1. 登录到 [Azure 门户](https://portal.azure.cn/)。
@@ -72,7 +66,7 @@ ms.locfileid: "69993220"
 
     ![应用属性包含服务条款和隐私声明 URL](./media/howto-add-terms-of-service-privacy-statement/azure-portal-terms-service-privacy-statement-urls.png)
 
-### <a name="app-object-json"></a>使用应用对象 JSON
+### <a name="using-the-app-object-json"></a><a name="app-object-json"></a>使用应用对象 JSON
 
 如果想要直接修改应用对象 JSON，可以使用 Azure 门户中的清单编辑器来包含指向应用的服务条款和隐私声明的链接。
 
@@ -83,12 +77,12 @@ ms.locfileid: "69993220"
     }
 ```
 
-### <a name="msgraph-beta-rest-api"></a>使用 MSGraph beta REST API
+### <a name="using-the-microsoft-graph-api"></a><a name="msgraph-rest-api"></a>使用 Microsoft Graph API
 
-若要以编程方式更新所有应用，可以使用 MSGraph beta REST API 更新所有应用，以包含指向服务条款和隐私声明文档的链接。
+若要以编程方式更新所有应用，可以使用 Microsoft Graph API 更新所有应用，以包含指向服务条款和隐私声明文档的链接。
 
 ```
-PATCH https://microsoftgraph.chinacloudapi.cn/beta/applications/{application id}
+PATCH https://microsoftgraph.chinacloudapi.cn/v1.0/applications/{application id}
 { 
     "appId": "{your application id}", 
     "info": { 
@@ -103,6 +97,6 @@ PATCH https://microsoftgraph.chinacloudapi.cn/beta/applications/{application id}
 
 > [!NOTE]
 > * 请注意不要覆盖已分配给以下任何字段的任何预先存在的值：`supportUrl``marketingUrl` 和 `logoUrl`
-> * 仅当使用 Azure AD 帐户登录时，MSGraph beta REST API 才会正常工作。 
+> * 只有使用 Azure AD 帐户登录时，Microsoft Graph API 才起作用。
 
 <!-- Update_Description: wording update -->

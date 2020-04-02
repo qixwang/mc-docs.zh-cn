@@ -12,12 +12,12 @@ ms.topic: conceptual
 origin.date: 01/16/2020
 ms.date: 03/16/2020
 ms.custom: seodec18
-ms.openlocfilehash: 2ecd8b4ce45e39efbe2aabe973f103b195b25a29
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: cdd8758efdb158d6146ec73ff1da529279db5264
+ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79291509"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80343378"
 ---
 # <a name="set-up-and-use-compute-targets-for-model-training"></a>设置并使用模型训练的计算目标 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -55,9 +55,9 @@ Azure 机器学习为不同的计算目标提供不同的支持。 典型的模�
 
 ## <a name="whats-an-estimator"></a>什么是评估器？
 
-为了便于使用常用框架进行模型训练，Azure 机器学习 Python SDK 提供了另一种可选择的高级抽象：估算器类。  使用此类，你可以轻松地构造运行配置。 可以创建并使用通用[估算器](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator?view=azure-ml-py)来提交训练脚本，训练脚本可以使用你选择的任何学习框架（如 scikit-learn）。 建议使用估算器进行训练，因为它会自动构造嵌入对象（如环境或 RunConfiguration 对象）。 如果希望更好地控制如何创建这些对象并为试验运行指定要安装的包，请按照[这些步骤](#amlcompute)操作，使用 Azure 机器学习计算上的 RunConfiguration 对象提交训练试验。
+为了便于使用常用框架进行模型训练，Azure 机器学习 Python SDK 提供了另一种可选择的高级抽象：估算器类。  使用此类，你可以轻松地构造运行配置。 可以创建并使用泛型[估算器](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator?view=azure-ml-py)来提交使用所选任何学习框架（例如 scikit-learn）的训练脚本。 建议使用估算器进行训练，因为它会自动构造嵌入对象（如环境或 RunConfiguration 对象）。 如果希望更好地控制如何创建这些对象并为试验运行指定要安装的包，请按照[这些步骤](#amlcompute)操作，使用 Azure 机器学习计算上的 RunConfiguration 对象提交训练试验。
 
-对于 PyTorch、TensorFlow 和 Chainer 任务，Azure 机器学习还提供了相应的 [PyTorch](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py)、[TensorFlow](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py) 和 [Chainer](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py) 估算器，以简化这些框架的使用。
+对于 PyTorch、TensorFlow 和 Chainer 任务，Azure 机器学习还提供了相应的 [PyTorch](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py)、[TensorFlow](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py) 和 [Chainer](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py) 估算器，以便使用这些框架进行简化。
 
 有关详细信息，请参阅[使用估算器训练 ML 模型](how-to-train-ml-models.md)。
 
@@ -82,7 +82,7 @@ ML 管道不仅可以训练模型，还可以在训练之前准备数据并在�
 * [Azure HDInsight](#hdinsight)
 
 
-### <a id="local"></a>本地计算机
+### <a name="local-computer"></a><a id="local"></a>本地计算机
 
 1. **创建和附加**：无需创建或附加计算目标即可将本地计算机用作训练环境。  
 
@@ -100,7 +100,7 @@ run_local.environment.python.user_managed_dependencies = True
 
 附加计算并配置运行后，下一步是[提交训练运行](#submit)。
 
-### <a id="amlcompute"></a>Azure 机器学习计算
+### <a name="azure-machine-learning-compute"></a><a id="amlcompute"></a>Azure 机器学习计算
 
 Azure 机器学习计算是一个托管的计算基础结构，可让用户轻松创建单节点或多节点计算。 该计算是在工作区区域内部创建的，是可与工作区中的其他用户共享的资源。 提交作业时，计算会自动扩展，并可以放入 Azure 虚拟网络。 计算在容器化环境中执行，将模型的依赖项打包在 [Docker 容器](https://www.docker.com/why-docker)中。
 
@@ -141,7 +141,7 @@ Azure 机器学习计算对可以分配的核心数等属性实施默认限制�
 
 附加计算并配置运行后，下一步是[提交训练运行](#submit)。
 
-#### <a id="persistent"></a>持久性计算
+#### <a name="persistent-compute"></a><a id="persistent"></a>持久性计算
 
 可在不同的作业中重复使用持久性 Azure 机器学习计算。 计算可与工作区中的其他用户共享，完成每个作业后可以保留。
 
@@ -202,7 +202,7 @@ Azure 机器学习计算对可以分配的核心数等属性实施默认限制�
 附加计算并配置运行后，下一步是[提交训练运行](#submit)。
 
 
-### <a id="vm"></a>远程虚拟机
+### <a name="remote-virtual-machines"></a><a id="vm"></a>远程虚拟机
 
 Azure 机器学习还支持将自己的计算资源附加到工作区。 任意远程 VM（只要可从 Azure 机器学习访问）都是这种资源类型。 该资源可以是 Azure VM，也可以是组织内部或本地的远程服务器。 具体而言，在指定 IP 地址和凭据（用户名和密码，或 SSH 密钥）的情况下，可以使用任何可访问的 VM 进行远程运行。
 
@@ -222,7 +222,7 @@ Azure 机器学习还支持将自己的计算资源附加到工作区。 任意�
 
    # Create the compute config 
    compute_target_name = "attach-dsvm"
-   attach_config = RemoteCompute.attach_configuration(address = "<fqdn>",
+   attach_config = RemoteCompute.attach_configuration(address='<fqdn>',
                                                     ssh_port=22,
                                                     username='<username>',
                                                     password="<password>")
@@ -269,7 +269,7 @@ Azure 机器学习还支持将自己的计算资源附加到工作区。 任意�
 
 附加计算并配置运行后，下一步是[提交训练运行](#submit)。
 
-### <a id="hdinsight"></a>Azure HDInsight 
+### <a name="azure-hdinsight"></a><a id="hdinsight"></a>Azure HDInsight 
 
 Azure HDInsight 是用于大数据分析的热门平台。 该平台提供的 Apache Spark 可用于训练模型。
 
@@ -326,7 +326,7 @@ Azure HDInsight 是用于大数据分析的热门平台。 该平台提供的 Ap
 附加计算并配置运行后，下一步是[提交训练运行](#submit)。
 
 
-### <a id="azbatch"></a>Azure Batch 
+### <a name="azure-batch"></a><a id="azbatch"></a>Azure Batch 
 
 Azure Batch 用于在云中高效运行大规模并行高性能计算 (HPC) 应用程序。 可以在 Azure 机器学习管道中使用 AzureBatchStep 将作业提交到 Azure Batch 计算机池。
 
@@ -382,7 +382,7 @@ from azureml.core.compute import ComputeTarget
 myvm = ComputeTarget(workspace=ws, name='my-vm-name')
 ```
 
-### <a id="portal-view"></a>查看计算目标
+### <a name="view-compute-targets"></a><a id="portal-view"></a>查看计算目标
 
 
 若要查看工作区的计算目标，请使用以下步骤：
@@ -393,7 +393,7 @@ myvm = ComputeTarget(workspace=ws, name='my-vm-name')
 
     [![查看“计算”选项卡](./media/how-to-set-up-training-targets/azure-machine-learning-service-workspace.png)](./media/how-to-set-up-training-targets/azure-machine-learning-service-workspace-expanded.png)
 
-### <a id="portal-create"></a>创建计算目标
+### <a name="create-a-compute-target"></a><a id="portal-create"></a>创建计算目标
 
 遵循上述步骤查看计算目标的列表。 然后使用以下步骤创建计算目标： 
 
@@ -421,7 +421,7 @@ myvm = ComputeTarget(workspace=ws, name='my-vm-name')
 
     ![查看计算目标详细信息](./media/how-to-set-up-training-targets/compute-target-details.png) 
 
-### <a id="portal-reuse"></a>附加计算目标
+### <a name="attach-compute-targets"></a><a id="portal-reuse"></a>附加计算目标
 
 若要使用在 Azure 机器学习工作区外部创建的计算目标，必须附加这些计算目标。 附加计算目标会使其可供你的工作区使用。
 
@@ -464,7 +464,7 @@ myvm = ComputeTarget(workspace=ws, name='my-vm-name')
 
 可以使用适用于 Azure 机器学习的 [VS Code 扩展](tutorial-train-deploy-image-classification-model-vscode.md#configure-compute-targets)访问、创建和管理与工作区关联的计算目标。
 
-## <a id="submit"></a>使用 Azure 机器学习 SDK 提交训练运行
+## <a name="submit-training-run-using-azure-machine-learning-sdk"></a><a id="submit"></a>使用 Azure 机器学习 SDK 提交训练运行
 
 创建运行配置后，可以使用它来运行试验。  对于所有类型的计算目标，用于提交训练运行的代码模式都是相同的：
 

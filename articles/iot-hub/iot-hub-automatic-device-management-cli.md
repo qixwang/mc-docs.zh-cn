@@ -7,14 +7,14 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 origin.date: 12/13/2019
-ms.date: 01/13/2020
+ms.date: 04/06/2020
 ms.author: v-yiso
-ms.openlocfilehash: 79870046ae070f9154cc3d198c0fbd8550b2a5b3
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.openlocfilehash: bf9018f809f114af48651902638be1f39e0b8af8
+ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75630753"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80343583"
 ---
 # <a name="automatic-iot-device-and-module-management-using-the-azure-cli"></a>使用 Azure CLI 进行 IoT 设备和模块的自动管理
 
@@ -32,13 +32,17 @@ Azure IoT 中心的自动设备管理功能可自动完成许多复杂且重复�
 
 * **指标**定义各种配置状态（例如“成功”、“正在进行中”和“错误”）的摘要计数。    自定义指标指定为孪生报告的属性中的查询。  系统指标是度量孪生更新状态的默认指标，例如，针对的孪生数，以及已成功更新的孪生数。
 
-自动配置首次在配置创建后不久运行，然后每隔五分钟运行一次。 每次自动配置运行时，都会运行指标查询。
+自动配置在配置创建不久后就首次运行，然后每隔五分钟运行一次。 每次自动配置运行时，都会运行指标查询。
 
 ## <a name="cli-prerequisites"></a>CLI 先决条件
 
 * Azure 订阅中的 [IoT 中心](../iot-hub/iot-hub-create-using-cli.md)。 
-* 环境中的 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。 Azure CLI 版本必须至少是 2.0.24 或更高版本。 请使用 `az –-version` 验证版本。 此版本支持 az 扩展命令，并引入了 Knack 命令框架。 
-* [适用于 Azure CLI 的 IoT 扩展](https://github.com/Azure/azure-iot-cli-extension)。
+
+* 环境中的 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。 Azure CLI 版本必须至少是 2.0.70 或更高版本。 请使用 `az –-version` 验证版本。 此版本支持 az 扩展命令，并引入了 Knack 命令框架。 
+
+* [适用于 Azure CLI 的 IoT 扩展](https://github.com/Azure/azure-cli)。
+
+[!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 
 ## <a name="implement-twins"></a>实现孪生
 
@@ -46,7 +50,7 @@ Azure IoT 中心的自动设备管理功能可自动完成许多复杂且重复�
 
 自动模块配置需要使用模块孪生来同步云与模块之间的状态。 有关详细信息，请参阅[了解并在 IoT 中心内使用模块孪生](iot-hub-devguide-module-twins.md)。
 
-## <a name="use-tags-to-target-twins"></a>使用标记定位孪生
+## <a name="use-tags-to-target-twins"></a>使用标记设置孪生目标
 
 创建配置之前，必须指定想要影响的设备或模块。 Azure IoT 中心使用设备孪生中的标记来标识设备，使用模块孪生中的标记来标识模块。 每个设备或模块均可以拥有多个标记，你可以用适合解决方案的任何方式定义它们。 例如，在管理不同位置中的设备时，请将以下标记添加到设备孪生：
 

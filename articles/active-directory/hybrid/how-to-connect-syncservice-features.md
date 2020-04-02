@@ -12,17 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-origin.date: 06/25/2018
-ms.date: 04/09/2019
+ms.date: 03/24/2020
 ms.subservice: hybrid
 ms.author: v-junlch
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dca737c2c530903cfe44082a91d842bf51d10f7f
-ms.sourcegitcommit: 2836cce46ecb3a8473dfc0ad2c55b1c47d2f0fad
+ms.openlocfilehash: 91a6de1135c8461fda3ce6dd53e467cbda6b154a
+ms.sourcegitcommit: 6568c59433d7e80ab06e9fe76d4791f761ed6775
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59355866"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80243055"
 ---
 # <a name="azure-ad-connect-sync-service-features"></a>Azure AD Connect 同步服务功能
 
@@ -62,7 +61,7 @@ Azure AD Connect 的同步功能有两个组件：
 | [DuplicateProxyAddressResiliency<br/>DuplicateUPNResiliency](#duplicate-attribute-resiliency) |如果某个属性是另一个对象的副本而不会在导出期间导致整个对象失败，则允许隔离该属性。 |
 | 密码哈希同步 |[使用 Azure AD Connect 同步实现密码哈希同步](how-to-connect-password-hash-synchronization.md) |
 
-## 重复属性复原 <a name="duplicate-attribute-resiliency"></a>
+## <a name="duplicate-attribute-resiliency"></a>重复属性复原 <a name="duplicate-attribute-resiliency"></a>
 将重复属性“隔离”并分配临时值，而不是使预配包含重复 UPN/proxyAddress 的对象失败。 解决冲突后，临时 UPN 会自动更改为适当的值。 有关详细信息，请参阅[标识同步和重复属性复原](how-to-connect-syncservice-duplicate-attribute-resiliency.md)。
 
 ## <a name="userprincipalname-soft-match"></a>UserPrincipalName 软匹配
@@ -92,7 +91,7 @@ Set-MsolDirSyncFeature -Feature EnableSoftMatchOnUpn -Enable $true
 
 有关详细信息，请参阅 [Office 365、Azure 或 Intune 中的用户名与本地 UPN 或备用登录 ID 不匹配](https://support.microsoft.com/kb/2523192)。
 
-如果 userPrincipalName 在本地发生更改并且你使用密码哈希同步，则启用此功能后，同步引擎可将其更新。如果使用联合身份验证，此功能不受支持。
+如果 userPrincipalName 在本地发生更改并且你使用密码哈希同步，则启用此功能后，同步引擎可将其更新。
 
 在新建的 Azure AD 目录中，默认已打开此功能。 可以运行以下命令查看是否已启用此功能：  
 

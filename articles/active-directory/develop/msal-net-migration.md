@@ -9,17 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 01/06/2020
+ms.date: 03/20/2020
 ms.author: v-junlch
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 76220aaf46b9dde5d0b6a3f1342b785f63eb68c8
-ms.sourcegitcommit: 1bc154c816a5dff47ee051c431cd94826e57aa60
+ms.openlocfilehash: 0ca007546a31c3d25bd366fee8d9148e9cb950bc
+ms.sourcegitcommit: 6568c59433d7e80ab06e9fe76d4791f761ed6775
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75776987"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80243151"
 ---
 # <a name="migrating-applications-to-msalnet"></a>将应用程序迁移到 MSAL.NET
 
@@ -38,7 +37,7 @@ ms.locfileid: "75776987"
 
 在大多数情况下都可以使用 MSAL.NET 和 Microsoft 标识平台终结点，这是最新一代的 Microsoft 身份验证库。 使用 MSAL.NET 可以获取通过 Azure AD（工作和学校帐户）或 Azure AD B2C 登录到应用程序的用户的令牌。 
 
-如果你已熟悉面向开发人员的 Azure AD (v1.0) 终结点（和 ADAL.NET），请阅读[ Microsoft 标识平台 (v2.0) 终结点有何不同？](azure-ad-endpoint-comparison.md)
+如果你已熟悉面向开发人员的 Azure AD (v1.0) 终结点（和 ADAL.NET），请阅读[ Microsoft 标识平台 (v2.0) 终结点有何不同？](active-directory-v2-compare.md)
 
 但是，如果应用程序需要使用早期版本的 [Active Directory 联合身份验证服务 (ADFS)](https://docs.microsoft.com/windows-server/identity/active-directory-federation-services) 将用户登录，则你仍然需要使用 ADAL.NET。 有关详细信息，请参阅 [ADFS 支持](https://aka.ms/msal-net-adfs-support)。
 
@@ -166,7 +165,7 @@ OAuth2 权限是 v1.0 Web API（资源）应用程序向客户端应用程序公
 
 ### <a name="scopes-to-request-access-to-specific-oauth2-permissions-of-a-v10-application"></a>将请求访问权限范围限定为 v1.0 应用程序的特定 OAuth2 权限
 
-若要获取 v1.0 应用程序（例如 AAD Graph，网址为 https://graph.chinacloudapi.cn) 的特定范围的令牌，需要通过将所需资源标识符与该资源的所需 OAuth2 权限相连接，来创建 `scopes` 。
+若要获取接受 v1.0 令牌的应用程序（例如 Microsoft Graph API，网址为 https://microsoftgraph.chinacloudapi.cn) ）的令牌，则需要将所需的资源标识符与该资源所需的 OAuth2 权限进行连接以创建 `scopes` 。
 
 例如，若要以用户名访问应用 ID URI 为 `ResourceId` 的 v1.0 Web API，需要使用：
 
@@ -174,10 +173,10 @@ OAuth2 权限是 v1.0 Web API（资源）应用程序向客户端应用程序公
 var scopes = new [] {  ResourceId+"/user_impersonation"};
 ```
 
-若要使用 AAD Graph API (https://graph.chinacloudapi.cn/) 通过 MSAL.NET Azure Active Directory 进行读取和写入，需要按以下代码片段所示创建范围列表：
+若要使用 Microsoft Graph API (https://microsoftgraph.chinacloudapi.cn/) 通过 MSAL.NET Azure Active Directory 进行读取和写入，需要按以下代码片段所示创建范围列表：
 
 ```csharp
-ResourceId = "https://graph.chinacloudapi.cn/";
+ResourceId = "https://microsoftgraph.chinacloudapi.cn/";
 var scopes = new [] { ResourceId + "Directory.Read", ResourceID + "Directory.Write"}
 ```
 

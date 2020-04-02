@@ -8,13 +8,14 @@ ms.subservice: core
 ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
-ms.date: 10/22/2019
-ms.openlocfilehash: 2bb96bc282ba73b1806d4529a27cbab76479cb91
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+origin.date: 03/10/2020
+ms.date: 04/06/2020
+ms.openlocfilehash: 71524cec3fb081e0c167575c61c6ca0d034234b7
+ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75598790"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80343470"
 ---
 # <a name="execute-python-script-module"></a>“执行 Python 脚本”模块
 
@@ -75,7 +76,51 @@ import os
 os.system(f"pip install scikit-misc")
 ```
 
-## <a name="how-to-use"></a>如何使用
+## <a name="upload-files"></a>上传文件
+执行 Python 脚本  支持使用 [Azure 机器学习 Python SDK](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py#upload-file-name--path-or-stream-) 上传文件。
+
+以下示例演示如何在“执行 Python 脚本”  模块中上传映像文件：
+
+```Python
+
+# The script MUST contain a function named azureml_main
+# which is the entry point for this module.
+
+# imports up here can be used to
+import pandas as pd
+
+# The entry point function can contain up to two input arguments:
+#   Param<dataframe1>: a pandas.DataFrame
+#   Param<dataframe2>: a pandas.DataFrame
+def azureml_main(dataframe1 = None, dataframe2 = None):
+
+    # Execution logic goes here
+    print(f'Input pandas.DataFrame #1: {dataframe1}')
+
+    from matplotlib import pyplot as plt
+    plt.plot([1, 2, 3, 4])
+    plt.ylabel('some numbers')
+    img_file = "line.png"
+    plt.savefig(img_file)
+
+    from azureml.core import Run
+    run = Run.get_context(allow_offline=True)
+    run.upload_file(f"graphics/{img_file}", img_file)
+
+    # Return value must be of a sequence of pandas.DataFrame
+    # E.g.
+    #   -  Single return value: return dataframe1,
+    #   -  Two return values: return dataframe1, dataframe2
+    return dataframe1,
+}
+```
+
+成功提交管道后，可以在该模块的右窗格中预览映像
+
+[!div class="mx-imgBorder"]
+![已上传 - 映像](media/module/upload-image-in-python-script.png)
+
+## <a name="how-to-configure-execute-python-script"></a>如何配置“执行 Python 脚本”
 
 **执行 Python 脚本**模块包含可用作起点的示例 Python 代码。 若要配置**执行 Python 脚本**模块，请在“Python 脚本”  文本框中提供要执行的一组输入和 Python 代码。
 
@@ -91,7 +136,7 @@ os.system(f"pip install scikit-misc")
 
     ![执行 Python 输入映射](media/module/python-module.png)
 
-4. 若要包括新的 Python 包或代码，请在**脚本捆绑包**中添加包含这些自定义资源的压缩文件。 **脚本捆绑包**的输入必须是已上传到工作区的压缩文件。 
+4. 若要包括新的 Python 包或代码，请在脚本捆绑包  中添加包含这些自定义资源的压缩文件。 脚本捆绑包  的输入必须是作为文件类型数据集上传到工作区的压缩文件。 可以在“数据集”  资产页上传数据集，也可以在设计器创作页的左侧模块树的“我的数据集”  列表中拖放数据集模块。 
 
     在管道执行期间，可以使用已上传的压缩存档中包含的任何文件。 如果存档中包含目录结构，则会保留该结构，但你必须在路径前面追加一个名为 **src** 的目录。
 
@@ -124,4 +169,4 @@ os.system(f"pip install scikit-misc")
 
 ## <a name="next-steps"></a>后续步骤
 
-参阅 Azure 机器学习[可用的模块集](module-reference.md)。 
+请参阅 Azure 机器学习的[可用模块集](module-reference.md)。 

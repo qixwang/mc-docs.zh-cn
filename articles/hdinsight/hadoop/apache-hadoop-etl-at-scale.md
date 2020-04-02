@@ -12,15 +12,15 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
 ms.topic: article
-origin.date: 01/27/2020
-ms.date: 03/02/2020
+origin.date: 03/03/2020
+ms.date: 04/06/2020
 ms.author: v-yiso
-ms.openlocfilehash: ad4971f2d87237ffa7e3556f37ce6bd0210b119f
-ms.sourcegitcommit: 46fd4297641622c1984011eac4cb5a8f6f94e9f5
+ms.openlocfilehash: ec2c1716a2fca7990a56c4b57932e84c9e284dc4
+ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77563511"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80343098"
 ---
 # <a name="extract-transform-and-load-etl-at-scale"></a>大规模提取、转换和加载 (ETL)
 
@@ -142,6 +142,6 @@ Apache Flume 无法与 Azure HDInsight 配合使用。  本地 Hadoop 安装可�
 
 ## <a name="next-steps"></a>后续步骤
 
-* [将 Apache Pig 与 Apache Hadoop on HDInsight 配合使用](hdinsight-use-pig.md)
 * [使用 Apache Hive 作为 ETL 工具](apache-hadoop-using-apache-hive-as-an-etl-tool.md) 
 * [将 Azure Data Lake Storage Gen2 用于 Azure HDInsight 群集](../hdinsight-hadoop-use-data-lake-storage-gen2.md)
+* [将数据从 Azure SQL 数据库移到 Apache Hive 表](./apache-hadoop-use-sqoop-mac-linux.md)

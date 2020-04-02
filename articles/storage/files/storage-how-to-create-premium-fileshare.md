@@ -5,15 +5,15 @@ author: WenJason
 ms.service: storage
 ms.topic: conceptual
 origin.date: 05/05/2019
-ms.date: 01/06/2020
+ms.date: 03/30/2020
 ms.author: v-jay
 ms.subservice: files
-ms.openlocfilehash: 6661a93fdba8b126c51aa7877d2eca48608e0b1a
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.openlocfilehash: 323776756fd34ae711873d41d2ed320c14e80d61
+ms.sourcegitcommit: 90d01d08faf8adb20083363a8e4e5aab139cd9b2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75624316"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80290460"
 ---
 # <a name="how-to-create-an-premium-azure-file-share"></a>如何创建高级 Azure 文件共享
 高级文件共享在固态磁盘 (SSD) 存储介质上提供，可用于 IO 密集型工作负荷，包括宿主数据库和高性能计算 (HPC)。 高级文件共享托管在特殊用途的存储帐户类型（称为 FileStorage 帐户）中。 高级文件共享旨在用于高性能和企业级应用程序，可稳定提供低延迟、高 IOPS 和高吞吐量的共享。
@@ -78,7 +78,7 @@ ms.locfileid: "75624316"
 
 首先，安装最新版本的 [PowerShellGet](https://docs.microsoft.com/powershell/scripting/gallery/installing-psget) 模块。
 
-然后，升级 powershell 模块，登录到 Azure 订阅，创建资源组，然后创建存储帐户。
+然后，升级 PowerShell 模块，登录到 Azure 订阅，创建资源组，然后创建存储帐户。
 
 ### <a name="upgrade-your-powershell-module"></a>升级 PowerShell 模块
 
@@ -210,4 +210,4 @@ az group delete --name myResourceGroup
 在本文中，你已创建一个高级文件共享。 若要了解此帐户提供的性能，请转到规划指南的“性能层”部分。
 
 > [!div class="nextstepaction"]
-> [文件共享性能层](storage-files-planning.md#file-share-performance-tiers)
+> [文件共享层](storage-files-planning.md#storage-tiers)

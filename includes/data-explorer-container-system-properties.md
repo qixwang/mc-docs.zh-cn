@@ -2,42 +2,58 @@
 author: orspod
 ms.service: data-explorer
 ms.topic: include
-origin.date: 01/08/2020
-ms.date: 02/17/2020
+origin.date: 02/27/2020
+ms.date: 03/16/2020
 ms.author: v-tawe
-ms.openlocfilehash: 5abc5020d2cafc8b1ccc11d1c4ac595d602dcbae
-ms.sourcegitcommit: 7c80405a6b48380814b4b414e9f8a5756c007880
+ms.openlocfilehash: aadcb3045db3505dd15412e360ef215d92fcb30e
+ms.sourcegitcommit: 1d3d8dfdaf6281f06640cbee7124a1e8bf102c50
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77067748"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80243969"
 ---
 ### <a name="event-system-properties-mapping"></a>事件系统属性映射
 
-如果在上表的“数据源”  部分中选择了“事件系统属性”  ，请转到 [Web UI](https://dataexplorer.azure.cn/) 运行相关 KQL 命令以正确创建映射。
+> [!Note]
+> * 单记录事件支持系统属性。
+> * 对于 `csv` 映射，属性将添加到记录的开头。 对于 `json` 映射，将根据下拉列表中显示的名称添加属性。
 
-   **对于 csv 映射：**
+如果在表的“数据源”  部分中选择了“事件系统属性”  ，则必须在表架构和映射中包含以下属性。
 
-    ```kusto
-    .create table MyTable ingestion csv mapping "CsvMapping1"
+**表架构示例**
+
+如果数据包含三列（`Timespan`、`Metric` 和 `Value`）并且包含的属性是 `x-opt-enqueued-time` 和 `x-opt-offset`，请使用以下命令创建或更改表架构：
+
+```kusto
+    .create-merge table TestTable (TimeStamp: datetime, Metric: string, Value: int, EventHubEnqueuedTime:datetime, EventHubOffset:string)
+```
+
+**CSV 映射示例**
+
+运行以下命令，将数据添加到记录的开头。 记下序号值。
+
+```kusto
+    .create table TestTable ingestion csv mapping "CsvMapping1"
     '['
-    '   { "column" : "messageid", "DataType":"string", "Properties":{"Ordinal":"0"}},'
-    '   { "column" : "userid", "DataType":"string", "Properties":{"Ordinal":"1"}},'
-    '   { "column" : "other", "DataType":"int", "Properties":{"Ordinal":"2"}}'
+    '   { "column" : "Timespan", "Properties":{"Ordinal":"2"}},'
+    '   { "column" : "Metric", "Properties":{"Ordinal":"3"}},'
+    '   { "column" : "Value", "Properties":{"Ordinal":"4"}},'
+    '   { "column" : "EventHubEnqueuedTime", "Properties":{"Ordinal":"0"}},'
+    '   { "column" : "EventHubOffset", "Properties":{"Ordinal":"1"}}'
     ']'
-    ```
+```
  
-   **对于 json 映射：**
+**JSON 映射示例**
 
-    ```kusto
-    .create table MyTable ingestion json mapping "JsonMapping1"
+使用出现在“数据连接”  边栏选项卡“事件系统属性”  列表中的系统属性名称添加数据。 运行以下命令：
+
+```kusto
+    .create table TestTable ingestion json mapping "JsonMapping1"
     '['
-    '    { "column" : "messageid", "datatype" : "string", "Properties":{"Path":"$.message-id"}},'
-    '    { "column" : "userid", "Properties":{"Path":"$.user-id"}},'
-    '    { "column" : "other", "Properties":{"Path":"$.other"}}'
+    '    { "column" : "Timespan", "Properties":{"Path":"$.timestamp"}},'
+    '    { "column" : "Metric", "Properties":{"Path":"$.metric"}},'
+    '    { "column" : "Value", "Properties":{"Path":"$.metric_value"}},'
+    '    { "column" : "EventHubEnqueuedTime", "Properties":{"Path":"$.x-opt-enqueued-time"}},'
+    '    { "column" : "EventHubOffset", "Properties":{"Path":"$.x-opt-offset"}}'
     ']'
-    ```
-
-   > [!TIP]
-   > * 必须在映射中包含所有选定属性。 
-   > * 在 csv 映射中，属性顺序很重要。 系统属性必须列在其他所有属性之前，并且顺序必须与它们在“事件系统属性”  下拉列表中的显示顺序相同。
+```

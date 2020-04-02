@@ -8,14 +8,14 @@ author: spelluru
 manager: ''
 ms.topic: conceptual
 origin.date: 02/12/2020
-ms.date: 03/09/2020
+ms.date: 03/16/2020
 ms.author: v-tawe
-ms.openlocfilehash: aeea2d89fbd75c4eaf093a6b2571335159fa4e69
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.openlocfilehash: 8308d9dfc06b7b2693e4b6161b43217642604fe1
+ms.sourcegitcommit: 1d3d8dfdaf6281f06640cbee7124a1e8bf102c50
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78154769"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80243939"
 ---
 # <a name="authenticate-a-managed-identity-with-azure-active-directory-to-access-event-hubs-resources"></a>使用 Azure Active Directory 对托管标识的事件中心资源访问进行身份验证
 Azure 事件中心支持使用 [Azure 资源的托管标识](../active-directory/managed-identities-azure-resources/overview.md)进行 Azure Active Directory (Azure AD) 身份验证。 Azure 资源的托管标识可以从 Azure 虚拟机 (VM)、函数应用、虚拟机规模集和其他服务中运行的应用程序使用 Azure AD 凭据授权对事件中心资源的访问权限。 将 Azure 资源的托管标识与 Azure AD 身份验证结合使用，可避免将凭据随在云中运行的应用程序一起存储。
@@ -62,11 +62,11 @@ Azure 事件中心支持使用 [Azure 资源的托管标识](../active-directory
 1. 在 Azure 门户中导航到事件中心命名空间，显示该命名空间的“概览”。  
 1. 选择左侧菜单上的“访问控制(标识和访问管理)”，显示事件中心的访问控制设置  。
 1.  选择“角色分配”  选项卡以查看角色分配列表。
-3.  选择“添加”以添加新角色。 
-4.  在“添加角色分配”页上，选择要分配的事件中心角色  。 然后通过搜索找到已注册的服务标识，以便分配该角色。
+3.    选择“添加”以添加新角色。 
+4.    在“添加角色分配”页上，选择要分配的事件中心角色  。 然后通过搜索找到已注册的服务标识，以便分配该角色。
     
     ![“添加角色分配”页](./media/authenticate-managed-identity/add-role-assignment-page.png)
-5.  选择“保存”  。 分配有该角色的标识列出在该角色下。 例如，下图显示服务标识有事件中心数据所有者。
+5.    选择“保存”  。 分配有该角色的标识列出在该角色下。 例如，下图显示服务标识有事件中心数据所有者。
     
     ![分配给角色的标识](./media/authenticate-managed-identity/role-assigned.png)
 
@@ -83,7 +83,10 @@ Azure 事件中心支持使用 [Azure 资源的托管标识](../active-directory
 #### <a name="azuremessagingeventhubs-latest"></a>[Azure.Messaging.EventHubs（最新）](#tab/latest)
 现在可以启动 Web 应用程序并将浏览器指向示例 aspx 页面了。 可以在 [GitHub 存储库](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Azure.Messaging.EventHubs/ManagedIdentityWebApp)中找到用于通过事件中心资源发送和接收数据的示例 Web 应用程序。
 
-安装 [NuGet](https://www.nuget.org/packages/Azure.Messaging.EventHubs/) 中的最新包，开始使用 **EventHubProducerClient** 向事件中心发送事件，使用 **EventHubConsumerClient** 接收事件。  
+安装 [NuGet](https://www.nuget.org/packages/Azure.Messaging.EventHubs/) 中的最新包，开始使用 **EventHubProducerClient** 向事件中心发送事件，使用 **EventHubConsumerClient** 接收事件。 
+
+> [!NOTE]
+> 有关使用托管标识将事件发布到事件中心的 Java 示例，请参阅[在 GitHub 上使用 Azure 标识示例发布事件](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/eventhubs/azure-messaging-eventhubs/src/samples/java/com/azure/messaging/eventhubs)。
 
 ```csharp
 protected async void btnSend_Click(object sender, EventArgs e)

@@ -9,14 +9,14 @@ ms.service: cognitive-search
 ms.topic: conceptual
 origin.date: 01/30/2020
 ms.date: 03/16/2020
-ms.openlocfilehash: 7e65572783d9e97ae44c6897b355973dd775de59
-ms.sourcegitcommit: d5eca3c6b03b206e441b599e5b138bd687a91361
+ms.openlocfilehash: 0e83ef6fce15b84fb196c8d9aff19e00205e90a8
+ms.sourcegitcommit: 1d3d8dfdaf6281f06640cbee7124a1e8bf102c50
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78934813"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80243738"
 ---
-#    <a name="custom-entity-lookup-cognitive-skill-preview"></a>自定义实体查找认知技能（预览版）
+#     <a name="custom-entity-lookup-cognitive-skill-preview"></a>自定义实体查找认知技能（预览版）
 
 > [!IMPORTANT] 
 > 此技能目前以公共预览版提供。 提供的预览版功能不附带服务级别协议，我们不建议将其用于生产工作负荷。目前不提供门户或 .NET SDK 支持。
@@ -39,9 +39,9 @@ Microsoft.Skills.Text.CustomEntityLookupSkill
 
 | 参数名称     | 说明 |
 |--------------------|-------------|
-| entitiesDefinitionUri | JSON 或 CSV 文件的路径，该文件包含要匹配的所有目标文本。 索引器运行一开始就会读取此实体定义；在后续运行之前，不会识别到在运行中途对此文件所做的任何更新。 必须可以通过 HTTPS 访问此配置。 有关预期的 CSV 或 JSON 架构，请参阅下面的[自定义实体定义格式](#custom-entity-definition-format)。|
+| entitiesDefinitionUri    | JSON 或 CSV 文件的路径，该文件包含要匹配的所有目标文本。 索引器运行一开始就会读取此实体定义；在后续运行之前，不会识别到在运行中途对此文件所做的任何更新。 必须可以通过 HTTPS 访问此配置。 有关预期的 CSV 或 JSON 架构，请参阅下面的[自定义实体定义](#custom-entity-definition-format)格式。|
 |inlineEntitiesDefinition | 内联 JSON 实体定义。 此参数将取代 entitiesDefinitionUri 参数（如果存在）。 可通过内联方式提供不超过 10 KB 的配置。 有关预期的 JSON 架构，请参阅下面的[自定义实体定义](#custom-entity-definition-format)。 |
-|defaultLanguageCode |  （可选）用于标记化和描绘输入文本的输入文本的语言代码。 支持以下语言：`da, de, en, es, fi, fr, it, ko, pt`。 默认值为英语 (`en`)。 如果你传递的是 languagecode-countrycode 格式，只会使用格式的 languagecode 部分。  |
+|defaultLanguageCode |    （可选）用于标记化和描绘输入文本的输入文本的语言代码。 支持以下语言：`da, de, en, es, fi, fr, it, ko, pt`。 默认值为英语 (`en`)。 如果你传递的是 languagecode-countrycode 格式，只会使用格式的 languagecode 部分。  |
 
 
 ## <a name="skill-inputs"></a>技能输入
@@ -49,13 +49,13 @@ Microsoft.Skills.Text.CustomEntityLookupSkill
 | 输入名称      | 说明                   |
 |---------------|-------------------------------|
 | text          | 要分析的文本。          |
-| languageCode  | 可选。 默认值为 `"en"`。  |
+| languageCode    | 可选。 默认值为 `"en"`。  |
 
 
 ## <a name="skill-outputs"></a>技能输出
 
 
-| 输出名称     | 说明                   |
+| 输出名称      | 说明                   |
 |---------------|-------------------------------|
 | 实体 | 对象的数组，包含有关找到的匹配项和相关元数据的信息。 识别到的每个实体可包含以下字段：  <ul> <li> *name*：识别到的顶级实体。 实体表示“规范化”形式。 </li> <li> *id*：用户以“自定义实体定义格式”定义的实体的唯一标识符。</li> <li> *description*：用户以“自定义实体定义格式”定义的实体说明。 </li> <li> *type*：用户以“自定义实体定义格式”定义的实体类型。</li> <li> *subtype*：用户以“自定义实体定义格式”定义的实体子类型。</li>  <li> *matches*：描述该实体在源文本中的每个匹配项的集合。 每个匹配项具有以下成员： </li> <ul> <li> *text*：源文档中匹配的原始文本。 </li> <li> *offset*：该匹配项在文本中的位置。 </li> <li> *length*:匹配文本的长度。 </li> <li> *matchDistance*：此匹配项与原始实体名称或别名相差的字符数。  </li> </ul> </ul>
   |
@@ -169,7 +169,7 @@ Satya Nadella
 在某些情况下，直接在技能定义中提供要内联匹配的自定义实体列表会更方便。 对于这种情况，可以使用类似于前面所述的 JSON 格式，但要将它内联在技能定义中。
 只能以内联方式定义小于 10 KB（序列化大小）的配置。 
 
-##  <a name="sample-definition"></a>示例定义
+##    <a name="sample-definition"></a>示例定义
 
 下面显示了使用内联格式的示例技能定义：
 
@@ -232,7 +232,7 @@ Satya Nadella
 
 ```
 
-##  <a name="sample-input"></a>示例输入
+##    <a name="sample-input"></a>示例输入
 
 ```json
 {
@@ -249,7 +249,7 @@ Satya Nadella
 }
 ```
 
-##  <a name="sample-output"></a>示例输出
+##    <a name="sample-output"></a>示例输出
 
 ```json
   { 
@@ -296,6 +296,12 @@ Satya Nadella
     ] 
   } 
 ```
+
+## <a name="errors-and-warnings"></a>错误和警告
+
+### <a name="warning-reached-maximum-capacity-for-matches-skipping-all-further-duplicate-matches"></a>警告：已达到最大的匹配项容量，将跳过所有后续的重复匹配项。
+
+如果检测到的匹配项数大于允许的最大值，则将发出此警告。 在这种情况下，我们将停止包含重复的匹配项。 如果这是你无法接受的，请提交[支持票证](https://portal.azure.cn/#create/Microsoft.Support)，以便我们帮助你处理个别用例。
 
 ## <a name="see-also"></a>另请参阅
 

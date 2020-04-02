@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: andyxu
 author: gogowings
 ms.date: 11/04/2019
-ms.openlocfilehash: 15caf5f0ed538823fea3696109ea70c4b73b2ae2
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+ms.openlocfilehash: 4c2e5b31486448e0d85cc920c1c8ca979fc8befd
+ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75599062"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80343071"
 ---
 # <a name="consume-azure-machine-learning-events-preview"></a>使用 Azure 机器学习事件（预览版）
 
@@ -42,6 +42,7 @@ Azure 机器学习在机器学习生命周期的各个时间点提供事件：
 | `Microsoft.MachineLearningServices.ModelRegistered` | 在工作区中注册机器学习模型时引发 |
 | `Microsoft.MachineLearningServices.ModelDeployed` | 当具有一个或多个模型的推理服务完成部署时引发 |
 | `Microsoft.MachineLearningServices.DatasetDriftDetected` | 当两个数据集的数据偏移检测作业完成时引发 |
+| `Microsoft.MachineLearningServices.RunStatusChanged` | 在运行状态更改时引发，当前仅在运行状态为“失败”时引发 |
 
 ## <a name="subscribe-to-machine-learning-events"></a>订阅机器学习事件
 
@@ -61,6 +62,7 @@ Azure 事件网格支持基于“开头为”和“结尾为”匹配的主题�
 | `Microsoft.MachineLearningServices.ModelRegistered` | `models/{modelName}:{modelVersion}` | `models/sklearn_regression_model:3` |
 | `Microsoft.MachineLearningServices.ModelDeployed` | `endpoints/{serviceId}` | `endpoints/my_sklearn_aks` |
 | `Microsoft.MachineLearningServices.DatasetDriftDetected` | `datadrift/{data.DataDriftId}/run/{data.RunId}` | `datadrift/4e694bf5-712e-4e40-b06a-d2a2755212d4/run/my_driftrun1_1550564444_fbbcdc0f` |
+| `Microsoft.MachineLearningServices.RunStatusChanged` | `experiments/{ExperimentId}/runs/{RunId}` | `experiments/b1d7966c-f73a-4c68-b846-992ace89551f/runs/my_exp1_1554835758_38dbaa94` | 
 
 ### <a name="advanced-filtering"></a>高级筛选
 

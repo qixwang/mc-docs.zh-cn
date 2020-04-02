@@ -6,18 +6,21 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
-author: xiaoharper
+author: likebupt
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/20/2017
-ms.openlocfilehash: 306eca110beedf483bb036db7fec41587350f6cb
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+ms.openlocfilehash: d0ff00ff13ceb58f530f790c898aaef2e9d58054
+ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75598280"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80343338"
 ---
 # <a name="troubleshooting-guide-create-and-connect-to-an-azure-machine-learning-studio-classic-workspace"></a>故障排除指南：创建并连接到 Azure 机器学习工作室（经典版）工作区
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
+
 本指南介绍了设置 Azure 机器学习工作室（经典版）工作区时一些常见难题的解决方案。
 
 
@@ -37,7 +40,7 @@ ms.locfileid: "75598280"
 ## <a name="storage-account"></a>存储帐户
 机器学习服务需要存储帐户以存储数据。 可以使用现有存储帐户，或者可以在创建新的机器学习工作室（经典版）工作区时创建新的存储帐户（如果有创建新的存储帐户的配额）。
 
-创建新的机器学习工作室（经典版）工作区之后，可以使用用于创建工作区的 Microsoft 帐户登录到机器学习工作室（经典版）。 如果遇到错误消息，“未找到工作区”（类似于下面的屏幕快照），请使用以下步骤删除浏览器 cookie。
+创建新的机器学习工作室（经典版）工作区之后，可以使用用于创建工作区的 Microsoft 帐户登录到机器学习工作室（经典版）。 如果遇到错误消息，“未找到工作区”（类似于下面的屏幕截图），请使用以下步骤删除浏览器 cookie。
 
 ![未找到工作区](media/troubleshooting-creating-ml-workspace/screen3.png)
 

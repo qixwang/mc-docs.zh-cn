@@ -7,15 +7,15 @@ ms.subservice: process-automation
 author: WenJason
 ms.author: v-jay
 origin.date: 08/01/2018
-ms.date: 03/16/2020
+ms.date: 03/30/2020
 ms.topic: conceptual
 manager: digimobile
-ms.openlocfilehash: 417926ec128c05d99a1f4f01ec2d36041b626808
-ms.sourcegitcommit: 71a386ca0d0ecb79a123399b6ab6b8c70ea2aa78
+ms.openlocfilehash: 9fe5350466f35a0e2121094c1de18cae8a324fe6
+ms.sourcegitcommit: 90d01d08faf8adb20083363a8e4e5aab139cd9b2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2020
-ms.locfileid: "79497319"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80290356"
 ---
 # <a name="editing-textual-runbooks-in-azure-automation"></a>在 Azure 自动化中编辑文本 Runbook
 
@@ -25,7 +25,10 @@ Azure 自动化中的文本编辑器可以用来编辑 [PowerShell Runbook](auto
 
 Azure 自动化中的每个 Runbook 都有两个版本：草稿版和已发布版。 用户先对 Runbook 的草稿版进行编辑，并将其发布，这样便可以执行了。 无法编辑已发布版本。 有关详细信息，请参阅 [发布 runbook](manage-runbooks.md#publish-a-runbook)。
 
-本文提供了使用该编辑器执行不同功能的详细步骤。 它们不适用于[图形 Runbook](automation-runbook-types.md#graphical-runbooks)。 若要使用这些 Runbook，请参阅 [Azure 自动化中的图形创作](automation-graphical-authoring-intro.md)。
+本文提供了使用该编辑器执行不同功能的详细步骤。 这些步骤不适用于[图 Runbook](automation-runbook-types.md#graphical-runbooks)。 若要使用这些 Runbook，请参阅 [Azure 自动化中的图形创作](automation-graphical-authoring-intro.md)。
+
+>[!NOTE]
+>本文进行了更新，以便使用新的 Azure PowerShell Az 模块。 你仍然可以使用 AzureRM 模块，至少在 2020 年 12 月之前，它将继续接收 bug 修补程序。 若要详细了解新的 Az 模块和 AzureRM 兼容性，请参阅[新 Azure Powershell Az 模块简介](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0)。 有关适用于混合 Runbook 辅助角色的 Az 模块安装说明，请参阅安装 [Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)。 
 
 ## <a name="editing-a-runbook-with-the-azure-portal"></a>使用 Azure 门户编辑 Runbook
 
@@ -57,7 +60,7 @@ Azure 自动化中的每个 Runbook 都有两个版本：草稿版和已发布�
 
 ### <a name="insert-an-asset-into-a-runbook"></a>将资产插入 Runbook
 
-1. 在文本编辑器的“画布”中，将光标置于要放置子 Runbook 代码的地方。
+1. 在文本编辑器的“画布”控件中，将光标置于要放置子 Runbook 代码的位置。
 2. 展开“库”控件中的“资产”  节点。
 3. 展开所需资产类型的节点。
 4. 右键单击要插入的资产名称，并选择“添加到画布”  。 对于[变量资产](automation-variables.md)，可选择“将‘获取变量’添加到画布”  或“将‘设置变量’添加到画布”  ，具体取决于是要获取变量还是要设置变量。
@@ -65,7 +68,7 @@ Azure 自动化中的每个 Runbook 都有两个版本：草稿版和已发布�
 
 ## <a name="editing-an-azure-automation-runbook-using-windows-powershell"></a>使用 Windows PowerShell 编辑 Azure 自动化 Runbook
 
-若要使用 Windows PowerShell 来编辑 Runbook，请使用所选编辑器进行操作，将 runbook 保存到“.ps1”文件。 可以使用 [Export-AzAutomationRunbook](https://docs.microsoft.com/powershell/module/Az.Automation/Export-AzAutomationRunbook) cmdlet 来检索 runbook 的内容。 可以使用 [Import-AzAutomationRunbook](https://docs.microsoft.com/powershell/module/Az.Automation/import-azautomationrunbook) cmdlet 将现有的草稿 Runbook 替换为已修改的 Runbook。
+若要使用 Windows PowerShell 编辑 Runbook，请使用所选编辑器进行操作，并将 runbook 保存到“.ps1”  文件。 可以使用 [Export-AzAutomationRunbook](https://docs.microsoft.com/powershell/module/Az.Automation/Export-AzAutomationRunbook) cmdlet 来检索 runbook 的内容。 可以使用 [Import-AzAutomationRunbook](https://docs.microsoft.com/powershell/module/Az.Automation/import-azautomationrunbook) cmdlet 将现有的草稿 Runbook 替换为已修改的 Runbook。
 
 ### <a name="retrieve-the-contents-of-a-runbook-using-windows-powershell"></a>使用 Windows PowerShell 检索 Runbook 的内容
 

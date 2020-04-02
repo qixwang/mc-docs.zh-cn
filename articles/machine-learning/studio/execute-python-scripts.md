@@ -10,14 +10,16 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/12/2019
-ms.openlocfilehash: 328e3e6305e216d2d6e358bbd18f664320116e58
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+ms.openlocfilehash: ad5db6a3b81c2c5fa48656b53dfb0119c2228118
+ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75598638"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80343295"
 ---
 # <a name="execute-python-machine-learning-scripts-in-azure-machine-learning-studio-classic"></a>在 Azure 机器学习工作室（经典版）中执行 Python 机器学习脚本
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 Python 是许多数据科学家珍藏的一个有用工具。 它可以在典型机器学习工作流的每个阶段（包括数据探索、特征提取、模型训练和验证，以及部署）中使用。
 
@@ -65,7 +67,7 @@ Python 模块的输入公开为 Pandas 数据帧。 `azureml_main` 函数最多�
 
 Python 函数中的所有输入数据帧始终具有 64 位的数字索引，范围从 0 到行数减去 1 的值* 
 
-## <a id="import-modules"></a>导入现有的 Python 脚本模块
+## <a name="importing-existing-python-script-modules"></a><a id="import-modules"></a>导入现有的 Python 脚本模块
 
 用于执行 Python 的后端基于 [Anaconda](https://www.anaconda.com/distribution/)（广泛使用的 Python 科研分发版）。 它随附了以数据为中心的工作负荷中最常用的将近 200 个 Python 包。 工作室（经典版）目前不支持使用 Pip 或 Conda 等包管理系统来安装和管理外部库。  如果需要整合其他库，请参考以下方案。
 
@@ -122,7 +124,7 @@ block_blob_service = BlockBlobService(account_name='account_name', account_key='
 1. 将 Python 表达式发送到 Python 解释器
 1. 返回包含表达式和评估结果的表格。
 
-## <a id="visualizations"></a>使用可视化效果
+## <a name="working-with-visualizations"></a><a id="visualizations"></a>使用可视化效果
 
 使用 MatplotLib 创建的绘图可由[执行 Python 脚本][execute-python-script]返回。 但是，在使用 R 时，绘图不会按原样自动重定向到图像。因此，用户必须显式将所有绘图保存到 PNG 文件。
 

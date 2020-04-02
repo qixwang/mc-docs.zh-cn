@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 origin.date: 12/27/2019
-ms.date: 03/02/2020
-ms.openlocfilehash: 077a868975abf4a946fbd567f0c207006a387446
-ms.sourcegitcommit: 46fd4297641622c1984011eac4cb5a8f6f94e9f5
+ms.date: 04/06/2020
+ms.openlocfilehash: 9e31af7dd9b35615884da757f29711cf6739bebd
+ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77563596"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80343597"
 ---
 # <a name="access-grafana-in-azure-hdinsight"></a>在 Azure HDInsight 中访问 Grafana
 
@@ -25,7 +25,7 @@ ms.locfileid: "77563596"
 
 ## <a name="create-an-apache-hadoop-cluster"></a>创建 Apache Hadoop 群集
 
-请参阅[使用 Azure 门户创建 Apache Hadoop 群集](../hdinsight-hadoop-create-linux-clusters-portal.md)。 对于**群集类型**，请选择 **Kafka**、**HBase** 或 **Interactive Query**。
+请参阅[使用 Azure 门户创建 Apache Hadoop 群集](../hdinsight-hadoop-create-linux-clusters-portal.md)。 对于“群集类型”  ，请选择“Spark”  、“Kafka”  、“HBase”  或“Interactive Query”  。
 
 ## <a name="access-the-grafana-dashboard"></a>访问 Grafana 仪表板
 

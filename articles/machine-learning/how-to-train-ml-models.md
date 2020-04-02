@@ -12,12 +12,12 @@ ms.reviewer: sgilley
 origin.date: 11/08/2019
 ms.date: 03/16/2020
 ms.custom: seodec18
-ms.openlocfilehash: 62afecc944f69bf755a607647eba57de6454b7c0
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.openlocfilehash: 92029e0f368b9e20b018cfa70357e0f2ad0c6ae1
+ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78850208"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80343374"
 ---
 # <a name="train-models-with-azure-machine-learning-using-estimator"></a>通过估算器使用 Azure 机器学习训练模型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -39,7 +39,7 @@ ms.locfileid: "78850208"
 
 ### <a name="single-node-training"></a>单节点训练
 
-对在 Azure 中的远程计算上为 scikit 学习模型运行的单节点训练使用 `Estimator`。 应已创建[计算目标](how-to-set-up-training-targets.md#amlcompute)对象 `compute_target` 和[数据存储](how-to-access-data.md)对象 `ds`。
+对在 Azure 中的远程计算上为 scikit 学习模型运行的单节点训练使用 `Estimator`。 应已创建[计算目标](how-to-set-up-training-targets.md#amlcompute)对象 `compute_target` 和 [FileDataset](how-to-create-register-datasets.md) 对象 `ds`。
 
 ```Python
 from azureml.train.estimator import Estimator

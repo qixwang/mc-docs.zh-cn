@@ -5,16 +5,16 @@ services: storage
 author: WenJason
 ms.service: storage
 ms.topic: overview
-origin.date: 11/04/2019
-ms.date: 02/10/2020
+origin.date: 03/04/2020
+ms.date: 03/30/2020
 ms.author: v-jay
 ms.subservice: blobs
-ms.openlocfilehash: aa342e40156888b2a31773423a08df155d5501ad
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: 61bd455d8c51b9191d083157236f141af0097cee
+ms.sourcegitcommit: 90d01d08faf8adb20083363a8e4e5aab139cd9b2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79293484"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80290445"
 ---
 # <a name="introduction-to-azure-blob-storage"></a>Azure Blob 存储简介
 
@@ -24,13 +24,13 @@ ms.locfileid: "79293484"
 
 Blob 存储提供了三种类型的资源：
 
-- 存储帐户  。 
+- **存储帐户**
 - 存储帐户中的容器 
-- 容器中的 Blob  
+- 容器中的 Blob 
 
 以下图示显示了这些资源之间的关系。
 
-![帐户 Blob 和容器资源之间的关系](./media/storage-blob-introduction/blob1.png)
+![帐户 Blob 和容器资源之间的关系](./media/storage-blobs-introduction/blob1.png)
 
 ### <a name="storage-accounts"></a>存储帐户
 
@@ -55,9 +55,9 @@ http://mystorageaccount.blob.core.chinacloudapi.cn
  
 Azure 存储支持三种类型的 Blob：
 
-* 块 Blob 存储文本和二进制数据，最多约为 4.7 TB  。 块 Blob 由可以分别管理的数据块构成。
-* 与块 Blob 一样，追加 Blob 也由块构成，但针对追加操作进行了优化  。 追加 Blob 非常适用于诸如记录来自虚拟机的数据之类的场景。
-* 页 Blob 用于存储最大 8 TB 的随机访问文件  。 页 blob 存储虚拟硬盘 (VHD) 文件并作为 Azure 虚拟机的磁盘。 有关页 Blob 的更多信息，请参阅 [Azure 页 Blob 概述](storage-blob-pageblob-overview.md)
+- 块 Blob 存储文本和二进制数据，最多约为 4.7 TB  。 块 Blob 由可以分别管理的数据块构成。
+- 与块 Blob 一样，追加 Blob 也由块构成，但针对追加操作进行了优化  。 追加 Blob 非常适用于诸如记录来自虚拟机的数据之类的场景。
+- 页 Blob 用于存储最大 8 TB 的随机访问文件  。 页 blob 存储虚拟硬盘 (VHD) 文件并作为 Azure 虚拟机的磁盘。 有关页 Blob 的更多信息，请参阅 [Azure 页 Blob 概述](storage-blob-pageblob-overview.md)
 
 有关不同类型 Blob 的详细信息，请参阅 [Understanding Block Blobs, Append Blobs, and Page Blobs](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs)（了解块 Blob、追加 Blob 和页 Blob）。
 

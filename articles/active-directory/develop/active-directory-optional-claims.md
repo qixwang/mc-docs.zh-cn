@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 03/10/2020
+ms.date: 03/20/2020
 ms.author: v-junlch
 ms.reviewer: paulgarn, hirsin, keyam
 ms.custom: aaddev
-ms.openlocfilehash: 789df5aa13755e3c2e78db0eb2466ecdef2d7993
-ms.sourcegitcommit: 4ba6d7c8bed5398f37eb37cf5e2acafcdcc28791
+ms.openlocfilehash: ba03f747deb3a4166d73327f00686af847e55093
+ms.sourcegitcommit: 6568c59433d7e80ab06e9fe76d4791f761ed6775
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2020
-ms.locfileid: "79133831"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80243165"
 ---
 # <a name="how-to-provide-optional-claims-to-your-azure-ad-app"></a>如何：向 Azure AD 应用提供可选声明
 
@@ -84,10 +84,10 @@ ms.locfileid: "79133831"
 | `pwd_exp`     | 密码过期时间        | 密码过期的日期时间。 |       |
 | `pwd_url`     | 更改密码 URL             | 用户更改密码时可以访问的 URL。   |   |
 | `in_corp`     | 企业网络内部        | 表示客户端是否从企业网络登录。 如果不是，则不包括该声明。   |  以 MFA 中的[可信 IP](../authentication/howto-mfa-mfasettings.md#trusted-ips) 设置为基础。    |
-| `nickname`    | 别名                        | 用户的其他名称。 昵称不同于名字或姓氏。 | 
-| `family_name` | 姓氏                       | 根据用户对象中的定义提供用户的姓氏。 <br>"family_name":"Miller" | 在 MSA 和 Azure AD 中受支持   |
-| `given_name`  | 名字                      | 根据用户对象中的设置提供用户的名字和“姓氏”。<br>"given_name":"Frank"                   | 在 MSA 和 Azure AD 中受支持  |
-| `upn`         | 用户主体名称 | 可以与 username_hint 参数一起使用的用户标识符。  不是用户的持久标识符，不应当用于关键数据。 | 有关声明配置，请参阅下面的[附加属性](#additional-properties-of-optional-claims)。 |
+| `nickname`    | 别名                        | 用户的其他名称。 昵称不同于名字或姓氏。 需要 `profile` 范围。| 
+| `family_name` | 姓氏                       | 根据用户对象中的定义提供用户的姓氏。 <br>"family_name":"Miller" | 在 MSA 和 Azure AD 中受支持。 需要 `profile` 范围。   |
+| `given_name`  | 名字                      | 根据用户对象中的设置提供用户的名字和“姓氏”。<br>"given_name":"Frank"                   | 在 MSA 和 Azure AD 中受支持。  需要 `profile` 范围。 |
+| `upn`         | 用户主体名称 | 可以与 username_hint 参数一起使用的用户标识符。  不是用户的持久标识符，不应当用于关键数据。 | 有关声明配置，请参阅下面的[附加属性](#additional-properties-of-optional-claims)。 需要 `profile` 范围。|
 
 ### <a name="additional-properties-of-optional-claims"></a>可选声明的附加属性
 
@@ -103,25 +103,26 @@ ms.locfileid: "79133831"
 
 #### <a name="additional-properties-example"></a>附加属性示例
 
-```json
- "optionalClaims": 
-   {
-       "idToken": [ 
-             { 
-                "name": "upn", 
-            "essential": false,
-                "additionalProperties": [ "include_externally_authenticated_upn"]  
-              }
-        ]
-}
-```
+    ```json
+        "optionalClaims": 
+         {
+             "idToken": [ 
+            { 
+                      "name": "upn", 
+                      "essential": false,
+                  "additionalProperties": [ "include_externally_authenticated_upn"]  
+                    }
+                 ]
+        }
+    ```
 
-此 OptionalClaims 对象会导致返回到客户端的 ID 令牌包含另一个 UPN 及其他主租户和资源租户信息。 仅当用户是租户中的来宾（使用不同的 IDP 进行身份验证）时，才会更改令牌中的 `upn` 声明。 
+此 OptionalClaims 对象会导致返回到客户端的 ID 令牌包含一个 upn 声明及其他主租户和资源租户信息。 仅当用户是租户中的来宾（使用不同的 IDP 进行身份验证）时，才会更改令牌中的 `upn` 声明。 
 
 ## <a name="configuring-optional-claims"></a>配置可选声明
 
 > [!IMPORTANT]
-> 访问令牌**始终**使用资源而非客户端的清单生成。  而在请求 `...scope=https://microsoftgraph.chinacloudapi.cn/user.read...` 中，资源为 Graph。  因此，访问令牌是使用 Graph 清单而不是客户端的清单创建的。  更改应用程序的清单绝不会导致 Graph 的令牌看起来有何不同。  若要验证 `accessToken` 更改是否生效，需请求你的应用程序的令牌，而不是另一应用的令牌。  
+> 访问令牌**始终**使用资源而非客户端的清单生成。  因此，在请求 `...scope=https://microsoftgraph.chinacloudapi.cn/user.read...` 中，资源是 Microsoft Graph API。  因此，访问令牌是使用 Microsoft Graph API 清单而不是客户端清单创建的。  更改应用程序的清单从不会导致 Microsoft Graph API 的令牌看起来有何不同。  若要验证 `accessToken` 更改是否生效，需请求你的应用程序的令牌，而不是另一应用的令牌。  
+
 
 可以通过 UI 或应用程序清单为应用程序配置可选声明。
 
@@ -206,7 +207,7 @@ ms.locfileid: "79133831"
 | `additionalProperties` | 集合 (Edm.String) | 声明的附加属性。 如果此集合中存在某个属性，该属性将修改 name 属性中指定的可选声明的行为。                                                                                                                                               |
 ## <a name="configuring-directory-extension-optional-claims"></a>配置目录扩展可选声明
 
-除了标准的可选声明集以外，还可将令牌配置为包含扩展。 使用此功能可以附加应用可以使用的附加用户信息 - 例如，用户设置的附加标识符或重要配置选项。 参阅此页面底部的示例。
+除了标准的可选声明集以外，还可将令牌配置为包含扩展。 有关详细信息，请参阅 [Microsoft Graph extensionProperty 文档](https://docs.microsoft.com/graph/api/resources/extensionproperty?view=graph-rest-1.0) - 请注意，可选声明不支持架构和开放扩展，仅支持 AAD-Graph 样式目录扩展。 使用此功能可以附加应用可以使用的附加用户信息 - 例如，用户设置的附加标识符或重要配置选项。 参阅此页面底部的示例。
 
 > [!NOTE]
 > - 目录架构扩展功能只能在 Azure AD 中使用，因此，如果应用程序清单请求自定义扩展，而 MSA 用户登录到你的应用，则不会返回这些扩展。
@@ -266,7 +267,7 @@ ms.locfileid: "79133831"
    如果希望令牌中的组包含“可选声明”节中的本地 AD 组特性，请指定要应用到的令牌类型可选声明、请求的可选声明的名称，以及所需的任何其他属性。  可以列出多个令牌类型：
 
    - OIDC ID 令牌的 idToken
-   - OAuth/OIDC 访问令牌的 accessToken
+   - OAuth 访问令牌的 accessToken
    - SAML 令牌的 Saml2Token。
 
    > [!NOTE]
@@ -346,7 +347,7 @@ ms.locfileid: "79133831"
 可以使用多个选项来更新应用程序标识配置中的属性，以启用和配置可选声明：
 -    可以使用“令牌配置(预览)”UI（参阅以下示例） 
 -    可以使用“清单”（参阅以下示例）。  请先阅读[了解 Azure AD 应用程序清单文档](/active-directory/develop/active-directory-application-manifest)中的清单简介。
--   也可以编写使用[图形 API](/active-directory/develop/active-directory-graph-api) 的应用程序来更新应用程序。 图形 API 参考指南中的 [OptionalClaims](https://docs.microsoft.com/graph/api/resources/optionalclaims?view=graph-rest-1.0) 类型可帮助你配置可选声明。
+-   也可以编写使用 [Microsoft Graph API](https://docs.microsoft.com/graph/use-the-api?context=graph%2Fapi%2F1.0&view=graph-rest-1.0) 的应用程序来更新应用程序。 Microsoft Graph API 参考指南中的 [OptionalClaims](https://docs.microsoft.com/graph/api/resources/optionalclaims?view=graph-rest-1.0) 类型可帮助你配置可选声明。
 
 **示例：** 以下示例使用“令牌配置(预览)”UI 和“清单”将可选声明添加到用于应用程序的访问令牌、ID 令牌和 SAML 令牌。   会将不同的可选声明添加到应用程序可以接收的每种令牌。
 -    ID 令牌现在会包含联合用户的完整格式 UPN (`<upn>_<homedomain>#EXT#@<resourcedomain>`)。

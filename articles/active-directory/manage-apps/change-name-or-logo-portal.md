@@ -1,5 +1,5 @@
 ---
-title: 在 Azure Active Directory 中更改企业应用程序的名称或徽标 | Microsoft Docs
+title: 在 Azure AD 中更改企业应用程序的名称或徽标
 description: 如何在 Azure Active Directory 中更改自定义企业应用程序的名称或徽标
 services: active-directory
 documentationcenter: ''
@@ -11,18 +11,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-origin.date: 04/05/2019
-ms.date: 07/04/2019
+ms.date: 03/24/2020
 ms.author: v-junlch
 ms.reviewer: asteen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1be8ae577280f2bcbe523c2ccbf22dbe852bb351
-ms.sourcegitcommit: 5f85d6fe825db38579684ee1b621d19b22eeff57
+ms.openlocfilehash: f2b4055af5f14a42a7a1a1f9bbcc5b30a9e21179
+ms.sourcegitcommit: 6568c59433d7e80ab06e9fe76d4791f761ed6775
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67568598"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80243060"
 ---
 # <a name="change-the-name-or-logo-of-an-enterprise-application-in-azure-active-directory"></a>在 Azure Active Directory 中更改企业应用程序的名称或徽标
 
@@ -43,7 +42,7 @@ ms.locfileid: "67568598"
 7. 在文件选取器中，选择要用作新徽标的文件。 该文件的名称将显示在当前徽标图像下方的框中。
 
    > [!NOTE]
-   > Azure 要求徽标图像采用 PNG 文件，并且对宽度、高度和文件大小施加了限制。
+   > Azure 要求徽标图像采用 PNG 文件，并且对宽度、高度和文件大小施加了限制。 自定义徽标的大小必须正好为 215 &times; 215 像素，并且为 PNG 格式。 我们建议你在应用程序徽标中使用不透明的纯色背景，以向用户显示最佳效果。
 8. 选择“保存”  。 如果选择新徽标，“徽标”字段的图像将会更改，以反映新徽标文件。 
 
 ## <a name="next-steps"></a>后续步骤

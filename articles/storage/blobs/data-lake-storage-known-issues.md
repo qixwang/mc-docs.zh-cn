@@ -6,15 +6,15 @@ ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
 origin.date: 02/25/2020
-ms.date: 03/09/2020
+ms.date: 03/30/2020
 ms.author: v-jay
 ms.reviewer: jamesbak
-ms.openlocfilehash: 59d20d33416b0139e4f766acff1642e322ef0335
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: 9cef96ffc390984787396967a10313db84832491
+ms.sourcegitcommit: 90d01d08faf8adb20083363a8e4e5aab139cd9b2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79291201"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80290432"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 的已知问题
 
@@ -107,7 +107,11 @@ Azure 存储资源管理器 1.10.x 不能用于查看诊断日志。 若要查�
 
 对于使用 REST API 保持正常运行的第三方应用程序，如果将这些应用程序与调用 Blob API 的 Data Lake Storage Gen2 应用程序配合使用，则它们可继续正常运行。
 
+## <a name="access-control-lists-acl-and-anonymous-read-access"></a>访问控制列表 (ACL) 和匿名读取访问
 
+如果已将[匿名读取访问](storage-manage-access-to-resources.md)授予容器，则 ACL 对该容器或该容器中的文件没有影响。
 
+## <a name="windows-azure-storage-blob-wasb-driver"></a>Windows Azure 存储 Blob (WASB) 驱动程序
 
+目前，将 WASB 驱动程序与具有分层命名空间的帐户结合使用时，有几个问题。 建议在工作负荷中使用 [Azure Blob File System (ABFS)](data-lake-storage-abfs-driver.md) 驱动程序。 
 

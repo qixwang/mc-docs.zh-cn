@@ -1,5 +1,5 @@
 ---
-title: 迁移后管理单一数据库和共用数据库 - Azure SQL 数据库 | Microsoft Docs
+title: 迁移后管理单一数据库和共用数据库
 description: 了解如何在迁移到 Azure SQL 数据库后管理数据库。
 services: sql-database
 ms.service: sql-database
@@ -9,15 +9,15 @@ ms.devlang: ''
 ms.topic: conceptual
 author: WenJason
 ms.author: v-jay
-ms.reviewer: carlrab
+ms.reviewer: sstein
 origin.date: 02/13/2019
-ms.date: 09/30/2019
-ms.openlocfilehash: 4381ea88c4d3f47abc8ffec3779aa0d2fd118316
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.date: 03/30/2020
+ms.openlocfilehash: db9d3ee9c3c78ecda0c9d509b00bc31aeaf14e87
+ms.sourcegitcommit: 90660563b5d65731a64c099b32fb9ec0ce2c51c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79293458"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80341819"
 ---
 # <a name="new-dba-in-the-cloud---managing-your-single-and-pooled-databases-in-azure-sql-database"></a>云中的新 DBA - 管理 Azure SQL 数据库中单一和共用数据库
 
@@ -92,7 +92,7 @@ ms.locfileid: "79293458"
 
 SQL 数据库严肃对待安全性和隐私性。 SQL 数据库中的安全性在数据库级别和平台级别实施，在划分为多个层后最好理解。 在每个层，可以控制和提供应用程序的最佳安全性。 这些层包括：
 
-- 标识和身份验证（[Windows/SQL 身份验证和 Azure Active Directory [AAD] 身份验证](sql-database-control-access.md)。）
+- 标识和身份验证（[SQL 身份验证和 Azure Active Directory [AAD] 身份验证](sql-database-manage-logins.md)）。
 - 监视活动（[审核](sql-database-auditing.md)和[威胁检测](sql-database-threat-detection.md)）。
 - 保护实际数据（[透明数据加密 [TDE]](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql) 和 [Always Encrypted [AE]](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine)）。 
 - 控制对敏感和特权数据的访问（[行级安全性](https://docs.microsoft.com/sql/relational-databases/security/row-level-security)和[动态数据掩码](https://docs.microsoft.com/sql/relational-databases/security/dynamic-data-masking)）。
@@ -101,10 +101,10 @@ SQL 数据库严肃对待安全性和隐私性。 SQL 数据库中的安全性�
 
 ### <a name="what-user-authentication-methods-are-offered-in-sql-database"></a>SQL 数据库中提供哪些用户身份验证方法
 
-SQL 数据库中提供[两种身份验证方法](sql-database-control-access.md#authentication)：
+SQL 数据库中提供了两种身份验证方法：
 
 - [Azure Active Directory 身份验证](sql-database-aad-authentication.md)
-- SQL 身份验证
+- [SQL 身份验证](https://docs.microsoft.com/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication)
 
 不支持传统的 Windows 身份验证。 Azure Active Directory (AD) 是集中式的标识和访问管理服务。 使用此服务可以十分方便地为组织的所有人员提供单一登录访问 (SSO)。 这意味着，为简化身份验证，凭据将在所有 Azure 服务之间共享。 AAD 支持 [MFA（多重身份验证）](sql-database-ssms-mfa-authentication.md)，只需[点击几下鼠标](../active-directory/hybrid/how-to-connect-install-express.md)，AAD 就能与 Windows Server Active Directory 集成。 SQL 身份验证的工作方式与以往并无不同。 提供用户名/密码后，即可对给定 SQL 数据库服务器上任何数据库的用户进行身份验证。 此外，还允许 SQL 数据库和 SQL 数据仓库在 Azure AD 域中提供多重身份验证和来宾用户帐户。 如果你已经有一个本地 Active Directory，则可以将该目录与 Azure Active Directory 联合在一起，以将目录扩展到 Azure。
 
@@ -225,7 +225,7 @@ Always Encrypted 中还有[两个密钥层次结构](https://docs.microsoft.com/
 
 ### <a name="is-sql-database-compliant-with-any-regulatory-requirements-and-how-does-that-help-with-my-own-organizations-compliance"></a>SQL 数据库是否符合任何规章要求，这对我组织的合规性有什么帮助
 
-SQL 数据库符合一系列合规要求。 若要查看 SQL 数据库符合的最新一组合规要求，请访问 [Azure 信任中心](https://www.trustcenter.cn)，并向下钻取对你的组织而言至关重要的合规性，以了解 SQL 数据库是否包含在合规的 Azure 服务中。 需要注意的是，尽管 SQL 数据库可能被认证为合规服务，它有助于确保组织服务的符合性，但不会自动保证这一点。
+SQL 数据库符合一系列合规要求。 若要查看 SQL 数据库已满足的最新一组合规要求，请访问 [Azure 信任中心](https://www.trustcenter.cn)，并向下钻取到对你的组织至关重要的合规要求，以了解 SQL 数据库是否包含在合规的 Azure 服务下。 需要注意的是，尽管 SQL 数据库可能被认证为合规服务，它有助于确保组织服务的符合性，但不会自动保证这一点。
 
 ## <a name="intelligent-database-monitoring-and-maintenance-after-migration"></a>迁移后的智能数据库监视和维护
 

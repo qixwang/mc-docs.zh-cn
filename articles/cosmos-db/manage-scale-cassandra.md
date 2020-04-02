@@ -5,14 +5,14 @@ author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
 origin.date: 01/13/2020
-ms.date: 03/09/2020
+ms.date: 03/30/2020
 ms.author: v-yeche
-ms.openlocfilehash: c70249c03f54e6a0308e2f9b5d1a435051cb0565
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.openlocfilehash: 3538a6f8c5ca6d7d690f756c41dae6dcf0ebf196
+ms.sourcegitcommit: 303a16c7117b6f3495ef0493b4ae8ccb67d7dbba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78850578"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80342369"
 ---
 # <a name="elastically-scale-an-azure-cosmos-db-cassandra-api-account"></a>弹性缩放 Azure Cosmos DB Cassandra API 帐户
 
@@ -33,8 +33,7 @@ ms.locfileid: "78850578"
 * [使用 Azure 门户手动管理](#use-azure-portal)
 * [使用控制平面功能以编程方式管理](#use-control-plane)
 * [结合使用 CQL 命令和特定的 SDK 以编程方式管理](#use-cql-queries)
-
-<!--Not Available on * [Dynamically by using Autopilot](#use-autopilot)-->
+* [使用 Autopilot 动态管理](#use-autopilot)
 
 以下部分解释了每种方法的优点和缺点。 然后，可以确定最佳的策略，以便在系统的缩放需求、整体成本以及解决方案的效率需求之间做出平衡。
 
@@ -61,8 +60,12 @@ ms.locfileid: "78850578"
 
 此方法的优点在于，能够以适合应用程序的自定义方式动态应对缩放需求。 使用此方法时，仍可享用标准的 RU/秒费用和费率。 如果系统的缩放需求在大部分情况下是可预测的（大约为 70% 或以上），则与使用 Autopilot 相比，结合使用 SDK 和 CQL 可能是更经济高效的自动缩放方法。 此方法的缺点是，实现重试可能会很复杂，同时，速率限制可能会增大延迟。
 
+<a name="use-autopilot"></a>
+## <a name="use-autopilot"></a>使用 Autopilot
 
-<!--Not Available on ## Use Autopilot-->
+除了手动或以编程方式预配吞吐量外，还可以在 Autopilot 模式下配置 Azure Cosmos 容器。 Autopilot 模式将根据消耗需求在指定 RU 范围内自动立即缩放，而不会影响 SLA。 若要了解详细信息，请参阅[在 autopilot 模式下创建 Azure Cosmos 容器和数据库](provision-throughput-autopilot.md)一文。
+
+此方法的优点是，它是在系统中管理缩放需求的最简单方法。 它保证不会在已配置的 RU 范围内  应用速率限制。 缺点是，如果系统中的缩放需求是可预测的，那么与使用上述定制控制平面或 SDK 级别方法相比，Autopilot 处理缩放需求的成本效益可能较低。
 
 ## <a name="next-steps"></a>后续步骤
 

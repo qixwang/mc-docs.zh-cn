@@ -4,17 +4,17 @@ description: 如何使用 PowerShell 对 Azure 队列存储执行操作
 author: WenJason
 ms.author: v-jay
 origin.date: 05/15/2019
-ms.date: 02/10/2020
+ms.date: 03/30/2020
 ms.service: storage
 ms.subservice: queues
 ms.topic: conceptual
 ms.reviewer: cbrooks
-ms.openlocfilehash: ca055a29bab20db4f2357e92f9279299029d4824
-ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
+ms.openlocfilehash: 17ffbc2c53b1d9ab3b949ee9f00dbcd98a865d71
+ms.sourcegitcommit: 90d01d08faf8adb20083363a8e4e5aab139cd9b2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77028976"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80290457"
 ---
 # <a name="perform-azure-queue-storage-operations-with-azure-powershell"></a>使用 Azure PowerShell 执行 Azure 队列存储操作
 
@@ -79,7 +79,7 @@ $ctx = $storageAccount.Context
 
 ## <a name="create-a-queue"></a>创建队列
 
-以下示例首先使用存储帐户上下文（包括存储帐户名称及其访问密钥）与 Azure 存储建立连接。 接下来，它将调用 [New-AzStorageQueue](https://docs.microsoft.com/powershell/module/az.storage/New-AzStorageQueue) cmdlet 以创建名为“queuename”的队列。
+以下示例首先使用存储帐户上下文（包括存储帐户名称及其访问密钥）与 Azure 存储建立连接。 接下来，它将调用 [New-AzStorageQueue](https://docs.microsoft.com/powershell/module/az.storage/New-AzStorageQueue) cmdlet 以创建名为“howtoqueue”的队列。
 
 ```powershell
 $queueName = "howtoqueue"

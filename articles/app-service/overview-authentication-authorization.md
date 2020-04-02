@@ -8,12 +8,12 @@ ms.date: 02/17/2020
 ms.author: v-tawe
 ms.reviewer: mahender
 ms.custom: seodec18
-ms.openlocfilehash: 070ca86999eb408cc44fe1f3eb964b09a5f0ebd6
-ms.sourcegitcommit: ee2a3063185cd4c5dc24901366dbb726119d045d
+ms.openlocfilehash: 79fea0e83840af4dce003a1c1aefe2f04104dccc
+ms.sourcegitcommit: b2f2bb08ab1b5ccb3c596d84b3b6ddca5bba3903
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76979346"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80151720"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service"></a>Azure 应用服务中的身份验证和授权
 
@@ -60,7 +60,7 @@ Azure 应用服务提供内置的身份验证和授权支持。只需在 Web 应
 
 应用服务提供内置的令牌存储，这是与 Web 应用、API 或本机移动应用的用户相关联的令牌存储库。 对任何提供程序启用身份验证时，此令牌存储可立即供应用使用。 如果应用程序代码需要代表用户访问这些提供程序中的数据，例如： 
 
-- 发布到经过身份验证的用户的 Facebook 时间线
+- 发布到经过身份验证用户的 MicrosoftAccount 时间线
 - 从 Azure Active Directory 图形 API 甚至 Microsoft Graph 中读取用户的企业数据
 
 通常，必须编写代码才能在应用程序中收集、存储和刷新这些令牌。 使用令牌存储，只需在需要令牌时才[检索令牌](app-service-authentication-how-to.md#retrieve-tokens-in-app-code)；当令牌失效时，可以[告知应用服务刷新令牌](app-service-authentication-how-to.md#refresh-identity-provider-tokens)。 
@@ -75,7 +75,7 @@ Azure 应用服务提供内置的身份验证和授权支持。只需在 Web 应
 
 ## <a name="identity-providers"></a>标识提供者
 
-应用服务使用[联合标识](https://en.wikipedia.org/wiki/Federated_identity)，在其中，第三方标识提供者会自动管理用户标识和身份验证流。 默认提供五个标识提供者： 
+应用服务使用[联合标识](https://wikipedia.org/wiki/Federated_identity)，在其中，第三方标识提供者会自动管理用户标识和身份验证流。 默认提供五个标识提供者： 
 
 | 提供程序 | 登录终结点 |
 | - | - |

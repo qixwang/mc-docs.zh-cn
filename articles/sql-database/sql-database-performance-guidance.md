@@ -1,6 +1,6 @@
 ---
-title: 性能优化指南
-description: 了解如何使用建议手动优化 Azure SQL 数据库查询性能。
+title: 应用程序和数据库的性能优化指南
+description: 了解如何在 Azure SQL 数据库中优化数据库应用程序和数据库以提高性能。
 services: sql-database
 ms.service: sql-database
 ms.subservice: performance
@@ -9,17 +9,17 @@ ms.devlang: ''
 ms.topic: conceptual
 author: WenJason
 ms.author: v-jay
-ms.reviewer: ''
-origin.date: 01/25/2019
-ms.date: 12/16/2019
-ms.openlocfilehash: 4580465ff9c29c778bcc0874a0660c805b74b699
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.reviewer: carlrab; jrasnick
+origin.date: 03/10/2020
+ms.date: 03/30/2020
+ms.openlocfilehash: e38a5c1d04de57a7ff9aa8af5e5225d22979ac94
+ms.sourcegitcommit: 90660563b5d65731a64c099b32fb9ec0ce2c51c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79293517"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80341805"
 ---
-# <a name="manual-tune-query-performance-in-azure-sql-database"></a>手动优化 Azure SQL 数据库中的查询性能
+# <a name="tune-applications-and-databases-for-performance-in-azure-sql-database"></a>在 Azure SQL 数据库中优化应用程序和数据库以提高性能
 
 如果你确定遇到了与 SQL 数据库相关的性能问题，则以下文章可为你提供帮助：
 
@@ -233,6 +233,10 @@ ORDER BY start_time DESC
 
 如果工作负荷由一组重复的查询组成，则捕获并验证所做计划选择的最优性通常很有意义，因为这样做会使托管数据库所需的资源大小单位降至最低。 对其进行验证后，应偶尔重新检查计划，以帮助你确保其未降级。 可以详细了解[查询提示 (TRANSACT-SQL)](https://msdn.microsoft.com/library/ms181714.aspx)。
 
+### <a name="very-large-database-architectures"></a>特大型数据库体系结构
+
+在用于 Azure SQL 数据库中单一数据库的[超大规模](sql-database-service-tier-hyperscale.md)服务层级发布之前，客户过去常达到单个数据库的容量限制。 弹性池中的共用数据库和托管实例中的实例数据库仍然存在这些容量限制。 以下两节介绍了在无法使用“超大规模”服务层级时解决 Azure SQL 数据库中特大型数据库问题的两个选项。
+
 ### <a name="cross-database-sharding"></a>跨数据库分片
 
 由于 Azure SQL 数据库在商品硬件上运行，因此单一数据库的容量限制低于传统的本地 SQL Server 安装。 在数据库操作超出 Azure SQL 数据库中单一数据库的限制时，一些客户使用分片技术将这些操作分摊到多个数据库上。 在 Azure SQL 数据库上使用分片技术的大多数客户将单个维度的数据拆分到多个数据库上。 对于该方法，需了解 OLTP 应用程序执行的事务经常仅适用于架构中的一行或少数几行。
@@ -244,7 +248,7 @@ ORDER BY start_time DESC
 
 数据库分片不会减少解决方案的聚合资源容量，但在支持跨多个数据库的极大型解决方案时很有效。 每个数据库可以使用不同的计算大小来运行，以支持非常大的、资源要求高的“有效”数据库。
 
-### <a name="functional-partitioning"></a>功能分区
+#### <a name="functional-partitioning"></a>功能分区
 
 SQL Server 用户经常将许多功能集中在单一数据库内。 例如，如果应用程序包含管理商店库存的逻辑，则该数据库可能包含与库存、跟踪采购订单、存储过程、管理月末报告的索引视图或具体化视图关联的逻辑。 此方法可轻松管理数据库，进行备份之类的操作，但也要求用户调整硬件大小以处理应用程序所有功能的峰值负载。
 

@@ -10,12 +10,12 @@ ms.date: 02/17/2020
 ms.topic: conceptual
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: 2f163f39b7a8296181fefb8c07fb07b8c3e2e7c4
-ms.sourcegitcommit: 888cbc10f2348de401d4839a732586cf266883bf
+ms.openlocfilehash: a405e8fc648e5e2cf93e9bd202861c8c6527a0fe
+ms.sourcegitcommit: 1d3d8dfdaf6281f06640cbee7124a1e8bf102c50
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77028188"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80243980"
 ---
 # <a name="set-your-azure-portal-preferences"></a>设置 Azure 门户首选项
 
@@ -64,15 +64,15 @@ ms.locfileid: "77028188"
 
 默认视图设置控制登录时显示的 Azure 门户视图。 可以选择默认打开 Azure 主页或仪表板视图。
 
-* 无法自定义**主页**。  主页中显示了热门 Azure 服务的快捷方式，并列出了最近用过的资源。 我们还会提供 Microsoft Learn 和 Azure 路线图等资源的有用链接。
+* 无法自定义主页  。  主页将显示热门 Azure 服务的快捷方式，并列出你最近使用的资源。 我们还会提供 Microsoft Learn 和 Azure 路线图等资源的有用链接。
 * 可以自定义仪表板，以创建专为你设计的工作区。 例如，可以生成一个以项目、任务或角色为中心的仪表板。 如果选择“仪表板”，则默认视图将切换到最近使用的仪表板。 
 
 ### <a name="choose-a-portal-menu-mode"></a>选择门户菜单模式
 
 门户菜单的默认模式控制门户菜单在页面上占用的空间量。
 
-* 当门户菜单处于**浮出**模式时，在调用之前它会隐藏。 选择菜单图标可以打开或关闭菜单。
-* 如果为门户菜单选择**停靠**模式，则它始终可见。 可以折叠菜单以提供更多的工作空间。 
+* 当门户菜单处于“浮出”  模式时，它将被隐藏，直到你需要它为止。 选择菜单图标可以打开或关闭菜单。
+* 如果为门户菜单选择“停靠”  模式，则它始终可见。 可以折叠菜单以提供更多的工作空间。 
 
 ### <a name="choose-a-theme"></a>选择主题
 
@@ -94,7 +94,7 @@ ms.locfileid: "77028188"
 
    ![显示 Azure 门户全局页头的屏幕截图，其中显示突出了“通知”](./media/set-preferences/read-notifications.png)
 
-若要阅读以前会话中的通知，请查看活动日志中的事件。 有关详细信息，请参阅[查看和检索 Azure 活动日志事件](/azure/azure-monitor/platform/activity-log-view)。
+若要阅读以前会话中的通知，请查看活动日志中的事件。 有关详细信息，请参阅[查看和检索 Azure 活动日志事件](/azure-monitor/platform/activity-log-view)。
 
 ### <a name="settings-under-useful-links"></a>有用链接下的设置
 

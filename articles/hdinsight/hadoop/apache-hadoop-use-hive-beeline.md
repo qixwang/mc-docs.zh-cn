@@ -18,12 +18,12 @@ ms.workload: big-data
 origin.date: 02/25/2020
 ms.date: 03/23/2020
 ms.author: v-yiso
-ms.openlocfilehash: 1d95a426c71e04e11a1494105356488d0ce9530c
-ms.sourcegitcommit: 32997a7d7585deaeb0ab7b8f928d397b18b343fa
+ms.openlocfilehash: 33556d294bb2ac673f20a61e81bfc42b638103c9
+ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79295972"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80343580"
 ---
 # <a name="use-the-apache-beeline-client-with-apache-hive"></a>将 Apache Beeline 客户端与 Apache Hive 配合使用
 
@@ -229,7 +229,10 @@ beeline -u 'jdbc:hive2://clustername-int.azurehdinsight.cn:443/;ssl=true;transpo
     | [ERROR]  | 3      |
     +----------+--------+--+
     1 row selected (47.351 seconds)
-6. Exit Beeline:
+    ```
+    
+    
+6. 退出 Beeline：
 
     ```bash
     !exit

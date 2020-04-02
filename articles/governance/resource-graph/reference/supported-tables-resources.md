@@ -1,16 +1,16 @@
 ---
 title: 支持的资源管理器资源类型
 description: 提供 Azure Resource Graph 和更改历史记录支持的资源管理器资源类型的列表。
-origin.date: 02/25/2020
-ms.date: 03/23/2020
+origin.date: 03/09/2020
+ms.date: 03/16/2020
 ms.topic: reference
 ms.author: v-tawe
-ms.openlocfilehash: e5e46e5c612353970cd27115f25f2a6cd48a9b31
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: 3d71341d33764a442b043ca6dd93a1d46d4ee46d
+ms.sourcegitcommit: 1d3d8dfdaf6281f06640cbee7124a1e8bf102c50
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79291904"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80243901"
 ---
 # <a name="azure-resource-graph-table-and-resource-type-reference"></a>Azure Resource Graph 表和资源类型引用
 
@@ -124,6 +124,7 @@ Azure Resource Graph 支持 [Azure 资源管理器](../../../azure-resource-mana
 - microsoft.compute/virtualmachinescalesets
 - microsoft.containerinstance/containergroups
 - microsoft.containerregistry/registries
+- microsoft.containerregistry/registries/agentpools
 - microsoft.containerregistry/registries/buildtasks
 - microsoft.containerregistry/registries/replications
 - microsoft.containerregistry/registries/taskruns
@@ -154,6 +155,7 @@ Azure Resource Graph 支持 [Azure 资源管理器](../../../azure-resource-mana
 - microsoft.dbforpostgresql/servergroups
 - microsoft.dbforpostgresql/servers
 - microsoft.dbforpostgresql/serversv2
+- microsoft.dbforpostgresql/singleservers
 - microsoft.deploymentmanager/artifactsources
 - microsoft.deploymentmanager/rollouts
 - microsoft.deploymentmanager/servicetopologies
@@ -212,6 +214,7 @@ Azure Resource Graph 支持 [Azure 资源管理器](../../../azure-resource-mana
 - microsoft.insights/metricalerts
 - microsoft.insights/notificationgroups
 - microsoft.insights/notificationrules
+- microsoft.insights/privatelinkscopes
 - microsoft.insights/scheduledqueryrules
 - microsoft.insights/webtests
 - microsoft.insights/workbooks
@@ -349,6 +352,7 @@ Azure Resource Graph 支持 [Azure 资源管理器](../../../azure-resource-mana
 - microsoft.search/searchservices
 - microsoft.security/automations
 - microsoft.security/iotsecuritysolutions
+- microsoft.securitydetonation/chambers
 - microsoft.servicebus/namespaces
 - microsoft.servicefabric/clusters
 - microsoft.servicefabric/containergroupsets
@@ -413,6 +417,7 @@ Azure Resource Graph 支持 [Azure 资源管理器](../../../azure-resource-mana
 - microsoft.web/connections
 - microsoft.web/customapis
 - microsoft.web/hostingenvironments
+- microsoft.web/kubeenvironments
 - microsoft.web/serverfarms
 - microsoft.web/sites
 - microsoft.web/sites/premieraddons

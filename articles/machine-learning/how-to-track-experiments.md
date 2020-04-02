@@ -13,12 +13,12 @@ ms.topic: conceptual
 origin.date: 12/05/2019
 ms.date: 03/16/2020
 ms.custom: seodec18
-ms.openlocfilehash: b18d61a58a2494c34ec7b8b6a8e620393b6b6675
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: a1c180268020aa78dabf480c71a19989a8f41499
+ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79292905"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80343375"
 ---
 # <a name="monitor-azure-ml-experiment-runs-and-metrics"></a>监视 Azure ML 试验运行和指标
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -41,7 +41,7 @@ ms.locfileid: "79292905"
 |列表|函数：<br>`run.log_list(name, value, description='')`<br><br>示例：<br>run.log_list("accuracies", [0.6, 0.7, 0.87]) | 使用给定名称将值列表记录到运行中。|
 |行|函数：<br>`run.log_row(name, description=None, **kwargs)`<br>示例：<br>run.log_row("Y over X", x=1, y=0.4) | 使用 log_row  创建包含多个列的指标，如 kwargs 中所述。 每个命名的参数会生成一个具有指定值的列。  可调用 log_row  一次，记录一个任意元组，或在一个循环中调用多次，生成一个完整表格。|
 |表|函数：<br>`run.log_table(name, value, description='')`<br><br>示例：<br>run.log_table("Y over X", {"x":[1, 2, 3], "y":[0.6, 0.7, 0.89]}) | 使用给定名称将字典对象记录到运行中。 |
-|映像|函数：<br>`run.log_image(name, path=None, plot=None)`<br><br>示例：<br>`run.log_image("ROC", plt)` | 将图像记录到运行记录中。 使用 log_image 在运行中记录图像文件或 matplotlib 图。  运行记录中可显示和比较这些图像。|
+|映像|函数：<br>`run.log_image(name, path=None, plot=None)`<br><br>示例：<br>`run.log_image("ROC", plot=plt)` | 将图像记录到运行记录中。 使用 log_image 在运行中记录图像文件或 matplotlib 图。  运行记录中可显示和比较这些图像。|
 |标记一个运行|函数：<br>`run.tag(key, value=None)`<br><br>示例：<br>run.tag("selected", "yes") | 使用一个字符串键和可选字符串值标记运行。|
 |上传文件或目录|函数：<br>`run.upload_file(name, path_or_stream)`<br> <br> 示例：<br>run.upload_file("best_model.pkl", "./model.pkl") | 将文件上传到运行记录。 在指定输出目录中自动运行捕获文件，对于大多数运行类型，该目录默认为 "./outputs"。  仅当需要上传其他文件或未指定输出目录时使用 upload_file。 建议在名称中添加 `outputs` 以便将其上传到输出目录。 可通过调用 `run.get_file_names()` 列出与此运行记录关联的所有文件|
 
@@ -72,7 +72,9 @@ ms.locfileid: "79292905"
 
 下面的示例在本地 Jupyter 笔记本中本地训练简单的 sklearn 岭模型。 若要详细了解如何将试验提交到不同的环境，请参阅[使用 Azure 机器学习为模型定型设置计算目标](/machine-learning/how-to-set-up-training-targets)。
 
-1. 在本地 Jupyter 笔记本中创建训练脚本。 
+### <a name="load-the-data"></a>加载数据
+
+本示例使用 scikit-learn 附带的糖尿病数据集（一个众所周知的小型数据集）。 此单元格会加载该数据集，并将其拆分为随机训练集和测试集。
 
    ```python
    # load diabetes dataset, a well-known small dataset that comes with scikit-learn
@@ -95,8 +97,9 @@ ms.locfileid: "79292905"
    print('Mean Squared Error is', mean_squared_error(preds, data['test']['y']))
    joblib.dump(value = reg, filename = 'model.pkl');
    ```
-
-2. 使用 Azure 机器学习 SDK 添加试验跟踪并将持久化模型上传到试验运行记录。 以下代码添加标记、日志，并将模型文件上传到试验运行。
+   
+### <a name="add-tracking"></a>添加跟踪
+使用 Azure 机器学习 SDK 添加试验跟踪并将持久化模型上传到试验运行记录。 以下代码添加标记、日志，并将模型文件上传到试验运行。
 
    ```python
     # Get an experiment object from Azure Machine Learning
@@ -128,7 +131,7 @@ ms.locfileid: "79292905"
     run.complete()
    ```
 
-    脚本以 ```run.complete()``` 结束，将运行标记为已完成。  此函数通常用于交互式 Notebook 方案。
+    The script ends with ```run.complete()```, which marks the run as completed.  This function is typically used in interactive notebook scenarios.
 
 ## <a name="option-2-use-scriptrunconfig"></a>选项 2：使用 ScriptRunConfig
 

@@ -12,12 +12,12 @@ ms.topic: quickstart
 origin.date: 02/03/2020
 ms.date: 02/21/2020
 ms.author: v-lingwu
-ms.openlocfilehash: 26557e16969d6d5f17a89397579bf3ec595eaf04
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.openlocfilehash: c823541571ca8e42ed6c3a70b3158c864776bd73
+ms.sourcegitcommit: 303a16c7117b6f3495ef0493b4ae8ccb67d7dbba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78154548"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80342414"
 ---
 # <a name="quickstart-get-intent-with-a-browser"></a>快速入门：使用浏览器获取意向
 
@@ -27,7 +27,7 @@ ms.locfileid: "78154548"
 
 若要查询公共应用，需要：
 
-* 自己的语言理解 (LUIS) 密钥。 如果你没有用于创建密钥的订阅，可以注册一个[免费帐户](https://azure.microsoft.com/free/)。 无法使用 LUIS 创作密钥。 
+* 自己的语言理解 (LUIS) 密钥。 如果还没有用于创建密钥的订阅，可以注册一个[试用帐户](https://wd.azure.cn/zh-cn/pricing/1rmb-trial-full)。 无法使用 LUIS 创作密钥。 
 * 公共应用的 ID：`df67dcdb-c37d-46af-88e1-8b97951ca1c2`。 
 
 ## <a name="use-the-browser-to-see-predictions"></a>使用浏览器查看预测

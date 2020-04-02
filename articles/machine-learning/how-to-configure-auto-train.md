@@ -12,12 +12,12 @@ ms.topic: conceptual
 origin.date: 11/04/2019
 ms.date: 03/09/2020
 ms.custom: seodec18
-ms.openlocfilehash: f3030941794be9fe741a346a0646fe857dc2b11c
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.openlocfilehash: 219dc093260d3eaf2182771511dbc395875b7887
+ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78154992"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80343561"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>使用 Python 配置自动化 ML 试验
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -36,7 +36,7 @@ ms.locfileid: "78154992"
 * 探索模型指标
 * 注册和部署模型
 
-如果你更喜欢无代码体验，还可以[在 Azure 机器学习工作室中创建自动化学习试验](how-to-create-portal-experiments.md)。
+如果你更喜欢无代码体验，还可以[在 Azure 机器学习工作室中创建自动化学习试验](how-to-use-automated-ml-for-ml-models.md)。
 
 ## <a name="select-your-experiment-type"></a>选择试验类型
 
@@ -155,7 +155,7 @@ automl_config = AutoMLConfig(task = "classification")
         task='classification',
         primary_metric='AUC_weighted',
         experiment_timeout_minutes=30,
-        blacklist_models='XGBoostClassifier',
+        blacklist_models=['XGBoostClassifier'],
         training_data=train_data,
         label_column_name=label,
         n_cross_validations=2)
@@ -166,7 +166,7 @@ automl_config = AutoMLConfig(task = "classification")
     automl_regressor = AutoMLConfig(
         task='regression',
         experiment_timeout_minutes=60,
-        whitelist_models='kNN regressor'
+        whitelist_models=['kNN regressor'],
         primary_metric='r2_score',
         training_data=train_data,
         label_column_name=label,
@@ -192,7 +192,7 @@ automl_config = AutoMLConfig(task = "classification")
 
 ### <a name="data-featurization"></a>数据特征化
 
-在每个自动化机器学习试验中，数据会[自动进行缩放和规范化](concept-automated-ml.md#preprocess)，以帮助灵敏应对对不同规模特征的特定算法  。  不过，你还可以启用其他特征化，例如缺失值插补、编码和转换。 [详细了解包含的特征化](how-to-create-portal-experiments.md#featurization)。
+在每个自动化机器学习试验中，数据会[自动进行缩放和规范化](concept-automated-ml.md#preprocess)，以帮助灵敏应对对不同规模功能的特定算法  。  不过，你还可以启用其他特征化，例如缺失值插补、编码和转换。 [详细了解包含的功能化](how-to-use-automated-ml-for-ml-models.md#featurization)。
 
 配置试验时，可以启用高级设置 `featurization`。 下表显示了 [`AutoMLConfig` 类](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig?view=azure-ml-py)中的特征化的可接受设置。
 
@@ -200,7 +200,7 @@ automl_config = AutoMLConfig(task = "classification")
 | ------------- | ------------- |
 |`"featurization":`&nbsp;`'FeaturizationConfig'`| 指示应当使用自定义特征化步骤。 [了解如何自定义特征化](how-to-configure-auto-train.md#customize-feature-engineering)。|
 |`"featurization": 'off'`| 指示不应当自动执行特征化步骤。|
-|`"featurization": 'auto'`| 指示在处理过程中自动执行[数据护栏和特征化步骤](how-to-create-portal-experiments.md#advanced-featurization-options)。|
+|`"featurization": 'auto'`| 指示在处理过程中自动执行[数据护栏和特征化步骤](how-to-use-automated-ml-for-ml-models.md#advanced-featurization-options)。|
 
 > [!NOTE]
 > 自动化机器学习特征化步骤（特征规范化、处理缺失数据，将文本转换为数字等）成为了基础模型的一部分。 使用模型进行预测时，将自动向输入数据应用在训练期间应用的相同特征化步骤。
@@ -243,7 +243,7 @@ automl_config = AutoMLConfig(task = 'forecasting',
                              **time_series_settings)
 ```
 
-### <a name="ensemble"></a> 集成配置
+### <a name="ensemble-configuration"></a><a name="ensemble"></a> 集成配置
 
 默认情况下启用集成模型，并在自动机器化学习运行中显示为最终的运行迭代次数。 当前支持的集成方法是投票和堆栈。 投票是使用加权平均值作为软投票实现的，堆栈实现使用两层实现，其中第一层具有与投票集成相同的模型，第二层模型用于从第一层中查找模型的最佳组合。 如果使用 ONNX 模型，或启用了模型可解释性，则会禁用堆栈，并仅使用投票  。
 

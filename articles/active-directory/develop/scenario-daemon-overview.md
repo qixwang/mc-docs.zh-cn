@@ -12,21 +12,21 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/06/2020
+ms.date: 03/23/2020
 ms.author: v-junlch
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: f364c5437ce457a938d2b46a2f3f0352206b8ef6
-ms.sourcegitcommit: 7c80405a6b48380814b4b414e9f8a5756c007880
+ms.openlocfilehash: 50743c7df9e539c925057b068f5f202607948f8b
+ms.sourcegitcommit: 6568c59433d7e80ab06e9fe76d4791f761ed6775
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77067655"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80243105"
 ---
 # <a name="scenario-daemon-application-that-calls-web-apis"></a>方案：用于调用 Web API 的守护程序应用程序
 
 了解在构建用于调用 Web API 的守护程序应用程序时需要的所有项目。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 [!INCLUDE [Pre-requisites](../../../includes/active-directory-develop-scenarios-prerequisites.md)]
 
@@ -42,7 +42,7 @@ ms.locfileid: "77067655"
 - 执行批处理作业的桌面应用程序（例如 Windows 上的 Windows 服务，或 Linux 上的守护程序进程），或者在后台运行的操作系统服务
 - 需操作目录而非特定用户的 Web API
 
-另一种常见的情况是非守护程序应用程序使用客户端凭据：出于技术方面的原因，即使是在代表用户进行操作，它们也需要使用其自己的标识来访问 Web API 或资源。 例如，访问 Azure Key Vault 或用于缓存的 Azure SQL 数据库中的机密。
+非守护程序应用程序使用客户端凭据的另一种常见情况是：即使它们代表用户进行操作，出于技术原因，它们也需要以自己的标识访问 Web API 或资源。 例如，访问 Azure Key Vault 或用于缓存的 Azure SQL 数据库中的机密。
 
 获取其自身标识的令牌的应用程序具有以下特点：
 
@@ -68,4 +68,3 @@ ms.locfileid: "77067655"
 > [!div class="nextstepaction"]
 > [守护程序应用 - 应用注册](./scenario-daemon-app-registration.md)
 
-<!-- Update_Description: wording update -->

@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 03/16/2020
 ms.author: v-junlch
-ms.openlocfilehash: 811b22660102e1b084e1469a2af1aa1cfb412868
-ms.sourcegitcommit: 71a386ca0d0ecb79a123399b6ab6b8c70ea2aa78
+ms.openlocfilehash: cf9def3f08a3660bc53a0cec1d4208e15fd90a80
+ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2020
-ms.locfileid: "79497296"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80343361"
 ---
 # <a name="application-gateway-components"></a>应用程序网关组件
 
@@ -55,7 +55,7 @@ V1 SKU 可以配置为支持静态或动态内部 IP 地址和动态公共 IP �
 - 在侦听器配置中指定 HTTP 或 HTTPS 协议。
 - 原生支持 [WebSocket 和 HTTP/2 协议](features.md#websocket-and-http2-traffic)，默认已启用 [WebSocket 支持](application-gateway-websocket.md)。 用户无法通过配置设置来选择性地启用或禁用 WebSocket 支持。 对 HTTP 和 HTTPS 侦听器使用 WebSocket。
 
-使用 HTTPS 侦听器进行 SSL 终止。 HTTPS 侦听器可将加密和解密工作卸载到应用程序网关，以避免加密和解密开销给 Web 服务器造成负担。
+使用 HTTPS 侦听器进行 TLS 终止。 HTTPS 侦听器可将加密和解密工作卸载到应用程序网关，以避免加密和解密开销给 Web 服务器造成负担。
 
 ### <a name="custom-error-pages"></a>自定义错误页
 
@@ -111,7 +111,7 @@ V1 SKU 可以配置为支持静态或动态内部 IP 地址和动态公共 IP �
 
 应用程序网关使用此组件中详细指定的端口号、协议和其他设置，将流量路由到后端服务器（在包含 HTTP 设置的请求路由规则中指定）。
 
-HTTP 设置中使用的端口和协议确定应用程序网关与后端服务器之间的流量是要加密（提供端到端 SSL）还是不加密。
+HTTP 设置中使用的端口和协议确定应用程序网关与后端服务器之间的通信已加密（提供端到端 TLS）还是未加密。
 
 此组件还用于：
 

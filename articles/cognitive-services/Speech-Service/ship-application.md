@@ -9,15 +9,15 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 origin.date: 01/30/2020
-ms.date: 02/17/2020
+ms.date: 03/16/2020
 ms.author: v-tawe
 ms.custom: seodec18
-ms.openlocfilehash: 854a06c7dcb1c8dc6d1888e44bc6578ba198bbec
-ms.sourcegitcommit: 888cbc10f2348de401d4839a732586cf266883bf
+ms.openlocfilehash: dd2af971f90dd58dd7b262908948417c0b8b2636
+ms.sourcegitcommit: b2f2bb08ab1b5ccb3c596d84b3b6ddca5bba3903
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77028178"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80151530"
 ---
 # <a name="ship-an-application"></a>交付应用程序
 
@@ -53,7 +53,7 @@ ms.locfileid: "77028178"
 
 ## <a name="linux"></a>Linux
 
-语音 SDK 目前支持 Ubuntu 16.04、Ubuntu 18.04 和 Debian 9 发行版。
+语音 SDK 目前支持 Ubuntu 16.04、Ubuntu 18.04、Debian 9、RHEL 8、CentOS 8 发行版。
 对于本机应用程序，需要交付语音 SDK 库 `libMicrosoft.CognitiveServices.Speech.core.so`。
 请确保选择与应用程序匹配的版本（x86、x64）。 根据 Linux 版本，可能还需要包括以下依赖项：
 
@@ -74,6 +74,16 @@ sudo apt-get install libssl1.0.0 libasound2
 sudo apt-get update
 sudo apt-get install libssl1.0.2 libasound2
 ```
+
+在 RHEL/CentOS 8 上：
+
+```sh
+sudo yum update
+sudo yum install alsa-lib openssl
+```
+
+> [!NOTE]
+> 在 RHEL/CentOS 8 上，按照[如何配置 OpenSSL for Linux](~/articles/cognitive-services/speech-service/how-to-configure-openssl-linux.md) 上的说明进行操作。
 
 ## <a name="next-steps"></a>后续步骤
 

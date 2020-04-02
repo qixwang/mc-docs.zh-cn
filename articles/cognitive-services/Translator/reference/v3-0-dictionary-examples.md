@@ -1,22 +1,22 @@
 ---
 title: 文本翻译 API 字典示例方法
-titlesuffix: Azure Cognitive Services
-description: 使用文本翻译 API 字典示例方法。
+titleSuffix: Azure Cognitive Services
+description: 文本翻译 API 字典示例方法提供了一些示例，这些示例演示了如何在上下文中使用字典中的术语。
 services: cognitive-services
 author: rajdeep-in
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
-origin.date: 03/29/2018
-ms.date: 06/11/2019
+origin.date: 01/21/2020
+ms.date: 03/26/2020
 ms.author: v-junlch
-ms.openlocfilehash: 8e3283aea3b52d9448c6114aaa58a7305a48e231
-ms.sourcegitcommit: 259c97c9322da7add9de9f955eac275d743c9424
+ms.openlocfilehash: 443277be24bc156803d2369016567c89e5a3a531
+ms.sourcegitcommit: 303a16c7117b6f3495ef0493b4ae8ccb67d7dbba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2019
-ms.locfileid: "66830124"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80342400"
 ---
 # <a name="translator-text-api-30-dictionary-examples"></a>文本翻译 API 3.0：字典示例
 
@@ -34,45 +34,20 @@ https://api.translator.azure.cn/dictionary/examples?api-version=3.0
 
 查询字符串上传递的请求参数如下：
 
-<table width="100%">
-  <th width="20%">查询参数</th>
-  <th>说明</th>
-  <tr>
-    <td>api-version</td>
-    <td>必需参数。<br/>客户端所请求的 API 的版本。 值必须是 <code>3.0</code>。</td>
-  </tr>
-  <tr>
-    <td>from</td>
-    <td>必需参数。<br/>指定输入文本的语言。 源语言必须是 <code>dictionary</code> 范围中包含的<a href="./v3-0-languages.md" data-raw-source="[supported languages](./v3-0-languages.md)">支持的语言</a>之一。</td>
-  </tr>
-  <tr>
-    <td>to</td>
-    <td>必需参数。<br/>指定输出文本的语言。 目标语言必须是 <code>dictionary</code> 范围中包含的<a href="./v3-0-languages.md" data-raw-source="[supported languages](./v3-0-languages.md)">支持的语言</a>之一。</td>
-  </tr>
-</table>
+| 查询参数 | 说明 |
+| --------- | ----------- |
+| api-version <img width=200/> | 必需参数  。<br/>客户端所请求的 API 的版本。 值必须是 `3.0`。 |
+| from | 必需参数  。<br/>指定输入文本的语言。 源语言必须是 `dictionary` 范围中包含的[支持的语言](./v3-0-languages.md)之一。 |
+| to | 必需参数  。<br/>指定输出文本的语言。 目标语言必须是 `dictionary` 范围中包含的[支持的语言](./v3-0-languages.md)之一。  | 
 
 请求标头包括：
 
-<table width="100%">
-  <th width="20%">标头</th>
-  <th>说明</th>
-  <tr>
-    <td>身份验证标头</td>
-    <td>必需的请求标头。<br/>请参阅<a href="/cognitive-services/translator/reference/v3-0-reference#authentication">用于身份验证的可用选项</a>。</td>
-  </tr>
-  <tr>
-    <td>Content-Type</td>
-    <td>必需的请求标头。<br/>指定有效负载的内容类型。 可能的值为：<code>application/json</code></td>
-  </tr>
-  <tr>
-    <td>Content-Length</td>
-    <td>必需的请求标头。<br/>请求正文的长度。</td>
-  </tr>
-  <tr>
-    <td>X-ClientTraceId</td>
-    <td>可选。<br/>客户端生成的 GUID，用于唯一标识请求。 如果在查询字符串中使用名为 <code>ClientTraceId</code> 的查询参数包括了跟踪 ID，则可以省略此标头。</td>
-  </tr>
-</table> 
+| 头文件  | 说明 |
+| ------ | ----------- |
+| 身份验证标头 <img width=200/>  | 必需的请求标头  。<br/>请参阅<a href="/cognitive-services/translator/reference/v3-0-reference#authentication">用于身份验证的可用选项</a>。 |
+| Content-Type | 必需的请求标头  。<br/>指定有效负载的内容类型。 可能的值为：`application/json` |
+| Content-Length   | 必需的请求标头  。<br/>请求正文的长度。 |
+| X-ClientTraceId   | 可选  。<br/>客户端生成的 GUID，用于唯一标识请求。 如果在查询字符串中使用名为 `ClientTraceId` 的查询参数包括了跟踪 ID，则可以省略此标头。 |
 
 ## <a name="request-body"></a>请求正文
 
@@ -124,7 +99,7 @@ https://api.translator.azure.cn/dictionary/examples?api-version=3.0
 
 此示例演示如何查找由英语术语 `fly` 及其西班牙语翻译 `volar` 组成的配对的示例。
 
-# <a name="curltabcurl"></a>[curl](#tab/curl)
+# <a name="curl"></a>[curl](#tab/curl)
 
 ```
 curl -X POST "https://api.translator.azure.cn/dictionary/examples?api-version=3.0&from=en&to=es" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Ocp-Apim-Subscription-Region: your-region" -H "Content-Type: application/json" -d "[{'Text':'fly', 'Translation':'volar'}]"
@@ -163,6 +138,3 @@ curl -X POST "https://api.translator.azure.cn/dictionary/examples?api-version=3.
     }
 ]
 ```
-
-<!-- Update_Description: update metedata properties -->
-

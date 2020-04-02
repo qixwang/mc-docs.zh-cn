@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 origin.date: 12/11/2019
 ms.date: 03/16/2020
-ms.openlocfilehash: bebed8afec97f7276e4588be696baba475e44cb1
-ms.sourcegitcommit: d5eca3c6b03b206e441b599e5b138bd687a91361
+ms.openlocfilehash: c02b93ae3269a92dcb9f1f79c4f0dbb774d31169
+ms.sourcegitcommit: 1d3d8dfdaf6281f06640cbee7124a1e8bf102c50
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78934800"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80243725"
 ---
 # <a name="introduction-to-knowledge-stores-in-azure-cognitive-search"></a>Azure 认知搜索中的知识存储简介
 
@@ -42,7 +42,7 @@ ms.locfileid: "78934800"
 
 + 优化 AI 索引管道，同时调试步骤和技能集定义。 知识存储展示 AI 索引管道中的技能集定义的结果。 这些结果可用于设计更好的技能集，因为你可以清楚地看到扩充是什么样的。 可以使用 Azure 存储中的[存储资源管理器](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=windows)来查看知识存储的内容。
 
-+ 将数据整形到新表单中。 整形在技能集中编码化，但重点是技能集现在可以提供此功能。 Azure 认知搜索中的[整形器技能](cognitive-search-skill-shaper.md)已扩展为包含此任务。 通过整形，可以定义与数据预期用途保持一致的投影，同时保留关系。
++ 将数据整形到新表单中。 整形在技能集中编码化，但重点是技能集现在可以提供此功能。 Azure 认知搜索中的[整形程序技能](cognitive-search-skill-shaper.md)已扩展为包含此任务。 通过整形，可以定义与数据预期用途保持一致的投影，同时保留关系。
 
 > [!Note]
 > 刚刚接触 AI 扩充和认知技能？ Azure 认知搜索与认知服务视觉和语言功能集成，以对图像文件使用光学字符识别 (OCR)、对文本文件使用实体识别和关键短语提取等来提取和扩充源数据。 有关详细信息，请参阅 [Azure 认知搜索中的 AI 扩充](cognitive-search-concept-intro.md)。
@@ -137,7 +137,7 @@ ms.locfileid: "78934800"
 
 REST API 版本 `2019-05-06-Preview` 通过技能集中的附加定义提供知识存储。 除了参考资料以外，另请参阅[使用 Postman 创建知识存储](knowledge-store-create-rest.md)来了解有关如何调用 API 的详细信息。
 
-+ [创建技能集 (api-version=2019-05-06-Preview)](https://docs.microsoft.com/rest/api/searchservice/2019-05-06-preview/create-skillset) 
++ [创建技能组 (api-version=2019-05-06-Preview)](https://docs.microsoft.com/rest/api/searchservice/2019-05-06-preview/create-skillset) 
 + [更新技能集 (api-version=2019-05-06-Preview)](https://docs.microsoft.com/rest/api/searchservice/2019-05-06-preview/update-skillset) 
 
 
@@ -149,3 +149,13 @@ REST API 版本 `2019-05-06-Preview` 通过技能集中的附加定义提供知�
 
 > [!div class="nextstepaction"]
 > [使用 Postman 和 REST 创建知识存储](knowledge-store-create-rest.md)
+
+详细了解投影、相关功能以及[在技能组中对其进行定义](knowledge-store-projection-overview.md)的方法
+
+> [!div class="nextstepaction"]
+> [知识存储中的投影](knowledge-store-projection-overview.md)
+
+有关涵盖高级投影概念（如切片、内联整形和关系）的教程，请先参阅[在知识存储中定义投影](knowledge-store-projections-examples.md)
+
+> [!div class="nextstepaction"]
+> [在知识存储中定义投影](knowledge-store-projections-examples.md)

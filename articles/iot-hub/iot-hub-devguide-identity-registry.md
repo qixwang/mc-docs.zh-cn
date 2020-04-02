@@ -9,13 +9,13 @@ ms.topic: conceptual
 origin.date: 08/29/2018
 ms.author: v-yiso
 ms.custom: H1Hack27Feb2017
-ms.date: 10/29/2018
-ms.openlocfilehash: 521a08bc2408c9c47360b4921cacc6f9c0d3657b
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.date: 04/06/2020
+ms.openlocfilehash: 7ea6299bcbdc389e75d63ef0d8d57afe90b91daf
+ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79293446"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80343574"
 ---
 # <a name="understand-the-identity-registry-in-your-iot-hub"></a>了解 IoT 中心的标识注册表
 
@@ -82,15 +82,17 @@ IoT 解决方案通常具有不同的解决方案特定存储，其中包含应�
 
 有关导入和导出 API 的详细信息，请参阅 [IoT 中心资源提供程序 REST API][lnk-resource-provider-apis]。 若要了解有关如何运行导入和导出作业的详细信息，请参阅[批量管理 IoT 中心的设备标识][lnk-bulk-identity]。
 
+设备标识也可以使用 [REST API](https://docs.microsoft.com/rest/api/iothub/service/createimportexportjob) 或 IoT 中心[服务 SDK](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-hub-service-sdks) 之一通过服务 API 从 IoT 中心导出和导入。
+
 ## <a name="device-provisioning"></a>Device Provisioning
 
 给定的 IoT 解决方案存储的设备数据取决于该解决方案的特定要求。 但是，解决方案必须至少存储设备标识和身份验证密钥。 Azure IoT 中心包含标识注册表，可以存储每个设备的值，例如 ID、身份验证密钥和状态代码。 解决方案可以使用其他 Azure 服务（例如表存储、Blob 存储或 Cosmos DB）来存储任何其他设备数据。
 
-*设备预配* 是将初始设备数据添加到解决方案中存储中的过程。 要使新设备能够连接到中心，必须将新设备 ID 和密钥添加到 IoT 中心的标识注册表。 在预配过程中，可能需要初始化其他解决方案存储中的设备特定数据。
+*设备预配* 是将初始设备数据添加到解决方案中存储中的过程。 要使新设备能够连接到中心，必须将新设备 ID 和密钥添加到 IoT 中心的标识注册表。 在预配过程中，可能需要初始化其他解决方案存储中的设备特定数据。 还可以使用 Azure IoT 中心设备预配服务实现无需人工干预，零接触实时预配到一个或多个 IoT 中心。 若要了解详细信息，请参阅[预配服务文档](/iot-dps)。
 
 ## <a name="device-heartbeat"></a>检测信号
 
-IoT 中心标识注册表包含名为 **connectionState**的字段。 开发和调试期间仅使用 **connectionState** 字段。 IoT 解决方案不应在运行时查询字段。 例如，不要在发送云到设备的消息或 SMS 之前查询 **connectionState** 字段以检查设备是否已连接。
+IoT 中心标识注册表包含名为 **connectionState**的字段。 开发和调试期间仅使用 **connectionState** 字段。 IoT 解决方案不应在运行时查询字段。 例如，不要在发送云到设备的消息或 SMS 之前查询 **connectionState** 字段以检查设备是否已连接。 我们建议订阅事件网格上的[**设备已断开连接**事件](iot-hub-event-grid.md#event-types)以获取警报并监视设备连接状态。 使用此[教程](iot-hub-how-to-order-connection-state-events.md)了解如何在 IoT 解决方案中集成 IoT 中心的设备已连接和设备已断开连接事件。
 
 如果 IoT 解决方案需要知道设备是否已连接，则可实现*检测信号模式*。
 在检测信号模式下，设备每隔固定时间至少发送一次设备到云的消息（例如，每小时至少一次）。 因此，即使设备没有任何要发送的数据，仍会发送空的设备到云的消息（通常具有可供识别为检测信号的属性）。 在服务端，该解决方案维护着与每个设备收到的最后一个检测信号的映射。 如果解决方案未在预计时间内从设备收到检测信号消息，则它假定设备存在问题。

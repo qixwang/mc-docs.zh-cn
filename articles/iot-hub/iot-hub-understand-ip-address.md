@@ -7,17 +7,23 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 origin.date: 11/21/2019
-ms.date: 02/17/2020
-ms.openlocfilehash: 07e5ca16502685073151d4de7777354a82d03b24
-ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
+ms.date: 04/06/2020
+ms.openlocfilehash: 09afae4ba014d7cc487f426e33c89b6c997c0c1e
+ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77068375"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80343572"
 ---
 # <a name="iot-hub-ip-addresses"></a>IoT 中心 IP 地址
 
-IoT 中心公共终结点的 IP 地址前缀在 _AzureIoTHub_ [服务标记](../virtual-network/service-tags-overview.md)下定期发布。 可以使用这些 IP 地址前缀来控制 IoT 中心与设备或网络资产之间的连接，以实现各种网络隔离目标：
+IoT 中心公共终结点的 IP 地址前缀在 _AzureIoTHub_ [服务标记](../virtual-network/service-tags-overview.md)下定期发布。
+
+> [!NOTE]
+> 对于部署在本地网络中的设备，Azure IoT 中心支持将 VNET 连接与专用终结点集成。 有关详细信息，请参阅 [IoT 中心对 VNET 的支持](./virtual-network-support.md#ingress-connectivity-to-iot-hub-using-private-endpoints)。
+
+
+可以使用这些 IP 地址前缀来控制 IoT 中心与设备或网络资产之间的连接，以实现各种网络隔离目标：
 
 | 目标 | 适用的方案 | 方法 |
 |------|-----------|----------|
@@ -37,13 +43,6 @@ IoT 中心公共终结点的 IP 地址前缀在 _AzureIoTHub_ [服务标记](../
 
 * 在 IoT 中心设置防火墙规则可能会阻止所需的连接，导致无法对 IoT 中心运行 Azure CLI 和 PowerShell 命令。 为避免出现这种情况，可为客户端的 IP 地址前缀添加“允许”规则，再次使得 CLI 或 PowerShell 客户端能够与 IoT 中心通信。  
 
-## <a name="limitations-and-workarounds"></a>限制和解决方法
-
-* IoT 中心 IP 筛选功能限制为 10 个规则。 可以请求 Azure 客户支持人员提高此限制。 
-
-* 配置的 [IP 筛选规则](iot-hub-ip-filtering.md)仅在 IoT 中心 IP 终结点上应用，而不会在 IoT 中心的内置事件中心终结点上应用。 如果还需要在存储消息的事件中心上应用 IP 筛选，可以提供自己的事件中心资源，在其中可以直接配置所需的 IP 筛选规则。 为此，需要预配自己的事件中心资源，并将[消息路由](./iot-hub-devguide-messages-d2c.md)设置为向该资源发送消息，而不是向 IoT 中心的内置事件中心发送消息。 最后，如上表中所述，若要启用消息路由功能，还需要允许从 IoT 中心的 IP 地址前缀连接到预配的事件中心资源。
-
-* 路由到存储帐户时，仅当存储帐户与 IoT 中心位于不同区域的情况下，才能允许来自 IoT 中心 IP 地址前缀的流量。
 
 ## <a name="limitations-and-workarounds"></a>限制和解决方法
 

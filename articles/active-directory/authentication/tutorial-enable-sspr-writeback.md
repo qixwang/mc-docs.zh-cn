@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: tutorial
-ms.date: 03/10/2020
+ms.date: 03/24/2020
 ms.author: v-junlch
 author: iainfoulds
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aea46b4f2d986963fd060caaa9f896b182fbf5b2
-ms.sourcegitcommit: 4ba6d7c8bed5398f37eb37cf5e2acafcdcc28791
+ms.openlocfilehash: d93ef246508b2cbca26477b7846a051c4d8e2285
+ms.sourcegitcommit: 6568c59433d7e80ab06e9fe76d4791f761ed6775
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2020
-ms.locfileid: "79134162"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80243183"
 ---
 # <a name="tutorial-enable-azure-active-directory-self-service-password-reset-writeback-to-an-on-premises-environment"></a>教程：启用到本地环境的 Azure Active Directory 自助式密码重置写回
 
@@ -42,6 +42,7 @@ ms.locfileid: "79134162"
     * 如果需要，请[完成上一篇教程来启用 Azure AD SSPR](tutorial-enable-sspr.md)。
 * 配置有最新 Azure AD Connect 版本的现有本地 AD DS 环境。
     * 如果需要，请使用“[快速](../hybrid/how-to-connect-install-express.md)”或“[自定义](../hybrid/how-to-connect-install-custom.md)”设置配置 Azure AD Connect。
+    * 若要使用密码写回，域控制器必须是 Windows Server 2008 R2 或更高版本。
 
 ## <a name="configure-account-permissions-for-azure-ad-connect"></a>为 Azure AD Connect 配置帐户权限
 
@@ -80,9 +81,12 @@ Azure AD Connect 可用于在本地 AD DS 环境与 Azure AD 之间同步用户�
 
 更新权限时，将这些权限复制到目录中的所有对象可能需要一小时或更长时间才能完成。
 
-本地 AD DS 环境中的密码策略可能会导致无法正确处理密码重置。 要使密码写回正常工作，必须将“最短密码期限”的组策略设置为 0。  可在 `gpedit.msc` 中的“计算机配置”>“策略”>“Windows 设置”>“安全设置”>“帐户策略”下找到此设置。 
+本地 AD DS 环境中的密码策略可能会导致无法正确处理密码重置。 要使密码写回工作最有效，必须将“最短密码期限”  的组策略设置为 0。 可在 `gpedit.msc` 中的“计算机配置”>“策略”>“Windows 设置”>“安全设置”>“帐户策略”下找到此设置。  
 
 如果更新组策略，请等待更新的策略复制完成，或使用 `gpupdate /force` 命令。
+
+> [!Note]
+> 若要立即更改密码，必须将密码写回设置为 0。 但是，如果用户遵守本地策略，并且将“最短密码期限”  设置为大于零的值，则在评估本地策略后，密码写回仍将工作。 
 
 ## <a name="enable-password-writeback-in-azure-ad-connect"></a>在 Azure AD Connect 中启用密码写回
 

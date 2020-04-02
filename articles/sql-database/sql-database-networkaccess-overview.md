@@ -11,14 +11,14 @@ ms.topic: conceptual
 author: WenJason
 ms.author: v-jay
 ms.reviewer: vanto
-origin.date: 08/05/2019
-ms.date: 03/16/2020
-ms.openlocfilehash: 8bf2e63f27b5fa447bd6c9866c8a47264b37a33f
-ms.sourcegitcommit: dc862610e2169c1fce6fb0ae9eb7dd7567f86a0a
+origin.date: 03/09/2020
+ms.date: 03/30/2020
+ms.openlocfilehash: 7eba07e81a97885a0e5d0ea7135e4fe248c5b575
+ms.sourcegitcommit: 90660563b5d65731a64c099b32fb9ec0ce2c51c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79293694"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80341803"
 ---
 # <a name="azure-sql-database-and-data-warehouse-network-access-controls"></a>Azure SQL 数据库和数据仓库网络访问控制
 
@@ -28,18 +28,20 @@ ms.locfileid: "79293694"
 > [!IMPORTANT]
 > 本文不  适用于 **Azure SQL 数据库托管实例**。 有关网络配置的详细信息，请参阅[连接到托管实例](sql-database-managed-instance-connect-app.md)。
 
-[从 Azure 门户](sql-database-single-database-get-started.md)创建新的 Azure SQL Server 时，结果是采用 *yourservername.database.chinacloudapi.cn* 格式的公共终结点。 根据设计，对公共终结点的所有访问都会遭到拒绝。 然后，你可以使用以下网络访问控制来有选择地允许通过公共终结点访问 SQl 数据库
-- 允许 Azure 服务：- 设置为“打开”时，Azure 边界范围内的其他资源（例如 Azure 虚拟机）可以访问 SQL 数据库
+从 [Azure 门户](sql-database-single-database-get-started.md)创建新的 Azure SQL Server 时，结果是格式为“yourservername.database.chinacloudapi.cn”  的公共终结点。
 
-- IP 防火墙规则：- 使用此功能可以显式允许从特定的 IP 地址（例如，从本地计算机）建立连接。
+你可以使用以下网络访问控制来有选择地允许通过公共终结点访问 SQl 数据库：
+- 允许 Azure 服务：设置为“打开”时，Azure 边界内的其他资源（例如 Azure 虚拟机）可以访问 SQL 数据库
 
-- 虚拟网络防火墙规则：- 使用此功能可以允许 Azure 边界范围内的特定虚拟网络发来的流量
+- IP 防火墙规则：使用此功能可以显式允许从特定的 IP 地址（例如，从本地计算机）建立连接
 
+还可以通过以下方式允许从[虚拟网络](../virtual-network/virtual-networks-overview.md)对 SQL 数据库进行专用访问：
+- 虚拟网络防火墙规则：使用此功能可以允许来自 Azure 边界内特定虚拟网络的流量
 
 ## <a name="allow-azure-services"></a>允许 Azure 服务 
 [从 Azure 门户](sql-database-single-database-get-started.md)创建新的 Azure SQL Server 期间，此设置将保持未选中状态。
 
- ![创建新服务器的屏幕截图][1]
+
 
 创建 Azure SQL Server 之后，也可以按如下所示通过“防火墙”窗格更改此设置。
   
@@ -141,3 +143,4 @@ start          end
 <!--Image references-->
 [1]: ./media/sql-database-get-started-portal/new-server2.png
 [2]: ./media/sql-database-get-started-portal/manage-server-firewall.png
+

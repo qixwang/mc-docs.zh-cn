@@ -1,7 +1,7 @@
 ---
 title: 文本翻译 API Transliterate 方法
-titlesuffix: Azure Cognitive Services
-description: 使用文本翻译 API Transliterate 方法。
+titleSuffix: Azure Cognitive Services
+description: 使用文本翻译 API Transliterate 方法将一种语言的文本从一个脚本转换为另一个脚本。
 services: cognitive-services
 author: rajdeep-in
 manager: nitinme
@@ -11,12 +11,12 @@ ms.topic: reference
 origin.date: 02/01/2019
 ms.date: 06/11/2019
 ms.author: v-junlch
-ms.openlocfilehash: dfe15cc268b3c1bf149c1fcc95611743d6bba755
-ms.sourcegitcommit: 259c97c9322da7add9de9f955eac275d743c9424
+ms.openlocfilehash: 37b68e7793f6a50f7754e3e2c1263f9e34e90f60
+ms.sourcegitcommit: 303a16c7117b6f3495ef0493b4ae8ccb67d7dbba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2019
-ms.locfileid: "66830096"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80342394"
 ---
 # <a name="translator-text-api-30-transliterate"></a>文本翻译 API 3.0：Transliterate
 
@@ -39,26 +39,26 @@ https://api.translator.azure.cn/transliterate?api-version=3.0
   <th>说明</th>
   <tr>
     <td>api-version</td>
-    <td>必需参数。<br/>客户端所请求的 API 的版本。 值必须是 <code>3.0</code>。</td>
+    <td>必需参数  。<br/>客户端所请求的 API 的版本。 值必须是 `3.0`。</td>
   </tr>
   <tr>
     <td>语言</td>
-    <td>必需参数。<br/>指定要从一个脚本转换为另一个脚本的文本的语言。 通过查询服务的<a href="./v3-0-languages.md" data-raw-source="[supported languages](./v3-0-languages.md)">支持的语言</a>获得的 <code>transliteration</code> 范围中列出了可能的语言。</td>
+    <td>必需参数  。<br/>指定要从一个脚本转换为另一个脚本的文本的语言。 通过查询服务的[支持的语言](./v3-0-languages.md)获得的 `transliteration` 范围中列出了可能的语言。</td>
   </tr>
   <tr>
     <td>fromScript</td>
-    <td><em>必需参数</em>。<br/>指定输入文本所使用的脚本。 使用 <code>transliteration</code> 范围查找<a href="./v3-0-languages.md" data-raw-source="[supported languages](./v3-0-languages.md)">支持的语言</a>，以找到可用于选定语言的输入脚本。</td>
+    <td>必需参数  。<br/>指定输入文本所使用的脚本。 使用 `transliteration` 范围查找[支持的语言](./v3-0-languages.md)，以找到可用于选定语言的输入脚本。</td>
   </tr>
   <tr>
     <td>toScript</td>
-    <td><em>必需参数</em>。<br/>指定输出脚本。 使用 <code>transliteration</code> 范围查找<a href="./v3-0-languages.md" data-raw-source="[supported languages](./v3-0-languages.md)">支持的语言</a>，以找到可用于选定输入语言和输入脚本组合的输出脚本。</td>
+    <td>必需参数  。<br/>指定输出脚本。 使用 `transliteration` 范围查找[支持的语言](./v3-0-languages.md)，以找到可用于选定输入语言和输入脚本组合的输出脚本。</td>
   </tr>
 </table> 
 
 请求标头包括：
 
 <table width="100%">
-  <th width="20%">标头</th>
+  <th width="20%">头文件</th>
   <th>说明</th>
   <tr>
     <td>身份验证标头</td>
@@ -66,15 +66,15 @@ https://api.translator.azure.cn/transliterate?api-version=3.0
   </tr>
   <tr>
     <td>Content-Type</td>
-    <td>必需的请求标头。<br/>指定有效负载的内容类型。 可能的值为：<code>application/json</code></td>
+    <td>必需的请求标头  。<br/>指定有效负载的内容类型。 可能的值为：`application/json`</td>
   </tr>
   <tr>
     <td>Content-Length</td>
-    <td>必需的请求标头。<br/>请求正文的长度。</td>
+    <td>必需的请求标头  。<br/>请求正文的长度。</td>
   </tr>
   <tr>
     <td>X-ClientTraceId</td>
-    <td>可选。<br/>客户端生成的 GUID，用于唯一标识请求。 请注意，如果在查询字符串中使用名为 <code>ClientTraceId</code> 的查询参数包括了跟踪 ID，则可以省略此标头。</td>
+    <td>可选  。<br/>客户端生成的 GUID，用于唯一标识请求。 请注意，如果在查询字符串中使用名为 `ClientTraceId` 的查询参数包括了跟踪 ID，则可以省略此标头。</td>
   </tr>
 </table> 
 
@@ -115,7 +115,7 @@ https://api.translator.azure.cn/transliterate?api-version=3.0
 ## <a name="response-headers"></a>响应标头
 
 <table width="100%">
-  <th width="20%">标头</th>
+  <th width="20%">头文件</th>
   <th>说明</th>
   <tr>
     <td>X-RequestId</td>
@@ -152,11 +152,11 @@ https://api.translator.azure.cn/transliterate?api-version=3.0
   </tr>
   <tr>
     <td>500</td>
-    <td>发生了意外错误。 如果错误持续存在，请报告相关信息：发生故障的日期和时间、响应标头 <code>X-RequestId</code> 中的请求标识符、请求标头 <code>X-ClientTraceId</code> 中的客户端标识符。</td>
+    <td>发生了意外错误。 如果错误持续存在，请报告相关信息：发生故障的日期和时间、响应标头 `X-RequestId` 中的请求标识符、请求标头 `X-ClientTraceId` 中的客户端标识符。</td>
   </tr>
   <tr>
     <td>503</td>
-    <td>服务器暂不可用。 重试请求。 如果错误持续存在，请报告相关信息：发生故障的日期和时间、响应标头 <code>X-RequestId</code> 中的请求标识符、请求标头 <code>X-ClientTraceId</code> 中的客户端标识符。</td>
+    <td>服务器暂不可用。 重试请求。 如果错误持续存在，请报告相关信息：发生故障的日期和时间、响应标头 `X-RequestId` 中的请求标识符、请求标头 `X-ClientTraceId` 中的客户端标识符。</td>
   </tr>
 </table> 
 
@@ -166,11 +166,9 @@ https://api.translator.azure.cn/transliterate?api-version=3.0
 
 以下示例显示如何将两个日语字符串转换为用罗马字母拼写的日语。
 
-# <a name="curltabcurl"></a>[curl](#tab/curl)
-
 此示例中请求的 JSON 有效负载：
 
-```
+```json
 [{"text":"こんにちは","script":"jpan"},{"text":"さようなら","script":"jpan"}]
 ```
 

@@ -1,5 +1,5 @@
 ---
-title: 生成高级作业计划和重复周期 - Azure 计划程序
+title: 生成高级作业计划和重复周期
 description: 了解如何在 Azure 计划程序中为作业创建高级计划和重复周期
 services: scheduler
 ms.service: scheduler
@@ -7,21 +7,22 @@ author: WenJason
 ms.author: v-jay
 ms.reviewer: klam
 ms.suite: infrastructure-services
-ms.assetid: 5c124986-9f29-4cbc-ad5a-c667b37fbe5a
 ms.topic: article
 origin.date: 11/14/2018
-ms.date: 11/04/2019
-ms.openlocfilehash: b61e3b907bc8a7e6dffd84f6545d617939a19727
-ms.sourcegitcommit: f9a257e95444cb64c6d68a7a1cfe7e94c5cc5b19
+ms.date: 03/30/2019
+ms.openlocfilehash: 834e65781fe4b70a535b73f0bf0b5e9843d064a5
+ms.sourcegitcommit: 90660563b5d65731a64c099b32fb9ec0ce2c51c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2019
-ms.locfileid: "73416281"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80341703"
 ---
 # <a name="build-advanced-schedules-and-recurrences-for-jobs-in-azure-scheduler"></a>在 Azure 计划程序中为作业生成高级计划和重复周期
 
 > [!IMPORTANT]
-> [Azure 逻辑应用](../logic-apps/logic-apps-overview.md)将替换[即将停用](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date)的 Azure 计划程序。 若要继续使用在计划程序中设置的作业，请尽快[迁移到 Azure 逻辑应用](../scheduler/migrate-from-scheduler-to-logic-apps.md)。
+> [Azure 逻辑应用](../logic-apps/logic-apps-overview.md)将替换[即将停用](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date)的 Azure 计划程序。 若要继续使用在计划程序中设置的作业，请尽快[迁移到 Azure 逻辑应用](../scheduler/migrate-from-scheduler-to-logic-apps.md)。 
+>
+> 计划程序在 Azure 门户中不再可用，但 [REST API](https://docs.microsoft.com/rest/api/scheduler) 和 [Azure 计划程序 PowerShell cmdlet](scheduler-powershell-reference.md) 目前仍可用，以便你可以管理作业和作业集合。
 
 在 [Azure 计划程序](../scheduler/scheduler-intro.md)作业中，计划是确定计划程序服务何时以及如何运行作业的核心。 可以使用计划程序为作业设置多个一次性计划和重复计划。 一次性计划仅在指定时间运行一次，并且基本上是仅运行一次的重复计划。 重复计划按照指定频率运行。 由于具有这种灵活性，可以使用计划程序支持各种业务方案，例如：
 
@@ -66,13 +67,13 @@ ms.locfileid: "73416281"
 
 | 元素 | 必须 | 说明 | 
 |---------|----------|-------------|
-| **startTime** | 否 | [ISO 8601 格式](http://zh.wikipedia.org/wiki/ISO_8601)的 DateTime 字符串值，用于指定作业在基本计划中首次启动的时间。 <p>对于复杂的计划，作业的启动时间不早于 **startTime**。 | 
+| **startTime** | 否 | [ISO 8601 格式](https://zh.wikipedia.org/wiki/ISO_8601)的 DateTime 字符串值，用于指定作业在基本计划中首次启动的时间。 <p>对于复杂的计划，作业的启动时间不早于 **startTime**。 | 
 | **recurrence** | 否 | 作业运行时的重复规则。 **recurrence** 对象支持这些元素：**frequency**、**interval**、**schedule**、**count** 和 **endTime**。 <p>如果使用 **recurrence** 元素，则还必须使用 **frequency** 元素，而其他 **recurrence** 元素是可选的。 |
 | **frequency** | 是，当使用 **recurrence** 时 | 两次作业之间的时间单位并支持这些值：“Minute”、“Hour”、“Day”、“Week”、“Month”和“Year” | 
 | **interval** | 否 | 一个正整数，根据 **frequency** 确定两次作业之间的时间单位数。 <p>例如，如果 **interval** 为 10，**frequency** 为“Week”，则作业每隔 10 周重复一次。 <p>下面是每种频率的最大间隔数： <p>- 18 个月 <br>- 78 周 <br>- 548 天 <br>- 对于小时和分钟，范围为 1 <= <*interval*> <= 1000。 | 
 | **schedule** | 否 | 根据指定的分钟标记、小时标记、星期日期和月份日期定义重复周期的更改 | 
 | **count** | 否 | 一个正整数，指定作业在完成之前运行的次数。 <p>例如，当每日作业将 **count** 设置为 7，并且开始日期为星期一时，该作业将在星期日结束运行。 如果已经过了开始日期，则从创建时间开始计算第一次运行。 <p>如果未指定 **endTime** 或 **count**，作业将无限期运行。 不能在同一个作业中同时使用 **count** 和 **endTime**，但首先完成的规则优先。 | 
-| **endTime** | 否 | [ISO 8601 格式](http://zh.wikipedia.org/wiki/ISO_8601)的 Date 或 DateTime 字符串值，用于指定作业何时停止运行。 可为 **endTime** 设置一个过去的值。 <p>如果未指定 **endTime** 或 **count**，作业将无限期运行。 不能在同一个作业中同时使用 **count** 和 **endTime**，但首先完成的规则优先。 |
+| **endTime** | 否 | [ISO 8601 格式](https://zh.wikipedia.org/wiki/ISO_8601)的 Date 或 DateTime 字符串值，用于指定作业何时停止运行。 可为 **endTime** 设置一个过去的值。 <p>如果未指定 **endTime** 或 **count**，作业将无限期运行。 不能在同一个作业中同时使用 **count** 和 **endTime**，但首先完成的规则优先。 |
 |||| 
 
 例如，此 JSON 架构描述了作业的基本计划和重复周期： 
@@ -95,9 +96,9 @@ ms.locfileid: "73416281"
 
 *日期和日期时间值*
 
-* 计划程序作业中的日期只包括日期并遵循 [ISO 8601 规范](http://zh.wikipedia.org/wiki/ISO_8601)。
+* 计划程序作业中的日期只包括日期并遵循 [ISO 8601 规范](https://zh.wikipedia.org/wiki/ISO_8601)。
 
-* 计划程序作业中的日期时间包括日期和时间，遵循 [ISO 8601 规范](http://zh.wikipedia.org/wiki/ISO_8601)，并且在未指定 UTC 时差时假定为 UTC。 
+* 计划程序作业中的日期时间包括日期和时间，遵循 [ISO 8601 规范](https://zh.wikipedia.org/wiki/ISO_8601)，并且在未指定 UTC 时差时假定为 UTC。 
 
 有关详细信息，请参阅[概念、术语和实体](../scheduler/scheduler-concepts-terms.md)。
 
@@ -208,8 +209,9 @@ ms.locfileid: "73416281"
 | `{"minutes":[0,15,30,45], "monthlyOccurrences":[{"day":"friday", "occurrence":-1}]}` |在月份的最后一个星期五每 15 分钟运行一次。 |
 | `{"minutes":[15,45], "hours":[5,17], "monthlyOccurrences":[{"day":"wednesday", "occurrence":3}]}` |在每月第三个星期三的早晨 5:15、早晨 5:45、下午 5:15、下午 5:45 运行。 |
 
-## <a name="see-also"></a>另请参阅
+## <a name="next-steps"></a>后续步骤
 
-* [什么是 Azure 计划程序？](scheduler-intro.md)
 * [Azure 计划程序的概念、术语和实体层次结构](scheduler-concepts-terms.md)
+* [Azure 计划程序 REST API 参考](https://docs.microsoft.com/rest/api/scheduler)
+* [Azure 计划程序 PowerShell cmdlet 参考](scheduler-powershell-reference.md)
 * [Azure 计划程序的限制、默认值和错误代码](scheduler-limits-defaults-errors.md)

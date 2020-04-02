@@ -1,30 +1,31 @@
 ---
-title: PowerShell cmdlet 参考 - Azure 计划程序
+title: PowerShell cmdlet 参考
 description: 了解 Azure 计划程序 PowerShell cmdlet
 services: scheduler
 ms.service: scheduler
 author: WenJason
 ms.author: v-jay
-ms.reviewer: klam
-ms.assetid: 9a26c457-d7a1-4e4a-bc79-f26592155218
+ms.reviewer: klam, estfan
 ms.topic: article
 origin.date: 08/18/2016
-ms.date: 11/04/2019
-ms.openlocfilehash: f97af0a71da1338bcf2d537d8d7fa87a701f686c
-ms.sourcegitcommit: f9a257e95444cb64c6d68a7a1cfe7e94c5cc5b19
+ms.date: 03/30/2020
+ms.openlocfilehash: 10abf491a9c3270312f43fbff8889a7c13355dc6
+ms.sourcegitcommit: 90660563b5d65731a64c099b32fb9ec0ce2c51c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2019
-ms.locfileid: "73416274"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80341697"
 ---
 # <a name="powershell-cmdlets-reference-for-azure-scheduler"></a>Azure 计划程序 PowerShell cmdlet 参考
 
 > [!IMPORTANT]
-> [Azure 逻辑应用](../logic-apps/logic-apps-overview.md)将替换[即将停用](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date)的 Azure 计划程序。 若要继续使用在计划程序中设置的作业，请尽快[迁移到 Azure 逻辑应用](../scheduler/migrate-from-scheduler-to-logic-apps.md)。
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+> [Azure 逻辑应用](../logic-apps/logic-apps-overview.md)将替换[即将停用](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date)的 Azure 计划程序。 若要继续使用在计划程序中设置的作业，请尽快[迁移到 Azure 逻辑应用](../scheduler/migrate-from-scheduler-to-logic-apps.md)。 
+>
+> 计划程序在 Azure 门户中不再可用，但 [REST API](https://docs.microsoft.com/rest/api/scheduler) 和 [Azure 计划程序 PowerShell cmdlet](scheduler-powershell-reference.md) 目前仍可用，以便你可以管理作业和作业集合。
 
 若要编写脚本以创建和管理计划程序作业和作业集合，可以使用 PowerShell cmdlet。 本文列出了主要 Azure 计划程序 PowerShell cmdlet，以及指向其参考文章的链接。 要为 Azure 订阅安装 Azure PowerShell，请参阅[如何安装和配置 Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview)。 有关 [Azure Resource Manager cmdlet](https://docs.microsoft.com/powershell/azure/overview) 的详细信息，请参阅[将 Azure PowerShell 与 Azure Resource Manager 配合使用](../powershell-azure-resource-manager.md)。
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 | Cmdlet | 说明 |
 |--------|-------------|
@@ -49,15 +50,14 @@ ms.locfileid: "73416274"
 
 有关详细信息，可以运行以下任何 cmdlet： 
 
-```
+```text
 Get-Help <cmdlet name> -Detailed
 Get-Help <cmdlet name> -Examples
 Get-Help <cmdlet name> -Full
 ```
 
-## <a name="see-also"></a>另请参阅
+## <a name="next-steps"></a>后续步骤
 
-* [什么是 Azure 计划程序？](scheduler-intro.md)
-* [概念、术语和实体层次结构](scheduler-concepts-terms.md)
-* [创建和计划第一个作业 - Azure 门户](scheduler-get-started-portal.md)
-* [Azure 计划程序 REST API 参考](https://msdn.microsoft.com/library/mt629143)
+* [Azure 计划程序的概念、术语和实体层次结构](scheduler-concepts-terms.md)
+* [Azure 计划程序的限制、默认值和错误代码](scheduler-limits-defaults-errors.md)
+* [Azure 计划程序 REST API 参考](https://docs.microsoft.com/rest/api/scheduler)

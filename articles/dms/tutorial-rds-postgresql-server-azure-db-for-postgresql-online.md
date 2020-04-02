@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 origin.date: 02/17/2020
-ms.date: 03/09/2020
-ms.openlocfilehash: 158475f9ec4d395475b01001d096c759d048c39c
-ms.sourcegitcommit: df370a03d71b94c876e19294d75d4ff77809da11
+ms.date: 03/30/2020
+ms.openlocfilehash: fdda0357b4d2e248bab4a1e7127cdcd022a37a37
+ms.sourcegitcommit: 90660563b5d65731a64c099b32fb9ec0ce2c51c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78238537"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80341727"
 ---
 # <a name="tutorial-migrate-rds-postgresql-to-azure-db-for-postgresql-online-using-dms"></a>教程：使用 DMS 将 RDS PostgreSQL 联机迁移到 Azure DB for PostgreSQL
 
@@ -35,7 +35,7 @@ ms.locfileid: "78238537"
 > * 执行直接转换迁移。
 
 > [!NOTE]
-> 使用 Azure 数据库迁移服务执行联机迁移需要基于“高级”定价层创建实例。 有关详细信息，请参阅 Azure 数据库迁移服务[定价](https://azure.cn/pricing/details/database-migration/)页。
+> 使用 Azure 数据库迁移服务执行联机迁移需要基于“高级”定价层创建实例。 有关详细信息，请参阅 Azure 数据库迁移服务[定价](https://azure.cn/pricing/details/database-migration/)页。 我们对磁盘进行加密，以防止在迁移过程中数据被盗。
 
 > [!IMPORTANT]
 > 为获得最佳迁移体验，Azure 建议在目标数据库所在的 Azure 区域中创建 Azure 数据库迁移服务的实例。 跨区域或地理位置移动数据可能会减慢迁移过程并引入错误。

@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/25/2020
+ms.date: 03/23/2020
 ms.author: v-junlch
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 166a0fcf50c7ad866c42fc8c2abdfc462ce9afaf
-ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
+ms.openlocfilehash: 95d6176a77e7eaefd1b0e1faac22bf47511a067c
+ms.sourcegitcommit: 6568c59433d7e80ab06e9fe76d4791f761ed6775
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77653176"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80243104"
 ---
 # <a name="azure-ad-saml-token-reference"></a>Azure AD SAML 令牌参考
 
@@ -155,7 +155,8 @@ Azure Active Directory (Azure AD) 在处理每个身份验证流时会发出多�
     </t:RequestSecurityTokenResponse>
 
 ## <a name="related-content"></a>相关内容
-* 请参阅 Azure AD Graph [策略操作](https://msdn.microsoft.com/library/azure/ad/graph/api/policy-operations)和[策略实体](https://msdn.microsoft.com/library/azure/ad/graph/api/entity-and-complex-type-reference#policy-entity)以了解有关通过 Azure AD Graph API 管理令牌生存期策略的详细信息。
-* 将[自定义和可选声明](active-directory-optional-claims.md)添加到应用程序的令牌。
 
-<!-- Update_Description: update metedata properties -->
+* 请参阅 [Policy 资源](https://docs.microsoft.com/graph/api/resources/policy?view=graph-rest-beta)，详细了解如何使用 Microsoft Graph API 管理令牌生存期策略。
+* 将[自定义和可选声明](../develop/active-directory-optional-claims.md?toc=/active-directory/azuread-dev/toc.json&bc=/active-directory/azuread-dev/breadcrumb/toc.json)添加到应用程序的令牌。
+
+

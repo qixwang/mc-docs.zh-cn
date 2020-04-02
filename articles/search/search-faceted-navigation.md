@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 origin.date: 11/04/2019
 ms.date: 03/16/2020
-ms.openlocfilehash: 73d96843dbbbeb01c9d3f8d4137d271f8caa226f
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: 650c93b5c52fa0da55e83c9467acd9b9b801a220
+ms.sourcegitcommit: 1d3d8dfdaf6281f06640cbee7124a1e8bf102c50
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79293351"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80243711"
 ---
 # <a name="how-to-implement-faceted-navigation-in-azure-cognitive-search"></a>如何在 Azure 认知搜索中实现分面导航
 
@@ -22,7 +22,7 @@ ms.locfileid: "79293351"
 
  ![Azure 认知搜索作业门户演示](media/search-faceted-navigation/azure-search-faceting-example.png "Azure 认知搜索作业门户演示")
 
-分面导航是一个备用的搜索入口点。 它可以方便地替代手动键入复杂的搜索表达式。 分面可帮助你查找所需的内容，同时确保获取相关结果。 作为开发人员，分面允许公开用于导航搜索索引的最有用的搜索条件。 在在线零售应用程序中，分面导航通常基于品牌、分类（童鞋）、尺寸、价格、受欢迎程度和评级生成。 
+分面导航是一个备用的搜索入口点。 它可以方便地替代手动键入复杂的搜索表达式。 分面可帮助你查找所需的内容，同时确保获取相关结果。 作为开发人员，分面允许公开用于导航搜索索引的最有用的搜索条件。 在联机零售应用程序中，分面导航通常基于品牌、部门（童鞋）、尺寸、价格、受欢迎程度和评级构建。 
 
 搜索技术不同，分面导航的实现也不同。 在 Azure 认知搜索中，分面导航在查询时生成，使用之前在架构中特性化的字段。
 
@@ -35,16 +35,16 @@ ms.locfileid: "79293351"
 ## <a name="sample-code-and-demo"></a>代码示例和演示
 本文使用作业搜索门户作为示例。 该示例作为 ASP.NET MVC 应用程序实现。
 
--   请参阅并测试 [Azure 认知搜索作业门户演示](https://azjobsdemo.azurewebsites.net/)中的在线实践演示。
+- 请参阅并测试 [Azure 认知搜索作业门户演示](https://azjobsdemo.azurewebsites.net/)中的在线实践演示。
 
 - 从 [GitHub 上的 Azure 示例存储库](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs)中下载代码。
 
 ## <a name="get-started"></a>入门
-如果不熟悉搜索开发，对分面导航定义的最佳理解是它显示了自定向搜索的可能性。 它是一种基于预定义筛选的深化搜索体验，用于通过点击操作快速缩小搜索结果范围。 
+如果不熟悉搜索开发，对分面导航定义的最佳理解是它显示了自定向搜索的可能性。 它是一种基于预定义筛选器的深入搜索体验，用于通过点击操作快速缩小搜索结果范围。 
 
 ### <a name="interaction-model"></a>交互模型
 
-分面导航的搜索体验是迭代的，因此我们可以首先将其理解为展开以响应用户操作的查询序列。
+分面导航的搜索体验是迭代的，因此让我们首先将其理解为响应用户操作而展开的一系列查询。
 
 起始点是提供分面导航的应用程序页面，通常位于外围。 分面导航通常是树结构，带有每个值的复选框或可单击文本。 
 
@@ -79,7 +79,7 @@ ms.locfileid: "79293351"
 若要更好地了解筛选器如何添加更高精度，请比较复杂搜索表达式与包括筛选表达式的搜索表达式：
 
 -   `GET /indexes/hotel/docs?search=lodging budget +Seattle –motel +parking`
--   `GET /indexes/hotel/docs?search=lodging&$filter=City eq ‘Seattle’ and Parking and Type ne ‘motel’`
+-   `GET /indexes/hotel/docs?search=lodging&$filter=City eq 'Seattle' and Parking and Type ne 'motel'`
 
 这两个查询都有效，但如果要查找西雅图有停车场的非汽车旅馆，则第二个查询更好。
 -   第一个查询依赖于提及的特定字词或字符串字段（如名称、描述）和包含可搜索数据的任何其他字段中未提及的字词。
@@ -108,7 +108,7 @@ Azure 认知搜索根据输入的一个或多个词语返回搜索结果，以�
 
 ## <a name="build-the-index"></a>生成索引
 通过此索引属性，在索引中基于每个字段启用分面：`"Facetable": true`。  
-可能用于分面导航的所有字段类型在默认情况下均为 `Facetable`。 此类字段类型包括 `Edm.String`、`Edm.DateTimeOffset` 和所有数值字段类型（实质上，所有字段类型都可进行分面，但 `Edm.GeographyPoint` 除外，因为它无法用于分面导航中）。 
+可能用于分面导航的所有字段类型在默认情况下均为 `Facetable`。 此类字段类型包括 `Edm.String`、`Edm.DateTimeOffset` 和所有数值字段类型（实质上，所有字段类型都可进行分面，但 `Edm.GeographyPoint` 除外，因为它无法用于分面导航）。 
 
 在生成索引时，分面导航的最佳做法是针对绝不应用作分面的字段显式关闭分面功能。  具体而言，应将单独值的字符串字段（例如 ID 或产品名称）设置为 `"Facetable": false`，以避免在分面导航中意外（和无效）使用它们。 在不需要分面的情况下将其关闭有助于保持较小的索引大小，通常可提高性能。
 
@@ -233,7 +233,7 @@ SearchParameters sp = new SearchParameters()
 
 分面查询参数设置为字段，根据数据类型，可通过逗号分隔列表（包括 `count:<integer>`、`sort:<>`、`interval:<integer>` 和 `values:<list>`）对其执行进一步参数化。 设置范围时，数值数据支持值列表。 有关使用情况详细信息，请参阅[搜索记录（Azure 认知搜索 API）](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)。
 
-通过分面，应用程序明确表述的请求还应生成筛选器，以便根据分面值选择缩小候选记录集。 对于自行车商店，分面导航提供了就“有哪些颜色、制造商和类型的自行车”问题的线索，  同时筛选对“在此价格区间，具体有哪些红色的山地自行车”问题的答案。  单击“红色”指示应仅显示红色产品时，应用程序发送的下一条查询将为 `$filter=Color eq ‘Red’`。
+通过分面，应用程序明确表述的请求还应生成筛选器，以便根据分面值选择缩小候选记录集。 对于自行车商店，分面导航提供了就“有哪些颜色、制造商和类型的自行车”问题的线索，  同时筛选对“在此价格区间，具体有哪些红色的山地自行车”问题的答案。  单击“红色”指示应仅显示红色产品时，应用程序发送的下一条查询将为 `$filter=Color eq 'Red'`。
 
 如果从“职称”分面中选择一个值，源自 `JobsSearch.cs` 页面的以下代码片段会将选定的职称添加到筛选器。
 
@@ -271,7 +271,7 @@ if (businessTitleFacet != "")
 ### <a name="filtering-tips"></a>筛选提示
 **使用筛选器提高搜索准确性**
 
-使用筛选器。 如果只依赖于搜索表达式，词干分析可能导致返回的记录在其任何字段中都没有精度分面值。
+使用筛选器。 如果仅依赖于搜索表达式，则词干分析可能会导致返回的文档在其任何字段中都没有精确的分面值。
 
 **使用筛选器提高搜索性能**
 
@@ -310,11 +310,11 @@ if (businessTitleFacet != "")
 * `&facet=City,count:12`<br/>
   在分面查询中，可将计数设置为某个值。  默认值为 10，但可以设置更高或更低的值。 设置 `count:12` 可获取分面结果中按记录计数排序的前 12 个匹配项。
 * "`@odata.count`"<br/>
-  在查询响应中，该值指示搜索结果中匹配项的数目。 一般情况下，该值大于所有合并的分面结果总和，因为存在匹配搜索词但没有分面值匹配结果的项。
+  在查询响应中，该值指示搜索结果中匹配项的数目。 平均而言，由于存在与搜索词匹配但与分面值不匹配的项，因此它大于合并的所有分面结果总和。
 
 **获取分面结果中的计数**
 
-当向分面查询添加筛选器时，你可能希望保留分面语句（例如 `facet=Rating&$filter=Rating ge 4`）。 从技术上讲，不需要分面“分级”，但保留它会返回分级 4 和更高分级的分面值计数。 例如，如果单击“4”并且查询包括大于或等于“4”的筛选器，将针对每个等于和大于 4 的分级返回计数。  
+当向分面查询添加筛选器时，你可能希望保留分面语句（例如 `facet=Rating&$filter=Rating ge 4`）。 从技术上讲，不需要分面=评级，但保留它会返回评级 4 和更高评级的分面值计数。 例如，如果单击“4”并且查询包括大于或等于“4”的筛选器，将针对每个等于和大于 4 的分级返回计数。  
 
 **确保获取准确的分面计数**
 
@@ -334,7 +334,7 @@ if (businessTitleFacet != "")
 ## <a name="filter-based-on-a-range"></a>基于范围进行筛选
 基于值的范围分面是常见的搜索应用程序要求。 数值数据和 DateTime 值都支持范围。 可在[搜索记录（Azure 认知搜索 API）](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)中阅读有关每种方法的详细信息。
 
-Azure 认知搜索通过提供两种用于计算范围的方法，简化范围构造。 对于这两种方法，Azure 认知搜索根据用户提供的输入创建适当的范围。 例如，如果用户指定范围值为 10|20|30，它会自动创建范围 0-10、10-20、20-30。 应用程序可以选择性地删除任何空间隔。 
+Azure 认知搜索通过提供两种用于计算范围的方法，简化范围构造。 对于这两种方法，Azure 认知搜索会根据你提供的输入创建适当的范围。 例如，如果用户指定范围值为 10|20|30，它会自动创建范围 0-10、10-20、20-30。 应用程序可以选择性地删除任何空间隔。 
 
 **方法 1：使用间隔参数**  
 要以 10 美元的增量设置价格分面，将指定：`&facet=price,interval:10`
@@ -358,7 +358,7 @@ Azure 认知搜索通过提供两种用于计算范围的方法，简化范围�
 <a name="geofacets"></a> 
 
 ## <a name="filter-based-on-distance"></a>基于距离进行筛选
-常见的筛选器用于根据你所在的当前位置帮助你选择附近的商店、餐馆或目的地。 虽然此类型的筛选器看起来像分面导航，但它只是一个筛选器。 我们在此处针对专门查找该特定设计问题的实现建议的用户进行介绍。
+通常会看到筛选器根据与你当前位置的接近程度来帮助你选择商店、餐馆或目标。 虽然此类型的筛选器可能看起来像分面导航，但它只是一个筛选器。 我们在此处针对专门查找该特定设计问题的实现建议的用户进行介绍。
 
 Azure 认知搜索中有两个地理空间函数：**geo.distance** 和 **geo.intersects**。
 

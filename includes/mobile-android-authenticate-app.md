@@ -1,5 +1,13 @@
+---
+ms.openlocfilehash: f5d93ab22324ddea662bab012fd6200cd38150cb
+ms.sourcegitcommit: b2f2bb08ab1b5ccb3c596d84b3b6ddca5bba3903
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80151755"
+---
 1. 在 Android Studio 中打开项目。
-1. 在 Android Studio 的“项目资源管理器”中，打开 ToDoActivity.java 文件，并添加以下 import 语句。
+1. 在 Android Studio 的“项目资源管理器”中，打开 ToDoActivity.java 文件，并添加以下 import 语句  。
 
         ```java
         import java.util.concurrent.ExecutionException;
@@ -46,7 +54,7 @@
     此代码会创建一个用于处理 Google 身份验证过程的方法。 出现的对话框中会显示已经过身份验证的用户 ID。 只能在身份验证成功后继续操作。
 
     > [!NOTE]
-    > 如果使用的标识提供者不是 Google，请将传递给 **login** 方法的值更改为下列值之一：_MicrosoftAccount_、_Facebook_、_Twitter_ 或 _windowsazureactivedirectory_。
+    > 如果使用的标识提供者不是 Google，请将传递给 login  方法的值更改为下列值之一：MicrosoftAccount  或 windowsazureactivedirectory  。
 
 3. 在 **onCreate** 方法中，在实例化 `MobileServiceClient` 对象的代码后面添加以下代码行。
 
@@ -102,6 +110,6 @@
 
       依赖项 {        // ...        编译“com.android.support:customtabs:23.0.1”    }
 
-8. 然后，从“运行”菜单中单击“运行应用”启动应用，并使用所选的标识提供者登录。
+8. 然后，从“运行”  菜单中单击“运行应用”  启动应用，并使用所选的标识提供者登录。
 
-成功登录后，应用应可以正常运行，并且你应能查询后端服务并对数据进行更新。
+成功登录后，应用应可以正常运行，并且你应能够查询后端服务并对数据进行更新。

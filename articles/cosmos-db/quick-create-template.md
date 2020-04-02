@@ -2,39 +2,40 @@
 title: 快速入门 - 使用 Azure 资源管理器模板创建 Azure Cosmos DB 和容器
 description: 快速入门 - 展示了如何使用 Azure 资源管理器模板创建 Azure Cosmos 数据库和容器
 author: rockboyfor
-ms.author: v-yeche
 tags: azure-resource-manager
 ms.service: cosmos-db
 ms.topic: quickstart
-origin.date: 01/21/2020
-ms.date: 02/10/2020
-ms.openlocfilehash: 85f9f0aa5db1117ebed6cd3b55c4ada70ab2a388
-ms.sourcegitcommit: 23dc63b6fea451f6a2bd4e8d0fbd7ed082ba0740
+origin.date: 02/27/2020
+ms.date: 03/30/2020
+ms.author: v-yeche
+ms.custom: subject-armqs
+ms.openlocfilehash: e87db398109d2837376a1499ff4c0fd7585eb3cf
+ms.sourcegitcommit: 303a16c7117b6f3495ef0493b4ae8ccb67d7dbba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76980563"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80342370"
 ---
-<!--CONFIRM WITH PM BEFORE RELEASE-->
+<!--Verified successfully-->
 # <a name="quickstart-create-an-azure-cosmos-db-and-a-container-by-using-azure-resource-manager-template"></a>快速入门：使用 Azure 资源管理器模板创建 Azure Cosmos DB 和容器
 
-Azure Cosmos DB 是世纪互联提供的多区域分布式多模型数据库服务。 使用 Azure Cosmos DB，可以快速创建和查询键/值数据库、文档数据库和图形数据库。 本快速入门重点介绍了部署资源管理器模板，用以创建 Azure Cosmos 数据库以及在该数据库内创建容器的过程。 稍后你可以在该容器中存储数据。
+Azure Cosmos DB 是 Azure 提供的多区域分布式多模型数据库服务。 使用 Azure Cosmos DB，可以快速创建和查询键/值数据库、文档数据库和图形数据库。 本快速入门重点介绍了部署资源管理器模板，用以创建 Azure Cosmos 数据库以及在该数据库内创建容器的过程。 稍后你可以在该容器中存储数据。
 
-[资源管理器模板](../azure-resource-manager/templates/overview.md)是定义项目基础结构和配置的 JavaScript 对象表示法 (JSON) 文件。 该模板使用声明性语法，使你可以指明要部署的内容，而不需要编写一系列编程命令来创建内容。 若要详细了解如何开发资源管理器模板，请参阅[资源管理器文档](/azure-resource-manager/)。
-
-<!--Not Available on [template reference](https://docs.microsoft.com/azure/templates/microsoft.DocumentDB/allversions)-->
+[!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
 如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 Azure 订阅，或免费的 Azure Cosmos DB 试用帐户
 
-- [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)] 
+- [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-- [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]  
+- [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
 
 ## <a name="create-an-azure-cosmos-account-database-container"></a>创建 Azure Cosmos 帐户、数据库和容器
+
+### <a name="review-the-template"></a>查看模板
 
 本快速入门中使用的模板来自 [Azure 快速入门模板](https://github.com/Azure/azure-quickstart-templates/tree/master/101-cosmosdb-create/)。
 
@@ -242,6 +243,8 @@ Azure 订阅，或免费的 Azure Cosmos DB 试用帐户
     
 可以在[快速入门模板库](https://github.com/Azure/azure-quickstart-templates/?resourceType=Microsoft.Documentdb)中找到更多 Azure Cosmos DB 模板示例。
 
+### <a name="deploy-the-template"></a>部署模板
+
 1. 选择下图登录到 Azure 并打开一个模板。 该模板将创建 Azure Cosmos 帐户、数据库和容器。
 
     <a href="https://portal.azure.cn/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cosmosdb-create%2Fazuredeploy.json"><img src="./media/quick-create-template/deploy-to-azure.png" alt="deploy to azure"/></a>
@@ -259,12 +262,12 @@ Azure 订阅，或免费的 Azure Cosmos DB 试用帐户
         
         <!--CORRECT ON globally unique-->
         
-    * **位置**：输入要在其中创建 Azure Cosmos 帐户的位置。 Azure Cosmos 帐户必须与资源组处于同一位置。 
+    * **位置**：输入要在其中创建 Azure Cosmos 帐户的位置。 Azure Cosmos 帐户必须与资源组处于同一位置。
     * **主要区域**：Azure Cosmos 帐户的主要副本区域。
     * **次要区域**：Azure Cosmos 帐户的次要副本区域。
     * **数据库名称**：Azure Cosmos 数据库的名称。
     * **容器名称**：Azure Cosmos 容器的名称。
-    * **吞吐量**：容器的吞吐量，最小吞吐量值为 400 RU/秒。 
+    * **吞吐量**：容器的吞吐量，最小吞吐量值为 400 RU/秒。
     * **我同意上述条款和条件**：选中。
 
 3. 选择“购买”。  成功部署 Azure Cosmos 帐户后，你会收到通知：
@@ -277,7 +280,7 @@ Azure 订阅，或免费的 Azure Cosmos DB 试用帐户
 
 可以使用 Azure 门户检查 Azure Cosmos 帐户、数据库和容器，或者使用以下 Azure CLI 或 Azure PowerShell 脚本列出创建的机密。
 
-# <a name="clitabcli"></a>[CLI](#tab/CLI)
+# <a name="cli"></a>[CLI](#tab/CLI)
 
 ```azurecli
 echo "Enter your Azure Cosmos account name:" &&
@@ -287,11 +290,11 @@ read resourcegroupName &&
 az cosmosdb show -g $resourcegroupName -n $cosmosAccountName
 ```
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/PowerShell)
+# <a name="powershell"></a>[PowerShell](#tab/PowerShell)
 
 ```powershell
 $resourceGroupName = Read-Host -Prompt "Enter the resource group name where your Azure Cosmos account exists"
-(Get-AzResource -ResourceType "Microsoft.DocumentDB/databaseAccounts" -ResourceGroupName $resourceGroupName).Name 
+(Get-AzResource -ResourceType "Microsoft.DocumentDB/databaseAccounts" -ResourceGroupName $resourceGroupName).Name
  Write-Host "Press [ENTER] to continue..."
 ```
 
@@ -302,7 +305,7 @@ $resourceGroupName = Read-Host -Prompt "Enter the resource group name where your
 如果打算继续使用后续的教程，则可能需要保留这些资源。
 如果不再需要资源组，可以将其删除，这将删除 Azure Cosmos 帐户和相关的资源。 使用 Azure CLI 或 Azure PowerShell 删除资源组：
 
-# <a name="clitabcli"></a>[CLI](#tab/CLI)
+# <a name="cli"></a>[CLI](#tab/CLI)
 
 ```azurecli
 echo "Enter the Resource Group name:" &&
@@ -311,7 +314,7 @@ az group delete --name $resourceGroupName &&
 echo "Press [ENTER] to continue ..."
 ```
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/PowerShell)
+# <a name="powershell"></a>[PowerShell](#tab/PowerShell)
 
 ```powershell
 $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"

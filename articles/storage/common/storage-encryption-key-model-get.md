@@ -1,21 +1,22 @@
 ---
-title: 确定用于存储帐户的加密密钥模型 - Azure 存储
+title: 确定用于存储帐户的加密密钥模型
+titleSuffix: Azure Storage
 description: 使用 Azure 门户、PowerShell 或 Azure CLI 检查如何为存储帐户管理加密密钥。 密钥可能由 Microsoft 管理（默认设置），或由客户管理。 客户管理的密钥必须存储在 Azure Key Vault 中。
 services: storage
 author: WenJason
 ms.service: storage
 ms.topic: how-to
-origin.date: 11/26/2019
-ms.date: 01/06/2020
+origin.date: 03/13/2020
+ms.date: 03/30/2020
 ms.author: v-jay
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: e74b65f22ee0557d70f47a19ae277fc95b415c55
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.openlocfilehash: d4522dd765a88ec3207fa6458d61b0be954eb992
+ms.sourcegitcommit: 90d01d08faf8adb20083363a8e4e5aab139cd9b2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75624445"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80290396"
 ---
 # <a name="determine-which-azure-storage-encryption-key-model-is-in-use-for-the-storage-account"></a>确定用于存储帐户的 Azure 存储加密密钥模型
 
@@ -32,18 +33,22 @@ ms.locfileid: "75624445"
 
 若要确定存储帐户是使用 Microsoft 托管密钥还是客户托管密钥进行加密，请使用下列方法之一。
 
-# <a name="azure-portaltabportal"></a>[Azure 门户](#tab/portal)
+# <a name="azure-portal"></a>[Azure 门户](#tab/portal)
 
 若要使用 Azure 门户检查存储帐户的加密模型，请执行以下步骤：
 
 1. 在 Azure 门户中导航到存储帐户。
 1. 选择“加密”  设置，并记下设置。
 
-下图显示了在其中使用客户托管密钥进行加密的存储帐户：
+下图显示了使用 Microsoft 托管密钥加密的存储帐户：
+
+![查看使用 Microsoft 托管密钥加密的帐户](media/storage-encryption-key-model-get/microsoft-managed-encryption-key-setting-portal.png)
+
+下图显示了使用客户托管密钥加密的存储帐户：
 
 ![屏幕截图，显示 Azure 门户中的加密密钥设置](media/storage-encryption-key-model-get/customer-managed-encryption-key-setting-portal.png)
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
 若要使用 PowerShell 检查存储帐户的加密模型，请调用 [Get-AzStorageAccount](https://docs.microsoft.com/powershell/module/az.storage/get-azstorageaccount) 命令，然后检查该帐户的 **KeySource** 属性。
 
@@ -55,7 +60,7 @@ $account.Encryption.KeySource
 
 如果 **KeySource** 属性的值为 `Microsoft.Storage`，则该帐户将通过 Microsoft 托管密钥进行加密。 如果 **KeySource** 属性的值为 `Microsoft.Keyvault`，则该帐户将通过客户托管密钥进行加密。
 
-# <a name="azure-clitabcli"></a>[Azure CLI](#tab/cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/cli)
 
 若要使用 Azure CLI 检查存储帐户的加密模型，请调用 [az storage account show](/cli/storage/account#az-storage-account-show) 命令，然后检查该帐户的 **keySource** 属性。
 
@@ -73,4 +78,5 @@ key_source=$(az storage account show \
 
 ## <a name="next-steps"></a>后续步骤
 
-[静态数据的 Azure 存储加密](storage-service-encryption.md)
+- [静态数据的 Azure 存储加密](storage-service-encryption.md)
+- [在 Azure Key Vault 中使用客户托管密钥管理 Azure 存储加密](encryption-customer-managed-keys.md)

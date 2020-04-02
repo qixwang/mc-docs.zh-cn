@@ -10,16 +10,18 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/20/2017
-ms.openlocfilehash: 6d8469b567cde7bd9639eb3fd3ba481f260c20de
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+ms.openlocfilehash: cab72a3f956f4483adba0d092ab257ae4e160c4b
+ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75598246"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80343328"
 ---
 # <a name="migrate-analytics-from-excel-to-azure-machine-learning-studio-classic"></a>将 Excel 中的分析信息迁移到 Azure 机器学习工作室（经典）
 
-> *Kate Baroni* 和 *Ben Boatman* 是 Microsoft 数据科学卓越中心中的企业解决方案架构师。 在本文中，他们将介绍使用 Azure 机器学习工作室（经典）将现有的回归分析套件迁移到基于云的解决方案的经验。
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
+
+> Kate Baroni  和 Ben Boatman  是 Microsoft Data Insights 卓越中心中的企业解决方案架构师。 在本文中，他们将介绍使用 Azure 机器学习工作室（经典）将现有的回归分析套件迁移到基于云的解决方案的经验。
 
 ## <a name="goal"></a>目标
 
@@ -51,7 +53,7 @@ ms.locfileid: "75598246"
 ### <a name="review-initial-results"></a>查看初始结果
 起初，Excel 模型的性能明显优于工作室（经典）模型： 
 
-|  | Excel | 工作室（经典） |
+|  | Excel | 工作室（经典版） |
 | --- |:---:|:---:|
 | 性能 | | |
 | <ul style="list-style-type: none;"><li>调整 R 平方</li></ul> |0.96 |不适用 |
@@ -74,23 +76,23 @@ ms.locfileid: "75598246"
 | 有标签的值 |实际值（数值） |相同 |相同 |
 | 学习器 |Excel -> 数据分析 -> 回归 |线性回归。 |线性回归 |
 | 学习器选项 |不适用 |默认值 |普通最小二乘法<br />L2 = 0.005 |
-| 数据集 |26 行、3 个特征、1 个标签。 所有数字。 |相同 |相同 |
+| 数据集 |26 行、3 个功能、1 个标签。 所有数字。 |相同 |相同 |
 | 拆分：定型 |Excel 在前 18 行进行训练，在最后 8 行进行测试。 |相同 |相同 |
 | 拆分：测试 |Excel 回归公式应用于最后 8 行 |相同 |相同 |
-| **性能** | | | |
-| 调整 R 平方 |0.96 |不适用 | |
+| **“性能”** | | | |
+| 调整 R 平方 |0.96 |空值 | |
 | 决定系数 |不适用 |0.78 |0.952049 |
 | 平均绝对误差 |$9.5M |$ 19.4 M |$9.5M |
 | 平均绝对误差 (%) |<span style="background-color: 00FF00;"> 6.03%</span> |12.2% |<span style="background-color: 00FF00;"> 6.03%</span> |
 
-此外，Excel 系数相较于 Azure 训练模型中的特征权重不相上下：
+此外，Excel 系数相较于 Azure 训练模型中的功能权重不相上下：
 
-|  | Excel 系数 | Azure 特征权重 |
+|  | Excel 系数 | Azure 功能权重 |
 | --- |:---:|:---:|
 | 截距/偏差 |19470209.88 |19328500 |
-| 特征 A |0.832653063 |0.834156 |
-| 特征 B |11071967.08 |11007300 |
-| 特征 C |25383318.09 |25140800 |
+| 功能 A |0.832653063 |0.834156 |
+| 功能 B |11071967.08 |11007300 |
+| 功能 C |25383318.09 |25140800 |
 
 ## <a name="next-steps"></a>后续步骤
 我们想要在 Excel 内使用机器学习 Web 服务。 我们的业务分析人员依靠 Excel，而我们需要一种方法来调用机器学习 Web 服务和 Excel 数据，并使其将预测的值返回到 Excel。 
@@ -133,7 +135,7 @@ ms.locfileid: "75598246"
 下面是一些可帮助用户处理回归的资源： 
 
 * Excel 中的回归。 如果从未尝试在 Excel 中使用回归，可参阅本教程轻松完成操作：[https://www.excel-easy.com/examples/regression.html](https://www.excel-easy.com/examples/regression.html)
-* 回归与预测。 Tyler Chessman 撰写的博客文章，介绍了如何在 Excel 中进行时间序列预测，其中包括适合初学者的线性回归描述。 [https://www.itprotoday.com/sql-server/understanding-time-series-forecasting-concepts](https://www.itprotoday.com/sql-server/understanding-time-series-forecasting-concepts) 
+* 回归与预测。 Tyler Chessman 撰写的博客文章，介绍了如何在 Excel 中进行时序预测，其中包含适合初学者的线性回归说明。 [https://www.itprotoday.com/sql-server/understanding-time-series-forecasting-concepts](https://www.itprotoday.com/sql-server/understanding-time-series-forecasting-concepts) 
 * 普通最小二乘法（线性回归）：缺陷、问题和陷阱。 有关回归的简介和讨论：[https://www.clockbackward.com/2009/06/18/ordinary-least-squares-linear-regression-flaws-problems-and-pitfalls/ ](https://www.clockbackward.com/2009/06/18/ordinary-least-squares-linear-regression-flaws-problems-and-pitfalls/)
 
 <!-- Module References -->
