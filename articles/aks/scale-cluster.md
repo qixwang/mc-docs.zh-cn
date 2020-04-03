@@ -5,14 +5,14 @@ services: container-service
 author: rockboyfor
 ms.topic: article
 origin.date: 05/31/2019
-ms.date: 03/09/2020
+ms.date: 04/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: 7e834c2cf1a3ee24a8d670311d6a59ee880b5caf
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: dd318597da52995fd09d1c6443bec190699e6edc
+ms.sourcegitcommit: 76280dd9854dc0ff0ba1e5e62fb3dc3af049fbe2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79290713"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80517005"
 ---
 # <a name="scale-the-node-count-in-an-azure-kubernetes-service-aks-cluster"></a>在 Azure Kubernetes 服务 (AKS) 群集中缩放节点数
 
@@ -28,9 +28,7 @@ az aks show --resource-group myResourceGroup --name myAKSCluster --query agentPo
 
 以下示例输出表明名称为 nodepool1   ：
 
-```console
-$ az aks show --resource-group myResourceGroup --name myAKSCluster --query agentPoolProfiles
-
+```output
 [
   {
     "count": 1,
@@ -72,10 +70,7 @@ az aks scale --resource-group myResourceGroup --name myAKSCluster --node-count 1
 }
 ```
 
-## <a name="next-steps"></a>后续步骤
-
-在本文中，你手动缩放了 AKS 群集以增加或减少节点数量。 
-
+<!--Not Available on ## Next steps-->
 <!--Not Available on [cluster autoscaler][cluster-autoscaler](currently in preview in AKS)-->
 <!-- LINKS - external -->
 

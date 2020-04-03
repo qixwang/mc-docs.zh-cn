@@ -1,17 +1,16 @@
 ---
 title: 策略示例索引
 description: Azure Policy 的内置项的索引。 类别标记、法规符合性、Key Vault、Kubernetes、来宾配置等。
-author: DCtheGeek
 ms.topic: sample
-origin.date: 01/31/2020
-ms.date: 03/09/2020
+origin.date: 03/25/2020
+ms.date: 03/30/2020
 ms.author: v-tawe
-ms.openlocfilehash: 1b374720e5bbd74d800ab35e8a4e6e8776980974
-ms.sourcegitcommit: 892137d117bcaf9d88aec0eb7ca756fe39613344
+ms.openlocfilehash: 9a116bf20200af36320afe015e5ddae1c42cd4e9
+ms.sourcegitcommit: 260800ede66f48c886d1426a0fac18b4d402b4f2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78042302"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586812"
 ---
 # <a name="azure-policy-samples"></a>Azure Policy 示例
 
@@ -34,6 +33,10 @@ ms.locfileid: "78042302"
 - [Count 运算符](./pattern-count-operator.md)
 - [对计划中的策略定义进行分组](./pattern-group-with-initiative.md)
 - [使用 deployIfNotExists 部署资源](./pattern-deploy-resources.md)
+
+## <a name="other-samples"></a>其他示例
+
+- [GitHub - 社区策略存储库](https://github.com/Azure/Community-Policy)
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -4,16 +4,16 @@ description: 了解 IoT Edge 设备和模块如何能够长时间在无 Internet
 author: kgremban
 ms.author: v-tawe
 origin.date: 11/22/2019
-ms.date: 03/02/2020
+ms.date: 03/30/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 8926064813deecbc03c0566f552b21cdbaed9fed
-ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
+ms.openlocfilehash: 79f980aab35f606f801c18092126e2942ada86c5
+ms.sourcegitcommit: 260800ede66f48c886d1426a0fac18b4d402b4f2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77494562"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586800"
 ---
 # <a name="understand-extended-offline-capabilities-for-iot-edge-devices-modules-and-child-devices"></a>了解有关 IoT Edge 设备、模块和子设备的扩展脱机功能
 
@@ -71,7 +71,7 @@ IoT Edge 设备及其分配的子设备可以在初始一次性同步之后无�
 
 将 [Azure 命令行接口](/cli/?view=azure-cli-latest)与 [IoT 扩展](https://github.com/azure/azure-iot-cli-extension)（v0.7.0 或更高版本）配合使用时，可以通过 [device-identity](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity?view=azure-cli-latest) 子命令管理父子关系。 以下示例使用一个查询将中心内的所有非 IoT Edge 设备分配为 IoT Edge 设备的子设备。 
 
-```shell
+```azurecli
 # Set IoT Edge parent device
 egde_device="edge-device1"
 

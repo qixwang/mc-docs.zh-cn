@@ -5,15 +5,15 @@ ms.assetid: 14feb4f3-5095-496e-9a40-690e1414bd73
 ms.devlang: php
 ms.topic: tutorial
 origin.date: 11/25/2019
-ms.date: 03/23/2020
+ms.date: 03/30/2020
 ms.author: v-tawe
 ms.custom: mvc, cli-validate, seodec18
-ms.openlocfilehash: 56d04979a903d87d37f229b4db9232847a45f7c2
-ms.sourcegitcommit: d5eca3c6b03b206e441b599e5b138bd687a91361
+ms.openlocfilehash: 9010d3279ba3e653a010c5b2369f26455795d8b6
+ms.sourcegitcommit: 44d3fe59952847e5394bbe6c05bd6f333bb56345
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78934717"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80522126"
 ---
 # <a name="tutorial-build-a-php-and-mysql-app-in-azure"></a>教程：在 Azure 中构建 PHP 和 MySQL 应用
 
@@ -181,7 +181,7 @@ az mysql server create --resource-group myResourceGroup --name <mysql_server_nam
     "tier": "GeneralPurpose"
   },
   "sslEnforcement": "Enabled",
-  ...   +  
+  ...    +  
   -  < Output has been truncated for readability >
 }
 ```
@@ -209,7 +209,7 @@ az mysql server firewall-rule create --name AllowLocalClient --server <mysql_ser
 在本地终端窗口中，连接到 Azure 中的 MySQL 服务器。 使用前面为 &lt;mysql_server_name> 指定的值  。 出现输入密码的提示时，请使用在 Azure 中创建数据库时指定的密码。
 
 ```bash
-mysql -u <admin_user>@<mysql_server_name> -h <mysql_server_name>.mysql.database.azure.cn -P 3306 -p
+mysql -u <admin_user>@<mysql_server_name> -h <mysql_server_name>.mysql.database.azure.cn -P 3306 -p <PASSWORD> --ssl-mode=REQUIRED --ssl-ca=<PATH_TO_PEM>
 ```
 
 ### <a name="create-a-production-database"></a>创建生产数据库

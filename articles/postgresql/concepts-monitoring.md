@@ -6,13 +6,13 @@ ms.author: v-jay
 ms.service: postgresql
 ms.topic: conceptual
 origin.date: 06/19/2019
-ms.date: 03/02/2020
-ms.openlocfilehash: 982b0f271a7183e2b69ffdb9b817a9bce12bb6d2
-ms.sourcegitcommit: 892137d117bcaf9d88aec0eb7ca756fe39613344
+ms.date: 03/30/2020
+ms.openlocfilehash: 9b77cd2aafdf07cfd6fefbf0f6b1a5f78df114ee
+ms.sourcegitcommit: 303a16c7117b6f3495ef0493b4ae8ccb67d7dbba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78154391"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80342421"
 ---
 # <a name="monitor-and-tune-azure-database-for-postgresql---single-server"></a>监视和优化 Azure Database for PostgreSQL（单一服务器）
 监视服务器的相关数据有助于排查工作负荷故障及优化工作负荷。 Azure Database for PostgreSQL 提供各种监视选项，帮助用户深入了解服务器的行为。
@@ -54,8 +54,28 @@ Azure Database for PostgreSQL 提供了各种指标来帮助用户深入了解�
 ## <a name="performance-recommendations"></a>性能建议
 [性能建议](concepts-performance-recommendations.md)功能可以确定提高工作负荷性能的机会。 性能建议为你提供了有关创建新索引的建议，这些索引可能会提高工作负荷的性能。 若要生成索引建议，该功能会考虑各种数据库特征，包括其架构以及如“查询存储”报告的工作负载。 实施任何性能建议后，客户应测试性能以评估这些更改的影响。 
 
-## <a name="service-health"></a>服务运行状况
-[Azure 服务运行状况](../service-health/overview.md)提供了你的订阅中所有服务运行状况通知的视图。 你可以设置服务运行状况警报，以便在发生可能影响你使用的 Azure 服务和区域的问题或更改时，通过首选通信通道通知你。
+## <a name="planned-maintenance-notification"></a>计划内维护通知
+
+“计划内维护通知”  允许你接收有关 Azure Database for PostgreSQL - 单一服务器即将进行的计划内维护的警报。 这些通知与[服务运行状况](../service-health/overview.md)计划内维护集成，允许你在同一位置查看你的订阅的所有计划内维护。 它还有助于将通知扩展到不同资源组的适当受众，因为你可能有不同的联系人负责不同的资源。 你将在事件发生前的 72 小时收到有关即将进行的维护的通知。
+
+> [!Note]
+> 我们将尽一切努力为所有事件提供**计划内维护通知** 72 小时通知。 但是，对于关键或安全修补程序，通知可能会在事件快要发生时更晚一点发送，或者会被忽略。
+
+### <a name="to-receive-planned-maintenance-notification"></a>接收计划内维护通知
+
+1. 在[门户](https://portal.azure.cn)中，选择“服务运行状况”  。
+2. 在“警报”  部分中，选择“运行状况警报”  。
+3. 选择“+ 添加服务运行状况警报”  ，并填写字段。
+4. 填写所需的字段。 
+5. 选择“事件类型”  ，然后选择“计划内维护”  或“全选” 
+6. 在“操作组”  中，定义接收警报的方式（获取电子邮件、触发逻辑应用等）。  
+7. 确保“创建后启用规则”设置为“是”。
+8. 选择“创建警报规则”  以完成警报
+
+有关如何创建服务运行状况警报  的详细步骤，请参阅 [创建有关服务通知的活动日志警报](../service-health/alerts-activity-log-service-notifications.md)。
+
+> [!IMPORTANT]
+> 计划内维护通知目前为预览版
 
 ## <a name="next-steps"></a>后续步骤
 - 有关如何基于指标创建警报的指南，请参阅[如何设置警报](howto-alert-on-metric.md)。

@@ -3,15 +3,15 @@ title: 教程 - 将容器应用部署到容器实例
 description: Azure 容器实例教程第 3 部分（共 3 部分）- 将容器应用程序部署到 Azure 容器实例
 ms.topic: tutorial
 origin.date: 03/21/2018
-ms.date: 01/15/2020
+ms.date: 04/06/2020
 ms.author: v-yeche
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 7fdf36f0db975be05e66213c224a292366b43849
-ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
+ms.openlocfilehash: 6ab9d8dce09ab164345e4479e7b3645c68367442
+ms.sourcegitcommit: 76280dd9854dc0ff0ba1e5e62fb3dc3af049fbe2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77067882"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80517029"
 ---
 <!--Verified successfully-->
 # <a name="tutorial-deploy-a-container-application-to-azure-container-instances"></a>教程：将容器应用程序部署到 Azure 容器实例
@@ -69,14 +69,13 @@ az container show --resource-group myResourceGroup --name aci-tutorial-app --que
 
 部署成功后，使用 [az container show][az-container-show] 命令显示容器的完全限定域名 (FQDN)：
 
-```bash
+```azurecli
 az container show --resource-group myResourceGroup --name aci-tutorial-app --query ipAddress.fqdn
 ```
 
 例如：
-```console
-$ az container show --resource-group myResourceGroup --name aci-tutorial-app --query ipAddress.fqdn
-"aci-demo.chinaeast2.azurecontainer.console.azure.cn"
+```output
+"aci-demo.chinaeast 2.azurecontainer.console.azure.cn"
 ```
 
 若要查看正在运行的应用程序，请从喜欢的浏览器中导航到此限定的 DNS 名称：
@@ -91,8 +90,7 @@ az container logs --resource-group myResourceGroup --name aci-tutorial-app
 
 示例输出：
 
-```bash
-$ az container logs --resource-group myResourceGroup --name aci-tutorial-app
+```output
 listening on port 80
 ::ffff:10.240.0.4 - - [21/Jul/2017:06:00:02 +0000] "GET / HTTP/1.1" 200 1663 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36"
 ::ffff:10.240.0.4 - - [21/Jul/2017:06:00:02 +0000] "GET /favicon.ico HTTP/1.1" 404 150 "http://aci-demo.chinaeast2.azurecontainer.console.azure.cn/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36"
@@ -141,5 +139,4 @@ az group delete --name myResourceGroup
 [azure-cli-install]: https://docs.azure.cn/cli/install-azure-cli?view=azure-cli-latest
 [prepare-app]: ./container-instances-tutorial-prepare-app.md
 
-<!-- Update_Description: new article about container instances tutorial deploy app -->
-<!--NEW.date: 01/15/2020-->
+<!-- Update_Description: update meta properties, wording update, update link -->

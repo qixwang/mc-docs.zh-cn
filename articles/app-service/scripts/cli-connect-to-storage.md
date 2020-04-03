@@ -7,15 +7,15 @@ ms.assetid: bc8345b2-8487-40c6-a91f-77414e8688e6
 ms.devlang: azurecli
 ms.topic: sample
 origin.date: 12/11/2017
-ms.date: 01/13/2020
+ms.date: 03/30/2020
 ms.author: v-tawe
-ms.custom: mvc
-ms.openlocfilehash: 71195d4f135404e9f774c4363fa4d3d7882ccc2f
-ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
+ms.custom: mvc, seodec18
+ms.openlocfilehash: 61544a273196563b033bd13e108d26ce637cc6b1
+ms.sourcegitcommit: 44d3fe59952847e5394bbe6c05bd6f333bb56345
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75600364"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80522110"
 ---
 # <a name="connect-an-app-service-app-to-a-storage-account-using-cli"></a>使用 CLI 将应用服务应用连接到存储帐户
 

@@ -11,16 +11,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-origin.date: 08/26/2019
-ms.date: 09/23/2019
+origin.date: 03/09/2020
+ms.date: 04/06/2020
 ms.author: v-jay
 ms.custom: seodec18
-ms.openlocfilehash: 537b9d2317bae5bdfe236cd1cbd97c3e5ccb6a74
-ms.sourcegitcommit: 8248259e4c3947aa0658ad6c28f54988a8aeebf8
+ms.openlocfilehash: a907fdffed56e63611b34f3e3986ca688ab0b5cf
+ms.sourcegitcommit: fe9ed98aaee287a21648f866bb77cb6888f75b0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71125569"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80625655"
 ---
 # <a name="scaling-media-processing"></a>缩放媒体处理能力
 
@@ -47,8 +47,6 @@ ms.locfileid: "71125569"
 
 > [!NOTE]
 > 对于由媒体服务 v3 或视频索引器触发的音频分析和视频分析作业，强烈建议为你的帐户预配 10 S3 MRU。 如果需要超过 10 S3 MRU 的数量，请使用 [Azure 门户](https://portal.azure.cn/)打开一个支持票证。
->
-> 目前，无法使用 Azure 门户来管理其他 v3 资源。 请使用 [REST API](https://aka.ms/ams-v3-rest-ref)、[CLI](/cli/ams?view=azure-cli-latest) 或受支持的 [SDK](media-services-apis-overview.md#sdks) 之一。
 
 ## <a name="prerequisites"></a>先决条件 
 

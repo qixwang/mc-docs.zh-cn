@@ -10,12 +10,12 @@ ms.custom: hdinsightactive
 ms.topic: tutorial
 origin.date: 10/08/2019
 ms.date: 12/09/2019
-ms.openlocfilehash: 6c8c3cf7d2317b212130de825f7c9eb06825b272
-ms.sourcegitcommit: 298eab5107c5fb09bf13351efeafab5b18373901
+ms.openlocfilehash: 42cda2cfa4df4965eb1b408ae72a6692c499dc1c
+ms.sourcegitcommit: 5fb45da006859215edc8211481f13174aa43dbeb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2019
-ms.locfileid: "74657720"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80634502"
 ---
 # <a name="tutorial-use-apache-kafka-streams-api-in-azure-hdinsight"></a>教程：在 Azure HDInsight 中使用 Apache Kafka Streams API
 
@@ -176,7 +176,7 @@ public class Stream
     > [!Note]  
     > 如果要从群集外部执行此过程，存储群集名称的过程则有所不同。 从 Azure 门户中获取采用小写格式的群集名称。 然后，将以下命令中的 `<clustername>` 替换为群集名称，并执行：`export clusterName='<clustername>'`。  
 
-5. 若要获取 Kafka 代理主机和 Apache Zookeeper 主机，请使用以下命令。 出现提示时，输入群集登录（管理员）帐户的密码。 系统会提示输入密码两次。
+5. 若要获取 Kafka 代理主机和 Apache Zookeeper 主机，请使用以下命令。 出现提示时，输入群集登录（管理员）帐户的密码。
 
     ```bash
     export KAFKAZKHOSTS=$(curl -sS -u admin:$password -G https://$clusterName.azurehdinsight.cn/api/v1/clusters/$clusterName/services/ZOOKEEPER/components/ZOOKEEPER_SERVER | jq -r '["\(.host_components[].HostRoles.host_name):2181"] | join(",")' | cut -d',' -f1,2);
@@ -273,8 +273,3 @@ public class Stream
 2. 找到要删除的资源组，然后右键单击列表右侧的“更多”按钮 (...)。 
 3. 选择“删除资源组”，然后进行确认。 
 
-## <a name="next-steps"></a>后续步骤
-
-本文档介绍了如何将 Apache Kafka Streams API 与 Kafka on HDInsight 配合使用。 请参阅以下资源了解有关使用 Kafka 的详细信息：
-
-* [在 Apache Kafka 集群之间复制数据](apache-kafka-mirroring.md)

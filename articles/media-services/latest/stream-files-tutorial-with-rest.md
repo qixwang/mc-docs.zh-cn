@@ -10,15 +10,15 @@ ms.service: media-services
 ms.workload: ''
 ms.topic: tutorial
 ms.custom: mvc
-origin.date: 11/05/2019
-ms.date: 02/24/2020
+origin.date: 03/16/2020
+ms.date: 04/06/2020
 ms.author: v-jay
-ms.openlocfilehash: 78903bd9a184709001411fa264ac41955613f260
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: 57c0250cc1d05eaca6b6e4117c623ea3fb53113f
+ms.sourcegitcommit: fe9ed98aaee287a21648f866bb77cb6888f75b0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79293223"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80625763"
 ---
 # <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---rest"></a>教程：基于 URL 对远程文件进行编码并流式传输视频 - REST
 
@@ -59,7 +59,9 @@ ms.locfileid: "79293223"
  git clone https://github.com/Azure-Samples/media-services-v3-rest-postman.git
  ```
 
-[!INCLUDE [media-services-v3-cli-access-api-include](../../../includes/media-services-v3-cli-access-api-include.md)]
+## <a name="access-api"></a>访问 API
+
+有关详细信息，请参阅[获取访问媒体服务 API 的凭据](access-api-howto.md)
 
 ## <a name="configure-postman"></a>配置 Postman
 
@@ -76,7 +78,7 @@ ms.locfileid: "79293223"
     > [!Note]
     > 使用从上面的“访问媒体服务 API”  部分获得的值更新访问权限变量。
 
-7. 双击所选的文件，并输入通过执行[访问 API](#access-the-media-services-api) 步骤获得的值。
+7. 双击所选的文件，并输入通过执行[访问 API](#access-api) 步骤获得的值。
 8. 关闭对话框。
 9. 从下拉列表中选择“Azure Media Service v3 Environment”环境。 
 

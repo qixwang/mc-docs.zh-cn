@@ -3,14 +3,14 @@ title: 在运行的容器实例中执行命令
 description: 了解如何在 Azure 容器实例上当前正在运行的容器中执行命令
 ms.topic: article
 origin.date: 03/30/2018
-ms.date: 01/15/2020
+ms.date: 04/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: 4df00eddd23f104a17d513fea11b895dcbfc0cd9
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.openlocfilehash: 00847e1a12c48a097a54e5bf681ee3d549ab133e
+ms.sourcegitcommit: 76280dd9854dc0ff0ba1e5e62fb3dc3af049fbe2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77428742"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80516972"
 ---
 <!--Verified successfully-->
 # <a name="execute-a-command-in-a-running-azure-container-instance"></a>在运行的 Azure 容器实例中执行命令
@@ -33,8 +33,7 @@ az container exec --resource-group myResourceGroup --name mynginx --exec-command
 
 在以下示例输出中，Bash shell 已在运行的 Linux 容器中启动，提供一个可用于执行 `ls` 的终端：
 
-```console
-$ az container exec --resource-group myResourceGroup --name mynginx --exec-command "/bin/bash"
+```output
 root@caas-83e6c883014b427f9b277a2bba3b7b5f-708716530-2qv47:/# ls
 bin   dev  home  lib64  mnt  proc  run   srv  tmp  var
 boot  etc  lib   media  opt  root  sbin  sys  usr

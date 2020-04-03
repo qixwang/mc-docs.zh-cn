@@ -14,7 +14,8 @@
           href: kubernetes-walkthrough.md
         - name: 使用 Azure 门户
           href: kubernetes-walkthrough-portal.md
-        - name: 使用 Resource Manager 模板
+        - name: 使用 ARM 模板
+          displayName: Resource Manager
           href: kubernetes-walkthrough-rm-template.md
     - name: 开发应用程序
       expanded: true
@@ -84,8 +85,8 @@
               href: developer-best-practices-pod-security.md
     - name: 配额和区域限制
       href: quotas-skus-regions.md
-    - name: 从 ACS 迁移到 AKS
-      href: acs-aks-migration.md
+    - name: 迁移到 AKS
+      href: aks-migration.md
     - name: 受支持的 Kubernetes 版本
       href: supported-kubernetes-versions.md
     - name: 主机 OS 中的安全强化
@@ -94,9 +95,6 @@
   items:
     - name: 群集操作
       items:
-        - name: 创建 AKS 群集
-          href: 'https://docs.microsoft.com/cli/azure/aks?view=azure-cli-latest#az-aks-create'
-          maintainContext: true
         - name: 缩放 AKS 群集
           href: scale-cluster.md
         - name: 升级 AKS 群集
@@ -166,7 +164,7 @@
           href: use-network-policies.md
         - name: 定义 API 服务器授权 IP 范围
           href: api-server-authorized-ip-ranges.md
-        - name: 更新群集服务主体凭据
+        - name: 更新群集凭据
           href: update-credentials.md
         - name: 实现 Azure Active Directory 集成
           items:

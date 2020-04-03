@@ -1,27 +1,19 @@
 ---
 title: Azure 虚拟机规模集常见问题解答
 description: 获取有关 Azure 虚拟机规模集最常见问题的解答。
-services: virtual-machine-scale-sets
-documentationcenter: ''
 author: mayanknayar
-manager: drewm
-editor: ''
 tags: azure-resource-manager
 ms.assetid: 76ac7fd7-2e05-4762-88ca-3b499e87906e
 ms.service: virtual-machine-scale-sets
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 01/02/2020
+ms.topic: conceptual
+ms.date: 03/31/2020
 ms.author: v-junlch
-ms.custom: na
-ms.openlocfilehash: dcaaeb01c5115669be7da55994e4318533a72cd8
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.openlocfilehash: 2bb5615694a5e493b82e21654f4e1934f5968ddc
+ms.sourcegitcommit: 64584c0bf31b4204058ae2b4641356b904ccdd58
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75624174"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80581821"
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Azure 虚拟机规模集常见问题解答
 
@@ -160,7 +152,7 @@ ms.locfileid: "75624174"
 ### <a name="how-do-i-use-self-signed-certificates-provisioned-for-azure-service-fabric-clusters"></a>如何使用为 Azure Service Fabric 群集预配的自签名证书？
 如需最新的示例，请在 azure shell 中使用以下 azure CLI 语句，阅读 Service Fabrics CLI 模块示例文档，该文档将打印到 stdout：
 
-```bash
+```azurecli
 az sf cluster create -h
 ```
 
@@ -231,7 +223,7 @@ keyData | 是 | String | 指定 base64 编码的 SSH 公钥
 
 >Update-AzVmss：列表机密包含 /subscriptions/\<my-subscription-id>/resourceGroups/internal-rg-dev/providers/Microsoft.KeyVault/vaults/internal-keyvault-dev 的重复实例，这是不允许的。
 
-如果尝试重新添加同一保管库，而不是使用现有源保管库的新保管库证书，可能会看到此消息。 如果要添加其他机密，`Add-AzVmssSecret` 命令将无法正常运行。
+如果尝试重新添加同一保管库，而不是使用现有源保管库的新保管库证书，可能会看到此消息。 如果要添加其他机密，`Add-AzVmssSecret` 命令无法正常运行。
 
 若要添加同一密钥保管库中的其他机密，请更新 $vmss.properties.osProfile.secrets[0].vaultCertificates 列表。
 
@@ -285,7 +277,7 @@ Update-AzVmss -VirtualMachineScaleSet $vmss -ResourceGroup $rg -Name $vmssName
 
 如果从密钥保管库中删除机密，然后对所有 VM 运行 `stop deallocate`，则再次启动这些 VM 时，将发生失败。 失败发生的原因是 CRP 需要从密钥保管库检索机密，但它无法进行检索。 在这种情况下，可以从虚拟机规模集模型中删除证书。
 
-CRP 组件不会持久保留客户机密。 如果对虚拟机规模集中的所有虚拟机运行 `stop deallocate`，会删除缓存。 在这种情况下，将从密钥保管库中检索机密。
+CRP 组件不会持久保留客户机密。 如果对虚拟机规模集中的所有虚拟机运行 `stop deallocate`，会删除缓存。 在这种情况下，从密钥保管库中检索机密。
 
 扩大时不会遇到此问题，因为（单 Fabric 租户模型中的）Azure Service Fabric 中存在机密的缓存副本。
 
@@ -293,7 +285,7 @@ CRP 组件不会持久保留客户机密。 如果对虚拟机规模集中的所
 
 Key Vault 要求指定证书版本的目的是为了使用户清楚地了解哪些证书部署在其 VM 上。
 
-如果创建了 VM，并更新了密钥保管库中的机密，则新证书不会下载到 VM。 但是，VM 看上去像是引用了该证书，并且新 VM 将获取新机密。 要避免此问题，需要引用机密的版本。
+如果创建了 VM，并更新了密钥保管库中的机密，则新证书不会下载到 VM。 但是，VM 看上去像是引用了该证书，并且新 VM 会获取新机密。 要避免此问题，需要引用机密的版本。
 
 ### <a name="my-team-works-with-several-certificates-that-are-distributed-to-us-as-cer-public-keys-what-is-the-recommended-approach-for-deploying-these-certificates-to-a-virtual-machine-scale-set"></a>本团队正在开发几个证书，到时将以 .cer 公钥的形式分发给大家使用。 将这些证书部署到虚拟机规模集的建议方法有哪些？
 
@@ -519,6 +511,7 @@ IP 地址是从指定的子网中选择的。
 ### <a name="can-i-use-scale-sets-with-accelerated-networking"></a>能否将规模集与加速网络结合使用？
 
 是的。 若要使用加速网络，请在规模集的 networkInterfaceConfigurations 设置中将 enableAcceleratedNetworking 设置为 true。 例如
+
 ```json
 "networkProfile": {
     "networkInterfaceConfigurations": [
@@ -538,6 +531,7 @@ IP 地址是从指定的子网中选择的。
 ### <a name="how-can-i-configure-the-dns-servers-used-by-a-scale-set"></a>如何配置规模集使用的 DNS 服务器？
 
 若要创建具有自定义 DNS 配置的虚拟机规模集，请将 dnsSettings JSON 数据包添加到规模集的 networkInterfaceConfigurations 部分中。 示例：
+
 ```json
     "dnsSettings":{
         "dnsServers":["10.0.0.6", "10.0.0.5"]
@@ -567,7 +561,7 @@ IP 地址是从指定的子网中选择的。
 
 创建包含少于两个 VM 的虚拟机规模集的原因之一为需要使用虚拟机规模集的弹性属性。 例如，可以部署不包含任何 VM 的虚拟机规模集来定义基础结构，这样就无需支付 VM 运行费。 然后，在准备好部署 VM 后，将虚拟机规模集的“容量”提高到生产实例计数。
 
-创建包含少于两个 VM 的虚拟机规模集的另一个原因可能是，相比于使用离散 VM 的可用性集，不必担心可用性的问题。 此外，可以借助虚拟机规模集来使用可替代的无差别计算单元。 这种一致性是虚拟机规模集相比可用性集存在的一项重要优势。 许多无状态工作负载不跟踪单个单元。 如果工作负载下降，可以减少到一个计算单元，如果工作负载上升，可以增加到多个计算单元。
+可能创建包含少于两个 VM 的虚拟机规模集的另一个原因为，相比于使用离散 VM 的可用性集，不必担心可用性的问题。 此外，可以借助虚拟机规模集来使用可替代的无差别计算单元。 这种一致性是虚拟机规模集相比可用性集存在的一项重要优势。 许多无状态工作负载不跟踪单个单元。 如果工作负载下降，可以减少到一个计算单元，如果工作负载上升，可以增加到多个计算单元。
 
 ### <a name="how-do-i-change-the-number-of-vms-in-a-virtual-machine-scale-set"></a>如何更改虚拟机规模集中的 VM 数目？
 
@@ -637,9 +631,11 @@ IP 地址是从指定的子网中选择的。
 ### <a name="is-it-possible-to-integrate-scale-sets-with-azure-monitor-logs"></a>是否可以将规模集与 Azure Monitor 日志集成？
 
 可以，可在规模集 VM 上安装 Azure Monitor 扩展。 Azure CLI 示例如下：
-```
+
+```azurecli
 az vmss extension set --name MicrosoftMonitoringAgent --publisher Microsoft.EnterpriseCloud.Monitoring --resource-group Team-03 --vmss-name nt01 --settings "{'workspaceId': '<your workspace ID here>'}" --protected-settings "{'workspaceKey': '<your workspace key here'}"
 ```
+
 可在 Azure 门户的 Log Analytics 工作区中查找所需的 workspaceId 和 workspaceKey。 在“概述”页面上，单击“设置”磁贴。 单击顶部的“相连的源”选项卡。
 
 > [!NOTE]
@@ -685,9 +681,9 @@ az vmss extension set --name MicrosoftMonitoringAgent --publisher Microsoft.Ente
 
 ### <a name="why-are-there-gaps-between-my-virtual-machine-scale-set-vm-machine-names-and-vm-ids-for-example-0-1-3"></a>虚拟机规模集 VM 计算机名和 VM ID 为什么不是连续的？ 例如：0, 1, 3...
 
-虚拟机规模集 VM 计算机名和 VM ID 不连续是因为虚拟机规模集的 **overprovision** 属性设置为默认值 **true**。 如果 overprovision 设置为 **true**，创建的 VM 数量将超过请求数量。 然后，将删除多余的 VM。 在这种情况下，虽然部署可靠性得到提高，但代价是无法遵守连续命名和连续网络地址转换 (NAT) 规则。
+虚拟机规模集 VM 计算机名和 VM ID 不连续是因为虚拟机规模集的 **overprovision** 属性设置为默认值 **true**。 如果 overprovision 设置为 **true**，创建的 VM 数量会超过请求数量。 然后，将删除多余的 VM。 在这种情况下，虽然部署可靠性得到提高，但代价是无法遵守连续命名和连续网络地址转换 (NAT) 规则。
 
-可以将此属性设置为 **false**。 对于小型虚拟机规模集，不会显著影响部署可靠性。
+可将此属性设置为 **false**。 对于小型虚拟机规模集，不会显著影响部署可靠性。
 
 ### <a name="what-is-the-difference-between-deleting-a-vm-in-a-virtual-machine-scale-set-and-deallocating-the-vm-when-should-i-choose-one-over-the-other"></a>删除虚拟机规模集中的 VM 与解除分配 VM 有什么区别？ 如何在这两种做法之间做出选择？
 

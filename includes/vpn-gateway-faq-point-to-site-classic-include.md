@@ -6,15 +6,15 @@ author: WenJason
 ms.service: vpn-gateway
 ms.topic: include
 origin.date: 12/06/2018
-ms.date: 01/20/2020
+ms.date: 04/06/2020
 ms.author: v-jay
 ms.custom: include file
-ms.openlocfilehash: 38c4fb8f4e3cea448d0300212ff8e14fc4bbc44d
-ms.sourcegitcommit: 779d674e865b23ae417eb492efca7508675b8ba6
+ms.openlocfilehash: 3ffe237577caaf223ed4804d8f7006bafd6a7985
+ms.sourcegitcommit: 5fb45da006859215edc8211481f13174aa43dbeb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75939755"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80634572"
 ---
 此常见问题解答适用于使用经典部署模型的 P2S 连接。
 
@@ -37,7 +37,7 @@ ms.locfileid: "75939755"
 ### <a name="how-many-vpn-client-endpoints-can-exist-in-my-point-to-site-configuration"></a>在我的点到站点配置中，可以存在多少 VPN 客户端终结点？
 
 VPN 客户端终结点的数量取决于网关 SKU 和协议。
-[!包括按 SKU 聚合的吞吐量]
+[!INCLUDE [Aggregated throughput by SKU](./vpn-gateway-table-gwtype-aggtput-include.md)]
 
 ### <a name="can-i-use-my-own-internal-pki-root-ca-for-point-to-site-connectivity"></a>是否可以将我自己的内部 PKI 根 CA 用于点到站点连接？
 

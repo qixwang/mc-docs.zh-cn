@@ -4,15 +4,15 @@ description: 了解如何通过部署 Visual Studio 提供的默认 C# ASP.NET W
 ms.assetid: 04a1becf-7756-4d4e-92d8-d9471c263d23
 ms.topic: quickstart
 origin.date: 10/21/2019
-ms.date: 01/13/2020
+ms.date: 03/30/2020
 ms.author: v-tawe
-ms.custom: mvc, devcenter
-ms.openlocfilehash: ebfc780a1a14ef694b7cb5ec024c6f96a022cb68
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.custom: mvc, devcenter, seodec18
+ms.openlocfilehash: ab56e18649ef4b21d119fd04e54db370f49317d9
+ms.sourcegitcommit: 44d3fe59952847e5394bbe6c05bd6f333bb56345
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79292886"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521984"
 ---
 # <a name="create-an-aspnet-framework-web-app-in-azure"></a>在 Azure 中创建 ASP.NET Framework Web 应用
 
@@ -31,7 +31,7 @@ ms.locfileid: "79292886"
 - 通过选择“帮助”   >   “检查更新”，在 Visual Studio 中安装最新更新。
 - 通过选择“工具”   >   “获取工具和功能”，添加工作负荷。
 
-## 创建 ASP.NET Web 应用 <a name="create-and-publish-the-web-app"></a>
+## <a name="create-an-aspnet-web-app"></a>创建 ASP.NET Web 应用 <a name="create-and-publish-the-web-app"></a>
 
 按照以下步骤创建 ASP.NET Web 应用：
 
@@ -53,7 +53,7 @@ ms.locfileid: "79292886"
 
    ![在本地运行应用](./media/app-service-web-get-started-dotnet-framework/local-web-app.png)
 
-## 发布 Web 应用 <a name="launch-the-publish-wizard"></a>
+## <a name="publish-your-web-app"></a>发布 Web 应用 <a name="launch-the-publish-wizard"></a>
 
 1. 在“解决方案资源管理器”  中右键单击“myFirstAzureWebApp”  项目，然后选择“发布”  。
 
@@ -113,7 +113,7 @@ ms.locfileid: "79292886"
    ```HTML
    <div class="jumbotron">
        <h1>ASP.NET in Azure!</h1>
-       <p class="lead">This is a simple app that we’ve built that demonstrates how to deploy a .NET app to Azure App Service.</p>
+       <p class="lead">This is a simple app that we've built that demonstrates how to deploy a .NET app to Azure App Service.</p>
    </div>
    ```
 

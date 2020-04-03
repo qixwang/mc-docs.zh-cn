@@ -6,15 +6,15 @@ tags: azure-service-management
 ms.assetid: fc755f82-ca3e-4532-b251-690b699324d6
 ms.topic: sample
 origin.date: 10/30/2017
-ms.date: 01/13/2020
+ms.date: 03/30/2020
 ms.author: v-tawe
-ms.custom: mvc
-ms.openlocfilehash: 34a72a3e7b76cf3f1d7be9b6a63fda08b7e08b01
-ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
+ms.custom: mvc, seodec18
+ms.openlocfilehash: 2a23b29db9e3a2bc0318772ba5b95b66c02387b5
+ms.sourcegitcommit: 44d3fe59952847e5394bbe6c05bd6f333bb56345
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75600314"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80522102"
 ---
 # <a name="back-up-a-web-app-using-powershell"></a>使用 PowerShell 备份 Web 应用
 

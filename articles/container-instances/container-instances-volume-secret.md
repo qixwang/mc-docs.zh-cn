@@ -3,14 +3,14 @@ title: 将机密卷装载到容器组
 description: 了解如何装载机密卷以存储供容器实例访问的敏感信息
 ms.topic: article
 origin.date: 07/19/2018
-ms.date: 01/15/2020
+ms.date: 04/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: 9323da4baf7fc43f6df035028f9e4f34d2ffc113
-ms.sourcegitcommit: 2b4507745b98b45f1ce3f3d30f397521148ef35a
+ms.openlocfilehash: f940dbf269085633e48534231b0d2c350edd0cec
+ms.sourcegitcommit: 76280dd9854dc0ff0ba1e5e62fb3dc3af049fbe2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78213734"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80517024"
 ---
 <!--Verified successfully-->
 # <a name="mount-a-secret-volume-in-azure-container-instances"></a>在 Azure 容器实例中装载机密卷
@@ -40,8 +40,11 @@ az container create \
 
 以下 [az container exec][az-container-exec] 输出演示在运行的容器中打开 shell，列出机密卷中的文件，然后显示其内容：
 
-```console
-$ az container exec --resource-group myResourceGroup --name secret-volume-demo --exec-command "/bin/sh"
+```azurecli
+az container exec --resource-group myResourceGroup --name secret-volume-demo --exec-command "/bin/sh"
+```
+
+```output
 /usr/src/app # ls -1 /mnt/secrets
 mysecret1
 mysecret2
@@ -110,32 +113,69 @@ az container create --resource-group myResourceGroup --file deploy-aci.yaml
 <!-- https://github.com/Azure/azure-docs-json-samples/blob/master/container-instances/aci-deploy-volume-secret.json -->
 
 ```json
-apiVersion: '2018-10-01'
-location: eastus
-name: secret-volume-demo
-properties:
-  containers:
-  - name: aci-tutorial-app
-    properties:
-      environmentVariables: []
-      image: mcr.microsoft.com/azuredocs/aci-helloworld:latest
-      ports: []
-      resources:
-        requests:
-          cpu: 1.0
-          memoryInGB: 1.5
-      volumeMounts:
-      - mountPath: /mnt/secrets
-        name: secretvolume1
-  osType: Linux
-  restartPolicy: Always
-  volumes:
-  - name: secretvolume1
-    secret:
-      mysecret1: TXkgZmlyc3Qgc2VjcmV0IEZPTwo=
-      mysecret2: TXkgc2Vjb25kIHNlY3JldCBCQVIK
-tags: {}
-type: Microsoft.ContainerInstance/containerGroups
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "variables": {
+    "container1name": "aci-tutorial-app",
+    "container1image": "microsoft/aci-helloworld:latest"
+  },
+  "resources": [
+    {
+      "name": "secret-volume-demo",
+      "type": "Microsoft.ContainerInstance/containerGroups",
+      "apiVersion": "2018-06-01",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "containers": [
+          {
+            "name": "[variables('container1name')]",
+            "properties": {
+              "image": "[variables('container1image')]",
+              "resources": {
+                "requests": {
+                  "cpu": 1,
+                  "memoryInGb": 1.5
+                }
+              },
+              "ports": [
+                {
+                  "port": 80
+                }
+              ],
+              "volumeMounts": [
+                {
+                  "name": "secretvolume1",
+                  "mountPath": "/mnt/secrets"
+                }
+              ]
+            }
+          }
+        ],
+        "osType": "Linux",
+        "ipAddress": {
+          "type": "Public",
+          "ports": [
+            {
+              "protocol": "tcp",
+              "port": "80"
+            }
+          ]
+        },
+        "volumes": [
+          {
+            "name": "secretvolume1",
+            "secret": {
+              "mysecret1": "TXkgZmlyc3Qgc2VjcmV0IEZPTwo=",
+              "mysecret2": "TXkgc2Vjb25kIHNlY3JldCBCQVIK"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}
+
 ```
 
 若要使用资源管理器模板进行部署，请将前面的 JSON 保存到名为 `deploy-aci.json` 的文件中，然后使用 `--template-file` 参数执行 [az group deployment create][az-group-deployment-create] 命令：
@@ -169,5 +209,4 @@ az group deployment create --resource-group myResourceGroup --template-file depl
 [az-container-exec]: https://docs.microsoft.com/cli/azure/container?view=azure-cli-latest#az-container-exec
 [az-group-deployment-create]: https://docs.azure.cn/cli/group/deployment?view=azure-cli-latest#az-group-deployment-create
 
-<!-- Update_Description: new article about container instances volume secret -->
-<!--NEW.date: 01/15/2020-->
+<!-- Update_Description: update meta properties, wording update, update link -->

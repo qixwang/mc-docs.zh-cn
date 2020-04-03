@@ -5,17 +5,17 @@ author: ccompy
 ms.assetid: 66774bde-13f5-45d0-9a70-4e9536a4f619
 ms.topic: article
 origin.date: 06/06/2019
-ms.date: 01/13/2020
+ms.date: 03/30/2020
 ms.author: v-tawe
-ms.custom: seodec18
-ms.openlocfilehash: 6dcd358d221094ada990dc878e2b25d1a12b348d
-ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
+ms.custom: seodec18, fasttrack-edit
+ms.openlocfilehash: 857d0addeba70d55cf2eaf0437e95b7ad347756a
+ms.sourcegitcommit: 44d3fe59952847e5394bbe6c05bd6f333bb56345
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75600527"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80522092"
 ---
-# <a name="azure-app-service-hybrid-connections"></a>Azure 应用服务混合连接 #
+# <a name="azure-app-service-hybrid-connections"></a>Azure 应用服务混合连接
 
 混合连接既是 Azure 中的一个服务，也是 Azure 应用服务中的一项功能。 作为服务，它的用途和功能超越了应用服务中使用的功能。 若要详细了解混合连接及其在应用服务外部的用途，请参阅 [Azure 中继混合连接][HCService]。
 

@@ -6,16 +6,16 @@ tags: azure-service-management
 ms.devlang: azurecli
 ms.topic: sample
 origin.date: 12/07/2017
-ms.date: 01/13/2020
+ms.date: 03/30/2020
 ms.author: v-tawe
 ms.reviewer: cephalin
-ms.custom: mvc
-ms.openlocfilehash: 1807eee411798fc3434d4333b3e27f0706f179c8
-ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
+ms.custom: mvc, seodec18
+ms.openlocfilehash: 08d82fc20327735b9ca62ab00da97a3ad1ccb3bf
+ms.sourcegitcommit: 44d3fe59952847e5394bbe6c05bd6f333bb56345
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75600398"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80522119"
 ---
 # <a name="back-up-an-app-using-cli"></a>使用 CLI 备份应用
 

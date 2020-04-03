@@ -6,15 +6,15 @@ manager: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-origin.date: 06/10/2019
-ms.date: 01/13/2020
+origin.date: 02/01/2020
+ms.date: 04/06/2020
 ms.author: v-yiso
-ms.openlocfilehash: bd2fb83f172e6cac8fea700a36c3d6cfced8c015
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: 96af2513f09178b6618558144493f6120eda0713
+ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79293498"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80343577"
 ---
 # <a name="understand-and-use-device-twins-in-iot-hub"></a>了解并在 IoT 中心内使用设备孪生
 
@@ -228,11 +228,15 @@ ms.locfileid: "79293498"
 ## <a name="tags-and-properties-format"></a>标记和属性格式
 标记、所需的属性和报告的属性是具有以下限制的 JSON 对象：
 
-* JSON 对象中的所有键都是 UTF-8 编码、区分大小写且长度不超过 1 KB。 允许的字符不包括 UNICODE 控制字符（段 C0 和 C1）以及 `.`、`$` 和 SP。
+* **密钥**：JSON 对象中的所有键都是 UTF-8 编码、区分大小写且长度不超过 1 KB。 允许的字符不包括 UNICODE 控制字符（段 C0 和 C1）以及 `.`、`$` 和 SP。
 
-* JSON 对象中的所有值可采用以下 JSON 类型：布尔值、数字、字符串、对象。 不允许数组。 最大整数值为 4503599627370495，而最小整数值为 -4503599627370496。
+* **值**：JSON 对象中的所有值可采用以下 JSON 类型：布尔值、数字、字符串、对象。 不允许数组。
 
-* 标记、所需属性和报告属性中的所有 JSON 对象的最大嵌套深度为 10 层。 例如，以下对象是有效的：
+    * 整数的最小值可以为 -4503599627370496，最大值可以为 4503599627370495。
+
+    * 字符串值是 UTF-8 编码的，最大长度为 4 KB。
+
+* **深度**：标记、所需属性和报告属性中的 JSON 对象的最大深度为 10 层。 例如，以下对象是有效的：
 
    ```json
    {
@@ -264,14 +268,23 @@ ms.locfileid: "79293498"
    }
    ```
 
-* 所有字符串的值的长度最多为 4 KB。
-
 ## <a name="device-twin-size"></a>设备孪生的大小
 
-IoT 中心对 `tags` 的值实施 8 KB 大小限制，对 `properties/desired` 和 `properties/reported` 的值分别实施 32 KB 大小限制。 这些总计不包含只读元素。
+IoT 中心对 `tags` 的值实施 8 KB 大小限制，对 `properties/desired` 和 `properties/reported` 的值分别实施 32 KB 大小限制。 这些总计不包含只读元素（如 `$etag`、`$version` 和 `$metadata/$lastUpdated`）。
 
-该大小的计算考虑到了所有字符，但不包括 UNICODE 控制字符（段 C0 和 C1），以及出现在字符串常量外部的空格。
-IoT 中心拒绝将这些文档的大小增加到超出限制的所有操作，在这种情况下还会返回错误。
+孪生大小按如下所示计算：
+
+* 对于 JSON 文档中的每个属性，IoT 中心会累积计算并添加属性的键和值的长度。
+
+* 属性键将视为 UTF8 编码的字符串。
+
+* 简单属性值将视为 UTF8 编码的字符串、数值（8 字节）或布尔值（4 字节）。
+
+* UTF8 编码字符串的大小通过对所有字符进行计数来计算，不包括 UNICODE 控制字符（段 C0 和 C1）。
+
+* 复杂属性值（嵌套对象）根据它们所包含的属性键和属性值的聚合大小进行计算。
+
+对于会使 `tags`、`properties/desired` 或 `properties/reported` 文档的大小增大到超出上限的所有操作，IoT 中心会拒绝这些操作并返回错误。
 
 ## <a name="device-twin-metadata"></a>设备孪生的元数据
 

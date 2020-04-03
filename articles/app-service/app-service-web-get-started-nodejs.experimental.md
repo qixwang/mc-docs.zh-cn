@@ -4,20 +4,25 @@ description: 在数分钟内将第一个 Node.js Hello World 部署到 Azure 应
 ms.assetid: 582bb3c2-164b-42f5-b081-95bfcb7a502a
 ms.topic: quickstart
 origin.date: 08/23/2019
-ms.date: 03/16/2020
+ms.date: 03/30/2020
 ms.author: v-tawe
 ms.custom: mvc, devcenter, seodec18
 experimental: false
 experiment_id: a231f2b4-2625-4d
-ms.openlocfilehash: 86f58e164446ad2e143d1788c3fee79e052a9d08
-ms.sourcegitcommit: e500354e2fd8b7ac3dddfae0c825cc543080f476
+ms.openlocfilehash: 179af299d02455d87df6a536dc36ce198d3b0ec3
+ms.sourcegitcommit: 44d3fe59952847e5394bbe6c05bd6f333bb56345
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2020
-ms.locfileid: "79547001"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521986"
 ---
 # <a name="create-a-nodejs-web-app-in-azure"></a>在 Azure 中创建 Node.js Web 应用
 
+<!--
+> [!NOTE]
+> This article deploys an app to App Service on Windows. To deploy to App Service on _Linux_, see [Create a Node.js web app in Azure App Service on Linux](./containers/quickstart-nodejs.md).
+>
+-->
 
 [Azure 应用服务](overview.md)提供高度可缩放、自修复的 Web 托管服务。  本快速入门演示如何将 Node.js 应用部署到 Azure 应用服务中。 可以使用 [Azure CLI](/cli/install-azure-cli) 在本地运行这些命令。 使用 [az webapp deployment source config-zip](/cli/webapp/deployment/source?view=azure-cli-latest#az-webapp-deployment-source-config-zip) 命令将示例 Node.js 代码部署到 Web 应用。  
 

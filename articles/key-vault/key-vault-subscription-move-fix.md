@@ -9,14 +9,14 @@ ms.service: key-vault
 ms.subservice: general
 ms.topic: tutorial
 origin.date: 08/12/2019
-ms.date: 03/16/2020
+ms.date: 03/30/2020
 ms.author: v-tawe
-ms.openlocfilehash: 4ca5e0f5115058911d914b0c8969303a67cf5298
-ms.sourcegitcommit: 764b3d26aedce2de0e1948468a706fd3204a3d5e
+ms.openlocfilehash: 8040371141558d00399072b1ceb15354c3867af0
+ms.sourcegitcommit: 5fb45da006859215edc8211481f13174aa43dbeb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2020
-ms.locfileid: "79543317"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80634333"
 ---
 # <a name="change-a-key-vault-tenant-id-after-a-subscription-move"></a>订阅移动后更改密钥保管库租户 ID
 
@@ -47,7 +47,7 @@ Set-AzResource -ResourceId $vaultResourceId -Properties $vault.Properties  # Mod
 也可以使用 Azure CLI。
 
 ```azurecli
-az account set <your-subscriptionId>                                       # Select your Azure Subscription
+az account set -s <your-subscriptionId>                                    # Select your Azure Subscription
 tenantId=$(az account show --query tenantId)                               # Get your tenantId
 az keyvault update -n myvault --remove Properties.accessPolicies           # Remove the access policies
 az keyvault update -n myvault --set Properties.tenantId=$tenantId          # Update the key vault tenantId

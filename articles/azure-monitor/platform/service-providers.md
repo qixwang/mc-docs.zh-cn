@@ -8,12 +8,12 @@ ms.topic: conceptual
 origin.date: 02/03/2020
 ms.date: 2/18/2020
 ms.author: v-lingwu
-ms.openlocfilehash: 668b27c6da995788d661a5eb0a75539c7a9a9c85
-ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
+ms.openlocfilehash: 92b7705a0766c965e26a4a79ee0fd7e0d73b8626
+ms.sourcegitcommit: 78a05172a813b87428b87f3a2695e6bb3ae81ede
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/17/2020
-ms.locfileid: "79452550"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80417386"
 ---
 # <a name="azure-monitor-logs-for-service-providers"></a>面向服务提供商的 Azure Monitor 日志
 
@@ -35,15 +35,6 @@ Azure Monitor 中的 Log Analytics 工作区可以帮助托管服务提供商 (M
 服务提供商管理员可通过两种方式访问客户租户中的 Log Analytics 工作区：
 
 - 客户可将服务提供商的个人用户添加为 [Azure Active Directory 来宾用户 (B2B)](https://docs.microsoft.com/azure/active-directory/b2b/what-is-b2b)。 服务提供商管理员必须在 Azure 门户中登录到每个客户的目录才能访问这些工作区。 这还需要客户管理每个服务提供商管理员的个人访问权限。
-- 为了提高可伸缩性和灵活性，服务提供商可以使用 [Azure Lighthouse](https://docs.microsoft.com/azure/lighthouse/overview) 的 [Azure 委托资源管理](https://docs.microsoft.com/azure/lighthouse/concepts/azure-delegated-resource-management)功能来访问客户的租户。 使用此方法时，服务提供商管理员将包含在服务提供商租户的 Azure AD 用户组中，在为每个客户执行加入的过程中，将为此组授予访问权限。 然后，这些管理员可在其自己的服务提供商租户内访问每个客户的工作区，而无需单独登录到每个客户的租户。 
-
-分布式体系结构的优势是：
-
-* 客户可以通过 [Azure 委托资源管理](https://docs.microsoft.com/azure/lighthouse/concepts/azure-delegated-resource-management)来确认特定级别的权限，或者使用自己的[基于角色的访问](/role-based-access-control/overview)来管理对日志的访问。
-* 可从所有类型的资源中收集日志，而不仅仅是从基于代理的 VM 数据收集。 例如，Azure 审核日志。
-* 每个客户都可以为其工作区设置不同的设置，例如保留期和数据上限。
-* 在客户之间进行隔离以遵守监管和合规要求。
-* 每个工作区的费用将计入客户的订阅中。
 
 分布式体系结构的劣势是：
 

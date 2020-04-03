@@ -3,18 +3,18 @@ title: 快速入门 - 将 Docker 容器部署到容器实例 - Azure CLI
 description: 本快速入门将使用 Azure CLI 快速部署在隔离的 Azure 容器实例中运行的容器化 Web 应用
 ms.topic: quickstart
 origin.date: 03/21/2019
-ms.date: 01/15/2020
+ms.date: 04/06/2020
 ms.author: v-yeche
 ms.custom:
 - seo-python-october2019
 - seodec18
 - mvc
-ms.openlocfilehash: 1af71ed71c85d522e5357155ad8bc6c9d49f4230
-ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
+ms.openlocfilehash: 83988ffb4972ffbd4bf7940c172a6e2bc33c4c32
+ms.sourcegitcommit: 76280dd9854dc0ff0ba1e5e62fb3dc3af049fbe2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77068356"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80517009"
 ---
 <!--Verified successfully-->
 # <a name="quickstart-deploy-a-container-instance-in-azure-using-the-azure-cli"></a>快速入门：使用 Azure CLI 在 Azure 中部署容器实例
@@ -63,11 +63,10 @@ az container show --resource-group myResourceGroup --name mycontainer --query "{
 
 运行此命令时，会显示容器的完全限定域名 (FQDN) 及其预配状态。
 
-```console
-$ az container show --resource-group myResourceGroup --name mycontainer --query "{FQDN:ipAddress.fqdn,ProvisioningState:provisioningState}" --out table
-FQDN                                    ProvisioningState
----------------------------------       -------------------
-aci-demo.chinaeast2.azurecontainer.console.azure.cn   Succeeded
+```output
+FQDN                                                  ProvisioningState
+---------------------------------                     -------------------
+aci-demo.chinaeast 2.azurecontainer.console.azure.cn  Succeeded
 ```
 
 如果容器的 `ProvisioningState` 为 **Succeeded**，则在浏览器中转到其 FQDN。 如果看到类似于下图的网页，那么恭喜你！ 现已成功将 Docker 容器中运行的应用程序部署到 Azure。
@@ -88,8 +87,7 @@ az container logs --resource-group myResourceGroup --name mycontainer
 
 此输出显示容器的日志，并应显示在浏览器中查看应用程序时生成的 HTTP GET 请求。
 
-```console
-$ az container logs --resource-group myResourceGroup --name mycontainer
+```output
 listening on port 80
 ::ffff:10.240.255.55 - - [21/Mar/2019:17:43:53 +0000] "GET / HTTP/1.1" 304 - "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36"
 ::ffff:10.240.255.55 - - [21/Mar/2019:17:44:36 +0000] "GET / HTTP/1.1" 304 - "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36"
@@ -108,8 +106,7 @@ az container attach --resource-group myResourceGroup --name mycontainer
 
 附加后，刷新浏览器数次，以生成其他一些输出。 完成后，使用 `Control+C` 分离控制台。 应该会看到与下面类似的输出：
 
-```console
-$ az container attach --resource-group myResourceGroup --name mycontainer
+```output
 Container 'mycontainer' is in state 'Running'...
 (count: 1) (last timestamp: 2019-03-21 17:27:20+00:00) pulling image "mcr.microsoft.com/azuredocs/aci-helloworld"
 (count: 1) (last timestamp: 2019-03-21 17:27:24+00:00) Successfully pulled image "mcr.microsoft.com/azuredocs/aci-helloworld"

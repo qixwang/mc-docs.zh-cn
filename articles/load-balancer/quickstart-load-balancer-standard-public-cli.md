@@ -15,15 +15,15 @@ ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 01/25/2019
-ms.date: 02/24/2020
+ms.date: 04/06/2020
 ms.author: v-jay
 ms.custom: mvc
-ms.openlocfilehash: 8d8799c32a19cd50e0ff2b5f4bfaf814be55384c
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.openlocfilehash: 7b90428323cc01b65c24ff63865f899c038ebde2
+ms.sourcegitcommit: fe9ed98aaee287a21648f866bb77cb6888f75b0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77540980"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80625679"
 ---
 # <a name="quickstart-create-a-standard-load-balancer-to-load-balance-vms-using-azure-cli"></a>快速入门：使用 Azure CLI 创建标准负载均衡器以对 VM 进行负载均衡
 
@@ -61,7 +61,7 @@ ms.locfileid: "77540980"
 
 ### <a name="create-the-load-balancer"></a>创建负载均衡器
 
-使用 [az network lb create](/cli/network/lb?view=azure-cli-latest) 创建名为 **myLoadBalancer** 的公共 Azure 负载均衡器，该负载均衡器包括名为 **myFrontEnd** 的前端池、名为 **myBackEndPool** 的后端池（与在前一步中创建的公共 IP 地址 **myPublicIP** 相关联）。 使用 ```--sku basic``` 创建基本公共 IP。 Azure 建议将标准 SKU 用于生产工作负荷。
+使用 [az network lb create](/cli/network/lb?view=azure-cli-latest) 创建名为 **myLoadBalancer** 的公共 Azure 负载均衡器，该负载均衡器包括名为 **myFrontEnd** 的前端池、名为 **myBackEndPool** 的后端池（与在前一步中创建的公共 IP 地址 **myPublicIP** 相关联）。 使用 `--sku basic` 创建基本公共 IP。 Azure 建议将标准 SKU 用于生产工作负荷。
 
 ```cli
   az network lb create \
@@ -71,7 +71,10 @@ ms.locfileid: "77540980"
     --public-ip-address myPublicIP \
     --frontend-ip-name myFrontEnd \
     --backend-pool-name myBackEndPool       
-  ```
+```
+
+> [!IMPORTANT]
+> 本快速入门的其余部分假定在上述 SKU 选择过程中选择了“标准”  SKU。
 
 ### <a name="create-the-health-probe"></a>创建运行状况探测
 
@@ -118,7 +121,8 @@ ms.locfileid: "77540980"
     --name myVnet \
     --subnet-name mySubnet
 ```
-###  <a name="create-a-network-security-group"></a>创建网络安全组
+
+### <a name="create-a-network-security-group"></a>创建网络安全组
 
 对于标准负载均衡器，后端地址池中的 VM 需要具有属于网络安全组的 NIC。 创建网络安全组，以定义虚拟网络的入站连接。
 
@@ -146,6 +150,7 @@ ms.locfileid: "77540980"
     --access allow \
     --priority 200
 ```
+
 ### <a name="create-nics"></a>创建 NIC
 
 使用 [az network nic create](/cli/network/nic#az-network-nic-create) 创建三个网络接口，并将它们与公共 IP 地址和网络安全组关联。 
@@ -231,8 +236,8 @@ runcmd:
   - npm init
   - npm install express -y
   - nodejs index.js
-``` 
- 
+```
+
 使用 [az vm create](/cli/vm#az-vm-create) 创建虚拟机。
 
  ```cli
@@ -268,6 +273,7 @@ runcmd:
     --no-wait
 
 ```
+
 VM 可能需要几分钟才能部署好。
 
 ## <a name="test-the-load-balancer"></a>测试负载均衡器
@@ -280,7 +286,8 @@ VM 可能需要几分钟才能部署好。
     --name myPublicIP \
     --query [ipAddress] \
     --output tsv
-``` 
+```
+
    ![测试负载均衡器](./media/load-balancer-standard-public-cli/running-nodejs-app.png)
 
 ## <a name="clean-up-resources"></a>清理资源

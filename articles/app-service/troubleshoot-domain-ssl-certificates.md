@@ -9,12 +9,12 @@ origin.date: 03/01/2019
 ms.date: 02/17/2020
 ms.author: v-tawe
 ms.custom: seodec18
-ms.openlocfilehash: 64e835d2eab71528ae07813206edc11bd6d8fb3c
-ms.sourcegitcommit: ee2a3063185cd4c5dc24901366dbb726119d045d
+ms.openlocfilehash: cd7aabac7b2315d7e3919f06fa33221984c464ea
+ms.sourcegitcommit: 5fb45da006859215edc8211481f13174aa43dbeb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76979320"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80634337"
 ---
 # <a name="troubleshoot-domain-and-ssl-certificate-problems-in-azure-app-service"></a>排查 Azure 应用服务中的域和 SSL 证书问题
 
@@ -65,8 +65,7 @@ ms.locfileid: "76979320"
 ### <a name="you-cant-purchase-an-app-service-certificate"></a>无法购买应用服务证书 
 
 #### <a name="symptom"></a>症状
-
-<!-- You can't purchase an [Azure App Service certificate](./configure-ssl-certificate.md#import-an-app-service-certificate) from the Azure portal. -->
+无法从 Azure 门户购买 [Azure 应用服务证书](./configure-ssl-certificate.md#import-an-app-service-certificate)。
 
 #### <a name="cause-and-solution"></a>原因和解决方法
 此问题可能是由以下任何原因导致的：
@@ -92,7 +91,7 @@ ms.locfileid: "76979320"
 
     1. 登录到 [Azure 门户](https://portal.azure.cn)。
     2. 转到“应用服务证书”，选择该证书。 
-    3. 选择  “证书配置” > “步骤 2：验证” > “域验证”。**  此步骤会向 Azure 证书提供者发送一份电子邮件通知，让他们解决问题。
+    3. 选择  “证书配置” > “步骤 2：  验证” > “域验证”。  此步骤会向 Azure 证书提供者发送一份电子邮件通知，让他们解决问题。
 
 ## <a name="custom-domain-problems"></a>自定义域问题
 

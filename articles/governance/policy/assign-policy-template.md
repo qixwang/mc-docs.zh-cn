@@ -2,24 +2,25 @@
 title: 快速入门：带有模板的新策略分配
 description: 本快速入门介绍如何使用资源管理器模板创建策略分配以识别不合规的资源。
 ms.author: v-tawe
-origin.date: 11/25/2019
-ms.date: 02/17/2020
+origin.date: 03/16/2020
+ms.date: 03/30/2020
 ms.topic: quickstart
-ms.openlocfilehash: 9195cbb6aad1463556c4e903b53e7c5678531755
-ms.sourcegitcommit: 0b07f1d36ac02da055874630d6edc31cb0a15269
+ms.custom: subject-armqs
+ms.openlocfilehash: ddef43b4f150121693cca12e9d5ec2157b1449f9
+ms.sourcegitcommit: 260800ede66f48c886d1426a0fac18b4d402b4f2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/10/2020
-ms.locfileid: "77112215"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586816"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-by-using-a-resource-manager-template"></a>快速入门：使用资源管理器模板创建策略分配以识别不合规的资源
 
 若要了解 Azure 中的符合性，第一步是确定资源的状态。
-本快速入门逐步讲解如何创建策略分配，以识别未使用托管磁盘的虚拟机。
+本快速入门逐步讲解如何创建策略分配，以识别未使用托管磁盘的虚拟机。 此过程结束时，你可以成功识别哪些虚拟机未使用托管磁盘。 这些虚拟机不符合策略分配要求。 
 
-此过程结束时，你可以成功识别哪些虚拟机未使用托管磁盘。 这些虚拟机不符合策略分配要求。 
+[!INCLUDE [About Azure Resource Manager](../../../includes/resource-manager-quickstart-introduction.md)]
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 如果没有 Azure 订阅，请在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial)。
 
@@ -27,8 +28,10 @@ ms.locfileid: "77112215"
 
 在本快速入门中，我们将创建一个策略分配，并分配一个名为“审核不使用托管磁盘的 VM”的内置策略定义。  有关可用内置策略的部分列表，请参阅 [Azure Policy 示例](./samples/index.md)。
 
-可通过多种方法创建策略分配。 本快速入门使用[快速入门模板](https://azure.microsoft.com/resources/templates/101-azurepolicy-assign-builtinpolicy-resourcegroup/)。
-下面是该模板的副本：
+### <a name="review-the-template"></a>查看模板
+
+本快速入门中使用的模板来自 [Azure 快速入门模板](https://azure.microsoft.com/resources/templates/101-azurepolicy-assign-builtinpolicy-resourcegroup/)。
+
 
 ```JSON
 {
@@ -69,6 +72,12 @@ ms.locfileid: "77112215"
 }
 ```
 
+该模板中定义了以下资源：
+
+- [Microsoft.Authorization/policyAssignments](https://docs.microsoft.com/azure/templates/microsoft.authorization/policyassignments)
+
+### <a name="deploy-the-template"></a>部署模板
+
 > [!NOTE]
 > Azure Policy 服务是免费的。 有关详细信息，请参阅 [Azure Policy 概述](./overview.md)。
 
@@ -97,7 +106,7 @@ ms.locfileid: "77112215"
 - 若要了解如何开发资源管理器模板，请参阅 [Azure 资源管理器文档](../../azure-resource-manager/management/overview.md)。
 - 若要了解订阅级部署，请参阅[在订阅级别创建资源组和资源](../../azure-resource-manager/templates/deploy-to-subscription.md)。
 
-## <a name="identify-non-compliant-resources"></a>识别不合规的资源
+## <a name="validate-the-deployment"></a>验证部署
 
 选择页面左侧的“符合性”  。 然后找到所创建的“审核未使用托管磁盘的 VM”策略分配  。
 

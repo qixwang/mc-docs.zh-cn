@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: conceptual
 origin.date: 03/18/2019
-ms.date: 09/23/2019
+ms.date: 04/06/2020
 ms.author: v-jay
-ms.openlocfilehash: 9ae804392e77c325f81dc48d8d52b8a030eabcb8
-ms.sourcegitcommit: 8248259e4c3947aa0658ad6c28f54988a8aeebf8
+ms.openlocfilehash: 7ad4cde92a94f8bc52b1ef493a49a62590ffb574
+ms.sourcegitcommit: fe9ed98aaee287a21648f866bb77cb6888f75b0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71124526"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80625739"
 ---
 # <a name="get-started-with-delivering-content-on-demand-using-net-sdk"></a>使用 .NET SDK 开始传送点播内容  
 
@@ -54,7 +54,7 @@ ms.locfileid: "71124526"
 
 ### <a name="ams-model"></a>AMS 模型
 
-下图显示了在针对媒体服务 OData 模型开发 VoD 应用程序时，某些最常用的对象。
+开发针对媒体服务 OData 模型的 VoD 应用程序时，以下图像会显示某些最常用的对象。
 
 单击图像查看其完整大小。  
 
@@ -91,7 +91,7 @@ ms.locfileid: "71124526"
 
 使用以下代码覆盖默认程序类：该代码演示如何从 App.config 文件中读取连接值，以及如何创建 **CloudMediaContext** 对象以连接到媒体服务。 有关详细信息，请参阅[连接到媒体服务 API](media-services-use-aad-auth-to-access-ams-api.md)。
 
-确保更新保存媒体文件所需的文件名和路径。
+请确保将文件名和路径更新为媒体文件所在位置。
 
 **Main** 函数调用会在本部分中进一步定义的方法。
 
@@ -160,7 +160,7 @@ ms.locfileid: "71124526"
 **CreateFromFile** 方法采用 **AssetCreationOptions**，后者用于指定以下任一资产创建选项：
 
 * **无** - 不使用加密。 这是默认值。 请注意，使用此选项时，内容在传送过程中或静态存储过程中都不会受到保护。
-  如果计划使用渐进式下载交付 MP4，则使用此选项。
+  如果计划使用渐进式下载交付 MP4，请使用此选项。
 * “StorageEncrypted”  - 使用此选项可以通过高级加密标准 (AES) 256 位加密在本地加密明文内容，然后将其上传到 Azure 存储中以加密形式静态存储相关内容。 受存储加密保护的资产会在编码前自动解密并放入经过加密的文件系统中，并可选择在重新上传为新的输出资产前重新加密。 存储加密的主要用例是在磁盘上通过静态增强加密来保护高品质的输入媒体文件。
 * “CommonEncryptionProtected”  - 正在上传经过通用加密或 PlayReady DRM 加密并受其保护的内容（例如，受 PlayReady DRM 保护的平滑流式处理）时使用此选项。
 * **EnvelopeEncryptionProtected** - 如果要上传使用 AES 加密的 HLS，请使用此选项。 请注意，Transform Manager 必须已对文件进行编码和加密。
@@ -189,9 +189,9 @@ ms.locfileid: "71124526"
 ```
 
 ## <a name="encode-the-source-file-into-a-set-of-adaptive-bitrate-mp4-files"></a>将源文件编码为一组自适应比特率 MP4 文件
-将资产引入媒体服务后，即可对媒体进行编码、传输复用、打水印等处理，然后将其传送至客户端。 根据多个后台角色实例调度把那个运行这些活动，以确保较高的性能和可用性。 这些活动称为作业，每个作业由原子任务构成，这些原子任务在资产文件上完成具体的工作。
+将资产引入媒体服务后，即可对媒体进行编码、传输复用、打水印等处理，并将其传送至客户端。 根据多个后台角色实例调度把那个运行这些活动，以确保较高的性能和可用性。 这些活动称为作业，每个作业由原子任务构成，这些原子任务在资产文件上完成具体的工作。
 
-如前所述，使用 Azure 媒体服务时最常见的方案之一是将自适应比特率流传送至客户端。 媒体服务可将一组自适应比特率 MP4 文件动态打包为以下格式之一：HTTP Live Streaming (HLS)、平滑流式处理、MPEG DASH。
+如前所述，使用 Azure 媒体服务时最常见的方案之一是将自适应比特率流传送至客户端。 媒体服务可将一组自适应比特率 MP4 文件动态打包为以下格式之一：HTTP Live Streaming (HLS)、平滑流式处理和 MPEG DASH。
 
 若要利用动态打包，需要将夹层（源）文件编码或转换成一组自适应比特率 MP4 文件或自适应比特率平滑流式处理文件。  
 
@@ -239,7 +239,7 @@ ms.locfileid: "71124526"
 
 ## <a name="publish-the-asset-and-get-urls-for-streaming-and-progressive-download"></a>发布资产并获取用于流式处理和渐进式下载的 URL
 
-要流处理或下载资产，必须先创建定位符来“发布”资产。 定位符提供对资产中所含文件的访问权限。 媒体服务支持两种类型的定位符：用于流媒体（例如 MPEG DASH、HLS 或平滑流式处理）的 OnDemandOrigin 定位符，以及用于下载媒体文件的访问签名 (SAS) 定位符。
+要流处理或下载资产，必须先创建定位符来“发布”资产。 定位符提供对资产中所含文件的访问权限。 媒体服务支持两种类型的定位符：用于流媒体（例如，MPEG DASH、HLS 或平滑流式处理）的 OnDemandOrigin 定位符，以及用于下载媒体文件的访问签名 (SAS) 定位符。
 
 ### <a name="some-details-about-url-formats"></a>有关 URL 格式的一些详细信息
 
@@ -379,7 +379,6 @@ https://storagetestaccount001.blob.core.chinacloudapi.cn/asset-38058602-a4b8-4b3
 有关详细信息，请参阅以下主题：
 
 - [使用现有播放器播放内容](media-services-playback-content-with-existing-players.md)
-- [开发视频播放器应用程序](media-services-develop-video-players.md)
 - [使用 DASH.js 在 HTML5 应用程序中嵌入 MPEG-DASH 自适应流式处理视频](media-services-embed-mpeg-dash-in-html5.md)
 
 ## <a name="download-sample"></a>下载示例
@@ -395,5 +394,3 @@ https://storagetestaccount001.blob.core.chinacloudapi.cn/asset-38058602-a4b8-4b3
 <!-- URLs. -->
 [Web Platform Installer]: https://go.microsoft.com/fwlink/?linkid=255386
 [Portal]: https://portal.azure.cn/
-
-<!--Update_Description: update code to use AAD token instead of ACS-->

@@ -3,15 +3,15 @@ title: 在 .NET Azure Functions 中使用依赖项注入
 description: 了解如何使用依赖项注入在 .NET 函数中注册和使用服务
 author: craigshoemaker
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 03/30/2020
 ms.author: v-junlch
 ms.reviewer: jehollan
-ms.openlocfilehash: dfcc15983c94ce2dc0c259379bbf2d42af427267
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.openlocfilehash: 4c05135ca8cef90540db835be0a152d4de32884b
+ms.sourcegitcommit: 64584c0bf31b4204058ae2b4641356b904ccdd58
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77428510"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80581710"
 ---
 # <a name="use-dependency-injection-in-net-azure-functions"></a>在 .NET Azure Functions 中使用依赖项注入
 
@@ -21,7 +21,7 @@ Azure Functions 支持依赖项注入 (DI) 软件设计模式，这是在类及�
 
 - 对依赖项注入的支持始于 Azure Functions 2.x。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 必须先安装以下 NuGet 包，然后才能使用依赖项注入：
 
@@ -85,6 +85,7 @@ using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Extensions.Http;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
+using System.Net.Http;
 
 namespace MyNamespace
 {
@@ -93,10 +94,10 @@ namespace MyNamespace
         private readonly IMyService _service;
         private readonly HttpClient _client;
 
-        public HttpTrigger(IMyService service, IHttpClientFactory httpClientFactory)
+        public HttpTrigger(IMyService service, HttpClient httpClient)
         {
             _service = service;
-            _client = httpClientFactory.CreateClient();
+            _client = httpClient;
         }
 
         [FunctionName("GetPosts")]

@@ -12,12 +12,12 @@ author: WenJason
 ms.author: v-jay
 ms.reviewer: douglasl
 manager: digimobile
-ms.openlocfilehash: 36171ea8594d71381c017e2e67d6744c8ee8660e
-ms.sourcegitcommit: 71a386ca0d0ecb79a123399b6ab6b8c70ea2aa78
+ms.openlocfilehash: 7463acca649bbb696ac03c6f8a9540a1317bed8a
+ms.sourcegitcommit: f204ec3ae220b96475db60e6ac8a2807af3de40e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2020
-ms.locfileid: "79497313"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80418031"
 ---
 # <a name="join-an-azure-ssis-integration-runtime-to-a-virtual-network"></a>将 Azure-SSIS 集成运行时加入虚拟网络
 
@@ -430,8 +430,8 @@ $ResourceGroupName = "[your Azure resource group name]"
 $DataFactoryName = "[your data factory name]"
 $AzureSSISName = "[your Azure-SSIS IR name]"
 # Virtual network info: Classic or Azure Resource Manager
-$VnetId = "[your virtual network resource ID or leave it empty]" # REQUIRED if you use an Azure SQL Database server with IP firewall rules/virtual network service endpoints or a managed instance with private endpoint to host SSISDB, or if you require access to on-premises data without configuring a self-hosted IR. We recommend an Azure Resource Manager virtual network, because classic virtual networks will be deprecated soon.
-$SubnetName = "[your subnet name or leave it empty]" # WARNING: Use the same subnet as the one used for your Azure SQL Database server with virtual network service endpoints, or a different subnet from the one used for your managed instance with a private endpoint
+$VnetId = "[your virtual network resource ID or leave it empty]" # REQUIRED if you use an Azure SQL Database server with IP firewall rules/virtual network service endpoints to host SSISDB, or if you require access to on-premises data without configuring a self-hosted IR. We recommend an Azure Resource Manager virtual network, because classic virtual networks will be deprecated soon.
+$SubnetName = "[your subnet name or leave it empty]" # WARNING: Use the same subnet as the one used for your Azure SQL Database server with virtual network service endpoints
 # Public IP address info: OPTIONAL to provide two standard static public IP addresses with DNS name under the same subscription and in the same region as your virtual network
 $FirstPublicIP = "[your first public IP address resource ID or leave it empty]"
 $SecondPublicIP = "[your second public IP address resource ID or leave it empty]"

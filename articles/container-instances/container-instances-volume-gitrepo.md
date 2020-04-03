@@ -3,14 +3,14 @@ title: 将 gitRepo 卷装载到容器组
 description: 了解如何在容器实例中装载 gitRepo 卷以克隆 Git 存储库
 ms.topic: article
 origin.date: 06/15/2018
-ms.date: 01/15/2020
+ms.date: 04/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: 5d9bc646bf080f1f8df1ad1a98085cd7a002258d
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.openlocfilehash: b1791994228bb287eff19c2c9b4dce1adbacb323
+ms.sourcegitcommit: 76280dd9854dc0ff0ba1e5e62fb3dc3af049fbe2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77428292"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80517025"
 ---
 <!--Verified successfully-->
 # <a name="mount-a-gitrepo-volume-in-azure-container-instances"></a>在 Azure 容器实例中装载 gitRepo 卷
@@ -53,8 +53,11 @@ az container create \
 
 若要验证 gitRepo 卷是否已装载，请使用 [az container exec][az-container-exec] 在该容器中启动 shell 并列出目录：
 
-```console
-$ az container exec --resource-group myResourceGroup --name hellogitrepo --exec-command /bin/sh
+```azurecli
+az container exec --resource-group myResourceGroup --name hellogitrepo --exec-command /bin/sh
+```
+
+```output
 /usr/src/app # ls -l /mnt/aci-helloworld/
 total 16
 -rw-r--r--    1 root     root           144 Apr 16 16:35 Dockerfile
@@ -164,13 +167,13 @@ drwxr-xr-x    2 root     root          4096 Apr 16 16:35 app
 
 例如，专用 GitHub 存储库的 Azure CLI `--gitrepo-url` 参数将类似于以下内容（其中“gituser”是 GitHub 用户名，“abcdef1234fdsa4321abcdef”是用户的个人访问令牌）：
 
-```azurecli
+```console
 --gitrepo-url https://gituser:abcdef1234fdsa4321abcdef@github.com/GitUser/some-private-repository
 ```
 
 对于 Azure Repos Git 存储库，请指定任何用户名（可以使用“azurereposuser”，如下例所示）并结合有效的 PAT：
 
-```azurecli
+```console
 --gitrepo-url https://azurereposuser:abcdef1234fdsa4321abcdef@dev.azure.com/your-org/_git/some-private-repository
 ```
 
@@ -200,5 +203,4 @@ GitHub：[创建命令行的个人访问令牌][pat-github]
 [az-container-create]: https://docs.microsoft.com/cli/azure/container?view=azure-cli-latest#az-container-create
 [az-container-exec]: https://docs.microsoft.com/cli/azure/container?view=azure-cli-latest#az-container-exec
 
-<!-- Update_Description: new article about container instances volume gitrepo -->
-<!--NEW.date: 01/15/2020-->
+<!-- Update_Description: update meta properties, wording update, update link -->

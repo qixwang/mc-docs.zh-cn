@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 origin.date: 03/20/2019
-ms.date: 09/23/2019
+ms.date: 04/06/2020
 ms.author: v-jay
-ms.openlocfilehash: 7b6cf8418f93c00587624c8312eb1c7f1baef829
-ms.sourcegitcommit: 8248259e4c3947aa0658ad6c28f54988a8aeebf8
+ms.openlocfilehash: 1792ddce32843f470ba7f0158637d41a0dd94735
+ms.sourcegitcommit: fe9ed98aaee287a21648f866bb77cb6888f75b0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71124660"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80625778"
 ---
 # <a name="how-to-use-the-microsoft-smooth-streaming-plugin-for-the-adobe-open-source-media-framework"></a>如何使用适用于 Adobe Open Source Media Framework 的 Microsoft 平滑流式处理插件  
 ## <a name="overview"></a>概述
@@ -48,7 +48,7 @@ SS for OSMF 包括两个版本的插件：
 * 此版本仅支持 OSMF 2.0。
 
 ## <a name="supported-features-and-known-issues"></a>支持的功能和已知问题
-有关支持的功能、不支持的功能和已知问题的完整列表，请参阅 [本文档](https://download.microsoft.com/download/3/1/B/31B63D97-574E-4A8D-BF8D-170744181724/Smooth_Streaming_Plugin_for_OSMF.pdf)。
+有关支持的功能、不支持的功能和已知问题的完整列表，请参阅 [本文档](https://azure.microsoft.com/blog/microsoft-adaptive-streaming-plugin-for-osmf-update/)。
 
 ## <a name="loading-the-plugin"></a>加载插件
 可静态（在编译时）或动态（在运行时）加载 OSMF 插件。 适用于 OSMF 的平滑流式处理插件的下载内容包括动态和静态版本。
@@ -328,7 +328,7 @@ package {
     }
 }
 
-## <a name="strobe-media--playback-with-the-ss-odmf-dynamic-plugin"></a>Strobe Media Playback 与 SS ODMF 动态插件
+## <a name="strobe-media--playback-with-the-ss-odmf-dynamic-plugin"></a>Strobe Media Playback 与 SS OSMF 动态插件
 适用于 OSMF 的平滑流式处理动态插件与 [Strobe Media Playback (SMP)](http://osmf.org/strobe_mediaplayback.html) 兼容。 可以使用 SS for OSMF 插件向 SMP 添加平滑流式处理内容播放功能。 为此，请在进行 HTTP 加载时，使用以下步骤将“MSAdaptiveStreamingPlugin-v1.0.3-osmf2.0.swf”复制到 Web 服务器下：
 
 1. 浏览 [Strobe Media Playback 设置页](http://osmf.org/dev/2.0gm/setup.html)。 
@@ -384,7 +384,7 @@ package {
 2. 保存 HTML 页，并发布到 Web 服务器。 使用最常用的、已启用 Internet 浏览器（Internet Explorer、Chrome、Firefox 等）的 Flash&reg; Player 浏览到已发布的网页。
 3. 在 Adobe&reg; Flash&reg; Player 中欣赏平滑流式处理内容。
 
-有关常规 OSMF 开发的详细信息，请参阅官方的 [OSMF 开发页](http://osmf.org/resources.html)。
+有关一般性 OSMF 开发的详细信息，请参阅官方的 [OSMF 开发页](http://osmf.org/resources.html)。
 
 ## <a name="media-services-learning-paths"></a>媒体服务学习路径
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

@@ -2,16 +2,16 @@
 author: vhorne
 ms.service: application-gateway
 ms.topic: include
-ms.date: 03/17/2020
+ms.date: 03/30/2020
 ms.author: v-junlch
-ms.openlocfilehash: c2f174ae726d2e9d5724a9c757ffccc87b4fcdce
-ms.sourcegitcommit: 71a386ca0d0ecb79a123399b6ab6b8c70ea2aa78
+ms.openlocfilehash: a621a39e812e8463aa6812ecabd163e3ddd921fc
+ms.sourcegitcommit: 64584c0bf31b4204058ae2b4641356b904ccdd58
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2020
-ms.locfileid: "79504312"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80587155"
 ---
-| 资源 | 默认值/最大限制 | 注意 |
+| 资源 | 限制 | 注意 |
 | --- | --- | --- |
 | Azure 应用程序网关 |每个订阅 1,000 个 | |
 | 前端 IP 配置 |2 |公共和专用各 1 个 |

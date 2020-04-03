@@ -10,13 +10,12 @@ ms.localizationpriority: high
 origin.date: 09/04/2019
 ms.date: 12/09/2019
 ms.author: alkohli
-Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: 6f01505a96bfaf1c2f08e12f4b9a7a7afdff858e
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: 051271e570dc8ea2207923caa7fb41f862ba12c3
+ms.sourcegitcommit: 5fb45da006859215edc8211481f13174aa43dbeb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79293239"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80634465"
 ---
 ::: zone target="docs"
 
@@ -102,7 +101,7 @@ ms.locfileid: "79293239"
 
 ## <a name="erasure-of-data-from-data-box-disk"></a>从 Data Box 磁盘中擦除数据
 
-完成复制并已验证数据位于 Azure 存储帐户中后，请根据 NIST 标准安全擦除磁盘。
+上传到 Azure 完成后，Data Box Disk 将根据 [NIST SP 800-88](https://csrc.nist.gov/News/2014/Released-SP-800-88-Revision-1,-Guidelines-for-Medi) 标准擦除其磁盘上的数据。
 
 ::: zone target="docs"
 

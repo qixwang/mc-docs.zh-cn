@@ -10,12 +10,12 @@ origin.date: 09/03/2019
 ms.date: 12/09/2019
 ms.author: v-jay
 ms.localizationpriority: high
-ms.openlocfilehash: 88a3bc1e213a051e8716c6545ec64fe637fcb179
-ms.sourcegitcommit: 8c3bae15a8a5bb621300d81adb34ef08532fe739
+ms.openlocfilehash: 24dbcbd07baae08879058ad1c611aad0356f016d
+ms.sourcegitcommit: 5fb45da006859215edc8211481f13174aa43dbeb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74884076"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80634458"
 ---
 ::: zone target = "docs"
 
@@ -101,7 +101,7 @@ ms.locfileid: "74884076"
 
 在设备的某个节点上，执行以下步骤进行网络布线。
 
-1. 使用 CAT 6 RJ-45 网线（图中的蓝色线缆）将主机连接到 1-Gbps 管理端口。
+1. 使用 CAT 6 RJ-45 网络电缆（图片中右上角连接到标有 MGMT 的插头的电缆）将主计算机连接到 1-Gbps 管理端口。
 2. 使用 QSFP+ 电缆（光纤或铜）连接至少一个 40-Gbps（首选超过 1 Gbps）的网络接口进行数据传输。 如果使用 10-Gbps 交换机，请使用 SFP+ 电缆和 QSFP+ 转 SFP+ 适配器（QSA 适配器）连接 40 Gbps 网络接口进行数据传输。
 
     ![Data Box Heavy 端口已布线](media/data-box-heavy-deploy-set-up/data-box-heavy-ports-cabled.png)
@@ -151,7 +151,7 @@ ms.locfileid: "74884076"
 
 ## <a name="next-steps"></a>后续步骤
 
-本教程介绍了有关 Azure Data Box Heavy 的主题，例如：
+本教程介绍了 Azure Data Box Heavy 主题，例如：
 
 > [!div class="checklist"]
 > * 为 Data Box Heavy 布线

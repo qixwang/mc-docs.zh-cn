@@ -1,5 +1,6 @@
 ---
-title: 有关通过 REST API 将数据复制到 Azure Data Box Blob 存储的教程 | Microsoft Docs
+title: 教程：使用 REST API 将数据复制到 Blob 存储
+titleSuffix: Azure Data Box
 description: 了解如何通过 REST API 将数据复制到 Azure Data Box Blob 存储
 services: databox
 author: WenJason
@@ -7,14 +8,14 @@ ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
 origin.date: 05/09/2019
-ms.date: 06/10/2019
+ms.date: 04/06/2020
 ms.author: v-jay
-ms.openlocfilehash: 992ffc28c2204b0c154b337a19a200e73cecdcae
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: ded6d8d80c0b6033280ce0634176d209108d7965
+ms.sourcegitcommit: 5fb45da006859215edc8211481f13174aa43dbeb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79292769"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80634576"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-blob-storage-via-rest-apis"></a>教程：通过 REST API 将数据复制到 Azure Data Box Blob 存储  
 
@@ -23,6 +24,7 @@ ms.locfileid: "79292769"
 本教程介绍如何执行下列操作：
 
 > [!div class="checklist"]
+>
 > * 先决条件
 > * 通过 *http* 或 *https* 连接到 Data Box Blob 存储
 > * 将数据复制到 Data Box
@@ -91,7 +93,7 @@ ms.locfileid: "79292769"
  
 ### <a name="import-certificate"></a>导入证书 
 
-通过 HTTPS 访问 Data Box Blob 存储需要设备的 SSL 证书。 客户端应用程序可以使用此证书的方式因应用程序以及操作系统和分发而异。 一些应用程序可以在将证书导入系统的证书存储后访问该证书，而其他应用程序则不使用该机制。
+通过 HTTPS 访问 Data Box Blob 存储需要设备的 TLS/SSL 证书。 客户端应用程序可以使用此证书的方式因应用程序以及操作系统和分发而异。 一些应用程序可以在将证书导入系统的证书存储后访问该证书，而其他应用程序则不使用该机制。
 
 本部分提到了某些应用程序的特定信息。 有关其他应用程序的详细信息，请参阅应用程序和所用操作系统的文档。
 
@@ -108,16 +110,16 @@ ms.locfileid: "79292769"
 
 #### <a name="use-windows-server-ui"></a>使用 Windows Server UI
 
-1.  右键单击 `.cer` 文件并选择“安装证书”  。 该操作会启动证书导入向导。
-2.  对于“存储位置”  ，选择“本地计算机”  ，并单击“下一步”  。
+1.   右键单击 `.cer` 文件并选择“安装证书”  。 该操作会启动证书导入向导。
+2.   对于“存储位置”  ，选择“本地计算机”  ，并单击“下一步”  。
 
     ![使用 PowerShell 导入证书](media/data-box-deploy-copy-data-via-rest/import-cert-ws-1.png)
 
-3.  选择“将所有证书放入下列存储”  ，并单击“浏览”  。 导航到远程主机的根存储，并单击“下一步”  。
+3.   选择“将所有证书放入下列存储”  ，并单击“浏览”  。 导航到远程主机的根存储，并单击“下一步”  。
 
     ![使用 PowerShell 导入证书](media/data-box-deploy-copy-data-via-rest/import-cert-ws-2.png)
 
-4.  单击“完成”  。 将显示一条提示已成功导入的消息。
+4.   单击“完成”  。 将显示一条提示已成功导入的消息。
 
     ![使用 PowerShell 导入证书](media/data-box-deploy-copy-data-via-rest/import-cert-ws-3.png)
 
@@ -149,8 +151,9 @@ ms.locfileid: "79292769"
 
 连接到 Data Box Blob 存储后，下一步是复制数据。 在复制数据之前，请查看以下注意事项：
 
--  复制数据时，请确保数据大小符合 [Azure 存储和 Data Box 限制](data-box-limits.md)中所述的大小限制。
-- 如果 Data Box 正在上传的数据同时已由 Data Box 外部的其他应用程序上传，则可能会导致上传作业失败和数据损坏。
+* 复制数据时，请确保数据大小符合 [Azure 存储和 Data Box 限制](data-box-limits.md)中所述的大小限制。
+* 如果 Data Box 正在上传的数据同时已由 Data Box 外部的其他应用程序上传，则可能会导致上传作业失败和数据损坏。
+* 请确保保留源数据的副本，直到可以确认 Data Box 已将数据传输到 Azure 存储中为止。
 
 本教程使用 AzCopy 将数据复制到 Data Box Blob 存储。 你也可以使用 Azure 存储资源管理器（如果你偏好使用基于 GUI 的工具）或合作伙伴软件来复制数据。
 

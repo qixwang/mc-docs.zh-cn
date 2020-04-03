@@ -6,21 +6,21 @@ ms.assetid: eb95d350-81ea-4145-a1e2-6eea3b7469b2
 ms.devlang: azurecli
 ms.topic: sample
 origin.date: 12/11/2017
-ms.date: 01/13/2020
+ms.date: 03/30/2020
 ms.author: v-tawe
-ms.custom: mvc
-ms.openlocfilehash: ab4fadf8c693e6df7ee3caffe41f0ccf00fb2685
-ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
+ms.custom: mvc, seodec18
+ms.openlocfilehash: 5f37fd823c27112ed55680790aaf11865a5e4624
+ms.sourcegitcommit: 44d3fe59952847e5394bbe6c05bd6f333bb56345
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75600380"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80522114"
 ---
 # <a name="bind-a-custom-ssl-certificate-to-an-app-service-app-using-cli"></a>使用 CLI 将自定义 SSL 证书绑定到应用服务应用
 
 此示例脚本使用其相关资源在应用服务中创建一个应用，然后将自定义域名的 SSL 证书绑定到该应用。 在此示例中，需要以下项：
 
-* 对域注册机构的 DNS 配置页的访问权限。
+* 访问域注册机构的 DNS 配置页的权限。
 * 需要上传和绑定的 SSL 证书的有效 .PFX 文件及其密码。
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]

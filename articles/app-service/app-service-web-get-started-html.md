@@ -5,15 +5,15 @@ author: msangapu-msft
 ms.assetid: 60495cc5-6963-4bf0-8174-52786d226c26
 ms.topic: quickstart
 origin.date: 08/23/2019
-ms.date: 03/16/2020
+ms.date: 03/30/2020
 ms.author: v-tawe
 ms.custom: mvc, cli-validate, seodec18
-ms.openlocfilehash: 259f0a4f01029034ea63e77a89cbcaaded7d7f50
-ms.sourcegitcommit: e500354e2fd8b7ac3dddfae0c825cc543080f476
+ms.openlocfilehash: 3205433e9031893150bdb6f1e2bc19e5ddf771f8
+ms.sourcegitcommit: 44d3fe59952847e5394bbe6c05bd6f333bb56345
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2020
-ms.locfileid: "79547003"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521985"
 ---
 # <a name="create-a-static-html-web-app-in-azure"></a>在 Azure 中创建静态 HTML Web 应用
 

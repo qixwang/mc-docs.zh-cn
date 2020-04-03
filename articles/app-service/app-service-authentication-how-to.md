@@ -6,12 +6,12 @@ origin.date: 10/24/2019
 ms.date: 01/13/2020
 ms.author: v-tawe
 ms.custom: seodec18
-ms.openlocfilehash: 20331e03db14bdd2e0f4923986c4aea17d7dd4b3
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: e379c1637a5f907a9239589733dd707b3c9a4606
+ms.sourcegitcommit: 260800ede66f48c886d1426a0fac18b4d402b4f2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79292930"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586822"
 ---
 # <a name="advanced-usage-of-authentication-and-authorization-in-azure-app-service"></a>Azure 应用服务中的身份验证和授权的高级用法
 
@@ -71,7 +71,6 @@ Content-Type: application/json
 | `aad` | `{"access_token":"<access_token>"}` | |
 | `microsoftaccount` | `{"access_token":"<token>"}` | `expires_in` 属性为可选。 <br/>从 Live 服务请求令牌时，将始终请求 `wl.basic` 作用域。 |
 
-| | | |
 
 如果提供程序令牌成功通过验证，则 API 将在响应正文中返回一个 `authenticationToken`，这是你的会话令牌。 
 

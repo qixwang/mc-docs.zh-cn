@@ -1,20 +1,21 @@
 ---
-title: 关于通过数据复制服务将数据复制到 Azure Data Box 设备的教程 | Microsoft Docs
+title: 教程：使用数据复制服务将数据复制到设备
+titleSuffix: Azure Data Box
 description: 本教程介绍如何通过数据复制服务将数据复制到 Azure Data Box 设备
 services: databox
 author: WenJason
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-origin.date: 01/24/2019
-ms.date: 07/22/2019
+origin.date: 06/18/2019
+ms.date: 04/06/2020
 ms.author: v-jay
-ms.openlocfilehash: 8be029571d45f43a70d6e89fd9bacac78259a65d
-ms.sourcegitcommit: 98cc8aa5b8d0e04cd4818b34f5350c72f617a225
+ms.openlocfilehash: 0217eae164a7bfde88e04e0d8bc48be89b13dce3
+ms.sourcegitcommit: 5fb45da006859215edc8211481f13174aa43dbeb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68298129"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80634495"
 ---
 # <a name="tutorial-use-the-data-copy-service-to-copy-data-into-azure-data-box-preview"></a>教程：使用数据复制服务将数据复制到 Azure Data Box（预览）
 
@@ -28,6 +29,7 @@ ms.locfileid: "68298129"
 本教程介绍如何执行下列操作：
 
 > [!div class="checklist"]
+>
 > * 将数据复制到 Data Box
 
 ## <a name="prerequisites"></a>先决条件
@@ -43,9 +45,13 @@ ms.locfileid: "68298129"
 
 连接到 NAS 设备之后，下一步是复制数据。 在开始复制数据之前，请查看以下注意事项：
 
-- 复制数据时，请确保数据大小符合 [Azure 存储和 Data Box 限制](data-box-limits.md)一文中所述的大小限制。
-- 如果 Data Box 上传的数据同时已由 Data Box 外部的其他应用程序上传，则可能会导致上传作业失败和数据损坏。
-- 如果数据复制服务读取数据时数据正在修改，则可能会出现失败或数据损坏的情况。
+* 复制数据时，请确保数据大小符合 [Azure 存储和 Data Box 限制](data-box-limits.md)一文中所述的大小限制。
+
+* 如果 Data Box 上传的数据同时已由 Data Box 外部的其他应用程序上传，则可能会导致上传作业失败和数据损坏。
+
+* 如果数据复制服务读取数据时数据正在修改，则可能会出现失败或数据损坏的情况。
+
+* 请确保保留源数据的副本，直到可以确认 Data Box 已将数据传输到 Azure 存储中为止。
 
 若要使用数据复制服务复制数据，需要创建一个作业：
 
@@ -68,7 +74,7 @@ ms.locfileid: "68298129"
     |**复制文件匹配模式**    | 可按以下两种方式输入文件名匹配模式：<ul><li>**使用通配符表达式：** 通配符表达式中仅支持 `*` 和 `?`。 例如，表达式 `*.vhd` 匹配扩展名为 `.vhd` 的所有文件。 类似地，`*.dl?` 匹配扩展名为 `.dl` 或以 `.dl` 开头的所有文件，例如 `.dll`。 同理，`*foo` 匹配名称以 `foo` 结尾的所有文件。<br>可以直接在该字段中输入通配符表达式。 默认情况下，在该字段中输入的值被视为通配符表达式。</li><li>**使用正则表达式：** 支持基于 POSIX 的正则表达式。 例如，正则表达式 `.*\.vhd` 匹配扩展名为 `.vhd` 的所有文件。 对于正则表达式，请直接提供 `<pattern>` 作为 `regex(<pattern>)`。 有关正则表达式的详细信息，请转到[正则表达式语言 - 快速参考](https://docs.microsoft.com/dotnet/standard/base-types/regular-expression-language-quick-reference)。</li><ul>|
     |**文件优化**              |启用此功能后，引入期间会打包小于 1 MB 的文件。 打包可以加快小型文件的数据复制速度。 如果文件数远远超出目录数，则打包还可以显著节省时间。        |
  
-4. 选择“启动”。  随后会验证输入，如果验证成功，则启动某个作业。 启动该作业可能需要花费几分钟时间。
+4. 选择“开始”  。 随后会验证输入，如果验证成功，则启动某个作业。 启动该作业可能需要花费几分钟时间。
 
     ![从“配置作业并启动”对话框启动作业](media/data-box-deploy-copy-data-via-copy-service/configure-and-start.png)
 
@@ -112,7 +118,7 @@ ms.locfileid: "68298129"
 
 6. 当作业正在进行时，在“复制数据”页上： 
 
-    - 在“状态”列中，可以查看复制作业的状态。  状态可能是：
+    - 在“状态”列中，可以查看复制作业的状态。  状态可以为：
         - **正在运行**
         - 失败 
         - 成功 

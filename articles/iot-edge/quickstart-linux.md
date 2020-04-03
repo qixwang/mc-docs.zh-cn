@@ -5,17 +5,17 @@ author: kgremban
 manager: philmea
 ms.author: v-tawe
 origin.date: 11/06/2019
-ms.date: 03/16/2020
+ms.date: 03/30/2020
 ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 75ce8f8fb6cb1a1e9c0ec7347cd9d0b93f314f7f
-ms.sourcegitcommit: 1d3d8dfdaf6281f06640cbee7124a1e8bf102c50
+ms.openlocfilehash: d3148e78b4e376451ca685ae0c2abf82874bb24d
+ms.sourcegitcommit: 260800ede66f48c886d1426a0fac18b4d402b4f2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "80243893"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586665"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-virtual-linux-device"></a>快速入门：将第一个 IoT Edge 模块部署到虚拟 Linux 设备
 
@@ -41,7 +41,7 @@ ms.locfileid: "80243893"
 将 Azure IoT 扩展添加到 Cloud Shell 实例。
 
    ```azurecli
-   az extension add --name azure-cli-iot-ext
+   az extension add --name azure-iot
    ```
    
 [!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
@@ -139,7 +139,7 @@ IoT Edge 运行时部署在所有 IoT Edge 设备上。 它有三个组件。 **
 
 此快速入门中的其余命令都在 Azure IoT Edge 上完成，以便查看设备发生的情况。 如果使用的是虚拟机，请立即使用创建命令输出的公共 IP 地址连接到该虚拟机。 也可在 Azure 门户中虚拟机的概述页面上找到公共 IP 地址。 使用以下命令连接到虚拟机。 如果所用用户名与先决条件中建议的用户名不同，请替换 `{azureuser}`。 将 `{publicIpAddress}` 替换为你的计算机地址。
 
-   ```azurecli
+   ```console
    ssh azureuser@{publicIpAddress}
    ```
 

@@ -2,15 +2,15 @@
 title: 教程：构建策略以强制实施符合性
 description: 本教程中将使用策略来强制执行标准、控制成本、维护安全性并施加企业范围的设计原则。
 ms.author: v-tawe
-origin.date: 12/20/2019
-ms.date: 01/17/2020
+origin.date: 03/24/2020
+ms.date: 03/30/2020
 ms.topic: tutorial
-ms.openlocfilehash: f3742b6b12bc0778c01cb63b08a22727afba0462
-ms.sourcegitcommit: 94e1c9621b8f81a7078f1412b3a73281d0a8668b
+ms.openlocfilehash: b2a9b71a87584cc2400e32206cfcd66fcc12b0d7
+ms.sourcegitcommit: 260800ede66f48c886d1426a0fac18b4d402b4f2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76123332"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586653"
 ---
 # <a name="tutorial-create-and-manage-policies-to-enforce-compliance"></a>教程：创建和管理策略以强制实施符合性
 
@@ -24,25 +24,25 @@ ms.locfileid: "76123332"
 
 若要分配一个策略用于识别现有资源的当前符合性状态，请参阅快速入门文章。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial/)。
 
 ## <a name="assign-a-policy"></a>分配策略
 
-使用 Azure Policy 强制实施符合性的第一步是分配策略定义。 策略定义用于定义实施策略的条件，以及要达到的效果。 在本示例中，我们将分配名为“需要 SQL Server 版本 12.0”  的内置策略定义，强制执行“所有 SQL Server 数据库都必须是 v12.0 才视为符合”的条件。
+使用 Azure Policy 强制实施符合性的第一步是分配策略定义。 策略定义用于定义实施策略的条件，以及要达到的效果。 在本例中，分配名为“如果缺少，则从资源组继承标记”  的内置策略定义，以将指定的标记及其值从父资源组添加到缺少该标记的新资源或更新的资源。
 
 1. 转到 Azure 门户以分配策略。 搜索并选择“策略”  。
 
-   ![在搜索栏中搜索“策略”](../media/create-and-manage/search-policy.png)
+   :::image type="content" source="../media/create-and-manage/search-policy.png" alt-text="在搜索栏中搜索“策略”" border="false":::
 
 1. 选择“Azure Policy”页左侧的“分配”  。 分配即为在特定范围内分配策略以供执行。
 
-   ![从“策略概述”页选择“分配”](../media/create-and-manage/select-assignments.png)
+   :::image type="content" source="../media/create-and-manage/select-assignments.png" alt-text="从“策略概述”页选择“分配”" border="false":::
 
 1. 在“策略 - 分配”页的顶部选择“分配策略”   。
 
-   ![从“分配”页分配策略](../media/create-and-manage/select-assign-policy.png)
+   :::image type="content" source="../media/create-and-manage/select-assign-policy.png" alt-text="从“分配”页分配策略定义" border="false":::
 
 1. 在“分配策略”页和“基本信息”选项卡上，通过选择省略号并选择管理组或订阅，选择“范围”    。 或者，请选择一个资源组。 范围用于确定对其强制执行策略分配的资源或资源组。
    然后在“范围”页的底部选择“选择”。  
@@ -53,11 +53,12 @@ ms.locfileid: "76123332"
 
 1. 选择“策略定义”旁边的省略号打开可用定义的列表。  可以使用“内置”来筛选策略定义的**类型**，以查看所有相关策略定义及其说明。 
 
-1. 选择“在资源上添加或替换标记”。  如果不能立即找到它，请在搜索框中键入“添加或替换”，然后按 ENTER 或者选择搜索框的外部。  找到并选择策略定义后，选择“可用定义”页底部的“选择”。  
+1. 选择“如果缺少，则从资源组继承标记”  。 如果不能立即找到它，请在搜索框中键入“继承标记”，然后按 ENTER 或者选择搜索框的外部。 
+   找到并选择策略定义后，选择“可用定义”页底部的“选择”。  
 
-   ![使用搜索筛选器来查找策略](../media/create-and-manage/select-available-definition.png)
+   :::image type="content" source="../media/create-and-manage/select-available-definition.png" alt-text="使用搜索筛选器来查找策略":::
 
-1. “分配名称”中自动填充了所选的策略名称，但可以更改它。  对于此示例，请保留“在资源上添加或替换标记”。  还可根据需要添加“说明”  。 该说明提供有关此策略分配的详细信息。
+1. “分配名称”中自动填充了所选的策略名称，但可以更改它。  对于本例，请保留“如果缺少，则从资源组继承标记”  。 还可根据需要添加“说明”  。 该说明提供有关此策略分配的详细信息。
 
 1. 让“策略强制”保持“启用”状态。   禁用时，此设置允许测试策略的结果，而不触发效果。  有关详细信息，请参阅[强制模式](../concepts/assignment-structure.md#enforcement-mode)。
 
@@ -65,7 +66,7 @@ ms.locfileid: "76123332"
 
 1. 选择向导顶部的“参数”选项卡。 
 
-1. 对于“标记名称”  ，请输入“环境”  ；对于“标记值”，请输入“开发”。  
+1. 对于“标记名称”  ，请输入“Environment”  。
 
 1. 选择向导顶部的“修正”选项卡。 
 
@@ -83,7 +84,7 @@ ms.locfileid: "76123332"
 
 1. 选择“Azure Policy”页左侧“创作”下的“定义”   。
 
-   ![“创作”组下的定义页](../media/create-and-manage/definition-under-authoring.png)
+   :::image type="content" source="../media/create-and-manage/definition-under-authoring.png" alt-text="“创作”组下的定义页" border="false":::
 
 1. 选择页面顶部的“+ 策略定义”。  此按钮会打开“策略定义”页。 
 
@@ -343,11 +344,11 @@ az policy definition list
 
 1. 选择“Azure Policy”页左侧“创作”下的“定义”   。
 
-   ![从“定义”页选择定义](../media/create-and-manage/definition-under-authoring.png)
+   :::image type="content" source="../media/create-and-manage/definition-under-authoring.png" alt-text="从“定义”页选择定义" border="false":::
 
 1. 选择页面顶部的“+ 计划定义”打开“计划定义”页。  
 
-   ![查看计划定义页](../media/create-and-manage/initiative-definition.png)
+   :::image type="content" source="../media/create-and-manage/initiative-definition.png" alt-text="查看计划定义页" border="false":::
 
 1. 使用“定义位置”旁边的省略号选择用于存储定义的管理组或订阅。  如果上一页范围仅限于单个管理组或订阅，将自动填充“定义位置”  。 选中后，“可用定义”会被填充  。
 
@@ -367,11 +368,11 @@ az policy definition list
 
    从列表中选择策略定义后，会将其添加到“类别”下面  。
 
-   ![查看计划定义参数](../media/create-and-manage/initiative-definition-2.png)
+   :::image type="content" source="../media/create-and-manage/initiative-definition-2.png" alt-text="查看计划定义参数" border="false":::
 
 1. 如果要添加到计划的策略定义有参数，则这些参数会显示在“类别”区域的策略名称下  。 _value_ 可以设置为“设置值”（针对此计划的所有分配进行硬编码）或“使用计划参数”（在每个计划分配期间设置）。 如果选择了“设置值”，则“值”  右侧的下拉列表允许输入或选择值。 如果选择了“使用计划参数”，则会显示新的“计划参数”部分，用于定义将要在计划分配期间设置的参数  。 此计划参数的允许值可能会进一步限制能够在计划分配期间设置的内容。
 
-   ![更改允许的值中的计划定义参数](../media/create-and-manage/initiative-definition-3.png)
+   :::image type="content" source="../media/create-and-manage/initiative-definition-3.png" alt-text="使用允许的值更改计划定义参数" border="false":::
 
    > [!NOTE]
    > 在使用某些 `strongType` 参数时，不能自动确定值的列表。 在这种情况下，会在参数行的右侧显示省略号。 选择它会打开“参数范围(&lt;参数名称&gt;)”页。 在此页中，选择用于提供值选项的订阅。 此参数范围仅在创建计划定义过程中使用，对策略评估或分配后的计划范围没有影响。
@@ -397,6 +398,7 @@ az policy set-definition create -n readOnlyStorage --definitions '[
 #### <a name="create-a-policy-initiative-definition-with-azure-powershell"></a>使用 Azure PowerShell 创建策略计划定义
 
 可以将 Azure PowerShell 与 `New-AzPolicySetDefinition` cmdlet 结合使用来创建策略计划定义。 若要使用现有的策略定义创建策略计划定义，请使用 `VMPolicySet.json` 形式的以下策略计划定义文件：
+
 ```json
 [
     {
@@ -426,11 +428,11 @@ New-AzPolicySetDefinition -Name 'VMPolicySetDefinition' -Metadata '{"category":"
 
 1. 找到前面创建的“保证安全”计划定义并选择它。  选择页面顶部的“分配”，打开“保证安全:   分配计划”页。
 
-   ![从计划定义页分配定义](../media/create-and-manage/assign-definition.png)
+   :::image type="content" source="../media/create-and-manage/assign-definition.png" alt-text="从计划定义页分配定义" border="false":::
 
    也可右键单击选定的行，或者选择上下文菜单行末尾处的省略号。 然后选择“分配”。 
 
-   ![计划的备用选项](../media/create-and-manage/select-right-click.png)
+   :::image type="content" source="../media/create-and-manage/select-right-click.png" alt-text="计划的备用选项" border="false":::
 
 1. 输入以下示例信息，填充“保证安全:  分配计划”页。 可以使用自己的信息。
 
@@ -457,11 +459,11 @@ New-AzPolicySetDefinition -Name 'VMPolicySetDefinition' -Metadata '{"category":"
 1. 找到“保证安全”  计划。 可能仍处于“未启动”符合性状态   。
    选择计划，获取有关分配进度的完整详细信息。
 
-   ![计划符合性页 - 评估未启动](../media/create-and-manage/compliance-status-not-started.png)
+   :::image type="content" source="../media/create-and-manage/compliance-status-not-started.png" alt-text="计划符合性页 - 评估未启动" border="false":::
 
 1. 完成计划分配后，符合性页会更新为“符合”符合性状态   。
 
-   ![计划符合性页 - 资源符合性](../media/create-and-manage/compliance-status-compliant.png)
+   :::image type="content" source="../media/create-and-manage/compliance-status-compliant.png" alt-text="计划符合性页 - 资源符合性" border="false":::
 
 1. 选择计划符合性页上的任何策略均可打开该策略的符合性详细信息页。 此页提供符合性的资源级别详细信息。
 
@@ -471,11 +473,11 @@ New-AzPolicySetDefinition -Name 'VMPolicySetDefinition' -Metadata '{"category":"
 
 可在部署所针对的资源组中查看被分配的策略或计划阻止的部署：选择页面左侧的“部署”，然后选择失败部署的“部署名称”。   随后将会列出带有“禁止”状态的被拒绝资源  。 若要确定拒绝该资源的策略或计划和分配，请在“部署概述”页上选择“失败。  单击此处了解详细信息 ->”。 页面右侧会打开一个窗口，其中显示了错误信息。 “错误详细信息”下显示了相关策略对象的 GUID  。
 
-![策略分配拒绝的部署](../media/create-and-manage/rg-deployment-denied.png)
+:::image type="content" source="../media/create-and-manage/rg-deployment-denied.png" alt-text="策略分配拒绝的部署" border="false":::
 
 在“Azure Policy”页上：选择页面左侧的“符合性”，然后选择“保证安全”策略计划。   在此页上，被阻止的资源的“拒绝”  计数增加。 在“事件”选项卡下，详述了谁尝试创建或部署已按策略定义拒绝的资源。 
 
-![分配策略的符合性概述](../media/create-and-manage/compliance-overview.png)
+:::image type="content" source="../media/create-and-manage/compliance-overview.png" alt-text="分配策略的符合性概述" border="false":::
 
 在此示例中，Contoso 的资深虚拟化专家之一 Trent Baker 执行了所需的工作。 我们需要为 Trent 提供例外空间。 创建新资源组 **LocationsExcluded** 后，接下来将其指定为此策略分配的例外项。
 
@@ -487,7 +489,7 @@ New-AzPolicySetDefinition -Name 'VMPolicySetDefinition' -Metadata '{"category":"
 
 1. 设置“排除项”：选择省略号并选择要排除的资源组（在本示例中为 _LocationsExcluded_）。  选择“添加到所选范围”，然后选择“保存”   。
 
-   ![向策略分配添加排除的资源组](../media/create-and-manage/request-exclusion.png)
+   :::image type="content" source="../media/create-and-manage/request-exclusion.png" alt-text="向策略分配添加排除的资源组" border="false":::
 
    > [!NOTE]
    > 根据策略定义及其效果，也可以将排除项指定为分配范围内某个资源组中的特定资源。 由于本教程使用了“拒绝”效果，对已存在的特定资源设置排除项没有意义。 

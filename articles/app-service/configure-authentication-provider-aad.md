@@ -6,13 +6,13 @@ ms.topic: article
 origin.date: 09/03/2019
 ms.date: 03/23/2020
 ms.author: v-tawe
-ms.custom: fasttrack-edit
-ms.openlocfilehash: 5a80595e846367da17134c72eca9bb6c2051569d
-ms.sourcegitcommit: d5eca3c6b03b206e441b599e5b138bd687a91361
+ms.custom: seodec18, fasttrack-edit
+ms.openlocfilehash: ab3e32bcd70c4df4a9a12055d71c7d6eec6f03fe
+ms.sourcegitcommit: 44d3fe59952847e5394bbe6c05bd6f333bb56345
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78934710"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80522124"
 ---
 # <a name="configure-your-app-service-app-to-use-azure-ad-login"></a>将应用服务应用配置为使用 Azure AD 登录
 
@@ -28,14 +28,14 @@ ms.locfileid: "78934710"
 
 <!-- ## <a name="express"> </a>Configure with express settings -->
 
-## <a name="advanced"> </a>使用高级设置进行配置
+## <a name="configure-with-advanced-settings"></a><a name="advanced"> </a>使用高级设置进行配置
 
 若要使用另一 Azure AD 租户中的应用注册，可以手动配置应用设置。 若要完成此自定义配置，请执行以下操作：
 
 1. 在 Azure AD 中创建一个注册。
 2. 向应用服务提供一些注册详细信息。
 
-### <a name="register"> </a>在 Azure AD 中为应用服务应用创建应用注册
+### <a name="create-an-app-registration-in-azure-ad-for-your-app-service-app"></a><a name="register"> </a>在 Azure AD 中为应用服务应用创建应用注册
 
 配置应用服务应用时，需要提供以下信息：
 
@@ -65,7 +65,7 @@ ms.locfileid: "78934710"
 1. （可选）若要创建客户端机密，请选择“证书和机密” > “新建客户端机密” > “添加”。    复制页面中显示的客户端机密值。 它不会再次显示。
 1. （可选）若要添加多个“回复 URL”，请选择“身份验证”。  
 
-### <a name="secrets"> </a>在应用服务应用中启用 Azure Active Directory
+### <a name="enable-azure-active-directory-in-your-app-service-app"></a><a name="secrets"> </a>在应用服务应用中启用 Azure Active Directory
 
 1. 在 [Azure 门户]中搜索并选择“应用服务”  ，然后选择应用。 
 1. 在左窗格中的“设置”下，选择“身份验证/授权” > “启用”。   
@@ -102,7 +102,7 @@ ms.locfileid: "78934710"
 
 现已配置可以访问应用服务应用的本机客户端应用程序。
 
-## <a name="related-content"> </a>后续步骤
+## <a name="next-steps"></a><a name="related-content"> </a>后续步骤
 
 [!INCLUDE [app-service-mobile-related-content-get-started-users](../../includes/app-service-mobile-related-content-get-started-users.md)]
 

@@ -6,14 +6,14 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.author: v-jay
-origin.date: 05/28/2019
-ms.date: 03/09/2020
-ms.openlocfilehash: 2354e6dfa8fdc466013c51451dc3227a51ee49fd
-ms.sourcegitcommit: fbc7584f403417d3af7bd6bbbaed7c13a78c57b9
+origin.date: 03/04/2020
+ms.date: 03/30/2020
+ms.openlocfilehash: 3926a8694f500047a21e6e4278468c95f29eef96
+ms.sourcegitcommit: 90d01d08faf8adb20083363a8e4e5aab139cd9b2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78411453"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80290343"
 ---
 # <a name="host-a-static-website-in-azure-storage"></a>在 Azure 存储中托管静态网站
 
@@ -21,25 +21,35 @@ ms.locfileid: "78411453"
 
 本文将展示如何使用 Azure 门户、Azure CLI 或 PowerShell 启用静态网站托管。
 
-<a id="portal" />
+## <a name="enable-static-website-hosting"></a>启用静态网站托管
 
-## <a name="portal"></a>[门户](#tab/azure-portal)
+静态网站托管是你必须在存储帐户上启用的一项功能。
 
-有关分步教程，请参阅[教程：在 Blob 存储上托管静态网站](/storage/blobs/storage-blob-static-website-host)。
+### <a name="portal"></a>[Portal](#tab/azure-portal)
 
-启用静态网站托管后，可以在浏览器中使用网站的公共 URL 来查看你的站点的页面。
+1. 登录到 [Azure 门户](https://portal.azure.cn/)即可开始操作。
 
-<a id="portal-find-url" />
+2. 找到存储帐户并显示帐户概览。
 
-### <a name="find-the-website-url-by-using-the-azure-portal"></a>使用 Azure 门户查找网站 URL
+3. 选择“静态网站”，以显示静态网站的配置页。 
 
-在存储帐户的帐户概述页旁边显示的窗格中，选择“静态网站”  。 你的站点的 URL 显示在“主终结点”  字段中。
+4. 选择“启用”，启用针对存储帐户的静态网站托管功能。 
 
-![Azure 存储静态网站指标 - 指标](./media/storage-blob-static-website/storage-blob-static-website-url.png)
+5. 在“索引文档名称”  字段中，指定一个默认索引页（例如：*index.html*）。 
+
+   当用户导航到静态网站的根目录时，会显示默认索引页。  
+
+6. 在“错误文档路径”  字段中，指定一个默认错误页（例如：*404.html*）。 
+
+   当用户尝试导航到静态网站中不存在的页面时，会显示默认错误页。
+
+7. 单击“保存”  。 Azure 门户现在会显示静态网站终结点。 
+
+    ![启用针对存储帐户的静态网站托管功能](media/storage-blob-static-website-host/enable-static-website-hosting.png)
+
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 <a id="cli" />
-
-## <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 可以使用 [Azure 命令行接口 (CLI)](/cli/?view=azure-cli-latest) 启用静态网站托管。
 
@@ -65,40 +75,9 @@ ms.locfileid: "78411453"
 
    * 将 `<index-document-name>` 占位符替换为索引文档的名称。 此文档通常是“index.html”。
 
-4. 将对象从源目录上传到 $web 容器  。
-
-   此示例假设你从 Azure Cloud Shell 会话中运行命令。
-
-   ```azurecli
-   az storage blob upload-batch -s <source-path> -d $web --account-name <storage-account-name> --content-type 'text/html; charset=utf-8'
-   ```
-
-   * 将 `<storage-account-name>` 占位符值替换为存储帐户的名称。
-
-   * 将 `<source-path>` 占位符替换为要上传的文件所在位置的路径。
-
-   > [!NOTE]
-   > 如果你使用 Azure CLI 的本地安装，则可以使用本地计算机上的任何位置的路径（例如：`C:\myFolder`）。
-
-<a id="cli-find-url" />
-
-### <a name="find-the-website-url-by-using-the-azure-cli"></a>使用 Azure CLI 查找网站 URL
-
-可以在浏览器中使用网站的公共 URL 来查看内容。
-
-可以使用以下命令查找 URL：
-
-```azurecli
-az storage account show -n <storage-account-name> -g <resource-group-name> --query "primaryEndpoints.web" --output tsv
-```
-
-* 将 `<storage-account-name>` 占位符值替换为存储帐户的名称。
-
-* 将 `<resource-group-name>` 占位符值替换为资源组的名称。
+### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 <a id="powershell" />
-
-## <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 可以使用 Azure PowerShell 模块启用静态网站托管。
 
@@ -148,28 +127,94 @@ az storage account show -n <storage-account-name> -g <resource-group-name> --que
 
    * 将 `<index-document-name>` 占位符替换为索引文档的名称。 此文档通常是“index.html”。
 
-7. 将对象从源目录上传到 $web 容器  。
+---
 
-    ```powershell
-    # upload a file
-    set-AzStorageblobcontent -File "<path-to-file>" `
-    -Properties @{ ContentType = "text/html; charset=utf-8";} `
-    -Container `$web `
-    -Blob "<blob-name>" `
-    -Context $ctx
-     ```
+## <a name="upload-files"></a>上传文件 
 
-   * 将 `<path-to-file>` 占位符值替换为要上传的文件的完全限定路径（例如：`C:\temp\index.html`）。
+### <a name="portal"></a>[门户](#tab/azure-portal)
 
-   * 将 `<blob-name>` 占位符值替换为要为生成的 blob 提供的名称（例如：`index.html`）。
+这些说明展示了如何使用存储资源管理器上传文件。 可以使用 [AzCopy](../common/storage-use-azcopy-v10.md)、PowerShell、CLI 或可将文件上传到帐户的 **$web** 容器的任何自定义应用程序。 有关使用 Visual Studio Code 上传文件的分步教程，请参阅[教程：在 Blob 存储上托管静态网站](/storage/blobs/storage-blob-static-website-host)。
+
+1. 打开存储资源管理器  。
+
+2. 展开“BLOB 容器”  节点，然后选择 **$web** 容器。
+
+3. 选择“上传”  按钮来上传文件。
+
+   ![上传文件](media/storage-blob-static-website/storage-blob-static-website-upload.png)
+
+4. 如果希望浏览器显示文件的内容，请确保将该文件的内容类型设置为 `text/html`。 
+
+   ![检查内容类型](media/storage-blob-static-website/storage-blob-static-website-content-type.png)
+
+   >[!NOTE]
+   > 对于通常可识别的扩展名（例如 `.html`），存储资源管理器会自动将此属性设置为 `text/html`。 但是，在某些情况下，你必须自行设置此项。 如果你没有将此属性设置为 `text/html`，则浏览器将提示用户下载文件而不是呈现内容。 若要设置此属性，请右键单击文件，然后单击“属性”  。
+
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+将对象从源目录上传到 $web 容器  。
+
+```azurecli
+az storage blob upload-batch -s <source-path> -d $web --account-name <storage-account-name> --content-type 'text/html; charset=utf-8'
+```
+
+* 将 `<storage-account-name>` 占位符值替换为存储帐户的名称。
+
+* 将 `<source-path>` 占位符替换为要上传的文件所在位置的路径。
+
+> [!NOTE]
+> 你可以使用本地计算机上任何位置的路径（例如：`C:\myFolder`）。
+
+### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+将对象从源目录上传到 $web 容器  。
+
+```powershell
+# upload a file
+set-AzStorageblobcontent -File "<path-to-file>" `
+-Properties @{ ContentType = "text/html; charset=utf-8";} `
+-Container `$web `
+-Blob "<blob-name>" `
+-Context $ctx
+```
+
+* 将 `<path-to-file>` 占位符值替换为要上传的文件的完全限定路径（例如：`C:\temp\index.html`）。
+
+* 将 `<blob-name>` 占位符值替换为要为生成的 blob 提供的名称（例如：`index.html`）。
+
+---
+
+## <a name="find-the-website-url-by-using-the-azure-portal"></a>使用 Azure 门户查找网站 URL
+
+可以在浏览器中使用网站的公共 URL 来查看网站的页面。
+
+### <a name="portal"></a>[门户](#tab/azure-portal)
+
+<a id="portal-find-url" />
+
+在存储帐户的帐户概述页旁边显示的窗格中，选择“静态网站”  。 你的站点的 URL 显示在“主终结点”  字段中。
+
+![Azure 存储静态网站指标 - 指标](./media/storage-blob-static-website/storage-blob-static-website-url.png)
+
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+<a id="cli-find-url" />
+
+使用以下命令查找静态网站的公共 URL：
+
+```azurecli
+az storage account show -n <storage-account-name> -g <resource-group-name> --query "primaryEndpoints.web" --output tsv
+```
+
+* 将 `<storage-account-name>` 占位符值替换为存储帐户的名称。
+
+* 将 `<resource-group-name>` 占位符值替换为资源组的名称。
+
+### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 <a id="powershell-find-url" />
 
-### <a name="find-the-website-url-by-using-powershell"></a>使用 PowerShell 查找网站 URL
-
-可以在浏览器中使用网站的公共 URL 来查看内容。
-
-可以使用以下命令查找 URL：
+使用以下命令查找静态网站的公共 URL：
 
 ```powershell
  $storageAccount = Get-AzStorageAccount -ResourceGroupName "<resource-group-name>" -Name "<storage-account-name>"
@@ -180,9 +225,9 @@ Write-Output $storageAccount.PrimaryEndpoints.Web
 
 * 将 `<storage-account-name>` 占位符值替换为存储帐户的名称。
 
-<a id="metrics" />
-
 ---
+
+<a id="metrics" />
 
 ## <a name="enable-metrics-on-static-website-pages"></a>在静态网站页面上启用指标
 

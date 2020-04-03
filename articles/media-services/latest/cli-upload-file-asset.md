@@ -13,28 +13,29 @@ ms.topic: sample
 ms.tgt_pltfrm: multiple
 ms.workload: na
 origin.date: 05/01/2019
-ms.date: 01/20/2020
+ms.date: 04/06/2020
 ms.author: v-jay
-ms.openlocfilehash: c0b4af4faaa77437f3e4c15c37863c4b82c9365a
-ms.sourcegitcommit: 779d674e865b23ae417eb492efca7508675b8ba6
+ms.openlocfilehash: 290fc67c916396a30cccc9d560ace5cf3c414b29
+ms.sourcegitcommit: fe9ed98aaee287a21648f866bb77cb6888f75b0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75939783"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80625715"
 ---
-# <a name="cli-example-upload-a-local-file-to-a-container"></a>CLI 示例：将本地文件上传到容器 
+# <a name="azure-cli-example-upload-a-local-file-to-a-container"></a>Azure CLI 示例：将本地文件上传到容器
 
 本文中的 Azure CLI 脚本演示如何将本地文件上传到存储容器。
 
-## <a name="prerequisites"></a>必备条件 
+## <a name="prerequisites"></a>先决条件
 
-[创建媒体服务帐户](create-account-cli-how-to.md)。
+* [创建媒体服务帐户](create-account-cli-how-to.md)。
+* 查看[管理资产](manage-asset-concept.md)。
 
 [!INCLUDE [media-services-cli-instructions.md](../../../includes/media-services-cli-instructions.md)]
 
 ## <a name="example-script"></a>示例脚本
 
-```Azure CLI 
+```azurecli
 #!/bin/bash
 # Update the following variables for your own settings:
 $storageAccountName=build2018storage

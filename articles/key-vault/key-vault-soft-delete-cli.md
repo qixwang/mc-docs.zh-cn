@@ -8,14 +8,14 @@ ms.service: key-vault
 ms.subservice: general
 ms.topic: tutorial
 origin.date: 08/12/2019
-ms.date: 03/16/2020
+ms.date: 03/30/2020
 ms.author: v-tawe
-ms.openlocfilehash: d692bc0a7b72f820453dcaf28bdc72ab6dea2f36
-ms.sourcegitcommit: 764b3d26aedce2de0e1948468a706fd3204a3d5e
+ms.openlocfilehash: 76e8cd3c51c4a427662307198948ae3d725a6066
+ms.sourcegitcommit: 5fb45da006859215edc8211481f13174aa43dbeb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2020
-ms.locfileid: "79543363"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80634335"
 ---
 # <a name="how-to-use-key-vault-soft-delete-with-cli"></a>如何将 Key Vault 软删除与 CLI 配合使用
 
@@ -234,13 +234,13 @@ az keyvault purge --location chinanorth --name ContosoVault
 
 若要在创建保管库时同时启用软删除和清除保护，请使用 [az keyvault create](/cli/keyvault?view=azure-cli-latest#az-keyvault-create) 命令：
 
-```
+```azurecli
 az keyvault create --name ContosoVault --resource-group ContosoRG --location chinanorth --enable-soft-delete true --enable-purge-protection true
 ```
 
 若要向现有保管库（已启用软删除）添加清除保护，请使用 [az keyvault update](/cli/keyvault?view=azure-cli-latest#az-keyvault-update) 命令：
 
-```
+```azurecli
 az keyvault update --name ContosoVault --resource-group ContosoRG --enable-purge-protection true
 ```
 

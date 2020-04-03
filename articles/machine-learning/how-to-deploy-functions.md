@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.author: v-yiso
 author: vaidyas
 ms.reviewer: larryfr
-origin.date: 11/22/2019
+origin.date: 03/06/2020
 ms.date: 03/09/2020
-ms.openlocfilehash: dc11b7a8772a665f7ec24d81dc7774f2aa251756
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.openlocfilehash: 4393048e85c3cf60f23f3d79a46a15695aae7dd0
+ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78155058"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80343569"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-functions-preview"></a>将机器学习模型部署到 Azure Functions（预览版）
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -149,10 +149,10 @@ print(blob.location)
 
     ```azurecli
     az group create --name myresourcegroup --location "West Europe"
-    az appservice plan create --name myplanname --resource-group myresourcegroup --sku EP1 --is-linux
+    az appservice plan create --name myplanname --resource-group myresourcegroup --sku B1 --is-linux
     ```
 
-    在此示例中，使用了 _Linux 高级_定价层 (`--sku EP1`)。
+    此示例使用了“Linux 基本”  定价层级 (`--sku B1`)。
 
     > [!IMPORTANT]
     > Azure 机器学习创建的映像使用 Linux，因此必须使用 `--is-linux` 参数。
@@ -160,7 +160,7 @@ print(blob.location)
 1. 创建要用于 Web 作业存储的存储帐户并获取其连接字符串。 将 `<webjobStorage>` 替换为要使用的名称。
 
     ```azurecli
-    az storage account create --name triggerStorage --location westeurope --resource-group myresourcegroup --sku Standard_LRS
+    az storage account create --name <webjobStorage> --location westeurope --resource-group myresourcegroup --sku Standard_LRS
     ```
     ```azurecli
     az storage account show-connection-string --resource-group myresourcegroup --name <webJobStorage> --query connectionString --output tsv
@@ -206,7 +206,7 @@ print(blob.location)
     ```
     保存返回的值，它将在下一步中用作 `imagetag`。
 
-1. 若要为函数应用提供访问容器注册表所需的凭据，请使用以下命令。 将 `<app-name>` 替换为要使用的名称。 将 `<acrinstance>` 和 `<imagetag>` 替换为上一步中 AZ CLI 调用中的值。 将 `<username>` 和 `<password>` 替换为之前检索到的 ACR 登录信息：
+1. 若要为函数应用提供访问容器注册表所需的凭据，请使用以下命令。 将 `<app-name>` 替换为函数应用的名称。 将 `<acrinstance>` 和 `<imagetag>` 替换为上一步中 AZ CLI 调用中的值。 将 `<username>` 和 `<password>` 替换为之前检索到的 ACR 登录信息：
 
     ```azurecli
     az functionapp config container set --name <app-name> --resource-group myresourcegroup --docker-custom-image-name <acrinstance>.azurecr.io/package:<imagetag> --docker-registry-server-url https://<acrinstance>.azurecr.io --docker-registry-server-user <username> --docker-registry-server-password <password>
@@ -247,6 +247,52 @@ print(blob.location)
 
 > [!IMPORTANT]
 > 加载映像可能需要几分钟时间。 可以使用 Azure 门户监视进度。
+
+## <a name="test-the-deployment"></a>测试部署
+
+加载映像并且应用可用后，使用以下步骤来触发应用：
+
+1. 创建一个文本文件，使其包含 score.py 文件所需的数据。 以下示例中的 score.py 需要其中包含 10 个数字的数组：
+
+    ```json
+    {"data": [[1, 2, 3, 4, 5, 6, 7, 8, 9, 10], [10, 9, 8, 7, 6, 5, 4, 3, 2, 1]]}
+    ```
+
+    > [!IMPORTANT]
+    > 数据的格式取决于你的 score.py 和模型所需的内容。
+
+2. 使用以下命令将此文件上传到之前创建的触发器存储 blob 中的输入容器。 将 `<file>` 替换为包含数据的文件的名称。 将 `<triggerConnectionString>` 替换为先前返回的连接字符串。 在此示例中，`input` 是前面创建的输入容器的名称。 如果你使用了其他名称，请替换此值：
+
+    ```azurecli
+    az storage blob upload --container-name input --file <file> --name <file> --connection-string <triggerConnectionString>
+    ```
+
+    此命令的输出类似于以下 JSON：
+
+    ```json
+    {
+    "etag": "\"0x8D7C21528E08844\"",
+    "lastModified": "2020-03-06T21:27:23+00:00"
+    }
+    ```
+
+3. 若要查看函数生成的输出，请使用以下命令列出生成的输出文件。 将 `<triggerConnectionString>` 替换为先前返回的连接字符串。 在此示例中，`output` 是前面创建的输出容器的名称。 如果你使用了其他名称，请替换此值：
+
+    ```azurecli
+    az storage blob list --container-name output --connection-string <triggerConnectionString> --query '[].name' --output tsv
+    ```
+
+    此命令的输出类似于 `sample_input_out.json`。
+
+4. 若要下载文件并检查内容，请使用以下命令。 将 `<file>` 替换为上一命令返回的文件名。 将 `<triggerConnectionString>` 替换为先前返回的连接字符串： 
+
+    ```azurecli
+    az storage blob download --container-name output --file <file> --name <file> --connection-string <triggerConnectionString>
+    ```
+
+    在该命令完成后，打开文件。 它包含模型返回的数据。
+
+有关使用 blob 触发器的详细信息，请参阅[创建 Azure Blob 存储触发的函数](/azure/azure-functions/functions-create-storage-blob-triggered-function)一文。
 
 ## <a name="next-steps"></a>后续步骤
 

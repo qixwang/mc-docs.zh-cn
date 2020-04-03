@@ -6,15 +6,14 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-origin.date: 10/29/2019
-ms.date: 03/02/2020
-ms.author: v-yiso
-ms.openlocfilehash: b4b8ee4bf231d7ecccdce76784184f0c18d34791
-ms.sourcegitcommit: 46fd4297641622c1984011eac4cb5a8f6f94e9f5
+ms.date: 10/29/2019
+ms.author: hrasheed
+ms.openlocfilehash: 724c71e39da3543b41695242d69e9304a75f31b9
+ms.sourcegitcommit: 5fb45da006859215edc8211481f13174aa43dbeb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77563566"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80634624"
 ---
 # <a name="set-up-hdinsight-clusters-with-a-custom-ambari-db"></a>设置包含自定义 Ambari DB 的 HDInsight 群集
 
@@ -58,7 +57,7 @@ Apache Ambari 简化了 Apache Hadoop 群集的管理和监视。 Ambari 提供�
 
 可以使用 Azure CLI 开始部署。 请将 `<RESOURCEGROUPNAME>` 替换为要在其中部署群集的资源组。
 
-```azure-cli
+```azurecli
 az group deployment create --name HDInsightAmbariDBDeployment \
     --resource-group <RESOURCEGROUPNAME> \
     --template-file azuredeploy.json \

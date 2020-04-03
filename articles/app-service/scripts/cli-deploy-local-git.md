@@ -7,15 +7,15 @@ ms.assetid: 048f98aa-f708-44cb-9b9e-953f67dc6da8
 ms.devlang: azurecli
 ms.topic: sample
 origin.date: 12/11/2017
-ms.date: 01/13/2020
+ms.date: 03/30/2020
 ms.author: v-tawe
-ms.custom: mvc
-ms.openlocfilehash: b912766032f6c56e3ab2a8813d427988a2335bb3
-ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
+ms.custom: mvc, seodec18
+ms.openlocfilehash: 04c064c705f1f45cb6b930fd66e8c67249a0fb51
+ms.sourcegitcommit: 44d3fe59952847e5394bbe6c05bd6f333bb56345
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75600339"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80522109"
 ---
 # <a name="create-an-app-service-app-and-deploy-code-from-a-local-git-repository-using-azure-cli"></a>使用 Azure CLI 从本地 Git 存储库创建应用服务应用并部署代码
 

@@ -1,24 +1,23 @@
 ---
-title: Azure VPN 网关：创建和管理网关：教程
+title: 教程 - 使用 Azure VPN 网关创建和管理网关
 description: 教程 - 使用 Azure PowerShell 模块创建和管理 VPN 网关
 services: vpn-gateway
 author: WenJason
 ms.service: vpn-gateway
 ms.topic: tutorial
-origin.date: 11/04/2019
-ms.date: 12/02/2019
+origin.date: 03/11/2020
+ms.date: 04/06/2020
 ms.author: v-jay
-ms.custom: mvc
-ms.openlocfilehash: 3d00357c084e409952f80d4c7410933b3e59929b
-ms.sourcegitcommit: fac243483f641e1d01646a30197522a60599d837
+ms.openlocfilehash: 4aba1e3300dd26c49c97578bff9017af65ae97d3
+ms.sourcegitcommit: 5fb45da006859215edc8211481f13174aa43dbeb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74552981"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80634562"
 ---
 # <a name="tutorial-create-and-manage-a-vpn-gateway-using-powershell"></a>教程：使用 PowerShell 创建和管理 VPN 网关
 
-Azure VPN 网关在客户本地与 Azure 之间提供跨界连接。 本教程介绍了基本的 Azure VPN 网关部署项目，例如创建和管理 VPN 网关。 学习如何：
+Azure VPN 网关在客户本地与 Azure 之间提供跨界连接。 本教程介绍了基本的 Azure VPN 网关部署项目，例如创建和管理 VPN 网关。 你将学习如何执行以下操作：
 
 > [!div class="checklist"]
 > * 创建 VPN 网关
@@ -30,9 +29,9 @@ Azure VPN 网关在客户本地与 Azure 之间提供跨界连接。 本教程�
 
 ![VNet 和 VPN 网关](./media/vpn-gateway-tutorial-create-gateway-powershell/vnet1-gateway.png)
 
-### <a name="azure-powershell"></a>Azure PowerShell
+### <a name="working-with-azure-powershell"></a>使用 Azure PowerShell
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+[!INCLUDE [working with Powershell](../../includes/vpn-gateway-powershell-locally.md)]
 
 ## <a name="common-network-parameter-values"></a>通用网络参数值
 
@@ -184,7 +183,7 @@ Remove-AzResourceGroup -Name $RG1
 > * 调整 VPN 网关大小
 > * 重置 VPN 网关
 
-转到以下教程来了解 S2S、VNet 到 VNet 和 P2S 连接。
+若要了解 S2S 连接、VNet 到 VNet 连接和 P2S 连接，请转到以下教程。
 
 > [!div class="nextstepaction"]
 > * [创建 S2S 连接](vpn-gateway-tutorial-vpnconnection-powershell.md)

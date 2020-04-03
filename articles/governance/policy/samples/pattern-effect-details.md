@@ -2,15 +2,15 @@
 title: 模式：策略定义的效果
 description: 此 Azure Policy 模式通过示例介绍了如何使用策略定义的不同效果。
 origin.date: 01/31/2020
-ms.date: 03/09/2020
+ms.date: 03/30/2020
 ms.author: v-tawe
 ms.topic: sample
-ms.openlocfilehash: 4f985df2d71a74399547fb20a6f8691893ca657f
-ms.sourcegitcommit: 303a16c7117b6f3495ef0493b4ae8ccb67d7dbba
+ms.openlocfilehash: 372c0b8b48ce3072fa696d12a38aa014503e7110
+ms.sourcegitcommit: 260800ede66f48c886d1426a0fac18b4d402b4f2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80342357"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586811"
 ---
 # <a name="azure-policy-pattern-effects"></a>Azure Policy 模式：效果
 
@@ -94,7 +94,7 @@ Azure Policy 有很多[效果](../concepts/effects.md)，这些效果决定了�
 }
 ```
 
-**modify** 效果需要 **policyRule.then.details** 块，该块定义 **roleDefinitionIds** 和 **operations**。 这些参数会告知 Azure Policy 需要哪些角色才能添加标记和修正资源，以及要执行哪项 **modify** 操作。 在此示例中，**operation** 为 _add_，参数用于设置标记和值。
+modify  效果需要 policyRule.then.details  块，该块定义 roleDefinitionIds  和 operations  。 这些参数会告知 Azure Policy 需要哪些角色才能添加标记和修正资源，以及要执行哪项 **modify** 操作。 在此示例中，**operation** 为 _add_，参数用于设置标记和值。
 
 ## <a name="sample-2-complex-effect"></a>示例 2：复杂效果
 

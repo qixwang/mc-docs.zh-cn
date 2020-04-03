@@ -12,13 +12,13 @@ metadata:
   author: spelluru
   ms.author: v-tawe
   origin.date: 01/29/2020
-  ms.date: 03/09/2020
-  ms.openlocfilehash: 4c3bbe7d8026ed412314fee4f1944d5a7b72e53f
-  ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+  ms.date: 03/30/2020
+  ms.openlocfilehash: e55fb4539abf3f2edfaf3f4d2100a30312f58a6d
+  ms.sourcegitcommit: 260800ede66f48c886d1426a0fac18b4d402b4f2
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 02/28/2020
-  ms.locfileid: "78155107"
+  ms.lasthandoff: 04/02/2020
+  ms.locfileid: "80586818"
 landingContent:
 - title: 关于事件中心
   linkLists:

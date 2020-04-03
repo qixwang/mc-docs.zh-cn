@@ -5,15 +5,15 @@ ms.assetid: 0b4d7d0e-e984-49a1-a57a-3c0caa955f0e
 ms.devlang: nodejs
 ms.topic: tutorial
 origin.date: 05/04/2017
-ms.date: 03/23/2020
+ms.date: 03/30/2020
 ms.author: v-tawe
 ms.custom: mvc, cli-validate, seodec18
-ms.openlocfilehash: 56b5486d823225a77aad2d45cac4ee6a54b0aded
-ms.sourcegitcommit: d5eca3c6b03b206e441b599e5b138bd687a91361
+ms.openlocfilehash: 80ba9cafcf6faff36d33dd3b0595da09f4d35333
+ms.sourcegitcommit: 44d3fe59952847e5394bbe6c05bd6f333bb56345
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78934715"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80522086"
 ---
 # <a name="tutorial-build-a-nodejs-and-mongodb-app-in-azure"></a>教程：在 Azure 中生成 Node.js 和 MongoDB 应用
 

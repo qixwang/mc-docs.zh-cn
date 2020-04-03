@@ -9,14 +9,14 @@ author: WenJason
 ms.author: v-jay
 ms.reviewer: vanto
 origin.date: 02/11/2020
-ms.date: 03/16/2020
+ms.date: 03/30/2020
 ms.custom: azure-synapse
-ms.openlocfilehash: 0ce1600b96c5a974d913956c97380a282f969e85
-ms.sourcegitcommit: dc862610e2169c1fce6fb0ae9eb7dd7567f86a0a
+ms.openlocfilehash: a075f3f59e57fae9bf1a56e4d10f9e110cfa7e8c
+ms.sourcegitcommit: 90660563b5d65731a64c099b32fb9ec0ce2c51c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79293751"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80341844"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>SQL 数据库审核入门
 
@@ -30,7 +30,7 @@ ms.locfileid: "79293751"
 > [!NOTE] 
 > 本主题适用于 Azure SQL 服务器，同时也适用于在 Azure SQL 服务器中创建的 SQL 数据库和 Azure Synapse Analytics 数据库。 为简单起见，在提到 SQL 数据库和 Azure Synapse 时，本文统称 SQL 数据库。
 
-## <a id="subheading-1"></a>Azure SQL 数据库审核概述
+## <a name="azure-sql-database-auditing-overview"></a><a id="subheading-1"></a>Azure SQL 数据库审核概述
 
 可使用 SQL 数据库审核来：
 
@@ -43,11 +43,12 @@ ms.locfileid: "79293751"
 >
 > - 支持所有存储类型（v1、v2、blob）。
 > - 支持所有存储复制配置。
+> - 支持位于虚拟网络和防火墙后面的存储。
 > - 目前不支持高级存储   。
 > - **Azure Data Lake Storage Gen2 存储帐户**的**分层命名空间**目前**不受支持**。
 > - 不支持在已暂停的 **Azure SQL 数据仓库**上启用审核。 若要启用审核，请恢复数据仓库。
    
-## <a id="subheading-8"></a>定义服务器级和数据库级审核策略
+## <a name="define-server-level-vs-database-level-auditing-policy"></a><a id="subheading-8"></a>定义服务器级和数据库级审核策略
 
 可为特定数据库定义审核策略，也可将审核策略定义为默认服务器策略：
 
@@ -64,7 +65,7 @@ ms.locfileid: "79293751"
    >
    > 否则，建议仅启用服务器级 blob 审核，并对所有数据库禁用数据库级审核。
 
-## <a id="subheading-2"></a>为服务器设置审核
+## <a name="set-up-auditing-for-your-server"></a><a id="subheading-2"></a>为服务器设置审核
 
 以下部分介绍如何使用 Azure 门户配置审核。
 
@@ -83,12 +84,15 @@ ms.locfileid: "79293751"
 
 5. **新建** - 现在有多个选项，可以用来配置审核日志将写入到的位置。 可将日志写入 Azure 存储帐户、写入 Log Analytics 工作区（供 Azure Monitor 日志使用）或写入事件中心（供事件中心使用）。 可以将这些选项随意组合起来进行配置，审核日志会写入到每一个之中。
   
+   > [!NOTE]
+   > 如果客户希望为服务器级或数据库级审核事件配置不可变的日志存储，则应遵循 [Azure 存储提供的说明](/storage/blobs/storage-blob-immutability-policies-manage#enabling-allow-protected-append-blobs-writes)
+  
    > [!WARNING]
    > 启用在 Log Analytics 中进行审核会根据引入速率产生成本。 请注意，使用此[选项](https://azure.cn/pricing/details/monitor/)会产生相关的成本；或者，可以考虑将审核日志存储在 Azure 存储帐户中。
 
    ![存储选项](./media/sql-database-auditing-get-started/auditing-select-destination.png)
    
-### <a id="audit-storage-destination">审核到存储目标</a>
+### <a name=""></a><a id="audit-storage-destination">审核到存储目标</a>
 
 若要配置将审核日志写入存储帐户的操作，请选择“存储”，打开“存储详细信息”。   依次选择要用于保存日志的 Azure 存储帐户以及保持期。  。 早于保留期的日志会被删除。
 
@@ -98,7 +102,11 @@ ms.locfileid: "79293751"
 
    ![存储帐户](./media/sql-database-auditing-get-started/auditing_select_storage.png)
 
-### <a id="audit-log-analytics-destination">审核到 Log Analytics 目标</a>
+若要在虚拟网络或防火墙下配置存储帐户，你需要是服务器的 [Active Directory 管理员](/sql-database/sql-database-aad-authentication-configure?tabs=azure-powershell#provision-an-azure-active-directory-administrator-for-your-managed-instance)，并且需要在存储帐户上启用“允许受信任的 Microsoft 服务访问此存储帐户”  。 此外，你还需要对所选存储帐户具有“Microsoft.Authorization/roleAssignments/write”权限。
+
+我们建议你成为[用户访问管理员](../role-based-access-control/built-in-roles.md#user-access-administrator)，以便向托管标识授予“存储 blob 数据参与者”角色。 若要详细了解权限和基于角色的访问控制，请参阅[什么是 Azure 资源的基于角色的访问控制 (RBAC)？](../role-based-access-control/overview.md)和[使用 Azure RBAC 和 Azure 门户添加或删除角色分配](../role-based-access-control/role-assignments-portal.md)
+
+### <a name=""></a><a id="audit-log-analytics-destination">审核到 Log Analytics 目标</a>
   
 若要配置将审核日志写入 Log Analytics 工作区的操作，请选择“Log Analytics (预览版)”，并打开“Log Analytics 详细信息”。   选择或创建要将日志写入到其中的 Log Analytics 工作区，然后单击“确定”。 
 
@@ -107,7 +115,7 @@ ms.locfileid: "79293751"
   > [!WARNING]
    > 启用在 Log Analytics 中进行审核会根据引入速率产生成本。 请注意，使用此[选项](https://azure.cn/pricing/details/monitor/)会产生相关的成本；或者，可以考虑将审核日志存储在 Azure 存储帐户中。
 
-### <a id="audit-event-hub-destination">审核到事件中心目标</a>
+### <a name=""></a><a id="audit-event-hub-destination">审核到事件中心目标</a>
 
 > [!IMPORTANT]
 > 不能对已暂停的 SQL 池启用审核。 若要启用审核，请取消暂停 SQL 池。
@@ -119,7 +127,7 @@ ms.locfileid: "79293751"
 
    ![Eventhub](./media/sql-database-auditing-get-started/auditing_select_event_hub.png)
 
-## <a id="subheading-3"></a>分析审核日志和报告
+## <a name="analyze-audit-logs-and-reports"></a><a id="subheading-3"></a>分析审核日志和报告
 
 如果选择将审核日志写入 Azure Monitor 日志：
 
@@ -193,11 +201,11 @@ ms.locfileid: "79293751"
 
     - 使用 PowerShell [查询扩展事件文件](https://sqlscope.wordpress.com/20../../reading-extended-event-files-using-client-side-tools-only/)。
 
-## <a id="subheading-5"></a>生产做法
+## <a name="production-practices"></a><a id="subheading-5"></a>生产做法
 
 <!--The description in this section refers to preceding screen captures.-->
 
-### <a id="subheading-6">审核异地复制的数据库</a>
+### <a name=""></a><a id="subheading-6">审核异地复制的数据库</a>
 
 通过异地复制数据库，在主数据库上启用审核时，辅助数据库将有相同的审核策略。 还可以在独立于主数据库的“辅助服务器”上启用审核，从而在辅助数据库上设置审核。 
 
@@ -209,7 +217,7 @@ ms.locfileid: "79293751"
     >[!IMPORTANT]
     >在数据库级审核中，辅助数据库的存储设置与主数据库相同，因而会导致生成跨区域流量。 建议仅启用服务器级审核，并对所有数据库禁用数据库级审核。
 
-### <a id="subheading-6">重新生成存储密钥</a>
+### <a name=""></a><a id="subheading-6">重新生成存储密钥</a>
 
 在生产环境中，可能会定期刷新存储密钥。 如果向 Azure 存储写入审核日志，则需在刷新密钥时重新保存审核策略。 过程如下：
 
@@ -247,7 +255,10 @@ ms.locfileid: "79293751"
 
 - Azure SQL 数据库审核已针对可用性和性能进行优化。 在活动量极高的情况下，Azure SQL 数据库允许操作继续进行，可能不会记录某些已审核的事件。
 
-## <a id="subheading-7"></a>使用 Azure PowerShell 管理 Azure SQL 服务器和数据库审核
+- 若要在存储帐户上配置不可变的审核，请参阅[允许受保护的追加 blob 写入](../storage/blobs/storage-blob-immutable-storage.md#allow-protected-append-blobs-writes)。 请注意，审核容器名称是 **sqldbauditlogs**。
+
+
+## <a name="manage-azure-sql-server-and-database-auditing-using-azure-powershell"></a><a id="subheading-7"></a>使用 Azure PowerShell 管理 Azure SQL 服务器和数据库审核
 
 **PowerShell cmdlet（包括支持使用 WHERE 子句进行其他筛选）** ：
 
@@ -260,7 +271,7 @@ ms.locfileid: "79293751"
 
 有关脚本示例，请参阅[使用 PowerShell 配置审核和威胁检测](scripts/sql-database-auditing-and-threat-detection-powershell.md)。
 
-## <a id="subheading-8"></a>使用 REST API 管理 Azure SQL 服务器和数据库审核
+## <a name="manage-azure-sql-server-and-database-auditing-using-rest-api"></a><a id="subheading-8"></a>使用 REST API 管理 Azure SQL 服务器和数据库审核
 
 **REST API**：
 
@@ -276,7 +287,7 @@ ms.locfileid: "79293751"
 - [获取数据库扩展  审核策略](https://docs.microsoft.com/rest/api/sql/database%20extended%20auditing%20settings/get)
 - [获取服务器扩展  审核策略](https://docs.microsoft.com/rest/api/sql/server%20auditing%20settings/get)
 
-## <a id="subheading-9"></a>使用 Azure 资源管理器模板管理 Azure SQL 服务器和数据库审核
+## <a name="manage-azure-sql-server-and-database-auditing-using-azure-resource-manager-templates"></a><a id="subheading-9"></a>使用 Azure 资源管理器模板管理 Azure SQL 服务器和数据库审核
 
 可以使用 [Azure 资源管理器](../azure-resource-manager/management/overview.md)模板管理 Azure SQL 数据库审核，如以下示例中所示：
 

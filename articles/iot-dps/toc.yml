@@ -171,48 +171,44 @@
       href: 'https://github.com/Azure/azure-iot-sdk-java'
     - name: 适用于 .NET 的 Azure IoT SDK
       href: 'https://github.com/Azure/azure-iot-sdk-csharp'
-- name: 相关内容
+- name: 资源
   items:
-    - name: 解决方案
-      items:
-        - name: IoT Central
-          href: 'https://docs.microsoft.com/microsoft-iot-central/'
-    - name: 平台服务
+    - name: Azure IoT 服务
       items:
         - name: IoT 中心
           href: /iot-hub
         - name: IoT 中心设备预配服务
           href: /iot-dps
-        - name: IoT 服务 SDK
-          href: '/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
+        - name: IoT Edge
+          href: /iot-edge
         - name: 时序见解
           href: /time-series-insights
-    - name: Edge 解决方案
+    - name: Azure IoT SDK
       items:
-        - name: Azure IoT Edge
-          href: /iot-edge
+        - name: IoT 服务 SDK
+          href: '/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
         - name: IoT 设备 SDK
           href: '/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
-- name: 资源
-  items:
-    - name: '适用于 C# 的 Azure IoT 示例 (.NET)'
-      href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-csharp/'
-    - name: 适用于 Node.js 的 Azure IoT 示例
-      href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-node/'
-    - name: 适用于 Java 的 Azure IoT 示例
-      href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-java/'
-    - name: 适用于 Python 的 Azure IoT 示例
-      href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-python/'
-    - name: 适用于 iOS 平台的 Azure IoT 示例
-      href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-ios/'
-    - name: Azure IoT 中心
-      href: /iot-hub/
+    - name: Azure IoT 示例
+      items:
+        - name: 'C# (.NET)'
+          href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-csharp/'
+        - name: Node.js
+          href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-node/'
+        - name: Java
+          href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-java/'
+        - name: Python
+          href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-python/'
+        - name: iOS 平台
+          href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-ios/'
+    - name: Azure IoT 已认证设备目录
+      href: 'https://catalog.azureiotsolutions.com/'
     - name: Azure IoT 开发人员中心
       href: 'https://docs.azure.cn/develop/iot/'
     - name: 客户数据请求
       href: iot-dps-customer-data-requests.md
-    - name: 设备资源管理器工具
-      href: 'https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer'
+    - name: Azure IoT 资源管理器工具
+      href: 'https://github.com/Azure/azure-iot-explorer'
     - name: iothub-diagnostics 工具
       href: 'https://github.com/Azure/iothub-diagnostics'
     - name: MSDN 论坛

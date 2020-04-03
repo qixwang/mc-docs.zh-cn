@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 origin.date: 03/18/2019
-ms.date: 02/24/2020
+ms.date: 04/06/2020
 ms.author: v-jay
-ms.openlocfilehash: 3393b8d50dbfe7ca627e29f47aa65dae8fafea87
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.openlocfilehash: 449d52ca3d77f3ad4c954a4f1b889e1dfa4f496b
+ms.sourcegitcommit: fe9ed98aaee287a21648f866bb77cb6888f75b0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77540552"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80625736"
 ---
 # <a name="use-azure-ad-authentication-to-access-azure-media-services-api-with-net"></a>使用 Azure AD 身份验证通过 .NET 访问 Azure 媒体服务 API
 
@@ -28,7 +28,7 @@ ms.locfileid: "77540552"
 
 从 windowsazure.mediaservices 4.0.0.4 开始，Azure 媒体服务支持基于 Azure Active Directory (Azure AD) 的身份验证。 本主题介绍如何使用 Azure AD 身份验证通过 Microsoft .NET 访问 Azure 媒体服务 API。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 - 一个 Azure 帐户。 有关详细信息，请参阅 [Azure 试用](https://www.azure.cn/pricing/1rmb-trial/)。 
 - 一个媒体服务帐户。 有关详细信息，请参阅[通过使用 Azure 门户创建 Azure 媒体服务帐户](media-services-portal-create-account.md)。
@@ -48,6 +48,8 @@ ms.locfileid: "77540552"
 要通过 Azure AD 身份验证连接到 Azure 媒体服务 API，客户端应用程序需要请求 Azure AD 访问令牌。 使用媒体服务 .NET 客户端 SDK 时，有关如何获取 Azure AD 访问令牌的诸多详细信息将在 [AzureAdTokenProvider](https://github.com/Azure/azure-sdk-for-media-services/blob/dev/src/net/Client/Common/Common.Authentication/AzureAdTokenProvider.cs) 和 [AzureAdTokenCredentials](https://github.com/Azure/azure-sdk-for-media-services/blob/dev/src/net/Client/Common/Common.Authentication/AzureAdTokenCredentials.cs) 类中进行包装和简化。 
 
 例如，无需提供 Azure AD 主管机构、媒体服务资源 URI 或本机 Azure AD 应用程序详细信息。 这些是已由 Azure AD 访问令牌提供程序类配置的已知值。 
+
+如果不使用 Azure 媒体服务 .NET SDK，我们建议使用 [Azure AD 身份验证库](../../active-directory/azuread-dev/active-directory-authentication-libraries.md)。 要获取用于 Azure AD 身份验证库所需的参数的值，请参阅[使用 Azure 门户访问 Azure AD 身份验证设置](media-services-portal-get-started-with-aad.md)。
 
 还可以选择将 **AzureAdTokenProvider** 的默认实现方式替换为自己的实现方式。
 
@@ -146,6 +148,8 @@ ms.locfileid: "77540552"
 
 还可以指定将 **AzureAdClientCertificate** 作为参数的 **AzureAdTokenCredentials** 构造函数。 
 
+有关如何在表单中创建和配置可由 Azure AD 使用的证书的说明，请参阅[使用证书在守护程序应用中对 Azure AD 进行身份验证 - 手动配置步骤](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential/blob/master/Manual-Configuration-Steps.md)。
+
     var tokenCredentials = new AzureAdTokenCredentials("{YOUR Azure AD TENANT DOMAIN HERE}", 
                                 new AzureAdClientCertificate("{YOUR CLIENT ID HERE}", "{YOUR CLIENT CERTIFICATE THUMBPRINT}"), 
                                 AzureEnvironments.AzureChinaCloudEnvironment);
@@ -189,4 +193,3 @@ ms.locfileid: "77540552"
 ## <a name="next-steps"></a>后续步骤
 
 开始[将文件上传到帐户](media-services-dotnet-upload-files.md)。
-<!--Update_Description: update word & code-->

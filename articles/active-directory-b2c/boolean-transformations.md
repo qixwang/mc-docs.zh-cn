@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/16/2020
+ms.date: 04/01/2020
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: aaed23c492d3208a5dceeea617ed06df629a233e
-ms.sourcegitcommit: 71a386ca0d0ecb79a123399b6ab6b8c70ea2aa78
+ms.openlocfilehash: 46e823a2b7cccb6bf896e5523e391ceb442975d2
+ms.sourcegitcommit: 64584c0bf31b4204058ae2b4641356b904ccdd58
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2020
-ms.locfileid: "79497120"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80581593"
 ---
 # <a name="boolean-claims-transformations"></a>布尔型声明转换
 
@@ -66,7 +66,7 @@ ms.locfileid: "79497120"
 | inputClaim | inputClaim | boolean | 要断言的 ClaimType。 |
 | InputParameter |valueToCompareTo | boolean | 要比较的值（true 或 false）。 |
 
-AssertBooleanClaimIsEqualToValue  声明转换始终从[验证技术配置文件](validation-technical-profile.md)执行，该文件由[自断言技术配置文件](self-asserted-technical-profile.md)调用。 UserMessageIfClaimsTransformationBooleanValueIsNotEqual  自断言技术配置文件元数据控制向用户显示的技术配置文件。
+AssertBooleanClaimIsEqualToValue  声明转换始终从[验证技术配置文件](validation-technical-profile.md)执行，该文件由[自断言技术配置文件](self-asserted-technical-profile.md)调用。 UserMessageIfClaimsTransformationBooleanValueIsNotEqual  自断言技术配置文件元数据控制向用户显示的技术配置文件。 可以将错误消息[本地化](localization-string-ids.md#claims-transformations-error-messages)。
 
 ![AssertStringClaimsAreEqual 执行](./media/boolean-transformations/assert-execution.png)
 

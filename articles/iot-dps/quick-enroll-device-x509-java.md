@@ -10,12 +10,12 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: java
 ms.custom: mvc
-ms.openlocfilehash: 69a1711ee708d44343c4673755bfac289bf994b8
-ms.sourcegitcommit: 4ba6d7c8bed5398f37eb37cf5e2acafcdcc28791
+ms.openlocfilehash: 21fe16561b20e51e8b0340487e47750dbc2103ef
+ms.sourcegitcommit: 260800ede66f48c886d1426a0fac18b4d402b4f2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2020
-ms.locfileid: "79133955"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586802"
 ---
 # <a name="quickstart-enroll-x509-devices-to-the-device-provisioning-service-using-java"></a>快速入门：使用 Java 将 X.509 设备注册到设备预配服务
 
@@ -106,7 +106,7 @@ ms.locfileid: "79133955"
             1. 在 [Azure 门户](https://portal.azure.cn)中导航到已链接到预配服务的 IoT 中心。 打开中心的“概览”选项卡，复制“主机名”。   将该“主机名”  指定给 *IOTHUB_HOST_NAME* 参数。
 
                 ```Java
-                private static final String IOTHUB_HOST_NAME = "[Host name].azure-devices.net";
+                private static final String IOTHUB_HOST_NAME = "[Host name].azure-devices.cn";
                 ```
             2. 为 *DEVICE_ID* 参数指定一个友好名称，并保留 *PROVISIONING_STATUS* 的默认值 *ENABLED*。 
 

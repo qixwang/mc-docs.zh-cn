@@ -4,15 +4,15 @@ description: 了解如何使用 Azure 资源管理器模板快速创建 Kubernet
 services: container-service
 ms.topic: quickstart
 origin.date: 04/19/2019
-ms.date: 03/09/2020
+ms.date: 04/06/2020
 ms.author: v-yeche
-ms.custom: mvc
-ms.openlocfilehash: c5f08f309d00fb78ed2c76ada0a3710f27f3c55e
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.custom: mvc,subject-armqs
+ms.openlocfilehash: f3f22b101bc9bd6f943e4447aba8a511ad5b96e3
+ms.sourcegitcommit: 76280dd9854dc0ff0ba1e5e62fb3dc3af049fbe2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79290829"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80517012"
 ---
 <!--Verify successfully-->
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-an-azure-resource-manager-template"></a>快速入门：使用 Azure 资源管理器模板部署 Azure Kubernetes 服务 (AKS) 群集
@@ -20,6 +20,8 @@ ms.locfileid: "79290829"
 Azure Kubernetes 服务 (AKS) 是可用于快速部署和管理群集的托管式 Kubernetes 服务。 在本快速入门中，我们将使用 Azure 资源管理器模板部署一个 AKS 群集。 该群集中将运行一个包含 Web 前端和 Redis 实例的多容器应用程序。
 
 ![浏览到 Azure Vote 的图像](media/container-service-kubernetes-walkthrough/azure-voting-application.png)
+
+[!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
 本快速入门假设读者基本了解 Kubernetes 的概念。 有关详细信息，请参阅 [Azure Kubernetes 服务 (AKS) 的 Kubernetes 核心概念][kubernetes-concepts]。
 
@@ -39,9 +41,11 @@ Azure Kubernetes 服务 (AKS) 是可用于快速部署和管理群集的托管�
 
 若要访问 AKS 节点，请使用 SSH 密钥对进行连接。 使用 `ssh-keygen` 命令生成 SSH 公钥和私钥文件。 默认情况下，这些文件在 *~/.ssh* 目录中创建。 如果给定的位置存在同名的 SSH 密钥对，则会覆盖这些文件。
 
+<!--Not Available on [https://shell.azure.com](https://shell.azure.com)-->
+
 以下命令使用 RSA 加密和位长度 2048 创建 SSH 密钥对：
 
-```azurecli
+```console
 ssh-keygen -t rsa -b 2048
 ```
 
@@ -71,15 +75,148 @@ az ad sp create-for-rbac --skip-assignment
 
 ## <a name="create-an-aks-cluster"></a>创建 AKS 群集
 
-本快速入门中所用的模板用于[部署 Azure Kubernetes 服务群集](https://github.com/Azure/azure-quickstart-templates/tree/master/101-aks/)。 有关更多 AKS 示例，请参阅 [AKS 快速入门模板][aks-quickstart-templates]站点。
+### <a name="review-the-template"></a>查看模板
 
-<!--MOONCAKE: New Deployment Template released on Azure China-->
+本快速入门中使用的模板来自 [Azure 快速入门模板](https://github.com/Azure/azure-quickstart-templates/tree/master/101-aks/)。
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.1",
+    "parameters": {
+        "clusterName": {
+            "type": "string",
+            "defaultValue":"aks101cluster",
+            "metadata": {
+                "description": "The name of the Managed Cluster resource."
+            }
+        },
+        "location": {
+            "type": "string",
+            "defaultValue": "[resourceGroup().location]",
+            "metadata": {
+                "description": "The location of the Managed Cluster resource."
+            }
+        },
+        "dnsPrefix": {
+            "type": "string",
+            "metadata": {
+                "description": "Optional DNS prefix to use with hosted Kubernetes API server FQDN."
+            }
+        },
+        "osDiskSizeGB": {
+            "type": "int",
+            "defaultValue": 0,
+            "metadata": {
+                "description": "Disk size (in GB) to provision for each of the agent pool nodes. This value ranges from 0 to 1023. Specifying 0 will apply the default disk size for that agentVMSize."
+            },
+            "minValue": 0,
+            "maxValue": 1023
+        },
+        "agentCount": {
+            "type": "int",
+            "defaultValue": 3,
+            "metadata": {
+                "description": "The number of nodes for the cluster."
+            },
+            "minValue": 1,
+            "maxValue": 50
+        },
+        "agentVMSize": {
+            "type": "string",
+            "defaultValue": "Standard_DS2_v2",
+            "metadata": {
+                "description": "The size of the Virtual Machine."
+            }
+        },
+        "linuxAdminUsername": {
+            "type": "string",
+            "metadata": {
+                "description": "User name for the Linux Virtual Machines."
+            }
+        },
+        "sshRSAPublicKey": {
+            "type": "string",
+            "metadata": {
+                "description": "Configure all linux machines with the SSH RSA public key string. Your key should include three parts, for example 'ssh-rsa AAAAB...snip...UcyupgH azureuser@linuxvm'"
+            }
+        },
+        "servicePrincipalClientId": {
+            "metadata": {
+                "description": "Client ID (used by cloudprovider)"
+            },
+            "type": "securestring"
+        },
+        "servicePrincipalClientSecret": {
+            "metadata": {
+                "description": "The Service Principal Client Secret."
+            },
+            "type": "securestring"
+        },
+        "osType": {
+            "type": "string",
+            "defaultValue": "Linux",
+            "allowedValues": [
+                "Linux"
+            ],
+            "metadata": {
+                "description": "The type of operating system."
+            }
+        }        
+    },
+    "resources": [
+        {
+            "apiVersion": "2018-03-31",
+            "type": "Microsoft.ContainerService/managedClusters",
+            "location": "[parameters('location')]",
+            "name": "[parameters('clusterName')]",
+            "properties": {
+                "dnsPrefix": "[parameters('dnsPrefix')]",
+                "agentPoolProfiles": [
+                    {
+                        "name": "agentpool",
+                        "osDiskSizeGB": "[parameters('osDiskSizeGB')]",
+                        "count": "[parameters('agentCount')]",
+                        "vmSize": "[parameters('agentVMSize')]",
+                        "osType": "[parameters('osType')]",
+                        "storageProfile": "ManagedDisks"
+                    }
+                ],
+                "linuxProfile": {
+                    "adminUsername": "[parameters('linuxAdminUsername')]",
+                    "ssh": {
+                        "publicKeys": [
+                            {
+                                "keyData": "[parameters('sshRSAPublicKey')]"
+                            }
+                        ]
+                    }
+                },
+                "servicePrincipalProfile": {
+                    "clientId": "[parameters('servicePrincipalClientId')]",
+                    "Secret": "[parameters('servicePrincipalClientSecret')]"
+                }
+            }
+        }
+    ],
+    "outputs": {
+        "controlPlaneFQDN": {
+            "type": "string",
+            "value": "[reference(parameters('clusterName')).fqdn]"
+        }
+    }
+}
+```
+
+有关更多 AKS 示例，请参阅 [AKS 快速入门模板][aks-quickstart-templates]站点。
+
+### <a name="deploy-the-template"></a>部署模板
 
 1. 选择下图登录到 Azure 并打开一个模板。
 
     [![“部署到 Azure”](./media/kubernetes-walkthrough-rm-template/deploy-to-azure.png)](https://portal.azure.cn/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-aks%2Fazuredeploy.json)
 
-2. 选择或输入以下值。  
+2. 选择或输入以下值。
 
     对于本快速入门，请保留“OS 磁盘大小(GB)”、“代理计数”、“代理 VM 大小”、“OS 类型”和“Kubernetes 版本”的默认值。      为以下模板参数提供自己的值：
 
@@ -98,11 +235,11 @@ az ad sp create-for-rbac --skip-assignment
 
 3. 选择“购买”。 
 
-<!--MOONCAKE: New Deployment Template released on Azure China-->
-
 创建 AKS 群集需要几分钟时间。 等待群集成功部署，然后转到下一步骤。
 
-## <a name="connect-to-the-cluster"></a>连接至群集
+## <a name="validate-the-deployment"></a>验证部署
+
+### <a name="connect-to-the-cluster"></a>连接至群集
 
 若要管理 Kubernetes 群集，请使用 Kubernetes 命令行客户端 [kubectl][kubectl]。 如果使用 Azure 本地 Shell，则 `kubectl` 已安装。 若要在本地安装 `kubectl`，请使用 [az aks install-cli][az-aks-install-cli] 命令：
 
@@ -118,20 +255,20 @@ az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 
 若要验证到群集的连接，请使用 [kubectl get][kubectl-get] 命令返回群集节点列表。
 
-```azurecli
+```console
 kubectl get nodes
 ```
 
 以下示例输出显示在上一步骤中创建的节点。 确保所有节点的状态为“就绪”： 
 
-```
+```output
 NAME                       STATUS   ROLES   AGE     VERSION
 aks-agentpool-41324942-0   Ready    agent   6m44s   v1.12.6
 aks-agentpool-41324942-1   Ready    agent   6m46s   v1.12.6
 aks-agentpool-41324942-2   Ready    agent   6m45s   v1.12.6
 ```
 
-## <a name="run-the-application"></a>运行应用程序
+### <a name="run-the-application"></a>运行应用程序
 
 Kubernetes 清单文件定义群集的所需状态，例如，要运行哪些容器映像。 在本快速入门中，清单用于创建运行 Azure Vote 应用程序所需的所有对象。 此清单包括两个 [Kubernetes 部署][kubernetes-deployment] - 一个用于 Azure Vote Python 示例应用程序，另一个用于 Redis 实例。 此外，还会创建两个 [Kubernetes 服务][kubernetes-service] - 一个内部服务用于 Redis 实例，一个外部服务用于从 Internet 访问 Azure Vote 应用程序。
 
@@ -230,39 +367,39 @@ spec:
 
 使用 [kubectl apply][kubectl-apply] 命令部署应用程序，并指定 YAML 清单的名称：
 
-```azurecli
+```console
 kubectl apply -f azure-vote.yaml
 ```
 
 以下示例输出显示已成功创建了部署和服务：
 
-```
+```output
 deployment "azure-vote-back" created
 service "azure-vote-back" created
 deployment "azure-vote-front" created
 service "azure-vote-front" created
 ```
 
-## <a name="test-the-application"></a>测试应用程序
+### <a name="test-the-application"></a>测试应用程序
 
 应用程序运行时，Kubernetes 服务将向 Internet 公开应用程序前端。 此过程可能需要几分钟才能完成。
 
 若要监视进度，请将 [kubectl get service][kubectl-get] 命令与 `--watch` 参数配合使用。
 
-```azurecli
+```console
 kubectl get service azure-vote-front --watch
 ```
 
 最初，*azure-vote-front* 服务的 *EXTERNAL-IP* 显示为 *pending*。
 
-```
+```output
 NAME               TYPE           CLUSTER-IP   EXTERNAL-IP   PORT(S)        AGE
 azure-vote-front   LoadBalancer   10.0.37.27   <pending>     80:30572/TCP   6s
 ```
 
 当 *EXTERNAL-IP* 地址从 *pending* 更改为实际公共 IP 地址时，请使用 `CTRL-C` 停止 `kubectl` 监视进程。 以下示例输出显示向服务分配了有效的公共 IP 地址：
 
-```
+```output
 azure-vote-front   LoadBalancer   10.0.37.27   52.179.23.131   80:30572/TCP   2m
 ```
 
@@ -270,7 +407,7 @@ azure-vote-front   LoadBalancer   10.0.37.27   52.179.23.131   80:30572/TCP   2m
 
 ![浏览到 Azure Vote 的图像](media/container-service-kubernetes-walkthrough/azure-voting-application.png)
 
-## <a name="delete-cluster"></a>删除群集
+## <a name="clean-up-resources"></a>清理资源
 
 如果不再需要群集，可以使用 [az group delete][az-group-delete] 命令删除资源组、容器服务及所有相关资源。
 
@@ -327,4 +464,4 @@ az group delete --name myResourceGroup --yes --no-wait
 [ssh-keys]: ../virtual-machines/linux/create-ssh-keys-detailed.md
 [az-ad-sp-create-for-rbac]: https://docs.azure.cn/cli/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac
 
-<!--Update_Description: wording update -->
+<!-- Update_Description: update meta properties, wording update, update link -->

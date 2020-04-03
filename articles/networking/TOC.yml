@@ -14,6 +14,8 @@
           href: disaster-recovery-dns-traffic-manager.md
     - name: 规划和设计
       items:
+        - name: 远程工作支持
+          href: working-remotely-support.md
         - name: 虚拟网络
           href: ../virtual-network/virtual-network-vnet-plan-design-arm.md?toc=%2fnetworking%2ftoc.json
         - name: 跨界连接 - VPN
@@ -128,7 +130,5 @@
       href: 'https://www.azure.cn/pricing/calculator/'
     - name: 区域可用性
       href: 'https://www.azure.cn/home/features/products-by-region'
-    - name: MSDN 论坛
-      href: 'https://social.msdn.microsoft.com/Forums/zh-CN/home?forum=windowsazurezhchs'
     - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-virtual-network'

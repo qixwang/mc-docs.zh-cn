@@ -10,13 +10,13 @@ metadata:
   author: DCtheGeek
   ms.author: v-tawe
   origin.date: 11/04/2019
-  ms.date: 12/02/2019
-  ms.openlocfilehash: a9d188a5575196da4a9e17387bfa550ee09ae039
-  ms.sourcegitcommit: 298eab5107c5fb09bf13351efeafab5b18373901
+  ms.date: 03/30/2020
+  ms.openlocfilehash: d93471462f45edf8d45ba1b62b417ff5a4dab7f2
+  ms.sourcegitcommit: 260800ede66f48c886d1426a0fac18b4d402b4f2
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 11/29/2019
-  ms.locfileid: "74657921"
+  ms.lasthandoff: 04/02/2020
+  ms.locfileid: "80586824"
 landingContent:
 - title: 关于 Azure Policy
   linkLists:
@@ -91,11 +91,7 @@ landingContent:
     - text: Azure PowerShell（策略）
       url: https://docs.microsoft.com/powershell/module/az.resources/#policies
     - text: Azure PowerShell（策略见解）
-      url: https://docs.microsoft.com/powershell/module/az.policyinsights#policy_insights
-    - text: 用于 .NET 的 Azure SDK（分配）
-      url: https://docs.microsoft.com/dotnet/api/microsoft.azure.management.resourcemanager.models.policyassignment
-    - text: 用于 .NET 的 Azure SDK（策略定义）
-      url: https://docs.microsoft.com/dotnet/api/microsoft.azure.management.resourcemanager.models.policydefinition
+      url: /powershell/module/az.policyinsights#policy_insights
     - text: REST（策略见解）
       url: https://docs.microsoft.com/rest/api/policy-insights/
     - text: REST（分配）
@@ -106,3 +102,21 @@ landingContent:
       url: https://docs.microsoft.com/rest/api/resources/policysetdefinitions
     - text: Resource Manager 模板
       url: https://docs.microsoft.com/azure/templates/microsoft.authorization/allversions
+- title: 参考（更多）
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: 用于 .NET 的 Azure SDK（分配）
+      url: https://docs.microsoft.com/dotnet/api/microsoft.azure.management.resourcemanager.models.policyassignment
+    - text: 用于 .NET 的 Azure SDK（策略定义）
+      url: https://docs.microsoft.com/dotnet/api/microsoft.azure.management.resourcemanager.models.policydefinition
+    - text: 用于 Node 的 Azure SDK（策略）
+      url: https://docs.microsoft.com/javascript/api/@azure/arm-policy
+    - text: 用于 Node 的 Azure SDK（策略见解）
+      url: https://docs.microsoft.com/javascript/api/@azure/arm-policyinsights
+    - text: 用于 Python 的 Azure SDK（策略）
+      url: https://docs.microsoft.com/python/api/azure-mgmt-resource/azure.mgmt.resource.policy
+    - text: 用于 Python 的 Azure SDK（策略客户端）
+      url: https://docs.microsoft.com/python/api/azure-mgmt-resource/azure.mgmt.resource.policyclient
+    - text: 用于 Python 的 Azure SDK（策略见解）
+      url: https://docs.microsoft.com/python/api/azure-mgmt-policyinsights/azure.mgmt.policyinsights

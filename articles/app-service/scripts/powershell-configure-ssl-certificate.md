@@ -6,15 +6,15 @@ tags: azure-service-management
 ms.assetid: 23e83b74-614a-49a0-bc08-7542120eeec5
 ms.topic: sample
 origin.date: 03/20/2017
-ms.date: 01/13/2020
+ms.date: 03/30/2020
 ms.author: v-tawe
-ms.custom: mvc
-ms.openlocfilehash: f3cf15946a18033b0df416bc45fe43c45e74553a
-ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
+ms.custom: mvc, seodec18
+ms.openlocfilehash: 94cc4e21fa5f2befd31f52684fbf448c50aa209b
+ms.sourcegitcommit: 44d3fe59952847e5394bbe6c05bd6f333bb56345
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75600300"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80522097"
 ---
 # <a name="bind-a-custom-ssl-certificate-to-a-web-app-using-powershell"></a>使用 PowerShell 将自定义 SSL 证书绑定到 Web 应用
 

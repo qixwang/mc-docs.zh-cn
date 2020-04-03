@@ -1,17 +1,16 @@
 ---
 title: 高级查询示例
 description: 使用 Azure Resource Graph 运行一些高级查询，包括使用列、列出使用的标记以及使用正则表达式匹配资源。
-author: DCtheGeek
 ms.author: v-tawe
-origin.date: 12/05/2019
-ms.date: 03/02/2020
+origin.date: 03/20/2020
+ms.date: 03/30/2020
 ms.topic: sample
-ms.openlocfilehash: 74c69e5019a33028d05a474ff5c6b26dae557bb1
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: fea052ab0fc58a78097f08fd4126fb6418edcadb
+ms.sourcegitcommit: 260800ede66f48c886d1426a0fac18b4d402b4f2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79291910"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586776"
 ---
 # <a name="advanced-resource-graph-query-samples"></a>Advanced Resource Graph 查询示例
 
@@ -38,7 +37,7 @@ ms.locfileid: "79291910"
 
 Azure CLI（通过扩展）和 Azure PowerShell（通过模块）支持 Azure 资源图表。 在运行以下任何查询之前，请检查环境是否已准备就绪。 有关安装和验证所选 shell 环境的步骤，请参阅 [Azure CLI](../first-query-azurecli.md#add-the-resource-graph-extension) 和 [Azure PowerShell](../first-query-powershell.md#add-the-resource-graph-module)。
 
-## <a name="a-nameapiversion-show-resource-types-and-api-versions"></a><a name="apiversion" />显示资源类型和 API 版本
+## <a name="show-resource-types-and-api-versions"></a><a name="apiversion" />显示资源类型和 API 版本
 
 在更新过程中，Resource Graph 主要使用资源提供程序的最新非预览版 API 来 `GET` 资源属性。 在某些情况下，会覆盖所使用的 API 版本，以便在结果中提供更多当前或广泛使用的属性。 以下查询详述了用于在每个资源类型上收集属性的 API 版本：
 
@@ -69,7 +68,7 @@ Search-AzGraph -Query "Resources | distinct type, apiVersion | where isnotnull(a
 
 ---
 
-## <a name="a-namevmss-capacity-get-virtual-machine-scale-set-capacity-and-size"></a><a name="vmss-capacity" />获取虚拟机规模集容量和大小
+## <a name="get-virtual-machine-scale-set-capacity-and-size"></a><a name="vmss-capacity" />获取虚拟机规模集容量和大小
 
 此查询将查找虚拟机规模集资源，并获取各种详细信息，包括规模集的虚拟机大小和容量。 此查询使用 `toint()` 函数将容量强制转换为数字以供排序。 最后会将列重命名为自定义命名属性。
 
@@ -101,7 +100,7 @@ Search-AzGraph -Query "Resources | where type=~ 'microsoft.compute/virtualmachin
 
 ---
 
-## <a name="a-nameremove-column-remove-columns-from-results"></a><a name="remove-column" />删除结果中的列
+## <a name="remove-columns-from-results"></a><a name="remove-column" />删除结果中的列
 
 以下查询使用 `summarize` 按订阅对资源进行计数，使用 `join` 将其与 _ResourceContainers_ 表中的订阅详细信息合并，然后使用 `project-away` 删除某些列。
 
@@ -132,7 +131,7 @@ Search-AzGraph -Query "Resources | summarize resourceCount=count() by subscripti
 
 ---
 
-## <a name="a-namelist-all-tags-list-all-tag-names"></a><a name="list-all-tags" />列出所有标记名称
+## <a name="list-all-tag-names"></a><a name="list-all-tags" />列出所有标记名称
 
 此查询以标记开头，并生成一个 JSON 对象，列出所有唯一标记名称及其对应的类型。
 
@@ -162,7 +161,7 @@ Search-AzGraph -Query "Resources | project tags | summarize buildschema(tags)"
 
 ---
 
-## <a name="a-namevm-regex-virtual-machines-matched-by-regex"></a><a name="vm-regex" />按正则表达式匹配的虚拟机
+## <a name="virtual-machines-matched-by-regex"></a><a name="vm-regex" />按正则表达式匹配的虚拟机
 
 此查询查找与某个[正则表达式](https://docs.microsoft.com/dotnet/standard/base-types/regular-expression-language-quick-reference)（称为 _regex_）匹配的虚拟机。 可以使用 **matches regex \@** 定义要匹配的正则表达式，即 `^Contoso(.*)[0-9]+$`。
 该 regex 定义说明如下：
@@ -205,7 +204,7 @@ Search-AzGraph -Query "Resources | where type =~ 'microsoft.compute/virtualmachi
 
 ---
 
-## <a name="a-namemvexpand-cosmosdb-list-cosmos-db-with-specific-write-locations"></a><a name="mvexpand-cosmosdb" />列出具有特定写入位置的 Cosmos DB
+## <a name="list-cosmos-db-with-specific-write-locations"></a><a name="mvexpand-cosmosdb" />列出具有特定写入位置的 Cosmos DB
 
 以下查询限制为 Cosmos DB 资源，使用 `mv-expand` 扩展了 **properties.writeLocations** 的属性包，然后投影了特定字段并将结果进一步限制为 **properties.writeLocations.locationName** 值（与“中国东部”或“中国北部”匹配）。
 
@@ -239,7 +238,7 @@ Search-AzGraph -Query "Resources | where type =~ 'microsoft.documentdb/databasea
 
 ---
 
-## <a name="a-namejoin-key-vault-with-subscription-name"></a><a name="join" />具有订阅名称的密钥保管库
+## <a name="key-vault-with-subscription-name"></a><a name="join" />具有订阅名称的密钥保管库
 
 以下查询显示了 `join` 的复杂用法。 查询将联接表限制为订阅资源并具有 `project`，以仅包括原始字段 _SubscriptionId_ 和重命名为 _SubName_ 的 _name_ 字段。 字段重命名避免了 `join` 将其添加为 _name1_，因为该字段已存在于_资源_中。 原始表使用 `where` 进行筛选，以下 `project` 包括两个表中的列。 查询结果是单个密钥保管库，其中显示密钥保管库的类型、名称以及其所在的订阅的名称。
 
@@ -271,7 +270,7 @@ Search-AzGraph -Query "Resources | join (ResourceContainers | where type=='micro
 
 ---
 
-## <a name="a-namejoin-sql-list-sql-databases-and-their-elastic-pools"></a><a name="join-sql" />列出 SQL 数据库及其弹性池
+## <a name="list-sql-databases-and-their-elastic-pools"></a><a name="join-sql" />列出 SQL 数据库及其弹性池
 
 以下查询使用 **leftouter** `join` 将 SQL 数据库资源及其相关弹性池组合在一起（如果有）。
 
@@ -307,7 +306,7 @@ Search-AzGraph -Query "Resources | where type =~ 'microsoft.sql/servers/database
 
 ---
 
-## <a name="a-namejoin-vmpip-list-virtual-machines-with-their-network-interface-and-public-ip"></a><a name="join-vmpip" />列出具有其网络接口和公共 IP 的虚拟机
+## <a name="list-virtual-machines-with-their-network-interface-and-public-ip"></a><a name="join-vmpip" />列出具有其网络接口和公共 IP 的虚拟机
 
 此查询使用两个 **leftouter** `join` 命令将虚拟机、其相关网络接口以及与这些网络接口相关的任何公共 IP 地址组合在一起。
 
@@ -356,7 +355,7 @@ Search-AzGraph -Query "Resources | where type =~ 'microsoft.compute/virtualmachi
 
 ---
 
-## <a name="a-namejoin-findstoragetag-find-storage-accounts-with-a-specific-tag-on-the-resource-group"></a><a name="join-findstoragetag" />在资源组上查找具有特定标记的存储帐户
+## <a name="find-storage-accounts-with-a-specific-tag-on-the-resource-group"></a><a name="join-findstoragetag" />在资源组上查找具有特定标记的存储帐户
 
 以下查询使用 **inner** `join` 将存储帐户连接到具有指定标记名称和标记值（区分大小写）的资源组。
 
@@ -428,7 +427,7 @@ Search-AzGraph -Query "Resources | where type =~ 'microsoft.storage/storageaccou
 
 ---
 
-## <a name="a-nameunionresults-combine-results-from-two-queries-into-a-single-result"></a><a name="unionresults" />将两个查询的结果合并为单个结果
+## <a name="combine-results-from-two-queries-into-a-single-result"></a><a name="unionresults" />将两个查询的结果合并为单个结果
 
 以下查询使用 `union` 从 _ResourceContainers_ 表中获取结果，并将它们添加到 _Resources_ 表中的结果。
 
@@ -458,7 +457,7 @@ Search-AzGraph -Query "ResourceContainers | where type=='microsoft.resources/sub
 
 ---
 
-## <a name="a-namedisplaynames-include-the-tenant-and-subscription-names-with-displaynames"></a><a name="displaynames" />使用 DisplayNames 包括租户和订阅名称
+## <a name="include-the-tenant-and-subscription-names-with-displaynames"></a><a name="displaynames" />使用 DisplayNames 包括租户和订阅名称
 
 此查询使用新的 **Include** 参数和选项 _DisplayNames_ 将 **subscriptionDisplayName** 和 **tenantDisplayName** 添加到结果中。 此参数仅可用于 Azure CLI 和 Azure PowerShell。
 
@@ -470,9 +469,11 @@ az graph query -q "limit 1" --include displayNames
 Search-AzGraph -Query "limit 1" -Include DisplayNames
 ```
 
+获取订阅名称的替代方法是使用 `join` 运算符并连接到 **ResourceContainers** 表和 `Microsoft.Resources/subscriptions` 类型。 `join` 在 Azure CLI、Azure PowerShell、门户和所有受支持的 SDK 中都可以工作。 有关示例，请参阅[示例 - 带订阅名称的密钥保管库](#join)。
+
 > [!NOTE]
 > 如果查询未使用 **project** 指定返回的属性，则 **subscriptionDisplayName** 和 **tenantDisplayName** 将自动包括在结果中。
-> 如果查询确实使用了 **project**，则每个 _DisplayName_ 字段必须显式包含在 **project** 中，否则它们将不会在结果中返回，即使使用了 **Include** 参数也是如此。
+> 如果查询确实使用了 **project**，则每个 _DisplayName_ 字段必须显式包含在 **project** 中，否则它们将不会在结果中返回，即使使用了 **Include** 参数也是如此。 **Include** 参数对[表](../concepts/query-language.md#resource-graph-tables)不起作用。
 
 ## <a name="next-steps"></a>后续步骤
 

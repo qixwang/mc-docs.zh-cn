@@ -5,17 +5,17 @@ author: kgremban
 manager: philmea
 ms.author: v-tawe
 origin.date: 01/08/2020
-ms.date: 03/16/2020
+ms.date: 03/30/2020
 ms.topic: conceptual
 ms.reviewer: menchi
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: fc60b5c3ae0fc6900dc2e25d4c147c1cdce42357
-ms.sourcegitcommit: 1d3d8dfdaf6281f06640cbee7124a1e8bf102c50
+ms.openlocfilehash: 06cb0a1434dadf8b1a2cac3a343aeae89e247b02
+ms.sourcegitcommit: 260800ede66f48c886d1426a0fac18b4d402b4f2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "80243895"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586675"
 ---
 # <a name="register-an-azure-iot-edge-device"></a>注册 Azure IoT Edge 设备
 

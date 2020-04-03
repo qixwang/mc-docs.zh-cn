@@ -5,15 +5,15 @@ author: ccompy
 ms.assetid: 384cf393-5c63-4ffb-9eb2-bfd990bc7af1
 ms.topic: quickstart
 origin.date: 05/29/2018
-ms.date: 01/13/2020
+ms.date: 03/30/2020
 ms.author: v-tawe
-ms.custom: mvc
-ms.openlocfilehash: 23ba535d82dfc92316db39dcd2f59f9298f1f003
-ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
+ms.custom: mvc, seodec18
+ms.openlocfilehash: a3d4abfdc848d4f94de89a25b614b1f82dd19da7
+ms.sourcegitcommit: 44d3fe59952847e5394bbe6c05bd6f333bb56345
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75600477"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80522067"
 ---
 # <a name="configure-your-app-service-environment-with-forced-tunneling"></a>使用强制隧道配置应用服务环境
 

@@ -8,22 +8,37 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: v-yiso
 author: jpe316
-origin.date: 10/11/2019
+origin.date: 03/05/2020
 ms.date: 03/09/2020
-ms.openlocfilehash: 4a9ce9bc5743e600d54bca576bbe934810af3906
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.openlocfilehash: 453b6d52e99fc5e151407f0dd43f08192c54318d
+ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78154658"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80343219"
 ---
 # <a name="git-integration-for-azure-machine-learning"></a>Azure 机器学习的 Git 集成
 
-[Git](https://git-scm.com/) 是一种常用的版本控制系统，可用于共享和协作处理项目。 在向 Azure 机器学习提交训练作业时，如果训练文件存储在本地 git 存储库中，那么系统会将有关存储库的信息作为训练过程的一部分进行跟踪。
+[Git](https://git-scm.com/) 是一种常用的版本控制系统，可用于共享和协作处理项目。 
+
+Azure 机器学习完全支持用于跟踪工作的 Git 存储库 - 你可以将存储库直接克隆到共享工作区文件系统上，在本地工作站上使用 Git，或者从 CI/CD 管道使用 Git。
+
+在向 Azure 机器学习提交作业时，如果源文件存储在本地 git 存储库中，那么系统会将有关存储库的信息作为训练过程的一部分进行跟踪。
 
 由于 Azure 机器学习会跟踪来自本地 git 存储库的信息，因此它不会绑定到任何特定的中心存储库。 可以从 GitHub、GitLab、Bitbucket、Azure DevOps 或任何其他与 git 兼容的服务克隆存储库。
 
-## <a name="how-does-git-integration-work"></a>Git 集成是如何工作的？
+## <a name="clone-git-repositories-into-your-workspace-file-system"></a>将 Git 存储库克隆到你的工作区文件系统
+Azure 机器学习为工作区中的所有用户提供了一个共享文件系统。
+若要将 Git 存储库克隆到此文件共享，我们建议你创建一个计算实例并打开终端。
+打开终端后，你可以访问完整的 Git 客户端，并可以通过 Git CLI 体验来克隆和使用 Git。
+
+我们建议你将存储库克隆到你的用户目录中，避免与其他人直接在你的工作分支上发生冲突。
+
+你可以克隆你能够向其证明身份的任何 Git 存储库（GitHub、Azure Repos、BitBucket 等）
+
+有关如何使用 Git CLI 的指南，请阅读[此处](https://guides.github.com/introduction/git-handbook/)。
+
+## <a name="track-code-that-comes-from-git-repositories"></a>跟踪来自 Git 存储库的代码
 
 从 Python SDK 或机器学习 CLI 提交训练运行时，训练模型所需的文件将上传到工作区。 如果可在开发环境中使用 `git` 命令，则上传过程会使用该命令检查文件是否存储在 git 存储库中。 如果是，那么 git 存储库中的信息也会作为训练运行的一部分上传。 此信息存储在训练运行的以下属性中：
 

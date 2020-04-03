@@ -10,12 +10,12 @@ origin.date: 03/13/2019
 ms.date: 04/06/2020
 ms.author: robinsh
 ms.custom: mvc
-ms.openlocfilehash: e91b9c77703f4d4c7b3b187a97fe7edceb319820
-ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
+ms.openlocfilehash: 8acaaeb7217b762ee121f20dc9f0757c5bd0ea92
+ms.sourcegitcommit: 5fb45da006859215edc8211481f13174aa43dbeb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80343590"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80634560"
 ---
 # <a name="tutorial-set-up-and-use-metrics-and-diagnostic-logs-with-an-iot-hub"></a>教程：通过 IoT 中心设置和使用指标和诊断日志
 
@@ -121,7 +121,7 @@ az iot hub device-identity show --device-id $iotDeviceName \
 >下面是用于更新扩展的命令。 在 Cloud Shell 实例中运行该命令。
 >
 >```cli
->az extension update --name azure-cli-iot-ext
+>az extension update --name azure-iot
 >```
 
 ## <a name="enable-the-diagnostic-logs"></a>启用诊断日志 

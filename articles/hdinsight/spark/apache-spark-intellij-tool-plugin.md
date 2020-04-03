@@ -10,18 +10,20 @@ ms.topic: conceptual
 origin.date: 09/04/2019
 ms.date: 12/23/2019
 ms.author: v-yiso
-ms.openlocfilehash: 3a687a410193bb1a6fb93f7a3d4ee45dce76eed1
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 5c5b4d6f90dc880d282539ca2f83742bcdf33d7f
+ms.sourcegitcommit: 5fb45da006859215edc8211481f13174aa43dbeb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336170"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80634579"
 ---
-# <a name="tutorial-use-azure-toolkit-for-intellij-to-create-apache-spark-applications-for-an-hdinsight-cluster"></a>教程：使用 Azure Toolkit for IntelliJ 为 HDInsight 群集创建 Apache Spark 应用程序
+# <a name="tutorial-use-azure-toolkit-for-intellij-to-create-apache-spark-applications-for-hdinsight-cluster"></a>教程：使用 Azure Toolkit for IntelliJ 为 HDInsight 群集创建 Apache Spark 应用程序
 
-本教程演示如何使用 Azure Toolkit for IntelliJ 插件开发以 [Scala](https://www.scala-lang.org/) 编写的 Apache Spark 应用程序，并直接从 IntelliJ 集成开发环境 (IDE) 将其提交到 HDInsight Spark 群集。 可按多种方式使用该插件：
+本教程演示如何使用 IntelliJ IDE 的 **Azure 工具包**插件在 Azure HDInsight 上开发 Apache Spark 应用程序。 [Azure HDInsight](../hdinsight-overview.md) 是云中托管的开源分析服务，允许你使用 Hadoop、Apache Spark、Apache Hive 和 Apache Kafka 等开源框架。
 
-* 在 HDInsight Spark 群集中开发和提交 Scala Spark 应用程序。
+可按多种方式使用 **Azure 工具包**插件：
+
+* 开发 Scala Spark 应用程序并将其提交到 HDInsight Spark 群集。
 * 访问 Azure HDInsight Spark 群集资源。
 * 本地开发和运行 Scala Spark 应用程序。
 
@@ -109,6 +111,7 @@ ms.locfileid: "75336170"
 
    d. 主视图中随后会打开 **myApp.scala** 文件。 将默认代码替换为以下代码：  
 
+        ```scala
         import org.apache.spark.SparkConf
         import org.apache.spark.SparkContext
     
@@ -126,6 +129,7 @@ ms.locfileid: "75336170"
             }
     
         }
+        ```
 
     此代码从 HVAC.csv（用于所有 HDInsight Spark 群集）中读取数据，检索在 CSV 的第七列中只有一个数字的行，并将输出写入群集的默认存储容器下的 `/HVACOut`。
 
@@ -219,7 +223,7 @@ ms.locfileid: "75336170"
 
 创建 Scala 应用程序后，可将其提交到群集。
 
-1. 在“项目”中，导航到“myApp” > “src” > “main” > “scala” > “myApp”。       右键单击“myApp”，然后选择“提交 Spark 应用程序”（可能位于列表底部）。  
+1. 从项目中，导航到“myApp” > “src” > “main” > “scala” > “myApp”      。  右键单击“myApp”，然后选择“提交 Spark 应用程序”（可能位于列表底部）。  
     
       ![“将 Spark 应用程序提交到 HDInsight”命令](./media/apache-spark-intellij-tool-plugin/hdi-submit-spark-app-1.png)
 
@@ -231,7 +235,7 @@ ms.locfileid: "75336170"
     |----|----|
     |Spark 群集（仅限 Linux）|选择要在其上运行应用程序的 HDInsight Spark 群集。|
     |选择要提交的项目|保留默认设置。|
-    |Main 类名|默认值是所选文件中的 main 类。 可选择省略号 (...) 并选择其他类来更改类  。|
+    |主类名|默认值是所选文件中的 main 类。 可以通过选择省略号 ( **...** ) 并选择其他类来更改类。|
     |作业配置|可以更改默认的键和/或值。 有关详细信息，请参阅 [Apache Livy REST API](https://livy.incubator.apache.org./docs/latest/rest-api.html)。|
     |命令行参数|如果需要，可为 main 类输入参数并以空格分隔。|
     |引用的 Jar 和引用的文件|可以输入引用的 Jar 和文件（如果有）的路径。 还可以在 Azure 虚拟文件系统中浏览文件，但目前仅支持 ADLS 第 2 代群集。 更多相关信息：[Apache Spark 配置](https://spark.apache.org/docs/latest/configuration.html#runtime-environment)。  另请参阅[如何将资源上传到群集](/storage/blobs/storage-quickstart-blobs-storage-explorer)。|
@@ -243,7 +247,7 @@ ms.locfileid: "75336170"
 
     ![“Spark 提交”对话框](./media/apache-spark-intellij-tool-plugin/hdi-submit-spark-app-02.png)
 
-4. 选择“SparkJobRun”将项目提交到所选群集  。 “群集中的远程 Spark 作业”选项卡在底部显示作业执行进度  。 可通过单击红色按钮来停止应用程序。 若要了解如何访问作业输出，请参阅本文稍后的“使用用于 IntelliJ 的 Azure 工具包访问和管理 HDInsight Spark 群集”部分。  
+4. 选择“SparkJobRun”将项目提交到所选群集  。 底部的“群集中的远程 Spark 任务”选项卡显示作业执行进度  。 通过单击红色按钮，即可停止应用程序。 若要了解如何访问作业输出，请参阅本文稍后的“使用用于 IntelliJ 的 Azure 工具包访问和管理 HDInsight Spark 群集”部分。  
       
      ![“Spark 提交”窗口](./media/apache-spark-intellij-tool-plugin/hdi-spark-app-result.png)
 
@@ -293,71 +297,71 @@ ms.locfileid: "75336170"
 
 2. 在“选择订阅”窗口中，清除不想要访问的订阅旁边的复选框，然后选择“关闭”。  
 
-## <a name="spark-console"></a>Spark Console
-可运行 Spark Local Console(Scala) 或运行 Spark Livy Interactive Session Console(Scala)。
+## <a name="spark-console"></a>Spark 控制台
+可以运行 Spark 本地控制台 (Scala) 或运行 Spark Livy 交互式会话控制台 (Scala)。
 
-### <a name="spark-local-consolescala"></a>Spark Local Console(Scala)
-确保满足 WINUTILS.EXE 先决条件。
+### <a name="spark-local-consolescala"></a>Spark 本地控制台 (Scala)
+确定自己是否满足 WINUTILS.EXE 先决条件。
 
-1. 在菜单栏中，导航到“运行” > “编辑配置...”。  
+1. 从菜单栏中，导航到“运行” > “编辑配置...”   。
 
 2. 在“运行/调试配置”窗口中的左窗格内，导航到“HDInsight 上的 Apache Spark” > “[HDInsight 上的 Spark] myApp”。   
 
-3. 在主窗口中，选择“本地运行”选项卡。 
+3. 在主窗口中，选择“在本地运行”选项卡  。
 
-4. 提供以下值，然后选择“确定”： 
+4. 提供以下值，然后选择“确定”  ：
 
     |属性 |Value |
     |----|----|
-    |作业 main 类|默认值是所选文件中的 main 类。 可选择省略号 (...) 并选择其他类来更改类  。|
-    |环境变量|确保 HADOOP_HOME 的值正确。|
-    |WINUTILS.exe 位置|确保路径正确。|
+    |作业主类|默认值是所选文件中的 main 类。 可以通过选择省略号 ( **...** ) 并选择其他类来更改类。|
+    |环境变量|请确认 HADOOP_HOME 的值是否正确。|
+    |WINUTILS.exe 位置|请确保路径正确。|
 
-    ![Local Console 设置配置](./media/apache-spark-intellij-tool-plugin/console-set-configuration.png)
+    ![本地控制台设置配置](./media/apache-spark-intellij-tool-plugin/console-set-configuration.png)
 
 5. 在“项目”中，导航到“myApp” > “src” > “main” > “scala” > “myApp”。       。  
 
-6. 在菜单栏中，导航到“工具” > “Spark 控制台” > “运行 Spark 本地控制台(Scala)”。   
+6. 从菜单栏中，导航到“工具” > “Spark 控制台” > “运行 Spark 本地控制台(Scala)”    。
 
-7. 此时可能会显示两个对话框，询问是否要自动修复依赖项。 如果已显示，请选择“自动修复”。 
+7. 然后，系统可能会显示两个对话框，询问你是否要自动修复依赖项。 如果出现对话框，请选择“自动修复”  。
 
-    ![Spark 自动修复1](./media/apache-spark-intellij-tool-plugin/intellij-console-autofix1.png)
+    ![Spark 自动修复 1](./media/apache-spark-intellij-tool-plugin/intellij-console-autofix1.png)
 
-    ![Spark 自动修复2](./media/apache-spark-intellij-tool-plugin/intellij-console-autofix2.png)
+    ![Spark 自动修复 2](./media/apache-spark-intellij-tool-plugin/intellij-console-autofix2.png)
 
-8. 控制台应如下图所示。 在控制台窗口中键入 `sc.appName`，然后按 Ctrl+Enter。  随后将显示结果。 可以通过单击红色按钮来终止 Local Console。
+8. 控制台应如下图所示。 在“控制台”窗口中键入 `sc.appName`，然后按 Ctrl+Enter。  系统将显示结果。 可以通过单击红色按钮终止本地控制台。
 
-    ![Local Console 结果](./media/apache-spark-intellij-tool-plugin/local-console-result.png)
+    ![本地控制台结果](./media/apache-spark-intellij-tool-plugin/local-console-result.png)
 
 
-### <a name="spark-livy-interactive-session-consolescala"></a>Spark Livy Interactive Session Console(Scala)
+### <a name="spark-livy-interactive-session-consolescala"></a>Spark Livy 交互式会话控制台 (Scala)
 
-1. 在菜单栏中，导航到“运行” > “编辑配置...”。  
+1. 从菜单栏中，导航到“运行” > “编辑配置...”   。
 
 2. 在“运行/调试配置”窗口中的左窗格内，导航到“HDInsight 上的 Apache Spark” > “[HDInsight 上的 Spark] myApp”。   
 
-3. 在主窗口中，选择“在群集中远程运行”选项卡。 
+3. 在主窗口中，选择“在群集中远程运行”选项卡  。
 
-4. 提供以下值，然后选择“确定”： 
+4. 提供以下值，然后选择“确定”  ：
 
     |属性 |Value |
     |----|----|
     |Spark 群集（仅限 Linux）|选择要在其上运行应用程序的 HDInsight Spark 群集。|
-    |Main 类名|默认值是所选文件中的 main 类。 可选择省略号 (...) 并选择其他类来更改类  。|
+    |主类名|默认值是所选文件中的 main 类。 可以通过选择省略号 ( **...** ) 并选择其他类来更改类。|
 
-    ![Interactive Console 设置配置](./media/apache-spark-intellij-tool-plugin/interactive-console-configuration.png)
+    ![交互式控制台设置配置](./media/apache-spark-intellij-tool-plugin/interactive-console-configuration.png)
 
 5. 在“项目”中，导航到“myApp” > “src” > “main” > “scala” > “myApp”。       。  
 
-6. 在菜单栏中，导航到“工具” > “Spark 控制台” > “运行 Spark Livy 交互式会话控制台(Scala)”。   
+6. 从菜单栏中，导航到“工具” > “Spark 控制台” > “运行 Spark Livy 交互式会话控制台(Scala)”    。
 
-7. 控制台应如下图所示。 在控制台窗口中键入 `sc.appName`，然后按 Ctrl+Enter。  随后将显示结果。 可以通过单击红色按钮来终止 Local Console。
+7. 控制台应如下图所示。 在“控制台”窗口中键入 `sc.appName`，然后按 Ctrl+Enter。  系统将显示结果。 可以通过单击红色按钮终止本地控制台。
 
-    ![Interactive Console 结果](./media/apache-spark-intellij-tool-plugin/interactive-console-result.png)
+    ![交互式控制台结果](./media/apache-spark-intellij-tool-plugin/interactive-console-result.png)
 
 ### <a name="send-selection-to-spark-console"></a>将选定内容发送到 Spark Console
 
-可以通过将一些代码发送到 Local Console 或 Livy Interactive Session Console (Scala) 来方便地预测脚本结果。 可以突出显示 Scala 文件中的一些代码，然后右键单击“将选定内容发送到 Spark Console”。  选定代码将发送到控制台并执行。 结果将显示在控制台中的代码之后。 如果存在错误，则控制台将检查错误。  
+可以通过将一些代码发送到 Local Console 或 Livy Interactive Session Console (Scala) 来方便地预测脚本结果。 可以在 Scala 文件中突出显示一些代码，然后右键单击“向 Spark 控制台发送所选内容”  。 所选代码将被发送到控制台并在其中执行。 结果将显示在控制台中的代码后面。 控制台将检查是否存在错误。  
 
    ![将选定内容发送到 Spark Console](./media/apache-spark-intellij-tool-plugin/send-selection-to-console.png)
 
@@ -447,4 +451,4 @@ ms.locfileid: "75336170"
 本教程介绍了如何使用 Azure Toolkit for IntelliJ 插件开发以 [Scala](https://www.scala-lang.org/) 编写的 Apache Spark 应用程序，并直接从 IntelliJ 集成开发环境 (IDE) 将其提交到 HDInsight Spark 群集。 请转到下一篇文章，了解如何将在 Apache Spark 中注册的数据拉取到 Power BI 等 BI 分析工具中。
 
 > [!div class="nextstepaction"]
-> [使用 BI 工具分析数据](apache-spark-use-bi-tools.md)
+> [使用 Power BI 分析 Apache Spark 数据](apache-spark-use-bi-tools.md)

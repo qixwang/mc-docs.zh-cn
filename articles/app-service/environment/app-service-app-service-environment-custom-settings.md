@@ -5,21 +5,21 @@ author: stefsch
 ms.assetid: 1d1d85f3-6cc6-4d57-ae1a-5b37c642d812
 ms.topic: tutorial
 origin.date: 12/19/2019
-ms.date: 01/13/2020
+ms.date: 03/30/2020
 ms.author: v-tawe
-ms.custom: mvc
-ms.openlocfilehash: f59d3b298e78397f2524d271b3b1d8b9d41f4254
-ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
+ms.custom: mvc, seodec18
+ms.openlocfilehash: 8cf704e24f6502146c2a89ddc0ba9e4dd98622bc
+ms.sourcegitcommit: 44d3fe59952847e5394bbe6c05bd6f333bb56345
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75600483"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80522074"
 ---
 # <a name="custom-configuration-settings-for-app-service-environments"></a>应用服务环境的自定义配置设置
 ## <a name="overview"></a>概述
 由于应用服务环境 (ASE) 对单个客户是隔离的，因此有一些可专门应用于应用服务环境的配置设置。 本文介绍各种可用于应用服务环境的特定自定义设置。
 
-如果没有应用服务环境，请参阅 [How to Create an App Service Environment](create-external-ase.md)（如何创建应用服务环境）。
+如果没有应用服务环境，请参阅 [如何创建应用服务环境](create-external-ase.md)。
 
 可以在新的 **clusterSettings** 属性中使用数组存储应用服务环境自定义设置。 可以在 *hostingEnvironments* Azure Resource Manager 实体的“Properties”字典中找到此属性。
 
@@ -91,7 +91,7 @@ ms.locfileid: "75600483"
 > 
 
 ## <a name="get-started"></a>入门
-Azure 快速入门 Resource Manager 模板站点包含具有[创建应用服务环境](https://azure.microsoft.com/documentation/templates/201-web-app-ase-create/)基本定义的模板。
+Azure 快速入门 Resource Manager 模板站点包含具有 [创建应用服务环境](https://azure.microsoft.com/documentation/templates/201-web-app-ase-create/)基本定义的模板。
 
 <!-- LINKS -->
 

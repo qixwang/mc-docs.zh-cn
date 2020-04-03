@@ -13,14 +13,14 @@ ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 09/25/2017
-ms.date: 02/24/2020
+ms.date: 04/06/2020
 ms.author: v-jay
-ms.openlocfilehash: c87e59bfc006f7344c777634bba16d3c9c35a529
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.openlocfilehash: f667c28891fb36dc0255cdbfba79f4da2035b7e1
+ms.sourcegitcommit: fe9ed98aaee287a21648f866bb77cb6888f75b0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77541152"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80625642"
 ---
 # <a name="deploy-an-internet-facing-load-balancer-solution-with-ipv6-using-a-template"></a>使用模板部署分配了 IPv6 的面向 Internet 的负载均衡器解决方案
 
@@ -51,7 +51,7 @@ Azure 负载均衡器是位于第 4 层 (TCP, UDP) 的负载均衡器。 该负�
 
 ## <a name="deploying-the-template-using-the-azure-portal"></a>使用 Azure 门户部署模板
 
-本文档参考了 [Azure 快速入门模板](https://github.com/Azure/azure-quickstart-templates/blob/master/201-load-balancer-ipv6-create/azuredeploy.json) 库中发布的模板。 可以从库中下载此模板。 本文假设已将模板下载到本地计算机。
+本文档参考了 [Azure 快速入门模板](https://azure.microsoft.com/documentation/templates/201-load-balancer-ipv6-create/) 库中发布的模板。 可以从该库下载模板，或者在 Azure 中直接从库启动部署。 本文假设已将模板下载到本地计算机。
 
 1. 打开 Azure 门户，使用有权在 Azure 订阅中创建 VM 和网络资源的帐户登录。 此外，除非使用现有资源，否则该帐户必须有权创建资源组和存储帐户。
 2. 在菜单中单击“+新建”，并在搜索框中键入“模板”。 在搜索结果中选择“模板部署”。

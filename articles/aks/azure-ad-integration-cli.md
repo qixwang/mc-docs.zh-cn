@@ -4,14 +4,14 @@ description: 了解如何使用 Azure CLI 创建支持 Azure Active Directory �
 services: container-service
 ms.topic: article
 origin.date: 04/16/2019
-ms.date: 03/09/2020
+ms.date: 04/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: 3ce998761947549c3385a7379e75062f9cf47041
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: ad4cda6e0511f79d9bc8cb1acf2404236d02bbbd
+ms.sourcegitcommit: 76280dd9854dc0ff0ba1e5e62fb3dc3af049fbe2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79290822"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80517019"
 ---
 # <a name="integrate-azure-active-directory-with-azure-kubernetes-service-using-the-azure-cli"></a>使用 Azure CLI 将 Azure Active Directory 与 Azure Kubernetes 服务集成
 
@@ -29,9 +29,11 @@ ms.locfileid: "79290822"
 
 需要安装并配置 Azure CLI 2.0.61 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][install-azure-cli]。
 
+<!--Not Available on [https://shell.azure.com](https://shell.azure.com)-->
+
 为了保持一致并帮助运行本文中的命令，请为所需的 AKS 群集名称创建一个变量。 以下示例使用名称 *myakscluster*：
 
-```azurecli
+```console
 aksname="myakscluster"
 ```
 
@@ -154,8 +156,6 @@ az aks create \
     --aad-tenant-id $tenantId
 ```
 
-<!--MOONCAKE: CORRECT TO APPEND --vm-set-type AvailabilitySet Before VMSS feature is valid on Azure China Cloud-->
-
 最后，使用 [az aks get-credentials][az-aks-get-credentials] 命令获取群集管理员凭据。 在以下步骤之一中，你将获取普通用户群集凭据，以查看 Azure AD 身份验证流的运作方式。 
 
 ```azurecli
@@ -192,6 +192,8 @@ subjects:
   name: userPrincipalName_or_objectId
 ```
 
+<!--CORRECT ON   kind: User-->
+
 使用 [kubectl apply][kubectl-apply] 命令创建群集角色绑定，并指定 YAML 清单的文件名：
 
 ```console
@@ -215,8 +217,10 @@ kubectl get pods --all-namespaces
 你将收到一条登录提示，指出在 Web 浏览器中使用 Azure AD 凭据进行身份验证。 成功完成身份验证后，`kubectl` 命令会显示 AKS 群集中的 pod，如以下示例输出中所示：
 
 ```console
-$ kubectl get pods --all-namespaces
+kubectl get pods --all-namespaces
+```
 
+```output
 To sign in, use a web browser to open the page https://aka.ms/deviceloginchina and enter the code BYMK7UXVD to authenticate.
 
 NAMESPACE     NAME                                    READY   STATUS    RESTARTS   AGE
@@ -235,7 +239,7 @@ kube-system   tunnelfront-6ff887cffb-xkfmq            1/1     Running   0       
 
 如果在使用 Web 浏览器成功登录后看到了以下示例输出中所示的授权错误消息，请检查以下问题：
 
-```console
+```output
 error: You must be logged in to the server (Unauthorized)
 ```
 

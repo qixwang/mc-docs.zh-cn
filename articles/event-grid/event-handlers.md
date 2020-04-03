@@ -8,26 +8,18 @@ ms.topic: conceptual
 origin.date: 01/21/2020
 ms.date: 3/16/2020
 ms.author: v-lingwu
-ms.openlocfilehash: d92d0339bec9628c50cbf911259e9135b852a66f
-ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
+ms.openlocfilehash: 9aaa9e8e898c99beb9c4f3a703ecd40fb6832b13
+ms.sourcegitcommit: 78a05172a813b87428b87f3a2695e6bb3ae81ede
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/17/2020
-ms.locfileid: "79452538"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80417384"
 ---
 # <a name="event-handlers-in-azure-event-grid"></a>Azure 事件网格中的事件处理程序
 
 事件处理程序是发送事件的位置。 处理程序将执行一些进一步的操作来处理事件。 会自动将多个 Azure 服务配置为处理事件。 也可以使用任意 Webhook 来处理事件。 Webhook 不需要托管在 Azure 中便可处理事件。 事件网格仅支持 HTTPS WebHook 终结点。
 
 本文提供每个事件处理程序的内容的链接。
-
-## <a name="azure-automation"></a>Azure 自动化
-
-使用 Azure 自动化通过自动化的 Runbook 来处理事件。
-
-|标题  |说明  |
-|---------|---------|
-|[教程：Azure 自动化与事件网格和 Microsoft Teams](ensure-tags-exists-on-new-virtual-machines.md) |创建用于发送事件的虚拟机。 此活动触发一个用于标记虚拟机的自动化 Runbook，并触发一条发送到 Microsoft Teams 频道的消息。 |
 
 ## <a name="azure-functions"></a>Azure Functions
 

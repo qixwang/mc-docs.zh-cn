@@ -6,16 +6,15 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: tutorial
-origin.date: 11/14/2019
-ms.date: 11/21/2019
+ms.date: 03/30/2020
 ms.author: v-junlch
 ms.custom: mvc
-ms.openlocfilehash: 7a4c7b51a93792ee8da80a3c44967d5d594b557f
-ms.sourcegitcommit: fdbd1b6df618379dfeab03044a18c373b5fbb8ec
+ms.openlocfilehash: ff1bbc980c4a20711fa803c03917f5ac14c2a94c
+ms.sourcegitcommit: 64584c0bf31b4204058ae2b4641356b904ccdd58
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74326494"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80581799"
 ---
 # <a name="tutorial-create-an-application-gateway-with-url-path-based-redirection-using-the-azure-cli"></a>教程：通过 Azure CLI 使用基于 URL 路径的重定向创建应用程序网关
 
@@ -285,7 +284,7 @@ done
 
 若要获取应用程序网关的公共 IP 地址，请使用 [az network public-ip show](/cli/network/public-ip#az-network-public-ip-show)。 复制该公共 IP 地址，并将其粘贴到浏览器的地址栏。 例如，`http://40.121.222.19`、`http://40.121.222.19:8080/images/test.htm`、`http://40.121.222.19:8080/video/test.htm` 或 `http://40.121.222.19:8081/images/test.htm`。
 
-```azurepowershell
+```azurecli
 az network public-ip show \
   --resource-group myResourceGroupAG \
   --name myAGPublicIPAddress \
@@ -317,4 +316,3 @@ az group delete --name myResourceGroupAG --location chinanorth
 > [!div class="nextstepaction"]
 > [详细了解应用程序网关的作用](application-gateway-introduction.md)
 
-<!-- Update_Description: update metedata properties -->

@@ -4,15 +4,15 @@ description: 了解如何在 Azure Kubernetes 服务 (AKS) 群集中安装和使
 author: rockboyfor
 ms.topic: article
 origin.date: 02/19/2020
-ms.date: 03/09/2020
+ms.date: 04/06/2020
 ms.author: v-yeche
 zone_pivot_groups: client-operating-system
-ms.openlocfilehash: 1bbfc9b81379bdada7f135ead28988343d139538
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: 8bb7cdb0d5080d593d1dcfe5e74469f0d81e23a4
+ms.sourcegitcommit: 76280dd9854dc0ff0ba1e5e62fb3dc3af049fbe2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79290705"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80517006"
 ---
 <!--CORRECT ON client-operating-system-->
 # <a name="install-and-use-istio-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中安装和使用 Istio
@@ -421,11 +421,11 @@ kubectl delete -f istio-components-aks -R
 [istio-install-download]: https://istio.io/docs/setup/kubernetes/download-release/
 [istio-install-istioctl]: https://istio.io/docs/setup/install/istioctl/
 [istio-configuration-profiles]: https://istio.io/docs/setup/additional-setup/config-profiles/
-[istio-control-plane]: https://istio.io/docs/reference/config/istio.operator.v1alpha12.pb/#IstioControlPlane
+[istio-control-plane]: https://istio.io/docs/reference/config/istio.operator.v1alpha1/
 [istio-bookinfo-example]: https://istio.io/docs/examples/bookinfo/
 
 [istio-feature-stages]: https://istio.io/about/feature-stages/
-[istio-feature-sds]: https://istio.io/docs/tasks/security/auth-sds/
+[istio-feature-sds]: https://istio.io/docs/tasks/traffic-management/ingress/secure-ingress-sds/
 [istio-feature-cni]: https://istio.io/docs/setup/additional-setup/cni/
 
 [install-wsl]: https://docs.microsoft.com/windows/wsl/install-win10

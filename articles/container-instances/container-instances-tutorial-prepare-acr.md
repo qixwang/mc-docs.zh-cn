@@ -3,15 +3,15 @@ title: 教程 - 准备容器注册表以部署映像
 description: Azure 容器实例教程第 2 部分（共 3 部分）- 准备 Azure 容器注册表并推送映像
 ms.topic: tutorial
 origin.date: 12/18/2019
-ms.date: 01/15/2020
+ms.date: 04/06/2020
 ms.author: v-yeche
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 3cc2143ba0c09f243933b5d1823f9796e78979f1
-ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
+ms.openlocfilehash: 460fe0cb051a4b64314361b6fbf0cf77ef70201b
+ms.sourcegitcommit: 76280dd9854dc0ff0ba1e5e62fb3dc3af049fbe2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77067883"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80517026"
 ---
 <!--Verified successfully-->
 # <a name="tutorial-create-an-azure-container-registry-and-push-a-container-image"></a>教程：创建 Azure 容器注册表并推送容器映像
@@ -49,8 +49,7 @@ az acr create --resource-group myResourceGroup --name <acrName> --sku Basic
 
 下面是名为 *mycontainerregistry082* 的新 Azure 容器注册表的示例输出（此处显示的内容已截断）：
 
-```console
-$ az acr create --resource-group myResourceGroup --name mycontainerregistry082 --sku Basic
+```output
 ...
 {
   "creationDate": "2018-03-16T21:54:47.297875+00:00",
@@ -81,10 +80,15 @@ $ az acr create --resource-group myResourceGroup --name mycontainerregistry082 -
 az acr login --name <acrName>
 ```
 
+例如：
+
+```azurecli
+az acr login --name mycontainerregistry082
+```
+
 该命令在完成后返回 `Login Succeeded`：
 
-```console
-$ az acr login --name mycontainerregistry082
+```output
 Login Succeeded
 ```
 
@@ -100,8 +104,11 @@ az acr show --name <acrName> --query loginServer --output table
 
 例如，如果注册表名为 *mycontainerregistry082*：
 
-```console
-$ az acr show --name mycontainerregistry082 --query loginServer --output table
+```azurecli
+az acr show --name mycontainerregistry082 --query loginServer --output table
+```
+
+```output
 Result
 ------------------------
 mycontainerregistry082.azurecr.cn
@@ -168,8 +175,11 @@ az acr repository list --name <acrName> --output table
 
 例如：
 
-```console
-$ az acr repository list --name mycontainerregistry082 --output table
+```azurecli
+az acr repository list --name mycontainerregistry082 --output table
+```
+
+```output
 Result
 ----------------
 aci-tutorial-app
@@ -184,7 +194,7 @@ az acr repository show-tags --name <acrName> --repository aci-tutorial-app --out
 应该会看到与下面类似的输出：
 
 ```console
-$ az acr repository show-tags --name mycontainerregistry082 --repository aci-tutorial-app --output table
+az acr repository show-tags --name mycontainerregistry082 --repository aci-tutorial-app --output table
 Result
 --------
 v1
@@ -228,5 +238,4 @@ v1
 [az-group-create]: https://docs.azure.cn/cli/group?view=azure-cli-latest#az-group-create
 [azure-cli-install]: https://docs.azure.cn/cli/install-azure-cli?view=azure-cli-latest
 
-<!-- Update_Description: new article about container instances tutorial prepare acr -->
-<!--NEW.date: 01/15/2020-->
+<!-- Update_Description: update meta properties, wording update, update link -->

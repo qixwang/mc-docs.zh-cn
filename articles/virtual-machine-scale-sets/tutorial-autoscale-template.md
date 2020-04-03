@@ -1,28 +1,19 @@
 ---
-title: 教程 - 使用 Azure 模板自动缩放规模集 | Microsoft Docs
+title: 教程 - 使用 Azure 模板自动缩放规模集
 description: 了解如何使用 Azure 资源管理器模板随 CPU 需求的增减自动缩放虚拟机规模集
-services: virtual-machine-scale-sets
-documentationcenter: ''
 author: cynthn
-manager: jeconnoc
-editor: ''
 tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machine-scale-sets
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-origin.date: 03/27/2018
-ms.date: 02/12/2019
+ms.date: 03/31/2020
 ms.author: v-junlch
 ms.custom: mvc
-ms.openlocfilehash: 89e4d36b722ea9ca245f3ab2a95fe1e581bfff99
-ms.sourcegitcommit: 24dd5964eafbe8aa4badbca837c2a1a7836f2df7
+ms.openlocfilehash: 3014ded1f110e97a293145eb96432a7f5843fa12
+ms.sourcegitcommit: 64584c0bf31b4204058ae2b4641356b904ccdd58
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56101601"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80581611"
 ---
 # <a name="tutorial-automatically-scale-a-virtual-machine-scale-set-with-an-azure-template"></a>教程：使用 Azure 模板自动缩放虚拟机规模集
 创建规模集时，可定义想运行的 VM 实例数。 若应用程序需要更改，可自动增加或减少 VM 实例数。 通过自动缩放功能，可随客户需求的改变而进行调整，或在应用的整个生命周期内响应应用程序性能更改。 本教程介绍如何执行下列操作：
@@ -64,13 +55,13 @@ ms.locfileid: "56101601"
 
 
 ## <a name="define-a-rule-to-autoscale-out"></a>定义规则，以便自动横向扩展
-如果应用程序需求提高，规模集中 VM 实例上的负载将会增大。 如果这种负载增大持续稳定，而不只是短暂的需求，那么可以配置自动缩放规则来增加规模集中的 VM 实例数。 创建这些 VM 实例及部署应用程序后，规模集会开始通过负载均衡器将流量分配到这些实例和应用程序。 可以控制要监视的指标（例如 CPU 或磁盘）、应用程序负载必须处于给定阈值内的时间，以及要添加到规模集的 VM 实例数。
+如果应用程序需求提高，规模集中 VM 实例上的负载将会增大。 如果这种负载增大持续稳定，而不只是短暂的需求，那么可以配置自动缩放规则来增加规模集中的 VM 实例数。 创建这些 VM 实例并部署应用程序后，规模集会开始通过负载均衡器将流量分配到这些实例和应用程序。 可以控制要监视的指标（例如 CPU 或磁盘）、应用程序负载必须处于给定阈值内的时间，以及要添加到规模集的 VM 实例数。
 
 以下示例中定义了一个规则：当平均 CPU 负载在 5 分钟内均超过 70% 时，就会增加规模集中的 VM 实例数。 触发规则时，VM 实例数增加 3。
 
 此规则使用以下参数：
 
-| 参数         | 说明                                                                                                         | 值           |
+| 参数         | 说明                                                                                                         | Value           |
 |-------------------|---------------------------------------------------------------------------------------------------------------------|-----------------|
 | *metricName*      | 监视和应用规模集操作的性能指标。                                                   | CPU 百分比  |
 | *timeGrain*       | 为进行而收集指标分析的频率。                                                                   | 1 分钟        |
@@ -78,8 +69,8 @@ ms.locfileid: "56101601"
 | *timeWindow*      | 比较指标与阈值之前监视的时长。                                   | 5 分钟       |
 | *operator*        | 用于比较指标数据和阈值的运算符。                                                     | 大于    |
 | *threshold*       | 使自动缩放规则触发操作的值。                                                      | 70%             |
-| direction        | 定义在应用规则的情况下，规模集应横向缩减还是扩展。                                              | 增加        |
-| *类型*            | 表明 VM 实例数应该根据特定值进行更改。                                    | 更改计数    |
+| *direction*       | 定义在应用规则的情况下，规模集应横向缩减还是扩展。                                              | 增加        |
+| *type*            | 表明 VM 实例数应该根据特定值进行更改。                                    | 更改计数    |
 | value            | 应用规则时应减少或增加多少 VM 实例。                                             | 3               |
 | *cooldown*        | 为使自动缩放操作有时间生效，再次应用规则前需要等待的时间。 | 5 分钟       |
 
@@ -182,13 +173,13 @@ az vmss list-instance-connection-info \
 
 通过 SSH 连接到第一个 VM 实例。 使用 `-p` 参数指定自己的公共 IP 地址和端口号，如前述命令所示：
 
-```azurecli
+```console
 ssh azureuser@13.92.224.66 -p 50001
 ```
 
-登录后，安装 **stress** 实用工具。 启动 *10* 个可以生成 CPU 负载的 **stress** 辅助角色。 这些辅助角色运行 *420* 秒，此时间足以让自动缩放规则实施所需的操作。
+登录后，安装 **stress** 实用工具。 启动 10  个生成 CPU 负载的 **stress** 辅助角色。 这些辅助角色运行 *420* 秒，此时间足以让自动缩放规则实施所需的操作。
 
-```azurecli
+```console
 sudo apt-get -y install stress
 sudo stress --cpu 10 --timeout 420 &
 ```
@@ -197,26 +188,26 @@ sudo stress --cpu 10 --timeout 420 &
 
 若要确认 **stress** 是否生成了 CPU 负载，请使用 **top** 实用工具检查活动的系统负载：
 
-```azurecli
+```console
 top
 ```
 
 退出 **top**，然后关闭与 VM 实例的连接。 **stress** 继续在 VM 实例上运行。
 
-```azurecli
+```console
 Ctrl-c
 exit
 ```
 
 连接到第二个 VM 实例，所使用的端口号是前面的 [az vmss list-instance-connection-info](/cli/vmss) 列出的：
 
-```azurecli
+```console
 ssh azureuser@13.92.224.66 -p 50003
 ```
 
 安装并运行 **stress**，然后在这第二个 VM 实例上启动十个辅助角色。
 
-```azurecli
+```console
 sudo apt-get -y install stress
 sudo stress --cpu 10 --timeout 420 &
 ```
@@ -225,7 +216,7 @@ sudo stress --cpu 10 --timeout 420 &
 
 关闭与第二个 VM 实例的连接。 **stress** 继续在 VM 实例上运行。
 
-```azurecli
+```console
 exit
 ```
 
@@ -241,7 +232,7 @@ watch az vmss list-instances \
 
 达到 CPU 阈值以后，自动缩放规则会增加规模集中的 VM 实例数。 以下输出显示，在规模集进行自动横向扩展时创建了 3 个 VM：
 
-```bash
+```output
 Every 2.0s: az vmss list-instances --resource-group myResourceGroup --name myScaleSet --output table
 
   InstanceId  LatestModelApplied    Location    Name          ProvisioningState    ResourceGroup    VmId
@@ -255,7 +246,7 @@ Every 2.0s: az vmss list-instances --resource-group myResourceGroup --name mySca
 
 当 **stress** 在初始 VM 实例上停止后，平均 CPU 负载会回到正常。 另一个 5 分钟后，自动缩放规则会横向缩减 VM 实例数。 横向缩减操作会首先删除 ID 值最高的 VM 实例。 如果规模集使用可用性集，则缩减操作将均匀分布到这些 VM 实例上。 以下示例输出显示，在规模集进行自动横向缩减时删除了一个 VM 实例：
 
-```bash
+```output
            6  True                  chinanorth      myScaleSet_6  Deleting             MYRESOURCEGROUP  9e4133dd-2c57-490e-ae45-90513ce3b336
 ```
 
@@ -284,4 +275,3 @@ az group delete --name myResourceGroup --yes --no-wait
 > [!div class="nextstepaction"]
 > [适用于 Azure CLI 的规模集脚本示例](cli-samples.md)
 
-<!-- Update_Description: link update -->

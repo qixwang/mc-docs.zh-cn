@@ -5,15 +5,15 @@ ms.assetid: 03c584f1-a93c-4e3d-ac1b-c82b50c75d3e
 ms.devlang: csharp
 ms.topic: tutorial
 origin.date: 06/25/2018
-ms.date: 01/13/2020
+ms.date: 03/30/2020
 ms.author: v-tawe
-ms.custom: mvc, devcenter
-ms.openlocfilehash: 5cec1e89a6c1ad177f8c6342babeea7e0bd97b06
-ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
+ms.custom: mvc, devcenter, vs-azure, seodec18
+ms.openlocfilehash: 5f3c2ea5f04551d53a0145e57f14707efa951cc1
+ms.sourcegitcommit: 44d3fe59952847e5394bbe6c05bd6f333bb56345
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75600509"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80522088"
 ---
 # <a name="tutorial-build-an-aspnet-app-in-azure-with-sql-database"></a>教程：使用 SQL 数据库在 Azure 中生成 ASP.NET 应用
 
@@ -125,11 +125,11 @@ ms.locfileid: "75600509"
 
 在“配置 SQL 数据库”  对话框中，单击“SQL Server”  旁的“新建”  。 
 
-此时会生成唯一的服务器名称。 此名称用作逻辑服务器 `<server_name>.database.chinacloudapi.cn` 的默认 URL 的一部分。 在 Azure 的所有逻辑服务器实例中，它必须是唯一的。 可以更改服务器名称，但本教程沿用生成的值。
+此时会生成唯一的服务器名称。 此名称用作逻辑服务器 `<server_name>.database.chinacloudapi.cn` 的默认 URL 的一部分。 在 Azure 的所有逻辑服务器实例中，它必须是唯一的。 可以更改服务器名称，但就本教程来说，请保留生成的值。
 
 添加管理员用户名和密码。 有关密码复杂性要求，请参阅[密码策略](https://docs.microsoft.com/sql/relational-databases/security/password-policy)。
 
-请记住此用户名和密码。 随后，你需要用它们来管理逻辑服务器实例。
+请记住此用户名和密码。 随后，需要用它们来管理逻辑服务器实例。
 
 > [!IMPORTANT]
 > 虽然连接字符串中的密码已在 Visual Studio 和应用服务中受到屏蔽，但由于它实际上是保留在某个位置，因此增加了应用的受攻击面。 应用服务可以使用[托管服务标识](overview-managed-identity.md)，因此根本不需要将机密保留在代码或应用配置中，这样就消除了上述风险。 有关详细信息，请参阅[后续步骤](#next-steps)。
@@ -142,7 +142,7 @@ ms.locfileid: "75600509"
 
 在“配置 SQL 数据库”  对话框中： 
 
-* 保留默认生成的**数据库名称**。
+* 保留默认生成的数据库名称。 
 * 在“连接字符串名称”  中，键入 *MyDbConnection*。 此名称必须与 *Models/MyDatabaseContext.cs* 中引用的连接字符串相匹配。
 * 选择“确定”  。
 
@@ -246,7 +246,7 @@ Update-Database
 
 打开 _Controllers\TodosController.cs_。
 
-在第 52 行找到 `Create()` 方法，并将 `Done` 添加到 `Bind` 特性中的属性列表。 完成后，`Create()` 方法签名应如下面的代码所示：
+在第 52 行找到 `Create()` 方法，并将 `Done` 添加到 `Bind` 特性中的属性列表。 完成后，`Create()` 方法签名如以下代码所示：
 
 ```csharp
 public ActionResult Create([Bind(Include = "Description,CreatedDate,Done")] Todo todo)
@@ -278,7 +278,7 @@ public ActionResult Create([Bind(Include = "Description,CreatedDate,Done")] Todo
 </th>
 ```
 
-查找包含 `Html.ActionLink()` 帮助器方法的 `<td>` 元素。 在此 `<td>` _上面_，使用以下 Razor 代码添加另一个 `<td>` 元素：
+查找包含 `Html.ActionLink()` 帮助器方法的 `<td>` 元素。 在此 `<td>`_上面_，使用以下 Razor 代码添加另一个 `<td>` 元素：
 
 ```csharp
 <td>
@@ -288,7 +288,7 @@ public ActionResult Create([Bind(Include = "Description,CreatedDate,Done")] Todo
 
 这就是要在 `Index` 和 `Create` 视图中查看更改所需的全部操作。 
 
-键入 `Ctrl+F5` 运行应用。
+键入 `Ctrl+F5`，以便运行该应用。
 
 现在可以添加待办事项，然后单击“完成”。  然后，它应作为已完成项在主页中显示。 请记住，`Edit`视图不显示`Done`字段，因为没有更改`Edit`视图。
 

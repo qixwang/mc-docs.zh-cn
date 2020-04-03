@@ -8,12 +8,12 @@ ms.service: data-explorer
 ms.topic: conceptual
 origin.date: 04/24/2019
 ms.date: 03/16/2020
-ms.openlocfilehash: 5c4c3708dbccce572f84fd5ba1c0804dfd488fb3
-ms.sourcegitcommit: 1d3d8dfdaf6281f06640cbee7124a1e8bf102c50
+ms.openlocfilehash: 1f539b0f4e02d232badd2110631c67d97233d35f
+ms.sourcegitcommit: 44d3fe59952847e5394bbe6c05bd6f333bb56345
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "80243979"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521966"
 ---
 # <a name="anomaly-detection-and-forecasting-in-azure-data-explorer"></a>在 Azure 数据资源管理器中进行异常情况检测和预测
 
@@ -32,7 +32,7 @@ Azure 数据资源管理器持续从云服务或 IoT 设备收集遥测数据。
 
 例如，可以使用以下查询分解内部 Web 服务的流量：
 
-<!-- **\[**[**Click to run query**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA3WQ3WrDMAyF7/sUukvCnDXJGIOVPEULuwxqoixm/gm2+jf28JObFjbYrmyho3M+yRCD1a5jaGFAJtaW8qaqX8qqLqvnYrMySYHnvxRNWT1B07xW1U03JFEzbVYDWd9Z/KAuUtAUm9UXpLJcSnAH2+LxPZe3AO9gJ6ZbRjvDGLy9EbG/BUemOXnvLxD1AOJ1mijQtWhbyHbbOgOA9RogkqGeAaXn3g1BooVb6OiDNHpD6CjAUccDGv2JrL0TSzozuQHyPYqHdqRkDKN3aBRwkJaCQJIoQ4VsuXh2A/Xezj5SWkVBWSvI0vSoOSsWpLtEpyDwY4KTW8nnJ5ws+2+eAhSyOxjkd+HDVVcIfHplp2TYTxgYTpqnnDUbarM32gPO86PY4jjqfmGw3vGkftNlCi5xNprbWW5kYvENQQnqDh8CAAA=)**\]** -->
+<!-- **\[**[**Click to run query**](https://dataexplorer.azure.cn/clusters/help/databases/Samples?query=H4sIAAAAAAAAA3WQ3WrDMAyF7/sUukvCnDXJGIOVPEULuwxqoixm/gm2+jf28JObFjbYrmyho3M+yRCD1a5jaGFAJtaW8qaqX8qqLqvnYrMySYHnvxRNWT1B07xW1U03JFEzbVYDWd9Z/KAuUtAUm9UXpLJcSnAH2+LxPZe3AO9gJ6ZbRjvDGLy9EbG/BUemOXnvLxD1AOJ1mijQtWhbyHbbOgOA9RogkqGeAaXn3g1BooVb6OiDNHpD6CjAUccDGv2JrL0TSzozuQHyPYqHdqRkDKN3aBRwkJaCQJIoQ4VsuXh2A/Xezj5SWkVBWSvI0vSoOSsWpLtEpyDwY4KTW8nnJ5ws+2+eAhSyOxjkd+HDVVcIfHplp2TYTxgYTpqnnDUbarM32gPO86PY4jjqfmGw3vGkftNlCi5xNprbWW5kYvENQQnqDh8CAAA=)**\]** -->
 
 ```kusto
 let min_t = datetime(2017-01-05);

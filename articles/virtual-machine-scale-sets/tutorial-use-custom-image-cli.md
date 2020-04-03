@@ -1,28 +1,19 @@
 ---
-title: 教程 - 通过 Azure CLI 使用规模集中的自定义 VM 映像 | Microsoft Docs
+title: 教程 - 通过 Azure CLI 使用规模集中的自定义 VM 映像
 description: 了解如何使用 Azure CLI 来创建可用于部署虚拟机规模集的自定义 VM 映像
-services: virtual-machine-scale-sets
-documentationcenter: ''
 author: cynthn
-manager: jeconnoc
-editor: ''
 tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machine-scale-sets
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-origin.date: 03/27/2018
-ms.date: 10/30/2019
+ms.date: 03/31/2020
 ms.author: v-junlch
 ms.custom: mvc
-ms.openlocfilehash: 967a666b92a1d5f8a9ed2ce6ad18d1926b34a9af
-ms.sourcegitcommit: cb2caa72ec0e0922a57f2fa1056c25e32c61b570
+ms.openlocfilehash: 72296519533437e60266d24958f5bfa974807be8
+ms.sourcegitcommit: 64584c0bf31b4204058ae2b4641356b904ccdd58
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73142088"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80581715"
 ---
 # <a name="tutorial-create-and-use-a-custom-image-for-virtual-machine-scale-sets-with-the-azure-cli"></a>教程：通过 Azure CLI 创建和使用虚拟机规模集的自定义映像
 创建规模集时，需指定部署 VM 实例时要使用的映像。 若要在部署 VM 实例之后减少任务数目，可以使用自定义 VM 映像。 在此自定义 VM 映像中可以完成全部所需的应用程序安装或配置步骤。 在规模集中创建的任何 VM 实例使用自定义 VM 映像，并随时可为应用程序流量提供服务。 本教程介绍如何执行下列操作：
@@ -58,7 +49,7 @@ az vm create `
 
 [az vm create](/cli/vm) 命令的输出中会显示 VM 的公共 IP 地址。 通过 SSH 连接到 VM 的公共 IP 地址，如下所示：
 
-```azurecli
+```console
 ssh azureuser@<publicIpAddress>
 ```
 
@@ -155,7 +146,7 @@ az network public-ip show `
 
 
 ## <a name="clean-up-resources"></a>清理资源
-若要删除规模集和其他资源，请使用 [az group delete](/cli/group) 删除资源组及其所有资源。 `--no-wait` 参数会使光标返回提示符处，不会等待操作完成。 `--yes` 参数将确认是否希望删除资源，不会显示询问是否删除的额外提示。
+若要删除规模集和其他资源，请使用 [az group delete](/cli/group) 删除资源组及其所有资源。 `--no-wait` 参数会使光标返回提示符处，无需等待操作完成。 `--yes` 参数将确认是否希望删除资源，而不会有额外提示。
 
 ```azurecli
 az group delete --name myResourceGroup --no-wait --yes

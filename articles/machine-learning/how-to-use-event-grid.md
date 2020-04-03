@@ -11,25 +11,29 @@ author: shivp950
 ms.reviewer: larryfr
 origin.date: 11/04/2019
 ms.date: 03/16/2020
-ms.openlocfilehash: 53c6048043e0ff62517ad7f27abd3703ddd94c5d
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.openlocfilehash: 3b2bc13e00be18b9c981518a993e53631cc7c0c6
+ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78850197"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80343587"
 ---
 # <a name="create-event-driven-machine-learning-workflows-preview"></a>创建事件驱动的机器学习工作流（预览）
 
-[Azure 事件网格](/event-grid/)支持 Azure 机器学习事件。 例如，可以使用工作区范围内的运行完成、模型注册、模型部署和数据偏移检测中的事件。
+[Azure 事件网格](/event-grid/)支持 Azure 机器学习事件。 你可以在工作区中订阅和使用事件，例如运行状态更改、运行完成、模型注册、模型部署和数据偏移检测。
 
 有关详细信息，请参阅 [Azure 机器学习与事件网格的集成](concept-event-grid-integration.md)和 [Azure 机器学习事件网格架构](/event-grid/event-schema-machine-learning)。
 
 使用事件网格实现常见方案，例如：
 
-* 运行完成后发送电子邮件
+* 在运行失败和运行完成后发送电子邮件
 * 注册模型后使用 azure 函数
 * 将 Azure 机器学习中的事件流式传输到各种终结点
 * 检测到偏移时触发 ML 管道
+
+> [!NOTE] 
+> 目前，只有当运行状态为 **failed** 时才会触发 runStatusChanged 事件
+>
 
 ## <a name="prerequisites"></a>先决条件
 * 对要为其创建事件的 Azure 机器学习工作区具备参与者或所有者访问权限。
@@ -44,7 +48,7 @@ ms.locfileid: "78850197"
 
 1. 选择要使用的事件类型。 例如，以下屏幕截图中已选择“模型注册”、“模型部署”、“运行完成”以及“检测到数据集偏移”     ：
 
-    ![add-event-type](./media/how-to-use-event-grid/add-event-type.png)
+    ![add-event-type](./media/how-to-use-event-grid/add-event-type-updated.png)
 
 1. 选择要将事件发布到的终结点。 以下屏幕截图中选择的终结点是“事件中心”  ：
 
@@ -77,13 +81,17 @@ az eventgrid event-subscription create \
   --subject-begins-with "models/mymodelname"
 ```
 
+## <a name="filter-events"></a>筛选事件
+
+设置事件时，你可以应用筛选器来仅针对特定的事件数据触发。 在下面的示例中，对于运行状态更改事件，你可以按运行类型进行筛选。 仅当满足条件时才会触发该事件。 请参阅 [Azure 机器学习事件网格架构](/azure/event-grid/event-schema-machine-learning)，了解可用作筛选依据的事件数据。 
+
+1. 转到 Azure 门户，选择一个新订阅或现有订阅。 
+
+1. 选择“筛选器”选项卡，向下滚动到“高级筛选器”。 在“键”  和“值”  中，提供要用作筛选依据的属性类型。 在这里，你可以看到，只有当运行类型为管道运行或管道步骤运行时，事件才会触发。  
+
+    :::image type="content" source="media/how-to-use-event-grid/select-event-filters.png" alt-text="筛选事件":::
+
 ## <a name="sample-scenarios"></a>示例方案
-
-### <a name="use-azure-functions-to-deploy-a-model-based-on-tags"></a>使用 Azure Functions 基于标记部署模型
-
-Azure 机器学习模型对象包含一些参数，可以基于这些参数进行部署，例如模型名称、版本、标记和属性。 模型注册事件可触发终结点，你可使用 Azure 函数基于这些参数的值部署模型。
-
-有关示例，请参阅 [https://github.com/Azure-Samples/MachineLearningSamples-NoCodeDeploymentTriggeredByEventGrid](https://github.com/Azure-Samples/MachineLearningSamples-NoCodeDeploymentTriggeredByEventGrid) 存储库，并执行自述文件中的步骤  。
 
 ### <a name="use-a-logic-app-to-send-email-alerts"></a>使用逻辑应用发送电子邮件警报
 
@@ -101,7 +109,7 @@ Azure 机器学习模型对象包含一些参数，可以基于这些参数进�
 
     ![select-event-runcomplete](./media/how-to-use-event-grid/select-event-runcomplete.png)
 
-1. 还可以添加筛选条件，仅对事件类型的某个子集触发逻辑应用。 以下屏幕截图中采用的前缀筛选条件是 /datadriftID/runs/   。
+1. 你可以使用上一部分中的筛选方法，或者添加筛选器以仅对部分事件类型触发逻辑应用。 以下屏幕截图中采用的前缀筛选条件是 /datadriftID/runs/   。
 
     ![filter-events](./media/how-to-use-event-grid/filtering-events.png)
 
@@ -165,6 +173,10 @@ Azure 机器学习模型对象包含一些参数，可以基于这些参数进�
 
 ![view-in-workspace](./media/how-to-use-event-grid/view-in-workspace.png)
 
+
+Azure 机器学习模型对象包含一些参数，可以基于这些参数进行部署，例如模型名称、版本、标记和属性。 模型注册事件可触发终结点，你可使用 Azure 函数基于这些参数的值部署模型。
+
+有关示例，请参阅 [https://github.com/Azure-Samples/MachineLearningSamples-NoCodeDeploymentTriggeredByEventGrid](https://github.com/Azure-Samples/MachineLearningSamples-NoCodeDeploymentTriggeredByEventGrid) 存储库，并执行自述文件中的步骤  。
 
 ## <a name="next-steps"></a>后续步骤
 

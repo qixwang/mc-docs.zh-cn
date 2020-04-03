@@ -8,15 +8,15 @@ ms.service: key-vault
 ms.subservice: secrets
 ms.topic: tutorial
 origin.date: 12/21/2018
-ms.date: 03/16/2020
+ms.date: 03/30/2020
 ms.author: v-tawe
 ms.custom: mvc
-ms.openlocfilehash: b3a8088be74dcad8d742f66c155fcb2d4c576607
-ms.sourcegitcommit: 764b3d26aedce2de0e1948468a706fd3204a3d5e
+ms.openlocfilehash: fc99c39debf9862ab8ef69ebe9676cdffa18b027
+ms.sourcegitcommit: 5fb45da006859215edc8211481f13174aa43dbeb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2020
-ms.locfileid: "79543370"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80634437"
 ---
 # <a name="tutorial-use-a-linux-vm-and-a-net-app-to-store-secrets-in-azure-key-vault"></a>教程：使用 Linux VM 和 .NET 应用在 Azure Key Vault 中存储机密
 
@@ -114,7 +114,7 @@ az vm create \
 
 创建 VM 和支持资源需要几分钟时间。 以下示例输出表明 VM 创建操作已成功。
 
-```
+```output
 {
   "fqdns": "",
   "id": "/subscriptions/<guid>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM",
@@ -133,13 +133,13 @@ az vm create \
 
 为虚拟机创建一个系统分配标识，方法是运行以下命令：
 
-```
+```azurecli
 az vm identity assign --name <NameOfYourVirtualMachine> --resource-group <YourResourceGroupName>
 ```
 
 此命令的输出应该是：
 
-```azurecli
+```output
 {
   "systemAssignedIdentity": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
   "userAssignedIdentities": {}
@@ -152,7 +152,7 @@ az vm identity assign --name <NameOfYourVirtualMachine> --resource-group <YourRe
 
 现在可以向所创建的标识提供 Key Vault 权限。 运行以下命令：
 
-```
+```azurecli
 az keyvault set-policy --name '<YourKeyVaultName>' --object-id <VMSystemAssignedIdentity> --secret-permissions get list
 ```
 
@@ -246,7 +246,7 @@ dotnet run
 
            static string GetToken()
            {
-               WebRequest request = WebRequest.Create("https://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fvault.azure.cn");
+               WebRequest request = WebRequest.Create("http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fvault.azure.cn");
                request.Headers.Add("Metadata", "true");
                WebResponse response = request.GetResponse();
                return ParseWebResponse(response, "access_token");

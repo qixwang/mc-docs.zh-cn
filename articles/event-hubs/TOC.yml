@@ -19,8 +19,8 @@
           href: event-hubs-quickstart-cli.md
         - name: Azure PowerShell
           href: event-hubs-quickstart-powershell.md
-        - name: Azure Resource Manager 模板
-          displayName: ARM
+        - name: ARM 模板
+          displayName: Resource Manager
           href: event-hubs-resource-manager-namespace-event-hub.md
     - name: 发送和接收事件
       items:
@@ -129,7 +129,7 @@
           href: event-hubs-management-libraries.md
     - name: 安全
       items:
-        - name: 使用防火墙
+        - name: 配置 IP 防火墙
           href: event-hubs-ip-filtering.md
     - name: 故障排除
       items:

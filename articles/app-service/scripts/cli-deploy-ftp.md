@@ -6,15 +6,15 @@ tags: azure-service-management
 ms.devlang: azurecli
 ms.topic: sample
 origin.date: 12/12/2017
-ms.date: 01/13/2020
+ms.date: 03/30/2020
 ms.author: v-tawe
-ms.custom: mvc
-ms.openlocfilehash: 2688893dd6763b4169251c73ac9704af3df415ff
-ms.sourcegitcommit: b2f2bb08ab1b5ccb3c596d84b3b6ddca5bba3903
+ms.custom: mvc, seodec18
+ms.openlocfilehash: f24e3e0c89df4176752d48a84d6a5a836873b1d3
+ms.sourcegitcommit: 44d3fe59952847e5394bbe6c05bd6f333bb56345
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80151719"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80522108"
 ---
 # <a name="create-an-app-service-app-and-deploy-files-with-ftp-using-azure-cli"></a>使用 Azure CLI 创建应用服务应用并通过 FTP 部署文件
 

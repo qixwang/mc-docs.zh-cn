@@ -5,15 +5,15 @@ author: ccompy
 ms.assetid: 0f4c1fa4-e344-46e7-8d24-a25e247ae138
 ms.topic: quickstart
 origin.date: 08/05/2019
-ms.date: 03/19/2020
+ms.date: 03/30/2020
 ms.author: v-tawe
-ms.custom: mvc
-ms.openlocfilehash: 49b62840f861d540f3a6a11d3e6ceea69691f248
-ms.sourcegitcommit: 303a16c7117b6f3495ef0493b4ae8ccb67d7dbba
+ms.custom: mvc, seodec18
+ms.openlocfilehash: bc9722fc38bbf16bc9e97623fc6d71e5145c4595
+ms.sourcegitcommit: 44d3fe59952847e5394bbe6c05bd6f333bb56345
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80342358"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80522066"
 ---
 # <a name="create-and-use-an-internal-load-balancer-app-service-environment"></a>创建和使用内部负载均衡器应用服务环境 
 

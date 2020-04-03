@@ -7,16 +7,16 @@ manager: philmea
 ms.reviewer: kgremban
 ms.author: v-tawe
 origin.date: 10/14/2019
-ms.date: 03/02/2020
+ms.date: 03/30/2020
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 42a2ef428fbd7a56b5298a1f68777b41860eabf5
-ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
+ms.openlocfilehash: 0af93e0779209a2822dd0c90309b799bea87b3d8
+ms.sourcegitcommit: 260800ede66f48c886d1426a0fac18b4d402b4f2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77494525"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586648"
 ---
 # <a name="tutorial-develop-and-deploy-a-python-iot-edge-module-for-linux-devices"></a>教程：为 Linux 设备开发并部署 Python IoT Edge 模块
 
@@ -46,13 +46,13 @@ ms.locfileid: "77494525"
 | **Linux AMD64** | ![将 VS Code 用于 Linux AMD64 上的 Python 模块](./media/tutorial-c-module/green-check.png) |  |
 | **Linux ARM32** | ![将 VS Code 用于 Linux ARM32 上的 Python 模块](./media/tutorial-c-module/green-check.png) |  |
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
-在开始学习本教程之前，应已完成上一篇教程来设置用于开发 Linux 容器的开发环境：[开发适用于 Linux 设备的 IoT Edge 模块](tutorial-develop-for-linux.md)。 完成这两个教程中的一个以后，你应该已经准备好以下必备组件：
+在开始学习本教程之前，应已完成上一篇教程来设置用于开发 Linux 容器的开发环境：[开发适用于 Linux 设备的 IoT Edge 模块](tutorial-develop-for-linux.md)。 完成该教程后，已应准备好以下必备组件：
 
 * Azure 中的免费或标准层 [IoT 中心](../iot-hub/iot-hub-create-through-portal.md)。
 * 一个[运行 Azure IoT Edge 的 Linux 设备](quickstart-linux.md)
-* 一个容器注册表，例如 [Azure 容器注册表](/container-registry/)。
+* 一个容器注册表，例如 [Azure 容器注册表](https://docs.azure.cn/container-registry/)。
 * 配置了 [Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) 的 [Visual Studio Code](https://code.visualstudio.com/)。
 * 配置为运行 Linux 容器的 [Docker CE](https://docs.docker.com/install/)。
 
@@ -274,3 +274,5 @@ ms.locfileid: "77494525"
 > [Functions](tutorial-deploy-function.md)
 > [流分析](tutorial-deploy-stream-analytics.md)
 > [自定义视觉服务](tutorial-deploy-custom-vision.md)
+
+<!-- > [Machine Learning](tutorial-deploy-machine-learning.md) -->

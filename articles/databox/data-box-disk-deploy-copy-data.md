@@ -7,16 +7,15 @@ ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
 origin.date: 09/03/2019
-ms.date: 12/09/2019
+ms.date: 04/06/2020
 ms.author: v-jay
 ms.localizationpriority: high
-Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: 9a34bb45ceb78697ed8f2e2a5eb0e4e92d6c5d1b
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: 3f3123170a0e90bfb5e6375da8f9473c06b1ead1
+ms.sourcegitcommit: 5fb45da006859215edc8211481f13174aa43dbeb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79293242"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80634477"
 ---
 ::: zone target="docs"
 
@@ -47,7 +46,7 @@ ms.locfileid: "79293242"
 在开始之前，请确保：
 - 已完成[教程：安装和配置 Azure Data Box Disk](data-box-disk-deploy-set-up.md)。
 - 磁盘已解锁，并且已连接到客户端计算机。
-- 用来将数据复制到磁盘的客户端计算机必须运行[受支持的操作系统](data-box-disk-system-requirements.md##supported-operating-systems-for-clients)。
+- 用来将数据复制到磁盘的客户端计算机必须运行[受支持的操作系统](data-box-disk-system-requirements.md#supported-operating-systems-for-clients)。
 - 请确保数据的预期存储类型与[支持的存储类型](data-box-disk-system-requirements.md#supported-storage-types-for-upload)匹配。
 - 查看[“Azure 对象大小限制”中的“托管磁盘限制”](data-box-disk-limits.md#azure-object-size-limits)。
 

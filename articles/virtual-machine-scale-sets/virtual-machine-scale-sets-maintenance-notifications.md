@@ -6,14 +6,14 @@ tags: azure-service-management,azure-resource-manager
 ms.service: virtual-machine-scale-sets
 ms.workload: infrastructure-services
 ms.topic: conceptual
-ms.date: 02/10/2020
+ms.date: 03/31/2020
 ms.author: v-junlch
-ms.openlocfilehash: 2e730ea76bb35dcd4905a967490051812ebd4231
-ms.sourcegitcommit: 99bd0019c5f01034b8765d7765ad7776c7d5e5ae
+ms.openlocfilehash: 462980ba7a6d634a1b6cf4dcaf2f8ccdce331430
+ms.sourcegitcommit: 64584c0bf31b4204058ae2b4641356b904ccdd58
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77128876"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80581818"
 ---
 # <a name="planned-maintenance-notifications-for-virtual-machine-scale-sets"></a>虚拟机规模集的计划内维护通知
 
@@ -146,7 +146,7 @@ Set-AzVmss -ResourceGroupName rgName -VMScaleSetName vmssName -InstanceId id -Pe
  
 仅当有计划内维护时，才会返回维护信息。 如果未计划影响 VM 实例的维护，则该命令不会返回任何维护信息。 
 
-```azure-cli
+```azurecli
 az vmss list-instances -g rgName -n vmssName --expand instanceView
 ```
 
@@ -166,7 +166,7 @@ az vmss list-instances -g rgName -n vmssName --expand instanceView
 
 如果 `IsCustomerInitiatedMaintenanceAllowed` 设置为 true，以下调用会在 VM 实例上启动维护  ：
 
-```azure-cli
+```azurecli
 az vmss perform-maintenance -g rgName -n vmssName --instance-ids id
 ```
 
@@ -217,4 +217,3 @@ az vmss perform-maintenance -g rgName -n vmssName --instance-ids id
 
 了解如何使用[计划事件](../virtual-machines/windows/scheduled-events.md)从 VM 内注册维护事件。
 
-<!-- Update_Description: update metedata properties -->

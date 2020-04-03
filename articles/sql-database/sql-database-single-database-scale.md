@@ -10,14 +10,14 @@ ms.topic: conceptual
 author: WenJason
 ms.author: v-jay
 ms.reviewer: carlrab
-origin.date: 04/26/2019
-ms.date: 03/16/2020
-ms.openlocfilehash: 017d12c6367b3741e6e9da99b793a17ad7e57613
-ms.sourcegitcommit: dc862610e2169c1fce6fb0ae9eb7dd7567f86a0a
+origin.date: 03/10/2020
+ms.date: 03/30/2020
+ms.openlocfilehash: 65367733299131c4fad78ab6feb5701be54a494f
+ms.sourcegitcommit: 90660563b5d65731a64c099b32fb9ec0ce2c51c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79293862"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80341759"
 ---
 # <a name="scale-single-database-resources-in-azure-sql-database"></a>在 Azure SQL 数据库中缩放单一数据库资源
 
@@ -103,10 +103,11 @@ else {
 
 ### <a name="vcore-based-purchasing-model"></a>基于 vCore 的购买模型
 
-- 可以使用 1GB 作为增量，将存储预配到最大大小限制。 最小可配置数据存储为 5 GB
-- 可通过 [Azure 门户](https://portal.azure.cn)、[Transact-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current#examples-1)、[PowerShell](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabase)、[Azure CLI](/cli/sql/db#az-sql-db-update) 或 [REST API](https://docs.microsoft.com/rest/api/sql/databases/update) 为单一数据库增加或减少大小上限，以预配存储。
-- SQL 数据库会自动为日志文件额外分配 30% 的存储，并为 TempDB 的每个 vCore 分配 32GB，但不会超过 384GB。 TempDB 位于所有服务层级中的附加 SSD 上。
-- 单一数据库的存储价格等于数据存储与日志存储量之和乘以服务层级的存储单价。 vCore 价格已包括 TempDB 费用。 有关额外存储价格的详细信息，请参阅 [SQL 数据库定价](https://azure.cn/pricing/details/sql-database/)。
+- 可以使用 1GB 作为增量，将存储预配到数据存储最大大小限制。 最小可配置数据存储为 1 GB。 有关每个服务目标中的数据存储最大大小限制，请参阅[单一数据库](sql-database-vcore-resource-limits-single-databases.md)和[弹性池](sql-database-vcore-resource-limits-elastic-pools.md)的资源限制文档页。
+- 可通过 [Azure 门户](https://portal.azure.cn)、[Transact-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current#examples-1)、[PowerShell](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabase)、[Azure CLI](/cli/sql/db#az-sql-db-update) 或 [REST API](https://docs.microsoft.com/rest/api/sql/databases/update) 为单一数据库增加或减少大小上限，以预配数据存储。 如果最大大小值是以字节为单位指定的，则该值必须是 1 GB（1073741824 字节）的倍数。
+- 可以存储在数据库的数据文件中的数据量受所配置的数据存储最大大小限制。 除了该存储之外，SQL 数据库还会自动分配额外 30% 的存储用于事务日志。
+- 对于 `tempdb` 数据库，SQL 数据库会自动为每个 vCore 分配 32 GB。 `tempdb` 位于所有服务层级的本地 SSD 存储中。
+- 单一数据库或弹性池的存储价格等于数据存储与事务日志存储量之和乘以服务层级的存储单价。 `tempdb` 的成本包括在该价格中。 有关存储价格的详细信息，请参阅 [SQL 数据库定价](https://azure.cn/pricing/details/sql-database/)。
 
 > [!IMPORTANT]
 > 在某些情况下，可能需要收缩数据库来回收未使用的空间。 有关详细信息，请参阅[管理 Azure SQL 数据库中的文件空间](sql-database-file-space-management.md)。

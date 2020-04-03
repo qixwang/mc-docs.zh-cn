@@ -8,12 +8,12 @@ ms.topic: conceptual
 origin.date: 12/20/2019
 ms.date: 02/10/2020
 ms.author: v-jay
-ms.openlocfilehash: 4619552a843d285c68dab00e3df4a10a930324b4
-ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
+ms.openlocfilehash: bac2c121a37375d45010e23a4c55127fa4bdf6fa
+ms.sourcegitcommit: f204ec3ae220b96475db60e6ac8a2807af3de40e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77068580"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80418029"
 ---
 # <a name="create-an-azure-active-directory-tenant-for-p2s-openvpn-protocol-connections"></a>为 P2S OpenVPN 协议连接创建 Azure Active Directory 租户
 
@@ -23,7 +23,7 @@ ms.locfileid: "77068580"
 > Azure AD 身份验证仅支持用于 OpenVPN®协议连接。
 >
 
-## <a name="tenant"></a>1.创建 Azure AD 租户
+## <a name="1-create-the-azure-ad-tenant"></a><a name="tenant"></a>1.创建 Azure AD 租户
 
 使用[创建新租户](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)一文中的步骤创建 Azure AD 租户：
 
@@ -34,7 +34,7 @@ ms.locfileid: "77068580"
 
    ![新 Azure AD 租户](./media/openvpn-azure-ad-tenant-multi-app/newtenant.png)
 
-## <a name="users"></a>2.创建 Azure AD 租户用户
+## <a name="2-create-azure-ad-tenant-users"></a><a name="users"></a>2.创建 Azure AD 租户用户
 
 接下来，创建两个用户帐户。 创建一个全局管理员帐户和一个主要用户帐户。 主要用户帐户用作主要嵌入帐户（服务帐户）。 创建 Azure AD 租户用户帐户时，可以根据要创建的用户类型调整目录角色。
 
@@ -43,7 +43,7 @@ ms.locfileid: "77068580"
 * 全局管理员
 * User
 
-## <a name="enable-authentication"></a>3.在 Azure AD 租户中注册 Azure VPN 客户端
+## <a name="3-register-azure-vpn-client-in-azure-ad-tenant"></a><a name="enable-authentication"></a>3.在 Azure AD 租户中注册 Azure VPN 客户端
 
 1. 找到要用于身份验证的目录的目录 ID。 此 ID 在“Active Directory”页的“属性”部分中列出。
 
@@ -58,7 +58,7 @@ ms.locfileid: "77068580"
     Azure 中国世纪互联
 
     ```
-    https://https://login.chinacloudapi.cn/common/oauth2/authorize?client_id=49f817b6-84ae-4cc0-928c-73f27289b3aa&response_type=code&redirect_uri=https://portal.azure.cn&nonce=1234&prompt=admin_consent
+    https://login.chinacloudapi.cn/common/oauth2/authorize?client_id=49f817b6-84ae-4cc0-928c-73f27289b3aa&response_type=code&redirect_uri=https://portal.azure.cn&nonce=1234&prompt=admin_consent
     ```
 
 5. 出现提示时，请选择“全局管理员”帐户。 
@@ -73,7 +73,7 @@ ms.locfileid: "77068580"
 
     ![Azure VPN](./media/openvpn-azure-ad-tenant-multi-app/azurevpn.png)
 
-## <a name="enable-authentication"></a>4.为各个用户/组注册其他应用程序
+## <a name="4-register-additional-applications-for-various-usersgroups"></a><a name="enable-authentication"></a>4.为各个用户/组注册其他应用程序
 
 1. 在 Azure Active Directory 下，依次单击“应用注册”、“+ 新建注册”  
 
@@ -105,7 +105,7 @@ ms.locfileid: "77068580"
 
 10. 重复本部分 (4) 中的步骤，根据安全要求创建所需数量的应用程序。 每个应用程序将关联到某个 VPN 网关，并可以包含一组不同的用户。 只能将一个应用程序关联到一个网关。
 
-## <a name="enable-authentication"></a>5.将用户分配到应用程序
+## <a name="5-assign-users-to-your-applications"></a><a name="enable-authentication"></a>5.将用户分配到应用程序
 
 1. 在 Azure AD 下的“企业应用程序”中，选择新注册的应用程序并单击“属性”。   确保“需要用户分配?”设置为“是”。   单击“保存” 
 
@@ -118,7 +118,7 @@ ms.locfileid: "77068580"
 
     ![Azure VPN](./media/openvpn-azure-ad-tenant-multi-app/user4.png)
 
-## <a name="enable-authentication"></a>6.在 VPN 网关上启用 Azure AD 身份验证
+## <a name="6-enable-azure-ad-authentication-on-the-vpn-gateway"></a><a name="enable-authentication"></a>6.在 VPN 网关上启用 Azure AD 身份验证
 
 1. 运行以下命令（请务必修改命令来反映自己的环境），在 VPN 网关上启用 Azure AD 身份验证：
 

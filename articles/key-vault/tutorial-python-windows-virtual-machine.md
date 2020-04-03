@@ -8,15 +8,15 @@ ms.service: key-vault
 ms.subservice: general
 ms.topic: tutorial
 origin.date: 09/05/2018
-ms.date: 03/16/2020
+ms.date: 03/30/2020
 ms.author: v-tawe
 ms.custom: mvc
-ms.openlocfilehash: 615778d092ef1512c5c02c831ce289f563f1aa5e
-ms.sourcegitcommit: 764b3d26aedce2de0e1948468a706fd3204a3d5e
+ms.openlocfilehash: e115100221f4c00774bc13111424239576574d37
+ms.sourcegitcommit: 5fb45da006859215edc8211481f13174aa43dbeb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2020
-ms.locfileid: "79543304"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80634423"
 ---
 # <a name="tutorial-use-azure-key-vault-with-a-windows-virtual-machine-in-python"></a>教程：将 Azure Key Vault 与通过 Python 编写的 Windows 虚拟机配合使用
 
@@ -119,7 +119,7 @@ az vm identity assign --name <NameOfYourVirtualMachine> --resource-group <YourRe
 
 记下以下代码中显示的系统分配的标识。 以上命令的输出为： 
 
-```azurecli
+```output
 {
   "systemAssignedIdentity": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
   "userAssignedIdentities": {}
@@ -150,7 +150,7 @@ az keyvault set-policy --name '<YourKeyVaultName>' --object-id <VMSystemAssigned
   这还会从 Azure AD 获取令牌。
 1. 将令牌传递到 Key Vault，然后获取机密。 
 
-```
+```python
     # importing the requests library 
     import requests 
 
@@ -172,7 +172,7 @@ az keyvault set-policy --name '<YourKeyVaultName>' --object-id <VMSystemAssigned
 
 可以通过运行以下代码来显示机密值： 
 
-```
+```console
 python Sample.py
 ```
 

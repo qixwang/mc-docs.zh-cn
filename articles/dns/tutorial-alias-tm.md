@@ -9,12 +9,12 @@ ms.topic: tutorial
 origin.date: 9/25/2018
 ms.date: 03/23/2020
 ms.author: v-jay
-ms.openlocfilehash: f1ce25cd1d45e4c490368ecbb24ea7abd6c1a533
-ms.sourcegitcommit: 305361c96d1d5288d3dda7e81833820640e2afac
+ms.openlocfilehash: ad4d7ebf6155b31e12113050a8d9fdf6e82fcf1d
+ms.sourcegitcommit: f204ec3ae220b96475db60e6ac8a2807af3de40e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2020
-ms.locfileid: "80115822"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80418026"
 ---
 # <a name="tutorial-configure-an-alias-record-to-support-apex-domain-names-with-traffic-manager"></a>教程：使用流量管理器配置支持顶点域名的别名记录 
 
@@ -30,7 +30,7 @@ ms.locfileid: "80115822"
 > * 测试别名记录。
 
 
-如果没有 Azure 订阅，可在开始前创建一个 [1 元人民币试用帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+如果没有 Azure 订阅，可在开始前创建一个 [1 元人民币试用帐户](https://wd.azure.cn/pricing/1rmb-trial-full)。
 
 ## <a name="prerequisites"></a>先决条件
 必须具有可用于在 Azure DNS 中托管以供测试的域名。 必须能够完全控制此域。 完全控制包括能够为域设置名称服务器 (NS) 记录。

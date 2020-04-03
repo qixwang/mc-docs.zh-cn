@@ -4,14 +4,14 @@ description: 详细介绍如何处理 Azure 自动化中的 Runbook。
 services: automation
 ms.subservice: process-automation
 origin.date: 04/04/2019
-ms.date: 03/16/2020
+ms.date: 03/30/2020
 ms.topic: conceptual
-ms.openlocfilehash: f08f8c516ec2e8f8df14ee8dec8ad5502da298c8
-ms.sourcegitcommit: dc862610e2169c1fce6fb0ae9eb7dd7567f86a0a
+ms.openlocfilehash: ec410c7e4958f874e60abdb29d3ebd5a29154e61
+ms.sourcegitcommit: 90d01d08faf8adb20083363a8e4e5aab139cd9b2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79293715"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80290353"
 ---
 # <a name="runbook-execution-in-azure-automation"></a>在 Azure 自动化中执行 Runbook
 
@@ -84,7 +84,7 @@ Runbook 必须可靠，且能够处理可能导致它们重启或失败的暂时
 > [!NOTE]
 > Azure 沙盒进程上的本地时间设置为 UTC 时间。 Runbook 中的日期和时间计算需要考虑到这一点。
 
-### <a name="tracking-progress"></a>跟踪进度
+### <a name="tracking-progress"></a>跟踪进程
 
 合理的做法是创作模块性的 Runbook，并构建 Runbook 逻辑，以便能够轻松重用和重启 Runbook。 跟踪 Runbook 的进度能够很好地确保在出现问题时正常执行 Runbook 逻辑。 可以使用存储帐户、数据库或共享文件等外部源跟踪 Runbook 的进度。 可以在 Runbook 中创建逻辑，以便先检查所执行的最后一个操作的状态。 然后，该逻辑可以根据检查结果跳过或继续执行 Runbook 中的特定任务。
 
@@ -120,7 +120,7 @@ If (($jobs.status -contains "Running" -And $runningCount -gt 1 ) -Or ($jobs.Stat
 
 ### <a name="working-with-multiple-subscriptions"></a>使用多个订阅
 
-若要处理多个订阅，Runbook 必须使用 [Disable-AzureRmContextAutosave](https://docs.microsoft.com/powershell/module/azurerm.profile/disable-azurermcontextautosave) cmdlet 来确保不会从同一个沙盒中运行的另一个 Runbook 检索到身份验证上下文。 Runbook 还会在 `AzureRM` cmdlet 中使用 *-AzureRmContext* 参数，并将其传递给适当的上下文。
+若要处理多个订阅，Runbook 必须使用 [Disable-AzureRmContextAutosave](https://docs.microsoft.com/powershell/module/azurerm.profile/disable-azurermcontextautosave) cmdlet 来确保不会从同一个沙盒中运行的另一个 Runbook 检索到身份验证上下文。 Runbook 还会在 AzureRM cmdlet 中使用 `-AzureRmContext` 参数，并将其传递给适当的上下文。
 
 ```powershell
 # Ensures that you do not inherit an AzureRMContext in your runbook
@@ -150,11 +150,11 @@ Start-AzureRmAutomationRunbook `
 
 本部分介绍如何在 Runbook 中处理异常或间歇性问题。
 
-#### <a name="erroractionpreference"></a>$ErrorActionPreference
+#### <a name="erroractionpreference"></a>ErrorActionPreference
 
-[$ErrorActionPreference](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_preference_variables#erroractionpreference) 变量确定 PowerShell 如何对非终止性错误做出响应。 终止性错误始终会终止，不受 *$ErrorActionPreference* 的影响。
+[ErrorActionPreference](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_preference_variables#erroractionpreference) 变量确定 PowerShell 如何对非终止性错误做出响应。 终止性错误始终会终止，不受 *ErrorActionPreference* 影响。
 
-当 Runbook 使用 *$ErrorActionPreference* 时，正常的非终止性错误（例如 **Get-ChildItem** cmdlet 返回的 **PathNotFound**）会阻止 Runbook 完成。 以下示例演示 *$ErrorActionPreference* 的用法。 由于脚本将会停止，最终的 **Write-Output** 命令永远不会执行。
+当 Runbook 使用 `ErrorActionPreference` 时，正常的非终止性错误（例如 `Get-ChildItem` cmdlet 返回的 **PathNotFound**）会阻止 Runbook 完成。 以下示例演示了如何使用 `ErrorActionPreference`。 由于脚本将会停止，因此最终的 `Write-Output` 命令永远不会执行。
 
 ```powershell
 $ErrorActionPreference = 'Stop'
@@ -164,7 +164,7 @@ Write-Output "This message will not show"
 
 #### <a name="try-catch-finally"></a>Try Catch Finally
 
-在 PowerShell 脚本中使用 [Try Catch Finally](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_try_catch_finally) 可以处理终止性错误。 脚本可以使用此机制捕获特定的异常或一般的异常。 应使用 **catch** 语句来跟踪错误或尝试处理错误。 以下示例尝试下载一个不存在的文件。 它捕获 System.Net.WebException 异常，并返回任何其他异常的最后一个值。
+在 PowerShell 脚本中使用 [Try Catch Finally](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_try_catch_finally) 可以处理终止性错误。 脚本可以使用此机制捕获特定的异常或一般的异常。 应使用 `catch` 语句来跟踪错误或尝试处理错误。 以下示例尝试下载一个不存在的文件。 它捕获 `System.Net.WebException` 异常，对于任何其他异常，它将返回最后一个值。
 
 ```powershell
 try
@@ -184,7 +184,7 @@ catch
 
 #### <a name="throw"></a>Throw
 
-可以使用 [Throw](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_throw) 来生成终止性错误。 在 Runbook 中定义自己的逻辑时，此机制可能非常有用。 如果脚本满足特定的停止条件，则它可以使用 **throw** 语句停止。 以下示例使用此语句显示所需的函数参数。
+可以使用 [Throw](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_throw) 来生成终止性错误。 在 Runbook 中定义自己的逻辑时，此机制可能非常有用。 如果脚本满足特定的停止条件，则它可以使用 `throw` 语句进行停止。 以下示例使用此语句显示所需的函数参数。
 
 ```powershell
 function Get-ContosoFiles
@@ -204,15 +204,15 @@ function Get-ContosoFiles
 
 ## <a name="handling-errors"></a>处理错误
 
-Runbook 必须能够处理错误。 PowerShell 具有两种类型的错误：终止性和非终止性。 发生终止性错误时，Runbook 会停止执行。 Runbook 将会停止，作业状态为“失败”。 
+Runbook 必须能够处理错误。 PowerShell 具有两种类型的错误：终止性和非终止性。 发生终止性错误时，Runbook 会停止执行。 Runbook 将会停止，作业状态为“失败”。
 
-即使发生非终止性错误，脚本也能继续运行。 例如，当 Runbook 对某个不存在的路径使用 **Get-ChildItem** cmdlet 时，就会发生非终止错误。 PowerShell 发现路径不存在，然后引发错误，并继续转到下一文件夹。 在此情况下，该错误不会将 Runbook 作业状态设置为“失败”，甚至可能会完成作业。  若要强制 runbook 在发生非终止性错误时停止，可以使用 `-ErrorAction Stop` cmdlet。
+即使发生非终止性错误，脚本也能继续运行。 例如，当 Runbook 对某个不存在的路径使用 `Get-ChildItem` cmdlet 时，就会发生非终止错误。 PowerShell 发现路径不存在，然后引发错误，并继续转到下一文件夹。 在此情况下，该错误不会将 Runbook 作业状态设置为“失败”，甚至可能会完成作业。 若要强制 runbook 在发生非终止性错误时停止，可以使用 `-ErrorAction Stop` cmdlet。
 
 ## <a name="handling-jobs"></a>处理作业
 
 可以重用同一自动化帐户中的作业的执行环境。 一个 runbook 可以同时运行多个作业。 同时运行的作业越多，就越可能将其分派到同一个沙盒中。
 
-在同一沙盒进程中运行的作业可能会相互影响。 一个示例就是运行 **Disconnect-AzureRmAccount** cmdlet。 执行此 cmdlet 会断开共享沙盒进程中的每个 Runbook 作业。
+在同一沙盒进程中运行的作业可能会相互影响。 一个示例是运行 `Disconnect-AzureRmAccount` cmdlet。 执行此 cmdlet 会断开共享沙盒进程中的每个 Runbook 作业。
 
 从 Azure 沙盒中运行的 Runbook 启动的 PowerShell 作业在完整语言模式下可能无法运行。 若要了解有关 PowerShell 语言模式的详细信息，请参阅 [PowerShell 语言模式](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_language_modes)。 有关如何与 Azure 自动化中的作业进行交互的更多详细信息，请参阅[使用 PowerShell 检索作业状态](#retrieving-job-status-using-powershell)。
 
@@ -232,7 +232,7 @@ Runbook 必须能够处理错误。 PowerShell 具有两种类型的错误：终
 | 正在运行，正在等待资源 |作业已卸载，因为它已达到公平份额限制。 片刻之后，它会从其上一个检查点恢复。 |
 | 已停止 |作业在完成之前已被用户停止。 |
 | 正在停止 |系统正在停止作业。 |
-| 已挂起 |仅适用于[图形 Runbook 和 PowerShell 工作流 Runbook](automation-runbook-types.md)。 作业已被用户、系统或 Runbook 中的命令暂停。 如果 Runbook 没有检查点，它将从头开始启动。 如果它有检查点，它将重新启动并从其上一个检查点继续。 仅当发生异常时，系统才会挂起 Runbook。 默认情况下，*ErrorActionPreference* 变量设置为 **Continue**，表示出错时作业会保持运行。 如果该首选项变量设置为 **Stop**，则出错时作业会挂起。  |
+| 已挂起 |仅适用于[图形 Runbook 和 PowerShell 工作流 Runbook](automation-runbook-types.md)。 作业已被用户、系统或 Runbook 中的命令暂停。 如果 Runbook 没有检查点，它将从头开始启动。 如果它有检查点，它将重新启动并从其上一个检查点继续。 仅当发生异常时，系统才会挂起 Runbook。 默认情况下，`ErrorActionPreference` 变量设置为 Continue，表示出错时作业会保持运行。 如果该首选项变量设置为 Stop，则出错时作业会挂起。  |
 | 正在暂停 |仅适用于[图形 Runbook 和 PowerShell 工作流 Runbook](automation-runbook-types.md)。 系统正在尝试按用户请求暂停作业。 Runbook 只有在达到其下一个检查点后才能挂起。 如果 Runbook 越过了最后一个检查点，则只有在完成后才能挂起。 |
 
 ### <a name="viewing-job-status-from-the-azure-portal"></a>从 Azure 门户查看作业状态
@@ -245,7 +245,7 @@ Runbook 必须能够处理错误。 PowerShell 具有两种类型的错误：终
 
 此磁贴显示执行的每个作业的计数及其状态的图形表示形式。
 
-单击磁贴可显示“作业”页，此页包括所有已执行作业的摘要列表  。 此页显示每个作业的状态、Runbook 名称、开始时间和完成时间。
+单击磁贴可显示“作业”页，此页包括所有已执行作业的摘要列表。 此页显示每个作业的状态、Runbook 名称、开始时间和完成时间。
 
 ![自动化帐户作业页](./media/automation-runbook-execution/automation-account-jobs-status-blade.png)
 
@@ -253,7 +253,7 @@ Runbook 必须能够处理错误。 PowerShell 具有两种类型的错误：终
 
 ![筛选作业状态](./media/automation-runbook-execution/automation-account-jobs-filter.png)
 
-或者，可通过从自动化帐户中的“Runbook”页上选择特定的 Runbook，并选择“作业”磁贴，来查看该 Runbook 的作业摘要详细信息。   此操作将打开“作业”页。  在此页中可以单击作业记录以查看其详细信息和输出。
+或者，可通过从自动化帐户中的“Runbook”页上选择特定的 Runbook，并选择“作业”磁贴，来查看该 Runbook 的作业摘要详细信息。  此操作将打开“作业”页。 在此页中可以单击作业记录以查看其详细信息和输出。
 
 ![自动化帐户作业页](./media/automation-runbook-execution/automation-runbook-job-summary-blade.png)
 
@@ -265,13 +265,13 @@ Runbook 必须能够处理错误。 PowerShell 具有两种类型的错误：终
 
 1. 在 Azure 门户中，选择“自动化”  ，然后选择自动化帐户的名称。
 2. 在中心内的“过程自动化”下，选择“Runbook”。  
-3. 在“Runbook”页上的列表中选择一个 Runbook。 
+3. 在“Runbook”页上的列表中选择一个 Runbook。
 3. 在所选 runbook 的页上，单击“作业”磁贴  。
 4. 单击列表中的某个作业即可在 Runbook 作业详细信息页上查看其详细信息和输出。
 
 ### <a name="retrieving-job-status-using-powershell"></a>使用 PowerShell 检索作业状态
 
-可以使用 [Get-AzureRmAutomationJob](https://docs.microsoft.com/powershell/module/azurerm.automation/get-azurermautomationjob) 检索为 Runbook 创建的作业和特定作业的详细信息。 如果在 PowerShell 中使用 [Start-AzureRmAutomationRunbook](https://docs.microsoft.com/powershell/module/azurerm.automation/start-azurermautomationrunbook) 启动 Runbook，则会返回生成的作业。 使用 [Get-AzureRmAutomationJobOutput](https://docs.microsoft.com/powershell/module/azurerm.automation/get-azurermautomationjoboutput) 可以获取作业的输出。
+可以使用 `Get-AzureRmAutomationJob` cmdlet 检索为 Runbook 创建的作业和特定作业的详细信息。 如果在 PowerShell 中使用 `Start-AzureRmAutomationRunbook` 启动 Runbook，则会返回生成的作业。 可以使用 [Get-AzureRmAutomationJobOutput](https://docs.microsoft.com/powershell/module/azurerm.automation/get-azurermautomationjoboutput?view=azurermps-6.13.0) 检索作业输出。
 
 以下示例获取某个示例 Runbook 的最后一个作业，并显示其状态、为 Runbook 参数提供的值以及该作业的输出。
 
@@ -336,13 +336,13 @@ $JobInfo.GetEnumerator() | sort key -Descending | Select-Object -First 1
 
 ## <a name="sharing-resources-among-runbooks"></a><a name="fair-share"></a>在 Runbook 之间共享资源
 
-为了在云中的所有 Runbook 之间共享资源，Azure 自动化会暂时卸载或停止已运行三小时以上的所有作业。 [PowerShell Runbook](automation-runbook-types.md#powershell-runbooks) 和 [Python Runbook](automation-runbook-types.md#python-runbooks) 的作业将会停止且不会重启，作业状态变为“已停止”。 
+为了在云中的所有 Runbook 之间共享资源，Azure 自动化会暂时卸载或停止已运行三小时以上的所有作业。 [PowerShell Runbook](automation-runbook-types.md#powershell-runbooks) 和 [Python Runbook](automation-runbook-types.md#python-runbooks) 的作业将会停止且不会重启，作业状态变为“已停止”。
 
 对于长时间运行的任务，建议使用混合 Runbook 辅助角色。 混合 Runbook 辅助角色不受公平份额限制，并且不会限制 runbook 的执行时间。 其他作业[限制](../azure-resource-manager/management/azure-subscription-service-limits.md#automation-limits)适用于 Azure 沙盒和混合 Runbook 辅助角色。 虽然混合 Runbook 辅助角色不受 3 小时公平份额限制的约束，但你应该开发在辅助角色上运行的 Runbook，以便在出现意外的本地基础结构问题时支持重启。
 
-另一种做法是使用子 Runbook 来优化某个 Runbook。 例如，你的 Runbook 可能会循环访问多个资源上的同一个函数，例如针对多个数据库执行某个数据库操作。 可将此函数移到某个[子 Runbook](automation-child-runbooks.md)，并让 Runbook 使用 **Start-AzAutomationRunbook** 调用此函数。 子 Runbook 在单独的进程中并行执行。
+另一种做法是使用子 Runbook 来优化某个 Runbook。 例如，你的 Runbook 可能会循环访问多个资源上的同一个函数，例如针对多个数据库执行某个数据库操作。 可将此函数移到某个[子 Runbook](automation-child-runbooks.md)，并让 Runbook 使用 `Start-AzAutomationRunbook` 调用此函数。 子 Runbook 在单独的进程中并行执行。
 
-使用子 Runbook 可以减少完成父 Runbook 所需的总时间。 如果 Runbook 仍然包含完成子级后要执行的操作，该 Runbook 可以使用 **Get-AzRmAutomationJob** cmdlet 来检查子 Runbook 的作业状态。
+使用子 Runbook 可以减少完成父 Runbook 所需的总时间。 如果 Runbook 仍然包含完成子级后要执行的操作，该 Runbook 可以使用 `Get-AzRmAutomationJob` cmdlet 来检查子 Runbook 的作业状态。
 
 ## <a name="next-steps"></a>后续步骤
 

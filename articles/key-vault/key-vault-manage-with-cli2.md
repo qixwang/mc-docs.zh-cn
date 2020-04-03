@@ -8,14 +8,14 @@ ms.service: key-vault
 ms.subservice: general
 ms.topic: tutorial
 origin.date: 08/12/2019
-ms.date: 03/16/2020
+ms.date: 03/30/2020
 ms.author: v-tawe
-ms.openlocfilehash: 57bb0c583b5a6e109537c08797a6a1fd762ccc73
-ms.sourcegitcommit: 764b3d26aedce2de0e1948468a706fd3204a3d5e
+ms.openlocfilehash: b0b1ef09425b90926ac8faa06faf2f34f4f07b1d
+ms.sourcegitcommit: 5fb45da006859215edc8211481f13174aa43dbeb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2020
-ms.locfileid: "79543358"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80634366"
 ---
 # <a name="manage-key-vault-using-the-azure-cli"></a>使用 Azure CLI 管理密钥保管库 
 
@@ -239,9 +239,10 @@ az keyvault set-policy --name "ContosoKeyVault" --spn 8f8c4bbd-485b-45fd-98f7-ec
 
 为模板部署启用 Key Vault：允许资源管理器从保管库检索机密。
 
-```azurecli 
- az keyvault update --name "ContosoKeyVault" --resource-group "ContosoResourceGroup" --enabled-for-template-deployment "true"
- ```
+```azurecli
+az keyvault update --name "ContosoKeyVault" --resource-group "ContosoResourceGroup" --enabled-for-template-deployment "true"
+```
+
 <!-- HSMs not available -->
 ## <a name="deleting-the-key-vault-and-associated-keys-and-secrets"></a>删除密钥保管库以及关联的密钥和机密
 

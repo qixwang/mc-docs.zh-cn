@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 origin.date: 11/04/2019
 ms.date: 03/02/2020
-ms.openlocfilehash: 4282e8d547ce16a5c8e3fd4413606729e3db9d69
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: 574b342272f9eaee0e70bf532c8ff2adafc7a5ba
+ms.sourcegitcommit: 44d3fe59952847e5394bbe6c05bd6f333bb56345
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79291219"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80522087"
 ---
 # <a name="security-and-data-privacy-in-azure-cognitive-search"></a>Azure 认知搜索中的安全性和数据隐私
 
@@ -44,7 +44,8 @@ Azure 认知搜索针对以下标准进行了认证，如 [2018 年 6 月发布�
 |----------------|-------------|
 | 传输中加密 <br>(HTTPS/SSL/TLS) | Azure 认知搜索在 HTTPS 端口 443 上侦听。 与 Azure 服务建立的跨平台连接经过加密。 <br/><br/>所有从客户端到服务的 Azure 认知搜索交互都支持 SSL/TLS 1.2。  请务必为你的服务的 SSL 连接使用 TLSv1.2。|
 | 静态加密 <br>Microsoft 托管的密钥 | 加密在索引过程中完全进行内部化处理，而不会显著影响完成索引所需的时间或索引大小。 加密自动对所有索引进行，包括对未完全加密的索引（在 2018 年 1 月前创建）的增量更新。<br><br>在内部，加密基于 [Azure 存储服务加密](https://docs.azure.cn/storage/common/storage-service-encryption)，使用 256 位 [AES 加密](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)进行。<br><br> 加密在 Azure 认知搜索内部进行，证书和加密密钥由 Microsoft 进行内部管理，并得到了广泛应用。 无法在门户中或以编程方式打开或关闭加密、管理或替换为自己的密钥，或者查看加密设置。<br><br>静态加密已于 2018 年 1 月 24 日宣布推出并应用于所有区域中的所有服务层级，包括免费层。 对于完全加密，必须删除该日期之前创建的索引并重新生成，以便进行加密。 否则，仅对 1 月 24 日以后添加的新数据进行加密。|
-| 静态加密 <br>客户管理的密钥 | 现在，2019 年 1 月或之后创建的搜索服务通常可以使用客户托管密钥进行加密。 免费（共享）服务不支持此功能。<br><br>现在可以使用 Azure Key Vault 中的客户密钥托管密钥来静态加密 Azure 认知搜索索引和同义词映射。 若要了解详细信息，请参阅[在 Azure 认知搜索中管理加密密钥](search-security-manage-encryption-keys.md)。<br><br>此功能不会替代默认的静态加密，而是对默认静态加密的补充。<br><br>启用此功能会增大索引大小，降低查询性能。 根据迄今为止的观察结果，查询时间预期会增加 30%-60%，不过，实际性能根据索引定义和查询类型而有所不同。 由于这种性能影响，我们建议仅对真正需要此功能的索引启用此功能。
+
+<!-- | Encryption at rest <br>Customer managed keys | Encryption with customer managed keys is now generally available for search services created on or after January 2019. It is not supported on Free (shared) services.<br><br>Azure Cognitive Search indexes and synonym maps can now be encrypted at rest with customer keys managed keys in Azure Key Vault. To learn more, see [Manage encryption keys in Azure Cognitive Search](search-security-manage-encryption-keys.md).<br><br>This feature is not replacing the default encryption at rest, but rather applied in addition to it.<br><br>Enabling this feature will increase index size and degrade query performance. Based on observations to date, you can expect to see an increase of 30%-60% in query times, although actual performance will vary depending on the index definition and types of queries. Because of this performance impact, we recommend that you only enable this feature on indexes that really require it. -->
 
 ## <a name="azure-wide-user-access-controls"></a>Azure 范围的用户访问控制
 

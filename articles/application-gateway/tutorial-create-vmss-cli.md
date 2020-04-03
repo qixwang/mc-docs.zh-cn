@@ -6,15 +6,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-origin.date: 11/14/2019
-ms.date: 11/21/2019
+ms.date: 03/30/2020
 ms.author: v-junlch
-ms.openlocfilehash: 4617128c64f68fbb0d5075332f8485b62638f98d
-ms.sourcegitcommit: fdbd1b6df618379dfeab03044a18c373b5fbb8ec
+ms.openlocfilehash: f5edca86d92fff617ba6bac250156496d5eff1ff
+ms.sourcegitcommit: 64584c0bf31b4204058ae2b4641356b904ccdd58
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74326812"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80581800"
 ---
 # <a name="create-an-application-gateway-with-a-virtual-machine-scale-set-using-the-azure-cli"></a>通过 Azure CLI 使用虚拟机规模集创建应用程序网关
 
@@ -127,7 +126,7 @@ az vmss extension set `
 
 若要获取应用程序网关的公共 IP 地址，可以使用 [az network public-ip show](https://docs.azure.cn/zh-cn/cli/network/public-ip?view=azure-cli-latest#az-network-public-ip-show)。 复制该公共 IP 地址，并将其粘贴到浏览器的地址栏。
 
-```azurepowershell
+```azurecli
 az network public-ip show `
   --resource-group myResourceGroupAG `
   --name myAGPublicIPAddress `
@@ -148,4 +147,3 @@ az network public-ip show `
 
 若要详细了解应用程序网关及其关联的资源，请继续阅读操作指南文章。
 
-<!-- Update_Description: link update -->

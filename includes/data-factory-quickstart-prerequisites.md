@@ -9,12 +9,12 @@ origin.date: 06/27/2019
 ms.date: 03/23/2020
 ms.author: v-jay
 ms.custom: include file
-ms.openlocfilehash: fa7a0d6512cb144058bf73905d61864d2b14eb8e
-ms.sourcegitcommit: 71a386ca0d0ecb79a123399b6ab6b8c70ea2aa78
+ms.openlocfilehash: 76e7ed6e4e653f367fda44726943a7614a817496
+ms.sourcegitcommit: f204ec3ae220b96475db60e6ac8a2807af3de40e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2020
-ms.locfileid: "79497206"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80419266"
 ---
 ## <a name="prerequisites"></a>先决条件
 
@@ -22,7 +22,7 @@ ms.locfileid: "79497206"
 如果没有 Azure 订阅，可在开始前创建一个 [1 元人民币试用帐户](https://www.azure.cn/zh-cn/pricing/1rmb-trial-full/?form-type=identityauth)。
 
 ### <a name="azure-roles"></a>Azure 角色
-若要创建数据工厂实例，用于登录到 Azure 的用户帐户必须属于参与者或所有者角色，或者是 Azure 订阅的管理员。    若要查看你在订阅中拥有的权限，请转到 [Azure 门户](https://portal.azure.com)，在右上角选择你的用户名，然后选择“...”  图标以显示更多选项，然后选择“我的权限”  。 如果可以访问多个订阅，请选择相应的订阅。
+若要创建数据工厂实例，用于登录到 Azure 的用户帐户必须属于参与者或所有者角色，或者是 Azure 订阅的管理员。    若要查看你在订阅中拥有的权限，请转到 [Azure 门户](https://portal.azure.cn)，在右上角选择你的用户名，然后选择“...”  图标以显示更多选项，然后选择“我的权限”  。 如果可以访问多个订阅，请选择相应的订阅。
 
 若要为数据工厂创建和管理子资源（包括数据集、链接服务、管道、触发器和集成运行时），以下要求适用：
 

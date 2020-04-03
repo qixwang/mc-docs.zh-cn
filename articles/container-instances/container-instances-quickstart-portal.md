@@ -1,21 +1,17 @@
 ---
 title: 快速入门 - 将 Docker 容器部署到容器实例 - 门户
 description: 本快速入门将使用 Azure 门户快速部署在隔离的 Azure 容器实例中运行的容器化 Web 应用
-services: container-instances
-author: rockboyfor
-manager: digimobile
-ms.service: container-instances
 ms.topic: quickstart
-origin.date: 04/17/2019
-ms.date: 01/15/2020
+origin.date: 03/09/2020
+ms.date: 04/06/2020
 ms.author: v-yeche
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 643ec270c93ecdf5adee08d9e553ed3dc2bb1540
-ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
+ms.openlocfilehash: 2c6ed14361e42d7a5170f344f3048cf394d9c31f
+ms.sourcegitcommit: 76280dd9854dc0ff0ba1e5e62fb3dc3af049fbe2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77068120"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80517011"
 ---
 <!--Verified successfully-->
 # <a name="quickstart-deploy-a-container-instance-in-azure-using-the-azure-portal"></a>快速入门：使用 Azure 门户在 Azure 中部署容器实例
@@ -48,7 +44,8 @@ ms.locfileid: "77068120"
 
 * 资源组：“新建” > `myresourcegroup` 
 * 容器名称：`mycontainer`
-* 容器映像：`mcr.microsoft.com/azuredocs/aci-helloworld`
+* 映像源：**快速启动映像**
+* 容器映像：`mcr.microsoft.com/azuredocs/aci-helloworld` (Linux)
 
 ![在 Azure 门户中配置新的容器实例的基本设置][aci-portal-03]
 

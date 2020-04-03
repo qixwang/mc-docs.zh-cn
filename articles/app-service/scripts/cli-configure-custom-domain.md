@@ -6,15 +6,15 @@ ms.assetid: 5ac4a680-cc73-4578-bcd6-8668c08802c2
 ms.devlang: azurecli
 ms.topic: sample
 origin.date: 12/11/2017
-ms.date: 01/13/2020
+ms.date: 03/30/2020
 ms.author: v-tawe
-ms.custom: mvc
-ms.openlocfilehash: 7c0f15f7fdc8583650003a5d5e5dadaf54d8de4c
-ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
+ms.custom: mvc, seodec18
+ms.openlocfilehash: 9d6fd88eea8084f6b318225f5c402544ff1f1227
+ms.sourcegitcommit: 44d3fe59952847e5394bbe6c05bd6f333bb56345
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75600386"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80522115"
 ---
 # <a name="map-a-custom-domain-to-an-app-service-app-using-cli"></a>使用 CLI 将自定义域映射到应用服务应用
 

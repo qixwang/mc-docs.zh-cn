@@ -5,14 +5,14 @@ services: application-gateway
 author: caya
 ms.service: application-gateway
 ms.topic: article
-ms.date: 02/10/2020
+ms.date: 03/30/2020
 ms.author: v-junlch
-ms.openlocfilehash: 8c7e17c80908976a26c81aba1757da6c0e842141
-ms.sourcegitcommit: f388b7b1cdfe06ebda7d9c21cf39943611b62a75
+ms.openlocfilehash: f07d047f679558e1107b1ad561af3caf4edc61d1
+ms.sourcegitcommit: 64584c0bf31b4204058ae2b4641356b904ccdd58
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77155530"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80581661"
 ---
 # <a name="autoscale-your-aks-pods-using-application-gateway-metrics-beta"></a>根据应用程序网关指标 (Beta) 自动缩放 AKS Pod
 
@@ -29,7 +29,7 @@ ms.locfileid: "77155530"
 
 1. 我们将首先创建一个 Azure AAD 服务主体，并通过应用程序网关的资源组为它分配 `Monitoring Reader` 访问权限。 
 
-    ```bash
+    ```azurecli
         applicationGatewayGroupName="<application-gateway-group-id>"
         applicationGatewayGroupId=$(az group show -g $applicationGatewayGroupName -o tsv --query "id")
         az ad sp create-for-rbac -n "azure-k8s-metric-adapter-sp" --role "Monitoring Reader" --scopes applicationGatewayGroupId
@@ -124,4 +124,3 @@ ab -n10000 http://<applicaiton-gateway-ip-address>/
 ## <a name="next-steps"></a>后续步骤
 - [**排查入口控制器问题**](ingress-controller-troubleshoot.md)：排查入口控制器的任何问题。
 
-<!-- Update_Description: link update -->

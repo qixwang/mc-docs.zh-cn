@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
 origin.date: 06/13/2019
-ms.date: 09/23/2019
+ms.date: 04/06/2020
 ms.author: v-jay
-ms.openlocfilehash: 5039c50fbcd638598ad6b5cfd6dfd4ea7f1eb152
-ms.sourcegitcommit: 369038a7d7ee9bbfd26337c07272779c23d0a507
+ms.openlocfilehash: d2a24417a64cd38ed6e5a9cb6e55fa559f8caaf4
+ms.sourcegitcommit: fe9ed98aaee287a21648f866bb77cb6888f75b0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74807576"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80625762"
 ---
 # <a name="tutorial-stream-live-with-media-services"></a>教程：使用媒体服务进行实时流式传输
 
@@ -48,7 +48,7 @@ ms.locfileid: "74807576"
 - [创建媒体服务帐户](create-account-cli-how-to.md)。<br/>请务必记住用于资源组名称和媒体服务帐户名称的值。
 - 遵循[使用 Azure CLI 访问 Azure 媒体服务 API](access-api-cli-how-to.md) 中的步骤并保存凭据。 你将需要使用这些凭据来访问 API。
 - 一个用于广播事件的相机或设备（例如便携式计算机）。
-- 一个本地实时编码器，用于将信号从相机转换为发送至媒体服务实时传送视频流服务的流。 流必须为 **RTMP** 或“平滑流式处理”  格式。
+- 一个本地实时编码器，用于将来自相机的信号转换为发送到媒体服务实时传送视频流服务的流，请参阅[建议的本地实时编码器](recommended-on-premises-live-encoders.md)。 流必须为 **RTMP** 或“平滑流式处理”  格式。
 
 > [!TIP]
 > 确保在继续操作之前查看[使用媒体服务 v3 的实时传送视频流](live-streaming-overview.md)。 

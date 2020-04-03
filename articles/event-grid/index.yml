@@ -12,12 +12,12 @@ metadata:
   author: spelluru
   ms.author: spelluru
   ms.date: 09/06/2019
-  ms.openlocfilehash: 4fb41d9cc565984f5fe7c63397bf1debe8535b83
-  ms.sourcegitcommit: 6a62dd239c60596006a74ab2333c50c4db5b62be
+  ms.openlocfilehash: a55e3c278e6880cbff3338a1095de1bf5331bc11
+  ms.sourcegitcommit: 78a05172a813b87428b87f3a2695e6bb3ae81ede
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 09/20/2019
-  ms.locfileid: "71156078"
+  ms.lasthandoff: 03/31/2020
+  ms.locfileid: "80417387"
 landingContent:
 - title: 关于事件网格
   linkLists:
@@ -53,8 +53,6 @@ landingContent:
       url: monitor-virtual-machine-changes-event-grid-logic-app.md
     - text: 调整已上传图像的大小
       url: resize-images-on-storage-blob-upload-event.md
-    - text: 触发自动化 Runbook
-      url: ensure-tags-exists-on-new-virtual-machines.md
     - text: 在 IoT 中心设备已添加时发送电子邮件
       url: publish-iot-hub-events-to-logic-apps.md
     - text: 响应服务总线事件

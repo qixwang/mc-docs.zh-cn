@@ -6,15 +6,16 @@ tags: azure-service-management
 ms.devlang: azurecli
 ms.topic: sample
 origin.date: 12/11/2017
-ms.date: 01/13/2020
+ms.date: 03/30/2020
 ms.author: v-tawe
-ms.custom: mvc
-ms.openlocfilehash: f08ab323b5d211f2ca9fd127d4dfa9f413f848c3
-ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
+ms.reviewer: cephalin
+ms.custom: mvc, seodec18
+ms.openlocfilehash: 4b4d54cd2c29c9a0a496771daf3cd50957290270
+ms.sourcegitcommit: 44d3fe59952847e5394bbe6c05bd6f333bb56345
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75600391"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80522116"
 ---
 # <a name="create-a-scheduled-backup-for-an-app-service-app-using-cli"></a>使用 CLI 为应用服务应用创建计划备份
 

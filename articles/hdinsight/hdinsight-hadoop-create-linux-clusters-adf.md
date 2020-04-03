@@ -8,18 +8,18 @@ ms.service: hdinsight
 ms.topic: tutorial
 origin.date: 10/09/2019
 ms.date: 03/02/2020
-ms.openlocfilehash: 38dc075c7adec8290774475469aa5be30d5bd516
-ms.sourcegitcommit: 46fd4297641622c1984011eac4cb5a8f6f94e9f5
+ms.openlocfilehash: 095b945398a4d78483a38926794f1a6bf4e08b50
+ms.sourcegitcommit: 5fb45da006859215edc8211481f13174aa43dbeb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77563600"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80634559"
 ---
 # <a name="tutorial-create-on-demand-apache-hadoop-clusters-in-hdinsight-using-azure-data-factory"></a>教程：使用 Azure 数据工厂在 HDInsight 中创建按需 Apache Hadoop 群集
 
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
 
-本教程将介绍如何使用 Azure 数据工厂在 Azure HDInsight 中按需创建 [Apache Hadoop](https://hadoop.apache.org/) 群集。 然后使用 Azure 数据工厂中的数据管道运行 Hive 作业并删除该群集。 本教程结束时，你便知道如何将大数据作业运行操作化，其中的群集创建、作业运行和群集删除操作都是按计划执行的。
+本教程将介绍如何使用 Azure 数据工厂在 Azure HDInsight 中按需创建 [Apache Hadoop](./hadoop/apache-hadoop-introduction.md) 群集。 然后使用 Azure 数据工厂中的数据管道运行 Hive 作业并删除该群集。 本教程结束时，你便知道如何将大数据作业运行操作化，其中的群集创建、作业运行和群集删除操作都是按计划执行的。
 
 本教程涵盖以下任务：
 
@@ -35,7 +35,7 @@ ms.locfileid: "77563600"
 
 如果没有 Azure 订阅，请在开始前[创建一个试用帐户](https://www.azure.cn/pricing/1rmb-trial)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * 已安装 PowerShell [Az 模块](https://docs.microsoft.com/powershell/azure/overview)。
 
@@ -53,7 +53,7 @@ ms.locfileid: "77563600"
 4. 在存储帐户中创建 Blob 容器
 5. 将示例 HiveQL 脚本 (**partitionweblogs.hql**) 复制到 Blob 容器。 [https://hditutorialdata.blob.core.windows.net/adfhiveactivity/script/partitionweblogs.hql](https://hditutorialdata.blob.core.windows.net/adfhiveactivity/script/partitionweblogs.hql) 上提供了该脚本。 该示例脚本已在另一个公共 Blob 容器中提供。 以下 PowerShell 脚本将这些文件复制到它创建的 Azure 存储帐户。
 
-**使用 Azure PowerShell 创建存储帐户并复制文件：**
+### <a name="create-storage-account-and-copy-files"></a>创建存储帐户并复制文件
 
 > [!IMPORTANT]  
 > 指定要通过脚本创建的 Azure 资源组和 Azure 存储帐户的名称。
@@ -152,7 +152,7 @@ write-host "Storage Account Key: $destStorageAccountKey"
 Write-host "`nScript completed" -ForegroundColor Green
 ```
 
-**验证是否已创建存储帐户**
+### <a name="verify-storage-account"></a>验证存储帐户
 
 1. 登录到 [Azure 门户](https://portal.azure.cn)。
 1. 从左侧导航到“所有服务”   > “常规”   > “资源组”  。
@@ -195,13 +195,13 @@ Write-host "`nScript completed" -ForegroundColor Green
     |属性  |Value  |
     |---------|---------|
     |名称 | 输入数据工厂的名称。 此名称必须全局唯一。|
-    |订阅 | 选择 Azure 订阅。 |
-    |资源组 | 选择“使用现有项”，然后选择使用 PowerShell 脚本创建的资源组。  |
     |版本 | 保留为“V2”  。 |
+    |订阅 | 选择 Azure 订阅。 |
+    |资源组 | 选择你使用 PowerShell 脚本创建的资源组。 |
     |位置 | 位置会自动设置为先前在创建资源组时指定的位置。 在本教程中，位置设置为“美国东部”  。 |
     |启用 Git|取消选中此框。|
 
-    ![使用 Azure 门户创建 Azure 数据工厂](./media/hdinsight-hadoop-create-linux-clusters-adf/create-data-factory-portal.png "使用 Azure 门户创建 Azure 数据工厂")
+    ![使用 Azure 门户创建 Azure 数据工厂](./media/hdinsight-hadoop-create-linux-clusters-adf/azure-portal-create-data-factory.png "使用 Azure 门户创建 Azure 数据工厂")
 
 4. 选择“创建”  。 创建一个数据工厂可能需要花费 2 到 4 分钟。
 
@@ -299,8 +299,10 @@ Write-host "`nScript completed" -ForegroundColor Green
 
         ![为管道提供 Hive 脚本详细信息](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-provide-script-path.png "为管道提供 Hive 脚本详细信息")
 
-    1. 在“高级” > “参数”下，选择“从脚本自动填充”。    此选项会在 Hive 脚本中查找需要在运行时提供值的所有参数。 使用的脚本 (**partitionweblogs.hql**) 包含 **Output** 参数。 请以 `wasbs://adfgetstarted@<StorageAccount>.blob.core.windows.net/outputfolder/` 格式提供**值**，以指向 Azure 存储中的现有文件夹。 此路径区分大小写。 这是脚本的输出的存储路径。 `wasbs` 架构是必需的，因为存储帐户现在默认情况下已启用“需要安全传输”。
-    
+    1. 在“高级” > “参数”下，选择“从脚本自动填充”。    此选项会在 Hive 脚本中查找需要在运行时提供值的所有参数。
+
+    1. 在“值”  文本框中，以 `wasbs://adfgetstarted@<StorageAccount>.blob.core.windows.net/outputfolder/` 格式添加现有文件夹。 此路径区分大小写。 这是脚本的输出的存储路径。 `wasbs` 架构是必需的，因为存储帐户现在默认情况下已启用“需要安全传输”。
+
         ![为 Hive 脚本提供参数](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-provide-script-parameters.png "为 Hive 脚本提供参数")
 
 1. 选择“验证”以验证管道。  选择 **>>** （右键头）按钮，关闭验证窗口。
@@ -317,7 +319,7 @@ Write-host "`nScript completed" -ForegroundColor Green
 
     ![触发 Azure 数据工厂管道](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-trigger-pipeline.png "触发 Azure 数据工厂管道")
 
-2. 在弹出的边栏中选择“完成”。 
+2. 在弹出侧栏中选择“确定”  。
 
 ## <a name="monitor-a-pipeline"></a>监视管道
 

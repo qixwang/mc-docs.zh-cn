@@ -5,20 +5,20 @@ services: virtual-wan
 author: rockboyfor
 ms.service: virtual-wan
 ms.topic: conceptual
-origin.date: 11/12/2019
-ms.date: 02/24/2020
+origin.date: 03/05/2020
+ms.date: 03/30/2020
 ms.author: v-yeche
 Customer intent: As someone with a networking background, I want to create a route table using the portal.
-ms.openlocfilehash: d8443ad3781f2c2a1967845bfed288bd0d3974bc
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.openlocfilehash: 9160db64ade21b89f4edea146777a3c7abcf6d1f
+ms.sourcegitcommit: 4810b75d1e1db78d9747e99735468a6ab861be2d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78154536"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80291299"
 ---
 # <a name="create-a-virtual-wan-hub-route-table-for-nvas-azure-portal"></a>创建 NVA 的虚拟 WAN 中心路由表：Azure 门户
 
-本文介绍如何通过网络虚拟设备 (NVA) 将流量从连接到虚拟 WAN 中心的分支（本地站点）引导到辐射 VNet。
+本文介绍如何通过网络虚拟设备 (NVA) 将流量从连接到虚拟 WAN 中心的分支（本地站点）引导到辐射虚拟网络 (VNet)。
 
 ![虚拟 WAN 示意图](./media/virtual-wan-route-table/vwanroute.png)
 
@@ -30,15 +30,16 @@ ms.locfileid: "78154536"
 
     * 必须向 NVA 网络接口分配一个专用 IP 地址。
 
-    * 该 NVA 不是部署在虚拟中心内。 它必须部署在单独的 VNet 中。
+    * 该 NVA 不是部署在虚拟中心内。 它必须部署在单独的虚拟网络中。
 
-    * 可将一个或多个虚拟网络连接到 NVA VNet。 本文将 NVA VNet 称作“间接辐射 VNet”。 可以使用 VNet 对等互连将这些 VNet 连接到 NVA VNet。 在上图中，Vnet 1、Vnet 2 和 NVA Vnet 之间的 Vnet 对等互连链路用黑色箭头表示。
-* 已创建 2 个 VNet。 这些 VNet 将用作辐射 VNet。
+    * 可将一个或多个虚拟网络连接到 NVA 虚拟网络。 本文将 NVA 虚拟网络称作“间接辐射 VNet”。 可以使用 VNet 对等互连将这些虚拟网络连接到 NVA VNet。 在上图中，VNet 1、VNet 2 和 NVA VNet 之间的 VNet 对等互连链路用黑色箭头表示。
+* 你已创建了两个虚拟网络。 这些 VNet 将用作辐射 VNet。
 
-    * 在本练习中，VNet 辐射地址空间为：VNet1：10.0.2.0/24，VNet2：10.0.3.0/24。 有关如何创建 VNet 的信息，请参阅[创建虚拟网络](../virtual-network/quick-create-portal.md)。
+    * VNet 辐射地址空间为：VNet1：10.0.2.0/24，VNet2：10.0.3.0/24。 有关如何创建虚拟网络的信息，请参阅[创建虚拟网络](../virtual-network/quick-create-portal.md)。
 
     * 确保上述任何 VNet 不包含虚拟网络网关。
-    * 对于本文中的配置，这些 VNet 不需要网关子网。
+
+    * VNet 不需要网关子网。
 
 <a name="signin"></a>
 ## <a name="1-sign-in"></a>1.登录
@@ -48,21 +49,21 @@ ms.locfileid: "78154536"
 <a name="vwan"></a>
 ## <a name="2-create-a-virtual-wan"></a>2.创建虚拟 WAN
 
-创建虚拟 WAN。 对于本练习，可以使用以下值：
+创建虚拟 WAN。 请使用以下示例值：
 
 * **虚拟 WAN 名称：** myVirtualWAN
 * **资源组：** testRG
-* **位置：** 中国北部
+* **位置：** 中国北部 2
 
 [!INCLUDE [Create a virtual WAN](../../includes/virtual-wan-tutorial-vwan-include.md)]
 
 <a name="hub"></a>
 ## <a name="3-create-a-hub"></a>3.创建中心
 
-创建中心。 对于本练习，可以使用以下值：
+创建中心。 请使用以下示例值：
 
-* **位置：** 中国北部
-* **名称：** chinanorthhub
+* **位置：** 中国北部 2
+* **名称：** chinanorth2hub
 * **中心专用地址空间：** 10.0.1.0/24
 
 [!INCLUDE [Create a hub](../../includes/virtual-wan-tutorial-hub-include.md)]
@@ -70,7 +71,7 @@ ms.locfileid: "78154536"
 <a name="route"></a>
 ## <a name="4-create-and-apply-a-hub-route-table"></a>4.创建并应用中心路由表
 
-使用中心路由表更新中心。 对于本练习，可以使用以下值：
+使用中心路由表更新中心。 请使用以下示例值：
 
 * **辐射 VNet 地址空间：** （VNet1 和 VNet2）10.0.2.0/24 和 10.0.3.0/24
 * **外围网络 NVA 网络接口专用 IP 地址：** 10.0.4.5
@@ -85,17 +86,17 @@ ms.locfileid: "78154536"
 <a name="connections"></a>
 ## <a name="5-create-the-vnet-connections"></a>5.创建 VNet 连接
 
-创建从每个间接辐射 VNet（VNet1 和 VNet2）到中心的 Vnet 连接。 这些 Vnet 连接在上图中用蓝色箭头表示。 然后，创建从 NVA VNet 到中心的 Vnet 连接（图中的黑色箭头）。 
+创建从每个间接辐射 VNet（VNet1 和 VNet2）到中心的虚拟网络连接。 这些虚拟网络连接在上图中用蓝色箭头表示。 然后，创建从 NVA VNet 到中心的 VNet 连接（图中的黑色箭头）。
 
  对于此步骤，可以使用以下值：
 
-| VNet 名称| 连接名称|
+| 虚拟网络名称| 连接名称|
 | --- | --- |
 | VNet1 | testconnection1 |
 | VNet2 | testconnection2 |
 | NVAVNet | testconnection3 |
 
-针对要连接的每个 VNet 重复以下过程。
+针对要连接的每个虚拟网络重复以下过程。
 
 1. 在虚拟 WAN 的页面上，单击“虚拟网络连接”。 
 2. 在虚拟网络连接页上，单击“+添加连接”。 

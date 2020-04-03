@@ -8,14 +8,14 @@ manager: timlt
 ms.service: event-hubs
 ms.topic: article
 origin.date: 12/02/2019
-ms.date: 01/17/2020
+ms.date: 03/30/2020
 ms.author: v-tawe
-ms.openlocfilehash: e92a911cda508658a878bbe29ce8d0eba1ca4b5e
-ms.sourcegitcommit: b2f2bb08ab1b5ccb3c596d84b3b6ddca5bba3903
+ms.openlocfilehash: ebfff9a00b174a848ab7b0f4d74471b0f30d9de4
+ms.sourcegitcommit: 260800ede66f48c886d1426a0fac18b4d402b4f2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80151489"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586817"
 ---
 # <a name="event-hubs-frequently-asked-questions"></a>事件中心常见问题
 

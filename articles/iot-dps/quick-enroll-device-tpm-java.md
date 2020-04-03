@@ -10,12 +10,12 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: java
 ms.custom: mvc
-ms.openlocfilehash: 52066a0629ed19dd5a508e0dca1dbbb3f3737b1e
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: 7a2663eb06fa8e77cf4c7891eeba6c583b391a42
+ms.sourcegitcommit: 260800ede66f48c886d1426a0fac18b4d402b4f2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79291142"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586803"
 ---
 # <a name="quickstart-enroll-tpm-device-to-iot-hub-device-provisioning-service-using-java-service-sdk"></a>快速入门：使用 Java 服务 SDK 将 TPM 设备注册到 IoT 中心设备预配服务
 
@@ -97,7 +97,7 @@ ms.locfileid: "79291142"
       - 若要将此配置添加到示例，请执行以下步骤：
         1. 在 [Azure 门户](https://portal.azure.cn)中导航到已链接到预配服务的 IoT 中心。 打开中心的“概览”选项卡，复制“主机名”。   将该“主机名”  指定给 *IOTHUB_HOST_NAME* 参数。
             ```Java
-            private static final String IOTHUB_HOST_NAME = "[Host name].azure-devices.net";
+            private static final String IOTHUB_HOST_NAME = "[Host name].azure-devices.cn";
             ```
         2. 为 *DEVICE_ID* 参数指定一个友好名称，并保留 *PROVISIONING_STATUS* 的默认值 *ENABLED*。 
     

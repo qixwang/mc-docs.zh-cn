@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 06/05/2018
 ms.date: 03/02/2020
-ms.openlocfilehash: ebda11d5b4ac249e9288079c578f9aa440a85ba9
-ms.sourcegitcommit: 094c057878de233180ff3b3a3e3c19bc11c81776
+ms.openlocfilehash: 9e1f4e8a2f77db36e4b4e4c6476ca1a108d8ec76
+ms.sourcegitcommit: 5fb45da006859215edc8211481f13174aa43dbeb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77501446"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80634379"
 ---
 # <a name="check-resource-usage-against-limits"></a>根据限制检查资源使用情况
 
@@ -60,7 +60,7 @@ Get-AzNetworkUsage `
 
 你会收到格式与以下示例输出相同的输出：
 
-```powershell
+```output
 ResourceType            CurrentValue Limit
 ------------            ------------ -----
 Virtual Networks                   1    50
@@ -84,7 +84,7 @@ az network list-usages \
 
 你会收到格式与以下示例输出相同的输出：
 
-```azurecli
+```output
 Name                    CurrentValue Limit
 ------------            ------------ -----
 Virtual Networks                   1    50

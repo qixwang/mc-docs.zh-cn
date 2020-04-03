@@ -4,16 +4,16 @@ description: 了解如何使用 Python 客户端库在 Azure 密钥保管库中�
 author: msmbaldwin
 ms.author: v-tawe
 origin.date: 10/20/2019
-ms.date: 03/16/2020
+ms.date: 03/30/2020
 ms.service: key-vault
 ms.subservice: secrets
 ms.topic: quickstart
-ms.openlocfilehash: 8a978e68ad608469a86d085e014676d405ff7b46
-ms.sourcegitcommit: 764b3d26aedce2de0e1948468a706fd3204a3d5e
+ms.openlocfilehash: eaec67e63ff46375a5f8383a7f676a7f24b2d60d
+ms.sourcegitcommit: 5fb45da006859215edc8211481f13174aa43dbeb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2020
-ms.locfileid: "79543345"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80634571"
 ---
 # <a name="quickstart-azure-key-vault-client-library-for-python"></a>快速入门：适用于 Python 的 Azure Key Vault 客户端库
 
@@ -87,7 +87,6 @@ az ad sp create-for-rbac -n "http://mySP" --sdk-auth
   "tenantId": "35ad10f1-7799-4766-9acf-f2d946161b77",
   "activeDirectoryEndpointUrl": "https://login.chinacloudapi.cn",
   "resourceManagerEndpointUrl": "https://management.chinacloudapi.cn/",
-  "activeDirectoryGraphResourceId": "https://graph.chinacloudapi.cn/",
   "sqlManagementEndpointUrl": "https://management.core.chinacloudapi.cn:8443/",
   "galleryEndpointUrl": "https://gallery.chinacloudapi.cn/",
   "managementEndpointUrl": "https://management.core.chinacloudapi.cn/"

@@ -15,12 +15,12 @@ ms.topic: conceptual
 origin.date: 03/20/2019
 ms.date: 03/04/2020
 ms.author: v-jay
-ms.openlocfilehash: 654b5b4216b98dd6019aee462a80af6a0b3958a0
-ms.sourcegitcommit: fbc7584f403417d3af7bd6bbbaed7c13a78c57b9
+ms.openlocfilehash: 89f203df045b09212c6672e1706740b2b496488d
+ms.sourcegitcommit: fe9ed98aaee287a21648f866bb77cb6888f75b0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78412582"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80625801"
 ---
 # <a name="use-playready-dynamic-common-encryption"></a>使用 PlayReady 动态通用加密
 
@@ -28,8 +28,7 @@ ms.locfileid: "78412582"
 > Google Widevine 内容保护服务目前在 Azure 中国区域不可用。
 
 > [!NOTE]
-> 若要完成本教程，需要一个 Azure 帐户。 有关详细信息，请参阅 [Azure 1 元试用](https://www.azure.cn/zh-cn/pricing/1rmb-trial-full/?form-type=identityauth)。
->   
+> 若要完成本教程，需要一个 Azure 帐户。 有关详细信息，请参阅 [Azure 1 元试用](https://wd.azure.cn/zh-cn/pricing/1rmb-trial-full)。 不会向媒体服务 v2 添加任何新特性或新功能。 <br/>查看最新版本：[媒体服务 v3](/media-services/latest/)。 另请参阅[从 v2 到 v3 的迁移指南](../latest/migrate-from-v2-to-v3.md)
 
 ## <a name="overview"></a>概述
 
@@ -92,17 +91,17 @@ ms.locfileid: "78412582"
 
 有关如何编码的说明，请参阅[使用 Media Encoder Standard 对资产进行编码](media-services-dotnet-encode-with-media-encoder-standard.md)。
 
-## <a id="create_contentkey"></a>创建内容密钥并将其与编码资产相关联
+## <a name="create-a-content-key-and-associate-it-with-the-encoded-asset"></a><a id="create_contentkey"></a>创建内容密钥并将其与编码资产相关联
 在媒体服务中，内容密钥包含用于加密资产的密钥。
 
 有关详细信息，请参阅[创建内容密钥](media-services-dotnet-create-contentkey.md)。
 
-## <a id="configure_key_auth_policy"></a>配置内容密钥授权策略
+## <a name="configure-the-content-keys-authorization-policy"></a><a id="configure_key_auth_policy"></a>配置内容密钥授权策略
 媒体服务支持通过多种方式对发出密钥请求的用户进行身份验证。 必须配置内容密钥授权策略。 客户端（播放器）必须符合该策略才能将密钥传送到客户端。 内容密钥授权策略可能有一种或多种授权限制：开放或令牌限制。
 
 有关详细信息，请参阅[配置内容密钥授权策略](media-services-dotnet-configure-content-key-auth-policy.md#playready-dynamic-encryption)。
 
-## <a id="configure_asset_delivery_policy"></a>配置资产传送策略
+## <a name="configure-an-asset-delivery-policy"></a><a id="configure_asset_delivery_policy"></a>配置资产传送策略
 为资产配置传送策略。 资产传送策略配置包括：
 
 * DRM 许可证获取 URL。
@@ -111,7 +110,7 @@ ms.locfileid: "78412582"
 
 有关详细信息，请参阅[配置资产传送策略](media-services-dotnet-configure-asset-delivery-policy.md)。
 
-## <a id="create_locator"></a>创建 OnDemand 流式处理定位符以获取流式处理 URL
+## <a name="create-an-ondemand-streaming-locator-to-get-a-streaming-url"></a><a id="create_locator"></a>创建 OnDemand 流式处理定位符以获取流式处理 URL
 需要为用户提供平滑流式处理、DASH 或 HLS 的流式处理 URL。
 
 > [!NOTE]

@@ -6,15 +6,15 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: quickstart
-ms.date: 03/16/2020
+ms.date: 03/30/2020
 ms.author: v-junlch
 ms.custom: mvc
-ms.openlocfilehash: 1f729246cad222a659dc2b8b97a62880a8d50127
-ms.sourcegitcommit: 71a386ca0d0ecb79a123399b6ab6b8c70ea2aa78
+ms.openlocfilehash: bcfe44c67d73cad74a8423a323f77879a9118ea0
+ms.sourcegitcommit: 64584c0bf31b4204058ae2b4641356b904ccdd58
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2020
-ms.locfileid: "79497255"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80581812"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway---azure-cli"></a>快速入门：使用 Azure 应用程序网关定向 Web 流量 - Azure CLI
 
@@ -26,7 +26,7 @@ ms.locfileid: "79497255"
 
 ## <a name="prerequisites"></a>先决条件
 
-- 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://www.azure.cn/pricing/1rmb-trial)。
+- 具有活动订阅的 Azure 帐户。 [创建帐户](https://www.azure.cn/pricing/1rmb-trial)。
 - [Azure CLI 2.0.4 或更高版本](/cli/install-azure-cli)（如果在本地运行 Azure CLI）。
 
 ## <a name="create-resource-group"></a>创建资源组
@@ -169,7 +169,7 @@ Azure 可能需要长达 30 分钟的时间来创建应用程序网关。 创建
 
 虽然 Azure 不需 NGINX Web 服务器即可创建应用程序网关，但本快速入门中安装了它，用来验证 Azure 是否已成功创建应用程序网关。 若要获取新应用程序网关的公共 IP 地址，请使用 `az network public-ip show`。 
 
-```azurepowershell
+```azurecli
 az network public-ip show `
   --resource-group myResourceGroupAG `
   --name myAGPublicIPAddress `

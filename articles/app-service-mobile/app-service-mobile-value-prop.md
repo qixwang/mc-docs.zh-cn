@@ -3,18 +3,18 @@ title: 关于移动应用
 description: 了解应用服务为企业移动应用带来的优势。
 ms.assetid: 4e96cb9d-a632-4cf6-8219-0810d8ade3f9
 ms.tgt_pltfrm: mobile-multiple
-ms.topic: conceptual
+ms.topic: overview
 origin.date: 06/25/2019
-md.date: 03/23/2020
+md.date: 03/30/2020
 ms.author: v-tawe
-ms.openlocfilehash: 82d07e30aad98ed98696c03a76e0729e4ce47098
-ms.sourcegitcommit: e94ed1c9eff4e88be2ca389909e60b14cc0d92f8
+ms.openlocfilehash: ff45a353d8eafe89aaa0c341fd34021f91084e30
+ms.sourcegitcommit: 44d3fe59952847e5394bbe6c05bd6f333bb56345
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79084415"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80522075"
 ---
-# <a name="getting-started"> </a>关于 Azure 应用服务中的移动应用
+# <a name="about-mobile-apps-in-azure-app-service"></a><a name="getting-started"> </a>关于 Azure 应用服务中的移动应用
 
 Azure 应用服务是完全托管的平台即服务 (PaaS) 产品，适用于专业开发人员。 该服务为 Web、移动和集成方案提供丰富的功能集。 
 

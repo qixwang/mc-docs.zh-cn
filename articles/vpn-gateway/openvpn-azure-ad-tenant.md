@@ -6,14 +6,14 @@ author: WenJason
 ms.service: vpn-gateway
 ms.topic: conceptual
 origin.date: 01/03/2020
-ms.date: 02/10/2020
+ms.date: 03/31/2020
 ms.author: v-jay
-ms.openlocfilehash: 47d261b9e4b51bd5b9921bbbea3d348738de2eaf
-ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
+ms.openlocfilehash: 052799269a4ce8c046dc7c94c428ed89c90de8b7
+ms.sourcegitcommit: f204ec3ae220b96475db60e6ac8a2807af3de40e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77068579"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80418028"
 ---
 # <a name="create-an-azure-active-directory-tenant-for-p2s-openvpn-protocol-connections"></a>为 P2S OpenVPN 协议连接创建 Azure Active Directory 租户
 
@@ -23,7 +23,7 @@ ms.locfileid: "77068579"
 > Azure AD 身份验证仅支持用于 OpenVPN®协议连接。
 >
 
-## <a name="tenant"></a>1.创建 Azure AD 租户
+## <a name="1-create-the-azure-ad-tenant"></a><a name="tenant"></a>1.创建 Azure AD 租户
 
 使用[创建新租户](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)一文中的步骤创建 Azure AD 租户：
 
@@ -34,7 +34,7 @@ ms.locfileid: "77068579"
 
    ![新 Azure AD 租户](./media/openvpn-create-azure-ad-tenant/newtenant.png)
 
-## <a name="users"></a>2.创建 Azure AD 租户用户
+## <a name="2-create-azure-ad-tenant-users"></a><a name="users"></a>2.创建 Azure AD 租户用户
 
 接下来，创建两个用户帐户。 创建一个全局管理员帐户和一个主要用户帐户。 主要用户帐户用作主要嵌入帐户（服务帐户）。 创建 Azure AD 租户用户帐户时，可以根据要创建的用户类型调整目录角色。
 
@@ -43,7 +43,7 @@ ms.locfileid: "77068579"
 * 全局管理员
 * User
 
-## <a name="enable-authentication"></a>3.在 VPN 网关上启用 Azure AD 身份验证
+## <a name="3-enable-azure-ad-authentication-on-the-vpn-gateway"></a><a name="enable-authentication"></a>3.在 VPN 网关上启用 Azure AD 身份验证
 
 1. 找到要用于身份验证的目录的目录 ID。 此 ID 在“Active Directory”页的“属性”部分中列出。
 
@@ -58,7 +58,7 @@ ms.locfileid: "77068579"
     Azure 中国世纪互联
 
     ```
-    https://https://login.chinacloudapi.cn/common/oauth2/authorize?client_id=49f817b6-84ae-4cc0-928c-73f27289b3aa&response_type=code&redirect_uri=https://portal.azure.cn&nonce=1234&prompt=admin_consent
+    https://login.chinacloudapi.cn/common/oauth2/authorize?client_id=49f817b6-84ae-4cc0-928c-73f27289b3aa&response_type=code&redirect_uri=https://portal.azure.cn&nonce=1234&prompt=admin_consent
     ```
 
 5. 出现提示时，请选择“全局管理员”帐户。 
@@ -83,7 +83,7 @@ ms.locfileid: "77068579"
     ```azurepowershell
     $gw = Get-AzVirtualNetworkGateway -Name <name of VPN gateway> -ResourceGroupName <Resource group>
     Set-AzVirtualNetworkGateway -VirtualNetworkGateway $gw -VpnClientRootCertificates @()
-    Set-AzVirtualNetworkGateway -VirtualNetworkGateway $gw -AadTenantUri "https://login.partner.microsoftonline.cn/<your Directory ID>" -AadAudienceId "41b23e61-6c1e-4545-b367-cd054e0ed4b4" -AadIssuerUri "https://sts.chinacloudapi.cn/<your Directory ID>/" -VpnClientAddressPool 192.168.0.0/24 -VpnClientProtocol OpenVPN
+    Set-AzVirtualNetworkGateway -VirtualNetworkGateway $gw -AadTenantUri "https://login.chinacloudapi.cn/<your Directory ID>" -AadAudienceId "41b23e61-6c1e-4545-b367-cd054e0ed4b4" -AadIssuerUri "https://sts.chinacloudapi.cn/<your Directory ID>/" -VpnClientAddressPool 192.168.0.0/24 -VpnClientProtocol OpenVPN
     ```
 
 10. 运行以下命令来创建并下载配置文件。 请更改 -ResourceGroupName 和 -Name 值，使之与你自己的值匹配。

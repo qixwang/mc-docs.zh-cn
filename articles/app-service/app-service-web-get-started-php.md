@@ -4,17 +4,23 @@ description: 在数分钟内将第一个 PHP Hello World 部署到 Azure 应用�
 ms.assetid: 6feac128-c728-4491-8b79-962da9a40788
 ms.topic: quickstart
 origin.date: 08/24/2018
-ms.date: 03/23/2020
+ms.date: 03/30/2020
 ms.author: v-tawe
 ms.custom: mvc, cli-validate, seodec18
-ms.openlocfilehash: cc598383fa619b42c7dad9c2db100f139c932458
-ms.sourcegitcommit: b2f2bb08ab1b5ccb3c596d84b3b6ddca5bba3903
+ms.openlocfilehash: 453d9a86b26e0061b1470d2b414f82ec794d4153
+ms.sourcegitcommit: 44d3fe59952847e5394bbe6c05bd6f333bb56345
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80151729"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521987"
 ---
 # <a name="create-a-php-web-app-in-azure"></a>在 Azure 中创建 PHP Web 应用
+
+<!--
+> [!NOTE]
+> This article deploys an app to App Service on Windows. To deploy to App Service on _Linux_, see [Create a PHP web app in App Service on Linux](./containers/quickstart-php.md).
+>
+-->
 
 [Azure 应用服务](overview.md)提供高度可缩放、自修复的 Web 托管服务。  本快速入门教程演示如何将 PHP 应用部署到 Azure 应用服务。 在 CLI 中使用 [Azure CLI](https://docs.azure.cn/cli/get-started-with-azure-cli) 创建 Web 应用，并使用 Git 将 PHP 代码示例部署到 Web 应用。
 
@@ -92,7 +98,7 @@ Local git is configured with url of 'https://<username>@<app_name>.scm.chinaclou
   < JSON data removed for brevity. >
 }
 ```
-已创建了一个空的新 Web 应用并启用了 Git 部署。
+现在你已经创建了一个新的空 Web 应用并启用了 Git 部署。
 
 > [!NOTE]
 > Git 远程的 URL 将显示在 `deploymentLocalGitUrl` 属性中，其格式为 `https://<username>@<app_name>.scm.chinacloudsites.cn/<app_name>.git`。 保存此 URL，后续将会用到。

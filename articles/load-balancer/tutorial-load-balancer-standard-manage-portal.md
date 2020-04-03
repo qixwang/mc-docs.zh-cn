@@ -1,6 +1,6 @@
 ---
 title: 教程：对传入 VM 的 Internet 流量进行负载均衡 - Azure 门户
-titlesuffix: Azure Load Balancer
+titleSuffix: Azure Load Balancer
 description: 本教程展示了如何使用 Azure 门户创建和管理标准负载均衡器。
 services: load-balancer
 documentationcenter: na
@@ -13,15 +13,15 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 03/11/2019
-ms.date: 11/11/2019
+ms.date: 04/06/2020
 ms.author: v-jay
 ms.custom: seodec18
-ms.openlocfilehash: e0dc48f093073385cbc855d51c78c1ee5ef4ba1c
-ms.sourcegitcommit: d77d5d8903faa757c42b80ee24e7c9d880950fc3
+ms.openlocfilehash: 7b04d0bdc51d5b353ac1cc9cd548585be6529682
+ms.sourcegitcommit: fe9ed98aaee287a21648f866bb77cb6888f75b0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73742299"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80625673"
 ---
 # <a name="tutorial-load-balance-internet-traffic-to-vms-using-the-azure-portal"></a>教程：通过 Azure 门户对从 Internet 到 VM 的流量进行负载均衡
 
@@ -43,7 +43,7 @@ ms.locfileid: "73742299"
 
 ## <a name="create-a-standard-load-balancer"></a>创建标准负载均衡器
 
-在本部分，我们将创建一个标准负载均衡器，以帮助对虚拟机进行负载均衡。 标准负载均衡器仅支持标准公共 IP 地址。 创建标准负载均衡器时，还必须为该标准负载均衡器创建一个配置为前端（默认情况下命名为 *LoadBalancerFrontend*）的新的标准公用 IP 地址。 
+在本部分，我们将创建一个标准负载均衡器，以帮助对虚拟机进行负载均衡。 标准负载均衡器仅支持标准公共 IP 地址。 创建标准负载均衡器时，还必须为该标准负载均衡器创建一个配置为前端（默认情况下命名为 *LoadBalancerFrontend*）的新的标准公共 IP 地址。 
 
 1. 在屏幕的左上方，单击“创建资源”   > “网络”   > “负载均衡器”  。
 2. 在“创建负载均衡器”页的“基本”选项卡中输入或选择以下信息，接受其余的默认设置，然后选择“查看 + 创建”    ：
@@ -52,7 +52,7 @@ ms.locfileid: "73742299"
     | ---                     | ---                                                |
     | 订阅               | 选择订阅。    |    
     | 资源组         | 选择“新建”并在文本框中键入 *myResourceGroupSLB*  。|
-    | Name                   | *myLoadBalancer*                                   |
+    | 名称                   | *myLoadBalancer*                                   |
     | 区域         | 选择“中国北部”  。                                        |
     | 类型          | 选择“公共”。                                         |
     | SKU           | 选择“标准”  。                          |
@@ -83,9 +83,9 @@ ms.locfileid: "73742299"
 2. 在“设置”下单击“运行状况探测”，然后单击“添加”。   
 3. 使用以下值创建运行状况探测：
      
-    | 设置 | 值 |
+    | 设置 | Value |
     | ------- | ----- |
-    | Name | 输入 *myHealthProbe*。 |
+    | 名称 | 输入 *myHealthProbe*。 |
     | 协议 | 选择“HTTP”。  |
     | 端口 | 输入 *80*。|
     | 时间间隔 | 输入 *15* 作为两次探测尝试之间的**时间间隔**（以秒为单位）。 |
@@ -101,9 +101,9 @@ ms.locfileid: "73742299"
 2. 在“设置”下单击“负载均衡规则”，然后单击“添加”    。
 3. 使用以下值配置负载均衡规则：
 
-    | 设置 | 值 |
+    | 设置 | Value |
     | ------- | ----- |
-    | Name | 输入 *myHTTPRule*。 |
+    | 名称 | 输入 *myHTTPRule*。 |
     | 协议 | 选择“TCP”  。 |
     | 端口 | 输入 *80*。|
     | 后端端口 | 输入 *80*。 |
@@ -116,22 +116,20 @@ ms.locfileid: "73742299"
 
 在本部分，我们将创建一个虚拟网络，为负载均衡器的后端池创建三台虚拟机，然后在虚拟机上安装 IIS，以便对负载均衡器进行测试。
 
-### <a name="create-a-virtual-network"></a>创建虚拟网络
+## <a name="virtual-network-and-parameters"></a>虚拟网络和参数
 
-1. 在屏幕的左上方，选择“创建资源” > “网络” > “虚拟网络”    。
-2. 在“创建虚拟网络”  中，输入或选择以下信息：
+在本部分中，你需要将步骤中的以下参数替换为以下信息：
 
-    | 设置 | 值 |
-    | ------- | ----- |
-    | Name | 输入 *myVNet*。 |
-    | 地址空间 | 输入 10.1.0.0/16  。 |
-    | 订阅 | 选择订阅。|
-    | 资源组 | 选择现有资源 - *myResourceGroupSLB*。 |
-    | Location | 选择“中国北部”  。|
-    | 子网 - 名称 | 输入 *myBackendSubnet*。 |
-    | 子网 - 地址范围 | 输入 10.1.0.0/24  。 |
-    
-3. 将剩余的字段保留默认设置，然后选择 **“创建”** 。
+| 参数                   | Value                |
+|-----------------------------|----------------------|
+| **\<resource-group-name>**  | myResourceGroupSLB（选择现有资源组） |
+| **\<virtual-network-name>** | myVNet          |
+| **\<region-name>**          | 中国北部      |
+| **\<IPv4-address-space>**   | 10.1.0.0/16          |
+| **\<subnet-name>**          | mySubnet        |
+| **\<subnet-address-range>** | 10.1.0.0/24          |
+
+[!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 
 ### <a name="create-virtual-machines"></a>创建虚拟机
 
@@ -144,7 +142,7 @@ ms.locfileid: "73742299"
    - **实例详细信息** > **虚拟机名称**：键入 *myVM1*。
    - 在“实例详细信息” > “区域”中，选择“中国北部”。   
   
-1. 选择“网络”  选项卡，或选择“下一步: **磁盘”，然后选择“下一步:网络”** 。 
+1. 选择“网络”  选项卡，或选择“下一步: **磁盘”，然后选择“下一步:**  网络”。 
    
    - 确保选中以下项：
        - **虚拟网络**：**myVnet**
@@ -179,7 +177,7 @@ ms.locfileid: "73742299"
     - *100* - **优先级**
     - *myHTTPRule* - 名称
     -  允许 HTTP - 说明
-4. 选择“设置”  （应用程序对象和服务主体对象）。
+4. 选择“添加”   。
 
 ### <a name="install-iis-on-vms"></a>在 VM 上安装 IIS
 

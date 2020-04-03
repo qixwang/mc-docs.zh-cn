@@ -2,31 +2,23 @@
 title: Azure VPN 网关：配置 BGP：PowerShell
 description: 本文指导完成使用 Azure Resource Manager 和 PowerShell 通过 Azure VPN 网关配置 BGP。
 services: vpn-gateway
-documentationcenter: na
 author: WenJason
-manager: digimobile
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 905b11a7-1333-482c-820b-0fd0f44238e5
 ms.service: vpn-gateway
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
 origin.date: 04/12/2017
-ms.date: 12/02/2019
+ms.date: 04/06/2020
 ms.author: v-jay
-ms.openlocfilehash: 4286a83782fadd348519113275256037c68af78c
-ms.sourcegitcommit: fac243483f641e1d01646a30197522a60599d837
+ms.openlocfilehash: 38d11e30795cbeb2b12d6e6b0466d60ae8ddca9a
+ms.sourcegitcommit: 5fb45da006859215edc8211481f13174aa43dbeb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74552983"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80634532"
 ---
 # <a name="how-to-configure-bgp-on-azure-vpn-gateways-using-powershell"></a>如何使用 PowerShell 在 Azure VPN 网关上配置 BGP
 本文介绍使用 Resource Manager 部署模型和 PowerShell 在跨界站点到站点 (S2S) VPN 连接和 VNet 到 VNet 连接上启用 BGP 的步骤。
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 
 ## <a name="about-bgp"></a>关于 BGP
 BGP 是通常在 Internet 上使用的，用于在两个或更多网络之间交换路由和可访问性信息的标准路由协议。 BGP 允许 Azure VPN 网关和本地 VPN 设备（称为 BGP 对等节点或邻居）交换“路由”，这些路由将通知这两个网关这些前缀的可用性和可访问性，以便这些前缀可通过涉及的网关或路由器。 BGP 还可以通过将 BGP 网关从一个 BGP 对等节点获知的路由传播到所有其他 BGP 对等节点来允许在多个网络之间传输路由。
@@ -47,7 +39,7 @@ BGP 是通常在 Internet 上使用的，用于在两个或更多网络之间交
 
 可以将这些部分组合在一起，生成更复杂的多跃点传输网络，以满足需求。
 
-## <a name ="enablebgp"></a>第 1 部分 - 在 Azure VPN 网关上配置 BGP
+## <a name="part-1---configure-bgp-on-the-azure-vpn-gateway"></a><a name ="enablebgp"></a>第 1 部分 - 在 Azure VPN 网关上配置 BGP
 以下配置步骤设置 Azure VPN 网关的 BGP 参数，如下面的图中所示：
 
 ![BGP 网关](./media/vpn-gateway-bgp-resource-manager-ps/bgp-gateway.png)
@@ -144,7 +136,7 @@ $vnet1gw.BgpSettingsText
 
 创建网关后，可以使用此网关通过 BGP 建立跨界连接或 VNet 到 VNet 连接。 以下各节介绍完成该练习所需的步骤。
 
-## <a name ="crossprembbgp"></a>第 2 部分 - 使用 BGP 建立跨界连接
+## <a name="part-2---establish-a-cross-premises-connection-with-bgp"></a><a name ="crossprembbgp"></a>第 2 部分 - 使用 BGP 建立跨界连接
 
 要建立跨界连接，需要创建本地网关来表示本地 VPN 设备，并创建连接将 VPN 网关与本地网关连接在一起。 尽管存在可引导完成这些步骤的文章，但本文包含用于指定 BGP 配置参数所需的其他属性。
 
@@ -218,7 +210,7 @@ New-AzVirtualNetworkGatewayConnection -Name $Connection15 -ResourceGroupName $RG
 
 连接在几分钟后建立，且 BGP 对等会话在建立 IPsec 连接后启动。
 
-## <a name ="v2vbgp"></a>第 3 部分 - 使用 BGP 建立 VNet 到 VNet 连接
+## <a name="part-3---establish-a-vnet-to-vnet-connection-with-bgp"></a><a name ="v2vbgp"></a>第 3 部分 - 使用 BGP 建立 VNet 到 VNet 连接
 
 此部分使用 BGP 添加 VNet 到 VNet 连接，如下图所示：
 
@@ -287,7 +279,7 @@ New-AzVirtualNetworkGateway -Name $GWName2 -ResourceGroupName $RG2 -Location $Lo
 
 ### <a name="step-2---connect-the-testvnet1-and-testvnet2-gateways"></a>步骤 2 - 连接 TestVNet1 和 TestVNet2 网关
 
-在本示例中，这两个网关位于同一订阅中。 可以在同一 PowerShell 会话中完成此步骤。
+在此示例中，这两个网关位于同一订阅中。 可以在同一 PowerShell 会话中完成此步骤。
 
 #### <a name="1-get-both-gateways"></a>1.获取这两个网关
 

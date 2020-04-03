@@ -15,6 +15,8 @@
       href: web-query-data.md
 - name: 教程
   items:
+    - name: 编写查询
+      href: write-queries.md
     - name: E2E 编程 Blob 引入
       items:
         - name: 'C#'
@@ -32,14 +34,20 @@
         - name: 数据引入概述
           displayName: 'pipelines, connectors, plugins, Python, .NET, Java, Node, REST'
           href: ingest-data-overview.md
+        - name: 数据引入属性
+          href: ingestion-properties.md
+        - name: 数据引入的格式
+          href: ingestion-supported-formats.md
     - name: Kusto 查询语言
       items:
         - name: 快速参考指南
           href: kql-quick-reference.md
     - name: 数据可视化概述
       href: viz-overview.md
-    - name: 安全概述
-      href: security.md
+    - name: 安全性
+      items:
+        - name: 安全概述
+          href: security.md
 - name: 操作指南
   items:
     - name: 创建群集和数据库
@@ -60,6 +68,8 @@
           href: ingest-data-one-click.md
         - name: 流式引入
           href: ingest-data-streaming.md
+        - name: 使用 LightIngest
+          href: lightingest.md
         - name: 事件中心
           items:
             - name: Azure 门户
@@ -96,8 +106,6 @@
           href: ingest-json-formats.md
     - name: 查询数据
       items:
-        - name: 编写查询
-          href: write-queries.md
         - name: 在 Azure Monitor 中查询数据
           href: query-monitor-data.md
         - name: 调试 KQL 内联 Python
@@ -144,14 +152,6 @@
       items:
         - name: 管理群集安全性
           href: manage-cluster-security.md
-        - name: 配置托管标识
-          href: managed-identities.md
-        - name: 配置客户管理的密钥
-          items:
-            - name: 'C#'
-              href: customer-managed-keys-csharp.md
-            - name: Azure Resource Manager 模板
-              href: customer-managed-keys-resource-manager.md
     - name: 管理
       items:
         - name: 群集

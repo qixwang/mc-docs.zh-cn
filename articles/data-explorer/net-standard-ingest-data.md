@@ -8,12 +8,12 @@ ms.service: data-explorer
 ms.topic: conceptual
 origin.date: 06/03/2019
 ms.date: 03/16/2020
-ms.openlocfilehash: 722a527a269fea79b546e83a3a2a542dc8f3201c
-ms.sourcegitcommit: 1d3d8dfdaf6281f06640cbee7124a1e8bf102c50
+ms.openlocfilehash: ae285bda409dc5a04d222e704ff0a861440d555e
+ms.sourcegitcommit: 44d3fe59952847e5394bbe6c05bd6f333bb56345
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "80243953"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80522122"
 ---
 # <a name="ingest-data-using-the-azure-data-explorer-net-standard-sdk-preview"></a>使用 Azure 数据资源管理器 .NET Standard SDK（预览版）引入数据
 
@@ -78,7 +78,7 @@ var kustoConnectionStringBuilder =
 设置源文件的路径。 此示例使用 Azure Blob 存储上托管的示例文件。 StormEvents  示例数据集包含[美国国家环境信息中心](https://www.ncdc.noaa.gov/stormevents/)中与天气相关的数据。
 
 ```csharp
-var blobPath = "https://kustosamplefiles.blob.core.windows.net/samplefiles/StormEvents.csv?st=2018-08-31T22%3A02%3A25Z&se=2020-09-01T22%3A02%3A00Z&sp=r&sv=2018-03-28&sr=b&sig=LQIbomcKI8Ooz425hWtjeq6d61uEaq21UVX7YrM61N4%3D";
+var blobPath = "https://kustosamplefiles.blob.core.chinacloudapi.cn/samplefiles/StormEvents.csv?st=2018-08-31T22%3A02%3A25Z&se=2020-09-01T22%3A02%3A00Z&sp=r&sv=2018-03-28&sr=b&sig=LQIbomcKI8Ooz425hWtjeq6d61uEaq21UVX7YrM61N4%3D";
 ```
 
 ## <a name="create-a-table-on-your-test-cluster"></a>在测试群集上创建表

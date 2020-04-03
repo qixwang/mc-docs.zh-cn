@@ -8,12 +8,12 @@ ms.topic: conceptual
 origin.date: 01/03/2020
 ms.author: v-yiso
 ms.date: 03/02/2020
-ms.openlocfilehash: 134945b5ba9a8ae4e9c8a7a7f50241002aa6f960
-ms.sourcegitcommit: 46fd4297641622c1984011eac4cb5a8f6f94e9f5
+ms.openlocfilehash: 69d2eddb44da35c8497ecc82a7b04bdcce896d22
+ms.sourcegitcommit: 5fb45da006859215edc8211481f13174aa43dbeb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77563343"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80634556"
 ---
 # <a name="hdinsight-sdk-for-go-preview"></a>用于 Go 的 HDInsight SDK（预览版）
 
@@ -23,7 +23,7 @@ ms.locfileid: "77563343"
 > [!NOTE]
 >还可以[从此处获得](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/preview/hdinsight/mgmt/2018-06-01-preview/hdinsight)适用于此 SDK 的GoDoc 参考资料。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * [`go get` 工具](https://github.com/golang/go/wiki/GoGetTools)。
 * [Go](https://golang.org/dl/)。
@@ -92,7 +92,6 @@ az ad sp create-for-rbac --name <Service Principal Name> --sdk-auth
   "tenantId": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
   "activeDirectoryEndpointUrl": "https://login.microsoftonline.com",
   "resourceManagerEndpointUrl": "https://management.azure.com/",
-  "activeDirectoryGraphResourceId": "https://graph.windows.net/",
   "sqlManagementEndpointUrl": "https://management.core.windows.net:8443/",
   "galleryEndpointUrl": "https://gallery.azure.com/",
   "managementEndpointUrl": "https://management.core.windows.net/"

@@ -6,15 +6,15 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
+author: likebupt
 ms.author: peterlu
 ms.date: 11/19/2019
-ms.openlocfilehash: c017ad2d37f0ff706678d82c7f368c945d421198
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+ms.openlocfilehash: 3b7f8320a47d66ada1296105fc2be04546bacb98
+ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75598016"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80343463"
 ---
 # <a name="execute-r-script"></a>执行 R 脚本
 
@@ -66,6 +66,41 @@ azureml_main <- function(dataframe1, dataframe2){
 ```
  > [!NOTE]
   > 安装之前，请检查是否已存在包，避免重复安装。 类似于上述示例代码 `  if(!require(zoo)) install.packages("zoo",repos = "http://cran.us.r-project.org")`。 重复安装可能会导致 Web 服务请求超时。     
+
+## <a name="upload-files"></a>上传文件
+**执行 R 脚本**支持使用 Azure 机器学习 R SDK 来上传文件。
+
+以下示例演示了如何在“执行 R 脚本”  中上传映像文件：
+```R
+
+# R version: 3.5.1
+# The script MUST contain a function named azureml_main
+# which is the entry point for this module.
+
+# The entry point function can contain up to two input arguments:
+#   Param<dataframe1>: a R DataFrame
+#   Param<dataframe2>: a R DataFrame
+azureml_main <- function(dataframe1, dataframe2){
+  print("R script run.")
+
+  # Generate a jpeg graph
+  img_file_name <- "rect.jpg"
+  jpeg(file=img_file_name)
+  example(rect)
+  dev.off()
+
+  upload_files_to_run(names = list(file.path("graphic", img_file_name)), paths=list(img_file_name))
+
+
+  # Return datasets as a Named List
+  return(list(dataset1=dataframe1, dataset2=dataframe2))
+}
+```
+
+成功提交管道后，可以在该模块的右窗格中预览映像
+
+[!div class="mx-imgBorder"]
+![已上传 - 映像](media/module/upload-image-in-r-script.png)
 
 ## <a name="how-to-configure-execute-r-script"></a>如何配置“执行 R 脚本”
 
@@ -131,6 +166,8 @@ azureml_main <- function(dataframe1, dataframe2){
 
 来自 R 的标准消息和错误将返回到模块的日志中。
 
+如果你需要在 R 脚本中打印结果，你可以在模块的右侧面板中的“输出 + 日志”  选项卡下的 **70_driver_log** 中找到打印的结果。
+
 ## <a name="sample-scripts"></a>示例脚本
 
 使用自定义 R 脚本来扩展管道的方式有多种。  本部分提供常见任务的示例代码。
@@ -140,9 +177,9 @@ azureml_main <- function(dataframe1, dataframe2){
 
 “执行 R 脚本”模块支持任意 R 脚本文件作为输入  。 为此，必须将这些文件作为 ZIP 文件的一部分上传到你的工作区。
 
-1. 若要将包含 R 代码的 ZIP 文件上传到工作区，请依次单击“新建”、“数据集”，然后选择“从本地文件”和“Zip 文件”选项     。  
+1. 若要将包含 R 代码的 ZIP 文件上传到工作区，请转到“数据集”资产页面，单击“创建数据集”，然后选择“从本地文件”和“文件”数据集类型选项     。  
 
-1. 验证压缩文件是否可用于“已保存的数据集”列表  。
+1. 在左侧的模块树中，在“数据集”类别下的“我的数据集”列表中验证是否存在压缩的文件。  
 
 1.  将数据集连接到“脚本包”输入端口  。
 
@@ -185,7 +222,7 @@ azureml_main <- function(dataframe1, dataframe2){
 
 此示例演示如何使用 ZIP 文件中的数据集作为“执行 R 脚本”模块的输入  。
 
-1. 创建 CSV 格式中的数据文件，并将其命名为“mydatafile.csv”。
+1. 创建 CSV 格式的数据文件，并将其命名为“mydatafile.csv”。
 1. 创建一个 ZIP 文件，并将 CSV 文件添加到存档。
 1. 将压缩文件上载到 Azure 机器学习工作区。 
 1. 将结果数据集连接到“执行 R 脚本”模块的“ScriptBundle”输入   。

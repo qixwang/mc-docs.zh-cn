@@ -4,15 +4,15 @@ description: 了解如何在 Azure Kubernetes 服务 (AKS) 中配置 kubenet（�
 services: container-service
 ms.topic: article
 origin.date: 06/26/2019
-ms.date: 03/09/2020
+ms.date: 04/06/2020
 ms.author: v-yeche
 ms.reviewer: nieberts, jomore
-ms.openlocfilehash: d873c857c3de4253e4553dfee40eeee2b654ebfe
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: 89c695cde6a4f41b3058f63089e241a17f0529b4
+ms.sourcegitcommit: 76280dd9854dc0ff0ba1e5e62fb3dc3af049fbe2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79290760"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80517015"
 ---
 # <a name="use-kubenet-networking-with-your-own-ip-address-ranges-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中结合自己的 IP 地址范围使用 kubenet 网络
 
@@ -123,9 +123,11 @@ az ad sp create-for-rbac --skip-assignment
 
 以下示例输出显示了服务主体的应用程序 ID 和密码。 其他步骤中使用了这些值向服务主体分配角色，然后创建 AKS 群集：
 
-```console
-$ az ad sp create-for-rbac --skip-assignment
+```azurecli
+az ad sp create-for-rbac --skip-assignment
+```
 
+```output
 {
   "appId": "476b3636-5eda-4c0e-9751-849e70b5cfad",
   "displayName": "azure-cli-2019-01-09-22-29-24",
@@ -232,4 +234,4 @@ az aks create \
 [express-route]: ../expressroute/expressroute-introduction.md
 [network-comparisons]: concepts-network.md#compare-network-models
 
-<!-- Update_Description: wording update, update link -->
+<!-- Update_Description: update meta properties, wording update, update link -->

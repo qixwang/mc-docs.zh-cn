@@ -9,12 +9,12 @@ ms.topic: conceptual
 origin.date: 03/06/2020
 ms.date: 3/16/2020
 ms.author: v-lingwu
-ms.openlocfilehash: a1ca2cfbf3969f4538a9b478c4487f4fd2fdea02
-ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
+ms.openlocfilehash: ade44d145adea9d83a26ae2a82ed18bb7d0df310
+ms.sourcegitcommit: 78a05172a813b87428b87f3a2695e6bb3ae81ede
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/17/2020
-ms.locfileid: "79452591"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80417388"
 ---
 # <a name="authenticating-access-to-event-grid-resources"></a>对事件网格资源的访问者进行身份验证
 
@@ -31,7 +31,6 @@ Webhook 是从 Azure 事件网格接收事件的多种方式之一。 当新事�
 与众多支持 Webhook 的其他服务一样，事件网格需要你证明对 Webhook 的所有权，然后才能开始向该终结点传送事件。 此要求可防止恶意用户用大量事件淹没你的终结点。 如果使用下面列出的三项 Azure 服务中的任何一项，Azure 基础结构将自动进行此验证：
 
 * 使用[事件网格连接器](https://docs.microsoft.com/connectors/azureeventgrid/)的 Azure 逻辑应用
-* 通过 [Webhook](../event-grid/ensure-tags-exists-on-new-virtual-machines.md) 实现 Azure 自动化
 * 使用[事件网格触发器](../azure-functions/functions-bindings-event-grid.md)的 Azure Functions
 
 如果使用其他任何类型的终结点（例如基于 HTTP 触发器的 Azure 函数），终结点代码需要参与事件网格的验证握手。 事件网格支持通过两种方式来验证订阅。

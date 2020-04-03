@@ -8,12 +8,12 @@ ms.date: 03/16/2020
 ms.service: key-vault
 ms.subservice: secrets
 ms.topic: quickstart
-ms.openlocfilehash: c4449b110b4e5340aadecd2db5a07ce4ddde62fb
-ms.sourcegitcommit: 764b3d26aedce2de0e1948468a706fd3204a3d5e
+ms.openlocfilehash: 5b1fe15f7bb72fb27b62482141cb133094131cf1
+ms.sourcegitcommit: 5fb45da006859215edc8211481f13174aa43dbeb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2020
-ms.locfileid: "79543356"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80634344"
 ---
 # <a name="quickstart-azure-key-vault-client-library-for-nodejs-v4"></a>快速入门：适用于 Node.js 的 Azure Key Vault 客户端库 (v4)
 
@@ -87,7 +87,6 @@ az ad sp create-for-rbac -n "http://mySP" --sdk-auth
   "tenantId": "35ad10f1-7799-4766-9acf-f2d946161b77",
   "activeDirectoryEndpointUrl": "https://login.chinacloudapi.cn",
   "resourceManagerEndpointUrl": "https://management.chinacloudapi.cn/",
-  "activeDirectoryGraphResourceId": "https://graph.chinacloudapi.cn/",
   "sqlManagementEndpointUrl": "https://management.core.chinacloudapi.cn:8443/",
   "galleryEndpointUrl": "https://gallery.chinacloudapi.cn/",
   "managementEndpointUrl": "https://management.core.chinacloudapi.cn/"

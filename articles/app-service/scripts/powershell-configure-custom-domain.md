@@ -6,15 +6,15 @@ tags: azure-service-management
 ms.assetid: 356f5af9-f62e-411c-8b24-deba05214103
 ms.topic: sample
 origin.date: 03/20/2017
-ms.date: 01/13/2020
+ms.date: 03/30/2020
 ms.author: v-tawe
-ms.custom: mvc
-ms.openlocfilehash: fa41daa4fab79ae4d6a3d7e71cfffd1fc5fb3f22
-ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
+ms.custom: mvc, seodec18
+ms.openlocfilehash: a10c8ac1f52b090ccabe1ad1a40729d434923ec6
+ms.sourcegitcommit: 44d3fe59952847e5394bbe6c05bd6f333bb56345
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75600293"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80522098"
 ---
 # <a name="assign-a-custom-domain-to-a-web-app-using-powershell"></a>使用 PowerShell 将自定义域分配到 Web 应用
 

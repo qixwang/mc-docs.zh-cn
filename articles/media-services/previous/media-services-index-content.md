@@ -13,20 +13,20 @@ ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 origin.date: 09/22/2019
-ms.date: 02/24/2020
+ms.date: 04/06/2020
 ms.author: v-jay
 ms.reviewer: johndeu
-ms.openlocfilehash: 2cb65c2424bf4a8deab15bc50cff3c9a886a5728
-ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
+ms.openlocfilehash: d13534831b782c92c7308949aa76ee3c1b4799c8
+ms.sourcegitcommit: fe9ed98aaee287a21648f866bb77cb6888f75b0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77494291"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80625776"
 ---
 # <a name="indexing-media-files-with-azure-media-indexer"></a>使用 Azure Media Indexer 为媒体文件编制索引
 
 > [!NOTE]
-> [Azure Media Indexer](media-services-index-content.md) 媒体处理器将停用。 有关停用日期，请参阅此[旧组件](legacy-components.md)主题。
+> **Azure Media Indexer** 媒体处理器将停用。 有关停用日期，请参阅此[旧组件](legacy-components.md)主题。
 
 使用 Azure Media Indexer，可以使媒体文件内容可供搜索，并为隐藏的字幕和关键字生成全文本脚本。 可以只处理一个媒体文件，也可以一次处理多个媒体文件。  
 
@@ -143,7 +143,7 @@ ms.locfileid: "77494291"
 ```
 
 <!-- __ -->
-### <a id="output_files"></a>输出文件
+### <a name="output-files"></a><a id="output_files"></a>输出文件
 默认情况下，索引作业生成以下输出文件。 这些文件将存储在第一个输出资产中。
 
 如果有多个输入媒体文件，索引器会为名为“JobResult.txt”的作业输出生成清单文件。 对于每个输入媒体文件，生成的 TTML、WebVTT 和关键字文件将依序编号，并使用“"Alias.”来命名
@@ -241,7 +241,7 @@ ms.locfileid: "77494291"
 
 生成相同的输出（与成功的作业一样）。 可以参考输出清单文件，以根据“错误”列的值查明哪些输入文件失败。 对于失败的输入文件，不会生成相应的 TTML、WebVTT 和关键字文件。
 
-### <a id="preset"></a> Azure Media Indexer 的任务预设
+### <a name="task-preset-for-azure-media-indexer"></a><a id="preset"></a> Azure Media Indexer 的任务预设
 可以通过连同任务一起提供可选任务预设，来自定义 Azure Media Indexer 的处理操作。  下面描述了此配置 xml 文件的格式。
 
 | 名称 | 必需 | 说明 |
@@ -250,7 +250,7 @@ ms.locfileid: "77494291"
 | **metadata** |false |用于词汇自适应的指定资产文件的元数据。  在准备索引器以使其能够识别非标准词汇（例如专有名词）时，该元素非常有用。<br/>`<metadata key="..." value="..."/>` <br/><br/>可以提供预定义**键**的**值**。 当前支持以下键：<br/><br/>“title”和“description”- 用于词汇适应，以微调作业的语言模型及改进语音辨识准确度。  值将植入 Internet 搜索以查找上下文相关的文本文档，并在执行索引任务期间使用内容来扩大内部字典。<br/>`<metadata key="title" value="[Title of the media file]" />`<br/>`<metadata key="description" value="[Description of the media file] />"` |
 | **功能** <br/><br/> 在版本 1.2 中添加。 目前，唯一支持的功能是语音识别（“ASR”）。 |false |语音识别功能具有以下设置键：<table><tr><th><p>键</p></th>        <th><p>说明</p></th><th><p>示例值</p></th></tr><tr><td><p>语言</p></td><td><p>要在多媒体文件中识别的自然语言。</p></td><td><p>英语、西班牙语</p></td></tr><tr><td><p>CaptionFormats</p></td><td><p>以分号分隔的所需输出字幕格式的列表（如果有）</p></td><td><p>ttml;webvtt</p></td></tr><tr><td><p></p></td><td><p> </p></td><td><p>True; False</p></td></tr><tr><td><p>GenerateKeywords</p></td><td><p>布尔标志，指定是否需要关键字 XML 文件。</p></td><td><p>True; False。 </p></td></tr><tr><td><p>ForceFullCaption</p></td><td><p>布尔型标志，指定是否强制完整字幕（不考虑可信度）。  </p><p>默认值为 false，在此情况下，将忽略最终字幕输出中可信度小于 50% 的单词和短语并将其替换为省略号（“...”）。  省略号可用于字幕质量控制和审核。</p></td><td><p>True; False。 </p></td></tr></table> |
 
-### <a id="error_codes"></a>错误代码
+### <a name="error-codes"></a><a id="error_codes"></a>错误代码
 如果发生错误，Azure Media Indexer 应返回以下错误代码之一：
 
 | 代码 | 名称 | 可能的原因 |
@@ -266,7 +266,7 @@ ms.locfileid: "77494291"
 | 4000 |分批编制索引部分成功 |一些输入媒体文件无法编制索引。 有关详细信息，请参阅 <a href="#output_files">输出文件</a>。 |
 | 其他 |内部错误 |请联系支持团队。 indexer@microsoft.com |
 
-## <a id="supported_languages"></a>支持的语言
+## <a name="supported-languages"></a><a id="supported_languages"></a>支持的语言
 当前支持英语和西班牙语。  
 
 ## <a name="media-services-learning-paths"></a>媒体服务学习路径

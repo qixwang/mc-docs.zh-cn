@@ -18,18 +18,18 @@ ms.workload: big-data
 origin.date: 02/28/2020
 ms.date: 03/23/2020
 ms.author: v-yiso
-ms.openlocfilehash: 9a76e55f5e85b6b9c16f7088afa7fb89de988713
-ms.sourcegitcommit: 32997a7d7585deaeb0ab7b8f928d397b18b343fa
+ms.openlocfilehash: 4c2bc9397b81d241eaed7e1625f24479b22b2bd0
+ms.sourcegitcommit: 5fb45da006859215edc8211481f13174aa43dbeb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79296010"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80634499"
 ---
 # <a name="what-is-apache-hive-and-hiveql-on-azure-hdinsight"></a>什么是 Azure HDInsight 中的 Apache Hive 和 HiveQL？
 
 [Apache Hive](https://hive.apache.org/) 是适用于 Apache Hadoop 的数据仓库系统。 使用 Hive 可以汇总、查询和分析数据。 Hive 查询使用 HiveQL 编写，它是类似于 SQL 的查询语言。
 
-Hive 允许在很大程度上结构化的数据上投影结构。 定义结构后，可以使用 HiveQL 来查询这些数据，而无需具备 Java 或 MapReduce 方面的知识。
+Hive 可以实现将结构投影到很大程度上未结构化的数据上。 定义结构后，可以使用 HiveQL 来查询这些数据，而无需具备 Java 或 MapReduce 方面的知识。
 
 HDInsight 提供了已针对特定工作负荷进行了优化的多种群集类型。 以下群集类型最常用于 Hive 查询：
 

@@ -1,20 +1,21 @@
 ---
-title: 教程：使用 Azure Data Box 将数据从 VHD 复制到托管磁盘 | Microsoft Docs
+title: 教程：从 VHD 复制到托管磁盘
+titleSuffix: Azure Data Box
 description: 了解如何将本地 VM 工作负荷上的 VHD 中的数据复制到 Azure Data Box
 services: databox
 author: WenJason
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-origin.date: 02/27/2019
-ms.date: 06/10/2019
+origin.date: 09/03/2019
+ms.date: 04/06/2020
 ms.author: v-jay
-ms.openlocfilehash: d818972adf39031ab4d3fa4a7a60033999119e51
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: a391ddedeb842c3e7fa8c53db6960eb761e37366
+ms.sourcegitcommit: 5fb45da006859215edc8211481f13174aa43dbeb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79292771"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80634494"
 ---
 # <a name="tutorial-use-data-box-to-import-data-as-managed-disks-in-azure"></a>教程：使用 Data Box 将数据导入为 Azure 中的托管磁盘
 
@@ -23,10 +24,10 @@ ms.locfileid: "79292771"
 本教程介绍如何执行下列操作：
 
 > [!div class="checklist"]
+>
 > * 查看先决条件
 > * 连接到 Data Box
 > * 将数据复制到 Data Box
-
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -38,7 +39,9 @@ ms.locfileid: "79292771"
 4. 已查看：
 
     - [Azure 对象大小限制](data-box-limits.md#azure-object-size-limits)中的“支持的托管磁盘大小”。
-    - [Azure 托管磁盘简介](/virtual-machines/windows/managed-disks-overview.md) 
+    - [Azure 托管磁盘简介](/virtual-machines/windows/managed-disks-overview) 
+
+5. 你一直维护源数据的副本，直到确认 Data Box 已将数据传输到 Azure 存储中为止。
 
 ## <a name="connect-to-data-box"></a>连接到 Data Box
 
@@ -57,8 +60,8 @@ Data Box 根据指定的资源组为每个关联的资源组创建一个共享�
  
 |        连接协议           |             共享的 UNC 路径                                               |
 |-------------------|--------------------------------------------------------------------------------|
-| SMB |`\\<DeviceIPAddress>\<ResourceGroupName_MDisk>\<Premium SSD>\file1.vhd`<br> `\\<DeviceIPAddress>\<ResourceGroupName_MDisk>\<Standard HDD>\file2.vhd`<br> `\\<DeviceIPAddress>\<ResourceGroupName_MDisk>\<Standard SSD>\file3.vhd` |  
-| NFS |`//<DeviceIPAddress>/<ResourceGroup1_MDisk>/<Premium SSD>/file1.vhd`<br> `//<DeviceIPAddress>/<ResourceGroupName_MDisk>/<Standard HDD>/file2.vhd`<br> `//<DeviceIPAddress>/<ResourceGroupName_MDisk>/<Standard SSD>/file3.vhd` |
+| SMB |`\\<DeviceIPAddress>\<ResourceGroupName_MDisk>\<PremiumSSD>\file1.vhd`<br> `\\<DeviceIPAddress>\<ResourceGroupName_MDisk>\<StandardHDD>\file2.vhd`<br> `\\<DeviceIPAddress>\<ResourceGroupName_MDisk>\<StandardSSD>\file3.vhd` |  
+| NFS |`//<DeviceIPAddress>/<ResourceGroup1_MDisk>/<PremiumSSD>/file1.vhd`<br> `//<DeviceIPAddress>/<ResourceGroupName_MDisk>/<StandardHDD>/file2.vhd`<br> `//<DeviceIPAddress>/<ResourceGroupName_MDisk>/<StandardSSD>/file3.vhd` |
 
 连接步骤根据是使用 SMB 还是 NFS 连接到 Data Box 共享而有所不同。
 
@@ -93,7 +96,7 @@ Data Box 根据指定的资源组为每个关联的资源组创建一个共享�
 
     ```
     C:\>net use \\169.254.250.200\mydbmdrgl_MDisk /u:mdisk
-    Enter the password for ‘mdisk’ to connect to '169.254.250.200':
+    Enter the password for 'mdisk' to connect to '169.254.250.200':
     The command completed successfully.
     C: \>
     ```

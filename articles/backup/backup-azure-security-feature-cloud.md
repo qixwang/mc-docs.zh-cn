@@ -6,12 +6,12 @@ author: lingliw
 origin.date: 09/13/2019
 ms.date: 11/14/2019
 ms.author: v-lingwu
-ms.openlocfilehash: 023c0e05e0d1740a6f70d5a9728d3f7a172b7054
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: 0a2bc9733bc54912a3468ccec7cc3ae7d30222ae
+ms.sourcegitcommit: 44d3fe59952847e5394bbe6c05bd6f333bb56345
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79292114"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80522090"
 ---
 # <a name="security-features-to-help-protect-cloud-workloads-that-use-azure-backup"></a>有助于保护使用 Azure 备份的云工作负荷的安全功能
 
@@ -254,16 +254,16 @@ AppVM1           DeleteBackupData     Completed            12/5/2019 12:44:15 PM
 
 有关详细信息，请参阅[静态数据的 Azure 存储加密](/storage/common/storage-service-encryption)。 请参阅 [Azure 备份常见问题解答](/backup/backup-azure-backup-faq#encryption)，其中解答了有关加密的任何问题。
 
-### <a name="encryption-of-backup-data-using-customer-managed-keys"></a>使用客户管理的密钥加密备份数据
+<!-- ### Encryption of backup data using customer managed keys
 
-备份 Azure 虚拟机时，还可以选择使用 Azure Key Vault 中存储的加密密钥来加密恢复服务保管库中的备份数据。
+While backing up Azure Virtual Machines, you also have the option to encrypt your backup data in the Recovery Services Vault using your encryption keys stored in the Azure Key Vault.
 
 >[!NOTE]
->此功能目前已推出尝鲜版。 如果你想要使用客户管理的密钥加密备份数据，请填写[此调查表](https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR0H3_nezt2RNkpBCUTbWEapURE9TTDRIUEUyNFhNT1lZS1BNVDdZVllHWi4u)。 请注意，能否使用此功能取决于 Azure 备份服务的审批结果。
+>This feature is currently under early use. Fill out [this survey](https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR0H3_nezt2RNkpBCUTbWEapURE9TTDRIUEUyNFhNT1lZS1BNVDdZVllHWi4u) if you wish to encrypt your backup data using customer managed keys. Note that the ability to use this feature is subject to approval from the Azure Backup service. -->
 
-### <a name="backup-of-managed-disk-vm-encrypted-using-customer-managed-keys"></a>备份使用客户管理的密钥加密的托管磁盘 VM
+<!-- ### Backup of managed disk VM encrypted using customer managed keys
 
-借助 Azure 备份可以备份包含使用客户管理密钥加密的磁盘的 Azure 虚拟机。 有关详细信息，请参阅[使用客户管理的密钥加密托管磁盘](/virtual-machines/windows/disk-encryption#customer-managed-keys)。
+Azure Backup allows you to back up Azure Virtual Machines containing disks encrypted using customer managed keys. For details, refer to [Encryption of managed disks with customer managed keys](/virtual-machines/windows/disk-encryption#customer-managed-keys). -->
 
 ### <a name="backup-of-encrypted-vms"></a>备份加密的 VM
 

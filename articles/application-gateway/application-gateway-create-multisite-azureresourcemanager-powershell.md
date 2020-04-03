@@ -6,15 +6,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-origin.date: 11/14/2019
-ms.date: 11/21/2019
+ms.date: 03/30/2020
 ms.author: v-junlch
-ms.openlocfilehash: a4487a34d756561571b9b1ed5a9ba61bdfeb0ec4
-ms.sourcegitcommit: fdbd1b6df618379dfeab03044a18c373b5fbb8ec
+ms.openlocfilehash: 8e72a37514dc9e69dc405d1d26d29b4c315047b5
+ms.sourcegitcommit: 64584c0bf31b4204058ae2b4641356b904ccdd58
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74327069"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80581692"
 ---
 # <a name="create-an-application-gateway-with-multiple-site-hosting-using-azure-powershell"></a>使用 Azure PowerShell 创建托管多个站点的应用程序网关
 
@@ -31,7 +30,7 @@ ms.locfileid: "74327069"
 
 ![多站点路由示例](./media/application-gateway-create-multisite-azureresourcemanager-powershell/scenario.png)
 
-如果没有 Azure 订阅，请在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial/)。
+如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial)。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -255,7 +254,7 @@ Get-AzPublicIPAddress -ResourceGroupName myResourceGroupAG -Name myAGPublicIPAdd
 
 ## <a name="test-the-application-gateway"></a>测试应用程序网关
 
-在浏览器的地址栏中输入域名。 例如， https://www.contoso.com 。
+在浏览器的地址栏中输入域名。 例如， `https://www.contoso.com`。
 
 ![在应用程序网关中测试 contoso 站点](./media/application-gateway-create-multisite-azureresourcemanager-powershell/application-gateway-iistest.png)
 
@@ -277,4 +276,3 @@ Get-AzPublicIPAddress -ResourceGroupName myResourceGroupAG -Name myAGPublicIPAdd
 > [!div class="nextstepaction"]
 > [详细了解应用程序网关的作用](application-gateway-introduction.md)
 
-<!-- Update_Description: link update -->

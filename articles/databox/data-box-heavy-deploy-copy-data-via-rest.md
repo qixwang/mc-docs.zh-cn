@@ -1,5 +1,5 @@
 ---
-title: 有关通过 REST API 将数据复制到 Azure Data Box Heavy Blob 存储的教程 | Microsoft Docs
+title: 教程：通过 REST API 将数据复制到 Azure Data Box Blob 存储
 description: 了解如何通过 REST API 将数据复制到 Azure Data Box Heavy Blob 存储
 services: databox
 author: WenJason
@@ -7,14 +7,14 @@ ms.service: databox
 ms.subservice: heavy
 ms.topic: tutorial
 origin.date: 07/03/2019
-ms.date: 07/22/2019
+ms.date: 04/06/2020
 ms.author: v-jay
-ms.openlocfilehash: 433169d57b0a9d09bda5148a1fe9e09d26150f51
-ms.sourcegitcommit: 481542df432d52b7d4823811cef94772e4e0f192
+ms.openlocfilehash: c40b58ed4a5cfe19d9e75152349b4421ab3eb655
+ms.sourcegitcommit: 5fb45da006859215edc8211481f13174aa43dbeb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74530613"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80634469"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-blob-storage-via-rest-apis"></a>教程：通过 REST API 将数据复制到 Azure Data Box Blob 存储  
 
@@ -99,7 +99,7 @@ ms.locfileid: "74530613"
  
 ### <a name="import-certificate"></a>导入证书 
 
-通过 HTTPS 访问 Data Box Blob 存储需要设备的 SSL 证书。 客户端应用程序可以使用此证书的方式因应用程序以及操作系统和分发而异。 一些应用程序可以在将证书导入系统的证书存储后访问该证书，而其他应用程序则不使用该机制。
+通过 HTTPS 访问 Data Box Blob 存储需要设备的 TLS/SSL 证书。 客户端应用程序可以使用此证书的方式因应用程序以及操作系统和分发而异。 一些应用程序可以在将证书导入系统的证书存储后访问该证书，而其他应用程序则不使用该机制。
 
 本部分提到了某些应用程序的特定信息。 有关其他应用程序的详细信息，请参阅应用程序和所用操作系统的文档。
 

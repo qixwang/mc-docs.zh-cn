@@ -40,8 +40,6 @@
       href: monitor-virtual-machine-changes-event-grid-logic-app.md
     - name: 调整已上传图像的大小
       href: resize-images-on-storage-blob-upload-event.md
-    - name: 触发自动化 Runbook
-      href: ensure-tags-exists-on-new-virtual-machines.md
     - name: 在添加 IoT 中心设备后发送电子邮件
       href: publish-iot-hub-events-to-logic-apps.md
     - name: 从事件中心对数据进行流式传输

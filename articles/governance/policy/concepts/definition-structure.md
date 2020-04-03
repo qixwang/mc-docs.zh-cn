@@ -2,15 +2,15 @@
 title: 策略定义结构的详细信息
 description: 描述如何使用策略定义为组织中的 Azure 资源建立约定。
 ms.author: v-tawe
-origin.date: 11/26/2019
-ms.date: 03/09/2020
+origin.date: 02/26/2020
+ms.date: 03/16/2020
 ms.topic: conceptual
-ms.openlocfilehash: 374a8224bcbacbbbb65f0be0e757a9847519ea50
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: a1acf0214d3e41410db4cfd99beaeec74fe4ab4d
+ms.sourcegitcommit: 1d3d8dfdaf6281f06640cbee7124a1e8bf102c50
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79293106"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80243918"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure Policy 定义结构
 
@@ -103,6 +103,12 @@ Azure Policy 为资源建立约定。 策略定义描述资源符合性[条件](
 - `metadata`：定义主要由 Azure 门户用来显示用户友好信息的子属性：
   - `description`：说明参数的用途。 可以用来提供可接受值的示例。
   - `displayName`：在门户中显示的用于参数的友好名称。
+  - `version`：（可选）跟踪有关策略定义的内容版本的详细信息。
+
+    > [!NOTE]
+    > Azure Policy 服务使用 `version`、`preview` 和 `deprecated` 属性来传达对内置策略定义或计划和状态的更改级别。 `version` 的格式为：`{Major}.{Minor}.{Patch}`。 特定状态（例如 _deprecated_ 或 _preview_）将作为布尔值  追加到 `version` 属性或另一属性中。
+
+  - `category`：（可选）确定在 Azure 门户中的哪个类别下显示策略定义。
   - `strongType`：（可选）通过门户分配策略定义时使用。 提供上下文感知列表。 有关详细信息，请参阅 [strongType](#strongtype)。
   - `assignPermissions`：（可选）设置为 _true_ 将让 Azure 门户在分配策略期间创建角色分配。 如果希望分配处于分配作用域之外的权限，则此属性非常有用。 策略中的每个角色定义（或计划中所有策略中的每个角色定义）有一个角色分配。 参数值必须是有效的资源或作用域。
 - `defaultValue`：（可选）设置分配的参数的值（如果值未给定）。
@@ -145,19 +151,19 @@ Azure Policy 为资源建立约定。 策略定义描述资源符合性[条件](
 
 ### <a name="strongtype"></a>strongType
 
-在 `metadata` 属性中，可以使用 **strongType** 提供 Azure 门户中的选项多选列表。 **strongType** 的允许值目前包括：
+在 `metadata` 属性中，可以使用 **strongType** 提供 Azure 门户中的选项多选列表。 **strongType** 可以是受支持的资源类型  或允许的值。 若要确定某个资源类型  对于 **strongType** 是否有效，请使用 [Get-AzResourceProvider](https://docs.microsoft.com/powershell/module/az.resources/get-azresourceprovider)。
+
+**Get-AzResourceProvider** 未返回的某些资源类型  也受支持。 它们是：
+
+- `Microsoft.RecoveryServices/vaults/backupPolicies`
+
+**strongType** 的非资源类型  允许值有：
 
 - `location`
 - `resourceTypes`
 - `storageSkus`
 - `vmSKUs`
 - `existingResourceGroups`
-- `omsWorkspace`
-- `Microsoft.EventHub/Namespaces/EventHubs`
-- `Microsoft.EventHub/Namespaces/EventHubs/AuthorizationRules`
-- `Microsoft.EventHub/Namespaces/AuthorizationRules`
-- `Microsoft.RecoveryServices/vaults`
-- `Microsoft.RecoveryServices/vaults/backupPolicies`
 
 ## <a name="definition-location"></a>定义位置
 
@@ -314,7 +320,7 @@ Azure Policy 为资源建立约定。 策略定义描述资源符合性[条件](
 **value** 可与任何支持的[条件](#conditions)配对。
 
 > [!WARNING]
-> 如果模板函数的结果是错误，策略评估将会失败。  失败的评估是一种隐式**拒绝**。 有关详细信息，请参阅[避免模板错误](#avoiding-template-failures)。
+> 如果模板函数的结果是错误，策略评估将会失败。  失败的评估是一种隐式**拒绝**。 有关详细信息，请参阅[避免模板错误](#avoiding-template-failures)。 如果使用 **DoNotEnforce** 作为 [enforcementMode](./assignment-structure.md#enforcement-mode)，则在测试和验证新的策略定义时可防止失败的评估对新资源或更新的资源造成影响。
 
 #### <a name="value-examples"></a>Value 示例
 
@@ -538,8 +544,10 @@ Azure Policy 为资源建立约定。 策略定义描述资源符合性[条件](
 
 Azure Policy 支持以下类型的效果：
 
-<!-- - **EnforceOPAConstraint** (preview): configures the Open Policy Agent admissions controller with Gatekeeper v3 for self-managed Kubernetes clusters on Azure (preview) -->
-- **EnforceRegoPolicy**（预览版）：在 Azure Kubernetes 服务中为 Open Policy Agent 许可控制器配置 Gatekeeper v2 -->
+<!--
+- **EnforceOPAConstraint** (preview): configures the Open Policy Agent admissions controller with Gatekeeper v3 for self-managed Kubernetes clusters on Azure (preview)
+- **EnforceRegoPolicy** (preview): configures the Open Policy Agent admissions controller with Gatekeeper v2 in Azure Kubernetes Service
+-->
 
 - **Append**：会将定义的字段集添加到请求
 - **Audit**：会在活动日志中生成一个警告事件，但不会使请求失败
@@ -567,13 +575,22 @@ Azure Policy 支持以下类型的效果：
 
 以下函数可在策略规则中使用，但与在 Azure 资源管理器模板中使用不同：
 
-- addDays(dateTime, numberOfDaysToAdd)
-  - **dateTime**：[必需] 字符串 - 通用 ISO 8601 日期/时间格式“yyyy-MM-ddTHH:mm:ss.fffffffZ”的字符串
-  - **numberOfDaysToAdd**：[必需] 整数 - 要添加的天数
-- utcNow() - 与资源管理器模板不同，它可以在 defaultValue 之外使用。
+- `utcNow()` - 与资源管理器模板不同，它可以在 defaultValue 之外使用。
   - 以通用 ISO 8601 日期/时间格式“yyyy-MM-ddTHH:mm:ss.fffffffZ”返回设置为当前日期和时间的字符串
 
-此外，`field` 函数可用于策略规则。 `field` 主要用于 **AuditIfNotExists** 和 **DeployIfNotExists**，以引用所评估资源上的字段。 可以在 [DeployIfNotExists 示例](effects.md#deployifnotexists-example)中看到这种用法的示例。
+以下函数仅可在策略规则中使用：
+
+- `addDays(dateTime, numberOfDaysToAdd)`
+  - **dateTime**：[必需] 字符串 - 通用 ISO 8601 日期/时间格式“yyyy-MM-ddTHH:mm:ss.fffffffZ”的字符串
+  - **numberOfDaysToAdd**：[必需] 整数 - 要添加的天数
+- `field(fieldName)`
+  - **fieldName**：[必需] 字符串 - 要检索的[字段](#fields)的名称
+  - 从 If 条件正在评估的资源返回该字段的值
+  - `field` 主要用于 **AuditIfNotExists** 和 **DeployIfNotExists**，以引用所评估资源上的字段。 可以在 [DeployIfNotExists 示例](effects.md#deployifnotexists-example)中看到这种用法的示例。
+- `requestContext().apiVersion`
+  - 返回触发了策略评估的请求的 API 版本（示例：`2019-09-01`）。 这将是 PUT/PATCH 请求中用于对资源创建/更新进行评估的 API 版本。 在对现有资源进行符合性评估时，将始终使用最新的 API 版本。
+  
+
 
 #### <a name="policy-function-example"></a>策略函数示例
 
@@ -696,6 +713,9 @@ Azure Policy 支持以下类型的效果：
 
 使用计划可组合多个相关策略定义，以简化分配和管理，因为可将组作为单个项使用。 例如，可以将相关标记策略组合为单个计划。 将应用计划，而非单独分配每个策略。
 
+> [!NOTE]
+> 分配计划后，不能更改计划级别参数。 因此，建议在定义参数时设置 **defaultValue**。
+
 下面的示例演示如何创建用于处理 `costCenter` 和 `productName` 这两个标记的计划。 它使用两个内置策略来应用默认标记值。
 
 ```json
@@ -709,13 +729,15 @@ Azure Policy 支持以下类型的效果：
                 "type": "String",
                 "metadata": {
                     "description": "required value for Cost Center tag"
-                }
+                },
+                "defaultValue": "DefaultCostCenter"
             },
             "productNameValue": {
                 "type": "String",
                 "metadata": {
                     "description": "required value for product Name tag"
-                }
+                },
+                "defaultValue": "DefaultProduct"
             }
         },
         "policyDefinitions": [{

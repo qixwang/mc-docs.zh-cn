@@ -1,14 +1,14 @@
 ---
 title: 在 Azure 中创建用于响应 HTTP 请求的函数
 description: 了解如何通过命令行创建函数，然后将本地项目发布到 Azure Functions 中托管的无服务器实例。
-ms.date: 03/18/2020
+ms.date: 03/31/2020
 ms.topic: quickstart
-ms.openlocfilehash: f0fa8bad8a418e3369eb429fd3e24acbcd6b3282
-ms.sourcegitcommit: e500354e2fd8b7ac3dddfae0c825cc543080f476
+ms.openlocfilehash: c1404c18390ee59f8d99e7648ef7b1cbb5a3c123
+ms.sourcegitcommit: 64584c0bf31b4204058ae2b4641356b904ccdd58
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2020
-ms.locfileid: "79546884"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80581773"
 ---
 # <a name="quickstart-create-a-function-in-azure-that-responds-to-http-requests"></a>快速入门：在 Azure 中创建用于响应 HTTP 请求的函数
 
@@ -20,7 +20,7 @@ ms.locfileid: "79546884"
 
 在开始之前，必须满足以下条件：
 
-+ 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://www.azure.cn/pricing/1rmb-trial/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
++ 具有活动订阅的 Azure 帐户。 [创建帐户](https://www.azure.cn/pricing/1rmb-trial/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 
 ::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell"  
 + [Azure Functions Core Tools](./functions-run-local.md#v2) 2.7.1846 或更高的 2.x 版本。

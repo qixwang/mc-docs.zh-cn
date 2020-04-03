@@ -4,15 +4,15 @@ description: 了解如何在 Azure Kubernetes 服务 (AKS) 群集中安装和使
 author: rockboyfor
 ms.topic: article
 origin.date: 10/09/2019
-ms.date: 03/09/2020
+ms.date: 04/06/2020
 ms.author: v-yeche
 zone_pivot_groups: client-operating-system-aks-lm
-ms.openlocfilehash: 9bb53a64965db2207ec76141abbba909e95ef7c4
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: 841fea30e315d079c8f5eae3456785fce791ea7a
+ms.sourcegitcommit: 76280dd9854dc0ff0ba1e5e62fb3dc3af049fbe2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79290707"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80517007"
 ---
 <!--CORRECT ON client-operating-system-aks-lm-->
 
@@ -56,7 +56,7 @@ ms.locfileid: "79290707"
 
 ::: zone pivot="client-operating-system-aks-lm-macos"
 
-[!INCLUDE [MacOS - download](includes/servicemesh/consul/download-bash.md)]
+[!INCLUDE [macOS - download](includes/servicemesh/consul/download-bash.md)]
 
 ::: zone-end
 
@@ -117,7 +117,7 @@ kubectl get pod --namespace consul --output wide
 
 以下示例输出显示了现在应该正在运行的服务和 Pod（安排在 Linux 节点上）：
 
-```console
+```output
 NAME                                 TYPE           CLUSTER-IP    EXTERNAL-IP             PORT(S)                                                                   AGE     SELECTOR
 consul                               ExternalName   <none>        consul.service.consul   <none>                                                                    38s     <none>
 consul-consul-connect-injector-svc   ClusterIP      10.0.98.102   <none>                  443/TCP                                                                   3m26s   app=consul,component=connect-injector,release=consul
@@ -142,7 +142,7 @@ consul-consul-tz2t5                                               1/1     Runnin
 
 Consul UI 在上述安装过程中已进行了安装，它为 Consul 提供基于 UI 的配置。 Consul 的 UI 不会通过外部 IP 地址公开。 若要访问 Consul 用户界面，请使用 [kubectl port-forward][kubectl-port-forward] 命令。 此命令在客户端计算机与 AKS 群集中相关 Pod 之间建立安全连接。
 
-```azurecli
+```console
 kubectl port-forward -n consul svc/consul-consul-ui 8080:80
 ```
 
@@ -159,7 +159,7 @@ kubectl port-forward -n consul svc/consul-consul-ui 8080:80
 
 若要从 AKS 群集中删除 Consul，请使用以下命令。 `helm delete` 命令将删除 `consul` 图表，`kubectl delete namespace` 命令将删除 `consul` 命名空间。
 
-```azurecli
+```console
 helm delete --purge consul
 kubectl delete namespace consul
 ```

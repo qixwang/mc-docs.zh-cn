@@ -5,16 +5,16 @@ author: kgremban
 manager: philmea
 ms.author: v-tawe
 origin.date: 11/30/2019
-ms.date: 03/02/2020
+ms.date: 03/30/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 36d9800ca6dccee2518a526776029b22d9ad6371
-ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
+ms.openlocfilehash: 37f42ef2e9d1de16225274c45f554239bd9fb9e5
+ms.sourcegitcommit: 260800ede66f48c886d1426a0fac18b4d402b4f2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77494326"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586754"
 ---
 # <a name="configure-an-iot-edge-device-to-act-as-a-transparent-gateway"></a>将 IoT Edge 设备配置为充当透明网关
 
@@ -47,9 +47,9 @@ ms.locfileid: "77494326"
 
 以下步骤将演示创建证书并将它们安装在网关上的正确位置的过程。 可以使用任一计算机生成证书，然后将其复制到 IoT Edge 设备。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
-配置了[生产证书](how-to-install-production-certificates.md)的 Azure IoT Edge 设备。
+配置了[生产证书](how-to-manage-device-certificates.md)的 Azure IoT Edge 设备。
 
 ## <a name="deploy-edgehub-to-the-gateway"></a>将 edgeHub 部署到网关
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 origin.date: 02/12/2019
 ms.date: 02/17/2020
 ms.author: v-yiso
-ms.openlocfilehash: 3e4f337b14a3e2a4a149f9bf40259b53bc48c7ab
-ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
+ms.openlocfilehash: c619259a31af1fb4d4b273b9fa90ef1c9504a418
+ms.sourcegitcommit: 78a05172a813b87428b87f3a2695e6bb3ae81ede
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/17/2020
-ms.locfileid: "79452598"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80417389"
 ---
 # <a name="event-sources-in-azure-event-grid"></a>Azure 事件网格中的事件源
 
@@ -27,7 +27,6 @@ ms.locfileid: "79452598"
 
 |标题 |说明  |
 |---------|---------|
-| [教程：Azure 自动化与事件网格和 Microsoft Teams](ensure-tags-exists-on-new-virtual-machines.md) |创建用于发送事件的虚拟机。 此活动触发一个用于标记虚拟机的自动化 Runbook，并触发一条发送到 Microsoft Teams 频道的消息。 |
 | [如何：通过门户订阅事件](subscribe-through-portal.md) | 使用门户订阅 Azure 订阅的事件。 |
 | [Azure CLI：订阅 Azure 订阅的事件](./scripts/event-grid-cli-azure-subscription.md) |用于在 Azure 订阅中创建事件网格订阅并将事件发送到 WebHook 的示例脚本。 |
 | [PowerShell：订阅 Azure 订阅的事件](./scripts/event-grid-powershell-azure-subscription.md)| 用于在 Azure 订阅中创建事件网格订阅并将事件发送到 WebHook 的示例脚本。 |

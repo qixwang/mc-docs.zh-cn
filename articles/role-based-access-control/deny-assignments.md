@@ -1,5 +1,5 @@
 ---
-title: 了解 Azure 资源的拒绝分配 | Microsoft Docs
+title: 了解 Azure 资源的拒绝分配
 description: 了解 Azure 资源基于角色的访问控制 (RBAC) 中的拒绝分配。
 services: active-directory
 documentationcenter: ''
@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/03/2020
+ms.date: 03/31/2020
 ms.author: v-junlch
 ms.reviewer: bagovind
 ms.custom: ''
-ms.openlocfilehash: 2bbac56262ba11f00718c63cc15a1e4c49cdc19d
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.openlocfilehash: a060fe6c19eb6d107f047853ff78205be20a0b5f
+ms.sourcegitcommit: 64584c0bf31b4204058ae2b4641356b904ccdd58
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75624450"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80581828"
 ---
 # <a name="understand-deny-assignments-for-azure-resources"></a>了解 Azure 资源的拒绝分配
 
@@ -90,5 +90,4 @@ Principals              : {
 ## <a name="next-steps"></a>后续步骤
 
 * [使用 Azure 门户列出 Azure 资源的拒绝分配](deny-assignments-portal.md)
-* [了解 Azure 资源的角色定义](role-definitions.md)
 

@@ -7,15 +7,15 @@ ms.assetid: 7c2efdd0-f553-4038-a77a-e953021b3f77
 ms.devlang: azurecli
 ms.topic: sample
 origin.date: 12/11/2017
-ms.date: 01/13/2020
+ms.date: 03/30/2020
 ms.author: v-tawe
-ms.custom: mvc
-ms.openlocfilehash: 39c35379af15b262ece5a4f6b4547ed1f13ed4fd
-ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
+ms.custom: mvc, seodec18
+ms.openlocfilehash: ccd3352b2f139196253272e3f92cf1262c1f61e3
+ms.sourcegitcommit: 44d3fe59952847e5394bbe6c05bd6f333bb56345
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75600371"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80522111"
 ---
 # <a name="connect-an-app-service-app-to-a-sql-database-using-cli"></a>使用 CLI 将应用服务应用连接到 SQL 数据库
 

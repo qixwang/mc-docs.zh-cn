@@ -1,15 +1,15 @@
 ---
 title: 使用命令行工具将 Azure Functions 连接到 Azure 存储
 description: 了解如何通过将输出绑定添加到命令行项目，将 Azure Functions 连接到 Azure 存储队列。
-ms.date: 03/02/2020
+ms.date: 03/30/2020
 ms.topic: quickstart
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: 666717abb7ffda755c48aa5d186f368fb16b4df4
-ms.sourcegitcommit: 1ac138a9e7dc7834b5c0b62a133ca5ce2ea80054
+ms.openlocfilehash: 9b902e4311f091e59c42546a7a3e59a94f3b18be
+ms.sourcegitcommit: 64584c0bf31b4204058ae2b4641356b904ccdd58
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78266140"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80581793"
 ---
 # <a name="connect-azure-functions-to-azure-storage-using-command-line-tools"></a>使用命令行工具将 Azure Functions 连接到 Azure 存储
 
@@ -212,9 +212,9 @@ ms.locfileid: "78266140"
     $env:AZURE_STORAGE_CONNECTION_STRING = "<MY_CONNECTION_STRING>"
     ```
     
-    # <a name="cmd"></a>[Cmd](#tab/cmd)
+    # <a name="azure-cli"></a>[Azure CLI](#tab/cmd)
     
-    ```cmd
+    ```azurecli
     set AZURE_STORAGE_CONNECTION_STRING="<MY_CONNECTION_STRING>"
     ```
     
@@ -222,7 +222,7 @@ ms.locfileid: "78266140"
     
 1. （可选）使用 [`az storage queue list`](/cli/storage/queue#az-storage-queue-list) 命令查看帐户中的存储队列。 此命令的输出应包含名为 `outqueue` 的队列，该队列是函数将其第一条消息写入该队列时创建的。
     
-    ```azure-cli
+    ```azurecli
     az storage queue list --output tsv
     ```
 
@@ -240,9 +240,9 @@ ms.locfileid: "78266140"
     [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String($(az storage message get --queue-name outqueue -o tsv --query '[].{Message:content}')))
     ```
     
-    # <a name="cmd"></a>[Cmd](#tab/cmd)
+    # <a name="azure-cli"></a>[Azure CLI](#tab/cmd)
     
-    ```cmd
+    ```azurecli
     az storage message get --queue-name outqueue -o tsv --query [].{Message:content} > %TEMP%out.b64 && certutil -decode -f %TEMP%out.b64 %TEMP%out.txt > NUL && type %TEMP%out.txt && del %TEMP%out.b64 %TEMP%out.txt /q
     ```
 

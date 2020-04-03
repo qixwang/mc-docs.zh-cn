@@ -12,14 +12,14 @@ ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 01/14/2020
-ms.date: 02/24/2020
+ms.date: 04/06/2020
 ms.author: v-jay
-ms.openlocfilehash: b2755cc379c22363a1e467c3fd873bcd81bd1362
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: 004d3711a8c21250b942ff67f4b980c3f34158b8
+ms.sourcegitcommit: fe9ed98aaee287a21648f866bb77cb6888f75b0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79291543"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80625771"
 ---
 # <a name="load-balancer-components-and-limitations"></a>负载均衡器组件和限制
 Azure 负载均衡器包含几个关键组件，用于执行其操作。  可以通过 Azure 门户、Azure CLI 或 Azure PowerShell 在你的订阅中配置这些组件。  
@@ -51,10 +51,13 @@ Azure 负载均衡器包含几个关键组件，用于执行其操作。  可以
 * **负载均衡规则**：负载均衡规则告知负载均衡器何时需要执行何种操作。 
 * **入站 NAT 规则**：入站 NAT 规则将来自特定前端 IP 地址的特定端口的流量转发到虚拟网络中特定后端实例的特定端口。 **[端口转发](/load-balancer/tutorial-load-balancer-port-forwarding-portal)** 通过与负载均衡相同的基于哈希的分配来实现。 此功能的常见应用方案是与 Azure 虚拟网络中的单个 VM 实例建立远程桌面协议 (RDP) 或安全外壳 (SSH) 会话。 可将多个内部终结点映射到相同前端 IP 地址上的端口。 可以使用前端 IP 地址远程管理 VM，而无需额外配置跳转盒。
 * **出站规则**： **[出站规则](/load-balancer/load-balancer-outbound-rules-overview)** 为标准负载均衡器的后端池识别的、要转换为前端的所有虚拟机或实例配置出站网络地址转换 (NAT)。
-基本负载均衡器不支持出站规则。
-![Azure 负载均衡器](./media/load-balancer-overview/load-balancer-overview.png)
 
-## <a name = "load-balancer-concepts"></a>负载均衡器的概念
+  基本负载均衡器不支持出站规则。
+
+  ![Azure 负载均衡器](./media/load-balancer-overview/load-balancer-overview.png)
+* **传输协议**：负载均衡器不支持 ICMP；目标为面向公众的负载均衡器的 ICMP ping 会超时。若要 ping 面向公众的负载均衡器，请使用 TCP Ping
+
+## <a name="load-balancer-concepts"></a><a name = "load-balancer-concepts"></a>负载均衡器的概念
 
 负载均衡器为 TCP 和 UDP 应用程序提供以下基本功能：
 
@@ -74,7 +77,9 @@ Azure 负载均衡器包含几个关键组件，用于执行其操作。  可以
 
 下图显示了基于哈希的分配：
 
-  ![基于哈希的分发](./media/load-balancer-overview/load-balancer-distribution.png)
+<p align="center">
+  <img src="./media/load-balancer-overview/load-balancer-distribution.svg" width="512" title="基于哈希的分发">
+</p>
 
   *图：基于哈希的分发*
 
@@ -87,7 +92,7 @@ Azure 负载均衡器包含几个关键组件，用于执行其操作。  可以
   * 可以轻松地对服务进行升级和灾难恢复操作，因为前端可以动态映射到服务的其他实例。
   * 简化了访问控制列表 (ACL) 管理。 以前端 IP 表示的 ACL 不会随着服务的缩放或重新部署而更改。 将出站连接转换为较小数量的 IP 地址而不是计算机，可以减少实施安全收件人列表的负担。
 
-  标准负载均衡器利用[可靠、可缩放且可预测的 SNAT 算法](load-balancer-outbound-connections.md#snat)。使用标准负载均衡器时，需要记住以下关键原则：
+  标准负载均衡器利用[可靠、可缩放且可预测的 SNAT 算法](load-balancer-outbound-connections.md#snat)。 使用标准负载均衡器时，请牢记以下关键原则：
 
     - 负载均衡规则推断 SNAT 的编程方式。 负载均衡规则特定于协议。 SNAT 特定于协议，配置应反映这一点，而不是产生副作用。
 
@@ -95,13 +100,13 @@ Azure 负载均衡器包含几个关键组件，用于执行其操作。  可以
 
     - **控制用于出站的前端** 如果不希望某特定前端用于出站连接，可进行选择和控制。 如果要将出站连接限制为仅来自于特定前端 IP 地址，可以按需在表示出站映射的规则上禁用出站 SNAT。
 
-    - **控制出站连接** 出站方案是显式的，指定出站连接后，该连接才会存在。 标准负载均衡器存在于虚拟网络的上下文中。  虚拟网络是独立的专用网络。  除非存在与公共 IP 地址的关联，否则不允许公共连接。  可以访问 [VNet 服务终结点](../virtual-network/virtual-network-service-endpoints-overview.md)，因为它们在虚拟网络内部并位于本地。  若要对虚拟网络外部的目标建立出站连接，可执行以下两个选项：
+    - **控制出站连接** 出站方案是显式的，指定出站连接后，该连接才会存在。 标准负载均衡器存在于虚拟网络的上下文中。  虚拟网络是独立的专用网络。  除非存在与公共 IP 地址的关联，否则不允许公共连接。  可以访问[虚拟网络服务终结点](../virtual-network/virtual-network-service-endpoints-overview.md)，因为它们在虚拟网络内部并位于本地。  若要对虚拟网络外部的目标建立出站连接，可执行以下两个选项：
         - 将标准 SKU 公共 IP 地址作为实例层级公共 IP 地址分配到虚拟机资源；
         - 或者，将虚拟机资源放入公共标准负载均衡器的后端池中。
 
         上述两个选项均允许通过出站连接从虚拟网络访问虚拟网络的外部。 
 
-        如果只有  一个内部标准负载均衡器与虚拟机资源所在的后端池关联，虚拟机仅可以访问虚拟网络资源和 [VNet 终结点](../virtual-network/virtual-network-service-endpoints-overview.md)。  可以按照上一段描述的步骤创建出站连接。
+        如果只有  一个内部标准负载均衡器与虚拟机资源所在的后端池关联，则虚拟机仅可访问虚拟网络资源和[虚拟网络服务终结点](../virtual-network/virtual-network-service-endpoints-overview.md)。  可以按照上一段描述的步骤创建出站连接。
 
         未与标准 SKU 关联的虚拟机资源的出站连接保持不变。
 
@@ -117,7 +122,7 @@ Azure 负载均衡器包含几个关键组件，用于执行其操作。  可以
 为进行比较，基本负载均衡器随机选择一个前端，且无法控制选择哪一个前端。
 ## <a name="load-balancer-types"></a>负载均衡器的类型
 
-### <a name = "publicloadbalancer"></a>公共负载均衡器
+### <a name="public-load-balancer"></a><a name = "publicloadbalancer"></a>公共负载均衡器
 
 公共负载均衡器将传入流量的公共 IP 地址和端口映射到 VM 的专用 IP 地址和端口。 负载均衡器将来自 VM 的响应流量映射到另一个方向。 你可以通过应用负载均衡规则，在多个 VM 或服务之间分配特定类型的流量。 例如，可将 Web 请求流量负载分配到多个 Web 服务器。
 
@@ -126,15 +131,17 @@ Azure 负载均衡器包含几个关键组件，用于执行其操作。  可以
 
 下图显示了公共端口和 TCP 端口 80 之间的 Web 流量的负载均衡终结点，该流量由三个 VM 共享。 三个 VM 位于负载均衡集中。
 
-![公共负载均衡器示例](./media/load-balancer-overview/IC727496.png)
+<p align="center">
+  <img src="./media/load-balancer-overview/load-balancer-http.svg" width="256" title="公共负载均衡器">
+</p>
 
-*图：使用公共负载均衡器对 Web 流量进行均衡*
+*图：* 使用公共负载均衡器均衡 Web 流量
 
 Internet 客户端将网页请求发送到 TCP 端口 80 上 Web 应用的公共 IP 地址。 Azure 负载均衡器在负载平衡集内的三个 VM 之间分配请求。 有关负载均衡器算法的详细信息，请参阅[负载均衡器的概念](concepts-limitations.md#load-balancer-concepts)。
 
 默认情况下，Azure 负载均衡器在多个 VM 实例之间平均分发网络流量。 还可以配置会话关联。 有关详细信息，请参阅[配置 Azure 负载均衡器的分配模式](load-balancer-distribution-mode.md)。
 
-### <a name = "internalloadbalancer"></a>内部负载均衡器。
+### <a name="internal-load-balancer"></a><a name = "internalloadbalancer"></a>内部负载均衡器。
 
 与公共负载均衡器相比，内部负载均衡器仅将流量定向到虚拟网络中的资源，或定向到使用 VPN 访问 Azure 基础结构的资源。 Azure 基础结构会限制对虚拟网络的负载均衡前端 IP 地址的访问。 前端 IP 地址和虚拟网络不会直接在 Internet 终结点上公开。 内部业务线应用程序可在 Azure 中运行，并可从 Azure 内或从本地资源访问这些应用程序。
 
@@ -145,11 +152,14 @@ Internet 客户端将网页请求发送到 TCP 端口 80 上 Web 应用的公共
 * **对于多层应用程序**：针对面向 Internet 的多层应用程序进行负载均衡，其中后端层不面向 Internet。 后端层需要针对面向 Internet 的层发出的流量进行负载均衡。 请参阅下一个图。
 * **对于业务线应用程序**：使托管在 Azure 中的业务线应用程序实现负载均衡，而无需其他负载均衡器硬件或软件。 此方案将本地服务器包含在一组流量已实现负载均衡的计算机中。
 
-![内部负载均衡器示例](./media/load-balancer-overview/IC744147.png)
+
+<p align="center">
+  <img src="./media/load-balancer-overview/load-balancer.svg" width="256" title="公共负载均衡器">
+</p>
 
 *图：使用公共和内部负载均衡器对多层应用程序进行均衡*
 
-## <a name="skus"></a>负载均衡器 SKU 的比较
+## <a name="load-balancer-sku-comparison"></a><a name="skus"></a>负载均衡器 SKU 的比较
 
 负载均衡器支持基本和标准 SKU。 这些 SKU 在场景规模、功能和定价方面有差异。 使用基本负载均衡器可以实现的任何场景可以通过标准负载均衡器来创建。 这两个 SKU 的 API 类似，都可以通过 SKU 的规范来调用。 从 `2017-08-01` API 开始，提供了支持负载均衡器和公共 IP 的 SKU 的 API。 这两个 SKU 具有相同的常规 API 和结构。
 
@@ -163,7 +173,7 @@ Internet 客户端将网页请求发送到 TCP 端口 80 上 Web 应用的公共
 
 有关详细信息，请参阅[负载均衡器限制](/azure-resource-manager/management/azure-subscription-service-limits#load-balancer)。 对于标准负载均衡器，请参阅[概述](load-balancer-standard-overview.md)、[定价](https://www.azure.cn/pricing/details/load-balancer/)和 [SLA](https://www.azure.cn/support/sla/load-balancer/)。
 
-## <a name = "limitations"></a>限制
+## <a name="limitations"></a><a name = "limitations"></a>限制
 
 - SKU 不可变。 无法更改现有资源的 SKU。
 - 独立的虚拟机资源、可用性集资源或虚拟机规模集资源可以引用一个 SKU，绝不能同时引用两个。

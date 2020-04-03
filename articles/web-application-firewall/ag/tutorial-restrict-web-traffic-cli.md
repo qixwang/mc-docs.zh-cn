@@ -4,16 +4,15 @@ description: 了解如何通过 Azure CLI 在应用程序网关上使用 Web 应
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
-origin.date: 08/21/2019
-ms.date: 11/25/2019
+ms.date: 03/30/2020
 ms.author: v-junlch
 ms.topic: overview
-ms.openlocfilehash: ea5b1dc858892a747bafb33c55144a3757545b6b
-ms.sourcegitcommit: e74e8aabc1cbd8a43e462f88d07b041e9c4f31eb
+ms.openlocfilehash: b4d022faf56dff415aeb05540a36eed6dd65bea4
+ms.sourcegitcommit: 64584c0bf31b4204058ae2b4641356b904ccdd58
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74461649"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80581813"
 ---
 # <a name="enable-web-application-firewall-using-the-azure-cli"></a>使用 Azure CLI 启用 Web 应用程序防火墙
 
@@ -39,7 +38,7 @@ ms.locfileid: "74461649"
 
 资源组是在其中部署和管理 Azure 资源的逻辑容器。 使用 [az group create](/cli/group#az-group-create) 创建名为 *myResourceGroupAG* 的 Azure 资源组。
 
-```azurecli 
+```azurecli
 az group create --name myResourceGroupAG --location chinanorth
 ```
 
@@ -171,7 +170,7 @@ az monitor diagnostic-settings create --name appgwdiag --resource $appgwid \
 
 若要获取应用程序网关的公共 IP 地址，请使用 [az network public-ip show](/cli/network/public-ip#az-network-public-ip-show)。 复制该公共 IP 地址，并将其粘贴到浏览器的地址栏。
 
-```azurepowershell
+```azurecli
 az network public-ip show `
   --resource-group myResourceGroupAG `
   --name myAGPublicIPAddress `

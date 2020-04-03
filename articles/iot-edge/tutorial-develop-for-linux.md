@@ -5,17 +5,17 @@ author: kgremban
 manager: philmea
 ms.author: v-tawe
 origin.date: 11/11/2019
-ms.date: 03/16/2020
+ms.date: 03/30/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 5f5dffb352e210184980347eed36d1c014ce9e14
-ms.sourcegitcommit: 1d3d8dfdaf6281f06640cbee7124a1e8bf102c50
+ms.openlocfilehash: 50cfb30381c81f9d72c0ec4363e22967e2c60b3a
+ms.sourcegitcommit: 260800ede66f48c886d1426a0fac18b4d402b4f2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "80243886"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586660"
 ---
 # <a name="tutorial-develop-iot-edge-modules-for-linux-devices"></a>教程：开发适用于 Linux 设备的 IoT Edge 模块
 
@@ -91,6 +91,7 @@ IoT Edge 模块被打包为容器，因此，需要在开发计算机上安装�
 * [安装适用于 Mac 的 Docker Desktop](https://docs.docker.com/docker-for-mac/install/)
 
 * 有关多个 Linux 平台上的安装信息，请参阅[关于 Docker CE](https://docs.docker.com/install/)。
+  * 对于适用于 Linux 的 Windows 子系统 (WSL)，请安装 Docker Desktop For Windows。
 
 ## <a name="set-up-vs-code-and-tools"></a>设置 VS Code 和工具
 

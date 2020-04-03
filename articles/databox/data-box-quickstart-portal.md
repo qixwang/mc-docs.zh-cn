@@ -7,15 +7,15 @@ ms.service: databox
 ms.subservice: pod
 ms.topic: quickstart
 origin.date: 09/03/2019
-ms.date: 12/09/2019
+ms.date: 04/06/2020
 ms.author: v-jay
 ms.localizationpriority: high
-ms.openlocfilehash: d9b8863b2b60f991497c83c827c032981486f361
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.openlocfilehash: 8d93403b97b6ab2c2f5dc68e1b88be0b572ff68e
+ms.sourcegitcommit: 5fb45da006859215edc8211481f13174aa43dbeb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77428871"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80634626"
 ---
 # <a name="get-started-with-azure-data-box"></a>Azure Data Box 入门 
 
@@ -35,14 +35,14 @@ ms.locfileid: "77428871"
 
 ::: zone target="docs"
  
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 开始之前：
 
 - 确保用于 Data Box 服务的订阅是下述类型之一：
-    - Microsoft 企业协议 (EA)。
-    - 云解决方案提供商 (CSP)。 
-    - Microsoft Azure 赞助。 
+    - Microsoft 企业协议 (EA)。 详细了解 [EA 订阅](https://azure.microsoft.com/pricing/enterprise-agreement/)。
+    - 云解决方案提供商 (CSP)。 详细了解 [Azure CSP 计划](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-overview)。
+    - Microsoft Azure 赞助。 详细了解 [Azure 赞助计划](https://azure.microsoft.com/offers/ms-azr-0036p/)。 
 
 - 确保有订阅的所有者或参与者访问权限，以便创建 Data Box 订单。
 - 查看 [Data Box 的安全指南](data-box-safety.md)。
@@ -59,7 +59,7 @@ ms.locfileid: "77428871"
 
 ::: zone target="chromeless"
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 在开始之前，请确保：
 

@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure CLI 在多个 IP 配置上进行负载均衡
-titlesuffix: Azure Load Balancer
+titleSuffix: Azure Load Balancer
 description: 了解如何使用 Azure CLI 将多个 IP 地址分配给虚拟机。
 services: virtual-network
 documentationcenter: na
@@ -12,14 +12,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 06/25/2018
-ms.date: 12/31/2018
+ms.date: 04/06/2020
 ms.author: v-jay
-ms.openlocfilehash: f307f920b9762244cca251eccc331527d25656d8
-ms.sourcegitcommit: b8fb6890caed87831b28c82738d6cecfe50674fd
+ms.openlocfilehash: 42229738be91539152e78b209c8602f268cbdc68
+ms.sourcegitcommit: fe9ed98aaee287a21648f866bb77cb6888f75b0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58626594"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80625638"
 ---
 # <a name="load-balancing-on-multiple-ip-configurations-using-azure-cli"></a>使用 Azure CLI 在多个 IP 配置上进行负载均衡
 
@@ -89,7 +89,7 @@ ms.locfileid: "58626594"
     az network lb show --resource-group contosofabrikam --name mylb
     ```
 
-10. 为第一个虚拟机 VM1 [创建公共 IP](../virtual-machines/linux/create-cli-complete.md?toc=%2fvirtual-network%2ftoc.json#create-a-public-ip-address) *myPublicIp* 和[存储帐户](../virtual-machines/linux/create-cli-complete.md?toc=%2fvirtual-network%2ftoc.json) *mystorageaccont1*，如下所示：
+10. 为第一个虚拟机 VM1 [创建公共 IP](../virtual-machines/linux/create-cli-complete.md?toc=%2fvirtual-network%2ftoc.json#create-a-public-ip-address)*myPublicIp* 和[存储帐户](../virtual-machines/linux/create-cli-complete.md?toc=%2fvirtual-network%2ftoc.json)*mystorageaccont1*，如下所示：
 
     ```azurecli
     az network public-ip create --resource-group contosofabrikam --location chinaeast --name myPublicIP --domain-name-label mypublicdns345 --allocation-method Dynamic
@@ -98,7 +98,6 @@ ms.locfileid: "58626594"
     ```
 
 11. 为 VM1 [创建网络接口](../virtual-machines/linux/create-cli-complete.md?toc=%2fvirtual-network%2ftoc.json#create-a-virtual-nic)，添加另一个 IP 配置 *VM1-ipconfig2*，并[创建 VM](../virtual-machines/linux/create-cli-complete.md?toc=%2fvirtual-network%2ftoc.json#create-a-vm)，如下所示：
-    <!-- Not Available create-a-virtual-nic -->
 
     ```azurecli
     az network nic create --resource-group contosofabrikam --location chinaeast --subnet-vnet-name myVnet --subnet-name mySubnet --name VM1Nic1 --ip-config-name NIC1-ipconfig1
@@ -122,6 +121,3 @@ ms.locfileid: "58626594"
 
 ## <a name="next-steps"></a>后续步骤
 - 若要深入了解如何在 Azure 中结合使用负载均衡服务，请参阅[在 Azure 中使用负载均衡服务](../traffic-manager/traffic-manager-load-balancing-azure.md)。
-<!-- Not Avaible on  [Log analytics for Azure Load Balancer](../load-balancer/load-balancer-monitor-log.md) -->
-
-<!--Update_Description: update link, wording update -->

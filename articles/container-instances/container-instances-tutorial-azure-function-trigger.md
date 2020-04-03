@@ -3,15 +3,15 @@ title: 教程 - 通过 Azure 函数触发容器组
 description: 创建 HTTP 触发的无服务器 PowerShell 函数，以便自动创建 Azure 容器实例
 ms.topic: tutorial
 origin.date: 09/20/2019
-ms.date: 01/15/2020
+ms.date: 04/06/2020
 ms.author: v-yeche
 ms.custom: ''
-ms.openlocfilehash: 1c0e7dd8ece84582fa2e6b1883d5161cdd685ed2
-ms.sourcegitcommit: 97fdc3a6529136315605b86a150b345d6817dab9
+ms.openlocfilehash: 270d0b1e89fe094df63c5f297635aad17e4b9f7e
+ms.sourcegitcommit: 76280dd9854dc0ff0ba1e5e62fb3dc3af049fbe2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75965117"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80517027"
 ---
 # <a name="tutorial-use-an-http-triggered-azure-function-to-create-a-container-group"></a>教程：使用 HTTP 触发的 Azure 函数创建容器组
 
@@ -30,11 +30,9 @@ ms.locfileid: "75965117"
 > [!IMPORTANT]
 > 适用于 Azure Functions 的 PowerShell 当前为预览版。 需同意[补充使用条款][terms-of-use]才可使用预览版。 在正式版 (GA) 推出之前，此功能的某些方面可能会有所更改。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
-请参阅“在 Azure 中创建第一个 PowerShell 函数”，了解在 OS 上安装 Visual Studio Code 并将其与 Azure Functions 配合使用的先决条件。
-
-<!--Not Available on [Create your first PowerShell function in Azure](../azure-functions/functions-create-first-function-powershell.md#prerequisites)-->
+请参阅[在 Azure 中创建第一个函数](/azure-functions/functions-create-first-function-vs-code?pivots=programming-language-powershell#configure-your-environment)，了解在 OS 上安装 Visual Studio Code 并将其与 Azure Functions 配合使用的先决条件。
 
 本文中的一些步骤使用 Azure CLI。 可以使用本地安装的 Azure CLI 来完成这些步骤。 如果需要进行安装或升级，请参阅[安装 Azure CLI][azure-cli-install]。
 
@@ -42,15 +40,13 @@ ms.locfileid: "75965117"
 
 ## <a name="create-a-basic-powershell-function"></a>创建基本的 PowerShell 函数
 
-请按“在 Azure 中创建第一个 PowerShell 函数”中的步骤操作，使用“HTTP 触发器”模板创建一个 PowerShell 函数。 使用默认的 Azure 函数名称 **HttpTrigger**。 按快速入门中的演示操作，在本地测试函数，并将项目发布到 Azure 中的函数应用。 此示例是一个基本的 HTTP 触发的函数，返回文本字符串。 在本文后面的步骤中，我们通过修改该函数来创建容器组。
-
-<!--Not Available on [Create your first PowerShell function in Azure](../azure-functions/functions-create-first-function-powershell.md#prerequisites)-->
+请按[在 Azure 中创建第一个 PowerShell 函数](/azure-functions/functions-create-first-function-vs-code?pivots=programming-language-powershell)中的步骤操作，使用“HTTP 触发器”模板创建 PowerShell 函数。 使用默认的 Azure 函数名称 **HttpTrigger**。 按快速入门中的演示操作，在本地测试函数，并将项目发布到 Azure 中的函数应用。 此示例是一个基本的 HTTP 触发的函数，返回文本字符串。 在本文后面的步骤中，我们通过修改该函数来创建容器组。
 
 本文假定你在一个 Azure 资源组中使用名称 *myfunctionapp* 发布项目，该资源组自动根据函数应用名称（也是 *myfunctionapp*）命名。 请在后面的步骤中将上述名称替换为自己的唯一函数应用名称和资源组名称。
 
 ## <a name="enable-an-azure-managed-identity-in-the-function-app"></a>在函数应用中启用 Azure 托管标识
 
-现在，在函数应用中启用系统分配的[托管标识](../app-service/overview-managed-identity.md?toc=/azure-functions/toc.json#adding-a-system-assigned-identity)。 运行此应用的 PowerShell 主机可以使用此标识自动进行身份验证，使函数能够在标识有权访问的 Azure 服务上执行操作。 在本教程中，我们授予托管标识在函数应用的资源组中创建资源的权限。 
+现在，在函数应用中启用系统分配的[托管标识](../app-service/overview-managed-identity.md?toc=/azure-functions/toc.json#add-a-system-assigned-identity)。 运行此应用的 PowerShell 主机可以使用此标识自动进行身份验证，使函数能够在标识有权访问的 Azure 服务上执行操作。 在本教程中，我们授予托管标识在函数应用的资源组中创建资源的权限。 
 
 首先使用 [az group show][az-group-show] 命令获取函数应用的资源组的 ID 并将其存储在环境变量中。 以下示例假定你在 Bash shell 中运行该命令。
 
@@ -99,9 +95,8 @@ if ($name) {
 
 ## <a name="test-function-app-locally"></a>在本地测试函数应用
 
-请确保函数在本地正常运行，然后再将函数应用项目重新发布到 Azure。 如 PowerShell 快速入门中所示，在 PowerShell 脚本中插入一个本地断点，并在其上方插入 `Wait-Debugger` 调用。
+请确保函数在本地正常运行，然后再将函数应用项目重新发布到 Azure。 如 [PowerShell 快速入门](/azure-functions/functions-create-first-function-vs-code?pivots=programming-language-powershell)所示，请在 PowerShell 脚本中插入一个本地断点，然后在其上插入 `Wait-Debugger` 调用。 
 
-<!--Not Available on [Create your first PowerShell function in Azure](../azure-functions/functions-create-first-function-powershell.md#prerequisites)-->
 <!--Not Available on [Debug PowerShell Azure Functions locally](../azure-functions/functions-debug-powershell-local.md)-->
 
 ## <a name="republish-azure-function-app"></a>重新发布 Azure 函数应用
@@ -230,5 +225,4 @@ az group delete --name myfunctionapp
 [new-azcontainergroup]: https://docs.microsoft.com/powershell/module/az.containerinstance/new-azcontainergroup
 [az-container-logs]: https://docs.microsoft.com/cli/azure/container?view=azure-cli-latest#az-container-logs
 
-<!-- Update_Description: new article about container instances tutorial azure function trigger -->
-<!--NEW.date: 01/15/2020-->
+<!-- Update_Description: update meta properties, wording update, update link -->

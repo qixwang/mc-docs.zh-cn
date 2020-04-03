@@ -7,12 +7,12 @@ ms.topic: conceptual
 origin.date: 12/02/2019
 ms.date: 02/10/2020
 ms.author: v-yeche
-ms.openlocfilehash: 1ff8d0b051305652278c01dd9a35eadeafbcc057
-ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
+ms.openlocfilehash: 3e79b0886fdc91930e0a61fb6b10db86cb784374
+ms.sourcegitcommit: 76280dd9854dc0ff0ba1e5e62fb3dc3af049fbe2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77028665"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80516968"
 ---
 # <a name="azure-cosmos-db-sql-query-execution"></a>Azure Cosmos DB SQL 查询执行
 
@@ -95,8 +95,10 @@ Cosmos DB 通过 HTTP 提供开放的 RESTful 编程模型。 资源模型由 Az
 
 下面这个更复杂的查询从某个联接操作返回多个结果：
 
+<!--CORRECT ON https://-->
+
 ```json
-    POST https://https://mysqlapicosmosdb.documents.azure.cn:443/docs HTTP/1.1
+    POST https://mysqlapicosmosdb.documents.azure.cn:443/docs HTTP/1.1
     ...
     x-ms-documentdb-isquery: True
     Content-Type: application/query+json

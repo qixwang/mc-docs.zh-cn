@@ -8,14 +8,14 @@ ms.service: iot-edge
 services: iot-edge
 ms.topic: conceptual
 origin.date: 05/06/2019
-ms.date: 03/02/2020
+ms.date: 03/30/2020
 ms.author: v-tawe
-ms.openlocfilehash: bad9383197065e91d223b395fb7010ffb3faec18
-ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
+ms.openlocfilehash: eb165414a27cecb4fdb9c8a1826df892ed037b26
+ms.sourcegitcommit: 260800ede66f48c886d1426a0fac18b4d402b4f2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77494477"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586680"
 ---
 # <a name="use-iot-edge-on-windows-to-run-linux-containers"></a>使用 Windows 上的 IoT Edge 运行 Linux 容器
 
@@ -25,15 +25,15 @@ ms.locfileid: "77494477"
 
 本文列出了在 Windows x64 (AMD/Intel) 系统上使用 Linux 容器安装 Azure IoT Edge 运行时的步骤。 若要详细了解 IoT Edge 运行时安装程序，包括有关所有安装参数的详细信息，请参阅 [在 Windows 上安装 Azure IoT Edge 运行时](how-to-install-iot-edge-windows.md)。
 
-## <a name="prerequisites"></a>必备条件
+有关最新 IoT Edge 版本包含的功能的信息，请参阅 [Azure IoT Edge 版本](https://github.com/Azure/azure-iotedge/releases)。
+
+## <a name="prerequisites"></a>先决条件
 
 参考本部分检查你的 Windows 设备是否支持 IoT Edge，并在安装之前为容器引擎准备好该设备。
 
 ### <a name="supported-windows-versions"></a>支持的 Windows 版本
 
 带有 Linux 容器的 Azure IoT Edge 可以在满足 [Docker Desktop 要求](https://docs.docker.com/docker-for-windows/install/#what-to-know-before-you-install)的任何 Windows 版本上运行
-
-有关最新版 IoT Edge 包含的功能的详细信息，请参阅 [Azure IoT Edge 发行说明](https://github.com/Azure/azure-iotedge/releases)。
 
 若要在虚拟机上安装 IoT Edge，请启用嵌套虚拟化并分配至少 2-GB 内存。 如何启用嵌套虚拟化取决于所用的虚拟机监控程序。 就 Hyper-V 来说，第 2 代虚拟机已默认启用嵌套虚拟化。 如果使用 VMWare，则可通过切换开关在虚拟机上启用此功能。
 
@@ -89,7 +89,7 @@ Azure IoT Edge 依赖于 [OCI 兼容的](https://www.opencontainers.org/)容器�
 
 6. 出现提示时，请提供在步骤 1 中检索到的设备连接字符串。 该设备连接字符串会将物理设备与 IoT 中心内的设备 ID 相关联。
 
-   该设备连接字符串采用以下格式（不包括引号）：`HostName={IoT hub name}.azure-devices.net;DeviceId={device name};SharedAccessKey={key}`
+   该设备连接字符串采用以下格式（不包括引号）：`HostName={IoT hub name}.azure-devices.cn;DeviceId={device name};SharedAccessKey={key}`
 
 ## <a name="verify-successful-installation"></a>验证是否成功安装
 

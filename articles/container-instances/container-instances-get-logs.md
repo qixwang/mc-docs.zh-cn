@@ -3,15 +3,15 @@ title: 获取容器实例日志和事件
 description: 了解如何在 Azure 容器实例中检索容器日志和事件，以便排查容器问题
 ms.topic: article
 origin.date: 12/30/2019
-ms.date: 01/15/2020
+ms.date: 04/06/2020
 ms.author: v-yeche
 ms.custom: mvc
-ms.openlocfilehash: 68a6ec83b2fe69a41f441ea1d31d264f92395791
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.openlocfilehash: 9b3e813b6aab39e997f82c6a9066ec34472f91de
+ms.sourcegitcommit: 76280dd9854dc0ff0ba1e5e62fb3dc3af049fbe2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77428740"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80516973"
 ---
 <!--Verified successfully-->
 # <a name="retrieve-container-logs-and-events-in-azure-container-instances"></a>在 Azure 容器实例中检索容器日志和事件
@@ -24,8 +24,11 @@ ms.locfileid: "77428740"
 
 下面是[在容器实例中设置命令行](container-instances-start-command.md#azure-cli-example)一文中基于示例任务的容器的日志输出（在使用命令行重写提供无效 URL 之后）：
 
-```console
-$ az container logs --resource-group myResourceGroup --name mycontainer
+```azurecli
+az container logs --resource-group myResourceGroup --name mycontainer
+```
+
+```output
 Traceback (most recent call last):
   File "wordcount.py", line 11, in <module>
     urllib.request.urlretrieve (sys.argv[1], "foo.txt")
@@ -52,8 +55,11 @@ urllib.error.HTTPError: HTTP Error 404: Not Found
 
 例如，下面是[在容器实例中设置命令行](container-instances-start-command.md#azure-cli-example)一文中基于任务的容器的输出（在提供需处理的大型文本文件的有效 URL 之后）：
 
-```console
-$ az container attach --resource-group myResourceGroup --name mycontainer
+```azurecli
+az container attach --resource-group myResourceGroup --name mycontainer
+```
+
+```output
 Container 'mycontainer' is in state 'Unknown'...
 Container 'mycontainer' is in state 'Waiting'...
 Container 'mycontainer' is in state 'Running'...

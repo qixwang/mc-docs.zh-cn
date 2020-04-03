@@ -18,16 +18,16 @@ ms.topic: article
 origin.date: 05/27/2019
 ms.date: 07/01/2019
 ms.author: v-yiso
-ms.openlocfilehash: 54444c1b11118108c6299aede95243088e239cff
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: e9e5ae103229b6b6b680083dae0b96aba9e072f6
+ms.sourcegitcommit: 5fb45da006859215edc8211481f13174aa43dbeb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79292371"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80634503"
 ---
 # <a name="kernels-for-jupyter-notebook-on-apache-spark-clusters-in-azure-hdinsight"></a>Azure HDInsight 中 Apache Spark 群集上的 Jupyter notebook 的内核 
 
-HDInsight Spark 群集提供可在 [Apache Spark](https://spark.apache.org/) 上的 Jupyter notebook 中用于测试应用程序的内核。 内核是可以运行和解释代码的程序。 三个内核如下：
+HDInsight Spark 群集提供可在 [Apache Spark](./apache-spark-overview.md) 上的 Jupyter notebook 中用于测试应用程序的内核。 内核是可以运行和解释代码的程序。 三个内核如下：
 
 - **PySpark** - 适用于以 Python2 编写的应用程序
 - **PySpark3** - 适用于以 Python3 编写的应用程序
@@ -150,7 +150,7 @@ Google Chrome 仅支持 Spark HDInsight 群集中的 Jupyter Notebook。
 
 新内核正处于发展阶段，一段时间后将变得成熟。 这可能也意味着，API 可随着这些内核的成熟而改变。 如果在使用这些新内核时有任何反馈，我们将不胜感激。 这对于内核最终版本的定调会很有帮助。 可以在本文末尾的“反馈”  部分下面留下意见/反馈。
 
-## <a name="seealso"></a>另请参阅
+## <a name="see-also"></a><a name="seealso"></a>另请参阅
 * [概述：Azure HDInsight 上的 Apache Spark](apache-spark-overview.md)
 
 ### <a name="scenarios"></a>方案

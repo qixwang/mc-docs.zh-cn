@@ -115,6 +115,8 @@
       href: functions-networking-options.md
     - name: IP 地址
       href: ip-addresses.md
+    - name: 自定义处理程序
+      href: functions-custom-handlers.md
 - name: 操作指南
   items:
     - name: 开发

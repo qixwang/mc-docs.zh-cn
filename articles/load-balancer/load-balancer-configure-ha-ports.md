@@ -1,6 +1,6 @@
 ---
 title: 为 Azure 负载均衡器配置高可用性端口
-titlesuffix: Azure Load Balancer
+titleSuffix: Azure Load Balancer
 description: 了解如何使用高可用性端口对所有端口上的内部流量进行负载均衡
 services: load-balancer
 documentationcenter: na
@@ -13,14 +13,14 @@ ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 03/21/2018
-ms.date: 06/03/2019
+ms.date: 04/06/2020
 ms.author: v-jay
-ms.openlocfilehash: eb314b1b1f0b7b43ab7f32fbf142194ac4508563
-ms.sourcegitcommit: e85021b6bddb943d275bdaf023098caa8601b801
+ms.openlocfilehash: fa6440cee8fa918a756f4b805ce4d8f7306b4715
+ms.sourcegitcommit: fe9ed98aaee287a21648f866bb77cb6888f75b0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66299694"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80625643"
 ---
 # <a name="configure-high-availability-ports-for-an-internal-load-balancer"></a>为内部负载均衡器配置高可用性端口
 
@@ -99,7 +99,7 @@ lbrule = New-AzLoadBalancerRuleConfig -Name "HAPortsRule" -FrontendIpConfigurati
 在[创建内部负载均衡器集](load-balancer-get-started-ilb-arm-cli.md)的步骤 4 中，使用以下命令创建高可用性端口负载均衡器规则：
 
 ```azurecli
-az network lb rule create --resource-group contoso-rg --lb-name contoso-ilb --name haportsrule --protocol all --frontend-port 0 --backend-port 0 --frontend-ip-name feilb --backend-pool-name beilb
+az network lb rule create --resource-group contoso-rg --lb-name contoso-ilb --name haportsrule --protocol all --frontend-port 0 --backend-port 0 --frontend-ip-name feilb --backend-address-pool-name beilb
 ```
 
 ## <a name="next-steps"></a>后续步骤

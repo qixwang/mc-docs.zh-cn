@@ -13,19 +13,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.custom: seodec18
 origin.date: 01/10/2020
-ms.date: 03/16/2020
+ms.date: 03/30/2020
 ms.author: v-tawe
-ms.openlocfilehash: 68dde124e431d3bea829df0699faed82483e92da
-ms.sourcegitcommit: 1d3d8dfdaf6281f06640cbee7124a1e8bf102c50
+ms.openlocfilehash: 7830119b942e52a23f54409a65a6283660357778
+ms.sourcegitcommit: 260800ede66f48c886d1426a0fac18b4d402b4f2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "80243927"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586781"
 ---
 # <a name="event-processor-host"></a>事件处理程序主机
 > [!NOTE]
 > 本文适用于旧版 Azure 事件中心 SDK。 若要了解如何将代码迁移到新版 SDK，请参阅以下迁移指南。 
-> - [.NET](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/MIGRATIONGUIDE.md)
+> - [.NET](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/MigrationGuide.md)
 > - [Java](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs/migration-guide.md)
 > - [Python](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub/migration_guide.md)
 > - [Java Script](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/event-hubs/migrationguide.md)

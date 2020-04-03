@@ -10,12 +10,12 @@ origin.date: 02/20/2020
 ms.date: 3/16/2020
 ms.author: v-lingwu
 ms.custom: seodec18
-ms.openlocfilehash: b3757dc9762c80d313fde71084c3af7b9781b224
-ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
+ms.openlocfilehash: 98a2268967ebe0c6ea3e8bd68f80f078da3c58c3
+ms.sourcegitcommit: 78a05172a813b87428b87f3a2695e6bb3ae81ede
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/17/2020
-ms.locfileid: "79452594"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80417390"
 ---
 # <a name="what-is-azure-event-grid"></a>什么是 Azure 事件网格？
 
@@ -50,7 +50,7 @@ ms.locfileid: "79452594"
 
 有关每个处理程序的功能的完整详细信息及相关文章，请参阅[事件处理程序](event-handlers.md)。 当前，以下 Azure 服务支持从事件网格处理事件： 
 
-* [Azure 自动化](event-handlers.md#azure-automation)
+* [Azure 自动化](event-handlers.md)
 * [Azure Functions](event-handlers.md#azure-functions)
 * [事件中心](event-handlers.md#event-hubs)
 * [混合连接](event-handlers.md#hybrid-connections)

@@ -1,22 +1,20 @@
 ---
 title: include 文件
 description: include 文件
-services: azure-policy
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-origin.date: 06/05/2019
-ms.date: 10/15/2019
+origin.date: 03/25/2019
+ms.date: 03/30/2020
 ms.author: v-tawe
-ms.custom: include file
-ms.openlocfilehash: 99b3a1f5d23dcc1797f4305ace7496a087ff232e
-ms.sourcegitcommit: 0bfa3c800b03216b89c0461e0fdaad0630200b2f
+ms.openlocfilehash: 9e761269dc4183378b81eda0797ae3397b1b1628
+ms.sourcegitcommit: 260800ede66f48c886d1426a0fac18b4d402b4f2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72526688"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80587095"
 ---
-Azure Policy 的每个对象类型都有一个最大计数。 _作用域_条目是指订阅或[管理组](../articles/governance/management-groups/index.md)。
+Azure Policy 的每个对象类型都有一个最大计数。 _作用域_条目是指订阅或[管理组](../articles/governance/management-groups/overview.md)。
 
 | Where | 对象 | 最大计数 |
 |---|---|---|
@@ -29,3 +27,4 @@ Azure Policy 的每个对象类型都有一个最大计数。 _作用域_条目�
 | 计划定义 | parameters | 100 |
 | 策略或计划分配 | 排除项（不在范围内的项） | 400 |
 | 策略规则 | 嵌套式条件语句 | 512 |
+| 修正任务 | 资源 | 1000 |

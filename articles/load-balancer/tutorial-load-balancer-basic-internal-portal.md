@@ -1,6 +1,6 @@
 ---
 title: 教程：创建内部负载均衡器 - Azure 门户
-titlesuffix: Azure Load Balancer
+titleSuffix: Azure Load Balancer
 description: 本教程展示了如何使用 Azure 门户创建内部的基本负载均衡器。
 services: load-balancer
 documentationcenter: na
@@ -13,15 +13,15 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 02/27/2019
-ms.date: 04/29/2019
+ms.date: 04/06/2020
 ms.author: v-jay
 ms.custom: seodec18
-ms.openlocfilehash: 1132760cb19decd987e51a373b31c8166cb189c5
-ms.sourcegitcommit: df1adc5cce721db439c1a7af67f1b19280004b2d
+ms.openlocfilehash: 9064feb3dce64851a37c22e1344ec9fff3381795
+ms.sourcegitcommit: fe9ed98aaee287a21648f866bb77cb6888f75b0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2019
-ms.locfileid: "63829693"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80625675"
 ---
 # <a name="tutorial-balance-internal-traffic-load-with-a-basic-load-balancer-in-the-azure-portal"></a>教程：在 Azure 门户中通过基本负载均衡器对内部流量负载进行均衡
 
@@ -39,44 +39,44 @@ ms.locfileid: "63829693"
 
 ### <a name="create-a-virtual-network"></a>创建虚拟网络
 
-1. 在门户的左上方，选择“创建资源” > “网络” > “虚拟网络”。
+1. 在门户的左上方，选择“创建资源”   > “网络”   > “虚拟网络”  。
    
-1. 在“创建虚拟网络”窗格中键入或选择以下值：
+1. 在“创建虚拟网络”窗格中键入或选择以下值： 
    
-   - **名称**：键入“MyVNet”。
-   - **资源组**：选择“新建”，输入 *MyResourceGroupLB*，然后选择“确定”。 
-   - **子网** > **名称**：键入“MyBackendSubnet”。
+   - **名称**：键入“MyVNet”  。
+   - **ResourceGroup**：选择“新建”，输入 *MyResourceGroupLB*，然后选择“确定”   。 
+   - **子网** > **名称**：键入“MyBackendSubnet”  。
    
-1. 选择“创建” 。
+1. 选择“创建”  。
 
    ![创建虚拟网络](./media/tutorial-load-balancer-basic-internal-portal/2-load-balancer-virtual-network.png)
 
 ### <a name="create-virtual-machines"></a>创建虚拟机
 
-1. 在门户左上角，选择“创建资源” > “计算” > “Windows Server 2016 Datacenter”。 
+1. 在门户左上角，选择“创建资源” > “计算” > “Windows Server 2016 Datacenter”。    
    
-1. 在“创建虚拟机”中，在“基本信息”选项卡中键入或选择以下值：
-   - **订阅** > **资源组**：下拉并选择“MyResourceGroupLB”。
+1. 在“创建虚拟机”中，在“基本信息”选项卡中键入或选择以下值：  
+   - **订阅** > **资源组**：下拉并选择“MyResourceGroupLB”。 
    - **实例详细信息** > **虚拟机名称**：键入 *MyVM1*。
-   - “实例详细信息” > “可用性选项”： 
-     1. 在下拉列表中选择“可用性集”。 
-     2. 选择“新建”，键入 *MyAvailabilitySet*，然后选择“确定”。
+   - “实例详细信息”   >   “可用性选项”： 
+     1. 在下拉列表中选择“可用性集”。  
+     2. 选择“新建”，键入  *MyAvailabilitySet*，然后选择“确定”。 
    
-1. 选择“网络”选项卡，或选择“下一步: **磁盘”，然后选择“下一步:网络”**。 
+1. 选择“网络”  选项卡，或选择“下一步: **磁盘”，然后选择“下一步:**  网络”。 
    
    确保选中以下项：
    - **虚拟网络**：**MyVNet**
    - **子网**：**MyBackendSubnet**
    
-   在“网络安全组”下：
-   1. 选择“高级”。 
-   1. 转到“配置网络安全组”下拉列表，选择“无”。 
+   在“网络安全组”下： 
+   1. 选择“高级”。  
+   1. 转到“配置网络安全组”下拉列表，选择“无”。   
    
-1. 选择“管理”选项卡，或者选择“下一步” > “管理”。 在“监视”下，将“启动诊断”设置为“关闭”。
+1. 选择“管理”选项卡，或者选择“下一步”   >   “管理”。  在“监视”  下，将“启动诊断”  设置为“关闭”。 
    
-1. 选择“查看 + 创建”。
+1. 选择“查看 + 创建”  。
    
-1. 检查设置，然后选择“创建”。 
+1. 检查设置，然后选择“创建”。  
 
 1. 按步骤创建另一个 VM，其名称为 *MyVM2*，所有其他设置与 MyVM1 相同。 
 
@@ -86,23 +86,23 @@ ms.locfileid: "63829693"
 
 使用门户创建基本的内部负载均衡器。 创建的名称和 IP 地址自动配置为负载均衡器的前端。
 
-1. 在门户的左上方，选择“创建资源” > “网络” > “负载均衡器”。
+1. 在门户的左上方，选择“创建资源” > “网络” > “负载均衡器”。   
    
-2. 在“创建负载均衡器”页的“基本”选项卡中输入或选择以下信息，接受其余的默认设置，然后选择“查看 + 创建”：
+2. 在“创建负载均衡器”页的“基本”选项卡中输入或选择以下信息，接受其余的默认设置，然后选择“查看 + 创建”    ：
 
     | 设置                 | Value                                              |
     | ---                     | ---                                                |
     | 订阅               | 选择订阅。    |    
-    | 资源组         | 选择“新建”并在文本框中键入 MyResourceGroupLB。|
-    | Name                   | *myLoadBalancer*                                   |
-    | 区域         | 选择“中国东部 2”。                                        |
-    | 类型          | 选择“内部”。                                        |
-    | SKU           | 选择“基本”。                          |
-    | 虚拟网络           | 选择“MyVNet”。                          |    
-    | IP 地址分配              | 选择“静态”。   |
+    | 资源组         | 选择“新建”并在文本框中键入 MyResourceGroupLB   。|
+    | 名称                   | *myLoadBalancer*                                   |
+    | 区域         | 选择“中国东部 2”  。                                        |
+    | 类型          | 选择“内部”。                                         |
+    | SKU           | 选择“基本”。                           |
+    | 虚拟网络           | 选择“MyVNet”  。                          |    
+    | IP 地址分配              | 选择“静态”  。   |
     | 专用 IP 地址|键入一个位于虚拟网络和子网地址空间中的地址，例如 *10.3.0.7*。  |
 
-3. 在“查看 + 创建”选项卡中，单击“创建”。 
+3. 在“查看 + 创建”选项卡中，单击“创建”   。 
    
 
 ## <a name="create-basic-load-balancer-resources"></a>创建基本负载均衡器资源
@@ -115,28 +115,28 @@ ms.locfileid: "63829693"
 
 **若要创建包含 VM1 和 VM2 的后端地址池，请执行以下操作：**
 
-1. 在左侧菜单中选择“所有资源”，然后在资源列表中选择“MyLoadBalancer”。
+1. 在左侧菜单中选择“所有资源”，然后在资源列表中选择“MyLoadBalancer”。  
    
-1. 在“设置”下，依次选择“后端池”、“添加”。
+1. 在“设置”下，依次选择“后端池”、“添加”。   
    
-1. 在“添加后端池”页上，键入或选择以下值：
+1. 在“添加后端池”  页上，键入或选择以下值：
    
    - **名称**：键入 *MyBackendPool*。
-   - **关联到**：在下拉列表中选择“可用性集”。
-   - **可用性集**：选择“MyAvailabilitySet”。
+   - **关联到**：下拉并选择“虚拟机”  。
    
-1. 选择“添加目标网络 IP 配置”。 
+   
+1. 选择“虚拟机”  。 
    1. 将 **MyVM1** 和 **MyVM2** 添加到后端池。
    2. 添加每台计算机以后，请在下拉列表中选择其**网络 IP 配置**。 
    
    >[!NOTE]
    >请勿向池添加 **MyTestVM**。 
    
-1. 选择“确定”。
+1. 选择“确定”  。
    
    ![添加后端地址池](./media/tutorial-load-balancer-basic-internal-portal/3-load-balancer-backend-02.png)
    
-1. 在“后端池”页上展开 **MyBackendPool**，确保 **VM1** 和 **VM2** 都已列出。
+1. 在“后端池”页上  展开 **MyBackendPool**，确保 **VM1** 和 **VM2** 都已列出。
 
 ### <a name="create-a-health-probe"></a>创建运行状况探测器
 
@@ -144,20 +144,20 @@ ms.locfileid: "63829693"
 
 **若要创建运行状况探测来监视 VM 的运行状况，请执行以下操作：**
 
-1. 在左侧菜单中选择“所有资源”，然后在资源列表中选择“MyLoadBalancer”。
+1. 在左侧菜单中选择“所有资源”，然后在资源列表中选择“MyLoadBalancer”。  
    
-1. 在“设置”下，依次选择“运行状况探测”、“添加”。
+1. 在“设置”下，依次选择“运行状况探测”、“添加”。   
    
-1. 在“添加运行状况探测”页上，键入或选择以下值：
+1. 在“添加运行状况探测”  页上，键入或选择以下值：
    
    - **名称**：键入 *MyHealthProbe*。
-   - **协议**：下拉并选择“HTTP”。 
+   - **协议**：下拉并选择“HTTP”  。 
    - **端口**：键入 *80*。 
    - **路径**：接受 */* 作为默认 URI。 可以将此值替换为任何其他的 URI。 
    - **时间间隔**：键入 *15*。 时间间隔是两次探测尝试之间的秒数。
    - **不正常阈值**：键入 *2*。 此值是将 VM 视为不正常之前发生的连续探测失败次数。
    
-1. 选择“确定”。
+1. 选择“确定”  。
    
    ![添加探测](./media/tutorial-load-balancer-basic-internal-portal/4-load-balancer-probes.png)
 
@@ -169,21 +169,21 @@ ms.locfileid: "63829693"
 
 **若要创建负载均衡器规则，请执行以下操作：**
 
-1. 在左侧菜单中选择“所有资源”，然后在资源列表中选择“MyLoadBalancer”。
+1. 在左侧菜单中选择“所有资源”，然后在资源列表中选择“MyLoadBalancer”。  
    
-2. 在“设置”下，依次选择“负载均衡规则”、“添加”。
+1. 在“设置”下，依次选择“负载均衡规则”、“添加”。   
    
-3. 在“添加负载均衡规则”页上，键入或选择以下值（如果还没有这些值）：
+1. 在“添加负载均衡规则”  页上，键入或选择以下值（如果还没有这些值）：
    
    - **名称**：键入 *MyLoadBalancerRule*。
    - **前端 IP 地址：** 键入 *LoadBalancerFrontEnd*（如果不存在）。
-   - **协议**：选择“TCP”。
+   - **协议**：选择“TCP”  。
    - **端口**：键入 *80*。
    - **后端端口**：键入 *80*。
-   - **后端池**：选择“MyBackendPool”。
-   - **运行状况探测**：选择“MyHealthProbe”。 
+   - **后端池**：选择“MyBackendPool”  。
+   - **运行状况探测**：选择“MyHealthProbe”  。 
    
-4. 选择“确定” 。
+1. 选择“确定”  。
    
    ![添加负载均衡器规则](./media/tutorial-load-balancer-basic-internal-portal/5-load-balancing-rules.png)
 
@@ -191,7 +191,7 @@ ms.locfileid: "63829693"
 
 在后端服务器上安装 Internet Information Services (IIS)，然后使用 MyTestVM 通过其专用 IP 地址测试负载均衡器。 每个后端 VM 提供不同版本的默认 IIS 网页，因此可以看到负载均衡器在两个 VM 之间分发请求。
 
-在门户中的 **MyLoadBalancer** 的“概览”页上，在“专用 IP 地址”下找到其 IP 地址。 将鼠标悬停在地址上，选择“复制”图标对其进行复制。 在此示例中，它是 **10.3.0.7**。 
+在门户中的  **MyLoadBalancer** 的“概览”页上，在“专用 IP 地址”下找到其 IP 地址。  将鼠标悬停在地址上，选择“复制”图标对其进行复制。  在此示例中，它是 **10.3.0.7**。 
 
 ### <a name="connect-to-the-vms-with-rdp"></a>通过 RDP 连接到 VM
 
@@ -202,17 +202,17 @@ ms.locfileid: "63829693"
 
 **若要通过远程桌面 (RDP) 连接到 VM，请执行以下操作：**
 
-1. 在门户的左侧菜单中选择“所有资源”。 在资源列表中，选择“MyResourceGroupLB”资源组中的每个 VM。
+1. 在门户的左侧菜单中选择“所有资源”  。 在资源列表中，选择“MyResourceGroupLB”资源组中的每个 VM。 
    
-1. 在“概览”页上选择“连接”，然后选择“下载 RDP 文件”。 
+1. 在“概览”页上选择“连接”，然后选择“下载 RDP 文件”。    
    
-1. 打开下载的 RDP 文件，然后选择“连接”。
+1. 打开下载的 RDP 文件，然后选择“连接”。 
    
-1. 在“Windows 安全性”屏幕上选择“更多选择”，然后选择“使用其他帐户”。 
+1. 在“Windows 安全性”屏幕上选择“更多选择”   ，然后选择“使用其他帐户”。 
    
-   输入用户名和密码，然后选择“确定”。
+   输入用户名和密码，然后选择“确定”。 
    
-1. 使用“是”对任何证书请求进行响应。 
+1. 使用“是”对任何证书请求进行响应。  
    
    VM 桌面会在新窗口中打开。 
 
@@ -225,7 +225,7 @@ ms.locfileid: "63829693"
 
 **若要使用 PowerShell 来安装 IIS 并更新默认的网页，请执行以下操作：**
 
-1. 在 MyVM1 和 MyVM2 上，通过“开始”菜单启动 **Windows PowerShell**。 
+1. 在 MyVM1 和 MyVM2 上，通过“开始”菜单启动 **Windows PowerShell**。  
 
 2. 运行以下命令，以便安装 IIS 并替换默认的 IIS 网页：
    
@@ -239,11 +239,11 @@ ms.locfileid: "63829693"
     #Add custom htm file
      Add-Content -Path "C:\inetpub\wwwroot\iisstart.htm" -Value $("Hello World from " + $env:computername)
     ```
-1. 选择“断开连接”，关闭与 MyVM1 和 MyVM2 的 RDP 连接。 请勿关闭 VM。
+1. 选择“断开连接”，关闭与 MyVM1 和 MyVM2 的 RDP 连接。  请勿关闭 VM。
 
 ### <a name="test-the-load-balancer"></a>测试负载均衡器
 
-1. 在 MyTestVM 上打开 **Internet Explorer**，在出现配置请求时使用“确定”进行响应。 
+1. 在 MyTestVM 上打开 **Internet Explorer**，在出现配置请求时使用“确定”进行响应。  
    
 1. 将负载均衡器的专用 IP 地址 (*10.3.0.7*) 粘贴或键入到浏览器的地址栏中。 
    
@@ -257,5 +257,5 @@ ms.locfileid: "63829693"
    
 ## <a name="clean-up-resources"></a>清理资源
 
-若要在不再需要的情况下删除负载均衡器和所有相关的资源，请打开 **MyResourceGroupLB** 资源组，然后选择“删除资源组”。
+若要在不再需要的情况下删除负载均衡器和所有相关的资源，请打开 **MyResourceGroupLB** 资源组，然后选择“删除资源组”。 
 

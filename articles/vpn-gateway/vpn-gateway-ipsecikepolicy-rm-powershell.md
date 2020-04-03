@@ -7,22 +7,22 @@ author: WenJason
 ms.service: vpn-gateway
 ms.topic: article
 origin.date: 02/14/2018
-ms.date: 02/17/2020
+ms.date: 04/06/2020
 ms.author: v-jay
-ms.openlocfilehash: 7c514e2e971e5ce71331d84541c224366deeafaa
-ms.sourcegitcommit: 3f9d780a22bb069402b107033f7de78b10f90dde
+ms.openlocfilehash: 72fc8760e3edd26424ec629536f19d8bafe117f3
+ms.sourcegitcommit: 5fb45da006859215edc8211481f13174aa43dbeb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77156804"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80634563"
 ---
 # <a name="configure-ipsecike-policy-for-s2s-vpn-or-vnet-to-vnet-connections"></a>为 S2S VPN 或 VNet 到 VNet 的连接配置 IPsec/IKE 策略
 
 本文逐步讲解如何使用资源管理器部署模型和 PowerShell 为站点到站点的 VPN 或 VNet 到 VNet 的连接配置 IPsec/IKE 策略。
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="about"></a>关于 Azure VPN 网关的 IPsec 和 IKE 策略参数
+
+## <a name="about-ipsec-and-ike-policy-parameters-for-azure-vpn-gateways"></a><a name="about"></a>关于 Azure VPN 网关的 IPsec 和 IKE 策略参数
 IPsec 和 IKE 协议标准支持采用各种组合的各种加密算法。 请参阅[关于加密要求和 Azure VPN 网关](vpn-gateway-about-compliance-crypto.md)，了解如何据此确保跨界的和 VNet 到 VNet 的连接满足符合性或安全性要求。
 
 本文介绍如何创建和配置 IPsec/IKE 策略，并将其应用于新的或现有的连接：
@@ -41,7 +41,7 @@ IPsec 和 IKE 协议标准支持采用各种组合的各种加密算法。 请�
 > 3. 必须指定 IKE（主模式）和 IPsec（快速模式）的所有算法和参数。 不允许指定部分策略。
 > 4. 请查阅 VPN 设备供应商规范，确保本地 VPN 设备支持该策略。 如果策略不兼容，则无法建立 S2S 或 VNet 到 VNet 的连接。
 
-## <a name ="workflow"></a>第 1 部分 - 创建和设置 IPsec/IKE 策略的工作流
+## <a name="part-1---workflow-to-create-and-set-ipsecike-policy"></a><a name ="workflow"></a>第 1 部分 - 创建和设置 IPsec/IKE 策略的工作流
 本部分概述了针对 S2S VPN 或 VNet 到 VNet 的连接创建和更新 IPsec/IKE 策略的工作流：
 1. 创建虚拟网络和 VPN 网关
 2. 创建用于跨界连接的本地网关，或用于 VNet 到 VNet 的连接的另一虚拟网络和网关
@@ -53,7 +53,7 @@ IPsec 和 IKE 协议标准支持采用各种组合的各种加密算法。 请�
 
 ![ipsec-ike-policy](./media/vpn-gateway-ipsecikepolicy-rm-powershell/ipsecikepolicy.png)
 
-## <a name ="params"></a>第 2 部分 - 支持的加密算法和密钥强度
+## <a name="part-2---supported-cryptographic-algorithms--key-strengths"></a><a name ="params"></a>第 2 部分 - 支持的加密算法和密钥强度
 
 下表列出了支持的加密算法和密钥强度，客户可自行配置：
 
@@ -108,7 +108,7 @@ IPsec 和 IKE 协议标准支持采用各种组合的各种加密算法。 请�
 
 有关更多详细信息，请参阅 [RFC3526](https://tools.ietf.org/html/rfc3526) 和 [RFC5114](https://tools.ietf.org/html/rfc5114)。
 
-## <a name ="crossprem"></a>第 3 部分 - 新建采用 IPsec/IKE 策略的 S2S VPN 连接
+## <a name="part-3---create-a-new-s2s-vpn-connection-with-ipsecike-policy"></a><a name ="crossprem"></a>第 3 部分 - 新建采用 IPsec/IKE 策略的 S2S VPN 连接
 
 本部分将逐步介绍如何创建采用 IPsec/IKE 策略的 S2S VPN 连接。 下面的步骤将创建如图所示的连接：
 
@@ -116,12 +116,12 @@ IPsec 和 IKE 协议标准支持采用各种组合的各种加密算法。 请�
 
 请参阅[创建 S2S VPN 连接](vpn-gateway-create-site-to-site-rm-powershell.md)，详细了解创建 S2S VPN 连接的分步介绍。
 
-### <a name="before"></a>准备工作
+### <a name="before-you-begin"></a><a name="before"></a>准备工作
 
 * 确保拥有 Azure 订阅。 如果还没有 Azure 订阅，可以注册一个[试用版帐户](https://www.azure.cn/pricing/1rmb-trial/)。
 * 安装 Azure 资源管理器 PowerShell cmdlet。 有关安装 PowerShell cmdlet 的详细信息，请参阅 [Azure PowerShell 概述](https://docs.microsoft.com/powershell/azure/overview)。
 
-### <a name="createvnet1"></a>步骤 1 - 创建虚拟网络、VPN 网关和本地网关
+### <a name="step-1---create-the-virtual-network-vpn-gateway-and-local-network-gateway"></a><a name="createvnet1"></a>步骤 1 - 创建虚拟网络、VPN 网关和本地网关
 
 #### <a name="1-declare-your-variables"></a>1.声明变量
 
@@ -185,7 +185,7 @@ New-AzVirtualNetworkGateway -Name $GWName1 -ResourceGroupName $RG1 -Location $Lo
 New-AzLocalNetworkGateway -Name $LNGName6 -ResourceGroupName $RG1 -Location $Location1 -GatewayIpAddress $LNGIP6 -AddressPrefix $LNGPrefix61,$LNGPrefix62
 ```
 
-### <a name="s2sconnection"></a>步骤 2 - 创建采用 IPsec/IKE 策略的 S2S VPN 连接
+### <a name="step-2---create-a-s2s-vpn-connection-with-an-ipsecike-policy"></a><a name="s2sconnection"></a>步骤 2 - 创建采用 IPsec/IKE 策略的 S2S VPN 连接
 
 #### <a name="1-create-an-ipsecike-policy"></a>1.创建 IPsec/IKE 策略
 
@@ -217,7 +217,7 @@ New-AzVirtualNetworkGatewayConnection -Name $Connection16 -ResourceGroupName $RG
 > 对连接指定 IPsec/IKE 策略后，Azure VPN 网关将仅发送或接受对该特定连接采用指定加密算法和密钥强度的 IPsec/IKE 方案。 确保连接的本地 VPN 设备使用或接受确切策略组合，否则无法建立 S2S VPN 隧道。
 
 
-## <a name ="vnet2vnet"></a>第 4 部分 - 新建采用 IPsec/IKE 策略的 VNet 到 VNet 的连接
+## <a name="part-4---create-a-new-vnet-to-vnet-connection-with-ipsecike-policy"></a><a name ="vnet2vnet"></a>第 4 部分 - 新建采用 IPsec/IKE 策略的 VNet 到 VNet 的连接
 
 创建采用 IPsec/IKE 策略的 VNet 到 VNet 的连接时，其步骤与创建 S2S VPN 连接的步骤类似。 下面的示例脚本将创建如图所示的连接：
 
@@ -225,7 +225,7 @@ New-AzVirtualNetworkGatewayConnection -Name $Connection16 -ResourceGroupName $RG
 
 请参阅[创建 VNet 到 VNet 的连接](vpn-gateway-vnet-vnet-rm-ps.md)，详细了解创建 VNet 到 VNet 的连接的步骤。 必须完成[第 3 部分](#crossprem)，才能创建和配置 TestVNet1 与 VPN 网关。
 
-### <a name="createvnet2"></a>步骤 1 - 创建第二虚拟网络和 VPN 网关
+### <a name="step-1---create-the-second-virtual-network-and-vpn-gateway"></a><a name="createvnet2"></a>步骤 1 - 创建第二虚拟网络和 VPN 网关
 
 #### <a name="1-declare-your-variables"></a>1.声明变量
 
@@ -305,7 +305,7 @@ New-AzVirtualNetworkGatewayConnection -Name $Connection21 -ResourceGroupName $RG
 ![ipsec-ike-policy](./media/vpn-gateway-ipsecikepolicy-rm-powershell/ipsecikepolicy.png)
 
 
-## <a name ="managepolicy"></a>第 5 部分 - 更新连接的 IPsec/IKE 策略
+## <a name="part-5---update-ipsecike-policy-for-a-connection"></a><a name ="managepolicy"></a>第 5 部分 - 更新连接的 IPsec/IKE 策略
 
 最后一部分介绍如何管理现有 S2S 或 VNet 到 VNet 的连接的 IPsec/IKE 策略。 下面的练习将逐步介绍如何对连接执行以下操作：
 

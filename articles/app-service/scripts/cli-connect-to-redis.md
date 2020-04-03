@@ -7,15 +7,15 @@ ms.assetid: bc8345b2-8487-40c6-a91f-77414e8688e6
 ms.devlang: azurecli
 ms.topic: sample
 origin.date: 12/11/2017
-ms.date: 01/13/2020
+ms.date: 03/30/2020
 ms.author: v-tawe
-ms.custom: mvc
-ms.openlocfilehash: fe7bc542b9f40ae97ea72b7ce4a80da6a29c3ebd
-ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
+ms.custom: mvc, seodec18
+ms.openlocfilehash: 6a1bbbc0005569ea2a5a686b1571123bf68cc2cc
+ms.sourcegitcommit: 44d3fe59952847e5394bbe6c05bd6f333bb56345
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75600377"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80522112"
 ---
 # <a name="connect-an-app-service-app-to-an-azure-cache-for-redis-using-cli"></a>使用 CLI 将应用服务应用连接到 Azure Redis 缓存
 

@@ -5,15 +5,15 @@ services: vpn-gateway
 author: WenJason
 ms.service: vpn-gateway
 ms.topic: conceptual
-origin.date: 11/04/2019
-ms.date: 01/20/2020
+origin.date: 01/10/2020
+ms.date: 04/06/2020
 ms.author: v-jay
-ms.openlocfilehash: 397454837bb289518146aa5fa13d56d0f191ea02
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: b0231d475872e432778c545717099dc68e6f5234
+ms.sourcegitcommit: 5fb45da006859215edc8211481f13174aa43dbeb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79291322"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80634549"
 ---
 # <a name="about-vpn-gateway-configuration-settings"></a>关于 VPN 网关配置设置
 
@@ -25,9 +25,11 @@ VPN 网关连接依赖于多个资源的配置，每个资源都包含可配置�
 
 * 有关适用于 -GatewayType 'ExpressRoute' 的值，请参阅[适用于 ExpressRoute 的虚拟网络网关](../expressroute/expressroute-about-virtual-network-gateways.md)。
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+* 有关虚拟 WAN，请参阅[关于虚拟 WAN](../virtual-wan/virtual-wan-about.md)。
 
-## <a name="gwtype"></a>网关类型
+
+
+## <a name="gateway-types"></a><a name="gwtype"></a>网关类型
 
 每个虚拟网络只能有一种类型的虚拟网络网关。 创建虚拟网络网关时，必须确保用于配置的网关类型正确。
 
@@ -46,7 +48,7 @@ New-AzVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg `
 -VpnType RouteBased
 ```
 
-## <a name="gwsku"></a>网关 SKU
+## <a name="gateway-skus"></a><a name="gwsku"></a>网关 SKU
 
 [!INCLUDE [vpn-gateway-gwsku-include](../../includes/vpn-gateway-gwsku-include.md)]
 
@@ -72,7 +74,7 @@ New-AzVirtualNetworkGateway -Name VNet1GW -ResourceGroupName TestRG1 `
 az network vnet-gateway create --name VNet1GW --public-ip-address VNet1GWPIP --resource-group TestRG1 --vnet VNet1 --gateway-type Vpn --vpn-type RouteBased --sku VpnGw1 --no-wait
 ```
 
-###  <a name="resizechange"></a>调整 SKU 的大小或对其进行更改
+###  <a name="resizing-or-changing-a-sku"></a><a name="resizechange"></a>调整 SKU 的大小或对其进行更改
 
 如果具有 VPN 网关并且希望使用不同的网关 SKU，则可以采用的选项是调整网关 SKU 的大小，或者更改为另一个 SKU。 如果更改为另一个网关 SKU，这会完全删除现有网关并构建一个新网关。 构建网关最多可能需要 45 分钟。 与之相比，当调整网关 SKU 的大小时，停机时间非常短，因为这不需要删除并重建网关。 如果能够调整网关 SKU 的大小而不需要更改它，则这是首选方式。 但是，大小调整有如下规则：
 
@@ -80,15 +82,15 @@ az network vnet-gateway create --name VNet1GW --public-ip-address VNet1GWPIP --r
 2. 使用旧版网关 SKU 时，仍可在基本、标准和高性能 SKU 之间调整大小。
 3. 不能从基本/标准/高性能 SKU 调整为 VpnGw SKU  。 而只能[更改](#change)为新版 SKU。
 
-#### <a name="resizegwsku"></a>重设网关大小
+#### <a name="to-resize-a-gateway"></a><a name="resizegwsku"></a>重设网关大小
 
 [!INCLUDE [Resize a SKU](../../includes/vpn-gateway-gwsku-resize-include.md)]
 
-####  <a name="change"></a>从旧版 SKU 更改为新版 SKU
+####  <a name="to-change-from-an-old-legacy-sku-to-a-new-sku"></a><a name="change"></a>从旧版 SKU 更改为新版 SKU
 
 [!INCLUDE [Change a SKU](../../includes/vpn-gateway-gwsku-change-legacy-sku-include.md)]
 
-## <a name="connectiontype"></a>连接类型
+## <a name="connection-types"></a><a name="connectiontype"></a>连接类型
 
 在 Resource Manager 部署模型中，每个配置都需要特定的虚拟网络网关连接类型。 `-ConnectionType` 的可用 Resource Manager PowerShell 值为：
 
@@ -105,7 +107,7 @@ New-AzVirtualNetworkGatewayConnection -Name localtovon -ResourceGroupName testrg
 -ConnectionType IPsec -RoutingWeight 10 -SharedKey 'abc123'
 ```
 
-## <a name="vpntype"></a>VPN 类型
+## <a name="vpn-types"></a><a name="vpntype"></a>VPN 类型
 
 为 VPN 网关配置创建虚拟网络网关时，必须指定 VPN 类型。 选择的 VPN 类型取决于要创建的连接拓扑。 例如，P2S 连接需要 RouteBased VPN 类型。 VPN 类型还取决于使用的硬件。 S2S 配置需要 VPN 设备。 有些 VPN 设备仅支持特定的 VPN 类型。
 
@@ -123,11 +125,11 @@ New-AzVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg `
 -GatewayType Vpn -VpnType RouteBased
 ```
 
-## <a name="requirements"></a>网关要求
+## <a name="gateway-requirements"></a><a name="requirements"></a>网关要求
 
 [!INCLUDE [vpn-gateway-table-requirements](../../includes/vpn-gateway-table-requirements-include.md)]
 
-## <a name="gwsub"></a>网关子网
+## <a name="gateway-subnet"></a><a name="gwsub"></a>网关子网
 
 在创建 VPN 网关之前，必须创建一个网关子网。 网关子网包含虚拟网络网关 VM 和服务使用的 IP 地址。 创建虚拟网络网关时，会将网关 VM 部署到网关子网，并使用所需的 VPN 网关设置进行配置。 永远不要将任何其他设备（例如，其他 VM）部署到网关子网。 网关子网必须命名为“GatewaySubnet”才能正常工作。 将网关子网命名为“GatewaySubnet”，可以让 Azure 知道这就是要将虚拟网络网关 VM 和服务部署到的目标子网。
 
@@ -147,7 +149,7 @@ Add-AzVirtualNetworkSubnetConfig -Name 'GatewaySubnet' -AddressPrefix 10.0.3.0/2
 
 [!INCLUDE [vpn-gateway-no-nsg](../../includes/vpn-gateway-no-nsg-include.md)]
 
-## <a name="lng"></a>本地网关
+## <a name="local-network-gateways"></a><a name="lng"></a>本地网关
 
  本地网络网关不同于虚拟网络网关。 创建 VPN 网关配置时，本地网络网关通常代表本地位置。 在经典部署模型中，本地网络网关称为本地站点。
 
@@ -162,7 +164,7 @@ New-AzLocalNetworkGateway -Name LocalSite -ResourceGroupName testrg `
 
 有时需要修改本地网络网关设置。 例如，在添加或修改地址范围时，或 VPN 设备的 IP 地址发生变化时。 请参阅[使用 PowerShell 修改本地网络网关设置](vpn-gateway-modify-local-network-gateway.md)。
 
-## <a name="resources"></a>REST APIs、PowerShell cmdlet 和 CLI
+## <a name="rest-apis-powershell-cmdlets-and-cli"></a><a name="resources"></a>REST APIs、PowerShell cmdlet 和 CLI
 
 有关将 REST API、PowerShell cmdlet 或 Azure CLI 用于 VPN 网关配置的其他技术资源和具体语法要求，请参阅以下页面：
 

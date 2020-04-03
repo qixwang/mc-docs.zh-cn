@@ -8,12 +8,12 @@ ms.date: 03/02/2020
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: 799fa6f8aeb7caa6c8eec817a8e14c3a3aaeb09a
-ms.sourcegitcommit: 764b3d26aedce2de0e1948468a706fd3204a3d5e
+ms.openlocfilehash: b37abc655472a3c466e414417fcf7bc5f2d1a392
+ms.sourcegitcommit: 260800ede66f48c886d1426a0fac18b4d402b4f2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2020
-ms.locfileid: "79543313"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586813"
 ---
 # <a name="how-to-provision-for-multitenancy"></a>如何预配多租户 
 
@@ -375,7 +375,7 @@ J5n4NY2GiBYy7Mp4lDDa5CbEe6zDU/c62rhjCuFWxnc=
     Provisioning Status: PROV_DEVICE_REG_STATUS_ASSIGNING
     Provisioning Status: PROV_DEVICE_REG_STATUS_ASSIGNING
 
-    Registration Information received from service: contoso-east-hub.azure-devices.net, deviceId: contoso-simdevice-east
+    Registration Information received from service: contoso-east-hub.azure-devices.cn, deviceId: contoso-simdevice-east
     Press enter key to exit:
 
     ```
@@ -391,7 +391,7 @@ J5n4NY2GiBYy7Mp4lDDa5CbEe6zDU/c62rhjCuFWxnc=
     Provisioning Status: PROV_DEVICE_REG_STATUS_ASSIGNING
     Provisioning Status: PROV_DEVICE_REG_STATUS_ASSIGNING
 
-    Registration Information received from service: contoso-west-hub.azure-devices.net, deviceId: contoso-simdevice-west
+    Registration Information received from service: contoso-west-hub.azure-devices.cn, deviceId: contoso-simdevice-west
     Press enter key to exit:
     ```
 

@@ -2,15 +2,15 @@
 title: 在 Azure 中使用 Visual Studio Code 创建你的第一个函数
 description: 使用 Visual Studio Code 中的 Azure Functions扩展创建一个简单的 HTTP 触发函数并将其发布到 Azure。
 ms.topic: quickstart
-ms.date: 03/18/2020
+ms.date: 03/31/2020
 ms.custom: mvc, devcenter
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: f204daaa6b5571eb621e18dcd0f09f8f154b6eb1
-ms.sourcegitcommit: e500354e2fd8b7ac3dddfae0c825cc543080f476
+ms.openlocfilehash: ab00cea143047ceff8b2ec6d0dfdcbc2ae341817
+ms.sourcegitcommit: 64584c0bf31b4204058ae2b4641356b904ccdd58
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2020
-ms.locfileid: "79546890"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80581790"
 ---
 # <a name="quickstart-create-an-azure-functions-project-using-visual-studio-code"></a>快速入门：使用 Visual Studio Code 创建 Azure Functions 项目
 
@@ -22,7 +22,7 @@ ms.locfileid: "79546890"
 
 在开始之前，请确保已满足下列要求：
 
-+ 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://www.azure.cn/pricing/1rmb-trial/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
++ 具有活动订阅的 Azure 帐户。 [创建帐户](https://www.azure.cn/pricing/1rmb-trial/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 
 ::: zone pivot="programming-language-csharp,programming-language-powershell"  
 + [Node.js](https://nodejs.org/)，在 Windows 上使用 npm 时所必需的。 仅限[活动 LTS 和维护 LTS 版本](https://nodejs.org/about/releases/)。 可以使用 `npm --version` 命令检查你的版本。

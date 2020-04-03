@@ -6,14 +6,14 @@ author: WenJason
 ms.service: vpn-gateway
 ms.topic: conceptual
 origin.date: 10/10/2019
-ms.date: 11/11/2019
+ms.date: 04/06/2020
 ms.author: v-jay
-ms.openlocfilehash: a01fb2ea886a952c3c42e78dfb607e5437cfa803
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: 4bb2d57f71cd5540b30ac0dd3643c77210d1cb51
+ms.sourcegitcommit: 5fb45da006859215edc8211481f13174aa43dbeb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79293279"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80634569"
 ---
 # <a name="generate-and-export-certificates-for-point-to-site-using-powershell"></a>使用 PowerShell 为点到站点连接生成和导出证书
 
@@ -25,7 +25,7 @@ ms.locfileid: "79293279"
 
 [!INCLUDE [generate and export certificates](../../includes/vpn-gateway-generate-export-certificates-include.md)]
 
-## <a name="install"></a>安装已导出的客户端证书
+## <a name="install-an-exported-client-certificate"></a><a name="install"></a>安装已导出的客户端证书
 
 通过 P2S 连接连接到 VNet 的每个客户端都需要在本地安装客户端证书。
 

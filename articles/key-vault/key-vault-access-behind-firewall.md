@@ -9,14 +9,14 @@ ms.service: key-vault
 ms.subservice: general
 ms.topic: tutorial
 origin.date: 08/12/2019
-ms.date: 03/16/2020
+ms.date: 03/30/2020
 ms.author: v-tawe
-ms.openlocfilehash: 7ac7be9fa0a18f8fd0cb7ca5143f2536b31ec848
-ms.sourcegitcommit: 764b3d26aedce2de0e1948468a706fd3204a3d5e
+ms.openlocfilehash: ea0d697f02092c5fa4084de4d4dedcc734d177ba
+ms.sourcegitcommit: 5fb45da006859215edc8211481f13174aa43dbeb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2020
-ms.locfileid: "79543362"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80634570"
 ---
 # <a name="access-azure-key-vault-behind-a-firewall"></a>访问防火墙后面的 Azure Key Vault
 
@@ -52,7 +52,7 @@ ms.locfileid: "79543362"
 | 操作类型 | 终结点：端口 |
 | --- | --- |
 | 通过 Azure Resource Manager 进行的<br> Key Vault 控制平面操作 |**Azure China：**<br> management.chinacloudapi.cn:443<br><br> |
-| Azure Active Directory 图形 API |**Azure China：**<br> graph.chinacloudapi.cn:443<br><br> |
+| Microsoft Graph API |**Azure China：**<br> graph.chinacloudapi.cn:443<br><br> |
 
 ## <a name="key-vault-operations"></a>Key Vault 操作
 

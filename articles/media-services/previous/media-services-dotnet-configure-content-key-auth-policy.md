@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 origin.date: 03/18/2019
-ms.date: 03/04/2020
+ms.date: 04/06/2020
 ms.author: v-jay
-ms.openlocfilehash: aa4f4bff50efb14b68db9c9f403099b0fcefbfe8
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: 868571d735b75f04679656298e59769b9df1553a
+ms.sourcegitcommit: fe9ed98aaee287a21648f866bb77cb6888f75b0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79291640"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80625741"
 ---
-# <a name="dynamic-encryption-configure-a-content-key-authorization-policy"></a>动态加密：配置内容密钥授权策略
+# <a name="configure-a-content-key-authorization-policy"></a>配置内容密钥授权策略
 
 > [!NOTE]
 > Google Widevine 内容保护服务目前在 Azure 中国区域不可用。
@@ -396,8 +396,8 @@ ms.locfileid: "79291640"
 
 若要获取基于令牌限制（用于密钥授权策略）的测试令牌，请参阅“[测试令牌](#test-token)”部分。 
 
-## <a id="types"></a>定义 ContentKeyAuthorizationPolicy 时使用的类型
-### <a id="ContentKeyRestrictionType"></a>ContentKeyRestrictionType
+## <a name="types-used-when-you-define-contentkeyauthorizationpolicy"></a><a id="types"></a>定义 ContentKeyAuthorizationPolicy 时使用的类型
+### <a name="contentkeyrestrictiontype"></a><a id="ContentKeyRestrictionType"></a>ContentKeyRestrictionType
 
 ```csharp
     public enum ContentKeyRestrictionType
@@ -408,7 +408,7 @@ ms.locfileid: "79291640"
     }
 ```
 
-### <a id="ContentKeyDeliveryType"></a>ContentKeyDeliveryType
+### <a name="contentkeydeliverytype"></a><a id="ContentKeyDeliveryType"></a>ContentKeyDeliveryType
 
 ```csharp 
     public enum ContentKeyDeliveryType
@@ -419,7 +419,7 @@ ms.locfileid: "79291640"
     }
 ```
 
-### <a id="TokenType"></a>TokenType
+### <a name="tokentype"></a><a id="TokenType"></a>TokenType
 
 ```csharp
     public enum TokenType

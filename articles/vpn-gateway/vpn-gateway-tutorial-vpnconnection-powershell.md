@@ -9,16 +9,16 @@ origin.date: 10/17/2019
 ms.date: 12/02/2019
 ms.author: v-jay
 ms.custom: mvc
-ms.openlocfilehash: 0d7d8d8ac74a3affe9f63866a791df065a0ee009
-ms.sourcegitcommit: fac243483f641e1d01646a30197522a60599d837
+ms.openlocfilehash: 6db7af0e2f98a42406ad3825020f8696827838c4
+ms.sourcegitcommit: 5fb45da006859215edc8211481f13174aa43dbeb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74552980"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80634561"
 ---
 # <a name="tutorial-create-and-manage-s2s-vpn-connections-using-powershell"></a>教程：使用 PowerShell 创建和管理 S2S VPN 连接
 
-Azure S2S VPN 连接提供客户本地和 Azure 间的安全跨界连接。 本教程介绍 IPsec S2S VPN 连接的生命周期，例如创建和管理 S2S VPN 连接。 学习如何：
+Azure S2S VPN 连接提供客户本地和 Azure 间的安全跨界连接。 本教程介绍 IPsec S2S VPN 连接的生命周期，例如创建和管理 S2S VPN 连接。 你将学习如何执行以下操作：
 
 > [!div class="checklist"]
 > * 创建 S2S VPN 连接
@@ -26,11 +26,13 @@ Azure S2S VPN 连接提供客户本地和 Azure 间的安全跨界连接。 本�
 > * 添加更多的 VPN 连接
 > * 删除 VPN 连接
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-
 下图显示了本教程的拓扑：
 
 ![站点到站点 VPN 连接图](./media/vpn-gateway-tutorial-vpnconnection-powershell/site-to-site-diagram.png)
+
+### <a name="working-with-azure-powershell"></a>使用 Azure PowerShell
+
+[!INCLUDE [working with Powershell](../../includes/vpn-gateway-powershell-locally.md)]
 
 ## <a name="requirements"></a>要求
 
@@ -73,7 +75,7 @@ $Connection1 = "VNet1ToSite1"
 1. 创建用来代表本地网络的本地网关
 2. 在 Azure VPN 网关与本地网关之间创建连接
 
-## <a name="create-a-local-network-gateway"></a>创建本地网络网关
+## <a name="create-a-local-network-gateway"></a>创建本地网关
 
 本地网关代表本地网络。 可以在本地网关中指定本地网络的属性，其中包括：
 

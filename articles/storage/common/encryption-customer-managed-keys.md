@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.author: v-jay
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 74063fb8974ac820c990fdf33f691186712f64d7
-ms.sourcegitcommit: 90d01d08faf8adb20083363a8e4e5aab139cd9b2
+ms.openlocfilehash: 51a4e9b36359ffe761159fe13226e4558110a5ca
+ms.sourcegitcommit: 44d3fe59952847e5394bbe6c05bd6f333bb56345
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80290489"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80522058"
 ---
 # <a name="use-customer-managed-keys-with-azure-key-vault-to-manage-azure-storage-encryption"></a>在 Azure Key Vault 中使用客户托管密钥管理 Azure 存储加密
 
@@ -46,7 +46,7 @@ ms.locfileid: "80290489"
 
 如果通过启用或禁用客户托管密钥、更新密钥版本或指定其他密钥来修改用于 Azure 存储加密的密钥，则根密钥的加密会更改，但 Azure 存储帐户中的数据不需重新加密。
 
-在启用或禁用客户托管密钥时，或者在修改密钥或密钥版本时，对根加密密钥的保护会变化，但你不需要重新加密 Azure 存储帐户中的数据。
+<!-- When you enable or disable customer managed keys, or when you modify the key or the key version, the protection of the root encryption key changes, but the data in your Azure Storage account does not need to be re-encrypted. -->
 
 要了解如何将客户管理的密钥与 Azure 密钥保管库配合使用来对 Azure 存储进行加密，请参阅以下文章之一：
 

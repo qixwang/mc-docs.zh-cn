@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/16/2020
+ms.date: 04/01/2020
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: 44e0ca1e8c1ff93fa4677aef48519b4b1738d53f
-ms.sourcegitcommit: 71a386ca0d0ecb79a123399b6ab6b8c70ea2aa78
+ms.openlocfilehash: fdb2fccd9ede46780d457c859bc4c1448d1da75a
+ms.sourcegitcommit: 64584c0bf31b4204058ae2b4641356b904ccdd58
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2020
-ms.locfileid: "79497184"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80581654"
 ---
 # <a name="string-claims-transformations"></a>字符串声明转换
 
@@ -34,7 +34,7 @@ ms.locfileid: "79497184"
 | InputClaim | inputClaim2 | string | 要比较的第二个声明的类型。 |
 | InputParameter | stringComparison | string | 字符串比较，值为下列其中一项：Ordinal、OrdinalIgnoreCase。 |
 
-AssertStringClaimsAreEqual  声明转换始终从[验证技术配置文件](validation-technical-profile.md)执行，该文件由[自断言技术配置文件](self-asserted-technical-profile.md)或 [DisplayConrtol](display-controls.md) 调用。 自断言技术配置文件的 `UserMessageIfClaimsTransformationStringsAreNotEqual` 元数据控制向用户显示的错误消息。
+AssertStringClaimsAreEqual  声明转换始终从[验证技术配置文件](validation-technical-profile.md)执行，该文件由[自断言技术配置文件](self-asserted-technical-profile.md)或 [DisplayConrtol](display-controls.md) 调用。 自断言技术配置文件的 `UserMessageIfClaimsTransformationStringsAreNotEqual` 元数据控制向用户显示的错误消息。 可以将错误消息[本地化](localization-string-ids.md#claims-transformations-error-messages)。
 
 
 ![AssertStringClaimsAreEqual 执行](./media/string-transformations/assert-execution.png)

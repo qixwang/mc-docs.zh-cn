@@ -4,15 +4,15 @@ description: 了解如何使用 Azure 门户快速创建 Kubernetes 群集、部
 services: container-service
 ms.topic: quickstart
 origin.date: 01/21/2020
-ms.date: 03/09/2020
+ms.date: 04/06/2020
 ms.author: v-yeche
 ms.custom: mvc, seo-javascript-october2019
-ms.openlocfilehash: 12055ffe0ba7a3a5ea3f652419776741ecd4350b
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: 4a036a9f3e8a28636243b80c4fdf8ad88988c5d0
+ms.sourcegitcommit: 76280dd9854dc0ff0ba1e5e62fb3dc3af049fbe2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79290830"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80517014"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-the-azure-portal"></a>快速入门：使用 Azure 门户部署 Azure Kubernetes 服务 (AKS) 群集
 
@@ -37,10 +37,10 @@ Azure Kubernetes 服务 (AKS) 是可用于快速部署和管理群集的托管�
 1. 在 Azure 门户菜单或**主页**上，选择“创建资源”  ，键入“Kubernetes 服务”  并在“新建”页中选择 Enter 键，然后在“市场”页中选择“Kubernetes 服务”  。
 
     <!--MOONCAKE: Custmize for MC-->
+    
 1. 在“基本信息”页面上，配置以下选项  ：
     - **项目详细信息**：选择 Azure **订阅**，然后选择或创建 Azure **资源组**，例如 *myResourceGroup*。
     - **群集详细信息**：输入 **Kubernetes 群集名称**，例如 *myAKSCluster*。 选择 AKS 群集的**区域**、**Kubernetes 版本**和 **DNS 名称前缀**。
-        
     - **主节点池**：选择 AKS 节点的 VM **节点大小**。 一旦部署 AKS 群集，则不能更改 VM 大小  。 
         - 选择要部署到群集中的节点数。 对于本快速入门，请将“节点计数”设置为“1”。   部署群集后，可以调整节点计数  。
     
@@ -69,7 +69,7 @@ Azure Kubernetes 服务 (AKS) 是可用于快速部署和管理群集的托管�
 
 <!--Not Available on  The `kubectl` client is pre-installed in the Azure Cloud Shell.-->
 
-<!--Not Available on  Open Cloud Shell using the button on the top right-hand corner of the Azure portal.-->
+<!--Not Available on Open Azure Cloud Shell using the `>_` button on the top of the Azure portal.-->
 
 <!--Not Available on  ![Open the Azure Cloud Shell in the portal](media/kubernetes-walkthrough-portal/aks-cloud-shell.png)-->
 
@@ -84,13 +84,13 @@ az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 
 若要验证到群集的连接，请使用 [kubectl get][kubectl-get] 命令返回群集节点列表。
 
-```azurecli
+```console
 kubectl get nodes
 ```
 
 以下示例输出显示在上一步创建的单个节点。 请确保节点的状态为 *Ready*：
 
-```
+```output
 NAME                       STATUS    ROLES     AGE       VERSION
 aks-agentpool-14693408-0   Ready     agent     15m       v1.11.5
 ```
@@ -195,13 +195,13 @@ spec:
 
 使用 [kubectl apply][kubectl-apply] 命令部署应用程序，并指定 YAML 清单的名称：
 
-```azurecli
+```console
 kubectl apply -f azure-vote.yaml
 ```
 
 以下示例输出显示已成功创建了部署和服务：
 
-```
+```output
 deployment "azure-vote-back" created
 service "azure-vote-back" created
 deployment "azure-vote-front" created
@@ -214,20 +214,20 @@ service "azure-vote-front" created
 
 若要监视进度，请将 [kubectl get service][kubectl-get] 命令与 `--watch` 参数配合使用。
 
-```azurecli
+```console
 kubectl get service azure-vote-front --watch
 ```
 
 最初，*azure-vote-front* 服务的 *EXTERNAL-IP* 显示为 *pending*。
 
-```
+```output
 NAME               TYPE           CLUSTER-IP   EXTERNAL-IP   PORT(S)        AGE
 azure-vote-front   LoadBalancer   10.0.37.27   <pending>     80:30572/TCP   6s
 ```
 
 当 *EXTERNAL-IP* 地址从 *pending* 更改为实际公共 IP 地址时，请使用 `CTRL-C` 停止 `kubectl` 监视进程。 以下示例输出显示向服务分配了有效的公共 IP 地址：
 
-```
+```output
 azure-vote-front   LoadBalancer   10.0.37.27   52.179.23.131   80:30572/TCP   2m
 ```
 
@@ -306,4 +306,4 @@ az aks delete --resource-group myResourceGroup --name myAKSCluster --no-wait
 [kubernetes-deployment]: concepts-clusters-workloads.md#deployments-and-yaml-manifests
 [kubernetes-service]: concepts-network.md#services
 
-<!--Update_Description: wording update -->
+<!-- Update_Description: update meta properties, wording update, update link -->

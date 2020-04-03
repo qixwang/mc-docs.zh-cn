@@ -5,15 +5,15 @@ author: ccompy
 ms.assetid: a2101291-83ba-4169-98a2-2c0ed9a65e8d
 ms.topic: tutorial
 origin.date: 03/03/2018
-ms.date: 01/13/2020
+ms.date: 03/30/2020
 ms.author: v-tawe
-ms.custom: seodec18
-ms.openlocfilehash: 15f4dcc5193cf9d700100d156c6c617b50eb6d85
-ms.sourcegitcommit: 4ba6d7c8bed5398f37eb37cf5e2acafcdcc28791
+ms.custom: mvc, seodec18
+ms.openlocfilehash: ec113d460befde1fe7ff813cfafca3e0e8bdf932
+ms.sourcegitcommit: 44d3fe59952847e5394bbe6c05bd6f333bb56345
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2020
-ms.locfileid: "79133896"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80522089"
 ---
 # <a name="configuring-a-web-application-firewall-waf-for-app-service-environment"></a>为应用服务环境配置 Web 应用程序防火墙 (WAF)
 ## <a name="overview"></a>概述

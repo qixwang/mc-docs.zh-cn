@@ -1,28 +1,21 @@
 ---
-title: 使用 Visual Studio 部署虚拟机规模集 | Microsoft Docs
+title: 使用 Visual Studio 部署虚拟机规模集
 description: 使用 Visual Studio 和 Resource Manager 模板部署虚拟机规模集
-services: virtual-machine-scale-sets
-ms.custom: H1Hack27Feb2017
-ms.workload: na
-documentationcenter: ''
+ms.custom: vs-azure, H1Hack27Feb2017
+ms.workload: azure-vs
 author: mayanknayar
-manager: jeconnoc
-editor: ''
 tags: azure-resource-manager
 ms.assetid: ed0786b8-34b2-49a8-85b5-2a628128ead6
 ms.service: virtual-machine-scale-sets
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-origin.date: 09/09/2019
-ms.date: 10/30/2019
+ms.topic: conceptual
+ms.date: 03/31/2020
 ms.author: v-junlch
-ms.openlocfilehash: edb8e28e05b8e33389db0af6dfe9eb7049b51fe1
-ms.sourcegitcommit: cb2caa72ec0e0922a57f2fa1056c25e32c61b570
+ms.openlocfilehash: e92183dfb8fda87d622ce485ed8d7f14b37df830
+ms.sourcegitcommit: 64584c0bf31b4204058ae2b4641356b904ccdd58
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73142081"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80581820"
 ---
 # <a name="how-to-create-a-virtual-machine-scale-set-with-visual-studio"></a>如何使用 Visual Studio 创建虚拟机规模集
 
@@ -42,7 +35,7 @@ Azure 资源组部署是一种通过单个部署操作将相关的一组 Azure �
 >[!NOTE]
 >本文将 Visual Studio 2019 与 [Azure SDK 2.8](https://azure.microsoft.com/blog/announcing-the-azure-sdk-2-8-for-net/) 配合使用。
 
-## 创建项目 <a name="creating-a-project"></a> 
+## <a name="create-a-project"></a>创建项目 <a name="creating-a-project"></a> 
 
 1. 打开 Visual Studio 并选择“创建新项目”  。
 
@@ -90,7 +83,7 @@ Azure 资源组部署是一种通过单个部署操作将相关的一组 Azure �
 
    ![输出显示结果](./media/virtual-machine-scale-sets-vs-create/deployment-output.png)
 
-## 探索虚拟机规模集 <a name="exploring-your-virtual-machine-scale-set"></a>
+## <a name="explore-your-virtual-machine-scale-set"></a>探索虚拟机规模集 <a name="exploring-your-virtual-machine-scale-set"></a>
 
 选择“查看”   >   “Cloud Explorer”，查看新的虚拟机规模集。 根据需要使用“全部刷新”  。
 

@@ -1,28 +1,19 @@
 ---
-title: 教程 - 创建和管理 Azure 虚拟机规模集 | Microsoft Docs
+title: 教程 - 创建和管理 Azure 虚拟机规模集
 description: 了解如何使用 Azure CLI 创建虚拟机规模集以及某些常见的管理任务，例如如何启动和停止实例，或者如何更改规模集容量。
-services: virtual-machine-scale-sets
-documentationcenter: ''
 author: cynthn
-manager: jeconnoc
-editor: ''
 tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machine-scale-sets
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-origin.date: 03/27/2018
-ms.date: 02/12/2019
+ms.date: 03/31/2020
 ms.author: v-junlch
 ms.custom: mvc
-ms.openlocfilehash: 73a6d31f730f54ee82556ba90bcfe5a669c78449
-ms.sourcegitcommit: 24dd5964eafbe8aa4badbca837c2a1a7836f2df7
+ms.openlocfilehash: e4ddc13621a6eb84fe3abe4166739a2b126d29b8
+ms.sourcegitcommit: 64584c0bf31b4204058ae2b4641356b904ccdd58
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56101590"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80581629"
 ---
 # <a name="tutorial-create-and-manage-a-virtual-machine-scale-set-with-the-azure-cli"></a>教程：使用 Azure CLI 创建和管理虚拟机规模集
 利用虚拟机规模集，可以部署和管理一组相同的、自动缩放的虚拟机。 在虚拟机规模集的整个生命周期内，可能需要运行一个或多个管理任务。 本教程介绍如何执行下列操作：
@@ -66,7 +57,7 @@ az vmss create `
 
 
 ## <a name="view-the-vm-instances-in-a-scale-set"></a>查看规模集中的 VM 实例
-若要在规模集中查看 VM 实例的列表，请使用 [az vmss list-instances](/cli/vmss)，如下所示：
+若要查看规模集中的 VM 实例的列表，请使用 [az vmss list-instances](/cli/vmss)，如下所示：
 
 ```azurecli
 az vmss list-instances \
@@ -77,7 +68,7 @@ az vmss list-instances \
 
 以下示例输出显示了规模集中的两个 VM 实例：
 
-```bash
+```output
   InstanceId  LatestModelApplied    Location    Name          ProvisioningState    ResourceGroup    VmId
 ------------  --------------------  ----------  ------------  -------------------  ---------------  ------------------------------------
            1  True                  chinanorth      myScaleSet_1  Succeeded            MYRESOURCEGROUP  c059be0c-37a2-497a-b111-41272641533c
@@ -108,7 +99,7 @@ az vmss list-instance-connection-info \
 
 以下示例输出显示了实例名称、负载均衡器的公共 IP 地址，以及可以通过 NAT 规则将流量转发到其中的端口号：
 
-```bash
+```output
 {
   "instance 1": "13.92.224.66:50001",
   "instance 3": "13.92.224.66:50003"
@@ -117,19 +108,19 @@ az vmss list-instance-connection-info \
 
 通过 SSH 连接到第一个 VM 实例。 使用 `-p` 参数指定公共 IP 地址和端口号，如前述命令所示：
 
-```azurecli
+```console
 ssh azureuser@13.92.224.66 -p 50001
 ```
 
 登录到 VM 实例以后，可以根据需要执行一些手动配置更改。 现在，请按正常方式关闭 SSH 会话：
 
-```bash
+```console
 exit
 ```
 
 
 ## <a name="understand-vm-instance-images"></a>了解 VM 实例映像
-在教程开头创建规模集时，为 VM 实例指定的 `--image` 为 *UbuntuLTS*。 Azure 市场包括许多可用于创建 VM 实例的映像。 若要查看最常用的映像列表，请使用 [az vm image list](/cli/vm/image) 命令。
+在教程开头创建规模集时，为 VM 实例指定的 `--image` 为 *UbuntuLTS*。 Azure 市场包括许多可用于创建 VM 实例的映像。 若要查看最常用映像的列表，请使用 [az vm image list](/cli/vm/image) 命令。
 
 ```azurecli
 az vm image list --output table
@@ -137,7 +128,7 @@ az vm image list --output table
 
 以下示例输出显示 Azure 上的最常用 VM 映像。 可以使用 *UrnAlias* 在创建规模集时指定一个最常用的映像。
 
-```bash
+```output
 Offer          Publisher               Sku                 Urn                                                             UrnAlias             Version
 -------------  ----------------------  ------------------  --------------------------------------------------------------  -------------------  ---------
 CentOS         OpenLogic               7.3                 OpenLogic:CentOS:7.3:latest                                     CentOS               latest
@@ -161,7 +152,7 @@ az vm image list --offer CentOS --all --output table
 
 以下浓缩版输出显示了一些可用的 CentOS 7.3 映像：
 
-```azurecli 
+```output
 Offer    Publisher   Sku   Urn                                 Version
 -------  ----------  ----  ----------------------------------  -------------
 CentOS   OpenLogic   7.3   OpenLogic:CentOS:7.3:7.3.20161221   7.3.20161221
@@ -193,7 +184,7 @@ VM 实例大小或 *SKU* 决定了可供 VM 实例使用的计算资源（如 CP
 ### <a name="vm-instance-sizes"></a>VM 实例大小
 下表将常用 VM 大小按类别分成了多个用例。
 
-| Type                     | 常见大小           |    说明       |
+| 类型                     | 常见大小           |    说明       |
 |--------------------------|-------------------|------------------------------------------------------------------------------------------------------------------------------------|
 | [常规用途](../virtual-machines/linux/sizes-general.md)         |Dsv3、Dv3、DSv2、Dv2、DS、D、Av2、A0-7| CPU 与内存之比均衡。 适用于开发/测试、小到中型应用程序和数据解决方案。  |
 | [计算优化](../virtual-machines/linux/sizes-compute.md)   | Fs, F             | 高 CPU 与内存之比。 适用于中等流量的应用程序、网络设备和批处理。        |
@@ -209,7 +200,7 @@ az vm list-sizes --location chinanorth --output table
 
 输出类似于以下浓缩版示例，其中显示了分配给每个 VM 大小的资源：
 
-```azurecli
+```output
   MaxDataDiskCount    MemoryInMb  Name                      NumberOfCores    OsDiskSizeInMb    ResourceDiskSizeInMb
 ------------------  ------------  ----------------------  ---------------  ----------------  ----------------------
                  4          3584  Standard_DS1_v2                       1           1047552                    7168
@@ -295,7 +286,7 @@ az vmss restart --resource-group myResourceGroup --name myScaleSet --instance-id
 
 
 ## <a name="clean-up-resources"></a>清理资源
-删除资源组时，也会删除其中包含的所有资源，例如 VM 实例、虚拟网络和磁盘。 `--no-wait` 参数会使光标返回提示符处，不会等待操作完成。 `--yes` 参数将确认是否希望删除资源，不会显示询问是否删除的额外提示。
+删除资源组时，也会删除其中包含的所有资源，例如 VM 实例、虚拟网络和磁盘。 `--no-wait` 参数会使光标返回提示符处，无需等待操作完成。 `--yes` 参数将确认是否希望删除资源，而不会有额外提示。
 
 ```azurecli
 az group delete --name myResourceGroup --no-wait --yes
@@ -315,6 +306,5 @@ az group delete --name myResourceGroup --no-wait --yes
 请转到下一教程，了解规模集磁盘。
 
 > [!div class="nextstepaction"]
-> [将数据磁盘与规模集配合使用](tutorial-use-disks-cli.md)
+> [通过规模集使用数据磁盘](tutorial-use-disks-cli.md)
 
-<!-- Update_Description: link update -->

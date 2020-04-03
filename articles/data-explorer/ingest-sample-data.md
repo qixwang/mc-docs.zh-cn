@@ -8,12 +8,12 @@ ms.service: data-explorer
 ms.topic: quickstart
 origin.date: 08/12/2019
 ms.date: 01/13/2020
-ms.openlocfilehash: b209ee0947ba0d24788d0c4d3301b1d443bb1551
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.openlocfilehash: ccd99acb147871c4ba4c18c45357adfa16b2474b
+ms.sourcegitcommit: 44d3fe59952847e5394bbe6c05bd6f333bb56345
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75630947"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80522077"
 ---
 # <a name="quickstart-ingest-sample-data-into-azure-data-explorer"></a>快速入门：将示例数据引入 Azure 数据资源管理器
 
@@ -44,7 +44,7 @@ StormEvents  示例数据集包含[美国国家环境信息中心](https://www.n
 1. 粘贴以下命令，然后选择“运行”  以将数据引入到 StormEvents 表中。
 
     ```Kusto
-    .ingest into table StormEvents h'https://kustosamplefiles.blob.core.windows.net/samplefiles/StormEvents.csv?st=2018-08-31T22%3A02%3A25Z&se=2020-09-01T22%3A02%3A00Z&sp=r&sv=2018-03-28&sr=b&sig=LQIbomcKI8Ooz425hWtjeq6d61uEaq21UVX7YrM61N4%3D' with (ignoreFirstRecord=true)
+    .ingest into table StormEvents h'https://kustosamplefiles.blob.core.chinacloudapi.cn/samplefiles/StormEvents.csv?st=2018-08-31T22%3A02%3A25Z&se=2020-09-01T22%3A02%3A00Z&sp=r&sv=2018-03-28&sr=b&sig=LQIbomcKI8Ooz425hWtjeq6d61uEaq21UVX7YrM61N4%3D' with (ignoreFirstRecord=true)
     ```
 
 1. 引入完成后，粘贴到以下查询中，在窗口中，选择该查询，并选择“运行”  。

@@ -6,14 +6,14 @@ author: WenJason
 ms.service: vpn-gateway
 ms.topic: conceptual
 origin.date: 01/09/2020
-ms.date: 02/17/2020
+ms.date: 04/06/2020
 ms.author: v-jay
-ms.openlocfilehash: 7b44f584d47216a8f4dfccdb457c86d3b652cbe9
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: a88f9d02f5dc6fb60b47220d27dfa754eb76535c
+ms.sourcegitcommit: 5fb45da006859215edc8211481f13174aa43dbeb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79292504"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80634573"
 ---
 # <a name="configure-a-point-to-site-connection-by-using-certificate-authentication-classic"></a>使用证书身份验证（经典）配置点到站点连接
 
@@ -137,7 +137,7 @@ ms.locfileid: "79292504"
 
 9. 在“新建 VPN 连接”页中，选择该页底部的“确定”开始创建虚拟网关   。 VPN 网关可能需要长达 45 分钟的时间才能完成，具体取决于所选网关 SKU。
  
-## <a name="generatecerts"></a>创建证书
+## <a name="create-certificates"></a><a name="generatecerts"></a>创建证书
 
 Azure 使用证书对点到站点 VPN 的 VPN 客户端进行身份验证。 将根证书的公钥信息上传到 Azure， 然后即可将该公钥视为“可信”公钥  。 必须根据可信根证书生成客户端证书，并将其安装在每个客户端计算机的 Certificates-Current User\Personal\Certificates 证书存储中。 客户端连接到 VNet 时，使用证书进行身份验证。 
 

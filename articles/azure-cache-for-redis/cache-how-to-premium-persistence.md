@@ -5,13 +5,13 @@ author: yegu-ms
 ms.author: v-junlch
 ms.service: cache
 ms.topic: conceptual
-ms.date: 02/05/2020
-ms.openlocfilehash: 2607d50243433f96254517400a8ecd0360e569aa
-ms.sourcegitcommit: 23dc63b6fea451f6a2bd4e8d0fbd7ed082ba0740
+ms.date: 03/30/2020
+ms.openlocfilehash: 881ae7595748ac7dc58e010b45829d9830a569c3
+ms.sourcegitcommit: 64584c0bf31b4204058ae2b4641356b904ccdd58
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77028025"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80581831"
 ---
 # <a name="how-to-configure-data-persistence-for-a-premium-azure-cache-for-redis"></a>如何为高级 Azure Redis 缓存配置数据暂留
 Azure Redis 缓存具有不同的缓存产品/服务，从而在缓存大小和功能（包括群集、暂留和虚拟网络支持等高级层功能）的选择上具有灵活性。 本文介绍如何配置高级 Azure Redis 缓存实例中的暂留功能。
@@ -30,7 +30,7 @@ Azure Redis 缓存使用以下模型提供 Redis 暂留：
 
 > [!NOTE]
 > 
-> 保存数据时，Azure 存储会自动加密数据。 可以使用自己的密钥进行加密。 有关详细信息，请参阅 [Azure Key Vault 中的客户托管密钥](/storage/common/storage-service-encryption?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#customer-managed-keys-with-azure-key-vault)。
+> 保存数据时，Azure 存储会自动加密数据。 可以使用自己的密钥进行加密。 有关详细信息，请参阅 [Azure Key Vault 中的客户托管密钥](/storage/common/storage-service-encryption)。
 > 
 > 
 
@@ -195,4 +195,3 @@ AOF 文件中存储的数据在每个节点分为多个页 Blob，以便提升�
 
 [redis-cache-settings]: ./media/cache-how-to-premium-persistence/redis-cache-settings.png
 
-<!-- Update_Description: wording update -->

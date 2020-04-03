@@ -16,12 +16,12 @@ ms.workload: big-data
 origin.date: 11/13/2019
 ms.date: 12/23/2019
 ms.author: v-yiso
-ms.openlocfilehash: 94d5df1edd090e80081c1ae09732680e722c7d00
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: aa81ce8d214add5c4f78e9482adc90e3604e38af
+ms.sourcegitcommit: 5fb45da006859215edc8211481f13174aa43dbeb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75335924"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80634504"
 ---
 # <a name="use-azure-storage-shared-access-signatures-to-restrict-access-to-data-in-hdinsight"></a>使用 Azure 存储共享访问签名来限制访问 HDInsight 中的数据
 
@@ -48,7 +48,7 @@ HDInsight 对群集关联的 Azure 存储帐户中的数据拥有完全访问权
 
 * 如果使用 C#，Visual Studio 的版本必须是 2013 或更高。
 
-* 存储帐户的 [URI 方案](./hdinsight-hadoop-linux-information.md#URI-and-scheme)。 对于 Azure 存储，此值为 `wasb://`；对于Azure Data Lake Storage Gen2，此值为 `abfs://`；对于 Azure Data Lake Storage Gen1，此值为 `adl://`。 如果为 Azure 存储或 Data Lake Storage Gen2 启用了安全传输，则 URI 将是 `wasbs://` 或 `abfss://`。另请参阅[安全传输](../storage/common/storage-require-secure-transfer.md)。
+* 存储帐户的 [URI 方案](./hdinsight-hadoop-linux-information.md#URI-and-scheme)。 对于 Azure 存储，此值为 `wasb://`；对于 Azure Data Lake Storage Gen2，此值为 `abfs://`。 如果为 Azure 存储启用安全传输，则 URI 将为 `wasbs://`。 另请参阅[安全传输](../storage/common/storage-require-secure-transfer.md)。
 
 * 共享访问签名要添加到的现有 HDInsight 群集。 如果没有，则可以使用 Azure PowerShell 创建群集，并在创建群集期间添加共享访问签名。
 
@@ -67,7 +67,7 @@ HDInsight 对群集关联的 Azure 存储帐户中的数据拥有完全访问权
 
 * 存储访问策略：在资源容器（例如 Blob 容器）中定义存储的访问策略。 可以使用策略来管理一个或多个共享访问签名的约束。 将某一 SAS 与一个存储访问策略相关联时，该 SAS 会继承对该存储访问策略定义的约束：开始时间、到期时间和权限。
 
-这两种形式之间的差异对于一个关键情形而言十分重要：吊销。 SAS 就是 URL，因此获取该 SAS 的任何人都可以使用它，而与谁请求它开始操作无关。 如果某一 SAS 是公开发布的，则世界上的任何人都可以使用它。 在发生以下四种情况之一前分发的 SAS 有效：
+这两种形式之间的差异对于一个关键情形而言十分重要：吊销。 SAS 就是 URL，因此获取该 SAS 的任何人都可以使用它，而与谁请求它开始操作无关。 如果 SAS 是公开发布的，则世界上的任何人都可以使用它。 在发生以下四种情况之一前分发的 SAS 有效：
 
 1. 达到了对该 SAS 指定的到期时间。
 
@@ -182,7 +182,7 @@ Set-AzStorageblobcontent `
 
 2. 将检索到的主键设置为某个变量，供稍后使用。 请将 `PRIMARYKEY` 替换为在前一步骤中检索到的值，然后输入以下命令：
 
-    ```azurecli
+    ```console
     #set variable for primary key
     set AZURE_STORAGE_KEY=PRIMARYKEY
     ```
@@ -311,7 +311,7 @@ $sshCredential = Get-Credential `
 # Create the configuration for the cluster
 $config = New-AzHDInsightClusterConfig 
 
-$config = $config | Add-AzHDInsightConfigValues `
+$config = $config | Add-AzHDInsightConfigValue `
     -Spark2Defaults @{} `
     -Core @{"fs.azure.sas.$SASContainerName.$SASStorageAccountName.blob.core.chinacloudapi.cn"=$SASToken}
 
@@ -425,7 +425,7 @@ Remove-AzResourceGroup `
 
     此命令会将该文件下载到名为 **testfile.txt**的本地文件中。
 
-5. 使用以下命令将本地文件上传到 SAS 存储上名为 testupload.txt 的新文件中： 
+5. 使用以下命令将本地文件上传到 SAS 存储上名为 **testupload.txt** 的新文件中：
 
     ```bash
     hdfs dfs -put testfile.txt wasbs://SASCONTAINER@SASACCOUNTNAME.blob.core.chinacloudapi.cn/testupload.txt
@@ -448,7 +448,6 @@ Remove-AzResourceGroup `
 现在你已了解如何将访问受限的存储添加到 HDInsight 群集，接下来请了解在群集上处理数据的其他方法：
 
 * [将 Apache Hive 和 HDInsight 配合使用](hadoop/hdinsight-use-hive.md)
-* [将 Apache Pig 和 HDInsight 配合使用](hadoop/hdinsight-use-pig.md)
 * [将 MapReduce 与 HDInsight 配合使用](hadoop/hdinsight-use-mapreduce.md)
 
 [powershell]: https://docs.microsoft.com/powershell/azureps-cmdlets-docs

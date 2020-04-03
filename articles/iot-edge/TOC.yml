@@ -107,8 +107,8 @@
           href: how-to-install-iot-edge-ubuntuvm.md
         - name: kubernetes
           href: how-to-install-iot-edge-kubernetes.md
-        - name: 安装生产证书
-          href: how-to-install-production-certificates.md
+        - name: 管理设备证书
+          href: how-to-manage-device-certificates.md
         - name: 创建测试证书
           href: how-to-create-test-certificates.md
         - name: 更新运行时版本
@@ -121,6 +121,8 @@
               href: how-to-auto-provision-simulated-device-linux.md
             - name: Windows
               href: how-to-auto-provision-simulated-device-windows.md
+        - name: X.509 证书证明
+          href: how-to-auto-provision-x509-certs.md
         - name: 对称密钥证明
           href: how-to-auto-provision-symmetric-keys.md
     - name: 开发和调试自定义模块
@@ -131,20 +133,26 @@
           href: how-to-vs-code-develop-module.md
     - name: 部署模块
       items:
-        - name: Azure 门户
-          href: how-to-deploy-modules-portal.md
-        - name: Azure CLI
-          href: how-to-deploy-modules-cli.md
-        - name: Visual Studio Code
-          href: how-to-deploy-modules-vscode.md
-    - name: 大规模部署和监视
+        - name: 部署到单个设备
+          items:
+            - name: Azure 门户
+              href: how-to-deploy-modules-portal.md
+            - name: Azure CLI
+              href: how-to-deploy-modules-cli.md
+            - name: Visual Studio Code
+              href: how-to-deploy-modules-vscode.md
+        - name: 大规模部署
+          items:
+            - name: Azure 门户
+              href: how-to-deploy-monitor.md
+            - name: Azure CLI
+              href: how-to-deploy-monitor-cli.md
+            - name: Visual Studio Code
+              href: how-to-deploy-monitor-vscode.md
+    - name: 监视和诊断部署
       items:
-        - name: Azure 门户
-          href: how-to-deploy-monitor.md
-        - name: Azure CLI
-          href: how-to-deploy-monitor-cli.md
-        - name: Visual Studio Code
-          href: how-to-deploy-monitor-vscode.md
+        - name: EdgeAgent 直接方法
+          href: how-to-edgeagent-direct-method.md
     - name: 使用 IoT Edge 设备作为网关
       items:
         - name: 配置透明网关
@@ -171,52 +179,50 @@
           href: how-to-ci-cd.md
     - name: 故障排除
       href: troubleshoot.md
-- name: 相关内容
+- name: 资源
   items:
-    - name: 平台服务
+    - name: Azure IoT 服务
       items:
         - name: IoT 中心
           href: /iot-hub
         - name: IoT 中心设备预配服务
           href: /iot-dps
-        - name: IoT 服务 SDK
-          href: '/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
+        - name: IoT Edge
+          href: /iot-edge
         - name: 时序见解
           href: /time-series-insights
-    - name: Edge 解决方案
+    - name: Azure IoT SDK
       items:
-        - name: Azure IoT Edge
-          href: /iot-edge
+        - name: IoT 服务 SDK
+          href: '/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
         - name: IoT 设备 SDK
           href: '/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
-- name: 资源
-  items:
-    - name: '适用于 C# 的 Azure IoT 示例 (.NET)'
-      href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-csharp/'
-    - name: 适用于 Node.js 的 Azure IoT 示例
-      href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-node/'
-    - name: 适用于 Java 的 Azure IoT 示例
-      href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-java/'
-    - name: 适用于 Python 的 Azure IoT 示例
-      href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-python/'
-    - name: 适用于 iOS 平台的 Azure IoT 示例
-      href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-ios/'
+    - name: Azure IoT 示例
+      items:
+        - name: 'C# (.NET)'
+          href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-csharp/'
+        - name: Node.js
+          href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-node/'
+        - name: Java
+          href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-java/'
+        - name: Python
+          href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-python/'
+        - name: iOS 平台
+          href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-ios/'
     - name: Azure IoT 开发人员中心
       href: /develop/iot/
     - name: Azure 路线图
       href: 'https://azure.microsoft.com/roadmap/?category=iot'
-    - name: 用于 VS Code 的 Azure IoT Edge
-      href: 'https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge'
-    - name: 用于 VS Code 的 Azure IoT 中心
-      href: 'https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit'
-    - name: DeviceExplorer 工具
-      href: 'https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer'
+    - name: 适用于 VS Code 的 Azure IoT Tools
+      href: 'https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools'
+    - name: Azure IoT 资源管理器工具
+      href: 'https://github.com/Azure/azure-iot-explorer'
     - name: iothub-diagnostics 工具
       href: 'https://github.com/Azure/iothub-diagnostics'
     - name: MSDN 论坛
       href: 'https://social.msdn.microsoft.com/Forums/azure/home?forum=iotedge'
     - name: 定价
-      href: 'https://www.azure.cn/pricing/details/iot-hub/'
+      href: 'https://www.azure.cn/pricing/details/iot-edge/'
     - name: 定价计算器
       href: 'https://www.azure.cn/pricing/calculator/'
     - name: 服务更新

@@ -1,20 +1,21 @@
 ---
-title: 下载用于 S2S VPN 连接的 VPN 设备配置脚本：Azure 资源管理器 | Microsoft Docs
+title: 下载用于 S2S VPN 连接的 VPN 设备配置脚本
 description: 本文逐步讲解如何使用 Azure 资源管理器下载采用 Azure VPN 网关的 S2S VPN 连接的 VPN 设备配置脚本。
+titleSuffix: Azure VPN Gateway
 services: vpn-gateway
 author: WenJason
 manager: digimobile
 ms.service: vpn-gateway
 ms.topic: article
 origin.date: 01/09/2019
-ms.date: 03/04/2019
+ms.date: 04/06/2020
 ms.author: v-jay
-ms.openlocfilehash: 6e800c62812b9133e88096bbcfb2140e972c56d4
-ms.sourcegitcommit: 235c6c8a11af703474236c379aa6310e84ff03a3
+ms.openlocfilehash: 48c4ce855bdeacb2d7e2cc0e61c7996d05799d44
+ms.sourcegitcommit: 5fb45da006859215edc8211481f13174aa43dbeb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "63851831"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80634525"
 ---
 # <a name="download-vpn-device-configuration-scripts-for-s2s-vpn-connections"></a>下载用于 S2S VPN 连接的 VPN 设备配置脚本
 
@@ -26,7 +27,7 @@ ms.locfileid: "63851831"
 
 [!INCLUDE [scripts](../../includes/vpn-gateway-device-configuration-scripts.md)]
 
-## <a name="about"></a>关于 VPN 设备配置脚本
+## <a name="about-vpn-device-configuration-scripts"></a><a name="about"></a>关于 VPN 设备配置脚本
 
 跨界 VPN 连接包含一个 Azure VPN 网关、一个本地 VPN 设备，以及将两者相连接的 IPsec S2S VPN 隧道。 典型的工作流包括以下步骤：
 
@@ -54,7 +55,7 @@ ms.locfileid: "63851831"
 
 创建连接资源后，遵照以下说明下载 VPN 设备配置脚本：
 
-1. 在浏览器中导航到 [Azure 门户](http://portal.azure.cn)，并根据需要使用 Azure 帐户登录。
+1. 在浏览器中导航到 [Azure 门户](https://portal.azure.cn)，并根据需要使用 Azure 帐户登录。
 2. 转到创建的连接资源。 依次单击“所有服务”、“网络”和“连接”可以找到所有连接资源的列表。
 
     ![connection-list](./media/vpn-gateway-download-vpndevicescript/connectionlist.png)
@@ -78,11 +79,11 @@ ms.locfileid: "63851831"
 
 ## <a name="download-the-configuration-script-using-azure-powershell"></a>使用 Azure PowerShell 下载配置脚本
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 
 也可以使用 Azure PowerShell 下载配置脚本，如以下示例中所示：
 
-```powershell
+```azurepowershell
 $RG          = "TestRG1"
 $GWName      = "VNet1GW"
 $Connection  = "VNet1toSite1"

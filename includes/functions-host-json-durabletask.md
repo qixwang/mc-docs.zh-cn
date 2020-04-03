@@ -1,20 +1,18 @@
 ---
 title: include 文件
 description: include 文件
-services: functions
 author: ggailey777
-manager: jeconnoc
 ms.service: azure-functions
 ms.topic: include
-ms.date: 12/31/2019
+ms.date: 03/30/2020
 ms.author: v-junlch
 ms.custom: include file
-ms.openlocfilehash: 05da00596e26d89fc17bc0a8cd6849d855b90c88
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.openlocfilehash: 305a44505da4c66bfb4592c65618af3153b592f1
+ms.sourcegitcommit: 64584c0bf31b4204058ae2b4641356b904ccdd58
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75624117"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80587069"
 ---
 [Durable Functions](../articles/azure-functions/durable-functions-overview.md) 的配置设置。
 
@@ -45,10 +43,11 @@ ms.locfileid: "75624117"
 }
 ```
 
-### <a name="durable-functions-2-0-host-json"></a>Durable Functions 2.x
+### <a name="durable-functions-2x"></a><a name="durable-functions-2-0-host-json"></a>Durable Functions 2.x
 
 ```json
 {
+ "extensions": {
   "durableTask": {
     "hubName": "MyTaskHub",
     "storageProvider": {
@@ -86,7 +85,9 @@ ms.locfileid: "75624117"
     "extendedSessionIdleTimeoutInSeconds": 30,
     "useGracefulShutdown": false
   }
+  }
 }
+
 ```
 
 任务中心名称必须以字母开头且只能包含字母和数字。 如果未指定，则函数应用的默认任务中心名称是 **DurableFunctionsHub**。 有关详细信息，请参阅[任务中心](../articles/azure-functions/durable-functions-task-hubs.md)。
@@ -116,4 +117,3 @@ ms.locfileid: "75624117"
 
 许多此类设置用于优化性能。 有关详细信息，请参阅[性能和缩放](../articles/azure-functions/durable-functions-perf-and-scale.md)。
 
-<!-- Update_Description: wording update -->

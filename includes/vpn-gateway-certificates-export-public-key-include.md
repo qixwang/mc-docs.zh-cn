@@ -5,16 +5,16 @@ services: vpn-gateway
 author: WenJason
 ms.service: vpn-gateway
 ms.topic: include
-origin.date: 02/13/2019
-ms.date: 03/04/2019
+origin.date: 03/19/2019
+ms.date: 04/06/2020
 ms.author: v-jay
 ms.custom: include file
-ms.openlocfilehash: c40cb3091c9f85166282afed73b429624e63bf2e
-ms.sourcegitcommit: 15a80d044339dab8bce43eb7be110ba01f630056
+ms.openlocfilehash: ea183d17dfd0957e655b8ed3fbd2e3038aaa2baa
+ms.sourcegitcommit: 5fb45da006859215edc8211481f13174aa43dbeb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69578660"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80634539"
 ---
 创建自签名根证书之后，导出根证书公用密钥 .cer 文件（不导出私钥）。 稍后要将此文件上传到 Azure。 可借助以下步骤导出自签名根证书的 .cer 文件：
 

@@ -6,16 +6,16 @@ manager: philmea
 ms.author: v-tawe
 ms.reviewer: mrohera
 origin.date: 10/04/2019
-ms.date: 03/02/2020
+ms.date: 03/30/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 2ddc5ee5f24f96bf9c729d63f3a1001051a9e7d2
-ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
+ms.openlocfilehash: 6d9e054e7b59ff3183a47ddf993cdc8df18ee2d9
+ms.sourcegitcommit: 260800ede66f48c886d1426a0fac18b4d402b4f2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77494346"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586770"
 ---
 # <a name="create-and-provision-an-iot-edge-device-using-symmetric-key-attestation"></a>使用对称密钥证明创建和预配 IoT Edge 设备
 
@@ -29,7 +29,7 @@ ms.locfileid: "77494346"
 
 对称密钥证明是一种通过设备预配服务实例对设备进行身份验证的简单方法。 此证明方法表示不熟悉设备预配或不具备严格安全要求的开发人员的“Hello world”体验。 使用 [TPM](../iot-dps/concepts-tpm-attestation.md) 或 [X.509 证书](../iot-dps/concepts-security.md#x509-certificates)的设备证明更加安全，且应该用于更严格的安全要求。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * 一个有效的 IoT 中心
 * 一个物理设备或虚拟设备
@@ -175,15 +175,15 @@ IoT Edge 运行时部署在所有 IoT Edge 设备上。 该运行时的组件在
 # DPS symmetric key provisioning configuration
 provisioning:
    source: "dps"
-   global_endpoint: "https://global.azure-devices-provisioning.net"
-   scope_id: "{scope_id}"
+   global_endpoint: "https://global.azure-devices-provisioning.cn"
+   scope_id: "<SCOPE_ID>"
    attestation:
       method: "symmetric_key"
-      registration_id: "{registration_id}"
-      symmetric_key: "{symmetric_key}"
+      registration_id: "<REGISTRATION_ID>"
+      symmetric_key: "<SYMMETRIC_KEY>"
 ```
 
-请将 `{scope_id}`、`{registration_id}` 和 `{symmetric_key}` 的占位符值替换为前面收集的数据。 请确保 **provisioning:** 行前面没有空格，并且嵌套项缩进了两个空格。
+请将 `<SCOPE_ID>`、`<REGISTRATION_ID>` 和 `<SYMMETRIC_KEY>` 的占位符值替换为前面收集的数据。 请确保 **provisioning:** 行前面没有空格，并且嵌套项缩进了两个空格。
 
 ### <a name="windows-device"></a>Windows 设备
 

@@ -5,15 +5,15 @@ author: ccompy
 ms.assetid: 5c61eed1-1ad1-4191-9f71-906d610ee5b7
 ms.topic: article
 origin.date: 02/27/2020
-ms.date: 03/16/2020
+ms.date: 03/30/2020
 ms.author: v-tawe
 ms.custom: seodec18
-ms.openlocfilehash: 6f68273aacdcf8b39a314399da85a7a547409f59
-ms.sourcegitcommit: e500354e2fd8b7ac3dddfae0c825cc543080f476
+ms.openlocfilehash: 27881f5a3b067a4fa678e066c5d1c3ddfe56f170
+ms.sourcegitcommit: 44d3fe59952847e5394bbe6c05bd6f333bb56345
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2020
-ms.locfileid: "79546945"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80522061"
 ---
 # <a name="app-service-networking-features"></a>应用服务网络功能
 
@@ -42,7 +42,6 @@ Azure 应用服务是一种分布式系统。 处理传入 HTTP/HTTPS 请求的�
 | 支持应用的基于 IP 的 SSL 需求 | 应用分配的地址 |
 | 应用的非共享专用入站地址 | 应用分配的地址 |
 | 从一组妥善定义的地址限制对应用的访问 | 访问限制 |
-| 在 VNet 中的专用 IP 上公开我的应用 | ILB ASE </br> 包含服务终结点的应用程序网关 |
 | 限制从 VNet 中的资源访问应用 | 服务终结点 </br> ILB ASE |
 | 在 VNet 中的专用 IP 上公开我的应用 | ILB ASE </br> 包含服务终结点的应用程序网关上用于入站通信的专用 IP |
 | 使用 WAF 保护我的应用 | 应用程序网关 + ILB ASE </br> 包含服务终结点的应用程序网关 </br> 提供访问限制的 Azure Front Door |
@@ -112,6 +111,13 @@ Azure 应用服务缩放单元为每个部署中的多个客户提供支持。 �
 ![包含应用程序网关的服务终结点](media/networking-features/service-endpoints-appgw.png)
 
 可以在[配置服务终结点访问限制][serviceendpoints]教程中详细了解如何配置包含你的应用的服务终结点
+
+<!--
+### Private Endpoint (Preview)
+
+Private Endpoint is a network interface that connects you privately and securely to your Web App by Azure Private Link. Private Endpoint uses a private IP address from your VNet, effectively bringing the Web App into your VNet. This feature is only for **inbound** flows to your Web App.
+[Using Private Endpoints for Azure Web App (Preview)][privateendpoints]
+-->
  
 ### <a name="hybrid-connections"></a>混合连接
 

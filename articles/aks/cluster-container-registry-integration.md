@@ -5,14 +5,14 @@ services: container-service
 manager: digimobile
 ms.topic: article
 origin.date: 02/25/2020
-ms.date: 03/09/2020
+ms.date: 04/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: 2294953aa0d9aa1252d9dc42ff0926ee586bac46
-ms.sourcegitcommit: 305361c96d1d5288d3dda7e81833820640e2afac
+ms.openlocfilehash: f29737d38d3d72fe2503c232dfc1642602410c82
+ms.sourcegitcommit: 76280dd9854dc0ff0ba1e5e62fb3dc3af049fbe2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2020
-ms.locfileid: "80109800"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80517016"
 ---
 <!--Verify successfully-->
 # <a name="authenticate-with-azure-container-registry-from-azure-kubernetes-service"></a>使用 Azure 容器注册表从 Azure Kubernetes 服务进行身份验证
@@ -48,6 +48,7 @@ az acr create -n $MYACR -g myContainerRegistryResourceGroup --sku basic
 # Create an AKS cluster with ACR integration
 az aks create -n myAKSCluster -g myResourceGroup --generate-ssh-keys --attach-acr $MYACR
 ```
+
 或者，可以使用 ACR 资源 ID 指定 ACR 名称，其格式如下：
 
 `/subscriptions/\<subscription-id\>/resourceGroups/\<resource-group-name\>/providers/Microsoft.ContainerRegistry/registries/\<name\>` 
@@ -68,18 +69,19 @@ az aks update -n myAKSCluster -g myResourceGroup --attach-acr <acrName>
 
 或者，
 
-```
+```azurecli
 az aks update -n myAKSCluster -g myResourceGroup --attach-acr <acr-resource-id>
 ```
 
 还可以使用以下命令删除 ACR 与 AKS 群集之间的集成
+
 ```azurecli
 az aks update -n myAKSCluster -g myResourceGroup --detach-acr <acrName>
 ```
 
 或
 
-```
+```azurecli
 az aks update -n myAKSCluster -g myResourceGroup --detach-acr <acr-resource-id>
 ```
 
@@ -103,7 +105,7 @@ az aks get-credentials -g myResourceGroup -n myAKSCluster
 
 创建名为 **acr-nginx.yaml** 的文件，其中包含以下内容：
 
-```
+```yaml
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -129,19 +131,19 @@ spec:
 
 接下来，在 AKS 群集中运行此部署：
 
-```
+```console
 kubectl apply -f acr-nginx.yaml
 ```
 
 可以通过运行以下命令来监视部署：
 
-```
+```console
 kubectl get pods
 ```
 
 应有两个正在运行的 pod。
 
-```
+```output
 NAME                                 READY   STATUS    RESTARTS   AGE
 nginx0-deployment-669dfc4d4b-x74kr   1/1     Running   0          20s
 nginx0-deployment-669dfc4d4b-xdpd6   1/1     Running   0          20s

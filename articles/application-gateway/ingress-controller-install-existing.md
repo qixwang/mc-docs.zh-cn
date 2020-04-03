@@ -5,15 +5,14 @@ services: application-gateway
 author: caya
 ms.service: application-gateway
 ms.topic: article
-origin.date: 11/04/2019
-ms.date: 11/19/2019
+ms.date: 03/30/2020
 ms.author: v-junlch
-ms.openlocfilehash: 6f9c0f5d913f0f65c07e368f8c343218657dc574
-ms.sourcegitcommit: fdbd1b6df618379dfeab03044a18c373b5fbb8ec
+ms.openlocfilehash: dcd2e7f93934995b58897ae41cae68c601807ee6
+ms.sourcegitcommit: 64584c0bf31b4204058ae2b4641356b904ccdd58
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74328454"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80581660"
 ---
 # <a name="install-an-application-gateway-ingress-controller-agic-using-an-existing-application-gateway"></a>安装使用现有应用程序网关的应用程序网关入口控制器 (AGIC)
 
@@ -30,7 +29,7 @@ AGIC 监视 Kubernetes [入口](https://kubernetes.io/docs/concepts/services-net
 
 ## <a name="prerequisites"></a>先决条件
 本文档假设已安装以下工具和基础结构：
-- 已启用[高级网络](https://docs.microsoft.com/azure/aks/configure-azure-cni)的 [AKS](https://www.azure.cn/home/features/kubernetes-service/)
+- 已启用[高级网络](/aks/configure-azure-cni)的 [AKS](https://www.azure.cn/home/features/kubernetes-service/)
 - AKS 所在的同一虚拟网络中的[应用程序网关 v2](/application-gateway/tutorial-autoscale-ps)
 - 已在 AKS 群集上安装 [AAD Pod Identity](https://github.com/Azure/aad-pod-identity)
 - 已安装 `az` CLI、`kubectl` 和 `helm` 的 Azure shell 环境。 需要使用这些工具来运行下面所述的命令。
@@ -42,7 +41,7 @@ AGIC 监视 Kubernetes [入口](https://kubernetes.io/docs/concepts/services-net
 下载的 zip 文件包含 JSON 模板、bash 和 PowerShell 脚本，如果需要，可使用它们来还原应用程序网关
 
 ## <a name="install-helm"></a>安装 Helm
-[Helm](https://docs.microsoft.com/azure/aks/kubernetes-helm) 是 Kubernetes 的包管理器。 我们将利用它来安装 `application-gateway-kubernetes-ingress` 包。
+[Helm](/aks/kubernetes-helm) 是 Kubernetes 的包管理器。 我们将利用它来安装 `application-gateway-kubernetes-ingress` 包。
 
 1. 安装 [Helm](/aks/kubernetes-helm) 并运行以下命令来添加 `application-gateway-kubernetes-ingress` Helm 包：
 
@@ -80,13 +79,13 @@ AGIC 与 Kubernetes API 服务器和 Azure 资源管理器通信。 它需要一
 
 1. **在 AKS 节点所在的同一个资源组**中创建 Azure 标识。 选取正确的资源组十分重要。 以下命令中所需的资源组不是 AKS 门户窗格中提到的资源组，  而是 `aks-agentpool` 虚拟机的资源组。 通常，该资源组以 `MC_` 开头并包含 AKS 的名称。 例如：`MC_resourceGroup_aksABCD_chinanorth`
 
-    ```bash
+    ```azurecli
     az identity create -g <agent-pool-resource-group> -n <identity-name>
     ```
 
 1. 对于以下角色分配命令，需要获取新建标识的 `principalId`：
 
-    ```bash
+    ```azurecli
     az identity show -g <resourcegroup> -n <identity-name>
     ```
 
@@ -94,7 +93,7 @@ AGIC 与 Kubernetes API 服务器和 Azure 资源管理器通信。 它需要一
 
     使用以下命令获取订阅中的应用程序网关 ID 列表：`az network application-gateway list --query '[].id'`
 
-    ```bash
+    ```azurecli
     az role assignment create \
         --role Contributor \
         --assignee <principalId> \
@@ -103,7 +102,7 @@ AGIC 与 Kubernetes API 服务器和 Azure 资源管理器通信。 它需要一
 
 1. 授予标识对应用程序网关资源组的 `Reader` 访问权限。 资源组 ID 如下所示：`/subscriptions/A/resourceGroups/B`。 可使用以下命令获取所有资源组：`az group list --query '[].id'`
 
-    ```bash
+    ```azurecli
     az role assignment create \
         --role Reader \
         --assignee <principalId> \
@@ -115,7 +114,7 @@ AGIC 与 Kubernetes API 服务器和 Azure 资源管理器通信。 它需要一
 
 1. 创建 Active Directory 服务主体并使用 base64 编码。 JSON Blob 需要使用 base64 编码才能保存到 Kubernetes 中。
 
-```bash
+```azurecli
 az ad sp create-for-rbac --subscription <subscription-uuid> --sdk-auth | base64 -w0
 ```
 

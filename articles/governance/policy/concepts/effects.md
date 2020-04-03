@@ -2,15 +2,15 @@
 title: 了解效果的工作原理
 description: Azure Policy 定义具有各种效果，可确定管理和报告合规性的方式。
 ms.author: v-tawe
-origin.date: 11/04/2019
-ms.date: 03/16/2020
+origin.date: 03/23/2019
+ms.date: 03/30/2020
 ms.topic: conceptual
-ms.openlocfilehash: 786b882352c7fb98192b3a6eb3c29bcfe0e8d0b9
-ms.sourcegitcommit: 1d3d8dfdaf6281f06640cbee7124a1e8bf102c50
+ms.openlocfilehash: 3d27ec956b01cb3be3abcc2dca4ecbca0c4af1f9
+ms.sourcegitcommit: 260800ede66f48c886d1426a0fac18b4d402b4f2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "80243917"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586786"
 ---
 # <a name="understand-azure-policy-effects"></a>了解 Azure Policy 效果
 
@@ -339,7 +339,7 @@ AuditIfNotExists 效果的  “details”属性具有定义要匹配的相关资
 DeployIfNotExists 在资源提供程序处理资源创建或更新请求并返回成功状态代码后大约 15 分钟运行。 如果没有相关资源或如果由 **ExistenceCondition** 定义的资源未评估为 true，则会发生模板部署。
 部署持续时间取决于模板中包含的资源的复杂性。
 
-在评估周期中，具有与资源匹配的 DeployIfNotExists 效果的策略定义被标记为不合规，但不对该资源执行任何操作。
+在评估周期中，具有与资源匹配的 DeployIfNotExists 效果的策略定义被标记为不合规，但不对该资源执行任何操作。 可以使用[修正任务](../how-to/remediate-resources.md)来修正现有的不合规资源。
 
 ### <a name="deployifnotexists-properties"></a>DeployIfNotExists 属性
 

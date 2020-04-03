@@ -17,12 +17,12 @@ ms.workload: big-data
 origin.date: 12/10/2019
 ms.date: 01/13/2020
 ms.author: v-yiso
-ms.openlocfilehash: 4863b5c4b8dcb490538b4381823a77257aed4266
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.openlocfilehash: 5f250dc7835349f703ca2728063234bdeb696cd2
+ms.sourcegitcommit: 5fb45da006859215edc8211481f13174aa43dbeb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75630796"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80634555"
 ---
 # <a name="create-apache-hadoop-clusters-using-the-azure-rest-api"></a>使用 Azure REST API 创建 Apache Hadoop 群集
 
@@ -223,7 +223,6 @@ Azure Resource Manager 模板是描述**资源组**及其包含的所有资源�
 
 ## <a name="sign-in-to-your-azure-subscription"></a>登录到 Azure 订阅
 
-[!INCLUDE [azure-cli-2-azurechinacloud-environment-parameter](../../includes/azure-cli-2-azurechinacloud-environment-parameter.md)]
 
 请按照 [Azure CLI 入门](https://docs.azure.cn/zh-cn/cli/get-started-with-az-cli2?view=azure-cli-lastest)中所述的步骤操作，并使用 `az login` 命令连接到订阅。
 
@@ -234,7 +233,7 @@ Azure Resource Manager 模板是描述**资源组**及其包含的所有资源�
 
 1. 从命令行使用以下命令列出 Azure 订阅。
 
-   ```bash
+   ```azurecli
    az account list --query '[].{Subscription_ID:id,Tenant_ID:tenantId,Name:name}'  --output table
    ```
 
@@ -242,20 +241,20 @@ Azure Resource Manager 模板是描述**资源组**及其包含的所有资源�
 
 2. 使用以下命令在 Azure Active Directory 中创建应用程序。
 
-   ```bash
+   ```azurecli
    az ad app create --display-name "exampleapp" --homepage "https://www.contoso.org" --identifier-uris "https://www.contoso.org/example" --password <Your password> --query 'appId'
    ```
 
     将 `--display-name`、`--homepage` 和 `--identifier-uris` 的值替换为自己的值。 为新的 Active Directory 条目提供密码。
 
-   > [!NOTE]
-   > `--home-page` 和 `--identifier-uris` 值无需引用 Internet 上托管的实际网页。 它们必须是唯一的 URI。
+   > [!NOTE]  
+   > `--home-page` 和 `--identifier-uris` 值无需引用 Internet 上托管的实际网页。 它们必须是唯一 URI。
 
    此命令返回的值是新应用程序的 __应用 ID__ 。 保存此值。
 
 3. 通过以下命令使用 **应用 ID**创建服务主体。
 
-   ```bash
+   ```azurecli
    az ad sp create --id <App ID> --query 'objectId'
    ```
 
@@ -263,7 +262,7 @@ Azure Resource Manager 模板是描述**资源组**及其包含的所有资源�
 
 4. 使用**对象 ID** 值向服务主体分配**所有者**角色。 使用前面获取的 **订阅 ID** 。
 
-   ```bash
+   ```azurecli
    az role assignment create --assignee <Object ID> --role Owner --scope /subscriptions/<Subscription ID>/
    ```
 
@@ -350,7 +349,7 @@ curl -X "GET" "https://management.chinacloudapi.cn/subscriptions/$SUBSCRIPTIONID
 -H "Content-Type: application/json"
 ```
 
-此命令会返回包含有关部署操作的信息的 JSON 文档。 `"provisioningState"` 元素包含部署的状态。 如果此元素包含 `"Succeeded"` 值，则部署已成功完成。
+此命令返回包含有关部署操作的信息的 JSON 文档。 `"provisioningState"` 元素包含部署的状态。 如果此元素包含 `"Succeeded"` 值，则部署已成功完成。
 
 ## <a name="troubleshoot"></a>故障排除
 

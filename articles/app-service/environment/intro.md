@@ -5,15 +5,15 @@ author: ccompy
 ms.assetid: 3c7eaefa-1850-4643-8540-428e8982b7cb
 ms.topic: overview
 origin.date: 04/19/2018
-ms.date: 03/09/2020
+ms.date: 03/30/2020
 ms.author: v-tawe
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 405b141924dab32f06bd500bbf9f66fd26430be3
-ms.sourcegitcommit: 303a16c7117b6f3495ef0493b4ae8ccb67d7dbba
+ms.openlocfilehash: 0229759aea4fdf523d10eb1fb623b231b9fcf084
+ms.sourcegitcommit: 44d3fe59952847e5394bbe6c05bd6f333bb56345
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80342339"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80522078"
 ---
 # <a name="introduction-to-the-app-service-environments"></a>应用服务环境简介 #
  

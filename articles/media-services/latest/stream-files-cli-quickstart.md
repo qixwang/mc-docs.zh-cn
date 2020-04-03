@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 媒体服务和 Azure CLI 流式传输视频文件 | Microsoft Docs
+title: 使用 Azure 媒体服务和 Azure CLI 流式传输视频文件
 description: 按照本教程的步骤，创建新的 Azure 媒体服务帐户、编码文件并将文件流式传输到 Azure Media Player。
 services: media-services
 documentationcenter: ''
@@ -12,16 +12,16 @@ ms.workload: media
 ms.topic: tutorial
 ms.custom: ''
 origin.date: 08/19/2019
-ms.date: 09/23/2019
+ms.date: 04/06/2020
 ms.author: v-jay
-ms.openlocfilehash: 9506d4666d420347db6128bd9f1eb01de60953a4
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.openlocfilehash: 834a96004ca51dbbbc2bc992b84a69bb551d9eb7
+ms.sourcegitcommit: fe9ed98aaee287a21648f866bb77cb6888f75b0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78850191"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80625765"
 ---
-# <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---cli"></a>教程：基于 URL 对远程文件进行编码并流式传输视频 - CLI
+# <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---azure-cli"></a>教程：基于 URL 对远程文件进行编码并流式传输视频 - Azure CLI
 
 本教程介绍如何使用 Azure 媒体服务和 Azure CLI 在各种浏览器与设备上轻松编码和流式传输视频。 可以使用 HTTPS、SAS URL 或位于 Azure Blob 存储中的文件路径来指定输入内容。
 
@@ -50,7 +50,7 @@ az group create -n amsResourceGroup -l chinaeast2
 本示例创建一个常规用途 v2 标准 LRS 帐户。
 
 若要通过存储帐户进行试验，请使用 `--sku Standard_LRS`。 选取用于生产的 SKU 时，请考虑使用 `--sku Standard_RAGRS`，以便通过异地复制来确保业务连续性。 有关详细信息，请参阅[存储帐户](/cli/storage/account?view=azure-cli-latest)。
- 
+
 ```azurecli
 az storage account create -n amsstorageaccount --kind StorageV2 --sku Standard_LRS -l chinaeast2 -g amsResourceGroup
 ```
@@ -93,7 +93,6 @@ az ams streaming-endpoint start  -n default -a amsaccount -g amsResourceGroup
 响应如下所示：
 
 ```
-az ams streaming-endpoint start  -n default -a amsaccount -g amsResourceGroup
 {
   "accessControl": null,
   "availabilitySetName": null,
@@ -194,7 +193,7 @@ az ams asset create -n testOutputAssetName -a amsaccount -g amsResourceGroup
   请注意，我们将“=”添加到了 `output-assets`。
 
 ```azurecli
-az ams job start --name testJob001 --transform-name testEncodingTransform --base-uri 'https://nimbuscdn-nimbuspm.streaming.mediaservices.windows.net/2b533311-b215-4409-80af-529c3e853622/' --files 'Ignite-short.mp4' --output-assets testOutputAssetName= -a amsaccount -g amsResourceGroup 
+az ams job start --name testJob001 --transform-name testEncodingTransform --base-uri 'https://nimbuscdn-nimbuspm.streaming.mediaservices.windows.net/2b533311-b215-4409-80af-529c3e853622/' --files 'Ignite-short.mp4' --output-assets testOutputAssetName= -a amsaccount -g amsResourceGroup
 ```
 
 响应如下所示：
@@ -309,13 +308,14 @@ az ams streaming-locator get-paths -a amsaccount -g amsResourceGroup -n testStre
 
 复制 HTTP 实时传送视频流 (HLS) 路径。 在本例中，该值为 `/e01b2be1-5ea4-42ca-ae5d-7fe704a5962f/ignite.ism/manifest(format=m3u8-aapl)`。
 
-## <a name="build-the-url"></a>生成 URL 
+## <a name="build-the-url"></a>生成 URL
 
 ### <a name="get-the-streaming-endpoint-host-name"></a>获取流式处理终结点主机名
 
 ```azurecli
 az ams streaming-endpoint list -a amsaccount -g amsResourceGroup -n default
 ```
+
 复制 `hostName` 值。 在本例中，该值为 `amsaccount-cne21.streaming.media.chinacloudapi.cn`。
 
 ### <a name="assemble-the-url"></a>汇编 URL
@@ -342,7 +342,7 @@ az ams streaming-endpoint list -a amsaccount -g amsResourceGroup -n default
 
 如果不再需要你的资源组中的任何一个资源（包括为本教程创建的媒体服务和存储帐户），请删除该资源组。
 
-运行以下 CLI 命令：
+运行此 Azure CLI 命令：
 
 ```azurecli
 az group delete --name amsResourceGroup
@@ -351,4 +351,3 @@ az group delete --name amsResourceGroup
 ## <a name="next-steps"></a>后续步骤
 
 [媒体服务概述](media-services-overview.md)
-

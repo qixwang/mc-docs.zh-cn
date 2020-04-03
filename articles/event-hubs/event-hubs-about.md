@@ -9,14 +9,14 @@ ms.service: event-hubs
 ms.topic: overview
 ms.custom: seodec18
 origin.date: 12/06/2018
-ms.date: 03/16/2020
+ms.date: 03/30/2020
 ms.author: v-tawe
-ms.openlocfilehash: f5ed0ef5e4efa566c3f1bc95839cb1d86a82cef2
-ms.sourcegitcommit: 1d3d8dfdaf6281f06640cbee7124a1e8bf102c50
+ms.openlocfilehash: c898d90c4dc6c127d71a8b1b4f2a949ff89e5bb1
+ms.sourcegitcommit: 260800ede66f48c886d1426a0fac18b4d402b4f2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "80243937"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586806"
 ---
 # <a name="azure-event-hubs--a-big-data-streaming-platform-and-event-ingestion-service"></a>Azure 事件中心 — 大数据流式处理平台和事件引入服务
 Azure 事件中心是大数据流式处理平台和事件引入服务。 它可以每秒接收和处理数百万个事件。 可以使用任何实时分析提供程序或批处理/存储适配器转换和存储发送到事件中心的数据。
@@ -32,7 +32,7 @@ Azure 事件中心是大数据流式处理平台和事件引入服务。 它可�
 - 用户遥测数据处理
 - 设备遥测数据流式处理
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/45wgY-VSk9I" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/45wgY-VSk9I" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
 
 ## <a name="why-use-event-hubs"></a>为何使用事件中心？
 
@@ -86,7 +86,7 @@ Azure 事件中心还能与 [Azure Functions](/azure-functions/) 集成，以构
 - [.NET Core](get-started-dotnet-standard-send-v2.md)
 - [Java](get-started-java-send-v2.md)
 - [Python](get-started-python-send-v2.md)
-- [JavaScript](get-started-java-send-v2.md)
+- [JavaScript](get-started-node-send-v2.md)
 - [Go](event-hubs-go-get-started-send.md)
 - [C（仅发送）](event-hubs-c-getstarted-send.md)
 - [Apache Storm（仅接收）](event-hubs-storm-getstarted-receive.md)

@@ -7,12 +7,12 @@ origin.date: 07/06/2016
 ms.date: 01/13/2020
 ms.author: v-tawe
 ms.custom: seodec18
-ms.openlocfilehash: 62a466174a12b24c4a1b1c63f5b91dbbe0f91a22
-ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
+ms.openlocfilehash: 4789f1681d3b82983fe4ec252911d825936eeb24
+ms.sourcegitcommit: 5fb45da006859215edc8211481f13174aa43dbeb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75600213"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80634338"
 ---
 # <a name="restore-an-app-in-azure"></a>在 Azure 中还原应用
 本文演示如何在 [Azure 应用服务](../app-service/overview.md)中还原已事先备份的应用（请参阅[在 Azure 中备份应用](manage-backup.md)）。 可以根据需要将应用及其链接的数据库还原到以前的状态，或者基于原始应用的备份之一创建新的应用。 Azure 应用服务支持用于备份和还原的以下数据库：
@@ -78,8 +78,7 @@ ms.locfileid: "75600213"
 
 ## <a name="automate-with-scripts"></a>使用脚本自动执行
 
-可以使用 [Azure CLI](/cli/install-azure-cli?view=azure-cli-lastest) 或 [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) 通过脚本自动备份管理。
-) 或 [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview)。
+可以在 [Azure CLI](/cli/install-azure-cli?view=azure-cli-lastest) 或 [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) 中使用脚本自动备份管理。
 
 相关示例如下所示：
 

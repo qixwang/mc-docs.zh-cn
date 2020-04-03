@@ -4,15 +4,15 @@ description: 了解如何在 Azure 应用服务中运行 .NET Core 应用，同�
 ms.devlang: dotnet
 ms.topic: tutorial
 origin.date: 08/06/2019
-ms.date: 03/16/2020
+ms.date: 03/30/2020
 ms.author: v-tawe
 ms.custom: mvc, cli-validate, seodec18
-ms.openlocfilehash: d6c1d2794b12d6ac36dfc720235ce12fb71be16f
-ms.sourcegitcommit: e500354e2fd8b7ac3dddfae0c825cc543080f476
+ms.openlocfilehash: 7f61164568386c5c7d1772a062ef1b5b35b3ddd5
+ms.sourcegitcommit: 44d3fe59952847e5394bbe6c05bd6f333bb56345
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2020
-ms.locfileid: "79546992"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80522085"
 ---
 # <a name="tutorial-build-an-aspnet-core-and-sql-database-app-in-azure-app-service"></a>教程：在 Azure 应用服务中生成 ASP.NET Core 和 SQL 数据库应用
 
@@ -62,8 +62,8 @@ cd dotnetcore-sqldb-tutorial
 运行以下命令，安装所需的包，运行数据库迁移并启动应用程序。
 
 ```bash
-dotnet restore
-dotnet ef database update
+dotnet tool install -g dotnet-ef --version 3.1.1
+dotnet-ef database update
 dotnet run
 ```
 
@@ -175,7 +175,7 @@ az webapp config connection-string set --resource-group myResourceGroup --name <
 
 ### <a name="configure-environment-variable"></a>配置环境变量
 
-接下来，将 `ASPNETCORE_ENVIRONMENT` 应用设置设置为“Production”。 由于对本地开发环境使用 SQLite，并对 Azure 环境使用 SQL 数据库，因此通过此设置，你可以了解应用是否正在 Azure 中运行。
+接下来，将 `ASPNETCORE_ENVIRONMENT` 应用设置设置为“Production”。  由于对本地开发环境使用 SQLite，并对 Azure 环境使用 SQL 数据库，因此通过此设置，你可以了解应用是否正在 Azure 中运行。
 
 以下示例在 Azure 应用中配置 `ASPNETCORE_ENVIRONMENT` 应用设置。 替换 \<app_name> 占位符  。
 

@@ -7,14 +7,14 @@ ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
 origin.date: 06/25/2019
-ms.date: 07/22/2019
+ms.date: 04/06/2020
 ms.author: v-jay
-ms.openlocfilehash: bdeb79521da7c444d66439ecd5100ce21e1106fd
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: 46229a3686b065b9d4d7ffa91a6084e29bbef86d
+ms.sourcegitcommit: 5fb45da006859215edc8211481f13174aa43dbeb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79292770"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80634485"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-via-nfs"></a>教程：通过 NFS 将数据复制到 Azure Data Box
 
@@ -23,6 +23,7 @@ ms.locfileid: "79292770"
 本教程介绍如何执行下列操作：
 
 > [!div class="checklist"]
+>
 > * 先决条件
 > * 连接到 Data Box
 > * 将数据复制到 Data Box
@@ -84,17 +85,17 @@ ms.locfileid: "79292770"
 
 连接到 Data Box 共享后，下一步是复制数据。 在开始复制数据之前，请查看以下注意事项：
 
-- 确保将数据复制到与适当数据格式对应的共享中。 例如，将块 Blob 数据复制到块 Blob 的共享中。 将 VHD 复制到页 Blob。 如果数据格式与相应的共享类型不匹配，则在后续步骤中，数据将无法上传到 Azure。
--  复制数据时，请确保数据大小符合 [Azure 存储和 Data Box 限制](data-box-limits.md)中所述的大小限制。 
-- 如果 Data Box 正在上传的数据同时已由 Data Box 外部的其他应用程序上传，则可能会导致上传作业失败和数据损坏。
-- 我们建议不要同时使用 SMB 和 NFS，也不要将相同的数据复制到 Azure 上的同一个最终目标。 在这种情况下，最终的结果不可确定。
-- **始终为要复制到共享下的文件创建一个文件夹，然后将文件复制到该文件夹**。 在块 blob 和页 blob 共享下创建的文件夹表示将数据作为 blob 上传到的容器。 无法将文件直接复制到存储帐户中的 root 文件夹  。
-- 如果从 NFS 共享中将区分大小写的目录和文件名引入到 Data Box 上的 NFS： 
-    - 名称将保留大小写。
-    - 文件不区分大小写。
-    
-    例如，如果复制 `SampleFile.txt` 和 `Samplefile.Txt`，则在复制到 Data Box 时，名称将保留大小写，但第二个文件将覆盖第一个文件，因为这些文件被视为同一文件。
+* 确保将数据复制到与适当数据格式对应的共享中。 例如，将块 Blob 数据复制到块 Blob 的共享中。 将 VHD 复制到页 Blob。 如果数据格式与相应的共享类型不匹配，则在后续步骤中，数据将无法上传到 Azure。
+* 复制数据时，请确保数据大小符合 [Azure 存储和 Data Box 限制](data-box-limits.md)中所述的大小限制。 
+* 如果 Data Box 正在上传的数据同时已由 Data Box 外部的其他应用程序上传，则可能会导致上传作业失败和数据损坏。
+* 我们建议不要同时使用 SMB 和 NFS，也不要将相同的数据复制到 Azure 上的同一个最终目标。 在这种情况下，最终的结果不可确定。
+* **始终为要复制到共享下的文件创建一个文件夹，然后将文件复制到该文件夹**。 在块 blob 和页 blob 共享下创建的文件夹表示将数据作为 blob 上传到的容器。 无法将文件直接复制到存储帐户中的 root 文件夹  。
+* 如果从 NFS 共享中将区分大小写的目录和文件名引入到 Data Box 上的 NFS：
+  * 名称将保留大小写。
+  * 文件不区分大小写。
 
+    例如，如果复制 `SampleFile.txt` 和 `Samplefile.Txt`，则在复制到 Data Box 时，名称将保留大小写，但第二个文件将覆盖第一个文件，因为这些文件被视为同一文件。
+* 请确保保留源数据的副本，直到可以确认 Data Box 已将数据传输到 Azure 存储中为止。
 
 如果使用 Linux 主机，请使用类似于 Robocopy 的复制实用工具。 在 Linux 中可用的一些替代工具包括 [rsync](https://rsync.samba.org/)、[FreeFileSync](https://www.freefilesync.org/)、[Unison](https://www.cis.upenn.edu/~bcpierce/unison/) 或 [Ultracopier](https://ultracopier.first-world.info/)。  
 

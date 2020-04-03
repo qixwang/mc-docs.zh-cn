@@ -1,28 +1,19 @@
 ---
-title: 教程 - 使用 Azure CLI 自动缩放规模集 | Microsoft Docs
+title: 教程 - 使用 Azure CLI 自动缩放规模集
 description: 了解如何使用 Azure CLI 随 CPU 需求的增减自动缩放虚拟机规模集
-services: virtual-machine-scale-sets
-documentationcenter: ''
 author: cynthn
-manager: jeconnoc
-editor: ''
 tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machine-scale-sets
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-origin.date: 05/18/2018
-ms.date: 02/12/2019
+ms.date: 03/31/2020
 ms.author: v-junlch
 ms.custom: mvc
-ms.openlocfilehash: edc8e661f8d4c61cd884fdb496e2f8feadeeb391
-ms.sourcegitcommit: 24dd5964eafbe8aa4badbca837c2a1a7836f2df7
+ms.openlocfilehash: aab1d48915eb9488cb59f0566abd8fb22a9246cc
+ms.sourcegitcommit: 64584c0bf31b4204058ae2b4641356b904ccdd58
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56101600"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80581612"
 ---
 # <a name="tutorial-automatically-scale-a-virtual-machine-scale-set-with-the-azure-cli"></a>教程：使用 Azure CLI 自动缩放虚拟机规模集
 
@@ -76,7 +67,7 @@ az monitor autoscale create `
 
 ## <a name="create-a-rule-to-autoscale-out"></a>创建规则，以便自动横向扩展
 
-如果应用程序需求提高，规模集中 VM 实例上的负载将会增大。 如果这种负载增大持续稳定，而不只是短暂的需求，那么可以配置自动缩放规则来增加规模集中的 VM 实例数。 创建这些 VM 实例及部署应用程序后，规模集会开始通过负载均衡器将流量分配到这些实例和应用程序。 可以控制要监视的指标（例如 CPU 或磁盘）、应用程序负载必须处于给定阈值内的时间，以及要添加到规模集的 VM 实例数。
+如果应用程序需求提高，规模集中 VM 实例上的负载将会增大。 如果这种负载增大持续稳定，而不只是短暂的需求，那么可以配置自动缩放规则来增加规模集中的 VM 实例数。 创建这些 VM 实例并部署应用程序后，规模集会开始通过负载均衡器将流量分配到这些实例和应用程序。 可以控制要监视的指标（例如 CPU 或磁盘）、应用程序负载必须处于给定阈值内的时间，以及要添加到规模集的 VM 实例数。
 
 让我们使用 [az monitor autoscale rule create](/cli/monitor/autoscale/rule#az-monitor-autoscale-rule-create) 创建一个规则，当平均 CPU 负载在 5 分钟内超过 70% 时，该规则会增加规模集中的 VM 实例数。 触发规则时，VM 实例数增加 3。
 
@@ -125,13 +116,13 @@ az vmss list-instance-connection-info `
 
 通过 SSH 连接到第一个 VM 实例。 使用 `-p` 参数指定自己的公共 IP 地址和端口号，如前述命令所示：
 
-```azurecli
+```console
 ssh azureuser@13.92.224.66 -p 50001
 ```
 
-登录后，安装 **stress** 实用工具。 启动 *10* 个可以生成 CPU 负载的 **stress** 辅助角色。 这些辅助角色运行 *420* 秒，此时间足以让自动缩放规则实施所需的操作。
+登录后，安装 **stress** 实用工具。 启动 10  个生成 CPU 负载的 **stress** 辅助角色。 这些辅助角色运行 *420* 秒，此时间足以让自动缩放规则实施所需的操作。
 
-```azurecli
+```console
 sudo apt-get -y install stress
 sudo stress --cpu 10 --timeout 420 &
 ```
@@ -140,26 +131,26 @@ sudo stress --cpu 10 --timeout 420 &
 
 若要确认 **stress** 是否生成了 CPU 负载，请使用 **top** 实用工具检查活动的系统负载：
 
-```azurecli
+```console
 top
 ```
 
 退出 **top**，然后关闭与 VM 实例的连接。 **stress** 继续在 VM 实例上运行。
 
-```azurecli
+```console
 Ctrl-c
 exit
 ```
 
 连接到第二个 VM 实例，所使用的端口号是前面的 [az vmss list-instance-connection-info](/cli/vmss) 列出的：
 
-```azurecli
+```console
 ssh azureuser@13.92.224.66 -p 50003
 ```
 
 安装并运行 **stress**，然后在这第二个 VM 实例上启动十个辅助角色。
 
-```azurecli
+```console
 sudo apt-get -y install stress
 sudo stress --cpu 10 --timeout 420 &
 ```
@@ -168,7 +159,7 @@ sudo stress --cpu 10 --timeout 420 &
 
 关闭与第二个 VM 实例的连接。 **stress** 继续在 VM 实例上运行。
 
-```azurecli
+```console
 exit
 ```
 
@@ -185,7 +176,7 @@ watch az vmss list-instances `
 
 达到 CPU 阈值以后，自动缩放规则会增加规模集中的 VM 实例数。 以下输出显示，在规模集进行自动横向扩展时创建了 3 个 VM：
 
-```bash
+```output
 Every 2.0s: az vmss list-instances --resource-group myResourceGroup --name myScaleSet --output table
 
   InstanceId  LatestModelApplied    Location    Name          ProvisioningState    ResourceGroup    VmId
@@ -199,7 +190,7 @@ Every 2.0s: az vmss list-instances --resource-group myResourceGroup --name mySca
 
 当 **stress** 在初始 VM 实例上停止后，平均 CPU 负载会回到正常。 另一个 5 分钟后，自动缩放规则会横向缩减 VM 实例数。 横向缩减操作会首先删除 ID 值最高的 VM 实例。 如果规模集使用可用性集，则缩减操作将均匀分布到这些 VM 实例上。 以下示例输出显示，在规模集进行自动横向缩减时删除了一个 VM 实例：
 
-```bash
+```output
            6  True                  chinanorth      myScaleSet_6  Deleting             myResourceGroup  9e4133dd-2c57-490e-ae45-90513ce3b336
 ```
 
@@ -207,7 +198,7 @@ Every 2.0s: az vmss list-instances --resource-group myResourceGroup --name mySca
 
 ## <a name="clean-up-resources"></a>清理资源
 
-若要删除规模集和其他资源，请使用 [az group delete](/cli/group) 删除资源组及其所有资源。 `--no-wait` 参数会使光标返回提示符处，不会等待操作完成。 `--yes` 参数将确认是否希望删除资源，不会显示询问是否删除的额外提示。
+若要删除规模集和其他资源，请使用 [az group delete](/cli/group) 删除资源组及其所有资源。 `--no-wait` 参数会使光标返回提示符处，无需等待操作完成。 `--yes` 参数将确认是否希望删除资源，而不会有额外提示。
 
 ```azurecli
 az group delete --name myResourceGroup --yes --no-wait
@@ -228,4 +219,3 @@ az group delete --name myResourceGroup --yes --no-wait
 > [!div class="nextstepaction"]
 > [适用于 Azure CLI 的规模集脚本示例](cli-samples.md)
 
-<!-- Update_Description: link update -->
