@@ -11,12 +11,12 @@ author: cartacioS
 ms.author: v-yiso
 origin.date: 11/04/2019
 ms.date: 03/09/2020
-ms.openlocfilehash: dde8c8ccb31d73b7b1457026631bd937c0c9a12c
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: 31fe6c33df6dac6ea15e8ef7f2fb5d54eb52d36d
+ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79292388"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80343573"
 ---
 # <a name="what-is-automated-machine-learning"></a>什么是自动化机器学习？
 
@@ -96,9 +96,9 @@ ms.locfileid: "79292388"
 
 ### <a name="advanced-preprocessing-optional-featurization"></a>高级预处理：可选特征化
 
-还可以使用其他高级预处理和特征化，例如数据护栏、编码和转换。 [详细了解包含的功能化](how-to-create-portal-experiments.md#featurization)。 可通过以下方式启用此设置：
+还可以使用其他高级预处理和特征化，例如数据护栏、编码和转换。 [详细了解包含的功能化](how-to-use-automated-ml-for-ml-models.md#featurization)。 可通过以下方式启用此设置：
 
-+ Azure 机器学习工作室：[通过以下步骤](how-to-create-portal-experiments.md#create-and-run-experiment)在“查看其他配置”  部分中启用“自动特征化”。 
++ Azure 机器学习工作室：[通过以下步骤](how-to-use-automated-ml-for-ml-models.md#create-and-run-experiment)在“查看其他配置”  部分中启用“自动特征化”。 
 
 + Python SDK：为 [`AutoMLConfig` 类](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig)指定 `"feauturization": 'auto' / 'off' / 'FeaturizationConfig'`。 
 
@@ -152,6 +152,14 @@ ms.locfileid: "79292388"
 
 模型 **C** 明确反映了过度拟合的情况；训练准确度极高，但测试准确度远远达不到较高的水平。 这种差别是主观性的，但需要根据对问题和数据的认知，以及可接受的错误程度来判断。 
 
+## <a name="classification--regression"></a>分类与回归
+
+分类与回归是最常见类型的机器学习任务。 这两者都是监督式学习类型，其中，模型将使用训练数据进行学习，并将所学到的这些知识应用于新数据。 Azure 机器学习提供了专用于这些任务的特征化，例如用于分类的深度神经网络文本特征化器。 详细了解[特征化选项](how-to-use-automated-ml-for-ml-models.md#featurization)。 
+
+分类模型的主要目标是根据从其训练数据中获得的经验，预测新数据将属于哪些类别。 常见分类示例包括欺诈检测、手写识别和对象检测。  详细了解[使用自动化机器学习进行分类](tutorial-train-models-with-aml.md)并查看示例。
+
+不同于分类（其中的预测输出值是类别），回归模型基于独立的预测因子预测数字输出值。 在回归中，目标是通过估计一个变量对其他变量的影响，帮助建立这些独立预测因子变量之间的关系。 例如，基于每英里耗油量、安全评级等特征预测汽车价格。 详细了解[使用自动化机器学习进行回归](tutorial-auto-train-models.md)并查看示例。
+
 ## <a name="time-series-forecasting"></a>时序预测
 
 生成预测是任何业务（无论是收入、库存、销售还是客户需求）中不可或缺的组成部分。 可以使用自动化 ML 来合并多种技术和方法，获得推荐的高质量时序预测结果。
@@ -167,7 +175,7 @@ ms.locfileid: "79292388"
 * 可配置滞后
 * 滚动窗口聚合特征
 
-## <a name="ensemble"></a> 系综模型
+## <a name="ensemble-models"></a><a name="ensemble"></a> 系综模型
 
 自动化机器学习支持默认已启用的系综模型。 系综学习通过组合多个模型而不是使用单个模型，来改善机器学习结果和预测性能。 系综迭代显示为运行的最后一个迭代。 自动化机器学习使用投票和堆叠系综方法来组合模型：
 
@@ -178,7 +186,7 @@ ms.locfileid: "79292388"
 
 请参阅[操作指南](how-to-configure-auto-train.md#ensemble)来了解如何在自动化机器学习中更改默认系综设置。
 
-## <a name="imbalance"></a> 不平衡的数据
+## <a name="imbalanced-data"></a><a name="imbalance"></a> 不平衡的数据
 
 不平衡的数据往往出现在机器学习分类方案的数据中，指的是在每个类中包含不相称比例的观测值的数据。 这种不平衡可能会对模型准确度造成错误的认知效应，因为输入数据与一个类存在偏差，从而导致训练的模型模拟该偏差。 
 
@@ -216,7 +224,7 @@ ms.locfileid: "79292388"
 
 Azure 机器学习提供了两种使用自动化 ML 的体验方式
 
-* 对于编码经验丰富的客户，可以使用 [Azure 机器学习 Python SDK](https://docs.microsoft.com/python/api/overview/azureml-sdk/?view=azure-ml-py) 
+* 对于编码经验丰富的客户，可以使用 [Azure 机器学习 Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) 
 
 * 对于编码经验有限或没有经验的客户，可以使用 [https://ml.azure.com](https://ml.azure.com/) 处的 Azure 机器学习工作室  
 
