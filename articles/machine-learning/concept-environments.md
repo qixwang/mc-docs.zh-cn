@@ -9,18 +9,18 @@ ms.topic: conceptual
 ms.author: v-yiso
 author: trevorbye
 origin.date: 01/06/2020
-ms.date: 03/09/2020
-ms.openlocfilehash: 855a17caea681ce2869d6c1704c3f548996f6ed4
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.date: 04/06/2020
+ms.openlocfilehash: 60c15666f16682cd0ba9446a48558f9435a382c4
+ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78155322"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80343073"
 ---
 # <a name="what-are-azure-machine-learning-environments"></a>什么是 Azure 机器学习环境？
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Azure 机器学习环境指定与训练和评分脚本有关的 Python 包、环境变量和软件设置。 它们还指定运行时（Python、Spark 或 Docker）。 它们是机器学习工作区中受管理且实施了版本控制的实体，可用于创建跨各种计算目标的可再现、可审核且可移植的机器学习工作流。
+Azure 机器学习环境指定与训练和评分脚本有关的 Python 包、环境变量和软件设置。 它们还指定运行时（Python、Spark 或 Docker）。 环境是机器学习工作区中受管理且版本受控的实体，可用于创建跨各种计算目标的可再现、可审核且可移植的机器学习工作流。
 
 可以使用本地计算机上的 `Environment` 目标执行以下操作：
 * 开发训练脚本。
@@ -58,6 +58,45 @@ Azure 机器学习环境指定与训练和评分脚本有关的 Python 包、环
 * 你可以基于你的环境自动生成 Docker 映像。
 
 有关代码示例，请参阅[重用环境进行训练和部署](how-to-use-environments.md#manage-environments)中的“管理环境”部分。
+
+## <a name="environment-building-caching-and-reuse"></a>生成、缓存和重复使用环境
+
+Azure 机器学习服务在 Docker 映像和 conda 环境中生成环境定义。 它还会缓存环境，使其可在后续的训练运行和服务终结点部署中重复使用。
+
+### <a name="building-environments-as-docker-images"></a>以 Docker 映像的形式生成环境
+
+通常，当你首次使用环境提交运行时，Azure 机器学习服务会在与工作区关联的 Azure 容器注册表 (ACR) 中调用一个 [ACR 生成任务](https://docs.microsoft.com/azure/container-registry/container-registry-tasks-overview)。 然后，生成的 Docker 映像将在工作区 ACR 中缓存。 开始执行运行时，计算目标会检索该映像。
+
+映像生成包括两个步骤：
+
+ 1. 下载基础映像，并执行任何 Docker 步骤
+ 2. 根据环境定义中指定的 conda 依赖项生成 conda 环境。
+
+如果指定[用户管理的依赖项](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.pythonsection?view=azure-ml-py)，则会省略第二个步骤。 在这种情况下，你需要负责安装任何 Python 包，方法是在基础映像中包含这些包，或者在第一个步骤中指定自定义 Docker 步骤。 你还要负责为 Python 可执行文件指定正确的位置。
+
+### <a name="image-caching-and-reuse"></a>缓存和重复使用映像
+
+如果你对另一个运行使用相同的环境定义，Azure 机器学习服务将重复使用工作区 ACR 中缓存的映像。 
+
+若要查看缓存的映像的详细信息，请使用 [Environment.get_image_details](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py#get-image-details-workspace-) 方法。
+
+为了确定是要重复使用缓存的映像还是生成新映像，服务将从环境定义计算一个[哈希值](https://en.wikipedia.org/wiki/Hash_table)，并将其与现有环境的哈希进行比较。 计算的哈希基于：
+ 
+ * 基础映像属性值
+ * 自定义 Docker 步骤属性值
+ * Conda 定义中的 Python 包列表
+ * Spark 定义中的包列表 
+
+该哈希不依赖于环境名称或版本。 更改环境定义（例如添加或删除 Python 包，或更改包版本）会导致哈希值更改并触发映像重新生成。 但是，如果只是重命名了环境，或者使用与现有环境完全相同的属性和包创建了新环境，则哈希值将保持不变，并会使用缓存的映像。
+
+请参阅下图，其中显示了三个环境定义。 其中两个定义包含不同的名称和版本，但其中的基础映像和 Python 包完全相同。 它们具有相同的哈希，因此对应于同一个缓存映像。 第三个环境包含不同的 Python 包和版本，因此对应于不同的缓存映像。
+
+![作为 Docker 映像缓存的环境示意图](./media/concept-environments/environment-caching.png)
+
+如果创建了一个包含未固定包依赖项（例如 ```numpy```）的环境，该环境将继续使用创建环境时安装的包版本。 此外，将来包含匹配定义的任何环境将继续使用旧版本。 若要更新包，请指定版本号以强制重新生成映像，例如 ```numpy==1.18.1```。 请注意，将会安装新的依赖项（包括嵌套的依赖项），这可能会破坏以前正常工作的方案
+
+> [!WARNING]
+>  [Environment.build](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py#build-workspace-) 方法将重新生成缓存的映像，这可能会造成更新取消固定包的负面影响，并破坏对应于该缓存映像的所有环境定义的可再现性。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -9,28 +9,37 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 author: jpe316
 ms.author: v-yiso
-origin.date: 11/22/2019
+origin.date: 02/21/2020
 ms.date: 03/09/2020
 ms.custom: seodec18
-ms.openlocfilehash: 91da8e591cc30ebb3d74ae5215901b6c9df8da16
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.openlocfilehash: 5729dca676be8f97881792ccbee806b814be1022
+ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78154569"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80343594"
 ---
 # <a name="mlops-model-management-deployment-and-monitoring-with-azure-machine-learning"></a>MLOps：使用 Azure 机器学习进行模型管理、部署和监视
 
 本文介绍如何使用 Azure 机器学习来管理模型的生命周期。 Azure 机器学习使用机器学习操作 (MLOps) 方法。 MLOps 改善了机器学习解决方案的质量和一致性。 
 
+## <a name="what-is-mlops"></a>什么是 MLOps？
+
+机器学习操作 (MLOps) 基于可提高工作流效率的 [DevOps](https://azure.microsoft.com/overview/what-is-devops/) 原理和做法。 例如持续集成、持续交付和持续部署。 MLOps 将这些原理应用到机器学习过程，其目标是：
+
+* 更快地试验和开发模型
+* 更快地将模型部署到生产环境
+* 质量保证
+
 Azure 机器学习提供以下 MLOps 功能：
 
-- **创建可重现的 ML 管道**。 使用管道可为数据准备、训练和评分过程定义可重复且可重用的步骤。
-- **从任意位置注册、打包和部署模型**，并跟踪使用模型所需的关联元数据。
-- **捕获所需的监管数据以捕获端到端的 ML 生命周期**，包括模型的发布者、做出更改的原因，以及在生产环境中部署或使用模型的时间。
-- **针对 ML 生命周期中的事件发出通知和警报**，例如，试验完成、模型注册、模型部署和数据偏移检测。
+- **创建可重现的 ML 管道**。 使用机器学习管道可为数据准备、训练和评分过程定义可重复且可重用的步骤。
+- 创建可重用的软件环境用于训练和部署模型。 
+- 从任意位置注册、打包和部署模型。  还可以跟踪使用模型时所需的关联元数据。
+- 捕获端到端 ML 生命周期的监管数据。  记录的信息可以包括模型的发布者、做出更改的原因，以及在生产环境中部署或使用模型的时间。
+- 针对 ML 生命周期中的事件发出通知和警报。  例如，试验完成、模型注册、模型部署和数据偏移检测。
 - **监视 ML 应用程序中的操作和 ML 相关问题**。 比较训练与推理之间的模型输入，浏览特定于模型的指标，以及针对 ML 基础结构提供监视和警报。
-- **使用 Azure 机器学习和 Azure DevOps 自动化端到端的 ML 生命周期**，以频繁更新模型、测试新模型，以及连同其他应用程序和服务持续推出新的 ML 模型。
+- 使用 Azure 机器学习和 Azure Pipelines 自动化端到端 ML 生命周期。  使用管道可以频繁更新模型、测试新模型，并连同其他应用程序和服务持续推出新的 ML 模型。
 
 ## <a name="create-reproducible-ml-pipelines"></a>创建可重现的 ML 管道
 
@@ -39,6 +48,12 @@ Azure 机器学习提供以下 MLOps 功能：
 ML 管道可以包含从数据准备、到特征提取、到超参数优化、再到模型评估的所有步骤。 有关详细信息，请参阅 [ML 管道](concept-ml-pipelines.md)。
 
 如果使用[设计器](concept-designer.md)创建 ML 管道，则随时可以单击设计器页面右上角的“...”，然后选择“克隆”。   克隆管道可以迭代管道设计，而不会丢失旧版本。  
+
+## <a name="create-reusable-software-environments"></a>创建可重用的软件环境
+
+在 Azure 机器学习环境中，可对不断演进的项目软件依赖项进行跟踪和再现。 在环境中，无需进行手动软件配置，就能确保生成项目可以再现。
+
+环境描述项目的 pip 和 Conda 依赖项，可用于模型的训练和部署。 有关详细信息，请参阅[什么是 Azure 机器学习环境](concept-environments.md)。
 
 ## <a name="register-package-and-deploy-models-from-anywhere"></a>从任意位置注册、打包和部署模型
 
@@ -57,6 +72,11 @@ ML 管道可以包含从数据准备、到特征提取、到超参数优化、�
 无法删除在活动部署中使用的已注册模型。
 有关详细信息，请参阅[部署模型](how-to-deploy-and-where.md#registermodel)的注册模型部分。
 
+### <a name="profile-models"></a>分析模型
+
+Azure 机器学习可帮助你了解部署模型时要创建的服务的 CPU 和内存要求。 分析可测试运行模型并返回 CPU 使用率、内存使用率和响应延迟等信息的服务。 它还根据资源使用率提供 CPU 和内存建议。
+有关详细信息，请参阅[部署模型](how-to-deploy-and-where.md#profilemodel)的“分析”部分。
+
 ### <a name="package-and-debug-models"></a>打包和调试模型
 
 在将模型部署到生产环境之前，需将其打包成 Docker 映像。 大多数情况下，映像创建操作会在部署期间在后台自动发生。 可以手动指定映像。
@@ -64,10 +84,6 @@ ML 管道可以包含从数据准备、到特征提取、到超参数优化、�
 如果部署时遇到问题，可以在本地开发环境中部署，以进行故障排除和调试。
 
 有关详细信息，请参阅[部署模型](how-to-deploy-and-where.md#registermodel)和[排查部署问题](how-to-troubleshoot-deployment.md)。
-
-### <a name="validate-and-profile-models"></a>验证和分析模型
-
-Azure 机器学习可以使用分析功能来确定在部署模型时要使用的理想 CPU 和内存设置。 在此过程中，将使用你为分析过程提供的数据执行模型验证。
 
 ### <a name="convert-and-optimize-models"></a>转换和优化模型
 
@@ -83,7 +99,7 @@ Azure 机器学习可以使用分析功能来确定在部署模型时要使用�
 
 * 用于对提交到服务/设备的数据进行评分的模型。
 * 一个入口脚本。 此脚本接受请求，使用模型对数据评分，然后返回响应。
-* 用于描述模型和入口脚本所需的依赖项的 conda 环境文件。
+* 一个描述模型和入口脚本所需 pip 和 Conda 依赖项的 Azure 机器学习环境。
 * 模型和入口脚本所需的任何其他资产，例如文本、数据等。
 
 还需要提供目标部署平台的配置。 例如，部署到 Azure Kubernetes 服务时的 VM 系列类型、可用内存和核心数。
@@ -140,6 +156,19 @@ Azure ML 将关键事件发布到 Azure 事件网格。使用事件网格可以�
 
 有关详细信息，请参阅[如何启用模型数据收集](how-to-enable-data-collection.md)。
 
+## <a name="retrain-your-model-on-new-data"></a>基于新数据重新训练模型
+
+我们经常需要更新模型，甚至需要在收到新信息时从头开始重新训练该模型。 有时，接收新数据是该领域的预期环节。 在其他时候，如[检测数据集中的数据偏移（预览版）](how-to-monitor-datasets.md)中所述，在面对特定传感器更改、自然数据更改（例如季节性影响），或者某些功能因其他功能而发生改变等情况时，模型性能可能会下降。 
+
+对于“如何知道我是否应重新训练模型？”这一问题，没有统一的答案。 但是，前面所述 Azure ML 事件和监视工具是实现自动化的良好起点。 在决定重新训练模型后，应该： 
+
+- 使用可重复的自动化过程预处理数据
+- 训练新模型
+- 将新模型的输出与旧模型的输出进行比较
+- 使用预定义的条件来确定是否替换旧模型 
+
+上述步骤的一个主旨是，重新训练应该是自动化的，而不是临时性的。 [Azure 机器学习管道](concept-ml-pipelines.md)非常适合用于创建与数据准备、训练、验证和部署相关的工作流。 请阅读[使用 Azure 机器学习设计器重新训练模型（预览版）](how-to-retrain-designer.md)，了解管道和 Azure 机器学习设计器如何适应重新训练方案。 
+
 ## <a name="automate-the-ml-lifecycle"></a>自动化 ML 生命周期 
 
 可以使用 GitHub 和 Azure Pipelines 来创建用于训练模型的持续集成过程。 在典型方案中，当数据科学家将某项更改签入项目的 Git 存储库时，Azure 管道将启动训练运行。 然后，可以检查该运行的结果，以了解已训练模型的性能特征。 还可以创建一个管道用于将模型部署为 Web 服务。
@@ -150,6 +179,8 @@ Azure ML 将关键事件发布到 Azure 事件网格。使用事件网格可以�
 * 使发布管道可由训练管道中创建的已训练模型触发。
 
 有关将 Azure Pipelines 与 Azure 机器学习配合使用的详细信息，请参阅[使用 Azure Pipelines 实现 ML 模型的持续集成和部署](https://docs.microsoft.com/azure/azure/devops/pipelines/targets/azure-machine-learning)一文，以及 [Azure 机器学习 MLOps](https://aka.ms/mlops) 存储库。
+
+还可以使用 Azure 数据工厂创建数据引入管道，以准备好用于训练的数据。 有关详细信息，请参阅[数据引入管道](how-to-cicd-data-ingestion.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
