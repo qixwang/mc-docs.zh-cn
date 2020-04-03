@@ -22914,6 +22914,11 @@
       "source_path": "articles/iot-edge/how-to-install-production-certificates.md",
       "redirect_url": "/iot-edge/how-to-manage-device-certificates",
       "redirect_document_id": true
+    },
+    {
+      "source_path": "articles/hdinsight/spark/apache-spark-deep-learning-caffe.md",
+      "redirect_url": "/hdinsight/spark/apache-spark-machine-learning-mllib-ipython",
+      "redirect_document_id": false
     }
 
   ]
