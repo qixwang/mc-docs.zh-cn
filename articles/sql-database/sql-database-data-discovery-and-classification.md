@@ -1,6 +1,6 @@
 ---
 title: 数据发现和分类
-description: Azure SQL 数据库数据发现和分类
+description: Azure SQL 数据库和 Azure Synapse Analytics 的数据发现和分类
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -12,18 +12,18 @@ author: WenJason
 ms.author: v-jay
 ms.reviewer: vanto
 origin.date: 02/05/2020
-ms.date: 03/16/2020
+ms.date: 03/30/2020
 tags: azure-synapse
-ms.openlocfilehash: 00efe0f0799b41d25b6c7ca5a46f80af17a22cd5
-ms.sourcegitcommit: dc862610e2169c1fce6fb0ae9eb7dd7567f86a0a
+ms.openlocfilehash: 84fc31c4e07f8083c94d82362c996d37272d2633
+ms.sourcegitcommit: 90660563b5d65731a64c099b32fb9ec0ce2c51c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79293854"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80341834"
 ---
-# <a name="azure-sql-database-and-azure-synapse-analytics-data-discovery--classification"></a>Azure SQL 数据库和 Azure Synapse Analytics 数据发现和分类
+# <a name="data-discovery--classification-for-azure-sql-database-and-azure-synapse-analytics"></a>Azure SQL 数据库和 Azure Synapse Analytics 的数据发现和分类
 
-数据发现和分类提供了内置于 Azure SQL 数据库的高级功能，可用于发现、分类、标记和报告数据库中的敏感数据。    
+数据发现和分类提供了内置于 Azure SQL 数据库中的高级功能，用于发现、标记和报告数据库中的敏感数据以及对其进行分类。    
 
 发现最敏感的数据（业务、财务、医疗保健、个人身份数据 (PII)，等等）并进行分类可在组织的信息保护方面发挥关键作用。 它可以充当基础结构，用于：
 
@@ -67,7 +67,7 @@ ms.locfileid: "79293854"
 
 ## <a name="define-and-customize-your-classification-taxonomy"></a>定义和自定义分类
 
-SQL 数据发现和分类附带了一组内置的敏感度标签和一组内置的信息类型和发现逻辑。 现在，可以自定义此分类并专门针对你的环境定义分类构造的集合和级别。
+数据发现和分类附带了一组内置的敏感度标签和一组内置的信息类型和发现逻辑。 现在，可以自定义此分类并专门针对你的环境定义分类构造的集合和级别。
 
 分类的定义和自定义是在一个中心位置针对你的整个 Azure 租户进行的。 该位置在 [Azure 安全中心](/security-center/)内，是你的安全策略的一部分。 只有对租户根管理组具有管理权限的人员可以执行此任务。
 

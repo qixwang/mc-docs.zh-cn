@@ -8,14 +8,14 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 origin.date: 11/19/2019
-ms.date: 03/02/2020
+ms.date: 04/06/2020
 ms.author: v-yiso
-ms.openlocfilehash: b345a9fe515c2a12e95dd968dcd406eeae9af3b2
-ms.sourcegitcommit: 46fd4297641622c1984011eac4cb5a8f6f94e9f5
+ms.openlocfilehash: 79ddc5ee39916bfbb2aaec8ef090dfc00e492655
+ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77563434"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80343396"
 ---
 # <a name="safely-manage-python-environment-on-azure-hdinsight-using-script-action"></a>使用脚本操作在 Azure HDInsight 上安全管理 Python 环境
 
@@ -25,7 +25,7 @@ ms.locfileid: "77563434"
 
 HDInsight 在 Spark 群集中包含两个内置的 Python 安装：Anaconda Python 2.7 和 Python 3.5。 在某些情况下，客户需要自定义 Python 环境，例如，安装外部 Python 包或其他 Python 版本。 本文提供有关安全管理 HDInsight 上 [Apache Spark](https://spark.apache.org/) 群集的 Python 环境的最佳做法。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * Azure 订阅。 请参阅[获取 Azure 试用版](https://www.azure.cn/pricing/1rmb-trial/)。
 
@@ -79,12 +79,38 @@ HDInsight 群集依赖于内置的 Python 环境，即 Python 2.7 和 Python 3.5
 
     可以在 [包索引](https://pypi.python.org/pypi) 中搜索可用包的完整列表。 也可以从其他源获取可用包的列表。 例如，可以安装通过 [conda-forge](https://conda-forge.org/feedstocks/) 提供的包。
 
-    -   `seaborn` 要安装的包名称。
-    -   `-n py35new` 指定刚刚创建的虚拟环境名称。 请务必根据虚拟环境创建过程相应地更改此名称。
+    如果要安装其最新版本的库，请使用以下命令：
+    
+    - 使用 conda 通道：
 
-    ```bash
-    sudo /usr/bin/anaconda/bin/conda install seaborn -n py35new --yes
-    ```
+        -   `seaborn` 要安装的包名称。
+        -   `-n py35new` 指定刚刚创建的虚拟环境名称。 请务必根据虚拟环境创建过程相应地更改此名称。
+
+        ```bash
+        sudo /usr/bin/anaconda/bin/conda install seaborn -n py35new --yes
+        ```
+
+    - 或者使用 PyPi 存储库，请相应地更改 `seaborn` 和 `py35new`：
+        ```bash
+        sudo /usr/bin/anaconda/env/py35new/bin/pip install seaborn
+        ```        
+
+    如果要安装特定版本的库，请使用以下命令：
+
+    - 使用 conda 通道：
+
+        -   `numpy=1.16.1` 是要安装的包名称和版本。
+        -   `-n py35new` 指定刚刚创建的虚拟环境名称。 请务必根据虚拟环境创建过程相应地更改此名称。
+
+        ```bash
+        sudo /usr/bin/anaconda/bin/conda install numpy=1.16.1 -n py35new --yes
+        ```
+
+    - 或者使用 PyPi 存储库，请相应地更改 `numpy==1.16.1` 和 `py35new`：
+
+        ```bash
+        sudo /usr/bin/anaconda/env/py35new/bin/pip install numpy==1.16.1
+        ```
 
     如果你不知道虚拟环境名称，可以通过 SSH 连接到群集的头节点，然后运行 `/usr/bin/anaconda/bin/conda info -e` 以显示所有虚拟环境。
 
@@ -131,7 +157,7 @@ Anaconda 版本 4.7.11、4.7.12 和 4.8.0 有一个已知的 bug。 如果发现
 
 若要检查 Anaconda 版本，可以通过 SSH 连接到群集头节点并运行 `/usr/bin/anaconda/bin/conda --v`。
 
-## <a name="seealso"></a>另请参阅
+## <a name="see-also"></a><a name="seealso"></a>另请参阅
 * [概述：Azure HDInsight 上的 Apache Spark](apache-spark-overview.md)
 
 ### <a name="scenarios"></a>方案
