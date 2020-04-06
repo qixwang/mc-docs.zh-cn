@@ -65,6 +65,7 @@
     "overwrite": [],
     "externalReference": [],
     "globalMetadata": {
+      "uhfHeaderId": "mooncake",
       "breadcrumb_path": "/bread/toc.json",
       "brand": "mooncake",
       "searchScope": ["mooncake"]
