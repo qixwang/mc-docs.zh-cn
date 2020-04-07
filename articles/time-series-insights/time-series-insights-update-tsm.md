@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 02/19/2020
+ms.date: 03/31/2020
 ms.custom: seodec18
-ms.openlocfilehash: 53c568b0c4b21a80b9b2caca8ba30d9fe46c42c1
-ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
+ms.openlocfilehash: b1d5825e36c36a4453c80e4630d97e524ed66329
+ms.sourcegitcommit: 64584c0bf31b4204058ae2b4641356b904ccdd58
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77494194"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80581825"
 ---
 # <a name="time-series-model-in-azure-time-series-insights-preview"></a>Azure 时序见解预览版中的时序模型
 
@@ -112,18 +112,18 @@ ms.locfileid: "77494194"
 
 ```JSON
 {
-    "timeSeriesId": ["PU2"],
-    "typeId": "545314a5-7166-4b90-abb9-fd93966fa39b",
-    "hierarchyIds": ["95f0a8d1-a3ef-4549-b4b3-f138856b3a12"],
-    "description": "Pump #2",
-    "instanceFields": {
-        "Location": "Redmond",
-        "Fleet": "Fleet 5",
-        "Unit": "Pump Unit 3",
-        "Manufacturer": "Contoso",
-        "ScalePres": "0.54",
-        "scaleTemp": "0.54"
-    }
+  "timeSeriesId": ["PU2"],
+  "typeId": "545314a5-7166-4b90-abb9-fd93966fa39b",
+  "hierarchyIds": ["95f0a8d1-a3ef-4549-b4b3-f138856b3a12"],
+  "description": "Pump #2",
+  "instanceFields": {
+    "Location": "Redmond",
+    "Fleet": "Fleet 5",
+    "Unit": "Pump Unit 3",
+    "Manufacturer": "Contoso",
+    "ScalePres": "0.54",
+    "scaleTemp": "0.54"
+  }
 }
 ```
 
@@ -209,12 +209,13 @@ ms.locfileid: "77494194"
 
 | 时序 ID | 实例字段 |
 | --- | --- |
-| ID1 | “building” = “1000”, “floor” = “10”, “room” = “55”  |
-| ID2 | “building” = “1000”, “room” = “55” |
-| ID3 | “floor” = “10” |
-| ID4 | “building” = “1000”, “floor” = “10”  |
+| ID1 | "building" = "1000", "floor" = "10", "room" = "55"  |
+| ID2 | "building" = "1000", "room" = "55" |
+| ID3 | "floor" = "10" |
+| ID4 | "building" = "1000", "floor" = "10"  |
 | ID5 | “building”、“floor”和“room”均未设置。 |
 
+时序 ID1  和 ID4  在 Azure 时序见解资源管理器中显示为层次结构 H1  的一部分，因为它们包含已完全定义且正确排序的 building  、floor  和 room  参数。
 
 其他 ID 分类到“无父实例”下，因为它们不符合指定的数据层次结构。 
 
@@ -342,7 +343,7 @@ ms.locfileid: "77494194"
 "Status": {
   "kind": "categorical",
   "value": {
-     "tsx": "toLong($event.[Status].Double)" 
+     "tsx": "toLong($event.[Status].Double)"
 },
   "interpolation": {
     "kind": "step",
@@ -352,7 +353,7 @@ ms.locfileid: "77494194"
   },
   "categories": [
     {
-      "values": [0, 1, 2, 3],
+      "values": [0, 1, 2],
       "label": "Good"
     },
     {

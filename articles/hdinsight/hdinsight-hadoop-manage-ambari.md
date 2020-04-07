@@ -10,12 +10,12 @@ ms.topic: conceptual
 origin.date: 10/11/2019
 ms.date: 11/11/2019
 ms.author: v-yiso
-ms.openlocfilehash: edb27d0fec4c77268ea0732965f47c1b8cc078b4
-ms.sourcegitcommit: 642a4ad454db5631e4d4a43555abd9773cae8891
+ms.openlocfilehash: df7f65192894d6a3a0320599a8b2bea6a585e9e3
+ms.sourcegitcommit: 5fb45da006859215edc8211481f13174aa43dbeb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2019
-ms.locfileid: "73425956"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80634625"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-web-ui"></a>使用 Apache Ambari Web UI 管理 HDInsight 群集
 
@@ -25,7 +25,7 @@ Apache Ambari 提供简单易用的 Web UI 和 REST API 来简化 Apache Hadoop 
 
 本文档介绍如何结合使用 Ambari Web UI 和 HDInsight 群集。
 
-## <a id="whatis"></a>什么是 Apache Ambari？
+## <a name="what-is-apache-ambari"></a><a id="whatis"></a>什么是 Apache Ambari？
 
 [Apache Ambari](https://ambari.apache.org) 通过提供易于使用的 Web UI 简化了 Hadoop 管理。 可以使用 Ambari 来管理和监视 Hadoop 群集。 开发人员可以使用 [Ambari REST API](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md)在其应用程序中集成这些功能。
 
@@ -33,8 +33,8 @@ Apache Ambari 提供简单易用的 Web UI 和 REST API 来简化 Apache Hadoop 
 
 在 HDInsight 群集上从 HTTPS://CLUSTERNAME.azurehdinsight.cn 可获得 Ambari Web UI，其中 CLUSTERNAME  是你的群集名称。
 
-> [!IMPORTANT]
-> 连接到 HDInsight 上的 Ambari 需要 HTTPS。 当提示进行身份验证时，请使用在创建群集时提供的管理员帐户名称和密码。
+> [!IMPORTANT]  
+> 连接到 HDInsight 上的 Ambari 需要 HTTPS。 当提示进行身份验证时，请使用在创建群集时提供的管理员帐户名称和密码。 如果系统未提示你输入凭据，请检查网络设置以确认客户端与 Azure HDInsight 群集之间没有连接问题。
 
 ## <a name="ssh-tunnel-proxy"></a>SSH 隧道（代理）
 
@@ -160,14 +160,14 @@ Apache Ambari 提供简单易用的 Web UI 和 REST API 来简化 Apache Hadoop 
     |解除授权|从群集中删除主机。 **请勿在 HDInsight 群集上使用此操作**。|
     |重用|将以前已解除授权的主机添加到群集中。 **请勿在 HDInsight 群集上使用此操作**。|
 
-### <a id="service"></a>服务
+### <a name="services"></a><a id="service"></a>服务
 
 在“仪表板”或“服务”页中，使用服务列表底部的“操作”按钮来停止和启动所有服务。   
 
 ![服务操作](./media/hdinsight-hadoop-manage-ambari/ambari-service-actions.png)
 
 > [!WARNING]  
-> 虽然“添加服务”列于该菜单中，但不应使用它来向 HDInsight 群集添加服务。  群集设置期间应使用脚本操作添加新服务。 有关使用脚本操作的详细信息，请参阅[使用脚本操作自定义 HDInsight 群集](hdinsight-hadoop-customize-cluster-linux.md)。
+> 虽然“添加服务”列于该菜单中，但不应使用它来向 HDInsight 群集添加服务。  应在群集预配过程中使用脚本操作添加新服务。 有关使用脚本操作的详细信息，请参阅[使用脚本操作自定义 HDInsight 群集](hdinsight-hadoop-customize-cluster-linux.md)。
 
 虽然“操作”按钮可以重启所有服务，但你要启动、停止或重启的通常是某个特定服务。  使用以下步骤来对单个服务执行操作：
 
@@ -187,7 +187,7 @@ Apache Ambari 提供简单易用的 Web UI 和 REST API 来简化 Apache Hadoop 
 
 若要配置服务，请使用以下步骤：
 
-1. 从“仪表板”  或“服务”  页面中选择一个服务。
+1. 从“仪表板”或“服务”页面中选择一个服务。  
 
 2. 选择“配置”选项卡。  这会显示当前配置。 同时，还会显示以前的配置列表。
 

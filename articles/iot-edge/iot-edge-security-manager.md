@@ -10,12 +10,12 @@ origin.date: 08/30/2019
 ms.date: 03/02/2020
 ms.topic: conceptual
 ms.service: iot-edge
-ms.openlocfilehash: 23d7376ab6890994015c051a91cec75e26bce45f
-ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
+ms.openlocfilehash: 5ab49d377de8b374234613df6f54cb7e02a04403
+ms.sourcegitcommit: 44d3fe59952847e5394bbe6c05bd6f333bb56345
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77494042"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80522076"
 ---
 # <a name="azure-iot-edge-security-manager"></a>Azure IoT Edge 安全管理器
 
@@ -114,7 +114,7 @@ HSM PAL 将所有硬件信任根抽象化，从而使 IoT Edge 开发者或用�
 
 ## <a name="secure-silicon-root-of-trust-hardware"></a>安全硅硬件信任根
 
-安全硅必须在 IoT Edge 设备硬件内定位标记信任。  安全硅种类繁多，包括受信任的平台模块 (TPM)、嵌入式安全元素 (eSE)、ARM TrustZone、Intel SGX 和自定义安全硅技术。  考虑到与 IoT 设备物理访问相关联的威胁，建议在设备中使用安全硅信任根。
+安全硅必须在 IoT Edge 设备硬件内定位标记信任。  安全硅种类繁多，包括受信任的平台模块 (TPM)、嵌入式安全元素 (eSE)、ARM TrustZone 和自定义安全硅技术。  考虑到与 IoT 设备物理访问相关联的威胁，建议在设备中使用安全硅信任根。
 
 ## <a name="iot-edge-security-manager-integration-and-maintenance"></a>IoT Edge 安全管理器集成和维护
 

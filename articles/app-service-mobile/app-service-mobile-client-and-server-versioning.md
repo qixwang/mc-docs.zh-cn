@@ -6,14 +6,14 @@ ms.tgt_pltfrm: mobile-multiple
 ms.devlang: dotnet
 ms.topic: article
 origin.date: 10/01/2016
-md.date: 03/23/2020
+md.date: 03/30/2020
 ms.author: v-tawe
-ms.openlocfilehash: 08c3aeffcdda131ef50a5d7abc699903cc44613f
-ms.sourcegitcommit: e94ed1c9eff4e88be2ca389909e60b14cc0d92f8
+ms.openlocfilehash: d42024f9018e04c0fae806283e5d130ff2fb1345
+ms.sourcegitcommit: 44d3fe59952847e5394bbe6c05bd6f333bb56345
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79084421"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80522093"
 ---
 # <a name="client-and-server-versioning-in-mobile-apps-and-mobile-services"></a>移动应用和移动服务中的客户端与服务器版本控制
 
@@ -29,11 +29,11 @@ Azure 移动服务的最新版本是 Azure 应用服务的 **移动应用** 功�
 
 例如：
 
-GET https://service.chinacloudsites.cn/tables/TodoItem
+GET https://service.chinacloudsites.cn/tables/TodoItem`
 
 标头：ZUMO-API-VERSION：2.0.0
 
-POST https://service.chinacloudsites.cn/tables/TodoItem?ZUMO-API-VERSION=2.0.0
+POST https://service.chinacloudsites.cn/tables/TodoItem?ZUMO-API-VERSION=2.0.0`
 
 ## <a name="opting-out-of-version-checking"></a>选择不进行版本检查
 可以将应用设置“MS_SkipVersionCheck”  的值设置为“true”  ，选择不进行版本检查。 在 web.config 中或在 Azure 门户的“应用程序设置”部分中可以指定此设置。
@@ -41,8 +41,8 @@ POST https://service.chinacloudsites.cn/tables/TodoItem?ZUMO-API-VERSION=2.0.0
 > [!NOTE]
 > 移动服务和移动应用之间有许多行为发生了变化，尤其是在脱机同步、身份验证和推送通知方面。 应在完成测试之后才选择不要进行版本检查，以确保这些行为的更改不会影响应用功能。
 
-## <a name="2.0.0"></a>Azure 移动应用客户端和服务器
-### <a name="MobileAppsClients"></a> 移动 *应用* 客户端 SDK
+## <a name="azure-mobile-apps-client-and-server"></a><a name="2.0.0"></a>Azure 移动应用客户端和服务器
+### <a name="mobile-apps-client-sdks"></a><a name="MobileAppsClients"></a> 移动 *应用* 客户端 SDK
 版本检查从 **Azure 移动应用**以下版本的客户端 SDK 开始引入：
 
 | 客户端平台 | 版本 | 版本标头值 |

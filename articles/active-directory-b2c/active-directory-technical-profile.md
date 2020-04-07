@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/16/2020
+ms.date: 04/01/2020
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: 47d5a4273fa236d039bc6d73442cbdf2622b664b
-ms.sourcegitcommit: 71a386ca0d0ecb79a123399b6ab6b8c70ea2aa78
+ms.openlocfilehash: e7eb7b93bd2901aa4216122a4250fcf0a64d7ee7
+ms.sourcegitcommit: 64584c0bf31b4204058ae2b4641356b904ccdd58
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2020
-ms.locfileid: "79497117"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80581591"
 ---
 # <a name="define-an-azure-active-directory-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>在 Azure Active Directory B2C 自定义策略中定义 Azure Active Directory 技术配置文件
 
@@ -115,6 +115,7 @@ InputClaims 元素包含一个声明，该声明用于在目录中查找帐户�
 ## <a name="requirements-of-an-operation"></a>操作要求
 
 - 所有 Azure AD 技术配置文件的声明包中必须刚好有一个 **InputClaim** 元素。
+- [“用户配置文件属性”一文](user-profile-attributes.md)介绍了可在输入声明、输出声明和持久化声明中使用的受支持 Azure AD B2C 用户配置文件属性。 
 - 如果操作为 `Write` 或 `DeleteClaims`，则 **PersistedClaims** 元素中也必须包含此操作。
 - **userPrincipalName** 声明的值必须采用 `user@tenant.partner.onmschina.cn` 格式。
 - **displayName** 声明是必需的，不能为空字符串。
@@ -254,7 +255,7 @@ InputClaims 元素包含一个声明，该声明用于在目录中查找帐户�
 | ClientId | 否 | 作为第三方访问租户的客户端标识符。 |
 | IncludeClaimResolvingInClaimsHandling  | 否 | 对于输入和输出声明，指定[声明解析](claim-resolver-overview.md)是否包含在技术配置文件中。 可能的值：`true` 或 `false` （默认值）。 若要使用技术配置文件中的声明解析程序，请将此项设为 `true`。 |
 
-### <a name="error-messages"></a>错误消息
+### <a name="ui-elements"></a>UI 元素
  
 以下设置可用于配置失败时显示的错误消息。 元数据应该在[自断言](self-asserted-technical-profile.md)技术配置文件中进行配置。 可以将错误消息[本地化](localization.md)。
 
@@ -262,6 +263,8 @@ InputClaims 元素包含一个声明，该声明用于在目录中查找帐户�
 | --------- | -------- | ----------- |
 | UserMessageIfClaimsPrincipalAlreadyExists | 否 | 如果要引发错误（参阅 RaiseErrorIfClaimsPrincipalAlreadyExists 属性说明），则指定当用户对象已存在时要向用户显示的消息。 |
 | UserMessageIfClaimsPrincipalDoesNotExist | 否 | 如果要引发错误（参阅 RaiseErrorIfClaimsPrincipalDoesNotExist 属性说明），则指定当用户对象不存在时要向用户显示的消息。 |
+
+
 
 
 

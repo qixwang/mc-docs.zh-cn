@@ -5,15 +5,16 @@ services: vpn-gateway
 author: WenJason
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 09/02/2018
+origin.date: 03/21/2018
+ms.date: 04/06/2020
 ms.author: v-jay
 ms.custom: include file
-ms.openlocfilehash: a640e02a8a1b90422ddc28e90b1b74d0a42ded26
-ms.sourcegitcommit: 235c6c8a11af703474236c379aa6310e84ff03a3
+ms.openlocfilehash: d8ef0720a116e29c2896a2a6d7999b3e29f0b2db
+ms.sourcegitcommit: 5fb45da006859215edc8211481f13174aa43dbeb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "63821020"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80634397"
 ---
 [!INCLUDE [P2S FAQ All](vpn-gateway-faq-p2s-all-include.md)]
 
@@ -50,3 +51,7 @@ RADIUS 身份验证在网关上支持的最大 SSTP 连接数没有变化。 对
 ### <a name="does-radius-authentication-work-with-both-ikev2-and-sstp-vpn"></a>RADIUS 身份验证是否同时适用于 IKEv2 和 SSTP VPN？
 
 是的，IKEv2 和 SSTP VPN 都支持 RADIUS 身份验证。 
+
+### <a name="does-radius-authentication-work-with-the-openvpn-client"></a>RADIUS 身份验证是否适用于 OpenVPN 客户端？
+
+OpenVPN 协议仅通过 PowerShell 支持 RADIUS 身份验证。

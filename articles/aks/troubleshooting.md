@@ -5,14 +5,14 @@ services: container-service
 author: rockboyfor
 ms.topic: troubleshooting
 origin.date: 12/13/2019
-ms.date: 03/09/2020
+ms.date: 04/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: 828b40907c14f4c0a6abe8708154e6e447e1107a
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: f374355d7beac251b9870ddc0db6204e4ba12a99
+ms.sourcegitcommit: 76280dd9854dc0ff0ba1e5e62fb3dc3af049fbe2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79292495"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80517002"
 ---
 # <a name="aks-troubleshooting"></a>AKS 疑难解答
 
@@ -257,7 +257,7 @@ MountVolume.WaitForAttach failed for volume "pvc-12b458f4-c23f-11e8-8d27-46799c2
 | 1.11 | 1.11.5 或更高版本 |
 | 1.12 | 1.12.3 或更高版本 |
 | 1.13 | 1.13.0 或更高版本 |
-| 1.14 或更高版本 | 不适用 |
+| 1.14 或更高版本 | 空值 |
 
 如果使用的 Kubernetes 版本未解决此问题，可以等待几分钟再重试，这样就可以缓解此问题。
 
@@ -278,7 +278,7 @@ MountVolume.WaitForAttach failed for volume "pvc-12b458f4-c23f-11e8-8d27-46799c2
 | 1.11 | 1.11.6 或更高版本 |
 | 1.12 | 1.12.4 或更高版本 |
 | 1.13 | 1.13.0 或更高版本 |
-| 1.14 或更高版本 | 不适用 |
+| 1.14 或更高版本 | 空值 |
 
 如果使用的 Kubernetes 版本未解决此问题，可以尝试以下方法来缓解此问题：
 
@@ -338,12 +338,12 @@ MountVolume.WaitForAttach failed for volume "pvc-12b458f4-c23f-11e8-8d27-46799c2
 如果使用的 Kubernetes 版本未解决此问题，并且节点 VM 处于故障状态，可以使用以下方法之一手动更新 VM 状态，以此缓解此问题：
 
 * 对于基于可用性集的群集：
-    ```console
+    ```azurecli
     az vm update -n <VM_NAME> -g <RESOURCE_GROUP_NAME>
     ```
 
 * 对于基于 VMSS 的群集：
-    ```console
+    ```azurecli
     az vmss update-instances -g <RESOURCE_GROUP_NAME> --name <VMSS_NAME> --instance-id <ID>
     ```
 
@@ -374,7 +374,7 @@ MountVolume.WaitForAttach failed for volume "pvc-12b458f4-c23f-11e8-8d27-46799c2
 | 1.12.0 - 1.12.1 | 0755 |
 | 1.12.2 和更高版本 | 0777 |
 
-如果使用 Kuberetes 版本为 1.8.5 或更高版本的群集并使用存储类动态创建永久性卷，则可以在存储类对象上指定装载选项。 以下示例设置 *0777*：
+如果使用的是 Kubernetes 版本为 1.8.5 或更高版本的群集，并且使用存储类动态创建永久性卷，则可以在存储类对象上指定装载选项。 以下示例设置 *0777*：
 
 ```yaml
 kind: StorageClass
@@ -457,6 +457,10 @@ kubectl edit secret azure-storage-account-{storage-account-name}-secret
 几分钟后，代理节点将使用更新的存储密钥重试 Azure 文件装载。
 
 <!--Not Available on ### Cluster autoscaler fails to scale with error failed to fix node group sizes-->
+
+### <a name="slow-disk-attachment-getazuredisklun-takes-10-to-15-minutes-and-you-receive-an-error"></a>磁盘附加速度缓慢，GetAzureDiskLun 需要 10 到 15 分钟，并且会显示一个错误
+
+在早于1.15.0  的 Kubernetes 版本上，你可能会收到一个错误，例如错误“WaitForAttach 找不到磁盘的 Lun”  。  解决此问题的方法是等待大约 15 分钟，然后重试。
 
 <!-- LINKS - internal -->
 

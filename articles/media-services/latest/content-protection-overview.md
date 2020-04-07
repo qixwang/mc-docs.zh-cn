@@ -1,5 +1,5 @@
 ---
-title: 使用媒体服务动态加密保护内容
+title: 使用媒体服务 v3 动态加密保护内容
 titleSuffix: Azure Media Services
 description: 了解如何使用 Azure 媒体服务中的动态加密、流式处理协议和加密类型进行内容保护。
 services: media-services
@@ -13,22 +13,22 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 origin.date: 10/29/2019
-ms.date: 03/04/2020
+ms.date: 04/06/2020
 ms.author: v-jay
 ms.custom: seodec18
-ms.openlocfilehash: 1ca3007923a99c8dafb78bf9ade972037deefeb9
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: 0bf3656a77698c5f2af223f60058dd1018dc17a2
+ms.sourcegitcommit: fe9ed98aaee287a21648f866bb77cb6888f75b0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79292852"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80625797"
 ---
 # <a name="protect-your-content-with-media-services-dynamic-encryption"></a>使用媒体服务动态加密保护内容
 
 > [!NOTE]
 > Google Widevine 内容保护服务目前在 Azure 中国区域不可用。
 
-借助 Azure 媒体服务，在媒体从计算机离开到存储、处理和传送的整个过程中确保其安全。 借助媒体服务，可以传送使用高级加密标准 (AES-128) 或以下两个主要数字版权管理 (DRM) 系统中任意一个动态加密的直播和点播内容：Microsoft PlayReady 和 Apple FairPlay。 媒体服务还提供了用于向已授权客户端传送 AES 密钥和 DRM（PlayReady、Widevine 和 FairPlay）许可证的服务。  
+借助 Azure 媒体服务，在媒体从计算机离开到存储、处理和传送的整个过程中确保其安全。 借助媒体服务，可以传送使用高级加密标准 (AES-128) 或以下两个主要数字版权管理 (DRM) 系统中任意一个动态加密的直播和点播内容：Microsoft PlayReady 和 Apple FairPlay。 媒体服务还提供了用于向已授权客户端传送 AES 密钥和 DRM（PlayReady、Widevine 和 FairPlay）许可证的服务。 如果内容使用 AES 明文密钥加密并通过 HTTPS 发送，则在到达客户端之前，内容不会处于明文状态。 
 
 在媒体服务 v3 中，内容密钥与流定位符相关联（参阅[此示例](protect-with-aes128.md)）。 如果使用媒体服务密钥传送服务，可让 Azure 媒体服务自动生成内容密钥。 如果使用自己的密钥传送服务，或者需要处理高可用性方案（需要在两个数据中心使用相同的内容密钥），则应自行生成内容密钥。
 
@@ -242,7 +242,7 @@ streamingPolicy.EnvelopEncryption.customKeyAcquisitionUrlTemplate = "https://myk
 
 `ContentKeyId` 包含所请求密钥的值。 若要将请求映射到自己的实体，可以使用 `AlternativeMediaId`。 例如，可以使用 `AlternativeMediaId` 来帮助查找权限。
 
- 有关使用自定义许可证/密钥获取 URL 的 REST 示例，请参阅[流式处理策略 - 创建](https://docs.microsoft.com/rest/api/media/streamingpolicies/create)。
+有关使用自定义许可证/密钥获取 URL 的 REST 示例，请参阅[流式处理策略 - 创建](https://docs.microsoft.com/rest/api/media/streamingpolicies/create)。
 
 ## <a name="troubleshoot"></a>故障排除
 

@@ -1,6 +1,6 @@
 ---
-title: 使用媒体服务 v3 CLI 对自定义转换进行编码 - Azure | Microsoft Docs
-description: 本主题介绍如何使用 CLI 通过 Azure 媒体服务 v3 对自定义转换进行编码。
+title: 使用媒体服务 v3 对自定义转换进行编码 - Azure CLI | Microsoft Docs
+description: 本主题介绍如何使用 Azure CLI 通过 Azure 媒体服务 v3 对自定义转换进行编码。
 services: media-services
 documentationcenter: ''
 author: WenJason
@@ -11,16 +11,16 @@ ms.workload: ''
 ms.topic: article
 ms.custom: ''
 origin.date: 05/14/2019
-ms.date: 09/23/2019
+ms.date: 04/06/2020
 ms.author: v-jay
-ms.openlocfilehash: d243d35d2cc7c4673ad7c2e59de55be5b36a61a7
-ms.sourcegitcommit: 8248259e4c3947aa0658ad6c28f54988a8aeebf8
+ms.openlocfilehash: 7db178ce7c72d3e916a6622a207a56900ddc15bc
+ms.sourcegitcommit: fe9ed98aaee287a21648f866bb77cb6888f75b0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71125622"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80625796"
 ---
-# <a name="how-to-encode-with-a-custom-transform---cli"></a>如何对自定义转换进行编码 - CLI
+# <a name="how-to-encode-with-a-custom-transform---azure-cli"></a>如何对自定义转换进行编码 - Azure CLI
 
 使用 Azure 媒体服务进行编码时，可以根据[流式传输文件](stream-files-cli-quickstart.md#create-a-transform-for-adaptive-bitrate-encoding)快速入门中演示的行业最佳做法，使用推荐的内置预设之一快速入门。 也可以构建自定义预设以针对特定方案或设备要求。
 
@@ -31,19 +31,21 @@ ms.locfileid: "71125622"
 * AVC 内容上的所有高度和宽度值必须是 4 的倍数。
 * 在 Azure 媒体服务 v3 中，所有编码比特率均以每秒比特数为单位。 这与我们的 v2 API 的预设不同，后者使用 千比特/秒作为单位。 例如，如果 v2 中的比特率指定为 128（千比特/秒），则在 v3 中它将设置为 128000（比特/秒）。
 
-## <a name="prerequisites"></a>先决条件 
+## <a name="prerequisites"></a>先决条件
 
-[创建媒体服务帐户](create-account-cli-how-to.md)。 <br/>请务必记住资源组名称和媒体服务帐户名称。 
+[创建媒体服务帐户](create-account-cli-how-to.md)。
+
+请务必记住资源组名称和媒体服务帐户名称。
 
 [!INCLUDE [media-services-cli-instructions](../../../includes/media-services-cli-instructions.md)]
 
 ## <a name="define-a-custom-preset"></a>定义自定义预设
 
-以下示例定义新转换的请求正文。 我们定义了一组希望在使用此转换时生成的输出。 
+以下示例定义新转换的请求正文。 我们定义了一组希望在使用此转换时生成的输出。
 
 在此示例中，我们首先为音频编码添加一个 AacAudio 层，为视频编码添加两个 H264Video 层。 在视频层中，我们分配标签，以便可以在输出文件名中使用它们。 接下来，我们希望输出还包括缩略图。 在以下示例中，我们指定 PNG 格式的图像，这些图像以输入视频分辨率的 50% 生成，并以输入视频长度的 {25%, 50%, 75} 三个时间戳生成。 最后，我们指定输出文件的格式 - 一个用于视频 + 音频，另一个用于缩略图。 由于我们有多个 H264 层，因此我们必须使用宏来为每个层生成唯一的名称。 可以使用 `{Label}` 或 `{Bitrate}` 宏，此示例显示了前者。
 
-我们要将此转换保存到某个文件中。 在此示例中，文件命名为 `customPreset.json`。 
+我们要将此转换保存到某个文件中。 在此示例中，文件命名为 `customPreset.json`。
 
 ```json
 {
@@ -121,7 +123,6 @@ ms.locfileid: "71125622"
         }
     ]
 }
-
 ```
 
 ## <a name="create-a-new-transform"></a>创建新转换  
@@ -132,13 +133,13 @@ ms.locfileid: "71125622"
 az ams transform show -a amsaccount -g amsResourceGroup -n customTransformName
 ```
 
-以下 CLI 命令根据自定义预设（先前已定义）创建转换。 
+以下 Azure CLI 命令根据自定义预设（先前已定义）创建转换。
 
 ```cli
 az ams transform create -a amsaccount -g amsResourceGroup -n customTransformName --description "Basic Transform using a custom encoding preset" --preset customPreset.json
 ```
 
-要使媒体服务将转换应用于指定的视频或音频，需要在该转换下提交作业。 有关演示如何在转换下提交作业的完整示例，请参阅[快速入门：对视频文件进行流式处理 - CLI](stream-files-cli-quickstart.md)。
+要使媒体服务将转换应用于指定的视频或音频，需要在该转换下提交作业。 有关演示如何在转换下提交作业的完整示例，请参阅[快速入门：对视频文件进行流式处理 - Azure CLI](stream-files-cli-quickstart.md)。
 
 ## <a name="see-also"></a>另请参阅
 

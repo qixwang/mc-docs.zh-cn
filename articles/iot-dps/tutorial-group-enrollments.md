@@ -10,12 +10,12 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: java
 ms.custom: mvc
-ms.openlocfilehash: 4eeef1dfad81936c43506531bd87bc0c769c58ba
-ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
+ms.openlocfilehash: 6a89edf32e777340b2be3238bc6134e4c1e93393
+ms.sourcegitcommit: 260800ede66f48c886d1426a0fac18b4d402b4f2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77494383"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586671"
 ---
 # <a name="tutorial-create-and-provision-a-simulated-x509-device-using-java-device-and-service-sdk-and-group-enrollments-for-iot-hub-device-provisioning-service"></a>教程：使用适用于 IoT 中心设备预配服务的 Java 设备和服务 SDK 与组登记来创建和预配模拟的 X.509 设备
 
@@ -114,7 +114,7 @@ ms.locfileid: "77494383"
     1. 在 [Azure 门户](https://portal.azure.cn)中导航到已链接到预配服务的 IoT 中心。 打开中心的“概览”选项卡，复制“主机名”。   将该“主机名”  指定给 *IOTHUB_HOST_NAME* 参数。
 
         ```java
-        private static final String IOTHUB_HOST_NAME = "[Host name].azure-devices.net";
+        private static final String IOTHUB_HOST_NAME = "[Host name].azure-devices.cn";
         ```
 
     1. 研究示例代码。 此代码用于创建、更新、查询和删除 X.509 设备的组注册。 若要验证是否已在门户中成功注册，请暂时性地注释掉 _ServiceEnrollmentGroupSample.java_ 文件末尾的以下代码行：

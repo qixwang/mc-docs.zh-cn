@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/04/2020
+ms.date: 04/01/2020
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: 1d5e18c6ee10739c46a2520dd876333a26845b88
-ms.sourcegitcommit: 1ac138a9e7dc7834b5c0b62a133ca5ce2ea80054
+ms.openlocfilehash: 8c9847ed8dcc2291152f66ebb8d7670379f21342
+ms.sourcegitcommit: 64584c0bf31b4204058ae2b4641356b904ccdd58
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78266008"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80581656"
 ---
 # <a name="about-technical-profiles-in-azure-active-directory-b2c-custom-policies"></a>关于 Azure Active Directory B2C 自定义策略中的技术配置文件
 
@@ -29,17 +29,19 @@ ms.locfileid: "78266008"
 技术配置文件支持以下类型的方案：
 
 - [Azure Active Directory](active-directory-technical-profile.md) - 为 Azure Active Directory B2C 用户管理提供支持。
+- [Azure 多重身份验证](multi-factor-auth-technical-profile.md) - 使用 Azure 多重身份验证 (MFA) 为验证电话号码提供支持。 
+- 声明转换 - 调用输出声明转换，针对一组输出声明来操作声明值、验证声明或设置默认值。
 - [JWT 令牌颁发者](jwt-issuer-technical-profile.md) - 发出返回给信赖方应用程序的 JWT 令牌。
-- 电话规格提供程序  - 多重身份验证。
-- `OAuth1` - 与任何 OAuth 1.0 协议标识提供者联合。
-- `OAuth2` - 与任何 OAuth 2.0 协议标识提供者联合。
+- OAuth1 - 与任何 OAuth 1.0 协议标识提供者联合。
+- OAuth2 - 与任何 OAuth 2.0 协议标识提供者联合。
+- [一次性密码](one-time-password-technical-profile.md) - 为管理一次性密码的生成和验证提供支持。
 - [OpenID Connect](openid-connect-technical-profile.md) - 与任何 OpenID Connect 协议标识提供者联合。
-- `Claims transformation` - 调用输出声明转换，针对一组输出声明来操作声明值、验证声明或设置默认值。
+- [电话因素](phone-factor-technical-profile.md) - 支持注册和验证电话号码。
 - [RESTful 提供程序](restful-technical-profile.md) - 调用 REST API 服务，例如验证用户输入、扩充用户数据或与业务线应用程序集成。
 - [SAML2](saml-technical-profile.md) - 与任何 SAML 协议标识提供者联合。
+- [SAML 令牌颁发者](saml-issuer-technical-profile.md) - 发出返回给信赖方应用程序的 SAML 令牌。
 - [自断言](self-asserted-technical-profile.md) - 与用户交互。 例如，收集用户的凭据进行登录、呈现注册页或密码重置。
 - [会话管理](custom-policy-reference-sso.md) - 处理不同类型的会话。
-- [一次性密码](one-time-password-technical-profile.md) - 为管理一次性密码的生成和验证提供支持。
 
 ## <a name="technical-profile-flow"></a>技术配置文件流
 
@@ -110,4 +112,3 @@ ms.locfileid: "78266008"
 </TechnicalProfile>
 ```
 
-<!-- Update_Description: wording update -->

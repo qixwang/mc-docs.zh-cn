@@ -7,14 +7,14 @@ ms.service: databox
 ms.subservice: disk
 ms.topic: article
 origin.date: 04/19/2019
-ms.date: 06/10/2019
+ms.date: 04/06/2020
 ms.author: v-jay
-ms.openlocfilehash: 843adb3b85f27708b1d11b1c9190663cf9926061
-ms.sourcegitcommit: 67a78cae1f34c2d19ef3eeeff2717aa0f78de38e
+ms.openlocfilehash: 4bf9735254c09272336b6665ab8a3d68651ac0a1
+ms.sourcegitcommit: 5fb45da006859215edc8211481f13174aa43dbeb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66730939"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80634386"
 ---
 # <a name="troubleshoot-issues-related-to-azure-data-box-blob-storage"></a>排查与 Azure Data Box Blob 存储相关的问题
 
@@ -28,7 +28,7 @@ ms.locfileid: "66730939"
 |---------|---------|
 |无法检索子资源。 其中一个 HTTP 标头的值的格式不正确。|在“编辑”菜单中，选择“目标 Azure Stack API”。   <br>重启Azure 存储资源管理器。|
 |`getaddrinfo ENOTFOUND <accountname>.blob.<serialnumber>.microsoftdatabox.cn` |检查是否已在以下路径将终结点名称 `<accountname>.blob.<serialnumber>.microsoftdatabox.cn` 添加到 hosts 文件： <li>`C:\Windows\System32\drivers\etc\hosts`（在 Windows 上），或者 </li><li> `/etc/hosts`（在 Linux 上）。</li>|
-|无法检索子资源。 <br>详细信息：自签名证书 |将设备的 SSL 证书导入 Azure 存储资源管理器： <li>从 Azure 门户下载证书。 有关详细信息，请转到[下载证书](data-box-deploy-copy-data-via-rest.md#download-certificate)。</li><li>在“编辑”菜单中，选择“SSL 证书”，然后选择“导入证书”。   </li>|
+|无法检索子资源。 <br>详细信息：自签名证书 |将设备的 TLS/SSL 证书导入 Azure 存储资源管理器： <li>从 Azure 门户下载证书。 有关详细信息，请转到[下载证书](data-box-deploy-copy-data-via-rest.md#download-certificate)。</li><li>在“编辑”菜单中，选择“SSL 证书”，然后选择“导入证书”。   </li>|
 
 ## <a name="errors-seen-in-azcopy-for-windows"></a>在 Windows 的 AzCopy 中看到的错误
 
@@ -37,7 +37,7 @@ ms.locfileid: "66730939"
 |错误消息  |建议的操作 |
 |---------|---------|
 |AzCopy 命令在显示以下错误之前，似乎挂起了一分钟： <br>无法枚举目录 https://… 无法解析远程名称 `<accountname>.blob.<serialnumber>.microsoftdatabox.cn`|检查是否已在 `C:\Windows\System32\drivers\etc\hosts` 将终结点名称 `<accountname>.blob.<serialnumber>.microsoftdatabox.cn` 添加到 hosts 文件。|
-|AzCopy 命令在显示以下错误之前，似乎挂起了一分钟： <br>分析源位置出错。 基础连接已关闭:无法建立 SSL/TLS 安全通道的信任关系。|将设备的 SSL 证书导入系统的证书存储。 有关详细信息，请转到[下载证书](data-box-deploy-copy-data-via-rest.md#download-certificate)。|
+|AzCopy 命令在显示以下错误之前，似乎挂起了一分钟： <br>分析源位置出错。 基础连接已关闭:无法建立 SSL/TLS 安全通道的信任关系。|将设备的 TLS/SSL 证书导入系统的证书存储。 有关详细信息，请转到[下载证书](data-box-deploy-copy-data-via-rest.md#download-certificate)。|
 
 
 ## <a name="errors-seen-in-azcopy-for-linux"></a>在 Linux 的 AzCopy 中看到的错误
@@ -47,7 +47,7 @@ ms.locfileid: "66730939"
 |错误消息  |建议的操作 |
 |---------|---------|
 |AzCopy 命令在显示以下错误之前，似乎挂起了 20 分钟： <br>分析源位置 `https://<accountname>.blob.<serialnumber>.microsoftdatabox.cn/<cntnr>` 出错。 没有此类设备或地址|检查是否已在 `/etc/hosts` 将终结点名称 `<accountname>.blob.<serialnumber>.microsoftdatabox.cn` 添加到 hosts 文件。|
-|AzCopy 命令在显示以下错误之前，似乎挂起了 20 分钟： <br>分析源位置出错… 无法建立 SSL 连接。|将设备的 SSL 证书导入系统的证书存储。 有关详细信息，请转到[下载证书](data-box-deploy-copy-data-via-rest.md#download-certificate)。|
+|AzCopy 命令在显示以下错误之前，似乎挂起了 20 分钟： <br>分析源位置出错… 无法建立 SSL 连接。|将设备的 TLS/SSL 证书导入系统的证书存储。 有关详细信息，请转到[下载证书](data-box-deploy-copy-data-via-rest.md#download-certificate)。|
 
 ## <a name="errors-seen-in-azure-storage-library-for-python"></a>在用于 Python 的 Azure 存储库中看到的错误
 
@@ -56,7 +56,7 @@ ms.locfileid: "66730939"
 |错误消息  |建议的操作 |
 |---------|---------|
 |其中一个 HTTP 标头的值的格式不正确。 |Data Box 不支持用于 Python 的 Microsoft Azure 存储库的已安装版本。 请查看 Azure Data Box Blob 存储要求，了解支持的版本。|
-|… [SSL:CERTIFICATE_VERIFY_FAILED] …|在运行 Python 之前，请将 REQUESTS_CA_BUNDLE 环境变量设置为 Base64 编码的 SSL 证书文件的路径（请参阅[如何下载证书](data-box-deploy-copy-data-via-rest.md#download-certificate)）。 <br>例如：<br>`export REQUESTS_CA_BUNDLE=/tmp/mycert.cer` <br>`python` <br>也可将证书添加到系统的证书存储，然后将此环境变量设置为该存储的路径。 <br> 例如，在 Ubuntu 上为： <br>`export REQUESTS_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt` <br>`python`|
+|… [SSL:CERTIFICATE_VERIFY_FAILED] …|在运行 Python 之前，请将 REQUESTS_CA_BUNDLE 环境变量设置为 Base64 编码的 TLS 证书文件的路径（请参阅[如何下载证书](data-box-deploy-copy-data-via-rest.md#download-certificate)）。 <br>例如：<br>`export REQUESTS_CA_BUNDLE=/tmp/mycert.cer` <br>`python` <br>也可将证书添加到系统的证书存储，然后将此环境变量设置为该存储的路径。 <br> 例如，在 Ubuntu 上为： <br>`export REQUESTS_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt` <br>`python`|
 
 
 ## <a name="common-errors"></a>常见错误
@@ -69,4 +69,4 @@ ms.locfileid: "66730939"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解 [Data Blob 存储系统要求](data-box-system-requirements-rest.md)。
+- 了解 [Data Box Blob 存储系统要求](data-box-system-requirements-rest.md)。

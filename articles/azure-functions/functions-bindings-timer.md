@@ -4,15 +4,15 @@ description: 了解如何在 Azure Functions 中使用计时器触发器。
 author: craigshoemaker
 ms.assetid: d2f013d1-f458-42ae-baf8-1810138118ac
 ms.topic: reference
-ms.date: 02/18/2020
+ms.date: 03/30/2020
 ms.author: v-junlch
 ms.custom: ''
-ms.openlocfilehash: f510a791c8117bb0396c35ad901e26477d3f0548
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: f219e7b6e83c66b119f00420396dd88c66b90f88
+ms.sourcegitcommit: 64584c0bf31b4204058ae2b4641356b904ccdd58
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79293202"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80581772"
 ---
 # <a name="timer-trigger-for-azure-functions"></a>Azure Functions 的计时器触发器 
 
@@ -111,7 +111,7 @@ module.exports = function (context, myTimer) {
 
 # <a name="java"></a>[Java](#tab/java)
 
-以下示例函数的触发和执行间隔为 5 分钟。 函数上的 `@TimerTrigger` 注释使用与 [CRON 表达式](https://en.wikipedia.org/wiki/Cron#CRON_expression)相同的字符串格式定义计划。
+以下示例函数的触发和执行间隔为 5 分钟。 函数上的 `@TimerTrigger` 注释使用与 CRON 表达式相同的字符串格式定义计划。
 
 ```java
 @FunctionName("keepAlive")
@@ -158,7 +158,7 @@ JavaScript 不支持特性。
 
 # <a name="java"></a>[Java](#tab/java)
 
-函数上的 `@TimerTrigger` 注释使用与 [CRON 表达式](https://en.wikipedia.org/wiki/Cron#CRON_expression)相同的字符串格式定义计划。
+函数上的 `@TimerTrigger` 注释使用与 CRON 表达式相同的字符串格式定义计划。
 
 ```java
 @FunctionName("keepAlive")
@@ -275,7 +275,7 @@ CRON 表达式使用的默认时区为协调世界时 (UTC)。 若要让 CRON �
 |---------|---------|
 |"01:00:00" | 每小时        |
 |"00:01:00"|每分钟         |
-|"24:00:00" | 每 24 小时        |
+|"24:00:00" | 每 24 天        |
 |"1.00:00:00" | 每天        |
 
 ## <a name="scale-out"></a>横向扩展

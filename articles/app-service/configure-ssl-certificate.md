@@ -8,12 +8,12 @@ ms.date: 03/16/2020
 ms.author: v-tawe
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: 0d014b62940cf169f0e7689494c30eb0afd77165
-ms.sourcegitcommit: e500354e2fd8b7ac3dddfae0c825cc543080f476
+ms.openlocfilehash: b799358c521a0b81d54a5f9b9f263fd10fec0481
+ms.sourcegitcommit: 5fb45da006859215edc8211481f13174aa43dbeb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2020
-ms.locfileid: "79546989"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80634347"
 ---
 # <a name="add-an-ssl-certificate-in-azure-app-service"></a>在 Azure 应用服务中添加 SSL 证书
 
@@ -61,9 +61,126 @@ ms.locfileid: "79546989"
 
 <!-- ## Create a free certificate (Preview) -->
 
-<!-- ## Import an App Service Certificate -->
 
-<!-- ## Import a certificate from Key Vault -->
+## <a name="import-an-app-service-certificate"></a>导入应用服务证书
+
+<!--
+If you purchase an App Service Certificate from Azure, Azure manages the following tasks:
+
+- Takes care of the purchase process from GoDaddy.
+- Performs domain verification of the certificate.
+- Maintains the certificate in [Azure Key Vault](../key-vault/key-vault-overview.md).
+- Manages certificate renewal (see [Renew certificate](#renew-certificate)).
+- Synchronize the certificate automatically with the imported copies in App Service apps.
+
+To purchase an App Service certificate, go to [Start certificate order](#start-certificate-order).
+-->
+
+如果你已有一个有效的应用服务证书，则可以[将证书导入到应用服务中](#import-certificate-into-app-service)。
+
+<!-- - [Manage the certificate](#manage-app-service-certificates), such as renew, rekey, and export it. -->
+
+<!--
+### Start certificate order
+
+Start an App Service certificate order in the <a href="https://portal.azure.com/#create/Microsoft.SSL" target="_blank">App Service Certificate create page</a>.
+
+![Start App Service certificate purchase](./media/configure-ssl-certificate/purchase-app-service-cert.png)
+
+Use the following table to help you configure the certificate. When finished, click **Create**.
+
+| Setting | Description |
+|-|-|
+| Name | A friendly name for your App Service certificate. |
+| Naked Domain Host Name | Specify the root domain here. The issued certificate secures *both* the root domain and the `www` subdomain. In the issued certificate, the Common Name field contains the root domain, and the Subject Alternative Name field contains the `www` domain. To secure any subdomain only, specify the fully qualified domain name of the subdomain here (for example, `mysubdomain.contoso.com`).|
+| Subscription | The subscription that will contain the certificate. |
+| Resource group | The resource group that will contain the certificate. You can use a new resource group or select the same resource group as your App Service app, for example. |
+| Certificate SKU | Determines the type of certificate to create, whether a standard certificate or a [wildcard certificate](https://wikipedia.org/wiki/Wildcard_certificate). |
+| Legal Terms | Click to confirm that you agree with the legal terms. The certificates are obtained from GoDaddy. |
+
+### Store in Azure Key Vault
+
+Once the certificate purchase process is complete, there are few more steps you need to complete before you can start using this certificate. 
+
+Select the certificate in the [App Service Certificates](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.CertificateRegistration%2FcertificateOrders) page, then click **Certificate Configuration** > **Step 1: Store**.
+
+![Configure Key Vault storage of App Service certificate](./media/configure-ssl-certificate/configure-key-vault.png)
+
+[Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview) is an Azure service that helps safeguard cryptographic keys and secrets used by cloud applications and services. It's the storage of choice for App Service certificates.
+
+In the **Key Vault Status** page, click **Key Vault Repository** to create a new vault or choose an existing vault. If you choose to create a new vault, use the following table to help you configure the vault and click Create. Create the new Key Vault inside the same subscription and resource group as your App Service app.
+
+| Setting | Description |
+|-|-|
+| Name | A unique name that consists for alphanumeric characters and dashes. |
+| Resource group | As a recommendation, select the same resource group as your App Service certificate. |
+| Location | Select the same location as your App Service app. |
+| Pricing tier | For information, see [Azure Key Vault pricing details](https://azure.microsoft.com/pricing/details/key-vault/). |
+| Access policies| Defines the applications and the allowed access to the vault resources. You can configure it later, following the steps at [Grant several applications access to a key vault](../key-vault/key-vault-group-permissions-for-apps.md). |
+| Virtual Network Access | Restrict vault access to certain Azure virtual networks. You can configure it later, following the steps at [Configure Azure Key Vault Firewalls and Virtual Networks](../key-vault/key-vault-network-security.md) |
+
+Once you've selected the vault, close the **Key Vault Repository** page. The **Step 1: Store** option should show a green check mark for success. Keep the page open for the next step.
+
+### Verify domain ownership
+
+From the same **Certificate Configuration** page you used in the last step, click **Step 2: Verify**.
+
+![Verify domain for App Service certificate](./media/configure-ssl-certificate/verify-domain.png)
+
+Select **App Service Verification**. Since you already mapped the domain to your web app (see [Prerequisites](#prerequisites)), it's already verified. Just click **Verify** to finish this step. Click the **Refresh** button until the message **Certificate is Domain Verified** appears.
+
+> [!NOTE]
+> Four types of domain verification methods are supported: 
+> 
+> - **App Service** - The most convenient option when the domain is already mapped to an App Service app in the same subscription. It takes advantage of the fact that the App Service app has already verified the domain ownership.
+> - **Domain** - Verify an [App Service domain that you purchased from Azure](manage-custom-dns-buy-domain.md). Azure automatically adds the verification TXT record for you and completes the process.
+> - **Mail** - Verify the domain by sending an email to the domain administrator. Instructions are provided when you select the option.
+> - **Manual** - Verify the domain using either an HTML page (**Standard** certificate only) or a DNS TXT record. Instructions are provided when you select the option.
+-->
+
+### <a name="import-certificate-into-app-service"></a>将证书导入到应用服务中
+
+在 <a href="https://portal.azure.cn" target="_blank">Azure 门户</a>的左侧菜单中，选择“应用程序服务” > “\<app-name>”   。
+
+在应用的左侧导航窗格中，选择“TLS/SSL 设置” > “私钥证书(.pfx)” > “导入应用服务证书”    。
+
+![将应用服务证书导入到应用服务中](./media/configure-ssl-certificate/import-app-service-cert.png)
+
+选择所购买的证书，然后选择“确定”  。
+
+操作完成后，会在“私钥证书”列表中看到该证书  。
+
+![导入应用服务证书已完成](./media/configure-ssl-certificate/import-app-service-cert-finished.png)
+
+> [!IMPORTANT] 
+> 若要使用此证书保护自定义域，仍需要创建证书绑定。 按照[创建绑定](configure-ssl-bindings.md#create-binding)中的步骤操作。
+>
+
+## <a name="import-a-certificate-from-key-vault"></a>导入来自 Key Vault 的证书
+
+如果使用 Azure Key Vault 管理证书，则可以将 PKCS12 证书从 Key Vault 导入到应用服务中，前提是该证书[满足要求](#private-certificate-requirements)。
+
+在 <a href="https://portal.azure.cn" target="_blank">Azure 门户</a>的左侧菜单中，选择“应用程序服务” > “\<app-name>”   。
+
+在应用的左侧导航窗格中，选择“TLS/SSL 设置” > “私钥证书(.pfx)” > “导入 Key Vault 证书”    。
+
+![将 Key Vault 证书导入到应用服务中](./media/configure-ssl-certificate/import-key-vault-cert.png)
+
+使用下表来帮助选择证书。
+
+| 设置 | 说明 |
+|-|-|
+| 订阅 | Key Vault 所属的订阅。 |
+| 密钥保管库 | 包含要导入的证书的保管库。 |
+| 证书 | 从保管库中的 PKCS12 证书列表中进行选择。 保管库中的所有 PKCS12 证书都已通过其指纹列出，但在应用服务中并非支持所有证书。 |
+
+操作完成后，会在“私钥证书”列表中看到该证书  。 如果导入失败并出现错误，则证书不满足[应用服务的要求](#private-certificate-requirements)。
+
+![导入 Key Vault 证书已完成](./media/configure-ssl-certificate/import-app-service-cert-finished.png)
+
+> [!IMPORTANT] 
+> 若要使用此证书保护自定义域，仍需要创建证书绑定。 按照[创建绑定](configure-ssl-bindings.md#create-binding)中的步骤操作。
+>
 
 ## <a name="upload-a-private-certificate"></a>上传私有证书
 

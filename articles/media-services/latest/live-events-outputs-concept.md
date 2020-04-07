@@ -12,15 +12,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-origin.date: 09/30/2019
-ms.date: 02/24/2020
+origin.date: 03/18/2020
+ms.date: 04/06/2020
 ms.author: v-jay
-ms.openlocfilehash: 049e83065d386d81aa4bb26c06a79afe53047b75
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: 78a3a765004c3b16723d1e5601cbdb35632976ec
+ms.sourcegitcommit: fe9ed98aaee287a21648f866bb77cb6888f75b0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79292536"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80625666"
 ---
 # <a name="live-events-and-live-outputs-in-media-services"></a>媒体服务中的实时事件和实时输出
 
@@ -35,7 +35,7 @@ ms.locfileid: "79292536"
 
 ## <a name="live-event-types"></a>实时事件类型
 
-[实时事件](https://docs.microsoft.com/rest/api/media/liveevents)可以是下述两种类型之一：直通或实时编码。 这些类型是在创建期间使用 [LiveEventEncodingType](https://docs.microsoft.com/rest/api/media/liveevents/create#liveeventencodingtype) 设置的：
+[直播活动](https://docs.microsoft.com/rest/api/media/liveevents)可以设置为“直通”  （本地实时编码器发送多比特率流）或“实时编码”  （本地实时编码器发送单比特率流）。 这些类型是在创建期间使用 [LiveEventEncodingType](https://docs.microsoft.com/rest/api/media/liveevents/create#liveeventencodingtype) 设置的：
 
 * **LiveEventEncodingType.None**：本地实时编码器发送多比特率流。 引入的流通过直播活动传递，而不会经过任何进一步的处理。 也称为“直通模式”。
 * **LiveEventEncodingType.Standard**：本地实时编码器将单比特率流发送到实时事件，媒体服务创建多比特率流。 如果贡献源的分辨率为 720p 或更高，则 **Default720p** 预设将编码一组 6 分辨率/比特率对。
@@ -106,7 +106,7 @@ ms.locfileid: "79292536"
 
     在媒体服务 v3 中，非虚 URL 是默认模式。 可以快速获取直播活动，但只有在直播活动启动后，才会知道引入 URL。 如果停止/启动直播活动，此 URL 会更改。 <br/>非虚 URL 适用于这样的情况：最终用户希望使用应用进行流式处理，而应用希望尽快获取实时事件，并且可以使用动态引入 URL。
 
-    如果客户端应用在创建实时事件之前不需要预生成引入 URL，请让媒体服务自动生成实时事件的访问令牌。
+    如果客户端应用在创建直播活动之前不需要预生成引入 URL，请让媒体服务自动生成直播活动的访问令牌。
 
 * 虚 URL
 
@@ -174,6 +174,10 @@ ms.locfileid: "79292536"
 将流传输到[实时事件](https://docs.microsoft.com/rest/api/media/liveoutputs)后，可以通过创建[资产](https://docs.microsoft.com/rest/api/media/assets)、实时输出和[流定位符](https://docs.microsoft.com/rest/api/media/streaminglocators)来启动流事件。 实时输出会存档流，并使观看者可通过[流式处理终结点](https://docs.microsoft.com/rest/api/media/streamingendpoints)使用该流。  
 
 有关实时输出的详细信息，请参阅[使用云 DVR](live-event-cloud-dvr.md)。
+
+## <a name="frequently-asked-questions"></a>常见问题
+
+请参阅[常见问题解答](frequently-asked-questions.md#live-streaming)一文。
 
 ## <a name="next-steps"></a>后续步骤
 

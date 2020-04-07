@@ -1,16 +1,16 @@
 ---
 title: 支持的资源管理器资源类型
 description: 提供 Azure Resource Graph 和更改历史记录支持的资源管理器资源类型的列表。
-origin.date: 03/09/2020
-ms.date: 03/16/2020
+origin.date: 03/23/2020
+ms.date: 03/30/2020
 ms.topic: reference
 ms.author: v-tawe
-ms.openlocfilehash: 3d71341d33764a442b043ca6dd93a1d46d4ee46d
-ms.sourcegitcommit: 1d3d8dfdaf6281f06640cbee7124a1e8bf102c50
+ms.openlocfilehash: 686a2ada382b66d82eb9d0c450f68a81fbf2b38b
+ms.sourcegitcommit: 260800ede66f48c886d1426a0fac18b4d402b4f2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "80243901"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586775"
 ---
 # <a name="azure-resource-graph-table-and-resource-type-reference"></a>Azure Resource Graph 表和资源类型引用
 
@@ -246,6 +246,7 @@ Azure Resource Graph 支持 [Azure 资源管理器](../../../azure-resource-mana
 - microsoft.managednetwork/managednetworks/managednetworkgroups
 - microsoft.managednetwork/managednetworks/managednetworkpeeringpolicies
 - microsoft.maps/accounts
+- microsoft.maps/accounts/privateatlases
 - microsoft.marketplaceapps/classicdevservices
 - microsoft.media/mediaservices
 - microsoft.media/mediaservices/liveevents
@@ -293,6 +294,7 @@ Azure Resource Graph 支持 [Azure 资源管理器](../../../azure-resource-mana
 - microsoft.network/networkinterfaces
 - microsoft.network/networkprofiles
 - microsoft.network/networksecuritygroups
+- microsoft.network/networkvirtualappliances
 - microsoft.network/networkwatchers
 - microsoft.network/networkwatchers/connectionmonitors
 - microsoft.network/networkwatchers/flowlogs
@@ -309,6 +311,7 @@ Azure Resource Graph 支持 [Azure 资源管理器](../../../azure-resource-mana
 - microsoft.network/routefilters
 - microsoft.network/routetables
 - microsoft.network/sampleresources
+- microsoft.network/securitypartnerproviders
 - microsoft.network/serviceendpointpolicies
 - microsoft.network/trafficmanagerprofiles
 - microsoft.network/virtualhubs
@@ -341,6 +344,7 @@ Azure Resource Graph 支持 [Azure 资源管理器](../../../azure-resource-mana
 - microsoft.projectarcadia/workspaces/sparkcomputes
 - microsoft.projectarcadia/workspaces/sqlcomputes
 - microsoft.projectbabylon/accounts
+- microsoft.quantum/workspaces
 - microsoft.recoveryservices/vaults
 - microsoft.redhatopenshift/openshiftclusters
 - microsoft.relay/namespaces
@@ -443,6 +447,8 @@ Azure Resource Graph 支持 [Azure 资源管理器](../../../azure-resource-mana
 - u2uconsult.theidentityhub/services
 - wandisco.fusion/fusiongroups
 - wandisco.fusion/fusiongroups/azurezones
+- wandisco.fusion/fusiongroups/azurezones/plugins
+- wandisco.fusion/fusiongroups/managedonpremzones
 - wandisco.fusion/fusiongroups/onpremzones
 - wandisco.fusion/fusiongroups/replicationrules
 

@@ -10,14 +10,14 @@ ms.service: media-services
 ms.workload: na
 ms.topic: article
 origin.date: 02/03/2020
-ms.date: 02/24/2020
+ms.date: 04/06/2020
 ms.author: v-jay
-ms.openlocfilehash: 74668d19f24785aae37aba75f8617cbc2972977b
-ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
+ms.openlocfilehash: 2320c115a1124ba3bd88eb50f778bacf1d7fccec
+ms.sourcegitcommit: fe9ed98aaee287a21648f866bb77cb6888f75b0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77494197"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80625767"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Azure 媒体服务 v3 发行说明
 
@@ -33,7 +33,7 @@ ms.locfileid: "77494197"
 ## <a name="known-issues"></a>已知问题
 
 > [!NOTE]
-> 目前，无法使用 Azure 门户来管理 v3 资源。 请使用 [REST API](https://aka.ms/ams-v3-rest-sdk)、CLI 或支持的 SDK 之一。
+> 可以使用 [Azure 门户](https://portal.azure.cn/)执行以下操作：管理 v3 [直播活动](live-events-outputs-concept.md)、查看 v3 [资产](assets-concept.md)、获取有关访问 API 的信息。 对于其他所有管理任务（例如，转换和作业），请使用 [REST API](https://aka.ms/ams-v3-rest-ref)、[CLI](https://aka.ms/ams-v3-cli-ref) 或某个受支持的 [SDK](media-services-apis-overview.md#sdks)。
 
 有关详细信息，请参阅[有关从媒体服务 v2 迁移到 v3 的指导](migrate-from-v2-to-v3.md#known-issues)。
  
@@ -61,7 +61,7 @@ ms.locfileid: "77494197"
 ### <a name="file-encoding-enhancements"></a>文件编码增强功能
 
 - 现在可以使用新的内容感知编码预设。 它使用内容感知编码生成一组符合 GOP 标准的 MP4。 不管输入内容是什么，该服务都会对输入内容执行初始的轻型分析。 它使用这些结果来确定最佳层数，以及适当的比特率和分辨率设置，方便通过自适应流式处理进行传递。 此预设特别适用于低复杂性和中复杂性的视频，其中的输出文件比特率较低，但其质量仍会为观众提供良好的体验。 输出将包含带有交错式视频和音频的 MP4 文件。 有关详细信息，请参阅[开放式 API 规范](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01/Encoding.json)。
-- 改善了 Media Encoder Standard 中大小重设器的性能和多线程处理。 在特定情况下，客户会看到 5-40% 的 VOD 编码性能提升。 编码成多比特率的低复杂性内容会显示最高的性能提升。 
+- 改善了标准编码器中大小重设器的性能和多线程处理。 在特定情况下，客户会看到 5-40% 的 VOD 编码性能提升。 编码成多比特率的低复杂性内容会显示最高的性能提升。 
 - 现在，在使用基于时间的 GOP 设置时，标准编码会在 VOD 编码期间针对可变帧速率 (VFR) 内容维持常规 GOP 节奏。  这意味着，如果提交的混合帧速率内容存在差异（例如 15-30 fps），客户现在会看到常规的 GOP 距离，此类距离根据自适应比特率流式处理 MP4 文件的输出进行计算。 这会提高通过 HLS 或 DASH 进行交付时在跟踪之间无缝切换的功能。 
 -  改善了可变帧速率 (VFR) 源内容的 AV 同步
 

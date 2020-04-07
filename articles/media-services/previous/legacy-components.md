@@ -11,15 +11,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-origin.date: 11/22/2019
-ms.date: 02/24/2020
+origin.date: 02/27/2020
+ms.date: 04/06/2020
 ms.author: v-jay
-ms.openlocfilehash: d6729b51456fb0123cf71d93a75c6135d0bdb98f
-ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
+ms.openlocfilehash: 6ff7a2202427153686ea423aed574febbae48a23
+ms.sourcegitcommit: fe9ed98aaee287a21648f866bb77cb6888f75b0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77494460"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80625746"
 ---
 # <a name="azure-media-services-legacy-components"></a>Azure 媒体服务旧组件
 
@@ -37,6 +37,11 @@ ms.locfileid: "77494460"
 |媒体处理器名称|停用日期|附加说明|
 |---|---|
 |[Azure Media Indexer](media-services-index-content.md)|2023 年 3 月 1 日|此媒体处理器将被 Azure 媒体服务视频索引器替换。|
+|[动作检测](media-services-motion-detection.md)|2020 年 6 月 1 日|目前无替换计划。|
+|[视频摘要](media-services-video-summarization.md)|2020 年 6 月 1 日|目前无替换计划。|
+|[视频光学字符识别](media-services-video-optical-character-recognition.md)|2020 年 6 月 1 日|此媒体处理器将被 Azure 媒体服务视频索引器替换。 另外，请考虑使用 [Azure 媒体服务 v3 API](/media-services/latest/analyzing-video-audio-files-concept)。|
+|[面部检测器](media-services-face-and-emotion-detection.md)|2020 年 6 月 1 日|此媒体处理器将被 Azure 媒体服务视频索引器替换。 另外，请考虑使用 [Azure 媒体服务 v3 API](/media-services/latest/analyzing-video-audio-files-concept)。|
+|[内容审查器](media-services-content-moderation.md)|2020 年 6 月 1 日|此媒体处理器将被 Azure 媒体服务视频索引器替换。 另外，请考虑使用 [Azure 媒体服务 v3 API](/media-services/latest/analyzing-video-audio-files-concept)。|
 
 ## <a name="next-steps"></a>后续步骤
 

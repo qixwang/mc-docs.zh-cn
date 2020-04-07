@@ -1,5 +1,6 @@
 ---
 title: Azure Key Vault 软删除 | Azure
+description: 使用 Azure Key Vault 软删除可恢复已删除的密钥保管库和密钥保管库对象，例如密钥、机密和证书。
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
@@ -7,13 +8,13 @@ author: msmbaldwin
 ms.author: v-tawe
 manager: rkarlin
 origin.date: 03/19/2019
-ms.date: 03/16/2020
-ms.openlocfilehash: 3385e98049940ae0a1942da56eaebe75461dbc48
-ms.sourcegitcommit: 764b3d26aedce2de0e1948468a706fd3204a3d5e
+ms.date: 03/30/2020
+ms.openlocfilehash: f44e9e3afbea3429169c0972331993a92d497615
+ms.sourcegitcommit: 5fb45da006859215edc8211481f13174aa43dbeb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2020
-ms.locfileid: "79543381"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80634355"
 ---
 # <a name="azure-key-vault-soft-delete-overview"></a>Azure Key Vault 软删除概述
 

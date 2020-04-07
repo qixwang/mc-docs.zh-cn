@@ -3,20 +3,20 @@ title: 自定义用户界面
 titleSuffix: Azure AD B2C
 description: 了解如何自定义使用 Azure Active Directory B2C 的应用程序的用户界面。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 02/04/2020
+ms.date: 04/01/2020
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: 0590621f99b503d8922d085d6a5aea9707130008
-ms.sourcegitcommit: 888cbc10f2348de401d4839a732586cf266883bf
+ms.openlocfilehash: 042fa1b0dc2e93ec363571bbbeae0d3d8f7e4112
+ms.sourcegitcommit: 64584c0bf31b4204058ae2b4641356b904ccdd58
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77028078"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80581613"
 ---
 # <a name="customize-the-user-interface-in-azure-active-directory-b2c"></a>自定义 Azure Active Directory B2C 中的用户界面
 
@@ -78,6 +78,7 @@ Azure AD B2C 使用称作[跨源资源共享 (CORS)](https://www.w3.org/TR/cors/
   - 对 Internet Explorer 9 和 8 的支持有限
   - Google Chrome 42.0 和更高版本
   - Mozilla Firefox 38.0 和更高版本
+  - 适用于 iOS 和 macOS 的 Safari 版本 12 及更高版本
 - 不要在 HTML 中包含**窗体标记**。 窗体标记会干扰 Azure AD B2C 插入的 HTML 所生成的 POST 操作。
 
 ### <a name="where-do-i-store-ui-content"></a>在何处存储 UI 内容？

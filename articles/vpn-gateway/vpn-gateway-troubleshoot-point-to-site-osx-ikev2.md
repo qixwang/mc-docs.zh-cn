@@ -1,27 +1,19 @@
 ---
-title: 对 Mac OS X 客户端的 Azure 点到站点 VPN 连接进行故障排除 | Microsoft Docs
+title: Azure VPN 网关：排查点到站点连接问题：Mac OS X 客户端
 description: 对 P2S Mac OS X VPN 客户端连接进行故障排除的步骤
 services: vpn-gateway
-documentationcenter: na
 author: WenJason
-manager: digimobile
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: vpn-gateway
-ms.devlang: na
 ms.topic: troubleshooting
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
 origin.date: 03/27/2018
-ms.date: 11/05/2018
+ms.date: 04/06/2020
 ms.author: v-jay
-ms.openlocfilehash: c07ac140b0478e75ed046fdd6f5f71d3c77b0e6f
-ms.sourcegitcommit: b8fb6890caed87831b28c82738d6cecfe50674fd
+ms.openlocfilehash: 6ff89397eef5926df6abaf03fcd9e6fe0b029b62
+ms.sourcegitcommit: 5fb45da006859215edc8211481f13174aa43dbeb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58625180"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80634618"
 ---
 # <a name="troubleshoot-point-to-site-vpn-connections-from-mac-os-x-vpn-clients"></a>对 Mac OS X VPN 客户端的点到站点 VPN 连接进行故障排除
 
@@ -34,37 +26,37 @@ ms.locfileid: "58625180"
 * OS 版本（10.11 或更高版本）
 
 
-## <a name="VPNClient"></a> 对基于证书的身份验证进行故障排除
-1. 检查 VPN 客户端设置。 通过按 Command + Shift 转到“网络设置”，然后键入“VPN”检查 VPN 客户端设置。 从列表中，单击需要调查的 VPN 条目。
+## <a name="troubleshoot-certificate-based-authentication"></a><a name="VPNClient"></a> 对基于证书的身份验证进行故障排除
+1. 检查 VPN 客户端设置。 通过按 Command + Shift 转到“网络设置”  ，然后键入“VPN”检查 VPN 客户端设置。 从列表中，单击需要调查的 VPN 条目。
 
    ![IKEv2 基于证书的身份验证](./media/vpn-gateway-troubleshoot-point-to-site-osx-ikev2/ikev2cert1.jpg)
 2. 验证**服务器地址**是否是完整的 FQDN 并包含 chinacloudapp.cn。
 3. **远程 ID** 应与服务器地址（网关 FQDN）相同。
 4. **本地 ID** 应与客户端证书的**使用者**相同。
-5. 单击“身份验证设置”以打开“身份验证设置”页。
+5. 单击“身份验证设置”  以打开“身份验证设置”页。
 
    ![身份验证设置](./media/vpn-gateway-troubleshoot-point-to-site-osx-ikev2/ikev2auth2.jpg)
-6. 确认已从下拉列表中选择了“证书”。
-7. 单击“选择”按钮，并确认已选择正确的证书。 单击“确定”保存所有更改。
+6. 确认已从下拉列表中选择了“证书”  。
+7. 单击“选择”  按钮，并确认已选择正确的证书。 单击“确定”  保存所有更改。
 
-## <a name="ikev2"></a>对用户名和密码身份验证进行故障排除
+## <a name="troubleshoot-username-and-password-authentication"></a><a name="ikev2"></a>对用户名和密码身份验证进行故障排除
 
-1. 检查 VPN 客户端设置。 通过按 Command + Shift 转到“网络设置”，然后键入“VPN”检查 VPN 客户端设置。 从列表中，单击需要调查的 VPN 条目。
+1. 检查 VPN 客户端设置。 通过按 Command + Shift 转到“网络设置”  ，然后键入“VPN”检查 VPN 客户端设置。 从列表中，单击需要调查的 VPN 条目。
 
    ![IKEv2 用户名密码](./media/vpn-gateway-troubleshoot-point-to-site-osx-ikev2/ikev2user3.jpg)
 2. 验证**服务器地址**是否是完整的 FQDN 并包含 chinacloudapp.cn。
 3. **远程 ID** 应与服务器地址（网关 FQDN）相同。
 4. **本地 ID** 可以为空。
-5. 单击“身份验证设置”按钮，并确认已从下拉列表中选择了“用户名”。
+5. 单击“身份验证设置”  按钮，并确认已从下拉列表中选择了“用户名”。
 
-   ![身份验证设置](./media/vpn-gateway-troubleshoot-point-to-site-osx-ikev2/ikev2auth4.jpg)
+   ![身份验证设置](./media/vpn-gateway-troubleshoot-point-to-site-osx-ikev2/ikev2auth4.png)
 6. 请确保输入了正确的凭据。
 
-## <a name="additional"></a>其他步骤
+## <a name="additional-steps"></a><a name="additional"></a>其他步骤
 
 如果你尝试前面的步骤，并且所有内容均配置正确，请下载 [Wireshark](https://www.wireshark.org/#download) 并执行数据包捕获。
 
-1. 按 iskmp 筛选并查看 IKE_SA 数据包。 应该能够在**有效负载：安全关联**下查看 SA 方案详细信息。 
+1. 按 iskmp 筛选并查看 IKE_SA 数据包   。 应该能够在**有效负载：安全关联**下查看 SA 方案详细信息。 
 2. 验证客户端和服务器是否具有公用集。
 
    ![数据包](./media/vpn-gateway-troubleshoot-point-to-site-osx-ikev2/packet5.jpg) 

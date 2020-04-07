@@ -12,18 +12,23 @@ ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 origin.date: 03/19/2019
-ms.date: 09/23/2019
+ms.date: 04/06/2020
 ms.author: v-jay
 ms.reviewer: milanga
-ms.openlocfilehash: b5013e92458a8294fcbb73c307ecc064ddfe0898
-ms.sourcegitcommit: 8248259e4c3947aa0658ad6c28f54988a8aeebf8
+ms.openlocfilehash: c8daa3a1e00addbdf0067160467de38974d27d34
+ms.sourcegitcommit: fe9ed98aaee287a21648f866bb77cb6888f75b0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71124650"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80625768"
 ---
 # <a name="detect-motions-with-azure-media-analytics"></a>使用 Azure 媒体分析检测动作
+
+> [!NOTE]
+> Azure Media Motion Detector  媒体处理器将停用。 有关停用日期，请参阅此[旧组件](legacy-components.md)主题。
+ 
 ## <a name="overview"></a>概述
+
 借助“Azure Media Motion Detector”  媒体处理器 (MP)，用户可在冗长且平淡的视频中有效识别出感兴趣的部分。 可以对静态相机数据片段使用动作检测，以识别视频中有动作的部分。 它会生成 JSON 文件，其中包含带时间戳的元数据，以及发生事件的边界区域。
 
 此技术面向安全视频提要，它可以将动作分类为相关事件和误报（例如阴影或光源变化）。 这样，便可以在不会被发送无止境的不相关事件的情况下，从相机源生成安全警报，同时能够从长时间的监控视频中提取感兴趣的片段。
@@ -41,13 +46,13 @@ ms.locfileid: "71124650"
 ### <a name="parameters"></a>parameters
 可以使用以下参数：
 
-| Name | 选项 | 说明 | 默认 |
+| 名称 | 选项 | 说明 | 默认 |
 | --- | --- | --- | --- |
 | sensitivityLevel |字符串：'low'、'medium'、'high' |设置报告动作情况的敏感度级别。 调整此项是为了调整误报数量。 |'medium' |
 | frameSamplingValue |正整数 |设置算法的运行频率。 1 等于每个帧，2 是指每 2 个帧，如此类推。 |1 |
 | detectLightChange |布尔值：'true'、'false' |设置是否在结果中报告轻微的更改 |'False' |
 | mergeTimeThreshold |Xs-time：Hh:mm:ss<br/>示例：00:00:03 |指定动作事件之间的时间窗口，其中的 2 个事件将组合成 1 个事件进行报告。 |00:00:00 |
-| detectionZones |检测区域的一个数组：<br/>- 检测区域是一个包含 3 个或 3 个以上点的数组<br/>- 点是从 0 到 1 的 x 和 y 坐标。 |描述要使用的多边形检测区域列表。<br/>报告结果时将报告以 ID 表示的区域，其中第一个是 ‘id’:0 |单个区域，涵盖整个帧。 |
+| detectionZones |检测区域数组：<br/>- 检测区域是一个包含 3 个或 3 个以上点的数组<br/>- 点是从 0 到 1 的 x 和 y 坐标。 |描述要使用的多边形检测区域列表。<br/>报告结果时将报告以 ID 表示的区域，其中第一个是 ‘id’:0 |单个区域，涵盖整个帧。 |
 
 ### <a name="json-example"></a>JSON 示例
 
@@ -86,7 +91,7 @@ ms.locfileid: "71124650"
 
 一旦固定背景视频（例如监控视频）中出现运动对象，动作检测器 API 将提供指示器。 动作检测器经过训练可减少误报（例如光源和阴影变化）。 当前算法限制包括夜视视频、半透明对象和小对象。
 
-### <a id="output_elements"></a>输出 JSON 文件中的元素
+### <a name="elements-of-the-output-json-file"></a><a id="output_elements"></a>输出 JSON 文件中的元素
 > [!NOTE]
 > 在最新版本中，输出 JSON 格式已更改，对某些客户来说可以说是重大更改。
 > 
@@ -110,7 +115,7 @@ ms.locfileid: "71124650"
 | regions |表示你关注的动作在视频中的区域。 <br/><br/>-“id”表示区域面积 - 且在此版本中只有一个，ID 0。 <br/>-“type”代表你关注其动作的区域的形状。 目前支持“矩形”和“多边形”。<br/> 如果指定了“矩形”，则区域具有以 X、Y表示宽度及高度的维度。 X 和 Y 坐标表示规范化 0.0 到 1.0 比例中的区域的左上角 XY 坐标。 宽度和高度表示规范化 0.0 到 1.0 比例中的区域的大小。 在当前版本中，X、Y、宽度和高度始终固定为 0、0 和 1、1。 <br/>如果指定了“多边形”，则区域的维度以点来表示。 <br/> |
 | fragments |元数据划分成称为“片段”的不同段。 每个片段包含开始时间、持续时间、间隔数字和事件。 没有事件的片段表示在该开始时间和持续时间内没有检测到任何动作。 |
 | 方括号 [] |每个括号表示事件中的单个间隔。 如果该间隔显示空括号，则表示没有检测到动作。 |
-| 位置 |事件下的此新项列出发生动作的位置。 这比检测区域更具体。 |
+| locations |事件下的此新项列出发生动作的位置。 这比检测区域更具体。 |
 
 以下 JSON 示例显示输出：
 

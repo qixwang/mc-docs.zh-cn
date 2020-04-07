@@ -13,17 +13,20 @@ ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 origin.date: 03/18/2019
-ms.date: 12/09/2019
+ms.date: 04/06/2020
 ms.author: v-jay
 ms.reviewer: milanga
-ms.openlocfilehash: 7f843421ed6080773c1e7f504666345b8382ac85
-ms.sourcegitcommit: 369038a7d7ee9bbfd26337c07272779c23d0a507
+ms.openlocfilehash: 1ede00b144cf7f5d0997f9d54c5e1abcd827b69a
+ms.sourcegitcommit: fe9ed98aaee287a21648f866bb77cb6888f75b0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74807653"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80625734"
 ---
 # <a name="detect-face-and-emotion-with-azure-media-analytics"></a>使用 Azure 媒体分析检测面部和情绪
+
+> [!NOTE]
+> Azure Media Face Detector  媒体处理器将停用。 有关停用日期，请参阅此[旧组件](legacy-components.md)主题。
 
 ## <a name="overview"></a>概述
 
@@ -49,11 +52,11 @@ ms.locfileid: "74807653"
 视频文件。 目前支持以下格式：MP4、MOV 和 WMV。
 
 ## <a name="face-detector-output-files"></a>面部检测器输出文件
-人脸检测器和跟踪 API 可提供高精确度的面部位置检测和跟踪功能，并在单个视频中检测到最多 64 个人脸。 正面的面部可提供最佳效果，而侧面的面部和较小的面部（小于或等于 24x24 像素）可能就无法获得相同的精确度。
+面部检测器和跟踪 API 可提供高精确度的面部位置检测和跟踪功能，并在单个视频中检测到最多 64 个人脸。 正面的面部可提供最佳效果，而侧面的面部和较小的面部（小于或等于 24x24 像素）可能就无法获得相同的精确度。
 
 已检测到并已跟踪的面部会在坐标（左侧、顶部、宽度和高度）中返回，其中会在以像素为单位的图像中指明面部的位置，以及表示正在跟踪该人员的面部 ID 编号。 在正面面部长时间于帧中消失或重叠的情况下，面部 ID 编号很容易重置，导致某些人员被分配多个 ID。
 
-## <a id="output_elements"></a>输出 JSON 文件中的元素
+## <a name="elements-of-the-output-json-file"></a><a id="output_elements"></a>输出 JSON 文件中的元素
 
 [!INCLUDE [media-services-analytics-output-json](../../../includes/media-services-analytics-output-json.md)]
 
@@ -64,7 +67,7 @@ ms.locfileid: "74807653"
 
 ## <a name="face-detection-input-and-output-example"></a>面部检测输入和输出示例
 ### <a name="input-video"></a>输入视频
-[输入视频](https://ampdemo.azureedge.net/azuremediaplayer.html?url=https%3A%2F%2Freferencestream-samplestream.streaming.mediaservices.chinacloudapi.cn%2Fc8834d9f-0b49-4b38-bcaf-ece2746f1972%2FMicrosoft%20Convergence%202015%20%20Keynote%20Highlights.ism%2Fmanifest&amp;autoplay=false)
+[输入视频](https://ampdemo.azureedge.net/azuremediaplayer.html?url=httpss%3A%2F%2Freferencestream-samplestream.streaming.mediaservices.chinacloudapi.cn%2Fc8834d9f-0b49-4b38-bcaf-ece2746f1972%2FMicrosoft%20Convergence%202015%20%20Keynote%20Highlights.ism%2Fmanifest&amp;autoplay=false)
 
 ### <a name="task-configuration-preset"></a>任务配置（预设）
 在使用 **Azure 媒体面部检测器**创建任务时，必须指定配置预设。 以下配置预设仅适用于面部检测。
@@ -136,7 +139,7 @@ ms.locfileid: "74807653"
 
 ## <a name="emotion-detection-input-and-output-example"></a>情绪检测输入和输出示例
 ### <a name="input-video"></a>输入视频
-[输入视频](https://ampdemo.azureedge.net/azuremediaplayer.html?url=https%3A%2F%2Freferencestream-samplestream.streaming.mediaservices.chinacloudapi.cn%2Fc8834d9f-0b49-4b38-bcaf-ece2746f1972%2FMicrosoft%20Convergence%202015%20%20Keynote%20Highlights.ism%2Fmanifest&amp;autoplay=false)
+[输入视频](https://ampdemo.azureedge.net/azuremediaplayer.html?url=httpss%3A%2F%2Freferencestream-samplestream.streaming.mediaservices.chinacloudapi.cn%2Fc8834d9f-0b49-4b38-bcaf-ece2746f1972%2FMicrosoft%20Convergence%202015%20%20Keynote%20Highlights.ism%2Fmanifest&amp;autoplay=false)
 
 ### <a name="task-configuration-preset"></a>任务配置（预设）
 在使用 **Azure 媒体面部检测器**创建任务时，必须指定配置预设。 以下配置预设指定基于情绪检测创建 JSON。

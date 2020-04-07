@@ -1,26 +1,20 @@
 ---
-title: 排查 Azure 点到站点连接问题 | Microsoft Docs
+title: 排查 Azure 点到站点连接问题
+titleSuffix: Azure VPN Gateway
 description: 了解如何排查点到站点连接问题。
 services: vpn-gateway
-documentationcenter: na
 author: WenJason
-manager: digimobile
-editor: ''
-tags: ''
 ms.service: vpn-gateway
-ms.devlang: na
 ms.topic: troubleshooting
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-origin.date: 09/30/2019
-ms.date: 11/11/2019
+origin.date: 03/26/2020
+ms.date: 04/06/2020
 ms.author: v-jay
-ms.openlocfilehash: b58b6dbe00984164c571d09e3b7c7c7be982a5c7
-ms.sourcegitcommit: d77d5d8903faa757c42b80ee24e7c9d880950fc3
+ms.openlocfilehash: ce426fcf0445d6092ba5b304a49d3893adc7df36
+ms.sourcegitcommit: 5fb45da006859215edc8211481f13174aa43dbeb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73742280"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80634609"
 ---
 # <a name="troubleshooting-azure-point-to-site-connection-problems"></a>故障排除：Azure 点到站点连接问题
 
@@ -335,6 +329,19 @@ SMB 协议用于文件共享访问。 连接启动时，VPN 客户端添加了�
 3. 双击设备名称，选择“更新驱动程序”，选择“自动搜索更新的驱动程序软件”   。
 4. 如果 Windows 找不到新的驱动程序，可以尝试在设备制造商的网站上查找，并按照说明执行操作。
 5. 重启计算机并再次尝试连接。
+
+## <a name="vpn-client-error-dialing-vpn-connection-vpn-connection-name-status--vpn-platform-did-not-trigger-connection"></a>VPN 客户端错误：拨号 VPN 连接 <VPN Connection Name>，状态 =“VPN 平台未触发连接”
+
+你可能还会在 RasClient 的事件查看器中看到以下错误：“用户 <User> 拨打了一个名为 <VPN Connection Name> 的连接，该连接已失败。 失败时返回的错误代码是 1460。”
+
+### <a name="cause"></a>原因
+
+Azure VPN Client 没有在适用于 Windows 的应用设置中启用“后台应用”应用权限。
+
+### <a name="solution"></a>解决方案
+
+1. 在 Windows 中，转到“设置”->“隐私”->“后台应用”
+2. 将“允许应用在后台运行”切换到“开”
 
 ## <a name="error-file-download-error-target-uri-is-not-specified"></a>错误：“文件下载错误，未指定目标 URI”
 

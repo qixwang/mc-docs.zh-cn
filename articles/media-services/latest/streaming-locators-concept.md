@@ -9,15 +9,15 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-origin.date: 05/26/2019
-ms.date: 03/04/2020
+origin.date: 03/04/2020
+ms.date: 04/06/2020
 ms.author: v-jay
-ms.openlocfilehash: b7ead1b976ae5e71e4382a80339abd286d4672dd
-ms.sourcegitcommit: fbc7584f403417d3af7bd6bbbaed7c13a78c57b9
+ms.openlocfilehash: c44e93bab75c95a962b91152eefaa3786de69752
+ms.sourcegitcommit: fe9ed98aaee287a21648f866bb77cb6888f75b0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78412504"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80625760"
 ---
 # <a name="streaming-locators"></a>流式处理定位符
 
@@ -99,12 +99,13 @@ StreamingLocator locator = await client.StreamingLocators.CreateAsync(
 |Java|[AssetStreamingLocator](https://docs.microsoft.com/rest/api/media/assets/liststreaminglocators#assetstreaminglocator)|
 |Node.js|[listStreamingLocators](https://docs.microsoft.com/javascript/api/@azure/arm-mediaservices/assets#liststreaminglocators-string--string--string--msrest-requestoptionsbase-)|
 
-## <a name="also-see"></a>另请参阅
+## <a name="see-also"></a>另请参阅
 
 * [资产](assets-concept.md)
 * [流式处理策略](streaming-policy-concept.md)
 * [内容密钥策略](content-key-policy-concept.md)
+* [教程：使用 .NET 上传、编码和流式传输视频](stream-files-tutorial-with-api.md)
 
 ## <a name="next-steps"></a>后续步骤
 
-[教程：使用 .NET 上传、编码和流式传输视频](stream-files-tutorial-with-api.md)
+[如何创建流式处理定位符并生成 URL](create-streaming-locator-build-url.md)

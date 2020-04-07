@@ -1,7 +1,7 @@
 ---
 title: 媒体服务实体的筛选、排序和分页
 titleSuffix: Azure Media Services
-description: 了解 Azure 媒体服务实体的筛选、排序和分页。
+description: 了解如何对 Azure 媒体服务 v3 实体进行筛选、排序和分页。
 services: media-services
 documentationcenter: ''
 author: WenJason
@@ -10,16 +10,16 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-origin.date: 10/11/2019
-ms.date: 12/09/2019
+origin.date: 01/21/2020
+ms.date: 04/06/2020
 ms.author: v-jay
 ms.custom: seodec18
-ms.openlocfilehash: b94911b72abe57021cc40bceb3d3250cc9c6c60e
-ms.sourcegitcommit: 369038a7d7ee9bbfd26337c07272779c23d0a507
+ms.openlocfilehash: b482b6c50271ba7e779b27bc7f94fb75fae023ab
+ms.sourcegitcommit: fe9ed98aaee287a21648f866bb77cb6888f75b0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74807616"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80625793"
 ---
 # <a name="filtering-ordering-and-paging-of-media-services-entities"></a>媒体服务实体的筛选、排序和分页
 
@@ -82,7 +82,7 @@ GET https://management.chinacloudapi.cn/subscriptions/00000000-0000-0000-0000-00
 如果在对集合进行分页时创建或删除了实体，则返回的结果中会反映这些更改（如果这些更改位于集合中尚未下载的部分中）。
 
 > [!TIP]
-> 应始终使用 `nextLink` 来枚举集合，而不依赖特定的页面大小。
+> 始终使用 `nextLink` 来枚举集合，而不依赖于特定的页面大小。
 >
 > `nextLink` 值存在的前提是有多个页面的实体。
 
@@ -157,7 +157,7 @@ client.Jobs.List(config.ResourceGroup, config.AccountName, VideoAnalyzerTransfor
 
 下表显示了如何将筛选和排序选项应用于不同实体：
 
-|实体名称|属性名称|筛选器|顺序|
+|实体名称|属性名称|筛选器|订单|
 |---|---|---|---|
 |[资产](https://docs.microsoft.com/rest/api/media/assets/)|name|`eq`、`gt`、`lt`、`ge`、`le`|`asc` 和 `desc`|
 ||properties.alternateId |`eq`||

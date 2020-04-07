@@ -1,6 +1,6 @@
 ---
-title: Azure 媒体服务中的 LiveEvent 延迟 | Microsoft Docs
-description: 本主题概述了 LiveEvent 延迟，并展示了如何设置较低的延迟。
+title: Azure 媒体服务中的 LiveEvent 低延迟设置 | Microsoft Docs
+description: 本主题概述 LiveEvent 低延迟设置，并说明如何设置低延迟。
 services: media-services
 documentationcenter: ''
 author: WenJason
@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
 origin.date: 04/22/2019
-ms.date: 09/23/2019
+ms.date: 04/06/2020
 ms.author: v-jay
-ms.openlocfilehash: a26f55a9c08ed582a8383963c55eb1204eebaa41
-ms.sourcegitcommit: 8248259e4c3947aa0658ad6c28f54988a8aeebf8
+ms.openlocfilehash: d980734c2ef277b0547bdbe2e466a00c23eb54a2
+ms.sourcegitcommit: fe9ed98aaee287a21648f866bb77cb6888f75b0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71125577"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80625664"
 ---
-# <a name="live-event-latency-in-media-services"></a>媒体服务中的直播活动延迟
+# <a name="live-event-low-latency-settings"></a>直播活动低延迟设置
 
 本文展示了如何在[直播活动](https://docs.microsoft.com/rest/api/media/liveevents)上设置较低的延迟。 它还讨论了在各种播放器中使用低延迟设置时看到的典型结果。 结果因网络延迟而异。
 

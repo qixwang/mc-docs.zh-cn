@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/04/2020
+ms.date: 04/01/2020
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: 5e7b67fe9c28c89187f7012679eaf364e8029b7b
-ms.sourcegitcommit: 1ac138a9e7dc7834b5c0b62a133ca5ce2ea80054
+ms.openlocfilehash: f2ff27e7778cf514cd03e11de0d7b7fddfbf0ff8
+ms.sourcegitcommit: 64584c0bf31b4204058ae2b4641356b904ccdd58
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78265953"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80581589"
 ---
 # <a name="about-claim-resolvers-in-azure-active-directory-b2c-custom-policies"></a>关于 Azure Active Directory B2C 自定义策略中的声明解析程序
 
@@ -66,16 +66,18 @@ Azure Active Directory B2C (Azure AD B2C) [自定义策略](custom-policy-overvi
 
 | 声明 | 说明 | 示例 |
 | ----- | ----------- | --------|
-| {OIDC:AuthenticationContextReferences} |`acr_values` 查询字符串参数。 | 不适用 |
+| {OIDC:AuthenticationContextReferences} |`acr_values` 查询字符串参数。 | 空值 |
 | {OIDC:ClientId} |`client_id` 查询字符串参数。 | 00000000-0000-0000-0000-000000000000 |
 | {OIDC:DomainHint} |`domain_hint` 查询字符串参数。 |  |
 | {OIDC:LoginHint} |  `login_hint` 查询字符串参数。 | someone@contoso.com |
-| {OIDC:MaxAge} | `max_age`。 | 不适用 |
+| {OIDC:MaxAge} | `max_age`。 | 空值 |
 | {OIDC:Nonce} |`Nonce` 查询字符串参数。 | defaultNonce |
+| {OIDC:Password}| 资源所有者密码凭据流用户的密码。| password1| 
 | {OIDC:Prompt} | `prompt` 查询字符串参数。 | 登录 |
+| {OIDC:RedirectUri} |`redirect_uri` 查询字符串参数。 | https://jwt.ms |
 | {OIDC:Resource} |`resource` 查询字符串参数。 | 不适用 |
 | {OIDC:scope} |`scope` 查询字符串参数。 | openid |
-| {OIDC:RedirectUri} |`redirect_uri` 查询字符串参数。 | https://jwt.ms |
+| {OIDC:Username}| 资源所有者密码凭据流用户的用户名。| emily@contoso.com| 
 
 ### <a name="context"></a>上下文
 
@@ -94,7 +96,7 @@ Azure Active Directory B2C (Azure AD B2C) [自定义策略](custom-policy-overvi
 
 | 声明 | 说明 | 示例 |
 | ----- | ----------------------- | --------|
-| {OAUTH-KV:campaignId} | 查询字符串参数。 | hawaii |
+| {OAUTH-KV:campaignId} | 查询字符串参数。 | Hawaii |
 | {OAUTH-KV:app_session} | 查询字符串参数。 | A3C5R |
 | {OAUTH-KV:loyalty_number} | 查询字符串参数。 | 1234 |
 | {OAUTH-KV:any custom query string} | 查询字符串参数。 | 不适用 |
@@ -112,7 +114,7 @@ Azure Active Directory B2C (Azure AD B2C) [自定义策略](custom-policy-overvi
 | ----- | ----------- | --------|
 | {SAML:AuthnContextClassReferences} | SAML 请求中的 `AuthnContextClassRef` 元素值。 | urn:oasis:names:tc:SAML:2.0:ac:classes:PasswordProtectedTransport |
 | {SAML:NameIdPolicyFormat} | SAML 请求的 `NameIDPolicy` 元素中的 `Format` 特性。 | urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress |
-| {SAML:Issuer} |  SAML 请求的 SAML `Issuer` 元素。| https://contoso.com |
+| {SAML:Issuer} |  SAML 请求的 SAML `Issuer` 元素。| `https://contoso.com` |
 | {SAML:AllowCreate} | SAML 请求的 `NameIDPolicy` 元素中的 `AllowCreate` 特性值。 | True |
 | {SAML:ForceAuthn} | SAML 请求的 `AuthnRequest` 元素中的 `ForceAuthN` 特性值。 | True |
 | {SAML:ProviderName} | SAML 请求的 `AuthnRequest` 元素中的 `ProviderName` 特性值。| Contoso.com |
@@ -142,7 +144,7 @@ Azure Active Directory B2C (Azure AD B2C) [自定义策略](custom-policy-overvi
 
 ### <a name="restful-technical-profile"></a>RESTful 技术配置文件
 
-在 [RESTful](restful-technical-profile.md) 技术配置文件中，可能想要发送用户语言、策略名称、作用域和客户端 ID。 根据这些声明，REST API 可以运行自定义业务逻辑，并提出已本地化的错误消息（如有必要）。
+在 [RESTful](restful-technical-profile.md) 技术配置文件中，可能想要发送用户语言、策略名称、作用域和客户端 ID。 根据这些声明，REST API 可以运行自定义业务逻辑，并引发已本地化的错误消息（如有必要）。
 
 以下示例演示了具有此方案的一个 RESTful 技术配置文件：
 
@@ -174,7 +176,7 @@ Azure Active Directory B2C (Azure AD B2C) [自定义策略](custom-policy-overvi
 
 通过 Azue AD B2C，可将查询字符串参数传递给 HTML 内容定义终结点，以便动态呈现页面内容。 例如，这允许基于从 Web 或移动应用程序传递的自定义参数，更改 Azure AD B2C 注册或登录页面上的背景图像。 此外，还可以根据语言参数本地化 HTML 页，或者根据客户端 ID 更改内容。
 
-以下示例传入了名为 **campaignId** 且值为 `hawaii` 的查询字符串参数、**language** 代码 `en-US` 以及表示客户端 ID 的 **app**：
+以下示例传入了名为 **campaignId** 且值为 `Hawaii` 的查询字符串参数、**language** 代码 `en-US` 以及表示客户端 ID 的 **app**：
 
 ```XML
 <UserJourneyBehaviors>

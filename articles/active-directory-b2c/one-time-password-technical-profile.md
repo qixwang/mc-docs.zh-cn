@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/16/2020
+ms.date: 04/01/2020
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: d48fddf094b4d2eaa370a3f5e26b67521ebefb6c
-ms.sourcegitcommit: 71a386ca0d0ecb79a123399b6ab6b8c70ea2aa78
+ms.openlocfilehash: a2841bcd1bdd3661d10b1884746f94eb0fc2eb12
+ms.sourcegitcommit: 64584c0bf31b4204058ae2b4641356b904ccdd58
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2020
-ms.locfileid: "79497186"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80581639"
 ---
 # <a name="define-a-one-time-password-technical-profile-in-an-azure-ad-b2c-custom-policy"></a>在 Azure AD B2C 自定义策略中定义一次性密码技术配置文件
 
@@ -80,10 +80,6 @@ OutputClaims 元素包含由一次性密码协议提供程序生成的声明列�
 | 操作 | 是 | 要执行的操作。 可能的值：`GenerateCode`。 |
 | ReuseSameCode | 否 | 给定代码未过期且仍然有效时，是否应提供重复的代码而不生成新代码。 默认值为 `false`。 |
 
-### <a name="returning-error-message"></a>返回错误消息
-
-代码生成模式没有返回错误消息。
-
 ### <a name="example"></a>示例
 
 下面的示例 `TechnicalProfile` 用于生成代码：
@@ -139,9 +135,9 @@ InputClaimsTransformations 元素可以包含 InputClaimsTransformation 元素�
 | 操作 | 是 | 要执行的操作。 可能的值：`VerifyCode`。 |
 
 
-### <a name="error-messages"></a>错误消息
+### <a name="ui-elements"></a>UI 元素
 
-以下设置可用于配置代码验证失败时显示的错误消息。 元数据应该在[自断言](self-asserted-technical-profile.md)技术配置文件中进行配置。 可以将错误消息[本地化](localization-string-ids.md#one-time-password-error-messages)。
+以下元数据可用于配置在代码验证失败时显示的错误消息。 元数据应该在[自断言](self-asserted-technical-profile.md)技术配置文件中进行配置。 可以将错误消息[本地化](localization-string-ids.md#one-time-password-error-messages)。
 
 | 属性 | 必须 | 说明 |
 | --------- | -------- | ----------- |

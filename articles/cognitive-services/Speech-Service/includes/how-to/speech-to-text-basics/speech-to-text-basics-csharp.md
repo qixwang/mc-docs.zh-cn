@@ -5,12 +5,12 @@ ms.topic: include
 origin.date: 03/11/2020
 ms.date: 03/16/2020
 ms.author: v-tawe
-ms.openlocfilehash: 9cfdd333a6d101812b0b60f12d60b09d4cadb8f4
-ms.sourcegitcommit: b2f2bb08ab1b5ccb3c596d84b3b6ddca5bba3903
+ms.openlocfilehash: 6946a33f680004db80ea12592eb7259c7b059402
+ms.sourcegitcommit: c11cf8d623535943168d5cb43afef2d27a271765
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80151765"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80388737"
 ---
 ## <a name="prerequisites"></a>先决条件
 
@@ -103,7 +103,7 @@ var result = await recognizer.RecognizeOnceAsync();
 需要编写一些代码来处理结果。 此示例计算 [`result.Reason`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.recognitionresult.reason?view=azure-dotnet)：
 
 * 输出识别结果：`ResultReason.RecognizedSpeech`
-* 如果没有识别匹配项，则通知用户：`ResultReason.NoMatch`
+* 如果没有识别匹配项，请通知用户：`ResultReason.NoMatch`
 * 如果遇到错误，则输出错误消息：`ResultReason.Canceled`
 
 ```csharp
@@ -207,7 +207,7 @@ await recognizer.StopContinuousRecognitionAsync();
 
 ### <a name="dictation-mode"></a>听写模式
 
-使用连续识别时，可以通过相应的“启用听写”功能来启用听写处理。 此模式会促使语音配置实例解释对句子结构（如标点符号）进行的字面描述。 例如，“Do you live in town question mark”会被解释为“Do you live in town?”。
+使用连续识别时，可以使用相应的“启用听写”功能启用听写处理。 此模式会促使语音配置实例解释对句子结构（如标点符号）进行的字面描述。 例如，言语“你居住在城镇吗问号”会被解释为文本“你居住在城镇吗？”。
 
 若要启用听写模式，请对 [`SpeechConfig`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig?view=azure-dotnet) 使用 [`EnableDictation`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig.enabledictation?view=azure-dotnet) 方法。
 
@@ -217,17 +217,17 @@ speechConfig.EnableDictation();
 
 ## <a name="change-source-language"></a>更改源语言
 
-语音识别的常见任务是指定输入（或源）语言。 让我们看看如何将输入语言更改为意大利语。 在代码中找到 [`SpeechConfig`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig?view=azure-dotnet)，并直接在其下方添加此行。
+语音识别的常见任务是指定输入（或源）语言。 让我们看看如何将输入语言更改为韩语。 在代码中找到 [`SpeechConfig`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig?view=azure-dotnet)，并直接在其下方添加此行。
 
 ```csharp
-speechConfig.SpeechRecognitionLanguage = "it-IT";
+speechConfig.SpeechRecognitionLanguage = "ko-KR";
 ```
 
 [`SpeechRecognitionLanguage`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig.speechrecognitionlanguage?view=azure-dotnet) 属性需要语言区域设置格式字符串。 可以提供受支持的[区域设置/语言](../../../language-support.md)的列表中“区域设置”列中的任何值  。
 
 ## <a name="improve-recognition-accuracy"></a>提高识别准确度
 
-可以通过多种方式使用语音 SDK 来提高识别的准确度。 让我们看一下短语列表。 短语列表用于确定音频数据中的已知短语，例如某个人的姓名或特定位置。 可以向短语列表添加单个单词或完整短语。 在识别期间，如果音频中包含整个短语的完全匹配项，则使用短语列表中的条目。 如果找不到与该短语的完全匹配项，则不会帮助识别。
+可以通过多种方式使用语音 SDK 来提高识别的准确度。 让我们看一下短语列表。 短语列表用于标识音频数据中的已知短语，如人的姓名或特定位置。 可以将单个词或完整短语添加到短语列表。 在识别期间，如果音频中包含整个短语的完全匹配项，则使用短语列表中的条目。 如果找不到与短语完全匹配的项，则不支持识别。
 
 > [!IMPORTANT]
 > 短语列表特征仅以英语提供。

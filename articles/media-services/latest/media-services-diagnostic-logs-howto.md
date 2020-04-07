@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 origin.date: 07/08/2019
-ms.date: 03/04/2020
+ms.date: 04/06/2020
 ms.author: v-jay
-ms.openlocfilehash: c5b9577bce33a7af73c5ce3bdac9134a1ec9c9fa
-ms.sourcegitcommit: fbc7584f403417d3af7bd6bbbaed7c13a78c57b9
+ms.openlocfilehash: 1e63d516e1b8cbabddd4d2653d42f8d12e7b6b1a
+ms.sourcegitcommit: fe9ed98aaee287a21648f866bb77cb6888f75b0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78412632"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80625789"
 ---
 # <a name="monitor-media-services-diagnostic-logs"></a>监视媒体服务诊断日志
 
@@ -28,7 +28,7 @@ ms.locfileid: "78412632"
 
 可以通过 [Azure Monitor](../../azure-monitor/overview.md) 监视指标和诊断日志，以便了解应用程序的执行情况。 有关此功能的详细说明以及使用 Azure 媒体服务指标和诊断日志的原因，请参阅[监视媒体服务指标和诊断日志](media-services-metrics-diagnostic-logs.md)。
 
-本文介绍如何将数据路由到存储帐户并查看数据。 
+本文介绍如何将数据路由到存储帐户并查看数据。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -38,7 +38,7 @@ ms.locfileid: "78412632"
 ## <a name="route-data-to-the-storage-account-using-the-portal"></a>使用门户将数据路由到存储帐户
 
 1. 在 https://portal.azure.cn 登录 Azure 门户。
-1. 导航到其中的媒体服务帐户，然后单击“监视”下的“诊断设置”。   在此处查看订阅中所有资源的列表，这些资源通过 Azure Monitor 生成监视数据。 
+1. 导航到其中的媒体服务帐户，然后单击“监视”下的“诊断设置”。   在此处查看订阅中所有资源的列表，这些资源通过 Azure Monitor 生成监视数据。
 
     ![诊断设置部分](media/media-services-diagnostic-logs/logs01.png)
 
@@ -57,11 +57,11 @@ ms.locfileid: "78412632"
 
 现在，资源的监视数据将流入到存储帐户。
 
-## <a name="route-data-to-the-storage-account-using-the-cli"></a>使用 CLI 将数据路由到存储帐户
+## <a name="route-data-to-the-storage-account-using-the-azure-cli"></a>使用 Azure CLI 将数据路由到存储帐户
 
-若要允许在存储帐户中存储诊断日志，请运行以下 `az monitor diagnostic-settings` CLI 命令： 
+若要允许在存储帐户中存储诊断日志，请运行以下 `az monitor diagnostic-settings` Azure CLI 命令：
 
-```cli
+```azurecli
 az monitor diagnostic-settings create --name <diagnostic name> \
     --storage-account <name or ID of storage account> \
     --resource <target resource object ID> \
@@ -79,7 +79,7 @@ az monitor diagnostic-settings create --name <diagnostic name> \
 
 例如：
 
-```cli
+```azurecli
 az monitor diagnostic-settings create --name amsv3diagnostic \
     --storage-account storageaccountforams  \
     --resource "/subscriptions/00000000-0000-0000-0000-0000000000/resourceGroups/amsResourceGroup/providers/Microsoft.Media/mediaservices/amsaccount" \

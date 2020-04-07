@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure RBAC 和 REST API 添加或删除角色分配
+title: 使用 RBAC 和 REST API 添加或删除角色分配
 description: 了解如何使用 Azure 基于角色的访问控制 (RBAC) 和 REST API 为用户、组、服务主体或托管标识授予对 Azure 资源的访问权限。
 services: active-directory
 documentationcenter: na
@@ -12,21 +12,21 @@ ms.workload: multiple
 ms.tgt_pltfrm: rest-api
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/10/2020
+ms.date: 03/31/2020
 ms.author: v-junlch
 ms.reviewer: bagovind
-ms.openlocfilehash: 9cb3451248321bb540dc252b52d6a290a659d6ce
-ms.sourcegitcommit: 99bd0019c5f01034b8765d7765ad7776c7d5e5ae
+ms.openlocfilehash: 00e4f89f49c98d758bb8d752479ca917f2d58318
+ms.sourcegitcommit: 64584c0bf31b4204058ae2b4641356b904ccdd58
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77128828"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80581724"
 ---
 # <a name="add-or-remove-role-assignments-using-azure-rbac-and-the-rest-api"></a>使用 Azure RBAC 和 REST API 添加或删除角色分配
 
 [!INCLUDE [Azure RBAC definition grant access](../../includes/role-based-access-control-definition-grant.md)] 本文介绍如何使用 REST API 分配角色。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要添加或删除角色分配，必须拥有以下权限：
 
@@ -57,23 +57,27 @@ ms.locfileid: "77128828"
 
 1. 在 URI 内，将“{scope}”  替换为角色分配的范围。
 
-    | 作用域 | 类型 |
-    | --- | --- |
-    | `providers/Microsoft.Management/managementGroups/{groupId1}` | 管理组 |
-    | `subscriptions/{subscriptionId1}` | 订阅 |
-    | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1` | 资源组 |
-    | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1/ providers/microsoft.web/sites/mysite1` | 资源 |
+    > [!div class="mx-tableFixed"]
+    > | 作用域 | 类型 |
+    > | --- | --- |
+    > | `providers/Microsoft.Management/managementGroups/{groupId1}` | 管理组 |
+    > | `subscriptions/{subscriptionId1}` | 订阅 |
+    > | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1` | 资源组 |
+    > | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1/providers/microsoft.web/sites/mysite1` | 资源 |
+
+    在前面的示例中，microsoft.web 是引用应用服务实例的资源提供程序。 同样，可以使用任何其他资源提供程序并指定范围。 有关详细信息，请参阅 [Azure 资源提供程序和类型](../azure-resource-manager/management/resource-providers-and-types.md)和支持的 [Azure 资源管理器资源提供程序操作](resource-provider-operations.md)。  
 
 1. 将“{roleAssignmentName}”  替换为角色分配的 GUID 标识符。
 
 1. 在请求正文中，将 *{scope}* 替换为角色分配的范围。
 
-    | 作用域 | 类型 |
-    | --- | --- |
-    | `providers/Microsoft.Management/managementGroups/{groupId1}` | 管理组 |
-    | `subscriptions/{subscriptionId1}` | 订阅 |
-    | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1` | 资源组 |
-    | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1/ providers/microsoft.web/sites/mysite1` | 资源 |
+    > [!div class="mx-tableFixed"]
+    > | 作用域 | 类型 |
+    > | --- | --- |
+    > | `providers/Microsoft.Management/managementGroups/{groupId1}` | 管理组 |
+    > | `subscriptions/{subscriptionId1}` | 订阅 |
+    > | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1` | 资源组 |
+    > | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1/providers/microsoft.web/sites/mysite1` | 资源 |
 
 1. 将“{roleDefinitionId}”  替换为角色定义标识符。
 
@@ -93,12 +97,13 @@ ms.locfileid: "77128828"
 
 1. 在 URI 内，将“{scope}”  替换为删除角色分配的范围。
 
-    | 作用域 | 类型 |
-    | --- | --- |
-    | `providers/Microsoft.Management/managementGroups/{groupId1}` | 管理组 |
-    | `subscriptions/{subscriptionId1}` | 订阅 |
-    | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1` | 资源组 |
-    | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1/ providers/microsoft.web/sites/mysite1` | 资源 |
+    > [!div class="mx-tableFixed"]
+    > | 作用域 | 类型 |
+    > | --- | --- |
+    > | `providers/Microsoft.Management/managementGroups/{groupId1}` | 管理组 |
+    > | `subscriptions/{subscriptionId1}` | 订阅 |
+    > | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1` | 资源组 |
+    > | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1/providers/microsoft.web/sites/mysite1` | 资源 |
 
 1. 将“{roleAssignmentName}”  替换为角色分配的 GUID 标识符。
 
@@ -109,4 +114,3 @@ ms.locfileid: "77128828"
 - [Azure REST API 参考](https://docs.microsoft.com/rest/api/azure/)
 - [使用 REST API 为 Azure 资源创建自定义角色](custom-roles-rest.md)
 
-<!-- Update_Description: link update -->

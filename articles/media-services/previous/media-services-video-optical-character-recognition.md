@@ -13,16 +13,20 @@ ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 origin.date: 03/20/2019
-ms.date: 09/23/2019
+ms.date: 04/06/2020
 ms.author: v-jay
-ms.openlocfilehash: 0b1231af66fe455db9aa9ccc6730fcb17b26c147
-ms.sourcegitcommit: 8248259e4c3947aa0658ad6c28f54988a8aeebf8
+ms.openlocfilehash: f690958ef0f39aa062fb40bbbcb73ff2325cac63
+ms.sourcegitcommit: fe9ed98aaee287a21648f866bb77cb6888f75b0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71124661"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80625710"
 ---
 # <a name="use-azure-media-analytics-to-convert-text-content-in-video-files-into-digital-text"></a>使用 Azure 媒体分析将视频文件中的文本内容转换为数字文本  
+
+> [!NOTE]
+> Azure Media OCR  媒体处理器将停用。 有关停用日期，请参阅此[旧组件](legacy-components.md)主题。
+
 ## <a name="overview"></a>概述
 如果需要提取视频文件的文本内容，并生成可编辑、可搜索的数字文本，则应该使用 Azure 媒体分析 OCR（光学字符识别）。 此 Azure 媒体处理器可检测视频文件的文本内容并生成文本文件供你使用。 OCR 可让你从媒体的视频信号中自动提取有意义的元数据。
 
@@ -367,5 +371,5 @@ namespace OCR
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
 ## <a name="related-links"></a>相关链接
-[Azure 媒体服务分析概述](media-services-analytics-overview.md)
+[Azure Media Services Analytics Overview（Azure 媒体服务分析概述）](media-services-analytics-overview.md)
 

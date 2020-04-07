@@ -1,6 +1,6 @@
 ---
 title: Azure 媒体服务 LiveEvent 类型 | Microsoft Docs
-description: 在 Azure 媒体服务中，直播活动可以是以下两种类型之一：实时编码和直通。 本文显示了比较直播活动类型的详细表格。
+description: 在 Azure 媒体服务中，可以将直播活动设为“直通”  或“实时编码”  。 本文显示了比较直播活动类型的详细表格。
 services: media-services
 documentationcenter: ''
 author: WenJason
@@ -12,18 +12,20 @@ ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
 origin.date: 06/13/2019
-ms.date: 02/24/2020
+ms.date: 04/06/2020
 ms.author: v-jay
-ms.openlocfilehash: e5df7f878a43ebc8e84cd6a41127a708a446a7a4
-ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
+ms.openlocfilehash: ec88fc6001035ecbed3202d25493d0e9b6b1128d
+ms.sourcegitcommit: fe9ed98aaee287a21648f866bb77cb6888f75b0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77494063"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80625788"
 ---
 # <a name="live-event-types-comparison"></a>实时事件类型比较
 
-在 Azure 媒体服务中，[直播活动](https://docs.microsoft.com/rest/api/media/liveevents)可以是下述两种类型之一：实时编码和直通。 
+在 Azure 媒体服务中，可以将[直播活动](https://docs.microsoft.com/rest/api/media/liveevents)设为“直通”  （本地实时编码器发送多比特率流）或“实时编码”  （本地实时编码器发送单比特率流）。 
+
+本文对直播活动类型的功能进行了比较。
 
 ## <a name="types-comparison"></a>类型比较 
 
@@ -39,7 +41,7 @@ ms.locfileid: "77494063"
 | 贡献源的最大视频分辨率 |4K（4096x2160，60 帧/秒） |1080p（1920x1088，30 帧/秒）|
 | 贡献源中建议的最大层数|最大为 12|1 个音频|
 | 输出中的最大层数| 与输入相同|最多 6 个（请参阅下面的“系统预设”）|
-| 贡献源的最大聚合带宽|60 Mbps|不适用|
+| 贡献源的最大聚合带宽|60 Mbps|空值|
 | 贡献中单个层的最大比特率 |20 Mbps|20 Mbps|
 | 支持多语言音轨|是|否|
 | 支持的输入视频编解码器 |H.264/AVC 和 H.265/HEVC|H.264/AVC|

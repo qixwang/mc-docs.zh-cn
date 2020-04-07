@@ -1,17 +1,16 @@
 ---
 title: 了解如何审核虚拟机的内容
 description: 了解 Azure Policy 如何使用来宾配置代理审核虚拟机内部的设置。
-author: DCtheGeek
 ms.author: v-tawe
 origin.date: 11/04/2019
-ms.date: 03/16/2020
+ms.date: 03/30/2020
 ms.topic: conceptual
-ms.openlocfilehash: 0df86addced664b9c215a1925556b5e858c3a566
-ms.sourcegitcommit: 1d3d8dfdaf6281f06640cbee7124a1e8bf102c50
+ms.openlocfilehash: 462103eae975e3fe45724fe0c85c00236c122c6a
+ms.sourcegitcommit: 260800ede66f48c886d1426a0fac18b4d402b4f2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "80243915"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586785"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>了解 Azure Policy 的来宾配置
 
@@ -82,7 +81,7 @@ Register-AzResourceProvider -ProviderNamespace 'Microsoft.GuestConfiguration'
 |Microsoft|Windows Server|2012 Datacenter、2012 R2 Datacenter、2016 Datacenter、2019 Datacenter|
 |Microsoft|Windows 客户端|Windows 10|
 |OpenLogic|CentOS|7.3、7.4、7.5|
-|Red Hat|Red Hat Enterprise Linux|7.4、7.5|
+|Red Hat|Red Hat Enterprise Linux|7.4、7.5、7.6|
 |Suse|SLES|12 SP3|
 
 > [!IMPORTANT]
@@ -150,15 +149,15 @@ Guest Configuration 策略目前仅支持为每台计算机分配相同的来宾
 
 Guest Configuration 扩展将日志文件写入以下位置：
 
-Windows： `C:\Packages\Plugins\Microsoft.GuestConfiguration.ConfigurationforWindows\<version>\dsc\logs\dsc.log`
+Windows： `C:\ProgramData\GuestConfig\gc_agent_logs\gc_agent.log`
 
-Linux：`/var/lib/waagent/Microsoft.GuestConfiguration.ConfigurationforLinux-<version>/GCAgent/logs/dsc.log`
+Linux：`/var/lib/GuestConfig/gc_agent_logs/gc_agent.log`
 
 其中 `<version>` 表示当前版本号。
 
 ### <a name="collecting-logs-remotely"></a>远程收集日志
 
-排查 Guest Configuration 配置或模块问题的第一步应该是遵循[测试 Guest Configuration 包](../how-to/guest-configuration-create.md#test-a-guest-configuration-package)中的步骤使用 `Test-GuestConfigurationPackage` cmdlet。
+排查 Guest Configuration 配置或模块问题的第一步应该是按照如何[为 Windows 创建自定义 Guest Configuration 审核策略](../how-to/guest-configuration-create.md#step-by-step-creating-a-custom-guest-configuration-audit-policy-for-windows)的步骤使用 `Test-GuestConfigurationPackage` cmdlet。
 如果这种做法无效，收集客户端日志可能会有助于诊断问题。
 
 #### <a name="windows"></a>Windows
@@ -168,8 +167,8 @@ Linux：`/var/lib/waagent/Microsoft.GuestConfiguration.ConfigurationforLinux-<ve
 ```powershell
 $linesToIncludeBeforeMatch = 0
 $linesToIncludeAfterMatch = 10
-$latestVersion = Get-ChildItem -Path 'C:\Packages\Plugins\Microsoft.GuestConfiguration.ConfigurationforWindows\' | ForEach-Object {$_.FullName} | Sort-Object -Descending | Select-Object -First 1
-Select-String -Path "$latestVersion\dsc\logs\dsc.log" -pattern 'DSCEngine','DSCManagedEngine' -CaseSensitive -Context $linesToIncludeBeforeMatch,$linesToIncludeAfterMatch | Select-Object -Last 10
+$logPath = 'C:\ProgramData\GuestConfig\gc_agent_logs\gc_agent.log'
+Select-String -Path $logPath -pattern 'DSCEngine','DSCManagedEngine' -CaseSensitive -Context $linesToIncludeBeforeMatch,$linesToIncludeAfterMatch | Select-Object -Last 10
 ```
 
 #### <a name="linux"></a>Linux
@@ -179,8 +178,8 @@ Select-String -Path "$latestVersion\dsc\logs\dsc.log" -pattern 'DSCEngine','DSCM
 ```Bash
 linesToIncludeBeforeMatch=0
 linesToIncludeAfterMatch=10
-latestVersion=$(find /var/lib/waagent/ -type d -name "Microsoft.GuestConfiguration.ConfigurationforLinux-*" -maxdepth 1 -print | sort -z | sed -n 1p)
-egrep -B $linesToIncludeBeforeMatch -A $linesToIncludeAfterMatch 'DSCEngine|DSCManagedEngine' "$latestVersion/GCAgent/logs/dsc.log" | tail
+logPath=/var/lib/GuestConfig/gc_agent_logs/gc_agent.log
+egrep -B $linesToIncludeBeforeMatch -A $linesToIncludeAfterMatch 'DSCEngine|DSCManagedEngine' $logPath | tail
 ```
 
 ## <a name="guest-configuration-samples"></a>Guest Configuration 示例

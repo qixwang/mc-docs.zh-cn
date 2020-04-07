@@ -1,26 +1,17 @@
 ---
-title: 缓存 ASP.NET 会话状态提供程序 | Microsoft Docs
-description: 了解如何使用 Azure Redis 缓存存储 ASP.NET 会话状态
-services: cache
-documentationcenter: na
+title: 缓存 ASP.NET 会话状态提供程序
+description: 了解如何使用 Azure Cache for Redis 将 ASP.NET 会话状态存储在内存中。
 author: yegu-ms
-manager: jhubbard
-editor: tysonn
-ms.assetid: 192f384c-836a-479a-bb65-8c3e6d6522bb
-ms.service: cache
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: cache
-ms.workload: tbd
-origin.date: 05/01/2017
-ms.date: 06/13/2019
 ms.author: v-junlch
-ms.openlocfilehash: 7b6d39d15b001b814ff73b4a21b3a44f61483ee9
-ms.sourcegitcommit: 4c10e625a71a955a0de69e9b2d10a61cac6fcb06
+ms.service: cache
+ms.topic: conceptual
+ms.date: 03/30/2020
+ms.openlocfilehash: 3d42358fc08c2314e81ece885da4a3de7ec3d613
+ms.sourcegitcommit: 64584c0bf31b4204058ae2b4641356b904ccdd58
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67046944"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80581693"
 ---
 # <a name="aspnet-session-state-provider-for-azure-cache-for-redis"></a>Azure Redis 缓存的 ASP.NET 会话状态提供程序
 
@@ -130,13 +121,17 @@ NuGet 包会下载并添加所需的程序集引用，并将以下节添加到 w
 ## <a name="aspnet-session-state-options"></a>ASP.NET 会话状态选项
 
 * 内存中会话状态提供程序 - 此提供程序将会话状态存储在内存中。 使用此提供程序的好处是它简单且快速。 但是，如果使用内存中提供程序，由于它不是分布式的，因此不能缩放 Web 应用。
-* SQL Server 会话状态提供程序 - 此提供程序将会话状态存储在 SQL Server 中。 如果要在持久性存储区中存储会话状态，请使用此提供程序。 可以缩放 Web 应用，但将 SQL Server 用于会话会对 Web 应用造成性能影响。 还可以将此提供程序与[内存中 OLTP 配置](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2017/11/28/asp-net-session-state-with-sql-server-in-memory-oltp/)一起使用来帮助提高性能。
+* SQL Server 会话状态提供程序 - 此提供程序将会话状态存储在 SQL Server 中。 如果要将会话状态保存在持久性存储中，请使用此提供程序。 可以缩放 Web 应用，但将 SQL Server 用于会话会对 Web 应用造成性能影响。 还可以将此提供程序与[内存中 OLTP 配置](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2017/11/28/asp-net-session-state-with-sql-server-in-memory-oltp/)一起使用来帮助提高性能。
 * 分布式内存中会话状态提供程序（如 Azure Redis 缓存会话状态提供程序） - 此提供程序提供两全其美的功能。 Web 应用可以使用简单、快速且可缩放的会话状态提供程序。 由于此提供程序将会话状态存储在缓存中，应用必须考虑到在与分布式内存中缓存通信时关联的所有特征，如暂时性网络故障。 有关使用缓存的最佳实践，请参阅 Microsoft 模式和实践 [Azure 云应用程序设计和实现指南](https://github.com/mspnp/azure-guidance)中的[缓存指南](../best-practices-caching.md)。
 
 有关会话状态和其他最佳实践的详细信息，请参阅 [Web Development Best Practices (Building Real-World Cloud Apps with Azure)](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/web-development-best-practices)（Web 开发最佳做法（使用 Azure 构建实际的云应用））。
+
+## <a name="third-party-session-state-providers"></a>第三方会话状态提供程序
+
+* [NCache](https://www.alachisoft.com/ncache/session-index.html)
+* [Apache ignite](https://apacheignite-net.readme.io/docs/aspnet-session-state-caching)
 
 ## <a name="next-steps"></a>后续步骤
 
 请查看[用于 Azure Redis 缓存的 ASP.NET 输出缓存提供程序](cache-aspnet-output-cache-provider.md)。
 
-<!-- Update_Description: code update -->

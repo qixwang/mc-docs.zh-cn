@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/04/2020
+ms.date: 04/01/2020
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: 06b4370fa26708fc4457e3f0aa30aeea3df507a4
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: 2d43e3e5df7a4ecfd7d1f26260728b0b89b195a9
+ms.sourcegitcommit: 64584c0bf31b4204058ae2b4641356b904ccdd58
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79291120"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80581592"
 ---
 # <a name="contentdefinitions"></a>ContentDefinitions
 
@@ -70,7 +70,7 @@ ms.locfileid: "79291120"
 | 元素 | 出现次数 | 说明 |
 | ------- | ----------- | ----------- |
 | LoadUri | 1:1 | 一个字符串，包含内容定义 HTML5 页面的 URL。 |
-| RecoveryUri | 1:1 | 一个字符串，包含用于显示内容定义相关错误的 HTML 页面的 URL。 |
+| RecoveryUri | 1:1 | 一个字符串，包含用于显示内容定义相关错误的 HTML 页面的 URL。 当前未使用，此值必须为 `~/common/default_page_error.html`。 |
 | DataUri | 1:1 | 一个字符串，包含一个 HTML 文件的相对 URL，该文件提供要为步骤调用的用户体验。 |
 | Metadata | 0:1 | 一个键/值对集合，包含内容定义使用的元数据。 |
 | LocalizedResourcesReferences | 0:1 | 本地化的资源引用集合。 使用此元素可以自定义用户界面和声明属性的本地化。 |

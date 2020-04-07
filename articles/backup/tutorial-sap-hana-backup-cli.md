@@ -7,12 +7,12 @@ ms.topic: tutorial
 origin.date: 11/7/2019
 ms.date: 03/12/2020
 ms.author: v-lingwu
-ms.openlocfilehash: 456955982f32e6013181f2471d7ba17a98675d4c
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: e183c4f8ada21b79ab2c477593f22ee1954bc275
+ms.sourcegitcommit: 260800ede66f48c886d1426a0fac18b4d402b4f2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79293099"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586764"
 ---
 # <a name="tutorial-back-up-sap-hana-databases-in-an-azure-vm-using-azure-cli"></a>教程：使用 Azure CLI 备份 Azure VM 中的 SAP HANA 数据库
 
@@ -28,8 +28,6 @@ Azure CLI 用于从命令行或通过脚本创建和管理 Azure 资源。 本�
 > * 触发按需备份
 
 查看[目前针对 SAP HANA 提供支持的场景](/backup/sap-hana-backup-support-matrix#scenario-support)。
-
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 若要在本地安装和使用 CLI，必须运行 Azure CLI 版本 xx.xxx.x 或更高版本。 若要查找 CLI 版本，请运行 `az --version`。 如需进行安装或升级，请参阅[安装 Azure CLI](/cli/install-azure-cli)。
 
@@ -99,7 +97,7 @@ VMAppContainer;Compute;saphanaResourceGroup;saphanaVM   saphanaVM        saphana
 ```
 
 >[!NOTE]
-> 以上输出中的“名称”列是指容器名。 以下部分将使用此容器名，以启用备份并触发它们。 在本例中，为 VMAppContainer;Compute;saphanaResourceGroup;saphanaVM  。
+> 以上输出中的“name”列是指容器名。 以下部分将使用此容器名，以启用备份并触发它们。 在本例中，为 VMAppContainer;Compute;saphanaResourceGroup;saphanaVM  。
 
 ## <a name="enable-backup-on-sap-hana-database"></a>在 SAP HANA 数据库上启用备份
 

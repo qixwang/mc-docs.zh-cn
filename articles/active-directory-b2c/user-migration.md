@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 03/04/2020
+ms.date: 04/01/2020
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: a3af9e173e4759e2c47319df99f4deb9f04655eb
-ms.sourcegitcommit: 1ac138a9e7dc7834b5c0b62a133ca5ce2ea80054
+ms.openlocfilehash: 3fc279814eac6f326c05fe331be394febfd8fda5
+ms.sourcegitcommit: 64584c0bf31b4204058ae2b4641356b904ccdd58
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78266084"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80581677"
 ---
 # <a name="migrate-users-to-azure-ad-b2c"></a>将用户迁移到 Azure AD B2C
 
@@ -43,7 +43,7 @@ ms.locfileid: "78266084"
 - 密码是以单向加密格式存储的（例如，使用哈希函数）。
 - 旧式标识提供者以你无法访问的方式存储了密码。 例如，标识提供者通过调用 Web 服务来验证凭据。
 
-无缝迁移流仍需批量迁移用户帐户，但随后会使用[自定义策略](restful-technical-profile.md)来查询某个 REST API（由你创建），以便在首次登录时设置每个用户的密码。
+无缝迁移流仍需批量迁移用户帐户，但随后会使用自定义策略来查询某个 [REST API](custom-policy-rest-api-intro.md)（由你创建），以便在每个用户首次登录时设置其密码。
 
 因此，无缝迁移流包括两个阶段：批量导入和设置凭据。  
 
@@ -73,7 +73,7 @@ ms.locfileid: "78266084"
 
 无缝迁移方法使用你自己的自定义 REST API 根据旧标识提供者验证用户的凭据。
 
-**必须保护 REST API，使其免遭暴力破解攻击。** 攻击者可能会提交多个密码，最终猜出用户的凭据。 为了帮助抵御此类攻击，请在登录尝试次数超过特定的阈值时，停止向 REST API 提供请求。 此外，使用客户端证书保护 Azure AD B2C 与 REST API 之间的通信。
+**必须保护 REST API，使其免遭暴力破解攻击。** 攻击者可能会提交多个密码，最终猜出用户的凭据。 为了帮助抵御此类攻击，请在登录尝试次数超过特定的阈值时，停止向 REST API 提供请求。 此外，请保护 Azure AD B2C 与 REST API 之间的通信。 
 
 ### <a name="user-attributes"></a>用户属性
 

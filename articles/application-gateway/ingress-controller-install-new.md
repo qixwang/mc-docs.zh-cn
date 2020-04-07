@@ -5,15 +5,14 @@ services: application-gateway
 author: caya
 ms.service: application-gateway
 ms.topic: article
-origin.date: 11/04/2019
-ms.date: 11/19/2019
+ms.date: 03/30/2020
 ms.author: v-junlch
-ms.openlocfilehash: 9558f548b4b30d359a490930cc5a231b90db6b50
-ms.sourcegitcommit: fdbd1b6df618379dfeab03044a18c373b5fbb8ec
+ms.openlocfilehash: bddc1ad479742368da5b0f4d5898b3e3849ef3d7
+ms.sourcegitcommit: 64584c0bf31b4204058ae2b4641356b904ccdd58
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74328447"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80581662"
 ---
 # <a name="how-to-install-an-application-gateway-ingress-controller-agic-using-a-new-application-gateway"></a>如何安装使用新应用程序网关的应用程序网关入口控制器 (AGIC)
 
@@ -34,7 +33,7 @@ ms.locfileid: "74328447"
 遵循以下步骤创建 Azure Active Directory (AAD) [服务主体对象](/active-directory/develop/app-objects-and-service-principals#service-principal-object)。 请记下 `appId`、`password` 和 `objectId` 值 - 在后续步骤中需要用到。
 
 1. 创建 AD 服务主体（[详细了解 RBAC](/role-based-access-control/overview)）：
-    ```bash
+    ```azurecli
     az ad sp create-for-rbac --skip-assignment -o json > auth.json
     appId=$(jq -r ".appId" auth.json)
     password=$(jq -r ".password" auth.json)
@@ -43,7 +42,7 @@ ms.locfileid: "74328447"
 
 
 1. 使用上一命令的输出中的 `appId` 获取新服务主体的 `objectId`：
-    ```bash
+    ```azurecli
     objectId=$(az ad sp show --id $appId --query "objectId" -o tsv)
     ```
     此命令的输出为 `objectId`，在下面所述的 Azure 资源管理器模板中将要用到此值
@@ -76,7 +75,7 @@ ms.locfileid: "74328447"
     ```
 
 1. 使用 `az cli` 部署该 Azure 资源管理器模板。 此步骤最多可能需要 5 分钟。
-    ```bash
+    ```azurecli
     resourceGroupName="MyResourceGroup"
     location="chinanorth2"
     deploymentName="ingress-appgw"
@@ -93,7 +92,7 @@ ms.locfileid: "74328447"
     ```
 
 1. 部署完成后，将部署输出下载到名为 `deployment-outputs.json` 的文件中。
-    ```bash
+    ```azurecli
     az group deployment show -g $resourceGroupName -n $deploymentName --query "properties.outputs" -o json > deployment-outputs.json
     ```
 
@@ -105,7 +104,7 @@ ms.locfileid: "74328447"
 对于以下步骤，需要设置 [kubectl](https://kubectl.docs.kubernetes.io/) 命令用于连接到新的 Kubernetes 群集。 我们将使用 `az` CLI 获取 Kubernetes 的凭据。
 
 获取新部署的 AKS 的凭据（[详细了解](/aks/kubernetes-walkthrough#connect-to-the-cluster)）：
-```bash
+```azurecli
 # use the deployment-outputs.json created after deployment to get the cluster name and resource group name
 aksClusterName=$(jq -r ".aksClusterName.value" deployment-outputs.json)
 resourceGroupName=$(jq -r ".resourceGroupName.value" deployment-outputs.json)
@@ -126,15 +125,15 @@ az aks get-credentials --resource-group $resourceGroupName --name $aksClusterNam
 
    - 已启用 RBAC 的 AKS 群集 
 
-    ```bash
-    kubectl create -f https://raw.githubusercontent.com/Azure/aad-pod-identity/master/deploy/infra/deployment-rbac.yaml
-    ```
+     ```bash
+     kubectl create -f https://raw.githubusercontent.com/Azure/aad-pod-identity/master/deploy/infra/deployment-rbac.yaml
+     ```
 
    - 已禁用 RBAC 的 AKS 群集 
 
-    ```bash
-    kubectl create -f https://raw.githubusercontent.com/Azure/aad-pod-identity/master/deploy/infra/deployment.yaml
-    ```
+     ```bash
+     kubectl create -f https://raw.githubusercontent.com/Azure/aad-pod-identity/master/deploy/infra/deployment.yaml
+     ```
 
 ### <a name="install-helm"></a>安装 Helm
 [Helm](/aks/kubernetes-helm) 是 Kubernetes 的包管理器。 我们将利用它来安装 `application-gateway-kubernetes-ingress` 包：
@@ -257,7 +256,7 @@ az aks get-credentials --resource-group $resourceGroupName --name $aksClusterNam
 
    > [!NOTE]
    > `identityResourceID` 和 `identityClientID` 是在执行[创建标识](https://github.com/Azure/application-gateway-kubernetes-ingress/blob/072626cb4e37f7b7a1b0c4578c38d1eadc3e8701/docs/setup/install-new.md#create-an-identity)步骤期间创建的值，可使用以下命令再次获取这些值：
-   > ```bash
+   > ```azurecli
    > az identity show -g <resource-group> -n <identity-name>
    > ```
    > 在以上命令中，`<resource-group>` 是应用程序网关的资源组。 `<identity-name>` 是创建的标识的名称。 可以使用 `az identity list` 列出给定订阅的所有标识

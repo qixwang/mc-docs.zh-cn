@@ -9,14 +9,14 @@ ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
 origin.date: 01/07/2019
-ms.date: 03/16/2020
+ms.date: 03/30/2020
 ms.author: v-tawe
-ms.openlocfilehash: 1fd5998876789a5f98a02176863edcca00aaaa24
-ms.sourcegitcommit: 764b3d26aedce2de0e1948468a706fd3204a3d5e
+ms.openlocfilehash: 32f89cd66c08c76e91cada09504c2b9b88c30937
+ms.sourcegitcommit: 5fb45da006859215edc8211481f13174aa43dbeb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2020
-ms.locfileid: "79543375"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80634368"
 ---
 # <a name="authentication-requests-and-responses"></a>身份验证、请求和响应
 
@@ -114,7 +114,7 @@ WWW-Authenticate: Bearer authorization="…", resource="…"
 
 -   authorization：可用于获取请求访问令牌的 OAuth2 授权服务的地址。  
 
--   resource：要在授权请求中使用的资源 (https://vault.azure.cn) 的名称。  
+-   resource：要在授权请求中使用的资源 (`https://vault.azure.cn`) 的名称。  
 
 ## <a name="see-also"></a>另请参阅  
  [关于键、密钥和证书](about-keys-secrets-and-certificates.md)

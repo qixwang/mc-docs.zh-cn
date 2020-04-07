@@ -12,14 +12,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 05/03/2019
-ms.date: 02/24/2020
+ms.date: 04/06/2020
 ms.author: v-jay
-ms.openlocfilehash: d3b7763cb36174e3c330945d15a696c681cb701c
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.openlocfilehash: 7d70c4b4b37801c8e976e1f2389841cb44803e69
+ms.sourcegitcommit: fe9ed98aaee287a21648f866bb77cb6888f75b0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77540970"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80625684"
 ---
 # <a name="load-balancer-with-tcp-reset-on-idle"></a>在空闲时发送 TCP 重置的负载均衡器
 
@@ -65,7 +65,7 @@ ms.locfileid: "77540970"
       ]
 ```
 
-## <a name="regions"></a>区域可用性
+## <a name="region-availability"></a><a name="regions"></a>区域可用性
 
 在所有区域中可用。
 
@@ -77,3 +77,4 @@ ms.locfileid: "77540970"
 
 - 了解[标准负载均衡器](load-balancer-standard-overview.md)。
 - 了解[出站规则](load-balancer-outbound-rules-overview.md)。
+- [配置在空闲超时时 TCP RST](load-balancer-tcp-idle-timeout.md)

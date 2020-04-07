@@ -5,14 +5,14 @@ services: application-gateway
 author: amsriva
 ms.service: application-gateway
 ms.topic: article
-ms.date: 02/10/2020
+ms.date: 03/30/2020
 ms.author: v-junlch
-ms.openlocfilehash: 257e4fc63a0f86d1ba6b81d3a7ae04ba20af2f01
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: bc66512e7201e00852cb2ac7598eb4a224d3dcb8
+ms.sourcegitcommit: 64584c0bf31b4204058ae2b4641356b904ccdd58
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79293247"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80581804"
 ---
 # <a name="overview-of-ssl-termination-and-end-to-end-ssl-with-application-gateway"></a>应用程序网关的 SSL 终止和端到端 SSL 概述
 
@@ -43,7 +43,7 @@ ms.locfileid: "79293247"
 应用程序网关支持以下类型的证书：
 
 - CA（证书颁发机构）证书：CA 证书是证书颁发机构 (CA) 颁发的数字证书
-- EV（扩展验证）证书：EV 证书是行业标准证书准则。 使用此类证书会使浏览器地址栏变为绿色，并发布公司名称。
+- EV（扩展验证）证书：EV 证书是符合行业标准证书准则的证书。 使用此类证书会使浏览器地址栏变为绿色，并发布公司名称。
 - 通配符证书：此证书支持任意数量的基于 *.site.com 的子域（其中的 * 需替换为你的子域）。 但是，它不支持 site.com，因此，如果用户在不键入前导“www”的情况下访问你的网站，则通配符证书不会反映这一点。
 - 自签名证书：客户端浏览器不信任这些证书，并且会警告用户，指出虚拟服务的证书不是信任链的一部分。 自签名证书适合用于测试，或者管理员会在其中控制客户端并且可以安全绕过浏览器安全警报的环境。 切勿将自签名证书用于生产工作负荷。
 
@@ -115,4 +115,3 @@ SSL 策略将应用到前端和后端流量。 在前端上，应用程序网关
 
 [1]: ./media/ssl-overview/scenario.png
 
-<!-- Update_Description: link update -->

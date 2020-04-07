@@ -9,15 +9,15 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-origin.date: 06/21/2019
-ms.date: 03/04/2020
+origin.date: 03/18/2020
+ms.date: 04/06/2020
 ms.author: v-jay
-ms.openlocfilehash: 2dc4d9bc85ead7b29aa731a60dcbe7f4c9b99249
-ms.sourcegitcommit: fbc7584f403417d3af7bd6bbbaed7c13a78c57b9
+ms.openlocfilehash: 3de8546c9726676b18edf278b90974660bdd5cad
+ms.sourcegitcommit: fe9ed98aaee287a21648f866bb77cb6888f75b0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78412466"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80625792"
 ---
 # <a name="media-services-v3-frequently-asked-questions"></a>媒体服务 v3 常见问题解答
 
@@ -32,6 +32,10 @@ ms.locfileid: "78412466"
 
 请参阅[媒体服务帐户的基于角色的访问控制 (RBAC)](rbac-overview.md)。
 
+### <a name="how-do-you-stream-to-apple-ios-devices"></a>如何流式传输到 Apple iOS 设备？
+
+确保在路径的末尾（在 URL 的“/manifest”部分之后）有“(format=m3u8-aapl)”，以告知流式处理源服务器返回 HLS 内容以供在 Apple iOS 本机设备上使用（有关详细信息，请参阅[传送内容](dynamic-packaging-overview.md)）。
+
 ### <a name="how-do-i-configure-media-reserved-units"></a>如何配置媒体预留单位？
 
 对于由媒体服务 v3 或视频索引器触发的音频分析和视频分析作业，强烈建议为你的帐户预配 10 S3 MRU。 如果需要超过 10 S3 MRU 的数量，请使用 [Azure 门户](https://portal.azure.cn/)打开一个支持票证。
@@ -42,13 +46,17 @@ ms.locfileid: "78412466"
 
 [转换](https://docs.microsoft.com/rest/api/media/transforms)可用来配置对视频进行编码或分析的常见任务。 每个**转换**描述了用于处理视频或音频文件的脚本或任务工作流。 [作业](https://docs.microsoft.com/rest/api/media/jobs)是针对媒体服务的实际请求，目的是将**转换**应用到给定的输入视频或音频内容。 创建转换后，可以使用媒体服务 API 或任何已发布的 SDK 来提交作业。 有关详细信息，请参阅[转换和作业](transforms-jobs-concept.md)。
 
+### <a name="i-uploaded-encoded-and-published-a-video-what-would-be-the-reason-the-video-does-not-play-when-i-try-to-stream-it"></a>我已经上传、编码并发布了视频。 为什么在尝试对视频进行流式处理时，它不播放？
+
+最常见的原因之一是，你没有在“正在运行”状态下从其播放的流式处理终结点。
+
 ### <a name="how-does-pagination-work"></a>分页是如何工作的？
 
 使用分页时，应始终使用下一链接来枚举集合，而不依赖特定的页面大小。 有关详细信息和示例，请参阅[筛选、排序、分页](entities-overview.md)。
 
 ### <a name="what-features-are-not-yet-available-in-azure-media-services-v3"></a>目前有哪些功能在 Azure 媒体服务 v3 中不可用？
 
-有关详细信息，请参阅[与 v2 API 之间的功能差距](migrate-from-v2-to-v3.md#feature-gaps-with-respect-to-v2-apis)。
+有关详细信息，请参阅[与 v2 API 之间的功能差距](media-services-v2-vs-v3.md#feature-gaps-with-respect-to-v2-apis)。
 
 ### <a name="what-is-the-process-of-moving-a-media-services-account-between-subscriptions"></a>如何在订阅之间移动媒体服务帐户？  
 
@@ -127,13 +135,19 @@ ms.locfileid: "78412466"
 
 ### <a name="can-i-use-the-azure-portal-to-manage-v3-resources"></a>能否使用 Azure 门户来管理 v3 资源？
 
-目前，无法使用 Azure 门户来管理 v3 资源。 请使用 [REST API](https://aka.ms/ams-v3-rest-ref)、[CLI](/cli/ams?view=azure-cli-latest) 或受支持的 [SDK](media-services-apis-overview.md#sdks) 之一。
+目前，可以使用 [Azure 门户](https://portal.azure.cn/)执行以下操作：
+
+* 管理媒体服务 v3 [直播活动](live-events-outputs-concept.md)、 
+* 查看（而不是管理）v3 [资产](assets-concept.md)、 
+* [获取有关访问 API 的信息](access-api-portal.md)。 
+
+对于其他所有管理任务（例如，[转换和作业](transforms-jobs-concept.md)和[内容保护](content-protection-overview.md)），请使用 [REST API](https://docs.microsoft.com/rest/api/media/)、[CLI](https://aka.ms/ams-v3-cli-ref) 或某个受支持的 [SDK](media-services-apis-overview.md#sdks)。
 
 ### <a name="is-there-an-assetfile-concept-in-v3"></a>v3 中是否有 AssetFile 概念？
 
 已从 AMS API 中删除 AssetFile，以便将媒体服务与存储 SDK 依赖项分开。 现在由存储而非媒体服务来保存属于存储的信息。 
 
-有关详细信息，请参阅[迁移到媒体服务 v3](migrate-from-v2-to-v3.md)。
+有关详细信息，请参阅[迁移到媒体服务 v3](media-services-v2-vs-v3.md)。
 
 ### <a name="where-did-client-side-storage-encryption-go"></a>客户端存储加密在哪里进行？
 

@@ -5,16 +5,16 @@ author: kgremban
 manager: philmea
 ms.author: v-tawe
 origin.date: 12/13/2019
-ms.date: 03/02/2020
+ms.date: 03/30/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 17d9f1519bb4fd29587ab89e49d26db62a036ef1
-ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
+ms.openlocfilehash: 335112281cc3bd991a6505e67083947c1d2dcd0d
+ms.sourcegitcommit: 260800ede66f48c886d1426a0fac18b4d402b4f2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77494355"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586762"
 ---
 # <a name="authenticate-a-downstream-device-to-azure-iot-hub"></a>通过 Azure IoT 中心对下游设备进行身份验证
 
@@ -30,7 +30,7 @@ ms.locfileid: "77494355"
 
 本文中的步骤与手动设备预配相关，而与使用 Azure IoT 中心设备预配服务 (DPS) 进行的自动预配无关。 不支持通过 DPS 预配下游设备。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 完成[配置 IoT Edge 设备以充当透明网关](how-to-create-transparent-gateway.md)中的步骤。 如果要对下游设备使用 X.509 身份验证，则需要使用在透明网关文章中设置的相同的证书生成脚本。
 
@@ -142,10 +142,10 @@ az iot hub device-identity create -n {iothub name} -d {device ID} --pd {gateway 
 5. 根据首选语言，查看在 IoT 应用程序中引用 X.509 证书的示例：
 
    * C#：[在 Azure IoT 中心设置 X.509 安全性](../iot-hub/iot-hub-security-x509-get-started.md#authenticate-your-x509-device-with-the-x509-certificates)
-   * C：[iotedge_downstream_device_sample](https://github.com/Azure/azure-iot-sdk-c/tree/x509_edge_bugbash/iothub_client/samples/iotedge_downstream_device_sample)
+   * C: [iotedge_downstream_device_sample.c](https://github.com/Azure/azure-iot-sdk-c/tree/master/iothub_client/samples/iotedge_downstream_device_sample)
    * Node.js：[simple_sample_device_x509.js](https://github.com/Azure/azure-iot-sdk-node/blob/master/device/samples/simple_sample_device_x509.js)
-   * Java:[SendEventX509.java](https://github.com/Azure/azure-iot-sdk-python/blob/master/device/samples/iothub_client_sample_x509.py)
-   * Python：[send_message_x509.py](https://github.com/Azure/azure-iot-sdk-python/blob/master/azure-iot-device/samples/advanced-hub-scenarios/send_message_x509.py)
+   * Java:[SendEventX509.java](https://github.com/Azure/azure-iot-sdk-java/tree/master/device/iot-device-samples/send-event-x509)
+   * Python：[send_message_x509.py](https://github.com/Azure/azure-iot-sdk-python/blob/master/azure-iot-device/samples/async-hub-scenarios/send_message_x509.py)
 
 可以使用[适用于 Azure CLI 的 IoT 扩展](https://github.com/Azure/azure-iot-cli-extension)来完成相同的设备创建操作。 以下示例使用 X.509 CA 签名身份验证创建新的 IoT 设备，并分配父设备：
 
@@ -163,7 +163,7 @@ az iot hub device-identity create -n {iothub name} -d {device ID} --pd {gateway 
 
 下游设备的连接字符串需要包含以下组成部分：
 
-* 设备连接到的 IoT 中心：`Hostname={iothub name}.azure-devices.net`
+* 设备连接到的 IoT 中心：`Hostname={iothub name}.azure-devices.cn`
 * 已注册到中心的设备 ID：`DeviceID={device ID}`
 * 主要密钥或辅助密钥：`SharedAccessKey={key}`
 * 设备用来建立连接的网关设备。 请提供 IoT Edge 网关设备 config.yaml 文件中的 **hostname** 值：`GatewayHostName={gateway hostname}`
@@ -171,7 +171,7 @@ az iot hub device-identity create -n {iothub name} -d {device ID} --pd {gateway 
 所有这些组成部分共同构成了如下所示的完整连接字符串：
 
 ```
-HostName=myiothub.azure-devices.net;DeviceId=myDownstreamDevice;SharedAccessKey=xxxyyyzzz;GatewayHostName=myGatewayDevice
+HostName=myiothub.azure-devices.cn;DeviceId=myDownstreamDevice;SharedAccessKey=xxxyyyzzz;GatewayHostName=myGatewayDevice
 ```
 
 如果你为此下游设备建立了父/子关系，则可以通过直接调用充当连接主机的网关来简化连接字符串。 父/子关系对于 X.509 身份验证是必需的，但对于对称密钥身份验证是可选的。 例如：

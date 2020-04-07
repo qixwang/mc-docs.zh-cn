@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 origin.date: 04/01/2019
-ms.date: 02/24/2020
+ms.date: 04/06/2020
 ms.author: v-jay
-ms.openlocfilehash: 946d23b05dee18868c56231cdaafe3a3a18935a2
-ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
+ms.openlocfilehash: 7bff28ce0c298fdf6f1aaeec1fbc5b9f0d26f2d5
+ms.sourcegitcommit: fe9ed98aaee287a21648f866bb77cb6888f75b0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77494280"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80625689"
 ---
 # <a name="create-a-media-services-account-using-the-azure-portal"></a>使用 Azure 门户创建媒体服务帐户
 
@@ -38,7 +38,7 @@ ms.locfileid: "77494280"
 > [!NOTE]
 > 若要了解 Azure 媒体服务功能在不同区域的可用性，请参阅 [AMS 功能的跨数据中心可用性](scenarios-and-availability.md#availability)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要完成本教程，需要一个 Azure 帐户。 有关详细信息，请参阅 [Azure 1 元试用](https://www.azure.cn/zh-cn/pricing/1rmb-trial-full/?form-type=identityauth)。 
 
@@ -47,13 +47,9 @@ ms.locfileid: "77494280"
 本部分中的步骤说明如何创建 AMS 帐户。
 
 1. 登录到 [Azure 门户](https://portal.azure.cn/)。
-2. 单击“+新建”  > 搜索“媒体服务”  。
-   
-    ![媒体服务创建](./media/media-services-create-account/media-services-new1.png)
+2. 单击“+创建资源”   > “媒体”   > “媒体服务”  。
 3. 在“创建媒体服务帐户”  中输入所需的值。
-   
-    ![媒体服务创建](./media/media-services-create-account/media-services-new3.png)
-   
+
    1. 在“帐户名”  中，输入新的 AMS 帐户的名称。 媒体服务帐户名称由小写字母或数字构成（不含空格），长度为 3 到 24 个字符。
    2. 在“订阅”中，在有权访问的不同 Azure 订阅中进行选择。
    3. 在“资源组”  中，选择新的或现有的资源。  资源组是共享生命周期、权限和策略的资源的集合。 在[此处](../../azure-resource-manager/management/overview.md#resource-groups)了解更多信息。
@@ -72,7 +68,6 @@ ms.locfileid: "77494280"
 ## <a name="to-manage-your-ams-account"></a>管理 AMS 帐户
 
 若要管理 AMS 帐户（例如，以编程方式连接到 AMS API、上传视频、对资产进行编码、配置内容保护、监视作业进度），请在门户左侧选择“设置”。  从“设置”  导航到某个可用的边栏选项卡（例如：“API 访问权限”、“资产”、“作业”、“内容保护”）。    
-
 
 ## <a name="next-steps"></a>后续步骤
 

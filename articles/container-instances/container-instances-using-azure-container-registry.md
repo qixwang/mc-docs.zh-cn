@@ -1,25 +1,25 @@
 ---
 title: 从 Azure 容器注册表部署容器映像
-description: 了解如何使用容器映像在 Azure 容器注册表中部署 Azure 容器实例中的容器。
+description: 了解如何通过从 Azure 容器注册表拉取容器映像在 Azure 容器实例中部署容器。
 services: container-instances
 ms.topic: article
-origin.date: 12/30/2019
-ms.date: 01/15/2020
+origin.date: 02/18/2020
+ms.date: 04/06/2020
 ms.author: v-yeche
 ms.custom: mvc
-ms.openlocfilehash: 6584062992369140b40f5bd967d0344bc9392c71
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.openlocfilehash: 1295b07b8af64f49f81071a6b4a371c35c36a858
+ms.sourcegitcommit: 76280dd9854dc0ff0ba1e5e62fb3dc3af049fbe2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77428307"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80516974"
 ---
 <!--Verified successfully-->
 # <a name="deploy-to-azure-container-instances-from-azure-container-registry"></a>从 Azure 容器注册表部署到 Azure 容器实例
 
-[Azure 容器注册表](../container-registry/container-registry-intro.md)是基于 Azure 的托管容器注册表服务，用于存储专用的 Docker 容器映像。 本文介绍如何将存储在 Azure 容器注册表中的容器映像部署到 Azure 容器实例。
+[Azure 容器注册表](../container-registry/container-registry-intro.md)是基于 Azure 的托管容器注册表服务，用于存储专用的 Docker 容器映像。 本文介绍如何在部署到 Azure 容器实例时拉取 Azure 容器注册表中存储的容器映像。 建议配置注册表访问权限的方法是创建 Azure Active Directory 服务主体和密码，并将登录凭据存储在 Azure 密钥保管库中。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 **Azure 容器注册表**：需要一个 Azure 容器注册表（注册表中的至少一个容器映像）才能完成本文中的步骤。 如果需要注册表，请参阅[使用 Azure CLI 创建容器注册表](../container-registry/container-registry-get-started-azure-cli.md)。
 
@@ -32,6 +32,9 @@ ms.locfileid: "77428307"
 在生产方案中，如果要提供对“无外设”服务和应用程序的访问权限，建议使用[服务主体](../container-registry/container-registry-auth-service-principal.md)配置注册表访问权限。 使用服务主体可以提供对容器映像的[基于角色的访问控制](../container-registry/container-registry-roles.md)。 例如，可将服务主体配置为拥有注册表的仅限提取的访问权限。
 
 Azure 容器注册表提供了附加的[身份验证选项](../container-registry/container-registry-authentication.md)。
+
+> [!NOTE]
+> 无法使用在同一容器组中配置的[托管标识](container-instances-managed-identity.md)向 Azure 容器注册表进行身份验证，以便在容器组部署期间拉取图像。
 
 在以下部分中，将创建一个 Azure 密钥保管库和一个服务主体，并将服务主体的凭据存储在保管库中。 
 
@@ -115,9 +118,8 @@ az container create \
 
 `--dns-name-label` 值必须在 Azure 中唯一，因此，上述命令会将一个随机数字追加到容器的 DNS 名称标签。 该命令的输出显示容器的完全限定域名 (FQDN)，例如：
 
-```console
-$ az container create --name aci-demo --resource-group $RES_GROUP --image $ACR_LOGIN_SERVER/aci-helloworld:v1 --registry-login-server $ACR_LOGIN_SERVER --registry-username $(az keyvault secret show --vault-name $AKV_NAME -n $ACR_NAME-pull-usr --query value -o tsv) --registry-password $(az keyvault secret show --vault-name $AKV_NAME -n $ACR_NAME-pull-pwd --query value -o tsv) --dns-name-label aci-demo-$RANDOM --query ipAddress.fqdn
-"aci-demo-25007.chinaeast2.azurecontainer.console.azure.cn"
+```output
+"aci-demo-25007.chinaeast 2.azurecontainer.console.azure.cn"
 ```
 
 成功启动容器后，可在浏览器导航到容器的 FQDN，以验证应用程序是否成功运行。
@@ -140,7 +142,7 @@ $ az container create --name aci-demo --resource-group $RES_GROUP --image $ACR_L
 
 <!--Not Available on [Resource Manager template reference](https://docs.microsoft.com/azure/templates/Microsoft.ContainerInstance/2018-10-01/containerGroups)-->
 
-有关在资源管理器模板中引用 Azure Key Vault 机密的详细信息，请参阅[在部署过程中使用 Azure Key Vault 传递安全参数值](../azure-resource-manager/resource-manager-keyvault-parameter.md)。
+有关在资源管理器模板中引用 Azure Key Vault 机密的详细信息，请参阅[在部署过程中使用 Azure Key Vault 传递安全参数值](../azure-resource-manager/templates/key-vault-parameter.md)。
 
 <!--Not Available on ## Deploy with Azure portal-->
 <!--The Run Instance submenu is uneable -->
@@ -167,5 +169,4 @@ $ az container create --name aci-demo --resource-group $RES_GROUP --image $ACR_L
 [az-container-create]: https://docs.microsoft.com/cli/azure/container?view=azure-cli-latest#az-container-create
 [az-keyvault-secret-set]: https://docs.azure.cn/cli/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-set
 
-<!-- Update_Description: new article about container instances using azure container registry -->
-<!--NEW.date: 01/15/2020-->
+<!-- Update_Description: update meta properties, wording update, update link -->

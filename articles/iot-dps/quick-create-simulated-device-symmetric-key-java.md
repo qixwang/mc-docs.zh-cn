@@ -10,12 +10,12 @@ ms.service: iot-dps
 services: iot-dps
 manager: eliotgra
 ms.custom: mvc
-ms.openlocfilehash: 3ca1c9cfbe4b29270a3aad32769044f93e0f9fed
-ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
+ms.openlocfilehash: 06b15fe87ad602376313123d7591d9bd82f5ebcc
+ms.sourcegitcommit: 260800ede66f48c886d1426a0fac18b4d402b4f2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77494508"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586805"
 ---
 # <a name="quickstart-provision-a-simulated-device-with-symmetric-keys"></a>快速入门：使用对称密钥预配模拟设备
 
@@ -33,7 +33,7 @@ ms.locfileid: "77494508"
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * 确保已在计算机上安装 [Java SE 开发工具包 8](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable) 或更高版本。
 
@@ -126,7 +126,7 @@ ms.locfileid: "77494508"
       Starting...
       Beginning setup.
       Waiting for Provisioning Service to register
-      IotHUb Uri : <Your DPS Service Name>.azure-devices.net
+      IotHUb Uri : <Your DPS Service Name>.azure-devices.cn
       Device ID : java-device-007
       Sending message from device to IoT Hub...
       Press any key to exit...

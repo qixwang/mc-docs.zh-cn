@@ -1,5 +1,5 @@
 ---
-title: 使用 REST API 为 Azure 资源创建或更新自定义角色 - Azure | Microsoft Docs
+title: 使用 REST API 为 Azure 资源创建或更新自定义角色
 description: 了解如何通过 REST API 使用基于角色的访问控制 (RBAC) 为 Azure 资源列出、创建、更新或删除自定义角色。
 services: active-directory
 documentationcenter: na
@@ -12,17 +12,22 @@ ms.workload: multiple
 ms.tgt_pltfrm: rest-api
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/02/2020
+ms.date: 03/31/2020
 ms.author: v-junlch
 ms.reviewer: bagovind
-ms.openlocfilehash: 6b54c624bcd1329201dc0c0bc4946d5b6a6094e8
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.openlocfilehash: 560a9e3f31d3a577bb0378212c1609a03c026643
+ms.sourcegitcommit: 64584c0bf31b4204058ae2b4641356b904ccdd58
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75624344"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80581678"
 ---
 # <a name="create-or-update-custom-roles-for-azure-resources-using-the-rest-api"></a>使用 REST API 为 Azure 资源创建或更新自定义角色
+
+> [!IMPORTANT]
+> 将管理组添加到 `AssignableScopes` 的功能目前处于预览状态。
+> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。
+> 有关详细信息，请参阅[适用于 Azure 预览版的补充使用条款](https://www.azure.cn/support/legal/)。
 
 如果 [Azure 资源的内置角色](built-in-roles.md)不能满足组织的特定需求，则可以创建自定义角色。 本文介绍如何使用 REST API 列出、创建、更新或删除自定义角色。
 
@@ -38,9 +43,10 @@ ms.locfileid: "75624344"
 
 1. 将 *{filter}* 替换为角色类型。
 
-    | 筛选器 | 说明 |
-    | --- | --- |
-    | `$filter=type%20eq%20'CustomRole'` | 基于 CustomRole 类型的筛选器 |
+    > [!div class="mx-tableFixed"]
+    > | 筛选器 | 说明 |
+    > | --- | --- |
+    > | `$filter=type+eq+'CustomRole'` | 基于 CustomRole 类型的筛选器 |
 
 ## <a name="list-custom-roles-at-a-scope"></a>列出某个范围的自定义角色
 
@@ -54,17 +60,20 @@ ms.locfileid: "75624344"
 
 1. 在 URI 中，将 *{scope}* 替换为要列出角色的范围。
 
-    | 作用域 | 类型 |
-    | --- | --- |
-    | `subscriptions/{subscriptionId}` | 订阅 |
-    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | 资源组 |
-    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | 资源 |
+    > [!div class="mx-tableFixed"]
+    > | 作用域 | 类型 |
+    > | --- | --- |
+    > | `subscriptions/{subscriptionId1}` | 订阅 |
+    > | `subscriptions/{subscriptionId1}/resourceGroups/{resourceGroup1}` | 资源组 |
+    > | `subscriptions/{subscriptionId1}/resourceGroups/{resourceGroup1}/providers/Microsoft.Web/sites/{site1}` | 资源 |
+    > | `providers/Microsoft.Management/managementGroups/{groupId1}` | 管理组 |
 
 1. 将 *{filter}* 替换为角色类型。
 
-    | 筛选器 | 说明 |
-    | --- | --- |
-    | `$filter=type%20eq%20'CustomRole'` | 基于 CustomRole 类型的筛选器 |
+    > [!div class="mx-tableFixed"]
+    > | 筛选器 | 说明 |
+    > | --- | --- |
+    > | `$filter=type+eq+'CustomRole'` | 基于 CustomRole 类型的筛选器 |
 
 ## <a name="list-a-custom-role-definition-by-name"></a>按名称列出自定义角色定义
 
@@ -78,17 +87,20 @@ ms.locfileid: "75624344"
 
 1. 在 URI 中，将 *{scope}* 替换为要列出角色的范围。
 
-    | 作用域 | 类型 |
-    | --- | --- |
-    | `subscriptions/{subscriptionId}` | 订阅 |
-    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | 资源组 |
-    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | 资源 |
+    > [!div class="mx-tableFixed"]
+    > | 作用域 | 类型 |
+    > | --- | --- |
+    > | `subscriptions/{subscriptionId1}` | 订阅 |
+    > | `subscriptions/{subscriptionId1}/resourceGroups/{resourceGroup1}` | 资源组 |
+    > | `subscriptions/{subscriptionId1}/resourceGroups/{resourceGroup1}/providers/Microsoft.Web/sites/{site1}` | 资源 |
+    > | `providers/Microsoft.Management/managementGroups/{groupId1}` | 管理组 |
 
 1. 将 *{filter}* 替换为角色的显示名称。
 
-    | 筛选器 | 说明 |
-    | --- | --- |
-    | `$filter=roleName%20eq%20'{roleDisplayName}'` | 使用角色的具体显示名称的 URL 编码形式。 例如 `$filter=roleName%20eq%20'Virtual%20Machine%20Contributor'` |
+    > [!div class="mx-tableFixed"]
+    > | 筛选器 | 说明 |
+    > | --- | --- |
+    > | `$filter=roleName+eq+'{roleDisplayName}'` | 使用角色的具体显示名称的 URL 编码形式。 例如 `$filter=roleName+eq+'Virtual%20Machine%20Contributor'` |
 
 ## <a name="list-a-custom-role-definition-by-id"></a>按 ID 列出自定义角色定义
 
@@ -104,11 +116,13 @@ ms.locfileid: "75624344"
 
 1. 在 URI 中，将 *{scope}* 替换为要列出角色的范围。
 
-    | 作用域 | 类型 |
-    | --- | --- |
-    | `subscriptions/{subscriptionId}` | 订阅 |
-    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | 资源组 |
-    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | 资源 |
+    > [!div class="mx-tableFixed"]
+    > | 作用域 | 类型 |
+    > | --- | --- |
+    > | `subscriptions/{subscriptionId1}` | 订阅 |
+    > | `subscriptions/{subscriptionId1}/resourceGroups/{resourceGroup1}` | 资源组 |
+    > | `subscriptions/{subscriptionId1}/resourceGroups/{resourceGroup1}/providers/Microsoft.Web/sites/{site1}` | 资源 |
+    > | `providers/Microsoft.Management/managementGroups/{groupId1}` | 管理组 |
 
 1. 将 *{roleDefinitionId}* 替换为角色定义的 GUID 标识符。
 
@@ -144,7 +158,11 @@ ms.locfileid: "75624344"
           }
         ],
         "assignableScopes": [
-          "/subscriptions/{subscriptionId}"
+          "/subscriptions/{subscriptionId1}",
+          "/subscriptions/{subscriptionId2}",
+          "/subscriptions/{subscriptionId1}/resourceGroups/{resourceGroup1}",
+          "/subscriptions/{subscriptionId2}/resourceGroups/{resourceGroup2}",
+          "/providers/Microsoft.Management/managementGroups/{groupId1}"
         ]
       }
     }
@@ -152,17 +170,20 @@ ms.locfileid: "75624344"
 
 1. 在 URI 中，将 *{scope}* 替换为自定义角色的第一个 `assignableScopes`。
 
-    | 作用域 | 类型 |
-    | --- | --- |
-    | `subscriptions/{subscriptionId}` | 订阅 |
-    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | 资源组 |
-    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | 资源 |
+    > [!div class="mx-tableFixed"]
+    > | 作用域 | 类型 |
+    > | --- | --- |
+    > | `subscriptions/{subscriptionId1}` | 订阅 |
+    > | `subscriptions/{subscriptionId1}/resourceGroups/{resourceGroup1}` | 资源组 |
+    > | `providers/Microsoft.Management/managementGroups/{groupId1}` | 管理组 |
 
 1. 将 *{roleDefinitionId}* 替换为自定义角色的 GUID 标识符。
 
-1. 在请求正文中的 `assignableScopes` 属性内，将 *{roleDefinitionId}* 替换为 GUID 标识符。
+1. 在请求正文中，将 {roleDefinitionId}  替换为 GUID 标识符。
 
-1. 将 *{subscriptionId}* 替换为订阅标识符。
+1. 如果 `assignableScopes` 是订阅或资源组，请将 {subscriptionId}  或 {resourceGroup}  实例替换为你的标识符。
+
+1. 如果 `assignableScopes` 是管理组，请将 {groupId}  实例替换为你的管理组标识符。 将管理组添加到 `assignableScopes` 的功能目前处于预览状态。
 
 1. 在 `actions` 属性中，添加该角色允许执行的操作。
 
@@ -197,7 +218,8 @@ ms.locfileid: "75624344"
           }
         ],
         "assignableScopes": [
-          "/subscriptions/00000000-0000-0000-0000-000000000000"
+          "/subscriptions/00000000-0000-0000-0000-000000000000",
+          "/providers/Microsoft.Management/managementGroups/marketing-group"
         ]
       }
     }
@@ -217,11 +239,12 @@ ms.locfileid: "75624344"
 
 1. 在 URI 中，将 *{scope}* 替换为自定义角色的第一个 `assignableScopes`。
 
-    | 作用域 | 类型 |
-    | --- | --- |
-    | `subscriptions/{subscriptionId}` | 订阅 |
-    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | 资源组 |
-    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | 资源 |
+    > [!div class="mx-tableFixed"]
+    > | 作用域 | 类型 |
+    > | --- | --- |
+    > | `subscriptions/{subscriptionId1}` | 订阅 |
+    > | `subscriptions/{subscriptionId1}/resourceGroups/{resourceGroup1}` | 资源组 |
+    > | `providers/Microsoft.Management/managementGroups/{groupId1}` | 管理组 |
 
 1. 将 *{roleDefinitionId}* 替换为自定义角色的 GUID 标识符。
 
@@ -245,7 +268,11 @@ ms.locfileid: "75624344"
           }
         ],
         "assignableScopes": [
-          "/subscriptions/{subscriptionId}"
+          "/subscriptions/{subscriptionId1}",
+          "/subscriptions/{subscriptionId2}",
+          "/subscriptions/{subscriptionId1}/resourceGroups/{resourceGroup1}",
+          "/subscriptions/{subscriptionId2}/resourceGroups/{resourceGroup2}",
+          "/providers/Microsoft.Management/managementGroups/{groupId1}"
         ]
       }
     }
@@ -281,7 +308,8 @@ ms.locfileid: "75624344"
           }
         ],
         "assignableScopes": [
-          "/subscriptions/00000000-0000-0000-0000-000000000000"
+          "/subscriptions/00000000-0000-0000-0000-000000000000",
+          "/providers/Microsoft.Management/managementGroups/marketing-group"
         ]
       }
     }
@@ -301,11 +329,12 @@ ms.locfileid: "75624344"
 
 1. 在 URI 中，将 *{scope}* 替换为要删除自定义角色的范围。
 
-    | 作用域 | 类型 |
-    | --- | --- |
-    | `subscriptions/{subscriptionId}` | 订阅 |
-    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | 资源组 |
-    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | 资源 |
+    > [!div class="mx-tableFixed"]
+    > | 作用域 | 类型 |
+    > | --- | --- |
+    > | `subscriptions/{subscriptionId1}` | 订阅 |
+    > | `subscriptions/{subscriptionId1}/resourceGroups/{resourceGroup1}` | 资源组 |
+    > | `providers/Microsoft.Management/managementGroups/{groupId1}` | 管理组 |
 
 1. 将 *{roleDefinitionId}* 替换为自定义角色的 GUID 标识符。
 

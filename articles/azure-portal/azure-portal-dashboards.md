@@ -12,15 +12,15 @@ ms.devlang: NA
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: na
-origin.date: 01/29/2020
+origin.date: 03/23/2020
+ms.date: 03/30/2020
 ms.author: v-tawe
-ms.date: 02/17/2020
-ms.openlocfilehash: 0ad1492e121205ea4235256d070485fde0401de0
-ms.sourcegitcommit: 888cbc10f2348de401d4839a732586cf266883bf
+ms.openlocfilehash: b829cbb3dcb3d4caf04989c88bba213abe0e38f6
+ms.sourcegitcommit: 44d3fe59952847e5394bbe6c05bd6f333bb56345
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77028213"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80522073"
 ---
 # <a name="create-and-share-dashboards-in-the-azure-portal"></a>在 Azure 门户中创建和共享仪表板
 
@@ -40,7 +40,7 @@ Azure 门户提供默认仪表板作为起点。 你可以编辑默认仪表板�
 
 1. 选择“新建仪表板”。 
 
-    ![默认仪表板的屏幕截图](./media/azure-portal-dashboards/create-new-dashboard.png)
+    ![“新建仪表板”的屏幕截图](./media/azure-portal-dashboards/create-new-dashboard.png)
 
     此操作会打开“磁贴库”，从中可以选择磁贴，并在一个空网格中排列磁贴。 
 
@@ -50,13 +50,13 @@ Azure 门户提供默认仪表板作为起点。 你可以编辑默认仪表板�
 
 1. 在页头中选择“完成自定义”以退出编辑模式。 
 
-此时，仪表板视图将显示空仪表板。 选择仪表板名称旁的箭头，以查看可供你使用的仪表板。 此列表可能包括其他用户已创建和共享的仪表板。
+此时，仪表板视图将显示新仪表板。 选择仪表板名称旁的箭头，以查看可供你使用的仪表板。 此列表可能包括其他用户已创建和共享的仪表板。
 
 ## <a name="edit-a-dashboard"></a>编辑仪表板
 
 现在，让我们编辑仪表板以添加、调整和排列代表你的 Azure 资源的磁贴。
 
-### <a name="add-tiles"></a>添加磁贴
+### <a name="add-tiles-from-the-dashboard"></a>从仪表板添加磁贴
 
 若要将磁贴添加到仪表板，请执行以下步骤：
 
@@ -68,14 +68,14 @@ Azure 门户提供默认仪表板作为起点。 你可以编辑默认仪表板�
 
 1. 选择“添加”，以使用默认大小和位置将磁贴添加到仪表板中。  或者将磁贴拖到网格中，并将其放到所需的位置。
 
-许多资源页在命令栏中包含一个图钉图标。 如果选择该图标，代表源页的磁贴将固定到当前处于活动状态的仪表板。 此方法是将磁贴添加到仪表板的替代方法。
-
-![包含固定图标的页面命令栏屏幕截图](./media/azure-portal-dashboards/dashboard-pin-blade.png)
-
 > [!TIP]
 > 如果你在多家组织中工作，可将“组织标识”磁贴添加到仪表板，以明确显示资源所属的组织。 
->
->
+
+### <a name="add-tiles-from-a-resource-page"></a>从资源页添加磁贴
+
+还有一种方法可将磁贴添加到仪表板。 许多资源页在命令栏中包含一个图钉图标。 如果选择该图标，代表源页的磁贴将固定到当前处于活动状态的仪表板。 
+
+![包含固定图标的页面命令栏屏幕截图](./media/azure-portal-dashboards/dashboard-pin-blade.png)
 
 ### <a name="resize-or-rearrange-tiles"></a>调整或重新排列磁贴
 
@@ -93,14 +93,17 @@ Azure 门户提供默认仪表板作为起点。 你可以编辑默认仪表板�
 
 某些磁贴可能需要额外配置才能显示所需的信息。 例如，“指标图表”磁贴必须经过设置才能显示 **Azure Monitor** 中的指标。  还可以自定义磁贴数据以替代仪表板的默认时间设置。
 
-需要设置的任何磁贴在自定义它之前会显示“配置磁贴”横幅。  请选择该横幅，然后执行所需的设置。
+需要设置的任何磁贴在自定义它之前会显示“配置磁贴”横幅。  若要自定义磁贴，请执行以下操作：
 
-![需要配置的磁贴的屏幕截图](./media/azure-portal-dashboards/dashboard-configure-tile.png)
+1. 在页头中选择“完成自定义”以退出编辑模式。 
+
+1. 请选择横幅，然后执行所需的设置。
+
+    ![需要配置的磁贴的屏幕截图](./media/azure-portal-dashboards/dashboard-configure-tile.png)
 
 > [!NOTE]
 > 使用 markdown 磁贴可以在仪表板上显示自定义的静态内容。 这可能是基本说明、一幅图像、一组超链接甚至联系信息。 有关使用 Markdown 磁贴的详细信息，请参阅[在 Azure 仪表板上使用 Markdown 磁贴显示自定义内容](azure-portal-markdown-tile.md)。
->
->
+
 ### <a name="customize-tile-data"></a>自定义磁贴数据
 
 仪表板上的数据自动显示过去 24 小时的活动。 若要仅显示此磁贴的不同时间跨度，请执行以下步骤：
@@ -141,34 +144,7 @@ Azure 门户提供默认仪表板作为起点。 你可以编辑默认仪表板�
 
 ## <a name="publish-and-share-a-dashboard"></a>发布和共享仪表板
 
-创建仪表板时，默认该仪表板是专用的，这意味着只有你才可以看到它。 若要使仪表板可供其他人使用，可与其他用户共享这些仪表板。 首先，必须将仪表板发布为 Azure 资源。 若要发布和共享自定义仪表板，请执行以下步骤：
-
-1. 在页头中选择![共享图标](./media/azure-portal-dashboards/dashboard-share-icon.png)“共享”。  “共享 + 访问控制”随即打开。 
-
-1. 确认是否显示了正确的仪表板名称。
-
-1. 选择一个**订阅名称**。 有权访问该订阅的用户可以使用共享的仪表板。 是否能够访问各个磁贴所代表的资源由 Azure 基于角色的访问控制决定。
-
-1. 选中相应的复选框，将此仪表板发布到所选订阅的“仪表板”资源组。 或者清除相应的复选框，并选择发布到现有资源组。
-
-1. 选择仪表板资源的位置。 我们建议将仪表板与其他资源定位在一起。 如果从现有资源组中进行选择，仪表板会自动与该资源组定位在一起。
-
-1. 选择“发布”  。
-
-    ![仪表板发布对话框的屏幕截图](./media/azure-portal-dashboards/dashboard-publish.png)
-
-### <a name="set-access-control-on-a-shared-dashboard"></a>设置对共享仪表板的访问控制
-
-发布仪表板后，执行以下步骤来管理有权访问仪表板的用户：
-
-1. 在“共享 + 访问控制”窗格中，选择“管理用户”。  
-
-    ![仪表板共享 + 访问控制对话框的屏幕截图](./media/azure-portal-dashboards/dashboard-share-access-control.png)
-
-1. 此时会打开“访问控制”页。  你可以查看某位用户的访问级别，或添加新的角色分配。 在此处添加角色分配时，将授予对仪表板的权限。
-
-> [!NOTE]
-> 磁贴是组织中资源的代表性视图。 对资源的访问权限是通过基于角色的访问控制分配进行管理的，权限将从订阅一路继承到资源。 授予对仪表板的访问权限并不会自动分配对仪表板中显示的资源的权限。 有关对共享仪表板的权限以及对资源的基于角色的访问控制的详细信息，请参阅[通过使用基于角色的访问控制来共享 Azure 仪表板](azure-portal-dashboard-share-access.md)。
+创建仪表板时，默认该仪表板是专用的，这意味着只有你才可以看到它。 要使仪表板可供其他人使用，可以发布和共享这些仪表板。 有关详细信息，请参阅[使用基于角色的访问控制共享 Azure 仪表板](azure-portal-dashboard-share-access.md)。
 
 ### <a name="open-a-shared-dashboard"></a>打开共享的仪表板
 
@@ -176,15 +152,19 @@ Azure 门户提供默认仪表板作为起点。 你可以编辑默认仪表板�
 
 1. 选择仪表板名称旁边的箭头。
 
-1. 从显示的仪表板列表中选择；如果要打开的仪表板未列出，请选择“浏览所有仪表板”。 
+1. 从显示的仪表板列表中进行选择。 如果要打开的仪表板未列出，请执行以下操作：
 
-    ![仪表板选择菜单的屏幕截图](./media/azure-portal-dashboards/dashboard-browse.png)
+    1. 选择“浏览所有仪表板”  。
 
-1. 在“类型”字段中，选择“共享的仪表板”。  
+        ![仪表板选择菜单的屏幕截图](./media/azure-portal-dashboards/dashboard-browse.png)
 
-1. 选择一个或多个订阅。 还可以输入文本以按名称筛选仪表板。
+    1. 在“类型”字段中，选择“共享的仪表板”。  
 
-1. 从共享仪表板列表中选择一个仪表板。
+        ![所有仪表板选择菜单的屏幕截图](./media/azure-portal-dashboards/dashboard-browse-all.png)
+
+    1. 选择一个或多个订阅。 还可以输入文本以按名称筛选仪表板。
+
+    1. 从共享仪表板列表中选择一个仪表板。
 
 ## <a name="delete-a-dashboard"></a>删除仪表板
 

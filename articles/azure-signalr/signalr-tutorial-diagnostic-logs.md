@@ -1,18 +1,18 @@
 ---
 title: Azure SignalR 服务的诊断日志
 description: 了解如何设置 Azure SignalR 服务的诊断日志，以及如何利用它来自行排查问题。
-author: wanl
+author: wanlwanl
 ms.service: signalr
 ms.topic: conceptual
 origin.date: 12/17/2019
-ms.date: 03/09/2020
+ms.date: 03/30/2020
 ms.author: v-tawe
-ms.openlocfilehash: 656cfe738056d76f2826005baa6031d6d5d16f07
-ms.sourcegitcommit: 60e32ec1b1e62de6e84f7c6e43bb1400bd42c9cf
+ms.openlocfilehash: 07aed74312d14c1d7880dab0661e96c5dd695688
+ms.sourcegitcommit: 44d3fe59952847e5394bbe6c05bd6f333bb56345
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/24/2020
-ms.locfileid: "77567194"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80522094"
 ---
 # <a name="diagnostic-logs-for-azure-signalr-service"></a>Azure SignalR 服务的诊断日志
 
@@ -32,22 +32,22 @@ ms.locfileid: "77567194"
 
 诊断日志默认已禁用。 若要启用诊断日志，请执行以下步骤：
 
-1.  在 [Azure 门户](https://portal.azure.cn)中的“监视”下，单击“诊断设置”。  
+1. 在 [Azure 门户](https://portal.azure.cn)中的“监视”下，单击“诊断设置”。  
 
     ![在窗格中导航到诊断设置](./media/signalr-tutorial-diagnostic-logs/diagnostic-settings-menu-item.png)
 
-1.  然后单击“添加诊断设置”。 
+1. 然后单击“添加诊断设置”。 
 
     ![添加诊断日志](./media/signalr-tutorial-diagnostic-logs/add-diagnostic-setting.png)
 
-1.  设置所需的存档目标。 目前，我们支持“存档到存储帐户”和“发送到 Log Analytics”。  
+1. 设置所需的存档目标。 目前，我们支持“存档到存储帐户”和“发送到 Log Analytics”。  
 
 1. 选择要存档的日志。
 
     ![诊断设置窗格](./media/signalr-tutorial-diagnostic-logs/diagnostics-settings-pane.png)
 
 
-1.  保存新的诊断设置。
+1. 保存新的诊断设置。
 
 新设置在大约 10 分钟后生效。 在此之后，日志将出现在“诊断日志”窗格上配置的存档目标中  。
 
@@ -196,4 +196,5 @@ Reason | 说明
 4. 从服务器/客户端以及其他可能有用的材料收集的日志
 5. [可选] 重现代码
 
-> 注意：如果在 GitHub 中提出问题，请将你的敏感信息（例如资源 ID、服务器/客户端日志）保密，并只以私密方式发送到 Microsoft 组织中的成员。  
+> [!NOTE]
+> 如果在 GitHub 中提出问题，请将你的敏感信息（例如资源 ID、服务器/客户端日志）保密，并只以私密方式发送到 Microsoft 组织中的成员。

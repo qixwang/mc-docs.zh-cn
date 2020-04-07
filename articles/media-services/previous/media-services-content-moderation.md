@@ -13,16 +13,19 @@ ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 origin.date: 03/14/2019
-ms.date: 09/23/2019
+ms.date: 04/06/2020
 ms.author: v-jay
-ms.openlocfilehash: eb95cc41b63a5c6d7b2f55e3805ed9e2f00321f8
-ms.sourcegitcommit: 8248259e4c3947aa0658ad6c28f54988a8aeebf8
+ms.openlocfilehash: 45a4f3b127d8f28383584ac0302ba4b59286f462
+ms.sourcegitcommit: fe9ed98aaee287a21648f866bb77cb6888f75b0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71124405"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80625747"
 ---
 # <a name="use-azure-media-content-moderator-to-detect-possible-adult-and-racy-content"></a>使用 Azure 媒体内容审查器检测可能的成人和猥亵内容 
+
+> [!NOTE]
+> “Azure 媒体内容审查器”  媒体处理器将停用。 有关停用日期，请参阅此[旧组件](legacy-components.md)主题。
 
 ## <a name="overview"></a>概述
 借助 **Azure 媒体内容审查器**媒体处理器 (MP)，你可以对视频使用机器辅助审查。 例如，你可能希望检测视频中可能存在的成人和猥亵内容，以及复查由人工审查团队标记出的内容。

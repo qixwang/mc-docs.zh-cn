@@ -3,17 +3,17 @@ title: 为设备配置网络代理 - Azure IoT Edge | Microsoft Docs
 description: 如何将 Azure IoT Edge 运行时和所有面向 Internet 的 IoT Edge 模块配置为通过代理服务器进行通信。
 author: kgremban
 ms.author: v-tawe
-origin.date: 11/19/2019
-ms.date: 03/02/2020
+origin.date: 03/10/2020
+ms.date: 03/30/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: fd09442ca2cd4c1765c9935820209dfdfc058f47
-ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
+ms.openlocfilehash: 92eaf433f7e012551e851f7c5b0c03b408432320
+ms.sourcegitcommit: 260800ede66f48c886d1426a0fac18b4d402b4f2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77494349"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586761"
 ---
 # <a name="configure-an-iot-edge-device-to-communicate-through-a-proxy-server"></a>将 IoT Edge 设备配置为通过代理服务器进行通信
 
@@ -201,13 +201,13 @@ IoT Edge 代理是在任意 IoT Edge 设备上启动的第一个模块。 该代
 
 ## <a name="configure-deployment-manifests"></a>配置部署清单  
 
-将 IoT Edge 设备配置为与代理服务器配合使用后，还需要在将来的部署清单中声明环境变量。 可以使用 Azure 门户向导或者通过编辑部署清单 JSON 文件，来编辑部署清单。
+将 IoT Edge 设备配置为与代理服务器配合使用后，还需要在将来的部署清单中声明 HTTPS_PROXY 环境变量。 可以使用 Azure 门户向导或者通过编辑部署清单 JSON 文件，来编辑部署清单。
 
 始终配置两个运行时模块（edgeAgent 和 edgeHub），以通过代理服务器进行通信，从而维持与 IoT 中心的连接。 如果从 edgeAgent 模块中删除了代理信息，则重新建立连接的唯一方法是根据前一部分中所述，编辑设备上的 config.yaml 文件。
 
-连接到 Internet 的其他 IoT Edge 模块也应该配置为通过代理服务器进行通信。 但是，通过 edgeHub 路由其消息的模块或仅与设备上的其他模块通信的模块不需要代理服务器详细信息。
+除了 edgeAgent 和 edgeHub 模块外，其他模块也可能需要代理配置。 这些模块需要访问 IoT 中心以外的 Azure 资源（例如 blob 存储），并且必须在部署清单文件中为该模块指定 HTTPS_PROXY 变量。
 
-在 IoT Edge 设备的整个生命周期内，都需要执行此步骤。
+以下过程在 IoT Edge 设备的整个生命周期中适用。
 
 ### <a name="azure-portal"></a>Azure 门户
 

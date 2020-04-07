@@ -7,18 +7,18 @@ ms.topic: tutorial
 origin.date: 11/7/2019
 ms.date: 03/12/2020
 ms.author: v-lingwu
-ms.openlocfilehash: 05d648477cd9dba739f881c4dd125841d1d61628
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: b113945fd61772ced03854eeef93da6dfc76b829
+ms.sourcegitcommit: 260800ede66f48c886d1426a0fac18b4d402b4f2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79293094"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586795"
 ---
 # <a name="tutorial-manage-sap-hana-databases-in-an-azure-vm-using-azure-cli"></a>教程：使用 Azure CLI 管理 Azure VM 中的 SAP HANA 数据库
 
 Azure CLI 用于从命令行或通过脚本创建和管理 Azure 资源。 本文档详细介绍如何在 Azure VM 上管理已备份的 SAP HANA 数据库 - 所有这些操作都使用 Azure CLI。 还可以使用 [Azure 门户](/backup/sap-hana-db-manage)执行这些步骤。
 
-使用 [Azure Cloud Shell](tutorial-sap-hana-backup-cli.md) 运行 CLI 命令。
+使用 [Azure CLI](tutorial-sap-hana-backup-cli.md) 运行 CLI 命令。
 
 完成本教程后，可执行以下操作：
 

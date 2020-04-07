@@ -1,20 +1,19 @@
 ---
-title: 在 Azure VPN 网关上配置 BGP：资源管理器和 CLI | Microsoft Docs
+title: 在 Azure VPN 网关上配置 BGP:CLI
 description: 本文将介绍如何使用 Azure 资源管理器和 CLI 通过 Azure VPN 网关配置 BGP。
 services: vpn-gateway
-documentationcenter: na
 author: WenJason
 ms.service: vpn-gateway
 ms.topic: article
 origin.date: 09/25/2018
-ms.date: 11/20/2019
+ms.date: 04/06/2020
 ms.author: v-jay
-ms.openlocfilehash: e8db27416873779b0c8c160f726e5f7c79e689c2
-ms.sourcegitcommit: dbc3523b993c0850393071d97722b5efe5f40e61
+ms.openlocfilehash: a88674f9f2a6245a3e94377b46b5a228af257cfd
+ms.sourcegitcommit: 5fb45da006859215edc8211481f13174aa43dbeb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74202761"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80634342"
 ---
 # <a name="how-to-configure-bgp-on-an-azure-vpn-gateway-by-using-cli"></a>如何使用 CLI 在 Azure VPN 网关上配置 BGP
 
@@ -41,19 +40,19 @@ BGP 是通常在 Internet 上使用的，用于在两个或更多网络之间交
 
 可将这些部分组合在一起，生成更复杂的多跃点传输网络来满足需求。
 
-## <a name ="enablebgp"></a>为 VPN 网关启用 BGP
+## <a name="enable-bgp-for-your-vpn-gateway"></a><a name ="enablebgp"></a>为 VPN 网关启用 BGP
 
 需要先完成此部分，才可执行另外两个配置部分中的任何步骤。 以下配置步骤设置如下图所示的 Azure VPN 网关的 BGP 参数：
 
 ![BGP 网关](./media/vpn-gateway-bgp-resource-manager-ps/bgp-gateway.png)
 
-### <a name="before-you-begin"></a>开始之前
+### <a name="before-you-begin"></a>准备阶段
 
 安装最新版本的 CLI 命令（2.0 或更高版本）。 有关安装 CLI 命令的信息，请参阅[安装 Azure CLI](/cli/install-azure-cli) 和 [Azure CLI 入门](/cli/get-started-with-azure-cli)。
 
 ### <a name="step-1-create-and-configure-testvnet1"></a>步骤 1：创建并配置 TestVNet1
 
-#### <a name="Login"></a>1.连接到订阅
+#### <a name="1-connect-to-your-subscription"></a><a name="Login"></a>1.连接到订阅
 
 [!INCLUDE [CLI login](../../includes/vpn-gateway-cli-login-include.md)]
 
@@ -120,7 +119,7 @@ az network vnet-gateway list -g TestBGPRG1 
 
 创建网关后，可以使用此网关通过 BGP 建立跨界连接或 VNet 到 VNet 连接。
 
-## <a name ="crossprembgp"></a>使用 BGP 建立跨界连接
+## <a name="establish-a-cross-premises-connection-with-bgp"></a><a name ="crossprembgp"></a>使用 BGP 建立跨界连接
 
 要建立跨界连接，需要创建本地网关来表示本地 VPN 设备。 然后将 Azure VPN 网关与本地网关连接在一起。 虽然这些步骤与创建其他连接的步骤类似，但它们包括指定 BGP 配置参数所需的其他属性。
 
@@ -129,7 +128,7 @@ az network vnet-gateway list -g TestBGPRG1 
 
 ### <a name="step-1-create-and-configure-the-local-network-gateway"></a>步骤 1：创建和配置本地网关
 
-此练习将继续生成图中所示的配置。 请务必将值替换为用于配置的值。 使用本地网络网关时，请记住以下事项：
+此练习将继续生成图中所示的配置。 请务必将值替换为要用于配置的值。 使用本地网络网关时，请记住以下事项：
 
 * 本地网关可以与 VPN 网关在相同的位置和资源组中，也可以在不同的位置和资源组中。 此示例演示网关在不同位置的不同资源组中。
 * 需要为本地网关声明的最小前缀是 VPN 设备上的 BGP 对等节点 IP 地址中的主机地址。 在此示例中，它是“10.51.255.254/32”中的 /32 前缀。
@@ -212,7 +211,7 @@ eBGP Multihop        : Ensure the "multihop" option for eBGP is enabled on your 
 
 几分钟后，应会建立连接。 建立 IPsec 连接后，可开始 BGP 对等会话。
 
-## <a name ="v2vbgp"></a>使用 BGP 建立 VNet 到 VNet 连接
+## <a name="establish-a-vnet-to-vnet-connection-with-bgp"></a><a name ="v2vbgp"></a>使用 BGP 建立 VNet 到 VNet 连接
 
 此部分使用 BGP 添加 VNet 到 VNet 连接，如下图所示： 
 

@@ -4,16 +4,16 @@ description: 了解 Azure 应用服务中内置的身份验证和授权支持，
 ms.assetid: b7151b57-09e5-4c77-a10c-375a262f17e5
 ms.topic: article
 origin.date: 08/12/2019
-ms.date: 02/17/2020
+ms.date: 03/30/2020
 ms.author: v-tawe
 ms.reviewer: mahender
 ms.custom: seodec18
-ms.openlocfilehash: 79fea0e83840af4dce003a1c1aefe2f04104dccc
-ms.sourcegitcommit: b2f2bb08ab1b5ccb3c596d84b3b6ddca5bba3903
+ms.openlocfilehash: 582427da7f8f7cec13e553a75f2b1db25f926183
+ms.sourcegitcommit: 44d3fe59952847e5394bbe6c05bd6f333bb56345
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80151720"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80522123"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service"></a>Azure 应用服务中的身份验证和授权
 
@@ -61,7 +61,7 @@ Azure 应用服务提供内置的身份验证和授权支持。只需在 Web 应
 应用服务提供内置的令牌存储，这是与 Web 应用、API 或本机移动应用的用户相关联的令牌存储库。 对任何提供程序启用身份验证时，此令牌存储可立即供应用使用。 如果应用程序代码需要代表用户访问这些提供程序中的数据，例如： 
 
 - 发布到经过身份验证用户的 MicrosoftAccount 时间线
-- 从 Azure Active Directory 图形 API 甚至 Microsoft Graph 中读取用户的企业数据
+- 使用 Microsoft Graph API 读取用户的公司数据
 
 通常，必须编写代码才能在应用程序中收集、存储和刷新这些令牌。 使用令牌存储，只需在需要令牌时才[检索令牌](app-service-authentication-how-to.md#retrieve-tokens-in-app-code)；当令牌失效时，可以[告知应用服务刷新令牌](app-service-authentication-how-to.md#refresh-identity-provider-tokens)。 
 

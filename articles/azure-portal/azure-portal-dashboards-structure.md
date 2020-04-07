@@ -14,12 +14,12 @@ ms.workload: na
 origin.date: 12/20/2019
 ms.author: v-tawe
 ms.date: 02/17/2020
-ms.openlocfilehash: 2582199c4c811a996b2837e37d0c675e21a85cef
-ms.sourcegitcommit: 888cbc10f2348de401d4839a732586cf266883bf
+ms.openlocfilehash: 4404f702dcef4f821eeeabb0c09f9b5d09b403d1
+ms.sourcegitcommit: 260800ede66f48c886d1426a0fac18b4d402b4f2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77028204"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586823"
 ---
 # <a name="the-structure-of-azure-dashboards"></a>Azure 仪表板结构
 本文档将使用以下仪表板作为示例，介绍 Azure 仪表板的结构：
@@ -93,7 +93,7 @@ ms.locfileid: "77028204"
                                     "settings": {
                                         "title": "",
                                         "subtitle": "",
-                                        "src": "https://www.youtube.com/watch?v=YcylDIiKaSU&list=PLLasX02E8BPCsnETz0XAMfpLR1LIBqpgs&index=4",
+                                        "src": "<https://www.contoso.com/yourvideo>",
                                         "autoplay": false
                                     }
                                 }
@@ -316,10 +316,10 @@ ms.locfileid: "77028204"
 属性对象包含两个属性：可重用功能区和元数据   。 “可重用功能区”属性包含有关仪表板上的磁贴的信息  。  “元数据”属性用于将来可能会出现的功能  。
 
 ### <a name="the-lenses-property"></a>“可重用功能区”属性
-“可重用功能区”属性包含仪表板  。 请注意，此示例中的可重用功能区对象包含名为“0”的单个属性。 可重用功能区是一个分组概念，当前未在仪表板中实现。 现在，所有仪表板在可重用功能区对象上具有此单个属性，即“0”。
+“可重用功能区”属性包含仪表板  。 请注意，此示例中的可重用功能区对象包含称为“0”的单个属性。 可重用功能区是一个分组概念，当前未在仪表板中实现。 现在，所有仪表板在可重用功能区对象上都有此单个属性（同样称为“0”）。
 
 ### <a name="the-lens-object"></a>可重用功能区对象
-“0”下面的对象包含两个属性：顺序和部件   。  在当前版本的仪表板中，顺序始终为 0  。 __parts__ 属性包含一个对象，该对象定义仪表板上的各个部件（也称为“磁贴”）。
+“0”下面的对象包含两个属性：order 和 parts   。  在当前版本的仪表板中，顺序始终为 0  。 __parts__ 属性包含一个对象，该对象定义仪表板上的各个部件（也称为“磁贴”）。
 
 部件对象包含每个部件的一个属性，其中属性名称为一个数字  。 此数字并不重要。 
 
@@ -339,7 +339,7 @@ ms.locfileid: "77028204"
 
 1. `Extension/Microsoft_Azure_Monitoring/PartType/MetricsChartPart` – 用于显示监视度量值
 1. `Extension[azure]/HubsExtension/PartType/MarkdownPart` – 用于显示带列表、链接等基本格式的文本或图像。
-1. `Extension[azure]/HubsExtension/PartType/VideoPart` – 用于显示来自 YouTube、Channel9 的视频，以及使用 HTML 视频标记的任何其他类型的视频。
+1. `Extension[azure]/HubsExtension/PartType/VideoPart` - 用于显示视频，以及在 HTML 视频标记中使用的任何其他类型的视频。
 1. `Extension/Microsoft_Azure_Compute/PartType/VirtualMachinePart` – 用于显示 Azure 虚拟机的名称和状态。
 
 所有部件类型都有其自己的配置。 可能的配置属性有“输入”、“设置”和“资产”    。 
@@ -357,10 +357,10 @@ ms.locfileid: "77028204"
 ]
 
 ```
-度量值图表部件含有表示要绑定到的资源的单个输入以及有关显示的度量值的信息。 以下是显示 Network In 和 Network Out 度量值的磁贴的输入。
+度量值图表部件含有表示要绑定到的资源的单个输入以及有关显示的度量值的信息。 以下是显示 Network In 和 Network Out 指标的磁贴的输入。
 
 ```json
-“inputs”:
+"inputs":
 [
     {
         "name": "queryInputs",
@@ -421,7 +421,7 @@ ms.locfileid: "77028204"
         {
             "title": "",
             "subtitle": "",
-            "src": "https://www.youtube.com/watch?v=YcylDIiKaSU&list=PLLasX02E8BPCsnETz0XAMfpLR1LIBqpgs&index=4",
+            "src": "<https://www.contoso.com/yourvideo>",
             "autoplay": false
         }
     }

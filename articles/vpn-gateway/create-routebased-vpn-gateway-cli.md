@@ -1,19 +1,19 @@
 ---
-title: 创建基于路由的 Azure VPN 网关：CLI | Microsoft Docs
+title: 创建基于路由的 Azure VPN 网关：CLI
 description: 快速了解如何使用 CLI 创建 VPN 网关
 services: vpn-gateway
 author: WenJason
 ms.service: vpn-gateway
 ms.topic: article
 origin.date: 10/04/2018
-ms.date: 03/04/2019
+ms.date: 04/06/2019
 ms.author: v-jay
-ms.openlocfilehash: 73a11cd18e716bdf04e0a3fe373b077dcaa3ab8c
-ms.sourcegitcommit: dcd11929ada5035d127be1ab85d93beb72909dc3
+ms.openlocfilehash: d1ff3778611890711a2a3de3606ff6a128ab196e
+ms.sourcegitcommit: 5fb45da006859215edc8211481f13174aa43dbeb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56833214"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80634585"
 ---
 # <a name="create-a-route-based-vpn-gateway-using-cli"></a>使用 CLI 创建基于路由的 VPN 网关
 
@@ -32,7 +32,7 @@ ms.locfileid: "56833214"
 az group create --name TestRG1 --location chinanorth
 ```
 
-## <a name="vnet"></a>创建虚拟网络
+## <a name="create-a-virtual-network"></a><a name="vnet"></a>创建虚拟网络
 
 使用 [az network vnet create](/cli/network/vnet) 命令创建虚拟网络。 以下示例在“ChinaNorth”位置创建一个名为“VNet1”的虚拟网络   ：
 
@@ -46,11 +46,11 @@ az network vnet create \
   --subnet-prefix 10.1.0.0/24
 ```
 
-## <a name="gwsubnet"></a>添加网关子网
+## <a name="add-a-gateway-subnet"></a><a name="gwsubnet"></a>添加网关子网
 
 网关子网包含虚拟网络网关服务使用的保留 IP 地址。 使用下面的示例添加网关子网：
 
-```azurepowershell
+```azurecli
 az network vnet subnet create \
   --vnet-name VNet1 \
   -n GatewaySubnet \
@@ -58,7 +58,7 @@ az network vnet subnet create \
   --address-prefix 10.1.255.0/27 
 ```
 
-## <a name="PublicIP"></a>请求公共 IP 地址
+## <a name="request-a-public-ip-address"></a><a name="PublicIP"></a>请求公共 IP 地址
 
 VPN 网关必须具有动态分配的公共 IP 地址。 将向为虚拟网络创建的 VPN 网关分配公共 IP 地址。 使用下面的示例请求一个公共 IP 地址：
 
@@ -69,7 +69,7 @@ az network public-ip create \
   --allocation-method Dynamic 
 ```
 
-## <a name="CreateGateway"></a>创建 VPN 网关
+## <a name="create-the-vpn-gateway"></a><a name="CreateGateway"></a>创建 VPN 网关
 
 使用 [az network vnet-gateway create](/cli/group) 命令创建 VPN 网关。
 
@@ -90,7 +90,7 @@ az network vnet-gateway create \
 
 创建 VPN 网关可能需要 45 分钟或更长时间。
 
-## <a name="viewgw"></a>查看 VPN 网关
+## <a name="view-the-vpn-gateway"></a><a name="viewgw"></a>查看 VPN 网关
 
 ```azurecli
 az network vnet-gateway show \
@@ -100,7 +100,7 @@ az network vnet-gateway show \
 
 响应类似于以下内容：
 
-```
+```output
 {
   "activeActive": false,
   "bgpSettings": null,
@@ -144,9 +144,9 @@ az network vnet-gateway show \
 }
 ```
 
-### <a name="view-the-public-ip-address"></a>查看公用 IP 地址
+### <a name="view-the-public-ip-address"></a>查看公共 IP 地址
 
-若要查看分配给网关的公用 IP 地址，请使用以下示例：
+若要查看分配给网关的公共 IP 地址，请使用以下示例：
 
 ```azurecli
 az network public-ip show \
@@ -154,11 +154,11 @@ az network public-ip show \
   --resource-group TestRG1
 ```
 
-与 **ipAddress** 字段关联的值是 VPN 网关的公用 IP 地址。
+与 **ipAddress** 字段关联的值是 VPN 网关的公共 IP 地址。
 
 示例响应:
 
-```
+```output
 {
   "dnsSettings": null,
   "etag": "W/\"a12d4d03-b27a-46cc-b222-8d9364b8166a\"",
@@ -169,6 +169,7 @@ az network public-ip show \
     "etag": null,
     "id": "/subscriptions/<subscription ID>/resourceGroups/TestRG1/providers/Microsoft.Network/virtualNetworkGateways/VNet1GW/ipConfigurations/vnetGatewayConfig0",
 ```
+
 ## <a name="clean-up-resources"></a>清理资源
 
 如果不再需要所创建的资源，请使用 [az group delete](/cli/group) 删除资源组。 这将删除资源组及其包含的所有资源。

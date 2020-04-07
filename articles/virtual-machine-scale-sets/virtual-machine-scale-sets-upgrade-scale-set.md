@@ -6,14 +6,14 @@ tags: azure-resource-manager
 ms.assetid: e229664e-ee4e-4f12-9d2e-a4f456989e5d
 ms.service: virtual-machine-scale-sets
 ms.topic: conceptual
-ms.date: 03/17/2020
+ms.date: 03/31/2020
 ms.author: v-junlch
-ms.openlocfilehash: 83b795314f31011a946b652c137e945a7a2463e0
-ms.sourcegitcommit: e500354e2fd8b7ac3dddfae0c825cc543080f476
+ms.openlocfilehash: f486af15dae7a6450bb7316a3fa247fcc247a4d6
+ms.sourcegitcommit: 64584c0bf31b4204058ae2b4641356b904ccdd58
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2020
-ms.locfileid: "79547056"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80581816"
 ---
 # <a name="modify-a-virtual-machine-scale-set"></a>修改虚拟机规模集
 
@@ -341,6 +341,7 @@ $ az vmss get-instance-view --resource-group myResourceGroup --name myScaleSet -
 
 - Image reference publisher
 - image reference offer
+- Image reference sku
 - 托管 OS 磁盘存储帐户类型
 
 ### <a name="properties-that-can-only-be-changed-based-on-the-current-value"></a>只能在当前值的基础上更改的属性

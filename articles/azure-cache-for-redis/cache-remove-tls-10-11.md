@@ -4,14 +4,14 @@ description: 了解在与 Azure Cache for Redis 通信时如何从应用程序�
 author: yegu-ms
 ms.service: cache
 ms.topic: conceptual
-ms.date: 03/17/2020
+ms.date: 03/30/2020
 ms.author: v-junlch
-ms.openlocfilehash: 54c7fae56d729e65cddd0f8b349d782466ecfe99
-ms.sourcegitcommit: 71a386ca0d0ecb79a123399b6ab6b8c70ea2aa78
+ms.openlocfilehash: 9a829a032843b04c69923287c0cdf1c7d97c6dec
+ms.sourcegitcommit: 64584c0bf31b4204058ae2b4641356b904ccdd58
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2020
-ms.locfileid: "79497167"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80581814"
 ---
 # <a name="remove-tls-10-and-11-from-use-with-azure-cache-for-redis"></a>删除与 Azure Cache for Redis 配合使用的 TLS 1.0 和 1.1
 
@@ -31,12 +31,12 @@ ms.locfileid: "79497167"
 
 这些更改的生效日期为：
 
-| 云               | 阶段 1 开始日期 | 阶段 2 开始日期 |
-|---------------------|--------------------|--------------------|
-| Azure（公有云）      |  2020 年 1 月 13 日  | 2020 年 3 月 31 日     |
-| Azure Government    |  2020 年 3 月 13 日    | 2020 年 5 月 11 日       |
-| Azure 德国       |  2020 年 3 月 13 日    | 2020 年 5 月 11 日       |
-| Azure 中国         |  2020 年 3 月 13 日    | 2020 年 5 月 11 日       |
+| 云               | 阶段 1 开始日期 | 阶段 2 开始日期      |
+|---------------------|--------------------|-------------------------|
+| Azure（公有云）      |  2020 年 1 月 13 日  | 2020 年 5 月 11 日（已延长） |
+| Azure Government    |  2020 年 3 月 13 日    | 2020 年 5 月 11 日            |
+| Azure 德国       |  2020 年 3 月 13 日    | 2020 年 5 月 11 日            |
+| Azure 中国         |  2020 年 3 月 13 日    | 2020 年 5 月 11 日            |
 
 ## <a name="check-whether-your-application-is-already-compliant"></a>检查应用程序是否已合规
 

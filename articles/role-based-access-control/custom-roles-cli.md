@@ -11,17 +11,22 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/02/2020
+ms.date: 03/31/2020
 ms.author: v-junlch
 ms.reviewer: bagovind
-ms.openlocfilehash: 827f08c5067df545cc8d9cc8a63b398dae38577d
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.openlocfilehash: 7815131018bdac664b1e58d1f7079654b7f7f483
+ms.sourcegitcommit: 64584c0bf31b4204058ae2b4641356b904ccdd58
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75624345"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80581687"
 ---
 # <a name="create-or-update-custom-roles-for-azure-resources-using-azure-cli"></a>使用 Azure CLI 为 Azure 资源创建或更新自定义角色
+
+> [!IMPORTANT]
+> 将管理组添加到 `AssignableScopes` 的功能目前处于预览状态。
+> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。
+> 有关详细信息，请参阅[适用于 Azure 预览版的补充使用条款](https://www.azure.cn/support/legal/)。
 
 如果 [Azure 资源的内置角色](built-in-roles.md)不能满足组织的特定需求，则可以创建自定义角色。 本文介绍如何使用 Azure CLI 列出、创建、更新或删除自定义角色。
 
@@ -186,7 +191,7 @@ az role definition create --role-definition ~/roles/vmoperator.json
 az role definition update --role-definition <role_definition>
 ```
 
-以下示例将 *Microsoft.Insights/diagnosticSettings/* 操作添加到“虚拟机操作员”自定义角色的“Actions”  。 
+以下示例将“Microsoft.Insights/diagnosticSettings/”  操作添加到 `Actions`，并将管理组添加到“虚拟机操作员”  自定义角色的 `AssignableScopes`。 将管理组添加到 `AssignableScopes` 的功能目前处于预览状态。
 
 vmoperator.json
 
@@ -213,7 +218,8 @@ vmoperator.json
   ],
   "AssignableScopes": [
     "/subscriptions/11111111-1111-1111-1111-111111111111",
-    "/subscriptions/33333333-3333-3333-3333-333333333333"
+    "/subscriptions/33333333-3333-3333-3333-333333333333",
+    "/providers/Microsoft.Management/managementGroups/marketing-group"
   ]
 }
 ```

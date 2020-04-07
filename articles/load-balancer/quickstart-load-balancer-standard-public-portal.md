@@ -13,15 +13,15 @@ ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 01/08/2020
-ms.date: 02/24/2020
+ms.date: 04/06/2020
 ms.author: v-jay
 ms.custom: mvc
-ms.openlocfilehash: 7a142e5e5bec32fd49e764693f196c12d89376b4
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.openlocfilehash: dc5bb9d54a3729a01863220bf2ea6b39e846073a
+ms.sourcegitcommit: fe9ed98aaee287a21648f866bb77cb6888f75b0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77540979"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80625682"
 ---
 # <a name="quickstart-create-a-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>快速入门：使用 Azure 门户创建负载均衡器以对 VM 进行负载均衡
 
@@ -35,7 +35,7 @@ ms.locfileid: "77540979"
 
 ## <a name="create-a-load-balancer"></a>创建负载均衡器
 
-在本部分，你将创建一个负载均衡器，以帮助对虚拟机进行负载均衡。 可以创建公共负载均衡器或内部负载均衡器。 创建公共负载均衡器时，还必须为该负载均衡器创建一个配置为前端（默认情况下命名为 *LoadBalancerFrontend*）的新公共 IP 地址。
+在本部分，你将创建一个负载均衡器，以帮助对虚拟机进行负载均衡。 可以创建公共负载均衡器或内部负载均衡器。 创建公共负载均衡器时，还必须为该负载均衡器创建一个配置为前端（默认情况下命名为“LoadBalancerFrontend”  ）的新公共 IP 地址。
 
 1. 在屏幕的左上方，选择“创建资源” > “网络” > “负载均衡器”    。
 2. 在“创建负载均衡器”页的“基本”选项卡中输入或选择以下信息，接受其余的默认设置，然后选择“查看 + 创建”    ：
@@ -49,7 +49,12 @@ ms.locfileid: "77540979"
     | 类型          | 选择“公共”。                                         |
     | SKU           | 选择“标准”或“基本”。   Azure 建议将“标准”用于生产工作负荷。  |
     | 公共 IP 地址 | 选择“新建”。  若要使用现有的公共 IP，请选择“使用现有项”  |
-    | 公共 IP 地址名称              | 在文本框中键入 myPublicIP  。   |
+    | 公共 IP 地址名称              | 在文本框中键入 myPublicIP  。   使用 ```-SKU Basic``` 创建基本公共 IP。 基本公共 IP 与**标准**负载均衡器不兼容。 Azure 建议将“标准”  用于生产工作负荷。|
+
+> [!IMPORTANT]
+> 本快速入门的其余部分假定在上述 SKU 选择过程中选择了“标准”  SKU。
+
+
 3. 在“查看 + 创建”选项卡中，选择“创建”。     
 
     ![创建标准负载均衡器](./media/quickstart-load-balancer-standard-public-portal/create-standard-load-balancer.png)
@@ -105,21 +110,20 @@ ms.locfileid: "77540979"
 
 在本部分，我们将创建一个虚拟网络，为负载均衡器的后端池创建三台虚拟机，然后在虚拟机上安装 IIS，以便对负载均衡器进行测试。
 
-### <a name="create-a-virtual-network"></a>创建虚拟网络
-1. 在屏幕的左上方，选择“创建资源” > “网络” > “虚拟网络”    。
+## <a name="virtual-network-and-parameters"></a>虚拟网络和参数
 
-1. 在“创建虚拟网络”  中，输入或选择以下信息：
+在本部分中，你需要将步骤中的以下参数替换为以下信息：
 
-    | 设置 | Value |
-    | ------- | ----- |
-    | 名称 | 输入 *myVNet*。 |
-    | 地址空间 | 输入 10.1.0.0/16  。 |
-    | 订阅 | 选择订阅。|
-    | 资源组 | 选择现有资源 - *myResourceGroupSLB*。 |
-    | 位置 | 选择“中国北部”  。|
-    | 子网 - 名称 | 输入 *myBackendSubnet*。 |
-    | 子网 - 地址范围 | 输入 10.1.0.0/24  。 |
-1. 将剩余的字段保留默认设置，然后选择 **“创建”** 。
+| 参数                   | Value                |
+|-----------------------------|----------------------|
+| **\<resource-group-name>**  | myResourceGroupSLB |
+| **\<virtual-network-name>** | myVNet          |
+| **\<region-name>**          | 中国北部      |
+| **\<IPv4-address-space>**   | 10.1.0.0\16          |
+| **\<subnet-name>**          | myBackendSubnet        |
+| **\<subnet-address-range>** | 10.1.0.0\24          |
+
+[!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 
 ### <a name="create-virtual-machines"></a>创建虚拟机
 公共 IP SKU 和负载均衡器 SKU 必须匹配。 对于标准负载均衡器，请使用后端池中具有标准 IP 地址的 VM。 在本部分中，你将创建具有标准公共 IP 地址的三个 VM（myVM1  、myVM2  和 myVM3  ），这些 VM 稍后将添加到前面创建的负载均衡器后端池。 如果选择了“基本”，请使用具有基本 IP 地址的 VM。

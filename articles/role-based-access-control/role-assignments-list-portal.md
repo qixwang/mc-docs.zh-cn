@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 03/04/2020
+ms.date: 03/31/2020
 ms.author: v-junlch
 ms.reviewer: bagovind
-ms.openlocfilehash: 6ca31e400016a288ced10f7c0a968fc8224a7015
-ms.sourcegitcommit: 1ac138a9e7dc7834b5c0b62a133ca5ce2ea80054
+ms.openlocfilehash: 6cdd0b08af50bcca86dc9a1a91bc348fe8d628e4
+ms.sourcegitcommit: 64584c0bf31b4204058ae2b4641356b904ccdd58
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78265913"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80581729"
 ---
 # <a name="list-role-assignments-using-azure-rbac-and-the-azure-portal"></a>使用 Azure RBAC 和 Azure 门户列出角色分配
 
@@ -125,11 +125,11 @@ ms.locfileid: "78265913"
 
 ## <a name="list-number-of-role-assignments"></a>列出角色分配数
 
-每个订阅中最多可以包含 **2000** 个角色分配。 “角色分配”  选项卡包含一个图表，其中列出了当前的角色分配数，目的是帮助你跟踪这些限制。
+每个订阅中最多可以包含 **2000** 个角色分配。 为了帮助你跟踪此限制，“角色分配”  选项卡包含一个图表，其中列出了当前订阅的角色分配数。
 
 ![访问控制 - 角色分配数目图表](./media/role-assignments-list-portal/access-control-role-assignments-chart.png)
 
-如果在快要到达最大数量时尝试添加更多角色分配，则会在“添加角色分配”  窗格中看到一条警告。 可以减少角色分配的数量，方法是：删除不再需要的角色分配，或将角色分配给组而不是单个用户。
+如果在快要到达最大数量时尝试添加更多角色分配，则会在“添加角色分配”  窗格中看到一条警告。 有关可减少角色分配数的方法，请参阅 [Azure RBAC 故障排除](troubleshooting.md#azure-role-assignments-limit)。
 
 ![访问控制 - 添加角色分配警告](./media/role-assignments-list-portal/add-role-assignment-warning.png)
 

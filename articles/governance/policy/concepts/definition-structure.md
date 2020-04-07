@@ -3,14 +3,14 @@ title: 策略定义结构的详细信息
 description: 描述如何使用策略定义为组织中的 Azure 资源建立约定。
 ms.author: v-tawe
 origin.date: 02/26/2020
-ms.date: 03/16/2020
+ms.date: 03/30/2020
 ms.topic: conceptual
-ms.openlocfilehash: a1acf0214d3e41410db4cfd99beaeec74fe4ab4d
-ms.sourcegitcommit: 1d3d8dfdaf6281f06640cbee7124a1e8bf102c50
+ms.openlocfilehash: 38f5278597ef7b48804819096b96a25379168d35
+ms.sourcegitcommit: 260800ede66f48c886d1426a0fac18b4d402b4f2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "80243918"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586788"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure Policy 定义结构
 
@@ -78,7 +78,7 @@ Azure Policy 为资源建立约定。 策略定义描述资源符合性[条件](
 - `all`：评估资源组和所有资源类型
 - `indexed`：仅评估支持标记和位置的资源类型
 
-例如，资源 `Microsoft.Network/routeTables` 支持标记和位置，在两种模式下进行评估。 但是，资源 `Microsoft.Network/routeTables/routes` 无法标记，不在 `Indexed` 模式下评估。
+例如，资源 `Microsoft.Network/routeTables` 支持标记和位置，在两种模式下进行评估。 但是，资源 `Microsoft.Network/routeTables/routes` 无法标记，不在 `Indexed` 模式下进行评估。
 
 大多数情况下，建议将“mode”设置为  `all`。 通过门户创建的所有策略定义使用 `all` 模式。 如果使用 PowerShell 或 Azure CLI，则可以手动指定 **mode** 参数。 如果策略定义不包含 **mode** 值，为提供后向兼容性，在 Azure PowerShell 中默认为 `all`，在 Azure CLI 中默认为 `null`。 `null` 模式等同于使用 `indexed` 来支持后向兼容性。
 

@@ -5,14 +5,14 @@ services: application-gateway
 author: abshamsft
 ms.service: application-gateway
 ms.topic: article
-ms.date: 03/16/2020
+ms.date: 03/30/2020
 ms.author: v-junlch
-ms.openlocfilehash: 502074bb95b01dde90dafcf08fd2b603cbdb2a4f
-ms.sourcegitcommit: 71a386ca0d0ecb79a123399b6ab6b8c70ea2aa78
+ms.openlocfilehash: 4b0767ae1cc08861668d0ae7cdff5f031048a039
+ms.sourcegitcommit: 64584c0bf31b4204058ae2b4641356b904ccdd58
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2020
-ms.locfileid: "79497299"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80581711"
 ---
 # <a name="metrics-for-application-gateway"></a>应用程序网关的指标
 
@@ -34,7 +34,7 @@ ms.locfileid: "79497299"
 
   与后端应用程序建立连接所花费的时间。 
 
-  这包括网络延迟，以及后端服务器的 TCP 堆栈建立新连接所用的时间。 在使用 SSL 时，它还包括握手所用的时间。 
+  这包括网络延迟，以及后端服务器的 TCP 堆栈建立新连接所用的时间。 对于 TLS，它还包括握手所用时间。 
 
 - **后端第一个字节响应时间**
 

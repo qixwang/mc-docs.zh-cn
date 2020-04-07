@@ -5,15 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-origin.date: 08/08/2019
-ms.date: 09/10/2019
+ms.date: 03/30/2020
 ms.author: v-junlch
-ms.openlocfilehash: 75b0d0f4d05ca95f5d08d5bd58aa8def10641bac
-ms.sourcegitcommit: 843028f54c4d75eba720ac8874562ab2250d5f4d
+ms.openlocfilehash: e6c191b5c2a092ce69e1b0f49184bd7b8cecfd4a
+ms.sourcegitcommit: 64584c0bf31b4204058ae2b4641356b904ccdd58
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70857350"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80581808"
 ---
 # <a name="rewrite-http-headers-with-application-gateway"></a>重写应用程序网关的 HTTP 标头
 
@@ -65,7 +64,7 @@ HTTP 标头可让客户端和服务器连同请求或响应一起传递附加的
 | -------------------------- | :----------------------------------------------------------- |
 | add_x_forwarded_for_proxy  | X-Forwarded-For 客户端请求标头字段，其中追加了 IP1、IP2、IP3 等格式的 `client_ip` 变量（请参阅此表后面的解释）。 如果 X-Forwarded-For 字段不在客户端请求标头中，则 `add_x_forwarded_for_proxy` 变量等于 `$client_ip` 变量。 若要重写应用程序网关设置的 X-Forwarded-For 标头，使该标头仅包含 IP 地址而不包含端口信息，则此变量特别有用。 |
 | ciphers_supported          | 客户端支持的加密法列表。          |
-| ciphers_used               | 用于已建立的 SSL 连接的加密法字符串。 |
+| ciphers_used               | 用于已建立 TLS 连接的加密法字符串。 |
 | client_ip                  | 客户端的 IP 地址，应用程序网关从中接收请求。 如果应用程序网关和发起方客户端的前面有反向代理，则 *client_ip* 将返回该反向代理的 IP 地址。 |
 | client_port                | 客户端端口。                                                  |
 | client_tcp_rtt             | 有关客户端 TCP 连接的信息。 在支持 TCP_INFO 套接字选项的系统上可用。 |
@@ -82,8 +81,8 @@ HTTP 标头可让客户端和服务器连同请求或响应一起传递附加的
 | request_uri                | 完整的原始请求 URI（带参数）。                   |
 | sent_bytes                 | 发送到客户端的字节数。                             |
 | server_port                | 接受请求的服务器端口。                 |
-| ssl_connection_protocol    | 已建立的 SSL 连接的协议。        |
-| ssl_enabled                | 如果连接在 SSL 模式下运行，则为“On”。 否则为空字符串。 |
+| ssl_connection_protocol    | 已建立的 TLS 连接的协议。        |
+| ssl_enabled                | 如果连接在 TLS 模式下建立，则为“On”。 否则为空字符串。 |
 
 ## <a name="rewrite-configuration"></a>重写配置
 

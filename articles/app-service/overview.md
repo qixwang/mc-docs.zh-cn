@@ -4,19 +4,19 @@ description: 了解 Azure 应用服务如何帮助用户开发和托管 Web 应�
 ms.assetid: 94af2caf-a2ec-4415-a097-f60694b860b3
 ms.topic: overview
 origin.date: 01/04/2017
-ms.date: 01/13/2020
+ms.date: 03/30/2020
 ms.author: v-tawe
-ms.custom: mvc
-ms.openlocfilehash: a88844a2ceb5e656bcdc18b4385359674c7d44d6
-ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
+ms.custom: mvc, seodec18
+ms.openlocfilehash: 1ec960d6e04b888f3fc5acddf42d2d8398c4c3e6
+ms.sourcegitcommit: 44d3fe59952847e5394bbe6c05bd6f333bb56345
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75600408"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80522118"
 ---
 # <a name="app-service-overview"></a>应用服务概述
 
-Azure 应用服务是用于托管 Web 应用程序、REST API 和移动后端的服务  。 可以使用 .NET、NET Core、Java、Ruby、Node.js、PHP 或 Python 等偏好的语言进行开发。
+Azure 应用服务是一项基于 HTTP 的服务，用于托管 Web 应用程序、REST API 和移动后端  。 可以使用 .NET、NET Core、Java、Ruby、Node.js、PHP 或 Python 等偏好的语言进行开发。
 
 应用服务不仅可将 Microsoft Azure 的强大功能（例如安全性、负载均衡、自动缩放和自动管理）添加到应用程序。 还可以利用其 DevOps 功能，例如包管理、过渡环境、自定义域和 SSL 证书。
 

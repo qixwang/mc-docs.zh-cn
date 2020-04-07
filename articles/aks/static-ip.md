@@ -3,15 +3,15 @@ title: 将静态 IP 地址和 DNS 标签用于 Azure Kubernetes 服务 (AKS) 负
 description: 了解如何创建静态 IP 地址并将其用于 Azure Kubernetes 服务 (AKS) 负载均衡器。
 services: container-service
 ms.topic: article
-origin.date: 11/06/2019
-ms.date: 03/09/2020
+origin.date: 03/09/2020
+ms.date: 04/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: 9651129d0c465a2bf2f25ed93613565a91fc0a2d
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: 07611e8280195c72d7cee45e9e15cdb13b480a42
+ms.sourcegitcommit: 76280dd9854dc0ff0ba1e5e62fb3dc3af049fbe2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79290691"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80517003"
 ---
 # <a name="use-a-static-public-ip-address-and-dns-label-with-the-azure-kubernetes-service-aks-load-balancer"></a>将静态公共 IP 地址和 DNS 标签用于 Azure Kubernetes 服务 (AKS) 负载均衡器
 
@@ -69,7 +69,7 @@ $ az network public-ip show --resource-group myResourceGroup --name myAKSPublicI
 ```azurecli
 az role assignment create \
     --assignee <SP Client ID> \
-    --role "Contributor" \
+    --role "Network Contributor" \
     --scope /subscriptions/<subscription id>/resourceGroups/<resource group name>
 ```
 
@@ -99,7 +99,7 @@ kubectl apply -f load-balancer-service.yaml
 
 ## <a name="apply-a-dns-label-to-the-service"></a>向服务应用 DNS 标签
 
-如果服务使用动态或静态公共 IP 地址，则可使用服务批注 `service.beta.kubernetes.io/azure-dns-label-name` 来设置面向公众的 DNS 标签。 这将使用 Azure 的公共 DNS 服务器和顶级域为你的服务发布完全限定的域名。 批注值在 Azure 位置中必须独一无二，因此建议使用进行了足够限定的标签。   
+如果服务使用动态或静态公共 IP 地址，则可使用服务批注 `service.beta.kubernetes.io/azure-dns-label-name` 来设置面向公众的 DNS 标签。 这将使用 Azure 的公共 DNS 服务器和顶级域为你的服务发布完全限定的域名。 批注值在 Azure 位置中必须唯一，因此建议使用进行了足够限定的标签。   
 
 然后，Azure 会自动将 `<location>.cloudapp.chinacloudapi.cn`（其中的 location 是所选的区域）之类的默认子网追加到提供的名称后面，以创建完全限定的 DNS 名称。 例如：
 

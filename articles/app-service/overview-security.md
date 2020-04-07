@@ -4,15 +4,15 @@ description: 了解应用服务如何帮助保护应用，以及如何进一步�
 keywords: azure 应用服务, web 应用, 移动应用, api 应用, 函数应用, 安全性, 保护, 受保护, 符合性, 符合, 证书, 证书, https, ftps, tls, 信任, 加密, 加密, 已加密, ip 限制, 身份验证, 授权, 身份验证, 授权, msi, 托管服务标识, 托管标识, 机密, 机密, 修补, 修补程序, 修补程序, 版本, 隔离, 网络隔离, ddos, mitm
 ms.topic: article
 origin.date: 08/24/2018
-ms.date: 01/13/2020
+ms.date: 03/30/2020
 ms.author: v-tawe
 ms.custom: seodec18
-ms.openlocfilehash: f49ef24c1147c3cb1d765969ab40411f0d7f5045
-ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
+ms.openlocfilehash: 6bb79dd6fc22db17599da19bcf0e0d9fd59bec09
+ms.sourcegitcommit: 44d3fe59952847e5394bbe6c05bd6f333bb56345
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75600410"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80522120"
 ---
 # <a name="security-in-azure-app-service"></a>Azure 应用服务中的安全性
 
@@ -67,7 +67,7 @@ Azure 应用服务提供用户或客户端应用的统包身份验证和授权�
 在向后端服务进行身份验证时，应用服务根据你的需要提供两种不同的机制：
 
 - **服务标识**：使用应用本身的标识登录到远程资源。 通过应用服务可轻松创建[托管标识](overview-managed-identity.md)，在向 [Azure SQL 数据库](/sql-database/)或 [Azure Key Vault](/key-vault/) 等其他服务进行身份验证时可使用该标识。 有关此方法的端到端教程，请参阅[使用托管标识确保从应用服务进行的 Azure SQL 数据库连接安全](app-service-web-tutorial-connect-msi.md)。
-- **代表 (OBO)** ：代表用户对远程资源进行委托访问。 使用 Azure Active Directory 作为验证提供程序时，应用服务应用可以执行远程服务（例如 [Azure Active Directory 图形 API](../active-directory/develop/active-directory-graph-api.md) 或应用服务中的远程 API 应用）委托登录。 
+- **代表 (OBO)** ：代表用户对远程资源进行委托访问。 使用 Azure Active Directory 作为身份验证提供程序，你的应用服务应用可以向远程服务（例如，Microsoft Graph API 或应用服务中的远程 API 应用）执行委托登录。 
 
 <!-- For an end-to-end tutorial of this approach, see [Authenticate and authorize users end-to-end in Azure App Service](app-service-web-tutorial-auth-aad.md). -->
 

@@ -11,12 +11,12 @@ ms.date: 04/08/2019
 ms.author: v-yeche
 ms.custom: mvc
 keywords: Cosmos DB, Open Service Broker, 用于 Azure 的 Open Service Broker
-ms.openlocfilehash: 6bd9ac55d242b885b00178af11b7fd47d81a0baa
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: 83fe0eed65ea5f083c689bf58424462db6b22552
+ms.sourcegitcommit: 76280dd9854dc0ff0ba1e5e62fb3dc3af049fbe2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79290841"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80517022"
 ---
 <!--IMPORTANT: http_application_routing NOT AVAILABLE ON MOONCAKE-->
 <!--NOT AVAIALBLE ON **Open Service Broker for Azure Container** Image-->
@@ -188,13 +188,13 @@ java -jar -Dspring.profiles.active=mongodb build/libs/spring-music-1.0.jar
 
 ## <a name="run-your-application-on-your-aks-cluster"></a>在 AKS 群集上运行应用程序
 
-可以使用 Azure Dev Spaces 将应用程序部署到 AKS 群集。 Azure Dev Spaces 可以用来在 AKS 中生成项目（例如 Dockefile 和 Helm 图表），以及部署并运行应用程序。
+可以使用 Azure Dev Spaces 将应用程序部署到 AKS 群集。 Azure Dev Spaces 可帮助你生成项目（例如 Dockerfile 和 Helm 图表），并在 AKS 中部署和运行应用程序。
 
 <!--Not Available on [Azure Dev Spaces](../dev-spaces/azure-dev-spaces.md)-->
 
 若要在 AKS 群集中启用 Azure Dev Spaces，请执行以下操作：
 
-```cmd
+```azurecli
 az aks enable-addons --addons http_application_routing -g MyResourceGroup -n MyAKS
 az aks use-dev-spaces -g MyResourceGroup -n MyAKS
 ```
@@ -209,7 +209,7 @@ azds prep --public
 
 在项目的根目录中创建名为 *Dockerfile* 且包含以下内容的文件：
 
-```Dockerfile
+```dockerfile
 FROM openjdk:8-jdk-alpine
 EXPOSE 8080
 WORKDIR /app

@@ -8,31 +8,21 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/16/2020
+ms.date: 04/01/2020
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: 929e469c9c8f5ef17737bc6a43257f1edd1ad747
-ms.sourcegitcommit: 71a386ca0d0ecb79a123399b6ab6b8c70ea2aa78
+ms.openlocfilehash: 27f37473882f8a536a46bebc500f7ac64f332dd0
+ms.sourcegitcommit: 64584c0bf31b4204058ae2b4641356b904ccdd58
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2020
-ms.locfileid: "79497183"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80581635"
 ---
 # <a name="define-a-restful-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>在 Azure Active Directory B2C 自定义策略中定义 RESTful 技术配置文件
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Azure Active Directory B2C (Azure AD B2C) 为你自己的 RESTful 服务提供支持。 Azure AD B2C 在输入声明集合中将数据发送到 RESTful 服务，在输出声明集合中接收返回的数据。 使用 RESTful 服务集成，可以：
-
-- **验证用户输入数据** - 防止将格式不当的数据保存到 Azure AD B2C。 如果用户提供的值无效，RESTful 服务会返回错误消息，指示用户提供有效条目。 例如，可以验证用户提供的电子邮件地址是否在客户数据库中存在。
-- **覆盖输入声明** - 可以重新设置输入声明中的值的格式。 例如，如果用户使用全小写或全大写字母输入了名字，则你可以设置该名字的格式，只将第一个字母大写。
-- **丰富用户数据** - 可以进一步与企业业务线应用程序集成。 例如，RESTful 服务可以接收用户的电子邮件地址、查询客户的数据库，并向 Azure AD B2C 返回用户的会员号。 返回声明可存储、可在后续的业务流程步骤中进行评估，或包含在访问令牌中。
-- **运行自定义业务逻辑** - 可以发送推送通知、更新企业数据库、运行用户迁移过程、管理权限、审核数据库，以及执行其他操作。
-
-策略可将输入声明发送到 REST API。 REST API 还可以返回稍后可在策略中使用的输出声明，或者引发错误消息。 可通过以下方式来设计与 RESTful 服务的集成：
-
-- **验证技术配置文件** - 验证技术配置文件调用 RESTful 服务。 在用户旅程继续执行之前，验证技术配置文件将验证用户提供的数据。 使用验证技术配置文件时，错误消息将显示在自我断言的页面上，并在输出声明中返回。
-- **声明交换** - 通过业务流程步骤调用 RESTful 服务。 在此方案中，不会在任何用户界面中呈现错误消息。 如果 REST API 返回错误，则将用户重定向回到信赖方应用程序并显示错误消息。
+Azure Active Directory B2C (Azure AD B2C) 为集成你自己的 RESTful 服务提供支持。 Azure AD B2C 在输入声明集合中将数据发送到 RESTful 服务，在输出声明集合中接收返回的数据。 有关详细信息，请参阅[在 Azure AD B2C 自定义策略中集成 REST API 声明交换](custom-policy-rest-api-intro.md)。  
 
 ## <a name="protocol"></a>协议
 
@@ -132,6 +122,7 @@ Azure Active Directory B2C (Azure AD B2C) 为你自己的 RESTful 服务提供�
 | DebugMode | 否 | 在调试模式下运行技术配置文件。 可能的值：`true` 或 `false`（默认值）。 在调试模式下，REST API 可以返回更多信息。 请参阅[返回错误消息](#returning-error-message)部分。 |
 | IncludeClaimResolvingInClaimsHandling  | 否 | 对于输入和输出声明，指定[声明解析](claim-resolver-overview.md)是否包含在技术配置文件中。 可能的值：`true` 或 `false` （默认值）。 若要使用技术配置文件中的声明解析程序，请将此项设为 `true`。 |
 | ResolveJsonPathsInJsonTokens  | 否 | 指示技术配置文件是否解析 JSON 路径。 可能的值：`true` 或 `false`（默认值）。 使用此元数据从嵌套 JSON 元素中读取数据。 在 [OutputClaim](technicalprofiles.md#outputclaims) 中，将 `PartnerClaimType` 设为要输出的 JSON 路径元素。 例如：`firstName.localized` 或 `data.0.to.0.email`。|
+| UseClaimAsBearerToken| 否| 包含持有者令牌的声明的名称。|
 
 ## <a name="cryptographic-keys"></a>加密密钥
 
@@ -193,19 +184,7 @@ Azure Active Directory B2C (Azure AD B2C) 为你自己的 RESTful 服务提供�
 
 ## <a name="returning-error-message"></a>返回错误消息
 
-REST API 可能需要返回错误消息，例如“在 CRM 系统中未找到该用户”。 如果发生错误，REST API 应返回包含以下属性的 HTTP 409 错误消息（冲突响应状态代码）：
-
-| 属性 | 必须 | 说明 |
-| --------- | -------- | ----------- |
-| 版本 | 是 | 1.0.0 |
-| 状态 | 是 | 409 |
-| code | 否 | 来自 RESTful 终结点提供程序的错误代码，启用 `DebugMode` 后会显示。 |
-| requestId | 否 | 来自 RESTful 终结点提供程序的请求标识符，启用 `DebugMode` 后会显示。 |
-| userMessage | 是 | 向用户显示的错误消息。 |
-| developerMessage | 否 | 问题的详细说明及其解决方法，启用 `DebugMode` 后会显示。 |
-| moreInfo | 否 | 指向其他信息的 URI，启用 `DebugMode` 后会显示。 |
-
-以下示例演示了一个以 JSON 格式返回错误消息的 REST API：
+REST API 可能需要返回错误消息，例如“在 CRM 系统中未找到该用户”。 如果发生错误，REST API 应返回 HTTP 4xx 错误消息，例如“400 (错误请求)”或“409 (冲突)”响应状态代码。 响应正文包含 JSON 格式的错误消息：
 
 ```JSON
 {
@@ -218,6 +197,17 @@ REST API 可能需要返回错误消息，例如“在 CRM 系统中未找到该
   "moreInfo": "https://restapi/error/API12345/moreinfo"
 }
 ```
+
+| 属性 | 必须 | 说明 |
+| --------- | -------- | ----------- |
+| 版本 | 是 | REST API 版本。 例如：1.0.1 |
+| 状态 | 是 | 必须为 409 |
+| code | 否 | 来自 RESTful 终结点提供程序的错误代码，启用 `DebugMode` 后会显示。 |
+| requestId | 否 | 来自 RESTful 终结点提供程序的请求标识符，启用 `DebugMode` 后会显示。 |
+| userMessage | 是 | 向用户显示的错误消息。 |
+| developerMessage | 否 | 问题的详细说明及其解决方法，启用 `DebugMode` 后会显示。 |
+| moreInfo | 否 | 指向其他信息的 URI，启用 `DebugMode` 后会显示。 |
+
 
 以下示例演示了一个返回错误消息的 C# 类：
 
@@ -234,5 +224,9 @@ public class ResponseContent
 }
 ```
 
-<!-- Update_Description: wording update -->
+## <a name="next-steps"></a>后续步骤
+
+有关使用 RESTful 技术配置文件的示例，请参阅以下文章：
+
+- [在 Azure AD B2C 自定义策略中集成 REST API 声明交换](custom-policy-rest-api-intro.md)
 

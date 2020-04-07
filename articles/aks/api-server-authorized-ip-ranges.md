@@ -4,14 +4,14 @@ description: 了解如何使用用于访问 Azure Kubernetes 服务 (AKS) 中 AP
 services: container-service
 ms.topic: article
 origin.date: 11/05/2019
-ms.date: 03/09/2020
+ms.date: 04/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: 8007cb946209deab52a59b68834a4387fa7495f7
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: 9815e9abce1551f5277e7a20579599570db0dd15
+ms.sourcegitcommit: 76280dd9854dc0ff0ba1e5e62fb3dc3af049fbe2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79290726"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80517020"
 ---
 # <a name="secure-access-to-the-api-server-using-authorized-ip-address-ranges-in-azure-kubernetes-service-aks"></a>使用 Azure Kubernetes 服务 (AKS) 中的已授权 IP 地址范围保护对 API 服务器的访问
 
@@ -56,13 +56,13 @@ az aks create \
     --generate-ssh-keys
 ```
 
-<!--Update to --vm-set-type AvailabilitySet in AKS -->
-
 > [!NOTE]
 > 应将以下范围添加到允许列表：
 > - 防火墙公共 IP 地址
 > - 代表你要从中管理群集的网络的任何范围
 > - 如果在 AKS 群集上使用 Azure Dev Spaces，必须[根据所在的区域允许其他范围][dev-spaces-ranges]。
+>
+> 可指定的 IP 范围数的上限为 3500。 
 
 ### <a name="specify-the-outbound-ips-for-the-standard-sku-load-balancer"></a>指定标准 SKU 负载均衡器的出站 IP
 
@@ -79,8 +79,6 @@ az aks create \
     --load-balancer-outbound-ips <publicIpId1>,<publicIpId2> \
     --generate-ssh-keys
 ```
-
-<!--Update to --vm-set-type AvailabilitySet in AKS -->
 
 在以上示例中，将允许参数 *--load-balancer-outbound-ip-prefixes* 中提供的所有 IP，以及参数 *--api-server-authorized-ip-ranges* 中的 IP。
 
@@ -102,8 +100,6 @@ az aks create \
     --api-server-authorized-ip-ranges 0.0.0.0/32 \
     --generate-ssh-keys
 ```
-
-<!--Update to --vm-set-type AvailabilitySet in AKS -->
 
 ## <a name="update-a-clusters-api-server-authorized-ip-ranges"></a>更新群集的 API 服务器已授权 IP 范围
 

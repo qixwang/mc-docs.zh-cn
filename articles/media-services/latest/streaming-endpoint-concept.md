@@ -10,19 +10,19 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-origin.date: 07/11/2019
-ms.date: 12/09/2019
+origin.date: 02/13/2020
+ms.date: 04/06/2020
 ms.author: v-jay
-ms.openlocfilehash: 6d573b57d27eacb26043a5d2949dd79ab5b00620
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: a3311c7e9dc006700157616a211259e0815a5c25
+ms.sourcegitcommit: fe9ed98aaee287a21648f866bb77cb6888f75b0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79293222"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80625761"
 ---
 # <a name="streaming-endpoints-origin-in-azure-media-services"></a>Azure 媒体服务中的流式处理终结点（来源）
 
-在 Azure 媒体服务中，[流式处理终结点](https://docs.microsoft.com/rest/api/media/streamingendpoints)表示动态（实时）打包和源服务，该服务可使用一个常见流式处理媒体协议（HLS 或 DASH）直接将实时和按需内容发送到客户端播放器应用。 此外，**流式处理终结点**为行业领先的 DRM 提供动态（实时）加密。
+在 Azure 媒体服务中，[流式处理终结点](https://docs.microsoft.com/rest/api/media/streamingendpoints)表示动态（实时）打包和源服务，该服务可使用一个常见流式处理媒体协议（HLS 或 DASH）直接将实时和按需内容发送到客户端播放器应用。 此外，流式处理终结点  还为行业领先的 DRM 提供动态（实时）加密。
 
 用户创建媒体服务帐户时，将为用户创建一个处于“已停止”状态的默认  流式处理终结点。 无法删除**默认**流式处理终结点。 可以在帐户下创建更多的流式处理终结点（请参阅[配额和限制](limits-quotas-constraints.md)）。
 
@@ -30,6 +30,8 @@ ms.locfileid: "79293222"
 > 若要开始流式处理视频，需启动要从中流式处理视频的**流式处理终结点**。
 >
 > 仅当流式处理终结点处于运行状态时才进行计费。
+
+请确保同时查看[动态打包](dynamic-packaging-overview.md)主题。 
 
 ## <a name="naming-convention"></a>命名约定
 
@@ -68,7 +70,7 @@ IP 筛选/G20/自定义主机 |是|是
 渐进式下载|是|是
 建议用途 |建议用于绝大多数流式处理方案。|专业用途。
 
-## <a name="properties"></a>属性
+## <a name="streaming-endpoint-properties"></a>流式处理终结点属性
 
 本部分提供有关某些流式处理终结点属性的详细信息。 有关如何创建新流式处理终结点和所有属性描述的示例，请参阅[流式处理终结点](https://docs.microsoft.com/rest/api/media/streamingendpoints/create)。
 
@@ -108,4 +110,4 @@ IP 筛选/G20/自定义主机 |是|是
 
 ## <a name="next-steps"></a>后续步骤
 
-此[存储库](https://github.com/Azure-Samples/media-services-v3-dotnet-quickstarts/blob/master/AMSV3Quickstarts/EncodeAndStreamFiles/Program.cs)中的示例介绍了如何使用 .NET 启动默认流式处理终结点。
+[管理流式处理终结点](manage-streaming-endpoints-howto.md)

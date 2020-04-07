@@ -4,15 +4,15 @@ description: 本文概述了 Azure 应用程序网关的多站点支持。
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.date: 03/16/2020
+ms.date: 03/30/2020
 ms.author: v-junlch
 ms.topic: conceptual
-ms.openlocfilehash: f9c1bca27a08e50f55af1c9510e59045d21fbbb6
-ms.sourcegitcommit: 71a386ca0d0ecb79a123399b6ab6b8c70ea2aa78
+ms.openlocfilehash: 7b26a47f6e6dbaef98f1cc5112415543fdb8beac
+ms.sourcegitcommit: 64584c0bf31b4204058ae2b4641356b904ccdd58
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2020
-ms.locfileid: "79497316"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80581721"
 ---
 # <a name="application-gateway-multiple-site-hosting"></a>应用程序网关的多站点托管功能
 
@@ -39,7 +39,7 @@ ms.locfileid: "79497316"
 
 应用程序网关支持多个应用程序，每个应用程序侦听不同的端口，但此方案要求应用程序接受非标准端口上的流量。 这通常不是所需的配置。
 
-应用程序网关需要使用 HTTP 1.1 主机标头才能在相同的公共 IP 地址和端口上托管多个网站。 在应用程序网关上托管的站点也可以通过服务器名称指示 (SNI) TLS 扩展来支持 SSL 卸载。 这种情况意味着，客户端浏览器和后端 Web 场必须支持 RFC 6066 中定义的 HTTP/1.1 和 TLS 扩展。
+应用程序网关需要使用 HTTP 1.1 主机标头才能在相同的公共 IP 地址和端口上托管多个网站。 在应用程序网关上托管的站点也可以通过服务器名称指示 (SNI) TLS 扩展来支持 TLS 卸载。 这种情况意味着，客户端浏览器和后端 Web 场必须支持 RFC 6066 中定义的 HTTP/1.1 和 TLS 扩展。
 
 ## <a name="listener-configuration-element"></a>侦听器配置元素
 

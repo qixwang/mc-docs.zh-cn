@@ -7,14 +7,14 @@ ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
 origin.date: 03/11/2020
-ms.date: 03/16/2020
+ms.date: 03/30/2020
 ms.author: v-tawe
-ms.openlocfilehash: c435861b69ec112b6686d669da18062150e34eba
-ms.sourcegitcommit: 764b3d26aedce2de0e1948468a706fd3204a3d5e
+ms.openlocfilehash: c1f69c163a32e75c9c2fa8536a63f533cdcfa6c5
+ms.sourcegitcommit: 5fb45da006859215edc8211481f13174aa43dbeb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2020
-ms.locfileid: "79543298"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80634444"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Azure 密钥保管库开发人员指南
 
@@ -64,7 +64,7 @@ ms.locfileid: "79543298"
 
 #### <a name="net"></a>.NET
 
-[适用于 Key Vault 的 .NET API 参考](/dotnet/api/overview/keyvault/client?view=azure-dotnet )。
+[适用于 Key Vault 的 .NET API 参考](/dotnet/api/overview/key-vault?view=azure-dotnet )。
 
 有关 .NET SDK 2.x 版的详细信息，请参阅[发行说明](key-vault-dotnet2api-release-notes.md)。
 

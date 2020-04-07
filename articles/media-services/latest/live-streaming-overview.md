@@ -11,15 +11,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-origin.date: 11/22/2019
-ms.date: 03/04/2020
+origin.date: 03/18/2020
+ms.date: 04/06/2020
 ms.author: v-jay
-ms.openlocfilehash: 61ad9d0e55869450b8a691f9754f069f064c084f
-ms.sourcegitcommit: fbc7584f403417d3af7bd6bbbaed7c13a78c57b9
+ms.openlocfilehash: 46f4b3a689586fdf7f4190bd640617ea6484aba9
+ms.sourcegitcommit: fe9ed98aaee287a21648f866bb77cb6888f75b0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78412730"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80625659"
 ---
 # <a name="live-streaming-with-azure-media-services-v3"></a>使用 Azure 媒体服务 v3 实时传送视频流
 
@@ -37,7 +37,7 @@ ms.locfileid: "78412730"
 本文提供有关使用媒体服务实时传送视频流的概述和指导，并提供其他相关文章的链接。
  
 > [!NOTE]
-> 目前，无法使用 Azure 门户来管理 v3 资源。 请使用 [REST API](https://aka.ms/ams-v3-rest-ref)、[CLI](https://aka.ms/ams-v3-cli-ref) 或受支持的 [SDK](media-services-apis-overview.md#sdks) 之一。
+> 可以使用 [Azure 门户](https://portal.azure.cn/)执行以下操作：管理 v3 [直播活动](live-events-outputs-concept.md)、查看 v3 [资产](assets-concept.md)、获取有关访问 API 的信息。 对于其他所有管理任务（例如，转换和作业），请使用 [REST API](https://docs.microsoft.com/rest/api/media/)、[CLI](https://aka.ms/ams-v3-cli-ref) 或某个受支持的 [SDK](media-services-apis-overview.md#sdks)。
 
 ## <a name="dynamic-packaging"></a>动态打包
 
@@ -53,7 +53,7 @@ ms.locfileid: "78412730"
 
 ## <a name="live-event-types"></a>实时事件类型
 
-[直播活动](https://docs.microsoft.com/rest/api/media/liveevents)负责引入和处理实时视频源。 实时事件可以是下述两种类型之一：直通和实时编码。 有关媒体服务 v3 中的实时传送视频流的详细信息，请参阅[实时事件和实时输出](live-events-outputs-concept.md)。
+[直播活动](https://docs.microsoft.com/rest/api/media/liveevents)负责引入和处理实时视频源。 直播活动可以设置为“直通”  （本地实时编码器发送多比特率流）或“实时编码”  （本地实时编码器发送单比特率流）。 有关媒体服务 v3 中的实时传送视频流的详细信息，请参阅[实时事件和实时输出](live-events-outputs-concept.md)。
 
 ### <a name="pass-through"></a>直通
 
@@ -113,7 +113,12 @@ ms.locfileid: "78412730"
 - [状态和计费](live-event-states-billing.md)
 - [延迟](live-event-latency.md)
 
+## <a name="frequently-asked-questions"></a>常见问题
+
+请参阅[常见问题解答](frequently-asked-questions.md#live-streaming)一文。
+
 ## <a name="next-steps"></a>后续步骤
 
+* [实时传送视频流快速入门](live-events-wirecast-quickstart.md)
 * [实时传送视频流教程](stream-live-tutorial-with-api.md)
 * [有关从媒体服务 v2 迁移到 v3 的指导](migrate-from-v2-to-v3.md)

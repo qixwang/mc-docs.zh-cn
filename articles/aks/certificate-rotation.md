@@ -5,14 +5,14 @@ services: container-service
 author: rockboyfor
 ms.topic: article
 origin.date: 11/15/2019
-ms.date: 03/09/2020
+ms.date: 04/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: e8ee893e3e023104b64450dbe8b2634d0a34eb25
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: 396da43c975ae24cd2c703cc3dec11bb54f961e4
+ms.sourcegitcommit: 76280dd9854dc0ff0ba1e5e62fb3dc3af049fbe2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79290766"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80517017"
 ---
 <!--NOT SUITABLE FOR MOONCAKE-->
 <!--REASON: PRODUCTION TEAM NOTIFIED-->
@@ -40,7 +40,7 @@ AKS 生成并使用以下证书、证书颁发机构和服务帐户：
 * `kubectl` 客户端具有用于与 AKS 群集通信的证书。
 
 > [!NOTE]
-> 对于 2019 年 3 月之前创建的 AKS 群集，其证书将在两年后到期。 对于 2019 年 3 月之后创建的任何群集或者已轮换证书的任何群集，其证书都将在 30 年后到期。 若要验证群集的创建时间，请使用 `kubectl get nodes` 查看节点池的*存在时间*。
+> 对于 2019 年 3 月之前创建的 AKS 群集，其证书将在两年后到期。 任何在 2019 年 3 月之后创建的群集或其证书已轮换的群集都具有 30 年后过期的群集 CA 证书。 其他所有证书均两年后过期。 若要验证群集的创建时间，请使用 `kubectl get nodes` 查看节点池的*存在时间*。
 > 
 > 此外，还可以检查群集证书的到期日期。 例如，以下命令会显示 *myAKSCluster* 群集的证书详细信息。
 > ```console
@@ -55,13 +55,13 @@ AKS 生成并使用以下证书、证书颁发机构和服务帐户：
 
 使用 [az aks get-credentials][az-aks-get-credentials] 登录到 AKS 群集。 此命令还会在本地计算机上下载并配置 `kubectl` 客户端证书。
 
-```console
+```azurecli
 az aks get-credentials -g $RESOURCE_GROUP_NAME -n $CLUSTER_NAME
 ```
 
 使用 `az aks rotate-certs` 轮换群集上的所有证书、CA 和 SA。
 
-```console
+```azurecli
 az aks rotate-certs -g $RESOURCE_GROUP_NAME -n $CLUSTER_NAME
 ```
 
@@ -77,7 +77,7 @@ Unable to connect to the server: x509: certificate signed by unknown authority (
 
 通过运行 `az aks get-credentials` 来更新 `kubectl` 使用的证书。
 
-```console
+```azurecli
 az aks get-credentials -g $RESOURCE_GROUP_NAME -n $CLUSTER_NAME --overwrite-existing
 ```
 

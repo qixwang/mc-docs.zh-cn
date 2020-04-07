@@ -6,14 +6,14 @@ ms.tgt_pltfrm: mobile-windows
 ms.devlang: dotnet
 ms.topic: article
 origin.date: 06/25/2019
-md.date: 03/23/2020
+md.date: 03/30/2020
 ms.author: v-tawe
-ms.openlocfilehash: 9e03e84d50b2086f6e2f16c71d82bbdf1980837c
-ms.sourcegitcommit: e94ed1c9eff4e88be2ca389909e60b14cc0d92f8
+ms.openlocfilehash: 008430f9b4cfb2400ffd9a0bbaf55d0a907fd9c2
+ms.sourcegitcommit: 44d3fe59952847e5394bbe6c05bd6f333bb56345
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79084413"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521983"
 ---
 # <a name="add-push-notifications-to-your-windows-app"></a>向 Windows 应用添加推送通知
 
@@ -25,13 +25,13 @@ ms.locfileid: "79084413"
 
 如果不使用下载的快速入门服务器项目，则需要推送通知扩展包。 有关详细信息，请参阅 [使用适用于 Azure 移动应用的 .NET 后端服务器 SDK](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md) 。
 
-## <a name="configure-hub"></a>配置通知中心
+## <a name="configure-a-notification-hub"></a><a name="configure-hub"></a>配置通知中心
 
 [!INCLUDE [app-service-mobile-configure-notification-hub](../../includes/app-service-mobile-configure-notification-hub.md)]
 
 ## <a name="register-your-app-for-push-notifications"></a>为推送通知注册应用程序
 
-需要将应用提交到 Microsoft Store，然后配置服务器项目与 [Windows 通知服务 (WNS)](https://docs.microsoft.com/windows/uwp/design/shell/tiles-and-notifications/windows-push-notification-services--wns--overview) 集成，以发送推送。
+需要将应用提交到 Microsoft Store，然后将服务器项目配置为与 [Windows 推送通知服务 (WNS)](https://docs.microsoft.com/windows/uwp/design/shell/tiles-and-notifications/windows-push-notification-services--wns--overview) 集成，以便发送推送。
 
 1. 在 Visual Studio 解决方案资源管理器中，右键单击 UWP 应用项目，单击“应用商店”   > “将应用与应用商店关联...”  。
 
@@ -53,11 +53,11 @@ ms.locfileid: "79084413"
 
 [!INCLUDE [app-service-mobile-configure-wns](../../includes/app-service-mobile-configure-wns.md)]
 
-## <a id="update-service"></a>更新服务器以发送推送通知
+## <a name="update-the-server-to-send-push-notifications"></a><a id="update-service"></a>更新服务器以发送推送通知
 
 使用下面与后端项目类型 &mdash;[.NET 后端](#dotnet)或 [Node.js 后端](#nodejs)匹配的过程。
 
-### <a name="dotnet"></a>.NET 后端项目
+### <a name="net-backend-project"></a><a name="dotnet"></a>.NET 后端项目
 
 1. 在 Visual Studio 中，右键单击服务器项目并单击“管理 NuGet 包”  ，搜索 Microsoft.Azure.NotificationHubs，然后单击“安装”  。 这会安装通知中心客户端库。
 2. 展开“控制器”  ，打开 TodoItemController.cs，并添加以下 using 语句：
@@ -108,7 +108,7 @@ ms.locfileid: "79084413"
 
 4. 重新发布服务器项目。
 
-### <a name="nodejs"></a>Node.js 后端项目
+### <a name="nodejs-backend-project"></a><a name="nodejs"></a>Node.js 后端项目
 1. 设置后端项目。
 2. 将 todoitem.js 文件中的现有代码替换为以下内容：
 
@@ -158,7 +158,7 @@ ms.locfileid: "79084413"
 
 3. 编辑本地计算机上的文件时，重新发布服务器项目。
 
-## <a id="update-app"></a>向应用程序添加推送通知
+## <a name="add-push-notifications-to-your-app"></a><a id="update-app"></a>向应用程序添加推送通知
 下一步，应用必须在启动时注册推送通知。 已启用身份验证时，请确保用户先登录，再尝试注册推送通知。
 
 1. 打开 **App.xaml.cs** 项目文件并添加以下 `using` 语句：
@@ -199,11 +199,11 @@ ms.locfileid: "79084413"
 
 4. 重新生成 UWP 应用项目。 应用现在已能够接收 toast 通知。
 
-## <a id="test"></a>在应用程序中测试推送通知
+## <a name="test-push-notifications-in-your-app"></a><a id="test"></a>在应用程序中测试推送通知
 
 [!INCLUDE [app-service-mobile-windows-universal-test-push](../../includes/app-service-mobile-windows-universal-test-push.md)]
 
-## <a id="more"></a>后续步骤
+## <a name="next-steps"></a><a id="more"></a>后续步骤
 
 了解有关推送通知的详细信息：
 

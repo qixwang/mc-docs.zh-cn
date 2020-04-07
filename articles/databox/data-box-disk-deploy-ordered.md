@@ -7,15 +7,15 @@ ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
 origin.date: 07/03/2019
-ms.date: 12/02/2019
+ms.date: 04/06/2020
 ms.author: v-jay
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: c199c09e418ba92115f6cc80cc0089c46e98537a
-ms.sourcegitcommit: 481542df432d52b7d4823811cef94772e4e0f192
+ms.openlocfilehash: 2c8b7ec380ed85930095a0d558e005215f794c89
+ms.sourcegitcommit: 5fb45da006859215edc8211481f13174aa43dbeb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74530621"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80634471"
 ---
 # <a name="tutorial-order-an-azure-data-box-disk"></a>教程：订购 Azure Data Box Disk
 
@@ -35,10 +35,10 @@ Azure Data Box Disk 是一个混合云解决方案，可用于快速、方便、
 ### <a name="for-service"></a>对于服务
 
 在开始之前，请确保：
-- 具有 Microsoft Azure 存储帐户和访问凭据。
+- 具有 Azure 存储帐户和访问凭据。
 - 确保用于 Data Box 服务的订阅是下述类型之一：
-    - Microsoft 企业协议 (EA)。
-    - 云解决方案提供商 (CSP)。 
+    - Microsoft 企业协议 (EA)。 详细了解 [EA 订阅](https://azure.microsoft.com/pricing/enterprise-agreement/)。
+    - 云解决方案提供商 (CSP)。 详细了解 [Azure CSP 计划](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-overview)。
 - 确保有订阅的所有者或参与者访问权限，以便创建 Data Box 订单。
 
 ### <a name="for-device"></a>对于设备
@@ -79,11 +79,11 @@ Azure Data Box Disk 是一个混合云解决方案，可用于快速、方便、
 
 6.  在“订单”中指定“订单详细信息”。   输入或选择以下信息。
 
-    |设置|值|
+    |设置|Value|
     |---|---|
-    |Name|提供友好名称用于跟踪订单。<br> 名称可以为 3 到 24 个字符，包括字母、数字和连字符。 <br> 名称必须以字母或数字开头和结尾。 |
+    |名称|提供友好名称用于跟踪订单。<br> 名称可以为 3 到 24 个字符，包括字母、数字和连字符。 <br> 名称必须以字母或数字开头和结尾。 |
     |资源组| 使用现有资源组，或创建新的资源组。 <br> 资源组是可以统一管理或部署的资源的逻辑容器。 |
-    |目标 Azure 区域| 选择存储帐户的区域。<br> 目前支持中国东部、中国东部 2、中国北部、中国北部 2 的所有区域中的存储帐户。 |
+    |目标 Azure 区域| 选择存储帐户的区域。<br> 目前，支持所有区域的存储帐户。 |
     |估计数据大小(TB)| 输入估计值，以 TB 为单位。 <br>根据数据大小，Azure 会寄送适当数量的 8 TB SSD（7 TB 可用容量）。 <br>5 个磁盘的最大可用容量高达 35 TB。 |
     |磁盘密钥| 如果选中“使用自定义密钥而不是 Azure 生成的密钥”  ，请提供磁盘密钥。 <br> 提供一个 12 到 32 个字符的字母数字密钥，其中至少包含一个数字和一个特殊字符。 允许使用的特殊字符是 `@?_+`。 <br> 可以选择跳过此选项并使用 Azure 生成的密钥来解锁磁盘。|
     |存储目标     | 从存储帐户和/或托管磁盘中进行选择。 <br> 根据指定的 Azure 区域，从现有存储帐户的筛选列表中选择一个存储帐户。 Data Box Disk 只能与 1 个存储帐户链接。 <br> 也可以创建新的**常规用途 v1**、**常规用途 v2** 或 **Blob 存储帐户**。 <br>支持使用虚拟网络的存储帐户。 若要允许 Data Box 服务使用受保护的存储帐户，请在存储帐户网络防火墙设置中启用受信任的服务。 有关详细信息，请参阅如何[将 Azure Data Box 添加为受信任的服务](/storage/common/storage-network-security#exceptions)。|

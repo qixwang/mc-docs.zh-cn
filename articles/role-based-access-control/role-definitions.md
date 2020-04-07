@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/10/2020
+ms.date: 03/31/2020
 ms.author: v-junlch
 ms.reviewer: bagovind
 ms.custom: ''
-ms.openlocfilehash: 9b57c7f60560454cc863b07eba1ccc8b3d90bc62
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: 2509cc946a1eb55b09bef4e3c8f9ebb9794da496
+ms.sourcegitcommit: 64584c0bf31b4204058ae2b4641356b904ccdd58
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79292322"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80581722"
 ---
 # <a name="understand-role-definitions-for-azure-resources"></a>了解 Azure 资源的角色定义
 
@@ -176,13 +176,14 @@ Bob 的权限限制为[存储 Blob 数据参与者](built-in-roles.md#storage-bl
 
 `Actions` 权限指定该角色允许执行的管理操作。 它是操作字符串的集合，可标识 Azure 资源提供程序的安全对象操作。 下面是一些可以在 `Actions` 中使用的管理操作的示例。
 
-| 操作字符串    | 说明         |
-| ------------------- | ------------------- |
-| `*/read` | 向所有 Azure 资源提供程序的所有资源类型的读取操作授予访问权限。|
-| `Microsoft.Compute/*` | 向 Microsoft.Compute 资源提供程序中的所有资源类型的所有操作授予访问权限。|
-| `Microsoft.Network/*/read` | 向 Microsoft.Network 资源提供程序中的所有资源类型的读取操作授予访问权限。|
-| `Microsoft.Compute/virtualMachines/*` | 向虚拟机及其子资源类型的所有操作授予访问权限。|
-| `microsoft.web/sites/restart/Action` | 授予重启 Web 应用的访问权限。|
+> [!div class="mx-tableFixed"]
+> | 操作字符串    | 说明         |
+> | ------------------- | ------------------- |
+> | `*/read` | 向所有 Azure 资源提供程序的所有资源类型的读取操作授予访问权限。|
+> | `Microsoft.Compute/*` | 向 Microsoft.Compute 资源提供程序中的所有资源类型的所有操作授予访问权限。|
+> | `Microsoft.Network/*/read` | 向 Microsoft.Network 资源提供程序中的所有资源类型的读取操作授予访问权限。|
+> | `Microsoft.Compute/virtualMachines/*` | 向虚拟机及其子资源类型的所有操作授予访问权限。|
+> | `microsoft.web/sites/restart/Action` | 授予重启 Web 应用的访问权限。|
 
 ## <a name="notactions"></a>NotActions
 
@@ -196,12 +197,13 @@ Bob 的权限限制为[存储 Blob 数据参与者](built-in-roles.md#storage-bl
 
 `DataActions` 权限指定该角色允许对该对象中的数据执行的数据操作。 例如，如果某个用户对某个存储帐户拥有读取 Blob 数据的访问权限，则该用户可以读取该存储帐户中的 Blob。 下面是可在 `DataActions` 中使用的一些数据操作的示例。
 
-| 操作字符串    | 说明         |
-| ------------------- | ------------------- |
-| `Microsoft.Storage/storageAccounts/ blobServices/containers/blobs/read` | 返回 Blob 或 Blob 列表。 |
-| `Microsoft.Storage/storageAccounts/ blobServices/containers/blobs/write` | 返回写入 Blob 的结果。 |
-| `Microsoft.Storage/storageAccounts/ queueServices/queues/messages/read` | 返回消息。 |
-| `Microsoft.Storage/storageAccounts/ queueServices/queues/messages/*` | 返回消息，或返回写入或删除消息的结果。 |
+> [!div class="mx-tableFixed"]
+> | 操作字符串    | 说明         |
+> | ------------------- | ------------------- |
+> | `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read` | 返回 Blob 或 Blob 列表。 |
+> | `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/write` | 返回写入 Blob 的结果。 |
+> | `Microsoft.Storage/storageAccounts/queueServices/queues/messages/read` | 返回消息。 |
+> | `Microsoft.Storage/storageAccounts/queueServices/queues/messages/*` | 返回消息，或返回写入或删除消息的结果。 |
 
 ## <a name="notdataactions"></a>NotDataActions
 
@@ -213,18 +215,19 @@ Bob 的权限限制为[存储 Blob 数据参与者](built-in-roles.md#storage-bl
 
 ## <a name="assignablescopes"></a>AssignableScopes
 
-`AssignableScopes` 属性指定可使用此角色定义的范围（管理组、订阅、资源组或资源）。 只能在需要此角色的管理组、订阅或资源组中分配此角色。 必须使用至少一个管理组、订阅、资源组或资源 ID。
+`AssignableScopes` 属性指定可使用此角色定义的范围（管理组、订阅或资源组）。 只能在需要此角色的管理组、订阅或资源组中分配此角色。 必须使用至少一个管理组、订阅或资源。
 
 内置角色已将 `AssignableScopes` 设置为根范围 (`"/"`)。 根范围指示角色可供在所有范围中进行分配。 有效的可分配范围的示例包括：
 
-| 角色可供分配 | 示例 |
-|----------|---------|
-| 一个订阅 | `"/subscriptions/{subscriptionId1}"` |
-| 两个订阅 | `"/subscriptions/{subscriptionId1}", "/subscriptions/{subscriptionId2}"` |
-| 网络资源组 | `"/subscriptions/{subscriptionId1}/resourceGroups/Network"` |
-| 一个管理组 | `"/providers/Microsoft.Management/managementGroups/{groupId1}"` |
-| 管理组和订阅 | `"/providers/Microsoft.Management/managementGroups/{groupId1}", /subscriptions/{subscriptionId1}",` |
-| 所有范围（仅适用于内置角色） | `"/"` |
+> [!div class="mx-tableFixed"]
+> | 角色可供分配 | 示例 |
+> |----------|---------|
+> | 一个订阅 | `"/subscriptions/{subscriptionId1}"` |
+> | 两个订阅 | `"/subscriptions/{subscriptionId1}", "/subscriptions/{subscriptionId2}"` |
+> | 网络资源组 | `"/subscriptions/{subscriptionId1}/resourceGroups/Network"` |
+> | 一个管理组 | `"/providers/Microsoft.Management/managementGroups/{groupId1}"` |
+> | 管理组和订阅 | `"/providers/Microsoft.Management/managementGroups/{groupId1}", /subscriptions/{subscriptionId1}",` |
+> | 所有范围（仅适用于内置角色） | `"/"` |
 
 有关自定义角色的 `AssignableScopes` 的信息，请参阅 [Azure 资源的自定义角色](custom-roles.md)。
 
@@ -234,4 +237,3 @@ Bob 的权限限制为[存储 Blob 数据参与者](built-in-roles.md#storage-bl
 * [Azure 资源的自定义角色](custom-roles.md)
 * [Azure 资源管理器资源提供程序操作](resource-provider-operations.md)
 
-<!-- Update_Description: link update -->

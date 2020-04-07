@@ -5,20 +5,20 @@ author: btardif
 ms.assetid: d273da4e-07de-48e0-b99d-4020d84a425e
 ms.topic: article
 origin.date: 01/11/2019
-ms.date: 03/09/2020
+ms.date: 03/30/2020
 ms.author: v-tawe
 ms.custom: seodec18
-ms.openlocfilehash: 43d0043e8006cb73fe35a86450457a20e7b876ff
-ms.sourcegitcommit: 1e68aea05a8d979237d6377a3637bb7654097111
+ms.openlocfilehash: 7cbc4b9cdb5b820a57dee82422aa1c6eb63984cf
+ms.sourcegitcommit: 44d3fe59952847e5394bbe6c05bd6f333bb56345
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/24/2020
-ms.locfileid: "77566648"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80522060"
 ---
 # <a name="monitor-apps-in-azure-app-service"></a>监视 Azure 应用服务中的应用
 [Azure 应用服务](overview.md)针对 [Azure 门户](https://portal.azure.cn)中的 Web 应用、移动和 API 应用提供内置监视功能。
 
-在 Azure 门户中，可以查看应用和应用服务计划的配额和指标，还可以设置基于指标的警报和自动缩放。    
+在 Azure 门户中，可以查看应用和应用服务计划的配额和指标，并设置警报和基于规则的自动缩放指标。    
 
 ## <a name="understand-quotas"></a>了解配额
 
@@ -62,13 +62,17 @@ ms.locfileid: "77566648"
 > **文件系统使用情况**是一个向全球推出的新指标，除非我们已将你加入专用预览版的允许列表，否则你不会获得数据。
 > 
 
+> [!IMPORTANT]
+> “平均响应时间”  将弃用，以避免与指标聚合混淆。 使用“响应时间”  作为替代。
+
 指标提供有关应用或应用服务计划行为的信息。
 
 应用的可用指标包括：
 
 | 指标 | 说明 |
 | --- | --- |
-| **平均响应时间** | 应用处理请求的平均时间（以秒为单位）。 |
+| **响应时间** | 应用处理请求所用时间（以秒为单位）。 |
+| **平均响应时间（已弃用）** | 应用处理请求的平均时间（以秒为单位）。 |
 | **平均内存工作集** | 应用使用的平均内存量，以 MiB 为单位。 |
 | **连接** | 沙盒中存在的绑定套接字的数目（w3wp.exe 及其子进程）。  绑定套接字是通过调用 bind()/connect() API 创建的，并一直保留到通过 CloseHandle()/closesocket() 关闭所述的套接字。 |
 | **CPU 时间** | 应用消耗的 CPU 量，以秒为单位。 有关此指标的详细信息，请参阅 [CPU 时间与 CPU 百分比](#cpu-time-vs-cpu-percentage)。 |
@@ -80,14 +84,14 @@ ms.locfileid: "77566648"
 | **第 1 代垃圾回收** | 自应用进程启动以来对第 1 代对象进行垃圾回收的次数。 较高代系的垃圾回收包括所有较低代系的垃圾回收。|
 | **第 2 代垃圾回收** | 自应用进程启动以来对第 2 代对象进行垃圾回收的次数。|
 | **句柄计数** | 应用进程当前打开的句柄总数。|
-| **Http 2xx** | 导致 HTTP 状态代码大于等于 200 但小于 300 的请求计数。 |
-| **Http 3xx** | 导致 HTTP 状态代码大于等于 300 但小于 400 的请求计数。 |
+| **Http 2xx** | 导致 HTTP 状态代码的请求计数大于等于 200，但小于 300。 |
+| **Http 3xx** | 导致 HTTP 状态代码的请求计数大于等于 300，但小于 400。 |
 | **Http 401** | 导致 HTTP 401 状态代码的请求计数。 |
 | **Http 403** | 导致 HTTP 403 状态代码的请求计数。 |
 | **Http 404** | 导致 HTTP 404 状态代码的请求计数。 |
 | **Http 406** | 导致 HTTP 406 状态代码的请求计数。 |
-| **Http 4xx** | 导致 HTTP 状态代码大于等于 400 但小于 500 的请求计数。 |
-| **Http 服务器错误** | 导致 HTTP 状态代码大于等于 500 但小于 600 的请求计数。 |
+| **Http 4xx** | 导致 HTTP 状态代码的请求计数大于等于 400，但小于 500。 |
+| **Http 服务器错误** | 导致 HTTP 状态代码的请求计数大于等于 500，但小于 600。 |
 | **IO 每秒其他字节数** | 应用进程向不涉及数据的 I/O 操作（例如控制操作）发出字节的速率。|
 | **IO 每秒其他操作数** | 应用进程发出非读或非写 I/O 操作的速率。|
 | **IO 每秒读取字节数** | 应用进程通过 I/O 操作读取字节的速率。|

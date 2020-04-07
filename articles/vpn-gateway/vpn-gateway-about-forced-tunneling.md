@@ -1,27 +1,19 @@
 ---
-title: 为 Azure 站点到站点连接配置强制隧道：经典 | Microsoft Docs
+title: Azure VPN 网关：配置强制隧道 - 站点到站点连接：经典
 description: 如何重定向或“强制”所有 Internet 绑定的流量路由回本地位置。
 services: vpn-gateway
-documentationcenter: na
 author: WenJason
-manager: digimobile
-editor: ''
-tags: azure-service-management
-ms.assetid: 5c0177f1-540c-4474-9b80-f541fa44240b
 ms.service: vpn-gateway
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
 origin.date: 08/01/2017
-ms.date: 04/01/2019
+ms.date: 04/06/2020
 ms.author: v-jay
-ms.openlocfilehash: e90f09bf13b91c78ea0a70b2ecd9831364eaaaf9
-ms.sourcegitcommit: 193f49f19c361ac6f49c59045c34da5797ed60ac
+ms.openlocfilehash: 679881ef87ea77e91f7d236e8a7e220919131480
+ms.sourcegitcommit: 5fb45da006859215edc8211481f13174aa43dbeb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68732404"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80634553"
 ---
 # <a name="configure-forced-tunneling-using-the-classic-deployment-model"></a>使用经典部署模型配置强制隧道
 
@@ -58,11 +50,24 @@ ms.locfileid: "68732404"
 ![强制隧道](./media/vpn-gateway-about-forced-tunneling/forced-tunnel.png)
 
 ## <a name="before-you-begin"></a>准备阶段
-在开始配置之前，请确认具有以下各项。
+在开始配置之前，请确认具有以下各项：
 
 * Azure 订阅。 如果还没有 Azure 订阅，可以注册一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial/)。
 * 已配置虚拟网络。 
-* 最新版本的 Azure PowerShell cmdlet。 有关安装 PowerShell cmdlet 的详细信息，请参阅 [如何安装和配置 Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) 。
+* [!INCLUDE [vpn-gateway-classic-powershell](../../includes/vpn-gateway-powershell-classic-locally.md)]
+
+### <a name="to-sign-in"></a>登录
+
+1. 使用提升的权限打开 PowerShell 控制台。 若要切换到服务管理，请使用以下命令：
+
+   ```powershell
+   azure config mode asm
+   ```
+2. 连接到帐户。 使用下面的示例来帮助连接：
+
+   ```powershell
+   Add-AzureAccount -Environment AzureChinaCloud
+   ```
 
 ## <a name="configure-forced-tunneling"></a>配置强制隧道
 以下过程帮助您为虚拟网络指定强制隧道。 配置步骤与 VNet 网络配置文件相对应。
@@ -177,4 +182,3 @@ Get-AzureSubnetRouteTable -VirtualNetworkName <virtualNetworkName> -SubnetName <
 ```powershell
 Remove-AzureVnetGatewayDefaultSite -VNetName <virtualNetworkName>
 ```
-<!--Update_Description: wording update --> 

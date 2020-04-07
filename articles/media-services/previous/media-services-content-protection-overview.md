@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure 媒体服务来保护内容 | Microsoft Docs
-description: 本文概述了如何使用媒体服务来保护内容。
+description: 本文概述如何使用 Azure 媒体服务 v2 保护内容。
 services: media-services
 documentationcenter: ''
 author: WenJason
@@ -13,19 +13,19 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 origin.date: 04/01/2019
-ms.date: 09/23/2019
+ms.date: 04/06/2020
 ms.author: v-jay
-ms.openlocfilehash: 2619e27a15a6fb07538fda4905c90ed9b6153e81
-ms.sourcegitcommit: 8248259e4c3947aa0658ad6c28f54988a8aeebf8
+ms.openlocfilehash: d0b8f041612ad6e4fe78c6c8f5dd63d61f1416ce
+ms.sourcegitcommit: fe9ed98aaee287a21648f866bb77cb6888f75b0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71124550"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80625745"
 ---
 # <a name="content-protection-overview"></a>内容保护概述 
 
 > [!NOTE]
-> Google Widevine DRM 目前在中国地区不可用。
+> Google Widevine 内容保护服务目前在 Azure 中国区域不可用。
 
 > [!NOTE]
 > 不会向媒体服务 v2 添加任何新特性或新功能。 <br/>查看最新版本：[媒体服务 v3](/media-services/latest/)。 另请参阅[从 v2 到 v3 的迁移指南](../latest/migrate-from-v2-to-v3.md)
@@ -39,11 +39,16 @@ ms.locfileid: "71124550"
 本文介绍的概念和术语是了解媒体服务的内容保护功能所必需的。 本文还提供指向讨论如何保护内容的文章的链接。 
 
 ## <a name="dynamic-encryption"></a>动态加密
- 可以通过 Azure 媒体服务传送使用 AES 明文密钥或 DRM 加密（利用 PlayReady 或 FairPlay）动态加密的内容。 当前可以加密 HTTP Live Streaming (HLS)、MPEG DASH 和平滑流式处理格式。 不支持对渐进式下载加密。 每个加密方法均支持以下流式处理协议：
 
+可以通过 Azure 媒体服务传送使用 AES 明文密钥或 DRM 加密（利用 PlayReady 或 FairPlay）动态加密的内容。 如果内容使用 AES 明文密钥加密并通过 HTTPS 发送，则在到达客户端之前，内容不会处于明文状态。 
+
+每个加密方法均支持以下流式处理协议：
+ 
 - AES：MPEG-DASH、平滑流式处理和 HLS
 - PlayReady：MPEG-DASH、平滑流式处理和 HLS
 - FairPlay：HLS
+
+不支持对渐进式下载加密。 
 
 若要加密资产，则需要关联加密内容密钥和资产并且为该密钥配置授权策略。 可以指定或由媒体服务自动生成内容密钥。
 
@@ -78,6 +83,19 @@ Playready 使用通用加密（AES CTR 模式）。 FairPlay 使用 AES CBC 模�
 
 配置令牌限制策略时，必须指定主验证密钥、颁发者和受众参数。 主验证密钥包含为令牌签名时使用的密钥。 颁发者是颁发令牌的安全令牌服务。 受众（有时称为范围）描述该令牌的意图，或者令牌授权访问的资源。 媒体服务密钥传送服务验证令牌中的这些值是否与模板中的值匹配。
 
+### <a name="token-replay-prevention"></a>令牌重放防护
+
+*令牌重放防护*功能允许媒体服务客户对同一令牌可用于请求密钥或许可证的次数设置限制。 客户可以在令牌中添加 `urn:microsoft:azure:mediaservices:maxuses` 类型的声明，其中值是令牌可用于获取许可证或密钥的次数。 对密钥传送服务使用同一令牌的所有后续请求都将返回未经授权的响应。 请参阅“如何在 [DRM 示例](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs#L601)中添加声明”。
+ 
+#### <a name="considerations"></a>注意事项
+
+* 客户必须控制令牌生成。 声明需要放在令牌本身中。
+* 使用此功能时，令牌过期时间超过接收请求时间一小时以上的请求将被拒绝，并返回未经授权的响应。
+* 令牌由其签名唯一标识。 对有效负荷的任何更改（例如，对到期时间或声明的更新）都会更改令牌的签名，并且该令牌将算作密钥传送服务之前没有遇到过的新令牌。
+* 如果令牌超过了客户设置的 `maxuses` 值，则播放将失败。
+* 此功能可用于所有现有的受保护内容（仅需要更改颁发的令牌）。
+* 此功能同时使用 JWT 和 SWT。
+
 ## <a name="streaming-urls"></a>流 URL
 如果资产是使用多个 DRM 加密的，请在流式处理 URL 中使用加密标记：(format='m3u8-aapl', encryption='xxx')。
 
@@ -87,6 +105,7 @@ Playready 使用通用加密（AES CTR 模式）。 FairPlay 使用 AES CBC 模�
 * 如果仅向资产应用了一种加密，则无需在 URL 中指定加密类型。
 * 加密类型区分大小写。
 * 可以指定以下加密类型：
+
   * **cenc**：对于 PlayReady（通用加密）
   * **cbcs-aapl**：用于 FairPlay（AES CBC 加密）
   * **cbc**：用于 AES 信封加密

@@ -10,12 +10,12 @@ ms.service: iot-dps
 services: iot-dps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 4b1549ed99c6e27c075045b45d71e545b9da3f0b
-ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
+ms.openlocfilehash: 69a16df3aff9b585026e2eedc4c4fc6e428de69d
+ms.sourcegitcommit: 260800ede66f48c886d1426a0fac18b4d402b4f2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77494480"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586808"
 ---
 # <a name="quickstart-provision-a-simulated-device-with-symmetric-keys"></a>快速入门：使用对称密钥预配模拟设备
 
@@ -33,7 +33,7 @@ ms.locfileid: "77494480"
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 以下先决条件适用于 Windows 开发环境。 对于 Linux 或 macOS，请参阅 SDK 文档的[准备开发环境](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md)中的相应部分。
 
@@ -191,7 +191,7 @@ SDK 包含模拟设备的示例代码。 该模拟设备将尝试在设备启动
     Provisioning Status: PROV_DEVICE_REG_STATUS_ASSIGNING
 
     Registration Information received from service: 
-    test-docs-hub.azure-devices.net, deviceId: device-007    
+    test-docs-hub.azure-devices.cn, deviceId: device-007    
     Press enter key to exit:
     ```
 

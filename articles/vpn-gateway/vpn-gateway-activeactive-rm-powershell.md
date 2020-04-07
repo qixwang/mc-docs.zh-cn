@@ -1,25 +1,26 @@
 ---
-title: 为 VPN 网关配置主动-主动 S2S VPN 连接：Azure 资源管理器：PowerShell | Microsoft Docs
+title: 配置主动-主动 S2S Azure VPN 网关连接
 description: 本文逐步讲解如何使用 Azure Resource Manager 和 PowerShell 配置包含 Azure VPN 网关的主动-主动连接。
 services: vpn-gateway
 author: WenJason
 ms.service: vpn-gateway
 ms.topic: article
 origin.date: 07/24/2018
-ms.date: 11/20/2019
+ms.date: 04/06/2020
 ms.author: v-jay
-ms.openlocfilehash: 912d8bfa3abdfcc50d175f4d9dcfb4b1c2becd92
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.reviewer: cherylmc
+ms.openlocfilehash: 303d43973b2d160fe49884439cd9b2a7b7cc4ec7
+ms.sourcegitcommit: 5fb45da006859215edc8211481f13174aa43dbeb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79292418"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80634545"
 ---
 # <a name="configure-active-active-s2s-vpn-connections-with-azure-vpn-gateways"></a>配置与 Azure VPN 网关的主动-主动 S2S VPN 连接
 
 本文逐步讲解如何使用 Resource Manager 部署模型和 PowerShell 创建主动-主动跨界连接与 VNet 到 VNet 连接。
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 
 ## <a name="about-highly-available-cross-premises-connections"></a>关于高可用性跨界连接
 若要实现跨界连接和 VNet 到 VNet 连接的高可用性，应该部署多个 VPN 网关，在网络与 Azure 之间建立多个并行连接。 有关连接选项和拓扑的概述，请参阅[高可用性跨界连接与 VNet 到 VNet 连接](vpn-gateway-highlyavailable.md)。
@@ -40,7 +41,7 @@ ms.locfileid: "79292418"
 >   * VpnGw1、VpnGw2、VpnGw3
 >   * HighPerformance（适用于旧的传统 SKU）
 
-## <a name ="aagateway"></a>第 1 部分 - 创建并设置主动-主动 VPN 网关
+## <a name="part-1---create-and-configure-active-active-vpn-gateways"></a><a name ="aagateway"></a>第 1 部分 - 创建并设置主动-主动 VPN 网关
 以下步骤将 Azure VPN 网关配置为主动-主动模式。 主动-主动与主机-待机网关之间的重要差异：
 
 * 需要使用两个公共 IP 地址创建两个网关 IP 配置
@@ -157,7 +158,7 @@ PS D:\> $vnet1gw.BgpSettingsText
 
 创建网关后，可以使用此网关创建主动-主动跨界连接或 VNet 到 VNet 连接。 以下各节介绍完成该练习所需的步骤。
 
-## <a name ="aacrossprem"></a>第 2 部分 - 建立主动-主动跨界连接
+## <a name="part-2---establish-an-active-active-cross-premises-connection"></a><a name ="aacrossprem"></a>第 2 部分 - 建立主动-主动跨界连接
 要建立跨界连接，你需要创建本地网关来表示本地 VPN 设备，并创建连接将 Azure VPN 网关与本地网关连接在一起。 在本示例中，Azure VPN 网关处于主动-主动模式。 因此，即使只有一个本地 VPN 设备（本地网关）和一个连接资源，两个 Azure VPN 网关实例也都与该本地设备建立 S2S VPN 隧道。
 
 在继续下一步之前，请确保已完成本练习的 [第 1 部分](#aagateway) 。
@@ -272,7 +273,7 @@ New-AzVirtualNetworkGatewayConnection -Name $Connection152 -ResourceGroupName $R
 
 ![dual-redundancy-crossprem](./media/vpn-gateway-activeactive-rm-powershell/dual-redundancy.png)
 
-## <a name ="aav2v"></a>第 3 部分 - 建立主动-主动 VNet 到 VNet 连接
+## <a name="part-3---establish-an-active-active-vnet-to-vnet-connection"></a><a name ="aav2v"></a>第 3 部分 - 建立主动-主动 VNet 到 VNet 连接
 本部分使用 BGP 创建主动-主动 VNet 到 VNet 连接。 
 
 下面的说明延续上面所列的前述步骤。 必须完成 [第 1 部分](#aagateway) ，使用 BGP 创建和配置 TestVNet1 与 VPN 网关。 
@@ -366,7 +367,7 @@ New-AzVirtualNetworkGatewayConnection -Name $Connection21 -ResourceGroupName $RG
 
 ![active-active-v2v](./media/vpn-gateway-activeactive-rm-powershell/vnet-to-vnet.png)
 
-## <a name ="aaupdate"></a>更新现有 VPN 网关
+## <a name="update-an-existing-vpn-gateway"></a><a name ="aaupdate"></a>更新现有 VPN 网关
 
 此部分有助于将现有 Azure VPN 网关从主动-待机模式更改为主动-主动模式，或反之。
 

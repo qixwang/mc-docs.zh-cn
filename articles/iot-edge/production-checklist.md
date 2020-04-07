@@ -5,16 +5,16 @@ author: kgremban
 manager: philmea
 ms.author: v-tawe
 origin.date: 08/09/2019
-ms.date: 03/02/2020
+ms.date: 03/30/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: efa2f4287129369911911fcf0ddc267cbcd6d0a2
-ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
+ms.openlocfilehash: 02ad510c8cfcdb0f6fc9ba955fe4cd9339619de2
+ms.sourcegitcommit: 260800ede66f48c886d1426a0fac18b4d402b4f2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77494561"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586650"
 ---
 # <a name="prepare-to-deploy-your-iot-edge-solution-in-production"></a>准备在生产环境中部署 IoT Edge 解决方案
 
@@ -40,7 +40,7 @@ IoT Edge 设备的类型多种多样，其中包括 Raspberry Pi、便携式计�
 
 若要了解设备 CA 证书的作用，请参阅 [Azure IoT Edge 如何使用证书](iot-edge-certs.md)。
 
-有关如何在 IoT Edge 设备上安装证书并从 config.yaml 文件引用这些证书的详细信息，请参阅[在 IoT Edge 设备上安装生产证书](how-to-install-production-certificates.md)。
+有关如何在 IoT Edge 设备上安装证书并从 config.yaml 文件引用这些证书的详细信息，请参阅[在 IoT Edge 设备上安装生产证书](how-to-manage-device-certificates.md)。
 
 ### <a name="have-a-device-management-plan"></a>创建设备管理计划
 
@@ -177,10 +177,10 @@ Azure IoT 中心与 IoT Edge 之间的信道始终配置为出站。 对于大�
    | URL（\* = 通配符） | 出站 TCP 端口 | 使用情况 |
    | ----- | ----- | ----- |
    | mcr.microsoft.com  | 443 | Microsoft 容器注册表 |
-   | global.azure-devices-provisioning.net  | 443 | DPS 访问（可选） |
+   | global.azure-devices-provisioning.cn  | 443 | DPS 访问（可选） |
    | \*.azurecr.cn | 443 | 个人和第三方容器注册表 |
-   | \*.blob.core.windows.net | 443 | 从 blob 存储下载 Azure 容器注册表映像增量 |
-   | \*.azure-devices.net | 5671、8883、443 | IoT 中心访问 |
+   | \*.blob.core.chinacloudapi.cn | 443 | 从 blob 存储下载 Azure 容器注册表映像增量 |
+   | \*.azure-devices.cn | 5671、8883、443 | IoT 中心访问 |
    | \*.docker.io  | 443 | Docker 中心访问（可选） |
 
 <!-- Some of these firewall rules are inherited from Azure Container Registry. For more information, see [Configure rules to access an Azure container registry behind a firewall](../container-registry/container-registry-firewall-access-rules.md). -->

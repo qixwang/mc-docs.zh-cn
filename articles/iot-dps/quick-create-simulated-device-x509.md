@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: 9e28e5943b693449c76ea53f604c1757ec4f7152
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: 781a12ea92b5109c1040759f2fcc7f66a6437acb
+ms.sourcegitcommit: 260800ede66f48c886d1426a0fac18b4d402b4f2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79291145"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586772"
 ---
 # <a name="quickstart-provision-an-x509-simulated-device-using-the-azure-iot-c-sdk"></a>快速入门：使用 Azure IoT C SDK 预配 X.509 模拟设备
 
@@ -168,7 +168,7 @@ Azure IoT 设备预配服务支持两类注册：
     Provisioning Status: PROV_DEVICE_REG_STATUS_ASSIGNING
 
     Registration Information received from service:
-    test-docs-hub.azure-devices.net, deviceId: test-docs-cert-device
+    test-docs-hub.azure-devices.cn, deviceId: test-docs-cert-device
     ```
 
 7. 在门户中导航到已链接到预配服务的 IoT 中心，然后选择“IoT 设备”选项卡  。将模拟的 X.509 设备成功预配到中心以后，设备 ID 会显示在“IoT 设备”边栏选项卡上，“状态”为“已启用”    。 你可能需要按顶部的“刷新”按钮  。 

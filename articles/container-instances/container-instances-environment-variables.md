@@ -3,14 +3,14 @@ title: 在容器实例中设置环境变量
 description: 了解如何在 Azure 容器实例的已运行容器中设置环境变量
 ms.topic: article
 origin.date: 04/17/2019
-ms.date: 01/15/2020
+ms.date: 04/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: e5a823123fba3668d8b9016fda47de3497d38b91
-ms.sourcegitcommit: 2b4507745b98b45f1ce3f3d30f397521148ef35a
+ms.openlocfilehash: 7b7c5f206ae99ae12a1d10bc4593cb45b60a60a9
+ms.sourcegitcommit: 76280dd9854dc0ff0ba1e5e62fb3dc3af049fbe2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78213744"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80516979"
 ---
 <!--Verified successfully-->
 # <a name="set-environment-variables-in-container-instances"></a>在容器实例中设置环境变量
@@ -67,8 +67,8 @@ az container logs --resource-group myResourceGroup --name mycontainer2
 
 容器的输出显示你如何通过设置环境变量修改了第二个容器的脚本行为。
 
-```console
-azureuser@Azure:~$ az container logs --resource-group myResourceGroup --name mycontainer1
+ mycontainer1
+```output
 [('the', 990),
  ('and', 702),
  ('of', 628),
@@ -79,8 +79,10 @@ azureuser@Azure:~$ az container logs --resource-group myResourceGroup --name myc
  ('my', 441),
  ('in', 399),
  ('HAMLET', 386)]
+```
 
-azureuser@Azure:~$ az container logs --resource-group myResourceGroup --name mycontainer2
+ mycontainer2
+```output
 [('CLAUDIUS', 120),
  ('POLONIUS', 113),
  ('GERTRUDE', 82),

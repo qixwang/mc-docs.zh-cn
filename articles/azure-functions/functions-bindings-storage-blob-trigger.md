@@ -3,14 +3,14 @@ title: 适用于 Azure Functions 的 Azure Blob 存储触发器
 description: 了解如何在 Azure Blob 存储数据更改时运行 Azure 函数。
 author: craigshoemaker
 ms.topic: reference
-ms.date: 02/17/2020
+ms.date: 03/30/2020
 ms.author: v-junlch
-ms.openlocfilehash: 3f45f271d2df880d535d591ab63c8033907d715b
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: 140bc1b8e6ce4b07325bca9116bb436fca36fe71
+ms.sourcegitcommit: 64584c0bf31b4204058ae2b4641356b904ccdd58
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79293298"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80581791"
 ---
 # <a name="azure-blob-storage-trigger-for-azure-functions"></a>适用于 Azure Functions 的 Azure Blob 存储触发器
 
@@ -348,7 +348,7 @@ Azure Functions 将 Blob 回执存储在函数应用的 Azure 存储帐户中名
 
 当给定 blob 的 blob 触发函数失败时，Azure Functions 将默认重试该函数共计 5 次。
 
-如果 5 次尝试全部失败，Azure Functions 会将消息添加到名为 webjobs-blobtrigger-poison  的存储队列。 有害 Blob 的队列消息是包含以下属性的 JSON 对象：
+如果 5 次尝试全部失败，Azure Functions 会将消息添加到名为 webjobs-blobtrigger-poison  的存储队列。 最大尝试次数可配置。 使用相同的 MaxDequeueCount 设置处理有害 Blob 和有害队列消息。 有害 Blob 的队列消息是包含以下属性的 JSON 对象：
 
 * FunctionId（格式为 &lt;function app name>.Functions.&lt;function name>   ）
 * BlobType（"BlockBlob" 或 "PageBlob"）

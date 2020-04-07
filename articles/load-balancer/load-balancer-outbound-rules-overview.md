@@ -11,14 +11,14 @@ ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 7/17/2019
-ms.date: 12/02/2019
+ms.date: 04/06/2020
 ms.author: v-jay
-ms.openlocfilehash: cad38f021c92bc1b6c0e4fd7df847f9928b65179
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: 4a01ed844a5f0ca4d2da2b573e3cbb98184c49a2
+ms.sourcegitcommit: fe9ed98aaee287a21648f866bb77cb6888f75b0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79291527"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80625798"
 ---
 # <a name="load-balancer-outbound-rules"></a>负载均衡器出站规则
 
@@ -35,7 +35,7 @@ ms.locfileid: "79291527"
 - 应如何分配[出站 SNAT 端口](load-balancer-outbound-connections.md#snat)。
 - 要为哪些协议提供出站转换。
 - 用于出站连接空闲超时的持续时间（4-120 分钟）。
-- 空闲超时时是否要发送 TCP 重置（公共预览版功能）。 
+- 是否要在空闲超时时发送 TCP Reset
 
 出站规则扩展了[出站连接](load-balancer-outbound-connections.md)一文中所述的[方案 2](load-balancer-outbound-connections.md#lb)，方案优先顺序保持不变。
 
@@ -65,7 +65,7 @@ API 版本“2018-07-01”允许按如下所示构建出站规则定义：
 >[!NOTE]
 >有效出站 NAT 配置是所有出站规则与负载均衡规则的组合。 出站规则是对负载均衡规则的补充。 请查看[禁用负载均衡规则的出站 NAT](#disablesnat)，了解如何在将多个规则应用到 VM 时管理有效出站 NAT 转换。 在定义使用与负载均衡规则相同的公共 IP 地址的出站规则时，必须[禁用出站 SNAT](#disablesnat)。
 
-### <a name="scale"></a>使用多个 IP 地址缩放出站 NAT
+### <a name="scale-outbound-nat-with-multiple-ip-addresses"></a><a name="scale"></a>使用多个 IP 地址缩放出站 NAT
 
 尽管出站规则只能配合单个公共 IP 地址使用，但出站规则减轻了缩放出站 NAT 的负担。 规划大规模方案时可以使用多个 IP 地址，并可以使用出站规则来缓解容易出现 [SNAT 耗尽](load-balancer-outbound-connections.md#snatexhaust)的模式。  
 
@@ -75,7 +75,7 @@ API 版本“2018-07-01”允许按如下所示构建出站规则定义：
 
 使用此选项时，无法从公共 IP 前缀创建单个公共 IP 地址资源，因为出站规则必须拥有公共 IP 前缀的完全控制权。  如果需要更精细的控制，可以从公共 IP 前缀创建单个公共 IP 地址资源，并将多个公共 IP 地址单独分配到出站规则的前端。
 
-### <a name="snatports"></a>优化 SNAT 端口分配
+### <a name="tune-snat-port-allocation"></a><a name="snatports"></a>优化 SNAT 端口分配
 
 可以使用出站规则[基于后端池大小优化自动 SNAT 端口分配](load-balancer-outbound-connections.md#preallocatedports)，并分配多于或少于自动 SNAT 端口分配所提供的端口数。
 
@@ -88,7 +88,7 @@ API 版本“2018-07-01”允许按如下所示构建出站规则定义：
 
 可以通过将端口数指定为 0，恢复为[基于后端池大小的自动 SNAT 端口分配](load-balancer-outbound-connections.md#preallocatedports)。 在这种情况下，根据该表，前 50 个 VM 实例将获得 1024 个端口，而 51-100 个 VM 实例将获得 512 个端口，依此类推。
 
-### <a name="idletimeout"></a>控制出站流空闲超时
+### <a name="control-outbound-flow-idle-timeout"></a><a name="idletimeout"></a>控制出站流空闲超时
 
 出站规则提供一个配置参数用于控制出站流空闲超时，并使该超时符合应用程序的需求。  出站空闲超时默认为 4 分钟。  该参数接受从 4 到 120 的值用于指定与此特定规则匹配的流的空闲超时分钟数。
 
@@ -96,7 +96,7 @@ API 版本“2018-07-01”允许按如下所示构建出站规则定义：
 
           "idleTimeoutInMinutes": 60
 
-### <a name="tcprst"></a> <a name="tcpreset"></a> 在空闲超时时启用 TCP 重置（预览版）
+### <a name="enable-tcp-reset-on-idle-timeout"></a><a name="tcprst"></a> <a name="tcpreset"></a> 在空闲超时时启用 TCP 重置
 
 负载均衡器的默认行为是在达到出站空闲超时时以静默方式丢弃流。  使用 enableTCPReset 参数可以启用更有预测性的应用程序行为，并控制在发生出站空闲超时时，是否要发送双向 TCP 重置 (TCP RST)。 
 
@@ -104,9 +104,9 @@ API 版本“2018-07-01”允许按如下所示构建出站规则定义：
 
            "enableTcpReset": true
 
-查看[空闲超时时的 TCP 重置（预览版）](/load-balancer/load-balancer-tcp-reset)了解详细信息，包括区域可用性。
+查看[在空闲超时时 TCP 重置](/load-balancer/load-balancer-tcp-reset)，了解详细信息，包括区域可用性。
 
-### <a name="proto"></a>支持具有单个规则的 TCP 和 UDP 传输协议
+### <a name="support-both-tcp-and-udp-transport-protocols-with-a-single-rule"></a><a name="proto"></a>支持具有单个规则的 TCP 和 UDP 传输协议
 
 可以对出站规则的传输协议使用“所有”，但也可以根据需要将出站规则应用到特定的传输协议。
 
@@ -114,7 +114,7 @@ API 版本“2018-07-01”允许按如下所示构建出站规则定义：
 
           "protocol": "All"
 
-### <a name="disablesnat"></a>禁用负载均衡规则的出站 NAT
+### <a name="disable-outbound-nat-for-a-load-balancing-rule"></a><a name="disablesnat"></a>禁用负载均衡规则的出站 NAT
 
 如前所述，负载均衡规则提供出站 NAT 的自动编程。 但是，某些方案受益于或者要求通过负载均衡规则禁用出站 NAT 的自动编程，以便能够控制或优化行为。  在某些出站规则方案中，必须停止自动出站 NAT 编程。
 
@@ -146,7 +146,7 @@ disableOutboundSNAT 参数默认为 false，这意味着，负载均衡规则**�
 
 ## <a name="scenarios"></a>方案
 
-### <a name="groom"></a>将出站连接整理成一组特定的公共 IP 地址
+### <a name="groom-outbound-connections-to-a-specific-set-of-public-ip-addresses"></a><a name="groom"></a>将出站连接整理成一组特定的公共 IP 地址
 
 可以使用出站规则来整理出站连接，使之看上去像是源自一组特定的公共 IP 地址，以简化允许列表方案。  此源公共 IP 地址可与负载均衡规则使用的 IP 地址相同，也可以是与负载均衡规则使用的 IP 地址不同的一组公共 IP 地址。  
 
@@ -158,7 +158,7 @@ disableOutboundSNAT 参数默认为 false，这意味着，负载均衡规则**�
    
 如果不希望将负载均衡规则用于出站连接，则需要在负载均衡规则中[禁用出站 SNAT](#disablesnat)。
 
-### <a name="modifysnat"></a>修改 SNAT 端口分配
+### <a name="modify-snat-port-allocation"></a><a name="modifysnat"></a>修改 SNAT 端口分配
 
 可以使用出站规则[基于后端池大小优化自动 SNAT 端口分配](load-balancer-outbound-connections.md#preallocatedports)。
 
@@ -166,7 +166,7 @@ disableOutboundSNAT 参数默认为 false，这意味着，负载均衡规则**�
 
 查看[出站连接](load-balancer-outbound-connections.md)，以及有关如何分配和使用 [SNAT](load-balancer-outbound-connections.md#snat) 端口的详细信息。
 
-### <a name="outboundonly"></a>仅启用出站连接
+### <a name="enable-outbound-only"></a><a name="outboundonly"></a>仅启用出站连接
 
 可以使用公共标准负载均衡器为一组 VM 提供出站 NAT。 在此方案中，可以单独使用出站规则，而无需其他任何规则。
 
@@ -207,7 +207,6 @@ disableOutboundSNAT 参数默认为 false，这意味着，负载均衡规则**�
 - 每个前端 IP 地址的最大可用临时端口数为 64,000。
 - 可配置的出站空闲超时范围为 4 到 120 分钟（240 到 7200 秒）。
 - 负载均衡器不支持将 ICMP 用于出站 NAT。
-- 不能使用门户来配置或查看出站规则。  请改为使用模板、REST API、Az CLI 2.0 或 PowerShell。
 - 出站规则只能应用于 NIC 的主 IP 配置。  支持多个 NIC。
 
 ## <a name="next-steps"></a>后续步骤

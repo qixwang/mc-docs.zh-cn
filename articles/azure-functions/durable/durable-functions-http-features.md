@@ -3,14 +3,14 @@ title: Durable Functions 中的 HTTP 功能 - Azure Functions
 description: 了解 Azure Functions 的 Durable Functions 扩展中的集成式 HTTP 功能。
 author: cgillum
 ms.topic: conceptual
-ms.date: 02/14/2020
+ms.date: 03/31/2020
 ms.author: v-junlch
-ms.openlocfilehash: 8b08cf5b1031de2531053beeed70559a96c51d24
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: f9c779f0d240a52e895cd52063ed9ebb0f3cf4e1
+ms.sourcegitcommit: 64584c0bf31b4204058ae2b4641356b904ccdd58
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79291005"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80581810"
 ---
 # <a name="http-features"></a>HTTP 功能
 
@@ -321,7 +321,7 @@ module.exports = df.orchestrator(function*(context) {
 
 可以使用 [Azure Functions .NET 依赖项注入](/azure-functions/functions-dotnet-dependency-injection)来自定义业务流程内部 HTTP 客户端的行为。 此功能可用于做出轻微的行为更改。 使用此功能还可以通过注入 mock 对象，来对 HTTP 客户端进行单元测试。
 
-以下示例演示如何使用依赖项注入来对调用外部 HTTP 终结点的业务流程协调程序函数禁用 SSL 证书验证。
+以下示例演示如何使用依赖项注入为调用外部 HTTP 终结点的业务流程协调程序函数禁用 TLS/SSL 证书验证。
 
 ```csharp
 public class Startup : FunctionsStartup
@@ -339,7 +339,7 @@ public class MyDurableHttpMessageHandlerFactory : IDurableHttpMessageHandlerFact
 {
     public HttpMessageHandler CreateHttpMessageHandler()
     {
-        // Disable SSL certificate validation (not recommended in production!)
+        // Disable TLS/SSL certificate validation (not recommended in production!)
         return new HttpClientHandler
         {
             ServerCertificateCustomValidationCallback =

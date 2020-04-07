@@ -6,22 +6,23 @@ author: WenJason
 ms.service: load-balancer
 ms.topic: article
 origin.date: 01/23/2020
-ms.date: 02/24/2020
+ms.date: 04/06/2020
 ms.author: v-jay
-ms.openlocfilehash: 6a9c43c7826d186e19502ce4dbb9a903eff652e3
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.openlocfilehash: 867d6519832b632a28ee596dc5b953c6c7460192
+ms.sourcegitcommit: fe9ed98aaee287a21648f866bb77cb6888f75b0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77541148"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80625670"
 ---
-# <a name="upgrade-azure-public-load-balancer-from-basic-sku-to-standard-sku"></a>将 Azure 公共负载均衡器从基本 SKU 升级到标准 SKU
+# <a name="upgrade-azure-public-load-balancer"></a>升级 Azure 公共负载均衡器
 [Azure 标准负载均衡器](load-balancer-overview.md)提供丰富的功能和高可用性。 有关负载均衡器 SKU 的详细信息，请参阅[比较表](/load-balancer/concepts-limitations#skus)。
 
-升级分为两个阶段：
+升级分为三个阶段：
 
 1. 迁移配置
 2. 将 VM 添加到标准负载均衡器的后端池
+3. 在负载均衡器上为出站连接创建出站规则
 
 本文介绍配置迁移。 根据特定的环境，将 VM 添加到后端池的过程可能有所不同。 不过，本文提供了一些概要性的普通[建议](#add-vms-to-backend-pools-of-standard-load-balancer)。
 
@@ -29,8 +30,8 @@ ms.locfileid: "77541148"
 
 我们提供了一个用于执行以下操作的 Azure PowerShell 脚本：
 
-* 在指定的资源组和位置中创建标准公共 SKU 负载均衡器。
-* 将基本 SKU 公共负载均衡器的配置无缝复制到新建的标准公共负载均衡器。
+* 在指定的资源组和位置中创建标准 SKU 负载均衡器。
+* 将基本 SKU 负载均衡器的配置无缝复制到新建的标准负载均衡器。
 
 ### <a name="caveatslimitations"></a>注意事项/限制
 
@@ -71,17 +72,8 @@ ms.locfileid: "77541148"
 
 1. 使用 `Import-Module Az` 导入 Az 模块。
 
-1. 运行 `Get-Help AzureLBUpgrade.ps1` 检查所需的参数：
+1. 检查所需的参数：
 
-   ```
-   AzurePublicLBUpgrade.ps1
-    -oldRgName <name of the Resource Group where Basic Load Balancer exists>
-    -oldLBName <name of existing Basic Load Balancer>
-    -newrgName <Name of the Resource Group where the new Standard Load Balancer will be created>
-    -newlocation <Name of the location where the new Standard Load Balancer will be created>
-    -newLBName <Name of the Standard Load Balancer to be created>
-   ```
-   脚本的参数：
    * **oldRgName: [String]:必需** – 这是要升级的现有基本负载均衡器的资源组。 若要查找此字符串值，请导航到 Azure 门户，选择你的基本负载均衡器源，然后单击该负载均衡器的“概述”。  资源组位于该页上。
    * **oldLBName: [String]:必需** – 这是要升级的现有基本负载均衡器的名称。 
    * **newrgName: [String]:必需** – 这是要在其中创建标准负载均衡器的资源组。 它可以是新资源组，也可以是现有资源组。 如果选择现有资源组，请注意，负载均衡器的名称在资源组中必须是唯一的。 
@@ -92,7 +84,7 @@ ms.locfileid: "77541148"
     **示例**
 
    ```azurepowershell
-   ./AzurePublicLBUpgrade.ps1 -oldRgName "test_publicUpgrade_rg" -oldLBName "LBForPublic" -newrgName "test_userInput3_rg" -newlocation "chinaeast" -newLbName "LBForUpgrade"
+   AzurePublicLBUpgrade.ps1 -oldRgName "test_publicUpgrade_rg" -oldLBName "LBForPublic" -newrgName "test_userInput3_rg" -newlocation "chinaeast" -newLbName "LBForUpgrade"
    ```
 
 ### <a name="add-vms-to-backend-pools-of-standard-load-balancer"></a>将 VM 添加到标准负载均衡器的后端池
@@ -118,6 +110,12 @@ ms.locfileid: "77541148"
 
 * **创建要添加到新建标准公共负载均衡器的后端池的新 VM**。
     * 在[此处](/load-balancer/quickstart-load-balancer-standard-public-portal#create-virtual-machines)可以找到有关如何创建 VM 并将关联到标准负载均衡器的详细说明。
+
+### <a name="create-an-outbound-rule-for-outbound-connection"></a>为出站连接创建出站规则
+
+按照[说明](/load-balancer/configure-load-balancer-outbound-portal#create-outbound-rule-configuration)创建出站规则，以便：
+* 从头开始定义出站 NAT。
+* 缩放和优化现有出站 NAT 的行为。
 
 ## <a name="common-questions"></a>常见问题
 

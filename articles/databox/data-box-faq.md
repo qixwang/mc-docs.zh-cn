@@ -7,14 +7,14 @@ ms.service: databox
 ms.subservice: pod
 ms.topic: article
 origin.date: 09/03/2019
-ms.date: 01/13/2020
+ms.date: 04/06/2020
 ms.author: v-jay
-ms.openlocfilehash: 8967fa888d71cd24ab122e191e12945464e651d7
-ms.sourcegitcommit: 4f4694991e1c70929c7112ad45a0c404ddfbc8da
+ms.openlocfilehash: 155ecee323fca1686b4b0b12ee814e47b067b85c
+ms.sourcegitcommit: 5fb45da006859215edc8211481f13174aa43dbeb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75776698"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80634455"
 ---
 # <a name="azure-data-box-frequently-asked-questions"></a>Azure Data Box：常见问题解答
 
@@ -54,7 +54,7 @@ A. Data Box 的原始容量为 100 TB，可用容量为 80 TB。 使用 Data Box
 A.  有关 Data Box 在哪些国家/区域可用的信息，请转到[区域可用性](data-box-overview.md#region-availability)。  
 
 ### <a name="q-which-regions-can-i-store-data-in-with-data-box"></a>问： 可在哪些区域使用 Data Box 存储数据？
-A. 中国东部、中国东部 2、中国北部、中国北部 2 的所有区域都支持 Data Box。 有关详细信息，请参阅[适用区域](data-box-overview.md#region-availability)。
+A. 所有区域都支持 Data Box。 有关详细信息，请参阅[适用区域](data-box-overview.md#region-availability)。
 
 ### <a name="q-whom-should-i-contact-if-i-encounter-any-issues-with-data-box"></a>问： 如果 Data Box 出现任何问题，应该与谁联系？
 A. 如果 Data Box 出现任何问题，请[联系 Azure 支持部门](https://www.azure.cn/zh-cn/support/contact/)。

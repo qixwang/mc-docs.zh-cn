@@ -10,16 +10,16 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: tutorial
-origin.date: 06/19/2019
-ms.date: 12/09/2019
+origin.date: 03/26/2020
+ms.date: 04/06/2020
 ms.author: v-jay
 ms.custom: seodec18
-ms.openlocfilehash: 5a6d516b68961ddaa5bfbee289439d48eef27af7
-ms.sourcegitcommit: 369038a7d7ee9bbfd26337c07272779c23d0a507
+ms.openlocfilehash: e88f04748eb534c90e49727f0ecdbcf554f92cd3
+ms.sourcegitcommit: fe9ed98aaee287a21648f866bb77cb6888f75b0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74807652"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80625780"
 ---
 # <a name="tutorial-analyze-videos-with-media-services-v3"></a>教程：使用媒体服务 v3 来分析视频
 
@@ -38,6 +38,10 @@ ms.locfileid: "74807652"
 > * 清理资源。
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
+
+## <a name="compliance-privacy-and-security"></a>符合性、隐私和安全性
+ 
+需要重点提醒的是，在使用视频索引器时，你必须遵守所有适用法律，不得以侵犯他人权利或可能对他人有害的方式使用视频索引器或任何其他 Azure 服务。 在将任何视频（包括任何生物特征数据）上传到视频索引器服务进行处理和存储之前，必须拥有所有适当的权利，包括获得视频中个人的所有适当同意。 若要了解视频索引器中的合规性、隐私和安全性，请参阅 Azure [认知服务条款](https://www.azure.cn/support/sla/cognitive-services/)。 若要了解 Microsoft 的隐私义务以及对你的数据的处理，请查看世纪互联的[隐私声明](https://www.azure.cn/support/legal/privacy-statement/)、[联机服务条款](https://www.21vbluecloud.com/ostpt/) (“OST”) 和[数据处理附录](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=67) (“DPA”)。 其他隐私信息（包括有关数据保留、删除/销毁的信息）可在 OST 中找到。 使用视频索引器即表示你同意接受认知服务条款、OST、DPA 和隐私声明的约束。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -71,7 +75,7 @@ ms.locfileid: "74807652"
 6. 下载运行作业产生的文件。
 
 > [!NOTE]
-> 使用视频或音频分析器预设时，使用 Azure 门户将帐户设置为具有 10 个 S3 媒体预留单位。 有关详细信息，请参阅[缩放媒体处理](media-reserved-units-cli-how-to.md)。
+> 使用视频或音频分析器预设时，请通过 Azure 门户将帐户设置为具有 10 个 S3 媒体预留单位。 有关详细信息，请参阅[缩放媒体处理](media-reserved-units-cli-how-to.md)。
 
 ### <a name="start-using-media-services-apis-with-net-sdk"></a>开始结合使用媒体服务 API 与 .NET SDK
 
@@ -99,6 +103,8 @@ CreateInputAsset 函数创建新的输入[资产](https://docs.microsoft.com/res
 
 * 创建 Asset。
 * 获取资产的[存储中容器](/storage/blobs/storage-quickstart-blobs-dotnet#upload-blobs-to-a-container)的可写 [SAS URL](/storage/common/storage-dotnet-shared-access-signature-part-1)。
+
+    如果使用资产的 [ListContainerSas](https://docs.microsoft.com/rest/api/media/assets/listcontainersas) 函数获取 SAS URL，请注意，该函数将返回多个 SAS URL，因为每个存储帐户有两个存储帐户密钥。 存储帐户有两个密钥，因为它支持存储帐户密钥无缝轮换（例如，使用一个密钥时更改另一个，然后开始使用新密钥并轮换其他密钥）。 第一个 SAS URL 表示存储 key1，第二个表示存储 key2。
 * 使用 SAS URL 将文件上传到存储中的容器中。
 
 ```c#

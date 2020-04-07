@@ -1,5 +1,5 @@
 ---
-title: 使用 DRM 动态加密和许可证传送服务
+title: Azure 媒体服务 DRM 加密和许可证传送服务
 titleSuffix: Azure Media Services
 description: 了解如何使用 DRM 动态加密和许可传递服务来传送通过 Microsoft PlayReady 或 Apple FairPlay 许可证加密的流。
 services: media-services
@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 origin.date: 05/25/2019
-ms.date: 03/04/2020
+ms.date: 04/06/2020
 ms.author: v-jay
 ms.custom: seodec18
-ms.openlocfilehash: c75f8911955852beb4205aaa060e0963984e74f2
-ms.sourcegitcommit: fbc7584f403417d3af7bd6bbbaed7c13a78c57b9
+ms.openlocfilehash: 78c8406f6ae414a051eeefe3e1d50f2b871b73d9
+ms.sourcegitcommit: fe9ed98aaee287a21648f866bb77cb6888f75b0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78412510"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80625784"
 ---
 # <a name="tutorial-use-drm-dynamic-encryption-and-license-delivery-service"></a>教程：使用 DRM 动态加密和许可证传送服务
 
@@ -49,6 +49,8 @@ ms.locfileid: "78412510"
 > * 设置对内容密钥策略的要求。
 > * 使用指定的流式处理策略创建 StreamingLocator。
 > * 创建一个用于播放文件的 URL。
+
+[!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>先决条件
 

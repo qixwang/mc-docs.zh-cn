@@ -9,12 +9,12 @@ ms.topic: overview
 origin.date: 08/29/2019
 ms.date: 12/02/2019
 ms.author: v-jay
-ms.openlocfilehash: 416de75e28427865da6e0d0f361d25488e8d03dc
-ms.sourcegitcommit: 481542df432d52b7d4823811cef94772e4e0f192
+ms.openlocfilehash: d3b245d6a1eafa08135daf27c97f74e0895dcbf9
+ms.sourcegitcommit: 5fb45da006859215edc8211481f13174aa43dbeb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74530618"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80634457"
 ---
 # <a name="azure-data-box-disk-frequently-asked-questions"></a>Azure Data Box Disk：常见问题解答
 
@@ -55,7 +55,7 @@ A. 如果使用 5 个磁盘，并且磁盘具有 8 TB 容量（7 TB 可用容量
 A.  若要查看目前提供 Data Box Disks 的区域，请转到[区域可用性](data-box-disk-overview.md#region-availability)。  
 
 ### <a name="q-which-regions-can-i-store-data-in-with-data-box-disks"></a>问： 使用 Data Box 磁盘可在哪些区域存储数据？
-A. 中国东部、中国东部 2、中国北部、中国北部 2 的所有区域都支持 Data Box 磁盘。 仅支持 Azure 公有云区域。
+A. 所有区域都支持 Data Box Disk。 仅支持 Azure 公有云区域。
 
 ### <a name="q-whom-should-i-contact-if-i-encounter-any-issues--with-data-box-disks"></a>问： 如果 Data Box 磁盘出现任何问题，我应该与谁联系？
 A. 如果 Data Box 磁盘出现任何问题，请[联系 Auzre 支持部门](https://www.azure.cn/zh-cn/support/contact/)。
@@ -93,7 +93,7 @@ A.  Auzre 会在发货包装中连同 Data Box 磁盘一起提供一个发货标
 A.  Data Box 磁盘解决方案最多提供 5 个磁盘，最大可用容量为 35 TB。 磁盘本身容量为 8 TB（7 TB 可用容量）。
 
 ### <a name="q-what-are-the-maximum-block-blob-and-page-blob-sizes-supported-by-data-box-disks"></a>问： Data Box 磁盘支持的最大块 Blob 和页 Blob 大小是什么？ 
-A.  最大大小受制于 Azure 存储限制。 最大块 Blob 大致为 4.768 TiB，最大页 Blob 大小为 8 TiB。 有关详细信息，请转到 [Azure 存储可伸缩性和性能目标](../storage/common/storage-scalability-targets.md)。
+A.  最大大小受制于 Azure 存储限制。 最大块 Blob 大致为 4.768 TiB，最大页 Blob 大小为 8 TiB。 有关详细信息，请参阅 [Blob 存储可伸缩性和性能目标](../storage/blobs/scalability-targets.md)。
 
 ### <a name="q-what-is-the-data-transfer-speed-for-data-box-disks"></a>问： Data Box 磁盘的数据传输速度是多少？
 A. 对通过 USB 3.0 连接的磁盘进行测试时，磁盘性能最高为 430 MB/秒。 实际数字根据所用的文件大小而异。 传输较小的文件时，性能可能会下降。

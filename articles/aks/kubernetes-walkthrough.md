@@ -1,10 +1,10 @@
 ---
-title: 快速入门：部署 Azure Kubernetes 服务群集
+title: 快速入门 - 部署 Azure Kubernetes 服务群集
 description: 了解如何使用 Azure CLI 快速创建 Kubernetes 群集、部署应用程序，以及监视 Azure Kubernetes 服务 (AKS) 中的性能。
 services: container-service
 ms.topic: quickstart
 origin.date: 09/13/2019
-ms.date: 03/09/2020
+ms.date: 04/06/2020
 ms.author: v-yeche
 ms.custom:
 - H1Hack27Feb2017
@@ -13,12 +13,12 @@ ms.custom:
 - seo-javascript-september2019
 - seo-javascript-october2019
 - seo-python-october2019
-ms.openlocfilehash: 3d85d8a29f2e508eb8ab1a28d520609edff2165f
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: d500edf211e0e89ef784f846e17a1db4b6fae5db
+ms.sourcegitcommit: 76280dd9854dc0ff0ba1e5e62fb3dc3af049fbe2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79292480"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80517010"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-cluster-using-the-azure-cli"></a>快速入门：使用 Azure CLI 部署 Azure Kubernetes 服务群集
 
@@ -206,7 +206,7 @@ spec:
 
 使用 [kubectl apply][kubectl-apply] 命令部署应用程序，并指定 YAML 清单的名称：
 
-```azurecli
+```console
 kubectl apply -f azure-vote.yaml
 ```
 

@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/04/2020
+ms.date: 04/01/2020
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: 31aebb0b255dd3776380fcb27b612cf7d38eee7c
-ms.sourcegitcommit: 1ac138a9e7dc7834b5c0b62a133ca5ce2ea80054
+ms.openlocfilehash: c4f42c2740f6077e17c5d7521ef2cd2f3326b120
+ms.sourcegitcommit: 64584c0bf31b4204058ae2b4641356b904ccdd58
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78265966"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80581605"
 ---
 # <a name="date-claims-transformations"></a>日期声明转换
 
@@ -35,7 +35,7 @@ ms.locfileid: "78265966"
 | InputParameter | AssertIfRightOperandIsNotPresent | boolean | 指定如果缺少右操作数，是否应传递此断言。 |
 | InputParameter | TreatAsEqualIfWithinMillseconds | int | 指定将两个日期时间视为相等时允许两者之间相差的毫秒数（例如，用于说明时钟偏差）。 |
 
-AssertDateTimeIsGreaterThan  声明转换始终从[验证技术配置文件](validation-technical-profile.md)执行，该文件由[自断言技术配置文件](self-asserted-technical-profile.md)调用。 DateTimeGreaterThan  自断言技术配置文件元数据控制技术配置文件向用户呈现的错误消息。
+AssertDateTimeIsGreaterThan  声明转换始终从[验证技术配置文件](validation-technical-profile.md)执行，该文件由[自断言技术配置文件](self-asserted-technical-profile.md)调用。 DateTimeGreaterThan  自断言技术配置文件元数据控制技术配置文件向用户呈现的错误消息。 可以将错误消息[本地化](localization-string-ids.md#claims-transformations-error-messages)。
 
 ![AssertStringClaimsAreEqual 执行](./media/date-transformations/assert-execution.png)
 
@@ -81,8 +81,8 @@ AssertDateTimeIsGreaterThan  声明转换始终从[验证技术配置文件](val
 ### <a name="example"></a>示例
 
 - 输入声明：
-    - leftOperand  ：2018-10-01T15:00:00.0000000Z
-    - rightOperand  ：2018-10-01T14:00:00.0000000Z
+    - leftOperand  ：2020-03-01T15:00:00.0000000Z
+    - rightOperand  ：2020-03-01T14:00:00.0000000Z
 - 结果：引发错误
 
 ## <a name="convertdatetodatetimeclaim"></a>ConvertDateToDateTimeClaim
@@ -110,9 +110,9 @@ AssertDateTimeIsGreaterThan  声明转换始终从[验证技术配置文件](val
 ### <a name="example"></a>示例
 
 - 输入声明：
-    - **inputClaim**：2019-06-01
+    - **inputClaim**：2020-15-03
 - 输出声明：
-    - **outputClaim**：1559347200（2019 年 1 月 1 日上午 12:00:00）
+    - **outputClaim**：2020-15-03T00:00:00.0000000Z
 
 ## <a name="convertdatetimetodateclaim"></a>ConvertDateTimeToDateClaim
 
@@ -139,9 +139,9 @@ AssertDateTimeIsGreaterThan  声明转换始终从[验证技术配置文件](val
 ### <a name="example"></a>示例
 
 - 输入声明：
-  - **inputClaim**：1559347200（2019 年 1 月 1 日上午 12:00:00）
+  - **inputClaim**：2020-15-03T11:34:22.0000000Z
 - 输出声明：
-  - **outputClaim**：2019-06-01
+  - **outputClaim**：2020-15-03
 
 ## <a name="getcurrentdatetime"></a>GetCurrentDateTime
 
@@ -162,7 +162,7 @@ AssertDateTimeIsGreaterThan  声明转换始终从[验证技术配置文件](val
 ### <a name="example"></a>示例
 
 * 输出声明：
-    * currentDateTime  ：1534418820（2018 年 8 月 16 日上午 11:27:00）
+    * currentDateTime  ：2020-15-03T11:40:35.0000000Z
 
 ## <a name="datetimecomparison"></a>DateTimeComparison
 
@@ -198,8 +198,8 @@ AssertDateTimeIsGreaterThan  声明转换始终从[验证技术配置文件](val
 ### <a name="example"></a>示例
 
 - 输入声明：
-    - firstDateTime  ：2018-01-01T00:00:00.100000Z
-    - secondDateTime  ：2018-04-01T00:00:00.100000Z
+    - firstDateTime  ：2020-01-01T00:00:00.100000Z
+    - secondDateTime  ：2020-04-01T00:00:00.100000Z
 - 输入参数：
     - operator: later than 
     - timeSpanInSeconds  ：7776000（90 天）

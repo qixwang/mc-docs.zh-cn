@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 03/02/2020
+ms.date: 03/30/2020
 ms.author: v-junlch
-ms.openlocfilehash: 3c0fdcb3afce9fc7e493d220be0e71b56302e5fd
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: 06e67d8bc4539415e885398de9ce94f160f128be
+ms.sourcegitcommit: 64584c0bf31b4204058ae2b4641356b904ccdd58
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79293408"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80581807"
 ---
 # <a name="application-gateway-health-monitoring-overview"></a>应用程序网关运行状况监视概述
 
@@ -64,7 +64,7 @@ $match = New-AzApplicationGatewayProbeHealthResponseMatch -Body "Healthy"
 | 探测 URL |http://127.0.0.1:\<port\>/ |URL 路径 |
 | 时间间隔 |30 |发送下一个运行状况探测前需要等待的时间（以秒为单位）。|
 | 超时 |30 |将探测标记为不正常前，应用程序网关等待探测响应的时间（以秒为单位）。 如果探测返回为正常，则相应的后端立即被标记为正常。|
-| 不正常阈值 |3 |控制在定期运行状况探测出现故障的情况下要发送的探测数。 快速连续发送这些额外的运行状况探测，以快速确定后端的运行状况，并且无需等待探测时间间隔。 连续探测失败计数达到不正常阈值后，后端服务器标记为故障。 |
+| 不正常阈值 |3 |控制在定期运行状况探测出现故障的情况下要发送的探测数。 快速连续发送这些额外的运行状况探测，以快速确定后端的运行状况，并且无需等待探测时间间隔。 此行为仅适用于 v1 SKU。 对于 v2 SKU，运行状况探测会等待时间间隔。 连续探测失败计数达到不正常阈值后，后端服务器标记为故障。 |
 
 > [!NOTE]
 > 该端口与后端 HTTP 设置的端口相同。
@@ -112,4 +112,3 @@ $match = New-AzApplicationGatewayProbeHealthResponseMatch -Body "Healthy"
 
 [1]: ./media/application-gateway-probe-overview/appgatewayprobe.png
 
-<!-- Update_Description: wording update -->

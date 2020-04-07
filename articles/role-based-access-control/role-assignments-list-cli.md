@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 03/04/2020
+ms.date: 03/31/2020
 ms.author: v-junlch
 ms.reviewer: bagovind
-ms.openlocfilehash: 993a0212711a551d72c4ecc2752dcf3d97f8ada5
-ms.sourcegitcommit: 1ac138a9e7dc7834b5c0b62a133ca5ce2ea80054
+ms.openlocfilehash: 28e115fdb0547b0df75ed1721033028781e24245
+ms.sourcegitcommit: 64584c0bf31b4204058ae2b4641356b904ccdd58
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78265912"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80581728"
 ---
 # <a name="list-role-assignments-using-azure-rbac-and-azure-cli"></a>使用 Azure RBAC 和 Azure CLI 列出角色分配
 
@@ -45,7 +45,7 @@ az role assignment list --assignee <assignee>
 az role assignment list --all --assignee patlong@contoso.com --output json | jq '.[] | {"principalName":.principalName, "roleDefinitionName":.roleDefinitionName, "scope":.scope}'
 ```
 
-```Output
+```
 {
   "principalName": "patlong@contoso.com",
   "roleDefinitionName": "Backup Operator",
@@ -72,7 +72,7 @@ az role assignment list --resource-group <resource_group>
 az role assignment list --resource-group pharma-sales --output json | jq '.[] | {"principalName":.principalName, "roleDefinitionName":.roleDefinitionName, "scope":.scope}'
 ```
 
-```Output
+```
 {
   "principalName": "patlong@contoso.com",
   "roleDefinitionName": "Backup Operator",
@@ -95,7 +95,9 @@ az role assignment list --resource-group pharma-sales --output json | jq '.[] | 
 az role assignment list --subscription <subscription_name_or_id>
 ```
 
-```Example
+示例：
+
+```azurecli
 az role assignment list --subscription 00000000-0000-0000-0000-000000000000 --output json | jq '.[] | {"principalName":.principalName, "roleDefinitionName":.roleDefinitionName, "scope":.scope}'
 ```
 
@@ -107,13 +109,15 @@ az role assignment list --subscription 00000000-0000-0000-0000-000000000000 --ou
 az role assignment list --scope /providers/Microsoft.Management/managementGroups/<group_id>
 ```
 
-```Example
+示例：
+
+```azurecli
 az role assignment list --scope /providers/Microsoft.Management/managementGroups/marketing-group --output json | jq '.[] | {"principalName":.principalName, "roleDefinitionName":.roleDefinitionName, "scope":.scope}'
 ```
 
 ## <a name="list-role-assignments-for-a-managed-identity"></a>列出托管标识的角色分配
 
-1. 获取系统分配的或用户分配的托管标识的对象 ID。 
+1. 获取系统分配的或用户分配的托管标识的对象 ID。
 
     若要获取用户分配的托管标识的对象 ID，可以使用 [az ad sp list](/cli/ad/sp#az-ad-sp-list) 或 [az identity list](https://docs.microsoft.com/en-us/cli/azure/identity#az-identity-list)。
 
