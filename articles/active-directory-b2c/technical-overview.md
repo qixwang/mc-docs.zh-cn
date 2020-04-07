@@ -2,20 +2,20 @@
 title: 技术和功能概述 - Azure Active Directory B2C
 description: Azure Active Directory B2C 中的功能和技术的深入介绍。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: overview
-ms.date: 02/04/2020
+ms.date: 04/01/2020
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: d827a92a20006b7a221caf1d2954ab3d58fb24e2
-ms.sourcegitcommit: 888cbc10f2348de401d4839a732586cf266883bf
+ms.openlocfilehash: 1ac2fa73de4d162ad659748d848f5531d2123fec
+ms.sourcegitcommit: 64584c0bf31b4204058ae2b4641356b904ccdd58
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77028132"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80581664"
 ---
 # <a name="technical-and-feature-overview-of-azure-active-directory-b2c"></a>Azure Active Directory B2C 的技术和功能概述
 
@@ -189,6 +189,8 @@ Azure AD B2C 支持对用户旅程使用 [OpenID Connect 和 OAuth 2.0 协议](p
 * Azure AD B2C 在目录中创建新帐户之后
 * Azure AD B2C 颁发访问令牌之前
 
+若要了解如何对 Azure AD B2C 中的 RESTful API 集成使用自定义策略，请参阅[在 Azure AD B2C 自定义策略中集成 REST API 声明交换](custom-policy-rest-api-intro.md)。
+
 ## <a name="protect-customer-identities"></a>保护客户标识
 
 Azure AD B2C 符合 [Azure 信任中心](https://www.microsoft.com/trustcenter/cloudservices/azure)中所述的安全性、隐私和其他承诺。
@@ -229,7 +231,7 @@ Azure AD B2C 多重身份验证 (MFA) 有助于保护对数据和应用程序的
 
 在注册或密码重置期间，用户必须提供符合复杂性规则的密码。 默认情况下，Azure AD B2C 实施强密码策略。 Azure AD B2C 还提供相应的配置选项用于指定客户所用密码的复杂性要求。
 
-可以在[用户流](user-flow-password-complexity.md)和 `custom policies` 中配置密码复杂性要求。
+可以在[用户流](user-flow-password-complexity.md)和自定义策略中配置密码复杂性要求。
 
 ## <a name="auditing-and-logs"></a>审核和日志
 

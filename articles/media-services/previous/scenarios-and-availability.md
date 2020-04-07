@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 origin.date: 03/20/2019
-ms.date: 03/04/2020
+ms.date: 04/06/2020
 ms.author: v-jay
-ms.openlocfilehash: ddeff689c1bb273d6f1d5eb016d5e0408b976eeb
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: 416a34da397ecb05aabff8667ef015d9e9e0d579
+ms.sourcegitcommit: fe9ed98aaee287a21648f866bb77cb6888f75b0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79292697"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80625786"
 ---
 # <a name="scenarios-and-availability-of-media-services-features-across-datacenters"></a>媒体服务功能的跨数据中心方案和可用性
 
@@ -107,7 +107,7 @@ ms.locfileid: "79292697"
     如果使用 SAS 定位符，将从 Azure Blob 存储中下载内容。 在这种情况下，不需要让流式处理终结点处于已启动状态。
 4. 渐进式下载内容。
 
-## <a id="live_scenarios"></a>传送实时传送视频流事件 
+## <a name="delivering-live-streaming-events"></a><a id="live_scenarios"></a>传送实时传送视频流事件 
 
 1. 使用多种实时传送视频流协议（例如 RTMP 或平滑流式处理）引入实时内容。
 2. （可选）将流编码为自适应比特率流。
@@ -140,9 +140,9 @@ ms.locfileid: "79292697"
 
 ## <a name="consuming-content"></a>使用内容
 
-Azure 媒体服务提供所需的工具，以便创建适用于大多数平台的丰富、动态的客户端播放器应用程序，这些平台包括：iOS 设备、Android 设备、Windows、Windows Phone、Xbox 和机顶盒。 以下主题提供了可用于开发客户端应用程序（这些应用程序使用媒体服务中的流媒体）的 SDK 和播放器框架的链接。 有关详细信息，请参阅[开发视频播放器应用程序](media-services-develop-video-players.md)
+Azure 媒体服务提供所需的工具，以便创建适用于大多数平台的丰富、动态的客户端播放器应用程序，这些平台包括：iOS 设备、Android 设备、Windows、Windows Phone、Xbox 和机顶盒。 
 
-## <a id="scaling"></a>缩放媒体服务帐户
+## <a name="scaling-a-media-services-account"></a><a id="scaling"></a>缩放媒体服务帐户
 
 AMS 客户可以缩放其 AMS 帐户中的流式处理终结点、媒体处理和存储。
 
@@ -160,7 +160,7 @@ AMS 客户可以缩放其 AMS 帐户中的流式处理终结点、媒体处理�
     有关详细信息，请参阅[缩放媒体处理](media-services-portal-scale-media-processing.md)。
 * 也可以通过向媒体服务帐户添加存储帐户来缩放该帐户。 每个存储帐户大小限制为 500 TB。 要在默认限制之外扩展存储，可选择将多个存储帐户附加到单个媒体服务帐户。 有关详细信息，请参阅[管理存储帐户](meda-services-managing-multiple-storage-accounts.md)。
 
-## <a id="availability"></a>媒体服务功能的跨数据中心可用性
+## <a name="availability-of-media-services-features-across-datacenters"></a><a id="availability"></a>媒体服务功能的跨数据中心可用性
 
 本部分详细说明媒体服务功能的跨数据中心可用性。
 
@@ -202,6 +202,9 @@ AMS 提供两个按需编码器：  Media Encoder Standard 和  Media Encoder Pr
 
 媒体分析是语音和视觉组件的集合，便于组织和企业从视频文件中汲取可以实施的见解。 有关详细信息，请参阅 [Azure 媒体服务分析概述](media-services-analytics-overview.md)。
 
+> [!NOTE]
+> 一些分析媒体处理器将停用。 有关停用日期，请参阅此[旧组件](legacy-components.md)主题。
+
 #### <a name="availability"></a>可用性
 
 |媒体处理器名称|状态|数据中心
@@ -210,9 +213,8 @@ AMS 提供两个按需编码器：  Media Encoder Standard 和  Media Encoder Pr
 |Azure Media Indexer|GA|全部|
 |Azure 媒体动作检测器|预览|全部|
 |Azure 媒体 OCR|预览|全部|
-|Azure 媒体编修器|预览|全部|
+|Azure 媒体编修器|GA|全部|
 |Azure 媒体视频缩略图|预览|全部|
-|Azure Media Indexer 2|预览|除中国和联邦政府区域以外|
 
 ### <a name="protection"></a>保护
 

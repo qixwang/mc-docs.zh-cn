@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 03/02/2020
+ms.date: 03/30/2020
 ms.author: v-junlch
-ms.openlocfilehash: ef6cb64dc405808e4cdb890b310aa61ba44df78d
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: 0f2260e65baee368bf89e2ad726efa2dab3631e2
+ms.sourcegitcommit: 64584c0bf31b4204058ae2b4641356b904ccdd58
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79292742"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80581792"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway-v2"></a>自动缩放和区域冗余应用程序网关 v2 
 
@@ -95,7 +95,7 @@ ms.locfileid: "79292742"
 |--|--|
 |身份验证证书|不支持。<br>有关详细信息，请参阅[应用程序网关的端到端 SSL 概述](ssl-overview.md#end-to-end-ssl-with-the-v2-sku)。|
 |在同一子网上混合使用 Standard_v2 和标准应用程序网关|不支持|
-|应用程序网关子网上的用户定义路由 (UDR)|不支持|
+|应用程序网关子网上的用户定义路由 (UDR)|支持（特定方案）。 处于预览状态。<br> 有关支持的方案的详细信息，请参阅[应用程序网关配置概述](configuration-overview.md#user-defined-routes-supported-on-the-application-gateway-subnet)。|
 |入站端口范围的 NSG| 对于 Standard_v2 SKU，为 - 65200 到 65535<br>对于标准 SKU，为 - 65503 到 65534<br>有关详细信息，请参阅[常见问题解答](application-gateway-faq.md#are-network-security-groups-supported-on-the-application-gateway-subnet)。|
 |Azure 诊断中的性能日志|不支持。<br>应当使用 Azure 指标。|
 |计费|我们已安排在 2019 年 7 月 1 日开始计费。|

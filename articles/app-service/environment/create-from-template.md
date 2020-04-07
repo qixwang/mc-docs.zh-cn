@@ -5,15 +5,15 @@ author: ccompy
 ms.assetid: 6eb7d43d-e820-4a47-818c-80ff7d3b6f8e
 ms.topic: article
 origin.date: 06/13/2017
-ms.date: 03/19/2020
+ms.date: 03/30/2020
 ms.author: v-tawe
 ms.custom: seodec18
-ms.openlocfilehash: c8984c0f04e9d0010de6dfb2721c20eede074371
-ms.sourcegitcommit: 303a16c7117b6f3495ef0493b4ae8ccb67d7dbba
+ms.openlocfilehash: 5e0472a9e95aa483b9ebc742f9a4d3c77942529e
+ms.sourcegitcommit: 44d3fe59952847e5394bbe6c05bd6f333bb56345
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80342362"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80522079"
 ---
 # <a name="create-an-ase-by-using-an-azure-resource-manager-template"></a>使用 Azure 资源管理器模板创建 ASE
 
@@ -39,7 +39,7 @@ ms.locfileid: "80342362"
 
 2. ILB ASE 创建完毕后，将上传一个匹配 ILB ASE 域的 SSL 证书。
 
-3. 上传的 SSL 证书将分配到 ILB ASE 作为其“默认”SSL 证书。  当应用使用分配给 ASE 的一般根域（如 https://someapp.mycustomrootdomain.com) ）时，此证书用于 ILB ASE 上流向应用的 SSL 流量。
+3. 上传的 SSL 证书将分配到 ILB ASE 作为其“默认”SSL 证书。  当应用使用分配给 ASE 的一般根域（如 `https://someapp.mycustomrootdomain.com`）时，此证书用于 ILB ASE 上流向应用的 SSL 流量。
 
 
 ## <a name="create-the-ase"></a>创建 ASE
@@ -63,7 +63,7 @@ New-AzResourceGroupDeployment -Name "CHANGEME" -ResourceGroupName "YOUR-RG-NAME-
 创建 ASE 可能需要约一小时。 然后，对于触发部署的订阅，ASE 将显示在门户的 ASE 列表中。
 
 ## <a name="upload-and-configure-the-default-ssl-certificate"></a>上传和配置“默认”SSL 证书
-SSL 证书必须与 ASE 关联，作为用于建立应用的 SSL 连接的“默认”SSL 证书。 如果 ASE 的默认 DNS 后缀是 internal-contoso.com  ，则需要对 *.internal-contoso.com 有效的 SSL 证书才可连接到 https://some-random-app.internal-contoso.com  。 
+SSL 证书必须与 ASE 关联，作为用于建立应用的 SSL 连接的“默认”SSL 证书。 如果 ASE 的默认 DNS 后缀是 internal-contoso.com  ，则需要对 *.internal-contoso.com 有效的 SSL 证书才可连接到 `https://some-random-app.internal-contoso.com`  。 
 
 可通过三种方式获取有效的 SSL 证书：使用内部证书颁发机构、向外部颁发者购买证书或使用自签名证书。 无论 SSL 证书的来源如何，都需要正确配置以下证书属性：
 
@@ -148,7 +148,7 @@ New-AzResourceGroupDeployment -Name "CHANGEME" -ResourceGroupName "YOUR-RG-NAME-
 
 每个 ASE 前端约耗时 40 分钟才能应用此更改。 例如，有一个默认大小的 ASE 使用两个前端，则模板需要大约 1 小时 20 分钟才能完成。 运行模板时无法缩放 ASE。  
 
-模板运行完成后，即可通过 HTTPS 访问 ILB ASE 上的应用。 使用默认 SSL 证书来保护连接安全。 如果 ILB ASE 上的应用使用应用程序名称与默认主机名的组合来寻址，则会使用默认 SSL 证书。 例如， https://mycustomapp.internal-contoso.com 使用 *.internal-contoso.com 的默认 SSL 证书  。
+模板运行完成后，即可通过 HTTPS 访问 ILB ASE 上的应用。 使用默认 SSL 证书来保护连接安全。 如果 ILB ASE 上的应用使用应用程序名称与默认主机名的组合来寻址，则会使用默认 SSL 证书。 例如，`https://mycustomapp.internal-contoso.com` 使用 *.internal-contoso.com 的默认 SSL 证书  。
 
 但是，就像公共多租户服务上运行的应用一样，开发者可为单个应用配置自定义主机名。 还可为单个应用配置唯一的 SNI SSL 证书绑定。
 

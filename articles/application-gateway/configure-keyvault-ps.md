@@ -6,14 +6,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 03/24/2020
+ms.date: 03/30/2020
 ms.author: v-junlch
-ms.openlocfilehash: 5f08db0afd56f113ee8ad044dff19919ce20eb02
-ms.sourcegitcommit: 6568c59433d7e80ab06e9fe76d4791f761ed6775
+ms.openlocfilehash: 55938ecfe05d9f5a9eae381bfc6d9438201caac9
+ms.sourcegitcommit: 64584c0bf31b4204058ae2b4641356b904ccdd58
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "80243191"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80581824"
 ---
 # <a name="configure-ssl-termination-with-key-vault-certificates-by-using-azure-powershell"></a>通过 Azure PowerShell 使用 KeyVault 证书配置 SSL 终止
 
@@ -71,7 +71,7 @@ $certificate = Get-AzKeyVaultCertificate -VaultName $kv -Name "cert1"
 $secretId = $certificate.SecretId.Replace($certificate.Version, "")
 ```
 > [!NOTE]
-> SSL 终止必须使用 -EnableSoftDelete 标志才能正常工作。
+> SSL 终止必须使用 -EnableSoftDelete 标志才能正常工作。 如果是[通过门户配置 Key Vault 软删除](../key-vault/key-vault-ovw-soft-delete.md#soft-delete-behavior)，则保留期必须保留为 90 天（默认值）。 应用程序网关尚不支持不同的保留期。 
 
 ### <a name="create-a-virtual-network"></a>创建虚拟网络
 
@@ -146,4 +146,3 @@ $appgw = New-AzApplicationGateway -Name $appgwName -Identity $appgwIdentity -Res
 
 [详细了解 SSL 终止](ssl-overview.md)
 
-<!-- Update_Description: wording update -->

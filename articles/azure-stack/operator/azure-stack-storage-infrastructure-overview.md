@@ -9,12 +9,12 @@ ms.date: 03/23/2020
 ms.author: v-jay
 ms.lastreviewed: 03/11/2019
 ms.reviewer: jiaha
-ms.openlocfilehash: 0e96255188e851febceb41d9492ae005782f5a43
-ms.sourcegitcommit: e500354e2fd8b7ac3dddfae0c825cc543080f476
+ms.openlocfilehash: 22b9980606621fc5f678dd87d19632ab4bc8c22f
+ms.sourcegitcommit: f204ec3ae220b96475db60e6ac8a2807af3de40e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2020
-ms.locfileid: "79547076"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80418030"
 ---
 # <a name="manage-storage-infrastructure-for-azure-stack-hub"></a>管理 Azure Stack Hub 的存储基础结构
 
@@ -162,7 +162,7 @@ Get-AzsDrive -ScaleUnit $scaleunit_name -StorageSubSystem $subsystem_name | Sele
 | 暂时性错误 | 驱动器出现暂时性错误。 此错误通常表示驱动器无响应，但也可能表示不恰当地从驱动器中删除了存储空间直通的保护分区。 <br> <br>**操作：** 如果此状态持续出现，请更换驱动器，以确保能够全面复原。 |
 | 异常延迟 | 驱动器有时无响应并出现故障迹象。<br> <br>**操作：** 如果此状态持续出现，请更换驱动器，以确保能够全面复原。 |
 | 从池中删除 | Azure Stack Hub 正在从其存储池中删除驱动器。<br> <br>**操作：** 等待 Azure Stack Hub 完成删除驱动器，然后检查状态。<br>如果仍旧出现此状态，请联系支持人员。 在此之前，请参考 https://docs.azure.cn/zh-cn/azure-stack/azure-stack-diagnostics#log-collection-tool 中的指导启动日志文件收集过程。 |
-| 启动维护模式 | Azure Stack Hub 正在将驱动器置于维护模式。 此状态是暂时的�驱动器应该很快就会处于“维护中模式”状态。<br> <br>**操作：** 等待 Azure Stack Hub 完成该过程，然后检查状态。 |
+| 启动维护模式 | Azure Stack Hub 正在将驱动器置于维护模式。 此状态是暂时的 - 驱动器应该很快就会处于“维护中模式”状态。<br> <br>**操作：** 等待 Azure Stack Hub 完成该过程，然后检查状态。 |
 | 维护中模式 | 驱动器处于维护模式，因此对其的读取和写入操作已停止。 此状态通常表示正在执行 Azure Stack Hub 管理任务，例如，PNU 或 FRU 正在操作驱动器。 但是，管理员也可将驱动器置于维护模式。<br> <br>**操作：** 等待 Azure Stack Hub 完成管理任务，然后检查状态。<br>如果仍旧出现此状态，请联系支持人员。 在此之前，请参考 https://docs.azure.cn/zh-cn/azure-stack/azure-stack-diagnostics#log-collection-tool 中的指导启动日志文件收集过程。 |
 | 停止维护模式 | Azure Stack Hub 正在将驱动器恢复联机。 此状态是暂时性的 - 驱动器应该很快就会处于另一种状态，最好是“正常运行”状态。<br> <br>**操作：** 等待 Azure Stack Hub 完成该过程，然后检查状态。 |
 

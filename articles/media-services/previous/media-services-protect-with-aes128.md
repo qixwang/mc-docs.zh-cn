@@ -1,6 +1,6 @@
 ---
 title: 使用 AES-128 动态加密和密钥传送服务 | Microsoft Docs
-description: 借助 Azure 媒体服务，可以传送使用 AES 128 位加密密钥加密的内容。 媒体服务还提供密钥传送服务，将加密密钥传送给已授权的用户。 本主题说明如何使用 AES-128 动态加密以及如何使用密钥传送服务。
+description: 本主题说明如何使用 AES-128 动态加密以及如何使用密钥传送服务。
 services: media-services
 documentationcenter: ''
 author: WenJason
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 origin.date: 04/01/2019
-ms.date: 09/23/2019
+ms.date: 04/06/2020
 ms.author: v-jay
-ms.openlocfilehash: 274c6f068614a8d1255b3062592a15aa8b55f9b0
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: e9923b8aab927c046fbe391f8be0e8a87ca06494
+ms.sourcegitcommit: fe9ed98aaee287a21648f866bb77cb6888f75b0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79292375"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80625802"
 ---
 # <a name="use-aes-128-dynamic-encryption-and-the-key-delivery-service"></a>使用 AES-128 动态加密和密钥传递服务
 > [!div class="op_single_selector"]
@@ -39,6 +39,8 @@ ms.locfileid: "79292375"
 为了充分利用动态加密，资产必须包含一组多码率 MP4 文件或多码率平滑流源文件。 还需要为资产配置传送策略（在本文后面部分介绍）。 然后，根据在流式处理 URL 中指定的格式，按需流式处理服务器会确保使用选定的协议来传送流。 因此，需要存储只使用单一存储格式的文件并为其付费。 媒体服务会根据客户端的请求生成并提供适当的响应。
 
 本文适合开发受保护媒体传送应用程序的开发人员。 本文介绍如何使用授权策略来配置密钥传送服务，确保只有经过授权的客户端才能接收加密密钥。 此外还会介绍如何使用动态加密。
+
+有关如何使用高级加密标准 (AES) 加密内容并传送到 macOS 上的 Safari 的信息，请参阅[此博客文章](https://azure.microsoft.com/blog/how-to-make-token-authorized-aes-encrypted-hls-stream-working-in-safari/)。
 
 
 ## <a name="aes-128-dynamic-encryption-and-key-delivery-service-workflow"></a>AES-128 动态加密和密钥传送服务工作流
@@ -72,12 +74,12 @@ ms.locfileid: "79292375"
 ## <a name="current-limitations"></a>当前限制
 如果添加或更新资产的传送策略，则必须删除现有的定位符并创建新的定位符。
 
-## <a id="create_asset"></a>创建资产并将文件上传到资产
+## <a name="create-an-asset-and-upload-files-into-the-asset"></a><a id="create_asset"></a>创建资产并将文件上传到资产
 为了对视频进行管理、编码和流式处理，必须首先将内容上传到媒体服务中。 上传完成后，相关内容即安全地存储在云中供后续处理和流式处理。 
 
 有关详细信息，请参阅[将文件上传到媒体服务帐户](media-services-dotnet-upload-files.md)。
 
-## <a id="encode_asset"></a>将包含文件的资产编码为自适应比特率 MP4 集
+## <a name="encode-the-asset-that-contains-the-file-to-the-adaptive-bitrate-mp4-set"></a><a id="encode_asset"></a>将包含文件的资产编码为自适应比特率 MP4 集
 使用动态加密时，可创建一项资产，其中包含一组多码率 MP4 文件或多比特率平滑流式处理源文件。 然后，按需流式处理服务器会确保以选定的协议按清单或分段请求中的指定格式接收流。 然后，只需存储使用单一存储格式的文件并为其付费。 媒体服务会根据客户端的请求生成并提供适当的响应。 有关详细信息，请参阅[动态打包概述](media-services-dynamic-packaging-overview.md)。
 
 >[!NOTE]
@@ -87,17 +89,17 @@ ms.locfileid: "79292375"
 
 有关如何编码的说明，请参阅[使用 Media Encoder Standard 对资产进行编码](media-services-dotnet-encode-with-media-encoder-standard.md)。
 
-## <a id="create_contentkey"></a>创建内容密钥并将其与编码资产相关联
+## <a name="create-a-content-key-and-associate-it-with-the-encoded-asset"></a><a id="create_contentkey"></a>创建内容密钥并将其与编码资产相关联
 在媒体服务中，内容密钥包含用于加密资产的密钥。
 
 有关详细信息，请参阅[创建内容密钥](media-services-dotnet-create-contentkey.md)。
 
-## <a id="configure_key_auth_policy"></a>配置内容密钥授权策略
+## <a name="configure-the-content-keys-authorization-policy"></a><a id="configure_key_auth_policy"></a>配置内容密钥授权策略
 媒体服务支持通过多种方式对发出密钥请求的用户进行身份验证。 必须配置内容密钥授权策略。 客户端（播放器）必须符合该策略才能将密钥传送到客户端。 内容密钥授权策略可能受到一种或多种授权限制：开放、令牌限制或 IP 限制。
 
 有关详细信息，请参阅[配置内容密钥授权策略](media-services-dotnet-configure-content-key-auth-policy.md)。
 
-## <a id="configure_asset_delivery_policy"></a>配置资产传送策略
+## <a name="configure-an-asset-delivery-policy"></a><a id="configure_asset_delivery_policy"></a>配置资产传送策略
 为资产配置传送策略。 资产传送策略配置包括：
 
 * 密钥获取 URL。 
@@ -107,7 +109,7 @@ ms.locfileid: "79292375"
 
 有关详细信息，请参阅[配置资产传送策略](media-services-dotnet-configure-asset-delivery-policy.md)。
 
-## <a id="create_locator"></a>创建 OnDemand 流式处理定位符以获取流式处理 URL
+## <a name="create-an-ondemand-streaming-locator-to-get-a-streaming-url"></a><a id="create_locator"></a>创建 OnDemand 流式处理定位符以获取流式处理 URL
 需要为用户提供平滑流式处理、DASH 或 HLS 的流式处理 URL。
 
 > [!NOTE]
@@ -135,7 +137,7 @@ ms.locfileid: "79292375"
 
 可以使用 [Azure 媒体服务播放器](https://aka.ms/azuremediaplayer)来测试流。
 
-## <a id="client_request"></a>你的客户端如何从密钥传送服务请求密钥？
+## <a name="how-can-your-client-request-a-key-from-the-key-delivery-service"></a><a id="client_request"></a>你的客户端如何从密钥传送服务请求密钥？
 在上一步骤中，构造了指向清单文件的 URL。 客户端需要从流清单文件提取必要的信息，以便向密钥传送服务发出请求。
 
 ### <a name="manifest-files"></a>清单文件
@@ -157,7 +159,7 @@ ms.locfileid: "79292375"
 
 对于 HLS，根清单将划分成段文件。 
 
-例如，根清单为 <http://test001.origin.mediaservices.chinacloudapi.cn/8bfe7d6f-34e3-4d1a-b289-3e48a8762490/BigBuckBunny.ism/manifest(format=m3u8-aapl>)。 它包含段文件名的列表。
+例如，根清单为：http:\//test001.origin.mediaservices.chinacloudapi.cn/8bfe7d6f-34e3-4d1a-b289-3e48a8762490/BigBuckBunny.ism/manifest(format=m3u8-aapl)。 它包含段文件名的列表。
 
     . . . 
     #EXT-X-STREAM-INF:PROGRAM-ID=1,BANDWIDTH=630133,RESOLUTION=424x240,CODECS="avc1.4d4015,mp4a.40.2",AUDIO="audio"
@@ -166,7 +168,7 @@ ms.locfileid: "79292375"
     QualityLevels(842459)/Manifest(video,format=m3u8-aapl)
     …
 
-如果在文本编辑器中打开某个段文件（例如，<http://test001.origin.mediaservices.chinacloudapi.cn/8bfe7d6f-34e3-4d1a-b289-3e48a8762490/BigBuckBunny.ism/QualityLevels(514369)/Manifest(video,format=m3u8-aapl>），它包含 #EXT-X-KEY，指示该文件已加密。
+如果在文本编辑器中打开其中一个段文件（例如，http:\//test001.origin.mediaservices.chinacloudapi.cn/8bfe7d6f-34e3-4d1a-b289-3e48a8762490/BigBuckBunny.ism/QualityLevels(514369)/Manifest(video,format=m3u8-aapl)），其中会包含 #EXT-X-KEY（表示文件已加密）。
 
     #EXTM3U
     #EXT-X-VERSION:4
@@ -244,7 +246,7 @@ ms.locfileid: "79292375"
     <add key="Audience" value="urn:test"/>
     ```
 
-### <a id="example"></a>示例
+### <a name="example"></a><a id="example"></a>示例
 
 使用本部分中所示的代码覆盖 Program.cs 文件中的代码。
  

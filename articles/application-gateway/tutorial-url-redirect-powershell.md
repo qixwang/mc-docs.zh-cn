@@ -1,24 +1,24 @@
 ---
-title: 创建支持基于 URL 路径的重定向的应用程序网关 - Azure PowerShell
+title: 使用 PowerShell 实现基于 URL 路径的重定向 - Azure 应用程序网关
 description: 了解如何使用 Azure PowerShell 创建支持基于 URL 路径的重定向流量的应用程序网关。
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-origin.date: 04/03/2019
-ms.date: 06/12/2019
+ms.date: 03/30/2020
 ms.author: v-junlch
-ms.openlocfilehash: eea6b06f93e129df099b1cb18050f0b61b12fc46
-ms.sourcegitcommit: 756a4da01f0af2b26beb17fa398f42cbe7eaf893
+ms.topic: conceptual
+ms.openlocfilehash: 89cd6188d72dc022a92e0ba5ee90b9992b5170fd
+ms.sourcegitcommit: 64584c0bf31b4204058ae2b4641356b904ccdd58
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/12/2019
-ms.locfileid: "67027408"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80581801"
 ---
 # <a name="create-an-application-gateway-with-url-path-based-redirection-using-azure-powershell"></a>使用 Azure PowerShell 创建支持基于 URL 路径的重定向的应用程序网关
 
-创建[应用程序网关](application-gateway-introduction.md)时，可以使用 Azure PowerShell 配置[基于 URL 的路由规则](application-gateway-url-route-overview.md)。 在本教程中，将使用[虚拟机规模集](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)创建后端池。 然后创建 URL 路由规则，以确保 Web 流量重定向到相应的后端池。
+创建[应用程序网关](application-gateway-introduction.md)时，可以使用 Azure PowerShell 配置[基于 URL 的路由规则](application-gateway-url-route-overview.md)。 在本文中，将使用[虚拟机规模集](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)创建后端池。 然后创建 URL 路由规则，以确保 Web 流量重定向到相应的后端池。
 
-本教程介绍如何执行下列操作：
+在本文中，学习如何：
 
 > [!div class="checklist"]
 > * 设置网络
@@ -30,13 +30,13 @@ ms.locfileid: "67027408"
 
 ![URL 路由示例](./media/tutorial-url-redirect-powershell/scenario.png)
 
-如果需要，也可以使用 [Azure CLI](tutorial-url-redirect-cli.md) 完成本教程中的步骤。
+如果需要，可以使用 [Azure CLI](tutorial-url-redirect-cli.md) 完成此过程。
 
 如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial)。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-如果选择在本地安装并使用 PowerShell，则本教程需要 Azure PowerShell 模块 1.0.0 或更高版本。 若要查找版本，请运行 ` Get-Module -ListAvailable Az`。 如果需要进行升级，请参阅 [Install Azure PowerShell module](https://docs.microsoft.com/powershell/azure/install-az-ps)（安装 Azure PowerShell 模块）。 如果在本地运行 PowerShell，则还需运行 `Connect-AzAccount -Environment AzureChinaCloud` 来创建与 Azure 的连接。
+如果选择在本地安装和使用 PowerShell，则此过程需要 Azure PowerShell 模块 1.0.0 或更高版本。 若要查找版本，请运行 `Get-Module -ListAvailable Az`。 如果需要进行升级，请参阅 [Install Azure PowerShell module](https://docs.microsoft.com/powershell/azure/install-az-ps)（安装 Azure PowerShell 模块）。 如果在本地运行 PowerShell，则还需运行 `Connect-AzAccount -Environment AzureChinaCloud` 来创建与 Azure 的连接。
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
@@ -127,9 +127,9 @@ $poolSettings = New-AzApplicationGatewayBackendHttpSettings `
 
 ### <a name="create-the-default-listener-and-rule"></a>创建默认侦听器和规则
 
-应用程序网关需要侦听器才能适当地将流量路由到后端池。 在本教程中，将创建多个侦听器。 第一个基本侦听器应在根 URL 收到流量。 其他侦听器应在特定 URL（如 `http://52.168.55.24:8080/images/` 或 `http://52.168.55.24:8081/video/`）收到流量。
+应用程序网关需要侦听器才能适当地将流量路由到后端池。 在本文中，将创建多个侦听器。 第一个基本侦听器应在根 URL 收到流量。 其他侦听器应在特定 URL（如 `http://52.168.55.24:8080/images/` 或 `http://52.168.55.24:8081/video/`）收到流量。
 
-使用 [New-AzApplicationGatewayHttpListener](https://docs.microsoft.com/powershell/module/az.network/new-azapplicationgatewayhttplistener) 以及前面创建的前端配置和前端端口创建名为 defaultListener 的侦听器  。 侦听器需要使用规则来了解哪个后端池使用传入流量。 使用 [New-AzApplicationGatewayRequestRoutingRule](https://docs.microsoft.com/powershell/module/az.network/new-azapplicationgatewayrequestroutingrule) 创建一个名为 *rule1* 的基本规则。
+使用 [New-AzApplicationGatewayHttpListener](https://docs.microsoft.com/powershell/module/az.network/new-azapplicationgatewayhttplistener) 以及前面创建的前端配置和前端端口创建名为 *defaultListener* 的侦听器。 侦听器需要使用规则来了解哪个后端池使用传入流量。 使用 [New-AzApplicationGatewayRequestRoutingRule](https://docs.microsoft.com/powershell/module/az.network/new-azapplicationgatewayrequestroutingrule) 创建一个名为 *rule1* 的基本规则。
 
 ```azurepowershell
 $defaultlistener = New-AzApplicationGatewayHttpListener `
@@ -519,4 +519,3 @@ Remove-AzResourceGroup -Name myResourceGroupAG
 > [!div class="nextstepaction"]
 > [详细了解应用程序网关的作用](application-gateway-introduction.md)
 
-<!-- Update_Description: link update -->

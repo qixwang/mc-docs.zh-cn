@@ -6,16 +6,16 @@ author: amitbapat
 ms.author: v-tawe
 manager: rkarlin
 origin.date: 01/02/2019
-ms.date: 03/16/2020
+ms.date: 03/30/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
-ms.openlocfilehash: 12fe886f1fbb37085cd200a0a920add747ad97f2
-ms.sourcegitcommit: 764b3d26aedce2de0e1948468a706fd3204a3d5e
+ms.openlocfilehash: 52d2d0aaaaac0ad0528ad183d5e17c151371cc2b
+ms.sourcegitcommit: 5fb45da006859215edc8211481f13174aa43dbeb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2020
-ms.locfileid: "79543319"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80634362"
 ---
 # <a name="virtual-network-service-endpoints-for-azure-key-vault"></a>Azure Key Vault 的虚拟网络服务终结点
 
@@ -71,8 +71,6 @@ ms.locfileid: "79543319"
 |Azure 应用服务|[通过 Key Vault 部署 Azure Web 应用证书](https://azure.github.io/AppService/2016/05/24/Deploying-Azure-Web-App-Certificate-through-Key-Vault.html)。|
 |Azure SQL 数据库|[使用 Azure SQL 数据库和数据仓库的“创建自己的密钥”支持进行透明数据加密](../sql-database/transparent-data-encryption-byok-azure-sql.md?view=sql-server-2017&viewFallbackFrom=azuresqldb-current)。|
 |Azure 存储|[在 Azure Key Vault 中使用客户托管密钥进行存储服务加密](../storage/common/storage-service-encryption-customer-managed-keys.md)。|
-
-
 
 > [!NOTE]
 > 必须设置相关 Key Vault 访问策略，才能允许相应的服务访问 Key Vault。

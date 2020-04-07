@@ -10,12 +10,12 @@ ms.topic: overview
 origin.date: 07/03/2019
 ms.date: 07/22/2019
 ms.author: v-jay
-ms.openlocfilehash: 35a871e03faf39413aab9fb722043b9c82c2b8c5
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: 8cb70d1977ff6bc051e25aa0293d3a584934c52a
+ms.sourcegitcommit: 5fb45da006859215edc8211481f13174aa43dbeb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79292993"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80634388"
 ---
 # <a name="what-is-azure-data-box"></a>什么是 Azure Data Box？
 
@@ -110,7 +110,7 @@ Data Box 包括以下组件：
 
 ## <a name="region-availability"></a>上市区域
 
-Data Box 可以根据部署服务的区域、设备运送到的国家/地区以及传输数据的目标 Azure 存储帐户来传输数据。 
+Data Box 可以根据部署服务的区域、设备运送到的区域以及传输数据的目标 Azure 存储帐户来传输数据。 
 
 - **服务可用性** - 对于此版本，Data Box 服务可在以下区域获得：中国东部、中国东部 2、中国北部、中国北部 2。
 

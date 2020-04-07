@@ -10,12 +10,12 @@ ms.topic: conceptual
 origin.date: 11/19/2019
 ms.date: 04/06/2020
 ms.author: v-yiso
-ms.openlocfilehash: 79ddc5ee39916bfbb2aaec8ef090dfc00e492655
-ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
+ms.openlocfilehash: 285695a8b393f97ba688d0d8f3783c945f3d4325
+ms.sourcegitcommit: 5fb45da006859215edc8211481f13174aa43dbeb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80343396"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80634419"
 ---
 # <a name="safely-manage-python-environment-on-azure-hdinsight-using-script-action"></a>使用脚本操作在 Azure HDInsight 上安全管理 Python 环境
 
@@ -23,27 +23,22 @@ ms.locfileid: "80343396"
 > * [使用单元格 magic](apache-spark-jupyter-notebook-use-external-packages.md)
 > * [使用脚本操作](apache-spark-python-package-installation.md)
 
-HDInsight 在 Spark 群集中包含两个内置的 Python 安装：Anaconda Python 2.7 和 Python 3.5。 在某些情况下，客户需要自定义 Python 环境，例如，安装外部 Python 包或其他 Python 版本。 本文提供有关安全管理 HDInsight 上 [Apache Spark](https://spark.apache.org/) 群集的 Python 环境的最佳做法。
+HDInsight 在 Spark 群集中包含两个内置的 Python 安装：Anaconda Python 2.7 和 Python 3.5。 在某些情况下，客户需要自定义 Python 环境，例如，安装外部 Python 包或其他 Python 版本。 本文提供有关安全管理 HDInsight 上 [Apache Spark](./apache-spark-overview.md) 群集的 Python 环境的最佳做法。
 
 ## <a name="prerequisites"></a>先决条件
 
-* Azure 订阅。 请参阅[获取 Azure 试用版](https://www.azure.cn/pricing/1rmb-trial/)。
+HDInsight 上的 Apache Spark 群集。 有关说明，请参阅[在 Azure HDInsight 中创建 Apache Spark 群集](apache-spark-jupyter-spark-sql.md)。 如果 HDInsight 上还没有 Spark 群集，则可以在群集创建过程中运行脚本操作。 访问有关[如何使用自定义脚本操作](../hdinsight-hadoop-customize-cluster-linux.md)的文档。
 
-* HDInsight 上的 Apache Spark 群集。 有关说明，请参阅[在 Azure HDInsight 中创建 Apache Spark 群集](apache-spark-jupyter-spark-sql.md)。
-
-   > [!NOTE]
-   > 如果 HDInsight Linux 上还没有 Spark 群集，则可以在群集创建过程中运行脚本操作。 访问有关[如何使用自定义脚本操作](/hdinsight/hdinsight-hadoop-customize-cluster-linux)的文档。
-   > 
-   > 
-   
 ## <a name="support-for-open-source-software-used-on-hdinsight-clusters"></a>支持 HDInsight 群集上使用的开源软件
 
 Microsoft Azure HDInsight 服务使用围绕 Apache Hadoop 构建的开源技术生态系统。 Microsoft Azure 为开源技术提供常规级别的支持。 有关详细信息，请参阅 [Azure 支持常见问题解答网站](https://azure.microsoft.com/support/faq/)。 HDInsight 服务为内置组件提供附加的支持级别。
 
 HDInsight 服务中有两种类型的开放源代码组件：
 
-* **内置组件** - 这些组件预先安装在 HDInsight 群集上，并提供在群集的核心功能。 例如，Apache Hadoop YARN ResourceManager、Apache Hive 查询语言 (HiveQL) 及 Mahout 库均属于此类别。 [HDInsight 提供的 Apache Hadoop 群集版本的新增功能](/hdinsight/hdinsight-component-versioning)中提供了群集组件的完整列表。
-* **自定义组件** - 作为群集用户，可以安装，或者在工作负荷中使用由社区提供的或自己创建的任何组件。
+|组件 |说明 |
+|---|---|
+|内置|这些组件已预先安装在 HDInsight 群集上，并提供群集的核心功能。 例如，Apache Hadoop YARN 资源管理器、Apache Hive 查询语言 (HiveQL) 及 Mahout 库均属于此类别。 [HDInsight 提供的 Apache Hadoop 群集版本的新增功能](../hdinsight-component-versioning.md)中提供了群集组件的完整列表。|
+|“自定义”|群集用户可以安装或者在工作负荷中使用由社区提供的或自己创建的任何组件。|
 
 > [!IMPORTANT]   
 > 完全支持通过 HDInsight 群集提供的组件。 Microsoft 支持部门可帮助找出并解决与这些组件相关的问题。
@@ -57,8 +52,8 @@ HDInsight Spark 群集是通过 Anaconda 安装创建的。 群集中有两个 P
 | |Python 2.7|Python 3.5|
 |----|----|----|
 |`Path`|/usr/bin/anaconda/bin|/usr/bin/anaconda/envs/py35/bin|
-|Spark|默认设置为 2.7|不适用|
-|Livy|默认设置为 2.7|不适用|
+|Spark|默认设置为 2.7|空值|
+|Livy|默认设置为 2.7|空值|
 |Jupyter|PySpark 内核|PySpark3 内核|
 
 ## <a name="safely-install-external-python-packages"></a>安全安装外部 Python 包
@@ -143,7 +138,7 @@ HDInsight 群集依赖于内置的 Python 环境，即 Python 2.7 和 Python 3.5
  
 4.  若要在 Jupyter 上使用新建的虚拟环境， 需要更改 Jupyter 配置并重启 Jupyter。 使用以下语句针对所有头节点运行脚本操作，使 Jupyter 指向新建的虚拟环境。 请务必修改针对虚拟环境指定的前缀的路径。 运行此脚本操作后，通过 Ambari UI 重启 Jupyter 服务，使此项更改生效。
 
-    ```
+    ```bash
     sudo sed -i '/python3_executable_path/c\ \"python3_executable_path\" : \"/usr/bin/anaconda/envs/py35new/bin/python3\"' /home/spark/.sparkmagic/config.json
     ```
 
@@ -157,28 +152,10 @@ Anaconda 版本 4.7.11、4.7.12 和 4.8.0 有一个已知的 bug。 如果发现
 
 若要检查 Anaconda 版本，可以通过 SSH 连接到群集头节点并运行 `/usr/bin/anaconda/bin/conda --v`。
 
-## <a name="see-also"></a><a name="seealso"></a>另请参阅
+## <a name="next-steps"></a>后续步骤
+
 * [概述：Azure HDInsight 上的 Apache Spark](apache-spark-overview.md)
-
-### <a name="scenarios"></a>方案
 * [Apache Spark 与 BI：使用 HDInsight 中的 Spark 和 BI 工具执行交互式数据分析](apache-spark-use-bi-tools.md)
-* [Apache Spark 与机器学习：使用 HDInsight 中的 Spark 结合 HVAC 数据分析建筑物温度](apache-spark-ipython-notebook-machine-learning.md)
-* [Apache Spark 与机器学习：使用 HDInsight 中的 Spark 预测食品检查结果](apache-spark-machine-learning-mllib-ipython.md)
-* [使用 HDInsight 中的 Apache Spark 分析网站日志](apache-spark-custom-library-website-log-analysis.md)
-
-### <a name="create-and-run-applications"></a>创建和运行应用程序
-* [使用 Scala 创建独立的应用程序](apache-spark-create-standalone-application.md)
-* [使用 Apache Livy 在 Apache Spark 群集中远程运行作业](apache-spark-livy-rest-interface.md)
-
-### <a name="tools-and-extensions"></a>工具和扩展
-* [在 HDInsight 上的 Apache Spark 群集中将外部包与 Jupyter notebook 配合使用](apache-spark-jupyter-notebook-use-external-packages.md)
-* [使用适用于 IntelliJ IDEA 的 HDInsight 工具插件创建和提交 Spark Scala 应用程序](apache-spark-intellij-tool-plugin.md)
-* [使用适用于 IntelliJ IDEA 的 HDInsight 工具插件远程调试 Apache Spark 应用程序](apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
-* [在 HDInsight 上的 Apache Spark 群集中使用 Apache Zeppelin 笔记本](apache-spark-zeppelin-notebook.md)
-* [在 HDInsight 的 Apache Spark 群集中可用于 Jupyter Notebook 的内核](apache-spark-jupyter-notebook-kernels.md)
-* [Install Jupyter on your computer and connect to an HDInsight Spark cluster（在计算机上安装 Jupyter 并连接到 HDInsight Spark 群集）](apache-spark-jupyter-notebook-install-locally.md)
-
-### <a name="manage-resources"></a>管理资源
 * [管理 Azure HDInsight 中 Apache Spark 群集的资源](apache-spark-resource-manager.md)
 * [Track and debug jobs running on an Apache Spark cluster in HDInsight（跟踪和调试 HDInsight 中的 Apache Spark 群集上运行的作业）](apache-spark-job-debugging.md)
 

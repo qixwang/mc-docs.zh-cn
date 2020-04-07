@@ -1,5 +1,5 @@
 ---
-title: 快速入门：使用 Azure 门户在 Azure HDInsight 中创建 Apache Hadoop 和 Apache Hive
+title: 快速入门：Apache Hadoop、Apache Hive 和 Azure HDInsight 门户
 description: 在本快速入门中，将使用 Azure 门户创建 HDInsight Hadoop 群集
 keywords: hadoop 入门,hadoop linux,hadoop 快速入门,hive 入门,hive 快速入门
 services: hdinsight
@@ -15,12 +15,12 @@ ms.topic: quickstart
 origin.date: 02/24/2020
 ms.date: 03/23/2020
 ms.author: v-yiso
-ms.openlocfilehash: cbf6e526bd8cc4d0f6a276566e14e81eb846e50d
-ms.sourcegitcommit: 32997a7d7585deaeb0ab7b8f928d397b18b343fa
+ms.openlocfilehash: 990e6ede666d63c3f94410906dca5d7674950288
+ms.sourcegitcommit: 5fb45da006859215edc8211481f13174aa43dbeb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79295963"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80634566"
 ---
 # <a name="quickstart-create-apache-hadoop-cluster-in-azure-hdinsight-using-azure-portal"></a>快速入门：使用 Azure 门户在 Azure HDInsight 中创建 Apache Hadoop 群集
 
@@ -58,7 +58,7 @@ ms.locfileid: "79295963"
     |安全外壳 (SSH) 用户名 | 默认用户名为“sshuser”  。  可以提供其他名称作为 SSH 用户名。 |
     |对 SSH 使用群集登录密码| 选中此复选框，让 SSH 用户使用与提供给群集登录用户的密码相同的密码。|
 
-    ![HDInsight Linux 入门之提供群集基本值](./media/apache-hadoop-linux-create-cluster-get-started-portal/azure-portal-cluster-basics-blank.png "提供用于创建 HDInsight 群集的基本值")
+    ![HDInsight Linux 入门之提供群集基本值](./media/apache-hadoop-linux-create-cluster-get-started-portal/azure-portal-cluster-basics.png "提供用于创建 HDInsight 群集的基本值")
 
     选择页面底部的“下一步:  存储 >>”以前进到存储设置。
 
@@ -72,6 +72,8 @@ ms.locfileid: "79295963"
     |容器|使用自动填充的值。|
 
     ![HDInsight Linux 入门之提供群集存储值](./media/apache-hadoop-linux-create-cluster-get-started-portal/azure-portal-cluster-storage.png "提供用于创建 HDInsight 群集的存储值")
+
+    每个群集都有一个 [Azure 存储帐户](../hdinsight-hadoop-use-blob-storage.md)。 该帐户称为默认存储帐户。 HDInsight 群集及其默认存储帐户必须共存于同一个 Azure 区域中。 删除群集不会删除存储帐户。
 
     选择“查看 + 创建”选项卡。 
 

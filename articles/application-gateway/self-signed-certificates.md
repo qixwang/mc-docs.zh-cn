@@ -6,20 +6,20 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 12/30/2019
+ms.date: 03/30/2020
 ms.author: v-junlch
-ms.openlocfilehash: d1427f1e7c3679b535bb5802fd2bae11278fa1a6
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.openlocfilehash: a4174130f3560234f4e6f2ce0a89f6559e239ab2
+ms.sourcegitcommit: 64584c0bf31b4204058ae2b4641356b904ccdd58
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75624134"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80581806"
 ---
 # <a name="generate-an-azure-application-gateway-self-signed-certificate-with-a-custom-root-ca"></a>使用自定义根 CA 生成 Azure 应用程序网关自签名证书
 
 应用程序网关 v2 SKU 引入了允许后端服务器的受信任根证书。 这样，就无需像在 v1 SKU 中那样使用身份验证证书。 该根证书是来自后端证书服务器的 Base-64 编码的 X.509(.CER) 格式根证书。  它可以识别颁发服务器证书的根证书颁发机构 (CA)，然后，服务器证书可用于 SSL 通信。
 
-如果网站的证书由已知的 CA（例如 GoDaddy 或 DigiCert） 签名，则应用程序网关默认会信任该证书。 在这种情况下，无需显式上传根证书。 有关详细信息，请参阅 [SSL 终止和应用程序网关的端到端 SSL 概述](ssl-overview.md)。 但是，如果你有一个开发/测试环境，但不想要购买由已验证的 CA 签名的证书，可以创建自己的自定义 CA，然后使用该 CA 创建自签名证书。 
+如果网站的证书由众所周知的 CA（例如 GoDaddy 或 DigiCert）签名，则默认情况下应用程序网关会信任该证书。 在这种情况下，无需显式上传根证书。 有关详细信息，请参阅 [SSL 终止和应用程序网关的端到端 SSL 概述](ssl-overview.md)。 但是，如果你有一个开发/测试环境，但不想要购买由已验证的 CA 签名的证书，可以创建自己的自定义 CA，然后使用该 CA 创建自签名证书。 
 
 > [!NOTE]
 > 自签名证书默认不受信任，并且可能难以维护。 另外，它们可能使用过时的哈希，以及不够可靠的加密套件。 为了提高安全性，请购买由知名证书颁发机构签名的证书。
@@ -230,9 +230,9 @@ $probe = Get-AzApplicationGatewayProbeConfig `
   -Name testprobe `
   -ApplicationGateway $gw
 
-## Add the configuration to the HTTP Setting and don’t forget to set the “hostname” field
+## Add the configuration to the HTTP Setting and don't forget to set the "hostname" field
 ## to the domain name of the server certificate as this will be set as the SNI header and
-## will be used to verify the backend server’s certificate. Note that SSL handshake will
+## will be used to verify the backend server's certificate. Note that SSL handshake will
 ## fail otherwise and might lead to backend servers being deemed as Unhealthy by the probes
 
 Add-AzApplicationGatewayBackendHttpSettings `
@@ -265,7 +265,7 @@ Set-AzApplicationGateway -ApplicationGateway $gw
 ### <a name="verify-the-application-gateway-backend-health"></a>验证应用程序网关后端运行状况
 
 1. 单击应用程序网关的“后端运行状况”视图，检查探测是否正常。 
-1.  应会看到，HTTPS 探测的状态为“正常”。 
+1.    应会看到，HTTPS 探测的状态为“正常”。 
 
     ![HTTPS 探测](./media/self-signed-certificates/https-probe.png)
 
@@ -274,4 +274,3 @@ Set-AzApplicationGateway -ApplicationGateway $gw
 若要详细了解应用程序网关中的 SSL\TLS，请参阅[应用程序网关的 SSL 终止和端到端 SSL 概述](ssl-overview.md)。
 
 
-<!-- Update_Description: wording update -->

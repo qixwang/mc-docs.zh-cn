@@ -3,14 +3,15 @@ title: 使用 Open Service Broker for Azure (OSBA) 与 Azure 托管服务进行�
 description: 使用 Open Service Broker for Azure (OSBA) 与 Azure 托管服务进行集成
 author: rockboyfor
 ms.topic: overview
-ms.date: 03/09/2020
+origin.date: 12/05/2017
+ms.date: 04/06/2020
 ms.author: v-yeche
-ms.openlocfilehash: 107bffa0153482e45c147baaf0d4c5e8f75a0277
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: d846e3ea620c49a5af4004b0db4ecde9eba204cc
+ms.sourcegitcommit: 76280dd9854dc0ff0ba1e5e62fb3dc3af049fbe2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79290839"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80517013"
 ---
 <!--IMPORT: NOT AVAILABLE ON MOONCAKE-->
 <!--PLEASE BE KINDLY NOTICE MOONCAKE COMMENTS-->
@@ -35,7 +36,9 @@ ms.locfileid: "79290839"
 
 ## <a name="install-service-catalog"></a>安装服务目录
 
-第一步是使用 Helm 图表在 Kubernetes 群集中安装服务目录。 按照以下步骤升级群集中的 Tiller（Helm 服务器）安装：
+第一步是使用 Helm 图表在 Kubernetes 群集中安装服务目录。
+
+按照以下步骤升级群集中的 Tiller（Helm 服务器）安装：
 
 <!--MOONCAKE: TO ADD --tiller-image gcr.azk8s.cn/kubernetes-helm/tiller:v2.13.0-->
 
@@ -47,31 +50,31 @@ helm init --upgrade --tiller-image gcr.azk8s.cn/kubernetes-helm/tiller:v2.13.0
 
 现在，将服务目录图表添加到 Helm 存储库：
 
-```azurecli
+```console
 helm repo add svc-cat https://svc-catalog-charts.storage.googleapis.com
 ```
 
 最后，使用 Helm Chart 安装服务目录。 如果群集启用了 RBAC，请运行此命令。
 
-```azurecli
+```console
 helm install svc-cat/catalog --name catalog --namespace catalog --set apiserver.storage.etcd.persistence.enabled=true --set apiserver.healthcheck.enabled=false --set controllerManager.healthcheck.enabled=false --set apiserver.verbosity=2 --set controllerManager.verbosity=2
 ```
 
 如果群集未启用 RBAC，请运行以下命令。
 
-```azurecli
+```console
 helm install svc-cat/catalog --name catalog --namespace catalog --set rbacEnable=false --set apiserver.storage.etcd.persistence.enabled=true --set apiserver.healthcheck.enabled=false --set controllerManager.healthcheck.enabled=false --set apiserver.verbosity=2 --set controllerManager.verbosity=2
 ```
 
 运行 Helm 图表后，验证 `servicecatalog` 是否出现在以下命令的输出中：
 
-```azurecli
+```console
 kubectl get apiservice
 ```
 
 例如，应看到与下面（此处显示的为节选）类似的输出：
 
-```
+```output
 NAME                                 AGE
 v1.                                  10m
 v1.authentication.k8s.io             10m
@@ -86,7 +89,7 @@ v1beta1.storage.k8s.io               10
 
 首先添加 Open Service Broker for Azure Helm 存储库：
 
-```azurecli
+```console
 helm repo add azure https://kubernetescharts.blob.core.chinacloudapi.cn/azure
 ```
 
@@ -98,7 +101,7 @@ az ad sp create-for-rbac
 
 输出应如下所示。 记下 `appId`、`password` 和 `tenant` 值，下一步会用到这些值。
 
-```JSON
+```json
 {
   "appId": "7248f250-0000-0000-0000-dbdeb8400d85",
   "displayName": "azure-cli-2017-10-15-02-20-15",
@@ -112,7 +115,7 @@ az ad sp create-for-rbac
 
 <!--MOONCAKE: Add AZURE_ENVIRONMENT-->
 
-```azurecli
+```console
 AZURE_CLIENT_ID=<appId>
 AZURE_CLIENT_SECRET=<password>
 AZURE_TENANT_ID=<tenant>
@@ -129,7 +132,7 @@ az account show --query id --output tsv
 
 再次使用上述值设置以下环境变量：
 
-```azurecli
+```console
 AZURE_SUBSCRIPTION_ID=[your Azure subscription ID from above]
 ```
 
@@ -154,22 +157,20 @@ OSBA 部署完成后，请安装[服务目录 CLI][service-catalog-cli]，这是
 
 <!--MOONCAKE: CORRECT ON https://servicecatalogcli.blob.core.windows.net/cli/latest-->
 
-```azurecli
-curl -sLO https://servicecatalogcli.blob.core.windows.net/cli/latest/$(uname -s)/$(uname -m)/svcat
-chmod +x ./svcat
+``console curl -sLO https://servicecatalogcli.blob.core.windows.net/cli/latest/ $(uname -s)/$(uname -m)/svcat chmod +x ./svcat
 ```
 
 <!--MOONCAKE: CORRECT ON https://servicecatalogcli.blob.core.windows.net/cli/latest-->
 
-现在，列出已安装的服务代理：
+Now, list installed service brokers:
 
-```azurecli
+```console
 ./svcat get brokers
 ```
 
 应该会看到与下面类似的输出：
 
-```
+```output
   NAME                               URL                                STATUS
 +------+--------------------------------------------------------------+--------+
   osba   http://osba-open-service-broker-azure.osba.svc.cluster.local   Ready
@@ -177,13 +178,13 @@ chmod +x ./svcat
 
 接下来，列出可用的服务类。 显示的服务类是可通过 Open Service Broker for Azure 预配的可用 Azure 托管服务。
 
-```azurecli
+```console
 ./svcat get classes
 ```
 
 最后，列出所有可用的服务计划。 服务计划是 Azure 托管服务的服务层级。 例如，对于 Azure Database for MySQL，计划范围为 `basic50`（具有 50 个数据传输单位 (DTU) 的基本层）到 `standard800`（具有 800 个 DTU 的标准层）。
 
-```azurecli
+```console
 ./svcat get plans
 ```
 
@@ -193,7 +194,7 @@ chmod +x ./svcat
 
 <!--MOONCAKE: CORRECT ON --set externalDatabase.azure.location=chinaeast2-->
 
-```azurecli
+```console
 helm install azure/wordpress --name wordpress --namespace wordpress --set resources.requests.cpu=0 --set replicaCount=1 --set externalDatabase.azure.location=chinaeast2
 ```
 
@@ -201,14 +202,14 @@ helm install azure/wordpress --name wordpress --namespace wordpress --set resour
 
 为了验证安装是否已预配适当的资源，请列出已安装的服务实例和绑定：
 
-```azurecli
+```console
 ./svcat get instances -n wordpress
 ./svcat get bindings -n wordpress
 ```
 
 列出已安装的机密：
 
-```azurecli
+```console
 kubectl get secrets -n wordpress -o yaml
 ```
 

@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 03/16/2020
+ms.date: 03/30/2020
 ms.author: v-junlch
-ms.openlocfilehash: b04687dff1e8dd6ef142508737df4d8ab2eb8139
-ms.sourcegitcommit: 71a386ca0d0ecb79a123399b6ab6b8c70ea2aa78
+ms.openlocfilehash: 41051dde4f6c8aa104958c54d2e7f41a354875d0
+ms.sourcegitcommit: 64584c0bf31b4204058ae2b4641356b904ccdd58
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2020
-ms.locfileid: "79497303"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80581712"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>有关应用程序网关的常见问题解答
 
@@ -95,6 +95,10 @@ Keep-Alive 超时  控制应用程序网关在重新使用或关闭它之前将�
 是的。 除了提供给定应用程序网关部署的多个实例以外，还可以在包含不同应用程序网关资源的现有子网中预配另一个唯一的应用程序网关资源。
 
 单个子网不支持同时使用 Standard_v2 和标准应用程序网关。
+
+### <a name="does-application-gateway-v2-support-user-defined-routes-udr"></a>应用程序网关 v2 是否支持用户定义的路由 (UDR)？
+
+是，但仅限特定方案。 有关详细信息，请参阅[应用程序网关配置概述](configuration-overview.md#user-defined-routes-supported-on-the-application-gateway-subnet)。
 
 ### <a name="does-application-gateway-support-x-forwarded-for-headers"></a>应用程序网关是否支持 x-forwarded-for 标头？
 
@@ -386,7 +390,7 @@ Kubernetes 允许创建 `deployment` 和 `service` 资源，以便在群集内�
 
 ### <a name="how-do-i-use-application-gateway-v2-with-only-private-frontend-ip-address"></a>如何在只有专用前端 IP 地址的情况下使用应用程序网关 V2？
 
-应用程序网关 V2 目前不支持专用 IP 模式。 它支持以下组合
+应用程序网关 V2 目前不支持仅专用 IP 模式。 它支持以下组合
 * 专用 IP 和公共 IP
 * 仅公共 IP
 
@@ -397,13 +401,13 @@ Kubernetes 允许创建 `deployment` 和 `service` 资源，以便在群集内�
     
     a. 允许的流量来自使用 **GatewayManager** 服务标记的“源”，其“目标”为“任意”  ，“目标端口”为 **65200-65535**。 此端口范围是进行 Azure 基础结构通信所必需的。 这些端口通过证书身份验证进行保护（锁定）。 如果没有适当的证书，外部实体（包括网关用户管理员）将无法对这些终结点做出任何更改
     
-    b. 允许的流量来自使用 **AzureLoadBalancer** 服务标记的“源”，“目标”和“目标端口”为“任意” 
+    b. 允许源为“AzureLoadBalancer”  服务标记且目标端口为“Any”  的流量
     
-    c. 拒绝的所有入站流量来自使用 **Internet** 服务标记的“源”，“目标”和“目标端口”为“任意”。  在入站规则中为此规则指定最低优先级 
+    c. 拒绝源为“Internet”  服务标记且目标端口为“Any”  的所有入站流量。 在入站规则中为此规则指定最低优先级 
     
-    d. 保留默认规则（例如允许入站 VirtualNetwork），这样就不会阻止在专用 IP 地址上进行的访问
+    d. 保留默认规则（如允许 VirtualNetwork 入站），这样就不会阻止在该专用 IP 地址上进行的访问
     
-    e. 不能阻止出站 Internet 连接。 否则会面临日志记录、指标等问题。
+    e. 不能阻止出站 Internet 连接。 否则会遇到日志记录、指标等问题。
 
 仅适用于专用 IP 访问的 NSG 配置示例：![仅适用于专用 IP 访问的应用程序网关 V2 NSG 配置](./media/application-gateway-faq/appgw-privip-nsg.png)
 

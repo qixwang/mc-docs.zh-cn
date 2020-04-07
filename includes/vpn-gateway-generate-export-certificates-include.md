@@ -5,18 +5,18 @@ services: vpn-gateway
 author: WenJason
 ms.service: vpn-gateway
 ms.topic: include
-origin.date: 10/10/2019
-ms.date: 11/11/2019
+origin.date: 03/19/2020
+ms.date: 04/06/2020
 ms.author: v-jay
 ms.custom: include file
-ms.openlocfilehash: fa14e9f9fb6a047e46989ed3887f20b2e2e001d3
-ms.sourcegitcommit: d77d5d8903faa757c42b80ee24e7c9d880950fc3
+ms.openlocfilehash: 5d805c1e2fe1901a98b504c0c4d8bf711b5b0fa5
+ms.sourcegitcommit: 5fb45da006859215edc8211481f13174aa43dbeb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73742293"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80634568"
 ---
-## <a name="rootcert"></a>创建自签名根证书
+## <a name="create-a-self-signed-root-certificate"></a><a name="rootcert"></a>创建自签名根证书
 
 使用 New-SelfSignedCertificate cmdlet 创建自签名根证书。 有关参数的其他信息，请参阅 [New-SelfSignedCertificate](https://technet.microsoft.com/itpro/powershell/windows/pkiclient/new-selfsignedcertificate)。
 
@@ -29,8 +29,9 @@ ms.locfileid: "73742293"
    -HashAlgorithm sha256 -KeyLength 2048 `
    -CertStoreLocation "Cert:\CurrentUser\My" -KeyUsageProperty Sign -KeyUsage CertSign
    ```
+ 3. 若要在创建此根证书后立即创建客户端证书，请让 PowerShell 控制台保持打开状态。
 
-## <a name="clientcert"></a>生成客户端证书
+## <a name="generate-a-client-certificate"></a><a name="clientcert"></a>生成客户端证书
 
 在使用点到站点连接连接到 VNet 的每台客户端计算机上，必须安装客户端证书。 可以从自签名根证书生成客户端证书，导出并安装该客户端证书。 如果不安装客户端证书，身份验证会失败。 
 
@@ -38,7 +39,7 @@ ms.locfileid: "73742293"
 
 这些示例使用 New-SelfSignedCertificate cmdlet 生成有效期为一年的客户端证书。 有关参数的其他信息（例如为客户端证书设置其他有效期），请参阅 [New-SelfSignedCertificate](https://technet.microsoft.com/itpro/powershell/windows/pkiclient/new-selfsignedcertificate)。
 
-### <a name="example-1"></a>示例 1
+### <a name="example-1---powershell-console-session-still-open"></a>示例 1 - PowerShell 控制台会话仍处于打开状态
 
 如果创建自签名根证书之后没有关闭 PowerShell 控制台，请使用此示例。 此示例延续上一节的内容，并使用已声明的“$cert”变量。 如果创建自签名根证书后关闭了 PowerShell 控制台，或者要在新的 PowerShell 控制台会话中创建其他客户端证书，请使用[示例 2](#ex2) 中的步骤。
 
@@ -52,7 +53,7 @@ New-SelfSignedCertificate -Type Custom -DnsName P2SChildCert -KeySpec Signature 
 -Signer $cert -TextExtension @("2.5.29.37={text}1.3.6.1.5.5.7.3.2")
 ```
 
-### <a name="ex2"></a>示例 2
+### <a name="example-2---new-powershell-console-session"></a><a name="ex2"></a>示例 2 - 新建 PowerShell 控制台会话
 
 若要创建其他客户端证书，或者不想要使用创建自签名根证书时所用的同一个 PowerShell 会话，请使用以下步骤：
 
@@ -90,7 +91,7 @@ New-SelfSignedCertificate -Type Custom -DnsName P2SChildCert -KeySpec Signature 
    -Signer $cert -TextExtension @("2.5.29.37={text}1.3.6.1.5.5.7.3.2")
    ```
 
-## <a name="cer"></a>导出根证书公钥 (.cer)
+## <a name="export-the-root-certificate-public-key-cer"></a><a name="cer"></a>导出根证书公钥 (.cer)
 
 [!INCLUDE [Export public key](vpn-gateway-certificates-export-public-key-include.md)]
 
@@ -98,6 +99,6 @@ New-SelfSignedCertificate -Type Custom -DnsName P2SChildCert -KeySpec Signature 
 
 可能需要导出自签名根证书并将它存储在安全位置作为备份。 如果需要，可以稍后在另一台计算机上安装此自签名根证书，并生成更多客户端证书。 如果要将自签名根证书导出为 .pfx，请选择该根证书，并使用[导出客户端证书](#clientexport)中所述的步骤导出。
 
-## <a name="clientexport"></a>导出客户端证书
+## <a name="export-the-client-certificate"></a><a name="clientexport"></a>导出客户端证书
 
 [!INCLUDE [Export client certificate](vpn-gateway-certificates-export-client-cert-include.md)]

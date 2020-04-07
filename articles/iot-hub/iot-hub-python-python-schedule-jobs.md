@@ -9,15 +9,15 @@ ms.devlang: python
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-origin.date: 08/16/2019
+origin.date: 03/17/2020
 ms.date: 12/23/2019
 ms.author: v-yiso
-ms.openlocfilehash: ae8707b783bc25e6cfec68d892e7fed9b9d95486
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 046500483e340b9da078d14da1c5c28109dac6d2
+ms.sourcegitcommit: 5fb45da006859215edc8211481f13174aa43dbeb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336418"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80634632"
 ---
 # <a name="schedule-and-broadcast-jobs-python"></a>计划和广播作业 (Python)
 
@@ -57,7 +57,7 @@ scheduleJobService.py，它调用模拟设备应用中的直接方法，并通�
 
 ## <a name="prerequisites"></a>先决条件
 
-[!INCLUDE [iot-hub-include-python-installation-notes](../../includes/iot-hub-include-python-installation-notes.md)]
+[!INCLUDE [iot-hub-include-python-v2-installation-notes](../../includes/iot-hub-include-python-v2-installation-notes.md)]
 
 ## <a name="create-an-iot-hub"></a>创建 IoT 中心
 
@@ -176,17 +176,14 @@ scheduleJobService.py，它调用模拟设备应用中的直接方法，并通�
 有关 IoT 中心共享访问策略和权限的详细信息，请参阅[访问控制和权限](./iot-hub-devguide-security.md#access-control-and-permissions)。
 
 ## <a name="schedule-jobs-for-calling-a-direct-method-and-updating-a-device-twins-properties"></a>安排作业，用于调用直接方法和更新设备孪生的属性
-在本部分中，将创建一个 Python 控制台应用，它使用直接方法在设备上启动远程 lockDoor 并更新设备孪生的属性  。
 
-1. 在命令提示符处，运行以下命令以安装 azure-iot-service-client 包  ：
-   
+在本部分中，将创建一个 Python 控制台应用，它使用直接方法在设备上启动远程 lockDoor，还更新设备孪生的所需属性  。
+
+1. 在命令提示符处，运行以下命令以安装 **azure-iot-hub** 包：
+
     ```cmd/sh
-    pip install azure-iothub-service-client
+    pip install azure-iot-hub
     ```
-
-   > [!NOTE]
-   > azure-iothub-service-client 的 pip 包目前仅适用于 Windows 操作系统。 对于 Linux/Mac 操作系统，请参阅[准备适用于 Python 的开发环境](https://github.com/Azure/azure-iot-sdk-python/blob/v1-deprecated/doc/python-devbox-setup.md)一文中特定于 Linux 和 Mac 操作系统的部分。
-   >
 
 2. 使用文本编辑器，在工作目录中创建一个 scheduleJobService.py 文件  。
 
@@ -198,69 +195,68 @@ scheduleJobService.py，它调用模拟设备应用中的直接方法，并通�
     import threading
     import uuid
 
-    import iothub_service_client
-    from iothub_service_client import IoTHubRegistryManager, IoTHubRegistryManagerAuthMethod
-    from iothub_service_client import IoTHubDeviceTwin, IoTHubDeviceMethod, IoTHubError
+    from azure.iot.hub import IoTHubRegistryManager
+    from azure.iot.hub.models import Twin, TwinProperties, CloudToDeviceMethod, CloudToDeviceMethodResult, QuerySpecification, QueryResult
 
     CONNECTION_STRING = "{IoTHubConnectionString}"
     DEVICE_ID = "{deviceId}"
 
     METHOD_NAME = "lockDoor"
     METHOD_PAYLOAD = "{\"lockTime\":\"10m\"}"
-    UPDATE_JSON = "{\"properties\":{\"desired\":{\"building\":43,\"floor\":3}}}"
+    UPDATE_PATCH = {"building":43,"floor":3}
     TIMEOUT = 60
     WAIT_COUNT = 5
     ```
 
-1. 添加以下用于查询设备的函数：
-   
-    ```python
-    def query_condition(device_id):
-        iothub_registry_manager = IoTHubRegistryManager(CONNECTION_STRING)
-    
-        number_of_devices = 10
-        dev_list = iothub_registry_manager.get_device_list(number_of_devices)
-    
-        for device in range(0, number_of_devices):
-            if dev_list[device].deviceId == device_id:
-                return 1
+4. 添加以下用于查询设备的函数：
 
-        print ( "Device not found" )
-        return 0
+    ```python
+    def query_condition(iothub_registry_manager, device_id):
+
+        query_spec = QuerySpecification(query="SELECT * FROM devices WHERE deviceId = '{}'".format(device_id))
+        query_result = iothub_registry_manager.query_iot_hub(query_spec, None, 1)
+
+        return len(query_result.items)
     ```
 
-1. 添加以下方法，用于运行调用直接方法和设备孪生的作业：
-   
+5. 添加以下方法，用于运行调用直接方法和设备孪生的作业：
+
     ```python
     def device_method_job(job_id, device_id, wait_time, execution_time):
         print ( "" )
         print ( "Scheduling job: " + str(job_id) )
         time.sleep(wait_time)
-    
-        if query_condition(device_id):
-            iothub_device_method = IoTHubDeviceMethod(CONNECTION_STRING)
-    
-            response = iothub_device_method.invoke(device_id, METHOD_NAME, METHOD_PAYLOAD, TIMEOUT)
-        
+
+        iothub_registry_manager = IoTHubRegistryManager(CONNECTION_STRING)
+
+
+        if query_condition(iothub_registry_manager, device_id):
+            deviceMethod = CloudToDeviceMethod(method_name=METHOD_NAME, payload=METHOD_PAYLOAD)
+
+            response = iothub_registry_manager.invoke_device_method(DEVICE_ID, deviceMethod)
+
             print ( "" )
             print ( "Direct method " + METHOD_NAME + " called." )
-        
+
     def device_twin_job(job_id, device_id, wait_time, execution_time):
         print ( "" )
         print ( "Scheduling job " + str(job_id) )
         time.sleep(wait_time)
-    
-        if query_condition(device_id):
-            iothub_twin_method = IoTHubDeviceTwin(CONNECTION_STRING)
-    
-            twin_info = iothub_twin_method.update_twin(DEVICE_ID, UPDATE_JSON)
-        
+
+        iothub_registry_manager = IoTHubRegistryManager(CONNECTION_STRING)
+
+        if query_condition(iothub_registry_manager, device_id):
+
+            twin = iothub_registry_manager.get_twin(DEVICE_ID)
+            twin_patch = Twin(properties= TwinProperties(desired=UPDATE_PATCH))
+            twin = iothub_registry_manager.update_twin(DEVICE_ID, twin_patch, twin.etag)
+
             print ( "" )
             print ( "Device twin updated." )
     ```
 
-1. 添加以下代码以安排作业和更新作业状态。 此外还包含 `main` 例程：
-   
+6. 添加以下代码以安排作业和更新作业状态。 此外还包含 `main` 例程：
+
     ```python
     def iothub_jobs_sample_run():
         try:
@@ -298,9 +294,9 @@ scheduleJobService.py，它调用模拟设备应用中的直接方法，并通�
                     time.sleep(1)
                     status_counter += 1
 
-        except IoTHubError as iothub_error:
+        except Exception as ex:
             print ( "" )
-            print ( "Unexpected error {0}" % iothub_error )
+            print ( "Unexpected error {0}" % ex )
             return
         except KeyboardInterrupt:
             print ( "" )

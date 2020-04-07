@@ -1,27 +1,20 @@
 ---
-title: 使用 VPN 网关和 PowerShell 将虚拟网络连接到多个站点：经典 | Microsoft Docs
+title: 使用 VPN 网关将 VNet 连接到多个站点：经典
 description: 通过 VPN 网关将多个本地网站连接到经典虚拟网络。
 services: vpn-gateway
-documentationcenter: na
+titleSuffix: Azure VPN Gateway
 author: WenJason
-manager: digimobile
-editor: ''
-tags: azure-service-management
-ms.assetid: b043df6e-f1e8-4a4d-8467-c06079e2c093
 ms.service: vpn-gateway
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-origin.date: 02/14/2018
-ms.date: 12/10/2018
+origin.date: 02/11/2020
+ms.date: 04/06/2020
 ms.author: v-jay
-ms.openlocfilehash: 2efcfe921baa9ca5d1f610d09309bcd80053dd8e
-ms.sourcegitcommit: b8fb6890caed87831b28c82738d6cecfe50674fd
+ms.openlocfilehash: a8b8f2a0d621997dd56fe8bdc05e05a7ec9a0ffa
+ms.sourcegitcommit: 5fb45da006859215edc8211481f13174aa43dbeb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58626064"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80634621"
 ---
 # <a name="add-a-site-to-site-connection-to-a-vnet-with-an-existing-vpn-gateway-connection-classic"></a>将站点到站点连接添加到包含现有 VPN 网关连接的 VNet（经典）
 
@@ -53,7 +46,7 @@ ms.locfileid: "58626064"
 
 ## <a name="points-to-consider"></a>考虑的要点
 
-**无法使用门户更改此虚拟网络。** 需更改网络配置文件，而不是使用门户。 若在门户中进行更改，更改将覆盖此虚拟网络的多站点引用设置。
+**无法使用门户更改此虚拟网络。** 需更改网络配置文件，而不是使用门户。 如果在门户中进行更改，更改将覆盖此虚拟网络的多站点引用设置。
 
 在完成多站点过程后，便可轻松自如地使用网络配置文件。 但是，如果有多个人在处理网络配置，需要确保每个人都知道这个限制。 这并不意味着完全不能使用门户。 除了无法对此特定虚拟网络进行配置更改以外，可以使用它来完成其他任何操作。
 
@@ -63,10 +56,13 @@ ms.locfileid: "58626064"
 
 * 每个本地位置都有兼容的 VPN 硬件。 查看[关于用于虚拟网络连接的 VPN 设备](vpn-gateway-about-vpn-devices.md)，以确认要使用的设备是否是已知兼容的设备。
 * 每个 VPN 设备都有一个面向外部的公共 IPv4 IP 地址。 该 IP 地址不能位于 NAT 后面， 必须满足这一要求。
-* 需要安装 Azure PowerShell cmdlet 的最新版本。 请确保同时安装了 Resource Manager 版本和服务管理 (SM) 版本。 有关详细信息，请参阅 [如何安装和配置 Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) 。
 * 有人能够熟练地配置 VPN 硬件。 必须非常了解如何配置 VPN 设备，或者与具有此能力的人员合作。
 * 要用于虚拟网络（如果尚未创建）的 IP 地址范围。
 * 要连接到的每个本地网络站点的 IP 地址范围。 需确保要连接到的每个本地网络站点的 IP 地址范围不重叠。 否则，门户或 REST API 将拒绝上传配置。<br>例如，如果两个本地网络站点都包含 IP 地址范围 10.2.3.0/24，并且某个包包含目标地址 10.2.3.3，则 Azure 将不知道要将该包发送到哪个站点，因为地址范围是重叠的。 为了防止路由问题，Azure 不允许上传具有重叠范围的配置文件。
+
+### <a name="working-with-azure-powershell"></a>使用 Azure PowerShell
+
+[!INCLUDE [vpn-gateway-classic-powershell](../../includes/vpn-gateway-powershell-classic-locally.md)]
 
 ## <a name="1-create-a-site-to-site-vpn"></a>1.创建站点到站点 VPN
 如果已有使用动态路由网关的站点到站点 VPN，那太好了！ 可以转到 [导出虚拟网络配置设置](#export)。 否则，请执行以下操作：
@@ -77,9 +73,22 @@ ms.locfileid: "58626064"
 
 ### <a name="if-you-dont-have-a-site-to-site-virtual-network"></a>如果没有站点到站点虚拟网络：
 1. 使用以下说明创建站点到站点虚拟网络：[创建具有站点到站点 VPN 连接的虚拟网络](vpn-gateway-site-to-site-create.md)。  
-2. 按照以下说明配置动态路由网关：[配置 VPN 网关](vpn-gateway-configure-vpn-gateway-mp.md)。 请务必为网关类型选择“动态路由”。
+2. 按照以下说明配置动态路由网关：[配置 VPN 网关](vpn-gateway-configure-vpn-gateway-mp.md)。 请务必为网关类型选择“动态路由”  。
 
-## <a name="export"></a>2.导出网络配置文件
+## <a name="2-export-the-network-configuration-file"></a><a name="export"></a>2.导出网络配置文件
+
+使用提升的权限打开 PowerShell 控制台。 若要切换到服务管理，请使用以下命令：
+
+```powershell
+azure config mode asm
+```
+
+连接到帐户。 使用下面的示例来帮助连接：
+
+```powershell
+Add-AzureAccount -Environment AzureChinaCloud
+```
+
 通过运行以下命令，导出 Azure 网络配置文件。 如有必要，可以将文件的导出位置更改为其他位置。
 
 ```powershell
@@ -87,7 +96,7 @@ Get-AzureVNetConfig -ExportToFile C:\AzureNet\NetworkConfig.xml
 ```
 
 ## <a name="3-open-the-network-configuration-file"></a>3.打开网络配置文件
-打开上一步骤中下载的网络配置文件。 使用偏好的任何 xml 编辑器。 该文件的内容类似于：
+打开你在执行上一步时下载的网络配置文件。 使用偏好的任何 xml 编辑器。 该文件的内容类似于：
 
         <NetworkConfiguration xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/ServiceHosting/2011/07/NetworkConfiguration">
           <VirtualNetworkConfiguration>
@@ -211,4 +220,3 @@ Get-AzureVnetConnection -VNetName VNET1
 ## <a name="next-steps"></a>后续步骤
 
 若要了解有关 VPN 网关的详细信息，请参阅[关于 VPN 网关](vpn-gateway-about-vpngateways.md)。
-<!--Update_Description: wording update-->

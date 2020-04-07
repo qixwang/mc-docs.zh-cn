@@ -13,18 +13,23 @@ ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 origin.date: 03/20/2019
-ms.date: 09/23/2019
+ms.date: 04/06/2020
 ms.author: v-jay
 ms.reviewer: milanga
-ms.openlocfilehash: 35c9869b362598a4e3395d952d84eb8cf19c0fd6
-ms.sourcegitcommit: 8248259e4c3947aa0658ad6c28f54988a8aeebf8
+ms.openlocfilehash: 106f9b89f330c57bc1d2272ab0af5d57e5fe2766
+ms.sourcegitcommit: fe9ed98aaee287a21648f866bb77cb6888f75b0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71124662"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80625707"
 ---
 # <a name="use-azure-media-video-thumbnails-to-create-a-video-summarization"></a>使用 Azure 媒体视频缩略图创建视频摘要  
+
+> [!NOTE]
+> Azure Media Video Thumbnails  媒体处理器将停用。 有关停用日期，请参阅此[旧组件](legacy-components.md)主题。
+
 ## <a name="overview"></a>概述
+
 通过 Azure Media Video Thumbnails 媒体处理器 (MP)，可创建视频摘要，这对于要预览长视频摘要的客户来说很有用  。 例如，当客户将鼠标悬停在缩略图上时，他们可能希望看到一小段“摘要视频”。 使用配置预设值稍稍调整 **Azure 媒体视频缩略图** 的参数，就可使用 MP 的强大镜头检测和串联技术，以算法形式生成描述性子剪辑。  
 
 **Azure 媒体视频缩略图** MP 目前处于预览状态。

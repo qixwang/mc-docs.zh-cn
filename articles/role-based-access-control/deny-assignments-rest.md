@@ -1,5 +1,5 @@
 ---
-title: 使用 REST API 为 Azure 资源列出拒绝分配 - Azure | Microsoft Docs
+title: 使用 REST API 列出 Azure 资源的拒绝分配
 description: 了解如何使用 Azure 资源基于角色的访问控制 (RBAC) 和 REST API 来列出用户、组和应用程序的拒绝分配。
 services: active-directory
 documentationcenter: na
@@ -12,15 +12,15 @@ ms.workload: multiple
 ms.tgt_pltfrm: rest-api
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/03/2020
+ms.date: 03/31/2020
 ms.author: v-junlch
 ms.reviewer: bagovind
-ms.openlocfilehash: b7be738464c5f08798673a677a9f06ffd59ff3c3
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.openlocfilehash: 48011188746d71e51936b0b323a67c630b42fa91
+ms.sourcegitcommit: 64584c0bf31b4204058ae2b4641356b904ccdd58
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75624442"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80581823"
 ---
 # <a name="list-deny-assignments-for-azure-resources-using-the-rest-api"></a>使用 REST API 列出 Azure 资源的拒绝分配
 
@@ -45,11 +45,12 @@ ms.locfileid: "75624442"
 
 1. 在 URI 中，将 {scope} 替换为要列出拒绝分配的范围  。
 
-    | 作用域 | 类型 |
-    | --- | --- |
-    | `subscriptions/{subscriptionId}` | 订阅 |
-    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | 资源组 |
-    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | 资源 |
+    > [!div class="mx-tableFixed"]
+    > | 作用域 | 类型 |
+    > | --- | --- |
+    > | `subscriptions/{subscriptionId}` | 订阅 |
+    > | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | 资源组 |
+    > | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1` | 资源 |
 
 1. 将 {deny-assignment-id} 替换为要检索的拒绝分配标识符  。
 
@@ -69,19 +70,24 @@ ms.locfileid: "75624442"
 
 1. 在 URI 中，将 {scope} 替换为要列出拒绝分配的范围  。
 
-    | 作用域 | 类型 |
-    | --- | --- |
-    | `subscriptions/{subscriptionId}` | 订阅 |
-    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | 资源组 |
-    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | 资源 |
+    > [!div class="mx-tableFixed"]
+    > | 作用域 | 类型 |
+    > | --- | --- |
+    > | `subscriptions/{subscriptionId}` | 订阅 |
+    > | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | 资源组 |
+    > | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1` | 资源 |
 
 1. 将 {filter} 替换为筛选拒绝分配列表时要应用的条件  。
 
-    | 筛选器 | 说明 |
-    | --- | --- |
-    | (无筛选器) | 列出指定范围处、之上和之下的所有拒绝分配。 |
-    | `$filter=atScope()` | 仅列出指定范围及之上的拒绝分配。 不包含子范围处的拒绝分配。 |
-    | `$filter=denyAssignmentName%20eq%20'{deny-assignment-name}'` | 列出具有指定名称的拒绝分配。 |
+    > [!div class="mx-tableFixed"]
+    > | 筛选器 | 说明 |
+    > | --- | --- |
+    > | (无筛选器) | 列出指定范围之内、之上和之下的所有拒绝分配。 |
+    > | `$filter=atScope()` | 仅列出指定范围内及其上的拒绝分配。 不包含子范围处的拒绝分配。 |
+    > | `$filter=assignedTo('{objectId}')` | 列出指定用户或服务主体的拒绝分配。<br/>如果用户属于包含拒绝分配的组，则也会列出该拒绝分配。 此筛选器对于组是可传递的，这意味着如果用户是组的成员，并且该组是包含拒绝分配的另一个组的成员，则该拒绝分配也会列出。<br/>此筛选器仅接受用户或服务主体的对象 ID。 不能传递组的对象 ID。 |
+    > | `$filter=atScope()+and+assignedTo('{objectId}')` | 列出指定范围内指定用户或服务主体的拒绝分配。 |
+    > | `$filter=denyAssignmentName+eq+'{deny-assignment-name}'` | 列出具有指定名称的拒绝分配。 |
+    > | `$filter=principalId+eq+'{objectId}'` | 列出指定用户、组或服务主体的拒绝分配。 |
 
 ## <a name="list-deny-assignments-at-the-root-scope-"></a>列出根范围 (/) 处的拒绝分配
 
@@ -95,10 +101,11 @@ ms.locfileid: "75624442"
 
 1. 将 {filter} 替换为筛选拒绝分配列表时要应用的条件  。 需使用筛选器。
 
-    | 筛选器 | 说明 |
-    | --- | --- |
-    | `$filter=atScope()` | 仅列出根范围处的拒绝分配。 不包含子范围处的拒绝分配。 |
-    | `$filter=denyAssignmentName%20eq%20'{deny-assignment-name}'` | 列出具有指定名称的拒绝分配。 |
+    > [!div class="mx-tableFixed"]
+    > | 筛选器 | 说明 |
+    > | --- | --- |
+    > | `$filter=atScope()` | 仅列出根范围处的拒绝分配。 不包含子范围处的拒绝分配。 |
+    > | `$filter=denyAssignmentName+eq+'{deny-assignment-name}'` | 列出具有指定名称的拒绝分配。 |
 
 1. 删除已提升的访问权限。
 

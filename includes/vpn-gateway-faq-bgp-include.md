@@ -6,18 +6,18 @@ author: WenJason
 ms.service: vpn-gateway
 ms.topic: include
 origin.date: 02/12/2019
-ms.date: 09/02/2019
+ms.date: 04/06/2020
 ms.author: v-jay
 ms.custom: include file
-ms.openlocfilehash: 19e76725df618958f2626d80dc4205fd45840517
-ms.sourcegitcommit: 3f0c63a02fa72fd5610d34b48a92e280c2cbd24a
+ms.openlocfilehash: 1babb29df227f7e35a6e767b245b3fc20c335b44
+ms.sourcegitcommit: 5fb45da006859215edc8211481f13174aa43dbeb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70134555"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80634400"
 ---
 ### <a name="is-bgp-supported-on-all-azure-vpn-gateway-skus"></a>BGP 是否在所有 Azure VPN 网关 SKU 上受支持？
-否，BGP 在 Azure **VpnGw1**、**VpnGw2**、**VpnGw3**、标准  VPN 网关和高性能  VPN 网关上受支持。 **基本** SKU。
+除基本 SKU 外，所有 Azure VPN 网关 SKU 都支持 BGP。
 
 ### <a name="can-i-use-bgp-with-azure-policy-based-vpn-gateways"></a>能否将 BGP 用于基于 Azure Policy 的 VPN 网关？
 否，只有基于路由的 VPN 网关支持 BGP。
@@ -25,8 +25,8 @@ ms.locfileid: "70134555"
 ### <a name="can-i-use-private-asns-autonomous-system-numbers"></a>能否使用专用 ASN（自治系统编号）？
 能，可以将自己的公共 ASN 或专用 ASN 同时用于本地网络和 Azure 虚拟网络。
 
-### <a name="can-i-use-32-bit-asns-autonomous-system-numbers"></a>能否使用 32 位 ASN（自治系统编号）？
-否，Azure VPN 网关目前支持 16 位 ASN。
+### <a name="can-i-use-32-bit-4-byte-asns-autonomous-system-numbers"></a>能否使用 32 位（4 字节）ASN（自治系统编号）？
+能，Azure VPN 网关现在支持 32 位（4 字节）ASN。 请使用 PowerShell/CLI/SDK 配置使用十进制格式的 ASN。
 
 ### <a name="are-there-asns-reserved-by-azure"></a>是否存在由 Azure 保留的 ASN？
 是，Azure 保留了以下 ASN 用于内部和外部的对等互连：
@@ -36,7 +36,7 @@ ms.locfileid: "70134555"
 
 连接到 Azure VPN 网关时，不能为本地 VPN 设备指定这些 ASN。
 
-### <a name="are-there-any-other-asns-that-i-cant-use"></a>是否有任何其他我不能使用的 ASN？
+### <a name="are-there-any-other-asns-that-i-cant-use"></a>是否有任何其他不能使用的 ASN？
 是的。以下 ASN 是 [IANA 保留](http://www.iana.org/assignments/iana-as-numbers-special-registry/iana-as-numbers-special-registry.xhtml)的，不能在 Azure VPN 网关上配置：
 
 23456、64496-64511、65535-65551 和 429496729
@@ -51,7 +51,7 @@ IANA 或 Azure 不保留这些 ASN 以供使用，因此可用于分配给 Azure
 ### <a name="can-i-use-the-same-asn-for-both-on-premises-vpn-networks-and-azure-vnets"></a>能否将同一个 ASN 同时用于本地 VPN 网络和 Azure VNet？
 否，必须在本地网络和 Azure VNet 之间分配不同 ASN（如果要使用 BGP 将它们连接在一起）。 无论是否为跨界连接启用了 BGP，都会为 Azure VPN 网关分配默认 ASN（即 65515）。 可以通过在创建 VPN 网关时分配不同 ASN，或者在创建网关后更改 ASN 来覆盖此默认值。 需要将本地 ASN 分配给相应的 Azure 本地网关。
 
-### <a name="what-address-prefixes-will-azure-vpn-gateways-advertise-to-me"></a>Azure VPN 网关将播发给我哪些地址前缀？
+### <a name="what-address-prefixes-will-azure-vpn-gateways-advertise-to-me"></a>Azure VPN 网关会播发给我哪些地址前缀？
 Azure VPN 网关会将以下路由播发到本地 BGP 设备：
 
 * VNet 地址前缀
@@ -79,7 +79,7 @@ Azure VPN 网关会将以下路由播发到本地 BGP 设备：
 能，可以将 BGP 连接和非 BGP 连接混合用于同一 Azure VPN 网关。
 
 ### <a name="does-azure-vpn-gateway-support-bgp-transit-routing"></a>Azure VPN 网关是否支持 BGP 传输路由？
-是，支持 BGP 传输路由，但例外是 Azure VPN 网关 **不** 会将默认路由播发到其他 BGP 对等节点。 若要启用跨多个 Azure VPN 网关的传输路由，必须在所有中间 VNet 到 VNet 连接上启用 BGP。 有关详细信息，请参阅[关于 BGP](../articles/vpn-gateway/vpn-gateway-bgp-overview.md)。
+是，支持 BGP 传输路由，但例外是 Azure VPN 网关**不**会将默认路由播发到其他 BGP 对等节点。 若要启用跨多个 Azure VPN 网关的传输路由，必须在所有中间 VNet 到 VNet 连接上启用 BGP。 有关详细信息，请参阅[关于 BGP](../articles/vpn-gateway/vpn-gateway-bgp-overview.md)。
 
 ### <a name="can-i-have-more-than-one-tunnel-between-azure-vpn-gateway-and-my-on-premises-network"></a>在 Azure VPN 网关和我的本地网络之间能否有多个隧道？
 能，可以在 Azure VPN 网关和本地网络之间建立多个 S2S VPN 隧道。 请注意，所有这些隧道都会计入 Azure VPN 网关的隧道总数，而且必须在两个隧道上启用 BGP。

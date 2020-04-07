@@ -5,15 +5,15 @@ author: ccompy
 ms.assetid: 3be1f4bd-8a81-4565-8a56-528c037b24bd
 ms.topic: article
 origin.date: 06/06/2019
-ms.date: 01/13/2020
+ms.date: 03/30/2020
 ms.author: v-tawe
 ms.custom: seodec18
-ms.openlocfilehash: 1293c70eaee16ddc2914edccdd9575acb82372ce
-ms.sourcegitcommit: b2f2bb08ab1b5ccb3c596d84b3b6ddca5bba3903
+ms.openlocfilehash: 31ce7ad9c9b523114b65dc5d800e3335908fda6d
+ms.sourcegitcommit: 44d3fe59952847e5394bbe6c05bd6f333bb56345
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80151727"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80522091"
 ---
 # <a name="azure-app-service-access-restrictions"></a>Azure 应用服务访问限制 #
 
@@ -43,7 +43,7 @@ ms.locfileid: "80151727"
 
 ## <a name="adding-ip-address-rules"></a>添加 IP 地址规则
 
-可单击“[+] 添加”以添加新的访问限制规则  。 规则在添加后会立即生效。 规则会从最小的数字开始往上，按优先级顺序强制执行。 即使仅添加了一个规则，一个隐式的“拒绝所有”也会立即生效。
+可单击“[+] 添加规则”以添加新的访问限制规则  。 规则在添加后会立即生效。 规则会从最小的数字开始往上，按优先级顺序强制执行。 即使仅添加了一个规则，一个隐式的“拒绝所有”也会立即生效。
 
 创建规则时，必须选择“允许/拒绝”以及规则的类型。 此时，需要提供优先级值，以及要限制访问的内容。  可以选择性地添加规则的名称和说明。  
 
@@ -128,7 +128,7 @@ management.chinacloudapi.cn/subscriptions/**subscription ID**/resourceGroups/**r
 
 ## <a name="azure-function-app-access-restrictions"></a>Azure 函数应用访问限制
 
-访问限制适用于与应用服务计划具有相同功能的两种函数应用。 启用访问限制会针对任何不允许的 IP 禁用门户代码编辑器。
+访问限制也适用于与应用服务计划具有相同功能的函数应用。 启用访问限制会针对任何不允许的 IP 禁用门户代码编辑器。
 
 ## <a name="next-steps"></a>后续步骤
 [Azure 函数应用的访问限制](../azure-functions/functions-networking-options.md#inbound-ip-restrictions)

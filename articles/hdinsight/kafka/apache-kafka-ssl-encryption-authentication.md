@@ -9,12 +9,12 @@ ms.topic: conceptual
 origin.date: 05/01/2019
 ms.date: 03/02/2020
 ms.author: v-yiso
-ms.openlocfilehash: 02ba6143465b59ae484ab693dc83a8dcaf17f418
-ms.sourcegitcommit: 46fd4297641622c1984011eac4cb5a8f6f94e9f5
+ms.openlocfilehash: 85e68bbc0df077a1591bb926721af46476318ebd
+ms.sourcegitcommit: 5fb45da006859215edc8211481f13174aa43dbeb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77563520"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80634505"
 ---
 # <a name="setup-secure-sockets-layer-ssl-encryption-and-authentication-for-apache-kafka-in-azure-hdinsight"></a>为 Azure HDInsight 中的 Apache Kafka 设置安全套接字层 (SSL) 加密和身份验证
 
@@ -23,6 +23,8 @@ ms.locfileid: "77563520"
 > [!Important]
 > 有两个客户端可用于 Kafka 应用程序：一个 Java 客户端和一个控制台客户端。 只有 Java 客户端 `ProducerConsumer.java` 可以通过 SSL 来实现生成和使用。 控制台生成方客户端 `console-producer.sh` 不能与 SSL 配合工作。
 
+> [!Note] 
+> 版本 1.1 的 HDInsight Kafka 控制台生成方不支持 SSL。
 ## <a name="apache-kafka-broker-setup"></a>Apache Kafka 代理设置
 
 Kafka SSL 代理设置按以下方式使用四个 HDInsight 群集 VM：
@@ -50,7 +52,7 @@ Kafka SSL 代理设置按以下方式使用四个 HDInsight 群集 VM：
 遵照以下详细说明完成代理设置：
 
 > [!Important]
-> 在以下代码片段中，wnX 是三个工作器节点中某个节点的缩写，应该相应地将其替换为 `wn0`、`wn1` 或 `wn2`。 应将 `WorkerNode0_Name` 和 `HeadNode0_Name` 替换为相应计算机的名称，例如 `wn0-abcxyz` 或 `hn0-abcxyz`。
+> 在以下代码片段中，wnX 是三个工作器节点中某个节点的缩写，应该相应地将其替换为 `wn0`、`wn1` 或 `wn2`。 应将 `WorkerNode0_Name` 和 `HeadNode0_Name` 替换为相应计算机的名称。
 
 1. 在头节点 0 上执行初始设置，使 HDInsight 填充证书颁发机构 (CA) 的角色。
 
@@ -152,7 +154,13 @@ Kafka SSL 代理设置按以下方式使用四个 HDInsight 群集 VM：
 
 1. 转到 Ambari 配置 UI，确认新属性是否显示在“高级 kafka-env”和“kafka-env 模板”属性下。  
 
+    对于 HDI 版本 3.6：
+
     ![在 Ambari 中编辑“kafka-env template”属性](./media/apache-kafka-ssl-encryption-authentication/editing-configuration-kafka-env.png)
+
+    对于 HDI 版本 4.0：
+
+     ![在 Ambari 4 中编辑“kafka-env template”属性](./media/apache-kafka-ssl-encryption-authentication/editing-configuration-kafka-env-four.png)   
 
 1. 重启所有 Kafka 代理。
 1. 使用生成方和使用方选项启动管理客户端，以验证生成方和使用方是否在端口 9093 上运行。

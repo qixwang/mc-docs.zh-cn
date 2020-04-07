@@ -1,5 +1,5 @@
 ---
-title: Azure 媒体服务 v3 可用的云和区域 | Microsoft Docs
+title: Azure 媒体服务 v3 可用的云和区域
 description: 本文讨论 Azure 媒体服务 v3 可用的 Azure 云和区域。
 services: media-services
 documentationcenter: ''
@@ -9,15 +9,15 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-origin.date: 05/07/2019
-ms.date: 09/23/2019
+origin.date: 01/21/2020
+ms.date: 04/06/2020
 ms.author: v-jay
-ms.openlocfilehash: 67f34dcf0e698a8953475c01b25bdd4afb5ee022
-ms.sourcegitcommit: 8248259e4c3947aa0658ad6c28f54988a8aeebf8
+ms.openlocfilehash: 1f0c594b6148140b578a6af70993a5c39771da37
+ms.sourcegitcommit: fe9ed98aaee287a21648f866bb77cb6888f75b0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71125656"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80625774"
 ---
 # <a name="clouds-and-regions-in-which-azure-media-services-v3-exists"></a>存在 Azure 媒体服务 v3 的云和区域
 
@@ -37,11 +37,11 @@ Azure 媒体服务 v3 可通过 Azure 资源管理器清单在 Azure 中国世�
 
 [部署 Azure 媒体服务的区域](https://azure.microsoft.com/global-infrastructure/services/?regions=china-non-regional,china-east,china-east-2,china-north,china-north-2&products=media-services)
 
-### <a name="region-code-name"></a>区域代码名 
+### <a name="region-code-name"></a>区域代码名
 
 如果需要提供**位置**参数，则需要提供区域代码名称作为**位置**值。 若要获取你的帐户所在的并且应当将你的调用路由到的区域的代码名称，可以在 [Azure CLI](/cli/?view=azure-cli-latest) 中运行以下命令行
 
-```bash
+```azurecli
 az account list-locations
 ```
 
@@ -67,7 +67,7 @@ az account list-locations
 ### <a name="azure-china-21vianet"></a>Azure 中国世纪互联
 
 |终结点||
-| --- | --- | 
+| --- | --- |
 | Azure Resource Manager | `https://management.chinacloudapi.cn/` |
 | 身份验证 | `https://login.chinacloudapi.cn/` |
 | 令牌受众 |  `https://management.core.chinacloudapi.cn/` |

@@ -5,15 +5,14 @@ services: application-gateway
 author: caya
 ms.service: application-gateway
 ms.topic: article
-origin.date: 11/04/2019
-ms.date: 11/19/2019
+ms.date: 03/30/2020
 ms.author: v-junlch
-ms.openlocfilehash: ed125123017087e08b8f5fc550d1d69ba7d4c0b2
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: f8feb62342a6d31e226823ad4f83897594b5f7c0
+ms.sourcegitcommit: 64584c0bf31b4204058ae2b4641356b904ccdd58
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79292491"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80581663"
 ---
 # <a name="annotations-for-application-gateway-ingress-controller"></a>应用程序网关入口控制器的批注 
 
@@ -28,7 +27,7 @@ ms.locfileid: "79292491"
 | 批注键 | 值类型 | 默认值 | 允许的值
 | -- | -- | -- | -- |
 | [appgw.ingress.kubernetes.io/backend-path-prefix](#backend-path-prefix) | `string` | `nil` | |
-| [appgw.ingress.kubernetes.io/ssl-redirect](#ssl-redirect) | `bool` | `false` | |
+| [appgw.ingress.kubernetes.io/ssl-redirect](#tls-redirect) | `bool` | `false` | |
 | [appgw.ingress.kubernetes.io/connection-draining](#connection-draining) | `bool` | `false` | |
 | [appgw.ingress.kubernetes.io/connection-draining-timeout](#connection-draining) | `int32`（秒） | `30` | |
 | [appgw.ingress.kubernetes.io/cookie-based-affinity](#cookie-based-affinity) | `bool` | `false` | |
@@ -71,7 +70,7 @@ spec:
 > [!NOTE] 
 > 在以上示例中，我们只定义了一个规则。 但是，批注适用于整个入口资源，因此，如果用户定义了多个规则，则会为指定的每个路径设置后端路径前缀。 因此，如果用户想要创建包含不同路径前缀的不同规则（即使是对于同一服务），需要定义不同的入口资源。
 
-## <a name="ssl-redirect"></a>SSL 重定向
+## <a name="tls-redirect"></a>TLS 重定向
 
 可将应用程序网关[配置](/application-gateway/application-gateway-redirect-overview)为向其 HTTPS 对等方自动重定向 HTTP URL。 如果此批注存在且已正确配置 TLS，Kubernetes 入口控制器将创建[采用某种重定向配置的路由规则](/application-gateway/redirect-http-to-https-portal#add-a-routing-rule-with-a-redirection-configuration)，并将更改应用到应用程序网关。 创建的重定向是 HTTP `301 Moved Permanently`。
 

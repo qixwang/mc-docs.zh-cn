@@ -10,12 +10,12 @@ ms.service: iot-dps
 services: iot-dps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 566941fa31c63b54fb64820c92f29ce6be4961e6
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: 665314580619c4278b712861c5be7b3d07e8b62a
+ms.sourcegitcommit: 260800ede66f48c886d1426a0fac18b4d402b4f2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79291144"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586804"
 ---
 # <a name="quickstart-provision-a-simulated-tpm-device-using-the-azure-iot-c-sdk"></a>快速入门：使用 Azure IoT C SDK 预配模拟的 TPM 设备
 
@@ -204,7 +204,7 @@ Azure IoT 设备预配服务支持两类注册：
     Provisioning Status: PROV_DEVICE_REG_STATUS_ASSIGNING
 
     Registration Information received from service:
-    test-docs-hub.azure-devices.net, deviceId: test-docs-device
+    test-docs-hub.azure-devices.cn, deviceId: test-docs-device
     ```
 
 8. 预配服务将模拟设备预配到 IoT 中心后，中心的“IoT 设备”中会显示设备 ID  。 

@@ -11,12 +11,12 @@ ms.workload: na
 origin.date: 06/28/2019
 ms.author: v-yiso
 ms.date: 09/30/2019
-ms.openlocfilehash: f5f76c94152d7bbbe629441ef08499f9c7344987
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: a08ea96409e185085a80559b675594ede6dbdc37
+ms.sourcegitcommit: 5fb45da006859215edc8211481f13174aa43dbeb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79291562"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80634369"
 ---
 # <a name="choose-the-right-iot-hub-tier-for-your-solution"></a>选择适用于解决方案的 IoT 中心层
 
@@ -73,37 +73,37 @@ IoT 中心基本层和标准层所支持的功能存在差异，也就是说，�
 
 | API | 基本层 | 免费/标准层 |
 | --- | ---------- | ------------- |
-| [删除设备](https://docs.microsoft.com/rest/api/iothub/service/deletedevice) | 是 | 是 |
-| [获取设备](https://docs.microsoft.com/rest/api/iothub/service/getdevice) | 是 | 是 |
-| [删除模块](https://docs.microsoft.com/rest/api/iothub/service/deletemodule) | 是 | 是 |
-| [获取模块](https://docs.microsoft.com/rest/api/iothub/service/getmodule) | 是 | 是 |
-| [获取注册表统计信息](https://docs.microsoft.com/rest/api/iothub/service/getdeviceregistrystatistics) | 是 | 是 |
-| [获取服务统计信息](https://docs.microsoft.com/rest/api/iothub/service/getservicestatistics) | 是 | 是 |
-| [创建或更新设备](https://docs.microsoft.com/rest/api/iothub/service/createorupdatedevice) | 是 | 是 |
-| [创建或更新模块](https://docs.microsoft.com/rest/api/iothub/service/createorupdatemodule) | 是 | 是 |
-| [查询 IoT 中心](https://docs.microsoft.com/rest/api/iothub/service/queryiothub) | 是 | 是 |
+| [删除设备](https://docs.microsoft.com/rest/api/iothub/service/registrymanager/deletedevice) | 是 | 是 |
+| [获取设备](https://docs.microsoft.com/rest/api/iothub/service/registrymanager/getdevice) | 是 | 是 |
+| [删除模块](https://docs.microsoft.com/rest/api/iothub/service/registrymanager/deletemodule) | 是 | 是 |
+| [获取模块](https://docs.microsoft.com/rest/api/iothub/service/registrymanager/getmodule) | 是 | 是 |
+| [获取注册表统计信息](https://docs.microsoft.com/rest/api/iothub/service/registrymanager/getdevicestatistics) | 是 | 是 |
+| [获取服务统计信息](https://docs.microsoft.com/rest/api/iothub/service/registrymanager/getservicestatistics) | 是 | 是 |
+| [创建或更新设备](https://docs.microsoft.com/rest/api/iothub/service/registrymanager/createorupdatedevice) | 是 | 是 |
+| [创建或更新模块](https://docs.microsoft.com/rest/api/iothub/service/registrymanager/createorupdatemodule) | 是 | 是 |
+| [查询 IoT 中心](https://docs.microsoft.com/rest/api/iothub/service/registrymanager/queryiothub) | 是 | 是 |
 | [创建文件上传 SAS URI](https://docs.microsoft.com/rest/api/iothub/device/createfileuploadsasuri) | 是 | 是 |
 | [接收发往设备的通知](https://docs.microsoft.com/rest/api/iothub/device/receivedeviceboundnotification) | 是 | 是 |
 | [发送设备事件](https://docs.microsoft.com/rest/api/iothub/device/senddeviceevent) | 是 | 是 |
 | 发送模块事件 | 仅限 AMQP 和 MQTT | 仅限 AMQP 和 MQTT |
 | [更新文件上传状态](https://docs.microsoft.com/rest/api/iothub/device/updatefileuploadstatus) | 是 | 是 |
-| [批量设备操作](https://docs.microsoft.com/rest/api/iothub/service/bulkcreateorupdatedevices) | 是的，IoT Edge 功能除外 | 是 |
-| [取消导入导出作业](https://docs.microsoft.com/rest/api/iothub/service/cancelimportexportjob) | 是 | 是 |
-| [创建导入导出作业](https://docs.microsoft.com/rest/api/iothub/service/createimportexportjob) | 是 | 是 |
-| [获取导入导出作业](https://docs.microsoft.com/rest/api/iothub/service/getimportexportjob) | 是 | 是 |
-| [获取导入导出作业](https://docs.microsoft.com/rest/api/iothub/service/getimportexportjobs) | 是 | 是 |
-| [清除命令队列](https://docs.microsoft.com/rest/api/iothub/service/purgecommandqueue) |   | 是 |
-| [获取设备孪生](https://docs.microsoft.com/rest/api/iothub/service/gettwin) |   | 是 |
-| [获取模块孪生](https://docs.microsoft.com/rest/api/iothub/service/getmoduletwin) |   | 是 |
-| [调用设备方法](https://docs.microsoft.com/rest/api/iothub/service/invokedevicemethod) |   | 是 |
-| [更新设备孪生](https://docs.microsoft.com/rest/api/iothub/service/updatetwin) |   | 是 |
-| [更新模块孪生](https://docs.microsoft.com/rest/api/iothub/service/updatemoduletwin) |   | 是 |
+| [批量设备操作](https://docs.microsoft.com/rest/api/iothub/service/registrymanager/bulkdevicecrud) | 是的，IoT Edge 功能除外 | 是 |
+| [取消导入导出作业](https://docs.microsoft.com/rest/api/iothub/service/jobclient/cancelimportexportjob) | 是 | 是 |
+| [创建导入导出作业](https://docs.microsoft.com/rest/api/iothub/service/jobclient/createimportexportjob) | 是 | 是 |
+| [获取导入导出作业](https://docs.microsoft.com/rest/api/iothub/service/jobclient/getimportexportjob) | 是 | 是 |
+| [获取导入导出作业](https://docs.microsoft.com/rest/api/iothub/service/jobclient/getimportexportjobs) | 是 | 是 |
+| [清除命令队列](https://docs.microsoft.com/rest/api/iothub/service/registrymanager/purgecommandqueue) |   | 是 |
+| [获取设备孪生](https://docs.microsoft.com/rest/api/iothub/service/twin/getdevicetwin) |   | 是 |
+| [获取模块孪生](https://docs.microsoft.com/rest/api/iothub/service/twin/getmoduletwin) |   | 是 |
+| [调用设备方法](https://docs.microsoft.com/rest/api/iothub/service/devicemethod/invokedevicemethod) |   | 是 |
+| [更新设备孪生](https://docs.microsoft.com/rest/api/iothub/service/twin/updatedevicetwin) |   | 是 |
+| [更新模块孪生](https://docs.microsoft.com/rest/api/iothub/service/twin/updatemoduletwin) |   | 是 |
 | [放弃发往设备的通知](https://docs.microsoft.com/rest/api/iothub/device/abandondeviceboundnotification) |   | 是 |
 | [完成发往设备的通知](https://docs.microsoft.com/rest/api/iothub/device/completedeviceboundnotification) |   | 是 |
-| [取消作业](https://docs.microsoft.com/rest/api/iothub/service/canceljob) |   | 是 |
-| [创建作业](https://docs.microsoft.com/rest/api/iothub/service/createjob) |   | 是 |
-| [获取作业](https://docs.microsoft.com/rest/api/iothub/service/getjob) |   | 是 |
-| [查询作业](https://docs.microsoft.com/rest/api/iothub/service/queryjobs) |   | 是 |
+| [取消作业](https://docs.microsoft.com/rest/api/iothub/service/jobclient/canceljob) |   | 是 |
+| [创建作业](https://docs.microsoft.com/rest/api/iothub/service/jobclient/createjob) |   | 是 |
+| [获取作业](https://docs.microsoft.com/rest/api/iothub/service/jobclient/getjob) |   | 是 |
+| [查询作业](https://docs.microsoft.com/rest/api/iothub/service/jobclient/queryjobs) |   | 是 |
 
 ## <a name="message-throughput"></a>消息吞吐量
 

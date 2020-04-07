@@ -4,16 +4,16 @@ description: 了解使用 Azure Stack Hub 中的 VM 时的不同功能和注意�
 author: WenJason
 ms.topic: article
 origin.date: 2/3/2020
-ms.date: 03/23/2020
+ms.date: 04/01/2020
 ms.author: v-jay
 ms.reviewer: kivenkat
 ms.lastreviewed: 10/09/2019
-ms.openlocfilehash: 5abbb1139f714774df3ebca578fb6c76bfa1385c
-ms.sourcegitcommit: e500354e2fd8b7ac3dddfae0c825cc543080f476
+ms.openlocfilehash: 8473ca75a64999ee6ae91cbe6d1005b80f59d94e
+ms.sourcegitcommit: fe9ed98aaee287a21648f866bb77cb6888f75b0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2020
-ms.locfileid: "79547063"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80625727"
 ---
 # <a name="azure-stack-hub-vm-features"></a>Azure Stack Hub VM 功能
 
@@ -24,7 +24,7 @@ Azure Stack Hub 虚拟机 (VM) 提供可按需缩放的计算资源。 在部署
 | 功能 | Azure（中国） | Azure Stack Hub |
 | --- | --- | --- |
 | 虚拟机映像 | Azure 市场包含可用于创建 VM 的映像。 若要查看 Azure 市场中的可用映像列表，请参阅 [Azure 市场](https://market.azure.cn/zh-cn)页。 | Azure Stack Hub 市场中默认不会提供任何映像。 Azure Stack Hub 云管理员必须先将映像发布或下载到 Azure Stack Hub 市场，然后用户才能使用这些映像。 |
-| VHD 代系 | 第二代 VM 支持第一代 VM 所不支持的某些关键特性。 这些特性包括更大的内存、Intel Software Guard Extensions (Intel SGX) 和虚拟化持久性内存 (vPMEM)。 在本地运行的第二代 VM 具有 Azure 中尚不支持的一些功能。 有关详细信息，请参阅[对 Azure 上的第 2 代 VM 的支持](/virtual-machines/windows/generation-2)  | Azure Stack Hub 仅支持第一代 VM。 可以将第一代 VM 从 VHDX 转换为 VHD 文件格式，从动态扩展磁盘转换为固定大小磁盘。 无法更改 VM 的代次。 有关详细信息，请参阅[对 Azure 上的第 2 代 VM 的支持](/virtual-machines/windows/generation-2)。 |
+| VHD 代系 | 第二代 VM 支持第一代 VM 所不支持的某些关键特性。 这些特性包括更大的内存和虚拟化持久性内存 (vPMEM)。 在本地运行的第二代 VM 具有 Azure 中尚不支持的一些功能。 有关详细信息，请参阅[对 Azure 上的第 2 代 VM 的支持](/virtual-machines/windows/generation-2)  | Azure Stack Hub 仅支持第一代 VM。 可以将第一代 VM 从 VHDX 转换为 VHD 文件格式，从动态扩展磁盘转换为固定大小磁盘。 无法更改 VM 的代次。 有关详细信息，请参阅[对 Azure 上的第 2 代 VM 的支持](/virtual-machines/windows/generation-2)。 |
 | 虚拟机大小 | Azure 支持各种不同的 VM 大小。 若要了解可用的大小和选项，请参阅 [Windows VM 大小](/virtual-machines/virtual-machines-windows-sizes)和 [Linux VM 大小](/virtual-machines/linux/sizes)主题。 | Azure Stack Hub 支持一部分可在 Azure 中使用的 VM 大小。 若要查看支持的大小列表，请参阅本文的 [VM 大小](#vm-sizes)部分。 |
 | 虚拟机配额 | [配额限制](/azure-resource-manager/management/azure-subscription-service-limits#managing-limits)由 Azure 设置 | Azure Stack Hub 云管理员在提供 VM 给其用户之前，必须先分配配额。 |
 | 虚拟机扩展 |Azure 支持多种不同的 VM 扩展。 若要了解可用的扩展，请参阅 [VM 扩展和功能](/virtual-machines/windows/extensions-features)一文。| Azure Stack Hub 支持一部分可在 Azure 中使用的扩展，每个扩展有特定的版本。 Azure Stack Hub 云管理员可以选择要将哪些扩展提供给其用户使用。 若要查看支持的扩展列表，请参阅本文的 [VM 扩展](#vm-extensions)部分。 |

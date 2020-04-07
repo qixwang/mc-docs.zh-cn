@@ -3,26 +3,26 @@ title: 在自定义策略中定义验证技术配置文件
 titleSuffix: Azure AD B2C
 description: 在 Azure Active Directory B2C 中使用自定义策略中的验证技术配置文件来验证声明。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 12/30/2019
+ms.date: 04/01/2020
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: 37fabccf1dbae96c164757cf68175d95584b10ba
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.openlocfilehash: cdebc69d5223b8e76dd713df66ee10583990a4f8
+ms.sourcegitcommit: 64584c0bf31b4204058ae2b4641356b904ccdd58
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75624034"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80581666"
 ---
 # <a name="define-a-validation-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>定义采用 Azure Active Directory B2C 的自定义策略的验证技术配置文件
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-验证技术配置文件是来自任何协议（如 [Azure Active Directory](active-directory-technical-profile.md) 或 [REST API](restful-technical-profile.md)）的普通技术配置文件。 验证技术配置文件返回输出声明，或返回 HTTP 409 错误消息（冲突响应状态代码），其中包含以下数据：
+验证技术配置文件是来自任何协议（如 [Azure Active Directory](active-directory-technical-profile.md) 或 [REST API](restful-technical-profile.md)）的普通技术配置文件。 验证技术配置文件返回输出声明，或返回 4xx HTTP 状态代码，其中包含以下数据。 有关详细信息，请参阅[返回错误消息](restful-technical-profile.md#returning-error-message)
 
 ```JSON
 {
@@ -32,7 +32,7 @@ ms.locfileid: "75624034"
 }
 ```
 
-从验证技术配置文件返回的声明会添加回声明包。 可以在后续验证技术配置文件中使用这些声明。
+验证技术配置文件的输出声明范围限制为调用验证技术配置文件的[自断言技术配置文件](self-asserted-technical-profile.md)及其验证技术配置文件。 若要在下一个业务流程步骤中使用输出声明，请将输出声明添加到调用验证技术配置文件的自断言技术配置文件。
 
 验证技术配置文件按它们在 ValidationTechnicalProfiles  元素中出现的顺序进行执行。 可以在验证技术配置文件中配置在验证技术配置文件引发错误或成功时，任何后续验证技术配置文件是否应继续执行。
 

@@ -14,26 +14,36 @@ ms.devlang: multiple
 ms.topic: overview
 ms.tgt_pltfrm: multiple
 ms.workload: media
-origin.date: 09/17/2019
-ms.date: 12/09/2019
+origin.date: 03/09/2020
+ms.date: 04/06/2020
 ms.author: v-jay
 ms.custom: mvc
-ms.openlocfilehash: 847d66f44b3bcc648d25a291c8dc93338703699b
-ms.sourcegitcommit: 369038a7d7ee9bbfd26337c07272779c23d0a507
+ms.openlocfilehash: 834a074593eb00cbb04d07b853fc2793028f6963
+ms.sourcegitcommit: fe9ed98aaee287a21648f866bb77cb6888f75b0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74807638"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80625785"
 ---
 # <a name="azure-media-services-v3-overview"></a>Azure 媒体服务 v3 概述
 
-Azure 媒体服务是一个基于云的平台，用于生成解决方案，以便实现广播质量的视频流、增强可访问性和分发、分析内容，等等。 无论是应用开发人员、呼叫中心、政府机构还是娱乐公司，媒体服务都能帮助创建应用，以在当今最热门的移动设备和浏览器向上为广大受众提供品质卓越的媒体体验。
+Azure 媒体服务是一个基于云的平台，用于生成解决方案，以便实现广播质量的视频流、增强可访问性和分发、分析内容，等等。 无论你是应用开发人员、呼叫中心、政府机构还是娱乐公司，媒体服务都能帮助你创建应用，通过当今最热门的移动设备和浏览器向广大受众提供品质卓越的媒体体验。
 
 媒体服务 v3 SDK 基于[媒体服务 v3 OpenAPI 规范 (Swagger)](https://aka.ms/ams-v3-rest-sdk)。
 
 > [!NOTE]
-> 目前，无法使用 Azure 门户来管理 v3 资源。 请使用 [REST API](https://aka.ms/ams-v3-rest-ref)、[CLI](https://aka.ms/ams-v3-cli-ref) 或受支持的 [SDK](media-services-apis-overview.md#sdks) 之一。
+> 目前，可以使用 [Azure 门户](https://portal.azure.cn/)执行以下操作：管理媒体服务 v3 [直播活动](live-events-outputs-concept.md)、查看（而不是管理）v3 [资产](assets-concept.md)、[获取有关访问 API 的信息](access-api-portal.md)。 对于其他所有管理任务（例如，[转换和作业](transforms-jobs-concept.md)和[内容保护](content-protection-overview.md)），请使用 [REST API](https://docs.microsoft.com/rest/api/media/)、[CLI](https://aka.ms/ams-v3-cli-ref) 或某个受支持的 [SDK](media-services-apis-overview.md#sdks)。
 
+[!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
+
+## <a name="compliance-privacy-and-security"></a>符合性、隐私和安全性
+
+需要重点提醒的是，在使用 Azure 媒体服务时，你必须遵守所有适用法律，不得以侵犯他人权利或可能对他人有害的方式使用媒体服务或任何 Azure 服务。
+
+在将任何视频/图像上传到媒体服务之前，必须拥有该视频/图像的适当使用权限，包括根据法律的要求，获得视频/图像中的个人（如果有）授予的，在媒体服务和 Azure 中使用、处理和存储其数据的所有必要许可。 某些司法辖区可能会对收集、在线处理和存储某些类别的数据（例如生物识别数据）施加特殊的法律要求。 在根据特殊法律要求使用媒体服务和 Azure 处理与存储任何数据之前，必须确保符合可能适用于你的任何法律要求。
+
+若要了解媒体服务中的合规性、隐私和安全性，请访问 Azure [信任中心](https://www.trustcenter.cn/)。 若要了解世纪互联的隐私义务、数据处理和保留惯例，包括如何删除数据，请查看世纪互联的[隐私声明](https://www.azure.cn/support/legal/privacy-statement/)、[联机服务条款](https://www.21vbluecloud.com/ostpt/) ("OST") 和[数据处理附录](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=67) ("DPA")。 使用媒体服务即表示你同意遵守 OST、DPA 和隐私声明。
+ 
 ## <a name="what-can-i-do-with-media-services"></a>媒体服务的功能是什么？
 
 使用媒体服务，你可以在云中构建各种媒体工作流。 下面是媒体服务的功能的一些示例：
@@ -44,8 +54,8 @@ Azure 媒体服务是一个基于云的平台，用于生成解决方案，以�
 * 分析录制的视频或音频内容。 例如，为了实现更高的客户满意度，组织可以提取语音转文本并生成搜索索引和仪表板。 然后，他们可以提取围绕常见的投诉、投诉原因以及其他相关数据的情报。
 * 当客户（例如电影工作室）需要限制对版权所有作品的访问和使用时，创建订阅视频服务并流式传输受 DRM 保护的内容。
 * 提供脱机内容，以便在飞机、火车和汽车上播放。 如果客户希望断开网络连接，可能需要将内容下载到手机或平板电脑上播放。
-* 使用 Azure 媒体服务和 [Azure 认知服务 API](https://docs.azure.cn/#pivot=products&panel=ai) 实现教育在线学习视频平台，提供语音转文本字幕、多种语言翻译等功能。
-* 将 Azure 媒体服务与 [Azure 认知服务 API](https://docs.azure.cn/#pivot=products&panel=ai) 配合使用来为视频添加字幕和描述文字，满足更多受众的需求（例如，听力障碍人士或想用不同语言阅读的人）。
+* 使用 Azure 媒体服务和 [Azure 认知服务 API](https://docs.azure.cn/?pivot=products&panel=ai) 实现教育在线学习视频平台，提供语音转文本字幕、多种语言翻译等功能。
+* 将 Azure 媒体服务与 [Azure 认知服务 API](https://docs.azure.cn/?pivot=products&panel=ai) 配合使用来为视频添加字幕和描述文字，满足更多受众的需求（例如，听力障碍人士或想用不同语言阅读的人）。
 
 ## <a name="how-can-i-get-started-with-v3"></a>如何开始使用 v3？ 
 
@@ -93,4 +103,3 @@ Azure 媒体服务是一个基于云的平台，用于生成解决方案，以�
 ## <a name="next-steps"></a>后续步骤
 
 [了解基本概念](concepts-overview.md)
-

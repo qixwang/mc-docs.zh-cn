@@ -11,12 +11,12 @@ ms.topic: conceptual
 origin.date: 01/14/2020
 ms.date: 03/16/2020
 ms.author: v-tawe
-ms.openlocfilehash: 893184233d91f4e7d3a60c22a4ad53220d132947
-ms.sourcegitcommit: b2f2bb08ab1b5ccb3c596d84b3b6ddca5bba3903
+ms.openlocfilehash: 3613a7fd9cc5ffeb86ccd7300a86e6f26244dfaa
+ms.sourcegitcommit: c11cf8d623535943168d5cb43afef2d27a271765
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80151531"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80386222"
 ---
 # <a name="speech-services-with-sovereign-clouds"></a>将语音服务与主权云配合使用
 
@@ -33,7 +33,7 @@ ms.locfileid: "80151531"
 - 支持的功能：
   - 语音转文本
   - 文本转语音
-  - 用于文本转语音的神经语音（预览版，免费）
+  - 用于文本转语音的神经语音（免费预览版）
   - 语音翻译器
 - 不支持的功能
   - 自定义语音识别（声学/语言调整）

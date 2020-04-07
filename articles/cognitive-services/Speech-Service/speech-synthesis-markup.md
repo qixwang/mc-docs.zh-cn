@@ -11,12 +11,12 @@ ms.topic: conceptual
 origin.date: 03/05/2020
 ms.date: 03/16/2020
 ms.author: v-tawe
-ms.openlocfilehash: bd9fc0ba521c174e3e0f0ba8b8884d4f75f5f6a7
-ms.sourcegitcommit: b2f2bb08ab1b5ccb3c596d84b3b6ddca5bba3903
+ms.openlocfilehash: 224ded93965f54cbff493145fdd7528b6c5ea27f
+ms.sourcegitcommit: c11cf8d623535943168d5cb43afef2d27a271765
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80151515"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80386224"
 ---
 # <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>通过语音合成标记语言 (SSML) 改善合成
 
@@ -32,7 +32,7 @@ SSML 的语音服务实现基于万维网联合会的[语音合成标记语言�
 ## <a name="standard-and-neural-voices"></a>标准语音和神经语音
 
 > [!NOTE]
-> 目前，神经语音为预览版并且免费。
+> 目前，神经语音以免费预览版提供。
 
 请从标准语音和神经语音中进行选择，50 多种标准语音已在 10 种以上的语言和区域设置中提供，5 种神经语音已在 4 种语言和区域设置中提供。 有关支持的语言、区域设置和语音（神经和标准）的完整列表，请参阅[语言支持](language-support.md)。
 

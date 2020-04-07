@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/04/2020
+ms.date: 04/01/2020
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: 294c748578364f8765f9a7ef5d4b17bc7bd9e1ea
-ms.sourcegitcommit: 1ac138a9e7dc7834b5c0b62a133ca5ce2ea80054
+ms.openlocfilehash: 950596bb707ac6ffa86954a374caa0641ad9f4ce
+ms.sourcegitcommit: 64584c0bf31b4204058ae2b4641356b904ccdd58
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78265999"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80581648"
 ---
 # <a name="define-a-self-asserted-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>定义采用 Azure Active Directory B2C 中自定义策略的自断言技术配置文件
 
@@ -120,6 +120,8 @@ ms.locfileid: "78265999"
 
 “OutputClaims”元素包含要返回到下一个业务流程步骤的的声明列表  。 “DefaultValue”属性只有在从未设置过声明的情况下才会生效  。 如果在上一业务流程步骤中设置过，即使用户将值留空，默认值也不会生效。 若要强制使用默认值，请将“AlwaysUseDefaultValue”  属性设置为 `true`。
 
+出于安全原因，密码声明值（`UserInputType` 设置为 `Password`）仅可用于自断言技术配置文件的验证技术配置文件。 在下一个业务流程步骤中，不能使用密码声明。 
+
 > [!NOTE]
 > 在以前的 Identity Experience Framework (IEF) 版本中，输出声明用于从用户处收集数据。 若要从用户处收集数据，请改用“DisplayClaims”集合  。
 
@@ -129,7 +131,7 @@ ms.locfileid: "78265999"
 
 在自断言技术配置文件中，输出声明集合将声明返回到下一个业务流程步骤。
 
-以下情况应使用输出声明：
+在以下情况下使用输出声明：
 
 - 声明由输出声明转换输出  。
 - 在输出声明中设置默认值无需从用户处收集数据或从验证技术配置文件返回数据  。 `LocalAccountSignUpWithLogonEmail` 自断言技术配置文件将“executed-SelfAsserted-Input”  声明设置为 `true`。
@@ -175,7 +177,7 @@ ms.locfileid: "78265999"
 
 ## <a name="persist-claims"></a>保存声明
 
-如果“PersistedClaims”  元素不存在，则自断言技术配置文件不会将数据保存到 Azure AD B2C。 而是改为调用负责保留数据的验证技术配置文件。 例如，注册策略使用 `LocalAccountSignUpWithLogonEmail` 自断言技术配置文件来收集新用户配置文件。 `LocalAccountSignUpWithLogonEmail` 技术配置文件调用验证技术配置文件来在 Azure AD B2C 中创建帐户。
+不使用 PersistedClaims 元素。 自断言技术配置文件不会将数据持久保存到 Azure AD B2C。 而是改为调用负责保留数据的验证技术配置文件。 例如，注册策略使用 `LocalAccountSignUpWithLogonEmail` 自断言技术配置文件来收集新用户配置文件。 `LocalAccountSignUpWithLogonEmail` 技术配置文件调用验证技术配置文件来在 Azure AD B2C 中创建帐户。
 
 ## <a name="validation-technical-profiles"></a>验证技术配置文件
 
@@ -199,6 +201,7 @@ ms.locfileid: "78265999"
 | setting.showContinueButton | 否 | 显示“继续”按钮。 可能的值为 `true`（默认）或 `false` |
 | setting.showSignupLink <sup>2</sup>| 否 | 显示“注册”按钮。 可能的值为 `true`（默认）或 `false` |
 | setting.forgotPasswordLinkLocation <sup>2</sup>| 否| 显示“忘记密码”链接。 可能的值：`AfterInput`（默认值）链接显示在页面底部，或者 `None`（删除“忘记密码”链接）。|
+| setting.enableRememberMe <sup>2</sup>| 否| 显示“使我保持登录状态”复选框。 可能的值：`true` 或 `false`（默认值）。 |
 | IncludeClaimResolvingInClaimsHandling  | 否 | 对于输入和输出声明，指定[声明解析](claim-resolver-overview.md)是否包含在技术配置文件中。 可能的值：`true` 或 `false` （默认值）。 若要使用技术配置文件中的声明解析程序，请将此项设为 `true`。 |
 
 说明：

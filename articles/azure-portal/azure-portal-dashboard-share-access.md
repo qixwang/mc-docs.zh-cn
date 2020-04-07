@@ -12,15 +12,15 @@ ms.devlang: NA
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: na
-origin.date: 01/29/2020
+origin.date: 03/23/2020
+ms.date: 03/30/2020
 ms.author: v-tawe
-ms.date: 02/17/2020
-ms.openlocfilehash: 46b5af7cfeba87a02cb260f0fa28e48657ba3dcd
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: f103648fcffff5003c6895318a850f92e10c288f
+ms.sourcegitcommit: 44d3fe59952847e5394bbe6c05bd6f333bb56345
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79293384"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80522065"
 ---
 # <a name="share-azure-dashboards-by-using-role-based-access-control"></a>通过使用基于角色的访问控制来共享 Azure 仪表板
 
@@ -61,7 +61,7 @@ ms.locfileid: "79293384"
 
     ![发布仪表板](./media/azure-portal-dashboard-share-access/publish-dashboard-for-access-control.png)
 
-     默认情况下，共享操作会将仪表板发布到名为 **dashboards** 的资源组。
+     默认情况下，共享操作会将仪表板发布到名为 **dashboards** 的资源组。 若要选择不同的资源组，请清除该复选框。
 
 仪表板现已发布。 如果从订阅继承的权限合适，则不需要执行更多的操作。 组织中的其他用户能够根据其订阅级别角色访问和修改仪表板。
 
@@ -69,15 +69,15 @@ ms.locfileid: "79293384"
 
 可将一组用户分配到该仪表板的角色。
 
-1. 发布仪表板后，在“共享 + 访问控制”中选择“管理用户”。  
+1. 发布仪表板后，选择“共享”  或“取消共享”  选项以访问“共享 + 访问控制”  。
+
+1. 在“共享 + 访问控制”中选择“管理用户”。  
 
     ![管理仪表板的用户](./media/azure-portal-dashboard-share-access/manage-users-for-access-control.png)
 
-    若要从仪表板访问“共享 + 访问控制”，请选择“共享”或“取消共享”选项。   
-
 1. 选择“角色分配”，查看已为其分配此仪表板角色的现有用户。 
 
-1. 若要添加新用户或组，请选择“添加”  。
+1. 若要添加新用户或组，请选择“添加”  ，然后选择“添加角色分配”  。
 
     ![添加有权访问仪表板的用户](./media/azure-portal-dashboard-share-access/manage-users-existing-users.png)
 
@@ -85,11 +85,7 @@ ms.locfileid: "79293384"
 
 1. 选择要分配到该角色的用户或组。 如果在列表中没有看到要查找的用户或组，请使用搜索框。 可用组列表取决于已在 Active Directory 中创建的组。
 
-1. 完成添加用户或组后，请选择“确定”  。
-
-    会将新分配添加到用户列表。 其“访问权限”列为“已分配”，而不是“已继承”。   
-
-    ![已分配的角色](./media/azure-portal-dashboard-share-access/assigned-roles.png)
+1. 完成添加用户或组后，请选择“保存”  。
 
 ## <a name="next-steps"></a>后续步骤
 

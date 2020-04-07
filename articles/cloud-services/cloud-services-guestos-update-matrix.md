@@ -10,14 +10,14 @@ ms.service: cloud-services
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 03/17/2020
+ms.date: 03/31/2020
 ms.author: v-junlch
-ms.openlocfilehash: d0c34175dde6d0d328ab86411b35339e2dfeaa8d
-ms.sourcegitcommit: 71a386ca0d0ecb79a123399b6ab6b8c70ea2aa78
+ms.openlocfilehash: 18afee8cd0b61e981ee74dbdec4d242e327e0711
+ms.sourcegitcommit: 64584c0bf31b4204058ae2b4641356b904ccdd58
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2020
-ms.locfileid: "79497163"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80581601"
 ---
 # <a name="azure-guest-os-releases-and-sdk-compatibility-matrix"></a>Azure 来宾 OS 版本和 SDK 兼容性对照表
 提供适用于云服务的最新 Azure 来宾 OS 版本的最新信息。 此信息可帮助在禁用来宾 OS 之前规划升级路径。 如果根据 [Azure 来宾 OS 更新设置][Azure Guest OS Update Settings]中所述将角色配置为使用*自动*进行来宾 OS 更新，则不一定要阅读本页面。
@@ -117,11 +117,12 @@ ms.locfileid: "79497163"
 >5. 将 OS 系列更改为 6 并生成一个包
 >6. 使用 Azure 门户或 Visual Studio 将该包部署到 Azure
 >
+>来宾 OS 系列 6 版本通过显式禁用 TLS 1.0 和 1.1 并定义一组特定的密码套件来强制执行 TLS 1.2。 了解[详细信息]。
 
 
 | 配置字符串 | 发行日期 | 停用日期 |
 | --- | --- | --- |
-|  WA-GUEST-OS-6.16_202001-01  |  2020 年 3 月 5 日  |  6\.17 版发行后  |  
+|  WA-GUEST-OS-6.16_202002-01  |  2020 年 3 月 5 日  |  6\.18 版发行后  |  
 |  WA-GUEST-OS-6.15_202001-01  |  2020 年 1 月 24 日  |  6\.17 版发行后  |  
 |~~WA-GUEST-OS-6.14_201912-01~~| 2020 年 1 月 8 日 | 2020 年 3 月 5 日 |  
 |~~WA-GUEST-OS-6.13_201911-01~~| 2019 年 12 月 5 日 | 2020 年 1 月 24 日 |  
@@ -150,7 +151,7 @@ ms.locfileid: "79497163"
 
 | 配置字符串 | 发行日期 | 停用日期 |
 | --- | --- | --- |
-|  WA-GUEST-OS-5.40_202002-01  |  2020 年 3 月 5 日  |  5\.41 版发行后  |  
+|  WA-GUEST-OS-5.40_202002-01  |  2020 年 3 月 5 日  |  5\.42 版发行后  |  
 |  WA-GUEST-OS-5.39_202001-01  |  2020 年 1 月 24 日  |  5\.41 版发行后  |  
 |~~WA-GUEST-OS-5.38_201912-01~~| 2020 年 1 月 8 日 | 2020 年 3 月 5 日 |  
 |~~WA-GUEST-OS-5.37_201911-01~~| 2019 年 12 月 5 日 | 2020 年 1 月 24 日 |  
@@ -176,7 +177,7 @@ ms.locfileid: "79497163"
 
 | 配置字符串 | 发行日期 | 停用日期 |
 | --- | --- | --- |
-|  WA-GUEST-OS-4.75_202002-01  |  2020 年 3 月 5 日  |  4\.76 版发行后  |  
+|  WA-GUEST-OS-4.75_202002-01  |  2020 年 3 月 5 日  |  4\.77 版发行后  |  
 |  WA-GUEST-OS-4.74_202001-01  |  2020 年 1 月 24 日  |  4\.76 版发行后  |  
 |~~WA-GUEST-OS-4.73_201912-01~~| 2020 年 1 月 8 日 | 2020 年 3 月 5 日 |  
 |~~WA-GUEST-OS-4.72_201911-01~~| 2019 年 12 月 5 日 | 2020 年 1 月 24 日 |  
@@ -202,7 +203,7 @@ ms.locfileid: "79497163"
 
 | 配置字符串 | 发行日期 | 停用日期 |
 | --- | --- | --- |
-|  WA-GUEST-OS-3.82_202002-01  |  2020 年 3 月 5 日  |  3\.83 版发行后  |  
+|  WA-GUEST-OS-3.82_202002-01  |  2020 年 3 月 5 日  |  3\.84 版发行后  |  
 |  WA-GUEST-OS-3.81_202001-01  |  2020 年 1 月 24 日  |  3\.83 版发行后  |  
 |~~WA-GUEST-OS-3.80_201912-01~~| 2020 年 1 月 8 日 | 2020 年 3 月 5 日 |  
 |~~WA-GUEST-OS-3.79_201911-01~~| 2019 年 12 月 5 日 | 2020 年 1 月 24 日 |  
@@ -322,5 +323,5 @@ Azure 不断地发布更新。 来宾 OS 只不过是此类更新的其中一种
 [fam1retire]: cloud-services-guestos-family1-retirement.md
 [fix]: https://technet.microsoft.com/library/security/ms17-010.aspx
 [Azure SDK]: https://www.microsoft.com/en-us/download/details.aspx?id=54917
+[详细信息]: /cloud-services/applications-dont-support-tls-1-2  
 
-<!--Update_Description: update wording-->

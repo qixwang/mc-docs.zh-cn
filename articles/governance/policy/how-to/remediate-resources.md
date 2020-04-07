@@ -3,14 +3,14 @@ title: 修正不符合资源
 description: 本指南将指导你完成修正 Azure Policy 中不符合策略的资源的过程。
 ms.author: v-tawe
 origin.date: 02/26/2020
-ms.date: 03/16/2020
+ms.date: 03/30/2020
 ms.topic: how-to
-ms.openlocfilehash: e8d66cfa23eccc43b2356d2e74575d3f615dabfa
-ms.sourcegitcommit: 1d3d8dfdaf6281f06640cbee7124a1e8bf102c50
+ms.openlocfilehash: cbc897a0cac51dfd138cff8639fb0a0d3368c36d
+ms.sourcegitcommit: 260800ede66f48c886d1426a0fac18b4d402b4f2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "80243912"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586815"
 ---
 # <a name="remediate-non-compliant-resources-with-azure-policy"></a>修正 Azure Policy 中的不符合资源
 
@@ -19,7 +19,7 @@ ms.locfileid: "80243912"
 ## <a name="how-remediation-security-works"></a>修正安全的工作原理
 
 当 Azure Policy 在 deployIfNotExists  策略定义中运行模板时，它使用[托管标识](../../../active-directory/managed-identities-azure-resources/overview.md)来执行此操作。
-Azure Policy 为每个分配创建一个托管标识，但必须具有有关授予托管标识哪些角色的详细信息。 如果托管标识缺少角色，则在分配策略或计划期间会显示此错误。 使用门户时，启动分配后，Azure Policy 将自动授予托管标识所列的角色。
+Azure Policy 为每个分配创建一个托管标识，但必须具有有关授予托管标识哪些角色的详细信息。 如果托管标识缺少角色，则在分配策略或计划期间会显示此错误。 使用门户时，分配开始后，Azure Policy 会自动向托管标识授予所列的角色。 托管标识的位置  不会影响它对 Azure Policy 的操作。
 
 ![托管标识 - 缺少角色](../media/remediate-resources/missing-role.png)
 

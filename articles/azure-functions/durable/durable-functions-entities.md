@@ -3,14 +3,14 @@ title: 持久实体 - Azure Functions
 description: 了解持久实体的概念，以及如何在 Azure Functions 的 Durable Functions 扩展中使用持久实体。
 author: cgillum
 ms.topic: overview
-ms.date: 02/13/2020
+ms.date: 03/31/2020
 ms.author: v-junlch
-ms.openlocfilehash: 0c3f7c699818763da015ede7b0593060f459fdef
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.openlocfilehash: 3a5282be60558b73fdb385eea9a1848293330201
+ms.sourcegitcommit: 64584c0bf31b4204058ae2b4641356b904ccdd58
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77428039"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80581590"
 ---
 # <a name="entity-functions"></a>实体函数
 
@@ -41,7 +41,7 @@ ms.locfileid: "77428039"
 * 目标实体的实体 ID  。
 * 操作名称，用于指定要执行的操作的字符串。  例如，`Counter` 实体可以支持 `add`、`get` 或 `reset` 操作。
 * 操作输入，操作的可选输入参数。  例如，add 操作可以采用整数数量作为输入。
-* **计划时间*，这是用于指定操作交付时间的可选参数。 例如，可以可靠地将一项操作计划为在未来几天运行。
+* **计划时间**，这是用于指定操作交付时间的可选参数。 例如，可以可靠地将一项操作计划为在未来几天运行。
 
 操作可以返回结果值或错误结果，例如 JavaScript 错误或 .NET 异常。 调用操作的业务流程可以观察到此结果或错误。
 
@@ -321,7 +321,7 @@ module.exports = df.orchestrator(function*(context){
 
 ---
 
-## <a name="entity-coordination"></a>实体协调（当前仅限 .NET）
+## <a name="entity-coordination-currently-net-only"></a><a name="entity-coordination"></a>实体协调（当前仅限 .NET）
 
 有时可能需要跨多个实体协调操作。 例如，在银行应用程序中，可能会使用实体来代表不同的银行帐户。 将资金从一个帐户转移到另一个帐户时，必须确保源帐户有足够的资金。 还必须确保对源帐户和目标帐户的更新都以事务一致性的方式进行。
 
@@ -406,7 +406,7 @@ public static async Task<bool> TransferFundsAsync(
 
 ## <a name="comparison-with-virtual-actors"></a>与虚拟执行组件的比较
 
-许多持久实体功能来源于[执行组件模型](https://en.wikipedia.org/wiki/Actor_model)的灵感。 如果你熟悉执行组件，则你可能会理解本文中所述的许多概念。 持久实体非常类似于[虚拟执行组件](https://research.microsoft.com/projects/orleans/)，或 [Orleans 项目](http://dotnet.github.io/orleans/)中普遍存在的“粒度”。 例如：
+许多持久实体功能来源于执行组件模型的灵感。 如果你熟悉执行组件，则你可能会理解本文中所述的许多概念。 持久实体非常类似于[虚拟执行组件](https://research.microsoft.com/projects/orleans/)，或 [Orleans 项目](http://dotnet.github.io/orleans/)中普遍存在的“粒度”。 例如：
 
 * 可通过实体 ID 对持久实体寻址。
 * 持久实体操作按顺序执行，每次只执行一个，以防止出现争用状态。

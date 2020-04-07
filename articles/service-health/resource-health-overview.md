@@ -2,13 +2,13 @@
 title: Azure 资源运行状况概述
 description: Azure 资源运行状况概述
 ms.topic: conceptual
-ms.date: 03/17/2020
-ms.openlocfilehash: ca838555e08e2410ac6e320d8728a22867602cd7
-ms.sourcegitcommit: 71a386ca0d0ecb79a123399b6ab6b8c70ea2aa78
+ms.date: 03/31/2020
+ms.openlocfilehash: cfe1a67cae777e0b42c9fcb249842c4c7ed29823
+ms.sourcegitcommit: 64584c0bf31b4204058ae2b4641356b904ccdd58
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2020
-ms.locfileid: "79497100"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80581598"
 ---
 # <a name="resource-health-overview"></a>资源运行状况概述
  
@@ -76,7 +76,7 @@ Azure 资源运行状况有助于在服务问题影响到 Azure 资源时进行�
 
 ## <a name="history-information"></a>历史记录信息
 
-可在“资源运行状况”的“运行状况历史记录”  部分中访问 14 天的历史记录。
+可在资源运行状况的“运行状况历史记录”  部分中访问最多 30 天的历史记录。
 
 ![过去两周内的“资源运行状况”事件列表](./media/resource-health-overview/history-blade.png)
 

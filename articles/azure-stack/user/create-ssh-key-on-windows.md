@@ -8,12 +8,12 @@ ms.date: 03/23/2020
 ms.author: v-jay
 ms.reviewer: waltero
 ms.lastreviewed: 2/28/2020
-ms.openlocfilehash: d8d19e7aa060ff742bfe83df3faa1b6df3ac5fac
-ms.sourcegitcommit: e500354e2fd8b7ac3dddfae0c825cc543080f476
+ms.openlocfilehash: a71e9f64cf24b8488632126cb27f718924d88078
+ms.sourcegitcommit: fe9ed98aaee287a21648f866bb77cb6888f75b0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2020
-ms.locfileid: "79547179"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80625724"
 ---
 # <a name="create-an-ssh-key-for-linux-on-azure-stack-hub"></a>在 Azure Stack Hub 上为 Linux 创建 SSH 密钥
 
@@ -85,7 +85,7 @@ ms.locfileid: "79547179"
     aignia880qOtQrvNEvyhgZOM5oDhgE3IJ username@machine
     ```
 
-4. 复制文本 `ssh-rsa [...]`，一直复制到 `username@machinename`。 请确保文本不包含任何回车符。 创建 VM 时，可以使用此文本。
+4. 复制文本 `ssh-rsa [...]`，一直复制到 `username@machinename`。 请确保文本不包含任何回车符。 使用 AKS 引擎创建 VM 或 Kubernetes 群集时，可以使用此文本。
 
 5. 如果你使用的是 Windows 计算机，可以使用 **\\\\wsl$** 来访问 Linux 文件。
 

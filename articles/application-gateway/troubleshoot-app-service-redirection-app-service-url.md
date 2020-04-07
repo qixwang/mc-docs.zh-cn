@@ -6,15 +6,14 @@ services: application-gateway
 author: abshamsft
 ms.service: application-gateway
 ms.topic: article
-origin.date: 11/14/2019
-ms.date: 11/21/2019
+ms.date: 03/30/2020
 ms.author: v-junlch
-ms.openlocfilehash: c9ffe537445da90902a67c938187256bd5966fb8
-ms.sourcegitcommit: fdbd1b6df618379dfeab03044a18c373b5fbb8ec
+ms.openlocfilehash: 1e449186286e65b8e12898170865c70fc786a67e
+ms.sourcegitcommit: 64584c0bf31b4204058ae2b4641356b904ccdd58
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74326470"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80581803"
 ---
 # <a name="troubleshoot-app-service-issues-in-application-gateway"></a>排查应用程序网关中的应用服务问题
 
@@ -148,4 +147,3 @@ Set-AzApplicationGateway -ApplicationGateway $gw
 
 如果上述步骤无法解决问题，请开具[支持票证](https://www.azure.cn/support/contact/)。
 
-<!-- Update_Description: wording update -->
