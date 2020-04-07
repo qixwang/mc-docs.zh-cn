@@ -9,12 +9,12 @@ ms.date: 03/23/2020
 ms.author: v-jay
 ms.reviewer: ''
 ms.lastreviewed: ''
-ms.openlocfilehash: f5ff02f848df5ee7514a1a81cc33f983f661ae64
-ms.sourcegitcommit: e500354e2fd8b7ac3dddfae0c825cc543080f476
+ms.openlocfilehash: 97b526727e376424c65566b47ee5d3bf052ab9b9
+ms.sourcegitcommit: f204ec3ae220b96475db60e6ac8a2807af3de40e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2020
-ms.locfileid: "79547073"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80418027"
 ---
 # <a name="azure-stack-hub-administration-basics"></a>Azure Stack Hub 管理基础知识
 
@@ -22,7 +22,7 @@ ms.locfileid: "79547073"
 
 ## <a name="understand-the-builds"></a>了解版本
 
-如果使用 Azure Stack Hub 集成系统，则通过更新包分发更新版 Azure Stack Hub。 可以通过管理员门户中的“更新”磁贴导入并应用这些包 **** 。
+如果使用 Azure Stack Hub 集成系统，则通过更新包分发更新版 Azure Stack Hub。 可以通过管理员门户中的“更新”磁贴导入并应用这些包  。
 
 ## <a name="learn-about-available-services"></a>了解可用的服务
 
@@ -49,7 +49,7 @@ ms.locfileid: "79547073"
 - IoT 中心
 - 事件中心
 
-这些服务在提供给用户之前，需要进行额外的配置。 有关详细信息，请参阅 [Azure Stack Hub 操作员文档](/azure-stack/operator/)中的“教程”和“操作指南” > “套餐服务”。 **** **** ****
+这些服务在提供给用户之前，需要进行额外的配置。 有关详细信息，请参阅 [Azure Stack Hub 操作员文档](/azure-stack/operator/)中的“教程”和“操作指南” > “套餐服务”。   
 
 ### <a name="service-roadmap"></a>服务路线图
 
@@ -83,7 +83,7 @@ Azure Stack Hub 使用 Azure 资源管理器作为其基础的部署、管理和
 除了提供服务，还必须执行操作员的常规任务，使 Azure Stack Hub 始终能够启动并运行。 这些职责包括以下任务：
 
 - 添加用于 [Azure AD](/azure-stack/operator/azure-stack-add-new-user-aad) 部署的用户帐户。
-- [使用基于角色的访问控制设置访问权限](/azure-stack/operator/azure-stack-manage-permissions)。（此任务不仅限于管理员。）
+- [使用基于角色的访问控制设置访问权限](/azure-stack/operator/azure-stack-manage-permissions)。 （此任务并不限于管理员。）
 - [监视基础结构运行状况](/azure-stack/operator/azure-stack-monitor-health)。
 - 管理[网络](/azure-stack/operator/azure-stack-viewing-public-ip-address-consumption)和[存储](/azure-stack/operator/azure-stack-manage-storage-accounts)资源。
 - [启动和停止 Azure Stack Hub](/azure-stack/operator/azure-stack-start-and-stop)。
@@ -106,10 +106,10 @@ Azure Stack Hub 使用 Azure 资源管理器作为其基础的部署、管理和
 4. 在 OneFS 中检查 Isilon 系统运行状况和事件。
 5. 检查 Isilon 容量。
 
-# <a name="weekly"></a>每周[](#tab/weekly)
+# <a name="weekly"></a>[每周](#tab/weekly)
 
 1. 检查容量。
-2. 在 Avocent 连接中运行 `isi status �verbose`。
+2. 在 Avocent 连接中运行 `isi status -verbose`。
 
 # <a name="monthly"></a>[每月](#tab/monthly)
 
@@ -126,7 +126,7 @@ Azure Stack Hub 使用 Azure 资源管理器作为其基础的部署、管理和
 3. 应用修补程序包。
 4. 应用修补程序包。
 5. 扩展容量（节点和 IPSpace）。
-6. 在 Avocent 连接中运行 `isi status �verbose`。
+6. 在 Avocent 连接中运行 `isi status -verbose`。
 7. 还原存储帐户。
 8. 停止系统。
 9. 诊断日志收集。
@@ -155,15 +155,15 @@ Azure Stack Hub 使用 Azure 资源管理器作为其基础的部署、管理和
 
 ### <a name="subscribe-to-an-offer"></a>订阅产品
 
-在使用服务之前，用户必须[订阅套餐](/azure-stack/operator/azure-stack-subscribe-plan-provision-vm)，该套餐是你以操作员身份创建的。
+在使用服务之前，用户必须[订阅套餐](/azure-stack/operator/azure-stack-subscribe-plan-provision-vm)，该产品/服务是你以操作员身份创建的。
 
 ## <a name="where-to-get-support"></a>从何处获取支持
 
-若要查找旧版 Azure Stack Hub（1905 之前）的支持信息，请参阅[Azure Stack Hub 服务策略](/azure-stack/operator/azure-stack-servicing-policy)。
+若要查找旧版 Azure Stack Hub（1905 之前）的支持信息，请参阅 [Azure Stack Hub 服务策略](/azure-stack/operator/azure-stack-servicing-policy)。
 
 对于集成系统，Azure 和我们的原始设备制造商 (OEM) 硬件合作伙伴之间已经建立了协作的问题升级和解决流程。
 
-如果存在云服务问题，请通过 Azure 客户支持服务 (CSS) 寻求支持。 若要创建支持请求，请选择管理员门户右上角的帮助和支持图标（问号）。 接着选择“帮助 + 支持”，然后选择“支持”部分下面的“新建支持请求”。 **** **** ****
+如果存在云服务问题，请通过 Azure 客户支持服务 (CSS) 寻求支持。 若要创建支持请求，请选择管理员门户右上角的帮助和支持图标（问号）。 接着选择“帮助 + 支持”，然后选择“支持”部分下面的“新建支持请求”。   
 
 如果存在部署问题、修补和更新问题、硬件（包括现场可更换部件）问题，或任何硬件品牌软件（例如在硬件生命周期主机上运行的软件）问题，请首先联系 OEM 硬件供应商。
 

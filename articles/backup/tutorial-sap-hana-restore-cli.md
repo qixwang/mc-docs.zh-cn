@@ -7,18 +7,18 @@ ms.topic: tutorial
 origin.date: 11/7/2019
 ms.date: 03/12/2020
 ms.author: v-lingwu
-ms.openlocfilehash: 5c770641380f83016299bbfc0baa7cb2065531c4
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: 62cc34c53a145978b099fd57700a5837fc1494be
+ms.sourcegitcommit: 260800ede66f48c886d1426a0fac18b4d402b4f2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79293091"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586826"
 ---
 # <a name="tutorial-restore-sap-hana-databases-in-an-azure-vm-using-azure-cli"></a>教程：使用 Azure CLI 还原 Azure VM 中的 SAP HANA 数据库
 
 Azure CLI 用于从命令行或通过脚本创建和管理 Azure 资源。 本文档详细介绍了如何使用 Azure CLI 在 Azure VM 上还原已备份的 SAP HANA 数据库。 还可以使用 [Azure 门户](/backup/sap-hana-db-restore)执行这些步骤。
 
-使用 [Azure Cloud Shell](tutorial-sap-hana-backup-cli.md) 运行 CLI 命令。
+使用 [Azure CLI](tutorial-sap-hana-backup-cli.md) 运行 CLI 命令。
 
 本教程结束时，你将能够：
 
@@ -139,7 +139,7 @@ Name                                  Resource
 
 为还原到原始位置，我们将使用 OrignialWorkloadRestore 作为还原模式  。 然后，必须选择还原点（可以是以前的时间点或以前的任何还原点）。
 
-在本教程中，我们选择还原到以前的时间点 28-11-2019-09:53:00。 此还原点可按以下格式提供：dd-mm-yyyy、dd-mm-yyyy-hh:mm:ss。 要选择要还原到的有效时间点，请使用 [az backup recoverypoint show-log-chain](/backup/recoverypoint?view=azure-cli-latest#az-backup-recoverypoint-show-log-chain) cmdlet，此 cmdlet 会列出连续日志链备份的间隔。
+在本教程中，我们选择还原到以前的时间点“28-11-2019-09:53:00”。 此还原点可按以下格式提供：dd-mm-yyyy、dd-mm-yyyy-hh:mm:ss。 要选择要还原到的有效时间点，请使用 [az backup recoverypoint show-log-chain](/backup/recoverypoint?view=azure-cli-latest#az-backup-recoverypoint-show-log-chain) cmdlet，此 cmdlet 会列出连续日志链备份的间隔。
 
 ```azurecli-interactive
 az backup recoveryconfig show --resource-group saphanaResourceGroup \

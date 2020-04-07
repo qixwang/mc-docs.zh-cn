@@ -8,19 +8,21 @@ ms.topic: article
 origin.date: 02/11/2020
 ms.date: 03/30/2020
 ms.author: v-yeche
-ms.openlocfilehash: 9b638ce1a862c2330643dc7528d0cfc2aeeb0583
-ms.sourcegitcommit: 1436f1851342ca5631eb25342eed954adb707af0
+ms.openlocfilehash: 1dc295c4a85f34457aa18d40b51cb73968845bf6
+ms.sourcegitcommit: 76280dd9854dc0ff0ba1e5e62fb3dc3af049fbe2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2020
-ms.locfileid: "79543913"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80517028"
 ---
 <!--Verify sucessfully-->
 # <a name="support-for-generation-2-vms-on-azure"></a>Azure 对第 2 代 VM 的支持
 
 Azure 现已提供对第 2 代虚拟机 (VM) 的支持。 创建虚拟机后无法更改其代系，因此，在选择代系之前，请先查看本页上的注意事项。
 
-第 2 代 VM 支持第 1 代 VM 所不支持的某些关键特性。 这些特性包括更大的内存、Intel Software Guard Extensions (Intel SGX) 和虚拟化持久性内存 (vPMEM)。 在本地运行的第 2 代 VM 具有 Azure 中尚不支持的一些功能。 有关详细信息，请参阅[特性和功能](#features-and-capabilities)部分。
+第 2 代 VM 支持第 1 代 VM 所不支持的某些关键特性。 这些特性包括更大的内存和虚拟化持久性内存 (vPMEM)。 在本地运行的第 2 代 VM 具有 Azure 中尚不支持的一些功能。 有关详细信息，请参阅[特性和功能](#features-and-capabilities)部分。
+
+<!--Not Available on Intel Software Guard Extensions (Intel SGX) which based on DC-series not available on Mooncake-->
 
 第 2 代 VM 使用新的基于 UEFI 的启动体系结构，而不是使用第 1 代 VM 所用的基于 BIOS 的体系结构。 与第 1 代 VM 相比，第 2 代 VM 的启动时间和安装时间可能有所改善。 有关第 2 代 VM 的概述以及第 1 代与第 2 代之间的某些差异，请参阅[应在 Hyper-V 中创建第 1 代还是第 2 代虚拟机？](https://docs.microsoft.com/windows-server/virtualization/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v)。
 
@@ -123,7 +125,7 @@ Azure 目前不支持本地 Hyper-V 对第 2 代 VM 所支持的某些特性。
 1. 单击**创建**。
 1. 在“高级”  选项卡的“VM 代系”  部分下，选择“Gen 2”  选项。
 1. 在“基本信息”  选项卡的“实例详细信息”  下，转到“大小”  并打开“选择 VM 大小”  边栏选项卡。
-1. 选择“支持的第 2 代 VM”[](#generation-2-vm-sizes)。
+1. 选择[支持的第 2 代 VM](#generation-2-vm-sizes)。
 1. 通过 [Azure 门户创建流](quick-create-portal.md)完成 VM 的创建。
 
 ![选择“第 1 代”或“第 2 代”VM](./media/generation-2/gen1-gen2-select.png)

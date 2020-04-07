@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: 9182066259a7e1ac13c680449d2f31e4417765b4
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.openlocfilehash: a41974e32022fab367963b4d89ce75e8256c71eb
+ms.sourcegitcommit: 260800ede66f48c886d1426a0fac18b4d402b4f2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78850582"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586670"
 ---
 # <a name="quickstart-set-up-the-iot-hub-device-provisioning-service-with-an-azure-resource-manager-template"></a>快速入门：使用 Azure 资源管理器模板设置 IoT 中心设备预配服务
 
@@ -154,7 +154,7 @@ ms.locfileid: "78850582"
                     {
                         "connectionString": "[concat('HostName=', reference(variables('iotHubResourceId')).hostName, ';SharedAccessKeyName=', variables('iotHubKeyName'), ';SharedAccessKey=', listkeys(variables('iotHubKeyResource'), '2017-07-01').primaryKey)]",
                         "location": "[parameters('hubLocation')]",
-                        "name": "[concat(parameters('iotHubName'),'.azure-devices.net')]"
+                        "name": "[concat(parameters('iotHubName'),'.azure-devices.cn')]"
                     }
                 ]
             },
@@ -223,7 +223,7 @@ ms.locfileid: "78850582"
                        {
                            "connectionString": "[concat('HostName=', reference(variables('iotHubResourceId')).hostName, ';SharedAccessKeyName=', variables('iotHubKeyName'), ';SharedAccessKey=', listkeys(variables('iotHubKeyResource'), '2017-07-01').primaryKey)]",
                            "location": "[parameters('hubLocation')]",
-                           "name": "[concat(parameters('iotHubName'),'.azure-devices.net')]"
+                           "name": "[concat(parameters('iotHubName'),'.azure-devices.cn')]"
                        }
                    ]
                },

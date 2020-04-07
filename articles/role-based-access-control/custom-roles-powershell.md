@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure PowerShell 为 Azure 资源创建或更新自定义角色 | Microsoft Docs
+title: 使用 Azure PowerShell 为 Azure 资源创建或更新自定义角色
 description: 了解如何通过 Azure PowerShell 使用基于角色的访问控制 (RBAC) 为 Azure 资源列出、创建、更新或删除自定义角色。
 services: active-directory
 documentationcenter: ''
@@ -11,17 +11,22 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/02/2020
+ms.date: 03/31/2020
 ms.author: v-junlch
 ms.reviewer: bagovind
-ms.openlocfilehash: 8950500c9f3c3397532d15faeccd1c72a46896fc
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.openlocfilehash: a4d28249056db7aaf6aae352d075ae50060e118f
+ms.sourcegitcommit: 64584c0bf31b4204058ae2b4641356b904ccdd58
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75624346"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80581690"
 ---
 # <a name="create-or-update-custom-roles-for-azure-resources-using-azure-powershell"></a>使用 Azure PowerShell 为 Azure 资源创建或更新自定义角色
+
+> [!IMPORTANT]
+> 将管理组添加到 `AssignableScopes` 的功能目前处于预览状态。
+> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。
+> 有关详细信息，请参阅[适用于 Azure 预览版的补充使用条款](https://www.azure.cn/support/legal/)。
 
 如果 [Azure 资源的内置角色](built-in-roles.md)不能满足组织的特定需求，则可以创建自定义角色。 本文介绍如何使用 Azure PowerShell 列出、创建、更新或删除自定义角色。
 
@@ -74,7 +79,7 @@ Virtual Machine Operator     True
 若要列出自定义角色定义，请使用 [Get-AzRoleDefinition](https://docs.microsoft.com/powershell/module/az.resources/get-azroledefinition)。 这与用于内置角色的命令相同。
 
 ```azurepowershell
-Get-AzRoleDefinition <role name> | ConvertTo-Json
+Get-AzRoleDefinition <role_name> | ConvertTo-Json
 ```
 
 ```Example
@@ -109,7 +114,7 @@ PS C:\> Get-AzRoleDefinition "Virtual Machine Operator" | ConvertTo-Json
 以下示例仅列出了角色的操作：
 
 ```azurepowershell
-(Get-AzRoleDefinition <role name>).Actions
+(Get-AzRoleDefinition <role_name>).Actions
 ```
 
 ```Example
@@ -297,6 +302,42 @@ AssignableScopes : {/subscriptions/00000000-0000-0000-0000-000000000000,
                    /subscriptions/22222222-2222-2222-2222-222222222222}
 ```
 
+以下示例将管理组添加到“虚拟机操作员”  自定义角色的 `AssignableScopes`。 将管理组添加到 `AssignableScopes` 的功能目前处于预览状态。
+
+```azurepowershell
+Get-AzManagementGroup
+
+$role = Get-AzRoleDefinition "Virtual Machine Operator"
+$role.AssignableScopes.Add("/providers/Microsoft.Management/managementGroups/{groupId1}")
+Set-AzRoleDefinition -Role $role
+```
+
+```Example
+PS C:\> Get-AzManagementGroup
+
+Id          : /providers/Microsoft.Management/managementGroups/marketing-group
+Type        : /providers/Microsoft.Management/managementGroups
+Name        : marketing-group
+TenantId    : 99999999-9999-9999-9999-999999999999
+DisplayName : Marketing group
+
+PS C:\> $role = Get-AzRoleDefinition "Virtual Machine Operator"
+PS C:\> $role.AssignableScopes.Add("/providers/Microsoft.Management/managementGroups/marketing-group")
+PS C:\> Set-AzRoleDefinition -Role $role
+
+Name             : Virtual Machine Operator
+Id               : 88888888-8888-8888-8888-888888888888
+IsCustom         : True
+Description      : Can monitor and restart virtual machines.
+Actions          : {Microsoft.Storage/*/read, Microsoft.Network/*/read, Microsoft.Compute/*/read,
+                   Microsoft.Compute/virtualMachines/start/action...}
+NotActions       : {}
+AssignableScopes : {/subscriptions/00000000-0000-0000-0000-000000000000,
+                   /subscriptions/11111111-1111-1111-1111-111111111111,
+                   /subscriptions/22222222-2222-2222-2222-222222222222,
+                   /providers/Microsoft.Management/managementGroups/marketing-group}
+```
+
 ### <a name="update-a-custom-role-with-a-json-template"></a>使用 JSON 模板更新自定义角色
 
 使用以前的 JSON 模板可以轻松修改现有的自定义角色，以便添加或删除 Actions。 更新 JSON 模板，为网络添加读取操作，如以下示例所示。 模板中列出的定义不是以累积方式应用到现有定义的，这意味着角色的显示方式完全符合模板中的指定。 还需使用角色的 ID 更新“ID”字段。 如果不确定此值是什么，可以使用 [Get-AzRoleDefinition](https://docs.microsoft.com/powershell/module/az.resources/get-azroledefinition) cmdlet 来获取该信息。
@@ -364,4 +405,3 @@ Are you sure you want to remove role definition with name 'Virtual Machine Opera
 - [Azure 资源的自定义角色](custom-roles.md)
 - [Azure 资源管理器资源提供程序操作](resource-provider-operations.md)
 
-<!-- Update_Description: wording update -->
