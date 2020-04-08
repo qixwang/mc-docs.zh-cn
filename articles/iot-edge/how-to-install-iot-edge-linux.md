@@ -7,15 +7,15 @@ ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
 ms.topic: conceptual
-origin.date: 07/22/2019
-ms.date: 03/02/2020
+origin.date: 03/21/2020
+ms.date: 03/30/2020
 ms.author: v-tawe
-ms.openlocfilehash: c7729507502eef18c7f54c41bd70cdb15660880b
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: bb3467b3c591362ecfbee0f547d5251139ad0589
+ms.sourcegitcommit: 260800ede66f48c886d1426a0fac18b4d402b4f2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79292174"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586685"
 ---
 # <a name="install-the-azure-iot-edge-runtime-on-debian-based-linux-systems"></a>在基于 Debian 的 Linux 系统上安装 Azure IoT Edge 运行时
 
@@ -180,21 +180,12 @@ sudo nano /etc/iotedge/config.yaml
 
 找到文件的预配配置，并取消注释“手动预配配置”  节。 使用 IoT Edge 设备的连接字符串更新 **device_connection_string** 的值。 请确保注释掉任何其他预配部分。请确保 **provisioning:** 行前面没有空格，并且嵌套项缩进了两个空格。
 
-   ```yaml
-   # Manual provisioning configuration
-   provisioning:
-     source: "manual"
-     device_connection_string: "<ADD DEVICE CONNECTION STRING HERE>"
-  
-   # DPS TPM provisioning configuration
-   # provisioning:
-   #   source: "dps"
-   #   global_endpoint: "https://global.azure-devices-provisioning.net"
-   #   scope_id: "{scope_id}"
-   #   attestation:
-   #     method: "tpm"
-   #     registration_id: "{registration_id}"
-   ```
+```yml
+# Manual provisioning configuration
+provisioning:
+  source: "manual"
+  device_connection_string: "<ADD DEVICE CONNECTION STRING HERE>"
+```
 
 将剪贴板内容粘贴到 Nano `Shift+Right Click` 或按 `Shift+Insert`。
 
@@ -210,7 +201,13 @@ sudo systemctl restart iotedge
 
 ### <a name="option-2-automatic-provisioning"></a>选项 2：自动预配
 
-若要自动预配设备，请[设置设备预配服务并检索设备注册 ID](how-to-auto-provision-simulated-device-linux.md)。 使用自动预配时，IoT Edge 支持多种证明机制，但硬件要求也会影响你的选择。 例如，默认情况下，Raspberry Pi 设备不附带受信任的平台模块 (TPM) 芯片。
+可以使用 [Azure IoT 中心设备预配服务 (DPS)](../iot-dps/index.yml) 自动预配 IoT Edge 设备。 目前，使用自动预配时，IoT Edge 支持两种证明机制，但硬件要求会影响你的选择。 例如，默认情况下，Raspberry Pi 设备不附带受信任的平台模块 (TPM) 芯片。 有关详细信息，请参阅以下文章：
+
+* [使用 Linux VM 上的虚拟 TPM 创建和预配 IoT Edge 设备](how-to-auto-provision-simulated-device-linux.md)
+* [使用 X.509 证书创建和预配 IoT Edge 设备](how-to-auto-provision-x509-certs.md)
+* [使用对称密钥证明创建和预配 IoT Edge 设备](how-to-auto-provision-symmetric-keys.md)
+
+这些文章逐步讲解如何在 DPS 中设置注册，并生成适用于证明的证书或密钥。 无论选择哪种证明机制，都将预配信息添加到 IoT Edge 设备上的 IoT Edge 配置文件中。
 
 打开配置文件。
 
@@ -218,29 +215,53 @@ sudo systemctl restart iotedge
 sudo nano /etc/iotedge/config.yaml
 ```
 
-找到文件的预配配置，并取消注释适用于你的证明机制的部分。 例如，使用 TPM 证明时，请分别使用来自 IoT 中心设备预配服务和带有 TPM 的 IoT Edge 设备的值更新 **scope_id** 和 **registration_id** 的值。 请确保 **provisioning:** 行前面没有空格，并且嵌套项缩进了两个空格。
+找到文件的预配配置，并取消注释适用于你的证明机制的部分。 请确保注释掉任何其他预配部分。**provisioning:** 行前面应该没有空格，并且嵌套项应该缩进两个空格。 使用 IoT 中心设备预配服务实例中的值更新 **scope_id** 的值，并为证明字段提供适当的值。
 
-   ```yaml
-   # Manual provisioning configuration
-   # provisioning:
-   #   source: "manual"
-   #   device_connection_string: "<ADD DEVICE CONNECTION STRING HERE>"
-  
-   # DPS TPM provisioning configuration
-   provisioning:
-     source: "dps"
-     global_endpoint: "https://global.azure-devices-provisioning.net"
-     scope_id: "{scope_id}"
-     attestation:
-       method: "tpm"
-       registration_id: "{registration_id}"
-   ```
+TPM 证明：
+
+```yml
+# DPS TPM provisioning configuration
+provisioning:
+  source: "dps"
+  global_endpoint: "https://global.azure-devices-provisioning.cn"
+  scope_id: "<SCOPE_ID>"
+  attestation:
+    method: "tpm"
+    registration_id: "<REGISTRATION_ID>"
+```
+
+X.509 证明：
+
+```yml
+# DPS X.509 provisioning configuration
+provisioning:
+  source: "dps"
+  global_endpoint: "https://global.azure-devices-provisioning.cn"
+  scope_id: "<SCOPE_ID>"
+  attestation:
+    method: "x509"
+#   registration_id: "<OPTIONAL REGISTRATION ID. LEAVE COMMENTED OUT TO REGISTER WITH CN OF identity_cert>"
+    identity_cert: "<REQUIRED URI TO DEVICE IDENTITY CERTIFICATE>"
+    identity_pk: "<REQUIRED URI TO DEVICE IDENTITY PRIVATE KEY>"
+```
+
+对称密钥证明：
+
+```yml
+# DPS symmetric key provisioning configuration
+provisioning:
+  source: "dps"
+  global_endpoint: "https://global.azure-devices-provisioning.cn"
+  scope_id: "<SCOPE_ID>"
+  attestation:
+    method: "symmetric_key"
+    registration_id: "<REGISTRATION_ID>"
+    symmetric_key: "<SYMMETRIC_KEY>"
+```
 
 将剪贴板内容粘贴到 Nano `Shift+Right Click` 或按 `Shift+Insert`。
 
-保存并关闭该文件。
-
-   `CTRL + X`、`Y`、`Enter`
+保存并关闭该文件。 `CTRL + X`、`Y`、`Enter`
 
 在配置文件中输入预配信息后，重启守护程序：
 
@@ -298,7 +319,7 @@ sudo iotedge list
    ./check-config.sh
    ```
 
-此命令提供一个详细的输出，其中包含 Moby 运行时使用的内核功能的状态。 需确保启用 `Generally Necessary` 和 `Network Drivers` 下的所有项，这样才能确保内核完全兼容 Moby 运行时。  如果确定有缺失的功能，请启用它们，方法是：通过源重新构建内核，然后选择关联的模块，将其包括在相应的内核 .config 中。同样，如果使用内核配置生成器（例如 defconfig 或 menuconfig），请找到并启用相应的功能，然后以相应方式重新构建内核。  部署新修改的内核以后，请再次运行 check-config 脚本，验证是否已成功启用所有必需功能。
+此命令提供一个详细的输出，其中包含 Moby 运行时使用的内核功能的状态。 需确保启用 `Generally Necessary` 和 `Network Drivers` 下的所有项，这样才能确保内核完全兼容 Moby 运行时。  如果确定有缺失的功能，请启用它们，方法是：通过源重新构建内核，然后选择关联的模块，将其包括在相应的内核 .config 中。同样，如果使用内核配置生成器（例如 `defconfig` 或 `menuconfig`），请找到并启用相应的功能，然后以相应方式重新构建内核。  部署新修改的内核以后，请再次运行 check-config 脚本，验证是否已成功启用所有必需功能。
 
 ## <a name="uninstall-iot-edge"></a>卸载 IoT Edge
 

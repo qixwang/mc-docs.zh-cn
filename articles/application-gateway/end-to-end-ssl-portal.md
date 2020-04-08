@@ -1,25 +1,24 @@
 ---
-title: 使用门户配置端到端 SSL 加密
+title: 使用门户配置端到端 TLS 加密
 titleSuffix: Azure Application Gateway
-description: 了解如何使用 Azure 门户创建启用端到端 SSL 加密的应用程序网关。
+description: 了解如何使用 Azure 门户创建启用端到端 TLS 加密的应用程序网关。
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-origin.date: 11/14/2019
-ms.date: 11/21/2019
+ms.date: 03/30/2020
 ms.author: v-junlch
 ms.custom: mvc
-ms.openlocfilehash: d54d098252df15155e333fa05db66883b4d18aca
-ms.sourcegitcommit: fdbd1b6df618379dfeab03044a18c373b5fbb8ec
+ms.openlocfilehash: 14134a0ae7a0b9c358dff25e18c47090a82c2e1e
+ms.sourcegitcommit: 64584c0bf31b4204058ae2b4641356b904ccdd58
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74327161"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80581720"
 ---
-# <a name="configure-end-to-end-ssl-by-using-application-gateway-with-the-portal"></a>在门户中使用应用程序网关配置端到端 SSL
+# <a name="configure-end-to-end-tls-by-using-application-gateway-with-the-portal"></a>在门户中使用应用程序网关配置端到端 TLS
 
-本文介绍如何使用 Azure 门户通过 Azure 应用程序网关 v1 SKU 配置端到端的安全套接字层 (SSL) 加密。
+本文介绍如何使用 Azure 门户通过 Azure 应用程序网关 v1 SKU 配置端到端传输层安全性 (TLS) 加密（以前称为安全套接字层 (SSL) 加密）。
 
 > [!NOTE]
 > 应用程序网关 v2 SKU 需要受信任的根证书才能启用端到端配置。
@@ -28,19 +27,19 @@ ms.locfileid: "74327161"
 
 ## <a name="before-you-begin"></a>准备阶段
 
-若要使用应用程序网关配置端到端 SSL，首先获取网关的证书。 后端服务器也需要证书。 网关证书用来根据 SSL 协议规范派生对称密钥。 然后，可以使用该对称密钥来加密和解密发送到网关的流量。 
+若要使用应用程序网关配置端到端 TLS，首先获取网关的证书。 后端服务器也需要证书。 网关证书用来根据 TLS 协议规范派生对称密钥。 然后，可以使用该对称密钥来加密和解密发送到网关的流量。 
 
-对于端到端 SSL 加密，必须在应用程序网关中允许适当的后端服务器。 若要允许这种访问，请将后端服务器的公共证书（也称为“身份验证证书”(v1) 或“受信任的根证书”(v2)）上传到应用程序网关。 添加证书后，可确保应用程序网关仅与已知后端实例通信。 此配置可进一步保护端到端通信。
+对于端到端 TLS 加密，必须在应用程序网关中允许适当的后端服务器。 若要允许这种访问，请将后端服务器的公共证书（也称为“身份验证证书”(v1) 或“受信任的根证书”(v2)）上传到应用程序网关。 添加证书后，可确保应用程序网关仅与已知后端实例通信。 此配置可进一步保护端到端通信。
 
-有关详细信息，请参阅 [SSL 终止和端到端 SSL](/application-gateway/ssl-overview)。
+若要了解详细信息，请参阅 [TLS 终止和应用程序网关的端到端 TLS 概述](/application-gateway/ssl-overview)。
 
-## <a name="create-a-new-application-gateway-with-end-to-end-ssl"></a>创建启用端到端 SSL 的新应用程序网关
+## <a name="create-a-new-application-gateway-with-end-to-end-tls"></a>创建启用端到端 TLS 的新应用程序网关
 
-若要创建启用端到端 SSL 加密的新应用程序网关，首先需要在创建新应用程序网关时启用 SSL 终止。 此操作会针对客户端与应用程序网关之间的通信启用 SSL 加密。 然后，需要在 HTTP 设置中，将后端服务器的证书放入“安全接收方”列表。 此配置将为应用程序网关与后端服务器之间的通信启用 SSL 加密。 这可以实现端到端的 SSL 加密。
+若要创建启用端到端 TLS 加密的新应用程序网关，首先需要在创建新应用程序网关时启用 TLS 终止。 此操作会针对客户端与应用程序网关之间的通信启用 TLS 加密。 然后，需要在 HTTP 设置中，将后端服务器的证书放入“安全接收方”列表。 此配置将为应用程序网关与后端服务器之间的通信启用 TLS 加密。 这可以实现端到端的 TLS 加密。
 
-### <a name="enable-ssl-termination-while-creating-a-new-application-gateway"></a>创建新应用程序网关时启用 SSL 终止
+### <a name="enable-tls-termination-while-creating-a-new-application-gateway"></a>创建新应用程序网关时启用 TLS 终止
 
-有关详细信息，请参阅[创建新应用程序网关时启用 SSL 终止](/application-gateway/create-ssl-portal)。
+有关详细信息，请参阅[创建新应用程序网关时启用 TLS 终止](/application-gateway/create-ssl-portal)。
 
 ### <a name="add-authenticationroot-certificates-of-back-end-servers"></a>添加后端服务器的身份验证/根证书
 
@@ -70,14 +69,14 @@ ms.locfileid: "74327161"
 
 8. 选择“保存”  。
 
-## <a name="enable-end-to-end-ssl-for-an-existing-application-gateway"></a>为现有的应用程序网关启用端到端 SSL
+## <a name="enable-end-to-end-tls-for-an-existing-application-gateway"></a>为现有的应用程序网关启用端到端 TLS
 
-若要为现有的应用程序网关配置端到端 SSL 加密，首先必须在侦听器中启用 SSL 终止。 此操作会针对客户端与应用程序网关之间的通信启用 SSL 加密。 然后，将后端服务器的这些证书放入 HTTP 设置中的“安全接收方”列表内。 此配置将为应用程序网关与后端服务器之间的通信启用 SSL 加密。 这可以实现端到端的 SSL 加密。
+若要为现有的应用程序网关配置端到端 TLS 加密，首先必须在侦听器中启用 TLS 终止。 此操作会针对客户端与应用程序网关之间的通信启用 TLS 加密。 然后，将后端服务器的这些证书放入 HTTP 设置中的“安全接收方”列表内。 此配置将为应用程序网关与后端服务器之间的通信启用 TLS 加密。 这可以实现端到端的 TLS 加密。
 
-需要使用一个具有 HTTPS 协议和证书的侦听器来启用 SSL 终止。 可以使用符合这些条件的现有侦听器，或者创建新的侦听器。 如果选择前一个选项，则可以忽略以下“在现有应用程序网关中启用 SSL 终止”部分，并直接转到“添加后端服务器的身份验证/受信任的根证书”部分。
+需要使用一个具有 HTTPS 协议和证书的侦听器来启用 TLS 终止。 可以使用符合这些条件的现有侦听器，或者创建新的侦听器。 如果选择前一个选项，则可以忽略以下“在现有应用程序网关中启用 TLS 终止”部分，并直接转到“添加后端服务器的身份验证/受信任的根证书”部分。
 
 如果选择后一个选项，请应用以下过程中的步骤。
-### <a name="enable-ssl-termination-in-an-existing-application-gateway"></a>在现有应用程序网关中启用 SSL 终止
+### <a name="enable-tls-termination-in-an-existing-application-gateway"></a>在现有应用程序网关中启用 TLS 终止
 
 1. 选择“所有资源”，然后选择“myAppGateway”。  
 
@@ -87,7 +86,7 @@ ms.locfileid: "74327161"
 
 4. 在“协议”下，选择“HTTPS”。   随后会显示“证书”窗格。 
 
-5. 上传 PFX 证书用于在客户端与应用程序网关之间实现 SSL 终止。
+5. 上传 PFX 证书用于在客户端与应用程序网关之间实现 TLS 终止。
 
    > [!NOTE]
    > 对于测试，可以使用自签名的证书。 不过，不建议对生产工作负荷使用自签名证书，因为这些证书难以管理，且不完全安全。 有关详细信息，请参阅[创建自签名证书](/application-gateway/create-ssl-portal#create-a-self-signed-certificate)。
@@ -127,4 +126,3 @@ ms.locfileid: "74327161"
 > [!div class="nextstepaction"]
 > [通过 Azure CLI 使用应用程序网关管理 Web 流量](./tutorial-manage-web-traffic-cli.md)
 
-<!-- Update_Description: update metedata properties -->

@@ -4,20 +4,19 @@ description: 本文介绍如何诊断、排查和解决 Azure 时序见解环境
 ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
-ms.author: v-yiso
+ms.author: v-junlch
 manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile
 ms.workload: big-data
 ms.topic: troubleshooting
-origin.date: 12/06/2019
-ms.date: 01/27/2020
+ms.date: 03/31/2020
 ms.custom: seodec18
-ms.openlocfilehash: 66426fa229c279d0ed31e4dfe9dd9e8bc5603bb8
-ms.sourcegitcommit: a7a199c76ef4475b54edd7d5a7edb7b91ea8dff7
+ms.openlocfilehash: 05d13495b81d13b110ff7b674bec7ecf8474de33
+ms.sourcegitcommit: 64584c0bf31b4204058ae2b4641356b904ccdd58
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2020
-ms.locfileid: "76966520"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80581704"
 ---
 # <a name="diagnose-and-solve-issues-in-your-time-series-insights-environment"></a>诊断和解决时序见解环境中的问题
 
@@ -30,17 +29,17 @@ ms.locfileid: "76966520"
 
 ### <a name="cause-a-event-source-data-isnt-in-json-format"></a>原因 A：事件源数据不是 JSON 格式。
 
-Azure 时序见解仅支持 JSON 数据。 有关 JSON 示例，请参阅[支持的 JSON 形状](./how-to-shape-query-json.md)。
+Azure 时序见解仅支持 JSON 数据。 有关 JSON 示例，请阅读[支持的 JSON 形状](./how-to-shape-query-json.md)。
 
 ### <a name="cause-b-the-event-source-key-is-missing-a-required-permission"></a>原因 B：事件源密钥缺少所需的权限
 
 * 对于 Azure IoT 中心内的某个 IoT 中心，必须提供具有“服务连接”权限的密钥。  选择“iothubowner”或“服务”策略，因为两者都具有“服务连接”权限    。
 
-   [![IoT 中心“服务连接”权限](media/diagnose-and-solve-problems/iothub-serviceconnect-permissions.png)](media/diagnose-and-solve-problems/iothub-serviceconnect-permissions.png#lightbox)
+   [![IoT 中心“服务连接”权限](./media/diagnose-and-solve-problems/iothub-serviceconnect-permissions.png)](./media/diagnose-and-solve-problems/iothub-serviceconnect-permissions.png#lightbox)
 
 * 对于 Azure 事件中心内的某个事件中心，必须提供具有“侦听”权限的密钥。  **read** 或 **manage** 策略可正常运行，因为两者都具有“侦听”权限。 
 
-   [![事件中心“侦听”权限](media/diagnose-and-solve-problems/eventhub-listen-permissions.png)](media/diagnose-and-solve-problems/eventhub-listen-permissions.png#lightbox)
+   [![事件中心“侦听”权限](./media/diagnose-and-solve-problems/eventhub-listen-permissions.png)](./media/diagnose-and-solve-problems/eventhub-listen-permissions.png#lightbox)
 
 ### <a name="cause-c-the-consumer-group-provided-isnt-exclusive-to-time-series-insights"></a>原因 C：提供的使用者组并非由时序见解专用
 
@@ -65,22 +64,24 @@ Azure 时序见解仅支持 JSON 数据。 有关 JSON 示例，请参阅[支持
 - 更改事件源的保留限制，以帮助删除不想要显示在时序见解中的旧事件。
 - 预配一个更大的环境大小（以单位数计），以提高旧事件的吞吐量。 沿用上面的示例，如果在某一天将同一 S1 环境增大到 5 个单位，则环境在一天内就能赶上进度。 如果每天以稳定状态生成 100 万或更少的事件，则赶上进度后，可将事件容量减少为 1 个单位。
 
-将基于环境 SKU 类型和容量对环境进行强制限制。 环境中的所有事件源都共享此容量。 如果 IoT 中心或事件中心的事件源推送的数据超过了实施的限制，则会出现限制和滞后。
+将基于环境 SKU 类型和容量对环境进行强制限制。 环境中的所有事件源都共享此容量。 如果 IoT 中心或事件中心的事件源推送的数据超过了实施的限制，则会遇到限制和滞后现象。
 
 下图显示了一个 SKU 为 S1 且容量为 3 的时序见解环境。 它每天可以引入 300 万个事件。
 
-![环境 SKU 当前容量](media/diagnose-and-solve-problems/environment-sku-current-capacity.png)](media/diagnose-and-solve-problems/environment-sku-current-capacity.png#lightbox) 例如，假设环境从事件中心引入消息。 每日流入速率大约为 67,000 条消息。 此速率相当于每分钟大约引入 46 条消息。 
+[![环境 SKU 当前容量](./media/diagnose-and-solve-problems/environment-sku-current-capacity.png)](./media/diagnose-and-solve-problems/environment-sku-current-capacity.png#lightbox)
+
+例如，假设某个环境从事件中心引入消息。 每日流入速率大约为 67,000 条消息。 此速率相当于每分钟大约引入 46 条消息。 
 
 * 如果将每条事件中心消息平展为单个时序见解事件，则不会发生限制。 
 * 如果将每条事件中心消息平展为 100 个时序见解事件，则每分钟应引入 4,600 个事件。 
 
 容量为 3 的 S1 SKU 环境每分钟只能流入 2,100 个事件（每天 100 万个事件 = 每分钟 700 个事件，3 个单位 = 每分钟 2,100 个事件）。 
 
-有关平展逻辑工作原理的深入介绍，请参阅[支持的 JSON 形状](./how-to-shape-query-json.md)。
+有关平展逻辑工作原理的深入介绍，请阅读[支持的 JSON 形状](./how-to-shape-query-json.md)。
 
 #### <a name="recommended-resolutions-for-excessive-throttling"></a>针对过度限制的建议解决方法
 
-若要解决延迟问题，请增加环境的 SKU 容量。 有关详细信息，请参阅[缩放时序见解环境](time-series-insights-how-to-scale-your-environment.md)。
+若要解决延迟问题，请增加环境的 SKU 容量。 有关详细信息，请阅读[缩放时序见解环境](time-series-insights-how-to-scale-your-environment.md)。
 
 ### <a name="cause-b-initial-ingestion-of-historical-data-slows-ingress"></a>原因 B：历史数据的初始流入减慢了流入速度
 
@@ -93,6 +94,22 @@ Azure 时序见解仅支持 JSON 数据。 有关 JSON 示例，请参阅[支持
 1. 将 SKU 容量增大到允许的最大值（本例中为 10）。 增大容量后，流入进程很快就能开始赶上进度。 增加容量需要付费。 若要观察赶上进度的速度，可以查看[时序见解资源管理器](https://insights.timeseries.azure.com)中的可用性图表。
 
 2. 消除滞后问题之后，将 SKU 容量降低至正常流入速率。
+
+## <a name="problem-data-was-showing-previously-but-is-no-longer-showing"></a>问题：以前显示数据，但现在不再显示
+
+TSI 不再引入数据，但事件仍流式传输到 IoT 中心或事件中心
+
+### <a name="cause-a-your-hub-access-key-was-regenerated-and-your-environment-needs-updating"></a>原因 A：重新生成了中心访问密钥，环境需要更新
+
+如果创建事件源时提供的密钥不再有效，则会出现此问题。 你会在中心看到遥测数据，但不会在时序见解中收到入口接收的消息。 如果不确定是否重新生成了密钥，可以在事件中心的活动日志中搜索“创建或更新命名空间授权规则”或“为 IoT 中心创建或更新 IotHub 资源”。
+
+若要用新密钥更新时序见解环境，请在 Azure 门户中打开中心资源并复制新密钥。 导航到 TSI 资源，单击“事件源”。 
+
+   [![更新密钥。](./media/diagnose-and-solve-problems/update-hub-key-step-1.png)](./media/diagnose-and-solve-problems/update-hub-key-step-1.png#lightbox)
+
+选择已停止从其引入的事件源，粘贴新密钥，然后单击“保存”。
+
+   [![更新密钥。](./media/diagnose-and-solve-problems/update-hub-key-step-2.png)](./media/diagnose-and-solve-problems/update-hub-key-step-2.png#lightbox)
 
 ## <a name="problem-my-event-sources-timestamp-property-name-setting-doesnt-work"></a>问题：事件源的时间戳属性名称设置不起作用
 
@@ -116,3 +133,4 @@ Azure 时序见解仅支持 JSON 数据。 有关 JSON 示例，请参阅[支持
 - 了解[如何减少 Azure 时序见解中的延迟](time-series-insights-environment-mitigate-latency.md)。
 
 - 了解[如何缩放时序见解环境](time-series-insights-how-to-scale-your-environment.md)。
+

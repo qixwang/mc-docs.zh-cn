@@ -5,19 +5,19 @@ services: vpn-gateway
 author: WenJason
 ms.service: vpn-gateway
 ms.topic: include
-origin.date: 12/14/2018
-ms.date: 12/24/2018
+origin.date: 12/05/2019
+ms.date: 04/06/2020
 ms.author: v-jay
 ms.custom: include file
-ms.openlocfilehash: 6cc125a0ae48defe3586a84de2401e0e380f5940
-ms.sourcegitcommit: 0a5a7daaf864ef787197f2b8e62539786b6835b3
+ms.openlocfilehash: fe23447d357e5819cf2c7ac65fc8d9fedc9fea6b
+ms.sourcegitcommit: 5fb45da006859215edc8211481f13174aa43dbeb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53711701"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80634398"
 ---
 ### <a name="is-custom-ipsecike-policy-supported-on-all-azure-vpn-gateway-skus"></a>是否所有 Azure VPN 网关 SKU 都支持自定义 IPsec/IKE 策略？
-自定义 IPsec/IKE 策略在 Azure VpnGw1、VpnGw2、VpnGw3、标准 VPN 网关和高性能 VPN 网关上受支持。 不支持基本 SKU。
+除基本 SKU 外，所有 Azure SKU 都支持自定义 IPsec/IKE 策略。
 
 ### <a name="how-many-policies-can-i-specify-on-a-connection"></a>在一个连接上可以指定多少个策略？
 一个给定的连接只能指定一个策略组合。
@@ -28,7 +28,7 @@ ms.locfileid: "53711701"
 ### <a name="what-are-the-algorithms-and-key-strengths-supported-in-the-custom-policy"></a>自定义策略中支持的算法和密钥强度有哪些？
 下表列出了支持的加密算法和密钥强度，客户可自行配置。 必须为每个字段选择一个选项。
 
-| IPsec/IKEv2  | **选项**                                                                   |
+| **IPsec/IKEv2**  | **选项**                                                                   |
 | ---              | ---                                                                           |
 | IKEv2 加密 | AES256、AES192、AES128、DES3、DES                                             |
 | IKEv2 完整性  | SHA384、SHA256、SHA1、MD5                                                     |
@@ -36,14 +36,14 @@ ms.locfileid: "53711701"
 | IPsec 加密 | GCMAES256、GCMAES192、GCMAES128、AES256、AES192、AES128、DES3、DES、无      |
 | IPsec 完整性  | GCMAES256、GCMAES192、GCMAES128、SHA256、SHA1、MD5                            |
 | PFS 组        | PFS24、ECP384、ECP256、PFS2048、PFS2、PFS1、无                              |
-| QM SA 生存期   | 秒（整数；至少为 300 秒/默认为 27000 秒）<br>KB（整数；至少为 1024 KB/默认为 102400000 KB）           |
+| QM SA 生存期   | 秒（整数；  至少为 300 秒/默认为 27000 秒）<br>KB（整数；  至少为 1024 KB/默认为 102400000 KB）           |
 | 流量选择器 | UsePolicyBasedTrafficSelectors ($True/$False; default $False)                 |
 |                  |                                                                               |
 
 > [!IMPORTANT]
-> 1. 在 IKE 和 IPsec PFS 中，DHGroup2048 和 PFS2048 与 Diffie-Hellman 组 14 相同。 如需完整的映射，请参阅 [Diffie-Hellman 组](#DH)。
+> 1. 在 IKE 和 IPsec PFS 中，DHGroup2048 和 PFS2048 与 Diffie-Hellman 组  14 相同。 如需完整的映射，请参阅 [Diffie-Hellman 组](#DH)。
 > 2. 对于 GCMAES 算法，必须为 IPsec 加密和完整性指定相同的 GCMAES 算法和密钥长度。
-> 3. 在 Azure VPN 网关上，IKEv2 主模式 SA 生存期固定为 28,800 秒
+> 3. 在 Azure VPN 网关上，IKEv2 主模式 SA 生存期固定为 28,800 秒。
 > 4. QM SA 生存期是可选参数。 如果未指定，则使用默认值 27,000 秒（7.5 小时）和 102400000 KB (102GB)。
 > 5. UsePolicyBasedTrafficSelector 是连接的可选参数。 请参阅下一针对“UsePolicyBasedTrafficSelectors”的常见问题解答项
 
@@ -68,7 +68,7 @@ SA 生存期是本地规范，不需匹配。
 
 有关详细信息，请参阅[连接多个基于策略的本地 VPN 设备](../articles/vpn-gateway/vpn-gateway-connect-multiple-policybased-rm-ps.md)。
 
-### <a name ="DH"></a>支持哪些 Diffie-Hellman 组？
+### <a name="which-diffie-hellman-groups-are-supported"></a><a name ="DH"></a>支持哪些 Diffie-Hellman 组？
 下表列出了支持的 Diffie-Hellman 组，分别针对 IKE (DHGroup) 和 IPsec (PFSGroup)：
 
 | **Diffie-Hellman 组**  | **DHGroup**              | **PFSGroup** | **密钥长度** |
@@ -103,6 +103,18 @@ SA 生存期是本地规范，不需匹配。
 
 ### <a name="does-custom-ipsecike-policy-work-on-expressroute-connection"></a>能否在 ExpressRoute 连接上使用自定义 IPsec/IKE 策略？
 否。 只能通过 Azure VPN 网关在 S2S VPN 和 VNet 到 VNet 连接上使用 IPsec/IKE 策略。
+
+### <a name="how-do-i-create-connections-with-ikev1-or-ikev2-protocol-type"></a>如何创建 IKEv1 或 IKEv2 协议类型的连接？
+除了基本的 SKU 以外，可以在所有 RouteBased VPN 类型 SKU 上创建 IKEv1 连接。 创建连接时，可以指定 IKEv1 或 IKEv2 连接协议类型。 如果未指定连接协议类型，IKEv2 将用作默认选项（如果适用）。 有关详细信息，请参阅 [PowerShell cmdlet](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworkgatewayconnection?) 文档。 有关 SKU 类型和 IKEv1/IKEv2 支持，请参阅[将网关连接到基于策略的 VPN 设备](../articles/vpn-gateway/vpn-gateway-connect-multiple-policybased-rm-ps.md)。
+
+### <a name="is-transit-between-between-ikev1-and-ikev2-connections-allowed"></a>是否允许在 IKEv1 和 IKEv2 连接之间传输？
+是的。 支持在 IKEv1 连接和 IKEv2 连接之间传输。
+
+### <a name="can-i-have-ikev1-site-to-site-connections-on-basic-skus-of-routebased-vpn-type"></a>能否在 RouteBased VPN 类型的基本 SKU 上建立 IKEv1 站点到站点连接？
+否。 基本 SKU 不支持此功能。
+
+### <a name="can-i-change-the-connection-protocol-type-after-the-connection-is-created-ikev1-to-ikev2-and-vice-versa"></a>能否在创建连接（从 IKEv1 到 IKEv2 的连接，或者反方向的连接）后更改连接协议类型？
+否。 创建连接后，不能更改 IKEv1/IKEv2 协议。 必须删除并重新创建使用所需协议类型的新连接。
 
 ### <a name="where-can-i-find-more-configuration-information-for-ipsec"></a>在哪里可以找到有关 IPsec 的详细配置信息？
 请参阅[为 S2S 或 VNet 到 VNet 的连接配置 IPsec/IKE 策略](../articles/vpn-gateway/vpn-gateway-ipsecikepolicy-rm-powershell.md)

@@ -6,16 +6,16 @@ author: WenJason
 ms.service: vpn-gateway
 ms.topic: conceptual
 origin.date: 12/18/2019
-ms.date: 02/10/2020
+ms.date: 04/06/2020
 ms.author: v-jay
-ms.openlocfilehash: 4b28a7dab1d9292c63357b5a293f4f67717c479c
-ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
+ms.openlocfilehash: 652aaac07934c19d85f74d87d1eb6727aca84ac4
+ms.sourcegitcommit: 5fb45da006859215edc8211481f13174aa43dbeb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77068586"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80634587"
 ---
-# <a name="configure-a-vpn-client-for-p2s-openvpn-protocol-connections-azure-ad-authentication-preview"></a>配置用于 P2S OpenVPN 协议连接的 VPN 客户端：Azure AD 身份验证（预览版）
+# <a name="configure-a-vpn-client-for-p2s-openvpn-protocol-connections-azure-ad-authentication"></a>配置用于 P2S OpenVPN 协议连接的 VPN 客户端：Azure AD 身份验证
 
 本文帮助你配置 VPN 客户端，以使用点到站点 VPN 和 Azure Active Directory 身份验证连接到虚拟网络。 在使用 Azure AD 进行连接和身份验证之前，必须先配置 Azure AD 租户。 有关详细信息，请参阅[配置 Azure AD 租户](openvpn-azure-ad-tenant.md)。
 
@@ -23,21 +23,27 @@ ms.locfileid: "77068586"
 > Azure AD 身份验证仅支持用于 OpenVPN®协议连接。
 >
 
-## <a name="profile"></a>使用客户端配置文件
+## <a name="working-with-client-profiles"></a><a name="profile"></a>使用客户端配置文件
 
-若要进行连接，需要下载 Azure VPN 客户端（预览版），并在要连接到 VNet 的每台计算机上配置 VPN 客户端配置文件。 可以在计算机上创建客户端配置文件，导出该配置文件，然后将其导入到其他计算机。
+若要进行连接，需要下载 Azure VPN 客户端，并在要连接到 VNet 的每台计算机上配置 VPN 客户端配置文件。 可以在计算机上创建客户端配置文件，导出该配置文件，然后将其导入到其他计算机。
 
 ### <a name="to-download-the-azure-vpn-client"></a>下载 Azure VPN 客户端
 
-使用[此链接](https://www.microsoft.com/p/azure-vpn-client-preview/9np355qt2sqb?rtc=1&activetab=pivot:overviewtab)下载 Azure VPN 客户端（预览版）。
+使用[此链接](https://go.microsoft.com/fwlink/?linkid=2117554)下载 Azure VPN 客户端。 请确保 Azure VPN 客户端有权在后台运行。 若要检查/启用权限，请执行以下步骤：
 
-### <a name="cert"></a>创建基于证书的客户端配置文件
+1. 转到“开始”，然后选择“设置”>“隐私”>“后台应用”。
+2. 在“后台应用”下，确保将“允许应用在后台运行”切换到“开”。 
+3. 在“选择可在后台运行的应用”下，将 Azure VPN 客户端的设置转换为“开”  。
+
+  ![权限 (permission)](./media/openvpn-azure-ad-client/backgroundpermission.png)
+
+### <a name="to-create-a-certificate-based-client-profile"></a><a name="cert"></a>创建基于证书的客户端配置文件
 
 使用基于证书的配置文件时，请确保已在客户端计算机上安装适当的证书。 有关证书的详细信息，请参阅[安装客户端证书](point-to-site-how-to-vpn-client-install-azure-cert.md)。
 
   ![cert](./media/openvpn-azure-ad-client/create/create-cert1.jpg)
 
-### <a name="radius"></a>创建 RADIUS 客户端配置文件
+### <a name="to-create-a-radius-client-profile"></a><a name="radius"></a>创建 RADIUS 客户端配置文件
 
   ![radius](./media/openvpn-azure-ad-client/create/create-radius1.jpg)
   
@@ -45,7 +51,7 @@ ms.locfileid: "77068586"
 > 可以在 P2S VPN 客户端配置文件中导出服务器机密。  可在[此处](about-vpn-profile-download.md)找到有关如何导出客户端配置文件的说明。
 >
 
-### <a name="export"></a>导出和分发客户端配置文件
+### <a name="to-export-and-distribute-a-client-profile"></a><a name="export"></a>导出和分发客户端配置文件
 
 创建有效的配置文件后，如果需要将其分发给其他用户，可使用以下步骤将其导出：
 
@@ -57,7 +63,7 @@ ms.locfileid: "77068586"
 
     ![导出](./media/openvpn-azure-ad-client/export/export2.jpg)
 
-### <a name="import"></a>导入客户端配置文件
+### <a name="to-import-a-client-profile"></a><a name="import"></a>导入客户端配置文件
 
 1. 在页面上，选择“导入”。 
 
@@ -79,7 +85,7 @@ ms.locfileid: "77068586"
 
     ![进口](./media/openvpn-azure-ad-client/import/import5.jpg)
 
-### <a name="delete"></a>删除客户端配置文件
+### <a name="to-delete-a-client-profile"></a><a name="delete"></a>删除客户端配置文件
 
 1. 选择要删除的客户端配置文件旁边的省略号图标。 然后选择“删除”  。
 
@@ -89,7 +95,7 @@ ms.locfileid: "77068586"
 
     ![删除](./media/openvpn-azure-ad-client/delete/delete2.jpg)
 
-## <a name="connection"></a>创建连接
+## <a name="create-a-connection"></a><a name="connection"></a>创建连接
 
 1. 在页面上，依次选择 **+** 、“+ 添加”。 
 
@@ -111,7 +117,7 @@ ms.locfileid: "77068586"
 
     ![连接](./media/openvpn-azure-ad-client/create/create5.jpg)
 
-### <a name="autoconnect"></a>自动连接
+### <a name="to-connect-automatically"></a><a name="autoconnect"></a>自动连接
 
 以下步骤帮助你配置自动连接并始终保持连接。
 
@@ -131,7 +137,7 @@ ms.locfileid: "77068586"
 
     ![auto](./media/openvpn-azure-ad-client/auto/auto4.jpg)
 
-## <a name="diagnose"></a>诊断连接问题
+## <a name="diagnose-connection-issues"></a><a name="diagnose"></a>诊断连接问题
 
 1. 若要诊断连接问题，可以使用“诊断”工具。  选择要诊断的 VPN 连接旁边的“...”以显示菜单。  然后选择“诊断”。 
 
@@ -164,6 +170,63 @@ ms.locfileid: "77068586"
           <dnssuffix>.xyz.com</dnssuffix>
           <dnssuffix>.etc.net</dnssuffix>
     </dnssuffixes>
+    
+</clientconfig>
+</azvpnprofile>
+```
+
+### <a name="how-do-i-add-custom-dns-servers-to-the-vpn-client"></a>如何将自定义 DNS 服务器添加到 VPN 客户端？
+
+可以修改下载的配置文件 XML 文件，并添加 **\<dnsservers>\<dnsserver> \</dnsserver>\</dnsservers>** 标记
+
+```
+<azvpnprofile>
+<clientconfig>
+
+    <dnsservers>
+        <dnsserver>x.x.x.x</dnsserver>
+        <dnsserver>y.y.y.y</dnsserver>
+    </dnsservers>
+    
+</clientconfig>
+</azvpnprofile>
+```
+
+> [!NOTE]
+> OpenVPN Azure AD 客户端使用 DNS 名称解析策略表 (NRPT) 条目，这意味着不会在 `ipconfig /all` 的输出下列出 DNS 服务器。 若要确认使用中的 DNS 设置，请使用 PowerShell 中的 [Get-DnsClientNrptPolicy](https://docs.microsoft.com/powershell/module/dnsclient/get-dnsclientnrptpolicy?view=win10-ps)。
+>
+
+### <a name="how-do-i-add-custom-routes-to-the-vpn-client"></a>如何将自定义路由添加到 VPN 客户端？
+
+可以修改下载的 XML 配置文件，并添加 **\<includeroutes>\<route>\<destination>\<mask> \</destination>\</mask>\</route>\</includeroutes>** 标记
+
+```
+<azvpnprofile>
+<clientconfig>
+
+    <includeroutes>
+        <route>
+            <destination>x.x.x.x</destination><mask>24</mask>
+        </route>
+    </includeroutes>
+    
+</clientconfig>
+</azvpnprofile>
+```
+
+### <a name="how-do-i-block-exclude-routes-from-the-vpn-client"></a>如何在 VPN 客户端中阻止（排除）路由？
+
+可以修改下载的 XML 配置文件，并添加 **\<excluderoutes>\<route>\<destination>\<mask> \</destination>\</mask>\</route>\</excluderoutes>** 标记
+
+```
+<azvpnprofile>
+<clientconfig>
+
+    <excluderoutes>
+        <route>
+            <destination>x.x.x.x</destination><mask>24</mask>
+        </route>
+    </excluderoutes>
     
 </clientconfig>
 </azvpnprofile>

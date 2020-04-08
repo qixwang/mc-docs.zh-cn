@@ -2,15 +2,16 @@
 title: 加密部署数据
 description: 了解为容器实例资源保存的数据的加密，以及如何使用客户管理的密钥来加密数据
 ms.topic: article
-origin.date: 01/10/2020
-ms.date: 01/15/2020
+origin.date: 01/17/2020
+ms.date: 04/06/2020
+author: rockboyfor
 ms.author: v-yeche
-ms.openlocfilehash: 1fc9e01f200eeaba8179591937c1398e7686ed5b
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.openlocfilehash: 9413d70e79d7cd90b301db54ca6d9426634f3f7b
+ms.sourcegitcommit: 76280dd9854dc0ff0ba1e5e62fb3dc3af049fbe2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77428608"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80516977"
 ---
 <!--Verified successfully-->
 # <a name="encrypt-deployment-data"></a>加密部署数据
@@ -28,7 +29,7 @@ ACI 中的数据是使用 256 位 AES 加密法加密和解密的。 此加密�
 |    |    Azure 托管的密钥     |     客户管理的密钥     |
 |----|----|----|
 |    加密/解密操作    |    Azure    |    Azure    |
-|    密钥存储    |    Microsoft 密钥存储    |    Azure Key Vault    |
+|    密钥存储    |    Azure 密钥存储    |    Azure Key Vault    |
 |    密钥轮换责任    |    Azure    |    客户    |
 |    密钥访问权限    |    仅限 Azure    |    Azure、客户    |
 
@@ -42,6 +43,10 @@ ACI 中的数据是使用 256 位 AES 加密法加密和解密的。 此加密�
 
 第一步是确保为 [Azure 租户](/active-directory/develop/quickstart-create-new-tenant)分配一个服务主体，用于向 Azure 容器实例服务授予权限。 
 
+> [!IMPORTANT]
+> 若要成功地运行以下命令并创建服务主体，请确认你有权在租户中创建服务主体。
+>
+
 以下 CLI 命令将在 Azure 环境中设置 ACI SP：
 
 ```azurecli
@@ -49,6 +54,10 @@ az ad sp create --id 6bb8e274-af5d-4df2-98a3-4fd78b4cafd9
 ```
 
 运行此命令后返回的输出应显示一个已设置了“displayName”：“Azure 容器实例服务”的服务主体。
+
+如果无法成功创建服务主体，请执行以下操作：
+* 确认你在租户中有权执行此操作
+* 进行检查，看租户中是否存在服务主体，以便部署到 ACI。 为此，可以运行 `az ad sp show --id 6bb8e274-af5d-4df2-98a3-4fd78b4cafd9` 并改用该服务主体
 
 ### <a name="create-a-key-vault-resource"></a>创建 Key Vault 资源
 
@@ -89,14 +98,18 @@ az ad sp create --id 6bb8e274-af5d-4df2-98a3-4fd78b4cafd9
 > [!IMPORTANT]
 > 当前正在推出的最新 API 版本 (2019-12-01) 中提供了使用客户管理的密钥加密部署数据的功能。请在部署模板中指定此 API 版本。 如果在执行此操作时遇到任何问题，请联系 Azure 支持部门。
 
-设置 Key Vault 密钥和访问策略后，将以下属性添加到 ACI 部署模板。 若要详细了解如何使用模板来部署 ACI 资源，可参阅[教程：使用资源管理器模板部署多容器组](/container-instances/container-instances-multi-container-group)。 
+设置 Key Vault 密钥和访问策略后，将以下属性添加到 ACI 部署模板。 若要详细了解如何使用模板来部署 ACI 资源，请参阅[教程：使用资源管理器模板部署多容器组](/container-instances/container-instances-multi-container-group)。 
+* 在 `resources` 下，将 `apiVersion` 设置为 `2019-12-01`。
+* 在部署模板的容器组 properties 节下，添加包含以下值的 `encryptionProperties`：
+    * `vaultBaseUrl`：Key Vault 的 DNS 名称，可在门户中 Key Vault 资源的概览边栏选项卡上找到。
+    * `keyName`：前面生成的密钥的名称
+    * `keyVersion`：密钥的当前版本。 单击密钥本身可找到此值（在 Key Vault 资源的“设置”部分的“密钥”下）
+* 在容器组 properties 节下，添加值为 `Standard` 的 `sku` 属性。 在 API 版本 2019-12-01 中，`sku` 属性是必需的。
 
-具体而言，在部署模板的容器组 properties 节下，添加包含以下值的“encryptionProperties”：
-* vaultBaseUrl：Key Vault 的 DNS 名称，可在门户中 Key Vault 资源的概述边栏选项卡上找到。
-* keyName：前面生成的密钥的名称
-* keyVersion：密钥的当前版本。 单击密钥本身可找到此值（在 Key Vault 资源的“设置”部分的“密钥”下）
+以下模板代码段显示了用于加密部署数据的其他属性：
 
 ```json
+[...]
 "resources": [
     {
         "name": "[parameters('containerGroupName')]",
@@ -109,6 +122,7 @@ az ad sp create --id 6bb8e274-af5d-4df2-98a3-4fd78b4cafd9
                 "keyName": "acikey",
                 "keyVersion": "xxxxxxxxxxxxxxxx"
             },
+            "sku": "Standard",
             "containers": {
                 [...]
             }
@@ -117,9 +131,103 @@ az ad sp create --id 6bb8e274-af5d-4df2-98a3-4fd78b4cafd9
 ]
 ```
 
+下面是一个完整的模板，改编自[教程：使用资源管理器模板部署多容器组](/container-instances/container-instances-multi-container-group)。 
+
+```json
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "containerGroupName": {
+      "type": "string",
+      "defaultValue": "myContainerGroup",
+      "metadata": {
+        "description": "Container Group name."
+      }
+    }
+  },
+  "variables": {
+    "container1name": "aci-tutorial-app",
+    "container1image": "mcr.microsoft.com/azuredocs/aci-helloworld:latest",
+    "container2name": "aci-tutorial-sidecar",
+    "container2image": "mcr.microsoft.com/azuredocs/aci-tutorial-sidecar"
+  },
+  "resources": [
+    {
+      "name": "[parameters('containerGroupName')]",
+      "type": "Microsoft.ContainerInstance/containerGroups",
+      "apiVersion": "2019-12-01",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "encryptionProperties": {
+            "vaultBaseUrl": "https://example.vault.azure.cn",
+            "keyName": "acikey",
+            "keyVersion": "xxxxxxxxxxxxxxxx"
+        },
+        "sku": "Standard",  
+        "containers": [
+          {
+            "name": "[variables('container1name')]",
+            "properties": {
+              "image": "[variables('container1image')]",
+              "resources": {
+                "requests": {
+                  "cpu": 1,
+                  "memoryInGb": 1.5
+                }
+              },
+              "ports": [
+                {
+                  "port": 80
+                },
+                {
+                  "port": 8080
+                }
+              ]
+            }
+          },
+          {
+            "name": "[variables('container2name')]",
+            "properties": {
+              "image": "[variables('container2image')]",
+              "resources": {
+                "requests": {
+                  "cpu": 1,
+                  "memoryInGb": 1.5
+                }
+              }
+            }
+          }
+        ],
+        "osType": "Linux",
+        "ipAddress": {
+          "type": "Public",
+          "ports": [
+            {
+              "protocol": "tcp",
+              "port": "80"
+            },
+            {
+                "protocol": "tcp",
+                "port": "8080"
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "outputs": {
+    "containerIPv4Address": {
+      "type": "string",
+      "value": "[reference(resourceId('Microsoft.ContainerInstance/containerGroups/', parameters('containerGroupName'))).ipAddress.ip]"
+    }
+  }
+}
+```
+
 ### <a name="deploy-your-resources"></a>部署资源
 
-如果在桌面上创建并编辑了模板文件，可以通过拖动文件的方式将其上传到 Cloud Shell 目录。 
+你在桌面上创建并编辑了模板文件。 
 
 <!--Not Available on you can upload it to your Cloud Shell directory by dragging the file into it. -->
 

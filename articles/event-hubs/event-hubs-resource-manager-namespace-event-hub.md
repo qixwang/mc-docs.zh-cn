@@ -14,94 +14,50 @@ ms.workload: na
 origin.date: 02/11/2020
 ms.date: 03/09/2020
 ms.author: v-tawe
-ms.openlocfilehash: 8d66ed37d37c9bfde22ed8eab320b9b4ae0521ef
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.custom: subject-armqs
+ms.openlocfilehash: e8f6f0d3ce8f4c1cbeb78acd47a5245ecfbcfb6c
+ms.sourcegitcommit: 260800ede66f48c886d1426a0fac18b4d402b4f2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78155114"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586641"
 ---
 # <a name="quickstart-create-an-event-hub-by-using-an-azure-resource-manager-template"></a>快速入门：使用 Azure 资源管理器模板创建事件中心
 
-Azure 事件中心是一个大数据流式处理平台和事件引入服务，每秒能够接收和处理数百万个事件。 事件中心可以处理和存储分布式软件和设备生成的事件、数据或遥测。 可以使用任何实时分析提供程序或批处理/存储适配器转换和存储发送到数据中心的数据。 有关事件中心的详细概述，请参阅[事件中心概述](event-hubs-about.md)和[事件中心功能](event-hubs-features.md)。
+Azure 事件中心是一个大数据流式处理平台和事件引入服务，每秒能够接收和处理数百万个事件。 事件中心可以处理和存储分布式软件和设备生成的事件、数据或遥测。 可以使用任何实时分析提供程序或批处理/存储适配器转换和存储发送到数据中心的数据。 有关事件中心的详细概述，请参阅[事件中心概述](event-hubs-about.md)和[事件中心功能](event-hubs-features.md)。 在此快速入门中，使用 [Azure 资源管理器模板](../azure-resource-manager/management/overview.md)创建事件中心。 部署 Azure 资源管理器模板以创建包含一个事件中心的类型为[事件中心](event-hubs-what-is-event-hubs.md)的命名空间。
 
-在此快速入门中，使用 [Azure 资源管理器模板](../azure-resource-manager/management/overview.md)创建事件中心。 部署 Azure 资源管理器模板以创建包含一个事件中心的类型为[事件中心](event-hubs-what-is-event-hubs.md)的命名空间。 本文介绍如何定义要部署的资源以及如何定义执行部署时指定的参数。 可将此模板用于自己的部署，或自定义此模板以满足要求。 有关创建模板的信息，请参阅[创作 Azure 资源管理器模板][Authoring Azure Resource Manager templates]。 有关要在模板中使用的 JSON 语法和属性，请参阅 [Microsoft.EventHub 资源类型](https://docs.microsoft.com/azure/templates/microsoft.eventhub/allversions)。
+[!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
 如果没有 Azure 订阅，请在开始前[创建一个试用帐户](https://www.azure.cn/pricing/1rmb-trial)。
 
+## <a name="prerequisites"></a>先决条件
+
+无。
+
 ## <a name="create-an-event-hub"></a>创建事件中心
 
-本快速入门使用[现有快速入门模板](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-eventhubs-create-namespace-and-eventhub/azuredeploy.json)：
+### <a name="review-the-template"></a>查看模板
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "projectName":{
-      "type": "string",
-      "metadata": {
-        "description": "Specifies a project name that is used to generate the Event Hub name and the Namespace name."
-      }
-    },
-    "location": {
-      "type": "string",
-      "defaultValue": "[resourceGroup().location]",
-      "metadata": {
-        "description": "Specifies the Azure location for all resources."
-      }
-    },
-    "eventHubSku": {
-      "type": "string",
-      "allowedValues": [ "Basic", "Standard" ],
-      "defaultValue": "Standard",
-      "metadata": {
-        "description": "Specifies the messaging tier for service Bus namespace."
-      }
-    }
-  },
-  "variables": {
-    "eventHubNamespaceName": "[concat(parameters('projectName'), 'ns')]",
-    "eventHubName": "[parameters('projectName')]"
-  },
-  "resources": [
-    {
-      "apiVersion": "2017-04-01",
-      "type": "Microsoft.EventHub/namespaces",
-      "name": "[variables('eventHubNamespaceName')]",
-      "location": "[parameters('location')]",
-      "sku": {
-        "name": "[parameters('eventHubSku')]",
-        "tier": "[parameters('eventHubSku')]",
-        "capacity": 1
-      },
-      "properties": {
-        "isAutoInflateEnabled": false,
-        "maximumThroughputUnits": 0
-      }
-    },
-    {
-      "apiVersion": "2017-04-01",
-      "type": "Microsoft.EventHub/namespaces/eventhubs",
-      "name": "[concat(variables('eventHubNamespaceName'), '/', variables('eventHubName'))]",
-      "location": "[parameters('location')]",
-      "dependsOn": [
-        "[resourceId('Microsoft.EventHub/namespaces', variables('eventHubNamespaceName'))]"
-      ],
-      "properties": {
-        "messageRetentionInDays": 7,
-        "partitionCount": 1
-      }
-    }
-  ]
-}
+本快速入门中使用的模板来自 [Azure 快速入门模板](https://azure.microsoft.com/resources/templates/101-eventhubs-create-namespace-and-eventhub/)。
+
+{ "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#", "contentVersion":"1.0.0.0", "parameters": { "projectName":{ "type": "string", "metadata": { "description":"指定用于生成事件中心名称和命名空间名称的项目名称。"
+} }, "location": { "type": "string", "defaultValue": "[resourceGroup().location]", "metadata": { "description":"指定所有资源的 Azure 位置。"
+} }, "eventHubSku": { "type": "string", "allowedValues": [ "Basic", "Standard" ], "defaultValue":"Standard", "metadata": { "description":"指定服务总线命名空间的消息传递层。"
+} } }, "variables": { "eventHubNamespaceName": "[concat(parameters('projectName'), 'ns')]", "eventHubName": "[parameters('projectName')]" }, "resources": [ { "apiVersion":"2017-04-01", "type":"Microsoft.EventHub/namespaces", "name": "[variables('eventHubNamespaceName')]", "location": "[parameters('location')]", "sku": { "name": "[parameters('eventHubSku')]", "tier": "[parameters('eventHubSku')]", "capacity":1 }, "properties": { "isAutoInflateEnabled": false, "maximumThroughputUnits":0 } }, { "apiVersion":"2017-04-01", "type":"Microsoft.EventHub/namespaces/eventhubs", "name": "[concat(variables('eventHubNamespaceName'), '/', variables('eventHubName'))]", "location": "[parameters('location')]", "dependsOn": [ "[resourceId('Microsoft.EventHub/namespaces', variables('eventHubNamespaceName'))]" ], "properties": { "messageRetentionInDays":7, "partitionCount":1 } } ] }
 ```
 
-若要查找更多模板示例，请参阅 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/?term=eventhub&pageNumber=1&sort=Popular)。
+The resources defined in the template include:
 
-若要部署模板，请执行以下操作：
+- [**Microsoft.EventHub/namespaces**](https://docs.microsoft.com/azure/templates/microsoft.eventhub/namespaces)
+- [**Microsoft.EventHub/namespaces/eventhubs**](https://docs.microsoft.com/azure/templates/microsoft.eventhub/namespaces/eventhubs)
 
-1. 登录到 Azure PowerShell。
+To find more template samples, see [Azure Quickstart Templates](https://azure.microsoft.com/resources/templates/?term=eventhub&pageNumber=1&sort=Popular).
+
+### Deploy the template
+
+To deploy the template:
+
+1. Sign in to the Azure PowerShell.
 
    ```azurepowershell
    $projectName = Read-Host -Prompt "Enter a project name that is used for generating resource names"

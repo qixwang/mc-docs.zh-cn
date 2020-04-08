@@ -3,23 +3,23 @@ title: 将模块上的 Blob 存储部署到设备 - Azure IoT Edge
 description: 将 Azure Blob 存储模块部署到 IoT Edge 设备以在边缘存储数据。
 author: kgremban
 ms.author: v-tawe
-origin.date: 12/13/2019
-ms.date: 03/02/2020
+origin.date: 03/10/2020
+ms.date: 03/30/2020
 ms.topic: conceptual
 ms.service: iot-edge
 ms.reviewer: arduppal
-ms.openlocfilehash: c7a3b17a6cdd0e09e246b5b9fb6846b0b0bf7a64
-ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
+ms.openlocfilehash: 0829aef54d34cbf5c977a73cca76c2d5eb31dacd
+ms.sourcegitcommit: 260800ede66f48c886d1426a0fac18b4d402b4f2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77494328"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586757"
 ---
 # <a name="deploy-the-azure-blob-storage-on-iot-edge-module-to-your-device"></a>将 IoT Edge 上的 Azure Blob 存储模块部署到设备
 
 有多种方法可以将模块部署到 IoT Edge 设备，并且所有这些方法都适用于 IoT Edge 上的 Azure Blob 存储模块。 两种最简单的方法是使用 Azure 门户或 Visual Studio Code 模板。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 - Azure 订阅中的 [IoT 中心](../iot-hub/iot-hub-create-through-portal.md)。
 - 已安装 IoT Edge 运行时的 [IoT Edge 设备](how-to-register-device.md)。
@@ -261,8 +261,41 @@ Azure IoT Edge 在 Visual Studio Code 中提供模板，以帮助你开发边缘
 
 连接到其他 blob 存储模块时，请将终结点更改为指向更新的主机端口。
 
+## <a name="configure-proxy-support"></a>配置代理支持
+
+如果组织使用代理服务器，则需要为 edgeAgent 和 edgeHub 运行时模块配置代理支持。 此过程涉及两项任务：
+
+- 在设备上配置运行时守护程序和 IoT Edge 代理。
+- 为部署清单 JSON 文件中的模块设置 HTTPS_PROXY 环境变量。
+
+[将 IoT Edge 设备配置为通过代理服务器进行通信](how-to-configure-proxy-support.md)中介绍了此过程。
+
+此外，blob 存储模块还需要清单部署文件中的 HTTPS_PROXY 设置。 可以直接编辑部署清单文件，也可以使用 Azure 门户。
+
+1. 在 Azure 门户中导航到 IoT 中心，然后从左窗格菜单中选择“IoT Edge”。 
+
+1. 选择要配置模块的设备。
+
+1. 选择“设置模块”  。
+
+1. 在此页的“IoT Edge 模块”部分，选择 blob 存储模块  。
+
+1. 在“更新 IoT Edge 模块”页上，选择“环境变量”选项卡。  
+
+1. 添加 `HTTPS_PROXY` 作为“名称”，  添加代理 URL 作为“值”。 
+
+      ![设置 HTTPS_PROXY 环境变量](./media/how-to-deploy-blob/https-proxy-config.png)
+
+1. 单击“更新”  ，然后单击“查看 + 创建”  。
+
+1. 请注意，代理会添加到部署清单中的模块，此时请选择“创建”  。
+
+1. 通过从设备详细信息页中选择模块来验证设置，然后在“IoT Edge 模块详细信息”  页的下半部分选择“环境变量”  选项卡。
+
+      ![设置 HTTPS_PROXY 环境变量](./media/how-to-deploy-blob/verify-proxy-config.png)
+
 ## <a name="next-steps"></a>后续步骤
 
-详细了解 [IoT Edge 上的 Azure Blob 存储](how-to-store-data-blob.md)
+详细了解 [IoT Edge 上的 Azure Blob 存储](how-to-store-data-blob.md)。
 
 若要详细了解部署清单的工作原理及创建方式，请参阅[了解如何使用、配置和重用 IoT Edge 模块](module-composition.md)。

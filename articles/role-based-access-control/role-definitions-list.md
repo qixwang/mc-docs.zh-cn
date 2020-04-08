@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure 门户、Azure PowerShell 或 Azure CLI 列出 Azure RBAC 中的角色定义 |Microsoft Docs
-description: 了解如何使用 Azure 门户、Azure PowerShell 或 Azure CLI 列出 Azure RBAC 中的内置角色和自定义角色。
+title: 使用 Azure 门户、Azure PowerShell、Azure CLI 或 REST API 列出 Azure RBAC 中的角色定义 | Microsoft Docs
+description: 了解如何使用 Azure 门户、Azure PowerShell、Azure CLI 或 REST API 列出 Azure RBAC 中的内置角色和自定义角色。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/02/2020
+ms.date: 03/31/2020
 ms.author: v-junlch
 ms.reviewer: bagovind
-ms.openlocfilehash: bc36ba1f8b82c4cd78c25ffd9392ff174a17bdb0
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.openlocfilehash: f8c6618523d86120e76ba03376b312944480664f
+ms.sourcegitcommit: 64584c0bf31b4204058ae2b4641356b904ccdd58
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75624399"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80581723"
 ---
 # <a name="list-role-definitions-in-azure-rbac"></a>列出 Azure RBAC 中的角色定义
 
@@ -309,6 +309,66 @@ az role definition list --name "Virtual Machine Contributor" --output json | jq 
   "Microsoft.Storage/storageAccounts/read"
 ]
 ```
+
+## <a name="rest-api"></a>REST API
+
+### <a name="list-role-definitions"></a>列出角色定义
+
+若要列出角色定义，请使用[角色定义 - 列出](https://docs.microsoft.com/rest/api/authorization/roledefinitions/list) REST API。 若要优化结果，请指定一个范围和可选的筛选器。
+
+1. 从下面的请求开始：
+
+    ```http
+    GET https://management.chinacloudapi.cn/{scope}/providers/Microsoft.Authorization/roleDefinitions?$filter={$filter}&api-version=2015-07-01
+    ```
+
+1. 在 URI 中，将“{scope}”  替换为要列出角色定义的范围。
+
+    > [!div class="mx-tableFixed"]
+    > | 作用域 | 类型 |
+    > | --- | --- |
+    > | `providers/Microsoft.Management/managementGroups/{groupId1}` | 管理组 |
+    > | `subscriptions/{subscriptionId1}` | 订阅 |
+    > | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1` | 资源组 |
+    > | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1` | 资源 |
+
+    在前面的示例中，microsoft.web 是引用应用服务实例的资源提供程序。 同样，可以使用任何其他资源提供程序并指定范围。 有关详细信息，请参阅 [Azure 资源提供程序和类型](../azure-resource-manager/management/resource-providers-and-types.md)和支持的 [Azure 资源管理器资源提供程序操作](resource-provider-operations.md)。  
+     
+1. 将 *{filter}* 替换为筛选角色定义列表时要应用的条件。
+
+    > [!div class="mx-tableFixed"]
+    > | 筛选器 | 说明 |
+    > | --- | --- |
+    > | `$filter=atScopeAndBelow()` | 列出指定范围和任何子范围的角色定义。 |
+    > | `$filter=type+eq+'{type}'` | 列出指定类型的角色定义。 角色的类型可以是 `CustomRole` 或 `BuiltInRole`。 |
+
+### <a name="list-a-role-definition"></a>列出角色定义
+
+若要列出特定角色的详细信息，请使用[角色定义 - 获取](https://docs.microsoft.com/rest/api/authorization/roledefinitions/get)或[角色定义 - 按 ID 获取](https://docs.microsoft.com/rest/api/authorization/roledefinitions/getbyid) REST API。
+
+1. 从下面的请求开始：
+
+    ```http
+    GET https://management.chinacloudapi.cn/{scope}/providers/Microsoft.Authorization/roleDefinitions/{roleDefinitionId}?api-version=2015-07-01
+    ```
+
+    对于目录级别的角色定义，可以使用以下请求：
+
+    ```http
+    GET https://management.chinacloudapi.cn/providers/Microsoft.Authorization/roleDefinitions/{roleDefinitionId}?api-version=2015-07-01
+    ```
+
+1. 在 URI 中，将“{scope}”  替换为要列出角色定义的范围。
+
+    > [!div class="mx-tableFixed"]
+    > | 作用域 | 类型 |
+    > | --- | --- |
+    > | `providers/Microsoft.Management/managementGroups/{groupId1}` | 管理组 |
+    > | `subscriptions/{subscriptionId1}` | 订阅 |
+    > | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1` | 资源组 |
+    > | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1` | 资源 |
+     
+1. 将“{roleDefinitionId}”  替换为角色定义标识符。
 
 ## <a name="next-steps"></a>后续步骤
 

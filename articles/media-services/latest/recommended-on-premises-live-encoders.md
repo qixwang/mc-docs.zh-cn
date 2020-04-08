@@ -7,17 +7,17 @@ author: WenJason
 manager: digimobile
 ms.author: v-jay
 origin.date: 02/10/2020
-ms.date: 02/24/2020
+ms.date: 04/06/2020
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: 8054c82d52bba21ce523ef87b12c7ea996978e32
-ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
+ms.openlocfilehash: 3eddcdabb868c6ad8b9aa6582abbb5b0fc17c50c
+ms.sourcegitcommit: fe9ed98aaee287a21648f866bb77cb6888f75b0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77494181"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80625769"
 ---
-# <a name="recommended-live-streaming-encoders"></a>建议的实时传送视频流编码器
+# <a name="tested-on-premises-live-streaming-encoders"></a>经过测试的本地实时传送视频流编码器
 
 在 Azure 媒体服务中，[直播活动](https://docs.microsoft.com/rest/api/media/liveevents)（频道）表示用于处理实时传送视频流内容的管道。 直播活动通过以下两种方式之一接收实时输入流。
 
@@ -25,10 +25,12 @@ ms.locfileid: "77494181"
 
     如果要将多比特率流用于传递型实时事件，则必须同步不同比特率上的视频 GOP 大小和视频片段，避免播放端出现意外的行为。
 
-  > [!NOTE]
+  > [!TIP]
   > 实时传送视频流时，使用直通方法是最经济的。
  
 * 本地实时编码器采用以下格式之一将单比特率流发送至能够使用媒体服务执行实时编码的直播活动：RTMP 或平滑流式处理（分片 MP4）。 然后，直播活动将对传入的单比特率流执行实时编码，使之转换为多比特率（自适应）视频流。
+
+本文介绍经测试的本地实时传送视频流编码器。 有关如何验证本地实时编码器的说明，请参阅[验证本地编码器](become-on-premises-encoder-partner.md)
 
 若要详细了解如何使用媒体服务进行实时编码，请参阅[使用媒体服务 v3 的实时传送视频流](live-streaming-overview.md)。
 
@@ -54,6 +56,7 @@ ms.locfileid: "77494181"
 - OBS Studio
 - Switcher Studio (iOS)
 - Telestream Wirecast（根据 TLS 1.2 要求，版本为 13.0.2 或更高）
+- Telestream Wirecast S（仅支持 RTMP）
 - Teradek Slice 756
 - TriCaster 8000
 - Tricaster Mini HD-4
@@ -96,57 +99,18 @@ ms.locfileid: "77494181"
 - 使用基于软件的编码器时，请关闭任何不需要的程序。
 - 开始推送之后更改编码器配置会对事件造成负面影响。 配置更改可能会导致事件不稳定。 
 - 请确保自己有充足的时间来设置事件。 对于大规模事件，我们建议在事件之前的一小时开始设置。
+- 使用 H.264 视频和 AAC 音频编解码器输出。
+- 确保不同的视频质量中存在关键帧或 GOP 临时对齐。
+- 确保每个视频质量具有唯一的流名称。
+- 为获得最佳自适应比特率性能，建议使用严格的 CBR 编码。
 
-## <a name="becoming-an-on-premises-encoder-partner"></a>成为本地编码器合作伙伴
+> [!IMPORTANT]
+> 查看计算机的物理状况（CPU/内存/其他），因为将片段上传到云涉及 CPU 和 IO 操作。 如果更改编码器中的任何设置，请务必在某些情况下重置频道/直播活动，使更改生效。
 
-作为 Azure 媒体服务本地编码器合作伙伴，媒体服务通过向企业客户推荐编码器来推广你的产品。 若要成为本地编码器合作伙伴，必须验证本地编码器与媒体服务的兼容性。 为此，请完成以下验证。
+## <a name="see-also"></a>另请参阅
 
-### <a name="pass-through-live-event-verification"></a>直通直播活动验证
-
-1. 在媒体服务帐户中，确保**流式处理终结点**正在运行。 
-2. 创建并启动直通  直播活动。 <br/> 有关详细信息，请参阅[直播活动状态和计费](live-event-states-billing.md)。
-3. 获取引入 URL 并配置本地编码器以使用 URL 将多比特率实时流发送到媒体服务。
-4. 获取预览 URL 并使用它验证来自编码器的输入是否实际接收。
-5. 创建新的**资产**对象。
-6. 创建**实时输出**并使用创建的资产名称。
-7. 使用内置的流式处理策略  类型创建流式处理定位符  。
-8. 列出流式处理定位器的路径，以取回要使用的 URL  。
-9. 获取要从中流式传输的**流式处理终结点**的主机名。
-10. 将步骤 8 中的 URL 与步骤 9 中的主机名合并，获取完整的 URL。
-11. 运行实时编码器大约 10 分钟。
-12. 停止直播活动。 
-13. 使用 [Azure Media Player](https://aka.ms/azuremediaplayer) 等播放器观看存档的资产，确保以各种质量水平播放时不会出现明显的问题。 或者，在实时会话中通过预览 URL 进行观看和验证。
-14. 记录资产 ID、为实时存档发布的流式处理 URL，以及实时编码器所使用的设置和版本。
-15. 在创建每个示例后重置直播活动状态。
-16. 对编码器支持的所有配置重复（有或无广告信号、字幕或不同编码速度）步骤 5 到 15。
-
-### <a name="live-encoding-live-event-verification"></a>实时编码直播活动验证
-
-1. 在媒体服务帐户中，确保**流式处理终结点**正在运行。 
-2. 创建并启动实时编码  直播活动。 <br/> 有关详细信息，请参阅[直播活动状态和计费](live-event-states-billing.md)。
-3. 获取引入 URL，并配置编码器以将单比特率实时流推送到媒体服务。
-4. 获取预览 URL 并使用它验证来自编码器的输入是否实际接收。
-5. 创建新的**资产**对象。
-6. 创建**实时输出**并使用创建的资产名称。
-7. 使用内置的流式处理策略  类型创建流式处理定位符  。
-8. 列出流式处理定位器的路径，以取回要使用的 URL  。
-9. 获取要从中流式传输的**流式处理终结点**的主机名。
-10. 将步骤 8 中的 URL 与步骤 9 中的主机名合并，获取完整的 URL。
-11. 运行实时编码器大约 10 分钟。
-12. 停止直播活动。
-13. 使用 [Azure Media Player](https://aka.ms/azuremediaplayer) 等播放器观看存档的资产，确保以各种质量水平播放时不会出现明显的问题。 或者，在实时会话中通过预览 URL 进行观看和验证。
-14. 记录资产 ID、为实时存档发布的流式处理 URL，以及实时编码器所使用的设置和版本。
-15. 在创建每个示例后重置直播活动状态。
-16. 对编码器支持的所有配置重复（有或无广告信号、字幕或不同编码速度）步骤 5 到 15。
-
-### <a name="longevity-verification"></a>使用寿命验证
-
-遵循[直通直播活动验证](#pass-through-live-event-verification)中的相同步骤（步骤 11 除外）。 <br/>运行实时编码器一周或更长时间，而不是 10 分钟。 使用 [Azure Media Player](https://aka.ms/azuremediaplayer) 等播放器不时观看实时传送视频流（或存档的资产），确保播放没有明显问题。
-
-### <a name="email-your-recorded-settings"></a>通过电子邮件发送记录的设置
-
-最后，通过电子邮件将记录的设置和实时存档参数作为通知发送到 Azure 媒体服务 (amshelp@microsoft.com)，告知所有自我验证检查已通过。 另请提供联系信息，以方便跟进。 在此过程中如有任何问题，可以联系 Azure 媒体服务团队。
+[使用媒体服务 v3 实时传送视频流](live-streaming-overview.md)
 
 ## <a name="next-steps"></a>后续步骤
 
-[使用媒体服务 v3 实时传送视频流](live-streaming-overview.md)
+[如何验证编码器](become-on-premises-encoder-partner.md)

@@ -6,16 +6,16 @@ author: jasonfreeberg
 ms.devlang: java
 ms.topic: article
 origin.date: 04/12/2019
-ms.date: 03/23/2020
+ms.date: 03/30/2020
 ms.author: v-tawe
 ms.reviewer: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: b5baa4545802528e5587beaf34646871a991ec34
-ms.sourcegitcommit: d5eca3c6b03b206e441b599e5b138bd687a91361
+ms.openlocfilehash: 671f33136e95a4ef4deb560366b9c3d72cdd5f01
+ms.sourcegitcommit: 44d3fe59952847e5394bbe6c05bd6f333bb56345
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78934712"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80522064"
 ---
 # <a name="configure-a-windows-java-app-for-azure-app-service"></a>为 Azure 应用服务配置 Windows Java 应用
 
@@ -37,6 +37,24 @@ Azure 应用服务可让 Java 开发人员在完全托管的基于 Windows 的�
 ## <a name="logging-and-debugging-apps"></a>日志记录和调试应用
 
 可以通过 Azure 门户对每个应用使用性能报告、流量可视化和运行状况检查。
+
+### <a name="use-flight-recorder"></a>使用网络流量记录器
+
+应用服务上使用 Azul JVM 的所有 Java 运行时均附带 Zulu 网络流量记录器。 可以使用它来记录 JVM、系统和 Java 级别事件，以监视 Java 应用程序中的行为并排查问题。
+
+若要进行定时记录，需要 Java 应用程序的 PID（进程 ID）。 若要查找 PID，请打开浏览器，导航到 Web 应用的 SCM 站点 https://<your-site-name>.scm.chinacloudsites.cn/ProcessExplorer/。 此页面显示 Web 应用中正在运行的进程。 在表中找到名为“java”的进程，并复制相应的 PID（进程 ID）。
+
+接下来，打开 SCM 站点顶部工具栏中的“调试控制台”  ，运行以下命令。 将 `<pid>` 替换为此前复制的进程 ID。 此命令会启动对 Java 应用程序的 30 秒探查器记录，并在 `D:\home` 目录中生成名为 `timed_recording_example.jfr` 的文件。
+
+```
+jcmd <pid> JFR.start name=TimedRecording settings=profile duration=30s filename="D:\home\timed_recording_example.JFR"
+```
+
+有关详细信息，请参阅 [Jcmd 命令参考](https://docs.oracle.com/javacomponents/jmc-5-5/jfr-runtime-guide/comline.htm#JFRRT190)。
+
+#### <a name="analyze-jfr-files"></a>分析 `.jfr` 文件
+
+使用 [FTPS](deploy-ftp.md) 将 JFR 文件下载到本地计算机。 若要分析 JFR 文件，请下载并安装 [Zulu Mission Control](https://www.azul.com/products/zulu-mission-control/)。 有关 Zulu Mission Control 的说明，请参阅 [Azul 文档](https://docs.azul.com/zmc/)和[安装说明](https://docs.microsoft.com/java/azure/jdk/java-jdk-flight-recorder-and-mission-control)。
 
 <!--### Stream diagnostic logs-->
 
@@ -190,7 +208,7 @@ public int getServerPort()
 |------------|-----------------------------------------------|------------------------------------------------------------------------------------------|
 | PostgreSQL | `org.postgresql.Driver`                        | [下载](https://jdbc.postgresql.org/download.html)                                    |
 | MySQL      | `com.mysql.jdbc.Driver`                        | [下载](https://dev.mysql.com/downloads/connector/j/)（选择“独立于平台”） |
-| SQL Server | `com.microsoft.sqlserver.jdbc.SQLServerDriver` | [下载](https://docs.microsoft.com/sql/connect/jdbc/download-microsoft-jdbc-driver-for-sql-server?view=sql-server-2017#available-downloads-of-jdbc-driver-for-sql-server)                                                           |
+| SQL Server | `com.microsoft.sqlserver.jdbc.SQLServerDriver` | [下载](https://docs.microsoft.com/sql/connect/jdbc/download-microsoft-jdbc-driver-for-sql-server?view=sql-server-2017#download)                                                           |
 
 若要将 Tomcat 配置为使用 Java 数据库连接 (JDBC) 或 Java 持久性 API (JPA)，请先自定义在启动时由 Tomcat 读取的 `CATALINA_OPTS` 环境变量。 在[应用服务 Maven 插件](https://github.com/Microsoft/azure-maven-plugins/blob/develop/azure-webapp-maven-plugin/README.md)中通过某个应用设置来设置这些值：
 

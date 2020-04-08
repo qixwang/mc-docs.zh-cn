@@ -5,16 +5,16 @@ author: kgremban
 manager: philmea
 ms.author: v-tawe
 origin.date: 11/20/2019
-ms.date: 03/02/2020
+ms.date: 03/30/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: a18257859b7e23a7011dadc9da111ac882112e18
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: 09338a9228d155c2d3f014a889646319e3026864
+ms.sourcegitcommit: 260800ede66f48c886d1426a0fac18b4d402b4f2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79292755"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586647"
 ---
 # <a name="common-issues-and-resolutions-for-azure-iot-edge"></a>Azure IoT Edge 的常见问题和解决方法
 
@@ -45,6 +45,28 @@ ms.locfileid: "79292755"
 * 生产就绪性检查：查找建议的生产最佳做法，例如设备证书颁发机构 (CA) 证书的状态以及模块日志文件配置。
 
 如需诊断检查的完整列表，请参阅[内置的故障排除功能](https://github.com/Azure/iotedge/blob/master/doc/troubleshoot-checks.md)。
+
+## <a name="gather-debug-information-with-iotedge-support-bundle-command"></a>通过 iotedge 的“support-bundle”命令收集调试信息
+
+需要从 IoT Edge 设备收集日志时，最方便的方法是使用 `support-bundle` 命令。 默认情况下，此命令收集模块、IoT Edge 安全管理器和容器引擎日志、“iotedge check”JSON 输出和其他有用的调试信息。 它将它们压缩成单个文件，便于共享。 `support-bundle` 命令在[版本 1.0.9](https://github.com/Azure/azure-iotedge/releases/tag/1.0.9) 及更高版本中提供。
+
+运行带 `--since` 标志的 `support-bundle` 命令，指定要从过去获取日志的时间。 例如，`6h` 会获取过去 6 小时的日志，`6d` 会获取过去 6 天的日志，`6m` 会获取过去 6 分钟的日志，依此类推。 包括 `--help` 标志即可查看选项的完整列表。
+
+
+* 在 Linux 上：
+
+  ```bash
+  sudo iotedge support-bundle --since 6h
+  ```
+
+* 在 Windows 上：
+
+  ```powershell
+  iotedge support-bundle --since 6h
+  ```
+
+> [!WARNING]
+> `support-bundle` 命令的输出可能包含主机、设备和模块名称、模块记录的信息，等等。如果在公共论坛中共享输出，请注意这一点。
 
 ## <a name="standard-diagnostic-steps"></a>标准诊断步骤
 

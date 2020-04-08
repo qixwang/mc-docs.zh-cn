@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/16/2020
+ms.date: 04/01/2020
 ms.author: v-junlch
 ms.subservice: B2C
-ms.openlocfilehash: f718aea1dbba57b87e5d31674b97d2f762c27f67
-ms.sourcegitcommit: 71a386ca0d0ecb79a123399b6ab6b8c70ea2aa78
+ms.openlocfilehash: 8393e439b67c86eb624067f7a31f98730bec70b2
+ms.sourcegitcommit: 64584c0bf31b4204058ae2b4641356b904ccdd58
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2020
-ms.locfileid: "79497191"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80581634"
 ---
 # <a name="localization-string-ids"></a>本地化字符串 ID
 
@@ -33,7 +33,7 @@ Localization  元素使你能够在用户旅程的策略中支持多个区域设
 | **logonIdentifier_email** | 电子邮件地址 |
 | **requiredField_email** | 请输入电子邮件地址 |
 | **invalid_email** | 请输入有效的电子邮件地址 |
-| **email_pattern** | ^[a-zA-Z0-9.!#$%&’' *+/=?^_\`{\|}~-]+@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)* $ |
+| **email_pattern** | ^[a-zA-Z0-9.!#$%&'' *+/=?^_\`{\|}~-]+@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)* $ |
 | **local_intro_username** | 使用用户名登录 |
 | **logonIdentifier_username** | 用户名 |
 | **requiredField_username** | 请输入用户名 |
@@ -224,7 +224,36 @@ Localization  元素使你能够在用户旅程的策略中支持多个区域设
 </LocalizedResources>
 ```
 
+## <a name="azure-mfa-error-messages"></a>Azure MFA 错误消息
+
+以下是 [Azure MFA 技术配置文件](multi-factor-auth-technical-profile.md)错误消息的 ID：
+
+| ID | 默认值 |
+| -- | ------------- |
+|UserMessageIfCouldntSendSms | 无法向手机发送短信，请尝试另一个电话号码。 |
+|UserMessageIfInvalidFormat | 电话号码格式无效，请更正，然后重试。|
+|UserMessageIfMaxAllowedCodeRetryReached | 输入错误代码的次数过多，请稍后重试。|
+|UserMessageIfServerError | 无法使用 MFA 服务，请稍后重试。|
+|UserMessageIfThrottled | 请求被阻止，请稍后重试。|
+|UserMessageIfWrongCodeEntered|输入的代码错误，请重试。|
+
+### <a name="example"></a>示例
+
+```XML
+<LocalizedResources Id="api.localaccountsignup.en">
+  <LocalizedStrings>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfCouldntSendSms">Cannot Send SMS to the phone, please try another phone number.</LocalizedString>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfInvalidFormat">Your phone number is not in a valid format, please correct it and try again.</LocalizedString>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfMaxAllowedCodeRetryReached">Wrong code entered too many times, please try again later.</LocalizedString>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfServerError">Cannot use MFA service, please try again later.</LocalizedString>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfThrottled">Your request has been throttled, please try again later.</LocalizedString>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfWrongCodeEntered">Wrong code entered, please try again.</LocalizedString>
+  </LocalizedStrings>
+</LocalizedResources>
+```
+
 ## <a name="one-time-password-error-messages"></a>一次性密码错误消息
+
 以下是[一次性密码技术配置文件](one-time-password-technical-profile.md)错误消息的 ID
 
 | ID | 默认值 |
@@ -246,6 +275,32 @@ Localization  元素使你能够在用户旅程的策略中支持多个区域设
   </LocalizedStrings>
 </LocalizedResources>
 ```
+
+
+## <a name="claims-transformations-error-messages"></a>声明转换错误消息
+
+以下是声明转换错误消息的 ID：
+
+| ID | 声明转换 | 默认值 |
+| -- | ------------- |------------- |
+|UserMessageIfClaimsTransformationBooleanValueIsNotEqual |[AssertBooleanClaimIsEqualToValue](boolean-transformations.md#assertbooleanclaimisequaltovalue) | 声明类型“inputClaim”的布尔声明值比较失败。| 
+|DateTimeGreaterThan |[AssertDateTimeIsGreaterThan](date-transformations.md#assertdatetimeisgreaterthan) | 声明值比较失败：提供的左操作数大于右操作数。|
+|UserMessageIfClaimsTransformationStringsAreNotEqual |[AssertStringClaimsAreEqual](string-transformations.md#assertstringclaimsareequal) | 使用 StringComparison“OrdinalIgnoreCase”的声明值比较失败。|
+
+### <a name="example"></a>示例
+
+```XML
+<LocalizedResources Id="api.localaccountsignup.en">
+  <LocalizedStrings>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfClaimsTransformationBooleanValueIsNotEqual">Your email address hasn't been verified.</LocalizedString>
+    <LocalizedString ElementType="ErrorMessage" StringId="DateTimeGreaterThan">Expiration date must be greater that the current date.</LocalizedString>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfClaimsTransformationStringsAreNotEqual">The email entry fields do not match. Please enter the same email address in both fields and try again.</LocalizedString>
+  </LocalizedStrings>
+</LocalizedResources>
+```
+
+
+
 
 
 

@@ -4,17 +4,17 @@ description: 了解可以运行 Azure IoT Edge 守护程序和运行时的操作
 author: kgremban
 manager: philmea
 ms.author: v-tawe
-origin.date: 08/13/2019
-ms.date: 03/02/2020
+origin.date: 03/06/2020
+ms.date: 03/30/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 541e06cbd92ef0e2ce965712675279fe22a1f3e1
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.openlocfilehash: f7eb7afa5004c6ee9168f00b2dec6e7e55f7c848
+ms.sourcegitcommit: 260800ede66f48c886d1426a0fac18b4d402b4f2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79292658"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586649"
 ---
 # <a name="azure-iot-edge-supported-systems"></a>Azure IoT Edge 支持的系统
 
@@ -26,7 +26,7 @@ ms.locfileid: "79292658"
 
 **Microsoft 客户支持团队** - 拥有[支持计划](https://azure.microsoft.com/support/plans/)的用户可以通过直接从 [Azure 门户]( https://portal.azure.cn/signin/index/?feature.settingsportalinstance=mpac)创建支持票证来与 Microsoft 客户支持团队进行沟通。
 
-**功能请求** - Azure IoT Edge 产品通过产品的[“用户之声”页](https://feedback.azure.com/forums/907045-azure-iot-edge)跟踪功能请求。
+**功能请求** – Azure IoT Edge 产品通过产品的 [User Voice 页面](https://feedback.azure.com/forums/907045-azure-iot-edge)跟踪功能请求。
 
 ## <a name="container-engines"></a>容器引擎
 
@@ -97,6 +97,28 @@ Azure IoT Edge 在大多数可以运行容器的操作系统上运行；但是�
 ```bash
 sudo apt-get install libssl1.0.2
 ```
+
+## <a name="releases"></a>发行版本
+
+IoT Edge 发行资产和发行说明在 [azure-iotedge 版本](https://github.com/Azure/azure-iotedge/releases)页上提供。 本部分介绍这些发行说明中的信息，让你更轻松地直观显示每个版本的组件。
+
+IoT Edge 组件可以单独安装或更新，并后向兼容旧版中的组件。 下表列出了每个版本中包含的组件：
+
+| 发布   | 安全守护程序  | Edge 中心<br>Edge 代理 | Libiothsm | Moby  |
+| --------- | ---------------- | ---------------------- | --------- | ----- |
+| **1.0.9** | 1.0.9            | 1.0.9                  | 1.0.9     |       |
+| **1.0.8** | 1.0.8            | 1.0.8.5<br>1.0.8.4<br>1.0.8.3<br>1.0.8.2<br>1.0.8.1<br>1.0.8 | 1.0.8 | 3.0.6 |
+| **1.0.7** | 1.0.7.1<br>1.0.7 | 1.0.7.1<br>1.0.7       | 1.0.7.1<br>1.0.7 | 3.0.5<br>3.0.4（ARMv7hl，CentOS） |
+| **1.0.6** | 1.0.6.1<br>1.0.6 | 1.0.6.1<br>1.0.6       | 1.0.6.1<br>1.0.6 |  |
+| **1.0.5** | 1.0.5            | 1.0.5                  | 1.0.5     | 3.0.2 |
+
+IoT Edge 使用 Microsoft.Azure.Device.Client SDK。 有关详细信息，请参阅 [Azure IoT C# SDK GitHub 存储库](https://github.com/Azure/azure-iot-sdk-csharp)或 [Azure SDK for .NET 参考内容](https://docs.microsoft.com/dotnet/api/overview/azure/iot/client?view=azure-dotnet)。 以下列表显示了用于测试每个版本的客户端 SDK 版本：
+
+* **IoT Edge 1.0.9**：客户端 SDK 1.21.1
+* **IoT Edge 1.0.8**：客户端 SDK 1.20.3
+* **IoT Edge 1.0.7**：客户端 SDK 1.20.1
+* **IoT Edge 1.0.6**：客户端 SDK 1.17.1
+* **IoT Edge 1.0.5**：客户端 SDK 1.17.1
 
 ## <a name="virtual-machines"></a>虚拟机
 
