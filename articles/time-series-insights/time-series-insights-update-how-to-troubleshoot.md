@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 02/19/2020
+ms.date: 03/31/2020
 ms.custom: seodec18
-ms.openlocfilehash: f6319f5fc22d5b3b55f95d55fd2d61ecbca2221f
-ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
+ms.openlocfilehash: 30d6444a11e316f951dad6f1311f9fd2cb9785d4
+ms.sourcegitcommit: 64584c0bf31b4204058ae2b4641356b904ccdd58
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77494546"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80581709"
 ---
 # <a name="diagnose-and-troubleshoot-a-preview-environment"></a>对预览版环境进行诊断和故障排除
 
@@ -72,6 +72,20 @@ ms.locfileid: "77494546"
 
     > [!NOTE]
     > 目前，时序见解支持的最大引入速率为 6 Mbps。
+
+## <a name="problem-data-was-showing-but-now-ingestion-has-stopped"></a>问题：以前可以显示数据，但引入现已停止
+
+- 可能已重新生成事件源密钥，但预览版环境需要新的事件源密钥。
+
+如果创建事件源时提供的密钥不再有效，则会出现此问题。 你会在中心看到遥测数据，但不会在时序见解中收到入口接收的消息。 如果不确定是否重新生成了密钥，可以在事件中心的活动日志中搜索“创建或更新命名空间授权规则”或“为 IoT 中心创建或更新 IotHub 资源”。 
+
+若要使用新密钥更新时序见解预览版环境，请在 Azure 门户中打开中心资源并复制新密钥。 导航到 TSI 资源，单击“事件源”。 
+
+   [![更新密钥。](./media/preview-troubleshoot/update-hub-key-step-1.png)](./media/preview-troubleshoot/update-hub-key-step-1.png#lightbox)
+
+选择已停止从其引入的事件源，粘贴新密钥，然后单击“保存”。
+
+   [![更新密钥。](./media/preview-troubleshoot/update-hub-key-step-2.png)](./media/preview-troubleshoot/update-hub-key-step-2.png#lightbox)
 
 ## <a name="problem-my-event-sources-timestamp-property-name-doesnt-work"></a>问题：事件源的时间戳属性名称不起作用
 
