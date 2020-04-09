@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 03/16/2020
+ms.date: 03/30/2020
 ms.author: v-junlch
-ms.openlocfilehash: 12f291e68760e31b1d3343eb24dd27b69d12bfd1
-ms.sourcegitcommit: 71a386ca0d0ecb79a123399b6ab6b8c70ea2aa78
+ms.openlocfilehash: 560853dace6ad86693c2cefdec649c5d37e2b3ea
+ms.sourcegitcommit: 64584c0bf31b4204058ae2b4641356b904ccdd58
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2020
-ms.locfileid: "79497305"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80581827"
 ---
 # <a name="application-gateway-configuration-overview"></a>应用程序网关配置概述
 
@@ -20,7 +20,7 @@ Azure 应用程序网关由多个组件构成，可根据不同的方案以不�
 
 ![应用程序网关组件流程图](./media/configuration-overview/configuration-overview1.png)
 
-此图演示了包含三个侦听器的应用程序。 前两个侦听器是分别用于 `http://acme.com/*` 和 `http://fabrikam.com/*` 的多站点侦听器， 两者在端口 80 上侦听。 第三个侦听器是支持端到端安全套接字层 (SSL) 终止的基本侦听器。
+此图演示了包含三个侦听器的应用程序。 前两个侦听器是分别用于 `http://acme.com/*` 和 `http://fabrikam.com/*` 的多站点侦听器， 两者在端口 80 上侦听。 第三个侦听器是支持端到端传输层安全性 (TLS) 终止（前称为“安全套接字层 (SSL) 终止”）的基本侦听器。
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -38,7 +38,7 @@ Azure 应用程序网关由多个组件构成，可根据不同的方案以不�
 
 如果配置了专用前端 IP，则应用程序网关将使用每个实例的 1 个专用 IP 地址，以及另一个专用 IP 地址。
 
-另外，Azure 会在每个子网中保留 5 个 IP 地址供内部使用：前 4 个 IP 地址和最后一个 IP 地址。 例如，假设有 15 个应用程序网关实例没有专用前端 IP。 至少需要为此子网提供 20 个 IP 地址：5个 IP 地址供内部使用，15 个 IP 地址用于应用程序网关实例。 因此，需要 /27 或更大的子网大小。
+另外，Azure 会在每个子网中保留 5 个 IP 地址供内部使用：前 4 个 IP 地址和最后一个 IP 地址。 例如，假设有 15 个应用程序网关实例没有专用前端 IP。 至少需要为此子网提供 20 个 IP 地址：5 个 IP 地址供内部使用，15 个 IP 地址供应用程序网关实例使用。 因此，需要 /27 或更大的子网大小。
 
 假设某个子网包含 27 个应用程序网关实例，并且包含一个用作专用前端 IP 的 IP 地址。 在这种情况下，需要 33 个 IP 地址：27 个 IP 地址用于应用程序网关实例，1 个 IP 地址用于专用前端，5 个 IP 地址供内部使用。 因此，需要 /26 或更大的子网大小。
 
@@ -69,21 +69,62 @@ Azure 应用程序网关由多个组件构成，可根据不同的方案以不�
 
 #### <a name="user-defined-routes-supported-on-the-application-gateway-subnet"></a>应用程序网关子网支持用户定义的路由
 
-使用 v1 SKU 时，只要用户定义的路由 (UDR) 未更改端到端请求/响应通信，则应用程序网关子网就会支持这些 UDR。 例如，可以在应用程序网关子网中设置一个指向防火墙设备的、用于检查数据包的 UDR。 但是，必须确保数据包在检查后可以访问其预期目标。 否则，可能会导致不正确的运行状况探测或流量路由行为。 这包括已探测到的路由，或者通过 Azure ExpressRoute 或 VPN 网关在虚拟网络中传播的默认 0.0.0.0/0 路由。
+> [!IMPORTANT]
+> 在应用程序网关子网中使用 UDR 可能会导致[后端运行状况视图](/application-gateway/application-gateway-diagnostics#back-end-health)中的运行状态显示为“未知”。  此外，可能还会导致应用程序网关日志和指标生成失败。 建议不要在应用程序网关子网中使用 UDR，以便能够查看后端运行状况、日志和指标。
 
-对于 v2 SKU，应用网关子网不支持 UDR。 有关详细信息，请参阅 [Azure 应用程序网关 v2 SKU](application-gateway-autoscaling-zone-redundant.md#differences-with-v1-sku)。
+- **v1**
 
-> [!NOTE]
-> 目前，v2 SKU 不支持 UDR。
+   使用 v1 SKU 时，只要用户定义的路由 (UDR) 未更改端到端请求/响应通信，则应用程序网关子网就会支持这些 UDR。 例如，可以在应用程序网关子网中设置一个指向防火墙设备的、用于检查数据包的 UDR。 但是，必须确保数据包在检查后可以访问其预期目标。 否则，可能会导致不正确的运行状况探测或流量路由行为。 这包括已探测到的路由，或者通过 Azure ExpressRoute 或 VPN 网关在虚拟网络中传播的默认 0.0.0.0/0 路由。
 
-> [!NOTE]
-> 在应用程序网关子网中使用 UDR 可能会导致[后端运行状况视图](/application-gateway/application-gateway-diagnostics#back-end-health)中的运行状态显示为“未知”。 此外，可能还会导致应用程序网关日志和指标生成失败。 建议不要在应用程序网关子网中使用 UDR，以便能够查看后端运行状况、日志和指标。
+- **v2**
+
+   v2 SKU 存在支持和不支持的方案：
+
+   **v2 支持的方案**
+   > [!WARNING]
+   > 错误配置路由表可能会导致应用程序网关 v2 中出现非对称路由。 确保所有管理平面/控制平面流量直接发送到 Internet，且不通过虚拟设备发送。 日志和指标也可能会受影响。
+
+
+  **方案 1**：使用 UDR 禁用向应用程序网关子网进行边界网关协议 (BGP) 路由传播
+
+   有时，默认网关路由 (0.0.0.0/0) 会通过与应用程序网关虚拟网络关联的 ExpressRoute 或 VPN 网关进行播发。 这会中断管理平面流量，因此需要 Internet 的直接路径。 在这种情况下，可以使用 UDR 来禁用 BGP 路由传播。 
+
+   若要禁用 BGP 路由传播，请使用以下步骤：
+
+   1. 在 Azure 中创建一个“路由表”资源。
+   2. 禁用“虚拟网络网关路由传播”参数。  
+   3. 将路由表关联到相应的子网。 
+
+   为此方案启用 UDR 不应会破坏任何现有设置。
+
+  **方案 2**：使用 UDR 将 0.0.0.0/0 定向到 Internet
+
+   可以创建一个 UDR，用于将 0.0.0.0/0 流量直接发送到 Internet。 
+
+  **方案 3**：对 Azure Kubernetes 服务 kubenet 使用 UDR
+
+  如果使用包含 Azure Kubernetes 服务 (AKS) 和应用程序网关入口控制器 (AGIC) 的 kubenet，则需要设置一个路由表，以允许将发送到 pod 的流量路由到正确的节点。 如果使用 Azure CNI，则不需要这样做。 
+
+   若要设置路由表以使 kubenet 能够正常工作，请使用以下步骤：
+
+  1. 在 Azure 中创建一个“路由表”资源。 
+  2. 创建路由表后，转到“路由”页。  
+  3. 添加新路由：
+     - 地址前缀应是要在 AKS 中访问的 pod 的 IP 范围。 
+     - 下一跃点类型应是“虚拟设备”。  
+     - 下一跃点地址应是在地址前缀字段中定义的 IP 范围内托管 pod 的节点的 IP 地址。 
+    
+  **v2 不支持的方案**
+
+  **方案 1**：对虚拟设备使用 UDR
+
+  v2 公共预览版不支持需要通过任何虚拟设备、中心辐射型虚拟网络或者在本地（强制隧道）重定向 0.0.0.0/0 的任何方案。 
 
 ## <a name="front-end-ip"></a>前端 IP
 
 可将应用程序网关配置为使用公共 IP 地址和/或专用 IP 地址。 托管需要由客户端在 Internet 中通过面向 Internet 的虚拟 IP (VIP) 访问的后端时，必须使用公共 IP。 
 
-不向 Internet 公开的内部终结点不需要公共 IP。 该终结点称为内部负载均衡器 (ILB) 终结点或专用前端 IP。  应用程序网关 ILB 适合用于不向 Internet 公开的内部业务线应用程序。 对于位于不向 Internet 公开的安全边界内的多层级应用程序中的服务和层级，ILB 也很有用，但需要启用轮循机制负载分配、会话粘性或 SSL 终止。
+不向 Internet 公开的内部终结点不需要公共 IP。 该终结点称为内部负载均衡器 (ILB) 终结点或专用前端 IP。  应用程序网关 ILB 适合用于不向 Internet 公开的内部业务线应用程序。 对于位于不向 Internet 公开的安全边界内的多层级应用程序中的服务和层级，ILB 也很有用，但需要启用轮循机制负载分配、会话粘性或 TLS 终止。
 
 仅支持 1 个公共 IP 地址或 1 个专用 IP 地址。 在创建应用程序网关时选择前端 IP。
 
@@ -127,13 +168,16 @@ Azure 应用程序网关由多个组件构成，可根据不同的方案以不�
 
 - 如果选择 HTTP，则客户端与应用程序网关之间的流量将不会加密。
 
-- 如果想要实现 [SSL 终止](features.md#secure-sockets-layer-ssltls-termination)或[端到端 SSL 加密](/application-gateway/ssl-overview)，请选择 HTTPS。 客户端与应用程序网关之间的流量将会加密。 SSL 连接将在应用程序网关上终止。 若要实现端到端的 SSL 加密，必须选择 HTTPS，并配置**后端 HTTP** 设置。 这可以确保流量在从应用程序网关传输到后端时重新得到加密。
+- 如果想要实现 [TLS 终止](/application-gateway/overview#secure-sockets-layer-ssltls-termination)或[端到端 TLS 加密](/application-gateway/ssl-overview)，请选择 HTTPS。 客户端与应用程序网关之间的流量将会加密。 TLS 连接将在应用程序网关上终止。 若要实现端到端的 TLS 加密，必须选择 HTTPS，并配置“后端 HTTP”设置。  这可以确保流量在从应用程序网关传输到后端时重新得到加密。
 
-若要配置 SSL 终止和端到端 SSL 加密，必须将一个证书添加到侦听器，使应用程序网关能够派生对称密钥。 派生过程中根据 SSL 协议规范进行的。 使用该对称密钥可以加密和解密发送到网关的流量。 网关证书必须采用个人信息交换 (PFX) 格式。 使用此格式可以导出私钥，供网关用来加密和解密流量。
+- 如果想要实现 [TLS 终止](features.md#secure-sockets-layer-ssltls-termination)或[端到端 TLS 加密](/application-gateway/ssl-overview)，请选择 HTTPS。 客户端与应用程序网关之间的流量将会加密。 TLS 连接将在应用程序网关上终止。 若要实现端到端的 TLS 加密，必须选择 HTTPS，并配置“后端 HTTP”设置。  这可以确保流量在从应用程序网关传输到后端时重新得到加密。
+
+
+若要配置 TLS 终止和端到端 TLS 加密，必须将一个证书添加到侦听器，使应用程序网关能够派生对称密钥。 派生过程是根据 TLS 协议规范进行的。 使用该对称密钥可以加密和解密发送到网关的流量。 网关证书必须采用个人信息交换 (PFX) 格式。 使用此格式可以导出私钥，供网关用来加密和解密流量。
 
 #### <a name="supported-certificates"></a>支持的证书
 
-请参阅[支持用于 SSL 终止的证书](/application-gateway/ssl-overview#certificates-supported-for-ssl-termination)。
+请参阅[支持用于 TLS 终止的证书](/application-gateway/ssl-overview#certificates-supported-for-ssl-termination)。
 
 ### <a name="additional-protocol-support"></a>其他协议支持
 
@@ -157,15 +201,15 @@ Set-AzApplicationGateway -ApplicationGateway $gw
 
 可以在全局级别以及侦听器级别定义自定义错误。 但是，目前不支持在 Azure 门户中创建全局级别的自定义错误页。 可以在侦听器级别为 403 Web 应用程序防火墙错误或 502 维护页配置自定义错误页。 此外，必须为给定的错误状态代码指定一个可公开访问的 Blob URL。 有关详细信息，请参阅[创建应用程序网关自定义错误页](/application-gateway/custom-error)。
 
-![应用程序网关错误代码](./media/custom-error/ag-error-codes.png)
+![应用程序网关错误代码](/application-gateway/media/custom-error/ag-error-codes.png)
 
 若要配置全局自定义错误页，请参阅 [Azure PowerShell 配置](/application-gateway/custom-error#azure-powershell-configuration)。
 
-### <a name="ssl-policy"></a>SSL 策略
+### <a name="tls-policy"></a>TLS 策略
 
-可以集中管理 SSL 证书，以及减小后端服务器场的加密-解密开销。 采用集中式 SSL 处理还能指定符合安全要求的集中 SSL 策略。 可以选择默认、预定义或自定义的 SSL 策略。   
+可以集中管理 TLS/SSL 证书，以及减小后端服务器场的加密-解密开销。 采用集中式 TLS 处理还能指定符合安全要求的集中 TLS 策略。 可以选择默认、预定义或自定义的 TLS 策略。   
 
-可以配置 SSL 策略来控制 SSL 协议版本。 可将应用程序网关配置为使用 TLS1.0、TLS1.1 和 TLS1.2 中适用于 TLS 握手的最低协议版本。 默认情况下，SSL 2.0 和 3.0 已禁用且不可配置。 有关详细信息，请参阅[应用程序网关 SSL 策略概述](/application-gateway/application-gateway-ssl-policy-overview)。
+配置 TLS 策略来控制 TLS 协议版本。 可将应用程序网关配置为使用 TLS1.0、TLS1.1 和 TLS1.2 中适用于 TLS 握手的最低协议版本。 默认情况下，SSL 2.0 和 3.0 已禁用且不可配置。 有关详细信息，请参阅[应用程序网关 TLS 策略概述](/application-gateway/application-gateway-ssl-policy-overview)。
 
 创建侦听器后，请将它关联到某个请求路由规则。 该规则确定如何将侦听器上收到的请求路由到后端。
 
@@ -258,12 +302,12 @@ Azure 应用程序网关使用网关托管 Cookie 来维护用户会话。 当�
 
 [Chromium 浏览器](https://www.chromium.org/Home) [v80 更新](https://chromiumdash.appspot.com/schedule)提出了一个要求：必须将不包含 [SameSite](https://tools.ietf.org/id/draft-ietf-httpbis-rfc6265bis-03.html#rfc.section.5.3.7) 属性的 HTTP Cookie 视为 SameSite=Lax。 对于 CORS（跨源资源共享）请求，如果必须在第三方上下文中发送 Cookie，它必须使用 *SameSite=None; Secure* 属性，并且只应通过 HTTPS 发送它。 否则，在仅限 HTTP 的方案中，浏览器不会在第三方上下文中发送 Cookie。 Chrome 的此更新的目标是增强安全性，避免跨站点请求伪造 (CSRF) 攻击。 
 
-为了支持此更改，从 2020 年 2 月 17 日开始，除了现有的 *ApplicationGatewayAffinity* Cookie 外，应用程序网关（所有 SKU 类型）还会注入另一个名为“ApplicationGatewayAffinityCORS”  的 Cookie。 *ApplicationGatewayAffinityCORS* Cookie 又添加了两个属性 ( *"SameSite=None; Secure"* )，这样即使对于跨域请求也可以保持粘性会话。
+为了支持此更改，从 2020 年 2 月 17 日开始，除了现有的 *ApplicationGatewayAffinity* Cookie 外，应用程序网关（所有 SKU 类型）还会注入另一个名为 ApplicationGatewayAffinityCORS 的 Cookie。  *ApplicationGatewayAffinityCORS* Cookie 又添加了两个属性 ( *"SameSite=None; Secure"* )，这样即使对于跨域请求也可以保持粘性会话。
 
 请注意，默认关联 Cookie 名称是 *ApplicationGatewayAffinity*，可以对其进行更改。 如果使用自定义相关性 Cookie 名称，则会添加一个以 CORS 为后缀的附加 Cookie。 例如，*CustomCookieNameCORS*。
 
 > [!NOTE]
-> 如果设置了属性 *SameSite = None*，则 Cookie 还必须包含 *Secure* 标志，并且必须通过 HTTPS 发送。  如果需要基于 CORS 的会话相关性，则必须将工作负载迁移到 HTTPS。 请参阅此处提供的针对应用程序网关的 SSL 卸载和端到端 SSL 文档 - [概述](ssl-overview.md)、[如何配置 SSL 卸载](create-ssl-portal.md)、[如何配置端到端 SSL](end-to-end-ssl-portal.md)。
+> 如果设置了属性 *SameSite = None*，则 Cookie 还必须包含 *Secure* 标志，并且必须通过 HTTPS 发送。  如果需要基于 CORS 的会话相关性，则必须将工作负载迁移到 HTTPS。 请参阅此处提供的适用于应用程序网关的 TLS 卸载和端到端 TLS 文档 - [概述](ssl-overview.md)、[使用 Azure 门户配置支持 TLS 终止的应用程序网关](create-ssl-portal.md)、[在门户中使用应用程序网关配置端到端 TLS](end-to-end-ssl-portal.md)。
 
 ### <a name="connection-draining"></a>连接清空
 
@@ -273,7 +317,7 @@ Azure 应用程序网关使用网关托管 Cookie 来维护用户会话。 当�
 
 应用程序网关支持使用 HTTP 和 HTTPS 将请求路由到后端服务器。 如果选择了 HTTP 协议，则流量将以未加密的形式传送到后端服务器。 如果不能接受未加密的通信，请选择 HTTPS。
 
-在侦听器中结合 HTTPS 使用此设置将有助于实现[端到端的 SSL](ssl-overview.md)。 这样，就可以安全地将敏感数据以加密的形式传输到后端。 后端池中每个已启用端到端 SSL 的后端服务器都必须配置证书，以便能够进行安全的通信。
+在侦听器中结合 HTTPS 使用此设置将有助于实现[端到端的 TLS](ssl-overview.md)。 这样，就可以安全地将敏感数据以加密的形式传输到后端。 后端池中每个已启用端到端 TLS 的后端服务器都必须配置证书，以便能够进行安全的通信。
 
 ### <a name="port"></a>端口
 
@@ -336,7 +380,7 @@ Azure 应用程序网关使用网关托管 Cookie 来维护用户会话。 当�
 
 此功能可将应用程序网关上的传入请求中的 *host* 标头替换为指定的主机名。
 
-例如，如果将 *www.contoso.com* 指定为“主机名”设置，则将请求转发到后端服务器时，原始请求 * https://appgw.chinanorth.chinacloudapp.cn/path1 会更改为 * https://www.contoso.com/path1 。 
+例如，如果将 *www.contoso.com* 指定为“主机名”设置，则将请求转发到后端服务器时，原始请求 *`https://appgw.chinanorth.chinacloudapp.cn/path1` 会更改为 *`https://www.contoso.com/path1`。 
 
 ## <a name="back-end-pool"></a>后端池
 
