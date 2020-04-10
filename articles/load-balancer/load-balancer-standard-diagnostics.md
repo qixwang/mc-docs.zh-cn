@@ -11,24 +11,24 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 08/14/2019
-ms.date: 02/24/2020
+ms.date: 04/06/2020
 ms.author: v-jay
-ms.openlocfilehash: f48d233da4d953f97a6acef314f99ac90ff5c7c6
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.openlocfilehash: 41c412102616bcbde8a58a9d0c2ddb7c3b8bf1ec
+ms.sourcegitcommit: fe9ed98aaee287a21648f866bb77cb6888f75b0c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77540974"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80625650"
 ---
-# <a name="standard-load-balancer-diagnostics-with-metrics"></a>使用指标进行的标准负载均衡器诊断
+# <a name="standard-load-balancer-diagnostics-with-metrics-and-alerts"></a>使用指标和指标进行标准负载均衡器诊断
 
 Azure 标准负载均衡器公开了以下诊断功能：
 
-* **多维指标**：通过 [Azure Monitor](/azure-monitor/overview) 针对标准负载均衡器配置提供新的多维诊断功能。 可以监视、管理和排查标准负载均衡器资源问题。
+* **多维指标和警报**：通过 [Azure Monitor](/azure-monitor/overview) 针对标准负载均衡器配置提供多维诊断功能。 可以监视、管理和排查标准负载均衡器资源问题。
 
 本文概要介绍这些功能，以及如何对标准负载均衡器使用这些功能。 
 
-## <a name = "MultiDimensionalMetrics"></a>多维指标
+## <a name="multi-dimensional-metrics"></a><a name = "MultiDimensionalMetrics"></a>多维指标
 
 Azure 负载均衡器通过 Azure 门户中的 Azure 指标来提供多维指标，帮助你获取负载均衡器资源的实时诊断见解。 
 
@@ -50,19 +50,25 @@ Azure 负载均衡器通过 Azure 门户中的 Azure 指标来提供多维指标
 Azure 门户通过“指标”页公开负载均衡器指标，可在特定资源的负载均衡器资源页以及 Azure Monitor 页中访问该页。 
 
 若要查看标准负载均衡器资源的指标，请执行以下操作：
-1. 转到 Azure Monitor 页，选择负载均衡器资源。
-2. 设置适当的聚合类型。
+1. 转到“指标”页，执行以下操作之一：
+   * 在负载均衡器资源页的下拉列表中选择指标类型。
+   * 在 Azure Monitor 页中选择负载均衡器资源。
+2. 设置适当的指标聚合类型。
 3. （可选）配置需要的筛选和分组。
+4. （可选）配置时间范围和聚合。 默认情况下，时间以 UTC 格式显示。
 
-    ![标准负载均衡器的指标](./media/load-balancer-standard-diagnostics/lbmetrics1anew.png)
+  >[!NOTE] 
+  >解释某些指标时，时间聚合非常重要，因为数据每分钟采样一次。 如果时间聚合设置为五分钟，并且指标聚合类型“求和”用于“SNAT 分配”等指标，则图形将显示分配的 SNAT 端口总数的五倍。 
 
-    *图：* 标准负载均衡器的“数据路径可用性”指标
+![标准负载均衡器的指标](./media/load-balancer-standard-diagnostics/lbmetrics1anew.png)
+
+*图：* 标准负载均衡器的“数据路径可用性”指标
 
 ### <a name="retrieve-multi-dimensional-metrics-programmatically-via-apis"></a>通过 API 以编程方式检索多维指标
 
 有关如何检索多维指标定义和值的 API 指导，请参阅 [Azure 监视 REST API 演练](/monitoring-and-diagnostics/monitoring-rest-api-walkthrough#retrieve-metric-definitions-multi-dimensional-api)。 这些指标只能通过“所有指标”选项写入存储帐户。 
 
-### <a name = "DiagnosticScenarios"></a>常见诊断场景和建议的视图
+### <a name="common-diagnostic-scenarios-and-recommended-views"></a><a name = "DiagnosticScenarios"></a>常见诊断场景和建议的视图
 
 #### <a name="is-the-data-path-up-and-available-for-my-load-balancer-vip"></a>数据路径是否已启动并适用于我的负载均衡器 VIP？
 
@@ -122,6 +128,30 @@ VIP 可用性探测会出于原因而失败：
 *图：负载均衡器 SNAT 连接计数*
 
 
+#### <a name="how-do-i-check-my-snat-port-usage-and-allocation"></a>如何检查 SNAT 端口用量和分配？
+
+“SNAT 用量”指标指示在 Internet 源与负载均衡器后面的且没有公共 IP 地址的后端 VM 或虚拟机规模集之间建立了多少个唯一流。 将此指标与“SNAT 分配”指标进行比较，可以确定服务是否遇到了 SNAT 耗尽问题或者面临着这种风险，并导致出站流失败。 
+
+如果指标指出了[出站流](/load-balancer/load-balancer-outbound-connections)失败的风险，请参考相应的文章并采取缓解措施，以确保服务正常运行。
+
+若要查看 SNAT 端口用量和分配：
+1. 将图形的时间聚合设置为 1 分钟，以确保显示所需的数据。
+1. 选择“SNAT 用量”和/或“SNAT 分配”作为指标类型，选择“平均”作为聚合类型   
+    * 默认情况下，这是分配到每个后端 VM 或 VMSS 或者它们使用的平均 SNAT 端口数，对应于映射到负载均衡器的所有前端公共 IP，是基于 TCP 和 UDP 聚合得出的。
+    * 若要查看负载均衡器使用的或者为其分配的 SNAT 端口总数，请使用指标聚合“求和” 
+1. 根据特定的“协议类型”、一组“后端 IP”和/或“前端 IP”进行筛选。   
+1. 若要监视每个后端或前端实例的运行状况，请应用拆分。 
+    * 请注意，拆分时每次只允许显示一个指标。 
+1. 例如，若要监视每台计算机的 TCP 流的 SNAT 用量，请通过“平均”进行聚合，按“后端 IP”进行拆分，并按“协议类型”进行筛选。    
+
+![SNAT 分配和用量](./media/load-balancer-standard-diagnostics/snat-usage-and-allocation.png)
+
+*图：一组后端 VM 的平均 TCP SNAT 端口分配和用量*
+
+![按后端实例列出的 SNAT 用量](./media/load-balancer-standard-diagnostics/snat-usage-split.png)
+
+*图：每个后端实例的 TCP SNAT 端口用量*
+
 #### <a name="how-do-i-check-inboundoutbound-connection-attempts-for-my-service"></a>如何检查服务的入站/出站连接尝试？
 
 “SYN 数据包”指标描述收到或发送的、与特定前端关联的 TCP SYN 数据包数量（适用于[出站流](/load-balancer/load-balancer-outbound-connections)）。 可以使用此指标了解对服务发起的 TCP 连接尝试。
@@ -149,7 +179,7 @@ VIP 可用性探测会出于原因而失败：
 
 *图：负载均衡器字节计数*
 
-#### <a name = "vipavailabilityandhealthprobes"></a>如何诊断负载均衡器部署？
+#### <a name="how-do-i-diagnose-my-load-balancer-deployment"></a><a name = "vipavailabilityandhealthprobes"></a>如何诊断负载均衡器部署？
 
 在单个图表中结合使用 VIP 可用性和运行状况探测指标可以识别查找和解决问题的位置。 可以确定 Azure 是否正常工作，并据此最终确定配置或应用程序是否为问题的根本原因。
 
