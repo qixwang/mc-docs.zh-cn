@@ -17,11 +17,11 @@ origin.date: 06/13/2017
 ms.date: 03/04/2019
 ms.author: v-jay
 ms.openlocfilehash: 4b8519687e015977701291fbfed75638203e96e5
-ms.sourcegitcommit: dd504a2a7f6bc060c3537fe467de518e97c89f8a
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57196545"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63824489"
 ---
 # <a name="delete-containers-based-on-container-name-prefix"></a>根据容器名称前缀删除容器
 
@@ -89,7 +89,7 @@ Remove-AzResourceGroup -Name containerdeletetestrg
 
 此脚本使用以下命令根据容器名称前缀删除容器。 表中的每一项均链接到命令特定的文档。
 
-| 命令 | 注释 |
+| Command | 说明 |
 |---|---|
 | [Get-AzStorageAccount](https://docs.microsoft.com/powershell/module/az.storage/get-azstorageaccount) | 获取资源组或订阅中的指定存储帐户或所有存储帐户。 |
 | [Get-AzStorageContainer](https://docs.microsoft.com/powershell/module/az.storage/Get-AzStorageContainer) | 列出与存储帐户关联的存储容器。 |

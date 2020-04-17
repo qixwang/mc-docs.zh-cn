@@ -10,10 +10,10 @@ ms.date: 3/16/2020
 ms.topic: quickstart
 ms.service: event-grid
 ms.openlocfilehash: 2ceb92d5690bce78634c85aea996472ef885769a
-ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/17/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79452592"
 ---
 # <a name="quickstart-route-custom-events-to-an-azure-function-with-event-grid"></a>快速入门：使用事件网格将自定义事件路由到 Azure 函数

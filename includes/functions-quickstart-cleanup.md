@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 03/30/2020
 ms.author: v-junlch
 ms.openlocfilehash: 923fcf8e433bab7ac45eb55f30429c0109a9b5cf
-ms.sourcegitcommit: 64584c0bf31b4204058ae2b4641356b904ccdd58
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80581783"
 ---
 本教程系列中的其他快速入门教程是在本文的基础上制作的。 如果打算使用后续的快速入门、教程或者在本快速入门中创建的任何服务，请勿清理这些资源。

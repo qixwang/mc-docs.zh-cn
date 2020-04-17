@@ -10,15 +10,15 @@ origin.date: 09/20/2017
 ms.date: 07/10/2019
 ms.author: v-lingwu
 ms.openlocfilehash: 6f54e3f764dba38d1658328956370b9cd134bac0
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78850287"
 ---
 # <a name="find-and-diagnose-run-time-exceptions-with-azure-application-insights"></a>使用 Azure Application Insights 查找并诊断运行时异常
 
-Azure Application Insights 从应用程序收集遥测数据，帮助确定和诊断运行时异常。  本教程引导完成对应用程序执行此流程的步骤。  你将学习如何执行以下操作：
+Azure Application Insights 从应用程序收集遥测数据，帮助确定和诊断运行时异常。  本教程引导完成对应用程序执行此流程的步骤。  学习如何：
 
 > [!div class="checklist"]
 > * 修改项目来实现异常跟踪
@@ -29,7 +29,7 @@ Azure Application Insights 从应用程序收集遥测数据，帮助确定和�
 > * 新建工作项来更正故障代码
 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 完成本教程：
 

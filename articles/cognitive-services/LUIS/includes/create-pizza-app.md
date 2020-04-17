@@ -11,10 +11,10 @@ ms.custom: include file
 ms.date: 11/05/2019
 ms.author: diberry
 ms.openlocfilehash: a095e2c8b290a0859f1a196dee93305bd0222439
-ms.sourcegitcommit: cf73284534772acbe7a0b985a86a0202bfcc109e
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78155313"
 ---
 1. 使用 URL [https://luis.azure.cn](https://luis.azure.cn) 登录到预览版 LUIS 门户。 

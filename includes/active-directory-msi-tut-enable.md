@@ -9,10 +9,10 @@ ms.date: 02/05/2020
 ms.author: v-junlch
 ms.custom: include file
 ms.openlocfilehash: 885fe8a7ae35fefdf31ef025c79e3f0b03441f96
-ms.sourcegitcommit: 7c80405a6b48380814b4b414e9f8a5756c007880
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77067588"
 ---
 启用系统分配的托管标识只需单击一次即可。 可以在创建 VM 的过程中或在现有 VM 的属性中启用它。

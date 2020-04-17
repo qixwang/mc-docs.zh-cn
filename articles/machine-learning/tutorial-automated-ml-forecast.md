@@ -12,10 +12,10 @@ author: cartacioS
 origin.date: 01/27/2020
 ms.date: 03/16/2020
 ms.openlocfilehash: 422f5e192996466508a156c2d70eed735292ff80
-ms.sourcegitcommit: d5eca3c6b03b206e441b599e5b138bd687a91361
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78934838"
 ---
 # <a name="tutorial-forecast-bike-sharing-demand-with-automated-machine-learning"></a>教程：使用自动化机器学习预测单车共享需求
@@ -87,7 +87,7 @@ ms.locfileid: "78934838"
 
         1. 此外，对于本示例，请保留“属性”和“类型”的默认值。   
         
-        1. 选择“**下一步**”。
+        1. 选择“**下一页**”。
 
     1. 在“确认详细信息”  窗体上，确认信息与先前在“基本信息”  和“设置和预览”  窗体上填充的内容匹配。
 
@@ -120,7 +120,7 @@ ms.locfileid: "78934838"
 
         1. 创建后，从下拉列表中选择新的计算目标。
 
-    1. 选择“**下一步**”。
+    1. 选择“**下一页**”。
 
 ## <a name="select-task-type-and-settings"></a>选择任务类型和设置
 
@@ -144,7 +144,7 @@ ms.locfileid: "78934838"
         验证 | 选择交叉验证类型和测试数。|验证类型：<br>k-折交叉验证&nbsp;&nbsp; <br> <br> 验证次数：5
         并发| 每次迭代执行的并行迭代的最大数目| 最大并发迭代次数：&nbsp;&nbsp;6
         
-        选择“保存”  。
+        选择“保存”。 
 
 ## <a name="run-experiment"></a>运行试验
 
@@ -179,7 +179,7 @@ Azure 机器学习工作室中的自动化机器学习可以通过几个步骤�
 
 1. 按如下所示填充“部署模型”窗格： 
 
-    字段| Value
+    字段| 值
     ----|----
     部署名称| bikeshare-deploy
     部署说明| 单车共享需求部署

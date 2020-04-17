@@ -9,10 +9,10 @@ origin.date: 12/14/2019
 ms.date: 01/13/2020
 ms.author: v-tawe
 ms.openlocfilehash: a6ab329cad7adf751d81bd5e75991e0ae59dc147
-ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75600587"
 ---
 # <a name="quickstart-create-a-chat-room-with-azure-functions-and-signalr-service-using-python"></a>快速入门：使用 Python 通过 Azure Functions 和 SignalR 服务创建聊天室
@@ -53,7 +53,7 @@ Azure Functions 需要 [Python 3.6 或 3.7](https://www.python.org/downloads/)�
 
 1. 在代码编辑器中，打开克隆存储库中的 src/chat/python  文件夹。
 
-1. 要本地开发和测试 Python 函数，必须在 Python 3.6 或 Python 3.7 环境中工作。 运行以下命令来创建并激活一个名为 `.venv` 的虚拟环境。
+1. 若要本地开发和测试 Python 函数，必须在 Python 3.6 或 3.7 环境中工作。 运行以下命令来创建并激活一个名为 `.venv` 的虚拟环境。
 
     **Linux 或 macOS：**
 
@@ -62,7 +62,7 @@ Azure Functions 需要 [Python 3.6 或 3.7](https://www.python.org/downloads/)�
     source .venv/bin/activate
     ```
 
-    **Windows:**
+    **Windows：**
 
     ```powershell
     py -3.7 -m venv .venv
@@ -78,7 +78,7 @@ Azure Functions 需要 [Python 3.6 或 3.7](https://www.python.org/downloads/)�
     - **negotiate** - 使用 *SignalRConnectionInfo* 输入绑定生成并返回有效的连接信息。
     - **messages** - 在请求正文中接收聊天消息，并使用 *SignalR* 输出绑定将消息广播到所有连接的客户端应用程序。
 
-1. 在激活虚拟环境的终端中，确保你位于“src/chat/python”  文件夹中。 使用 PIP 安装必要的 Python 包。
+1. 在激活虚拟环境的终端中，确保你位于“src/chat/python”  文件夹中。 使用 PIP 安装必需的 Python 包。
 
     ```bash
     python -m pip install -r requirements.txt

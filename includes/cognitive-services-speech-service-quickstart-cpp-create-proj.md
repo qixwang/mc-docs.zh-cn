@@ -6,10 +6,10 @@ origin.date: 02/10/2020
 ms.date: 03/16/2020
 ms.author: v-tawe
 ms.openlocfilehash: 139463f7992c21ab9fc25b09b3cb05396e60afd7
-ms.sourcegitcommit: b2f2bb08ab1b5ccb3c596d84b3b6ddca5bba3903
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80151669"
 ---
 若要创建 Visual Studio 项目以用于 C++ 桌面开发，需要设置 Visual Studio 开发选项，创建项目，选择目标体系结构，然后安装语音 SDK。

@@ -6,10 +6,10 @@ origin.date: 03/10/2020
 ms.date: 03/16/2020
 ms.author: v-tawe
 ms.openlocfilehash: ed695c2b4a0a6beff39c4438f2fed2ea9201ce7f
-ms.sourcegitcommit: b2f2bb08ab1b5ccb3c596d84b3b6ddca5bba3903
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80151602"
 ---
 ## <a name="prerequisites"></a>先决条件
@@ -43,7 +43,7 @@ python quickstart.py
 
 或者，可以从[语音 SDK 示例存储库](https://github.com/Azure-Samples/cognitive-services-speech-sdk/)以 [Jupyter](https://jupyter.org) Notebook 的形式下载本快速入门教程，并将其作为 Notebook 运行。
 
-### <a name="sample-code"></a>代码示例
+### <a name="sample-code"></a>示例代码
 
 > [!NOTE]
 > 语音 SDK 将默认使用 en-us 作为语言进行识别。若要了解如何选择源语言，请参阅[指定语音转文本的源语言](../../../../how-to-specify-source-language.md)。

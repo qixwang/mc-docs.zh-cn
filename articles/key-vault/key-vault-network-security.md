@@ -11,10 +11,10 @@ origin.date: 08/12/2019
 ms.date: 03/16/2020
 ms.author: v-tawe
 ms.openlocfilehash: 2487ca34a36111ee26d38b8285f367592435197a
-ms.sourcegitcommit: 764b3d26aedce2de0e1948468a706fd3204a3d5e
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79543359"
 ---
 # <a name="configure-azure-key-vault-firewalls-and-virtual-networks"></a>配置 Azure Key Vault 防火墙和虚拟网络
@@ -34,7 +34,7 @@ ms.locfileid: "79543359"
 4. 若要将现有虚拟网络添加到防火墙和虚拟网络规则，请选择“+ 添加现有虚拟网络”  。
 5. 在打开的新边栏选项卡中，选择可访问此 Key Vault 的订阅、虚拟网络和子网。 如果虚拟网络和选择的子网没有启用服务终结点，确认想要启用服务终结点，并选择“启用”  。 此操作最多可能需要 15 分钟才能生效。
 6. 在“IP 网络”  下，可通过采用 [CIDR（无类域间路由）表示法](https://tools.ietf.org/html/rfc4632)键入 IPv4 地址范围或单个 IP 地址来添加 IPv4 地址范围。
-7. 选择“保存”  。
+7. 选择“保存”。 
 
 还可添加新的虚拟网络和子网，然后通过选择“+ 添加新的虚拟网络”  ，为新创建的虚拟网络和子网启用服务终结点。 然后遵照提示操作。
 

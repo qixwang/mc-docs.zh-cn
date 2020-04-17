@@ -16,17 +16,17 @@ ms.date: 03/24/2020
 ms.author: v-junlch
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a3c5d8f080a879236a8770933c5c50919ec1b482
-ms.sourcegitcommit: 6568c59433d7e80ab06e9fe76d4791f761ed6775
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80243036"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-cosmos-db"></a>教程：使用 Windows VM 系统分配的托管标识访问 Azure Cosmos DB
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
-本教程介绍了如何使用 Windows 虚拟机 (VM) 的系统分配托管标识来访问 Cosmos DB。 你将学习如何执行以下操作：
+本教程介绍了如何使用 Windows 虚拟机 (VM) 的系统分配托管标识来访问 Cosmos DB。 学习如何：
 
 > [!div class="checklist"]
 > * 创建 Cosmos DB 帐户
@@ -34,7 +34,7 @@ ms.locfileid: "80243036"
 > * 使用 Windows VM 系统分配的托管标识获取访问令牌来调用 Azure 资源管理器
 > * 从 Azure 资源管理器中获取访问密钥，以便进行 Cosmos DB 调用
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 [!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
 
@@ -59,7 +59,7 @@ ms.locfileid: "80243036"
 3. 输入 Cosmos DB 帐户的 **ID**，供以后使用。  
 4. **API** 应设置为“SQL”。 本教程中介绍的方法可以与其他可用的 API 类型配合使用，但本教程中的步骤是针对 SQL API 的。
 5. 确保“订阅”和“资源组”与上一步中创建 VM 时指定的名称匹配。    选择提供 Cosmos DB 的“位置”。 
-6. 单击**创建**。
+6. 单击“创建”。 
 
 ### <a name="create-a-collection"></a>创建集合 
 

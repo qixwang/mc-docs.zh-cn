@@ -8,10 +8,10 @@ origin.date: 10/25/2017
 ms.date: 01/20/2020
 ms.author: v-yeche
 ms.openlocfilehash: f5895e83e968dd5ae3b392a595ef6e22e13381b7
-ms.sourcegitcommit: 8de025ca11b62e06ba3762b5d15cc577e0c0f15d
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "76170711"
 ---
 # <a name="get-resources-in-a-managed-resource-group-and-resize-vms-with-azure-cli"></a>使用 Azure CLI 获取托管资源组中的资源并重设 VM 大小
@@ -45,9 +45,9 @@ az vm resize --size Standard_D2_v2 --ids $(az vm list -g DemoApp6zkevchqk7sfq --
 
 ## <a name="script-explanation"></a>脚本说明
 
-此脚本使用以下命令部署托管应用程序。 表中的每条命令链接到特定于命令的文档。
+此脚本使用以下命令部署托管应用程序。 表中的每条命令均链接到特定于命令的文档。
 
-| 命令 | 注释 |
+| Command | 说明 |
 |---|---|
 | [az managedapp list](https://docs.microsoft.com/cli/azure/managedapp?view=azure-cli-latest#az-managedapp-list) | 列出托管应用程序。 提供要重点关注结果的查询值。 |
 | [az resource list](https://docs.azure.cn/cli/resource?view=azure-cli-latest#az-resource-list) | 列出资源。 提供要重点关注结果的资源组和查询值。 |

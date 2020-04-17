@@ -9,10 +9,10 @@ ms.date: 01/13/2020
 ms.author: v-tawe
 ms.custom: mvc
 ms.openlocfilehash: f6af4fdbe54c799fc4259cc25f73b0b9bb5a092b
-ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75600397"
 ---
 # <a name="powershell-samples-for-azure-app-service"></a>Azure 应用服务的 PowerShell 示例

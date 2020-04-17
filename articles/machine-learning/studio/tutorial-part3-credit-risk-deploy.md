@@ -1,7 +1,7 @@
 ---
 title: 教程 3：部署信用风险模型
 titleSuffix: Azure Machine Learning Studio (classic)
-description: 本详细教程介绍如何创建预测分析解决方案，用于在 Azure 机器学习工作室（经典）中进行信用风险评估。 本教程是由三个部分构成的系列教程的第三部分。 其中介绍了如何将模型部署为 Web 服务。
+description: 本详细教程介绍如何创建预测分析解决方案，用于在 Azure 机器学习工作室（经典版）中进行信用风险评估。 本教程是由三个部分构成的系列教程的第三部分。 其中介绍了如何将模型部署为 Web 服务。
 keywords: 信用风险, 预测分析解决方案, 风险评估, 部署, web 服务
 author: sdgilley
 ms.author: sgilley
@@ -11,10 +11,10 @@ ms.subservice: studio
 ms.topic: tutorial
 ms.date: 02/11/2019
 ms.openlocfilehash: 720c8ed4a1f9dd650b59474069ea371d3acaf4f9
-ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80343350"
 ---
 # <a name="tutorial-3-deploy-credit-risk-model---azure-machine-learning-studio-classic"></a>教程 3：部署信用风险模型 - Azure 机器学习工作室（经典版）
@@ -25,7 +25,7 @@ ms.locfileid: "80343350"
 
 假设用户需要根据他们提供的贷款申请相关信息预测个人的信用风险。  
 
-信用风险评估是个较为复杂的问题，但本教程会将其适当简化。 我们将使用它作为示例，展示如何使用 Microsoft Azure 机器学习工作室（经典版）来创建预测分析解决方案。 对此解决方案，我们将使用 Azure 机器学习工作室（经典）和机器学习 Web 服务。 
+信用风险评估是个较为复杂的问题，但本教程会将其适当简化。 我们将使用它作为示例，展示如何使用 Microsoft Azure 机器学习工作室（经典版）来创建预测分析解决方案。 对此解决方案，我们将使用 Azure 机器学习工作室（经典版）和机器学习 Web 服务。 
 
 在这篇由三个部分构成的教程中，我们将从公开的信用风险数据着手。  然后开发并训练预测模型。  最后将该模型部署为 Web 服务。
 
@@ -153,7 +153,7 @@ ms.locfileid: "80343350"
 
 1. 对于“价格计划”，  可以选择现有的定价计划，也可以选择“新建”，并为新计划提供一个名称并选择每月计划选项。 计划层默认为默认区域的计划，并且 Web 服务将部署到该区域。
 
-1. 单击“部署”  。
+1. 单击“部署”。 
 
 数分钟后，会打开 Web 服务的“快速入门”页。 
 

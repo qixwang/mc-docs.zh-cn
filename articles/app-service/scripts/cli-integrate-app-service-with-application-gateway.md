@@ -18,10 +18,10 @@ ms.date: 01/13/2020
 ms.author: v-tawe
 ms.custom: seodec18
 ms.openlocfilehash: afbdbf998258fa028acdd89bc97565fd47a1aa89
-ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75600605"
 ---
 # <a name="integrate-app-service-with-application-gateway-using-cli"></a>使用 CLI 将应用服务与应用程序网关集成
@@ -32,7 +32,7 @@ ms.locfileid: "75600605"
 
 <!-- [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)] -->
 
-如果选择在本地安装并使用 CLI，需要 Azure CLI 2.0.74 版或更高版本。 若要查找版本，请运行 `az --version`。 如果需要进行安装或升级，请参阅[安装 Azure CLI]( /cli/install-azure-cli)。
+如果选择在本地安装并使用 CLI，需要 Azure CLI 2.0.74 版或更高版本。 要查找版本，请运行 `az --version`。 如果需要进行安装或升级，请参阅[安装 Azure CLI]( /cli/install-azure-cli)。
 
 ## <a name="sample-script"></a>示例脚本
 
@@ -113,7 +113,7 @@ az network public-ip show \
 
 此脚本使用以下命令创建资源组、应用服务应用、Cosmos DB 和所有相关资源。 表中的每条命令均链接到特定于命令的文档。
 
-| 命令 | 注释 |
+| Command | 说明 |
 |---|---|
 | [`az group create`](https://docs.azure.cn/cli/group?view=azure-cli-latest#az-group-create) | 创建用于存储所有资源的资源组。 |
 | [`az network vnet create`](https://docs.azure.cn/cli/network/vnet?view=azure-cli-latest#az-network-vnet-create) | 创建虚拟网络。 |

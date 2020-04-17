@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
 ms.openlocfilehash: 2279bf888f3c3453f6d01508f21133bea3c1cd1a
-ms.sourcegitcommit: 303a16c7117b6f3495ef0493b4ae8ccb67d7dbba
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80343019"
 ---
 [!INCLUDE [Prerequisites](prerequisites-csharp.md)]
@@ -177,7 +177,7 @@ foreach (BreakSentenceResult o in deserializedOutput)
 
 ## <a name="put-it-all-together"></a>将其放在一起
 
-最后一步是在 `Main` 函数中调用 `BreakSentenceRequest()`。 找到 `static void Main(string[] args)` 并将其替换为以下代码：
+最后一步是在 `BreakSentenceRequest()` 函数中调用 `Main`。 找到 `static void Main(string[] args)` 并将其替换为以下代码：
 
 ```csharp
 static async Task Main(string[] args)

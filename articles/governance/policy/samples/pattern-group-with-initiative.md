@@ -6,10 +6,10 @@ ms.date: 03/09/2020
 ms.author: v-tawe
 ms.topic: sample
 ms.openlocfilehash: e6fe8e2540f1d6b3d8736aea3aaa5d4202f093b2
-ms.sourcegitcommit: 892137d117bcaf9d88aec0eb7ca756fe39613344
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78048863"
 ---
 # <a name="azure-policy-pattern-group-policy-definitions"></a>Azure Policy 模式：将策略定义分组

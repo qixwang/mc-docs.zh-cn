@@ -11,10 +11,10 @@ ms.author: v-tawe
 ms.reviewer: cephalin
 ms.custom: mvc, seodec18
 ms.openlocfilehash: 08d82fc20327735b9ca62ab00da97a3ad1ccb3bf
-ms.sourcegitcommit: 44d3fe59952847e5394bbe6c05bd6f333bb56345
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80522119"
 ---
 # <a name="back-up-an-app-using-cli"></a>使用 CLI 备份应用
@@ -25,7 +25,7 @@ ms.locfileid: "80522119"
 
 
 
-如果选择在本地安装并使用 CLI，则需使用 Azure CLI 2.0 或更高版本。 若要查找版本，请运行 `az --version`。 如需进行安装或升级，请参阅[安装 Azure CLI](/cli/install-azure-cli?view=azure-cli-lastest)。
+如果选择在本地安装并使用 CLI，需要 Azure CLI 2.0 版或更高版本。 要查找版本，请运行 `az --version`。 如需进行安装或升级，请参阅[安装 Azure CLI](/cli/install-azure-cli?view=azure-cli-lastest)。
 
 ## <a name="sample-script"></a>示例脚本
 
@@ -80,12 +80,12 @@ az webapp config backup list --resource-group $groupname --webapp-name $webappna
 
 此脚本使用以下命令。 表中的每条命令均链接到特定于命令的文档。
 
-| 命令 | 注释 |
+| Command | 说明 |
 |---|---|
 | [`az group create`](/cli/group?view=azure-cli-latest#az-group-create) | 创建用于存储所有资源的资源组。 |
 | [`az storage account create`](/cli/storage/account?view=azure-cli-latest#az-storage-account-create) | 创建存储帐户。 |
 | [`az storage container create`](/cli/storage/container?view=azure-cli-latest#az-storage-container-create) | 创建 Azure 存储容器。 |
-| [`az storage container generate-sas`](/cli/storage/container?view=azure-cli-latest#az-storage-container-generate-sas) | 为 Azure 存储容器生成 SAS 令牌。  |
+| [`az storage container generate-sas`](/cli/storage/container?view=azure-cli-latest#az-storage-container-generate-sas) | 生成 Azure 存储容器的 SAS 令牌。  |
 | [`az appservice plan create`](/cli/appservice/plan?view=azure-cli-latest#az-appservice-plan-create) | 创建应用服务计划。 |
 | [`az webapp create`](/cli/webapp?view=azure-cli-latest#az-webapp-create) | 创建应用服务应用。 |
 | [`az webapp config backup create`](/cli/webapp/config/backup?view=azure-cli-latest#az-webapp-config-backup-create) | 为应用服务应用创建备份。 |

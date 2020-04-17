@@ -8,10 +8,10 @@ origin.date: 10/27/2017
 ms.date: 01/20/2020
 ms.author: v-yeche
 ms.openlocfilehash: 4f473a405cf85c150633bdecec1d0932071c4d85
-ms.sourcegitcommit: 8de025ca11b62e06ba3762b5d15cc577e0c0f15d
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "76170710"
 ---
 # <a name="create-a-managed-application-definition-with-powershell"></a>使用 PowerShell 创建托管应用程序定义
@@ -49,9 +49,9 @@ New-AzManagedApplicationDefinition `
 
 ## <a name="script-explanation"></a>脚本说明
 
-此脚本使用以下命令创建托管应用程序定义。 表中的每条命令链接到特定于命令的文档。
+此脚本使用以下命令创建托管应用程序定义。 表中的每条命令均链接到特定于命令的文档。
 
-| 命令 | 注释 |
+| Command | 说明 |
 |---|---|
 | [New-AzManagedApplicationDefinition](https://docs.microsoft.com/powershell/module/az.resources/new-azmanagedapplicationdefinition) | 创建托管应用程序定义。 提供包含所需文件的包。 |
 

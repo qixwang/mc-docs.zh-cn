@@ -14,10 +14,10 @@ origin.date: 01/23/2020
 ms.date: 3/16/2020
 ms.author: v-lingwu
 ms.openlocfilehash: c7d2bc16dabc82134d7729bd03141aab61cb0a73
-ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/17/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79452473"
 ---
 # <a name="create-event-grid-custom-topic-with-powershell"></a>使用 PowerShell 创建事件网格自定义主题
@@ -34,9 +34,9 @@ ms.locfileid: "79452473"
 
 ## <a name="script-explanation"></a>脚本说明
 
-此脚本使用以下命令创建自定义主题。 表中的每条命令链接到特定于命令的文档。
+此脚本使用以下命令创建自定义主题。 表中的每条命令均链接到特定于命令的文档。
 
-| 命令 | 注释 |
+| Command | 说明 |
 |---|---|
 | [New-AzEventGridTopic](https://docs.microsoft.com/powershell/module/az.eventgrid/new-azeventgridtopic) | 创建事件网格自定义主题。 |
 

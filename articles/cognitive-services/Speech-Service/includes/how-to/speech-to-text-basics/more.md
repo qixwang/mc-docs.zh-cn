@@ -6,22 +6,22 @@ origin.date: 03/13/2020
 ms.date: 03/16/2020
 ms.author: v-tawe
 ms.openlocfilehash: e3bce76af68011bbce609fbbd8b817eb3166ebd6
-ms.sourcegitcommit: b2f2bb08ab1b5ccb3c596d84b3b6ddca5bba3903
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80151758"
 ---
 ## <a name="additional-language-and-platform-support"></a>其他语言和平台支持
 
-如果已单击此选项卡，则可能看不到你偏好的编程语言的基础知识文章。 别担心，我们在 GitHub 上提供了其他代码示例。 使用表格查找适用于编程语言和平台/OS 组合的相应示例。
+如果已单击此选项卡，则可能看不到采用你偏好的编程语言的基本知识文章。 别担心，我们在 GitHub 上提供了其他代码示例。 使用表格查找适用于编程语言和平台/OS 组合的相应示例。
 
 | 语言    | 代码示例                                                                                                                            |
 |-------------|-----------------------------------------------------------------------------------------------------------------------------------------|
 | C#          | [.NET Framework][csharp-netframework]、[.NET Core][csharp-netcore]、[UWP][csharp-uwp]、[Unity][csharp-unity] 和 [Xamarin][csharp-xamarin] |
 | C++         | [快速入门][cpp-quickstarts]、[示例][cpp-samples]                                                                                  |
 | Java        | [Android][java-android]、[JRE][java-jre]                                                                                                |
-| Javascript  | [浏览器][js-browser]                                                                                                                   |
+| JavaScript  | [浏览器][js-browser]                                                                                                                   |
 | Node.js     | [Windows、Linux 和 macOS][node-js]                                                                                                        |
 | Objective-C | [iOS][objective-c-ios]、[macOS][objective-c-macos]                                                                                      |
 | Python      | [Windows、Linux 和 macOS][python]                                                                                                         |

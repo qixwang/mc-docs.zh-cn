@@ -7,10 +7,10 @@ origin.date: 08/27/2019
 ms.date: 09/30/2019
 ms.author: v-jay
 ms.openlocfilehash: a835466d6da4c4b1dbbec795aa7e7fae693460e7
-ms.sourcegitcommit: 849418188e5c18491ed1a3925829064935d2015c
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80634481"
 ---
 1. 将 Data Box 设备连接到 Azure 数据中心网络后，数据会自动开始上传到 Azure。 

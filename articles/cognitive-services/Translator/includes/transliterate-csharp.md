@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
 ms.openlocfilehash: a53523930866fa932949d8da2836fdbf638c4b91
-ms.sourcegitcommit: 303a16c7117b6f3495ef0493b4ae8ccb67d7dbba
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80342996"
 ---
 [!INCLUDE [Prerequisites](prerequisites-csharp.md)]
@@ -171,7 +171,7 @@ foreach (TransliterationResult o in deserializedOutput)
 
 ## <a name="put-it-all-together"></a>将其放在一起
 
-最后一步是在 `Main` 函数中调用 `TransliterateTextRequest()`。 在此示例中，我们从日语直译为拉丁语脚本。 找到 `static void Main(string[] args)` 并将其替换为以下代码：
+最后一步是在 `TransliterateTextRequest()` 函数中调用 `Main`。 在此示例中，我们从日语直译为拉丁语脚本。 找到 `static void Main(string[] args)` 并将其替换为以下代码：
 
 ```csharp
 static async Task Main(string[] args)

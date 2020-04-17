@@ -1,9 +1,9 @@
 ---
 ms.openlocfilehash: faf5e3959808a01231c3d4bf35dcfc8140514e8c
-ms.sourcegitcommit: 892137d117bcaf9d88aec0eb7ca756fe39613344
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78048881"
 ---
 ## <a name="guest-configuration"></a>来宾配置

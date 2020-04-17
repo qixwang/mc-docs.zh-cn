@@ -17,11 +17,11 @@ origin.date: 11/07/2017
 ms.date: 12/04/2017
 ms.author: v-nany
 ms.openlocfilehash: 8349e00e9278e7b3410998ce309c1d97ac9a3e58
-ms.sourcegitcommit: d75065296d301f0851f93d6175a508bdd9fd7afc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52652336"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63844337"
 ---
 # <a name="azure-powershell-samples-for-azure-blob-storage"></a>适用于 Azure Blob 存储的 Azure PowerShell 示例
 

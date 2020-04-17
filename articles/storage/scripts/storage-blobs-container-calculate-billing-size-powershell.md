@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.devlang: powershell
 ms.topic: sample
 origin.date: 11/07/2017
-ms.date: 03/04/2019
+ms.date: 04/22/2019
 ms.author: v-jay
-ms.openlocfilehash: 4dae9923e4e4fafe8eea989bbdd2506032c902c0
-ms.sourcegitcommit: b8fb6890caed87831b28c82738d6cecfe50674fd
+ms.openlocfilehash: 89709744ea3ec7863798f480013b76b96632c1d6
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58625541"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63823296"
 ---
 # <a name="calculate-the-total-billing-size-of-a-blob-container"></a>计算要计费的 Blob 容器总大小
 
@@ -44,14 +44,14 @@ Blob 容器的总大小包括容器自身大小，以及容器内所有 blob 的
 
 下述计算介绍如何估算每个 Blob 容器使用的存储量：
 
-`
+```
 48 bytes + Len(ContainerName) * 2 bytes +
 For-Each Metadata[3 bytes + Len(MetadataName) + Len(Value)] +
 For-Each Signed Identifier[512 bytes]
-`
+```
 
 以下是明细信息：
-* 每个容器 48 字节的开销，包括上次修改时间、权限、公共设置，以及其他系统元数据。
+* 每个容器的开销（48 字节）包括最后修改时间、权限、公共设置和一些系统元数据。
 
 * 容器名称以 Unicode 形式存储，因此字节数按字符数乘以 2 计算。
 
@@ -65,22 +65,22 @@ For-Each Signed Identifier[512 bytes]
 
 * 块 blob（基本 blob 或快照）：
 
-   `
+   ```
    124 bytes + Len(BlobName) * 2 bytes +
    For-Each Metadata[3 bytes + Len(MetadataName) + Len(Value)] +
    8 bytes + number of committed and uncommitted blocks * Block ID Size in bytes +
    SizeInBytes(data in unique committed data blocks stored) +
    SizeInBytes(data in uncommitted data blocks)
-   `
+   ```
 
 * 页 blob（基本 blob 或快照）：
 
-   `
+   ```
    124 bytes + Len(BlobName) * 2 bytes +
    For-Each Metadata[3 bytes + Len(MetadataName) + Len(Value)] +
    number of nonconsecutive page ranges with data * 12 bytes +
    SizeInBytes(data in unique pages stored)
-   `
+   ```
 
 以下是明细信息：
 
@@ -94,7 +94,7 @@ For-Each Signed Identifier[512 bytes]
     - Content-MD5
     - 权限
     - 快照信息
-    - 租约
+    - Lease
     - 某些系统元数据
 
 * Blob 名称以 Unicode 形式存储，因此字节数按字符数乘以 2 计算。
@@ -110,7 +110,7 @@ For-Each Signed Identifier[512 bytes]
     >使用快照时，大小仅包括此基本或快照 blob 的唯一数据。 如果未提交块在一周后未被使用，则回收到垃圾桶。 之后不计入账单。
 
 * 对于页 blob：
-  * 字节数按具有数据的不连续页面范围数乘以 12 计算。 这是在调用 GetPageRanges API 时看到的唯一页面范围数。
+  * 字节数按具有数据的不连续页面范围数乘以 12 计算。 这是在调用 GetPageRanges API 时看到的唯一页面范围数  。
 
   * 所有存储页面中的数据大小（按字节计）。
 

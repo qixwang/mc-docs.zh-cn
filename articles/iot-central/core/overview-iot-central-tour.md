@@ -10,10 +10,10 @@ services: iot-central
 ms.custom: mvc
 manager: corywink
 ms.openlocfilehash: 3195722dd473bbb745e39c3442abdd4a8dd624e1
-ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80343540"
 ---
 # <a name="take-a-tour-of-the-azure-iot-central-ui"></a>浏览 Azure IoT Central UI
@@ -146,7 +146,7 @@ Explorer 页面显示 Azure IoT Central 应用程序中按“设备模板”分�
 
 借助规则页可根据设备的遥测、状态或事件定义规则。 规则触发时，它可以触发一个或多个操作，例如发送电子邮件、通过 Webhook 警报通知外部系统等。若要了解信息，请参阅[配置规则](tutorial-create-telemetry-rules.md)教程。 
 
-### <a name="analytics"></a>分析
+### <a name="analytics"></a>Analytics
 
 > [!div class="mx-imgBorder"]
 > ![分析页](media/overview-iot-central-tour/analytics-pnp.png)

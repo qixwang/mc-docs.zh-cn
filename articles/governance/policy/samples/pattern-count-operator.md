@@ -6,10 +6,10 @@ ms.date: 03/09/2020
 ms.author: v-tawe
 ms.topic: sample
 ms.openlocfilehash: b86fcc6126e4009511083321a7fbaa2fa4792a7d
-ms.sourcegitcommit: 892137d117bcaf9d88aec0eb7ca756fe39613344
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78048865"
 ---
 # <a name="azure-policy-pattern-the-count-operator"></a>Azure Policy 模式：count 运算符

@@ -11,10 +11,10 @@ ms.author: v-tawe
 ms.reviewer: cephalin
 ms.custom: mvc, seodec18
 ms.openlocfilehash: c67bfaecd59ba9d8c3dc35311d01c4f1b4741c0a
-ms.sourcegitcommit: 44d3fe59952847e5394bbe6c05bd6f333bb56345
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80522117"
 ---
 # <a name="restore-a-web-app-from-a-backup-using-cli"></a>使用 CLI 从备份中还原 Web 应用
@@ -25,7 +25,7 @@ ms.locfileid: "80522117"
 
 
 
-如果选择在本地安装并使用 CLI，则需使用 Azure CLI 2.0 或更高版本。 若要查找版本，请运行 `az --version`。 如需进行安装或升级，请参阅[安装 Azure CLI](/cli/install-azure-cli?view=azure-cli-lastest)。 
+如果选择在本地安装并使用 CLI，需要 Azure CLI 2.0 版或更高版本。 要查找版本，请运行 `az --version`。 如需进行安装或升级，请参阅[安装 Azure CLI](/cli/install-azure-cli?view=azure-cli-lastest)。 
 
 ## <a name="sample-script"></a>示例脚本
 
@@ -52,10 +52,10 @@ az webapp config backup restore --resource-group $groupname --webapp-name $webap
 
 此脚本使用以下命令。 表中的每条命令均链接到特定于命令的文档。
 
-| 命令 | 注释 |
+| Command | 说明 |
 |---|---|
 | [`az webapp config backup list`](/cli/webapp/config/backup?view=azure-cli-latest#az-webapp-config-backup-list) | 获取 Web 应用的备份列表。 |
-| [`az webapp config backup restore`](/cli/webapp/config/backup?view=azure-cli-latest#az-webapp-config-backup-restore) | 从备份中还原 Web 应用。 |
+| [`az webapp config backup restore`](/cli/webapp/config/backup?view=azure-cli-latest#az-webapp-config-backup-restore) | 从备份中恢复 web 应用。 |
 
 ## <a name="next-steps"></a>后续步骤
 

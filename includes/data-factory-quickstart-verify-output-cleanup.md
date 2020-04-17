@@ -6,10 +6,10 @@ origin.date: 11/09/2018
 ms.date: 03/02/2020
 ms.author: v-jay
 ms.openlocfilehash: e3e2924f3db9368939d5d8a677a85c2892260ee3
-ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77653582"
 ---
 ## <a name="verify-the-output"></a>验证输出

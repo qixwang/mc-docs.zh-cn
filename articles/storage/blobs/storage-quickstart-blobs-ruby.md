@@ -10,10 +10,10 @@ origin.date: 11/14/2018
 ms.date: 12/02/2019
 ms.author: v-jay
 ms.openlocfilehash: 10f335b3fe4472d47414b122d40fac2d0d20ad67
-ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77028859"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-using-ruby"></a>快速入门：使用 Ruby 上传、下载和列出 Blob
@@ -78,7 +78,7 @@ Downloading blob to C:\Users\azureuser\Documents\QuickStart_9f4ed0f9-22d3-43e1-9
 
 还可以使用工具（如 [Azure 存储资源管理器](https://storageexplorer.com)）查看 Blob 存储中的文件。 Azure 存储资源管理器是免费的跨平台工具，可用于访问存储帐户信息。 
 
-验证文件后，按任意键可完成演示并删除测试文件。 了解此示例的用途后，请打开 example.rb 文件来查看代码。 
+验证文件后，按任意键可完成演示并删除测试文件。 了解此示例的用途以后，即可打开 example.rb 文件来查看代码。 
 
 ## <a name="understand-the-sample-code"></a>了解示例代码
 
@@ -88,14 +88,14 @@ Downloading blob to C:\Users\azureuser\Documents\QuickStart_9f4ed0f9-22d3-43e1-9
 首先创建对用于访问和管理 Blob 存储的对象的引用。 这些对象相互关联，并且每个对象被列表中的下一个对象使用。
 
 * 创建 Azure 存储 **BlobService** 对象的实例，用于设置连接凭据。 
-* 创建**容器**对象，使之代表要访问的容器。 容器用于组织 blob，就像使用计算机上的文件夹组织文件一样。
+* 创建**容器**对象，让其代表要访问的容器。 容器用于组织 blob，就像使用计算机上的文件夹组织文件一样。
 
 有了云 Blob 容器后，可以创建**块** Blob 对象，使之指向你感兴趣的特定 Blob，然后执行上传、下载、复制等操作。
 
 > [!IMPORTANT]
 > 容器名称必须为小写。 有关容器名称和 blob 名称的详细信息，请参阅[命名和引用容器、Blob 和元数据](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata)。
 
-在此部分，请设置 Azure 存储客户端的实例，实例化 Blob 服务对象，新建一个容器，然后设置容器的权限，将 Blob 公开。 容器名称为 quickstartblobs  。 
+此部分设置 Azure 存储客户端的实例，实例化 Blob 服务对象，创建新的容器，然后设置容器的权限，使 Blob 公开。 容器名称为 quickstartblobs  。 
 
 ```ruby 
 # Create a BlobService object
@@ -119,7 +119,7 @@ Blob 存储支持块 blob、追加 blob 和页 blob。 块 blob 是最常用的 
 
 若要将文件上传到 blob，请通过将本地驱动器上的目录名称和文件名称联接在一起来获取文件的完整路径。 然后可以使用 **create\_block\_blob()** 方法将文件上传到指定的路径。 
 
-示例代码将创建一个本地文件，以供上传和下载，并将要上传的此文件存储为 file\_path\_to\_file  ，将 blob 的名称存储为 local\_file\_name  。 以下示例将文件上传到名为“quickstartblobs”的容器  。
+示例代码将创建一个本地文件，以供上传和下载，并将要上传的此文件存储为 file**path\_to\_file\_** ，将 blob 的名称存储为 local**file\_name\_** 。 以下示例将文件上传到名为“quickstartblobs”的容器  。
 
 ```ruby
 # Create a file in Documents to test the upload and download.
@@ -139,7 +139,7 @@ puts "\nUploading to Blob storage as blob" + local_file_name
 blob_client.create_block_blob(container.name, local_file_name, full_path_to_file)
 ```
 
-若要对块 Blob 的内容进行部分更新，请使用 **create\_block\_list()** 方法。 块 blob 最大可以为 4.7 TB，并且可以是从 Excel 电子表格到大视频文件的任何内容。 页 blob 主要用于用于备份 IaaS VM 的 VHD 文件。 追加 blob 用于日志记录，例如有时需要写入到文件，再继续添加更多信息。 追加 Blob 应在单一编写器模型中使用。 存储在 Blob 存储中的大多数对象都是块 blob。
+若要对块 Blob 进行部分更新，请使用 **create\_block\_list()** 方法。 块 blob 最大可以为 4.7 TB，并且可以是从 Excel 电子表格到大视频文件的任何内容。 页 blob 主要用于用于备份 IaaS VM 的 VHD 文件。 追加 blob 用于日志记录，例如有时需要写入到文件，再继续添加更多信息。 追加 Blob 应在单编写器模型中使用。 存储在 Blob 存储中的大多数对象都是块 blob。
 
 ### <a name="list-the-blobs-in-a-container"></a>列出容器中的 Blob
 
@@ -190,7 +190,7 @@ File.delete(full_path_to_file2)
 
 ## <a name="next-steps"></a>后续步骤
  
-本快速入门介绍了如何使用 Ruby 在本地磁盘和 Azure Blob 存储之间传输文件。 要深入了解如何使用 Blob 存储，请继续学习 Blob 存储操作说明。
+本快速入门介绍了如何使用 Ruby 在本地磁盘和 Azure Blob 存储之间转移文件。 要深入了解如何使用 Blob 存储，请继续学习 Blob 存储操作说明。
 
 > [!div class="nextstepaction"]
 > [Blob 存储操作说明](./storage-ruby-how-to-use-blob-storage.md)

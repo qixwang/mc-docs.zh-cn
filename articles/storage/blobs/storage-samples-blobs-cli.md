@@ -17,11 +17,11 @@ origin.date: 06/13/2017
 ms.date: 10/23/2017
 ms.author: v-johch
 ms.openlocfilehash: 1b5b184f30bf83b503aca29ee201a4798028b718
-ms.sourcegitcommit: d75065296d301f0851f93d6175a508bdd9fd7afc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52651708"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63844343"
 ---
 # <a name="azure-cli-samples-for-azure-blob-storage"></a>适用于 Azure Blob 存储的 Azure CLI 示例
 

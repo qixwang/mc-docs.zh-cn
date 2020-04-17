@@ -8,10 +8,10 @@ ms.topic: sample
 origin.date: 02/28/2018
 ms.date: 11/04/2019
 ms.openlocfilehash: ec2c8d7cfc1e80a80f2314f31b9fac44b19b22a0
-ms.sourcegitcommit: cb2caa72ec0e0922a57f2fa1056c25e32c61b570
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "73142207"
 ---
 # <a name="java-sample-to-illustrate-connection-pooling"></a>演示连接池的 Java 示例

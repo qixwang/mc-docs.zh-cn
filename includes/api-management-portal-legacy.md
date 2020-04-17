@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: aac2e5937b17d3c426d9f7f6ea5c13bdee56f164
-ms.sourcegitcommit: 5844ad7c1ccb98ff8239369609ea739fb86670a4
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "73831362"
 ---
 > [!NOTE]

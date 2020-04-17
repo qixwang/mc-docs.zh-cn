@@ -8,10 +8,10 @@ origin.date: 10/25/2017
 ms.date: 01/20/2020
 ms.author: v-yeche
 ms.openlocfilehash: f9036bfb9ae746cf8e572d4beb0390298d18fa40
-ms.sourcegitcommit: 8de025ca11b62e06ba3762b5d15cc577e0c0f15d
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "76170714"
 ---
 # <a name="deploy-a-managed-application-for-service-catalog-with-azure-cli"></a>使用 Azure CLI 为服务目录部署托管应用程序
@@ -53,9 +53,9 @@ az managedapp create \
 
 ## <a name="script-explanation"></a>脚本说明
 
-此脚本使用以下命令部署托管应用程序。 表中的每条命令链接到特定于命令的文档。
+此脚本使用以下命令部署托管应用程序。 表中的每条命令均链接到特定于命令的文档。
 
-| 命令 | 注释 |
+| Command | 说明 |
 |---|---|
 | [az managedapp create](https://docs.microsoft.com/cli/azure/managedapp?view=azure-cli-latest#az-managedapp-create) | 创建托管应用程序。 提供模板的定义 ID 和参数。 |
 

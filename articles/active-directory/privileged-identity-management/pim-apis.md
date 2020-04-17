@@ -15,10 +15,10 @@ ms.author: v-junlch
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0e9f6e3a86657c3848ec2186e007c17bce74e705
-ms.sourcegitcommit: 48d51745ca18de7fa05b77501b4a9bf16cea2068
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "76116814"
 ---
 # <a name="microsoft-graph-apis-for-privileged-identity-management-preview"></a>适用于 Privileged Identity Management 的 Microsoft Graph API（预览版）

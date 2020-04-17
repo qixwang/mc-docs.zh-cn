@@ -10,17 +10,17 @@ origin.date: 07/03/2019
 ms.date: 04/06/2020
 ms.author: v-jay
 ms.openlocfilehash: c40b58ed4a5cfe19d9e75152349b4421ab3eb655
-ms.sourcegitcommit: 5fb45da006859215edc8211481f13174aa43dbeb
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80634469"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-blob-storage-via-rest-apis"></a>教程：通过 REST API 将数据复制到 Azure Data Box Blob 存储  
 
 本教程介绍使用 REST API 通过 *http* 或 *https* 连接到 Azure Data Box Blob 存储的过程。 在连接后，将介绍将数据复制到 Data Box Blob 存储所需执行的步骤。
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 先决条件
@@ -211,7 +211,7 @@ ms.locfileid: "80634469"
 
 将 `<key>` 替换为你的帐户密钥。 若要获取帐户密钥，请在 Azure 门户中转到自己的存储帐户。 转到“设置”>“访问密钥”，选择一个密钥，并将其粘贴到 AzCopy 命令中。 
 
-如果指定的目标容器不存在，则 AzCopy 将创建它并将文件上传到其中。 将源路径更新为数据目录，并将目标 URL 中的 `data-box-storage-account-name` 替换为与 Data Box 关联的存储帐户的名称。
+如果指定的目标容器不存在，AzCopy 将创建它并将文件上传到其中。 将源路径更新为数据目录，并将目标 URL 中的 `data-box-storage-account-name` 替换为与 Data Box 关联的存储帐户的名称。
 
 若要将指定目录的内容以递归方式上传到 Blob 存储，请指定 `--recursive` (Linux) 或 `/S` (Windows) 选项。 当使用这些选项之一运行 AzCopy 时，会同时上传所有子文件夹及其中文件。
 

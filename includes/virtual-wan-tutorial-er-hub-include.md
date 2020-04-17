@@ -10,17 +10,17 @@ ms.date: 03/30/2020
 ms.author: v-yeche
 ms.custom: include file
 ms.openlocfilehash: 4146258cbef2c30159aa85cc6a45117b9a5c7248
-ms.sourcegitcommit: 4810b75d1e1db78d9747e99735468a6ab861be2d
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80291286"
 ---
 1. 找到创建的虚拟 WAN。 在虚拟 WAN 页上的“连接”部分下，选择“中心”   。
 2. 在“中心”页上，选择“+ 新建中心”以打开“创建虚拟中心”页   。
 3. 在“创建虚拟中心”页上的“基本”选项卡上，请填写以下字段   ：
 
-    ![基础知识](./media/virtual-wan-tutorial-er-hub-include/hub1.png "基础知识")
+    ![基础知识](./media/virtual-wan-tutorial-er-hub-include/hub1.png "基础")
 
     **项目详细信息**
 

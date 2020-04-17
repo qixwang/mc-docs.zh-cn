@@ -17,11 +17,11 @@ origin.date: 06/22/2017
 ms.date: 02/25/2019
 ms.author: v-jay
 ms.openlocfilehash: c189519258fa7ce43de20cf325302978328e61e2
-ms.sourcegitcommit: 0fd74557936098811166d0e9148e66b350e5b5fa
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56665550"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63823271"
 ---
 # <a name="create-a-storage-account-and-rotate-its-account-access-keys"></a>创建存储帐户并轮换其帐户访问密钥
 
@@ -77,7 +77,7 @@ az group delete --name myResourceGroup
 
 此脚本使用以下命令创建存储帐户并检索和轮换其访问密钥。 表中的每一项均链接到命令特定的文档。
 
-| 命令 | 注释 |
+| Command | 说明 |
 |---|---|
 | [az group create](https://docs.azure.cn/cli/group) | 创建用于存储所有资源的资源组。 |
 | [az storage account create](https://docs.azure.cn/cli/storage/account) | 在指定资源组中创建 Azure 存储帐户。 |

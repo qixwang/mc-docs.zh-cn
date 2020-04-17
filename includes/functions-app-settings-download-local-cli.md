@@ -6,10 +6,10 @@ origin.date: 09/26/2019
 ms.date: 10/28/2019
 ms.author: v-junlch
 ms.openlocfilehash: 6c8574e2f1650cbbda8df0946e68c506f59e0431
-ms.sourcegitcommit: 7d2ea8a08ee329913015bc5d2f375fc2620578ba
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "73034501"
 ---
 你已在 Azure 中创建了一个函数应用以及所需的存储帐户。 此帐户的连接字符串安全存储在 Azure 中的应用设置内。 在本文中，你要将消息写入到同一帐户中的存储队列。 若要在本地运行函数时连接到该存储帐户，必须将应用设置下载到 local.settings.json 文件。 

@@ -11,17 +11,17 @@ ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
 ms.openlocfilehash: 3135bb0478d7c39617e93184da500f55813da101
-ms.sourcegitcommit: 888cbc10f2348de401d4839a732586cf266883bf
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77028294"
 ---
 # <a name="tutorial-grant-access-to-a-nodejs-web-api-from-a-desktop-app-using-azure-active-directory-b2c"></a>教程：从桌面应用使用 Azure Active Directory B2C 授予对 Node.js Web API 的访问权限
 
 本教程展示了如何从 Windows Presentation Foundation (WPF) 桌面应用（也受 Azure AD B2C 保护）调用受 Azure Active Directory B2C (Azure AD B2C) 保护的 Node.js Web API。
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 添加 Web API 应用程序
@@ -29,7 +29,7 @@ ms.locfileid: "77028294"
 > * 授予 Web API 权限
 > * 将示例更新为使用该应用程序
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 完成[教程：在本机桌面客户端中对用户进行身份验证](tutorial-desktop-app.md)。
 
@@ -51,7 +51,7 @@ ms.locfileid: "77028294"
 
 在先决条件教程中，你注册了名为“nativeapp1”  的本机客户端应用程序。 以下步骤使用你向上述部分中“webapi1”  公开的 API 范围来配置本机应用程序注册。 这允许桌面应用程序从 Azure AD B2C 获取访问令牌，Web API 可以使用该令牌来验证和提供对其资源的作用域访问。 在本教程的后面部分，你将配置并运行桌面应用程序和 Web API 代码示例。
 
-#### <a name="applicationstabapplications"></a>[应用程序](#tab/applications/)
+#### <a name="applications"></a>[应用程序](#tab/applications/)
 
 1. 依次选择“应用程序”、“nativeapp1”   。
 1. 选择“API 访问”，然后选择“添加”   。
@@ -59,7 +59,7 @@ ms.locfileid: "77028294"
 1. 在“选择范围”  下拉列表中，选择先前定义的范围。 例如，*demo.read* 和 *demo.write*。
 1. 选择“确定”  。
 
-#### <a name="app-registrations-previewtabapp-reg-preview"></a>[应用注册（预览版）](#tab/app-reg-preview/)
+#### <a name="app-registrations-preview"></a>[应用注册（预览版）](#tab/app-reg-preview/)
 
 1. 选择“应用注册(预览版)”  ，然后选择应该有权访问 API 的 本机客户端应用程序。 例如，“nativeapp1”  。
 1. 在“管理”下选择“API 权限”  。 
@@ -153,7 +153,7 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-nodej
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，你已学习了如何执行以下操作：
+在本教程中，你了解了如何执行以下操作：
 
 > [!div class="checklist"]
 > * 添加 Web API 应用程序

@@ -10,10 +10,10 @@ origin.date: 07/23/2019
 ms.date: 10/28/2019
 ms.author: v-yeche
 ms.openlocfilehash: b981c906ff9e99ff0a2d79f3bfaaca1d32ff7aa9
-ms.sourcegitcommit: 73f07c008336204bd69b1e0ee188286d0962c1d7
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "72913211"
 ---
 # <a name="azure-cosmos-db-python-examples"></a>Azure Cosmos DB Python 示例
@@ -29,7 +29,7 @@ ms.locfileid: "72913211"
 > 
 > 
 
-[azure-documentdb-python](https://github.com/Azure/azure-documentdb-python) GitHub 存储库中包含对 Azure Cosmos DB 资源执行 CRUD 操作和其他常见操作的示例解决方案。 本文提供：
+[azure-documentdb-python](https://github.com/Azure/azure-documentdb-python) GitHub 存储库中包含对 Azure Cosmos DB 资源执行 CRUD 操作和其他常见操作的示例解决方案。 本文将提供：
 
 * 每个 Python 示例项目文件中的任务链接。 
 * 指向相关的 API 参考内容的链接。
@@ -38,7 +38,7 @@ ms.locfileid: "72913211"
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-- 可以[激活 Visual Studio 订阅者权益](https://www.azure.cn/support/legal/offer-rate-plans/)：Visual Studio 订阅每月提供可用来试用付费版 Azure 服务的信用额度。
+- 可以[激活 Visual Studio 订户权益](https://www.azure.cn/support/legal/offer-rate-plans/)：Visual Studio 订阅每月为用户提供可用来试用付费版 Azure 服务的信用额度。
 
 [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
 
@@ -50,7 +50,7 @@ ms.locfileid: "72913211"
    > 
 
 ## <a name="database-examples"></a>数据库示例
-[DatabaseManagement](https://github.com/Azure/azure-documentdb-python/blob/master/samples/DatabaseManagement) 项目的 [Program.py](https://github.com/Azure/azure-documentdb-python/blob/master/samples/DatabaseManagement/Program.py) 文件演示了如何执行以下任务。 若要在运行以下示例之前了解 Azure Cosmos 数据库，请参阅概念文章：[使用数据库、容器和项](databases-containers-items.md)。 
+[DatabaseManagement](https://github.com/Azure/azure-documentdb-python/blob/master/samples/DatabaseManagement/Program.py) 项目的 [Program.py](https://github.com/Azure/azure-documentdb-python/blob/master/samples/DatabaseManagement) 文件演示了如何执行以下任务。 若要在运行以下示例之前了解 Azure Cosmos 数据库，请参阅[使用数据库、容器和项](databases-containers-items.md)概念性文章。 
 
 | 任务 | API 参考 |
 | --- | --- |
@@ -60,29 +60,29 @@ ms.locfileid: "72913211"
 | [删除数据库](https://github.com/Azure/azure-documentdb-python/blob/master/samples/DatabaseManagement/Program.py#L113-L126) |[CosmosClient.DeleteDatabase](https://docs.microsoft.com/python/api/azure-cosmos/azure.cosmos.cosmos_client.cosmosclient?view=azure-python#deletedatabase-database-link--options-none-) |
 
 ## <a name="collection-examples"></a>集合示例
-[CollectionManagement](https://github.com/Azure/azure-documentdb-python/blob/master/samples/CollectionManagement) 项目的 [Program.py](https://github.com/Azure/azure-documentdb-python/blob/master/samples/CollectionManagement/Program.py) 文件演示了如何执行以下任务。 若要在运行以下示例之前了解 Azure Cosmos 集合，请参阅概念文章：[使用数据库、容器和项](databases-containers-items.md)。 
+[CollectionManagement](https://github.com/Azure/azure-documentdb-python/blob/master/samples/CollectionManagement/Program.py) 项目的 [Program.py](https://github.com/Azure/azure-documentdb-python/blob/master/samples/CollectionManagement) 文件演示了如何执行以下任务。 若要在运行以下示例之前了解 Azure Cosmos 集合，请参阅[使用数据库、容器和项](databases-containers-items.md)概念性文章。 
 
 | 任务 | API 参考 |
 | --- | --- |
 | [创建集合](https://github.com/Azure/azure-documentdb-python/blob/master/samples/CollectionManagement/Program.py#L84-L135) |[CosmosClient.CreateContainer](https://docs.microsoft.com/python/api/azure-cosmos/azure.cosmos.cosmos_client.cosmosclient?view=azure-python#createcontainer-database-link--collection--options-none-) |
-| [读取数据库中所有集合的列表](https://github.com/Azure/azure-documentdb-python/blob/master/samples/CollectionManagement/Program.py#L210-L222) |[CosmosClient.ReadContainers](https://docs.microsoft.com/python/api/azure-cosmos/azure.cosmos.cosmos_client.cosmosclient?view=azure-python#readcontainers-database-link--options-none-) |
+| [在数据库中读取所有集合的列表](https://github.com/Azure/azure-documentdb-python/blob/master/samples/CollectionManagement/Program.py#L210-L222) |[CosmosClient.ReadContainers](https://docs.microsoft.com/python/api/azure-cosmos/azure.cosmos.cosmos_client.cosmosclient?view=azure-python#readcontainers-database-link--options-none-) |
 | [按 ID 获取集合](https://github.com/Azure/azure-documentdb-python/blob/master/samples/CollectionManagement/Program.py#L190-L208) |[CosmosClient.ReadContainer](https://docs.microsoft.com/python/api/azure-cosmos/azure.cosmos.cosmos_client.cosmosclient?view=azure-python#readcontainer-collection-link--options-none-) |
 | [更改集合的吞吐量](https://github.com/Azure/azure-documentdb-python/blob/master/samples/CollectionManagement/Program.py#L184-L188) | [CosmosClient.ReplaceOffer](https://docs.microsoft.com/python/api/azure-cosmos/azure.cosmos.cosmos_client.cosmosclient?view=azure-python#replaceoffer-offer-link--offer-)|
 | [删除集合](https://github.com/Azure/azure-documentdb-python/blob/master/samples/CollectionManagement/Program.py#L224-L238) |[CosmosClient.DeleteContainer](https://docs.microsoft.com/python/api/azure-cosmos/azure.cosmos.cosmos_client.cosmosclient?view=azure-python#deletecontainer-collection-link--options-none-) |
 
 ## <a name="document-examples"></a>文档示例
-[DocumentManagement](https://github.com/Azure/azure-documentdb-python/blob/master/samples/DocumentManagement) 项目的 [Program.py](https://github.com/Azure/azure-documentdb-python/blob/master/samples/DocumentManagement/Program.py) 文件演示了如何执行以下任务。 若要在运行以下示例之前了解 Azure Cosmos 文档，请参阅概念文章：[使用数据库、容器和项](databases-containers-items.md)。 
+[DocumentManagement](https://github.com/Azure/azure-documentdb-python/blob/master/samples/DocumentManagement/Program.py) 项目的 [Program.py](https://github.com/Azure/azure-documentdb-python/blob/master/samples/DocumentManagement) 文件演示了如何执行以下任务。 若要在运行以下示例之前了解 Azure Cosmos 文档，请参阅[使用数据库、容器和项](databases-containers-items.md)概念性文章。 
 
 | 任务 | API 参考 |
 | --- | --- |
 | [创建文档](https://github.com/Azure/azure-documentdb-python/blob/master/samples/DocumentManagement/Program.py#L55-L66) |[CosmosClient.CreateItem](https://docs.microsoft.com/python/api/azure-cosmos/azure.cosmos.cosmos_client.cosmosclient?view=azure-python#createitem-database-or-container-link--document--options-none-) |
 | [创建文档的集合](https://github.com/Azure/azure-documentdb-python/blob/master/samples/DocumentManagement/Program.py#L55-L66) |[CosmosClient.CreateItem](https://docs.microsoft.com/python/api/azure-cosmos/azure.cosmos.cosmos_client.cosmosclient?view=azure-python#createitem-database-or-container-link--document--options-none-) |
 | [按 ID 读取文档](https://github.com/Azure/azure-documentdb-python/blob/master/samples/DocumentManagement/Program.py#L69-L78) |[CosmosClient.ReadItem](https://docs.microsoft.com/python/api/azure-cosmos/azure.cosmos.cosmos_client.cosmosclient?view=azure-python#readitem-document-link--options-none-) |
-| [Read all the documents in a collection](https://github.com/Azure/azure-documentdb-python/blob/master/samples/DocumentManagement/Program.py#L81-L92) |[CosmosClient.ReadItems](https://docs.microsoft.com/python/api/azure-cosmos/azure.cosmos.cosmos_client.cosmosclient?view=azure-python#readitems-collection-link--feed-options-none-) |
+| [读取集合中的所有文档](https://github.com/Azure/azure-documentdb-python/blob/master/samples/DocumentManagement/Program.py#L81-L92) |[CosmosClient.ReadItems](https://docs.microsoft.com/python/api/azure-cosmos/azure.cosmos.cosmos_client.cosmosclient?view=azure-python#readitems-collection-link--feed-options-none-) |
 | [使用条件 ETag 检查替换文档](https://github.com/Azure/azure-cosmos-python/blob/a21f6fb4bad3f59909ef43558b598f9fb476b7bc/test/crud_tests.py#L1216-L1218) | [CosmosClient.ReplaceItem](https://docs.microsoft.com/python/api/azure-cosmos/azure.cosmos.cosmos_client.cosmosclient?view=azure-python#replaceitem-document-link--new-document--options-none-) |
 
 ## <a name="indexing-examples"></a>索引示例
-[IndexManagement](https://github.com/Azure/azure-documentdb-python/blob/master/samples/IndexManagement) 项目的 [Program.py](https://github.com/Azure/azure-documentdb-python/blob/master/samples/IndexManagement/Program.py) 文件演示了如何执行以下任务。  若要在运行以下示例之前了解如何在 Azure Cosmos DB 中进行索引编制，请参阅概念文章：[索引策略](index-policy.md)、[索引类型](index-types.md)和[索引路径](index-paths.md)。 
+[IndexManagement](https://github.com/Azure/azure-documentdb-python/blob/master/samples/IndexManagement/Program.py) 项目的 [Program.py](https://github.com/Azure/azure-documentdb-python/blob/master/samples/IndexManagement) 文件演示了如何执行以下任务。  若要在运行以下示例之前了解 Azure Cosmos DB 中的索引，请参阅[索引策略](index-policy.md)、[索引类型](index-types.md)和[索引路径](index-paths.md)概念文章。 
 
 | 任务 | API 参考 |
 | --- | --- |
@@ -94,7 +94,7 @@ ms.locfileid: "72913211"
 | [执行索引转换](https://github.com/Azure/azure-documentdb-python/blob/master/samples/IndexManagement/Program.py#L514-L559) |[CosmosClient.ReplaceContainer](https://docs.microsoft.com/python/api/azure-cosmos/azure.cosmos.cosmos_client.cosmosclient?view=azure-python#replacecontainer-collection-link--collection--options-none-) |
 
 ## <a name="query-examples"></a>查询示例
-示例项目还演示了如何执行以下查询任务。 若要在运行以下示例之前了解 Azure Cosmos DB 中的 SQL 查询引用，请参阅概念文章：[SQL 查询示例](how-to-sql-query.md)。 若要在运行以下示例之前了解 Azure Cosmos DB 中的 SQL 查询引用，请参阅概念文章：[SQL 查询示例](how-to-sql-query.md)。 
+示例项目还演示了如何执行以下查询任务。 若要在运行以下示例之前了解 Azure Cosmos DB 中的 SQL 查询引用，请参阅 [SQL 查询示例](how-to-sql-query.md)概念性文章。 若要在运行以下示例之前了解 Azure Cosmos DB 中的 SQL 查询引用，请参阅 [SQL 查询示例](how-to-sql-query.md)概念性文章。 
 
 | 任务 | API 参考 |
 | --- | --- |

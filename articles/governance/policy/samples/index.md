@@ -6,10 +6,10 @@ origin.date: 03/25/2020
 ms.date: 03/30/2020
 ms.author: v-tawe
 ms.openlocfilehash: 9a116bf20200af36320afe015e5ddae1c42cd4e9
-ms.sourcegitcommit: 260800ede66f48c886d1426a0fac18b4d402b4f2
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80586812"
 ---
 # <a name="azure-policy-samples"></a>Azure Policy 示例
@@ -27,7 +27,7 @@ ms.locfileid: "80586812"
 
 - [逻辑运算符](./pattern-logical-operators.md)
 - [Fields](./pattern-fields.md)
-- [Parameters](./pattern-parameters.md)
+- [参数](./pattern-parameters.md)
 - [效果详细信息](./pattern-effect-details.md)
 - [Value 运算符](./pattern-value-operator.md)
 - [Count 运算符](./pattern-count-operator.md)

@@ -16,10 +16,10 @@ ms.date: 02/24/2020
 ms.author: v-yeche
 ms.custom: mvc
 ms.openlocfilehash: d32dd3d3798d0ba1e0b0a3cbef248201ecee0886
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77540717"
 ---
 # <a name="add-an-application-certificate-to-a-service-fabric-cluster"></a>将应用程序证书添加到 Service Fabric 群集
@@ -99,7 +99,7 @@ Update-AzVmss -ResourceGroupName $ResourceGroupName -VirtualMachineScaleSet $VMS
 
 此脚本使用以下命令：表中的每条命令均链接到特定于命令的文档。
 
-| 命令 | 注释 |
+| Command | 说明 |
 |---|---|
 | [New-AzKeyVaultCertificatePolicy](https://docs.microsoft.com/powershell/module/az.keyvault/New-AzKeyVaultCertificatePolicy) | 创建表示证书的内存中策略 |
 | [Add-AzKeyVaultCertificate](https://docs.microsoft.com/powershell/module/az.keyvault/Add-AzKeyVaultCertificate)| 将策略部署到 Key Vault |

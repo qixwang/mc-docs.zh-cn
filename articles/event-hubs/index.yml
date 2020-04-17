@@ -14,10 +14,10 @@ metadata:
   origin.date: 01/29/2020
   ms.date: 03/30/2020
   ms.openlocfilehash: e55fb4539abf3f2edfaf3f4d2100a30312f58a6d
-  ms.sourcegitcommit: 260800ede66f48c886d1426a0fac18b4d402b4f2
+  ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 04/02/2020
+  ms.lasthandoff: 04/17/2020
   ms.locfileid: "80586818"
 landingContent:
 - title: 关于事件中心
@@ -40,7 +40,7 @@ landingContent:
       url: event-hubs-quickstart-cli.md
     - text: Azure PowerShell
       url: event-hubs-quickstart-powershell.md
-    - text: Azure Resource Manager 模板
+    - text: Azure 资源管理器模板
       url: event-hubs-resource-manager-namespace-event-hub.md
 - title: 创建专用群集
   linkLists:
@@ -58,7 +58,7 @@ landingContent:
       url: event-hubs-java-get-started-send.md
     - text: Python
       url: get-started-python-send-v2.md
-    - text: Javascript
+    - text: JavaScript
       url: get-started-node-send-v2.md
     - text: Apache Storm（仅接收）
       url: event-hubs-storm-getstarted-receive.md

@@ -11,10 +11,10 @@ origin.date: 12/04/2019
 ms.date: 01/06/2020
 ms.author: v-jay
 ms.openlocfilehash: a407e090e8dc08ed40ed6d1fb5aec39216d6554a
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75624118"
 ---
 # <a name="rotate-storage-account-access-keys-with-powershell"></a>使用 PowerShell 轮换存储帐户访问密钥
@@ -74,7 +74,7 @@ Remove-AzResourceGroup -Name rotatekeystestrg
 
 此脚本使用以下命令创建存储帐户并检索和轮换其中的一个访问密钥。 表中的每一项均链接到命令特定的文档。
 
-| 命令 | 注释 |
+| Command | 说明 |
 |---|---|
 | [Get-AzLocation](https://docs.microsoft.com/powershell/module/az.resources/get-azlocation) | 获取所有位置以及每个位置支持的资源提供程序。 |
 | [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) | 创建 Azure 资源组。 |

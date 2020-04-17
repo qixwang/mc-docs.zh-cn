@@ -9,10 +9,10 @@ ms.date: 10/02/2018
 ms.author: v-lingwu
 ms.custom: include file
 ms.openlocfilehash: 5a33dc021c68fad4a3ec6fe550e5b60dba9032b6
-ms.sourcegitcommit: f4351979a313ac7b5700deab684d1153ae51d725
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "67845568"
 ---
 > [!NOTE]

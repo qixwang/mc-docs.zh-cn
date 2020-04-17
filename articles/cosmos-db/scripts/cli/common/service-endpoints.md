@@ -9,10 +9,10 @@ ms.topic: sample
 origin.date: 09/25/2019
 ms.date: 10/28/2019
 ms.openlocfilehash: 1c80b2b232034479e3d196cd5959afd3a37a8da3
-ms.sourcegitcommit: 73f07c008336204bd69b1e0ee188286d0962c1d7
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "72914857"
 ---
 <!--Verify successfully-->
@@ -94,7 +94,7 @@ az group delete --name $resourceGroupName
 
 此脚本使用以下命令。 表中的每条命令均链接到特定于命令的文档。
 
-| 命令 | 注释 |
+| Command | 说明 |
 |---|---|
 | [az group create](https://docs.azure.cn/cli/group?view=azure-cli-latest#az-group-create) | 创建用于存储所有资源的资源组。 |
 | [az network vnet create](https://docs.azure.cn/cli/network/vnet?view=azure-cli-latest#az-network-vnet-create) | 创建 Azure 虚拟网络。 |

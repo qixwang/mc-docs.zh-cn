@@ -12,10 +12,10 @@ origin.date: 01/23/2020
 ms.date: 3/16/2020
 ms.author: v-lingwu
 ms.openlocfilehash: 2f00724934028ce8c1c9f25fb72681aa5c35eb84
-ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/17/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79452569"
 ---
 # <a name="subscribe-to-events-for-a-resource-group-and-filter-for-a-resource-with-powershell"></a>使用 PowerShell 订阅资源组的事件并筛选出资源
@@ -40,9 +40,9 @@ ms.locfileid: "79452569"
 
 ## <a name="script-explanation"></a>脚本说明
 
-此脚本使用以下命令创建事件订阅。 表中的每条命令链接到特定于命令的文档。
+此脚本使用以下命令创建事件订阅。 表中的每条命令均链接到特定于命令的文档。
 
-| 命令 | 注释 |
+| Command | 说明 |
 |---|---|
 | [New-AzEventGridSubscription](https://docs.microsoft.com/powershell/module/az.eventgrid/new-azeventgridsubscription) | 创建事件网格订阅。 |
 

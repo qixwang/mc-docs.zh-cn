@@ -15,17 +15,17 @@ ms.date: 02/06/2020
 ms.author: v-junlch
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e8a7cb3106a735375ae2ab1cae0d6108dce6bfa1
-ms.sourcegitcommit: 7c80405a6b48380814b4b414e9f8a5756c007880
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77067583"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-sql"></a>教程：使用 Windows VM 系统分配托管标识访问 Azure SQL
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
-本教程介绍如何使用 Windows 虚拟机 (VM) 的系统分配标识访问 Azure SQL Server。 托管服务标识由 Azure 自动管理，可用于向支持 Azure AD 身份验证的服务进行身份验证，这样就无需在代码中插入凭据了。 你将学习如何执行以下操作：
+本教程介绍如何使用 Windows 虚拟机 (VM) 的系统分配标识访问 Azure SQL Server。 托管服务标识由 Azure 自动管理，可用于向支持 Azure AD 身份验证的服务进行身份验证，这样就无需在代码中插入凭据了。 学习如何：
 
 > [!div class="checklist"]
 > * 授予 VM 对 Azure SQL 服务器的访问权限
@@ -54,7 +54,7 @@ ms.locfileid: "77067583"
 
 ### <a name="enable-azure-ad-authentication"></a>启用 Azure AD 身份验证
 
-若要[为 SQL 服务器配置 Azure AD 身份验证](/sql-database/sql-database-aad-authentication-configure)，请执行以下操作： 
+若要**为 SQL 服务器配置 Azure AD 身份验证[，请执行以下操作：](/sql-database/sql-database-aad-authentication-configure)**
 
 1.  在 Azure 门户的左侧导航栏中选择“SQL 服务器”。 
 2.  单击要启用 Azure AD 身份验证的 SQL 服务器。
@@ -77,7 +77,7 @@ SQL DB 需要唯一的 AAD 显示名称。 因此，AAD 帐户（如用户、组
 1. 启动 SQL Server Management Studio。
 2. 在“连接到服务器”对话框的“服务器名称”字段中，输入 SQL 服务器名称。  
 3. 在“身份验证”字段中，选择“Active Directory - 通用且具有 MFA 支持”。  
-4. 在“用户名”字段中，输入已设为服务器管理员的 Azure AD 帐户的名称，例如 helen@woodgroveonline.com 
+4. 在“用户名”字段中，输入已设为服务器管理员的 Azure AD 帐户的名称，例如  helen@woodgroveonline.com
 5. 单击“选项”  。
 6. 在“连接到数据库”字段中，输入要配置的非系统数据库的名称。 
 7. 单击“连接”  。 完成登录过程。

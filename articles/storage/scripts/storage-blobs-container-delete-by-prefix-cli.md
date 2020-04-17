@@ -17,11 +17,11 @@ origin.date: 06/22/2017
 ms.date: 02/25/2019
 ms.author: v-jay
 ms.openlocfilehash: ee6ccd09d155b877b84fce4b46f075f747d7ce3c
-ms.sourcegitcommit: 0fd74557936098811166d0e9148e66b350e5b5fa
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56665657"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63823272"
 ---
 # <a name="delete-containers-based-on-container-name-prefix"></a>根据容器名称前缀删除容器
 
@@ -72,7 +72,7 @@ az group delete --name myResourceGroup
 
 此脚本使用以下命令根据容器名称前缀删除容器。 表中的每一项均链接到命令特定的文档。
 
-| 命令 | 注释 |
+| Command | 说明 |
 |---|---|
 | [az group create](https://docs.azure.cn/cli/group) | 创建用于存储所有资源的资源组。 |
 | [az storage account create](https://docs.azure.cn/cli/storage/account) | 在指定资源组中创建 Azure 存储帐户。 |

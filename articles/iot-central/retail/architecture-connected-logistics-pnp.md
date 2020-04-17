@@ -9,10 +9,10 @@ ms.topic: overview
 origin.date: 10/20/2019
 ms.date: 12/16/2019
 ms.openlocfilehash: 78f1a662a705fae94792213684defaf22b47df57
-ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80343434"
 ---
 # <a name="architecture-of-iot-central-connected-logistics-application-template"></a>IoT Central 互联物流应用程序模板的体系结构

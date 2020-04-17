@@ -13,10 +13,10 @@ ms.date: 03/26/2020
 ms.author: v-lingwu
 zone_pivot_groups: programming-languages-set-one
 ms.openlocfilehash: d875a1fd276a863f8d6aed77b2257afa4e038c81
-ms.sourcegitcommit: 303a16c7117b6f3495ef0493b4ae8ccb67d7dbba
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80343026"
 ---
 # <a name="quickstart-look-up-words-with-bilingual-dictionary"></a>快速入门：使用双语字典查找字词

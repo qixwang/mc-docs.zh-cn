@@ -16,15 +16,15 @@ ms.date: 02/24/2020
 ms.author: v-yeche
 ms.custom: mvc
 ms.openlocfilehash: 6a21396005d2b4b2c440461d75a7945f3121ebf1
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77540513"
 ---
 # <a name="open-an-application-port-in-the-azure-load-balancer"></a>打开 Azure 负载均衡器中的应用程序端口
 
-正在 Azure 中运行的 Service Fabric 应用程序位于 Azure 负载均衡器后。 此示例脚本将打开 Azure 负载均衡器中的端口，以便 Service Fabric 应用程序可与外部客户端通信。 根据需要自定义参数。 如果群集在某个网络安全组中，则还要[添加入站网络安全组规则](service-fabric-powershell-add-nsg-rule.md)来允许入站流量。
+正在 Azure 中运行的 Service Fabric 应用程序位于 Azure 负载均衡器后。 此示例脚本将打开 Azure 负载均衡器中的端口，以便 Service Fabric 应用程序可与外部客户端通信。 根据需要自定义参数。 如果群集位于网络安全组中，请同时[添加入站网络安全组规则](service-fabric-powershell-add-nsg-rule.md)，以允许入站通信流流入。
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -62,9 +62,9 @@ $slb | Set-AzLoadBalancer
 
 ## <a name="script-explanation"></a>脚本说明
 
-此脚本使用以下命令。 表中的每条命令链接到特定于命令的文档。
+此脚本使用以下命令。 表中的每条命令均链接到特定于命令的文档。
 
-| 命令 | 注释 |
+| Command | 说明 |
 |---|---|
 | [Get-AzResource](https://docs.microsoft.com/powershell/module/az.resources/get-azresource) | 获取 Azure 资源。  |
 | [Get-AzLoadBalancer](https://docs.microsoft.com/powershell/module/az.network/get-azloadbalancer) | 获取 Azure 负载均衡器。 |

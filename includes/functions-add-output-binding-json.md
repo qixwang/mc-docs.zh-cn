@@ -5,17 +5,17 @@ ms.topic: include
 ms.date: 03/02/2020
 ms.author: v-junlch
 ms.openlocfilehash: aab4834eb4439775168e25ab896be04da8c44a3e
-ms.sourcegitcommit: 1ac138a9e7dc7834b5c0b62a133ca5ce2ea80054
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78266060"
 ---
 直接在 function.json 文件中定义绑定属性。 根据绑定类型，可能还需要其他属性。 [队列输出配置](../articles/azure-functions/functions-bindings-storage-queue-output.md#configuration)描述 Azure 存储队列绑定所需的字段。 扩展可以轻松地将绑定添加到 function.json 文件。 
 
 要创建绑定，请右键单击（在 macOS 系统上，请按住 Ctrl 并单击）HttpTrigger 文件夹中的 `function.json` 文件，并选择“添加绑定...”  。请按照提示为新绑定定义以下绑定属性：
 
-| Prompt | Value | 说明 |
+| Prompt | 值 | 说明 |
 | -------- | ----- | ----------- |
 | **选择绑定方向** | `out` | 该绑定是输出绑定。 |
 | **选择具有方向的绑定...** | `Azure Queue Storage` | 该绑定是 Azure 存储队列绑定。 |

@@ -6,10 +6,10 @@ origin.date: 03/12/2020
 ms.date: 03/16/2020
 ms.author: v-tawe
 ms.openlocfilehash: b96b31d474380af404840715330a113fa1157aa2
-ms.sourcegitcommit: b2f2bb08ab1b5ccb3c596d84b3b6ddca5bba3903
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80151597"
 ---
 ## <a name="prerequisites"></a>先决条件
@@ -285,7 +285,7 @@ namespace BatchClient
 现在，可以使用语音服务构建应用并测试语音识别。
 
 1. “编译代码”- 在 Visual Studio 菜单栏中，选择“生成” > “生成解决方案”    。
-2. **启动应用** - 在菜单栏中，选择“调试” > “开始调试”，或按 F5    。
+2. **启动应用** - 在菜单栏中，选择“调试” > “开始调试”，或按 F5   ****。
 3. **开始识别** - 它将提示你说英语短语。 语音将发送到语音服务，转录为文本，并在控制台中呈现。
 
 ## <a name="next-steps"></a>后续步骤

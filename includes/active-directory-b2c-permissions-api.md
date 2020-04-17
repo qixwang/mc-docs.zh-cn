@@ -7,13 +7,13 @@ origin.date: 10/16/2019
 ms.date: 11/25/2019
 ms.author: v-junlch
 ms.openlocfilehash: 6edefc477e2f7768d5351da773b691ad06075179
-ms.sourcegitcommit: e74e8aabc1cbd8a43e462f88d07b041e9c4f31eb
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74461611"
 ---
-#### <a name="applicationstabapplications"></a>[应用程序](#tab/applications/)
+#### <a name="applications"></a>[应用程序](#tab/applications/)
 
 1. 选择“应用程序”  ，然后选择应该有权访问 API 的 Web 应用程序。 例如，“webapp1”  。
 1. 选择“API 访问”，然后选择“添加”   。

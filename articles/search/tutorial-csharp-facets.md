@@ -10,10 +10,10 @@ ms.topic: tutorial
 origin.date: 02/10/2020
 ms.date: 03/02/2020
 ms.openlocfilehash: 346176535106e1abdd32ba327c3b2d3cda0ea24e
-ms.sourcegitcommit: 094c057878de233180ff3b3a3e3c19bc11c81776
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77501457"
 ---
 # <a name="c-tutorial-use-facets-to-aid-navigation---azure-cognitive-search"></a>C# 教程：使用分面辅助导航 - Azure 认知搜索
@@ -22,12 +22,12 @@ ms.locfileid: "77501457"
 
 本教程是在 [C# 教程：搜索结果分页 - Azure 认知搜索](tutorial-csharp-paging.md)教程中创建的分页项目的基础上编写的。
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 > [!div class="checklist"]
 > * 将模型属性设置为 _IsFacetable_
 > * 将分面导航添加到应用
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 要完成本教程，需要：
 

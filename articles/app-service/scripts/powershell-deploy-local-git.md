@@ -9,10 +9,10 @@ ms.date: 01/13/2020
 ms.author: v-tawe
 ms.custom: mvc
 ms.openlocfilehash: 5a6e485f12f0361d9f8edb82fdbc01aa4a04624b
-ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75600266"
 ---
 # <a name="create-a-web-app-and-deploy-code-from-a-local-git-repository"></a>从本地 Git 存储库创建 Web 应用并部署代码
@@ -50,7 +50,7 @@ Remove-AzResourceGroup -Name $webappname -Force
 
 此脚本使用以下命令。 表中的每条命令均链接到特定于命令的文档。
 
-| 命令 | 注释 |
+| Command | 说明 |
 |---|---|
 | [New-AzWebApp](https://docs.microsoft.com/powershell/module/az.websites/new-azwebapp) | 使用所需的资源组和应用服务组创建 Web 应用。 如果当前目录包含 Git 存储库，则还要添加 `azure` 远程控制。 |
 

@@ -9,15 +9,15 @@ origin.date: 09/20/2017
 ms.date: 07/10/2019
 ms.author: v-lingwu
 ms.openlocfilehash: 550acf217f13224a604f4e733d7133a5260ea594
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78850422"
 ---
 # <a name="use-azure-application-insights-to-understand-how-customers-are-using-your-application"></a>使用 Azure Application Insights 了解客户对应用程序的使用情况
 
-Azure Application Insights 收集使用情况信息，帮助了解用户与应用程序的交互情况。  本教程详细介绍可用于分析此信息的不同资源。  可以了解如何执行以下操作：
+Azure Application Insights 收集使用情况信息，帮助了解用户与应用程序的交互情况。  本教程详细介绍可用于分析此信息的不同资源。  将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 分析有关访问应用程序的用户的详细信息
@@ -29,7 +29,7 @@ Azure Application Insights 收集使用情况信息，帮助了解用户与应�
 > * 检查用户如何浏览应用程序
 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 完成本教程：
 

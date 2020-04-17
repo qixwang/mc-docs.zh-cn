@@ -11,10 +11,10 @@ ms.date: 04/06/2020
 ms.author: v-jay
 ms.localizationpriority: high
 ms.openlocfilehash: 3f3123170a0e90bfb5e6375da8f9473c06b1ead1
-ms.sourcegitcommit: 5fb45da006859215edc8211481f13174aa43dbeb
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80634477"
 ---
 ::: zone target="docs"
@@ -35,7 +35,7 @@ ms.locfileid: "80634477"
 
 本教程介绍如何从主机复制数据，然后生成校验和来验证数据完整性。
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 将数据复制到 Data Box 磁盘
@@ -48,7 +48,7 @@ ms.locfileid: "80634477"
 - 磁盘已解锁，并且已连接到客户端计算机。
 - 用来将数据复制到磁盘的客户端计算机必须运行[受支持的操作系统](data-box-disk-system-requirements.md#supported-operating-systems-for-clients)。
 - 请确保数据的预期存储类型与[支持的存储类型](data-box-disk-system-requirements.md#supported-storage-types-for-upload)匹配。
-- 查看[“Azure 对象大小限制”中的“托管磁盘限制”](data-box-disk-limits.md#azure-object-size-limits)。
+- 查看 [Azure 对象大小限制中的托管磁盘限制](data-box-disk-limits.md#azure-object-size-limits)。
 
 
 ## <a name="copy-data-to-disks"></a>将数据复制到磁盘
@@ -62,39 +62,39 @@ ms.locfileid: "80634477"
    > [!IMPORTANT]
    >  如果已在创建订单的过程中将托管磁盘指定为存储目标之一，那么以下部分就是适用的。
 
-- 在一个资源组的所有预先创建的文件夹和所有 Data Box Disk 中，只能包含一个具有给定名称的托管磁盘。 这意味着，上传到预先创建的文件夹的 VHD 应具有唯一的名称。 确保给定的名称与资源组中现有的托管磁盘不匹配。 如果有多个 VHD 同名，只会将一个 VHD 转换为使用该名称的托管磁盘。 其他 VHD 会作为页 Blob 上传到临时存储帐户中。
-- 始终将 VHD 复制到某个预先创建的文件夹中。 如果将 VHD 复制到这些文件夹以外或者复制到你自己创建的文件夹中，则 VHD 将作为页 Blob 而不是托管磁盘上传到 Azure 存储帐户中。
+- 在所有预先创建的文件夹和所有 Data Box Disk 中，一个资源组只能包含一个具有给定名称的托管磁盘。 这意味着，上传到预先创建的文件夹的 VHD 应具有唯一的名称。 确保给定的名称与资源组中现有的托管磁盘不匹配。 如果 VHD 具有相同的名称，则只有一个 VHD 将转换为具有该名称的托管磁盘。 其他 VHD 作为页 blob 上传到临时存储帐户。
+- 始终将 VHD 复制到某个预先创建的文件夹。 如果将 VHD 复制到这些文件夹以外或者复制到你自己创建的文件夹中，则 VHD 作为页 Blob 而不是托管磁盘上传到 Azure 存储帐户中。
 - 只能上传固定的 VHD 来创建托管磁盘。 不支持动态 VHD、差异 VHD 或 VHDX 文件。
 
 
 执行以下步骤，连接到计算机并将其上的数据复制到 Data Box 磁盘。
 
-1. 查看已解锁的驱动器的内容。 驱动器中预先创建的文件夹和子文件夹列表根据下单购买 Data Box Disk 时选择的选项而有所不同。
+1. 查看已解锁的驱动器的内容。 根据放置 Data Box Disk 顺序时选择的选项，驱动器中预先创建的文件夹和子文件夹的列表会有所不同。
 
-    |选定的存储目标  |存储帐户类型|临时存储帐户类型 |文件夹和子文件夹  |
+    |所选的存储目标  |存储帐户类型|临时存储帐户类型 |文件夹和子文件夹  |
     |---------|---------|---------|------------------|
-    |存储帐户     |GPv1 或 GPv2                 | 不可用 | BlockBlob <br> PageBlob <br> AzureFile        |
-    |存储帐户     |Blob 存储帐户         | 不可用 | BlockBlob        |
-    |托管磁盘     |不可用 | GPv1 或 GPv2         | ManagedDisk<ul> <li>PremiumSSD</li><li>StandardSSD</li><li>StandardHDD</li></ul>        |
+    |存储帐户     |GPv1 或 GPv2                 | NA | BlockBlob <br> PageBlob <br> AzureFile        |
+    |存储帐户     |Blob 存储帐户         | NA | BlockBlob        |
+    |托管磁盘     |NA | GPv1 或 GPv2         | ManagedDisk<ul> <li>PremiumSSD</li><li>StandardSSD</li><li>StandardHDD</li></ul>        |
     |存储帐户 <br> 托管磁盘     |GPv1 或 GPv2 | GPv1 或 GPv2         |BlockBlob <br> PageBlob <br> AzureFile <br> ManagedDisk<ul> <li> PremiumSSD </li><li>StandardSSD</li><li>StandardHDD</li></ul>         |
     |存储帐户 <br> 托管磁盘    |Blob 存储帐户 | GPv1 或 GPv2         |BlockBlob <br> ManagedDisk<ul> <li>PremiumSSD</li><li>StandardSSD</li><li>StandardHDD</li></ul>         |
 
-    订单的示例屏幕截图，其中指定了 GPv2 存储帐户，如下所示：
+    下面显示了指定 GPv2 存储帐户的订单的示例屏幕截图：
 
     ![磁盘驱动器的内容](media/data-box-disk-deploy-copy-data/data-box-disk-content.png)
  
-2. 将需要作为块 Blob 导入的数据复制到 *BlockBlob* 文件夹中。 同理，将 VHD/VHDX 等数据复制到 *PageBlob* 或 *AzureFile* 文件夹中。
+2. 将需要作为块 Blob 导入的数据复制到 BlockBlob 文件夹中  。 同样，将 VHD/VHDX 等数据复制到 PageBlob 文件夹并将数据复制到 AzureFile 文件夹   。
 
     在 Azure 存储帐户中，为 BlockBlob 和 PageBlob 文件夹下的每个子文件夹创建一个容器。 BlockBlob 和 PageBlob 文件夹下的所有文件将复制到 Azure 存储帐户下的默认容器 `$root` 中。 `$root` 容器中的所有文件始终作为块 Blob 上传。
 
-   将文件复制到 *AzureFile* 文件夹中的某个文件夹内。 在 *AzureFile* 文件夹中的某个子文件夹内创建文件共享。 直接复制到 *AzureFile* 文件夹的文件会出错，将作为块 Blob 上传。
+   将文件复制到“AzureFile”文件夹中的文件夹  。 AzureFile 文件夹中的子文件夹创建文件共享  。 直接复制到 AzureFile 文件夹的文件都会失败，会作为块 Blob 上传  。
 
     如果根目录中存在文件和文件夹，则必须先将它们移到另一个文件夹，然后开始复制数据。
 
     > [!IMPORTANT]
-    > 所有容器、Blob 和文件名应符合 [Azure 命名约定](data-box-disk-limits.md#azure-block-blob-page-blob-and-file-naming-conventions)。 如果不遵循这些规则，则无法将数据上传到 Azure。
+    > 所有容器、Blob 和文件名都应符合 [Azure 命名约定](data-box-disk-limits.md#azure-block-blob-page-blob-and-file-naming-conventions)。 如果不遵循这些规则，则无法将数据上传到 Azure。
 
-3. 复制文件时，请确保块 Blob 的文件不超过大约 4.7 TiB，页 Blob 的文件不超过大约 8 TiB，Azure 文件的文件不超过大约 1 TiB。 
+3. 复制文件时，确保块 Blob 的文件不超过大约 4.7 TiB，页 Blob 的文件不超过大约 8 TiB，Azure 文件不超过大约 1 TiB。 
 4. 可以使用文件资源管理器中的拖放操作复制数据。 也可以使用与 SMB 兼容的任何文件复制工具（例如 Robocopy）复制数据。 可以使用以下 Robocopy 命令启动多个复制作业：
 
     `Robocopy <source> <destination>  * /MT:64 /E /R:1 /W:1 /NFL /NDL /FFT /Log:c:\RobocopyLog.txt` 
@@ -103,7 +103,7 @@ ms.locfileid: "80634477"
     
     |参数/选项  |说明 |
     |--------------------|------------|
-    |Source            | 指定源目录的路径。        |
+    |源            | 指定源目录的路径。        |
     |目标       | 指定目标目录的路径。        |
     |/E                  | 复制包括空目录的子目录。 |
     |/MT[:N]             | 使用 N 个线程创建多线程副本，其中 N 是介于 1 和 128 之间的整数。 <br>N 的默认值为 8。        |
@@ -236,7 +236,7 @@ ms.locfileid: "80634477"
 
      ![拆分复制数据](media/data-box-disk-deploy-copy-data/split-copy-6.png)
  
-7. 打开“命令提示”窗口。 
+7. 打开命令提示符窗口。 
 
 8. 运行 `DataBoxDiskSplitCopy.exe`。 类型
 
@@ -311,13 +311,13 @@ ms.locfileid: "80634477"
 
 执行以下步骤，连接到计算机并将其上的数据复制到 Data Box Disk。
 
-1. 查看已解锁的驱动器的内容。 驱动器中预先创建的文件夹和子文件夹列表根据下单购买 Data Box Disk 时选择的选项而有所不同。
+1. 查看已解锁的驱动器的内容。 根据放置 Data Box Disk 顺序时选择的选项，驱动器中预先创建的文件夹和子文件夹的列表会有所不同。
 2. 将数据复制到与适当数据格式对应的文件夹中。 例如，将非结构化数据复制到 BlockBlob  文件夹，将 VHD 或 VHDX 数据复制到 PageBlob  文件夹，并将文件复制到 AzureFile  文件夹。 如果数据格式与相应的文件夹（存储类型）不匹配，则在后续步骤中，数据将无法上传到 Azure。
 
     - 请确保所有容器、blob 和文件都符合 [Azure 命名约定](data-box-disk-limits.md#azure-block-blob-page-blob-and-file-naming-conventions)和 [Azure 对象大小限制](data-box-disk-limits.md#azure-object-size-limits)。 如果不遵循这些规则或限制，则无法将数据上传到 Azure。     
     - 如果你的订单将托管磁盘作为存储目标之一，请参阅[托管磁盘](data-box-disk-limits.md#managed-disk-naming-conventions)的命名约定。
     - 在 Azure 存储帐户中，为 BlockBlob 和 PageBlob 文件夹下的每个子文件夹创建一个容器。 BlockBlob  和 PageBlob  文件夹下的所有文件将复制到 Azure 存储帐户下的默认容器 $root 中。 $root 容器中的所有文件将始终作为块 blob 上传。
-    - 在 AzureFile  文件夹内创建子文件夹。 此子文件夹将映射到云中的文件共享。 将文件复制到子文件夹。 直接复制到 *AzureFile* 文件夹的文件会出错，将作为块 Blob 上传。
+    - 在 AzureFile  文件夹内创建子文件夹。 此子文件夹将映射到云中的文件共享。 将文件复制到子文件夹。 直接复制到 AzureFile 文件夹的文件都会失败，会作为块 Blob 上传  。
     - 如果根目录中存在文件和文件夹，则必须先将它们移到另一个文件夹，然后开始复制数据。
 
 3. 使用文件资源管理器或任何与 SMB 兼容的文件复制工具（如 Robocopy）通过拖放来复制数据。 可以使用以下命令启动多个复制作业：

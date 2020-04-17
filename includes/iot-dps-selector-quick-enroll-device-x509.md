@@ -10,10 +10,10 @@ ms.topic: include
 ms.service: iot-dps
 ms.custom: include file
 ms.openlocfilehash: e1e5a24bd80b20a33897387fe61af3298b301d48
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78155419"
 ---
 > [!div class="op_single_selector"]

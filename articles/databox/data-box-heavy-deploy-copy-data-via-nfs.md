@@ -10,17 +10,17 @@ origin.date: 07/03/2019
 ms.date: 07/22/2019
 ms.author: v-jay
 ms.openlocfilehash: b185921b761ba6d877c31e3777be459f4833aacd
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79293375"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-heavy-via-nfs"></a>教程：通过 NFS 将数据复制到 Azure Data Box Heavy
 
 本教程介绍如何使用本地 Web UI 从主机连接到 Azure Data Box Heavy 并将数据复制到其中。
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 先决条件
@@ -41,8 +41,8 @@ ms.locfileid: "79293375"
 
 根据选择的存储帐户，Data Box Heavy 将会：
 - 为每个关联的 GPv1 和 GPv2 存储帐户最多创建三个共享。
-- 一个共享用于高级存储。
-- 为 Blob 存储帐户创建一个共享。
+- 用于高级存储的一个共享。
+- 用于 Blob 存储帐户的一个共享。
 
 这些共享是在设备的两个节点上创建的。
 
@@ -68,7 +68,7 @@ ms.locfileid: "79293375"
 
     ![配置 NFS 客户端访问 1](media/data-box-deploy-copy-data/nfs-client-access.png)
 
-2. 提供 NFS 客户端的 IP 地址，然后单击“添加”。  可以重复此步骤为多个 NFS 客户端配置访问。 单击 **“确定”** 。
+2. 提供 NFS 客户端的 IP 地址，然后单击“添加”。  可以重复此步骤为多个 NFS 客户端配置访问。 单击“确定”。 
 
     ![配置 NFS 客户端访问 2](media/data-box-deploy-copy-data/nfs-client-access2.png)
 
@@ -82,7 +82,7 @@ ms.locfileid: "79293375"
 
     `sudo mount -t nfs 10.161.23.130:/Mystoracct_Blob /home/databoxheavyubuntuhost/databoxheavy`
     
-    对于 Mac 客户端，需要添加其他选项，如下所示： 
+    对于 Mac 客户端，需要添加一个附加选项，如下所示： 
     
     `sudo mount -t nfs -o sec=sys,resvport 10.161.23.130:/Mystoracct_Blob /home/databoxheavyubuntuhost/databoxheavy`
 
@@ -143,7 +143,7 @@ ms.locfileid: "79293375"
      我们建议从 16 个并行副本开始，并根据可用的资源增加线程数。
 
 > [!IMPORTANT]
-> 不支持以下 Linux 文件类型：符号链接、字符文件、块文件、套接字、管道。 在执行“准备交付”  步骤时，这些文件类型会导致故障。
+> 不支持以下 Linux 文件类型：符号链接、字符文件、块文件、套接字和管道。 在**准备交付**步骤期间，这些文件类型将导致失败。
 
 打开目标文件夹，查看并验证复制的文件。 如果复制过程中遇到任何错误，请下载用于故障排除的错误文件。 有关详细信息，请参阅[查看将数据复制到 Data Box Heavy 期间生成的错误日志](data-box-logs.md#view-error-log-during-data-copy)。 有关数据复制期间的错误详细列表，请参阅[排查 Data Box Heavy 问题](data-box-troubleshoot.md)。
 

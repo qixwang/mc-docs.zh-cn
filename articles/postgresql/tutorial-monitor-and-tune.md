@@ -8,10 +8,10 @@ ms.topic: tutorial
 origin.date: 5/6/2019
 ms.date: 03/02/2020
 ms.openlocfilehash: c27fda4de77d24da049a0b814579e25ea61d39b5
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78155334"
 ---
 # <a name="tutorial-monitor-and-tune-azure-database-for-postgresql---single-server"></a>教程：监视和优化 Azure Database for PostgreSQL（单一服务器）
@@ -24,7 +24,7 @@ Azure Database for PostgreSQL 提供有助于了解和改进服务器性能的�
 > * 分析数据库以获取性能建议
 > * 应用性能建议
 
-## <a name="before-you-begin"></a>准备阶段
+## <a name="before-you-begin"></a>开始之前
 需要一个使用 PostgreSQL 版本 9.6 或 10 的 Azure Database for PostgreSQL 服务器。 可以按照[创建教程](tutorial-design-database-using-azure-portal.md)中的步骤创建服务器。
 
 > [!IMPORTANT]

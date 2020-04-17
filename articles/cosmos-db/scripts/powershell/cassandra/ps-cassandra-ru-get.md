@@ -9,10 +9,10 @@ origin.date: 07/03/2019
 ms.date: 01/20/2020
 ms.author: v-yeche
 ms.openlocfilehash: 3362956104db932d128f4e18750694b73953c99e
-ms.sourcegitcommit: 304861faf39689348962127b8b56db8082ece2ef
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "76270102"
 ---
 # <a name="get-throughput-rus-for-a-keyspace-or-table-for-azure-cosmos-db---cassandra-api"></a>获取 Azure Cosmos DB 的密钥空间或表的吞吐量（RU/秒）- Cassandra API
@@ -59,7 +59,7 @@ Remove-AzResourceGroup -ResourceGroupName "myResourceGroup"
 
 此脚本使用以下命令。 表中的每条命令均链接到特定于命令的文档。
 
-| 命令 | 注释 |
+| Command | 说明 |
 |---|---|
 |**Azure 资源**| |
 | [New-AzResource](https://docs.microsoft.com/powershell/module/az.resources/new-azresource) | 创建资源。 |

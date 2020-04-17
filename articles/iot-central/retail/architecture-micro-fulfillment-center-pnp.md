@@ -10,10 +10,10 @@ ms.subservice: iot-central-retail
 services: iot-central
 manager: eliotgra
 ms.openlocfilehash: e7103263aa6d2496b8fa7bb25964e42d361b95c1
-ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80343897"
 ---
 # <a name="micro-fulfillment-center-architecture"></a>微履行中心体系结构

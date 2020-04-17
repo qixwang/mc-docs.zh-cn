@@ -1,6 +1,6 @@
 ---
 title: 使用 JavaScript 的 Azure 存储示例 | Microsoft 文档
-description: 查看、下载和运行 Azure 存储的示例代码和应用程序。 使用 JavaScript/Node.js 存储客户端库发现 Blob、队列、表和文件的入门示例。
+description: 查看、下载和运行 Azure 存储的示例代码和应用程序 使用 JavaScript/Node.js 存储客户端库发现 Blob、队列、表和文件的入门示例。
 author: WenJason
 ms.author: v-jay
 origin.date: 02/19/2020
@@ -9,10 +9,10 @@ ms.service: storage
 ms.subservice: common
 ms.topic: sample
 ms.openlocfilehash: 8063445d5bf578bdad7b62ce31e1940140cb8e37
-ms.sourcegitcommit: fbc7584f403417d3af7bd6bbbaed7c13a78c57b9
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78412246"
 ---
 # <a name="azure-storage-samples-using-v12-javascript-client-libraries"></a>使用 v12 JavaScript 客户端库的 Azure 存储示例
@@ -228,7 +228,7 @@ ms.locfileid: "78412246"
    :::column-end:::
 :::row-end:::
 
-### <a name="directory"></a>Directory
+### <a name="directory"></a>目录
 
 :::row:::
    :::column span="":::
@@ -324,7 +324,7 @@ ms.locfileid: "78412246"
    :::column-end:::
 :::row-end:::
 
-### <a name="message"></a>Message
+### <a name="message"></a>消息
 
 :::row:::
    :::column span="":::
@@ -415,7 +415,7 @@ ms.locfileid: "78412246"
 
 ## <a name="getting-started-guides"></a>入门指南
 
-有关 Azure 存储客户端库的安装和入门说明，请查看以下指南。
+如果要查找有关如何安装和开始使用 Azure 存储客户端库的说明，请查看以下指南。
 
 * [在 JavaScript 中开始使用 Azure Blob 服务](../blobs/storage-quickstart-blobs-nodejs.md)
 * [在 JavaScript 中开始使用 Azure 队列服务](../queues/storage-quickstart-queues-nodejs.md)
@@ -423,7 +423,7 @@ ms.locfileid: "78412246"
 
 ## <a name="next-steps"></a>后续步骤
 
-了解其他语言的示例：
+了解有关其他语言的示例的信息：
 
 * .NET:[使用 .NET 的 Azure 存储示例](storage-samples-dotnet.md)
 * Java:[使用 Java 的 Azure 存储示例](storage-samples-java.md)

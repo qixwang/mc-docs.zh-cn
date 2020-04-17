@@ -1,6 +1,6 @@
 ---
 title: Azure 快速入门 - 运行 Batch 作业 - .NET
-description: 使用 Batch .NET 客户端库快速运行 C# 应用程序中的 Azure Batch 示例作业和任务。
+description: 使用 Batch .NET 客户端库通过 C# 应用程序快速运行 Azure Batch 示例作业和任务。
 services: batch
 author: lingliw
 manager: digimobile
@@ -12,10 +12,10 @@ ms.date: 1/2/2020
 ms.author: v-lingwu
 ms.custom: mvc
 ms.openlocfilehash: f0b0b4e771ecfc8e4ae563b2f2fe973f6bec35fa
-ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75858537"
 ---
 # <a name="quickstart-run-your-first-azure-batch-job-with-the-net-api"></a>快速入门：使用 .NET API 运行第一个 Azure Batch 作业
@@ -209,7 +209,7 @@ try
 
 ### <a name="create-tasks"></a>创建任务
 
-此应用创建 [CloudTask](https://docs.microsoft.com//dotnet/api/microsoft.azure.batch.cloudtask) 对象的列表。 每个任务都使用 [CommandLine](https://docs.microsoft.com//dotnet/api/microsoft.azure.batch.cloudtask.commandline) 属性来处理输入 `ResourceFile` 对象。 在示例中，命令行运行 Windows `type` 命令来显示输入文件。 此命令是一个用于演示的简单示例。 使用 Batch 时，可以在命令行中指定应用或脚本。 Batch 提供多种将应用和脚本部署到计算节点的方式。
+此应用创建 [CloudTask](https://docs.microsoft.com//dotnet/api/microsoft.azure.batch.cloudtask) 对象的列表。 每个任务都使用 `ResourceFile`CommandLine[ 属性来处理输入 ](https://docs.microsoft.com//dotnet/api/microsoft.azure.batch.cloudtask.commandline) 对象。 在示例中，命令行运行 Windows `type` 命令来显示输入文件。 此命令是一个用于演示的简单示例。 使用 Batch 时，可以在命令行中指定应用或脚本。 Batch 提供多种将应用和脚本部署到计算节点的方式。
 
 然后，应用使用 [AddTask](https://docs.microsoft.com//dotnet/api/microsoft.azure.batch.joboperations.addtask) 方法将任务添加到作业，使任务按顺序在计算节点上运行。
 

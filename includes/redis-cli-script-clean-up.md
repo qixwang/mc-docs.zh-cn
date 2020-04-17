@@ -6,11 +6,11 @@ origin.date: 11/09/2018
 ms.date: 12/25/2018
 ms.author: v-junlch
 ms.openlocfilehash: 06f4dcd52168ebb8ec9a17d252836edb813daaae
-ms.sourcegitcommit: d2893ae6bdbb3784d243d5d3c49c25c9cfd99d9b
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2018
-ms.locfileid: "53784832"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63829299"
 ---
 ## <a name="clean-up-deployment"></a>清理部署 
 

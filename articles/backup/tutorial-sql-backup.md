@@ -7,10 +7,10 @@ origin.date: 06/18/2019
 ms.date: 11/14/2019
 ms.author: v-lingwu
 ms.openlocfilehash: bbeaf20c9491c02b46133958e1e2ca41140ca0b8
-ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75857756"
 ---
 # <a name="back-up-a-sql-server-database-in-an-azure-vm"></a>在 Azure VM 中备份 SQL Server 数据库
@@ -24,7 +24,7 @@ ms.locfileid: "75857756"
 > * 为数据库设置自动保护。
 > * 运行按需备份。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 在备份 SQL Server 数据库之前，请检查以下条件：
 

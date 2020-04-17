@@ -1,6 +1,6 @@
 ---
 title: 教程：语言理解机器人 Node.js v4
-description: 本教程使用 Node.js 生成集成了语言理解 (LUIS) 的聊天机器人。 此聊天机器人使用人力资源应用来快速实现一个机器人解决方案。 此机器人是使用 Bot Framework 4 和 Azure Web 应用机器人生成的。
+description: 在本教程中，将使用 Node.js 生成集成了语言理解 (LUIS) 的聊天机器人。 此聊天机器人使用人力资源应用来快速实现一个机器人解决方案。 此机器人是使用 Bot Framework 4 和 Azure Web 应用机器人生成的。
 author: lingliw
 ms.custom: seodec18
 ms.topic: tutorial
@@ -8,10 +8,10 @@ origin.date: 10/14/2019
 ms.date: 12/05/2019
 ms.author: v-lingwu
 ms.openlocfilehash: a2fd1fdb2c515735eb149874a907e48411b6350e
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78154549"
 ---
 # <a name="tutorial-use-a-web-app-bot-enabled-with-language-understanding-in-nodejs"></a>教程：通过 Node.js 使用启用了语言理解的 Web 应用机器人

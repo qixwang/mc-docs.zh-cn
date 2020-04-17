@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 03/02/2020
 ms.author: v-junlch
 ms.openlocfilehash: 0750f2eeb74b8ce73fc104cdcbfe39f394d7a121
-ms.sourcegitcommit: 1ac138a9e7dc7834b5c0b62a133ca5ce2ea80054
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78266193"
 ---
 ### <a name="query-the-storage-queue"></a>查询存储队列

@@ -12,10 +12,10 @@ origin.date: 10/10/2019
 ms.date: 01/13/2020
 ms.author: v-tawe
 ms.openlocfilehash: 0dec663c20664fc4ab0c052484b04950d9da03eb
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75631028"
 ---
 本指南介绍如何安装用于 [Unity](https://unity3d.com/) 的[语音 SDK](~/articles/cognitive-services/speech-service/speech-sdk.md)。

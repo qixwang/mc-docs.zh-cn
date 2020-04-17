@@ -9,16 +9,16 @@ origin.date: 10/05/2018
 ms.date: 07/10/2019
 ms.author: v-lingwu
 ms.openlocfilehash: fa1a1419e942723dec19ae168f9a481384c6b89a
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78850285"
 ---
 # <a name="respond-to-events-with-azure-monitor-alerts"></a>借助 Azure Monitor 警报对事件做出响应
 Azure Monitor 中的警报可以标识 Log Analytics 存储库中的重要信息。 它们由定期自动运行日志搜索的警报规则创建；如果日志搜索的结果符合特定条件，则创建一条警报记录，并可将此记录配置为执行自动响应。  本教程是[创建和共享 Log Analytics 数据的仪表板](tutorial-logs-dashboards.md)教程的延续。   
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 创建警报规则
@@ -52,7 +52,7 @@ Azure Monitor 中的警报可以标识 Log Analytics 存储库中的重要信息
    c. 验证“订阅”和“资源组”的默认值是否正确   。 如果否，请从下拉列表中选择正确的值。   
    d. 在“操作”部分指定操作的名称，例如“发送电子邮件”，然后在“操作类型”下的下拉列表中选择“电子邮件/短信/推送/语音”。    “电子邮件/短信/推送/语音”属性窗格会在右侧打开，其中包含更多的信息。   
    e. 在“电子邮件/短信/推送/语音”窗格中启用“电子邮件”，   并提供有效的可以接收邮件的电子邮件 SMTP 地址。  
-   f.  单击“确定”以保存你的更改。<br><br> 
+   f. 单击 **“确定”** 保存所做的更改。<br><br> 
 
     ![创建新的操作组](./media/tutorial-response/action-group-properties-01.png)
 

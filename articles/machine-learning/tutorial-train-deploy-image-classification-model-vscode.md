@@ -11,10 +11,10 @@ ms.author: v-yiso
 origin.date: 02/24/2020
 ms.date: 03/16/2020
 ms.openlocfilehash: 1db7b22e11ac544432f562ce4f6410cc9de3a29d
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79291804"
 ---
 # <a name="train-and-deploy-an-image-classification-tensorflow-model-using-the-azure-machine-learning-visual-studio-code-extension"></a>使用 Azure 机器学习 Visual Studio Code 扩展训练和部署图像分类 TensorFlow 模型
@@ -57,7 +57,7 @@ ms.locfileid: "79291804"
     > [!div class="mx-imgBorder"]
     > ![创建工作区](./media/tutorial-train-deploy-image-classification-model-vscode/create-workspace.png)
 
-1. 默认会生成一个包含创建日期和时间的名称。 在文本输入框中将名称更改为“TeamWorkspace”，然后按 **Enter**。
+1. 默认情况下，会生成包含创建日期和时间的名称。 在文本输入框中将名称更改为“TeamWorkspace”，然后按 **Enter**。
 1. 选择“新建资源组”  。 
 1. 将资源组命名为“TeamWorkspace-rg”，然后按 **Enter**。 
 1. 为工作区选择一个位置。 建议你在选择位置时，确保该位置最靠近你计划部署模型的位置。 例如，“美国西部 2”。
@@ -195,7 +195,7 @@ ms.locfileid: "79291804"
 
 1. 从计算目标选项列表中，选择“TeamWkspc-com”  计算目标。
 1. 然后，选择“MNIST-rc”  运行配置。
-1. 此时系统会向 Azure 发送请求，以便在工作区中所选的计算目标上运行试验。 此过程需耗时几分钟。 运行训练作业的时间长度受多种因素（如计算类型和训练数据大小）的影响。 若要跟踪试验进度，请右键单击当前的运行节点，然后选择“在 Azure 门户中查看运行”。 
+1. 此时系统会向 Azure 发送请求，以便在工作区中所选的计算目标上运行试验。 此过程需要几分钟。 运行训练作业的时间长度受多种因素（如计算类型和训练数据大小）的影响。 若要跟踪试验进度，请右键单击当前的运行节点，然后选择“在 Azure 门户中查看运行”。 
 1. 出现请求打开外部网站的对话框时，请选择“打开”。 
 
     > [!div class="mx-imgBorder"]
@@ -307,10 +307,10 @@ ms.locfileid: "79291804"
     Azure ML: Save and Continue
     ```
 
-此时系统会向 Azure 发送请求，以便部署 Web 服务。 此过程需耗时几分钟。 部署完成后，新服务会显示在“终结点”  节点下。
+此时系统会向 Azure 发送请求，以便部署 Web 服务。 此过程需要几分钟。 部署完成后，新服务会显示在“终结点”  节点下。
 
 ## <a name="next-steps"></a>后续步骤
 
-* 有关如何在 Visual Studio Code 外部使用 Azure 机器学习进行训练的演练，请参阅[教程：使用 Azure 机器学习训练模型](tutorial-train-models-with-aml.md)。
-* 有关如何在本地编辑、运行和调试代码的演练，请参阅 [Python hello-world 教程](https://code.visualstudio.com/docs/Python/Python-tutorial)。
+* 若要详细了解如何在 Visual Studio Code 外部使用 Azure 机器学习进行训练，请参阅[教程：使用 Azure 机器学习训练模型](tutorial-train-models-with-aml.md)。
+* 若要详细了解如何在本地编辑、运行和调试代码，请参阅 [Python hello-world 教程](https://code.visualstudio.com/docs/Python/Python-tutorial)。
 

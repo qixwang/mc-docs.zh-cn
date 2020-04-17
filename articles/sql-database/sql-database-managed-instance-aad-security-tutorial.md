@@ -11,10 +11,10 @@ ms.reviewer: vanto
 origin.date: 11/06/2019
 ms.date: 12/16/2019
 ms.openlocfilehash: d7452342dbd406a6ed9400214d19c6fa0089d0f8
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75336058"
 ---
 # <a name="tutorial-managed-instance-security-in-azure-sql-database-using-azure-ad-server-principals-logins"></a>教程：使用 Azure AD 服务器主体（登录名）确保 Azure SQL 数据库中托管实例的安全性
@@ -26,7 +26,7 @@ ms.locfileid: "75336058"
 - 将授权与基于角色的成员身份和权限配合使用
 - 启用安全功能
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > - 为托管实例创建 Azure Active Directory (AD) 服务器主体（登录名）
@@ -192,7 +192,7 @@ ms.locfileid: "75336058"
 
 1. 在 SQL Server Management Studio 中打开新的查询窗口。
 
-    此示例假设 Azure AD 中存在名为 _mygroup_ 的组。 运行以下命令：
+    此示例假设 Azure AD 中存在名为 _mygroup_ 的组。 执行以下命令：
 
     ```sql
     USE master
@@ -259,7 +259,7 @@ ms.locfileid: "75336058"
     属于 **mygroup** 的所有用户都可以访问 **MyMITestDB** 数据库。
 
     > [!IMPORTANT]
-    > 基于 Azure AD 服务器主体（登录名）创建**用户**时，请指定与**登录名**中的 login_name 相同的 user_name。
+    > 基于 Azure AD 服务器主体（登录名）创建 **USER** 时，请指定与 **LOGIN** 中的 login_name 相同的 user_name。
 
     有关详细信息，请参阅 [CREATE USER](https://docs.microsoft.com/sql/t-sql/statements/create-user-transact-sql?view=azuresqldb-mi-current)。
 

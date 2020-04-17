@@ -10,13 +10,13 @@ ms.date: 12/09/2019
 ms.author: v-tawe
 ms.custom: include file
 ms.openlocfilehash: 819c29c3465d5296d4cc9c82550ffb9b76215f4c
-ms.sourcegitcommit: cf73284534772acbe7a0b985a86a0202bfcc109e
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74884560"
 ---
-1. 登录到 [Azure 门户](https://portal.azure.cn)。
+1. 登录 [Azure 门户](https://portal.azure.cn)。
 
 1. 在左侧菜单上选择“所有服务”  ，然后在“移动”部分中选择“通知中心”。   选择服务名称旁边的星形图标，以便将服务添加到左侧菜单上的“收藏夹”部分。  在将“通知中心”  添加到“收藏夹”  之后，在左侧菜单上选择它。
 

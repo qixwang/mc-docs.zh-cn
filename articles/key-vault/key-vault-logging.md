@@ -12,10 +12,10 @@ wacn.date: 08/12/2019
 ms.date: 03/16/2020
 ms.author: v-tawe
 ms.openlocfilehash: 98f36640986cfd9d8a3738bb231d17e75b0c65bb
-ms.sourcegitcommit: 764b3d26aedce2de0e1948468a706fd3204a3d5e
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79543360"
 ---
 # <a name="azure-key-vault-logging"></a>Azure Key Vault 日志记录
@@ -39,9 +39,9 @@ ms.locfileid: "79543360"
 
 有关 Key Vault的概述信息，请参阅[什么是 Azure Key Vault？](key-vault-overview.md)。 有关 Key Vault 可用位置的信息，请参阅[定价页](https://www.azure.cn/pricing/details/key-vault/)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
-若要完成本教程，必须具备以下项目：
+要完成本教程，必须满足下列要求：
 
 * 正在使用的现有密钥保管库。  
 * Azure PowerShell，最低版本为 1.0.0。 要安装 Azure PowerShell 并将其与 Azure 订阅相关联，请参阅[如何安装和配置 Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview)。 如果已安装了 Azure PowerShell，但不知道版本，请在 Azure PowerShell 控制台中输入 `$PSVersionTable.PSVersion`。  
@@ -128,10 +128,10 @@ Set-AzDiagnosticSetting -ResourceId $kv.ResourceId -StorageAccountId $sa.Id -Ena
 
 * 所有已经过身份验证的 REST API 请求，包括由于访问权限、系统错误或错误请求而发生的失败请求。
 * 对 Key Vault 本身执行的操作，包括创建、删除、设置 Key Vault 访问策略，以及更新 Key Vault 属性（例如标记）。
-* 针对 Key Vault 中的密钥和机密执行的操作，包括：
+* 对 Key Vault 中的密钥和机密执行的操作，包括：
   * 创建、修改或删除这些密钥或机密。
-  * 签名、验证、加密、解密、包装和解包密钥、获取机密，以及列出密钥和机密（及其版本）。
-* 导致出现 401 响应的未经身份验证的请求。 示例包括不包含持有者令牌、格式不正确或已过期，或者包含无效令牌的请求。  
+  * 签名、验证、加密、解密、包装和解包密钥、获取机密、列出密钥和机密（及其版本）。
+* 导致出现 401 响应的未经身份验证的请求。 例如，请求不包含持有者令牌、格式不正确或已过期，或者包含无效的令牌。  
 
 ## <a name="access-your-logs"></a><a id="access"></a>访问日志
 
@@ -188,7 +188,7 @@ $blobs = Get-AzStorageBlob -Container $container -Context $sa.Context
 $blobs | Get-AzStorageBlobContent -Destination C:\Users\username\ContosoKeyVaultLogs'
 ```
 
-运行第二个命令时，blob 名称中的 / 分隔符会在目标文件夹下创建完整的文件夹结构  。 你将使用此结构下载 Blob 并将其存储为文件。
+运行第二个命令时，blob 名称中的  **分隔符会在目标文件夹下创建完整的文件夹结构/** 。 你将使用此结构下载 Blob 并将其存储为文件。
 
 若要选择性地下载 Blob，请使用通配符。 例如：
 
@@ -250,7 +250,7 @@ Get-AzKeyVault -VaultName 'contosokeyvault'`
 
 下表列出了字段的名称和描述：
 
-| 字段名称 | 说明 |
+| 字段名 | 说明 |
 | --- | --- |
 | **time** |日期和时间 (UTC)。 |
 | **resourceId** |Azure 资源管理器资源 ID。 对于密钥保管库日志而言，这始终是密钥保管库资源 ID。 |

@@ -11,10 +11,10 @@ ms.topic: conceptual
 origin.date: 03/03/2020
 ms.date: 04/06/2020
 ms.openlocfilehash: 1568226c62748a259d355dd78ee490657bb8b734
-ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80343598"
 ---
 # <a name="what-is-interactive-query-in-azure-hdinsight"></a>什么是 Azure HDInsight 中的交互式查询？
@@ -50,7 +50,7 @@ ms.locfileid: "80343598"
 
 若要查找 Java Database Connectivity (JDBC) 连接字符串：
 
-1. 在 Web 浏览器中，导航到 `https://CLUSTERNAME.azurehdinsight.cn/#/main/services/HIVE/summary`，其中 `CLUSTERNAME` 是群集的名称。
+1. 在 Web 浏览器中导航到 `https://CLUSTERNAME.azurehdinsight.cn/#/main/services/HIVE/summary`，其中的 `CLUSTERNAME` 是群集的名称。
 1. 若要复制 URL，请选择剪贴板图标：
 
    ![HDInsight Hadoop 交互式查询 LLAP JDBC](./media/apache-interactive-query-get-started/hdinsight-hadoop-use-interactive-hive-jdbc.png)

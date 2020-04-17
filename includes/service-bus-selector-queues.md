@@ -1,3 +1,11 @@
+---
+ms.openlocfilehash: 00e3d584af327ce36693666de0fe4500341ca74b
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63827134"
+---
 > [!div class="op_single_selector"]
 >- [NET](../articles/service-bus-messaging/service-bus-dotnet-get-started-with-queues.md)
 >- [Java](../articles/service-bus-messaging/service-bus-java-how-to-use-queues.md)

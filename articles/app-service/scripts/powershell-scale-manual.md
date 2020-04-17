@@ -10,10 +10,10 @@ ms.date: 03/30/2020
 ms.author: v-tawe
 ms.custom: mvc, seodec18
 ms.openlocfilehash: 9f3d42f42a4440209bcba13ce54f268d8b3f378c
-ms.sourcegitcommit: 44d3fe59952847e5394bbe6c05bd6f333bb56345
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80522096"
 ---
 # <a name="scale-a-web-app-manually-using-powershell"></a>使用 PowerShell 手动缩放 Web 应用
@@ -60,7 +60,7 @@ Remove-AzResourceGroup -Name myResourceGroup -Force
 
 此脚本使用以下命令。 表中的每条命令均链接到特定于命令的文档。
 
-| 命令 | 注释 |
+| Command | 说明 |
 |---|---|
 | [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) | 创建用于存储所有资源的资源组。 |
 | [New-AzAppServicePlan](https://docs.microsoft.com/powershell/module/az.websites/new-azappserviceplan) | 创建应用服务计划。 |

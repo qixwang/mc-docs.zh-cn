@@ -10,10 +10,10 @@ ms.author: jmartens
 origin.date: 11/04/2019
 ms.date: 03/16/2020
 ms.openlocfilehash: 0b2e2b8597a596b12b95635d519ae991bc04417a
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79292882"
 ---
 # <a name="what-is-azure-machine-learning"></a>什么是 Azure 机器学习？
@@ -117,7 +117,7 @@ Azure 机器学习可与 Azure 平台上的其他服务配合使用，还能与�
 
 Azure 存储帐户、计算目标和其他资源可在虚拟网络内安全地用于定型模型并执行推理。 有关详细信息，请参阅[虚拟网络中的安全试验和推理](how-to-enable-virtual-network.md)。
 
-## <a name="sku"></a>Basic 和 Enterprise Edition
+## <a name="basic--enterprise-editions"></a><a name="sku"></a>Basic 和 Enterprise Edition
 
 Azure 机器学习提供了两个版本，专为你的机器学习需求提供：
 + Basic（正式版）

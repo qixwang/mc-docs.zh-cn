@@ -11,10 +11,10 @@ ms.date: 01/20/2020
 ms.author: v-yiso
 ms.custom: seodec18
 ms.openlocfilehash: cedde40c9a7545b644446faf086d9d85ebd8fafb
-ms.sourcegitcommit: a890a9cca495d332c9f3f53ff3a5259fd5f0c275
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75859607"
 ---
 # <a name="choose-between-azure-messaging-services---event-grid-event-hubs-and-service-bus"></a>在 Azure 消息传递服务之间进行选择 - 事件网格、事件中心和服务总线
@@ -39,7 +39,7 @@ Azure 提供三种协助在整个解决方案中传递事件消息的服务。 �
 
 系列事件报告情况，并且可分析。 事件按时间排序并彼此相关。 使用者需要排序的一系列事件以分析发生的情况。
 
-### <a name="message"></a>Message
+### <a name="message"></a>消息
 
 消息是由将使用的服务生成或存储在其他位置的原始数据。 消息包含触发消息管道的数据。 消息发布者对于使用者如何处理消息有期望。 双方之间存在协定。 例如，发布者发送一条包含原始数据的消息，并期望使用者基于该数据创建文件且在工作完成后发送响应。
 
@@ -49,7 +49,7 @@ Azure 提供三种协助在整个解决方案中传递事件消息的服务。 �
 | ------- | ------- | ---- | ----------- |
 | 事件网格 | 反应编程 | 事件分发（离散） | 对状态更改做出响应 |
 | 事件中心 | 大数据管道 | 事件流式处理（系列） | 遥测数据和分布式数据流式处理 |
-| 服务总线 | 高价值企业消息传递 | Message | 订单处理和财务交易 |
+| 服务总线 | 高价值企业消息传递 | 消息 | 订单处理和财务交易 |
 
 ### <a name="event-grid"></a>事件网格
 

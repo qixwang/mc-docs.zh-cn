@@ -10,10 +10,10 @@ ms.date: 09/23/2019
 ms.author: v-lingwu
 ms.custom: mvc
 ms.openlocfilehash: a878e90e160e10118ee585a5cc455d38195086b7
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79292844"
 ---
 # <a name="back-up-a-virtual-machine-in-azure"></a>在 Azure 中备份虚拟机
@@ -24,7 +24,7 @@ ms.locfileid: "79292844"
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
-登录到 [Azure 门户](https://portal.azure.cn)。
+登录 [Azure 门户](https://portal.azure.cn)。
 
 ## <a name="select-a-vm-to-back-up"></a>选择要备份的 VM
 
@@ -38,7 +38,7 @@ ms.locfileid: "79292844"
 
 恢复服务保管库是一个逻辑容器，用于存储每个受保护资源（例如 Azure VM）的备份数据。 运行受保护资源的备份作业时，该作业会在恢复服务保管库中创建一个恢复点。 然后，可以使用其中一个恢复点将数据还原到给定的时间点。
 
-1. 选择“新建”并提供新保管库的名称，例如 *myRecoveryServicesVault*。 
+1. 选择“新建”并提供新保管库的名称，例如 **myRecoveryServicesVault**。 
 2. 选择“使用现有”（如果尚未选择），并从下拉菜单中选择 VM 的资源组。 
 
     ![在 Azure 门户中启用 VM 备份](./media/quick-backup-vm-portal/enable-backup.png)
@@ -79,7 +79,7 @@ VM 的“备份”窗口中显示了备份的状态，以及已完成的还原�
 
 3. 从下拉菜单中选择“删除备份数据”。 
 
-4. 在“键入备份项的名称”对话框中输入 VM 名称，例如 *myVM*。  选择“停止备份”  。
+4. 在“键入备份项的名称”对话框中输入 VM 名称，例如 **myVM**。  选择“停止备份”  。
 
     停止 VM 备份并删除恢复点之后，可以删除资源组。 如果使用了现有的 VM，你可能希望保留资源组和 VM。
 

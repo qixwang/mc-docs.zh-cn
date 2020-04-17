@@ -10,11 +10,11 @@ ms.date: 04/15/2019
 ms.author: v-yeche
 ms.custom: include file
 ms.openlocfilehash: 7a37f3aef99a1941048f8e67f69eadf14aa86df3
-ms.sourcegitcommit: 9f7a4bec190376815fa21167d90820b423da87e7
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59532868"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63825123"
 ---
 若要为资源组添加两个标记，请使用 [Set-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/set-azresourcegroup) 命令：
 

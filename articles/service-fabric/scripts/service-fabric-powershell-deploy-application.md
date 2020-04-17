@@ -16,15 +16,15 @@ ms.date: 02/24/2020
 ms.author: v-yeche
 ms.custom: mvc
 ms.openlocfilehash: a1aaf0f19640605634eccea7657de357a571be0c
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77540707"
 ---
 # <a name="deploy-an-application-to-a-service-fabric-cluster"></a>将应用程序部署到 Service Fabric 群集
 
-此示例脚本将应用程序包复制到群集映像存储，并在群集中注册了应用程序类型，同时还删除了不必要的应用程序包，并根据应用程序类型创建了应用程序实例。  如果目标应用程序类型的应用程序清单中定义了任何默认服务，则此时还会创建这些服务。 根据需要自定义参数。 
+此示例脚本将应用程序包复制到群集映像存储，并在群集中注册了应用程序类型，同时还删除了不必要的应用程序包，并根据应用程序类型创建了应用程序实例。  如果目标应用程序类型的应用程序清单中定义了任何默认服务，则此时还会创建那些服务。 根据需要自定义参数。 
 
 必要时，使用 [Service Fabric SDK](../service-fabric-get-started.md) 安装 Service Fabric PowerShell 模块。 
 
@@ -58,18 +58,18 @@ New-ServiceFabricApplication -ApplicationName fabric:/MyApplication -Application
 
 ## <a name="clean-up-deployment"></a>清理部署 
 
-运行脚本示例后，可以使用[删除应用程序](service-fabric-powershell-remove-application.md)中的脚本删除应用程序实例，注销应用程序类型，并从映像存储区中删除应用程序包。
+运行脚本示例后，可以使用[删除应用程序](service-fabric-powershell-remove-application.md)中的脚本删除应用程序实例，取消注册应用程序类型，并从映像存储中删除应用程序包。
 
 ## <a name="script-explanation"></a>脚本说明
 
 此脚本使用以下命令。 表中的每条命令均链接到特定于命令的文档。
 
-| 命令 | 注释 |
+| Command | 说明 |
 |---|---|
 |[Connect-ServiceFabricCluster](https://docs.microsoft.com/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps)| 与 Service Fabric 群集建立连接。 |
 |[Copy-ServiceFabricApplicationPackage](https://docs.microsoft.com/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) | 将应用程序包复制到群集映像存储。  |
 |[Register-ServiceFabricApplicationType](https://docs.microsoft.com/powershell/module/servicefabric/register-servicefabricapplicationtype?view=azureservicefabricps)| 在群集上注册应用程序类型和版本。 |
-|[New-ServiceFabricApplication](https://docs.microsoft.com/powershell/module/servicefabric/new-servicefabricapplication?view=azureservicefabricps)| 基于注册的应用程序类型创建应用程序。 |
+|[New-ServiceFabricApplication](https://docs.microsoft.com/powershell/module/servicefabric/new-servicefabricapplication?view=azureservicefabricps)| 从注册的应用程序类型创建应用程序。 |
 | [Remove-ServiceFabricApplicationPackage](https://docs.microsoft.com/powershell/module/servicefabric/remove-servicefabricapplicationpackage?view=azureservicefabricps) | 从映像存储区中删除 Service Fabric 应用程序包。|
 
 ## <a name="next-steps"></a>后续步骤

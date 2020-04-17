@@ -8,17 +8,17 @@ ms.date: 02/24/2020
 ms.author: v-yeche
 ms.custom: mvc, devcenter, seo-java-august2019, seo-java-september2019
 ms.openlocfilehash: 902571220c3875bf71becba65819e983cc3cd1c8
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77540166"
 ---
 # <a name="quickstart-deploy-a-java-spring-boot-app-on-azure-service-fabric"></a>快速入门：在 Azure Service Fabric 上部署 Java Spring Boot 应用
 
 在本快速入门中，你将在 Linux 或 MacOS 上使用熟悉的命令行工具将 Java Spring Boot 应用程序部署到 Azure Service Fabric。 Azure Service Fabric 是一款分布式系统平台，可用于部署和管理微服务和容器。 
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 #### <a name="linux"></a>[Linux](#tab/linux)
 

@@ -11,10 +11,10 @@ ms.topic: include
 ms.date: 11/05/2019
 ms.author: diberry
 ms.openlocfilehash: 6fd3b665862d5949c6a78f678ba44dc21b51de20
-ms.sourcegitcommit: 3d27913e9f896e34bd7511601fb428fc0381998b
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75857404"
 ---
 在“管理”部分（右上方菜单），“Azure 资源”页（左侧菜单）上复制“示例查询”URL，然后粘贴到新的浏览器选项卡中    。 

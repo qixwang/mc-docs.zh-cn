@@ -7,10 +7,10 @@ ms.topic: sample
 ms.date: 04/15/2019
 ms.author: hrasheed
 ms.openlocfilehash: 80f702665d298308c01edd51ce3f46eb1dba1721
-ms.sourcegitcommit: 8b9dff249212ca062ec0838bafa77df3bea22cc3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "65520847"
 ---
 # <a name="azure-hdinsight-java-samples"></a>Azure HDInsight：Java 示例
@@ -21,7 +21,7 @@ ms.locfileid: "65520847"
 > * [Python 示例](hdinsight-sdk-python-samples.md)
 <!-- * [Go Examples](hdinsight-sdk-dotnet-samples.md)-->
 
-本文提供：
+本文将提供：
 
 * 有关群集创建任务的示例链接。
 * 有关其他管理任务的参考内容链接。

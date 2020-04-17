@@ -10,10 +10,10 @@ metadata:
   ms.service: mysql
   ms.topic: landing-page
   ms.openlocfilehash: f6ea615a91fc7aeb7a71fbf3bb1df3b04f09c73b
-  ms.sourcegitcommit: 849418188e5c18491ed1a3925829064935d2015c
+  ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 09/26/2019
+  ms.lasthandoff: 04/17/2020
   ms.locfileid: "71307862"
 landingContent:
 - title: 关于 Azure Database for MySQL
@@ -136,5 +136,5 @@ landingContent:
       url: https://docs.microsoft.com/rest/api/mysql/
     - text: REST API 开发人员参考
       url: /cli/mysql
-    - text: Azure Resource Manager 模板
+    - text: Azure 资源管理器模板
       url: https://docs.microsoft.com/azure/templates/microsoft.dbformysql/allversions

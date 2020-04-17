@@ -10,10 +10,10 @@ ms.service: iot-central
 ms.subservice: iot-central-retail
 services: iot-central
 ms.openlocfilehash: 24b39aaa52c1ddf3fc14503bb0a4bc742c391a5f
-ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80343146"
 ---
 # <a name="building-retail-solutions-with-azure-iot-central"></a>使用 Azure IoT Central 生成零售解决方案

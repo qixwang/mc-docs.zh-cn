@@ -11,10 +11,10 @@ ms.topic: include
 ms.date: 07/26/2019
 ms.author: diberry
 ms.openlocfilehash: fde48274d1e19be48ce03e84e3e4fed9814bd65e
-ms.sourcegitcommit: cf73284534772acbe7a0b985a86a0202bfcc109e
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78155315"
 ---
 ## <a name="clean-up-resources"></a>清理资源

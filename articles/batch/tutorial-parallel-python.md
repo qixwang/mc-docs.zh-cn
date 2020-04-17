@@ -12,15 +12,15 @@ ms.date: 09/23/2019
 ms.author: v-lingwu
 ms.custom: mvc
 ms.openlocfilehash: 8aa6054f581c090a5011bc8770a9217cc26b6094
-ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77028591"
 ---
 # <a name="tutorial-run-a-parallel-workload-with-azure-batch-using-the-python-api"></a>教程：使用 Python API 通过 Azure Batch 运行并行工作负荷
 
-使用 Azure Batch 在 Azure 中高效运行大规模并行和高性能计算 (HPC) 批处理作业。 本教程通过一个 Python 示例演示了如何使用 Batch 运行并行工作负荷。 你可以学习常用的 Batch 应用程序工作流，以及如何以编程方式与 Batch 和存储资源交互。 你将学习如何执行以下操作：
+使用 Azure Batch 在 Azure 中高效运行大规模并行和高性能计算 (HPC) 批处理作业。 本教程通过一个 Python 示例演示了如何使用 Batch 运行并行工作负荷。 你可以学习常用的 Batch 应用程序工作流，以及如何以编程方式与 Batch 和存储资源交互。 学习如何：
 
 > [!div class="checklist"]
 > * 通过 Batch 和存储帐户进行身份验证
@@ -66,7 +66,7 @@ git clone https://github.com/Azure-Samples/batch-python-ffmpeg-tutorial.git
 pip install -r requirements.txt
 ```
 
-打开 `config.py`文件。 使用特定于帐户的值更新 Batch 帐户和存储帐户凭据字符串。 例如：
+打开 `config.py` 文件。 使用特定于帐户的值更新 Batch 帐户和存储帐户凭据字符串。 例如：
 
 
 ```Python
@@ -77,7 +77,7 @@ _STORAGE_ACCOUNT_NAME = 'mystorageaccount'
 _STORAGE_ACCOUNT_KEY = 'xxxxxxxxxxxxxxxxy4/xxxxxxxxxxxxxxxxfwpbIC5aAWA8wDu+AFXZB827Mt9lybZB1nUcQbQiUrkPtilK5BQ=='
 ```
 
-### <a name="run-the-app"></a>运行应用程序
+### <a name="run-the-app"></a>运行应用
 
 若要运行该脚本，请执行以下操作：
 
@@ -214,7 +214,7 @@ batch_service_client.job.add(job)
 
 ### <a name="create-tasks"></a>创建任务
 
-应用通过调用 `add_tasks` 在作业中创建任务。 这个定义的函数使用 [TaskAddParameter](https://docs.microsoft.com/python/api/azure-batch/azure.batch.models.taskaddparameter) 类创建任务对象的列表。 每个任务都运行 ffmpeg，使用 `command_line` 参数来处理输入 `resource_files` 对象。 ffmpeg 此前已在创建池时安装在每个节点上。 在这里，命令行运行 ffmpeg 将每个输入 MP4（视频）文件转换为 MP3（音频）文件。
+应用通过调用 `add_tasks` 在作业中创建任务。 这个定义的函数使用 [TaskAddParameter](https://docs.microsoft.com/python/api/azure-batch/azure.batch.models.taskaddparameter) 类创建任务对象的列表。 每个任务都运行 ffmpeg，使用 `resource_files` 参数来处理输入 `command_line` 对象。 ffmpeg 此前已在创建池时安装在每个节点上。 在这里，命令行运行 ffmpeg 将每个输入 MP4（视频）文件转换为 MP3（音频）文件。
 
 此示例在运行命令行后为 MP3 文件创建 [OutputFile](https://docs.microsoft.com/python/api/azure-batch/azure.batch.models.outputfile) 对象。 每个任务的输出文件（在此示例中为一个）都会使用任务的 `output_files` 属性上传到关联的存储帐户中的一个容器。
 

@@ -9,10 +9,10 @@ ms.service: iot-central
 services: iot-central
 manager: eliotgra
 ms.openlocfilehash: 464d1e957d307c1eb43c800ebdb134d9b90d207d
-ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80343627"
 ---
 # <a name="tutorial-build-a-power-bi-provider-dashboard"></a>教程：构建 Power BI 提供程序仪表板
@@ -29,7 +29,7 @@ ms.locfileid: "80343627"
 >[!div class="mx-imgBorder"] 
 >![提供程序鉴别分类仪表板](media/dashboard-architecture.png)
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 将数据从 Azure IoT Central 导出到 Azure 事件中心
@@ -77,7 +77,7 @@ ms.locfileid: "80343627"
 ## <a name="connect-your-logic-app-to-azure-event-hubs"></a>将逻辑应用连接到 Azure 事件中心
 若要将逻辑应用连接到 Azure 事件中心，可以按照这篇有关[使用 Azure 事件中心和 Azure 逻辑应用发送事件](/connectors/connectors-create-api-azure-event-hubs#add-event-hubs-action)的文档中的说明操作。 下面是一些建议的参数：
 
-|参数|Value|
+|参数|值|
 |---|---|
 |内容类型|application/json|
 |时间间隔|3|
@@ -141,7 +141,7 @@ ms.locfileid: "80343627"
 
 2. 检查 JSON 有效负载后，请返回到逻辑应用设计器并选择“+ 新建步骤”。  搜索并添加“初始化变量”作为下一步骤，然后输入以下参数： 
 
-    |参数|Value|
+    |参数|值|
     |---|---|
     |名称|接口名称|
     |类型|String|

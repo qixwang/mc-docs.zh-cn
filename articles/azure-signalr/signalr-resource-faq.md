@@ -8,10 +8,10 @@ origin.date: 11/13/2019
 ms.date: 03/09/2020
 ms.author: v-tawe
 ms.openlocfilehash: c4169dfcc4cbd242b6c760eda6cffcf5052de515
-ms.sourcegitcommit: 60e32ec1b1e62de6e84f7c6e43bb1400bd42c9cf
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/24/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77567191"
 ---
 # <a name="azure-signalr-service-faq"></a>Azure SignalR 服务常见问题解答
@@ -53,7 +53,7 @@ SignalR 服务将监视应用程序服务器的检测信号。
 
 ## <a name="why-does-my-custom-iuseridprovider-throw-exception-when-switching-from-aspnet-core-signalr--sdk-to-azure-signalr-service-sdk"></a>从 ASP.NET Core SignalR SDK 切换到 Azure SignalR 服务 SDK 时，自定义 `IUserIdProvider` 为何引发异常？
 
-调用 `IUserIdProvider` 时，ASP.NET Core SignalR SDK 与 Azure SignalR 服务 SDK 的 `HubConnectionContext context` 参数不相同。
+调用 `HubConnectionContext context` 时，ASP.NET Core SignalR SDK 与 Azure SignalR 服务 SDK 的 `IUserIdProvider` 参数不相同。
 
 在 ASP.NET Core SignalR 中，`HubConnectionContext context` 是包含所有属性有效值的物理客户端连接的上下文。
 
@@ -64,7 +64,7 @@ SignalR 服务将监视应用程序服务器的检测信号。
 
 ## <a name="can-i-configure-the-transports-available-in-signalr-service-as-configuring-it-on-server-side-with-aspnet-core-signalr-for-example-disable-websocket-transport"></a>是否可以像在服务器端使用 ASP.NET Core SignalR 配置传输一样，在 SignalR 服务中配置传输？ 例如，禁用 WebSocket 传输？
 
-否。
+不是。
 
 默认情况下，Azure SignalR 服务提供 ASP.NET Core SignalR 所支持的所有三种传输。 这些传输不可配置。 SignalR 服务将处理连接以及所有客户端连接的传输。
 

@@ -9,10 +9,10 @@ ms.date: 11/25/2019
 ms.author: v-tawe
 ms.custom: include file
 ms.openlocfilehash: effca932685dc223fb5808c5ea14a4fce10b7e5b
-ms.sourcegitcommit: a4b88888b83bf080752c3ebf370b8650731b01d1
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74179082"
 ---
 ## <a name="run-the-web-application"></a>运行 Web 应用程序

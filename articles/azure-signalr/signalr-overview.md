@@ -8,10 +8,10 @@ origin.date: 11/13/2019
 ms.date: 12/16/2019
 ms.author: v-tawe
 ms.openlocfilehash: 9638adc1c213b30b34eef08d05a49686b535f1b9
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75335723"
 ---
 # <a name="what-is-azure-signalr-service"></a>什么是 Azure SignalR 服务？
@@ -73,6 +73,6 @@ SignalR 服务允许服务器将消息发送到特定的连接、所有连接或
 
 可通过多种不同的方式对 Azure SignalR 服务编程，下面列出了一些示例：
 
-- [扩展 ASP.NET Core SignalR 应用](signalr-concept-scale-aspnet-core.md) - 将 Azure SignalR Service 与ASP.NET Core SignalR 应用程序集成，以扩展到成千上万的连接  。
-- [生成无服务器的实时应用](signalr-concept-azure-functions.md) - 使用 Azure Functions 与 Azure SignalR Service 的集成，以 JavaScript、C# 和 Java 等语言生成无服务器的实时应用  。
-- [通过 REST API 将消息从服务器发送到客户端](https://github.com/Azure/azure-signalr/blob/dev/docs/rest-api.md) - Azure SignalR Service 提供的 REST API 使应用程序能够以任何支持 REST 的编程语言向使用 SignalR Service 连接的客户端发送消息  。
+- **扩展 ASP.NET Core SignalR 应用[ - 将 Azure SignalR Service 与ASP.NET Core SignalR 应用程序集成，以扩展到成千上万的连接](signalr-concept-scale-aspnet-core.md)** 。
+- **生成无服务器的实时应用[ - 使用 Azure Functions 与 Azure SignalR Service 的集成，以 JavaScript、C# 和 Java 等语言生成无服务器的实时应用](signalr-concept-azure-functions.md)** 。
+- **通过 REST API 将消息从服务器发送到客户端[ - Azure SignalR Service 提供的 REST API 使应用程序能够以任何支持 REST 的编程语言向使用 SignalR Service 连接的客户端发送消息](https://github.com/Azure/azure-signalr/blob/dev/docs/rest-api.md)** 。

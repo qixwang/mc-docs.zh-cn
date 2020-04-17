@@ -13,10 +13,10 @@ ms.date: 03/16/2020
 ms.author: v-tawe
 zone_pivot_groups: programming-languages-set-three
 ms.openlocfilehash: 6a68e123ce383d8f728ba68d57c8f22126f49f65
-ms.sourcegitcommit: b2f2bb08ab1b5ccb3c596d84b3b6ddca5bba3903
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80151666"
 ---
 # <a name="quickstart-setup-development-environment"></a>快速入门：安装开发环境

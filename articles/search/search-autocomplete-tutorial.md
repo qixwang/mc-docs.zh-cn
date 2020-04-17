@@ -10,10 +10,10 @@ ms.topic: tutorial
 origin.date: 11/04/2019
 ms.date: 12/16/2019
 ms.openlocfilehash: 4b168d47d2b19a15417c4a4634fa4d8ac9c33763
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78850559"
 ---
 # <a name="add-suggestions-or-autocomplete-to-your-azure-cognitive-search-application"></a>将建议或自动完成添加到 Azure 认知搜索应用程序
@@ -37,7 +37,7 @@ ms.locfileid: "78850559"
 > * 在 C# 中，可在 HomeController.cs 中定义建议和自动完成操作
 > * 在 JavaScript 中，可直接调用 REST API 来提供相同的功能
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 Azure 认知搜索服务对于本练习是可选的，因为本解决方案使用一个托管已准备好的 NYCJobs 演示索引的实时沙盒服务。 若要在自己的搜索服务中运行此示例，请参阅[配置 NYC 作业索引](#configure-app)中的说明。
 
@@ -69,7 +69,7 @@ JavaScript 选项直接从浏览器调用 Azure 认知搜索 REST API。 一般�
 <input class="searchBox" type="text" id="example1a" placeholder="search">
 ```
 
-此示例是一个简单的输入文本框，包含用于设置样式的类、JavaScript 引用的 ID，以及占位符文本。  奥秒之处在于嵌入的 JavaScript。
+本示例是一个简单的输入文本框，包含用于设置样式的类、JavaScript 引用的 ID，以及占位符文本。  奥秒之处在于嵌入的 JavaScript。
 
 C# 语言示例使用 Index.cshtml 中的 JavaScript 来利用 [jQuery UI 自动完成库](https://jqueryui.com/autocomplete/)。 此库异步调用 MVC 控制器来检索建议，以此将自动完成体验添加到搜索框。 JavaScript 语言版本位于 IndexJavaScript.cshtml 中。 它包含用于搜索栏的以下脚本，以及对 Azure 认知搜索 REST API 的调用。
 
@@ -94,7 +94,7 @@ $(function () {
 source: "/home/suggest?highlights=false&fuzzy=false&",
 ```
 
-以上代码行告知 jQuery UI Autocomplete 函数要从何处获取显示在搜索框下的项列表。 由于此项目是一个 MVC 项目，因此它将调用 HomeController.cs 中的 Suggest 函数，该函数包含用于返回查询建议的逻辑（在下一部分中详细了解“建议”）。 此函数还会传递一些参数来控制突出显示内容、模糊匹配项和字词。 自动完成 JavaScript API 会添加字词参数。
+以上代码行告知 jQuery UI Autocomplete 函数要从何处获取显示在搜索框下的项列表。 由于这是一个 MVC 项目，它会在包含用于返回查询建议的 HomeController.cs 中调用 Suggest 函数（下一部分会详细介绍 Suggest）。 此函数还会传递一些参数来控制突出显示内容、模糊匹配项和字词。 自动完成 JavaScript API 会添加字词参数。
 
 ### <a name="extending-the-sample-to-support-fuzzy-matching"></a>扩展示例以支持模糊匹配
 
@@ -161,7 +161,7 @@ $(function () {
 
 打开 Controllers 目录下的 **HomeController.cs** 文件。 
 
-首先会发现，名为 `InitSearch` 的 类的顶部有一个方法。 此方法在 Azure 认知搜索服务中创建经过身份验证的 HTTP 索引客户端。 有关详细信息，请参阅[如何从 .NET 应用程序使用 Azure 认知搜索](https://docs.azure.cn/search/search-howto-dotnet-sdk)。
+首先会发现，名为 `InitSearch` 的类的顶部有一个方法。 此方法在 Azure 认知搜索服务中创建经过身份验证的 HTTP 索引客户端。 有关详细信息，请参阅[如何从 .NET 应用程序使用 Azure 认知搜索](https://docs.azure.cn/search/search-howto-dotnet-sdk)。
 
 在第 41 行可以看到 Suggest 函数。 该函数基于 [DocumentsOperationsExtensions.Suggest 方法](/dotnet/api/microsoft.azure.search.documentsoperationsextensions.suggest?view=azure-dotnet)。
 

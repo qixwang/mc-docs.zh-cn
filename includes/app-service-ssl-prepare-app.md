@@ -10,10 +10,10 @@ ms.date: 03/16/2020
 ms.author: v-tawe
 ms.custom: include file
 ms.openlocfilehash: c04eeab550f119a89c31c42d4149407abf3dc681
-ms.sourcegitcommit: e500354e2fd8b7ac3dddfae0c825cc543080f476
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79546988"
 ---
 ## <a name="prepare-your-web-app"></a>准备 Web 应用
@@ -38,7 +38,7 @@ ms.locfileid: "79546988"
 
 ### <a name="check-the-pricing-tier"></a>检查定价层
 
-在 Web 应用页面的左侧导航窗格中，向下滚动到“设置”部分，然后选择“扩大(应用服务计划)”。  
+在 Web 应用页的左侧导航窗格中，滚动到“设置”  部分，然后选择“增加(应用服务计划)”  。
 
 ![扩展菜单](./media/app-service-ssl-prepare-app/scale-up-menu.png)
 
@@ -46,9 +46,9 @@ ms.locfileid: "79546988"
 
 ![检查定价层](./media/app-service-ssl-prepare-app/check-pricing-tier.png)
 
-**F1** 或 **D1** 层不支持自定义 SSL。 如果需要进行扩展，请遵循下一部分中的步骤。 否则，请关闭“纵向扩展”  页，并跳过[纵向扩展应用服务计划](#scale-up-your-app-service-plan)部分。
+**F1** 或 **D1** 层不支持自定义 SSL。 如果需要增加，请按照下一部分中的步骤进行操作。 否则，请关闭“纵向扩展”  页，并跳过[纵向扩展应用服务计划](#scale-up-your-app-service-plan)部分。
 
-### <a name="scale-up-your-app-service-plan"></a>扩展应用服务计划
+### <a name="scale-up-your-app-service-plan"></a>纵向扩展应用服务计划
 
 选择任何非免费层（**B1**、**B2**、**B3**，或“生产”  类别中的任何层）。 有关其他选项，请单击“查看其他选项”  。
 
@@ -56,7 +56,7 @@ ms.locfileid: "79546988"
 
 ![选择定价层](./media/app-service-ssl-prepare-app/choose-pricing-tier.png)
 
-如果看到以下通知，则表示缩放操作已完成。
+看到以下通知时，说明缩放操作已完成。
 
 ![扩展通知](./media/app-service-ssl-prepare-app/scale-notification.png)
 

@@ -7,10 +7,10 @@ origin.date: 09/19/2019
 ms.date: 12/02/2019
 ms.author: v-jay
 ms.openlocfilehash: 91240237009362ea1351ec232be82f5fe45e7208
-ms.sourcegitcommit: 481542df432d52b7d4823811cef94772e4e0f192
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80634483"
 ---
 当 Microsoft 收到并扫描该设备时，订单状态将更新为“已接收”。  然后，该设备将经受物理验证，以确定是否存在损坏或篡改迹象。
@@ -19,7 +19,7 @@ ms.locfileid: "80634483"
 
 复制完成后，订单状态将更新为“已完成”。 
 
-从源中删除数据之前，请验证数据是否已上传到 Azure。 数据可能位于以下位置：
+从源中删除数据之前，请确认数据已上传到 Azure。 你的数据可位于：
 
 - Azure 存储帐户。 将数据复制到 Data Box 时，会根据类型将数据将上传到 Azure 存储帐户中的以下路径之一。
 
@@ -28,17 +28,17 @@ ms.locfileid: "80634483"
 
     或者，可以转到 Azure 门户中的 Azure 存储帐户并从那里导航。
 
-- 托管磁盘资源组。 创建托管磁盘时，会将 VHD 作为页 Blob 上传，然后将其转换为托管磁盘。 托管磁盘会附加到在创建订单时指定的资源组。 
+- 托管磁盘资源组。 创建托管磁盘时，VHD 作为页 blob 进行上传，然后转换为托管磁盘。 托管磁盘会附加到在创建排序时指定的资源组上。 
 
-    - 如果已成功复制到 Azure 中的托管磁盘，则可转到  Azure 门户中的“订单详细信息”，记下为托管磁盘指定的资源组。
+    - 如果在 Azure 中成功复制到托管磁盘，则可转到 Azure 门户中的“订单详细信息”，记下为托管磁盘指定的资源组  。
 
         ![标识托管磁盘资源组](media/data-box-verify-upload-return/order-details-managed-disk-resource-groups.png)
 
-        转到记下的资源组，找到托管磁盘。
+        转到所记录的资源组，并找到你的托管磁盘。
 
         ![附加到资源组的托管磁盘](media/data-box-verify-upload-return/managed-disks-resource-group.png)
 
-    - 如果复制了 VHDX 或动态/差分 VHD，则可以将 VHDX/VHD 作为页 Blob 上传到临时存储帐户，但无法将 VHD 转换为托管磁盘。 转到临时存储帐户 >“Blob”，然后选择适当的容器 - 标准 SSD、标准 HDD 或高级 SSD。  VHD 会作为页 Blob 上传到临时存储帐户中。
+    - 如果复制了 VHDX 或动态/差异 VHD，则 VHDX/VHD 会作为页 blob 上传到暂存存储帐户，但 VHD 转换到托管磁盘将失败。 请转到临时“存储帐户”>“Blob”，然后选择相应的容器 - 标准 SSD、标准 HDD 或高级 SSD  。 VHD 作为页 blob 上传到暂存存储帐户。
 
 
 ## <a name="erasure-of-data-from-data-box"></a>从 Data Box 中擦除数据
@@ -51,7 +51,7 @@ ms.locfileid: "80634483"
 本教程介绍了有关 Azure Data Box 的主题，例如：
 
 > [!div class="checklist"]
-> * 先决条件
+> * 必备条件
 > * 准备交付
 > * 将 Data Box 寄送到 Microsoft
 > * 验证 Azure 中的数据上传

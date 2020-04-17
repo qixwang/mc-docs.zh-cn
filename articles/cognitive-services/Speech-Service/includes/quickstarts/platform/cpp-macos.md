@@ -12,10 +12,10 @@ origin.date: 10/14/2019
 ms.date: 01/13/2020
 ms.author: v-tawe
 ms.openlocfilehash: 16bd2753b2bb357c950bbf492e8787b497e5b863
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75631048"
 ---
 本指南介绍如何安装用于 macOS 10.13 及更高版本上的 C++ 的[语音 SDK](~/articles/cognitive-services/speech-service/speech-sdk.md)。

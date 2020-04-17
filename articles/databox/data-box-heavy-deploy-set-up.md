@@ -11,10 +11,10 @@ ms.date: 12/09/2019
 ms.author: v-jay
 ms.localizationpriority: high
 ms.openlocfilehash: 24dbcbd07baae08879058ad1c611aad0356f016d
-ms.sourcegitcommit: 5fb45da006859215edc8211481f13174aa43dbeb
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80634458"
 ---
 ::: zone target = "docs"
@@ -33,7 +33,7 @@ ms.locfileid: "80634458"
 
 本教程介绍如何为 Azure Data Box Heavy 布线、与它建立连接以及将它打开。
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 为 Data Box Heavy 布线
@@ -130,7 +130,7 @@ ms.locfileid: "80634458"
     
     - 此页面上的某个节点序列号与门户 UI 和本地 Web UI 中的序列号相匹配。 请记下节点编号与序列号的映射。 门户中有两个节点和两个设备序列号。 此映射可帮助你了解哪个节点对应于哪个序列号。
     - 设备此时处于锁定状态。
-    - 提供你在上一步骤中获取的设备管理员密码，以登录到设备。 单击“登录”  。
+    - 提供你在上一步骤中获取的设备管理员密码，以登录到设备。 单击**登录**。
 
     ![登录到 Data Box Heavy 本地 Web UI](media/data-box-heavy-deploy-set-up/data-box-heavy-unlock-device.png)
 

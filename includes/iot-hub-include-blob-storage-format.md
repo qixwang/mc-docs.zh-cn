@@ -9,10 +9,10 @@ ms.date: 03/15/2019
 ms.author: robinsh
 ms.custom: include file
 ms.openlocfilehash: 115e580f481ecf76fb5fb691701c8cf39b2dc147
-ms.sourcegitcommit: 9e92bcf6aa02fc9e7b3a29abadf6b6d1a8ece8c4
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74389400"
 ---
 <!-- This is the note explaining about the avro and json formats when routing to blob storage. -->

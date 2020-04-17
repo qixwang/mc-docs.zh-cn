@@ -11,17 +11,17 @@ origin.date: 12/04/2019
 ms.date: 02/10/2020
 ms.author: v-jay
 ms.openlocfilehash: 92334634b91da28b5fef8250d5d321ce18b52933
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79292330"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-with-the-azure-portal"></a>快速入门：使用 Azure 门户上传、下载和列出 Blob
 
 本快速入门介绍如何使用 [Azure 门户](https://portal.azure.cn/)在 Azure 存储中创建容器，以及在该容器中上传和下载块 Blob。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 [!INCLUDE [storage-quickstart-prereq-include](../../../includes/storage-quickstart-prereq-include.md)]
 

@@ -9,10 +9,10 @@ ms.topic: overview
 origin.date: 10/20/2019
 ms.date: 12/16/2019
 ms.openlocfilehash: d7f2b8e8d6452589784b74ce8f54722ad175680f
-ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80343124"
 ---
 # <a name="tutorial-deploy-and-walk-through-a-smart-inventory-management-application-template"></a>教程：部署和演练智能库存管理应用程序模板

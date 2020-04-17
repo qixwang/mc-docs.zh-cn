@@ -10,11 +10,11 @@ ms.date: 04/15/2019
 ms.author: v-yeche
 ms.custom: include file
 ms.openlocfilehash: 829b535fa2e8cc0d71006a5e89f0ab1382ade63d
-ms.sourcegitcommit: 9f7a4bec190376815fa21167d90820b423da87e7
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59532605"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63859695"
 ---
 若要为资源组添加两个标记，请使用 [az group update](https://docs.azure.cn/zh-cn/cli/group?view=azure-cli-latest#az-group-update) 命令：
 
@@ -54,7 +54,7 @@ do
 done
 ```
 
-或者，可以将来自资源组的标记应用于资源而不保留现有标记：
+或者，可以将资源组中的标记应用于资源而不保留现有标记：
 
 ```azurecli
 # Get the tags for the resource group

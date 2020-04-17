@@ -8,10 +8,10 @@ ms.author: gopalv
 ms.topic: quickstart
 ms.date: 09/13/2019
 ms.openlocfilehash: 61b3c875b71539263153d12ab1cf3874d308483d
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75598997"
 ---
 # <a name="quickstart-set-up-a-centos-linux-data-science-virtual-machine-in-azure"></a>快速入门：在 Azure 中设置 CentOS (Linux) Data Science Virtual Machine
@@ -48,7 +48,7 @@ ms.locfileid: "75598997"
        * **虚拟机名称**：输入虚拟机的名称。 这就是它在 Azure 门户中的显示方式。
        * **区域**：选择最合适的数据中心。 为获得最快的网络访问速度，请选择包含大部分数据，或者最接近实际位置的数据中心。 详细了解 [Azure 区域](https://azure.microsoft.com/global-infrastructure/regions/)。
        * **映像**：保留默认值。
-       * **大小**：它应自动填充为适合一般工作负荷的大小。 详细了解 [Azure 中的 Linux VM 大小](../../virtual-machines/linux/sizes.md)。
+       * **Size**：它应自动填充为适合一般工作负荷的大小。 详细了解 [Azure 中的 Linux VM 大小](../../virtual-machines/linux/sizes.md)。
        * **身份验证类型**：为了更快地设置，请选择“密码”。 
          
          > [!NOTE]

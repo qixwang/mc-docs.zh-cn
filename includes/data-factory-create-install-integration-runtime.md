@@ -6,10 +6,10 @@ origin.date: 11/09/2018
 ms.date: 02/23/2020
 ms.author: v-jay
 ms.openlocfilehash: ec54123eab609cf8383e2d8713ea5f01adb3abfe
-ms.sourcegitcommit: 71a386ca0d0ecb79a123399b6ab6b8c70ea2aa78
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79497103"
 ---
 ## <a name="create-a-self-hosted-integration-runtime"></a>创建自承载 Integration Runtime
@@ -134,7 +134,7 @@ ms.locfileid: "79497103"
 
     g. 输入与用户名关联的密码。
 
-    h.如果该值不存在，请单击“添加行”。 若要确认 Integration Runtime 能否连接到 SQL Server，请选择“测试”。  如果连接成功，则会看到绿色复选标记。 如果连接不成功，则会看到错误消息。 请解决问题，确保 Integration Runtime 可以连接到 SQL Server。    
+    h. 若要确认 Integration Runtime 能否连接到 SQL Server，请选择“测试”。  如果连接成功，则会看到绿色复选标记。 如果连接不成功，则会看到错误消息。 请解决问题，确保 Integration Runtime 可以连接到 SQL Server。    
 
     > [!NOTE]
     > 记下身份验证类型、服务器、数据库、用户和密码的值。 本教程后面会用到它们。

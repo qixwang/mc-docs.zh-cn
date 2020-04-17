@@ -10,17 +10,17 @@ ms.topic: tutorial
 origin.date: 02/10/2020
 ms.date: 03/02/2020
 ms.openlocfilehash: 520181742fb7bd8f00b5bbbc13488c844ebb08eb
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78850544"
 ---
 # <a name="c-tutorial-create-your-first-app---azure-cognitive-search"></a>C# 教程：创建第一个应用 - Azure 认知搜索
 
 了解如何使用 Azure 认知搜索来创建查询和呈现索引搜索结果的 Web 界面。 本教程从现有的托管索引开始，以便你可以专注于构建搜索页。 索引包含虚构的酒店数据。 有了基本页面后，可以在后续课程中对其进行增强，以添加分页、facet 和提前键入体验。
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 > [!div class="checklist"]
 > * 设置开发环境
 > * 数据结构建模

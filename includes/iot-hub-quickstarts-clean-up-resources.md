@@ -9,10 +9,10 @@ ms.date: 06/19/2018
 ms.author: wesmc
 ms.custom: include file
 ms.openlocfilehash: 0c8958e95f5ead1f699fa2e451ecca8d686b822d
-ms.sourcegitcommit: 599d651afb83026938d1cfe828e9679a9a0fb69f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "70014700"
 ---
 如果想要继续学习下一篇建议的文章，可以保留已创建的资源，以便重复使用。
@@ -31,6 +31,6 @@ ms.locfileid: "70014700"
 
 3. 在结果列表中的资源组右侧，选择“...”，然后选择“删除资源组”   。
 
-    ![Delete](./media/iot-hub-quickstarts-clean-up-resources/iot-hub-delete-resource-group.png)
+    ![删除](./media/iot-hub-quickstarts-clean-up-resources/iot-hub-delete-resource-group.png)
 
 4. 系统会要求确认是否删除资源组。 再次键入资源组的名称进行确认，然后选择“删除”  。 片刻之后，将会删除该资源组及其包含的所有资源。

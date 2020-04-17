@@ -10,16 +10,16 @@ ms.date: 03/02/2020
 ms.author: v-yeche
 ms.custom: include file
 ms.openlocfilehash: 18f278c38621db1fb8af27c6f224f7a9b5fafbf5
-ms.sourcegitcommit: 69cadf1fa0ed81751c48fbce919a6bb44b1053ce
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78209173"
 ---
 1. 在虚拟 WAN 的“门户”页上，选择“连接”部分中的“VPN 站点”以开打“VPN 站点”页   。
 2. 在“VPN 站点”  页上，单击“+创建站点”  。
 
-    ![基础知识](./media/virtual-wan-tutorial-site-include/basics.png "基础知识")
+    ![基础知识](./media/virtual-wan-tutorial-site-include/basics.png "基础")
 3. 在“创建 VPN 站点”页的“基本信息”选项卡上，填写以下字段   ：
 
     * **区域** - 之前称为位置。 这是要在其中创建此站点资源的位置。

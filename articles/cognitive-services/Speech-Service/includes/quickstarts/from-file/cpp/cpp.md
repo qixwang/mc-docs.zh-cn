@@ -11,17 +11,17 @@ origin.date: 12/17/2019
 ms.date: 01/13/2020
 ms.author: v-tawe
 ms.openlocfilehash: c0a51559eec418ef2019f46df7aa83fe2a316bf5
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75631058"
 ---
 **选择目标环境**
-#### <a name="linuxtablinux"></a>[Linux](#tab/linux)
+#### <a name="linux"></a>[Linux](#tab/linux)
 [!INCLUDE [linux](./linux.md)]
-#### <a name="macostabmacos"></a>[macOS](#tab/macOS)
+#### <a name="macos"></a>[macOS](#tab/macOS)
 [!INCLUDE [macos](./macos.md)]
-#### <a name="windowstabwindows"></a>[Windows](#tab/Windows)
+#### <a name="windows"></a>[Windows](#tab/Windows)
 [!INCLUDE [windows](./windows.md)]
 * * *

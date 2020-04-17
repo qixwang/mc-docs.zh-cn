@@ -9,10 +9,10 @@ ms.date: 03/16/2020
 ms.author: v-tawe
 ms.custom: include file
 ms.openlocfilehash: b77367999c46eee0e3306a4c527199d3b1117295
-ms.sourcegitcommit: 5fb45da006859215edc8211481f13174aa43dbeb
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80634725"
 ---
 > [!NOTE]

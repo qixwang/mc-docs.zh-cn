@@ -11,10 +11,10 @@ ms.author: v-yiso
 origin.date: 02/24/2020
 ms.date: 03/16/2020
 ms.openlocfilehash: 2d5b1926ad67f8b7c73e437c9b85ecd5c5c66311
-ms.sourcegitcommit: d5eca3c6b03b206e441b599e5b138bd687a91361
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78934831"
 ---
 # <a name="set-up-azure-machine-learning-visual-studio-code-extension"></a>设置 Azure 机器学习 Visual Studio Code 扩展

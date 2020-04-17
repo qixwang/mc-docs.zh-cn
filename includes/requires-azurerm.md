@@ -6,10 +6,10 @@ origin.date: 06/05/2019
 ms.date: 07/22/2019
 ms.topic: include
 ms.openlocfilehash: 44bb9625d4a9ff5a1ff8fa71ac23489a66837451
-ms.sourcegitcommit: 5fea6210f7456215f75a9b093393390d47c3c78d
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "68337540"
 ---
 > [!IMPORTANT]

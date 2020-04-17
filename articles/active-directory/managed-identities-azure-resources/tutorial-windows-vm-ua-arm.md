@@ -16,10 +16,10 @@ ms.date: 02/06/2020
 ms.author: v-junlch
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d97cdd2e9e97a610c45e92a526e3e1d83edbfa5c
-ms.sourcegitcommit: 7c80405a6b48380814b4b414e9f8a5756c007880
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77067681"
 ---
 # <a name="tutorial-use-a-user-assigned-managed-identity-on-a-windows-vm-to-access-azure-resource-manager"></a>教程：使用 Windows VM 上用户分配的托管标识访问 Azure 资源管理器
@@ -28,7 +28,7 @@ ms.locfileid: "77067681"
 
 本教程介绍了如何创建用户分配的标识、将其分配给 Windows 虚拟机 (VM)，然后再使用此标识访问 Azure 资源管理器 API。 托管服务标识由 Azure 自动管理。 此标识可用于向支持 Azure AD 身份验证的服务进行身份验证，这样就无需在代码中嵌入凭据了。 
 
-你将学习如何执行以下操作：
+学习如何：
 
 > [!div class="checklist"]
 > * 创建用户分配的托管标识
@@ -39,7 +39,7 @@ ms.locfileid: "77067681"
 
 [!INCLUDE [az-powershell-update](../../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 [!INCLUDE [msi-qs-configure-prereqs](../../../includes/active-directory-msi-qs-configure-prereqs.md)]
 
@@ -163,6 +163,6 @@ CanDelegate: False
 在本教程中，你已学习了如何创建用户分配的标识，并将其附加到 Azure 虚拟机以访问 Azure 资源管理器 API。  若要详细了解 Azure 资源管理器，请参阅：
 
 > [!div class="nextstepaction"]
->[Azure Resource Manager](/azure-resource-manager/resource-group-overview)
+>[Azure 资源管理器](/azure-resource-manager/resource-group-overview)
 
 <!-- Update_Description: wording update -->

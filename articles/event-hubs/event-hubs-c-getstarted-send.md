@@ -16,15 +16,15 @@ origin.date: 11/05/2019
 ms.date: 12/02/2019
 ms.author: v-tawe
 ms.openlocfilehash: 6a8fa2e5c5d88bfc6fb02537f147b08f76b92e1c
-ms.sourcegitcommit: 298eab5107c5fb09bf13351efeafab5b18373901
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74658008"
 ---
 # <a name="quickstart-send-events-to-azure-event-hubs-using-c"></a>快速入门：使用 C 将事件发送到 Azure 事件中心
 
-## <a name="introduction"></a>简介
+## <a name="introduction"></a>介绍
 Azure 事件中心是一个大数据流式处理平台和事件引入服务，每秒能够接收和处理数百万个事件。 事件中心可以处理和存储分布式软件和设备生成的事件、数据或遥测。 可以使用任何实时分析提供程序或批处理/存储适配器转换和存储发送到数据中心的数据。 有关事件中心的详细概述，请参阅[事件中心概述](event-hubs-about.md)和[事件中心功能](event-hubs-features.md)。
 
 本教程介绍如何使用用 C 编写的控制台应用程序将事件发送到事件中心。 
@@ -60,7 +60,7 @@ Azure 事件中心是一个大数据流式处理平台和事件引入服务，�
     cmake -DCMAKE_INSTALL_PREFIX=/usr ..
     sudo make install
     ```
-5. 在工作目录中，创建一个包含以下代码的名为 sender.c  的新文件。 请记得替换为你的 SAS 密钥/名称、事件中心名称和命名空间的值。 还必须用密钥的 URL 编码版本替换之前创建的 **SendRule**。 可以在 [此处](https://www.w3schools.com/tags/ref_urlencode.asp)对它进行 URL 编码。
+5. 在工作目录中，创建一个包含以下代码的名为 sender.c  的新文件。 请记得替换为你的 SAS 密钥/名称、事件中心名称和命名空间的值。 还必须用密钥的 URL 编码版本替换之前创建的 **SendRule**。 可以在[此处](https://www.w3schools.com/tags/ref_urlencode.asp)对它进行 URL 编码。
    
     ```c
     #include "proton/message.h"
@@ -141,7 +141,7 @@ Azure 事件中心是一个大数据流式处理平台和事件引入服务，�
         return 0;
     }
     ```
-6. 使用 **gcc**编译该文件：
+6. 使用 **gcc** 编译该文件：
    
     ```
     gcc sender.c -o sender -lqpid-proton
@@ -152,13 +152,13 @@ Azure 事件中心是一个大数据流式处理平台和事件引入服务，�
 
 运行应用程序将消息发送到事件中心。 
 
-祝贺！ 现在已向事件中心发送消息。
+祝贺你！ 现在已向事件中心发送消息。
 
 ## <a name="next-steps"></a>后续步骤
 请阅读以下文章：
 
 - [EventProcessorHost](event-hubs-event-processor-host.md)
-- [Azure 事件中心的功能和术语](event-hubs-features.md)。
+- [Azure 事件中心的功能和术语](event-hubs-features.md)
 
 
 <!-- Images. -->

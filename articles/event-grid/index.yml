@@ -13,10 +13,10 @@ metadata:
   ms.author: spelluru
   ms.date: 09/06/2019
   ms.openlocfilehash: a55e3c278e6880cbff3338a1095de1bf5331bc11
-  ms.sourcegitcommit: 78a05172a813b87428b87f3a2695e6bb3ae81ede
+  ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 03/31/2020
+  ms.lasthandoff: 04/17/2020
   ms.locfileid: "80417387"
 landingContent:
 - title: 关于事件网格

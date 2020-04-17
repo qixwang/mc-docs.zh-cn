@@ -12,10 +12,10 @@ ms.reviewer: sgilley
 ms.date: 11/04/2019
 ms.custom: seodec18
 ms.openlocfilehash: ebbbaf2d9cfd2dab4cd952bc44f5de9fb97bc53c
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75598739"
 ---
 # <a name="explore-azure-machine-learning-with-jupyter-notebooks"></a>使用 Jupyter Notebook 探索 Azure 机器学习

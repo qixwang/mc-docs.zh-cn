@@ -6,10 +6,10 @@ origin.date: 10/26/2018
 ms.date: 09/16/2019
 ms.author: v-yeche
 ms.openlocfilehash: 074867289ff32e74652758eacfe43a5baf674215
-ms.sourcegitcommit: 43f569aaac795027c2aa583036619ffb8b11b0b9
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/12/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "70921035"
 ---
 ## <a name="install-wordpress"></a>安装 WordPress
@@ -83,7 +83,7 @@ sudo ln -s /usr/share/wordpress /var/www/html/wordpress
 sudo mv /etc/wordpress/config-localhost.php /etc/wordpress/config-default.php
 ```
 
-现在可以完成 WordPress 设置并在平台上进行发布了。 打开浏览器并转到 `http://yourPublicIPAddress/wordpress` 。 替换 VM 的公共 IP 地址。 应如下图所示。
+现在可以完成 WordPress 设置并在平台上进行发布了。 打开浏览器并转到 `http://yourPublicIPAddress/wordpress`。 替换 VM 的公共 IP 地址。 应如下图所示。
 
 ![WordPress 安装页](./media/virtual-machines-linux-tutorial-wordpress/wordpressstartpage.png)
 

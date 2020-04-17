@@ -11,10 +11,10 @@ services: iot-dps
 ms.devlang: csharp
 ms.custom: mvc
 ms.openlocfilehash: 808c5bc146cb8ac0d92c156d35c41a09c76c9179
-ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77494381"
 ---
 # <a name="tutorial-enroll-the-device-to-an-iot-hub-using-the-azure-iot-hub-provisioning-service-client-net"></a>教程：使用 Azure IoT 中心设备预配服务客户端将设备登记到 IoT 中心 (.NET)
@@ -26,7 +26,7 @@ ms.locfileid: "77494381"
 > * 启动设备
 > * 验证设备已注册
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 继续之前，请确保已配置设备及其“硬件安全模块”（按[使用 Azure IoT 中心设备预配服务设置设备以进行预配](./tutorial-set-up-device.md)教程所述）  。
 
@@ -64,13 +64,13 @@ ms.locfileid: "77494381"
 
 1. 在“NuGet 包管理器”窗口中，选择“浏览”，搜索 **microsoft.azure.devices.provisioning.service**。   选择该项，单击“安装”以安装 **Microsoft.Azure.Devices.Provisioning.Service** 包，并接受使用条款。  此过程会下载、安装 [Azure IoT 设备预配服务 SDK](https://www.nuget.org/packages/Microsoft.Azure.Devices.Provisioning.Service/) NuGet 包及其依赖项并添加对它的引用。
 
-1. 在 **Program.cs** 文件顶部添加以下 `using` 语句：
+1. 在 Program.cs  文件顶部添加以下 `using` 语句：
    
     ```csharp
     using Microsoft.Azure.Devices.Provisioning.Service;
     ```
 
-1. 将以下字段添加到 **Program** 类。 将占位符值替换为上一部分中所述的设备预配服务连接字符串。
+1. 将以下字段添加到 Program 类  。 将占位符值替换为上一部分中所述的设备预配服务连接字符串。
    
     ```csharp
     static readonly string ServiceConnectionString = "{Device Provisioning Service connection string}";
@@ -147,13 +147,13 @@ ms.locfileid: "77494381"
 
 1. 在 Visual Studio 的解决方案资源管理器中，打开前面创建的“DeviceProvisioning”项目。  
 
-1. 在 **Program.cs** 文件顶部添加以下 `using` 语句：
+1. 在 Program.cs  文件顶部添加以下 `using` 语句：
     
     ```csharp
     using System.Security.Cryptography.X509Certificates;
     ```
 
-1. 将以下字段添加到 **Program** 类。 将占位符值替换为 X509 证书位置。
+1. 将以下字段添加到 Program 类  。 将占位符值替换为 X509 证书位置。
    
     ```csharp
     private const string X509RootCertPathVar = "{X509 Certificate Location}";
@@ -241,7 +241,7 @@ ms.locfileid: "77494381"
     ![成功连接到门户中的中心](./media/tutorial-net-provision-device-to-hub/hub-connect-success.png)
 
 ## <a name="next-steps"></a>后续步骤
-在本教程中，你已学习了如何执行以下操作：
+在本教程中，你了解了如何执行以下操作：
 
 > [!div class="checklist"]
 > * 注册设备

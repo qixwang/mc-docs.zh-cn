@@ -10,10 +10,10 @@ ms.date: 03/23/2020
 ms.author: v-yeche
 ms.custom: include file
 ms.openlocfilehash: 17f181408710661fb855b33a53955a943d33056a
-ms.sourcegitcommit: 305361c96d1d5288d3dda7e81833820640e2afac
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80109795"
 ---
 ## <a name="create-the-virtual-network"></a>创建虚拟网络
@@ -37,7 +37,7 @@ ms.locfileid: "80109795"
 
 4. 在“IP 地址”  选项卡上，输入以下信息：
 
-    | 设置            | Value                      |
+    | 设置            | 值                      |
     |--------------------|----------------------------|
     | IPv4 地址空间 | 输入 **\<IPv4-address-space>** |
 
@@ -45,12 +45,12 @@ ms.locfileid: "80109795"
 
 6. 在“编辑子网”中输入以下信息： 
 
-    | 设置            | Value                      |
+    | 设置            | 值                      |
     |--------------------|----------------------------|
     | 子网名称 | 输入 **\<subnet-name>** |
     | 子网地址范围 | 输入 **\<subnet-address-range>**
 
-7. 选择“保存”  。
+7. 选择“保存”。 
 
 8. 选择“查看 + 创建”  选项卡，或选择“查看 + 创建”  按钮。
 

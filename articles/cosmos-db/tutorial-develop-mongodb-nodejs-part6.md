@@ -12,19 +12,19 @@ ms.author: v-yeche
 ms.custom: seodec18
 ms.reviewer: sngun
 ms.openlocfilehash: 83e8f7c51575af7aeb96d5a1e6d603bdea784246
-ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77067911"
 ---
-# <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---add-crud-functions-to-the-app"></a>使用 Azure Cosmos DB 的 API for MongoDB 创建 Angular 应用 - 将 CRUD 函数添加到应用
+# <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---add-crud-functions-to-the-app"></a>使用 Azure Cosmos DB 的用于 MongoDB 的 API 创建 Angular 应用 - 将 CRUD 函数添加至应用
 
-本教程包含多个部分，演示了如何通过 Express 和 Angular 创建以 Node.js 编写的新应用，然后将其连接到[使用 Cosmos DB 的 API for MongoDB 配置的 Cosmos 帐户](mongodb-introduction.md)。 本教程的第 6 部分基于[第 5 部分](tutorial-develop-mongodb-nodejs-part5.md)，涵盖以下任务：
+本教程包含多个部分，演示了如何通过 Express 和 Angular 创建以 Node.js 编写的新应用，然后将其连接到[使用 Cosmos DB 的用于 MongoDB 的 API 配置的 Cosmos 帐户](mongodb-introduction.md)。 本教程的第 6 部分基于[第 5 部分](tutorial-develop-mongodb-nodejs-part5.md)，涵盖以下任务：
 
 > [!div class="checklist"]
 > * 为 hero 服务创建 Post、Put 和 Delete 函数
-> * 运行应用程序
+> * 运行应用
 
 <!-- Not Available > [!VIDEO https://www.youtube.com/embed/Y5mdAlFGZjc]-->
 
@@ -37,15 +37,15 @@ ms.locfileid: "77067911"
 
 ## <a name="add-a-post-function-to-the-hero-service"></a>向 hero 服务添加 Post 函数
 
-1. 在 Visual Studio Code 中按“拆分编辑器”按钮 ![Visual Studio 中的“拆分编辑器”按钮](./media/tutorial-develop-mongodb-nodejs-part6/split-editor-button.png)，并排打开  routes.js 和  hero.service.js。 
+1. 在 Visual Studio Code 中按“拆分编辑器”按钮 **Visual Studio 中的“拆分编辑器”按钮**，并排打开  routes.js 和  hero.service.js。![](./media/tutorial-develop-mongodb-nodejs-part6/split-editor-button.png)
 
-    可以看到，routes.js 第 7 行调用的是  hero.service.js 中第 5 行的 `getHeroes` 函数。  需为 post、put 和 delete 函数进行与此相同的配对。 
+    可以看到，routes.js 第 7 行调用的是 `getHeroes`**hero.service.js 中第 5 行的**  函数。  需为 post、put 和 delete 函数进行与此相同的配对。 
 
     ![Visual Studio Code 中的 routes.js 和 hero.service.js](./media/tutorial-develop-mongodb-nodejs-part6/routes-heroservicejs.png)
 
     首先，请对 hero 服务进行编码。 
 
-2. 将以下代码复制到  hero.service.js 中 `module.exports` 函数之前 `getHeroes` 函数之后的位置。 此代码：  
+2. 将以下代码复制到  hero.service.js 中 `getHeroes` 函数之前 `module.exports` 函数之后的位置。 此代码：  
    * 使用 hero 模型发布新的 hero。
    * 查看响应，了解是否存在错误，然后返回状态值 500。
 
@@ -77,7 +77,7 @@ ms.locfileid: "77067911"
     };
     ```
 
-4. 在  routes.js 中的 `get` 路由器之后为 `post` 函数添加一个路由器。 此路由器一次发布一个 hero。 以这种方式安排路由器文件的结构可以清楚地显示所有可用的 API 终结点，将真正的工作留给  hero.service.js 文件。
+4. 在  routes.js 中的 `post` 路由器之后为 `get` 函数添加一个路由器。 此路由器一次发布一个 hero。 以这种方式安排路由器文件的结构可以清楚地显示所有可用的 API 终结点，将真正的工作留给  hero.service.js 文件。
 
     ```javascript
     router.post('/hero', (req, res) => {

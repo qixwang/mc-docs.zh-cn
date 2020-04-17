@@ -1,5 +1,5 @@
 ---
-title: 教程 - 使用快速入门模板
+title: 教程 - 使用快速启动模板
 description: 了解如何使用 Azure 快速入门模板来完成模板开发。
 author: rockboyfor
 origin.date: 10/04/2019
@@ -7,10 +7,10 @@ ms.date: 03/23/2020
 ms.topic: tutorial
 ms.author: v-yeche
 ms.openlocfilehash: e2db398202d191dfd071801b8290ee84513b535e
-ms.sourcegitcommit: 1436f1851342ca5631eb25342eed954adb707af0
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79543903"
 ---
 # <a name="tutorial-use-azure-quickstart-templates"></a>教程：使用 Azure 快速入门模板

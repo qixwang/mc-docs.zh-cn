@@ -10,10 +10,10 @@ ms.date: 12/09/2019
 ms.author: v-tawe
 ms.custom: include file
 ms.openlocfilehash: 4fe004ec0c6d1a937cb83d04bb83b742c7c60904
-ms.sourcegitcommit: cf73284534772acbe7a0b985a86a0202bfcc109e
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74884945"
 ---
 本部分说明如何从 .NET 控制台应用以标记模板通知的形式发送突发新闻。
@@ -24,7 +24,7 @@ ms.locfileid: "74884945"
     1. 输入应用程序的名称。
     1. 对于“解决方案”  ，选择“添加到解决方案”  ，然后选择“创建”  以创建项目。
 
-1. 选择“工具” > “NuGet 包管理器” > “包管理器控制台”，然后在控制台窗口中运行以下命令    ：
+1. 选择“工具” **“NuGet 包管理器”** “包管理器控制台”，然后在控制台窗口中运行以下命令 >    >   ：
 
    ```powershell
    Install-Package Microsoft.Azure.NotificationHubs
@@ -66,7 +66,7 @@ ms.locfileid: "74884945"
     }
     ```
 
-   此代码针对字符串数组中的所有 6 个标记发送模板通知。 使用标记是为了确保设备仅接收已注册类别的通知。
+   此代码将针对字符串数组中的所有 6 个标记发送模板通知。 使用标记是为了确保设备仅接收已注册类别的通知。
 
 1. 在前面的代码中，将 `<hub name>` 和 `<connection string with full access>` 占位符替换为通知中心名称和从通知中心仪表板获取的 *DefaultFullSharedAccessSignature* 的连接字符串。
 

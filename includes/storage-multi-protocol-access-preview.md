@@ -6,10 +6,10 @@ origin.date: 07/22/2019
 ms.date: 11/25/2019
 ms.author: v-jay
 ms.openlocfilehash: bc2f06c3d7c745d6773f119bfc428446e3cd1d4d
-ms.sourcegitcommit: 6a19227dcc0c6e0da5b82c4f69d0227bf38a514a
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74328647"
 ---
 > [!NOTE]

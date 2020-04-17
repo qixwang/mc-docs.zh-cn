@@ -10,10 +10,10 @@ ms.date: 03/09/2020
 ms.author: v-tawe
 ms.custom: include file
 ms.openlocfilehash: 409845d62f9b3d2c7a126f36efb9e2e63a021639
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78154756"
 ---
 ### <a name="create-a-storage-account-for-event-processor-host"></a>为事件处理程序主机创建存储帐户
@@ -23,7 +23,7 @@ ms.locfileid: "78154756"
 
     ![创建资源菜单项，Microsoft Azure 门户](./media/event-hubs-create-storage/create-resource.png)
 
-2. 选择“存储” > “存储帐户”   。
+2. 选择“存储” **“存储帐户”**  >   。
    
     ![选择存储帐户，Microsoft Azure 门户](./media/event-hubs-create-storage/select-storage-account.png)
 

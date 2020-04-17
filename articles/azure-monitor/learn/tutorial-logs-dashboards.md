@@ -10,15 +10,15 @@ ms.date: 07/12/2019
 ms.author: v-lingwu
 ms.custom: mvc
 ms.openlocfilehash: 5c9b9bee8462855ecff8427b7b83f39f8f62bfbb
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78850288"
 ---
 # <a name="create-and-share-dashboards-of-log-analytics-data"></a>创建和共享 Log Analytics 数据的仪表板
 
-Log Analytics 仪表板可直观显示所有已保存的日志查询，使你能够在组织中查找、关联和共享 IT 操作数据。  本教程介绍如何创建日志查询，以用于支持 IT 操作支持团队要访问的共享仪表板。  你将学习如何执行以下操作：
+Log Analytics 仪表板可直观显示所有已保存的日志查询，使你能够在组织中查找、关联和共享 IT 操作数据。  本教程介绍如何创建日志查询，以用于支持 IT 操作支持团队要访问的共享仪表板。  学习如何：
 
 > [!div class="checklist"]
 > * 在 Azure 门户中创建共享仪表板
@@ -32,7 +32,7 @@ Log Analytics 仪表板可直观显示所有已保存的日志查询，使你能
 在 [https://portal.azure.cn](https://portal.azure.cn) 中登录 Azure 门户。 
 
 ## <a name="create-a-shared-dashboard"></a>创建共享仪表板
-选择“仪表板”  以打开默认[仪表板](../../azure-portal/azure-portal-dashboards.md)。 你的仪表板看起来与下面的示例有所不同。
+选择“仪表板”  可打开默认[仪表板](../../azure-portal/azure-portal-dashboards.md)。 你的仪表板看起来与下面的示例有所不同。
 
 ![Azure 门户仪表板](media/tutorial-logs-dashboards/log-analytics-portal-dashboard.png)
 
@@ -42,7 +42,7 @@ Log Analytics 仪表板可直观显示所有已保存的日志查询，使你能
 
 ![在 Azure 门户中新建仪表板](media/tutorial-logs-dashboards/log-analytics-create-dashboard-01.png)
 
-此操作会创建全新的专用空仪表板，并进入自定义模式，可在此模式下命名仪表板以及添加或重新排列磁贴。 编辑仪表板的名称，指定用于本教程的“示例仪表板”，然后选择“完成自定义”   。<br><br> ![保存自定义的 Azure 仪表板](media/tutorial-logs-dashboards/log-analytics-create-dashboard-02.png)
+此操作会创建全新的专用空仪表板，并进入自定义模式，可在此模式下命名仪表板以及添加或重新排列磁贴。 编辑仪表板的名称，针对本教程指定“示例仪表板”，然后选择“完成自定义”   。<br><br> ![保存自定义的 Azure 仪表板](media/tutorial-logs-dashboards/log-analytics-create-dashboard-02.png)
 
 创建仪表板时，默认该仪表板是专用的，这意味着只有你才可以看到它。 若要让其对其他人可见，请使用与其他仪表板命令一起出现的“共享”  按钮。
 

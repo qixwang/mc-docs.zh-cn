@@ -9,10 +9,10 @@ ms.date: 03/05/2019
 ms.author: robinsh
 ms.custom: include file
 ms.openlocfilehash: dacc7675258cae968039b7672d79b63ab9134608
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78155459"
 ---
 [消息路由](../articles/iot-hub/iot-hub-devguide-messages-d2c.md)能够将遥测数据从 IoT 设备发送到内置的与事件中心兼容的终结点或自定义终结点，例如，Blob 存储、服务总线队列、服务总线主题和事件中心。 若要配置自定义消息路由，请创建[路由查询](../articles/iot-hub/iot-hub-devguide-routing-query-syntax.md)来自定义与特定条件匹配的路由。 设置完成后，引入的数据将通过 IoT 中心自动路由到终结点。 如果某个消息不匹配定义的任何路由查询，它将路由到默认终结点。
@@ -39,7 +39,7 @@ ms.locfileid: "78155459"
 ## <a name="prerequisites"></a>先决条件
 
 * 对于本教程的第 1 部分：
-  - 必须拥有 Azure 订阅。 如果没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+  - 必须拥有 Azure 订阅。 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 * 对于本教程的第 2 部分：
   - 必须事先完成本教程的第 1 部分，并保留一些可用的资源。

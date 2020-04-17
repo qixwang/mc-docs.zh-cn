@@ -10,10 +10,10 @@ ms.date: 09/09/2019
 ms.author: v-yeche
 ms.custom: include file
 ms.openlocfilehash: 372e2cf0e12a9f81814357db4586f3d812ba3016
-ms.sourcegitcommit: 66192c23d7e5bf83d32311ae8fbb83e876e73534
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "70254795"
 ---
 <!--Verify sucessfully-->
@@ -29,7 +29,7 @@ ms.locfileid: "70254795"
 
     设置|建议的值|说明
     ---|---|---
-    表 ID|sample-table|新表的 ID。 表名称与数据库 ID 的字符要求相同。 `/ \ # ?` 或尾随空格。
+    表 ID|sample-table|新表的 ID。 表名称与数据库 ID 的字符要求相同。 数据库名称的长度必须为 1 到 255 个字符，不能包含 `/ \ # ?` 或尾随空格。
     吞吐量|400 RU|将吞吐量更改为每秒 400 个请求单位 (RU/s)。 如果想要减少延迟，以后可以增加吞吐量。
 
 3. 选择“确定”  。

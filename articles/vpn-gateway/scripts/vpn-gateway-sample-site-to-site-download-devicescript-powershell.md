@@ -11,11 +11,11 @@ origin.date: 04/17/2018
 ms.date: 03/04/2019
 ms.author: v-jay
 ms.openlocfilehash: 2f5f7defb8ac7fe79ccd771b1b7fb24403fd293f
-ms.sourcegitcommit: dcd11929ada5035d127be1ab85d93beb72909dc3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56833204"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63825677"
 ---
 # <a name="download-vpn-device-template-using-powershell"></a>使用 PowerShell 下载 VPN 设备模板
 
@@ -49,7 +49,7 @@ Remove-AzResourceGroup -Name TestRG1
 
 此脚本使用以下命令创建部署。 表中的每一项均链接到特定于命令的文档。
 
-| 命令 | 注释 |
+| Command | 说明 |
 |---|---|
 | [Get-AzVirtualNetworkGatewaySupportedVpnDevice](https://docs.microsoft.com/powershell/module/az.network/Get-azVirtualNetworkGatewaySupportedVpnDevice) | 列出所有可用的 VPN 设备模型和版本。 |
 | [Get-AzVirtualNetworkGatewayConnectionVpnDeviceConfigScript](https://docs.microsoft.com/powershell/module/az.network/Get-azVirtualNetworkGatewayConnectionVpnDeviceConfigScript) | 下载用于连接的配置模板。 |

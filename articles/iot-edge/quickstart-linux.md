@@ -11,10 +11,10 @@ ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
 ms.openlocfilehash: d3148e78b4e376451ca685ae0c2abf82874bb24d
-ms.sourcegitcommit: 260800ede66f48c886d1426a0fac18b4d402b4f2
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80586665"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-virtual-linux-device"></a>快速入门：将第一个 IoT Edge 模块部署到虚拟 Linux 设备
@@ -58,7 +58,7 @@ ms.locfileid: "80586665"
 
 IoT Edge 设备：
 
-* 充当 IoT Edge 设备的 Linux 设备或虚拟机。 应该使用 Microsoft 提供的 [Azure IoT Edge on Ubuntu](https://market.azure.cn/marketplace/apps) 虚拟机，该虚拟机在设备上预先安装了运行 IoT Edge 所需的所有项。 接受使用条款并使用以下命令创建此虚拟机：
+* 充当 IoT Edge 设备的 Linux 设备或虚拟机。 应使用 Microsoft 提供的 [Azure IoT Edge on Ubuntu](https://market.azure.cn/marketplace/apps) 虚拟机，该虚拟机在设备上预先安装了运行 IoT Edge 所需的所有项。 接受使用条款并使用以下命令创建此虚拟机：
 
    ```azurecli
    az vm image terms accept --urn microsoft_iot_edge:iot_edge_vm_ubuntu:ubuntu_1604_edgeruntimeonly:latest
@@ -121,7 +121,7 @@ IoT Edge 设备：
 
 ![关系图 - 在设备上启动运行时](./media/quickstart-linux/start-runtime.png)
 
-IoT Edge 运行时部署在所有 IoT Edge 设备上。 它有三个组件。 **IoT Edge 安全守护程序在** IoT Edge 设备每次启动时启动，并通过启动 IoT Edge 代理引导设备。 **IoT Edge 代理**协助部署和监视 IoT Edge 设备（包括 IoT Edge 中心）的模块。 IoT Edge 中心  管理 IoT Edge 设备模块之间以及设备和 Azure IoT 中心之间的通信。
+IoT Edge 运行时部署在所有 IoT Edge 设备上。 它有三个组件。 每次 IoT Edge 设备启动并通过启动 IoT Edge 代理启动设备时，**IoT Edge 安全守护程序**就会启动。 **IoT Edge 代理**协助部署和监视 IoT Edge 设备（包括 IoT Edge 中心）的模块。 IoT Edge 中心  管理 IoT Edge 设备模块之间以及设备和 Azure IoT 中心之间的通信。
 
 在运行时配置期间，你提供设备连接字符串。 请使用从 Azure CLI 检索的字符串。 此字符串将物理设备与 Azure 中的 IoT Edge 设备标识关联在一起。
 
@@ -154,7 +154,7 @@ IoT Edge 运行时部署在所有 IoT Edge 设备上。 它有三个组件。 **
    sudo systemctl status iotedge
    ```
 
-   ![查看作为系统服务运行的 Edge 守护程序](./media/quickstart-linux/iotedged-running.png)
+   ![查看作为系统服务运行的 IoT Edge 守护程序](./media/quickstart-linux/iotedged-running.png)
 
 2. 若需排查服务问题，请检索服务日志。
 

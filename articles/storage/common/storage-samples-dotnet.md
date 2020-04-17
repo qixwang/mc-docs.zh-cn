@@ -1,6 +1,6 @@
 ---
 title: 使用 .NET 的 Azure 存储示例 | Microsoft Docs
-description: 查看、下载和运行 Azure 存储的示例代码和应用程序。 使用 .NET 存储客户端库发现 blob、队列、表和文件的入门示例。
+description: 查看、下载和运行 Azure 存储的示例代码和应用程序 使用 .NET 存储客户端库发现 Blob、队列、表和文件的入门示例。
 author: WenJason
 ms.author: v-jay
 origin.date: 02/13/2020
@@ -9,15 +9,15 @@ ms.service: storage
 ms.subservice: common
 ms.topic: sample
 ms.openlocfilehash: dae27dc5a605ad179fa534872a76218dec21d1d5
-ms.sourcegitcommit: fbc7584f403417d3af7bd6bbbaed7c13a78c57b9
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78412593"
 ---
 # <a name="azure-storage-samples-using-v12-net-client-libraries"></a>使用 v12 .NET 客户端库的 Azure 存储示例
 
-下表概述了我们的示例存储库以及每个示例中介绍的方案。 单击链接可查看 GitHub 中相应的示例代码。
+下表概述了示例存储库和每个示例中涉及的场景。 单击链接可查看 GitHub 中相应的示例代码。
 
 > [!NOTE]
 > 这些示例使用最新的 Azure 存储 .NET v12 库。 有关旧版 v11 代码，请参阅 GitHub 存储库中的[适用于 .NET 的 Azure Blob 存储示例](https://github.com/Azure-Samples/storage-blob-dotnet-getting-started)。
@@ -129,7 +129,7 @@ ms.locfileid: "78412593"
    :::column-end:::
 :::row-end:::
 
-### <a name="directory"></a>Directory
+### <a name="directory"></a>目录
 
 :::row:::
    :::column span="":::
@@ -255,7 +255,7 @@ ms.locfileid: "78412593"
    :::column-end:::
 :::row-end:::
 
-### <a name="message"></a>Message
+### <a name="message"></a>消息
 
 :::row:::
    :::column span="":::
@@ -323,16 +323,16 @@ ms.locfileid: "78412593"
 
 ## <a name="getting-started-guides"></a>入门指南
 
-有关 Azure 存储客户端库的安装和入门说明，请查看以下指南。
+如果要查找有关如何安装和开始使用 Azure 存储客户端库的说明，请查看以下指南。
 
-* [.NET 中的 Azure Blob 服务入门](../blobs/storage-quickstart-blobs-dotnet.md)
-* [.NET 中的 Azure 队列服务入门](../queues/storage-quickstart-queues-dotnet.md)
-* [.NET 中的 Azure 表服务入门](../../cosmos-db/tutorial-develop-table-dotnet.md)
-* [.NET 中的 Azure 文件服务入门](../files/storage-dotnet-how-to-use-files.md)
+* [.NET 中 Azure Blob 服务入门](../blobs/storage-quickstart-blobs-dotnet.md)
+* [Getting Started with Azure Queue Service in .NET](../queues/storage-quickstart-queues-dotnet.md)（.NET 中 Azure 队列服务入门）
+* [.NET 中 Azure 表服务入门](../../cosmos-db/tutorial-develop-table-dotnet.md)
+* [Getting Started with Azure File Service in .NET](../files/storage-dotnet-how-to-use-files.md)（.NET 中 Azure 文件服务入门）
 
 ## <a name="next-steps"></a>后续步骤
 
-了解其他语言的示例：
+了解有关其他语言的示例的信息：
 
 * Java:[使用 Java 的 Azure 存储示例](storage-samples-java.md)
 * Python:[使用 Python 的 Azure 存储示例](storage-samples-python.md)

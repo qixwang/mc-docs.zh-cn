@@ -10,15 +10,15 @@ ms.date: 06/17/2019
 ms.author: v-yeche
 ms.custom: include file
 ms.openlocfilehash: 90fc3034d46f23000aeaeae0aca897f41827a567
-ms.sourcegitcommit: 43eb6282d454a14a9eca1dfed11ed34adb963bd1
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/17/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "67151463"
 ---
 现在可以在 Azure 门户中使用数据资源管理器工具来创建数据库和容器。 
 
-1. 选择“数据资源管理器” > “新建容器”。   
+1. 选择“数据资源管理器” **“新建容器”。**  >   
 
     “添加容器”区域显示在最右侧，可能需要向右滚动才能看到它。 
 

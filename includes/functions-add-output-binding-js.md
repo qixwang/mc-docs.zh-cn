@@ -5,13 +5,13 @@ ms.topic: include
 ms.date: 02/13/2020
 ms.author: v-junlch
 ms.openlocfilehash: 5fa7d38ed1797b877f12b4abc622825f1a16637a
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77428761"
 ---
-添加在 `context.bindings` 上使用 `msg` 输出绑定对象来创建队列消息的代码。 请在 `context.res` 语句之前添加此代码。
+添加在 `msg` 上使用 `context.bindings` 输出绑定对象来创建队列消息的代码。 请在 `context.res` 语句之前添加此代码。
 
 ```javascript
 // Add a message to the Storage queue.

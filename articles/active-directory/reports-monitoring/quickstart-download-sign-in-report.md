@@ -19,17 +19,17 @@ ms.author: v-junlch
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 564547eaeb3b01ec6af627c4b3e464a06db97b59
-ms.sourcegitcommit: 44548f2ebec1246f6ac799f5b2640ad1b5d7c8a9
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "68973598"
 ---
 # <a name="quickstart-download-a-sign-in-report-using-the-azure-portal"></a>快速入门：通过 Azure 门户下载登录报表
 
 在此快速入门中，你将学习如何下载租户过去 24 小时的登录数据。 最多可从 Azure 门户下载 250,000 条记录。 记录按最近时间进行排序，因此默认情况下获取的是最近 250,000 条记录。 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 需要：
 
@@ -39,12 +39,12 @@ ms.locfileid: "68973598"
 ## <a name="quickstart-download-a-sign-in-report"></a>快速入门：下载登录报表
 
 1. 导航到 [Azure 门户](https://portal.azure.cn)。
-2. 从左侧导航窗格中选择 **Azure Active Directory**，然后使用“切换目录”  按钮选择活动目录。
+2. 从左侧导航窗格中选择“Azure Active Directory”，然后使用“切换目录”按钮选择活动目录   。
 3. 从仪表板中，选择 Azure Active Directory，然后选择“登录”   。 
 4. 在“日期”筛选器下拉列表中选择“过去 24 小时”，再选择“应用”以查看过去 24 小时的登录信息    。 
 5. 选择“下载”  按钮，选择“CSV”  作为文件格式，并指定文件名以下载包含已筛选记录的 CSV 文件。 
 
-![报告](./media/quickstart-download-sign-in-report/download-sign-ins.png)
+![报表](./media/quickstart-download-sign-in-report/download-sign-ins.png)
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -6,10 +6,10 @@ origin.date: 09/13/2019
 ms.date: 03/09/2019
 ms.author: v-tawe
 ms.openlocfilehash: b6ae42ba049a4036bcd34b0b5d14f6646006dab2
-ms.sourcegitcommit: ced17aa58e800b9e4335276a1595b8045836b256
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77590788"
 ---
 若要创建 Visual Studio 项目，以便使用 Xamarin 进行跨平台移动应用 .NET 开发，需要：

@@ -10,10 +10,10 @@ ms.author: vijetaj
 ms.topic: overview
 ms.date: 02/22/2019
 ms.openlocfilehash: 1b6286820a8fc2037d683a9338762e1e3c654af1
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75598026"
 ---
 # <a name="what-is-the-azure-data-science-virtual-machine-for-linux-and-windows"></a>什么是适用于 Linux 和 Windows 的 Azure Data Science Virtual Machine？
@@ -75,7 +75,7 @@ Windows Server 2016 版本的 DSVM 预安装了 GPU 驱动程序、框架和 GPU
 
 通过以下文章，了解详细信息：
 
-+ Windows:
++ Windows：
   + [设置 Windows DSVM](provision-vm.md)
   + [可以在 Windows DSVM 上执行的十项操作](vm-do-ten-things.md)
 

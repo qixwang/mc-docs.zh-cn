@@ -10,10 +10,10 @@ ms.service: iot-central
 services: iot-central
 manager: abjork
 ms.openlocfilehash: 5a916c4b853b87c447f02ed5aa7f6f69e301534f
-ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80343629"
 ---
 # <a name="tutorial-create-a-water-quality-monitoring-application-in-azure-iot-central"></a>教程：在 Azure IoT Central 中创建水质监测应用程序
@@ -22,7 +22,7 @@ ms.locfileid: "80343629"
 
 本教程将为你提供分步指导，帮助你在 Azure IoT Central 中创建水质监测应用程序。 可从 Azure IoT Central 水质监测应用程序模板创建应用程序  。
 
-本教程介绍以下内容：
+在本教程中，学习：
 
 > [!div class="checklist"]
 > * 使用水质监测模板来创建水质监测应用程序  。
@@ -140,13 +140,13 @@ Azure IoT Central 中的设备模板定义了设备的功能。 可用功能包�
 1. 转到“温度”遥测类型  。
 1. 将“显示名称”值更改为“报告的温度”   。
 1. 更改度量单位，或设置最小值和最大值   。
-1. 选择“保存”  。
+1. 选择“保存”。 
 
 #### <a name="add-a-cloud-property"></a>添加云属性
 
 1. 从设备模板菜单中，选择“云属性”  。
 1. 若要添加新的云属性，请选择“+ 添加云属性”  。 在 Azure IoT Central 中，可以添加与设备相关但不应由设备发送的属性。 此类属性的一个示例是特定于安装区域、资产信息或维护信息的警报阈值。
-1. 选择“保存”  。
+1. 选择“保存”。 
 
 ### <a name="explore-views"></a>浏览视图
 

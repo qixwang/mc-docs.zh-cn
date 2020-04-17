@@ -10,10 +10,10 @@ ms.date: 03/30/2020
 ms.author: v-tawe
 ms.custom: mvc, seodec18
 ms.openlocfilehash: 2f5720c8365202c416b1ee03986b6dd5310cbd83
-ms.sourcegitcommit: 44d3fe59952847e5394bbe6c05bd6f333bb56345
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80522103"
 ---
 # <a name="delete-a-backup-for-a-web-using-azure-powershell"></a>使用 Azure PowerShell 删除 Web 应用的备份
@@ -51,7 +51,7 @@ Remove-AzResourceGroup -Name myResourceGroup -Force
 
 此脚本使用以下命令。 表中的每条命令均链接到特定于命令的文档。
 
-| 命令 | 注释 |
+| Command | 说明 |
 |---|---|
 | [Get-AzWebAppBackupList](https://docs.microsoft.com/powershell/module/az.websites/get-azwebappbackuplist) | 获取 Web 应用的备份列表。 |
 | [Remove-AzWebAppBackup](https://docs.microsoft.com/powershell/module/az.websites/remove-azwebappbackup) | 删除 Web 应用的指定备份。 |

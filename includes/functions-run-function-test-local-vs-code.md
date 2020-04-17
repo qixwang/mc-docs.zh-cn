@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 02/13/2020
 ms.author: v-junlch
 ms.openlocfilehash: 84d3ef302da70001910afaec061b9100983792a4
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77428532"
 ---
 ## <a name="run-the-function-locally"></a>在本地运行函数

@@ -9,10 +9,10 @@ ms.topic: overview
 ms.service: iot-central
 services: iot-central
 ms.openlocfilehash: 46ca2e5b42d4557c28e5807ed2f6356d25dcb438
-ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80343104"
 ---
 # <a name="building-government-solutions-with-azure-iot-central"></a>使用 Azure IoT Central 生成政府解决方案

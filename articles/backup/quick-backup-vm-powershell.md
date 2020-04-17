@@ -9,10 +9,10 @@ ms.date: 09/16/2019
 ms.author: v-lingwu
 ms.custom: mvc
 ms.openlocfilehash: 87b5702522f3ab01bdac1b0ab118c0c624d9f57a
-ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75858500"
 ---
 # <a name="back-up-a-virtual-machine-in-azure-with-powershell"></a>使用 PowerShell 在 Azure 中备份虚拟机
@@ -47,7 +47,7 @@ ms.locfileid: "75858500"
 创建保管库时：
 
 - 对于资源组和位置，指定要备份的 VM 的资源组和位置。
-- 如果使用此[示例脚本](../virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm.md?toc=%2fpowershell%2fmodule%2ftoc.json)创建了 VM，则资源组为 myResourceGroup  ，VM 为 *myVM  ，资源位于“中国东部”  区域中。
+- 如果使用此[示例脚本](../virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm.md?toc=%2fpowershell%2fmodule%2ftoc.json)创建了 VM，则资源组为 myResourceGroup****，VM 为 *myVM****，资源位于“中国东部”**** 区域中。
 - Azure 备份会自动处理备份数据的存储。 默认情况下，保管库使用[异地冗余存储 (GRS)](../storage/common/storage-redundancy-grs.md)。 异地冗余可确保将备份数据复制到距主区域数百英里以外的辅助 Azure 区域。
 
 现在创建保管库：

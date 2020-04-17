@@ -7,10 +7,10 @@ origin.date: 11/21/2019
 ms.date: 03/02/2020
 ms.topic: quickstart
 ms.openlocfilehash: ca4a82f61b805966eb245f91ef7b81b27f310eb4
-ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77494015"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-azure-resource-graph-explorer"></a>快速入门：使用 Azure Resource Graph Explorer 运行第一个 Resource Graph 查询
@@ -19,7 +19,7 @@ ms.locfileid: "77494015"
 
 在本快速入门结束时，你已使用 Azure 门户和 Resource Graph Explorer 运行第一个 Resource Graph 查询，并已将结果固定到仪表板。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费](https://azure.microsoft.com/free/)帐户。
 

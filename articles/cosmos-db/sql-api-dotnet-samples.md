@@ -9,10 +9,10 @@ origin.date: 07/23/2019
 ms.date: 10/28/2019
 ms.author: v-yeche
 ms.openlocfilehash: 5bfe40940f23435b862545f242b04964e2b494e3
-ms.sourcegitcommit: 73f07c008336204bd69b1e0ee188286d0962c1d7
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "72913226"
 ---
 # <a name="azure-cosmos-db-net-examples-for-the-sql-api"></a>Azure Cosmos DB：SQL API 的 .NET 示例
@@ -26,9 +26,9 @@ ms.locfileid: "72913226"
 > 
 > 
 
-[azure-cosmos-dotnet-v2](https://github.com/Azure/azure-cosmos-dotnet-v2/tree/master/samples/code-samples) GitHub 存储库中包含可对 Azure Cosmos DB 资源执行 CRUD 操作和其他常见操作的最新 .NET 示例解决方案。 本文提供：
+[azure-cosmos-dotnet-v2](https://github.com/Azure/azure-cosmos-dotnet-v2/tree/master/samples/code-samples) GitHub 存储库中包含可对 Azure Cosmos DB 资源执行 CRUD 操作和其他常见操作的最新 .NET 示例解决方案。 本文将提供：
 
-* 指向每个示例 C# 项目文件中各项任务的链接。 
+* 每个示例 C# 项目文件中各项任务的链接。 
 * 指向相关的 API 参考内容的链接。
 
 有关 .NET SDK 3.0 版（预览版）的代码示例，请参阅 [azure-cosmos-dotnet-v3](https://github.com/Azure/azure-cosmos-dotnet-v3) GitHub 存储库中的最新示例。 
@@ -57,7 +57,7 @@ Azure 订阅，或免费的 Cosmos DB 试用帐户
 | --- | --- |
 | [创建数据库](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/DatabaseManagement/Program.cs#L77) |[DocumentClient.CreateDatabaseIfNotExistsAsync](https://docs.azure.cn/dotnet/api/microsoft.azure.documents.client.documentclient.createdatabaseifnotexistsasync?view=azure-dotnet) |
 | [按 ID 读取数据库](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/DatabaseManagement/Program.cs#L79) |[DocumentClient.ReadDatabaseAsync](https://docs.azure.cn/dotnet/api/microsoft.azure.documents.client.documentclient.readdatabaseasync?view=azure-dotnet) |
-| [Read all the databases](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/DatabaseManagement/Program.cs#L83) |[DocumentClient.ReadDatabaseFeedAsync](https://docs.azure.cn/dotnet/api/microsoft.azure.documents.client.documentclient.readdatabasefeedasync?view=azure-dotnet) |
+| [读取所有数据库](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/DatabaseManagement/Program.cs#L83) |[DocumentClient.ReadDatabaseFeedAsync](https://docs.azure.cn/dotnet/api/microsoft.azure.documents.client.documentclient.readdatabasefeedasync?view=azure-dotnet) |
 | [删除数据库](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/DatabaseManagement/Program.cs#L89) |[DocumentClient.DeleteDatabaseAsync](https://docs.azure.cn/dotnet/api/microsoft.azure.documents.client.documentclient.deletedatabaseasync?view=azure-dotnet) |
 
 ## <a name="collection-examples"></a>集合示例
@@ -66,9 +66,9 @@ Azure 订阅，或免费的 Cosmos DB 试用帐户
 | 任务 | API 参考 |
 | --- | --- |
 | [创建集合](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/CollectionManagement/Program.cs#L109) |[DocumentClient.CreateDocumentCollectionIfNotExistsAsync](https://docs.azure.cn/dotnet/api/microsoft.azure.documents.client.documentclient.createdocumentcollectionifnotexistsasync?view=azure-dotnet) 
-| [Change configured performance of a collection](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/CollectionManagement/Program.cs#L190) |[DocumentClient.ReplaceOfferAsync](https://docs.azure.cn/dotnet/api/microsoft.azure.documents.client.documentclient.replaceofferasync?view=azure-dotnet) |
+| [更改集合的已配置性能](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/CollectionManagement/Program.cs#L190) |[DocumentClient.ReplaceOfferAsync](https://docs.azure.cn/dotnet/api/microsoft.azure.documents.client.documentclient.replaceofferasync?view=azure-dotnet) |
 | [按 ID 获取集合](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/CollectionManagement/Program.cs#L202) |[DocumentClient.ReadDocumentCollectionAsync](https://docs.azure.cn/dotnet/api/microsoft.azure.documents.client.documentclient.readdocumentcollectionasync?view=azure-dotnet) |
-| [Read all the collections in a database](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/CollectionManagement/Program.cs#L215) |[DocumentClient.ReadDocumentCollectionFeedAsync](https://docs.azure.cn/dotnet/api/microsoft.azure.documents.client.documentclient.readdocumentcollectionfeedasync?view=azure-dotnet) |
+| [读取数据库中的所有集合](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/CollectionManagement/Program.cs#L215) |[DocumentClient.ReadDocumentCollectionFeedAsync](https://docs.azure.cn/dotnet/api/microsoft.azure.documents.client.documentclient.readdocumentcollectionfeedasync?view=azure-dotnet) |
 | [删除集合](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/CollectionManagement/Program.cs#L228) |[DocumentClient.DeleteDocumentCollectionAsync](https://docs.azure.cn/dotnet/api/microsoft.azure.documents.client.documentclient.deletedocumentcollectionasync?view=azure-dotnet) |
 
 ## <a name="document-examples"></a>文档示例
@@ -78,7 +78,7 @@ Azure 订阅，或免费的 Cosmos DB 试用帐户
 | --- | --- |
 | [创建文档](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/DocumentManagement/Program.cs#L154) |[DocumentClient.CreateDocumentAsync](https://docs.azure.cn/dotnet/api/microsoft.azure.documents.client.documentclient.createdocumentasync?view=azure-dotnet) |
 | [按 ID 读取文档](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/DocumentManagement/Program.cs#L168) |[DocumentClient.ReadDocumentAsync](https://docs.azure.cn/dotnet/api/microsoft.azure.documents.client.documentclient.readdocumentasync?view=azure-dotnet) |
-| [Read all the documents in a collection](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/DocumentManagement/Program.cs#L190) |[DocumentClient.ReadDocumentFeedAsync](https://docs.azure.cn/dotnet/api/microsoft.azure.documents.client.documentclient.readdocumentfeedasync?view=azure-dotnet) |
+| [读取集合中的所有文档](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/DocumentManagement/Program.cs#L190) |[DocumentClient.ReadDocumentFeedAsync](https://docs.azure.cn/dotnet/api/microsoft.azure.documents.client.documentclient.readdocumentfeedasync?view=azure-dotnet) |
 | [查询文档](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/DocumentManagement/Program.cs#L18-L222) |[DocumentClient.CreateDocumentQuery](https://docs.microsoft.com/previous-versions/azure/dn850285(v=azure.100)) |
 | [替换文档](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/DocumentManagement/Program.cs#L240-L242) |[DocumentClient.ReplaceDocumentAsync](https://docs.azure.cn/dotnet/api/microsoft.azure.documents.client.documentclient.replacedocumentasync?view=azure-dotnet) |
 | [更新插入文档](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/DocumentManagement/Program.cs#L254) |[DocumentClient.UpsertDocumentAsync](https://docs.azure.cn/dotnet/api/microsoft.azure.documents.client.documentclient.upsertdocumentasync?view=azure-dotnet) |

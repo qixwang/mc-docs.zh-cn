@@ -9,10 +9,10 @@ ms.topic: overview
 origin.date: 10/20/2019
 ms.date: 12/16/2019
 ms.openlocfilehash: c6aa73dea0ae0a43cfb5fb23cb26fe94fe6fc607
-ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80343121"
 ---
 # <a name="tutorial-deploy-and-walk-through-a-connected-logistics-application-template"></a>教程：部署并演练互联物流应用程序模板

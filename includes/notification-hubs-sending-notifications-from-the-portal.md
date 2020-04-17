@@ -6,13 +6,13 @@ origin.date: 11/09/2018
 ms.date: 12/09/2019
 ms.author: v-tawe
 ms.openlocfilehash: 67e0784af17ccce4471ca04d489c0f67a1c2d539
-ms.sourcegitcommit: cf73284534772acbe7a0b985a86a0202bfcc109e
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74884810"
 ---
-通常，推送通知是在后端服务（例如，Mobile Apps，或者使用兼容库的 ASP.NET）中发送的。 如果后端没有可用库，也可使用 REST API 直接发送通知消息。
+通常，推送通知是在后端服务（例如，移动应用，或者使用兼容库的 ASP.NET）中发送的。 如果后端没有可用库，也可使用 REST API 直接发送通知消息。
 
 下面是可能需要查看的有关发送通知的其他教程列表：
 

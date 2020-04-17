@@ -13,10 +13,10 @@ ms.reviewer: ''
 origin.date: 07/29/2019
 ms.date: 12/16/2019
 ms.openlocfilehash: d163e66cd8ff2e11000be6c903a24c92e7ec19e7
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75336079"
 ---
 # <a name="quickstart-use-net-core-c-to-query-an-azure-sql-database"></a>快速入门：使用 .NET Core (C#) 查询 Azure SQL 数据库
@@ -26,7 +26,7 @@ ms.locfileid: "75336079"
 > [!TIP]
 > 以下 Microsoft Learn 模块可帮助你免费学习如何[开发和配置可查询 Azure SQL 数据库的 ASP.NET 应用程序](https://docs.microsoft.com/learn/modules/develop-app-that-queries-azure-sql/)
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 对于本教程的内容，你需要：
 
@@ -34,13 +34,13 @@ ms.locfileid: "75336079"
 
   || 单一数据库 | 托管实例 |
   |:--- |:--- |:---|
-  | 创建| [Portal](sql-database-single-database-get-started.md) | [Portal](sql-database-managed-instance-get-started.md) |
+  | 创建| [门户](sql-database-single-database-get-started.md) | [门户](sql-database-managed-instance-get-started.md) |
   || [CLI](scripts/sql-database-create-and-configure-database-cli.md) | [CLI](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) |
   || [PowerShell](scripts/sql-database-create-and-configure-database-powershell.md) | [PowerShell](scripts/sql-database-create-configure-managed-instance-powershell.md) |
   | 配置 | [服务器级别 IP 防火墙规则](sql-database-server-level-firewall-rule.md)| [从 VM 进行连接](sql-database-managed-instance-configure-vm.md)|
   |||[从现场进行连接](sql-database-managed-instance-configure-p2s.md)
   |加载数据|根据快速入门加载的 Adventure Works|[还原 Wide World Importers](sql-database-managed-instance-get-started-restore.md)
-  |||从 [GitHub](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works) 所提供的 [BACPAC](sql-database-import.md) 文件还原或导入 Adventure Works|
+  |||从 [GitHub](sql-database-import.md) 所提供的 [BACPAC](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works) 文件还原或导入 Adventure Works|
   |||
 
   > [!IMPORTANT]
@@ -55,7 +55,7 @@ ms.locfileid: "75336079"
 
 获取连接到 Azure SQL 数据库所需的连接信息。 在后续过程中，将需要完全限定的服务器名称或主机名称、数据库名称和登录信息。
 
-1. 登录到 [Azure 门户](https://portal.azure.cn/)。
+1. 登录 [Azure 门户](https://portal.azure.cn/)。
 
 2. 导航到“SQL 数据库”或“SQL 托管实例”页。  
 
@@ -73,14 +73,14 @@ ms.locfileid: "75336079"
   
 ## <a name="create-a-new-net-core-project"></a>创建新的 .NET Core 项目
 
-1. 打开命令提示符，并创建一个名为 **sqltest** 的文件夹。 导航到此文件夹，并运行以下命令。
+1. 打开命令提示符，然后创建一个名为 sqltest 的文件夹  。 导航到此文件夹，并运行以下命令。
 
     ```cmd
     dotnet new console
     ```
     此命令将创建新的应用项目文件，包括初始 C# 代码文件 (**Program.cs**)、XML 配置文件 (**sqltest.csproj**) 和所需的二进制文件。
 
-2. 在文本编辑器中，打开 sqltest.csproj 并在 `<Project>` 标记之间粘贴以下 XML  。 此 XML 会添加 `System.Data.SqlClient` 作为依赖项。
+2. 在文本编辑器中，打开 sqltest.csproj 并在  **标记之间粘贴以下 XML**`<Project>`。 此 XML 会添加 `System.Data.SqlClient` 作为依赖项。
 
     ```xml
     <ItemGroup>
@@ -193,7 +193,7 @@ namespace sqltest
 
    Done. Press enter.
    ```
-3. 选择 **Enter** 以关闭应用程序窗口。
+3. 选择 Enter 关闭应用程序窗口  。
 
 ## <a name="next-steps"></a>后续步骤
 

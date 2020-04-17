@@ -15,10 +15,10 @@ origin.date: 08/19/2019
 ms.date: 09/23/2019
 ms.author: v-jay
 ms.openlocfilehash: c907d63c3d56e25ba3ae4321a95fb78ec9955ef6
-ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77494507"
 ---
 # <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---net"></a>教程：基于 URL 对远程文件进行编码并流式传输视频 - .NET
@@ -32,7 +32,7 @@ ms.locfileid: "77494507"
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 - 如果没有安装 Visual Studio，可下载 [Visual Studio Community 2017](https://www.visualstudio.com/thank-you-downloading-visual-studio/?sku=Community&rel=15)。
 - [创建媒体服务帐户](create-account-cli-how-to.md)。<br/>请务必记住用于资源组名称和媒体服务帐户名称的值。
@@ -50,7 +50,7 @@ ms.locfileid: "77494507"
 
 打开下载的项目中的 [appsettings.json](https://github.com/Azure-Samples/media-services-v3-dotnet-quickstarts/blob/master/AMSV3Quickstarts/EncodeAndStreamFiles/appsettings.json)。 将值替换为在[访问 API](access-api-cli-how-to.md) 中获取的凭据。
 
-此示例执行以下操作：
+该示例执行以下操作：
 
 1. 创建一个**转换**（首先，检查指定的转换是否存在）。 
 2. 创建一个输出**资产**，用作编码**作业**的输出。

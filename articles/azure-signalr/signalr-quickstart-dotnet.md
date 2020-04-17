@@ -9,10 +9,10 @@ origin.date: 04/20/2019
 ms.date: 12/16/2019
 ms.author: v-tawe
 ms.openlocfilehash: 1eec6a0a6ca777acea62a839d5e15e9682c1cfb4
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75334864"
 ---
 # <a name="quickstart-create-a-chat-room-with-aspnet-and-signalr-service"></a>快速入门：使用 ASP.NET 和 SignalR 服务创建聊天室
@@ -47,7 +47,7 @@ ASP.NET SignalR 应用程序不支持无服务器模式。  对于 Azure SignalR
 
 1. 打开 git 终端窗口。 切换到要克隆示例项目的文件夹。
 
-1. 运行下列命令，克隆示例存储库。 此命令在计算机上创建示例应用程序的副本。
+1. 运行下列命令以克隆示例存储库。 此命令在计算机上创建示例应用程序的副本。
 
     ```bash
     git clone https://github.com/aspnet/AzureSignalR-samples.git
@@ -111,7 +111,7 @@ ASP.NET SignalR 应用程序不支持无服务器模式。  对于 Azure SignalR
 在“按名称筛选...”文本框中键入资源组的名称  。 本快速入门的说明使用了名为“SignalRTestResources”的资源组  。 在结果列表中的资源组上，单击“...”，然后单击“删除资源组”   。
 
    
-![Delete](./media/signalr-quickstart-dotnet-core/signalr-delete-resource-group.png)
+![删除](./media/signalr-quickstart-dotnet-core/signalr-delete-resource-group.png)
 
 片刻之后，将会删除该资源组及其包含的所有资源。
 

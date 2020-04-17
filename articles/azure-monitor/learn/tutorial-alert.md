@@ -9,23 +9,23 @@ origin.date: 04/10/2019
 ms.date: 02/19/2020
 ms.custom: mvc
 ms.openlocfilehash: c2746f580f17d4363b5c58a5ceda6ec34973f5f4
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78850293"
 ---
 # <a name="monitor-and-alert-on-application-health-with-azure-application-insights"></a>使用 Azure Application Insights 监视和警报应用程序的运行状况
 
 Azure Application Insights 可用于监视应用程序，并在其不可用、遇到故障或性能问题时发送警报。  本教程将指导你创建测试，以便连续检查应用程序的可用性。
 
-你将学习如何执行以下操作：
+学习如何：
 
 > [!div class="checklist"]
 > * 创建可用性测试以持续检查应用程序的响应
 > * 出现问题时向管理员发送邮件
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 完成本教程：
 

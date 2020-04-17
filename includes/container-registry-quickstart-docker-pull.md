@@ -10,16 +10,16 @@ ms.date: 02/18/2019
 ms.author: v-yeche
 ms.custom: include file
 ms.openlocfilehash: 81bf959e69bbad5e4b8c1e1b1df1c27f77212d50
-ms.sourcegitcommit: 7e25a709734f03f46418ebda2c22e029e22d2c64
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56440057"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63823450"
 ---
 <!--Verify successfully-->
 ## <a name="run-image-from-registry"></a>从注册表运行映像
 
-现在，可以使用 [docker run][docker-run] 从容器注册表拉取并运行 `hello-world:v1` 容器映像：
+现在，可以使用 `hello-world:v1`docker run[ 从容器注册表拉取并运行 ][docker-run] 容器映像：
 
 ```
 docker run <acrLoginServer>/hello-world:v1  

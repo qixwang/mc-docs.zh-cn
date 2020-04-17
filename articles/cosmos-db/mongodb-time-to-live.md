@@ -1,6 +1,6 @@
 ---
 title: Azure Cosmos DB 中的 MongoDB 按文档 TTL 功能
-description: 了解如何使用 Azure Cosmos DB 的用于 MongoDB 的 API 为文档设置生存时间值，以便在一段时间过后将其从系统中自动清除。
+description: 了解如何使用 Azure Cosmos DB 的 MongoDB API 为文档设置生存时间值，以便在一段时间后将其从系统中自动清除。
 author: rockboyfor
 ms.author: v-yeche
 ms.service: cosmos-db
@@ -9,15 +9,15 @@ ms.topic: quickstart
 origin.date: 12/26/2018
 ms.date: 03/18/2019
 ms.openlocfilehash: 8899633b27dc4ecb6ab25564198570c525837ad7
-ms.sourcegitcommit: c5646ca7d1b4b19c2cb9136ce8c887e7fcf3a990
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/17/2019
-ms.locfileid: "58004530"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63824576"
 ---
-# <a name="expire-data-with-azure-cosmos-dbs-api-for-mongodb"></a>使用 Azure Cosmos DB 的用于 MongoDB 的 API 使数据过期
+# <a name="expire-data-with-azure-cosmos-dbs-api-for-mongodb"></a>使用 Azure Cosmos DB 的用于 MongoDB 的 API 过期数据
 
-生存时间 (TTL) 功能允许数据库将数据自动过期。 Azure Cosmos DB 的用于 MongoDB 的 API 利用 Cosmos DB 的核心 TTL 功能。 支持两种模式：一是在整个集合上设置默认的 TTL 值，二是为每个文档设置单独的 TTL 值。 Azure Cosmos DB 的用于 MongoDB 的 API 中用于控制 TTL 索引和按文档 TTL 值的逻辑[与 Cosmos DB 中的相同](../cosmos-db/mongodb-indexing.md)。
+生存时间 (TTL) 功能允许数据库将数据自动过期。 Azure Cosmos DB 的用于 MongoDB 的 API 使用了 Cosmos DB 的核心 TTL 功能。 支持两种模式：一是在整个集合上设置默认的 TTL 值，二是为每个文档设置单独的 TTL 值。 Cosmos DB 的用于 MongoDB 的 API 中的控制 TTL 索引和按文档 TTL 值的逻辑与 [Cosmos DB 中的相同](../cosmos-db/mongodb-indexing.md)。
 
 ## <a name="ttl-indexes"></a>TTL 索引
 若要在集合上普遍启用 TTL，需创建[“TTL 索引”（生存时间索引）](../cosmos-db/mongodb-indexing.md)。 TTL 索引是 _ts 字段上的索引，其值为“expireAfterSeconds”。
@@ -80,6 +80,6 @@ globaldb:PRIMARY> db.coll.insert({id:1, location: "Paris", ttl: NumberLong(21474
 
 ## <a name="next-steps"></a>后续步骤
 * [利用生存时间使 Azure Cosmos DB 中的数据自动过期](../cosmos-db/time-to-live.md)
-* [为使用 Azure Cosmos DB 的用于 MongoDB 的 API 配置的 Cosmos 数据库编制索引](../cosmos-db/mongodb-indexing.md)
+* [索引使用 Azure Cosmos DB 的用于 MongoDB 的 API 配置的 Azure Cosmos 数据库](../cosmos-db/mongodb-indexing.md)
 
 <!-- Update_Description: update meta properties, wording update -->

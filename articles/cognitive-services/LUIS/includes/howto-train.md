@@ -11,10 +11,10 @@ ms.topic: include
 ms.date: 11/04/2019
 ms.author: diberry
 ms.openlocfilehash: 39ae4b40e26ffd68bf0f4e867d5ad0ba4ecb09ba
-ms.sourcegitcommit: cf73284534772acbe7a0b985a86a0202bfcc109e
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74884472"
 ---
 1. 在 LUIS 网站的右上方，选择“训练”按钮  。 

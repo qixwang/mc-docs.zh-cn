@@ -13,10 +13,10 @@ ms.date: 03/26/2020
 ms.author: v-lingwu
 zone_pivot_groups: programming-languages-set-one
 ms.openlocfilehash: 0e23a2b02dbc0e269290b58af7b6f70b07075b0f
-ms.sourcegitcommit: 303a16c7117b6f3495ef0493b4ae8ccb67d7dbba
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80342984"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-transliterate-text"></a>快速入门：通过文本翻译 API 对文本进行直译

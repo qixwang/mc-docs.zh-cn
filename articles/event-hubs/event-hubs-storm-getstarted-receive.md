@@ -17,10 +17,10 @@ origin.date: 11/05/2019
 ms.date: 12/02/2019
 ms.author: v-tawe
 ms.openlocfilehash: a9142addf0c48e81c8ae3d6c816f10e94a00ec75
-ms.sourcegitcommit: 298eab5107c5fb09bf13351efeafab5b18373901
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74657999"
 ---
 # <a name="quickstart-receive-events-from-event-hubs-using-apache-storm"></a>快速入门：使用 Apache Storm 从事件中心接收事件
@@ -30,15 +30,15 @@ ms.locfileid: "74657999"
 有关事件中心接收模式的详细信息，请参阅[事件中心概述][Event Hubs overview]。
 
 ## <a name="prerequisites"></a>先决条件
-开始本快速入门之前，请**创建事件中心命名空间和事件中心**。 使用 [Azure 门户](https://portal.azure.cn)创建事件中心类型的命名空间，并获取应用程序与事件中心进行通信所需的管理凭据。 要创建命名空间和事件中心，请按照[此文](event-hubs-create.md)中的步骤操作。 
+在开始学习本快速入门之前，请**创建事件中心命名空间和事件中心**。 使用 [Azure 门户](https://portal.azure.cn)创建事件中心类型的命名空间，并获取应用程序与事件中心进行通信所需的管理凭据。 要创建命名空间和事件中心，请按照[此文](event-hubs-create.md)中的步骤操作。 
 
 ## <a name="create-project-and-add-code"></a>创建项目并添加代码
 
 本教程使用安装的 [HDInsight Storm][HDInsight Storm]，其中随附了现成可用的事件中心 Spout。
 
-1. 请按照 [HDInsight Storm - 入门](../hdinsight/storm/apache-storm-overview.md) 过程创建新 HDInsight 群集，并通过远程桌面连接该群集。
+1. 请按照 [HDInsight Storm - 入门](../hdinsight/storm/apache-storm-overview.md)过程创建新 HDInsight 群集，并通过远程桌面连接该群集。
 2. 将 `%STORM_HOME%\examples\eventhubspout\eventhubs-storm-spout-0.9-jar-with-dependencies.jar` 文件复制到本地开发环境。 其中包含 events-storm-spout。
-3. 使用以下命令将程序包安装到本地 Maven 存储中。 这样，在后面的步骤中，您便可以在 Storm 项目中将它添加为引用。
+3. 使用以下命令将程序包安装到本地 Maven 存储中。 这样，在后面的步骤中，便可以在 Storm 项目中将它添加为引用。
 
     ```shell
     mvn install:install-file -Dfile=target\eventhubs-storm-spout-0.9-jar-with-dependencies.jar -DgroupId=com.microsoft.eventhubs -DartifactId=eventhubs-storm-spout -Dversion=0.9 -Dpackaging=jar
@@ -96,7 +96,7 @@ ms.locfileid: "74657999"
     eventhubspout.checkpoint.interval = 10
     eventhub.receiver.credits = 10
     ```
-    **eventhub.receiver.credits** 的值决定在被发布到 Storm 管道之前先进行批处理的事件的数量。 为了简单起见，本示例将此值设置为 10。 在生产中，通常应将它设置为较高的值，例如 1024。
+    **eventhub.receiver.credits** 的值决定在将事件发布到 Storm 管道之前先进行批处理的事件的数量。 为了简单起见，本示例将此值设置为 10。 在生产中，通常应将它设置为较高的值，例如 1024。
 10. 使用以下代码创建名为 **LoggerBolt** 的新类：
 
     ```java
@@ -248,7 +248,7 @@ ms.locfileid: "74657999"
 
 * [事件中心概述][Event Hubs overview]
 * [创建事件中心](event-hubs-create.md)
-* [事件中心常见问题](event-hubs-faq.md)
+* [事件中心常见问题解答](event-hubs-faq.md)
 
 <!-- Links -->
 [Event Hubs overview]: event-hubs-what-is-event-hubs.md

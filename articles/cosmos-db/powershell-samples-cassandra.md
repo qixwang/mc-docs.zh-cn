@@ -8,10 +8,10 @@ origin.date: 12/02/2019
 ms.date: 02/10/2020
 ms.author: v-yeche
 ms.openlocfilehash: c0af04accc8adec70549cc704272ccb81d56a88d
-ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77028777"
 ---
 # <a name="azure-powershell-samples-for-azure-cosmos-db---cassandra-api"></a>适用于 Azure Cosmos DB 的 Azure PowerShell 示例 - Cassandra API

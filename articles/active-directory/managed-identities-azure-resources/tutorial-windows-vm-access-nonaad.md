@@ -16,10 +16,10 @@ ms.date: 02/06/2020
 ms.author: v-junlch
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 965569d3bbcdf8b81437b12758ea1983d79e7f8c
-ms.sourcegitcommit: 7c80405a6b48380814b4b414e9f8a5756c007880
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77067590"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-key-vault"></a>教程：使用 Windows VM 系统分配的托管标识访问 Azure Key Vault 
@@ -28,14 +28,14 @@ ms.locfileid: "77067590"
 
 本教程介绍了如何使用 Windows 虚拟机 (VM) 系统分配的托管标识来访问 Azure Key Vault。 作为引导，Key Vault 随后可让客户端应用程序使用机密访问未受 Azure Active Directory (AD) 保护的资源。 托管服务标识由 Azure 自动管理，可用于向支持 Azure AD 身份验证的服务进行身份验证，这样就无需在代码中插入凭据了。 
 
-你将学习如何执行以下操作：
+学习如何：
 
 
 > [!div class="checklist"]
 > * 授予 VM 对 Key Vault 中存储的密钥的访问权限 
 > * 使用 VM 标识获取访问令牌，并使用它来检索 Key Vault 中的密钥 
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 [!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
 
@@ -48,7 +48,7 @@ ms.locfileid: "77067590"
 
 ## <a name="grant-access"></a>授予访问权限  
  
-本部分说明如何授予 VM 访问密钥保管库中存储的机密的权限。 使用 Azure 资源的托管标识，代码可以获取访问令牌，对支持 Azure AD 身份验证的资源进行身份验证。  但是，并非所有 Azure 服务都支持 Azure AD 身份验证。 若要将 Azure 资源的托管标识用于这些服务，请将服务凭据存储在 Azure Key Vault 中，然后使用 VM 的托管标识访问 Key Vault 以检索凭据。 
+本部分说明如何授予 VM 访问密钥保管库中存储的密钥的权限。 使用 Azure 资源的托管标识，代码可以获取访问令牌，对支持 Azure AD 身份验证的资源进行身份验证。  但是，并非所有 Azure 服务都支持 Azure AD 身份验证。 若要将 Azure 资源的托管标识用于这些服务，请将服务凭据存储在 Azure Key Vault 中，然后使用 VM 的托管标识访问 Key Vault 以检索凭据。 
 
 首先，我们需要创建一个 Key Vault 并授予 VM 的系统分配托管标识对 Key Vault 的访问权限。   
 
@@ -128,6 +128,6 @@ ms.locfileid: "77067590"
 在本教程中，你已学习了如何使用 Windows VM 系统分配的托管标识来访问 Azure Key Vault。  若要详细了解 Azure Key Vault，请参阅：
 
 > [!div class="nextstepaction"]
->[Azure 密钥保管库](/key-vault/key-vault-overview)
+>[Azure Key Vault](/key-vault/key-vault-overview)
 
 <!-- Update_Description: wording update -->

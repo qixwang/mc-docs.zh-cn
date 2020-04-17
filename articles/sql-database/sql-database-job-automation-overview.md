@@ -12,10 +12,10 @@ ms.reviewer: carlr
 origin.date: 03/10/2020
 ms.date: 03/30/2020
 ms.openlocfilehash: caad271317fc586b4175591b436de7645fb865b1
-ms.sourcegitcommit: 90660563b5d65731a64c099b32fb9ec0ce2c51c6
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80341821"
 ---
 # <a name="automate-management-tasks-using-database-jobs"></a>使用数据库作业自动完成管理任务
@@ -52,7 +52,7 @@ Azure SQL 数据库允许创建和计划可针对一个或多个数据库定期�
 
 | |弹性作业 |SQL 代理 |
 |---------|---------|---------|
-|作用域 | 作业代理所在 Azure 云中任意数目的 Azure SQL 数据库和/或数据仓库。 目标可以位于不同的 SQL 数据库服务器、订阅和/或区域中。 <br><br>目标组可以包含单个数据库或数据仓库，也可以包含某个服务器、池或分片映射中的所有数据库（在作业运行时动态枚举）。 | SQL 代理所在 SQL Server 实例中的任何单个数据库。 |
+|范围 | 作业代理所在 Azure 云中任意数目的 Azure SQL 数据库和/或数据仓库。 目标可以位于不同的 SQL 数据库服务器、订阅和/或区域中。 <br><br>目标组可以包含单个数据库或数据仓库，也可以包含某个服务器、池或分片映射中的所有数据库（在作业运行时动态枚举）。 | SQL 代理所在 SQL Server 实例中的任何单个数据库。 |
 |支持的 API 和工具 | 门户、PowerShell、T-SQL、Azure 资源管理器 | T-SQL、SQL Server Management Studio (SSMS) |
 
 ## <a name="sql-agent-jobs"></a>SQL 代理作业
@@ -206,7 +206,7 @@ EXEC msdb.dbo.sp_update_job @job_name=N'Load data using SSIS',
 
  作业数据库不一定需要是新的，但应该干净且为空，其服务目标应该为 S0 或更高。 作业数据库的服务对象建议使用  S1 或更高，但最佳选择取决于作业的性能需求：作业步骤数，作业目标数，以及作业的运行频率。 例如，对于每小时只运行数个作业且以十个以下数据库为目标的作业代理，也许 S0 数据库就够用了，但 S0 数据库的每分钟运行一个作业的速度可能不够快，因此使用更高的服务层级可能会更好。
 
-如果针对作业数据库的操作的速度比预期慢，则在出现速度缓慢的情况时使用 Azure 门户或 [sys.dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) DMV [监视](sql-database-monitor-tune-overview.md#sql-database-resource-monitoring)作业数据库中的数据库性能和资源利用率。 如果资源（如 CPU、数据 IO 或日志写入）的使用率达到 100%，且与出现缓慢情况的时间段相关，请考虑以增量方式将数据库扩展到更高的服务目标（采用 [DTU 模型](sql-database-service-tiers-dtu.md)或 [vCore 模型](sql-database-service-tiers-vcore.md)），直到工作数据库性能得到充分改进。
+如果针对作业数据库的操作的速度比预期慢，则在出现速度缓慢的情况时使用 Azure 门户或 [sys.dm_db_resource_stats](sql-database-monitor-tune-overview.md#sql-database-resource-monitoring) DMV [监视](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)作业数据库中的数据库性能和资源利用率。 如果资源（如 CPU、数据 IO 或日志写入）的使用率达到 100%，且与出现缓慢情况的时间段相关，请考虑以增量方式将数据库扩展到更高的服务目标（采用 [DTU 模型](sql-database-service-tiers-dtu.md)或 [vCore 模型](sql-database-service-tiers-vcore.md)），直到工作数据库性能得到充分改进。
 
 ##### <a name="job-database-permissions"></a>作业数据库权限
 

@@ -16,17 +16,17 @@ ms.date: 02/06/2020
 ms.author: v-junlch
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cfbd1e53e827ce784f55dc6cde71bfa4fd390065
-ms.sourcegitcommit: 7c80405a6b48380814b4b414e9f8a5756c007880
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77067684"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-storage"></a>教程：使用 Windows VM 系统分配的托管标识访问 Azure 存储
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
-本教程介绍了如何使用 Windows 虚拟机 (VM) 的系统分配的托管标识来访问 Azure 存储。 你将学习如何执行以下操作：
+本教程介绍了如何使用 Windows 虚拟机 (VM) 的系统分配的托管标识来访问 Azure 存储。 学习如何：
 
 > [!div class="checklist"]
 > * 在存储帐户中创建 Blob 容器
@@ -60,7 +60,7 @@ ms.locfileid: "77067684"
 3. 在“名称”  下，输入存储帐户的名称。
 4. “部署模型”和“帐户类型”应分别设置为“资源管理器”和“存储(常规用途 v1)”。    
 5. 确保“订阅”和“资源组”与上一步中创建 VM 时指定的名称匹配。  
-6. 单击**创建**。
+6. 单击“创建”。 
 
     ![新建存储帐户](./media/msi-tutorial-linux-vm-access-storage/msi-storage-create.png)
 

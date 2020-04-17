@@ -10,10 +10,10 @@ ms.service: iot-central
 services: iot-central
 manager: eliotgra
 ms.openlocfilehash: 4a47b6d5f617bc907175835a6d4ea05ea1dcbefc
-ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80343445"
 ---
 # <a name="tutorial-deploy-and-walkthrough-a-continuous-patient-monitoring-app-template"></a>教程：部署和演练持续患者监视应用模板
@@ -22,7 +22,7 @@ ms.locfileid: "80343445"
 
 本教程向解决方案构建人员介绍如何通过部署 IoT Central 持续患者监视应用程序模板开始入门。 你将了解如何部署模板、有哪些现成的内容以及接下来要做什么。
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 创建应用程序模板

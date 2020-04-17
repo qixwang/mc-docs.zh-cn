@@ -10,10 +10,10 @@ ms.date: 09/09/2019
 ms.author: v-yeche
 ms.custom: include file
 ms.openlocfilehash: 8fb6e570fada4b7a022f91081fed6c07b54e3bdb
-ms.sourcegitcommit: 66192c23d7e5bf83d32311ae8fbb83e876e73534
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "70254540"
 ---
 <!--Verify sucessfully-->
@@ -29,7 +29,7 @@ ms.locfileid: "70254540"
 
     设置|建议的值|说明
     ---|---|---
-    数据库 ID|sample-database|输入“sample-database”  作为新数据库的名称。 `/ \ # ?` 或尾随空格。
+    数据库 ID|sample-database|输入“sample-database”  作为新数据库的名称。 数据库名称的长度必须为 1 到 255 个字符，不能包含 `/ \ # ?` 或尾随空格。
     吞吐量|400 RU|将吞吐量更改为每秒 400 个请求单位 (RU/s)。 如果想要减少延迟，以后可以增加吞吐量。
     图形 ID|sample-graph|输入“sample-graph”  作为新集合的名称。 图形名称与数据库 ID 的字符要求相同。
     分区键| /pk |所有 Cosmos DB 帐户都需要一个分区键才能进行水平缩放。 在[图形数据分区](/cosmos-db/graph-partitioning)一文中了解如何选择适当的分区键。

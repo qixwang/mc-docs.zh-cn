@@ -11,10 +11,10 @@ ms.date: 03/23/2020
 ms.topic: tutorial
 ms.service: event-hubs
 ms.openlocfilehash: b6452acd9ecba32feed2b657adf01902df2633db
-ms.sourcegitcommit: 4ba6d7c8bed5398f37eb37cf5e2acafcdcc28791
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79133677"
 ---
 # <a name="tutorial-migrate-captured-event-hubs-data-to-a-sql-data-warehouse-using-event-grid-and-azure-functions"></a>教程：使用事件网格和 Azure Functions 将捕获的事件中心数据迁移到 SQL 数据仓库
@@ -125,7 +125,7 @@ WITH (CLUSTERED COLUMNSTORE INDEX, DISTRIBUTION = ROUND_ROBIN);
 
 1. 在 Visual Studio 配置好配置文件后，选择“发布”  。
 
-   ![选择“发布”](./media/store-captured-data-data-warehouse/select-publish.png)
+   ![选择发布](./media/store-captured-data-data-warehouse/select-publish.png)
 
 发布函数后，即可订阅事件中心的捕获事件！
 

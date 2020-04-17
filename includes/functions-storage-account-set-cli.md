@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 03/19/2020
 ms.author: v-junlch
 ms.openlocfilehash: 3e295d70ba354ce5da3b5eaab0acff498ee86d37
-ms.sourcegitcommit: e500354e2fd8b7ac3dddfae0c825cc543080f476
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79546891"
 ---
 ### <a name="set-the-storage-account-connection"></a>设置存储帐户连接

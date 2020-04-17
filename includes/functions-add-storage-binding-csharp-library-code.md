@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 03/02/2020
 ms.author: v-junlch
 ms.openlocfilehash: 2e46d9d2dd4d857272b44d33ea8d5c5b12c1b1fc
-ms.sourcegitcommit: 1ac138a9e7dc7834b5c0b62a133ca5ce2ea80054
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78266058"
 ---
 添加使用 `msg` 输出绑定对象来创建队列消息的代码。 请在方法返回之前添加此代码。

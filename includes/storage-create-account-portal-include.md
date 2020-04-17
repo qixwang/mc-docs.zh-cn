@@ -10,10 +10,10 @@ ms.date: 02/10/2020
 ms.author: v-jay
 ms.custom: include file
 ms.openlocfilehash: 0dc7d44519a2a713f99331b032a8ea0182fe67ed
-ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77028555"
 ---
 若要在 Azure 门户中创建常规用途 v2 存储帐户，请执行以下步骤：
@@ -29,10 +29,10 @@ ms.locfileid: "77028555"
 6. 选择存储帐户的位置或使用默认位置。
 7. 将这些字段设置为其默认值：
 
-   |字段  |Value  |
+   |字段  |值  |
    |---------|---------|
-   |部署模型     |Resource Manager         |
-   |性能     |标准         |
+   |部署模型     |资源管理器         |
+   |性能     |Standard         |
    |帐户类型     |StorageV2（常规用途 v2）         |
    |复制     |读取访问异地冗余存储 (RA-GRS)         |
    |访问层     |热         |
@@ -41,4 +41,4 @@ ms.locfileid: "77028555"
 9. 选择“查看+创建”  可查看存储帐户设置并创建帐户。
 10. 选择“创建”  。
 
-有关存储帐户类型和其他存储帐户设置的详细信息，请参阅 [Azure 存储帐户概述](/storage/common/storage-account-overview)。 有关资源组的详细信息，请参阅 [Azure Resource Manager 概述](/azure-resource-manager/resource-group-overview)。 
+有关存储帐户类型和其他存储帐户设置的详细信息，请参阅 [Azure 存储帐户概述](/storage/common/storage-account-overview)。 有关资源组的详细信息，请参阅 [Azure 资源管理器概述](/azure-resource-manager/resource-group-overview)。 

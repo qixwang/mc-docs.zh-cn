@@ -10,10 +10,10 @@ ms.service: iot-dps
 services: iot-dps
 manager: eliotgra
 ms.openlocfilehash: ff91bf45f331e9ebc3b03d991d4d21eecdd1fbba
-ms.sourcegitcommit: 1d3d8dfdaf6281f06640cbee7124a1e8bf102c50
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80243903"
 ---
 # <a name="provisioning-devices-with-azure-iot-hub-device-provisioning-service"></a>使用 Azure IoT 中心设备预配服务预配设备
@@ -44,7 +44,7 @@ Microsoft Azure 提供一套丰富的集成公有云服务，满足所有 IoT �
 7. 设备连接到 IoT 中心。
 8. 设备从其在 IoT 中心中的设备孪生获取所需的状态。
 
-## <a name="provisioning-process"></a>设置过程
+## <a name="provisioning-process"></a>预配过程
 在设备的部署过程中有两个不同的步骤，其中 DPS 部分可以独立完成：
 
 * 制造步骤，其中设备在出厂时创建和准备，以及 

@@ -11,20 +11,20 @@ origin.date: 08/12/2019
 ms.date: 03/30/2020
 ms.author: v-tawe
 ms.openlocfilehash: 76e8cd3c51c4a427662307198948ae3d725a6066
-ms.sourcegitcommit: 5fb45da006859215edc8211481f13174aa43dbeb
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80634335"
 ---
 # <a name="how-to-use-key-vault-soft-delete-with-cli"></a>如何将 Key Vault 软删除与 CLI 配合使用
 
-Azure Key Vault 的软删除功能可以恢复已删除的保管库和保管库对象。 具体而言，软删除可解决以下方案：
+Azure Key Vault 的软删除功能可以恢复已删除的保管库和保管库对象。 软删除将具体探讨以下方案：
 
 - 支持 Key Vault 的可恢复删除
-- 支持 Key Vault 对象、密钥、机密和证书的可恢复删除
+- 支持密钥保管库对象、密钥、机密和证书的可恢复删除
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - Azure CLI - 如果环境没有此设置，请参阅[使用 Azure CLI 管理 Key Vault](key-vault-manage-with-cli2.md)。
 
@@ -34,13 +34,13 @@ Azure Key Vault 的软删除功能可以恢复已删除的保管库和保管库�
 
 Key Vault 操作通过基于角色的访问控制 (RBAC) 权限单独管理，如下所示：
 
-| 操作 | 说明 | 用户权限 |
+| Operation | 说明 | 用户权限 |
 |:--|:--|:--|
-|列出|列出已删除的 Key Vault。|Microsoft.KeyVault/deletedVaults/read|
-|恢复|还原已删除的 Key Vault。|Microsoft.KeyVault/vaults/write|
-|清除|永久移除已删除的 Key Vault 及其所有内容。|Microsoft.KeyVault/locations/deletedVaults/purge/action|
+|列出|列出已删除的密钥保管库。|Microsoft.KeyVault/deletedVaults/read|
+|恢复|还原已删除的密钥保管库。|Microsoft.KeyVault/vaults/write|
+|清除|永久删除已删除的密钥保管库及其所有内容。|Microsoft.KeyVault/locations/deletedVaults/purge/action|
 
-有关权限和访问控制的详细信息，请参阅[保护 Key Vault](key-vault-secure-your-key-vault.md)。
+有关权限和访问控制的详细信息，请参阅[保护密钥保管库](key-vault-secure-your-key-vault.md)。
 
 ## <a name="enabling-soft-delete"></a>启用软删除
 
@@ -49,17 +49,17 @@ Key Vault 操作通过基于角色的访问控制 (RBAC) 权限单独管理，�
 > [!IMPORTANT]
 > 在密钥保管库上启用“软删除”是不可逆的操作。 将软删除属性设置为“true”后，将无法更改或删除该属性。  
 
-### <a name="existing-key-vault"></a>现有的 Key Vault
+### <a name="existing-key-vault"></a>现有的密钥保管库
 
-对于名为 ContosoVault 的现有 Key Vault，请按如下所示启用软删除。 
+对于名为 ContosoVault 的现有密钥保管库，请按如下所示启用软删除。 
 
 ```azurecli
 az resource update --id $(az keyvault show --name ContosoVault -o tsv | awk '{print $1}') --set properties.enableSoftDelete=true
 ```
 
-### <a name="new-key-vault"></a>新的 Key Vault
+### <a name="new-key-vault"></a>新的密钥保管库
 
-通过向创建命令添加软删除启用标志，在创建时启用对新 Key Vault 的软删除。
+通过向创建命令添加软删除启用标志，在创建时启用对新密钥保管库的软删除。
 
 ```azurecli
 az keyvault create --name ContosoVault --resource-group ContosoRG --enable-soft-delete true --location chinanorth
@@ -67,7 +67,7 @@ az keyvault create --name ContosoVault --resource-group ContosoRG --enable-soft-
 
 ### <a name="verify-soft-delete-enablement"></a>验证软删除支持
 
-若要验证 Key Vault 是否启用了软删除，请运行 show 命令，并查找“Soft Delete Enabled?”  属性：
+若要验证密钥保管库是否启用了软删除，请运行“显示”命令，并查看“启用软删除?”  属性：
 
 ```azurecli
 az keyvault show --name ContosoVault
@@ -84,7 +84,7 @@ az keyvault show --name ContosoVault
 az keyvault delete --name ContosoVault
 ```
 
-### <a name="how-soft-delete-protects-your-key-vaults"></a>软删除如何保护 Key Vault
+### <a name="how-soft-delete-protects-your-key-vaults"></a>软删除如何保护密钥保管库
 
 已启用软删除：
 
@@ -92,16 +92,16 @@ az keyvault delete --name ContosoVault
 - 只要已删除对象中包含的密钥保管库处于已删除状态，就无法访问这些已删除的对象（如密钥、机密和证书）。 
 - 保留已删除密钥保管库的 DNS 名称，这会阻止创建具有相同名称的新密钥保管库。  
 
-使用以下命令，可查看与订阅关联且处于已删除状态的 Key Vault：
+使用以下命令，可查看与订阅关联且处于已删除状态的密钥保管库：
 
 ```azurecli
 az keyvault list-deleted
 ```
 - ID 可用于在恢复或清除时识别资源  。 
-- 资源 ID是此保管库的原始资源 ID  。 由于此 Key Vault 现在处于已删除状态，因此该资源 ID 不存在任何资源。 
-- “计划清除日期”表示如果不采取任何操作，将永久删除保管库  。 用于计算“Scheduled Purge Date”的默认保留期是 90 天  。
+- 资源 ID是此保管库的原始资源 ID  。 由于此密钥保管库现在处于已删除状态，因此该资源 ID 不存在任何资源。 
+- “计划清除日期”表示如果不采取任何操作，将永久删除保管库  。 用于计算“计划清除日期”的默认保留期是 90 天  。
 
-## <a name="recovering-a-key-vault"></a>恢复 Key Vault
+## <a name="recovering-a-key-vault"></a>恢复密钥保管库
 
 若要恢复密钥保管库，请指定密钥保管库名称、资源组和位置。 请注意已删除的密钥保管库的位置和资源组，以便用于恢复过程。
 
@@ -119,9 +119,9 @@ az keyvault recover --location chinanorth --resource-group ContosoRG --name Cont
 az keyvault key delete --name ContosoFirstKey --vault-name ContosoVault
 ```
 
-为软删除启用 Key Vault 后，删除的密钥仍然显示为已删除，除非明确列出或检索已删除的密钥。 对处于已删除状态的密钥的大多数操作会失败，列出、恢复或清除已删除的密钥除外。 
+为软删除启用密钥保管库后，删除的密钥仍然显示为已删除，除非明确列出或检索已删除的密钥。 对处于已删除状态的密钥的大多数操作将失败，列出、恢复或清除已删除的密钥除外。 
 
-例如，若要请求列出 Key Vault 中已删除的密钥，请使用以下命令：
+例如，若要请求列出密钥保管库中已删除的密钥，请使用以下命令：
 
 ```azurecli
 az keyvault key list-deleted --vault-name ContosoVault
@@ -129,9 +129,9 @@ az keyvault key list-deleted --vault-name ContosoVault
 
 ### <a name="transition-state"></a>转换状态 
 
-在启用了软删除的 Key Vault 中删除密钥时，可能需要几秒钟时间完成转换。 在此转换期间，密钥可能不处于活动状态或已删除状态。 
+在启用了软删除的密钥保管库中删除密钥时，可能需要几秒钟时间完成转换。 在此转换期间，密钥可能不处于活动状态或已删除状态。 
 
-### <a name="using-soft-delete-with-key-vault-objects"></a>将软删除用于 Key Vault 对象
+### <a name="using-soft-delete-with-key-vault-objects"></a>将软删除用于密钥保管库对象
 
 就像密钥保管库一样，除非恢复或清除已删除的密钥、机密或证书，否则它将保持已删除状态最多 90 天。
 
@@ -152,9 +152,9 @@ az keyvault key recover --name ContosoFirstKey --vault-name ContosoVault
 az keyvault key purge --name ContosoFirstKey --vault-name ContosoVault
 ```
 
-“恢复”和“清除”操作在 Key Vault 访问策略中各自具有相关联的权限   。 用户或服务主体如果要执行“恢复”或“清除”操作，必须拥有该密钥或机密的相应权限   。 默认情况下，使用“全部”快捷方式授予所有权限时，“清除”不会添加到密钥保管库访问策略中  。 必须明确授予“清除”权限  。 
+“恢复”和“清除”操作具有与密钥保管库访问策略相关的各自权限   。 用户或服务主体如果要执行“恢复”或“清除”操作，必须拥有该密钥或机密的相应权限   。 默认情况下，使用“全部”快捷方式授予所有权限时，“清除”不会添加到密钥保管库访问策略中  。 必须明确授予“清除”权限  。 
 
-#### <a name="set-a-key-vault-access-policy"></a>设置 Key Vault 访问策略
+#### <a name="set-a-key-vault-access-policy"></a>设置密钥保管库访问策略
 
 以下命令授予 user@contoso.com 对“ContosoVault”中的密钥执行多项操作（包括“清除”）的权限   ：
 
@@ -163,7 +163,7 @@ az keyvault set-policy --name ContosoVault --key-permissions get create delete l
 ```
 
 >[!NOTE] 
-> 如果现有 Key Vault 刚刚启用软删除，则可能没有“恢复”和“清除”权限   。
+> 如果现有密钥保管库刚刚启用软删除，则可能没有“恢复”和“清除”权限   。
 
 #### <a name="secrets"></a>机密
 
@@ -174,7 +174,7 @@ az keyvault set-policy --name ContosoVault --key-permissions get create delete l
   az keyvault secret delete --vault-name ContosoVault -name SQLPassword
   ```
 
-- 列出 Key Vault 中所有已删除的机密： 
+- 列出密钥保管库中所有已删除的机密： 
   ```azurecli
   az keyvault secret list-deleted --vault-name ContosoVault
   ```
@@ -221,16 +221,16 @@ az keyvault purge --location chinanorth --name ContosoVault
 
 ### <a name="scheduled-purge"></a>计划清除
 
-列出已删除的密钥保管库对象还会显示 Key Vault 计划将其清除的时间。 “计划清除日期”指示如果不采取任何操作，将永久删除密钥保管库对象的时间  。 默认情况下，已删除的 Key Vault 对象的保留期为 90 天。
+列出已删除的密钥保管库对象还会显示 Key Vault 计划将其清除的时间。 “计划清除日期”指示如果不采取任何操作，将永久删除密钥保管库对象的时间  。 默认情况下，已删除的密钥保管库对象的保留期为 90 天。
 
 >[!IMPORTANT]
->已清除的保管库对象（由“Scheduled Purge Date”字段触发清除操作）将被永久删除  。 不可恢复！
+>已清除的保管库对象（由“计划清除日期”字段触发清除操作）将被永久删除  。 不可恢复！
 
 ## <a name="enabling-purge-protection"></a>启用清除保护
 
 启用清除保护时，在长达 90 天的保留期到期之前，不能清除处于已删除状态的保管库或对象。 仍可以恢复此类保管库或对象。 此功能可增加保障，在保留期到期之前，永远不会永久删除保管库或对象。
 
-只有启用了软删除，才能启用清除保护。 
+仅当也启用了软删除时，才能启用清除保护。 
 
 若要在创建保管库时同时启用软删除和清除保护，请使用 [az keyvault create](/cli/keyvault?view=azure-cli-latest#az-keyvault-create) 命令：
 

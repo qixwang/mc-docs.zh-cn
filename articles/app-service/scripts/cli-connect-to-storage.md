@@ -11,10 +11,10 @@ ms.date: 03/30/2020
 ms.author: v-tawe
 ms.custom: mvc, seodec18
 ms.openlocfilehash: 61544a273196563b033bd13e108d26ce637cc6b1
-ms.sourcegitcommit: 44d3fe59952847e5394bbe6c05bd6f333bb56345
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80522110"
 ---
 # <a name="connect-an-app-service-app-to-a-storage-account-using-cli"></a>使用 CLI 将应用服务应用连接到存储帐户
@@ -23,7 +23,7 @@ ms.locfileid: "80522110"
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-如果选择在本地安装并使用 CLI，则需使用 Azure CLI 2.0 或更高版本。 若要查找版本，请运行 `az --version`。 如需进行安装或升级，请参阅[安装 Azure CLI](/cli/install-azure-cli?view=azure-cli-lastest)。
+如果选择在本地安装并使用 CLI，需要 Azure CLI 2.0 版或更高版本。 要查找版本，请运行 `az --version`。 如需进行安装或升级，请参阅[安装 Azure CLI](/cli/install-azure-cli?view=azure-cli-lastest)。
 
 
 ## <a name="sample-script"></a>示例脚本
@@ -62,13 +62,13 @@ az webapp config appsettings set --name $appName --resource-group myResourceGrou
 
 此脚本使用以下命令创建资源组、应用服务应用、存储帐户和所有相关资源。 表中的每条命令均链接到特定于命令的文档。
 
-| 命令 | 注释 |
+| Command | 说明 |
 |---|---|
 | [`az group create`](/cli/group?view=azure-cli-latest#az-group-create) | 创建用于存储所有资源的资源组。 |
 | [`az appservice plan create`](/cli/appservice/plan?view=azure-cli-latest#az-appservice-plan-create) | 创建应用服务计划。 |
 | [`az webapp create`](/cli/webapp?view=azure-cli-latest#az-webapp-create) | 创建应用服务应用。 |
 | [`az storage account create`](/cli/storage/account?view=azure-cli-latest#az-storage-account-create) | 创建存储帐户。 |
-| [`az storage account show-connection-string`](/cli/storage/account?view=azure-cli-latest#az-storage-account-show-connection-string) | 为存储帐户获取连接字符串。 |
+| [`az storage account show-connection-string`](/cli/storage/account?view=azure-cli-latest#az-storage-account-show-connection-string) | 获取存储帐户的连接字符串。 |
 | [`az webapp config appsettings set`](/cli/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) | 创建或更新应用服务应用的应用设置。 应用设置将作为应用的环境变量公开。 |
 
 ## <a name="next-steps"></a>后续步骤

@@ -1,3 +1,11 @@
+---
+ms.openlocfilehash: 33d03bea966be08c8e45a398817f73d2c243724a
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63853501"
+---
 ## <a name="how-apim-proxy-server-responds-with-ssl-certificates-in-the-tls-handshake"></a>APIM 代理服务器在 TLS 握手中如何通过 SSL 证书进行响应
 
 ### <a name="clients-calling-with-sni-header"></a>调用时使用 SNI 标头的客户端

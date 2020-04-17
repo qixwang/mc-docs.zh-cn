@@ -11,10 +11,10 @@ author: rockboyfor
 ms.author: v-yeche
 ms.reviewer: sngun
 ms.openlocfilehash: 68485186924805e2237a3255cea42d5ec3e3506f
-ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77067908"
 ---
 # <a name="azure-table-storage-overview"></a>Azure 表存储概述

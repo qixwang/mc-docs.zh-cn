@@ -10,10 +10,10 @@ services: iot-central
 ms.custom: mvc
 manager: peterpr
 ms.openlocfilehash: 6a18753c1ad95ec57cda157775a7f0d18a67ea8e
-ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80343901"
 ---
 # <a name="define-a-new-iot-gateway-device-type-in-your-azure-iot-central-application"></a>在 Azure IoT Central 应用程序中定义新的 IoT 网关设备类型
@@ -89,7 +89,7 @@ ms.locfileid: "80343901"
 
 1. 再次选择“+ 添加关系”。  输入“占位传感器”作为显示名称，选择“RS40 占位传感器”作为目标。  
 
-1. 选择“保存”  。
+1. 选择“保存”。 
 
 ![智能建筑物网关设备模板，其中显示了关系](./media/tutorial-define-gateway-device-type/relationships.png)
 
@@ -103,12 +103,12 @@ ms.locfileid: "80343901"
 
 1.  使用下表中的信息将两个云属性添加到网关设备模板。
 
-    | Display name      | 语义类型 | 架构 |
+    | 显示名称      | 语义类型 | 架构 |
     | ----------------- | ------------- | ------ |
     | 最后维修日期 | 无          | Date   |
     | 客户名称     | 无          | String |
 
-2. 选择“保存”  。
+2. 选择“保存”。 
 
 ### <a name="create-views"></a>创建视图
 
@@ -195,7 +195,7 @@ ms.locfileid: "80343901"
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，你已学习了如何执行以下操作：
+在本教程中，你了解了如何执行以下操作：
 
 * 创建新的 IoT 网关作为设备模板。
 * 创建云属性。

@@ -6,10 +6,10 @@ origin.date: 01/13/2020
 ms.date: 03/16/2020
 ms.author: v-tawe
 ms.openlocfilehash: ce68687ebd9d6aaf620f6c14bbfc8637ca2557bd
-ms.sourcegitcommit: b2f2bb08ab1b5ccb3c596d84b3b6ddca5bba3903
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80151594"
 ---
 ## <a name="prerequisites"></a>先决条件
@@ -38,15 +38,15 @@ ms.locfileid: "80151594"
 
 > [!NOTE]
 > 由于 [Swagger 自动生成中的已知 bug](https://github.com/swagger-api/swagger-codegen/issues/7541)，导入 `swagger_client` 包时可能会遇到错误。
-> 这些错误可以通过从已安装的包中删除文件 中包含以下内容的行
+> 这些错误可以通过从已安装的包中删除
 > ```py
 > from swagger_client.models.model import Model  # noqa: F401,E501
 > ```
-> 文件 `swagger_client/models/model.py` 中包含以下内容的行和
+> 文件 `swagger_client/models/model.py` 中包含以下内容的行
 > ```py
 > from swagger_client.models.inner_error import InnerError  # noqa: F401,E501
 > ```
-> 文件 `swagger_client/models/inner_error.py` 中包含以下内容的行来进行修复。 错误消息将告知安装这些文件的位置。
+> 和文件 `swagger_client/models/inner_error.py` 中包含以下内容的行来进行修复。 错误消息将告知安装这些文件的位置。
 
 ## <a name="install-other-dependencies"></a>安装其他依赖项
 

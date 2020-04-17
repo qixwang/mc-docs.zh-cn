@@ -16,10 +16,10 @@ ms.date: 01/06/2020
 ms.author: v-yeche
 ms.custom: mvc
 ms.openlocfilehash: 6e4cf897e7d7964233bb9d02d5d13a207dfcb2a3
-ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75742297"
 ---
 # <a name="remove-an-application-from-a-service-fabric-cluster-using-the-service-fabric-cli"></a>使用 Service Fabric CLI 从 Service Fabric 群集中删除应用程序

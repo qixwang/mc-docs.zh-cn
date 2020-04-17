@@ -8,10 +8,10 @@ ms.date: 10/18/2019
 ms.author: v-lingwu
 ms.custom: mvc
 ms.openlocfilehash: e6cb349b973edca4c726c6b21a52f3ddf570a58a
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79290774"
 ---
 # <a name="restore-files-to-a-virtual-machine-in-azure"></a>将文件还原到 Azure 中的虚拟机
@@ -26,7 +26,7 @@ Azure 备份可创建恢复点，这些恢复点存储在异地冗余的恢复�
 
 如果选择在本地安装并使用 CLI，本教程需要你运行 Azure CLI 2.0.18 或更高版本。 运行 `az --version` 即可查找版本。 如需进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 本教程需要使用 Azure 备份所保护的 Linux VM。 若要模拟意外文件删除和恢复过程，请从 Web 服务器中删除一页。 如果需要运行 Web 服务器且已使用 Azure 备份保护的 Linux VM，请参阅[在 Azure 中使用 CLI 备份虚拟机](quick-backup-vm-cli.md)。
 
@@ -192,7 +192,7 @@ Azure 备份可创建恢复点，这些恢复点存储在异地冗余的恢复�
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，你已将恢复点连接到 VM，并且还原了 Web 服务器的文件。 你已了解如何：
+在本教程中，你已将恢复点连接到 VM，并且还原了 Web 服务器的文件。 你已了解如何执行以下操作：
 
 > [!div class="checklist"]
 >

@@ -9,10 +9,10 @@ ms.topic: sample
 origin.date: 09/23/2019
 ms.date: 03/23/2020
 ms.openlocfilehash: fcf56dd98dca21282a34efc6bb7a3af52e3cac66
-ms.sourcegitcommit: 32997a7d7585deaeb0ab7b8f928d397b18b343fa
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79295991"
 ---
 # <a name="azure-hdinsight-azure-cli-samples"></a>Azure HDInsight：Azure CLI 示例
@@ -28,7 +28,7 @@ ms.locfileid: "79295991"
 
 * Azure CLI。 有关步骤，请参阅[安装 Azure CLI](/cli/install-azure-cli)。
 
-* 可选：Bash。 本文中的示例使用 Windows 10 上的 Bash shell。 有关安装步骤，请参阅[适用于 Linux 的 Windows 子系统安装指南 - Windows 10](https://docs.microsoft.com/windows/wsl/install-win10)。  这些示例经过一些细微的修改，即可在 Windows 命令提示符下运行。
+* 可选：Bash。 本文中的示例使用 Windows 10 上的 Bash shell。 有关安装步骤，请参阅[适用于 Linux 的 Windows 子系统 (Windows 10) 安装指南](https://docs.microsoft.com/windows/wsl/install-win10)。  这些示例经过一些细微的修改，即可在 Windows 命令提示符下运行。
 
 ## <a name="az-login"></a>az login
 
@@ -43,7 +43,7 @@ az login
 
 ## <a name="az-hdinsight-create"></a>az hdinsight create
 
-[创建新的群集](/cli/hdinsight?view=azure-cli-latest#az-hdinsight-create)。
+[创建新群集](/cli/hdinsight?view=azure-cli-latest#az-hdinsight-create)。
 
 ### <a name="create-a-cluster-with-an-existing-storage-account"></a>使用现有存储帐户创建群集
 

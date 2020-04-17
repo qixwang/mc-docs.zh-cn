@@ -10,10 +10,10 @@ services: iot-central
 ms.custom: mvc
 manager: philmea
 ms.openlocfilehash: 5ef05d83025ad3b21223a547ac41b6bf04d2fc82
-ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80343967"
 ---
 # <a name="quickstart-configure-rules-and-actions-for-your-device-in-azure-iot-central"></a>快速入门：在 Azure IoT Central 中配置用于设备的规则和操作
@@ -38,11 +38,11 @@ ms.locfileid: "80343967"
 
 1. 在“条件”  部分，定义触发规则的条件。 使用以下信息定义基于温度遥测的条件：
 
-    | 字段        | Value            |
+    | 字段        | 值            |
     | ------------ | ---------------- |
     | 度量  | 温度      |
-    | 运算符     | 大于  |
-    | Value        | 90               |
+    | 操作员     | 大于  |
+    | 值        | 90               |
 
     若要添加更多条件，请选择“+条件”  。
 
@@ -52,18 +52,18 @@ ms.locfileid: "80343967"
 
 1. 使用下表中的信息定义操作，然后选择“完成”  ：
 
-    | 设置   | Value                                             |
+    | 设置   | 值                                             |
     | --------- | ------------------------------------------------- |
-    | Display name | 操作员电子邮件操作                          |
-    | 如果        | 你的电子邮件地址                                |
-    | 注释     | 环境温度超过阈值。 |
+    | 显示名称 | 操作员电子邮件操作                          |
+    | 目标        | 你的电子邮件地址                                |
+    | 说明     | 环境温度超过阈值。 |
 
     > [!NOTE]
     > 若要接收电子邮件通知，电子邮件地址必须是[应用程序中的用户 ID](howto-administer.md)，并且该用户必须至少登录过应用程序一次。
 
     ![创建规则操作](./media/quick-configure-rules/action.png)
 
-1. 选择“保存”  。 你的规则将列在“规则”  页上。
+1. 选择“保存”。  你的规则将列在“规则”  页上。
 
 ## <a name="test-the-rule"></a>测试规则
 

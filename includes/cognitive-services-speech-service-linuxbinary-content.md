@@ -6,13 +6,13 @@ origin.date: 05/07/2018
 ms.date: 09/24/2019
 ms.author: v-tawe
 ms.openlocfilehash: 188552f457e2862bbcd6ae4cbef0439ce5b33ce2
-ms.sourcegitcommit: c72fba1cacef1444eb12e828161ad103da338bb1
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "71696056"
 ---
-| `Path` | 说明 |
+| 路径 | 说明 |
 |:-----|:----|
 | `license.md` | 许可
 | `ThirdPartyNotices.md` | 第三方声明。

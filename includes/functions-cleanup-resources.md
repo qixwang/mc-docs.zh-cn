@@ -6,10 +6,10 @@ origin.date: 09/04/2018
 ms.date: 09/05/2019
 ms.author: v-junlch
 ms.openlocfilehash: c2d105705a8a1341a3cfd346122c32be51113185
-ms.sourcegitcommit: 4f1047b6848ca5dd96266150af74633b2e9c77a3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "70805754"
 ---
 ## <a name="clean-up-resources"></a>清理资源

@@ -17,11 +17,11 @@ origin.date: 06/28/2017
 ms.date: 02/25/2019
 ms.author: v-jay
 ms.openlocfilehash: db3968c00bfe883d23c61707d5cab27ab42f2fa1
-ms.sourcegitcommit: 0fd74557936098811166d0e9148e66b350e5b5fa
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56665383"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63823295"
 ---
 # <a name="calculate-the-size-of-a-blob-storage-container"></a>计算 Blob 存储容器的大小
 
@@ -87,7 +87,7 @@ az group delete --name myResourceGroup
 
 此脚本使用以下命令来计算 Blob 存储容器的大小。 表中的每一项均链接到命令特定的文档。
 
-| 命令 | 注释 |
+| Command | 说明 |
 |---|---|
 | [az group create](https://docs.azure.cn/cli/group) | 创建用于存储所有资源的资源组。 |
 | [az storage blob upload](https://docs.azure.cn/cli/storage/account) | 将本地文件上传到 Azure Blob 存储容器。 |

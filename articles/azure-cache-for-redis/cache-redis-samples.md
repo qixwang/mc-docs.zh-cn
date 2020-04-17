@@ -1,16 +1,16 @@
 ---
 title: “用于 Redis 的 Azure 缓存”示例
-description: 通过以下代码示例了解如何使用 Azure Cache for Redis：连接到缓存、在缓存中读写数据、ASP.NET Azure Cache for Redis 提供程序。
+description: 了解如何通过以下代码示例使用 Azure Cache for Redis：连接到缓存、在缓存中读取和写入数据、ASP.NET Azure Cache for Redis 提供程序。
 author: yegu-ms
 ms.author: v-junlch
 ms.service: cache
 ms.topic: sample
 ms.date: 12/30/2019
 ms.openlocfilehash: a9fdf88eb4f6889e9b4fe9055a7e06e07e4ffbd9
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75624322"
 ---
 # <a name="azure-cache-for-redis-samples"></a>“用于 Redis 的 Azure 缓存”示例
@@ -39,7 +39,7 @@ ms.locfileid: "75624322"
 [在缓存中处理 .NET 对象](cache-dotnet-how-to-use-azure-redis-cache.md#work-with-net-objects-in-the-cache)演示了如何对 .NET 对象进行序列化，以便可以将它写入到 Azure Redis 缓存实例以及从中读取它。 
 
 ## <a name="use-azure-cache-for-redis-as-a-scale-out-backplane-for-aspnet-signalr"></a>将 Azure Redis 缓存用作 ASP.NET SignalR 的横向扩展基架
-[将 Azure Redis 缓存用作 ASP.NET SignalR 的横向扩展基架](https://github.com/rustd/RedisSamples/tree/master/RedisAsSignalRBackplane)示例演示如何将 Azure Redis 缓存用作 SignalR 基架。 有关基架的更多信息，请参阅 [采用 Redis 的 SignalR 扩展](https://www.asp.net/signalr/overview/performance/scaleout-with-redis)。
+[将 Azure Redis 缓存用作 ASP.NET SignalR 的横向扩展基架](https://github.com/rustd/RedisSamples/tree/master/RedisAsSignalRBackplane)示例演示如何将 Azure Redis 缓存用作 SignalR 基架。 有关基架的更多信息，请参阅[采用 Redis 的 SignalR 扩展](https://www.asp.net/signalr/overview/performance/scaleout-with-redis)。
 
 ## <a name="azure-cache-for-redis-customer-query-sample"></a>Azure Redis 缓存客户查询示例
 此示例对从缓存访问数据与从持久存储访问数据时的性能进行了比较。 此示例有两个项目。
@@ -57,9 +57,9 @@ ms.locfileid: "75624322"
 [访问 Azure Redis 缓存监视数据](https://github.com/rustd/RedisSamples/tree/master/CustomMonitoring)示例演示了如何在 Azure 门户外访问 Azure Redis 缓存的监视数据。
 
 ## <a name="a-twitter-style-clone-written-using-php-and-redis"></a>使用 PHP 和 Redis 编写的 Twitter 式克隆
-[Retwis](https://github.com/SyntaxC4-MSFT/retwis) 示例是 Redis Hello World。 它是最小的 Twitter 样式的社交网络克隆使用 Redis 和 PHP 编写使用 [Predis](https://github.com/nrk/predis) 客户端。 源代码旨在是非常简单，并且在同一时间以显示其他 Redis 数据结构。
+[Retwis](https://github.com/SyntaxC4-MSFT/retwis) 示例是 Redis Hello World。 它是最小的 Twitter 样式的社交网络克隆，是通过 [Predis](https://github.com/nrk/predis) 客户端使用 Redis 和 PHP 编写的。 源代码旨在是非常简单，并且在同一时间以显示其他 Redis 数据结构。
 
 ## <a name="bandwidth-monitor"></a>带宽监视器
-[带宽监视器](https://github.com/JonCole/SampleCode/tree/master/BandWidthMonitor) 示例允许监视客户端上使用的带宽。 要测量带宽、请在缓存客户端计算机上运行该示例，对缓存执行调用，并观察带宽监视器示例报告的带宽。
+借助[带宽监视器](https://github.com/JonCole/SampleCode/tree/master/BandWidthMonitor)示例，可监视客户端上使用的带宽。 要测量带宽、请在缓存客户端计算机上运行该示例，对缓存执行调用，并观察带宽监视器示例报告的带宽。
 
 <!-- Update_Description: wording update -->

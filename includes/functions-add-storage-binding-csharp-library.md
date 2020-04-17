@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 03/02/2020
 ms.author: v-junlch
 ms.openlocfilehash: 8382f317604ab3aeb4a31e73e0f3b3fd4aef5d6c
-ms.sourcegitcommit: 1ac138a9e7dc7834b5c0b62a133ca5ce2ea80054
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78266057"
 ---
 在 C# 类库项目中，绑定被定义为函数方法上的绑定属性。 然后，基于这些属性自动生成 Functions 所需的 function.json  文件。

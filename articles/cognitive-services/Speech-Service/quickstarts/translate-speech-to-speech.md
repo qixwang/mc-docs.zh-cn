@@ -13,10 +13,10 @@ ms.date: 03/16/2020
 ms.author: v-tawe
 zone_pivot_groups: programming-languages-set-two
 ms.openlocfilehash: f0e0354615ef32c885bc707f92f45ecbf68591bf
-ms.sourcegitcommit: b2f2bb08ab1b5ccb3c596d84b3b6ddca5bba3903
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80151583"
 ---
 # <a name="quickstart-translate-speech-to-speech"></a>快速入门：将语音翻译为语音

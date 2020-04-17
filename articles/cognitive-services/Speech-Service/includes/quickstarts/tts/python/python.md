@@ -12,10 +12,10 @@ origin.date: 09/14/2020
 ms.date: 03/16/2020
 ms.author: v-tawe
 ms.openlocfilehash: 5be1f89d99da7916dd09c77e0ebe0d80020da9aa
-ms.sourcegitcommit: b2f2bb08ab1b5ccb3c596d84b3b6ddca5bba3903
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80151626"
 ---
 ## <a name="prerequisites"></a>先决条件
@@ -46,7 +46,7 @@ python quickstart.py
 
 或者，可以从[语音 SDK 示例存储库](https://github.com/Azure-Samples/cognitive-services-speech-sdk)以 [Jupyter](https://jupyter.org) Notebook 的形式下载本快速入门教程，并将其作为 Notebook 运行。
 
-### <a name="sample-code"></a>代码示例
+### <a name="sample-code"></a>示例代码
 
 ```python
 import azure.cognitiveservices.speech as speechsdk

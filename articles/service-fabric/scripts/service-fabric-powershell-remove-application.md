@@ -16,10 +16,10 @@ ms.date: 02/24/2020
 ms.author: v-yeche
 ms.custom: mvc
 ms.openlocfilehash: 11c37e359aaa51a9bec3c2adc6e69a71cb1ff090
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77540509"
 ---
 # <a name="remove-an-application-from-a-service-fabric-cluster-using-powershell"></a>使用 Powershell 从 Service Fabric 群集中删除应用程序
@@ -55,7 +55,7 @@ Unregister-ServiceFabricApplicationType -ApplicationTypeName MyApplicationType -
 
 此脚本使用以下命令。 表中的每条命令均链接到特定于命令的文档。
 
-| 命令 | 注释 |
+| Command | 说明 |
 |---|---|
 | [Remove-ServiceFabricApplication](https://docs.microsoft.com/powershell/module/servicefabric/remove-servicefabricapplication?view=azureservicefabricps) | 从群集中删除正在运行的 Service Fabric 应用程序实例。  |
 | [Unregister-ServiceFabricApplicationType](https://docs.microsoft.com/powershell/module/servicefabric/unregister-servicefabricapplicationtype?view=azureservicefabricps) | 从群集中注销 Service Fabric 应用程序类型和版本。 |

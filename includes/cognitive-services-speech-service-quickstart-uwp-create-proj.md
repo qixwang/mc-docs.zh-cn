@@ -6,10 +6,10 @@ origin.date: 02/10/2020
 ms.date: 03/16/2020
 ms.author: v-tawe
 ms.openlocfilehash: d20c718bae1de5be3a70a0af9ba4c7727aface23
-ms.sourcegitcommit: b2f2bb08ab1b5ccb3c596d84b3b6ddca5bba3903
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80151671"
 ---
 若要创建 Visual Studio 项目以用于通用 Windows 平台 (UWP) 开发，需要设置 Visual Studio 开发选项，创建项目，选择目标体系结构，设置音频捕获，然后安装语音 SDK。

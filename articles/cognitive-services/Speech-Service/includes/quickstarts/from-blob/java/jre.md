@@ -6,10 +6,10 @@ origin.date: 01/13/2020
 ms.date: 03/16/2020
 ms.author: v-tawe
 ms.openlocfilehash: 24460d69d6b9a67c65b1143c59458a86cd691593
-ms.sourcegitcommit: b2f2bb08ab1b5ccb3c596d84b3b6ddca5bba3903
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80151592"
 ---
 ## <a name="prerequisites"></a>先决条件

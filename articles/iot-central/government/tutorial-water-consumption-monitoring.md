@@ -10,10 +10,10 @@ ms.service: iot-central
 services: iot-central
 manager: abjork
 ms.openlocfilehash: b5ca9f7b551ec0be92b40c2259003dbc8599c78a
-ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80343633"
 ---
 # <a name="tutorial-create-a-water-consumption-monitoring-application-with-azure-iot-central"></a>教程：使用 Azure IoT Central 创建水消耗量监测应用程序

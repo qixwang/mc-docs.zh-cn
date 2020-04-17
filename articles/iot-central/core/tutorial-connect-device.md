@@ -8,17 +8,17 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.openlocfilehash: 527ff411c531ed501fca08bf8f9cb3b8438c7ef3
-ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80343909"
 ---
 # <a name="tutorial-create-and-connect-a-nodejs-client-application-to-your-azure-iot-central-application-nodejs"></a>教程：创建 Node.js 客户端应用程序并将其连接到 Azure IoT Central 应用程序 (Node.js)
 
 本教程介绍如何以设备开发人员的身份将 Node.js 客户端应用程序连接到 Azure IoT Central 应用程序。 该 Node.js 应用程序模拟真实设备的行为。 使用环境传感器设备的示例设备功能模型在 IoT Central 中创建设备模板。   将视图添加到设备模板，以便将设备遥测数据可视化，管理设备属性，并使用命令来控制设备。
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 导入设备功能模型以创建设备模板。
@@ -31,7 +31,7 @@ ms.locfileid: "80343909"
 
 ## <a name="prerequisites"></a>先决条件
 
-若要完成本文中的步骤，需要做好以下准备：
+若要完成本文中的步骤，需要以下各项：
 
 * 使用“自定义应用程序”模板创建的 Azure IoT Central 应用程序。 有关详细信息，请参阅[创建应用程序快速入门](quick-deploy-iot-central.md)。
 * 安装了 [Node.js](https://nodejs.org/) 10.0.0 或更高版本的开发计算机。 若要检查版本，可以在命令行中运行 `node --version`。 Node.js 适用于各种操作系统。 本教程中的说明假设在 Windows 命令提示符下运行 **node** 命令。 可以在各种操作系统中使用 Node.js。
@@ -52,15 +52,15 @@ ms.locfileid: "80343909"
 
 | 类型 | 显示名称 | 说明 |
 | ---- | ------------ | ----------- |
-| 属性 | 设备状态     | 设备的状态。 有两种状态：联机/脱机。 |
-| 属性 | 客户名称    | 当前正在操作设备的客户的名称。 |
-| 属性 | 亮度级别 | 设备上指示灯的亮度级别。 可以指定为 1（高）、2（中）、3（低）。 |
+| properties | 设备状态     | 设备的状态。 有两种状态：联机/脱机。 |
+| properties | 客户名称    | 当前正在操作设备的客户的名称。 |
+| properties | 亮度级别 | 设备上指示灯的亮度级别。 可以指定为 1（高）、2（中）、3（低）。 |
 | 遥测 | 温度 | 设备上的当前温度。 |
 | 遥测 | 湿度    | 设备上的当前湿度。 |
-| 命令 | blink          | 按给定的时间间隔开始闪烁 LED。 |
-| 命令 | turnon         | 打开设备上的 LED 指示灯。 |
-| 命令 | turnoff        | 关闭设备上的 LED 指示灯。 |
-| 命令 | rundiagnostics | 此命令启动诊断运行。 |
+| Command | blink          | 按给定的时间间隔开始闪烁 LED。 |
+| Command | turnon         | 打开设备上的 LED 指示灯。 |
+| Command | turnoff        | 关闭设备上的 LED 指示灯。 |
+| Command | rundiagnostics | 此命令启动诊断运行。 |
 
 若要自定义“设备状态”属性在 IoT Central 应用程序中的显示方式，请在设备模板中选择“自定义”。   展开“设备状态”项，输入“联机”作为“True 名称”，输入“脱机”作为“False 名称”。      保存更改：
 

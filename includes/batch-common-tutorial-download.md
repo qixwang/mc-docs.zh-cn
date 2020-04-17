@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: v-lingwu
 ms.openlocfilehash: f2f0c25a79088cf4dd59cbfe3bb766b1548ab83a
-ms.sourcegitcommit: f4351979a313ac7b5700deab684d1153ae51d725
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "67845566"
 ---
 ### <a name="retrieve-output-files"></a>检索输出文件

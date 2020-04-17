@@ -11,10 +11,10 @@ services: iot-dps
 manager: philmea
 ms.custom: mvc
 ms.openlocfilehash: 92e3bb96c26a7fab753647e60eb26323ad978c60
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78850591"
 ---
 # <a name="tutorial-set-up-a-device-to-provision-using-the-azure-iot-hub-device-provisioning-service"></a>教程：使用 Azure IoT 中心设备预配服务设置设备以进行预配
@@ -39,7 +39,7 @@ ms.locfileid: "78850591"
 
 以下先决条件适用于 Windows 开发环境。 对于 Linux 或 macOS，请参阅 SDK 文档的[准备开发环境](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md)中的相应部分。
 
-* [Visual Studio](https://visualstudio.microsoft.com/vs/) 2019，已启用[“使用 C++ 的桌面开发”](https://docs.microsoft.com/cpp/?view=vs-2019#pivot=workloads)工作负载。 Visual Studio 2015 和 Visual Studio 2017 也受支持。
+* [Visual Studio](https://visualstudio.microsoft.com/vs/) 2019，已启用[“使用 C++ 的桌面开发”](https://docs.microsoft.com/cpp/?view=vs-2019#pivot=workloads)工作负荷。 Visual Studio 2015 和 Visual Studio 2017 也受支持。
 
 * 已安装最新版本的 [Git](https://git-scm.com/download/)。
 
@@ -51,9 +51,9 @@ ms.locfileid: "78850591"
 
     在进行 `CMake` 安装**之前**，必须在计算机上安装 Visual Studio 必备组件（Visual Studio 和“使用 C++ 的桌面开发”工作负荷）。 满足先决条件并验证下载内容后，安装 CMake 生成系统。
 
-2. 查找[最新版本](https://github.com/Azure/azure-iot-sdk-c/releases/latest) SDK 的标记名称。
+2. 找到[最新版](https://github.com/Azure/azure-iot-sdk-c/releases/latest) SDK 的标记名称。
 
-3. 打开命令提示符或 Git Bash shell。 运行以下命令以克隆最新版本的 [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) GitHub 存储库。 使用在上一步中找到的标记作为 `-b` 参数的值：
+3. 打开命令提示符或 Git Bash shell。 运行以下命令，克隆最新版 [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) GitHub 存储库。 使用在上一步找到的标记作为 `-b` 参数的值：
 
     ```cmd/sh
     git clone -b <release-tag> https://github.com/Azure/azure-iot-sdk-c.git
@@ -101,9 +101,9 @@ ms.locfileid: "78850591"
 
 - 对于 X.509 设备，你需要获取为设备颁发的证书。 预配服务公开了两种类型的注册条目，它们使用 X.509 认证机制控制对设备的访问。 所需的证书取决于你将使用的注册类型。
 
-    - 单独注册：针对特定的单个设备的注册。 此类型的注册条目需要[最终实体、“叶”、证书](concepts-security.md#end-entity-leaf-certificate)。
+    - 个人注册：针对特定的单个设备的注册。 此类型的注册条目需要[最终实体、“叶”、证书](concepts-security.md#end-entity-leaf-certificate)。
     
-    - 注册组：此类型的注册条目需要中间或根证书。 有关详细信息，请参阅[使用 X.509 证书控制设备对预配服务的访问](concepts-security.md#controlling-device-access-to-the-provisioning-service-with-x509-certificates)。
+    - 注册组：此类型的注册条目需要中间证书或根证书。 有关详细信息，请参阅[使用 X.509 证书控制设备对预配服务的访问](concepts-security.md#controlling-device-access-to-the-provisioning-service-with-x509-certificates)。
 
 ### <a name="simulated-devices"></a>模拟设备
 
@@ -207,7 +207,7 @@ PROV_DEVICE_RESULT Prov_Device_LL_SetOption(PROV_DEVICE_LL_HANDLE handle, const 
 1. 在 Azure 门户的左侧菜单中单击“所有资源”，然后选择 IoT 中心  。 在“所有资源”边栏选项卡的顶部单击“删除”   。  
 
 ## <a name="next-steps"></a>后续步骤
-在本教程中，你已学习了如何执行以下操作：
+在本教程中，你了解了如何执行以下操作：
 
 > [!div class="checklist"]
 > * 生成特定于平台的设备预配服务客户端 SDK

@@ -1,5 +1,5 @@
 ---
-title: Azure Resource Manager 模板
+title: Azure 资源管理器模板
 description: 使用 Azure 资源管理器模板创建和配置 Azure SQL 数据库。
 services: sql-database
 ms.service: sql-database
@@ -13,10 +13,10 @@ ms.reviewer: sstein
 origin.date: 02/04/2019
 ms.date: 03/30/2020
 ms.openlocfilehash: a25a5dac64378c04665a6ba95d27751e4855dc75
-ms.sourcegitcommit: 90660563b5d65731a64c099b32fb9ec0ce2c51c6
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80341799"
 ---
 # <a name="azure-resource-manager-templates-for-azure-sql-database"></a>Azure SQL 数据库的 Azure 资源管理器模板
@@ -29,7 +29,7 @@ ms.locfileid: "80341799"
 
 | |  |
 |---|---|
-| [单一数据库](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-database-transparent-encryption-create) | 此 Azure 资源管理器模板创建包含逻辑服务器的单一 Azure SQL 数据库并配置防火墙规则。 |
+| [单个数据库](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-database-transparent-encryption-create) | 此 Azure 资源管理器模板创建包含逻辑服务器的单一 Azure SQL 数据库并配置防火墙规则。 |
 | [逻辑服务器](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-logical-server) | 此 Azure 资源管理器模板创建 Azure SQL 数据库的逻辑服务器。 |
 | [弹性池](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-elastic-pool-create) | 使用此模板可以部署新的弹性池，并在其中分配新的关联 SQL Server 和新的 SQL 数据库。 |
 | [故障转移组](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-with-failover-group) | 此模板创建两个 Azure SQL 逻辑服务器、一个 SQL 数据库和一个故障转移组。|

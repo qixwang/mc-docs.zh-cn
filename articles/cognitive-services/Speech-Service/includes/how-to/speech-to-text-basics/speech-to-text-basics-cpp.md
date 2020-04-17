@@ -6,19 +6,19 @@ origin.date: 03/06/2020
 ms.date: 03/16/2020
 ms.author: v-tawe
 ms.openlocfilehash: 548867096075a9d5675a78a205958680acaf1ee6
-ms.sourcegitcommit: b2f2bb08ab1b5ccb3c596d84b3b6ddca5bba3903
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80151766"
 ---
 ## <a name="prerequisites"></a>先决条件
 
-本文假设已有一个 Azure 帐户和语音服务订阅。 如果你没有帐户和订阅，可[免费试用语音服务](../../../get-started.md)。
+本文假定你有 Azure 帐户和语音服务订阅。 如果你没有帐户和订阅，[可以免费试用语音服务](../../../get-started.md)。
 
 ## <a name="install-the-speech-sdk"></a>安装语音 SDK
 
-需要先安装语音 SDK，然后才能执行任何操作。 根据所用的平台参考以下说明：
+你需要先安装语音 SDK，然后才能执行任何操作。 根据你的平台，使用以下说明：
 
 * <a href="https://docs.azure.cn/cognitive-services/speech-service/quickstarts/setup-platform?tabs=linux&pivots=programming-language-cpp" target="_blank">Linux <span class="docon docon-navigate-external x-hidden-focus"></span></a>
 * <a href="https://docs.azure.cn/cognitive-services/speech-service/quickstarts/setup-platform?tabs=macos&pivots=programming-language-cpp" target="_blank">macOS <span class="docon docon-navigate-external x-hidden-focus"></span></a>
@@ -26,10 +26,10 @@ ms.locfileid: "80151766"
 
 ## <a name="create-a-speech-configuration"></a>创建语音配置
 
-若要使用语音 SDK 调用语音服务，需要创建 [`SpeechConfig`](https://docs.microsoft.com/cpp/cognitive-services/speech/speechconfig)。 此类包含有关订阅的信息，例如密钥和关联的区域、终结点、主机或授权令牌。
+若要使用语音 SDK 调用语音服务，需要创建 [`SpeechConfig`](https://docs.microsoft.com/cpp/cognitive-services/speech/speechconfig)。 此类包含有关你的订阅的信息，例如你的密钥和关联的区域、终结点、主机或授权令牌。
 
 > [!NOTE]
-> 无论是要执行语音识别、语音合成、翻译还是意向识别，都需要创建一个配置。
+> 无论你是要执行语音识别、语音合成、翻译，还是意向识别，都需要创建一个配置。
 
 可以通过以下几种方法初始化 [`SpeechConfig`](https://docs.microsoft.com/cpp/cognitive-services/speech/speechconfig)：
 
@@ -65,14 +65,14 @@ auto recognizer = SpeechRecognizer::FromConfig(config);
 using namespace Microsoft::CognitiveServices::Speech::Audio;
 ```
 
-接下来可以引用 `AudioConfig` 对象，如下所示：
+接下来，你将能够引用 `AudioConfig` 对象，如下所示：
 
 ```cpp
 auto audioConfig = AudioConfig::FromDefaultMicrophoneInput();
 auto recognizer = SpeechRecognizer::FromConfig(config, audioConfig);
 ```
 
-如果要提供音频文件而不是使用麦克风，则仍需要提供 `audioConfig`。 但是，在创建 [`AudioConfig`](https://docs.microsoft.com/cpp/cognitive-services/speech/audio-audioconfig)（而不是调用 `FromDefaultMicrophoneInput`）时，将调用 `FromWavFileOutput` 并传递 `filename` 参数。
+如果要提供音频文件而不是使用麦克风，则仍需要提供 `audioConfig`。 但是，当你创建 [`AudioConfig`](https://docs.microsoft.com/cpp/cognitive-services/speech/audio-audioconfig)（而不是调用 `FromDefaultMicrophoneInput`）时，你将调用 `FromWavFileOutput` 并传递 `filename` 参数。
 
 ```cpp
 auto audioInput = AudioConfig::FromWavFileInput("YourAudioFile.wav");
@@ -83,7 +83,7 @@ auto recognizer = SpeechRecognizer::FromConfig(config, audioInput);
 
 用于 C++ 的语音 SDK 的[识别器类](https://docs.microsoft.com/cpp/cognitive-services/speech/speechrecognizer)公开了一些可用于语音识别的方法。
 
-* 单步识别（异步）- 在非阻塞（异步）模式下执行识别。 这会识别单个言语。 单个言语的结束是通过在结束时倾听静音或处理最长 15 秒音频时确定的。
+* 单步识别（异步）- 在非阻塞（异步）模式下执行识别。 这将识别单个言语。 单个言语的结束是通过在结束时倾听静音或处理最长 15 秒音频时确定的。
 * 连续识别（异步）- 异步启动连续识别操作。 用户必须连接到处理事件才能接收识别结果。 若要停止异步连续识别，请调用 [`StopContinuousRecognitionAsync`](https://docs.microsoft.com/cpp/cognitive-services/speech/speechrecognizer#stopcontinuousrecognitionasync)。
 
 > [!NOTE]
@@ -140,7 +140,7 @@ auto audioInput = AudioConfig::FromWavFileInput("YourAudioFile.wav");
 auto recognizer = SpeechRecognizer::FromConfig(config, audioInput);
 ```
 
-接下来，创建一个变量来管理语音识别的状态。 首先，我们将声明 `promise<void>`，因为在开始识别时，我们可以放心地假设该操作尚未完成。
+接下来，让我们创建一个变量来管理语音识别的状态。 首先，我们将声明 `promise<void>`，因为在开始识别时，我们可以放心地假定该操作尚未完成。
 
 ```cpp
 promise<void> recognitionEnd;
@@ -207,9 +207,9 @@ recognizer->StopContinuousRecognitionAsync().get();
 
 ### <a name="dictation-mode"></a>听写模式
 
-使用连续识别时，可以通过相应的“启用听写”功能来启用听写处理。 此模式会促使语音配置实例解释对句子结构（如标点符号）进行的字面描述。 例如，“Do you live in town question mark”会被解释为“Do you live in town?”。
+使用连续识别时，可以使用相应的“启用听写”功能启用听写处理。 此模式将导致语音配置实例解释句子结构的单词说明（如标点符号）。 例如，言语“你居住在城镇吗问号”会被解释为文本“你居住在城镇吗？”。
 
-若要启用听写模式，请对 [`SpeechConfig`](https://docs.microsoft.com/cpp/cognitive-services/speech/speechconfig) 使用 [`EnableDictation`](https://docs.microsoft.com/cpp/cognitive-services/speech/speechconfig#enabledictation) 方法。
+若要启用听写模式，请在 [`SpeechConfig`](https://docs.microsoft.com/cpp/cognitive-services/speech/speechconfig) 上使用 [`EnableDictation`](https://docs.microsoft.com/cpp/cognitive-services/speech/speechconfig#enabledictation) 方法。
 
 ```cpp
 config->EnableDictation();
@@ -227,10 +227,10 @@ config->SetSpeechRecognitionLanguage("fr-FR");
 
 ## <a name="improve-recognition-accuracy"></a>提高识别准确度
 
-可以通过多种方式使用语音 SDK 来提高识别的准确度。 让我们看一下短语列表。 短语列表用于确定音频数据中的已知短语，例如某个人的姓名或特定位置。 可以向短语列表添加单个单词或完整短语。 在识别期间，如果音频中包含整个短语的完全匹配项，则使用短语列表中的条目。 如果找不到与该短语的完全匹配项，则不会帮助识别。
+可以通过多种方式使用语音 SDK 来提高识别的准确性。 让我们看一下短语列表。 短语列表用于标识音频数据中的已知短语，如人的姓名或特定位置。 可以将单个词或完整短语添加到短语列表。 在识别期间，如果音频中包含整个短语的完全匹配项，则使用短语列表中的条目。 如果找不到与短语完全匹配的项，则不支持识别。
 
 > [!IMPORTANT]
-> 短语列表特征仅以英语提供。
+> 短语列表功能仅以英语提供。
 
 若要使用短语列表，请首先创建一个 [`PhraseListGrammar`](https://docs.microsoft.com/cpp/cognitive-services/speech/phraselistgrammar) 对象，然后使用 [`AddPhrase`](https://docs.microsoft.com/cpp/cognitive-services/speech/phraselistgrammar#addphrase) 添加特定的单词和短语。
 
@@ -249,8 +249,8 @@ phraseListGrammar->Clear();
 
 ### <a name="other-options-to-improve-recognition-accuracy"></a>提高识别精确度的其他方式
 
-短语列表只是提高识别准确度的一种方式。 也可执行以下操作： 
+短语列表只是提高识别准确度的一种方式。 你还可以： 
 
-* [使用自定义语音识别提高准确度](../../../how-to-custom-speech.md)
+* [使用自定义语音识别提高准确性](../../../how-to-custom-speech.md)
 
 <!-- * [Improve accuracy with tenant models](../../../tutorial-tenant-model.md) -->

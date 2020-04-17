@@ -6,11 +6,11 @@ origin.date: 10/26/2018
 ms.date: 12/03/2018
 ms.author: v-yeche
 ms.openlocfilehash: 0a713decf8778a89187a4dc76ab932200040d590
-ms.sourcegitcommit: 59db70ef3ed61538666fd1071dcf8d03864f10a9
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52676381"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63853574"
 ---
 > [!div class="op_single_selector"]
 > * [.NET](../articles/cosmos-db/table-storage-how-to-use-dotnet.md)

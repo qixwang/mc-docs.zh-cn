@@ -11,19 +11,19 @@ ms.date: 12/09/2019
 ms.author: v-jay
 ms.localizationpriority: high
 ms.openlocfilehash: 63bb1d3c44e598f373c78c2875185a40e6218501
-ms.sourcegitcommit: 5fb45da006859215edc8211481f13174aa43dbeb
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80634467"
 ---
 ::: zone target="docs"
 
-# <a name="tutorial-unpack-connect-and-unlock-azure-data-box-disk"></a>教程：打开包装、连接和解锁 Azure Data Box 磁盘
+# <a name="tutorial-unpack-connect-and-unlock-azure-data-box-disk"></a>教程：打开包装、连接和解锁 Azure Data Box Disk
 
 本教程介绍如何打开包装、连接和解锁 Azure Data Box 磁盘。
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 打开 Data Box 磁盘的包装
@@ -35,7 +35,7 @@ ms.locfileid: "80634467"
 
 ::: zone target="chromeless"
 
-## <a name="unpack-connect-and-unlock-azure-data-box-disk"></a>打开包装、连接和解锁 Azure Data Box 磁盘
+## <a name="unpack-connect-and-unlock-azure-data-box-disk"></a>打开包装、连接和解锁 Azure Data Box Disk
 
 ::: zone-end
 
@@ -149,7 +149,7 @@ ms.locfileid: "80634467"
     > [!div class="nextstepaction"]
     > [下载适用于 Linux 的 Data Box Disk 工具集](https://aka.ms/databoxdisktoolslinux)
 
-3. 在 Linux 客户端上打开终端。 导航到软件下载到的文件夹。 更改文件权限，以便可以执行这些文件。 输入以下命令：
+3. 在 Linux 客户端上打开终端。 导航到软件下载到的文件夹。 更改文件权限，以便可以执行这些文件。 键入下列命令：
 
     `chmod +x DataBoxDiskUnlock_x86_64` 
 

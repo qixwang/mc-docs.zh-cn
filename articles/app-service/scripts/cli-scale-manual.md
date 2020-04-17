@@ -11,20 +11,20 @@ ms.date: 03/30/2020
 ms.author: v-tawe
 ms.custom: mvc, seodec18
 ms.openlocfilehash: 00f22aae024f6fcd5abf9b94dbb6e94e4ac40eb9
-ms.sourcegitcommit: 44d3fe59952847e5394bbe6c05bd6f333bb56345
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80522104"
 ---
 # <a name="scale-an-app-service-app-manually-using-azure-cli"></a>使用 Azure CLI 手动缩放应用服务应用
 
-此示例脚本将创建一个资源组、一个应用服务计划和一个应用。 然后，它将该应用服务计划从单个实例扩展到多个实例。
+此示例脚本将创建一个资源组、一个应用服务计划和一个应用。 然后，它将应用服务计划从单个实例扩展到多个实例。
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 
-如果选择在本地安装并使用 CLI，则需使用 Azure CLI 2.0 或更高版本。 若要查找版本，请运行 `az --version`。 如需进行安装或升级，请参阅[安装 Azure CLI](/cli/install-azure-cli?view=azure-cli-lastest)。
+如果选择在本地安装并使用 CLI，需要 Azure CLI 2.0 版或更高版本。 要查找版本，请运行 `az --version`。 如需进行安装或升级，请参阅[安装 Azure CLI](/cli/install-azure-cli?view=azure-cli-lastest)。
 
 ## <a name="sample-script"></a>示例脚本
 
@@ -54,7 +54,7 @@ az appservice plan update --number-of-workers 2 --name AppServiceManualScalePlan
 
 此脚本使用以下命令创建资源组、应用服务应用和所有相关资源。 表中的每条命令均链接到特定于命令的文档。
 
-| 命令 | 注释 |
+| Command | 说明 |
 |---|---|
 | [`az group create`](/cli/group?view=azure-cli-latest#az-group-create) | 创建用于存储所有资源的资源组。 |
 | [`az appservice plan create`](/cli/appservice/plan?view=azure-cli-latest#az-appservice-plan-create) | 创建应用服务计划。 |

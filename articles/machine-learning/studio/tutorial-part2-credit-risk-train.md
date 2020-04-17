@@ -1,7 +1,7 @@
 ---
 title: 教程 2：训练信用风险模型
 titleSuffix: ML Studio (classic) - Azure
-description: 本详细教程介绍如何创建预测分析解决方案，用于在 Azure 机器学习工作室（经典）中进行信用风险评估。 本教程是由三个部分构成的系列教程的第二部分， 其中介绍了如何训练和评估模型。
+description: 本详细教程介绍如何创建预测分析解决方案，用于在 Azure 机器学习工作室（经典版）中进行信用风险评估。 本教程是由三个部分构成的系列教程的第二部分， 其中介绍了如何训练和评估模型。
 keywords: 信用风险, 预测分析解决方案, 风险评估
 author: sdgilley
 ms.author: sgilley
@@ -11,10 +11,10 @@ ms.subservice: studio
 ms.topic: tutorial
 ms.date: 02/11/2019
 ms.openlocfilehash: 8b79c36e1a13c2886e5a85e4cc4881234606ab46
-ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80343341"
 ---
 # <a name="tutorial-2-train-credit-risk-models---azure-machine-learning-studio-classic"></a>教程 2：训练信用风险模型 - Azure 机器学习工作室（经典版）
@@ -25,7 +25,7 @@ ms.locfileid: "80343341"
 
 假设用户需要根据他们提供的贷款申请相关信息预测个人的信用风险。  
 
-信用风险评估是个较为复杂的问题，但本教程会将其适当简化。 我们将使用它作为示例，展示如何使用 Microsoft Azure 机器学习工作室（经典版）来创建预测分析解决方案。 对此解决方案，我们将使用 Azure 机器学习工作室（经典）和机器学习 Web 服务。  
+信用风险评估是个较为复杂的问题，但本教程会将其适当简化。 我们将使用它作为示例，展示如何使用 Microsoft Azure 机器学习工作室（经典版）来创建预测分析解决方案。 对此解决方案，我们将使用 Azure 机器学习工作室（经典版）和机器学习 Web 服务。  
 
 在这篇由三个部分构成的教程中，我们将从公开的信用风险数据着手。  然后开发并训练预测模型。  最后将该模型部署为 Web 服务。
 
@@ -46,7 +46,7 @@ ms.locfileid: "80343341"
 
 ## <a name="train-multiple-models"></a><a name="train"></a>训练多个模型
 
-使用 Azure 机器学习工作室（经典）创建机器学习模型的优势之一是，能够在单个试验中一次性尝试多种模型并比较结果。 此类型的实验有助于找到最适合解决问题的解决方案。
+使用 Azure 机器学习工作室（经典）创建机器学习模型的优势之一是，能够在单个实验中一次性尝试多种模型并比较结果。 此类型的实验有助于找到最适合解决问题的解决方案。
 
 在本教程开发的试验中，你将创建两个不同类型的模型，然后比较其评分结果，从而确定我们希望用于最终试验的算法。  
 

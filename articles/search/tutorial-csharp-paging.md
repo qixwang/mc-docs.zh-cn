@@ -10,22 +10,22 @@ ms.topic: tutorial
 origin.date: 02/10/2020
 ms.date: 03/02/2020
 ms.openlocfilehash: 268264eca4fc79c12b2917fe460078e384e504b6
-ms.sourcegitcommit: 094c057878de233180ff3b3a3e3c19bc11c81776
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77501443"
 ---
 # <a name="c-tutorial-search-results-pagination---azure-cognitive-search"></a>C# 教程：搜索结果分页 - Azure 认知搜索
 
 了解如何实现这两个不同的分页系统，其中第一个基于页码，第二个基于无限滚动。 这两个分页系统都得到广泛使用，请根据要用于结果的用户体验选择合适的系统。 本教程将分页系统构建到在 [C# 教程：创建第一个应用 - Azure 认知搜索](tutorial-csharp-create-first-app.md)教程中创建的项目。
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 > [!div class="checklist"]
 > * 使用带编号的分页来扩展应用
 > * 使用无限滚动来扩展应用
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 要完成本教程，需要：
 

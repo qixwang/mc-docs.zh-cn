@@ -10,10 +10,10 @@ ms.date: 05/20/2019
 ms.author: v-yeche
 ms.custom: include file
 ms.openlocfilehash: f31425ace616201766b629404054f72415eae8f1
-ms.sourcegitcommit: 71172ca8af82d93d3da548222fbc82ed596d6256
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/15/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "65668892"
 ---
 > [!TIP]

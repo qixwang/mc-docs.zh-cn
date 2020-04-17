@@ -6,10 +6,10 @@ ms.date: 03/09/2020
 ms.author: v-tawe
 ms.topic: sample
 ms.openlocfilehash: df77fa6a035168bfcbcd7caab71e566fb2200c7b
-ms.sourcegitcommit: 892137d117bcaf9d88aec0eb7ca756fe39613344
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78048908"
 ---
 # <a name="azure-policy-pattern-the-value-operator"></a>Azure Policy 模式：value 运算符
@@ -17,7 +17,7 @@ ms.locfileid: "78048908"
 [value](../concepts/definition-structure.md#value) 运算符会对[参数](../concepts/definition-structure.md#parameters)、[支持的模板函数](../concepts/definition-structure.md#policy-functions)或文本进行评估，针对为给定[条件](../concepts/definition-structure.md#conditions)提供的值。
 
 > [!WARNING]
-> 如果模板函数  的结果是一个错误，则策略评估会失败。 失败的评估是一种隐式**拒绝**。 有关详细信息，请参阅[避免模板失败](../concepts/definition-structure.md#avoiding-template-failures)。
+> 如果模板函数  的结果是一个错误，则策略评估会失败。 评估失败是一种隐式**拒绝**。 有关详细信息，请参阅[避免模板失败](../concepts/definition-structure.md#avoiding-template-failures)。
 
 ## <a name="sample-policy-definition"></a>示例策略定义
 

@@ -10,10 +10,10 @@ ms.date: 03/30/2020
 ms.author: v-jay
 ms.reviewer: dineshm
 ms.openlocfilehash: cecf21e8ee55a7923235a8b289e7b77423d89d9a
-ms.sourcegitcommit: 90d01d08faf8adb20083363a8e4e5aab139cd9b2
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80290446"
 ---
 <!---Customer intent: I want to host files for a static website in Blob storage and access the website from an Azure endpoint.--->
@@ -22,7 +22,7 @@ ms.locfileid: "80290446"
 
 本教程介绍如何生成静态网站并将其部署到 Azure 存储。 完成本教程后，你会有一个可供用户公开访问的静态网站。 
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 配置静态网站托管
@@ -58,7 +58,7 @@ ms.locfileid: "80290446"
 1. 选择“启用”，启用针对存储帐户的静态网站托管功能。 
 1. 在“索引文档名称”字段中，指定 *index.html* 的默认索引页。  当用户导航到静态网站的根目录时，会显示默认索引页。  
 1. 在“错误文档路径”字段中，  指定默认错误页 *404.html*。 当用户尝试导航到静态网站中不存在的页面时，会显示默认错误页。
-1. 单击“保存”  。 Azure 门户现在会显示静态网站终结点。 
+1. 单击“ **保存**”。 Azure 门户现在会显示静态网站终结点。 
 
     ![启用针对存储帐户的静态网站托管功能](media/storage-blob-static-website-host/enable-static-website-hosting.png)
 

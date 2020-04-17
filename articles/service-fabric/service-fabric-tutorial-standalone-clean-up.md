@@ -8,15 +8,15 @@ ms.date: 02/24/2020
 ms.author: v-yeche
 ms.custom: mvc
 ms.openlocfilehash: e9f4918baa06d140c9c961d193d21ab04666e8d8
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77540122"
 ---
 # <a name="tutorial-clean-up-your-standalone-cluster"></a>教程：清理独立群集
 
-Service Fabric 独立群集提供相应的选项让我们选择自己的环境，并创建群集作为 Service Fabric 所采用的“任意 OS、任意云”方案的一部分。 在本系列教程中，将创建一个托管在 AWS 或 Azure 上的独立群集，并将应用程序安装到其中。
+Service Fabric 独立群集为你提供选择自己的环境的选项，并创建群集作为 Service Fabric 所采用的“任何 OS、任何云”方法的一部分。 在本系列教程中，将创建一个托管在 AWS 或 Azure 上的独立群集，并将应用程序安装到其中。
 
 本教程是一个系列中的第四部分， 本部分教程介绍如何清理创建的用于托管 Service Fabric 群集的 AWS 或 Azure 资源。
 
@@ -30,8 +30,8 @@ Service Fabric 独立群集提供相应的选项让我们选择自己的环境�
 
 1. 通过 RDP 连接到用于安装 Service Fabric 的 VM。
 2. 打开 PowerShell。
-3. 将目录更改到在第二个教程中提取的文件夹。
-4. 运行以下命令来删除 Service Fabric 群集：
+3. 将目录更改为第二个教程中提取的文件夹。
+4. 运行以下命令删除 Service Fabric 群集：
 
     ```powershell
     .\RemoveServiceFabricCluster.ps1 -ClusterConfigFilePath .\ClusterConfig.Unsecure.MultiMachine.json

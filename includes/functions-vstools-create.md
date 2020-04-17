@@ -9,10 +9,10 @@ ms.date: 03/30/2020
 ms.author: v-junlch
 ms.custom: include file
 ms.openlocfilehash: f81c894492cd680a43e0d308d6eb27b7f3cd009b
-ms.sourcegitcommit: 64584c0bf31b4204058ae2b4641356b904ccdd58
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80581786"
 ---
 Visual Studio 中的 Azure Functions 项目模板创建了一个项目，该项目可发布到 Azure 中的函数应用。 可使用函数应用将函数分组为逻辑单元，以便更轻松地管理、部署、缩放和共享资源。
@@ -25,7 +25,7 @@ Visual Studio 中的 Azure Functions 项目模板创建了一个项目，该项�
 
 1. 对于“新项目 - &lt;你的项目名称&gt;”设置，请使用下表中的值： 
 
-    | 设置      | Value  | 说明                      |
+    | 设置      | 值  | 说明                      |
     | ------------ |  ------- |----------------------------------------- |
     | **Functions 运行时** | **Azure Functions v2 <br />(.NET Core)** | 此值会创建使用 Azure Functions 的版本 2.x 运行时（支持 .NET Core）的函数项目。 Azure Functions 1.x 支持 .NET Framework。 有关详细信息，请参阅 [Azure Functions 运行时版本概述](../articles/azure-functions/functions-versions.md)。   |
     | **函数模板** | **HTTP 触发器** | 此值会创建由 HTTP 请求触发的函数。 |

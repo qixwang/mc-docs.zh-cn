@@ -6,10 +6,10 @@ ms.date: 03/09/2020
 ms.author: v-tawe
 ms.topic: sample
 ms.openlocfilehash: 07f27b168be64c6b4b5d40cacb0dcb1209557d3f
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79291961"
 ---
 # <a name="azure-policy-built-in-policy-definitions"></a>Azure Policy 内置策略定义

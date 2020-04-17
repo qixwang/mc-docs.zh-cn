@@ -7,10 +7,10 @@ origin.date: 01/31/2019
 ms.date: 09/23/2019
 ms.author: v-lingwu
 ms.openlocfilehash: 995abf80dc039a69a696449954c8621eb2373608
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78850607"
 ---
 # <a name="azure-backup-powershell-samples"></a>Azure 备份 PowerShell 示例

@@ -15,10 +15,10 @@ origin.date: 08/19/2019
 ms.date: 04/06/2020
 ms.author: v-jay
 ms.openlocfilehash: 834a96004ca51dbbbc2bc992b84a69bb551d9eb7
-ms.sourcegitcommit: fe9ed98aaee287a21648f866bb77cb6888f75b0c
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80625765"
 ---
 # <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---azure-cli"></a>教程：基于 URL 对远程文件进行编码并流式传输视频 - Azure CLI

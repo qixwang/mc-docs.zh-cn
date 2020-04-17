@@ -7,10 +7,10 @@ ms.date: 02/24/2020
 ms.author: v-yeche
 ms.custom: mvc
 ms.openlocfilehash: 2042ba41071bce4b0ae36797e45b97300fc0183b
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77540987"
 ---
 # <a name="azure-service-fabric-powershell-samples"></a>Azure Service Fabric PowerShell 示例
@@ -21,7 +21,7 @@ ms.locfileid: "77540987"
 
 | | |
 |-|-|
-| 创建群集  ||
+| **创建群集** ||
 | [创建群集 (Azure)](./scripts/service-fabric-powershell-create-secure-cluster-cert.md)| 创建 Azure Service Fabric 群集。 |
 | **管理群集、节点和基础结构** ||
 | [添加应用程序证书](./scripts/service-fabric-powershell-add-application-certificate.md)| 创建密钥保管库的 X509 证书，并将其部署到群集中的虚拟机规模集。 |

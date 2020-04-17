@@ -16,10 +16,10 @@ origin.date: 12/12/2019
 ms.date: 2/5/2020
 ms.author: v-lingwu
 ms.openlocfilehash: 018a0ce7a37e9c76d9675f7e3cc1ab80035b277b
-ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77028598"
 ---
 # <a name="cli-example-create-and-manage-a-windows-pool-in-azure-batch"></a>CLI 示例：在 Azure Batch 中创建和管理 Windows 池
@@ -87,9 +87,9 @@ az group delete --name myResourceGroup
 
 ## <a name="script-explanation"></a>脚本说明
 
-此脚本使用以下命令。 表中的每条命令链接到特定于命令的文档。
+此脚本使用以下命令。 表中的每条命令均链接到特定于命令的文档。
 
-| 命令 | 注释 |
+| Command | 说明 |
 |---|---|
 | [az group create](/cli/group#az-group-create) | 创建用于存储所有资源的资源组。 |
 | [az batch account create](/cli/batch/account#az-batch-account-create) | 创建批处理帐户。 |

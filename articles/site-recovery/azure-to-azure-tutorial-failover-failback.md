@@ -11,15 +11,15 @@ ms.date: 08/26/2019
 ms.author: v-yeche
 ms.custom: mvc
 ms.openlocfilehash: ceb5d4fb89e6746dae11e49fe694dee51c6c456c
-ms.sourcegitcommit: 18a0d2561c8b60819671ca8e4ea8147fe9d41feb
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "70134412"
 ---
 # <a name="fail-over-and-reprotect-azure-vms-between-regions"></a>在区域之间故障转移和重新保护 Azure VM
 
-本教程介绍如何使用 [Azure Site Recovery](site-recovery-overview.md) 服务将 Azure 虚拟机 (VM) 故障转移到次要 Azure 区域。 故障转移后，对 VM 重新进行保护。 本教程介绍如何执行下列操作：
+本教程介绍如何使用 [Azure Site Recovery](site-recovery-overview.md) 服务将 Azure 虚拟机 (VM) 故障转移到次要 Azure 区域。 故障转移后，对 VM 重新进行保护。 在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 故障转移 Azure VM
@@ -51,9 +51,9 @@ ms.locfileid: "70134412"
 
 4. 在“作业”页上跟踪故障转移进度。 
 
-5. 故障转移后，请登录到虚拟机来对它进行验证。 如果想要转到虚拟机的另一个恢复点，可以使用“更改恢复点”  选项。
+5. 故障转移后，请登录到虚拟机来对它进行验证。 如果想要转到虚拟机的另一个恢复点，可以使用“更改恢复点”选项。 
 
-6. 如果故障转移后的虚拟机符合要求，可以“提交”  故障转移。
+6. 如果故障转移后的虚拟机符合要求，可以**提交**故障转移。
    提交会删除该服务提供的所有恢复点。 现在无法无法更改恢复点。
 
     > [!NOTE]

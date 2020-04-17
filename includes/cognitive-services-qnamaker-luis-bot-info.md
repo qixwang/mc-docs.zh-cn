@@ -11,17 +11,17 @@ ms.custom: include file
 ms.date: 06/24/2019
 ms.author: diberry
 ms.openlocfilehash: d9c121c053b511011bff1d523b7d4354ceb7100b
-ms.sourcegitcommit: 1414c787aa13b802e43fc7317af96a9e14889e20
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "68332757"
 ---
 ## <a name="more-information-about-bots"></a>有关机器人的更多信息
 
 有关将此服务与机器人配合使用的详细信息，请从以下资源开始：
 
-|Resource|目的|
+|资源|目的|
 |--|--|
 |[Azure 机器人服务](https://dev.botframework.com/)|Azure 机器人服务通过一个机器人终结点提供完整的云托管 Web 服务。 这些服务使用以多种语言提供的 [Bot Framework](https://github.com/Microsoft/botframework)。|
 |[Bot Framework](https://github.com/Microsoft/botframework)|Microsoft Bot Framework 是一个用于构建企业级对话 AI 体验的综合平台。|

@@ -1,6 +1,6 @@
 ---
 title: 使用 Python 的 Azure 存储示例 | Microsoft Docs
-description: 查看、下载和运行 Azure 存储的示例代码和应用程序。 使用 Python 存储客户端库发现 Blob、队列、表和文件的入门示例。
+description: 查看、下载和运行 Azure 存储的示例代码和应用程序 使用 Python 存储客户端库发现 Blob、队列、表和文件的入门示例。
 author: WenJason
 ms.author: v-jay
 origin.date: 09/06/2019
@@ -9,10 +9,10 @@ ms.service: storage
 ms.subservice: common
 ms.topic: sample
 ms.openlocfilehash: 6699f3e8bd77feb6471949611c410ff97fc8b506
-ms.sourcegitcommit: fbc7584f403417d3af7bd6bbbaed7c13a78c57b9
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78412244"
 ---
 # <a name="azure-storage-samples-using-v12-python-client-libraries"></a>使用 v12 Python 客户端库的 Azure 存储示例
@@ -227,7 +227,7 @@ ms.locfileid: "78412244"
    :::column-end:::
 :::row-end:::
 
-### <a name="directory"></a>Directory
+### <a name="directory"></a>目录
 
 :::row:::
    :::column span="":::
@@ -358,7 +358,7 @@ ms.locfileid: "78412244"
    :::column-end:::
 :::row-end:::
 
-### <a name="directory"></a>Directory
+### <a name="directory"></a>目录
 
 :::row:::
    :::column span="":::
@@ -502,7 +502,7 @@ ms.locfileid: "78412244"
    :::column-end:::
 :::row-end:::
 
-### <a name="message"></a>Message
+### <a name="message"></a>消息
 
 :::row:::
    :::column span="":::
@@ -589,7 +589,7 @@ ms.locfileid: "78412244"
 
 ## <a name="next-steps"></a>后续步骤
 
-了解其他语言的示例：
+了解有关其他语言的示例的信息：
 
 * .NET:[使用 .NET 的 Azure 存储示例](storage-samples-dotnet.md)
 * Java:[使用 Java 的 Azure 存储示例](storage-samples-java.md)

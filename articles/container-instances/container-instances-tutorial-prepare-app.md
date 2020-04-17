@@ -7,10 +7,10 @@ ms.date: 01/15/2020
 ms.author: v-yeche
 ms.custom: seodec18, mvc
 ms.openlocfilehash: da028d0813f7e2178805b7b3668d6a7035245963
-ms.sourcegitcommit: 97fdc3a6529136315605b86a150b345d6817dab9
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75965096"
 ---
 # <a name="tutorial-create-a-container-image-for-deployment-to-azure-container-instances"></a>教程：创建要部署到 Azure 容器实例的容器映像
@@ -26,7 +26,7 @@ ms.locfileid: "75965096"
 
 在本教程的第二和第三部分，需要将该映像上传到 Azure 容器注册表，然后将其部署到 Azure 容器实例。
 
-## <a name="before-you-begin"></a>准备阶段
+## <a name="before-you-begin"></a>开始之前
 
 [!INCLUDE [container-instances-tutorial-prerequisites](../../includes/container-instances-tutorial-prerequisites.md)]
 

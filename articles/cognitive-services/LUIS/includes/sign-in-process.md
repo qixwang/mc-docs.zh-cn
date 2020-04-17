@@ -11,10 +11,10 @@ ms.topic: include
 ms.date: 10/23/2019
 ms.author: diberry
 ms.openlocfilehash: f172e304a8eedced7f716a97294937295238b470
-ms.sourcegitcommit: 676e2c676414ded74b980a1da9eb0de30817afbe
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/27/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75500406"
 ---
 ## <a name="sign-in-to-luis-portal"></a>登录到 LUIS 门户
@@ -40,7 +40,7 @@ LUIS 的新用户需要执行此过程：
     * **位置** - 位置选项基于**资源组**选择。
     * **定价层** - 定价层确定每秒和每月的最大事务数。
 
-1. 此时将显示要创建的资源的摘要。 选择“**下一步**”。
+1. 此时将显示要创建的资源的摘要。 选择“**下一页**”。
 
     ![创建创作资源](../media/sign-in/sign-in-confirm-key-selection.png)
 

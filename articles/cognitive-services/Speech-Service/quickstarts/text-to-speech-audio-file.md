@@ -13,10 +13,10 @@ ms.date: 03/16/2020
 ms.author: v-tawe
 zone_pivot_groups: programming-languages-set-two
 ms.openlocfilehash: 31379a9defc89d63094bc7fe05d8b8a0936c936b
-ms.sourcegitcommit: b2f2bb08ab1b5ccb3c596d84b3b6ddca5bba3903
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80151586"
 ---
 # <a name="quickstart-synthesize-speech-into-an-audio-file"></a>快速入门：将语音合成到音频文件

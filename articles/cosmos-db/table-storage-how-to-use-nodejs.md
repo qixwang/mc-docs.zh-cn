@@ -10,10 +10,10 @@ ms.date: 02/10/2020
 author: rockboyfor
 ms.author: v-yeche
 ms.openlocfilehash: 6890d1fdbebb78ee9580302e8f6b048b01790b0a
-ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77068343"
 ---
 # <a name="how-to-use-azure-table-storage-or-the-azure-cosmos-db-table-api-from-nodejs"></a>如何通过 Node.js 使用 Azure 表存储或 Azure Cosmos DB 表 API
@@ -21,7 +21,7 @@ ms.locfileid: "77068343"
 [!INCLUDE [storage-table-applies-to-storagetable-and-cosmos](../../includes/storage-table-applies-to-storagetable-and-cosmos.md)]
 
 ## <a name="overview"></a>概述
-本文介绍如何使用 Node.js 应用程序中的 Azure 存储表服务或 Azure Cosmos DB 执行常见任务。
+本文演示如何使用 Node.js 应用程序中的 Azure 存储表服务或 Azure Cosmos DB 执行常见方案。
 
 ## <a name="create-an-azure-service-account"></a>创建 Azure 服务帐户
 
@@ -40,9 +40,9 @@ ms.locfileid: "77068343"
 
 <!-- Notice: Should be Azure Storage SDK-->
 
-### <a name="use-node-package-manager-npm-to-install-the-package"></a>使用节点包管理器 (NPM) 安装包
-1. 使用 PowerShell  (Windows)、Terminal  (Mac) 或 Bash  (Unix) 等命令行接口导航到在其中创建了应用程序的文件夹。
-2. 在命令窗口中键入 **npm install azure-storage** 。 该命令的输出类似于以下示例。
+### <a name="use-node-package-manager-npm-to-install-the-package"></a>使用 Node 包管理器 (NPM) 安装包
+1. 使用 **PowerShell** (Windows)、**Terminal** (Mac) 或 **Bash** (Unix) 等命令行接口导航到在其中创建了应用程序的文件夹。
+2. 在命令窗口中键入 **npm install azure-storage**。 该命令的输出类似于以下示例。
 
         azure-storage@0.5.0 node_modules\azure-storage
         +-- extend@1.2.1
@@ -54,17 +54,17 @@ ms.locfileid: "77068343"
         +-- readable-stream@1.0.33 (string_decoder@0.10.31, isarray@0.0.1, inherits@2.0.1, core-util-is@1.0.1)
         +-- xml2js@0.2.7 (sax@0.5.2)
         +-- request@2.57.0 (caseless@0.10.0, aws-sign2@0.5.0, forever-agent@0.6.1, stringstream@0.0.4, oauth-sign@0.8.0, tunnel-agent@0.4.1, isstream@0.1.2, json-stringify-safe@5.0.1, bl@0.9.4, combined-stream@1.0.5, qs@3.1.0, mime-types@2.0.14, form-data@0.2.0, http-signature@0.11.0, tough-cookie@2.0.0, hawk@2.3.1, har-validator@1.8.0)
-3. 可以手动运行 **ls** 命令来验证是否创建了 **node_modules** 文件夹。 在该文件夹中将找到 **azure-storage** 包，其中包含访问存储所需的库。
+3. 可以手动运行 ls 命令，验证是否创建了 node_modules 文件夹   。 在该文件夹中将找到 **azure-storage** 包，其中包含访问存储所需的库。
 
 ### <a name="import-the-package"></a>导入包
-将以下代码添加到应用程序中 **server.js** 文件的顶部：
+将以下代码添加到应用程序中的 **server.js** 文件的顶部：
 
 ```javascript
 var azure = require('azure-storage');
 ```
 
 ## <a name="add-an-azure-storage-connection"></a>添加 Azure 存储连接
-Azure 模块读取环境变量 AZURE_STORAGE_ACCOUNT 和 AZURE_STORAGE_ACCESS_KEY 或 AZURE_STORAGE_CONNECTION_STRING 以获取连接到 Azure 存储器帐户所需的信息。 如果未设置这些环境变量，则必须在调用 **TableService**时指定帐户信息。 例如，以下代码创建 TableService 对象： 
+Azure 模块读取环境变量 AZURE_STORAGE_ACCOUNT 和 AZURE_STORAGE_ACCESS_KEY 或 AZURE_STORAGE_CONNECTION_STRING 以获取连接到 Azure 存储器帐户所需的信息。 如果未设置这些环境变量，则必须在调用 **TableService** 时指定帐户信息。 例如，以下代码创建 TableService 对象： 
 
 ```javascript
 var tableSvc = azure.createTableService('myconnectionstring');
@@ -86,7 +86,7 @@ var tableSvc = azure.createTableService('myaccount', 'myprimarykey', 'myendpoint
 var tableSvc = azure.createTableService();
 ```
 
-调用 createTableIfNotExists 创建具有指定名称的一个新表（如果该表尚不存在）。  下面的示例创建一个名为“mytable”的新表（如果该表尚不存在）：
+调用 createTableIfNotExists 创建具有指定名称的一个新表（如果该表尚不存在）。  下面的示例将创建一个名为“mytable”的新表（如果该表尚不存在）：
 
 ```javascript
 tableSvc.createTableIfNotExists('mytable', function(error, result, response){
@@ -113,7 +113,7 @@ function (returnObject, finalCallback, next)
 
 在此回调中并且在处理 returnObject（来自对服务器请求的响应）后，回调必须调用 next（如果它已存在）以继续处理其他筛选器或只调用 finalCallback 以便结束服务调用    。
 
-Azure SDK for Node.js 中附带了两个实现了重试逻辑的筛选器，分别是 **ExponentialRetryPolicyFilter** 和 **LinearRetryPolicyFilter**。 以下代码将创建使用 ExponentialRetryPolicyFilter  的 TableService  对象:
+Azure SDK for Node.js 中附带了两个实现了重试逻辑的筛选器，分别是 **ExponentialRetryPolicyFilter** 和 **LinearRetryPolicyFilter**。 以下代码将创建使用 **ExponentialRetryPolicyFilter** 的 **TableService** 对象:
 
 ```javascript
 var retryOperations = new azure.ExponentialRetryPolicyFilter();
@@ -121,14 +121,14 @@ var tableSvc = azure.createTableService().withFilter(retryOperations);
 ```
 
 ## <a name="add-an-entity-to-a-table"></a>将实体添加到表
-若要添加实体，首先创建定义实体属性的对象。 所有实体都必须都包含 PartitionKey  和 RowKey  ，它们是实体的唯一标识符。
+若要添加实体，首先创建定义实体属性的对象。 所有实体都必须都包含 **PartitionKey** 和 **RowKey**，它们是实体的唯一标识符。
 
 * **PartitionKey** - 确定实体存储在其中的分区。
 * **RowKey** - 唯一标识分区内的实体。
 
-PartitionKey  和 RowKey  都必须是字符串值。 有关详细信息，请参阅 [Understanding the Table Service Data Model](https://msdn.microsoft.com/library/azure/dd179338.aspx)（了解表服务数据模型）。
+**PartitionKey** 和 **RowKey** 都必须是字符串值。 有关详细信息，请参阅 [Understanding the Table Service Data Model](https://msdn.microsoft.com/library/azure/dd179338.aspx)（了解表服务数据模型）。
 
-下面是如何定义实体的示例。 请注意，dueDate  被定义为一种类型的 Edm.DateTime  。 可以选择指定类型。如果未指定类型，系统会进行推断。
+下面是如何定义实体的示例。 请注意，**dueDate** 被定义为一种类型的 **Edm.DateTime**。 可以选择指定类型。如果未指定类型，系统会进行推断。
 
 ```javascript
 var task = {
@@ -144,7 +144,7 @@ var task = {
 >
 >
 
-还可以使用 **entityGenerator** 来创建实体。 下面的示例使用 **entityGenerator**来创建相同的任务实体。
+还可以使用 **entityGenerator** 来创建实体。 下面的示例使用 **entityGenerator** 来创建相同的任务实体。
 
 ```javascript
 var entGen = azure.TableUtilities.entityGenerator;
@@ -175,21 +175,21 @@ tableSvc.insertEntity('mytable',task, function (error, result, response) {
 ```
 
 > [!NOTE]
-> 默认情况下，insertEntity  不会在 `response` 信息中返回插入的实体。 如果计划对此实体执行其他操作，或者想要对信息进行缓存，则可在 `result` 中返回该实体。 可以通过启用 **echoContent** 来执行此操作，如下所示：
+> 默认情况下，**insertEntity** 不会在 `response` 信息中返回插入的实体。 如果计划对此实体执行其他操作，或者想要对信息进行缓存，则可在 `result` 中返回该实体。 可以通过启用 **echoContent** 来执行此操作，如下所示：
 >
 > `tableSvc.insertEntity('mytable', task, {echoContent: true}, function (error, result, response) {...}`
 >
 >
 
 ## <a name="update-an-entity"></a>更新实体
-可使用多种方法来更新现有条目：
+可使用多种方法来更新现有实体：
 
 * **replaceEntity** - 通过替换现有实体来更新现有实体。
 * **mergeEntity** - 通过将新属性值合并到现有实体来更新现有实体。
-* **insertOrReplaceEntity** - 通过替换现有实体来更新现有实体。 如果不存在条目，则插入新条目。
-* **insertOrMergeEntity** - 通过将新属性值合并到现有实体来更新现有实体。 如果不存在条目，则插入新条目。
+* **insertOrReplaceEntity** - 通过替换现有实体来更新现有实体。 如果不存在实体，将插入一个新实体。
+* **insertOrMergeEntity** - 通过将新属性值合并到现有实体来更新现有实体。 如果不存在实体，将插入一个新实体。
 
-以下示例演示了使用 **replaceEntity**更新实体：
+以下示例演示了使用 **replaceEntity** 更新实体：
 
 ```javascript
 tableSvc.replaceEntity('mytable', updatedTask, function(error, result, response){
@@ -202,8 +202,8 @@ tableSvc.replaceEntity('mytable', updatedTask, function(error, result, response)
 > [!NOTE]
 > 默认情况下，更新某个实体时，不会查看要更新的数据是否曾被其他进程更新过。 若要支持并发更新，请执行以下步骤：
 >
-> 1. 获取要更新的对象的 ETag。 对于任何实体相关操作，该 ETag 将在 `response` 中返回，并且可通过 `response['.metadata'].etag` 检索。
-> 2. 对某个实体执行更新操作时，请将以前检索的 ETag 信息添加到新的实体。 例如：
+> 1. 获取要更新的对象的 ETag。 对于任何实体相关操作，该 ETag 会在 `response` 中返回，并且可通过 `response['.metadata'].etag` 检索。
+> 2. 对某个实体执行更新操作时，请以前检索的 ETag 信息添加到新的实体。 例如：
 >
 >       entity2['.metadata'].etag = currentEtag;
 > 3. 执行更新操作。 如果实体在检索 ETag 值后已被修改，例如被应用程序的其他实例修改，则会返回一条 `error`，指出未满足请求中指定的更新条件。
@@ -215,7 +215,7 @@ tableSvc.replaceEntity('mytable', updatedTask, function(error, result, response)
 如果更新操作成功，则 `result` 会包含所更新实体的 Etag  。
 
 ## <a name="work-with-groups-of-entities"></a>使用实体组
-有时，有必要成批地同时提交多项操作以确保通过服务器进行原子处理。 使用 TableBatch  类来创建一个批处理，然后使用 TableService  的 executeBatch  方法来执行批处理操作。
+有时，有必要批量同时提交多项操作以确保通过服务器进行原子处理。 使用 **TableBatch** 类来创建一个批处理，并使用 **TableService** 的 **executeBatch** 方法来执行批处理操作。
 
  下面的示例演示了在一个批次中提交两个实体：
 
@@ -257,7 +257,7 @@ tableSvc.executeBatch('mytable', batch, function (error, result, response) {
 * **size** - 返回批处理中操作的数目。
 
 ## <a name="retrieve-an-entity-by-key"></a>通过键检索实体
-如果想要返回基于 PartitionKey  和 RowKey  的特定实体，请使用 retrieveEntity  方法。
+如果想要返回基于 **PartitionKey** 和 **RowKey** 的特定实体，请使用 **retrieveEntity** 方法。
 
 ```javascript
 tableSvc.retrieveEntity('mytable', 'hometasks', '1', function(error, result, response){
@@ -269,7 +269,7 @@ tableSvc.retrieveEntity('mytable', 'hometasks', '1', function(error, result, res
 
 完成此操作后，`result` 包含该实体。
 
-## <a name="query-a-set-of-entities"></a>查询一组条目
+## <a name="query-a-set-of-entities"></a>查询实体集
 若要查询表，请使用 **TableQuery** 对象生成一个使用以下子句的查询：
 
 * **select** - 要从查询返回的字段。
@@ -297,7 +297,7 @@ tableSvc.queryEntities('mytable',query, null, function(error, result, response) 
 });
 ```
 
-如果成功，`result.entries` 会包含与查询匹配的一组实体。 如果查询无法返回所有实体，`result.continuationToken` 就不会是 NULL，因此可用作 queryEntities 的第三个参数来检索更多结果   。 对于初始查询，第三个参数请使用 *null* 。
+如果成功，`result.entries` 会包含与查询匹配的一组实体。 如果查询无法返回所有实体，`result.continuationToken` 就不会是 NULL，因此可用作 queryEntities 的第三个参数来检索更多结果   。 对于初始查询，对第三个参数使用 null  。
 
 ### <a name="query-a-subset-of-entity-properties"></a>查询一部分实体属性
 对表的查询可以只检索实体中的少数几个字段。
@@ -310,7 +310,7 @@ var query = new azure.TableQuery()
   .where('PartitionKey eq ?', 'hometasks');
 ```
 
-## <a name="delete-an-entity"></a>删除条目
+## <a name="delete-an-entity"></a>删除实体
 可以使用实体的分区键和行键删除实体。 在本例中，task1 对象包含要删除的实体的 RowKey 和 PartitionKey 值    。 然后，该对象被传递给 **deleteEntity** 方法。
 
 ```javascript
@@ -327,7 +327,7 @@ tableSvc.deleteEntity('mytable', task, function(error, response){
 ```
 
 > [!NOTE]
-> 考虑在删除项时使用 ETag，以确保项尚未被其他进程修改。 请参阅 [更新实体](#update-an-entity) 了解如何使用 ETag。
+> 考虑在删除项时使用 ETag，以确保项尚未被其他进程修改。 请参阅[更新实体](#update-an-entity)了解如何使用 ETag。
 >
 >
 
@@ -347,7 +347,7 @@ tableSvc.deleteTable('mytable', function(error, response){
 ## <a name="use-continuation-tokens"></a>使用继续标记
 在所查询的表有大量的结果时，请查找继续标记。 如果在生成时不能识别何时存在继续标记，可能存在大量未意识到的数据可用于查询。
 
-查询实体在设置 `continuationToken` 属性（如果此类标记存在）期间，返回结果对象  。 然后可以在执行查询时使用它，以继续在分区和表实体间移动。
+查询实体在设置 `continuationToken` 属性（如果此类标记存在）期间，返回结果对象  。 然后可以在执行查询时使用此对象，继续在分区和表实体之间移动。
 
 在查询时，在查询对象实例和回调函数之间可能会提供 `continuationToken` 参数：
 
@@ -375,9 +375,9 @@ dc.table.queryEntities(tableName,
 ## <a name="work-with-shared-access-signatures"></a>使用共享访问签名
 共享访问签名 (SAS) 是一种安全的方法，用于对表进行细致访问而无需提供存储帐户名或密钥。 通常使用 SAS 来提供对数据的有限访问权限，例如允许移动应用查询记录。
 
-受信任的应用程序（例如基于云的服务）可使用 TableService  的 generateSharedAccessSignature  生成 SAS，然后将其提供给不受信任的或不完全受信任的应用程序，例如移动应用。 可使用策略生成 SAS，该策略描述了 SAS 的生效日期和失效日期，以及授予 SAS 持有者的访问级别。
+受信任的应用程序（例如基于云的服务）可使用 **TableService** 的 **generateSharedAccessSignature** 生成 SAS，然后将其提供给不受信任的或不完全受信任的应用程序，例如移动应用。 可使用策略生成 SAS，该策略描述了 SAS 的生效日期和失效日期，以及授予 SAS 持有者的访问级别。
 
-下面的示例会生成一个新的共享访问策略，该策略将允许 SAS 持有者查询 ('r') 表，并在创建后 100 分钟过期。
+下面的示例生成了一个新的共享访问策略，该策略将允许 SAS 持有者查询 ('r') 表，在创建后 100 分钟过期。
 
 ```javascript
 var startDate = new Date();
@@ -437,7 +437,7 @@ var sharedAccessPolicy = {
 };
 ```
 
-下面的示例获取 hometasks  表的当前 ACL，然后使用 setTableAcl  添加新策略。 此方法具有以下用途：
+下面的示例获取 **hometasks** 表的当前 ACL，并使用 **setTableAcl** 添加新策略。 此方法具有以下用途：
 
 ```javascript
 var extend = require('extend');
@@ -469,6 +469,6 @@ tableSAS = tableSvc.generateSharedAccessSignature('hometasks', { Id: 'user2' });
 * GitHub 上的 [Azure Storage SDK for Node.js](https://github.com/Azure/azure-storage-node) 存储库。
 * [面向 Node.js 开发人员的 Azure](https://docs.microsoft.com/javascript/azure/?view=azure-node-latest)
 * [在 Azure 中创建 Node.js Web 应用](../app-service/app-service-web-get-started-nodejs.md)
-* [构建 Node.js 应用程序并将其部署到 Azure 云服务](../cloud-services/cloud-services-nodejs-develop-deploy-app.md)（使用 Windows PowerShell）
+* [生成 Node.js 应用程序并将其部署到 Azure 云服务](../cloud-services/cloud-services-nodejs-develop-deploy-app.md)（使用 Windows PowerShell）
 
 <!--Update_Description: update meta properties, wording update, update link -->

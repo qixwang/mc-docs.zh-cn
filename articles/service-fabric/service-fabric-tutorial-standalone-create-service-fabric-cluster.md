@@ -8,19 +8,19 @@ ms.date: 02/24/2020
 ms.author: v-yeche
 ms.custom: mvc
 ms.openlocfilehash: 602801cdc3f1a72c7c4539758ea53331d7928618
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77540117"
 ---
 # <a name="tutorial-install-and-create-service-fabric-cluster"></a>教程：安装并创建 Service Fabric 群集
 
-Service Fabric 独立群集提供相应的选项让我们选择自己的环境，并创建群集作为 Service Fabric 所采用的“任意 OS、任意云”方案的一部分。 在本系列教程中，将创建一个托管在 AWS 或 Azure 上的独立群集，并将应用程序安装到其中。
+Service Fabric 独立群集为你提供选择自己的环境的选项，并创建群集作为 Service Fabric 所采用的“任何 OS、任何云”方法的一部分。 在本系列教程中，将创建一个托管在 AWS 或 Azure 上的独立群集，并将应用程序安装到其中。
 
-本教程是一个系列中的第二部分。 本教程将引导你完成创建 Service Fabric 独立群集的步骤。
+本教程是一个系列中的第二部分。 本教程将逐步指导完成创建 Service Fabric 独立群集的步骤。
 
-此系列的第二部分介绍如何：
+本系列教程的第二部分将介绍如何：
 
 > [!div class="checklist"]
 > * 下载并安装 Service Fabric 独立包
@@ -31,7 +31,7 @@ Service Fabric 独立群集提供相应的选项让我们选择自己的环境�
 
 Service Fabric 提供了一个安装程序包，用于创建独立的 Service Fabric 群集。  在本地计算机上[下载安装程序包](https://go.microsoft.com/fwlink/?LinkId=730690)。  成功下载后，将其通过 RDP 连接复制到 VM，并将其粘贴到桌面上。
 
-选择 zip 文件并打开上下文菜单，然后选择“全部提取” > “提取”。    提取文件时，将在桌面上生成一个与 zip 文件名相同的文件夹。
+选择 zip 文件并打开上下文菜单，然后选择“全部提取”   > “提取”  。  提取文件时，将在桌面上生成一个与 zip 文件名相同的文件夹。
 
 如果想要获取更多详细信息，请参阅[安装程序包的内容](service-fabric-cluster-standalone-package-contents.md)。
 
@@ -78,7 +78,7 @@ cd .\Desktop\Microsoft.Azure.ServiceFabric.WindowsServer.6.2.274.9494\
 .\TestConfiguration.ps1 -ClusterConfigFilePath .\ClusterConfig.Unsecure.MultiMachine.json
 ```
 
-可看到如下输出： 如果底部字段“Passed”的返回值为 `True`，那么已通过完整性检查，并且群集看似可以根据输入配置进行部署。
+可看到如下输出： 如果底部字段“Passed”的返回值为 `True`，那么已通过完整性检查，并且根据输入配置群集看似可以部署。
 
 ```powershell
 Trace folder already exists. Traces will be written to existing trace folder: C:\Users\Administrator\Desktop\Microsoft.Azure.ServiceFabric.WindowsServer.6.2.274.9494\DeploymentTraces
@@ -101,20 +101,20 @@ Passed                     : True
 
 ## <a name="create-the-cluster"></a>创建群集
 
-成功验证群集配置后，运行 *CreateServiceFabricCluster.ps1* 脚本，将 Service Fabric 群集部署到配置文件中的虚拟机。
+成功验证群集配置后，请运行 *CreateServiceFabricCluster.ps1* 脚本，将 Service Fabric 群集部署到配置文件中的虚拟机。
 
 ```powershell
 .\CreateServiceFabricCluster.ps1 -ClusterConfigFilePath .\ClusterConfig.Unsecure.MultiMachine.json -AcceptEULA
 ```
 
-如果一切正常，会得到如下所示的输出：
+如果一切正常，你会得到如下所示的输出：
 
 ```powershell
 Your cluster is successfully created! You can connect and manage your cluster using Azure Service Fabric Explorer or PowerShell. To connect through PowerShell, run 'Connect-ServiceFabricCluster [ClusterConnectionEndpoint]'.
 ```
 
 > [!NOTE]
-> 部署跟踪已写入运行 CreateServiceFabricCluster.ps1 PowerShell 脚本的 VM/计算机。 可在运行脚本的目录中的子文件夹 DeploymentTraces 中找到这些信息。 要确定是否已将 Service Fabric 正确部署到计算机，请根据群集配置文件 FabricSettings 部分中的详述找到 FabricDataRoot 目录（默认为 c:\ProgramData\SF）中安装的文件。 在任务管理器中也可以看到 FabricHost.exe 和 Fabric.exe 进程正在运行。
+> 部署跟踪被写入到运行 CreateServiceFabricCluster.ps1 PowerShell 脚本的 VM/计算机上。 这些信息可以从运行脚本的目录中的子文件夹 DeploymentTraces 中找到。 按照群集配置文件 FabricSettings 部分中的详述，要查看是否已将 Service Fabric 正确部署到计算机，请查找 FabricDataRoot 目录（默认为 c:\ProgramData\SF）中的已安装文件。 同样，可以看到 FabricHost.exe 和 Fabric.exe 进程在任务管理器中运行。
 >
 >
 
@@ -136,7 +136,7 @@ Your cluster is successfully created! You can connect and manage your cluster us
 > * 运行应用程序
 > * 验证连接数
 
-请继续学习本系列教程的第三部分，将应用程序安装到已创建的群集中。
+转到本系列教程的第三部分，将应用程序安装到已创建的群集中。
 
 > [!div class="nextstepaction"]
 > [将应用程序安装到 Service Fabric 群集中](service-fabric-tutorial-standalone-install-an-application.md)

@@ -6,10 +6,10 @@ origin.date: 12/30/2019
 ms.date: 03/09/2020
 ms.author: v-tawe
 ms.openlocfilehash: 18c0a8f591d0f440dc392c4e66a64960579700d1
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78155479"
 ---
 ## <a name="create-a-container-registry"></a>创建容器注册表
@@ -24,7 +24,7 @@ ms.locfileid: "78155479"
 
 2. 提供以下值，以便创建容器注册表：
 
-   | 字段 | Value |
+   | 字段 | 值 |
    | ----- | ----- |
    | 注册表名称 | 提供唯一名称。 |
    | 订阅 | 从下拉列表中选择“订阅”。 |
@@ -37,6 +37,6 @@ ms.locfileid: "78155479"
 
 4. 创建容器注册表后，浏览到它，然后从左窗格中，选择“设置”下菜单中的“访问密钥”   。
 
-5. 复制“登录服务器”、“用户名”和“密码”的值，然后将其存储在某个方便的位置。    本教程自始至终会用到这些值来访问容器注册表。
+5. 复制“登录服务器”、“用户名”和“密码”的值，并将其保存在方便的位置    。 本教程将使用这些值来访问容器注册表。
 
-   ![为容器注册表复制登录服务器、用户名和密码](./media/iot-edge-create-container-registry/registry-access-key.png)
+   ![复制容器注册表的登录服务器、用户名和密码](./media/iot-edge-create-container-registry/registry-access-key.png)

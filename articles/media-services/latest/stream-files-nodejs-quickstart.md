@@ -15,10 +15,10 @@ origin.date: 08/19/2019
 ms.date: 09/23/2019
 ms.author: v-jay
 ms.openlocfilehash: 07974bb943f71cf3bd0be5f9ef46d4647574f2db
-ms.sourcegitcommit: 8248259e4c3947aa0658ad6c28f54988a8aeebf8
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "71125546"
 ---
 # <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---nodejs"></a>教程：基于 URL 对远程文件进行编码并流式传输视频 - Node.js
@@ -51,14 +51,14 @@ ms.locfileid: "71125546"
 
 在下载的项目中打开 [index.js](https://github.com/Azure-Samples/media-services-v3-node-tutorials/blob/master/AMSv3Samples/StreamFilesSample/index.js#L25)。 将 `endpoint config` 值替换为从[访问 API](access-api-cli-how-to.md) 获得的凭据。
 
-此示例执行以下操作：
+该示例执行以下操作：
 
 1. 创建一个**转换**（首先，检查指定的转换是否存在）。 
 2. 创建一个输出**资产**，用作编码**作业**的输出。
 3. 创建基于 HTTPS URL 的**作业**输入。
 4. 使用先前创建的输入和输出提交编码**作业**。
 5. 检查作业的状态。
-6. 创建**流式处理定位符**。
+6. 创建**流定位符**。
 7. 生成流式处理 URL。
 
 ## <a name="run-the-sample-app"></a>运行示例应用

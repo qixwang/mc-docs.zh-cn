@@ -9,10 +9,10 @@ ms.date: 09/09/2019
 ms.author: v-yeche
 ms.custom: include file
 ms.openlocfilehash: c43ea8f6aa56ac58f79a551832d0be4e13914401
-ms.sourcegitcommit: 66192c23d7e5bf83d32311ae8fbb83e876e73534
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "70254796"
 ---
 <!--Verify sucessfully-->
