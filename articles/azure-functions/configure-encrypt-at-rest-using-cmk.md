@@ -4,10 +4,10 @@ description: 加密 Azure 存储中的应用程序数据，并将其部署为包
 ms.topic: article
 ms.date: 03/18/2020
 ms.openlocfilehash: 7e14df566faefb9656ca4eb1c271076cce9fff85
-ms.sourcegitcommit: e500354e2fd8b7ac3dddfae0c825cc543080f476
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79547089"
 ---
 # <a name="encryption-at-rest-using-customer-managed-keys"></a>使用客户管理的密钥进行静态加密

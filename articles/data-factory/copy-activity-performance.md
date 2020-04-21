@@ -14,10 +14,10 @@ ms.custom: seo-lt-2019
 origin.date: 03/11/2020
 ms.date: 03/23/2020
 ms.openlocfilehash: 294f1e5c21de76851a37155958923d6d0b59802a
-ms.sourcegitcommit: 71a386ca0d0ecb79a123399b6ab6b8c70ea2aa78
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79497363"
 ---
 # <a name="copy-activity-performance-and-scalability-guide"></a>复制活动性能和可伸缩性指南
@@ -68,7 +68,7 @@ ADF 副本可在不同的级别缩放：
 
    首先，我们建议使用单个复制活动来最大化性能。
 
-   - **如果复制活动是在 Azure Integration Runtime 上执行的：** 请使用“数据集成单元(DIU)”和“并行复制”设置的默认值开始。[](#data-integration-units)[](#parallel-copy) 
+   - **如果复制活动是在 Azure Integration Runtime 上执行的：** 请使用“[数据集成单元(DIU)](#data-integration-units)”和“[并行复制](#parallel-copy)”设置的默认值开始。 
 
    - **如果复制活动是在自承载集成运行时上执行的：** 我们建议使用专用的计算机来承载集成运行时，而不要使用承载数据存储的服务器。 一开始对[并行复制](#parallel-copy)设置使用默认值，并对自承载 IR 使用单个节点。  
 

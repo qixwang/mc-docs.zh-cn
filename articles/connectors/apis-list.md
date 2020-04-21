@@ -9,10 +9,10 @@ origin.date: 03/05/2020
 ms.date: 03/23/2020
 ms.author: v-yeche
 ms.openlocfilehash: ab1e23aeba72fe292a781ca78b61fd4ce3eca917
-ms.sourcegitcommit: 305361c96d1d5288d3dda7e81833820640e2afac
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80109785"
 ---
 # <a name="connectors-for-azure-logic-apps"></a>适用于 Azure 逻辑应用的连接器
@@ -190,7 +190,7 @@ ms.locfileid: "80109785"
 
 每个连接器的触发器和操作提供其自身的属性，你可以配置这些属性。 许多连接器还要求先与目标服务或系统建立连接，并提供身份验证凭据或其他配置详细信息，然后，你才能在逻辑应用中使用某个触发器或操作。  例如，必须授权与 Twitter 帐户建立连接才能访问数据，或者让系统代表你发贴。
 
-对于使用 Azure Active Directory (Azure AD) OAuth 的连接器，创建连接意味着要登录到服务（例如 Office 365、Salesforce 或 GitHub），其中的访问令牌已加密并安全存储在 Azure 机密存储中。 其他连接器（例如 FTP 和 SQL）需要提供包含服务器地址、用户名和密码等配置详细信息的连接。 这些连接配置详细信息同样加密并安全存储。 详细了解 [Azure 中的加密](../security/fundamentals/encryption-overview.md)。
+对于使用 Azure Active Directory (Azure AD) OAuth 的连接器，创建连接意味着要登录到服务（例如 Office 365、Salesforce 或 GitHub），其中的访问令牌[已加密](../security/fundamentals/encryption-overview.md)并安全存储在 Azure 机密存储中。 其他连接器（例如 FTP 和 SQL）需要提供包含服务器地址、用户名和密码等配置详细信息的连接。 这些连接配置详细信息同样加密并安全存储。 详细了解 [Azure 中的加密](../security/fundamentals/encryption-overview.md)。
 
 只要目标服务或系统允许，连接就可以访问该服务或系统。 对于使用 Azure AD OAuth 连接的服务（例如 Office 365 和 Dynamics），Azure 逻辑应用会无限期地刷新访问令牌。 其他服务可能会限制在不刷新令牌的情况下，Azure 逻辑应用能够使用该令牌多长时间。 一般情况下，某些操作（例如更改密码）会使所有访问令牌失效。
 
@@ -220,7 +220,7 @@ ms.locfileid: "80109785"
 [batch-doc]: ../logic-apps/logic-apps-batch-process-send-receive-messages.md "以组或批的形式处理消息"
 [condition-doc]: ../logic-apps/logic-apps-control-flow-conditional-statement.md "评估条件并根据条件是 true 还是 false 运行不同的操作"
 [for-each-doc]: ../logic-apps/logic-apps-control-flow-loops.md#foreach-loop "对数组中的每个项执行相同的操作"
-[从逻辑应用调用 HTTP 或 HTTPS 终结点http-doc]: ./connectors-native-http.md
+[http-doc]: ./connectors-native-http.md "从逻辑应用调用 HTTP 或 HTTPS 终结点"
 [http-request-doc]: ./connectors-native-reqres.md "在逻辑应用中接收 HTTP 请求"
 [http-response-doc]: ./connectors-native-reqres.md "响应来自逻辑应用的 HTTP 请求"
 [http-swagger-doc]: ./connectors-native-http-swagger.md "从逻辑应用调用 REST 终结点"

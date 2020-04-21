@@ -14,10 +14,10 @@ ms.custom: seo-lt-2019
 origin.date: 02/28/2020
 ms.date: 03/23/2020
 ms.openlocfilehash: 2b52a091b285317c9fb38e085123442b98ea5388
-ms.sourcegitcommit: 764b3d26aedce2de0e1948468a706fd3204a3d5e
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79543307"
 ---
 # <a name="configure-a-self-hosted-ir-as-a-proxy-for-an-azure-ssis-ir-in-azure-data-factory"></a>自承载 IR 配置为 Azure 数据工厂中 Azure-SSIS IR 的代理
@@ -130,7 +130,7 @@ Start-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $ResourceGroupName `
 
   ![启用 ConnectByProxy 属性 2](media/self-hosted-integration-runtime-proxy-ssis/shir-connection-managers-tab-ssms.png)
 
-  在数据工厂管道中运行包时，对于“执行 SSIS 包活动”的“连接管理器”选项卡上显示的相关连接管理器，还可以通过将此属性设置为 *True* 来启用此属性。  [](/data-factory/how-to-invoke-ssis-package-ssis-activity)
+  在数据工厂管道中运行包时，对于“[执行 SSIS 包活动](/data-factory/how-to-invoke-ssis-package-ssis-activity)”的“连接管理器”选项卡上显示的相关连接管理器，还可以通过将此属性设置为 True 来启用此属性。  
   
   ![启用 ConnectByProxy 属性 3](media/self-hosted-integration-runtime-proxy-ssis/shir-connection-managers-tab-ssis-activity.png)
 
@@ -138,7 +138,7 @@ Start-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $ResourceGroupName `
 
   ![启用 ConnectByProxy 属性 4](media/self-hosted-integration-runtime-proxy-ssis/shir-advanced-tab-ssms.png)
 
-  在数据工厂管道中运行包时，还可以通过在“执行 SSIS 包活动”的“属性重写”选项卡上提供此属性的属性路径 `\Package.Connections[YourConnectionManagerName].Properties[ConnectByProxy]`，并将其设置为 *True* 作为属性重写，来启用此属性。  [](/data-factory/how-to-invoke-ssis-package-ssis-activity)
+  在数据工厂管道中运行包时，还可以通过在“[执行 SSIS 包活动](/data-factory/how-to-invoke-ssis-package-ssis-activity)”的“属性重写”选项卡上提供此属性的属性路径 `\Package.Connections[YourConnectionManagerName].Properties[ConnectByProxy]`，并将其设置为 True 作为属性重写，来启用此属性。  
   
   ![启用 ConnectByProxy 属性 5](media/self-hosted-integration-runtime-proxy-ssis/shir-property-overrides-tab-ssis-activity.png)
 

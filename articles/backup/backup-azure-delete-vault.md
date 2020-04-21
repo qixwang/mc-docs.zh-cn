@@ -8,10 +8,10 @@ origin.date: 09/20/2019
 ms.date: 11/06/2019
 ms.author: v-lingwu
 ms.openlocfilehash: 184509cfbf318031985074b6c2d52027d69a87c0
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79290754"
 ---
 # <a name="delete-an-azure-backup-recovery-services-vault"></a>删除 Azure 备份恢复服务保管库
@@ -209,7 +209,7 @@ ms.locfileid: "79290754"
        [<CommonParameters>]
     ```
 
-    [详细了解](https://docs.microsoft.com/powershell/module/az.recoveryservices/disable-azrecoveryservicesbackupprotection?view=azps-2.6.0&viewFallbackFrom=azps-2.5.0)如何对备份保护的项禁用保护。
+    [详细了解](https://docs.microsoft.com/powershell/module/az.recoveryservices/disable-azrecoveryservicesbackupprotection?view=azps-2.6.0&viewFallbackFrom=azps-2.5.0) 如何对备份保护的项禁用保护。
 
 - 对于使用 Azure 备份代理 (MARS) 备份到 Azure 的受保护本地文件和文件夹，请使用以下 PowerShell 命令从每个 MARS PowerShell 模块中删除备份的数据：
 

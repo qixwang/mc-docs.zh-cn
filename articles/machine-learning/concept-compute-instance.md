@@ -11,10 +11,10 @@ author: sdgilley
 origin.date: 12/13/2019
 ms.date: 03/09/2020
 ms.openlocfilehash: 944c25ebd2f8ddbeaad413fa83740f29bf05ec9c
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79292401"
 ---
 # <a name="what-is-an-azure-machine-learning-compute-instance"></a>什么是 Azure 机器学习计算实例？
@@ -39,7 +39,7 @@ Azure 机器学习计算实例（预览版）是面向数据科学家的完全�
 |预先经过配置或支持 ML|使用预配置的最新 ML 包、深度学习框架和 GPU 驱动程序完成设置任务，可节省时间。|
 |完全可自定义|支持多种 Azure VM 类型，包括 GPU 和持久性低级自定义，例如，安装相应的包和驱动程序可以轻而易举地实现高级方案。 |
 
-## <a name="contents"></a>工具和环境
+## <a name="tools-and-environments"></a><a name="contents"></a>工具和环境
 
 使用 Azure 机器学习计算实例可以在工作区中的完全集成式笔记本体验中创作、训练和部署模型。
 
@@ -140,7 +140,7 @@ Python 包都安装在 **Python 3.6 - AzureML** 环境中。
 
 计算实例可用作类似于 Azure 机器学习计算训练群集的[训练计算目标](concept-compute-target.md#train)。 预配多 GPU VM 可通过 TensorFlow/PyTorch 估算器运行分布式训练作业。 还可以创建运行配置，并使用它在计算实例上运行试验。 可以使用计算实例作为测试/调试方案的本地推理部署目标。
 
-## <a name="notebookvm"></a>Notebook VM 发生了什么情况？
+## <a name="what-happened-to-notebook-vm"></a><a name="notebookvm"></a>Notebook VM 发生了什么情况？
 
 计算实例即将取代 Notebook VM。  
 

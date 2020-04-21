@@ -13,10 +13,10 @@ origin.date: 12/27/2019
 ms.date: 03/09/2020
 ms.custom: seodec18
 ms.openlocfilehash: f51d84531191c015d878b7df3dbb2322306a618f
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79292186"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>配置 Azure 机器学习的开发环境
@@ -55,7 +55,7 @@ Azure 机器学习工作区。 若要创建工作区，请参阅[创建 Azure �
 
 - 在 Windows 上，需要命令提示符或 Anaconda 提示符（由 Anaconda 和 Miniconda 安装）。
 
-## <a id="compute-instance"></a>自己的基于云的计算实例
+## <a name="your-own-cloud-based-compute-instance"></a><a id="compute-instance"></a>自己的基于云的计算实例
 
 Azure 机器学习[计算实例（预览版）](concept-compute-instance.md)是一个安全的基于云的 Azure 工作站，为数据科学家提供 Jupyter Notebook 服务器、JupyterLab 和一个准备妥当的 ML 环境。
 
@@ -66,7 +66,7 @@ Azure 机器学习[计算实例（预览版）](concept-compute-instance.md)是�
 
 若要避免产生计算费用，请[停止计算实例](tutorial-1st-experiment-sdk-train.md#clean-up-resources)。
 
-## <a id="dsvm"></a>Data Science Virtual Machine
+## <a name="data-science-virtual-machine"></a><a id="dsvm"></a>Data Science Virtual Machine
 
 DSVM 是自定义的虚拟机 (VM) 映像。 它专为数据科学工作而设计，其中预配置了：
 
@@ -137,7 +137,7 @@ Azure 机器学习 SDK 适用于 Ubuntu 或 Windows 版本的 DSVM。 但是，�
 
 有关详细信息，请参阅 [Data Science Virtual Machine](https://azure.microsoft.com/services/virtual-machines/data-science-virtual-machines/)。
 
-## <a id="local"></a>本地计算机
+## <a name="local-computer"></a><a id="local"></a>本地计算机
 
 使用本地计算机（也可能是远程虚拟机）时，请创建 Anaconda 环境并安装 SDK。 下面是一个示例：
 
@@ -205,7 +205,7 @@ Azure 机器学习 SDK 适用于 Ubuntu 或 Windows 版本的 DSVM。 但是，�
     pip install <new package>
     ```
 
-### <a id="jupyter"></a>Jupyter Notebook
+### <a name="jupyter-notebooks"></a><a id="jupyter"></a>Jupyter Notebook
 
 Jupyter Notebook 是 [Jupyter 项目](https://jupyter.org/)的一部分。 它们提供交互式编码体验，可用于创建将实时代码与叙述性文本和图形混合在一起的文档。 Jupyter Notebook 也是与他人共享结果的好方法，因为可用于将代码部分的输出保存在文档中。 可以在各种平台上安装 Jupyter Notebook。
 
@@ -248,7 +248,7 @@ Jupyter Notebook 是 [Jupyter 项目](https://jupyter.org/)的一部分。 它�
 1. 若要将 Jupyter Notebook 配置为使用你的 Azure 机器学习工作区，请转到[创建工作区配置文件](#workspace)部分。
 
 
-### <a id="vscode"></a>Visual Studio Code
+### <a name="visual-studio-code"></a><a id="vscode"></a>Visual Studio Code
 
 Visual Studio Code 是一款非常流行的跨平台代码编辑器，它通过 [Visual Studio 市场](https://marketplace.visualstudio.com/vscode)中提供的扩展支持广泛的编程语言和工具。 [Azure 机器学习扩展](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.vscode-ai)将安装 [Python 扩展](https://marketplace.visualstudio.com/items?itemName=ms-python.python)，用于在所有类型的 Python 环境（虚拟环境、Anaconda 等）中编写代码。 此外，它还提供便利的功能用于处理 Azure 机器学习资源和运行 Azure 机器学习试验，而无需退出 Visual Studio Code。
 
@@ -348,7 +348,7 @@ Azure Databricks 如何使用 Azure 机器学习：
 
 + 了解如何[创建包含 Databricks 的管道用作训练计算](how-to-create-your-first-pipeline.md)。
 
-## <a id="workspace"></a>创建工作区配置文件
+## <a name="create-a-workspace-configuration-file"></a><a id="workspace"></a>创建工作区配置文件
 
 工作区配置文件是一个 JSON 文件，用于告知 SDK 如何与 Azure 机器学习工作区进行通信。 该文件命名为 *config.json*，其格式如下：
 

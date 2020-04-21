@@ -10,10 +10,10 @@ ms.date: 04/12/2019
 ms.author: v-lingwu
 ms.subservice: alerts
 ms.openlocfilehash: 5eceda0837283d47ecf5b2fd9b644e934891a305
-ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/17/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79452565"
 ---
 # <a name="troubleshoot-log-alerts-in-azure-monitor"></a>在 Azure Monitor 中排查日志警报问题  

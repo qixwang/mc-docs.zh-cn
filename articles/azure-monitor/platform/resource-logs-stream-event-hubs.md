@@ -9,10 +9,10 @@ ms.date: 12/31/2019
 ms.author: v-lingwu
 ms.subservice: ''
 ms.openlocfilehash: 182c0aef4b66b8cc156628d6874adce2d2c529b6
-ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/17/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79452552"
 ---
 # <a name="stream-azure-platform-logs-to-azure-event-hubs"></a>将 Azure 平台日志流式传输到 Azure 事件中心

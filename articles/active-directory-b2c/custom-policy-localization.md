@@ -11,10 +11,10 @@ ms.date: 03/16/2020
 ms.author: v-junlch
 ms.subservice: B2C
 ms.openlocfilehash: ad90351e958a4aaef8fbcad81393b49d26cdb76a
-ms.sourcegitcommit: 71a386ca0d0ecb79a123399b6ab6b8c70ea2aa78
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79497384"
 ---
 # <a name="localize-the-user-interface-of-your-application-using-a-custom-policy-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用自定义策略来本地化应用程序的用户界面
@@ -27,9 +27,9 @@ ms.locfileid: "79497384"
 
 ## <a name="set-up-the-list-of-supported-languages"></a>设置支持的语言的列表
 
-打开策略的扩展文件。 例如<em>`SocialAndLocalAccounts/` **`TrustFrameworkExtensions.xml`** </em>。
+打开策略的扩展文件。 例如<em>`SocialAndLocalAccounts/`**`TrustFrameworkExtensions.xml`**</em>。
 
-1. 搜索 BuildingBlocks[](buildingblocks.md) 元素。 如果该元素不存在，请添加该元素。
+1. 搜索 [BuildingBlocks](buildingblocks.md) 元素。 如果该元素不存在，请添加该元素。
 1. 添加包含支持的语言的 `Localization` 元素：英语（默认）和西班牙语。  
 
 

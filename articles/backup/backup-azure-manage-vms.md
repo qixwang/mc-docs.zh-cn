@@ -8,10 +8,10 @@ origin.date: 09/18/2019
 ms.date: 09/23/2019
 ms.author: v-lingwu
 ms.openlocfilehash: 133197b6ccd85633bd1c1a560b77960e76ede6fc
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79293035"
 ---
 # <a name="manage-azure-vm-backups-with-azure-backup-service"></a>使用 Azure 备份服务管理 Azure VM 备份
@@ -130,7 +130,7 @@ ms.locfileid: "79293035"
 
 ## <a name="resume-protection-of-a-vm"></a>恢复对 VM 的保护
 
-如果在停止 VM 保护期间选择了“停止保护并保留备份数据”[](#stop-protection-and-retain-backup-data)选项，则可以使用“恢复备份”  。 如果选择了“[停止保护并删除备份数据](#stop-protection-and-delete-backup-data)”选项或“[删除备份数据](#delete-backup-data)”，则此选项不可用。
+如果在停止 VM 保护期间选择了“[停止保护并保留备份数据](#stop-protection-and-retain-backup-data)”选项，则可以使用“恢复备份”  。 如果选择了“[停止保护并删除备份数据](#stop-protection-and-delete-backup-data)”选项或“[删除备份数据](#delete-backup-data)”，则此选项不可用。
 
 若要恢复 VM 保护，请执行以下操作：
 
