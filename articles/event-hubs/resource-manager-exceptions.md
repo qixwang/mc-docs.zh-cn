@@ -14,10 +14,10 @@ origin.date: 12/08/2019
 ms.date: 01/17/2020
 ms.author: v-tawe
 ms.openlocfilehash: c7c49408c9d49dd130eaec36f243c35e4aaf1594
-ms.sourcegitcommit: 94e1c9621b8f81a7078f1412b3a73281d0a8668b
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "76123431"
 ---
 # <a name="azure-event-hubs---resource-manager-exceptions"></a>Azure 事件中心 - 资源管理器异常

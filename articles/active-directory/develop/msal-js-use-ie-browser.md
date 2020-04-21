@@ -15,10 +15,10 @@ ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3adc2c2d59f5bef4d7805eb3648b0bec5e331cf8
-ms.sourcegitcommit: 1bc154c816a5dff47ee051c431cd94826e57aa60
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75776990"
 ---
 # <a name="known-issues-on-internet-explorer-and-microsoft-edge-browsers-msaljs"></a>Internet Explorer 和 Microsoft Edge 浏览器 (MSAL.js) 的已知问题
@@ -48,7 +48,7 @@ ms.locfileid: "75776990"
 
     1. 单击 Internet Explorer 的“工具”  （齿轮图标）。
     1. 选择“Internet 选项”，然后选择“安全”选项卡  。 
-    1. 单击“Internet”区域，然后取消选中“启用保护模式(需要重启 Internet Explorer)”选项卡  。  Internet Explorer 会警告：你的计算机不再受保护。 单击 **“确定”** 。
+    1. 单击“Internet”区域，然后取消选中“启用保护模式(需要重启 Internet Explorer)”选项卡  。  Internet Explorer 会警告：你的计算机不再受保护。 单击“确定”。 
     1. 重启 Internet Explorer。
     1. 运行并调试应用程序。
 

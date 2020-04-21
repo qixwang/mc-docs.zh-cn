@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 03/02/2020
 ms.author: v-junlch
 ms.openlocfilehash: 7287efc731ac8dc7518915952c30878d78cb9e7f
-ms.sourcegitcommit: 1ac138a9e7dc7834b5c0b62a133ca5ce2ea80054
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78266120"
 ---
 使用事件中心输出绑定将事件写入到事件流。 必须具有事件中心的发送权限才可将事件写入到其中。
@@ -201,7 +201,7 @@ JavaScript 不支持特性。
 
 # <a name="java"></a>[Java](#tab/java)
 
-在 [Java 函数运行时库](https://docs.microsoft.com https://docs.microsoft.com/java/api/overview/azure/functions/runtime)中，对其值将被发布到事件中心的参数使用 [EventHubOutput](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.eventhuboutput) 注释。 此参数应为 `OutputBinding<T>` 类型，其中 `T` 是 POJO 或任何本机 Java 类型。
+在 [Java 函数运行时库](https://docs.microsoft.comhttps://docs.microsoft.com/java/api/overview/azure/functions/runtime)中，对其值将被发布到事件中心的参数使用 [EventHubOutput](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.eventhuboutput) 注释。 此参数应为 `OutputBinding<T>` 类型，其中 `T` 是 POJO 或任何本机 Java 类型。
 
 ---
 

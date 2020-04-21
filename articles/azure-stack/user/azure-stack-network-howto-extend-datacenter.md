@@ -9,10 +9,10 @@ ms.author: v-jay
 ms.reviewer: sijuman
 ms.lastreviewed: 12/13/2019
 ms.openlocfilehash: acb96958b285cec9e48d5064eb4949fbcc22e951
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77541058"
 ---
 # <a name="extending-storage-to-azure-stack-hub"></a>将存储扩展到 Azure Stack Hub
@@ -207,7 +207,7 @@ iSCSI 目标服务器可以是在 Hyper-V、VMware 或所选替代设备（专�
 
 11) 在“指定目标名称”页上，输入 TARGET1，然后选择“下一步”    。
 
-12) 在“指定访问服务器”页上，选择“添加”   。 这将打开一个对话框，用于输入将获得授权连接 iSCSI 目标的特定发起程序** **。
+12) 在“指定访问服务器”页上，选择“添加”   。 这将打开一个对话框，用于输入将获得授权连接 iSCSI 目标的特定发起程序  。
 
 13) 在“添加发起程序 ID 窗口”中，选择“输入所选类型的值”，然后确保已在“类型”下选中下拉菜单中的 IQN    。 输入 iqn.1991-05.com.microsoft:\<computername>，其中 \<computername> 是 VM001 的计算机名，然后选择“下一步”     。
 

@@ -7,10 +7,10 @@ origin.date: 01/16/2020
 ms.date: 02/24/2020
 ms.author: v-yeche
 ms.openlocfilehash: 175b6c58325679020a551358d0e30d2e4126f203
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77540007"
 ---
 # <a name="sfctl-cluster"></a>sfctl cluster
@@ -132,7 +132,7 @@ ms.locfileid: "77540007"
 ## <a name="sfctl-cluster-operation-cancel"></a>sfctl cluster operation-cancel
 取消用户造成的错误操作。
 
-以下 API 启动可以使用 CancelOperation 取消的错误操作：StartDataLoss、StartQuorumLoss、StartPartitionRestart、StartNodeTransition。 如果 force 为 false，则会正常停止并清理用户造成的指定操作。  如果 force 为 true，则会中止命令，并可能留下一些内部状态。  请谨慎将 force 指定为 true。 除非先在 force 设置为 false 的情况下对相同的 test 命令调用此 API，或者 test 命令已包含值为 OperationState.RollingBack 的 OperationState，否则，不允许在 force 设置为 true 的情况下调用此 API。 澄清\: OperationState.RollingBack 表示系统将会/正在清理由于执行该命令而导致的内部系统状态。  如果 test 命令导致数据丢失，则系统不会还原数据。  例如，如果先调用 StartDataLoss，再调用此 API，则系统只会清理由于运行该命令而导致的内部状态。 如果命令的执行时间很长，导致数据丢失，则系统不会还原目标分区的数据。 特别注意\: 如果在 force==true 的情况下调用此 API，则可能会留下内部状态。
+以下 API 启动可以使用 CancelOperation 取消的错误操作\: StartDataLoss、StartQuorumLoss、StartPartitionRestart、StartNodeTransition。 如果 force 为 false，则会正常停止并清理用户造成的指定操作。  如果 force 为 true，则会中止命令，并可能留下一些内部状态。  请谨慎将 force 指定为 true。 除非先在 force 设置为 false 的情况下对相同的 test 命令调用此 API，或者 test 命令已包含值为 OperationState.RollingBack 的 OperationState，否则，不允许在 force 设置为 true 的情况下调用此 API。 澄清\: OperationState.RollingBack 表示系统将会/正在清理由于执行该命令而导致的内部系统状态。  如果 test 命令导致数据丢失，则系统不会还原数据。  例如，如果先调用 StartDataLoss，再调用此 API，则系统只会清理由于运行该命令而导致的内部状态。 如果命令的执行时间很长，导致数据丢失，则系统不会还原目标分区的数据。 特别注意\: 如果在 force==true 的情况下调用此 API，则可能会留下内部状态。
 
 ### <a name="arguments"></a>参数
 

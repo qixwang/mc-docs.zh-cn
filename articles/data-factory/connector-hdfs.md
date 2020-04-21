@@ -13,10 +13,10 @@ origin.date: 12/10/2019
 ms.date: 03/02/2020
 ms.author: v-jay
 ms.openlocfilehash: d02be897e94724fd709ae67012c91f4a95911ef3
-ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77653529"
 ---
 # <a name="copy-data-from-hdfs-using-azure-data-factory"></a>使用 Azure 数据工厂从 HDFS 复制数据
@@ -254,7 +254,7 @@ HDFS 链接的服务支持以下属性：
 * 选项 1：[在 Kerberos 领域中加入自承载集成运行时计算机](#kerberos-join-realm)
 * 选项 2：[启用 Windows 域和 Kerberos 领域之间的相互信任](#kerberos-mutual-trust)
 
-### <a name="kerberos-join-realm"></a>方法 1：在 Kerberos 领域中加入自承载集成运行时计算机
+### <a name="option-1-join-self-hosted-integration-runtime-machine-in-kerberos-realm"></a><a name="kerberos-join-realm"></a>方法 1：在 Kerberos 领域中加入自承载集成运行时计算机
 
 #### <a name="requirements"></a>要求
 
@@ -284,7 +284,7 @@ HDFS 链接的服务支持以下属性：
 
 * 使用 **Windows 身份验证**配置 HDFS 连接器，以及用于连接到 HDFS 数据源的 Kerberos 主体名称和密码。 查看配置详细信息中的 [HDFS 链接服务属性](#linked-service-properties)部分。
 
-### <a name="kerberos-mutual-trust"></a>选项 2：启用 Windows 域和 Kerberos 领域之间的相互信任
+### <a name="option-2-enable-mutual-trust-between-windows-domain-and-kerberos-realm"></a><a name="kerberos-mutual-trust"></a>选项 2：启用 Windows 域和 Kerberos 领域之间的相互信任
 
 #### <a name="requirements"></a>要求
 

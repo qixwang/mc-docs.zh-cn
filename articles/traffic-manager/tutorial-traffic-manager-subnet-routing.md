@@ -13,10 +13,10 @@ origin.date: 09/24/2018
 ms.date: 02/24/2020
 ms.author: v-yeche
 ms.openlocfilehash: 18266d77babbf9730d6c8394fc92661e75d198f3
-ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77653186"
 ---
 # <a name="tutorial-direct-traffic-to-specific-endpoints-based-on-user-subnet-using-traffic-manager"></a>教程：使用流量管理器，基于用户子网，将流量定向到特定终结点
@@ -146,7 +146,7 @@ ms.locfileid: "77653186"
    - “入站端口规则”   >   “公共入站端口”：选择“允许所选端口”  。
    - “入站端口规则”   >   “选择入站端口”：在下拉框中选择“RDP”。 
 
-3. 选择“管理”选项卡，或者选择“下一步:  **磁盘”，然后选择“下一步:** 网络”，然后选择“下一步:  管理”。 在“监视”  下，将“启动诊断”  设置为“关闭”。 
+3. 选择“管理”选项卡，或者选择“下一步:  **磁盘”，然后选择“下一步:**  网络”，然后选择“下一步:  管理”。 在“监视”  下，将“启动诊断”  设置为“关闭”。 
 4. 选择“查看 + 创建”  。
 5. 查看设置，并单击“创建”。   
 6. 按步骤创建另一个 VM，其名称为“myVMChinaNorth”  ，其“资源组”名称为“myResourceGroupTM2”  ，其“位置”为“中国北部”，所有其他设置与 myVMChinaEast  相同。   

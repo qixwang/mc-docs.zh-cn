@@ -12,10 +12,10 @@ ms.date: 11/29/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: a4d09a42c532af981e8e6aa1bb99e6e1ebfd8727
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75598817"
 ---
 # <a name="the-team-data-science-process-in-action---using-an-azure-hdinsight-hadoop-cluster-on-a-1-tb-dataset"></a>Team Data Science Process 的工作原理 - 针对 1 TB 数据集使用 Azure HDInsight Hadoop 群集
@@ -24,12 +24,12 @@ ms.locfileid: "75598817"
 
 也可以使用 IPython Notebook 来完成本演练中介绍的任务。 想要尝试此方法的用户应该咨询[使用 Hive ODBC 连接的 Criteo 演练](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/iPythonNotebooks/machine-Learning-data-science-process-hive-walkthrough-criteo.ipynb)主题。
 
-## <a name="dataset"></a>Criteo 数据集说明
+## <a name="criteo-dataset-description"></a><a name="dataset"></a>Criteo 数据集说明
 Criteo 数据是一个单击预测数据集，包含约 370 GB 的 gzip 压缩 TSV 文件（约 1.3 TB 未压缩），包含超过 43 亿条记录。 它取自 [Criteo](https://labs.criteo.com/downloads/download-terabyte-click-logs/) 提供的 24 天的单击数据。 为了方便数据科学家，我们已解压缩数据以便用于试验。
 
 此数据集中的每个记录包含 40 列：
 
-* 第一列是标签列，该列指示用户是否单击“添加”  （值 1）或未单击（值 0）
+*  第一列是标签列，该列指示用户是否单击“添加”（值 1）或未单击（值 0）
 * 接下来的 13 列是数值列，并且
 * 最后的 26 列是分类列
 
@@ -46,7 +46,7 @@ Criteo 数据是一个单击预测数据集，包含约 370 GB 的 gzip 压缩 T
 
 **定义**:*点击率(CTR)：* 这是数据的点击数的百分比。 在此 Criteo 数据集中，CTR 约为 3.3% 或 0.033。
 
-## <a name="mltasks"></a>预测任务示例
+## <a name="examples-of-prediction-tasks"></a><a name="mltasks"></a>预测任务示例
 本演练中涉及两个示例预测问题：
 
 1. **二元分类**：预测用户是否单击了添加：
@@ -55,7 +55,7 @@ Criteo 数据是一个单击预测数据集，包含约 370 GB 的 gzip 压缩 T
    * 分类 1：单击
 2. **回归**：预测来自用户功能的广告点击概率。
 
-## <a name="setup"></a>为数据科学设置 HDInsight Hadoop 群集
+## <a name="set-up-an-hdinsight-hadoop-cluster-for-data-science"></a><a name="setup"></a>为数据科学设置 HDInsight Hadoop 群集
 **注意：** 这通常是**管理员**任务。
 
 通过三个步骤设置 Azure Data Science 环境，以构建具有 HDInsight 群集的预测分析解决方案：
@@ -67,7 +67,7 @@ Criteo 数据是一个单击预测数据集，包含约 370 GB 的 gzip 压缩 T
    * 必须在创建群集的头节点后启用远程访问。 记住在此处指定的远程访问凭据（与创建时为群集指定的远程访问凭据不同）：需要这些凭据才能完成以下过程。
 3. [创建 Azure 机器学习工作室（经典）工作区](../studio/create-workspace.md)：此 Azure 机器学习工作区用于在 HDInsight 群集上进行初始数据浏览和缩小取样后构建机器学习模型。
 
-## <a name="getdata"></a>从公共源获取和使用数据
+## <a name="get-and-consume-data-from-a-public-source"></a><a name="getdata"></a>从公共源获取和使用数据
 可以通过单击链接、接受使用条款并提供名称来访问 [Criteo](https://labs.criteo.com/downloads/download-terabyte-click-logs/) 数据集。 此处显示的内容的快照如下：
 
 ![接受 Criteo 条款](./media/hive-criteo-walkthrough/hLxfI2E.png)
@@ -85,7 +85,7 @@ Criteo 数据是一个单击预测数据集，包含约 370 GB 的 gzip 压缩 T
 
 另一种访问、浏览和建模不需要任何本地下载的数据的方法会在本演示的后续部分中创建 Hive 表时进行介绍。
 
-## <a name="login"></a>登录到群集头节点
+## <a name="log-in-to-the-cluster-headnode"></a><a name="login"></a>登录到群集头节点
 若要登录到集群的头节点，请使用 [Azure 门户](https://ms.portal.azure.cn)找到该集群。 单击左侧的 HDInsight 大象图标，并双击群集名称。 导航到“配置”  选项卡，双击页面底部的 CONNECT 图标，并在出现提示时输入远程访问凭据。 转到群集的头节点。
 
 以下是首次登录到群集头节点的典型示例：
@@ -96,7 +96,7 @@ Criteo 数据是一个单击预测数据集，包含约 370 GB 的 gzip 压缩 T
 
 现在设置并准备开始第一部分的演练：使用 Hive 进行数据挖掘，并为 Azure 机器学习准备数据。
 
-## <a name="hive-db-tables"></a>创建 Hive 数据库和表
+## <a name="create-hive-database-and-tables"></a><a name="hive-db-tables"></a>创建 Hive 数据库和表
 要为我们的 Criteo 数据集创建 Hive 表，请在头节点的桌面上打开 ***Hadoop 命令行***，并通过输入命令输入 Hive 目录
 
     cd %hive_home%\bin
@@ -192,7 +192,7 @@ Hive REPL 出现“hive>”符号后，只需剪切并粘贴查询即可执行�
         criteo_train
         Time taken: 1.437 seconds, Fetched: 4 row(s)
 
-## <a name="exploration"></a>Hive 中的数据浏览
+## <a name="data-exploration-in-hive"></a><a name="exploration"></a>Hive 中的数据浏览
 现已准备好在 Hive 中做一些基本的数据浏览。 首先统计训练和测试数据表中的示例数目。
 
 ### <a name="number-of-train-examples"></a>定型示例数
@@ -346,7 +346,7 @@ LATERAL VIEW - Hive 服务中的 explode 组合用于生成类似 SQL 的输出�
         265366bf        6f5c7c41        782142
         Time taken: 560.22 seconds, Fetched: 15 row(s)
 
-## <a name="downsample"></a>对 Azure 机器学习的数据集进行下采样
+## <a name="down-sample-the-datasets-for-azure-machine-learning"></a><a name="downsample"></a>对 Azure 机器学习的数据集进行下采样
 浏览数据集并演示我们如何对任何变量（包括组合）进行这种类型的浏览，现在对数据集进行取样，以便可以在 Azure 机器学习中生成模型。 回想一下，我们关注的问题是：给定一组示例属性（Col2 - Col40 的特征值），预测 Col1 是 0（未单击）还是 1（单击）。
 
 为了将训练和测试数据集降至原始大小的 1%，我们使用 Hive 的原生 RAND() 函数。 下一个脚本，[sample_hive_criteo_downsample_train_dataset.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_downsample_train_dataset.hql) 对定型数据集执行此操作：
@@ -404,7 +404,7 @@ LATERAL VIEW - Hive 服务中的 explode 组合用于生成类似 SQL 的输出�
 
 在继续进行 Azure 机器学习之前，还有最后一个重要的组成部分，该部分涉及计数表。 下一小节将更详细地讨论计数表。
 
-## <a name="count"></a>关于计数表的简要讨论
+## <a name="a-brief-discussion-on-the-count-table"></a><a name="count"></a>关于计数表的简要讨论
 正如我们所看到的，有几个分类变量具有非常高的维度。 在演练中，我们提出了一种名为[使用计数学习](https://blogs.technet.com/b/machinelearning/archive/2015/02/17/big-learning-made-easy-with-counts.aspx)的有效的技术，以高效、可靠的方式对这些变量进行编码。 有关此技术的详细信息，请参阅提供的链接。
 
 [!NOTE]
@@ -413,7 +413,7 @@ LATERAL VIEW - Hive 服务中的 explode 组合用于生成类似 SQL 的输出�
 
 若要在计数数据上构建计数表，需要使用文件夹 raw/count 中的数据。 在建模部分中，我们向用户展示了如何从零开始构建这些计数表，或者使用预建的计数表来进行浏览。 在下文中，当我们提到“预建计数表”时，指的是使用提供的计数表。 下一节提供了有关如何访问这些表的详细说明。
 
-## <a name="aml"></a>使用 Azure 机器学习构建模型
+## <a name="build-a-model-with-azure-machine-learning"></a><a name="aml"></a>使用 Azure 机器学习构建模型
 我们在 Azure 机器学习中的模型构建过程遵循以下步骤：
 
 1. [将数据从 Hive 表中获取到 Azure 机器学习](#step1)
@@ -424,7 +424,7 @@ LATERAL VIEW - Hive 服务中的 explode 组合用于生成类似 SQL 的输出�
 
 现已准备好在 Azure 机器学习工作室中构建模型。 我们的取样缩小数据将作为 Hive 表保存在群集中。 使用 Azure 机器学习的“导入数据”  模块来读取此数据。 在下方提供访问此群集的存储帐户的凭据。
 
-### <a name="step1"></a> 步骤 1：使用导入数据模块将数据从 Hive 表中导入到 Azure 机器学习中，并选择它用于机器学习实验
+### <a name="step-1-get-data-from-hive-tables-into-azure-machine-learning-using-the-import-data-module-and-select-it-for-a-machine-learning-experiment"></a><a name="step1"></a> 步骤 1：使用导入数据模块将数据从 Hive 表中导入到 Azure 机器学习中，并选择它用于机器学习实验
 首先，选择“+新建”   -> “实验”   -> 空白实验  。 然后，从左上角的“搜索”  框中搜索“导入数据”。 将“导入数据”  模块拖放到实验画布（屏幕中间部分），以使用模块进行数据访问。
 
 这是从 Hive 表获取数据时“导入数据”  的样子：
@@ -458,7 +458,7 @@ LATERAL VIEW - Hive 服务中的 explode 组合用于生成类似 SQL 的输出�
 >
 >
 
-### <a name="step2"></a> 步骤 2：在 Azure 机器学习中创建一个简单实验，以预测单击/无单击
+### <a name="step-2-create-a-simple-experiment-in-azure-machine-learning-to-predict-clicks--no-clicks"></a><a name="step2"></a> 步骤 2：在 Azure 机器学习中创建一个简单实验，以预测单击/无单击
 我们的 Azure 机器学习工作室（经典）试验如下所示：
 
 ![机器学习实验](./media/hive-criteo-walkthrough/xRpVfrY.png)
@@ -535,7 +535,7 @@ LATERAL VIEW - Hive 服务中的 explode 组合用于生成类似 SQL 的输出�
 
 现在，准备使用这些转换的数据集构建 Azure 机器学习模型。 下一部分将演示如何执行此操作。
 
-### <a name="step3"></a> 步骤 3：生成、训练模型并对其进行评分
+### <a name="step-3-build-train-and-score-the-model"></a><a name="step3"></a> 步骤 3：生成、训练模型并对其进行评分
 
 #### <a name="choice-of-learner"></a>选择学习者
 首先需要选择一个学习者。 使用双类提升的决策树来作为学习者。 以下是此学习者的默认选项：
@@ -544,7 +544,7 @@ LATERAL VIEW - Hive 服务中的 explode 组合用于生成类似 SQL 的输出�
 
 对于试验，请选择默认值。 请注意，默认值通常有意义，并且是获得性能的快速基线的有效方法。 如果选择一旦有基线，则可以通过扫描参数来提高性能。
 
-#### <a name="train-the-model"></a>训练模型
+#### <a name="train-the-model"></a>定型模型
 对于训练，只需调用“训练模型”  模块。 它的两个输入是二类提升的决策树学习者和我们的定型数据集。 如下所示：
 
 ![“定型模型”模块](./media/hive-criteo-walkthrough/2bZDZTy.png)
@@ -554,7 +554,7 @@ LATERAL VIEW - Hive 服务中的 explode 组合用于生成类似 SQL 的输出�
 
 ![“评分模型”模块](./media/hive-criteo-walkthrough/fydcv6u.png)
 
-### <a name="step4"></a> 步骤 4：评估模型
+### <a name="step-4-evaluate-the-model"></a><a name="step4"></a> 步骤 4：评估模型
 最后，应分析模型性能。 通常，对于两类（二进制）分类问题，一种有效地度量值为 AUC。 为了将其可视化，请将“评分模型”  模块连接到“评估模型”  模块。 在“评估模型”  模块上单击“可视化”  将生成如下图所示的图形：
 
 ![评估模块 BDT 模型](./media/hive-criteo-walkthrough/0Tl0cdg.png)
@@ -563,7 +563,7 @@ LATERAL VIEW - Hive 服务中的 explode 组合用于生成类似 SQL 的输出�
 
 ![可视化评估模型模块](./media/hive-criteo-walkthrough/IRfc7fH.png)
 
-### <a name="step5"></a> 步骤 5：将模型发布为 Web 服务
+### <a name="step-5-publish-the-model-as-a-web-service"></a><a name="step5"></a> 步骤 5：将模型发布为 Web 服务
 将 Azure 机器学习模型以最小误差发布为 Web 服务的能力是使其广泛可用的一个有价值的功能。 完成后，任何人都可以使用其需要预测的输入数据调用 Web 服务，并且 Web 服务使用模型返回这些预测。
 
 为此，请先将训练模型另存为“训练模型”对象。 通过右键单击“定型模型”  模块并使用“另存为定型模型”  选项来完成此操作。

@@ -14,10 +14,10 @@ origin.date: 03/04/2019
 ms.date: 02/24/2020
 ms.author: v-yeche
 ms.openlocfilehash: 23a0b3d96302b924d2c6b0af478737ff392fb0f2
-ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77653065"
 ---
 # <a name="quickstart-create-a-traffic-manager-profile-for-a-highly-available-web-application-using-azure-powershell"></a>快速入门：使用 Azure PowerShell 创建流量管理器配置文件以实现 Web 应用程序的高可用性
@@ -128,10 +128,10 @@ Get-AzTrafficManagerProfile -Name $mytrafficmanagerprofile `
 -ResourceGroupName MyResourceGroup
 ```
 
-复制 **RelativeDnsName** 值。 流量管理器配置文件的 DNS 名称为“http://<* relativednsname *>.trafficmanager.cn” ** 。 
+复制 **RelativeDnsName** 值。 流量管理器配置文件的 DNS 名称为“*http://<* relativednsname *>.trafficmanager.cn”* 。 
 
 ### <a name="view-traffic-manager-in-action"></a>查看正在运行的流量管理器
-1. 在 Web 浏览器中输入流量管理器配置文件的 DNS 名称 (http://<* relativednsname *>.trafficmanager.cn ** )，以查看 Web 应用的默认网站。
+1. 在 Web 浏览器中输入流量管理器配置文件的 DNS 名称 (*http://<* relativednsname *>.trafficmanager.cn*)，以查看 Web 应用的默认网站。
 
     > [!NOTE]
     > 在本快速入门方案中，所有请求都路由到主终结点。 它设置为“优先级 1”。 
@@ -144,7 +144,7 @@ Get-AzTrafficManagerProfile -Name $mytrafficmanagerprofile `
     -ResourceGroupName MyResourceGroup `
     -Force
     ```
-3. 复制流量管理器配置文件的 DNS 名称 (http://<* relativednsname *>.trafficmanager.cn ** )，以在新的 Web 浏览器会话中查看该网站。
+3. 复制流量管理器配置文件的 DNS 名称 (http://<relativednsname>.trafficmanager.cn)，以在新的 Web 浏览器会话中查看该网站。  
 4. 验证 Web 应用是否仍然可用。
 
 ## <a name="clean-up-resources"></a>清理资源

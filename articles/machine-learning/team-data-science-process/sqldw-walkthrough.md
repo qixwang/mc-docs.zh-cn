@@ -12,10 +12,10 @@ ms.date: 11/24/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 605ba38ce4058725289a8b9a3c59f73d65c7e115
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75599228"
 ---
 # <a name="the-team-data-science-process-in-action-using-sql-data-warehouse"></a>团队数据科学过程实务：使用 SQL 数据仓库
@@ -23,7 +23,7 @@ ms.locfileid: "75599228"
 
 该过程遵循[团队数据科学过程 (TDSP)](/machine-learning/team-data-science-process/) 工作流。 我们会介绍如何设置数据科学环境，如何将数据载入 SQL DW，以及如何使用 SQL 数据仓库或 IPython Notebook 来浏览要构建的数据和工程功能。 然后，我们会介绍如何使用 Azure 机器学习来构建和部署模型。
 
-## <a name="dataset"></a>NYC 出租车行程数据集
+## <a name="the-nyc-taxi-trips-dataset"></a><a name="dataset"></a>NYC 出租车行程数据集
 NYC 出租车车程数据包含大约 20 GB（未压缩约为  48 GB）的压缩 CSV 文件，记录了超过 1.73 亿个单独车程及每个车程支付的费用。 每个行程记录都包括上车和下车的位置和时间、匿名出租车司机的驾驶证号和车牌号（出租车的唯一 ID）。 数据涵盖  2013 年的所有行程，并在每个月的以下两个数据集中提供：
 
 1. **trip_data.csv** 文件包含行程的详细信息，例如乘客编号、上车和下车时间、行程持续时间和行程距离。 下面是一些示例记录：
@@ -49,7 +49,7 @@ NYC 出租车车程数据包含大约 20 GB（未压缩约为  48 GB）的压缩
 * hack\_license 和
 * pickup\_datetime。
 
-## <a name="mltasks"></a>解决三种类型的预测任务
+## <a name="address-three-types-of-prediction-tasks"></a><a name="mltasks"></a>解决三种类型的预测任务
 我们根据 *tip\_amount* 编写了三个预测问题的公式，来阐明三种类型的建模任务︰
 
 1. **二元分类**：预测是否已支付某个行程的小费，即大于 $0 的 tip\_amount 是正例，等于 $0 的 tip\_amount 是反例   。
@@ -62,7 +62,7 @@ NYC 出租车车程数据包含大约 20 GB（未压缩约为  48 GB）的压缩
         Class 4 : tip_amount > $20
 3. **回归任务**：预测为行程支付的小费金额。
 
-## <a name="setup"></a>设置 Azure 数据科学环境进行高级分析
+## <a name="set-up-the-azure-data-science-environment-for-advanced-analytics"></a><a name="setup"></a>设置 Azure 数据科学环境进行高级分析
 要设置 Azure 数据科学环境，请遵循以下步骤。
 
 **创建自己的 Azure Blob 存储帐户**
@@ -101,7 +101,7 @@ NYC 出租车车程数据包含大约 20 GB（未压缩约为  48 GB）的压缩
 
 **在 Azure 订阅下创建一个 Azure 机器学习工作区。** 有关说明，请参阅[创建 Azure 机器学习工作区](../studio/create-workspace.md)。
 
-## <a name="getdata"></a>将数据载入 SQL 数据仓库
+## <a name="load-the-data-into-sql-data-warehouse"></a><a name="getdata"></a>将数据载入 SQL 数据仓库
 打开 Windows PowerShell 命令控制台。 运行以下 PowerShell 命令将我们在 GitHub 上与你共享的示例 SQL 脚本文件下载到使用参数 *-DestDir* 指定的本地目录中。 可以将参数 *-DestDir* 的值更改为任何本地目录。 如果 *-DestDir* 不存在，PowerShell 脚本将创建它。
 
 > [!NOTE]
@@ -336,7 +336,7 @@ NYC 出租车车程数据包含大约 20 GB（未压缩约为  48 GB）的压缩
 
 ![成功执行脚本的输出][20]
 
-## <a name="dbexplore"></a>Azure SQL 数据仓库中的数据浏览和功能设计
+## <a name="data-exploration-and-feature-engineering-in-azure-sql-data-warehouse"></a><a name="dbexplore"></a>Azure SQL 数据仓库中的数据浏览和功能设计
 在本部分中，我们会通过直接使用 **Visual Studio Data Tools** 针对 Azure SQL DW 运行 SQL 查询，执行数据浏览和功能生成。 本部分中使用的所有 SQL 查询都可以在名为 *SQLDW_Explorations.sql* 的示例脚本中找到。 此文件已经由 PowerShell 脚本下载到本地目录。 也可以从 [GitHub](https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/SQLDW/SQLDW_Explorations.sql) 检索它。 但 GitHub 中的文件并未插入 Azure SQL DW 信息。
 
 使用 Visual Studio 用 SQL DW 登录名和密码连接到 Azure SQL DW，并打开 **SQL 对象资源管理器**以确认已导入数据库和表。 检索 *SQLDW_Explorations.sql* 文件。
@@ -562,7 +562,7 @@ NYC 出租车车程数据包含大约 20 GB（未压缩约为  48 GB）的压缩
 1. 保存最终的 SQL 查询，以提取和采样数据，并直接将查询复制和粘贴到 Azure 机器学习中的“[导入数据][import-data]”模块，或者
 2. 保留计划用于在新 SQL DW 表中进行建模的抽样和工程数据，并使用 Azure 机器学习的“[导入数据][import-data]”模块中的新表。 前面步骤中的 PowerShell 脚本已经完成此操作。 可以直接从“导入数据”模块中的此表读取。
 
-## <a name="ipnb"></a>IPython Notebook 中的数据浏览和功能设计
+## <a name="data-exploration-and-feature-engineering-in-ipython-notebook"></a><a name="ipnb"></a>IPython Notebook 中的数据浏览和功能设计
 在此部分中，我们将对之前创建的 SQL DW 使用 Python 和 SQL 查询，执行数据浏览和功能生成。 名为 **SQLDW_Explorations.ipynb** 的 IPython Notebook 示例和名为 **SQLDW_Explorations_Scripts.py** 的 Python 脚本文件已下载到本地目录。 [GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/SQLDW) 上也有提供。 这两个文件在 Python 脚本中相同。 提供 Python 脚本文件用于应对没有 IPython Notebook 服务器的情况。 这两个示例 Python 文件在 **Python 2.7** 下开发。
 
 已下载到本地计算机的示例 IPython Notebook 和 Python 脚本文件中所需的 Azure SQL DW 信息此前已通过 PowerShell 脚本接入。 它们是可执行文件，无需任何修改。
@@ -802,7 +802,7 @@ and
     query = '''SELECT TOP 100 * FROM <schemaname>.<nyctaxi_sample>'''
     pd.read_sql(query,conn)
 
-## <a name="mlmodel"></a>在 Azure 机器学习中构建模型
+## <a name="build-models-in-azure-machine-learning"></a><a name="mlmodel"></a>在 Azure 机器学习中构建模型
 我们现已准备好在 [Azure 机器学习](https://studio.azureml.net) 中进行建模和模型部署。 数据已可用于之前识别的任意预测问题，即：
 
 1. **二元分类**：预测某个行程是否支付小费。
@@ -830,7 +830,7 @@ and
 
 在此练习中，我们已经探讨和设计了 SQL 数据仓库中的数据，并确定了要引入 Azure 机器学习工作室（经典版）中的样本大小。 下面是构建一个或多个预测模型的过程：
 
-1. 使用“数据输入和输出”  部分的“导入数据”[][import-data]模块，将数据导入 Azure 机器学习工作室（经典版）。 有关详细信息，请参阅[导入数据][import-data]模块参考页。
+1. 使用“数据输入和输出”  部分的“[导入数据][import-data]”模块，将数据导入 Azure 机器学习工作室（经典版）。 有关详细信息，请参阅[导入数据][import-data]模块参考页。
 
     ![Azure ML 导入数据][17]
 2. 在“**属性**”面板中，选择“**Azure SQL 数据库**”作为**数据源**。
@@ -850,7 +850,7 @@ and
 >
 >
 
-## <a name="mldeploy"></a>在 Azure 机器学习中部署模型
+## <a name="deploy-models-in-azure-machine-learning"></a><a name="mldeploy"></a>在 Azure 机器学习中部署模型
 模型已就绪时，即可轻松地从实验直接将其部署为 Web 服务。 有关部署 Azure ML Web 服务的详细信息，请参阅[部署 Azure 机器学习 Web 服务](../studio/deploy-a-machine-learning-web-service.md)。
 
 要部署新 Web 服务，需要：

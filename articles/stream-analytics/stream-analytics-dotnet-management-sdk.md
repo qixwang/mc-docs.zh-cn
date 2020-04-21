@@ -10,10 +10,10 @@ ms.topic: conceptual
 origin.date: 12/06/2018
 ms.date: 07/12/2019
 ms.openlocfilehash: 3083ef5841f5e8be667bd78e56ef7c4882e321aa
-ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75857014"
 ---
 # <a name="management-net-sdk-set-up-and-run-analytics-jobs-using-the-azure-stream-analytics-api-for-net"></a>Management .NET SDK：使用用于 .NET 的 Azure 流分析 API 设置和运行分析作业
@@ -26,7 +26,7 @@ Azure 流分析是一种完全托管的服务，可以在云中通过流式数�
 > [!NOTE]
 > 本文中的示例代码已使用 Azure 流分析的 Management .NET SDK v2.x 版本进行了更新。 有关使用旧版 (1.x) SDK 的示例代码，请参阅[使用流分析的 Management .NET SDK v1.x ](/stream-analytics/stream-analytics-dotnet-management-sdk-v1)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 在开始阅读本文前，必须完成以下要求：
 
 * 安装 Visual Studio 2019 或 2015。

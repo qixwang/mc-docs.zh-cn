@@ -17,10 +17,10 @@ ms.date: 02/24/2020
 ms.author: v-yeche
 ms.custom: ''
 ms.openlocfilehash: 890111f4f8e4584fbde5d218d64fe09b71b61be0
-ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77653495"
 ---
 # <a name="connect-virtual-networks-with-virtual-network-peering-using-powershell"></a>通过 PowerShell 使用虚拟网络对等互连连接虚拟网络

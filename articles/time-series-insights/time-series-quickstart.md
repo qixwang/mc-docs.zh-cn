@@ -13,10 +13,10 @@ ms.custom: mvc seodec18
 origin.date: 01/06/2020
 ms.date: 01/27/2020
 ms.openlocfilehash: 9b8864051eb4404a49b88976a4f9cb91d27a5527
-ms.sourcegitcommit: a7a199c76ef4475b54edd7d5a7edb7b91ea8dff7
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "76966510"
 ---
 # <a name="quickstart-explore-azure-time-series-insights"></a>快速入门：探索 Azure 时序见解
@@ -30,7 +30,7 @@ Azure 时序见解是一种完全托管的分析、存储和可视化效果服�
 此时序见解资源管理器快速入门以导览的形式介绍正式版中的功能。
 
 > [!IMPORTANT]
-> 如果没有 Azure 订阅，请注册一个[试用的 Azure 订阅](https://w www.azure.cn/pricing/1rmb-trial)。
+> 如果没有 Azure 订阅，请注册一个[试用的 Azure 订阅](https://wwww.azure.cn/pricing/1rmb-trial)。
 ## <a name="prepare-the-demo-environment"></a>准备演示环境
 
 1. 在浏览器中，转到[正式发布演示](https://insights.timeseries.azure.com/demo)。

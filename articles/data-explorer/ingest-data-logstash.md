@@ -9,17 +9,17 @@ ms.topic: conceptual
 origin.date: 06/03/2019
 ms.date: 11/18/2019
 ms.openlocfilehash: d640a11730641521986101bea8efceda10b58ed5
-ms.sourcegitcommit: c863b31d8ead7e5023671cf9b58415542d9fec9c
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74020805"
 ---
 # <a name="ingest-data-from-logstash-to-azure-data-explorer"></a>将数据从 Logstash 引入 Azure 数据资源管理器
 
 [Logstash](https://www.elastic.co/products/logstash) 是一个开源服务器端数据处理管道，可以同时从多个源引入数据、转换数据，然后将数据发送到你偏好的“储存”中。 在本文中，你要将该数据发送到 Azure 数据资源管理器 - 用于日志和遥测数据的快速且高度可缩放的数据探索服务。 首先你将在测试群集中创建一个表和数据映射，然后指示 Logstash 将数据发送到该表，并验证结果。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * Azure 订阅。 如果没有订阅，请在开始之前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial)。
 * Azure 数据资源管理器[测试群集和数据库](create-cluster-database-portal.md)

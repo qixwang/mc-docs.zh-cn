@@ -11,10 +11,10 @@ ms.author: v-jay
 ms.lastreviewed: 12/13/2019
 monikerRange: '>=azs-1802'
 ms.openlocfilehash: 1b3a89172877017e4ff94f4a818501b362ee8ec0
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77540335"
 ---
 # <a name="rotate-secrets-in-azure-stack-hub"></a>在 Azure Stack Hub 中轮换机密
@@ -210,7 +210,7 @@ Azure Stack Hub 使用各种机密来维持 Azure Stack Hub 基础结构资源�
 
 5. 等待机密完成轮换。 外部机密轮换需要大约一小时。
 
-    机密轮换成功完成后，控制台会显示“总体操作状态: 成功”。 
+    机密轮换成功完成后，控制台会显示“总体操作状态:  成功”。
 
     > [!Note]
     > 如果机密轮换失败，请按照错误消息中的说明操作，并结合 **-ReRun** 参数重新运行 **Start-SecretRotation**。
@@ -256,7 +256,7 @@ Remove-PSSession -Session $PEPSession
 
 3. 等待机密完成轮换。
 
-   机密轮换成功完成后，控制台会显示“总体操作状态: 成功”。 
+   机密轮换成功完成后，控制台会显示“总体操作状态:  成功”。
     > [!Note]
     > 如果机密轮换失败，请按照错误消息中的说明操作，并使用 **-Internal** 和 **-ReRun** 参数重新运行 **Start-SecretRotation**。  
 

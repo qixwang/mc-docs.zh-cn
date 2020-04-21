@@ -12,10 +12,10 @@ ms.date: 02/10/2020
 ms.author: v-yeche
 ms.subservice: disks
 ms.openlocfilehash: cfe6388537ebc091b174f703cd8a8ff609b99a61
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77428340"
 ---
 # <a name="migrate-to-premium-storage-by-using-azure-site-recovery"></a>使用 Azure Site Recovery 迁移到高级存储
@@ -66,7 +66,7 @@ Site Recovery 支持多种类型的、停机时间极短或不造成停机的故
 * 故障转移时创建的 VM 要连接到的 Azure 虚拟网络。 Azure 虚拟网络必须位于 Site Recovery 运行所在的同一区域。
 * 存储复制日志的 Azure 标准存储帐户。 可以是要迁移的 VM 磁盘的同一存储帐户。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * 在上一部分中了解相关的迁移方案组件。
 * 了解 [Site Recovery 中的故障转移](../../site-recovery/site-recovery-failover.md)，规划停机时间。

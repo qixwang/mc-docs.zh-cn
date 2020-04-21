@@ -10,10 +10,10 @@ ms.date: 12/31/2019
 ms.author: v-junlch
 ms.custom: include file
 ms.openlocfilehash: 33283f3515f03b66ac722bcea8b2cd79ae89a0bd
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75624109"
 ---
 特定函数应用中所有函数的代码均位于根项目文件夹中，其中包含主机配置文件和一个或多个子文件夹。 每个子文件夹包含单独函数的代码。 文件夹结构如下图所示：

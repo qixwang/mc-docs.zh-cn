@@ -8,10 +8,10 @@ ms.date: 01/13/2020
 ms.author: v-yeche
 ms.custom: MVC
 ms.openlocfilehash: 645d8e69b1f82346d58dbb50bf0a34a3dd1ebf10
-ms.sourcegitcommit: 4f4694991e1c70929c7112ad45a0c404ddfbc8da
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75776743"
 ---
 # <a name="fail-over-vmware-vms"></a>故障转移 VMware VM
@@ -29,7 +29,7 @@ ms.locfileid: "75776743"
 > [!NOTE]
 > 教程介绍了某个方案的最简单部署路径。 它们尽可能地使用默认选项，并且不显示所有可能的设置和路径。 若要详细了解故障转移，请参阅[对 VM 和物理服务器进行故障转移](site-recovery-failover.md)。
 
-[了解](failover-failback-overview.md#types-of-failover)不同类型的故障转移。 如果要在恢复计划中故障转移多个 VM，请查看](site-recovery-failover.md)本文[。
+[了解](failover-failback-overview.md#types-of-failover)不同类型的故障转移。 如果要在恢复计划中故障转移多个 VM，请查看[本文](site-recovery-failover.md)。
 
 ## <a name="before-you-start"></a>开始之前
 

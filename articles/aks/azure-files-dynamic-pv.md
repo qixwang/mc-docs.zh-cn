@@ -7,10 +7,10 @@ origin.date: 09/12/2019
 ms.date: 04/06/2020
 ms.author: v-yeche
 ms.openlocfilehash: 192a475050c4f9fb521c4309c62c6872e71d9fd7
-ms.sourcegitcommit: 76280dd9854dc0ff0ba1e5e62fb3dc3af049fbe2
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80517018"
 ---
 # <a name="dynamically-create-and-use-a-persistent-volume-with-azure-files-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中动态创建永久性卷并将其用于 Azure 文件
@@ -19,7 +19,7 @@ ms.locfileid: "80517018"
 
 有关 Kubernetes 卷的详细信息，请参阅 [AKS 中应用程序的存储选项][concepts-storage]。
 
-## <a name="before-you-begin"></a>准备阶段
+## <a name="before-you-begin"></a>开始之前
 
 本文假定你拥有现有的 AKS 群集。 如果需要 AKS 群集，请参阅 AKS 快速入门[使用 Azure CLI][aks-quickstart-cli] 或[使用 Azure 门户][aks-quickstart-portal]。
 
@@ -27,7 +27,7 @@ ms.locfileid: "80517018"
 
 ## <a name="create-a-storage-class"></a>创建存储类
 
-存储类用于定义如何创建 Azure 文件共享。 [节点资源组][node-resource-group]中会自动创建一个存储帐户来与存储类配合使用，以保存 Azure 文件共享。 为 *skuName* 选择下列任一 [Azure 存储冗余][storage-skus]：
+存储类用于定义如何创建 Azure 文件共享。 [节点资源组][node-resource-group]中会自动创建一个存储帐户来与存储类配合使用，以保存 Azure 文件共享。 为 [skuName][storage-skus] 选择下列任一 *Azure 存储冗余*：
 
 * *Standard_LRS* - 标准本地冗余存储 (LRS)
 * *Standard_GRS* - 标准异地冗余存储 (GRS)

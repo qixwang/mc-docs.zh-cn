@@ -17,10 +17,10 @@ ms.author: v-junlch
 ms.reviewer: ''
 ms.custom: aaddev
 ms.openlocfilehash: 97e02ffe9585e04b0779638807325b5dcde8d741
-ms.sourcegitcommit: 7c80405a6b48380814b4b414e9f8a5756c007880
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77067692"
 ---
 # <a name="how-to-sso-between-adal-and-msal-apps-on-macos-and-ios"></a>如何：macOS 和 iOS 上的 ADAL 与 MSAL 应用之间的 SSO
@@ -53,7 +53,7 @@ MSAL 和 ADAL 使用不同的帐户标识符。 ADAL 使用 UPN 作为主要帐�
 | --------------------------------- | ------------------------------------------------------------ | --------------- | ------------------------------ |
 | 可显示的标识符            | `username`                                                   | `userId`        | `userId`                       |
 | 不可显示的唯一标识符 | `identifier`                                                 | `homeAccountId` | 不适用                            |
-| 没有任何已知的帐户 ID               | 通过 `allAccounts:` 中的 `MSALPublicClientApplication` API 查询所有帐户 | 不适用             | 不适用                            |
+| 没有任何已知的帐户 ID               | 通过 `allAccounts:` 中的 `MSALPublicClientApplication` API 查询所有帐户 | 空值             | 不适用                            |
 
 这是提供这些标识符的 `MSALAccount` 接口：
 

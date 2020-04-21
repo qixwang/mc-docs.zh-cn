@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 09/09/2019
 ms.openlocfilehash: 1f0b85c9be299a88bfa8b4dd02f5aeecdd6b88c0
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75598591"
 ---
 # <a name="apply-math-operation"></a>应用数学运算
@@ -95,7 +95,7 @@ ms.locfileid: "75598591"
 -   Equals(Col2_Col1)，表示针对 Col1 测试了 Col2  。  
 -   Equals(Col2_$10)，表示将列 2 与常数 10 比较  。  
 
-即使使用“Inplace”选项，也不会删除或更改元数据，原始数据集中的列仍可在设计器中使用  。 若要查看原始数据，可以连接“添加列”模块，并将其联接到“应用数学运算”的输出[](add-columns.md)  。  
+即使使用“Inplace”选项，也不会删除或更改元数据，原始数据集中的列仍可在设计器中使用  。 若要查看原始数据，可以连接“[添加列](add-columns.md)”模块，并将其联接到“应用数学运算”的输出  。  
     
 ## <a name="basic-math-operations"></a>基本数学运算 
 
@@ -266,7 +266,7 @@ ms.locfileid: "75598591"
 
 若要添加两个列中的值，请使用列集选择一个或多个列，然后使用“第二个自变量”选择第二个列   。  
 
-### <a name="divide"></a>除
+### <a name="divide"></a>Divide
 
 将列集中的值除以一个常量，或除以“第二个自变量“中定义的列值   。  换句话说，首先选取除数，然后选择被除数。 输出值为商。
 
