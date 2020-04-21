@@ -12,10 +12,10 @@ ms.author: v-yiso
 origin.date: 11/04/2019
 ms.date: 03/09/2020
 ms.openlocfilehash: 31fe6c33df6dac6ea15e8ef7f2fb5d54eb52d36d
-ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80343573"
 ---
 # <a name="what-is-automated-machine-learning"></a>什么是自动化机器学习？

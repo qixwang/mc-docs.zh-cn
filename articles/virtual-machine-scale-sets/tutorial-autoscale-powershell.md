@@ -9,10 +9,10 @@ ms.date: 02/10/2020
 ms.author: v-junlch
 ms.custom: mvc
 ms.openlocfilehash: 2291abee03e6beb3ae538a3c0e8974924beb95b6
-ms.sourcegitcommit: 99bd0019c5f01034b8765d7765ad7776c7d5e5ae
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77128844"
 ---
 # <a name="tutorial-automatically-scale-a-virtual-machine-scale-set-with-azure-powershell"></a>教程：使用 Azure PowerShell 自动缩放虚拟机规模集
@@ -130,7 +130,7 @@ $myScaleProfile = New-AzureRmAutoscaleProfile `
 
 
 ## <a name="apply-autoscale-profile-to-a-scale-set"></a>将自动缩放配置文件应用于规模集
-最后一步是将自动缩放配置文件应用于规模集。 随后，规模集便能根据应用程序需求自动进行横向扩展或缩减。 使用 [Add-AzureRmAutoscaleSetting](https://docs.microsoft.com/powershell/module/AzureRM.Insights/Add-AzureRmAutoscaleSetting) 应用自动缩放配置文件，如下所示：
+最后一步是将自动缩放配置文件应用于规模集。 随后，规模集便能根据应用程序需求自动进行横向缩减或扩展。 使用 [Add-AzureRmAutoscaleSetting](https://docs.microsoft.com/powershell/module/AzureRM.Insights/Add-AzureRmAutoscaleSetting) 应用自动缩放配置文件，如下所示：
 
 ```azurepowershell
 Add-AzureRmAutoscaleSetting `
@@ -229,7 +229,7 @@ MYRESOURCEGROUP   myScaleSet_5   chinanorth Standard_DS2                   5    
 MYRESOURCEGROUP   myScaleSet_6   chinanorth Standard_DS2                   6          Creating
 ```
 
-在连接到每个 VM 实例的远程桌面连接会话中，关闭 **CPU Stress** 工具。 此时整个规模集的平均 CPU 负载回到正常。 另一个 5 分钟后，自动缩放规则会缩减 VM 实例数。 横向缩减操作会首先删除 ID 值最高的 VM 实例。 如果规模集使用可用性集，则缩减操作将均匀分布到这些 VM 实例上。 以下示例输出显示，在规模集进行自动横向缩减时删除了一个 VM 实例：
+在连接到每个 VM 实例的远程桌面连接会话中，关闭 **CPU Stress** 工具。 此时整个规模集的平均 CPU 负载回到正常。 另一个 5 分钟后，自动缩放规则会横向缩减 VM 实例数。 横向缩减操作会首先删除 ID 值最高的 VM 实例。 如果规模集使用可用性集，则缩减操作将均匀分布到这些 VM 实例上。 以下示例输出显示，在规模集进行自动横向缩减时删除了一个 VM 实例：
 
 ```powershell
 MYRESOURCEGROUP   myScaleSet_6   chinanorth Standard_DS2                   6          Deleting

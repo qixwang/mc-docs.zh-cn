@@ -15,10 +15,10 @@ origin.date: 02/05/2020
 ms.date: 03/30/2020
 tags: azure-synapse
 ms.openlocfilehash: 84fc31c4e07f8083c94d82362c996d37272d2633
-ms.sourcegitcommit: 90660563b5d65731a64c099b32fb9ec0ce2c51c6
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80341834"
 ---
 # <a name="data-discovery--classification-for-azure-sql-database-and-azure-synapse-analytics"></a>Azure SQL 数据库和 Azure Synapse Analytics 的数据发现和分类

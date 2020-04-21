@@ -13,10 +13,10 @@ ms.reviewer: douglas, carlrab
 origin.date: 07/11/2019
 ms.date: 03/30/2020
 ms.openlocfilehash: 281082da5a555740227e4535b4b21fc9c8a5b6f8
-ms.sourcegitcommit: 90660563b5d65731a64c099b32fb9ec0ce2c51c6
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80341815"
 ---
 # <a name="sql-server-instance-migration-to-azure-sql-database-managed-instance"></a>将 SQL Server 实例迁移到 Azure SQL 数据库托管实例

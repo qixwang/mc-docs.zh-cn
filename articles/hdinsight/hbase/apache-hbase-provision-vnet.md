@@ -12,10 +12,10 @@ origin.date: 12/23/2019
 ms.date: 03/02/2020
 ms.author: v-yiso
 ms.openlocfilehash: b2eb2106f134ae18cbcccf85d6c114a80b585847
-ms.sourcegitcommit: 46fd4297641622c1984011eac4cb5a8f6f94e9f5
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77563377"
 ---
 # <a name="create-apache-hbase-clusters-on-hdinsight-in-azure-virtual-network"></a>在 Azure 虚拟网络中的 HDInsight 上创建 Apache HBase 群集

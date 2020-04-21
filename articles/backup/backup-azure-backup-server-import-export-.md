@@ -9,10 +9,10 @@ origin.date: 1/28/2020
 ms.date: 03/06/2020
 ms.author: v-lingwu
 ms.openlocfilehash: 7f887e73654272ce66b64d645aa8edb8d7a50b10
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79290851"
 ---
 # <a name="offline-backup-workflow-for-dpm-and-azure-backup-server"></a>DPM 和 Azure 备份服务器的脱机备份工作流

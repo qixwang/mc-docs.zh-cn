@@ -9,10 +9,10 @@ ms.topic: conceptual
 origin.date: 12/07/2018
 ms.date: 08/07/2019
 ms.openlocfilehash: 33cf70704569f24d9fd109d0e91b0ab14ca837e6
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78155126"
 ---
 # <a name="troubleshoot-azure-stream-analytics-queries"></a>Azure 流分析查询的故障排除

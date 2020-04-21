@@ -13,10 +13,10 @@ ms.reviewer: carlrab
 origin.date: 08/20/2019
 ms.date: 12/16/2019
 ms.openlocfilehash: 15bedd7bce2018b962a9f8eef5a70e98817befa7
-ms.sourcegitcommit: d7b86a424b72849fe8ed32893dd05e4696e4fe85
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77155741"
 ---
 # <a name="sync-data-across-multiple-cloud-and-on-premises-databases-with-sql-data-sync"></a>使用 SQL 数据同步跨多个云和本地数据库同步数据
@@ -113,7 +113,7 @@ SQL 数据同步使用插入、更新和删除触发器来跟踪更改。 它在
 
 在同步组创建、更新和删除期间预配和取消预配也可能会影响数据库性能。
 
-## <a name="sync-req-lim"></a> 要求和限制
+## <a name="requirements-and-limitations"></a><a name="sync-req-lim"></a> 要求和限制
 
 ### <a name="general-requirements"></a>一般要求
 

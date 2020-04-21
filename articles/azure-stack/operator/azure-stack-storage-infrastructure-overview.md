@@ -10,10 +10,10 @@ ms.author: v-jay
 ms.lastreviewed: 03/11/2019
 ms.reviewer: jiaha
 ms.openlocfilehash: 22b9980606621fc5f678dd87d19632ab4bc8c22f
-ms.sourcegitcommit: f204ec3ae220b96475db60e6ac8a2807af3de40e
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80418030"
 ---
 # <a name="manage-storage-infrastructure-for-azure-stack-hub"></a>管理 Azure Stack Hub 的存储基础结构

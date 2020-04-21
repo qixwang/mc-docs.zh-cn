@@ -15,10 +15,10 @@ origin.date: 02/22/2017
 ms.date: 11/26/2018
 ms.author: v-lingwu
 ms.openlocfilehash: 7542875015ba4adbdbe2c4f73063c3c58b538692
-ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77028984"
 ---
 # <a name="visualizing-network-security-group-flow-logs-with-power-bi"></a>使用 Power BI 可视化网络安全组流日志

@@ -10,10 +10,10 @@ ms.topic: conceptual
 origin.date: 06/21/2019
 ms.date: 08/18/2019
 ms.openlocfilehash: d9e3e9a271bd0e6feca7aa7b741e501dbf9de9f9
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78155046"
 ---
 # <a name="guarantee-stream-analytics-job-reliability-during-service-updates"></a>在服务更新期间保证流分析作业可靠性

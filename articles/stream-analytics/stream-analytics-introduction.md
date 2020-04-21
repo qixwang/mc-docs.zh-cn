@@ -11,10 +11,10 @@ ms.topic: overview
 origin.date: 06/21/2019
 ms.date: 07/12/2019
 ms.openlocfilehash: da103d6ef9bb3e77e92090b7ecbeaa610231da41
-ms.sourcegitcommit: 3a9c13eb4b4bcddd1eabca22507476fb34f89405
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74528102"
 ---
 # <a name="what-is-azure-stream-analytics"></a>什么是 Azure 流分析？

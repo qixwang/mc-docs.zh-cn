@@ -7,10 +7,10 @@ origin.date: 02/17/2019
 ms.date: 11/06/2019
 ms.author: v-lingwu
 ms.openlocfilehash: 1a9e6de184b14677b13b6371931e81e3d932929c
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79290792"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Azure 备份的支持矩阵
@@ -154,7 +154,7 @@ Azure 备份添加了“跨区域还原”功能以增强数据可用性和复�
 | ---------------------- | ------------------------------------------------------------ | ----------------- |
 | MARS 代理/本地 | 否                                                           | 不适用               |
 | SQL/SAP HANA          | 否                                                           | 不适用               |
-| AFS                    | 否                                                           | 不适用               |
+| AFS                    | 否                                                           | 空值               |
 
 
 

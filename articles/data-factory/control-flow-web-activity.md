@@ -13,10 +13,10 @@ ms.topic: conceptual
 origin.date: 12/19/2018
 ms.date: 03/02/2020
 ms.openlocfilehash: 66b9a6aa11284eca51b48d5be0a48f1c7ed886ee
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79293188"
 ---
 # <a name="web-activity-in-azure-data-factory"></a>Azure 数据工厂中的 Web 活动

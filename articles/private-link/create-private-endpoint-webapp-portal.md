@@ -10,10 +10,10 @@ ms.author: v-yeche
 ms.service: app-service
 ms.workload: web
 ms.openlocfilehash: 066f0703bae5214b3c24ee1da14b55a164d1572a
-ms.sourcegitcommit: 76280dd9854dc0ff0ba1e5e62fb3dc3af049fbe2
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80517004"
 ---
 <!--RELEASE BEFORE CONFIRM-->

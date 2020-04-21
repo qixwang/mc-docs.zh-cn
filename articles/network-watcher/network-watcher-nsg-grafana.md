@@ -17,10 +17,10 @@ origin.date: 09/15/2017
 ms.date: 11/26/2018
 ms.author: v-lingwu
 ms.openlocfilehash: de702f6ec793beb0e0d1b760ab6d77bde4ff6a65
-ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77028475"
 ---
 # <a name="manage-and-analyze-network-security-group-flow-logs-using-network-watcher-and-grafana"></a>使用网络观察程序和 Grafana 管理和分析网络安全组流日志
@@ -46,7 +46,7 @@ NSG 流日志是使用网络观察程序启用的，并且存储在 Azure Blob �
 
 ### <a name="setup-considerations"></a>安装注意事项
 
-在此示例中，Azure 中部署的 Ubuntu 16.04 LTS 服务器上配置了 Grafana、ElasticSearch 和 Logstash。 此最小安装用于运行所有三个组件 - 它们均在同一 VM 上运行。 此安装应当仅用于测试和非关键工作负荷。 Logstash、Elasticsearch 和 Grafana 都可以构建为跨许多实例独立进行扩展。 有关详细信息，请参阅这些组件中每一个的文档。
+在此示例中，Azure 中部署的 Ubuntu 16.04 LTS 服务器上配置了 Grafana、ElasticSearch 和 Logstash。 此最小安装用于运行所有三个组件 - 它们均在同一 VM 上运行。 此安装应当仅用于测试和非关键工作负荷。 Logstash、Elasticsearch 和 Grafana 都可以构建为跨多个实例独立缩放。 有关详细信息，请参阅这些组件中每一个的文档。
 
 ### <a name="install-logstash"></a>安装 Logstash
 

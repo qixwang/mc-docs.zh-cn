@@ -9,10 +9,10 @@ ms.topic: conceptual
 origin.date: 10/8/2019
 ms.date: 11/19/2019
 ms.openlocfilehash: 84a9575970b81759e71b257afa8a445e4c004635
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79293312"
 ---
 # <a name="using-reference-data-for-lookups-in-stream-analytics"></a>使用参考数据在流分析中查找

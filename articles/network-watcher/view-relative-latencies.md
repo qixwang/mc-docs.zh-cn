@@ -18,10 +18,10 @@ ms.date: 11/26/2018
 ms.author: v-lingwu
 ms.custom: ''
 ms.openlocfilehash: f37639348487819b5d76e374e6442466e2efb6aa
-ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77028977"
 ---
 # <a name="view-relative-latency-to-azure-regions-from-specific-locations"></a>查看从特定位置到 Azure 区域的相对延迟
@@ -129,7 +129,7 @@ Get-AzNetworkWatcherReachabilityReport `
 > [!NOTE]
 > 与指定单个位置时不同，如果未指定位置，或指定了多个位置（例如“中国北部 2”、“中国北部”），则运行该命令时，必须指定 Internet 服务提供商。 
 
-## <a name="view-available"></a>查看可用的国家/地区、州/省、城市和提供商
+## <a name="view-available-countriesregions-states-cities-and-providers"></a><a name="view-available"></a>查看可用的国家/地区、州/省、城市和提供商
 
 数据适用于特定的 Internet 服务提供商、国家/地区、州/省和城市。 若要查看你可以查看其数据的所有可用 Internet 服务提供商、国家/地区、州/省和城市的列表，请输入以下命令：
 

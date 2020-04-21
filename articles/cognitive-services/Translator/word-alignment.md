@@ -13,10 +13,10 @@ ms.date: 03/26/2020
 ms.author: v-lingwu
 ms.custom: seodec18
 ms.openlocfilehash: dae633ee4d86b31d306a195e0d46bf6f2ac0cdb8
-ms.sourcegitcommit: 303a16c7117b6f3495ef0493b4ae8ccb67d7dbba
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80342381"
 ---
 # <a name="how-to-receive-word-alignment-information"></a>如何接收词对齐信息
@@ -27,7 +27,7 @@ ms.locfileid: "80342381"
 ## <a name="alignment-information-format"></a>对齐信息格式
 对齐将作为以下格式的字符串值返回给源的每个词。 每个词的信息由一个空格分隔，其中包括非空格分隔的语言（脚本），比如中文：
 
-[[SourceTextStartIndex]:[SourceTextEndIndex]�[TgtTextStartIndex]:[TgtTextEndIndex]] *
+[[SourceTextStartIndex]:[SourceTextEndIndex][TgtTextStartIndex]:[TgtTextEndIndex]] *
 
 对齐字符串示例：“0:0-7:10 1:2-11:20 3:4-0:3 3:4-4:6 5:5-21:21”。
 

@@ -9,10 +9,10 @@ ms.date: 03/23/2020
 ms.author: v-tawe
 ms.custom: seodec18
 ms.openlocfilehash: 2fe992fec3f012481cbf27be2f3edfcfc5cee1f1
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79291214"
 ---
 # <a name="configure-an-app-service-app-in-the-azure-portal"></a>在 Azure 门户中配置应用服务应用
