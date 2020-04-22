@@ -10,10 +10,10 @@ origin.date: 08/08/2019
 ms.author: v-yiso
 ms.date: 09/30/2019
 ms.openlocfilehash: 42785ffcc1d77cb2abc73a23e6f99463d7d9df6d
-ms.sourcegitcommit: 6a62dd239c60596006a74ab2333c50c4db5b62be
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/20/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "71156004"
 ---
 # <a name="create-and-read-iot-hub-messages"></a>创建和读取 IoT 中心消息
@@ -22,7 +22,7 @@ ms.locfileid: "71156004"
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
-IoT 中心使用流式消息传递模式实现设备到云的消息传递。 与[事件中心](/event-hubs/)*事件*和[服务总线](/service-bus-messaging/) *消息*相比，IoT 中心的设备到云消息更类似前者，类似之处在于有大量事件通过可供多个读取器读取的服务。
+IoT 中心使用流式消息传递模式实现设备到云的消息传递。 与[事件中心](/event-hubs/)事件和[服务总线](/service-bus-messaging/)消息相比，IoT 中心的设备到云消息更类似前者，类似之处在于有大量事件通过可供多个读取器读取的服务   。
 
 IoT 中心消息由以下部分组成：
 

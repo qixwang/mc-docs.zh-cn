@@ -10,11 +10,11 @@ origin.date: 01/29/2018
 ms.date: 09/10/2018
 ms.author: v-yiso
 ms.openlocfilehash: ef0726bdd783e5641bed3f54cdf658a16b433fe1
-ms.sourcegitcommit: d75065296d301f0851f93d6175a508bdd9fd7afc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52644210"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63829070"
 ---
 # <a name="cloud-to-device-communications-guidance"></a>从云到设备通信指南
 IoT 中心提供三个选项，允许设备应用向后端应用公开功能：
@@ -32,7 +32,7 @@ IoT 中心提供三个选项，允许设备应用向后端应用公开功能：
 | 方案 | 需要立即确认的命令，例如打开风扇。 | 旨在将设备置于某个所需状态的长时间运行命令。 例如，将遥测发送间隔设置为 30 分钟。 | 提供给设备应用的单向通知。 |
 | 数据流 | 双向。 设备应用可以立即响应方法。 解决方案后端根据上下文接收请求结果。 | 单向。 设备应用接收更改了属性的通知。 | 单向。 设备应用接收消息
 | 持续性 | 不联系已断开连接的设备。 通知解决方案后端：设备未连接。 | 设备孪生会保留属性值。 设备会在下次重新连接时读取属性值。 属性值可通过 [IoT 中心查询语言][lnk-query]检索。 | IoT 中心可保留消息长达 48 小时。 |
-| 目标 | 通过 **deviceId**与单个设备通信，或通过 [作业][lnk-jobs]与多个设备通信。 | 通过 **deviceId**与单个设备通信，或通过 [作业][lnk-jobs]与多个设备通信。 | 通过 **deviceId**与单个设备通信。 |
+| 目标 | 使用 **deviceId** 与单个设备通信，或使用[作业][lnk-jobs]与多个设备通信。 | 使用 **deviceId** 与单个设备通信，或使用[作业][lnk-jobs]与多个设备通信。 | 通过 **deviceId**与单个设备通信。 |
 | 大小 | 直接方法有效负载的最大大小为 128 KB。 | 所需属性大小最大为 8 KB。 | 最多 64 KB 消息。 |
 | 频率 | 高。 有关详细信息，请参阅 [IoT 中心限制][lnk-quotas]。 | 中。 有关详细信息，请参阅 [IoT 中心限制][lnk-quotas]。 | 低。 有关详细信息，请参阅 [IoT 中心限制][lnk-quotas]。 |
 | 协议 | 使用 MQTT 或 AMQP 时可用。 | 使用 MQTT 或 AMQP 时可用。 | 在所有协议上可用。 使用 HTTPS 时，设备必须轮询。 |

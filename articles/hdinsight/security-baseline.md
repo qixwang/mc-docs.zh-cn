@@ -9,10 +9,10 @@ ms.date: 02/28/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
 ms.openlocfilehash: 215abe29a8f452a7cd92c910df30d3f28916af2d
-ms.sourcegitcommit: 5fb45da006859215edc8211481f13174aa43dbeb
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80634683"
 ---
 # <a name="azure-security-baseline-for-hdinsight"></a>HDInsight 的 Azure 安全基线
@@ -1042,7 +1042,7 @@ https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
 ### <a name="72-establish-secure-operating-system-configurations"></a>7.2：建立安全的操作系统配置
 
-**指导**：Azure HDInsight 操作系统映像由 Microsoft 管理和维护。 客户负责为群集节点的操作系统实施安全配置。 
+**指导**：Microsoft 管理和维护的 Azure HDInsight 操作系统映像。 客户负责为群集节点的操作系统实施安全配置。 
 
 **Azure 安全中心监视**：目前不可用
 
@@ -1068,7 +1068,7 @@ https://docs.microsoft.com/azure/governance/policy/concepts/effects
 
 ### <a name="74-maintain-secure-operating-system-configurations"></a>7.4：维护安全的操作系统配置
 
-**指导**：Azure HDInsight 操作系统映像由 Microsoft 管理和维护。 客户负责实施 OS 级别的状态配置。
+**指导**：Microsoft 管理和维护的 Azure HDInsight 操作系统映像。 客户负责实施 OS 级别的状态配置。
 
 **Azure 安全中心监视**：目前不可用
 

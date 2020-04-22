@@ -8,10 +8,10 @@ ms.author: gopalv
 ms.date: 09/11/2019
 ms.topic: reference
 ms.openlocfilehash: 254876b093432683f3243a096204376d317a5dab
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75599711"
 ---
 # <a name="reference-centos-linux-data-science-virtual-machine"></a>参考：CentOS (Linux) Data Science Virtual Machine
@@ -140,7 +140,7 @@ chown hadoop:hadoop ~hadoop/.ssh/authorized_keys
 systemctl start hadoop-namenode hadoop-datanode hadoop-yarn
 ```
 
-不需要 Hadoop 相关的服务时，可以通过运行 `systemctl stop hadoop-namenode hadoop-datanode hadoop-yarn` 来停止这些服务。
+不需要 Hadoop 相关服务时，可以通过运行 `systemctl stop hadoop-namenode hadoop-datanode hadoop-yarn` 来停止这些服务。
 
 /dsvm/samples/MRS 目录中提供了一个示例，演示如何在远程 Spark 上下文（即，DSVM 上的独立 Spark 实例）中开发和测试 Machine Learning Server。
 
@@ -308,7 +308,7 @@ xgboost mushroom.conf
 
 ### <a name="rattle"></a>Rattle
 
-Rattle (*R* *A*nalytical *T*ool *T*o *L*earn *E*asily) 使用基于 GUI 的数据浏览和建模。 Rattle：
+Rattle (R Analytical Tool To Learn Easily) 使用基于 GUI 的数据浏览和建模       。 Rattle：
 - 呈现数据的统计和可视化摘要。
 - 转换可随时建模的数据。
 - 基于数据生成非监督式和监督式模型。

@@ -13,10 +13,10 @@ origin.date: 04/05/2018
 ms.date: 12/04/2019
 ms.author: v-lingwu
 ms.openlocfilehash: 5c06b97dcf13fad6306a2a5e71b436e42763dd84
-ms.sourcegitcommit: 21b02b730b00a078a76aeb5b78a8fd76ab4d6af2
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74838815"
 ---
 # <a name="monitor-and-debug-an-azure-batch-net-application-with-application-insights"></a>使用 Application Insights 监视和调试 Azure Batch .NET 应用程序
@@ -38,7 +38,7 @@ ms.locfileid: "74838815"
 
 * [Application Insights 资源](../azure-monitor/app/create-new-resource.md )
   
-   * 使用 Azure 门户创建一个 Application Insights 资源。  为“应用程序类型”选择“常规”。  
+   * 使用 Azure 门户创建一个 Application Insights 资源。  选择“常规”应用程序类型   。
 
    * 从门户中复制[检测密钥](../azure-monitor/app/create-new-resource.md #copy-the-instrumentation-key)。 本文稍后会用到此密钥。
   

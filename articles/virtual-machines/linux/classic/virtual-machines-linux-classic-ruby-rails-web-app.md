@@ -17,11 +17,11 @@ origin.date: 06/27/2017
 ms.date: 12/18/2017
 ms.author: v-yeche
 ms.openlocfilehash: 8234fc7d46a19352e33382ae6fc23c1520255c3c
-ms.sourcegitcommit: bd105c3e9db2b0e39594cdf574d2566d771f0e78
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53330004"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63860900"
 ---
 # <a name="ruby-on-rails-web-application-on-an-azure-vm"></a>Azure VM 上的 Ruby on Rails Web 应用程序
 本教程介绍如何在 Azure 中使用 Linux 虚拟机托管 Ruby on Rails 网站。  
@@ -40,19 +40,20 @@ ms.locfileid: "53330004"
 
 ### <a name="azure-portal"></a>Azure 门户
 1. 登录到 [Azure 门户](https://portal.azure.cn)
-2. 单击“新建”，再在搜索框中键入“Ubuntu Server 14.04”。 单击搜索返回的条目。 对于部署模型，选择“经典”，再单击“创建”。
+2. 单击“新建”  ，再在搜索框中键入“Ubuntu Server 14.04”。 单击搜索返回的条目。 对于部署模型，选择“经典”  ，再单击“创建”。
 3. 在“基本信息”边栏选项卡中，提供以下必填字段的值：“名称”（用于 VM）、“用户名”、“身份验证类型”和相应凭据、“Azure 订阅”、“资源组”和“位置”。
 
    ![创建新的 Ubuntu 映像](./media/virtual-machines-linux-classic-ruby-rails-web-app/createvm.png)
 
-4. 预配 VM 后，依次单击 VM 名称和“设置”类别中的“终结点”。 找到“独立”下列出的 SSH 终结点。
+4. 预配 VM 后，依次单击 VM 名称和“设置”  类别中的“终结点”  。 找到“独立”  下列出的 SSH 终结点。
 
    ![默认终结点](./media/virtual-machines-linux-classic-ruby-rails-web-app/endpointsnewportal.png)
 
 ### <a name="azure-cli"></a>Azure CLI
 执行“创建运行 Linux 的虚拟机”中的步骤。
 
-<!-- Not Available on [Create a Virtual Machine Running Linux][vm-instructions]--> 预配 VM 后，可通过运行以下命令获取 SSH 终结点：
+<!-- Not Available on [Create a Virtual Machine Running Linux][vm-instructions]-->
+预配 VM 后，可通过运行以下命令获取 SSH 终结点：
 
     azure vm endpoint list <vm-name>  
 
@@ -103,11 +104,11 @@ ms.locfileid: "53330004"
 ## <a name="add-an-endpoint"></a>添加终结点
 1. 转到 [Azure 门户](https://portal.azure.cn)并选择 VM。
 
-2. 选择页面左侧“设置”中的“终结点”。
+2. 选择页面左侧“设置”  中的“终结点”  。
 
-3. 单击页面顶部的“添加”。
+3. 单击页面顶部的“添加”  。
 
-4. 在“添加终结点”对话框页中，输入以下信息：
+4. 在“添加终结点”  对话框页中，输入以下信息：
 
    * **名称**：HTTP
    * **协议**：TCP
@@ -125,12 +126,12 @@ ms.locfileid: "53330004"
 
 5. 单击“确定”，保存此终结点。
 
-6. 此时应看到一条指出“正在保存虚拟机终结点”的消息。 此消息消失后，终结点即处于活动状态。 现在，可以通过导航到虚拟机的 DNS 名称测试应用程序。 网站应显示如下：
+6. 此时应看到一条指出“正在保存虚拟机终结点”  的消息。 此消息消失后，终结点即处于活动状态。 现在，可以通过导航到虚拟机的 DNS 名称测试应用程序。 网站应显示如下：
 
     ![默认 rails 页面][default-rails-cloud]
 
 ## <a name="next-steps"></a>后续步骤
-在本教程中，手动执行大多数步骤。 在生产环境中，可在开发计算机上编写应用，并将其部署到 Azure VM。 此外，大多数生产环境都结合其他服务器进程（如 Apache 或 NginX）托管 Rails 应用程序，这些进程处理路由到多个 Rails 应用程序实例的请求并提供静态资源。 有关详细信息，请参阅 http://rubyonrails.org/deploy/。
+在本教程中，手动执行大多数步骤。 在生产环境中，可在开发计算机上编写应用，并将其部署到 Azure VM。 此外，大多数生产环境都结合其他服务器进程（如 Apache 或 NginX）托管 Rails 应用程序，这些进程处理路由到多个 Rails 应用程序实例的请求并提供静态资源。 有关详细信息，请参阅 http://rubyonrails.org/deploy/ 。
 
 若要详细了解 Ruby on Rails，请参阅 [Ruby on Rails 指南][rails-guides]。
 

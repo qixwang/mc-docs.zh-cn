@@ -10,12 +10,12 @@ ms.author: v-tawe
 manager: rkarlin
 origin.date: 09/18/2019
 ms.date: 03/16/2020
-ms.openlocfilehash: 22294f7e1f4440ebac7345f3d6321e11573890a4
-ms.sourcegitcommit: 764b3d26aedce2de0e1948468a706fd3204a3d5e
+ms.openlocfilehash: cb657aa4521598e7a0131fd3dcf1f9a9a0183c2f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2020
-ms.locfileid: "79543380"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81442030"
 ---
 # <a name="manage-storage-account-keys-with-key-vault-and-the-azure-cli"></a>使用 Key Vault 和 Azure CLI 管理存储帐户密钥
 
@@ -73,11 +73,11 @@ az login
 使用 Azure CLI [az role assignment create](/cli/role/assignment?view=azure-cli-latest) 命令授予 Key Vault 访问你的存储帐户的权限。 为该命令提供以下参数值：
 
 - `--role`：传递“存储帐户密钥操作员服务角色”RBAC 角色。 此角色将访问范围限制为你的存储帐户。 对于经典存储帐户，请改为传递“经典存储帐户密钥操作员服务角色”。
-- `--assignee-object-id`：传递值“93c27d83-f79b-4cb2-8dd4-4aa716542e74”，即 Azure 中国云中 Key Vault 的对象 ID。
+- `--assignee-object-id`：传递值“2330fcd0-aceb-49c4-a58f-27980b31efc5”，即 Azure 中国云中 Key Vault 的对象 ID。
 - `--scope`：传递格式为 `/subscriptions/<subscriptionID>/resourceGroups/<StorageAccountResourceGroupName>/providers/Microsoft.Storage/storageAccounts/<YourStorageAccountName>` 的存储帐户资源 ID。 若要查找订阅 ID，请使用 Azure CLI [az account list](/cli/account?view=azure-cli-latest#az-account-list) 命令；若要查找存储帐户名称和存储帐户资源组，请使用 Azure CLI [az storage account list](/cli/storage/account?view=azure-cli-latest#az-storage-account-list) 命令。
 
 ```azurecli
-az role assignment create --role "Storage Account Key Operator Service Role" --assignee-object-id 93c27d83-f79b-4cb2-8dd4-4aa716542e74 --scope "/subscriptions/<subscriptionID>/resourceGroups/<StorageAccountResourceGroupName>/providers/Microsoft.Storage/storageAccounts/<YourStorageAccountName>"
+az role assignment create --role "Storage Account Key Operator Service Role" --assignee-object-id 2330fcd0-aceb-49c4-a58f-27980b31efc5 --scope "/subscriptions/<subscriptionID>/resourceGroups/<StorageAccountResourceGroupName>/providers/Microsoft.Storage/storageAccounts/<YourStorageAccountName>"
  ```
 
 ### <a name="create-a-key-vault-managed-storage-account"></a>创建 Key Vault 托管存储帐户

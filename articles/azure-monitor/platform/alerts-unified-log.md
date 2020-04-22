@@ -10,10 +10,10 @@ ms.date: 6/4/2019
 ms.author: v-lingwu
 ms.subservice: alerts
 ms.openlocfilehash: 9183565614a63d0e791fa9e213c4091549b89bdc
-ms.sourcegitcommit: 21b02b730b00a078a76aeb5b78a8fd76ab4d6af2
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74838602"
 ---
 # <a name="log-alerts-in-azure-monitor"></a>Azure Monitor 中的日志警报
@@ -150,14 +150,14 @@ Azure 警报系统按下面的每个时间间隔评估 *Contoso-Log-Alert* 的�
 - Application Insights 上的日志警报显示确切的警报名称以及资源组和警报属性
 - 如果是使用 [scheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) 创建的，则 Log Analytics 上的日志警报显示确切的警报名称以及资源组和警报属性
 
-[旧 Log Analytics API](../../azure-monitor/platform/api-alerts.md) 将警报操作和计划作为 Log Analytics 保存的搜索的一部分，而不是相应 [Azure 资源](../../azure-resource-manager/resource-group-overview.md)的一部分。 因此，为了对使用 Azure 门户（**未**[切换到新的 API](../../azure-monitor/platform/alerts-log-api-switch.md)）或通过[旧 Log Analytics API](../../azure-monitor/platform/api-alerts.md) 为 Log Analytics 创建的此类旧日志警报启用计费 - `microsoft.insights/scheduledqueryrules` 上会创建用于在 Azure 上计费的隐藏伪警报规则。 在 `microsoft.insights/scheduledqueryrules` 上创建的用于计费的隐藏伪警报规则将随资源组和警报属性一起显示，格式为 `<WorkspaceName>|<savedSearchId>|<scheduleId>|<ActionId>`。
+[旧 Log Analytics API](../../azure-monitor/platform/api-alerts.md) 将警报操作和计划作为 Log Analytics 保存的搜索的一部分，而不是相应 [Azure 资源](../../azure-resource-manager/resource-group-overview.md)的一部分。 因此，为了对使用 Azure 门户（未[切换到新的 API](../../azure-monitor/platform/alerts-log-api-switch.md)）或通过[旧 Log Analytics API](../../azure-monitor/platform/api-alerts.md) 为 Log Analytics 创建的此类旧日志警报启用计费 - `microsoft.insights/scheduledqueryrules` 上会创建用于在 Azure 上计费的隐藏伪警报规则  。 在 `microsoft.insights/scheduledqueryrules` 上创建的用于计费的隐藏伪警报规则将随资源组和警报属性一起显示，格式为 `<WorkspaceName>|<savedSearchId>|<scheduleId>|<ActionId>`。
 
 > [!NOTE]
 > 如果存在无效字符（例如 `<, >, %, &, \, ?, /`），则它们在隐藏的伪警报规则名称以及 Azure 帐单中会被替换为 `_`。
 
 若要删除使用[旧 Log Analytics API](api-alerts.md) 为警报规则的计费创建的隐藏 scheduleQueryRules 资源，用户可以执行以下任一操作：
 
-- 或者，如果用户不希望切换 API 首选项，则用户将需要使用[旧 Log Analytics API](api-alerts.md) **删除**原始计划和警报操作，或者[在 Azure 门户中删除原始日志警报规则](../../azure-monitor/platform/alerts-log.md#view--manage-log-alerts-in-azure-portal)
+- 或者，如果用户不希望切换 API 首选项，则用户将需要使用[旧 Log Analytics API](api-alerts.md)**删除**原始计划和警报操作，或者[在 Azure 门户中删除原始日志警报规则](../../azure-monitor/platform/alerts-log.md#view--manage-log-alerts-in-azure-portal)
 
 此外，对于使用[旧版 Log Analytics API](api-alerts.md) 为警报规则计费创建的隐藏 scheduleQueryRules 资源，任何修改操作（例如 PUT）将会失败。 作为 `microsoft.insights/scheduledqueryrules` 类型，伪规则可以满足使用[旧版 Log Analytics API](api-alerts.md) 创建的警报规则的计费目的。 
 

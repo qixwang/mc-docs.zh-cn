@@ -8,12 +8,12 @@ ms.date: 03/30/2020
 ms.author: v-tawe
 ms.reviewer: mahender
 ms.custom: seodec18
-ms.openlocfilehash: 582427da7f8f7cec13e553a75f2b1db25f926183
-ms.sourcegitcommit: 44d3fe59952847e5394bbe6c05bd6f333bb56345
+ms.openlocfilehash: fcb6dc6fdcdd6ad94709098356765971675193dd
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80522123"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "80987383"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service"></a>Azure 应用服务中的身份验证和授权
 
@@ -75,7 +75,7 @@ Azure 应用服务提供内置的身份验证和授权支持。只需在 Web 应
 
 ## <a name="identity-providers"></a>标识提供者
 
-应用服务使用[联合标识](https://wikipedia.org/wiki/Federated_identity)，在其中，第三方标识提供者会自动管理用户标识和身份验证流。 默认提供五个标识提供者： 
+应用服务使用[联合标识](https://wikipedia.org/wiki/Federated_identity)，在其中，第三方标识提供者会自动管理用户标识和身份验证流。 默认提供两个标识提供者： 
 
 | 提供程序 | 登录终结点 |
 | - | - |

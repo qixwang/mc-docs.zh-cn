@@ -11,10 +11,10 @@ author: trevorbye
 origin.date: 01/06/2020
 ms.date: 04/06/2020
 ms.openlocfilehash: 60c15666f16682cd0ba9446a48558f9435a382c4
-ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80343073"
 ---
 # <a name="what-are-azure-machine-learning-environments"></a>什么是 Azure 机器学习环境？

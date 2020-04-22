@@ -16,10 +16,10 @@ origin.date: 11/18/2019
 ms.author: v-yiso
 ms.date: 12/23/2019
 ms.openlocfilehash: e1868456cf983f08af5b4aae8e060ea5a518335f
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75335967"
 ---
 # <a name="use-apache-spark-structured-streaming-with-apache-kafka-and-azure-cosmos-db"></a>将 Apache Spark 结构化流式处理与 Apache Kafka 和 Azure Cosmos DB 配合使用
@@ -35,13 +35,13 @@ Spark 结构化流式处理是建立在 Spark SQL 上的流处理引擎。 这�
 >
 > 本文档中的步骤创建一个 Azure 资源组，其中同时包含 HDInsight 上的 Spark 和 HDInsight 上的 Kafka 群集。 这些群集都位于一个 Azure 虚拟网络中，这样 Spark 群集便可与 Kafka 群集直接通信。
 >
-> 完成本文档中的步骤后，请记得删除这些群集，避免支付额外费用。
+> 完成本文档中的步骤后，请记得删除这些群集，避免产生额外费用。
 
 ## <a name="create-the-clusters"></a>创建群集
 
 Apache Kafka on HDInsight 不提供通过公共 Internet 访问 Kafka 中转站的权限。 若要与 Kafka 通信，必须与 Kafka 群集中的节点在同一 Azure 虚拟网络中。 在此示例中，Kafka 群集和 Spark 群集都位于一个 Azure 虚拟网络中。 下图显示了这两个群集之间通信的流动方式：
 
-![Azure 虚拟网络中的 Spark 和 Kafka 群集图表](./media/apache-kafka-spark-structured-streaming-cosmosdb/apache-spark-kafka-vnet.png)
+![Azure 虚拟网络中的 Spark 和 Kafka 群集的关系图](./media/apache-kafka-spark-structured-streaming-cosmosdb/apache-spark-kafka-vnet.png)
 
 > [!NOTE]
 > Kafka 服务仅限于虚拟网络内的通信。 通过 Internet 可访问群集上的其他服务，例如 SSH 和 Ambari。 有关可用于 HDInsight 的公共端口的详细信息，请参阅 [HDInsight 使用的端口和 URI](hdinsight-hadoop-port-settings-for-services.md)。

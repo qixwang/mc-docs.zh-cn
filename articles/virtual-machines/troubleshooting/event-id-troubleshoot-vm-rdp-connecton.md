@@ -16,10 +16,10 @@ origin.date: 11/01/2018
 ms.date: 11/11/2019
 ms.author: v-yeche
 ms.openlocfilehash: 6b98d24743f687af4132ee40dc865c3aa1f3c193
-ms.sourcegitcommit: 1fd822d99b2b487877278a83a9e5b84d9b4a8ce7
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74116901"
 ---
 <!--Verify part successfully-->
@@ -63,7 +63,7 @@ wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Microsoft-Windo
 **任务类别：** 无 <br />
 **级别：**       错误 <br />
 **关键字：**    经典 <br />
-**用户：**        不适用 <br />
+**用户：**        空值 <br />
 **计算机：**      计算机  <br />
 **说明：** RD 会话主机服务器无法替换 RD 会话主机服务器在 SSL 连接上进行身份验证使用的过期自签名证书。 相关的状态代码为“访问被拒”。
 
@@ -256,7 +256,7 @@ wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name=' Microsoft-Wind
 **级别：**       错误 <br />
 **关键字：**       <br />
 **用户：**        网络服务 <br />
-**计算：**      *计算机 fqdn* <br />
+**计算机：**      计算机 fqdn  <br />
 **说明：** 无法找到源 Microsoft-Windows-TerminalServices-SessionBroker 的事件 ID 2056 的说明。 未在本地计算机上安装引发此事件的组件，或者安装已损坏。 可在本地计算机上安装或修复该组件。 <br />
 如果另一台计算机上生成该事件，则必须保存该事件的显示信息。 <br />
 事件中包含以下信息： <br />
@@ -272,7 +272,7 @@ Null <br />
 **级别：**       错误 <br />
 **关键字：**       <br />
 **用户：**        网络服务 <br />
-**计算：**      *计算机 fqdn* <br />
+**计算机：**      计算机 fqdn  <br />
 **说明：** 无法找到源 Microsoft-Windows-TerminalServices-SessionBroker-Client 的事件 ID 1296 的说明。 未在本地计算机上安装引发此事件的组件，或者安装已损坏。 可在本地计算机上安装或修复该组件。
 如果另一台计算机上生成该事件，则必须保存该事件的显示信息。
 事件中包含以下信息：  <br />

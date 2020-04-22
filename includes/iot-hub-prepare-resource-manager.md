@@ -1,13 +1,13 @@
 ---
 ms.openlocfilehash: a17c6efd83468eb255568149623b6982619a4f4c
-ms.sourcegitcommit: b8fb6890caed87831b28c82738d6cecfe50674fd
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58627773"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63853371"
 ---
 ## <a name="prepare-to-authenticate-azure-resource-manager-requests"></a>准备对 Azure Resource Manager 请求进行身份验证
-必须使用 [Azure Resource Manager][lnk-authenticate-arm] 配合 Azure Active Directory (AD) 来验证所有针对资源执行的操作。 最简单的配置方式是使用 PowerShell 或 Azure CLI。
+必须使用 [Azure 资源管理器][lnk-authenticate-arm]配合 Azure Active Directory (AD) 来验证所有针对资源执行的操作。 最简单的配置方式是使用 PowerShell 或 Azure CLI。
 
 在继续之前，请安装 [Azure PowerShell cmdlet][lnk-powershell-install]。
 
@@ -35,9 +35,9 @@ ms.locfileid: "58627773"
 2. 记下 **TenantId** 和 **SubscriptionId**。 稍后会需要它们。
 3. 使用以下命令并替换占位符，以创建新的 Azure Active Directory 应用程序：
    
-   * **{Display name}**：应用程序的显示名称，例如 **MySampleApp**
-   * **{Home page URL}：** 应用主页的 URL，例如 http://mysampleapp/home。 此 URL 不需要指向实际的应用程序。
-   * **{Application identifier}：** 唯一的标识符，例如 **http://mysampleapp**。 此 URL 不需要指向实际的应用程序。
+   * **{Display name}** ：应用程序的显示名称，例如 **MySampleApp**
+   * **{Home page URL}：** 应用主页的 URL，例如 http://mysampleapp/home  。 此 URL 不需要指向实际的应用程序。
+   * **{Application identifier}：** 唯一的标识符，例如 **http://mysampleapp** 。 此 URL 不需要指向实际的应用程序。
    * **{Password}：** 用于向应用进行身份验证的密码。
      
      ```powershell

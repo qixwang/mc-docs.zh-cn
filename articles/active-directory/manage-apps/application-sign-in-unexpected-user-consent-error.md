@@ -18,10 +18,10 @@ ms.author: v-junlch
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4e39efae65fb4e4ac95fa7b81da8e933e4c97b2b
-ms.sourcegitcommit: 5f85d6fe825db38579684ee1b621d19b22eeff57
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "67568600"
 ---
 # <a name="unexpected-error-when-performing-consent-to-an-application"></a>对应用程序执行许可时发生的意外错误
@@ -33,7 +33,7 @@ ms.locfileid: "67568600"
 对于用户而言，必须满足一些条件才能对应用程序所需的权限进行许可。 如果不满足这些条件，可能会发生以下错误。
 
 ## <a name="requesting-not-authorized-permissions-error"></a>请求未授予的权限错误
-* **AADSTS90093：** &lt;clientAppDisplayName&gt; 正在请求一个或多个无权授予的权限。 请与管理员联系，他/她可代表你对此应用程序进行许可。
+* **AADSTS90093：** &lt;clientAppDisplayName&gt; 正在请求一个或多个你无权授予的权限。 请与管理员联系，他/她可代表你对此应用程序进行许可。
 
 当非公司管理员用户尝试使用的应用程序请求只有管理员才能授予的权限时，会发生此错误。 此错误可通过管理员代表其组织授予访问此应用程序的权限进行解决。
 
@@ -53,7 +53,7 @@ ms.locfileid: "67568600"
 请与应用程序开发人员联系。
 
 ##  <a name="resource-not-available-in-tenant-error"></a>租户中资源不可用错误
-* **AADSTS65005：** &lt;clientAppDisplayName&gt; 正在请求访问组织 &lt;tenantDisplayName&gt; 中不可用的 &lt;resourceAppDisplayName&gt; 资源。 
+* **AADSTS65005：** &lt;clientAppDisplayName&gt; 正在请求访问你的组织 &lt;tenantDisplayName&gt; 中没有的 &lt;resourceAppDisplayName&gt; 资源。 
 
 确保此资源可用，或与 &lt;tenantDisplayName&gt; 管理员联系。
 

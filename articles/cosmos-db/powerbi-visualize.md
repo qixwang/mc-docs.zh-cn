@@ -8,10 +8,10 @@ origin.date: 05/21/2019
 ms.date: 09/09/2019
 ms.author: v-yeche
 ms.openlocfilehash: 738f17895cd5bbe86d4de39307a27f73fc569dc2
-ms.sourcegitcommit: 66192c23d7e5bf83d32311ae8fbb83e876e73534
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "70254855"
 ---
 # <a name="visualize-azure-cosmos-db-data-by-using-the-power-bi-connector"></a>使用 Power BI 连接器可视化 Azure Cosmos DB 数据
@@ -115,7 +115,7 @@ ms.locfileid: "70254855"
 3. 中央窗格显示其中包含所选字段的结果预览。
 
     ![针对 Azure Cosmos DB Power BI 连接器的 Power BI 教程 - 平展结果](./media/powerbi-visualize/power_bi_connector_pbiresultflatten.png)
-4. 在我们的示例中，“位置”属性在文档中为 GeoJSON 块。  可以看到，“位置”在 Power BI Desktop 中表示为一种“记录”  类型。  
+4. 在我们的示例中，“位置”属性是文档中的一个 GeoJSON 块。  可以看到，“位置”在 Power BI Desktop 中表示为一种“记录”  类型。  
 5. 单击 Document.Location 列标题右侧的扩展器。  此时会显示包含类型和坐标字段的上下文菜单。  让我们选择坐标字段，确保未选中“使用原始列名作为前缀”，然后单击“确定”。  
 
     ![针对 Azure Cosmos DB Power BI 连接器的 Power BI 教程 - 位置记录](./media/powerbi-visualize/power_bi_connector_pbilocationrecord.png)
@@ -158,7 +158,7 @@ ms.locfileid: "70254855"
 3. 在“报表”  画布中，可以为报表生成视觉效果。
 4. “报表”  页。 可以在 Power BI Desktop 中添加多个报表页。
 
-下面将演示创建简单交互地图视图报表的基本步骤。
+下面演示创建简单交互地图视图报表的基本步骤。
 
 1. 对于我们的示例，我们创建显示每座火山的位置的地图视图。  在“可视化”  窗格中，单击如上屏幕截图中突出显示的“地图”视觉对象类型。  应会看到绘制在“报表”  画布上的地图视觉对象类型。  “可视化”  窗格还应该显示一组与地图视觉对象类型相关的属性。
 2. 现在，从“字段”  窗格中将经纬度字段拖放到“可视化”  窗格中的“位置”  属性。
@@ -177,7 +177,7 @@ ms.locfileid: "70254855"
 3. 凭据通过身份验证后，报表将发布到选择的目标。
 4. 单击“在 Power BI 中打开‘PowerBITutorial.pbix’”  ，以在 Power BI.com 上查看并共享报表。
 
-    ![成功发布到 Power BI！ 在 Power BI 中打开教程](./media/powerbi-visualize/power_bi_connector_open_in_powerbi.png)
+    ![已成功发布到 Power BI！ 在 Power BI 中打开教程](./media/powerbi-visualize/power_bi_connector_open_in_powerbi.png)
 
 ## <a name="create-a-dashboard-in-powerbicom"></a>在 PowerBI.com 中创建仪表板
 现在，已创建一份可在 PowerBI.com 上共享的报表

@@ -12,17 +12,17 @@ origin.date: 03/11/2019
 ms.author: v-yiso
 ms.date: 04/08/2019
 ms.openlocfilehash: 29deadb7b7256a318732a3a9358e2d0116cdd1c3
-ms.sourcegitcommit: b8fb6890caed87831b28c82738d6cecfe50674fd
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58626402"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63852673"
 ---
 # <a name="iot-hub-operations-monitoring"></a>IoT 中心操作监视
 IoT 中心操作监视可让你实时监视其 IoT 中心上的操作状态。 IoT 中心可跨多个类别的操作跟踪事件。 可选择将一个或多个类别的事件发送到 IoT 中心终结点进行处理。 可以监视数据中是否有错误，或根据数据模式设置更复杂的处理行为。
 
 >[!NOTE]
->IoT 中心**操作监视功能已弃用，并已于 2019 年 3 月 10 日从 IoT 中心中删除**。 有关如何监视 IoT 中心的操作和运行状况，请参阅[监视 Azure IoT 中心运行状况并快速诊断问题][lnk-monitor]。 要详细了解弃用日程表，请参阅[利用 Azure Monitor 和 Azure 资源运行状况监视 Azure IoT 解决方案][lnk-blog-announcement]。
+>IoT 中心**操作监视功能已弃用，并已于 2019 年 3 月 10 日从 IoT 中心中删除**。 若要了解如何监视 IoT 中心的操作和运行状况，请参阅[监视 Azure IoT 中心运行状况并快速诊断问题][lnk-monitor]。 若要详细了解弃用日程表，请参阅[利用 Azure Monitor 和 Azure 资源运行状况监视 Azure IoT 解决方案][lnk-blog-announcement]。
 
 IoT 中心监视 6 种类别的事件：
 
@@ -38,18 +38,18 @@ IoT 中心监视 6 种类别的事件：
 
 ## <a name="how-to-enable-operations-monitoring"></a>如何启用操作监视
 
-1. 创建 IoT 中心。 有关如何创建 IoT 中心的说明，请参阅 [入门][lnk-get-started] 指南。
+1. 创建 IoT 中心。 有关如何创建 IoT 中心的说明，请参阅[入门][lnk-get-started]指南。
 
 1. 打开 IoT 中心的边栏选项卡。 在此处单击“**操作监视**”。
 
     ![访问门户中的操作监视配置][1]
 
-1. 选择要监视的监视类别，并单击“保存”。 可以从“**监视设置**”中所列的与事件中心兼容的终结点读取事件。 IoT 中心终结点称为 `messages/operationsmonitoringevents`。
+1. 选择要监视的监视类别，并单击“保存”  。 可以从“**监视设置**”中所列的与事件中心兼容的终结点读取事件。 IoT 中心终结点称为 `messages/operationsmonitoringevents`。
 
     ![在 IoT 中心配置操作监视][2]
 
 > [!NOTE]
-> 为“连接”类别选择“详细”监视会导致 IoT 中心生成额外的诊断消息。 对于所有其他类别，“详细”设置会更改 IoT 中心在每个错误消息中包含的信息数量。
+> 为“连接”  类别选择“详细”  监视会导致 IoT 中心生成额外的诊断消息。 对于所有其他类别，“详细”  设置会更改 IoT 中心在每个错误消息中包含的信息数量。
 
 ## <a name="event-categories-and-how-to-use-them"></a>事件类别及其用法
 
@@ -196,23 +196,23 @@ IoT 中心上的监视终结点是与事件中心兼容的终结点。 可使用
 
 1. 在门户中，导航到 IoT 中心资源边栏选项卡。
 
-1. 选择“操作监视”，记下“与事件中心兼容的名称”和“与事件中心兼容的终结点”值：
+1. 选择“操作监视”  ，记下“与事件中心兼容的名称”  和“与事件中心兼容的终结点”  值：
 
     ![“与事件中心兼容的终结点”值][img-endpoints]
 
-1. 选择“共享访问策略”，并选择“服务”。 记下“主密钥”值：
+1. 选择“共享访问策略”  ，并选择“服务”  。 记下“主密钥”  值：
 
     ![服务共享访问策略主密钥][img-service-key]
 
 以下 C# 代码示例取自 Visual Studio **Windows 经典桌面** C# 控制台应用。 该项目安装了 **WindowsAzure.ServiceBus** NuGet 包。
 
-* 如以下示例所示，将连接字符串占位符替换为使用之前记下的“与事件中心兼容的终结点”和服务“主密钥”值的连接字符串：
+* 如以下示例所示，将连接字符串占位符替换为使用之前记下的“与事件中心兼容的终结点”  和服务“主密钥”  值的连接字符串：
 
     ```cs
     "Endpoint={your Event Hub-compatible endpoint};SharedAccessKeyName=service;SharedAccessKey={your service primary key value}"
     ```
 
-* 将监视终结点名称占位符替换为之前记下的“与事件中心兼容的名称”值。
+* 将监视终结点名称占位符替换为之前记下的“与事件中心兼容的名称”  值。
 
 ```cs
 class Program

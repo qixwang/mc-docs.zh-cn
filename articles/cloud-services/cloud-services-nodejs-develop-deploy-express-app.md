@@ -16,11 +16,11 @@ origin.date: 08/17/2017
 ms.date: 01/15/2018
 ms.author: v-yiso
 ms.openlocfilehash: 46fc5e1e9d8ef01bdfa99915c02a53c4702a10ff
-ms.sourcegitcommit: b8fb6890caed87831b28c82738d6cecfe50674fd
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58627743"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63852221"
 ---
 # <a name="build-and-deploy-a-nodejs-web-application-using-express-on-an-azure-cloud-services"></a>使用 Express 在 Azure 云服务中构建并部署 Node.js Web 应用程序
 
@@ -36,11 +36,11 @@ Node.js 包含核心运行时中最小的一个功能集。
 
 执行下列步骤可新建一个名为“expressapp”的云服务项目：
 
-1. 在“开始”菜单或“开始”屏幕中，搜索 **Windows PowerShell**。 最后，右键单击“Windows PowerShell”并选择“以管理员身份运行”。
+1. 在“开始”菜单或“开始”屏幕中，搜索“Windows PowerShell”    。 最后，右键单击“Windows PowerShell”并选择“以管理员身份运行”   。
 
     ![Azure PowerShell 图标](./media/cloud-services-nodejs-develop-deploy-express-app/azure-powershell-start.png)
 
-2. 将目录切换到 c:\\node 目录，然后输入下列命令，新建一个名为 expressapp 的解决方案和名为 WebRole1 的 Web 角色：
+2. 将目录切换到 c:\\node 目录，然后输入下列命令，新建一个名为 expressapp 的解决方案和名为 WebRole1 的 Web 角色    ：
 
     ```
     PS C:\node> New-AzureServiceProject expressapp
@@ -49,7 +49,7 @@ Node.js 包含核心运行时中最小的一个功能集。
     ```
 
     > [!NOTE]
-    > 默认情况下， **Add-azurenodewebrole** 使用旧版 Node.js。 上述 **Set-azureserviceprojectrole** 语句将指示 Azure 使用 v0.10.21 版本的节点。  请注意，这些参数区分大小写。  通过检查 WebRole1\package.json 中的“engines”属性可以验证是否已选择正确的 Node.js 版本。
+    > 默认情况下， **Add-azurenodewebrole** 使用旧版 Node.js。 上述 **Set-azureserviceprojectrole** 语句将指示 Azure 使用 v0.10.21 版本的节点。  请注意，这些参数区分大小写。  通过检查 WebRole1\package.json 中的“engines”属性可以验证是否已选择正确的 Node.js 版本   。
     > 
     > 
 
@@ -71,7 +71,7 @@ Node.js 包含核心运行时中最小的一个功能集。
     PS C:\node\expressapp\WebRole1> express
     ```
 
-    系统会提示是否覆盖之前创建的应用程序。 输入 y 或 yes 继续操作。 Express 会生成用于生成应用程序的 app.js 文件和一个文件夹结构。
+    系统会提示是否覆盖之前创建的应用程序。 输入 y 或 yes 继续操作   。 Express 会生成用于生成应用程序的 app.js 文件和一个文件夹结构。
 
     ![express 命令的输出](./media/cloud-services-nodejs-develop-deploy-express-app/node23.png)
 
@@ -83,7 +83,7 @@ Node.js 包含核心运行时中最小的一个功能集。
 
     ![npm install 命令的输出](./media/cloud-services-nodejs-develop-deploy-express-app/node26.png)
 
-6.  使用以下命令将 bin/www 文件复制到 server.js。 这样，云服务便可以找到此应用程序的入口点。
+6.  使用以下命令将 bin/www 文件复制到 server.js   。 这样，云服务便可以找到此应用程序的入口点。
 
     ```
     PS C:\node\expressapp\WebRole1> copy bin/www server.js
@@ -103,7 +103,7 @@ Node.js 包含核心运行时中最小的一个功能集。
     var app = require('./app');
     ```
 
-    之所以需要进行此更改，是因为我们已将文件（以前的 bin/www）移到了所需应用文件所在的同一个目录。 完成此更改后，请保存 **server.js** 文件。
+    之所以需要进行此更改，是因为我们已将文件（以前的 bin/www）移到了所需应用文件所在的同一个目录  。 完成此更改后，请保存 **server.js** 文件。
 
 8.  使用以下命令以在 Azure 模拟器中运行应用程序：
 

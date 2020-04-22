@@ -10,10 +10,10 @@ ms.author: mihansen
 author: hansenms
 ms.date: 02/07/2019
 ms.openlocfilehash: 444833595adbb194186dd1cb73b5c5afe54333de
-ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80343877"
 ---
 # <a name="access-azure-api-for-fhir-with-postman"></a>使用 Postman 访问 Azure API for FHIR
@@ -131,4 +131,4 @@ Azure API for FHIR 的元数据 URL 是 `https://MYACCOUNT.azurehealthcareapis.c
 在本教程中，你已使用 Postman 访问了 FHIR API。 请在“支持的功能”部分了解支持的 API 功能。
  
 >[!div class="nextstepaction"]
->[支持的功能](fhir-features-supported.md)
+>[受支持的功能](fhir-features-supported.md)

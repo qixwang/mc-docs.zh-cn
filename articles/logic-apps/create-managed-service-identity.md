@@ -9,17 +9,17 @@ origin.date: 02/10/2020
 ms.date: 03/30/2020
 ms.author: v-yeche
 ms.openlocfilehash: 1e8637194f28a59f73f4d9acaa5b3a0c1974c4fe
-ms.sourcegitcommit: 2b084933215d0e7702456730f168d97e00c882a0
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80243597"
 ---
 # <a name="authenticate-access-to-azure-resources-by-using-managed-identities-in-azure-logic-apps"></a>在 Azure 逻辑应用中使用托管标识验证对 Azure 资源的访问
 
 若要在不登录的情况下访问其他 Azure Active Directory (Azure AD) 租户中的资源并对标识进行身份验证，逻辑应用可以使用[托管标识](../active-directory/managed-identities-azure-resources/overview.md)（前称为“托管服务标识”，或缩写为 MSI），而不使用凭据或机密。 由于无需提供或轮换机密，因此 Azure 会为你管理此标识，并且会帮助保护凭据。
 
-Azure 逻辑应用支持[系统分配](../active-directory/managed-identities-azure-resources/overview.md)和用户分配的托管标识。  逻辑应用可以使用系统分配的标识（可以在整个逻辑应用组中共享该标识），但不能同时使用这两种标识。 目前，只有[特定的内置触发器和操作](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)支持托管标识，托管的连接器或连接则不支持托管标识，例如：
+Azure 逻辑应用支持这两种[系统分配的](../active-directory/managed-identities-azure-resources/overview.md)托管标识。  逻辑应用可以使用系统分配的标识（可以在整个逻辑应用组中共享该标识），但不能同时使用这两种标识。 目前，只有[特定的内置触发器和操作](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)支持托管标识，托管的连接器或连接则不支持托管标识，例如：
 
 <!--Not Avaialble on [*user-assigned*](../active-directory/managed-identities-azure-resources/overview.md)-->
 <!--Not Avaialble on or a *single* user-assigned identity-->

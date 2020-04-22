@@ -10,10 +10,10 @@ origin.date: 01/01/2019
 ms.date: 06/03/2019
 ms.author: v-yiso
 ms.openlocfilehash: 8f078090bb43cf3017ac62e1a3727ec831c1673b
-ms.sourcegitcommit: 5a57f99d978b78c1986c251724b1b04178c12d8c
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/24/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "66195084"
 ---
 # <a name="receive-events-to-an-http-endpoint"></a>将事件接收到 HTTP 终结点

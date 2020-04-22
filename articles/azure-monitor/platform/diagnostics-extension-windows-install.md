@@ -9,10 +9,10 @@ origin.date: 02/17/2020
 ms.date: 3/2/2020
 ms.author: v-lingwu
 ms.openlocfilehash: 293fbe7dff1281ed07b970832c91d8ffa8b9f68d
-ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/17/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79453255"
 ---
 # <a name="install-and-configure-windows-azure-diagnostics-extension-wad"></a>安装并配置 Windows Azure 诊断扩展 (WAD)

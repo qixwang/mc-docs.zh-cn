@@ -10,10 +10,10 @@ origin.date: 02/10/2020
 ms.date: 03/30/2020
 ms.author: v-yeche
 ms.openlocfilehash: b3134d7f5adace732303f61ca36ee2f9ebd0b9a4
-ms.sourcegitcommit: 2b084933215d0e7702456730f168d97e00c882a0
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80243508"
 ---
 # <a name="receive-and-send-b2b-messages-by-using-azure-logic-apps-and-enterprise-integration-pack"></a>使用 Azure 逻辑应用与 Enterprise Integration Pack 接收和发送 B2B 消息

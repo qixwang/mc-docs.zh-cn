@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure PowerShell 管理 Azure DNS 中的 DNS 记录 | Microsoft Docs
-description: 当在 Azure DNS 上托管域时在 Azure DNS 上管理 DNS 记录集和记录。 记录集和记录上的操作的所有 PowerShell 命令。
+description: 在 Azure DNS 上托管域时管理 Azure DNS 上的 DNS 记录集和记录。 记录集和记录上的操作的所有 PowerShell 命令。
 services: dns
 documentationcenter: na
 author: WenJason
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
 origin.date: 12/21/2016
-ms.date: 04/15/2019
+ms.date: 04/29/2019
 ms.author: v-jay
-ms.openlocfilehash: 718d7abf8f48f604fa4ffb5f8c968eb0b721f5dd
-ms.sourcegitcommit: cf8ad305433d47f9a6760f7a91ee361dc01573db
+ms.openlocfilehash: b962025089fcd7f772a54dfc8e85558f1816d5be
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59502594"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63849585"
 ---
 # <a name="manage-dns-records-and-recordsets-in-azure-dns-using-azure-powershell"></a>使用 Azure PowerShell 管理 Azure DNS 中的 DNS 记录和记录集
 
@@ -231,7 +231,7 @@ $recordsets = Get-AzDnsRecordSet -Zone $zone
     Set-AzDnsRecordSet -RecordSet $rs
     ```
 
-使用 `Set-AzDnsRecordSet` 可将 Azure DNS 中的现有记录集（及其包含的所有记录）替换为指定的记录集。 使用 [Etag 检查](dns-zones-records.md#etags)可确保不覆盖并发更改。 可以使用可选的 `-Overwrite` 开关取消这些检查。
+使用 `Set-AzDnsRecordSet` 可将 Azure DNS 中的现有记录集（及其包含的所有记录）替换为指定的记录集  。 使用 [Etag 检查](dns-zones-records.md#etags)可确保不覆盖并发更改。 可以使用可选的 `-Overwrite` 开关取消这些检查。
 
 此操作序列也可*通过管道传递*，即通过管道传递记录集对象，而不是将其作为参数传递：
 
@@ -391,7 +391,7 @@ Get-AzDnsRecordSet -Name www -RecordType A -ZoneName "contoso.com" -ResourceGrou
 
 可以使用 `-Confirm` 参数重写当前的 `$ConfirmPreference` 设置。 如果指定 `-Confirm` 或 `-Confirm:$True`，cmdlet 会在运行之前提示用户进行确认。 如果指定 `-Confirm:$False`，cmdlet 不会提示用户进行确认。 
 
-有关 `-Confirm` 和 `$ConfirmPreference` 的详细信息，请参阅 [About Preference Variables](https://msdn.microsoft.com/powershell/reference/5.1/Microsoft.PowerShell.Core/about/about_Preference_Variables)（关于首选项变量）。
+有关 `-Confirm` 和 `$ConfirmPreference` 的详细信息，请参阅 [About Preference Variables](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_preference_variables)（关于首选项变量）。
 
 ## <a name="next-steps"></a>后续步骤
 

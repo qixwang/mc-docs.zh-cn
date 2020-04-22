@@ -16,11 +16,11 @@ origin.date: 09/28/2017
 ms.date: 07/18/2018
 ms.author: v-junlch
 ms.openlocfilehash: 8afb596a03346d0362f4a42eedeab70857a16067
-ms.sourcegitcommit: d75065296d301f0851f93d6175a508bdd9fd7afc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52667207"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63843779"
 ---
 # <a name="use-the-power-bi-embedded-migration-tool"></a>使用 Power BI Embedded 迁移工具
 
@@ -47,11 +47,11 @@ ms.locfileid: "52667207"
 
 让我们先创建一个新的迁移计划。 若要创建新的迁移计划，请执行以下操作。
 
-1. 选择“文件” > “新建迁移计划”。
+1. 选择“文件” > “新建迁移计划”。  
 
     ![新建迁移计划](./media/migrate-tool/migrate-tool-plan.png)
 
-2. 在“选择 Power BI 工作区集合资源组”对话框中，选择“环境”下拉菜单，并选择“生产”。
+2. 在“选择 Power BI 工作区集合资源组”对话框中，选择“环境”下拉菜单，并选择“生产”。  
 
 3. 系统会提示登录。 使用自己的 Azure 订阅登录名。
 
@@ -62,11 +62,11 @@ ms.locfileid: "52667207"
 
     ![选择 Azure 订阅](./media/migrate-tool/migrate-tool-select-resource-group.png)
 
-5. 在订阅列表下面，选择包含自己的工作区集合的**资源组**，并选择“选择”。
+5. 在订阅列表下面，选择包含自己的工作区集合的**资源组**，并选择“选择”。 
 
     ![选择资源组](./media/migrate-tool/migrate-tool-select-resource-group2.png)
 
-6. 选择“分析”。 这样就能获得 Azure 订阅中的项的清单，从而可以开始创建计划。
+6. 选择“分析”。  这样就能获得 Azure 订阅中的项的清单，从而可以开始创建计划。
 
     ![选择“分析”按钮](./media/migrate-tool/migrate-tool-analyze-group.png)
 
@@ -83,11 +83,11 @@ ms.locfileid: "52667207"
 
 若要保存迁移计划，请执行以下操作。
 
-1. 选择“文件” > “保存迁移计划”。
+1. 选择“文件” > “保存迁移计划”。  
 
     ![“保存迁移计划”菜单选项](./media/migrate-tool/migrate-tool-save-plan.png)
 
-2. 为文件命名或使用系统生成的文件名，选择“保存”。
+2. 为文件命名或使用系统生成的文件名，选择“保存”。 
 
 ### <a name="open-an-existing-migration-plan"></a>打开现有的迁移计划
 
@@ -95,15 +95,15 @@ ms.locfileid: "52667207"
 
 若要打开现有的迁移计划，请执行以下操作。
 
-1. 选择“文件” > “打开现有的迁移计划”。
+1. 选择“文件” > “打开现有的迁移计划”。  
 
     ![“打开现有的迁移计划”菜单选项](./media/migrate-tool/migrate-tool-open-plan.png)
 
-2. 选择迁移文件，并选择“打开”。
+2. 选择迁移文件，并选择“打开”。 
 
 ## <a name="step-1-analyze-and-plan-migration"></a>步骤 1：分析和规划迁移
 
-“分析和规划迁移”选项卡提供 Azure 订阅的资源组中当前内容的视图。
+“分析和规划迁移”选项卡提供 Azure 订阅的资源组中当前内容的视图。 
 
 ![“分析和规划迁移”选项卡](./media/migrate-tool/migrate-tool-step1.png)
 
@@ -111,7 +111,7 @@ ms.locfileid: "52667207"
 
 ### <a name="paas-topology"></a>PaaS 拓扑
 
-这是“资源组”>“工作区集合”>“工作区”的列表。 资源组和工作区集合显示友好名称。 工作区会显示 GUID。
+这是“资源组”>“工作区集合”>“工作区”的列表。  资源组和工作区集合显示友好名称。 工作区会显示 GUID。
 
 列表中的项还显示一种颜色，以及一个采用 (#/#) 格式的数字。 这表示可下载的报表数。
 
@@ -127,11 +127,11 @@ ms.locfileid: "52667207"
 
 ### <a name="target-structure"></a>目标结构
 
-在“目标结构”中，可以告知工具要将内容下载到何处，以及如何上传内容。
+在“目标结构”中，可以告知工具要将内容下载到何处，以及如何上传内容。 
 
 #### <a name="download-plan"></a>下载计划
 
-系统会自动创建路径。 如果需要，可以更改此路径。 如果确实更改了路径，则需要选择“更新路径”。
+系统会自动创建路径。 如果需要，可以更改此路径。 如果确实更改了路径，则需要选择“更新路径”。 
 
 **实际上这不会执行下载**， 而只是指定要将报表下载到的位置的结构。
 
@@ -143,39 +143,39 @@ ms.locfileid: "52667207"
 
 **实际上这不会在 Power BI 服务中创建组**， 而只是定义组的命名结构。
 
-如果更改前缀，则需要选择“生成上传计划”。
+如果更改前缀，则需要选择“生成上传计划”。 
 
 如果需要，可以右键单击某个组，并选择直接在上传计划中为该组重命名。
 
 ![“重命名组”上下文菜单选项](./media/migrate-tool/migrate-tool-upload-report-rename-item.png)
 
 > [!NOTE]
-> 组的名称不能包含空格或无效字符。
+> 组的名称不能包含空格或无效字符。 
 
 ## <a name="step-2-download"></a>步骤 2：下载
 
-在“下载”选项卡中，可以看到报表和关联元数据的列表。 此外，还可以看到导出状态以及先前的导出状态。
+在“下载”选项卡中，可以看到报表和关联元数据的列表。  此外，还可以看到导出状态以及先前的导出状态。
 
 ![“下载”选项卡](./media/migrate-tool/migrate-tool-download-tab.png)
 
 可以使用两个选项。
 
-- 选择特定的报表，并选择“下载选定内容”
-- 选择“全部下载”。
+- 选择特定的报表，并选择“下载选定内容” 
+- 选择“全部下载”。 
 
 ![“下载选定内容”按钮](./media/migrate-tool/migrate-tool-download-options.png)
 
-成功下载后，会看到“完成”状态，并看到存在 PBIX 文件的反映。
+成功下载后，会看到“完成”状态，并看到存在 PBIX 文件的反映。 
 
-下载完成后，请选择“创建组”选项卡。
+下载完成后，请选择“创建组”选项卡。 
 
 ## <a name="step-3-create-groups"></a>步骤 3：创建组
 
-下载可用的报表后，可以转到“创建组”选项卡。在此选项卡中，可以根据所创建的迁移计划在 Power BI 服务中创建应用工作区。 这会使用在“分析和规划迁移”所述的“上传”选项卡中提供的名称创建应用工作区。
+下载可用的报表后，可以转到“创建组”选项卡。  在此选项卡中，可以根据所创建的迁移计划在 Power BI 服务中创建应用工作区。 这会使用在“分析和规划迁移”所述的“上传”选项卡中提供的名称创建应用工作区。  
 
 ![“创建组”选项卡](./media/migrate-tool/migrate-tool-create-groups.png)
 
-若要创建应用工作区，可以选择“创建选定组”或“创建所有缺少的组”。
+若要创建应用工作区，可以选择“创建选定组”或“创建所有缺少的组”。  
 
 选择其中任一选项时，系统会提示登录。 *请使用想要在其中创建应用工作区的 Power BI 服务的凭据。*
 
@@ -187,17 +187,17 @@ ms.locfileid: "52667207"
 
 ![Power BI 服务中的应用工作区](./media/migrate-tool/migrate-tool-app-workspace.png)
 
-创建工作区后，可以转到“上传”选项卡。
+创建工作区后，可以转到“上传”选项卡。 
 
 ## <a name="step-4-upload"></a>步骤 4：上传
 
-在“上传”选项卡中，可将报表上传到 Power BI 服务。 将会看到已在“下载”选项卡中下载的报表列表，以及基于迁移计划的目标组名称。
+在“上传”选项卡中，可将报表上传到 Power BI 服务。  将会看到已在“下载”选项卡中下载的报表列表，以及基于迁移计划的目标组名称。
 
 ![“上传”选项卡](./media/migrate-tool/migrate-tool-upload-tab.png)
 
 可以上传选定的报表，或上传所有报表。 还可以重置上传状态，以重新上传项。
 
-此外，可以使用相应的选项来选择当存在同名的报表时要采取的操作。 可以选择“中止”、“忽略”或“覆盖”。
+此外，可以使用相应的选项来选择当存在同名的报表时要采取的操作。 可以选择“中止”、“忽略”或“覆盖”。   
 
 ![报表存在时要采取的操作选项下拉菜单](./media/migrate-tool/migrate-tool-upload-report-same-name.png)
 

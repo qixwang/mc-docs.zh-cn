@@ -11,10 +11,10 @@ ms.author: gopalv
 ms.topic: overview
 ms.date: 10/10/2019
 ms.openlocfilehash: 3d2ca439779bf72e9372d84818dd451974c61574
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75599138"
 ---
 # <a name="what-tools-are-included-on-the-azure-data-science-virtual-machine"></a>Azure Data Science Virtual Machine 中包含哪些工具？
@@ -82,7 +82,7 @@ ms.locfileid: "75599138"
 | &nbsp;&nbsp;&nbsp;&nbsp; [Keras](https://keras.io) |<span class='green-check'>&#9989;</span></br> (2.2.4)   |<span class='green-check'>&#9989;</span></br> (2.2.4) | [DSVM 上的 Keras](./dsvm-deep-learning-ai-frameworks.md#keras) |
 | &nbsp;&nbsp;&nbsp;&nbsp; [Microsoft Cognitive Toolkit (CNTK)](https://docs.microsoft.com/cognitive-toolkit/) |<span class='green-check'>&#9989;</span> |<span class='green-check'>&#9989;</span></br> (2.5.1) | [DSVM 上的 CNTK](./dsvm-deep-learning-ai-frameworks.md#microsoft-cognitive-toolkit-cntk) |
 | &nbsp;&nbsp;&nbsp;&nbsp; [MXNet](https://mxnet.apache.org/) |<span class='green-check'>&#9989;</span> |<span class='green-check'>&#9989;</span></br> (1.3.0) | [DSVM 上的 MXNet](./dsvm-deep-learning-ai-frameworks.md#mxnet) |
-| &nbsp;&nbsp;&nbsp;&nbsp; [MXNet Model Server](https://github.com/awslabs/mxnet-model-server#quick-start) |<span class='green-check'>&#9989;</span> |<span class='green-check'>&#9989;</span></br> (1.0.1) | [DSVM 上的 MXNet 模型服务器](./dsvm-deep-learning-ai-frameworks.md#mxnet-model-server) |
+| &nbsp;&nbsp;&nbsp;&nbsp; [MXNet 模型服务器](https://github.com/awslabs/mxnet-model-server#quick-start) |<span class='green-check'>&#9989;</span> |<span class='green-check'>&#9989;</span></br> (1.0.1) | [DSVM 上的 MXNet 模型服务器](./dsvm-deep-learning-ai-frameworks.md#mxnet-model-server) |
 | &nbsp;&nbsp;&nbsp;&nbsp; [NVidia System Management Interface (nvidia-smi)](https://developer.nvidia.com/nvidia-system-management-interface) |<span class='green-check'>&#9989;</span> |<span class='green-check'>&#9989;</span></br>| [DSVM 上的 nvidia-smi](./dsvm-deep-learning-ai-frameworks.md#nvidia-system-management-interface-nvidia-smi) |
 | &nbsp;&nbsp;&nbsp;&nbsp; [PyTorch](https://pytorch.org) |<span class='red-x'>&#10060;</span>   |<span class='green-check'>&#9989;</span></br> (1.2.0) | [DSVM 上的 PyTorch](./dsvm-deep-learning-ai-frameworks.md#pytorch) |
 | &nbsp;&nbsp;&nbsp;&nbsp; [TensorFlow](https://www.tensorflow.org) |<span class='green-check'>&#9989;</span></br> (1.13) |<span class='green-check'>&#9989;</span></br> (1.13) | [DSVM 上的 TensorFlow](./dsvm-deep-learning-ai-frameworks.md#tensorflow) |

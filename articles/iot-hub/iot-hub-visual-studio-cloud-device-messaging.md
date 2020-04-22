@@ -9,10 +9,10 @@ origin.date: 08/20/2019
 ms.date: 09/30/2019
 ms.author: xshi
 ms.openlocfilehash: 8b6d49ebbfccb669c06a1947a8b416a1cab77de0
-ms.sourcegitcommit: 6a62dd239c60596006a74ab2333c50c4db5b62be
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/20/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "71156116"
 ---
 # <a name="use-cloud-explorer-for-visual-studio-to-send-and-receive-messages-between-your-device-and-iot-hub"></a>使用适用于 Visual Studio 的 Cloud Explorer 在设备与 IoT 中心之间发送和接收消息
@@ -91,7 +91,7 @@ ms.locfileid: "71156116"
 
     ![发送 C2D 消息](media/iot-hub-visual-studio-cloud-device-messaging/send-c2d-message-test.png)
 
-    结果将显示在“输出”下。
+    结果将显示在“输出”下  。
 
     ![发送 C2D 消息结果](media/iot-hub-visual-studio-cloud-device-messaging/send-c2d-message-result-vs2019.png)
 

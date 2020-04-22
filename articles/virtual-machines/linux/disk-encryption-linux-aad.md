@@ -9,10 +9,10 @@ origin.date: 03/15/2019
 ms.date: 11/11/2019
 ms.custom: seodec18
 ms.openlocfilehash: 718a4038038d02103afa6db83dba820ba8d2362e
-ms.sourcegitcommit: 9597d4da8af58009f9cef148a027ccb7b32ed8cf
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74655436"
 ---
 # <a name="enable-azure-disk-encryption-with-azure-ad-on-linux-vms-previous-release"></a>在 Linux VM 上使用 Azure AD 启用 Azure 磁盘加密（以前版本）
@@ -36,7 +36,7 @@ ms.locfileid: "74655436"
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-## <a name="bkmk_RunningLinux"></a>在现有或正在运行的 IaaS Linux VM 上启用加密
+## <a name="enable-encryption-on-an-existing-or-running-iaas-linux-vm"></a><a name="bkmk_RunningLinux"> </a>在现有或正在运行的 IaaS Linux VM 上启用加密
 
 在此方案中，可以使用资源管理器模板、PowerShell cmdlet 或 CLI 命令启用加密。 
 
@@ -168,7 +168,7 @@ ms.locfileid: "74655436"
 | vmName | 要对其执行加密操作的 VM 的名称。 |
 | 通行短语 | 键入强密码作为数据加密密钥。 |
 
-## <a name="bkmk_EFA"></a>对 Linux IaaS VM 上的数据磁盘使用 EncryptFormatAll 功能
+## <a name="use-encryptformatall-feature-for-data-disks-on-linux-iaas-vms"></a><a name="bkmk_EFA"> </a>对 Linux IaaS VM 上的数据磁盘使用 EncryptFormatAll 功能
 **EncryptFormatAll** 参数可以减少加密 Linux 数据磁盘所需的时间。 满足特定条件的分区将格式化（使用其当前文件系统）。 然后，将它们重新装回到执行命令之前所在的位置。 如果想要排除某个符合条件的数据磁盘，可以在运行命令之前卸载该磁盘。
 
  运行此命令之后，以前装载的所有驱动器将格式化。 然后，加密层将在现已为空的驱动器的顶层启动。 选择此选项后，附加到 VM 的临时资源磁盘也会加密。 如果重置临时驱动器，该驱动器将重新格式化，并且 Azure 磁盘加密解决方案下次有机会为 VM 重新加密该驱动器。
@@ -177,7 +177,7 @@ ms.locfileid: "74655436"
 > 如果 VM 的数据卷上存在所需的数据，则不应使用 EncryptFormatAll。 卸载磁盘可将其从加密项中排除。 首先应该在测试 VM 上试用 EncryptFormatAll，以了解功能参数及其影响，然后再尝试在生产 VM 上使用该参数。 EncryptFormatAll 选项会格式化数据磁盘，因此磁盘上的所有数据都会丢失。 在继续之前，请验证是否已正确卸载想要排除的磁盘。 <br /><br />
 >如果在更新加密设置时设置此参数，可能会导致在实际加密之前重新启动。 在这种情况下，还需要从 fstab 文件中删除不想要格式化的磁盘。 同样，在启动加密操作之前，应将想要加密并格式化的分区添加到 fstab 文件。 
 
-### <a name="bkmk_EFACriteria"></a>EncryptFormatAll 的条件
+### <a name="encryptformatall-criteria"></a><a name="bkmk_EFACriteria"> </a>EncryptFormatAll 的条件
 该参数会遍历并加密满足以下**所有**条件的所有分区： 
 - 不是根/OS/启动分区
 - 尚未加密
@@ -188,7 +188,7 @@ ms.locfileid: "74655436"
 
 加密组成 RAID 或 LVM 卷而不是 RAID 或 LVM 卷的磁盘。
 
-### <a name="bkmk_EFATemplate"></a>结合模板使用 EncryptFormatAll 参数
+### <a name="use-the-encryptformatall-parameter-with-a-template"></a><a name="bkmk_EFATemplate"> </a>结合模板使用 EncryptFormatAll 参数
 若要使用 EncryptFormatAll 选项，请使用可加密 Linux VM 的任何现有 Azure 资源管理器模板，并更改 AzureDiskEncryption 资源的 **EncryptionOperation** 字段。
 
 1. 例如，使用[资源管理器模板加密正在运行的 Linux IaaS VM](https://github.com/vermashi/azure-quickstart-templates/tree/encrypt-format-running-linux-vm/201-encrypt-running-linux-vm)。 
@@ -216,7 +216,7 @@ $KeyVaultResourceId = $KeyVault.ResourceId;
 Set-AzVMDiskEncryptionExtension -ResourceGroupName $VMRGName -VMName $vmName -AadClientID $aadClientID -AadClientSecret $aadClientSecret -DiskEncryptionKeyVaultUrl $diskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $KeyVaultResourceId -EncryptFormatAll
 ```
 
-### <a name="bkmk_EFALVM"></a>结合逻辑卷管理器 (LVM) 使用 EncryptFormatAll 参数 
+### <a name="use-the-encryptformatall-parameter-with-logical-volume-manager-lvm"></a><a name="bkmk_EFALVM"> </a>结合逻辑卷管理器 (LVM) 使用 EncryptFormatAll 参数 
 我们建议采用 LVM-on-crypt 设置。 对于下面的所有示例，请将设备路径和装载点替换为适合用例的任何值。 可按如下所述完成此设置：
 
 - 添加构成 VM 的数据磁盘。
@@ -240,7 +240,7 @@ Set-AzVMDiskEncryptionExtension -ResourceGroupName $VMRGName -VMName $vmName -Aa
         ```
     5. 在这些新磁盘的顶层设置 LVM。 请注意，VM 在完成启动后，加密的驱动器会解锁。 因此，后续的 LVM 装载必定会延迟。
 
-## <a name="bkmk_VHDpre"></a>通过客户加密的 VHD 和加密密钥新建的 IaaS VM
+## <a name="new-iaas-vms-created-from-customer-encrypted-vhd-and-encryption-keys"></a><a name="bkmk_VHDpre"> </a>通过客户加密的 VHD 和加密密钥新建的 IaaS VM
 在此方案中，可以通过使用 Resource Manager 模板、PowerShell cmdlet 或 CLI 命令启用加密。 以下部分详细介绍了 Resource Manager 模板和 CLI 命令。 
 
 参考附录中的说明来准备可在 Azure 中使用的预加密映像。 创建映像后，可使用下一部分中的步骤创建加密的 Azure VM。
@@ -252,7 +252,7 @@ Set-AzVMDiskEncryptionExtension -ResourceGroupName $VMRGName -VMName $vmName -Aa
 >
 >加密或禁用加密可能导致 VM 重新启动。 
 
-### <a name="bkmk_VHDprePSH"></a>使用 Azure PowerShell 加密包含预加密 VHD 的 IaaS VM 
+### <a name="use-azure-powershell-to-encrypt-iaas-vms-with-pre-encrypted-vhds"></a><a name="bkmk_VHDprePSH"> </a>使用 Azure PowerShell 加密包含预加密 VHD 的 IaaS VM 
 可以使用 PowerShell cmdlet [Set-AzVMOSDisk](https://docs.microsoft.com/powershell/module/az.compute/set-azvmosdisk#examples) 在加密的 VHD 上启用磁盘加密。 以下示例显示了一些常用参数。 
 
 ```powershell

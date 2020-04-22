@@ -9,10 +9,10 @@ ms.topic: conceptual
 origin.date: 03/17/2020
 ms.date: 03/30/2020
 ms.openlocfilehash: fd27dffdde10333e0ee3ea3ef326327980ccd1af
-ms.sourcegitcommit: 44d3fe59952847e5394bbe6c05bd6f333bb56345
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80523182"
 ---
 # <a name="install-and-use-lightingest"></a>安装和使用 LightIngest
@@ -79,7 +79,7 @@ LightIngest 是用于将即席数据引入 Azure 数据资源管理器的命令�
 
 `-creationTimePattern` 参数从文件或 Blob 路径中提取 CreationTime 属性。 模式不需要反映整个项路径，只需反映包含要使用的时间戳的部分。
 该参数的值必须包含三个部分：
-* 紧邻在时间戳前面的常量文本，括在单引号中
+* 紧靠在时间戳前面的常量测试，括在单引号中
 * 时间戳格式，采用标准的 [.NET 日期时间表示法](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)
 * 紧接在时间戳后面的常量文本。例如，如果 Blob 名称以“historicalvalues19840101.parquet”结尾（时间戳为四位数的年份，两位数的月份，两位数的月份日期），则 `-creationTimePattern` 参数的相应值为“historicalvalues'yyyyMMdd'.parquet”。
 

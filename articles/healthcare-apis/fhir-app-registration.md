@@ -10,10 +10,10 @@ ms.author: matjazl
 author: matjazl
 ms.date: 10/13/2019
 ms.openlocfilehash: e370ce938efb73416ecd8ecfd4e0f2e781aeb631
-ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80343867"
 ---
 # <a name="register-the-azure-active-directory-apps-for-azure-api-for-fhir"></a>为 Azure API for FHIR 注册 Azure Active Directory 应用

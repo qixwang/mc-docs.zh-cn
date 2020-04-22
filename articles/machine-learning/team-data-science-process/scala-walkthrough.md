@@ -12,10 +12,10 @@ ms.date: 11/13/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 5de34386ae69c46573fc296b75b25b735a1ed3b3
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75599296"
 ---
 # <a name="data-science-using-scala-and-spark-on-azure"></a>在 Azure 上使用 Scala 和 Spark 展开数据科研
@@ -260,7 +260,7 @@ Spark 可以读取和写入到 Azure Blob 存储。 可以使用 Spark 处理任
 默认情况下，从 Jupyter notebook 运行的任何代码片段的输出，在保留于辅助角色节点上的会话上下文中可用。 如果要将行程保存到辅助角色节点，以便每次计算，并且计算所需的所有数据都可以在 Jupyter 服务器节点（这是头节点）上本地可用，则可以使用 `%%local` magic 在 Jupyter 服务器上运行代码片段。
 
 * **SQL magic** (`%%sql`). HDInsight Spark 内核支持针对 SQLContext 的简单内联 HiveQL 查询。 （`-o VARIABLE_NAME`）参数在 Jupyter 服务器上将 SQL 查询的输出保留为 Pandas 数据帧。 这意味着它在本地模式下可用。
-* `%%local` **magic**。 `%%local`magic 在 Jupyter 服务器上本地运行代码，该服务器是 HDInsight 群集的头节点。 通常，将 `%%local` magic 与 `%%sql` magic 和 `-o` 参数结合使用。 `-o` 参数将本地保留 SQL 查询的输出，然后 `%%local` 将触发下一组代码片段，针对本地保留的 SQL 查询输出本地运行。
+* `%%local` magic  。 `%%local`magic 在 Jupyter 服务器上本地运行代码，该服务器是 HDInsight 群集的头节点。 通常，将 `%%local` magic 与 `%%sql` magic 和 `-o` 参数结合使用。 `-o` 参数将本地保留 SQL 查询的输出，然后 `%%local` 将触发下一组代码片段，针对本地保留的 SQL 查询输出本地运行。
 
 ### <a name="query-the-data-by-using-sql"></a>使用 SQL 查询数据
 此查询按费用金额、乘客数量和小费金额检索出租车行程。
@@ -291,7 +291,7 @@ Spark 可以读取和写入到 Azure Blob 存储。 可以使用 Spark 处理任
 
 * 表
 * 饼图
-* 折线图
+* 行
 * 区域
 * 条形图​​
 
@@ -333,7 +333,7 @@ Spark 可以读取和写入到 Azure Blob 存储。 可以使用 Spark 处理任
 
 ![按乘客数的小费金额](./media/scala-walkthrough/plot-tip-amount-by-passenger-count.png)
 
-![按费用金额的小费金额](./media/scala-walkthrough/plot-tip-amount-by-fare-amount.png)
+![按车费金额的小费金额](./media/scala-walkthrough/plot-tip-amount-by-fare-amount.png)
 
 ## <a name="create-features-and-transform-features-and-then-prep-data-for-input-into-modeling-functions"></a>创建特征和转换特征，并准备输入到建模函数中的数据
 对于 Spark ML 和 MLlib 中基于树的建模函数，必须使用各种技术（如装箱、索引、独热编码和矢量化）准备目标和特征。 以下是本部分中要遵循的步骤：
@@ -366,13 +366,13 @@ Spark 可以读取和写入到 Azure Blob 存储。 可以使用 Spark 处理任
 
 
 ### <a name="indexing-and-one-hot-encoding-of-categorical-features"></a>分类特征的索引和独热编码
-MLlib 的建模和预测函数需要在使用前，对带有分类输入数据的特征进行索引或独热编码。 本部分介绍如何对分类特征进行索引和独热编码，输入到建模函数中。
+MLlib 的建模和预测函数需要带有分类输入数据的特征在使用前编制索引或进行编码。 本部分介绍如何对分类特征进行索引和独热编码，输入到建模函数中。
 
 根据模型，需要以不同方式为其编制索引或进行独热编码。 例如，逻辑和线性回归模型需进行独热编码。 例如，具有三个类别的特性可以扩展为三个特征列。 根据观察类别，每个列将包含 0 或 1 个类别。 MLlib 为独热编码提供 [OneHotEncoder](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html#sklearn.preprocessing.OneHotEncoder)。 此编码器将标签索引列映射到二元向量列，该列最多只有单个值。 使用此编码，可将预期数值特征的算法（如逻辑回归）应用到分类特征。
 
 此处，只需转换四个字符串变量来显示示例。 还可以将由数值表示的其他变量（例如工作日）编制索引为类别变量。
 
-对于索引，请使用 `StringIndexer()`，对于独热编码，请使用 MLlib 中的 `OneHotEncoder()` 函数。 以下是用于对分类特征进行索引编制和编码的代码：
+对于索引，请使用 `StringIndexer()`，对于独热编码，请使用 MLlib 中的 `OneHotEncoder()` 函数。 下面是用于为分类特征编制索引和编码的代码：
 
     # CREATE INDEXES AND ONE-HOT ENCODED VECTORS FOR SEVERAL CATEGORICAL FEATURES
 
@@ -853,7 +853,7 @@ ROC 曲线下的面积：0.9846895479241554
 ### <a name="create-a-gbt-regression-model"></a>创建 GBT 回归模型
 使用 Spark ML `GBTRegressor()` 函数创建 GBT 回归模型，并根据测试数据评估模型。
 
-[梯度提升树](https://spark.apache.org/docs/latest/ml-classification-regression.html#gradient-boosted-trees-gbts) (GBT) 是决策树的整体。 GBT 以迭代方式定型决策树以最大程度减少损失函数。 可使用 GBT 进行回归和分类。 其可处理分类特征，不需要特征缩放，并且能够捕获非线性和特征交互。 它们还可以在多类分类设置中使用。
+[梯度提升树](https://spark.apache.org/docs/latest/ml-classification-regression.html#gradient-boosted-trees-gbts) (GBT) 是决策树的整体。 GBT 以迭代方式训练决策树以最大程度减少损失函数。 可使用 GBT 进行回归和分类。 其可处理分类特征，不需要特征缩放，并且能够捕获非线性和特征交互。 它们还可以在多类分类设置中使用。
 
     # RECORD THE START TIME
     val starttime = Calendar.getInstance().getTime()

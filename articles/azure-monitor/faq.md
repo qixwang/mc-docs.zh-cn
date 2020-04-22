@@ -9,10 +9,10 @@ ms.author: v-lingwu
 origin.date: 01/23/2020
 ms.date: 03/06/2020
 ms.openlocfilehash: a63546213747d35dbc59ab64491b757192235f22
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78850484"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Azure Monitor 常见问题解答
@@ -101,7 +101,7 @@ Azure Monitor 收集的所有日志数据存储在 Log Analytics 工作区中。
 
 当[查询范围](log-query/scope.md)设置为特定的资源时，不会显示“查询资源管理器”、“保存”和“新建警报规则”按钮。    若要创建警报，或者要保存或加载查询，Log Analytics 的范围必须限定于某个工作区。 若要在工作区上下文中打开 Log Analytics，请从“Azure Monitor”菜单中选择“日志”。   选择的是上次使用的工作区，但可以选择任何其他的工作区。 请参阅 [Azure Monitor Log Analytics 中的日志查询范围和时间范围](log-query/scope.md)
 
-### <a name="why-am-i-getting-the-error-register-resource-provider-microsoftinsights-for-this-subscription-to-enable-this-query-when-opening-log-analytics-from-a-vm"></a>从 VM 打开 Log Analytics 时，为何会出现以下错误：从 VM 打开 Log Analytics 时，为何显示“请为此订阅注册资源提供程序 'Microsoft.Insights' 以启用此查询”？ 
+### <a name="why-am-i-getting-the-error-register-resource-provider-microsoftinsights-for-this-subscription-to-enable-this-query-when-opening-log-analytics-from-a-vm"></a>为什么从 VM 钻取进去后，我会在日志中发现以下错误：从 VM 打开 Log Analytics 时，为何显示“请为此订阅注册资源提供程序 'Microsoft.Insights' 以启用此查询”？ 
 许多资源提供程序会自动注册，但某些资源提供程序可能需要手动注册。 注册的作用域始终是订阅。 有关详细信息，请参阅[资源提供程序和类型](../azure-resource-manager/management/resource-providers-and-types.md#azure-portal)。
 
 ### <a name="why-am-i-am-getting-no-access-error-message-when-opening-log-analytics-from-a-vm"></a>从 VM 打开 Log Analytics 时，为何出现“无访问权限”错误消息？ 
@@ -139,7 +139,7 @@ Azure Monitor 收集的所有日志数据存储在 Log Analytics 工作区中。
 
 
 ### <a name="whats-the-difference-between-the-azure-monitor-agents"></a>各个 Azure Monitor 代理有何不同之处？
-Azure 诊断扩展适用于 Azure 虚拟机，它将数据收集到 Azure Monitor 指标、Azure 存储和 Azure 事件中心。 Log Analytics 代理适用于 Azure 中、其他云环境中或本地的虚拟机，它将数据收集到 Azure Monitor 日志。 依赖项代理需要 Log Analytics 代理，它收集进程详细信息和依赖项信息。 请参阅 [Azure Monitor 代理概述](platform/agents-overview.md)。
+Azure 诊断扩展适用于 Azure 虚拟机，它将数据收集到 Azure Monitor 指标、Azure 存储和 Azure 事件中心。 Log Analytics 代理适用于 Azure 中、其他云环境中或本地的虚拟机，它将数据收集到 Azure Monitor 日志。 依赖项代理需要 Log Analytics 代理，以及收集的进程详细信息和依赖项。 请参阅 [Azure Monitor 代理概述](platform/agents-overview.md)。
 
 
 ### <a name="does-my-agent-traffic-use-my-expressroute-connection"></a>代理流量是否使用 ExpressRoute 连接？
@@ -245,7 +245,7 @@ WireData
 * 在 Application Insights 资源中打开“使用情况和估算成本”页面。  此处提供了一个最近使用情况的图表。 如果愿意，可以设置数据上限。
 * 打开 [Azure 计费边栏选项卡](https://portal.azure.cn/#blade/Microsoft_Azure_Billing/BillingBlade/Overview)查看所有资源的帐单。
 
-### <a name="q14"></a>Application Insights 在我的项目中修改哪些内容？
+### <a name="what-does-application-insights-modify-in-my-project"></a><a name="q14"></a>Application Insights 在我的项目中修改哪些内容？
 详细信息取决于项目类型。 对于 Web 应用程序：
 
 * 将这些文件添加到项目：
@@ -266,7 +266,7 @@ WireData
 ### <a name="how-do-i-upgrade-from-older-sdk-versions"></a>如何从较早的 SDK 版本升级？
 请参阅[发行说明](app/release-notes.md)了解对应于应用程序类型的 SDK。
 
-### <a name="update"></a>如何更改项目向哪个 Azure 资源发送数据？
+### <a name="how-can-i-change-which-azure-resource-my-project-sends-data-to"></a><a name="update"></a>如何更改项目向哪个 Azure 资源发送数据？
 在解决方案资源管理器中，右键单击 `ApplicationInsights.config` 并选择“更新 Application Insights”  。 可在 Azure 中将数据发送到现有或新资源。 更新向导更改 ApplicationInsights.config 中的检测密钥，该密钥确定服务器 SDK 将数据发送到何处。 除非取消选中“更新全部”，否则它还将在网页中出现密钥的位置更改密钥。
 
 ### <a name="what-is-status-monitor"></a>什么是状态监视器？
@@ -322,7 +322,7 @@ WireData
 可以配置 `ClientIpHeaderTelemetryInitializer`，从不同的标头获取 IP 地址。 例如，在某些系统中，代理、负载均衡器或 CDN 会将其移动到 `X-Originating-IP`。 [了解详细信息](https://apmtips.com/blog/2016/07/05/client-ip-address/)。
 
 
-### <a name="data"></a>数据在门户中保留多长时间？ 是否安全？
+### <a name="how-long-is-data-retained-in-the-portal-is-it-secure"></a><a name="data"></a>数据在门户中保留多长时间？ 是否安全？
 请参阅[数据保留和隐私][data]。
 
 ### <a name="what-happens-to-application-insights-telemetry-when-a-server-or-device-loses-connection-with-azure"></a>当服务器或设备与 Azure 断开连接时，Application Insights 的遥测数据会发生什么情况？
@@ -348,7 +348,7 @@ WireData
 * 将两个单独检测密钥（独立的 Application Insights 资源）分别用于客户端和服务器数据。 或
 * 编写一个在服务器中运行的代理，并使 Web 客户端通过该代理发送数据。
 
-### <a name="post"></a>如何在诊断搜索中查看 POST 数据？
+### <a name="how-do-i-see-post-data-in-diagnostic-search"></a><a name="post"></a>如何在诊断搜索中查看 POST 数据？
 我们不自动记录 POST 数据，但可以使用 TrackTrace 调用：将数据放置在消息参数中。 相比对字符串属性的限制，这具有更长的大小限制，尽管你无法对其进行筛选。
 
 ### <a name="should-i-use-single-or-multiple-application-insights-resources"></a>应使用单个 Application Insights 资源还是多个 Application Insights 资源？
@@ -370,7 +370,7 @@ WireData
 * 如果一个真实的用户在不同的浏览器中使用站点，或者使用私密/隐身浏览，或使用不同的计算机，则会进行多次计数。
 * 若要识别跨计算机和浏览器登录的用户，请添加对 [setAuthenticatedUserContext()](app/api-custom-events-metrics.md#authenticated-users) 的调用。
 
-### <a name="q17"></a> 我是否已在 Application Insights 中启用所有内容？
+### <a name="have-i-enabled-everything-in-application-insights"></a><a name="q17"></a> 我是否已在 Application Insights 中启用所有内容？
 | 应看到 | 如何获取 | 为何需要它 |
 | --- | --- | --- |
 | 可用性图表 |[Web 测试](app/monitor-web-app-availability.md) |知道 Web 应用已启动 |

@@ -16,28 +16,28 @@ origin.date: 07/18/2017
 ms.author: v-yiso
 ms.date: 01/21/2019
 ms.openlocfilehash: 0e1f10138ba9a2800b4058eb38bad85a88edcb50
-ms.sourcegitcommit: f159d58440b39f5f591dae4e92e6f4d500ed3fc1
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54216250"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63852383"
 ---
 # <a name="python-web-and-worker-roles-with-python-tools-for-visual-studio"></a>用于 Visual Studio 的 Python 工具中的 Python Web 角色和辅助角色
 
-本文概述了如何在[针对 Visual Studio 的 Python 工具][Python Tools for Visual Studio]中使用 Python Web 角色和辅助角色。 介绍如何使用 Visual Studio 来创建和部署使用 Python 的基本云服务。
+本文概述了如何在 [Python Tools for Visual Studio][Python Tools for Visual Studio]中使用 Python Web 角色和辅助角色。 介绍如何使用 Visual Studio 来创建和部署使用 Python 的基本云服务。
 
 ## <a name="prerequisites"></a>先决条件
 * [Visual Studio 2013、2015 或 2017](https://www.visualstudio.com/)
-* [Python Tools for Visual Studio][Python Tools for Visual Studio]（用于 Visual Studio 的 Python 工具，简称 PTVS）
+* [Python Tools for Visual Studio][Python Tools for Visual Studio] （用于 Visual Studio 的 Python 工具，简称 PTVS）
 * [用于 VS 2013 的 Azure SDK 工具][Azure SDK Tools for VS 2013]或  
 [用于 VS 2015 的 Azure SDK 工具][Azure SDK Tools for VS 2015]或  
 [用于 VS 2017 的 Azure SDK 工具][Azure SDK Tools for VS 2017]
-* [Python 2.7（32 位）][Python 2.7 32-bit]或 [Python 3.5（32 位）][Python 3.5 32-bit]
+* [Python 2.7 32 位][Python 2.7 32-bit]或 [Python 3.5 32 位][Python 3.5 32-bit]
 
 [!INCLUDE [create-account-and-websites-note](../../includes/create-account-and-websites-note.md)]
 
 ## <a name="what-are-python-web-and-worker-roles"></a>什么是 Python Web 角色和辅助角色？
-Azure 提供了三种用于运行应用程序的计算模型：[Azure 应用服务中的 Web 应用功能][execution model-web sites]、[Azure 虚拟机][execution model-vms]和 [Azure 云服务][execution model-cloud services]。 这三种模型都支持 Python。 云服务（包括 Web 角色和辅助角色）提供了 *平台即服务 (PaaS)*。 在云服务中，Web 角色提供专用的 Internet Information Services (IIS) Web 服务器来托管前端 Web 应用程序，而辅助角色可独立于用户交互或输入运行异步任务、运行时间较长的任务或永久性任务。
+Azure 提供了三种用于运行应用程序的计算模型：[Azure 应用服务中的 Web 应用功能][execution model-web sites]、[Azure 虚拟机][execution model-vms]和 [Azure 云服务][execution model-cloud services]。 这三种模型都支持 Python。 云服务（包括 Web 角色和辅助角色）提供了 *平台即服务 (PaaS)* 。 在云服务中，Web 角色提供专用的 Internet Information Services (IIS) Web 服务器来托管前端 Web 应用程序，而辅助角色可独立于用户交互或输入运行异步任务、运行时间较长的任务或永久性任务。
 
 有关详细信息，请参阅 [什么是云服务？]。
 
@@ -49,7 +49,7 @@ Azure 提供了三种用于运行应用程序的计算模型：[Azure 应用服�
 > 
 
 ## <a name="project-creation"></a>创建项目
-在 Visual Studio 中，可以选择“新建项目”对话框中“Python”下的“Azure 云服务”。
+在 Visual Studio 中，可以选择“新建项目”对话框中“Python”下的“Azure 云服务”。   
 
 ![“新建项目”对话框](./media/cloud-services-python-ptvs/new-project-cloud-service.png)
 
@@ -103,7 +103,7 @@ Azure 提供了三种用于运行应用程序的计算模型：[Azure 应用服�
 </Startup>
 ```
 
-必须将 PYTHON2 和 PYPATH 变量添加到辅助角色启动任务。 仅当 **PYTHON2** 变量设置为 **on** 时，才使用 **PYPATH** 变量。
+必须将 PYTHON2  和 PYPATH  变量添加到辅助角色启动任务。 仅当 **PYTHON2** 变量设置为 **on** 时，才使用 **PYPATH** 变量。
 
 ```xml
 <Runtime>
@@ -310,13 +310,13 @@ if not exist "%DiagnosticStore%\LogFiles" mkdir "%DiagnosticStore%\LogFiles"
 
 虽然 PTVS 支持在模拟器中启动，调试（例如断点）将无法工作。
 
-要调试 Web 角色和辅助角色，可以将角色项目设置为启动项目并对其进行调试。  还可以设置多个启动项目。  右键单击解决方案并选择“设置启动项目”。
+要调试 Web 角色和辅助角色，可以将角色项目设置为启动项目并对其进行调试。  还可以设置多个启动项目。  右键单击解决方案并选择“设置启动项目”。 
 
 ![解决方案启动项目属性](./media/cloud-services-python-ptvs/startup.png)
 
 ## <a name="publish-to-azure"></a>发布到 Azure
 
-要进行发布，请右键单击解决方案中的云服务项目，并选择“发布”。
+若要进行发布，请右键单击解决方案中的云服务项目，然后选择“发布”。 
 
 ![Microsoft Azure 发布登录](./media/cloud-services-python-ptvs/publish-sign-in.png)
 

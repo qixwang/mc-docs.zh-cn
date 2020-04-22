@@ -8,10 +8,10 @@ origin.date: 11/27/2018
 ms.date: 03/30/2020
 ms.topic: conceptual
 ms.openlocfilehash: 56294316349dc834a0b1723daf49b499a7d052e7
-ms.sourcegitcommit: 90d01d08faf8adb20083363a8e4e5aab139cd9b2
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80290354"
 ---
 # <a name="my-first-powershell-runbook"></a>我的第一个 PowerShell Runbook

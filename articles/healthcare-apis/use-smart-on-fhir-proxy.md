@@ -10,10 +10,10 @@ ms.author: mihansen
 author: hansenms
 ms.date: 04/02/2019
 ms.openlocfilehash: 2ce26a20df5fca078d895f576c1b8d9675131704
-ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80343817"
 ---
 # <a name="tutorial-azure-active-directory-smart-on-fhir-proxy"></a>教程：Azure Active Directory SMART on FHIR 代理
@@ -31,7 +31,7 @@ ms.locfileid: "80343817"
 
 ## <a name="configure-azure-ad-registrations"></a>配置 Azure AD 注册
 
-SMART on FHIR 要求 `Audience` 的标识符 URI 与 FHIR 服务的 URI 相同。 Azure API for FHIR 的标准配置使用 `Audience` 值 `https://azurehealthcareapis.com`。 但是，你也可以设置与 FHIR 服务的特定 URL 匹配的值（例如 `https://MYFHIRAPI.azurehealthcareapis.com`）。 使用 SMART on FHIR 代理时必须这样做。
+SMART on FHIR 要求 `Audience` 的标识符 URI 与 FHIR 服务的 URI 相同。 Azure API for FHIR 的标准配置使用 `https://azurehealthcareapis.com` 的 `Audience` 值。 但是，你也可以设置与 FHIR 服务的特定 URL 匹配的值（例如 `https://MYFHIRAPI.azurehealthcareapis.com`）。 使用 SMART on FHIR 代理时必须这样做。
 
 此外，还需要客户端应用程序注册。 大多数 SMART on FHIR 应用程序是单页 JavaScript 应用程序。 因此，应该按照有关配置[公共 Azure AD 客户端应用程序](register-public-azure-ad-client-app.md)的说明进行操作。
 

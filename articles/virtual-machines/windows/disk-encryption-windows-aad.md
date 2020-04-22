@@ -9,15 +9,15 @@ origin.date: 03/15/2019
 ms.date: 11/11/2019
 ms.custom: seodec18
 ms.openlocfilehash: 8d1a1c5f0d20a413611907dff3a410292824746e
-ms.sourcegitcommit: a89eb0007edd5b4558b98c1748b2bd67ca22f4c9
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "73730643"
 ---
 # <a name="azure-disk-encryption-with-azure-ad-for-windows-vms-previous-release"></a>使用 Azure AD 对 Windows VM 进行 Azure 磁盘加密（以前版本）
 
-**新版本的 Azure 磁盘加密无需提供 Azure AD 应用程序参数即可启用 VM 磁盘加密。使用新版本，在执行启用加密步骤时，不再需要提供 Azure AD 凭据。所有新 VM 必须使用新版本在没有 Azure AD 应用程序参数的情况下进行加密。若要查看使用新版本启用 VM 磁盘加密的说明，请参阅[适用于 Windows VMS 的 Azure 磁盘加密](disk-encryption-windows.md)。已使用 Azure AD 应用程序参数加密的 VM 仍受支持，应继续使用 AAD 语法进行维护。**
+**新版本的 Azure 磁盘加密无需提供 Azure AD 应用程序参数即可启用 VM 磁盘加密。使用新版本，在执行启用加密步骤时，不再需要提供 Azure AD 凭据。所有新 VM 都必须使用新版本在没有 Azure AD 应用程序参数的情况下进行加密。若要查看使用新版本启用 VM 磁盘加密的说明，请参阅[适用于 Windows VMS 的 Azure 磁盘加密](disk-encryption-windows.md)。已使用 Azure AD 应用程序参数加密的 VM 仍受支持，应继续使用 AAD 语法进行维护。**
 
 可启用多种磁盘加密方案，具体步骤因方案而异。 以下部分更详细介绍了适用于 Windows IaaS VM 的方案。 在使用磁盘加密之前，需要先完成 [Azure 磁盘加密先决条件](disk-encryption-overview-aad.md)。 
 
@@ -150,7 +150,7 @@ ms.locfileid: "73730643"
     az vm encryption disable --name "MySecureVM" --resource-group "MyVirtualMachineResourceGroup" --volume-type [ALL, DATA, OS]
     ```
 
-### <a name="bkmk_RunningWinVMwRM"></a>使用资源管理器模板
+### <a name="using-the-resource-manager-template"></a><a name="bkmk_RunningWinVMwRM"> </a>使用资源管理器模板
 可以通过使用[资源管理器模板加密正在运行的 Windows VM](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-windows-vm)，在 Azure 中现有或正在运行的 IaaS Windows VM 上启用磁盘加密。
 
 1. 在 Azure 快速入门模板中，单击“部署到 Azure”。 
@@ -169,14 +169,14 @@ ms.locfileid: "73730643"
 | sequenceVersion | BitLocker 操作的序列版本。 每当在同一个 VM 上执行磁盘加密操作时，此版本号便会递增。 |
 | vmName | 要对其执行加密操作的 VM 的名称。 |
 
-## <a name="bkmk_VHDpre"></a>通过客户加密的 VHD 和加密密钥新建的 IaaS VM
+## <a name="new-iaas-vms-created-from-customer-encrypted-vhd-and-encryption-keys"></a><a name="bkmk_VHDpre"> </a>通过客户加密的 VHD 和加密密钥新建的 IaaS VM
 在此方案中，可以通过使用 Resource Manager 模板、PowerShell cmdlet 或 CLI 命令启用加密。 以下部分详细介绍了 Resource Manager 模板和 CLI 命令。 
 
 参考附录中的说明来准备可在 Azure 中使用的预加密映像。 创建映像后，可使用下一部分中的步骤创建加密的 Azure VM。
 
 * [准备预加密的 Windows VHD](disk-encryption-sample-scripts.md#prepare-a-pre-encrypted-windows-vhd)
 
-### <a name="bkmk_VHDprePSH"></a>使用 Azure PowerShell 加密包含预加密 VHD 的 VM
+### <a name="encrypt-vms-with-pre-encrypted-vhds-with-azure-powershell"></a><a name="bkmk_VHDprePSH"> </a>使用 Azure PowerShell 加密包含预加密 VHD 的 VM
 可以使用 PowerShell cmdlet [Set-AzVMOSDisk](https://docs.microsoft.com/powershell/module/az.compute/set-azvmosdisk#examples) 在加密的 VHD 上启用磁盘加密。 以下示例显示了一些常用参数。 
 
 ```powershell

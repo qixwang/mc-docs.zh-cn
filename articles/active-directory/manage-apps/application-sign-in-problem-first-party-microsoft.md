@@ -18,10 +18,10 @@ ms.author: v-junlch
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cd214c1b5fb99349dde945b68b663a46ccf49a51
-ms.sourcegitcommit: e60779782345a5428dd1a0b248f9526a8d421343
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "72912737"
 ---
 # <a name="problems-signing-in-to-a-microsoft-application"></a>登录 Microsoft 应用程序时出现的问题
@@ -55,29 +55,29 @@ ms.locfileid: "72912737"
 
   * 确保用户尝试登录到**正确的 URL**，而不是本地应用程序 URL。
 
-  * 确保用户帐户**未锁定**。
+  * 确保用户的帐户**未被锁定**。
 
   * 请确保在 Azure Active Directory 中**用户的帐户存在**。 [检查在 Azure Active Directory 中是否存在用户帐户](#problems-with-the-users-account)
 
-  * 确保用户帐户**已启用**进行登录。[检查用户的帐户状态](#problems-with-the-users-account)
+  * 确保用户帐户**已启用**进行登录。[检查用户帐户的状态](#problems-with-the-users-account)
 
   * 确保用户的**密码未过期或遗忘**。 [重置用户的密码](#reset-a-users-password)或[启用自助服务密码重置](/active-directory/authentication/quickstart-sspr)
 
-  * 确保**多重身份验证**不会阻止用户访问。 [检查用户的多重身份验证状态](#check-a-users-multi-factor-authentication-status)或[检查用户的身份验证联系信息](#check-a-users-authentication-contact-info)
+  * 确保**多重身份验证**未阻止用户访问。 [检查用户的多重身份验证状态](#check-a-users-multi-factor-authentication-status)或[检查用户的身份验证联系信息](#check-a-users-authentication-contact-info)
 
   * 确保用户的**身份验证联系信息**是最新的，以便实施多重身份验证。 [检查用户的多重身份验证状态](#check-a-users-multi-factor-authentication-status)或[检查用户的身份验证联系信息](#check-a-users-authentication-contact-info)
 
-- 对于**需要许可证的 Microsoft** **应用程序**（如 Office365），以下是排除上述常规问题后需要检查的一些特定问题：
+- 对于需要许可证的 Microsoft 应用程序（如 Office365），以下是排除上述常规问题后需要检查的一些特定问题   ：
 
   * 确保已为用户**分配许可证**。 [检查用户的已分配许可证](#check-a-users-assigned-licenses)或[检查组的已分配许可证](#check-a-groups-assigned-licenses)
 
-  * 如果许可证**分配到** **静态组**，请确保**用户是该组的成员**。 [检查用户的组成员身份](#check-a-users-group-memberships)
+  * 如果许可证分配到静态组，请确保用户是该组的成员    。 [检查用户的组成员身份](#check-a-users-group-memberships)
 
   *  一旦确保已分配许可证，请确保许可证**未过期**。
 
   *  确保许可证与他们访问的**应用程序相对应**。
 
-- 对于**不需要许可证的 Microsoft** **应用程序**，以下是一些需要检查的其他事项：
+- 对于不需要许可证的 Microsoft 应用程序，以下是一些需要检查的其他事项   ：
 
   * 如果应用程序请求**用户级权限**（例如“访问此用户的邮箱”），请确保用户已登录到应用程序，并且已执行**用户级许可操作**，从而允许应用程序访问其数据。
 
@@ -161,7 +161,7 @@ ms.locfileid: "72912737"
 
 10. 告知用户此新密码，在他们下一次登录到 Azure Active Directory 时，需要更改此密码。
 
-### <a name="enable-self-service-password-reset"></a>启用自助服务密码重置
+### <a name="enable-self-service-password-reset"></a>启用自助式密码重置
 
 若要启用自助服务密码重置，请执行以下部署步骤：
 

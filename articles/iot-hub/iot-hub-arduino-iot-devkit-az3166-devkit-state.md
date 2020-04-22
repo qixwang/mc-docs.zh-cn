@@ -11,10 +11,10 @@ origin.date: 04/04/2018
 ms.date: 09/10/2018
 ms.author: v-yiso
 ms.openlocfilehash: c9a9041453820ee867f1be60f05954cbf1c8c363
-ms.sourcegitcommit: e77582e79df32272e64c6765fdb3613241671c20
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "67136011"
 ---
 # <a name="mxchip-iot-devkit"></a>MXChip IoT DevKit
@@ -88,7 +88,7 @@ ms.locfileid: "67136011"
 ![示例测试过程](media/iot-hub-arduino-iot-devkit-az3166-devkit-state/devkit-state.gif)
 
 > [!NOTE]
-> 可以看见 Azure 门户中的设备孪生的原始数据：IoT 中心 -\> IoT 设备 -\> \<设备\> -\> 设备孪生  。
+> 可以看见 Azure 门户中的设备孪生的原始数据：IoT 中心 -\> IoT 设备 -\>\<设备\> -\> 设备孪生  。
 
 ## <a name="next-steps"></a>后续步骤
 

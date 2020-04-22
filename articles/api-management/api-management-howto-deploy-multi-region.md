@@ -15,10 +15,10 @@ origin.date: 08/12/2019
 ms.author: v-yiso
 ms.date: 09/16/2019
 ms.openlocfilehash: 3c90837e2853ee2ae2e4696158ff4545bb9ba808
-ms.sourcegitcommit: dd0ff08835dd3f8db3cc55301815ad69ff472b13
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "70736731"
 ---
 # <a name="how-to-deploy-an-azure-api-management-service-instance-to-multiple-azure-regions"></a>如何将 Azure API 管理服务实例部署到多个 Azure 区域
@@ -32,7 +32,7 @@ Azure API 管理多区域部署，该部署可使 API 发布者在任意数量�
 
 [!INCLUDE [premium.md](../../includes/api-management-availability-premium.md)]
 
-## <a name="add-region"> </a>将 API 管理服务实例部署到新区域
+## <a name="deploy-an-api-management-service-instance-to-a-new-region"></a><a name="add-region"> </a>将 API 管理服务实例部署到新区域
 > [!NOTE]
 > 如果尚未创建 API 管理服务实例，请参阅[创建 API 管理服务实例][Create an API Management service instance]。
 > 
@@ -54,7 +54,7 @@ Azure API 管理多区域部署，该部署可使 API 发布者在任意数量�
 
 重复此过程，直到配置所有位置，并单击工具栏中的“保存”，启动部署过程。 
 
-## <a name="remove-region"> </a>从位置中删除 API 管理服务实例
+## <a name="delete-an-api-management-service-instance-from-a-location"></a><a name="remove-region"> </a>从位置中删除 API 管理服务实例
 
 在 Azure 门户中，导航到 API 管理服务实例的“规模和定价”  页。 
 
@@ -64,7 +64,7 @@ Azure API 管理多区域部署，该部署可使 API 发布者在任意数量�
 
 确认删除，并单击“保存”应用所做的更改。 
 
-## <a name="route-backend"> </a>将 API 调用路由到区域后端服务
+## <a name="route-api-calls-to-regional-backend-services"></a><a name="route-backend"> </a>将 API 调用路由到区域后端服务
 
 Azure API 管理只有一个后端服务 URL。 即使不同的区域中存在 Azure API 管理实例，API 网关也仍会将请求转发到只在一个区域中部署的同一后端服务。 在这种情况下，只有特定于该请求的区域中 Azure API 管理缓存的响应才能提升性能，但访问全球范围的后端时仍可能导致较高的延迟。
 
@@ -111,7 +111,7 @@ Azure API 管理只有一个后端服务 URL。 即使不同的区域中存在 A
 > [!TIP]
 > 还可以使用 [Azure 流量管理器](/traffic-manager/)来配置后端服务的前端，将 API 调用定向到流量管理器中，然后让流量管理器自动解析路由。
 
-## <a name="custom-routing"> </a>使用 API 管理区域网关的自定义路由
+## <a name="use-custom-routing-to-api-management-regional-gateways"></a><a name="custom-routing"> </a>使用 API 管理区域网关的自定义路由
 
 API 管理根据[最低延迟](../traffic-manager/traffic-manager-routing-methods.md#performance)将请求路由到区域网关  。 尽管无法在 API 管理中替代此设置，但可以结合自定义路由规则使用自己的流量管理器。
 

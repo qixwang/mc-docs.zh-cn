@@ -11,17 +11,17 @@ ms.date: 11/26/2018
 ms.author: v-yeche
 ms.custom: mvc
 ms.openlocfilehash: 625e7b512ec8a5c457a5c7bb5406fb17137fa562
-ms.sourcegitcommit: 9642fa6b5991ee593a326b0e5c4f4f4910f50742
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "64855478"
 ---
 # <a name="cluster-autoscaler-on-azure-kubernetes-service-aks---preview"></a>Azure Kubernetes 服务 (AKS) 中的群集自动缩放程序 - 预览版
 
 Azure Kubernetes 服务 (AKS) 提供一个灵活的解决方案用于在 Azure 中部署托管的 Kubernetes 群集。 随着资源需求的增大，群集自动缩放程序可让群集得到扩展，以便在设置的约束基础上满足这种需求。 群集自动缩放程序 (CA) 基于挂起的 pod 缩放代理节点，以此实现这一目的。 它会定期扫描群集以检查挂起的 pod 或空节点，并在可能的情况下增加大小。 默认情况下，CA 每隔 10 秒扫描挂起的 pod，如果有 10 分钟以上不需要某个节点，则会删除该节点。 与[横向 pod 自动缩放程序](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/) (HPA) 配合使用时，HPA 会按需更新 pod 副本和资源。 如果在完成此 pod 缩放后没有足够的节点或者没有不需要的节点，则 CA 会做出响应，并在新节点集上安排 pod。
 
-本文介绍如何在代理节点上部署群集自动缩放程序。 但是，由于群集自动缩放程序部署在 kube 系统命名空间中，自动缩放程序不会缩减运行该 pod 的节点。
+本文介绍如何在代理节点上部署群集自动缩放程序。 但是，由于群集自动缩放程序部署在 kube 系统命名空间中，自动缩放程序不会纵向缩减运行该 pod 的节点。
 
 > [!IMPORTANT]
 > Azure Kubernetes 服务 (AKS) 群集自动缩放程序集成目前以**预览版**提供。 需同意[补充使用条款](https://www.azure.cn/support/legal/preview-supplemental-terms/)才可使用预览版。 在正式版 (GA) 推出之前，此功能的某些方面可能会有所更改。
@@ -29,7 +29,7 @@ Azure Kubernetes 服务 (AKS) 提供一个灵活的解决方案用于在 Azure �
 
 ## <a name="prerequisites-and-considerations"></a>先决条件和注意事项
 
-本文档假设有一个已启用 RBAC 的 AKS 群集。 如果你需要 AKS 群集，请参阅 [Azure Kubernetes 服务 (AKS) 快速入门][aks-quick-start]。
+本文档假设有一个已启用 RBAC 的 AKS 群集。 如果需要 AKS 群集，请参阅 [Azure Kubernetes 服务 (AKS) 快速入门][aks-quick-start]。
 
  若要使用群集自动缩放程序，群集必须使用 Kubernetes v1.10.X 或更高版本，并且必须启用 RBAC。 若要升级群集，请参阅有关[升级 AKS 群集][aks-upgrade]的文章。
 
@@ -398,11 +398,11 @@ Events:  <none>
     * 就绪 (Ready) 节点数是群集中可用且准备就绪的节点数。 
     * cloudProviderTarget 是群集自动缩放程序确定群集需要处理其工作负荷的节点数。
 
-* 使用 ScaleDown 可以检查是否有适合缩减的候选项。 
-    * 缩减候选项是群集自动缩放程序确定可以删除，而不会影响群集处理其工作负荷的节点。 
-    * 提供的时间显示群集上次检查缩减候选项的时间，及其上次转换时间。
+* 使用 ScaleDown 可以检查是否有适合纵向缩减的候选项。 
+    * 纵向缩减候选项是群集自动缩放程序确定可以删除，而不会影响群集处理其工作负荷的节点。 
+    * 提供的时间显示群集上次检查纵向缩减候选项的时间，及其上次转换时间。
 
-最后，在 Events 下面，可以查看群集自动缩放程序执行的所有扩展或缩减事件、失败或成功的事件，及其时间。
+最后，在 Events 下面，可以查看群集自动缩放程序执行的所有纵向扩展或纵向缩减事件、失败或成功的事件，及其时间。
 
 ## <a name="next-steps"></a>后续步骤
 

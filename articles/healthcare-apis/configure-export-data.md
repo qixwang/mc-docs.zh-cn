@@ -8,10 +8,10 @@ ms.topic: reference
 ms.date: 3/5/2020
 ms.author: matjazl
 ms.openlocfilehash: 92a115cbc2582dc85389b5a90c030458027651fe
-ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80343866"
 ---
 # <a name="configure-export-setting-and-export-the-data-to-a-storage-account"></a>配置导出设置并将数据导出到存储帐户
@@ -51,7 +51,7 @@ Azure API for FHIR 支持 $export 命令，使用该命令可将 Azure API for F
 
 ## <a name="selecting-the-storage-account-for-export"></a>为 $export 选择存储帐户
 
-调用 $export 命令之前的最后一个步骤是分配 Azure API for FHIR 要将数据导出到的 Azure 存储帐户。 为此，请在 Azure 门户中导航到 Azure API for FHIR 服务中的“集成”边栏选项卡，并选择存储帐户 
+调用 $export 命令之前的最后一个步骤是分配 Azure API for FHIR 使用的要将数据导出到的 Azure 存储帐户。 为此，请在 Azure 门户中导航到 Azure API for FHIR 服务中的“集成”边栏选项卡，并选择存储帐户 
 
 ![启用托管标识](media/export-data/fhir-export-storage.png)
 

@@ -1,10 +1,10 @@
 ---
 ms.openlocfilehash: 3b9618b434576acc6b628524e40f4e43f347d367
-ms.sourcegitcommit: b8fb6890caed87831b28c82738d6cecfe50674fd
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58632813"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63827116"
 ---
 ### <a name="install-via-composer"></a>通过 Composer 安装
 
@@ -29,7 +29,7 @@ ms.locfileid: "58632813"
     }
     ```
 
-3. 将 [composer.phar][composer-phar] 下载到项目根目录中。
+3. 将 **[composer.phar][composer-phar]** 下载到项目根目录中。
 
 4. 打开命令提示符并在项目根目录中执行以下命令
 
@@ -48,7 +48,7 @@ ms.locfileid: "58632813"
 
 2. 将所下载的存档的 `WindowsAzure` 目录复制到应用程序目录结构中。
 
-有关安装 Azure 的 PHP 客户端库的详细信息（包括安装为 PEAR 程序包的信息），请参阅[下载 Azure SDK for PHP][download-SDK-PHP]。
+有关安装 Azure 的 PHP 客户端库的详细信息（包括有关安装为 PEAR 程序包的信息），请参阅[下载 Azure SDK for PHP][download-SDK-PHP]。
 
 [php-sdk-github]: http://go.microsoft.com/fwlink/?LinkId=252719
 [install-git]: http://git-scm.com/book/en/Getting-Started-Installing-Git

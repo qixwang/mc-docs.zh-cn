@@ -17,13 +17,13 @@ origin.date: 05/11/2018
 ms.author: v-yiso
 ms.date: 06/11/2018
 ms.openlocfilehash: 09a290579ec6c09eef7a5928ebcf74d50784f5d3
-ms.sourcegitcommit: d75065296d301f0851f93d6175a508bdd9fd7afc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52646553"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63847383"
 ---
-# <a name="application-and-service-availability-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Azure 云服务的应用程序和服务可用性问题：常见问题解答 (FAQ)
+# <a name="application-and-service-availability-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Azure 云服务的应用程序和服务可用性问题：常见问题 (FAQ)
 
 本文包含 [Microsoft Azure 云服务](/cloud-services/)的常见应用程序和服务可用性问题。 还可以参阅[云服务 VM 大小页面](./cloud-services-sizes-specs.md)，了解大小信息。
 

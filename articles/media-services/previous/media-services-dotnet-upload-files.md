@@ -16,10 +16,10 @@ origin.date: 03/18/2019
 ms.date: 09/23/2019
 ms.author: v-jay
 ms.openlocfilehash: 924065c16a9308cd79f71ae964089154b6fd823a
-ms.sourcegitcommit: 8248259e4c3947aa0658ad6c28f54988a8aeebf8
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "71124497"
 ---
 # <a name="upload-files-into-a-media-services-account-using-net"></a>使用 .NET 将文件上传到媒体服务帐户 
@@ -54,7 +54,7 @@ ms.locfileid: "71124497"
 
 如果指定使用 **CommonEncrypted** 选项或 **EnvelopeEncrypted** 选项加密资产，则需要将资产关联到 **ContentKey**。 有关详细信息，请参阅[如何创建 ContentKey](media-services-dotnet-create-contentkey.md)。 
 
-如果指定使用 **StorageEncrypted** 选项加密资产，适用于 .NET 的媒体服务 SDK 将为资产创建 **StorageEncrypted** **ContentKey**。
+如果指定使用 StorageEncrypted 选项加密资产，适用于 .NET 的媒体服务 SDK 将为资产创建 StorageEncrypted ContentKey    。
 
 本文说明如何使用媒体服务 .NET SDK 以及媒体服务 .NET SDK 扩展将文件上传到媒体服务资产中。
 
@@ -168,7 +168,7 @@ ms.locfileid: "71124497"
 * 将 NumberOfConcurrentTransfers 从默认值 2 增加到更高的值（如 5）。 设置此属性会影响 **CloudMediaContext**的所有实例。 
 * 将 ParallelTransferThreadCount 保留为默认值 10。
 
-## <a id="ingest_in_bulk"></a>使用媒体服务 .NET SDK 批量引入资产
+## <a name="ingesting-assets-in-bulk-using-media-services-net-sdk"></a><a id="ingest_in_bulk"></a>使用媒体服务 .NET SDK 批量引入资产
 上传大型资产文件可能在资产创建过程中形成瓶颈。 批量引入资产（简称“批量引入”）涉及将资产创建过程与上传过程分离。 若要使用批量引入方法，请创建一个描述资产及其关联文件的清单 (IngestManifest)。 然后，用户可以使用所选上传方法将关联的文件上传到该清单的 Blob 容器。 Azure 媒体服务会监视与清单关联的 Blob 容器。 文件上传到 Blob 容器后，Azure 媒体服务基于清单 (IngestManifestAsset) 中资产的配置完成资产创建过程。
 
 若要创建新的 IngestManifest，请调用通过 CloudMediaContext 中的 IngestManifests 集合公开的 Create 方法。 此方法将使用所提供的清单名称创建一个新的 IngestManifest。
@@ -200,7 +200,7 @@ ms.locfileid: "71124497"
 
 可以使用任何能够将资产文件上传到 blob 存储容器 URI（由 IngestManifest 的 **IIngestManifest.BlobStorageUriForUpload** 属性提供）的高速客户端应用程序。 
 
-以下代码展示如何使用 .NET SDK 上传资产文件。
+以下代码显示如何使用 .NET SDK 上传资产文件。
 
 ```csharp
     static void UploadBlobFile(string containerName, string filename)

@@ -11,15 +11,15 @@ ms.date: 03/30/2020
 ms.topic: conceptual
 manager: digimobile
 ms.openlocfilehash: ca6f97c26715a77d44b955451980fb37214fff38
-ms.sourcegitcommit: 90d01d08faf8adb20083363a8e4e5aab139cd9b2
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80290492"
 ---
 # <a name="secure-assets-in-azure-automation"></a>Azure 自动化中的安全资产
 
-Azure 自动化中的安全资产包括凭据、证书、连接和加密的变量。 这些资产在 Azure 自动化中通过多个加密级别受到保护。 根据用于加密的顶级密钥，可通过两种加密模式实现加密：
+Azure 自动化中的安全资产包括凭据、证书、连接和加密的变量。 这些资产在 Azure 自动化中通过多个加密级别受到保护。 根据用于加密的顶级密钥，可通过两种加密模型实现加密：
 - 使用 Microsoft 托管密钥
 - 使用客户管理的密钥
 
@@ -184,7 +184,7 @@ PATCH https://management.chinacloudapi.cn/subscriptions/00000000-0000-0000-0000-
 
 轮换密钥不会触发自动化帐户中安全资产的重新加密。 无需进一步的操作。
 
-### <a name="revoke-access-to-customer-managed-keys"></a>撤销对客户管理的密钥的访问权限
+### <a name="revoke-access-to-customer-managed-keys"></a>撤消对客户管理的密钥的访问权限
 
 若要撤销对客户管理的密钥的访问权限，请使用 PowerShell 或 Azure CLI。 有关详细信息，请参阅 [Azure Key Vault PowerShell](https://docs.microsoft.com/powershell/module/az.keyvault/) 或 [Azure 密钥保管库 CLI](/cli/keyvault)。 撤销访问权限会实际阻止对自动化帐户中所有安全资产的访问，因为 Azure 自动化无法访问加密密钥。
 

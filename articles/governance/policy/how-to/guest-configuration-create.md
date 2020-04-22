@@ -6,10 +6,10 @@ origin.date: 03/20/2019
 ms.date: 03/30/2020
 ms.topic: how-to
 ms.openlocfilehash: 60fb848f0498fc1d9ebcb2d133a8125420b8e823
-ms.sourcegitcommit: 260800ede66f48c886d1426a0fac18b4d402b4f2
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80586814"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-windows"></a>如何创建适用于 Windows 的 Guest Configuration 策略
@@ -75,7 +75,7 @@ Guest Configuration 使用 PowerShell Desired State Configuration 作为语言�
 
 ### <a name="how-guest-configuration-modules-differ-from-windows-powershell-dsc-modules"></a>Guest Configuration 模块与 Windows PowerShell DSC 模块的差别
 
-当 Guest Configuration 审核某个计算机时，它首先会运行 `Test-TargetResource` 来确定该计算机是否处于正常状态。 该函数返回的布尔值确定来宾分配的 Azure 资源管理器状态是合规还是不合规。 接下来，提供程序将运行 `Get-TargetResource` 以返回每项设置的当前状态，因此，会提供有关计算机为何不合规的详细信息，以及用于确认当前状态是否合规的详细信息。
+当 Guest Configuration 审核某个计算机时，它首先会运行 `Test-TargetResource` 来确定该计算机是否处于正常状态。 该函数返回的布尔值确定来宾分配的 Azure 资源管理器状态是合规还是不合规。 接下来，提供程序将运行 `Get-TargetResource` 以返回每项设置的当前状态，因此，会提供有关计算机为何不合规的详细信息，或用于确认当前状态是否合规的详细信息。
 
 ### <a name="get-targetresource-requirements"></a>Get-TargetResource 要求
 

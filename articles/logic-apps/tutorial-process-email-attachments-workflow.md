@@ -12,10 +12,10 @@ origin.date: 05/07/2019
 ms.author: v-yiso
 ms.date: 10/08/2019
 ms.openlocfilehash: 0f181b6e8784c70e62c8c22819849faa199b41d8
-ms.sourcegitcommit: 332ae4986f49c2e63bd781685dd3e0d49c696456
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "71340901"
 ---
 # <a name="tutorial-automate-handling-emails-and-attachments-with-azure-logic-apps"></a>教程：使用 Azure 逻辑应用自动处理电子邮件和附件
@@ -59,20 +59,20 @@ Azure 逻辑应用有助于跨 Azure 服务、Microsoft 服务、其他软件即
 
 1. 在创建存储容器之前，请先在 Azure 门户中的“基本信息”选项卡上使用以下设置[创建一个存储帐户](../storage/common/storage-quickstart-create-account.md)： 
 
-   | 设置 | 值 | 说明 |
+   | 设置 | Value | 说明 |
    |---------|-------|-------------|
    | **订阅** | <*Azure-subscription-name*> | Azure 订阅的名称 |  
    | **资源组** | <Azure-resource-group>  | 用于组织和管理相关资源的 [Azure 资源组](../azure-resource-manager/resource-group-overview.md)的名称。 此示例使用“LA-Tutorial-RG”。 <p>**注意：** 资源组存在于特定的区域内。 本教程中的项目可能不在所有区域提供，请尽可能尝试使用同一区域。 |
    | **存储帐户名称** | <*Azure-storage-account-name*> | 你的存储帐户名称，必须包含 3-24 个字符，并且只能包含小写字母和数字。 此示例使用“attachmentstorageacct”。 |
-   | **Location** | 中国东部 | 用于存储存储帐户信息的区域 |
-   | **性能** | 标准 | 此设置指定支持的数据类型以及用于存储数据的介质。 请参阅[存储帐户的类型](../storage/common/storage-introduction.md#types-of-storage-accounts)。 |
+   | **位置** | 中国东部 | 用于存储存储帐户信息的区域 |
+   | **“性能”** | 标准 | 此设置指定支持的数据类型以及用于存储数据的介质。 请参阅[存储帐户的类型](../storage/common/storage-introduction.md#types-of-storage-accounts)。 |
    |  帐户类型 | 常规用途 | [存储帐户类型](../storage/common/storage-introduction.md#types-of-storage-accounts) |
    | **复制** | 本地冗余存储 (LRS) | 此设置指定如何复制、存储、管理和同步数据。 请参阅[本地冗余存储 (LRS)：Azure 存储的低成本数据冗余](../storage/common/storage-redundancy-lrs.md)。 |
    ||||
 
    在“高级”选项卡上选择以下设置： 
 
-   | 设置 | 值 | 说明 |
+   | 设置 | Value | 说明 |
    |---------|-------|-------------|
    | 需要安全传输  | 已禁用 | 此设置指定从连接进行请求所需的安全性。 请参阅[需要安全传输](../storage/common/storage-require-secure-transfer.md)。 |
    ||||
@@ -145,13 +145,13 @@ Azure 逻辑应用有助于跨 Azure 服务、Microsoft 服务、其他软件即
 
 1. 请先使用以下设置[创建函数应用](../azure-functions/functions-create-function-app-portal.md)，然后即可创建函数：
 
-   | 设置 | 值 | 说明 |
+   | 设置 | Value | 说明 |
    | ------- | ----- | ----------- |
    | **应用名称** | <*function-app-name*> | 函数应用的描述性全局唯一名称，在本例中为“CleanTextFunctionApp”，因此请提供不同的名称，例如“MyCleanTextFunctionApp” |
    | **订阅** | <*your-Azure-subscription-name*> | 以前使用过的同一 Azure 订阅 | 
    | **资源组** | LA-Tutorial-RG | 以前使用过的同一 Azure 资源组 | 
    | **托管计划** | 消耗计划 | 此设置决定了如何分配和缩放用于运行函数应用的资源，例如计算能力。 请参阅[托管计划比较](../azure-functions/functions-scale.md)。 | 
-   | **Location** | 美国西部 | 以前使用过的同一区域 |
+   | **位置** | 美国西部 | 以前使用过的同一区域 |
    | **运行时堆栈** | 首选语言 | 选择支持你偏好的函数编程语言的运行时。 对于 C# 和 F# 函数，选择“.NET”  。 |
    | **存储** | cleantextfunctionstorageacct | 为函数应用创建存储帐户。 只使用小写字母和数字。 <p>**注意：** 此存储帐户包含函数应用，不同于以前创建的用于电子邮件附件的存储帐户。 |
    |||| 
@@ -242,12 +242,12 @@ Azure 逻辑应用有助于跨 Azure 服务、Microsoft 服务、其他软件即
 
    ![提供逻辑应用信息](./media/tutorial-process-email-attachments-workflow/create-logic-app-settings.png)
 
-   | 设置 | 值 | 说明 | 
+   | 设置 | Value | 说明 | 
    | ------- | ----- | ----------- | 
    | **名称** | LA-ProcessAttachment | 逻辑应用的名称 | 
    | **订阅** | <*your-Azure-subscription-name*> | 以前使用过的同一 Azure 订阅 | 
    | **资源组** | LA-Tutorial-RG | 以前使用过的同一 Azure 资源组 |
-   | **Location** | 中国东部 | 以前使用过的同一区域 | 
+   | **位置** | 中国东部 | 以前使用过的同一区域 | 
    | **Log Analytics** | 关闭 | 对于本教程，请选择“关闭”设置。  | 
    |||| 
 
@@ -276,20 +276,20 @@ Azure 逻辑应用有助于跨 Azure 服务、Microsoft 服务、其他软件即
 
       ![指定用于检查邮件的文件夹、时间间隔和频率](./media/tutorial-process-email-attachments-workflow/set-up-email-trigger.png)
 
-      | 设置 | 值 | 说明 | 
+      | 设置 | Value | 说明 | 
       | ------- | ----- | ----------- | 
       | **文件夹** | Inbox | 要检查的电子邮件文件夹 | 
       | **带有附件** | 是 | 仅获取带有附件的电子邮件。 <p>**注意：** 此触发器不删除帐户中的任何电子邮件，仅检查新邮件，并且仅处理与主题筛选器匹配的电子邮件。 |
       | **包括附件** | 是 | 获取充当工作流输入的附件，而不是仅仅检查是否有附件。 |
       | **时间间隔** | 1 | 在两次检查之间需等待的时间间隔数 | 
-      | **频率** | 分钟 | 两次检查的间隔的时间单位 | 
+      | **频率** | Minute | 两次检查的间隔的时间单位 | 
       |  |  |  | 
   
    1. 在“添加新参数”列表中，选择“主题筛选器”。  
 
    1. 操作中显示“主题筛选器”框之后，请按以下列表中所示指定主题： 
 
-      | 设置 | 值 | 说明 | 
+      | 设置 | Value | 说明 | 
       | ------- | ----- | ----------- | 
       | **主题筛选器** | ```Business Analyst 2 #423501``` | 要在电子邮件主题中查找的文本 | 
       |  |  |  | 
@@ -445,7 +445,7 @@ Azure 逻辑应用有助于跨 Azure 服务、Microsoft 服务、其他软件即
 
    ![创建到存储帐户的连接](./media/tutorial-process-email-attachments-workflow/create-storage-account-connection-first.png)
 
-   | 设置 | 值 | 说明 | 
+   | 设置 | Value | 说明 | 
    | ------- | ----- | ----------- | 
    | **连接名称** | AttachmentStorageConnection | 连接的描述性名称 | 
    | **存储帐户** | attachmentstorageacct | 以前创建的用于保存附件的存储帐户的名称 | 
@@ -457,7 +457,7 @@ Azure 逻辑应用有助于跨 Azure 服务、Microsoft 服务、其他软件即
 
    ![提供适用于电子邮件正文的 Blob 信息](./media/tutorial-process-email-attachments-workflow/create-blob-for-email-body.png)
 
-   | 设置 | 值 | 说明 | 
+   | 设置 | Value | 说明 | 
    | ------- | ----- | ----------- | 
    | **文件夹路径** | /attachments | 以前创建的容器的路径和名称。 对于此示例，请单击文件夹图标，然后选择“/attachments”容器。 | 
    | **Blob 名称** |  “发件人”字段 | 对于此示例，请使用发件人的姓名作为 Blob 名称。 单击此框内部以显示动态内容列表，然后在“收到新电子邮件时”操作下面选择“发件人”字段。   | 
@@ -493,9 +493,9 @@ Azure 逻辑应用有助于跨 Azure 服务、Microsoft 服务、其他软件即
 
 3. 检查逻辑应用是否已将电子邮件保存到正确的存储容器。 
 
-   1. 在存储资源管理器中展开“(**本地和附加**)”> 
-   “**存储帐户**”>“attachmentstorageacct (**外部**)”> 
-   “**Blob 容器**”> **attachments**。
+   1. 在存储资源管理器中展开“(本地和附加)” **** > 
+   “存储帐户” **** >“attachmentstorageacct (外部)” **** > 
+   “Blob 容器” **** >“attachments” **** 。
 
    2. 检查 **attachments** 容器中是否有电子邮件。 
 
@@ -550,7 +550,7 @@ Azure 逻辑应用有助于跨 Azure 服务、Microsoft 服务、其他软件即
 
    ![提供 Blob 信息](./media/tutorial-process-email-attachments-workflow/create-blob-per-attachment.png)
 
-   | 设置 | 值 | 说明 | 
+   | 设置 | Value | 说明 | 
    | ------- | ----- | ----------- | 
    | **文件夹路径** | /attachments | 以前创建的容器的路径和名称。 对于此示例，请单击文件夹图标，然后选择“/attachments”容器。 | 
    | **Blob 名称** |  “名称”字段 | 对于此示例，请使用附件的名称作为 Blob 名称。 单击此框内部以显示动态内容列表，然后在“收到新电子邮件时”操作下面选择“名称”字段。   | 
@@ -580,9 +580,9 @@ Azure 逻辑应用有助于跨 Azure 服务、Microsoft 服务、其他软件即
 
 3. 检查逻辑应用是否已将电子邮件和附件保存到正确的存储容器。 
 
-   1. 在存储资源管理器中展开“ **(本地和附加)** ”> 
-   “**存储帐户**”>“**attachmentstorageacct (外部)** ”> 
-   “**Blob 容器**”> **attachments**。
+   1. 在存储资源管理器中展开“(本地和附加)” **** > 
+   “存储帐户” **** >“attachmentstorageacct (外部)” **** > 
+   “Blob 容器” **** >“attachments” **** 。
 
    2. 检查 **attachments** 容器中是否有电子邮件和附件。
 

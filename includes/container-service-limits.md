@@ -10,13 +10,13 @@ ms.date: 05/13/2019
 ms.author: v-yeche
 ms.custom: include file
 ms.openlocfilehash: 89b3478e242f7682af244f23f023f1cc399d1bfc
-ms.sourcegitcommit: 8b9dff249212ca062ec0838bafa77df3bea22cc3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "65520688"
 ---
-| Resource | 默认限制 |
+| 资源 | 默认限制 |
 | --- | :--- |
 | 每个订阅的最大群集数 | 100 |
 | 每个群集的最大节点数 | 100 |

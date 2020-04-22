@@ -11,10 +11,10 @@ ms.topic: conceptual
 origin.date: 01/06/2020
 ms.date: 03/16/2020
 ms.openlocfilehash: ce41fd658a266fa05551b77c0d6a02a084fa716c
-ms.sourcegitcommit: d5eca3c6b03b206e441b599e5b138bd687a91361
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78934829"
 ---
 # <a name="how-to-configure-caching-for-incremental-enrichment-in-azure-cognitive-search"></a>如何在 Azure 认知搜索中为增量扩充配置缓存

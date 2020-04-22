@@ -11,18 +11,18 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 07/21/2017
-ms.date: 02/18/2019
+ms.date: 04/22/2019
 ms.author: v-yeche
-ms.openlocfilehash: 70af44f9a011d1dc49219ed4e8893fc43eec7b0d
-ms.sourcegitcommit: cdcb4c34aaae9b9d981dec534007121b860f0774
+ms.openlocfilehash: 1e420ac1ff037fed0e10d15be8a9a331b8263731
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56306232"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63829217"
 ---
 # <a name="bandwidththroughput-testing-ntttcp"></a>带宽/吞吐量测试 (NTTTCP)
 
-在 Azure 中测试网络吞吐量性能时，最好使用以要测试的网络为目标并能在最大程度减少其他资源（这些资源可能会对性能产生影响）的使用的工具。 建议使用 NTTTCP。
+在 Azure 中测试网络吞吐量性能时，最好使用以要测试的网络为目标并能最大程度减少其他资源（这些资源可能会对性能产生影响）的使用的工具。 建议使用 NTTTCP。
 
 将此工具复制到大小相同的两个 Azure VM 中。 一个 VM 充当发送方，另一个充当接收方。
 
@@ -59,7 +59,7 @@ ms.locfileid: "56306232"
 
 请考虑将 NTTTCP 放在单独的文件夹中，如 c:\\tools
 
-#### <a name="allow-ntttcp-through-the-windows-firewall"></a>通过 Windows 防火墙允许 NTTTCP
+#### <a name="allow-ntttcp-through-the-windows-firewall"></a>允许 NTTTCP 通过 Windows 防火墙
 在接收方上，在 Windows 防火墙上创建允许规则，以允许接收 NTTTCP 流量。 最简单的方法是按名称允许整个 NTTTCP 程序，而不是允许特定的 TCP 端口入站。
 
 允许 ntttcp 通过 Windows 防火墙，如下所示：
@@ -127,17 +127,17 @@ ntttcp -s10.0.0.4 -t 300
 
 ## <a name="testing-between-vms-running-windows-and-linux"></a>在运行 Windows 和 LINUX 的 VM 之间进行测试：
 
-在此方案中，我们应启用非同步模式，以便可以运行测试。 通过对 Linux 使用“-N 标志”，对 Windows 使用“-ns 标志”完成此操作。
+在此方案中，我们应启用非同步模式，以便可以运行测试。 通过对 Linux 使用“-N 标志”  ，对 Windows 使用“-ns 标志”  完成此操作。
 
 #### <a name="from-linux-to-windows"></a>从 Linux 到 Windows：
 
-接收方 <Windows>：
+接收方 \<Windows>：
 
 ``` bash
 ntttcp -r -m <2 x nr cores>,*,<Windows server IP>
 ```
 
-发送方 <Linux>：
+发送方 \<Linux>：
 
 ``` bash
 ntttcp -s -m <2 x nr cores>,*,<Windows server IP> -N -t 300
@@ -145,13 +145,13 @@ ntttcp -s -m <2 x nr cores>,*,<Windows server IP> -N -t 300
 
 #### <a name="from-windows-to-linux"></a>从 Windows 到 Linux：
 
-接收方 <Linux>：
+接收方 \<Linux>：
 
 ``` bash
 ntttcp -r -m <2 x nr cores>,*,<Linux server IP>
 ```
 
-发送方 <Windows>：
+发件方 \<Windows>：
 
 ``` bash
 ntttcp -s -m <2 x nr cores>,*,<Linux  server IP> -ns -t 300

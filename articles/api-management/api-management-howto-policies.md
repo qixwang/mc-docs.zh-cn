@@ -15,11 +15,11 @@ origin.date: 11/29/2018
 ms.author: v-yiso
 ms.date: 02/26/2018
 ms.openlocfilehash: 0116b7376c034c56a6c9fc526522ce4e40182152
-ms.sourcegitcommit: 9f7a4bec190376815fa21167d90820b423da87e7
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59529222"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63857869"
 ---
 # <a name="policies-in-azure-api-management"></a>Azure API 管理中的策略
 
@@ -29,14 +29,14 @@ ms.locfileid: "59529222"
 
 在任何 API 管理策略中，策略表达式都可以用作属性值或文本值，除非策略另行指定。 某些策略（如[控制流][Control flow]和[设置变量][Set variable]策略）基于策略表达式。 有关详细信息，请参阅[高级策略][Advanced policies]和[策略表达式][Policy expressions]。
 
-## <a name="sections"> </a>了解策略配置
+## <a name="understanding-policy-configuration"></a><a name="sections"> </a>了解策略配置
 
 策略定义是一个简单的 XML 文档，用于描述一个入站和出站语句序列。 可以直接在定义窗口中编辑 XML。 右侧提供语句的列表，同时启用适用于当前范围的语句并突出显示。
 
 单击启用的语句会在定义视图中的光标位置添加相应的 XML。 
 
 > [!NOTE]
-> 如果无法启用要添加的策略，请确保位于为该策略设置的相应范围内。 每个策略语句都设计为在特定范围和策略部分中使用。 若要查看某个策略的策略部分和范围，请参阅[策略参考][Policy Reference]中该策略的“用法”部分。
+> 如果无法启用要添加的策略，请确保位于为该策略设置的相应范围内。 每个策略语句都设计为在特定范围和策略部分中使用。 若要查看某个策略的策略部分和范围，请参阅[策略参考][Policy Reference]中该策略的“用法”  部分。
 > 
 > 
 
@@ -62,7 +62,7 @@ ms.locfileid: "59529222"
 
 如果在处理请求的过程中出错，则会忽略 `inbound`、`backend` 或 `outbound` 部分中的其余步骤，跳到 `on-error` 部分执行相关语句。 将策略语句置于 `on-error` 部分以后，即可使用 `context.LastError` 属性查看错误、使用 `set-body` 策略检查和自定义错误响应，以及配置发生错误时的应对措施。 错误代码可针对内置步骤，也可针对在处理策略语句的过程中会发生的错误。 有关详细信息，请参阅 [Error handling in API Management policies](/api-management/api-management-error-handling-policies)（API 管理策略中的错误处理）。
 
-## <a name="scopes"> </a>如何配置策略
+## <a name="how-to-configure-policies"></a><a name="scopes"> </a>如何配置策略
 
 有关如何配置策略的信息，请参阅[设置或编辑策略](set-edit-policies.md)。
 
@@ -94,7 +94,7 @@ ms.locfileid: "59529222"
 
 ### <a name="restrict-incoming-requests"></a>限制传入的请求
 
-要添加新的语句以限制到指定 IP 地址的入站请求，请将光标置于 `inbound` XML 元素的内容中，然后单击“限制调用方 IP”语句。
+要添加新的语句以限制到指定 IP 地址的入站请求，请将光标置于 `inbound` XML 元素的内容中，然后单击“限制调用方 IP”语句。 
 
 ![限制策略][policies-restrict]
 

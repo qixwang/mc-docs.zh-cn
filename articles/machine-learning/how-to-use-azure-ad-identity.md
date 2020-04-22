@@ -12,10 +12,10 @@ ms.topic: conceptual
 origin.date: 02/10/2020
 ms.date: 03/16/2020
 ms.openlocfilehash: 44d6190b4ab9c4e1c81bd13dc93d9687156ba7b0
-ms.sourcegitcommit: d5eca3c6b03b206e441b599e5b138bd687a91361
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78934875"
 ---
 # <a name="use-azure-ad-identity-with-your-machine-learning-web-service-in-azure-kubernetes-service"></a>对 Azure Kubernetes 服务中的机器学习 Web 服务使用 Azure AD 标识

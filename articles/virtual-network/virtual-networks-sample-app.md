@@ -12,14 +12,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 origin.date: 01/03/2017
-ms.date: 02/18/2019
+ms.date: 04/22/2019
 ms.author: v-yeche
-ms.openlocfilehash: 718f1819600b15b11020743b37f43a5cb13c4e3a
-ms.sourcegitcommit: cdcb4c34aaae9b9d981dec534007121b860f0774
+ms.openlocfilehash: faba213670e296c0380cd387a29f2765bc25ad2c
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56306096"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63845619"
 ---
 # <a name="sample-application-for-use-with-dmzs"></a>适用于外围网络的示例应用程序
 <!--Not Available on [Return to the Security Boundary Best Practices Page][HOME]-->
@@ -31,7 +31,7 @@ ms.locfileid: "56306096"
 ## <a name="firewall-rule-to-allow-icmp"></a>允许 ICMP 的防火墙规则
 此简单的 PowerShell 语句可以在任意 Windows VM 上运行以允许 ICMP (Ping) 流量。 通过允许 ping 协议通过 Windows 防火墙（对于大部分 Linux 发行版而言，ICMP 默认打开），此防火墙更新将简化测试和故障排除。
 
-```PowerShell
+```powershell
 # Turn On ICMPv4
 New-NetFirewallRule -Name Allow_ICMPv4 -DisplayName "Allow ICMPv4" `
     -Protocol ICMPv4 -Enabled True -Profile Any -Action Allow
@@ -43,14 +43,14 @@ New-NetFirewallRule -Name Allow_ICMPv4 -DisplayName "Allow ICMPv4" `
 此脚本执行以下操作：
 
 1. 打开本地服务器 Windows 防火墙上的 IMCPv4 (Ping) 以简化测试
-2. 安装 IIS 和 .Net Framework v4.5
+2. 安装 IIS 和 .NET Framework v4.5
 3. 创建 ASP.NET 网页和 Web.config 文件
 4. 更改默认应用程序池以方便访问文件
 5. 将匿名用户设置为管理员帐户和密码
 
 通过 RDP 访问 IIS01 时，此 PowerShell 脚本应在本地运行。
 
-```PowerShell
+```powershell
 # IIS Server Post Build Config Script
 # Get Admin Account and Password
     Write-Host "Please enter the admin account information used to create this VM:" -ForegroundColor Cyan
@@ -62,7 +62,7 @@ New-NetFirewallRule -Name Allow_ICMPv4 -DisplayName "Allow ICMPv4" `
     New-NetFirewallRule -Name Allow_ICMPv4 -DisplayName "Allow ICMPv4" -Protocol ICMPv4 -Enabled True -Profile Any -Action Allow
 
 # Install IIS
-    Write-Host "Installing IIS and .Net 4.5, this can take some time, like 15+ minutes..." -ForegroundColor Cyan
+    Write-Host "Installing IIS and .NET 4.5, this can take some time, like 15+ minutes..." -ForegroundColor Cyan
     add-windowsfeature Web-Server, Web-WebServer, Web-Common-Http, Web-Default-Doc, Web-Dir-Browsing, Web-Http-Errors, Web-Static-Content, Web-Health, Web-Http-Logging, Web-Performance, Web-Stat-Compression, Web-Security, Web-Filtering, Web-App-Dev, Web-ISAPI-Ext, Web-ISAPI-Filter, Web-Net-Ext, Web-Net-Ext45, Web-Asp-Net45, Web-Mgmt-Tools, Web-Mgmt-Console
 
 # Create Web App Pages
@@ -106,7 +106,7 @@ New-NetFirewallRule -Name Allow_ICMPv4 -DisplayName "Allow ICMPv4" `
           <div style="border: 2px solid #8AC007; border-radius: 25px; padding: 20px; margin: 10px; width: 650px;">
             <b>Image File Linked from the Internet</b>:<br />
             <br />
-            <img src="http://sd.keepcalm-o-matic.co.uk/i/keep-calm-you-made-it-7.png" alt="You made it!" width="150" length="175"/></div>
+            <img src="https://sd.keepcalm-o-matic.co.uk/i/keep-calm-you-made-it-7.png" alt="You made it!" width="150" length="175"/></div>
         </div>
       </form>
     </body>
@@ -153,16 +153,16 @@ New-NetFirewallRule -Name Allow_ICMPv4 -DisplayName "Allow ICMPv4" `
 2. 为网站创建目录
 3. 创建网页要远程访问的文本文件
 4. 将目录和文件的权限设为匿名以允许访问
-5. 关闭 IE 增强的安全性以方便从此服务器浏览 
+5. 关闭 IE 增强的安全性以方便从此服务器浏览
 
 > [!IMPORTANT]
 > **最佳做法**：切勿在生产服务器上关闭“IE 增强的安全性”，并且通常不应从生产服务器浏览网页。 此外，最好不要向匿名访问公开文件共享，此处这样做是为了简单起见。
-> 
-> 
+>
+>
 
 通过 RDP 访问 AppVM01 时，此 PowerShell 脚本应在本地运行。 必须以管理员身份运行 PowerShell 才能确保成功执行。
 
-```PowerShell
+```powershell
 # AppVM01 Server Post Build Config Script
 # PowerShell must be run as Administrator for Net Share commands to work
 
@@ -199,7 +199,7 @@ New-NetFirewallRule -Name Allow_ICMPv4 -DisplayName "Allow ICMPv4" `
 ## <a name="next-steps"></a>后续步骤
 * 在 IIS 服务器上运行 IIS01 脚本
 * 在 AppVM01 上运行文件服务器脚本
-* 浏览到 IIS01 上的公共 IP 来验证生成
+* 浏览到 IIS01 上的公共 IP，验证生成
 
 <!--Link References-->
 
