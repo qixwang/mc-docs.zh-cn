@@ -14,10 +14,10 @@ ms.custom: seo-lt-2019
 origin.date: 03/09/2020
 ms.date: 03/23/2020
 ms.openlocfilehash: 82ce5a6cb2f633858a52710340ce62760bbc0bdb
-ms.sourcegitcommit: 71a386ca0d0ecb79a123399b6ab6b8c70ea2aa78
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79497410"
 ---
 # <a name="copy-activity-performance-optimization-features"></a>复制活动性能优化功能
@@ -90,7 +90,7 @@ ms.locfileid: "79497410"
 
 | 复制方案 | 并行复制行为 |
 | --- | --- |
-| 文件存储之间 | `parallelCopies` 确定**文件级别**的并行度。 每个文件内的区块化会自动透明地在该级别下进行。 它旨在对给定数据存储类型使用最佳区块大小，以并行加载数据。 <br/><br/>复制活动在运行时使用的实际并行副本数不超过现有的文件数。 如果复制行为是在文件接收器中执行 **mergeFile**，则复制活动无法利用文件级并行度。 |
+| 文件存储之间 | `parallelCopies` 确定文件级别的并行度。  每个文件内的区块化会自动透明地在该级别下进行。 它旨在对给定数据存储类型使用最佳区块大小，以并行加载数据。 <br/><br/>复制活动在运行时使用的实际并行副本数不超过现有的文件数。 如果复制行为是在文件接收器中执行 **mergeFile**，则复制活动无法利用文件级并行度。 |
 | 从文件存储到非文件存储 | - 在将数据复制到 Azure SQL 数据库或 Azure Cosmos DB 时，默认的并行副本数还取决于接收器层（DTU/RU 数目）。<br>- 在将数据复制到 Azure 表时，默认的并行副本数为 4 个。 |
 | 从非文件存储到文件存储 | - 从启用分区选项的数据存储（包括 [Oracle](connector-oracle.md#oracle-as-source)、[Netezza](connector-netezza.md#netezza-as-source)、[Teradata](connector-teradata.md#teradata-as-source)、[SAP HANA](connector-sap-hana.md#sap-hana-as-source)、[SAP Table](connector-sap-table.md#sap-table-as-source) 和 [SAP Open Hub](connector-sap-business-warehouse-open-hub.md#sap-bw-open-hub-as-source)）复制数据时，默认的并行副本数为 4 个。 复制活动在运行时使用的实际并行副本数不超过现有的数据分区数。 使用自承载集成运行时并复制到 Azure Blob/ADLS Gen2 时请注意，每个 IR 节点的最大有效并行副本数为 4 或 5 个。<br>- 对于其他方案，并行复制不起作用。 即使指定了并行度，也不会应用并行复制。 |
 | 非文件存储之间 | - 在将数据复制到 Azure SQL 数据库或 Azure Cosmos DB 时，默认的并行副本数还取决于接收器层（DTU/RU 数目）。<br/>- 在将数据复制到 Azure 表时，默认的并行副本数为 4 个。 |
@@ -147,7 +147,7 @@ ms.locfileid: "79497410"
 | --- | --- | --- | --- |
 | enableStaging |指定是否要通过过渡暂存存储复制数据。 |False |否 |
 | linkedServiceName |指定 [AzureStorage](connector-azure-blob-storage.md#linked-service-properties) 链接服务的名称，这指用作过渡暂存存储的存储实例。 <br/><br/> 无法使用具有共享访问签名的存储通过 PolyBase 将数据加载到 SQL 数据仓库。 可在其他任何情况下使用它。 |空值 |将 **enableStaging** 设置为 TRUE 时，则为是 |
-| path |指定要包含此暂存数据的 Blob 存储路径。 如果不提供路径，该服务将创建容器以存储临时数据。 <br/><br/> 只在使用具有共享访问签名的存储时，或者要求临时数据位于特定位置时才指定路径。 |不适用 |否 |
+| path |指定要包含此暂存数据的 Blob 存储路径。 如果不提供路径，该服务将创建容器以存储临时数据。 <br/><br/> 只在使用具有共享访问签名的存储时，或者要求临时数据位于特定位置时才指定路径。 |空值 |否 |
 | enableCompression |指定是否应先压缩数据，再将数据复制到目标。 此设置可减少传输的数据量。 |False |否 |
 
 >[!NOTE]

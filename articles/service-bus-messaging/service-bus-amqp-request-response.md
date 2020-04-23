@@ -16,10 +16,10 @@ origin.date: 01/23/2020
 ms.date: 2/6/2020
 ms.author: v-lingwu
 ms.openlocfilehash: c42d6c3c67ceb80aacee5dd76a751d9981bc74e4
-ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77068277"
 ---
 # <a name="amqp-10-in-microsoft-azure-service-bus-request-response-based-operations"></a>Microsoft Azure 服务总线中的 AMQP 1.0：基于请求/响应的操作
@@ -189,7 +189,7 @@ properties: {
   
 |键|值类型|必须|值内容|  
 |---------|----------------|--------------|--------------------|  
-|statusCode|int|是|HTTP 响应代码 [RFC2616]<br /><br /> 200：“正常”�有更多消息<br /><br /> 204：“无内容”�没有更多消息|  
+|statusCode|int|是|HTTP 响应代码 [RFC2616]<br /><br /> 200：“正常”� 有更多消息<br /><br /> 204：“无内容”� 没有更多消息|  
 |statusDescription|string|否|状态的说明。|  
   
 响应消息正文必须包含 **amqp-value** 部分，其中所含**映射**必须包括以下条目：  
@@ -239,7 +239,7 @@ properties: {
   
 |键|值类型|必须|值内容|  
 |---------|----------------|--------------|--------------------|  
-|statusCode|int|是|HTTP 响应代码 [RFC2616]<br /><br /> 200：“正常”�成功，否则失败。|  
+|statusCode|int|是|HTTP 响应代码 [RFC2616]<br /><br /> 200：“正常”� 成功，否则失败。|  
 |statusDescription|string|否|状态的说明。|  
   
 响应消息正文必须包含 **amqp-value** 部分，其中所含映射必须包括以下条目：  
@@ -273,7 +273,7 @@ properties: {
   
 |键|值类型|必须|值内容|  
 |---------|----------------|--------------|--------------------|  
-|statusCode|int|是|HTTP 响应代码 [RFC2616]<br /><br /> 200：“正常”�成功，否则失败。|  
+|statusCode|int|是|HTTP 响应代码 [RFC2616]<br /><br /> 200：“正常”� 成功，否则失败。|  
 |statusDescription|string|否|状态的说明。|   
   
 ## <a name="session-operations"></a>会话操作  
@@ -514,7 +514,7 @@ sql-filter 映射必须包含以下条目：
   
 |键|值类型|必须|值内容|  
 |---------|----------------|--------------|--------------------|  
-|statusCode|int|是|HTTP 响应代码 [RFC2616]<br /><br /> 200：“正常”�成功，否则失败|  
+|statusCode|int|是|HTTP 响应代码 [RFC2616]<br /><br /> 200：“正常”� 成功，否则失败|  
 |statusDescription|string|否|状态的说明。|  
   
 ### <a name="remove-rule"></a>删除规则  
@@ -650,7 +650,7 @@ sql-filter 映射必须包含以下条目：
   
 |键|值类型|必须|值内容|  
 |---------|----------------|--------------|--------------------|  
-|statusCode|int|是|HTTP 响应代码 [RFC2616]<br /><br /> 200：“正常”�成功，否则失败|  
+|statusCode|int|是|HTTP 响应代码 [RFC2616]<br /><br /> 200：“正常”� 成功，否则失败|  
 |statusDescription|string|否|状态的说明。|  
   
 响应消息正文必须包含 **amqp-value** 部分，其中所含**映射**必须包括以下条目：  

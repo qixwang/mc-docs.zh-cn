@@ -12,10 +12,10 @@ ms.date: 03/16/2020
 ms.author: v-junlch
 ms.subservice: B2C
 ms.openlocfilehash: c6ecfcfb47e3f01e60a1f38f51296b98cb86e7d7
-ms.sourcegitcommit: 71a386ca0d0ecb79a123399b6ab6b8c70ea2aa78
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79497160"
 ---
 # <a name="single-sign-on-session-management-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 中的单一登录会话管理
@@ -24,7 +24,7 @@ ms.locfileid: "79497160"
 
 使用 Azure Active Directory B2C (Azure AD B2C) 中的单一登录 (SSO) 会话管理，管理员可在用户已通过身份验证之后控制与用户的交互。 例如，管理员可以控制是否显示所选的标识提供者，或是否需要再次输入本地帐户详细信息。 本文介绍如何配置 Azure AD B2C SSO 的设置。
 
-SSO 会话管理包括两个部分。 第一个部分处理用户与 Azure AD B2C 之间的直接交互，另一个部分处理用户与外部参与方之间的交互。 Azure AD B2C 不会重写或绕过外部参与方可能保留的 SSO 会话。 更确切地说，通过 Azure AD B2C 转到外部参与方的路由将被�记住�，因此无需重新提示用户选择其社交或企业标识提供者。 最终的 SSO 决策仍由外部参与方做出。
+SSO 会话管理包括两个部分。 第一个部分处理用户与 Azure AD B2C 之间的直接交互，另一个部分处理用户与外部参与方之间的交互。 Azure AD B2C 不会重写或绕过外部参与方可能保留的 SSO 会话。 更确切地说，通过 Azure AD B2C 转到外部参与方的路由将被记住，因此无需重新提示用户选择其社交或企业标识提供者。 最终的 SSO 决策仍由外部参与方做出。
 
 SSO 会话管理使用的语义，与自定义策略中其他任何技术配置文件使用的语义相同。 执行某个业务流程步骤时，会在与该步骤关联的技术配置文件中查询 `UseTechnicalProfileForSessionManagement` 引用。 如果存在该引用，则会检查引用的 SSO 会话提供程序，确定用户是否为会话参与者。 如果是，则使用 SSO 会话提供程序来重新填充会话。 同样，在完成执行某个业务流程步骤后，如果已指定 SSO 会话提供程序，则使用该提供程序将信息存储在会话中。
 

@@ -10,10 +10,10 @@ ms.topic: conceptual
 origin.date: 03/18/2019
 ms.date: 08/09/2019
 ms.openlocfilehash: 28adff42c3b9df51ecf286d6339cab337ef3f222
-ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75855173"
 ---
 # <a name="azure-stream-analytics-output-to-azure-sql-database"></a>从 Azure 流分析输出到 Azure SQL 数据库
@@ -26,20 +26,20 @@ Azure 流分析中的 SQL 输出支持使用并行写入作为一个选项。 �
 
 ## <a name="azure-stream-analytics"></a>Azure 流分析
 
-- **继承分区** � 使用此 SQL 输出配置选项可以继承先前查询步骤或输入的分区方案。 启用此选项后，写入到基于磁盘的表以及对作业使用[完全并行](stream-analytics-parallelization.md#embarrassingly-parallel-jobs)拓扑时，吞吐量预期会提高。 其他许多[输出](stream-analytics-parallelization.md#partitions-in-sources-and-sinks)已自动采用此分区。 使用此选项执行批量插入时，还会禁用表锁定 (TABLOCK)。
+- **继承分区** - 使用此 SQL 输出配置选项可以继承先前查询步骤或输入的分区方案。 启用此选项后，写入到基于磁盘的表以及对作业使用[完全并行](stream-analytics-parallelization.md#embarrassingly-parallel-jobs)拓扑时，吞吐量预期会提高。 其他许多[输出](stream-analytics-parallelization.md#partitions-in-sources-and-sinks)已自动采用此分区。 使用此选项执行批量插入时，还会禁用表锁定 (TABLOCK)。
 
 > [!NOTE] 
 > 如果输入分区超过 8 个，则继承输入分区方案可能不是适当的选择。 包含单个标识列和聚集索引的表曾经达到过此上限。 根据架构和选择的索引，观察结果可能有所不同。
 
 - **批大小** - 使用 SQL 输出配置可以根据目标表/工作负荷的性质，在 Azure 流分析 SQL 输出中指定最大批大小。 批大小是随每个批量插入事务一起发送的最大记录数。 在聚集列存储索引中，批大小约为 [100K](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-data-loading-guidance)，这可以实现并行化、极简的日志记录和锁定优化。 在基于磁盘的表中，10K（默认值）或更小的值可能最适合解决方案，因为较大的批大小可能在批量插入期间触发锁升级。
 
-- **输入消息优化** � 如果已使用继承分区和批大小进行优化，则增大每个分区的每个消息的输入事件数有助于进一步提高写入吞吐量。 通过输入消息优化，可将 Azure 流分析中的批大小最大提高到指定的批大小，从而提高吞吐量。 这可以通过使用[压缩](stream-analytics-define-inputs.md)或在 EventHub 或 Blob 中增加输入消息大小来实现。
+- **输入消息优化** - 如果已使用继承分区和批大小进行优化，则增大每个分区的每个消息的输入事件数有助于进一步提高写入吞吐量。 通过输入消息优化，可将 Azure 流分析中的批大小最大提高到指定的批大小，从而提高吞吐量。 这可以通过使用[压缩](stream-analytics-define-inputs.md)或在 EventHub 或 Blob 中增加输入消息大小来实现。
 
 ## <a name="sql-azure"></a>SQL Azure
 
-- **分区表和索引** � 在包含与分区键（例如 PartitionId）相同的列的表中使用[分区](https://docs.microsoft.com/sql/relational-databases/partitions/partitioned-tables-and-indexes?view=sql-server-2017) SQL 表和分区索引可以在写入期间明显减少分区之间的争用。 对于分区表，需要在 PRIMARY 文件组中创建[分区函数](https://docs.microsoft.com/sql/t-sql/statements/create-partition-function-transact-sql?view=sql-server-2017)和[分区方案](https://docs.microsoft.com/sql/t-sql/statements/create-partition-scheme-transact-sql?view=sql-server-2017)。 这也可以在加载新数据时提高现有数据的可用性。 根据分区的数量，可能会达到日志 IO 限制；升级 SKU 可以提高限制。
+- **分区表和索引** - 在包含与分区键（例如 PartitionId）相同的列的表中使用[分区](https://docs.microsoft.com/sql/relational-databases/partitions/partitioned-tables-and-indexes?view=sql-server-2017) SQL 表和分区索引可以在写入期间明显减少分区之间的争用。 对于分区表，需要在 PRIMARY 文件组中创建[分区函数](https://docs.microsoft.com/sql/t-sql/statements/create-partition-function-transact-sql?view=sql-server-2017)和[分区方案](https://docs.microsoft.com/sql/t-sql/statements/create-partition-scheme-transact-sql?view=sql-server-2017)。 这也可以在加载新数据时提高现有数据的可用性。 根据分区的数量，可能会达到日志 IO 限制；升级 SKU 可以提高限制。
 
-- **避免唯一键冲突** � 如果 Azure 流分析活动日志中出现[多个键冲突警告消息](stream-analytics-troubleshoot-output.md#key-violation-warning-with-azure-sql-database-output)，请确保作业不受唯一约束冲突（在恢复案例期间可能会发生）的影响。 可以通过在索引中设置 [IGNORE\_DUP\_KEY](stream-analytics-troubleshoot-output.md#key-violation-warning-with-azure-sql-database-output) 选项来避免此问题。
+- **避免唯一键冲突** - 如果 Azure 流分析活动日志中出现[多个键冲突警告消息](stream-analytics-troubleshoot-output.md#key-violation-warning-with-azure-sql-database-output)，请确保作业不受唯一约束冲突（在恢复案例期间可能会发生）的影响。 可以通过在索引中设置 [IGNORE\_DUP\_KEY](stream-analytics-troubleshoot-output.md#key-violation-warning-with-azure-sql-database-output) 选项来避免此问题。
 
 ## <a name="azure-data-factory-and-in-memory-tables"></a>Azure 数据工厂和内存中表
 

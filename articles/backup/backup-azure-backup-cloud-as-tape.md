@@ -8,10 +8,10 @@ origin.date: 04/30/2017
 ms.date: 09/23/2019
 ms.author: v-lingwu
 ms.openlocfilehash: b91fb95ea7b1fffcaac5cdd8295e1db0fedeec41
-ms.sourcegitcommit: 27eaabd82b12ad6a6840f30763034a6360977186
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77497555"
 ---
 # <a name="move-your-long-term-storage-from-tape-to-the-azure-cloud"></a>将长期存储从磁带移动到 Azure 云

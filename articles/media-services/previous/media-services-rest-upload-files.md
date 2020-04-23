@@ -15,10 +15,10 @@ origin.date: 03/20/2019
 ms.date: 12/09/2019
 ms.author: v-jay
 ms.openlocfilehash: b0d715099ab8324debeaa704c629cc26ee74e851
-ms.sourcegitcommit: 369038a7d7ee9bbfd26337c07272779c23d0a507
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74807637"
 ---
 # <a name="upload-files-into-a-media-services-account-using-rest"></a>使用 REST 将文件上传到媒体服务帐户  
@@ -66,7 +66,7 @@ ms.locfileid: "74807637"
 
 1. 将连接值添加到环境。 
 
-    在开始执行[集合](postman-collection.md)中定义的操作之前，需要手动设置 **MediaServices** [环境](postman-environment.md)中的某些变量。
+    在开始执行[集合](postman-collection.md)中定义的操作之前，需要手动设置 MediaServices [环境](postman-environment.md)中的某些变量。 
 
     若要获取前五个变量的值，请参阅[通过 Azure AD 身份验证访问 Azure 媒体服务 API](media-services-use-aad-auth-to-access-ams-api.md)。 
 

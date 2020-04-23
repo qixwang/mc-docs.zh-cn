@@ -13,10 +13,10 @@ origin.date: 04/20/2017
 ms.date: 05/14/2018
 ms.author: v-lingwu
 ms.openlocfilehash: 9f92741294b04c52fd5c3ee4be41037ca05f4869
-ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75857940"
 ---
 # <a name="pool-resize-start-event"></a>池调整大小开始事件

@@ -8,10 +8,10 @@ ms.topic: troubleshooting
 origin.date: 08/27/2018
 ms.date: 11/04/2019
 ms.openlocfilehash: df26b2f0adfd4e4a6ab071ba2874dc3ad5977244
-ms.sourcegitcommit: cb2caa72ec0e0922a57f2fa1056c25e32c61b570
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "73142151"
 ---
 # <a name="how-to-use-sys_schema-for-performance-tuning-and-database-maintenance-in-azure-database-for-mysql"></a>如何在 Azure Database for MySQL 中使用 sys_schema 进行性能优化和数据库维护
@@ -71,7 +71,7 @@ InnoDB 缓冲池驻留在内存中，是 DBMS 与存储之间的主要缓存机�
 
 在上图中，很明显，除系统表和视图以外，mysqldatabase033 数据库中的每个表（托管某个 WordPress 站点）占用了 16 KB 或 1 个页面的内存中数据。
 
-### <a name="sysschema_unused_indexes--sysschema_redundant_indexes"></a>*Sys.schema_unused_indexes* & *sys.schema_redundant_indexes*
+### <a name="sysschema_unused_indexes--sysschema_redundant_indexes"></a>Sys.schema_unused_indexes 和 sys.schema_redundant_indexes  
 
 索引是提高读取性能的极佳工具，但它们确实会产生额外的插入和存储开销。 *Sys.schema_unused_indexes* 和 *sys.schema_redundant_indexes* 提供未使用或重复索引的洞察信息。
 
