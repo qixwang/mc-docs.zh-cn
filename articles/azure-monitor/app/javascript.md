@@ -8,10 +8,10 @@ origin.date: 09/12/2019
 ms.date: 09/20/2019
 ms.author: v-lingwu
 ms.openlocfilehash: 2d439f3dd659af5efdbf6e63fa2b6c7ddbeb8bdf
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79292426"
 ---
 # <a name="application-insights-for-web-pages"></a>适用于网页的 Application Insights
@@ -256,13 +256,13 @@ SDK V2 版本中的重大更改：
 
 ![Chrome](https://raw.githubusercontent.com/alrra/browser-logos/master/src/chrome/chrome_48x48.png) | ![Firefox](https://raw.githubusercontent.com/alrra/browser-logos/master/src/firefox/firefox_48x48.png) | ![IE](https://raw.githubusercontent.com/alrra/browser-logos/master/src/edge/edge_48x48.png) | ![Opera](https://raw.githubusercontent.com/alrra/browser-logos/master/src/opera/opera_48x48.png) | ![Safari](https://raw.githubusercontent.com/alrra/browser-logos/master/src/safari/safari_48x48.png)
 --- | --- | --- | --- | --- |
-Chrome 最新版 ✔ |  Firefox 最新版 ✔ | IE 9 + 和 Edge ✔ | Opera 最新版 ✔ | Safari 最新版 ✔ |
+Chrome 最新版 ✔ |  Firefox 最新版 ✔ | IE 9 + 和 Microsoft Edge ✔ | Opera 最新版 ✔ | Safari 最新版 ✔ |
 
 ## <a name="open-source-sdk"></a>开源 SDK
 
 Application Insights JavaScript SDK 是开源的，用户可查看其源代码；若要对该项目做贡献，请访问[官方 GitHub 存储库](https://github.com/Microsoft/ApplicationInsights-JS)。
 
-## <a name="next"></a> 后续步骤
+## <a name="next-steps"></a><a name="next"></a> 后续步骤
 * [跟踪使用情况](usage-overview.md)
 * [自定义事件和指标](api-custom-events-metrics.md)
 * [Build-measure-learn](usage-overview.md)

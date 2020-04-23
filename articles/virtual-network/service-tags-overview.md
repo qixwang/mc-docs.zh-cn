@@ -15,10 +15,10 @@ ms.date: 02/24/2020
 ms.author: v-yeche
 ms.reviewer: kumud
 ms.openlocfilehash: af2a82d2aac0fbe8d1bd320ad19a7ca3db1a8319
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79291602"
 ---
 # <a name="virtual-network-service-tags"></a>虚拟网络服务标记 
@@ -71,7 +71,7 @@ ms.locfileid: "79291602"
 | **GatewayManager** | Azure VPN 网关和应用程序网关专用部署的管理流量。 | 入站 | 否 | 否 |
 | **HDInsight** | Azure HDInsight。 | 入站 | 是 | 否 |
 | **Internet** | 虚拟网络外部的 IP 地址空间，可以通过公共 Internet 进行访问。<br/><br/>此地址范围包括 [Azure 拥有的公共 IP 地址空间](https://www.microsoft.com/download/confirmation.aspx?id=57062)。 | 推送、请求和匿名 | 否 | 否 |
-| **MicrosoftContainerRegistry** | Azure 容器映像的容器注册表。 <br/><br/>*注意：* 此外，请将以下 IP 列入白名单（不久将删除此依赖项）：204.79.197.219。 | 出站 | 是 | 是 |
+| **MicrosoftContainerRegistry** | Azure 容器映像的容器注册表。 <br/><br/>*注意：* 此外，请将以下 IP 列入允许列表（不久将删除此依赖项）：204.79.197.219。 | 出站 | 是 | 是 |
 | **服务总线** | 使用高级服务层级的 Azure 服务总线流量。 | 出站 | 是 | 是 |
 | **ServiceFabric** | Azure Service Fabric。<br/><br/>*注意：* 此标记表示每个区域的控制平面的 Service Fabric 服务终结点。 这使得客户能够从其 VNET（例如终结点： https:// chinanorth.servicefabric.azure.com）对其 Service Fabric 群集执行管理操作。 | 推送、请求和匿名 | 否 | 否 |
 | **Sql** | Azure SQL 数据库、Azure Database for MySQL、Azure Database for PostgreSQL和 Azure SQL 数据仓库。<br/><br/>*注意：* 此标记代表服务，而不是服务的特定实例。 例如，标记可表示 Azure SQL 数据库服务，但不能表示特定的 SQL 数据库或服务器。 | 出站 | 是 | 是 |

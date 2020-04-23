@@ -11,10 +11,10 @@ ms.topic: reference
 origin.date: 12/16/2019
 ms.date: 03/30/2020
 ms.openlocfilehash: a46ec92f4ece6ba7073239dce8289fd4aecdd0ab
-ms.sourcegitcommit: 5fb45da006859215edc8211481f13174aa43dbeb
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80634340"
 ---
 # <a name="azure-key-vault-rest-api-error-codes"></a>Azure Key Vault REST API 错误代码
@@ -128,7 +128,7 @@ resource=https%3A%2F%2Fvault.azure.cn&client_id=<registered-app-ID>&client_secre
 HTTP 403 表示请求已完成身份验证（知道请求方标识），但标识无权访问请求的资源。 此错误有两种原因：
 
 - 没有为标识设置访问策略。
-- 请求方资源的 IP 地址未列入 Key Vault 防火墙设置中的白名单。
+- 请求方资源的 IP 地址未列入 Key Vault 防火墙设置中的允许列表。
 
 如果客户的应用程序未使用客户端 ID，但客户认为已使用，则往往会出现 HTTP 403。 这通常意味着，未为实际调用方标识正确设置访问策略。
 
