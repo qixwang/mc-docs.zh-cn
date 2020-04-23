@@ -11393,7 +11393,7 @@
     {
       "source_path": "articles/virtual-machines/linux/encrypt-disks-nodejs.md",
       "redirect_url": "/virtual-machines/linux/encrypt-disks",
-      "redirect_document_id": "true"
+      "redirect_document_id": "false"
     },
     {
       "source_path": "articles/virtual-machines/linux/expand-disks-nodejs.md",
@@ -22891,6 +22891,276 @@
       "redirect_document_id": false
     },
     {
+      "source_path": "articles/logic-apps/logic-apps-custom-hosted-api.md",
+      "redirect_url": "/logic-apps/logic-apps-custom-api-host-deploy-call",
+      "redirect_document_id": false
+    },
+    {
+        "source_path": "articles/aks/acs-aks-migration.md",
+        "redirect_url": "/aks/aks-migration",
+        "redirect_document_id": false
+    },
+    {
+        "source_path": "articles/azure-resource-manager/templates/create-multiple-instances.md",
+        "redirect_url": "/azure-resource-manager/templates/copy-resources",
+        "redirect_document_id": false
+    },
+    {
+        "source_path": "articles/azure-resource-manager/templates/extension-resource-types.md",
+        "redirect_url": "/azure-resource-manager/management/extension-resource-types",
+        "redirect_document_id": false
+    },
+    {
+        "source_path": "articles/connectors/connectors-native-query.md",
+        "redirect_url": "/logic-apps/logic-apps-perform-data-operations#filter-array-action",
+        "redirect_document_id": false
+    },
+    {
+        "source_path": "articles/cosmos-db/geospatial.md",
+        "redirect_url": "/cosmos-db/sql-query-geospatial-intro",
+        "redirect_document_id": false
+    },
+    {
+        "source_path": "articles/cosmos-db/how-to-custom-synchronization.md",
+        "redirect_url": "/cosmos-db/how-to-multi-master",
+        "redirect_document_id": true
+    },
+    {
+        "source_path": "articles/logic-apps/logic-apps-create-deploy-azure-resource-manager-templates.md",
+        "redirect_url": "/logic-apps/logic-apps-azure-resource-manager-templates-overview",
+        "redirect_document_id": false
+    },
+    {
+        "source_path": "articles/logic-apps/logic-apps-create-deploy-template.md",
+        "redirect_url": "/logic-apps/logic-apps-azure-resource-manager-templates-overview",
+        "redirect_document_id": true
+    },
+    {
+        "source_path": "articles/logic-apps/logic-apps-monitor-your-logic-apps.md",
+        "redirect_url": "/logic-apps/monitor-logic-apps",
+        "redirect_document_id": false
+    },
+    {
+        "source_path": "articles/virtual-machines/virtual-machines-availability-set-supportability.md",
+        "redirect_url": "/virtual-machines/troubleshooting/virtual-machines-availability-set-supportability",
+        "redirect_document_id": false
+    },
+    {
+        "source_path": "articles/virtual-machines/virtual-machines-azure-slave-plugin-for-hudson-classic.md",
+        "redirect_url": "/virtual-machines/",
+        "redirect_document_id": false
+    },
+    {
+        "source_path": "articles/virtual-machines/linux/acu.md",
+        "redirect_url": "/virtual-machines/acu",
+        "redirect_document_id": false
+    },
+    {
+        "source_path": "articles/virtual-machines/linux/b-series-burstable.md",
+        "redirect_url": "/virtual-machines/sizes-b-series-burstable",
+        "redirect_document_id": false
+    },
+    {
+        "source_path": "articles/virtual-machines/linux/cli-manage-nodejs.md",
+        "redirect_url": "/virtual-machines/linux/create-cli-complete",
+        "redirect_document_id": false
+    },
+    {
+        "source_path": "articles/virtual-machines/linux/maintenance-and-updates.md",
+        "redirect_url": "/virtual-machines/maintenance-and-updates?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json",
+        "redirect_document_id": false
+    },
+    {
+        "source_path": "articles/virtual-machines/linux/maintenance-notifications.md",
+        "redirect_url": "/virtual-machines/maintenance-notifications?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json",
+        "redirect_document_id": false
+    },
+    {
+        "source_path": "articles/virtual-machines/linux/sizes-compute.md",
+        "redirect_url": "/virtual-machines/sizes-compute",
+        "redirect_document_id": false
+    },
+    {
+        "source_path": "articles/virtual-machines/linux/sizes-general.md",
+        "redirect_url": "/virtual-machines/sizes-general",
+        "redirect_document_id": false
+    },
+    {
+        "source_path": "articles/virtual-machines/linux/sizes-gpu.md",
+        "redirect_url": "/virtual-machines/sizes-gpu",
+        "redirect_document_id": false
+    },
+    {
+        "source_path": "articles/virtual-machines/linux/sizes-memory.md",
+        "redirect_url": "/virtual-machines/sizes-memory",
+        "redirect_document_id": false
+    },
+    {
+        "source_path": "articles/virtual-machines/linux/sizes-previous-gen.md",
+        "redirect_url": "/virtual-machines/sizes-previous-gen",
+        "redirect_document_id": false
+    },
+    {
+        "source_path": "articles/virtual-machines/windows/acu.md",
+        "redirect_url": "/virtual-machines/acu",
+        "redirect_document_id": false
+    },
+    {
+        "source_path": "articles/virtual-machines/windows/b-series-burstable.md",
+        "redirect_url": "/virtual-machines/sizes-b-series-burstable",
+        "redirect_document_id": false
+    },
+    {
+        "source_path": "articles/virtual-machines/windows/maintenance-and-updates.md",
+        "redirect_url": "/virtual-machines/maintenance-and-updates?toc=/virtual-machines/windows/toc.json&bc=/virtual-machines/windows/breadcrumb/toc.json",
+        "redirect_document_id": false
+    },
+    {
+        "source_path": "articles/virtual-machines/windows/maintenance-notifications.md",
+        "redirect_url": "/virtual-machines/maintenance-notifications?toc=/virtual-machines/windows/toc.json&bc=/virtual-machines/windows/breadcrumb/toc.json",
+        "redirect_document_id": false
+    },
+    {
+        "source_path": "articles/virtual-machines/windows/sizes-compute.md",
+        "redirect_url": "/virtual-machines/sizes-compute",
+        "redirect_document_id": false
+    },
+    {
+        "source_path": "articles/virtual-machines/windows/sizes-general.md",
+        "redirect_url": "/virtual-machines/sizes-general",
+        "redirect_document_id": false
+    },
+    {
+        "source_path": "articles/virtual-machines/windows/sizes-gpu.md",
+        "redirect_url": "/virtual-machines/sizes-gpu",
+        "redirect_document_id": false
+    },
+    {
+        "source_path": "articles/virtual-machines/windows/sizes-memory.md",
+        "redirect_url": "/virtual-machines/sizes-memory",
+        "redirect_document_id": false
+    },
+    {
+        "source_path": "articles/virtual-machines/windows/sizes-previous-gen.md",
+        "redirect_url": "/virtual-machines/sizes-previous-gen",
+        "redirect_document_id": false
+    },
+    {
+        "source_path": "articles/virtual-network/create-virtual-network-classic.md",
+        "redirect_url": "https://docs.microsoft.com/previous-versions/azure/virtual-network/create-virtual-network-classic",
+        "redirect_document_id": false
+    },
+    {
+        "source_path": "articles/virtual-network/virtual-network-create-udr-classic-cli.md",
+        "redirect_url": "https://docs.microsoft.com/previous-versions/azure/virtual-network/virtual-network-create-udr-classic-cli",
+        "redirect_document_id": false
+    },
+    {
+        "source_path": "articles/virtual-network/virtual-network-create-udr-classic-ps.md",
+        "redirect_url": "https://docs.microsoft.com/previous-versions/azure/virtual-network/virtual-network-create-udr-classic-ps",
+        "redirect_document_id": false
+    },
+    {
+        "source_path": "articles/virtual-network/virtual-network-deploy-multinic-classic-cli.md",
+        "redirect_url": "https://docs.microsoft.com/previous-versions/azure/virtual-network/virtual-network-deploy-multinic-classic-cli",
+        "redirect_document_id": false
+    },
+    {
+        "source_path": "articles/virtual-network/virtual-network-deploy-multinic-classic-ps.md",
+        "redirect_url": "https://docs.microsoft.com/previous-versions/azure/virtual-network/virtual-network-deploy-multinic-classic-ps",
+        "redirect_document_id": false
+    },
+    {
+        "source_path": "articles/virtual-network/virtual-network-ip-addresses-overview-classic.md",
+        "redirect_url": "https://docs.microsoft.com/previous-versions/azure/virtual-network/virtual-network-ip-addresses-overview-classic",
+        "redirect_document_id": false
+    },
+    {
+        "source_path": "articles/virtual-network/virtual-networks-acl-powershell.md",
+        "redirect_url": "https://docs.microsoft.com/previous-versions/azure/virtual-network/virtual-networks-acl-powershell",
+        "redirect_document_id": false
+    },
+    {
+        "source_path": "articles/virtual-network/virtual-networks-acl.md",
+        "redirect_url": "https://docs.microsoft.com/previous-versions/azure/virtual-network/virtual-networks-acl",
+        "redirect_document_id": false
+    },
+    {
+        "source_path": "articles/virtual-network/virtual-networks-create-nsg-classic-cli.md",
+        "redirect_url": "https://docs.microsoft.com/previous-versions/azure/virtual-network/virtual-networks-create-nsg-classic-cli",
+        "redirect_document_id": false
+    },
+    {
+        "source_path": "articles/virtual-network/virtual-networks-create-nsg-classic-ps.md",
+        "redirect_url": "https://docs.microsoft.com/previous-versions/azure/virtual-network/virtual-networks-create-nsg-classic-ps",
+        "redirect_document_id": false
+    },
+    {
+        "source_path": "articles/virtual-network/virtual-networks-create-vnet-classic-cli.md",
+        "redirect_url": "https://docs.microsoft.com/previous-versions/azure/virtual-network/virtual-networks-create-vnet-classic-cli",
+        "redirect_document_id": false
+    },
+    {
+        "source_path": "articles/virtual-network/virtual-networks-create-vnet-classic-netcfg-ps.md",
+        "redirect_url": "https://docs.microsoft.com/previous-versions/azure/virtual-network/virtual-networks-create-vnet-classic-netcfg-ps",
+        "redirect_document_id": false
+    },
+    {
+        "source_path": "articles/virtual-network/virtual-networks-create-vnet-classic-pportal.md",
+        "redirect_url": "https://docs.microsoft.com/previous-versions/azure/virtual-network/virtual-networks-create-vnet-classic-pportal",
+        "redirect_document_id": false
+    },
+    {
+        "source_path": "articles/virtual-network/virtual-networks-instance-level-public-ip.md",
+        "redirect_url": "https://docs.microsoft.com/previous-versions/azure/virtual-network/virtual-networks-instance-level-public-ip",
+        "redirect_document_id": false
+    },
+    {
+        "source_path": "articles/virtual-network/virtual-networks-migrate-to-regional-vnet.md",
+        "redirect_url": "https://docs.microsoft.com/previous-versions/azure/virtual-network/virtual-networks-migrate-to-regional-vnet",
+        "redirect_document_id": false
+    },
+    {
+        "source_path": "articles/virtual-network/virtual-networks-move-vm-role-to-subnet.md",
+        "redirect_url": "https://docs.microsoft.com/previous-versions/azure/virtual-network/virtual-networks-move-vm-role-to-subnet",
+        "redirect_document_id": false
+    },
+    {
+        "source_path": "articles/virtual-network/virtual-networks-reserved-private-ip.md",
+        "redirect_url": "https://docs.microsoft.com/previous-versions/azure/virtual-network/virtual-networks-reserved-private-ip",
+        "redirect_document_id": false
+    },
+    {
+        "source_path": "articles/virtual-network/virtual-networks-reserved-public-ip.md",
+        "redirect_url": "https://docs.microsoft.com/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip",
+        "redirect_document_id": false
+    },
+    {
+        "source_path": "articles/virtual-network/virtual-networks-sample-app.md",
+        "redirect_url": "https://docs.microsoft.com/previous-versions/azure/virtual-network/virtual-networks-sample-app",
+        "redirect_document_id": false
+    },
+    {
+        "source_path": "articles/virtual-network/virtual-networks-specifying-a-dns-settings-in-a-virtual-network-configuration-file.md",
+        "redirect_url": "https://docs.microsoft.com/previous-versions/azure/virtual-network/virtual-networks-specifying-a-dns-settings-in-a-virtual-network-configuration-file",
+        "redirect_document_id": false
+    },
+    {
+        "source_path": "articles/virtual-network/virtual-networks-specifying-dns-settings-in-a-service-configuration-file.md",
+        "redirect_url": "https://docs.microsoft.com/previous-versions/azure/virtual-network/virtual-networks-specifying-dns-settings-in-a-service-configuration-file",
+        "redirect_document_id": false
+    },
+    {
+        "source_path": "articles/virtual-network/virtual-networks-static-private-ip-classic-cli.md",
+        "redirect_url": "https://docs.microsoft.com/previous-versions/azure/virtual-network/virtual-networks-static-private-ip-classic-cli",
+        "redirect_document_id": false
+    },
+    {
+        "source_path": "articles/virtual-network/virtual-networks-using-network-configuration-file.md",
+        "redirect_url": "https://docs.microsoft.com/previous-versions/azure/virtual-network/virtual-networks-using-network-configuration-file",
+        "redirect_document_id": false
+    },
+    {
       "source_path": "articles/media-services/latest/access-api-cli-how-to.md",
       "redirect_url": "/media-services/latest/access-api-howto",
       "redirect_document_id": false
@@ -22920,6 +23190,7 @@
       "redirect_url": "/hdinsight/spark/apache-spark-machine-learning-mllib-ipython",
       "redirect_document_id": false
     }
+    
 
   ]
 }
