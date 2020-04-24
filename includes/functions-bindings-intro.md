@@ -11,10 +11,10 @@ ms.date: 09/29/2019
 ms.author: v-junlch
 ms.custom: include file
 ms.openlocfilehash: ac9d7b3e43e7013205aad6797234cf07200e3710
-ms.sourcegitcommit: 73a8bff422741faeb19093467e0a2a608cb896e1
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "71673574"
 ---
 此参考信息面向 Azure Functions 开发人员。 Azure Functions 的新手请从以下资源入手：

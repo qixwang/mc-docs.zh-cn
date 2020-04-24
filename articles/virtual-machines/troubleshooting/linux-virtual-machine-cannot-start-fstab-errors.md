@@ -16,10 +16,10 @@ origin.date: 10/09/2019
 ms.date: 11/11/2019
 ms.author: v-yeche
 ms.openlocfilehash: abf0d89a385594020adb6bf3196af5478c137fa0
-ms.sourcegitcommit: 1fd822d99b2b487877278a83a9e5b84d9b4a8ce7
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74116946"
 ---
 <!--Verified successfully-->

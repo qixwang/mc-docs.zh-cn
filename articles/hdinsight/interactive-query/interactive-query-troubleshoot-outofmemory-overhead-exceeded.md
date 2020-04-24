@@ -8,10 +8,10 @@ ms.author: v-yiso
 origin.date: 07/30/2019
 ms.date: 11/11/2019
 ms.openlocfilehash: 9fabe49cb65ccee2ce8c0a1aca7e7b757a652d76
-ms.sourcegitcommit: 642a4ad454db5631e4d4a43555abd9773cae8891
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "73425673"
 ---
 # <a name="scenario-joins-in-apache-hive-leads-to-an-outofmemory-error-in-azure-hdinsight"></a>方案：Apache Hive 中的联接导致 Azure HDInsight 中出现 OutOfMemory 错误

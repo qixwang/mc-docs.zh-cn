@@ -14,10 +14,10 @@ origin.date: 09/04/2019
 ms.date: 11/11/2019
 ms.author: v-jay
 ms.openlocfilehash: a180df3355891ba7f0af56efcbf694dfb3073c34
-ms.sourcegitcommit: ff8dcf27bedb580fc1fcae013ae2ec28557f48ac
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "73648815"
 ---
 # <a name="copy-data-from-presto-using-azure-data-factory-preview"></a>使用 Azure 数据工厂（预览版）从 Presto 复制数据
@@ -48,13 +48,13 @@ Azure 数据工厂提供内置的驱动程序用于启用连接，因此无需�
 
 Presto 链接服务支持以下属性：
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：Presto  | 是 |
 | host | Presto 服务器的 IP 地址或主机名。 （即 192.168.222.160）  | 是 |
 | serverVersion | Presto 服务器的版本。 （即 0.148-t）  | 是 |
 | 目录 | 针对服务器的所有请求的目录上下文。  | 是 |
-| 端口 | Presto 服务器用来侦听客户端连接的 TCP 端口。 默认值为 8080。  | 否 |
+| port | Presto 服务器用来侦听客户端连接的 TCP 端口。 默认值为 8080。  | 否 |
 | authenticationType | 用于连接到 Presto 服务器的身份验证机制。 <br/>允许值包括：匿名、LDAP   | 是 |
 | username | 用于连接到 Presto 服务器的用户名。  | 否 |
 | password | 用户名所对应的密码。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 否 |
@@ -95,11 +95,11 @@ Presto 链接服务支持以下属性：
 
 要从 Presto 复制数据，请将数据集的 type 属性设置为“PrestoObject”  。 支持以下属性：
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为：PrestoObject  | 是 |
-| schema | 架构的名称。 |否（如果指定了活动源中的“query”）  |
-| 表 | 表名称。 |否（如果指定了活动源中的“query”）  |
+| 架构 | 架构的名称。 |否（如果指定了活动源中的“query”）  |
+| 表 | 表的名称。 |否（如果指定了活动源中的“query”）  |
 | tableName | 具有架构的表的名称。 支持此属性是为了向后兼容。 对于新的工作负荷，请使用 `schema` 和 `table`。 | 否（如果指定了活动源中的“query”） |
 
 **示例**
@@ -127,10 +127,10 @@ Presto 链接服务支持以下属性：
 
 要从 Presto 复制数据，请将复制活动中的源类型设置为“PrestoSource”  。 复制活动**source**部分支持以下属性：
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
-| type | 复制活动源的 type 属性必须设置为：PrestoSource  | 是 |
-| query | 使用自定义 SQL 查询读取数据。 例如：`"SELECT * FROM MyTable"`。 | 否（如果指定了数据集中的“tableName”） |
+| type | 复制活动 source 的 type 属性必须设置为：PrestoSource  | 是 |
+| 查询 | 使用自定义 SQL 查询读取数据。 例如：`"SELECT * FROM MyTable"`。 | 否（如果指定了数据集中的“tableName”） |
 
 **示例：**
 

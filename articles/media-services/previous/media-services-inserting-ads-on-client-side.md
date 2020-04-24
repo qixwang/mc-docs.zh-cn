@@ -16,10 +16,10 @@ origin.date: 03/18/2019
 ms.date: 11/18/2019
 ms.author: v-jay
 ms.openlocfilehash: 3ee8dd04ce25686ee7a307c8b6118ddcdc28c1b0
-ms.sourcegitcommit: ea2aeb14116769d6f237542c90f44c1b001bcaf3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74116245"
 ---
 # <a name="inserting-ads-on-the-client-side"></a>在客户端上插入广告
@@ -32,8 +32,8 @@ ms.locfileid: "74116245"
 > 
 > 
 
-## <a id="insert_ads_into_media"></a>向媒体中插入广告
-Azure 媒体服务通过“Windows 媒体平台：。 附带广告支持的播放器框架在 Windows 8、Silverlight、Windows Phone 8 和 iOS 设备上均可用。 每个播放器框架包含演示如何实现播放器应用程序的示例代码。 可插入 media:list 中的广告有三种。
+## <a name="inserting-ads-into-your-media"></a><a id="insert_ads_into_media"></a>向媒体中插入广告
+Azure 媒体服务通过“Windows 媒体平台：播放器框架”提供广告插入支持。 附带广告支持的播放器框架在 Windows 8、Silverlight、Windows Phone 8 和 iOS 设备上均可用。 每个播放器框架包含演示如何实现播放器应用程序的示例代码。 可插入 media:list 中的广告有三种。
 
 * **线性** - 暂停主视频的全帧广告。
 * **非线性** - 播放主视频时显示的叠加式广告，通常为放置在播放器内的一个徽标或其他静态图像。
@@ -144,7 +144,7 @@ VAST 文件指定要显示的广告。 以下 XML 是线性广告 VAST 文件的
     </VAST>
 ```
 
-非线性广告也是在`<Creative>`元素中指定的。 以下示例演示描述非线性广告的 `<Creative>` 元素。
+非线性广告也是在`<Creative>`元素中指定的。 以下示例演示了描述非线性广告的`<Creative>`元素。
 
 ```xml
     <Creative id="video" sequence="1" AdID="">
@@ -165,7 +165,7 @@ VAST 文件指定要显示的广告。 以下 XML 是线性广告 VAST 文件的
 
 Image/gif、image/jpeg、image/png - 资源显示在 HTML <**img**> 标记中。
 
-Application/x-javascript - 资源显示在 HTML <**脚本**> 标记中。
+应用程序/x-javascript - 资源显示在 HTML <脚本  > 标记中。
 
 Application/x-shockwave-flash – 资源显示在 Flash Player 中。
 
@@ -353,7 +353,7 @@ MAST 文件以 **MAST** 元素开头，该元素包含一个 **triggers** 元素
 ### <a name="using-video-player-ad-interface-definition-vpaid"></a>使用视频播放器广告接口定义 (VPAID)
 VPAID 是用于使可执行广告单元能够与视频播放器进行通信的 API。 这可实现高度交互的广告体验。 用户可以与广告交互；广告可以对查看者采取的操作做出响应。 例如，广告可能会显示允许用户查看详细信息或更长时间版广告的按钮。 视频播放器必须支持 VPAID API 且可执行广告必须实现该 API。 播放器从广告服务器请求广告时，服务器可能使用包含 VPAID 广告的 VAST 响应进行响应。
 
-在必须于运行时环境（例如 Adobe Flash™ 或可以在 Web 浏览器中执行的 JavaScript）中执行的代码中创建可执行广告。 当广告服务器返回包含 VPAID 广告的 VAST 响应时，`<MediaFile>`元素中 apiFramework 属性的值必须为“VPAID”。 此属性指定所含广告为 VPAID 可执行广告。 类型属性必须设置为可执行文件（如“application/x-shockwave-flash”或“application/x-javascript”）的 MIME 类型。 以下 XML 代码片段演示包含 VPAID 可执行广告的 VAST 响应中的 `<MediaFile>` 元素。
+必须于运行时环境（例如 Adobe Flash™ 或可以在 Web 浏览器中执行的 JavaScript）中执行的代码中创建可执行广告。 当广告服务器返回包含 VPAID 广告的 VAST 响应时，`<MediaFile>`元素中 apiFramework 属性的值必须为“VPAID”。 此属性指定所含广告为 VPAID 可执行广告。 类型属性必须设置为可执行文件（如“application/x-shockwave-flash”或“application/x-javascript”）的 MIME 类型。 以下 XML 代码片段演示包含 VPAID 可执行广告的 VAST 响应中的 `<MediaFile>` 元素。
 
 ```xml
     <MediaFiles>

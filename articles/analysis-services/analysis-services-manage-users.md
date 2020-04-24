@@ -9,10 +9,10 @@ ms.date: 11/25/2019
 ms.author: v-yeche
 ms.reviewer: minewiskan
 ms.openlocfilehash: 6d6831f32874c41fa2190b32ee34804056bfab4d
-ms.sourcegitcommit: c5e012385df740bf4a326eaedabb987314c571a1
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74203594"
 ---
 # <a name="authentication-and-user-permissions"></a>身份验证和用户权限
@@ -76,9 +76,9 @@ Azure 资源所有者  。 资源所有者管理 Azure 订阅的资源。 资源
 
 ## <a name="database-roles"></a>数据库角色
 
- 为表格模型定义的角色就是数据库角色。 也就是说，此类角色包含由 Azure AD 用户和安全组构成的成员，并拥有特定权限来定义这些成员可以对模型数据库执行的操作。 数据库角色作为数据库中的单独对象创建，并且仅适用于创建该角色的数据库。   
+ 为表格模型定义的角色是数据库角色。 也就是说，此类角色包含由 Azure AD 用户和安全组构成的成员，并拥有特定权限来定义这些成员可以对模型数据库执行的操作。 数据库角色作为数据库中的单独对象创建，并且仅适用于创建该角色的数据库。   
 
- 默认情况下，创建新的表格模型项目时，该模型项目没有任何角色。 可使用 Visual Studio 中的“角色管理器”对话框定义角色。 如果在模型项目设计期间定义了角色，则这些角色仅适用于模型工作区数据库。 部署模型时，应对已部署模型使用相同的角色。 部署模型后，服务器和数据库管理员就可以使用 SSMS 管理角色和成员。 若要了解详细信息，请参阅[管理数据库角色和用户](analysis-services-database-users.md)。
+ 默认情况下，当您创建某一新的表格模型项目时，该模型项目不具有任何角色。 可使用 Visual Studio 中的“角色管理器”对话框定义角色。 如果在模型项目设计期间定义了角色，则这些角色仅适用于模型工作区数据库。 部署模型时，应对已部署模型使用相同的角色。 部署模型后，服务器和数据库管理员就可以使用 SSMS 管理角色和成员。 若要了解详细信息，请参阅[管理数据库角色和用户](analysis-services-database-users.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

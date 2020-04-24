@@ -17,15 +17,15 @@ ms.date: 10/14/2019
 ms.author: v-yeche
 ROBOTS: NOINDEX
 ms.openlocfilehash: e122bfc6150cd08f112d33750bde8dc89d3a170f
-ms.sourcegitcommit: c9398f89b1bb6ff0051870159faf8d335afedab3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "72272175"
 ---
 # <a name="create-a-vm-from-a-specialized-vhd-in-a-storage-account"></a>从存储帐户中的专用 VHD 创建 VM
 
-通过使用 Powershell 将专用非托管磁盘附加为 OS 磁盘来创建新 VM。 专用磁盘是保留原始 VM 中的用户帐户、应用程序和其他状态数据的现有 VM 中 VHD 的副本。 
+通过使用 Powershell 将专用非托管磁盘附加为 OS 磁盘来创建新 VM。 专用磁盘是保留原始 VM 中用户帐户、应用程序和其他状态数据的现有 VM 中 VHD 的副本。 
 
 可以使用两个选项：
 * [上传 VHD](sa-create-vm-specialized.md#option-1-upload-a-specialized-vhd)
@@ -41,12 +41,12 @@ ms.locfileid: "72272175"
 ### <a name="prepare-the-vm"></a>准备 VM
 可上传使用本地 VM 创建的专用 VHD 或从另一个云导出的 VHD。 用 VHD 保留原始 VM 中的用户帐户、应用程序和其他状态数据。 如果想要使用当前 VHD 创建新 VM，请确保完成以下步骤。 
 
-* [准备好要上传到 Azure 的 Windows VHD](prepare-for-upload-vhd-image.md?toc=%2fvirtual-machines%2fwindows%2ftoc.json)。 不要使用 Sysprep 通用化 VM  。
+* [准备好要上传到 Azure 的 Windows VHD](prepare-for-upload-vhd-image.md?toc=%2fvirtual-machines%2fwindows%2ftoc.json)。 **不要**使用 Sysprep 通用化 VM。
 * 删除 VM 上安装的所有来宾虚拟化工具和代理（例如 VMware 工具）。
 * 确保 VM 配置为通过 DHCP 来提取其 IP 地址和 DNS 设置。 这确保服务器在启动时在 VNet 中获取 IP 地址。 
 
 ### <a name="get-the-storage-account"></a>获取存储帐户
-需要在 Azure 中创建一个存储帐户用于存储上传的 VM 映像。 可以使用现有存储帐户，也可以创建新存储帐户。 
+需要在 Azure 中创建存储帐户来存储上传的 VM 映像。 可以使用现有存储帐户，也可以创建新存储帐户。 
 
 显示可用的存储帐户，请键入：
 

@@ -10,10 +10,10 @@ ms.date: 11/11/2019
 ms.author: v-junlch
 ms.custom: mvc
 ms.openlocfilehash: 5566023d677077946d33c51505244422d2956d39
-ms.sourcegitcommit: 40a58a8b9be0c825c03725802e21ed47724aa7d2
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "73934227"
 ---
 # <a name="route-web-traffic-based-on-the-url-using-azure-powershell"></a>使用 Azure PowerShell 基于 URL 对 Web 流量进行路由
@@ -53,7 +53,7 @@ New-AzResourceGroup -Name myResourceGroupAG -Location chinanorth
 
 ## <a name="create-network-resources"></a>创建网络资源
 
-无论是具有现有虚拟网络还是创建新的虚拟网络，都需要确保它包含一个仅用于应用程序网关的子网。 在本文中，你将为应用程序网关创建一个子网，为规模集创建一个子网。 将创建一个公用 IP 地址以便访问应用程序网关中的资源。
+无论是具有现有虚拟网络还是创建新的虚拟网络，都需要确保它包含一个仅用于应用程序网关的子网。 在本文中，你将为应用程序网关创建一个子网，为规模集创建一个子网。 将创建一个公共 IP 地址以便访问应用程序网关中的资源。
 
 使用 [New-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworksubnetconfig) 创建子网配置 *myAGSubnet* 和 *myBackendSubnet*。 使用 [New-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetwork) 和子网配置创建名为 *myVNet* 的虚拟网络。 最后使用 [New-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/az.network/new-azpublicipaddress) 创建名为 *myAGPublicIPAddress* 的公共 IP 地址。 这些资源用于提供与应用程序网关及其关联资源的网络连接。
 

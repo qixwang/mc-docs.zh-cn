@@ -10,10 +10,10 @@ ms.date: 09/16/2019
 ms.author: v-yeche
 ms.custom: include file
 ms.openlocfilehash: 1704c20949965afbbdebaa71dc06a9b596ee2cec
-ms.sourcegitcommit: 43f569aaac795027c2aa583036619ffb8b11b0b9
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/12/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "70921109"
 ---
 **上次文档更新时间**：太平洋标准时间 2019 年 8 月 9 日上午 10:00。

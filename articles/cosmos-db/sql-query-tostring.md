@@ -9,10 +9,10 @@ ms.date: 10/28/2019
 ms.author: v-yeche
 ms.custom: query-reference
 ms.openlocfilehash: 20d8ee08410fd9a70f74cbbd0a09a48b25471a16
-ms.sourcegitcommit: 73f07c008336204bd69b1e0ee188286d0962c1d7
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "72914634"
 ---
 # <a name="tostring-azure-cosmos-db"></a>ToString (Azure Cosmos DB)
@@ -31,7 +31,7 @@ ToString(<expr>)
 
 ## <a name="return-types"></a>返回类型
 
-  返回一个字符串表达式。  
+  返回字符串表达式。  
 
 ## <a name="examples"></a>示例
 
@@ -49,7 +49,7 @@ SELECT
     ToString(undefined) AS str8
 ```  
 
- 下面是结果集。  
+ 下面是结果集：  
 
 ```json
 [{"str1": "1", "str2": "Hello World", "str3": "NaN", "str4": "Infinity", "str5": "false", "str6": "0.1234", "str7": "false"}]  
@@ -66,7 +66,7 @@ CONCAT(ToString(p.Weight), p.WeightUnits)
 FROM p in c.Products 
 ```  
 
-下面是结果集。  
+下面是结果集：  
 
 ```json
 [{"$1":"4lb" },
@@ -87,7 +87,7 @@ SELECT
 FROM food 
 JOIN n IN food.nutrients
 ```
-下面是结果集。  
+下面是结果集：  
  ```json
 [{"nutrientID":"305"},
 {"nutrientID":"306","nutritionVal":"30"},

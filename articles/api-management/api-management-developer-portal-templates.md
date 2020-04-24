@@ -1,6 +1,6 @@
 ---
 title: 使用模板自定义 API 管理开发人员门户
-description: 了解如何使用模板自定义 Azure API 管理开发人员门户。
+description: 如何使用模板自定义 Azure API 管理开发人员门户。
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -16,13 +16,13 @@ origin.date: 11/04/2019
 ms.author: v-yiso
 ms.date: 11/18/2019
 ms.openlocfilehash: 77e930dd15af313661652a7d9417788d11224500
-ms.sourcegitcommit: 5844ad7c1ccb98ff8239369609ea739fb86670a4
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "73831461"
 ---
-# <a name="how-to-customize-the-azure-api-management-developer-portal-using-templates"></a>如何使用模板自定义 Azure API 管理开发人员门户
+# <a name="how-to-customize-the-azure-api-management-developer-portal-using-templates"></a>如何使用模板自定义 Azure API Management 开发人员门户
 
 在 Azure API 管理中自定义开发人员门户有三种基本方法：
 
@@ -39,15 +39,15 @@ ms.locfileid: "73831461"
 ## <a name="developer-portal-templates-overview"></a>开发人员门户模板概述
 在以管理员身份登录时，可从“开发人员门户”  编辑模板。 若要访问它，请先打开 Azure 门户，再单击 API 管理实例的服务工具栏中的“开发人员门户”  。
 
-若要访问开发人员门户模板，请单击左侧的自定义图标显示自定义菜单，并单击“模板”  。
+要访问开发人员门户模板，请单击左侧的自定义图标显示自定义菜单，并单击“模板”  。
 
 ![开发人员门户模板][api-management-customize-menu]
 
-模板列表显示了模板的多个类别，涵盖开发人员门户中的不同页面。 每个模板都不同，但编辑它们并发布更改的步骤均相同。 若要编辑模板，请单击模板的名称。
+模板列表显示模板的多个类别，涵盖开发人员门户中的不同页面。 每个模板都不同，但编辑它们并发布更改的步骤均相同。 若要编辑模板，请单击模板的名称。
 
 ![开发人员门户模板][api-management-templates-menu]
 
-单击模板将转到由该模板自定义的开发人员门户页面。 在此示例中，显示“产品列表”  模板。 “产品列表”  模板控制红色矩形所示的屏幕区域。 
+单击模板转到由该模板自定义的开发人员门户页面。 在此示例中，显示“产品列表”  模板。 “产品列表”  模板控制红色矩形所示的屏幕区域。 
 
 ![产品列表模板][api-management-developer-portal-templates-overview]
 
@@ -55,7 +55,7 @@ ms.locfileid: "73831461"
 
 ![用户配置文件模板][api-management-user-profile-templates]
 
-每个开发人员门户模板的编辑器都具有显示在页面底部的两个部分。 左侧显示模板的编辑窗格，右侧显示模板的数据模型。 
+每个开发人员门户模板的编辑器都具有两个在页面底部显示的部分。 左侧显示模板的编辑窗格，右侧显示模板的数据模型。 
 
 模板编辑窗格包含标记，用于控制开发人员门户中的对应页面的外观和行为。 模板中的标记使用 [DotLiquid](http://dotliquidmarkup.org/) 语法。 DotLiquid 的一个流行编辑器是 [DotLiquid for Designers](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers)。 在编辑期间对模板所作的任何更改都实时显示在浏览器中，但在[保存](#to-save-a-template)并[发布](#to-publish-a-template)该模板之前对客户不可见。
 
@@ -103,7 +103,7 @@ ms.locfileid: "73831461"
 }
 ```
 
-**产品列表**模板中的标记处理数据以显示所需的输出，方法是循环访问产品集合以显示信息和指向每个单独产品的链接。 请注意标记中的 `<search-control>` 和 `<page-control>` 元素。 这些元素控制页面上的搜索和分页控件的显示。 `ProductsStrings|PageTitleProducts` 是一个本地化的字符串引用，包含页面的 `h2` 标题文本。 有关可在开发人员门户模板中使用的字符串资源、页面控件和图标的列表，请参阅 [API 管理开发人员门户模板参考](api-management-developer-portal-templates-reference.md)。
+**产品列表**模板中的标记处理数据以显示所需的输出，方法是循环访问产品集合以显示信息和指向每个单独产品的链接。 请注意标记中的 `<search-control>` 和 `<page-control>` 元素。 这些元素控制页面上的搜索和分页控件的显示。 `ProductsStrings|PageTitleProducts` 是一个本地化字符串参考，包含页面的 `h2` 标题文本。 有关可在开发人员门户模板中使用的字符串资源、页面控件和图标的列表，请参阅 [API 管理开发人员门户模板参考](api-management-developer-portal-templates-reference.md)。
 
 ```html
 <search-control></search-control>
@@ -139,19 +139,19 @@ ms.locfileid: "73831461"
 已保存的更改在开发人员门户中不生效，直到它们发布。
 
 ## <a name="to-publish-a-template"></a>发布模板
-已保存的模板可单独发布，也可全部一起发布。 若要发布个别模板，请在模板编辑器中单击“发布”。
+已保存的模板可单独或全部一起发布。 若要发布个别模板，请在模板编辑器中单击“发布”。
 
 ![发布模板][api-management-publish-template]
 
-单击“是”  进行确认并使模板在开发人员门户中生效。
+单击“是”  确认并使模板在开发人员门户中生效。
 
 ![确认发布][api-management-publish-template-confirm]
 
-若要发布所有当前未发布的模板版本，请单击模板列表中的“发布”  。 未发布的模板由跟在模板名称之后的星号予以指示。 在此示例中，将发布“产品列表”  和“产品”  模板。
+若要发布所有当前未发布的模板版本，请单击模板列表中的“发布”  。 未发布的模板通过模板名称后跟星号来指定。 在此示例中，将发布“产品列表”  和“产品”  模板。
 
 ![发布模板][api-management-publish-templates]
 
-单击“发布自定义”  进行确认。
+单击“发布自定义”  确认。
 
 ![确认发布][api-management-publish-customizations]
 
@@ -169,9 +169,9 @@ ms.locfileid: "73831461"
 还原操作完成后，模板的以前发布的版本在开发人员门户中生效。
 
 ## <a name="to-restore-a-template-to-the-default-version"></a>将模板还原到默认版本
-将模板还原到其默认版本的过程分为两步。 首先，必须还原模板，然后必须发布还原后的版本。
+将模板还原到其默认版本的过程分为两步。 首先必须还原模板，然后必须发布已还原的版本。
 
-若要将单个模板还原到默认版本，请在模板编辑器中单击“还原”。
+要将单个模板还原到默认版本，请在模板编辑器中单击“还原”。
 
 ![还原模板][api-management-reset-template]
 
@@ -179,11 +179,11 @@ ms.locfileid: "73831461"
 
 ![确认][api-management-reset-template-confirm]
 
-若要将所有模板还原到其默认版本，请单击模板列表中的“还原默认模板”  。
+要将所有模板还原到其默认版本，请单击模板列表中的“还原默认模板”  。
 
 ![还原模板][api-management-restore-templates]
 
-然后，必须按照[发布模板](#to-publish-a-template)中的步骤分别或一起发布还原后的所有模板。
+然后，还原的模板必须按照[发布模板](#to-publish-a-template)中的步骤单独或全部同时发布。
 
 ## <a name="next-steps"></a>后续步骤
 有关开发人员门户模板、字符串资源、图标和页面控件的参考信息，请参阅 [API 管理开发人员门户模板参考](./api-management-developer-portal-templates-reference.md)。

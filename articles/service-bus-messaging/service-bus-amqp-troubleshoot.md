@@ -16,10 +16,10 @@ origin.date: 04/23/2019
 ms.date: 09/23/2019
 ms.author: v-lingwu
 ms.openlocfilehash: 5afaa88e7c66cf05b827071a828ce5bd09489c7c
-ms.sourcegitcommit: 2f2ced6cfaca64989ad6114a6b5bc76700870c1a
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "71330330"
 ---
 # <a name="amqp-errors-in-azure-service-bus"></a>Azure 服务总线中的 AMQP 错误
@@ -51,9 +51,9 @@ Error{condition=amqp:connection:forced, description='The connection was inactive
 若要详细了解 AMQP 和服务总线，请单击以下链接：
 
 * [服务总线 AMQP 概述]
-* [AMQP 1.0 协议指南]
+* [AMQP 1.0 protocol guide]
 * [适用于 Windows Server 的服务总线中的 AMQP]
 
 [服务总线 AMQP 概述]: service-bus-amqp-overview.md
-[AMQP 1.0 协议指南]: service-bus-amqp-protocol-guide.md
+[AMQP 1.0 protocol guide]: service-bus-amqp-protocol-guide.md
 [适用于 Windows Server 的服务总线中的 AMQP]: https://docs.microsoft.com/previous-versions/service-bus-archive/dn282144(v=azure.100)

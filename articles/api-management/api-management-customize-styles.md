@@ -1,5 +1,5 @@
 ---
-title: 在 Azure API 管理旧开发人员门户中自定义页面样式 | Microsoft Docs
+title: 在 Azure API 管理旧版开发人员门户中自定义页面样式 | Microsoft Docs
 description: 遵循本快速入门中的步骤，在 Azure API 管理开发人员门户中自定义元素的样式。
 services: api-management
 documentationcenter: ''
@@ -16,10 +16,10 @@ origin.date: 11/04/2019
 ms.date: 11/18/2019
 ms.author: v-yiso
 ms.openlocfilehash: 73255c8c7612b7c817a7b1f84cd6de4451751fac
-ms.sourcegitcommit: 5844ad7c1ccb98ff8239369609ea739fb86670a4
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "73831463"
 ---
 # <a name="customize-the-style-of-the-developer-portal-pages"></a>自定义开发人员门户页面的样式
@@ -30,7 +30,7 @@ ms.locfileid: "73831463"
 * 跨开发人员门户更新页面元素所用的样式（本指南中所述）
 * [修改门户生成的页面所用的模板](api-management-developer-portal-templates.md)（例如 API 文档、产品和用户身份验证）
 
-本文介绍如何在旧**开发人员**门户的页面上自定义元素的样式，并查看所做的更改。
+本文介绍如何自定义旧版开发人员门户页面上元素的样式并查看更改  。
 
 ![自定义样式](./media/modify-developer-portal-style/developer_portal.png)
 
@@ -38,16 +38,16 @@ ms.locfileid: "73831463"
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 + 了解 [Azure API 管理术语](api-management-terminology.md)。
-+ 完成以下快速入门：[创建一个 Azure API 管理实例](get-started-create-service-instance.md)。
-+ 此外，请完成以下教程：[导入和发布第一个 API](import-and-publish.md)。
++ 完成以下快速入门：[创建 Azure API 管理实例](get-started-create-service-instance.md)。
++ 此外，请完成以下教程：[导入并发布第一个 API](import-and-publish.md)。
 
 ## <a name="customize-the-developer-portal"></a>自定义开发人员门户
 
 1. 选择“概述”。 
-2. 单击“概述”窗口顶部的“开发人员门户(旧)”按钮。  
+2. 单击“概述”窗口顶部的“开发人员门户(旧版)”按钮   。
 3. 在屏幕的左上方，可以看到由两支画笔构成的图标。 将鼠标悬停在此图标上，打开门户自定义菜单。
 
     ![自定义样式](./media/modify-developer-portal-style/modify-developer-portal-style01.png)
@@ -81,4 +81,4 @@ ms.locfileid: "73831463"
 
 ## <a name="next-steps"></a>后续步骤
 
-你可能还有兴趣了解[如何使用模板自定义 Azure API 管理开发人员门户](api-management-developer-portal-templates.md)。
+你还可能希望了解[如何使用模板自定义 Azure API 管理开发人员门户](api-management-developer-portal-templates.md)。

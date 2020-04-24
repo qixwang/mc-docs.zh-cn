@@ -15,10 +15,10 @@ origin.date: 08/20/2019
 ms.date: 11/11/2019
 ms.author: v-yeche
 ms.openlocfilehash: 00e454148d83f123595989e67fac7ef3d10596a7
-ms.sourcegitcommit: 1fd822d99b2b487877278a83a9e5b84d9b4a8ce7
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74116895"
 ---
 # <a name="how-to-reset-local-linux-password-on-azure-vms"></a>如何在 Azure VM 上重置本地 Linux 密码
@@ -51,7 +51,7 @@ ms.locfileid: "74116895"
     grep SCSI /var/log/messages (centos, suse, oracle)
     ```
 
-    下面是 grep 命令的示例输出：
+    下面是 grep 命令的输出示例：
 
     ```bash
     kernel: [ 9707.100572] sd 3:0:0:0: [sdc] Attached SCSI disk
@@ -63,13 +63,13 @@ ms.locfileid: "74116895"
     mkdir /tempmount
     ```
 
-6. 在该装入点上装载 OS 磁盘。 通常需要装载 *sdc1* 或 *sdc2*。 这将取决于断开的计算机磁盘 */etc* 目录中的托管分区。
+6. 在该装入点上装载 OS 磁盘。 通常需要装载 sdc1  或 sdc2  。 这将取决于损坏的计算机磁盘的 /etc  目录中的托管分区。
 
     ```bash
     mount /dev/sdc1 /tempmount
     ```
 
-7. 在进行任何更改之前创建核心凭据文件的副本：
+7. 在进行任何更改之前，请创建核心凭据文件的副本：
 
     ```bash
     cp /etc/passwd /etc/passwd_orig    
@@ -110,6 +110,6 @@ ms.locfileid: "74116895"
 
 * [Troubleshoot Azure VM by attaching OS disk to another Azure VM](https://social.technet.microsoft.com/wiki/contents/articles/18710.troubleshoot-azure-vm-by-attaching-os-disk-to-another-azure-vm.aspx)（通过将 OS 磁盘附加到另一个 Azure VM 对 Azure VM 进行故障排除）
 
-* [Azure CLI：如何从 VHD 删除和重新部署 VM](https://blogs.msdn.microsoft.com/linuxonazure/2016/07/21/azure-cli-how-to-delete-and-re-deploy-a-vm-from-vhd/)
+* [Azure CLI: How to delete and re-deploy a VM from VHD](https://blogs.msdn.microsoft.com/linuxonazure/2016/07/21/azure-cli-how-to-delete-and-re-deploy-a-vm-from-vhd/)（Azure CLI：如何从 VHD 删除和重新部署 VM）
 
 <!-- Update_Description: wording update, update link -->

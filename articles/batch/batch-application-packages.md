@@ -16,10 +16,10 @@ ms.date: 09/23/2019
 ms.author: v-lingwu
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 472d46c607f9767eddf525bc0f72a76a2d4924e3
-ms.sourcegitcommit: 2f2ced6cfaca64989ad6114a6b5bc76700870c1a
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "71330291"
 ---
 # <a name="deploy-applications-to-compute-nodes-with-batch-application-packages"></a>使用 Batch 应用程序包将应用程序部署到计算节点
@@ -61,7 +61,7 @@ Batch 中的应用程序包含一个或多个应用程序包，指定应用程�
     其他可受益于任务应用程序包的方案为，运行大型应用程序但只执行少数任务的作业。 例如，预处理或合并应用程序非常庞大的预处理阶段或合并任务可能受益于使用任务应用程序包。
 
 > [!IMPORTANT]
-> 批处理帐户中的应用程序和应用程序包数目，以及应用程序包的大小上限有其限制。 有关这些限制的详细信息，请参阅 [Azure Batch 服务的配额和限制](batch-quota-limit.md)。
+> Batch 帐户中的应用程序和应用程序包数目，以及应用程序包的大小上限有其限制。 有关这些限制的详细信息，请参阅 [Azure Batch 服务的配额和限制](batch-quota-limit.md)。
 > 
 > 
 
@@ -196,7 +196,7 @@ Batch 服务使用 Azure 存储将应用程序包存储为块 blob。 对于块 
 ![删除应用程序][12]
 
 ## <a name="install-applications-on-compute-nodes"></a>将应用程序安装在计算节点上
-了解如何使用 Azure 门户管理应用程序包之后，接下来介绍如何使用批处理任务将它们部署到计算节点并运行它们。
+了解如何使用 Azure 门户管理应用程序包之后，接下来介绍如何使用 Batch 任务将它们部署到计算节点并运行它们。
 
 ### <a name="install-pool-application-packages"></a>安装池应用程序包
 要将应用程序包安装在池中的所有计算节点上，需要为池指定一个或多个应用程序包 *引用* 。 将每个计算节点加入池以及该节点重新启动或重置映像时，为池指定的应用程序包会安装在该节点上。
@@ -343,7 +343,7 @@ foreach (ApplicationSummary app in applications)
 ```
 
 ## <a name="wrap-up"></a>总结
-当客户使用提供的启用 Batch 服务来处理操作时，可以通过应用程序包帮助他们选择作业的应用程序，以及指定要使用的确切版本。 你还可以在服务中提供让客户上传及跟踪其应用程序的功能。
+当客户使用提供的启用 Batch 服务来处理操作时，可以通过应用程序包帮助他们选择作业的应用程序，以及指定要使用的确切版本。 还可以在服务中提供让客户上传及跟踪其应用程序的功能。
 
 ## <a name="next-steps"></a>后续步骤
 * [Batch REST API][api_rest] 还提供应用程序包的使用支持。 有关示例，请参阅[将池添加到帐户][rest_add_pool]中的 [applicationPackageReferences][rest_add_pool_with_packages] 元素，了解如何使用 REST API 指定要安装的包。 若要深入了解如何使用 Batch REST API 获取应用程序信息，请参阅[应用程序][rest_applications]。

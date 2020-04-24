@@ -1,5 +1,5 @@
 ---
-title: Azure AD Connect：排查 SQL 连接问题 | Microsoft 文档
+title: Azure AD Connect：排查 SQL 连接问题 | Microsoft Docs
 description: 介绍如何排查使用 Azure AD Connect 时出现的 SQL 连接问题。
 services: active-directory
 documentationcenter: ''
@@ -16,10 +16,10 @@ ms.subservice: hybrid
 ms.author: v-junlch
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e15b60a334ec5db065f1fec259478720f2abd480
-ms.sourcegitcommit: 74f50c9678e190e2dbb857be530175f25da8905e
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/12/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "72292097"
 ---
 # <a name="troubleshoot-sql-connectivity-issues-with-azure-ad-connect"></a>排除使用 Azure AD Connect 时的 SQL 连接问题

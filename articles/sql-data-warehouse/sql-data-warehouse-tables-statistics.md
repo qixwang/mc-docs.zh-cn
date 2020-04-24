@@ -13,10 +13,10 @@ ms.author: v-jay
 ms.reviewer: jrasnick
 ms.custom: seoapril2019
 ms.openlocfilehash: b2326d4f46aac2131051453310e2f362da85f31f
-ms.sourcegitcommit: 73f07c008336204bd69b1e0ee188286d0962c1d7
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "72913257"
 ---
 # <a name="table-statistics-in-azure-sql-data-warehouse"></a>Azure SQL 数据仓库中的表统计信息
@@ -51,7 +51,7 @@ SET AUTO_CREATE_STATISTICS ON
 - INSERT-SELECT
 - CTAS
 - UPDATE
-- 删除
+- DELETE
 - EXPLAIN
 
 > [!NOTE]
@@ -62,7 +62,7 @@ SET AUTO_CREATE_STATISTICS ON
 > [!NOTE]
 > 统计信息的创建将记录在其他用户上下文中的 [sys.dm_pdw_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?view=azure-sqldw-latest) 中。
 
-创建自动统计信息时，它们将采用以下格式：_WA_Sys_<十六进制的 8 位列 ID>_<十六进制的 8 位表 ID>。 可以通过运行 [DBCC SHOW_STATISTICS](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-show-statistics-transact-sql?view=azure-sqldw-latest) 命令查看已创建的统计信息：
+在创建自动统计信息时，它们将采用以下格式：_WA_Sys_<以十六进制表示的 8 位列 ID>_<以十六进制表示的 8 位表 ID>。 可以通过运行 [DBCC SHOW_STATISTICS](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-show-statistics-transact-sql?view=azure-sqldw-latest) 命令查看已创建的统计信息：
 
 ```sql
 DBCC SHOW_STATISTICS (<table_name>, <target>)
@@ -135,7 +135,7 @@ WHERE
 
 有关详细信息，请参阅[基数估计](https://docs.microsoft.com/sql/relational-databases/performance/cardinality-estimation-sql-server)。
 
-## <a name="examples-create-statistics"></a>示例:创建统计信息
+## <a name="examples-create-statistics"></a>示例：创建统计信息
 
 以下示例演示如何使用各种选项来创建统计信息。 用于每个列的选项取决于数据特征以及在查询中使用列的方式。
 
@@ -211,7 +211,7 @@ CREATE STATISTICS stats_col1 ON table1 (col1) WHERE col1 > '2000101' AND col1 < 
 > [!NOTE]
 > 用于估计查询结果中行数的直方图只适用于统计信息对象定义中所列的第一个列。
 
-在此示例中，直方图针对的是 product\_category  。 跨列统计信息是根据 *product\_category* 和 *product\_sub_category* 计算的：
+在此示例中，直方图位于 product*category\_* 。 跨列统计信息是根据 *product\_category* 和 *product\_sub_category* 计算的：
 
 ```sql
 CREATE STATISTICS stats_2cols ON table1 (product_category, product_sub_category) WHERE product_category > '2000101' AND product_category < '20001231' WITH SAMPLE = 50 PERCENT;
@@ -243,7 +243,7 @@ CREATE STATISTICS stats_col3 on dbo.table3 (col3);
 
 ### <a name="use-a-stored-procedure-to-create-statistics-on-all-columns-in-a-database"></a>使用存储过程基于数据库中的所有列创建统计信息
 
-SQL 数据仓库不提供相当于 SQL Server 中 sp_create_stats 的系统存储过程。 此存储过程基于数据库中尚不包含统计信息的每个列创建单列统计信息对象。
+SQL 数据仓库不提供相当于 SQL Server 中 sp_create_stats 的系统存储过程。 此存储过程将基于数据库中尚不包含统计信息的每个列创建单列统计信息对象。
 
 以下示例可以帮助你开始进行数据库设计。 可以根据需要任意改写此存储过程：
 
@@ -353,7 +353,7 @@ EXEC [dbo].[prc_sqldw_create_stats] 3, 20;
 
 基于所有列创建示例统计信息
 
-## <a name="examples-update-statistics"></a>示例:更新统计信息
+## <a name="examples-update-statistics"></a>示例：更新统计信息
 
 要更新统计信息，可以：
 
@@ -376,7 +376,7 @@ UPDATE STATISTICS [dbo].[table1] ([stats_col1]);
 
 通过更新特定统计信息对象，可以减少管理统计信息所需的时间和资源。 在选择要更新的最佳统计信息对象之前，需要经过一定的思考。
 
-### <a name="update-all-statistics-on-a-table"></a>更新表中的所有统计信息
+### <a name="update-all-statistics-on-a-table"></a>更新表的所有统计信息
 
 用于更新表中所有统计信息对象的一个简单方法如下：
 

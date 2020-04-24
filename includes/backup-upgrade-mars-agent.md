@@ -14,10 +14,10 @@ origin.date: 08/29/2018
 ms.date: 10/25/2019
 ms.author: v-junlch
 ms.openlocfilehash: 4e7a6d52ca096cfc9526cbabe1f65e7b3db4cb82
-ms.sourcegitcommit: e60779782345a5428dd1a0b248f9526a8d421343
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "72912841"
 ---
 ## <a name="upgrade-the-mars-agent"></a>升级 MARS 代理

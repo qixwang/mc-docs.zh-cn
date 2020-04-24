@@ -14,10 +14,10 @@ origin.date: 09/02/2019
 ms.date: 10/14/2019
 ms.author: v-jay
 ms.openlocfilehash: f381fe0f00aa060097c73e233d1dde5be1c8d657
-ms.sourcegitcommit: aea45739ba114a6b069f782074a70e5dded8a490
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "72275461"
 ---
 # <a name="copy-data-from-sap-cloud-for-customer-c4c-using-azure-data-factory"></a>使用 Azure 数据工厂从 SAP Cloud for Customer (C4C) 复制数据
@@ -48,7 +48,7 @@ ms.locfileid: "72275461"
 
 SAP Cloud for Customer 链接服务支持以下属性：
 
-| 属性 | 说明 | 必选 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：**SapCloudForCustomer**。 | 是 |
 | url | SAP C4C OData 服务的 URL。 | 是 |
@@ -88,10 +88,10 @@ SAP Cloud for Customer 链接服务支持以下属性：
 
 若要从 SAP Cloud for Customer 复制数据，请将数据集的 type 属性设置为 **SapCloudForCustomerResource**。 支持以下属性：
 
-| 属性 | 说明 | 必选 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为：**SapCloudForCustomerResource** |是 |
-| path | 指定 SAP C4C OData 实体的路径。 |是 |
+| 路径 | 指定 SAP C4C OData 实体的路径。 |是 |
 
 **示例：**
 
@@ -118,12 +118,12 @@ SAP Cloud for Customer 链接服务支持以下属性：
 
 ### <a name="sap-c4c-as-source"></a>以 SAP C4C 作为源
 
-若要从 SAP Cloud for Customer 复制数据，请将复制活动中的源类型设置为 **SapCloudForCustomerSource**。 复制活动**source**部分支持以下属性：
+若要从 SAP Cloud for Customer 复制数据，请将复制活动中的源类型设置为 **SapCloudForCustomerSource**。 复制活动源  部分支持以下属性：
 
-| 属性 | 说明 | 必选 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：**SapCloudForCustomerSource**  | 是 |
-| 查询 | 指定用于读取数据的自定义 OData 查询。 | 否 |
+| query | 指定用于读取数据的自定义 OData 查询。 | 否 |
 
 用于获取特定天数据的示例查询：`"query": "$filter=CreatedOn ge datetimeoffset'2017-07-31T10:02:06.4202620Z' and CreatedOn le datetimeoffset'2017-08-01T10:02:06.4202620Z'"`
 
@@ -163,11 +163,11 @@ SAP Cloud for Customer 链接服务支持以下属性：
 
 若要将数据复制到 SAP Cloud for Customer，请将复制活动中的接收器类型设置为 **SapCloudForCustomerSink**。 复制活动接收器部分中支持以下属性  ：
 
-| 属性 | 说明 | 必选 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：**SapCloudForCustomerSink**  | 是 |
-| writeBehavior | 操作的写入行为。 可以是“Insert”、“Update”。 | 否。 默认值为“Insert”。 |
-| writeBatchSize | 写入操作的批大小。 可获得最佳性能的批大小可能会因不同表或服务器而异。 | 否。 默认值为 10。 |
+| writeBehavior | 操作的写入行为。 可以是“Insert”、“Update”。 | 不是。 默认值为“Insert”。 |
+| writeBatchSize | 写入操作的批大小。 可获得最佳性能的批大小可能会因不同表或服务器而异。 | 不是。 默认值为 10。 |
 
 **示例：**
 

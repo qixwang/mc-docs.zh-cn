@@ -18,10 +18,10 @@ ms.subservice: hybrid
 ms.author: v-junlch
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 83106cecbb0b91346684c6caaba1e53addd9c555
-ms.sourcegitcommit: 74f50c9678e190e2dbb857be530175f25da8905e
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/12/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "72292099"
 ---
 # <a name="azure-ad-connect-sync-functions-reference"></a>Azure AD Connect 同步：函数引用
@@ -31,7 +31,7 @@ ms.locfileid: "72292099"
 
 如果函数被重载并接受多个语法，则会列出所有的有效语法。  
 该函数为强类型函数，并会验证传递的类型是否匹配记录的类型。  
-如果类型不匹配，将引发错误。
+如果类型不匹配，会引发错误。
 
 类型使用以下语法表示：
 
@@ -603,7 +603,7 @@ FormatDateTime 函数用于为具有指定格式的字符串设置 DateTime 格�
 * format：表示要转换为的格式的字符串。
 
 **备注：**  
-可以从以下位置找到格式的可能值：[FORMAT 函数的自定义日期和时间格式](https://docs.microsoft.com/dax/custom-date-and-time-formats-for-the-format-function)。
+格式的可能值可以在此处找到：[FORMAT 函数的自定义日期和时间格式](https://docs.microsoft.com/dax/custom-date-and-time-formats-for-the-format-function)。
 
 **示例：**  
 
@@ -1271,7 +1271,7 @@ UCase 函数将字符串中的所有字符都转换为大写形式。
 
 **示例：**  
 `UCase("TeSt")`  
-返回“TEST”。
+返回 "test"。
 
 ---
 ### <a name="where"></a>Where

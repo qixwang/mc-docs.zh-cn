@@ -9,10 +9,10 @@ origin.date: 02/13/2019
 ms.date: 06/10/2019
 ms.author: v-yeche
 ms.openlocfilehash: 3e3b950d3a1bd80aa5ecb4a43c6284502413a099
-ms.sourcegitcommit: e0225b4d68a71bfa5bbcb7d8d7e0214b9a17dc5d
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "71083165"
 ---
 # <a name="troubleshoot-configuration-server-issues"></a>排查配置服务器问题

@@ -16,10 +16,10 @@ origin.date: 04/20/2018
 ms.date: 11/11/2019
 ms.author: v-yeche
 ms.openlocfilehash: 4dc2deaf52698d13a3271cd2a5e7e86dcc9977b7
-ms.sourcegitcommit: 5844ad7c1ccb98ff8239369609ea739fb86670a4
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "73831473"
 ---
 # <a name="how-to-install-and-configure-trend-micro-deep-security-as-a-service-on-a-windows-vm"></a>如何在 Windows VM 上安装和配置 Trend Micro Deep Security 即服务
@@ -62,7 +62,7 @@ ms.locfileid: "73831473"
 ## <a name="next-steps"></a>后续步骤
 安装后，代理需要几分钟时间才会开始运行。 之后需在虚拟机上激活 Deep Security，才能通过 Deep Security Manager 进行管理。 有关其他说明，请参阅以下文章：
 
-* 有关此解决方案的 Trend 文章：[Instant-On Cloud Security for Azure](https://go.microsoft.com/fwlink/?LinkId=404101)（用于 Azure 的 Instant-On Cloud Security）
+* 有关此解决方案的 Trend 文章： [Instant-On Cloud Security for Azure](https://go.microsoft.com/fwlink/?LinkId=404101)
 * 用于配置虚拟机的 [Windows PowerShell 脚本示例](https://go.microsoft.com/fwlink/?LinkId=404100)
 * 示例的[说明](https://go.microsoft.com/fwlink/?LinkId=404099)
 

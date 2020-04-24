@@ -77,7 +77,7 @@
       href: durable-functions-http-api.md
     - name: .NET API
       href: 'https://docs.microsoft.com/dotnet/api/microsoft.azure.webjobs.extensions.durabletask?view=azure-dotnet'
-- name: 操作指南
+- name: 操作方法指南
   items:
     - name: 开发
       items:

@@ -20,10 +20,10 @@ ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4b3ac065ede26303950517eff07fa860d6624121
-ms.sourcegitcommit: 599d651afb83026938d1cfe828e9679a9a0fb69f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "69993730"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-saml-bearer-assertion-flow"></a>Microsoft 标识平台和 OAuth 2.0 SAML 持有者断言流
@@ -42,16 +42,16 @@ SAML 断言将发布到 OAuth 令牌终结点。  该终结点根据应用的先
 ## <a name="call-graph-using-saml-bearer-assertion"></a>使用 SAML 持有者断言的调用关系图
 现在，让我们了解如何以编程方式实际提取 SAML 断言。 此方法已使用 ADFS 进行测试。 不过，此方法也适用于支持以编程方式返回 SAML 断言的任何标识提供者。 基本过程是：获取 SAML 断言，获取访问令牌，然后访问 Microsoft Graph。
 
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>必备条件
 
 在授权服务器/环境 (Microsoft 365) 与标识提供者或 SAML 2.0 持有者断言 (ADFS) 颁发者之间建立信任关系。 
 
 在[门户](https://portal.azure.cn/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade)中注册应用程序：
 1. 登录到[门户的应用注册边栏选项卡](https://portal.azure.cn/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade)（请注意，我们将对图形 API 使用 v2.0 终结点，因此需要在此门户中注册应用程序。 否则可以使用 Azure Active Directory 中的注册）。 
 1. 选择“新注册”。 
-1. 出现“注册应用程序”页后，请输入应用程序的注册信息：  
+1. “注册应用程序”页出现后，请输入应用程序的注册信息：  
     1. **名称**：输入一个会显示给应用用户的有意义的应用程序名称。
-    1. **支持的帐户类型** - 选择希望应用程序支持的具体帐户。
+    1. **支持的帐户类型** - 选择希望应用程序支持的帐户。
     1. **重定向 URI (可选)** - 选择要生成的应用的类型：“Web”或“公共客户端(移动和桌面)”，然后输入应用程序的重定向 URI (或回复 URL)。
     1. 完成后，选择“注册”  。
 1. 记下应用程序（客户端）ID。

@@ -20,10 +20,10 @@ ms.reviewer: oldalton
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 46ee2fb47751c8a2b77b3eb0d9e06821a1f166e3
-ms.sourcegitcommit: a88cc623ed0f37731cb7cd378febf3de57cf5b45
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "73831039"
 ---
 # <a name="migrate-applications-to-msal-for-ios-and-macos"></a>将应用程序迁移到适用于 iOS 和 macOS 的 MSAL

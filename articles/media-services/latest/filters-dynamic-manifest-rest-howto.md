@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure 媒体服务 REST API 创建筛选器 | Microsoft Docs
-description: 本主题介绍如何创建筛选器，以便客户端能够使用它们来流式传输流的特定部分。 媒体服务创建动态清单来存档此选择性流。
+description: 本主题介绍如何创建筛选器，以便客户端能够使用它们来流式传输流的特定部分。 媒体服务将创建动态清单来存档此选择性流。
 services: media-services
 documentationcenter: ''
 author: WenJason
@@ -15,10 +15,10 @@ origin.date: 06/13/2019
 ms.date: 09/23/2019
 ms.author: v-jay
 ms.openlocfilehash: c5394dd7bdaeeadbeda9e15ae272e03532006fdf
-ms.sourcegitcommit: 8248259e4c3947aa0658ad6c28f54988a8aeebf8
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "71125589"
 ---
 # <a name="creating-filters-with-media-services-rest-api"></a>使用媒体服务 REST API 创建筛选器
@@ -32,7 +32,7 @@ ms.locfileid: "71125589"
 > [!NOTE]
 > 请确保查看 [presentationTimeRange](filters-concept.md#presentationtimerange)。
 
-## <a name="prerequisites"></a>先决条件 
+## <a name="prerequisites"></a>必备条件 
 
 若要完成本主题中所述的步骤，必须：
 
@@ -84,7 +84,7 @@ ms.locfileid: "71125589"
 
 ## <a name="create-account-filters"></a>创建帐户筛选器
 
-在你下载的 Postman 的集合中，选择“帐户筛选器”->“创建或更新帐户筛选器”。  
+在你下载的 Postman 的集合中，选择“帐户筛选器” **“创建或更新帐户筛选器”。** -> 
 
 **PUT** HTTP 请求方法类似于：
 
@@ -122,11 +122,11 @@ PUT https://management.chinacloudapi.cn/subscriptions/{subscriptionId}/resourceG
 
 可以指定资产或帐户筛选器的列表，这些筛选器将应用于流定位器。 [动态打包程序（流式处理终结点）](dynamic-packaging-overview.md)将此筛选器列表与客户端在 URL 中指定的筛选器一起应用。 此组合将生成[动态清单](filters-dynamic-manifest-overview.md)，该清单基于你在流定位器上指定的“URL + 筛选器”中的筛选器。 如果要应用筛选器，但不希望在 URL 中公开筛选器名称，建议使用此功能。
 
-若要使用 REST 创建筛选器并将其与流定位器关联，请使用[流定位器 - 创建](https://docs.microsoft.com/rest/api/media/streaminglocators/create) API并在[请求正文](https://docs.microsoft.com/rest/api/media/streaminglocators/create#request-body)中指定 `properties.filters`。
+若要使用 REST 创建筛选器并将其与流定位器关联，请使用[流定位器 - 创建](https://docs.microsoft.com/rest/api/media/streaminglocators/create) API并在`properties.filters`请求正文[中指定 ](https://docs.microsoft.com/rest/api/media/streaminglocators/create#request-body)。
                                 
 ## <a name="stream-using-filters"></a>使用筛选器的流
 
-定义筛选器后，客户端可以在流式 URL 中使用它们。 筛选器可以应用于自适应比特率流式处理协议：Apple HTTP Live Streaming (HLS)、MPEG-DASH 和平滑流式处理。
+定义筛选器后，客户端可以在流式 URL 中使用它们。 筛选器可应用到自适应比特率流式处理协议：Apple HTTP Live Streaming (HLS)、MPEG-DASH 和平滑流式处理。
 
 下表显示了一些包含筛选器的 URL 示例：
 

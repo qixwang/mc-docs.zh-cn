@@ -9,10 +9,10 @@ ms.date: 11/25/2019
 ms.author: v-yeche
 ms.reviewer: minewiskan
 ms.openlocfilehash: d59be06b2760deddfae8c4cb4fdcf411acb9a857
-ms.sourcegitcommit: c5e012385df740bf4a326eaedabb987314c571a1
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74203569"
 ---
 # <a name="create-an-office-data-connection-file"></a>创建 Office 数据连接文件

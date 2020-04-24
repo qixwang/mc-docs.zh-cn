@@ -11,10 +11,10 @@ origin.date: 09/04/2019
 ms.date: 11/11/2019
 ms.author: v-yeche
 ms.openlocfilehash: c5b32d0476f39694d28fc67f37c2a56631c7cd05
-ms.sourcegitcommit: 5844ad7c1ccb98ff8239369609ea739fb86670a4
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "73831294"
 ---
 # <a name="security-controls-for-linux-virtual-machines"></a>Linux 虚拟机的安全控制
@@ -54,7 +54,7 @@ ms.locfileid: "73831294"
 | 服务器端静态加密：Azure 托管的密钥 | 是 | 请参阅[适用于 Linux VM 的 Azure 磁盘加密](disk-encryption-overview.md)。 |
 | 传输中加密（例如 ExpressRoute 加密、VNet 中加密，以及 VNet-VNet 加密）| 是 | Azure 虚拟机支持 [ExpressRoute](/expressroute) 和 VNet 加密。 请参阅 [VM 中的传输中加密](/security/security-azure-encryption-overview#in-transit-encryption-in-vms)。 |
 | 服务器端静态加密：客户管理的密钥 (BYOK) | 是 | 客户托管密钥是受支持的 Azure 加密方案；请参阅 [Azure 加密概述](/security/security-azure-encryption-overview#in-transit-encryption-in-vms)。|
-| 列级加密（Azure 数据服务）| 不适用 | |
+| 列级加密（Azure 数据服务）| 空值 | |
 | 加密的 API 调用| 是 | 通过 HTTPS 和 SSL。 |
 
 ## <a name="configuration-management"></a>配置管理

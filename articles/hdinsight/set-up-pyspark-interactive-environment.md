@@ -18,10 +18,10 @@ origin.date: 06/13/2019
 ms.date: 10/21/2019
 ms.author: v-yiso
 ms.openlocfilehash: 9389d0f8d2fef1cfbbff61c2cd205ded5fd12f12
-ms.sourcegitcommit: b83f604eb98a4b696b0a3ef3db2435f6bf99f411
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/12/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "72292548"
 ---
 # <a name="set-up-the-pyspark-interactive-environment-for-visual-studio-code"></a>为 Visual Studio Code 设置 PySpark 交互式环境
@@ -62,7 +62,7 @@ sudo apt-get install libkrb5-dev
    sudo apt-get install python-dev
    ```
 
-4. 重启 VS Code 并回到运行以下命令的脚本编辑器：“HDInsight:  PySpark Interactive”。
+4. 重新启动 VS Code 并回到运行“HDInsight: PySpark Interactive”的脚本编辑器。 
 
 ## <a name="next-steps"></a>后续步骤
 

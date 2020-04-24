@@ -15,10 +15,10 @@ ms.topic: conceptual
 origin.date: 09/07/2019
 ms.date: 11/11/2019
 ms.openlocfilehash: 850fbe06a96a21aeabf31ea2f31a1c4fb83b0178
-ms.sourcegitcommit: ff8dcf27bedb580fc1fcae013ae2ec28557f48ac
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "73649186"
 ---
 # <a name="migrate-data-from-amazon-s3-to-azure-data-lake-storage-gen2"></a>将数据从 Amazon S3 迁移到 Azure Data Lake Storage Gen2

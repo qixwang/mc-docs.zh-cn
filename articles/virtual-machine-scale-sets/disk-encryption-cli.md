@@ -11,10 +11,10 @@ origin.date: 10/15/2019
 ms.date: 10/29/2019
 ms.author: v-junlch
 ms.openlocfilehash: 7312242f41425937b5857f49071197f566ff6af6
-ms.sourcegitcommit: cb2caa72ec0e0922a57f2fa1056c25e32c61b570
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "73142203"
 ---
 # <a name="encrypt-os-and-attached-data-disks-in-a-virtual-machine-scale-set-with-the-azure-cli"></a>使用 Azure CLI 对虚拟机规模集中的 OS 和附加数据磁盘进行加密
@@ -25,7 +25,7 @@ Azure CLI 用于从命令行或脚本创建和管理 Azure 资源。 本快速�
 
 ## <a name="create-a-scale-set"></a>创建规模集
 
-使用 [az group create](/cli/group) 创建资源组，然后才能创建规模集。 以下示例在“chinanorth”  位置创建名为“myResourceGroup”  的资源组：
+使用 [az group create](/cli/group) 创建资源组，才能创建规模集。 以下示例在“chinanorth”  位置创建名为“myResourceGroup”  的资源组：
 
 ```azurecli
 az group create --name myResourceGroup --location chinanorth
@@ -70,7 +70,7 @@ keyvault_name=myuniquekeyvaultname
 az keyvault create --resource-group myResourceGroup --name $keyvault_name --enabled-for-disk-encryption
 ```
 
-### <a name="use-an-existing-key-vault"></a>使用现有的 Key Vault
+### <a name="use-an-existing-key-vault"></a>使用现有的密钥保管库
 
 仅当你要将现有的 Key Vault 用于磁盘加密时，才需要执行此步骤。 如果在上一部分中创建了 Key Vault，请跳过此步骤。
 

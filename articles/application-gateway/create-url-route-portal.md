@@ -9,10 +9,10 @@ origin.date: 09/10/2019
 ms.date: 09/18/2019
 ms.author: v-junlch
 ms.openlocfilehash: 9409a6d7e61ad4fe6a960b3e70f80ea39fd002ad
-ms.sourcegitcommit: b47a38443d77d11fa5c100d5b13b27ae349709de
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "71083264"
 ---
 # <a name="tutorial-create-an-application-gateway-with-path-based-routing-rules-using-the-azure-portal"></a>教程：通过 Azure 门户使用基于路径的路由规则创建应用程序网关
@@ -137,7 +137,7 @@ ms.locfileid: "71083264"
 3. 在“后端目标”  、“目标类型”  下，从下拉列表中选择“虚拟机”  。
 
 5. 在  “目标”下， 为 myVM1 选择网络接口  。
-6. 选择“设置”  （应用程序对象和服务主体对象）。
+6. 选择“添加”   。
 7. 重复此步骤，添加“图片”后端池，   myVM2 作为目标；添加“视频”后端池，   myVM3 作为目标。
 8. 选择“添加”以保存后端池配置并返回到“后端”选项卡  。 
 

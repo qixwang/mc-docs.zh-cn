@@ -12,10 +12,10 @@ ms.date: 10/24/2019
 ms.author: v-junlch
 ms.subservice: B2C
 ms.openlocfilehash: 39f402a2068f09bde10c458ceeacc0f7dcfecf2b
-ms.sourcegitcommit: 817faf4e8d15ca212a2f802593d92c4952516ef4
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "72847106"
 ---
 # <a name="integer-claims-transformations"></a>整数声明转换
@@ -28,10 +28,10 @@ ms.locfileid: "72847106"
 
 将 long 数据类型转换为字符串数据类型。
 
-| 项目 | TransformationClaimType | 数据类型 | 注释 |
+| Item | TransformationClaimType | 数据类型 | 说明 |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | inputClaim | long | 要转换为字符串的 ClaimType。 |
-| OutputClaim | outputClaim | string | 调用此 ClaimsTransformation 后生成的 ClaimType。 |
+| OutputClaim | outputClaim | 字符串 | 调用此 ClaimsTransformation 后生成的 ClaimType。 |
 
 在此示例中，值类型为 long 的 `numericUserId` 声明将转换为值类型为字符串的 `UserId` 声明。
 
@@ -49,9 +49,9 @@ ms.locfileid: "72847106"
 ### <a name="example"></a>示例
 
 - 输入声明：
-    - **inputClaim**：12334 (long)
+    - **inputClaim**: 12334 (long)
 - 输出声明：
-    - **outputClaim**："12334" (string)
+    - **outputClaim**: "12334" (string)
 
 
 <!-- Update_Description: wording update -->

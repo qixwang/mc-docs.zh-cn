@@ -13,17 +13,17 @@ origin.date: 09/30/2019
 ms.date: 11/11/2019
 ms.author: v-yiso
 ms.openlocfilehash: 14ad4d87c652263f7339353450a41c4343fa08c0
-ms.sourcegitcommit: 642a4ad454db5631e4d4a43555abd9773cae8891
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "73425905"
 ---
 # <a name="troubleshoot-apache-hadoop-hdfs-by-using-azure-hdinsight"></a>使用 Azure HDInsight 对 Apache Hadoop HDFS 进行故障排除
 
 了解在 Apache Ambari 中使用 Hadoop 分布式文件系统 (HDFS) 有效负载时遇到的常见问题及其解决方法。
 
-## <a name="how-do-i-access-local-hdfs-from-inside-a-cluster"></a>如何从群集内访问本地 HDFS？
+## <a name="how-do-i-access-the-local-hdfs-from-inside-a-cluster"></a><a name="how-do-i-access-local-hdfs-from-inside-a-cluster"></a>如何从群集内访问本地 HDFS？
 
 ### <a name="issue"></a>问题
 

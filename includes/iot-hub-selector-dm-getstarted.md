@@ -1,9 +1,9 @@
 ---
 ms.openlocfilehash: f27be9941f4ec4f0720e27f1ccd4b34c810ee121
-ms.sourcegitcommit: 599d651afb83026938d1cfe828e9679a9a0fb69f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "70014688"
 ---
 > [!div class="op_single_selector"]
@@ -19,9 +19,9 @@ ms.locfileid: "70014688"
 
 * 处理从 IoT 中心发送的方法请求。
 * 在设备上启动相应的设备特定操作。
-* 通过向 IoT 中心*报告的属性*，提供状态更新。
+* 通过向 IoT 中心 *报告的属性*，提供状态更新。
 
-可以使用云中的后端应用运行设备孪生查询，以报告设备管理操作的进度。
+可以使用云中的后端应用运行设备克隆查询，以报告设备管理操作的进度。
 
 [lnk-devtwin]: ../articles/iot-hub/iot-hub-devguide-device-twins.md
 [lnk-c2dmethod]: ../articles/iot-hub/iot-hub-devguide-direct-methods.md

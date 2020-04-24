@@ -10,10 +10,10 @@ ms.topic: conceptual
 origin.date: 04/15/2019
 ms.date: 11/18/2019
 ms.openlocfilehash: b13a98de0f2ceaa6b51342f24810f6f203eca7d3
-ms.sourcegitcommit: c863b31d8ead7e5023671cf9b58415542d9fec9c
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74020824"
 ---
 # <a name="copy-data-to-azure-data-explorer-by-using-azure-data-factory"></a>使用 Azure 数据工厂将数据复制到 Azure 数据资源管理器 
@@ -61,7 +61,7 @@ Azure 数据工厂是一个完全托管的基于云的数据集成服务。 可�
    | **订阅** | 在下拉列表中，选择要在其中创建数据工厂的 Azure 订阅。 |
    | **资源组** | 选择“新建”，然后输入新资源组的名称。  如果已有一个资源组，请选择“使用现有项”。  |
    | **版本** | 在下拉列表中选择“V2”。  |  
-   | **Location** | 在下拉列表中选择数据工厂的位置。 该列表仅显示支持的位置。 数据工厂使用的数据存储可位于其他位置或区域中。 |
+   | **位置** | 在下拉列表中选择数据工厂的位置。 该列表仅显示支持的位置。 数据工厂使用的数据存储可位于其他位置或区域中。 |
 
 1. 选择“创建”  。
 

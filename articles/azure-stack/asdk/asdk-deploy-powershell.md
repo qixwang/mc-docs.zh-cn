@@ -19,10 +19,10 @@ ms.author: v-jay
 ms.reviewer: misainat
 ms.lastreviewed: 02/08/2019
 ms.openlocfilehash: e026ab45430dbb5006c8557782947b7a748ca56e
-ms.sourcegitcommit: 7dfb76297ac195e57bd8d444df89c0877888fdb8
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74020073"
 ---
 # <a name="deploy-asdk-from-the-command-line-using-powershell"></a>使用 Powershell 从命令行部署 ASDK

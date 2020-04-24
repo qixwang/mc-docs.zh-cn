@@ -16,16 +16,16 @@ origin.date: 04/01/2019
 ms.date: 09/23/2019
 ms.author: v-jay
 ms.openlocfilehash: e6aac12a5aadc4491fced2eae480b8dfed099a16
-ms.sourcegitcommit: 8248259e4c3947aa0658ad6c28f54988a8aeebf8
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "71124612"
 ---
 # <a name="upload-files-to-a-media-services-account-in-the-azure-portal"></a>在 Azure 门户中将文件上传到媒体服务帐户 
 
 > [!div class="op_single_selector"]
-> * [Portal](media-services-portal-upload-files.md)
+> * [门户](media-services-portal-upload-files.md)
 > * [.NET](media-services-dotnet-upload-files.md)
 > * [REST](media-services-rest-upload-files.md)
 > 
@@ -37,7 +37,7 @@ ms.locfileid: "71124612"
 
 媒体服务针对文件处理设置了一个最大文件大小。 若要详细了解文件大小限制，请参阅[媒体服务配额和限制](media-services-quotas-and-limitations.md)。
 
-若要完成本教程，需要一个 Azure 帐户。 有关详细信息，请参阅 [Azure 试用版](https://www.azure.cn/zh-cn/pricing/1rmb-trial-full/?form-type=identityauth)。 
+要完成本教程，需要一个 Azure 帐户。 有关详细信息，请参阅 [Azure 试用版](https://www.azure.cn/zh-cn/pricing/1rmb-trial-full/?form-type=identityauth)。 
 
 ## <a name="upload-files"></a>上传文件
 1. 在 [Azure 门户](https://portal.azure.cn/)中，选择 Azure 媒体服务帐户。
@@ -45,7 +45,7 @@ ms.locfileid: "71124612"
    
     ![上传文件](./media/media-services-portal-vod-get-started/media-services-upload.png)
    
-    此时会显示“上传视频资产”  窗口。
+    此时会显示“上传视频资产”窗口  。
    
    > [!NOTE]
    > 媒体服务不会限制上传视频的文件大小。

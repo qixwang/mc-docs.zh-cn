@@ -12,13 +12,13 @@ origin.date: 04/10/2019
 ms.date: 07/23/2019
 ms.author: v-junlch
 ms.openlocfilehash: 2159111c16fbd8631d25f8d97ef628db65893a59
-ms.sourcegitcommit: 09bf291a235f43202ba3752323395db86b16343f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "71119552"
 ---
-# <a name="example-identify-faces-in-images"></a>示例：在图像中识别人脸
+# <a name="example-identify-faces-in-images"></a>示例：识别图像中的人脸
 
 本指南演示如何使用事先根据已知人员创建的 PersonGroup 对象来识别未知的人脸。 这些示例是使用 Azure 认知服务人脸 API 客户端库以 C# 编写的。
 
@@ -31,7 +31,7 @@ ms.locfileid: "71119552"
 
 若要执行本示例，请准备好：
 
-- 一些包含该人人脸的照片。 [下载](https://github.com/Microsoft/Cognitive-Face-Windows/tree/master/Data) Anna、Bill 和 Clare 的示例照片。
+- 一些包含该人人脸的照片。 [下载示例照片](https://github.com/Microsoft/Cognitive-Face-Windows/tree/master/Data)，分别为 Anna、Bill 和 Clare。
 - 一系列测试照片。 照片可以包含或不包含 Anna、Bill 或 Clare 的人脸。 它们用于测试识别功能。 另外，请通过前面的链接选择一些示例图像。
 
 ## <a name="step-1-authorize-the-api-call"></a>步骤 1：授权 API 调用
@@ -84,7 +84,7 @@ CreatePersonResult friend1 = await faceClient.PersonGroupPerson.CreateAsync(
  
 // Define Bill and Clare in the same way
 ```
-### <a name="step2-2"></a>步骤 2.2：检测人脸并将其注册到正确的人
+### <a name="step-22-detect-faces-and-register-them-to-the-correct-person"></a><a name="step2-2"></a>步骤 2.2：检测人脸并将其注册到正确的人
 进行检测时，可以将一个“POST”Web 请求发送到[人脸 - 检测](https://dev.cognitive.azure.cn/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) API，将图像文件置于 HTTP 请求正文中。 使用客户端库时，人脸检测是通过 FaceClient 类的 DetectAsync 方法完成的。
 
 对于检测到的每个人脸，调用 [PersonGroup Person - Add Face](https://dev.cognitive.azure.cn/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b) 将其添加到正确的人。
@@ -189,8 +189,8 @@ using (Stream s = File.OpenRead(testImageFile))
 
 ## <a name="related-topics"></a>相关主题
 
-- [人脸识别的概念](../concepts/face-recognition.md)
-- [在图像中检测人脸](HowtoDetectFacesinImage.md)
+- [人脸识别概念](../concepts/face-recognition.md)
+- [检测图像中的人脸](HowtoDetectFacesinImage.md)
 - [添加人脸](how-to-add-faces.md)
 - [使用大规模功能](how-to-use-large-scale.md)
 

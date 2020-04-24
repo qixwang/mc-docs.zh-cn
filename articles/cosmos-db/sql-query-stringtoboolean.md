@@ -9,10 +9,10 @@ ms.date: 10/28/2019
 ms.author: v-yeche
 ms.custom: query-reference
 ms.openlocfilehash: c3a0a054f9185cafe5abe3e508a68567c9afdad0
-ms.sourcegitcommit: 73f07c008336204bd69b1e0ee188286d0962c1d7
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "72914648"
 ---
 # <a name="stringtoboolean-azure-cosmos-db"></a>StringToBoolean (Azure Cosmos DB)
@@ -48,7 +48,7 @@ SELECT
     StringToBoolean("false    ") AS b3
 ```  
 
- 下面是结果集。  
+ 下面是结果集：  
 
 ```json
 [{"b1": true, "b2": false, "b3": false}]
@@ -64,7 +64,7 @@ SELECT
     StringToBoolean("False")
 ```  
 
-下面是结果集。  
+下面是结果集：  
 
 ```json
 [{}]
@@ -81,7 +81,7 @@ SELECT
     StringToBoolean(true)
 ```  
 
-下面是结果集。  
+下面是结果集：  
 
 ```json
 [{}]

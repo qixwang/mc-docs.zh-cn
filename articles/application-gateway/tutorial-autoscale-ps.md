@@ -10,10 +10,10 @@ ms.date: 09/10/2019
 ms.author: v-junlch
 ms.custom: mvc
 ms.openlocfilehash: 429dd33ffeddb79faf407454f051acb643dc423f
-ms.sourcegitcommit: 843028f54c4d75eba720ac8874562ab2250d5f4d
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "70857401"
 ---
 # <a name="tutorial-create-an-application-gateway-that-improves-web-application-access"></a>教程：创建可改进 Web 应用程序访问的应用程序网关

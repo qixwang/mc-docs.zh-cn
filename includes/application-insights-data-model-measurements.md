@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: mbullwin
 ms.openlocfilehash: defccf9d61388fd1c0ae585246e296aa98b71a16
-ms.sourcegitcommit: 77475d11bc3b6a1fa7ab8aa1421fcdf39c0cd370
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "71267045"
 ---
 自定义度量值的集合。 使用此集合报告与遥测项关联的命名度量值。 典型用例如下：

@@ -10,13 +10,13 @@ ms.date: 11/11/2019
 ms.author: v-yeche
 ms.custom: include file
 ms.openlocfilehash: 671a0c073bdb9ea0e75dccd78ee62928cfd66ee1
-ms.sourcegitcommit: 5844ad7c1ccb98ff8239369609ea739fb86670a4
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "73831358"
 ---
-## <a name="benefits-of-managed-disks"></a>托管磁盘的优势
+## <a name="benefits-of-managed-disks"></a>托管磁盘的好处
 
 接下来让我们看一下使用托管磁盘可以获得的一些好处。
 
@@ -51,7 +51,7 @@ ms.locfileid: "73831358"
 
  若要了解如何将 vhd 传输到 Azure，请参阅 [CLI](../articles/virtual-machines/linux/disks-upload-vhd-to-managed-disk-cli.md) 或 [PowerShell](../articles/virtual-machines/windows/disks-upload-vhd-to-managed-disk-powershell.md) 文章。
 
-## <a name="encryption"></a>Encryption
+## <a name="encryption"></a>加密
 
 托管磁盘提供两种不同的加密。 第一种是服务器端加密 (SSE)，由存储服务执行。 第二种是 Azure 磁盘加密 (ADE)，可以在 VM 的 OS 和数据磁盘上启用。
 
@@ -87,7 +87,7 @@ Azure 磁盘加密允许加密 IaaS 虚拟机使用的 OS 磁盘和数据磁盘�
 
 ## <a name="managed-disk-snapshots"></a>托管磁盘快照
 
-托管磁盘快照是托管磁盘的只读崩溃一致性完整副本，默认情况下它作为标准托管磁盘进行存储。 使用快照可以在任意时间点备份托管磁盘。 这些快照独立于源磁盘而存在，并可用来创建新的托管磁盘。 
+托管磁盘快照是托管磁盘的只读崩溃一致性完整副本，默认情况下它作为标准托管磁盘进行存储。 使用快照，可以在任意时间点备份托管磁盘。 这些快照独立于源磁盘而存在，并可用来创建新的托管磁盘。 
 
 基于已使用大小对快照计费。 例如，如果创建预配容量为 64 GiB 且实际使用数据大小为 10 GiB 的托管磁盘的快照，则仅针对已用数据大小 10 GiB 对该快照计费。 可以通过查看 [Azure 使用情况报告](/billing/billing-understand-your-bill)来了解快照的已使用大小。 例如，如果快照的已用数据大小为 10 GiB，则使用情况报告将显示 10 GiB/(31 天 x 24 小时) = 0.013441 GiB 作为已使用数量。
 
@@ -119,22 +119,22 @@ Azure 磁盘加密允许加密 IaaS 虚拟机使用的 OS 磁盘和数据磁盘�
 
 下图描绘了如何使用三级预配系统为磁盘实时分配带宽和 IOPS：
 
-![显示带宽和 IOPS 分配的三级预配系统](media/virtual-machines-managed-disks-overview/real-time-disk-allocation.png)
+![显示带宽和 IOPS 分配情况的三级预配系统](media/virtual-machines-managed-disks-overview/real-time-disk-allocation.png)
 
-第一级预配设置单磁盘 IOPS 和带宽分配。  在第二级，计算服务器主机实施 SSD 预配，将其仅应用到存储在服务器的 SSD 上的数据，该 SSD 包括使用缓存的磁盘（ReadWrite 和 ReadOnly）以及本地和临时磁盘。 最后，VM 网络预配发生在第三级，它针对可供计算主机发送到 Azure 存储后端的任何 I/O。 使用此方案时，VM 的性能依赖于多种因素，从 VM 使用本地 SSD 的方式，到附加的磁盘数，再到所附加的磁盘的性能和缓存类型，不一而足。
+第一级预配设置每个磁盘的 IOPS 和带宽分配。  在第二级，计算服务器主机实施 SSD 预配，将其仅应用到存储在服务器的 SSD 上的数据，该 SSD 包括使用缓存的磁盘（ReadWrite 和 ReadOnly）以及本地和临时磁盘。 最后，在第三级进行 VM 网络预配，这适用于计算主机发送给 Azure 存储后端的任何 I/O。 使用此方案时，VM 的性能取决于许多因素，例如 VM 如何使用本地 SSD、附加的磁盘数，以及所附加的磁盘的性能和缓存类型。
 
-对于这些限制，举例来说，Standard_DS1v1 VM 无法达到 P30 磁盘的 5,000 IOPS 的极限，不管它是否为缓存型，因为在 SSD 和网络级别存在限制：
+下面是有关这些限制的一个示例：Standard_DS1v1 VM 无法达到 P30 磁盘可能达到的 5,000 IOPS，不管它是否进行缓存，因为在 SSD 和网络级别存在限制：
 
 ![Standard_DS1v1 示例分配](media/virtual-machines-managed-disks-overview/example-vm-allocation.png)
 
-Azure 将设置了优先级的网络通道用于磁盘流量，该流量获得的优先级高于其他低优先级网络流量。 这样有助于磁盘在发生网络争用的情况下保持其预期的性能。 类似地，Azure 存储在后台使用自动负载均衡来处理资源争用等问题。 Azure 存储会在你创建磁盘时分配必需的资源，并对资源应用主动和被动均衡以处理流量级别问题。 这进一步确保磁盘可以保持其预期的 IOPS 和吞吐量目标。 可以根据需要使用 VM 级别和磁盘级别的指标来跟踪性能并设置警报。
+Azure 使用优先的网络通道进行磁盘流量传输，优先于其他低优先级网络流量。 在出现网络争用时，这有助于磁盘保持预期的性能。 类似地，Azure 存储在后台使用自动负载均衡来处理资源争用和其他问题。 Azure 存储在你创建磁盘时分配所需资源，并应用主动和被动资源均衡来处理流量级别。 这进一步确保磁盘保持其预期的 IOPS 和吞吐量目标。 可以根据需要使用 VM 级别和磁盘级别的指标来跟踪性能和设置警报。
 
-请参阅[高性能设计](../articles/virtual-machines/windows/premium-storage-performance.md)一文，了解优化 VM + 磁盘配置的最佳做法，以便实现所需的性能。
+请参阅[为实现高性能而设计](../articles/virtual-machines/windows/premium-storage-performance.md)一文，了解优化 VM + 磁盘配置以实现所需性能的最佳做法
 
 <!--Pending on verify-->
 
 ## <a name="next-steps"></a>后续步骤
 
-在有关磁盘类型的文章中，详细了解 Azure 提供的各个磁盘类型以及哪个类型符合自己的需求，并了解其性能目标。
+在有关磁盘类型的文章中，详细了解 Azure 提供的各个磁盘类型、哪个类型符合自己的需求，并了解其性能目标。
 
 <!--Update_Description: wording update, update link-->

@@ -14,10 +14,10 @@ origin.date: 08/01/2019
 ms.date: 11/11/2019
 ms.author: v-jay
 ms.openlocfilehash: 1301e893dfd79449f475acb53e6772da5f805289
-ms.sourcegitcommit: ff8dcf27bedb580fc1fcae013ae2ec28557f48ac
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "73648806"
 ---
 # <a name="copy-data-from-oracle-responsys-using-azure-data-factory-preview"></a>使用 Azure 数据工厂（预览版）从 Oracle Responsys 复制数据
@@ -48,9 +48,9 @@ Azure 数据工厂提供内置的驱动程序用于启用连接，因此无需�
 
 Oracle Responsys 链接服务支持以下属性：
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
-| type | Type 属性必须设置为：Responsys  | 是 |
+| type | type 属性必须设置为：Responsys  | 是 |
 | endpoint | Responsys 服务器的终结点  | 是 |
 | clientId | 与 Responsys 应用程序关联的客户端 ID。  | 是 |
 | clientSecret | 与 Responsys 应用程序关联的客户端密码。 可选择将此字段标记为 SecureString，将其安全地存储在 ADF 中，或在 Azure Key Vault 中存储密码，并允许 ADF 复制活动在执行数据复制时从此处拉取（请参阅[在 Key Vault 中存储凭据](store-credentials-in-key-vault.md)了解详细信息）。 | 是 |
@@ -87,10 +87,10 @@ Oracle Responsys 链接服务支持以下属性：
 
 要从 Oracle Responsys 复制数据，请将数据集的 type 属性设置为“ResponsysObject”  。 支持以下属性：
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为：ResponsysObject  | 是 |
-| tableName | 表名称。 | 否（如果指定了活动源中的“query”） |
+| tableName | 表的名称。 | 否（如果指定了活动源中的“query”） |
 
 **示例**
 
@@ -116,12 +116,12 @@ Oracle Responsys 链接服务支持以下属性：
 
 ### <a name="oracle-responsys-as-source"></a>Oracle Responsys 作为源
 
-要从 Oracle Responsys 复制数据，请将复制活动中的源类型设置为“ResponsysSource”  。 复制活动**源**部分支持以下属性：
+要从 Oracle Responsys 复制数据，请将复制活动中的源类型设置为“ResponsysSource”  。 复制活动**source**部分支持以下属性：
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
-| type | 复制活动源的 type 属性必须设置为：ResponsysSource  | 是 |
-| query | 使用自定义 SQL 查询读取数据。 例如：`"SELECT * FROM MyTable"`。 | 否（如果指定了数据集中的“tableName”） |
+| type | 复制活动 source 的 type 属性必须设置为：ResponsysSource  | 是 |
+| 查询 | 使用自定义 SQL 查询读取数据。 例如：`"SELECT * FROM MyTable"`。 | 否（如果指定了数据集中的“tableName”） |
 
 **示例：**
 

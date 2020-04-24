@@ -11,10 +11,10 @@ ms.topic: conceptual
 origin.date: 04/03/2019
 ms.date: 07/12/2019
 ms.openlocfilehash: 1dfe9eec4beb92650a6548d6d8914c3711ae7e83
-ms.sourcegitcommit: c72fba1cacef1444eb12e828161ad103da338bb1
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "71674695"
 ---
 # <a name="how-to-start-an-azure-stream-analytics-job"></a>如何启动 Azure 流分析作业

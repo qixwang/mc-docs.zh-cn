@@ -9,10 +9,10 @@ ms.date: 09/09/2019
 ms.author: v-yeche
 ms.custom: seodec18
 ms.openlocfilehash: bbad5ee6e045711c085fdf691df804ccf3ea19e6
-ms.sourcegitcommit: 66192c23d7e5bf83d32311ae8fbb83e876e73534
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "70254601"
 ---
 # <a name="monitor-performance-and-storage-metrics-in-azure-cosmos-db"></a>监视 Azure Cosmos DB 中的性能和存储指标
@@ -39,7 +39,7 @@ ms.locfileid: "70254601"
 
 ## <a name="view-performance-metrics-on-the-account-page"></a>在“帐户”页上查看性能指标
 1. 在 [Azure 门户](https://portal.azure.cn/)中，单击“所有服务”  ，滚动到“数据库”  ，单击“Azure Cosmos DB”  ，然后单击要查看其性能指标的 Azure Cosmos DB 帐户的名称。
-2. 默认情况下，“监视”可重用功能区  显示以下磁贴：
+2. 默认情况下，“监视”  可重用功能区显示以下磁贴：
 
     * 当天的请求总数。
     * 使用的存储量。
@@ -64,17 +64,17 @@ ms.locfileid: "70254601"
     * 新的警报规则的说明。
     * 警报规则指标。
     * 确定何时激活警报的条件、阈值和时间段。 例如，在过去的 15 分钟服务器错误计数大于 5。
-    * 当警报触发时，服务管理员和协同管理员是否会通过电子邮件得到通知。
+    * 当警报被触发时，服务管理员和协同管理员是否将通过电子邮件得到通知。
     * 警报通知的其他电子邮件地址。  
         ![“添加警报规则”页的屏幕截图](./media/monitor-accounts/madocdb12.png)
 
 ## <a name="monitor-azure-cosmos-db-programmatically"></a>以编程方式监视 Azure Cosmos DB
-门户中可用的帐户级别指标（如帐户存储使用情况和请求总数）不可通过 SQL API 使用。 但是，可以使用 SQL API 在集合级别检索使用情况数据。 若要检索集合级别的数据，请执行以下操作：
+门户中提供的帐户级指标（如帐户存储使用率和总请求数）不可通过 SQL API 获得。 但是，可以使用 SQL API 在集合级别检索使用情况数据。 若要检索集合级别的数据，请执行以下操作：
 
-* 若要使用 REST API，请[对集合执行 GET](https://msdn.microsoft.com/library/mt489073.aspx)。 集合的配额和使用情况信息返回到响应中的 x-ms-resource-quota 和 x-ms-resource-usage 标头中。
-* 要使用 .NET SDK，请使用 [DocumentClient.ReadDocumentCollectionAsync](https://docs.azure.cn/dotnet/api/microsoft.azure.documents.client.documentclient.readdocumentcollectionasync) 方法，它返回 [ResourceResponse](https://msdn.microsoft.com/library/dn799209.aspx)，其中包含大量使用情况属性，例如 **CollectionSizeUsage**、**DatabaseUsage**、**DocumentUsage** 等。
+* 若要使用 REST API，请[对集合执行 GET](https://msdn.microsoft.com/library/mt489073.aspx)。 集合的配额和使用情况信息将返回到响应中的 x-ms-resource-quota 和 x-ms-resource-usage 标头中。
+* 要使用 .NET SDK，请使用 [DocumentClient.ReadDocumentCollectionAsync](https://docs.azure.cn/dotnet/api/microsoft.azure.documents.client.documentclient.readdocumentcollectionasync) 方法，它将返回 [ResourceResponse](https://msdn.microsoft.com/library/dn799209.aspx)，其中包含大量使用情况属性，例如 **CollectionSizeUsage**、**DatabaseUsage**、**DocumentUsage** 等。
 
-若要访问其他指标，请使用 [Azure Monitor SDK](https://www.nuget.org/packages/Microsoft.Azure.Insights)。 可以通过调用以下命令检索可用的指标定义：
+若要访问其他指标，请使用 [Azure Monitor SDK](https://www.nuget.org/packages/Microsoft.Azure.Insights)。 可以通过调用以下命令来检索可用的指标定义：
 
     https://management.chinacloudapi.cn/subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroup}/providers/Microsoft.DocumentDb/databaseAccounts/{DocumentDBAccountName}/metricDefinitions?api-version=2015-04-08
 
@@ -82,7 +82,7 @@ ms.locfileid: "70254601"
 
     https://management.chinacloudapi.cn/subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroup}/providers/Microsoft.DocumentDb/databaseAccounts/{DocumentDBAccountName}/metrics?api-version=2015-04-08&$filter=%28name.value%20eq%20%27Total%20Requests%27%29%20and%20timeGrain%20eq%20duration%27PT5M%27%20and%20startTime%20eq%202016-06-03T03%3A26%3A00.0000000Z%20and%20endTime%20eq%202016-06-10T03%3A26%3A00.0000000Z
 
-有关详细信息，请参阅 [通过 Azure Monitor REST API 检索资源指标](https://blogs.msdn.microsoft.com/cloud_solution_architect/2016/02/23/retrieving-resource-metrics-via-the-azure-insights-api/)。 请注意，已将“Azure Insights”重命名为“Azure Monitor”。  本博客条目引用旧名称。
+有关详细信息，请参阅 [Retrieving Resource Metrics via the Azure Insights API](https://blogs.msdn.microsoft.com/cloud_solution_architect/2016/02/23/retrieving-resource-metrics-via-the-azure-insights-api/)（通过 Azure Monitor REST API 检索资源指标）。 请注意，已将“Azure Insights”重命名为“Azure Monitor”。  此博客条目引用的是旧名称。
 
 ## <a name="next-steps"></a>后续步骤
 若要深入了解 Azure Cosmos DB 容量规划，请参阅 [Azure Cosmos DB Capacity Planner 计算器](https://www.documentdb.com/capacityplanner)。

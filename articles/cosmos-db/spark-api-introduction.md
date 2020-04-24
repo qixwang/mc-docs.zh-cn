@@ -7,10 +7,10 @@ ms.date: 10/28/2019
 author: rockboyfor
 ms.author: v-yeche
 ms.openlocfilehash: 7670a1b433d0f61be20741249600acf21d329655
-ms.sourcegitcommit: 73f07c008336204bd69b1e0ee188286d0962c1d7
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "72913242"
 ---
 # <a name="built-in-operational-analytics-in-azure-cosmos-db-with-apache-spark"></a>Azure Cosmos DB with Apache Spark 中的内置运营分析

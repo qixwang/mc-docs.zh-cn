@@ -11,10 +11,10 @@ ms.author: v-jay
 ms.reviewer: cbrooks
 ms.subservice: common
 ms.openlocfilehash: 5b88ab4beb715c7007f7ab41c525f1b8b068dab0
-ms.sourcegitcommit: 0d07175c0b83219a3dbae4d413f8e012b6e604ed
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "71306732"
 ---
 # <a name="client-side-encryption-and-azure-key-vault-for-azure-storage"></a>Azure 存储的客户端加密和 Azure Key Vault
@@ -71,7 +71,7 @@ ms.locfileid: "71306732"
 ### <a name="queues"></a>队列
 由于队列消息可以采用任何格式，客户端库定义一个自定义格式，其在消息文本中包括初始化向量 (IV) 和已加密的内容加密密钥 (CEK)。
 
-在加密过程中，客户端库将生成 16 字节的随机 IV 和 32 字节的随机 CEK，并使用此信息对队列消息文本执行信封加密。 然后，将已包装的 CEK 和一些附加加密元数据添加到已加密的队列消息中。 此修改后的消息（如下所示）存储在服务中。
+在加密过程中，客户端库会生成 16 个字节的随机 IV 和 32 个字节的随机 CEK，并使用此信息对队列消息文本执行信封加密。 然后，将已包装的 CEK 和一些附加加密元数据添加到已加密的队列消息中。 此修改后的消息（如下所示）存储在服务中。
 
     <MessageText>{"EncryptedMessageContents":"6kOu8Rq1C3+M1QO4alKLmWthWXSmHV3mEfxBAgP9QGTU++MKn2uPq3t2UjF1DO6w","EncryptionData":{…}}</MessageText>
 
@@ -104,7 +104,7 @@ ms.locfileid: "71306732"
 > 由于实体已加密，因此不能运行根据已加密属性进行筛选的查询。  如果尝试运行，结果将会不正确，因为该服务会尝试将已加密的数据与未加密的数据进行比较。
 > 
 > 
-> 若要执行查询操作，必须指定一个能够解析结果集中的所有密钥的密钥解析程序。 如果查询结果中包含的实体不能解析为提供程序，则客户端库将引发错误。 对于执行服务器端投影的任何查询，在默认情况下，客户端库将为所选列添加特殊的加密元数据属性（_ClientEncryptionMetadata1 和 _ClientEncryptionMetadata2）。
+> 若要执行查询操作，必须指定一个能够解析结果集中的所有密钥的密钥解析程序。 如果查询结果中包含的实体不能解析为提供程序，则客户端库会引发错误。 对于执行服务器端投影的任何查询，在默认情况下，客户端库将为所选列添加特殊的加密元数据属性（_ClientEncryptionMetadata1 和 _ClientEncryptionMetadata2）。
 
 ## <a name="azure-key-vault"></a>Azure Key Vault
 Azure 密钥保管库可帮助保护云应用程序和服务使用的加密密钥和机密。 借助 Azure Key Vault，用户可使用密钥来加密密钥和机密（例如身份验证密钥、存储帐户密钥、数据加密密钥、.PFX 文件和密码）。 有关详细信息，请参阅[什么是 Azure 密钥保管库？](../../key-vault/key-vault-overview.md)。
@@ -116,11 +116,11 @@ Azure 密钥保管库可帮助保护云应用程序和服务使用的加密密�
 
 * Microsoft.Azure.KeyVault.Core 包含 IKey 和 IKeyResolver。 它是没有依赖项的小型包。 用于 .NET 的存储空间客户端库将其定义为一个依赖项。
 * Microsoft.Azure.KeyVault 包含密钥保管库 REST 客户端。
-* Microsoft.Azure.KeyVault.Extensions 包含扩展代码，其中包括加密算法和 RSAKey 和 SymmetricKey 的实现。 它依赖于 Core 和 KeyVault 命名空间，并提供用于定义聚合解析程序（在用户想要使用多个密钥提供程序时）和缓存密钥解析程序的功能。 虽然存储客户端库不直接依赖于此包，但是如果用户想要使用 Azure 密钥保管库来存储其密钥或通过密钥保管库扩展来使用本地和云加密提供程序，则他们将需要此包。
+* Microsoft.Azure.KeyVault.Extensions 包含扩展代码，其中包括加密算法和 RSAKey 和 SymmetricKey 的实现。 它依赖于 Core 和 KeyVault 命名空间，并提供用于定义聚合解析程序（在用户想要使用多个密钥提供程序时）和缓存密钥解析程序的功能。 虽然存储客户端库不直接依赖于此包，但是如果用户想要使用 Azure 密钥保管库存储其密钥或通过密钥保管库扩展来使用本地和云加密提供程序，则他们需要此包。
 
 密钥保管库专为高价值主密钥设计，每个密钥保管库的限流限制的设计也考虑了这一点。 使用密钥保管库执行客户端加密时，首选模型是使用在密钥保管库中作为机密存储并在本地缓存的对称主密钥。 用户必须执行以下操作：
 
-1. 脱机创建一个机密并将其上传到密钥保管库。
+1. 脱机创建密钥并将其上传到密钥保管库。
 2. 使用机密的基标识符作为参数来解析机密的当前版本进行加密，并在本地缓存此信息。 使用 CachingKeyResolver 进行缓存；用户不需要实现自己的缓存逻辑。
 3. 创建加密策略时，使用缓存解析程序作为输入。
 
@@ -142,7 +142,7 @@ Azure 密钥保管库可帮助保护云应用程序和服务使用的加密密�
 ## <a name="client-api--interface"></a>客户端 API/接口
 在创建 EncryptionPolicy 对象时，用户可以只提供密钥（实现 IKey）、只提供解析程序（实现 IKeyResolver），或两者都提供。 IKey 是使用密钥标识符标识的基本密钥类型，它提供了包装/解包逻辑。 IKeyResolver 用于在解密过程中解析密钥。 它定义了 ResolveKey 方法，该方法根据给定的密钥标识符返回 IKey。 由此，用户能够在多个位置中托管的多个密钥之间进行选择。
 
-* 对于加密，始终使用该密钥，而没有密钥将导致错误。
+* 对于加密，始终使用该密钥，而没有密钥会导致错误。
 * 对于解密：
   * 如果指定为获取密钥，则调用密钥解析程序。 如果指定了解析程序，但该解析程序不具有密钥标识符的映射，则会引发错误。
   * 如果未指定解析程序，但指定了密钥，则在该密钥的标识符与所需密钥标识符匹配时使用该密钥。 如果标识符不匹配，则会引发错误。
@@ -150,7 +150,7 @@ Azure 密钥保管库可帮助保护云应用程序和服务使用的加密密�
 本文中的代码示例演示如何设置加密策略和使用加密数据，但不演示如何使用 Azure Key Vault。 GitHub 上的[加密示例](https://github.com/Azure/azure-storage-net/tree/master/Samples/GettingStarted/EncryptionSamples)演示了针对 Blob、队列和表的更详细端到端方案，以及 Key Vault 集成。
 
 ### <a name="requireencryption-mode"></a>RequireEncryption 模式
-用户可以选择启用这样的操作模式，要求加密所有上传和下载行为。 在此模式下，尝试在没有加密策略的情况下上传数据或下载在服务中未加密的数据，将导致在客户端上失败。 请求选项对象的 **RequireEncryption** 属性控制此行为。 如果应用程序要加密存储于 Azure 存储中的所有对象，则可以在服务客户端对象的默认请求选项上设置 **RequireEncryption**属性。 例如，将 CloudBlobClient.DefaultRequestOptions.RequireEncryption  设置为 true  ，要求对通过该客户端对象执行的所有 blob 操作进行加密。
+用户可以选择启用这样的操作模式，要求加密所有上传和下载行为。 在此模式下，尝试在没有加密策略的情况下上传数据或下载在服务中未加密的数据，会导致在客户端上失败。 请求选项对象的 **RequireEncryption** 属性控制此行为。 如果应用程序要对存储在 Azure 存储中的所有对象加密，则可以在服务客户端对象的默认请求选项上设置 **RequireEncryption** 属性。 例如，将 CloudBlobClient.DefaultRequestOptions.RequireEncryption  设置为 true  ，要求对通过该客户端对象执行的所有 blob 操作进行加密。
 
 
 ### <a name="blob-service-encryption"></a>Blob 服务加密

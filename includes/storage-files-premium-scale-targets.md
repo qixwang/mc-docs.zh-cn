@@ -6,10 +6,10 @@ origin.date: 06/07/2019
 ms.date: 10/28/2019
 ms.author: v-jay
 ms.openlocfilehash: 5fe7938f614db04825400fb14486a4c641d60f88
-ms.sourcegitcommit: 73f07c008336204bd69b1e0ee188286d0962c1d7
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "72958467"
 ---
 #### <a name="additional-premium-file-share-level-limits"></a>其他高级文件共享级别限制

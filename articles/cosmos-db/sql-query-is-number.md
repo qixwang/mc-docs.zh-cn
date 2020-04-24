@@ -9,10 +9,10 @@ ms.date: 10/28/2019
 ms.author: v-yeche
 ms.custom: query-reference
 ms.openlocfilehash: 5363008102e8a1db224b56f68fe9a7d0bab94f0a
-ms.sourcegitcommit: 73f07c008336204bd69b1e0ee188286d0962c1d7
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "72914721"
 ---
 # <a name="is_number-azure-cosmos-db"></a>IS_NUMBER (Azure Cosmos DB)
@@ -48,7 +48,7 @@ SELECT
     IS_NUMBER({prop: "value"}.prop2) AS isNum7  
 ```  
 
- 下面是结果集。  
+ 下面是结果集：  
 
 ```json
 [{"isNum1":false,"isNum2":true,"isNum3":false,"isNum4":false,"isNum5":false,"isNum6":false,"isNum7":false}]  

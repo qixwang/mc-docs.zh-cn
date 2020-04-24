@@ -9,10 +9,10 @@ ms.topic: conceptual
 origin.date: 09/24/2018
 ms.date: 05/01/2019
 ms.openlocfilehash: 7d498d089e3d39a275fb9408a05a80f214362184
-ms.sourcegitcommit: c863b31d8ead7e5023671cf9b58415542d9fec9c
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74020693"
 ---
 # <a name="check-the-health-of-an-azure-data-explorer-cluster"></a>检查 Azure 数据资源管理器群集的运行状况

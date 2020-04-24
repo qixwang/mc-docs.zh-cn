@@ -9,14 +9,14 @@ ms.date: 10/28/2019
 ms.author: v-yeche
 ms.custom: query-reference
 ms.openlocfilehash: f9caf9f90802134f0a29841314cb8bbb428236cd
-ms.sourcegitcommit: 73f07c008336204bd69b1e0ee188286d0962c1d7
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "72914662"
 ---
 # <a name="st_isvalid-azure-cosmos-db"></a>ST_ISVALID (Azure Cosmos DB)
- 返回一个布尔值，该值指示指定的 GeoJSON 点、多边形或 LineString 表达式是否有效。  
+ 返回一个布尔值，指示指定的 GeoJSON 点、多边形或 LineString 表达式是否有效。  
 
 ## <a name="syntax"></a>语法
 
@@ -35,17 +35,17 @@ ST_ISVALID(<spatial_expr>)
 
 ## <a name="examples"></a>示例
 
-  以下示例演示了如何使用 ST_VALID 检查某个点是否有效。  
+  以下示例介绍了如何使用 ST_VALID 检查点是否有效。  
 
-  例如，此点具有不在有效的值范围 [-90, 90] 中的纬度值，因此，该查询返回 false。  
+  例如，由于此点具有一个不在有效值范围 [-90，90] 内的纬度值，因此查询返回 false。  
 
-  对于多边形，若要创建闭合的形状，GeoJSON 规范要求所提供的最后一个坐标对应该与第一个坐标对相同。 多边形内的点必须以逆时针顺序指定。 以顺时针顺序指定的多边形表示其中的区域倒转。  
+  对于多边形，GeoJSON 规范要求提供的最后一个坐标対应该与第一个坐标对相同，才能创建一个闭合形状。 多边形内的点必须以逆时针顺序指定。 以顺时针顺序指定的多边形表示其中的区域倒转。  
 
 ```sql
 SELECT ST_ISVALID({ "type": "Point", "coordinates": [31.9, -132.8] }) AS b 
 ```  
 
- 下面是结果集。  
+ 下面是结果集：  
 
 ```json
 [{ "b": false }]  

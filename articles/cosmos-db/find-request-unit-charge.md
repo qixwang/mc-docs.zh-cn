@@ -8,10 +8,10 @@ origin.date: 09/01/2019
 ms.date: 09/30/2019
 ms.author: v-yeche
 ms.openlocfilehash: 84ce0eff20b16636bb6c13ddf2e274786305810f
-ms.sourcegitcommit: 0d07175c0b83219a3dbae4d413f8e012b6e604ed
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "71306751"
 ---
 # <a name="find-the-request-unit-charge-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中查找请求单位费用

@@ -10,10 +10,10 @@ origin.date: 08/22/2019
 ms.date: 08/22/2019
 ms.author: v-tawe
 ms.openlocfilehash: 15cd0fe0972f21b4ef88776dc0ee66c8e9ae6037
-ms.sourcegitcommit: a1575acb8d0047fae425deb8196e3c89bd3dac57
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "72887687"
 ---
 # <a name="authorizing-access-to-event-hubs-resources-using-shared-access-signatures"></a>使用共享访问签名授权访问事件中心资源

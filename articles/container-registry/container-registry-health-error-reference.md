@@ -10,10 +10,10 @@ origin.date: 07/02/2019
 ms.date: 08/26/2019
 ms.author: v-yeche
 ms.openlocfilehash: 9dc6394b0508f803801e65eb85fb3fee941ddea1
-ms.sourcegitcommit: 18a0d2561c8b60819671ca8e4ea8147fe9d41feb
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "70134500"
 ---
 # <a name="health-check-error-reference"></a>运行状况检查错误参考

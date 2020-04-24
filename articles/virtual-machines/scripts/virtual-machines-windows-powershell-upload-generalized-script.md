@@ -1,6 +1,6 @@
 ---
 title: 将通用化 VHD 上传到 Azure PowerShell 示例脚本 |Azure
-description: PowerShell 示例脚本，用于将通用化 VHD 上传到 Azure 并使用 Resource Manager 部署模型和托管磁盘创建新的 VM。
+description: 使用资源管理器部署模式和托管磁盘将通用 VHD 上传到 Azure 并创建新 VM 的 PowerShell 示例脚本。
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: rockboyfor
@@ -17,15 +17,15 @@ ms.date: 10/14/2019
 ms.author: v-yeche
 ms.custom: mvc
 ms.openlocfilehash: 59e427ee0eb89ec039898016f8a84b0f48844d8b
-ms.sourcegitcommit: c9398f89b1bb6ff0051870159faf8d335afedab3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "72272757"
 ---
-# <a name="sample-script-to-upload-a-vhd-to-azure-and-create-a-new-vm"></a>将 VHD 上传到 Azure 并创建新的 VM 的示例脚本
+# <a name="sample-script-to-upload-a-vhd-to-azure-and-create-a-new-vm"></a>将 VHD 上传到 Azure 并创建新 VM 的示例脚本
 
-此脚本从通用化 VM 获取本地 .vhd 文件，将其上传到 Azure，创建托管磁盘映像并用以创建新的 VM。
+此脚本从通用 VM 中获取本地 .vhd 文件并将其上传到 Azure、创建托管磁盘映像以及创建新 VM。
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh.md)]
 
@@ -134,26 +134,26 @@ Remove-AzResourceGroup -Name $resourceGroup
 
 <!-- URL should be AzureRM.Compute or AzureRM.Network -->
 
-| 命令                                                                                                             | 注释                                                                                                                                                                                |
+| Command                                                                                                             | 说明                                                                                                                                                                                |
 |---------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup)                           | 创建用于存储所有资源的资源组。                                                                                                                          |
 | [New-AzStorageAccount](https://docs.microsoft.com/powershell/module/az.storage/new-azstorageaccount)                         | 创建存储帐户。                                                                                                                                                           |
-| [Add-AzVhd](https://docs.microsoft.com/powershell/module/az.compute/add-azvhd)                                               | 将虚拟硬盘从本地虚拟机上传到 Azure 云存储帐户中的 blob。                                                                       |
+| [Add-AzVhd](https://docs.microsoft.com/powershell/module/az.compute/add-azvhd)                                               | 将虚拟硬盘从本地虚拟机上传到 Azure 中云存储帐户的 blob 中。                                                                       |
 | [New-AzImageConfig](https://docs.microsoft.com/powershell/module/az.compute/new-azimageconfig)                               | 创建一个可配置的映像对象。                                                                                                                                                 |
 | [Set-AzImageOsDisk](https://docs.microsoft.com/powershell/module/az.compute/set-azimageosdisk)                               | 设置映像对象的操作系统磁盘属性。                                                                                                                        |
-| [New-AzImage](https://docs.microsoft.com/powershell/module/az.compute/new-azimage)                                           | 创建新映像。                                                                                                                                                                 |
-| [New-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworksubnetconfig) | 创建子网配置。 在虚拟网络创建过程中会使用此配置。                                                                                |
+| [New-AzImage](https://docs.microsoft.com/powershell/module/az.compute/new-azimage)                                           | 新建映像。                                                                                                                                                                 |
+| [New-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworksubnetconfig) | 创建子网配置。 在虚拟网络创建过程中将使用此配置。                                                                                |
 | [New-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetwork)                         | 创建虚拟网络。                                                                                                                                                           |
 | [New-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/az.network/new-azpublicipaddress)                       | 创建公共 IP 地址。                                                                                                                                                         |
 | [New-AzNetworkInterface](https://docs.microsoft.com/powershell/module/az.network/new-aznetworkinterface)                     | 创建网络接口。                                                                                                                                                         |
 | [New-AzNetworkSecurityRuleConfig](https://docs.microsoft.com/powershell/module/az.network/new-aznetworksecurityruleconfig)   | 创建网络安全组规则配置。 创建 NSG 时会使用此配置创建 NSG 规则。                                                       |
 | [New-AzNetworkSecurityGroup](https://docs.microsoft.com/powershell/module/az.network/new-aznetworksecuritygroup)             | 创建网络安全组。                                                                                                                                                    |
 | [Get-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/get-azvirtualnetwork)                         | 获取资源组中的虚拟网络。                                                                                                                                          |
-| [New-AzVMConfig](https://docs.microsoft.com/powershell/module/az.compute/new-azvmconfig)                                     | 创建 VM 配置。 此配置包括 VM 名称、操作系统和管理凭据等信息。 在创建 VM 期间使用此配置。 |
-| [Set-AzVMSourceImage](https://docs.microsoft.com/powershell/module/az.compute/set-azvmsourceimage)                           | 指定虚拟机的映像。                                                                                                                                            |
+| [New-AzVMConfig](https://docs.microsoft.com/powershell/module/az.compute/new-azvmconfig)                                     | 创建 VM 配置。 此配置包括 VM 名称、操作系统和管理凭据等信息。 在创建 VM 期间将使用此配置。 |
+| [Set-AzVMSourceImage](https://docs.microsoft.com/powershell/module/az.compute/set-azvmsourceimage)                           | 为虚拟机指定映像。                                                                                                                                            |
 | [Set-AzVMOSDisk](https://docs.microsoft.com/powershell/module/az.compute/set-azvmosdisk)                                     | 设置虚拟机的操作系统磁盘属性。                                                                                                                      |
 | [Set-AzVMOperatingSystem](https://docs.microsoft.com/powershell/module/az.compute/set-azvmoperatingsystem)                   | 设置虚拟机的操作系统磁盘属性。                                                                                                                      |
-| [Add-AzVMNetworkInterface](https://docs.microsoft.com/powershell/module/az.compute/add-azvmnetworkinterface)                 | 将网络接口添加到虚拟机。                                                                                                                                       |
+| [Add-AzVMNetworkInterface](https://docs.microsoft.com/powershell/module/az.compute/add-azvmnetworkinterface)                 | 向虚拟机添加网络接口。                                                                                                                                       |
 | [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm)                                                 | 创建虚拟机。                                                                                                                                                            |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup)                     | 删除资源组及其中包含的所有资源。                                                                                                                         |
 

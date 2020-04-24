@@ -16,10 +16,10 @@ origin.date: 11/22/2018
 ms.date: 11/11/2019
 ms.author: v-yeche
 ms.openlocfilehash: 8e3c7967cfdeacfd6d6d8426a6b98e9e9a2c53c6
-ms.sourcegitcommit: 1fd822d99b2b487877278a83a9e5b84d9b4a8ce7
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74116899"
 ---
 # <a name="azure-vm-guest-os-firewall-is-misconfigured"></a>Azure VM 来宾 OS 防火墙配置不正确

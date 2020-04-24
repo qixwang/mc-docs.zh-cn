@@ -12,10 +12,10 @@ origin.date: 04/17/2019
 ms.date: 07/23/2019
 ms.author: v-junlch
 ms.openlocfilehash: 4fa68f88a06173104106089aa9e553eb8d7aa403
-ms.sourcegitcommit: 13642a99cc524a416b40635f48676bbf5cdcdf3d
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "70104025"
 ---
 # <a name="azure-cognitive-services-computer-vision-sdk-for-python"></a>适用于 Python 的 Azure 认知服务计算机视觉 SDK
@@ -42,7 +42,7 @@ ms.locfileid: "70104025"
 * [计算机视觉密钥][computervision_resource]和关联的终结点。 创建 [ComputerVisionClient][ref_computervisionclient] 客户端对象的实例时需要使用这些值。 使用以下其中一种方法获取这些值。
 
 
-### 如果你拥有 Azure 订阅 <a name="if-you-have-an-azure-subscription"></a>
+### <a name="if-you-have-an-azure-subscription"></a>如果你拥有 Azure 订阅 <a name="if-you-have-an-azure-subscription"></a>
 
 在订阅中创建资源的最简单方法是使用以下 [Azure CLI][azure_cli] 命令。 这样会创建一个认知服务密钥，该密钥可以在许多认知服务中使用。 需要选择现有的资源组名称（例如“my-cogserv-group”）和新的计算机视觉资源名称（例如“my-computer-vision-resource”）。 
 

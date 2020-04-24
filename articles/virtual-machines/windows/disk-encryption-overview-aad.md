@@ -9,10 +9,10 @@ origin.date: 03/15/2019
 ms.date: 11/11/2019
 ms.custom: seodec18
 ms.openlocfilehash: b4282649a7f202ce7f0900b3f06ff9994821fc91
-ms.sourcegitcommit: a89eb0007edd5b4558b98c1748b2bd67ca22f4c9
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "73730675"
 ---
 # <a name="azure-disk-encryption-with-azure-ad-previous-release"></a>使用 Azure AD 进行 Azure 磁盘加密（以前版本）
@@ -41,7 +41,7 @@ ms.locfileid: "73730675"
 
 ## <a name="encryption-key-storage-requirements"></a>加密密钥存储要求  
 
-Azure 磁盘加密需要 Azure 密钥保管库来控制和管理磁盘加密密钥和机密。 密钥保管库和 VM 必须位于同一 Azure 区域和订阅中。
+Azure 磁盘加密需要 Azure Key Vault 来控制和管理磁盘加密密钥和机密。 密钥保管库和 VM 必须位于同一 Azure 区域和订阅中。
 
 有关详细信息，请参阅[使用 Azure AD 创建和配置用于 Azure 磁盘加密的密钥保管库（以前版本）](disk-encryption-key-vault-aad.md)。
 

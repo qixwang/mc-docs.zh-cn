@@ -15,10 +15,10 @@ origin.date: 03/14/2019
 ms.date: 09/23/2019
 ms.author: v-jay
 ms.openlocfilehash: 137691438a57e5726eb6ac21967a828ace2b6f1d
-ms.sourcegitcommit: 8248259e4c3947aa0658ad6c28f54988a8aeebf8
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "71125504"
 ---
 # <a name="managing-media-services-assets-across-multiple-storage-accounts"></a>跨多个存储帐户管理媒体服务资产  
@@ -43,7 +43,7 @@ ms.locfileid: "71125504"
 
 其他注意事项：
 
-构建数据流内容的 URL 时，媒体服务会使用 IAssetFile.Name  属性的值（如 http://{WAMSAccount}.origin.mediaservices.chinacloudapi.cn/{GUID}/{IAssetFile.Name}/streamingParameters。）出于这个原因，不允许使用百分号编码。 Name 属性的值不能含有以下任何[百分号编码保留字符](https://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters)：!*'();:@&=+$,/?%#[]"。 此外，只能有一个“.” 此外，文件扩展名中只能含有一个“.”。
+构建数据流内容的 URL 时，媒体服务会使用 IAssetFile.Name  属性的值（如 http://{WAMSAccount}.origin.mediaservices.chinacloudapi.cn/{GUID}/{IAssetFile.Name}/streamingParameters。）出于这个原因，不允许使用百分号编码。 Name 属性的值不能含有任何以下[百分号编码保留字符](https://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters)：!*'();:@&=+$,/?%#[]"。 此外，只能有一个“.” 此外，文件扩展名中只能含有一个“.”。
 
 ## <a name="to-attach-storage-accounts"></a>附加存储帐户  
 

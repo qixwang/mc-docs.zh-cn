@@ -9,10 +9,10 @@ ms.topic: conceptual
 origin.date: 12/19/2018
 ms.date: 11/18/2019
 ms.openlocfilehash: 10593fcfc61e98ab69584d336c2d1305cb85f106
-ms.sourcegitcommit: c863b31d8ead7e5023671cf9b58415542d9fec9c
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74020823"
 ---
 # <a name="handle-duplicate-data-in-azure-data-explorer"></a>在 Azure 数据资源管理器中处理重复数据

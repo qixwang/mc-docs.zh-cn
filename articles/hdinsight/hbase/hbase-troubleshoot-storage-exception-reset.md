@@ -8,10 +8,10 @@ ms.author: v-yiso
 origin.date: 08/08/2019
 ms.date: 11/11/2019
 ms.openlocfilehash: 80bdaf6f2272bb0ca3469499aec27226f950f7b6
-ms.sourcegitcommit: 642a4ad454db5631e4d4a43555abd9773cae8891
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "73426060"
 ---
 # <a name="scenario-storage-exception-after-connection-reset-in-azure-hdinsight"></a>方案：连接重置后 Azure HDInsight 中出现存储异常

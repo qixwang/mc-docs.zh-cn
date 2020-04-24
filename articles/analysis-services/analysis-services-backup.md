@@ -9,10 +9,10 @@ ms.date: 11/25/2019
 ms.author: v-yeche
 ms.reviewer: minewiskan
 ms.openlocfilehash: e676faadb5f3df69f1980d8325a6e4d15e776268
-ms.sourcegitcommit: c5e012385df740bf4a326eaedabb987314c571a1
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74203639"
 ---
 # <a name="backup-and-restore"></a>备份和还原
@@ -75,7 +75,7 @@ ms.locfileid: "74203639"
 还原时，备份文件必须在已为服务器配置的存储帐户中。 如果需要将备份文件从本地位置移到存储帐户，请使用 [Azure 存储资源管理器](/vs-azure-tools-storage-manage-with-storage-explorer)或 [AzCopy](../storage/common/storage-use-azcopy.md) 命令行实用工具。 
 
 > [!NOTE]
-> 如果要从本地服务器还原，必须先从该模型的角色中删除所有域用户，并再将这些用户作为 Azure Active Directory 用户重新添加到这些角色。
+> 如果要从本地服务器还原，必须先从该模型的角色中删除所有域用户，然后再将这些用户作为 Azure Active Directory 用户重新添加到这些角色。
 > 
 > 
 

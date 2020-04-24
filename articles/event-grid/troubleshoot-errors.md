@@ -9,10 +9,10 @@ origin.date: 08/22/2019
 ms.date: 09/30/2019
 ms.author: v-yiso
 ms.openlocfilehash: b8150817e6bce088fa82d473f98dbc2480b39e04
-ms.sourcegitcommit: 6a62dd239c60596006a74ab2333c50c4db5b62be
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/20/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "71156468"
 ---
 # <a name="troubleshoot-azure-event-grid-errors"></a>排查 Azure 事件网格错误

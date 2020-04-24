@@ -12,10 +12,10 @@ origin.date: 05/16/2019
 ms.date: 07/09/2019
 ms.author: v-junlch
 ms.openlocfilehash: 43a9b962e6f2f7d37d6ba10eb1a17954b04f83d2
-ms.sourcegitcommit: 09bf291a235f43202ba3752323395db86b16343f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "71119547"
 ---
 # <a name="specify-a-face-detection-model"></a>指定人脸检测模型
@@ -28,7 +28,7 @@ ms.locfileid: "71119547"
 
 如果你不确定是否要切换到最新的模型，请跳转到[评估不同的模型](#evaluate-different-models)部分来评估新模型，并使用当前数据集比较结果。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 你应该熟悉 AI 人脸检测的概念。 如果你不熟悉，请参阅人脸检测的概念指南或操作指南：
 
@@ -39,7 +39,7 @@ ms.locfileid: "71119547"
 
 人脸检测可以查找人脸的边界框位置，并识别其视觉特征点。 它会提取人脸的特征并存储这些特征，以便稍后在[识别](../concepts/face-recognition.md)操作中使用。
 
-使用 [Face - Detect] API 时，可以使用 `detectionModel` 参数分配模型版本。 可用值为：
+使用 [Face - Detect] API 时，可以使用 `detectionModel` 参数分配模型版本。 可用值有：
 
 * `detection_01`
 * `detection_02`
@@ -61,7 +61,7 @@ var faces = await faceClient.Face.DetectWithUrlAsync(imageUrl, false, false, rec
 
 ## <a name="add-face-to-person-with-specified-model"></a>使用指定的模型将人脸添加到 Person
 
-人脸 API 可以从图像中提取人脸数据，并通过 [PersonGroup Person - Add Face](https://dev.cognitive.azure.cn/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b) API 将其关联到 **Person** 对象。 在此 API 调用中，可以像在 [Face - Detect] 中一样指定检测模型。
+人脸 API 可以从图像中提取人脸数据，并通过 **PersonGroup Person - Add Face** API 将其关联到 [Person](https://dev.cognitive.azure.cn/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b) 对象。 在此 API 调用中，可以像在 [Face - Detect] 中一样指定检测模型。
 
 请查看适用于 .NET 客户端库的以下代码示例。
 
@@ -76,7 +76,7 @@ string imageUrl = "https://news.microsoft.com/ceo/assets/photos/06_web.jpg";
 await client.PersonGroupPerson.AddFaceFromUrlAsync(personGroupId, personId, imageUrl, detectionModel: "detection_02");
 ```
 
-此代码将创建 ID 为 `mypersongroupid` 的 **PersonGroup**，并将一个 **Person** 对象添加到其中。 然后，它使用 `detection_02` 模型将一个 Face 对象添加到此 **Person** 对象。 如果未指定 *detectionModel* 参数，API 将使用默认模型 `detection_01`。
+此代码将创建 ID 为 **的**PersonGroup`mypersongroupid`，并将一个 **Person** 对象添加到其中。 然后，它使用 **模型将一个 Face 对象添加到此**Person`detection_02` 对象。 如果未指定 *detectionModel* 参数，API 将使用默认模型 `detection_01`。
 
 > [!NOTE]
 > 无需对 **Person** 对象中的所有人脸使用相同的检测模型，并且在检测新人脸时，无需使用相同的检测模型来与 **Person** 对象进行比较（例如，在 [Face - Identify] API 中）。
@@ -92,7 +92,7 @@ string imageUrl = "https://news.microsoft.com/ceo/assets/photos/06_web.jpg";
 await client.FaceList.AddFaceFromUrlAsync(faceListId, imageUrl, detectionModel: "detection_02");
 ```
 
-此代码将创建名为 `My face collection` 的 **FaceList**，并使用 `detection_02` 模型将一个 Face 对象添加到其中。 如果未指定 *detectionModel* 参数，API 将使用默认模型 `detection_01`。
+此代码将创建名为 **的**FaceList`My face collection`，并使用 `detection_02` 模型将一个 Face 对象添加到其中。 如果未指定 *detectionModel* 参数，API 将使用默认模型 `detection_01`。
 
 > [!NOTE]
 > 无需对 **FaceList** 对象中的所有人脸使用相同的检测模型，并且在检测新人脸时，无需使用相同的检测模型来与 **FaceList** 对象进行比较
@@ -118,7 +118,7 @@ await client.FaceList.AddFaceFromUrlAsync(faceListId, imageUrl, detectionModel: 
 
 [Face - Detect]: https://dev.cognitive.azure.cn/docs/services/563879b61984550e40cbbe8d
 [Face - Find Similar]: https://dev.cognitive.azure.cn/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237
-[Face - Identify]: https://dev.cognitive.azure.cn/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239（人脸 - 识别）
+[Face - Identify]: https://dev.cognitive.azure.cn/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239
 [Face - Verify]: https://dev.cognitive.azure.cn/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523a
 [PersonGroup - Create]: https://dev.cognitive.azure.cn/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395244
 [PersonGroup - Get]: https://dev.cognitive.azure.cn/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395246

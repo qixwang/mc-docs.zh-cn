@@ -11,10 +11,10 @@ ms.author: v-jay
 ms.reviewer: cbrooks
 ms.subservice: blobs
 ms.openlocfilehash: b5e5cde0642c46d860df73a17d9f1364d2f9b64d
-ms.sourcegitcommit: 66a77af2fab8a5f5b34723dc99e4d7ce0c380e78
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "70209314"
 ---
 # <a name="create-a-service-sas-for-a-container-or-blob-with-net"></a>使用 .NET 为容器或 blob 创建服务 SAS

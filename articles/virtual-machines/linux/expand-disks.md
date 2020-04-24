@@ -9,10 +9,10 @@ ms.date: 11/11/2019
 ms.author: v-yeche
 ms.subservice: disks
 ms.openlocfilehash: 267ea268e541bcf7b84199c872276c5dc6c0757d
-ms.sourcegitcommit: 5844ad7c1ccb98ff8239369609ea739fb86670a4
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "73831427"
 ---
 # <a name="expand-virtual-hard-disks-on-a-linux-vm-with-the-azure-cli"></a>使用 Azure CLI 扩展 Linux VM 上的虚拟硬盘
@@ -32,7 +32,7 @@ ms.locfileid: "73831427"
 
 在以下示例中，请将示例参数名称（例如 *myResourceGroup* 和 *myVM*）替换成自己的值。
 
-1. 当 VM 正在运行时，无法在虚拟硬盘上执行操作。 使用 [az vm deallocate](https://docs.azure.cn/cli/vm?view=azure-cli-latest#az-vm-deallocate) 解除分配 VM。 以下示例在名为 myResourceGroup 的资源组中解除分配名为 myVM 的 VM：  
+1. 当 VM 正在运行时，无法在虚拟硬盘上执行操作。 使用 [az vm deallocate](https://docs.azure.cn/cli/vm?view=azure-cli-latest#az-vm-deallocate) 解除分配 VM。 以下示例在名为 myResourceGroup 的资源组中释放名为 myVM 的 VM：  
 
     ```azurecli
     az vm deallocate --resource-group myResourceGroup --name myVM
@@ -41,7 +41,7 @@ ms.locfileid: "73831427"
     > [!NOTE]
     > 只有释放 VM 才能扩展虚拟硬盘。 使用 `az vm stop` 停止 VM 不会释放计算资源。 若要释放计算资源，请使用 `az vm deallocate`。
 
-1. 使用 [az disk list](https://docs.azure.cn/cli/disk?view=azure-cli-latest#az-disk-list) 查看资源组中的托管磁盘列表。 以下示例显示名为 myResourceGroup 的资源组中的托管磁盘列表： 
+1. 使用 [az disk list](https://docs.azure.cn/cli/disk?view=azure-cli-latest#az-disk-list) 查看资源组中的托管磁盘列表。 以下示例显示 myResourceGroup 资源组中托管磁盘的列表： 
 
     ```azurecli
     az disk list \
@@ -71,7 +71,7 @@ ms.locfileid: "73831427"
 ## <a name="expand-a-disk-partition-and-filesystem"></a>扩展磁盘分区和文件系统
 若要使用扩展的磁盘，请扩展基础分区和文件系统。
 
-1. 使用相应的凭据通过 SSH 连接到 VM。 可以使用 [az vm show](https://docs.azure.cn/cli/vm?view=azure-cli-latest#az-vm-show) 查看 VM 的 公共 IP 地址：
+1. 使用适当的凭据，通过 SSH 登录到 VM。 可以使用 [az vm show](https://docs.azure.cn/cli/vm?view=azure-cli-latest#az-vm-show) 查看 VM 的 公共 IP 地址：
 
     ```azurecli
     az vm show --resource-group myResourceGroup --name myVM -d --query [publicIps] --o tsv

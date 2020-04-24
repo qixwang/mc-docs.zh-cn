@@ -17,33 +17,33 @@ ms.date: 11/18/2019
 ms.author: v-jay
 ms.reviewer: juliako;johndeu
 ms.openlocfilehash: 95e205e0dc8da3ac94dc98e36ba565cfd6cbf38e
-ms.sourcegitcommit: ea2aeb14116769d6f237542c90f44c1b001bcaf3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74116251"
 ---
 # <a name="create-advanced-encoding-workflows-with-workflow-designer"></a>使用工作流设计器创建高级编码工作流  
 ## <a name="overview"></a>概述
 **工作流设计器**是一个 Windows 桌面工具，可用于设计和构建自定义工作流，以使用**媒体编码器高级工作流**进行编码。
-借助工作流设计器工具的强大功能，可以设计和创建在**媒体编码器高级**中运行的复杂工作流。  
+借助工作流设计器工具的强大功能，可以设计和创建会在**媒体编码器高级**中运行的复杂工作流。  
 
 根据输入源文件的属性，工作流可以包含客户决策逻辑和分支。 可以创建具有可重写属性与动态值的工作流，让即使最复杂的编码任务也能在云中轻松重复及自定义。
 
 可以创建的工作流示例包括：
 
-* 基于决策的工作流，该类工作流将检查要解析的源内容，并且仅编码所需的输出跟踪。  这有助于消除因无意中增加源内容而生成的多余跟踪。
+* 基于决策的工作流，该类工作流会检查要解析的源内容，并且仅编码所需的输出跟踪。  这有助于消除因无意中增加源内容而生成的多余跟踪。
 * 可使用多个输入文件来支持标题、覆盖和拼结在一起的内容。 
 
-还可以使用此工具来修改任何 [已发布工作流](media-services-workflow-designer.md#existing_workflows)。 
+还可以使用此工具修改任何[已发布工作流](media-services-workflow-designer.md#existing_workflows)。 
 
 > [!NOTE]
 > 若要获取工作流设计器工具的副本，请联系 mepd@microsoft.com。
 
-创建工作流文件后，可将其作为资产上传，并用于对媒体文件编码。 有关如何使用 **.NET** 通过**媒体编码器高级工作流**编码的信息，请参阅[使用媒体编码器高级工作流进行高级编码](media-services-encode-with-premium-workflow.md)。
+创建工作流文件后，可将其作为资产上传，然后用于对媒体文件编码。 有关如何使用 **.NET** 通过**媒体编码器高级工作流**编码的信息，请参阅[使用媒体编码器高级工作流进行高级编码](media-services-encode-with-premium-workflow.md)。
 
-## <a id="existing_workflows"></a>修改现有工作流
-可以使用设计器工具修改默认的[已发布工作流](media-services-workflow-designer.md#existing_workflows)。 可以从 [此处](https://github.com/Azure/azure-media-services-samples/tree/master/Encoding%20Presets/VoD/MediaEncoderPremiumWorkfows)获取默认工作流文件。 该文件夹还包含这些文件的相关说明。
+## <a name="modify-existing-workflows"></a><a id="existing_workflows"></a>修改现有工作流
+可以使用设计器工具修改默认的[已发布工作流](media-services-workflow-designer.md#existing_workflows)。 可以从[此处](https://github.com/Azure/azure-media-services-samples/tree/master/Encoding%20Presets/VoD/MediaEncoderPremiumWorkfows)获取默认工作流文件。 该文件夹还包含这些文件的相关说明。
 
 以下视频演示如何使用设计器。
 

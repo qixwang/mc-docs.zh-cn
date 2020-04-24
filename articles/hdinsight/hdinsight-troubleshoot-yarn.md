@@ -17,10 +17,10 @@ origin.date: 08/15/2019
 ms.date: 10/21/2019
 ms.author: v-yiso
 ms.openlocfilehash: 35daecaf2f0958e62596ff8a5b72679c2dc6cb69
-ms.sourcegitcommit: b83f604eb98a4b696b0a3ef3db2435f6bf99f411
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/12/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "72292495"
 ---
 # <a name="troubleshoot-apache-hadoop-yarn-by-using-azure-hdinsight"></a>使用 Azure HDInsight 对 Apache Hadoop YARN 进行故障排除
@@ -38,9 +38,9 @@ ms.locfileid: "72292495"
 
 | 队列 | 容量 | 最大容量 |
 | --- | --- | --- |
-| 默认值 | 25% | 50% |
+| default | 25% | 50% |
 | thrftsvr | 25% | 50% |
-| spark | 50% | 50% |
+| Spark | 50% | 50% |
 
 1. 依次选择“Abari 视图”图标和网格模式。  接下来，选择“YARN 队列管理器”。 
 
@@ -55,9 +55,9 @@ ms.locfileid: "72292495"
 
     ![选择“添加队列”](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-4.png)
 
-5. 为新队列命名。
+5. 为新队列命名
 
-    ![将队列命名为 Spark](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-5.png)  
+    ![为队列 Spark 命名](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-5.png)  
 
 6. 将**容量**值保留为 50%，并选择“操作”按钮。 
 
@@ -140,7 +140,7 @@ YARN 计划程序 UI 中会立即显示这些更改。
 
     此命令创建名为 containerlogs.txt 的日志文件。
 
-### <a name="additional-reading-2"></a>其他阅读材料
+### <a name="additional-reading"></a><a name="additional-reading-2"></a>其他阅读材料
 
 - [使用 SSH 连接到 HDInsight (Apache Hadoop)](/hdinsight/hdinsight-hadoop-linux-use-ssh-unix)
 - [Apache Hadoop YARN 的概念和应用](https://hadoop.apache.org/docs/r2.7.4/hadoop-yarn/hadoop-yarn-site/WritingYarnApplications.html#Concepts_and_Flow)

@@ -11,10 +11,10 @@ ms.author: v-jay
 ms.reviewer: wielriac
 ms.subservice: blobs
 ms.openlocfilehash: eab30d65efbc5fd36b873d6fbe1ee6852b67fc74
-ms.sourcegitcommit: 66a77af2fab8a5f5b34723dc99e4d7ce0c380e78
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "70209322"
 ---
 # <a name="overview-of-azure-page-blobs"></a>Azure 页 Blob 概述

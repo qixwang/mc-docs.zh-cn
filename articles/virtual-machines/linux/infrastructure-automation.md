@@ -16,10 +16,10 @@ origin.date: 12/13/2017
 ms.date: 11/11/2019
 ms.author: v-yeche
 ms.openlocfilehash: bb4f4e4cf57ba5bf56f9bc152557099f2169fcb1
-ms.sourcegitcommit: 5844ad7c1ccb98ff8239369609ea739fb86670a4
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "73831421"
 ---
 [!INCLUDE [virtual-machines-common-infrastructure-automation](../../../includes/virtual-machines-common-infrastructure-automation.md)]

@@ -14,10 +14,10 @@ origin.date: 05/29/2017
 ms.date: 08/26/2019
 ms.author: v-jay
 ms.openlocfilehash: f59cc81059e4483257200d6e3141f63d58f6e55b
-ms.sourcegitcommit: 599d651afb83026938d1cfe828e9679a9a0fb69f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "69993584"
 ---
 # <a name="configure-reverse-dns-for-services-hosted-in-azure"></a>为 Azure 中托管的服务配置反向 DNS
@@ -213,7 +213,7 @@ Get-AzureService "contosoapp1"
 Set-AzureService –ServiceName "contosoapp1" –Description "App1 with Reverse DNS" –ReverseDnsFqdn ""
 ```
 
-## <a name="faq"></a>常见问题
+## <a name="faq"></a>常见问题解答
 
 ### <a name="how-much-do-reverse-dns-records-cost"></a>反向 DNS 记录的费用如何？
 
@@ -225,7 +225,7 @@ Set-AzureService –ServiceName "contosoapp1" –Description "App1 with Reverse 
 
 ### <a name="are-default-reverse-dns-records-created-for-my-azure-services"></a>是否为 Azure 服务创建默认的反向 DNS 记录？
 
-否。 反向 DNS 是可选功能。 如果选择不配置反向 DNS，则不会创建任何默认的反向 DNS 记录。
+不是。 反向 DNS 是可选功能。 如果选择不配置反向 DNS，则不会创建任何默认的反向 DNS 记录。
 
 ### <a name="what-is-the-format-for-the-fully-qualified-domain-name-fqdn"></a>完全限定的域名 (FQDN) 的格式是什么？
 
@@ -237,15 +237,15 @@ FQDN 以正向顺序指定，且必须以点号结尾（例如“app1.contoso.co
 
 ### <a name="can-i-configure-reverse-dns-for-azure-app-service"></a>是否可以为 Azure 应用服务配置反向 DNS？
 
-否。 Azure 应用服务不支持反向 DNS。
+不是。 Azure 应用服务不支持反向 DNS。
 
 ### <a name="can-i-configure-multiple-reverse-dns-records-for-my-azure-service"></a>是否可以为 Azure 服务配置多个反向 DNS 记录？
 
-否。 Azure 仅支持为每个 Azure 云服务或 PublicIpAddress 配置一个反向 DNS 记录。
+不是。 Azure 仅支持为每个 Azure 云服务或 PublicIpAddress 配置一个反向 DNS 记录。
 
 ### <a name="can-i-configure-reverse-dns-for-ipv6-publicipaddress-resources"></a>是否可以为 IPv6 PublicIpAddress 资源配置反向 DNS？
 
-否。 Azure 当前仅支持为 IPv4 PublicIpAddress 资源和云服务配置反向 DNS。
+不是。 Azure 当前仅支持为 IPv4 PublicIpAddress 资源和云服务配置反向 DNS。
 
 ### <a name="can-i-send-emails-to-external-domains-from-my-azure-compute-services"></a>是否可以从 Azure 计算服务将电子邮件发送到外部域？
 

@@ -15,17 +15,17 @@ origin.date: 04/15/2019
 ms.date: 09/23/2019
 ms.author: v-jay
 ms.openlocfilehash: d15d0b0d064f0d42002c464a7f4d082061a82063
-ms.sourcegitcommit: 8248259e4c3947aa0658ad6c28f54988a8aeebf8
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "71125627"
 ---
 # <a name="connect-to-media-services-v3-api---python"></a>连接到媒体服务 v3 API - Python
 
 本文介绍如何使用服务主体登录方法连接到 Azure 媒体服务 v3 Python SDK。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - 从 [python.org](https://www.python.org/downloads/) 下载 Python
 - 请确保设置 `PATH` 环境变量

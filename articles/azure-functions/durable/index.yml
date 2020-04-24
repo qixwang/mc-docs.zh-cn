@@ -11,10 +11,10 @@ metadata:
   origin.date: 10/04/2019
   ms.date: 10/28/2019
   ms.openlocfilehash: 72ec3319415015c53bf60b929a96bee66d7432a8
-  ms.sourcegitcommit: 7d2ea8a08ee329913015bc5d2f375fc2620578ba
+  ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 10/29/2019
+  ms.lasthandoff: 04/17/2020
   ms.locfileid: "73034495"
 landingContent:
 - title: 关于 Durable Functions
@@ -73,7 +73,7 @@ landingContent:
     links:
     - text: Azure 无服务器社区库
       url: https://www.serverlesslibrary.net/
-    - text: Azure Resource Manager 模板
+    - text: Azure 资源管理器模板
       url: https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Web&term=functions
   - linkListType: how-to-guide
     links:

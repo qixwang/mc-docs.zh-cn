@@ -17,10 +17,10 @@ ms.date: 10/14/2019
 ms.author: v-yeche
 ms.custom: mvc
 ms.openlocfilehash: 7ef4e9322fbe363d9379296e3f38241b53eac532
-ms.sourcegitcommit: c9398f89b1bb6ff0051870159faf8d335afedab3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "72272653"
 ---
 # <a name="tutorial---deploy-applications-to-a-windows-virtual-machine-in-azure-with-the-custom-script-extension"></a>教程 - 使用自定义脚本扩展将应用程序部署到 Azure 中的 Windows 虚拟机
@@ -37,9 +37,9 @@ ms.locfileid: "72272653"
 [!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
 ## <a name="custom-script-extension-overview"></a>自定义脚本扩展概述
-自定义脚本扩展在 Azure VM 上下载和执行脚本。 此扩展适用于部署后配置、软件安装或其他任何配置/管理任务。 可以从 Azure 存储或 GitHub 下载脚本，或者在扩展运行时将脚本提供给 Azure 门户。
+自定义脚本扩展在 Azure VM 上下载和执行脚本。 此扩展适用于部署后配置、软件安装或其他任何配置/管理任务。 可以从 Azure 存储或 GitHub 下载脚本，或者在扩展运行时会脚本提供给 Azure 门户。
 
-自定义脚本扩展与 Azure Resource Manager 模板集成，也可以使用 Azure CLI、PowerShell、Azure 门户或 Azure 虚拟机 REST API 来运行它。
+自定义脚本扩展与 Azure 资源管理器模板集成，也可以使用 Azure CLI、PowerShell、Azure 门户或 Azure 虚拟机 REST API 来运行它。
 
 自定义脚本扩展适用于 Windows 和 Linux VM。
 
@@ -69,7 +69,7 @@ New-AzVm `
 创建资源和 VM 需要几分钟的时间。
 
 ## <a name="automate-iis-install"></a>自动安装 IIS
-使用 [Set-AzVMExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmextension) 安装自定义脚本扩展。 该扩展运行 `powershell Add-WindowsFeature Web-Server` 来安装 IIS Web 服务器，然后更新 Default.htm  页以显示 VM 的主机名：
+使用 [Set-AzVMExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmextension) 安装自定义脚本扩展。 该扩展运行 `powershell Add-WindowsFeature Web-Server` 以安装 IIS Web 服务器，并更新“Default.htm”  页以显示 VM 的主机名：
 
 ```powershell
 Set-AzVMExtension -ResourceGroupName "myResourceGroupAutomate" `
@@ -83,7 +83,7 @@ Set-AzVMExtension -ResourceGroupName "myResourceGroupAutomate" `
 ```
 
 ## <a name="test-web-site"></a>测试网站
-使用 [Get-AzPublicIPAddress](https://docs.microsoft.com/powershell/module/az.network/get-azpublicipaddress) 获取负载均衡器的公共 IP 地址。 以下示例获取前面创建的 myPublicIPAddress  的 IP 地址：
+使用 [Get-AzPublicIPAddress](https://docs.microsoft.com/powershell/module/az.network/get-azpublicipaddress) 获取负载均衡器的公共 IP 地址。 以下示例获取前面创建的“myPublicIPAddress”  的 IP 地址：
 
 ```powershell
 Get-AzPublicIPAddress `
@@ -91,13 +91,13 @@ Get-AzPublicIPAddress `
     -Name "myPublicIPAddress" | select IpAddress
 ```
 
-然后，可将公共 IP 地址输入 Web 浏览器中。 网站随即显示，其中包括负载均衡器将流量分发到的 VM 的主机名，如下例所示：
+然后，可将公共 IP 地址输入 web 浏览器中。 随即显示网站，包括负载均衡器将流量分发到的 VM 的主机名，如下例所示：
 
 ![运行 IIS 网站](./media/tutorial-automate-vm-deployment/running-iis-website.png)
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，你在 VM 上自动执行了 IIS 安装。 你已了解如何：
+在本教程中，会在 VM 上自动执行 IIS 安装。 你已了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 使用自定义脚本扩展安装 IIS

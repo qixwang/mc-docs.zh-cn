@@ -10,17 +10,17 @@ ms.date: 11/11/2019
 ms.author: v-yeche
 ms.custom: include file
 ms.openlocfilehash: 5959e6357398e1a3d1db50c1c8b0bb013db4d7c5
-ms.sourcegitcommit: a89eb0007edd5b4558b98c1748b2bd67ca22f4c9
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "73730692"
 ---
 # <a name="use-azure-storage-explorer-to-manage-azure-managed-disks"></a>使用 Azure 存储资源管理器管理 Azure 托管磁盘
 
 存储资源管理器 1.10.0 可让用户上传、下载和复制托管磁盘，以及创建快照。 由于具有这些附加功能，存储资源管理器使你能够将数据从本地迁移到 Azure，并可以跨 Azure 区域迁移数据。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要完成本文，需要做好以下准备：
 - Azure 订阅

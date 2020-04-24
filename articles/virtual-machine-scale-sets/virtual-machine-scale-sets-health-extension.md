@@ -17,10 +17,10 @@ origin.date: 01/30/2019
 ms.date: 10/30/2019
 ms.author: v-junlch
 ms.openlocfilehash: bb24efe43fb2887665ed7e605526af75e8b86825
-ms.sourcegitcommit: cb2caa72ec0e0922a57f2fa1056c25e32c61b570
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "73142192"
 ---
 # <a name="using-application-health-extension-with-virtual-machine-scale-sets"></a>配合使用虚拟机规模集和应用程序运行状况扩展
@@ -28,7 +28,7 @@ ms.locfileid: "73142192"
 
 本文介绍如何使用应用程序运行状况扩展监控部署在虚拟机规模集上的应用程序的运行状况。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 本文假定你熟悉以下内容：
 -   Azure 虚拟机[扩展](../virtual-machines/extensions/overview.md)
 -   [修改](virtual-machine-scale-sets-upgrade-scale-set.md)虚拟机规模集
@@ -67,17 +67,17 @@ ms.locfileid: "73142192"
 | 名称 | 值/示例 | 数据类型
 | ---- | ---- | ---- 
 | apiVersion | `2018-10-01` | date |
-| publisher | `Microsoft.ManagedServices` | string |
-| type | `ApplicationHealthLinux` (Linux)、`ApplicationHealthWindows` (Windows) | string |
+| 发布者 | `Microsoft.ManagedServices` | 字符串 |
+| type | `ApplicationHealthLinux` (Linux)、`ApplicationHealthWindows` (Windows) | 字符串 |
 | typeHandlerVersion | `1.0` | int |
 
 ### <a name="settings"></a>设置
 
-| Name | 值/示例 | 数据类型
+| 名称 | 值/示例 | 数据类型
 | ---- | ---- | ----
-| 协议 | `http` 或 `tcp` | string |
-| 端口 | 协议为 `http` 时为可选，协议为 `tcp` 时为必需 | int |
-| requestPath | 协议为 `http` 时为必需，协议为 `tcp` 时为不允许 | string |
+| protocol | `http` 或 `tcp` | 字符串 |
+| port | 协议为 `http` 时为可选，协议为 `tcp` 时为必需 | int |
+| requestPath | 协议为 `http` 时为必需，协议为 `tcp` 时为不允许 | 字符串 |
 
 ## <a name="deploy-the-application-health-extension"></a>部署应用程序运行状况扩展
 可以使用多种方法将应用程序运行状况扩展部署到规模集，如下面的示例所示。

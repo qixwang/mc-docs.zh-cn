@@ -9,10 +9,10 @@ ms.date: 11/25/2019
 ms.author: v-yeche
 ms.reviewer: minewiskan
 ms.openlocfilehash: 7d531d91f81ee6890fe324e00f8426200d9ba8a4
-ms.sourcegitcommit: c5e012385df740bf4a326eaedabb987314c571a1
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74203593"
 ---
 # <a name="manage-analysis-services"></a>管理 Analysis Services
@@ -40,7 +40,7 @@ ms.locfileid: "74203593"
 
     ![在 Azure 中获取服务器名称](./media/analysis-services-deploy/aas-deploy-get-server-name.png)
 2. 在 SSMS >“对象资源管理器”  中，单击“连接”   > “Analysis Services”  。
-3. 在“连接到服务器”  对话框中，粘贴服务器名称，然后在“身份验证”  中选择以下身份验证类型之一：   
+3. 在“连接到服务器”  对话框中，粘贴服务器名称，并在“身份验证”  中选择以下身份验证类型之一：   
     > [!NOTE]
     > 建议选择“Active Directory - 通用且具有 MFA 支持”身份验证类型。 
 
@@ -58,11 +58,11 @@ ms.locfileid: "74203593"
     ![在 SSMS 中连接](./media/analysis-services-manage/aas-manage-connect-ssms.png)
 
 <a name="server-administrators"></a>
-## <a name="server-administrators-and-database-users"></a>服务器管理员和数据库用户
+## <a name="server-administrators-and-database-users"></a><a name="server-administrators-and-database-users"></a>服务器管理员和数据库用户
 Azure Analysis Services 中存在两种类型的用户，即服务器管理员和数据库用户。 这两种类型的用户必须存在于 Azure Active Directory 中，且必须由组织电子邮件地址或 UPN 指定。 若要了解详细信息，请参阅[身份验证和用户权限](analysis-services-manage-users.md)。
 
 ## <a name="troubleshooting-connection-problems"></a>排查连接问题
-若在使用 SSMS 进行连接时遇到问题，则可能需要清除登录缓存。 光盘中不缓存任何内容。若要清除缓存，请关闭并重新启动连接进程。 
+若在使用 SSMS 进行连接时遇到问题，则可能需要清除登录缓存。 光盘中不缓存任何内容。若要清除缓存，请关闭并重启连接进程。 
 
 ## <a name="next-steps"></a>后续步骤
 如果尚未将表格模型部署到新服务器，现在正是一个好时机。 有关详细信息，请参阅[部署到 Azure Analysis Services](analysis-services-deploy.md)。

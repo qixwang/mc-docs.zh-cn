@@ -16,10 +16,10 @@ origin.date: 03/18/2019
 ms.date: 09/23/2019
 ms.author: v-jay
 ms.openlocfilehash: 934847868698c48cb4a42d163dcfa569a8b82cb7
-ms.sourcegitcommit: 8248259e4c3947aa0658ad6c28f54988a8aeebf8
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "71124518"
 ---
 # <a name="media-services-development-with-net"></a>使用 .NET 进行媒体服务开发 
@@ -27,22 +27,22 @@ ms.locfileid: "71124518"
 > [!NOTE]
 > 不会向媒体服务 v2 添加任何新特性或新功能。 <br/>查看最新版本：[媒体服务 v3](/media-services/latest/)。 另请参阅[从 v2 到 v3 的迁移指南](../latest/migrate-from-v2-to-v3.md)
 
-本文介绍了如何开始使用 .NET 开发媒体服务应用程序。
+本文讨论如何使用 .NET 开始开发媒体服务应用程序。
 
-**Azure 媒体服务 .NET SDK** 库允许使用 .NET 为媒体服务编程。 为了进一步方便使用 .NET 进行开发，提供了 **Azure 媒体服务 .NET SDK 扩展**库。 此库包含一组扩展方法和帮助器函数，可简化 .NET 代码。 这两个库都通过 **NuGet** 和 **GitHub** 提供。
+通过 **Azure 媒体服务 .NET SDK** 库，可基于使用 .NET 的媒体服务编程。 为了进一步方便使用 .NET 进行开发，提供了 **Azure 媒体服务 .NET SDK 扩展**库。 此库包含一组扩展方法和帮助器函数，可简化 .NET 代码。 这两个库都通过 **NuGet** 和 **GitHub** 提供。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 * 在新的或现有的 Azure 订阅中拥有一个媒体服务帐户。 请参阅[如何创建媒体服务帐户](media-services-portal-create-account.md)一文。
 * 操作系统：Windows 10、Windows 7、Windows 2008 R2 或 Windows 8。
 * .NET Framework 4.5 或更高版本。
 * Visual Studio。
 
 ## <a name="create-and-configure-a-visual-studio-project"></a>创建和配置 Visual Studio 项目
-本部分演示如何在 Visual Studio 中创建项目，以及如何为媒体服务开发设置该项目。  在本示例中，该项目为 C# Windows 控制台应用程序，但此处所示的设置步骤同样适用于针对媒体服务应用程序（例如，Windows 窗体应用程序或 ASP.NET Web 应用程序）创建的其他类型的项目。
+本部分演示如何在 Visual Studio 中创建项目，以及如何将该项目设置为进行媒体服务开发。  在本示例中，该项目为 C# Windows 控制台应用程序，但此处所示的设置步骤同样适用于针对媒体服务应用程序（例如，Windows 窗体应用程序或 ASP.NET Web 应用程序）创建的其他类型的项目。
 
 本部分说明如何使用 **NuGet** 添加媒体服务 .NET SDK 扩展和其他依赖库。
 
-此外，可以从 GitHub（[github.com/Azure/azure-sdk-for-media-services](https://github.com/Azure/azure-sdk-for-media-services) 或 [github.com/Azure/azure-sdk-for-media-services-extensions](https://github.com/Azure/azure-sdk-for-media-services-extensions)）获取最新的媒体服务 .NET SDK 资料、生成解决方案并添加对客户端项目的引用。 自动下载并提取所有必需的依赖项。
+此外，可以从 GitHub（[github.com/Azure/azure-sdk-for-media-services](https://github.com/Azure/azure-sdk-for-media-services) 或 [github.com/Azure/azure-sdk-for-media-services-extensions](https://github.com/Azure/azure-sdk-for-media-services-extensions)）获取最新的媒体服务 .NET SDK 资料、生成解决方案并添加对客户端项目的引用。 将自动下载并提取所有必需的依赖项。
 
 1. 在 Visual Studio 中创建新的 C# 控制台应用程序。 输入“名称”  、“位置”  和“解决方案名称”  ，并单击“确定”。
 2. 生成解决方案。
@@ -52,7 +52,7 @@ ms.locfileid: "71124518"
 
     1. 在“解决方案资源管理器”中，右键单击项目名称，并选择“管理 NuGet 包”  。
 
-    2. 此时显示“管理 NuGet 包”对话框。
+    2. 此时会显示“管理 NuGet 包”对话框。
 
     3. 在联机库中，搜索 Azure 媒体服务扩展，选择“Azure 媒体服务.NET SDK 扩展”  (windowsazure.mediaservices.extensions  )，然后单击“安装”  按钮。
    
@@ -62,11 +62,11 @@ ms.locfileid: "71124518"
    
     1. 若要使用“管理引用”对话框添加引用，请在“解决方案资源管理器”中右键单击项目名称。 然后单击“添加”  ，并单击“引用...”  。
    
-    2. 此时显示“管理引用”对话框。
+    2. 此时会显示“管理引用”对话框。
     3. 在 .NET Framework 程序集下，找到并选择 System.Configuration 程序集，并按“确定”  。
-6. 打开 App.config 文件并将 **appSettings** 节添加到文件。 设置连接到媒体服务 API 所需的值。 有关详细信息，请参阅[通过 Azure AD 身份验证访问 Azure 媒体服务 API](media-services-use-aad-auth-to-access-ams-api.md)。 
+6. 打开 App.config 文件并将 **appSettings** 节添加到文件。 设置连接到 Media Services API 所需的值。 有关详细信息，请参阅[通过 Azure AD 身份验证访问 Azure 媒体服务 API](media-services-use-aad-auth-to-access-ams-api.md)。 
 
-    设置使用**服务主体**身份验证方法进行连接所需的值。
+    使用“服务主体”身份验证方法设置需要连接的值  。
 
         ```csharp
                 <configuration>
@@ -80,8 +80,8 @@ ms.locfileid: "71124518"
                 </configuration>
         ```
 
-7. 向你的项目中添加 **System.Configuration** 引用。
-8. 使用以下代码覆盖位于 Program.cs 文件开头的现有 **using** 语句：
+7. 将“System.Configuration”引用添加到项目中  。
+8. 使用以下代码覆盖位于 Program.cs 文件开头的现有“using”语句  ：
 
     ```csharp      
             using System;
@@ -97,7 +97,7 @@ ms.locfileid: "71124518"
 
 ## <a name="example"></a>示例
 
-下面是一个小型示例，该示例连接到 AMS API 并列出所有可用的媒体处理器。
+下面是一个小型示例，连接到 AMS API 并列出所有可用的媒体处理器。
 
 ```csharp
         class Program

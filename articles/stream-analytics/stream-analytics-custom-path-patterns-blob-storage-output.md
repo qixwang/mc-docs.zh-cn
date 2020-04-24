@@ -11,10 +11,10 @@ ms.topic: conceptual
 origin.date: 02/07/2019
 ms.date: 08/06/2019
 ms.openlocfilehash: ef3df1b10bb62f31bb483c4764040ae4a58ddc17
-ms.sourcegitcommit: c72fba1cacef1444eb12e828161ad103da338bb1
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "71674826"
 ---
 # <a name="azure-stream-analytics-custom-blob-output-partitioning"></a>Azure 流分析自定义 blob 输出分区
@@ -67,7 +67,7 @@ Azure 流分析支持包含自定义字段或属性和自定义 DateTime 路径�
 
 ## <a name="custom-datetime-path-patterns"></a>自定义 DateTime 路径模式
 
-可以使用自定义 DateTime 路径模式来指定与 Hive 流式处理约定相符的输出格式，这样 Azure 流分析就可以将数据发送到 Azure HDInsight 和 Azure Databricks 进行下游处理。 自定义 DateTime 路径模式可以轻松地实现，只需在 Blob 输出的“路径前缀”字段中使用 `datetime` 关键字并使用格式说明符即可。 例如，`{datetime:yyyy}`。
+可以使用自定义 DateTime 路径模式来指定与 Hive 流式处理约定相符的输出格式，这样 Azure 流分析就可以将数据发送到 Azure HDInsight 和 Azure Databricks 进行下游处理。 自定义 DateTime 路径模式可以轻松地实现，只需在 Blob 输出的“路径前缀”字段中使用 `datetime` 关键字并使用格式说明符即可。 例如，`{datetime:yyyy}` 。
 
 ### <a name="supported-tokens"></a>支持的令牌
 
@@ -80,7 +80,7 @@ Azure 流分析支持包含自定义字段或属性和自定义 DateTime 路径�
 |{datetime:M}|月份为 1 到 12|1|
 |{datetime:dd}|日期为 01 到 31|02|
 |{datetime:d}|日期为 1 到 12|2|
-|{datetime:HH}|小时为 00 到 23，采用 24 小时格式|10 个|
+|{datetime:HH}|小时为 00 到 23，采用 24 小时格式|10|
 |{datetime:mm}|分钟为 00 到 24|06|
 |{datetime:m}|分钟为 0 到 24|6|
 |{datetime:ss}|秒为 00 到 60|08|
@@ -105,7 +105,7 @@ Azure 流分析支持包含自定义字段或属性和自定义 DateTime 路径�
 
 Blob 存储的自定义路径模式可以与 Hive 流式处理约定配合使用，后者要求文件夹在其名称中使用 `column=` 进行标记。
 
-例如，`year={datetime:yyyy}/month={datetime:MM}/day={datetime:dd}/hour={datetime:HH}`。
+例如，`year={datetime:yyyy}/month={datetime:MM}/day={datetime:dd}/hour={datetime:HH}` 。
 
 有了自定义输出，就不需更改表，也不需将分区添加到 Azure 流分析和 Hive 之间的端口数据。 许多文件夹可以使用以下方式自动添加：
 

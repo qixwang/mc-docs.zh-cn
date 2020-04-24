@@ -11,10 +11,10 @@ ms.date: 11/18/2019
 ms.topic: conceptual
 manager: digimobile
 ms.openlocfilehash: 0e6807a1c1689412ff4d8f3f51717b05c5923595
-ms.sourcegitcommit: ea2aeb14116769d6f237542c90f44c1b001bcaf3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74116190"
 ---
 # <a name="certificate-assets-in-azure-automation"></a>Azure 自动化中的证书资产
@@ -60,16 +60,16 @@ ms.locfileid: "74116190"
 
 ## <a name="creating-a-new-certificate"></a>创建新证书
 
-创建新证书时，需要将 .cer 或 .pfx 文件上传到 Azure 自动化。 将证书标记为可导出后，可以将其转出 Azure 自动化证书存储区。 如果证书不可导出，则它只可用于在 Runbook 或 DSC 配置中签名。 Azure 自动化要求证书具有以下提供程序：Microsoft 增强 RSA 和 AES 加密提供程序  。
+创建新证书时，需要将 .cer 或 .pfx 文件上传到 Azure 自动化。 将证书标记为可导出后，可以将其转出 Azure 自动化证书存储区。 如果证书不可导出，则它只可用于在 Runbook 或 DSC 配置中签名。 Azure 自动化要求证书具有以下提供程序：Microsoft Enhanced RSA 和 AES 加密提供程序  。
 
 ### <a name="to-create-a-new-certificate-with-the-azure-portal"></a>使用 Azure 门户创建新证书
 
 1. 在自动化帐户中，单击“资产”  磁贴打开“资产”  页。
 2. 单击“证书”  磁贴打开“证书”  页。
 3. 单击页面顶部的“添加证书”  。
-4. 在“名称”框中键入证书的名称  。
+4. 在“名称”  框中键入证书的名称。
 5. 若要浏览 .cer 或.pfx 文件，请单击“上传证书文件”  下的“选择文件”  。 如果选择了 .pfx 文件，请指定密码，以及是否可以导出该文件。
-6. 单击“创建”以保存新的证书资产  。
+6. 单击“创建”  以保存新的证书资产。
 
 ### <a name="to-create-a-new-certificate-with-powershell"></a>使用 PowerShell 创建新证书
 

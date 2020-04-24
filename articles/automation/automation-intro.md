@@ -12,10 +12,10 @@ ms.date: 11/18/2019
 ms.custom: mvc
 ms.topic: overview
 ms.openlocfilehash: ca846679be93d0c27c4b7d9d41ba04b60cab159f
-ms.sourcegitcommit: ea2aeb14116769d6f237542c90f44c1b001bcaf3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74116223"
 ---
 # <a name="an-introduction-to-azure-automation"></a>Azure 自动化简介
@@ -41,7 +41,7 @@ Azure 自动化 [Desired State Configuration](automation-dsc-overview.md) 是一
 
 通过 Azure 自动化跨混合环境更新 Windows 和 Linux 系统。 可以在 Azure 中、本地和其他云中了解更新符合性。 可以创建计划性部署，在定义的维护时段协调各种更新的安装。 如果不应在计算机上安装某个更新，可以将该更新从部署中排除。
 
-### <a name="shared-resources"></a>共享资源
+### <a name="shared-resources"></a><a name="shared-resources"></a>共享资源
 
 Azure 自动化包含一组共享资源，方便用户大规模地完成环境的自动化操作和配置。
 

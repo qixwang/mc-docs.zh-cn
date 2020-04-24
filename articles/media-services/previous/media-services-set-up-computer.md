@@ -16,10 +16,10 @@ origin.date: 04/01/2019
 ms.date: 09/23/2019
 ms.author: v-jay
 ms.openlocfilehash: d2b268df1bcf7921173ae8264b36381b0d2efd5c
-ms.sourcegitcommit: 8248259e4c3947aa0658ad6c28f54988a8aeebf8
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "71124666"
 ---
 # <a name="set-up-your-media-services-development-environment"></a>设置媒体服务开发环境  

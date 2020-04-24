@@ -15,10 +15,10 @@ origin.date: 09/18/2018
 ms.date: 11/11/2019
 ms.author: v-yeche
 ms.openlocfilehash: eddbb05c638f2ca52a4816d1d1dd866c714ee8f7
-ms.sourcegitcommit: 1fd822d99b2b487877278a83a9e5b84d9b4a8ce7
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74116926"
 ---
 # <a name="vm-startup-is-stuck-on-getting-windows-ready-dont-turn-off-your-computer-in-azure"></a>VM 启动时停滞，并在 Azure 中显示“正在准备 Windows。 请不要关闭计算机”
@@ -37,7 +37,7 @@ Windows VM 无法启动。 使用**启动诊断**来获取 VM 的屏幕截图时
 
 ## <a name="cause"></a>原因
 
-当服务器在配置发生更改后执行最终的重启时，通常会发生此问题。 配置更改可能通过 Windows 更新或通过更改服务器的角色/功能进行初始化。 对于 Windows 更新，如果更新的大小较大，则操作系统将需要更多时间来重新配置更改。
+当服务器在配置发生更改后执行最终重新启动时，通常会发生此问题。 配置更改可能通过 Windows 更新或通过更改服务器的角色/功能进行初始化。 对于 Windows 更新，如果更新的大小较大，则操作系统将需要更多时间来重新配置更改。
 
 ## <a name="collect-an-os-memory-dump"></a>收集 OS 内存转储
 

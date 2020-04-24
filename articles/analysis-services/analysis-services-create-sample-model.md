@@ -9,10 +9,10 @@ ms.date: 11/25/2019
 ms.author: v-yeche
 ms.reviewer: minewiskan
 ms.openlocfilehash: f7f3da12e163b0736c4a47699ea448949fbef5dd
-ms.sourcegitcommit: c5e012385df740bf4a326eaedabb987314c571a1
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74203633"
 ---
 # <a name="tutorial-add-a-sample-model-from-the-portal"></a>教程：从门户添加示例模型
@@ -43,7 +43,7 @@ ms.locfileid: "74203633"
 
     ![创建示例模型](./media/analysis-services-create-sample-model/aas-create-sample-new-model.png)
 
-2. 在“新建模型” > “选择数据源”中，确认已选中“示例数据”，然后单击“添加”。    
+2. 在“新建模型” **“选择数据源”中，确认已选中“示例数据”，然后单击“添加”。**  >    
 
     ![选择“示例数据”](./media/analysis-services-create-sample-model/aas-create-sample-data.png)
 
@@ -65,7 +65,7 @@ ms.locfileid: "74203633"
 
     ![登录](./media/analysis-services-create-sample-model/aas-create-sample-cleanup-signin.png)
 
-3. 在“对象资源管理器”中，右键单击 `adventureworks` 示例数据库，然后单击“删除”。  
+3. 在“对象资源管理器”中，右键单击  **示例数据库，然后单击“删除”。** `adventureworks`
 
     ![删除示例数据库](./media/analysis-services-create-sample-model/aas-create-sample-cleanup-delete.png)
 

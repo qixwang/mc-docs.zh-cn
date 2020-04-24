@@ -8,10 +8,10 @@ ms.author: v-yiso
 origin.date: 08/16/2019
 ms.date: 11/11/2019
 ms.openlocfilehash: 1a446a44f442e295a6c054a9fb00b5e5a8cc6f5b
-ms.sourcegitcommit: 642a4ad454db5631e4d4a43555abd9773cae8891
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "73426059"
 ---
 # <a name="scenario-timeouts-with-hbase-hbck-command-in-azure-hdinsight"></a>方案：Azure HDInsight 中的“hbase hbck”命令超时

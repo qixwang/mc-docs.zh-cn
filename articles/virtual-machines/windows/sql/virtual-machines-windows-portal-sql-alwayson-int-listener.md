@@ -15,10 +15,10 @@ origin.date: 02/16/2017
 ms.date: 10/14/2019
 ms.author: v-yeche
 ms.openlocfilehash: 33c99045d2a48e25608bcde65c914fdc0d2b4876
-ms.sourcegitcommit: c9398f89b1bb6ff0051870159faf8d335afedab3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "72272821"
 ---
 # <a name="configure-a-load-balancer-for-an-always-on-availability-group-in-azure"></a>在 Azure 中为 Always On 可用性组配置负载均衡器
@@ -75,7 +75,7 @@ ms.locfileid: "72272821"
     | **专用 IP 地址** |指定子网中的某个可用 IP 地址。 在群集上创建侦听器时，请使用此 IP 地址。 本文稍后的 PowerShell 脚本会将此地址用于 `$ILBIP` 变量。 |
     | **订阅** |如果有多个订阅，可能会显示此字段。 选择要与此资源关联的订阅。 通常是与可用性组的所有资源相同的订阅。 |
     | **资源组** |选择 SQL Server 实例所在的资源组。 |
-    | **Location** |选择 SQL Server 实例所在的 Azure 位置。 |
+    | **位置** |选择 SQL Server 实例所在的 Azure 位置。 |
 
 6. 单击**创建**。 
 
@@ -183,7 +183,7 @@ Azure 创建探测，然后使用它来测试哪个 SQL Server 实例具有可�
 2. 转到“AlwaysOn 高可用性” > “可用性组” > “可用性组侦听器”。     
     现在应看到在故障转移群集管理器中创建的侦听器名称。 
 
-3. 右键单击侦听器名称，并单击“属性”。 
+3. 右键单击侦听程序名称，然后单击“属性”。 
 
 4. 在“端口”框中，通过使用先前使用过的 $EndpointPort 为可用性组侦听器指定端口号（默认值为 1433），然后单击“确定”。  
 
@@ -240,7 +240,7 @@ SQLCMD 连接会自动连接到托管主副本的 SQL Server 实例。
     |设置 |Value
     |:-----|:----
     |**名称** |用于标识负载均衡规则的名称。 
-    |“前端 IP 地址”  |选择所创建的 IP 地址。 
+    |**前端 IP 地址** |选择所创建的 IP 地址。 
     |**协议** |TCP
     |**端口** |使用 SQL Server 实例正在使用的端口。 在不更改的情况下，默认实例使用端口 1433。 
     |后端端口  |使用与“端口”相同的值  。

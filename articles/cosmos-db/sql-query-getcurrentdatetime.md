@@ -9,10 +9,10 @@ ms.date: 10/28/2019
 ms.author: v-yeche
 ms.custom: query-reference
 ms.openlocfilehash: 32fa92a04aa054e17fe47f2040d0ef721a3e355b
-ms.sourcegitcommit: 73f07c008336204bd69b1e0ee188286d0962c1d7
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "72914733"
 ---
 # <a name="getcurrentdatetime-azure-cosmos-db"></a>GetCurrentDateTime (Azure Cosmos DB)
@@ -35,7 +35,7 @@ GetCurrentDateTime ()
   |DD|两位数的月份日期（01 到 31）|
   |T|时间元素开头的符号|
   |hh|两位数小时（00 到 23）|
-  |MM|两位数分钟（00 到 59）|
+  |mm|两位数分钟（00 到 59）|
   |ss|两位数秒（00 到 59）|
   |.sss|三位数的秒小数部分|
   |Z|UTC（协调世界时）指示符||

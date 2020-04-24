@@ -10,10 +10,10 @@ ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.reviewer: sngun
 ms.openlocfilehash: 83c09abda9730654bafe6644d5d6d915b599d456
-ms.sourcegitcommit: 0d07175c0b83219a3dbae4d413f8e012b6e604ed
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "71306754"
 ---
 <!--Verify sucessfully-->
@@ -81,7 +81,7 @@ ms.locfileid: "71306754"
 如果使用 HTTP 代理，请确保它支持 SDK `ConnectionPolicy` 中配置的连接数。
 否则，将遇到连接问题。
 
-### 请求速率过大<a name="request-rate-too-large"></a>
+### <a name="request-rate-too-large"></a>请求速率过大<a name="request-rate-too-large"></a>
 “请求速率过大”或错误代码 429 表示请求正受到限制，因为消耗的吞吐量 (RU/s) 已超过预配的吞吐量。 SDK 会根据指定的[重试策略](https://docs.azure.cn/dotnet/api/microsoft.azure.documents.client.connectionpolicy.retryoptions?view=azure-dotnet)自动重试请求。 如果经常遇到这种失败，请考虑增大集合的吞吐量。 检查[门户指标](use-metrics.md)，以确定是否收到了 429 错误。 查看[分区键](/cosmos-db/partitioning-overview#choose-partitionkey)，以确保均匀分配存储和请求量。 
 
 ### <a name="slow-query-performance"></a>查询性能较低

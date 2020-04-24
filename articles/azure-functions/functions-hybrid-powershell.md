@@ -9,10 +9,10 @@ origin.date: 09/05/2019
 ms.date: 10/28/2019
 ms.author: v-junlch
 ms.openlocfilehash: 4c300d5c9aca2d3d8f48a2d404fbb84ce230aac1
-ms.sourcegitcommit: 7d2ea8a08ee329913015bc5d2f375fc2620578ba
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "73034379"
 ---
 # <a name="managing-hybrid-environments-with-powershell-in-azure-functions-and-app-service-hybrid-connections"></a>在 Azure Functions 和应用服务混合连接中使用 PowerShell 管理混合环境

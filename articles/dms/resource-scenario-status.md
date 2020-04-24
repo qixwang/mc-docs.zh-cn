@@ -13,10 +13,10 @@ ms.topic: article
 origin.date: 09/05/2019
 ms.date: 09/30/2019
 ms.openlocfilehash: 1d2708eec3a2d194c84c3e7c4baf05f9bc5d4cdd
-ms.sourcegitcommit: 9495256a549d25ffddc4f42f3e12a607530409d0
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "71333655"
 ---
 # <a name="status-of-migration-scenarios-supported-by-azure-database-migration-service"></a>Azure 数据库迁移服务支持的迁移方案的状态
@@ -42,7 +42,7 @@ Azure 数据库迁移服务支持的迁移方案的状态随时间而变化。 �
 
 下表显示了 Azure 数据库迁移服务对脱机迁移的支持。
 
-| 目标  | Source | 支持 | 状态 |
+| 目标  | 源 | 支持 | 状态 |
 | ------------- | ------------- |:-------------:|:-------------:|
 | **Azure SQL DB** | SQL Server | ✔ | GA |
 |   | RDS SQL |  |  |
@@ -62,7 +62,7 @@ Azure 数据库迁移服务支持的迁移方案的状态随时间而变化。 �
 
 下表显示了 Azure 数据库迁移服务对联机迁移的支持。
 
-| 目标  | Source | 支持 | 状态 |
+| 目标  | 源 | 支持 | 状态 |
 | ------------- | ------------- |:-------------:|:-------------:|
 | **Azure SQL DB** | SQL Server | ✔ | GA |
 |   | RDS SQL | ✔ | GA |

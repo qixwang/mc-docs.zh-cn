@@ -11,10 +11,10 @@ origin.date: 04/26/2018
 ms.date: 09/30/2019
 ms.author: v-yiso
 ms.openlocfilehash: 420234eecfb4bd4ade07b21c7e9c7bfe5231062f
-ms.sourcegitcommit: 6a62dd239c60596006a74ab2333c50c4db5b62be
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/20/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "71155924"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-nodejs"></a>IoT 中心模块标识和模块孪生 (Node.js) 入门

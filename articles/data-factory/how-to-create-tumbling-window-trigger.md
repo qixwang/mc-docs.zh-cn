@@ -13,10 +13,10 @@ ms.topic: conceptual
 origin.date: 09/11/2019
 ms.date: 11/11/2019
 ms.openlocfilehash: 2ba20fe01a40f10b155e8b3f2e9da2a537a59b68
-ms.sourcegitcommit: ff8dcf27bedb580fc1fcae013ae2ec28557f48ac
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "73648763"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-on-a-tumbling-window"></a>创建按翻转窗口运行管道的触发器

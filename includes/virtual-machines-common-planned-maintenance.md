@@ -10,13 +10,13 @@ ms.date: 10/14/2019
 ms.author: v-yeche
 ms.custom: include file
 ms.openlocfilehash: 2a0bc1a9a8e447fcfd367b978fee3183a806a1f3
-ms.sourcegitcommit: c9398f89b1bb6ff0051870159faf8d335afedab3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "72272418"
 ---
-Azure 定期更新其平台，以提高虚拟机的主机基础结构的可靠性、性能及安全性。 此类更新的目的包括修补托管环境中的软件组件、升级网络组件以及硬件解除授权，等等。 
+Azure 定期更新其平台，以提高虚拟机的主机基础结构的可靠性、性能及安全性。 此类更新的用途包括修补宿主环境中的软件组件、升级网络组件或将硬件解除授权等。 
 
 更新极少会影响到托管的 VM。 如果更新确实会造成影响，Azure 将选择影响最小的方法进行更新：
 
@@ -24,7 +24,7 @@ Azure 定期更新其平台，以提高虚拟机的主机基础结构的可靠�
 
 - 如果维护需要重新启动，则你会收到计划内维护通知。 Azure 还会提供一个时间范围，方便你在合适的时间自行启动维护。 除非紧急执行维护，否则自我维护时段通常为 35 天。 Azure 正在投资相关技术，减少进行计划内平台维护时必须重新启动 VM 的情况。 
 
-本页介绍 Azure 如何执行上述两种类型的维护。 有关非计划事件（服务中断）的详细信息，请参阅 [管理 Windows VM 的可用性](../articles/virtual-machines/windows/manage-availability.md)或适用于 [Linux](../articles/virtual-machines/linux/manage-availability.md) 的相应文章。
+本页介绍 Azure 如何执行两种类型的维护。 有关非计划事件（服务中断）的详细信息，请参阅 [管理 Windows VM 的可用性](../articles/virtual-machines/windows/manage-availability.md)或适用于 [Linux](../articles/virtual-machines/linux/manage-availability.md) 的相应文章。
 
 在 VM 中，可以使用适用于 [Windows](../articles/virtual-machines/windows/scheduled-events.md) 或 [Linux](../articles/virtual-machines/linux/scheduled-events.md) 的计划事件获取有关即将进行维护的通知。
 
@@ -65,7 +65,7 @@ Azure 定期更新其平台，以提高虚拟机的主机基础结构的可靠�
 
 自助服务阶段通常持续四周，你将在 VM 上启动维护。  在自助服务期间，可以查询每个 VM 来了解其状态，以及上次维护请求的结果。
 
-启动自助维护时，VM 会重新部署到已更新的某个节点。 由于 VM 重新启动，临时磁盘会丢失，而与虚拟网络接口关联的动态 IP 地址会更新。
+在启动自助式维护时，VM 将重新部署到已经更新的节点。 由于 VM 重新启动，临时磁盘会丢失，而与虚拟网络接口关联的动态 IP 地址会更新。
 
 如果在自助维护期间出错，操作将会停止，VM 不会更新，而你可以使用相应的选项来重试自助维护。 
 

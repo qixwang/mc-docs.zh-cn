@@ -14,10 +14,10 @@ metadata:
   origin.date: 08/27/2019
   ms.date: 10/28/2019
   ms.openlocfilehash: 5f54ab819d8df6e3b252acf9b1708e96b4808b02
-  ms.sourcegitcommit: 73f07c008336204bd69b1e0ee188286d0962c1d7
+  ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 10/25/2019
+  ms.lasthandoff: 04/17/2020
   ms.locfileid: "72914451"
 landingContent:
 - title: 关于 Azure 文件

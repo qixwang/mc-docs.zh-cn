@@ -15,10 +15,10 @@ origin.date: 02/16/2017
 ms.date: 11/11/2019
 ms.author: v-yeche
 ms.openlocfilehash: 482b2bbea8dd83910741cbb8b9921f522f00e517
-ms.sourcegitcommit: 1fd822d99b2b487877278a83a9e5b84d9b4a8ce7
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74116929"
 ---
 # <a name="troubleshoot-a-linux-vm-by-attaching-the-os-disk-to-a-recovery-vm-with-the-azure-cli"></a>通过使用 Azure CLI 将 OS 磁盘附加到恢复 VM 来对 Linux VM 进行故障排除
@@ -45,9 +45,9 @@ ms.locfileid: "74116929"
 在以下示例中，请将参数名称替换成自己的值，例如 `myResourceGroup` 和 `myVM`。
 
 ## <a name="determine-boot-issues"></a>确定启动问题
-检查串行输出以确定 VM 不能正常启动的原因。 一个常见示例是 `/etc/fstab`中存在无效条目，或底层虚拟硬盘已删除或移动。
+检查串行输出以确定 VM 不能正常启动的原因。 一个常见示例是 `/etc/fstab` 中存在无效条目，或底层虚拟硬盘已删除或移动。
 
-使用 [az vm boot-diagnostics get-boot-log](https://docs.azure.cn/cli/vm/boot-diagnostics?view=azure-cli-latest#az-vm-boot-diagnostics-get-boot-log) 获取启动日志。 以下示例从名为 `myResourceGroup` 的资源组中名为 `myVM` 的 VM 获取串行输出：
+使用 [az vm boot-diagnostics get-boot-log](https://docs.azure.cn/cli/vm/boot-diagnostics?view=azure-cli-latest#az-vm-boot-diagnostics-get-boot-log) 获取启动日志。 以下示例从名为 `myVM` 的资源组中名为 `myResourceGroup` 的 VM 获取串行输出：
 
 ```azurecli
 az vm boot-diagnostics get-boot-log --resource-group myResourceGroup --name myVM
@@ -57,7 +57,7 @@ az vm boot-diagnostics get-boot-log --resource-group myResourceGroup --name myVM
 
 ## <a name="stop-the-vm"></a>停止 VM
 
-以下示例在名为 `myResourceGroup` 的资源组中停止名为 `myVM` 的 VM：
+以下示例在名为 `myVM` 的资源组中停止名为 `myResourceGroup` 的 VM：
 
 ```azurecli
 az vm stop --resource-group MyResourceGroup --name MyVm
@@ -75,7 +75,7 @@ az snapshot create --resource-group myResourceGroupDisk --source "$osdiskid" --n
 ```
 ## <a name="create-a-disk-from-the-snapshot"></a>从快照创建磁盘
 
-此脚本从名为 `mySnapshot` 的快照创建名为 `myOSDisk` 的托管磁盘。  
+此脚本从名为 `myOSDisk` 的快照创建名为 `mySnapshot` 的托管磁盘。  
 
 ```azurecli
 #Provide the name of your resource group
@@ -113,7 +113,7 @@ az disk create --resource-group $resourceGroup --name $osDisk --sku $storageType
 现在，可以创建原始 OS 磁盘的副本。 可将这个新磁盘装载到另一个 Windows VM，以进行故障排除。
 
 ## <a name="attach-the-new-virtual-hard-disk-to-another-vm"></a>将新的虚拟硬盘附加到另一个 VM
-在后续几个步骤中，使用另一个 VM 进行故障排除。 将磁盘附加到此故障排除 VM，以浏览和编辑磁盘的内容。 此过程允许用户更正任何配置错误或者查看其他应用程序或系统日志文件。
+在后续几个步骤中，将使用另一个 VM 进行故障排除。 将磁盘附加到此故障排除 VM，以浏览和编辑磁盘的内容。 此过程允许用户更正任何配置错误或者查看其他应用程序或系统日志文件。
 
 此脚本将磁盘 `myNewOSDisk` 附加到 VM `MyTroubleshootVM`：
 
@@ -132,7 +132,7 @@ az vm disk attach --disk $diskId --resource-group MyResourceGroup --size-gb 128 
 
 <!-- Change Red Hat to CentOS -->
 
-1. 使用相应的凭据通过 SSH 连接到故障排除 VM。 如果此磁盘是附加到故障排除 VM 的第一个数据磁盘，则此磁盘可能已连接到 `/dev/sdc`。 使用 `dmseg` 查看附加的磁盘：
+1. 使用适当的凭据通过 SSH 登录到故障排除 VM。 如果此磁盘是附加到故障排除 VM 的第一个数据磁盘，则此磁盘可能已连接到 `/dev/sdc`。 使用 `dmseg` 查看附加的磁盘：
 
     ```bash
     dmesg | grep SCSI
@@ -150,7 +150,7 @@ az vm disk attach --disk $diskId --resource-group MyResourceGroup --size-gb 128 
 
     在前面的示例中，OS 磁盘位于 `/dev/sda`，为每个 VM 提供的临时磁盘位于 `/dev/sdb`。 如果有多个数据磁盘，它们应位于 `/dev/sdd`、`/dev/sde`，依次类推。
 
-2. 创建一个目录来装载现有的虚拟硬盘。 以下示例创建一个名为 `troubleshootingdisk`的目录：
+2. 创建一个目录来装载现有的虚拟硬盘。 以下示例创建一个名为 `troubleshootingdisk` 的目录：
 
     ```bash
     sudo mkdir /mnt/troubleshootingdisk
@@ -177,7 +177,7 @@ az vm disk attach --disk $diskId --resource-group MyResourceGroup --size-gb 128 
     cd /
     ```
 
-    现在卸载现有的虚拟硬盘。 以下示例卸载 `/dev/sdc1`中的设备：
+    现在卸载现有的虚拟硬盘。 以下示例卸载 `/dev/sdc1` 中的设备：
 
     ```bash
     sudo umount /dev/sdc1

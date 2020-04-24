@@ -9,19 +9,19 @@ ms.topic: conceptual
 origin.date: 06/03/2019
 ms.date: 11/18/2019
 ms.openlocfilehash: c5bb81dc08db68ceb362eb573adab32055b11e92
-ms.sourcegitcommit: c863b31d8ead7e5023671cf9b58415542d9fec9c
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74020807"
 ---
 # <a name="ingest-data-from-kafka-into-azure-data-explorer"></a>将数据从 Kafka 引入到 Azure 数据资源管理器
  
 Azure 数据资源管理器是一项快速且高度可缩放的数据探索服务，适用于日志和遥测数据。 Azure 数据资源管理器提供从 Kafka 引入数据（加载数据）的功能。 Kafka 是一个分布式流式处理平台，可用于构建实时流式处理数据管道，在系统或应用程序之间可靠地移动数据。
  
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
  
-* 如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial)。 
+* 如果没有 Azure 订阅，可在开始前创建一个 [试用帐户](https://www.azure.cn/pricing/1rmb-trial) 。 
  
 * [一个测试群集和数据库](create-cluster-database-portal.md)。
  
@@ -65,7 +65,7 @@ mvn clean compile assembly:single
 
 [Kafka Connect](https://kafka.apache.org/documentation/#connect) 中详细记录了 Kafka 连接器以及如何部署它们 
 
-### <a name="example-configuration"></a>示例配置 
+### <a name="example-configuration"></a>配置示例 
  
 ```config
 name=KustoSinkConnector 
@@ -122,7 +122,7 @@ git clone git://github.com:Azure/azure-kusto-samples-dotnet.git
 cd ./azure-kusto-samples-dotnet/kafka/
 ```
 
-### <a name="run-the-app"></a>运行应用程序
+### <a name="run-the-app"></a>运行应用
 
 1. 在 Visual Studio 中打开示例应用解决方案。
 
@@ -132,7 +132,7 @@ cd ./azure-kusto-samples-dotnet/kafka/
     const string connectionString = @"<YourConnectionString>";
     ```
 
-1. 构建并运行应用程序。 应用将消息发送到 Kafka 群集，并且每 10 秒显示一次状态。
+1. 生成并运行应用。 应用将消息发送到 Kafka 群集，并且每 10 秒显示一次状态。
 
 1. 应用发送一些消息后，继续执行下一步。
  

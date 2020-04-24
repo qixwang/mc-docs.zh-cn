@@ -16,10 +16,10 @@ origin.date: 08/21/2019
 ms.date: 10/14/2019
 ms.author: v-yeche
 ms.openlocfilehash: f15accacba94cac17a246ff2b37a6e7689fb2334
-ms.sourcegitcommit: c9398f89b1bb6ff0051870159faf8d335afedab3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "72272721"
 ---
 # <a name="download-a-linux-vhd-from-azure"></a>从 Azure 下载 Linux VHD
@@ -36,7 +36,7 @@ ms.locfileid: "72272721"
 
 若要使用 VHD 作为映像创建其他 VM，请完成以下步骤：
 
-1. 使用 SSH、帐户名称和 VM 的公共 IP 地址连接到它并对其取消设置。 可以使用 [az network public-ip show](https://docs.azure.cn/cli/network/public-ip?view=azure-cli-latest#az-network-public-ip-show) 查找公共 IP 地址。 +user 参数还会删除上次预配的用户帐户。 如果要将帐户凭据收录到 VM，请省略此 +user 参数。 以下示例删除上次预配的用户帐户：
+1. 使用 SSH、帐户名称和 VM 的公共 IP 地址连接到它并对其取消设置。 可以使用 [az network public-ip show](https://docs.azure.cn/cli/network/public-ip?view=azure-cli-latest#az-network-public-ip-show) 查找公共 IP 地址。 +user 参数还会删除上次预配的用户帐户。 如果正在将帐户凭据收录到 VM，请省略此 +user 参数。 以下示例删除上次预配的用户帐户：
 
     ```bash
     ssh azureuser@<publicIpAddress>
@@ -59,7 +59,7 @@ ms.locfileid: "72272721"
 
 若要使用 VHD 作为现有 VM 的新实例的磁盘或数据磁盘，请完成以下步骤：
 
-1. 登录到 [Azure 门户](https://portal.azure.cn/)。
+1. 登录 [Azure 门户](https://portal.azure.cn/)。
 2. 在左侧菜单中，选择“虚拟机”  。
 3. 从列表中选择 VM。
 4. 在 VM 的页面上，选择“停止”  。

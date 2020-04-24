@@ -17,10 +17,10 @@ ms.date: 11/13/2019
 ms.author: v-junlch
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c84f0a34e3a34b33b2476eb0b45bcbedbea65127
-ms.sourcegitcommit: 1171a6ab899b26586d1ea4b3a089bb8ca3af2aa2
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74084486"
 ---
 # <a name="configure-a-vm-with-managed-identities-for-azure-resources-using-an-azure-sdk"></a>使用 Azure SDK 为 VM 配置具有 Azure 资源托管标识
@@ -31,7 +31,7 @@ Azure 资源的托管标识在 Azure Active Directory (AD) 中为 Azure 服务�
 
 本文介绍如何使用 Azure SDK 为 Azure VM 启用和删除 Azure 资源托管标识。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 [!INCLUDE [msi-qs-configure-prereqs](../../../includes/active-directory-msi-qs-configure-prereqs.md)]
 
@@ -39,7 +39,7 @@ Azure 资源的托管标识在 Azure Active Directory (AD) 中为 Azure 服务�
 
 Azure 通过一系列 [Azure SDK](/downloads) 支持多个编程平台。 其中多个平台已更新为支持 Azure 资源托管标识，并提供相应的示例来演示用法。 由于添加了其他支持，此列表已更新：
 
-| SDK | 示例 |
+| SDK 中 IsInRole 中的声明 | 示例 |
 | --- | ------ | 
 | .NET   | [从具有已启用的 Azure 资源托管标识的已启用的 VM 中管理资源](https://azure.microsoft.com/resources/samples/aad-dotnet-manage-resources-from-vm-with-msi/) |
 | Java   | [从具有 Azure 资源托管标识的已启用的 VM 中管理存储](https://azure.microsoft.com/resources/samples/compute-java-manage-resources-from-vm-with-msi-in-aad-group/)|

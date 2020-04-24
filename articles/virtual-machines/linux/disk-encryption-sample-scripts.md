@@ -9,10 +9,10 @@ origin.date: 08/06/2019
 ms.date: 11/11/2019
 ms.custom: seodec18
 ms.openlocfilehash: 1cada9bd7f9f8c12bf1283767b17e65681d6eea4
-ms.sourcegitcommit: a89eb0007edd5b4558b98c1748b2bd67ca22f4c9
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "73730659"
 ---
 # <a name="azure-disk-encryption-sample-scripts"></a>Azure 磁盘加密示例脚本 
@@ -96,7 +96,7 @@ ms.locfileid: "73730659"
 2. 根据需要配置 VM。 如果打算加密所有（OS + 数据）驱动器，则需要指定数据驱动器且可从 /etc/fstab 处装载数据驱动器。
 
     > [!NOTE]
-    > 使用 UUID =... 在 /etc/fstab 中指定数据驱动器（而不是指定 /dev/sdb1 等块设备名称）。 在加密过程中，驱动器的顺序将在 VM 上有所改变。 如果 VM 依赖于特定块设备顺序，加密后将无法装载。
+    > 使用 UUID =... 在 /etc/fstab 中指定数据驱动器（而不是指定 /dev/sdb1 等块设备名称）。 在加密过程中，驱动器的顺序会在 VM 上有所改变。 如果 VM 依赖于特定块设备顺序，加密后将无法装载。
 
 3. 注销 SSH 会话。
 
@@ -131,9 +131,9 @@ ms.locfileid: "73730659"
     ```
     VM 变为“OS 磁盘加密开始”后，在支持高级存储的 VM 上将需要花费大约 40-50 分钟。
 
-    由于 WALinuxAgent 出现[问题 #388](https://github.com/Azure/WALinuxAgent/issues/388)，`OsVolumeEncrypted` 和 `DataVolumesEncrypted` 在某些发行版中显示为 `Unknown`。 在 WALinuxAgent 2.1.5 版及更高版本中，将自动修复此问题。 如果在输出中看到 `Unknown`，可通过使用 Azure 资源浏览器验证磁盘加密状态。
+    由于 WALinuxAgent 出现[问题 #388](https://github.com/Azure/WALinuxAgent/issues/388)，`OsVolumeEncrypted` 和 `DataVolumesEncrypted` 在某些发行版中显示为 `Unknown`。 在 WALinuxAgent 2.1.5 版及更高版本中，会自动修复此问题。 如果在输出中看到 `Unknown`，可通过使用 Azure 资源浏览器验证磁盘加密状态。
 
-    转到 [Azure 资源浏览器](https://resources.azure.com/)，然后在左侧的选择面板中展开此层次结构：
+    转到 [Azure 资源浏览器](https://resources.azure.com/)，并在左侧的选择面板中展开此层次结构：
 
     ~~~~
     |-- subscriptions
@@ -247,7 +247,7 @@ ms.locfileid: "73730659"
     ```
 6. 运行 `update-initramfs -u -k all` 更新 initramfs 以使 `keyscript` 生效。
 
-7. 现在可以取消预配 VM。
+7. 现在可以解除配置 VM。
 
     ![Ubuntu 16.04 安装 - 更新 initramfs](./media/disk-encryption/ubuntu-1604-preencrypted-fig6.png)
 
@@ -255,7 +255,7 @@ ms.locfileid: "73730659"
 
 ### <a name="opensuse-132"></a>openSUSE 13.2
 若要在分发版安装期间配置加密，请执行以下步骤：
-1. 对磁盘进行分区时，选择“加密卷组”  ，然后输入密码。 这是要上传到 Key Vault 的密码。
+1. 对磁盘进行分区时，选择“加密卷组”  ，并输入密码。 这是要上传到 Key Vault 的密码。
 
     ![openSUSE 13.2 安装 - 加密卷组](./media/disk-encryption/opensuse-encrypt-fig1.png)
 
@@ -293,7 +293,7 @@ ms.locfileid: "73730659"
     ```bash
     if [ -z "$DRACUT_SYSTEMD" ]; then
     ```
-    to:
+    修改为：
     ```bash
     if [ 1 ]; then
     ```

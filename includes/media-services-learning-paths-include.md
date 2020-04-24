@@ -6,10 +6,10 @@ origin.date: 03/20/2019
 ms.date: 09/23/2019
 ms.author: v-jay
 ms.openlocfilehash: edfc1918eab63f9f5f373e22b3aa9c92c5cf9ba3
-ms.sourcegitcommit: 8248259e4c3947aa0658ad6c28f54988a8aeebf8
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "71124365"
 ---
 ### <a name="media-services-v3-latest"></a>媒体服务 v3（最新版本）

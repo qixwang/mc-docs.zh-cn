@@ -15,10 +15,10 @@ origin.date: 07/29/2019
 ms.date: 11/11/2019
 ms.author: v-jay
 ms.openlocfilehash: dbb6f8e01acbc677812680d2c8efdb3d5f00cc7b
-ms.sourcegitcommit: e7dd37e60d0a4a9f458961b6525f99fa0e372c66
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74556025"
 ---
 # <a name="create-a-tumbling-window-trigger-dependency"></a>创建翻转窗口触发器依赖项

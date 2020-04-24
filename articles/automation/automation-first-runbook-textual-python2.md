@@ -11,10 +11,10 @@ ms.date: 11/18/2019
 ms.topic: conceptual
 manager: digimobile
 ms.openlocfilehash: 2603d7ff28d387ea7cdeb3e8d1b0e169de1822c0
-ms.sourcegitcommit: ea2aeb14116769d6f237542c90f44c1b001bcaf3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74116232"
 ---
 # <a name="my-first-python-runbook"></a>我的第一个 Python Runbook
@@ -30,7 +30,7 @@ ms.locfileid: "74116232"
 > [!NOTE]
 > 不支持使用 Webhook 启动 Python runbook。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 要完成本教程，需要以下各项：
 
@@ -44,7 +44,7 @@ ms.locfileid: "74116232"
 
 1. 在 Azure 门户中，打开自动化帐户。
 
-    通过自动化帐户页面可快速查看此帐户中的资源。 应该已拥有某些资产。 大多数此类资产都是自动包括在新的自动化帐户中的模块。 还应具有在[“先决条件”](#prerequisites)中提到的凭证资产。<br>
+    通过自动化帐户页面可快速查看此帐户中的资源。 应该已拥有某些资产。 大多数此类资产都是自动包括在新的自动化帐户中的模块。 还应具有在 [“先决条件”](#prerequisites)中提到的凭证资产。<br>
 
 1. 在“进程管理”下选择“Runbook”，打开 Runbook 的列表。  
 1. 选择“+ 添加 Runbook”创建新的 Runbook  。
@@ -66,9 +66,9 @@ print("Hello World!")
 
 在发布 Runbook 使其可在生产中使用之前，需对其进行测试以确保其能正常工作。 测试 Runbook 时，可以运行其“草稿”版本并以交互方式查看其输出  。
 
-1. 单击“测试窗格”打开测试窗格  。
+1. 单击“测试窗格”  打开测试窗格。
 1. 单击“启动”以启动测试  。 这应该是唯一的已启用选项。
-1. 创建一个 [Runbook 作业](automation-runbook-execution.md)并显示其状态。
+1. 将创建一个 [Runbook 作业](automation-runbook-execution.md) 并显示其状态。
    作业状态一开始为“排队”，表示正在等待云中的 Runbook 辅助角色变为可用状态  。 在某个辅助角色认领此作业后，作业状态将变为“正在启动”，然后当 Runbook 实际开始运行时，此状态将变为“正在运行”   。
 1. Runbook 作业完成后，会显示其输出。 在此示例中，应会显示 Hello World  。
 1. 关闭测试窗格以返回到画布。
@@ -96,10 +96,10 @@ print("Hello World!")
 ## <a name="add-authentication-to-manage-azure-resources"></a>添加身份验证来管理 Azure 资源
 
 已经测试并发布 Runbook，但到目前为止它不执行任何有用的操作。 需要让其管理 Azure 资源。
-要管理 Azure 资源，脚本必须使用自动化帐户中的凭据进行身份验证。 若要帮助你，你可以使用 [Azure 自动化实用程序包](https://github.com/azureautomation/azure_automation_utility)，以便更轻松地进行身份验证和与 Azure 资源进行交互。
+要管理 Azure 资源，脚本必须使用自动化帐户中的凭据进行身份验证。 如需帮助，可以使用 [Azure 自动化实用工具包](https://github.com/azureautomation/azure_automation_utility)更轻松地进行身份验证以及与 Azure 资源交互。
 
 > [!NOTE]
-> 创建的自动化帐户必须包含服务主体功能，以存在一个运行方式证书。
+> 创建的自动化帐户必须包含服务主体功能，以存在一个 Run As 证书。
 > 如果创建的自动化帐户没有服务主体，则可以使用[使用用于 Python 的 Azure 管理库进行身份验证](https://docs.microsoft.com/azure/python/python-sdk-azure-authenticate)中所述的方法进行身份验证。
 
 1. 通过单击 MyFirstRunbook-Python 窗格上的“编辑”打开文本编辑器  。
@@ -233,7 +233,7 @@ except Exception as detail:
 
 ## <a name="next-steps"></a>后续步骤
 
-- 若要开始使用 PowerShell Runbook，请参阅 [My first PowerShell runbook](automation-first-runbook-textual-powershell.md)
+- 若要开始使用 PowerShell Runbook，请参阅 [我的第一个 PowerShell Runbook](automation-first-runbook-textual-powershell.md)
 - 若要开始使用图形 Runbook，请参阅 [我的第一个图形 Runbook](automation-first-runbook-graphical.md)
 - 若要开始使用 PowerShell 工作流 Runbook，请参阅 [我的第一个 PowerShell 工作流 Runbook](automation-first-runbook-textual.md)
 - 若要了解有关 Runbook 类型、其优点和限制的详细信息，请参阅 [Azure 自动化 Runbook 类型](automation-runbook-types.md)

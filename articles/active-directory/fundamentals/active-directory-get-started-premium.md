@@ -15,10 +15,10 @@ ms.reviewer: piotrci
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 48490669f33107cad00413ef159487651a2bef7e
-ms.sourcegitcommit: 1d4dc20d24feb74d11d8295e121d6752c2db956e
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "73068849"
 ---
 # <a name="sign-up-for-azure-active-directory-premium-editions"></a>注册 Azure Active Directory Premium 版本
@@ -47,11 +47,11 @@ Azure 或 Office 365 订阅者可在线购买 Azure Active Directory Premium 版
 
     ![4](./media/active-directory-get-started-premium/4.png)
 
-5. 在表中输入所需的信息。 单击“下一步”  。
+5. 在表中输入所需的信息。 单击“下一步”。 
 
     ![5](./media/active-directory-get-started-premium/5.png)
 
-6. 单击“下一步”  。
+6. 单击“下一步”。 
 
     ![6](./media/active-directory-get-started-premium/6.png)
 

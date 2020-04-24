@@ -12,10 +12,10 @@ ms.author: v-jay
 ms.reviewer: cbrooks
 ms.subservice: common
 ms.openlocfilehash: d9dc2c635eaab7788c75942b78e8992783d36c75
-ms.sourcegitcommit: 0d07175c0b83219a3dbae4d413f8e012b6e604ed
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "71306737"
 ---
 # <a name="client-side-encryption-and-azure-key-vault-with-java-for-azure-storage"></a>Azure 存储的使用 Java 的客户端加密和 Azure 密钥保管库
@@ -66,7 +66,7 @@ ms.locfileid: "71306737"
 ### <a name="queues"></a>队列
 由于队列消息可以采用任何格式，客户端库定义一个自定义格式，其在消息文本中包括初始化向量 (IV) 和已加密的内容加密密钥 (CEK)。  
 
-在加密过程中，客户端库将生成 16 字节的随机 IV 和 32 字节的随机 CEK，并使用此信息对队列消息文本执行信封加密。 然后，将已包装的 CEK 和一些附加加密元数据添加到已加密的队列消息中。 此修改后的消息（如下所示）存储在服务中。
+在加密过程中，客户端库会生成 16 个字节的随机 IV 和 32 个字节的随机 CEK，并使用此信息对队列消息文本执行信封加密。 然后，将已包装的 CEK 和一些附加加密元数据添加到已加密的队列消息中。 此修改后的消息（如下所示）存储在服务中。
 
 ```
 <MessageText>{"EncryptedMessageContents":"6kOu8Rq1C3+M1QO4alKLmWthWXSmHV3mEfxBAgP9QGTU++MKn2uPq3t2UjF1DO6w","EncryptionData":{…}}</MessageText>
@@ -113,11 +113,11 @@ Azure 密钥保管库可帮助保护云应用程序和服务使用的加密密�
 
 * azure-keyvault-core 包含 IKey 和 IKeyResolver。 它是没有依赖项的小型包。 用于 Java 的存储空间客户端库将其定义为一个依赖项。
 * azure-keyvault 包含密钥保管库 REST 客户端。  
-* azure-keyvault-extensions 包含扩展代码，其中包括加密算法以及 RSAKey 和 SymmetricKey 的实现。 它依赖于 Core 和 KeyVault 命名空间，并提供用于定义聚合解析程序（在用户想要使用多个密钥提供程序时）和缓存密钥解析程序的功能。 虽然存储客户端库不直接依赖于此包，但是如果用户想要使用 Azure 密钥保管库来存储其密钥或通过密钥保管库扩展来使用本地和云加密提供程序，则他们将需要此包。  
+* azure-keyvault-extensions 包含扩展代码，其中包括加密算法以及 RSAKey 和 SymmetricKey 的实现。 它依赖于 Core 和 KeyVault 命名空间，并提供用于定义聚合解析程序（在用户想要使用多个密钥提供程序时）和缓存密钥解析程序的功能。 虽然存储客户端库不直接依赖于此包，但是如果用户想要使用 Azure 密钥保管库存储其密钥或通过密钥保管库扩展来使用本地和云加密提供程序，则他们需要此包。  
   
   密钥保管库专为高价值主密钥设计，每个密钥保管库的限流限制的设计也考虑了这一点。 使用密钥保管库执行客户端加密时，首选模型是使用在密钥保管库中作为机密存储并在本地缓存的对称主密钥。 用户必须执行以下操作：  
 
-1. 脱机创建一个机密并将其上传到密钥保管库。  
+1. 脱机创建密钥并将其上传到密钥保管库。  
 2. 使用机密的基标识符作为参数来解析机密的当前版本进行加密，并在本地缓存此信息。 使用 CachingKeyResolver 进行缓存；用户不需要实现自己的缓存逻辑。  
 3. 创建加密策略时，使用缓存解析程序作为输入。
    有关密钥保管库用法的详细信息，请查看加密代码示例。
@@ -138,7 +138,7 @@ Azure 密钥保管库可帮助保护云应用程序和服务使用的加密密�
 ## <a name="client-api--interface"></a>客户端 API/接口
 在创建 EncryptionPolicy 对象时，用户可以只提供密钥（实现 IKey）、只提供解析程序（实现 IKeyResolver），或两者都提供。 IKey 是使用密钥标识符标识的基本密钥类型，它提供了包装/解包逻辑。 IKeyResolver 用于在解密过程中解析密钥。 它定义了 ResolveKey 方法，该方法根据给定的密钥标识符返回 IKey。 由此，用户能够在多个位置中托管的多个密钥之间进行选择。
 
-* 对于加密，始终使用该密钥，而没有密钥将导致错误。  
+* 对于加密，始终使用该密钥，而没有密钥会导致错误。  
 * 对于解密：  
   
   * 如果指定为获取密钥，则调用密钥解析程序。 如果指定了解析程序，但该解析程序不具有密钥标识符的映射，则会引发错误。  

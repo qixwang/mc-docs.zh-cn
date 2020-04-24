@@ -10,10 +10,10 @@ ms.topic: quickstart
 origin.date: 5/6/2019
 ms.date: 11/04/2019
 ms.openlocfilehash: c1289472c44b72d95e034c23742e148d77dd165f
-ms.sourcegitcommit: f643ddf75a3178c37428b75be147c9383384a816
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "73191557"
 ---
 # <a name="azure-database-for-postgresql---single-server-use-go-language-to-connect-and-query-data"></a>Azure Database for PostgreSQL - 单一服务器：使用 Go 语言连接和查询数据

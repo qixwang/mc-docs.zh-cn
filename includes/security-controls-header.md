@@ -6,10 +6,10 @@ origin.date: 09/04/2019
 ms.date: 09/30/2019
 ms.author: v-tawe
 ms.openlocfilehash: 024547e190e9a3670daf133abc82c255e5a1be37
-ms.sourcegitcommit: a1575acb8d0047fae425deb8196e3c89bd3dac57
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "72872830"
 ---
 安全控制是促使 Azure 服务能够防范、检测和响应安全漏洞的一种服务质量或功能。

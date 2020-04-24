@@ -18,10 +18,10 @@ ms.author: v-yeche
 ms.reviewer: cynthn
 ms.custom: ''
 ms.openlocfilehash: 51c3809c2697ef51c0b4ad329c28c233a527d5c6
-ms.sourcegitcommit: c9398f89b1bb6ff0051870159faf8d335afedab3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "72272201"
 ---
 # <a name="shared-image-gallery-overview"></a>共享映像库概述

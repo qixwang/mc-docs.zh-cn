@@ -10,10 +10,10 @@ ms.date: 09/30/2019
 ms.author: v-yeche
 ms.custom: MVC
 ms.openlocfilehash: 32b805b342684de83366bc344ea812ab7b9ba560
-ms.sourcegitcommit: 332ae4986f49c2e63bd781685dd3e0d49c696456
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "71340882"
 ---
 # <a name="migrate-servers-running-windows-server-2008-to-azure"></a>将运行 Windows Server 2008 的服务器迁移到 Azure
@@ -153,7 +153,7 @@ ms.locfileid: "71340882"
     <!--MOONCAKE: **Protected Items** to replace **Setting**-->
 
 2. 在“故障转移”中，选择要故障转移到的“恢复点”   。 选择最新恢复点。
-3. 选择“在开始故障转移前关闭计算机”  。 Site Recovery 在触发故障转移之前会尝试关闭服务器。 即使关机失败，故障转移也仍会继续。 可以在“作业”页上跟踪故障转移进度。 
+3. 选择“在开始故障转移前关闭计算机”  。 Site Recovery 在触发故障转移之前会尝试关闭服务器。 即使关机失败，故障转移也仍会继续。 可以在“作业”  页上跟踪故障转移进度。
 4. 检查 Azure VM 是否在 Azure 中按预期显示。
 5. 在“复制的项”  中，右键单击服务器 >“完成迁移”  。 这样会执行以下操作：
 

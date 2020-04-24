@@ -6,19 +6,19 @@ origin.date: 11/09/2018
 ms.date: 10/29/2019
 ms.author: v-junlch
 ms.openlocfilehash: 82e5eb0a0d3c38ebba6b4a6a00792a3fa9dbd558
-ms.sourcegitcommit: ef527d8613af1768f05f4ea054ffe2e3b742335f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "73083723"
 ---
-| Resource | 限制 |
+| 资源 | 限制 |
 | --- | --- |
 | 缓存大小 |1.2 TB |
 | 数据库 |64 |
 | 连接的最大客户端数 |40,000 |
 | Azure Redis 缓存副本，用于高可用性 |1 |
-| 启用群集的高级缓存中的分片数 |10 个 |
+| 启用群集的高级缓存中的分片数 |10 |
 
 每个定价层的 Azure Redis 缓存限制和大小都不相同。 若要查看定价层及其关联的大小，请参阅 [Azure Redis 缓存定价](https://www.azure.cn/pricing/details/redis-cache/)。
 

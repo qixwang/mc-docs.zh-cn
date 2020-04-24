@@ -8,10 +8,10 @@ ms.topic: conceptual
 origin.date: 07/23/2019
 ms.date: 09/09/2019
 ms.openlocfilehash: 66f18c356c6f34ff8f203e1142fd1a9b6a79ce1b
-ms.sourcegitcommit: 66192c23d7e5bf83d32311ae8fbb83e876e73534
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "70254809"
 ---
 # <a name="consistency-levels-in-azure-cosmos-db"></a>Azure Cosmos DB 中的一致性级别

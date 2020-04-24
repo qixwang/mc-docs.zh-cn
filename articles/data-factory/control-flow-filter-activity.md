@@ -13,10 +13,10 @@ ms.topic: conceptual
 origin.date: 05/04/2018
 ms.date: 10/14/2019
 ms.openlocfilehash: bc5da6c43670292d6ccc84dd771f1dc3311f971e
-ms.sourcegitcommit: aea45739ba114a6b069f782074a70e5dded8a490
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "72275424"
 ---
 # <a name="filter-activity-in-azure-data-factory"></a>Azure 数据工厂中的 Filter 活动
@@ -37,16 +37,16 @@ ms.locfileid: "72275424"
 
 ## <a name="type-properties"></a>Type 属性
 
-属性 | 说明 | 允许的值 | 必须
+properties | 说明 | 允许的值 | 必选
 -------- | ----------- | -------------- | --------
 name | `Filter` 活动的名称。 | String | 是
 type | 必须设置为  “filter”。 | String | 是
-条件 | 要用于筛选输入的条件。 | 表达式 | 是
+条件 (condition) | 要用于筛选输入的条件。 | 表达式 | 是
 items | 应该应用筛选器的输入数组。 | 表达式 | 是
 
 ## <a name="example"></a>示例
 
-在此示例中，管道包含两个活动：**Filter** 和 **ForEach**。 Filter 活动配置为筛选输入数组中值大于 3 的项。 然后，ForEach 活动会循环访问筛选的值，并将变量 **test** 设置为当前值。
+在此示例中，管道有两个活动：Filter  和 ForEach  。 Filter 活动配置为筛选输入数组中值大于 3 的项。 然后，ForEach 活动会循环访问筛选的值，并将变量 **test** 设置为当前值。
 
 ```json
 {

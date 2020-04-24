@@ -8,10 +8,10 @@ origin.date: 08/13/2019
 ms.date: 09/30/2019
 ms.author: v-yeche
 ms.openlocfilehash: 8ae0a43169ff9596b0582e7e2d319f9d2709bd35
-ms.sourcegitcommit: 0d07175c0b83219a3dbae4d413f8e012b6e604ed
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "71306682"
 ---
 # <a name="how-to-configure-the-change-feed-processor-start-time"></a>如何配置更改源处理器的开始时间
@@ -24,7 +24,7 @@ ms.locfileid: "71306682"
 
 ## <a name="reading-from-a-previous-date-and-time"></a>从以前的某个日期和时间读取
 
-将 `DateTime` 的实例传递给 `WithStartTime` 生成器扩展，可将更改源处理器初始化为从**特定的日期和时间**开始读取更改：
+将 **的实例传递给** 生成器扩展，可将更改源处理器初始化为从`DateTime`特定的日期和时间`WithStartTime`开始读取更改：
 
 ```csharp
 

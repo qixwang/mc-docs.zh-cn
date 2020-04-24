@@ -14,10 +14,10 @@ origin.date: 09/04/2019
 ms.date: 11/11/2019
 ms.author: v-jay
 ms.openlocfilehash: 9bcd6eab539625472f8ef41c45fd7aadfd5dd3a1
-ms.sourcegitcommit: ff8dcf27bedb580fc1fcae013ae2ec28557f48ac
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "73648687"
 ---
 # <a name="copy-data-from-spark-using-azure-data-factory"></a>使用 Azure 数据工厂从 Spark 复制数据 
@@ -49,11 +49,11 @@ Azure 数据工厂提供内置的驱动程序用于启用连接，因此无需�
 
 Spark 链接服务支持以下属性：
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
-| type | Type 属性必须设置为：**Spark** | 是 |
+| type | type 属性必须设置为：**Spark** | 是 |
 | host | Spark 服务器的 IP 地址或主机名  | 是 |
-| 端口 | Spark 服务器用来侦听客户端连接的 TCP 端口。 如果连接到 Azure HDInsights，请指定端口 443。 | 是 |
+| port | Spark 服务器用来侦听客户端连接的 TCP 端口。 如果连接到 Azure HDInsights，请指定端口 443。 | 是 |
 | serverType | Spark 服务器的类型。 <br/>允许值包括：SharkServer、SharkServer2、SparkThriftServer    | 否 |
 | thriftTransportProtocol | Thrift 层中要使用的传输协议。 <br/>允许值包括：二进制、SASL、HTTP    | 否 |
 | authenticationType | 用于访问 Spark 服务器的身份验证方法。 <br/>允许值包括：Anonymous、Username、UsernameAndPassword、WindowsAzureHDInsightService     | 是 |
@@ -94,11 +94,11 @@ Spark 链接服务支持以下属性：
 
 要从 Spark 复制数据，请将数据集的 type 属性设置为“SparkObject”  。 支持以下属性：
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为：SparkObject  | 是 |
-| schema | 架构的名称。 |否（如果指定了活动源中的“query”）  |
-| 表 | 表名称。 |否（如果指定了活动源中的“query”）  |
+| 架构 | 架构的名称。 |否（如果指定了活动源中的“query”）  |
+| 表 | 表的名称。 |否（如果指定了活动源中的“query”）  |
 | tableName | 具有架构的表的名称。 支持此属性是为了向后兼容。 对于新的工作负荷，请使用 `schema` 和 `table`。 | 否（如果指定了活动源中的“query”） |
 
 **示例**
@@ -126,10 +126,10 @@ Spark 链接服务支持以下属性：
 
 要从 Spark 复制数据，请将复制活动中的源类型设置为“SparkSource”  。 复制活动**source**部分支持以下属性：
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
-| type | 复制活动源的 type 属性必须设置为：SparkSource  | 是 |
-| query | 使用自定义 SQL 查询读取数据。 例如：`"SELECT * FROM MyTable"`。 | 否（如果指定了数据集中的“tableName”） |
+| type | 复制活动 source 的 type 属性必须设置为：SparkSource  | 是 |
+| 查询 | 使用自定义 SQL 查询读取数据。 例如：`"SELECT * FROM MyTable"`。 | 否（如果指定了数据集中的“tableName”） |
 
 **示例：**
 

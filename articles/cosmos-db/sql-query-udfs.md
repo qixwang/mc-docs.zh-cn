@@ -8,10 +8,10 @@ origin.date: 05/31/2019
 ms.date: 09/09/2019
 ms.author: v-yeche
 ms.openlocfilehash: 085ecf79f7521c4a95c03f98a745c64cb28fe6c4
-ms.sourcegitcommit: 66192c23d7e5bf83d32311ae8fbb83e876e73534
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "70254845"
 ---
 # <a name="user-defined-functions-udfs-in-azure-cosmos-db"></a>Azure Cosmos DB 中的用户定义函数 (UDF)
@@ -45,7 +45,7 @@ API 扩展了 SQL 语法，支持使用 UDF 的自定义应用程序逻辑。 �
     FROM Families
 ```
 
-其结果是：
+结果有：
 
 ```json
     [
@@ -66,7 +66,7 @@ API 扩展了 SQL 语法，支持使用 UDF 的自定义应用程序逻辑。 �
     WHERE udf.REGEX_MATCH(Families.address.city, ".*eattle")
 ```
 
-其结果是：
+结果有：
 
 ```json
     [{
@@ -108,7 +108,7 @@ API 扩展了 SQL 语法，支持使用 UDF 的自定义应用程序逻辑。 �
     FROM Families f
 ```
 
-其结果是：
+结果有：
 
 ```json
     [

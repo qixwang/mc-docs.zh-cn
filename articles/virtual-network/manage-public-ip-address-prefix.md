@@ -14,10 +14,10 @@ origin.date: 05/13/2019
 ms.date: 07/22/2019
 ms.author: v-yeche
 ms.openlocfilehash: a50872c80d9bff44929b01e72f7607ff4d435edd
-ms.sourcegitcommit: c5e012385df740bf4a326eaedabb987314c571a1
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74203654"
 ---
 # <a name="create-change-or-delete-a-public-ip-prefix"></a>创建、更改或删除公共 IP 前缀
@@ -50,7 +50,7 @@ ms.locfileid: "74203654"
     |---|---|---|
     |订阅|是|必须与要将公共 IP 地址关联到的资源位于同一[订阅](../azure-glossary-cloud-terminology.md?toc=%2fvirtual-network%2ftoc.json#subscription)中。|
     |资源组|是|可与要将公共 IP 地址关联到的资源位于相同或不同的[资源组](../azure-glossary-cloud-terminology.md?toc=%2fvirtual-network%2ftoc.json#resource-group)中。|
-    |Name|是|名称在所选资源组中必须唯一。|
+    |名称|是|名称在所选资源组中必须唯一。|
     |区域|是|必须位于与公共 IP 地址相同的[区域](https://status.azure.com/status/)，你将从该范围分配地址。 |
     |前缀大小|是| 所需的前缀大小。 /28 或 16 个 IP 地址为默认值。 
     
@@ -73,7 +73,7 @@ ms.locfileid: "74203654"
 
     |设置|必需？|详细信息|
     |---|---|---|
-    |Name|是|公共 IP 地址的名称在所选的资源组中必须唯一。|
+    |名称|是|公共 IP 地址的名称在所选的资源组中必须唯一。|
     |空闲超时(分钟)|否|在不依赖客户端发送保持连接消息的情况下，TCP 或 HTTP 连接持续打开的分钟数。 |
     |DNS 名称标签|否|必须在创建该名称的 Azure 区域（跨所有订阅和所有客户）中保持唯一。 Azure 会在其 DNS 中自动注册该名称和 IP 地址，使你能够连接到使用该名称的资源。 Azure 会将 *location.cloudapp.chinacloudapi.cn*（其中 location 是所选的位置）之类的默认子网追加到提供的名称后面，以创建完全限定的 DNS 名称。有关详细信息，请参阅[将 Azure DNS 与 Azure 公共 IP 地址配合使用](../dns/dns-custom-domain.md?toc=%2fvirtual-network%2ftoc.json#public-ip-address)。|
 
@@ -103,7 +103,7 @@ ms.locfileid: "74203654"
 
 若要对公共 IP 前缀执行任务，必须将你的帐户分配给[网络参与者](../role-based-access-control/built-in-roles.md?toc=%2fvirtual-network%2ftoc.json#network-contributor)角色或分配有下表中所列相应操作的[自定义](../role-based-access-control/custom-roles.md?toc=%2fvirtual-network%2ftoc.json)角色：
 
-| 操作                                                            | Name                                                           |
+| 操作                                                            | 名称                                                           |
 | ---------                                                         | -------------                                                  |
 | Microsoft.Network/publicIPPrefixes/read                           | 读取公共 IP 前缀                                |
 | Microsoft.Network/publicIPPrefixes/write                          | 创建或更新公共 IP 前缀                    |

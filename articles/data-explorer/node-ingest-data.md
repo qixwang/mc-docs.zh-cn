@@ -9,19 +9,19 @@ ms.topic: conceptual
 origin.date: 06/03/2019
 ms.date: 11/18/2019
 ms.openlocfilehash: 05631d5342f26a96cc8f30d8d34a5e05d1a94c86
-ms.sourcegitcommit: c863b31d8ead7e5023671cf9b58415542d9fec9c
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74020864"
 ---
 # <a name="ingest-data-using-the-azure-data-explorer-node-library"></a>使用 Azure 数据资源管理器 Node 库引入数据
 
 Azure 数据资源管理器是一项快速且高度可缩放的数据探索服务，适用于日志和遥测数据。 Azure 数据资源管理器为 Node 提供了两个客户端库：[引入库](https://github.com/Azure/azure-kusto-node/tree/master/azure-kusto-ingest)和[数据库](https://github.com/Azure/azure-kusto-node/tree/master/azure-kusto-data)。 可以使用这些库在群集中引入（加载）数据并从代码中查询数据。 本文首先在测试群集中创建一个表和数据映射。 然后将引入排列到群集并验证结果。
 
-如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial)。
+如果没有 Azure 订阅，可在开始前创建一个 [试用帐户](https://www.azure.cn/pricing/1rmb-trial) 。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 除 Azure 订阅外，还需以下条件才能完成本文：
 
@@ -89,7 +89,7 @@ const blobPath = `https://${account}.blob.core.chinacloudapi.cn/${container}/${f
 
 ## <a name="create-a-table-on-your-test-cluster"></a>在测试群集上创建表
 
-创建与 `StormEvents.csv` 文件中的数据架构匹配的表。 运行此代码时，它会返回如下消息：若要登录，请使用 Web 浏览器打开页 https://microsoft.com/devicelogin ，然后输入代码 XXXXXXXXX 进行身份验证  。 按照步骤登录，然后返回运行下一个代码块。 建立连接的后续代码块会要求你再次登录。
+创建与 `StormEvents.csv` 文件中的数据架构匹配的表。 此代码运行时，它将返回如下消息：若要登录，请使用 Web 浏览器打开页面 *，并输入代码 XXXXXXXXX 进行身份验证 https://microsoft.com/devicelogin* 。 按照步骤登录，然后返回运行下一个代码块。 建立连接的后续代码块会要求你再次登录。
 
 ```javascript
 const kustoClient = new KustoClient(kcsbData);

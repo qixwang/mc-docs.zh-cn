@@ -13,10 +13,10 @@ metadata:
   origin.date: 08/28/2019
   ms.date: 09/23/2019
   ms.openlocfilehash: 7157b6dbbbd5d2ef1feacbde2fed538a58b257d5
-  ms.sourcegitcommit: 40a58a8b9be0c825c03725802e21ed47724aa7d2
+  ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 11/12/2019
+  ms.lasthandoff: 04/17/2020
   ms.locfileid: "73934267"
 landingContent:
 - title: 关于虚拟网络
@@ -41,7 +41,7 @@ landingContent:
       url: manage-virtual-network.md
     - text: 添加、更改或删除子网
       url: virtual-network-manage-subnet.md
-- title: 安全的网络流量
+- title: 保护网络流量的安全
   linkLists:
   - linkListType: concept
     links:

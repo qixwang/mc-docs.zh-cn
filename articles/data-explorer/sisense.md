@@ -9,10 +9,10 @@ ms.topic: conceptual
 origin.date: 05/29/2019
 ms.date: 07/22/2019
 ms.openlocfilehash: 9e7d3597c5706ccb496c46fe5665030b9d9fdbfb
-ms.sourcegitcommit: c863b31d8ead7e5023671cf9b58415542d9fec9c
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74020859"
 ---
 # <a name="visualize-data-from-azure-data-explorer-in-sisense"></a>在 Sisense 中可视化 Azure 数据资源管理器中的数据

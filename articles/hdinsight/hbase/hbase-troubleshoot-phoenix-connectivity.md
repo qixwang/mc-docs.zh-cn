@@ -8,10 +8,10 @@ ms.author: v-yiso
 origin.date: 08/14/2019
 ms.date: 11/11/2019
 ms.openlocfilehash: 70fc24e9a09b936bede79206f205ae6e9033f7ea
-ms.sourcegitcommit: 642a4ad454db5631e4d4a43555abd9773cae8891
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "73426064"
 ---
 # <a name="scenario-apache-phoenix-connectivity-issues-in-azure-hdinsight"></a>方案：Azure HDInsight 中的 Apache Phoenix 连接问题

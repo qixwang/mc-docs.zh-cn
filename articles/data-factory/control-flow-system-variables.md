@@ -13,10 +13,10 @@ ms.topic: conceptual
 origin.date: 06/12/2018
 ms.date: 10/14/2019
 ms.openlocfilehash: 8082a0070df6acfccb999f61b2909341b3f9c26d
-ms.sourcegitcommit: aea45739ba114a6b069f782074a70e5dded8a490
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "72275418"
 ---
 # <a name="system-variables-supported-by-azure-data-factory"></a>Azure 数据工厂支持的系统变量
@@ -28,7 +28,7 @@ ms.locfileid: "72275418"
 | 变量名 | 说明 |
 | --- | --- |
 | @pipeline().DataFactory |在其中运行管道运行的数据工厂的名称 |
-| @pipeline().Pipeline |管道名称 |
+| @pipeline().Pipeline |管道的名称 |
 | @pipeline().RunId | 特定管道运行的 ID |
 | @pipeline().TriggerType | 调用管道的触发器类型（手动、计划程序） |
 | @pipeline().TriggerId| 调用管道的触发器 ID |

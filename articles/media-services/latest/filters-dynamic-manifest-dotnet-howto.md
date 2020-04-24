@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure 媒体服务 .NET SDK 创建筛选器
-description: 本主题介绍如何创建筛选器，以便客户端能够使用它们来流式传输流的特定部分。 媒体服务创建动态清单来存档此选择性流。
+description: 本主题介绍如何创建筛选器，以便客户端能够使用它们来流式传输流的特定部分。 媒体服务将创建动态清单来存档此选择性流。
 services: media-services
 documentationcenter: ''
 author: WenJason
@@ -15,10 +15,10 @@ origin.date: 06/03/2019
 ms.date: 09/23/2019
 ms.author: v-jay
 ms.openlocfilehash: fddc0d88eeae86ccd08d01cef58333be6fafb6d1
-ms.sourcegitcommit: 8248259e4c3947aa0658ad6c28f54988a8aeebf8
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "71125600"
 ---
 # <a name="create-filters-with-media-services-net-sdk"></a>使用媒体服务 .NET SDK 创建筛选器
@@ -32,7 +32,7 @@ ms.locfileid: "71125600"
 > [!NOTE]
 > 请确保查看 [presentationTimeRange](filters-concept.md#presentationtimerange)。
 
-## <a name="prerequisites"></a>先决条件 
+## <a name="prerequisites"></a>必备条件 
 
 - 查看[筛选器和动态清单](filters-dynamic-manifest-overview.md)。
 - [创建媒体服务帐户](create-account-cli-how-to.md)。 请务必记住资源组名称和媒体服务帐户名称。 
@@ -107,7 +107,7 @@ StreamingLocator locator = await client.StreamingLocators.CreateAsync(
       
 ## <a name="stream-using-filters"></a>使用筛选器的流
 
-定义筛选器后，客户端可以在流式 URL 中使用它们。 筛选器可以应用于自适应比特率流式处理协议：Apple HTTP Live Streaming (HLS)、MPEG-DASH 和平滑流式处理。
+定义筛选器后，客户端可以在流式 URL 中使用它们。 筛选器可应用到自适应比特率流式处理协议：Apple HTTP Live Streaming (HLS)、MPEG-DASH 和平滑流式处理。
 
 下表显示了一些包含筛选器的 URL 示例：
 

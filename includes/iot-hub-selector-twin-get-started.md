@@ -1,9 +1,9 @@
 ---
 ms.openlocfilehash: 5259a05fce29c2509de51e815cbe747473c1602e
-ms.sourcegitcommit: 6a62dd239c60596006a74ab2333c50c4db5b62be
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/20/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "71155940"
 ---
 > [!div class="op_single_selector"]
@@ -16,7 +16,7 @@ ms.locfileid: "71155940"
 
 [!INCLUDE [iot-hub-basic](iot-hub-basic-whole.md)]
 
-使用设备孪生可以：
+使用设备克隆可以：
 
 * 存储来自解决方案后端的设备元数据。
 
@@ -32,9 +32,9 @@ ms.locfileid: "71155940"
 
 * **标记**。 仅可由解决方案后端访问的设备元数据。
 
-* **所需的属性**。 可以由解决方案后端修改并可由设备应用观察的 JSON 对象。
+* **所需属性**。 可以由解决方案后端修改并可由设备应用观察的 JSON 对象。
 
-* **报告的属性**。 可由设备应用修改并可由解决方案后端读取的 JSON 对象。
+* **报告属性**。 可由设备应用修改并可由解决方案后端读取的 JSON 对象。
 
 标记和属性不能包含数组，但可以嵌套对象。
 

@@ -14,10 +14,10 @@ origin.date: 09/02/2019
 ms.date: 11/11/2019
 ms.author: v-jay
 ms.openlocfilehash: ad57ebab43dfde8fc8e84b12437c5af515bb58cd
-ms.sourcegitcommit: ff8dcf27bedb580fc1fcae013ae2ec28557f48ac
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "73648813"
 ---
 # <a name="copy-data-from-sap-ecc-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 SAP ECC 复制数据
@@ -51,7 +51,7 @@ ms.locfileid: "73648813"
 >[!TIP]
 >若要通过 SAP 表或视图从 SAP ECC 复制数据，请使用速度更快且可伸缩性更强的 [SAP 表](connector-sap-table.md)连接器。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 通常，SAP ECC 通过 SAP 网关经由 OData 服务来公开实体。 若要使用此 SAP ECC 连接器，需要：
 
@@ -59,7 +59,7 @@ ms.locfileid: "73648813"
 
 - **激活并配置 SAP OData 服务**。 可以通过 TCODE SICF 在数秒内激活 OData 服务。 还可以配置需要公开哪些对象。 有关详细信息，请参阅[分步指南](https://blogs.sap.com/2012/10/26/step-by-step-guide-to-build-an-odata-service-based-on-rfcs-part-1/)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
@@ -73,7 +73,7 @@ ms.locfileid: "73648813"
 
 SAP ECC 链接服务支持以下属性：
 
-| 属性 | 说明 | 必须 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | `type` | `type` 属性必须设置为 `SapEcc`。 | 是 |
 | `url` | SAP ECC OData 服务的 URL。 | 是 |
@@ -112,7 +112,7 @@ SAP ECC 链接服务支持以下属性：
 
 支持以下属性：
 
-| 属性 | 说明 | 必须 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | `path` | SAP ECC OData 实体的路径。 | 是 |
 
@@ -141,13 +141,13 @@ SAP ECC 链接服务支持以下属性：
 
 ### <a name="sap-ecc-as-a-source"></a>以 SAP ECC 作为源
 
-若要从 SAP ECC 复制数据，请将复制活动的 `source` 节中的 `type` 属性设置为 `SapEccSource`。
+若要从 SAP ECC 复制数据，请将复制活动的 `type` 节中的 `source` 属性设置为 `SapEccSource`。
 
 复制活动的 `source` 节支持以下属性：
 
-| 属性 | 说明 | 必须 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
-| `type` | 复制活动的 `source` 节的 `type` 属性必须设置为 `SapEccSource`。 | 是 |
+| `type` | 复制活动的 `type` 节的 `source` 属性必须设置为 `SapEccSource`。 | 是 |
 | `query` | 用于筛选数据的 OData 查询选项。 例如：<br/><br/>`"$select=Name,Description&$top=10"`<br/><br/>SAP ECC 连接器会从以下组合 URL 复制数据：<br/><br/>`<URL specified in the linked service>/<path specified in the dataset>?<query specified in the copy activity's source section>`<br/><br/>有关详细信息，请参阅 [OData URL 组件](https://www.odata.org/documentation/odata-version-3-0/url-conventions/)。 | 否 |
 
 ### <a name="example"></a>示例

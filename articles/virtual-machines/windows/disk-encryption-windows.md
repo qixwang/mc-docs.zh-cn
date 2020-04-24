@@ -9,10 +9,10 @@ origin.date: 08/06/2019
 ms.date: 11/11/2019
 ms.custom: seodec18
 ms.openlocfilehash: 1d7895300a877912e205b0c0ccea021c9d65f0cd
-ms.sourcegitcommit: a89eb0007edd5b4558b98c1748b2bd67ca22f4c9
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "73730696"
 ---
 # <a name="azure-disk-encryption-scenarios-on-windows-vms"></a>Windows VM 上的 Azure 磁盘加密方案

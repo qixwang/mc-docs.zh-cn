@@ -11,10 +11,10 @@ origin.date: 05/23/2019
 ms.date: 10/28/2019
 ms.reviewer: sngun
 ms.openlocfilehash: 87c4965b5f40c2cffc95c8dfe07a50e136e63878
-ms.sourcegitcommit: 73f07c008336204bd69b1e0ee188286d0962c1d7
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "72970301"
 ---
 # <a name="secure-azure-cosmos-keys-using-azure-key-vault"></a>使用 Azure Key Vault 保护 Azure Cosmos 密钥 
@@ -34,7 +34,7 @@ ms.locfileid: "72970301"
 2. 选择“创建资源”>“安全性”>“Key Vault”。   
 3. 在“创建密钥保管库”部分，提供以下信息：   
     * **名称：** 提供 Key Vault 的唯一名称。  
-    * **订阅：** 选择要使用的订阅。  
+    * **订阅**：选择要使用的订阅。  
     * 在“资源组”  下选择“新建”  ，然后输入资源组名称。  
     * 在“位置”下拉菜单中选择一个位置。  
     * 将其他选项保留默认值。  
@@ -87,7 +87,7 @@ ms.locfileid: "72970301"
 
 ![使用机密部署的应用](./media/access-secrets-from-keyvault/app-deployed-with-access.png)
 
-同样，可以添加一个用户来访问 Key Vault。 需要通过选择“访问策略”  将自己添加到 Key Vault，然后授予从 Visual studio 运行此应用程序所需的全部权限。 从桌面运行此应用程序时，它会采用你的标识。
+同样，可以添加一个用户来访问 Key Vault。 需要通过选择“访问策略”  将自己添加到 Key Vault，然后授予从 Visual studio 运行此应用程序所需的所有权限。 从桌面运行此应用程序时，它会采用你的标识。
 
 ## <a name="next-steps"></a>后续步骤
 

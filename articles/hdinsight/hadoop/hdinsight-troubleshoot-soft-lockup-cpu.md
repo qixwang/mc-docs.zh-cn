@@ -8,10 +8,10 @@ ms.author: v-yiso
 origin.date: 08/05/2019
 ms.date: 09/23/2019
 ms.openlocfilehash: 73c3b3b17c52ae069d00aeefe95c6f098919fa9e
-ms.sourcegitcommit: 43f569aaac795027c2aa583036619ffb8b11b0b9
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/12/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "70921335"
 ---
 # <a name="scenario-watchdog-bug-soft-lockup---cpu-error-from-an-azure-hdinsight-cluster"></a>场景：Azure HDInsight 群集中出现“监视器:BUG: 软锁定 - CPU”错误
@@ -39,10 +39,10 @@ Linux 内核中的一个 [bug](https://bugzilla.kernel.org/show_bug.cgi?id=19943
     | 属性 | Value |
     | --- | --- |
     | 脚本类型 | -Custom |
-    | Name |内核软锁定问题的修复 |
+    | 名称 |内核软锁定问题的修复 |
     | Bash 脚本 URI |`https://raw.githubusercontent.com/hdinsight/hdinsight.github.io/master/ClusterCRUD/KernelSoftLockFix/scripts/KernelSoftLockIssue_FixAndReboot.sh` |
     | 节点类型 |Worker、Zookeeper |
-    | parameters |不适用 |
+    | parameters |空值 |
 
     若要在添加新节点时执行脚本，请选择“保留此脚本操作...”。 
 

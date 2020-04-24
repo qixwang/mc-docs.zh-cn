@@ -9,10 +9,10 @@ origin.date: 07/23/2019
 ms.date: 10/28/2019
 ms.custom: seodec18
 ms.openlocfilehash: a5104a20d71c52c42bf15160d27d13b437df80e7
-ms.sourcegitcommit: 73f07c008336204bd69b1e0ee188286d0962c1d7
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "72914387"
 ---
 # <a name="regional-presence-with-azure-cosmos-db"></a>Azure Cosmos DB 的区域可用性

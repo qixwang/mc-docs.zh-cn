@@ -10,10 +10,10 @@ origin.date: 06/05/2019
 ms.date: 09/09/2019
 ms.author: v-yeche
 ms.openlocfilehash: d4d21973065d29758a3295bd9befd8e18caab849
-ms.sourcegitcommit: 66192c23d7e5bf83d32311ae8fbb83e876e73534
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "70254619"
 ---
 <!--Verify sucessfully-->
@@ -64,7 +64,7 @@ Azure Cosmos DB 是世纪互联提供的多区域分布式多模型数据库服�
     cd "C:\git-samples"
     ```
 
-3. 运行下列命令以克隆示例存储库。 此命令在计算机上创建示例应用程序的副本。
+3. 运行下列命令，克隆示例存储库。 此命令在计算机上创建示例应用程序的副本。
 
     ```bash
     git clone https://github.com/Azure-Samples/azure-cosmos-db-graph-nodejs-getting-started.git
@@ -78,7 +78,7 @@ Azure Cosmos DB 是世纪互联提供的多区域分布式多模型数据库服�
 
 以下代码片段全部摘自 app.js 文件。
 
-* 将创建 Gremlin 客户端。
+* 创建 Gremlin 客户端。
 
     ```javascript
     const authenticator = new Gremlin.driver.auth.PlainTextSaslAuthenticator(

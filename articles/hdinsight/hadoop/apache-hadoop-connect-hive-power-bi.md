@@ -11,10 +11,10 @@ origin.date: 10/15/2019
 ms.date: 11/11/2019
 ms.author: v-yiso
 ms.openlocfilehash: 0332b75eb0943df475d849af0a8b9647168c53a0
-ms.sourcegitcommit: 642a4ad454db5631e4d4a43555abd9773cae8891
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "73425718"
 ---
 # <a name="visualize-apache-hive-data-with-microsoft-power-bi-using-odbc-in-azure-hdinsight"></a>在 Azure HDInsight 中通过 Microsoft Power BI 使用 ODBC 直观显示 Apache Hive 数据
@@ -30,7 +30,7 @@ ms.locfileid: "73425718"
 
 这些信息也适用于新的[交互式查询](../interactive-query/apache-interactive-query-get-started.md)群集类型。 有关如何使用直接查询连接到 HDInsight 交互式查询的信息，请参阅[在 Azure HDInsight 中通过 Microsoft Power BI 使用直接查询可视化交互式查询 Hive 数据](../interactive-query/apache-hadoop-connect-hive-power-bi-directquery.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 在开始阅读本文前，必须具备以下项：
 
 * **HDInsight 群集**。 该群集可以是包含 Hive 的 HDInsight 群集，也可以是新发布的交互式查询群集。 有关创建群集的信息，请参阅[创建群集](apache-hadoop-linux-tutorial-get-started.md#create-cluster)。
@@ -46,7 +46,7 @@ ms.locfileid: "73425718"
 
 1. 启动 Power BI Desktop。
 
-1. 在顶部菜单中，导航到“主页” > “获取数据” > “更多...”。   
+1. 在顶部菜单中，导航到“主页” **“获取数据”** “更多...”。 >    >  
 
     ![HDInsight Excel Power BI 开放数据](./media/apache-hadoop-connect-hive-power-bi/hdinsight-power-bi-open-odbc.png)
 
@@ -69,7 +69,7 @@ ms.locfileid: "73425718"
 3. 展开地图。
 
 ## <a name="next-steps"></a>后续步骤
-本文介绍了如何使用 Power BI 直观显示 HDInsight 中的数据。  要了解更多信息，请参阅下列文章：
+本文介绍了如何使用 Power BI 直观显示 HDInsight 中的数据。  若要了解详细信息，请参阅以下文章：
 
 * [在 Azure HDInsight 中使用 Apache Zeppelin 运行 Apache Hive 查询](../interactive-query/hdinsight-connect-hive-zeppelin.md)。
 * [使用 Microsoft Hive ODBC 驱动程序将 Excel 连接到 HDInsight](./apache-hadoop-connect-excel-hive-odbc-driver.md)。

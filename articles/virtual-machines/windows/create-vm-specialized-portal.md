@@ -15,10 +15,10 @@ origin.date: 01/18/2019
 ms.date: 11/11/2019
 ms.author: v-yeche
 ms.openlocfilehash: b5fa2facb666ff7221811dd92fd73eb8fbfe3e1d
-ms.sourcegitcommit: 1fd822d99b2b487877278a83a9e5b84d9b4a8ce7
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74116920"
 ---
 # <a name="create-a-vm-from-a-vhd-by-using-the-azure-portal"></a>使用 Azure 门户在 VHD 中创建 VM
@@ -45,7 +45,7 @@ ms.locfileid: "74116920"
 2. 在“所有服务”搜索框中，输入“磁盘”，然后选择“磁盘”以显示可用磁盘列表    。
 3. 选择要使用的磁盘。 此时会显示该磁盘的“磁盘”页  。
 4. 从顶部菜单选择“创建快照”  。 
-5. 输入快照的 **名称** 。
+5. 输入快照的“名称”  。
 6. 为快照选择一个**资源组**。 可以使用现有资源组，也可以创建新组。
 7. 对于“帐户类型”，选择“标准 (HDD)”或“高级 (SSD)”存储    。
 8. 完成后选择“创建”，以便创建快照  。

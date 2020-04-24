@@ -9,10 +9,10 @@ origin.date: 04/08/2019
 ms.date: 10/23/2019
 ms.author: v-junlch
 ms.openlocfilehash: 9cd602cea7b2b02137b29c62dc0a289e87f062dd
-ms.sourcegitcommit: 24b69c0a22092c64c6c3db183bb0655a23340420
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "72798511"
 ---
 # <a name="configure-end-to-end-ssl-by-using-application-gateway-with-powershell"></a>使用 PowerShell 通过应用程序网关配置端到端 SSL

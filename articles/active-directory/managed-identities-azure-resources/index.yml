@@ -14,10 +14,10 @@ metadata:
   ms.date: 10/11/2019
   ms.collection: M365-identity-device-management
   ms.openlocfilehash: dd1da464b95570284ee8af21eab5a1145a864610
-  ms.sourcegitcommit: 74f50c9678e190e2dbb857be530175f25da8905e
+  ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 10/12/2019
+  ms.lasthandoff: 04/17/2020
   ms.locfileid: "72292071"
 landingContent:
 - title: 关于托管标识

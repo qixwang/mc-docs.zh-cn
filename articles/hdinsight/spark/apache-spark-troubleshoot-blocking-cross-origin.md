@@ -8,10 +8,10 @@ ms.author: v-yiso
 origin.date: 07/29/2019
 ms.date: 09/23/2019
 ms.openlocfilehash: 2343c282c11b25d7d3cf526ed7cb2a824e47dcf0
-ms.sourcegitcommit: 43f569aaac795027c2aa583036619ffb8b11b0b9
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/12/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "70921304"
 ---
 # <a name="scenario-jupyter-server-404-not-found-error-due-to-blocking-cross-origin-api-in-azure-hdinsight"></a>方案：Azure HDInsight 中的“阻止跨源 API”导致 Jupyter 服务器 404“找不到”错误

@@ -8,10 +8,10 @@ origin.date: 05/23/2019
 ms.date: 09/09/2019
 ms.author: v-yeche
 ms.openlocfilehash: 783a3106b4e6fdd8ee1b74b2145aeec0c1d8435b
-ms.sourcegitcommit: 66192c23d7e5bf83d32311ae8fbb83e876e73534
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "70254786"
 ---
 # <a name="security-in-azure-cosmos-db---overview"></a>Azure Cosmos DB 安全性 - 概述
@@ -63,8 +63,8 @@ ms.locfileid: "70254786"
 
 |安全要求|Azure Cosmos DB 的安全方案|
 |---|---|
-|网络安全性|使用 IP 防火墙是用于保护数据库的第一个保护层。 Azure Cosmos DB 支持使用基于 IP 的策略驱动访问控制来提供入站防火墙支持。 基于 IP 的访问控制类似于传统数据库系统使用的防火墙规则，但已经过扩展，确保只能通过获批准的一组计算机或云服务访问 Azure Cosmos 数据库帐户。 <br /><br />使用 Azure Cosmos DB 可以启用特定的 IP 地址 (168.61.48.0)、IP 范围 (168.61.48.0/8) 以及 IP 和范围的组合。 <br /><br />从此允许列表之外的计算机发出的所有请求会被 Azure Cosmos DB 阻止。 从获批准计算机和云服务发出的请求必须完成身份验证过程才能获得资源的访问控制权。<br /><br />可以在 [Azure Cosmos DB 防火墙支持](firewall-support.md)中了解详细信息。|
-|授权|Azure Cosmos DB 使用基于哈希的消息身份验证代码 (HMAC) 进行授权。 <br /><br />每个请求将使用机密帐户密钥进行哈希处理，后续的 base-64 编码哈希将连同每个调用发送到 Azure Cosmos DB。 要验证请求，Azure Cosmos DB 服务需使用正确的机密密钥和属性生成哈希值，然后将该值与请求中的值进行比较。 如果两个值匹配，则成功为操作授权并处理请求，否则，会发生授权失败并拒绝请求。<br /><br />可以使用[主密钥](secure-access-to-data.md#master-keys)或[资源令牌](secure-access-to-data.md#resource-tokens)对文档等资源进行精细访问。<br /><br />可以在[保护对 Azure Cosmos DB 资源的访问](secure-access-to-data.md)中了解详细信息。|
+|网络安全性|使用 IP 防火墙是用于保护数据库的第一个保护层。 Azure Cosmos DB 支持使用基于 IP 的策略驱动访问控制来提供入站防火墙支持。 基于 IP 的访问控制类似于传统数据库系统使用的防火墙规则，但已经过扩展，确保只能通过获批准的一组计算机或云服务访问 Azure Cosmos 数据库帐户。 <br /><br />使用 Azure Cosmos DB 可以启用特定的 IP 地址 (168.61.48.0)、IP 范围 (168.61.48.0/8) 以及 IP 和范围的组合。 <br /><br />从此允许列表外部的计算机发出的所有请求会被 Azure Cosmos DB 阻止。 从获批准计算机和云服务发出的请求必须完成身份验证过程才能获得资源的访问控制权。<br /><br />可以在 [Azure Cosmos DB 防火墙支持](firewall-support.md)中了解详细信息。|
+|授权|Azure Cosmos DB 使用基于哈希的消息身份验证代码 (HMAC) 进行授权。 <br /><br />每个请求使用机密帐户密钥进行哈希处理，后续的 base-64 编码哈希将连同每个调用发送到 Azure Cosmos DB。 要验证请求，Azure Cosmos DB 服务需使用正确的机密密钥和属性生成哈希值，然后将该值与请求中的值进行比较。 如果两个值匹配，则成功为操作授权并处理请求，否则，会发生授权失败并拒绝请求。<br /><br />可以使用[主密钥](secure-access-to-data.md#master-keys)或[资源令牌](secure-access-to-data.md#resource-tokens)对文档等资源进行精细访问。<br /><br />可以在[保护对 Azure Cosmos DB 资源的访问](secure-access-to-data.md)中了解详细信息。|
 |用户和权限|使用帐户的主密钥可为每个数据库创建用户资源和权限资源。 资源令牌与数据库中的权限相关联，确定用户是否对数据库中的应用程序资源拥有访问权限（读写、只读或无访问权限）。 应用程序资源包括容器、文档、附件、存储过程、触发器和 UDF。 然后，在身份验证期间，使用资源令牌来允许或拒绝访问资源。<br /><br />可以在[保护对 Azure Cosmos DB 资源的访问](secure-access-to-data.md)中了解详细信息。|
 |Active Directory 集成 (RBAC)| 还可以在 Azure 门户中通过“访问控制(标识和访问管理)”来提供或限制对 Cosmos 帐户、数据库、容器和套餐（吞吐量）的访问权限。 IAM 提供基于角色的访问控制并与 Active Directory 集成。 对于个人和组，可使用内置角色或自定义角色。 有关详细信息，请参阅 [Active Directory 集成](role-based-access-control.md)一文。|
 |多区域复制|Azure Cosmos DB 提供统包式多区域分发。只需单击一下按钮，就能将数据复制到 Azure 的任何一个跨中国的数据中心。 多区域复制可以实现多区域缩放，以较低的延迟访问中国的数据。<br /><br />从安全角度来看，多区域复制可确保数据受到保护，防范区域性故障。<br /><br />若要了解详细信息，请参阅[在多个区域分配数据](distribute-data-globally.md)。|
@@ -75,7 +75,7 @@ ms.locfileid: "70254786"
 |保护和隔离敏感数据|“新增功能”中列出的区域中的所有数据现已处于静态加密状态。<br /><br />可将个人数据和其他机密数据隔离到特定的容器，并限制为只能由特定的用户进行读写或只读访问。|
 |监视攻击|使用[审核日志和活动日志](logging.md)，可以监视帐户中的正常和异常活动。 可以查看针对资源执行了哪些操作、操作是谁发起的、操作是何时发生的、操作的状态等，如此表后面的屏幕截图所示。|
 |响应攻击|联系 Azure 支持部门举报潜在的攻击行为后，将启动由 5 个步骤构成的事件响应过程。 该 5 步骤过程的目的是在检测到问题并启动调查后，尽快将服务安全性和操作恢复正常。<br /><br />在[云中的 Azure 安全响应](https://aka.ms/securityresponsepaper)中了解详细信息。|
-|地域隔离|Azure Cosmos DB 确保符合主权区域（例如德国、中国和美国政府）的数据治理要求。|
+|地域隔离|Azure Cosmos DB 确保符合主权区域（例如德国、中国和 US Gov）的数据治理要求。|
 |受保护的设施|Azure Cosmos DB 中的数据存储在 Azure 的受保护数据中心内的 SSD 上。<br /><br /> |
 |HTTPS/SSL/TLS 加密|从客户端到服务的所有 Azure Cosmos DB 交互都支持 SSL/TLS 1.2。 此外，所有数据中心内部和跨数据中心的复制都会实施 SSL/TLS 1.2。|
 |静态加密|对存储在 Azure Cosmos DB 中的所有静态数据进行加密。 可以在 [Azure Cosmos DB 静态加密](./database-encryption-at-rest.md)中了解详细信息。|

@@ -14,10 +14,10 @@ origin.date: 10/15/2019
 ms.date: 11/25/2019
 ms.author: v-yeche
 ms.openlocfilehash: 837d5f563237aa2cb98ae4b2de8d468faed85b36
-ms.sourcegitcommit: c5e012385df740bf4a326eaedabb987314c571a1
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74203701"
 ---
 # <a name="reserved-public-ipv6-address-prefix"></a>保留的公共 IPv6 地址前缀

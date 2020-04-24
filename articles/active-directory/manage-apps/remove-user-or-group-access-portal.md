@@ -18,10 +18,10 @@ ms.reviewer: asteen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 14819e8fc6d44b99820808da64911cad3dc7a38c
-ms.sourcegitcommit: 18a0d2561c8b60819671ca8e4ea8147fe9d41feb
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "70134321"
 ---
 # <a name="remove-a-user-assignment-from-an-enterprise-app-in-azure-active-directory"></a>在 Azure Active Directory 中删除企业应用的用户分配
@@ -31,9 +31,9 @@ ms.locfileid: "70134321"
 > 对于 Microsoft 应用程序（例如 Office 365 应用），请使用 PowerShell 删除到企业应用的用户分配。
 
 ## <a name="how-do-i-remove-a-user-assignment-to-an-enterprise-app-in-the-azure-portal"></a>如何在 Azure 门户中删除到企业应用的用户分配？
-1. 使用目录全局管理员的帐户登录到 [Azure 门户](https://portal.azure.cn) 。
+1. 使用目录全局管理员的帐户登录到 [Azure 门户](https://portal.azure.cn)。
 1. 选择“所有服务”  ，在文本框中输入 **Azure Active Directory**，并选择“Enter”  。
-1. 在“Azure Active Directory - *directoryname*”页面（即，正在管理的目录的 Azure AD 页面）上，选择“企业应用程序”。  
+1. 在“Azure Active Directory - **directoryname *”页面（即，正在管理的目录的 Azure AD 页面）上，选择“企业应用程序”。*** 
 1. 在“企业应用程序 - 所有应用程序”  页上，你会看到你可以管理的应用的列表。 选择一个应用。
 1. 在 ***appname*** 概览页面（即标题中包含所选应用的名称的页面）上，选择“用户和组”  。
 1. 在“***appname*** - 用户”页面上，选择一个或多个用户，然后选择“删除”命令。   出现提示时确认所作的决定。
@@ -66,7 +66,7 @@ ms.locfileid: "70134321"
 
 - [查看所有组](../fundamentals/active-directory-groups-view-azure-portal.md)
 - [向企业应用分配用户](assign-user-or-group-access-portal.md)
-- [Disable user sign-ins for an enterprise app](disable-user-sign-in-portal.md)
-- [Change the name or logo of an enterprise app](change-name-or-logo-portal.md)
+- [禁用企业应用的用户登录](disable-user-sign-in-portal.md)
+- [更改企业应用的名称或徽标](change-name-or-logo-portal.md)
 
 <!-- Update_Description: update metedata properties -->

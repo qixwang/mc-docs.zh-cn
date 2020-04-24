@@ -9,10 +9,10 @@ origin.date: 08/20/2019
 ms.date: 09/30/2019
 ms.author: v-yiso
 ms.openlocfilehash: 940b925e17dd599b773e0aa900fdc44796dccde5
-ms.sourcegitcommit: 6a62dd239c60596006a74ab2333c50c4db5b62be
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/20/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "71155988"
 ---
 # <a name="use-cloud-explorer-for-visual-studio-for-azure-iot-hub-device-management"></a>使用适用于 Visual Studio 的 Cloud Explorer 管理 Azure IoT 中心设备
@@ -42,7 +42,7 @@ ms.locfileid: "71155988"
 
 在本文中，将通过各种管理选项运行适用于 Visual Studio 的 Cloud Explorer。
 
-## <a name="what-you-need"></a>需要什么
+## <a name="what-you-need"></a>所需条件
 
 需要具备以下先决条件：
 - 一个有效的 Azure 订阅。

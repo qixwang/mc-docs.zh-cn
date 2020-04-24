@@ -14,10 +14,10 @@ manager: digimobile
 origin.date: 12/20/2018
 ms.date: 08/26/2019
 ms.openlocfilehash: 7e62bfa427252853808b7b500cbc2b92f25528ef
-ms.sourcegitcommit: b418463868dac6b3c82b292f70d4a17bc5e01e95
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "69578540"
 ---
 # <a name="troubleshoot-issues-with-sql-data-sync"></a>排查 SQL 数据同步的问题
@@ -45,7 +45,7 @@ ms.locfileid: "69578540"
 
 - [数据同步如何处理循环引用？也就是说，如果在多个同步组中同步相同的数据，这些数据是否不断更改？](#sync-circ)
 
-### <a name="sync-fails"></a>门户 UI 中针对与客户端代理关联的本地数据库执行同步失败
+### <a name="sync-fails-in-the-portal-ui-for-on-premises-databases-that-are-associated-with-the-client-agent"></a><a name="sync-fails"></a>门户 UI 中针对与客户端代理关联的本地数据库执行同步失败
 
 SQL 数据同步门户 UI 中针对与客户端代理关联的本地数据库执行同步失败。 在运行代理的本地计算机上，事件日志中出现 System.IO.IOException 错误。 这些错误指出磁盘空间不足。
 
@@ -53,7 +53,7 @@ SQL 数据同步门户 UI 中针对与客户端代理关联的本地数据库执
 
 - **解决方法**。 在 %TEMP% 目录所在的驱动器上腾出更多的空间。
 
-### <a name="sync-stuck"></a>我的同步组停留在正在处理状态
+### <a name="my-sync-group-is-stuck-in-the-processing-state"></a><a name="sync-stuck"></a>我的同步组停留在正在处理状态
 
 SQL 数据同步中的同步组长时间处于“正在处理”状态。 该同步组不响应 **stop** 命令，并且日志中未显示新条目。
 
@@ -82,7 +82,7 @@ SQL 数据同步中的同步组长时间处于“正在处理”状态。 该同
 > [!NOTE]
 > 如果上述信息无法使同步组摆脱“正在处理”状态，可让 Azure 支持部门重置该同步组的状态。 若要重置同步组状态，请在 [Azure SQL 数据库论坛](https://social.msdn.microsoft.com/Forums/zh-CN/home)中发帖。 在贴子中，请包含自己的订阅 ID，以及需要重置的组的同步组 ID。 Azure 支持工程师将会回复帖子，并在重置状态后予以通知。
 
-### <a name="sync-baddata"></a>在表中发现错误数据
+### <a name="i-see-erroneous-data-in-my-tables"></a><a name="sync-baddata"></a>在表中发现错误数据
 
 如果在同步操作中包含来自不同数据库架构的同名表，则同步后，表中会出现错误数据。
 
@@ -90,7 +90,7 @@ SQL 数据同步中的同步组长时间处于“正在处理”状态。 该同
 
 - **解决方法**。 确保同步中涉及的表名称不同，即使这些表属于数据库中不同的架构。
 
-### <a name="sync-pkdata"></a>同步成功后发现主键数据不一致
+### <a name="i-see-inconsistent-primary-key-data-after-a-successful-sync"></a><a name="sync-pkdata"></a>同步成功后发现主键数据不一致
 
 系统报告同步成功，且日志中未显示失败或跳过的行，但是，发现同步组中数据库间的主键数据不一致。
 
@@ -98,7 +98,7 @@ SQL 数据同步中的同步组长时间处于“正在处理”状态。 该同
 
 - **解决方法**。 若要避免此问题，请确保主键列中的数据没有进行任何更改。 若要在发生此问题后予以解决，请从同步组中的所有终结点内删除包含不一致数据的行。 然后重新插入该行。
 
-### <a name="sync-perf"></a>发现性能显著降低
+### <a name="i-see-a-significant-degradation-in-performance"></a><a name="sync-perf"></a>发现性能显著降低
 
 性能显著降低，甚至达到了无法打开数据同步 UI 的程度。
 
@@ -106,12 +106,12 @@ SQL 数据同步中的同步组长时间处于“正在处理”状态。 该同
 
 - **解决方法**。 最佳解决方案就是预防。 确保同步组中没有循环引用。 由一个同步组同步的任何行都不能由其他同步组同步。
 
-### <a name="sync-nulls"></a> 我看到以下消息：“无法在列 \<column> 中插入 NULL 值。 此列不允许 null 值。” 这是什么意思，如何解决该错误？ 
+### <a name="i-see-this-message-cannot-insert-the-value-null-into-the-column-column-column-does-not-allow-nulls-what-does-this-mean-and-how-can-i-fix-it"></a><a name="sync-nulls"></a> 我看到以下消息：“无法在列 \<column> 中插入 NULL 值。 此列不允许 null 值。” 这是什么意思，如何解决该错误？ 
 此错误消息表示发生了两个以下问题之一：
 -  某个表没有主键。 若要解决此问题，请将主键添加到要同步的所有表。
 -  CREATE INDEX 语句中可能存在 WHERE 子句。 数据同步不会处理这种情况。 若要解决此问题，请删除 WHERE 子句，或手动对所有数据库进行更改。 
  
-### <a name="sync-circ"></a>数据同步如何处理循环引用？ 也就是说，如果在多个同步组中同步相同的数据，这些数据是否不断更改？
+### <a name="how-does-data-sync-handle-circular-references-that-is-when-the-same-data-is-synced-in-multiple-sync-groups-and-keeps-changing-as-a-result"></a><a name="sync-circ"></a>数据同步如何处理循环引用？ 也就是说，如果在多个同步组中同步相同的数据，这些数据是否不断更改？
 数据同步不会处理循环引用。 请务必避免循环引用。 
 
 ## <a name="client-agent-issues"></a>客户端代理问题
@@ -136,7 +136,7 @@ SQL 数据同步中的同步组长时间处于“正在处理”状态。 该同
 
 - [还原丢失或损坏的数据库时，会发生什么情况？](#setup-restore)
 
-### <a name="setup-space"></a>有消息指出“磁盘空间不足”
+### <a name="i-get-a-disk-out-of-space-message"></a><a name="setup-space"></a>有消息指出“磁盘空间不足”
 
 - **原因**。 需要删除残留的文件时，可能会显示“磁盘空间不足”消息。 出现此消息的原因可能是使用了防病毒软件，或者在尝试执行删除操作时文件处于打开状态。
 
@@ -145,7 +145,7 @@ SQL 数据同步中的同步组长时间处于“正在处理”状态。 该同
 > [!IMPORTANT]
 > 同步正在进行时，请不要删除任何文件。
 
-### <a name="setup-delete"></a>无法删除同步组
+### <a name="i-cant-delete-my-sync-group"></a><a name="setup-delete"></a>无法删除同步组
 
 尝试删除同步组失败。 以下任何情况都可能导致删除同步组失败：
 
@@ -167,7 +167,7 @@ SQL 数据同步中的同步组长时间处于“正在处理”状态。 该同
 
 - **解决方法**。 等待预配或同步过程完成，然后重试删除同步组。
 
-### <a name="setup-unreg"></a>无法注销本地 SQL Server 数据库
+### <a name="i-cant-unregister-an-on-premises-sql-server-database"></a><a name="setup-unreg"></a>无法注销本地 SQL Server 数据库
 
 - **原因**。 很可能是因为正在尝试注销一个已被删除的数据库。
 
@@ -187,7 +187,7 @@ SQL 数据同步中的同步组长时间处于“正在处理”状态。 该同
   1. 选择“编辑凭据”，输入数据库的凭据。 
   1. 继续执行注销。
 
-### <a name="setup-perms"></a>没有足够的特权启动系统服务
+### <a name="i-dont-have-sufficient-privileges-to-start-system-services"></a><a name="setup-perms"></a>没有足够的特权启动系统服务
 
 - **原因**。 在两种情况下会发生此错误：
   -   用户名和/或密码不正确。
@@ -201,7 +201,7 @@ SQL 数据同步中的同步组长时间处于“正在处理”状态。 该同
   1. 依次选择“应用”、“确定”   。
   1. 关闭所有窗口。
 
-### <a name="setup-date"></a>数据库具有“过期”状态
+### <a name="a-database-has-an-out-of-date-status"></a><a name="setup-date"></a>数据库具有“过期”状态
 
 - **原因**。 SQL 数据同步会从服务中删除已脱机达 45 天或更长时间的数据库（从数据库脱机时算起）。 如果数据库已脱机达 45 天或更长时间，然后重新联机，则其状态会变为“过期”。 
 
@@ -215,7 +215,7 @@ SQL 数据同步中的同步组长时间处于“正在处理”状态。 该同
   > [!WARNING]
   > 在数据库脱机时，将丢失对该数据库所做的所有更改。
 
-### <a name="setup-date2"></a>同步组具有“过期”状态
+### <a name="a-sync-group-has-an-out-of-date-status"></a><a name="setup-date2"></a>同步组具有“过期”状态
 
 - **原因**。 如果在 45 天的整个保留期内未能应用一个或多个更改，则同步组可能会过期。
 
@@ -223,7 +223,7 @@ SQL 数据同步中的同步组长时间处于“正在处理”状态。 该同
 
   如果同步组的状态为“过期”，请删除同步组并重新创建。 
 
-### <a name="setup-delete2"></a>在卸载或停止代理后的三分钟内无法删除同步组
+### <a name="a-sync-group-cant-be-deleted-within-three-minutes-of-uninstalling-or-stopping-the-agent"></a><a name="setup-delete2"></a>在卸载或停止代理后的三分钟内无法删除同步组
 
 在卸载或停止关联的 SQL 数据同步客户端代理后的三分钟内无法删除同步组。
 
@@ -236,7 +236,7 @@ SQL 数据同步中的同步组长时间处于“正在处理”状态。 该同
     b.  在某台本地计算机（可以是相同或不同的计算机）上安装代理。 然后，提交门户中针对显示为脱机的代理生成的代理密钥。  
     c. 尝试删除同步组。
 
-### <a name="setup-restore"></a>还原丢失或损坏的数据库时，会发生什么情况？
+### <a name="what-happens-when-i-restore-a-lost-or-corrupted-database"></a><a name="setup-restore"></a>还原丢失或损坏的数据库时，会发生什么情况？
 
 如果从备份还原丢失或损坏的数据库，数据库所属的同步组中的数据可能不收敛。
 

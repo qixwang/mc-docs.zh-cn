@@ -16,10 +16,10 @@ origin.date: 05/15/2017
 ms.date: 09/16/2019
 ms.author: v-yiso
 ms.openlocfilehash: 5dfce29cc5e29ee7ef84c1b72f90d8a446fa52ab
-ms.sourcegitcommit: dd0ff08835dd3f8db3cc55301815ad69ff472b13
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "70736666"
 ---
 # <a name="get-started-with-azure-cloud-services-and-aspnet"></a>Azure 云服务和 ASP.NET 入门
@@ -31,7 +31,7 @@ ms.locfileid: "70736666"
 本教程介绍如何在本地生成并运行应用程序、如何将其部署到 Azure 并在云中运行，以及如何从头构建。 用户可以从头构建并进行测试，之后根据用户的喜好部署步骤。
 
 ## <a name="contoso-ads-application"></a>Contoso 广告应用程序
-该应用程序是广告公告板。 用户通过输入文本和上载图像创建一个广告。 用户可以通过缩略图查看广告列表，并在选择一个广告以查看其详细信息时，查看完整尺寸的图像。
+该应用程序是广告公告板。 用户通过输入文本和上传图像创建一个广告。 用户可以通过缩略图查看广告列表，并在选择一个广告以查看其详细信息时，查看完整尺寸的图像。
 
 ![广告列表](./media/cloud-services-dotnet-get-started/list.png)
 
@@ -69,7 +69,7 @@ ms.locfileid: "70736666"
 
 ![广告表](./media/cloud-services-dotnet-get-started/adtable.png)
 
-当用户上传一个图像时，Web 角色中运行的前端在 [Azure Blob](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/unstructured-blob-storage) 中存储图像，并将广告信息存储在带有指向 Blob 的 URL 的数据库中。 同时，它将一条消息写入 Azure 队列。 在辅助角色中定期运行的后端进程轮询队列是否有新消息。 显示新消息时，辅助角色将创建该图像的缩略图，并为该广告更新缩略图 URL 数据库字段。 下图演示了应用程序各部分之间如何交互：
+当用户上传一个图像时，Web 角色中运行的前端在 [Azure Blob](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/unstructured-blob-storage) 中存储图像，并将广告信息存储在带有指向 Blob 的 URL 的数据库中。 同时，它将一条消息写入 Azure 队列。 在辅助角色中定期运行的后端进程轮询队列是否有新消息。 显示新消息时，辅助角色会创建该图像的缩略图，并为该广告更新缩略图 URL 数据库字段。 下图演示了应用程序各部分之间如何交互：
 
 ![Contoso 广告体系结构](./media/cloud-services-dotnet-get-started/apparchitecture.png)
 
@@ -101,7 +101,7 @@ ms.locfileid: "70736666"
 
 2. 单击“创建广告”  。
 
-2. 输入一些测试数据并选择一个要上载的 *.jpg* 图像，并单击“创建”。 
+2. 输入一些测试数据并选择一个要上传的 *.jpg* 图像，并单击“创建”。 
 
     ![创建页面](./media/cloud-services-dotnet-get-started/create.png)
 
@@ -132,7 +132,7 @@ ms.locfileid: "70736666"
 
 ### <a name="create-an-azure-cloud-service"></a>创建 Azure 云服务
 
-Azure 云服务是该应用程序将运行的环境。
+Azure 云服务是该应用程序的运行环境。
 
 1. 在浏览器中，打开 [Azure 门户](https://portal.azure.cn)。
 2. 单击“创建资源”>“计算”>“云服务”。 
@@ -270,7 +270,7 @@ Web 角色项目和辅助角色项目的 azure 存储帐户连接字符串存储
 
     ![打开连接字符串创建框](./media/cloud-services-dotnet-get-started/opencscreate.png)
 
-4. 在“创建存储连接字符串”对话框中，单击“订阅”，选择以前创建的存储帐户，然后单击“确定”。    如尚未登录，会提示您输入 Azure 帐户凭据。
+4. 在“创建存储连接字符串”对话框中，单击“你的订阅”，选择以前创建的存储帐户，并单击“确定”。    如尚未登录，会提示您输入 Azure 帐户凭据。
 
     ![创建存储连接字符串](./media/cloud-services-dotnet-get-started/createstoragecs.png)
 
@@ -407,7 +407,7 @@ Web 角色项目和辅助角色项目的 azure 存储帐户连接字符串存储
     存储客户端库更新频率高于 Visual Studio 项目模板，因此经常会发现新创建项目中的版本需要更新。
 4. 在窗口顶部，选择“浏览”  。
 
-5. 找到 *EntityFramework* NuGet 包，并将其安装在所有三个项目中。
+5. 找到 *EntityFramework* NuGet 包，并将其安装到所有三个项目。
 
 6. 查找 *Microsoft.WindowsAzure.ConfigurationManager* NuGet 包，并将它安装在辅助角色项目中。
 
@@ -591,7 +591,7 @@ imagesQueue.CreateIfNotExists();
 
 ### <a name="contosoadsweb---viewshomeindexcshtml"></a>ContosoAdsWeb - Views\Home\Index.cshtml
 
-*Views\Home\Index.cshtml* 文件在主页上显示类别链接。 链接将查询字符串变量中的 `Category` 枚举的整数值传递到“广告索引”页面。
+*Views\Home\Index.cshtml* 文件在主页上显示类别链接。 链接将查询字符串变量中 `Category` 枚举的整数值传递到“广告索引”页面。
 
 ```razor
 <li>@Html.ActionLink("Cars", "Index", "Ad", new { category = (int)Category.Cars }, null)</li>
@@ -603,7 +603,7 @@ imagesQueue.CreateIfNotExists();
 ### <a name="contosoadsweb---adcontrollercs"></a>ContosoAdsWeb - AdController.cs
 在 AdController.cs  文件中，构造函数调用 `InitializeStorage` 方法来创建 Azure 存储客户端库对象，该对象提供用于处理 blob 和队列的 API。
 
-然后，代码获取对*图像* Blob 容器的引用，正如用户之前在 *Global.asax.cs* 中看到的那样。 在执行该操作时，它设置适用于 Web 应用程序的默认 [重试策略](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/transient-fault-handling) 。 对于超过暂时性故障反复重试超过一分钟的 Web 应用程序，默认指数回退重试策略将其可能挂起。 此处指定的重试策略将在每次尝试后等待三秒，最多可尝试三次。
+然后，代码获取对*图像* Blob 容器的引用，正如用户之前在 *Global.asax.cs* 中看到的那样。 在执行该操作时，它设置适用于 Web 应用程序的默认 [重试策略](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/transient-fault-handling) 。 对于超过暂时性故障反复重试超过一分钟的 Web 应用，默认指数回退重试策略可能会将其挂起。 此处指定的重试策略将在每次尝试后等待三秒，最多可尝试三次。
 
 ```csharp
 var blobClient = storageAccount.CreateCloudBlobClient();

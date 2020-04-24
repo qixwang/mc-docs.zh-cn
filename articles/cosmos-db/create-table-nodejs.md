@@ -10,10 +10,10 @@ origin.date: 08/06/2019
 ms.date: 09/09/2019
 ms.author: v-yeche
 ms.openlocfilehash: 4006d0843ad47e4eed86a60a638106539bb1a799
-ms.sourcegitcommit: 66192c23d7e5bf83d32311ae8fbb83e876e73534
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "70254822"
 ---
 <!--Verify sucessfully-->
@@ -30,7 +30,7 @@ ms.locfileid: "70254822"
 
 Azure Cosmos DB 是世纪互联提供的多区域分布式多模型数据库服务。 可快速创建和查询文档、键/值、宽列和图形数据库，所有这些都受益于 Azure Cosmos DB 核心的多区域分布和水平缩放功能。 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
@@ -88,7 +88,7 @@ Azure Cosmos DB 是世纪互联提供的多区域分布式多模型数据库服�
 
 2. 使用右侧的复制按钮复制主连接字符串。
 
-3. 打开 app.config 文件，然后将值粘贴到第三行的 connectionString 中。 
+3. 打开 app.config 文件，然后将值粘贴到第三行上的 connectionString 中。 
 
     > [!IMPORTANT]
     > 如果终结点使用 documents.azure.cn，则意味着帐户为预览版帐户，需创建适用于公开发布版表 API SDK 的[新的表 API 帐户](#create-a-database-account)。

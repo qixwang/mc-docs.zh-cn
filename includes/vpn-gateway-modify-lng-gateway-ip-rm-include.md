@@ -10,17 +10,17 @@ ms.date: 03/04/2019
 ms.author: v-jay
 ms.custom: include file
 ms.openlocfilehash: 308be0eec87afaa2aa073df3fc5afa25b7469b52
-ms.sourcegitcommit: 15a80d044339dab8bce43eb7be110ba01f630056
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "69578658"
 ---
-### <a name="gwipnoconnection"></a> 修改本地网关的“GatewayIpAddress”- 无网关连接
+### <a name="to-modify-the-local-network-gateway-gatewayipaddress---no-gateway-connection"></a><a name="gwipnoconnection"></a> 修改本地网关的“GatewayIpAddress”- 无网关连接
 
 如果要连接的 VPN 设备已更改其公共 IP 地址，则需根据该更改修改本地网关。 请使用此示例修改没有网关连接的本地网关。
 
-修改此值时，还可同时修改地址前缀。 请务必使用本地网关的现有名称来覆盖当前设置。 如果使用其他名称，请创建一个新的本地网关，而不是覆盖现有本地网关。
+修改此值时，还可同时修改地址前缀。 请务必使用本地网关的现有名称来覆盖当前设置。 如果使用其他名称，请创建一个新的本地网关，而不是覆盖现有的。
 
 ```powershell
 New-AzLocalNetworkGateway -Name Site1 `
@@ -28,7 +28,7 @@ New-AzLocalNetworkGateway -Name Site1 `
 -GatewayIpAddress "5.4.3.2" -ResourceGroupName TestRG1
 ```
 
-### <a name="gwipwithconnection"></a> 修改本地网关的“GatewayIpAddress”- 现有网关连接
+### <a name="to-modify-the-local-network-gateway-gatewayipaddress---existing-gateway-connection"></a><a name="gwipwithconnection"></a> 修改本地网关的“GatewayIpAddress”- 存在网关连接
 
 如果要连接的 VPN 设备已更改其公共 IP 地址，则需根据该更改修改本地网关。 如果网关连接已存在，首先需要删除该连接。 删除连接后，可修改网关 IP 地址并重新创建一个新的连接。 此外可同时修改地址前缀。 这会导致 VPN 连接中断一段时间。 修改网关 IP 地址时，不需删除 VPN 网关。 只需删除连接。
  
@@ -39,7 +39,7 @@ New-AzLocalNetworkGateway -Name Site1 `
    Remove-AzVirtualNetworkGatewayConnection -Name VNet1toSite1 `
    -ResourceGroupName TestRG1
    ```
-2. 修改“GatewayIpAddress”值。 此外可同时修改地址前缀。 请务必使用本地网关的现有名称来覆盖当前设置。 如果不这样做，请创建一个新的本地网关，而不是覆盖现有本地网关。
+2. 修改“GatewayIpAddress”值。 此外可同时修改地址前缀。 请务必使用本地网关的现有名称来覆盖当前设置。 如果不这样做，请创建一个新的本地网关，而不是覆盖现有的。
 
    ```powershell
    New-AzLocalNetworkGateway -Name Site1 `

@@ -11,10 +11,10 @@ ms.date: 11/18/2019
 ms.topic: conceptual
 manager: digimobile
 ms.openlocfilehash: abf5bfd3415f08e91f5d36b42c13b701f20adc5e
-ms.sourcegitcommit: ea2aeb14116769d6f237542c90f44c1b001bcaf3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74116238"
 ---
 # <a name="create-a-standalone-azure-automation-account"></a>创建独立的 Azure 自动化帐户
@@ -69,7 +69,7 @@ ms.locfileid: "74116238"
    >
    > ![添加自动化帐户警报](media/automation-create-standalone-account/create-account-without-perms.png)
 
-1. 在“添加自动化帐户”窗格的“名称”框中，输入新自动化帐户的名称。   此名称选定后即不可更改。 每个区域和资源组的自动化帐户名称都是唯一的。  已删除的自动化帐户的名称可能无法立即可用。
+1. 在“添加自动化帐户”窗格的“名称”框中，输入新自动化帐户的名称。   此名称选定后即不可更改。 *每个区域和资源组的自动化帐户名称都是唯一的。已删除的自动化帐户的名称可能无法立即可用。*
 1. 如果有多个订阅，请在“订阅”框中为新帐户指定一个订阅  。
 1. 对于“资源组”，请输入或选择新的或现有的资源组。 
 1. 对于“位置”，请选择一个 Azure 数据中心位置。 
@@ -89,7 +89,7 @@ ms.locfileid: "74116238"
 
 成功创建自动化帐户后，系统会自动创建几个资源。 创建后，如果不想保留这些 runbook，可以放心地将其删除。 运行方式帐户可用于对 runbook 中的帐户进行身份验证，除非创建其他运行方式帐户或不需要它们，否则应将其保留。 下表汇总了运行方式帐户的资源。
 
-| Resource | 说明 |
+| 资源 | 说明 |
 | --- | --- |
 | AzureAutomationTutorial Runbook |一个示例图形 Runbook，演示如何使用运行方式帐户进行身份验证。 该 Runbook 获取所有资源管理器资源。 |
 | AzureAutomationTutorialScript Runbook |一个示例 PowerShell Runbook，演示如何使用运行方式帐户进行身份验证。 该 Runbook 获取所有资源管理器资源。 |

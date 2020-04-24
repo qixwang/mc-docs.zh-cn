@@ -6,10 +6,10 @@ origin.date: 08/23/2018
 ms.date: 08/23/2018
 ms.author: v-tawe
 ms.openlocfilehash: 91192539b5eeea12458521c974dd1c277f2b8893
-ms.sourcegitcommit: 32d62e27e59e42c8d21a667e77b61b8d87efbc19
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/16/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "71006567"
 ---
 1. 在 [Azure 门户](https://portal.azure.cn/)中，选择“浏览全部”   > “应用程序服务”  。 然后选择“移动应用”后端。 在“设置”下  ，选择“应用服务推送”  。 然后选择通知中心名称。

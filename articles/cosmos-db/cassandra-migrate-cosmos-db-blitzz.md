@@ -9,10 +9,10 @@ ms.date: 09/30/2019
 ms.author: v-yeche
 ms.reviewer: sngun
 ms.openlocfilehash: 2015bc4709e606527e0b9432fcdecb42be3ea71b
-ms.sourcegitcommit: 0d07175c0b83219a3dbae4d413f8e012b6e604ed
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "71306852"
 ---
 # <a name="migrate-data-from-cassandra-to-azure-cosmos-db-cassandra-api-account-using-blitzz"></a>使用 Blitzz 将数据从 Cassandra 迁移到 Azure Cosmos DB Cassandra API 帐户
@@ -33,7 +33,7 @@ Blitzz 的迁移解决方案按照分步方法迁移复杂的运营工作负荷�
 
 * 它可以自动将业务逻辑（表、索引、视图）从 Apache Cassandra 数据库迁移到 Azure Cosmos DB。 不需手动创建架构。
 
-* Blitzz 提供大容量并行数据库复制。 它可以使用名为“变更数据捕获 (CDC)”的技术，让源平台和目标平台在迁移过程中保持同步状态。 Blitzz 可以通过 CDC 从源数据库 (Apache Cassandra) 持续拉取更改流，并将其应用到目标数据库 (Azure Cosmos DB)。
+* Blitzz 提供大规模并行数据库复制。 它可以使用名为“变更数据捕获 (CDC)”的技术，让源平台和目标平台在迁移过程中保持同步状态。 Blitzz 可以通过 CDC 从源数据库 (Apache Cassandra) 持续拉取更改流，并将其应用到目标数据库 (Azure Cosmos DB)。
 
 * 它具有容错功能，可以保证数据的准确传输，即使系统出现硬件或软件故障。
 
@@ -78,7 +78,7 @@ Blitzz 的迁移解决方案按照分步方法迁移复杂的运营工作负荷�
 
     填充配置详细信息以后，保存并关闭该文件。
 
-1. 也可设置源数据库筛选器文件。 筛选器文件可指定要迁移的架构或表。 使用 **`vi filter/cassandra_filter.yml`** 命令打开配置文件，输入以下配置详细信息：
+1. （可选）设置源数据库筛选器文件。 筛选器文件指定要迁移的架构或表。 使用 **`vi filter/cassandra_filter.yml`** 命令打开配置文件，输入以下配置详细信息：
 
     ```bash
 
@@ -91,7 +91,7 @@ Blitzz 的迁移解决方案按照分步方法迁移复杂的运营工作负荷�
 
 1. 接下来，设置目标数据库配置。 在定义配置之前，先[创建 Azure Cosmos DB Cassandra API 帐户](create-cassandra-dotnet.md#create-a-database-account)，然后创建密钥空间，接着创建一个用于存储已迁移数据的表。 由于你是从 Apache Cassandra 迁移到 Azure Cosmos DB 中的 Cassandra API，因此所使用的分区键可以与用于 Apache Cassandra 的分区键相同。
 
-1. 在迁移数据之前，请将容器吞吐量提高到快速迁移应用程序所需的量。 例如，可以将吞吐量提高到 100000 RU。 在开始迁移之前提高吞吐量可以缩短数据迁移时间。
+1. 在迁移数据之前，请将容器吞吐量提高到快速迁移应用程序所需的量。 例如，可将吞吐量提高到 100000 RU。 在开始迁移之前提高吞吐量可以缩短数据迁移时间。
 
     ![缩放 Azure Cosmos 容器吞吐量](./media/cassandra-migrate-cosmos-db-blitzz/scale-throughput.png)
 

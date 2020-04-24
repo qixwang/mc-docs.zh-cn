@@ -14,10 +14,10 @@ ms.author: v-junlch
 ms.reviewer: luleon
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 789f7843c176c945d3c80b8c354f8bf4b8cc60fb
-ms.sourcegitcommit: 1171a6ab899b26586d1ea4b3a089bb8ca3af2aa2
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74084597"
 ---
 # <a name="assign-a-user-to-an-enterprise-app-in-azure-active-directory"></a>在 Azure Active Directory 中向企业应用分配用户
@@ -28,7 +28,7 @@ ms.locfileid: "74084597"
 > 有关本文中讨论的功能的许可要求，请参阅 [Azure Active Directory 定价页](https://www.azure.cn/pricing/details/active-directory)。
 
 ## <a name="assign-a-user-to-an-app---portal"></a>将用户分配到应用 - 门户
-1. 使用目录全局管理员的帐户登录到 [Azure 门户](https://portal.azure.cn) 。
+1. 使用目录全局管理员的帐户登录到 [Azure 门户](https://portal.azure.cn)。
 1. 选择“所有服务”  ，在文本框中输入 Azure Active Directory，并选择“Enter”  。
 1. 选择“企业应用程序”。 
 1. 在“企业应用程序 - 所有应用程序”  窗格上，你会看到你可以管理的应用的列表。 选择一个应用。
@@ -43,7 +43,7 @@ ms.locfileid: "74084597"
 
 ## <a name="allow-all-users-to-access-an-app---portal"></a>允许所有用户访问某个应用 - 门户
 
-1. 使用目录全局管理员的帐户登录到 [Azure 门户](https://portal.azure.cn) 。
+1. 使用目录全局管理员的帐户登录到 [Azure 门户](https://portal.azure.cn)。
 1. 选择“所有服务”  ，在文本框中输入 Azure Active Directory，并选择“Enter”  。
 1. 选择“企业应用程序”。 
 1. 在“企业应用程序”  窗格中，选择“所有应用程序”  。 随后会列出你可以管理的应用。
@@ -126,7 +126,7 @@ ms.locfileid: "74084597"
 
 - [查看所有组](../fundamentals/active-directory-groups-view-azure-portal.md)
 - [删除企业应用的用户分配](remove-user-or-group-access-portal.md)
-- [Disable user sign-ins for an enterprise app](disable-user-sign-in-portal.md)
-- [Change the name or logo of an enterprise app](change-name-or-logo-portal.md)
+- [禁用企业应用的用户登录](disable-user-sign-in-portal.md)
+- [更改企业应用的名称或徽标](change-name-or-logo-portal.md)
 
 <!-- Update_Description: wording update -->

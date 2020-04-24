@@ -16,10 +16,10 @@ origin.date: 09/10/2019
 ms.date: 11/11/2019
 ms.author: v-yeche
 ms.openlocfilehash: d14120c72d392993140ceb9ecd1dc6dd67bd7950
-ms.sourcegitcommit: a89eb0007edd5b4558b98c1748b2bd67ca22f4c9
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "73730733"
 ---
 # <a name="repair-a-linux-vm-by-using-the-azure-virtual-machine-repair-commands"></a>使用 Azure 虚拟机修复命令修复 Linux VM
@@ -81,7 +81,7 @@ ms.locfileid: "73730733"
 
 ## <a name="verify-and-enable-boot-diagnostics"></a>验证和启用启动诊断
 
-以下示例在名为 ``myResourceGroup`` 的资源组中名为 ``myVMDeployed`` 的 VM 上启用诊断扩展：
+以下示例在名为 ``myVMDeployed`` 的资源组中名为 ``myResourceGroup`` 的 VM 上启用诊断扩展：
 
 Azure CLI
 
@@ -93,7 +93,7 @@ az vm boot-diagnostics enable --name myVMDeployed --resource-group myResourceGro
 
 * 如果在连接到 VM 时遇到问题，请参阅[对 Azure 虚拟机的 RDP 连接进行故障排除](/virtual-machines/troubleshooting/troubleshoot-rdp-connection)。
 * 如果在访问 VM 上运行的应用程序时遇到问题，请参阅[排查 Azure 中虚拟机上的应用程序连接问题](/virtual-machines/troubleshooting/troubleshoot-app-connection)。
-* 有关使用 Resource Manager 的详细信息，请参阅 [Azure Resource Manager 概述](/azure-resource-manager/resource-group-overview)。
+* 有关资源组的详细信息，请参阅 [Azure 资源管理器概述](/azure-resource-manager/resource-group-overview)。
 
 <!--Update_Description: new articles on repair linux vm using repair commands -->
 <!--New.date: 11/11/2019-->

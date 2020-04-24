@@ -7,10 +7,10 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.date: 08/09/2019
 ms.openlocfilehash: 36cb4c80aaabb17b0fc742dfd2357c0a67d3d682
-ms.sourcegitcommit: 43f569aaac795027c2aa583036619ffb8b11b0b9
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/12/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "70921346"
 ---
 # <a name="scenario-cluster-creation-failed-due-to-not-sufficient-fault-domains-in-region-in-azure-hdinsight"></a>方案：由于 Azure HDInsight 的`not sufficient fault domains in region`，群集创建失败

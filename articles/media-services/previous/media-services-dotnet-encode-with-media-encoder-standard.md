@@ -17,10 +17,10 @@ ms.date: 09/23/2019
 ms.author: v-jay
 ms.reviewer: anilmur
 ms.openlocfilehash: 21735e5d44b65e081f2c0c4939a5e5d3183ccccf
-ms.sourcegitcommit: 8248259e4c3947aa0658ad6c28f54988a8aeebf8
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "71124524"
 ---
 # <a name="encode-an-asset-with-media-encoder-standard-using-net"></a>使用 .NET 通过 Media Encoder Standard 对资产进行编码  
@@ -34,7 +34,7 @@ ms.locfileid: "71124524"
 如果输出资产已经过存储加密，则必须配置资产传送策略。 有关详细信息，请参阅[配置资产传送策略](media-services-dotnet-configure-asset-delivery-policy.md)。
 
 > [!NOTE]
-> MES 会生成一个输出文件，其名称包含输入文件名的前 32 个字符。 该名称基于预设文件中指定的内容。 例如，"FileName": "{Basename}_{Index}{Extension}"。 {Basename} 替换为输入文件名的前 32 个字符。
+> MES 将生成一个输出文件，其名称包含输入文件名的前 32 个字符。 该名称基于预设文件中指定的内容。 例如，"FileName": "{Basename}_{Index}{Extension}"。 {Basename} 替换为输入文件名的前 32 个字符。
 > 
 > 
 
@@ -71,7 +71,7 @@ Media Encoder Standard 使用[此处](media-services-mes-presets-overview.md)所
 
 #### <a name="create-and-configure-a-visual-studio-project"></a>创建和配置 Visual Studio 项目
 
-设置开发环境，并在 app.config 文件中填充连接信息，如[使用 .NET 进行媒体服务开发](media-services-dotnet-how-to-use.md)中所述。 
+设置开发环境，并根据[使用 .NET 进行媒体服务开发](media-services-dotnet-how-to-use.md)中所述，在 app.config 文件中填充连接信息。 
 
 #### <a name="example"></a>示例 
 

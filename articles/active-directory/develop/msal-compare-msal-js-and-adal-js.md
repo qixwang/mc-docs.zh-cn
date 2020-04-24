@@ -20,10 +20,10 @@ ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2e3c3e3b2c42956758ffaca1ae9ef66c57a0e47e
-ms.sourcegitcommit: a88cc623ed0f37731cb7cd378febf3de57cf5b45
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "73830975"
 ---
 # <a name="differences-between-msal-js-and-adal-js"></a>MSAL JS 与 ADAL JS 的差异
@@ -54,7 +54,7 @@ ms.locfileid: "73830975"
 
 在 v1.0 中，使用 `https://login.partner.microsoftonline.cn/common` 颁发机构可让用户使用任何 Azure AD 帐户（适用于任何组织）登录。
 
-在 v2.0 中，使用 `https://login.partner.microsoftonline.cn/common` 颁发机构可让用户使用任何 Azure AD 组织帐户登录。 若要限制为只能登录到 Azure AD 帐户（与 ADAL.js 中的行为类似），需要使用 `https://login.partner.microsoftonline.cn/organizations`。 有关详细信息，请参阅[使用 MSAL.js 初始化](msal-js-initializing-client-applications.md)中的 `authority` 配置选项。
+在 v2.0 中，使用 `https://login.partner.microsoftonline.cn/common` 颁发机构可让用户使用任何 Azure AD 组织帐户登录。 若要限制为只能登录到 Azure AD 帐户（与 ADAL.js 中的行为类似），需要使用 `https://login.partner.microsoftonline.cn/organizations`。 有关详细信息，请参阅`authority`使用 MSAL.js 初始化[中的 ](msal-js-initializing-client-applications.md) 配置选项。
 
 ### <a name="scopes-for-acquiring-tokens"></a>用于获取令牌的范围
 * 身份验证请求中用于获取令牌的范围而不是资源参数

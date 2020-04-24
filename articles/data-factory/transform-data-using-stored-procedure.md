@@ -12,10 +12,10 @@ author: WenJason
 ms.author: v-jay
 manager: digimobile
 ms.openlocfilehash: 1ec2883446e3d7d12b068bed5899df4b0a247f4b
-ms.sourcegitcommit: aea45739ba114a6b069f782074a70e5dded8a490
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "72275242"
 ---
 # <a name="transform-data-by-using-the-sql-server-stored-procedure-activity-in-azure-data-factory"></a>在 Azure 数据工厂中使用 SQL Server 存储过程活动转换数据
@@ -23,7 +23,7 @@ ms.locfileid: "72275242"
 可使用数据工厂[管道](concepts-pipelines-activities.md)中的数据转换活动将原始数据转换和处理为预测和见解。 存储过程活动是数据工厂支持的转换活动之一。 本文基于[转换数据](transform-data.md)一文编写，它概述了数据转换和数据工厂中支持的转换活动。
 
 > [!NOTE]
-> 如果不熟悉 Azure 数据工厂，请在阅读本文之前，先通读 [Azure 数据工厂简介](introduction.md)，并学习以下教程：[教程：转换数据](tutorial-transform-data-spark-powershell.md)。 
+> 如果不熟悉 Azure 数据工厂，请在阅读本文之前，先通读 [Azure 数据工厂简介](introduction.md)，并学习教程：[教程：转换数据](tutorial-transform-data-spark-powershell.md)。 
 
 可以使用存储过程活动调用企业或 Azure 虚拟机 (VM) 中以下数据存储中的存储过程： 
 
@@ -63,17 +63,17 @@ ms.locfileid: "72275242"
 
 下表描述了其中的 JSON 属性：
 
-| 属性                  | 说明                              | 必须 |
+| properties                  | 说明                              | 必选 |
 | ------------------------- | ---------------------------------------- | -------- |
 | name                      | 活动名称                     | 是      |
-| 说明               | 描述活动用途的文本 | 否       |
+| description               | 描述活动用途的文本 | 否       |
 | type                      | 对于存储过程活动，活动类型是 SqlServerStoredProcedure  | 是      |
 | linkedServiceName         | 引用注册为数据工厂中的链接服务的 Azure SQL 数据库或 Azure SQL 数据仓库或 SQL Server    。 若要了解此链接服务，请参阅[计算链接服务](compute-linked-services.md)一文。 | 是      |
 | storedProcedureName       | 指定要调用的存储过程的名称。 | 是      |
 | storedProcedureParameters | 指定存储过程的参数值。 使用 `"param1": { "value": "param1Value","type":"param1Type" }` 传递数据源支持的参数值及其类型。 如果需要为参数传递 null，请使用 `"param1": { "value": null }`（全部小写）。 | 否       |
 
 ## <a name="parameter-data-type-mapping"></a>参数数据类型映射
-为参数指定的数据类型是 Azure 数据工厂类型，该类型映射到正在使用的数据源中的数据类型。 可以在连接器区域中找到数据源的数据类型映射。 下面是一些示例
+为参数指定的数据类型是 Azure 数据工厂类型，该类型映射到正在使用的数据源中的数据类型。 可以在连接器区域中找到数据源的数据类型映射。 下面是一些示例：
 
 | 数据源          | 数据类型映射 |
 | ---------------------|-------------------|

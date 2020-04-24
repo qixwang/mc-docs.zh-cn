@@ -19,10 +19,10 @@ ms.custom: aaddev
 ms.reviewer: aragra, lenalepa, sureshja
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: dd2de1227494ced9e5e9116c76bd264b3507a13e
-ms.sourcegitcommit: 18a0d2561c8b60819671ca8e4ea8147fe9d41feb
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "70134313"
 ---
 # <a name="quickstart-configure-an-application-to-expose-web-apis"></a>快速入门：配置应用程序来公开 Web API
@@ -135,11 +135,11 @@ ms.locfileid: "70134313"
 了解下述其他相关的应用管理快速入门：
 
 * [将应用程序注册到 Microsoft 标识平台](quickstart-register-app.md)
-* [将客户端应用程序配置为访问 Web API](quickstart-configure-app-access-web-apis.md)
+* [配置客户端应用程序以访问 Web API](quickstart-configure-app-access-web-apis.md)
 * [修改应用程序支持的帐户](quickstart-modify-supported-accounts.md)
 * [删除注册到 Microsoft 标识平台的应用程序](quickstart-remove-app.md)
 
-了解有关表示已注册应用程序和它们之间的关系的两个 Azure AD 对象的详细信息，请参阅[应用程序对象和服务主体对象](app-objects-and-service-principals.md)。
+了解有关表示已注册应用程序的两个 Azure AD 对象及它们之间的关系的详细信息，请参阅[应用程序对象和服务主体对象](app-objects-and-service-principals.md)。
 
 深入了解使用 Azure Active Directory 开发应用程序时应使用的品牌准则，请参阅[应用程序的品牌准则](howto-add-branding-in-azure-ad-apps.md)。
 

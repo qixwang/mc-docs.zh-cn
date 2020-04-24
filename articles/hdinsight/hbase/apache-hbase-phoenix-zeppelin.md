@@ -10,10 +10,10 @@ ms.topic: conceptual
 origin.date: 10/14/2019
 ms.date: 11/11/2019
 ms.openlocfilehash: c2ed506fd67bb7a7433daf7429044f4fef044ce3
-ms.sourcegitcommit: 642a4ad454db5631e4d4a43555abd9773cae8891
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "73426137"
 ---
 # <a name="use-apache-zeppelin-to-run-apache-phoenix-queries-over-apache-hbase-in-azure-hdinsight"></a>使用 Apache Zepperin 在 Azure HDInsight 中的 Apache HBase 上运行 Apache Phoenix 查询

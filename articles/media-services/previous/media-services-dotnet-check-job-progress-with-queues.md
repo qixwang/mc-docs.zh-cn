@@ -16,10 +16,10 @@ origin.date: 03/18/2019
 ms.date: 09/23/2019
 ms.author: v-jay
 ms.openlocfilehash: d3e4e5026fdf8a4e0d2af96da5278f5d5ff814cf
-ms.sourcegitcommit: 8248259e4c3947aa0658ad6c28f54988a8aeebf8
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "71124394"
 ---
 # <a name="use-azure-queue-storage-to-monitor-media-services-job-notifications-with-net"></a>使用 Azure 队列存储通过 .NET 监视媒体服务作业通知 
@@ -27,13 +27,13 @@ ms.locfileid: "71124394"
 > [!NOTE]
 > 不会向媒体服务 v2 添加任何新特性或新功能。 <br/>查看最新版本：[媒体服务 v3](/media-services/latest/)。 另请参阅[从 v2 到 v3 的迁移指南](../latest/migrate-from-v2-to-v3.md)
 
-运行编码作业时，通常需要采用某种方式来跟踪作业进度。 可以配置媒体服务将通知传送到 [Azure 队列存储](../../storage/storage-dotnet-how-to-use-queues.md)。 然后可以通过从队列存储获取通知来监视作业进度。 
+运行编码作业时，通常需要采用某种方式来跟踪作业进度。 你可以配置媒体服务将通知传送到 [Azure 队列存储](../../storage/storage-dotnet-how-to-use-queues.md)。 然后可以通过从队列存储获取通知来监视作业进度。 
 
 用户可以从任何位置访问已传给到队列存储中的消息。 队列存储消息体系结构十分可靠，且伸缩性极高。 建议使用其他方法轮询消息的队列存储。
 
-一种常见的媒体服务通知侦听方案是：正在开发一个内容管理系统，完成编码作业后，该系统需要执行一些其他任务（例如触发工作流的下一步骤或者发布内容）。
+一种常见的媒体服务通知侦听方案是：你正在开发一个内容管理系统，完成编码作业后，该系统需要执行一些其他任务（例如触发工作流的下一步骤或者发布内容）。
 
-本文展示了如何从队列存储获取通知消息。  
+本文说明如何从队列存储获取通知消息。  
 
 ## <a name="considerations"></a>注意事项
 开发使用存储队列的媒体服务应用程序时，请注意以下几点：
@@ -41,17 +41,17 @@ ms.locfileid: "71124394"
 * 队列存储不保证按照先进先出 (FIFO) 的顺序传递消息。 有关详细信息，请参阅 [Azure 队列和 Azure 服务总线队列比较与对照](https://msdn.microsoft.com/library/azure/hh767287.aspx)。
 * 队列存储不是推送服务。 必须轮询队列。
 * 可以有任意数目的队列。 有关详细信息，请参阅[队列服务 REST API](https://docs.microsoft.com/rest/api/storageservices/Queue-Service-REST-API)。
-* 队列存储存在一些需注意的限制和细节问题。 相关说明请参阅 [Azure 队列和 Azure 服务总线队列比较与对照](/service-bus-messaging/service-bus-azure-and-service-bus-queues-compared-contrasted)。
+* 队列存储存在一些需注意的限制和细节问题。 相关说明请参阅[Azure 队列和 Azure 服务总线队列比较与对照](/service-bus-messaging/service-bus-azure-and-service-bus-queues-compared-contrasted)。
 
 ## <a name="net-code-example"></a>.NET 代码示例
 
-本部分中的代码示例执行以下操作：
+本部分中的代码示例将执行以下操作：
 
-1. 定义一个映射为通知消息格式的 **EncodingJobMessage** 类。 代码将从队列接收到的消息反序列化为 **EncodingJobMessage** 类型的对象。
+1. 定义映射为通知消息格式的 **EncodingJobMessage** 类。 代码将从队列接收到的消息反序列化为 **EncodingJobMessage** 类型的对象。
 2. 从 app.config 文件中加载媒体服务和存储帐户信息。 本代码示例使用此信息创建 **CloudMediaContext** 和 **CloudQueue** 对象。
 3. 创建接收编码作业相关通知消息的队列。
 4. 创建一个映射到队列的通知终结点。
-5. 将通知终结点附加到作业，并提交编码作业。 可以将多个通知终结点附加到一个作业。
+5. 将通知终结点附加到作业，然后提交编码作业。 可以将多个通知终结点附加到一个作业。
 6. 将 **NotificationJobState.FinalStatesOnly** 传递到 **AddNew** 方法。 （本例中，只想了解作业处理的最终状态。）
 
         job.JobNotificationSubscriptions.AddNew(NotificationJobState.FinalStatesOnly, _notificationEndPoint);
@@ -60,17 +60,17 @@ ms.locfileid: "71124394"
 9. 删除队列和通知终结点。
 
 > [!NOTE]
-> 监视作业状态的建议方法是侦听通知消息，如以下示例所示：
+> 建议通过侦听通知消息来监视作业的状态，如下例所示：
 >
-> 或者，可以使用 IJob.State 属性检查作业状态  。  在 **IJob** 的状态设置为“已完成”  之前，可能会先收到一条指示作业已完成的通知消息。 IJob.State 属性在延迟片刻之后反映正确的状态  。
+> 或者，可以使用 **IJob.State** 属性检查作业状态。  在 **IJob** 的状态设置为“已完成”  之前，可能会先收到一条指示作业已完成的通知消息。 **IJob.State** 属性在延迟片刻之后反映正确的状态。
 >
 >
 
 ### <a name="create-and-configure-a-visual-studio-project"></a>创建和配置 Visual Studio 项目
 
-1. 设置开发环境，并在 app.config 文件中填充连接信息，如[使用 .NET 进行媒体服务开发](media-services-dotnet-how-to-use.md)中所述。 
-2. 创建新的文件夹（文件夹可以位于本地驱动器上的任何位置），然后复制需要编码和流式处理或渐进式下载的 .mp4 文件。 在此示例中，我们使用了“C:\Media”路径。
-3. 添加对 **System.Runtime.Serialization** 库的引用。
+1. 设置开发环境，并根据[使用 .NET 进行媒体服务开发](media-services-dotnet-how-to-use.md)中所述，在 app.config 文件中填充连接信息。 
+2. 创建新的文件夹（文件夹可以位于本地驱动器上的任何位置），复制需要编码和流处理或渐进式下载的 .mp4 文件。 在此示例中，我们使用了“C:\Media”路径。
+3. 将引用添加到“System.Runtime.Serialization”库中  。
 
 ### <a name="code"></a>代码
 
@@ -343,7 +343,7 @@ namespace JobNotification
 }
 ```
 
-以上示例生成了以下输出：值会有所变化。
+上例生成了以下输出，值会有所变化。
 
     Created assetFile BigBuckBunny.mp4
     Upload BigBuckBunny.mp4

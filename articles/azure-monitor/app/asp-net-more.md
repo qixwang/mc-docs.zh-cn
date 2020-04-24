@@ -9,10 +9,10 @@ origin.date: 02/03/2017
 ms.date: 6/4/2019
 ms.author: v-lingwu
 ms.openlocfilehash: ac009ce9537eeb22a32f6088061ddac83ad5f753
-ms.sourcegitcommit: b09d4b056ac695ba379119eb9e458a945b0a61d9
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "72970878"
 ---
 # <a name="more-telemetry-from-application-insights"></a>Application Insights 中的更多遥测

@@ -8,10 +8,10 @@ ms.topic: conceptual
 origin.date: 02/28/2018
 ms.date: 11/18/2019
 ms.openlocfilehash: ec0e19ecdaf245726a7a9cf1c1d51607110518b4
-ms.sourcegitcommit: c863b31d8ead7e5023671cf9b58415542d9fec9c
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74020876"
 ---
 # <a name="connection-libraries-for-azure-database-for-mysql"></a>Azure Database for MySQL 的连接库
@@ -24,7 +24,7 @@ ms.locfileid: "74020876"
 ## <a name="client-interfaces"></a>客户端接口
 MySQL 提供标准数据库驱动程序连接，以将 MySQL 与符合行业标准 ODBC 和 JDBC 的应用程序和工具配合使用。 适用于 ODBC 或 JDBC 的任何系统都可以使用 MySQL。
 
-| **语言** | 平台  | 其他资源  | **下载** |
+| **语言** | **平台** | 其他资源  | **下载** |
 | :----------- | :------------| :-----------------------| :------------|
 | PHP | Windows、Linux | [MySQL native driver for PHP - mysqlnd](https://dev.mysql.com/downloads/connector/php-mysqlnd/)（适用于 PHP 的 MySQL 本机驱动器 - mysqlnd） | [下载](https://secure.php.net/downloads.php) |
 | ODBC | Windows、Linux、Mac OS X 和 Unix 平台 | [MySQL Connector/ODBC Developer Guide](https://dev.mysql.com/doc/connector-odbc/en/)（MySQL 连接器/ODBC 开发人员指南） | [下载](https://dev.mysql.com/downloads/connector/odbc/) |

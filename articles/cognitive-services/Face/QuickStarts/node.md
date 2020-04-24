@@ -12,10 +12,10 @@ origin.date: 02/06/2019
 ms.date: 03/01/2019
 ms.author: v-junlch
 ms.openlocfilehash: 6361718ec7ff3f731088f375e2627eb33be2f70a
-ms.sourcegitcommit: 09bf291a235f43202ba3752323395db86b16343f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "71119551"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-nodejs"></a>快速入门：使用人脸 REST API 和 Node.js 检测图像中的人脸
@@ -24,7 +24,7 @@ ms.locfileid: "71119551"
 
 如果没有 Azure 订阅，请在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial/)。 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - 人脸 API 订阅密钥。 可以按照[创建认知服务帐户](/cognitive-services/cognitive-services-apis-create-account)中的说明订阅人脸 API 服务并获取密钥。
 - 代码编辑器，如 [Visual Studio Code](https://code.visualstudio.com/download)

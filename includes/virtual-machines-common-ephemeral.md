@@ -10,10 +10,10 @@ ms.date: 10/14/2019
 ms.author: v-yeche
 ms.custom: include file
 ms.openlocfilehash: a9db56371d4dc208d3670fc7f662beaf561667cc
-ms.sourcegitcommit: c9398f89b1bb6ff0051870159faf8d335afedab3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "72272728"
 ---
 <!--Verify successfully-->
@@ -189,37 +189,37 @@ id}/resourceGroups/{rgName}/providers/Microsoft.Compute/VirtualMachines/{vmName}
 
 **问：本地 OS 磁盘的大小是多少？**
 
-答：我们支持的平台和自定义映像的大小上限取决于 VM 缓存大小，其中的 OS 磁盘的所有读取/写入操作都将在本地进行，使用与虚拟机相同的节点。 
+A:我们支持的平台和自定义映像的大小上限取决于 VM 缓存大小，其中的 OS 磁盘的所有读取/写入操作都将在本地进行，使用与虚拟机相同的节点。 
 
 **问：可以重设临时 OS 磁盘的大小吗？**
 
-答：不可以。预配临时 OS 磁盘以后，就不能重设其大小。 
+A:不可以。预配临时 OS 磁盘以后，就不能重设其大小。 
 
 **问：是否可以将托管磁盘附加到临时 VM？**
 
-答：是的，可以将托管数据磁盘附加到使用临时 OS 磁盘的 VM。 
+A:是的，可以将托管数据磁盘附加到使用临时 OS 磁盘的 VM。 
 
 **问：临时 OS 磁盘是否支持所有 VM 大小？**
 
-答：否。支持除 B 系列、N 系列和 H 系列大小之外的所有高级存储 VM 大小（DS、ES、FS 和 M）。  
+A:否。支持除 B 系列、N 系列和 H 系列大小之外的所有高级存储 VM 大小（DS、ES、FS 和 M）。  
 
 <!--Not Available on GS-->
 
 **问：是否可以对现有的 VM 和规模集应用临时 OS 磁盘？**
 
-答：否。只能在 VM 和规模集创建期间使用临时 OS 磁盘。 
+A:否。只能在 VM 和规模集创建期间使用临时 OS 磁盘。 
 
 **问：是否可以在规模集中混合使用临时 OS 磁盘和常规 OS 磁盘？**
 
-答：否。不能在同一规模集中混合使用临时 OS 磁盘实例和持久 OS 磁盘实例。 
+A:否。不能在同一规模集中混合使用临时 OS 磁盘实例和持久 OS 磁盘实例。 
 
 **问：是否可以通过 Powershell 或 CLI 创建临时 OS 磁盘？**
 
-答：是的，可以通过 REST、模板、PowerShell 或 CLI 创建使用临时 OS 磁盘的 VM。
+A:是的，可以通过 REST、模板、PowerShell 或 CLI 创建使用临时 OS 磁盘的 VM。
 
 **问：临时 OS 磁盘不支持哪些功能？**
 
-答：临时磁盘不支持：
+A:临时磁盘不支持：
 - 捕获 VM 映像
 - 磁盘快照 
 - Azure 磁盘加密 

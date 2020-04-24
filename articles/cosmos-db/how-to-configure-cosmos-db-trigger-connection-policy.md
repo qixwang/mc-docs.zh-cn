@@ -8,10 +8,10 @@ origin.date: 07/17/2019
 ms.date: 09/30/2019
 ms.author: v-yeche
 ms.openlocfilehash: 9a49ae999c624f940677cae0b00ca09002dd0cfc
-ms.sourcegitcommit: 0d07175c0b83219a3dbae4d413f8e012b6e604ed
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "71306832"
 ---
 # <a name="how-to-configure-the-connection-policy-used-by-azure-functions-trigger-for-cosmos-db"></a>如何配置适用于 Cosmos DB 的 Azure Functions 触发器使用的连接策略
@@ -55,6 +55,6 @@ ms.locfileid: "71306832"
 
 * [Azure Functions 中的连接限制](../azure-functions/manage-connections.md#connection-limit)
 * [Azure Cosmos DB 性能提示](./performance-tips.md)
-* [代码示例](https://github.com/ealsur/serverless-recipes/tree/master/connectionmode)
+* [示例代码](https://github.com/ealsur/serverless-recipes/tree/master/connectionmode)
 
 <!-- Update_Description: wording update -->

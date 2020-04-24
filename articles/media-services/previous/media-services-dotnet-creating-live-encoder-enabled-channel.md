@@ -1,6 +1,6 @@
 ---
 title: 如何使用 Azure 媒体服务执行实时传送视频流以通过 .NET 创建多比特率流 | Microsoft Docs
-description: 本教程指导使用 .NET SDK 完成创建通道的步骤，该通道接收单比特率实时流，并将其编码为多比特率流。
+description: 本教程指导使用 .NET SDK 完成创建频道的步骤，该频道接收单比特率实时流，并将其编码为多比特率流。
 services: media-services
 documentationcenter: ''
 author: WenJason
@@ -17,27 +17,27 @@ ms.date: 09/23/2019
 ms.author: v-jay
 ms.reviewer: juliako
 ms.openlocfilehash: 9740a81083546047d39a7fb38534c35c4b0ee629
-ms.sourcegitcommit: 8248259e4c3947aa0658ad6c28f54988a8aeebf8
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "71124531"
 ---
 # <a name="how-to-perform-live-streaming-using-azure-media-services-to-create-multi-bitrate-streams-with-net"></a>如何使用 Azure 媒体服务执行实时流式处理以通过 .NET 创建多比特率流
 > [!div class="op_single_selector"]
-> * [Portal](media-services-portal-creating-live-encoder-enabled-channel.md)
+> * [门户](media-services-portal-creating-live-encoder-enabled-channel.md)
 > * [.NET](media-services-dotnet-creating-live-encoder-enabled-channel.md)
 > * [REST API](https://docs.microsoft.com/rest/api/media/operations/channel)
 > 
 > [!NOTE]
-> 若要完成本教程，需要一个 Azure 帐户。 有关详细信息，请参阅 [Azure 试用版](https://www.azure.cn/pricing/1rmb-trial/?WT.mc_id=A261C142F)。 
+> 要完成本教程，需要一个 Azure 帐户。 有关详细信息，请参阅 [Azure 试用](https://www.azure.cn/pricing/1rmb-trial/?WT.mc_id=A261C142F)。 
 > 
 > 
 
 ## <a name="overview"></a>概述
-本教程介绍了创建**通道**的步骤，该通道接收单比特率实时流，并将其编码为多比特率流。
+本教程指导完成创建 **频道** 的步骤，该频道接收单比特率实时流，并将其编码为多比特率流。
 
-有关为实时编码启用的通道的更多相关概念信息，请参阅[使用 Azure 媒体服务实时传送视频流以创建多比特率流](media-services-manage-live-encoder-enabled-channels.md)。
+有关为实时编码启用的通道的更多相关概念信息，请参阅 [使用 Azure 媒体服务执行实时流式处理以创建多比特率流](media-services-manage-live-encoder-enabled-channels.md)。
 
 ## <a name="common-live-streaming-scenario"></a>常见的实时流方案
 以下步骤介绍创建常见的实时流式处理应用程序时涉及的任务。
@@ -45,18 +45,18 @@ ms.locfileid: "71124531"
 > [!NOTE]
 > 目前，直播活动的最大建议持续时间为 8 小时。
 
-1. 将视频摄像机连接到计算机。 启动并配置一个可通过以下协议之一输出单比特率流的本地实时编码器：RTMP 或平滑流式处理。 有关详细信息，请参阅 [Azure 媒体服务 RTMP 支持和实时编码器](https://go.microsoft.com/fwlink/?LinkId=532824)。
+1. 将视频摄像机连接到计算机。 启动并配置可以通过以下协议之一输出单比特率流的本地实时编码器：RTMP 或平滑流式处理。 有关详细信息，请参阅 [Azure 媒体服务 RTMP 支持和实时编码器](https://go.microsoft.com/fwlink/?LinkId=532824)。
 
     此步骤也可以在创建频道后执行。
 
-2. 创建并启动通道。
-3. 检索通道引入 URL。
+2. 创建并启动频道。
+3. 检索频道引入 URL。
 
     实时编码器使用引入 URL 将流发送到频道。
 
 4. 检索频道预览 URL。
 
-    使用此 URL 来验证通道是否正常接收实时流。
+    使用此 URL 来验证频道是否正常接收实时流。
 
 5. 创建资源。
 6. 如果想让资源在播放期间进行动态加密，请执行以下操作：
@@ -69,29 +69,29 @@ ms.locfileid: "71124531"
     >[!NOTE]
     >创建 AMS 帐户后，会将一个处于“已停止”状态的**默认**流式处理终结点添加到帐户。  要从中流式传输内容的流式处理终结点必须处于“正在运行”状态。  
 
-12. 准备好开始流式传输和存档后，启动节目。
+12. 在准备好开始流式传输和存档时，启动节目。
 13. （可选）可以向实时编码器发信号，以启动广告。 将广告插入到输出流中。
-14. 要停止对事件进行流式传输和存档时，停止节目。
+14. 在要停止对事件进行流式传输和存档时，停止节目。
 15. 删除节目（并选择性地删除资产）。
 
 ## <a name="what-youll-learn"></a>学习内容
-本文演示如何使用适用于 .NET 的媒体服务 SDK 对频道和节目执行不同操作。 由于许多操作都长时间运行，因此使用管理长时间运行的操作的 .NET API。
+本文演示如何使用适用于 .NET 的媒体服务 SDK 对频道和节目执行不同操作。 由于许多操作都长时间运行，因此将使用管理长时间运行的操作的 .NET API。
 
 本文介绍如何执行以下操作：
 
-1. 创建并启动频道。 会使用长时间运行的 API。
+1. 创建并启动频道。 将使用长时间运行的 API。
 2. 获取频道引入（输入）终结点。 应将此终结点提供给可以发送单比特率实时流的编码器。
 3. 获取预览终结点。 此终结点用于预览流。
 4. 创建用于存储内容的资产。 还应配置资源传送策略，如此示例中所示。
-5. 创建节目并指定使用先前创建的资源。 启动该节目。 会使用长时间运行的 API。
+5. 创建节目并指定使用先前创建的资源。 启动该节目。 将使用长时间运行的 API。
 6. 为资源创建定位器，以便发布内容，并可以将内容流式传输到客户端。
-7. 显示和隐藏清单。 启动和停止广告。 会使用长时间运行的 API。
-8. 清理通道及所有关联的资源。
+7. 显示和隐藏清单。 启动和停止广告。 将使用长时间运行的 API。
+8. 清理频道及所有关联的资源。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 以下是完成本教程所需具备的条件。
 
-* 一个 Azure 帐户。 如果没有帐户，可以创建一个试用帐户，只需几分钟即可完成。 有关详细信息，请参阅 [Azure 试用](https://www.azure.cn/pricing/1rmb-trial/?WT.mc_id=A261C142F)。 获取可用来尝试付费版 Azure 服务的信用额度。 即使在信用额度用完后，也可保留帐户并使用免费的 Azure 服务和功能，例如 Azure 应用服务中的 Web 应用功能。
+* 一个 Azure 帐户。 如果没有帐户，可以在几分钟内创建一个试用帐户。 有关详细信息，请参阅 [Azure 试用](https://www.azure.cn/pricing/1rmb-trial/?WT.mc_id=A261C142F)。 获取可用来尝试付费版 Azure 服务的信用额度。 即使在信用额度用完之后，也可以保留该帐户，使用免费的 Azure 服务和功能，例如 Azure 应用服务中的 Web 应用功能。
 * 一个媒体服务帐户。 若要创建媒体服务帐户，请参阅[创建帐户](media-services-portal-create-account.md)。
 * Visual Studio 2010 SP1（Professional、Premium、Ultimate 或 Express）或更高版本。
 * 必须使用适用于 .NET 的媒体服务 SDK 版本 3.2.0.0 或更高版本。
@@ -99,7 +99,7 @@ ms.locfileid: "71124531"
 
 ## <a name="considerations"></a>注意事项
 * 目前，直播活动的最大建议持续时间为 8 小时。 
-* 不同 AMS 策略的策略限制为 1,000,000 个（例如，对于定位器策略或 ContentKeyAuthorizationPolicy）。 如果始终使用相同的日期/访问权限，则应使用相同的策略 ID，例如，用于要长期就地保留的定位符的策略（非上传策略）。 有关详细信息，请参阅[本文](media-services-dotnet-manage-entities.md#limit-access-policies)。
+* 不同 AMS 策略的策略限制为 1,000,000 个（例如，对于定位器策略或 ContentKeyAuthorizationPolicy）。 如果始终使用相同的日期/访问权限，则应使用相同的策略 ID，例如，用于要长期就地保留的定位符的策略（非上传策略）。 有关详细信息，请参阅[此](media-services-dotnet-manage-entities.md#limit-access-policies)文章。
 
 ## <a name="download-sample"></a>下载示例
 
@@ -107,7 +107,7 @@ ms.locfileid: "71124531"
 
 ## <a name="set-up-for-development-with-media-services-sdk-for-net"></a>使用用于 .NET 的媒体服务 SDK 进行开发设置
 
-设置开发环境，并在 app.config 文件中填充连接信息，如[使用 .NET 进行媒体服务开发](media-services-dotnet-how-to-use.md)中所述。 
+设置开发环境，并根据[使用 .NET 进行媒体服务开发](media-services-dotnet-how-to-use.md)中所述，在 app.config 文件中填充连接信息。 
 
 ## <a name="code-example"></a>代码示例
 

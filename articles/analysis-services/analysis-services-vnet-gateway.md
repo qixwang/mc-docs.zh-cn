@@ -9,15 +9,15 @@ ms.date: 11/25/2019
 ms.author: v-yeche
 ms.reviewer: minewiskan
 ms.openlocfilehash: 3087209d0b7899ab99a16b8fc474a5521602a3c1
-ms.sourcegitcommit: c5e012385df740bf4a326eaedabb987314c571a1
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74203547"
 ---
 # <a name="use-gateway-for-data-sources-on-an-azure-virtual-network-vnet"></a>为 Azure 虚拟网络 (VNet) 上的数据源使用网关
 
-本文介绍了当数据源位于 [Azure 虚拟网络 (VNet)](../virtual-network/virtual-networks-overview.md) 上时要使用的 Azure Analysis Services **AlwaysUseGateway** 服务器属性。
+本文介绍了当数据源位于 **Azure 虚拟网络 (VNet)** 上时要使用的 Azure Analysis Services [AlwaysUseGateway](../virtual-network/virtual-networks-overview.md) 服务器属性。
 
 ## <a name="server-access-to-vnet-data-sources"></a>对 VNet 数据源的服务器访问
 
@@ -30,7 +30,7 @@ Azure SQL 数据库托管实例数据源使用专用 IP 地址在 Azure VNet 中
 
 ## <a name="configure-alwaysusegateway-property"></a>配置 AlwaysUseGateway 属性
 
-1. 在“SSMS”>“服务器”>“属性” > “常规”中，选择“显示高级(全部)属性”。   
+1. 在“SSMS”>“服务器”>“属性” **“常规”中，选择“显示高级(全部)属性”。**  >   
 2. 在“ASPaaS\AlwaysUseGateway”  中，选择“true”。 
 
     ![始终使用网关属性](media/analysis-services-vnet-gateway/aas-ssms-always-property.png)

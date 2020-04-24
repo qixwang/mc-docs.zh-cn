@@ -8,10 +8,10 @@ origin.date: 03/25/2019
 ms.date: 08/26/2019
 ms.author: v-yeche
 ms.openlocfilehash: 9eae495d657b7b3ec1802baa2faef271fc09d344
-ms.sourcegitcommit: 18a0d2561c8b60819671ca8e4ea8147fe9d41feb
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "70134472"
 ---
 # <a name="prepare-source-machine-for-push-installation-of-mobility-agent"></a>准备源计算机以推送安装移动代理
@@ -43,10 +43,10 @@ ms.locfileid: "70134472"
 在要保护的每台 Linux 计算机上，执行以下操作：
 
 1. 确保 Linux 计算机与进程服务器之间已建立网络连接。
-2. 创建可供进程服务器用来访问计算机的帐户。 该帐户应该是源 Linux 服务器上的 **root** 用户。 只能将此帐户用于推送安装和更新。
+2. 创建可供进程服务器用来访问计算机的帐户。 帐户应该是源 Linux 服务器上的 **root** 用户。 只能将此帐户用于推送安装和更新。
 3. 确保源 Linux 服务器上的 /etc/hosts 文件包含用于将本地主机名映射到所有网络适配器关联的 IP 地址的条目。
 4. 在要复制的计算机上安装最新的 openssh、openssh-server 和 openssl 包。
-5. 确保安全外壳 (SSH) 已启用且正在端口 22 上运行。
+5. 确保安全外科 (SSH) 已启用且正在端口 22 上运行。
 4. 在 sshd_config 文件中启用 SFTP 子系统和密码身份验证。 为此，请以 **root** 身份登录。
 5. 在 **/etc/ssh/sshd_config** 文件中，找到以“PasswordAuthentication”  开头的行。
 6. 取消注释该行，并将值更改为 **yes**。
@@ -54,7 +54,7 @@ ms.locfileid: "70134472"
 
     ![Linux](./media/vmware-azure-install-mobility-service/mobility2.png)
 
-8. 重启 sshd 服务。 
+8. 重启 **sshd** 服务。
 9. 添加在 CSPSConfigtool 中创建的帐户。 若要执行此操作，请登录到你的配置服务器。
 10. 打开 **cspsconfigtool.exe**。 桌面上有该工具的快捷方式，也可以在 %ProgramData%\home\svsystems\bin 文件夹中找到它。
 11. 在“管理帐户”选项卡中，选择“添加帐户”。  

@@ -13,10 +13,10 @@ ms.reviewer: ''
 origin.date: 01/03/2019
 ms.date: 09/30/2019
 ms.openlocfilehash: 4ade38fb6b605d877962d0037a62227703b8d35f
-ms.sourcegitcommit: 5c3d7acb4bae02c370f6ba4d9096b68ecdd520dd
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "71262958"
 ---
 # <a name="upgrade-an-app-to-use-the-latest-elastic-database-client-library"></a>升级应用以使用最新的弹性数据库客户端库

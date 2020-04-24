@@ -9,10 +9,10 @@ ms.date: 11/25/2019
 ms.author: v-yeche
 ms.reviewer: minewiskan
 ms.openlocfilehash: 22f99a397e296c423a5943feb6f69a46ac6a4d02
-ms.sourcegitcommit: c5e012385df740bf4a326eaedabb987314c571a1
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74203637"
 ---
 # <a name="connect-with-power-bi"></a>使用 Power BI 进行连接
@@ -47,7 +47,7 @@ ms.locfileid: "74203637"
 ## <a name="connect-in-power-bi-service"></a>在 Power BI（服务）中进行连接
 
 1. 在服务器上创建一个与模型具有实时连接的 Power BI Desktop 文件。
-2. 在 [Power BI](https://powerbi.microsoft.com) 中，单击“获取数据” > “文件”，然后找到 .pbix 文件并选择该文件   。
+2. 在 [Power BI](https://powerbi.microsoft.com) 中，单击“获取数据” **“文件”，然后找到 .pbix 文件并选择该文件** >   。
 
 ## <a name="see-also"></a>另请参阅
 [连接到 Azure Analysis Services](analysis-services-connect.md)   

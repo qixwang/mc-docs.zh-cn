@@ -1,6 +1,6 @@
 ### YamlMime:Landing
 title: Azure 资源的 RBAC 文档
-summary: 基于角色的访问控制 (RBAC) 是一个系统，它为 Azure 资源提供精细的访问管理。 使用 RBAC，可以在团队中对职责进行分配，仅向用户授予执行作业所需的访问权限。
+summary: 基于角色的访问控制 (RBAC) 是一个系统，它为 Azure 资源提供精细的访问管理。 使用 RBAC，可以在团队中实现职责分离，仅向用户授予执行作业所需的访问权限。
 metadata:
   title: Azure 资源的基于角色的访问控制 (RBAC) 文档
   description: 了解基于角色的访问控制 (RBAC) 以管理谁有权访问 Azure 资源、他们可以对这些资源执行哪些操作以及他们有权访问哪些领域。
@@ -13,10 +13,10 @@ metadata:
   ms.author: v-junlch
   ms.date: 09/24/2019
   ms.openlocfilehash: e4e54ff7368e88a4e3825226560201b3da495fb3
-  ms.sourcegitcommit: 73a8bff422741faeb19093467e0a2a608cb896e1
+  ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 09/29/2019
+  ms.lasthandoff: 04/17/2020
   ms.locfileid: "71673601"
 landingContent:
 - title: 入门

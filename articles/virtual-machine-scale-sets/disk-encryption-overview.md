@@ -9,10 +9,10 @@ origin.date: 10/10/2019
 ms.date: 11/11/2019
 ms.custom: seodec18
 ms.openlocfilehash: b85fb889b5ebf4faec8346d2d47b15435ff8e964
-ms.sourcegitcommit: 40a58a8b9be0c825c03725802e21ed47724aa7d2
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "73934264"
 ---
 # <a name="azure-disk-encryption-for-virtual-machine-scale-sets"></a>适用于虚拟机规模集的 Azure 磁盘加密

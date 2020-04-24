@@ -14,10 +14,10 @@ origin.date: 08/14/2019
 ms.date: 10/21/2019
 ms.author: v-yiso
 ms.openlocfilehash: 55a392e62177e8ccb85fd8d700512e4058399ca9
-ms.sourcegitcommit: b83f604eb98a4b696b0a3ef3db2435f6bf99f411
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/12/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "72292506"
 ---
 # <a name="troubleshoot-by-using-azure-hdinsight"></a>使用 Azure HDInsight 进行故障排除

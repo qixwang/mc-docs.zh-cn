@@ -10,15 +10,15 @@ ms.date: 08/26/2019
 ms.author: v-yeche
 ms.custom: mvc
 ms.openlocfilehash: 72460bc21a1939b0bd51cf3838c2ea7843f6208d
-ms.sourcegitcommit: 599d651afb83026938d1cfe828e9679a9a0fb69f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "69993562"
 ---
 # <a name="tutorial-prepare-an-application-for-azure-kubernetes-service-aks"></a>教程：准备用于 Azure Kubernetes 服务 (AKS) 的应用程序
 
-在本教程的第 1 部分（共 7 部分），将准备一个要在 Kubernetes 中使用的多容器应用程序。 现有的开发工具（例如 Docker Compose）用于在本地生成和测试应用程序。 你将学习如何执行以下操作：
+在本教程的第 1 部分（共 7 部分），将准备一个要在 Kubernetes 中使用的多容器应用程序。 现有的开发工具（例如 Docker Compose）用于在本地生成和测试应用程序。 学习如何：
 
 > [!div class="checklist"]
 > * 克隆 GitHub 中的示例应用程序源
@@ -31,7 +31,7 @@ ms.locfileid: "69993562"
 
 在其他教程中，此容器映像会上传到 Azure 容器注册表，然后部署到 AKS 群集中。
 
-## <a name="before-you-begin"></a>准备阶段
+## <a name="before-you-begin"></a>开始之前
 
 本教程假定你基本了解核心 Docker 概念，如容器、容器映像和 `docker` 命令。 有关容器的入门基础知识，请参阅 [Docker 入门][docker-get-started]。
 
@@ -108,7 +108,7 @@ docker-compose down
 
 ## <a name="next-steps"></a>后续步骤
 
-本教程测试了应用程序并针对应用程序创建了容器映像。 你已了解如何：
+本教程测试了应用程序并针对应用程序创建了容器映像。 你已了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 克隆 GitHub 中的示例应用程序源

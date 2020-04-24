@@ -18,10 +18,10 @@ ms.date: 09/16/2019
 ms.author: v-yeche
 ms.custom: mvc
 ms.openlocfilehash: 166bb3ec66c288889f4044e1f37f19f11fa6ac9e
-ms.sourcegitcommit: 43f569aaac795027c2aa583036619ffb8b11b0b9
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/12/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "70920971"
 ---
 # <a name="restart-vms"></a>重新启动 VM
@@ -52,7 +52,7 @@ az vm restart --ids $(az resource list --tag "restart-tag" --query "[?type=='Mic
 第一个脚本用来预配虚拟机。
 它使用了 no-wait 选项，因此，命令不会等待每个 VM 完成部署便会返回。
 第二个脚本等到 VM 完全部署后才会返回。
-第三个脚本重新启动已部署的所有 VM，并仅重新启动带标记的 VM。
+第三个脚本重新启动已预配的所有 VM，然后仅重新启动带标记的 VM。
 
 ### <a name="provision-the-vms"></a>预配 VM
 
@@ -118,11 +118,11 @@ az group delete -n myResourceGroup --no-wait --yes
 
 此脚本使用以下命令创建资源组、虚拟机、可用性集、负载均衡器和所有相关资源。 表中的每条命令均链接到特定于命令的文档。
 
-| 命令 | 注释 |
+| Command | 说明 |
 |---|---|
 | [az group create](https://docs.azure.cn/cli/group?view=azure-cli-latest#az-group-create) | 创建用于存储所有资源的资源组。 |
 | [az vm create](https://docs.azure.cn/cli/vm?view=azure-cli-latest#az-vm-create) | 创建虚拟机。  |
-| [az vm list](https://docs.azure.cn/cli/vm?view=azure-cli-latest#az-vm-list) | 与 `--query` 一起使用，用来确保在重新启动 VM 之前已对其进行了预配，获取这些 VM 的 ID 以将其重新启动。 |
+| [az vm list](https://docs.azure.cn/cli/vm?view=azure-cli-latest#az-vm-list) | 与 `--query` 一起使用，用来确保在重新启动 VM 之前已对其进行了预配，然后获取这些 VM 的 ID 以将其重新启动。 |
 | [az vm list](https://docs.azure.cn/cli/vm?view=azure-cli-latest#az-vm-list) | 与 `--query` 一起使用来获取使用该标记的 VM 的 ID。 |
 | [az vm restart](https://docs.azure.cn/cli/vm?view=azure-cli-latest#az-vm-restart) | 重新启动 VM。 |
 | [az group delete](https://docs.azure.cn/cli/group?view=azure-cli-latest#az-group-delete)  | 删除资源组，包括所有嵌套的资源。 |

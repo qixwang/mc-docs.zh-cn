@@ -10,10 +10,10 @@ ms.date: 08/26/2019
 ms.topic: conceptual
 ms.author: v-yeche
 ms.openlocfilehash: e8946f338cae312d92c39cb2ad2ab546bdb3e6c5
-ms.sourcegitcommit: 18a0d2561c8b60819671ca8e4ea8147fe9d41feb
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "70134545"
 ---
 # <a name="common-questions-about-site-recovery-monitoring"></a>有关 Site Recovery 监视的常见问题

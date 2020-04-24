@@ -16,10 +16,10 @@ origin.date: 08/14/2018
 ms.date: 11/11/2019
 ms.author: v-yeche
 ms.openlocfilehash: b86069f87d607e1874decc9faf883b8fb8693b0a
-ms.sourcegitcommit: 5844ad7c1ccb98ff8239369609ea739fb86670a4
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "73831375"
 ---
 # <a name="use-the-azure-custom-script-extension-version-1-with-linux-virtual-machines"></a>在 Linux 虚拟机上使用 Azure 自定义脚本扩展版本 1
@@ -129,7 +129,7 @@ ms.locfileid: "73831375"
 | typeHandlerVersion | 1.5 | int |
 | fileUris（例如） | https://github.com/MyProject/Archive/MyPythonScript.py | array |
 | commandToExecute（例如） | python MyPythonScript.py \<my-param1\> | string |
-| enableInternalDNSCheck | 是 | 布尔值 |
+| enableInternalDNSCheck | 是 | boolean |
 | storageAccountName（例如） | examplestorageacct | string |
 | storageAccountKey（例如） | TmJK/1N3AbAZ3q/+hOXoi/l73zOqsaxXDhqa9Y83/v5UpXQp2DQIBuv2Tifp60cE/OaHsJZmQZ7teQfczQj8hg== | string |
 

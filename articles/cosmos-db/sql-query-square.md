@@ -9,10 +9,10 @@ ms.date: 10/28/2019
 ms.author: v-yeche
 ms.custom: query-reference
 ms.openlocfilehash: 3ca9573e1f25a464e5245ec27187568c371d5d5e
-ms.sourcegitcommit: 73f07c008336204bd69b1e0ee188286d0962c1d7
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "72914660"
 ---
 # <a name="square-azure-cosmos-db"></a>SQUARE (Azure Cosmos DB)
@@ -27,21 +27,21 @@ SQUARE(<numeric_expr>)
 ## <a name="arguments"></a>参数
 
 *numeric_expr*  
-  是一个数值表达式。  
+  为数值表达式。  
 
 ## <a name="return-types"></a>返回类型
 
-  返回一个数值表达式。  
+  返回数值表达式。  
 
 ## <a name="examples"></a>示例
 
-  以下示例返回数字 1-3 的平方。 
+  以下示例将返回数字 1-3 的平方。 
 
 ```sql
 SELECT SQUARE(1) AS s1, SQUARE(2.0) AS s2, SQUARE(3) AS s3  
 ```  
 
- 下面是结果集。  
+ 下面是结果集：  
 
 ```json
 [{s1: 1, s2: 4, s3: 9}]  

@@ -16,17 +16,17 @@ origin.date: 03/29/2016
 ms.date: 10/14/2019
 ms.author: v-yeche
 ms.openlocfilehash: 264cc38c217a76b68d05d12a91e31f6e77cb9190
-ms.sourcegitcommit: c9398f89b1bb6ff0051870159faf8d335afedab3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "72272458"
 ---
 # <a name="troubleshooting-azure-windows-vm-extension-failures"></a>Azure Windows VM 扩展故障排除
 [!INCLUDE [virtual-machines-common-extensions-troubleshoot](../../../includes/virtual-machines-common-extensions-troubleshoot.md)]
 
 ## <a name="viewing-extension-status"></a>查看扩展状态
-可以从 Azure PowerShell 执行 Azure Resource Manager 模板。 一旦执行该模板，就可以从 Azure 资源浏览器或命令行工具查看扩展状态。
+可以从 Azure PowerShell 执行 Azure 资源管理器模板。 一旦执行该模板，就可以从 Azure 资源浏览器或命令行工具查看扩展状态。
 
 以下是示例：
 
@@ -68,6 +68,6 @@ Azure PowerShell：
     
     Remove-AzVMExtension -ResourceGroupName $RGName -VMName $vmName -Name "myCustomScriptExtension"
 
-删除该扩展后，可以重新执行模板以在 VM 上运行脚本。
+删除该扩展后，可以重新执行模板在 VM 上运行脚本。
 
 <!-- Update_Description: update meta properties, wording update, update az cmdlet -->

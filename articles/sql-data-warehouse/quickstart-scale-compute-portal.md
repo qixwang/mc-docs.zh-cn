@@ -12,10 +12,10 @@ ms.date: 09/02/2019
 ms.author: v-jay
 ms.reviewer: jrasnick
 ms.openlocfilehash: f0ba763ac57163ce900ddd8534005741ed8e08ee
-ms.sourcegitcommit: 3f0c63a02fa72fd5610d34b48a92e280c2cbd24a
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "70131823"
 ---
 # <a name="quickstart-scale-compute-in-azure-sql-data-warehouse-in-the-azure-portal"></a>快速入门：使用 Azure 门户在 Azure SQL 数据仓库中缩放计算资源
@@ -26,9 +26,9 @@ ms.locfileid: "70131823"
 
 ## <a name="sign-in-to-the-azure-portal"></a>登录到 Azure 门户
 
-登录到 [Azure 门户](https://portal.azure.cn/)。
+登录 [Azure 门户](https://portal.azure.cn/)。
 
-## <a name="before-you-begin"></a>准备阶段
+## <a name="before-you-begin"></a>开始之前
 
 可以缩放现有的数据仓库，或使用[快速入门：创建并连接 - 门户](create-data-warehouse-portal.md)创建名为“mySampleDataWarehouse”的数据仓库  。  本快速入门教程缩放 **mySampleDataWarehouse**。
 
@@ -53,7 +53,7 @@ ms.locfileid: "70131823"
 
 3. 单击“保存”  。 此时会显示确认消息。 单击“是”  以确认或“否”  以取消。
 
-    ![点击“保存”(Save)](media/quickstart-scale-compute-portal/confirm-change.png)
+    ![点击“保存”](media/quickstart-scale-compute-portal/confirm-change.png)
 
 ## <a name="next-steps"></a>后续步骤
 你现在已了解如何缩放数据仓库的计算。 若要了解有关 Azure SQL 数据仓库的详细信息，请继续有关加载数据的教程。

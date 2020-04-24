@@ -11,10 +11,10 @@ origin.date: 09/05/2019
 ms.date: 11/11/2019
 ms.author: v-yeche
 ms.openlocfilehash: 3ab7e20f57ecab03b8d92cb0c9aeb5d467559c12
-ms.sourcegitcommit: 1fd822d99b2b487877278a83a9e5b84d9b4a8ce7
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74116802"
 ---
 # <a name="security-controls-for-windows-virtual-machines"></a>Windows 虚拟机的安全控制

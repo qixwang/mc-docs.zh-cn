@@ -13,10 +13,10 @@ ms.author: v-jay
 ms.reviewer: hectorl
 ms.lastreviewed: 07/31/2019
 ms.openlocfilehash: 211e5f384336aa1b7ef560bd76c1453567b7f14f
-ms.sourcegitcommit: 7dfb76297ac195e57bd8d444df89c0877888fdb8
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74020134"
 ---
 # <a name="use-the-asdk-to-validate-an-azure-stack-backup"></a>使用 ASDK 验证 Azure Stack 备份
@@ -29,7 +29,7 @@ Azure Stack 基础结构备份包含有关云的重要数据，这些数据可�
 
 以下方案支持在 ASDK 上验证备份：
 
-|方案|目的|
+|场景|目的|
 |-----|-----|
 |通过集成解决方案验证基础结构备份。|短暂验证，验证备份中的数据是否有效。|
 |了解端到端恢复工作流。|使用 ASDK 验证整个备份和还原体验。|
@@ -37,7 +37,7 @@ Azure Stack 基础结构备份包含有关云的重要数据，这些数据可�
 
 在 ASDK 上验证备份时，以下方案**不**受支持：
 
-|方案|目的|
+|场景|目的|
 |-----|-----|
 |ASDK 内部版本到内部版本备份和还原。|将备份数据从旧版 ASDK 还原到新版。|
 |     |     |
@@ -46,7 +46,7 @@ Azure Stack 基础结构备份包含有关云的重要数据，这些数据可�
 ## <a name="cloud-recovery-deployment"></a>云恢复部署
 对 ASDK 执行云恢复部署即可验证从集成系统部署进行的基础结构备份。 在此类部署中，将 ASDK 安装在主机上以后，即可从备份还原特定的服务数据。
 
-### <a name="prereqs"></a>云恢复先决条件
+### <a name="cloud-recovery-prerequisites"></a><a name="prereqs"></a>云恢复先决条件
 在开始对 ASDK 进行云恢复部署之前，请确保掌握以下信息：
 
 **UI 安装程序要求**
@@ -114,7 +114,7 @@ New-SmbShare -Path $azsbackupshare.FullName -FullAccess ($env:computername + "\A
 
     ![ASDK 安装程序脚本](media/asdk-validate-backup/1.PNG) 
 
-3. 在标识提供者和凭据页上，输入 Azure AD 目录信息（可选）和 ASDK 主计算机的本地管理员密码。 单击“下一步”  。
+3. 在标识提供者和凭据页上，输入 Azure AD 目录信息（可选）和 ASDK 主计算机的本地管理员密码。 单击“下一步”。 
 
     ![ASDK 标识和凭据页](media/asdk-validate-backup/2.PNG) 
 
@@ -122,7 +122,7 @@ New-SmbShare -Path $azsbackupshare.FullName -FullAccess ($env:computername + "\A
 
     ![ASDK 网络适配器接口](media/asdk-validate-backup/3.PNG) 
 
-5. 在“网络配置”页上，提供有效的时间服务器和 DNS 转发站 IP 地址。 单击“下一步”  。
+5. 在“网络配置”页上，提供有效的时间服务器和 DNS 转发站 IP 地址。 单击“下一步”。 
 
     ![“ASDK 网络配置”页](media/asdk-validate-backup/4.PNG) 
 

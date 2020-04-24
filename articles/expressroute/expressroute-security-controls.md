@@ -11,10 +11,10 @@ origin.date: 06/05/2019
 ms.date: 10/08/2019
 ms.author: v-yiso
 ms.openlocfilehash: 4ec11659eed751da1d3d07805dbdd8cf161bd612
-ms.sourcegitcommit: 332ae4986f49c2e63bd781685dd3e0d49c696456
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "71341120"
 ---
 # <a name="security-controls-for-azure-expressroute"></a>Azure ExpressRoute 的安全控制
@@ -53,7 +53,7 @@ ms.locfileid: "71341120"
 |---|---|--|
 | 服务器端静态加密：Microsoft 管理的密钥 |  不适用 | ExpressRoute 不存储客户数据。 |
 | 服务器端静态加密：客户管理的密钥 (BYOK) | 不适用 |  |
-| 列级加密（Azure 数据服务）| 不适用 | |
+| 列级加密（Azure 数据服务）| 空值 | |
 | 传输中加密（例如 ExpressRoute 加密、VNet 中加密，以及 VNet-VNet 加密）| 否 | |
 | 加密的 API 调用| 是 | 通过 [Azure 资源管理器](../azure-resource-manager/index.yml)和 HTTPS。 |
 

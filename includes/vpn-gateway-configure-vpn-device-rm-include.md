@@ -10,10 +10,10 @@ ms.date: 03/04/2019
 ms.author: v-jay
 ms.custom: include file
 ms.openlocfilehash: 13798208963944e379dd85f40e28241346f77d25
-ms.sourcegitcommit: 15a80d044339dab8bce43eb7be110ba01f630056
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "69578648"
 ---
 **下载 VPN 设备配置脚本：**

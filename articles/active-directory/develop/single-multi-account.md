@@ -19,10 +19,10 @@ ms.custom: aaddev
 ms.reviewer: shoatman
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5d6036a136a6897bb49cfb900ea09d51c8da38cb
-ms.sourcegitcommit: a88cc623ed0f37731cb7cd378febf3de57cf5b45
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "73831017"
 ---
 # <a name="single-and-multiple-account-public-client-apps"></a>单帐户和多帐户公共客户端应用

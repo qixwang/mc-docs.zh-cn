@@ -6,10 +6,10 @@ origin.date: 09/30/2019
 ms.date: 11/11/2019
 ms.author: v-yeche
 ms.openlocfilehash: 47b600bbd9c1fdd60b33d56237cc0ccd54c3b589
-ms.sourcegitcommit: 5844ad7c1ccb98ff8239369609ea739fb86670a4
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "73831408"
 ---
 随着托管在 Azure 中的 VM 数目的显著增长，必须确定影响它们支持的应用程序和基础结构服务的性能和运行状况问题。 默认情况下，会在 Azure 中通过各种指标类型（由主机监控程序收集的 CPU 使用率、磁盘使用率、内存使用率和网络流量）进行基本的监视。 可以使用[扩展](../articles/virtual-machines/windows/extensions-features.md)收集其他指标和日志数据，以便在来宾操作系统的 VM 上配置诊断。
@@ -18,7 +18,7 @@ ms.locfileid: "73831408"
 
 ## <a name="diagnostics-and-metrics"></a>诊断和指标 
 
-可以在 Azure 门户、Azure CLI、Azure PowerShell 和编程应用程序编程接口 (API) 中使用[指标](../articles/monitoring-and-diagnostics/monitoring-overview-metrics.md)来设置和监视[诊断数据](https://docs.azure.cn/cli/vm/diagnostics?view=azure-cli-latest)收集。 例如，可以：
+可以在 Azure 门户、Azure CLI、Azure PowerShell 和编程应用程序编程接口 (API) 中使用[指标](https://docs.azure.cn/cli/vm/diagnostics?view=azure-cli-latest)来设置和监视[诊断数据](../articles/monitoring-and-diagnostics/monitoring-overview-metrics.md)收集。 例如，你能够：
 
 - **观察 VM 的基本指标。** Azure 门户的“概述”屏幕上显示的基本指标包括 CPU 使用率、网络使用情况、总磁盘字节数以及每秒的磁盘操作数。
 
@@ -46,7 +46,7 @@ ms.locfileid: "73831408"
 
 ## <a name="azure-activity-log"></a>Azure 活动日志
 
-[Azure 活动日志](../articles/azure-monitor/platform/activity-logs-overview.md)是一种方便用户深入了解 Azure 中发生的订阅级别事件的订阅日志。 该日志包括从 Azure 资源管理器操作数据到服务运行状况事件更新的一系列数据。 可以在 Azure 门户中单击“活动日志”查看 VM 的日志。
+[Azure 活动日志](../articles/azure-monitor/platform/activity-logs-overview.md) 是一种方便用户深入了解 Azure 中发生的订阅级别事件的订阅日志。 该日志包括从 Azure 资源管理器操作数据到服务运行状况事件更新的一系列数据。 可以在 Azure 门户中单击“活动日志”查看 VM 的日志。
 
 可以对活动日志执行的部分操作包括：
 

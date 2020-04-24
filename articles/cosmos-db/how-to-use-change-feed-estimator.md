@@ -8,10 +8,10 @@ origin.date: 08/15/2019
 ms.date: 09/30/2019
 ms.author: v-yeche
 ms.openlocfilehash: 3532825e494d3b2639844ad4a293882132774488
-ms.sourcegitcommit: 0d07175c0b83219a3dbae4d413f8e012b6e604ed
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "71306745"
 ---
 # <a name="use-the-change-feed-estimator"></a>使用更改源估算器

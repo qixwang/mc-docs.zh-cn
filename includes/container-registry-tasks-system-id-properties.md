@@ -10,10 +10,10 @@ ms.date: 08/26/2019
 ms.author: v-yeche
 ms.custom: include file
 ms.openlocfilehash: 830e2981d74ad8a8283fd5702db0330a7369c5a3
-ms.sourcegitcommit: 18a0d2561c8b60819671ca8e4ea8147fe9d41feb
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "70134523"
 ---
 在命令输出中，`identity` 部分显示在任务中设置了 `SystemAssigned` 类型的标识。 `principalId` 是标识的服务主体 ID：

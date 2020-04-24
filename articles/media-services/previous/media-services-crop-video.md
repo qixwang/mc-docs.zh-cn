@@ -16,10 +16,10 @@ ms.date: 09/23/2019
 ms.author: v-jay
 ms.reviewer: juliako
 ms.openlocfilehash: 0207958955a5629eb5f4224707e7a897b40ae6ab
-ms.sourcegitcommit: 8248259e4c3947aa0658ad6c28f54988a8aeebf8
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "71124551"
 ---
 # <a name="crop-videos-with-media-encoder-standard"></a>使用 Media Encoder Standard 裁剪视频  

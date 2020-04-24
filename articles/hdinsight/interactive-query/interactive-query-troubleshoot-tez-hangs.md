@@ -8,10 +8,10 @@ ms.author: v-yiso
 origin.date: 08/09/2019
 ms.date: 09/23/2019
 ms.openlocfilehash: 24fbebb5de3f8c19a4ff470a734582b84fe85126
-ms.sourcegitcommit: 43f569aaac795027c2aa583036619ffb8b11b0b9
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/12/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "70921355"
 ---
 # <a name="scenario-apache-tez-application-hangs-in-azure-hdinsight"></a>方案：Apache Tez 应用程序在 Azure HDInsight 中挂起

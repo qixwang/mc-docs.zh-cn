@@ -16,10 +16,10 @@ ms.date: 04/09/2018
 ms.author: v-junlch
 ms.custom: mvc
 ms.openlocfilehash: 00bad5203096521fbfa8e98d93dbc8c6a4fafa43
-ms.sourcegitcommit: 2f2ced6cfaca64989ad6114a6b5bc76700870c1a
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "71329645"
 ---
 # <a name="what-is-azure-batch"></a>什么是 Azure Batch？

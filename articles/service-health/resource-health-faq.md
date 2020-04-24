@@ -16,10 +16,10 @@ origin.date: 01/29/2019
 ms.author: v-yiso
 ms.date: 04/29/2019
 ms.openlocfilehash: 182e9d8f3038813fa36b8292af5eff536d23b34f
-ms.sourcegitcommit: a4b88888b83bf080752c3ebf370b8650731b01d1
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74179017"
 ---
 # <a name="azure-resource-health-faq"></a>Azure 资源运行状况常见问题解答

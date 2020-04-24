@@ -17,10 +17,10 @@ origin.date: 01/30/2019
 ms.date: 10/30/2019
 ms.author: v-junlch
 ms.openlocfilehash: 54b071447a47909d21e6c078d72c880ff4ff30c9
-ms.sourcegitcommit: cb2caa72ec0e0922a57f2fa1056c25e32c61b570
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "73142193"
 ---
 # <a name="sequence-extension-provisioning-in-virtual-machine-scale-sets"></a>在虚拟机规模集中对扩展预配进行排序

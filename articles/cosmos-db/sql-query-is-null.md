@@ -9,10 +9,10 @@ ms.date: 10/28/2019
 ms.author: v-yeche
 ms.custom: query-reference
 ms.openlocfilehash: 38aedc451a163c0d679ed2e48b4284d37f3d91f0
-ms.sourcegitcommit: 73f07c008336204bd69b1e0ee188286d0962c1d7
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "72914714"
 ---
 # <a name="is_null-azure-cosmos-db"></a>IS_NULL (Azure Cosmos DB)
@@ -48,7 +48,7 @@ SELECT
     IS_NULL({prop: "value"}.prop2) AS isNull7  
 ```  
 
- 下面是结果集。  
+ 下面是结果集：  
 
 ```json
 [{"isNull1":false,"isNull2":false,"isNull3":false,"isNull4":true,"isNull5":false,"isNull6":false,"isNull7":false}]

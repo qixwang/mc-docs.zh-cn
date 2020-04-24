@@ -9,10 +9,10 @@ origin.date: 05/17/2019
 ms.date: 09/30/2019
 ms.author: v-yeche
 ms.openlocfilehash: 654058b6baa6420a7e9e8b64ab411c068f502acf
-ms.sourcegitcommit: 0d07175c0b83219a3dbae4d413f8e012b6e604ed
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "71306790"
 ---
 # <a name="get-sql-query-execution-metrics-and-analyze-query-performance-using-net-sdk"></a>使用 .NET SDK 获取 SQL 查询执行指标并分析查询性能
@@ -23,7 +23,7 @@ ms.locfileid: "71306790"
 
 [DocumentClient.CreateDocumentQuery](https://docs.azure.cn/dotnet/api/microsoft.azure.documents.client.documentclient.createdocumentquery) 的所有重载采用可选的 [FeedOptions](https://docs.azure.cn/dotnet/api/microsoft.azure.documents.client.feedoptions) 参数。 此选项涉及到如何优化和参数化查询执行。 
 
-若要收集 SQL 查询执行指标，必须将 [FeedOptions](https://docs.azure.cn/dotnet/api/microsoft.azure.documents.client.feedoptions) 中的参数 [PopulateQueryMetrics](https://docs.azure.cn/dotnet/api/microsoft.azure.documents.client.feedoptions.populatequerymetrics#P:Microsoft.Azure.Documents.Client.FeedOptions.PopulateQueryMetrics) 设置为 `true`。 如果将 `PopulateQueryMetrics` 设置为 true，`FeedResponse` 将包含相关的 `QueryMetrics`。 
+若要收集 SQL 查询执行指标，必须将 [FeedOptions](https://docs.azure.cn/dotnet/api/microsoft.azure.documents.client.feedoptions.populatequerymetrics#P:Microsoft.Azure.Documents.Client.FeedOptions.PopulateQueryMetrics) 中的参数 [PopulateQueryMetrics](https://docs.azure.cn/dotnet/api/microsoft.azure.documents.client.feedoptions) 设置为 `true`。 如果将 `PopulateQueryMetrics` 设置为 true，`FeedResponse` 将包含相关的 `QueryMetrics`。 
 
 ## <a name="get-query-metrics-with-asdocumentquery"></a>使用 AsDocumentQuery() 获取查询指标
 以下代码示例演示使用 [AsDocumentQuery()](https://docs.azure.cn/dotnet/api/microsoft.azure.documents.linq.documentqueryable.asdocumentquery) 方法时如何检索指标：
@@ -63,7 +63,7 @@ while (documentQuery.HasMoreResults)
 ```
 ## <a name="aggregating-querymetrics"></a>聚合 QueryMetrics
 
-上一部分提到，已多次调用 [ExecuteNextAsync](https://msdn.microsoft.com/library/azure/dn850294.aspx) 方法。 每次调用都会返回一个包含 `QueryMetrics` 字典的 `FeedResponse` 对象；每次延续查询都会返回一个此类对象。 以下示例演示如何使用 LINQ 聚合这些 `QueryMetrics`：
+上一部分提到，已多次调用 [ExecuteNextAsync](https://msdn.microsoft.com/library/azure/dn850294.aspx) 方法。 每次调用都会返回一个包含 `FeedResponse` 字典的 `QueryMetrics` 对象；每次延续查询都会返回一个此类对象。 以下示例演示如何使用 LINQ 聚合这些 `QueryMetrics`：
 
 ```csharp
 List<QueryMetrics> queryMetricsList = new List<QueryMetrics>();
@@ -116,7 +116,7 @@ foreach(IGrouping<string, KeyValuePair<string, QueryMetrics>> grouping in groupe
 
 ## <a name="linq-on-documentquery"></a>LINQ on DocumentQuery
 
-还可以使用 `AsDocumentQuery()` 方法从 LINQ 查询中获取 `FeedResponse`：
+还可以使用 `FeedResponse` 方法从 LINQ 查询中获取 `AsDocumentQuery()`：
 
 ```csharp
 IDocumentQuery<Document> linqQuery = client.CreateDocumentQuery(collection.SelfLink, feedOptions)
@@ -128,9 +128,9 @@ FeedResponse<Document> feedResponse = await linqQuery.ExecuteNextAsync<Document>
 IReadOnlyDictionary<string, QueryMetrics> queryMetrics = feedResponse.QueryMetrics;
 ```
 
-## <a name="expensive-queries"></a>高开销的查询
+## <a name="expensive-queries"></a>耗费大量资源的查询
 
-可以捕获每个查询消耗的请求单位数，以调查高开销的查询，或者消耗了大量吞吐量的查询。 可以使用 `FeedResponse` 中的 [RequestCharge](https://msdn.microsoft.com/library/azure/dn948712.aspx) 属性获取请求费用。 若要详细了解如何使用 Azure 门户和不同的 SDK 获取请求费用，请参阅[查找请求单位费用](find-request-unit-charge.md)一文。
+可以捕获每个查询消耗的请求单位数，以调查高开销的查询，或者消耗了大量吞吐量的查询。 可以使用 [ 中的 ](https://msdn.microsoft.com/library/azure/dn948712.aspx)RequestCharge`FeedResponse` 属性获取请求费用。 若要详细了解如何使用 Azure 门户和不同的 SDK 获取请求费用，请参阅[查找请求单位费用](find-request-unit-charge.md)一文。
 
 ```csharp
 string query = "SELECT * FROM c";
@@ -244,8 +244,8 @@ WHERE c.description = "BABYFOOD, DESSERT, FRUIT DESSERT, WITHOUT ASCORBIC ACID, 
 
 ## <a name="next-steps"></a>后续步骤
 
-- [优化查询性能](sql-api-query-metrics.md)
+- [调整查询性能](sql-api-query-metrics.md)
 - [索引概述](index-overview.md)
-- [Azure Cosmos DB .NET 示例](https://github.com/Azure/azure-cosmos-dotnet-v3)
+- [Azure Cosmos DB.NET 示例](https://github.com/Azure/azure-cosmos-dotnet-v3)
 
 <!--Update_Description: wording update -->

@@ -12,10 +12,10 @@ ms.date: 09/02/2019
 ms.author: v-jay
 ms.reviewer: jrasnick
 ms.openlocfilehash: 39777fe9d5437bdf585bdac047aecc8547a1e18a
-ms.sourcegitcommit: 3f0c63a02fa72fd5610d34b48a92e280c2cbd24a
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "70131865"
 ---
 # <a name="quickstart-create-a-workload-classifier-using-t-sql"></a>快速入门：使用 T-SQL 创建工作负荷分类器

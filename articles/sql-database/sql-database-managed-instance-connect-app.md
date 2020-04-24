@@ -13,10 +13,10 @@ ms.reviewer: sstein, bonova, carlrab, vanto
 origin.date: 11/09/2018
 ms.date: 09/30/2019
 ms.openlocfilehash: 8643ab76d6b27dd3cfe09cdfb6ae955608909f02
-ms.sourcegitcommit: 5c3d7acb4bae02c370f6ba4d9096b68ecdd520dd
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "71262923"
 ---
 # <a name="connect-your-application-to-azure-sql-database-managed-instance"></a>将应用程序连接到 Azure SQL 数据库托管实例
@@ -45,7 +45,7 @@ ms.locfileid: "71262923"
 对等互连是首选的选项，因为对等互连使用 Azure 主干网络，因此，从连接角度看，对等互连 VNet 中的虚拟机与同一 VNet 中虚拟机之间的延迟没有明显差别。 VNet 对等互连限于相同区域内的网络。  
 
 > [!IMPORTANT]
-> 适用于托管实例的 VNet 对等互连方案仅限同一区域中的网络，因为存在[全局虚拟网络对等互连约束](../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints)。 有关更多详细信息，另请参阅 [Azure 虚拟网络常见问题解答](/virtual-network/virtual-networks-faq#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers)一文的相关部分。 
+> 由于[全球虚拟网络对等互连的限制](../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints)，用于托管实例的 VNet 对等互连方案限于相同区域内的网络。 有关更多详细信息，另请参阅 [Azure 虚拟网络常见问题解答](/virtual-network/virtual-networks-faq#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers)一文的相关部分。 
 
 ## <a name="connect-an-on-premises-application"></a>连接本地应用程序
 
@@ -140,7 +140,7 @@ ms.locfileid: "71262923"
 
 | 驱动程序/工具 | 版本 |
 | --- | --- |
-|.NET framework | 4.6.1（或 .NET Core） |
+|.NET Framework | 4.6.1（或 .NET Core） |
 |ODBC 驱动程序| v17 |
 |PHP 驱动程序| 5.2.0 |
 |JDBC 驱动程序| 6.4.0 |

@@ -18,16 +18,16 @@ ms.date: 09/16/2019
 ms.author: v-yeche
 ms.custom: mvc
 ms.openlocfilehash: dd289b2ea0039b0c19a6be68598bb0949700194f
-ms.sourcegitcommit: 43f569aaac795027c2aa583036619ffb8b11b0b9
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/12/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "70921101"
 ---
 # <a name="create-a-vm-with-a-virtual-hard-disk"></a>使用虚拟硬盘创建 VM
 
 本示例使用 VHD 创建虚拟机。
-本示例创建资源组、存储帐户、容器，并通过将 VHD 上传到容器来创建 VM。
+本示例创建资源组、存储帐户、容器，然后通过将 VHD 上传到容器来创建 VM。
 本示例将 ssh 公钥替换为用户的公钥，因此用户可以访问 VM。
 
 用户需要可引导 VHD。 脚本会查找 `~/sample.vhd`。
@@ -86,7 +86,7 @@ az group delete -n az-cli-vhd
 
 此脚本使用以下命令创建资源组、虚拟机、可用性集、负载均衡器和所有相关资源。 表中的每条命令均链接到特定于命令的文档。
 
-| 命令 | 注释 |
+| Command | 说明 |
 |---|---|
 | [az group create](https://docs.azure.cn/cli/group?view=azure-cli-latest#az-group-create) | 创建用于存储所有资源的资源组。 |
 | [az storage account list](https://docs.azure.cn/cli/storage/account?view=azure-cli-latest#az-storage-account-list) | 列出存储帐户 |

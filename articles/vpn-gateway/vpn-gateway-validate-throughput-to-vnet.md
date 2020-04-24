@@ -11,10 +11,10 @@ ms.date: 11/11/2019
 ms.author: v-jay
 ms.reviewer: chadmat;genli
 ms.openlocfilehash: 6b58ec7b79367a3f003f1a6369c01773ec99990e
-ms.sourcegitcommit: d77d5d8903faa757c42b80ee24e7c9d880950fc3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "73742281"
 ---
 # <a name="how-to-validate-vpn-throughput-to-a-virtual-network"></a>如何验证到达虚拟网络的 VPN 吞吐量

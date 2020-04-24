@@ -9,10 +9,10 @@ origin.date: 09/20/2019
 ms.date: 11/04/2019
 ms.author: v-jay
 ms.openlocfilehash: 44e34ef8a7ea454bd10e323e376fcf0bf8c678a7
-ms.sourcegitcommit: f9a257e95444cb64c6d68a7a1cfe7e94c5cc5b19
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "73416230"
 ---
 # <a name="azure-dns-troubleshooting-guide"></a>Azure DNS 疑难解答指南

@@ -15,10 +15,10 @@ origin.date: 10/14/2019
 ms.date: 11/25/2019
 ms.author: v-yeche
 ms.openlocfilehash: b1318f50fd5cf3c136940423f43c746c52a2841d
-ms.sourcegitcommit: c5e012385df740bf4a326eaedabb987314c571a1
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74203703"
 ---
 # <a name="deploy-an-ipv6-dual-stack-application-using-standard-internal-load-balancer-in-azure---powershell"></a>在 Azure 中部署使用标准内部负载均衡器的 IPv6 双堆栈应用程序 - PowerShell
@@ -48,7 +48,7 @@ ms.locfileid: "74203703"
 
 如果你选择在本地安装和使用 PowerShell，本文要求使用 Azure PowerShell 模块 6.9.0 或更高版本。 运行 `Get-Module -ListAvailable Az` 查找已安装的版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-Az-ps)。 如果在本地运行 PowerShell，则还需运行 `Connect-AzAccount -Environment AzureChinaCloud` 来创建与 Azure 的连接。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 在 Azure 中部署双堆栈应用程序之前，必须先使用以下 Azure PowerShell 为此功能配置订阅：
 
 <!--MOONCAKE: REMOVE preview tag-->
@@ -322,7 +322,7 @@ $VM2 = New-AzVM -ResourceGroupName $rg.ResourceGroupName  -Location $rg.Location
 ## <a name="view-ipv6-dual-stack-virtual-network-in-azure-portal"></a>在 Azure 门户中查看 IPv6 双堆栈虚拟网络
 可以在 Azure 门户中查看 IPv6 双堆栈虚拟网络，如下所示：
 1. 在门户的搜索栏中输入 *dsVnet*。
-2. 当“dsVnet”出现在搜索结果中时，将其选中。  此时会启动名为 *dsVnet* 的双堆栈虚拟网络的“概述”页。  该双堆栈虚拟网络显示了位于 *dsSubnet* 双堆栈子网中的两个 NIC，这些 NIC 采用 IPv4 和 IPv6 配置。
+2. 当“dsVnet”出现在搜索结果中时，将其选中。  此时会启动名为 **dsVnet** 的双堆栈虚拟网络的“概述”页。  该双堆栈虚拟网络显示了位于 *dsSubnet* 双堆栈子网中的两个 NIC，这些 NIC 采用 IPv4 和 IPv6 配置。
 
 ![使用标准内部负载均衡器的 IPv6 双堆栈虚拟网络](./media/ipv6-dual-stack-standard-internal-load-balancer-powershell/ipv6-dual-stack-virtual-network.png)
 

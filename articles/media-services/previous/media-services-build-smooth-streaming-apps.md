@@ -16,15 +16,15 @@ origin.date: 03/14/2019
 ms.date: 09/23/2019
 ms.author: v-jay
 ms.openlocfilehash: a09bdc58b2e93ec25f85ce79cfd454814e1e470b
-ms.sourcegitcommit: 8248259e4c3947aa0658ad6c28f54988a8aeebf8
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "71124411"
 ---
 # <a name="how-to-build-a-smooth-streaming-windows-store-application"></a>如何生成平滑流式处理 Windows 应用商店应用程序  
 
-借助适用于 Windows 8 的平滑流式处理客户端 SDK，开发人员可以生成支持按需付费、直播平滑流式处理内容的 Windows 应用商店应用程序。 除了播放平滑流式处理内容这一基本功能以外，该 SDK 还提供其他丰富功能，例如 Microsoft PlayReady 保护、质量级别限制、实时 DVR、音频流切换、收听状态更新（如质量级别更改）和错误事件，等等。 有关支持的功能的详细信息，请参阅 [发行说明](https://www.iis.net/learn/media/smooth-streaming/smooth-streaming-client-sdk-for-windows-8-release-notes)。 有关详细信息，请参阅 [适用于 Windows 8 的播放器框架](https://playerframework.codeplex.com/)。 
+借助适用于 Windows 8 的平滑流式处理客户端 SDK，开发人员可以生成支持点播付费、实时平滑流式处理内容的 Windows 应用商店应用程序。 除了播放平滑流式处理内容这一基本功能以外，该 SDK 还提供其他丰富功能，例如 Microsoft PlayReady 保护、质量级别限制、实时 DVR、音频流切换、收听状态更新（如质量级别更改）和错误事件，等等。 有关支持的功能的详细信息，请参阅 [发行说明](https://www.iis.net/learn/media/smooth-streaming/smooth-streaming-client-sdk-for-windows-8-release-notes)。 有关详细信息，请参阅 [适用于 Windows 8 的播放器框架](https://playerframework.codeplex.com/)。 
 
 本教程包含四个课时：
 
@@ -67,12 +67,12 @@ ms.locfileid: "71124411"
 1. 在“文件”  菜单中，单击“新建”  ，并单击“项目”  。
 1. 在“新建项目”对话框中，键入或选择以下值：
 
-    | Name | Value |
+    | 名称 | Value |
     | --- | --- |
     | 模板组 |已安装/模板/Visual C#/Windows 应用商店 |
     | 模板 |空白应用 (XAML) |
-    | Name |SSPlayer |
-    | Location |C:\SSTutorials |
+    | 名称 |SSPlayer |
+    | 位置 |C:\SSTutorials |
     | 解决方案名称 |SSPlayer |
     | 创建解决方案的目录 |（选定） |
 
@@ -83,7 +83,7 @@ ms.locfileid: "71124411"
 1. 在解决方案资源管理器中，右键单击“SSPlayer”  ，并单击“添加引用”  。
 1. 键入或选择以下值：
 
-    | Name | Value |
+    | 名称 | Value |
     | --- | --- |
     | 引用组 |Windows/扩展 |
     | 参考 |选择适用于 Windows 8 和 Microsoft Visual C++ 运行时程序包的 Microsoft 平滑流式处理客户端 SDK |
@@ -254,7 +254,7 @@ MediaElement 控件并非原本就支持平滑流式处理内容。 若要启用
          private Windows.Foundation.Collections.PropertySet propertySet = new Windows.Foundation.Collections.PropertySet();             
          private IAdaptiveSourceManager adaptiveSourceManager;
    ```
-4. 在 **MainPage** 构造函数中的 **this.Initialize Components();** 行以及在上一课编写的注册代码行的后面添加以下代码：
+4. 在 MainPage 构造函数中的 this.Initialize Components(); 行以及在上一课编写的注册代码行的后面添加以下代码   ：
 
    ```csharp
         // Gets the default instance of AdaptiveSourceManager which manages Smooth 
@@ -795,7 +795,7 @@ MediaElement 控件并非原本就支持平滑流式处理内容。 若要启用
         getStreams(manifestObject);
         refreshAvailableStreamsListBoxItemSource();
    ```
-    因此，当 MediaElement 清单准备就绪时，该代码将获取可用流的列表，并将该列表的内容填充到 UI 列表框。
+    因此，当 MediaElement 清单准备就绪时，该代码会获取可用流的列表，并将该列表的内容填充到 UI 列表框。
 6. 在 MainPage 类中，找到 UI 按钮单击事件区域，并添加以下函数定义：
    ```csharp
         private void btnChangeStream_Click(object sender, RoutedEventArgs e)

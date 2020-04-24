@@ -13,10 +13,10 @@ ms.topic: conceptual
 origin.date: 01/09/2019
 ms.date: 10/14/2019
 ms.openlocfilehash: 9bbedb5bc53a4e627b9851463acb8087b28b409b
-ms.sourcegitcommit: aea45739ba114a6b069f782074a70e5dded8a490
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "72275411"
 ---
 # <a name="copy-or-clone-a-data-factory-in-azure-data-factory"></a>在 Azure 数据工厂中复制或克隆数据工厂

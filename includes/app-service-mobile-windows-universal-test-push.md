@@ -6,10 +6,10 @@ origin.date: 08/23/2018
 ms.date: 08/23/2018
 ms.author: v-tawe
 ms.openlocfilehash: 161a453ce21bdd2086d4c0e96e20c600217877af
-ms.sourcegitcommit: 32d62e27e59e42c8d21a667e77b61b8d87efbc19
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/16/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "71006568"
 ---
 1. 右键单击 Windows 应用商店项目，单击“设为启动项目”  ，并按 F5 键运行 Windows 应用商店应用。

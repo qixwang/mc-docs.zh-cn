@@ -8,15 +8,15 @@ ms.author: v-yiso
 origin.date: 07/29/2019
 ms.date: 10/28/2019
 ms.openlocfilehash: 894ba968a6f851cb4f7014094f50051a4e9aac6f
-ms.sourcegitcommit: c21b37e8a5e7f833b374d8260b11e2fb2f451782
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "72583639"
 ---
 # <a name="apache-spark-streaming-job-that-reads-apache-kafka-data-fails-with-noclassdeffounderror-in-hdinsight"></a>读取 Apache Kafka 数据的 Apache Spark 流式处理作业失败，在 HDInsight 中显示 NoClassDefFoundError
 
-本文介绍在 Azure HDInsight 群集中使用 Apache Spark 组件时出现的问题的故障排除步骤和可能的解决方法。
+本文介绍在 Azure HDInsight 群集中使用 Apache Spark 组件时出现的问题的故障排除步骤和可能的解决方案。
 
 ## <a name="issue"></a>问题
 

@@ -8,10 +8,10 @@ ms.topic: conceptual
 origin.date: 10/25/2019
 ms.date: 11/18/2019
 ms.openlocfilehash: 581e82f23056e0132f667f35842b8d14a57ba1ce
-ms.sourcegitcommit: c863b31d8ead7e5023671cf9b58415542d9fec9c
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74020874"
 ---
 # <a name="how-to-backup-and-restore-a-server-in-azure-database-for-postgresql---single-server-using-the-azure-portal"></a>如何使用 Azure 门户在 Azure Database for PostgreSQL（单一服务器）中备份和还原服务器
@@ -44,7 +44,7 @@ Azure Database for PostgreSQL 服务器定期进行备份以便启用还原功�
 
 备份保留期控制可以往回检索多长时间的时间点还原，因为它基于可用备份。 以下部分进一步说明了时间点还原。 
 
-## <a name="point-in-time-restore"></a>时间点还原
+## <a name="point-in-time-restore"></a>时点还原
 使用 Azure Database for PostgreSQL 可以将服务器还原到某个时间点，并还原到服务器的新副本。 可以使用此新服务器恢复数据，或将客户端应用程序指向此新服务器。
 
 例如，如果今天中午不小心删除了一张表，则可以将该表还原到中午之前的状态，并从服务器的新副本中检索丢失的表和数据。 时间点还原在服务器级别（而不是在数据库级别）进行。
@@ -61,7 +61,7 @@ Azure Database for PostgreSQL 服务器定期进行备份以便启用还原功�
    ![Azure Database for PostgreSQL - 还原信息](./media/howto-restore-server-portal/3-restore.png)
    - **还原点**：选择要还原到的时间点。
    - **目标服务器**：提供新服务器的名称。
-   - **位置**：不可选择区域。 默认情况下，此值与源服务器相同。
+   - 位置：不可选择区域  。 默认情况下，此值与源服务器相同。
    - **定价层**：执行时间点还原时，无法更改这些参数。 此值与源服务器相同。 
 
 4. 单击“确定”  ，将服务器还原到某个时间点。 

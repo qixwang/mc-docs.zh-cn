@@ -10,10 +10,10 @@ ms.date: 11/11/2019
 ms.author: v-yeche
 ms.custom: include file
 ms.openlocfilehash: 0e589c2b0f2172fdb708f0067938b363cee896f8
-ms.sourcegitcommit: 5844ad7c1ccb98ff8239369609ea739fb86670a4
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "73831369"
 ---
 **出站数据传输**：[出站数据传输](https://www.azure.cn/pricing/details/data-transfer/)（传出 Azure 数据中心的数据）会产生带宽使用费。

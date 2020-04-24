@@ -1,6 +1,6 @@
 ---
-title: 什么是 Azure Active Directory 报告？ | Microsoft Docs
-description: 提供 Azure Active Directory 报告的一般概述。
+title: 什么是 Azure Active Directory 报表？ | Microsoft Docs
+description: 简要介绍 Azure Active Directory 报表。
 services: active-directory
 documentationcenter: ''
 author: cawrites
@@ -19,19 +19,19 @@ ms.author: v-junlch
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 64118d6cb15ecac47990b44de98dbfba7a85210a
-ms.sourcegitcommit: 74f50c9678e190e2dbb857be530175f25da8905e
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/12/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "72292141"
 ---
-# <a name="what-are-azure-active-directory-reports"></a>什么是 Azure Active Directory 报告？
+# <a name="what-are-azure-active-directory-reports"></a>什么是 Azure Active Directory 报表？
 
 可以通过 Azure Active Directory (Azure AD) 报表全面了解环境中的活动。 
 
 - [活动报告](#activity-reports)
 
-![报告](./media/overview-reports/01.png)
+![报表](./media/overview-reports/01.png)
 
 ### <a name="what-azure-ad-license-do-you-need-to-access-a-security-report"></a>访问安全报表需要什么 Azure AD 许可证？  
 

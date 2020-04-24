@@ -8,17 +8,17 @@ ms.topic: conceptual
 origin.date: 08/21/2019
 ms.date: 11/04/2019
 ms.openlocfilehash: e04c2e4f70ed07762e7344a06a95227dcc6c0e45
-ms.sourcegitcommit: f643ddf75a3178c37428b75be147c9383384a816
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "73191547"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mariadb-using-the-azure-portal"></a>如何使用 Azure 门户在 Azure Database for MariaDB 中创建和管理只读副本
 
 本文介绍如何使用 Azure 门户在 Azure Database for MariaDB 服务中创建和管理只读副本。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - 将用作主服务器的 [Azure Database for MariaDB 服务器](quickstart-create-mariadb-server-database-using-azure-portal.md)。
 

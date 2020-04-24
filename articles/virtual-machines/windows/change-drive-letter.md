@@ -1,6 +1,6 @@
 ---
 title: '将 VM 的 D: 盘设为数据磁盘 | Azure'
-description: '介绍如何更改 Windows VM 的驱动器号，以将 D: 盘用作数据驱动器。'
+description: '介绍如何更改 Windows VM 的盘符，以使用 D: 驱动器作为数据驱动器。'
 services: virtual-machines-windows
 documentationcenter: ''
 author: rockboyfor
@@ -16,16 +16,16 @@ origin.date: 01/02/2018
 ms.date: 10/14/2019
 ms.author: v-yeche
 ms.openlocfilehash: 137252c803ff9e764e4a7e7bea943cff7f589cac
-ms.sourcegitcommit: c9398f89b1bb6ff0051870159faf8d335afedab3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "72272800"
 ---
 # <a name="use-the-d-drive-as-a-data-drive-on-a-windows-vm"></a>使用 D: 盘作为 Windows VM 上的数据驱动器
 如果应用程序需要使用 D 盘存储数据，请按照以下说明使用其他驱动器号作为临时磁盘。 切勿使用临时磁盘来存储需要保存的数据。
 
-如果调整虚拟机大小或**停止（解除分配）** 虚拟机，这可能会触发将虚拟机放置于新虚拟机监控程序的操作。 计划中或计划外的维护事件也可能触发此放置操作。 在这种情况下，临时磁盘将重新分配给第一个可用的驱动器号。 如果应用程序明确需要 D: 盘，则需要遵循以下步骤暂时移动 pagefile.sys，并连接新的数据磁盘并为其分配驱动器号 D，再将 pagefile.sys 移回到临时驱动器。 完成后，如果 VM 移到不同的虚拟机监控程序，Azure 不会收回 D:。
+如果调整虚拟机大小或**停止（解除分配）** 虚拟机，这可能会触发将虚拟机放置于新虚拟机监控程序的操作。 计划中或计划外的维护事件也可能触发此放置操作。 在此方案中，临时磁盘将重新分配给第一个可用的盘符。 如果应用程序专门需要 D: 驱动器，则你需要遵循这些步骤暂时移动 pagefile.sys，连接新的数据磁盘并为其分配盘符 D，并将 pagefile.sys 移回到临时驱动器。 完成后，如果 VM 移到不同的虚拟机监控程序，Azure 将不收回 D:。
 
 有关 Azure 如何使用临时磁盘的详细信息，请参阅 [了解 Azure 虚拟机上的临时驱动器](https://blogs.msdn.microsoft.com/mast/2013/12/06/understanding-the-temporary-drive-on-windows-azure-virtual-machines/)
 
@@ -41,7 +41,7 @@ ms.locfileid: "72272800"
 6. 在“虚拟内存”部分中，选择“更改”   。
 7. 选择 **C** 盘，并依次单击“系统管理的大小”、“设置”   。
 8. 选择 **D** 盘，并依次单击“无分页文件”、“设置”   。
-9. 单击“应用”。 你会收到警告，指出计算机需要重新启动才能使更改生效。
+9. 单击“应用”。 将收到警告，指出计算机需要重新启动才能使更改生效。
 10. 重启虚拟机。
 
 ## <a name="change-the-drive-letters"></a>更改驱动器号
@@ -60,7 +60,7 @@ ms.locfileid: "72272800"
 5. 在“虚拟内存”部分中，选择“更改”   。
 6. 选择 OS 驱动器 **C**，并依次单击“无分页文件”、“设置”   。
 7. 选择临时存储驱动器 **T**，并依次单击“系统管理的大小”  、“设置”  。
-8. 单击“应用”  。 你会收到警告，指出计算机需要重新启动才能使更改生效。
+8. 单击“应用”  。 将收到警告，指出计算机需要重新启动才能使更改生效。
 9. 重启虚拟机。
 
 ## <a name="next-steps"></a>后续步骤

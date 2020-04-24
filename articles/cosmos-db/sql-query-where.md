@@ -8,10 +8,10 @@ origin.date: 06/10/2019
 ms.date: 10/28/2019
 ms.author: v-yeche
 ms.openlocfilehash: f9999c4f2accbd3b25f557166496ff06f906555d
-ms.sourcegitcommit: 73f07c008336204bd69b1e0ee188286d0962c1d7
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "72912939"
 ---
 # <a name="where-clause-in-azure-cosmos-db"></a>Azure Cosmos DB 中的 WHERE 子句
@@ -30,19 +30,19 @@ WHERE <filter_condition>
 
 - `<filter_condition>`  
 
-    指定需要满足什么条件才会返回文档。  
+    指定返回的文档需满足的条件。  
 
 - `<scalar_expression>`  
 
-    表示待计算值的表达式。 有关详细信息，请参阅[标量表达式](sql-query-scalar-expressions.md)。  
+    表示要计算的值的表达式。 有关详细信息，请参阅[标量表达式](sql-query-scalar-expressions.md)。  
 
 ## <a name="remarks"></a>备注
 
-  指定为筛选条件的表达式的求值结果必须为 true，才会返回文档。 只有当布尔值为 true 才可以满足条件，任何其他值：未定义、null、false、数字、数组或对象均不满足条件。 
+  为了能够返回文档，指定为筛选条件的表达式的求值结果必须为 true。 只有当布尔值为 true 才可以满足条件，任何其他值：未定义、null、false、数字、数组或对象均不满足条件。 
 
 ## <a name="examples"></a>示例
 
-以下查询请求包含值为 `AndersenFamily` 的 `id` 属性的项。 它会排除任何不带 `id` 属性或值与 `AndersenFamily` 不匹配的项。
+以下查询请求包含值为 `id` 的 `AndersenFamily` 属性的项。 它会排除任何不带 `id` 属性或值与 `AndersenFamily` 不匹配的项。
 
 ```sql
 SELECT f.address
@@ -50,7 +50,7 @@ FROM Families f
 WHERE f.id = "AndersenFamily"
 ```
 
-其结果是：
+结果有：
 
 ```json
 [{
@@ -104,12 +104,12 @@ FROM Families.children[0] c
 WHERE (-c.grade = -5)  -- matching grades == 5
 ```
 
-还可以在查询中使用属性引用。 例如，`SELECT * FROM Families f WHERE f.isRegistered` 返回包含值等于 `true` 的 `isRegistered` 属性的 JSON 项。 任何其他值（例如`false`、`null`、`Undefined`、`<number>`、`<string>`、`<object>` 或 `<array>`）会从结果中排除该项。 
+还可以在查询中使用属性引用。 例如，`SELECT * FROM Families f WHERE f.isRegistered` 返回包含值等于 `isRegistered` 的 `true` 属性的 JSON 项。 任何其他值（例如`false`、`null`、`Undefined`、`<number>`、`<string>`、`<object>` 或 `<array>`）会从结果中排除该项。 
 
 ## <a name="next-steps"></a>后续步骤
 
 - [入门](sql-query-getting-started.md)
-- [Azure Cosmos DB .NET 示例](https://github.com/Azure/azure-cosmos-dotnet-v3)
+- [Azure Cosmos DB.NET 示例](https://github.com/Azure/azure-cosmos-dotnet-v3)
 - [FROM 子句](sql-query-from.md)
 
 <!-- Update_Description: wording update, update link -->

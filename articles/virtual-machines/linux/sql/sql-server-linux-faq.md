@@ -14,10 +14,10 @@ ms.date: 10/14/2019
 ms.author: v-yeche
 ms.reviewer: jroth
 ms.openlocfilehash: ed115c9275164a0034898f92b505be8d09176b96
-ms.sourcegitcommit: c9398f89b1bb6ff0051870159faf8d335afedab3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "72272451"
 ---
 # <a name="frequently-asked-questions-for-sql-server-on-linux-azure-virtual-machines"></a>在 Linux Azure 虚拟机上运行 SQL Server 的常见问题
@@ -62,7 +62,7 @@ ms.locfileid: "72272451"
 
     RHEL 和 SLES 虚拟机需要无支出限制的订阅和与订阅相关联的经验证付款方式（通常为信用卡）。 如果你在设置 RHEL 或 SLES VM 时没有删除支出限制，订阅将被禁用，并且所有 VM/服务都将停止。 如果你确实进入了此状态，请重新启用订阅[删除支出限制](https://account.windowsazure.cn/subscriptions)。 如果你选择重新启动并继续运行，则剩余信用额度将在当前账单周期恢复，但 RHEL 或 SLES VM 映像附加费将会从你的信用卡中扣除。
 
-## <a name="licensing"></a>许可
+## <a name="licensing"></a>授权
 
 1. **如何在 Azure VM 上安装 SQL Server 的许可版本？**
 
@@ -74,7 +74,7 @@ ms.locfileid: "72272451"
 
 1. **如果 VM 是基于一个标准预付费套餐库映像创建的，是否可以将 VM 更改为使用我自己的 SQL Server 许可证？**
 
-    否。 无法将按秒付费许可切换为使用自己的许可证。 你必须创建新的 Linux VM、安装 SQL Server，并迁移数据。 请参阅前面的问题，了解有关使用自己许可证的详细信息。
+    不是。 无法将按秒付费许可切换为使用自己的许可证。 你必须创建新的 Linux VM、安装 SQL Server，并迁移数据。 请参阅前面的问题，了解有关使用自己许可证的详细信息。
 
 ## <a name="administration"></a>管理
 
@@ -90,13 +90,13 @@ ms.locfileid: "72272451"
 
 1. **如何将 Azure VM 中的 SQL Server 升级到新版本？**
 
-    目前，对于在 Azure VM 中运行的 SQL Server，不提供就地升级。 因此，请使用所需的 SQL Server 版本创建新的 Azure 虚拟机，然后使用[标准数据迁移技术](https://docs.microsoft.com/sql/linux/sql-server-linux-migrate-overview)，将数据库迁移到新的服务器。
+    目前，在 Azure VM 中运行的 SQL Server 不提供任何就地升级。 因此，请使用所需的 SQL Server 版本创建新的 Azure 虚拟机，然后使用[标准数据迁移技术](https://docs.microsoft.com/sql/linux/sql-server-linux-migrate-overview)，将数据库迁移到新的服务器。
 
 ## <a name="general"></a>常规
 
 1. Azure VM 上是否支持 SQL Server 的高可用性解决方案？ 
 
-    目前没有。 Always On 可用性组和故障转移群集都需要 Linux 中的聚类分析解决方案，如 Pacemaker。 SQL Server 受支持的 Linux 分发版在云中不支持其高可用性加载项。
+    现在不行。 Always On 可用性组和故障转移群集都需要 Linux 中的聚类分析解决方案，如 Pacemaker。 SQL Server 受支持的 Linux 分发版在云中不支持其高可用性加载项。
 
 ## <a name="resources"></a>资源
 

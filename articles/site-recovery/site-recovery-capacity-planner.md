@@ -10,10 +10,10 @@ origin.date: 08/22/2019
 ms.date: 09/30/2019
 ms.author: v-yeche
 ms.openlocfilehash: 8c2419736b9366f0b7bdfe873ad4402f1f1f45af
-ms.sourcegitcommit: 332ae4986f49c2e63bd781685dd3e0d49c696456
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "71340809"
 ---
 # <a name="plan-capacity-for-hyper-v-vm-disaster-recovery"></a>为 Hyper-V VM 灾难恢复规划容量 

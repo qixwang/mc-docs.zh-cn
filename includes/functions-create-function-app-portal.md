@@ -10,10 +10,10 @@ ms.date: 09/05/2019
 ms.author: v-junlch
 ms.custom: include file
 ms.openlocfilehash: 82b0a67b6e3c3036968516524cac427802eb0d7a
-ms.sourcegitcommit: 4f1047b6848ca5dd96266150af74633b2e9c77a3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "70805748"
 ---
 1. 选择 Azure 门户左上角的“新建资源”按钮，然后选择“计算” > “Function App”。   
@@ -30,7 +30,7 @@ ms.locfileid: "70805748"
     | **订阅** | 你的订阅 | 要在其下创建此新函数应用的订阅。 | 
     |  [资源组](../articles/azure-resource-manager/resource-group-overview.md) |  MyResourceGroup | 要在其中创建 Function App 的新资源组的名称。 |
     |  [托管计划](../articles/azure-functions/functions-scale.md) | 消耗计划 | 定义如何将资源分配给 Function App 的托管计划。 在默认的**消耗计划**中，根据函数需求动态添加资源。 在此[无服务器](https://azure.microsoft.com/overview/serverless-computing/)托管中，只需为函数运行时间付费。 按应用服务计划运行时，必须管理[函数应用的缩放](../articles/azure-functions/functions-scale.md)。  |
-    | **Location** | 中国北部 | 选择离你近或离函数访问的其他服务近的[区域](https://azure.microsoft.com/regions/)。 |
+    | **位置** | 中国北部 | 选择离你近或离函数访问的其他服务近的[区域](https://azure.microsoft.com/regions/)。 |
     | **运行时堆栈** | 首选语言 | 选择支持你喜欢的函数编程语言的运行时。 对于 C# 和 F# 函数，选择 **.NET**。 |
     | **[存储](../articles/storage/common/storage-quickstart-create-account.md)** |  全局唯一名称 |  创建函数应用使用的存储帐户。 存储帐户名称必须为 3 到 24 个字符，并且只能包含数字和小写字母。 也可使用现有帐户，但该帐户必须符合[存储帐户要求](../articles/azure-functions/functions-scale.md#storage-account-requirements)。 |
 

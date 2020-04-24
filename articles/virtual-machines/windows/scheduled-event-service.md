@@ -12,10 +12,10 @@ ms.date: 11/11/2019
 ms.author: v-yeche
 ms.topic: conceptual
 ms.openlocfilehash: d8468bc0f2e6e0aac2fff02e90c8aff87d51b84f
-ms.sourcegitcommit: 1fd822d99b2b487877278a83a9e5b84d9b4a8ce7
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74116960"
 ---
 <!--Verify full content successfully-->
@@ -33,7 +33,7 @@ ms.locfileid: "74116960"
 
 ![显示事件生命周期的示意图](./media/notifications/events.png)
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 对于本示例，需要[在可用性集中创建一个 Windows 虚拟机](tutorial-availability-sets.md)。 对于可能会影响可用性集、云服务、虚拟机规模集或独立 VM 中的任何虚拟机的更改，计划事件会提供相关的通知。 我们将运行一个[服务](https://github.com/microsoft/AzureScheduledEventsService)来轮询充当收集器的某个 VM 上的计划事件，以获取可用性集中所有其他 VM 的事件。    
 
@@ -67,7 +67,7 @@ New-AzVm `
 .\SchService.ps1 -Setup
 ```
 
-启动该服务。
+启动服务。
 
 ```powershell
 .\SchService.ps1 -Start
@@ -149,16 +149,16 @@ New-AzVm `
     | project-away RenderedDescription,ReqJson
     ```
 
-1. 选择“保存”，键入 *logQuery* 作为名称，保留“查询”作为类型，键入 *VMLogs* 作为**类别**，然后选择“保存”。    
+1. 选择“保存”，键入 **logQuery** 作为名称，保留“查询”作为类型，键入 *VMLogs* 作为**类别**，然后选择“保存”。    
 
     ![保存查询](./media/notifications/save-query.png)
 
 1. 选择“新建警报规则”。  
-1. 在“创建规则”页中，保留 `collectorworkspace` 作为**资源**。 
-1. 在“条件”下，选择条目“每当客户日志搜索为 <login undefined> 时”。   此时将打开“配置信号逻辑”页。 
-1. 在“阈值”下输入 *0*，然后选择“完成”。  
+1. 在“创建规则”页中，保留  **作为**资源`collectorworkspace`。 
+1. 在“条件”下，选择条目“每当客户日志搜索为  **时”。** *<login undefined>* 此时将打开“配置信号逻辑”页。 
+1. 在“阈值”下输入 **0**，然后选择“完成”。  
 1. 在“操作”下，选择“创建操作组”。   此时将打开“添加操作组”页。 
-1. 在“操作组名称”中键入 *myActionGroup*。 
+1. 在“操作组名称”中键入 **myActionGroup**。 
 1. 在“短名称”中键入 **myActionGroup**。 
 1. 在“资源组”中选择“myResourceGroupAvailability”。  
 1. 在“操作”下的“操作名称”中键入“电子邮件”，然后选择“电子邮件/短信”。    此时将打开“电子邮件/短信”页。 
@@ -167,7 +167,7 @@ New-AzVm `
 
 1. 选择“电子邮件”，键入电子邮件地址，然后选择“确定”。  
 1. 在“添加操作组”页中选择“确定”。   
-1. 在“创建规则”页中的“警报详细信息”下，为“警报规则名称”键入 *myAlert*，然后为“说明”键入“电子邮件警报规则”。     
+1. 在“创建规则”页中的“警报详细信息”下，为“警报规则名称”键入 **myAlert**，然后为“说明”键入“电子邮件警报规则”。     
 1. 完成后，选择“创建警报规则”。 
 1. 重启可用性集中的一个 VM。 几分钟后，你应会收到一封电子邮件，指出已触发该警报。
 

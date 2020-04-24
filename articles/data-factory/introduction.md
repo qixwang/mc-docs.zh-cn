@@ -11,10 +11,10 @@ ms.topic: overview
 origin.date: 09/30/2019
 ms.date: 11/11/2019
 ms.openlocfilehash: 16012b10c0a496e1537744421e45096a27aa35b5
-ms.sourcegitcommit: ff8dcf27bedb580fc1fcae013ae2ec28557f48ac
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "73648744"
 ---
 # <a name="what-is-azure-data-factory"></a>什么是 Azure 数据工厂？
@@ -113,5 +113,5 @@ Azure 数据工厂是解决此类数据方案的平台。 它是*基于云的 ET
 - [.NET](quickstart-create-data-factory-dot-net.md)
 - [Python](quickstart-create-data-factory-python.md)
 - [REST](quickstart-create-data-factory-rest-api.md)
-- [Azure 资源管理器模板](quickstart-create-data-factory-resource-manager-template.md)
+- [Azure Resource Manager 模板](quickstart-create-data-factory-resource-manager-template.md)
  

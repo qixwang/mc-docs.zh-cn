@@ -16,10 +16,10 @@ origin.date: 07/11/2019
 ms.author: v-yiso
 ms.date: 10/08/2019
 ms.openlocfilehash: 30d4935be31b71612b4d487220a61be39852ec43
-ms.sourcegitcommit: 332ae4986f49c2e63bd781685dd3e0d49c696456
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "71340768"
 ---
 # <a name="optimize-expressroute-routing"></a>优化 ExpressRoute 路由

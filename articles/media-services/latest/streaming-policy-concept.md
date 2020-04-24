@@ -13,10 +13,10 @@ origin.date: 05/28/2019
 ms.date: 09/23/2019
 ms.author: v-jay
 ms.openlocfilehash: 166fbd8ad1a145aaa81ae53f8b8f8fab2bebe605
-ms.sourcegitcommit: 8248259e4c3947aa0658ad6c28f54988a8aeebf8
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "71125521"
 ---
 # <a name="streaming-policies"></a>流式处理策略
@@ -39,7 +39,7 @@ ms.locfileid: "71125521"
 
 ## <a name="decision-tree"></a>决策树
 
-单击图像查看其完整大小。  
+单击图像可查看其完整大小。  
 
 <a href="./media/streaming-policy/large.png" target="_blank"><img src="./media/streaming-policy/large.png"></a> 
 

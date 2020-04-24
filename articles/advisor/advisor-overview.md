@@ -12,10 +12,10 @@ origin.date: 02/01/2019
 ms.date: 04/12/2019
 ms.author: v-lingwu
 ms.openlocfilehash: 4b82acc534cde4b0f46d5a4181998daa37eda096
-ms.sourcegitcommit: dd0ff08835dd3f8db3cc55301815ad69ff472b13
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "70736754"
 ---
 # <a name="introduction-to-azure-advisor"></a>Azure 顾问简介
@@ -34,10 +34,10 @@ ms.locfileid: "70736754"
 
 顾问仪表板显示针对所有订阅的个性化建议。  可为特定的订阅和资源类型应用筛选器，以显示相关建议。  建议分为四类： 
 
-* **高可用性**：确保并提高业务关键应用程序的连续性。 有关详细信息，请参阅[顾问高可用性建议](advisor-high-availability-recommendations.md)。
+* **高可用性**：确保并提高关键业务应用程序的连续性。 有关详细信息，请参阅[顾问高可用性建议](advisor-high-availability-recommendations.md)。
 * **安全性**：检测可能引起安全问题的威胁和漏洞。 有关详细信息，请参阅[顾问安全性建议](advisor-security-recommendations.md)。
 * **性能**：提高应用程序的速度。 有关详细信息，请参阅[顾问性能建议](advisor-performance-recommendations.md)。
-* **成本**：优化并降低 Azure 总支出。 有关详细信息，请参阅[顾问成本建议](advisor-cost-recommendations.md)。
+* 成本：优化并降低 Azure 总支出  。 有关详细信息，请参阅[顾问成本建议](advisor-cost-recommendations.md)。
 
   ![顾问建议类型](./media/advisor-overview/advisor-dashboard.png)
 

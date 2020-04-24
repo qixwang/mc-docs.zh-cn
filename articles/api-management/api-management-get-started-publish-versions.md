@@ -16,17 +16,17 @@ origin.date: 11/04/2019
 ms.date: 11/18/2019
 ms.author: v-yiso
 ms.openlocfilehash: 6323d49b86b630a7c615843eb96376ccbc6af873
-ms.sourcegitcommit: 5844ad7c1ccb98ff8239369609ea739fb86670a4
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "73831391"
 ---
 # <a name="publish-multiple-versions-of-your-api"></a>发布 API 的多个版本 
 
 有时，让 API 的所有调用方都使用完全相同的版本是不切实际的。 如果调用方想要升级到更高的版本，他们会希望以一种易于理解的方法实现此目的。 在 Azure API 管理中使用**版本**即可实现此目的。 有关详细信息，请参阅[版本和修订](https://blogs.msdn.microsoft.com/apimanagement/2017/09/14/versions-revisions/)。
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 将新版本添加到现有 API
@@ -36,11 +36,11 @@ ms.locfileid: "73831391"
 
 ![开发人员门户上显示的版本](media/api-management-getstarted-publish-versions/azure_portal.PNG)
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 + 了解 [Azure API 管理术语](api-management-terminology.md)。
-+ 完成以下快速入门：[创建一个 Azure API 管理实例](get-started-create-service-instance.md)。
-+ 此外，请完成以下教程：[导入和发布第一个 API](import-and-publish.md)。
++ 完成以下快速入门：[创建 Azure API 管理实例](get-started-create-service-instance.md)。
++ 此外，请完成以下教程：[导入并发布第一个 API](import-and-publish.md)。
 
 ## <a name="add-a-new-version"></a>添加新版本
 
@@ -89,20 +89,20 @@ ms.locfileid: "73831391"
 1. 从经典部署模型页选择“产品”  。
 2. 选择“不受限制”。 
 3. 选择“API”。 
-4. 选择“设置”  （应用程序对象和服务主体对象）。
+4. 选择 **添加** 。
 5. 选择“演示会议 API，版本 v1”。 
-6. 单击“选择”。 
+6. 单击“选择”  。
 
 ## <a name="browse-the-developer-portal-to-see-the-version"></a>浏览开发人员门户以查看版本
 1. 在顶部菜单中选择“开发人员门户”。 
-2. 选择“API”  并单击“演示会议 API”  。
-3. 应该在“API 名称”旁边看到一个包含多个版本的下拉列表。
+2. 选择“API”，然后单击“演示会议 API”   。
+3. 可在 API 名称旁边看到一个含有多个版本的下拉列表。
 4. 选择“v1”。 
 5. 请注意列表中第一个操作的“请求 URL”。  其中显示 API URL 路径包含“v1”。 
 
 ## <a name="next-steps"></a>后续步骤
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 将新版本添加到现有 API

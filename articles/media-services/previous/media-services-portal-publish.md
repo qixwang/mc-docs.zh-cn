@@ -16,15 +16,15 @@ origin.date: 03/19/2019
 ms.date: 09/23/2019
 ms.author: v-jay
 ms.openlocfilehash: c2c3ffdfde79c9f5c1bf4c695a6bd771facc8d84
-ms.sourcegitcommit: 8248259e4c3947aa0658ad6c28f54988a8aeebf8
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "71124614"
 ---
 # <a name="publish-content-in-the-azure-portal"></a>在 Azure 门户中发布内容  
 > [!div class="op_single_selector"]
-> * [Portal](media-services-portal-publish.md)
+> * [门户](media-services-portal-publish.md)
 > * [.NET](media-services-deliver-streaming-content.md)
 > * [REST](media-services-rest-deliver-streaming-content.md)
 > 
@@ -32,7 +32,7 @@ ms.locfileid: "71124614"
 
 ## <a name="overview"></a>概述
 > [!NOTE]
-> 若要完成本教程，需要一个 Azure 帐户。 有关详细信息，请参阅 [Azure 试用版](https://www.azure.cn/pricing/1rmb-trial/)。 
+> 要完成本教程，需要一个 Azure 帐户。 有关详细信息，请参阅 [Azure 试用](https://www.azure.cn/pricing/1rmb-trial/)。 
 > 
 > 
 
@@ -74,11 +74,11 @@ ms.locfileid: "71124614"
 2. 选择“设置”   > “资产”  。 选择想要发布的资产。
 3. 选择“发布”按钮  。
 4. 选择定位符类型。
-5. 选择“设置”  （应用程序对象和服务主体对象）。
+5. 选择 **添加** 。
    
     ![发布视频](./media/media-services-portal-vod-get-started/media-services-publish1.png)
 
-URL 会添加到“已发布的 URL”  列表。
+URL 将添加到“已发布 URL”  列表。
 
 ## <a name="play-content-in-the-portal"></a>在门户中播放内容
 可以在 Azure 门户中的内容播放器上测试视频。

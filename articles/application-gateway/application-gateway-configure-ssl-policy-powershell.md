@@ -10,10 +10,10 @@ origin.date: 12/03/2018
 ms.date: 09/18/2019
 ms.author: v-junlch
 ms.openlocfilehash: 8237772df2e436a2804d20181a55051424af8f82
-ms.sourcegitcommit: b47a38443d77d11fa5c100d5b13b27ae349709de
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "71083271"
 ---
 # <a name="configure-ssl-policy-versions-and-cipher-suites-on-application-gateway"></a>在应用程序网关上配置 SSL 策略版本和密码套件
@@ -109,7 +109,7 @@ CipherSuites:
 
 ## <a name="configure-a-custom-ssl-policy"></a>配置自定义 SSL 策略
 
-在配置自定义 SSL 策略时，将传递以下参数：PolicyType、MinProtocolVersion、CipherSuite 和 ApplicationGateway。 如果尝试传递其他参数，则在创建或更新应用程序网关时会出错。 
+配置自定义 SSL 策略时，会传递以下参数：PolicyType、MinProtocolVersion、CipherSuite 和 ApplicationGateway。 如果尝试传递其他参数，则会在创建或更新应用程序网关时出错。 
 
 如下示例将在应用程序网关上设置自定义 SSL 策略。 它将最低协议版本设置为 `TLSv1_1`，并启用以下密码套件：
 
@@ -135,7 +135,7 @@ Set-AzApplicationGateway -ApplicationGateway $gw
 
 ## <a name="create-an-application-gateway-with-a-pre-defined-ssl-policy"></a>使用预定义 SSL 策略创建应用程序网关
 
-配置预定义 SSL 策略时，将传递以下参数：PolicyType、PolicyName 和 ApplicationGateway。 如果尝试传递其他参数，则在创建或更新应用程序网关时会出错。
+配置预定义 SSL 策略时，会传递以下参数：PolicyType、PolicyName 和 ApplicationGateway。 如果尝试传递其他参数，则会在创建或更新应用程序网关时出错。
 
 如下示例会使用预定义 SSL 策略创建一个新的应用程序网关。
 
@@ -192,9 +192,9 @@ $appgw = New-AzApplicationGateway -Name appgwtest -ResourceGroupName $rg.Resourc
 
 ## <a name="update-an-existing-application-gateway-with-a-pre-defined-ssl-policy"></a>使用预定义 SSL 策略更新现有应用程序网关
 
-若要设置自定义 SSL 策略，请传递以下参数：PolicyType、MinProtocolVersion、CipherSuite 和 ApplicationGateway     。 若要设置预定义 SSL 策略，请传递以下参数：PolicyType、PolicyName 和 ApplicationGateway    。 如果尝试传递其他参数，则在创建或更新应用程序网关时会出错。
+要设置自定义 SSL 策略，请传递以下参数：PolicyType、MinProtocolVersion、CipherSuite 和 ApplicationGateway     。 要设置预定义 SSL 策略，请传递以下参数：PolicyType、PolicyName 和 ApplicationGateway    。 如果尝试传递其他参数，则会在创建或更新应用程序网关时出错。
 
-下面的示例同时提供了自定义策略和预定义策略的代码示例。 取消注释要使用的策略。
+以下示例中提供了自定义策略和预定义策略的代码示例。 取消注释要使用的策略。
 
 ```powershell
 # You have to change these parameters to match your environment.

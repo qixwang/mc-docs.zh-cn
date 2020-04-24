@@ -9,10 +9,10 @@ origin.date: 01/21/2019
 ms.date: 09/30/2019
 ms.author: v-yiso
 ms.openlocfilehash: 05901ee4f6f7797e22febb71700c2d1c1f73b1d7
-ms.sourcegitcommit: 6a62dd239c60596006a74ab2333c50c4db5b62be
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/20/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "71156079"
 ---
 # <a name="understand-event-filtering-for-event-grid-subscriptions"></a>了解事件网格订阅的事件筛选
@@ -98,7 +98,7 @@ ms.locfileid: "71156079"
 ]
 ```
 
-### <a name="operator"></a>运算符
+### <a name="operator"></a>操作员
 
 可用的数字运算符为：
 
@@ -121,13 +121,13 @@ ms.locfileid: "71156079"
 
 所有字符串比较都不区分大小写。
 
-### <a name="key"></a>键
+### <a name="key"></a>密钥
 
 对于事件网格架构中的事件，请使用以下键值：
 
 * ID
 * 主题
-* 使用者
+* 主题
 * EventType
 * DataVersion
 * 事件数据（如 Data.key1）
@@ -135,7 +135,7 @@ ms.locfileid: "71156079"
 对于云事件架构中的事件，请使用以下键值：
 
 * EventId
-* Source
+* 源
 * EventType
 * EventTypeVersion
 * 事件数据（如 Data.key1）
@@ -146,9 +146,9 @@ ms.locfileid: "71156079"
 
 值可以是：
 
-* number
-* string
-* 布尔值
+* 数字
+* 字符串
+* boolean
 * array
 
 ### <a name="limitations"></a>限制

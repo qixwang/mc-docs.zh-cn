@@ -9,10 +9,10 @@ origin.date: 09/11/2017
 ms.date: 6/4/2019
 ms.author: v-lingwu
 ms.openlocfilehash: 08fad879fa46e4be719f0e678d12f675969e97b4
-ms.sourcegitcommit: b09d4b056ac695ba379119eb9e458a945b0a61d9
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/28/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "72970923"
 ---
 # <a name="walkthrough-export-to-sql-from-application-insights-using-stream-analytics"></a>演练：使用流分析从 Application Insights 导出到 SQL

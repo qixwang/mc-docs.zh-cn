@@ -10,10 +10,10 @@ origin.date: 01/17/2019
 ms.date: 02/17/2019
 ms.author: v-lingwu
 ms.openlocfilehash: 8a37af66d29ffe6167cfd5b687180e3500e96345
-ms.sourcegitcommit: a89eb0007edd5b4558b98c1748b2bd67ca22f4c9
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "73730453"
 ---
 # <a name="writing-efficient-log-queries-in-azure-monitor"></a>在 Azure Monitor 中编写有效的日志查询

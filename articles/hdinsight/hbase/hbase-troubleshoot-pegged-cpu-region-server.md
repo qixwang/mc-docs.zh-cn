@@ -8,10 +8,10 @@ ms.author: v-yiso
 origin.date: 08/01/2019
 ms.date: 11/11/2019
 ms.openlocfilehash: 01e66ea48c4ccbd9da4e48a6674e4a2073785a7c
-ms.sourcegitcommit: 642a4ad454db5631e4d4a43555abd9773cae8891
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "73426065"
 ---
 # <a name="scenario-pegged-cpu-on-region-server-in-apache-hbase-cluster-in-azure-hdinsight"></a>方案：Azure HDInsight Apache HBase 群集中区域服务器上的 CPU 使用率居高不下

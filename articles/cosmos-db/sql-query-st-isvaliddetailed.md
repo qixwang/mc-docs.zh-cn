@@ -9,10 +9,10 @@ ms.date: 10/28/2019
 ms.author: v-yeche
 ms.custom: query-reference
 ms.openlocfilehash: 349bcff200b21980d31535ec7d8b237079923fe1
-ms.sourcegitcommit: 73f07c008336204bd69b1e0ee188286d0962c1d7
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "72914659"
 ---
 # <a name="st_isvaliddetailed-azure-cosmos-db"></a>ST_ISVALIDDETAILED (Azure Cosmos DB)
@@ -31,7 +31,7 @@ ST_ISVALIDDETAILED(<spatial_expr>)
 
 ## <a name="return-types"></a>返回类型
 
-  如果指定的 GeoJSON 点或多边形表达式有效，则返回包含布尔值的 JSON 值；如果无效，则额外以字符串值提供原因。  
+  如果指定的 GeoJSON 点或多边形表达式有效，则返回包含布尔值的 JSON 值；如果无效，则额外添加原因作为字符串值。  
 
 ## <a name="examples"></a>示例
 
@@ -44,7 +44,7 @@ SELECT ST_ISVALIDDETAILED({
 }) AS b 
 ```  
 
- 下面是结果集。  
+ 下面是结果集：  
 
 ```json
 [{  

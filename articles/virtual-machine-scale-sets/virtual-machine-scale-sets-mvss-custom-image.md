@@ -17,13 +17,13 @@ origin.date: 04/26/2018
 ms.date: 09/04/2019
 ms.author: v-junlch
 ms.openlocfilehash: 9dd83071ef4d1fb572f9b7335b24798e9e523596
-ms.sourcegitcommit: 7fcf656522eec95d41e699cb257f41c003341f64
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/05/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "70310853"
 ---
-# <a name="add-a-custom-image-to-an-azure-scale-set-template"></a>将自定义映像添加到 Azure 规模集模板
+# <a name="add-a-custom-image-to-an-azure-scale-set-template"></a>向 Azure 规模集模板添加自定义映像
 
 本文介绍了如何修改[基本规模集模板](virtual-machine-scale-sets-mvss-start.md)，以便通过自定义映像进行部署。
 
@@ -32,7 +32,7 @@ ms.locfileid: "70310853"
 
 ### <a name="creating-a-managed-disk-image"></a>创建托管磁盘映像
 
-如果已有自定义的托管磁盘映像（`Microsoft.Compute/images` 类型的资源），则可以跳过此部分。
+如果已有自定义托管磁盘映像（类型为 `Microsoft.Compute/images` 的资源），可跳过此部分。
 
 首先添加 `sourceImageVhdUri` 参数，它是 Azure 存储中通用 Blob 的 URI，包含要从其部署的自定义映像。
 
@@ -94,9 +94,9 @@ ms.locfileid: "70310853"
 
 ```
 
-### <a name="changing-scale-set-properties-to-use-the-managed-disk-image"></a>更改规模集属性，使用托管磁盘映像
+### <a name="changing-scale-set-properties-to-use-the-managed-disk-image"></a>更改规模集属性以使用托管磁盘映像
 
-在规模集 `storageProfile` 的 `imageReference` 中，请勿指定平台映像的发布者、产品/服务、SKU 和版本，而是指定 `Microsoft.Compute/images` 资源的 `id`：
+在规模集 `imageReference` 的 `storageProfile` 中，请勿指定平台映像的发布者、产品/服务、SKU 和版本，而是指定 `id` 资源的 `Microsoft.Compute/images`：
 
 ```json
          "virtualMachineProfile": {

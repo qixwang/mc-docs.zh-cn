@@ -8,10 +8,10 @@ ms.author: v-junlch
 origin.date: 10/10/2019
 ms.date: 10/29/2019
 ms.openlocfilehash: 74ca8fb19133943d6f810fa15d24a22eaa0a9833
-ms.sourcegitcommit: cb2caa72ec0e0922a57f2fa1056c25e32c61b570
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "73142202"
 ---
 # <a name="use-azure-disk-encryption-with-virtual-machine-scale-set-extension-sequencing"></a>将 Azure 磁盘加密与虚拟机规模集扩展排序配合使用

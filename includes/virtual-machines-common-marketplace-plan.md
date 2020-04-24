@@ -10,10 +10,10 @@ ms.date: 11/11/2019
 ms.author: v-yeche
 ms.custom: include file
 ms.openlocfilehash: edf2cfdb858ba39d44ba97ccaf7ee702f15e3882
-ms.sourcegitcommit: 5844ad7c1ccb98ff8239369609ea739fb86670a4
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "73831290"
 ---
 ## <a name="deploy-an-image-with-marketplace-terms"></a>部署具有市场条款的映像

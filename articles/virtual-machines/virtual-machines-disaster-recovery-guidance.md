@@ -17,10 +17,10 @@ ms.date: 05/14/2018
 ms.author: v-yeche
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: f70bbcd382933773b12f477cc55ca688bd90ba26
-ms.sourcegitcommit: c5e012385df740bf4a326eaedabb987314c571a1
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74203647"
 ---
 # <a name="what-to-do-in-the-event-that-an-azure-service-disruption-impacts-azure-vms"></a>发生影响 Azure VM 的 Azure 服务中断事件时该怎么办
@@ -43,7 +43,7 @@ Azure 已在平台中内置多种功能，用于支持高度可用的应用程�
 如果发生中断前尚未设置 Azure Site Recovery、读取访问权限异地冗余存储或异地冗余存储，此操作才是最佳选项。 如果存储 VM 虚拟硬盘 (VHD) 的存储帐户已设置异地冗余存储或读取访问权限异地冗余存储，可以指望恢复基本映像 VHD，并尝试用它预配新的 VM。 因为无法保证能够同步处理数据，所以这不是首选的选项。 因此，不保证此选项可行。
 
 > [!NOTE]
-> 注意，对此过程无任何控制权，并且此过程仅适用于区域范围的服务中断。 因此，还必须依靠应用程序特有的其他备份方法才能达到最高级别的可用性。 有关详细信息，请参阅 [Data strategies for disaster recovery](https://docs.microsoft.com/azure/architecture/resiliency/disaster-recovery-azure-applications#data-strategies-for-disaster-recovery)（灾难恢复的数据策略）部分。
+> 注意，对此过程无任何控制权，并且此过程仅适用于区域范围的服务中断。 因此，还必须依靠应用程序特有的其他备份方法才能达到最高级别的可用性。 有关详细信息，请参阅[灾难恢复的数据策略](https://docs.microsoft.com/azure/architecture/resiliency/disaster-recovery-azure-applications#data-strategies-for-disaster-recovery)部分。
 >
 >
 
@@ -55,5 +55,5 @@ Azure 已在平台中内置多种功能，用于支持高度可用的应用程�
 
 - 若要掌握有关云平台功能的详细技术知识，请参阅 [Azure 复原技术指南](../resiliency/resiliency-technical-guidance.md)。
 
-- 如果指示不清楚，或者如果希望 Azure.cn 代你执行操作，请联系[客户支持](https://support.azure.cn/zh-cn/support/support-azure/)。
+- 如果指示不清楚，或者如果希望 Azure.cn 代你执行操作，请联系 [客户支持](https://support.azure.cn/zh-cn/support/support-azure/)。
 <!-- Update_Description: update meta properties -->

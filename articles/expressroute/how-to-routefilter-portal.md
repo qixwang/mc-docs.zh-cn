@@ -10,10 +10,10 @@ ms.date: 10/01/2019
 ms.author: v-yiso
 ms.custom: seodec18
 ms.openlocfilehash: ce96a4e7fb222c02987cd8c51b1fdcad861b06a4
-ms.sourcegitcommit: 2f2ced6cfaca64989ad6114a6b5bc76700870c1a
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "71330463"
 ---
 # <a name="configure-route-filters-for-microsoft-peering-azure-portal"></a>配置用于 Microsoft 对等互连的路由筛选器：Azure 门户
@@ -33,7 +33,7 @@ ms.locfileid: "71330463"
 
 - 定义路由筛选器，并将其应用于 ExpressRoute 线路。 路由筛选器是一种新资源，可让你选择计划通过 Microsoft 对等互连使用的服务列表。 ExpressRoute 路由器仅发送属于路由筛选器中所标识服务的前缀列表。
 
-### <a name="about"></a>关于路由筛选器
+### <a name="about-route-filters"></a><a name="about"></a>关于路由筛选器
 
 在 ExpressRoute 线路上配置 Microsoft 对等互连时，Microsoft 边缘路由器会建立你的或你连接提供商的边缘路由器的一对 BGP 会话。 不会将任何路由播发到网络。 若要能够将路由播发到网络，必须关联路由筛选器。
 
@@ -45,7 +45,7 @@ ms.locfileid: "71330463"
 > 
 > 
 
-### <a name="workflow"></a>工作流
+### <a name="workflow"></a><a name="workflow"></a>工作流
 
 若要通过 Microsoft 对等互连成功连接服务，必须完成以下配置步骤：
 
@@ -71,7 +71,7 @@ ms.locfileid: "71330463"
  - 必须有活动的 Microsoft 对等互连。 按照[创建和修改对等互连配置](expressroute-howto-routing-portal-resource-manager.md)中的说明操作
 
 
-## <a name="prefixes"></a>步骤 1：获取前缀和 BGP 团体值的列表
+## <a name="step-1-get-a-list-of-prefixes-and-bgp-community-values"></a><a name="prefixes"></a>步骤 1：获取前缀和 BGP 团体值的列表
 
 ### <a name="1-get-a-list-of-bgp-community-values"></a>1.获取 BGP 团体值列表
 
@@ -81,7 +81,7 @@ ms.locfileid: "71330463"
 
 列出要在路由筛选器中使用的 BGP 团体值列表。 
 
-## <a name="filter"></a>步骤 2：创建路由筛选器和筛选器规则
+## <a name="step-2-create-a-route-filter-and-a-filter-rule"></a><a name="filter"></a>步骤 2：创建路由筛选器和筛选器规则
 
 1 个路由筛选器只能有 1 个规则，并且规则类型必须是“允许”。 此规则可以有与之关联的 BGP 团体值列表。
 
@@ -106,7 +106,7 @@ ms.locfileid: "71330463"
 ![创建路由筛选器](./media/how-to-routefilter-portal/AddRouteFilterRule.png)
 
 
-## <a name="attach"></a>步骤 3：将路由筛选器附加到 ExpressRoute 线路
+## <a name="step-3-attach-the-route-filter-to-an-expressroute-circuit"></a><a name="attach"></a>步骤 3：将路由筛选器附加到 ExpressRoute 线路
 
 可通过选择“添加线路”按钮并从下拉列表中选择 ExpressRoute 线路将路由筛选器附加到线路。
 
@@ -116,16 +116,16 @@ ms.locfileid: "71330463"
 
 ![创建路由筛选器](./media/how-to-routefilter-portal/RefreshExpressRouteCircuit.png)
 
-## <a name="tasks"></a>常见任务
+## <a name="common-tasks"></a><a name="tasks"></a>常见任务
 
-### <a name="getproperties"></a>获取路由筛选器的属性
+### <a name="to-get-the-properties-of-a-route-filter"></a><a name="getproperties"></a>获取路由筛选器的属性
 
 在门户中打开资源时，可以查看路由筛选器的属性。
 
 ![创建路由筛选器](./media/how-to-routefilter-portal/ViewRouteFilter.png)
 
 
-### <a name="updateproperties"></a>更新路由筛选器的属性
+### <a name="to-update-the-properties-of-a-route-filter"></a><a name="updateproperties"></a>更新路由筛选器的属性
 
 可通过选择“管理规则”按钮更新附加到线路的 BGP 社区值列表。
 
@@ -135,14 +135,14 @@ ms.locfileid: "71330463"
 ![创建路由筛选器](./media/how-to-routefilter-portal/AddRouteFilterRule.png) 
 
 
-### <a name="detach"></a>从 ExpressRoute 线路分离路由筛选器
+### <a name="to-detach-a-route-filter-from-an-expressroute-circuit"></a><a name="detach"></a>从 ExpressRoute 线路分离路由筛选器
 
 若要从路由筛选器中分离线路，请右键单击线路并单击“取消关联”。
 
 ![创建路由筛选器](./media/how-to-routefilter-portal/DetachRouteFilter.png) 
 
 
-### <a name="delete"></a>删除路由筛选器
+### <a name="to-delete-a-route-filter"></a><a name="delete"></a>删除路由筛选器
 
 可通过选择“删除”按钮删除路由筛选器。 
 

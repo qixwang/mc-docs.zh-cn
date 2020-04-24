@@ -8,10 +8,10 @@ ms.author: v-yiso
 origin.date: 07/29/2019
 ms.date: 09/23/2019
 ms.openlocfilehash: c67d0c4c55f30057f785b2e47f6fab8297d0890e
-ms.sourcegitcommit: 43f569aaac795027c2aa583036619ffb8b11b0b9
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/12/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "70921381"
 ---
 # <a name="scenario-rpctimeoutexception-for-apache-spark-thrift-server-in-azure-hdinsight"></a>方案：Azure HDInsight 中的 Apache Spark thrift 服务器发生 RpcTimeoutException

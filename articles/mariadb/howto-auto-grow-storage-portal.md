@@ -8,10 +8,10 @@ ms.topic: conceptual
 origin.date: 5/29/2019
 ms.date: 09/30/2019
 ms.openlocfilehash: 86a3754d051d12dc0cb77d96a99139dc227203db
-ms.sourcegitcommit: 849418188e5c18491ed1a3925829064935d2015c
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "71307871"
 ---
 # <a name="auto-grow-storage-in-azure-database-for-mariadb-using-the-azure-portal"></a>使用 Azure 门户自动增长 Azure Database for MariaDB 的存储
@@ -19,7 +19,7 @@ ms.locfileid: "71307871"
 
 在服务器达到了分配的存储限制时，该服务器将被标记为只读。 但是，如果你启用存储自动增长，则服务器存储会增长，以容纳不断增加的数据。 对于预配的存储大小小于 100 GB 的服务器，可用存储空间一旦小于 1 GB 或预配存储的 10%（以这二者中的较大值为准），预配的存储大小就会立即增加 5 GB。 对于预配的存储大小大于 100 GB 的服务器，可用存储空间小于预配的存储大小的 5% 时，预配的存储大小就会增加 5%。 [此处](/mariadb/concepts-pricing-tiers#storage)所指定的最大存储限制适用。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 若要完成本操作指南，需要：
 - [Azure Database for MariaDB 服务器](./quickstart-create-mariadb-server-database-using-azure-portal.md)
 

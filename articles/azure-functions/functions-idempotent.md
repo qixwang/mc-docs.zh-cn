@@ -9,10 +9,10 @@ ms.topic: article
 ms.service: azure-functions
 manager: gwallace
 ms.openlocfilehash: 827094befd6b1e2db65932002c93a388f3396d03
-ms.sourcegitcommit: 73a8bff422741faeb19093467e0a2a608cb896e1
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "71673605"
 ---
 # <a name="designing-azure-functions-for-identical-input"></a>针对完全相同的输入设计 Azure Functions

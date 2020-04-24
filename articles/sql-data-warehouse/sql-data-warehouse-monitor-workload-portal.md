@@ -12,10 +12,10 @@ ms.date: 10/21/2019
 ms.author: v-jay
 ms.reviewer: jrasnick
 ms.openlocfilehash: 7c3b1f7756ed9bc1959ff6ab36bdf775c49cefff
-ms.sourcegitcommit: 73f07c008336204bd69b1e0ee188286d0962c1d7
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "72914508"
 ---
 # <a name="monitor-workload---azure-portal"></a>监视工作负荷 - Azure 门户

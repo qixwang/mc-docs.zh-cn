@@ -16,10 +16,10 @@ origin.date: 04/10/2018
 ms.date: 10/14/2019
 ms.author: v-yeche
 ms.openlocfilehash: 9cabf765c4cd488bb8db759b194bd0cd4a2bd188
-ms.sourcegitcommit: c9398f89b1bb6ff0051870159faf8d335afedab3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "72272837"
 ---
 # <a name="how-to-find-and-delete-unattached-network-interface-cards-nics-for-azure-vms"></a>如何找到并删除 Azure VM 的未连接网络接口卡 (NIC)

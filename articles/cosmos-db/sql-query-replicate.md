@@ -9,14 +9,14 @@ ms.date: 10/28/2019
 ms.author: v-yeche
 ms.custom: query-reference
 ms.openlocfilehash: 4b5abd0d2c081f901370ebc578047e3ccd05900c
-ms.sourcegitcommit: 73f07c008336204bd69b1e0ee188286d0962c1d7
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "72914682"
 ---
 # <a name="replicate-azure-cosmos-db"></a>REPLICATE (Azure Cosmos DB)
- 将一个字符串值重复指定的次数。
+ 以指定的次数重复字符串值。
 
 ## <a name="syntax"></a>语法
 
@@ -30,11 +30,11 @@ REPLICATE(<str_expr>, <num_expr>)
   是一个字符串表达式。
 
 *num_expr*  
-  是一个数值表达式。 如果 *num_expr* 为负或非有限，则结果未定义。
+  为数值表达式。 如果 *num_expr* 为负或非有限，则结果未定义。
 
 ## <a name="return-types"></a>返回类型
 
-  返回一个字符串表达式。
+  返回字符串表达式。
 
 ## <a name="remarks"></a>备注
   结果的最大长度为 10,000 个字符，即 (length(*str_expr*)  *  *num_expr*) <= 10,000。
@@ -47,7 +47,7 @@ REPLICATE(<str_expr>, <num_expr>)
 SELECT REPLICATE("a", 3) AS replicate
 ```  
 
- 下面是结果集。
+ 下面是结果集：
 
 ```json
 [{"replicate": "aaa"}]

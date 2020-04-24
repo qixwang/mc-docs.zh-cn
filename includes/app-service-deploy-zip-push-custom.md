@@ -6,10 +6,10 @@ origin.date: 11/03/2016
 ms.date: 09/10/2019
 ms.author: v-tawe
 ms.openlocfilehash: e7fffa13038ab9ed23355af761c244a1b9528710
-ms.sourcegitcommit: 0529a2aa102e058636d726b4a4f25208e1e60597
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "71059569"
 ---
 ## <a name="deployment-customization"></a>部署自定义

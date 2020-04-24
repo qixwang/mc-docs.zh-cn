@@ -9,14 +9,14 @@ ms.date: 10/28/2019
 ms.author: v-yeche
 ms.custom: query-reference
 ms.openlocfilehash: be454b54a7ef886dfae4a2e544596cf7a4130fb8
-ms.sourcegitcommit: 73f07c008336204bd69b1e0ee188286d0962c1d7
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "72914681"
 ---
 # <a name="replace-azure-cosmos-db"></a>REPLACE (Azure Cosmos DB)
- 将出现的所有指定字符串值替换为另一个字符串值。  
+ 用另一个字符串值替换出现的所有指定字符串值。  
 
 ## <a name="syntax"></a>语法
 
@@ -37,7 +37,7 @@ REPLACE(<str_expr1>, <str_expr2>, <str_expr3>)
 
 ## <a name="return-types"></a>返回类型
 
-  返回一个字符串表达式。  
+  返回字符串表达式。  
 
 ## <a name="examples"></a>示例
 
@@ -47,7 +47,7 @@ REPLACE(<str_expr1>, <str_expr2>, <str_expr3>)
 SELECT REPLACE("This is a Test", "Test", "desk") AS replace 
 ```  
 
- 下面是结果集。  
+ 下面是结果集：  
 
 ```json
 [{"replace": "This is a desk"}]  

@@ -11,10 +11,10 @@ origin.date: 07/17/2019
 ms.date: 08/26/2019
 manager: digimobile
 ms.openlocfilehash: e0c2cb4d5b137b7b0d11e74d164bafbfbb0e2c69
-ms.sourcegitcommit: 599d651afb83026938d1cfe828e9679a9a0fb69f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "69993818"
 ---
 # <a name="remediate-non-compliant-dsc-servers"></a>修正不符合 DSC 的服务器

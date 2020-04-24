@@ -16,10 +16,10 @@ origin.date: 06/05/2018
 ms.date: 10/14/2019
 ms.author: v-yeche
 ms.openlocfilehash: 6d847525c9317b833bd5962cf6d30cdbe8322e13
-ms.sourcegitcommit: c9398f89b1bb6ff0051870159faf8d335afedab3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "72272490"
 ---
 # <a name="create-a-linux-virtual-machine-that-uses-ssh-authentication-with-the-rest-api"></a>使用 REST API 创建使用 SSH 身份验证的 Linux 虚拟机
@@ -55,7 +55,7 @@ PUT https://management.chinacloudapi.cn/subscriptions/{subscription-id}/resource
 | 请求标头   | 说明 |
 |------------------|-----------------|
 | Content-Type：   | 必需。 设置为 `application/json`。 |
-| Authorization：  | 必需。 设置为有效的 `Bearer` [访问令牌](https://docs.microsoft.com/rest/api/azure/#authorization-code-grant-interactive-clients)。 |
+| Authorization：  | 必需。 设置为有效的`Bearer` [访问令牌](https://docs.microsoft.com/rest/api/azure/#authorization-code-grant-interactive-clients)。 |
 
 有关使用 REST API 请求的一般信息，请参阅 [REST API 请求/响应的组件](https://docs.microsoft.com/rest/api/azure/#components-of-a-rest-api-requestresponse)。
 
@@ -63,16 +63,16 @@ PUT https://management.chinacloudapi.cn/subscriptions/{subscription-id}/resource
 
 下面的通用定义用来构建请求正文：
 
-| Name                       | 必须 | 类型                                                                                | 说明  |
+| 名称                       | 必选 | 类型                                                                                | 说明  |
 |----------------------------|----------|-------------------------------------------------------------------------------------|--------------|
-| location                   | True     | string                                                                              | 资源位置。 |
-| name                       |          | string                                                                              | 虚拟机的名称。 |
+| location                   | True     | 字符串                                                                              | 资源位置。 |
+| name                       |          | 字符串                                                                              | 虚拟机的名称。 |
 | properties.hardwareProfile |          | [HardwareProfile](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#hardwareprofile) | 指定虚拟机的硬件设置。 |
 | properties.storageProfile  |          | [StorageProfile](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#storageprofile)   | 指定虚拟机磁盘的存储设置。 |
 | properties.osProfile       |          | [OSProfile](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#osprofile)             | 指定虚拟机的操作系统设置。 |
 | properties.networkProfile  |          | [NetworkProfile](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#networkprofile)   | 指定虚拟机的网络接口。 |
 
-下面是一个示例请求正文。 请确保在 `{computerName}` 和 `{name}` 参数中指定 VM 名称，在 `networkInterfaces` 下指定你创建的网络接口的名称，在 `adminUsername` 和 `path` 中指定用户名，在 `keyData` 中指定 SSH 密钥的公共  部分（例如位于 `~/.ssh/id_rsa.pub` 中）。 你可能希望更改的其他参数包括 `location` 和 `vmSize`。  
+下面是一个示例请求正文。 请确保在 `{computerName}` 和 `{name}` 参数中指定 VM 名称，在 `networkInterfaces` 下指定你创建的网络接口的名称，在 `adminUsername` 和 `path` 中指定用户名，在  *中指定 SSH 密钥的公共*`~/.ssh/id_rsa.pub`部分（例如位于 `keyData` 中）。 你可能希望更改的其他参数包括 `location` 和 `vmSize`。  
 
 ```json
 {
@@ -137,10 +137,10 @@ PUT https://management.chinacloudapi.cn/subscriptions/{subscription-id}/resource
 
 对于要创建或更新虚拟机的操作，有两个成功响应：
 
-| Name        | 类型                                                                              | 说明 |
+| 名称        | 类型                                                                              | 说明 |
 |-------------|-----------------------------------------------------------------------------------|-------------|
 | 200 正常      | [VirtualMachine](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#virtualmachine) | OK          |
-| 201 Created | [VirtualMachine](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#virtualmachine) | 已创建     |
+| 201 Created | [VirtualMachine](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#virtualmachine) | 创建     |
 
 下面是一个精简后的 *201 Created* 响应，它来自前面创建 VM 的示例请求正文，该响应表明已分配了 *vmId* 并且 *provisioningState* 为 *Creating*：
 

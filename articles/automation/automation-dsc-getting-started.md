@@ -11,10 +11,10 @@ ms.date: 11/18/2019
 ms.topic: conceptual
 manager: digimobile
 ms.openlocfilehash: e97628c4719d1e7868c58d057d4a17c0a8998408
-ms.sourcegitcommit: ea2aeb14116769d6f237542c90f44c1b001bcaf3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74116234"
 ---
 # <a name="getting-started-with-azure-automation-state-configuration"></a>Azure Automation State Configuration 入门

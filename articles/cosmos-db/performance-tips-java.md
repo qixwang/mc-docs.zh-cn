@@ -9,10 +9,10 @@ origin.date: 05/23/2019
 ms.date: 09/09/2019
 ms.author: v-yeche
 ms.openlocfilehash: cb37d2c4b70f1e0359da5e00e1827774fa471dd4
-ms.sourcegitcommit: c5e012385df740bf4a326eaedabb987314c571a1
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74203644"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-java"></a>适用于 Azure Cosmos DB 和 Java 的性能提示
@@ -77,7 +77,7 @@ Azure Cosmos DB 是一个快速、弹性的分布式数据库，可以在提供�
    <a name="max-connection"></a>
 3. **使用网关模式时，增加每个主机的 MaxPoolSize**
 
-    使用网关模式时，Azure Cosmos DB 请求是通过 HTTPS/REST 发出的，并受制于每个主机名或 IP 地址的默认连接限制。 可能需要将 MaxPoolSize 设置为较大的值 (200-1000)，以便客户端库能够同时利用多个连接来访问 Azure Cosmos DB。 在 Java SDK 中，[ConnectionPolicy.getMaxPoolSize](https://docs.azure.cn/java/api/com.microsoft.azure.documentdb.connectionpolicy.getmaxpoolsize) 的默认值为 100。 使用 [setMaxPoolSize]( https://docs.azure.cn/java/api/com.microsoft.azure.documentdb.connectionpolicy.setmaxpoolsize) 可更改该值。
+    使用“网关”模式时，Azure Cosmos DB 请求是通过 HTTPS/REST 发出的，并且受制于每个主机名或 IP 地址的默认连接限制。 可能需要将 MaxPoolSize 设置为较大的值 (200-1000)，以便客户端库能够同时利用多个连接来访问 Azure Cosmos DB。 在 Java SDK 中，[ConnectionPolicy.getMaxPoolSize](https://docs.azure.cn/java/api/com.microsoft.azure.documentdb.connectionpolicy.getmaxpoolsize) 的默认值为 100。 使用 [setMaxPoolSize]( https://docs.azure.cn/java/api/com.microsoft.azure.documentdb.connectionpolicy.setmaxpoolsize) 可更改该值。
 
 4. **优化分区集合的并行查询。**
 
@@ -97,11 +97,11 @@ Azure Cosmos DB 是一个快速、弹性的分布式数据库，可以在提供�
 
 6. **增大客户端工作负荷**
 
-    如果以高吞吐量级别（> 50,000 RU/s）进行测试，客户端应用程序可能成为瓶颈，因为计算机的 CPU 或网络利用率将达到上限。 如果达到此限制，可以跨多个服务器横向扩展客户端应用程序，以进一步推送 Azure Cosmos DB 帐户。
+    如果以高吞吐量级别（> 50,000 RU/s）进行测试，客户端应用程序可能成为瓶颈，因为计算机的 CPU 或网络利用率将达到上限。 如果达到此上限，可以跨多个服务器横向扩展客户端应用程序以继续进一步推送 Azure Cosmos DB 帐户。
 
 7. **使用基于名称的寻址**
 
-    使用基于名称的寻址，其中的链接格式为 `dbs/MyDatabaseId/colls/MyCollectionId/docs/MyDocumentId`，而不是使用格式为 `dbs/<database_rid>/colls/<collection_rid>/docs/<document_rid>` 的 SelfLinks (\_self)（旨在避免检索用于构造链接的所有资源的 ResourceId）。 此外，由于会重新创建这些资源（名称可能相同），因此，缓存这些资源的用处不大。
+    使用基于名称的寻址，其中的链接格式为 `dbs/MyDatabaseId/colls/MyCollectionId/docs/MyDocumentId`，而不是使用格式为 \_ 的 SelfLinks (`dbs/<database_rid>/colls/<collection_rid>/docs/<document_rid>`self)（旨在避免检索用于构造链接的所有资源的 ResourceId）。 此外，由于会重新创建这些资源（名称可能相同），因此，缓存这些资源的用处不大。
 
    <a name="tune-page-size"></a>
 8. **调整查询/读取源的页面大小以获得更好的性能**
@@ -161,7 +161,7 @@ Azure Cosmos DB 是一个快速、弹性的分布式数据库，可以在提供�
 
     SDK 全部都会隐式捕获此响应，并遵循服务器指定的 retry-after 标头，并重试请求。 除非多个客户端同时访问帐户，否则下次重试就会成功。
 
-    如果多个客户端一直以高于请求速率的方式累积运行，则客户端当前在内部设置为 9 的默认重试计数可能无法满足需要；在此情况下，客户端就会向应用程序引发 [DocumentClientException](https://docs.azure.cn/java/api/com.microsoft.azure.documentdb.documentclientexception)，其状态代码为 429。 可以通过在 [ConnectionPolicy](https://docs.azure.cn/java/api/com.microsoft.azure.documentdb.connectionpolicy) 实例上使用 [setRetryOptions](https://docs.azure.cn/java/api/com.microsoft.azure.documentdb.connectionpolicy.setretryoptions) 来更改默认重试计数。 默认情况下，如果请求继续以高于请求速率的方式运行，则在 30 秒的累积等待时间后将返回 DocumentClientException 和状态代码 429。 即使当前的重试计数小于最大重试计数（默认值 9 或用户定义的值），也会发生这种情况。
+    如果多个客户端一直以高于请求速率的方式累积运行，则客户端当前在内部设置为 9 的默认重试计数可能无法满足需要；在此情况下，客户端就会向应用程序引发 [DocumentClientException](https://docs.azure.cn/java/api/com.microsoft.azure.documentdb.documentclientexception)，其状态代码为 429。 可以通过在 [ConnectionPolicy](https://docs.azure.cn/java/api/com.microsoft.azure.documentdb.connectionpolicy.setretryoptions) 实例上使用 [setRetryOptions](https://docs.azure.cn/java/api/com.microsoft.azure.documentdb.connectionpolicy) 来更改默认重试计数。 默认情况下，如果请求继续以高于请求速率的方式运行，则在 30 秒的累积等待时间后将返回 DocumentClientException 和状态代码 429。 即使当前的重试计数小于最大重试计数（默认值 9 或用户定义的值），也会发生这种情况。
 
     尽管自动重试行为有助于改善大多数应用程序的复原能力和可用性，但是在执行性能基准测试时可能会造成冲突（尤其是在测量延迟时）。  如果实验达到服务器限制并导致客户端 SDK 静默重试，则客户端观测到的延迟会剧增。 若要避免性能实验期间出现延迟高峰，可以测量每个操作返回的费用，并确保请求以低于保留请求速率的方式运行。 有关详细信息，请参阅[请求单位](request-units.md)。
 3. **针对小型文档进行设计以提高吞吐量**

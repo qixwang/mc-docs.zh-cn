@@ -12,10 +12,10 @@ origin.date: 07/03/2019
 ms.date: 07/10/2019
 ms.author: v-junlch
 ms.openlocfilehash: 6b89855a0395e2874ac2bc190e879e2ee4fadd40
-ms.sourcegitcommit: 09bf291a235f43202ba3752323395db86b16343f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "71119548"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-face-net-sdk"></a>快速入门：使用人脸 .NET SDK 检测图像中的人脸
@@ -24,7 +24,7 @@ ms.locfileid: "71119548"
 
 如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial)。 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - 人脸 API 订阅密钥。 可以按照[创建认知服务帐户](/cognitive-services/cognitive-services-apis-create-account)中的说明订阅人脸 API 服务并获取密钥。
 - 任何版本的 [Visual Studio 2015 或 2017](https://www.visualstudio.com/downloads/)。
@@ -111,7 +111,7 @@ static void Main(string[] args)
 ```
 ### <a name="detect-faces"></a>检测人脸
 
-将以下方法添加到 **Program** 类。 它使用人脸服务客户端检测通过 URL 引用的远程图像中的人脸。 它使用 `faceAttributes` 字段&mdash;添加到 `faceList` 的 **DetectedFace** 对象将具有指定的属性（在此示例中为年龄和性别）。
+将以下方法添加到 **Program** 类。 它使用人脸服务客户端检测通过 URL 引用的远程图像中的人脸。 它使用 `faceAttributes` 字段&mdash;添加到 **的**DetectedFace`faceList` 对象将具有指定的属性（在此示例中为年龄和性别）。
 
 ```csharp
 // Detect faces in a remote image
@@ -199,7 +199,7 @@ private static void DisplayAttributes(string attributes, string imageUri)
 }
 ```
 
-## <a name="run-the-app"></a>运行应用程序
+## <a name="run-the-app"></a>运行应用
 
 成功的响应会显示图像中每张人脸的性别和年龄。 例如：
 

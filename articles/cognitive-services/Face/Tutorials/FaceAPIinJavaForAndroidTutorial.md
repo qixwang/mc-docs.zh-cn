@@ -12,10 +12,10 @@ origin.date: 07/03/2019
 ms.date: 07/10/2019
 ms.author: v-junlch
 ms.openlocfilehash: 75539c41fdbc4b3819581ec80074d97dc8b46466
-ms.sourcegitcommit: 09bf291a235f43202ba3752323395db86b16343f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "71119546"
 ---
 # <a name="tutorial-create-an-android-app-to-detect-and-frame-faces-in-an-image"></a>教程：创建一个用于检测和定格图像中人脸的 Android 应用
@@ -36,7 +36,7 @@ ms.locfileid: "71119546"
 
 如果没有 Azure 订阅，请在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial/)。 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - 人脸 API 订阅密钥。 可以按照[创建认知服务帐户](/cognitive-services/cognitive-services-apis-create-account)中的说明订阅人脸 API 服务并获取密钥。
 - [Android Studio](https://developer.android.com/studio/)，装有 API 22 或更高级别（这是人脸客户端库需要的）。
@@ -78,7 +78,7 @@ ms.locfileid: "71119546"
 </RelativeLayout>
 ```
 
-### <a name="create-the-main-class"></a>创建 main 类
+### <a name="create-the-main-class"></a>创建主类
 
 打开 *MainActivity.java*，将现有 `import` 语句替换为以下代码。
 
@@ -309,7 +309,7 @@ private static Bitmap drawFaceRectanglesOnBitmap(
 
 最后，在 **onActivityResult** 中取消注释对 **detectAndFrame** 方法的调用。
 
-## <a name="run-the-app"></a>运行应用程序
+## <a name="run-the-app"></a>运行应用
 
 运行此应用程序，以浏览方式查找包含人脸的图像。 等待几秒钟，以便人脸服务响应。 此时会在图像中的每个人脸上看到一个红色矩形。
 

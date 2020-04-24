@@ -15,10 +15,10 @@ origin.date: 06/28/2018
 ms.date: 11/11/2019
 ms.author: v-yeche
 ms.openlocfilehash: 1b8593cf12c136adb6a511f16384a3d0df80f785
-ms.sourcegitcommit: 5844ad7c1ccb98ff8239369609ea739fb86670a4
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "73831217"
 ---
 <!--Notice: Verify successfully on bash cmdlet-->
@@ -55,7 +55,7 @@ STORAGEACCT=$(az storage account create \
 
 ## <a name="get-the-storage-key"></a>获取存储密钥
 
-创建存储帐户时，帐户密钥是成对创建的，这样是为了不中断任何服务就可轮换密钥。 轮换到密钥对中的第二个密钥后，创建新的密钥对。 新的存储帐户密钥始终成对创建，因此始终至少有一个未使用的存储帐户密钥可以切换到。
+创建存储帐户时，帐户密钥是成对创建的，这样是为了不中断任何服务就可轮换密钥。 轮换到密钥对中的第二个密钥后，将创建新的密钥对。 新的存储帐户密钥始终成对创建，因此始终至少有一个未使用的存储帐户密钥可以切换到。
 
 使用 [az storage account keys list](https://docs.azure.cn/cli/storage/account/keys?view=azure-cli-latest#az-storage-account-keys-list) 查看存储帐户密钥。 此示例将密钥 1 的值存储在 **STORAGEKEY** 变量中。
 

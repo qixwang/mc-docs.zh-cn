@@ -10,10 +10,10 @@ origin.date: 05/17/2019
 ms.author: v-yiso
 ms.date: 09/30/2019
 ms.openlocfilehash: 37d9f7732409f62c75fdea95a8aad2917c96eb3e
-ms.sourcegitcommit: 6a62dd239c60596006a74ab2333c50c4db5b62be
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/20/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "71155994"
 ---
 # <a name="azure-iot-device-sdk-for-c"></a>适用于 C 的 Azure IoT 设备 SDK
@@ -93,7 +93,7 @@ SDK 已在许多平台上进行了测试（有关详细信息，请参阅 [Azure
 
 可在此选项卡中管理已注册到 IoT 中心的设备。
 
-单击“创建”按钮创建设备。  将显示一个已预先填充一组密钥（主密钥和辅助密钥）的对话框。 输入“设备 ID”，并单击“创建”。  
+单击“创建”按钮创建设备。  会显示一个已预先填充一组密钥（主密钥和辅助密钥）的对话框。 输入“设备 ID”，并单击“创建”。  
 
   ![“创建设备”屏幕截图](./media/iot-hub-device-sdk-c-intro/CreateDevice.png)
 
@@ -324,7 +324,7 @@ IoTHubClient_LL_Destroy(iotHubClientHandle);
 
 ## <a name="use-the-serializer-library"></a>使用序列化程序库
 
-从概念上讲，**序列化程序**库位于 SDK 中的 **IoTHubClient** 库之上。 它使用 **IoTHubClient** 库来与 IoT 中心进行底层通信，但它添加了建模功能，消除了开发人员处理消息序列化的负担。 我们将通过一个示例充分演示此库的工作原理。
+从概念上讲，**序列化程序**库位于 SDK 中的 **IoTHubClient** 库之上。 它使用 **IoTHubClient** 库来与 IoT 中心进行底层通信，但它添加了建模功能，消除了开发人员处理消息序列化的负担。 我们通过一个示例充分演示此库的工作原理。
 
 [azure-iot-sdk-c 存储库](https://github.com/Azure/azure-iot-sdk-c)的 **serializer** 文件夹中有一个 **samples** 文件夹，其中包含名为 **simplesample\_mqtt** 的应用程序。 此示例的 Windows 版本包含以下 Visual Studio 解决方案：
 

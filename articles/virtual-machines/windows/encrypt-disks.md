@@ -16,10 +16,10 @@ origin.date: 10/30/2018
 ms.date: 11/11/2019
 ms.author: v-yeche
 ms.openlocfilehash: c4832c204e344ddf696b002e48080eb0f560abbe
-ms.sourcegitcommit: 1fd822d99b2b487877278a83a9e5b84d9b4a8ce7
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74116780"
 ---
 # <a name="encrypt-virtual-disks-on-a-windows-vm"></a>加密 Windows VM 上的虚拟磁盘
@@ -78,7 +78,7 @@ Register-AzResourceProvider -ProviderNamespace "Microsoft.KeyVault"
 New-AzResourceGroup -Location $location -Name $rgName
 ```
 
-包含加密密钥和关联的计算资源（例如存储和 VM 本身）的 Azure Key Vault 必须位于同一区域。 使用 [New-AzKeyVault](https://docs.microsoft.com/powershell/module/az.keyvault/new-azkeyvault) 创建 Azure 密钥保管库，并启用该密钥保管库进行磁盘加密。 指定 *keyVaultName* 的唯一 Key Vault 名称，如下所示：
+包含加密密钥和关联的计算资源（例如存储和 VM 本身）的 Azure Key Vault 必须位于同一区域。 使用 [New-AzKeyVault](https://docs.microsoft.com/powershell/module/az.keyvault/new-azkeyvault) 创建 Azure 密钥保管库，并启用该密钥保管库进行磁盘加密。 指定 keyVaultName  的唯一 Key Vault 名称，如下所示：
 
 ```powershell
 $keyVaultName = "myKeyVault$(Get-Random)"
@@ -95,7 +95,7 @@ New-AzKeyVault -Location $location `
 <!--Not Available on 或硬件安全模型 (HSM) 保护-->
 <!--Not Available on 高级密钥保管库-->
 
-对于这种保护模型，在启动 VM 以解密虚拟磁盘时，需要向 Azure 平台授予访问权限，使之能够请求加密密钥。 使用 [Add-AzureKeyVaultKey](https://docs.microsoft.com/powershell/module/az.keyvault/add-azkeyvaultkey) 在 Key Vault 中创建加密密钥。 以下示例创建名为 *myKey* 的密钥：
+对于这种保护模型，在启动 VM 以解密虚拟磁盘时，需要向 Azure 平台授予访问权限，使之能够请求加密密钥。 使用 [Add-AzureKeyVaultKey](https://docs.microsoft.com/powershell/module/az.keyvault/add-azkeyvaultkey) 在 Key Vault 中创建加密密钥。 以下示例创建名为 myKey  的密钥：
 
 <!--Correct for this protection models-->
 
@@ -108,7 +108,7 @@ Add-AzKeyVaultKey -VaultName $keyVaultName `
 <!--MOONCAKE CUSTOMIZED-->
 <!--UPDATE BE CAREFULLY-->
 
-## <a name="create-the-azure-active-directory-service-principal"></a>创建 Azure Active Directory 服务主体
+## <a name="create-the-azure-active-directory-service-principal"></a><a name="create-the-azure-active-directory-service-principal"></a>创建 Azure Active Directory 服务主体
 
 加密或解密虚拟磁盘时，会指定一个帐户来处理身份验证以及交换 Key Vault 中的加密密钥。 此帐户（Azure Active Directory 服务主体）允许 Azure 平台代表 VM 请求相应的加密密钥。 订阅中提供了一个默认的 Azure Active Directory 实例，不过，许多组织使用专用的 Azure Active Directory 目录。 
 
@@ -154,7 +154,7 @@ New-AzVm `
 ```
 
 ## <a name="encrypt-a-virtual-machine"></a>加密虚拟机
-使用 Azure 密钥保管库密钥通过 [Set-AzVMDiskEncryptionExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmdiskencryptionextension) 加密 VM。 以下示例检索所有密钥信息，并对名为 *myVM* 的 VM 进行加密：
+使用 Azure 密钥保管库密钥通过 [Set-AzVMDiskEncryptionExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmdiskencryptionextension) 加密 VM。 以下示例将检索所有密钥信息，然后对名为 myVM  的 VM 进行加密：
 
 <!--MOONCAKE CUSTOMIZED-->
 <!--UPDATE BE CAREFULLY-->

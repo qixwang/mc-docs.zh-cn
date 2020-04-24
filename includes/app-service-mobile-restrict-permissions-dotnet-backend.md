@@ -6,10 +6,10 @@ origin.date: 08/23/2018
 ms.date: 08/23/2018
 ms.author: v-tawe
 ms.openlocfilehash: bfcac71b52e62aa8af9567fdf21187fadc48f580
-ms.sourcegitcommit: 32d62e27e59e42c8d21a667e77b61b8d87efbc19
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/16/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "71006533"
 ---
 默认情况下，可匿名调用移动应用后端中的 API。 接下来，需限制为仅可访问已验证的客户端。  
@@ -19,7 +19,7 @@ ms.locfileid: "71006533"
     在移动应用设置中，单击“简易表”  并选择相应的表。 单击“更改权限”  ，为所有权限选择“仅限已验证的访问”  ，并单击“保存”  。
 * **.NET 后端 (C#)** :  
 
-    在服务器项目中，导航到“控制器” > “TodoItemController.cs”。   将 `[Authorize]` 属性添加到“TodoItemController”类，如下所示。  若要限制为仅可访问特定方法，还可只向这些方法应用此属性（而非类）。 重新发布服务器项目。
+    在服务器项目中，导航到“控制器” **“TodoItemController.cs”。**  >   将 `[Authorize]` 属性添加到“TodoItemController”类，如下所示。  若要限制为仅可访问特定方法，还可只向这些方法应用此属性（而非类）。 重新发布服务器项目。
 
     ```
     [Authorize]
@@ -34,4 +34,4 @@ ms.locfileid: "71006533"
     table.access = 'authenticated';
     ```
 
-    有关更多详细信息，请参阅[如何：要求在访问表时进行身份验证](../articles/app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#howto-tables-auth)。 若要了解如何从站点下载快速入门代码项目，请参阅[如何：使用 Git 下载 Node.js 后端快速入门代码项目](../articles/app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#download-quickstart)。
+    有关更多详细信息，请参阅[如何：要求在访问表时进行身份验证](../articles/app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#howto-tables-auth)。 若要了解如何从网站下载快速入门代码项目，请参阅[如何：使用 Git 下载 Node.js 后端快速入门代码项目](../articles/app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#download-quickstart)。

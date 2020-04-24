@@ -11,10 +11,10 @@ origin.date: 10/25/2018
 ms.date: 11/11/2019
 ms.author: v-yiso
 ms.openlocfilehash: d1cbd8a98483c71fdff7665ef61754edccbaaacb
-ms.sourcegitcommit: 642a4ad454db5631e4d4a43555abd9773cae8891
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "73426053"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---motivation-and-benefits"></a>将本地 Apache Hadoop 群集迁移到 Azure HDInsight - 动机和权益
@@ -89,11 +89,11 @@ Azure HDInsight 是 Hadoop 组件的云分发版。 可以通过 Azure HDInsight
 
 | **问题** | **示例** | **答案** |
 |---|---|---|
-|**主题**：**环境**|||
+|**主题**：环境 |||
 |群集分发版本|HDP 2.6.5、CDH 5.7|
 |大数据生态系统组件|HDFS、Yarn、Hive、LLAP、Impala、Kudu、HBase、Spark、MapReduce、Kafka、Zookeeper、Solr、Sqoop、Oozie、Ranger、Atlas、Falcon、Zeppelin、R|
 |群集类型|Hadoop、Spark、Confluent Kafka、Storm、Solr|
-|群集数|4|
+|分类数|4|
 |主节点数|2|
 |辅助进程节点数|100|
 |边缘节点数| 5|
@@ -129,8 +129,8 @@ Azure HDInsight 是 Hadoop 组件的云分发版。 可以通过 Azure HDInsight
 |结构化流作业|5 个作业 -- 每分钟||
 |机器学习模型训练作业|2 个作业 -- 每周一次||
 |编程语言|Python、Scala、Java||
-|脚本|Shell、Python||
-|**主题**：**数据**|||
+|脚本编写|Shell、Python||
+|**主题**：数据 |||
 |数据源|平面文件、Json、Kafka、RDBMS||
 |数据业务流程|Oozie 工作流、气流||
 |内存中查找|Apache Ignite、Redis||
@@ -139,9 +139,9 @@ Azure HDInsight 是 Hadoop 组件的云分发版。 可以通过 Azure HDInsight
 |Hive 数据库类型|Mysql、Postgres||
 |Hive 元存储的数目|2||
 |Hive 表的数目|100||
-|Ranger 策略的数目|20 个||
+|Ranger 策略的数目|20||
 |Oozie 工作流的数目|100||
-|**主题**：**缩放**|||
+|**主题**：缩放 |||
 |数据量包括复制|100 TB||
 |每日引入量|50 GB||
 |数据增长率|每年 10%||
@@ -153,11 +153,11 @@ Azure HDInsight 是 Hadoop 组件的云分发版。 可以通过 Azure HDInsight
 |已使用的平均网络百分比|25%
 |**主题**：人员 |||
 |管理员的数目|2||
-|开发人员的数目|10 个||
+|开发人员的数目|10||
 |最终用户的数目|100||
 |技能|Hadoop、Spark||
 |可用于迁移工作的资源数目|2||
-|**主题**：**限制**|||
+|**主题**：限制 |||
 |当前限制|延迟较高||
 |当前挑战|并发问题||
 
@@ -170,13 +170,13 @@ Azure HDInsight 是 Hadoop 组件的云分发版。 可以通过 Azure HDInsight
 |首选 VNet？|是||
 |需要 HA/DR？|是||
 |与其他云服务进行集成？|ADF、CosmosDB||
-|**主题**： **数据移动**  |||
+|**主题**：数据移动   |||
 |初始加载首选项|DistCp、Data box、ADF、WANDisco||
 |数据传输增量|DistCp、AzCopy||
 |正在进行的增量数据传输|DistCp、Sqoop||
-|**主题**： 监视和警报  |||
+|**主题**：监视和警报  |||
 |使用 Azure 监控和警报与集成第三方监视|使用 Azure 监视和警报||
-|**主题**： 安全性首选项  |||
+|**主题**：安全性首选项  |||
 |专用和受保护的数据管道？|是||
 |已加入域的群集 (ESP)？|     是||
 |本地 AD 同步到云？|     是||
@@ -189,7 +189,7 @@ Azure HDInsight 是 Hadoop 组件的云分发版。 可以通过 Azure HDInsight
 |需要审核？|                  是||
 |静态数据加密？|          是||
 |在传输中进行数据加密？|       是||
-|**主题**： 重建体系结构首选项  |||
+|**主题**：重建体系结构首选项  |||
 |单个群集与特定群集类型|特定群集类型||
 |共存存储与远程存储？|远程存储||
 |在远程存储数据群集大小更小？|群集大小更小||

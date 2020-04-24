@@ -8,10 +8,10 @@ origin.date: 03/01/2019
 ms.date: 11/25/2019
 ms.author: v-tawe
 ms.openlocfilehash: 66964de47c440fbcda6e40f4097b16ae0c6a0c8a
-ms.sourcegitcommit: a4b88888b83bf080752c3ebf370b8650731b01d1
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74179126"
 ---
 # <a name="resiliency-and-disaster-recovery"></a>复原能力和灾难恢复
@@ -66,7 +66,7 @@ Azure:SignalR:ConnectionString:<name>:<role>
 
 如果你偏向于将连接字符串存储到其他位置，则也可以在代码中读取连接字符串，并在调用 `AddAzureSignalR()`（在 ASP.NET Core 中）或 `MapAzureSignalR()`（在 ASP.NET 中）时将其用作参数。
 
-下面是示例代码：
+以下是示例代码：
 
 ASP.NET Core：
 

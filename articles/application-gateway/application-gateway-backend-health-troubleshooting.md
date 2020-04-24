@@ -9,10 +9,10 @@ origin.date: 08/30/2019
 ms.date: 10/23/2019
 ms.author: v-junlch
 ms.openlocfilehash: c986b035d7c9a6c68781a5d51d55e4c4bb50e1b7
-ms.sourcegitcommit: 24b69c0a22092c64c6c3db183bb0655a23340420
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "72798515"
 ---
 <a name="troubleshoot-backend-health-issues-in-application-gateway"></a>排查应用程序网关中的后端运行状况问题

@@ -8,10 +8,10 @@ ms.author: v-yiso
 origin.date: 08/16/2019
 ms.date: 11/11/2019
 ms.openlocfilehash: b44637109af68b210c4e6f1abd0e7f8bb77d468e
-ms.sourcegitcommit: 642a4ad454db5631e4d4a43555abd9773cae8891
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "73426067"
 ---
 # <a name="scenario-bindexception---address-already-in-use-in-azure-hdinsight"></a>方案：BindException - 地址已在 Azure HDInsight 中使用

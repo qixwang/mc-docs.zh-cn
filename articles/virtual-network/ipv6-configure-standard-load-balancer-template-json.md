@@ -14,10 +14,10 @@ origin.date: 07/15/2019
 ms.date: 11/25/2019
 ms.author: v-yeche
 ms.openlocfilehash: da5d94fa5b0c1aaefd2645e02c7d46d298c7a0a5
-ms.sourcegitcommit: c5e012385df740bf4a326eaedabb987314c571a1
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74203707"
 ---
 # <a name="deploy-an-ipv6-dual-stack-application-in-azure-virtual-network---template"></a>在 Azure 虚拟网络中部署 IPv6 双堆栈应用程序 - 模板

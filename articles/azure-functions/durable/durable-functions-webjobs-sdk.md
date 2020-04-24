@@ -11,10 +11,10 @@ origin.date: 04/25/2018
 ms.date: 11/19/2019
 ms.author: v-junlch
 ms.openlocfilehash: faeeb2d21e1bb8fc659b655b0f9dd2d81a040245
-ms.sourcegitcommit: a4b88888b83bf080752c3ebf370b8650731b01d1
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74178972"
 ---
 # <a name="how-to-run-durable-functions-as-webjobs"></a>如何以 WebJobs 的形式运行 Durable Functions
@@ -27,7 +27,7 @@ ms.locfileid: "74178972"
 
 WebJobs SDK 2.x 版中提供了有关链接 Durable Functions 的示例：下载或克隆 [Durable Functions 存储库](https://github.com/azure/azure-functions-durable-extension/)，然后转到 *samples\\webjobssdk\\chaining* 文件夹。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 本文假定读者熟悉 WebJobs SDK、Azure Functions C# 类库开发和 Durable Functions 的基础知识。 如需这些主题的简介，请参阅以下资源：
 
@@ -39,7 +39,7 @@ WebJobs SDK 2.x 版中提供了有关链接 Durable Functions 的示例：下载
 
 * [安装 Visual Studio 2019](https://docs.microsoft.com/visualstudio/install/)（包含 **Azure 开发**工作负荷）。
 
-  如果已安装 Visual Studio，但未配置该工作负荷，请选择“工具” > “获取工具和功能”以添加该工作负荷。  
+  如果已安装 Visual Studio，但未配置该工作负荷，请选择“工具” **“获取工具和功能”以添加该工作负荷。**  >  
 
   可以改用 [Visual Studio Code](https://code.visualstudio.com/)，但某些说明仅适用于 Visual Studio。）
 
@@ -53,9 +53,9 @@ WebJobs SDK 2.x 版中提供了有关链接 Durable Functions 的示例：下载
 
 若要将 Durable Functions 作为 WebJobs 运行，必须先创建控制台应用。 WebJobs SDK 项目只是一个装有相应 NuGet 包的控制台应用项目。
 
-在 Visual Studio 的“新建项目”对话框中，选择“Windows 经典桌面” > “控制台应用(.NET Framework)”。    在项目文件中，`TargetFrameworkVersion` 应为 `v4.6.1`。
+在 Visual Studio 的“新建项目”对话框中，选择“Windows 经典桌面” **“控制台应用(.NET Framework)”。**   >   在项目文件中，`TargetFrameworkVersion` 应为 `v4.6.1`。
 
-Visual Studio 还有一个 WebJob 项目模板，选择“云” > “Azure WebJob (.NET Framework)”即可使用此模板。   此模板会安装许多的包，其中一些包可能并不需要。
+Visual Studio 还有一个 WebJob 项目模板，选择“云” **“Azure WebJob (.NET Framework)”即可使用此模板。**  >   此模板会安装许多的包，其中一些包可能并不需要。
 
 ## <a name="install-nuget-packages"></a>安装 NuGet 包
 
@@ -77,7 +77,7 @@ Install-Package Microsoft.Extensions.Logging.Console -version 2.0.1
 
 创建控制台应用并安装所需的 NuGet 包以后，即可使用 Durable Functions。 可以使用 JobHost 代码来这样做。
 
-若要使用 Durable Functions 扩展，请对 `Main` 方法中的 `JobHostConfiguration` 对象调用 `UseDurableTask`：
+若要使用 Durable Functions 扩展，请对 `UseDurableTask` 方法中的 `JobHostConfiguration` 对象调用 `Main`：
 
 ```cs
 var config = new JobHostConfiguration();

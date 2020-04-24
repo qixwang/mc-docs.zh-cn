@@ -11,10 +11,10 @@ ms.reviewer: vanto, carlrab
 origin.date: 08/05/2019
 ms.date: 09/09/2019
 ms.openlocfilehash: a0c35cb5be5e7e2208353774a233e56afe12293a
-ms.sourcegitcommit: 2610641d9fccebfa3ebfffa913027ac3afa7742b
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/05/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "70373015"
 ---
 # <a name="azure-sql-database-advanced-threat-protection-for-single-or-pooled-databases"></a>针对单一数据库或共用数据库的 Azure SQL 数据库高级威胁防护

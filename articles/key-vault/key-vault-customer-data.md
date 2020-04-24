@@ -11,10 +11,10 @@ origin.date: 01/07/2019
 ms.date: 10/30/2018
 ms.author: v-tawe
 ms.openlocfilehash: 7a581bde69135ad7c47ca24420692ac246183965
-ms.sourcegitcommit: 642a4ad454db5631e4d4a43555abd9773cae8891
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "73426043"
 ---
 # <a name="azure-key-vault-customer-data-features"></a>Azure Key Vault 客户数据功能

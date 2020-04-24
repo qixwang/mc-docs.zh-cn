@@ -8,10 +8,10 @@ ms.topic: conceptual
 origin.date: 05/21/2019
 ms.date: 10/28/2019
 ms.openlocfilehash: a9952df742220a1fce8af5efc1a9125ade22046e
-ms.sourcegitcommit: 73f07c008336204bd69b1e0ee188286d0962c1d7
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "72914424"
 ---
 # <a name="optimize-reads-and-writes-cost-in-azure-cosmos-db"></a>优化 Azure Cosmos DB 中的读取和写入成本

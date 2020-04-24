@@ -9,10 +9,10 @@ origin.date: 04/03/2019
 ms.date: 04/21/2019
 ms.author: v-lingwu
 ms.openlocfilehash: 61488b91e429ad2990698d04b5e51f71c7d9af31
-ms.sourcegitcommit: dd0ff08835dd3f8db3cc55301815ad69ff472b13
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "70736761"
 ---
 # <a name="view-azure-advisor-recommendations-that-matter-to-you"></a>查看对你重要的 Azure 顾问建议

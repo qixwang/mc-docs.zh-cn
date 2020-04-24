@@ -6,10 +6,10 @@ origin.date: 06/25/2019
 ms.date: 09/05/2019
 ms.author: v-junlch
 ms.openlocfilehash: eeb819f5c4d7e6715ea2c735e1276fccccc926d9
-ms.sourcegitcommit: 4f1047b6848ca5dd96266150af74633b2e9c77a3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/09/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "70805815"
 ---
 若要在 Azure 中为函数应用启用流式处理日志，请执行以下操作：

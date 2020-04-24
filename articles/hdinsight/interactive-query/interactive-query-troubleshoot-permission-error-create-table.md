@@ -8,10 +8,10 @@ ms.author: v-yiso
 origin.date: 08/09/2019
 ms.date: 11/11/2019
 ms.openlocfilehash: c810c0b0a27deae3d90c79fd94872e8367ce117a
-ms.sourcegitcommit: 642a4ad454db5631e4d4a43555abd9773cae8891
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "73425672"
 ---
 # <a name="scenario-permission-denied-error-when-trying-to-create-an-apache-hive-table-in-azure-hdinsight"></a>方案：尝试在 Azure HDInsight 中创建 Apache Hive 表时出现“权限被拒绝”错误

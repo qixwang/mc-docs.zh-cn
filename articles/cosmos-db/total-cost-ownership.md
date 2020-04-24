@@ -9,10 +9,10 @@ origin.date: 08/01/2019
 ms.date: 10/28/2019
 ms.reviewer: sngun
 ms.openlocfilehash: cc16da4322b0d97171d57e934881ed4e17ff84a9
-ms.sourcegitcommit: 73f07c008336204bd69b1e0ee188286d0962c1d7
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "72912913"
 ---
 # <a name="total-cost-of-ownership-tco-with-azure-cosmos-db"></a>Azure Cosmos DB 的总拥有成本 (TCO)
@@ -62,7 +62,7 @@ Azure Cosmos DB 的无服务器预配模型消除了过度预配数据库基础�
 ## <a name="next-steps"></a>后续步骤
 
 * 详细了解 [Azure Cosmos DB 定价模型如何对客户而言更具经济效益](total-cost-ownership.md)
-* 详细了解如何[进行开发和测试优化](optimize-dev-test.md)
+* 详细了解[开发和测试优化](optimize-dev-test.md)
 * 详细了解如何[优化吞吐量成本](optimize-cost-throughput.md)
 * 详细了解如何[优化存储成本](optimize-cost-storage.md)
 * 详细了解如何[优化读取和写入成本](optimize-cost-reads-writes.md)

@@ -15,10 +15,10 @@ ms.custom: it-pro, seodec18, seo-update-azuread-jan
 ms.reviewer: krbain
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1547948b8ecfc3c2d883f589c022cb7695b3b852
-ms.sourcegitcommit: 18a0d2561c8b60819671ca8e4ea8147fe9d41feb
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "70134195"
 ---
 <!--As a brand-new Azure AD administrator, I need to view my organization’s groups along with the assigned members, so I can manage permissions to apps and services for people in my organization-->
@@ -41,7 +41,7 @@ ms.locfileid: "70134195"
 ## <a name="create-a-new-group"></a>创建一个新组 
 创建名为“MDM 策略 - 西部”的新组。  有关创建组的详细信息，请参阅[如何创建基本组并添加成员](active-directory-groups-create-azure-portal.md)。
 
-1. 依次选择“Azure Active Directory”、“组”、“新建组”。   
+1. 依次选择“Azure Active Directory”、“组”、“新建组”    。
 
 2. 填写“组”页： 
     
@@ -62,7 +62,7 @@ ms.locfileid: "70134195"
 
     - **名称：** 键入 Alain Charon  。
 
-    - **用户名：** 键入 alain\@contoso.com  。
+    - **用户名:** 键入 alain\@contoso.com  。
 
 3. 复制“密码”框中提供的自动生成的密码，然后选择“创建”。  
 
@@ -73,7 +73,7 @@ ms.locfileid: "70134195"
 
 2. 在“组 - 所有组”页中，搜索并选择“MDM 策略 - 西部”组。  
 
-3. 在“MDM 策略 - 西部概述”页中，从“管理”区域选择“成员”。   
+3. 在“MDM 策略 - 西部概述”页中，从“管理”区域选择“成员”    。
 
 4. 选择“添加成员”，然后搜索并选择“Alain Charon”。  
 

@@ -12,10 +12,10 @@ origin.date: 07/03/2019
 ms.date: 07/10/2019
 ms.author: v-junlch
 ms.openlocfilehash: 35d8b94ca7489d754e31761abac8b8991d73fb4f
-ms.sourcegitcommit: 09bf291a235f43202ba3752323395db86b16343f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "71119545"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-python"></a>快速入门：使用人脸 REST API 和 Python 检测图像中的人脸
@@ -27,7 +27,7 @@ ms.locfileid: "71119545"
 如果没有 Azure 订阅，请在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial/)。 
 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - 人脸 API 订阅密钥。 可以按照[创建认知服务帐户](/cognitive-services/cognitive-services-apis-create-account)中的说明订阅人脸 API 服务并获取密钥。
 
@@ -46,9 +46,9 @@ ms.locfileid: "71119545"
     1. 将 `subscription_key` 的值替换为你的订阅密钥。
     1. 如有必要，请将 `face_api_url` 的值替换为获取的订阅密钥所在的 Azure 区域中的人脸 API 资源的终结点 URL。
     1. （可选）将 `image_url` 的值替换为要分析的其他图像的 URL。
-1. 将代码保存为以 `.py` 为扩展名的文件。 例如，`detect-face.py`。
+1. 将代码保存为以 `.py` 为扩展名的文件。 例如，`detect-face.py` 。
 1. 打开命令提示符窗口。
-1. 在提示符处，使用 `python` 命令运行示例。 例如，`python detect-face.py`。
+1. 在提示符处，使用 `python` 命令运行示例。 例如，`python detect-face.py` 。
 
 ```python
 import requests
@@ -78,7 +78,7 @@ print(json.dumps(response.json()))
 > 如果创建的人脸 API 的 `Location` 为 `China East 2`，则需要将 URL `https://api.cognitive.azure.cn/face/v1.0/detect` 替换为 `https://chinaeast2.api.cognitive.azure.cn/face/v1.0/detect`。
 ## <a name="examine-the-response"></a>检查响应
 
-成功响应将以 JSON 格式返回。
+成功的响应以 JSON 格式返回。
 
 ```json
 [

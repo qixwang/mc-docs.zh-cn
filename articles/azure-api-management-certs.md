@@ -13,17 +13,17 @@ origin.date: 08/01/2017
 ms.date: 10/22/2018
 ms.author: v-linglwu
 ms.openlocfilehash: e5b741e89fa5d997281744f3ea0b56f530c12d54
-ms.sourcegitcommit: c72fba1cacef1444eb12e828161ad103da338bb1
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "71674837"
 ---
 # <a name="upload-an-azure-service-management-certificate"></a>上传 Azure Service Management 证书
-管理证书允许使用 Azure 提供的经典部署模型进行身份验证。 许多程序和工具（如 Visual Studio 或 Azure SDK）会使用这些证书来自动配置和部署各种 Azure 服务。 
+管理证书使你可以使用 Azure 提供的经典部署模型进行身份验证。 许多程序和工具（如 Visual Studio 或 Azure SDK）会使用这些证书来自动配置和部署各种 Azure 服务。 
 
 > [!WARNING]
-> 请注意！ 这些类型的证书允许使用它们进行身份验证的任何人管理与其相关联的订阅。
+> 请小心！ 这些类型的证书允许任何使用它们进行身份验证的人管理与它们相关联的订阅。
 >
 >
 
@@ -39,16 +39,16 @@ ms.locfileid: "71674837"
 1. 登录到 [Azure 门户](http://portal.azure.cn)。
 2. 在底部的 Azure 服务列表中，单击“所有服务”  ，然后在“常规”  服务组中选择“订阅”  。
 
-    ![“订阅”菜单](./media/azure-api-management-certs/subscriptions_menu.png)
+    ![订阅菜单](./media/azure-api-management-certs/subscriptions_menu.png)
 
-3. 请确保选择要与证书关联的相应订阅。     
+3. 请确保选择要与证书关联的正确订阅。     
 4. 选择了正确的订阅后，点按“设置”  组中的“管理证书”  。
 
     ![设置](./media/azure-api-management-certs/mgmtcerts_menu.png)
 
 5. 点按“上传”  按钮。
 
-    ![在“证书”页中上传](./media/azure-api-management-certs/certificates_page.png)
+    ![在“证书”页上传](./media/azure-api-management-certs/certificates_page.png)
 6. 填写对话框信息并点按“上传”  。
 
     ![设置](./media/azure-api-management-certs/certificate_details.png)

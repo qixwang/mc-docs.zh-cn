@@ -19,10 +19,10 @@ ms.reviewer: rapong
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2c3f790d71135afd9bba2edde7923c80fb6d5cfe
-ms.sourcegitcommit: a88cc623ed0f37731cb7cd378febf3de57cf5b45
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "73831038"
 ---
 # <a name="use-msal-for-android-with-b2c"></a>将适用于 Android 的 MSAL 与 B2C 配合使用
@@ -144,7 +144,7 @@ pca.acquireTokenSilentAsync(parameters);
 
 ## <a name="specify-a-policy"></a>指定策略
 
-由于 B2C 中的策略以单独的颁发机构表示，因此，可以通过在构造 `acquireToken` 或 `acquireTokenSilent` 参数时指定 `fromAuthority` 子句，来调用除默认策略以外的策略。  例如：
+由于 B2C 中的策略以单独的颁发机构表示，因此，可以通过在构造 `fromAuthority` 或 `acquireToken` 参数时指定 `acquireTokenSilent` 子句，来调用除默认策略以外的策略。  例如：
 
 ```java
 AcquireTokenParameters parameters = new AcquireTokenParameters.Builder()

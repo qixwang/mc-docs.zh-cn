@@ -2,14 +2,14 @@
   tocHref: /
   topicHref: /index
   items:
-    - name: 密钥保管库
+    - name: Key Vault
       tocHref: /
       topicHref: /key-vault/index
 - name: Azure
   tocHref: /java/
   topicHref: /index
   items:
-    - name: 密钥保管库
+    - name: Key Vault
       tocHref: /java/
       topicHref: /key-vault/
       items:
@@ -20,7 +20,7 @@
   tocHref: 'https://docs.microsoft.com/powershell/'
   topicHref: /index
   items:
-    - name: 密钥保管库
+    - name: Key Vault
       tocHref: 'https://docs.microsoft.com/powershell/module/'
       topicHref: /key-vault/
       items:
@@ -31,7 +31,7 @@
   tocHref: /cli/
   topicHref: /index
   items:
-    - name: 密钥保管库
+    - name: Key Vault
       tocHref: /cli/
       topicHref: /key-vault/
       items:

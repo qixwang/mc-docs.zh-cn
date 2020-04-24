@@ -8,10 +8,10 @@ origin.date: 06/10/2019
 ms.date: 09/30/2019
 ms.author: v-yeche
 ms.openlocfilehash: 58f5467da2624e77876c7fc61b9e749c6618091c
-ms.sourcegitcommit: 73f07c008336204bd69b1e0ee188286d0962c1d7
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "72913018"
 ---
 # <a name="select-clause-in-azure-cosmos-db"></a>Azure Cosmos DB 中的 SELECT 子句
@@ -37,19 +37,19 @@ SELECT <select_specification>
 
 - `<select_specification>`  
 
-    要为结果集选择的属性或值。  
+    为结果集选择的属性或值。  
 
 - `'*'`  
 
-    指定应当在不进行任何更改的情况下检索值。 指定如果处理的值是一个对象，则将检索所有属性。  
+    指定在不进行任何更改的情况下检索该值。 具体来说，如果处理的值是一个对象，将检索所有属性。  
 
 - `<object_property_list>`  
 
-    指定要检索的属性的列表。 每个返回值都是具有指定属性的对象。  
+    指定要检索的属性列表。 每个返回值将是一个具有指定属性的对象。  
 
 - `VALUE`  
 
-    指定应当检索 JSON 值而非整个 JSON 对象。 不同于 `<property_list>`，这不会将投影的值包装在对象中。  
+    指定应检索 JSON 值而不是完整的 JSON 对象。 与 `<property_list>` 不同的是，它不会将投影值包装在对象中。  
 
 - `DISTINCT`
 
@@ -57,11 +57,11 @@ SELECT <select_specification>
 
 - `<scalar_expression>`  
 
-    表示待计算值的表达式。 有关详细信息，请参阅[标量表达式](sql-query-scalar-expressions.md)部分。  
+    表示要计算的值的表达式。 请参阅[标量表达式](sql-query-scalar-expressions.md)部分，了解详细信息。  
 
 ## <a name="remarks"></a>备注
 
-只有 FROM 子句仅声明了一个别名时，`SELECT *` 语法才有效。 `SELECT *` 提供了标识投影，在不需要投影时可能十分有用。 只有当指定了 FROM 子句并且仅引入了单个输入源时，SELECT * 才有效。  
+只有当 FROM 子句已声明一个别名时，`SELECT *` 语法才有效。 `SELECT *` 提供一个标识投影，在不需要投影的情况下会有所帮助。 只有当指定了 FROM 子句，并且该字句只引入单个输入源时，SELECT * 才有效。  
 
 `SELECT <select_list>` 和 `SELECT *` 是“语法糖”，可另外使用简单的 SELECT 语句表示，如下所示。  
 
@@ -79,7 +79,7 @@ SELECT <select_specification>
 
 ## <a name="examples"></a>示例
 
-以下 SELECT 查询示例从 `id` 匹配 `AndersenFamily` 的 `Families` 中返回 `address`：
+以下 SELECT 查询示例从 `address` 匹配 `Families` 的 `id` 中返回 `AndersenFamily`：
 
 ```sql
     SELECT f.address
@@ -87,7 +87,7 @@ SELECT <select_specification>
     WHERE f.id = "AndersenFamily"
 ```
 
-其结果是：
+结果有：
 
 ```json
     [{
@@ -100,7 +100,7 @@ SELECT <select_specification>
 ```
 
 ### <a name="quoted-property-accessor"></a>带引号的属性访问器
-可以使用带引号的属性运算符 [] 访问属性。 例如，由于再也无法解析标识符“Families”，因此 `SELECT c.grade` and `SELECT c["grade"]` 是等效的。 此语法很适合用于转义包含空格和特殊字符的属性，或者其名称与 SQL 关键字或保留字相同的属性。
+可以使用带引号的属性运算符 [] 访问属性。 例如，`SELECT c.grade` 和 `SELECT c["grade"]` 是等效的。 此语法很适合用于转义包含空格和特殊字符的属性，或者其名称与 SQL 关键字或保留字相同的属性。
 
 ```sql
     SELECT f["lastName"]
@@ -118,7 +118,7 @@ SELECT <select_specification>
     WHERE f.id = "AndersenFamily"
 ```
 
-其结果是：
+结果有：
 
 ```json
     [{
@@ -136,7 +136,7 @@ SELECT <select_specification>
     WHERE f.id = "AndersenFamily"
 ```
 
-其结果是：
+结果有：
 
 ```json
     [{
@@ -157,7 +157,7 @@ SELECT <select_specification>
     WHERE f.id = "AndersenFamily"
 ```
 
-其结果是：
+结果有：
 
 ```json
     [{
@@ -174,7 +174,7 @@ SELECT <select_specification>
 ## <a name="next-steps"></a>后续步骤
 
 - [入门](sql-query-getting-started.md)
-- [Azure Cosmos DB .NET 示例](https://github.com/Azure/azure-cosmos-dotnet-v3)
+- [Azure Cosmos DB.NET 示例](https://github.com/Azure/azure-cosmos-dotnet-v3)
 - [WHERE 子句](sql-query-where.md)
 
 <!-- Update_Description: wording update, update link -->

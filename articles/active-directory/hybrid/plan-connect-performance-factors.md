@@ -13,10 +13,10 @@ ms.date: 10/25/2019
 ms.reviewer: martincoetzer
 ms.author: v-junlch
 ms.openlocfilehash: 599f41c89cfef5225dac22f421c48457a30e7b14
-ms.sourcegitcommit: e60779782345a5428dd1a0b248f9526a8d421343
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "72912741"
 ---
 # <a name="factors-influencing-the-performance-of-azure-ad-connect"></a>影响 Azure AD Connect 性能的因素
@@ -173,7 +173,7 @@ Azure AD 使用限制来防止云服务受到拒绝服务 (DoS) 攻击。 目前
 - 鉴于同步过程的磁盘输入和输出 (I/O) 要求高，为获得最佳结果，请对预配引擎的 SQL 数据库使用固态硬盘 (SSD)；如果无法使用，则考虑使用 RAID 0 或 RAID 1 配置。
 - 请勿提前执行完全同步，这会造成不必要的改动和增加响应时间。
 
-## <a name="conclusion"></a>结束语
+## <a name="conclusion"></a>结论
 
 要想优化 Azure AD Connect 实现的性能，请考虑以下建议：
 
@@ -188,5 +188,5 @@ Azure AD 使用限制来防止云服务受到拒绝服务 (DoS) 攻击。 目前
 - 尽量在 30 分钟内完成增量同步周期。 如果未在 30 分钟内完成增量同步配置文件，请修改默认同步频率以确保包括一个完整的增量同步周期。
 
 ## <a name="next-steps"></a>后续步骤
-了解有关 [将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)的详细信息。
+了解有关[将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)的详细信息。
 

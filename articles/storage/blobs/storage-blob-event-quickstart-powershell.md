@@ -10,10 +10,10 @@ ms.topic: article
 ms.service: storage
 ms.subservice: blobs
 ms.openlocfilehash: 27be63ba77514cd7ed80ffa286d8372f5dbf3da7
-ms.sourcegitcommit: 66a77af2fab8a5f5b34723dc99e4d7ce0c380e78
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "70209437"
 ---
 # <a name="quickstart-route-storage-events-to-web-endpoint-with-powershell"></a>快速入门：利用 PowerShell 将存储事件路由到 Web 终结点

@@ -15,10 +15,10 @@ ms.subservice: hybrid
 ms.author: v-junlch
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3234ff762fb8f5dc7fb0d7f998cea101deea381a
-ms.sourcegitcommit: 74f50c9678e190e2dbb857be530175f25da8905e
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/12/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "72292096"
 ---
 # <a name="what-is-federation-with-azure-ad"></a>什么是与 Azure AD 的联合？

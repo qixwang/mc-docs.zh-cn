@@ -9,10 +9,10 @@ origin.date: 03/11/2019
 ms.date: 09/02/2019
 ms.author: v-junlch
 ms.openlocfilehash: 3e812d7b6460a4a3e3c6f5e44128f72ebd94207b
-ms.sourcegitcommit: 7fcf656522eec95d41e699cb257f41c003341f64
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/05/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "70310804"
 ---
 # <a name="configure-app-service-with-application-gateway"></a>使用应用程序网关配置应用服务

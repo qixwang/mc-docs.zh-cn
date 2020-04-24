@@ -14,10 +14,10 @@ origin.date: 08/12/2019
 ms.date: 11/11/2019
 ms.author: v-jay
 ms.openlocfilehash: a039a92f0d1e8a4e8b582331989e0c3c3e26fac5
-ms.sourcegitcommit: ff8dcf27bedb580fc1fcae013ae2ec28557f48ac
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "73648801"
 ---
 # <a name="copy-data-from-hbase-using-azure-data-factory"></a>使用 Azure 数据工厂从 HBase 复制数据 
@@ -49,11 +49,11 @@ Azure 数据工厂提供内置的驱动程序用于启用连接，因此无需�
 
 HBase 链接服务支持以下属性：
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
-| type | Type 属性必须设置为：**HBase** | 是 |
+| type | type 属性必须设置为：**HBase** | 是 |
 | host | HBase 服务器的 IP 地址或主机名。 （即 `[clustername].azurehdinsight.cn`、`192.168.222.160`）  | 是 |
-| 端口 | HBase 实例用来侦听客户端连接的 TCP 端口。 默认值为 9090。 如果连接到 Azure HDInsights，请指定端口 443。 | 否 |
+| port | HBase 实例用来侦听客户端连接的 TCP 端口。 默认值为 9090。 如果连接到 Azure HDInsights，请指定端口 443。 | 否 |
 | httpPath | 与 HBase 服务器对应的部分 URL，例如使用 HDInsights 群集时的 `/hbaserest0`。 | 否 |
 | authenticationType | 用于连接到 HBase 服务器的身份验证机制。 <br/>允许值包括：匿名，基本   | 是 |
 | username | 用于连接到 HBase 实例的用户名。  | 否 |
@@ -130,10 +130,10 @@ HBase 链接服务支持以下属性：
 
 要从 HBase 复制数据，请将数据集的 type 属性设置为“HBaseObject”  。 支持以下属性：
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为：**HBaseObject** | 是 |
-| tableName | 表名称。 | 否（如果指定了活动源中的“query”） |
+| tableName | 表的名称。 | 否（如果指定了活动源中的“query”） |
 
 **示例**
 
@@ -160,10 +160,10 @@ HBase 链接服务支持以下属性：
 
 要从 HBase 复制数据，请将复制活动中的源类型设置为“HBaseSource”  。 复制活动**source**部分支持以下属性：
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
-| type | 复制活动源的 type 属性必须设置为：**HBaseSource** | 是 |
-| query | 使用自定义 SQL 查询读取数据。 例如：`"SELECT * FROM MyTable"`。 | 否（如果指定了数据集中的“tableName”） |
+| type | 复制活动 source 的 type 属性必须设置为：**HBaseSource** | 是 |
+| 查询 | 使用自定义 SQL 查询读取数据。 例如：`"SELECT * FROM MyTable"`。 | 否（如果指定了数据集中的“tableName”） |
 
 **示例：**
 

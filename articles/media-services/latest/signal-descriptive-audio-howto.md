@@ -14,10 +14,10 @@ origin.date: 09/25/2019
 ms.date: 11/04/2019
 ms.author: v-jay
 ms.openlocfilehash: 50f1859471f46657a3d6e4487fae96b06d2a06d1
-ms.sourcegitcommit: f9a257e95444cb64c6d68a7a1cfe7e94c5cc5b19
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "73416289"
 ---
 # <a name="signal-descriptive-audio-tracks"></a>指示描述性音频轨道
@@ -371,7 +371,7 @@ private static async Task<StreamingLocator> CreateStreamingLocatorAsync(
 
 ### <a name="get-streaming-urls"></a>获取流式 URL
 
-创建[流定位符](https://docs.microsoft.com/rest/api/media/streaminglocators)后，可以获取流 URL，如 **GetStreamingURLs** 中所示。 若要生成 URL，需要连接[流式处理终结点](https://docs.microsoft.com/rest/api/media/streamingendpoints)的主机名和**流定位符**路径。 此示例使用默认的**流式处理终结点**  。 首次创建媒体服务帐户时，默认的**流式处理终结点**处于停止状态，因此需要调用 **Start**  。
+创建[流定位符](https://docs.microsoft.com/rest/api/media/streaminglocators)后，可以获取流 URL，如 **GetStreamingURLs** 中所示。 若要生成 URL，需要连接[流式处理终结点](https://docs.microsoft.com/rest/api/media/streamingendpoints)的主机名和**流定位符**路径。 此示例使用默认的**流式处理终结点**  。 首次创建媒体服务帐户时，此默认的**流式处理终结点**处于停止状态，因此需要调用 **Start**  。
 
 > [!NOTE]
 > 在此方法中，需要指定在创建输出资产的**流定位符**时所用的 locatorName。

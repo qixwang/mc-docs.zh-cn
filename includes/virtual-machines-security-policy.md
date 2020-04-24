@@ -6,10 +6,10 @@ origin.date: 10/26/2018
 ms.date: 11/11/2019
 ms.author: v-yeche
 ms.openlocfilehash: 30cfc79a84ed43a0cc4c7fe1da0ee047a2befe77
-ms.sourcegitcommit: 5844ad7c1ccb98ff8239369609ea739fb86670a4
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "73831434"
 ---
 为了所运行的应用程序，请务必确保虚拟机 (VM) 安全。 保护 VM 可以添加一个或多个 Azure 服务和功能，这些服务和功能涵盖保护对 VM 的访问和保护数据存储。 按照本文提供的信息操作，可确保 VM 和应用程序安全。
@@ -21,11 +21,11 @@ ms.locfileid: "73831434"
 <!--Not Available ## Azure Security Center-->
 
 
-## <a name="encryption"></a>Encryption
+## <a name="encryption"></a>加密
 
 为了增强 [Windows VM](../articles/virtual-machines/windows/encrypt-disks.md) 和 [Linux VM](../articles/virtual-machines/linux/disk-encryption-overview.md) 的安全性，可以加密 Azure 中的虚拟磁盘。 Windows VM 上的虚拟磁盘使用 BitLocker 进行静态加密。 Linux VM 上的虚拟磁盘是使用 dm-crypt 静态加密的。 
 
-加密 Azure 中的虚拟磁盘不会产生费用。 可以使用软件保护将加密密钥存储在 Azure Key Vault 中。 这些加密密钥用于加密和解密附加到 VM 的虚拟磁盘。 可以控制这些加密密钥，以及审核对它们的使用。 打开和关闭 VM 时，Azure Active Directory 服务主体提供一个安全机制用于颁发这些加密密钥。
+加密 Azure 中的虚拟磁盘不会产生费用。 可以使用软件保护将加密密钥存储在 Azure Key Vault 中。 这些加密密钥用于加密和解密附加到 VM 的虚拟磁盘。 可以控制这些加密密钥，以及审核对它们的使用。 打开和关闭 VM 时，Azure Active Directory 服务主体将提供一个安全机制用于颁发这些加密密钥。
 
 <!--Not Available on , or you can import or generate your keys in Hardware Security Modules (HSMs) certified to FIPS 140-2 level 2 standards-->
 
@@ -33,9 +33,9 @@ ms.locfileid: "73831434"
 
 机密和证书可以建模为资源并由 [Key Vault](../articles/key-vault/key-vault-whatis.md) 提供。 可以使用 Azure PowerShell 为 [Windows VM](../articles/virtual-machines/windows/key-vault-setup.md) 创建密钥保管库，为 [Linux VM](../articles/virtual-machines/linux/key-vault-setup.md) 创建 Azure CLI。 还可以创建用于加密的密钥。
 
-密钥保管库访问策略单独授予对密钥、机密和证书的权限。 例如，可以向用户授予仅限密钥的访问权限，而不授予对机密的权限。 但是，对访问密钥、机密或证书的权限是在保管库级别分配的。 换而言之，[密钥保管库访问策略](../articles/key-vault/key-vault-secure-your-key-vault.md)不支持对象级别的权限。
+密钥保管库访问策略单独授予对密钥、机密和证书的权限。 例如，可以向用户提供仅针对密钥的访问权限，但不提供针对机密的权限。 但是，访问密钥、机密或证书的权限是保管库级别的。 换而言之，[密钥保管库访问策略](../articles/key-vault/key-vault-secure-your-key-vault.md)不支持对象级别的权限。
 
-连接到 VM 时，应使用公钥加密，提供更安全的方式登录到 VM。 此过程涉及使用安全外壳 (SSH) 命令进行公钥和私钥交换，对自己（而不是用户名和密码）进行身份验证。 密码容易受到暴力破解攻击，尤其是在面向 Internet 的 VM 上（如 Web 服务器）。 使用安全外壳 (SSH) 密钥对，可以创建使用 SSH 密钥进行身份验证的 [Linux VM](../articles/virtual-machines/linux/mac-create-ssh-keys.md)，从而无需密码即可登录。 还可以使用 SSH 密钥从 [Windows VM](../articles/virtual-machines/linux/ssh-from-windows.md) 连接到 Linux VM。
+连接到 VM 时，应使用公钥加密，提供更安全的方式登录到 VM。 此过程涉及使用安全外壳 (SSH) 命令进行公钥和私钥交换，对自己（而不是用户名和密码）进行身份验证。 密码易受到强力破解攻击，特别是在面向 Internet 的 VM（如 Web 服务器）上。 使用安全外壳 (SSH) 密钥对，可以创建使用 SSH 密钥进行身份验证的 [Linux VM](../articles/virtual-machines/linux/mac-create-ssh-keys.md)，从而无需密码即可登录。 还可以使用 SSH 密钥从 [Windows VM](../articles/virtual-machines/linux/ssh-from-windows.md) 连接到 Linux VM。
 
 ## <a name="managed-identities-for-azure-resources"></a>Azure 资源的托管标识
 
@@ -49,7 +49,7 @@ Azure Active Directory (Azure AD) 中的 Azure 资源托管标识功能可以解
 
 ## <a name="role-based-access-control"></a>基于角色的访问控制
 
-使用[基于角色的访问控制 (RBAC)](../articles/role-based-access-control/overview.md)，可以在团队中对职责进行分配，仅向 VM 上的用户授予执行作业所需的访问权限。 可以仅允许某些操作，而不是向 VM 上的每个人授予不受限制的权限。 可以使用 [Azure CLI](https://docs.azure.cn/cli/role?view=azure-cli-latest) 或 [Azure PowerShell](../articles/role-based-access-control/role-assignments-powershell.md) 为 [Azure 门户](../articles/role-based-access-control/role-assignments-portal.md)中的 VM 配置访问控制。
+使用[基于角色的访问控制 (RBAC)](../articles/role-based-access-control/overview.md)，可以在团队中对职责进行分配，仅向 VM 上的用户授予执行作业所需的访问权限。 可以仅允许某些操作，而不是向 VM 上的每个人授予不受限制的权限。 可以使用 [Azure CLI](../articles/role-based-access-control/role-assignments-portal.md) 或 [Azure PowerShell](https://docs.azure.cn/cli/role?view=azure-cli-latest) 为 [Azure 门户](../articles/role-based-access-control/role-assignments-powershell.md)中的 VM 配置访问控制。
 
 <!-- Not Avaiable on -## Next steps-->
 <!-- Not Avaiable on - [Linux](../articles/virtual-machines/linux/tutorial-azure-security.md)-->

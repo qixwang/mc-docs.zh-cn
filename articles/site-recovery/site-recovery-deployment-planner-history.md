@@ -10,10 +10,10 @@ origin.date: 07/29/2019
 ms.date: 08/26/2019
 ms.author: v-yeche
 ms.openlocfilehash: 6286be5705e3c05d2350d41e7419b5278fd77ea1
-ms.sourcegitcommit: e0225b4d68a71bfa5bbcb7d8d7e0214b9a17dc5d
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "71083153"
 ---
 # <a name="azure-site-recovery-deployment-planner-version-history"></a>Azure Site Recovery 部署规划器版本历史记录

@@ -15,10 +15,10 @@ ms.date: 03/18/2019
 ms.topic: tutorial
 ms.author: v-yeche
 ms.openlocfilehash: 1c12b81834d906947a55767d4b787d34ad203920
-ms.sourcegitcommit: c5e012385df740bf4a326eaedabb987314c571a1
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74203653"
 ---
 <!--MOONCAKE: DO NOT RELEASE TO AZURE CHINA CLOUD DUE TO MISSING RESOURCE PROVIDER OF Microsoft.DeploymentManager-->
@@ -172,7 +172,7 @@ ms.locfileid: "74203653"
     - **角色**：授予足够的权限以完成项目部署（Web 应用程序和存储帐户）。 对于本教程，请选择“参与者”。  在实践中，最好是将权限限制为最低权限。
     - **已将访问权限分配到**：选择“用户分配的托管标识”。 
     - 选择在本教程前面创建的用户分配的托管标识。
-6. 选择“保存”。 
+6. 选择“保存”  。
 
 ## <a name="create-the-service-topology-template"></a>创建服务拓扑模板
 
@@ -343,7 +343,7 @@ variables 节定义资源的名称。 请确保服务拓扑名称、服务名称
         -Verbose
     ```
 
-    在运行此 cmdlet 之前，必须先安装部署管理器 PowerShell cmdlet。 请参阅“先决条件”。 -Verbose 开关可用于查看整个输出。
+    在运行此 cmdlet 之前，必须先安装部署管理器 PowerShell cmdlet。 请参阅“先决条件”。 可以使用 -Verbose 开关来查看整个输出。
 
     以下示例显示正在运行状态：
 

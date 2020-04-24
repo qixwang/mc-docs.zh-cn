@@ -6,10 +6,10 @@ origin.date: 05/02/2019
 ms.date: 08/26/2019
 ms.author: v-yeche
 ms.openlocfilehash: 57fb5024cfa07061ce9908d90547f15507365a45
-ms.sourcegitcommit: 18a0d2561c8b60819671ca8e4ea8147fe9d41feb
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "70134508"
 ---
 ## <a name="prerequisites"></a>先决条件

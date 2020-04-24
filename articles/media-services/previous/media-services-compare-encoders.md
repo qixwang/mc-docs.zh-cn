@@ -1,5 +1,5 @@
 ---
-title: Azure 点播媒体编码器之间的对比 | Microsoft Docs
+title: Azure 点播媒体编码器之间的对比 | Microsoft 文档
 description: 本主题对 **Media Encoder Standard** 和**媒体编码器高级工作流**的编码功能进行了比较。
 services: media-services
 documentationcenter: ''
@@ -17,10 +17,10 @@ ms.date: 09/23/2019
 ms.author: v-jay
 ms.reviewer: anilmur
 ms.openlocfilehash: b89c8d2d44d1472cd091eaac66e68f01ccc10dba
-ms.sourcegitcommit: 8248259e4c3947aa0658ad6c28f54988a8aeebf8
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "71124408"
 ---
 # <a name="comparison-of-azure-on-demand-media-encoders"></a>Azure 点播媒体编码器之间的对比  
@@ -31,7 +31,7 @@ ms.locfileid: "71124408"
 
 下表比较了 Media Encoder Standard (MES) 和媒体编码器高级工作流 (MEPW) 的功能。 
 
-|功能|Media Encoder Standard|媒体编码器高级工作流|
+|功能|媒体编码器标准版|媒体编码器高级工作流|
 |---|---|---|
 |在编码时应用条件逻辑<br/>（例如，如果输入是 HD，执行 5.1 音频编码）|否|是|
 |隐藏式字幕|否|[是](media-services-premium-workflow-encoder-formats.md#closed_captioning)|
@@ -44,14 +44,14 @@ ms.locfileid: "71124408"
 |图形叠加层|来自图像源|来自图像和文本源|
 |多语言音轨|受限制|[是](media-services-media-encoder-premium-workflow-multiplefilesinput.md#example-2--multiple-audio-language-encoding)|
 
-## <a id="billing"></a>每个编码器使用的计费表
-| 媒体处理器名称 | 适用定价 | 注释 |
+## <a name="billing-meter-used-by-each-encoder"></a><a id="billing"></a>每个编码器使用的计费表
+| 媒体处理器名称 | 适用定价 | 说明 |
 | --- | --- | --- |
 | **Media Encoder Standard** |编码器 |编码任务会根据 ENCODER 列下作为输出生成的所有媒体文件的总持续时间（分钟）计费，费率已在[此处][1]指定。 |
 | **媒体编码器高级工作流** |高级编码器 |编码任务会根据 PREMIUM ENCODER 列下作为输出生成的所有媒体文件的总持续时间（分钟）计费，费率已在[此处][1]指定。 |
 
 ## <a name="input-containerfile-formats"></a>输入容器/文件格式
-| 输入容器/文件格式 | Media Encoder Standard | 媒体编码器高级工作流 |
+| 输入容器/文件格式 | 媒体编码器标准版 | 媒体编码器高级工作流 |
 | --- | --- | --- |
 | Adobe® Flash® F4V |是 |是 |
 | MXF/SMPTE 377M |是 |是 |
@@ -68,7 +68,7 @@ ms.locfileid: "71124408"
 | QuickTime (.mov) |是 |否 |
 
 ## <a name="input-video-codecs"></a>输入视频编解码器
-| 输入视频编解码器 | Media Encoder Standard | 媒体编码器高级工作流 |
+| 输入视频编解码器 | 媒体编码器标准版 | 媒体编码器高级工作流 |
 | --- | --- | --- |
 | AVC 8 位/10 位，最高支持 4:2:2，包括 AVCIntra |8 位 4:2:0 和 4:2:2 |是 |
 | Avid DNxHD（MXF 格式） |是 |是 |
@@ -78,7 +78,7 @@ ms.locfileid: "71124408"
 | MPEG-1 |是 |是 |
 | Windows Media 视频/VC-1 |是 |是 |
 | Canopus HQ/HQX |否 |否 |
-| MPEG-4 第 2 部分 |是 |否 |
+| Mpeg-4 第 2 部分 |是 |否 |
 | [Theora](https://en.wikipedia.org/wiki/Theora) |是 |否 |
 | Apple ProRes 422 |是 |否 |
 | Apple ProRes 422 LT |是 |否 |
@@ -95,7 +95,7 @@ ms.locfileid: "71124408"
 | Dolby® E |否 |是 |
 | Dolby® Digital (AC3) |否 |是 |
 | Dolby® Digital Plus (E-AC3) |否 |是 |
-| AAC（AAC-LC、AAC-HE 和 AAC-HEv2；最高支持 5.1） |是 |是 |
+| AAC(AAC-LC、AAC-HE 和 AAC-HEv2；最高支持 5.1） |是 |是 |
 | MPEG Layer 2 |是 |是 |
 | MP3 (MPEG-1 Audio Layer 3) |是 |是 |
 | Windows Media 音频 |是 |是 |
@@ -105,7 +105,7 @@ ms.locfileid: "71124408"
 | [Vorbis](https://en.wikipedia.org/wiki/Vorbis)</a> |是 |否 |
 
 ## <a name="output-containerfile-formats"></a>输出容器/文件格式
-| 输出容器/文件格式 | Media Encoder Standard | 媒体编码器高级工作流 |
+| 输出容器/文件格式 | 媒体编码器标准版 | 媒体编码器高级工作流 |
 | --- | --- | --- |
 | Adobe® Flash® F4V |否 |是 |
 | MXF（OP1a、XDCAM 和 AS02） |否 |是 |
@@ -118,7 +118,7 @@ ms.locfileid: "71124408"
 | 平滑流文件格式 (PIFF 1.3) |否 |是 |
 
 ## <a name="output-video-codecs"></a>输出视频编解码器
-| 输出视频编解码器 | Media Encoder Standard | 媒体编码器高级工作流 |
+| 输出视频编解码器 | 媒体编码器标准版 | 媒体编码器高级工作流 |
 | --- | --- | --- |
 | AVC（H.264；8 位；最高支持 High Profile、Level 5.2；4K Ultra HD；AVC Intra） |仅限 8 位 4:2:0 |是 |
 | HEVC（H.265；8 位和 10 位；）  |否 |是 |
@@ -131,12 +131,12 @@ ms.locfileid: "71124408"
 | BMP 缩略图创建 |是 |否 |
 
 ## <a name="output-audio-codecs"></a>输出音频编解码器
-| 输出音频编解码器 | Media Encoder Standard | 媒体编码器高级工作流 |
+| 输出音频编解码器 | 媒体编码器标准版 | 媒体编码器高级工作流 |
 | --- | --- | --- |
 | AES（SMPTE 331M 和 302M、AES3-2003） |否 |是 |
 | Dolby® Digital (AC3) |否 |是 |
 | Dolby® Digital Plus (E-AC3)，最高支持 7.1 |否 |是 |
-| AAC（AAC-LC、AAC-HE 和 AAC-HEv2；最高支持 5.1） |是 |是 |
+| AAC(AAC-LC、AAC-HE 和 AAC-HEv2；最高支持 5.1） |是 |是 |
 | MPEG Layer 2 |否 |是 |
 | MP3 (MPEG-1 Audio Layer 3) |否 |是 |
 | Windows Media 音频 |否 |是 |

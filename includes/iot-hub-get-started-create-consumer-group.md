@@ -1,14 +1,14 @@
 ---
 ms.openlocfilehash: 1c0b8b24cc9e56c0624110a2d7bcc67709845121
-ms.sourcegitcommit: 3f0c63a02fa72fd5610d34b48a92e280c2cbd24a
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78155301"
 ---
 ## <a name="add-a-consumer-group-to-your-iot-hub"></a>将使用者组添加到 IoT 中心
 
-应用程序使用使用者组从 Azure IoT 中心提取数据。 在本教程中，将创建一个使用者组，供即将推出的 Azure 服务用来从 IoT 中心读取数据。
+应用程序使用使用者组从 Azure IoT 中心提取数据。 在本教程中，你将创建一个使用者组，供即将到来的 Azure 服务用来从 IoT 中心读取数据。
 
 要将使用者组添加到 IoT 中心，请执行以下步骤：
 

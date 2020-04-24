@@ -10,18 +10,18 @@ ms.date: 09/09/2019
 ms.author: v-jay
 ms.custom: include file
 ms.openlocfilehash: bea02a82688a6acd80e5044f93d684e2465c05ef
-ms.sourcegitcommit: dd0ff08835dd3f8db3cc55301815ad69ff472b13
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "70737483"
 ---
 下表描述 Azure 计划程序中各主要的配额、限制、默认值和中止值。
 
-| Resource | 限制说明 |
+| 资源 | 限制说明 |
 | -------- | ----------------- |
 | **作业大小** | 最大作业大小为 16,000。 如果 PUT 或 PATCH 操作生成的作业大小超过此限制，则返回 400 错误请求状态代码。 | 
-| **作业集合** | 每个 Azure 订阅的最大作业集合数为 200,000 个。 | 
+| **作业集合数** | 每个 Azure 订阅的最大作业集合数为 200,000 个。 | 
 | **每个集合的作业数** | 默认情况下，最大作业数在免费作业集合中为 5 个作业，在标准作业集合中为 50 个作业。 <p>在作业集合上，可更改作业的最大数目。 作业集合中的所有作业均限制为对作业集合设置的值。 如果尝试创建超过最大作业配额数目的更多作业，则请求会失败并且具有 409 冲突状态代码。 | 
 | **距离开始时间的时间** | 最大“距离开始时间的时间”为 18 个月。 |
 | **重复间隔** | 最大重复间隔为 18 个月。 | 

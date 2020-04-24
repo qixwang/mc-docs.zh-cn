@@ -9,10 +9,10 @@ origin.date: 09/20/2019
 ms.date: 11/04/2019
 ms.author: v-jay
 ms.openlocfilehash: 38996de5bf9e818c4cd79eb222f47468b793f2bb
-ms.sourcegitcommit: f9a257e95444cb64c6d68a7a1cfe7e94c5cc5b19
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "73416288"
 ---
 # <a name="azure-cli-script-example-create-a-dns-zone-and-record"></a>Azure CLI 脚本示例：创建 DNS 区域和记录
@@ -65,7 +65,7 @@ az group delete -n myResourceGroup
 
 此脚本使用以下命令创建资源组、虚拟机、可用性集、负载均衡器和所有相关资源。 表中的每条命令均链接到特定于命令的文档。
 
-| 命令 | 注释 |
+| Command | 说明 |
 |---|---|
 | [az group create](/cli/group#az-group-create) | 创建用于存储所有资源的资源组。 |
 | [az network dns zone create](/cli/network/dns/zone#az-network-dns-zone-create) | 创建 Azure DNS 区域。 |

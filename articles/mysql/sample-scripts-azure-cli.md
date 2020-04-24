@@ -10,10 +10,10 @@ ms.custom: mvc
 origin.date: 02/28/2018
 ms.date: 11/04/2019
 ms.openlocfilehash: a33b733073e4c4a7c4379d560989ecefbf75b642
-ms.sourcegitcommit: cb2caa72ec0e0922a57f2fa1056c25e32c61b570
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "73142146"
 ---
 # <a name="azure-cli-samples-for-azure-database-for-mysql"></a>用于 MySQL 的 Azure 数据库的 Azure CLI 示例 

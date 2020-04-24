@@ -19,10 +19,10 @@ ms.author: v-jay
 ms.reviewer: misainat
 ms.lastreviewed: 11/05/2018
 ms.openlocfilehash: 1cc8bc8a36fe1a0875d28841327e343fa540c72d
-ms.sourcegitcommit: 713bd1d1b476cec5ed3a9a5615cfdb126bc585f9
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "72578512"
 ---
 # <a name="redeploy-the-asdk"></a>重新部署 ASDK

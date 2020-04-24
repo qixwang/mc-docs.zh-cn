@@ -9,10 +9,10 @@ ms.date: 11/25/2019
 ms.author: v-yeche
 ms.reviewer: owend
 ms.openlocfilehash: df569cee4a843a1a06cee97b5dd0c13b035759e6
-ms.sourcegitcommit: c5e012385df740bf4a326eaedabb987314c571a1
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74203618"
 ---
 <!--Notice: Verify sucessfully-->
@@ -25,7 +25,7 @@ ms.locfileid: "74203618"
 > * 使用 Power BI Desktop 进行连接
 > * 创建基本报表
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - 向服务器中[添加 adventureworks 示例模型数据库](../analysis-services-create-sample-model.md)。
 - 具有 adventureworks 示例模型数据库的 [*读取*](../analysis-services-server-admins.md) 权限。
@@ -65,7 +65,7 @@ ms.locfileid: "74203618"
 
     ![可视化效果](./media/analysis-services-tutorial-pbid/aas-pbid-visualizations-report.png)
 
-5. 在“字段” >  **Internet Sales** 表中，选择 **Internet Sales Total** 和 **Margin** 度量值。  在 **Product Category** 表中，选择 **Product Category Name**。
+5. 在“字段”  Internet Sales >  表中，选择 **Internet Sales Total** 和 **Margin** 度量值。  在 **Product Category** 表中，选择 **Product Category Name**。
 
     ![完成报表](./media/analysis-services-tutorial-pbid/aas-pbid-complete-report.png)
 

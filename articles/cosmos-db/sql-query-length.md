@@ -9,10 +9,10 @@ ms.date: 10/28/2019
 ms.author: v-yeche
 ms.custom: query-reference
 ms.openlocfilehash: eecd15d1f7333ab6f5a3af4004d3ad7000833b9d
-ms.sourcegitcommit: 73f07c008336204bd69b1e0ee188286d0962c1d7
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "72914703"
 ---
 # <a name="length-azure-cosmos-db"></a>LENGTH (Azure Cosmos DB)
@@ -31,17 +31,17 @@ LENGTH(<str_expr>)
 
 ## <a name="return-types"></a>返回类型
 
-  返回一个数值表达式。  
+  返回数值表达式。  
 
 ## <a name="examples"></a>示例
 
-  以下示例返回某个字符串的长度。  
+  以下示例将返回字符串的长度。  
 
 ```sql
 SELECT LENGTH("abc") AS len 
 ```  
 
- 下面是结果集。  
+ 下面是结果集：  
 
 ```json
 [{"len": 3}]  

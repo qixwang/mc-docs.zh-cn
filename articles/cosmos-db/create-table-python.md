@@ -11,10 +11,10 @@ ms.date: 10/28/2019
 ms.author: v-yeche
 ms.custom: seo-python-october2019
 ms.openlocfilehash: 9685a0355f972cec64071003334603a9d0fb1874
-ms.sourcegitcommit: 73f07c008336204bd69b1e0ee188286d0962c1d7
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "72970272"
 ---
 <!--Verify sucessfully-->
@@ -31,14 +31,14 @@ ms.locfileid: "72970272"
 
 Azure Cosmos DB 是世纪互联提供的多区域分布式多模型数据库服务。 可快速创建和查询文档、键/值、宽列和图形数据库，所有这些都受益于 Azure Cosmos DB 核心的多区域分布和水平缩放功能。 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
 
 此外：
 
-* 如果尚未安装 Visual Studio 2019，可以下载并使用**免费的** [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/)。 在安装 Visual Studio 的过程中，请确保选择“Azure 开发”和“Python 开发”工作负荷。  
+* 如果尚未安装 Visual Studio 2019，可以下载并使用**免费**的 [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/)。 在安装 Visual Studio 的过程中，请确保选择“Azure 开发”和“Python 开发”工作负荷。  
 * 另请在“Python 开发”工作负荷中选择“Python 2”选项，  或者从 [python.org](https://www.python.org/downloads/release/python-2712/) 下载 Python 2.7。
 
 ## <a name="create-a-database-account"></a>创建数据库帐户
@@ -91,7 +91,7 @@ Azure Cosmos DB 是世纪互联提供的多区域分布式多模型数据库服�
 
 2. 使用右侧的按钮复制帐户名称。
 
-3. 打开 config.py 文件，将帐户名称从门户粘贴到第 19 行的 STORAGE_ACCOUNT_NAME 值中。
+3. 打开 config.py 文件，并将帐户名称从门户粘贴到第 19 行的 STORAGE_ACCOUNT_NAME 中。
 
 4. 返回到门户，然后复制主键。
 

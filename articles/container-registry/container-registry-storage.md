@@ -10,10 +10,10 @@ origin.date: 03/21/2018
 ms.date: 08/26/2019
 ms.author: v-yeche
 ms.openlocfilehash: 29b119f1b1911d984294ebccc2efd07f1d71ab8d
-ms.sourcegitcommit: 18a0d2561c8b60819671ca8e4ea8147fe9d41feb
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "70134456"
 ---
 # <a name="container-image-storage-in-azure-container-registry"></a>Azure 容器注册表中的容器映像存储
@@ -36,7 +36,7 @@ Azure 使用异地冗余存储方案来防止容器映像丢失。 Azure 容器�
 
 下表介绍了针对 Azure 容器注册表设置的容器映像和存储限制。
 
-| Resource | 限制 |
+| 资源 | 限制 |
 | -------- | :---- |
 | 存储库 | 无限制 |
 | 映像 | 无限制 |

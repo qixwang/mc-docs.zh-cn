@@ -13,10 +13,10 @@ origin.date: 01/22/2018
 ms.date: 11/11/2019
 ms.author: v-jay
 ms.openlocfilehash: 064f9aba679398bc8895f18dd392089addc69d2c
-ms.sourcegitcommit: ff8dcf27bedb580fc1fcae013ae2ec28557f48ac
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "73648608"
 ---
 # <a name="incrementally-load-data-from-a-source-data-store-to-a-destination-data-store"></a>以增量方式将数据从源数据存储加载到目标数据存储
@@ -55,7 +55,7 @@ ms.locfileid: "73648608"
 - [按 LastModifiedDate 复制新文件](solution-template-copy-new-files-lastmodifieddate.md)
 
 ## <a name="loading-new-files-only-by-using-time-partitioned-folder-or-file-name"></a>仅通过使用时间分区文件夹或文件名称来加载新文件。
-仅可以复制新文件，其中文件或文件夹已经过时间分区，时间片信息作为文件或文件夹名称的一部分（如 /yyyy/mm/dd/file.csv）。 这是以增量方式加载新文件的最高性能方法。 
+仅可以复制新文件，其中文件或文件夹已经过时间分区，时间片信息作为文件或文件夹名称的一部分（如 /yyyy/mm/dd/file.csv）。 这是用于增量加载新文件的性能最好的方法。 
 
 有关分步说明，请参阅以下教程： <br/>
 - [基于时间分区文件夹或文件名称以增量方式将新文件从 Azure Blob 存储复制到 Azure Blob 存储](tutorial-incremental-copy-partitioned-file-name-copy-data-tool.md)

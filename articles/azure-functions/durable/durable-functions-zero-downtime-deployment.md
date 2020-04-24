@@ -10,10 +10,10 @@ origin.date: 10/10/2019
 ms.date: 11/19/2019
 ms.author: v-junlch
 ms.openlocfilehash: 00f3fff0a879e6329c1fe450169f311d8b1dfa88
-ms.sourcegitcommit: a4b88888b83bf080752c3ebf370b8650731b01d1
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74178975"
 ---
 # <a name="zero-downtime-deployment-for-durable-functions"></a>Durable Functions 的零停机时间部署
@@ -29,7 +29,7 @@ Durable Functions 的[可靠执行模型](/azure-functions/durable/durable-funct
 
 下图比较了实现 Durable Functions 零停机时间部署的三个主要策略： 
 
-| 策略 |  使用时机 | 优点 | 缺点 |
+| 策略 |  何时使用 | 优点 | 缺点 |
 | -------- | ------------ | ---- | ---- |
 | [版本控制](#versioning) |  不经常出现[中断性变更](durable-functions-versioning.md)的应用程序。 | 易于实施。 |  函数应用的内存大小和函数数目增加。<br/>代码复制。 |
 | [带槽的状态检查](#status-check-with-slot) | 不存在长时间运行（超过 24 小时）的业务流程或经常重叠业务流程的系统。 | 简单的基本代码。<br/>不需要额外的函数应用管理。 | 需要额外的存储帐户或任务中心管理。<br/>需要有几段时间没有任何业务流程运行。 |
@@ -168,7 +168,7 @@ Azure Pipelines 会在部署开始之前检查函数应用是否存在正在运�
 
 ### <a name="tracking-store-settings"></a>跟踪存储设置
 
-每个函数应用应使用单独的计划队列（这些队列可能位于不同的存储帐户中）。 若要跨应用程序的所有版本查询所有业务流程实例，可以在函数应用之间共享实例和历史记录表。 可以通过在 [host.json 设置](durable-functions-bindings.md#host-json)文件中配置 `trackingStoreConnectionStringName` 和 `trackingStoreNamePrefix` 设置来共享表，使它们全部使用相同的值。
+每个函数应用应使用单独的计划队列（这些队列可能位于不同的存储帐户中）。 若要跨应用程序的所有版本查询所有业务流程实例，可以在函数应用之间共享实例和历史记录表。 可以通过在 `trackingStoreConnectionStringName`host.json 设置`trackingStoreNamePrefix`文件中配置 [ 和 ](durable-functions-bindings.md#host-json) 设置来共享表，使它们全部使用相同的值。
 
 有关详细信息，请参阅[在 Azure 中管理 Durable Functions 中的实例](durable-functions-instance-management.md)。
 

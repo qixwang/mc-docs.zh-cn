@@ -16,19 +16,19 @@ origin.date: 03/18/2019
 ms.date: 09/23/2019
 ms.author: v-jay
 ms.openlocfilehash: 5f6ddfd387d40f18e07e624301dd80466fabbe9f
-ms.sourcegitcommit: 8248259e4c3947aa0658ad6c28f54988a8aeebf8
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "71124520"
 ---
-# <a name="how-to-generate-thumbnails-using-media-encoder-standard-with-net"></a>如何使用 Media Encoder Standard 通过 .NET 来生成缩略图 
+# <a name="how-to-generate-thumbnails-using-media-encoder-standard-with-net"></a>如何使 Media Encoder Standard 通过 .NET 来生成缩略图 
 
-可以使用 Media Encoder Standard 以 [JPEG](https://en.wikipedia.org/wiki/JPEG)、[PNG](https://en.wikipedia.org/wiki/Portable_Network_Graphics) 或 [BMP](https://en.wikipedia.org/wiki/BMP_file_format) 图像文件格式从输入视频生成一个或多个缩略图。 可以提交仅生成图像的任务，也可以合并缩略图生成与编码功能。 本文针对此类方案提供一些示例 XML 和 JSON 缩略图预设。 本文的末尾提供了一段[示例代码](#code_sample)，演示如何使用媒体服务 .NET SDK 来完成编码任务。
+可以使用 Media Encoder Standard 以 [JPEG](https://en.wikipedia.org/wiki/JPEG)、[PNG](https://en.wikipedia.org/wiki/Portable_Network_Graphics) 或 [BMP](https://en.wikipedia.org/wiki/BMP_file_format) 图像文件格式从输入视频生成一个或多个缩略图。 可以提交仅生成图像的任务，或者合并缩略图的生成与编码功能。 本文针对此类方案提供一些示例 XML 和 JSON 缩略图预设。 本文末尾提供了一段[示例代码](#code_sample)，演示如何使用媒体服务 .NET SDK 来完成编码任务。
 
 有关示例预设中使用的元素的更多详细信息，请查看 [Media Encoder Standard 架构](media-services-mes-schema.md)。
 
-请务必仔细阅读 [注意事项](media-services-dotnet-generate-thumbnail-with-mes.md#considerations) 部分。
+请务必仔细阅读[注意事项](media-services-dotnet-generate-thumbnail-with-mes.md#considerations)部分。
     
 ## <a name="example-of-a-single-png-file-preset"></a>“单个 PNG 文件”预设示例
 
@@ -88,7 +88,7 @@ ms.locfileid: "71124520"
 
 ## <a name="example-of-a-series-of-jpeg-images-preset"></a>“一系列 JPEG 图像”预设的示例
 
-可以使用以下 JSON 和 XML 预设在输入时间线的 5%、15% ... 95% 时间戳处生成一组 10 幅图像，其中的图像大小指定为输入视频的四分之一。
+使用以下 JSON 和 XML 预设可以在输入时间线的时间戳 5%、15% ... 95% 处生成 10 幅图像，其中的图像大小指定为输入视频的四分之一。
 
 ### <a name="json-preset"></a>JSON 预设
 
@@ -148,7 +148,7 @@ ms.locfileid: "71124520"
 
 ## <a name="example-of-a-one-image-at-a-specific-timestamp-preset"></a>“在特定时间戳处生成一个图像”预设示例
 
-可以使用以下 JSON 和 XML 预设在输入视频的 30 秒标记处生成单个 JPEG 图像。 此预设预期输入视频的持续时间超过 30 秒（否则作业失败）。
+使用以下 JSON 和 XML 预设可以在输入视频的 30 秒标记处生成单个 JPEG 图像。 此预设预期输入视频的持续时间超过 30 秒（否则作业失败）。
 
 ### <a name="json-preset"></a>JSON 预设
 
@@ -207,7 +207,7 @@ ms.locfileid: "71124520"
 
 ## <a name="example-of-a-thumbnails-at-different-resolutions-preset"></a>“不同分辨率的缩略图”预设示例
 
-可使用以下预设在同一个任务中的不同解决方案下生成缩略图。 在该示例中，当输入时间线位于 5%、15%、…、95% 时，编码器在两个时点各生成一个图像 - 一个是输入视频分辨率的 100% 处，一个是 50% 处。
+可使用以下预设在同一个任务中的不同解决方案下生成缩略图。 在该示例中，当输入时间线位于 5%、15%、…、95% 时，编码器会在输入视频分辨率的 100% 处和 50% 处各生成一个图像。
 
 请注意 FileName 中 {Resolution} 宏的使用；它指示在生成输出图像的文件名时，编码器要使用在预设的“编码”部分中所指定的宽度和高度。 这还能够帮助轻松区分不同图像
 
@@ -282,7 +282,7 @@ ms.locfileid: "71124520"
 
 上述所有示例都在讨论如何提交仅生成图像的编码任务，但还可以将视频/音频编码与缩略图生成结合起来。 以下的 JSON 和 XML 预设指示 Media Encoder Standard 在编码过程中生成一个缩略图  。
 
-### <a id="json"></a>JSON 预设
+### <a name="json-preset"></a><a id="json"></a>JSON 预设
 有关架构的信息，请参阅[此](media-services-mes-schema.md)文。
 
 ```json
@@ -347,7 +347,7 @@ ms.locfileid: "71124520"
     }
 ```
 
-### <a id="xml"></a>XML 预设
+### <a name="xml-preset"></a><a id="xml"></a>XML 预设
 有关架构的信息，请参阅[此](media-services-mes-schema.md)文。
 
 ```csharp
@@ -402,13 +402,13 @@ ms.locfileid: "71124520"
     </Preset>   
 ```
 
-## <a id="code_sample"></a>编码视频并使用 .NET 生成缩略图
+## <a name="encode-video-and-generate-thumbnail-with-net"></a><a id="code_sample"></a>编码视频并使用 .NET 生成缩略图
 
 以下代码示例使用媒体服务 .NET SDK 执行下列任务：
 
 * 创建编码作业。
 * 获取对 Media Encoder Standard 编码器的引用。
-* 加载预设 [XML](media-services-dotnet-generate-thumbnail-with-mes.md#xml) 或 [JSON](media-services-dotnet-generate-thumbnail-with-mes.md#json)，包含有编码预设以及生成缩略图所需的信息。 可以在某一文件中保存此 [XML](media-services-dotnet-generate-thumbnail-with-mes.md#xml) 或 [JSON](media-services-dotnet-generate-thumbnail-with-mes.md#json)，并使用以下代码来加载该文件。
+* 加载预设 [XML](media-services-dotnet-generate-thumbnail-with-mes.md#xml) 或 [JSON](media-services-dotnet-generate-thumbnail-with-mes.md#json)，其中包含生成缩略图所需的编码预设和信息。 可以在某一文件中保存此 [XML](media-services-dotnet-generate-thumbnail-with-mes.md#xml) 或 [JSON](media-services-dotnet-generate-thumbnail-with-mes.md#json)，并使用以下代码来加载该文件。
   
         // Load the XML (or JSON) from the local file.
         string configuration = File.ReadAllText(fileName);  
@@ -552,15 +552,15 @@ namespace EncodeAndGenerateThumbnails
 * 为 Start/Step/Range 使用的显式时间戳假设输入源的长度至少为 1 分钟。
 * Jpg/Png/BmpImage 元素包含 Start、Step 和 Range 字符串属性 – 这些属性解释如下：
   
-  * 帧数（如果为非负整数），例如，"Start":"120"；
-  * 相对于源持续时间（如果以 % 为后缀表示），例如："Start":"15%"，或者
-  * 时间戳（如果以 HH:MM:SS... 格式表示）。 例如，"Start" :"00:01:00"
+  * 帧数（如果为非负整数），例如："Start": "120"；
+  * 相对于源持续时间（如果以 % 为后缀表示），例如："Start": "15%"，或者
+  * 时间戳（如果以 HH:MM:SS... 格式表示）。 例如 "Start" : "00:01:00"
     
     可以随意混搭使用表示法。
     
-    此外，Start 还支持特殊的宏 {Best}，它会尝试判断第一个“有意义”的内容帧。请注意：（Start 设置为 {Best} 时，将忽略 Step 与 Range）
+    此外，Start 还支持特殊的宏 {Best}，它会尝试判断第一个“有意义”的内容帧。注意：（Start 设置为 {Best} 时，将忽略 Step 与 Range）
   * 默认值：Start:{Best}
-* 需要显式提供每个图像格式的输出格式：Jpg/Png/BmpFormat。 提供时，MES 会将 JpgVideo 与 JpgFormat 进行匹配，依此类推。 OutputFormat 引入了新的图像编解码器特定宏 {Index}，需要为图像输出格式提供该宏一次（且只需一次）。
+* 需要显式提供每个图像格式的输出格式：Jpg/Png/BmpFormat。 MES 会将 JpgVideo（如果已指定）与 JpgFormat 进行匹配，依此类推。 OutputFormat 引入了新的图像编解码器特定宏 {Index}，需要为图像输出格式提供该宏一次（且只需一次）。
 
 ## <a name="next-steps"></a>后续步骤
 

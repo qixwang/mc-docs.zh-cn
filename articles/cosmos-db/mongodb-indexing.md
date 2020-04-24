@@ -1,6 +1,6 @@
 ---
-title: Azure Cosmos DB 的用于 MongoDB 的 API 中的索引编制
-description: 概述了 Azure Cosmos DB 的用于 MongoDB 的 API 中的索引编制功能。
+title: Azure Cosmos DB 的 API for MongoDB 中的索引编制
+description: 概述 Azure Cosmos DB 的 API for MongoDB 中的索引编制功能。
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.devlang: nodejs
@@ -10,15 +10,15 @@ ms.date: 10/28/2019
 author: rockboyfor
 ms.author: v-yeche
 ms.openlocfilehash: adefc5c3bee35a6793880a9beec4af56a913f2fc
-ms.sourcegitcommit: 73f07c008336204bd69b1e0ee188286d0962c1d7
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "72913279"
 ---
-# <a name="indexing-using-azure-cosmos-dbs-api-for-mongodb"></a>使用 Azure Cosmos DB 的用于 MongoDB 的 API 进行索引编制
+# <a name="indexing-using-azure-cosmos-dbs-api-for-mongodb"></a>使用 Azure Cosmos DB 的 API for MongoDB 编制索引
 
-Azure Cosmos DB 的用于 MongoDB 的 API 利用 Cosmos DB 的自动索引管理功能。 因此，用户可以访问 Cosmos DB 的默认索引编制策略。 因此，如果用户没有定义索引，或者没有删除索引，则默认情况下，所有字段都会在插入到集合中时自动编制索引。 大多数情况下，建议使用在帐户上设置的默认索引编制策略。
+Azure Cosmos DB 的 API for MongoDB 可利用 Cosmos DB 的自动索引管理功能。 因此，用户可以访问 Cosmos DB 的默认索引编制策略。 因此，如果用户没有定义索引，或者没有删除索引，则默认情况下，所有字段都会在插入到集合中时自动编制索引。 大多数情况下，建议使用在帐户上设置的默认索引编制策略。
 
 ## <a name="indexing-for-version-36"></a>版本 3.6 的索引
 

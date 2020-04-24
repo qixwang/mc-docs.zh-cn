@@ -16,10 +16,10 @@ origin.date: 11/04/2019
 ms.date: 11/18/2019
 ms.author: v-yiso
 ms.openlocfilehash: ea9928f0fef421dda6f4ccfc6d4c0fb1567a5954
-ms.sourcegitcommit: 5844ad7c1ccb98ff8239369609ea739fb86670a4
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "73831450"
 ---
 # <a name="use-revisions-to-make-non-breaking-changes-safely"></a>使用修订安全做出非重大更改
@@ -105,7 +105,7 @@ ms.locfileid: "73831450"
 > * 将修订版设为当前版本并添加更改日志项目
 > * 浏览开发人员门户以查看更改与更改日志
 
-转到下一教程：
+进入下一教程：
 
 > [!div class="nextstepaction"]
 > [发布 API 的多个版本](api-management-get-started-publish-versions.md)

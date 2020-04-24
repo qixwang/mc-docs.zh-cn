@@ -12,10 +12,10 @@ origin.date: 10/23/2019
 ms.date: 11/11/2019
 ms.author: v-junlch
 ms.openlocfilehash: 78a9ca58707359466f2bcbaa1a65cd6a8940bce9
-ms.sourcegitcommit: 40a58a8b9be0c825c03725802e21ed47724aa7d2
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "73934423"
 ---
 # <a name="orchestration-mode-preview"></a>业务流程模式（预览版）

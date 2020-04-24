@@ -13,10 +13,10 @@ ms.topic: article
 origin.date: 06/18/2019
 ms.date: 09/09/2019
 ms.openlocfilehash: b02ca31b75503ecfe6663904ff453af6fe38ad57
-ms.sourcegitcommit: dd0ff08835dd3f8db3cc55301815ad69ff472b13
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "70737218"
 ---
 # <a name="troubleshoot-common-azure-database-migration-service-issues-and-errors"></a>排查常见的 Azure 数据库迁移服务问题和错误

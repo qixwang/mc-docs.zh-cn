@@ -15,10 +15,10 @@ origin.date: 04/28/2019
 ms.date: 09/23/2019
 ms.author: v-jay
 ms.openlocfilehash: 71feb399563f9374d25859b22599c3b8708d4800
-ms.sourcegitcommit: 8248259e4c3947aa0658ad6c28f54988a8aeebf8
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "71125581"
 ---
 # <a name="media-services-job-error-codes"></a>媒体服务作业错误代码

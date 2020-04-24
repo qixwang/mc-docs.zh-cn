@@ -9,10 +9,10 @@ ms.date: 10/28/2019
 author: rockboyfor
 ms.author: v-yeche
 ms.openlocfilehash: 92857f2c025bac0dd364289e8120e4340a1cae1d
-ms.sourcegitcommit: 73f07c008336204bd69b1e0ee188286d0962c1d7
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "72914366"
 ---
 # <a name="azure-cosmos-dbs-api-for-mongodb-32-version-supported-features-and-syntax"></a>Azure Cosmos DB 的 API for MongoDB（3.2 版本）：支持的功能和语法
@@ -38,8 +38,8 @@ Azure Cosmos DB 的用于 MongoDB 的 API 支持以下数据库命令：
 
 ### <a name="query-and-write-operation-commands"></a>查询和写入操作命令
 
-- delete
-- 查找项
+- 删除
+- find
 - findAndModify
 - getLastError
 - getMore
@@ -83,7 +83,7 @@ Azure Cosmos DB 的用于 MongoDB 的 API 支持以下数据库命令：
 ### <a name="aggregation-commands"></a>聚合命令
 
 - aggregate
-- 计数
+- count
 - distinct
 
 ### <a name="aggregation-stages"></a>聚合阶段
@@ -208,7 +208,7 @@ Azure Cosmos DB 的用于 MongoDB 的 API 支持以下数据库命令：
 
 ## <a name="operators"></a>运算符
 
-以下运算符在其相应的使用示例中受支持。 请考虑下面的查询中使用的示例文档：
+以下运算符可以在相应的示例中使用。 考虑一下在下面的查询中使用的此示例文档：
 
 ```json
 {
@@ -248,13 +248,13 @@ $type | `{ "Status": { $type: "string" } }`|
 $mod | `{ "Elevation": { $mod: [ 4, 0 ] } }` |
 $regex | `{ "Volcano Name": { $regex: "^Rain"} }`|
 
-### <a name="notes"></a>说明
+### <a name="notes"></a>注释
 
 在 $regex 查询中，左定位表达式允许索引搜索。 但是，使用“i”修饰符（不区分大小写）和“m”修饰符（多行）会导致在所有表达式中进行集合扫描。
 需要包括“$”或“|”时，最好是创建两个（或两个以上）正则表达式查询。
 例如，如果原始查询为 ```find({x:{$regex: /^abc$/})```，则必须将其修改为 ```find({x:{$regex: /^abc/, x:{$regex:/^abc$/}})```。
-第一部分将使用索引将搜索限制为以 ^ abc 开头的文档，第二部分将匹配确切的条目。
-竖条运算符“|”充当“or”函数 - 查询 ```find({x:{$regex: /^abc|^def/})``` 匹配字段“x”的值以“abc”或“def”开头的文档。 要使用索引，建议将查询分解为两个由 $or 运算符连接的不同查询：```find( {$or : [{x: $regex: /^abc/}, {$regex: /^def/}] })```。
+第一部分会使用索引将搜索限制为以 ^abc 开头的那些文档，第二部分会匹配确切的条目。
+竖条运算符“|”充当“or”函数 - 查询 ```find({x:{$regex: /^abc|^def/})``` 匹配字段“x”的值以“abc”或“def”开头的文档。 若要利用该索引，建议将该查询拆分成两个不同的查询，再通过 $or 运算符联接到一起：```find( {$or : [{x: $regex: /^abc/}, {$regex: /^def/}] })```。
 
 ### <a name="update-operators"></a>更新运算符
 
@@ -309,7 +309,7 @@ $polygon | ```{ "Location.coordinates": { $near: { $geometry: { type: "Polygon",
 
 ## <a name="additional-operators"></a>其他运算符
 
-运算符 | 示例 | 说明
+运算符 | 示例 | 注释
 --- | --- | --- |
 $all | ```{ "Location.coordinates": { $all: [-121.758, 46.87] } }``` |
 $elemMatch | ```{ "Location.coordinates": { $elemMatch: {  $lt: 0 } } }``` |
@@ -323,17 +323,17 @@ $text |  | 不支持。 改为使用 $regex。
 
 ### <a name="methods"></a>方法
 
-支持下列方法：
+支持以下方法：
 
 #### <a name="cursor-methods"></a>游标方法
 
-方法 | 示例 | 说明
+方法 | 示例 | 注释
 --- | --- | --- |
 cursor.sort() | ```cursor.sort({ "Elevation": -1 })``` | 不返回没有排序关键字的文档
 
 ## <a name="unique-indexes"></a>唯一索引
 
-Cosmos DB 为默认情况下写入到数据库的文档中的每个字段设置索引。 唯一索引确保特定字段在一个集合的所有文档中都不会有重复值，类似于默认 `_id` 键保持唯一性的方式。 可以在 Cosmos DB 中使用 createIndex 命令（包括“唯一”约束）创建自定义索引。
+Cosmos DB 为默认情况下写入到数据库的文档中的每个字段设置索引。 唯一索引确保特定字段在一个集合的所有文档中都不会有重复值，类似于默认 `_id` 键保持唯一性的方式。 可以在 Cosmos DB 中创建自定义索引，方法是使用 createIndex 命令（包括“unique”约束）。
 
 唯一索引适用于所有特定的 Cosmos 帐户，这些帐户使用 Azure Cosmos DB 的用于 MongoDB 的 API。
 
@@ -363,6 +363,6 @@ Azure Cosmos DB 支持服务器端自动分片。 它自动管理分片的创建
 - 了解如何将 [Robo 3T](mongodb-robomongo.md) 与 Azure Cosmos DB 的用于 MongoDB 的 API 配合使用。
 - 通过 Azure Cosmos DB 的用于 MongoDB 的 API 来浏览 MongoDB [示例](mongodb-samples.md)。
 
-<sup>注意：本文介绍了可与 MongoDB 数据库实现线路协议兼容的 Azure Cosmos DB 功能。Azure 不会运行 MongoDB 数据库来提供此服务。Azure Cosmos DB 并不隶属于 MongoDB, inc.</sup>
+注意：<sup>本文介绍了可与 MongoDB 数据库实现线路协议兼容的 Azure Cosmos DB 功能。Azure 不会运行 MongoDB 数据库来提供此服务。Azure Cosmos DB 并不隶属于 MongoDB, inc.</sup>
 
 <!-- Update_Description: update meta properties, wording update -->

@@ -17,10 +17,10 @@ ms.author: v-junlch
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3224267ec6db1197a25406882d70ef8b0c8e6a92
-ms.sourcegitcommit: a88cc623ed0f37731cb7cd378febf3de57cf5b45
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "73830773"
 ---
 # <a name="configure-security-alerts-for-azure-resource-roles-in-privileged-identity-management"></a>在 Privileged Identity Management 中为 Azure 资源角色配置安全警报
@@ -43,11 +43,11 @@ ms.locfileid: "73830773"
 | **向资源分配的永久所有者过多** |中型 |太多用户永久地分配到了某个角色。 |查看列表中的用户，并将某些用户重新分配为需要激活才能使用该角色。 |
 | **创建了重复角色** |中型 |多个角色具有相同的条件。 |仅使用这些角色中的一个角色。 |
 
-### <a name="severity"></a>severity
+### <a name="severity"></a>严重性
 
-- **高**：因策略违反需要立即采取措施。 
-- **中**：不需要立即采取措施但指示潜在的策略违反。
-- **低**：不需要立即采取措施，但建议考虑首选的策略更改。
+- **高**：因策略冲突需要立即采取措施。 
+- **中**：不需要立即采取措施但有潜在的策略冲突。
+- **低**：不需要立即采取措施，但建议考虑可取的策略更改。
 
 ## <a name="configure-security-alert-settings"></a>配置安全警报设置
 

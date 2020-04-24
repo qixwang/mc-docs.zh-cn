@@ -6,13 +6,13 @@ origin.date: 06/20/2019
 ms.date: 09/30/2019
 ms.author: v-jay
 ms.openlocfilehash: 4bb02123d501c76b2af9e749cde6d3c045ce8241
-ms.sourcegitcommit: 0d07175c0b83219a3dbae4d413f8e012b6e604ed
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "71310553"
 ---
-| Resource | 目标 |
+| 资源 | 目标 |
 |----------|---------------|
 | 单个表的最大大小 | 500 TiB |
 | 表实体的最大大小 | 1 MiB |

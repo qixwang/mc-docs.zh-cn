@@ -16,10 +16,10 @@ ms.date: 09/23/2019
 ms.author: v-jay
 ms.custom: seodec18
 ms.openlocfilehash: 1f96aac259a2a5c6ca61bcf2d9ca1fdb9c5b4e23
-ms.sourcegitcommit: 73f07c008336204bd69b1e0ee188286d0962c1d7
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "72914498"
 ---
 # <a name="apple-fairplay-license-requirements-and-configuration"></a>Apple FairPlay 许可要求和配置 
@@ -33,7 +33,7 @@ ms.locfileid: "72914498"
 使用媒体服务通过 Apple FairPlay 加密 HLS 内容并使用媒体服务交付 FairPlay 许可证时，必需完成以下各项  ：
 
 * 注册 [Apple 开发计划](https://developer.apple.com/)。
-* Apple 要求内容所有者获取 [部署包](https://developer.apple.com/contact/fps/)。 说明已使用媒体服务实现密钥安全模块 (KSM)，以及正在请求最终 FPS 包。 最终 FPS 包中有如何生成证书和获取应用程序密钥 (ASK) 的说明。 可使用 ASK 配置 FairPlay。
+* Apple 要求内容所有者获取[部署包](https://developer.apple.com/contact/fps/)。 说明已使用媒体服务实现密钥安全模块 (KSM)，以及正在请求最终 FPS 包。 最终 FPS 包中有如何生成证书和获取应用程序密钥 (ASK) 的说明。 可使用 ASK 配置 FairPlay。
 * 必须在媒体服务密钥/许可证交付端上设置以下各项：
 
     * **应用证书 (AC)** ：这是一个包含私钥的 .pfx 文件。 创建此文件，并使用密码对其进行加密。 .pfx 文件应采用 Base64 格式。
@@ -46,7 +46,7 @@ ms.locfileid: "72914498"
         2. 从命令行运行以下命令。 这会将 .cer 文件转换为 .pem 文件。
 
             "C:\OpenSSL-Win32\bin\openssl.exe" x509 -inform der -in FairPlay.cer -out FairPlay-out.pem
-        3. 从命令行运行以下命令。 这会将 .pem 文件转换为包含私钥的 .pfx 文件。 然后， OpenSSL 会要求提供 .pfx 文件的密码。
+        3. 从命令行运行以下命令。 这会将 .pem 文件转换为包含私钥的 .pfx 文件。 然后 OpenSSL 会要求提供 .pfx 文件的密码。
 
             "C:\OpenSSL-Win32\bin\openssl.exe" pkcs12 -export -out FairPlay-out.pfx -inkey privatekey.pem -in FairPlay-out.pem -passin file:privatekey-pem-pass.txt
             
@@ -55,9 +55,9 @@ ms.locfileid: "72914498"
     
 * 以下事项必须通过 FPS 客户端来设置：
 
-  * **应用证书 (AC)** ：这是一个包含公钥的 .cer/.der 文件，操作系统使用它来加密某些有效负载。 媒体服务需要了解它，因为播放器需要它。 密钥传送服务使用相应的私钥对其进行解密。
+  * **应用证书 (AC)** ：这是一个包含公钥的 .cer/.der 文件，操作系统使用它来加密某些负载。 媒体服务需要了解它，因为播放器需要它。 密钥传送服务使用相应的私钥对其进行解密。
 
-* 若要播放 FairPlay 加密的流，需要先获取实际 ASK，然后生成实际证书。 该过程将创建所有三个部分：
+* 要播放 FairPlay 加密的流，需要先获取实际 ASK，然后生成实际证书。 该过程将创建所有三个部分：
 
   * .der 文件
   * .pfx 文件
@@ -65,7 +65,7 @@ ms.locfileid: "72914498"
 
 ## <a name="fairplay-and-player-apps"></a>FairPlay 和播放器应用
 
-使用 Apple FairPlay 对内容进行加密时，各视频和音频示例都使用 AES-128 CBC 模式进行加密   。 FairPlay 流式处理 (FPS) 集成到设备操作系统，iOS 和 Apple TV 本身支持这项功能  。 OS X 上的 Safari 通过加密媒体扩展 (EME) 接口支持来启用 FPS。
+使用 Apple FairPlay 对内容进行加密时，各视频和音频示例都使用 AES-128 CBC 模式进行加密   。 **FairPlay 流式处理** (FPS) 集成到设备操作系统，iOS 和 Apple TV 本身支持这项功能。 OS X 上的 Safari 使用加密媒体扩展 (EME) 接口支持启用 FPS。
 
 Azure Media Player 还支持 FairPlay 播放。
 

@@ -13,15 +13,15 @@ ms.date: 12/21/2018
 ms.author: v-lingwu
 ms.custom: mvc
 ms.openlocfilehash: 63888a025d725e59788c507b568dd8b69537401b
-ms.sourcegitcommit: 2f2ced6cfaca64989ad6114a6b5bc76700870c1a
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "71330060"
 ---
 # <a name="tutorial-run-a-parallel-workload-with-azure-batch-using-the-net-api"></a>教程：使用 .NET API 通过 Azure Batch 运行并行工作负荷
 
-使用 Azure Batch 在 Azure 中高效运行大规模并行和高性能计算 (HPC) 批处理作业。 本教程通过一个 C# 示例演示了如何使用 Batch 运行并行工作负荷。 你可以学习常用的 Batch 应用程序工作流，以及如何以编程方式与 Batch 和存储资源交互。 你将学习如何执行以下操作：
+使用 Azure Batch 在 Azure 中高效运行大规模并行和高性能计算 (HPC) 批处理作业。 本教程通过一个 C# 示例演示了如何使用 Batch 运行并行工作负荷。 你可以学习常用的 Batch 应用程序工作流，以及如何以编程方式与 Batch 和存储资源交互。 学习如何：
 
 > [!div class="checklist"]
 > * 将应用程序包添加到 Batch 帐户
@@ -36,7 +36,7 @@ ms.locfileid: "71330060"
 
 [!INCLUDE [quickstarts-free-trial-note.md](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * 适用于 Linux、macOS 或 Windows 的 [Visual Studio 2017 或更高版本](https://www.visualstudio.com/vs)或 [.NET Core 2.1](https://www.microsoft.com/net/download/dotnet-core/2.1)。
 
@@ -247,7 +247,7 @@ await job.CommitAsync();
 
 ### <a name="create-tasks"></a>创建任务
 
-此示例通过调用 `AddTasksAsync` 方法来创建 [CloudTask](https://docs.microsoft.com//dotnet/api/microsoft.azure.batch.cloudtask) 对象的列表，从而在作业中创建任务。 每个 `CloudTask` 都运行 ffmpeg，使用 [CommandLine](https://docs.microsoft.com//dotnet/api/microsoft.azure.batch.cloudtask.commandline) 属性处理输入 `ResourceFile` 对象。 ffmpeg 此前已在创建池时安装在每个节点上。 在这里，命令行运行 ffmpeg 将每个输入 MP4（视频）文件转换为 MP3（音频）文件。
+此示例通过调用 `AddTasksAsync` 方法来创建 [CloudTask](https://docs.microsoft.com//dotnet/api/microsoft.azure.batch.cloudtask) 对象的列表，从而在作业中创建任务。 每个 `CloudTask` 都运行 ffmpeg，使用 `ResourceFile`CommandLine[ 属性处理输入 ](https://docs.microsoft.com//dotnet/api/microsoft.azure.batch.cloudtask.commandline) 对象。 ffmpeg 此前已在创建池时安装在每个节点上。 在这里，命令行运行 ffmpeg 将每个输入 MP4（视频）文件转换为 MP3（音频）文件。
 
 此示例在运行命令行后为 MP3 文件创建 [OutputFile](https://docs.microsoft.com//dotnet/api/microsoft.azure.batch.outputfile) 对象。 每个任务的输出文件（在此示例中为一个）都会使用任务的 [OutputFiles](https://docs.microsoft.com//dotnet/api/microsoft.azure.batch.cloudtask.outputfiles) 属性上传到关联的存储帐户中的一个容器。 我们在前面的代码示例中获取了共享访问签名 URL (`outputContainerSasUrl`)，用于提供对输出容器的写权限。 请注意 `outputFile` 对象上设置的条件。 只有在任务成功完成后 (`OutputFileUploadCondition.TaskSuccess`)，任务中的输出文件才会上传到容器。 在 GitHub 上查看完整的[代码示例](https://github.com/Azure-Samples/batch-dotnet-ffmpeg-tutorial)，进一步了解实现的详细信息。
 

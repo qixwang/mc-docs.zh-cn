@@ -177,7 +177,7 @@
       href: 'https://docs.microsoft.com/en-us/rest/api/hdinsight/'
     - name: REST (Apache Spark)
       href: 'https://docs.microsoft.com/rest/api/hdinsightspark/'
-    - name: Resource Manager 模板
+    - name: 资源管理器模板
       displayName: 'resource manager template, arm template, resource manager group'
       href: 'https://docs.microsoft.com/en-us/rest/api/hdinsightspark/'
 - name: 相关内容

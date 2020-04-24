@@ -17,10 +17,10 @@ origin.date: 12/06/2018
 ms.author: v-yiso
 ms.date: 02/25/2019
 ms.openlocfilehash: 853045761e1a5314542f336dd86ef6a313e55e04
-ms.sourcegitcommit: dbc3523b993c0850393071d97722b5efe5f40e61
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74202767"
 ---
 # <a name="configure-a-virtual-network-gateway-for-expressroute-using-the-azure-portal"></a>使用 Azure 门户配置 ExpressRoute 的虚拟网络网关
@@ -69,13 +69,13 @@ ms.locfileid: "74202767"
 ## <a name="create-the-virtual-network-gateway"></a>创建虚拟网络网关
 
 1. 在门户左侧单击 **+** ，并在搜索框中键入“虚拟网关”。 在搜索返回结果中找到“虚拟网络网关”，并单击该条目  。 单击“虚拟网络网关”边栏选项卡底部的“创建”。   这会打开“创建虚拟网络网关”边栏选项卡  。
-2. 在“创建虚拟网络网关”边栏选项卡中，填写虚拟网络网关的值。 
+2. 在“创建虚拟网络网关”  边栏选项卡中，填写虚拟网络网关的值。
 
     ![“创建虚拟网络网关”边栏选项卡字段](./media/expressroute-howto-add-gateway-portal-resource-manager/gw.png "创建虚拟网络网关边栏选项卡字段")
 3. **名称**：为网关命名。 这与为网关子网命名不同。 它是要创建的网关对象的名称。
 4. **网关类型**：选择“ExpressRoute”  。
 5. **SKU**：从下拉列表中选择网关 SKU。
-6. **位置**：调整“位置”  字段，使其指向虚拟网络所在的位置。 如果该位置未指向虚拟网络所在的区域，该虚拟网络将不会显示在“选择虚拟网络”下拉列表中。
+6. **位置**：调整“位置”  字段，使其指向虚拟网络所在的位置。 如果该位置未指向虚拟网络所在的区域，该虚拟网络不会显示在“选择虚拟网络”下拉列表中。
 7. 选择要将此网关添加到其中的虚拟网络。 单击“虚拟网络”打开“选择虚拟网络”边栏选项卡   。 选择 VNet。 如果看不到 VNet，请确保“位置”字段指向虚拟网络所在的区域  。
 9. 选择公共 IP 地址。 单击“公共 IP 地址”打开“选择公共 IP 地址”边栏选项卡   。 单击“+新建”打开“创建公共 IP 地址”边栏选项卡   。 输入公共 IP 地址的名称。 此边栏选项卡会创建一个公共 IP 地址对象，将向其动态分配公共 IP 地址。 单击“确定”  保存对此边栏选项卡所做的更改。
 10. **订阅**：确保选择正确的订阅。

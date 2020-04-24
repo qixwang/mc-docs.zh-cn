@@ -15,10 +15,10 @@ ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 16cf70fcf99bd9203c0897f760bf4cfc5bc6cf5e
-ms.sourcegitcommit: 74f50c9678e190e2dbb857be530175f25da8905e
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/12/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "72292125"
 ---
 # <a name="custom-administrator-roles-in-azure-active-directory-preview"></a>Azure Active Directory 中的自定义管理员角色（预览）
@@ -43,7 +43,7 @@ Azure AD 内置自定义角色的运作思路类似于 [Azure 基于角色的访
 
 - 用户（在 Azure Active Directory 中具有用户配置文件的个人）
 - 角色定义
-- 资源范围
+- 资源作用域
 
 可以使用 Azure 门户、Azure AD PowerShell 或图形 API [创建角色分配](roles-create-custom.md)。 还可以[查看自定义角色的分配](roles-view-assignments.md#view-the-assignments-of-a-role)。
 
@@ -62,7 +62,7 @@ Azure AD 内置自定义角色的运作思路类似于 [Azure 基于角色的访
 - Microsoft 创建的内置角色（不可更改）。
 - 由组织创建和管理的自定义角色。
 
-### <a name="scope"></a>作用域
+### <a name="scope"></a>范围
 
 范围是指允许对角色分配中的特定 Azure AD 资源执行的操作的限制。 分配角色时，可以指定一个范围来限制管理员对特定资源的访问。 例如，若要为开发人员授予某个自定义角色，但仅允许该开发人员管理特定的应用程序注册，则你可以在角色分配中包含特定的应用程序注册作为范围。
 

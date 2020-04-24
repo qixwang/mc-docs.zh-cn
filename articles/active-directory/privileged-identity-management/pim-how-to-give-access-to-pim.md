@@ -16,10 +16,10 @@ ms.author: v-junlch
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 992a09269c2e313465f0418c78b8388405fc9d8a
-ms.sourcegitcommit: a88cc623ed0f37731cb7cd378febf3de57cf5b45
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "73830796"
 ---
 # <a name="grant-access-to-other-administrators-to-manage-privileged-identity-management"></a>授予其他管理员访问权限以管理 Privileged Identity Management
@@ -33,7 +33,7 @@ ms.locfileid: "73830796"
 
 ## <a name="grant-access-to-manage-pim"></a>授予用于管理 PIM 的访问权限
 
-1. 登录到 [Azure 门户](https://portal.azure.cn/)。
+1. 登录 [Azure 门户](https://portal.azure.cn/)。
 
 1. 在 Azure AD 中，打开 **Privileged Identity Management**。
 
@@ -71,7 +71,7 @@ ms.locfileid: "73830796"
 
 从特权角色管理员角色中删除某人之前，请确保至少仍有两位用户分配有该角色。
 
-1. 登录到 [Azure 门户](https://portal.azure.cn/)。
+1. 登录 [Azure 门户](https://portal.azure.cn/)。
 
 1. 打开“Azure AD Privileged Identity Management”。 
 

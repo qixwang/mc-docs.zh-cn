@@ -15,10 +15,10 @@ origin.date: 03/18/2019
 ms.date: 09/23/2019
 ms.author: v-jay
 ms.openlocfilehash: 015cb9bb571fa56c385e03e13ef178ee9073f283
-ms.sourcegitcommit: 8248259e4c3947aa0658ad6c28f54988a8aeebf8
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "71124479"
 ---
 #  <a name="create-an-encoding-task-that-generates-fmp4-chunks"></a>创建生成 fMP4 区块的编码任务
@@ -33,7 +33,7 @@ ms.locfileid: "71124479"
             formatOption: AssetFormatOption.AdaptiveStreaming);
 ```
 
-## <a id="encoding_with_dotnet"></a>使用媒体服务 .NET SDK 进行编码
+## <a name="encoding-with-media-services-net-sdk"></a><a id="encoding_with_dotnet"></a>使用媒体服务 .NET SDK 进行编码
 
 以下代码示例使用媒体服务 .NET SDK 执行下列任务：
 
@@ -46,7 +46,7 @@ ms.locfileid: "71124479"
 
 #### <a name="create-and-configure-a-visual-studio-project"></a>创建和配置 Visual Studio 项目
 
-设置开发环境，并在 app.config 文件中填充连接信息，如[使用 .NET 进行媒体服务开发](media-services-dotnet-how-to-use.md)中所述。 
+设置开发环境，并根据[使用 .NET 进行媒体服务开发](media-services-dotnet-how-to-use.md)中所述，在 app.config 文件中填充连接信息。 
 
 #### <a name="example"></a>示例
 

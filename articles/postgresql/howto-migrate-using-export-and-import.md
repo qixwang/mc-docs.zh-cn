@@ -8,16 +8,16 @@ ms.topic: conceptual
 origin.date: 09/24/2019
 ms.date: 11/04/2019
 ms.openlocfilehash: af6035526e94daed696088d9864bcbc49e95c76e
-ms.sourcegitcommit: f643ddf75a3178c37428b75be147c9383384a816
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "73191591"
 ---
 # <a name="migrate-your-postgresql-database-using-export-and-import"></a>使用导入和导出功能迁移 PostgreSQL 数据库
 可以使用 [pg_dump](https://www.postgresql.org/docs/current/static/app-pgdump.html) 将 PostgreSQL 数据库解压到脚本文件，并使用 [psql](https://www.postgresql.org/docs/current/static/app-psql.html) 将数据从该文件导入目标数据库。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 若要逐步执行本操作方法指南，需要：
 - 一个 [Azure Database for PostgreSQL 服务器](quickstart-create-server-database-portal.md)，其防火墙规则设置为允许访问，并且包含数据库。
 - 已安装 [pg_dump](https://www.postgresql.org/docs/current/static/app-pgdump.html) 命令行实用工具

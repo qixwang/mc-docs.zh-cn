@@ -9,10 +9,10 @@ origin.date: 11/27/2018
 ms.date: 01/21/2019
 ms.author: v-yeche
 ms.openlocfilehash: d1f425c14efb024105717d98800bbe6fe0b99d24
-ms.sourcegitcommit: ea49cb39ed993bb1966559230c785b1e19bd43c5
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "72519392"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-citrix-xenapp-and-xendesktop-deployment"></a>为多层 Citrix XenApp 和 XenDesktop 部署设置灾难恢复
@@ -72,7 +72,7 @@ Citrix XenApp 和 XenDesktop 场通常具有以下部署模式：
 3. Azure Site Recovery 无法复制和保护现有的本地 MCS 或 PVS 克隆。
 需要使用从传递控制器预配的 Azure RM 重新创建这些克隆。
 
-4. 无法使用 Azure Site Recovery 保护 NetScaler，因为 NetScaler 基于 FreeBSD，而 Azure Site Recovery 不支持保护 FreeBSD OS。 故障转移到 Azure 之后，你需要部署并配置来自 Azure 应用商店的新 NetScaler 设备。
+4. 无法使用 Azure Site Recovery 保护 NetScaler，因为 NetScaler 基于 FreeBSD，而 Azure Site Recovery 不支持保护 FreeBSD OS。 故障转移到 Azure 之后，你需要部署并配置来自 Azure Marketplace 的新 NetScaler 设备。
 
 ## <a name="replicating-virtual-machines"></a>复制虚拟机
 
@@ -114,7 +114,7 @@ Citrix XenApp 和 XenDesktop 场通常具有以下部署模式：
 * 如果源计算机上的网络适配器数小于或等于目标计算机大小允许的适配器数，则目标的适配器数将与源相同。
 * 如果源虚拟机的适配器数目大于目标大小允许的数目，则使用目标大小允许的最大数目。
 * 例如，如果源计算机有两个网络适配器，而目标计算机大小支持四个，则目标计算机有两个适配器。 如果源计算机有两个适配器，但支持的目标大小只支持一个，则目标计算机只有一个适配器。
-* 如果虚拟机有多个网络适配器，它们将全部连接到同一个网络。
+* 如果虚拟机有多个网络适配器，它们会全部连接到同一个网络。
 * 如果虚拟机有多个网络适配器，列表中显示的第一个适配器将成为 Azure 虚拟机中的默认网络适配器。
 
 ## <a name="creating-a-recovery-plan"></a>创建恢复计划
@@ -151,7 +151,7 @@ Citrix XenApp 和 XenDesktop 场通常具有以下部署模式：
     >[!NOTE]    
     >包含手动操作或脚本操作的步骤 4、6 和 7 仅适用于具有 MCS/PVS 目录的本地 XenApp 环境。
 
-4. 组 3 手动或脚本操作：关闭主 VDA VM。
+4. 组 3 手动操作或脚本操作：关闭主 VDA VM。
 主 VDA VM 在故障转移到 Azure 时将处于运行状态。 若要使用 Azure 宿主创建新的 MCS 目录，Master VDA VM 需处于“已停止”（已解除分配）状态。 从 Azure 门户关闭 VM。
 
 5. 故障转移组4：传递控制器和 StoreFront 服务器 VM

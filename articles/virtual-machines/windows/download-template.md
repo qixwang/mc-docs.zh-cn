@@ -16,10 +16,10 @@ origin.date: 11/17/2017
 ms.date: 11/11/2019
 ms.author: v-yeche
 ms.openlocfilehash: a75eb31a58757a604de6eaf3108978d2bc5c690d
-ms.sourcegitcommit: 1fd822d99b2b487877278a83a9e5b84d9b4a8ce7
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74116771"
 ---
 # <a name="download-the-template-for-a-vm"></a>下载 VM 模板
@@ -29,9 +29,9 @@ ms.locfileid: "74116771"
 1. 登录到 [Azure 门户](https://portal.azure.cn/)。
 2. 在左侧菜单中，选择“虚拟机”  。
 3. 从列表中选择虚拟机。
-4. 选择“导出模板”  。
+4. 选择“导出模板”。 
 5. 从顶部菜单中选择“下载”，将 .zip 文件保存到本地计算机。 
-6. 打开该 .zip 文件，将文件解压缩到某个文件夹。 该 .zip 文件包含：
+6. 打开 .zip 文件，将文件解压缩到某个文件夹。 该 .zip 文件包含：
 
     * parameters.json
     * template.json

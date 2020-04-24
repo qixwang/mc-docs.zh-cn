@@ -11,15 +11,15 @@ ms.date: 04/22/2019
 ms.author: v-yeche
 ms.custom: include file
 ms.openlocfilehash: bbc4ab6318dffefe13694db01ff084d8c22444db
-ms.sourcegitcommit: e0225b4d68a71bfa5bbcb7d8d7e0214b9a17dc5d
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "71092533"
 ---
 有关物理服务器复制的配置/进程服务器要求 
 
-**组件** | 要求  
+组件  | **要求** 
 --- | ---
 硬件设置  | 
 CPU 核心数 | 8 
@@ -49,7 +49,7 @@ URL | 配置服务器需要访问这些 URL（直接或通过代理）：<br/><b
 
 配置/进程服务器大小要求 
 
-CPU  | 内存  | 缓存磁盘  | 数据更改率  | 复制的计算机 
+CPU  | **内存** | 缓存磁盘  | **数据更改率** | 复制的计算机 
 --- | --- | --- | --- | ---
 8 个 vCPU<br/><br/> 2 个插槽 * 4 个核心 \@ 2.5 GHz | 16GB | 300 GB | 500 GB 或更少 | < 100 台计算机
 12 个 vCPU<br/><br/> 2 个插槽 * 6 个核心 \@ 2.5 GHz | 18 GB | 600 GB | 500 GB-1 TB | 100 到 150 台计算机

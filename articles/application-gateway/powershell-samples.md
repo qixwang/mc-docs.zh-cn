@@ -9,10 +9,10 @@ origin.date: 08/07/2019
 ms.date: 09/10/2019
 ms.author: v-junlch
 ms.openlocfilehash: 91ea664cae0d0292b2275672a7e5fe5aa501773b
-ms.sourcegitcommit: 843028f54c4d75eba720ac8874562ab2250d5f4d
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "70857181"
 ---
 # <a name="azure-powershell-examples-for-azure-application-gateway"></a>Azure 应用程序网关的 Azure PowerShell 示例

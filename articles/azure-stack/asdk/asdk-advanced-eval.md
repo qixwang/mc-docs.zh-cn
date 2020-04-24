@@ -18,10 +18,10 @@ ms.author: v-jay
 ms.reviewer: misainat
 ms.lastreviewed: 10/16/2018
 ms.openlocfilehash: 2f5415afd9df0aab71dacaddf409d75ef093023f
-ms.sourcegitcommit: 7dfb76297ac195e57bd8d444df89c0877888fdb8
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74020074"
 ---
 # <a name="advanced-asdk-evaluation-tasks"></a>高级 ASDK 评估任务

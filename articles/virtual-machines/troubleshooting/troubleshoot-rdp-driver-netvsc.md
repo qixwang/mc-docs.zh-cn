@@ -14,10 +14,10 @@ origin.date: 11/19/2018
 ms.date: 11/11/2019
 ms.author: v-yeche
 ms.openlocfilehash: 4ba4da4082e20252b9ee4a9be0df517aa26e573c
-ms.sourcegitcommit: 1fd822d99b2b487877278a83a9e5b84d9b4a8ce7
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74116886"
 ---
 # <a name="cannot-connect-remotely-to-a-windows-10-or-windows-server-2016-vm-in-azure-because-of-netvscsys"></a>由于 netvsc.sys，无法在 Azure 中远程连接到 Windows 10 或 Windows Server 2016 VM
@@ -54,7 +54,7 @@ ms.locfileid: "74116886"
 
 5. 在安全的 VM 中，启动注册表编辑器 (regedit.exe)。
 
-6. 选择 HKEY_LOCAL_MACHINE 键，然后选择菜单中的“文件” > “加载配置单元”    。
+6. 选择 HKEY_LOCAL_MACHINE 键，然后选择菜单中的“文件” **“加载配置单元”**   >   。
 
 7. 查找 \Windows\System32\config 文件夹中的系统文件  。
 

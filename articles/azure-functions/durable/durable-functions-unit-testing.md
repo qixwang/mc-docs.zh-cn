@@ -9,10 +9,10 @@ origin.date: 11/03/2019
 ms.date: 11/19/2019
 ms.author: v-junlch
 ms.openlocfilehash: c52364ef707f1fe2f5ad8f77d5eff24c2710c3ed
-ms.sourcegitcommit: a4b88888b83bf080752c3ebf370b8650731b01d1
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74178977"
 ---
 # <a name="durable-functions-unit-testing"></a>Durable Functions 单元测试
@@ -22,7 +22,7 @@ ms.locfileid: "74178977"
 > [!NOTE]
 > 本文提供了针对 Durable Functions 1.x 的 Durable Functions 应用的单元测试指南。 它尚未更新，以考虑到 Durable Functions 2.x 中引入的更改。 有关版本之间差异的详细信息，请参阅 [Durable Functions 版本](durable-functions-versions.md)一文。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 学习本文中的示例需要了解以下概念和框架：
 

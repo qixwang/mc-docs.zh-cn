@@ -9,10 +9,10 @@ ms.date: 09/30/2019
 ms.author: v-yeche
 ms.custom: seodec18
 ms.openlocfilehash: c6db35e569d0d5c2633c781a1473c7ed59ba9650
-ms.sourcegitcommit: 0d07175c0b83219a3dbae4d413f8e012b6e604ed
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "71306785"
 ---
 # <a name="azure-cosmos-db-as-a-key-value-store---cost-overview"></a>作为键值存储的 Azure Cosmos DB - 费用概述

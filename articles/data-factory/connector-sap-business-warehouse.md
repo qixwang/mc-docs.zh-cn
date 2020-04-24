@@ -14,10 +14,10 @@ origin.date: 09/04/2019
 ms.date: 11/11/2019
 ms.author: v-jay
 ms.openlocfilehash: 933a6f449ecaae532509df856598a5ac675485e1
-ms.sourcegitcommit: ff8dcf27bedb580fc1fcae013ae2ec28557f48ac
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "73648812"
 ---
 # <a name="copy-data-from-sap-business-warehouse-using-azure-data-factory"></a>使用 Azure 数据工厂从 SAP Business Warehouse 复制数据
@@ -46,7 +46,7 @@ ms.locfileid: "73648812"
 
 若要使用此 SAP Business Warehouse 连接器，需要：
 
-- 设置自承载集成运行时。 有关详细信息，请参阅[自我托管集成运行时](create-self-hosted-integration-runtime.md)一文。
+- 设置自承载集成运行时。 有关详细信息，请参阅[自承载集成运行时](create-self-hosted-integration-runtime.md)一文。
 - 在集成运行时计算机上安装 SAP NetWeaver 库  。 可以从 SAP 管理员处或直接从 [SAP 软件下载中心](https://support.sap.com/swdc)获取 SAP Netweaver 库。 搜索“SAP Note #1025361”  获取最新版本的下载位置。 请确保选取与集成运行时安装匹配的 64 位 SAP NetWeaver 库  。 然后，按照 SAP 说明安装 SAP NetWeaver RFC SDK 中包含的所有文件。 SAP NetWeaver 库也包括在 SAP 客户端工具安装中。
 
 >[!TIP]
@@ -64,7 +64,7 @@ ms.locfileid: "73648812"
 
 SAP Business Warehouse (BW) 链接服务支持以下属性：
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：**SapBw** | 是 |
 | server | SAP BW 实例所驻留的服务器的名称。 | 是 |
@@ -132,7 +132,7 @@ SAP Business Warehouse (BW) 链接服务支持以下属性：
 
 若要从 SAP BW 复制数据，复制活动的 **source** 节支持以下属性：
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
 | type | 复制活动 source 的 type 属性必须设置为：**SapBwSource** | 是 |
 | 查询 | 指定要从 SAP BW 实例读取数据的 MDX 查询。 | 是 |
@@ -177,21 +177,21 @@ SAP Business Warehouse (BW) 链接服务支持以下属性：
 
 | SAP BW 数据类型 | 数据工厂临时数据类型 |
 |:--- |:--- |
-| ACCP | Int |
+| ACCP | int |
 | CHAR | String |
 | CLNT | String |
-| CURR | Decimal |
+| CURR | 小数 |
 | CUKY | String |
-| DEC | Decimal |
+| DEC | 小数 |
 | FLTP | Double |
 | INT1 | Byte |
 | INT2 | Int16 |
-| INT4 | Int |
+| INT4 | int |
 | LANG | String |
 | LCHR | String |
 | LRAW | Byte[] |
 | PREC | Int16 |
-| QUAN | Decimal |
+| QUAN | 小数 |
 | RAW | Byte[] |
 | RAWSTRING | Byte[] |
 | STRING | String |

@@ -14,10 +14,10 @@ origin.date: 08/01/2019
 ms.date: 11/11/2019
 ms.author: v-jay
 ms.openlocfilehash: 4189d8d848f898d4f2454acd5417ff2e96317c79
-ms.sourcegitcommit: ff8dcf27bedb580fc1fcae013ae2ec28557f48ac
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "73648650"
 ---
 # <a name="copy-data-from-servicenow-using-azure-data-factory"></a>使用 Azure 数据工厂从 ServiceNow 复制数据
@@ -45,7 +45,7 @@ Azure 数据工厂提供内置的驱动程序用于启用连接，因此无需�
 
 ServiceNow 链接服务支持以下属性：
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：**ServiceNow** | 是 |
 | endpoint | ServiceNow 服务器的终结点 (`http://<instance>.service-now.com`)。  | 是 |
@@ -84,10 +84,10 @@ ServiceNow 链接服务支持以下属性：
 
 要从 ServiceNow 复制数据，请将数据集的 type 属性设置为“ServiceNowObject”  。 支持以下属性：
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为：**ServiceNowObject** | 是 |
-| tableName | 表名称。 | 否（如果指定了活动源中的“query”） |
+| tableName | 表的名称。 | 否（如果指定了活动源中的“query”） |
 
 **示例**
 
@@ -114,10 +114,10 @@ ServiceNow 链接服务支持以下属性：
 
 要从 ServiceNow 复制数据，请将复制活动中的源类型设置为“ServiceNowSource”  。 复制活动**source**部分支持以下属性：
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
-| type | 复制活动源的 type 属性必须设置为：**ServiceNowSource** | 是 |
-| query | 使用自定义 SQL 查询读取数据。 例如：`"SELECT * FROM Actual.alm_asset"`。 | 否（如果指定了数据集中的“tableName”） |
+| type | 复制活动 source 的 type 属性必须设置为：**ServiceNowSource** | 是 |
+| 查询 | 使用自定义 SQL 查询读取数据。 例如：`"SELECT * FROM Actual.alm_asset"`。 | 否（如果指定了数据集中的“tableName”） |
 
 在查询中指定 ServiceNow 的架构和列时注意以下内容，并且参阅有关复制性能隐含的[性能提示](#performance-tips)  。
 

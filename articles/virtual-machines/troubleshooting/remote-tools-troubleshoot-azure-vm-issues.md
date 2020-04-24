@@ -16,10 +16,10 @@ origin.date: 01/11/2018
 ms.date: 11/11/2019
 ms.author: v-yeche
 ms.openlocfilehash: f88424262d8c29ef3d53b84e4fcf02c8bb693a25
-ms.sourcegitcommit: 1fd822d99b2b487877278a83a9e5b84d9b4a8ce7
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74116945"
 ---
 # <a name="use-remote-tools-to-troubleshoot-azure-vm-issues"></a>使用远程工具排查 Azure VM 问题
@@ -135,7 +135,7 @@ Set-AzVMCustomScriptExtension -Name "CustomScriptExtension" -ResourceGroupName $
 
 1. 在同一 VNET 中的另一个 VM 上，打开注册表编辑器 (regedit.exe)。
 
-2. 选择“文件” >“连接网络注册表”。  
+2. 选择“文件” **“连接网络注册表”。**  > 
 
     ![远程选项](./media/remote-tools-troubleshoot-azure-vm-issues/remote-registry.png) 
 

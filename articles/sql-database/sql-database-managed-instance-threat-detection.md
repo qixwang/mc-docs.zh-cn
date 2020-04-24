@@ -13,15 +13,15 @@ ms.reviewer: vanto
 origin.date: 08/05/2019
 ms.date: 09/09/2019
 ms.openlocfilehash: 21f8aa5c3f540dcd38653244576f3ea7e88d5f28
-ms.sourcegitcommit: 2610641d9fccebfa3ebfffa913027ac3afa7742b
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/05/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "70372968"
 ---
 # <a name="configure-advanced-threat-protection-in-azure-sql-database-managed-instance"></a>在 Azure SQL 数据库托管实例中配置高级威胁防护
 
-[托管实例](sql-database-managed-instance-index.yml)的[高级威胁防护](sql-database-threat-detection-overview.md)可检测异常活动，这些活动指示对数据库的异常和可能有害的访问或利用企图。 高级威胁防护可以识别**潜在的 SQL 注入**、**来自异常位置或数据中心的访问**、**来自陌生主体或可能有害的应用程序的访问**以及**暴力破解 SQL 凭据** - 请在[高级威胁防护警报](sql-database-threat-detection-overview.md#advanced-threat-protection-alerts)中查看更多详细信息。
+[托管实例](sql-database-threat-detection-overview.md)的[高级威胁防护](sql-database-managed-instance-index.yml)可检测异常活动，这些活动指示对数据库的异常和可能有害的访问或利用企图。 高级威胁防护可以识别**潜在的 SQL 注入**、**来自异常位置或数据中心的访问**、**来自陌生主体或可能有害的应用程序的访问**以及**暴力破解 SQL 凭据** - 请在[高级威胁防护警报](sql-database-threat-detection-overview.md#advanced-threat-protection-alerts)中查看更多详细信息。
 
 你可以通过[电子邮件通知](sql-database-threat-detection-overview.md#explore-anomalous-database-activities-upon-detection-of-a-suspicious-event)或 [Azure 门户](sql-database-threat-detection-overview.md#explore-advanced-threat-protection-alerts-for-your-database-in-the-azure-portal)接收有关检测到的威胁的通知
 

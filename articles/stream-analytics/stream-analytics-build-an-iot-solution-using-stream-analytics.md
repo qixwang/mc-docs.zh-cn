@@ -11,10 +11,10 @@ ms.topic: conceptual
 origin.date: 12/06/2018
 ms.date: 06/11/2019
 ms.openlocfilehash: d3add026e6a790447842dd16d52d9c92cd865f4f
-ms.sourcegitcommit: c72fba1cacef1444eb12e828161ad103da338bb1
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "71674697"
 ---
 # <a name="build-an-iot-solution-by-using-stream-analytics"></a>使用流分析生成 IoT 解决方案
@@ -104,7 +104,7 @@ ms.locfileid: "71674697"
 
 | 列 | 说明 |
 | --- | --- |
-| 牌照 |汽车的牌照号码 |
+| 牌照 |车辆的牌照号码 |
 | RegistrationId |车辆的登记 ID |
 | Expired |车辆的注册状态：0 代表车辆注册仍有效，1 代表车辆注册已过期 |
 

@@ -17,10 +17,10 @@ origin.date: 10/31/2018
 ms.date: 11/11/2019
 ms.author: v-yeche
 ms.openlocfilehash: 2cff06701ef837938e2ec908e5eeadac73552951
-ms.sourcegitcommit: 1fd822d99b2b487877278a83a9e5b84d9b4a8ce7
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74116894"
 ---
 # <a name="troubleshoot-application-connectivity-issues-on-virtual-machines-in-azure"></a>排查 Azure 中虚拟机上的应用程序连接问题
@@ -30,7 +30,7 @@ ms.locfileid: "74116894"
 如果在使用 RDP 或 SSH 连接到 VM 时发生问题，请先参阅以下文章之一：
 
 * [对与基于 Windows 的 Azure 虚拟机的远程桌面连接进行故障排除](troubleshoot-rdp-connection.md)
-* [对与基于 Linux 的 Azure 虚拟机的 Secure Shell (SSH) 连接进行故障排除](troubleshoot-ssh-connection.md)。
+* [对于基于 Linux 的 Azure 虚拟机的 Secure Shell (SSH) 连接进行故障排除](troubleshoot-ssh-connection.md)。
 
 如果对本文中的任何观点存在疑问，可以联系 [Azure 支持](https://support.azure.cn/support/contact/)上的 Azure 专家。 或者，也可以提出 Azure 支持事件。 请转到 [Azure 支持站点](https://support.azure.cn/support/support-azure/)提交请求。
 
@@ -47,7 +47,7 @@ ms.locfileid: "74116894"
     * [重新部署 Linux VM](redeploy-to-new-node-linux.md)
 * 重新创建虚拟机
 
-有关详细信息，请参阅[对终结点连接（RDP/SSH/HTTP 等故障）进行故障排除](https://social.msdn.microsoft.com/Forums/azure/538a8f18-7c1f-4d6e-b81c-70c00e25c93d/troubleshooting-endpoint-connectivity-rdpsshhttp-etc-failures?forum=WAVirtualMachinesforWindows)。
+有关详细信息，请参阅[终结点连接（RDP/SSH/HTTP 等故障）疑难解答](https://social.msdn.microsoft.com/Forums/azure/538a8f18-7c1f-4d6e-b81c-70c00e25c93d/troubleshooting-endpoint-connectivity-rdpsshhttp-etc-failures?forum=WAVirtualMachinesforWindows)。
 
 ## <a name="detailed-troubleshooting-overview"></a>详细故障排除概述
 有四个主要区域需要对 Azure 虚拟机上运行的应用程序的访问进行故障排除。
@@ -76,14 +76,14 @@ ms.locfileid: "74116894"
 
 例如，如果应用程序是 Web 服务器，则在 VM 上打开浏览器，并尝试访问 VM 上托管的网页。
 
-如果可以访问应用程序，请转到 [步骤 2](#step2)。
+如果可以访问应用程序，请转到[步骤 2](#step2)。
 
 如果不能访问应用程序，请验证以下设置：
 
 * 应用程序是否在目标虚拟机上运行。
 * 应用程序是否在预期 TCP 和 UDP 端口侦听。
 
-在基于 Windows 和基于 Linux 的虚拟机上，使用 **netstat -a** 命令显示活动的侦听端口。 检查应用程序应侦听的预期端口的输出。 重新启动应用程序，或根据需要将其配置为使用预期的端口，并尝试在本地重新访问应用程序。
+在基于 Windows 和基于 Linux 的虚拟机上，使用 **netstat -a** 命令显示活动的侦听端口。 检查应用程序应侦听的预期端口的输出。 重新启动应用程序，或根据需要将其配置为使用预期的端口，然后尝试在本地重新访问应用程序。
 
 <a name="step2"></a>
 ## <a name="step-2-access-application-from-another-vm-in-the-same-virtual-network"></a>步骤 2：从同一虚拟网络中的另一个 VM 访问应用程序
@@ -93,7 +93,7 @@ ms.locfileid: "74116894"
 
 例如，如果应用程序是 Web 服务器，则尝试在相同虚拟网络中的不同 VM 上使用浏览器访问网页。
 
-如果可以访问应用程序，请转到 [步骤 3](#step3)。
+如果可以访问应用程序，请转到[步骤 3](#step3)。
 
 如果不能访问应用程序，请验证以下设置：
 
@@ -146,6 +146,6 @@ ms.locfileid: "74116894"
 ## <a name="additional-resources"></a>其他资源
 [对与基于 Windows 的 Azure 虚拟机的远程桌面连接进行故障排除](troubleshoot-rdp-connection.md)
 
-[对与基于 Linux 的 Azure 虚拟机的 Secure Shell (SSH) 连接进行故障排除](troubleshoot-ssh-connection.md)
+[对于基于 Linux 的 Azure 虚拟机的 Secure Shell (SSH) 连接进行故障排除](troubleshoot-ssh-connection.md)
 
 <!-- Update_Description: wording update, update link -->

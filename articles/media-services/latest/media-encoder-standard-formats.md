@@ -16,10 +16,10 @@ ms.date: 09/23/2019
 ms.author: v-jay
 ms.reviewer: anilmur
 ms.openlocfilehash: 54e0f8bb71fa2fdb7a4bb3d35f2e46fc32992803
-ms.sourcegitcommit: 8248259e4c3947aa0658ad6c28f54988a8aeebf8
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "71125568"
 ---
 # <a name="standard-encoder-formats-and-codecs"></a>标准编码器格式和编解码器
@@ -30,14 +30,14 @@ ms.locfileid: "71125568"
 
 | 文件格式（文件扩展名） | 支持 |
 | --- | --- |
-| FLV（使用 H.264 和 AAC 编解码器） (.flv) |是 |
+| FLV（使用 H.264 和 AAC 编解码器）(.flv) |是 |
 | MXF    (.mxf) |是 |
 | GXF    (.gxf) |是 |
-| MPEG2-PS、MPEG2-TS、3GP (.ts、.ps、.3gp、3gpp、.mpg) |是 |
-| Windows Media 视频（WMV）/ASF (.wmv、.asf) |是 |
+| MPEG2-PS、MPEG2-TS、3GP（.ts、.ps、.3gp、.3gpp、.mpg） |是 |
+| Windows Media 视频 (WMV)/ASF（.wmv、.asf） |是 |
 | AVI（8 位/10 位未压缩）(.avi) |是 |
-| MP4（.mp4、.m4a、.m4v）/ISMV (.isma、.ismv) |是 |
-| [Microsoft Digital Video Recording (DVR-MS)](https://msdn.microsoft.com/library/windows/desktop/dd692984) (.dvr-ms) |是 |
+| MP4（.mp4、.m4a、.m4v）/ISMV（.isma、.ismv） |是 |
+| [Microsoft Digital Video Recording(DVR-MS)](https://msdn.microsoft.com/library/windows/desktop/dd692984) (.dvr-ms) |是 |
 | Matroska/WebM (.mkv) |是 |
 | WAVE/WAV (.wav) |是 |
 | QuickTime (.mov) |是 |
@@ -64,7 +64,7 @@ ms.locfileid: "71125568"
 | MPEG-1 |是 |
 | VC-1/WMV9 |是 |
 | Canopus HQ/HQX |否 |
-| MPEG-4 第 2 部分 |是 |
+| Mpeg-4 第 2 部分 |是 |
 | [Theora](https://en.wikipedia.org/wiki/Theora) |是 |
 | YUV420（未压缩或夹层） |是 |
 | Apple ProRes 422 |是 |
@@ -78,7 +78,7 @@ ms.locfileid: "71125568"
 ## <a name="input-audio-codecs"></a>输入音频编解码器
 | 输入音频编解码器 | 支持 |
 | --- | --- |
-| AAC（AAC-LC、AAC-HE 和 AAC-HEv2；最高支持 5.1） |是 |
+| AAC(AAC-LC、AAC-HE 和 AAC-HEv2；最高支持 5.1） |是 |
 | MPEG Layer 2 |是 |
 | MP3 (MPEG-1 Audio Layer 3) |是 |
 | Windows Media 音频 |是 |
@@ -93,11 +93,11 @@ ms.locfileid: "71125568"
 | Dolby® Digital Plus (E-AC3) |否 |
 
 ## <a name="output-formats-and-codecs"></a>输出格式和编解码器
-下表列出了支持导出操作的编解码器和文件格式。
+下表列出了导出操作支持的编解码器和文件格式。
 
 | 文件格式 | 视频编解码器 | 音频编解码器 |
 | --- | --- | --- |
-| MP4 <br/><br/>（包括多比特率 MP4 容器） |H.264（High、Main 和 Baseline Profile） |AAC-LC、HE-AAC v1、HE-AAC v2 |
+| MP4 <br/><br/>（包括多码率 MP4 容器） |H.264（High、Main 和 Baseline Profile） |AAC-LC、HE-AAC v1、HE-AAC v2 |
 | MPEG2-TS |H.264（High、Main 和 Baseline Profile） |AAC-LC、HE-AAC v1、HE-AAC v2 |
 
 ## <a name="next-steps"></a>后续步骤

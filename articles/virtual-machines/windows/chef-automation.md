@@ -16,10 +16,10 @@ origin.date: 07/09/2019
 ms.date: 10/14/2019
 ms.author: v-yeche
 ms.openlocfilehash: 9fb1801089ac1ea3a9790ea127fda9d01169dd15
-ms.sourcegitcommit: c9398f89b1bb6ff0051870159faf8d335afedab3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "72272801"
 ---
 # <a name="automating-azure-virtual-machine-deployment-with-chef"></a>使用 Chef 自动部署 Azure 虚拟机
@@ -31,17 +31,17 @@ Chef 是一个强大的工具，用于提供自动化和所需的状态配置。
 本文介绍如何设置 Chef 环境来预配 Azure 虚拟机，以及如何创建策略或“指南”并将此指南部署到 Azure 虚拟机。
 
 ## <a name="chef-basics"></a>Chef 基础知识
-在开始之前，请[查看 Chef 的基本概念](https://www.chef.io/chef)。
+在开始之前，请[复习一下 Chef 的基本概念](https://www.chef.io/chef)。
 
-下图描绘了高级别 Chef 体系结构。
+下图描绘了概要的 Chef 体系结构。
 
 ![][2]
 
 Chef 有三个主要的体系结构组件：Chef 服务器、Chef 客户端（节点）和 Chef 工作站。
 
-Chef 服务器是管理点，针对 Chef 服务器有两种选项：托管解决方案和本地解决方案。
+Chef 服务器是管理点，对于 Chef 服务器有两种选择：托管解决方案和本地解决方案。
 
-Chef 客户端（节点）是位于所管理的服务器上的代理。
+Chef 客户端（节点）是位于在管理的服务器上的代理。
 
 Chef 工作站是在其中创建策略和执行管理命令与 Chef 工具软件包的管理工作站的名称。
 
@@ -56,7 +56,7 @@ Chef 还使用“食谱”和“配方”的概念，它们实际上是我们要
 
 创建名为 C:\Chef 的目录。
 
-下载最新的 [Azure CLI](https://docs.azure.cn/cli/install-azure-cli?view=azure-cli-latest) 版本，并将其安装到工作站上。
+在工作站上下载并安装最新的 [Azure CLI](https://docs.azure.cn/cli/install-azure-cli?view=azure-cli-latest) 版本。
 
 ## <a name="configure-azure-service-principal"></a>配置 Azure 服务主体
 
@@ -80,7 +80,7 @@ New-AzureRmRoleAssignment -RoleDefinitionName Contributor -ServicePrincipalName 
 如果尚未使用 Chef 服务器，可以：
 
 * 注册[托管 Chef](https://manage.chef.io/signup)，这是 Chef 的最快入门方法。
-* 遵照 [Chef 文档](https://docs.chef.io/)中的[安装说明](https://docs.chef.io/install_server.html)，在基于 Linux 的计算机上安装独立的 Chef 服务器。
+* 遵照 [Chef 文档](https://docs.chef.io/install_server.html)中的[安装说明](https://docs.chef.io/)，在基于 Linux 的计算机上安装独立的 Chef 服务器。
 
 ### <a name="creating-a-hosted-chef-account"></a>创建托管 Chef 帐户
 
@@ -90,12 +90,12 @@ New-AzureRmRoleAssignment -RoleDefinitionName Contributor -ServicePrincipalName 
 
 ![][3]
 
-创建组织后，请下载初学者工具包。
+在创建组织后，下载初学者工具包。
 
 ![][4]
 
 > [!NOTE]
-> 如果收到提示，警告你将重置密钥，可以继续操作，因为我们尚未配置现有基础结构。
+> 如果收到一个警告你系统将重置密钥的提示，可以继续操作，因为我们尚未配置现有基础结构。
 >
 
 此初学者工具包 zip 文件的 `.chef` 目录中包含组织配置文件和用户密钥。
@@ -106,11 +106,11 @@ New-AzureRmRoleAssignment -RoleDefinitionName Contributor -ServicePrincipalName 
 
 将 chef-starter.zip 的内容解压缩到 c:\chef。
 
-将 chef-starter\chef-repo\.chef 下的所有文件复制到 c:\chef 目录中。
+将 chef-starter\chef-repo\.chef 下的所有文件都复制到 c:\chef 目录中。
 
 如果 `organization-validator.pem` 文件保存在 c:\Downloads 中，请将它复制到 c:\chef
 
-现在目录看起来应与以下示例类似。
+现在目录看起来应当与以下示例类似。
 
 ```powershell
     Directory: C:\Users\username\chef
@@ -132,7 +132,7 @@ d-----    12/6/2018   5:38 PM           roles
 
 ### <a name="edit-kniferb"></a>编辑 knife.rb
 
-PEM 文件包含用于通信的组织私钥和管理私钥，knife.rb 文件包含 knife 配置。 我们将需要编辑 knife.rb 文件。
+PEM 文件包含用于通信的组织私钥和管理私钥，knife.rb 文件包含 knife 配置。 需要编辑 knife.rb 文件。
 
 在所选的编辑器中打开 knife.rb 文件。 未经更改的文件应如下所示：
 
@@ -208,10 +208,10 @@ Chef Workstation: 0.4.2
 ```
 
 > [!NOTE]
-> 该路径的顺序非常重要！ 如果 opscode 路径未采用正确的顺序，将会出现问题。
+> 该路径的顺序非常重要！ 如果 opscode 路径未采用正确的顺序，会遇到问题。
 >
 
-请先重启工作站，然后再继续操作。
+在继续操作之前重新启动工作站。
 
 ### <a name="install-knife-azure"></a>安装 Knife Azure
 
@@ -232,17 +232,17 @@ Chef Workstation: 0.4.2
 
 ![][8]
 
-为确保已正确配置所有项，请运行以下命令。
+若要确保所有项都已正确配置，请运行以下命令。
 
     knife azurerm server list
 
-如果所有项都已正确配置，用户可看到可用 Azure 映像的列表滚动显示。
+如果所有项都已正确配置，会看到可用 Azure 映像的列表滚动显示。
 
 祝贺。 现已设置好工作站！
 
-## <a name="creating-a-cookbook"></a>创建指南
+## <a name="creating-a-cookbook"></a>创建食谱
 
-Chef 使用指南定义用户希望在托管客户端上执行的一组命令。 创建食谱的过程十分直截了当，只需使用 **chef generate cookbook** 命令生成食谱模板即可。 此食谱适用于自动部署 IIS 的 Web 服务器。
+食谱由 Chef 用来定义希望在托管客户端上执行的一组命令。 创建食谱的过程十分直截了当，只需使用 **chef generate cookbook** 命令生成食谱模板即可。 此食谱适用于自动部署 IIS 的 Web 服务器。
 
 在 C:\Chef 目录下运行以下命令。
 
@@ -250,7 +250,7 @@ Chef 使用指南定义用户希望在托管客户端上执行的一组命令。
 
 此命令在 C:\Chef\cookbooks\webserver 目录下生成一组文件。 接下来，定义 Chef 客户端要在托管虚拟机上执行的命令集。
 
-这些命令存储在 default.rb 文件中。 在此文件中，定义一组命令用于安装 IIS、启动 IIS 并将模板文件复制到 wwwroot 文件夹中。
+这些命令存储在文件 default.rb 中。 在此文件中，定义一组命令用于安装 IIS、启动 IIS 并将模板文件复制到 wwwroot 文件夹中。
 
 修改 C:\chef\cookbooks\webserver\recipes\default.rb 文件并添加以下行。
 
@@ -268,7 +268,7 @@ Chef 使用指南定义用户希望在托管客户端上执行的一组命令。
          rights :read, 'Everyone'
     end
 
-完成后，保存该文件。
+在完成后，保存该文件。
 
 ## <a name="creating-a-template"></a>创建模板
 此步骤生成用作 default.html 页面的模板文件。
@@ -279,7 +279,7 @@ Chef 使用指南定义用户希望在托管客户端上执行的一组命令。
 
 导航到 `C:\chef\cookbooks\webserver\templates\default\Default.htm.erb` 文件。 通过添加一些简单的“Hello World”HTML 代码来编辑该文件，然后保存该文件。
 
-## <a name="upload-the-cookbook-to-the-chef-server"></a>将指南上传到 Chef 服务器
+## <a name="upload-the-cookbook-to-the-chef-server"></a>将食谱上传到 Chef 服务器
 此步骤生成在本地计算机上创建的食谱的副本，并将其上传到 Chef 托管服务器。 上传后，食谱将显示在“策略”选项卡下  。
 
     knife cookbook upload webserver
@@ -319,7 +319,7 @@ Chef 使用指南定义用户希望在托管客户端上执行的一组命令。
 
 ![][15]
 
-下面显示的是命令提示符。
+接下来显示命令提示符。
 
 ![][16]
 
@@ -329,7 +329,7 @@ Chef 使用指南定义用户希望在托管客户端上执行的一组命令。
 
 此示例使用了富有创造性的 HTML 代码。
 
-你还可以查看节点的状态 [Chef 管理](https://manage.chef.io/)。 
+还可以在 [Chef 管理](https://manage.chef.io/)中查看节点的状态。 
 
 ![][17]
 

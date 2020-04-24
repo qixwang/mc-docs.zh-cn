@@ -9,10 +9,10 @@ origin.date: 05/23/2019
 ms.date: 09/09/2019
 ms.author: v-yeche
 ms.openlocfilehash: dc4ed26c48d0f9f5b2eed6153c3296c89c08b3ab
-ms.sourcegitcommit: 66192c23d7e5bf83d32311ae8fbb83e876e73534
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "70254475"
 ---
 # <a name="tuning-query-performance-with-azure-cosmos-db"></a>优化 Azure Cosmos DB 的查询性能
@@ -34,7 +34,7 @@ Azure Cosmos DB 提供了一个[用于查询数据的 SQL API](how-to-sql-query.
 
 * 分析 SQL 查询来确定查询执行计划。 
 * 如果查询包括一个针对分区键的筛选器，例如 `SELECT * FROM c WHERE c.city = "Seattle"`，则它被传送到单个分区。 如果查询没有针对分区键的筛选器，则会在所有分区中执行该查询，并且结果是合并的客户端。
-* 查询会根据客户端配置在每个分区内串行或并行执行。 在每个分区内，查询可能会进行一次或多次往返，具体取决于查询复杂性、所配置的页面大小和预配的集合吞吐量。 每个执行都返回由查询执行使用的[请求单位](request-units.md)数以及可选的查询执行统计信息。 
+* 查询将根据客户端配置在每个分区内串行或并行执行。 在每个分区内，查询可能会进行一次或多次往返，具体取决于查询复杂性、所配置的页面大小和预配的集合吞吐量。 每个执行都返回由查询执行使用的[请求单位](request-units.md)数以及可选的查询执行统计信息。 
 * SDK 对跨分区的查询结果进行汇总。 例如，如果查询涉及跨分区的 ORDER BY，则会对来自各个分区的结果进行合并排序以返回多区域排序的结果。 如果查询是类似于 `COUNT` 的聚合，则会对来自各个分区的计数进行求和以生成总数。
 
 SDK 针对查询执行提供了各种选项。 例如，在 .NET 中，`FeedOptions` 类中提供了以下选项。 下表介绍了这些选项以及它们如何影响查询执行时间。 
@@ -50,7 +50,7 @@ SDK 针对查询执行提供了各种选项。 例如，在 .NET 中，`FeedOpti
 | `RequestContinuation` | 可以通过传入任何查询返回的不透明继续标记来继续执行查询。 继续标记封装了执行查询所需的所有状态。 |
 | `ResponseContinuationTokenLimitInKb` | 可以限制服务器返回的继续标记的最大大小。 如果应用程序主机对响应标头大小有限制，则可能需要设置此项。 设置此项可能会增加查询的总体持续时间和所使用的 RU。  |
 
-例如，让我们以针对在某个集合上请求的分区键的查询为例，该集合以 `/city` 作为分区键并且预配的吞吐量为 100,000 RU/s。 使用 .NET 中的 `CreateDocumentQuery<T>` 请求执行此查询，如下所示：
+例如，让我们以针对在某个集合上请求的分区键的查询为例，该集合以 `/city` 作为分区键并且预配的吞吐量为 100,000 RU/s。 你使用 .NET 中的 `CreateDocumentQuery<T>` 请求执行此查询，如下所示：
 
 ```cs
 IDocumentQuery<dynamic> query = client.CreateDocumentQuery(
@@ -94,7 +94,7 @@ Expect: 100-continue
 {"query":"SELECT * FROM c WHERE c.city = 'Seattle'"}
 ```
 
-每个查询执行页面对应于一个标头为 `Accept: application/query+json` 的 REST API `POST`，SQL 查询在正文中。 每个查询都使用为了继续执行而在客户端与服务器之间回应的 `x-ms-continuation` 标记进行到服务器的一次或多次往返。 FeedOptions 中的配置选项会以请求标头的形式传递给服务器。 例如，`MaxItemCount` 对应于 `x-ms-max-item-count`。 
+每个查询执行页面对应于一个标头为 `POST` 的 REST API `Accept: application/query+json`，SQL 查询在正文中。 每个查询都使用为了继续执行而在客户端与服务器之间回应的 `x-ms-continuation` 标记进行到服务器的一次或多次往返。 FeedOptions 中的配置选项将以请求标头的形式传递给服务器。 例如，`MaxItemCount` 对应于 `x-ms-max-item-count`。 
 
 该请求返回以下响应（为便于阅读已将其截断）：
 
@@ -139,7 +139,7 @@ Date: Tue, 27 Jun 2017 21:59:49 GMT
 
 | 因素 | 提示 | 
 | ------ | -----| 
-| 预配的吞吐量 | 度量每个查询的 RU，并确保具有查询所需的预配吞吐量。 | 
+| 预配的吞吐量 | 度量每个查询的 RU，并确保你具有查询所需的预配吞吐量。 | 
 | 分区和分区键 | 支持在查询的筛选器子句中使用分区键值以降低延迟。 |
 | SDK 和查询选项 | 遵循 SDK 最佳做法（例如直接连接）并优化客户端查询执行选项。 |
 | 网络延迟 | 在度量时考虑网络开销，并使用多宿主 API 从最近的区域进行读取。 |
@@ -147,9 +147,9 @@ Date: Tue, 27 Jun 2017 21:59:49 GMT
 | 查询执行指标 | 对查询执行指标进行分析来查明潜在的查询和数据形状重写。  |
 
 ### <a name="provisioned-throughput"></a>预配的吞吐量
-在 Cosmos DB 中，创建数据容器，每个容器都具有以每秒请求单位 (RU) 表示的预留吞吐量。 读取 1-KB 文档为 1 个 RU，每个操作（包括查询）都根据其复杂性规范化为固定数量的 RU。 例如，如果为容器预配了 1000 RU/s，并且具有使用 5 个 RU 的类似于 `SELECT * FROM c WHERE c.city = 'Seattle'` 的查询，则每秒可以执行200 个这样的查询（(1000 RU/s) / (5 RU/查询) = 200 查询/s）。 
+在 Cosmos DB 中，创建数据容器，每个容器都具有以每秒请求单位 (RU) 表示的预留吞吐量。 读取 1-KB 文档为 1 个 RU，每个操作（包括查询）都根据其复杂性规范化为固定数量的 RU。 例如，如果你为容器预配了 1000 RU/s，并且你具有使用 5 个 RU 的类似于 `SELECT * FROM c WHERE c.city = 'Seattle'` 的查询，则每秒可以执行200 个这样的查询（(1000 RU/s) / (5 RU/查询) = 200 查询/s）。 
 
-如果每秒提交的查询多于 200 个，则服务会对高于 200/s 的传入请求进行速率限制。 SDK 会通过执行回退/重试自动处理此情况，因此可能会注意到这些查询有较高的延迟。 将预配的吞吐量提高到所需的值可以改进查询延迟和吞吐量。 
+如果你每秒提交的查询多于 200 个，则服务会对高于 200/s 的传入请求进行速率限制。 SDK 会通过执行回退/重试自动处理此情况，因此你可能会注意到这些查询有较高的延迟。 将预配的吞吐量提高到所需的值可以改进查询延迟和吞吐量。 
 
 若要了解请求单位的详细信息，请参阅[请求单位](request-units.md)。
 
@@ -182,7 +182,7 @@ IDocumentQuery<dynamic> query = client.CreateDocumentQuery(
 ```
 
 #### <a name="max-degree-of-parallelism"></a>最大并行度
-对于查询，优化 `MaxDegreeOfParallelism` 来确定适合应用程序的最佳配置，尤其是当执行跨分区查询时（没有针对分区键值的筛选器）。 `MaxDegreeOfParallelism` 控制并行任务的最大数目，即要并行访问的最大分区数。 
+对于查询，优化 `MaxDegreeOfParallelism` 来确定适合你的应用程序的最佳配置，尤其是当执行跨分区查询时（没有针对分区键值的筛选器）。 `MaxDegreeOfParallelism` 控制并行任务的最大数目，即要并行访问的最大分区数。 
 
 ```cs
 IDocumentQuery<dynamic> query = client.CreateDocumentQuery(
@@ -213,7 +213,7 @@ IDocumentQuery<dynamic> query = client.CreateDocumentQuery(
 
 有关查询执行指标的部分介绍如何检索查询的服务器执行时间 ( `totalExecutionTimeInMs`)，以便可区分查询执行和网络传输所用的时间。
 
-### <a name="indexing-policy"></a>索引策略
+### <a name="indexing-policy"></a>索引编制策略
 若要了解索引编制路径、种类和模式以及它们对查询执行有何影响，请参阅[配置索引编制策略](index-policy.md)。 默认情况下，索引编制策略为字符串使用哈希索引编制，字符串比较适合进行等式查询，但不适合进行范围查询/order by 查询。 如果需要对字符串使用范围查询，建议为所有字符串指定范围索引类型。 
 
 默认情况下，Azure Cosmos DB 会对所有数据应用自动索引。 对于高性能插入方案，考虑排除路径，因为这会降低每项插入操作的 RU 成本。 
@@ -249,9 +249,9 @@ IReadOnlyDictionary<string, QueryMetrics> metrics = result.QueryMetrics;
 | `documentLoadTimeInMs` | 毫秒 | 加载文档时花费的时间  | 
 | `systemFunctionExecuteTimeInMs` | 毫秒 | 执行系统（内置）函数花费的总时间（毫秒）  | 
 | `userFunctionExecuteTimeInMs` | 毫秒 | 执行用户定义的函数花费的总时间（毫秒） | 
-| `retrievedDocumentCount` | 计数 | 检索的文档总数  | 
+| `retrievedDocumentCount` | count | 检索的文档总数  | 
 | `retrievedDocumentSize` | 字节 | 检索的文档的总大小（字节）  | 
-| `outputDocumentCount` | 计数 | 输出文档数 | 
+| `outputDocumentCount` | count | 输出文档数 | 
 | `writeOutputTimeInMs` | 毫秒 | 查询执行时间（毫秒） | 
 | `indexUtilizationRatio` | 比率 (<=1) | 由筛选器匹配出的文档数与加载的文档数的比率  | 
 

@@ -8,10 +8,10 @@ ms.topic: troubleshooting
 origin.date: 11/09/2018
 ms.date: 11/04/2019
 ms.openlocfilehash: 63c8cd846a8e4b891a7a812f78e482a01d92b267
-ms.sourcegitcommit: f643ddf75a3178c37428b75be147c9383384a816
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "73191587"
 ---
 # <a name="how-to-use-explain-to-profile-query-performance-in-azure-database-for-mariadb"></a>如何使用 EXPLAIN 分析 Azure Database for MariaDB 中的查询性能

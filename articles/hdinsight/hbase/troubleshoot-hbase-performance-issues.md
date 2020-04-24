@@ -9,10 +9,10 @@ ms.topic: troubleshooting
 origin.date: 09/24/2019
 ms.date: 11/11/2019
 ms.openlocfilehash: 289d2cb4bd63cbff86643d094be95c38b7da7cc7
-ms.sourcegitcommit: 642a4ad454db5631e4d4a43555abd9773cae8891
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "73426120"
 ---
 # <a name="troubleshoot-apache-hbase-performance-issues-on-azure-hdinsight"></a>在 Azure HDInsight 上排查 Apache HBase 性能问题
@@ -96,9 +96,9 @@ ms.locfileid: "73426120"
 
     - `Phoenix.rpc.index.handler.count`：**50**（如果存在大型或众多的索引查找）
 
-    - `Phoenix.stats.updateFrequency`：1 小时 
+    - `Phoenix.stats.updateFrequency`：**1 小时**
 
-    - `Phoenix.coprocessor.maxmetadatacachetimetolivems`：1 小时 
+    - `Phoenix.coprocessor.maxmetadatacachetimetolivems`：**1 小时**
 
     - `Phoenix.coprocessor.maxmetadatacachesize`：**50 MB**
 

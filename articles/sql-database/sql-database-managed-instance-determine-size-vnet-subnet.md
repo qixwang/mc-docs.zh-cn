@@ -13,10 +13,10 @@ ms.reviewer: sstein, bonova, carlrab
 origin.date: 02/22/2019
 ms.date: 11/04/2019
 ms.openlocfilehash: 3335f9bff97d573ccda9fcc0a97ffd137eedbf37
-ms.sourcegitcommit: 97fa37512f79417ff8cd86e76fe62bac5d24a1bd
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "73041207"
 ---
 # <a name="determine-vnet-subnet-size-for-azure-sql-database-managed-instance"></a>根据 Azure SQL 数据库托管实例确定 VNet子网大小

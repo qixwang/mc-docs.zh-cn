@@ -17,10 +17,10 @@ origin.date: 01/30/2019
 ms.date: 11/11/2019
 ms.author: v-yeche
 ms.openlocfilehash: 82bc15dd1ae1e5905a286ff1a211de04b704fc98
-ms.sourcegitcommit: 5844ad7c1ccb98ff8239369609ea739fb86670a4
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "73831360"
 ---
 # <a name="tutorial-install-a-lemp-web-server-on-a-linux-virtual-machine-in-azure"></a>教程：在 Azure 中的 Linux 虚拟机上安装 LEMP Web 服务器
@@ -156,7 +156,7 @@ sudo sh -c 'echo "<?php phpinfo(); ?>" > /var/www/html/info.php'
 
 ## <a name="next-steps"></a>后续步骤
 
-本教程在 Azure 中部署了一台 LEMP 服务器。 你已了解如何：
+本教程在 Azure 中部署了一台 LEMP 服务器。 你已了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 创建 Ubuntu VM

@@ -15,14 +15,14 @@ origin.date: 02/06/2019
 ms.date: 10/14/2019
 ms.author: v-yeche
 ms.openlocfilehash: 75e6925e30e6ac614fea4229ac083374ebe22ab4
-ms.sourcegitcommit: c9398f89b1bb6ff0051870159faf8d335afedab3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "72272748"
 ---
 # <a name="configure-one-or-more-always-on-availability-group-listeners---resource-manager"></a>配置一个或多个 Always On 可用性组侦听器 - Resource Manager
-本主题说明如何：
+本主题说明如何执行以下操作：
 
 * 使用 PowerShell cmdlet 为 SQL Server 可用性组创建内部负载均衡器。
 * 将其他 IP 地址添加到负载均衡器，以支持多个可用性组。 
@@ -218,7 +218,7 @@ $ILB | Add-AzLoadBalancerRuleConfig -Name $LBConfigRuleName -FrontendIpConfigura
     sqlcmd -S <listenerName>,1435 -E
     ```
 
-SQLCMD 连接会自动连接到托管主副本的 SQL Server 实例。 
+SQLCMD 连接自动连接到托管主副本的 SQL Server 实例。 
 
 > [!NOTE]
 > 确保指定的端口已在两个 SQL Server 的防火墙上打开。 这两个服务器需要所用 TCP 端口的入站规则。 有关详细信息，请参阅 [Add or Edit Firewall Rule](https://technet.microsoft.com/library/cc753558.aspx)（添加或编辑防火墙规则）。 

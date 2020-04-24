@@ -16,17 +16,17 @@ origin.date: 01/25/2019
 ms.date: 09/23/2019
 ms.author: v-jay
 ms.openlocfilehash: 8d7d1ffad4658e99d4bd2fa59edd834671d8473d
-ms.sourcegitcommit: 8248259e4c3947aa0658ad6c28f54988a8aeebf8
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "71125639"
 ---
 # <a name="cli-example-publish-an-asset"></a>CLI 示例：发布资产
 
 本文中的 Azure CLI 脚本演示如何创建流式处理定位符并返回流式处理 URL。 
 
-## <a name="prerequisites"></a>先决条件 
+## <a name="prerequisites"></a>必备条件 
 
 [创建媒体服务帐户](create-account-cli-how-to.md)。
 

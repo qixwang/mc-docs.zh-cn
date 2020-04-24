@@ -12,10 +12,10 @@ origin.date: 07/03/2019
 ms.date: 07/10/2019
 ms.author: v-junlch
 ms.openlocfilehash: 131b3b640a34d61ad3ef50fd6fd244c5d2fc2cfd
-ms.sourcegitcommit: 09bf291a235f43202ba3752323395db86b16343f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "71119557"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-java"></a>快速入门：使用 REST API 和 Java 检测图像中的人脸
@@ -24,7 +24,7 @@ ms.locfileid: "71119557"
 
 如果没有 Azure 订阅，请在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial/)。 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - 人脸 API 订阅密钥。 可以按照[创建认知服务帐户](/cognitive-services/cognitive-services-apis-create-account)中的说明订阅人脸 API 服务并获取密钥。
 - 任何所选的 Java IDE。
@@ -42,7 +42,7 @@ ms.locfileid: "71119557"
 
 打开项目的 main 类。 在这里，请添加加载图像和检测人脸所需的代码。
 
-### <a name="import-packages"></a>导入程序包
+### <a name="import-packages"></a>导入包
 
 将下列 `import` 语句添加到文件顶部。
 
@@ -153,7 +153,7 @@ public class Main {
 }
 ```
 
-## <a name="run-the-app"></a>运行应用程序
+## <a name="run-the-app"></a>运行应用
 
 编译并运行代码。 成功的响应会以易于读取的 JSON 格式在控制台窗口中显示人脸数据。 例如：
 

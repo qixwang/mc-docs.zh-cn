@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.reviewer: cbrooks
 ms.custom: seo-javascript-september2019
 ms.openlocfilehash: 138179e2d6f27cd3d5f370a8a70d51aff5750384
-ms.sourcegitcommit: 73f07c008336204bd69b1e0ee188286d0962c1d7
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "72914475"
 ---
 # <a name="use-azure-queue-service-to-create-and-delete-queues-from-nodejs"></a>通过 Node.js 使用 Azure 队列服务创建和删除队列
@@ -37,7 +37,7 @@ ms.locfileid: "72914475"
 
 ### <a name="use-node-package-manager-npm-to-obtain-the-package"></a>使用 Node 包管理器 (NPM) 可获取该程序包
 1. 使用 **PowerShell** (Windows)、**Terminal** (Mac) 或 **Bash** (Unix) 等命令行界面导航到在其中创建了示例应用程序的文件夹。
-2. 在命令窗口中键入 **npm install azure-storage**。 该命令的输出类似于以下示例。
+2. 在命令窗口中键入 **npm install azure-storage** 。 该命令的输出类似于以下示例。
  
     ```bash
     azure-storage@0.5.0 node_modules\azure-storage

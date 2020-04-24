@@ -11,10 +11,10 @@ ms.date: 08/26/2019
 ms.author: v-yeche
 ms.custom: seodec18, H1Hack27Feb2017
 ms.openlocfilehash: db86429b246a90f9c42fade641509b9a17f2e6d6
-ms.sourcegitcommit: 18a0d2561c8b60819671ca8e4ea8147fe9d41feb
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "70134436"
 ---
 # <a name="push-your-first-image-to-a-private-docker-container-registry-using-the-docker-cli"></a>使用 Docker CLI 将第一个映像推送到专用 Docker 容器注册表
@@ -23,7 +23,7 @@ Azure 容器注册表存储和管理专用 [Docker](https://hub.docker.com) 容�
 
 以下步骤从公共 Docker 中心注册表下载正式的 [Nginx 映像](https://store.docker.com/images/nginx)，为专用 Azure 容器注册表标记该映像，将其推入到注册表，然后从注册表提取。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * **Azure 容器注册表** - 在 Azure 订阅中创建容器注册表。 例如，使用 [Azure 门户](container-registry-get-started-portal.md)或 [Azure CLI](container-registry-get-started-azure-cli.md)。
 * **Docker CLI** - 还必须在本地安装 Docker。 Docker 提供的包可在任何 [macOS][docker-mac]、[Windows][docker-windows] 或 [Linux][docker-linux] 系统上轻松配置 Docker。
@@ -79,7 +79,7 @@ docker run -it --rm -p 8080:80 nginx
 docker tag nginx myregistry.azurecr.cn/samples/nginx
 ```
 
-有关使用命名空间进行标记的详细信息，请参阅 [Azure 容器注册表的最佳做法](container-registry-best-practices.md)的[存储库命名空间](container-registry-best-practices.md#repository-namespaces)部分。
+有关使用命名空间进行标记的详细信息，请参阅 [Azure 容器注册表的最佳做法](container-registry-best-practices.md#repository-namespaces)的[存储库命名空间](container-registry-best-practices.md)部分。
 
 ## <a name="push-the-image-to-your-registry"></a>将映像推送到注册表
 

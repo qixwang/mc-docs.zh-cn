@@ -10,10 +10,10 @@ ms.date: 11/11/2019
 ms.author: v-yeche
 ms.custom: include file
 ms.openlocfilehash: 4f8615edf9036a17170540dc006d36aedeff1046
-ms.sourcegitcommit: 5844ad7c1ccb98ff8239369609ea739fb86670a4
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "73831385"
 ---
 ## <a name="supported-operating-systems-and-drivers"></a>支持的操作系统和驱动程序
@@ -26,7 +26,7 @@ ms.locfileid: "73831385"
 <!-- Not Available on (optional for NV-series)-->
 <!-- Not Available on [Data Science Virtual Machine](../articles/machine-learning/data-science-virtual-machine/overview.md)-->
 
-| 操作系统 | 驱动程序 |
+| OS | 驱动程序 |
 | -------- |------------- |
 | Windows Server 2016 | [398.75](https://us.download.nvidia.com/Windows/Quadro_Certified/398.75/398.75-tesla-desktop-winserver2016-international.exe) (.exe) |
 | Windows Server 2012 R2 | [398.75](https://us.download.nvidia.com/Windows/Quadro_Certified/398.75/398.75-tesla-desktop-winserver2008-2012r2-64bit-international.exe) (.exe) |

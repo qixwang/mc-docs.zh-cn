@@ -9,10 +9,10 @@ origin.date: 10/04/2019
 ms.date: 10/28/2019
 ms.author: v-yeche
 ms.openlocfilehash: 0dbcc1e25aaddb6ec55f942c3518ebff3e5bc289
-ms.sourcegitcommit: 73f07c008336204bd69b1e0ee188286d0962c1d7
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "72970267"
 ---
 # <a name="azure-cosmos-db-gremlin-limits"></a>Azure Cosmos DB Gremlin 限制

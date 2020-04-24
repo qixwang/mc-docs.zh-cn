@@ -14,10 +14,10 @@ origin.date: 07/19/2019
 ms.date: 10/21/2019
 ms.author: v-yiso
 ms.openlocfilehash: eab56d390b4245e2526f56091046ae3bca61ac2f
-ms.sourcegitcommit: b83f604eb98a4b696b0a3ef3db2435f6bf99f411
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/12/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "72292680"
 ---
 # <a name="failed-to-update-api-management-service-hostnames"></a>无法更新 API 管理服务主机名

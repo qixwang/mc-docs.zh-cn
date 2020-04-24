@@ -10,10 +10,10 @@ ms.date: 11/12/2018
 ms.author: v-yeche
 ms.custom: include file
 ms.openlocfilehash: 60b62ef3bc22a2fb59541056e790a46248fdb1b0
-ms.sourcegitcommit: b83f604eb98a4b696b0a3ef3db2435f6bf99f411
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/14/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "72303278"
 ---
 ## <a name="create-a-service-principal"></a>创建服务主体
@@ -22,7 +22,7 @@ ms.locfileid: "72303278"
 
 运行脚本之前，请将 `ACR_NAME` 变量更新为容器注册表的名称。 `SERVICE_PRINCIPAL_NAME` 值必须在 Azure Active Directory 租户中唯一。 如果收到“`'http://acr-service-principal' already exists.`”错误，请为服务主体指定另一名称。
 
-如果需要授予其他权限，可以选择修改 [az ad sp create-for-rbac][az-ad-sp-create-for-rbac] 命令中的 `--role` 值。
+如果需要授予其他权限，可以选择修改 `--role`az ad sp create-for-rbac[ 命令中的 ][az-ad-sp-create-for-rbac] 值。
 
 运行脚本后，请记下服务主体的 **ID** 和**密码**。 获得其凭据后，可以配置应用程序和服务使其作为服务主体对容器注册表进行身份验证。
 
@@ -59,7 +59,7 @@ echo "Service principal password: $SP_PASSWD"
 
 若要向现有服务主体授予注册表访问权限，必须为服务主体分配新角色。 与创建新的服务主体一样，可以授予“拉取”、“推送和拉取”以及“所有者”访问权限。
 
-以下脚本使用 [az role assignment create][az-role-assignment-create] 命令向 `SERVICE_PRINCIPAL_ID` 变量中指定的服务主体授予“拉取”  权限。 如果要授予不同的访问级别，请调整 `--role` 值。
+以下脚本使用 [az role assignment create][az-role-assignment-create] 命令向  *变量中指定的服务主体授予“拉取”* `SERVICE_PRINCIPAL_ID`权限。 如果要授予不同的访问级别，请调整 `--role` 值。
 
 <!-- URL is D:\gitrep\azure-docs-cli-python-samples\container-registry\service-principal-assign-role\service-principal-assign-role.sh-->
 

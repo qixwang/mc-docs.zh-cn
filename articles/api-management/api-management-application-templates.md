@@ -1,6 +1,6 @@
 ---
 title: Azure API 管理中的应用程序模板
-description: 了解如何在 Azure API 管理中自定义开发人员门户中应用程序页面的内容。
+description: 了解如何在 Azure API 管理中自定义开发人员门户中的应用程序页面的内容。
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -16,16 +16,16 @@ origin.date: 11/04/2019
 ms.author: v-yiso
 ms.date: 11/18/2019
 ms.openlocfilehash: 99ebbe41c7c30d86ce00892c5d132d8356f93704
-ms.sourcegitcommit: 5844ad7c1ccb98ff8239369609ea739fb86670a4
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "73831462"
 ---
 # <a name="application-templates-in-azure-api-management"></a>Azure API 管理中的应用程序模板
-通过 Azure API 管理，用户能够使用一组用于配置内容的模板自定义开发人员门户页的内容。 使用 [DotLiquid](http://dotliquidmarkup.org/) 语法和所选编辑器（例如 [DotLiquid for Designers](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers)），以及提供的一组本地化[字符串资源](./api-management-template-resources.md#strings)、[字形资源](./api-management-template-resources.md#glyphs)和[页面控件](./api-management-page-controls.md)，即可根据这些模板的使用需要非常灵活地配置页面内容。  
+通过 Azure API 管理，用户能够使用一组用于配置内容的模板自定义开发人员门户页面的内容。 使用 [DotLiquid](http://dotliquidmarkup.org/) 语法和所选编辑器（例如 [DotLiquid for Designers](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers)），以及提供的一组本地化[字符串资源](./api-management-template-resources.md#strings)、[字形资源](./api-management-template-resources.md#glyphs)和[页面控件](./api-management-page-controls.md)，即可根据这些模板的使用需要非常灵活地配置页面内容。  
   
- 本部分中的模板可用于自定义开发人员门户中应用程序页面的内容。  
+ 本部分中的模板可用于自定义开发人员门户中的应用程序页面的内容。  
   
 -   [应用程序列表](#ProductList)  
   
@@ -37,7 +37,7 @@ ms.locfileid: "73831462"
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
   
-##  <a name="ProductList"></a> 应用程序列表  
+##  <a name="application-list"></a><a name="ProductList"></a>应用程序列表  
  **应用程序列表**模板可用于自定义开发人员门户中应用程序列表页的正文。  
   
  ![应用程序列表页开发人员门户模板](./media/api-management-application-templates/APIM-Application-List-Page-Developer-Portal-Templates.png "APIM 应用程序列表页开发人员门户模板")  
@@ -81,11 +81,11 @@ ms.locfileid: "73831462"
   
 ### <a name="data-model"></a>数据模型  
   
-|属性|类型|说明|  
+|properties|类型|说明|  
 |--------------|----------|-----------------|  
 |Paging|[分页](./api-management-template-data-model-reference.md#Paging)实体。|应用程序集合的分页信息。|  
 |应用程序|[应用程序](./api-management-template-data-model-reference.md#Application)实体的集合。|对当前用户可见的应用程序。|  
-|CategoryName|string|应用程序的类别。|  
+|CategoryName|字符串|应用程序的类别。|  
   
 ### <a name="sample-template-data"></a>示例模板数据  
   
@@ -138,7 +138,7 @@ ms.locfileid: "73831462"
 }  
 ```  
   
-##  <a name="Application"></a> 应用程序  
+##  <a name="application"></a><a name="Application"></a> 应用程序  
  **应用程序**模板可用于自定义开发人员门户中应用程序页的正文。  
   
  ![应用程序页开发人员门户模板](./media/api-management-application-templates/APIM-Application-Page-Developer-Portal-Templates.png "APIM 应用程序页开发人员门户模板")  

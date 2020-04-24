@@ -9,17 +9,17 @@ origin.date: 04/09/2019
 ms.date: 09/30/2019
 ms.author: v-yeche
 ms.openlocfilehash: a00360f6bfab507f6abe3b30b8b5e15c884c5c74
-ms.sourcegitcommit: 8f810b0a4edb3343a694c72a221867763f20472d
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "72524839"
 ---
 # <a name="run-the-azure-site-recovery-deployment-planner-for-hyper-v-disaster-recovery-to-azure"></a>运行用于从 Hyper-V 灾难恢复到 Azure 的 Azure Site Recovery 部署规划器
 
 可使用以下四种模式之一运行 Site Recovery 部署规划器命令行工具 (ASRDeploymentPlanner.exe)： 
 - 获取虚拟机 (VM) 列表
-- [Profile](#profile-hyper-v-vms)
+- [配置文件](#profile-hyper-v-vms)
 - 生成报告
 - [获取吞吐量](#get-throughput)
 
@@ -100,19 +100,19 @@ ASRDeploymentPlanner.exe -Operation StartProfiling /?
 |-Password|（可选）连接到 Hyper-V 主机所需的密码。 如果未将密码指定为参数，则在运行命令时，系统会提示你输入它。|
 |-StorageAccountName|（可选）存储帐户名称，用于确定在将数据从本地复制到 Azure 时可实现的吞吐量。 该工具会将测试数据上传到此存储帐户来计算吞吐量。 存储帐户必须是常规用途 v1 (GPv1) 类型。|
 |-StorageAccountKey|（可选）用于访问存储帐户的密钥。 转到 Azure 门户 >“存储帐户”   > *存储帐户名称* >   “设置” >   “访问密钥” > **Key1**（或经典存储帐户的主访问密钥）。|
-|-Environment|（可选）Azure 存储帐户的目标环境。 它可以是以下三个值之一：AzureCloud、AzureUSGovernment、AzureChinaCloud。 默认值为 AzureCloud。 当目标区域为 Azure 美国政府或 Azure 中国世纪互联时，请使用此参数。|
+|-Environment|（可选）Azure 存储帐户的目标环境。 它可能采用下述三个值之一：AzureCloud、AzureUSGovernment、AzureChinaCloud。 默认值为 AzureCloud。 当目标区域为 Azure 美国政府或 Azure 中国世纪互联时，请使用此参数。|
 
 <!--MOONCAKE: the default is AzureCloud-->
 
 建议在分析 VM 时，分析 7 天以上。 如果变动量模式在某个月发生变化，建议在看到最大变动量的一周内进行分析。 最好的方式是分析 31 天，以便获取更好的建议。 
 
-在分析过程中，ASRDeploymentPlanner.exe 会保持运行。 该工具将取以天为单位的分析时间输入。 若要快速测试此工具或获取概念证明，可以分析数小时或数分钟。 允许的最短分析时间为 30 分钟。 
+在分析过程中，ASRDeploymentPlanner.exe 将保持运行。 该工具将取以天为单位的分析时间输入。 若要快速测试此工具或获取概念证明，可以分析数小时或数分钟。 允许的最短分析时间为 30 分钟。 
 
 在分析期间，可以选择性地传递存储帐户名称和密钥，确定在从 Hyper-V 服务器复制到 Azure 时，Azure Site Recovery 可实现的吞吐量。 如果在分析期间不传递存储帐户名称和密钥，该工具不会计算可实现的吞吐量。
 
 可以针对各个 VM 集运行该工具的多个实例。 确保不要在任何分析集中重复使用 VM 名称。 例如，假设已分析了 10 个 VM（VM1 到 VM10）。 几天后，需要再分析 5 个 VM（VM11 到 VM15）。 可以通过另一命令行控制台运行该工具，以便完成第二组 VM（VM11 到 VM15）的分析。 
 
-请确保第二组 VM 没有第一个分析实例中的任何 VM 名称，或确保为第二次运行使用不同的输出目录。 如果使用该工具的两个实例分析相同的 VM 并使用相同的输出目录，生成的报告不准确。 
+请确保第二组 VM 没有第一个分析实例中的任何 VM 名称，或确保为第二次运行使用不同的输出目录。 如果使用该工具的两个实例分析相同的 VM 并使用相同的输出目录，生成的报告将不准确。 
 
 默认情况下，此工具配置为在分析后为最多 1,000 个 VM 生成报表。 若要更改限制，可以更改 ASRDeploymentPlanner.exe.config 文件中的 MaxVMsSupported 项值。
 ```
@@ -123,7 +123,7 @@ ASRDeploymentPlanner.exe -Operation StartProfiling /?
 
 根据硬件配置（尤其是在其中运行报表生成工具的服务器的 RAM 大小），在内存不足的情况下，操作可能会失败。 如果硬件良好，可将 MaxVMsSupported 更改为更高的值。  
 
-VM 配置会在分析操作开始时捕获一次，存储在名为 VMDetailList.xml 的文件中。 生成报告时会使用此信息。 从分析开始到结束都不捕获 VM 配置中发生的任何更改（例如，核心、磁盘或 NIC 数增加）。 如果分析的 VM 配置在分析过程中发生了更改，则可通过下述解决方法在生成报表时获取最新的 VM 详细信息：
+VM 配置会在分析操作开始时捕获一次，存储在名为 VMDetailList.xml 的文件中。 生成报告时使用此信息。 从分析开始到结束都不捕获 VM 配置中发生的任何更改（例如，核心、磁盘或 NIC 数增加）。 如果分析的 VM 配置在分析过程中发生了更改，则可通过下述解决方法在生成报表时获取最新的 VM 详细信息：
 
 * 备份 VMdetailList.xml 文件，并将其从当前位置删除。
 * 生成报告时传递 -User 和 -Password 参数。
@@ -167,7 +167,7 @@ Azure Site Recovery 不支持使用 iSCSI 和传递磁盘的 VM。 该工具无�
 完成分析后，可在报告生成模式下运行该工具。 
 
 ### <a name="command-line-parameters"></a>命令行参数
-下表包含一系列必需的和可选的工具参数，适用于在报告生成模式下运行。 此工具常用于从 VMware 移至 Azure 以及从 Hyper-V 移至 Azure。 以下参数适用于 Hyper-V。
+下表包含一系列必需的和可选的工具参数，适用于在报告生成模式下 运行。 此工具常用于从 VMware 移至 Azure 以及从 Hyper-V 移至 Azure。 以下参数适用于 Hyper-V。
 ```
 ASRDeploymentPlanner.exe -Operation GenerateReport /?
 ```
@@ -185,7 +185,7 @@ ASRDeploymentPlanner.exe -Operation GenerateReport /?
 | -StartDate | （可选）采用 MM-DD-YYYY:HH:MM（24 小时）格式的开始日期和时间。 StartDate 必须与 EndDate 一起指定。 如果指定 StartDate，会根据从 StartDate 到 EndDate 收集的分析数据生成报告。 |
 | -EndDate | （可选）采用 MM-DD-YYYY:HH:MM（24 小时）格式的结束日期和时间。 EndDate 必须与 StartDate 一起指定。 如果指定 EndDate，会根据从 StartDate 到 EndDate 收集的分析数据生成报告。 |
 | -GrowthFactor | （可选）增长系数，以百分比表示。 默认值为 30%。 |
-| -UseManagedDisks | （可选）UseManagedDisks：Yes/No。 默认值为“是”。 计算可放置到单个存储帐户中的虚拟机数量时，需考虑到对虚拟机进行的故障转移/测试性故障转移是否是在托管磁盘而不是非托管磁盘上完成的。 |
+| -UseManagedDisks | （可选）UseManagedDisks：是/否。 默认值为“是”。 计算可放置到单个存储帐户中的虚拟机数量时，需考虑到对虚拟机进行的故障转移/测试性故障转移是否是在托管磁盘而不是非托管磁盘上完成的。 |
 |-SubscriptionId |（可选）订阅 GUID。 可以根据订阅、与订阅相关联的套餐、目标 Azure 区域和指定的货币，按照最新的价格使用此参数生成成本估算报表。|
 |-TargetRegion|（可选）充当复制目标的 Azure 区域。 由于 Azure 的成本因区域而异，因此可使用此参数来生成特定目标 Azure 区域的报表。 |
 |-OfferId|（可选）与订阅关联的产品/服务。 默认值为 MS-MC-ARZ-33P（Azure 标准预付款产品/服务）。|
@@ -247,7 +247,7 @@ ASRDeploymentPlanner.exe -Operation GenerateReport -Virtualization Hyper-V -Dire
 ```
 
 ### <a name="considerations-for-growth-factor"></a>增长系数注意事项
-假设使用量在一段时间内可能会增多，则考虑工作负荷特征的增长就至关重要。 在保护就位以后，如果工作负荷特征发生更改，则除非先禁用保护再重新启用保护，否则在切换到其他存储帐户后将无法获得保护。
+假设使用量在一段时间内可能会增多，则考虑工作负荷特征的增长就至关重要。 在保护就位以后，如果工作负荷特征发生更改，则除非先禁用保护，再重新启用保护，否则在切换到其他存储帐户后将无法获得保护。
 
 例如，假设你目前的 VM 适合标准存储复制帐户。 在随后的三个月中，可能会发生以下变化：
 
@@ -287,7 +287,7 @@ ASRDeploymentPlanner.exe -Operation GetThroughput /?
 | -StorageAccountName | 存储帐户名称，用于确定在将数据从本地复制到 Azure 时消耗的带宽。 该工具会将测试数据上传到此存储帐户来确定消耗的带宽。 存储帐户必须是常规用途 v1 (GPv1) 类型。|
 | -StorageAccountKey | 用于访问存储帐户的存储帐户密钥。 转到 Azure 门户 >“存储帐户”   > *存储帐户名称* > “设置”   >   “访问密钥” > **Key1**。|
 | -VMListFile | 一个文件，其中包含一系列可以通过分析来计算所消耗带宽的 VM。 文件路径可以是绝对或相对路径。 对于 Hyper-V，此文件是 GetVMList 操作的输出文件。 如果手动进行准备，此文件应包含一个服务器名称或 IP 地址，后跟 VM 名称（每一行都由 \ 分隔）。 该文件中指定的 VM 名称应与 Hyper-V 主机上的 VM 名称相同。<br /><br />**示例：** VMList.txt 包含以下 VM：<ul><li>Host_1\VM_A</li><li>10.8.59.27\VM_B</li><li>Host_2\VM_C</li><ul>|
-|-Environment|（可选）Azure 存储帐户的目标环境。 它可以是以下三个值之一：AzureCloud、AzureUSGovernment、AzureChinaCloud。 默认值为 AzureCloud。 当目标 Azure 区域为 Azure 美国政府或 Azure 中国世纪互联时，请使用此参数。|
+|-Environment|（可选）Azure 存储帐户的目标环境。 它可能采用下述三个值之一：AzureCloud、AzureUSGovernment、AzureChinaCloud。 默认值为 AzureCloud。 当目标 Azure 区域为 Azure 美国政府或 Azure 中国世纪互联时，请使用此参数。|
 
 <!-- Not Available on either Azure US Government or-->
 

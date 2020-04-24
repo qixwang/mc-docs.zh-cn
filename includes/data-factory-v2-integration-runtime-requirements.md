@@ -6,10 +6,10 @@ origin.date: 08/12/2019
 ms.date: 10/14/2019
 ms.author: jingwang
 ms.openlocfilehash: 36d0ae62f0474036ae3714ff1a9e2a87502efc21
-ms.sourcegitcommit: aea45739ba114a6b069f782074a70e5dded8a490
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "72275444"
 ---
 <!--

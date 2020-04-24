@@ -17,10 +17,10 @@ ms.date: 11/11/2019
 ms.author: v-yeche
 ms.custom: mvc
 ms.openlocfilehash: 029f3da1870ff3f7352f34834fb36cc77ca150a2
-ms.sourcegitcommit: 5844ad7c1ccb98ff8239369609ea739fb86670a4
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "73831340"
 ---
 # <a name="tutorial-create-a-custom-image-of-an-azure-vm-with-the-azure-cli"></a>教程：使用 Azure CLI 创建 Azure VM 的自定义映像
@@ -138,7 +138,7 @@ az image delete \
 在本教程中，你已创建了一个自定义 VM 映像。 你已了解如何：
 
 > [!div class="checklist"]
-> * 预配和通用化 VM
+> * 取消预配和通用化 VM
 > * 创建自定义映像
 > * 从自定义映像创建 VM
 > * 列出订阅中的所有映像

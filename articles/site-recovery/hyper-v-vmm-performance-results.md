@@ -9,10 +9,10 @@ origin.date: 12/27/2018
 ms.date: 08/26/2019
 ms.author: v-yeche
 ms.openlocfilehash: fcb02ecd0c3d14b06fa7a3a2863a970f07317e97
-ms.sourcegitcommit: 18a0d2561c8b60819671ca8e4ea8147fe9d41feb
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "70134476"
 ---
 # <a name="test-results-for-hyper-v-replication-to-a-secondary-site"></a>从 Hyper-V 复制到辅助站点的测试结果
@@ -89,7 +89,7 @@ Hyper-V 副本使用恢复服务器上的少量内存来使存储操作数量最
 
 ![副本影响结果](./media/hyper-v-vmm-performance-results/IC744921.png)
 
-## <a name="conclusion"></a>结论
+## <a name="conclusion"></a>结束语
 
 我们的结果清晰地表明，与 Hyper-V 副本配合使用的 Site Recovery 可以针对大型群集以最小的开销很好地进行扩展。 Site Recovery 提供了简单的部署、复制、管理和监视。 Hyper-V 副本为成功进行复制扩展提供了必要的基础结构。 
 
@@ -105,9 +105,9 @@ Hyper-V 副本使用恢复服务器上的少量内存来使存储操作数量最
 
 ![主要硬件要求](./media/hyper-v-vmm-performance-results/IC744922.png)
 
-| 服务器 | RAM | 型号 | 处理器 | 处理器数目 | NIC | 软件 |
+| 服务器 | RAM | “模型” | 处理器 | 处理器数目 | NIC | 软件 |
 | --- | --- | --- | --- | --- | --- | --- |
-| 群集中的 Hyper-V 服务器： <br />ESTLAB-HOST11<br />ESTLAB-HOST12<br />ESTLAB-HOST13<br />ESTLAB-HOST14<br />ESTLAB-HOST25 |128<br />ESTLAB-HOST25 有 256 个 |Dell ™ PowerEdge ™ R820 |Intel(R) Xeon(R) CPU E5-4620 0 \@ 2.20 GHz |4 |I Gbps x 4 |Windows Server Datacenter 2012 R2 (x64) + Hyper-V 角色 |
+| 在群集中的 Hyper-V 服务器： <br />ESTLAB-HOST11<br />ESTLAB-HOST12<br />ESTLAB-HOST13<br />ESTLAB-HOST14<br />ESTLAB-HOST25 |128<br />ESTLAB-HOST25 有 256 个 |Dell ™ PowerEdge ™ R820 |Intel(R) Xeon(R) CPU E5-4620 0 \@ 2.20 GHz |4 |I Gbps x 4 |Windows Server Datacenter 2012 R2 (x64) + Hyper-V 角色 |
 | VMM 服务器 |2 | | |2 |1 Gbps |Windows Server Database 2012 R2 (x64) + VMM 2012 R2 |
 
 ### <a name="secondary-site"></a>辅助站点
@@ -117,20 +117,20 @@ Hyper-V 副本使用恢复服务器上的少量内存来使存储操作数量最
 
 ![主要硬件规格](./media/hyper-v-vmm-performance-results/IC744923.png)
 
-| 服务器 | RAM | 型号 | 处理器 | 处理器数目 | NIC | 软件 |
+| 服务器 | RAM | “模型” | 处理器 | 处理器数目 | NIC | 软件 |
 | --- | --- | --- | --- | --- | --- | --- |
-| 群集中的 Hyper-V 服务器： <br />ESTLAB-HOST07<br />ESTLAB-HOST08<br />ESTLAB-HOST09<br />ESTLAB-HOST10 |96 |Dell ™ PowerEdge ™ R720 |Intel(R) Xeon(R) CPU E5-2630 0 \@ 2.30 GHz |2 |I Gbps x 4 |Windows Server Datacenter 2012 R2 (x64) + Hyper-V 角色 |
+| 在群集中的 Hyper-V 服务器： <br />ESTLAB-HOST07<br />ESTLAB-HOST08<br />ESTLAB-HOST09<br />ESTLAB-HOST10 |96 |Dell ™ PowerEdge ™ R720 |Intel(R) Xeon(R) CPU E5-2630 0 \@ 2.30 GHz |2 |I Gbps x 4 |Windows Server Datacenter 2012 R2 (x64) + Hyper-V 角色 |
 | ESTLAB-HOST17 |128 |Dell ™ PowerEdge ™ R820 |Intel(R) Xeon(R) CPU E5-4620 0 \@ 2.20 GHz |4 | |Windows Server Datacenter 2012 R2 (x64) + Hyper-V 角色 |
 | ESTLAB-HOST24 |256 |Dell ™ PowerEdge ™ R820 |Intel(R) Xeon(R) CPU E5-4620 0 \@ 2.20 GHz |2 | |Windows Server Datacenter 2012 R2 (x64) + Hyper-V 角色 |
 | VMM 服务器 |2 | | |2 |1 Gbps |Windows Server Database 2012 R2 (x64) + VMM 2012 R2 |
 
-### <a name="server-workloads"></a>服务器工作负荷
+### <a name="server-workloads"></a>服务器工作负载
 
-* 针对测试用途，我们选取了企业客户方案中常用的工作负荷。
-* 我们使用 [IOMeter](http://www.iometer.org) 与表中汇总的工作负荷特性进行模拟。
-* 所有 IOMeter 配置文件都设置为写入随机字节以模拟工作负荷的最坏情况写入模式。
+* 针对测试用途，我们选取了企业客户方案中常用的工作负载。
+* 我们使用 [IOMeter](http://www.iometer.org) 与表中汇总的工作负载特性进行模拟。
+* 所有 IOMeter 配置文件都设置为写入随机字节以模拟工作负载的最坏情况写入模式。
 
-| 工作负载 | I/O 大小 (KB) | 访问百分比 | 读取百分比 | 未完成的 I/O | I/O 模式 |
+| 工作负荷 | I/O 大小 (KB) | 访问百分比 | 读取百分比 | 未完成的 I/O | I/O 模式 |
 | --- | --- | --- | --- | --- | --- |
 | 文件服务器 |4<br />8<br />16<br />32<br />64 |60%<br />20%<br />5%<br />5%<br />10% |80%<br />80%<br />80%<br />80%<br />80% |8<br />8<br />8<br />8<br />8 |全部 100% 随机 |
 | SQL Server（卷 1）<br />SQL Server（卷 2） |8<br />64 |100%<br />100% |70%<br />0% |8<br />8 |100% 随机<br />100% 顺序 |
@@ -144,13 +144,13 @@ Hyper-V 副本使用恢复服务器上的少量内存来使存储操作数量最
 * 所有 VM 都带有 VHDX 磁盘。
 * VM 运行表中汇总的工作负荷。 所有虚拟机都是使用 VMM 模板创建的。
 
-| 工作负载 | # VM | 最小 RAM (GB) | 最大 RAM (GB) | 每个 VM 的逻辑磁盘大小 (GB) | 最大 IOPS |
+| 工作负荷 | # VM | 最小 RAM (GB) | 最大 RAM (GB) | 每个 VM 的逻辑磁盘大小 (GB) | 最大 IOPS |
 | --- | --- | --- | --- | --- | --- |
-| SQL Server |51 |1 |4 |167 |10 个 |
-| Exchange Server |71 |1 |4 |552 |10 个 |
+| SQL Server |51 |1 |4 |167 |10 |
+| Exchange Server |71 |1 |4 |552 |10 |
 | 文件服务器 |50 |1 |2 |552 |22 |
-| VDI |149 |0\.5 |1 |80 |6 |
-| Web 服务器 |149 |0\.5 |1 |80 |6 |
+| VDI |149 |.5 |1 |80 |6 |
+| Web 服务器 |149 |.5 |1 |80 |6 |
 | 总计 |470 | | |96.83 TB |4108 |
 
 ### <a name="site-recovery-settings"></a>Site Recovery 设置

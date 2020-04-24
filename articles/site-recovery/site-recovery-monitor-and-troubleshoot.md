@@ -9,10 +9,10 @@ origin.date: 07/30/2019
 ms.date: 08/26/2019
 ms.author: v-yeche
 ms.openlocfilehash: 3adcec25546a3563eaccdf8f163dc62d90f35835
-ms.sourcegitcommit: ea49cb39ed993bb1966559230c785b1e19bd43c5
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "72519393"
 ---
 # <a name="monitor-site-recovery"></a>监视 Site Recovery
@@ -36,7 +36,7 @@ ms.locfileid: "72519393"
 
 2. 在该仪表板中，向下钻取到不同的区域。 
 
-    ![Site Recovery 仪表板](./media/site-recovery-monitor-and-troubleshoot/site-recovery-overview-page.png)上获取。
+    ![Site Recovery 仪表板](./media/site-recovery-monitor-and-troubleshoot/site-recovery-overview-page.png)。
 
 3. 在“复制的项”中，单击“全部查看”可查看保管库中的所有服务器。  
 4. 单击每个部分的状态详细信息，以便向下钻取。
@@ -50,7 +50,7 @@ ms.locfileid: "72519393"
 --- | ---
 正常 | 复制正常进行。 未检测到任何错误或警告症状。
 警告 | 检测到一个或多个可能影响复制的警告症状。
-关键 | 检测到一个或多个严重复制错误症状。<br/><br/> 这些错误症状通常指示复制处于停滞状态，或者复制进度跟不上数据更改速率。
+严重 | 检测到一个或多个严重复制错误症状。<br/><br/> 这些错误症状通常指示复制处于停滞状态，或者复制进度跟不上数据更改速率。
 不适用 | 目前预期服务器无法复制。 这可能包括已故障转移的计算机。
 
 ## <a name="monitor-test-failovers"></a>监视测试故障转移

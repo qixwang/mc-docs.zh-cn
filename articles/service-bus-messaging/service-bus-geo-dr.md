@@ -11,10 +11,10 @@ origin.date: 01/23/2019
 ms.date: 09/23/2019
 ms.author: v-lingwu
 ms.openlocfilehash: 35315261c303f739f78b13ddf350253305ae42d8
-ms.sourcegitcommit: 2f2ced6cfaca64989ad6114a6b5bc76700870c1a
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "71330311"
 ---
 # <a name="azure-service-bus-geo-disaster-recovery"></a>Azure 服务总线异地灾难恢复
@@ -48,7 +48,7 @@ Azure 服务总线的异地灾难恢复功能是一项面向灾难恢复的解�
 
 -  *元数据*：队列、主题、订阅等实体及其与命名空间关联的服务的属性。 请注意，仅自动复制实体及其设置。 不会复制消息。
 
--  *故障转移*：激活辅助命名空间的过程。
+-   故障转移：激活辅助命名空间的过程。
 
 ## <a name="setup"></a>设置
 

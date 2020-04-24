@@ -8,10 +8,10 @@ ms.topic: conceptual
 origin.date: 09/12/2019
 ms.date: 09/30/2019
 ms.openlocfilehash: 18a727b29468eff9d49252a3aee4b872cf7f4e2a
-ms.sourcegitcommit: 849418188e5c18491ed1a3925829064935d2015c
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "71307882"
 ---
 # <a name="supported-azure-database-for-mariadb-server-versions"></a>支持的 Azure Database for MariaDB 服务器版本

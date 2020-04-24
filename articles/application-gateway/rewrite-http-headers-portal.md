@@ -10,10 +10,10 @@ ms.date: 09/10/2019
 ms.author: v-junlch
 ms.custom: mvc
 ms.openlocfilehash: f3175b539f31226c42a0d8aa17b6b0178c0b5cc1
-ms.sourcegitcommit: 843028f54c4d75eba720ac8874562ab2250d5f4d
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "70857346"
 ---
 # <a name="rewrite-http-request-and-response-headers-with-azure-application-gateway---azure-portal"></a>重写 Azure 应用程序网关中的 HTTP 请求和响应标头 - Azure 门户

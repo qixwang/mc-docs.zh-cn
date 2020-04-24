@@ -10,10 +10,10 @@ ms.date: 09/30/2019
 ms.author: v-jay
 ms.custom: include file
 ms.openlocfilehash: 2a0aa68e43c28ae71f3692705d62274df1bf261c
-ms.sourcegitcommit: c72fba1cacef1444eb12e828161ad103da338bb1
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "71696051"
 ---
 ## <a name="error-conditionheadersnotsupported-from-a-web-application-using-azure-files-from-browser"></a>从浏览器访问使用 Azure 文件存储的 Web 应用程序时出现错误 ConditionHeadersNotSupported

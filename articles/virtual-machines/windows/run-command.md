@@ -10,10 +10,10 @@ ms.date: 11/11/2019
 ms.topic: article
 manager: digimobile
 ms.openlocfilehash: 8a37305d5da65405f71b7503239b56baa8bc52fa
-ms.sourcegitcommit: 1fd822d99b2b487877278a83a9e5b84d9b4a8ce7
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74116961"
 ---
 <!--Verfiy succesfully-->
@@ -45,7 +45,7 @@ ms.locfileid: "74116961"
 > [!NOTE]
 > 若要正常工作，“运行命令”需要连接（通过端口 443）到 Azure 公共 IP 地址。 如果扩展无法访问这些终结点，则脚本可能会成功运行，但不会返回结果。 如果要阻止虚拟机上的流量，可以使用[服务标记](../../virtual-network/security-overview.md#service-tags)以通过 `AzureChinaCloud` 标记允许流量发往 Azure 公共 IP 地址。
 
-## <a name="available-commands"></a>可用的命令
+## <a name="available-commands"></a>可用命令
 
 下表显示了可用于 Windows VM 的命令的列表。 可以使用 **RunPowerShellScript** 命令运行所需的任何自定义脚本。 使用 Azure CLI 或 PowerShell 运行命令时，为 `--command-id` 或 `-CommandId` 参数提供的值必须是下面列出的值之一。 如果指定的值不是可用的命令，将会收到以下错误：
 

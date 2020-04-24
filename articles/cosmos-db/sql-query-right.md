@@ -9,10 +9,10 @@ ms.date: 10/28/2019
 ms.author: v-yeche
 ms.custom: query-reference
 ms.openlocfilehash: 2cd1357d69da2de976bc65866b245fa488fec627
-ms.sourcegitcommit: 73f07c008336204bd69b1e0ee188286d0962c1d7
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "72914680"
 ---
 # <a name="right-azure-cosmos-db"></a>RIGHT (Azure Cosmos DB)
@@ -34,17 +34,17 @@ RIGHT(<str_expr>, <num_expr>)
 
 ## <a name="return-types"></a>返回类型
 
-  返回一个字符串表达式。  
+  返回字符串表达式。  
 
 ## <a name="examples"></a>示例
 
-  以下示例根据不同的长度值返回“abc”的右侧部分。  
+  以下示例将返回不同长度值的 "abc" 的右侧部分。  
 
 ```sql
 SELECT RIGHT("abc", 1) AS r1, RIGHT("abc", 2) AS r2 
 ```  
 
- 下面是结果集。  
+ 下面是结果集：  
 
 ```json
 [{"r1": "c", "r2": "bc"}]  

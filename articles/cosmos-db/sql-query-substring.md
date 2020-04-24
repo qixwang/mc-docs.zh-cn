@@ -9,10 +9,10 @@ ms.date: 10/28/2019
 ms.author: v-yeche
 ms.custom: query-reference
 ms.openlocfilehash: c5c16328850d109d844633ce024ae2e8013a847d
-ms.sourcegitcommit: 73f07c008336204bd69b1e0ee188286d0962c1d7
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "72914645"
 ---
 # <a name="substring-azure-cosmos-db"></a>SUBSTRING (Azure Cosmos DB)
@@ -37,17 +37,17 @@ SUBSTRING(<str_expr>, <num_expr1>, <num_expr2>)
 
 ## <a name="return-types"></a>返回类型
 
-  返回一个字符串表达式。  
+  返回字符串表达式。  
 
 ## <a name="examples"></a>示例
 
-  以下示例返回“abc”中从位置 1 开始且长度为 1 个字符的子字符串。  
+  以下示例将返回 "abc" 中从位置 1 开始且长度为 1 个字符的子字符串。  
 
 ```sql
 SELECT SUBSTRING("abc", 1, 1) AS substring  
 ```  
 
- 下面是结果集。  
+ 下面是结果集：  
 
 ```json
 [{"substring": "b"}]  

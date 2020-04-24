@@ -6,16 +6,16 @@ origin.date: 11/03/2016
 ms.date: 11/03/2016
 ms.author: v-tawe
 ms.openlocfilehash: 005726ee46a71492d665dfaa3293e58673f0d7a0
-ms.sourcegitcommit: 0529a2aa102e058636d726b4a4f25208e1e60597
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "71059573"
 ---
-使用 Azure Resource Manager，可以定义在部署模板时想要指定的值的参数。 该模板具有一个名为 Parameters 的部分，其中包含所有参数值。
+使用 Azure 资源管理器，可以定义在部署模板时想要指定的值的参数。 该模板具有一个名为 Parameters 的部分，其中包含所有参数值。
 应该为随着要部署的项目或要部署到的环境而变化的值定义参数。 不要为永远保持不变的值定义参数。 每个参数值可在模板中用来定义所部署的资源。 
 
-定义参数时，使用 allowedValues 字段指定用户在部署过程中可以提供哪些值  。 如果在部署过程中未提供任何值，请使用 defaultValue 字段为该参数赋值  。
+在定义参数时，请使用 **allowedValues** 字段来指定用户在部署过程中可以提供哪些值。 如果在部署过程中未提供任何值，请使用 **defaultValue** 字段为该参数赋值。
 
 下面介绍模板中的每个参数。
 

@@ -13,10 +13,10 @@ ms.topic: article
 origin.date: 10/25/2019
 ms.date: 11/11/2019
 ms.openlocfilehash: 317e3cc518fe1c5878b6c70b05b568a84c932c72
-ms.sourcegitcommit: 5844ad7c1ccb98ff8239369609ea739fb86670a4
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "73831476"
 ---
 # <a name="custom-roles-for-sql-server-to-sql-database-managed-instance-online-migrations"></a>用于从 SQL Server 联机迁移到 SQL 数据库托管实例的自定义角色

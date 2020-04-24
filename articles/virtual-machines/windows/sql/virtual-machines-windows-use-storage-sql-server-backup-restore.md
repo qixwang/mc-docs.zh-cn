@@ -15,10 +15,10 @@ origin.date: 01/31/2017
 ms.date: 10/14/2019
 ms.author: v-yeche
 ms.openlocfilehash: e44e18817ca36d2974fd4068e61ff1d084530411
-ms.sourcegitcommit: c9398f89b1bb6ff0051870159faf8d335afedab3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "72272806"
 ---
 # <a name="use-azure-storage-for-sql-server-backup-and-restore"></a>将 Azure 存储用于 SQL Server 备份和还原
@@ -27,7 +27,7 @@ ms.locfileid: "72272806"
 
 SQL Server 2016 引入了新功能；可以使用[文件快照备份](https://msdn.microsoft.com/library/mt169363.aspx)来执行几乎实时的备份和极其快速的还原。
 
-本主题说明为何可以选择使用 Azure 存储进行 SQL 备份，并介绍了相关的组件。 可以使用本文结尾所提供的资源来访问演练和其他信息，以开始搭配 SQL Server 备份来使用此服务。
+本主题说明为何可以选择使用 Azure 存储进行 SQL 备份，并介绍了相关的组件。 可以使用本文结尾处提供的资源来访问演练和其他信息，以开始将此服务与 SQL Server 备份共同使用。
 
 ## <a name="benefits-of-using-the-azure-blob-service-for-sql-server-backups"></a>使用 Azure Blob 服务执行 SQL Server 备份的优点
 备份 SQL Server 时，会面临多项挑战。 这些挑战包括存储管理、存储故障产生的风险、访问场外存储以及硬件配置。 这些挑战当中许多都是通过使用 Azure Blob 存储服务进行 SQL Server 备份来解决的。 请考虑以下好处：
@@ -37,7 +37,7 @@ SQL Server 2016 引入了新功能；可以使用[文件快照备份](https://ms
 * **受管理的硬件**：使用 Azure 服务没有硬件管理开销。 Azure 服务可管理硬件并提供地域异地复制和硬件故障防护。
 * **无限制的存储**：通过启用直接备份到 Azure Blob，可以访问几乎无限的存储。 或者，还可以选择备份到 Azure 虚拟机磁盘，所受的限制取决于计算机的大小。 只能将有限数量的磁盘附加到用于备份的 Azure 虚拟机。 对特大实例的限制为 16 个磁盘；对较小实例的磁盘限制数更少。
 * **备份可用性**：存储在 Azure Blob 中的备份可随时从任何位置使用，并可供轻松访问以还原到本地 SQL Server 或运行于 Azure 虚拟机中的其他 SQL Server，而无需进行数据库附加/分离或者下载和附加 VHD。
-* **成本**：只需为所使用的服务付费。 作为场外和备份存档方式可能更加划算。 有关详细信息，请参阅 [Azure 定价计算器](https://www.azure.cn/pricing/calculator/ "定价计算器")和 [Azure 定价文章](https://www.azure.cn/pricing/overview/ "定价文章")。
+* **成本**：只需要为使用的服务付费。 作为场外和备份存档方式可能更加划算。 有关详细信息，请参阅 [Azure 定价计算器](https://www.azure.cn/pricing/calculator/ "定价计算器")和 [Azure 定价文章](https://www.azure.cn/pricing/overview/ "定价文章")。
 * **存储快照**：如果数据库文件存储在 Azure Blob 中并且使用的是 SQL Server 2016，则可以使用[文件快照备份](https://msdn.microsoft.com/library/mt169363.aspx)来执行几乎实时的备份和极其快速的还原。
 
 有关更多详细信息，请参阅[使用 Azure Blob 存储服务执行 SQL Server 备份和还原](https://go.microsoft.com/fwlink/?LinkId=271617)。

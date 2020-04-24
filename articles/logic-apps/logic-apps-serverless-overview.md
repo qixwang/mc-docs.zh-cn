@@ -16,10 +16,10 @@ origin.date: 03/30/2017
 ms.date: 09/09/2019
 ms.author: v-yiso
 ms.openlocfilehash: 7b9652059dd2b86bb3b49f0e3977e205b7140d6e
-ms.sourcegitcommit: ba87706b611c3fa338bf531ae56b5e68f1dd0cde
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "70174193"
 ---
 # <a name="overview-azure-serverless-with-azure-logic-apps-and-azure-functions"></a>概述：使用 Azure 逻辑应用和 Azure Functions 的 Azure 无服务器
@@ -38,7 +38,7 @@ ms.locfileid: "70174193"
 
 要开始使用逻辑应用，请先[创建第一个逻辑应用](quickstart-create-first-logic-app-workflow.md)。 如需有关逻辑应用的更多技术信息，请参阅[开发人员参考](logic-apps-workflow-definition-language.md)。
 
-## <a name="what-is-azure-functions"></a>什么是 Azure Functions？
+## <a name="what-is-azure-functions"></a>Azure Functions 是什么？
 
 Azure Functions 是用于在云中轻松运行代码片段或“函数”的一项服务。 可以只编写解决当前问题所需的代码，不需担心整个应用或所需的基础结构。 Functions 可使开发更有效率，并可以使用自己所选的开发语言，例如 C#、F#、Node.js、Python 或 PHP。 只需为代码运行的时间付费，并且 Azure 会根据需要进行缩放。
 

@@ -18,10 +18,10 @@ ms.author: v-jay
 ms.reviewer: misainat
 ms.lastreviewed: 08/10/2018
 ms.openlocfilehash: 56b705ae1852f9b0bcaa95a19a274fa584a4491b
-ms.sourcegitcommit: 843028f54c4d75eba720ac8874562ab2250d5f4d
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "70856996"
 ---
 # <a name="download-and-extract-the-asdk"></a>下载并提取 ASDK

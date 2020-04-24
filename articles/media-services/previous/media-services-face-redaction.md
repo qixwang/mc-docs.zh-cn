@@ -15,27 +15,27 @@ origin.date: 03/18/2019
 ms.date: 09/23/2019
 ms.author: v-jay
 ms.openlocfilehash: 417a4c25899a8f222daa44837166e4e5ac0e50ef
-ms.sourcegitcommit: 8248259e4c3947aa0658ad6c28f54988a8aeebf8
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "71124487"
 ---
 # <a name="redact-faces-with-azure-media-analytics"></a>使用 Azure 媒体分析进行面部修订 
 ## <a name="overview"></a>概述
 **Azure 媒体修订器**是一种 [Azure 媒体分析](media-services-analytics-overview.md)媒体处理器 (MP)，可用于在云中进行可缩放的面部修订。 使用面部修订，可对视频进行修改，使所选个人的面部模糊显示。 用户可能想要在公共安全和新闻媒体场景中使用面部修订服务。 对于时长仅几分钟但包含多张面孔的镜头，进行手动面部修订可能需要几个小时，但使用此服务仅需几个简单步骤即可完成该过程。 有关详细信息，请参阅[此](https://azure.microsoft.com/blog/azure-media-redactor/)博客。
 
-本文提供了有关 **Azure 媒体编修器**的详细信息，并演示了如何通过适用于 .NET 的媒体服务 SDK 使用它。
+本文提供有关 **Azure 媒体编修器**的详细信息，并演示如何通过适用于 .NET 的媒体服务 SDK 使用它。
 
 ## <a name="face-redaction-modes"></a>面部修订模式
-面部修订的工作方式是：检测每一帧视频中的面部，并跟踪之前和之后的面部对象，以便同一个人在其他角度也模糊显示。 自动修订过程非常复杂，并且无法始终产生 100% 符合要求的输出，因此，媒体分析提供了几种修改最终输出的方式。
+面部修订的工作方式是：检测每一帧视频中的面部，并跟踪之前和之后的面部对象，以便同一个人在其他角度也模糊显示。 自动编修过程很复杂，并且无法始终生成 100% 符合要求的输出，因此，媒体分析提供了几种修改最终输出的方式。
 
-除了完全自动模式外，还可使用双步工作流通过 ID 列表选择/取消选找到的面部。 此外，为了对每一帧进行任意调整，MP 使用 JSON 格式的元数据文件。 此工作流拆分为“分析”  和“修订”  模式。 可将这两个模式组合为在一个作业中运行两项任务的单个过程；此模式称为“组合”  。
+除了完全自动模式外，还可使用双步工作流通过 ID 列表选择/取消选择找到的面部。 此外，为了对每一帧进行任意调整，MP 使用 JSON 格式的元数据文件。 此工作流拆分为“分析”  和“修订”  模式。 可将这两个模式组合为在一个作业中运行两项任务的单个过程；此模式称为“组合”  。
 
 ### <a name="combined-mode"></a>组合模式
-这自动生成经过修订的 mp4，无需任何手动输入。
+这会自动生成经过编修的 mp4，而无需任何手动输入。
 
-| 阶段 | 文件名 | 注释 |
+| 阶段 | 文件名 | 说明 |
 | --- | --- | --- |
 | 输入资产 |foo.bar |WMV、MOV 或 MP4 格式的视频 |
 | 输入配置 |作业配置预设 |{'version':'1.0', 'options': {'mode':'combined'}} |
@@ -48,9 +48,9 @@ ms.locfileid: "71124487"
 [观看此视频](https://ampdemo.azureedge.net/?url=https%3A%2F%2Freferencestream-samplestream.streaming.mediaservices.chinacloudapi.cn%2Fc6608001-e5da-429b-9ec8-d69d8f3bfc79%2Fdance_redacted.mp4)
 
 ### <a name="analyze-mode"></a>分析模式
-双步工作流的 **分析** 步骤使用视频输入，并生成表示面部位置的 JSON 文件，以及显示每个检测到的面部的 jpg 图像。
+双步工作流的**分析**步骤使用视频输入，并生成表示面部位置的 JSON 文件，以及显示每个检测到的面部 jpg 图像。
 
-| 阶段 | 文件名 | 注释 |
+| 阶段 | 文件名 | 说明 |
 | --- | --- | --- |
 | 输入资产 |foo.bar |WMV、MPV 或 MP4 格式的视频 |
 | 输入配置 |作业配置预设 |{'version':'1.0', 'options': {'mode':'analyze'}} |
@@ -115,7 +115,7 @@ ms.locfileid: "71124487"
 
 “分析”步骤的输出不包括原始视频。 需要将该视频上传到“修订”模式任务的输入资产中，并将其选作主文件。
 
-| 阶段 | 文件名 | 注释 |
+| 阶段 | 文件名 | 说明 |
 | --- | --- | --- |
 | 输入资产 |foo.bar |WMV、MPV 或 MP4 格式的视频。 与步骤 1 中相同的视频。 |
 | 输入资产 |foo_annotations.json |第一阶段中的批注元数据文件，包含可选的修改。 |
@@ -136,7 +136,7 @@ ms.locfileid: "71124487"
 
 ## <a name="blur-types"></a>模糊类型
 
-在“合并”或“修订”模式下，可通过 JSON 输入配置在 5 种不同的模糊模式中选择   ：“低”、“中”、“高”、“框”和“黑色”      。 默认情况下使用“中”  。
+在“组合”或“修订”模式下，可通过 JSON 输入配置在 5 种不同的模糊模式中选择：“低”、“中”、“高”、“框”和“黑色”        。 默认情况下使用“中”  。
 
 可以查找以下模糊类型的示例。
 
@@ -177,7 +177,7 @@ ms.locfileid: "71124487"
 以下程序演示如何：
 
 1. 创建资产并将媒体文件上传到资产。
-2. 基于包含以下 json 预设的配置文件创建含有面部修订任务的作业： 
+2. 基于包含以下 json 预设的配置文件创建含有人脸编修任务的作业： 
 
     ```json
             {
@@ -192,7 +192,7 @@ ms.locfileid: "71124487"
 
 #### <a name="create-and-configure-a-visual-studio-project"></a>创建和配置 Visual Studio 项目
 
-设置开发环境，并在 app.config 文件中填充连接信息，如[使用 .NET 进行媒体服务开发](media-services-dotnet-how-to-use.md)中所述。 
+设置开发环境，并根据[使用 .NET 进行媒体服务开发](media-services-dotnet-how-to-use.md)中所述，在 app.config 文件中填充连接信息。 
 
 #### <a name="example"></a>示例
 
@@ -371,5 +371,5 @@ namespace FaceRedaction
 ## <a name="related-links"></a>相关链接
 [Azure 媒体服务分析概述](media-services-analytics-overview.md)
 
-[Azure Media Analytics demos（Azure 媒体分析演示）](https://azuremedialabs.azurewebsites.net/demos/Analytics.html)
+[Azure 媒体分析演示](https://azuremedialabs.azurewebsites.net/demos/Analytics.html)
 

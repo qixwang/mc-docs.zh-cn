@@ -11,10 +11,10 @@ ms.reviewer: vanto
 origin.date: 10/07/2019
 ms.date: 11/04/2019
 ms.openlocfilehash: 0c4c872640795a23fcd64f1157b81a481b628fc3
-ms.sourcegitcommit: 97fa37512f79417ff8cd86e76fe62bac5d24a1bd
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "73041374"
 ---
 # <a name="azure-sql-database-managed-instance-connection-types"></a>Azure SQL 数据库托管实例连接类型

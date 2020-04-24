@@ -13,10 +13,10 @@ ms.workload: iaas-sql-server
 ms.author: v-yeche
 ms.reviewer: jroth
 ms.openlocfilehash: 97432e667ec5b29cbaebcb616a19dfe714480b56
-ms.sourcegitcommit: 5844ad7c1ccb98ff8239369609ea739fb86670a4
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "73831424"
 ---
 # <a name="provision-a-linux-sql-server-virtual-machine-in-the-azure-portal"></a>在 Azure 门户中预配 Linux SQL Server 虚拟机
@@ -174,7 +174,7 @@ ssh azureadmin@40.55.55.555
 
 默认安装了多个 SQL Server [包](sql-server-linux-virtual-machines-overview.md#packages)，包括 SQL Server 命令行工具包。 工具包包含  sqlcmd 和  bcp 工具。 为了方便，可以选择将工具路径 `/opt/mssql-tools/bin/` 添加到  PATH 环境变量。
 
-1. 运行以下命令，修改登录会话和交互式/非登录会话的  PATH：
+1. 运行以下命令以修改登录会话和交互式/非登录会话的路径  ：
 
     ```bash
     echo 'export PATH="$PATH:/opt/mssql-tools/bin"' >> ~/.bash_profile

@@ -9,10 +9,10 @@ ms.date: 09/30/2019
 ms.author: v-yeche
 ms.reviewer: sngun
 ms.openlocfilehash: dd1ee38745360b3c86808040215b26ae597eef8c
-ms.sourcegitcommit: ea49cb39ed993bb1966559230c785b1e19bd43c5
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "72519403"
 ---
 # <a name="restore-data-from-a-backup-in-azure-cosmos-db"></a>如何在 Azure Cosmos DB 中从备份还原数据 

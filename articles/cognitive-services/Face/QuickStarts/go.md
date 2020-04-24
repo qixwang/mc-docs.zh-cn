@@ -12,21 +12,21 @@ origin.date: 07/03/2019
 ms.date: 07/10/2019
 ms.author: v-junlch
 ms.openlocfilehash: f63670a210e29d0e4393ad47bc33ca7eec03a489
-ms.sourcegitcommit: 09bf291a235f43202ba3752323395db86b16343f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "71119544"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-go"></a>快速入门：使用 REST API 和 Go 检测图像中的人脸
 
 在本快速入门中，将使用 Azure 人脸 REST API 和 Go 来检测图像中的人脸。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - 人脸 API 订阅密钥。 需要一个订阅密钥来运行此示例。 可从 [https://portal.azure.cn](https://portal.azure.cn) 获取订阅密钥。
 
-- 代码编辑器，例如 [Visual Studio Code](https://code.visualstudio.com/download)。
+- 代码编辑器，如 [Visual Studio Code](https://code.visualstudio.com/download)。
 
 ## <a name="write-the-script"></a>编写脚本
 

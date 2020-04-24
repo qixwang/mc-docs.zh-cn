@@ -16,10 +16,10 @@ ms.date: 09/23/2019
 ms.author: v-jay
 ms.custom: seodec18
 ms.openlocfilehash: e6221900b21e42b499f08fe12dcb4dc8ce135ca9
-ms.sourcegitcommit: 8248259e4c3947aa0658ad6c28f54988a8aeebf8
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "71125597"
 ---
 # <a name="creating-filters-with-cli"></a>使用 CLI 创建筛选器 
@@ -33,7 +33,7 @@ ms.locfileid: "71125597"
 > [!NOTE]
 > 请确保查看 [presentationTimeRange](filters-concept.md#presentationtimerange)。
 
-## <a name="prerequisites"></a>先决条件 
+## <a name="prerequisites"></a>必备条件 
 
 - [创建媒体服务帐户](create-account-cli-how-to.md)。 请务必记住资源组名称和媒体服务帐户名称。 
 
@@ -117,7 +117,7 @@ az ams streaming-locator create -a amsAccount -g resourceGroup -n streamingLocat
 
 ## <a name="stream-using-filters"></a>使用筛选器的流
 
-定义筛选器后，客户端可以在流式 URL 中使用它们。 筛选器可以应用于自适应比特率流式处理协议：Apple HTTP Live Streaming (HLS)、MPEG-DASH 和平滑流式处理。
+定义筛选器后，客户端可以在流式 URL 中使用它们。 筛选器可应用到自适应比特率流式处理协议：Apple HTTP Live Streaming (HLS)、MPEG-DASH 和平滑流式处理。
 
 下表显示了一些包含筛选器的 URL 示例：
 

@@ -10,10 +10,10 @@ ms.date: 09/02/2019
 ms.author: v-jay
 ms.custom: include file
 ms.openlocfilehash: 60d4a12f1edd91c513cadff87bcb3b210ecf6bab
-ms.sourcegitcommit: ba87706b611c3fa338bf531ae56b5e68f1dd0cde
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/30/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "70209397"
 ---
 Azure AD 资源 ID 指示一个受众，其令牌在发出后可以用于提供对 Azure 资源的访问权限。 在使用 Azure 存储时，资源 ID 可能特定于单个存储帐户，也可能适用于任何存储帐户。 下表介绍可为资源 ID 提供的值：

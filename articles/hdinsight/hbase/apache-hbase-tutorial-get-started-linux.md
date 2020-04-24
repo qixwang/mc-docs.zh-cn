@@ -16,10 +16,10 @@ origin.date: 06/25/2019
 ms.date: 10/28/2019
 ms.author: v-yiso
 ms.openlocfilehash: 9bf66cc25929ecd2655201e2046fae873a8f4d18
-ms.sourcegitcommit: c21b37e8a5e7f833b374d8260b11e2fb2f451782
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "72583850"
 ---
 # <a name="tutorial-use-apache-hbase-in-azure-hdinsight"></a>教程：在 Azure HDInsight 中使用 Apache HBase
@@ -39,14 +39,14 @@ ms.locfileid: "72583850"
 
 * SSH 客户端。 有关详细信息，请参阅[使用 SSH 连接到 HDInsight (Apache Hadoop)](../hdinsight-hadoop-linux-use-ssh-unix.md)。
 
-* Bash。 本文中的示例使用 Windows 10 上的 Bash shell 来执行 curl 命令。 有关安装步骤，请参阅[适用于 Linux 的 Windows 子系统 (Windows 10) 安装指南](https://docs.microsoft.com/windows/wsl/install-win10)。  其他 [Unix shell](https://www.gnu.org/software/bash/) 也将适用。  这些 curl 示例在经过轻微的修改后，可在 Windows 命令提示符下运行。  或者，可以使用 Windows PowerShell cmdlet [Invoke-RestMethod](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/invoke-restmethod)。
+* Bash。 本文中的示例使用 Windows 10 上的 Bash shell 来执行 curl 命令。 有关安装步骤，请参阅[适用于 Linux 的 Windows 子系统安装指南 - Windows 10](https://docs.microsoft.com/windows/wsl/install-win10)。  也可以使用其他 [Unix shell](https://www.gnu.org/software/bash/)。  这些 curl 示例在经过轻微的修改后，可在 Windows 命令提示符下运行。  或者，可以使用 Windows PowerShell cmdlet [Invoke-RestMethod](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/invoke-restmethod)。
 
 
 ## <a name="create-apache-hbase-cluster"></a>创建 Apache HBase 群集
 
 以下过程使用 Azure 资源管理器模板创建 HBase 群集，以及相关的默认 Azure 存储帐户。 若要了解该过程与其他群集创建方法中使用的参数，请参阅 [在 HDInsight 中创建基于 Linux 的 Hadoop 群集](../hdinsight-hadoop-provision-linux-clusters.md)。
 
-1. 选择下面的图像即可在 Azure 门户中打开该模板。 模板位于 [Azure 快速入门模板](https://azure.microsoft.com/resources/templates/)中。
+1. 选择下面的图像可在 Azure 门户中打开模板。 模板位于 [Azure 快速入门模板](https://azure.microsoft.com/resources/templates/)中。
 
     <a href="https://portal.azure.cn/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-hbase-linux%2Fazuredeploy.json" target="_blank"><img src="./media/apache-hbase-tutorial-get-started-linux/hdi-deploy-to-azure1.png" alt="Deploy to Azure"></a>
 
@@ -56,7 +56,7 @@ ms.locfileid: "72583850"
     |---|---|
     |订阅|选择用于创建群集的 Azure 订阅。|
     |资源组|创建 Azure 资源管理组，或使用现有的组。|
-    |Location|指定资源组的位置。 |
+    |位置|指定资源组的位置。 |
     |ClusterName|输入 HBase 群集的名称。|
     |群集登录名和密码|默认登录名为“admin”  。|
     |SSH 用户名和密码|默认用户名为“sshuser”  。|
@@ -86,7 +86,7 @@ ms.locfileid: "72583850"
 
 **使用 HBase shell**
 
-1. 使用 `ssh` 命令连接到 HBase 群集。 通过将 `CLUSTERNAME` 替换为群集的名称来编辑以下命令，然后输入该命令：
+1. 使用 `ssh` 命令连接到 HBase 群集。 编辑以下命令，将 `CLUSTERNAME` 替换为群集的名称，然后输入该命令：
 
     ```cmd
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.cn

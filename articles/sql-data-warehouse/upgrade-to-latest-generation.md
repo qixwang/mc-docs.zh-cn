@@ -12,10 +12,10 @@ ms.date: 05/27/2019
 ms.author: v-jay
 ms.reviewer: jrasnick
 ms.openlocfilehash: 9513ec90ad1209606d8c82824236110760024366
-ms.sourcegitcommit: 3f0c63a02fa72fd5610d34b48a92e280c2cbd24a
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "70131866"
 ---
 # <a name="optimize-performance-by-upgrading-sql-data-warehouse"></a>通过升级 SQL 数据仓库优化性能
@@ -242,7 +242,7 @@ $GeoRestoredDatabase.status
 ```
 
 > [!NOTE]
-> 若要在完成还原后配置数据库，请参阅 [在恢复后配置数据库](../sql-database/sql-database-disaster-recovery.md#configure-your-database-after-recovery)。
+> 若要在完成还原后配置数据库，请参阅 [Configure your database after recovery](../sql-database/sql-database-disaster-recovery.md#configure-your-database-after-recovery)（在恢复后配置数据库）。
 
 如果源数据库启用了 TDE，则已恢复的数据库会启用 TDE。
 

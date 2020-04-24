@@ -10,10 +10,10 @@ metadata:
   ms.service: mariadb
   ms.topic: landing-page
   ms.openlocfilehash: 4f82b8047904c956cfb4a7f363530b5a5346f2ca
-  ms.sourcegitcommit: 849418188e5c18491ed1a3925829064935d2015c
+  ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 09/26/2019
+  ms.lasthandoff: 04/17/2020
   ms.locfileid: "71307752"
 landingContent:
 - title: 关于 Azure Database for MariaDB
@@ -114,5 +114,5 @@ landingContent:
       url: https://docs.microsoft.com/rest/api/mariadb/
     - text: REST API 开发人员参考
       url: /cli/mariadb
-    - text: Azure Resource Manager 模板
+    - text: Azure 资源管理器模板
       url: https://docs.microsoft.com/azure/templates/microsoft.dbformariadb/allversions

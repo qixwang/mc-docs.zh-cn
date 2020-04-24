@@ -10,10 +10,10 @@ origin.date: 01/05/2019
 ms.date: 09/09/2019
 ms.author: v-yeche
 ms.openlocfilehash: 0bbc67ebe1ef1010a940a44073ae1e0e788a0568
-ms.sourcegitcommit: 66192c23d7e5bf83d32311ae8fbb83e876e73534
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "70254544"
 ---
 <!--Verify sucessfully-->
@@ -40,7 +40,7 @@ Azure Cosmos DB 是世纪互联提供的多区域分布式多模型数据库服�
 
 此外：
 * [PHP](https://php.net/) 5.6 或更高版本
-* [编辑器](https://getcomposer.org/download/)
+* [Composer](https://getcomposer.org/download/)
 
 ## <a name="create-a-database-account"></a>创建数据库帐户
 
@@ -68,7 +68,7 @@ Azure Cosmos DB 是世纪互联提供的多区域分布式多模型数据库服�
     cd "C:\git-samples"
     ```
 
-3. 运行下列命令以克隆示例存储库。 此命令在计算机上创建示例应用程序的副本。 
+3. 运行下列命令，克隆示例存储库。 此命令在计算机上创建示例应用程序的副本。 
 
     ```bash
     git clone https://github.com/Azure-Samples/azure-cosmos-db-graph-php-getting-started.git
@@ -92,7 +92,7 @@ Azure Cosmos DB 是世纪互联提供的多区域分布式多模型数据库服�
     ]);
     ```
 
-* 将使用 `$db->send($query);` 方法执行一系列 Gremlin 步骤。
+* 使用 `$db->send($query);` 方法执行一系列 Gremlin 步骤。
 
     ```php
     $query = "g.V().drop()";
@@ -219,7 +219,7 @@ Azure Cosmos DB 是世纪互联提供的多区域分布式多模型数据库服�
     > [!NOTE]
     > 在本快速入门中，将创建未分区的集合。 但是，如果在创建集合过程中通过指定分区键创建了分区的集合，则需在每个新顶点中包括该分区键作为键。 
 
-6. 单击“确定”。  可能需要展开屏幕才能在屏幕底部看到“确定”。 
+6. 单击 **“确定”** 。 可能需要展开屏幕才能在屏幕底部看到“确定”。 
 
 7. 再次单击“新建顶点”，添加其他新用户。  
 
@@ -233,7 +233,7 @@ Azure Cosmos DB 是世纪互联提供的多区域分布式多模型数据库服�
     **性别** | 男 | 
     **学校** | MIT | 
 
-10. 单击“确定”。  
+10. 单击 **“确定”** 。 
 
 11. 单击“应用筛选器”  按钮（默认 `g.V()` 筛选器），显示图形中的所有值。 所有用户此时会显示在“结果”列表中。  
 
@@ -263,7 +263,7 @@ Azure Cosmos DB 是世纪互联提供的多区域分布式多模型数据库服�
 
 ## <a name="next-steps"></a>后续步骤
 
-在本快速入门教程中，已了解如何创建 Azure Cosmos DB 帐户、使用数据资源管理器创建图形和运行应用。 现在可以使用 Gremlin 构建更复杂的查询，实现功能强大的图形遍历逻辑。 
+在本快速入门教程中，已了解如何创建 Azure Cosmos DB 帐户、使用数据资源管理器创建图形和运行应用。 现可使用 Gremlin 构建更复杂的查询，实现功能强大的图形遍历逻辑。 
 
 > [!div class="nextstepaction"]
 > [使用 Gremlin 查询](tutorial-query-graph.md)

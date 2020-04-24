@@ -13,24 +13,24 @@ origin.date: 08/18/2018
 ms.date: 09/16/2019
 ms.author: v-yiso
 ms.openlocfilehash: 9dfd1ef4f382a2fda01b3a844fa22001a5a423f4
-ms.sourcegitcommit: dd0ff08835dd3f8db3cc55301815ad69ff472b13
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "70736681"
 ---
 # <a name="upgrade-and-scale-an-azure-api-management-instance"></a>升级和缩放 Azure API 管理实例  
 
 客户可通过添加和删除单位来缩放 Azure API 管理 (APIM) 实例。 “单位”由专用的 Azure 资源构成，具有以每月 API 调用次数表示的承载容量  。 此数字不表示调用限制，而是粗略容量规划允许的最大吞吐量值。 实际吞吐量和延迟因多种因素而异，例如并发连接的数量和速率、配置策略的类型和数量、请求和响应大小以及后端延迟。
 
-每个单位的容量和价格取决于该单位所在的“层”  。 可以在以下四个层中进行选择：**开发人员**、**基本**、**标准**、**高级**。 如果需要提高层中服务的容量，应添加单位。 如果当前在 APIM 实例中选择的层不允许添加更多单位，则需要升级到更高级别的层。 
+每个单位的容量和价格取决于该单位所在的“层”  。 可在四个层之间选择：“开发人员”、“基本”、“标准”和“高级”     。 如果需要提高层中服务的容量，应添加单位。 如果当前在 APIM 实例中选择的层不允许添加更多单位，则需要升级到更高级别的层。 
 
 每个单位的价格和可用的功能（例如多区域部署）取决于为 APIM 实例选择的层。 [定价详细信息](https://www.azure.cn/pricing/details/api-management/)一文介绍了每个单位的价格，以及每个层提供的功能。 
 
 >[!NOTE]
 >[定价详细信息](https://www.azure.cn/pricing/details/api-management/)一文说明了每个层中单位容量的大致数字。 若要获取更准确的数字，需要分析所用 API 的实际方案。 请参阅 [Azure API 管理实例的容量](api-management-capacity.md)一文。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要执行本文中的步骤，必须：
 
@@ -45,7 +45,7 @@ ms.locfileid: "70736681"
 
 ## <a name="upgrade-and-scale"></a>升级和缩放  
 
-可以在以下四个层中进行选择：**开发人员**、**基本**、**标准**和**高级**。 应将“开发人员”层用于评估服务；不应将其用于生产  。 “开发人员”层不附带 SLA，无法缩放此层（添加/删除单位）  。 
+可在四个层之间选择：“开发人员”、“基本”、“标准”和“高级”     。 应将“开发人员”层用于评估服务；不应将其用于生产  。 “开发人员”层不附带 SLA，无法缩放此层（添加/删除单位）  。 
 
 “基本”、“标准”和“高级”是附带 SLA 的生产层，可以缩放    。 “基本”层是附带 SLA 的最便宜层，最多可以扩展 2 个单位，“标准”层最多可以扩展到四个单位   。 可将任意数目的单位添加到“高级”层  。
 

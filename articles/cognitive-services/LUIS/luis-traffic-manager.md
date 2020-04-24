@@ -13,10 +13,10 @@ origin.date: 08/20/2019
 ms.date: 09/25/2019
 ms.author: v-lingwu
 ms.openlocfilehash: 33153dea6c5adad3d0473c01c169b192bf464c7c
-ms.sourcegitcommit: 2f2ced6cfaca64989ad6114a6b5bc76700870c1a
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "71329957"
 ---
 # <a name="use-microsoft-azure-traffic-manager-to-manage-endpoint-quota-across-keys"></a>使用 Microsoft Azure 流量管理器管理密钥之间的终结点配额
@@ -45,7 +45,7 @@ New-AzResourceGroup -Name luis-traffic-manager -Location "China East"
 ```
 
 ## <a name="create-luis-keys-to-increase-total-endpoint-quota"></a>创建 LUIS 密钥以增加总终结点配额
-1. 在 Azure 门户中，创建两个语言理解密钥，一个位于 `China East`，一个位于 `China North`  。 使用上一节中创建的名为 `luis-traffic-manager` 现有资源组。 
+1. 在 Azure 门户中，创建两个语言理解密钥，一个位于 **，一个位于** `China East``China North`。 使用上一节中创建的名为 `luis-traffic-manager` 现有资源组。 
 
     ![luis-traffic-manager 资源组中带有两个 LUIS 密钥的 Azure 门户的屏幕截图](./media/traffic-manager/luis-keys.png)
 
@@ -59,7 +59,7 @@ New-AzResourceGroup -Name luis-traffic-manager -Location "China East"
 ### <a name="polling-uses-luis-endpoint"></a>轮询会使用 LUIS 终结点
 流量管理器定期轮询终结点，以确保终结点仍然可用。 轮询的流量管理器 URL 需要能够通过 GET 请求访问，并返回 200。 “发布”页上的终结点 URL 可执行此操作  。 由于每个终结点密钥具有不同的路由和查询字符串参数，因此每个终结点密钥需要不同的轮询路径。 流量管理器每次轮询时都会使用一次配额请求。 LUIS 终结点的查询字符串参数“q”是发送给 LUIS 的陈述  。 此参数不用于发送陈述，而是用于将流量管理器轮询添加到 LUIS 终结点日志，以用作调试技术并同时对流量管理器进行配置。
 
-由于每个 LUIS 终结点需要自己的路径，因此也需要其自己的流量管理器配置文件。 若要跨配置文件进行管理，请创建[嵌套流量管理器](https://docs.azure.cn/zh-cn/traffic-manager/traffic-manager-nested-profiles)体系结构  。 一个父配置文件指向子配置文件，并管理它们之间的流量。
+由于每个 LUIS 终结点需要自己的路径，因此也需要其自己的流量管理器配置文件。 若要跨配置文件进行管理，请创建[嵌套流量管理器_体系结构_](https://docs.azure.cn/zh-cn/traffic-manager/traffic-manager-nested-profiles)。 一个父配置文件指向子配置文件，并管理它们之间的流量。
 
 配置流量管理器后，请记得更改路径以使用 logging = false 查询字符串参数，使日志不会被轮询填满。
 
@@ -369,7 +369,7 @@ dns.resolveAny('luis-dns-parent.trafficmanager.net', (err, ret) => {
 
 为流量管理器启用诊断日志，了解终结点状态降级的原因。
 
-## <a name="clean-up"></a>清理
+## <a name="clean-up"></a>清除
 删除两个 LUIS 终结点密钥、三个流量管理器配置文件以及包含这五个资源的资源组。 此操作在 Azure 门户中完成。 从资源列表中删除五个资源。 然后删除资源组。 
 
 [traffic-manager-marketing]: https://docs.azure.cn/zh-cn/traffic-manager/

@@ -10,10 +10,10 @@ origin.date: 08/02/2019
 ms.date: 09/30/2019
 ms.author: v-yeche
 ms.openlocfilehash: 7f4ff1e377c2de6054d00b5ebd33f891f960d877
-ms.sourcegitcommit: 332ae4986f49c2e63bd781685dd3e0d49c696456
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "71340950"
 ---
 # <a name="set-up-disaster-recovery-for-sql-server"></a>为 SQL Server 设置灾难恢复

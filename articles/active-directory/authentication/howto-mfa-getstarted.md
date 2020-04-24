@@ -12,10 +12,10 @@ author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
 ms.openlocfilehash: 56eb6b68071d44e0b2dded9a02e318bf321ac729
-ms.sourcegitcommit: e60779782345a5428dd1a0b248f9526a8d421343
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "72912733"
 ---
 # <a name="deploy-cloud-based-azure-multi-factor-authentication"></a>部署基于云的 Azure 多重身份验证

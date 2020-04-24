@@ -11,10 +11,10 @@ ms.date: 09/30/2019
 ms.author: v-yeche
 ms.custom: MVC
 ms.openlocfilehash: ef460ba72e1f2cc164269a2e21ba3f278211f1f7
-ms.sourcegitcommit: 332ae4986f49c2e63bd781685dd3e0d49c696456
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "71340879"
 ---
 # <a name="migrate-amazon-web-services-aws-vms-to-azure"></a>将 Amazon Web Services (AWS) VM 迁移到 Azure
@@ -35,7 +35,7 @@ ms.locfileid: "71340879"
 <!--MOONCAKE: Not Available on [Learn more](../migrate/tutorial-migrate-physical-virtual-machines.md)-->
 
 ## <a name="prerequisites"></a>先决条件
-- 确保要迁移的 VM 运行的是支持的 OS 版本。 支持的版本包括： 
+- 确保要迁移的 VM 运行的是支持的 OS 版本。 受支持的版本包括： 
     - Windows Server 2016 
     - Windows Server 2012 R2
     - Windows Server 2012 
@@ -92,8 +92,8 @@ ms.locfileid: "71340879"
 
 在迁移（故障转移）后创建的 Azure VM 会加入此 Azure 网络。
 
-1. 在 [Azure 门户](https://portal.azure.cn)中，选择 **“创建资源”** > **“网络”** >
-    **“虚拟网络”** 。
+1. 在 [Azure 门户](https://portal.azure.cn)中，选择“创建资源” **** >“网络” **** >
+   “虚拟网络” **** 。
 3. 对于“名称”  ，请输入 **myMigrationNetwork**。
 4. 保留“地址空间”  的默认值（必须输入值）。
 5. 对于“订阅”，请选择要使用的订阅。 
@@ -180,7 +180,7 @@ ms.locfileid: "71340879"
 
 1. 转到 [Azure 门户](https://portal.azure.cn)。
 1. 在保管库相应页面的“入门”  下，选择“Site Recovery”  。
-2. 在“适用于本地计算机和 Azure VM”  下，选择“步骤 1:复制应用程序”  。 使用以下信息完成向导页面。 完成后，在每个页面上选择“确定”： 
+2. 在“适用于本地计算机和 Azure VM”  下，选择“步骤 1:**复制应用程序”** 。 使用以下信息完成向导页面。 完成后，在每个页面上选择“确定”： 
     - 1:配置源
 
         |  |  |

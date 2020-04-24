@@ -12,10 +12,10 @@ ms.topic: conceptual
 origin.date: 09/25/2018
 ms.date: 11/11/2019
 ms.openlocfilehash: b456fc37b11fa7cf8e2b3665cc20ef9ee8440049
-ms.sourcegitcommit: ff8dcf27bedb580fc1fcae013ae2ec28557f48ac
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "73648824"
 ---
 # <a name="understanding-data-factory-pricing-through-examples"></a>通过示例了解数据工厂定价

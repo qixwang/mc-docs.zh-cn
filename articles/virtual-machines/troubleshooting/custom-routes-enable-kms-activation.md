@@ -15,10 +15,10 @@ origin.date: 12/20/2018
 ms.date: 11/11/2019
 ms.author: v-yeche
 ms.openlocfilehash: 2ada76ff8e83be04009feeda5d084c942447200e
-ms.sourcegitcommit: 1fd822d99b2b487877278a83a9e5b84d9b4a8ce7
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74116951"
 ---
 # <a name="windows-activation-fails-in-forced-tunneling-scenario"></a>在强制隧道方案中，Windows 激活失败
@@ -31,7 +31,7 @@ ms.locfileid: "74116951"
 
 ## <a name="cause"></a>原因
 
-Azure Windows VM 需要连接到 Azure KMS 服务器才能激活 Windows。 激活要求激活请求来自 Azure 公共 IP 地址。 在强制隧道方案中，激活失败，因为激活请求来自本地网络而不是来自 Azure 公共 IP。
+Azure Windows VM 需要连接到 Azure KMS 服务器才能激活 Windows。 激活要求激活请求来自 Azure 公共 IP 地址。 在强制隧道方案中，激活失败，因为激活请求来自本地网络而不是来自 Azure 公共 IP 地址。
 
 ## <a name="solution"></a>解决方案
 

@@ -17,15 +17,15 @@ ms.date: 11/11/2019
 ms.author: v-yeche
 ms.custom: mvc
 ms.openlocfilehash: 8dfbb1dc8c441a529325ae7cfe2e7b2008cfd264
-ms.sourcegitcommit: 5844ad7c1ccb98ff8239369609ea739fb86670a4
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "73831380"
 ---
 # <a name="tutorial-create-a-mongodb-express-angularjs-and-nodejs-mean-stack-on-a-linux-virtual-machine-in-azure"></a>教程：在 Azure 中的 Linux 虚拟机上创建 MongoDB、Express、AngularJS 和 Node.js (MEAN) 堆栈
 
-本教程介绍如何在 Azure 中的 Linux 虚拟机 (VM) 上实现 MongoDB、Express、AngularJS 和 Node.js (MEAN) 堆栈。 通过创建的 MEAN 堆栈，可以在数据库中添加、删除和列出书籍。 你将学习如何执行以下操作：
+本教程介绍如何在 Azure 中的 Linux 虚拟机 (VM) 上实现 MongoDB、Express、AngularJS 和 Node.js (MEAN) 堆栈。 通过创建的 MEAN 堆栈，可以在数据库中添加、删除和列出书籍。 学习如何：
 
 > [!div class="checklist"]
 > * 创建 Linux VM
@@ -57,7 +57,7 @@ az vm create \
 az vm open-port --port 3300 --resource-group myResourceGroupMEAN --name myVM
 ```
 
-创建 VM 后，Azure CLI 显示类似于以下示例的信息。 
+创建 VM 后，Azure CLI 会显示类似于以下示例的信息： 
 
 ```azurecli
 {
@@ -343,7 +343,7 @@ sudo apt-get install -y nodejs
 
 ## <a name="next-steps"></a>后续步骤
 
-本教程已创建一个可在 Linux VM 上使用 MEAN 堆栈跟踪书籍记录的 Web 应用程序。 你已了解如何：
+本教程已创建一个可在 Linux VM 上使用 MEAN 堆栈跟踪书籍记录的 Web 应用程序。 你已了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 创建 Linux VM

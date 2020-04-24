@@ -13,10 +13,10 @@ origin.date: 06/18/2018
 ms.date: 10/14/2019
 ms.author: v-jay
 ms.openlocfilehash: c72521600bc6d75b002eae2402dd724c7fe92849
-ms.sourcegitcommit: aea45739ba114a6b069f782074a70e5dded8a490
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "72275410"
 ---
 # <a name="copy-data-tool-in-azure-data-factory"></a>Azure 数据工厂中的“复制数据”工具

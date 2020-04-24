@@ -12,10 +12,10 @@ origin.date: 04/05/2019
 ms.date: 09/16/2019
 ms.author: v-yeche
 ms.openlocfilehash: ed4fe1ed78aef175132a51bdf98cfaaed2ef591c
-ms.sourcegitcommit: 43f569aaac795027c2aa583036619ffb8b11b0b9
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/12/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "70920995"
 ---
 # <a name="share-gallery-vm-images-across-azure-tenants"></a>跨 Azure 租户共享库 VM 映像

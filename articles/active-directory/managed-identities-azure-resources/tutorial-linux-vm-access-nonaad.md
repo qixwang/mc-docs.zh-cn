@@ -17,10 +17,10 @@ ms.date: 10/11/2019
 ms.author: v-junlch
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f617accc1d34f85327b366cca9bd183acca97ff5
-ms.sourcegitcommit: 74f50c9678e190e2dbb857be530175f25da8905e
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/12/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "72292070"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-key-vault"></a>教程：使用 Linux VM 系统分配的托管标识访问 Azure Key Vault 
@@ -71,7 +71,7 @@ ms.locfileid: "72292070"
  
 1. 在门户中，转到 Linux VM，并单击“概述”  中的“连接”  。 
 2. 使用所选的 SSH 客户端连接  到 VM。 
-3. 在终端窗口中，使用 CURL 向 Azure 资源终结点的本地托管标识发出请求，以获取 Azure Key Vault 的访问令牌。
+3. 在终端窗口中，使用 CURL 向 Azure 资源终结点的本地托管标识发出请求，以获取 Azure Key Vault 的访问令牌。  
  
     下面是用于获取访问令牌的 CURL 请求。  
     

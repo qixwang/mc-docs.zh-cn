@@ -17,10 +17,10 @@ origin.date: 08/15/2019
 ms.date: 11/11/2019
 ms.author: v-yiso
 ms.openlocfilehash: e206bd49d1891f6ba9e97c53175fe9caf7ae63bb
-ms.sourcegitcommit: 642a4ad454db5631e4d4a43555abd9773cae8891
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "73426068"
 ---
 # <a name="troubleshoot-apache-hive-by-using-azure-hdinsight"></a>使用 Azure HDInsight 对 Apache Hive 进行故障排除
@@ -112,7 +112,7 @@ hive -f alltables.sql
 - [Hive 配置属性](https://cwiki.apache.org/confluence/display/Hive/Configuration+Properties)
 
 
-## <a name="how-do-i-analyze-tez-dag-data-on-a-cluster-critical-path"></a>如何在群集关键路径上分析 Apache Tez DAG 数据？
+## <a name="how-do-i-analyze-apache-tez-dag-data-on-a-cluster-critical-path"></a><a name="how-do-i-analyze-tez-dag-data-on-a-cluster-critical-path"></a>如何在群集关键路径上分析 Apache Tez DAG 数据？
 
 
 ### <a name="resolution-steps"></a>解决步骤
@@ -144,7 +144,7 @@ hive -f alltables.sql
     - **SlowestVertexAnalyzer**：列显 DAG 中的最慢顶点详细信息
     - **SpillAnalyzer**：列显 DAG 中的溢出详细信息
     - **TaskConcurrencyAnalyzer**：列显 DAG 中的任务并发性详细信息
-    - **VertexLevelCriticalPathAnalyzer**：在 DAG 中查找顶点级别的关键路径
+    - **VertexLevelCriticalPathAnalyzer**：查找 DAG 中顶点级别的关键路径
 
 
 ### <a name="additional-reading"></a>其他阅读材料
@@ -174,7 +174,7 @@ hive -f alltables.sql
   3. 选择想要查看的 DAG。
   4. 选择“下载数据”  。
 
-### <a name="additional-reading-end"></a>其他阅读材料
+### <a name="additional-reading"></a><a name="additional-reading-end"></a>其他阅读材料
 
 [使用 SSH 连接到 HDInsight 群集](hdinsight-hadoop-linux-use-ssh-unix.md)
 

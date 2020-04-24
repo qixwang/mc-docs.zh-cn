@@ -9,10 +9,10 @@ origin.date: 09/26/2019
 ms.date: 10/28/2019
 ms.reviewer: sngun
 ms.openlocfilehash: d028de63bc0a140d81a06cf87e1f2df17943cee8
-ms.sourcegitcommit: 73f07c008336204bd69b1e0ee188286d0962c1d7
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "72970292"
 ---
 # <a name="use-cases-for-built-in-analytics-with-azure-cosmos-db"></a>将内置分析与 Azure Cosmos DB 配合使用的用例

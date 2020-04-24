@@ -17,10 +17,10 @@ ms.date: 11/13/2019
 ms.author: v-junlch
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0166bc8f556229b1bb09b62b0d31b9ad929da8cc
-ms.sourcegitcommit: 1171a6ab899b26586d1ea4b3a089bb8ca3af2aa2
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74084578"
 ---
 # <a name="how-to-use-managed-identities-for-azure-resources-on-an-azure-vm-with-azure-sdks"></a>如何在 Azure VM 上将 Azure 资源的托管标识与 Azure SDK 配合使用 
@@ -28,7 +28,7 @@ ms.locfileid: "74084578"
 [!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]  
 本文提供了 SDK 示例的列表，这些示例演示了如何使用其各自 Azure SDK 对 Azure 资源的托管标识的支持。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 [!INCLUDE [msi-qs-configure-prereqs](../../../includes/active-directory-msi-qs-configure-prereqs.md)]
 
@@ -37,7 +37,7 @@ ms.locfileid: "74084578"
 
 ## <a name="sdk-code-samples"></a>SDK 代码示例
 
-| SDK             | 代码示例 |
+| SDK 中 IsInRole 中的声明             | 代码示例 |
 | --------------- | ----------- |
 | .NET            | [使用 Azure 资源的托管标识从 Windows VM 部署 Azure 资源管理器模板](https://github.com/Azure-Samples/windowsvm-msi-arm-dotnet) |
 | .NET Core       | [使用 Azure 资源的托管标识从 Linux VM 调用 Azure 服务](https://github.com/Azure-Samples/linuxvm-msi-keyvault-arm-dotnet/) |

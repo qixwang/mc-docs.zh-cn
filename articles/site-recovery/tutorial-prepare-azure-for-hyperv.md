@@ -10,10 +10,10 @@ ms.date: 09/30/2019
 ms.author: v-yeche
 ms.custom: MVC
 ms.openlocfilehash: ea6f72aa5684e47a518e474799b57c6163b77969
-ms.sourcegitcommit: 332ae4986f49c2e63bd781685dd3e0d49c696456
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "71340910"
 ---
 # <a name="prepare-azure-resources-for-disaster-recovery-of-on-premises-machines"></a>准备 Azure 资源，以便对本地计算机进行灾难恢复
@@ -33,11 +33,11 @@ ms.locfileid: "71340910"
 > * 创建一个恢复服务保管库，用于存储 VM 和其他复制组件的元数据与配置信息。
 > * 设置 Azure 网络。 在故障转移后创建的 Azure VM 将加入此网络。
 
-如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial/)。
+如果没有 Azure 订阅，可在开始前创建一个 [试用帐户](https://www.azure.cn/pricing/1rmb-trial/) 。
 
 ## <a name="sign-in"></a>登录
 
-登录到 [Azure 门户](https://portal.azure.cn)。
+登录 [Azure 门户](https://portal.azure.cn)。
 
 ## <a name="verify-account-permissions"></a>验证帐户权限
 
@@ -53,7 +53,7 @@ ms.locfileid: "71340910"
 
 已复制计算机的映像保存在 Azure 存储中。 在从本地故障转移到 Azure 时，会从该存储中创建 Azure VM。 存储帐户必须位于与恢复服务保管库相同的区域。
 
-1. 在 [Azure 门户](https://portal.azure.cn)菜单中，选择“创建资源” > “存储” > “存储帐户”    。
+1. 在 [Azure 门户](https://portal.azure.cn)菜单中，选择“创建资源” **“存储”** “存储帐户” >    >   。
     
     <!--MOONCAKE: CORRECT ON **Storage account**-->
     
@@ -71,7 +71,7 @@ ms.locfileid: "71340910"
 
 ## <a name="create-a-recovery-services-vault"></a>创建恢复服务保管库
 
-1. 在 Azure 门户中选择“+创建资源”，然后在 Azure 市场中搜索“恢复服务”。 
+1. 在 Azure 门户中选择“+创建资源”，然后在 Azure 市场中搜索“恢复服务”。  {3}{4}
 2. 选择“备份和站点恢复(OMS)”。  接下来，在“备份和站点恢复”页上，选择“创建”。  
 1. 在“恢复服务保管库”>“名称”中，输入一个易记名称用于标识该保管库。  在本教程中，请使用 ContosoVMVault  。
 2. 在**资源组**中，选择现有资源组或创建新资源组。 本教程使用 **contosoRG**。
@@ -86,7 +86,7 @@ ms.locfileid: "71340910"
 
 在故障转移后创建的 Azure VM 会加入此网络。
 
-1. 在 [Azure 门户](https://portal.azure.cn)中，选择“创建资源”   >   “网络” >   “虚拟网络”。 保留选择“资源管理器”作为部署模型。
+1. 在 [Azure 门户](https://portal.azure.cn)中，选择 **“创建资源”**  >  **“网络”**  >  **“虚拟网络”** 。 保留选择“资源管理器”作为部署模型。
 2. 在“名称”中  ，输入网络名称。 名称在 Azure 资源组中必须唯一。 本教程使用 **ContosoASRnet**。
 3. 指定要在其中创建网络的资源组。 本教程使用现有资源组 **contosoRG**。
 4. 在“地址范围”中，输入 **10.0.0.0/24** 作为网络范围。  此网络没有子网。

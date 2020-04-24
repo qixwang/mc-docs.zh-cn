@@ -8,10 +8,10 @@ ms.author: v-yiso
 origin.date: 07/30/2019
 ms.date: 11/11/2019
 ms.openlocfilehash: 6d81c7c743282b3abfca83892761735f8dc57b14
-ms.sourcegitcommit: 642a4ad454db5631e4d4a43555abd9773cae8891
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "73425674"
 ---
 # <a name="scenario-query-error-message-not-displayed-in-apache-hive-view-in-azure-hdinsight"></a>方案：Azure HDInsight 的 Apache Hive 视图中未显示查询错误消息

@@ -18,10 +18,10 @@ ms.author: v-jay
 ms.reviewer: misainat
 ms.lastreviewed: 02/08/2019
 ms.openlocfilehash: 0a827a3db4e5f768968b3521b4accda393c66643
-ms.sourcegitcommit: 7dfb76297ac195e57bd8d444df89c0877888fdb8
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74020078"
 ---
 # <a name="install-the-asdk"></a>安装 ASDK
@@ -78,7 +78,7 @@ ms.locfileid: "74020078"
 
 8. 如果执行 Azure AD 部署，系统会在安装开始后数分钟提示输入 Azure AD 全局管理员帐户凭据。
 
-9. 部署程序需要花费数小时，在此期间，主机会自动重新启动一次。 若要监视部署进度，请在 ASDK 主机重启后，以 azurestack\AzureStackAdmin 身份登录。 如果部署成功，PowerShell 控制台会显示“COMPLETE:  Action 'Deployment'”。 
+9. 部署程序需要花费数小时，在此期间，主机会自动重新启动一次。 若要监视部署进度，请在 ASDK 主机重启后，以 azurestack\AzureStackAdmin 身份登录。 如果部署成功，PowerShell 控制台会显示“COMPLETE: Action 'Deployment'”。  
     > [!IMPORTANT]
     > 如果在计算机加入 azurestack 域后以本地管理员身份登录，则看不到部署进度。 请勿重新运行部署，而应以 azurestack\AzureStackAdmin 身份登录，验证其是否正在运行。
 

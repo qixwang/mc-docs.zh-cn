@@ -10,10 +10,10 @@ ms.date: 09/02/2019
 ms.author: v-jay
 ms.custom: include file
 ms.openlocfilehash: 3a2cd01b724d6f9acaa19dc71f5d80e5ab74a2ec
-ms.sourcegitcommit: 3f0c63a02fa72fd5610d34b48a92e280c2cbd24a
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "70131686"
 ---
 以下配置用于执行下面的步骤：

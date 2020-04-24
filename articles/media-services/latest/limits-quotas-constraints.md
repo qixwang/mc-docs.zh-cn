@@ -13,17 +13,17 @@ origin.date: 10/17/2019
 ms.date: 11/04/2019
 ms.author: v-jay
 ms.openlocfilehash: a236e007a2bbdfba63f29f122ad37489de843ca9
-ms.sourcegitcommit: f9a257e95444cb64c6d68a7a1cfe7e94c5cc5b19
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "73416262"
 ---
 # <a name="quotas-and-limitations-in-azure-media-services-v3"></a>Azure 媒体服务 v3 中的配额和限制
 
 本文介绍 Azure 媒体服务 v3 中的配额和限制。
 
-| Resource | 默认限制 | 
+| 资源 | 默认限制 | 
 | --- | --- | 
 | 每个 Azure 媒体服务帐户的资产数 | 1,000,000|
 | 动态清单筛选器|100|
@@ -69,7 +69,7 @@ ms.locfileid: "73416262"
 
 ## <a name="support-ticket"></a>支持票证
 
-对于不固定的资源，可以通过开具[支持票证](https://portal.azure.cn/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)请求提高配额。 请在请求中包含有关所需的配额更改、用例方案和所需区域的详细信息。 <br/>**请勿** 尝试通过创建更多 Azure 媒体服务帐户的方式来提高配额限制。
+对于不固定的资源，可以通过开具[支持票证](https://portal.azure.cn/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)请求提高配额。 请在请求中包含有关所需的配额更改、用例方案和所需区域的详细信息。 <br/>请**不要**创建更多的 Azure 媒体服务帐户以求获取更高的限制。
 
 ## <a name="next-steps"></a>后续步骤
 

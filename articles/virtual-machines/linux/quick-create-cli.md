@@ -21,10 +21,10 @@ ms.custom:
 - seo-javascript-october2019
 - seo-python-october2019
 ms.openlocfilehash: ec2ea89d03e5dc8cb805cef310df1ac9b74d1f6e
-ms.sourcegitcommit: 5844ad7c1ccb98ff8239369609ea739fb86670a4
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "73831445"
 ---
 # <a name="quickstart-create-a-linux-virtual-machine-with-the-azure-cli"></a>快速入门：使用 Azure CLI 创建 Linux 虚拟机
@@ -110,7 +110,7 @@ sudo apt-get -y install nginx
 
 ## <a name="view-the-web-server-in-action"></a>查看运行中的 Web 服务器
 
-使用所选的 Web 浏览器查看默认的 NGINX 欢迎页。 使用你的 VM 的公用 IP 地址作为 Web 地址。 以下示例演示了默认 NGINX 网站：
+使用所选的 Web 浏览器查看默认的 NGINX 欢迎页。 使用你的 VM 的公共 IP 地址作为 Web 地址。 以下示例演示了默认 NGINX 网站：
 
 ![查看 NGINX 欢迎页](./media/quick-create-cli/view-the-nginx-welcome-page.png)
 
@@ -124,7 +124,7 @@ az group delete --name myResourceGroup
 
 ## <a name="next-steps"></a>后续步骤
 
-在本快速入门中，你部署了简单的虚拟机，打开了 Web 流量的网络端口，并安装了一个基本 Web 服务器。 若要详细了解 Azure 虚拟机，请继续学习 Linux VM 的教程。
+在本快速入门中，你部署了简单的虚拟机，打开了 Web 流量的网络端口，并安装了一个基本 Web 服务器。 若要详细了解 Azure 虚拟机，请继续学习 Linux VM 教程。
 
 > [!div class="nextstepaction"]
 > [Azure Linux 虚拟机教程](./tutorial-manage-vm.md)

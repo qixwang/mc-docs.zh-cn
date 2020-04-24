@@ -16,10 +16,10 @@ origin.date: 08/28/2019
 ms.date: 10/14/2019
 ms.author: v-yeche
 ms.openlocfilehash: a1a5c7f209110d918b2005fbef335f9eaf120b58
-ms.sourcegitcommit: 1b4cb23c9bce2e9073e34eb9fb8b6765b9357d83
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "72170846"
 ---
 # <a name="vm-boot-error"></a>VM 启动错误

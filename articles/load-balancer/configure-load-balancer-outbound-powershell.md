@@ -10,10 +10,10 @@ origin.date: 09/24/2019
 ms.date: 11/11/2019
 ms.author: v-jay
 ms.openlocfilehash: 292a7aa07f7954f8b4799661b4c8d45351f3bfc0
-ms.sourcegitcommit: d77d5d8903faa757c42b80ee24e7c9d880950fc3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "73750266"
 ---
 # <a name="configure-load-balancing-and-outbound-rules-in-standard-load-balancer-by-using-azure-powershell"></a>使用 Azure PowerShell 在标准负载均衡器中配置负载均衡和出站规则

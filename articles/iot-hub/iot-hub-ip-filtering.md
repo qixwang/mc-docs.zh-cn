@@ -9,10 +9,10 @@ origin.date: 07/22/2017
 ms.author: v-yiso
 ms.date: 09/02/2019
 ms.openlocfilehash: 482beef44d03b3352ad0bf51de18fb25df39968e
-ms.sourcegitcommit: 599d651afb83026938d1cfe828e9679a9a0fb69f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "69993613"
 ---
 # <a name="use-ip-filters"></a>使用 IP 筛选器
@@ -151,7 +151,7 @@ $iothubResource | Set-AzResource -Force
 
 ## <a name="update-ip-filter-rules-using-rest"></a>使用 REST 更新 IP 筛选器
 
-还可以使用 Azure 资源提供程序的 REST 终结点检索和修改 IoT 中心的 IP 筛选器。 请参阅 [createorupdate 方法](https://docs.microsoft.com/en-us/rest/api/iothub/iothubresource/createorupdate) `properties.ipFilterRules`。
+还可以使用 Azure 资源提供程序的 REST 终结点检索和修改 IoT 中心的 IP 筛选器。 请参阅 [createorupdate 方法](https://docs.microsoft.com/en-us/rest/api/iothub/iothubresource/createorupdate)`properties.ipFilterRules`。
 
 
 ## <a name="ip-filter-rule-evaluation"></a>IP 筛选器规则评估

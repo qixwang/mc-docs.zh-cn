@@ -10,10 +10,10 @@ localization_priority: Normal
 origin.date: 08/29/2019
 ms.date: 09/23/2019
 ms.openlocfilehash: a41ecf039ebce8e0106756a14b08eb90917d35d9
-ms.sourcegitcommit: 0d07175c0b83219a3dbae4d413f8e012b6e604ed
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "71306878"
 ---
 # <a name="troubleshoot-azure-vm-connectivity-problems"></a>排查 Azure VM 连接性问题
@@ -227,7 +227,7 @@ Hops             : [
                      },
 ```
 
-#### <a name="step-4-refer-the-table-under-step-5step-5-fix-the-issue-in-the-connectivity-check-result-and-follow-these-steps-to-resolve-the-issues"></a>步骤 4：参阅[步骤 5](#step-5-fix-the-issue-in-the-connectivity-check-result) 下的表，按这些步骤解决问题。
+#### <a name="step-4-refer-the-table-under-step-5-and-follow-these-steps-to-resolve-the-issues"></a>步骤 4：参阅[步骤 5](#step-5-fix-the-issue-in-the-connectivity-check-result) 下的表，按这些步骤解决问题。
 
 <!--Not Available on ### Azure VM cannot connect to the internet-->
 <!--Not Available on [Resource Explorer portal](https://resources.azure.com/)-->

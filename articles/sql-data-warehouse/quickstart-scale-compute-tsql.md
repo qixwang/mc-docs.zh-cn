@@ -12,10 +12,10 @@ ms.date: 09/02/2019
 ms.author: v-jay
 ms.reviewer: igorstan
 ms.openlocfilehash: 4ebb39e5c21613dee79a169bef79db7c6dd42d96
-ms.sourcegitcommit: 3f0c63a02fa72fd5610d34b48a92e280c2cbd24a
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "70131677"
 ---
 # <a name="quickstart-scale-compute-in-azure-sql-data-warehouse-using-t-sql"></a>快速入门：使用 T-SQL 在 Azure SQL 数据仓库中缩放计算资源
@@ -24,7 +24,7 @@ ms.locfileid: "70131677"
 
 如果没有 Azure 订阅，可在开始前创建一个 [1 元人民币试用](https://www.azure.cn/pricing/1rmb-trial/)帐户。
 
-## <a name="before-you-begin"></a>准备阶段
+## <a name="before-you-begin"></a>开始之前
 
 下载并安装最新版本的 [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) (SSMS)。
  
@@ -44,15 +44,15 @@ ms.locfileid: "70131677"
    | ------------ | ------------------ | ------------------------------------------------- | 
    | 服务器类型 | 数据库引擎 | 此值是必需的 |
    | 服务器名称 | 完全限定的服务器名称 | 这是一个示例：**mynewserver-20181129.database.chinacloudapi.cn**。 |
-   | 身份验证 | SQL Server 身份验证 | SQL 身份验证是本教程中配置的唯一身份验证类型。 |
+   | Authentication | SQL Server 身份验证 | SQL 身份验证是本教程中配置的唯一身份验证类型。 |
    | 登录 | 服务器管理员帐户 | 在创建服务器时指定的帐户。 |
    | 密码 | 服务器管理员帐户的密码 | 这是在创建服务器时指定的密码。 |
 
     ![连接到服务器](media/load-data-from-azure-blob-storage-using-polybase/connect-to-server.png)
 
-4. 单击“连接”  。 此时会在 SSMS 中打开“对象资源管理器”窗口。 
+4. 单击“连接”  。 对象资源管理器窗口在 SSMS 中打开。 
 
-5. 在对象资源管理器中，展开“数据库”  。 然后展开“mySampleDatabase”  ，查看新数据库中的对象。
+5. 在“对象资源管理器”中，展开“数据库”  。 然后展开“mySampleDatabase”  ，查看新数据库中的对象。
 
     ![数据库对象](media/create-data-warehouse-portal/connected.png) 
 
@@ -62,7 +62,7 @@ ms.locfileid: "70131677"
 若要查看数据仓库当前数据仓库单位：
 
 1. 在与 **mynewserver-20181129.database.chinacloudapi.cn** 的连接下，展开“系统数据库”  。
-2. 右键单击“master”，并单击“新建查询”。   此时将打开一个新的查询窗口。
+2. 右键单击“master”，并单击“新建查询”。   “新建查询”窗口随即打开。
 3. 运行以下查询，从 sys.database_service_objectives 动态管理视图中选择。 
 
     ```sql
@@ -130,7 +130,7 @@ ms.locfileid: "70131677"
 
 ## <a name="check-data-warehouse-state"></a>检查数据仓库状态
 
-暂停数据仓库后，无法使用 T-SQL 与它建立连接。 若要查看数据仓库的当前状态，可以使用 PowerShell cmdlet。 有关示例，请参阅[检查数据仓库状态 - PowerShell](quickstart-scale-compute-powershell.md#check-data-warehouse-state)。 
+数据仓库暂停时，无法使用 T-SQL 连接到数据仓库。 若要查看数据仓库的当前状态，可使用 PowerShell cmdlet。 有关示例，请参阅[检查数据仓库状态 - PowerShell](quickstart-scale-compute-powershell.md#check-data-warehouse-state)。 
 
 ## <a name="check-operation-status"></a>检查操作状态
 

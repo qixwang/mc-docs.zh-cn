@@ -8,10 +8,10 @@ ms.topic: conceptual
 origin.date: 07/31/2019
 ms.date: 10/28/2019
 ms.openlocfilehash: 0624cd8bf6345a3f1ce2323228285c0b9736d161
-ms.sourcegitcommit: 73f07c008336204bd69b1e0ee188286d0962c1d7
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "72914423"
 ---
 # <a name="optimize-multi-region-cost-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中优化多区域成本
@@ -38,7 +38,7 @@ ms.locfileid: "72914423"
 
 <!--MOONCAKE: Master region(WEST US) is China North, and the other 3 regions are China East , China North 2, and China East 2-->
 
-|**项目**|**使用情况（每月）**|**费率**|**每月成本**|
+|**项**|**使用情况（每月）**|**费率**|**每月成本**|
 |----|----|----|----|
 |中国北部（多个写入区域）容器的吞吐量帐单 |10K RU/秒 * 24 * 31 |每小时每 100 RU/秒 0.102 元 |7,588.8 元 |
 |3 个其他区域 - 中国东部、中国北部 2 和中国东部 2（多个写入区域）的吞吐量帐单 |(3 + 1) * 10K RU/秒 * 24 * 31 |每小时每 100 RU/秒 0.102 元 |30,355.2 元 |

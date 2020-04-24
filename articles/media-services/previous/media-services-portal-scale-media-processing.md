@@ -16,10 +16,10 @@ origin.date: 03/19/2019
 ms.date: 09/23/2019
 ms.author: v-jay
 ms.openlocfilehash: 200bd115e3c9b30fdde184125a7d13fe81f54490
-ms.sourcegitcommit: 8248259e4c3947aa0658ad6c28f54988a8aeebf8
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "71124656"
 ---
 # <a name="change-the-reserved-unit-type"></a>更改预留单位类型
@@ -42,7 +42,7 @@ ms.locfileid: "71124656"
 >RU 可用于并行化所有媒体处理，包括使用 Azure Media Indexer 为作业编制索引。 但是，与编码不同，索引作业使用更快的预留单位并不能更快地完成处理。
 
 > [!IMPORTANT]
-> 请确保查看[概述](media-services-scale-media-processing-overview.md)主题，以获取有关缩放媒体处理主题的详细信息。
+> 请确保查看[概述](media-services-scale-media-processing-overview.md)主题，获取有关调整媒体处理的规模主题的详细信息。
 > 
 > 
 

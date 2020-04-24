@@ -10,10 +10,10 @@ origin.date: 04/14/2019
 ms.date: 08/26/2019
 ms.author: v-yeche
 ms.openlocfilehash: 3e98feb676acd74b62ea1e103cd7b22acd9b7de8
-ms.sourcegitcommit: 18a0d2561c8b60819671ca8e4ea8147fe9d41feb
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "70134388"
 ---
 # <a name="troubleshoot-hyper-v-to-azure-replication-and-failover"></a>排查 Hyper-V 到 Azure 的复制和故障转移的问题
@@ -27,7 +27,7 @@ ms.locfileid: "70134388"
 1. 检查 Hyper-V 主机和 VM 是否符合所有[要求和先决条件](hyper-v-azure-support-matrix.md)。
 2. 如果 Hyper-V 服务器位于 System Center Virtual Machine Manager (VMM) 云中，请验证是否已准备好 [VMM 服务器](hyper-v-prepare-on-premises-tutorial.md#prepare-vmm-optional)。
 3. 检查 Hyper-V 虚拟机管理服务是否在 Hyper-V 主机上运行。
-4. 检查 VM 的 Hyper-V-VMMS\Admin 登录中显示的问题。 此日志位于“应用程序和服务日志” > “Microsoft” > “Windows”中。   
+4. 检查 VM 的 Hyper-V-VMMS\Admin 登录中显示的问题。 此日志位于“应用程序和服务日志” **“Microsoft”** “Windows”中。 >    >  
 5. 在来宾 VM 上，验证 WMI 是否已启用并可访问。
     - [了解](https://blogs.technet.microsoft.com/askperf/2007/06/22/basic-wmi-testing/)基本 WMI 测试。
     - [排查](https://aka.ms/WMiTshooting) WMI 问题。
@@ -43,7 +43,7 @@ ms.locfileid: "70134388"
 1. 确保运行[最新版本](https://social.technet.microsoft.com/wiki/contents/articles/38544.azure-site-recovery-service-updates.aspx)的 Site Recovery 服务。
 2. 验证复制是否已暂停：
     - 在 Hyper-V 管理器控制台中检查 VM 运行状况。
-    - 如果状态为严重，请右键单击 VM 并选择“复制” > “查看复制运行状况”。  
+    - 如果状态为严重，请右键单击 VM 并选择“复制” **“查看复制运行状况”。**  >  
     - 如果复制已暂停，请单击“恢复复制”。 
 3. 检查所需的服务是否正在运行。 如果未运行，请将其重启。
     - 如果在不使用 VMM 的情况下复制 Hyper-V，请检查以下服务是否在 Hyper-V 主机上运行：
@@ -79,7 +79,7 @@ ms.locfileid: "70134388"
 
 2. 单击“查看复制运行状况”查看详细信息： 
 
-    - 如果复制已暂停，请右键单击 VM 并选择“复制” > “恢复复制”。  
+    - 如果复制已暂停，请右键单击 VM 并选择“复制” **“恢复复制”。**  >  
     - 如果 Site Recovery 中配置的 Hyper-V 主机上的某个 VM 要迁移到同一群集中的不同 Hyper-V 主机或迁移到独立计算机，则该 VM 的复制不受影响。 只需检查新的 Hyper-V 主机是否符合所有先决条件，并已在 Site Recovery 中进行配置。
 
 ## <a name="app-consistent-snapshot-issues"></a>应用一致的快照问题
@@ -106,12 +106,12 @@ ms.locfileid: "70134388"
     ![动态磁盘](media/hyper-v-azure-troubleshoot/dynamic-disk.png)
 
 4. 检查是否未将 iSCSI 磁盘附加到 VM。 不支持此操作。
-5. 检查是否已启用备份服务。 请在“Hyper-V 设置” > “Integration Services”中验证它是否已启用。  
+5. 检查是否已启用备份服务。 请在“Hyper-V 设置” **“Integration Services”中验证它是否已启用。**  >  
 6. 确保创建 VSS 快照的应用未发生冲突。 如果多个应用同时尝试创建 VSS 快照，则可能会发生冲突。 例如，某个备份应用在创建 VSS 快照，同时，Site Recovery 也在根据复制策略的计划创建快照。   
 7. 检查 VM 是否遇到较高的变动率：
     - 可以使用 Hyper-V 主机上的性能计数器，测量来宾 VM 的每日数据更改率。 若要测量数据更改率，请启用以下计数器。 聚合所有 VM 磁盘的此值的 5-15 分钟样本，即可得出 VM 变动率。
         - 类别：“Hyper-V Virtual Storage Device”
-        - 计数器：“写入字节数 / 秒”<br />
+        - 计数器：“Write Bytes / Sec”<br />
         - 根据 VM 或其应用的繁忙程度，此数据变动率将会提高或保持在较高级别。
         - 对于 Site Recovery 的标准存储，平均源磁盘数据变动率为 2 MB/秒。 [了解详细信息](hyper-v-deployment-planner-analyze-report.md#azure-site-recovery-limits)
     - 此外，可以[验证存储可伸缩性目标](/storage/common/storage-scalability-targets)。
@@ -121,9 +121,9 @@ ms.locfileid: "70134388"
 ### <a name="vss-failing-inside-the-hyper-v-host"></a>VSS 在 Hyper-V 主机中失败
 
 1. 在事件日志中查找 VSS 错误和建议：
-    - 在 Hyper-V 主机服务器上，通过“事件查看器” > “应用程序和服务日志” > “Microsoft” > “Windows” > “Hyper-V” > “管理”打开 Hyper-V 管理事件日志。      
+    - 在 Hyper-V 主机服务器上，通过“事件查看器” **“应用程序和服务日志”** “Microsoft” > “Windows” **“Hyper-V”** “管理”打开 Hyper-V 管理事件日志。 >    >    >    >  
     - 检查是否有任何事件指示发生应用一致的快照失败。
-    - 典型的错误消息如下：“Hyper-V 无法为虚拟机 'XYZ' 生成 VSS 快照集:编写器遇到非暂时性错误。 如果服务无响应，重启 VSS 服务可能会解决问题。”
+    - 典型的错误为：“Hyper-V 无法为虚拟机 'XYZ' 生成 VSS 快照集: 编写器遇到非暂时性错误。 如果服务无响应，重启 VSS 服务可能会解决问题。”
 
 2. 若要为 VM 生成 VSS 快照，请检查 VM 上是否已安装 Hyper-V Integration Services，并已启用备份 (VSS) 集成服务。
     - 确保 Integration Services VSS 服务/守护程序在来宾上运行，并处于“正常”状态。 
@@ -134,14 +134,14 @@ ms.locfileid: "70134388"
 
 **错误代码** | **消息** | **详细信息**
 --- | --- | ---
-**0x800700EA** | “Hyper-V 无法为虚拟机生成 VSS 快照集:有更多数据可用。 (0x800700EA)。 如果备份操作正在进行，VSS 快照集生成可能失败。<br/><br/> 虚拟机的复制操作失败:有更多数据可用。” | 检查是否在 VM 上启用了动态磁盘。 不支持此操作。
+**0x800700EA** | “Hyper-V 无法为虚拟机生成 VSS 快照集: 更多数据可用。 (0x800700EA)。 如果备份操作正在进行，VSS 快照集生成可能失败。<br/><br/> 虚拟机复制操作失败: 更多数据可用。” | 检查是否在 VM 上启用了动态磁盘。 不支持此操作。
 **0x80070032** | “由于版本与 Hyper-V 预期的版本不匹配，Hyper-V 卷影复制请求程序无法连接到虚拟机 <./VMname>” | 检查是否安装了最新的 Windows 更新。<br/><br/> [升级](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services#keep-integration-services-up-to-date)到最新版本的 Integration Services。
 
 ## <a name="collect-replication-logs"></a>收集复制日志
 
-所有 Hyper-V 复制事件都记录在“应用程序和服务日志” > “Microsoft” > “Windows”下的 Hyper-V-VMMS\Admin 日志中。    此外，可按如下所示为 Hyper-V 虚拟机管理服务启用分析日志：
+所有 Hyper-V 复制事件都记录在“应用程序和服务日志” **“Microsoft”** “Windows”下的 Hyper-V-VMMS\Admin 日志中。 >    >   此外，可按如下所示为 Hyper-V 虚拟机管理服务启用分析日志：
 
-1. 在事件查看器中显示分析和调试日志。 若要使日志可用，请在事件查看器中，单击“视图” > “显示分析和调试日志”。   分析日志显示在“Hyper-V-VMMS”下。 
+1. 在事件查看器中显示分析和调试日志。 若要使日志可用，请在事件查看器中，单击“视图” **“显示分析和调试日志”。**  >   分析日志显示在“Hyper-V-VMMS”下。 
 2. 在“**操作**”窗格中，单击“**启用日志**”。 
 
     ![启用日志](media/hyper-v-azure-troubleshoot/enable-log.png)

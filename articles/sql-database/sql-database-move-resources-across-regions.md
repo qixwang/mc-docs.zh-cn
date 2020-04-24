@@ -13,10 +13,10 @@ ms.reviewer: carlrab
 origin.date: 06/25/2019
 ms.date: 09/09/2019
 ms.openlocfilehash: 52f1c1838f252e7f7b4ac929fa54e371224a850c
-ms.sourcegitcommit: 2610641d9fccebfa3ebfffa913027ac3afa7742b
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/05/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "70373071"
 ---
 # <a name="how-to-move-azure-sql-resources-to-another-region"></a>如何将 Azure SQL 资源移到另一个区域

@@ -16,10 +16,10 @@ origin.date: 03/20/2019
 ms.date: 09/23/2019
 ms.author: v-jay
 ms.openlocfilehash: 37c70c2a7f63443eda3d6a675a101859dfc74eb1
-ms.sourcegitcommit: 8248259e4c3947aa0658ad6c28f54988a8aeebf8
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "71124594"
 ---
 # <a name="quotas-and-limitations"></a>配额和限制

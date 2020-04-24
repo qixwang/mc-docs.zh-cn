@@ -14,10 +14,10 @@ ms.date: 09/23/2019
 ms.author: v-jay
 ms.custom: seodec18
 ms.openlocfilehash: 8ac0e6bddb5e186b7ab1edaca59b02202d5b29ba
-ms.sourcegitcommit: 8248259e4c3947aa0658ad6c28f54988a8aeebf8
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "71125550"
 ---
 # <a name="role-based-access-control-rbac-for-media-services-accounts"></a>媒体服务帐户的基于角色的访问控制 (RBAC)

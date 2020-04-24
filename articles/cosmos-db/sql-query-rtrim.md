@@ -9,14 +9,14 @@ ms.date: 10/28/2019
 ms.author: v-yeche
 ms.custom: query-reference
 ms.openlocfilehash: 72184d97917280f54dc15b6b9f4c088014f8eac8
-ms.sourcegitcommit: 73f07c008336204bd69b1e0ee188286d0962c1d7
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "72914678"
 ---
 # <a name="rtrim-azure-cosmos-db"></a>RTRIM (Azure Cosmos DB)
- 返回删除尾随空格后的字符串表达式。  
+ 在删除尾随空格后，返回字符串表达式。  
 
 ## <a name="syntax"></a>语法
 
@@ -27,11 +27,11 @@ RTRIM(<str_expr>)
 ## <a name="arguments"></a>参数
 
 *str_expr*  
-  是任何有效的字符串表达式。  
+  为任何有效的字符串表达式。  
 
 ## <a name="return-types"></a>返回类型
 
-  返回一个字符串表达式。  
+  返回字符串表达式。  
 
 ## <a name="examples"></a>示例
 
@@ -41,7 +41,7 @@ RTRIM(<str_expr>)
 SELECT RTRIM("  abc") AS r1, RTRIM("abc") AS r2, RTRIM("abc   ") AS r3  
 ```  
 
- 下面是结果集。  
+ 下面是结果集：  
 
 ```json
 [{"r1": "   abc", "r2": "abc", "r3": "abc"}]  

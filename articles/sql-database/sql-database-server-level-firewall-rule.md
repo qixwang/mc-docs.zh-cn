@@ -13,10 +13,10 @@ ms.reviewer: vanto, carlrab
 origin.date: 02/11/2019
 ms.date: 11/04/2019
 ms.openlocfilehash: 0f3b6914cbfe679778acbb0e992f79af02dfa329
-ms.sourcegitcommit: 97fa37512f79417ff8cd86e76fe62bac5d24a1bd
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "73041246"
 ---
 # <a name="quickstart-create-a-server-level-firewall-rule-for-single-and-pooled-databases-using-the-azure-portal"></a>快速入门：使用 Azure 门户为单一数据库和共用数据库创建服务器级防火墙规则

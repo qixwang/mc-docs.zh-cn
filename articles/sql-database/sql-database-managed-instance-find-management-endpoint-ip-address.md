@@ -1,6 +1,6 @@
 ---
 title: 发现 Azure SQL 数据库托管实例管理终结点 | Microsoft Docs
-description: 了解如何获取 Azure SQL 数据库托管实例管理终结点公用 IP 地址并验证其内置防火墙保护
+description: 了解如何获取 Azure SQL 数据库托管实例管理终结点公共 IP 地址并验证其内置防火墙保护
 services: sql-database
 ms.service: sql-database
 ms.subservice: managed-instance
@@ -13,10 +13,10 @@ ms.reviewer: sstein, carlrab
 origin.date: 12/04/2018
 ms.date: 09/09/2019
 ms.openlocfilehash: fabb2a4af5540351e37fb66ca51a369085207cc4
-ms.sourcegitcommit: 2610641d9fccebfa3ebfffa913027ac3afa7742b
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/05/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "70372969"
 ---
 # <a name="determine-the-management-endpoint-ip-address"></a>确定管理终结点 IP 地址

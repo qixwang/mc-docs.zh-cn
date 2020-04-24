@@ -10,10 +10,10 @@ ms.date: 09/30/2019
 ms.author: v-yeche
 ms.custom: mvc
 ms.openlocfilehash: fce4d4a95df558aa60218396cd11f2679d5880e4
-ms.sourcegitcommit: 332ae4986f49c2e63bd781685dd3e0d49c696456
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "71340774"
 ---
 # <a name="fail-back-an-azure-vm-between-azure-regions"></a>在 Azure 区域之间对 Azure VM 进行故障回复
@@ -48,7 +48,7 @@ ms.locfileid: "71340774"
 2. 在“复制的项”中选择 VM，然后选择“故障转移”   。
 3. 在“故障转移”中，选择要故障转移到的恢复点  ：
     - **最新(默认设置)** ：处理 Site Recovery 服务中的所有数据，并提供最低的恢复点目标 (RPO)。
-    - **最新处理**：将 VM 还原到由 Site Recovery 处理的最新恢复点。
+    - **最新处理**：将 VM 还原到由 Site Recovery 处理过的最新恢复点。
     - **自定义**：故障转移到特定的恢复点。 此选项可用于执行测试故障转移。
 4. 如果希望 Site Recovery 在触发故障转移之前在 DR 区域尝试关闭 VM，请选择“在开始故障转移前关闭计算机”  。 即使关机失败，故障转移也仍会继续。 
 5. 在“作业”页上跟踪故障转移进度。 

@@ -9,10 +9,10 @@ origin.date: 07/24/2019
 ms.date: 10/08/2019
 ms.author: v-yiso
 ms.openlocfilehash: 65f6f646ebbb1d1b8cbf29eea7cbf436a144dc1e
-ms.sourcegitcommit: 332ae4986f49c2e63bd781685dd3e0d49c696456
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "71341124"
 ---
 # <a name="connecting-azure-with-public-clouds"></a>将 Azure 与公有云进行连接

@@ -14,10 +14,10 @@ ms.topic: conceptual
 origin.date: 7/30/2019
 ms.date: 10/14/2019
 ms.openlocfilehash: 343138301a2cbeb2cfb6dce5daea21446a49cb23
-ms.sourcegitcommit: aea45739ba114a6b069f782074a70e5dded8a490
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "72275897"
 ---
 # <a name="use-azure-data-factory-to-migrate-data-from-your-data-lake-or-data-warehouse-to-azure"></a>使用 Azure 数据工厂将数据从 Data Lake 或数据仓库迁移到 Azure

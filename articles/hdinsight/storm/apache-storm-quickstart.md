@@ -10,10 +10,10 @@ ms.date: 10/28/2019
 ms.author: v-yiso
 ms.custom: mvc
 ms.openlocfilehash: 39402eeda5de790af8046207ae7e674a5ee85871
-ms.sourcegitcommit: c21b37e8a5e7f833b374d8260b11e2fb2f451782
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/18/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "72583608"
 ---
 # <a name="quickstart-create-and-monitor-an-apache-storm-topology-in-azure-hdinsight"></a>快速入门：在 Azure HDInsight 中创建和监视 Apache Storm 拓扑
@@ -67,7 +67,7 @@ Storm 提供一个 Web 界面用于处理正在运行的拓扑，并包含在 HD
     |重新平衡|调整拓扑的并行度。 更改群集中的节点数目之后，应该重新平衡正在运行的拓扑。 重新平衡可调整并行度，以弥补群集中增加/减少的节点数目。 有关详细信息，请参阅[了解 Apache Storm 拓扑的并行度](https://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html)。|
     |终止|在经过指定的超时之后终止 Storm 拓扑。|
 
-3. 在此页中，从“Spout”  或“Bolt”  部分中选择一个条目。 将显示有关选定组件的信息。
+3. 在此页中，从“Spout”  或“Bolt”  部分中选择一个条目。 显示有关选定组件的信息。
 
     ![包含有关选定组件的信息的 Storm 仪表板。](./media/apache-storm-quickstart/hdi-component-summary.png)
 

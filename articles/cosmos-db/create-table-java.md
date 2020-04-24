@@ -11,10 +11,10 @@ ms.date: 10/28/2019
 ms.author: v-yeche
 ms.custom: seo-java-august2019, seo-java-september2019
 ms.openlocfilehash: 2c19df0bf9cef4b3532d13d6888f611cf662ca02
-ms.sourcegitcommit: 73f07c008336204bd69b1e0ee188286d0962c1d7
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "72970274"
 ---
 <!--Verify sucessfully-->
@@ -40,7 +40,7 @@ Azure Cosmos DB 是世纪互联提供的多区域分布式多模型数据库服�
 
 * [Java 开发工具包 (JDK) 8](https://docs.azure.cn/java/java-supported-jdk-runtime?view=azure-java-stable)
     * 请确保设置 JAVA_HOME 环境变量，使之指向在其中安装了 JDK 的文件夹。
-* [下载](https://maven.apache.org/download.cgi)和[安装](https://maven.apache.org/install.html) [Maven](https://maven.apache.org/) 二进制存档
+* [下载](https://maven.apache.org/download.cgi)和[安装](https://maven.apache.org/install.html)[Maven](https://maven.apache.org/) 二进制存档
     * 在 Ubuntu 上，可以通过运行 `apt-get install maven` 来安装 Maven。
 * [Git](https://www.git-scm.com/)
     * 在 Ubuntu 上，可以通过运行 `sudo apt-get install git` 来安装 Git。
@@ -48,7 +48,7 @@ Azure Cosmos DB 是世纪互联提供的多区域分布式多模型数据库服�
 ## <a name="create-a-database-account"></a>创建数据库帐户
 
 > [!IMPORTANT] 
-> 必须新建表 API 帐户，才能使用正式发布的表 API SDK。 正式发布的 SDK 不支持在预览期间创建的表 API 帐户。
+> 需创建新的适用于公开发表版表 API SDK 的表 API 帐户。 在预览期间创建的表 API 帐户不受公开发布版 SDK 的支持。
 >
 
 [!INCLUDE [cosmos-db-create-dbaccount-table](../../includes/cosmos-db-create-dbaccount-table.md)]
@@ -77,7 +77,7 @@ Azure Cosmos DB 是世纪互联提供的多区域分布式多模型数据库服�
     cd "C:\git-samples"
     ```
 
-3. 运行下列命令以克隆示例存储库。 此命令在计算机上创建示例应用程序的副本。
+3. 运行下列命令，克隆示例存储库。 此命令在计算机上创建示例应用程序的副本。
 
     ```bash
     git clone https://github.com/Azure-Samples/storage-table-java-getting-started.git 
@@ -116,7 +116,7 @@ Azure Cosmos DB 是世纪互联提供的多区域分布式多模型数据库服�
 
 现已使用与 Azure Cosmos DB 进行通信所需的所有信息更新应用。 
 
-## <a name="run-the-app"></a>运行应用
+## <a name="run-the-app"></a>运行应用程序
 
 1. 在 git 终端窗口中，运行 `cd` 切换到 storage-table-java-getting-started 文件夹。
 

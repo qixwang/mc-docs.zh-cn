@@ -15,10 +15,10 @@ origin.date: 09/18/2019
 ms.date: 11/04/2019
 ms.author: v-jay
 ms.openlocfilehash: c5a17f6a93e0058646d6b6dd54cf556fa462bc48
-ms.sourcegitcommit: f9a257e95444cb64c6d68a7a1cfe7e94c5cc5b19
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "73416268"
 ---
 # <a name="connect-to-media-services-v3-api---java"></a>连接到媒体服务 v3 API - Java
@@ -27,7 +27,7 @@ ms.locfileid: "73416268"
 
 在本文中，Visual Studio Code 用于开发示例应用。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - 按照 [Writing Java with Visual Studio Code](https://code.visualstudio.com/docs/java/java-tutorial)（使用 Visual Studio Code 编写 Java）中的说明安装以下内容：
 
@@ -82,7 +82,7 @@ mvn archetype:generate -DgroupId=com.azure.ams -DartifactId=testAzureApp -Darche
 
 ## <a name="connect-to-the-java-client"></a>连接到 Java 客户端
 
-1. 打开 `src\main\java\com\azure\ams` 下的 `App.java` 文件，确保包包括在顶部：
+1. 打开 `App.java` 下的 `src\main\java\com\azure\ams` 文件，确保包包括在顶部：
 
     ```java
     package com.azure.ams;

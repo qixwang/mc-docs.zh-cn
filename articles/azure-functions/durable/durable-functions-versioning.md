@@ -11,10 +11,10 @@ origin.date: 11/03/2019
 ms.date: 11/19/2019
 ms.author: v-junlch
 ms.openlocfilehash: f331a33936e2ebf43bb0d23810d5ae7ea342c6e3
-ms.sourcegitcommit: a4b88888b83bf080752c3ebf370b8650731b01d1
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74178976"
 ---
 # <a name="versioning-in-durable-functions-azure-functions"></a>Durable Functions 中的版本控制 (Azure Functions)
@@ -40,7 +40,7 @@ public static Task Run([OrchestrationTrigger] IDurableOrchestrationContext conte
 }
 ```
 
-此简单函数接收“Foo”  结果并将其传递给“Bar”  。 假设需要将返回值“Foo”  从 `bool` 更改为 `int` 以支持各种不同的结果值。 结果如下所示：
+此简单函数接收“Foo”  结果并将其传递给“Bar”  。 假设需要将返回值“Foo”  从 `bool` 更改为 `int` 以支持各种不同的结果值。 结果类似以下形式：
 
 ```csharp
 [FunctionName("FooBar")]

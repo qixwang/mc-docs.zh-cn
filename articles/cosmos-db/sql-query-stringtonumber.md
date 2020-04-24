@@ -9,10 +9,10 @@ ms.date: 10/28/2019
 ms.author: v-yeche
 ms.custom: query-reference
 ms.openlocfilehash: 0df4bf5c252ab6506cbcd142f02fee90877fb71c
-ms.sourcegitcommit: 73f07c008336204bd69b1e0ee188286d0962c1d7
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "72914644"
 ---
 # <a name="stringtonumber-azure-cosmos-db"></a>StringToNumber (Azure Cosmos DB)
@@ -47,7 +47,7 @@ SELECT
     StringToNumber("-1.79769e+308") AS num4
 ```  
 
- 下面是结果集。  
+ 下面是结果集：  
 
 ```json
 {{"num1": 1, "num2": 3.14, "num3": 60, "num4": -1.79769e+308}}
@@ -60,7 +60,7 @@ SELECT
     StringToNumber("0xF")
 ```  
 
- 下面是结果集。  
+ 下面是结果集：  
 
 ```json
 {{}}
@@ -78,7 +78,7 @@ SELECT
     StringToNumber(NaN)
 ```  
 
- 下面是结果集。  
+ 下面是结果集：  
 
 ```json
 {{}}

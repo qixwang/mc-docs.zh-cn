@@ -9,10 +9,10 @@ ms.topic: overview
 origin.date: 04/15/2019
 ms.date: 10/21/2019
 ms.openlocfilehash: d77004de15e60f2c2d2e93c42b2cd5e38f086b90
-ms.sourcegitcommit: b83f604eb98a4b696b0a3ef3db2435f6bf99f411
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/12/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "72292561"
 ---
 # <a name="azure-hdinsight-40-overview"></a>Azure HDInsight 4.0 概述
@@ -91,7 +91,7 @@ Apache Oozie 4.3.1 包含在 HDI 4.0 中，并进行了以下更改：
 
 ## <a name="limitations"></a>限制
 
-* HDInsight 4.0 不支持 MapReduce for Apache Hive。 改为使用 Apache Tez。 详细了解 [Apache Tez](https://tez.apache.org/)。
+* HDInsight 4.0 不支持将 MapReduce 用于 Apache Hive。 改为使用 Apache Tez。 详细了解 [Apache Tez](https://tez.apache.org/)。
 * HDInsight 4.0 不支持 Apache Storm。 
 * HDInsight 4.0 中不再提供 Hive 视图。 
 * Spark 和交互式查询群集不支持 Apache Zeppelin 中的 Shell 解释器。

@@ -8,10 +8,10 @@ origin.date: 05/21/2019
 ms.date: 07/29/2019
 ms.author: v-yeche
 ms.openlocfilehash: 9f35f9c0b492d8612d87a361080a3650b1ef220f
-ms.sourcegitcommit: 24b69c0a22092c64c6c3db183bb0655a23340420
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "72842904"
 ---
 # <a name="accelerate-big-data-analytics-by-using-the-apache-spark-to-azure-cosmos-db-connector"></a>使用 Apache Spark 到 Azure Cosmos DB 的连接器加速大数据分析

@@ -12,10 +12,10 @@ origin.date: 07/03/2018
 ms.date: 08/08/2019
 ms.author: v-junlch
 ms.openlocfilehash: cb79dd312c24b42e7bc25a48b93f537dbfead88d
-ms.sourcegitcommit: 09bf291a235f43202ba3752323395db86b16343f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "71119554"
 ---
 # <a name="quickstart-create-a-python-script-to-detect-and-frame-faces-in-an-image"></a>快速入门：创建一个用于检测和定格图像中人脸的 Python 脚本
@@ -24,7 +24,7 @@ ms.locfileid: "71119554"
 
 如果没有 Azure 订阅，请在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial/)。 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - 人脸 API 订阅密钥。 可以按照[创建认知服务帐户](/cognitive-services/cognitive-services-apis-create-account)中的说明订阅人脸 API 服务并获取密钥。
 - [Python 2.7+ 或 3.5+](https://www.python.org/downloads/)
@@ -115,7 +115,7 @@ for face in faces:
 img.show()
 ```
 
-## <a name="run-the-app"></a>运行应用程序
+## <a name="run-the-app"></a>运行应用
 
 系统可能会提示你先选择默认的图像查看器。 然后，会看到如下图像。 还会在控制台窗口中看到输出的矩形数据。
 

@@ -14,10 +14,10 @@ ms.date: 09/30/2019
 ms.author: v-yiso
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 563cac8a1fe638bcb987018f5a46d2a3ddfc70a5
-ms.sourcegitcommit: 6a62dd239c60596006a74ab2333c50c4db5b62be
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/20/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "71156062"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-using-the-portal-and-net-device"></a>使用门户和 .NET 设备创建 IoT 中心模块标识和模块孪生入门
@@ -38,7 +38,7 @@ ms.locfileid: "71156062"
 > 有关 Azure IoT SDK 的信息（可以使用这些 SDK 构建可在设备和解决方案后端上运行的应用程序），请参阅 [Azure IoT SDK][lnk-hub-sdks]。
 >
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * Visual Studio。
 * 有效的 Azure 帐户。 （如果没有帐户，只需几分钟即可创建一个[试用帐户][lnk-free-trial]。）
@@ -85,7 +85,7 @@ ms.locfileid: "71156062"
 
 模块标识和模块孪生为公共预览版。 仅在 IoT 中心预发行设备 SDK 中提供它。 若要安装它，请执行以下步骤：
 
-1. 在 Visual Studio 中，打开“工具” > “NuGet 包管理器” > “管理解决方案的 NuGet 包”。   
+1. 在 Visual Studio 中，打开“工具” **“NuGet 包管理器”** “管理解决方案的 NuGet 包”。 >    >  
 
 1. 选择“浏览”，然后选择“包括预发行版”   。 搜索 *Microsoft.Azure.Devices.Client*。 选择最新版本并安装。
 
@@ -95,9 +95,9 @@ ms.locfileid: "71156062"
 
 ### <a name="get-your-module-connection-string"></a>获取模块连接字符串
 
-需要控制台应用的模块连接字符串。 执行以下步骤：
+需要控制台应用的模块连接字符串。 执行以下步骤:
 
-1. 登录到 [Azure 门户](https://portal.azure.cn/)。
+1. 登录 [Azure 门户](https://portal.azure.cn/)。
 
 1. 导航到 IoT 中心并选择“IoT 设备”。  打开 **myFirstDevice**，可以看到 **myFirstModule** 已成功创建。
 
@@ -109,7 +109,7 @@ ms.locfileid: "71156062"
 
 若要创建应用，请按以下步骤操作：
 
-1. 在 **Program.cs** 文件顶部添加以下 `using` 语句：
+1. 在 Program.cs`using`**文件顶部添加以下** 语句：
 
   ```csharp
   using Microsoft.Azure.Devices.Client;
@@ -117,7 +117,7 @@ ms.locfileid: "71156062"
   using Newtonsoft.Json;
   ```
 
-将以下字段添加到 **Program** 类。 将占位符值替换为模块连接字符串。
+将以下字段添加到 Program 类  。 将占位符值替换为模块连接字符串。
 
 ```csharp
 private const string ModuleConnectionString = "<Your module connection string>";

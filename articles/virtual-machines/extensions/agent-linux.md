@@ -17,10 +17,10 @@ ms.date: 11/11/2019
 ms.author: v-yeche
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 00622728451c46455b1a7a9475b2b0ea494ec4de
-ms.sourcegitcommit: 5844ad7c1ccb98ff8239369609ea739fb86670a4
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "73831441"
 ---
 # <a name="understanding-and-using-the-azure-linux-agent"></a>了解和使用 Azure Linux 代理
@@ -32,7 +32,7 @@ Azure Linux 代理 (waagent) 可以管理 Linux 与 FreeBSD 预配，以及 VM �
 > 
 > 
 
-* **映像设置**
+* **映像预配**
 
     * 创建用户帐户
     * 配置 SSH 身份验证类型
@@ -66,11 +66,11 @@ Azure Linux 代理 (waagent) 可以管理 Linux 与 FreeBSD 预配，以及 VM �
 ## <a name="communication"></a>通信
 从平台到代理的信息流通过两个通道进行：
 
-* 用于 IaaS 部署的附加了启动时间的 DVD。 此 DVD 包含一个与 OVF 兼容的配置文件，该文件包括除实际的 SSH 密钥对之外的所有预配信息。
+* 用于 IaaS 部署的附加了启动时间的 DVD。 此 DVD 包含一个与 OVF 兼容的配置文件，该文件包括除 SSH 密钥对之外的所有配置信息。
 * 用于获取部署和拓扑配置的一个公开 REST API 的 TCP 终结点。
 
 ## <a name="requirements"></a>要求
-以下系统已经过测试并确认兼容 Azure Linux 代理：
+下列系统已经过测试并确认兼容 Azure Linux 代理：
 
 > [!NOTE]
 > 此列表可能不同于 Azure 平台所支持系统的官方列表，如以下文章所述：[https://docs.azure.cn/virtual-machines/linux/endorsed-distros](/virtual-machines/linux/endorsed-distros)
@@ -87,11 +87,11 @@ Azure Linux 代理 (waagent) 可以管理 Linux 与 FreeBSD 预配，以及 VM �
 <!-- Not Available on * Red Hat Enterprise Linux 6.7+-->
 <!-- Not Available on * Oracle Linux 6.4+-->
 
-其他受支持的系统：
+其他支持的系统：
 
 * FreeBSD 10+（Azure Linux 代理 v2.0.10+）
 
-正常运行 Linux 代理所依赖的一些系统包：
+Linux 代理的正常运行依赖一些系统程序包：
 
 * Python 2.6+
 * OpenSSL 1.0+
@@ -103,7 +103,7 @@ Azure Linux 代理 (waagent) 可以管理 Linux 与 FreeBSD 预配，以及 VM �
 * 装载 UDF 文件系统的内核支持。
 
 ## <a name="installation"></a>安装
-使用分发的包存储库中的 RPM 或 DEB 包进行安装是安装和升级 Azure Linux 代理的首选方法。 所有[认可的分发版提供商](../linux/endorsed-distros.md)会将 Azure Linux 代理包集成到其映像和存储库。
+使用分发包存储库中的 RPM 或 DEB 包进行安装是安装和升级 Azure Linux 代理的首选方法。 所有[认可的分发版提供商](../linux/endorsed-distros.md)会将 Azure Linux 代理包集成到其映像和存储库。
 
 请参阅 [GitHub 上的 Azure Linux 代理存储库](https://github.com/Azure/WALinuxAgent)中的文档了解高级安装选项，例如从源安装，或者安装到自定义位置或前缀。
 
@@ -123,7 +123,7 @@ Azure Linux 代理 (waagent) 可以管理 Linux 与 FreeBSD 预配，以及 VM �
     * 将主机名重置为 localhost.localdomain
 
 > [!WARNING]
-> 取消预配无法保证清除映像中的所有敏感信息且适用于分发版。
+> 取消预配无法保证清除映像中的所有敏感信息且适用于重新分发。
 > 
 > 
 
@@ -133,7 +133,7 @@ Azure Linux 代理 (waagent) 可以管理 Linux 与 FreeBSD 预配，以及 VM �
     <!--Not Available on * serialconsole:-->
 
 * daemon：将 waagent 作为 daemon 运行以管理与平台的交互。 在 waagent init 脚本中为 waagent 指定此参数。
-* start：将 waagent 作为后台进程运行
+* 开始：将 waagent 作为后台进程运行
 
 ## <a name="configuration"></a>配置
 配置文件 (/etc/waagent.conf) 可控制 waagent 的操作。 下面显示了示例配置文件：
@@ -164,14 +164,14 @@ HttpProxy.Port=None
 AutoUpdate.Enabled=y
 ```
 
-下面描述了各种配置选项。 配置选项分为三种类型：布尔值、字符串或整数。 布尔值配置选项可指定为“y”或“n”。 特殊关键字“无”可用于某些字符串类型配置条目，详细信息如下所示：
+下面描述了各种配置选项。 配置选项分为三种类型：布尔值、字符串或整数。 布尔配置选项可指定为“y”或“n”。 特殊关键字“无”可用于某些字符串类型配置条目，详细信息如下所示：
 
 **Provisioning.Enabled：**  
 ```
 Type: Boolean  
 Default: y
 ```
-这允许用户在代理中启用或禁用预配功能。 有效值为“y”或“n”。 如果禁用预配，则会保留映像中的 SSH 主机和用户密钥，并忽略 Azure 预配 API 中指定的所有配置。
+这允许用户在代理中启用或禁用设置功能。 有效值为“y”或“n”。 如果禁用设置，则会保留映像中的 SSH 主机和用户密钥，并忽略 Azure 设置 API 中指定的所有配置。
 
 > [!NOTE]
 > `Provisioning.Enabled` 参数在使用 cloud-init 进行预配的 Ubuntu 云映像上默认为“n”。
@@ -183,7 +183,7 @@ Default: y
 Type: Boolean  
 Default: n
 ```
-如果设置此参数，则会在预配过程中清除 /etc/shadow 文件中的根密码。
+如果设置此参数，则会在设置过程中清除 /etc/shadow 文件中的根密码。
 
 **Provisioning.RegenerateSshHostKeyPair：**  
 ```
@@ -192,14 +192,14 @@ Default: y
 ```
 如果设置此参数，则会在预配过程中从 /etc/ssh/ 中删除所有 SSH 主机密钥对（ecdsa、dsa 和 rsa）。 并且会生成一个全新的密钥对。
 
-此全新密钥对的加密类型可通过 Provisioning.SshHostKeyPairType 项进行配置。 重启 SSH 守护程序时（例如，重启时），某些分发将为任何缺失的加密类型重新创建 SSH 密钥对。
+此全新密钥对的加密类型可由 Provisioning.SshHostKeyPairType 项进行配置。 重启 SSH 守护程序时（例如，重启时），某些分发将为任何缺失的加密类型重新创建 SSH 密钥对。
 
 **Provisioning.SshHostKeyPairType：**  
 ```
 Type: String  
 Default: rsa
 ```
-可将其设置为虚拟机上的 SSH 守护程序支持的加密算法类型。 通常支持的值为“rsa”、“dsa”和“ecdsa”。 Windows 上的“putty.exe”不支持“ecdsa”。 因此，若要在 Windows 上使用 putty.exe 连接到 Linux 部署，使用“rsa”或“dsa”。
+可将其设置为虚拟机上的 SSH 监控程序支持的加密算法类型。 通常支持的值为“rsa”、“dsa”和“ecdsa”。 Windows 上的“putty.exe”不支持“ecdsa”。 因此，若要在 Windows 上使用 putty.exe 连接到 Linux 部署，使用“rsa”或“dsa”。
 
 **Provisioning.MonitorHostName：**  
 ```
@@ -259,16 +259,16 @@ Default: y
 Type: String  
 Default: ext4
 ```
-这会指定资源磁盘的 filesystem 类型。 受支持的值因 Linux 分发而异。 如果字符串为 X，则 mkfs.X 应呈现在 Linux 映像上。 SLES 11 映像通常应使用“ext3”。 FreeBSD 映像在此处应使用“ufs2”。
+这会指定资源磁盘的 filesystem 类型。 支持的值随 Linux 分发的不同而不同。 如果字符串为 X，则 mkfs.X 应呈现在 Linux 映像上。 SLES 11 映像通常应使用“ext3”。 FreeBSD 映像在此处应使用“ufs2”。
 
 **ResourceDisk.MountPoint：**  
 ```
 Type: String  
 Default: /mnt/resource 
 ```
-这会指定资源磁盘的装载路径。 资源磁盘是临时  磁盘，可能在取消预配 VM 时被清空。
+这会指定资源磁盘的安装路径。 资源磁盘是临时  磁盘，可能在取消预配 VM 时被清空。
 
-**ResourceDisk.MountOptions：**  
+**ResourceDisk.MountOptions**  
 ```
 Type: String  
 Default: None
@@ -280,21 +280,21 @@ Default: None
 Type: Boolean  
 Default: n
 ```
-如果设置此参数，则将在资源磁盘上创建交换文件 (/swapfile) 并将该文件添加到系统交换空间。
+如果设置此参数，则会在资源磁盘上创建交换文件 (/swapfile) 并将该文件添加到系统交换空间。
 
 **ResourceDisk.SwapSizeMB：**  
 ```
 Type: Integer  
 Default: 0
 ```
-交换文件的大小（以兆字节为单位）。
+交换文件的大小，以兆字节为单位。
 
 **Logs.Verbose：**  
 ```
 Type: Boolean  
 Default: n
 ```
-如果设置此参数，日志的详细程度则会有所提升。 Waagent 将日志记录到 /var/log/waagent.log 并利用系统 logrotate 功能来循环日志。
+如果设置此参数，则将增大日志的详细程度。 Waagent 将日志记录到 /var/log/waagent.log 并利用系统 logrotate 功能来循环日志。
 
 **OS.EnableRDMA**  
 ```

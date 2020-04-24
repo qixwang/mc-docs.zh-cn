@@ -9,10 +9,10 @@ origin.date: 07/10/2019
 ms.date: 09/09/2019
 ms.author: v-jay
 ms.openlocfilehash: 650e93c27265a6bd08b318555bc88710c1a1b4ba
-ms.sourcegitcommit: 66a77af2fab8a5f5b34723dc99e4d7ce0c380e78
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "70209443"
 ---
 # <a name="manage-container-properties-and-metadata-with-net"></a>使用 .NET 管理容器属性和元数据

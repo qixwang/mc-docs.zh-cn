@@ -15,10 +15,10 @@ origin.date: 05/07/2019
 ms.date: 09/23/2019
 ms.author: v-jay
 ms.openlocfilehash: 669f861750320192ef611f6593724830f3eca00c
-ms.sourcegitcommit: 8248259e4c3947aa0658ad6c28f54988a8aeebf8
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "71125523"
 ---
 # <a name="streaming-endpoint-origin-errors"></a>流式处理终结点（来源）错误 
@@ -185,7 +185,7 @@ ms.locfileid: "71125523"
 
 ## <a name="503-service-unavailable"></a>503 服务不可用
 
-服务器当前无法接收请求。 导致此错误的可能原因是向服务发出了过多的请求。 媒体服务限制机制会限制那些发出过多服务请求的应用程序的资源使用情况。
+服务器当前无法接收请求。 导致此错误的可能原因是向服务发出了过多的请求。 对于发出过多服务请求的应用程序，媒体服务限制机制将限制其资源使用量。
 
 > [!NOTE]
 > 查看错误消息和错误代码字符串，获取收到 503 错误的原因的更多详细信息。 此错误并不始终意味着限制。

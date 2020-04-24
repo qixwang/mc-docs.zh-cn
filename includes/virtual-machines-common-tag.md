@@ -6,16 +6,16 @@ origin.date: 10/26/2018
 ms.date: 11/11/2019
 ms.author: v-yeche
 ms.openlocfilehash: 547c5dad33c6d552493f98282bcc6a59979774f8
-ms.sourcegitcommit: 5844ad7c1ccb98ff8239369609ea739fb86670a4
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "73831233"
 ---
 ## <a name="tagging-a-virtual-machine-through-templates"></a>通过模板标记虚拟机
-首先，让我们看一下如何通过模板进行标记。 [此模板](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-tags)可标记以下资源：计算（虚拟机）、存储（存储帐户）和网络（公共 IP 地址、虚拟网络和网络接口）。 此模板适用于 Windows VM，但经过改造后也可用于 Linux VM。
+首先，让我们看一下如何通过模板进行标记。 [此模板](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-tags)将标记放置在以下资源中：计算（虚拟机）、存储（存储帐户）和网络（公共 IP 地址、虚拟网络和网络接口）。 此模板适用于 Windows VM，但经过改造后也可用于 Linux VM。
 
-单击 [模板链接](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-tags) 中的 **部署至 Azure** 按钮。 此操作将导航到 [Azure 门户](https://portal.azure.cn/)，可在其中部署此模板。
+单击 **模板链接** 中的 [部署至 Azure](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-tags) 按钮。 此操作将导航到 [Azure 门户](https://portal.azure.cn/)，可在其中部署此模板。
 
 ![使用标记进行简单部署](./media/virtual-machines-common-tag/deploy-to-azure-tags.png)
 
@@ -23,7 +23,7 @@ ms.locfileid: "73831233"
 
 ![模板中的 Azure 标记](./media/virtual-machines-common-tag/azure-tags-in-a-template.png)
 
-如你所见，标记定义为键值对，用冒号 (:) 分隔。 必须按以下格式定义标记：
+如你所见，标记将被定义为键值对，用冒号 (:) 分隔。 必须按以下格式定义标记：
 
         "tags": {
             "Key1" : "Value1",
@@ -32,11 +32,11 @@ ms.locfileid: "73831233"
 
 完成编辑后，使用选择的标记保存模板文件。
 
-接下来，在  “编辑参数”部分中，可以填写标记的值。
+接下来，在“编辑参数”部分中，可以填写标记的值。 
 
 ![通过 Azure 门户编辑标记](./media/virtual-machines-common-tag/edit-tags-in-azure-portal.png)
 
-单击  “创建”，使用标记值部署此模板。
+单击  “创建”使用标记值部署此模板。
 
 ## <a name="tagging-through-the-portal"></a>通过门户进行标记
 使用标记创建资源后，可以在门户中查看、添加和删除该标记。
@@ -45,7 +45,7 @@ ms.locfileid: "73831233"
 
 ![Azure 门户中的标记图标](./media/virtual-machines-common-tag/azure-portal-tags-icon.png)
 
-通过定义自己的键/值对，使用门户添加新标记并进行保存。
+通过定义自己的键/值对，使用门户添加新标记并将其保存。
 
 ![通过 Azure 门户添加新标记](./media/virtual-machines-common-tag/azure-portal-add-new-tag.png)
 

@@ -8,10 +8,10 @@ ms.topic: conceptual
 origin.date: 09/04/2019
 ms.date: 09/30/2019
 ms.openlocfilehash: 8f52e0de0cd4610027168c95d3c07f74300c2be8
-ms.sourcegitcommit: cb2caa72ec0e0922a57f2fa1056c25e32c61b570
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "73142156"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mysql-using-the-azure-portal"></a>如何使用 Azure 门户在 Azure Database for MySQL 中创建和管理只读副本
@@ -21,7 +21,7 @@ ms.locfileid: "73142156"
 
 本文介绍如何使用 Azure 门户在 Azure Database for MySQL 服务中创建和管理只读副本。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - 将用作主服务器的 [Azure Database for MySQL 服务器](quickstart-create-mysql-server-database-using-azure-portal.md)。
 

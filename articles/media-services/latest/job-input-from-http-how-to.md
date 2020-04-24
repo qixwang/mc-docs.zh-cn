@@ -13,10 +13,10 @@ origin.date: 02/13/2019
 ms.date: 09/23/2019
 ms.author: juliako
 ms.openlocfilehash: e5adca3a5ec36bd266d309648b3147e702bbe72b
-ms.sourcegitcommit: 8248259e4c3947aa0658ad6c28f54988a8aeebf8
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "71124685"
 ---
 # <a name="create-a-job-input-from-an-https-url"></a>从 HTTPS URL 创建作业输入

@@ -9,10 +9,10 @@ ms.topic: include
 ms.date: 09/18/2019
 ms.custom: include file
 ms.openlocfilehash: 0776b72e161e2877a10ca38896bb8ac26852f555
-ms.sourcegitcommit: 642a4ad454db5631e4d4a43555abd9773cae8891
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "73425929"
 ---
 > [!IMPORTANT]

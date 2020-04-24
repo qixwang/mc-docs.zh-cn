@@ -9,15 +9,15 @@ origin.date: 09/09/2019
 ms.date: 09/30/2019
 ms.author: v-yeche
 ms.openlocfilehash: e42ce7bd3c9e4b41ff432b3bb0daea4ff9d7d600
-ms.sourcegitcommit: 332ae4986f49c2e63bd781685dd3e0d49c696456
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "71340813"
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms-after-migration-to-azure"></a>设置 Azure VM 迁移到 Azure 后的灾难恢复 
 
-如果已使用 [Site Recovery](site-recovery-overview.md) 服务[将本地计算机迁移到 Azure VM](tutorial-migrate-on-premises-to-azure.md)，请按本文操作。现在，需设置 VM，以便灾难恢复到辅助 Azure 区域。 本文介绍如何确保将 Azure VM 代理安装在迁移的 VM 上，以及如何删除在迁移后不再需要的 Site Recovery 移动服务。
+如果已使用 [Site Recovery](tutorial-migrate-on-premises-to-azure.md) 服务[将本地计算机迁移到 Azure VM](site-recovery-overview.md)，请按本文操作。现在，需设置 VM，以便灾难恢复到辅助 Azure 区域。 本文介绍如何确保将 Azure VM 代理安装在迁移的 VM 上，以及如何删除在迁移后不再需要的 Site Recovery 移动服务。
 
 ## <a name="verify-migration"></a>验证迁移
 
@@ -52,7 +52,7 @@ ms.locfileid: "71340813"
 手动安装 [Azure Linux VM](../virtual-machines/extensions/agent-linux.md) 代理，如下所示：
 
 1. 确保在计算机上有管理员权限。
-2. 强烈建议使用分发版包存储库中的 RPM 或 DEB 包安装 Linux VM 代理。 所有 [认可的分发版提供商](/virtual-machines/linux/endorsed-distros) 会将 Azure Linux 代理包集成到其映像和存储库。
+2. 强烈建议使用分发版包存储库中的 RPM 或 DEB 包安装 Linux VM 代理。 所有[认可的分发版提供商](/virtual-machines/linux/endorsed-distros)会将 Azure Linux 代理包集成到其映像和存储库。
     - 强烈建议只通过分发存储库更新代理。
     - 我们不建议直接从 GitHub 安装 Linux VM 代理并将其更新。
     - 如果分发没有可用的最新代理，请联系分发支持部门，了解如何安装最新代理。 

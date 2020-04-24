@@ -14,10 +14,10 @@ origin.date: 08/01/2019
 ms.date: 11/11/2019
 ms.author: v-jay
 ms.openlocfilehash: 19abc417e0c81e668480e65316e4c56de4ce8818
-ms.sourcegitcommit: ff8dcf27bedb580fc1fcae013ae2ec28557f48ac
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "73648682"
 ---
 # <a name="copy-data-from-web-table-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 Web 表复制数据
@@ -41,7 +41,7 @@ ms.locfileid: "73648682"
 
 具体而言，此 Web 表连接器支持**从 HTML 页提取表内容**。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要使用此 Web 表连接器，需要设置自托管集成运行时。 有关详细信息，请参阅[自承载集成运行时](create-self-hosted-integration-runtime.md)一文。
 
@@ -55,11 +55,11 @@ ms.locfileid: "73648682"
 
 Web 表链接的服务支持以下属性：
 
-| 属性 | 说明 | 必选 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：**Web** |是 |
 | url | Web 源的 URL |是 |
-| authenticationType | 允许的值为：**Anonymous**。 |是 |
+| authenticationType | 允许的值为：Anonymous  。 |是 |
 | connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 如[先决条件](#prerequisites)中所述，需要自承载集成运行时。 |是 |
 
 **示例：**
@@ -87,11 +87,11 @@ Web 表链接的服务支持以下属性：
 
 要从 Web 表复制数据，请将数据集的 type 属性设置为“WebTable”  。 支持以下属性：
 
-| 属性 | 说明 | 必选 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为：**WebTable** | 是 |
-| path |包含表的资源的相对 URL。 |否。 未指定路径时，仅使用链接服务定义中指定的 URL。 |
-| index |资源中表的索引。 请参阅[获取 HTML 页中表的索引](#get-index-of-a-table-in-an-html-page)，了解获取 HTML 页中表的索引的步骤。 |是 |
+| 路径 |包含表的资源的相对 URL。 |不是。 未指定路径时，仅使用链接服务定义中指定的 URL。 |
+| 索引 |资源中表的索引。 请参阅[获取 HTML 页中表的索引](#get-index-of-a-table-in-an-html-page)，了解获取 HTML 页中表的索引的步骤。 |是 |
 
 **示例：**
 
@@ -160,7 +160,7 @@ Web 表链接的服务支持以下属性：
 2. 单击工具栏中的“新建查询”  ，指向“从其他源”  ，并单击“从 Web”  。
 
     ![Power Query 菜单](./media/copy-data-from-web-table/PowerQuery-Menu.png)
-3. 在“从 Web”对话框中，输入要在链接服务 JSON 中使用的 **URL**（例如： https://en.wikipedia.org/wiki/) ）以及要为数据集指定的路径（例如  ：AFI%27s_100_Years...100_Movies），并单击“确定”  。
+3. 在“从 Web”对话框中，输入要在链接服务 JSON 中使用的 URL（例如： **）以及要为数据集指定的路径（例如：AFI%27s_100_Years...100_Movies），并单击“确定”**  https://en.wikipedia.org/wiki/)  。
 
     ![“从 Web”对话框](./media/copy-data-from-web-table/FromWeb-DialogBox.png)
 

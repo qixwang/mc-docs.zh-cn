@@ -13,10 +13,10 @@ ms.topic: article
 origin.date: 07/27/2019
 ms.date: 09/09/2019
 ms.openlocfilehash: b08276108aa013d52316abee2dc4e3b5181273a9
-ms.sourcegitcommit: dd0ff08835dd3f8db3cc55301815ad69ff472b13
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "70736784"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-to-azure-sql-database"></a>联机迁移到 Azure SQL 数据库时存在的已知问题/迁移限制

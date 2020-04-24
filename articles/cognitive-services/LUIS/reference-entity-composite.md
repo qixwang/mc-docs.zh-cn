@@ -12,10 +12,10 @@ origin.date: 09/29/2019
 ms.date: 10/31/2019
 ms.author: v-lingwu
 ms.openlocfilehash: 2adcc632d6de6b0cf4e17372e814e61ccd72ee22
-ms.sourcegitcommit: 8d3a0d134a7f6529145422670af9621f13d7e82d
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "73416342"
 ---
 # <a name="composite-entity"></a>复合实体 
@@ -42,7 +42,7 @@ ms.locfileid: "73416342"
 
 ![复合实体](./media/luis-concept-data-extraction/composite-entity.png)
 
-#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 预测终结点响应](#tab/V2)
+#### <a name="v2-prediction-endpoint-response"></a>[V2 预测终结点响应](#tab/V2)
 
 复合实体返回在 `compositeEntities` 数组中，且该复合中的所有实体也都返回在 `entities` 数组中：
 
@@ -90,7 +90,7 @@ ms.locfileid: "73416342"
   ]
 ```    
 
-#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 预测终结点响应](#tab/V3)
+#### <a name="v3-prediction-endpoint-response"></a>[V3 预测终结点响应](#tab/V3)
 
 如果在查询字符串中设置了 `verbose=false`，则这是 JSON：
 
@@ -173,7 +173,7 @@ ms.locfileid: "73416342"
 * * * 
 
 
-|数据对象|实体名称|Value|
+|数据对象|实体名称|值|
 |--|--|--|
 |预构建实体 - 数量|"builtin.number"|"2"|
 |预生成实体 - GeographyV2|"Location::ToLocation"|"cairo"|

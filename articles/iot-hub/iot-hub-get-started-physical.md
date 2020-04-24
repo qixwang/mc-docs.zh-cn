@@ -13,15 +13,15 @@ origin.date: 08/22/2017
 ms.author: v-yiso
 ms.date: 09/30/2019
 ms.openlocfilehash: c8ebcc6483b1ba2e59a93733cd9c8b8c27c158a2
-ms.sourcegitcommit: 6a62dd239c60596006a74ab2333c50c4db5b62be
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/20/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "71155978"
 ---
-# <a name="azure-iot-hub-get-started-with-physical-devices-tutorials"></a>Azure IoT 中心及物理设备入门教程
+# <a name="azure-iot-hub-get-started-with-physical-devices-tutorials"></a>Azure IoT 中心物理设备入门教程
 
-这些教程介绍 Azure IoT 中心和设备 SDK。 这些教程介绍用于演示 IoT 中心功能的常见 IoT 方案。 这些教程还说明了如何将 IoT 中心与其他 Azure 服务和工具结合在一起，构建更强大的 IoT 解决方案。 下表中列出的教程演示如何创建物理 IoT 设备。
+这些教程介绍 Azure IoT 中心和设备 SDK。 这些教程介绍用于演示 IoT 中心功能的常见 IoT 方案。 这些教程还说明了如何将 IoT 中心与其他 Azure 服务和工具结合在一起，以构建更强大的 IoT 解决方案。 下表中列出的教程介绍了如何创建物理 IoT 设备。
 
 | IoT 设备                       | 编程语言 |
 |---------------------------------|----------------------|

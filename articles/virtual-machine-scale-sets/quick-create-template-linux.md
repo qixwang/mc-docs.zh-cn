@@ -18,10 +18,10 @@ origin.date: 03/27/2018
 ms.date: 09/23/2019
 ms.author: v-junlch
 ms.openlocfilehash: 3cc9a051fa2147ad9c14e38d223904901f412d96
-ms.sourcegitcommit: 73a8bff422741faeb19093467e0a2a608cb896e1
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/29/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "71673599"
 ---
 # <a name="quickstart-create-a-linux-virtual-machine-scale-set-with-an-azure-template"></a>快速入门：使用 Azure 模板创建 Linux 虚拟机规模集
@@ -39,7 +39,7 @@ Azure 资源管理器模板允许部署成组的相关资源。 模板以 JavaSc
 
 若要使用模板创建规模集，请定义相应的资源。 虚拟机规模集资源类型的核心部件包括：
 
-| 属性                     | 属性说明                                  | 示例模板值                    |
+| properties                     | 属性说明                                  | 示例模板值                    |
 |------------------------------|----------------------------------------------------------|-------------------------------------------|
 | type                         | 要创建的 Azure 资源类型                            | Microsoft.Compute/virtualMachineScaleSets |
 | name                         | 规模集名称                                       | myScaleSet                                |
@@ -152,7 +152,7 @@ az group deployment create \
 
 
 ## <a name="test-your-scale-set"></a>测试规模集
-若要规模集的运行方式，请在 Web 浏览器中访问示例 Web 应用程序。 使用 [az network public-ip list](/cli/network/public-ip) 命令获取负载均衡器的公共 IP 地址，如下所示：
+若要查看正在运行的规模集，请在 Web 浏览器中访问示例 Web 应用程序。 使用 [az network public-ip list](/cli/network/public-ip) 命令获取负载均衡器的公共 IP 地址，如下所示：
 
 ```azurecli
 az network public-ip list \
@@ -160,7 +160,7 @@ az network public-ip list \
     --query [*].ipAddress -o tsv
 ```
 
-以“http:\//publicIpAddress:9000/do_work”  格式将负载均衡器的公共 IP 地址输入到 Web 浏览器中。 负载均衡器将流量分发到某个 VM 实例，如以下示例所示：
+以“http: */publicIpAddress:9000/do_work”\/* 格式将负载均衡器的公共 IP 地址输入到 Web 浏览器中。 负载均衡器将流量分发到某个 VM 实例，如以下示例所示：
 
 ![NGINX 中的默认网页](./media/virtual-machine-scale-sets-create-template/running-python-app.png)
 

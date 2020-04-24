@@ -17,13 +17,13 @@ ms.date: 10/14/2019
 ms.author: v-yeche
 ms.reviewer: jroth
 ms.openlocfilehash: 447e91bfaa396b8f13c9bd4d2184814dc34d7ebd
-ms.sourcegitcommit: c9398f89b1bb6ff0051870159faf8d335afedab3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "72272812"
 ---
-# <a name="security-considerations-for-sql-server-in-azure-virtual-machines"></a>Azure 虚拟机中的 SQL Server 的安全注意事项
+# <a name="security-considerations-for-sql-server-in-azure-virtual-machines"></a>Azure 虚拟机中 SQL Server 的安全注意事项
 
 本主题包括总体安全指南，可帮助建立对 Azure 虚拟机 (VM) 中 SQL Server 实例的安全访问。
 

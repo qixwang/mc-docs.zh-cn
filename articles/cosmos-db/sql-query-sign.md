@@ -9,10 +9,10 @@ ms.date: 10/28/2019
 ms.author: v-yeche
 ms.custom: query-reference
 ms.openlocfilehash: 2558960d3da990f4fef4523bf3a35f5454afd6c5
-ms.sourcegitcommit: 73f07c008336204bd69b1e0ee188286d0962c1d7
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "72914668"
 ---
 # <a name="sign-azure-cosmos-db"></a>SIGN (Azure Cosmos DB)
@@ -27,11 +27,11 @@ SIGN(<numeric_expr>)
 ## <a name="arguments"></a>参数
 
 *numeric_expr*  
-  是一个数值表达式。  
+  为数值表达式。  
 
 ## <a name="return-types"></a>返回类型
 
-  返回一个数值表达式。  
+  返回数值表达式。  
 
 ## <a name="examples"></a>示例
 
@@ -41,7 +41,7 @@ SIGN(<numeric_expr>)
 SELECT SIGN(-2) AS s1, SIGN(-1) AS s2, SIGN(0) AS s3, SIGN(1) AS s4, SIGN(2) AS s5  
 ```  
 
- 下面是结果集。  
+ 下面是结果集：  
 
 ```json
 [{s1: -1, s2: -1, s3: 0, s4: 1, s5: 1}]  

@@ -16,10 +16,10 @@ origin.date: 03/19/2019
 ms.date: 09/23/2019
 ms.author: v-jay
 ms.openlocfilehash: 41f8bb9b9bf49ac4b701bcfaaae63a979e280797
-ms.sourcegitcommit: 8248259e4c3947aa0658ad6c28f54988a8aeebf8
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "71124610"
 ---
 # <a name="get-started-with-delivering-content-on-demand-by-using-the-azure-portal"></a>使用 Azure 门户按需传送内容入门
@@ -29,10 +29,10 @@ ms.locfileid: "71124610"
 
 本教程介绍了在 Azure 门户中使用 Azure 媒体服务应用程序实施基本的视频点播内容传送服务的步骤。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 以下项目是完成本教程所需具备的条件：
 
-* 一个 Azure 帐户。 有关详细信息，请参阅 [Azure 试用版](https://www.azure.cn/pricing/1rmb-trial/)。 
+* 一个 Azure 帐户。 有关详细信息，请参阅 [Azure 试用](https://www.azure.cn/pricing/1rmb-trial/)。 
 * 一个媒体服务帐户。 若要创建媒体服务帐户，请参阅[如何创建媒体服务帐户](media-services-portal-create-account.md)。
 
 本教程包括以下任务：
@@ -52,11 +52,11 @@ ms.locfileid: "71124610"
 
 若要启动流式处理终结点，请执行以下操作：
 
-1. 登录到 [Azure 门户](https://portal.azure.cn/)。
+1. 登录 [Azure 门户](https://portal.azure.cn/)。
 2. 选择“设置”   >   “流式处理终结点”。 
 3. 选择默认的流式处理终结点。 此时会显示“默认流式处理终结点详细信息”  窗口。
 4. 选择“启动”图标。 
-5. 选择“保存”按钮。 
+5. 选择“保存”按钮  。
 
 ## <a name="upload-files"></a>上传文件
 若要使用媒体服务来流式传输视频，请先上传源视频、将其编码成多个比特率，然后发布结果。 第一步在本部分介绍。 
@@ -66,7 +66,7 @@ ms.locfileid: "71124610"
    
     ![上传文件](./media/media-services-portal-vod-get-started/media-services-upload.png)
    
-    此时会显示“上传视频资产”  窗口。
+    此时会显示“上传视频资产”窗口  。
    
    > [!NOTE]
    > 媒体服务不会限制上传视频的文件大小。
@@ -102,7 +102,7 @@ ms.locfileid: "71124610"
 ## <a name="publish-content"></a>发布内容
 若要为用户提供一个可用来流式传输内容或下载内容的 URL，首先必须通过创建定位符来发布资产。 定位符提供对资产中文件的访问权限。 Azure 媒体服务支持两种类型的定位符： 
 
-* **流式处理 (OnDemandOrigin) 定位符**。 流式处理定位符用于自适应流式处理。 自适应流式处理示例包括：HLS、平滑流式处理和 MPEG-DASH。 若要创建流式处理定位符，资产必须包括一个 .ism 文件。 
+* **流式处理 (OnDemandOrigin) 定位符**。 流式处理定位符用于自适应流式处理。 自适应流式处理示例包括：HLS、平滑流式处理和 MPEG-DASH。 要创建流式处理定位符，资产必须包括一个 .ism 文件。 
 * **渐进式（共享访问签名）定位符**。 渐进式定位符用于通过渐进式下载来传输视频。
 
 要生成 HLS 流 URL，请将 (format=m3u8-aapl) 附加到 URL： 
@@ -136,11 +136,11 @@ ms.locfileid: "71124610"
 2. 选择“设置”   > “资产”  。 选择想要发布的资产。
 3. 选择“发布”按钮  。
 4. 选择定位符类型。
-5. 选择“设置”  （应用程序对象和服务主体对象）。
+5. 选择 **添加** 。
    
     ![发布视频](./media/media-services-portal-vod-get-started/media-services-publish1.png)
 
-URL 会添加到“已发布的 URL”  列表。
+URL 将添加到“已发布 URL”  列表。
 
 ## <a name="play-content-from-the-portal"></a>从门户播放内容
 可以在 Azure 门户中的内容播放器上测试视频。

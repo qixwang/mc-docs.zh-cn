@@ -9,10 +9,10 @@ ms.date: 10/28/2019
 ms.author: v-yeche
 ms.custom: query-reference
 ms.openlocfilehash: 1ff7aa3a539fab36df372abf4331457838714583
-ms.sourcegitcommit: 73f07c008336204bd69b1e0ee188286d0962c1d7
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "72914649"
 ---
 # <a name="stringtoarray-azure-cosmos-db"></a>StringToArray (Azure Cosmos DB)
@@ -51,7 +51,7 @@ SELECT
     StringToArray('[1,2,3, "[4,5,6]",[7,8]]') AS a5
 ```
 
-下面是结果集。
+下面是结果集：
 
 ```json
 [{"a1": [], "a2": [1,2,3], "a3": ["str",2,3], "a4": [["5","6","7"],["8"],["9"]], "a5": [1,2,3,"[4,5,6]",[7,8]]}]
@@ -67,7 +67,7 @@ SELECT
     StringToArray("['5','6','7']")
 ```
 
-下面是结果集。
+下面是结果集：
 
 ```json
 [{}]
@@ -86,7 +86,7 @@ SELECT
     StringToArray(undefined)
 ```
 
-下面是结果集。
+下面是结果集：
 
 ```json
 [{}]

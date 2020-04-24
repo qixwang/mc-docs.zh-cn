@@ -18,10 +18,10 @@ ms.subservice: hybrid
 ms.author: v-junlch
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 80e9187443c17d7aa1447d27c71a4bfe60ef51fc
-ms.sourcegitcommit: 18a0d2561c8b60819671ca8e4ea8147fe9d41feb
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "70134071"
 ---
 # <a name="change-the-azure-ad-connector-account-password"></a>更改 Azure AD 连接器帐户密码
@@ -43,12 +43,12 @@ Azure AD 连接器帐户应该是免费服务。 但如果需要重置其凭据�
 ---
 事件 6900  
 服务器在处理密码更改通知时遇到意外的错误：  
-AADSTS70002：验证凭据时出错。 AADSTS50054：使用了旧密码进行身份验证。
+AADSTS70002: 验证凭据时出错。 AADSTS50054: 使用旧密码进行身份验证。
 
 ---
 事件 659  
 检索密码策略同步配置时出错。 Microsoft.IdentityModel.Clients.ActiveDirectory.AdalServiceException：  
-AADSTS70002：验证凭据时出错。 AADSTS50054：使用了旧密码进行身份验证。
+AADSTS70002: 验证凭据时出错。 AADSTS50054: 使用旧密码进行身份验证。
 
 ## <a name="next-steps"></a>后续步骤
 **概述主题**

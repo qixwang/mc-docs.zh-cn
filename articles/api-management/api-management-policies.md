@@ -15,28 +15,28 @@ origin.date: 11/19/2017
 ms.author: v-yiso
 ms.date: 11/04/2019
 ms.openlocfilehash: e51995a93290f22811f604f086ed7c888c32ecc8
-ms.sourcegitcommit: 73f07c008336204bd69b1e0ee188286d0962c1d7
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "72913253"
 ---
 # <a name="api-management-policies"></a>API 管理策略
 本部分提供以下 API 管理策略的参考。 有关添加和配置策略的信息，请参阅 [API 管理中的策略](./api-management-howto-policies.md)。  
   
- 策略是一项强大的系统功能，允许发布者通过配置更改 API 的行为。 策略是一组语句，在请求或响应 API 时按顺序执行。 常用的语句包括从 XML 到 JSON 的格式转换，并调用速率限制来限制从一名开发人员传入的调用量。 许多策略开箱即用。  
+ 策略是一项强大的系统功能，允许发布者通过配置更改 API 的行为。 策略是一组语句，在请求或 API 的响应时按顺序执行。 流行的语句包括从 XML 到 JSON 的格式转换，并调用速率限制来限制从一名开发人员的传入调用。 许多策略开箱即用。  
   
  在任何 API 管理策略中，策略表达式可以用作属性值或文本值，除非该策略另外指定。 某些策略（如[控制流](./api-management-advanced-policies.md#choose)和[设置变量](./api-management-advanced-policies.md#set-variable)策略）基于策略表达式。 有关详细信息，请参阅[高级策略](./api-management-advanced-policies.md#AdvancedPolicies)和[策略表达式](./api-management-policy-expressions.md)。  
   
-##  <a name="ProxyPolicies"></a> 策略  
+##  <a name="policies"></a><a name="ProxyPolicies"></a> 策略  
   
 -   [访问限制策略](./api-management-access-restriction-policies.md#AccessRestrictionPolicies)  
   
-    -   [检查 HTTP 标头](./api-management-access-restriction-policies.md#CheckHTTPHeader) - 必须存在 HTTP 标头和/或强制采用 HTTP 标头的值。  
+    -   [检查 HTTP 标头](./api-management-access-restriction-policies.md#CheckHTTPHeader) - 强制必须存在 HTTP 标头和/或强制采用 HTTP 标头的值。  
   
     -   [按订阅限制调用速率](./api-management-access-restriction-policies.md#LimitCallRate) - 根据订阅限制调用速率，避免 API 使用量暴增。  
   
-    -   [按密钥限制调用速率](./api-management-access-restriction-policies.md#LimitCallRateByKey) - 根据密钥限制调用速率，避免 API 使用量暴增。  
+    -   [按密钥限制调用率](./api-management-access-restriction-policies.md#LimitCallRateByKey) - 根据密钥限制调用率以避免 API 使用量暴增。  
   
     -   [限制调用方 IP](./api-management-access-restriction-policies.md#RestrictCallerIPs) - 筛选（允许/拒绝）来自特定 IP 地址和/或地址范围的调用。  
   
@@ -54,7 +54,7 @@ ms.locfileid: "72913253"
     -   [限制并发](./api-management-advanced-policies.md#LimitConcurrency) - 阻止括住的策略一次执行超过指定数量的请求。
     -   [记录到事件中心](./api-management-advanced-policies.md#log-to-eventhub) - 将指定格式的消息发送到记录器实体定义的消息目标。  
     -   [模拟响应](./api-management-advanced-policies.md#mock-response) - 中止管道执行，将模拟的响应直接返回给调用方。
-    -   [重试](./api-management-advanced-policies.md#Retry) - 重试执行括住的策略语句，直到符合条件为止。 系统会按指定的时间间隔重复执行，直到达到指定的重试计数为止。  
+    -   [重试](./api-management-advanced-policies.md#Retry) - 重试执行括住的策略语句，直到符合条件为止。 系统会根据指定的时间间隔重复，直到执行指定的重试计数为止。  
   
     -   [返回响应](./api-management-advanced-policies.md#ReturnResponse) - 中止管道执行，将指定的响应直接返回给调用方。  
   
@@ -76,7 +76,7 @@ ms.locfileid: "72913253"
   
     -   [使用基本方法进行身份验证](./api-management-authentication-policies.md#Basic) - 使用基本身份验证方法对后端服务进行身份验证。  
   
-    -   [使用客户端证书进行身份验证](./api-management-authentication-policies.md#ClientCertificate) - 使用客户端证书向后端服务进行身份验证。  
+    -   [使用客户端证书进行身份验证](./api-management-authentication-policies.md#ClientCertificate) - 使用客户端证书对后端服务进行身份验证。  
     
     -   [使用托管标识进行身份验证](api-management-authentication-policies.md#ManagedIdentity) - 使用托管标识向后端服务进行身份验证。  
 -   [缓存策略](./api-management-caching-policies.md#CachingPolicies)  
@@ -85,11 +85,11 @@ ms.locfileid: "72913253"
   
     -   [存储到缓存](./api-management-caching-policies.md#StoreToCache) - 根据指定的缓存控制配置来缓存响应。  
   
-    -   [从缓存中获取值](./api-management-caching-policies.md#GetFromCacheByKey) - 按密钥检索缓存项。  
+    -   [从缓存中获取值](./api-management-caching-policies.md#GetFromCacheByKey) - 根据密钥检索缓存的项。  
   
-    -   [在缓存中存储值](./api-management-caching-policies.md#StoreToCacheByKey) - 按密钥在缓存中存储项。  
+    -   [在缓存中存储值](./api-management-caching-policies.md#StoreToCacheByKey) - 根据密钥在缓存中存储项。  
   
-    -   [从缓存中删除值](./api-management-caching-policies.md#RemoveCacheByKey) - 按密钥在缓存中删除项。  
+    -   [从缓存中删除值](./api-management-caching-policies.md#RemoveCacheByKey) - 根据密钥在缓存中删除项。  
   
 -   [跨域策略](./api-management-cross-domain-policies.md#CrossDomainPolicies)  
   
@@ -117,9 +117,9 @@ ms.locfileid: "72913253"
   
     -   [设置查询字符串参数](./api-management-transformation-policies.md#SetQueryStringParameter) - 添加、删除请求查询字符串参数或替换其值。  
   
-    -   [重写 URL](./api-management-transformation-policies.md#RewriteURL) - 将请求 URL 从其公用格式转换为 Web 服务所需的格式。  
+    -   [重写 URI](./api-management-transformation-policies.md#RewriteURL) - 将请求 URL 从其公用格式转换为 Web 服务所需的格式。  
   
-    -   [使用 XSLT 转换 XML](./api-management-transformation-policies.md#XSLTransform) - 在请求或响应正文中的 XML 应用 XSL 转换。  
+    -   [使用 XSLT 转换 XML](./api-management-transformation-policies.md#XSLTransform) - 在请求或响应正文中将 XSL 转换应用到 XML。  
   
 ## <a name="next-steps"></a>后续步骤
 有关如何使用策略的详细信息，请参阅：
