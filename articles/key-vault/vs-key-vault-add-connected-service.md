@@ -11,10 +11,10 @@ origin.date: 08/07/2019
 ms.date: 01/17/2020
 ms.author: v-tawe
 ms.openlocfilehash: cb844210a6129e7f041e9cbee20d44ecb9e73a9c
-ms.sourcegitcommit: 94e1c9621b8f81a7078f1412b3a73281d0a8668b
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "76123136"
 ---
 # <a name="add-key-vault-to-your-web-application-by-using-visual-studio-connected-services"></a>使用 Visual Studio 连接服务将 Key Vault 添加到 Web 应用程序
@@ -23,7 +23,7 @@ ms.locfileid: "76123136"
 
 有关连接服务为了启用 Key Vault 而在项目中所做的更改的详细信息，请参阅 [Key Vault 连接服务 - 我的 ASP.NET 4.7.1 项目发生了什么情况](#how-your-aspnet-framework-project-is-modified)或 [Key Vault 连接服务 - 我的 ASP.NET Core 项目发生了什么情况](#how-your-aspnet-core-project-is-modified)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 - **一个 Azure 订阅**。 如果没有订阅，可以注册[试用帐户](https://www.azure.cn/pricing/1rmb-trial/)。
 - **Visual Studio 2019 版本 16.3** 或更高版本，或者装有“Web 开发”工作负荷的 **Visual Studio 2017 版本 15.7**。  [立即下载](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs)。

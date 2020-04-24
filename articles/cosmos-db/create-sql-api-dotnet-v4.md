@@ -10,10 +10,10 @@ ms.topic: quickstart
 origin.date: 01/10/2020
 ms.date: 02/10/2020
 ms.openlocfilehash: 7c2f45124b194b8be6d95c69bcaa3ee70549edef
-ms.sourcegitcommit: 23dc63b6fea451f6a2bd4e8d0fbd7ed082ba0740
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "76980543"
 ---
 # <a name="quickstart-build-a-console-app-using-the-net-v4-sdk-to-manage-azure-cosmos-db-sql-api-account-resources"></a>快速入门：使用 .NET V4 SDK 生成控制台应用以管理 Azure Cosmos DB SQL API 帐户资源。
@@ -37,7 +37,7 @@ Azure Cosmos DB 是世纪互联提供的多区域分布式多模型数据库服�
 
 [库源代码](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/v4) | [包 (NuGet)](https://www.nuget.org/packages/Azure.Cosmos)
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * Azure 订阅 - [免费创建订阅](https://www.azure.cn/pricing/1rmb-trial/)。 
 

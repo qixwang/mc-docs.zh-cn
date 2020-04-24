@@ -6,15 +6,15 @@ origin.date: 11/12/2018
 ms.author: v-yeche
 ms.date: 01/06/2020
 ms.openlocfilehash: 21cea9257601fdcba89c0a4ed04219700829de53
-ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75742319"
 ---
 # <a name="upgrading-and-updating-a-service-fabric-standalone-cluster"></a>升级和更新 Service Fabric 独立群集
 
-对于任何新式系统而言，为可升级性做好规划是实现产品长期成功的关键所在。 Azure Service Fabric 独立群集是你拥有的资源。 本文介绍可以升级或更新的内容。
+对于任何现代系统，设计可升级性都是实现产品长期成功的关键。 Azure Service Fabric 独立群集是你拥有的资源。 本文介绍可以升级或更新的内容。
 
 ## <a name="controlling-the-fabric-version-that-runs-on-your-cluster"></a>控制在群集上运行的结构版本
 请确保群集始终运行[受支持的 Service Fabric 版本](service-fabric-versions.md)。 当 Azure 宣布发布新版 Service Fabric 时，即标志着自宣布日期起至少 60 天后，将结束对旧版的支持。 新版本将[在 Service Fabric 团队博客](https://blogs.msdn.microsoft.com/azureservicefabric/)中宣布。 从该时间开始，便可以选择使用新版本。
@@ -37,9 +37,9 @@ ms.locfileid: "75742319"
 修补业务流程应用程序 (POA) 是一个 Service Fabric 应用程序，可在 Service Fabric 群集中自动修补操作系统，而无需停机。 [适用于 Windows 的修补业务流程应用程序](service-fabric-patch-orchestration-application.md)可部署在群集上，以便以协调一致的方式安装修补程序，同时使服务始终可用。 
 
 ## <a name="next-steps"></a>后续步骤
-* 了解如何自定义某些 [Service Fabric 群集结构设置](service-fabric-cluster-fabric-settings.md)
+* 了解如何自定义 [Service Fabric 群集结构设置](service-fabric-cluster-fabric-settings.md)的部分内容
 * 了解如何[扩展和缩减群集](service-fabric-cluster-scale-up-down.md)
-* 了解 [应用程序升级](service-fabric-application-upgrade.md)
+* 了解[应用程序升级](service-fabric-application-upgrade.md)
 
 <!--Image references-->
 

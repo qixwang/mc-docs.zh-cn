@@ -10,10 +10,10 @@ ms.date: 01/06/2020
 ms.author: v-yeche
 ms.custom: include file
 ms.openlocfilehash: 5b66592a14bfb1e23f7ad7a63ded3f85e3271e87
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75631668"
 ---
 1. 若要查看资源或资源组的标记，请在概述中查找现有标记。 如果以前未应用标记，则该列表为空。
@@ -21,7 +21,7 @@ ms.locfileid: "75631668"
     ![查看资源或资源组的标记](./media/resource-manager-tag-resources/view-tags.png)
 1. 若要添加标记，请选择“单击此处以添加标记”  。
 
-1. 提供名称和值。 选择“+”  以添加标记。
+1. 提供名称和值。 选择“ **”+** 以添加标记。
 
     ![添加标记](./media/resource-manager-tag-resources/add-tag.png)
 1. 根据需要继续添加标记。 完成后，选择“保存”  。
@@ -46,7 +46,7 @@ ms.locfileid: "75631668"
 
     ![分配标记](./media/resource-manager-tag-resources/assign-tags.png)
 
-1. 在每个名称和值后，选择“+”  。 完成后，选择“分配”  。
+1. 在每个名称和值后，选择“ **”+** 。 完成后，选择“分配”  。
 
     ![选择“分配”](./media/resource-manager-tag-resources/select-assign.png)
 

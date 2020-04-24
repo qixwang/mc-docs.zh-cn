@@ -16,10 +16,10 @@ origin.date: 01/24/2020
 ms.date: 2/6/2020
 ms.author: v-lingwu
 ms.openlocfilehash: 00e857819482e70a20a0780be09896e38fc55c7a
-ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77068273"
 ---
 # <a name="create-a-service-bus-namespace-using-the-azure-portal"></a>使用 Azure 门户创建服务总线命名空间。
@@ -28,7 +28,7 @@ ms.locfileid: "77068273"
 
 [!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
 
-祝贺！ 现在已创建一个服务总线消息传送命名空间。
+祝贺你！ 现在已创建一个服务总线消息传送命名空间。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -16,10 +16,10 @@ ms.date: 02/06/2020
 ms.author: v-junlch
 ms.custom: aaddev, identityplatformtop40
 ms.openlocfilehash: b2bcae00db11b72769bc9ecc4975871551b9e1dd
-ms.sourcegitcommit: 7c80405a6b48380814b4b414e9f8a5756c007880
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77067645"
 ---
 # <a name="scenario-protected-web-api"></a>方案：受保护的 Web API
@@ -28,7 +28,7 @@ ms.locfileid: "77067645"
 
 若要使用 Web API，需要启用使用工作和学校帐户进行了身份验证的用户。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 [!INCLUDE [Pre-requisites](../../../includes/active-directory-develop-scenarios-prerequisites.md)]
 

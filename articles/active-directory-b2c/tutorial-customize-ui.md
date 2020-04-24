@@ -12,10 +12,10 @@ ms.date: 02/04/2020
 ms.author: v-junlch
 ms.subservice: B2C
 ms.openlocfilehash: 660913d36d6493e5f36d0c8d30be1cf84ad5a53e
-ms.sourcegitcommit: 888cbc10f2348de401d4839a732586cf266883bf
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77028113"
 ---
 # <a name="tutorial-customize-the-interface-of-user-experiences-in-azure-active-directory-b2c"></a>教程：在 Azure Active Directory B2C 中自定义用户界面体验
@@ -31,7 +31,7 @@ ms.locfileid: "77028113"
 
 如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 [创建用户流](tutorial-create-user-flows.md)，以便用户能够注册并登录应用程序。
 
@@ -75,7 +75,7 @@ ms.locfileid: "77028113"
 
 ### <a name="create-the-customization-files"></a>创建自定义文件
 
-若要自定义注册体验的 UI，首先要创建一个简单的 HTML 和 CSS 文件。 可以根据需要配置 HTML，但其中必须具有“div”元素，其标识符为 `api`  。 例如，`<div id="api"></div>`。 显示页面时，Azure AD B2C 会将元素注入 `api` 容器。
+若要自定义注册体验的 UI，首先要创建一个简单的 HTML 和 CSS 文件。 可以根据需要配置 HTML，但其中必须具有“div”元素，其标识符为 `api` 。 例如，`<div id="api"></div>`。 显示页面时，Azure AD B2C 会将元素注入 `api` 容器。
 
 1. 在本地文件夹中，创建以下文件，并确保将 `your-storage-account` 更改为存储帐户的名称，并将 `your-container` 更改为所创建容器的名称。 例如，`https://store1.blob.core.chinacloudapi.cn/b2c/style.css`。
 

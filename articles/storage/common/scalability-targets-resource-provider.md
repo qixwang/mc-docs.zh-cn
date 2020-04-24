@@ -10,10 +10,10 @@ ms.date: 02/10/2020
 ms.author: v-jay
 ms.subservice: common
 ms.openlocfilehash: ca31ececd5c247d9e008bdda68585454dcedeac6
-ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77068529"
 ---
 # <a name="scalability-and-performance-targets-for-the-azure-storage-resource-provider"></a>Azure 存储资源提供程序的可伸缩性和性能目标

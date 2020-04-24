@@ -13,10 +13,10 @@ origin.date: 12/17/2019
 ms.date: 1/2/2020
 ms.author: v-lingwu
 ms.openlocfilehash: 524ecdaa2b94d93cf245969b6f687e2acbfaed30
-ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75857476"
 ---
 # <a name="tutorial-group-and-extract-related-data"></a>教程：对相关的数据进行分组和提取

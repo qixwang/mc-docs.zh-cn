@@ -15,10 +15,10 @@ origin.date: 07/29/2019
 ms.date: 09/22/2019
 ms.author: v-lingwu
 ms.openlocfilehash: 2ae927e88558b2beb8e461a85e09d3a1ffb4aca9
-ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75857866"
 ---
 # <a name="security-recommendations-in-azure-security-center"></a>Azure 安全中心的安全建议 
@@ -41,7 +41,7 @@ ms.locfileid: "75857866"
 - 哪些资源需要你对其执行建议的操作。
 - **安全分数影响**，这是如果你实施此建议，安全分数将增加的数量。
 
-## 监视建议 <a name="monitor-recommendations"></a>
+## <a name="monitor-recommendations"></a>监视建议 <a name="monitor-recommendations"></a>
 
 安全中心将分析资源的安全状态，以识别潜在的漏洞。 “概述”  下的“建议”  磁贴显示了安全中心列出的建议总数。
 

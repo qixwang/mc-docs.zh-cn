@@ -12,11 +12,11 @@
       href: azure-portal-dashboard-share-access.md
     - name: 以编程方式创建 Azure 仪表板
       href: azure-portal-dashboards-create-programmatically.md
-- name: 操作指南
+- name: 操作方法指南
   items:
     - name: 设置 Azure 门户首选项
       href: set-preferences.md
-    - name: 为所有用户设置非活动超时设置
+    - name: 设置所有用户的非活动超时设置
       href: admin-timeout.md
     - name: 启用高对比度或更改主题
       href: azure-portal-change-theme-high-contrast.md
@@ -48,5 +48,5 @@
       href: 'https://www.azure.cn/pricing/calculator/'
     - name: 区域可用性
       href: 'https://www.azure.cn/home/features/products-by-region'
-    - name: Stack Overflow
+    - name: 堆栈溢出
       href: 'https://stackoverflow.com/questions/tagged/azure-management-portal'

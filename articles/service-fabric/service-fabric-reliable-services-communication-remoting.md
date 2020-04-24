@@ -7,10 +7,10 @@ origin.date: 09/20/2017
 ms.date: 01/13/2020
 ms.author: v-yeche
 ms.openlocfilehash: cd536c9674c7a8f5f94af3d0f7138f509d5af2db
-ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75742413"
 ---
 # <a name="service-remoting-in-c-with-reliable-services"></a>通过 Reliable Services 使用 C# 进行服务远程处理

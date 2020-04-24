@@ -7,10 +7,10 @@ origin.date: 05/09/2019
 ms.date: 01/13/2020
 ms.author: v-yeche
 ms.openlocfilehash: 97e02fe6c912fca68c02ea77c87988512e759914
-ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75742399"
 ---
 <!--Verify sucessfully-->
@@ -53,7 +53,7 @@ Service Fabric 可能会出于各种原因而终止代码包。 例如，它可�
 退出代码 | 十六进制值 | 简短说明 | 根本原因 | 可能的修复方法
 --------- | --------- | ----------------- | ---------- | -------------
 3221225794 | 0xc0000142 | STATUS_DLL_INIT_FAILED | 此错误有时表示计算机已耗尽桌面堆空间。 如果有极大量的进程属于节点上运行的应用程序，则这种可能性很大。 | 如果程序未在 Ctrl+C 信号响应方面经过设计，你可以在群集清单中启用 **EnableActivateNoWindow** 设置。 启用此设置后，代码包无需使用 GUI 窗口即可运行，并且不会收到 Ctrl+C 信号。 此操作还可减少每个进程占用的桌面堆空间量。 如果代码包需要接收 Ctrl+C 信号，你可以增加节点的桌面堆大小。
-3762504530 | 0xe0434352 | 不适用 | 此值表示托管代码（即 .NET）中发生的未经处理的异常的错误代码。 | 此退出代码表示应用程序引发了一个仍未处理的异常，从而终止了进程。 若要确定是哪种因素触发了此错误，首先请调试应用程序的日志和转储文件。
+3762504530 | 0xe0434352 | 空值 | 此值表示托管代码（即 .NET）中发生的未经处理的异常的错误代码。 | 此退出代码表示应用程序引发了一个仍未处理的异常，从而终止了进程。 若要确定是哪种因素触发了此错误，首先请调试应用程序的日志和转储文件。
 
 ## <a name="next-steps"></a>后续步骤
 

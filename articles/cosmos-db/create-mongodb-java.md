@@ -11,10 +11,10 @@ origin.date: 12/26/2018
 ms.date: 02/10/2020
 ms.custom: seo-java-august2019, seo-java-september2019
 ms.openlocfilehash: dfb480c958ba1348f4c65f8a626499e0d05d5e8e
-ms.sourcegitcommit: 23dc63b6fea451f6a2bd4e8d0fbd7ed082ba0740
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "76980551"
 ---
 # <a name="quickstart-create-a-console-app-with-java-and-the-mongodb-api-in-azure-cosmos-db"></a>快速入门：在 Azure Cosmos DB 中使用 Java 和 MongoDB API 创建控制台应用
@@ -32,7 +32,7 @@ ms.locfileid: "76980551"
 
 本快速入门演示如何使用 [Azure Cosmos DB 的用于 MongoDB 的 API](mongodb-introduction.md) 创建 Cosmos 帐户。 然后生成并部署使用 [MongoDB Java 驱动程序](https://docs.mongodb.com/ecosystem/drivers/java/)构建的控制台应用。 
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 在运行此示例之前，必须具备以下先决条件：
 * [安装适用于 Azure 的 JDK 和 Azure Stack JDK 版本 8](https://docs.azure.cn/java/java-supported-jdk-runtime?view=azure-java-stable)

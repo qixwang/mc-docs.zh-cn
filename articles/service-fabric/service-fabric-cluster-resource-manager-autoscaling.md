@@ -7,10 +7,10 @@ origin.date: 04/17/2018
 ms.date: 01/06/2020
 ms.author: v-yeche
 ms.openlocfilehash: 161802beba97dee12a1c65669692c47e7991fb3e
-ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75742338"
 ---
 # <a name="introduction-to-auto-scaling"></a>自动缩放简介
@@ -47,7 +47,7 @@ ms.locfileid: "75742338"
 该触发器只能用于无状态服务（无状态容器或 Service Fabric 服务）。 在服务有多个分区的情况下，将分别为每个分区评估触发器，并且每个分区将独立应用指定的机制。 因此，在这种情况下，根据分区的负载，可能会将服务的某些分区扩大，将某些分区会缩小，同时可能不会缩放某些分区。
 
 此触发器可使用的唯一机制是 PartitionInstanceCountScaleMechanism。 有三个因素确定如何应用此机制：
-* 缩放递增确定触发机制时将添加或删除多少个实例  。
+* 缩放增量确定触发机制时将添加或删除多少个实例  。
 * 最大实例计数定义了缩放的上限  。 如果分区的实例数量达到此限制，则无论负载如何，都不会扩大服务。 可以通过指定值 -1 来忽略此限制，在这种情况下，服务将尽可能扩大（限制是群集中可用的节点数）。
 * 最小实例计数定义了缩放的下限  。 如果分区的实例数量达到此限制，则无论负载如何，都不会缩小服务。
 
@@ -126,12 +126,12 @@ Update-ServiceFabricService -Stateless -ServiceName "fabric:/AppName/ServiceName
 * 如果将服务的当前分区命名为“0”、“1”和“2”，那么将删除用于缩小的分区名为“2”。
 
 与通过添加或删除实例使用缩放的机制相同，有三个参数确定如何应用此机制：
-* 缩放递增确定触发机制时将添加或删除多少个分区  。
+* 缩放增量确定触发机制时将添加或删除多少个分区  。
 * 最大分区计数定义了缩放的上限  。 如果服务的分区数量达到此限制，则无论负载如何，都不会扩大服务。 可以通过指定值 -1 来忽略此限制，在这种情况下，服务将尽可能扩大（限制是群集的实际容量）。
 * 最小实例计数定义了缩放的下限  。 如果服务的分区数量达到此限制，则无论负载如何，都不会缩小服务。
 
 > [!WARNING] 
-> 当 AddRemoveIncrementalNamedPartitionScalingMechanism 与有状态服务一起使用时，Service Fabric 将添加或删除分区，**而不会发出通知或警告**。 触发缩放机制时，不会执行数据的重新分区。 在纵向扩展操作的情况下，新分区将为空；在缩减操作的情况下，**分区将与其包含的所有数据一起被删除**。
+> 当 AddRemoveIncrementalNamedPartitionScalingMechanism 与有状态服务一起使用时，Service Fabric 将添加或删除分区，**而不会发出通知或警告**。 触发缩放机制时，不会执行数据的重新分区。 在纵向扩展操作的情况下，新分区将为空；在纵向缩减操作的情况下，**分区将与其包含的所有数据一起被删除**。
 
 ## <a name="setting-auto-scaling-policy"></a>设置自动缩放策略
 

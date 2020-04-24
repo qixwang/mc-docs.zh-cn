@@ -16,10 +16,10 @@ origin.date: 01/16/2020
 ms.date: 2/6/2020
 ms.author: v-lingwu
 ms.openlocfilehash: 0035f5796f62ce3347c10c47118d86449b2c15d6
-ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77068287"
 ---
 # <a name="quickstart-create-a-service-bus-namespace-with-topic-and-subscription-using-an-azure-resource-manager-template"></a>快速入门：使用 Azure Resource Manager 模板创建包含主题和订阅的服务总线命名空间

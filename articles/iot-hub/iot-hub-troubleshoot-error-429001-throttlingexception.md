@@ -10,10 +10,10 @@ origin.date: 01/30/2020
 ms.date: 02/17/2020
 ms.author: v-yiso
 ms.openlocfilehash: aaa212cb9107e395a34cd131f22c06b199381959
-ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77068544"
 ---
 # <a name="429001-throttlingexception"></a>429001 ThrottlingException

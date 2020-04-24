@@ -9,10 +9,10 @@ ms.date: 02/10/2020
 ms.author: v-yeche
 ms.custom: query-reference
 ms.openlocfilehash: 8299ed8a232d366c19ce0f3f86183524bfd126ba
-ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77028705"
 ---
 # <a name="array_contains-azure-cosmos-db"></a>ARRAY_CONTAINS (Azure Cosmos DB)
@@ -49,7 +49,7 @@ SELECT
            ARRAY_CONTAINS(["apples", "strawberries", "bananas"], "mangoes") AS b2  
 ```  
 
- 下面是结果集。  
+ 下面是结果集：  
 
 ```json
 [{"b1": true, "b2": false}]  
@@ -64,7 +64,7 @@ SELECT
     ARRAY_CONTAINS([{"name": "apples", "fresh": true}, {"name": "strawberries", "fresh": true}], {"name": "mangoes"}, true) AS b3 
 ```  
 
- 下面是结果集。  
+ 下面是结果集：  
 
 ```json
 [{

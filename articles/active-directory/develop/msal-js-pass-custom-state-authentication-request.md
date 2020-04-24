@@ -14,10 +14,10 @@ ms.author: v-junlch
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 939be3c9a2b90cef0098542d021e32b471f324fd
-ms.sourcegitcommit: 7c80405a6b48380814b4b414e9f8a5756c007880
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77067674"
 ---
 # <a name="pass-custom-state-in-authentication-requests-using-msaljs"></a>使用 MSAL.js 在身份验证请求中传递自定义状态

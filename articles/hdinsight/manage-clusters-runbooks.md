@@ -10,10 +10,10 @@ ms.topic: tutorial
 origin.date: 12/27/2019
 ms.date: 02/24/2020
 ms.openlocfilehash: 19d08b5135a449e9cb432ff4aa59420c0a99c34d
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77429880"
 ---
 # <a name="tutorial-create-azure-hdinsight-clusters-with-azure-automation"></a>教程：通过 Azure 自动化创建 Azure HDInsight 群集
@@ -29,7 +29,7 @@ ms.locfileid: "77429880"
 
 如果没有 Azure 订阅，请在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * 现有的 [Azure 自动化帐户](../automation/automation-quickstart-create-account.md)。
 * 现有的 [Azure 存储帐户](../storage/common/storage-account-create.md)，它将用作群集存储。
@@ -75,7 +75,7 @@ ms.locfileid: "77429880"
 
 1. 在“过程自动化”下，选择“Runbook”。  
 1. 选择“创建 Runbook”  。
-1. 在“创建 runbook”面板上，输入 runbook 的名称，如 `hdinsight-cluster-create`  。 在“Runbook 类型”下拉列表中，选择 Powershell   。
+1. 在“创建 runbook”面板上，输入 runbook 的名称，如 `hdinsight-cluster-create` 。 在“Runbook 类型”下拉列表中，选择 Powershell   。
 1. 选择“创建”  。
 
     ![创建 runbook](./media/manage-clusters-runbooks/create-runbook.png)
@@ -131,7 +131,7 @@ ms.locfileid: "77429880"
 
 1. 在“过程自动化”下，选择“Runbook”。  
 1. 选择“创建 Runbook”  。
-1. 在“创建 runbook”面板上，输入 runbook 的名称，如 `hdinsight-cluster-delete`  。 在“Runbook 类型”下拉列表中，选择 Powershell   。
+1. 在“创建 runbook”面板上，输入 runbook 的名称，如 `hdinsight-cluster-delete` 。 在“Runbook 类型”下拉列表中，选择 Powershell   。
 1. 选择“创建”  。
 1. 在“编辑 PowerShell Runbook”屏幕上输入以下代码，然后选择“发布”   ：
 

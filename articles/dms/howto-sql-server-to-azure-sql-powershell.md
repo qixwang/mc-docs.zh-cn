@@ -14,10 +14,10 @@ ms.topic: article
 origin.date: 01/08/2020
 ms.date: 02/17/2020
 ms.openlocfilehash: 7c273984b072f5799bf8c3380db838c96df5bc4a
-ms.sourcegitcommit: 3f9d780a22bb069402b107033f7de78b10f90dde
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77192466"
 ---
 # <a name="migrate-sql-server-on-premises-to-azure-sql-database-using-azure-powershell"></a>使用 Azure PowerShell 将本地 SQL Server 迁移到 Azure SQL 数据库
@@ -32,7 +32,7 @@ ms.locfileid: "77192466"
 > * 在 Azure 数据库迁移服务实例中创建迁移项目。
 > * 运行迁移。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要完成这些步骤，需满足以下条件：
 

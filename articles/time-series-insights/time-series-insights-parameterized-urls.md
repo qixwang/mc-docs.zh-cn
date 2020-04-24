@@ -13,10 +13,10 @@ origin.date: 12/12/2019
 ms.date: 01/20/2020
 ms.custom: seodec18
 ms.openlocfilehash: 80092aef7e52885c0e3b9659952548f62555cd2b
-ms.sourcegitcommit: a890a9cca495d332c9f3f53ff3a5259fd5f0c275
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75859697"
 ---
 # <a name="share-a-custom-view-using-a-parameterized-url"></a>通过参数化 URL 共享自定义视图
@@ -73,7 +73,7 @@ ms.locfileid: "75859697"
 
 | 参数 | URL 项 | 说明 |
 | --- | --- | --- |
-| **name** | `\<string>` | 术语的名称。  |
+| name  | `\<string>` | 术语的名称。  |
 | **splitBy** | `\<string>` | 要按其进行拆分的列名。  |
 | **measureName** | `\<string>` | 度量值的列名。  |
 | **predicate** | `\<string>` | 用于服务器端筛选的  where 子句。 |

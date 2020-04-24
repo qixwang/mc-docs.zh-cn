@@ -9,10 +9,10 @@ ms.topic: conceptual
 origin.date: 12/04/2018
 ms.date: 06/21/2019
 ms.openlocfilehash: 97513e8b97d1241486c8ff490ccfe0eca522f0e9
-ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75856210"
 ---
 # <a name="azure-stream-analytics-output-error-policy"></a>Azure 流分析的输出错误策略

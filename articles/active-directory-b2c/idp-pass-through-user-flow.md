@@ -12,10 +12,10 @@ ms.date: 02/04/2020
 ms.author: v-junlch
 ms.subservice: B2C
 ms.openlocfilehash: 85328a914efb2165c7211cf5e2c11527d94978fe
-ms.sourcegitcommit: 888cbc10f2348de401d4839a732586cf266883bf
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77028170"
 ---
 # <a name="pass-an-access-token-through-a-user-flow-to-your-application-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用用户流将访问令牌传递给应用程序
@@ -34,7 +34,7 @@ Azure AD B2C 当前仅支持传递 [OAuth 2.0](authorization-code-flow.md) 标�
 1. 以 Azure AD B2C 租户的全局管理员身份登录 [Azure 门户](https://portal.azure.cn/)。
 2. 请确保使用的是包含 Azure AD B2C 租户的目录。 选择顶部菜单中的“目录 + 订阅”筛选器，然后选择包含租户的目录  。
 3. 选择 Azure 门户左上角的“所有服务”  ，搜索并选择 **Azure AD B2C**。
-4. 选择“用户流(策略)”  ，然后选择用户流。 例如，**B2C_1_signupsignin1**。
+4. 选择“用户流(策略)”  ，然后选择用户流。 例如 B2C_1_signupsignin1。 
 5. 选择“应用程序声明”  。
 6. 启用“标识提供者访问令牌”  声明。
 

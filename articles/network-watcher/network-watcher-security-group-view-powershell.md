@@ -15,10 +15,10 @@ origin.date: 02/22/2017
 ms.date: 04/12/2019
 ms.author: v-lingwu
 ms.openlocfilehash: 8b5f7b7d301dde9622a70741ee7a57f353ca6cab
-ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77028990"
 ---
 # <a name="analyze-your-virtual-machine-security-with-security-group-view-using-powershell"></a>使用 PowerShell 通过安全组视图分析虚拟机安全性
@@ -33,13 +33,13 @@ ms.locfileid: "77028990"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="before-you-begin"></a>准备阶段
+## <a name="before-you-begin"></a>开始之前
 
 在此方案中，运行 `Get-AzNetworkWatcherSecurityGroupView` cmdlet 检索安全规则信息。
 
 此方案假定已按照[创建网络观察程序](network-watcher-create.md)中的步骤创建网络观察程序。
 
-## <a name="scenario"></a>方案
+## <a name="scenario"></a>场景
 
 本文中介绍的方案检索给定虚拟机的已配置有效安全规则。
 

@@ -11,10 +11,10 @@ ms.date: 02/10/2020
 ms.author: v-jay
 ms.custom: security-recommendations
 ms.openlocfilehash: 392d8e63e2570e82a8accc98e74c4ae3ba3b64fd
-ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77028908"
 ---
 # <a name="security-recommendations-for-blob-storage"></a>适用于 Blob 存储的安全建议
@@ -31,7 +31,7 @@ Azure 安全中心会定期分析 Azure 资源的安全状态，以识别潜在�
 |-|----|--|
 | 使用 Azure 资源管理器部署模型 | 使用 Azure 资源管理器部署模型创建新的存储帐户，以进行重要的安全增强，包括高级访问控制 (RBAC) 和审核、基于资源管理器的部署和治理、托管标识访问权限、用于提供机密的 Key Vault 的访问权限、用于访问 Azure 存储数据和资源的基于 Azure AD 的身份验证和授权。 如果可能，请迁移使用经典部署模型的现有存储帐户以使用 Azure 资源管理器。 有关 Azure 资源管理器的详细信息，请参阅 [Azure 资源管理器概述](/azure-resource-manager/resource-group-overview)。 | - |
 | 在所有存储帐户中启用“需要安全传输”选项  | 启用“需要安全传输”选项时，对存储帐户发出的所有请求都必须通过安全连接进行  。 通过 HTTP 发出的任何请求都将失败。 有关详细信息，请参阅[在 Azure 存储中要求安全传输](../common/storage-require-secure-transfer.md)。 | - |
-| 启用适用于 Blob 数据的软删除 | 软删除允许在删除 Blob 数据后将其恢复。 有关软删除的详细信息，请参阅 ](storage-blob-soft-delete.md)Azure 存储 Blob 的软删除[。 | - |
+| 启用适用于 Blob 数据的软删除 | 软删除允许在删除 Blob 数据后将其恢复。 有关软删除的详细信息，请参阅 [Azure 存储 Blob 的软删除](storage-blob-soft-delete.md)。 | - |
 | 在不可变 Blob 中存储业务关键数据 | 配置法定保留和基于时间的保留策略，以 WORM（一次写入，多次读取）状态存储 Blob 数据。 在保留时间间隔期间内，可以读取即时存储的 Blob，但不能对其进行修改或删除。 有关详细信息，请参阅[使用不可变的存储来存储业务关键型 Blob 数据](storage-blob-immutable-storage.md)。 | - |
 | 将共享访问签名 (SAS) 令牌限制为仅用于 HTTPS 连接 | 当客户端使用 SAS 令牌访问 Blob 数据时要求使用 HTTPS 有助于最大程度地降低被窃听的风险。 有关详细信息，请参阅[使用共享访问签名 (SAS) 授予对 Azure 存储资源的有限访问权限](../common/storage-sas-overview.md)。 | - |
 
@@ -39,7 +39,7 @@ Azure 安全中心会定期分析 Azure 资源的安全状态，以识别潜在�
 
 | 建议 | 注释 | 安全中心 |
 |-|----|--|
-| 使用 Azure Active Directory (Azure AD) 授权对 Blob 数据的访问 | 与用于授权对 Blob 存储的请求的共享密钥相比，Azure AD 提供了卓越的安全性和易用性。 有关详细信息，请参阅[使用 Azure Active Directory 授予对 Azure Blob 和队列的访问权限](../common/storage-auth-aad.md)。 | - |
+| 使用 Azure Active Directory (Azure AD) 授权对 Blob 数据的访问 | 与用于授权对 Blob 存储的请求的共享密钥相比，Azure AD 提供了卓越的安全性和易用性。 有关详细信息，请参阅[使用 Azure Active Directory 对 Azure Blob 和队列访问进行授权](../common/storage-auth-aad.md)。 | - |
 | 通过 RBAC 向 Azure AD 安全主体分配权限时，请记住最低权限原则 | 将角色分配给用户、组或应用程序时，只向该安全主体授予执行任务所需的权限。 限制对资源的访问有助于防止意外和恶意滥用数据。 | - |
 | 使用用户委托 SAS 授予客户端对 Blob 数据的有限访问权限 | 用户委托 SAS 使用 Azure Active Directory (Azure AD) 凭据以及为 SAS 指定的权限进行保护。 用户委托 SAS 在其作用域和功能方面类似于服务 SAS，但相对于服务 SAS 具有安全优势。 有关详细信息，请参阅[使用共享访问签名 (SAS) 授予对 Azure 存储资源的有限访问权限](../common/storage-sas-overview.md?toc=%2fstorage%2fblobs%2ftoc.json)。 | - |
 | 使用 Azure Key Vault 保护帐户访问密钥 | Microsoft 建议使用 Azure AD 对 Azure 存储的请求进行授权。 但是，如果必须使用共享密钥授权，请使用 Azure Key Vault 保护帐户密钥。 可以在运行时从密钥保管库检索密钥，而不是将其与应用程序一起保存。 有关 Azure Key Vault 的详细信息，请参阅 [Azure Key Vault 概述](../../key-vault/key-vault-overview.md)。 | - |

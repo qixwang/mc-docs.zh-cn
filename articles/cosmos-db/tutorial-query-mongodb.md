@@ -10,10 +10,10 @@ origin.date: 12/03/2019
 ms.date: 02/10/2020
 ms.reviewer: sngun
 ms.openlocfilehash: f3422f80758a229f281d5240a5ab12982d9fe5e4
-ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77068334"
 ---
 # <a name="query-data-by-using-azure-cosmos-dbs-api-for-mongodb"></a>使用 Azure Cosmos DB 的用于 MongoDB 的 API 查询数据
@@ -23,7 +23,7 @@ ms.locfileid: "77068334"
 本文涵盖以下任务： 
 
 > [!div class="checklist"]
-> * 使用 MongoDB shell 查询 Cosmos 数据库中存储的数据
+> * 使用 MongoDB shell 查询存储在 Cosmos 数据库中的数据
 
 可以使用本文档中的示例来快速入门。
 
@@ -307,7 +307,7 @@ ms.locfileid: "77068334"
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中已完成以下操作：
+在本教程中，已完成以下内容：
 
 > [!div class="checklist"]
 > * 学习了如何使用 Cosmos DB 的用于 MongoDB 的 API 进行查询

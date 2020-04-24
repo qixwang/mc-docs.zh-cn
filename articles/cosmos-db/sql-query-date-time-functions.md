@@ -9,10 +9,10 @@ ms.date: 02/10/2020
 ms.author: v-yeche
 ms.custom: query-reference
 ms.openlocfilehash: 3f22d6f66fce16743df0a61f8a469996645ca11a
-ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77028672"
 ---
 # <a name="date-and-time-functions-azure-cosmos-db"></a>日期和时间函数 (Azure Cosmos DB)

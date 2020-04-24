@@ -10,10 +10,10 @@ origin.date: 11/19/2019
 ms.date: 02/10/2020
 ms.author: v-yeche
 ms.openlocfilehash: 787e4d2fb72a87f4ac1801caf2e942d22a12aeec
-ms.sourcegitcommit: 23dc63b6fea451f6a2bd4e8d0fbd7ed082ba0740
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "76980545"
 ---
 # <a name="quickstart-use-nodejs-to-connect-and-query-data-from-azure-cosmos-db-sql-api-account"></a>快速入门：使用 Node.js 连接和查询 Azure Cosmos DB SQL API 帐户中的数据
@@ -28,7 +28,7 @@ ms.locfileid: "76980545"
 
 本快速入门演示如何使用 Node.js 应用连接 Azure Cosmos DB 中的 [SQL API](sql-api-introduction.md) 帐户。 然后，可以使用 Azure Cosmos DB SQL 查询来查询和管理数据。 本文中生成的 Node.js 应用将使用 [SQL JavaScript SDK](sql-api-sdk-node.md)。 本快速入门使用 2.0 版的 [JavaScript SDK](https://www.npmjs.com/package/@azure/cosmos)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)] 
 [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]

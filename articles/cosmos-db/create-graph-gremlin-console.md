@@ -9,10 +9,10 @@ origin.date: 07/23/2019
 ms.date: 02/10/2020
 ms.author: v-yeche
 ms.openlocfilehash: c6e7b6030016db2f58a54d3af429e88c4c8e2f1e
-ms.sourcegitcommit: 23dc63b6fea451f6a2bd4e8d0fbd7ed082ba0740
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "76980556"
 ---
 <!--Verify sucessfully-->
@@ -35,7 +35,7 @@ Azure Cosmos DB 是世纪互联提供的多区域分布式多模型数据库服�
 
 Gremlin 控制台基于 Groovy/Java，在 Linux、Mac 和 Windows 上运行。 可以从 [Apache TinkerPop 站点](https://tinkerpop.apache.org/downloads.html)下载它。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 需要使用 Azure 订阅为本快速入门教程创建 Azure Cosmos DB 帐户。
 

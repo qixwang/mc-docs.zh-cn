@@ -16,22 +16,22 @@ origin.date: 01/24/2020
 ms.date: 2/6/2020
 ms.author: v-lingwu
 ms.openlocfilehash: 0f8a23d8733c4560045791f3cf4c3329da44ab5a
-ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77068013"
 ---
 # <a name="service-bus-management-libraries"></a>服务总线管理库
 
 Azure 服务总线管理库可以动态预配服务总线命名空间和实体。 这样可以实现复杂的部署和消息方案，并能以编程方式确定要预配的实体。 这些库目前可用于 .NET。
 
-## <a name="supported-functionality"></a>受支持的功能
+## <a name="supported-functionality"></a>支持的功能
 
-* 创建、更新、删除命名空间
-* 创建、更新、删除队列
-* 创建、更新、删除主题
-* 创建、更新、删除订阅
+* 命名空间创建、更新、删除
+* 队列创建、更新、删除
+* 主题创建、更新、删除
+* 订阅创建、更新、删除
 
 ## <a name="prerequisites"></a>必备条件
 
@@ -41,11 +41,11 @@ Azure 服务总线管理库可以动态预配服务总线命名空间和实体�
 * [使用 Azure PowerShell 创建服务主体来访问资源](/azure-resource-manager/resource-group-authenticate-service-principal)
 * [使用 Azure CLI 创建服务主体来访问资源](/azure-resource-manager/resource-group-authenticate-service-principal-cli)
 
-这些教程提供 `AppId`（客户端 ID）、`TenantId` 和 `ClientSecret`（身份验证密钥），这些都将用于管理库进行的身份验证。 若要对资源组运行命令，必须拥有“所有者”  权限。
+这些教程提供 `AppId`（客户端 ID）、`TenantId` 和 `ClientSecret`（身份验证密钥），这些都用于管理库进行的身份验证。 若要对资源组运行命令，必须拥有“所有者”  权限。
 
 ## <a name="programming-pattern"></a>编程模式
 
-所有服务总线资源的操纵模式都遵循常用协议：
+操作任何服务总线资源的模式都遵循通用协议：
 
 1. 使用 **Microsoft.IdentityModel.Clients.ActiveDirectory** 库从 Azure AD 获取令牌：
     ```csharp

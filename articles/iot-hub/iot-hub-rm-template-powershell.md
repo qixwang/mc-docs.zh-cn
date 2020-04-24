@@ -1,6 +1,6 @@
 ---
 title: 使用模板创建 Azure IoT 中心 (PowerShell) | Azure
-description: 如何使用 Azure Resource Manager 模板和 PowerShell 创建 IoT 中心。
+description: 如何使用 Azure 资源管理器模板和 PowerShell 创建 IoT 中心。
 services: iot-hub
 documentationcenter: ''
 author: dominicbetts
@@ -16,13 +16,13 @@ origin.date: 04/02/2019
 ms.author: v-yiso
 ms.date: 02/17/2020
 ms.openlocfilehash: f60b6a4c9c933cc56e285d800c7e53820f6e94f3
-ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77068361"
 ---
-# <a name="create-an-iot-hub-using-azure-resource-manager-template-powershell"></a>使用 Azure Resource Manager 模板创建 IoT 中心 (PowerShell)
+# <a name="create-an-iot-hub-using-azure-resource-manager-template-powershell"></a>使用 Azure 资源管理器模板创建 IoT 中心 (PowerShell)
 
 [!INCLUDE [iot-hub-resource-manager-selector](../../includes/iot-hub-resource-manager-selector.md)]
 

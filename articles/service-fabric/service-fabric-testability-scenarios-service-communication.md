@@ -7,10 +7,10 @@ origin.date: 11/02/2017
 ms.date: 01/13/2020
 ms.author: v-yeche
 ms.openlocfilehash: 23f5272af280f208a18e1fda58ce698a93cc3efc
-ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75742120"
 ---
 # <a name="service-fabric-testability-scenarios-service-communication"></a>Service Fabric 可测试性方案：服务通信

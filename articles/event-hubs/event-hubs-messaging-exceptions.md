@@ -15,10 +15,10 @@ origin.date: 01/16/2020
 ms.date: 02/17/2020
 ms.author: v-tawe
 ms.openlocfilehash: 11dc3762d9a2047ce74a256ec2ba70218fdbc4ac
-ms.sourcegitcommit: 7c80405a6b48380814b4b414e9f8a5756c007880
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77067734"
 ---
 # <a name="troubleshooting-guide-for-azure-event-hubs"></a>Azure 事件中心故障排除指南

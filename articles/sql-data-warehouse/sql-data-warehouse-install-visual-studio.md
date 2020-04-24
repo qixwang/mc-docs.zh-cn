@@ -14,10 +14,10 @@ ms.date: 01/20/2020
 ms.author: v-jay
 ms.reviewer: igorstan
 ms.openlocfilehash: ab4f2289acf4ab9cc9ae7a6fc0cb454ea4fa6f34
-ms.sourcegitcommit: 6e47d840eb0ac773067723254e60dd318272d73e
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75964895"
 ---
 # <a name="getting-started-with-visual-studio-2019-for-sql-data-warehouse"></a>适用于 SQL 数据仓库的 Visual Studio 2019 入门

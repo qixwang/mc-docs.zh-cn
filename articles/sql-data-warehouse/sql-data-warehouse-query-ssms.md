@@ -12,10 +12,10 @@ ms.date: 09/02/2019
 ms.author: v-jay
 ms.reviewer: igorstan
 ms.openlocfilehash: 48e96547e340207edfc5ac6076c577558fcb2a75
-ms.sourcegitcommit: 157df1a5f11473dd3265d71f1543437f50f09adb
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75777458"
 ---
 # <a name="connect-to-sql-data-warehouse-with-sql-server-management-studio-ssms"></a>使用 SQL Server Management Studio (SSMS) 连接到 SQL 数据仓库
@@ -28,7 +28,7 @@ ms.locfileid: "75777458"
 
 使用 SQL Server Management Studio (SSMS) 可连接并查询 Azure SQL 数据仓库。 
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 要使用本教程，需要：
 
 * 现有 SQL 数据仓库。 若要创建这样一个数据仓库，请参阅 [创建 SQL 数据仓库][Create a SQL Data Warehouse]。

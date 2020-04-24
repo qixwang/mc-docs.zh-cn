@@ -17,10 +17,10 @@ ms.date: 12/24/2018
 ms.author: v-lingwu
 ms.custom: mvc
 ms.openlocfilehash: eeca4c388c64717abda1a4525952ecfbeb9d7fff
-ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77028486"
 ---
 # <a name="what-is-azure-network-watcher"></a>Azure 网络观察程序是什么？
@@ -81,7 +81,7 @@ Azure 网络观察程序提供所需的工具用于监视、诊断 Azure 虚拟�
 
 网络接口的有效安全规则是应用到网络接口以及网络接口所在子网的所有安全规则的组合。  安全组视图功能显示应用到网络接口、网络接口所在的子网和两者的聚合的所有安全规则。  了解已将哪些规则应用到网络接口后，可以添加、删除规则，或者更改规则（如果这些规则允许或拒绝所要更改的流量）。 详细了解[安全组视图](network-watcher-security-group-view-overview.md)。
 
-## <a name="metrics"></a>指标
+## <a name="metrics"></a>度量值
 
 在一个 Azure 订阅和区域中可以创建的网络资源数有[限制](../azure-subscription-service-limits.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#azure-resource-manager-virtual-networking-limits)。 如果超过了限制，则无法在该订阅或区域中创建更多的资源。 网络订阅限制功能汇总每个网络资源在某个订阅和区域中部署的数目，以及该资源的限制。  下图显示了在美国东部区域为某个示例订阅部署的网络资源的部分输出：
 

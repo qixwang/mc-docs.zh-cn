@@ -13,10 +13,10 @@ origin.date: 01/07/2020
 ms.date: 01/15/2020
 ms.author: v-lingwu
 ms.openlocfilehash: d18c7f5173e590c67645d3bba049c69c4446fbc1
-ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77028832"
 ---
 # <a name="datetimev2-prebuilt-entity-for-a-luis-app"></a>LUIS 应用的 DatetimeV2 预生成实体
@@ -32,7 +32,7 @@ ms.locfileid: "77028832"
 
 `8am on may 2nd 2019`
 
-#### <a name="v3-responsetab1-1"></a>[V3 响应](#tab/1-1)
+#### <a name="v3-response"></a>[V3 响应](#tab/1-1)
 
 ```json
 "entities": {
@@ -54,7 +54,7 @@ ms.locfileid: "77028832"
 }
 ```
 
-#### <a name="v3-verbose-responsetab1-2"></a>[V3 详细响应](#tab/1-2)
+#### <a name="v3-verbose-response"></a>[V3 详细响应](#tab/1-2)
 
 ```json
 
@@ -92,7 +92,7 @@ ms.locfileid: "77028832"
 }
 ```
 
-#### <a name="v2-responsetab1-3"></a>[V2 响应](#tab/1-3)
+#### <a name="v2-response"></a>[V2 响应](#tab/1-3)
 
 ```json
 "entities": [
@@ -149,7 +149,7 @@ ms.locfileid: "77028832"
 |timex|遵循 [ISO 8601 标准](https://en.wikipedia.org/wiki/ISO_8601)的、以 TIMEX 格式表示的时间、日期或日期范围，以及使用 TimeML 语言的注释的 TIMEX3 属性。 [TIMEX 准则](http://www.timeml.org/tempeval2/tempeval2-trial/guidelines/timex3guidelines-072009.pdf)中描述了此注释。|
 |mod|术语，用于说明如何使用 `before`、`after` 等值。|
 |type|子类型，可以是下述项目之一：`datetime`、`date`、`time`、`daterange`、`timerange`、`datetimerange`、`duration`、`set`。|
-|value|**可选。** 采用 yyyy-MM-dd（日期）、HH:mm:ss（时间）、yyyy-MM-dd HH:mm:ss（日期/时间）格式的日期/时间对象。 如果 `type` 为 `duration`，则值是秒数（持续时间） <br/> 仅当 `type` 为 `datetime`、`date`、`time` 或 `duration 时才使用。|
+|值|**可选。** 采用 yyyy-MM-dd（日期）、HH:mm:ss（时间）、yyyy-MM-dd HH:mm:ss（日期/时间）格式的日期/时间对象。 如果 `type` 为 `duration`，则值是秒数（持续时间） <br/> 仅当 `type` 为 `datetime`、`date`、`time` 或 `duration 时才使用。|
 
 ## <a name="valid-date-values"></a>有效日期值
 
@@ -171,7 +171,7 @@ ms.locfileid: "77028832"
 * 如果今天的日期是 2017 年 5 月 1 日，则 LUIS 会提供“2016-05-02”和“2017-05-02”作为值。
 
 以下示例显示了实体“5 月 2 日”的解析。 此解析假设今天的日期是 2017 年 5 月 2 日和 2018 年 5 月 1 日之间的某个日期。
-在 `timex` 字段中包含 `X` 的字段是未在陈述中显式指定的日期的一部分。
+在 `X` 字段中包含 `timex` 的字段是未在陈述中显式指定的日期的一部分。
 
 ## <a name="date-resolution-example"></a>日期解析示例
 
@@ -180,7 +180,7 @@ ms.locfileid: "77028832"
 
 `May 2nd`
 
-#### <a name="v3-responsetab2-1"></a>[V3 响应](#tab/2-1)
+#### <a name="v3-response"></a>[V3 响应](#tab/2-1)
 
 ```json
 "entities": {
@@ -205,7 +205,7 @@ ms.locfileid: "77028832"
 }
 ```
 
-#### <a name="v3-verbose-responsetab2-2"></a>[V3 详细响应](#tab/2-2)
+#### <a name="v3-verbose-response"></a>[V3 详细响应](#tab/2-2)
 
 ```json
 "entities": {
@@ -245,7 +245,7 @@ ms.locfileid: "77028832"
 }
 ```
 
-#### <a name="v2-responsetab2-3"></a>[V2 响应](#tab/2-3)
+#### <a name="v2-response"></a>[V2 响应](#tab/2-3)
 
 ```json
   "entities": [
@@ -281,7 +281,7 @@ ms.locfileid: "77028832"
 
 `May 2nd to May 5th`
 
-#### <a name="v3-responsetab3-1"></a>[V3 响应](#tab/3-1)
+#### <a name="v3-response"></a>[V3 响应](#tab/3-1)
 
 ```json
 
@@ -310,7 +310,7 @@ ms.locfileid: "77028832"
 ```
 
 
-#### <a name="v3-verbose-responsetab3-2"></a>[V3 详细响应](#tab/3-2)
+#### <a name="v3-verbose-response"></a>[V3 详细响应](#tab/3-2)
 
 ```json
 
@@ -353,7 +353,7 @@ ms.locfileid: "77028832"
 }
 ```
 
-#### <a name="v2-responsetab3-3"></a>[V2 响应](#tab/3-3)
+#### <a name="v2-response"></a>[V2 响应](#tab/3-3)
 
 ```json
 "entities": [
@@ -385,7 +385,7 @@ ms.locfileid: "77028832"
 
 `Tuesday to Thursday`
 
-#### <a name="v3-responsetab4-1"></a>[V3 响应](#tab/4-1)
+#### <a name="v3-response"></a>[V3 响应](#tab/4-1)
 
 ```json
 "entities": {
@@ -412,7 +412,7 @@ ms.locfileid: "77028832"
 }
 ```
 
-#### <a name="v3-verbose-responsetab4-2"></a>[V3 详细响应](#tab/4-2)
+#### <a name="v3-verbose-response"></a>[V3 详细响应](#tab/4-2)
 
 ```json
 "entities": {
@@ -454,7 +454,7 @@ ms.locfileid: "77028832"
 }
 ```
 
-#### <a name="v2-responsetab4-3"></a>[V2 响应](#tab/4-3)
+#### <a name="v2-response"></a>[V2 响应](#tab/4-3)
 
 ```json
   "entities": [
@@ -493,7 +493,7 @@ DatetimeV2 JSON 响应在 API V3 中已更改。 以下示例演示 LUIS 如何�
 
 `from 6pm to 7pm`
 
-#### <a name="v3-responsetab5-1"></a>[V3 响应](#tab/5-1)
+#### <a name="v3-response"></a>[V3 响应](#tab/5-1)
 
 以下 JSON 的 `verbose` 参数设置为 `false`：
 
@@ -518,7 +518,7 @@ DatetimeV2 JSON 响应在 API V3 中已更改。 以下示例演示 LUIS 如何�
     ]
 }
 ```
-#### <a name="v3-verbose-responsetab5-2"></a>[V3 详细响应](#tab/5-2)
+#### <a name="v3-verbose-response"></a>[V3 详细响应](#tab/5-2)
 
 以下 JSON 的 `verbose` 参数设置为 `true`：
 
@@ -558,7 +558,7 @@ DatetimeV2 JSON 响应在 API V3 中已更改。 以下示例演示 LUIS 如何�
     }
 }
 ```
-#### <a name="v2-responsetab5-3"></a>[V2 响应](#tab/5-3)
+#### <a name="v2-response"></a>[V2 响应](#tab/5-3)
 
 ```json
   "entities": [
@@ -589,7 +589,7 @@ DatetimeV2 JSON 响应在 API V3 中已更改。 以下示例演示 LUIS 如何�
 
 `8am`
 
-#### <a name="v3-responsetab6-1"></a>[V3 响应](#tab/6-1)
+#### <a name="v3-response"></a>[V3 响应](#tab/6-1)
 
 ```json
 "entities": {
@@ -610,7 +610,7 @@ DatetimeV2 JSON 响应在 API V3 中已更改。 以下示例演示 LUIS 如何�
     ]
 }
 ```
-#### <a name="v3-verbose-responsetab6-2"></a>[V3 详细响应](#tab/6-2)
+#### <a name="v3-verbose-response"></a>[V3 详细响应](#tab/6-2)
 
 ```json
 "entities": {
@@ -646,7 +646,7 @@ DatetimeV2 JSON 响应在 API V3 中已更改。 以下示例演示 LUIS 如何�
     }
 }
 ```
-#### <a name="v2-responsetab6-3"></a>[V2 响应](#tab/6-3)
+#### <a name="v2-response"></a>[V2 响应](#tab/6-3)
 
 ```json
 "entities": [

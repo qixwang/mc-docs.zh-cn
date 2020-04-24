@@ -16,10 +16,10 @@ origin.date: 08/30/2018
 ms.date: 09/22/2019
 ms.author: v-lingwu
 ms.openlocfilehash: 7b9eb37a2415de54beb2c752999d7e7c152095cc
-ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75857313"
 ---
 # <a name="tutorial-respond-to-security-incidents"></a>教程：响应安全事件
@@ -83,14 +83,14 @@ ms.locfileid: "75857313"
 2. 选择要返回到“免费”层的订阅或策略。 此时会打开“安全策略”。 
 3. 在“策略组件”  下选择“定价层”  。
 4. 选择“免费”，将订阅从“标准”层更改为“免费”层。 
-5. 选择“保存”  。
+5. 选择“保存”。 
 
 如果希望禁用自动预配，请执行以下操作：
 
 1. 返回到安全中心主菜单，选择“安全策略”。 
 2. 选择希望禁用自动设置的订阅。
 3. 在“安全策略 - 数据收集”  下的“载入”  下选择“关闭”  ，禁用自动预配。
-4. 选择“保存”  。
+4. 选择“保存”。 
 
 >[!NOTE]
 > 禁用自动设置不会从已预配代理的 Azure VM 中删除 Microsoft Monitoring Agent。 禁用自动设置会限制对资源的安全监视。

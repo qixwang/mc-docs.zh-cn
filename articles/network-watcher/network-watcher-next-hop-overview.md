@@ -16,10 +16,10 @@ origin.date: 02/22/2017
 ms.date: 09/30/2018
 ms.author: v-yeche
 ms.openlocfilehash: a296537293c704beaebc018c9d71272ca25907c0
-ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77028484"
 ---
 # <a name="use-next-hop-to-diagnose-virtual-machine-routing-problems"></a>使用“下一个跃点”功能来诊断虚拟机路由问题

@@ -8,17 +8,17 @@ ms.date: 2/6/2020
 ms.author: v-lingwu
 ms.topic: conceptual
 ms.openlocfilehash: 0ba0560d3995e7347ca4c476221a234d761a567a
-ms.sourcegitcommit: 99bd0019c5f01034b8765d7765ad7776c7d5e5ae
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77128868"
 ---
 # <a name="test-stream-analytics-queries-locally-with-sample-data-using-visual-studio-code"></a>使用 Visual Studio Code 通过示例数据在本地测试流分析查询
 
 可使用针对 Visual Studio Code 的 Azure 流分析工具通过示例数据在本地测试流分析作业。 可以在项目的 **LocalRunOutputs** 文件夹中的 JSON 文件中找到查询结果。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * 安装 [.NET core SDK](https://dotnet.microsoft.com/download) 并重启 Visual Studio Code。
 

@@ -9,17 +9,17 @@ ms.topic: conceptual
 origin.date: 01/27/2020
 ms.date: 02/17/2020
 ms.openlocfilehash: 191a1d1ec7d9a31220dbef4bedd3eed66671b104
-ms.sourcegitcommit: 7c80405a6b48380814b4b414e9f8a5756c007880
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77067780"
 ---
 # <a name="ingest-json-formatted-sample-data-into-azure-data-explorer"></a>将 JSON 格式的示例数据引入 Azure 数据资源管理器
 
 本文介绍如何将 JSON 格式的数据引入 Azure 数据资源管理器数据库。 首先你将引入简单的原始映射 JSON 示例，再引入多行 JSON，然后处理包含数组和字典的更复杂 JSON 架构。  这些示例详细演示了使用 Kusto 查询语言 (KQL)、C# 或 Python 引入 JSON 格式数据的过程。 Kusto 查询语言 `ingest` 控制命令是直接对引擎终结点执行的。 在生产方案中，引入是使用客户端库或数据连接对数据管理服务执行的。 有关使用这些客户端库引入数据的演练，请阅读[使用 Azure 数据资源管理器 Python 库引入数据](/data-explorer/python-ingest-data)和[使用 Azure 数据资源管理器 .NET Standard SDK 引入数据](/data-explorer/net-standard-ingest-data)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 [测试群集和数据库](create-cluster-database-portal.md)
 
@@ -51,7 +51,7 @@ Azure 数据资源管理器支持两种 JSON 文件格式：
 
 此示例将 JSON 记录作为原始数据引入到包含单个列的表中。 使用查询和更新策略的数据操作是在引入数据后执行的。
 
-# <a name="kqltabkusto-query-language"></a>[KQL](#tab/kusto-query-language)
+# <a name="kql"></a>[KQL](#tab/kusto-query-language)
 
 使用 Kusto 查询语言引入原始 JSON 格式的数据。
 
@@ -83,7 +83,7 @@ Azure 数据资源管理器支持两种 JSON 文件格式：
     .ingest into table RawEvents h'https://kustosamplefiles.blob.core.chinacloudapi.cn/jsonsamplefiles/simple.json?st=2018-08-31T22%3A02%3A25Z&se=2020-09-01T22%3A02%3A00Z&sp=r&sv=2018-03-28&sr=b&sig=LQIbomcKI8Ooz425hWtjeq6d61uEaq21UVX7YrM61N4%3D' with (format=json, jsonMappingReference=RawEventMapping)
     ```
 
-# <a name="ctabc-sharp"></a>[C#](#tab/c-sharp)
+# <a name="c"></a>[C#](#tab/c-sharp)
 
 使用 C# 引入原始 JSON 格式的数据。
 
@@ -160,7 +160,7 @@ Azure 数据资源管理器支持两种 JSON 文件格式：
 > [!NOTE]
 > 数据是根据[批处理策略](https://docs.microsoft.com/azure/kusto/concepts/batchingpolicy)聚合的，因此会出现几分钟的延迟。
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 使用 Python 引入原始 JSON 格式的数据。
 
@@ -209,7 +209,7 @@ Azure 数据资源管理器支持两种 JSON 文件格式：
 
 此示例引入 JSON 记录数据。 每个 JSON 属性映射到表中的单个列。 
 
-# <a name="kqltabkusto-query-language"></a>[KQL](#tab/kusto-query-language)
+# <a name="kql"></a>[KQL](#tab/kusto-query-language)
 
 1. 创建一个新表，该表采用类似于 JSON 输入数据的架构。 我们将对下面的所有示例和引入命令使用此表。 
 
@@ -233,7 +233,7 @@ Azure 数据资源管理器支持两种 JSON 文件格式：
 
     文件“simple.json”包含几条行分隔的 JSON 记录。 格式为 `json`，在引入命令中使用的映射是创建的 `FlatEventMapping`。
 
-# <a name="ctabc-sharp"></a>[C#](#tab/c-sharp)
+# <a name="c"></a>[C#](#tab/c-sharp)
 
 1. 创建一个新表，该表采用类似于 JSON 输入数据的架构。 我们将对下面的所有示例和引入命令使用此表。 
 
@@ -292,7 +292,7 @@ Azure 数据资源管理器支持两种 JSON 文件格式：
 
     文件“simple.json”包含几条行分隔的 JSON 记录。 格式为 `json`，在引入命令中使用的映射是创建的 `FlatEventMapping`。
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 1. 创建一个新表，该表采用类似于 JSON 输入数据的架构。 我们将对下面的所有示例和引入命令使用此表。 
 
@@ -330,7 +330,7 @@ Azure 数据资源管理器支持两种 JSON 文件格式：
 
 此示例引入多行 JSON 记录。 每个 JSON 属性映射到表中的单个列。 文件“multilined.json”包含几条缩进的 JSON 记录。 格式 `multijson` 告知引擎按 JSON 结构读取记录。
 
-# <a name="kqltabkusto-query-language"></a>[KQL](#tab/kusto-query-language)
+# <a name="kql"></a>[KQL](#tab/kusto-query-language)
 
 将数据引入 `Events` 表中。
 
@@ -338,7 +338,7 @@ Azure 数据资源管理器支持两种 JSON 文件格式：
 .ingest into table Events h'https://kustosamplefiles.blob.core.chinaclouapi.cn/jsonsamplefiles/multilined.json?st=2018-08-31T22%3A02%3A25Z&se=2020-09-01T22%3A02%3A00Z&sp=r&sv=2018-03-28&sr=b&sig=LQIbomcKI8Ooz425hWtjeq6d61uEaq21UVX7YrM61N4%3D' with (format=multijson, jsonMappingReference=FlatEventMapping)
 ```
 
-# <a name="ctabc-sharp"></a>[C#](#tab/c-sharp)
+# <a name="c"></a>[C#](#tab/c-sharp)
 
 将数据引入 `Events` 表中。
 
@@ -355,7 +355,7 @@ var properties =
 ingestClient.IngestFromSingleBlob(blobPath, deleteSourceOnSuccess: false, ingestionProperties: properties);
 ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 将数据引入 `Events` 表中。
 
@@ -396,7 +396,7 @@ INGESTION_CLIENT.ingest_from_blob(
 }
 ```
 
-# <a name="kqltabkusto-query-language"></a>[KQL](#tab/kusto-query-language)
+# <a name="kql"></a>[KQL](#tab/kusto-query-language)
 
 1. 使用 `mv-expand` 运算符创建一个 `update policy` 函数用于扩展 `records` 的集合，使集合中的每个值收到一个单独的行。 我们将使用表 `RawEvents` 作为源表，使用 `Events` 作为目标表。
 
@@ -437,7 +437,7 @@ INGESTION_CLIENT.ingest_from_blob(
     Events
     ```
 
-# <a name="ctabc-sharp"></a>[C#](#tab/c-sharp)
+# <a name="c"></a>[C#](#tab/c-sharp)
 
 1. 使用 `mv-expand` 运算符创建一个 update 函数用于扩展 `records` 的集合，使集合中的每个值收到一个单独的行。 我们将使用表 `RawEvents` 作为源表，使用 `Events` 作为目标表。   
 
@@ -491,7 +491,7 @@ INGESTION_CLIENT.ingest_from_blob(
     
 1. 检查 `Events` 表中的数据。
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 1. 使用 `mv-expand` 运算符创建一个 update 函数用于扩展 `records` 的集合，使集合中的每个值收到一个单独的行。 我们将使用表 `RawEvents` 作为源表，使用 `Events` 作为目标表。   
 
@@ -571,7 +571,7 @@ INGESTION_CLIENT.ingest_from_blob(
 }
 ```
 
-# <a name="kqltabkusto-query-language"></a>[KQL](#tab/kusto-query-language)
+# <a name="kql"></a>[KQL](#tab/kusto-query-language)
 
 1. 创建 JSON 映射。
 
@@ -585,7 +585,7 @@ INGESTION_CLIENT.ingest_from_blob(
     .ingest into table Events h'https://kustosamplefiles.blob.core.chinaclouapi.cn/jsonsamplefiles/dictionary.json?st=2018-08-31T22%3A02%3A25Z&se=2020-09-01T22%3A02%3A00Z&sp=r&sv=2018-03-28&sr=b&sig=LQIbomcKI8Ooz425hWtjeq6d61uEaq21UVX7YrM61N4%3D' with (format=multijson, jsonMappingReference=KeyValueEventMapping)
     ```
 
-# <a name="ctabc-sharp"></a>[C#](#tab/c-sharp)
+# <a name="c"></a>[C#](#tab/c-sharp)
 
 1. 创建 JSON 映射。
 
@@ -622,7 +622,7 @@ INGESTION_CLIENT.ingest_from_blob(
     ingestClient.IngestFromSingleBlob(blobPath, deleteSourceOnSuccess: false, ingestionProperties: properties);
     ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 1. 创建 JSON 映射。
 

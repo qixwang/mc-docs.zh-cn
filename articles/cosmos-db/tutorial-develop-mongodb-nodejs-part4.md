@@ -12,15 +12,15 @@ ms.author: v-yeche
 ms.custom: seodec18
 ms.reviewer: sngun
 ms.openlocfilehash: 1173123ac9d9616af58c3b6c67a0ae0ee9ed2d49
-ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77067912"
 ---
-# <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---create-a-cosmos-account"></a>使用 Azure Cosmos DB 的 API for MongoDB 创建 Angular 应用 - 创建 Cosmos 帐户
+# <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---create-a-cosmos-account"></a>使用用于 MongoDB 的 Azure Cosmos DB's API 创建 Angular 应用 - 创建 Cosmos 帐户
 
-本教程包含多个部分，演示了如何通过 Express 和 Angular 创建以 Node.js 编写的新应用，然后将其连接到[使用 Cosmos DB 的 API for MongoDB 配置的 Cosmos 帐户](mongodb-introduction.md)。
+本教程包含多个部分，演示了如何通过 Express 和 Angular 创建以 Node.js 编写的新应用，然后将其连接到[使用 Cosmos DB 的用于 MongoDB 的 API 配置的 Cosmos 帐户](mongodb-introduction.md)。
 
 本教程的第 4 部分基于[第 3 部分](tutorial-develop-mongodb-nodejs-part3.md)，涵盖以下任务：
 

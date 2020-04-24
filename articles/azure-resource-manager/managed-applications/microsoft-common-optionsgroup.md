@@ -7,10 +7,10 @@ origin.date: 06/27/2018
 ms.date: 01/20/2020
 ms.author: v-yeche
 ms.openlocfilehash: dbb9d1c45c5db9a873d3cd55f280a76c25d437ca
-ms.sourcegitcommit: 8de025ca11b62e06ba3762b5d15cc577e0c0f15d
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "76170677"
 ---
 # <a name="microsoftcommonoptionsgroup-ui-element"></a>Microsoft.Common.OptionsGroup UI 元素

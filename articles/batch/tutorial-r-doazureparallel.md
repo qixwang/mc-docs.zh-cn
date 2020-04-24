@@ -13,17 +13,17 @@ ms.date: 01/23/2019
 ms.author: v-lingwu
 ms.custom: mvc
 ms.openlocfilehash: 4cbb37deea6bcea7e54977b5e707dd507c393012
-ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77028590"
 ---
 # <a name="tutorial-run-a-parallel-r-simulation-with-azure-batch"></a>教程：使用 Azure Batch 运行并行 R 模拟 
 
 使用 [doAzureParallel](https://www.github.com/Azure/doAzureParallel) 包大规模运行并行 R 工作负荷。该包是一种轻型 R 包，允许直接从 R 会话使用 Azure Batch。 doAzureParallel 包在常用 [foreach](https://cran.r-project.org/web/packages/foreach/index.html) R 包的基础上生成。 doAzureParallel 执行 foreach 循环的每个迭代，将其作为 Azure Batch 任务提交。
 
-本教程介绍如何部署 Batch 池，然后直接在 RStudio 中通过 Azure Batch 运行并行 R 作业。 你将学习如何执行以下操作：
+本教程介绍如何部署 Batch 池，然后直接在 RStudio 中通过 Azure Batch 运行并行 R 作业。 学习如何：
  
 
 > [!div class="checklist"]
@@ -109,9 +109,9 @@ generateClusterConfig("cluster.json")
 对于本教程，请将配置更改如下：
 
 * 将 `maxTasksPerNode` 增加到 *2*，以便充分利用每个节点上的两个核心
-* 将 `dedicatedNodes` 设置为 *0*，以便尝试适用于 Batch 的低优先级 VM。 将 `lowPriorityNodes` 的 `min` 设置为 *5*， 并将 `max` 设置为 *10*，或者根据需要选择更小的数字。 
+* 将 `dedicatedNodes` 设置为 *0*，以便尝试适用于 Batch 的低优先级 VM。 将 `min` 的 `lowPriorityNodes` 设置为 *5*， 并将 `max` 设置为 *10*，或者根据需要选择更小的数字。 
 
-其余设置保留默认值，然后保存文件。 结果如下图所示：
+其余设置保留默认值，然后保存文件。 该属性应与下面类似：
 
 ```json
 {

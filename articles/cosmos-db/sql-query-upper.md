@@ -9,10 +9,10 @@ ms.date: 02/10/2020
 ms.author: v-yeche
 ms.custom: query-reference
 ms.openlocfilehash: 734ba399ca96aab317a6ecee05976211f4dd8f0c
-ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77068360"
 ---
 # <a name="upper-azure-cosmos-db"></a>UPPER (Azure Cosmos DB)
@@ -33,7 +33,7 @@ UPPER(<str_expr>)
 
 ## <a name="return-types"></a>返回类型
 
-  返回一个字符串表达式。  
+  返回字符串表达式。  
 
 ## <a name="examples"></a>示例
 
@@ -43,7 +43,7 @@ UPPER(<str_expr>)
 SELECT UPPER("Abc") AS upper  
 ```  
 
- 下面是结果集。  
+ 下面是结果集：  
 
 ```json
 [{"upper": "ABC"}]  

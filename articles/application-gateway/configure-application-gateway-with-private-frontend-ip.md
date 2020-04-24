@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 02/10/2020
 ms.author: v-junlch
 ms.openlocfilehash: 40e3c44b641fe5952a61e7a2899509faff6de256
-ms.sourcegitcommit: f388b7b1cdfe06ebda7d9c21cf39943611b62a75
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77155549"
 ---
 # <a name="configure-an-application-gateway-with-an-internal-load-balancer-ilb-endpoint"></a>使用内部负载均衡器 (ILB) 终结点配置应用程序网关
@@ -73,7 +73,7 @@ Azure 需要一个虚拟网络才能在创建的资源之间通信。 可以创�
 24. 对于“后端端口”，请键入 *80*。 
 25. 接受剩余的默认值，然后选择“添加”。 
 26. 在“添加路由规则”页上，选择“添加”。  
-27. 选择“下一步:  标记”。
+27. 在完成时选择“下一步:  标记”。
 28. 在完成时选择“下一步:  查看 + 创建”。
 29. 检查摘要页上的设置，然后选择“创建”以创建网络资源和应用程序网关。  创建应用程序网关可能需要几分钟时间。 请等待部署成功完成，然后再前进到下一部分。
 

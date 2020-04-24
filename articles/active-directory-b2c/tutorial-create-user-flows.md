@@ -11,10 +11,10 @@ ms.date: 02/04/2020
 ms.author: v-junlch
 ms.subservice: B2C
 ms.openlocfilehash: e5bdb88e4316fb73b26cba0670aa149e33013ab0
-ms.sourcegitcommit: 888cbc10f2348de401d4839a732586cf266883bf
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77028115"
 ---
 # <a name="tutorial-create-user-flows-in-azure-active-directory-b2c"></a>教程：在 Azure Active Directory B2C 中创建用户流
@@ -32,7 +32,7 @@ ms.locfileid: "77028115"
 
 如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 [注册](tutorial-register-applications.md)属于要创建的用户流的应用程序。
 

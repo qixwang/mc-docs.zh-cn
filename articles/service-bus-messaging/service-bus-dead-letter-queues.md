@@ -16,10 +16,10 @@ origin.date: 01/24/2020
 ms.date: 2/6/2020
 ms.author: v-lingwu
 ms.openlocfilehash: 0708de12b75eae8ab02f7c2b72cfd637cb5ef4a8
-ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77067984"
 ---
 # <a name="overview-of-service-bus-dead-letter-queues"></a>服务总线死信队列概述
@@ -46,10 +46,10 @@ Azure 服务总线队列和主题订阅提供一个名为“死信队列 (DLQ)�
 
 | 条件 | DeadLetterReason | DeadLetterErrorDescription |
 | --- | --- | --- |
-| Always |HeaderSizeExceeded |已超过此流的大小配额。 |
+| 始终 |HeaderSizeExceeded |已超过此流的大小配额。 |
 | !TopicDescription。<br />EnableFilteringMessagesBeforePublishing 和 SubscriptionDescription。<br />EnableDeadLetteringOnFilterEvaluationExceptions |exception.GetType().Name |exception.Message |
-| EnableDeadLetteringOnMessageExpiration |TTLExpiredException |消息已过期并已设为死信。 |
-| SubscriptionDescription.RequiresSession |会话 ID 为 null。 |启用会话的实体不允许使用会话标识符为 null 的消息。 |
+| EnableDeadLetteringOnMessageExpiration |TTLExpiredException |消息过期并已设为死信。 |
+| SubscriptionDescription.RequiresSession |会话ID 为 null。 |启用会话的实体不允许使用会话标识符为 null 的消息。 |
 | !死信队列 | MaxTransferHopCountExceeded | 在队列之间转发时允许的最大跃点数。 值设置为 4。 |
 | 应用程序显式设为死信 |由应用程序指定 |由应用程序指定 |
 
@@ -57,7 +57,7 @@ Azure 服务总线队列和主题订阅提供一个名为“死信队列 (DLQ)�
 
 每个队列和订阅都具有 [QueueDescription.MaxDeliveryCount](/dotnet/api/microsoft.servicebus.messaging.queuedescription.maxdeliverycount) 和 [SubscriptionDescription.MaxDeliveryCount](/dotnet/api/microsoft.servicebus.messaging.subscriptiondescription.maxdeliverycount) 属性；默认值为 10。 只要消息在 ([ReceiveMode.PeekLock](/dotnet/api/microsoft.azure.servicebus.receivemode)) 锁下传递，但已显式放弃或锁已过期，消息 [BrokeredMessage.DeliveryCount](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) 就会递增。 [DeliveryCount](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) 超过 [MaxDeliveryCount](/dotnet/api/microsoft.servicebus.messaging.queuedescription.maxdeliverycount) 时，该消息将移到 DLQ，并指定 `MaxDeliveryCountExceeded` 原因代码。
 
-无法禁止此行为，但可以将 [MaxDeliveryCount](/dotnet/api/microsoft.servicebus.messaging.queuedescription.maxdeliverycount) 设置为非常大的数。
+无法禁止此行为，但可将 [MaxDeliveryCount](/dotnet/api/microsoft.servicebus.messaging.queuedescription.maxdeliverycount) 设置为非常大的数。
 
 ## <a name="exceeding-timetolive"></a>超过 TimeToLive
 
@@ -65,9 +65,9 @@ Azure 服务总线队列和主题订阅提供一个名为“死信队列 (DLQ)�
 
 请注意，如果主队列或订阅中至少有一个活动的接收器正在拉取，则会清除过期的消息，该消息会被移动到 DLQ；该行为是设计使然。
 
-## <a name="errors-while-processing-subscription-rules"></a>处理订阅规则时出错
+## <a name="errors-while-processing-subscription-rules"></a>处理订阅规则时的错误
 
-当为订阅启用了 [SubscriptionDescription.EnableDeadLetteringOnFilterEvaluationExceptions](/dotnet/api/microsoft.servicebus.messaging.subscriptiondescription) 属性时，会在 DLQ 中捕获执行订阅的 SQL 筛选器规则时出现的任何错误以及有问题的消息。
+为订阅启用了 [SubscriptionDescription.EnableDeadLetteringOnFilterEvaluationExceptions](/dotnet/api/microsoft.servicebus.messaging.subscriptiondescription) 属性时，会在 DLQ 中捕获执行订阅的 SQL 筛选器规则时出现的任何错误以及有问题的消息。
 
 ## <a name="application-level-dead-lettering"></a>应用程序级死信
 
@@ -85,7 +85,7 @@ Azure 服务总线队列和主题订阅提供一个名为“死信队列 (DLQ)�
 
 ## <a name="example"></a>示例
 
-下面的代码片段会创建一个消息接收器。 在主队列的接收循环中，此代码使用 [Receive(TimeSpan.Zero)](/dotnet/api/microsoft.servicebus.messaging.messagereceiver) 检索消息，该方法请求代理立即返回随时可用的任何消息或返回空结果。 如果此代码接收到一条消息，则会立即将其放弃，从而使 `DeliveryCount` 递增。 系统将此消息移动到 DLQ 后，[ReceiveAsync](/dotnet/api/microsoft.servicebus.messaging.messagereceiver) 返回 **null**，主队列为空，且循环退出。
+下面的代码片段将创建一个消息接收器。 在主队列的接收循环中，此代码使用 [Receive(TimeSpan.Zero)](/dotnet/api/microsoft.servicebus.messaging.messagereceiver) 检索消息，该方法请求代理立即返回随时可用的任何消息或返回空结果。 如果此代码接收到一条消息，则会立即将其放弃，从而使 `DeliveryCount` 递增。 系统将此消息移动到 DLQ 后，[ReceiveAsync](/dotnet/api/microsoft.servicebus.messaging.messagereceiver) 返回 **null**，主队列为空，且循环退出。
 
 ```csharp
 var receiver = await receiverFactory.CreateMessageReceiverAsync(queueName, ReceiveMode.PeekLock);
@@ -120,4 +120,4 @@ while(true)
 有关服务总线队列的详细信息，请参阅以下文章：
 
 * [服务总线队列入门](service-bus-dotnet-get-started-with-queues.md)
-* [比较 Azure 队列和服务总线队列](service-bus-azure-and-service-bus-queues-compared-contrasted.md)
+* [Azure 队列和服务总线队列比较](service-bus-azure-and-service-bus-queues-compared-contrasted.md)

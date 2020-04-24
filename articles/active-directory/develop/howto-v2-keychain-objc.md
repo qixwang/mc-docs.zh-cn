@@ -15,10 +15,10 @@ ms.reviewer: oldalton
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a79e989da82d1cefd81ef3ddc519f477f697e110
-ms.sourcegitcommit: 1bc154c816a5dff47ee051c431cd94826e57aa60
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75776836"
 ---
 # <a name="configure-keychain"></a>配置密钥链
@@ -33,7 +33,7 @@ ms.locfileid: "75776836"
 
 iOS 上的 MSAL 默认使用 `com.microsoft.adalcache` 访问组。 它是 MSAL 和 Azure AD 身份验证库 (ADAL) SDK 使用的共享访问组，可确保在同一家发行商的多个应用之间提供最佳单一登录 (SSO) 体验。
 
-在 iOS 上，请在 XCode 中的“Project settings”（项目设置） > “Capabilities”（功能） > “Keychain sharing”（密钥链共享）下，将 `com.microsoft.adalcache` 密钥链组添加到应用的权利中   
+在 iOS 上，请在 XCode 中的“Project settings”（项目设置）`com.microsoft.adalcache`“Capabilities”（功能） **“Keychain sharing”（密钥链共享）下，将**  密钥链组添加到应用的权利中 >    >  
 
 ### <a name="macos"></a>macOS
 
@@ -47,7 +47,7 @@ macOS 上的 MSAL 默认使用 `com.microsoft.identity.universalstorage` 访问�
 
 若要使用不同的密钥链访问组，可以在创建 `MSALPublicClientApplicationConfig` 时传递自定义组，然后再创建 `MSALPublicClientApplication`，如下所示：
 
-# <a name="objective-ctabobjc"></a>[Objective-C](#tab/objc)
+# <a name="objective-c"></a>[Objective-C](#tab/objc)
 
 ```objc
 MSALPublicClientApplicationConfig *config = [[MSALPublicClientApplicationConfig alloc] initWithClientId:@"your-client-id"
@@ -63,7 +63,7 @@ MSALPublicClientApplication *application = [[MSALPublicClientApplication alloc] 
 // and only shared with other applications declaring the same access group
 ```
 
-# <a name="swifttabswift"></a>[Swift](#tab/swift)
+# <a name="swift"></a>[Swift](#tab/swift)
 
 ```swift
 let config = MSALPublicClientApplicationConfig(clientId: "your-client-id",
@@ -85,13 +85,13 @@ do {
 
 如果你不想要在多个应用之间共享 SSO 状态，或不想使用任何密钥链访问组，请通过传递应用程序捆绑 ID 作为 keychainGroup，来禁用密钥链共享：
 
-# <a name="objective-ctabobjc"></a>[Objective-C](#tab/objc)
+# <a name="objective-c"></a>[Objective-C](#tab/objc)
 
 ```objc
 config.cacheConfig.keychainSharingGroup = [[NSBundle mainBundle] bundleIdentifier];
 ```
 
-# <a name="swifttabswift"></a>[Swift](#tab/swift)
+# <a name="swift"></a>[Swift](#tab/swift)
 
 ```swift
 if let bundleIdentifier = Bundle.main.bundleIdentifier {

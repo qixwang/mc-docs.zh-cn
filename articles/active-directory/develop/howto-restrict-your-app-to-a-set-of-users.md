@@ -15,10 +15,10 @@ ms.reviewer: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bbb447de34f5bdac5a4b107fc2cabab1162eabdb
-ms.sourcegitcommit: 1bc154c816a5dff47ee051c431cd94826e57aa60
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75776831"
 ---
 # <a name="how-to-restrict-your-azure-ad-app-to-a-set-of-users"></a>如何：将 Azure AD 应用限制为仅供一组用户使用

@@ -9,10 +9,10 @@ origin.date: 12/03/2019
 ms.date: 01/20/2020
 ms.reviewer: sngun
 ms.openlocfilehash: 31358a4cc0393c6647ffb53a4c548df5c8613c34
-ms.sourcegitcommit: 304861faf39689348962127b8b56db8082ece2ef
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "76270064"
 ---
 # <a name="serverless-event-based-architectures-with-azure-cosmos-db-and-azure-functions"></a>Azure Cosmos DB 和 Azure Functions 的基于事件的无服务器体系结构

@@ -8,17 +8,17 @@ ms.topic: conceptual
 origin.date: 12/02/2019
 ms.date: 01/13/2020
 ms.openlocfilehash: 9b783820a1c06da10611695ec8ad1f3618590397
-ms.sourcegitcommit: 4f4694991e1c70929c7112ad45a0c404ddfbc8da
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75776739"
 ---
 # <a name="manage-an-azure-database-for-mysql-server-using-the-azure-portal"></a>使用 Azure 门户管理 Azure Database for MySQL 服务器
 本文介绍如何管理 Azure Database for MySQL 服务器。 管理任务包括计算和存储缩放、管理员密码重置，以及查看服务器详细信息。
 
 ## <a name="sign-in"></a>登录
-登录到 [Azure 门户](https://portal.azure.cn)。
+登录 [Azure 门户](https://portal.azure.cn)。
 
 ## <a name="create-a-server"></a>创建服务器
 访问[快速入门](quickstart-create-mysql-server-database-using-azure-portal.md)，了解如何创建并开始使用 Azure Database for MySQL 服务器。
@@ -91,7 +91,7 @@ ms.locfileid: "75776739"
 
 1. 在 Azure 门户中选择服务器。 在“概览”窗口中，选择“删除”。  
 
-    ![删除](./media/howto-create-manage-server-portal/overview-delete.png)
+    ![delete](./media/howto-create-manage-server-portal/overview-delete.png)
 
 2. 在输入框中键入服务器名称，确认这是要删除的服务器。
 
@@ -100,7 +100,7 @@ ms.locfileid: "75776739"
     > [!NOTE]
     > 删除服务器的操作不可逆。
 
-3. 选择“删除”  。
+3. 选择“删除”。 
 
 
 ## <a name="next-steps"></a>后续步骤

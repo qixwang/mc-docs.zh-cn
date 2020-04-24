@@ -15,10 +15,10 @@ origin.date: 12/05/2019
 ms.date: 01/20/2020
 ms.author: v-jay
 ms.openlocfilehash: a82b09dc214904552ffbf381cabc3ba88bbfc100
-ms.sourcegitcommit: 779d674e865b23ae417eb492efca7508675b8ba6
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75939774"
 ---
 # <a name="configure-postman-for-media-services-v3-rest-api-calls"></a>配置 Postman 以进行媒体服务 v3 REST API 调用
@@ -27,7 +27,7 @@ ms.locfileid: "75939774"
 
 开始开发之前，请查看[使用媒体服务 v3 API 进行开发](media-services-apis-overview.md)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 - [创建媒体服务帐户](create-account-cli-how-to.md)。 请务必记住资源组名称和媒体服务帐户名称。 
 - 获取[访问 API](access-api-cli-how-to.md) 所需的信息

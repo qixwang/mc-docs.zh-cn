@@ -8,10 +8,10 @@ origin.date: 09/11/2019
 ms.date: 11/12/2019
 ms.author: v-lingwu
 ms.openlocfilehash: 7cae8f6b7305283d3593aff9a548ee31d378b8ab
-ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75858427"
 ---
 # <a name="copy-or-back-up-azure-stream-analytics-jobs"></a>复制或备份 Azure 流分析作业

@@ -18,10 +18,10 @@ ms.author: v-junlch
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2d8b1aa3a11be249fe5f414b91d6c79a0200da02
-ms.sourcegitcommit: 7c80405a6b48380814b4b414e9f8a5756c007880
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77067723"
 ---
 # <a name="license-requirements-to-use-privileged-identity-management"></a>使用 Privileged Identity Management 所要满足的许可证要求
@@ -50,7 +50,7 @@ ms.locfileid: "77067723"
 
 下面是一些示例许可证方案，可帮助你确定必须拥有的许可证数量。
 
-| 方案 | 计算 | 许可证数量 |
+| 场景 | 计算 | 许可证数量 |
 | --- | --- | --- |
 | Woodgrove Bank 有用于不同部门的 10 个管理员和用于配置和管理 PIM 的 2 个全局管理员。 他们使五个管理员符合条件。 | 五个许可证用于符合条件的管理员 | 5 |
 | Graphic Design Institute 有 25 个管理员，其中 14 个是通过 PIM 管理的。 角色激活需要批准，并且组织中有三个不同的用户可以批准激活。 | 14 个许可证用于符合条件的角色 + 三个审批者 | 17 |

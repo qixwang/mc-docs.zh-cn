@@ -7,10 +7,10 @@ ms.date: 02/17/2020
 ms.service: azure-policy
 ms.topic: tutorial
 ms.openlocfilehash: 3d7b1487a3c31ccbf9b7a3965fc45639e9b5eb46
-ms.sourcegitcommit: 0b07f1d36ac02da055874630d6edc31cb0a15269
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/10/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77112165"
 ---
 # <a name="tutorial-manage-tag-governance-with-azure-policy"></a>教程：通过 Azure Policy 管理标记治理
@@ -36,7 +36,7 @@ Azure Policy 的[修改](../concepts/effects.md#modify)效果旨在帮助管理�
 > - 将每个要求映射到策略定义
 > - 将标记策略分组为一个计划
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 需要一个 Azure 订阅才能完成此教程。 如果没有订阅，请在开始之前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial/)。
 

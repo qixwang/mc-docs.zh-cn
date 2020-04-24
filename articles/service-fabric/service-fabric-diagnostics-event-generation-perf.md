@@ -7,10 +7,10 @@ origin.date: 11/21/2018
 ms.date: 01/13/2020
 ms.author: v-yeche
 ms.openlocfilehash: d028ce253f884d69612754674a42ee8efb95533b
-ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75741895"
 ---
 # <a name="performance-metrics"></a>性能指标

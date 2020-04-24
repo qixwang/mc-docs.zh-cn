@@ -9,42 +9,42 @@ ms.service: stream-analytics
 origin.date: 06/21/2019
 ms.date: 08/29/2019
 ms.openlocfilehash: 369c08fff06c9c88cfdae26e7024476e4d787ff8
-ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75855632"
 ---
 # <a name="quickstart-create-a-stream-analytics-job-by-using-the-azure-portal"></a>快速入门：使用 Azure 门户创建流分析作业
 
 本快速入门介绍如何开始创建流分析作业。 在本快速入门中，请定义一个流分析作业，以便读取实时流数据并筛选温度高于 27 的消息。 流分析作业会从 IoT 中心读取数据，对数据进行转换，然后将数据写回到 Blob 存储中的容器。 在本快速入门中使用的输入数据由 Raspberry Pi 联机模拟器生成。 
 
-## <a name="before-you-begin"></a>准备阶段
+## <a name="before-you-begin"></a>开始之前
 
 * 如果没有 Azure 订阅，请创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial/)。
 
-* 登录到 [Azure 门户](https://portal.azure.cn/)。
+* 登录 [Azure 门户](https://portal.azure.cn/)。
 
 ## <a name="prepare-the-input-data"></a>对输入数据进行准备
 
 在定义流分析作业之前，应该准备输入数据。 实时传感器数据将引入到 IoT 中心，随后配置为作业输入。 若要对作业所需的输入数据进行准备，请完成以下步骤：
 
-1. 登录到 [Azure 门户](https://portal.azure.cn/)。
+1. 登录 [Azure 门户](https://portal.azure.cn/)。
 
-2. 选择“创建资源” > “物联网” > “IoT 中心”    。
+2. 选择“创建资源” **“物联网”** “IoT 中心” >    >   。
 
 3. 在“IoT 中心”窗格中，输入以下信息： 
    
    |**设置**  |**建议的值**  |**说明**  |
    |---------|---------|---------|
-   |订阅  | \<订阅\> |  选择要使用的 Azure 订阅。 |
+   |订阅  | 用户的订阅\<\> |  选择要使用的 Azure 订阅。 |
    |资源组   |   asaquickstart-resourcegroup  |   选择“新建”  ，然后输入帐户的新资源组名称。 |
    |区域  |  \<选择离用户最近的区域\> | 选择可以在其中托管 IoT 中心的地理位置。 使用最靠近用户的位置。 |
    |IoT 中心名称  | MyASAIoTHub  |   选择 IoT 中心的名称。   |
 
    ![创建 IoT 中心](./media/stream-analytics-quick-create-portal/create-iot-hub.png)
 
-4. 在完成时选择“下一步:  设置大小和规模”。
+4. 选择“下一步: 设置大小和规模”。 
 
 5. 选择“定价和缩放层”  。 就本快速入门来说，请选择“F1 - 免费”层（前提是此层在订阅上仍然可用）  。 有关详细信息，请参阅 [IoT 中心定价](https://azure.microsoft.com/pricing/details/iot-hub/)。
 
@@ -74,7 +74,7 @@ ms.locfileid: "75855632"
 
 4. 从“Blob 服务”  页面中，选择“容器”  ，为你的容器提供一个名称，例如 *container1*。 将“公共访问级别”保留为“专用(非匿名访问)”，然后选择“确定”。   
 
-   ![创建 blob 容器](./media/stream-analytics-quick-create-portal/create-blob-container.png)
+   ![创建 Blob 容器](./media/stream-analytics-quick-create-portal/create-blob-container.png)
 
 ## <a name="create-a-stream-analytics-job"></a>创建流分析作业
 
@@ -89,7 +89,7 @@ ms.locfileid: "75855632"
    |**设置**  |**建议的值**  |**说明**  |
    |---------|---------|---------|
    |作业名称   |  MyASAJob   |   输入用于标识流分析作业的名称。 流分析作业名称只能包含字母数字字符、连字符和下划线，其长度必须介于 3 到 63 个字符之间。 |
-   |订阅  | \<订阅\> |  选择要用于此作业的 Azure 订阅。 |
+   |订阅  | 用户的订阅\<\> |  选择要用于此作业的 Azure 订阅。 |
    |资源组   |   asaquickstart-resourcegroup  |   选择与 IoT 中心相同的资源组。 |
    |位置  |  \<选择离用户最近的区域\> | 选择可以在其中托管流分析作业的地理位置。 使用最靠近用户的位置，以便改进性能并减少数据传输成本。 |
    |流式处理单位  | 1  |   流单元表示执行作业所需的计算资源。 默认情况下，此值设置为 1。 若要了解如何缩放流单元，请参阅[了解和调整流单元](stream-analytics-streaming-unit-consumption.md)一文。   |
@@ -101,7 +101,7 @@ ms.locfileid: "75855632"
 
 6. 此时会在浏览器窗口右上角显示“正在部署...”通知。  
 
-## 配置作业输入 <a name="configure-job-input"></a>
+## <a name="configure-job-input"></a>配置作业输入 <a name="configure-job-input"></a>
 
 在此部分，需配置流分析作业的 IoT 中心设备输入。 使用在本快速入门的上一部分创建的 IoT 中心。
 
@@ -114,7 +114,7 @@ ms.locfileid: "75855632"
    |**设置**  |**建议的值**  |**说明**  |
    |---------|---------|---------|
    |输入别名  |  IoTHubInput   |  输入一个名称，用于标识作业的输入。   |
-   |订阅   |  \<订阅\> |  选择包含已创建的存储帐户的 Azure 订阅。 存储帐户可以在同一订阅中，也可以在另一订阅中。 此示例假定已在同一订阅中创建存储帐户。 |
+   |订阅   |  用户的订阅\<\> |  选择包含已创建的存储帐户的 Azure 订阅。 存储帐户可以在同一订阅中，也可以在另一订阅中。 此示例假定已在同一订阅中创建存储帐户。 |
    |IoT 中心  |  MyASAIoTHub |  输入在上一部分创建的 IoT 中心的名称。 |
 
 4. 让其他选项保留默认值，然后选择“保存”以保存设置。   
@@ -132,7 +132,7 @@ ms.locfileid: "75855632"
    |**设置**  |**建议的值**  |**说明**  |
    |---------|---------|---------|
    |输出别名 |   BlobOutput   |   输入一个名称，用于标识作业的输出。 |
-   |订阅  |  \<订阅\>  |  选择包含已创建的存储帐户的 Azure 订阅。 存储帐户可以在同一订阅中，也可以在另一订阅中。 此示例假定已在同一订阅中创建存储帐户。 |
+   |订阅  |  用户的订阅\<\>  |  选择包含已创建的存储帐户的 Azure 订阅。 存储帐户可以在同一订阅中，也可以在另一订阅中。 此示例假定已在同一订阅中创建存储帐户。 |
    |存储帐户 |  asaquickstartstorage |   选择或输入存储帐户的名称。 如果在同一订阅中创建存储帐户名称，则会自动将其删除。       |
    |容器 |   container1  |  选择你在存储帐户中创建的现有容器。   |
 
@@ -153,7 +153,7 @@ ms.locfileid: "75855632"
    HAVING Temperature > 27
    ```
 
-3. 在此示例中，查询从 IoT 中心读取数据，然后将其复制到 Blob 中的新文件。 选择“保存”  。  
+3. 在此示例中，查询从 IoT 中心读取数据，然后将其复制到 Blob 中的新文件。 选择“保存”。   
 
    ![配置作业转换](./media/stream-analytics-quick-create-portal/add-asa-query.png)
 

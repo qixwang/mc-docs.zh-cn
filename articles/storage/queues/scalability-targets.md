@@ -11,10 +11,10 @@ ms.date: 01/06/2020
 ms.author: v-jay
 ms.subservice: queues
 ms.openlocfilehash: 0b0a07d7e24f70dd1218c6bde55e631f72e851f6
-ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77068115"
 ---
 # <a name="scalability-and-performance-targets-for-queue-storage"></a>队列存储的可伸缩性和性能目标

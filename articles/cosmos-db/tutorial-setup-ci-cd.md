@@ -9,10 +9,10 @@ ms.date: 02/10/2020
 ms.author: v-yeche
 ms.reviewer: sngun
 ms.openlocfilehash: 78083e97f85fcc1f51d24b1c8da321ba81272b72
-ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77067890"
 ---
 # <a name="set-up-a-cicd-pipeline-with-the-azure-cosmos-db-emulator-build-task-in-azure-devops"></a>在 Azure DevOps 中通过 Azure Cosmos DB 模拟器生成任务设置 CI/CD 管道
@@ -90,7 +90,7 @@ Start-CosmosDbEmulator
 </RunSettings>
 ```
 
-如果正在为使用 Azure Cosmos DB 的 API for MongoDB 的应用程序设置 CI/CD 管道，则连接字符串默认包含端口号 10255。 但是，此端口当前未打开，作为替代方法，你应该使用端口 10250 建立连接。 Azure Cosmos DB 的 API for MongoDB 连接字符串保持不变，不同的是支持的端口号是 10250 而不是 10255。
+如果正在为使用 Azure Cosmos DB 的 MongoDB API 的应用程序设置 CI/CD 管道，则连接字符串默认包含端口号 10255。 但是，此端口当前未打开，作为替代方法，你应该使用端口 10250 建立连接。 Azure Cosmos DB 用于 MongoDB 连接字符串的 API 保持不变，不同的是支持的端口号是 10250 而不是 10255。
 
 这些参数 (`TestRunParameters`) 通过应用程序的测试项目中的 `TestContext` 属性引用。 下面是一个针对 Cosmos DB 运行的测试的示例。
 
@@ -140,7 +140,7 @@ namespace todo.Tests
 }
 ```
 
-导航到 Visual Studio 测试任务中的“执行选项”。 在“设置文件”选项中，指定测试使用  **.runsettings** 文件进行配置。 在“替代测试运行参数”选项中，添加 `-endpoint $(CosmosDbEmulator.Endpoint)`。  这样做会将测试任务配置为引用模拟器生成任务的终结点，而不是在 **.runsettings** 文件中定义的终结点。  
+导航到 Visual Studio 测试任务中的“执行选项”。 在“设置文件”选项中，指定测试使用  **.runsettings** 文件进行配置。 在“替代测试运行参数”选项中，添加 **。** `-endpoint $(CosmosDbEmulator.Endpoint)` 这样做会将测试任务配置为引用模拟器生成任务的终结点，而不是在 **.runsettings** 文件中定义的终结点。  
 
 ![使用模拟器生成任务终结点替代终结点变量](./media/tutorial-setup-ci-cd/addExtension_5.png)
 

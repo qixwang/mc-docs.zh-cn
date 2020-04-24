@@ -9,10 +9,10 @@ ms.date: 02/10/2020
 ms.author: v-yeche
 ms.custom: query-reference
 ms.openlocfilehash: 9571584ac477eec1d09eac19fae6046128fa5b12
-ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77028660"
 ---
 # <a name="floor-azure-cosmos-db"></a>FLOOR (Azure Cosmos DB)
@@ -27,11 +27,11 @@ FLOOR (<numeric_expr>)
 ## <a name="arguments"></a>参数
 
 *numeric_expr*  
-  是一个数值表达式。  
+  为数值表达式。  
 
 ## <a name="return-types"></a>返回类型
 
-  返回一个数值表达式。  
+  返回数值表达式。  
 
 ## <a name="examples"></a>示例
 
@@ -41,7 +41,7 @@ FLOOR (<numeric_expr>)
 SELECT FLOOR(123.45) AS fl1, FLOOR(-123.45) AS fl2, FLOOR(0.0) AS fl3  
 ```  
 
- 下面是结果集。  
+ 下面是结果集：  
 
 ```json
 [{fl1: 123, fl2: -124, fl3: 0}]  

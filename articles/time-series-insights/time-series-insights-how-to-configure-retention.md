@@ -12,16 +12,16 @@ origin.date: 01/17/2020
 ms.date: 02/17/2020
 ms.custom: seodec18
 ms.openlocfilehash: e00268d74260f89ae01eecdd7b58e7b3d73d9a64
-ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77068096"
 ---
 # <a name="configuring-retention-in-time-series-insights"></a>在时序见解中配置保留期
 本文介绍如何在 Azure 时序见解中配置**数据保留时间**和**超出存储限制时的行为**。
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>总结
 
 每个 Azure 时序见解环境都有用于配置**数据保留时间**的设置。 该值的范围为 1 到 400 天。 将根据环境存储容量或保留期限 (1-400) 删除数据，以先达到的条件为准。
 
@@ -33,7 +33,7 @@ ms.locfileid: "77068096"
 
 ## <a name="configure-data-retention"></a>配置数据保留
 
-1. 登录到 [Azure 门户](https://portal.azure.cn)。
+1. 登录 [Azure 门户](https://portal.azure.cn)。
 
 2. 查找现有时序见解环境。 在 Azure 门户左侧的菜单中，选择“所有资源”  。 选择时序见解环境。
 

@@ -7,15 +7,15 @@ ms.date: 01/20/2020
 ms.author: v-yeche
 ms.topic: conceptual
 ms.openlocfilehash: 945bb31ac546c84e06fa990a21b752355ed9ead1
-ms.sourcegitcommit: 8de025ca11b62e06ba3762b5d15cc577e0c0f15d
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "76165433"
 ---
 # <a name="create-and-deploy-azure-resource-manager-templates-by-using-the-intellij-idea"></a>使用 IntelliJ IDEA 创建和部署 Azure 资源管理器模板
 
-了解如何使用 IntelliJ IDEA 将资源管理器模板部署到 Azure，以及如何直接从 IDE 编辑和更新该模板。 Resource Manager 模板为 JSON 文件，用于定义针对解决方案进行部署时所需的资源。 若要了解与部署和管理 Azure 解决方案关联的概念，请参阅[模版部署概述](overview.md)。
+了解如何使用 IntelliJ IDEA 将资源管理器模板部署到 Azure，以及如何直接从 IDE 编辑和更新该模板。 Resource Manager 模板为 JSON 文件，用于定义针对解决方案进行部署时所需的资源。 若要了解与部署和管理 Azure 解决方案关联的概念，请参阅[模板部署概述](overview.md)。
 
 ![资源管理器模板门户关系图](./media/quickstart-create-templates-use-the-portal/azure-resource-manager-export-deploy-template-portal.png)
 
@@ -27,7 +27,7 @@ ms.locfileid: "76165433"
 
 若要完成本文，需要做好以下准备：
 
-* 安装了 [IntelliJ IDEA](https://www.jetbrains.com/idea/download/) 旗舰版或社区版
+* 已安装的 [IntelliJ IDEA](https://www.jetbrains.com/idea/download/) 旗舰版或社区版
 * 已安装的 [Azure Toolkit for IntelliJ](https://plugins.jetbrains.com/plugin/8053)。有关详细信息，请查看 [IntelliJ 的插件管理指南](https://www.jetbrains.com/help/idea/managing-plugins.html)
 * [登录](https://docs.azure.cn/java/intellij/azure-toolkit-for-intellij-sign-in-instructions)适用于 Azure Toolkit for IntelliJ 的 Azure 帐户
 
@@ -41,7 +41,7 @@ ms.locfileid: "76165433"
 
     ![资源管理器模板 - 右键单击以创建部署](./media/create-templates-use-intellij/resource-manager-create-deployment-right-click.png)
 
-1. 配置“部署名称”、“订阅”、“资源组”和“区域”。     此处，我们要将模板部署到新资源组 `testRG`。 然后，选择 `azuredeploy.json` 作为**资源模板**的路径，并选择下载的 `azuredeploy.parameters.json` 作为**资源参数**。
+1. 配置“部署名称”、“订阅”、“资源组”和“区域”。     此处，我们要将模板部署到新资源组 `testRG`。 然后，选择  **作为**资源模板`azuredeploy.json`的路径，并选择下载的  **作为**资源参数`azuredeploy.parameters.json`。
 
     ![资源管理器模板 - 选择用于创建部署的文件](./media/create-templates-use-intellij/resource-manager-create-deployment-select-files.png)
 

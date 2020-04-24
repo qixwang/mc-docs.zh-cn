@@ -9,10 +9,10 @@ origin.date: 08/02/2018
 ms.date: 09/07/2018
 ms.topic: conceptual
 ms.openlocfilehash: 4ecc8da920ebe15380717211fe04e51c63c13970
-ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75858198"
 ---
 # <a name="rendering-applications"></a>渲染应用程序
@@ -42,7 +42,7 @@ ms.locfileid: "75858198"
 
 说明：
 
-* 请务必小心操作，以确保能够找到资产文件。  使用“资产跟踪”窗口来确保路径正确且相关，或者在命令行中使用 `-bitmapPath` 参数。 
+* 请务必小心操作，以确保能够找到资产文件。  使用“资产跟踪”窗口来确保路径正确且相关，或者在命令行中使用  **参数。** `-bitmapPath`
 * 运行任务时检查 3ds Max 写入的 `stdout.txt` 文件，查看渲染器是否有问题，例如，找不到资产。
 
 ### <a name="batch-explorer-templates"></a>Batch Explorer 模板

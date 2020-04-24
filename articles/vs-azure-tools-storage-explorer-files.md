@@ -16,10 +16,10 @@ origin.date: 03/09/2017
 ms.date: 09/10/2018
 ms.author: v-junlch
 ms.openlocfilehash: e21ca46f993c633ec15bb123c239e322edcc4b9f
-ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77068221"
 ---
 # <a name="using-storage-explorer-with-azure-file-storage"></a>将存储资源管理器与 Azure 文件存储配合使用
@@ -158,7 +158,7 @@ Azure 文件存储是一种使用标准服务器消息块 (SMB) 协议在云中�
 
     ![“管理访问策略”上下文菜单](./media/vs-azure-tools-storage-explorer-files/image13.png)
 
-1. “访问策略”对话框列出为所选文件共享创建的任何访问策略。 
+1. “访问策略”对话框将列出为所选文件共享创建的任何访问策略。 
     
     ![访问策略](./media/vs-azure-tools-storage-explorer-files/image14.png)
 
@@ -200,11 +200,11 @@ Azure 文件存储是一种使用标准服务器消息块 (SMB) 协议在云中�
 
     - **将文件上传到文件共享**
 
-        a.  在主窗格的工具栏上选择“上传”，并从下拉菜单中选择“上传文件”。  
+        a.  在主窗格的工具栏上选择“上载”，并从下拉菜单中选择“上载文件”。  
 
         ![上传文件](./media/vs-azure-tools-storage-explorer-files/image18.png)
         
-        b. 在“上传文件”对话框中，选择“文件”文本框右侧的省略号 ( **…** ) 按钮，以选择要上传的文件。  
+        b. 在“上传文件”对话框中，选择“文件”文本框右侧的省略号 (…) 按钮，以选择要上传的文件。   
 
         ![添加文件](./media/vs-azure-tools-storage-explorer-files/image19.png)
 
@@ -212,11 +212,11 @@ Azure 文件存储是一种使用标准服务器消息块 (SMB) 协议在云中�
 
     - **将文件夹上传到文件共享**
         
-        a. 在主窗格的工具栏上选择“上传”，并从下拉菜单中选择“上传文件夹”。  
+        a. 在主窗格的工具栏上选择“上载”，并从下拉菜单中选择“上载文件夹”。  
 
         ![“上传文件夹”菜单](./media/vs-azure-tools-storage-explorer-files/image20.png)
 
-        b. 在“上传文件夹”对话框中，选择“文件夹”文本框右侧的省略号 ( **…** ) 按钮，以选择要上传其内容的文件夹。  
+        b. 在“上传文件夹”对话框中，选择“文件夹”文本框右侧的省略号 (…) 按钮，以选择要上传其内容的文件夹。   
 
         c. （可选）指定要将选定文件夹的内容上传到其中的目标文件夹。 如果目标文件夹不存在，系统会创建一个。
 
@@ -230,7 +230,7 @@ Azure 文件存储是一种使用标准服务器消息块 (SMB) 协议在云中�
         
         c. 在“指定已下载文件的保存位置”对话框中，指定要将文件下载到其中的位置，以及要为文件提供的名称。 
 
-        d. 选择“保存”  。
+        d. 选择“保存”。 
 
     - **在本地计算机上打开文件**
         
@@ -238,7 +238,7 @@ Azure 文件存储是一种使用标准服务器消息块 (SMB) 协议在云中�
         
         b.  在主窗格的工具栏上，选择“打开”。 
         
-        c.  会使用与文件的基础文件类型相关联的应用程序下载和打开文件。
+        c.  将使用与文件的基础文件类型相关联的应用程序下载和打开文件。
 
     - **将文件复制到剪贴板**
 

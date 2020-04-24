@@ -13,10 +13,10 @@ ms.reviewer: ''
 origin.date: 03/12/2019
 ms.date: 02/17/2020
 ms.openlocfilehash: 59bb6777d36f4234fb488400553767013b9ea8ef
-ms.sourcegitcommit: d7b86a424b72849fe8ed32893dd05e4696e4fe85
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77155722"
 ---
 # <a name="azure-sql-database-servers-and-their-management"></a>Azure SQL 数据库服务器及其管理
@@ -31,21 +31,21 @@ SQL 数据库服务器不同于在本地环境中可能已熟悉的 SQL Server �
 
 SQL 数据库服务器：
 
-- 在某个 Azure 订阅中创建，但可以与其包含的资源一起移到另一个订阅
+- 在 Azure 订阅中创建，但可以与其包含的资源一起移到另一个订阅
 - 是数据库、弹性池和数据仓库的父资源
 - 为数据库、弹性池和数据仓库提供命名空间
 - 是具有强生存期语义的逻辑容器。也就是说，删除服务器也会随之删除包含的数据库、弹性池和数据仓库
 - 参与 [Azure 基于角色的访问控制 (RBAC)](/role-based-access-control/overview)。也就是说，服务器中的数据库、弹性池和数据库从服务器继承访问权限
 - 是位置靠前的数据库、弹性池和数据仓库标识元素，用于管理 Azure 资源（请参阅“数据库和池的 URL 方案”）
-- 在区域中并置资源
+- 并置区域中的资源
 - 为数据库访问提供连接终结点 (`<serverName>`.database.chinacloudapi.cn)
-- 通过连接到 master 数据库通过 DMV 提供对所含资源相关元数据的访问方式
+- 连接到 master 数据库通过 DMV 提供对与包含资源相关的元数据的访问
 - 提供应用于数据库的管理策略的作用域，即登录名、防火墙、审核、威胁检测等
 - 受父订阅中的配额限制（默认情况下，每个订阅六个服务器，[请单击此处了解订阅限制](../azure-resource-manager/management/azure-subscription-service-limits.md)）
 - 提供所含资源的数据库配额和 DTU 或 vCore 配额范围（例如，45,000 个 DTU）
 - 是在包含资源上启用的功能的版本控制作用域
 - 服务器级主体登录名可以管理服务器上的所有数据库
-- 可以包含的登录名类似于本地 SQL Server 实例中的登录名，这些登录名有权访问服务器上的一个或多个数据库，并且可以被授予有限的管理权限。 有关详细信息，请参阅[登录名](sql-database-manage-logins.md)。
+- 可以包含与本地 SQL Server 实例中的登录名类似的登录名，这些登录名有权访问服务器上的一个或多个数据库，并可以向这些登录名授予有限的管理权限。 有关详细信息，请参阅[登录名](sql-database-manage-logins.md)。
 - 用于所有在 SQL 数据库服务器上创建的数据库的默认排序规则是 `SQL_LATIN1_GENERAL_CP1_CI_AS`，其中 `LATIN1_GENERAL` 为英语（美国），`CP1` 为代码页 1252，`CI` 不区分大小写，`AS` 区分重音符。
 
 ## <a name="manage-azure-sql-servers-databases-and-firewalls-using-the-azure-portal"></a>使用 Azure 门户管理 Azure SQL 服务器、数据库和防火墙
@@ -117,7 +117,7 @@ SQL 数据库服务器：
 | --- | --- |
 |[az sql db create](/cli/sql/db#az-sql-db-create) |创建数据库|
 |[az sql db list](/cli/sql/db#az-sql-db-list)|列出某台服务器中的所有数据库和数据仓库，或者列出弹性池中的所有数据库|
-|[az sql db list-editions](/cli/sql/db#az-sql-db-list-editions)|列出可用的服务目标和存储限制|
+|[az sql db list-editions](/cli/sql/db#az-sql-db-list-editions)|列出可用的服务目标和存储上限|
 |[az sql db list-usages](/cli/sql/db#az-sql-db-list-usages)|返回数据库使用情况|
 |[az sql db show](/cli/sql/db#az-sql-db-show)|获取数据库或数据仓库|
 |[az sql db update](/cli/sql/db#az-sql-db-update)|更新数据库|
@@ -133,7 +133,7 @@ SQL 数据库服务器：
 |[az sql server firewall-rule list](/cli/sql/server/firewall-rule#az-sql-server-firewall-rule-list)|列出服务器上的防火墙规则|
 |[az sql server firewall-rule show](/cli/sql/server/firewall-rule#az-sql-server-firewall-rule-show)|显示防火墙规则的详细信息|
 |[az sql server firewall-rule update](/cli/sql/server/firewall-rule##az-sql-server-firewall-rule-update)|更新防火墙规则|
-|[az sql server firewall-rule delete](/cli/sql/server/firewall-rule#az-sql-server-firewall-rule-delete)|删除防火墙规则。|
+|[az sql server firewall-rule delete](/cli/sql/server/firewall-rule#az-sql-server-firewall-rule-delete)|删除防火墙规则|
 
 > [!TIP]
 > 有关 Azure CLI 快速入门，请参阅[使用 Azure CLI 创建 Azure SQL 单一数据库](sql-database-cli-samples.md)。 有关 Azure CLI 示例脚本，请参阅[使用 CLI 创建 Azure SQL 单一数据库和配置防火墙规则](scripts/sql-database-create-and-configure-database-cli.md)和[使用 CLI 监视和缩放 Azure SQL 单一数据库](scripts/sql-database-monitor-and-scale-database-cli.md)。
@@ -147,22 +147,22 @@ SQL 数据库服务器：
 > 无法使用 Transact-SQL 创建或删除服务器。
 >
 
-| 命令 | 说明 |
+| Command | 说明 |
 | --- | --- |
-|[CREATE DATABASE（Azure SQL 数据库）](https://docs.microsoft.com/sql/t-sql/statements/create-database-azure-sql-database)|新建数据库。 必须连接到 master 数据库才能新建数据库。|
+|[CREATE DATABASE（Azure SQL 数据库）](https://docs.microsoft.com/sql/t-sql/statements/create-database-azure-sql-database)|创建新数据库。 您必须连接到 master 数据库才能创建新的数据库。|
 |[ALTER DATABASE（Azure SQL 数据库）](https://docs.microsoft.com/sql/t-sql/statements/alter-database-azure-sql-database) |修改 Azure SQL 数据库。 |
-|[ALTER DATABASE（Azure SQL 数据仓库）](https://docs.microsoft.com/sql/t-sql/statements/alter-database-azure-sql-data-warehouse)|修改 Azure SQL 数据仓库。|
+|[ALTER DATABASE (Azure SQL Data Warehouse)](https://docs.microsoft.com/sql/t-sql/statements/alter-database-azure-sql-data-warehouse)|修改 Azure SQL 数据仓库。|
 |[DROP DATABASE (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/drop-database-transact-sql)|删除数据库。|
-|[sys.database_service_objectives（Azure SQL 数据库）](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-database-service-objectives-azure-sql-database)|返回 Azure SQL 数据库或 Azure SQL 数据仓库的版本（服务层级）、服务目标（定价层）和弹性池名称（若有）。 如果已登录到 Azure SQL 数据库服务器中的 master 数据库，则会返回所有数据库的相关信息。 对于 Azure SQL 数据仓库，必须连接到 master 数据库。|
-|[sys.dm_db_resource_stats（Azure SQL 数据库）](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)| 返回 Azure SQL 数据库中数据库的 CPU、IO 和内存消耗量。 即使数据库中没有活动，也会每隔 15 秒返回一行数据。|
-|[sys.resource_stats（Azure SQL 数据库）](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)|返回 Azure SQL 数据库的 CPU 使用率和存储数据。 在五分钟间隔内收集并聚合数据。|
-|[sys.database_connection_stats（Azure SQL 数据库）](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-database-connection-stats-azure-sql-database)|包含“SQL 数据库”数据库连接事件的统计信息，提供数据库连接成功和失败状态的概述。 |
-|[sys.event_log（Azure SQL 数据库）](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-event-log-azure-sql-database)|返回成功的“Azure SQL 数据库”数据库连接数、连接失败次数和死锁数。 可以使用此信息跟踪 SQL 数据库的数据库活动并排查其问题。|
-|[sp_set_firewall_rule（Azure SQL 数据库）](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-set-firewall-rule-azure-sql-database)|创建或更新 SQL 数据库服务器的服务器级防火墙设置。 此存储过程仅在服务器级别主体登录名的 master 数据库中可用。 只有在拥有 Azure 级权限的用户创建首个服务器级防火墙规则后，才能使用 Transact-SQL 创建服务器级防火墙规则|
-|[sys.firewall_rules（Azure SQL 数据库）](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-firewall-rules-azure-sql-database)|返回与 Microsoft Azure SQL 数据库关联的服务器级防火墙设置的相关信息。|
-|[sp_delete_firewall_rule（Azure SQL 数据库）](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-delete-firewall-rule-azure-sql-database)|从 SQL 数据库服务器中删除服务器级防火墙设置。 此存储过程仅在服务器级别主体登录名的 master 数据库中可用。|
+|[sys.database_service_objectives (Azure SQL Database)](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-database-service-objectives-azure-sql-database)|返回 Azure SQL 数据库或 Azure SQL 数据仓库的版本（服务层级）、服务目标（定价层）和弹性池名称（若有）。 如果已登录到 Azure SQL 数据库服务器中的 master 数据库，则会返回所有数据库的相关信息。 对于 Azure SQL 数据仓库，必须连接到 master 数据库。|
+|[sys.dm_db_resource_stats（Azure SQL 数据库）](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)| 返回 Azure SQL 数据库中数据库的 CPU、IO 和内存消耗量。 每隔 15 秒会显示一行，即使该数据库中没有任何活动也是如此。|
+|[sys.resource_stats（Azure SQL 数据库）](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)|返回 Azure SQL 数据库的 CPU 使用率和存储数据。 在五分钟的间隔内收集和聚合数据。|
+|[sys.database_connection_stats（Azure SQL 数据库）](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-database-connection-stats-azure-sql-database)|包含 SQL 数据库的数据库连接事件的统计信息，并提供数据库连接成功和失败的概述。 |
+|[sys.event_log（Azure SQL 数据库）](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-event-log-azure-sql-database)|返回成功的 Azure SQL 数据库的数据库连接数、连接失败数和死锁数。 可以使用此信息跟踪或排查 SQL 数据库的数据库活动。|
+|[sp_set_firewall_rule（Azure SQL 数据库）](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-set-firewall-rule-azure-sql-database)|创建或更新 SQL 数据库服务器的服务器级防火墙设置。 此存储过程只在 master 数据库中适用于服务器级主体登录名。 只有在拥有 Azure 级权限的用户创建首个服务器级防火墙规则后，才能使用 Transact-SQL 创建服务器级防火墙规则|
+|[sys.firewall_rules (Azure SQL Database)](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-firewall-rules-azure-sql-database)|返回与 Microsoft Azure SQL 数据库关联的服务器级防火墙设置的相关信息。|
+|[sp_delete_firewall_rule（Azure SQL 数据库）](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-delete-firewall-rule-azure-sql-database)|从 SQL 数据库服务器中删除服务器级防火墙设置。 此存储过程只在 master 数据库中适用于服务器级主体登录名。|
 |[sp_set_database_firewall_rule（Azure SQL 数据库）](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-set-database-firewall-rule-azure-sql-database)|创建或更新 Azure SQL 数据库或 SQL 数据仓库的数据库级防火墙规则。 可以为 master 数据库以及 SQL 数据库上的用户数据库配置数据库防火墙规则。 使用包含的数据库用户时，数据库防火墙规则非常有用。 |
-|[sys.database_firewall_rules（Azure SQL 数据库）](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-database-firewall-rules-azure-sql-database)|返回与 Azure SQL 数据库关联的数据库级防火墙设置的相关信息。 |
+|[sys.database_firewall_rules (Azure SQL Database)](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-database-firewall-rules-azure-sql-database)|返回与 Azure SQL 数据库关联的数据库级防火墙设置的相关信息。 |
 |[sp_delete_database_firewall_rule（Azure SQL 数据库）](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-delete-database-firewall-rule-azure-sql-database)|从 Azure SQL 数据库或 SQL 数据仓库中删除数据库级防火墙规则设置。 |
 
 > [!TIP]
@@ -172,7 +172,7 @@ SQL 数据库服务器：
 
 若要创建并管理 Azure SQL 服务器、数据库和防火墙，请使用以下 REST API 请求。
 
-| 命令 | 说明 |
+| Command | 说明 |
 | --- | --- |
 |[服务器 - 创建或更新](https://docs.microsoft.com/rest/api/sql/servers/createorupdate)|创建或更新新服务器。|
 |[Servers - Delete](https://docs.microsoft.com/rest/api/sql/servers/delete)|删除 SQL Server。|
@@ -194,4 +194,4 @@ SQL 数据库服务器：
 ## <a name="next-steps"></a>后续步骤
 
 - 若要详细了解如何将 SQL Server 数据库迁移到 Azure，请参阅[迁移到 Azure SQL 数据库](sql-database-single-database-migrate.md)。
-- 有关受支持功能的信息，请参阅[功能](sql-database-features.md)。
+- 有关支持的功能的信息，请参阅[功能](sql-database-features.md)。

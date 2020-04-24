@@ -6,10 +6,10 @@ ms.topic: reference
 ms.date: 01/13/2020
 ms.author: v-junlch
 ms.openlocfilehash: 604421030a147e854fc060e2692a30885fc3d83d
-ms.sourcegitcommit: 48d51745ca18de7fa05b77501b4a9bf16cea2068
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "76116883"
 ---
 # <a name="azure-functions-deployment-slots"></a>Azure Functions 部署槽

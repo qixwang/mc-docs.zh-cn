@@ -10,10 +10,10 @@ origin.date: 01/23/2020
 ms.date: 02/17/2020
 ms.author: v-yiso
 ms.openlocfilehash: b9862015523814135116ff2eadac14c859a32d6f
-ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77068161"
 ---
 # <a name="post-to-custom-topic-for-azure-event-grid"></a>发布到 Azure 事件网格的自定义主题
@@ -22,7 +22,7 @@ ms.locfileid: "77068161"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="endpoint"></a>终结点
+## <a name="endpoint"></a>端点
 
 使用 URI 格式 `https://<topic-endpoint>?api-version=2018-01-01` 将 HTTP POST 发送到自定义主题。
 
@@ -105,7 +105,7 @@ az eventgrid topic key list --name <topic-name> -g <topic-resource-group> --quer
 |结果  |响应  |
 |---------|---------|
 |Success  | 200 正常  |
-|事件数据的格式不正确 | 400 错误的请求 |
+|事件数据的格式不正确 | 400 错误请求 |
 |访问密钥无效 | 401 未授权 |
 |终结点不正确 | 404 未找到 |
 |数组或事件超出大小限制 | 413 有效负载太大 |

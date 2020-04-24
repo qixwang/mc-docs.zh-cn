@@ -12,10 +12,10 @@ ms.date: 01/16/2020
 ms.author: v-junlch
 ms.subservice: B2C
 ms.openlocfilehash: 49b481ed2d783fa0d283f225fcad6984a51251b4
-ms.sourcegitcommit: 48d51745ca18de7fa05b77501b4a9bf16cea2068
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "76116947"
 ---
 # <a name="error-codes-azure-active-directory-b2c"></a>错误代码：Azure Active Directory B2C

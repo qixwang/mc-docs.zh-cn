@@ -12,10 +12,10 @@ ms.custom: mvc seodec18
 origin.date: 12/20/2019
 ms.date: 01/27/2020
 ms.openlocfilehash: 8a46fa521b04ce10c1ef968999ad0f93cb3d3e46
-ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77068057"
 ---
 # <a name="quickstart-explore-the-azure-time-series-insights-preview-demo-environment"></a>快速入门：浏览 Azure 时序见解预览版演示环境

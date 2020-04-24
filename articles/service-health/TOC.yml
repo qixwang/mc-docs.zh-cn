@@ -30,7 +30,7 @@
       href: resource-health-alert-arm-template-guide.md
 - name: 资源
   items:
-    - name: 常见问题解答
+    - name: 常见问题
       href: resource-health-faq.md
     - name: 定价计算器
       href: 'https://azure.microsoft.com/pricing/calculator/'

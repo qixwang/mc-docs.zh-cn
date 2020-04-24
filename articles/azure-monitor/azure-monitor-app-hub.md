@@ -10,10 +10,10 @@ origin.date: 01/15/2019
 ms.date: 6/4/2019
 ms.author: v-lingwu
 ms.openlocfilehash: 6e27e6e579ed473794dea476da11c1a60b7edd71
-ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75857995"
 ---
 <div id="main" class="v2">
@@ -63,7 +63,7 @@ ms.locfileid: "75857995"
                                             <div class="cardPadding">
                                                 <div class="card">
                                                     <div class="cardText">
-                                                        <h3>新增功能？</h3>
+                                                        <h3>新增功能</h3>
                                                         <p>
                                                             <a href="./app/kubernetes.md">监视 Kubernetes 应用程序</a><br>
                                                             <a href="./app/status-monitor-v2-overview.md">用于 IIS 应用的状态监视器 v2</a><br>

@@ -13,10 +13,10 @@ ms.reviewer: carlrab
 origin.date: 01/14/2019
 ms.date: 02/17/2020
 ms.openlocfilehash: 23395c9695dbe69e14b7038eb2470f0707144358
-ms.sourcegitcommit: d7b86a424b72849fe8ed32893dd05e4696e4fe85
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77155683"
 ---
 # <a name="tutorial-set-up-sql-data-sync-between-azure-sql-database-and-sql-server-on-premises"></a>教程：设置 Azure SQL 数据库和本地 SQL Server 之间的 SQL 数据同步

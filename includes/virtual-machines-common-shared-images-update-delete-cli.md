@@ -10,10 +10,10 @@ ms.date: 05/20/2019
 ms.author: v-yeche
 ms.custom: include file
 ms.openlocfilehash: 3ad63708d02496bc20dd21bc13624685de03c361
-ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77029199"
 ---
 ## <a name="update-resources"></a>更新资源

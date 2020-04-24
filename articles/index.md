@@ -9,10 +9,10 @@ ms.topic: hub-page
 featureFlags:
 - clicktale
 ms.openlocfilehash: db688c07a70d96f88a9d393354159d17bf121020
-ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75854361"
 ---
 <div id="main" class="v2">
@@ -238,7 +238,7 @@ ms.locfileid: "75854361"
                             <li></li>
                             <li class="bottomRightItem">
                                 <a href="https://aka.ms/aapw0h">
-                                <button style="cursor: pointer;position: relative; background: #0050C5; border:none; padding:8px 16px; padding-right:30px;color: white; font-size:14px;">查看所有中国区 Azure 服务<svg viewBox="0 0 10 14" style="fill:white;height: 14px;position: absolute;bottom: 13px;right: 12px;width: 1em;"><path d="M7.4 7L1 .6l.6-.6 7 7-7 7-.6-.7L7.4 7z"/></svg></button>
+                                <button style="cursor: pointer;position: relative; background: #0050C5; border:none; padding:8px 16px; padding-right:30px;color: white; font-size:14px;">查看所有中国区 Azure 服务<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 14" style="fill:white;height: 14px;position: absolute;bottom: 13px;right: 12px;width: 1em;"><path d="M7.4 7L1 .6l.6-.6 7 7-7 7-.6-.7L7.4 7z"/></svg></button>
                                 </a>
                             </li>
                         </ul>
@@ -304,7 +304,7 @@ ms.locfileid: "75854361"
                                             </a>
                                         </li>
                                     </ul>
-                                    <h3>分析</h3>
+                                    <h3>Analytics</h3>
                                     <ul>
                                         <li>
                                             <a href="/sql-data-warehouse/">
@@ -321,7 +321,7 @@ ms.locfileid: "75854361"
                                         <li>
                                             <a href="/data-factory/">
                                                 <img src="media/index/DataFactory.svg" alt="" />
-                                                <p>Data Factory</p>
+                                                <p>数据工厂</p>
                                             </a>
                                         </li>
                                         <li>
@@ -410,7 +410,7 @@ ms.locfileid: "75854361"
                                         <li>
                                             <a href="/batch/">
                                                 <img src="media/index/Batch.svg" alt="" />
-                                                <p>批处理</p>
+                                                <p>Batch</p>
                                             </a>
                                         </li>
                                         <li>
@@ -455,7 +455,7 @@ ms.locfileid: "75854361"
                                         <li>
                                             <a href="/batch/">
                                                 <img src="media/index/Batch.svg" alt="" />
-                                                <p>批处理</p>
+                                                <p>Batch</p>
                                             </a>
                                         </li>
                                         <li>
@@ -500,7 +500,7 @@ ms.locfileid: "75854361"
                                         <li>
                                             <a href="/data-factory/">
                                                 <img src="media/index/DataFactory.svg" alt="" />
-                                                <p>Data Factory</p>
+                                                <p>数据工厂</p>
                                             </a>
                                         </li>
                                         <li>
@@ -702,13 +702,13 @@ ms.locfileid: "75854361"
                                         <li>
                                             <a href="/backup/">
                                                 <img src="media/index/Backup.svg" alt="" />
-                                                <p>Backup</p>
+                                                <p>备份</p>
                                             </a>
                                         </li>
                                         <li>
                                             <a href="/site-recovery/">
                                                 <img src="media/index/SiteRecovery.svg" alt="" />
-                                                <p>站点恢复</p>
+                                                <p>Site Recovery</p>
                                             </a>
                                         </li>
                                         <li>
@@ -780,7 +780,7 @@ ms.locfileid: "75854361"
                                         <li>
                                             <a href="/azure-resource-manager/">
                                                 <img src="media/index/azure-resource-manager.svg" alt="" />
-                                                <p>Azure Resource Manager</p>
+                                                <p>Azure 资源管理器</p>
                                             </a>
                                         </li>
                                         <li>
@@ -866,7 +866,7 @@ ms.locfileid: "75854361"
                                         <li>
                                             <a href="/site-recovery/">
                                                 <img src="media/index/SiteRecovery.svg" alt="" />
-                                                <p>站点恢复</p>
+                                                <p>Site Recovery</p>
                                             </a>
                                         </li>
                                         <li>
@@ -878,7 +878,7 @@ ms.locfileid: "75854361"
                                     </ul>
                                 </div>
                                 <div class="group">
-                                    <h3>移动</h3>
+                                    <h3>移动型</h3>
                                     <ul>
                                         <li>
                                             <a href="/notification-hubs/">
@@ -889,7 +889,7 @@ ms.locfileid: "75854361"
                                         <li>
                                             <a href="/app-service-api/">
                                                 <img src="media/index/app-service-api.svg" alt="" />
-                                                <p>API Apps</p>
+                                                <p>API 应用</p>
                                             </a>
                                         </li>
                                         <li>
@@ -979,7 +979,7 @@ ms.locfileid: "75854361"
                                         <li>
                                             <a href="/key-vault/">
                                                 <img src="media/index/KeyVault.svg" alt="" />
-                                                <p>密钥保管库</p>
+                                                <p>Key Vault</p>
                                             </a>
                                         </li>
                                         <li>
@@ -1093,7 +1093,7 @@ ms.locfileid: "75854361"
                                         <li>
                                             <a href="/app-service-api/">
                                                 <img src="media/index/app-service-api.svg" alt="" />
-                                                <p>API Apps</p>
+                                                <p>API 应用</p>
                                             </a>
                                         </li>
                                     </ul>
@@ -1180,7 +1180,7 @@ ms.locfileid: "75854361"
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Data Factory</h3>
+                                                    <h3>数据工厂</h3>
                                                     <p>协调和管理数据转换与移动</p>
                                                 </div>
                                             </div>
@@ -1219,7 +1219,7 @@ ms.locfileid: "75854361"
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>流分析</h3>
-                                                    <p>对来自应用程序和设备的快速移动数据流进行实时分析</p>
+                                                    <p>实时分析来自应用程序和设备的数据的快速移动流</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1257,7 +1257,7 @@ ms.locfileid: "75854361"
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Power BI Embedded</h3>
-                                                    <p>在应用程序中嵌入完全交互式的、令人惊叹的数据可视化效果</p>
+                                                    <p>在应用程序中嵌入完整交互式的、令人惊叹的数据可视化</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1451,7 +1451,7 @@ ms.locfileid: "75854361"
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>批处理</h3>
+                                                    <h3>Batch</h3>
                                                     <p>云规模的作业计划和计算管理</p>
                                                 </div>
                                             </div>
@@ -1589,7 +1589,7 @@ ms.locfileid: "75854361"
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>批处理</h3>
+                                                    <h3>Batch</h3>
                                                     <p>云规模的作业计划和计算管理</p>
                                                 </div>
                                             </div>
@@ -1727,7 +1727,7 @@ ms.locfileid: "75854361"
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Data Factory</h3>
+                                                    <h3>数据工厂</h3>
                                                     <p>协调和管理数据转换与移动</p>
                                                 </div>
                                             </div>
@@ -2047,7 +2047,7 @@ ms.locfileid: "75854361"
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>安全信息</h3>
-                                                    <p>了解 Azure 如何提供用于生成云解决方案的安全基础结构</p>
+                                                    <p>了解 Azure 如何提供安全基础结构用于构建云解决方案</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2346,7 +2346,7 @@ ms.locfileid: "75854361"
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Backup</h3>
+                                                    <h3>备份</h3>
                                                     <p>以简单可靠的方式将服务器数据备份到云中</p>
                                                 </div>
                                             </div>
@@ -2365,7 +2365,7 @@ ms.locfileid: "75854361"
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>站点恢复</h3>
+                                                    <h3>Site Recovery</h3>
                                                     <p>协调私有云的保护和恢复</p>
                                                 </div>
                                             </div>
@@ -2499,7 +2499,7 @@ ms.locfileid: "75854361"
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Azure Monitor</h3>
-                                                    <p>对任何 Azure 资源进行高精度的实时数据监视</p>
+                                                    <p>针对任何 Azure 资源的高精度和实时监视数据</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2593,7 +2593,7 @@ ms.locfileid: "75854361"
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Azure Resource Manager</h3>
+                                                    <h3>Azure 资源管理器</h3>
                                                     <p>简化应用资源的管理方式</p>
                                                 </div>
                                             </div>
@@ -2851,7 +2851,7 @@ ms.locfileid: "75854361"
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>站点恢复</h3>
+                                                    <h3>Site Recovery</h3>
                                                     <p>协调私有云的保护和恢复</p>
                                                 </div>
                                             </div>
@@ -2913,7 +2913,7 @@ ms.locfileid: "75854361"
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>API Apps</h3>
+                                                    <h3>API 应用</h3>
                                                     <p>轻松生成和使用云 API</p>
                                                 </div>
                                             </div>
@@ -2933,7 +2933,7 @@ ms.locfileid: "75854361"
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>应用服务 - 移动应用</h3>
-                                                    <p>生成和托管任何移动应用的后端</p>
+                                                    <p>构建和承载任何移动应用的后端</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -3152,7 +3152,7 @@ ms.locfileid: "75854361"
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>安全信息</h3>
-                                                    <p>了解 Azure 如何提供用于生成云解决方案的安全基础结构</p>
+                                                    <p>了解 Azure 如何提供安全基础结构用于构建云解决方案</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -3189,7 +3189,7 @@ ms.locfileid: "75854361"
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>密钥保管库</h3>
+                                                    <h3>Key Vault</h3>
                                                     <p>保护密钥和其他机密并始终对其进行控制</p>
                                                 </div>
                                             </div>
@@ -3290,7 +3290,7 @@ ms.locfileid: "75854361"
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>存储</h3>
-                                                    <p>持久、高度可用且高度可缩放的云存储</p>
+                                                    <p>持久、高度可用、高度可缩放的云存储</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -3466,7 +3466,7 @@ ms.locfileid: "75854361"
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>应用服务 - Web 应用</h3>
-                                                    <p>快速创建并大规模部署任务关键型 Web 应用</p>
+                                                    <p>快速创建并部署可缩放的关键任务 Web 应用</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -3541,7 +3541,7 @@ ms.locfileid: "75854361"
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>API Apps</h3>
+                                                    <h3>API 应用</h3>
                                                     <p>轻松生成和使用云 API</p>
                                                 </div>
                                             </div>
@@ -3561,7 +3561,7 @@ ms.locfileid: "75854361"
                         <ul id="sdkstools-all" class="cardsF">
                             <li>
                                 <div class="container">
-                                    <h2>语言和框架</h2>
+                                    <h2>语言 &amp; 框架</h2>
                                 </div>
                             </li>
                             <li>
@@ -3770,7 +3770,7 @@ Azure CLI </h3>
                             </li>
                             <li>
                                 <div class="container">
-                                    <h2>工具和扩展</h2>
+                                    <h2>工具 &amp; 扩展</h2>
                                 </div>
                             </li>
                             <li>
@@ -3893,7 +3893,7 @@ Java 工具 </h3>
                                             </div>
                                             <div class="cardText">
                                                 <h3>
-                                                    <a href="https://www.visualstudio.com/vs/python">Python Tools</a>
+                                                    <a href="https://www.visualstudio.com/vs/python">Python 工具</a>
                                                 </h3>
                                                 <p>
                                                     <a href="https://docs.microsoft.com/visualstudio/python/python-in-visual-studio">Visual Studio</a>
@@ -3917,7 +3917,7 @@ Java 工具 </h3>
                                             </div>
                                             <div class="cardText">
                                                 <h3>
-Azure Resource Manager </h3>
+Azure 资源管理器 </h3>
                                                 <p>
                                                     <a href="/azure-resource-manager/vs-azure-tools-resource-groups-deployment-projects-create-deploy">Visual Studio</a>
                                                 </p>
@@ -4083,7 +4083,7 @@ Azure 体系结构中心包含用于在 Azure 上构建端到端解决方案的�
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>参考体系结构</h3>
-                                                    <p>适用于云的一组建议的体系结构。 每个体系结构都包括最佳做法、规范步骤和可部署的解决方案。</p>
+                                                    <p>为云建议的一组体系结构。 每种体系结构包括最佳实践、说明性的步骤和部署解决方案。</p>
                                                 </div>
                                             </div>
                                         </div>

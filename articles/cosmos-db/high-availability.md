@@ -9,10 +9,10 @@ ms.date: 02/10/2020
 ms.author: v-yeche
 ms.reviewer: sngun
 ms.openlocfilehash: c53eb54a64c8cdd8d538224a5c2019e5f518deb0
-ms.sourcegitcommit: 23dc63b6fea451f6a2bd4e8d0fbd7ed082ba0740
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "76980526"
 ---
 # <a name="high-availability-with-azure-cosmos-db"></a>使用 Azure Cosmos DB 实现高可用性
@@ -43,7 +43,7 @@ Azure Cosmos DB 以透明方式在与 Cosmos 帐户关联的所有 Azure 区域�
 
 ## <a name="high-availability-with-cosmos-db-in-the-event-of-regional-outages"></a>使用 Cosmos DB 在遇到区域性服务中断时提供高可用性
 
-区域性服务中断并不少见，而 Azure Cosmos DB 可确保你的数据库始终保持高可用性。 下面根据 Cosmos 帐户配置详细汇总了 Cosmos DB 在服务中断期间的行为：
+区域性服务中断并不少见，而 Azure Cosmos DB 可确保你的数据库始终高度可用。 下面根据 Cosmos 帐户配置详细汇总了 Cosmos DB 在服务中断期间的行为：
 
 - 使用 Cosmos DB 时，在客户端确认写入操作之前，数据将由接受写入操作的区域中的副本仲裁持久提交。
 

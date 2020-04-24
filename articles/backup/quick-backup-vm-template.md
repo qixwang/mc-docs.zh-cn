@@ -9,10 +9,10 @@ ms.date: 09/16/2019
 ms.author: v-lingwu
 ms.custom: mvc
 ms.openlocfilehash: 3b427dfd81a666ac1439e4bd15b98d8c1c48a24a
-ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77028870"
 ---
 # <a name="back-up-a-virtual-machine-in-azure-with-resource-manager-template"></a>使用资源管理器模板在 Azure 中备份虚拟机

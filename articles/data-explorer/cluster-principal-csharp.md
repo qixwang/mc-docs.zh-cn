@@ -9,10 +9,10 @@ ms.topic: conceptual
 origin.date: 02/03/2020
 ms.date: 02/17/2020
 ms.openlocfilehash: 5c234b9d7d780771104e240bbd893a2aab4f1847
-ms.sourcegitcommit: 7c80405a6b48380814b4b414e9f8a5756c007880
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77067774"
 ---
 # <a name="add-cluster-principals-for-azure-data-explorer-by-using-c"></a>使用 C# 向 Azure 数据资源管理器添加群集主体
@@ -76,7 +76,7 @@ await kustoManagementClient.ClusterPrincipalAssignments.CreateOrUpdateAsync(reso
 | clusterName | mykustocluster  | 群集的名称。|
 | principalAssignmentName | *clusterPrincipalAssignment1* | 群集主体资源的名称。|
 | principalId | *xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx* | 主体 ID，可以是用户电子邮件、应用程序 ID 或安全组名称。|
-| role | *AllDatabasesAdmin* | 群集主体的角色，可以是“AllDatabasesAdmin”或“AllDatabasesViewer”。|
+| 角色 (role) | *AllDatabasesAdmin* | 群集主体的角色，可以是“AllDatabasesAdmin”或“AllDatabasesViewer”。|
 | tenantIdForPrincipal | *xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx* | 主体的租户 ID。|
 | principalType | *应用* | 主体的类型，可以是“User”、“App”或“Group”|
 

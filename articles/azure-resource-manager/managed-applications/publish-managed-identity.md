@@ -7,10 +7,10 @@ origin.date: 05/13/2019
 ms.date: 01/20/2020
 ms.author: v-yeche
 ms.openlocfilehash: 593c79c2fc8b48f6d88bc141c024036ba1b5591b
-ms.sourcegitcommit: 8de025ca11b62e06ba3762b5d15cc577e0c0f15d
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "76170752"
 ---
 # <a name="azure-managed-application-with-managed-identity"></a>包含托管标识的 Azure 托管应用程序

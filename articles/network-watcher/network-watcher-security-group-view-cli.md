@@ -15,10 +15,10 @@ origin.date: 02/22/2017
 ms.date: 10/22/2018
 ms.author: v-lingwu
 ms.openlocfilehash: cd782d06edd2bfffb394bd300e222e597da49937
-ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77028518"
 ---
 # <a name="analyze-your-virtual-machine-security-with-security-group-view-using-azure-cli"></a>使用 Azure CLI 通过安全组视图分析虚拟机安全性
@@ -33,11 +33,11 @@ ms.locfileid: "77028518"
 
 若要执行本文中的步骤，需要[安装适用于 Mac、Linux 和 Windows 的 Azure 命令行接口 (Azure CLI)](https://docs.azure.cn/zh-cn/cli/install-az-cli2?view=azure-cli-latest)。
 
-## <a name="before-you-begin"></a>准备阶段
+## <a name="before-you-begin"></a>开始之前
 
 此方案假定已按照[创建网络观察程序](network-watcher-create.md)中的步骤创建网络观察程序。
 
-## <a name="scenario"></a>方案
+## <a name="scenario"></a>场景
 
 本文中介绍的方案检索给定虚拟机的已配置有效安全规则。
 

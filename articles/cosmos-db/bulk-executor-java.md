@@ -11,10 +11,10 @@ ms.date: 01/20/2020
 ms.author: v-yeche
 ms.reviewer: sngun
 ms.openlocfilehash: 174fa458f01fcf7f0b2721458229fbc25055caef
-ms.sourcegitcommit: 304861faf39689348962127b8b56db8082ece2ef
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "76270070"
 ---
 # <a name="use-bulk-executor-java-library-to-perform-bulk-operations-on-azure-cosmos-db-data"></a>使用 Bulk Executor Java 库针对 Azure Cosmos DB 数据执行批量操作
@@ -25,9 +25,9 @@ ms.locfileid: "76270070"
 
 ## <a name="prerequisites"></a>必备条件
 
-* 如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial/)。  
+* 如果没有 Azure 订阅，可在开始前创建一个 [试用帐户](https://www.azure.cn/pricing/1rmb-trial/) 。  
 
-* 可以通过 `https://localhost:8081` 终结点使用 [Azure Cosmos DB 模拟器](/cosmos-db/local-emulator)。 [对请求进行身份验证](local-emulator.md#authenticating-requests)中提供了主密钥。  
+* 可以通过 [ 终结点使用 ](/cosmos-db/local-emulator)Azure Cosmos DB 模拟器`https://localhost:8081`。 [对请求进行身份验证](local-emulator.md#authenticating-requests)中提供了主密钥。  
 
     <!-- Not Available on [Try Azure Cosmos DB for free](https://www.azure.cn/try/cosmosdb/) -->
 
@@ -50,7 +50,7 @@ ms.locfileid: "76270070"
  git clone https://github.com/Azure/azure-cosmosdb-bulkexecutor-java-getting-started.git 
 ```
 
-克隆的存储库包含相对于“\azure-cosmosdb-bulkexecutor-java-getting-started\samples\bulkexecutor-sample\src\main\java\com\microsoft\azure\cosmosdb\bulkexecutor”文件夹的两个示例：“bulkimport”和“bulkupdate”。 “bulkimport”应用程序生成随机文档并将其导入 Azure Cosmos DB。 “bulkupdate”应用程序更新 Azure Cosmos DB 中的某些文档。 在后续部分，我们将查看其中每个示例应用中的代码。 
+克隆的存储库包含相对于“\azure-cosmosdb-bulkexecutor-java-getting-started\samples\bulkexecutor-sample\src\main\java\com\microsoft\azure\cosmosdb\bulkexecutor”文件夹的两个示例：“bulkimport”和“bulkupdate”。 “bulkimport”应用程序会生成随机文档并将其导入 Azure Cosmos DB。 “bulkupdate”应用程序会更新 Azure Cosmos DB 中的某些文档。 在后续部分，我们将查看其中每个示例应用中的代码。 
 
 ## <a name="bulk-import-data-to-azure-cosmos-db"></a>将数据批量导入 Azure Cosmos DB
 
@@ -110,7 +110,7 @@ ms.locfileid: "76270070"
 
     importAll 方法接受以下参数：
 
-    |**参数**  |**说明**  |
+    |**Parameter**  |**说明**  |
     |---------|---------|
     |isUpsert    |   用于启用文档更新插入的标志。 如果已存在具有给定 ID 的文档，则会更新该文档。  |
     |disableAutomaticIdGeneration     |   用于禁用自动生成 ID 的标志。 此值默认设置为 true。   |
@@ -118,7 +118,7 @@ ms.locfileid: "76270070"
 
     **批量导入响应对象定义**批量导入 API 调用的结果包含以下 get 方法：
 
-    |**参数**  |**说明**  |
+    |**Parameter**  |**说明**  |
     |---------|---------|
     |int getNumberOfDocumentsImported()  |   从提供给批量导入 API 调用的文档中成功导入的文档总数。      |
     |double getTotalRequestUnitsConsumed()   |  批量导入 API 调用消耗的请求单位 (RU) 总数。       |
@@ -176,13 +176,13 @@ ms.locfileid: "76270070"
 
     updateAll 方法接受以下参数：
 
-    |**参数** |**说明** |
+    |**Parameter** |**说明** |
     |---------|---------|
     |maxConcurrencyPerPartitionRange   |  每个分区键范围的最大并发度。 默认值为 20。 |
 
     **批量导入响应对象定义**批量导入 API 调用的结果包含以下 get 方法：
 
-    |**参数** |**说明**  |
+    |**Parameter** |**说明**  |
     |---------|---------|
     |int getNumberOfDocumentsUpdated()  |   从提供给批量更新 API 调用的文档中成功更新的文档总数。      |
     |double getTotalRequestUnitsConsumed() |  批量更新 API 调用消耗的请求单位 (RU) 总数。       |

@@ -8,10 +8,10 @@ ms.topic: conceptual
 origin.date: 05/23/2019
 ms.date: 01/13/2020
 ms.openlocfilehash: 9ee3d35faad359c59be0ade8b3f51fb2610aae19
-ms.sourcegitcommit: 4f4694991e1c70929c7112ad45a0c404ddfbc8da
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75776659"
 ---
 # <a name="connectivity-architecture-in-azure-database-for-postgresql"></a>Azure Database for PostgreSQL 中的连接体系结构

@@ -10,10 +10,10 @@ ms.date: 02/10/2020
 ms.author: v-jay
 ms.subservice: queues
 ms.openlocfilehash: 453eaad1cf9639ee255edee338f55cefff83d48c
-ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77028975"
 ---
 # <a name="performance-and-scalability-checklist-for-queue-storage"></a>队列存储的性能与可伸缩性查检表

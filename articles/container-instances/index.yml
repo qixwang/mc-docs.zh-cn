@@ -13,10 +13,10 @@ metadata:
   ms.date: 01/15/2020
   ms.author: v-yeche
   ms.openlocfilehash: 53d026690dece1463fed144f09fc9690cfaa34ba
-  ms.sourcegitcommit: 97fdc3a6529136315605b86a150b345d6817dab9
+  ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 01/15/2020
+  ms.lasthandoff: 04/17/2020
   ms.locfileid: "75965112"
 landingContent:
 - title: 关于 Azure 容器实例
@@ -27,7 +27,7 @@ landingContent:
       url: container-instances-overview.md
     - text: 容器组
       url: container-instances-container-groups.md
-    - text: 常见问题
+    - text: 常见问题解答
       url: container-instances-faq.md
 - title: 入门
   linkLists:
@@ -57,7 +57,7 @@ landingContent:
       url: container-instances-vnet.md
     - text: 配置重启策略
       url: container-instances-restart-policy.md
-    - text: 设置环境变量。
+    - text: 设置环境变量
       url: container-instances-environment-variables.md
 - title: 管理容器应用
   linkLists:

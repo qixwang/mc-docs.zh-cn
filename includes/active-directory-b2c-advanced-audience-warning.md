@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 02/05/2020
 ms.author: v-junlch
 ms.openlocfilehash: a461021d4343fd697d9d0f2412e07bfd85f5f20f
-ms.sourcegitcommit: 23dc63b6fea451f6a2bd4e8d0fbd7ed082ba0740
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77028070"
 ---
 > [!NOTE]

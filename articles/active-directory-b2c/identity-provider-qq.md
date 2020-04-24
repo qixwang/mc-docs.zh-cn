@@ -11,10 +11,10 @@ ms.date: 02/04/2020
 ms.author: v-junlch
 ms.subservice: B2C
 ms.openlocfilehash: c020269bcad5b2bc9a7d4e4d82ef6eca3913d424
-ms.sourcegitcommit: 888cbc10f2348de401d4839a732586cf266883bf
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77028342"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-qq-account-using-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 设置通过 QQ 帐户注册与登录
@@ -38,7 +38,7 @@ ms.locfileid: "77028342"
 1. 转到[https://connect.qq.com/index.html](https://connect.qq.com/index.html)。
 1. 单击“应用管理”  (app management)。
 1. 选择“创建应用”  (create app)，然后输入所需的信息。
-1. 在“授权回调域”  (callback URL) 中输入 `https://your-tenant-name.b2clogin.cn/your-tenant-name}.partner.onmschina.cn/oauth2/authresp`。 例如，如果 `tenant_name` 是 contoso，请将 URL 设置为 `https://contoso.b2clogin.cn/contoso.partner.onmschina.cn/oauth2/authresp`。
+1. 在“授权回调域”`https://your-tenant-name.b2clogin.cn/your-tenant-name}.partner.onmschina.cn/oauth2/authresp` **(callback URL) 中输入** 。 例如，如果 `tenant_name` 是 contoso，请将 URL 设置为 `https://contoso.b2clogin.cn/contoso.partner.onmschina.cn/oauth2/authresp`。
 1. 选择“创建应用”  (create app)。
 1. 在确认页上选择“应用管理”  (app management) 返回应用管理页。
 1. 选择刚刚创建的应用旁边的“查看”  (view)。
@@ -47,12 +47,12 @@ ms.locfileid: "77028342"
 
 ## <a name="configure-qq-as-an-identity-provider"></a>将 QQ 配置为标识提供者
 
-1. 登录到 [Azure 门户](https://portal.azure.cn/)。
+1. 登录 [Azure 门户](https://portal.azure.cn/)。
 1. 在门户工具栏中选择“目录 + 订阅”图标，然后选择包含 Azure AD B2C 租户的目录  。
 1. 在 Azure 门户中，搜索并选择“Azure AD B2C”  。
 1. 选择“标识提供者”  ，然后选择“QQ (预览)”  。
 1. 输入“名称”  。 例如，QQ  。
 1. 对于**客户端 ID**，输入你之前创建的 QQ 应用程序的应用 ID。
 1. 对于**客户端密码**，输入你记录的应用密钥。
-1. 选择“保存”  。
+1. 选择“保存”。 
 

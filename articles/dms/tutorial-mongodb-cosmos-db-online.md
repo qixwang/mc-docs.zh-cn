@@ -14,10 +14,10 @@ ms.topic: article
 origin.date: 09/25/2019
 ms.date: 02/17/2020
 ms.openlocfilehash: cee07e4ebc946adea09059431e611e940ec32539
-ms.sourcegitcommit: 3f9d780a22bb069402b107033f7de78b10f90dde
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77192440"
 ---
 # <a name="tutorial-migrate-mongodb-to-azure-cosmos-dbs-api-for-mongodb-online-using-dms"></a>教程：使用 DMS 将 MongoDB 联机迁移到 Azure Cosmos DB 的用于 MongoDB 的 API
@@ -45,7 +45,7 @@ ms.locfileid: "77192440"
 
 本文介绍从 MongoDB 联机迁移到 Azure Cosmos DB 的用于 MongoDB 的 API。 有关脱机迁移方法，请参阅[使用 DMS 将 MongoDB 脱机迁移到 Azure Cosmos DB 的用于 MongoDB 的 API](tutorial-mongodb-cosmos-db.md)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 要完成本教程，需要：
 

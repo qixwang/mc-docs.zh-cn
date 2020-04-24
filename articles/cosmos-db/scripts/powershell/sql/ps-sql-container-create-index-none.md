@@ -1,6 +1,6 @@
 ---
 title: 用于在 Azure Cosmos 帐户中创建没有索引的容器的 PowerShell 脚本
-description: Azure PowerShell 脚本示例 - 在 Azure Cosmos 帐户中创建关闭了编制索引功能的容器
+description: Azure PowerShell 脚本示例 - 在 Azure Cosmos 帐户中创建一个关闭索引的容器
 author: rockboyfor
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
@@ -9,13 +9,13 @@ origin.date: 05/06/2019
 ms.date: 01/20/2020
 ms.author: v-yeche
 ms.openlocfilehash: dfae80439e21cb670e2dbe0f99ca4759803dfc44
-ms.sourcegitcommit: 304861faf39689348962127b8b56db8082ece2ef
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "76270088"
 ---
-# <a name="create-a-container-indexing-turned-off-in-an-azure-cosmos-account-using-powershell"></a>使用 PowerShell 在 Azure Cosmos 帐户中创建关闭了编制索引功能的容器
+# <a name="create-a-container-indexing-turned-off-in-an-azure-cosmos-account-using-powershell"></a>使用 PowerShell 在 Azure Cosmos 帐户中创建一个关闭索引的容器
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
@@ -101,7 +101,7 @@ Remove-AzResourceGroup -ResourceGroupName "myResourceGroup"
 
 此脚本使用以下命令。 表中的每条命令均链接到特定于命令的文档。
 
-| 命令 | 注释 |
+| Command | 说明 |
 |---|---|
 |**Azure 资源**| |
 | [New-AzResource](https://docs.microsoft.com/powershell/module/az.resources/new-azresource) | 创建资源。 |

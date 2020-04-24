@@ -8,10 +8,10 @@ origin.date: 06/10/2019
 ms.date: 02/10/2020
 ms.author: v-yeche
 ms.openlocfilehash: 8ad7fe2956745784796e116933e9f09669071acf
-ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77067861"
 ---
 # <a name="order-by-clause-in-azure-cosmos-db"></a>Azure Cosmos DB 中的 ORDER BY 子句
@@ -30,9 +30,9 @@ ORDER BY <sort_specification>
 
 - `<sort_specification>`  
 
-    指定对查询结果集进行排序时要依据的属性或表达式。 可将排序列指定为名称或属性别名。  
+    指定查询结合集要进行排序的属性或表达式。 可将排序列指定为名称或属性别名。  
 
-    可以指定多个属性。 属性名称必须唯一。 ORDER BY 子句中排序属性的顺序定义了排序结果集的组织方式。 也就是说，结果集首先按第一个属性排序，然后该有序列表按第二个属性排序，依此类推。  
+    可以指定多个属性。 属性名称必须唯一。 ORDER BY 子句中排序属性的顺序定义了排序结果集的组织方式。 即：结果集按第一个属性排序，然后该排序列表按第二个属性排序，依此类推。  
 
     ORDER BY 子句中引用的属性名称必须与 select 列表中的某个属性或者与在 FROM 子句中指定的集合中定义的某个属性相对应，且不存在任何多义性。  
 
@@ -42,11 +42,11 @@ ORDER BY <sort_specification>
 
 - `<scalar_expression>`  
 
-    有关详细信息，请参阅[标量表达式](sql-query-scalar-expressions.md)部分。  
+    请参阅[标量表达式](sql-query-scalar-expressions.md)部分，了解详细信息。  
 
 - `ASC | DESC`  
 
-    指定应当按升序或降序对指定列中的值进行排序。 ASC 将按照从最低值到最高值的顺序进行排序。 DESC 将按照从最高值到最低值的顺序进行排序。 ASC 是默认排序顺序。 Null 值被视为最低的可能值。  
+    指定按升序或降序排列指定列中的值。 ASC 按从最低值到最高值的顺序进行排序。 DESC 按从最高值到最低值的顺序进行排序。 ASC 是默认排序顺序。 Null 值被视为最低的可能值。  
 
 ## <a name="remarks"></a>备注  
 

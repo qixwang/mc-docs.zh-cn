@@ -9,10 +9,10 @@ origin.date: 06/27/2019
 ms.date: 01/13/2020
 ms.author: v-yeche
 ms.openlocfilehash: 489de1b54cd2ee8b9d2e62fde4c02720e1301a33
-ms.sourcegitcommit: 4f4694991e1c70929c7112ad45a0c404ddfbc8da
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75776715"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-sharepoint-application-for-disaster-recovery-using-azure-site-recovery"></a>使用 Azure Site Recovery 为多层 SharePoint 应用程序设置灾难恢复
@@ -59,7 +59,7 @@ Site Recovery 与应用程序无关，应与在受支持的计算机上运行的
 **Hyper-V** | 是 | 是
 **VMware** | 是 | 是
 **物理服务器** | 是 | 是
-**Azure** | 不可用 | 是
+**Azure** | NA | 是
 
 ### <a name="things-to-keep-in-mind"></a>要点
 
@@ -93,7 +93,7 @@ Site Recovery 与应用程序无关，应与在受支持的计算机上运行的
 
 用于面向 Internet 的站点，请在 Azure 订阅中[创建“优先级”类型的流量管理器配置文件](../traffic-manager/traffic-manager-create-profile.md)。 然后按以下方式配置 DNS 和流量管理器配置文件。
 
-| **Where** | **Source** | **Target**|
+| **Where** | **数据源** | **Target**|
 | --- | --- | --- |
 | 公共 DNS | SharePoint 站点的公共 DNS <br/><br/> 例如：sharepoint.contoso.com | 流量管理器 <br/><br/> contososharepoint.trafficmanager.cn |
 | 本地 DNS | sharepointonprem.contoso.com | 本地场中的公共 IP |
@@ -129,11 +129,11 @@ Site Recovery 与应用程序无关，应与在受支持的计算机上运行的
 
 > [!NOTE]
 > 选择以下 `Deploy to Azure` 后，选择 `Edit template` 并根据 Azure 中国区环境更新以下项。
-> * 在第 14 行中，将 `automationRegion` 参数的 `allowedValues` 属性替换为以下项。
+> * 在第 14 行中，将 `allowedValues` 参数的 `automationRegion` 属性替换为以下项。
 >   `chinaeast2,chinanorth,chinanorth2`
 > * 选择“保存”。
     
-[![“部署到 Azure”](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/c4803408-340e-49e3-9a1f-0ed3f689813d.png)](https://portal.azure.cn/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fazure%2Fazure-quickstart-templates%2Fmaster%2Fasr-automation-recovery%2F%2Fazuredeploy.json)
+[![部署到 Azure](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/c4803408-340e-49e3-9a1f-0ed3f689813d.png)](https://portal.azure.cn/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fazure%2Fazure-quickstart-templates%2Fmaster%2Fasr-automation-recovery%2F%2Fazuredeploy.json)
 
 1. 将操作前脚本添加到“组 1”，以故障转移 SQL 可用性组。 使用示例脚本中发布的“ASR-SQL-FailoverAG”脚本。 确保遵循脚本中的指导，并相应地在脚本中进行所需的更改。
 

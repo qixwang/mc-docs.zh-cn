@@ -10,10 +10,10 @@ origin.date: 12/03/2019
 ms.date: 01/20/2020
 ms.reviewer: sngun
 ms.openlocfilehash: 254916461960ac86f83e462de8a49f1ea8030c77
-ms.sourcegitcommit: 304861faf39689348962127b8b56db8082ece2ef
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "76270051"
 ---
 # <a name="change-feed-processor-in-azure-cosmos-db"></a>Azure Cosmos DB 更改源处理器 

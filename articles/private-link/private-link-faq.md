@@ -9,10 +9,10 @@ origin.date: 09/16/2019
 ms.date: 01/06/2020
 ms.author: v-yeche
 ms.openlocfilehash: b91ceed4393e6fe151089d6493eb021e860ef316
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75631650"
 ---
 # <a name="azure-private-link-frequently-asked-questions-faq"></a>Azure 专用链接常见问题解答 (FAQ)

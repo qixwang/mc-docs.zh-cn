@@ -6,10 +6,10 @@ origin.date: 03/23/2018
 ms.author: v-yeche
 ms.date: 01/06/2020
 ms.openlocfilehash: 189dd8fccff93525a1a744dfff0e45011034c440
-ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75742344"
 ---
 # <a name="remote-connect-to-a-virtual-machine-scale-set-instance-or-a-cluster-node"></a>远程连接到虚拟机规模集实例或群集节点
@@ -19,9 +19,9 @@ ms.locfileid: "75742344"
 
 1. 获取远程桌面协议 (RDP) 的入站 NAT 规则。
 
-    通常，群集中定义的每种节点类型有自己的虚拟 IP 地址和专用的负载均衡器。 默认情况下，使用以下格式命名节点类型的负载均衡器：LB-{cluster-name}-{node-type}  ；例如，LB-mycluster-FrontEnd  。 
+    通常，群集中定义的每种节点类型有自己的虚拟 IP 地址和专用的负载均衡器。 默认情况下，节点类型的负载均衡器以以下格式命名：LB-{节点名称}-{节点类型}；例如，LB-mycluster-FrontEnd   。 
 
-    在 Azure 门户中的负载均衡器页上，选择“设置” > “入站 NAT 规则”   ： 
+    在 Azure 门户中的负载均衡器页上，选择“设置” **“入站 NAT 规则”**  >   ： 
 
     ![负载均衡器入站 NAT 规则](./media/service-fabric-cluster-remote-connect-to-azure-cluster-node/lb-window.png)
 

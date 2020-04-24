@@ -14,10 +14,10 @@ ms.date: 02/10/2020
 ms.author: v-junlch
 ms.reviewer: bagovind
 ms.openlocfilehash: 7a8e1c12bc42cdce6bced7bac3e5538a3ed8f04a
-ms.sourcegitcommit: 99bd0019c5f01034b8765d7765ad7776c7d5e5ae
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77128871"
 ---
 # <a name="add-role-assignments-using-azure-rbac-and-azure-resource-manager-templates"></a>使用 Azure RBAC 和 Azure 资源管理器模板添加角色分配
@@ -28,7 +28,7 @@ ms.locfileid: "77128871"
 
 若要分配角色，需要指定要为其分配角色的用户、组或应用程序的 ID。 ID 的格式为：`11111111-1111-1111-1111-111111111111`。 可以使用 Azure 门户、Azure PowerShell 或 Azure CLI 获取 ID。
 
-### <a name="user"></a>User
+### <a name="user"></a>用户
 
 若要获取用户的 ID，可以使用 [Get-AzADUser](https://docs.microsoft.com/powershell/module/az.resources/get-azaduser) 或 [az ad user show](/cli/ad/user#az-ad-user-show) 命令。
 
@@ -364,6 +364,6 @@ az group deployment create --resource-group ExampleGroup2 --template-file rbac-t
 - [快速入门：使用 Azure 门户创建和部署 Azure 资源管理器模板](../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)
 - [了解 Azure 资源管理器模板的结构和语法](../azure-resource-manager/templates/template-syntax.md)
 - [在订阅级别创建资源组和资源](../azure-resource-manager/templates/deploy-to-subscription.md)
-- [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/?term=rbac)
+- [Azure 快速入门模板](https://azure.microsoft.com/resources/templates/?term=rbac)
 
 <!-- Update_Description: link update -->

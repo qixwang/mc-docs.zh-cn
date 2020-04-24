@@ -6,10 +6,10 @@ origin.date: 02/23/2018
 ms.author: v-yeche
 ms.date: 01/06/2020
 ms.openlocfilehash: 9882b389718ea072ea0faab07b3818da8883c75d
-ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75742467"
 ---
 # <a name="troubleshoot-application-upgrades"></a>应用程序升级故障排除
@@ -18,7 +18,7 @@ ms.locfileid: "75742467"
 
 ## <a name="troubleshoot-a-failed-application-upgrade"></a>失败的应用程序升级故障排除
 
-当升级失败时，**Get-ServiceFabricApplicationUpgrade** 命令的输出会包含用于调试失败的附加信息。  以下列表指定如何使用这些附加信息：
+当升级失败时，**Get-ServiceFabricApplicationUpgrade** 命令的输出将包含用于调试失败的附加信息。  以下列表指定如何使用这些附加信息：
 
 1. 识别失败类型。
 2. 识别失败原因。
@@ -34,7 +34,7 @@ ms.locfileid: "75742467"
 2. OverallUpgradeTimeout - 指示总体升级花费了太长时间才完成，并且 **UpgradeTimeout** 过期。
 3. HealthCheck - 指示在升级一个更新域后，根据指定的运行状况策略，应用程序的运行状况仍不正常，并且 **HealthCheckRetryTimeout** 过期。
 
-仅当升级失败并开始回滚时，才会在输出中显示这些项。 根据失败类型显示进一步的信息。
+仅当升级失败并开始回滚时，才会在输出中显示这些项。 将根据失败类型显示进一步的信息。
 
 ### <a name="investigate-upgrade-timeouts"></a>调查升级超时
 
@@ -76,13 +76,13 @@ ForceRestart                   : False
 UpgradeReplicaSetCheckTimeout  : 00:00:00
 ```
 
-在本示例中，升级域 *MYUD1* 的升级失败，两个分区（*744c8d9f-1d26-417e-a60e-cd48f5c098f0* 和 *4b43f4d8-b26b-424e-9307-7a7a62e79750*）已停滞。 分区由于运行时无法将主要副本 (*WaitForPrimaryPlacement*) 放在目标节点 *Node1* 和 *Node4* 上而停滞。
+在本示例中，升级域 *MYUD1* 的升级失败，两个分区（*744c8d9f-1d26-417e-a60e-cd48f5c098f0* 和 *4b43f4d8-b26b-424e-9307-7a7a62e79750*）已停滞。 分区由于运行时无法将主副本 (*WaitForPrimaryPlacement*) 放在目标节点 *Node1* 和 *Node4* 上而停滞。
 
 可使用 **Get-ServiceFabricNode** 命令验证这两个节点是否位于升级域 *MYUD1* 中。 *UpgradePhase* 为 *PostUpgradeSafetyCheck*，这意味着这些安全检查在升级域中所有节点完成升级后发生。 所有这些信息表明应用程序代码的新版本可能存在问题。 最常见的问题是打开或升级到主代码路径时的服务错误。
 
 *UpgradePhase* 为 *PreUpgradeSafetyCheck* 意味着在执行升级前，准备升级域时出现了问题。 这种情况下最常见的问题是关闭主代码路径或从该路径降级时的服务错误。
 
-当前 **UpgradeState** 为 *RollingBackCompleted*，因此必须已使用回滚 **FailureAction**（会在失败时自动回滚升级）执行原始升级。 如果已使用手动 **FailureAction** 执行了原始升级，则升级会改为处于挂起状态，以允许对应用程序进行实时调试。
+当前 **UpgradeState** 为 *RollingBackCompleted*，因此必须已使用回滚 **FailureAction**（会在失败时自动回滚升级）执行原始升级。 如果已使用手动 **FailureAction** 执行了原始升级，则升级将改为处于挂起状态，以允许对应用程序进行实时调试。
 
 在极少数情况下，当系统完成当前升级域的所有工作时，如果整体升级超时，则 UpgradeDomainProgressAtFailure 字段可能为空  。 如果发生这种情况，请尝试增加 UpgradeTimeout 和 UpgradeDomainTimeout 升级参数值，然后重试升级   。
 
@@ -150,13 +150,13 @@ ServiceTypeHealthPolicyMap              :
 
 ### <a name="recover-from-a-suspended-upgrade"></a>从挂起的升级恢复
 
-使用回滚 **FailureAction**时，无需任何恢复，因为在升级失败时会自动回滚。 使用手动 **FailureAction** 时，有以下几个恢复选项：
+使用回滚 **FailureAction** 时，无需任何恢复，因为在升级失败时会自动回滚。 使用手动 **FailureAction** 时，有以下几个恢复选项：
 
 1. 触发回滚
 2. 手动继续进行升级的其余部分
 3. 继续进行受监控的升级
 
-可随时使用 **Start-ServiceFabricApplicationRollback** 命令启动应用程序回滚。 一旦命令成功返回，回滚请求即已在系统中注册，并会立即启动。
+可随时使用 **Start-ServiceFabricApplicationRollback** 命令启动应用程序回滚。 一旦命令成功返回，回滚请求即已在系统中注册，并将立即启动。
 
 **Resume-ServiceFabricApplicationUpgrade** 命令可用于手动继续进行升级的其余部分，一次执行一个升级域。 在此模式下，系统只执行安全检查， 而不会再执行其他运行状况检查。 仅当 *UpgradeState* 显示 *RollingForwardPending* 时才可使用此命令，它表示当前升级域已完成升级但下一个升级域尚未启动（挂起）。
 
@@ -192,21 +192,21 @@ ServiceTypeHealthPolicyMap              :
 
 可能的原因 1：
 
-Service Fabric 将所有百分比转换为实际实体（如副本、分区和服务）数，以进行运行状况评估，并且此数目始终调高到实体整数。 例如，如果最大值 *MaxPercentUnhealthyReplicasPerPartition* 是 21% 且有 5 个副本，则 Service Fabric 允许最多 2 个运行状况不正常的副本（即 `Math.Ceiling (5*0.21)`）。 因此，设置运行状况策略时应考虑到这一点。
+Service Fabric 将所有百分比转换为实际实体（如副本、分区和服务）数，以进行运行状况评估，并且此数目将始终调高到实体整数。 例如，如果最大值 *MaxPercentUnhealthyReplicasPerPartition* 是 21% 且有 5 个副本，则 Service Fabric 允许最多 2 个运行状况不正常的副本（即 `Math.Ceiling (5*0.21)`）。 因此，设置运行状况策略时应考虑到这一点。
 
 可能的原因 2：
 
 运行状况策略以总服务数的百分比指定，而非具体服务实例数的百分比。 例如，如果在升级前应用程序有四个服务实例 A、B、C 和 D，其中服务 D 不正常，但这对应用程序没有明显影响。 我们想要在升级过程中忽略已知的不正常服务 D，并将参数 *MaxPercentUnhealthyServices* 设置为 25%，假设只需 A、B 和 C 处于正常状态。
 
-但在升级期间，D 可能变为正常，而 C 变为不正常。 升级仍会成功，因为只有 25% 的服务运行状况不正常。 但是，这可能导致非预期错误，因为 C 意外地变为不正常，而不是 D。在此情况下，应将 D 建模为不同于 A、B 和 C 的服务类型。由于可根据服务类型指定运行状况策略，因此可将不同的运行状况百分比阈值应用到不同的服务。 
+但在升级期间，D 可能变为正常，而 C 变为不正常。 升级仍会成功，因为只有 25% 的服务运行状况不正常。 但是，这可能导致非预期错误，因为 C 意外地变为不正常，而 D 变为正常。在此情况下，应将 D 建模为不同于 A、B 和 C 的服务类型。由于可根据服务类型指定运行状况策略，因此可将不同的运行状况百分比阈值应用到不同的服务。 
 
 ### <a name="i-did-not-specify-a-health-policy-for-application-upgrade-but-the-upgrade-still-fails-for-some-time-outs-that-i-never-specified"></a>我没有为应用程序升级指定运行状况策略，但升级仍因我从未指定的一些超时而失败
 
-当未向升级请求提供运行状况策略时，会使用当前应用程序版本的 *ApplicationManifest.xml* 中的策略。 例如，如果要将应用程序 X 从版本 1.0 升级到版本 2.0，则将使用版本 1.0 中指定的应用程序运行状况策略。 如果应对升级使用不同的运行状况策略，则需在应用程序升级 API 调用过程中指定该策略。 指定为 API 调用一部分的策略只会在升级期间应用。 升级完成后，使用 *ApplicationManifest.xml* 中指定的策略。
+当未向升级请求提供运行状况策略时，将使用当前应用程序版本的 *ApplicationManifest.xml* 中的策略。 例如，如果要将应用程序 X 从版本 1.0 升级到版本 2.0，将使用版本 1.0 中指定的应用程序运行状况策略。 如果应对升级使用不同的运行状况策略，则需将该策略指定为应用程序升级 API 调用的一部分。 指定为 API 调用一部分的策略只会在升级期间应用。 升级完成后，将使用 *ApplicationManifest.xml* 中指定的策略。
 
 ### <a name="incorrect-time-outs-are-specified"></a>指定了错误的超时值
 
-用户可能要知道当超时设置不一致时会发生什么情况。 例如，*UpgradeTimeout* 小于 *UpgradeDomainTimeout*。 答案是返回错误。 返回错误的情况包括：*UpgradeDomainTimeout* 小于 *HealthCheckWaitDuration* 和 *HealthCheckRetryTimeout* 的总和，或者 *UpgradeDomainTimeout* 小于 *HealthCheckWaitDuration* 和 *HealthCheckStableDuration* 的总和。
+用户可能要知道当超时设置不一致时会发生什么情况。 例如，*UpgradeTimeout* 小于 *UpgradeDomainTimeout*。 答案是将返回错误。 返回错误的情况包括：*UpgradeDomainTimeout* 小于 *HealthCheckWaitDuration* 和 *HealthCheckRetryTimeout* 的总和，或者 *UpgradeDomainTimeout* 小于 *HealthCheckWaitDuration* 和 *HealthCheckStableDuration* 的总和。
 
 ### <a name="my-upgrades-are-taking-too-long"></a>我升级花费的时间过长
 
@@ -222,7 +222,7 @@ Service Fabric 将所有百分比转换为实际实体（如副本、分区和�
 
 ## <a name="next-steps"></a>后续步骤
 
-[Upgrading your Application Using Visual Studio](service-fabric-application-upgrade-tutorial.md) （使用 Visual Studio 升级应用程序）逐步讲解了如何使用 Visual Studio 进行应用程序升级。
+[使用 Visual Studio 升级应用程序](service-fabric-application-upgrade-tutorial.md)逐步讲解了如何使用 Visual Studio 进行应用程序升级。
 
 [使用 Powershell 升级应用程序](service-fabric-application-upgrade-tutorial-powershell.md)逐步讲解了如何使用 PowerShell 进行应用程序升级。
 

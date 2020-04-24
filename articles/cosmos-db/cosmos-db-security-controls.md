@@ -9,10 +9,10 @@ origin.date: 12/02/2019
 ms.date: 01/20/2020
 ms.author: v-yeche
 ms.openlocfilehash: a8d0d844adfb9fa735082634a99ba9c8807a172e
-ms.sourcegitcommit: 23dc63b6fea451f6a2bd4e8d0fbd7ed082ba0740
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "76980435"
 ---
 # <a name="security-controls-for-azure-cosmos-db"></a>Azure Cosmos DB 的安全控制

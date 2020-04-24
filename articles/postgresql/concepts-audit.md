@@ -8,10 +8,10 @@ ms.topic: conceptual
 origin.date: 01/28/2020
 ms.date: 02/10/2020
 ms.openlocfilehash: 1813254adc60bc52f825279b8be0d517fba1f787
-ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77068370"
 ---
 # <a name="audit-logging-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL（单一服务器）中的审核日志记录
@@ -70,7 +70,7 @@ Azure Database for PostgreSQL（单一服务器）中数据库活动的审核日
 > `pgaudit.log_level` 只有在 `pgaudit.log_client` 为 on 的情况下启用。
 
 > [!NOTE]
-> 在 Azure Database for PostgreSQL 中，根据 pgAudit 文档中的说明，不能使用 `-`（减号）快捷方式来设置 `pgaudit.log`。 所有必需的声明类（READ、WRITE 等）应该单独指定。
+> 在 Azure Database for PostgreSQL 中，根据 pgAudit 文档中的说明，不能使用 `pgaudit.log`（减号）快捷方式来设置 `-`。 所有必需的声明类（READ、WRITE 等）应该单独指定。
 
 ### <a name="audit-log-format"></a>审核日志格式
 每个审核条目通过靠近日志行开头的 `AUDIT:` 进行指示。 条目其余部分的格式详见 [pgAudit 文档](https://github.com/pgaudit/pgaudit/blob/master/README.md#format)。

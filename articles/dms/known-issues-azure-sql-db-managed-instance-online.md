@@ -13,10 +13,10 @@ ms.topic: article
 origin.date: 12/18/2019
 ms.date: 01/13/2020
 ms.openlocfilehash: 36e3846b7ea1661c8d46a7f006fc1a93b2f2e6ba
-ms.sourcegitcommit: 4f4694991e1c70929c7112ad45a0c404ddfbc8da
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75776766"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-to-azure-sql-database-managed-instance"></a>联机迁移到 Azure SQL 数据库托管实例时存在的已知问题/迁移限制

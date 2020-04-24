@@ -10,10 +10,10 @@ ms.topic: conceptual
 origin.date: 12/07/2018
 ms.date: 08/07/2019
 ms.openlocfilehash: fc754f5bad149b87172a808fab0df5fcd00a0ad1
-ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75856906"
 ---
 # <a name="high-frequency-trading-simulation-with-stream-analytics"></a>使用流分析进行高频交易模拟
@@ -455,7 +455,7 @@ FROM simulation /* output trade simulation to PBI */
 
 ![PNL Power BI 图表视觉对象](./media/stream-analytics-high-frequency-trading/pnl-power-bi-chart.png)
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>总结
 可以在 Azure 流分析中使用中等复杂程度的查询来实现逼真的高频交易模型。 由于缺少内置的线性回归函数，我们必须将模型从五个输入变量简化为两个。 但如果用户有决心，也可以 JavaScript UDA 方式实现更高维且更复杂的算法。 
 
 需要指出的是，除 JavaScript UDA 之外的大部分查询可以在 Visual Studio 中通过[用于 Visual Studio 的 Azure 流分析工具](stream-analytics-tools-for-visual-studio-install.md)进行测试和调试。 在编写初始查询以后，作者在 Visual Studio 中花不到 30 分钟的时间对查询进行了测试和调试。 

@@ -14,10 +14,10 @@ ms.topic: article
 origin.date: 01/24/2020
 ms.date: 02/17/2020
 ms.openlocfilehash: f5b5b6edb90a1b3b55d8883fb00b37b9759df6d9
-ms.sourcegitcommit: 3f9d780a22bb069402b107033f7de78b10f90dde
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77192471"
 ---
 # <a name="tutorial-migrate-oracle-to-azure-database-for-postgresql-online-using-dms-preview"></a>教程：使用 DMS（预览版）将 Oracle 联机迁移到 Azure Database for PostgreSQL
@@ -44,7 +44,7 @@ ms.locfileid: "77192471"
 
 本文介绍如何从 Oracle 联机迁移到 Azure Database for PostgreSQL。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 要完成本教程，需要：
 

@@ -8,10 +8,10 @@ ms.topic: conceptual
 origin.date: 09/25/2019
 ms.date: 02/10/2020
 ms.openlocfilehash: ee85ee210646d24bf0c8d04729ba711a9cd59ad0
-ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77068326"
 ---
 # <a name="working-with-dates-in-azure-cosmos-db"></a>使用 Azure Cosmos DB 中的日期
@@ -61,8 +61,8 @@ Azure Cosmos DB 支持 JSON 类型，如字符串、数字、布尔值、null、
 
 也可将 DateTime 存储为 Unix 时间戳，即存储为数字，用于表示自 1970 年 1 月 1 日以来已过去的秒数。 Azure Cosmos DB 的内部时间戳 (`_ts`) 属性遵循这种方法。 可以使用 [UnixDateTimeConverter](https://docs.azure.cn/dotnet/api/microsoft.azure.documents.unixdatetimeconverter) 类将 DateTime 序列化为数字。 
 
-## <a name="indexing-datetimes-for-range-queries"></a>编制 DateTime 的索引以执行范围查询
-通常可以使用 DateTime 值执行范围查询。 例如，如果需要查找昨天以来创建的所有订单，或者查找过去五分钟内发运的所有订单，则要执行范围查询。 若要有效执行这些查询，必须针对字符串的范围索引配置集合。
+## <a name="indexing-datetimes-for-range-queries"></a>设置 DateTime 的索引，以便进行范围查询
+通常可以使用 DateTime 值进行范围查询。 例如，如果需要查找昨天以来创建的所有订单，或者查找过去五分钟内发运的所有订单，则需进行范围查询。 若要有效地执行这些查询，必须针对字符串的范围索引配置集合。
 
     DocumentCollection collection = new DocumentCollection { Id = "orders" };
     collection.IndexingPolicy = new IndexingPolicy(new RangeIndex(DataType.String) { Precision = -1 });
@@ -71,7 +71,7 @@ Azure Cosmos DB 支持 JSON 类型，如字符串、数字、布尔值、null、
 如需详细了解如何配置索引策略，可参阅 [Azure Cosmos DB 索引策略](index-policy.md)。
 
 ## <a name="querying-datetimes-in-linq"></a>在 LINQ 中查询 Datetime
-SQL .NET SDK 自动支持通过 LINQ 查询存储在 Azure Cosmos DB 中的数据。 例如，以下代码片段显示一个 LINQ 查询，该查询筛选在过去三天中发运的订单。
+SQL .NET SDK 自动支持通过 LINQ 查询存储在 Azure Cosmos DB 中的数据。 例如，下面的代码片段显示一个 LINQ 查询，该查询筛选在过去三天中发运的订单。
 
     IQueryable<Order> orders = client.CreateDocumentQuery<Order>("/dbs/orderdb/colls/orders")
         .Where(o => o.ShipDate >= DateTime.UtcNow.AddDays(-3));
@@ -85,7 +85,7 @@ SQL .NET SDK 自动支持通过 LINQ 查询存储在 Azure Cosmos DB 中的数�
 
 ## <a name="next-steps"></a>后续步骤
 * 下载并运行 [GitHub 上的代码示例](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/code-samples)
-* 详细了解 [SQL 查询](how-to-sql-query.md)
-* 详细了解 [Azure Cosmos DB 索引策略](index-policy.md)
+* 了解 [SQL 查询](how-to-sql-query.md)的详细信息
+* 深入了解 [Azure Cosmos DB 索引策略](index-policy.md)
 
 <!--Update_Description: update meta properties, wording update -->

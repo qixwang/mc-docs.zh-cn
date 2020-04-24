@@ -7,10 +7,10 @@ origin.date: 06/20/2018
 ms.date: 01/13/2020
 ms.author: v-yeche
 ms.openlocfilehash: e9300d2f1a7b5291d3c2b547af57c3240ecd1f5b
-ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75742389"
 ---
 # <a name="common-exceptions-and-errors-when-working-with-the-fabricclient-apis"></a>使用 FabricClient API 时常见的异常和错误

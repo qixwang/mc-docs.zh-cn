@@ -13,10 +13,10 @@ origin.date: 10/29/2019
 ms.date: 12/02/2019
 ms.custom: seodec18
 ms.openlocfilehash: b97a22138926fcbe31c8a7d18def5f4fc25c3db5
-ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77068058"
 ---
 # <a name="what-is-azure-time-series-insights-preview"></a>什么是 Azure 时序见解预览版？

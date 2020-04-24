@@ -6,10 +6,10 @@ origin.date: 02/23/2018
 ms.author: v-yeche
 ms.date: 01/06/2020
 ms.openlocfilehash: fc9a76b7c758b0c0f5e2f3718ca418e7ba363dc1
-ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75742463"
 ---
 # <a name="service-fabric-application-upgrade-using-powershell"></a>使用 PowerShell 升级 Service Fabric 应用程序

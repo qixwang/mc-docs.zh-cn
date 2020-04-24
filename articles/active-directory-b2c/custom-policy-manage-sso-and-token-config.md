@@ -12,10 +12,10 @@ ms.date: 02/03/2020
 ms.author: v-junlch
 ms.subservice: B2C
 ms.openlocfilehash: 7576e9f68e6f5b836e62ddc0d9e6a982d8ebf30a
-ms.sourcegitcommit: 888cbc10f2348de401d4839a732586cf266883bf
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77028233"
 ---
 # <a name="manage-sso-and-token-customization-using-custom-policies-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用自定义策略管理 SSO 和令牌自定义
@@ -90,7 +90,7 @@ ms.locfileid: "77028233"
 
 ## <a name="session-behavior-and-sso"></a>会话行为和 SSO
 
-若要更改会话行为和 SSO 配置，需要在 [RelyingParty](relyingparty.md) 元素内添加 **UserJourneyBehaviors** 元素。  **UserJourneyBehaviors** 元素必须紧跟在 **DefaultUserJourney** 之后。 **UserJourneyBehavors** 元素的内部看起来应当如以下示例所示：
+若要更改会话行为和 SSO 配置，需要在 **RelyingParty** 元素内添加 [UserJourneyBehaviors](relyingparty.md) 元素。  **UserJourneyBehaviors** 元素必须紧跟在 **DefaultUserJourney** 之后。 **UserJourneyBehavors** 元素的内部看起来应当如以下示例所示：
 
 ```XML
 <UserJourneyBehaviors>

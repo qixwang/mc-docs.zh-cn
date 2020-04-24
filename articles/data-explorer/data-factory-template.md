@@ -10,10 +10,10 @@ ms.topic: conceptual
 origin.date: 09/08/2019
 ms.date: 02/17/2019
 ms.openlocfilehash: 84169b9b0d75c9658e95c898bb09045768b10dc0
-ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77037927"
 ---
 # <a name="copy-in-bulk-from-a-database-to-azure-data-explorer-by-using-the-azure-data-factory-template"></a>使用 Azure 数据工厂模板从数据库批量复制到 Azure 数据资源管理器 
@@ -29,7 +29,7 @@ Azure 数据资源管理器是一个快速、完全托管的数据分析服务�
 > [!IMPORTANT]
 > 请务必使用与所要复制的数据量相适应的工具。
 > * 使用“从数据库批量复制到 Azure 数据资源管理器”模板可将 SQL Server 和 Google BigQuery 等数据库中的大量数据复制到 Azure 数据资源管理器。  
-> * 使用[数据工厂复制数据工具](data-factory-load-data.md)可将少量或中等数量的数据复制到 Azure 数据资源管理器。  
+> * 使用[数据工厂复制数据工具*可将少量或中等数量的数据复制到 Azure 数据资源管理器。* ](data-factory-load-data.md) 
 
 ## <a name="prerequisites"></a>必备条件
 
@@ -54,7 +54,7 @@ ADXTableName varchar(255)
 
 下表描述了代码元素：
 
-|属性  |说明  | 示例
+|properties  |说明  | 示例
 |---------|---------| ---------|
 |PartitionId   |  复制顺序 | 1  |  
 |SourceQuery   |  指示在管道运行时期间要复制哪些数据的查询 | <br>`select * from table where lastmodifiedtime  LastModifytime >= ''2015-01-01 00:00:00''>` </br>    

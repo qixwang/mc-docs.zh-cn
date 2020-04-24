@@ -7,10 +7,10 @@ origin.date: 10/04/2018
 ms.date: 01/20/2020
 ms.author: v-yeche
 ms.openlocfilehash: 76f26cee1fb4207ce4064922978c7abe151d820a
-ms.sourcegitcommit: 8de025ca11b62e06ba3762b5d15cc577e0c0f15d
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "76170771"
 ---
 # <a name="monitor-a-deployed-instance-of-a-managed-application"></a>监视部署的托管应用程序实例

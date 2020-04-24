@@ -13,10 +13,10 @@ ms.reviewer: carlr
 origin.date: 01/14/2020
 ms.date: 02/17/2020
 ms.openlocfilehash: 706067f5fa124caf04e2b52a36252df00c9d2909
-ms.sourcegitcommit: d7b86a424b72849fe8ed32893dd05e4696e4fe85
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77155679"
 ---
 # <a name="how-to-use-a-single-database-in-azure-sql-database"></a>如何在 Azure SQL 数据库中使用单一数据库

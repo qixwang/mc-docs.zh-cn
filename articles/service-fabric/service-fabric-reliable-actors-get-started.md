@@ -7,10 +7,10 @@ origin.date: 07/10/2019
 ms.date: 01/13/2020
 ms.author: v-yeche
 ms.openlocfilehash: 0a2262f5fdaf5f1d458cc4d000c04915c65e0698
-ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75742439"
 ---
 # <a name="getting-started-with-reliable-actors"></a>Reliable Actors 入门
@@ -20,7 +20,7 @@ ms.locfileid: "75742439"
 
 本文演示在 Visual Studio 中创建和调试简单的 Reliable Actor 应用程序。 有关 Reliable Actors 的详细信息，请参阅 [Service Fabric Reliable Actors 简介](service-fabric-reliable-actors-introduction.md)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 在开始之前，确保计算机上已设置 Service Fabric 开发环境（包括 Visual Studio）。 有关详细信息，请参阅[如何设置开发环境](service-fabric-get-started.md)。
 

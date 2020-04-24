@@ -9,10 +9,10 @@ origin.date: 08/02/2018
 ms.date: 09/07/2018
 ms.topic: conceptual
 ms.openlocfilehash: 741c481695a05f89911d168954c5998a5becc666
-ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75858108"
 ---
 # <a name="azure-batch-rendering-capabilities"></a>Azure Batch 的渲染功能
@@ -33,8 +33,8 @@ ms.locfileid: "75858108"
 
 | 发布者 | 产品/服务 | SKU | 版本 |
 |---------|---------|---------|--------|
-| 或批处理 | rendering-centos73 | 呈现 | 最新 |
-| 或批处理 | rendering-windows2016 | 呈现 | 最新 |
+| 批处理 | rendering-centos73 | 呈现 | 最新 |
+| 批处理 | rendering-windows2016 | 呈现 | 最新 |
 
 如果池 VM 上需要其他应用程序，则可以使用其他选项：
 
@@ -49,7 +49,7 @@ ms.locfileid: "75858108"
 
 需在池配置中指定要使用的并且会产生许可费的应用程序。
 
-* [创建池](https://docs.microsoft.com/rest/api/batchservice/pool/add#request-body)时指定 `applicationLicenses` 属性。  可在字符串数组中指定以下值 -“vray”、“arnold”、“3dsmax”、“maya”。
+* `applicationLicenses`创建池[时指定 ](https://docs.microsoft.com/rest/api/batchservice/pool/add#request-body) 属性。  可在字符串数组中指定以下值 -“vray”、“arnold”、“3dsmax”、“maya”。
 * 指定一个或多个应用程序时，这些应用程序的费用将与 VM 费用相加。  [Azure Batch 定价页面](https://www.azure.cn/pricing/details/batch/#graphic-rendering)上列出了应用程序价格。
 
 > [!NOTE]

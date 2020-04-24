@@ -10,10 +10,10 @@ origin.date: 01/21/2020
 ms.date: 2/6/2020
 ms.author: v-lingwu
 ms.openlocfilehash: 08586cce6408f686a0a25d5a020bea44b584f90b
-ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77067952"
 ---
 # <a name="security-controls-for-azure-service-bus-relay"></a>Azure 服务总线中继的安全控制
@@ -51,7 +51,7 @@ ms.locfileid: "77067952"
 |---|---|--|--|
 | 服务器端静态加密：Microsoft 管理的密钥 |  不适用 | 中继是一个 Web 套接字，不保存数据。 |   |
 | 服务器端静态加密：客户管理的密钥 (BYOK) | 否 | 仅使用 Microsoft TLS 证书。  |   |
-| 列级加密（Azure 数据服务）| 不适用 | |   |
+| 列级加密（Azure 数据服务）| 空值 | |   |
 | 传输中加密（例如 ExpressRoute 加密、VNet 中加密，以及 VNet-VNet 加密）| 是 | 服务需要 TLS。 |   |
 | 加密的 API 调用| 是 | HTTPS。 |
 

@@ -13,10 +13,10 @@ ms.reviewer: ''
 origin.date: 01/22/2020
 ms.date: 02/17/2020
 ms.openlocfilehash: f7661762bc6b6dc0b5372c08f85d267633f8276c
-ms.sourcegitcommit: d7b86a424b72849fe8ed32893dd05e4696e4fe85
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77155680"
 ---
 # <a name="azure-sql-database-glossary-of-terms"></a>Azure SQL 数据库术语表

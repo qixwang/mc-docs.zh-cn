@@ -11,10 +11,10 @@ ms.date: 02/03/2020
 ms.author: v-junlch
 ms.subservice: B2C
 ms.openlocfilehash: ab853d18910f5cf9154eb0b94dbf524b41351e58
-ms.sourcegitcommit: 888cbc10f2348de401d4839a732586cf266883bf
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77028350"
 ---
 # <a name="azure-ad-b2c-extensions-app"></a>Azure AD B2C：扩展应用

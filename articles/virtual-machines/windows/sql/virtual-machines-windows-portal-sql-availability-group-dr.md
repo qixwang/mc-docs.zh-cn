@@ -17,10 +17,10 @@ origin.date: 05/02/2017
 ms.date: 02/10/2020
 ms.author: v-yeche
 ms.openlocfilehash: 75cbcd0a2ddb56192b594781262a7292665f3ffb
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77427948"
 ---
 # <a name="configure-an-availability-group-on-azure-sql-server-virtual-machines-in-different-regions"></a>在位于不同区域的 Azure SQL Server 虚拟机上配置可用性组

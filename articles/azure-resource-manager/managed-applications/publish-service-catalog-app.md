@@ -7,10 +7,10 @@ origin.date: 10/04/2018
 ms.date: 01/20/2020
 ms.author: v-yeche
 ms.openlocfilehash: 6e05563b546376e75003f98ae3d7d7475803b563
-ms.sourcegitcommit: 8de025ca11b62e06ba3762b5d15cc577e0c0f15d
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "76170735"
 ---
 # <a name="create-and-publish-a-managed-application-definition"></a>创建并发布托管应用程序定义
@@ -224,9 +224,9 @@ New-AzManagedApplicationDefinition `
 在将托管的应用程序定义部署到存储帐户之前，你必须为“设备资源提供程序”  角色授予参与者权限，以便它可以将定义文件写入存储帐户的容器中。
 
 1. 在 [Azure 门户](https://portal.azure.cn)中导航到存储帐户。
-1. 选择“访问控制(IAM)”以显示存储帐户的访问控制设置  。 选择“角色分配”  选项卡以查看角色分配列表。
+1. 选择“访问控制(标识和访问管理)”以显示存储帐户的访问控制设置  。 选择“角色分配”  选项卡以查看角色分配列表。
 1. 在“添加角色分配”窗口中，选择“参与者”角色   。 
-1. 在“将访问权限分配给”字段中，选择“Azure AD 用户、组或服务主体”   。
+1. 在“分配访问权限至”  字段中，选择“Azure AD 用户、组或服务主体”  。
 1. 在“选择”下，搜索“设备资源提供程序”角色，然后将其选中。  
 1. 保存角色分配。
 

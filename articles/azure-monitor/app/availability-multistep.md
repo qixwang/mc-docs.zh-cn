@@ -10,10 +10,10 @@ ms.date: 11/04/2019
 ms.reviewer: sdash
 ms.author: v-lingwu
 ms.openlocfilehash: feae92359df3a858ac90fde85149e4bc2cdd6fc7
-ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77028469"
 ---
 # <a name="multi-step-web-tests"></a>多步骤 Web 测试
@@ -44,7 +44,7 @@ ms.locfileid: "77028469"
 
 ## <a name="upload-the-web-test"></a>上传 Web 测试
 
-1. 在 Application Insights 门户的“可用性”窗格中，选择“创建测试” > “测试类型” > “多步骤 Web 测试”。   
+1. 在 Application Insights 门户的“可用性”窗格中，选择“创建测试” **“测试类型”** “多步骤 Web 测试”。 >    >  
 
 2. 设置测试位置、频率和警报参数。
 
@@ -69,7 +69,7 @@ ms.locfileid: "77028469"
 |----|----|----|
 |**近实时（预览）** | 我们建议使用近实时警报。 在创建可用性测试后会配置此类警报。  |
 |**经典** | 我们不再建议对新的可用性测试使用经典警报。|
-|**警报位置阈值**|建议最少 3/5 个位置。 警报位置阈值和测试位置数目之间的最佳关系是警报位置阈值  =  测试位置数 - 2，至少有 5 个测试位置   。|
+|**警报位置阈值**|建议最少 3/5 个位置。 警报位置阈值和测试位置数目之间的最佳关系是警报位置阈值  **测试位置数 - 2，至少有 5 个测试位置** =   。|
 
 ## <a name="configuration"></a>配置
 
@@ -115,7 +115,7 @@ Web 测试日期时间插件提供处理时间参数化的方式。
 | 证书密码 | 客户端证书的密码，用于授予对已嵌入私钥的访问权限。 |
 | 客户端证书  | 客户端证书值，其中的私钥采用 Base64 编码格式。 |
 | 名称标识符 | 令牌的名称标识符 |
-| 不晚于 | 令牌生效的时间范围。  默认值为 5 分钟。 |
+| 不晚于 | 令牌生效的时间范围。  默认为 5 分钟。 |
 | 不早于 | 在过去创建的令牌生效的时间范围（用于解决时间偏差）。  默认值为（负）5 分钟。 |
 | 目标上下文参数名称 | 上下文参数，用于接收生成的断言。 |
 

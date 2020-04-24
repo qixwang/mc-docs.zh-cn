@@ -8,10 +8,10 @@ ms.date: 09/23/2019
 ms.author: v-lingwu
 ms.custom: mvc
 ms.openlocfilehash: 8a4a329f64ee0ae6f57e9218804f51796dfe3d7d
-ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77028569"
 ---
 # <a name="what-is-the-azure-backup-service"></a>什么是 Azure 备份服务？

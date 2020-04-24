@@ -12,10 +12,10 @@ ms.date: 02/04/2020
 ms.author: v-junlch
 ms.subservice: B2C
 ms.openlocfilehash: 76112a55b38335b806039520736ebaeaf0a8fccc
-ms.sourcegitcommit: 888cbc10f2348de401d4839a732586cf266883bf
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77028105"
 ---
 # <a name="tutorial-register-an-application-in-azure-active-directory-b2c"></a>教程：在 Azure Active Directory B2C 中注册应用程序
@@ -30,7 +30,7 @@ ms.locfileid: "77028105"
 
 如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 如果尚未创建自己的 [Azure AD B2C 租户](tutorial-create-tenant.md)，请立即创建一个。 可以使用现有的 Azure AD B2C 租户。
 
@@ -38,7 +38,7 @@ ms.locfileid: "77028105"
 
 若要在 Azure AD B2C 租户中注册应用程序，可以使用当前的“应用程序”体验，  或者使用我们新推出的统一“应用注册(预览版)”体验。  [详细了解此新体验](/active-directory/develop/app-registrations-training-guide-for-app-registrations-legacy-users)。
 
-#### <a name="applicationstabapplications"></a>[应用程序](#tab/applications/)
+#### <a name="applications"></a>[应用程序](#tab/applications/)
 
 1. 登录到 [Azure 门户](https://portal.azure.cn)。
 1. 在门户工具栏中选择“目录 + 订阅”图标，然后选择包含 Azure AD B2C 租户的目录  。
@@ -57,7 +57,7 @@ ms.locfileid: "77028105"
 
 1. 选择“创建”，完成应用程序注册  。
 
-#### <a name="app-registrations-previewtabapp-reg-preview"></a>[应用注册（预览版）](#tab/app-reg-preview/)
+#### <a name="app-registrations-preview"></a>[应用注册（预览版）](#tab/app-reg-preview/)
 
 1. 登录到 [Azure 门户](https://portal.azure.cn)。
 1. 在门户工具栏中选择“目录 + 订阅”图标，然后选择包含 Azure AD B2C 租户的目录  。
@@ -65,7 +65,7 @@ ms.locfileid: "77028105"
 1. 选择“应用注册(预览版)”，然后选择“新建注册”   。
 1. 输入应用程序的“名称”  。 例如，“webapp1”  。
 1. 选择“任何组织目录或任何标识提供者中的帐户”  。
-1. 在“重定向 URI”下，选择“Web”，然后在 URL 文本框中输入 `https://jwt.ms`   。
+1. 在“重定向 URI”下，选择“Web”，然后在 URL 文本框中输入 `https://jwt.ms`  。
 
     “重定向 URI”是授权服务器（在本例中为 Azure AD B2C）在完成与用户的交互后将用户定向到的终结点，也是在成功授权后向其发送访问令牌或授权代码的终结点。 在生产应用程序中，它通常是运行应用的公共可访问终结点，如 `https://contoso.com/auth-response`。 出于类似本教程的测试目的，你可以将它设置为 `https://jwt.ms`，这是一个 Microsoft 拥有的 Web 应用程序，用于显示已解码的令牌内容（令牌内容始终保留在浏览器中）。 在应用开发期间，你可以添加应用程序本地侦听的终结点，如 `https://localhost:5000`。 可以随时在注册的应用程序中添加和修改重定向 URI。
 
@@ -90,13 +90,13 @@ ms.locfileid: "77028105"
 
 如果应用程序将授权代码交换为访问令牌，则需要创建应用程序机密。
 
-#### <a name="applicationstabapplications"></a>[应用程序](#tab/applications/)
+#### <a name="applications"></a>[应用程序](#tab/applications/)
 
 1. 在“Azure AD B2C - 应用程序”  页中，选择已创建的应用程序，例如 webapp1  。
 1. 选择“密钥”，然后选择“生成密钥”。  
 1. 选择“保存”以查看密钥。  记下“应用密钥”值  。 在应用程序的代码中将此值用作应用程序机密。
 
-#### <a name="app-registrations-previewtabapp-reg-preview"></a>[应用注册（预览版）](#tab/app-reg-preview/)
+#### <a name="app-registrations-preview"></a>[应用注册（预览版）](#tab/app-reg-preview/)
 
 1. 在“Azure AD B2C - 应用注册（预览版）”页中，选择已创建的应用程序，例如“webapp1”   。
 1. 在“管理”下，选择“证书和机密”。  

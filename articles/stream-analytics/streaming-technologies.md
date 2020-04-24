@@ -9,10 +9,10 @@ ms.topic: conceptual
 origin.date: 05/15/2019
 ms.date: 08/09/2019
 ms.openlocfilehash: 6f13d2f6310a4f32e24142e4db1465f064b0199a
-ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77068296"
 ---
 # <a name="choose-a-real-time-analytics-and-streaming-processing-technology-on-azure"></a>在 Azure 上选择实时分析和流式处理技术

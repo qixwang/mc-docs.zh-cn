@@ -7,10 +7,10 @@ origin.date: 02/23/2018
 ms.date: 01/13/2020
 ms.author: v-yeche
 ms.openlocfilehash: c90ceb3ea5b368a9009a48d9f6a17289f682bf4c
-ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75742111"
 ---
 # <a name="troubleshoot-your-local-development-cluster-setup"></a>排除本地开发群集安装的故障
@@ -34,7 +34,7 @@ ms.locfileid: "75742111"
 
 ### <a name="type-initialization-exception"></a>类型初始化异常
 #### <a name="problem"></a>问题
-在 PowerShell 中连接到群集时，你会看到针对 System.Fabric.Common.AppTrace 的 TypeInitializationException 错误。
+在 PowerShell 中连接到群集时，会看到针对 System.Fabric.Common.AppTrace 的 TypeInitializationException 错误。
 
 #### <a name="solution"></a>解决方案
 在安装期间未正确设置路径变量。 从 Windows 注销并重新登录。 这将刷新你的路径。

@@ -8,10 +8,10 @@ ms.topic: conceptual
 origin.date: 08/01/2019
 ms.date: 02/10/2020
 ms.openlocfilehash: f19ea907d2f97041059594bdb4bec690ecd0edd9
-ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77028788"
 ---
 # <a name="optimize-query-cost-in-azure-cosmos-db"></a>优化 Azure Cosmos DB 中的查询成本

@@ -9,10 +9,10 @@ ms.custom: mvc
 origin.date: 12/02/2019
 ms.date: 01/13/2020
 ms.openlocfilehash: 026a6b038e6177eabff59a1bad7fed370e2907d5
-ms.sourcegitcommit: 4f4694991e1c70929c7112ad45a0c404ddfbc8da
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75776733"
 ---
 # <a name="what-is-azure-database-for-mariadb"></a>什么是 Azure Database for MariaDB？

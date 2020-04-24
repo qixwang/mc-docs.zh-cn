@@ -8,10 +8,10 @@ ms.topic: conceptual
 origin.date: 12/12/2019
 ms.date: 01/13/2020
 ms.openlocfilehash: cba28a16c1ff17f8b80b12efd3e1c3196d8cb34d
-ms.sourcegitcommit: 4f4694991e1c70929c7112ad45a0c404ddfbc8da
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75776737"
 ---
 # <a name="supported-azure-database-for-mysql-server-versions"></a>支持的 Azure Database for MySQL 服务器版本

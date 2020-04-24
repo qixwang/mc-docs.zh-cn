@@ -6,10 +6,10 @@ origin.date: 08/19/2019
 ms.date: 01/06/2020
 ms.author: v-yeche
 ms.openlocfilehash: 4ecd38518cf8102b0bf86dcbe96b1fdd55b73231
-ms.sourcegitcommit: bc5f8b4f8ccd7c723f64055825508d1dfcc2162b
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75865141"
 ---
 | 资源 | 默认限制 | 最大限制 |
@@ -17,7 +17,7 @@ ms.locfileid: "75865141"
 | 每个[资源组](../articles/azure-resource-manager/management/overview.md#resource-groups)的资源数（按资源类型） |800 |某些资源类型可能超过 800 的限制。 请参阅[不限于每个资源组 800 个实例的资源](../articles/azure-resource-manager/management/resources-without-resource-group-limit.md)。 |
 | 部署历史记录中每个资源组的部署数 |800<sup>1</sup> |800 |
 | 每个部署的资源数 |800 |800 |
-| 管理锁数（按唯一的作用域） |20 个 |20 个 |
+| 管理锁数（按唯一的作用域） |20 |20 |
 | 标记数（按资源或资源组） |50 |50 |
 | 标记键长度 |512 |512 |
 | 标记值长度 |256 |256 |
@@ -26,7 +26,7 @@ ms.locfileid: "75865141"
 
 #### <a name="template-limits"></a>模板限制
 
-| Value | 默认限制 | 最大限制 |
+| 值 | 默认限制 | 最大限制 |
 | --- | --- | --- |
 | parameters |256 |256 |
 | 变量 |256 |256 |

@@ -10,10 +10,10 @@ origin.date: 01/15/2020
 ms.date: 02/17/2020
 ms.author: v-jay
 ms.openlocfilehash: 610c21588655df183ba47a071eaed699f71dca65
-ms.sourcegitcommit: 3f9d780a22bb069402b107033f7de78b10f90dde
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77156792"
 ---
 # <a name="create-a-vnet-with-a-site-to-site-vpn-connection-using-powershell"></a>使用 PowerShell 创建具有站点到站点 VPN 连接的 VNet
@@ -32,7 +32,7 @@ ms.locfileid: "77156792"
 
 ![站点到站点 VPN 网关跨界连接示意图](./media/vpn-gateway-create-site-to-site-rm-powershell/site-to-site-diagram.png)
 
-## <a name="before"></a>准备工作
+## <a name="before-you-begin"></a><a name="before"></a>准备工作
 
 在开始配置之前，请验证是否符合以下条件：
 
@@ -44,7 +44,7 @@ ms.locfileid: "77156792"
 
 [!INCLUDE [powershell](../../includes/vpn-gateway-cloud-shell-powershell-about.md)]
 
-### <a name="example"></a>示例值
+### <a name="example-values"></a><a name="example"></a>示例值
 
 本文中的示例使用以下值。 可使用这些值创建测试环境，或参考这些值以更好地理解本文中的示例。
 
@@ -70,7 +70,7 @@ ConnectionName          = VNet1toSite1
 
 ```
 
-## <a name="VNet"></a>1.创建虚拟网络和网关子网
+## <a name="1-create-a-virtual-network-and-a-gateway-subnet"></a><a name="VNet"></a>1.创建虚拟网络和网关子网
 
 如果还没有虚拟网络，请创建。 创建虚拟网络时，请确保指定的地址空间不与本地网络的任一个地址空间重叠。 
 
@@ -85,7 +85,7 @@ ConnectionName          = VNet1toSite1
 
 [!INCLUDE [No NSG warning](../../includes/vpn-gateway-no-nsg-include.md)]
 
-### <a name="vnet"></a>创建虚拟网络和网关子网
+### <a name="create-a-virtual-network-and-a-gateway-subnet"></a><a name="vnet"></a>创建虚拟网络和网关子网
 
 此示例创建虚拟网络和网关子网。 如果已经有一个虚拟网络且需要向其添加网关子网，请参阅[向已创建的虚拟网络添加网关子网](#gatewaysubnet)。
 
@@ -110,7 +110,7 @@ New-AzResourceGroup -Name TestRG1 -Location 'China North'
    -Location 'China North' -AddressPrefix 10.1.0.0/16 -Subnet $subnet1, $subnet2
    ```
 
-### <a name="gatewaysubnet"></a>将网关子网添加到已创建的虚拟网络
+### <a name="to-add-a-gateway-subnet-to-a-virtual-network-you-have-already-created"></a><a name="gatewaysubnet"></a>将网关子网添加到已创建的虚拟网络
 
 如果已经有虚拟网络，但需添加网关子网，则请使用此部分的步骤。
 
@@ -130,7 +130,7 @@ New-AzResourceGroup -Name TestRG1 -Location 'China North'
    Set-AzVirtualNetwork -VirtualNetwork $vnet
    ```
 
-## 2.<a name="localnet"></a>创建本地网关
+## <a name="2-create-the-local-network-gateway"></a>2.<a name="localnet"></a>创建本地网关
 
 本地网关 (LNG) 通常是指本地位置。 它与虚拟网关不同。 可以为站点提供一个名称供 Azure 引用，并指定本地 VPN 设备的 IP 地址，以便创建一个连接来连接到该设备。 此外还可指定 IP 地址前缀，以便通过 VPN 网关将其路由到 VPN 设备。 指定的地址前缀是位于本地网络的前缀。 如果本地网络出现变化，可以轻松更新这些前缀。
 
@@ -157,7 +157,7 @@ New-AzResourceGroup -Name TestRG1 -Location 'China North'
 
 有时局域网网关前缀会有变化。 修改 IP 地址前缀时采取的步骤取决于是否已创建 VPN 网关连接。 请参阅本文的 [修改本地网关的 IP 地址前缀](#modify) 部分。
 
-## <a name="PublicIP"></a>3.请求公共 IP 地址
+## <a name="3-request-a-public-ip-address"></a><a name="PublicIP"></a>3.请求公共 IP 地址
 
 VPN 网关必须具有公共 IP 地址。 请先请求 IP 地址资源，并在创建虚拟网关时参阅该资源。 创建 VPN 网关时，IP 地址是动态分配给资源的。 
 
@@ -169,7 +169,7 @@ VPN 网关当前仅支持动态  公共 IP 地址分配。 不能请求静态公
 $gwpip= New-AzPublicIpAddress -Name VNet1GWPIP -ResourceGroupName TestRG1 -Location 'China North' -AllocationMethod Dynamic
 ```
 
-## <a name="GatewayIPConfig"></a>4.创建网关 IP 寻址配置
+## <a name="4-create-the-gateway-ip-addressing-configuration"></a><a name="GatewayIPConfig"></a>4.创建网关 IP 寻址配置
 
 网关配置定义要使用的子网（“GatewaySubnet”）和公共 IP 地址。 使用以下示例创建网关配置：
 
@@ -179,7 +179,7 @@ $subnet = Get-AzVirtualNetworkSubnetConfig -Name 'GatewaySubnet' -VirtualNetwork
 $gwipconfig = New-AzVirtualNetworkGatewayIpConfig -Name gwipconfig1 -SubnetId $subnet.Id -PublicIpAddressId $gwpip.Id
 ```
 
-## <a name="CreateGateway"></a>5.创建 VPN 网关
+## <a name="5-create-the-vpn-gateway"></a><a name="CreateGateway"></a>5.创建 VPN 网关
 
 创建虚拟网络 VPN 网关。
 
@@ -197,7 +197,7 @@ New-AzVirtualNetworkGateway -Name VNet1GW -ResourceGroupName TestRG1 `
 
 运行此命令以后，可能需要长达 45 分钟的时间才能完成网关配置。
 
-## <a name="ConfigureVPNDevice"></a>6.配置 VPN 设备
+## <a name="6-configure-your-vpn-device"></a><a name="ConfigureVPNDevice"></a>6.配置 VPN 设备
 
 通过站点到站点连接连接到本地网络需要 VPN 设备。 在此步骤中，请配置 VPN 设备。 配置 VPN 设备时，需要以下项：
 
@@ -211,7 +211,7 @@ New-AzVirtualNetworkGateway -Name VNet1GW -ResourceGroupName TestRG1 `
 [!INCLUDE [Configure VPN device](../../includes/vpn-gateway-configure-vpn-device-rm-include.md)]
 
 
-## <a name="CreateConnection"></a>7.创建 VPN 连接
+## <a name="7-create-the-vpn-connection"></a><a name="CreateConnection"></a>7.创建 VPN 连接
 
 接下来，会在虚拟网络网关和 VPN 设备之间创建站点到站点 VPN 连接。 请务必替换成自己的值。 共享密钥必须与用于 VPN 设备配置的值匹配。 请注意，站点到站点的“-ConnectionType”为 IPsec  。
 
@@ -230,28 +230,28 @@ New-AzVirtualNetworkGateway -Name VNet1GW -ResourceGroupName TestRG1 `
 
 在一小段时间后建立该连接。
 
-## <a name="toverify"></a>8.验证 VPN 连接
+## <a name="8-verify-the-vpn-connection"></a><a name="toverify"></a>8.验证 VPN 连接
 
 VPN 连接有几种不同的验证方式。
 
 [!INCLUDE [Verify connection](../../includes/vpn-gateway-verify-connection-ps-rm-include.md)]
 
-## <a name="connectVM"></a>连接到虚拟机
+## <a name="to-connect-to-a-virtual-machine"></a><a name="connectVM"></a>连接到虚拟机
 
 [!INCLUDE [Connect to a VM](../../includes/vpn-gateway-connect-vm-s2s-include.md)]
 
 
-## <a name="modify"></a>修改本地网关的 IP 地址前缀
+## <a name="to-modify-ip-address-prefixes-for-a-local-network-gateway"></a><a name="modify"></a>修改本地网关的 IP 地址前缀
 
 如果需要路由到本地位置的 IP 地址前缀发生更改，则可修改本地网关。 提供了两套说明。 要选择哪套说明取决于是否已创建了网关连接。 使用这些示例时，修改这些值以匹配你的环境。
 
 [!INCLUDE [Modify prefixes](../../includes/vpn-gateway-modify-ip-prefix-rm-include.md)]
 
-## <a name="modifygwipaddress"></a>修改本地网关的 IP 地址
+## <a name="to-modify-the-gateway-ip-address-for-a-local-network-gateway"></a><a name="modifygwipaddress"></a>修改本地网关的 IP 地址
 
 [!INCLUDE [Modify gateway IP address](../../includes/vpn-gateway-modify-lng-gateway-ip-rm-include.md)]
 
-## <a name="deleteconnection"></a>删除网关连接
+## <a name="to-delete-a-gateway-connection"></a><a name="deleteconnection"></a>删除网关连接
 
 如果不知道连接的名称，可以使用“Get-AzVirtualNetworkGatewayConnection”cmdlet 找到它。
 

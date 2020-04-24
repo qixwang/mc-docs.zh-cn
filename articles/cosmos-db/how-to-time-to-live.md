@@ -8,10 +8,10 @@ origin.date: 12/02/2019
 ms.date: 02/10/2020
 ms.author: v-yeche
 ms.openlocfilehash: 3fb20079bf3e7bb957a22aad160d4e2dd9d1cb19
-ms.sourcegitcommit: 23dc63b6fea451f6a2bd4e8d0fbd7ed082ba0740
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "76980471"
 ---
 # <a name="configure-time-to-live-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中配置生存时间
@@ -22,7 +22,7 @@ ms.locfileid: "76980471"
 
 通过以下步骤在没有到期时间的容器上启用生存时间。 启用此项即可在项级别重写 TTL。 也可通过输入非零值（代表秒）来设置 TTL。
 
-1. 登录到 [Azure 门户](https://portal.azure.cn/)。
+1. 登录 [Azure 门户](https://portal.azure.cn/)。
 
 2. 创建新的 Azure Cosmos 帐户或选择现有的帐户。
 
@@ -138,9 +138,9 @@ async function createcontainerWithTTL(db: Database, containerDefinition: Contain
 <a name="portal-set-ttl-item"></a>
 ### <a name="azure-portal"></a>Azure 门户
 
-通过以下步骤在项上启用生存时间：
+使用以下步骤在项上启用生存时间：
 
-1. 登录到 [Azure 门户](https://portal.azure.cn/)。
+1. 登录 [Azure 门户](https://portal.azure.cn/)。
 
 2. 创建新的 Azure Cosmos 帐户或选择现有的帐户。
 
@@ -150,10 +150,10 @@ async function createcontainerWithTTL(db: Database, containerDefinition: Contain
 
     * 打开“规模和设置”窗口。 
     * 在“设置”下找到“生存时间”。  
-    * 选择“启用(无默认值)”或选择“启用”，然后设置一个 TTL 值。   
+    * 选择“启用(无默认值)”或选择“启用”，然后设置一个 TTL 值   。 
     * 单击“保存”  以保存更改。
 
-5. 接下来导航到要为其设置生存时间的项，添加 `ttl` 属性，然后选择“更新”。  
+5. 接下来，导航到要为其设置生存时间的项，添加 `ttl` 属性并选择“更新”  。 
 
     ```json
     {
@@ -270,7 +270,7 @@ await client.GetContainer("database", "container").ReplaceItemAsync(itemResponse
 
 ## <a name="disable-time-to-live"></a>禁用生存时间
 
-若要在容器上禁用生存时间并阻止后台进程查找过期项，则应删除容器上的 `DefaultTimeToLive` 属性。 删除此属性不同于将其设置为 -1。 将它设置为 -1 时，添加到容器的新项将永久生存。但是，可以在容器中的特定项上重写此值。 从容器中删除 TTL 属性后项就不会过期，即使这些项已显式重写了以前的默认 TTL 值。
+若要在容器上禁用生存时间并阻止后台进程查找过期项，则应删除容器上的 `DefaultTimeToLive` 属性。 删除此属性不同于将其设置为 -1。 将它设置为 -1 时，添加到容器的新项将永久生存。但是，可以在容器中的特定项上重写此值。 从容器中删除 TTL 属性后项将永不会过期，即使这些项已显式重写了以前的默认 TTL 值。
 
 <a name="dotnet-disable-ttl"></a>
 ### <a name="net-sdk-v2-microsoftazuredocumentdb"></a>.NET SDK V2 (Microsoft.Azure.DocumentDB)

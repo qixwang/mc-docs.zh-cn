@@ -10,10 +10,10 @@ origin.date: 12/17/2019
 ms.date: 01/13/2020
 ms.author: v-yeche
 ms.openlocfilehash: 1163c93b43044dd2f110fd15e1a60dc8d95da3a8
-ms.sourcegitcommit: 4f4694991e1c70929c7112ad45a0c404ddfbc8da
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75776721"
 ---
 # <a name="fail-over-and-fail-back-physical-servers-replicated-to-azure"></a>对复制到 Azure 的物理服务器进行故障转移和故障回复
@@ -139,6 +139,6 @@ ms.locfileid: "75776721"
 
 ## <a name="next-steps"></a>后续步骤
 
-重新保护作业完成后，本地 VM 将复制到 Azure。 根据需要，可以[运行另一个故障转移](site-recovery-failover.md)到 Azure。
+重新保护作业完成后，本地 VM 将复制到 Azure。 可根据需要[再次运行到 Azure 的故障转移](site-recovery-failover.md)。
 
 <!-- Update_Description: update meta properties, wording update, update link -->

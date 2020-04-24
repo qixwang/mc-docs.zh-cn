@@ -16,10 +16,10 @@ origin.date: 01/21/2020
 ms.date: 2/6/2020
 ms.author: v-lingwu
 ms.openlocfilehash: 867fa257ec4b3834d6bc87abc65f19974debe72b
-ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77068248"
 ---
 # <a name="azure-relay-authentication-and-authorization"></a>Azure 中继身份验证和授权
@@ -37,11 +37,11 @@ ms.locfileid: "77068248"
 若要使用 SAS，可在由以下项构成的中继命名空间上配置 [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) 对象：
 
 * 标识此规则的 KeyName  。
-* *PrimaryKey* ，是用于对 SAS 令牌进行签名/验证的加密密钥。
-* *SecondaryKey* ，是用于对 SAS 令牌进行签名/验证的加密密钥。
+* PrimaryKey  ，用于对 SAS 令牌进行签名/验证的加密密钥。
+* SecondaryKey  ，用于对 SAS 令牌进行签名/验证的加密密钥。
 * Rights  ，表示授予的侦听、发送或管理权限的集合。
 
-在命名空间级别配置的授权规则，可以向具有使用相应密钥签名的令牌的客户端授予命名空间中所有中继连接的访问权限。 在中继命名空间上最多可配置 12 个此类授权规则。 默认情况下，首次预配时，为每个命名空间配置具有所有权限的 [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) 。
+在命名空间级别配置的授权规则，可以向具有使用相应密钥签名的令牌的客户端授予命名空间中所有中继连接的访问权限。 在中继命名空间上最多可配置 12 个此类授权规则。 默认情况下，首次预配时，将为每个命名空间配置具有所有权限的 [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule)。
 
 若要访问某个实体，客户端需要使用特定 [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) 生成的 SAS 令牌。 SAS 令牌是通过使用资源字符串的 HMAC-SHA256 生成的，该字符串由要授予对其访问权限的资源 URI 和授权规则相关加密密钥的过期时间组成。
 

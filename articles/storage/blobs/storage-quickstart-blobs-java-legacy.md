@@ -9,17 +9,17 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.openlocfilehash: 4e2eddec1cd85b4c0572087bb0fe694965cf48d2
-ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77028943"
 ---
 # <a name="quickstart-manage-blobs-with-java-v8-sdk"></a>快速入门：使用 Java v8 SDK 管理 blob
 
 本快速入门介绍如何使用 Java 管理 blob。 Blob 是可以保存大量文本或二进制数据（包括图像、文档、流媒体和存档数据）的对象。 你将上传、下载并列出 blob。 你还将创建容器、设置容器权限并删除容器。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 - 具有活动订阅的 Azure 帐户。 [免费创建 1 元试用帐户](https://wd.azure.cn/zh-cn/pricing/1rmb-trial-full)。
 - 一个 Azure 存储帐户。 [创建存储帐户](../common/storage-account-create.md)。
@@ -37,7 +37,7 @@ git clone https://github.com/Azure-Samples/storage-blobs-java-quickstart.git
 
 此命令会将存储库克隆到本地 git 文件夹。 若要打开项目，请启动 Eclipse 并关闭欢迎屏幕。 选择“文件”  ，然后选择“从文件系统打开项目”  。 请确保已选中“检测并配置项目性质”  。 选择“目录”  ，然后导航到存储克隆存储库的位置。 在克隆的存储库中，选择 **blobAzureApp** 文件夹。 请确保 blobAzureApp  项目显示为 Eclipse 项目，然后选择“完成”  。
 
-完成项目导入后，打开 AzureApp.java（位于 src/main/java 内的 blobQuickstart.blobAzureApp 中），并替换 `storageConnectionString` 字符串中的 `accountname` 和 `accountkey`    。 然后运行应用程序。 以下部分是有关如何完成这些任务的具体说明。
+完成项目导入后，打开 AzureApp.java（位于 src/main/java 内的 blobQuickstart.blobAzureApp 中），并替换 `storageConnectionString` 字符串中的 `accountname` 和 `accountkey`   。 然后运行应用程序。 以下部分是有关如何完成这些任务的具体说明。
 
 [!INCLUDE [storage-copy-connection-string-portal](../../../includes/storage-copy-connection-string-portal.md)]
 

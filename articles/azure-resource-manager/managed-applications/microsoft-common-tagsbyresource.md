@@ -7,10 +7,10 @@ origin.date: 11/11/2019
 ms.date: 01/20/2020
 ms.author: v-yeche
 ms.openlocfilehash: 24b9ca9a69edd9c1fa7a3478e7930e6d296ac515
-ms.sourcegitcommit: 8de025ca11b62e06ba3762b5d15cc577e0c0f15d
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "76170667"
 ---
 # <a name="microsoftcommontagsbyresource-ui-element"></a>Microsoft.Common.TagsByResource UI 元素

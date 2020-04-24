@@ -16,10 +16,10 @@ origin.date: 12/20/2017
 ms.author: v-yiso
 ms.date: 01/20/2020
 ms.openlocfilehash: 636b264a63d84d7a5f9aa34398c6319c27a828dc
-ms.sourcegitcommit: a890a9cca495d332c9f3f53ff3a5259fd5f0c275
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75859745"
 ---
 # <a name="troubleshooting-network-performance"></a>网络性能故障排除

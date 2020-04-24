@@ -7,10 +7,10 @@ origin.date: 11/21/2018
 ms.date: 01/13/2020
 ms.author: v-yeche
 ms.openlocfilehash: 5e827667a3f005eb49b7c2bd8fcb09d0746b37b5
-ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75741901"
 ---
 # <a name="monitoring-the-cluster"></a>监视群集

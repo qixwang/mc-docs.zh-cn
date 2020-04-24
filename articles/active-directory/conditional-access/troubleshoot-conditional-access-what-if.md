@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 513959f6682b6bc916f51139b8242f401664aefc
-ms.sourcegitcommit: bc5f8b4f8ccd7c723f64055825508d1dfcc2162b
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75859400"
 ---
 # <a name="troubleshooting-conditional-access-using-the-what-if-tool"></a>使用 What If 工具排查条件访问问题
@@ -61,7 +61,7 @@ What If 工具只需要**用户**来启动。
 
 此列表将显示在应用条件的情况下，不会应用条件访问策略。 列表会包含某些策略及其不应用的原因。 示例包含可能会从策略中排除的用户和组。
 
-## <a name="use-case"></a>使用案例
+## <a name="use-case"></a>用例
 
 许多组织创建策略的根据是网络位置、允许受信任的位置，以及阻止不应进行访问的位置。
 
@@ -76,5 +76,5 @@ What If 工具只需要**用户**来启动。
 ## <a name="next-steps"></a>后续步骤
 
 * [什么是条件访问？](overview.md)
-* [工作原理：Azure 多重身份验证](../authentication/concept-mfa-howitworks.md)一文
+* [工作原理：Azure 多重身份验证](../authentication/concept-mfa-howitworks.md)
 

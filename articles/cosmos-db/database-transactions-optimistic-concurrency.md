@@ -9,10 +9,10 @@ origin.date: 12/04/2019
 ms.date: 02/10/2020
 ms.reviewer: sngun
 ms.openlocfilehash: 2224ce1d777bf7921d24fc4e27195ab3edf9d9e2
-ms.sourcegitcommit: 23dc63b6fea451f6a2bd4e8d0fbd7ed082ba0740
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "76980538"
 ---
 # <a name="transactions-and-optimistic-concurrency-control"></a>事务和乐观并发控制

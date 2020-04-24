@@ -10,17 +10,17 @@ ms.author: v-jay
 ms.subservice: common
 ms.reviewer: zezha-msft
 ms.openlocfilehash: d5d7bf9bc96a162825905f4875e6c1ae86e0115f
-ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77028933"
 ---
 # <a name="azcopy-login"></a>azcopy login
 
 登录到 Azure Active Directory 以访问 Azure 存储资源。
 
-## <a name="synopsis"></a>摘要
+## <a name="synopsis"></a>概要
 
 登录到 Azure Active Directory 以访问 Azure 存储资源。
 
@@ -31,7 +31,7 @@ ms.locfileid: "77028933"
 有关详细信息，请参阅示例。
 
 > [!IMPORTANT]
-> 如果使用命令行设置环境变量，则可以在命令行历史记录中读取该变量。 请考虑从命令行历史记录中清除包含凭据的变量。 要防止变量出现在历史记录中，可以使用脚本提示用户输入凭据，并设置环境变量。
+> 如果使用命令行设置环境变量，则可以在命令行历史记录中读取该变量。 请考虑从命令行历史记录中清除包含凭据的变量。 若要防止变量出现在历史记录中，可以使用脚本提示用户输入凭据，并设置环境变量。
 
 ```azcopy
 azcopy login [flags] --aad-endpoint https://login.partner.microsoftonline.cn

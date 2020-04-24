@@ -7,10 +7,10 @@ origin.date: 06/30/2017
 ms.date: 01/13/2020
 ms.author: v-yeche
 ms.openlocfilehash: d4d53ff04215d6faf740b4ac9e915d7880a05041
-ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75742414"
 ---
 # <a name="service-remoting-in-java-with-reliable-services"></a>通过 Reliable Services 在 Java 中进行服务远程处理
@@ -25,7 +25,7 @@ ms.locfileid: "75742414"
 ## <a name="set-up-remoting-on-a-service"></a>为服务设置远程处理
 为服务设置远程处理包括两个简单步骤：
 
-1. 为服务创建要实现的接口。 此接口定义可供服务的远程过程调用使用的方法。 这些方法必须是返回任务的异步方法。 接口必须实现 `microsoft.serviceFabric.services.remoting.Service` 以表明此服务具有远程处理接口。
+1. 为服务创建要实现的接口。 此接口定义可供服务的远程过程调用使用的方法。 这些方法必须是返回任务的异步方法。 此接口必须实现 `microsoft.serviceFabric.services.remoting.Service` 以表明此服务具有远程处理接口。
 2. 在服务中使用远程处理侦听器。 这是可以提供远程处理功能的 `CommunicationListener` 实现。 可使用 `FabricTransportServiceRemotingListener` 和默认远程处理传输协议来创建远程处理侦听器。
 
 例如，以下无状态服务公开了一个方法，此方法通过远程过程调用获取“Hello World”。
@@ -68,7 +68,7 @@ class MyServiceImpl extends StatelessService implements MyService {
 >
 
 ## <a name="call-remote-service-methods"></a>调用远程服务的方法
-若要使用远程处理堆栈在服务上调用方法，可以通过 `microsoft.serviceFabric.services.remoting.client.ServiceProxyBase` 类对此服务使用本地代理。 `ServiceProxyBase` 方法通过使用此服务实现的相同接口来创建本地代理。 借助该代理，可轻松地在接口上远程调用方法。
+若要使用远程处理堆栈在服务上调用方法，可以通过 `microsoft.serviceFabric.services.remoting.client.ServiceProxyBase` 类对此服务使用本地代理。 `ServiceProxyBase` 方法通过使用此服务实现的相同接口来创建本地代理。 使用此代理，只需在此接口上远程调用方法。
 
 ```java
 
@@ -78,13 +78,13 @@ CompletableFuture<String> message = helloWorldClient.helloWorldAsync();
 
 ```
 
-该远程处理框架将服务引发的异常传播到客户端。 因此，在客户端使用 `ServiceProxyBase` 的异常处理逻辑可直接处理服务引发的异常。
+此远程处理框架将服务引发的异常传播到客户端。 因此，在客户端使用 `ServiceProxyBase` 的异常处理逻辑可直接处理服务引发的异常。
 
 ## <a name="service-proxy-lifetime"></a>服务代理生存期
 由于 ServiceProxy 创建是轻量型操作，因此可根据需求随意创建，数目不限。 如有需要，可重复使用服务代理实例。 如果远程过程调用引发了异常，仍可以重复使用相同的代理实例。 每个 ServiceProxy 都包含用于通过线路发送消息的通信客户端。 进行远程调用时，会在内部执行检查，以确认通信客户端是否有效。 根据这些检查的结果，将创建通信客户端（如有必要）。 因此，如果发生异常，无需重新创建 `ServiceProxy`。
 
 ### <a name="serviceproxyfactory-lifetime"></a>ServiceProxyFactory 生存期
-[FabricServiceProxyFactory](https://docs.azure.cn/java/api/microsoft.servicefabric.services.remoting.client.fabricserviceproxyfactory) 是为不同远程接口创建代理的工厂。 如果使用 API `ServiceProxyBase.create` 创建代理，则框架创建 `FabricServiceProxyFactory`。
+[FabricServiceProxyFactory](https://docs.azure.cn/java/api/microsoft.servicefabric.services.remoting.client.fabricserviceproxyfactory) 是为不同远程接口创建代理的工厂。 如果使用 API `ServiceProxyBase.create`创建代理，则框架创建 `FabricServiceProxyFactory`。
 在需要替代 [ServiceRemotingClientFactory](https://docs.azure.cn/java/api/microsoft.servicefabric.services.remoting.client.serviceremotingclientfactory) 属性时，手动创建一个 FabricServiceProxyFactory 是有用的。
 Factory 是一项高成本操作。 `FabricServiceProxyFactory` 维护通信客户端的缓存。
 最佳做法是尽可能久地缓存 `FabricServiceProxyFactory`。
@@ -92,7 +92,7 @@ Factory 是一项高成本操作。 `FabricServiceProxyFactory` 维护通信客�
 ## <a name="remoting-exception-handling"></a>远程异常处理
 服务 API 引发的所有远程异常都作为 RuntimeException 或 FabricException 发送回客户端。
 
-ServiceProxy 对为其创建的服务分区，处理所有故障转移异常。 如果存在故障转移异常（非暂时异常），它将重新解析终结点，并通过正确的终结点重试调用。 故障转移异常可无限次重试。
+ServiceProxy 对为其创建的服务分区，处理所有故障转移异常。 如果存在故障转移异常（非暂时异常），它将重新解析终结点，并通过正确的终结点重试调用。 故障转移异常的重试次数无限。
 在 TransientExceptions 情况下，它仅重试调用。
 
 默认重试参数由 [OperationRetrySettings](https://docs.azure.cn/java/api/microsoft.servicefabric.services.communication.client.operationretrysettings) 提供。

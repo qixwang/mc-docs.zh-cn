@@ -10,10 +10,10 @@ ms.date: 02/17/2020
 ms.author: v-tawe
 ms.custom: include file
 ms.openlocfilehash: 88a87e80a0f4f404932944705dad98d5de1970b2
-ms.sourcegitcommit: ee2a3063185cd4c5dc24901366dbb726119d045d
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "76979347"
 ---
 ## <a name="create-a-project-zip-file"></a>创建一个项目 zip 文件

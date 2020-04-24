@@ -16,10 +16,10 @@ origin.date: 12/02/2018
 ms.date: 5/22/2019
 ms.author: v-lingwu
 ms.openlocfilehash: e2b9a4da673f938166051094d967a18e852fd1d0
-ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75858354"
 ---
 # <a name="quickstart-onboard-linux-computers-to-azure-security-center"></a>快速入门：将 Linux 计算机载入到安全中心
@@ -27,7 +27,7 @@ ms.locfileid: "75858354"
 
 本快速入门展示了如何在 Linux 计算机上安装该代理。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 若要开始使用安全中心，必须订阅世纪互联 Azure。 如果你尚无订阅，则可以注册[试用帐户](https://www.azure.cn/pricing/free-trial/)。
 
 在开始学习本快速入门之前，你必须位于安全中心的“标准”定价层。 有关升级说明，请参阅[将 Azure 订阅载入到安全中心标准版](security-center-get-started.md)。 可以免费试用安全中心标准版。 若要了解详细信息，请参阅[定价页](https://www.azure.cn/pricing/details/security-center/)。

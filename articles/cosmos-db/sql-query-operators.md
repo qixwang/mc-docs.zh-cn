@@ -8,10 +8,10 @@ origin.date: 12/02/2019
 ms.date: 02/10/2020
 ms.author: v-yeche
 ms.openlocfilehash: aed6a30d407a847c4c3713408f085fdf0f601a94
-ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77067863"
 ---
 # <a name="operators-in-azure-cosmos-db"></a>Azure Cosmos DB 中的运算符
@@ -22,15 +22,15 @@ ms.locfileid: "77067863"
 
 下表显示了 SQL API 中任意两个 JSON 类型之间等式比较的结果。
 
-| **Op** | **Undefined** | **Null** | **布尔值** | **数字** | **字符串** | **Object** | **数组** |
+| **Op** | 未定义  | **Null** | **布尔值** | **数字** | **字符串** | **Object** | 数组  |
 |---|---|---|---|---|---|---|---|
-| **Undefined** | Undefined | Undefined | Undefined | Undefined | Undefined | Undefined | Undefined |
+| 未定义  | Undefined | Undefined | Undefined | Undefined | Undefined | Undefined | Undefined |
 | **Null** | Undefined | **正常** | Undefined | Undefined | Undefined | Undefined | Undefined |
 | **布尔值** | Undefined | Undefined | **正常** | Undefined | Undefined | Undefined | Undefined |
 | **数字** | Undefined | Undefined | Undefined | **正常** | Undefined | Undefined | Undefined |
 | **字符串** | Undefined | Undefined | Undefined | Undefined | **正常** | Undefined | Undefined |
 | **Object** | Undefined | Undefined | Undefined | Undefined | Undefined | **正常** | Undefined |
-| **数组** | Undefined | Undefined | Undefined | Undefined | Undefined | Undefined | **正常** |
+| 数组  | Undefined | Undefined | Undefined | Undefined | Undefined | Undefined | **正常** |
 
 对于 `>`、`>=`、`!=`、`<` 和 `<=` 等比较运算符，跨类型的比较或者两个对象或数组之间的比较会生成 `Undefined`。  
 
@@ -42,7 +42,7 @@ ms.locfileid: "77067863"
 
 **OR 运算符**
 
-| OR | True | False | Undefined |
+| 或 | True | False | Undefined |
 | --- | --- | --- | --- |
 | True |True |True |True |
 | False |True |False |Undefined |
@@ -50,7 +50,7 @@ ms.locfileid: "77067863"
 
 **AND 运算符**
 
-| AND | True | False | Undefined |
+| 和 | True | False | Undefined |
 | --- | --- | --- | --- |
 | True |True |False |Undefined |
 | False |False |False |False |
@@ -97,7 +97,7 @@ ms.locfileid: "77067863"
 
 ## <a name="next-steps"></a>后续步骤
 
-- [Azure Cosmos DB .NET 示例](https://github.com/Azure/azure-cosmos-dotnet-v3)
+- [Azure Cosmos DB.NET 示例](https://github.com/Azure/azure-cosmos-dotnet-v3)
 - [关键字](sql-query-keywords.md)
 - [SELECT 子句](sql-query-select.md)
 

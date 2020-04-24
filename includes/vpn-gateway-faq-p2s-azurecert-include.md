@@ -10,10 +10,10 @@ ms.date: 01/20/2020
 ms.author: v-jay
 ms.custom: include file
 ms.openlocfilehash: 1730aef1f37858142b833aed5dbf0b191de490f9
-ms.sourcegitcommit: 779d674e865b23ae417eb492efca7508675b8ba6
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75939758"
 ---
 [!INCLUDE [P2S FAQ All](vpn-gateway-faq-p2s-all-include.md)]
@@ -32,13 +32,13 @@ ms.locfileid: "75939758"
 
 ### <a name="can-i-use-certificates-from-azure-key-vault"></a>是否可以使用 Azure 密钥保管库中的证书？
 
-否。
+不是。
 
 ### <a name="what-tools-can-i-use-to-create-certificates"></a>可以使用哪些工具来创建证书？
 
 可以使用企业 PKI 解决方案（内部 PKI）、Azure PowerShell、MakeCert 和 OpenSSL。
 
-### <a name="certsettings"></a>是否有证书设置和参数的说明？
+### <a name="are-there-instructions-for-certificate-settings-and-parameters"></a><a name="certsettings"></a>是否有证书设置和参数的说明？
 
 * **内部 PKI/企业 PKI 解决方案：** 请参阅[生成证书](../articles/vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md#generatecert)的步骤。
 

@@ -16,10 +16,10 @@ origin.date: 07/27/2018
 ms.date: 01/13/2020
 ms.author: v-yeche
 ms.openlocfilehash: a385559f19ab235ba3e6627c9b0384724373703a
-ms.sourcegitcommit: bc5f8b4f8ccd7c723f64055825508d1dfcc2162b
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75859232"
 ---
 # <a name="set-up-dpdk-in-a-linux-virtual-machine"></a>在 Linux 虚拟机中设置 DPDK
@@ -143,7 +143,7 @@ zypper \
     * 运行 `ethtool -i <vf interface name>` 确定对 VF  使用哪个 PCI 地址。
     * 如果 eth0  已启用加速网络，请确保 testpmd 不会意外接管 eth0  的 VF PCI 设备。 如果 DPDK 应用程序意外接管管理网络接口，并导致 SSH 连接断开，请使用串行控制台来停止 DPDK 应用程序。 串行控制台还可用于停止或启动虚拟机。
 
-4. 每次重新启动后，使用 `modprobe -a ib_uverbs` 加载 *ibuverbs*。 （仅适用于 SLES 15）另外，使用 `modprobe -a mlx4_ib` 加载 *mlx4_ib*。
+4. 每次重新启动后，使用 *加载*ibuverbs`modprobe -a ib_uverbs`。 （仅适用于 SLES 15）另外，使用 *加载*mlx4_ib`modprobe -a mlx4_ib`。
 
 ## <a name="failsafe-pmd"></a>防故障 PMD
 
@@ -153,7 +153,7 @@ DPDK 应用程序必须通过 Azure 中公开的防故障 PMD 运行。 如果�
 
 ## <a name="run-testpmd"></a>运行 testpmd
 
-若要在根模式下运行 testpmd，请在 testpmd  命令前面使用 `sudo`。
+若要在根模式下运行 testpmd，请在 testpmd`sudo`*命令前面使用*。
 
 ### <a name="basic-sanity-check-failsafe-adapter-initialization"></a>基本：健全性检查、防故障适配器初始化
 
@@ -217,7 +217,7 @@ DPDK 应用程序必须通过 Azure 中公开的防故障 PMD 运行。 如果�
      --stats-period <display interval in seconds>
     ```
 
-若要在虚拟机上运行上面的命令，请先将 `app/test-pmd/txonly.c` 中的 IP_SRC_ADDR  和 IP_DST_ADDR  更改为与虚拟机的实际 IP 地址一致，再进行编译。 否则，数据包在抵达接收端之前将被丢弃。
+若要在虚拟机上运行上面的命令，请先将  *中的 IP_SRC_ADDR* *和 IP_DST_ADDR*`app/test-pmd/txonly.c` 更改为与虚拟机的实际 IP 地址一致，再进行编译。 否则，数据包在抵达接收端之前将被丢弃。
 
 ### <a name="advanced-single-sendersingle-forwarder"></a>高级：单个发送端/单个转发端
 以下命令定期列显每秒数据包数的统计信息：
@@ -253,7 +253,7 @@ DPDK 应用程序必须通过 Azure 中公开的防故障 PMD 运行。 如果�
      --stats-period <display interval in seconds>
     ```
 
-若要在虚拟机上运行上面的命令，请先将 `app/test-pmd/txonly.c` 中的 IP_SRC_ADDR  和 IP_DST_ADDR  更改为与虚拟机的实际 IP 地址一致，再进行编译。 否则，数据包在抵达转发端之前将被丢弃。 无法使用第三台计算机来接收转发的流量，因为除非做出一些代码更改，否则 *testpmd* 转发端不会修改第 3 层地址。
+若要在虚拟机上运行上面的命令，请先将  *中的 IP_SRC_ADDR* *和 IP_DST_ADDR*`app/test-pmd/txonly.c` 更改为与虚拟机的实际 IP 地址一致，再进行编译。 否则，数据包在抵达转发端之前将被丢弃。 无法使用第三台计算机来接收转发的流量，因为除非做出一些代码更改，否则 *testpmd* 转发端不会修改第 3 层地址。
 
 ## <a name="references"></a>参考
 

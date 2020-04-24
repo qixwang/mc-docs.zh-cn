@@ -16,10 +16,10 @@ origin.date: 01/21/2020
 ms.date: 2/6/2020
 ms.author: v-lingwu
 ms.openlocfilehash: edb227c606f8bd8c2ff37043653f8bc364278217
-ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77068381"
 ---
 # <a name="create-a-relay-namespace-using-the-azure-portal"></a>使用 Azure 门户创建中继命名空间
@@ -33,7 +33,7 @@ ms.locfileid: "77068381"
 
 [!INCLUDE [relay-create-namespace-portal](../../includes/relay-create-namespace-portal.md)]
 
-祝贺！ 现已创建中继命名空间。
+祝贺你！ 现已创建中继命名空间。
 
 ## <a name="next-steps"></a>后续步骤
 

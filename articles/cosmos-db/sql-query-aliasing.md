@@ -8,10 +8,10 @@ origin.date: 12/02/2019
 ms.date: 02/10/2020
 ms.author: v-yeche
 ms.openlocfilehash: 8d83c85eec1c669ff0af39cf1c1b9168e8c77788
-ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77028709"
 ---
 # <a name="aliasing-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中指定别名
@@ -46,7 +46,7 @@ ms.locfileid: "77028709"
 
 ## <a name="next-steps"></a>后续步骤
 
-- [Azure Cosmos DB .NET 示例](https://github.com/Azure/azure-cosmos-dotnet-v3)
+- [Azure Cosmos DB.NET 示例](https://github.com/Azure/azure-cosmos-dotnet-v3)
 - [SELECT 子句](sql-query-select.md)
 - [FROM 子句](sql-query-from.md)
 

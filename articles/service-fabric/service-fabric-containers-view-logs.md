@@ -6,10 +6,10 @@ origin.date: 05/15/2018
 ms.author: v-yeche
 ms.date: 01/06/2020
 ms.openlocfilehash: abc944fb4b2bdaeaf2ee3b22da01faa525df5bcd
-ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75742458"
 ---
 # <a name="view-logs-for-a-service-fabric-container-service"></a>查看 Service Fabric 容器服务的日志
@@ -38,7 +38,7 @@ Azure Service Fabric 是一种容器业务流程协调程序，支持 [Linux 和
 设置 **RunInteractive** 与 Docker 的 `--interactive` 和 `tty` [标志](https://docs.docker.com/engine/reference/commandline/run/#options)相对应。 在清单文件中将此设置设为 true 时，这些标志用于启动容器。  
 
 ### <a name="rest"></a>REST
-使用[获取部署在节点上的容器日志](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getcontainerlogsdeployedonnode)操作来获取故障容器的日志。 指定运行容器的节点的名称、应用程序名称、服务清单名称和代码包名称。  指定 `&Previous=true`。 该响应将包含该代码包实例中无响应容器的容器日志。
+使用[获取部署在节点上的容器日志](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getcontainerlogsdeployedonnode)操作来获取故障容器的日志。 指定运行该容器的节点名称、应用程序名称、服务清单名称和代码包名称。  指定 `&Previous=true`。 该响应将包含该代码包实例中无响应容器的容器日志。
 
 请求 URI 的格式如下：
 
@@ -57,7 +57,7 @@ GET http://localhost:19080/Nodes/_Node_0/$/GetApplications/SimpleHttpServerApp/$
 ```
 
 ### <a name="service-fabric-sfctl"></a>Service Fabric (SFCTL)
-使用 [sfctl service get-container-logs](service-fabric-sfctl-service.md) 命令来提取故障容器的日志。  指定运行容器的节点的名称、应用程序名称、服务清单名称和代码包名称。 指定 `--previous` 标志。  该响应将包含该代码包实例中无响应容器的容器日志。
+使用 [sfctl service get-container-logs](service-fabric-sfctl-service.md) 命令来提取故障容器的日志。  指定运行该容器的节点名称、应用程序名称、服务清单名称和代码包名称。 指定 `--previous` 标志。  该响应将包含该代码包实例中无响应容器的容器日志。
 
 ```
 sfctl service get-container-logs --node-name _Node_0 --application-id SimpleHttpServerApp --service-manifest-name SimpleHttpServerSvcPkg --code-package-name Code --previous
@@ -68,7 +68,7 @@ sfctl service get-container-logs --node-name _Node_0 --application-id SimpleHttp
 ```
 
 ## <a name="next-steps"></a>后续步骤
-- 学习[创建 Linux 容器应用程序教程](service-fabric-tutorial-create-container-images.md)。
+- 详细了解[创建 Linux 容器应用程序教程](service-fabric-tutorial-create-container-images.md)。
 - 详细了解 [Service Fabric 和容器](service-fabric-containers-overview.md)
 
 [Image1]: media/service-fabric-containers-view-logs/view-container-logs-sfx.png

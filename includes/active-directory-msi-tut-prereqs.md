@@ -9,10 +9,10 @@ ms.date: 02/05/2020
 ms.author: v-junlch
 ms.custom: include file
 ms.openlocfilehash: 2fd12698ddbed25611012f36e967814b59b63e36
-ms.sourcegitcommit: 7c80405a6b48380814b4b414e9f8a5756c007880
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77067585"
 ---
 - 如果不熟悉 Azure 资源功能的托管标识，请参阅此[概述](/active-directory/managed-identities-azure-resources/overview)。 如果没有 Azure 帐户，请先[注册试用版](https://www.azure.cn/pricing/1rmb-trial/)，然后再继续。

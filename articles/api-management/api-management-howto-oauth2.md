@@ -15,10 +15,10 @@ origin.date: 11/04/2019
 ms.author: v-yiso
 ms.date: 01/20/2020
 ms.openlocfilehash: 752e02f09854898d9f096615f37be771510de7ac
-ms.sourcegitcommit: a890a9cca495d332c9f3f53ff3a5259fd5f0c275
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75859502"
 ---
 # <a name="how-to-authorize-developer-accounts-using-oauth-20-in-azure-api-management"></a>如何在 Azure API 管理中使用 OAuth 2.0 为开发人员帐户授权
@@ -28,33 +28,33 @@ ms.locfileid: "75859502"
 > [!IMPORTANT]
 > OAuth 2.0 授权在新开发人员门户的交互式控制台中尚不可用。
 
-## <a name="prerequisites"> </a>先决条件
-本指南了介绍如何配置 API 管理服务实例，以便针对开发人员帐户使用 OAuth 2.0 授权，但不介绍如何配置 OAuth 2.0 提供程序。 每个 OAuth 2.0 提供程序的配置均不相同，虽然步骤类似，不过在 API 管理服务实例中配置 OAuth 2.0 时使用的必需信息是相同的。 本主题介绍的示例使用 Azure Active Directory 作为 OAuth 2.0 提供程序。
+## <a name="prerequisites"></a><a name="prerequisites"> </a>先决条件
+本指南介绍如何配置 API 管理服务实例，以便针对开发人员帐户使用 OAuth 2.0 授权，但不介绍如何配置 OAuth 2.0 提供程序。 每个 OAuth 2.0 提供程序的配置均不相同，虽然步骤类似，不过在 API 管理服务实例中配置 OAuth 2.0 时使用的必需信息是相同的。 本主题介绍的示例使用 Azure Active Directory 作为 OAuth 2.0 提供程序。
 
 > [!NOTE]
 > 有关使用 Azure Active Directory 配置 OAuth 2.0 的详细信息，请参阅 [WebApp-GraphAPI-DotNet][WebApp-GraphAPI-DotNet] 示例。
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
-## <a name="step1"> </a>在 API 管理中配置 OAuth 2.0 授权服务器
+## <a name="configure-an-oauth-20-authorization-server-in-api-management"></a><a name="step1"> </a>在 API 管理中配置 OAuth 2.0 授权服务器
 
 > [!NOTE]
 > 如果尚未创建 API 管理服务实例，请参阅[创建 API 管理服务实例][Create an API Management service instance]。
 > 
 > 
 
-1. 在左侧菜单中的 OAuth 2.0 选项卡上单击，然后单击“+添加”。 
+1. 单击左侧菜单中的 OAuth 2.0 标签，然后单击“+添加”  。
 
     ![OAuth 2.0 菜单](./media/api-management-howto-oauth2/oauth-01.png)
 
-2. 在“名称”和“说明”字段中输入名称和可选说明。  
+2. 在“名称”  和“说明”  字段中输入名称和可选说明。
 
     > [!NOTE]
     > 这些字段用于标识当前 API 管理服务实例中的 OAuth 2.0 授权服务器，其值不来自 OAuth 2.0 服务器。
     >
     >
 
-3. 输入“客户端注册页 URL”。  此页是供用户创建和管理其帐户的地方，因所使用的 OAuth 2.0 提供程序而异。 “客户端注册页 URL”指向供用户针对 OAuth 2.0 提供程序创建和配置自己帐户的页面，这些提供程序支持用户管理帐户。  某些组织不配置或使用此功能，即使 OAuth 2.0 提供程序支持此功能。 如果 OAuth 2.0 提供程序尚未配置用户管理帐户功能，请在此处输入一个占位符 URL，例如公司的 URL，或 `https://placeholder.contoso.com` 之类的 URL。
+3. 输入“客户端注册页 URL”。  此页是供用户创建和管理其帐户的地方，因所使用的 OAuth 2.0 提供程序而异。 “客户端注册页 URL”  指向供用户针对 OAuth 2.0 提供程序创建和配置其自己的帐户的页面，这些提供程序支持用户管理帐户。 某些组织不配置或使用此功能，即使 OAuth 2.0 提供程序支持此功能。 如果 OAuth 2.0 提供程序尚未配置用户管理帐户功能，请在此处输入一个占位符 URL，例如公司的 URL，或 `https://placeholder.contoso.com` 之类的 URL。
 
     ![OAuth 2.0 新服务器](./media/api-management-howto-oauth2/oauth-02.png)
 
@@ -66,17 +66,17 @@ ms.locfileid: "75859502"
 
     `https://login.chinacloudapi.cn/<tenant_id>/oauth2/authorize`
 
-    “授权请求方法”指定如何向 OAuth 2.0 服务器发送授权请求。  默认情况下会选择 **GET**。
+    “授权请求方法”指定如何向 OAuth 2.0 服务器发送授权请求。  默认选择 **GET**。
 
 5. 然后，需要指定“令牌终结点 URL”、“客户端身份验证方法”、“访问令牌发送方法”和“默认范围”。    
 
     ![OAuth 2.0 新服务器](./media/api-management-howto-oauth2/oauth-03.png)
 
-    对于 Azure Active Directory OAuth 2.0 服务器，“令牌终结点 URL”将具有如下格式，其中 `<TenantID>` 的格式为 `yourapp.onmicrosoft.com`。 
+    对于 Azure Active Directory OAuth 2.0 服务器，“令牌终结点 URL”将具有如下格式，其中 **的格式为**。`<TenantID>``yourapp.onmicrosoft.com`
 
     `https://login.chinacloudapi.cn/<TenantID>/oauth2/token`
 
-    “客户端身份验证方法”的默认设置为“基本”，“访问令牌发送方法”为“授权标头”。     这些值以及“默认范围”在窗体的此部分配置。 
+    “客户端身份验证方法”的默认设置为“基本”，“访问令牌发送方法”为“Authorization 标头”。     这些值以及“默认范围”在窗体的此部分配置。 
 
 “客户端凭据”部分包含“客户端 ID”和“客户端密钥”，在创建和配置 OAuth 2.0 服务器的过程中获取。    指定“客户端 ID”和“客户端密钥”以后，会生成“授权代码”的“redirect_uri”。     该 URI 用于在 OAuth 2.0 服务器配置中配置回复 URL。
 
@@ -86,13 +86,13 @@ ms.locfileid: "75859502"
 
 完成窗体的操作后，单击“创建”保存 API 管理 OAuth 2.0 授权服务器配置。  保存服务器配置后，可将 API 配置为使用此配置，如下一部分所示。
 
-## <a name="step2"> </a>配置 API 以使用 OAuth 2.0 用户授权
+## <a name="configure-an-api-to-use-oauth-20-user-authorization"></a><a name="step2"> </a>配置 API 以使用 OAuth 2.0 用户授权
 
-1. 在左侧的“API 管理”菜单中单击“API”。  
+1. 单击左侧“API 管理”  菜单中的“API”  。
 
     ![OAuth 2.0 API](./media/api-management-howto-oauth2/oauth-05.png)
 
-2. 单击所需的 API 的名称并单击“设置”  。 滚动到“安全性”  部分，然后选中 **OAuth 2.0** 的复选框。
+2. 单击所需 API 的名称，然后单击“设置”  。 滚动至“安全性”  部分，然后选中 **OAuth 2.0** 框。
 
     ![OAuth 2.0 设置](./media/api-management-howto-oauth2/oauth-06.png)
 
@@ -100,7 +100,7 @@ ms.locfileid: "75859502"
 
     ![OAuth 2.0 设置](./media/api-management-howto-oauth2/oauth-07.png)
 
-## <a name="step3"> </a>旧开发人员门户 - 测试 OAuth 2.0 用户授权
+## <a name="legacy-developer-portal---test-the-oauth-20-user-authorization"></a><a name="step3"> </a>旧开发人员门户 - 测试 OAuth 2.0 用户授权
 
 [!INCLUDE [api-management-portal-legacy.md](../../includes/api-management-portal-legacy.md)]
 
@@ -111,7 +111,7 @@ ms.locfileid: "75859502"
 ![Echo API][api-management-apis-echo-api]
 
 > [!NOTE]
-> 如果只配置了一个 API 或者只有一个 API 对你的帐户可见，则单击 API 会直接进入该 API 的操作。
+> 如果必须只有一个 API 得到配置或对你的帐户可见，并单击 API 使你直接进入该 API 的操作。
 > 
 > 
 
@@ -122,13 +122,13 @@ ms.locfileid: "75859502"
 选中“授权代码”后，会显示一个弹出窗口，其中包含 OAuth 2.0 提供程序的登录窗体。  在此示例中，登录窗体由 Azure Active Directory 提供。
 
 > [!NOTE]
-> 如果已禁用弹出窗口，则浏览器会提示用户启用该功能。 启用该功能后，再次选中“授权代码”，此时就会显示登录窗体。 
+> 如果已禁用弹出窗口，浏览器会提示用户启用该功能。 启用该功能后，再次选中“授权代码”，此时就会显示登录窗体。 
 > 
 > 
 
 ![登录][api-management-oauth2-signin]
 
-登录后，“请求标头”中会填充用于对请求授权的 `Authorization : Bearer` 标头。 
+登录后，“请求标头”中会填充用于对请求授权的  **标头。** `Authorization : Bearer`
 
 ![请求标头令牌][api-management-request-header-token]
 

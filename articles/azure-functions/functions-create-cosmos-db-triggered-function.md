@@ -6,10 +6,10 @@ ms.topic: quickstart
 ms.date: 01/13/2020
 ms.custom: cc996988-fb4f-47
 ms.openlocfilehash: 88a36a169657f530af2052783a7b023d801f82bf
-ms.sourcegitcommit: 48d51745ca18de7fa05b77501b4a9bf16cea2068
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "76116899"
 ---
 # <a name="create-a-function-triggered-by-azure-cosmos-db"></a>创建由 Azure Cosmos DB 触发的函数
@@ -43,7 +43,7 @@ ms.locfileid: "76116899"
 
 ## <a name="create-azure-cosmos-db-trigger"></a>创建 Azure Cosmos DB 触发器
 
-1. 展开 Function App，单击“Functions”旁边的 + 按钮   。 如果这是函数应用中的第一个函数，请依次选择“门户中”  、“继续”  。 否则，请转到第三步。
+1. 展开 Function App，单击“Functions”旁边的  **按钮+**  。 如果这是函数应用中的第一个函数，请依次选择“门户中”  、“继续”  。 否则，请转到第三步。
 
    ![Azure 门户中的 Functions 快速入门页](./media/functions-create-cosmos-db-triggered-function/function-app-quickstart-choose-portal.png)
 
@@ -66,8 +66,8 @@ ms.locfileid: "76116899"
     | **名称** | 默认 | 使用模板建议的默认函数名称。|
     | **Azure Cosmos DB 帐户连接** | 新设置 | 选择“新建”  ，选择你的**订阅**、你之前创建的**数据库帐户**，然后选择“选择”。  这将为帐户连接创建应用程序设置。 此设置由数据库连接的绑定使用。 |
     | **容器名称** | Items | 要监视的容器的名称。 |
-    | **创建租赁容器（如果不存在）** | 已选中 | 容器尚不存在，因此创建容器。 |
-    | **数据库名称** | 任务 | 包含要监视的容器的数据库的名称。 |
+    | **创建租用容器（如果不存在）** | 已选中 | 该容器尚不存在，因此创建它。 |
+    | **数据库名称** | 任务 | 具有要监视的容器的数据库的名称。 |
 
 1. 单击“创建”  创建你的 Azure Cosmos DB 触发函数。 创建函数后，将显示基于模板的函数代码。  
 
@@ -75,7 +75,7 @@ ms.locfileid: "76116899"
 
     此函数模板将文档的数量和第一个文档 ID 写入到日志中。
 
-接下来，连接到 Azure Cosmos DB 帐户并在 `Tasks` 数据库中创建 `Items` 容器。
+接下来，连接到 Azure Cosmos DB 帐户并在 `Items` 数据库中创建 `Tasks` 容器。
 
 ## <a name="create-the-items-container"></a>创建 Items 容器
 
@@ -87,7 +87,7 @@ ms.locfileid: "76116899"
 
 1. 选择你的 Azure Cosmos DB 帐户，然后选择“数据资源管理器”  。 
 
-1. 在“SQL API”  下，选择“Tasks”  数据库，然后选择“新建容器”  。
+1. 在 **SQL API** 下，选择“Tasks”  数据库，然后选择“新建容器”  。
 
     ![创建容器](./media/functions-create-cosmos-db-triggered-function/cosmosdb-create-container.png)
 
@@ -102,13 +102,13 @@ ms.locfileid: "76116899"
     | **[分区键](../cosmos-db/partition-data.md)** | /category|一个分区键，用于将数据均匀分配到每个分区。 选择正确的分区键对于创建高性能容器而言很重要。 | 
     | **吞吐量** |400 RU| 使用默认值。 如果想要减少延迟，以后可以增加吞吐量。 |    
 
-1. 单击“确定”  创建 Items 容器。 创建该容器可能需要少许时间。
+1. 单击“确定”  以创建 Items 容器。 创建该容器可能需要很短的时间。
 
-函数绑定中指定的容器存在后，可以通过将项添加到此新容器来测试函数。
+函数绑定中指定的容器存在后，可以通过向此新容器添加项来测试函数。
 
 ## <a name="test-the-function"></a>测试函数
 
-1. 展开数据资源管理器中的新 **Items** 容器，选择“项”  ，然后选择“新建项”  。
+1. 在数据资源管理器中展开新的 **Items** 容器，选择“项”  ，然后选择“新建项”  。
 
     ![在 Items 容器中创建项](./media/functions-create-cosmos-db-triggered-function/create-item-in-container.png)
 

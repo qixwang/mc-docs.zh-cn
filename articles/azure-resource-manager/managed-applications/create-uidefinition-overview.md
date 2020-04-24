@@ -7,10 +7,10 @@ origin.date: 08/06/2019
 ms.date: 01/20/2020
 ms.author: v-yeche
 ms.openlocfilehash: 30dd20c228632a1703a002b0328b2cc1191ccd32
-ms.sourcegitcommit: 8de025ca11b62e06ba3762b5d15cc577e0c0f15d
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "76170622"
 ---
 # <a name="createuidefinitionjson-for-azure-managed-applications-create-experience"></a>适合 Azure 托管应用程序的创建体验的 CreateUiDefinition.json
@@ -37,7 +37,7 @@ CreateUiDefinition 始终包含三个属性：
 
 * 处理程序 (handler)
 * 版本
-* 参数
+* parameters
 
 handler 应当始终为 `Microsoft.Azure.CreateUIDef`，支持的最新版本为 `0.1.2-preview`。
 
@@ -47,7 +47,7 @@ parameters 属性的架构取决于所指定的 handler 和 version 的组合。
 
 可以使用 JSON 编辑器创建 createUiDefinition，然后在 [createUiDefinition 沙盒](https://portal.azure.cn/?feature.customPortal=false&#blade/Microsoft_Azure_CreateUIDef/SandboxBlade)中对其进行测试，以便预览它。 有关沙盒的详细信息，请参阅[测试 Azure 托管应用程序的门户接口](test-createuidefinition.md)。
 
-## <a name="basics"></a>基础知识
+## <a name="basics"></a>基础
 
 基础知识是 Azure 门户分析文件时生成的第一步。 除了会显示 `basics` 中指定的元素外，该门户还会为用户注入其他元素以用于为部署选择订阅、资源组和位置。 可能情况下，对部署范围内的参数进行查询的元素（例如群集名称或管理员凭据）应当放在此步骤中。
 

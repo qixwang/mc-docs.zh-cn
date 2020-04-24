@@ -8,10 +8,10 @@ ms.topic: conceptual
 origin.date: 5/6/2019
 ms.date: 05/20/2019
 ms.openlocfilehash: 4dbde6fb04c88843419a2b5fc76de6a80cf37c64
-ms.sourcegitcommit: 4f4694991e1c70929c7112ad45a0c404ddfbc8da
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75776624"
 ---
 # <a name="azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - 单一服务器
@@ -40,9 +40,9 @@ Azure Database for PostgreSQL 服务器：
 |||
 |:--|:--|
 | **身份验证和授权** | Azure Database for PostgreSQL 服务器支持本机 PostgreSQL 身份验证。 可使用服务器的管理员登录名连接到服务器并进行身份验证。 |
-| **协议** | 该服务支持 PostgreSQL 使用的基于消息的协议。 |
+| 协议  | 该服务支持 PostgreSQL 使用的基于消息的协议。 |
 | **TCP/IP** | 通过 TCP/IP 和 Unix 域套接字支持该协议。 |
-| **防火墙** | 为帮助保护数据，在用户指定具有访问权限的计算机之前，防火墙规则将禁止所有对服务器及其数据库的访问。 请参阅  [Azure Database for PostgreSQL 服务器防火墙规则](concepts-firewall-rules.md)。 |
+| **Firewall** | 为帮助保护数据，在用户指定具有访问权限的计算机之前，防火墙规则将禁止所有对服务器及其数据库的访问。 请参阅  [Azure Database for PostgreSQL 服务器防火墙规则](concepts-firewall-rules.md)。 |
 
 ## <a name="managing-your-server"></a>管理服务器
 可使用 [Azure 门户](https://portal.azure.cn)或 [Azure CLI](/cli/postgres) 管理 Azure Database for PostgreSQL 服务器。

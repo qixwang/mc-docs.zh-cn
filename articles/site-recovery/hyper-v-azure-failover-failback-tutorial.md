@@ -10,15 +10,15 @@ ms.date: 01/13/2020
 ms.author: v-yeche
 ms.custom: MVC
 ms.openlocfilehash: a41f48c7c49cb6d795f2b1072fda020c85eacd50
-ms.sourcegitcommit: 4f4694991e1c70929c7112ad45a0c404ddfbc8da
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75776728"
 ---
 # <a name="fail-over-hyper-v-vms-to-azure"></a>将 Hyper-V VM 故障转移到 Azure
 
-本教程介绍如何使用 [Azure Site Recovery](site-recovery-overview.md) 将 Hyper-V VM 故障转移到 Azure。 故障转移后，可故障回复到本地站点（若可行）。 本教程介绍如何执行下列操作：
+本教程介绍如何使用 [Azure Site Recovery](site-recovery-overview.md) 将 Hyper-V VM 故障转移到 Azure。 故障转移后，可故障回复到本地站点（若可行）。 在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 验证 Hyper-V VM 属性以检查是否符合 Azure 要求。
@@ -31,7 +31,7 @@ ms.locfileid: "75776728"
 3. 为 [Hyper-V VM](tutorial-hyper-v-to-azure.md) 或为[托管在 System Center VMM 云中的 Hyper-V VM](tutorial-hyper-v-vmm-to-azure.md) 设置灾难恢复
 4. [运行灾难恢复演练](tutorial-dr-drill-azure.md)
 
-了解[不同类型的故障转移](failover-failback-overview.md#types-of-failover)。 如果要在恢复计划中故障转移多个 VM，请查看](site-recovery-failover.md)本文[。
+[了解](failover-failback-overview.md#types-of-failover)不同类型的故障转移。 如果要在恢复计划中对多个 VM 进行故障转移，请查看[本文](site-recovery-failover.md)。
 
 ## <a name="prepare-for-failover"></a>准备故障转移 
 确保 VM 上无快照，并且本地 VM 在故障回复期间已关闭。 这有助于确保复制期间的数据一致性。 在故障回复期间不要打开本地 VM。 
@@ -48,13 +48,13 @@ ms.locfileid: "75776728"
 
 在“受保护的项”  中，单击“复制的项”  >“虚拟机”。
 
-1. “复制的项”窗格中具有 VM 信息、运行状况状态和最新可用恢复点的摘要  。 单击“属性”  ，查看详细信息。
+1. “复制的项”窗格中具有 VM 信息、运行状况状态和最新可用恢复点的摘要  。 单击“属性”  可查看更多详细信息。
 
 1. 在“计算和网络”  中，可修改 Azure 名称、资源组、目标大小、[可用性集](../virtual-machines/windows/tutorial-availability-sets.md)和托管的磁盘设置
 
 1. 可查看和修改网络设置，包括在运行故障转移后 Azure VM 所在的网络/子网，以及将分配给它的 IP 地址。
 
-1. 在“磁盘”  中，可以查看操作系统和 VM 上数据磁盘的相关信息。
+1. 在“磁盘”  中，可以看到关于 VM 上的操作系统和数据磁盘的信息。
 
 ## <a name="fail-over-to-azure"></a>故障转移到 Azure
 
@@ -63,11 +63,11 @@ ms.locfileid: "75776728"
     <!--MOONCAKE: **Protected Items** to replace **Setting**-->
 
 2. 在“故障转移”中，选择“最新”恢复点   。 
-3. 选择“在开始故障转移前关闭计算机”  。 在触发故障转移之前，Site Recovery 会尝试关闭源 VM。 即使关机失败，故障转移也仍会继续。 可以在“作业”  页上跟踪故障转移进度。
+3. 选择“在开始故障转移前关闭计算机”  。 在触发故障转移之前，Site Recovery 会尝试关闭源 VM。 即使关机失败，故障转移也仍会继续。 可以在“作业”页上跟踪故障转移进度。 
 4. 验证故障转移后，单击“提交”  。 这会删除所有可用的恢复点。
 
     > [!WARNING]
-    > **请勿取消正在进行的故障转移**：如果取消正在进行的故障转移，故障转移会停止，但 VM 不再复制。
+    > **请勿取消正在进行的故障转移**：如果取消正在进行中，故障转移将停止，但 VM 将不会再复制。
 
 ## <a name="connect-to-failed-over-vm"></a>连接到故障转移的 VM
 

@@ -9,10 +9,10 @@ ms.topic: conceptual
 origin.data: 04/07/2019
 ms.date: 01/13/2020
 ms.openlocfilehash: 5aa71cf0abcc285ab6cc2603e8330fc04ebd1429
-ms.sourcegitcommit: 3f9d780a22bb069402b107033f7de78b10f90dde
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77179314"
 ---
 # <a name="time-series-analysis-in-azure-data-explorer"></a>Azure 数据资源管理器中的时序分析
@@ -36,16 +36,16 @@ demo_make_series1 | take 10
 
 |   |   |   |   |   |
 | --- | --- | --- | --- | --- |
-|   | 时间戳 | BrowserVer | OsVer | 国家/地区 |
-|   | 2016-08-25 09:12:35.4020000 | Chrome 51.0 | Windows 7 | 英国 |
+|   | TimeStamp | BrowserVer | OsVer | 国家/地区 |
+|   | 2016-08-25 09:12:35.4020000 | Chrome 51.0 | Windows 7 | United Kingdom |
 |   | 2016-08-25 09:12:41.1120000 | Chrome 52.0 | Windows 10 |   |
-|   | 2016-08-25 09:12:46.2300000 | Chrome 52.0 | Windows 7 | 英国 |
-|   | 2016-08-25 09:12:46.5100000 | Chrome 52.0 | Windows 10 | 英国 |
+|   | 2016-08-25 09:12:46.2300000 | Chrome 52.0 | Windows 7 | United Kingdom |
+|   | 2016-08-25 09:12:46.5100000 | Chrome 52.0 | Windows 10 | United Kingdom |
 |   | 2016-08-25 09:12:46.5570000 | Chrome 52.0 | Windows 10 | 立陶宛共和国 |
 |   | 2016-08-25 09:12:47.0470000 | Chrome 52.0 | Windows 8.1 | 印度 |
-|   | 2016-08-25 09:12:51.3600000 | Chrome 52.0 | Windows 10 | 英国 |
+|   | 2016-08-25 09:12:51.3600000 | Chrome 52.0 | Windows 10 | United Kingdom |
 |   | 2016-08-25 09:12:51.6930000 | Chrome 52.0 | Windows 7 | 荷兰 |
-|   | 2016-08-25 09:12:56.4240000 | Chrome 52.0 | Windows 10 | 英国 |
+|   | 2016-08-25 09:12:56.4240000 | Chrome 52.0 | Windows 10 | United Kingdom |
 |   | 2016-08-25 09:13:08.7230000 | Chrome 52.0 | Windows 10 | 印度 |
 
 由于没有指标，我们只能生成一组时序，用于表示由 OS 使用以下查询分区的流量计数本身：
@@ -75,13 +75,13 @@ demo_make_series1
 在本部分，我们将执行典型的时序处理函数。
 创建一组时序后，ADX 支持使用[时序文档](https://docs.microsoft.com/azure/kusto/query/machine-learning-and-tsa)中所述的一系列函数（该列表不断扩充）来处理和分析这些时序。 下面将介绍几个用于处理和分析时序的有代表性函数。
 
-### <a name="filtering"></a>筛选
+### <a name="filtering"></a>Filtering
 
 在信号处理中，筛选是常见的活动，可用于完成时序处理任务（例如，平滑化干扰信号、变化检测）。
 - 有两个泛型筛选函数：
     - [`series_fir()`](https://docs.microsoft.com/azure/kusto/query/series-firfunction)：应用 FIR 筛选器。 用于方便计算变化检测中时序的移动平均值和差异。
     - [`series_iir()`](https://docs.microsoft.com/azure/kusto/query/series-iirfunction)：应用 IIR 筛选器。 用于指数平滑与累计求和。
-- 通过将大小为 5 个箱的新移动平均时序（名为 *ma_num*）添加到查询，来 `Extend`（扩展）时序集：
+- 通过将大小为 5 个箱的新移动平均时序（名为 `Extend`ma_num *）添加到查询，来* （扩展）时序集：
 
 
 ```kusto
@@ -234,7 +234,7 @@ demo_many_series1
 
 |   |   |
 | --- | --- |
-|   | 计数 |
+|   | Count |
 |   | 18339 |
 
 现在，我们将创建由读取计数指标的 18339 个时序组成的集。 将 `by` 子句添加到 make-series 语句，应用线性回归，并选择具有最明显递减趋势的前两个时序：

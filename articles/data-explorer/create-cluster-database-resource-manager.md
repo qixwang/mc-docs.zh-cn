@@ -9,16 +9,16 @@ ms.topic: conceptual
 origin.date: 09/26/2019
 ms.date: 02/17/2020
 ms.openlocfilehash: 43a1ff29c30f4253448ea26d59c1304d98eed2af
-ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77037936"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-database-by-using-an-azure-resource-manager-template"></a>使用 Azure 资源管理器模板创建 Azure 数据资源管理器群集和数据库
 
 > [!div class="op_single_selector"]
-> * [Portal](create-cluster-database-portal.md)
+> * [门户](create-cluster-database-portal.md)
 > * [CLI](create-cluster-database-cli.md)
 > * [PowerShell](create-cluster-database-powershell.md)
 > * [C#](create-cluster-database-csharp.md)
@@ -95,7 +95,7 @@ Azure 数据资源管理器是一项快速且高度可缩放的数据探索服�
 }
 ```
 
-若要查找更多模板示例，请参阅 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/)。
+若要查找更多模板示例，请参阅 [Azure 快速入门模板](https://azure.microsoft.com/resources/templates/)。
 
 ## <a name="deploy-the-template-and-verify-template-deployment"></a>部署模板并验证模板部署
 
@@ -105,7 +105,7 @@ Azure 数据资源管理器是一项快速且高度可缩放的数据探索服�
 
 1. 若要创建群集和数据库，请使用以下按钮开始部署。 右键单击并选择“在新窗口中打开”  ，以便按本文中的剩余步骤操作。
 
-    [![“部署到 Azure”](media/create-cluster-database-resource-manager/deploybutton.png)](https://portal.azure.cn/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-kusto-cluster-database%2Fazuredeploy.json)
+    [![部署到 Azure](media/create-cluster-database-resource-manager/deploybutton.png)](https://portal.azure.cn/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-kusto-cluster-database%2Fazuredeploy.json)
 
     “部署到 Azure”  按钮将转到 Azure 门户以填写部署窗体。
 
@@ -138,7 +138,7 @@ Azure 数据资源管理器是一项快速且高度可缩放的数据探索服�
     ```
 
 1. 选择“复制”以复制 PowerShell 脚本。 
-1. 右键单击 shell 控制台，然后选择“粘贴”  。
+1. 右键单击 shell 控制台并选择“粘贴”  。
 创建 Azure 数据资源管理器群集和数据库需要数分钟的时间。
 
 #### <a name="verify-the-deployment-using-powershell"></a>使用 PowerShell 验证部署

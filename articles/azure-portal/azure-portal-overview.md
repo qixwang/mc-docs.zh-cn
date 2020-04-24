@@ -2,7 +2,7 @@
 title: Azure 门户概述 | Azure
 description: Azure 门户是一个图形用户界面，可用于管理 Azure 服务。 了解如何在 Azure 门户中导航和查找资源。
 services: azure-portal
-keywords: 门户
+keywords: portal
 author: mgblythe
 ms.author: kfollis
 origin.date: 12/20/2019
@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.service: azure-portal
 manager: mtillman
 ms.openlocfilehash: 760b32b4f4ff4bda074b423cdca5290b8cfdc04f
-ms.sourcegitcommit: 888cbc10f2348de401d4839a732586cf266883bf
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77028194"
 ---
 # <a name="azure-portal-overview"></a>Azure 门户概述
@@ -23,7 +23,7 @@ ms.locfileid: "77028194"
 
 ## <a name="what-is-the-azure-portal"></a>什么是 Azure 门户？
 
-Azure 门户是基于 Web 的统一控制台，提供可替代命令行工具的方法。 在 Azure 门户中，可以使用图形用户界面来管理 Azure 订阅。 可以生成、管理和监视从简单 Web 应用到复杂云部署的所有资源。 创建自定义仪表板以有序地显示资源。 配置辅助功能选项以提供最佳体验。
+Azure 门户是一种基于 Web 的统一控制台，它提供了命令行工具的替代方法。 在 Azure 门户中，可以使用图形用户界面来管理 Azure 订阅。 可以生成、管理和监视从简单 Web 应用到复杂云部署的所有资源。 创建自定义仪表板以有序地显示资源。 配置辅助功能选项以提供最佳体验。
 
 Azure 门户旨在实现复原能力和持续可用性。 每个 Azure 数据中心都提供该门户。 此配置使得 Azure 门户能够灵活应对各种数据中心故障，此外，由于部署位置靠近用户，可以避免网络减速。 Azure 门户不断更新，不需要停机即可进行维护活动。
 
@@ -65,7 +65,7 @@ Azure 门户菜单和页头是始终都会显示的全局元素。 这些持久�
 
 ![显示扩展门户菜单的屏幕截图](./media/azure-portal-overview/azure-portal-overview-portal-menu-callouts.png)
 
-|键|说明
+|密钥|说明
 |:---:|---|
 |1|页头。 显示在每个门户页面的顶部，包含全局元素。|
 |2| 全局搜索。 使用搜索栏可以快速查找特定的资源、服务或文档。|
@@ -76,7 +76,7 @@ Azure 门户菜单和页头是始终都会显示的全局元素。 这些持久�
 |7|命令栏。 命令栏上的控件与当前聚焦的元素相关。|
 |8|工作窗格。  显示有关当前聚焦的资源的详细信息。|
 |9|痕迹导航。 可以使用痕迹导航链接在工作流中后退一个级别。|
-|10 个|用于在当前订阅中创建新资源的主控件。 展开或打开门户菜单，找到“+ 创建资源”。  在 Azure 市场中搜索或浏览所要创建的资源类型。|
+|10|用于在当前订阅中创建新资源的主控件。 展开或打开门户菜单，找到“+ 创建资源”。  在 Azure 市场中搜索或浏览所要创建的资源类型。|
 |11|收藏夹列表。 请参阅[添加、删除和排序收藏项目](../azure-portal/azure-portal-add-remove-sort-favorites.md)，了解如何自定义该列表。|
 
 ## <a name="get-started-with-services"></a>开始使用服务

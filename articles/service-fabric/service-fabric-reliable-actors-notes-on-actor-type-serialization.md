@@ -7,10 +7,10 @@ origin.date: 11/02/2017
 ms.date: 01/13/2020
 ms.author: v-yeche
 ms.openlocfilehash: e1ac73639b7974159eae7a9413ec663c0863b227
-ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75742429"
 ---
 # <a name="notes-on-service-fabric-reliable-actors-type-serialization"></a>有关 Service Fabric Reliable Actors 类型序列化的说明
@@ -69,7 +69,7 @@ public class VoiceMailBoxActorImpl extends FabricActor implements VoicemailBoxAc
 
 ```
 
-在此示例中，如果 `VoicemailBox` 对象出现以下情况，则序列化该对象：
+在此示例中，如果 `VoicemailBox` 对象出现以下情况，将序列化该对象：
 
 * 在执行组件实例和调用方之间传输该对象。
 * 该对象保存在状态管理器中，即持久保存在磁盘中，并且已复制到其他节点。

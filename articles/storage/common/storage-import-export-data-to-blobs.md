@@ -10,10 +10,10 @@ ms.date: 02/10/2020
 ms.author: v-jay
 ms.subservice: common
 ms.openlocfilehash: 9db80bdcb6c6479409a0ab0a6dda6506a8c5cf50
-ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77028876"
 ---
 # <a name="use-the-azure-importexport-service-to-import-data-to-azure-blob-storage"></a>使用 Azure 导入/导出服务将数据导入到 Azure Blob 存储
@@ -23,7 +23,7 @@ ms.locfileid: "77028876"
 ## <a name="prerequisites"></a>必备条件
 
 在创建导入作业来将数据传输到 Azure Blob 存储之前，请仔细查看并完成此服务的以下先决条件列表。
-必须具备以下条件：
+必须：
 
 - 拥有可用于导入/导出服务的有效 Azure 订阅。
 - 拥有至少一个包含存储容器的 Azure 存储帐户。 请参阅[导入/导出服务支持的存储帐户和存储类型](storage-import-export-requirements.md)的列表。
@@ -33,7 +33,7 @@ ms.locfileid: "77028876"
 - 拥有运行[受支持 OS 版本](storage-import-export-requirements.md#supported-operating-systems)的 Windows 系统。
 - 在 Windows 系统上启用 BitLocker。 请参阅[如何启用 BitLocker](https://thesolving.com/storage/how-to-enable-bitlocker-on-windows-server-2012-r2/)。
 - 必须在复制计算机上安装 .NET Framework 4。
-- 在 Windows 系统上[下载 WAImportExport 版本 1](https://www.microsoft.com/download/details.aspx?id=42659)。 解压缩到默认文件夹 `waimportexportv1`。 例如，`C:\WaImportExportV1`。
+- 在 Windows 系统上[下载 WAImportExport 版本 1](https://www.microsoft.com/download/details.aspx?id=42659)。 解压缩到默认文件夹 `waimportexportv1`。 例如，`C:\WaImportExportV1` 。
 
 
 ## <a name="step-1-prepare-the-drives"></a>步骤 1：准备驱动器
@@ -68,7 +68,7 @@ ms.locfileid: "77028876"
     |/id:     |会话 ID。 请为该命令的每个实例使用唯一的会话编号。      |
     |/t:     |要寄送的磁盘的驱动器号。 例如，驱动器 `D`。         |
     |/bk:     |驱动器的 BitLocker 密钥。 其数字密码来自 `manage-bde -protectors -get D:` 的输出      |
-    |/srcdir:     |要寄送的磁盘的驱动器号后跟 `:\`。 例如，`D:\`。         |
+    |/srcdir:     |要寄送的磁盘的驱动器号后跟 `:\`。 例如，`D:\` 。         |
     |/dstdir:     |Azure 存储中的目标容器的名称。         |
     |/blobtype:     |此选项指定要将数据导入到的 Blob 的类型。 对于块 blob，此项为 `BlockBlob`；对于页 blob，此项为 `PageBlob`。         |
     |/skipwrite:     |此选项指定没有需要复制的新数据并且要准备磁盘上的现有数据。          |
@@ -139,7 +139,7 @@ ms.locfileid: "77028876"
 
 [!INCLUDE [storage-import-export-update-job-tracking](../../../includes/storage-import-export-update-job-tracking.md)]
 
-## <a name="step-5-verify-data-upload-to-azure"></a>步骤 5：验证 Azure 中的数据上传
+## <a name="step-5-verify-data-upload-to-azure"></a>步骤 5：验证数据上传到 Azure
 
 跟踪作业直至完成。 作业完成后，验证数据已上传到 Azure。 仅在已确认上传成功后才删除本地数据。
 

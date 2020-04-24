@@ -11,10 +11,10 @@ ms.topic: conceptual
 origin.date: 08/09/2018
 ms.date: 06/11/2019
 ms.openlocfilehash: 2d27b6ee93968a133a450ae2ce6dddc5c47e0974
-ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75857104"
 ---
 # <a name="stop-or-delete-your-azure-stream-analytics-job"></a>停止或删除 Azure 流分析作业
@@ -28,7 +28,7 @@ ms.locfileid: "75857104"
 
 停止作业时，将取消预配资源并停止处理事件。 与此作业相关的收费也将停止。 但是，你的所有配置都会保留，你可以稍后重启作业 
 
-1. 登录到 [Azure 门户](https://portal.azure.cn)。 
+1. 登录 [Azure 门户](https://portal.azure.cn)。 
 
 2. 找到正在运行的流分析作业并选择它。
 

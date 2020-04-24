@@ -8,10 +8,10 @@ ms.service: service-health
 origin.date: 09/04/2018
 ms.date: 01/20/2020
 ms.openlocfilehash: 4023f8fb579919be57185c217cf86ff1803dd50b
-ms.sourcegitcommit: a890a9cca495d332c9f3f53ff3a5259fd5f0c275
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75859550"
 ---
 # <a name="configure-resource-health-alerts-using-resource-manager-templates"></a>使用资源管理器模板创建资源运行状况警报
@@ -32,7 +32,7 @@ ms.locfileid: "75859550"
 1. 需安装 [Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-Az-ps)
 2. [创建或重新使用](../azure-monitor/platform/action-groups.md)配置为向你发出通知的操作组
 
-## <a name="instructions"></a>说明
+## <a name="instructions"></a>Instructions
 1. 使用 PowerShell，使用你的帐户登录到 Azure，并选择需与之交互的订阅
 
         Login-AzAccount

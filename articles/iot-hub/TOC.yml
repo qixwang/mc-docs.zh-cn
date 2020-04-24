@@ -113,7 +113,7 @@
               items:
                 - name: 创建和读取 IoT 中心消息
                   href: iot-hub-devguide-messages-construct.md
-                - name: 从内置终结点读取设备到云的消息
+                - name: 通过内置终结点读取设备到云的消息
                   href: iot-hub-devguide-messages-read-builtin.md
                 - name: 对设备到云的消息使用自定义终结点和路由规则
                   href: iot-hub-devguide-messages-read-custom.md
@@ -129,7 +129,7 @@
           href: iot-hub-devguide-file-upload.md
         - name: 管理设备标识
           href: iot-hub-devguide-identity-registry.md
-        - name: 控制 IoT 中心的访问权限
+        - name: 控制对 IoT 中心的访问
           href: iot-hub-devguide-security.md
         - name: 了解设备孪生
           href: iot-hub-devguide-device-twins.md
@@ -161,7 +161,7 @@
           href: iot-hub-x509ca-overview.md
         - name: X.509 CA 证书安全性概念
           href: iot-hub-x509ca-concept.md
-- name: 操作指南
+- name: 操作方法指南
   items:
     - name: 开发
       items:
@@ -374,7 +374,7 @@
           href: /iot-hub
         - name: IoT 服务 SDK
           href: '/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
-    - name: Edge
+    - name: Microsoft Edge
       items:
         - name: IoT Edge
           href: /iot-edge

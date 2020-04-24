@@ -12,10 +12,10 @@ origin.date: 12/16/2019
 ms.date: 1/2/2020
 ms.author: v-lingwu
 ms.openlocfilehash: b4788753965222d8128829658286d692b3b40d25
-ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75857830"
 ---
 # <a name="label-machine-learned-entity-in-an-example-utterance"></a>在示例言语中标记机器学习的实体
@@ -86,7 +86,7 @@ ms.locfileid: "75857830"
 
 1. 在“意向详细信息”页上，从上下文工具栏中选择“实体调色板”  。
 1. 在实体调色板打开后，从实体列表中选择实体。
-1. 转到“实体检查器”，选择现有角色或创建新角色  。
+1. 转到“实体检查器”  ，选择现有角色或创建新角色。
 1. 在示例言语文本中，使用实体角色标记文本。 
 
 ## <a name="unlabel-entities"></a>取消标记实体

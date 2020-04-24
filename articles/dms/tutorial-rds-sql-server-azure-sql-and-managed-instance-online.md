@@ -14,10 +14,10 @@ ms.topic: article
 origin.date: 01/08/2020
 ms.date: 02/17/2020
 ms.openlocfilehash: bbd7db9a104ebd669724e70b4360363410698aa8
-ms.sourcegitcommit: 3f9d780a22bb069402b107033f7de78b10f90dde
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77192463"
 ---
 # <a name="tutorial-migrate-rds-sql-server-to-azure-sql-database-or-an-azure-sql-database-managed-instance-online-using-dms"></a>教程：使用 DMS 将 RDS SQL Server 联机迁移到 Azure SQL 数据库或 Azure SQL 数据库托管实例
@@ -43,7 +43,7 @@ ms.locfileid: "77192463"
 
 本文介绍如何从 RDS SQL Server 联机迁移到 Azure SQL 数据库或 Azure SQL 数据库托管实例。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 要完成本教程，需要：
 
 * 创建 [RDS SQL Server 数据库](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_GettingStarted.CreatingConnecting.SQLServer.html)。

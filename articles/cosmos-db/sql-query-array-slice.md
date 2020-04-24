@@ -9,10 +9,10 @@ ms.date: 02/10/2020
 ms.author: v-yeche
 ms.custom: query-reference
 ms.openlocfilehash: 1480093d8be6a01948eb3e70fe769c068d7aaaab
-ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77028699"
 ---
 # <a name="array_slice-azure-cosmos-db"></a>ARRAY_SLICE (Azure Cosmos DB)
@@ -36,7 +36,7 @@ ARRAY_SLICE (<arr_expr>, <num_expr> [, <num_expr>])
 
 ## <a name="return-types"></a>返回类型
 
-  返回一个数组表达式。  
+  返回数组表达式。  
 
 ## <a name="examples"></a>示例
 
@@ -54,7 +54,7 @@ SELECT
 
 ```  
 
- 下面是结果集。  
+ 下面是结果集：  
 
 ```json
 [{  

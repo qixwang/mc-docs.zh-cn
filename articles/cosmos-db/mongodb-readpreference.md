@@ -10,10 +10,10 @@ ms.topic: conceptual
 origin.date: 02/26/2019
 ms.date: 02/10/2020
 ms.openlocfilehash: 1127d7fa0e19e4f3263540fbe9153aac32d4e749
-ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77028803"
 ---
 # <a name="how-to-multiple-regionally-distribute-reads-using-azure-cosmos-dbs-api-for-mongodb"></a>如何使用 Azure Cosmos DB 的 API for MongoDB 在多个区域中分配读取操作
@@ -21,7 +21,7 @@ ms.locfileid: "77028803"
 本文介绍如何通过 Azure Cosmos DB 的 API for MongoDB 使用 [MongoDB 读取首选项](https://docs.mongodb.com/manual/core/read-preference/)设置在多个区域中分配读取操作。
 
 ## <a name="prerequisites"></a>必备条件 
-如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial)。 
+如果没有 Azure 订阅，可在开始前创建一个 [试用帐户](https://www.azure.cn/pricing/1rmb-trial) 。 
 
 [!INCLUDE [cosmos-db-emulator-mongodb](../../includes/cosmos-db-emulator-mongodb.md)]
 
@@ -31,7 +31,7 @@ ms.locfileid: "77028803"
 
 打开 git 终端窗口（例如 git bash）并使用 `cd` 切换到工作目录。  
 
-运行以下命令克隆示例存储库。 根据所需的平台，使用以下示例存储库之一：
+运行下列命令以克隆示例存储库。 根据所需的平台，使用以下示例存储库之一：
 
 1. [.NET 示例应用程序](https://github.com/Azure-Samples/azure-cosmos-db-mongodb-dotnet-geo-readpreference)
 2. [NodeJS 示例应用程序]( https://github.com/Azure-Samples/azure-cosmos-db-mongodb-node-geo-readpreference)
@@ -146,7 +146,7 @@ MongoClient.connect(url, function(err, client) {
       }
 ```
 
-因此，MongoClient 可以结合区域名称使用 `region` 标记将读取操作定向到特定的区域。 对于 Cosmos 帐户，可以在 Azure 门户中左侧的“设置”->“全局副本数据”下面找到区域名称。  此设置可用于实现**读取隔离** - 可让客户端应用程序将读取操作定向到特定的区域。 此设置非常适合用于在后台运行的，并且不属于生产关键型服务的非生产/分析型方案。
+因此，MongoClient 可以结合区域名称使用 `region` 标记将读取操作定向到特定的区域。 对于 Cosmos 帐户，可以 Azure 门户中左侧的“设置”->“全局副本数据”下面找到区域名称  。 此设置可用于实现**读取隔离** - 可让客户端应用程序将读取操作定向到特定的区域。 此设置非常适合用于在后台运行的，并且不属于生产关键型服务的非生产/分析型方案。
 
 <!--Correct on Settings->Replica data globally-->
 
@@ -169,8 +169,8 @@ MongoClient.connect(url, function(err, client) {
 
 如果不打算继续使用此应用，请删除本文在 Azure 门户中创建的所有资源，步骤如下：
 
-1. 在 Azure 门户的左侧菜单中，单击“资源组”，然后单击已创建资源的名称。  
-2. 在资源组页上单击“删除”  ，在文本框中键入要删除的资源的名称，并单击“删除”  。
+1. 在 Azure 门户的左侧菜单中，单击“资源组”  ，并单击已创建资源的名称。 
+2. 在资源组页上单击“删除”，在文本框中键入要删除的资源的名称，并单击“删除”。  
 
 ## <a name="next-steps"></a>后续步骤
 

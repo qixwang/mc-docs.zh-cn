@@ -9,10 +9,10 @@ origin.date: 9/24/2019
 ms.date: 01/13/2020
 ms.author: rohink
 ms.openlocfilehash: a9c9dcd2f56088d3d72f1807c28e95b5ce74ba4f
-ms.sourcegitcommit: 157df1a5f11473dd3265d71f1543437f50f09adb
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75777475"
 ---
 # <a name="what-is-the-autoregistration-feature-of-azure-dns-private-zones"></a>什么是 Azure DNS 专用区域的自动注册功能

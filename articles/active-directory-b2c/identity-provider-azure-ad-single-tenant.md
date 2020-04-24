@@ -13,10 +13,10 @@ ms.author: v-junlch
 ms.subservice: B2C
 ms.custom: fasttrack-edit
 ms.openlocfilehash: e90dbbde168fa3fca6fef46acd1c6914c0475ffe
-ms.sourcegitcommit: 888cbc10f2348de401d4839a732586cf266883bf
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77028345"
 ---
 # <a name="set-up-sign-in-for-a-specific-azure-active-directory-organization-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中设置登录特定 Azure Active Directory 组织
@@ -27,11 +27,11 @@ ms.locfileid: "77028345"
 
 若要让用户从特定的 Azure AD 组织登录，需要在与 Azure AD B2C 租户不同的组织 Azure AD 租户中注册一个应用程序。
 
-1. 登录到 [Azure 门户](https://portal.azure.cn)。
+1. 登录 [Azure 门户](https://portal.azure.cn)。
 2. 请确保使用的是包含 Azure AD 租户的目录。 选择顶部菜单中的“目录 + 订阅”筛选器，然后选择包含 Azure AD 租户的目录  。 此租户与 Azure AD B2C 租户不同。
 3. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“应用注册”   。
 4. 选择“新注册”。 
-5. 输入应用程序的名称。 例如，`Azure AD B2C App`。
+5. 输入应用程序的名称。 例如，`Azure AD B2C App` 。
 6. 对于此应用程序，接受选择“仅此组织目录中的帐户”  。
 7. 对于“重定向 URI”  ，接受值 **Web**，并以全小写字母输入以下 URL，其中 `your-B2C-tenant-name` 将替换为 Azure AD B2C 租户的名称。 例如，`https://fabrikam.b2clogin.cn/fabrikam.partner.onmschina.cn/oauth2/authresp`：
 
@@ -43,7 +43,7 @@ ms.locfileid: "77028345"
 
 8. 单击“注册”  。 复制“应用程序(客户端) ID”供以后使用  。
 9. 在应用程序菜单中依次选择“证书和机密”、“新建客户端机密”。  
-10. 输入客户端密码的名称。 例如，`Azure AD B2C App Secret`。
+10. 输入客户端密码的名称。 例如，`Azure AD B2C App Secret` 。
 11. 选择到期期限。 对于此应用程序，接受选项“1 年内”  。
 12. 选择“添加”  ，然后复制显示的新客户端密码的值，以便以后使用。
 
@@ -59,7 +59,7 @@ ms.locfileid: "77028345"
     https://login.partner.microsoftonline.cn/your-AD-tenant-domain/.well-known/openid-configuration
     ```
 
-    例如，`https://login.partner.microsoftonline.cn/contoso.partner.onmschina.cn/.well-known/openid-configuration`。
+    例如，`https://login.partner.microsoftonline.cn/contoso.partner.onmschina.cn/.well-known/openid-configuration` 。
 
     **请勿**使用 Azure AD v2.0 元数据终结点，例如 `https://login.partner.microsoftonline.cn/contoso.partner.onmschina.cn/v2.0/.well-known/openid-configuration`。 这样做会导致在尝试登录时出现类似于 `AADB2C: A claim with id 'UserId' was not found, which is required by ClaimsTransformation 'CreateAlternativeSecurityId' with id 'CreateAlternativeSecurityId' in policy 'B2C_1_SignUpOrIn' of tenant 'contoso.partner.onmschina.cn'` 的错误。
 
@@ -75,5 +75,5 @@ ms.locfileid: "77028345"
     * **姓氏**：*family_name*
     * **电子邮件**：*unique_name*
 
-1. 选择“保存”  。
+1. 选择“保存”。 
 

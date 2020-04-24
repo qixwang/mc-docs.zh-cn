@@ -14,10 +14,10 @@ manager: digimobile
 origin.date: 08/21/2019
 ms.date: 12/16/2019
 ms.openlocfilehash: 7cd78711daea36bdc696ff19cfa7ac81e2edc3e4
-ms.sourcegitcommit: d7b86a424b72849fe8ed32893dd05e4696e4fe85
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77155619"
 ---
 # <a name="manage-azure-sql-database-long-term-backup-retention"></a>管理 Azure SQL 数据库长期备份保留
@@ -66,14 +66,14 @@ ms.locfileid: "77155619"
 
 1. 单击“确定”  将数据库从 Azure SQL 存储中的备份还原到新数据库。
 
-1. 在工具栏上，单击通知图标可查看还原作业的状态。
+1. 在工具栏上，单击通知图标以查看还原作业的状态。
 
-   ![还原作业进度](./media/sql-database-get-started-backup-recovery/restore-job-progress-long-term.png)
+   ![检查作业进度](./media/sql-database-get-started-backup-recovery/restore-job-progress-long-term.png)
 
 1. 完成还原作业后，打开“SQL 数据库”  页面以查看新还原的数据库。
 
 > [!NOTE]
-> 可以在此处使用 SQL Server Management Studio 连接到还原的数据库以执行所需的任务，例如 [从还原的数据库提取一些数据，以便将其复制到现有的数据库中；或者删除现有的数据库，并将还原的数据库重命名为现有的数据库名称](sql-database-recovery-using-backups.md#point-in-time-restore)。
+> 从此处，可使用 SQL Server Management Studio 连接到已还原的数据库，以执行所需任务，例如[从恢复的数据库中提取一部分数据，复制到现有数据库或删除现有数据库，并将已还原数据库的名称重命名为现有数据库名称](sql-database-recovery-using-backups.md#point-in-time-restore)。
 
 ## <a name="using-powershell"></a>使用 PowerShell
 
@@ -207,5 +207,5 @@ Restore-AzSqlDatabase -FromLongTermRetentionBackup -ResourceId $ltrBackup.Resour
 
 ## <a name="next-steps"></a>后续步骤
 
-- 若要了解服务生成的自动备份，请参阅 [自动备份](sql-database-automated-backups.md)
-- 若要了解长期备份保留，请参阅 [长期备份保留](sql-database-long-term-retention.md)
+- 若要了解服务生成的自动备份，请参阅[自动备份](sql-database-automated-backups.md)
+- 若要了解长期备份保留，请参阅[长期备份保留](sql-database-long-term-retention.md)

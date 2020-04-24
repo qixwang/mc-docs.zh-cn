@@ -10,10 +10,10 @@ origin.date: 12/26/2018
 ms.date: 02/10/2020
 ms.reviewer: sngun
 ms.openlocfilehash: 97c6b349909e0875e0b49a619121d3cc2d641f1f
-ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77068336"
 ---
 # <a name="set-up-multiple-region-distributed-database-using-azure-cosmos-dbs-api-for-mongodb"></a>使用 Azure Cosmos DB 的用于 MongoDB 的 API 设置多区域分布式数据库
@@ -91,13 +91,13 @@ collection = collection.WithReadPreference(new ReadPreference(ReadPreferenceMode
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中已完成以下操作：
+在本教程中，已完成以下内容：
 
 > [!div class="checklist"]
 > * 使用 Azure 门户配置多区域分发
 > * 使用 Cosmos DB 的用于 MongoDB 的 API 配置多区域分发
 
-现可继续学习下一个教程，了解如何使用 Azure Cosmos DB 本地模拟器在本地开发。
+现在可以继续学习下一个教程，了解如何使用 Azure Cosmos DB 本地模拟器在本地开发。
 
 > [!div class="nextstepaction"]
 > [使用 Azure Cosmos DB 模拟器在本地进行开发](local-emulator.md)

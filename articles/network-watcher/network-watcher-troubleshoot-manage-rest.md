@@ -15,16 +15,16 @@ origin.date: 06/19/2017
 ms.date: 08/13/2018
 ms.author: v-lingwu
 ms.openlocfilehash: f5c1acb01dd834bd22cf60cb7ae5014d92e4043e
-ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77028981"
 ---
 # <a name="troubleshoot-virtual-network-gateway-and-connections-using-azure-network-watcher"></a>使用 Azure 网络观察程序排查虚拟网络网关和连接问题
 
 > [!div class="op_single_selector"]
-> - [Portal](diagnose-communication-problem-between-networks.md)
+> - [门户](diagnose-communication-problem-between-networks.md)
 > - [PowerShell](network-watcher-troubleshoot-manage-powershell.md)
 > - [Azure CLI](network-watcher-troubleshoot-manage-cli.md)
 > - [REST API](network-watcher-troubleshoot-manage-rest.md)
@@ -33,10 +33,10 @@ ms.locfileid: "77028981"
 
 本文逐步讲解如何完成当前可用于资源故障排除的不同管理任务。
 
-- [排查虚拟网络网关问题](#troubleshoot-a-virtual-network-gateway) 
-- [排查连接问题](#troubleshoot-connections) 
+- [排查虚拟网络网关问题  ](#troubleshoot-a-virtual-network-gateway)
+- [排查连接问题  ](#troubleshoot-connections)
 
-## <a name="before-you-begin"></a>准备阶段
+## <a name="before-you-begin"></a>开始之前
 
 通过 PowerShell 调用 REST API 时，使用的是 ARMclient。 根据 [Chocolatey 上的 ARMClient](https://chocolatey.org/packages/ARMClient) 中所述在 chocolatey 上找到 ARMClient
 

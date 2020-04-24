@@ -9,17 +9,17 @@ origin.date: 11/13/2019
 ms.date: 02/17/2020
 ms.author: v-tawe
 ms.openlocfilehash: 0d4c1c39d62aaaf9092ec8579e1a4e664fa27dda
-ms.sourcegitcommit: 888cbc10f2348de401d4839a732586cf266883bf
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77028176"
 ---
 # <a name="how-to-send-events-from-azure-signalr-service-to-event-grid"></a>如何将事件从 Azure SignalR 服务发送到事件网格
 
 Azure 事件网格是一个完全托管的事件路由服务，可以通过发布-订阅模型提供一致的事件使用数据。 在本指南中，我们将使用 Azure CLI 创建 Azure SignalR 服务、订阅连接事件，然后部署一个示例 Web 应用程序来接收事件。 最后，可以连接和断开连接，并可在示例应用程序中查看事件负载。
 
-如果没有 Azure 订阅，可在开始前创建一个[试用帐户][azure-account]。
+如果没有 Azure 订阅，可在开始前创建一个 [试用帐户][azure-account] 。
 
 <!-- [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)] -->
 

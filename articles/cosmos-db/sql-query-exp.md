@@ -9,10 +9,10 @@ ms.date: 02/10/2020
 ms.author: v-yeche
 ms.custom: query-reference
 ms.openlocfilehash: fae94ccf0be0d9b346346317da6c864027062795
-ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77028662"
 ---
 # <a name="exp-azure-cosmos-db"></a>EXP (Azure Cosmos DB)
@@ -27,41 +27,41 @@ EXP (<numeric_expr>)
 ## <a name="arguments"></a>参数
 
 *numeric_expr*  
-  是一个数值表达式。  
+  为数值表达式。  
 
 ## <a name="return-types"></a>返回类型
 
-  返回一个数值表达式。  
+  返回数值表达式。  
 
 ## <a name="remarks"></a>备注
 
-  常量 **e** (2.718281…) 是自然对数的底。  
+  常量 e (2.718281…) 是自然对数的底数**e**。  
 
-  某个数字的指数是对常量 **e** 执行该次数的乘幂计算。 例如 EXP(1.0) = e^1.0 = 2.71828182845905，EXP(10) = e^10 = 22026.4657948067。 
+  数字的指数是常量 e 使用该数字进行幂运算  。 例如 EXP(1.0) = e^1.0 = 2.71828182845905，EXP(10) = e^10 = 22026.4657948067。 
 
-  数字的自然对数的指数是数字本身：EXP (LOG (n)) = n。 以及数字的指数的自然对数是数字本身：LOG (EXP (n)) = n。  
+  某个数的自然对数的指数就是该数本身：EXP (LOG (n)) = n。 并且某个数的指数的自然对数也是该数本身：LOG (EXP (n)) = n。  
 
 ## <a name="examples"></a>示例
 
-  以下示例声明一个变量并返回指定变量 (10) 的指数值。  
+  以下示例声明一个变量并返回到指定变量 (10) 的指数值。  
 
 ```sql
 SELECT EXP(10) AS exp  
 ```  
 
- 下面是结果集。  
+ 下面是结果集：  
 
 ```json
 [{exp: 22026.465794806718}]  
 ```  
 
- 以下示例返回 20 的自然对数的指数值和 20 的指数的自然对数。 因为这些函数是另一个的反函数，因此，在两个示例中，返回值在进行浮点算术舍入后都是 20。 
+ 以下示例将返回 20 的自然对数的指数值以及 20 的指数的自然对数。 由于这些函数互为反函数，因此在这两种情况下，用于浮点数学舍入的返回值均为 20。 
 
 ```sql
 SELECT EXP(LOG(20)) AS exp1, LOG(EXP(20)) AS exp2  
 ```  
 
- 下面是结果集。  
+ 下面是结果集：  
 
 ```json
 [{exp1: 19.999999999999996, exp2: 20}]  

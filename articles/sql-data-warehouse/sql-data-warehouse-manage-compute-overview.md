@@ -13,10 +13,10 @@ ms.author: v-jay
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 ms.openlocfilehash: 528f6aa6e87dbef9b0bacf4f7204404b0f6691ed
-ms.sourcegitcommit: 6e47d840eb0ac773067723254e60dd318272d73e
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75964912"
 ---
 # <a name="manage-compute-in-azure-sql-data-warehouse"></a>管理 Azure SQL 数据仓库中的计算资源
@@ -42,14 +42,14 @@ SQL 数据仓库的体系结构对存储和计算功能进行了分隔，允许�
 | DW400c   | 1                | 60                         |
 | DW500c   | 1                | 60                         |
 | DW1000c  | 2                | 30                         |
-| DW1500c  | 3                | 20 个                         |
+| DW1500c  | 3                | 20                         |
 | DW2000c  | 4                | 15                         |
 | DW2500c  | 5                | 12                         |
-| DW3000c  | 6                | 10 个                         |
-| DW5000c  | 10 个               | 6                          |
+| DW3000c  | 6                | 10                         |
+| DW5000c  | 10               | 6                          |
 | DW6000c  | 12               | 5                          |
 | DW7500c  | 15               | 4                          |
-| DW10000c | 20 个               | 3                          |
+| DW10000c | 20               | 3                          |
 | DW15000c | 30               | 2                          |
 | DW30000c | 60               | 1                          |
 
@@ -103,7 +103,7 @@ SQL 数据仓库的体系结构对存储和计算功能进行了分隔，允许�
 ## <a name="drain-transactions-before-pausing-or-scaling"></a>暂停或缩放之前清空事务
 在启动暂停或缩放操作之前，我们建议先让现有事务完成。
 
-在暂停或缩放 SQL 数据仓库时，用户一发起暂停或缩放请求，系统就会在后台取消查询。  取消简单的 SELECT 查询是很快的操作，对于暂停或缩放实例所花费的时间几乎没有什么影响。  但是，事务性查询（会修改数据或结构）可能无法快速地停止。  **按定义，事务性查询必须完全完成或回退更改。**  回滚事务性查询已完成的任务可能需要很长时间，甚至比查询应用原始更改更久。  例如，如果取消的删除行查询已经运行一小时，系统可能需要一个小时重新插入已删除的行。  如果在事务运行中运行暂停或缩放，暂停或缩放操作可能需要一些时间，因为暂停和缩放必须等回滚完成才能继续。
+在暂停或缩放 SQL 数据仓库时，用户一发起暂停或缩放请求，系统就会在后台取消查询。  取消简单的 SELECT 查询是很快的操作，对于暂停或缩放实例所花费的时间几乎没有什么影响。  但是，事务性查询（将修改数据或结构）可能无法快速地停止。  **按定义，事务性查询必须完全完成或回退更改。**  回滚事务性查询已完成的任务可能需要很长时间，甚至比查询应用原始更改更久。  例如，如果取消的删除行查询已经运行一小时，系统可能需要一个小时重新插入已删除的行。  如果在事务运行中运行暂停或缩放，暂停或缩放操作可能需要一些时间，因为暂停和缩放必须等回滚完成才能继续。
 
 另请参阅[了解事务](sql-data-warehouse-develop-transactions.md)和[优化事务](sql-data-warehouse-develop-best-practices-transactions.md)。
 

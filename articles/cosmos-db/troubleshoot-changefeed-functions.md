@@ -9,10 +9,10 @@ ms.author: v-yeche
 ms.topic: troubleshooting
 ms.reviewer: sngun
 ms.openlocfilehash: ce12708b79f992b74515b4756632461381765c4f
-ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77067899"
 ---
 # <a name="diagnose-and-troubleshoot-issues-when-using-azure-functions-trigger-for-cosmos-db"></a>诊断和排查使用适用于 Cosmos DB 的 Azure Functions 触发器时出现的问题
@@ -65,9 +65,9 @@ Azure 函数失败并出现错误消息“源集合 'collection-name' (在数据
 
 这种情形可能是多种原因造成的，应检查所有这些原因：
 
-1. Azure 函数是否部署在 Azure Cosmos 帐户所在的同一区域？ 为了获得最佳的网络延迟，应将 Azure 函数和 Azure Cosmos 帐户并置在同一个 Azure 区域。
-2. Azure Cosmos 容器中发生的更改是持续性的还是偶发性的？
-如果是后者，原因可能是存储更改与 Azure 函数拾取更改的时间有所延迟。 这是因为，在内部，当触发器检查 Azure Cosmos 容器中的更改但未找到任何等待读取的更改时，它将休眠一定的时间（可配置，默认为 5 秒），然后检查新的更改（以避免 RU 消耗量偏高）。 可以通过触发器的[配置](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---configuration)中的 `FeedPollDelay/feedPollDelay` 设置来配置此休眠时间（该值预期以毫秒为单位）。
+1. Azure 函数是否部署在 Azure Cosmos 帐户所在的同一区域？ 为获得最佳的网络延迟，Azure 函数和 Azure Cosmos 帐户应共置在同一个 Azure 区域。
+2. Azure Cosmos 容器中发生的更改是连续性的还是偶发性的？
+如果是后者，则原因可能是存储更改的时间与 Azure 函数拾取更改的时间有一段延迟。 这是因为，在内部，当触发器检查 Azure Cosmos 容器中的更改但未找到等待读取的更改时，它会休眠配置的一段时间（默认为 5 秒），然后检查新的更改（以避免 RU 消耗量过高）。 可以通过触发器`FeedPollDelay/feedPollDelay`配置[中的 ](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---configuration) 设置来配置此休眠时间（该值预期以毫秒为单位）。
 3. Azure Cosmos 容器可能受到[速率限制](./request-units.md)。
 4. 可以使用触发器中的 `PreferredLocations` 属性来指定 Azure 区域的逗号分隔列表，以定义自定义的首选连接顺序。
 
@@ -86,7 +86,7 @@ Azure 函数失败并出现错误消息“源集合 'collection-name' (在数据
 
 如果你发现触发器根本未收到某些更改，则最常见的情形是有**另一个 Azure 函数正在运行**。 该函数可能是部署在 Azure 中的另一个 Azure 函数，或者是在开发人员计算机本地运行的、采用**完全相同配置**（相同的受监视容器和租约容器）的 Azure 函数，并且此 Azure 函数正在窃取你的 Azure 函数预期要处理的更改子集。
 
-此外，如果你知道正在运行多少个 Azure 函数应用实例，则也可以验证这种情况。 如果检查租约容器并统计其中包含的租约项数，这些项中的非重复 `Owner` 属性值应等于函数应用的实例数。 如果所有者数目超过已知的 Azure 函数应用实例数，则表示这些多出的所有者正在“窃取”更改。
+此外，如果你知道正在运行多少个 Azure 函数应用实例，则也可以验证这种情况。 如果检查租约容器并统计其中包含的租约项数，这些项中的非重复 `Owner` 属性值应等于函数应用的实例数。 如果所有者数目超过已知 Azure 函数应用实例的数目，则表示这些额外的所有者正在“窃取”更改。
 
 解决此问题的简单方法之一是将采用新值/不同值的 `LeaseCollectionPrefix/leaseCollectionPrefix` 应用到你的函数，或使用新的租约容器进行测试。
 
@@ -107,7 +107,7 @@ Azure 函数失败并出现错误消息“源集合 'collection-name' (在数据
 
 ### <a name="changing-azure-functions-polling-interval-for-the-detecting-changes"></a>更改 Azure 函数在检测更改时的轮询间隔
 
-如此前针对[接收更改花费了太长的时间](./troubleshoot-changefeed-functions.md#my-changes-take-too-long-to-be-received)解释的那样，Azure 函数会休眠一定的时间（可配置，默认为 5 秒），然后检查新的更改（以避免 RU 消耗量偏高）。 可以通过触发器的[配置](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---configuration)中的 `FeedPollDelay/feedPollDelay` 设置来配置此休眠时间（该值预期以毫秒为单位）。
+如此前针对[接收更改花费了太长的时间](./troubleshoot-changefeed-functions.md#my-changes-take-too-long-to-be-received)解释的那样，Azure 函数会休眠一定的时间（可配置，默认为 5 秒），然后检查新的更改（以避免 RU 消耗量偏高）。 可以通过触发器`FeedPollDelay/feedPollDelay`配置[中的 ](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---configuration) 设置来配置此休眠时间（该值预期以毫秒为单位）。
 
 ## <a name="next-steps"></a>后续步骤
 

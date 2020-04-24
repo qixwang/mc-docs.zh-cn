@@ -9,10 +9,10 @@ ms.topic: conceptual
 origin.date: 02/03/2020
 ms.date: 02/17/2020
 ms.openlocfilehash: 2e3e4e6d5385c2b46d0760bd305dff9957bec05b
-ms.sourcegitcommit: 7c80405a6b48380814b4b414e9f8a5756c007880
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77067802"
 ---
 # <a name="add-database-principals-for-azure-data-explorer-by-using-c"></a>使用 C# 添加 Azure 数据资源管理器的数据库主体
@@ -78,7 +78,7 @@ await kustoManagementClient.DatabasePrincipalAssignments.CreateOrUpdateAsync(res
 | databaseName | mykustodatabase  | 数据库名称。|
 | principalAssignmentName | *databasePrincipalAssignment1* | 数据库主体资源的名称。|
 | principalId | *xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx* | 主体 ID，可以是用户电子邮件、应用程序 ID 或安全组名称。|
-| role | *管理员* | 数据库主体的角色，可以是“Admin”、“Ingestor”、“Monitor”、“User”、“UnrestrictedViewers”和“Viewer”。|
+| 角色 (role) | *管理员* | 数据库主体的角色，可以是“Admin”、“Ingestor”、“Monitor”、“User”、“UnrestrictedViewers”和“Viewer”。|
 | tenantIdForPrincipal | *xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx* | 主体的租户 ID。|
 | principalType | *应用* | 主体的类型，可以是“User”、“App”或“Group”|
 

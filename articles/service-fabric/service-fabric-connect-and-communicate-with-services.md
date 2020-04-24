@@ -7,10 +7,10 @@ origin.date: 11/01/2017
 ms.date: 01/06/2020
 ms.author: v-yeche
 ms.openlocfilehash: ddde8c310bd688e4e5803f6f9a2044e5bb33d7b8
-ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75742449"
 ---
 # <a name="connect-and-communicate-with-services-in-service-fabric"></a>在 Service Fabric 中与服务建立连接和通信

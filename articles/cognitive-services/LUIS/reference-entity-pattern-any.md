@@ -12,10 +12,10 @@ origin.date: 09/29/2019
 ms.date: 10/31/2019
 ms.author: v-lingwu
 ms.openlocfilehash: 00f374b9394bcc6a6a4beedfe4f5e23bb77fc124
-ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75857315"
 ---
 # <a name="patternany-entity"></a>Pattern.any 实体 
@@ -54,7 +54,7 @@ Patterns.any 是一种长度可变的占位符，仅在模式的模板话语中�
 
 `Understand your responsibilities as a member of the community`
 
-#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 预测终结点响应](#tab/V2)
+#### <a name="v2-prediction-endpoint-response"></a>[V2 预测终结点响应](#tab/V2)
 
 ```JSON
 "entities": [
@@ -68,7 +68,7 @@ Patterns.any 是一种长度可变的占位符，仅在模式的模板话语中�
 ```
 
 
-#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 预测终结点响应](#tab/V3)
+#### <a name="v3-prediction-endpoint-response"></a>[V3 预测终结点响应](#tab/V3)
 
 如果在查询字符串中设置了 `verbose=false`，则这是 JSON：
 

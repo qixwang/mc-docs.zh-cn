@@ -15,10 +15,10 @@ ms.date: 01/06/2020
 ms.author: v-yeche
 ms.custom: mvc
 ms.openlocfilehash: f9d6b2c413bcaf734937cbfb46f0eeff69ec89a7
-ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75741882"
 ---
 # <a name="create-a-secure-service-fabric-linux-cluster-in-azure"></a>在 Azure 中创建安全的 Service Fabric Linux 群集
@@ -68,7 +68,7 @@ az group delete --name $ResourceGroupName
 
 此脚本使用以下命令。 表中的每条命令均链接到特定于命令的文档。
 
-| 命令 | 注释 |
+| Command | 说明 |
 |---|---|
 | [az sf cluster create](https://docs.azure.cn/cli/sf/cluster?view=azure-cli-latest#az-sf-cluster-create) | 新建 Service Fabric 群集。  |
 

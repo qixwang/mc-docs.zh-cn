@@ -9,10 +9,10 @@ ms.date: 02/10/2020
 ms.author: v-jay
 ms.subservice: common
 ms.openlocfilehash: b79ca92c3030d8e5ce92a16685df33f3d256f9ad
-ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77028834"
 ---
 # <a name="transfer-data-with-azcopy-and-file-storage"></a>使用 AzCopy 和文件存储传输数据 
@@ -99,7 +99,7 @@ AzCopy 是一个命令行实用工具，可用于向/从存储帐户复制 Blob 
 
 #### <a name="specify-multiple-complete-file-names"></a>指定多个完整文件名
 
-结合 `--include-path` 选项使用 [azcopy copy](storage-ref-azcopy-copy.md) 命令。 使用分号 (`;`) 分隔各个文件名。
+结合 [ 选项使用 ](storage-ref-azcopy-copy.md)azcopy copy`--include-path` 命令。 使用分号 (`;`) 分隔各个文件名。
 
 |    |     |
 |--------|-----------|
@@ -112,7 +112,7 @@ AzCopy 是一个命令行实用工具，可用于向/从存储帐户复制 Blob 
 
 #### <a name="use-wildcard-characters"></a>使用通配符
 
-结合 `--include-pattern` 选项使用 [azcopy copy](storage-ref-azcopy-copy.md) 命令。 指定包含通配符的部分名称。 使用分号 (`;`) 分隔名称。
+结合 [ 选项使用 ](storage-ref-azcopy-copy.md)azcopy copy`--include-pattern` 命令。 指定包含通配符的部分名称。 使用分号 (`;`) 分隔名称。
 
 |    |     |
 |--------|-----------|
@@ -177,7 +177,7 @@ AzCopy 是一个命令行实用工具，可用于向/从存储帐户复制 Blob 
 
 #### <a name="specify-multiple-complete-file-names"></a>指定多个完整文件名
 
-结合 `--include-path` 选项使用 [azcopy copy](storage-ref-azcopy-copy.md) 命令。 使用分号 (`;`) 分隔各个文件名。
+结合 [ 选项使用 ](storage-ref-azcopy-copy.md)azcopy copy`--include-path` 命令。 使用分号 (`;`) 分隔各个文件名。
 
 |    |     |
 |--------|-----------|
@@ -190,7 +190,7 @@ AzCopy 是一个命令行实用工具，可用于向/从存储帐户复制 Blob 
 
 #### <a name="use-wildcard-characters"></a>使用通配符
 
-结合 `--include-pattern` 选项使用 [azcopy copy](storage-ref-azcopy-copy.md) 命令。 指定包含通配符的部分名称。 使用分号 (`;`) 分隔名称。
+结合 [ 选项使用 ](storage-ref-azcopy-copy.md)azcopy copy`--include-pattern` 命令。 指定包含通配符的部分名称。 使用分号 (`;`) 分隔名称。
 
 |    |     |
 |--------|-----------|
@@ -266,7 +266,7 @@ AzCopy 使用[服务器到服务器](https://docs.microsoft.com/rest/api/storage
 
 ### <a name="update-a-file-share-with-changes-to-another-file-share"></a>使用对一个文件共享所做的更改来更新另一个文件共享
 
-此命令中显示的第一个文件共享是源。 第二个文件共享是目标。
+此命令中显示的第一个文件共享是源。 第二个是目标。
 
 |    |     |
 |--------|-----------|

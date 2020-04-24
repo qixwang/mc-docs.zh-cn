@@ -8,10 +8,10 @@ origin.date: 07/17/2019
 ms.date: 02/10/2020
 ms.author: v-yeche
 ms.openlocfilehash: bf1880190a81a57e78405773adc235d754abc7f9
-ms.sourcegitcommit: 23dc63b6fea451f6a2bd4e8d0fbd7ed082ba0740
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "76980524"
 ---
 # <a name="how-to-configure-and-read-the-logs-when-using-azure-functions-trigger-for-cosmos-db"></a>如何在使用适用于 Cosmos DB 的 Azure Functions 触发器时配置和读取日志
@@ -44,7 +44,7 @@ ms.locfileid: "76980524"
 }
 ```
 
-使用更新的配置部署 Azure 函数后，将在跟踪中看到适用于 Cosmos DB 的 Azure Functions 触发器日志。 可以在类别 `Host.Triggers.CosmosDB` 下查看所配置的日志记录提供程序中的日志。 
+使用更新的配置部署 Azure 函数后，将在跟踪中看到适用于 Cosmos DB 的 Azure Functions 触发器日志。 可以在类别  *下查看所配置的日志记录提供程序中的日志。* `Host.Triggers.CosmosDB`
 
 ## <a name="query-the-logs"></a>查询日志
 

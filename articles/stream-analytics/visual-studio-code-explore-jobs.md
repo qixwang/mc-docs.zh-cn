@@ -8,10 +8,10 @@ ms.date: 2/6/2020
 ms.author: v-lingwu
 ms.topic: conceptual
 ms.openlocfilehash: 4f123b37620b0e462678c504519988995cddfeec
-ms.sourcegitcommit: 99bd0019c5f01034b8765d7765ad7776c7d5e5ae
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77128866"
 ---
 # <a name="explore-azure-stream-analytics-with-visual-studio-code-preview"></a>使用 Visual Studio Code（预览版）浏览 Azure 流分析

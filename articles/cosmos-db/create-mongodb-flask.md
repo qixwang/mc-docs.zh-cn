@@ -10,10 +10,10 @@ ms.topic: quickstart
 origin.date: 12/26/2018
 ms.date: 02/10/2020
 ms.openlocfilehash: 6ffef0cbd06be6a990f95ab87233597cc5834b35
-ms.sourcegitcommit: 23dc63b6fea451f6a2bd4e8d0fbd7ed082ba0740
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "76980553"
 ---
 # <a name="quickstart-build-a-python-app-using-azure-cosmos-dbs-api-for-mongodb"></a>快速入门：使用 Azure Cosmos DB 的 API for MongoDB 构建 Python 应用
@@ -31,7 +31,7 @@ Azure Cosmos DB 是世纪互联提供的多区域分布式多模型数据库服�
 
 本快速入门指南使用以下 [Flask 示例](https://github.com/Azure-Samples/CosmosDB-Flask-Mongo-Sample)并演示如何借助 [Azure Cosmos DB 模拟器](local-emulator.md)和 Azure Cosmos DB 的用于 MongoDB 的 API 构建简单的待办事项 Flask 应用。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 - 下载 [Azure Cosmos DB 模拟器](local-emulator.md)。 当前只有 Windows 支持模拟器。 此示例演示如何借助 Azure 中的生产密钥使用示例，此操作可在任何平台上完成。
 

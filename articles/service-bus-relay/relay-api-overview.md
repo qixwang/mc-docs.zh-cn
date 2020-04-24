@@ -16,10 +16,10 @@ origin.date: 01/21/2020
 ms.date: 2/6/2020
 ms.author: v-lingwu
 ms.openlocfilehash: cdcaa0238b8a0dd2c20e60a299c0028ca26234a4
-ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77068313"
 ---
 # <a name="available-relay-apis"></a>可用的中继 API
@@ -33,7 +33,7 @@ ms.locfileid: "77068313"
 | 语言/平台 | 可用功能 | 客户端程序包 | 存储库 |
 | --- | --- | --- | --- |
 | .NET Standard | 混合连接 | [Microsoft.Azure.Relay](https://www.nuget.org/packages/Microsoft.Azure.Relay/) | [GitHub](https://github.com/azure/azure-relay-dotnet) |
-| .NET framework | WCF 中继 | [WindowsAzure.ServiceBus](https://www.nuget.org/packages/WindowsAzure.ServiceBus/) | 不适用 |
+| .NET Framework | WCF 中继 | [WindowsAzure.ServiceBus](https://www.nuget.org/packages/WindowsAzure.ServiceBus/) | 空值 |
 | 节点 | 混合连接 | [Websocket：`hyco-ws`](https://www.npmjs.com/package/hyco-ws)<br/>[Websocket：`hyco-websocket`](https://www.npmjs.com/package/hyco-websocket)<br/>[HTTP 请求：`hyco-https`](https://www.npmjs.com/package/hyco-https) | [GitHub](https://github.com/Azure/azure-relay-node) |
 
 ### <a name="additional-information"></a>其他信息
@@ -44,17 +44,17 @@ ms.locfileid: "77068313"
 
 .NET Framework 库仅支持 WCF 编程模型并依赖于基于 WCF `net.tcp` 传输的专有二进制协议。 保留此协议和库是为了实现与现有应用程序的后向兼容性。
 
-.NET Standard 库基于混合连接中继的开放协议定义，该中继以 HTTP 和 WebSocket 为基础。 该库支持通过 Websocket 进行流抽象和用于答复 HTTP 请求的简单请求-响应 API 手势。 [Web API](https://github.com/Azure/azure-relay-dotnet) 示例展示了如何将混合连接与适用于 Web 服务的 ASP.NET Core 进行集成。
+.NET Standard 库基于混合连接中继的开放协议定义，该中继构建在 HTTP 和 WebSocket 上。 该库支持通过 Websocket 进行流抽象和用于答复 HTTP 请求的简单请求-响应 API 手势。 [Web API](https://github.com/Azure/azure-relay-dotnet) 示例演示如何集成混合连接和适用于 Web 服务的 ASP.NET Core。
 
 #### <a name="nodejs"></a>Node.js
 
-上表中列出的混合连接模块使用在 Azure 中继服务上而非在本地网络堆栈上进行侦听的备用实现替代或修正了现有 Node.js 模块。
+上表列出的混合连接模块将现有 Node.js 模块替换或修改为侦听 Azure 中继服务而不是本地网络堆栈的备用实现。
 
-`hyco-https` 模块修正并部分替代了核心 Node.js 模块 `http` 和 `https`，提供了一个与依赖于这些核心模块的许多现有 Node.js 模块和应用程序兼容的 HTTPS 侦听器实现。
+`hyco-https` 模块修改并部分替代核心 Node.js 模块 `http` 和 `https`，提供能与许多现有 Node.js 模块和依赖于这些核心模块的应用程序兼容的 HTTPS 侦听器实现。
 
-`hyco-ws` 和 `hyco-websocket` 模块修正了 Node.js 的常用 `ws` 和 `websocket` 模块，提供了备用侦听器实现，这些实现使得依赖于上述任一模块的模块和应用程序能够在混合连接中继后面工作。
+`hyco-ws` 和 `hyco-websocket` 模块修改 Node.js 的常用 `ws` 和 `websocket` 模块，提供备用侦听器实现，该实现使得模块和依赖于其中一个模块的应用程序呢能够在混合连接中继的后台工作。
 
-可在 [azure-relay-node](https://github.com/Azure/azure-relay-node) GitHub 存储库中找到有关这些模块的详细信息。
+有关这些模块的详细信息可在 [azure-relay-node](https://github.com/Azure/azure-relay-node) GitHub 存储库中找到。
 
 ## <a name="next-steps"></a>后续步骤
 若要了解有关 Azure 中继的详细信息，请访问以下链接：

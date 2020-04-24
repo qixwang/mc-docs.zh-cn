@@ -9,10 +9,10 @@ origin.date: 11/27/2018
 ms.date: 01/13/2020
 ms.author: v-yeche
 ms.openlocfilehash: ac49bd1ce609590577d113c87cf7c043bd89426c
-ms.sourcegitcommit: 4f4694991e1c70929c7112ad45a0c404ddfbc8da
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75776724"
 ---
 # <a name="troubleshoot-failback-to-on-premises-from-azure"></a>排查从 Azure 到本地的故障回复问题
@@ -25,8 +25,8 @@ ms.locfileid: "75776724"
 
 - 如果执行只读的用户 vCenter 发现并保护虚拟机，保护会成功且故障转移可正常工作。 进行重新保护期间，操作会失败，因为无法发现数据存储。 症状是在重新保护期间数据存储没有列出。 若要解决此问题，可以使用具有适当权限的帐户更新 vCenter 凭据，然后重试该作业。
 - 在故障回复 Linux 虚拟机并在本地运行它时，会看到网络管理器程序包已从该计算机卸载。 发生此卸载的原因是虚拟机在 Azure 中恢复时，网络管理器程序包遭到删除。
-- 当 Linux 虚拟机配置有静态 IP 地址且故障转移到 Azure 时，会通过 DHCP 获取 IP 地址。 当故障转移回复到本地时，该虚拟机会继续使用 DHCP 获取 IP 地址。 如有需要，请手动登录到该计算机，然后将 IP 地址设置回静态地址。 Windows 虚拟机可以重新获取其静态 IP 地址。
-- 如果使用 ESXi 5.5 免费版或 vSphere 6 虚拟机监控程序免费版，则故障转移会成功，但故障回复不会成功。 若要启用故障回复，请升级到以上任一程序的评估许可证。
+- 当 Linux 虚拟机配置有静态 IP 地址且故障转移到 Azure 时，将通过 DHCP 获取 IP 地址。 当故障转移回复到本地时，该虚拟机会继续使用 DHCP 获取 IP 地址。 如有需要，请手动登录到该计算机，然后将 IP 地址设置回静态地址。 Windows 虚拟机可以重新获取其静态 IP 地址。
+- 如果使用 ESXi 5.5 免费版或 vSphere 6 虚拟机监控程序免费版，则故障转移会成功，但故障回复不会成功。 要启用故障回复，请升级为程序的评估许可证。
 - 如果无法从进程服务器访问配置服务器，请使用 Telnet 在端口 443 上检查与配置服务器的连接。 也可以尝试从进程服务器 ping 配置服务器。 连接到配置服务器后，进程服务器也应会发出检测信号。
 - 作为物理本地服务器保护的 Windows Server 2008 R2 SP1 服务器无法从 Azure 故障回复到本地站点。
 - 在以下情况下无法进行故障回复：

@@ -6,10 +6,10 @@ origin.date: 03/15/2018
 ms.date: 01/13/2020
 ms.author: v-yeche
 ms.openlocfilehash: f4c70bb433ee44f8ce6692a7a380e68c7d01f307
-ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75742372"
 ---
 # <a name="deploy-an-existing-executable-to-service-fabric"></a>将现有可执行文件部署到 Service Fabric

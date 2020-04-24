@@ -17,10 +17,10 @@ ms.date: 01/20/2020
 ms.author: v-jay
 ms.custom: seodec18
 ms.openlocfilehash: 524d6ba89055089492f40934d22a1221b31f0913
-ms.sourcegitcommit: 97fdc3a6529136315605b86a150b345d6817dab9
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75965031"
 ---
 # <a name="tutorial-balance-internal-traffic-load-with-a-standard-load-balancer-in-the-azure-portal"></a>教程：在 Azure 门户中使用标准负载均衡器对内部流量负载进行均衡
@@ -61,7 +61,7 @@ ms.locfileid: "75965031"
    - “实例详细信息” > “区域”：   选择“中国东部 2”  。
   
    
-1. 选择“网络”  选项卡，或选择“下一步: **磁盘”，然后选择“下一步:** 网络”。 
+1. 选择“网络”  选项卡，或选择“下一步: **磁盘”，然后选择“下一步:**  网络”。 
    
    确保选中以下项：
    - **虚拟网络**：**MyVNet**

@@ -10,10 +10,10 @@ origin.date: 09/06/2019
 ms.date: 02/17/2020
 ms.author: v-jay
 ms.openlocfilehash: 59401fd363a0e2042af246296981add1b98a7c05
-ms.sourcegitcommit: 3f9d780a22bb069402b107033f7de78b10f90dde
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77156788"
 ---
 # <a name="security-controls-for-azure-vpn-gateway"></a>Azure VPN 网关的安全控制

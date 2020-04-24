@@ -10,10 +10,10 @@ origin.date: 12/03/2018
 ms.date: 02/10/2020
 ms.reviewer: sngun
 ms.openlocfilehash: ae02e2a4662d1e606c9122b69794da1520f6663c
-ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77067889"
 ---
 <!--Verify sucessfully-->
@@ -28,7 +28,7 @@ Azure Cosmos DB [Gremlin API](graph-introduction.md) 支持 [Gremlin](https://gi
 
 ## <a name="prerequisites"></a>必备条件
 
-若要使这些查询生效，必须拥有 Azure Cosmos DB 帐户，且容器中必须包含图数据。 没有这些内容？ 请学习 [5 分钟快速入门](create-graph-dotnet.md)或[开发人员教程](tutorial-query-graph.md)，创建帐户并填充数据库。 可以使用 [Gremlin 控制台](https://tinkerpop.apache.org/docs/current/reference/#gremlin-console)或你最喜爱的 Gremlin 驱动程序运行以下查询。
+若要使这些查询生效，必须拥有 Azure Cosmos DB 帐户，且容器中必须包含图数据。 没有这些内容？ 请学习 [5 分钟快速入门](create-graph-dotnet.md)或[开发人员教程](tutorial-query-graph.md)，创建 帐户并填充数据库。 可以使用 [Gremlin 控制台](https://tinkerpop.apache.org/docs/current/reference/#gremlin-console)或你最喜爱的 Gremlin 驱动程序运行以下查询。
 
 ## <a name="count-vertices-in-the-graph"></a>计算图中的顶点数量
 
@@ -56,28 +56,28 @@ g.V().hasLabel('person').values('firstName')
 
 ## <a name="find-related-edges-and-vertices"></a>查找相关边缘和顶点
 
-目前为止，仅介绍了适用于任何数据库的查询运算符。 如需导航到相关边缘和顶点，可以使用图形快速高效地进行遍历操作。 查找 Thomas 的所有朋友。 为此，可使用 Gremlin 的 `outE` 步骤查找 Thomas 的所有外缘，并使用 Gremlin 的 `inV` 步骤从这些边缘遍历至内顶点：
+目前为止，我们仅介绍了适用于任何数据库的查询运算符。 如需导航到相关边缘和顶点，可以使用图快速高效地进行遍历操作。 查找 Thomas 的所有朋友。 为此，可使用 Gremlin 的 `outE` 步骤从 Thomas 中查找所有外缘，并使用 Gremlin 的 `inV` 步骤从这些边缘遍历至内顶点：
 
 ```cs
 g.V('thomas').outE('knows').inV().hasLabel('person')
 ```
 
-下一查询通过调用 `outE` 和 `inV` 两次，执行两个跃点查找 Thomas 所有“朋友的朋友”。 
+下一查询通过调用 `outE` 和 `inV` 两次，执行两个跃点查找 Thomas 所有的“朋友的朋友”。 
 
 ```cs
 g.V('thomas').outE('knows').inV().hasLabel('person').outE('knows').inV().hasLabel('person')
 ```
 
-可使用 Gremlin 构建更加复杂的查询和实现功能强大的图形遍历逻辑，包括混合筛选表达式、使用 `loop` 步骤执行循环以及使用 `choose` 步骤实现条件导航。 深入了解通过 [Gremlin 支持](gremlin-support.md)可实现的操作！
+可使用 Gremlin 构建更加复杂的查询和实现功能强大图遍历逻辑，包括混合筛选表达式、使用 `loop` 步骤执行循环以及使用 `choose` 步骤实现条件导航。 深入了解通过 [Gremlin 支持](gremlin-support.md)可实现的操作！
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中已完成以下操作：
+在本教程中，已完成以下内容：
 
 > [!div class="checklist"]
 > * 已了解如何使用 Graph 进行查询 
 
-现在可以转到“概念”部分，获取有关 Cosmos DB 的详细信息。
+现在可以转到“概念”部分详细了解 Cosmos DB。
 
 > [!div class="nextstepaction"]
 > [多区域分布](distribute-data-globally.md)

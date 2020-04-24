@@ -12,10 +12,10 @@ metadata:
   ms.author: v-yeche
   ms.date: 02/10/2020
   ms.openlocfilehash: e6fab564821873e5a84934ac29b41788d2eb488a
-  ms.sourcegitcommit: 23dc63b6fea451f6a2bd4e8d0fbd7ed082ba0740
+  ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 02/04/2020
+  ms.lasthandoff: 04/17/2020
   ms.locfileid: "76980458"
 landingContent:
 - title: 关于 Azure Cosmos DB
@@ -176,7 +176,7 @@ landingContent:
       url: sql-api-sdk-dotnet.md
     - text: Java
       url: sql-api-sdk-java.md
-    - text: Javascript
+    - text: JavaScript
       url: sql-api-sdk-node.md
     - text: REST
       url: /rest/api/cosmos-db/

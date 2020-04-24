@@ -8,10 +8,10 @@ ms.topic: conceptual
 origin.date: 12/02/2019
 ms.date: 01/13/2020
 ms.openlocfilehash: 2542b169ca6174c55bd89f241322c19f0930cc6e
-ms.sourcegitcommit: 4f4694991e1c70929c7112ad45a0c404ddfbc8da
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75776759"
 ---
 # <a name="connectivity-architecture-in-azure-database-for-mariadb"></a>Azure Database for MariaDB 中的连接体系结构

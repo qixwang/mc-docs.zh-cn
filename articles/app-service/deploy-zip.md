@@ -8,10 +8,10 @@ ms.author: v-tawe
 ms.reviewer: sisirap
 ms.custom: seodec18
 ms.openlocfilehash: 33c19efbf27c388d89d153ac3bd9f5c35621ad00
-ms.sourcegitcommit: ee2a3063185cd4c5dc24901366dbb726119d045d
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "76979348"
 ---
 # <a name="deploy-your-app-to-azure-app-service-with-a-zip-or-war-file"></a>使用 ZIP 或 WAR 文件将应用部署到 Azure 应用服务
@@ -91,9 +91,9 @@ Publish-AzWebapp -ResourceGroupName <group-name> -Name <app-name> -ArchivePath <
 
 ## <a name="next-steps"></a>后续步骤
 
-有关更高级的部署方案，请参阅[使用 Git 部署到 Azure](deploy-local-git.md)。 通过基于 Git 的 Azure 部署可实现版本控制、包还原、MSBuild 等功能。
+有关更高级的部署方案，请参阅[使用 Git 部署到 Azure](deploy-local-git.md)。 使用 Git 部署到 Azure 支持版本控制、包还原、MSBuild 等。
 
 ## <a name="more-resources"></a>更多资源
 
 * [Kudu：从 zip 文件部署](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file)
-* [ 部署凭据](deploy-ftp.md)
+* [Azure 应用服务部署凭据](deploy-ftp.md)

@@ -9,10 +9,10 @@ origin.date: 08/02/2018
 ms.date: 11/26/2018
 ms.topic: conceptual
 ms.openlocfilehash: 0d79b2789cca9100be693bffdfdd30c95d86f150
-ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75858089"
 ---
 # <a name="using-azure-batch-with-render-farm-managers"></a>将 Azure Batch 与渲染器场管理器配合使用

@@ -6,10 +6,10 @@ origin.date: 03/01/2019
 ms.date: 01/15/2020
 ms.author: v-yeche
 ms.openlocfilehash: af1ec8e4936753e63ddfa019dcf807611f789387
-ms.sourcegitcommit: 97fdc3a6529136315605b86a150b345d6817dab9
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75965017"
 ---
 # <a name="quotas-and-limits-for-azure-container-instances"></a>Azure 容器实例的配额和限制

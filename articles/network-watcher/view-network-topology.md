@@ -14,10 +14,10 @@ origin.date: 05/09/2018
 ms.date: 10/22/2018
 ms.author: v-lingwu
 ms.openlocfilehash: b1d0d92593d4bae5101f2efefe0de14b9df44fb8
-ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77028978"
 ---
 # <a name="view-the-topology-of-an-azure-virtual-network"></a>查看 Azure 虚拟网络的拓扑
@@ -28,9 +28,9 @@ ms.locfileid: "77028978"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name = "azure-portal"></a>查看拓扑 - Azure 门户
+## <a name="view-topology---azure-portal"></a><a name = "azure-portal"></a>查看拓扑 - Azure 门户
 
-1. 使用具有必要[权限](required-rbac-permissions.md)的帐户登录到 [Azure 门户](https://portal.azure.cn)。
+1. 使用具有必要[权限](https://portal.azure.cn)的帐户登录到 [Azure 门户](required-rbac-permissions.md)。
 2. 在门户左上角选择“所有服务”  。
 3. 在“所有服务”筛选器框中，输入“网络观察程序”   。 结果中出现“网络观察程序”后，将其选中  。
 4. 选择“拓扑”。  生成拓扑要求在特定区域有网络观察程序，而该特定区域正是需要为其生成拓扑的虚拟网络所在的区域。 如果未在要为其生成拓扑的虚拟网络所在的区域启用网络观察程序，系统会在所有区域为你创建网络观察程序。 网络观察程序在名为 **NetworkWatcherRG** 的资源组中创建。
@@ -38,18 +38,18 @@ ms.locfileid: "77028978"
 
     ![查看拓扑](./media/view-network-topology/view-topology.png)
 
-    如上图所示，此虚拟网络包含三个子网。 一个子网中部署了一个 VM。 该 VM 有一个附加的网络接口和一个关联的公共 IP 地址。 另外两个子网有一个关联的路由表。 每个路由表包含两个路由。 一个子网有一个关联的网络安全组。 仅针对以下资源显示拓扑信息：
+    如上图所示，此虚拟网络包含三个子网。 一个子网中部署了一个 VM。 该 VM 有一个附加的网络接口和一个关联的公共 IP 地址。 另外两个子网有一个关联的路由表。 每个路由表包含两个路由。 一个子网有一个关联的网络安全组。 只会显示以下资源的拓扑信息：
 
-    - 与 *myVnet* 虚拟网络位于同一资源组和区域内。 例如，不会显示 *MyResourceGroup* 之外的资源组中存在的网络安全组，即使该网络安全组与 *MyVnet* 虚拟网络中的子网相关联。
-    - 位于 *myVnet* 虚拟网络中，或与其中的资源相关联。 例如，不会显示与 *myVnet* 虚拟网络中的子网或网络接口不相关联的网络安全组，即使该网络安全组位于 *MyResourceGroup* 资源组中。
+    - 位于 *myVnet* 虚拟网络所在资源组和区域内的资源。 例如，不会显示 *MyResourceGroup* 之外的资源组中存在的网络安全组，即使该网络安全组与 *MyVnet* 虚拟网络中的子网相关联。
+    - 位于 *myVnet* 虚拟网络中或与其中的资源相关联的资源。 例如，不会显示与 *myVnet* 虚拟网络中的子网或网络接口不相关联的网络安全组，即使该网络安全组位于 *MyResourceGroup* 资源组中。
 
    图中显示的拓扑对应的虚拟网络是在部署 **“通过网络虚拟设备路由流量”脚本示例**后创建的，该示例可以通过 [Azure CLI](../virtual-network/scripts/virtual-network-cli-sample-route-traffic-through-nva.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) 或 [PowerShell](../virtual-network/scripts/virtual-network-powershell-sample-route-traffic-through-nva.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) 部署。
 
 6. 选择“下载拓扑”  ，以 svg 格式将映像下载为可编辑文件。
 
-图中所示资源是虚拟网络中的网络组件子集。 例如，在显示网络安全组时，其中的安全规则不在图中显示。 虽然未在图中进行区分，线条表示以下两种关系中的一种：  包含或  关联。 若要查看虚拟网络中资源的完整列表以及资源之间关系的类型，请使用 [PowerShell](#powershell) 或 [Azure CLI](#azure-cli) 生成拓扑。
+图中所示资源是虚拟网络中的网络组件子集。 例如，在显示网络安全组时，其中的安全规则不在图中显示。 线条表示以下两种关系中的一种：  包含或  关联，不过并未在图中进行区分。 若要查看虚拟网络中资源的完整列表以及资源之间关系的类型，请使用 [PowerShell](#powershell) 或 [Azure CLI](#azure-cli) 生成拓扑。
 
-## <a name = "azure-cli"></a>查看拓扑 - Azure CLI
+## <a name="view-topology---azure-cli"></a><a name = "azure-cli"></a>查看拓扑 - Azure CLI
 
 可以运行后续步骤中的命令：
 <!-- Not Available on - In the Azure Cloud Shell-->
@@ -82,11 +82,11 @@ ms.locfileid: "77028978"
 
    详细了解返回的输出中的关系和[属性](#properties)。 如果没有现有的可以查看其拓扑的虚拟网络，则可使用[通过网络虚拟设备路由流量](../virtual-network/scripts/virtual-network-cli-sample-route-traffic-through-nva.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)脚本示例创建一个。 若要查看拓扑图并以可编辑文件的形式来下载它，请使用[门户](#azure-portal)。
 
-## <a name = "powershell"></a>查看拓扑 - PowerShell
+## <a name="view-topology---powershell"></a><a name = "powershell"></a>查看拓扑 - PowerShell
 
 可以运行后续步骤中的命令：
 <!-- Not Available on - In the Azure Cloud Shell-->
-- 通过在计算机中运行 PowerShell。 如果在计算机中运行 PowerShell，则本文中的步骤要求使用 AzureRm 模块 5.7.0 或更高版本。 运行 `Get-Module -ListAvailable AzureRM` 查找已安装的版本。 如果需要进行升级，请参阅 [Install Azure PowerShell module](https://docs.microsoft.com/powershell/azure/install-azurerm-ps)（安装 Azure PowerShell 模块）。 如果在本地运行 PowerShell，则还需运行 `Login-AzureRmAccount -EnvironmentName AzureChinaCloud` 来创建与 Azure 的连接。
+- 通过在计算机中运行 PowerShell。 如果在计算机中运行 PowerShell，则本文中的步骤要求使用 AzureRm 模块 5.7.0 或更高版本。 运行 `Get-Module -ListAvailable AzureRM` 查找已安装的版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-azurerm-ps)。 如果在本地运行 PowerShell，则还需运行 `Login-AzureRmAccount -EnvironmentName AzureChinaCloud` 来创建与 Azure 的连接。
 
 所用帐户必须拥有所需的[权限](required-rbac-permissions.md)。
 
@@ -139,8 +139,8 @@ ms.locfileid: "77028978"
 
 在拓扑中返回的所有资源具有以下属性：
 
-- **名称**：资源的名称
-- **Id**：资源的 URI。
+- **名称**：资源的名称。
+- **ID**：资源的 URI。
 - **位置**：资源所在的 Azure 区域。
 - **关联**：引用对象的关联列表。 每个关联包含以下属性：
     - **AssociationType**：引用子对象和父对象之间的关系。 有效值为 *Contains* 或 *Associated*。

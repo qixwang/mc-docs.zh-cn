@@ -10,10 +10,10 @@ ms.date: 02/10/2020
 ms.author: v-jay
 ms.subservice: common
 ms.openlocfilehash: b16b02696cb4321376acb9c15f6a37f241e415da
-ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77028528"
 ---
 # <a name="copy-data-from-amazon-s3-to-azure-storage-by-using-azcopy"></a>使用 AzCopy 将数据从 Amazon S3 复制到 Azure 存储
@@ -41,7 +41,7 @@ AzCopy 是一个命令行实用工具，可用于向/从存储帐户复制 Blob 
 
 收集 AWS 访问密钥和机密访问密钥，然后设置以下环境变量：
 
-| 操作系统 | 命令  |
+| 操作系统 | Command  |
 |--------|-----------|
 | **Windows** | `set AWS_ACCESS_KEY_ID=<access-key>`<br>`set AWS_SECRET_ACCESS_KEY=<secret-access-key>` |
 | **Linux** | `export AWS_ACCESS_KEY_ID=<access-key>`<br>`export AWS_SECRET_ACCESS_KEY=<secret-access-key>` |
@@ -52,7 +52,7 @@ AzCopy 是一个命令行实用工具，可用于向/从存储帐户复制 Blob 
 AzCopy 使用[从 URL 放置块](https://docs.microsoft.com/rest/api/storageservices/put-block-from-url) API，因此数据将在 AWS S3 与存储服务器之间直接复制。 这些复制操作不会占用计算机的网络带宽。
 
 > [!IMPORTANT]
-> 此功能目前以预览版提供。 如果你决定在完成复制操作后从 S3 桶中删除数据，请务必在删除数据之前，确认是否已将数据正确复制到存储帐户。
+> 此功能目前处于预览状态。 如果你决定在完成复制操作后从 S3 桶中删除数据，请务必在删除数据之前，确认是否已将数据正确复制到存储帐户。
 
 > [!TIP]
 > 本部分中的示例将路径参数括在单引号 ('') 中。 在除 Windows 命令 Shell (cmd.exe) 以外的所有命令 shell 中，都请使用单引号。 如果使用 Windows 命令 Shell (cmd.exe)，请用双引号 ("") 而不是单引号 ('') 括住路径参数。

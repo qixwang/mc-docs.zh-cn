@@ -13,10 +13,10 @@ ms.topic: article
 origin.date: 06/28/2019
 ms.date: 07/22/2019
 ms.openlocfilehash: 48fc346a4e798681930b05e6481eef24f14ee5c8
-ms.sourcegitcommit: 4f4694991e1c70929c7112ad45a0c404ddfbc8da
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75776734"
 ---
 # <a name="troubleshoot-dms-errors-when-connecting-to-source-databases"></a>排查连接到源数据库时出现的 DMS 错误

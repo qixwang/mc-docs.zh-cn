@@ -8,10 +8,10 @@ ms.topic: conceptual
 origin.date: 12/16/2019
 ms.date: 01/20/2020
 ms.openlocfilehash: 00211753520d246300ddc101251215c100134fe5
-ms.sourcegitcommit: 304861faf39689348962127b8b56db8082ece2ef
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "76270022"
 ---
 # <a name="frequently-asked-questions-about-provisioned-throughput-in-azure-cosmos-db-autopilot-mode-preview"></a>有关 Azure Cosmos DB Autopilot 模式下的预配吞吐量的常见问题（预览版）

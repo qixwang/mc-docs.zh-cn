@@ -7,10 +7,10 @@ origin.date: 10/26/2017
 ms.date: 01/20/2020
 ms.author: v-yeche
 ms.openlocfilehash: 26468138406ad36431771a5b9576311af1b50873
-ms.sourcegitcommit: 8de025ca11b62e06ba3762b5d15cc577e0c0f15d
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "76170691"
 ---
 # <a name="work-with-resources-in-the-managed-resource-group-for-azure-managed-application"></a>处理 Azure 托管应用程序的托管资源组中的资源

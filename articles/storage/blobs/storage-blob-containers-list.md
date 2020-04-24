@@ -10,10 +10,10 @@ ms.date: 10/28/2019
 ms.author: v-jay
 ms.subservice: blobs
 ms.openlocfilehash: 93c494ad0550881061da450942424afd6f4d4b17
-ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77028955"
 ---
 # <a name="list-blob-containers-with-net"></a>使用 .NET 列出 Blob 容器

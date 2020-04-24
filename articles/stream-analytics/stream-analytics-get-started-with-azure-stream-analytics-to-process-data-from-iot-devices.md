@@ -9,10 +9,10 @@ ms.topic: quickstart
 origin.date: 11/26/2019
 ms.date: 01/06/2020
 ms.openlocfilehash: 6808ae4903676c6bb85517f994ee5a507c64077e
-ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75856941"
 ---
 # <a name="process-real-time-iot-data-streams-with-azure-stream-analytics"></a>使用 Azure 流分析处理实时 IoT 数据流
@@ -23,7 +23,7 @@ ms.locfileid: "75856941"
 * [Azure 订阅](https://www.azure.cn/pricing/1rmb-trial/)
 * 可从 [GitHub](https://github.com/Azure/azure-stream-analytics/tree/master/Samples/GettingStarted)
 
-## <a name="scenario"></a>方案
+## <a name="scenario"></a>场景
 
 Contoso 是一家工业自动化公司，该公司已将其制造流程完全自动化。 这家工厂中的设备配有可实时发送数据流的传感器。 在此方案中，产品车间经理希望通过传感器数据获得实时见解，从而找到规律并采取措施。 可以对传感器数据使用流分析查询语言 (SAQL)，查找传入数据流的有趣规律。
 
@@ -38,7 +38,7 @@ Contoso 是一家工业自动化公司，该公司已将其制造流程完全自
 }  
 ```
 
-在实际情况下，其中可能有数百个传感器以流的形式生成事件。 理想情况下，网关设备会运行代码，将这些事件推送到 [Azure 事件中心](https://www.azure.cn/home/features/event-hubs/)或 [Azure IoT 中心](https://www.azure.cn/home/features/iot-hub/)。 流分析作业从事件中心引入这些事件，并针对流运行实时分析查询。 然后，可以将结果发送到[支持的输出](stream-analytics-define-outputs.md)之一。
+在实际情况下，其中可能有数百个传感器以流的形式生成事件。 理想情况下，网关设备会运行代码，将这些事件推送到 [Azure 事件中心](https://www.azure.cn/home/features/event-hubs/)或 [Azure IoT 中心](https://www.azure.cn/home/features/iot-hub/)。 流分析作业将从事件中心引入这些事件，并针对流运行实时分析查询。 然后，可以将结果发送到[支持的输出](stream-analytics-define-outputs.md)之一。
 
 为了方便使用，本入门指南提供从实际 SensorTag 设备中捕获的示例数据文件。 可以对示例数据运行查询并查看结果。 在后续教程中，学习如何将作业连接到输入和输出并将其部署到 Azure 服务。
 
@@ -48,11 +48,11 @@ Contoso 是一家工业自动化公司，该公司已将其制造流程完全自
    
     ![创建新的流分析作业](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-02.png)
 
-1. 输入唯一作业名并验证订阅是否与作业对应。 新建资源组或选择订阅中的现有资源组。
+1. 输入唯一的作业名称并验证订阅是否为用于作业的正确订阅。 新建资源组或选择订阅中的现有资源组。
 
 1. 为你的作业选择一个位置。 为资源组和所有资源使用同一位置，以提高处理速度并降低成本。 完成配置后，选择“创建”  。
    
-    ![新建流分析作业详细信息](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-03.png)
+    ![创建新的流分析作业详细信息](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-03.png)
 
 ## <a name="create-an-azure-stream-analytics-query"></a>创建 Azure 流分析查询
 创建作业后的下一步是编写查询。 可以使用示例数据测试查询，无需将输入或输出连接到作业。
@@ -148,9 +148,9 @@ WHERE t2.dspl IS NULL
 
 ![检测事件缺失](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-11.png)
 
-此时使用 **LEFT OUTER** 联接到相同的数据流（自联接）。 对于 **INNER** 联接，仅当找到匹配项时才返回结果。  对于 **LEFT OUTER** 联接，如果联接左侧的事件不匹配，则返回右侧所有列的带 NULL 的行。 这种方法对于查找事件缺失很有用。 有关详细信息，请参阅 [JOIN](https://docs.microsoft.com/stream-analytics-query/join-azure-stream-analytics)。
+此时使用 **LEFT OUTER** 联接到相同的数据流（自联接）。 对于 **INNER** 联接，仅当找到匹配项时才返回结果。  对于 **LEFT OUTER** 联接，如果联接左侧的事件不匹配，则返回右侧所有列中带 NULL 的行。 这种方法对于查找事件缺失很有用。 有关详细信息，请参阅 [JOIN](https://docs.microsoft.com/stream-analytics-query/join-azure-stream-analytics)。
 
-## <a name="conclusion"></a>结论
+## <a name="conclusion"></a>结束语
 
 本文旨在演示如何编写不同的流分析查询语言查询，并在浏览器中查看结果。 但这只是入门知识。 流分析支持多种输入和输出，甚至可以使用 Azure 机器学习中的函数，因而是用于分析数据流的可靠工具。 有关如何编写查询的详细信息，请阅读有关[常用查询模式](stream-analytics-stream-analytics-query-patterns.md)的文章。
 

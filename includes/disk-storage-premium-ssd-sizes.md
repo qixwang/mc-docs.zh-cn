@@ -10,10 +10,10 @@ ms.date: 02/10/2020
 ms.author: v-yeche
 ms.custom: include file
 ms.openlocfilehash: 8b28c52b9a8d4ca1b24970d5602d36f59e7b9dfe
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77427991"
 ---
 | 高级 SSD 大小  | P4 | P6 | P10 | P15 | P20 | P30 | P40 | P50 | P60 | P70 | P80 |

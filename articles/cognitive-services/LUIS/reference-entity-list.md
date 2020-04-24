@@ -12,10 +12,10 @@ origin.date: 11/11/2019
 ms.date: 1/2/2019
 ms.author: v-lingwu
 ms.openlocfilehash: 533792c2c76293e3d5e214dcf08fa16736f93c93
-ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75854215"
 ---
 # <a name="list-entity"></a>列表实体
@@ -71,7 +71,7 @@ ms.locfileid: "75854215"
 
 在之前的陈述中，单词 `paris` 映射至属于 `Cities` 列表实体一部分的“巴黎”项。 列表实体同时匹配项的规范化名称及其同义词。
 
-#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 预测终结点响应](#tab/V2)
+#### <a name="v2-prediction-endpoint-response"></a>[V2 预测终结点响应](#tab/V2)
 
 ```JSON
   "entities": [
@@ -89,7 +89,7 @@ ms.locfileid: "75854215"
   ]
 ```
 
-#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 预测终结点响应](#tab/V3)
+#### <a name="v3-prediction-endpoint-response"></a>[V3 预测终结点响应](#tab/V3)
 
 
 如果在查询字符串中设置了 `verbose=false`，则这是 JSON：
@@ -133,7 +133,7 @@ ms.locfileid: "75854215"
 
 * * *
 
-|数据对象|实体名称|Value|
+|数据对象|实体名称|值|
 |--|--|--|
 |列表实体|`Cities`|`paris`|
 

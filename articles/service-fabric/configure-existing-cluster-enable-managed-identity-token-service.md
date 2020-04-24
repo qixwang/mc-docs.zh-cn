@@ -6,10 +6,10 @@ origin.date: 12/09/2019
 ms.author: v-yeche
 ms.date: 01/06/2020
 ms.openlocfilehash: b62ca9e623b00e4f9033e1768fea80bc349475a5
-ms.sourcegitcommit: 671ff43b99572ca295968769278ee726954f1016
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "76508761"
 ---
 <!--Pending for Verify-->
@@ -76,7 +76,7 @@ ms.locfileid: "76508761"
 <!--Not Avaiable on * [Deploy an Azure Service Fabric application with a user-assigned managed identity](./how-to-deploy-service-fabric-application-user-assigned-managed-identity.md)-->
 <!--Not Avaiable on * [Leverage the managed identity of a Service Fabric application from service code](./how-to-managed-identity-service-fabric-app-code.md)-->
 
-* [向 Azure Service Fabric 应用程序授予对其他 Azure 资源的访问权限](./how-to-grant-access-other-resources.md)
+* [为 Azure Service Fabric 应用程序授予对其他 Azure 资源的访问权限](./how-to-grant-access-other-resources.md)
 
 <!--Update_Description: new articles on configure existing cluster enalbed managed identity token service-->
 <!--new.date: 09/02/2019-->

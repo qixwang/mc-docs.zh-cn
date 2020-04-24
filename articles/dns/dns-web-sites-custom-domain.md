@@ -9,10 +9,10 @@ origin.date: 3/11/2019
 ms.date: 01/13/2020
 ms.author: v-jay
 ms.openlocfilehash: 5447bfe41ebd34a7608369c013be0cbadffffc0d
-ms.sourcegitcommit: 157df1a5f11473dd3265d71f1543437f50f09adb
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75777445"
 ---
 # <a name="tutorial-create-dns-records-in-a-custom-domain-for-a-web-app"></a>教程：为 Web 应用在自定义域中创建 DNS 记录 
@@ -30,7 +30,7 @@ ms.locfileid: "75777445"
 
 请记住，如果在 Azure 中为 Web 应用创建 A 记录，当 Web 应用的基础 IP 地址更改时，则必须手动更新 A 记录。
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 为自定义域创建 A 记录和 TXT 记录
@@ -40,14 +40,14 @@ ms.locfileid: "75777445"
 > * 测试自定义主机名
 
 
-如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.azure.cn/zh-cn/pricing/1rmb-trial-full/?form-type=identityauth)。
+如果没有 Azure 订阅，可在开始前创建一个 [试用帐户](https://www.azure.cn/zh-cn/pricing/1rmb-trial-full/?form-type=identityauth) 。
 
 ## <a name="prerequisites"></a>必备条件
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 * 必须有一个可以用来测试的域名，可以在 Azure DNS 中托管该域名。 必须能够完全控制此域。 完全控制包括能够为域设置名称服务器 (NS) 记录。
-* [创建一个应用服务应用](../app-service/app-service-web-get-started-html.md)，或者使用为其他教程创建的应用。
+* [创建应用服务应用](../app-service/app-service-web-get-started-html.md)，或使用为另一教程创建的应用。
 
 * 在 Azure DNS 中创建一个 DNS 区域，并将注册机构中的区域委派给 Azure DNS。
 
@@ -83,7 +83,7 @@ New-AzDnsRecordSet -Name "@" -RecordType "A" -ZoneName "contoso.com" `
 应用服务仅在配置时使用此记录来验证你是否拥有自定义域。 自定义域经过验证并且在应用服务中配置后，可以删除此 TXT 记录。
 
 > [!NOTE]
-> 若要验证域名但不将生产流量路由到 Web 应用，则只需为验证步骤指定 TXT 记录。  验证不需要除 TXT 记录之外的 A 记录或 CNAME 记录。
+> 如果想要验证域名，但是不将生产流量路由到 Web 应用，只需指定验证步骤的 TXT 记录即可。  验证不需要除 TXT 记录之外的 A 或 CNAME 记录。
 
 ```powershell
 New-AzDnsRecordSet -ZoneName contoso.com -ResourceGroupName MyAzureResourceGroup `

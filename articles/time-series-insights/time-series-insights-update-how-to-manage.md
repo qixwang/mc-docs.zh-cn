@@ -12,10 +12,10 @@ origin.date: 12/19/2019
 ms.date: 01/27/2020
 ms.custom: seodec18
 ms.openlocfilehash: f476b0e7c63931f7d69aae2cc7913584d2ba72fe
-ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77068235"
 ---
 # <a name="provision-and-manage-azure-time-series-insights-preview"></a>预配和管理 Azure 时序见解预览版
@@ -36,7 +36,7 @@ Azure 时序见解预览版环境是即用即付 (PAYG) 环境。
 > * 了解[如何规划环境](./time-series-insights-update-plan.md)。
 
 
-可以了解如何执行以下操作：
+将了解如何执行以下操作：
 
 1. **（可选）** 将每个 Azure 时序见解预览版环境与一个事件源关联。 你还将提供时间戳 ID 属性和唯一的使用者组，以确保环境有权访问相应的事件。
 

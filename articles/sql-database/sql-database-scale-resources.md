@@ -13,10 +13,10 @@ ms.reviewer: jrasnik, carlrab
 origin.date: 06/25/2019
 ms.date: 02/17/2020
 ms.openlocfilehash: fc1d9019879f00e9b87869612b757aaf8cb79429
-ms.sourcegitcommit: d7b86a424b72849fe8ed32893dd05e4696e4fe85
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77155691"
 ---
 # <a name="dynamically-scale-database-resources-with-minimal-downtime"></a>以最短的停机时间动态缩放数据库资源

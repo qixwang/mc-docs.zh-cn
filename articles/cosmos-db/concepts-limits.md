@@ -8,15 +8,15 @@ ms.topic: conceptual
 origin.date: 08/05/2019
 ms.date: 01/20/2020
 ms.openlocfilehash: c300cbb56e0259d453530f93a8bd6c3c8f2a4f02
-ms.sourcegitcommit: 304861faf39689348962127b8b56db8082ece2ef
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "76270041"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Azure Cosmos DB 服务配额
 
-本文概述了 Azure Cosmos DB 中为不同资源提供的默认配额。
+本文概述了 Azure Cosmos DB 中提供给不同资源的默认配额。
 
 ## <a name="storage-and-throughput"></a>存储和吞吐量
 

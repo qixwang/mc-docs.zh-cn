@@ -1,20 +1,20 @@
 ---
 title: 使用 Application Insights 进行 Azure Service Fabric 事件分析
-description: 了解如何使用 Application Insights 来可视化和分析事件，以便对 Azure Service Fabric 群集进行监视和诊断。
+description: 了解通过使用 Application Insights 可视化和分析事件来监视和诊断 Azure Service Fabric 群集。
 author: rockboyfor
 ms.topic: conceptual
 ms.date: 01/13/2020
 ms.author: v-yeche
 ms.openlocfilehash: f165cc76e49e911b62f92befe11cdfdf4f38ab3d
-ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75741902"
 ---
-# <a name="event-analysis-and-visualization-with-application-insights"></a>使用 Application Insights 分析和可视化事件
+# <a name="event-analysis-and-visualization-with-application-insights"></a>使用 Application Insights 进行事件分析和可视化
 
-作为 Azure Monitor 的一部分，Application Insights 是用于应用程序监视和诊断的可扩展平台。 它包含强大的分析和查询工具、可自定义的仪表板和可视化效果，以及自动警报等其他选项。 Application Insights 与 Service Fabric 的集成包括 Visual Studio 和 Azure 门户的工具体验，以及 Service Fabric 特定的指标，从而提供综合性的现成日志记录体验。 尽管使用 Application Insights 时会自动创建和收集许多日志，但我们建议将更多的自定义日志记录添加到应用程序以创建更丰富的诊断体验。
+作为 Azure Monitor 的一部分，Application Insights 是用于应用程序监视和诊断的可扩展平台。 它具有强大的分析和查询工具、可自定义的仪表板和可视化效果，以及包括自动报警在内的其他选项。 Application Insights 与 Service Fabric 的集成包括 Visual Studio 和 Azure 门户的工具体验，以及 Service Fabric 特定的指标，从而提供综合性的现成日志记录体验。 尽管使用 Application Insights 时会自动创建和收集许多日志，但我们建议将更多的自定义日志记录添加到应用程序以创建更丰富的诊断体验。
 
 本文帮助解决以下常见问题：
 
@@ -44,7 +44,7 @@ Application Insights 提供指定的视图用于查询所有传入的数据。 �
 
 ### <a name="configuring-application-insights-with-eventflow"></a>使用 EventFlow 配置 Application Insights
 
-如果使用 EventFlow 来聚合事件，请务必导入 `Microsoft.Diagnostics.EventFlow.Outputs.ApplicationInsights` NuGet 包。 需要在 *eventFlowConfig.json* 的 *outputs* 节中包含以下代码：
+若正在使用 EventFlow 聚合事件，请务必导入 `Microsoft.Diagnostics.EventFlow.Outputs.ApplicationInsights` NuGet 包。 需要在 *eventFlowConfig.json* 的 *outputs* 节中包含以下代码：
 
 ```json
 "outputs": [
@@ -55,11 +55,11 @@ Application Insights 提供指定的视图用于查询所有传入的数据。 �
 ]
 ```
 
-请务必在筛选器中进行所需的更改，并包含其他任何输入（及其相应的 NuGet 包）。
+请确保在筛选器中应用必要的更改，并包含任何其他输入（及其各自的 NuGet 包）。
 
 ## <a name="application-insights-sdk"></a>Application Insights SDK
 
-建议使用 EventFlow 和 WAD 作为聚合解决方案，因为它们允许使用更加模块化的方法，方便诊断和监视。例如，若要从 EventFlow 更改输出，不需要更改实际检测，仅需对配置文件进行简单修改。 然而，若决定投资使用 Application Insights，且不太可能更改到其他平台，则应使用 Application Insights 的新 SDK 以聚合事件并将它们发送到 Application Insights。 这意味着不再非得配置 EventFlow 将数据发送到 Application Insights，而是安装 Application Insight 的 Service Fabric NuGet 包。 [此文](https://github.com/Microsoft/ApplicationInsights-ServiceFabric)提供了有关该包的详细信息。
+建议使用 EventFlow 和 WAD 作为聚合解决方案，因为它们允许使用更加模块化的方法，方便诊断和监视。例如，若要从 EventFlow 更改输出，不需要更改实际检测，仅需对配置文件进行简单修改。 然而，若决定投资使用 Application Insights，且不太可能更改到其他平台，则应使用 Application Insights 的新 SDK 以聚合事件并将它们发送到 Application Insights。 这意味着不再非得配置 EventFlow 将数据发送到 Application Insights，而是安装 Application Insight 的 Service Fabric NuGet 包。 可在[此处](https://github.com/Microsoft/ApplicationInsights-ServiceFabric)找到此包的详细信息。
 
 [微服务和容器的 Application Insights 支持](https://azure.microsoft.com/blog/app-insights-microservices/)会显示一些开发中的新功能（当前仍为 beta 版本），通过它们可以使用更加丰富的现成 Application Insights 监视选项。 这包含依赖项跟踪（用于生成群集中所有服务和应用程序的 AppMap 以及它们之间的通信），以及来自服务更好的跟踪关联（有助于更好地查明应用程序或服务的工作流中的问题）。
 
@@ -69,11 +69,11 @@ Application Insights 提供指定的视图用于查询所有传入的数据。 �
 
 配置 Application Insights 作为事件和日志输出的数分钟后，Application Insights 资源中应开始显示信息。 导航到 Application Insights 资源，此时会转到 Application Insights 资源仪表板。 单击 Application Insights 任务栏中的“搜索”，查看其最近收到的跟踪，并能够筛选它们。 
 
-“指标资源管理器”是一个有用的工具，可根据应用程序、服务和群集可以报告的指标创建自定义仪表板。  请参阅[了解 Application Insights 中的指标](/azure-monitor/log-query/log-query-overview)，基于收集的数据为自身设置数个图表。
+指标资源管理器  是非常有用的工具，能够基于应用程序、服务和群集报告的指标创建自定义仪表板。 请参阅[了解 Application Insights 中的指标](/azure-monitor/log-query/log-query-overview)，基于收集的数据为自身设置数个图表。
 
 <!--Correct on redirect to (/azure-monitor/log-query/log-query-overview)-->
 
-单击“分析”会转到 Application Insights Analytics 门户，可在其中以更大的范围和可选性查询事件与跟踪。  若要阅读详细信息，请转到 [Application Insights 中的分析](../azure-monitor/app/analytics.md)。
+单击“分析”会转到 Application Insights 分析门户，可在此处基于更广的范围和可选性查询事件和跟踪。  若要阅读详细信息，请转到 [Application Insights 中的分析](../azure-monitor/app/analytics.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -8,10 +8,10 @@ ms.date: 01/13/2020
 ms.author: v-yeche
 ms.topic: conceptual
 ms.openlocfilehash: aaebba02700277157f55b09a73b544e820d5664f
-ms.sourcegitcommit: 4f4694991e1c70929c7112ad45a0c404ddfbc8da
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75776651"
 ---
 # <a name="exclude-disks-from-vmware-vm-replication-to-azure"></a>从目标为 Azure 的 VMware VM 复制中排除磁盘

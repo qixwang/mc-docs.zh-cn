@@ -14,10 +14,10 @@ origin.date: 08/17/2017
 ms.date: 09/26/2018
 ms.author: v-lingwu
 ms.openlocfilehash: e84a3b6f9cbdc13d5c090afcfc774d3e2b484999
-ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77068374"
 ---
 # <a name="configuring-and-using-the-storage-emulator-with-visual-studio"></a>在 Visual Studio 中配置和使用存储模拟器

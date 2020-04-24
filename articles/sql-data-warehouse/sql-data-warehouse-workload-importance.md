@@ -13,17 +13,17 @@ ms.author: v-jay
 ms.reviewer: jrasnick
 ms.custom: seo-lt-2019
 ms.openlocfilehash: 48f48f0e8a418e4fff878e7a7913f055e12b9c50
-ms.sourcegitcommit: 6e47d840eb0ac773067723254e60dd318272d73e
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75964923"
 ---
 # <a name="azure-sql-data-warehouse-workload-importance"></a>Azure SQL 数据仓库工作负荷重要性
 
 本文介绍工作负荷重要性如何影响 SQL 数据仓库请求的执行顺序。
 
-## <a name="importance"></a>重要性
+## <a name="importance"></a>Importance
 
 业务需求可能要求数据仓库工作负荷的重要性高于其他工作负荷。  假设存在这样一种情况：需要加载财务周期结束之前的任务关键型销售数据。  其他信息源（例如天气数据）的数据加载不需要遵守严格的 SLA。 为加载销售数据的请求设置高重要性，并为加载天气数据的请求设置低重要性，可以确保销售数据加载操作能够首先访问资源，并更快地完成。
 

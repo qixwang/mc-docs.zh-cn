@@ -12,10 +12,10 @@ ms.topic: article
 origin.date: 05/31/2019
 ms.date: 01/13/2020
 ms.openlocfilehash: 400855912c43f11083b538d0da2a52d36b3248ea
-ms.sourcegitcommit: 4f4694991e1c70929c7112ad45a0c404ddfbc8da
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75776762"
 ---
 # <a name="what-is-azure-database-migration-service"></a>什么是 Azure 数据库迁移服务？

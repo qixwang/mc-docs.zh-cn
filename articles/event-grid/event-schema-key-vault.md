@@ -9,10 +9,10 @@ origin.date: 10/25/2019
 ms.date: 01/20/2020
 ms.author: v-yiso
 ms.openlocfilehash: 5c62b29b3359c0df0ebd042d0c6b06fc120c2a74
-ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77068322"
 ---
 # <a name="azure-event-grid-event-schema-for-azure-key-vault-preview"></a>Azure Key Vault 的 Azure 事件网格事件架构（预览版）
@@ -66,15 +66,15 @@ Azure Key Vault 帐户生成以下事件类型：
 
 事件具有以下顶级数据：
 
-| 属性 | 类型 | 说明 |
+| properties | 类型 | 说明 |
 | ---------- | ----------- |---|
-| id | string | 触发了此事件的对象的 ID |
-| vaultName | string | 触发了此事件的对象的密钥保管库名称 |
-| objectType | string | 触发了此事件的对象的类型 |
-| objectName | string | 触发了此事件的对象的名称 |
-| 版本 | string | 触发了此事件的对象的版本 |
-| nbf | number | 触发了此事件的对象的 not-before 日期（自 1970-01-01T00:00:00Z 以来的秒数） |
-| exp | number | 触发了此事件的对象的到期日期（自 1970-01-01T00:00:00Z 以来的秒数） |
+| id | 字符串 | 触发了此事件的对象的 ID |
+| vaultName | 字符串 | 触发了此事件的对象的密钥保管库名称 |
+| objectType | 字符串 | 触发了此事件的对象的类型 |
+| objectName | 字符串 | 触发了此事件的对象的名称 |
+| 版本 | 字符串 | 触发了此事件的对象的版本 |
+| nbf | 数字 | 触发了此事件的对象的 not-before 日期（自 1970-01-01T00:00:00Z 以来的秒数） |
+| exp | 数字 | 触发了此事件的对象的到期日期（自 1970-01-01T00:00:00Z 以来的秒数） |
 
 
 ## <a name="next-steps"></a>后续步骤

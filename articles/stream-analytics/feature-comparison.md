@@ -8,10 +8,10 @@ ms.topic: conceptual
 origin.date: 06/27/2019
 ms.date: 07/12/2019
 ms.openlocfilehash: e981785fbae78537f1362c265970ed8a51732d8f
-ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75858407"
 ---
 # <a name="azure-stream-analytics-feature-comparison"></a>Azure 流分析功能比较

@@ -9,10 +9,10 @@ ms.topic: conceptual
 origin.date: 12/04/2019
 ms.date: 01/17/2020
 ms.openlocfilehash: 7011ec60d07c3cf84e89011f1d8248e542dbeba0
-ms.sourcegitcommit: 94e1c9621b8f81a7078f1412b3a73281d0a8668b
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "76123216"
 ---
 # <a name="debug-kusto-query-language-inline-python-using-vs-code"></a>使用 VS Code 调试 Kusto 查询语言内联 Python
@@ -24,7 +24,7 @@ Kusto 查询语言工具不适用于开发和调试 Python 算法。 因此，�
 > [!NOTE]
 > 此工作流仅可用来调试相对较小的输入表（最大为几 MB）。 因此，你可能需要限制用于调试的输入。  如果需要处理大型表，请使用 `| take`、`| sample` 或 `where rand() < 0.x` 限制对该表的调试。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 1. 安装 Python [Anaconda 分发版](https://www.anaconda.com/distribution/#download-section)。 在“高级选项”  中，选择“将 Anaconda 添加到我的 PATH 环境变量”  。
 2. 安装 [Visual Studio Code](https://code.visualstudio.com/Download)

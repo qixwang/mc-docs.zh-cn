@@ -18,10 +18,10 @@ ms.author: v-yeche
 ms.reviewer: cynthn
 ms.custom: ''
 ms.openlocfilehash: 2c40ffadf580072aca00659235bcd80735521d4f
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77428007"
 ---
 # <a name="troubleshooting-shared-image-galleries"></a>排查共享映像库问题

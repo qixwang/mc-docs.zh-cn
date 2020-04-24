@@ -8,10 +8,10 @@ ms.author: v-yeche
 origin.date: 06/20/2019
 ms.date: 02/10/2020
 ms.openlocfilehash: 3bd6da73ef2e5fd316cf87d232941bc74e33cfce
-ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77028931"
 ---
 # <a name="azure-cosmos-emulator---release-notes-and-download-information"></a>Azure Cosmos 模拟器 - 发行说明和下载信息

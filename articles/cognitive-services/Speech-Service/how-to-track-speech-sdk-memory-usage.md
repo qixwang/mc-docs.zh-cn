@@ -13,10 +13,10 @@ ms.date: 01/13/2020
 ms.author: v-tawe
 zone_pivot_groups: programming-languages-set-two
 ms.openlocfilehash: 7740fc44cb5cbee670332319175bde3af986044c
-ms.sourcegitcommit: 94e1c9621b8f81a7078f1412b3a73281d0a8668b
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "76123363"
 ---
 # <a name="how-to-track-speech-sdk-memory-usage"></a>如何跟踪语音 SDK 内存使用情况
@@ -25,7 +25,7 @@ ms.locfileid: "76123363"
 
 ## <a name="how-to-read-object-logs"></a>如何读取对象日志
 
-如果](how-to-use-logging.md)启用了语音 SDK 日志记录[，则会发出跟踪标记来启用历史对象观察。 这些标记包括： 
+如果[启用了语音 SDK 日志记录](how-to-use-logging.md)，则会发出跟踪标记来启用历史对象观察。 这些标记包括： 
 
 * `TrackHandle` 或 `StopTracking` 
 * 对象类型
@@ -41,7 +41,7 @@ ms.locfileid: "76123363"
 
 可以选择创建警告阈值。如果超出该阈值（假定启用了日志记录），则会记录一条警告消息。 警告消息包含所有存在的对象及其计数的转储。 可以通过此信息更好地了解问题。 
 
-若要启用警告阈值，必须在 `SpeechConfig` 对象上指定它。 创建新的识别器时，将检查此对象。 在下面的示例中，假设已创建一个名为 `config` 的 `SpeechConfig` 实例：
+若要启用警告阈值，必须在 `SpeechConfig` 对象上指定它。 创建新的识别器时，将检查此对象。 在下面的示例中，假设已创建一个名为 `SpeechConfig` 的 `config` 实例：
 
 ::: zone pivot="programming-language-csharp"
 
@@ -103,7 +103,7 @@ class Microsoft::CognitiveServices::Speech::Impl::ISpxAudioConfig 0
 class Microsoft::CognitiveServices::Speech::Impl::ISpxSpeechConfig 0
 ```
 
-若要启用错误阈值，必须在 `SpeechConfig` 对象上指定它。 创建新的识别器时，将检查此对象。 在下面的示例中，假设已创建一个名为 `config` 的 `SpeechConfig` 实例：
+若要启用错误阈值，必须在 `SpeechConfig` 对象上指定它。 创建新的识别器时，将检查此对象。 在下面的示例中，假设已创建一个名为 `SpeechConfig` 的 `config` 实例：
 
 ::: zone pivot="programming-language-csharp"
 

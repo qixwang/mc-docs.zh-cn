@@ -16,10 +16,10 @@ origin.date: 03/15/2018
 ms.date: 02/24/2020
 ms.author: v-yiso
 ms.openlocfilehash: 357ea49c0d9b5a151854682d1e12d96fe57fc045
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77428042"
 ---
 # <a name="create-a-streaming-customer-insights-dashboard-with-azure-logic-apps-and-azure-functions"></a>使用 Azure 逻辑应用和 Azure Functions 创建流式处理客户见解仪表板
@@ -39,7 +39,7 @@ Azure 逻辑应用在云中提供无服务器工作流引擎，以便能够跨�
 
    如果你不熟悉逻辑应用，请查看 [Azure 门户快速入门](../logic-apps/quickstart-create-first-logic-app-workflow.md)或 [Visual Studio 快速入门](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md)。
 
-2. 在逻辑应用设计器中，找到并添加可执行以下操作的 Twitter 触发器：**发布新推文时**
+2. 在逻辑应用设计器中，找到并添加可执行以下操作的 Twitter 触发器：“发布新推文时” 
 
 3. 将此触发器设置为根据关键字或井号标签侦听推文。
 
@@ -65,7 +65,7 @@ Azure 逻辑应用在云中提供无服务器工作流引擎，以便能够跨�
 
 获取推文数据以及有关推文的见解后，可以使用其他许多相关的连接器及其操作：
 
-* **Power BI - 向流式处理数据集中添加行**：在 Power BI 仪表板上查看传入的推文。
+* **Power BI - 向流式处理数据集添加行**：在 Power BI 仪表板上查看传入的推文。
 * **Azure Data Lake - 追加文件**：将客户数据添加到要包括在分析作业中的 Azure Data Lake 数据集。
 * **SQL - 添加行**：将数据存储在数据库中，方便以后检索。
 * **Slack - 发送消息**：告知 Slack 通道存在负面反馈，可能需要采取措施。

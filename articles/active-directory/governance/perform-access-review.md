@@ -16,10 +16,10 @@ ms.author: v-junlch
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a87104ac0ae7116911f5991afb0694952e36700f
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77429884"
 ---
 # <a name="review-access-to-groups-and-applications-in-azure-ad-access-reviews"></a>在 Azure AD 访问评审中评审对组和应用程序的访问权限
@@ -52,7 +52,7 @@ Azure Active Directory (Azure AD) 借助称为“Azure AD 访问评审”的功�
 
     ![应用和组的待处理访问评审列表](./media/perform-access-review/access-reviews-list.png)
 
-1. 单击要执行的访问评审对应的“开始评审”链接。 
+1. 单击你要执行的访问评审对应的“开始评审”链接。 
 
 ## <a name="perform-the-access-review"></a>执行访问评审
 

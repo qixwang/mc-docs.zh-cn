@@ -10,10 +10,10 @@ ms.topic: conceptual
 origin.date: 09/24/2018
 ms.date: 01/20/2020
 ms.openlocfilehash: b1b69df13d95db3c17c97b630700e16ff302ff32
-ms.sourcegitcommit: 304861faf39689348962127b8b56db8082ece2ef
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "76270074"
 ---
 <!--Verify sucessfully-->

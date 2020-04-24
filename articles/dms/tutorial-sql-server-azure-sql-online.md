@@ -14,10 +14,10 @@ ms.topic: article
 origin.date: 01/21/2020
 ms.date: 02/17/2020
 ms.openlocfilehash: 9d83fab97f62fc1dd37f9756fcfff2a4efae2626
-ms.sourcegitcommit: 3f9d780a22bb069402b107033f7de78b10f90dde
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77192458"
 ---
 # <a name="tutorial-migrate-sql-server-to-a-single-database-or-pooled-database-in-azure-sql-database-online-using-dms"></a>教程：使用 DMS 将 SQL Server 联机迁移到 Azure SQL 数据库中的单一数据库或共用数据库
@@ -44,7 +44,7 @@ ms.locfileid: "77192458"
 
 本文介绍如何从 SQL Server 联机迁移到 Azure SQL 数据库中的单一数据库或共用数据库。 有关脱机迁移，请参阅[使用 DMS 将 SQL Server 脱机迁移到 Azure SQL 数据库](tutorial-sql-server-to-azure-sql.md)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 要完成本教程，需要：
 

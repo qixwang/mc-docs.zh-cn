@@ -10,10 +10,10 @@ ms.date: 02/10/2020
 author: rockboyfor
 ms.author: v-yeche
 ms.openlocfilehash: f39b4ea5c21c96293e1326a164f71b3f0ac330ac
-ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77068263"
 ---
 <!--Verify sucessfully-->
@@ -59,7 +59,7 @@ Azure 会在停用 SDK 时至少提前 12 个月  发出通知，以便用户顺
 | [1.0.0](#1.0.0) |2017 年 11 月 15 日 |--- |
 | [0.37.1](#0.37.1) |2017 年 10 月 5 日 |--- |
 
-## <a name="faq"></a>常见问题
+## <a name="faq"></a>常见问题解答
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
 ## <a name="see-also"></a>另请参阅

@@ -10,10 +10,10 @@ ms.topic: conceptual
 origin.date: 07/10/2018
 ms.date: 08/09/2019
 ms.openlocfilehash: 94f943e976407c6cbd1de32d3f0c27d9c6ccd1a2
-ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75857240"
 ---
 # <a name="use-visual-studio-to-view-azure-stream-analytics-jobs"></a>使用 Visual Studio 查看 Azure 流分析作业
@@ -60,7 +60,7 @@ ms.locfileid: "75857240"
 
 ## <a name="export-jobs-to-a-project"></a>将作业导出到项目
 
-可以使用两种方法将现有作业导出到项目。
+可使用两种方法将现有作业导出到项目。
 
 1. 在“服务器资源管理器”中的“流分析作业”节点下，右键单击作业节点  。 选择“导出到新的流分析项目”  。
     

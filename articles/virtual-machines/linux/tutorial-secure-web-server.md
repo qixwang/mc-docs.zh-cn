@@ -17,10 +17,10 @@ ms.date: 02/10/2020
 ms.author: v-yeche
 ms.custom: mvc
 ms.openlocfilehash: aa0246ab4b92ccaa0c8c2e9a63136826a1b0e682
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77427988"
 ---
 # <a name="tutorial-secure-a-web-server-on-a-linux-virtual-machine-in-azure-with-ssl-certificates-stored-in-key-vault"></a>教程：在 Azure 中使用 Key Vault 中存储的 SSL 证书保护 Linux 虚拟机上的 Web 服务器
@@ -80,9 +80,9 @@ vm_secret=$(az vm secret format --secrets "$secret" -g myResourceGroupSecureWeb 
 ```
 
 ### <a name="create-a-cloud-init-config-to-secure-nginx"></a>创建 cloud-init 配置以保护 NGINX
-[Cloud-init](https://cloudinit.readthedocs.io) 是一种广泛使用的方法，用于在首次启动 Linux VM 时对其进行自定义。 可使用 cloud-init 来安装程序包和写入文件，或者配置用户和安全性。 在初始启动期间运行 cloud-init 时，无需额外的步骤和代理即可应用配置。
+[Cloud-init](https://cloudinit.readthedocs.io) 是一种广泛使用的方法，用于在首次启动 Linux VM 时对其进行自定义。 可使用 cloud-init 安装程序包和写入文件，或者配置用户和安全。 在初始启动期间运行 cloud-init 时，无需额外的步骤且无需代理来应用配置。
 
-创建 VM 时，证书和密钥都将存储在受保护的 /var/lib/waagent/  目录中。 若要自动将证书添加到 VM 并配置 Web 服务器，请使用 cloud-init。 本示例中将安装并配置 NGINX Web 服务器。 可以使用相同的过程来安装和配置 Apache。 
+创建 VM 时，证书和密钥都将存储在受保护的 /var/lib/waagent/  目录中。 若要自动将证书添加到 VM 并配置 Web 服务器，请使用 cloud-init。 本示例会安装并配置 NGINX Web 服务器。 可以使用相同的过程来安装和配置 Apache。 
 
 创建名为 *cloud-init-web-server.txt* 的文件并粘贴以下配置：
 
@@ -109,7 +109,7 @@ runcmd:
 ```
 
 ### <a name="create-a-secure-vm"></a>创建安全 VM
-现在，请使用 [az vm create](https://docs.azure.cn/cli/vm?view=azure-cli-latest#az-vm-create) 创建 VM。 使用 `--secrets` 参数注入 Key Vault 中的证书数据。 使用 `--custom-data` 参数传入 cloud-init 配置：
+现使用 [az vm create](https://docs.azure.cn/cli/vm?view=azure-cli-latest#az-vm-create) 创建 VM。 使用 `--secrets` 参数插入 Key Vault 中的证书数据。 使用 `--custom-data` 参数传入 cloud-init 配置：
 
 ```azurecli 
 az vm create \
@@ -124,7 +124,7 @@ az vm create \
 
 创建 VM、安装程序包和启动应用需耗时几分钟。 创建 VM 后，请记下 Azure CLI 显示的 `publicIpAddress`。 此地址用于在 Web 浏览器中访问站点。
 
-若要使 VM 能使用安全的 Web 流量，请通过 [az vm open-port](https://docs.azure.cn/cli/vm?view=azure-cli-latest#az-vm-open-port) 从 Internet 打开端口 443：
+若要使 VM 能使用安全的 Web 流量，请通过 [az vm open-port](https://docs.azure.cn/cli/vm?view=azure-cli-latest#az-vm-open-port) 从 Internet 中打开端口 443：
 
 ```azurecli 
 az vm open-port \
@@ -134,7 +134,7 @@ az vm open-port \
 ```
 
 ### <a name="test-the-secure-web-app"></a>测试 Web 应用是否安全
-现在可以打开 Web 浏览器，并在地址栏中输入“https:\/\/\<publicIpAddress>”  。 在 VM 创建过程中提供自己的公共 IP 地址。 若使用自签名的证书，请接受安全警告：
+现在可以打开 Web 浏览器，并在地址栏中输入“https: *\/\/publicIpAddress>”\<* 。 在 VM 创建过程中提供自己的公共 IP 地址。 若使用自签名的证书，请接受安全警告：
 
 ![接受 Web 浏览器安全警告](./media/tutorial-secure-web-server/browser-warning.png)
 
@@ -144,7 +144,7 @@ az vm open-port \
 
 ## <a name="next-steps"></a>后续步骤
 
-本教程已介绍如何使用 Azure Key Vault 中存储的 SSL 证书保护 NGINX Web 服务器。 你已了解如何：
+本教程已介绍如何使用 Azure Key Vault 中存储的 SSL 证书保护 NGINX Web 服务器。 你已了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 创建 Azure Key Vault
@@ -152,7 +152,7 @@ az vm open-port \
 > * 创建 VM 并安装 NGINX Web 服务器
 > * 将证书注入 VM 并使用 SSL 绑定配置 NGINX
 
-请访问以下链接，查看预先生成的虚拟机脚本示例。
+请访问以下链接查看预先生成的虚拟机脚本示例。
 
 > [!div class="nextstepaction"]
 > [Linux 虚拟机脚本示例](./cli-samples.md)

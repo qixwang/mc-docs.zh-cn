@@ -15,10 +15,10 @@ origin.date: 02/22/2017
 ms.date: 04/12/2019
 ms.author: v-lingwu
 ms.openlocfilehash: ccb06b61fa2c107b0597d4b81f1d680500f015de
-ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77028485"
 ---
 # <a name="automate-nsg-auditing-with-azure-network-watcher-security-group-view"></a>使用 Azure 网络观察程序安全组视图自动进行 NSG 审核
@@ -30,13 +30,13 @@ ms.locfileid: "77028485"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="before-you-begin"></a>准备阶段
+## <a name="before-you-begin"></a>开始之前
 
 本方案将已知合理的基准与针对虚拟机返回的安全组视图结果进行比较。
 
 此方案假定已按照[创建网络观察程序](network-watcher-create.md)中的步骤创建网络观察程序。 此方案还假定要使用的包含有效虚拟机的资源组已存在。
 
-## <a name="scenario"></a>方案
+## <a name="scenario"></a>场景
 
 本文所述的方案将获取虚拟机的安全组视图。
 

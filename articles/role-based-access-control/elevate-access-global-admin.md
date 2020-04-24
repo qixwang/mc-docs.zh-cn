@@ -16,10 +16,10 @@ ms.date: 01/16/2020
 ms.author: v-junlch
 ms.reviewer: bagovind
 ms.openlocfilehash: 22ca1013826ed4dfea32c2a852af3a9e7e6bfa1c
-ms.sourcegitcommit: 48d51745ca18de7fa05b77501b4a9bf16cea2068
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "76116940"
 ---
 # <a name="elevate-access-to-manage-all-azure-subscriptions-and-management-groups"></a>提升访问权限以管理所有 Azure 订阅和管理组

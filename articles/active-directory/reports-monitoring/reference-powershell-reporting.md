@@ -18,10 +18,10 @@ ms.author: v-junlch
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 740d071e301b2f1e9261f740bec7c10648b2a8e3
-ms.sourcegitcommit: 1bc154c816a5dff47ee051c431cd94826e57aa60
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75777068"
 ---
 # <a name="azure-ad-powershell-cmdlets-for-reporting"></a>用于报告的 Azure AD PowerShell cmdlet
@@ -47,10 +47,10 @@ Install-module AzureADPreview
 可以使用 `Get-AzureADAuditDirectoryLogs cmdlet 访问审核日志。
 
 
-| 方案                      | PowerShell 命令 |
+| 场景                      | PowerShell 命令 |
 | :--                           | :--                |
 | 应用程序显示名称      | Get-AzureADAuditDirectoryLogs -Filter "initiatedBy/app/displayName eq 'Azure AD Cloud Sync'" |
-| Category                      | Get-AzureADAuditDirectoryLogs -Filter "category eq 'Application Management'" |
+| 类别                      | Get-AzureADAuditDirectoryLogs -Filter "category eq 'Application Management'" |
 | 活动日期时间            | Get-AzureADAuditDirectoryLogs -Filter "activityDateTime gt 2019-04-18" |
 | 以上都是              | Get-AzureADAuditDirectoryLogs -Filter "initiatedBy/app/displayName eq 'Azure AD Cloud Sync' and category eq 'Application Management' and activityDateTime gt 2019-04-18"|
 
@@ -68,7 +68,7 @@ Install-module AzureADPreview
 可以使用 `Get-AzureADAuditSignInLogs cmdlet 访问登录日志。
 
 
-| 方案                      | PowerShell 命令 |
+| 场景                      | PowerShell 命令 |
 | :--                           | :--                |
 | 用户显示名称             | Get-AzureADAuditSignInLogs -Filter "userDisplayName eq 'Timothy Perkins'" |
 | 创建日期时间              | Get-AzureADAuditSignInLogs -Filter "createdDateTime gt 2019-04-18T17:30:00.0Z"（自 4 月 18 日下午 5:30 以来的一切） |

@@ -8,10 +8,10 @@ origin.date: 09/28/2019
 ms.date: 02/10/2020
 ms.author: v-yeche
 ms.openlocfilehash: d025abc19f818d931e1f8f22376c676fbb9c8ce4
-ms.sourcegitcommit: 23dc63b6fea451f6a2bd4e8d0fbd7ed082ba0740
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "76980440"
 ---
 # <a name="create-containers-with-large-partition-key"></a>使用大分区键创建容器
@@ -72,8 +72,8 @@ database,
 |.Net     |    1.18     |
 |Java 同步     |   2.4.0      |
 |Java 异步   |  2.5.0        |
-| REST API | 使用 `x-ms-version` 请求标头时版本高于 `2017-05-03`。|
-| Resource Manager 模板 | 版本 2（通过使用 `partitionKey` 对象中的 `"version":2` 属性）。 |
+| REST API | 使用 `2017-05-03` 请求标头时版本高于 `x-ms-version`。|
+| 资源管理器模板 | 版本 2（通过使用 `"version":2` 对象中的 `partitionKey` 属性）。 |
 
 目前不能在 Power BI 和 Azure Logic Apps 中将容器与大分区键配合使用。 在这些应用程序中，可以在没有大分区键的情况下使用容器。
 

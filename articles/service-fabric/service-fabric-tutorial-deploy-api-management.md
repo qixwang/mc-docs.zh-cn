@@ -7,10 +7,10 @@ ms.date: 01/13/2020
 ms.author: v-yeche
 ms.custom: mvc
 ms.openlocfilehash: 15b5e355d11ed5afa9e5329c4621dd9b0dc9fa60
-ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75742042"
 ---
 # <a name="integrate-api-management-with-service-fabric-in-azure"></a>在 Azure 中将 API 管理与 Service Fabric 集成
@@ -39,7 +39,7 @@ ms.locfileid: "75742042"
 
 现在，你在 Azure 上拥有了一个安全的 [Windows 群集](service-fabric-tutorial-create-vnet-and-windows-cluster.md)，可以在子网和专为 API 管理指定的 NSG 中将 API 管理部署到虚拟网络 (VNET)。 对于本文，API 管理资源管理器模板预配置为使用你在 [Windows 群集教程](service-fabric-tutorial-create-vnet-and-windows-cluster.md)中设置的 VNET、子网和 NSG 的名称。本文将以下拓扑部署到 Azure，其中，API 管理和 Service Fabric 位于同一虚拟网络的子网中：
 
- ![图片题注][sf-apim-topology-overview]
+ ![图片标题][sf-apim-topology-overview]
 
 ## <a name="sign-in-to-azure-and-select-your-subscription"></a>登录到 Azure，然后选择订阅
 
@@ -85,7 +85,7 @@ az account set --subscription <guid>
 
 6. 可在本地于 Visual Studio 中按下 F5 来验证 Web API。
 
-    打开 Service Fabric 资源管理器并深入了解 ASP.NET Core 服务的特定实例，以查看服务正在侦听的基址。 将 `/api/values` 添加到基址，然后在浏览器中打开，这在 Web API 模板的 ValuesController 上调用 Get 方法。 它会返回模板提供的默认响应，即包含两个字符串的 JSON 数组：
+    打开 Service Fabric Explorer 并深入了解 ASP.NET Core 服务的特定实例，以查看服务正在侦听的基址。 将 `/api/values` 添加到基址，然后在浏览器中打开，这在 Web API 模板的 ValuesController 上调用 Get 方法。 它会返回模板提供的默认响应，即包含两个字符串的 JSON 数组：
 
     ```json
     ["value1", "value2"]`
@@ -118,28 +118,28 @@ az account set --subscription <guid>
 
 [Microsoft.ApiManagement/service/certificates](https://docs.microsoft.com/azure/templates/microsoft.apimanagement/service/certificates) 用于配置 API 管理安全性。 API 管理必须使用有权访问群集的客户端证书对用于服务发现的 Service Fabric 群集进行身份验证。 本文使用之前在创建 [Windows 群集](service-fabric-tutorial-create-vnet-and-windows-cluster.md#createvaultandcert_anchor)时指定的同一证书，该证书默认可用于访问群集。
 
-本文对客户端身份验证和群集节点到节点安全性使用相同的证书。 如果配置了一个单独的客户端证书，则可以使用它来访问 Service Fabric 群集。 提供创建 Service Fabric 群集时指定的群集证书私钥文件 (.pfx) 的“名称”、“密码”和“数据”（base-64 编码字符串）    。
+本文对客户端身份验证和群集节点到节点安全性使用相同的证书。 如果你配置了一个单独的客户端证书，则可以使用它来访问 Service Fabric 群集。 提供创建 Service Fabric 群集时指定的群集证书私钥文件 (.pfx) 的“名称”、“密码”和“数据”（base-64 编码字符串）    。
 
 ### <a name="microsoftapimanagementservicebackends"></a>Microsoft.ApiManagement/service/backends
 
 [Microsoft.ApiManagement/service/backends](https://docs.microsoft.com/azure/templates/microsoft.apimanagement/service/backends) 描述了流量转发到的后端服务。
 
-对于 Service Fabric 后端，后端是 Service Fabric 群集，而不是特定的 Service Fabric 服务。 这允许单个策略路由到群集中的多个服务。 如果后端策略中未指定任何服务名称，那么此处的 url 字段是群集中一个服务的完全限定的服务名称，默认情况下所有请求都路由到该服务  。 如果不打算获取回退服务，可以使用一个假的服务名称，如“fabric:/fake/service”。 resourceId 指定群集管理终结点  。  clientCertificateThumbprint 和 serverCertificateThumbprints 标识用于对群集进行身份验证的证书   。
+对于 Service Fabric 后端，后端是 Service Fabric 群集，而不是特定的 Service Fabric 服务。 这允许单个策略路由到群集中的多个服务。 如果后端策略中未指定任何服务名称，那么此处的 url 字段是群集中一个服务的完全限定的服务名称，默认情况下所有请求都路由到该服务  。 如果你不打算获取回退服务，可以使用一个假的服务名称，如“fabric:/fake/service”。 resourceId 指定群集管理终结点  。  clientCertificateThumbprint 和 serverCertificateThumbprints 标识用于对群集进行身份验证的证书   。
 
 ### <a name="microsoftapimanagementserviceproducts"></a>Microsoft.ApiManagement/service/products
 
-[Microsoft.ApiManagement/service/products](https://docs.microsoft.com/azure/templates/microsoft.apimanagement/service/products) 用于创建产品。 在 Azure API 管理中，产品包含一个或多个 API 以及使用配额和使用条款。 一旦产品发布，开发人员便可以订阅该产品，并可开始使用该产品的 API。
+[Microsoft.ApiManagement/service/products](https://docs.microsoft.com/azure/templates/microsoft.apimanagement/service/products) 用于创建产品。 在 Azure API 管理中，产品包含一个或多个 API 以及使用配额和使用条款。 一旦产品发布，开发人员可以订阅该产品，并开始使用产品的 API。
 
 为产品输入描述性“displayName”和“description”   。 对于本文，订阅是必需的，但不需要管理员批准订阅。  产品“state”为“已发布”，并对订阅者可见  。
 
 ### <a name="microsoftapimanagementserviceapis"></a>Microsoft.ApiManagement/service/apis
 
-[Microsoft.ApiManagement/service/apis](https://docs.microsoft.com/azure/templates/microsoft.apimanagement/service/apis) 用于创建 API。 API 管理中的 API 表示一组可由客户端应用程序调用的操作。 添加操作后，该 API 便添加到某一产品并可以发布。 发布 API 后，它可供开发人员订阅和使用。
+[Microsoft.ApiManagement/service/apis](https://docs.microsoft.com/azure/templates/microsoft.apimanagement/service/apis) 用于创建 API。 API 管理中的 API 表示一组可由客户端应用程序调用的操作。 一旦添加操作，该 API 添加到某一产品并可以发布。 发布 API 后，它可供开发人员订阅和使用。
 
 * “displayName”可以是 API 的任意名称  。 对于本文，请使用“Service Fabric App”。
 * “name”为 API 提供一个唯一且有描述性的名称，例如“service-fabric-app”  。 它显示在开发人员和发布者门户中。
-* “serviceUrl”引用实现 API 的 HTTP 服务  。 API 管理将请求转发到此地址。 对于 Service Fabric 后端，不使用此 URL 值。 可以在此处设置任何值。 对于本文，例如“http:\//servicefabric”。
-* “path”附加到 API 管理服务的基础 URL  。 基 URL 是常见的由 API 管理服务实例托管的所有 API。 API 管理通过其后缀区分 API，因此后缀对于给定发布者的每个 API 必须唯一。
+* “serviceUrl”引用实现 API 的 HTTP 服务  。 API 管理将请求转发到此地址。 对于 Service Fabric 后端，不使用此 URL 值。 你可以在此处设置任何值。 对于本文，例如“http:\//servicefabric”。
+* “path”附加到 API 管理服务的基础 URL  。 基础 URL 是常见的由 API 管理服务实例托管的所有 API。 API 管理通过其后缀区分 API，因此后缀对给定发布者上的每个 API 必须唯一。
 * “protocols”确定可用于访问 API 的协议  。 对于本文，列出 **http** 和 **https**。
 * “path”是 API 的后缀  。 对于本文，请使用“myapp”。
 
@@ -155,16 +155,16 @@ az account set --subscription <guid>
 
 ### <a name="microsoftapimanagementserviceapispolicies"></a>Microsoft.ApiManagement/service/apis/policies
 
-[Microsoft.ApiManagement/service/apis/policies](https://docs.microsoft.com/azure/templates/microsoft.apimanagement/service/apis/policies) 创建将所有内容联系在一起的后端策略。 可以在其中配置将请求路由到的后端 Service Fabric 服务。 可以将此策略应用到任何 API 操作。  有关详细信息，请参阅[策略概述](/api-management/api-management-howto-policies)。
+[Microsoft.ApiManagement/service/apis/policies](https://docs.microsoft.com/azure/templates/microsoft.apimanagement/service/apis/policies) 创建将所有内容联系在一起的后端策略。 你可以在其中配置将请求路由到的后端 Service Fabric 服务。 可以将此策略应用到任何 API 操作。  有关详细信息，请参阅[策略概述](/api-management/api-management-howto-policies)。
 
 [Service Fabric 的后端配置](/api-management/api-management-transformation-policies#SetBackendService)提供以下请求路由控件：
 
-* 服务实例选择，方法是指定硬编码的 Service Fabric 服务实例名称（例如，`"fabric:/myapp/myservice"`）或从 HTTP 请求中生成的名称（例如，`"fabric:/myapp/users/" + context.Request.MatchedParameters["name"]`）。
+* 服务实例选择，方法是指定硬编码的（例如，`"fabric:/myapp/myservice"`）或从 HTTP 请求中生成的（例如，`"fabric:/myapp/users/" + context.Request.MatchedParameters["name"]`）Service Fabric 服务实例名称。
 * 分区解析，方法是使用任何 Service Fabric 分区方案生成分区键。
 * 用于有状态服务的副本选择。
-* 解析重试条件，可指定用于重新解析服务位置并重新发送请求的条件。
+* 解析重试条件，允许你指定用于重新解析服务位置并重新发送请求的条件。
 
-“policyContent”是策略的 JSON 转义 XML 内容  。  对于本文，请创建一个将请求直接路由到以前部署的 .NET 或 Java 无状态服务的后端策略。 在入站策略下添加 `set-backend-service` 策略。  如果之前部署了 .NET 后端服务，则将 *sf-service-instance-name* 值替换为 `fabric:/ApiApplication/WebApiService`，如果部署了 Java 服务，则替换为 `fabric:/EchoServerApplication/EchoServerService`。  *backend-id* 引用一个后端资源，在此示例中为在 *apim.json* 模板中定义的 `Microsoft.ApiManagement/service/backends` 资源。 *backend-id* 也可引用使用 API 管理 API 创建的另一后端资源。 对于本文，请将 *backend-id* 设置为 *service_fabric_backend_name* 参数的值。
+“policyContent”是策略的 JSON 转义 XML 内容  。  对于本文，请创建一个将请求直接路由到以前部署的 .NET 或 Java 无状态服务的后端策略。 在入站策略下添加 `set-backend-service` 策略。  如果之前部署了 .NET 后端服务，则将 *sf-service-instance-name* 值替换为 `fabric:/ApiApplication/WebApiService`，如果部署了 Java 服务，则替换为 `fabric:/EchoServerApplication/EchoServerService`。  *backend-id* 引用一个后端资源，在此示例中为在 `Microsoft.ApiManagement/service/backends`apim.json*模板中定义的* 资源。 *backend-id* 也可引用使用 API 管理 API 创建的另一后端资源。 对于本文，请将 *backend-id* 设置为 *service_fabric_backend_name* 参数的值。
 
 ```xml
 <policies>
@@ -190,7 +190,7 @@ az account set --subscription <guid>
 
 在部署的 apim.parameters.json 中填写以下空参数  。
 
-|参数|Value|
+|参数|值|
 |---|---|
 |apimInstanceName|sf-apim|
 |apimPublisherEmail|myemail@contosos.com|
@@ -213,7 +213,7 @@ $b64 = [System.Convert]::ToBase64String($bytes);
 [System.Io.File]::WriteAllText("C:\mycertificates\sfclustertutorialgroup220171109113527.txt", $b64);
 ```
 
-在 *inbound_policy* 中，如果之前部署了 .NET 后端服务，则将 *sf-service-instance-name* 值替换为 `fabric:/ApiApplication/WebApiService`，如果部署了 Java 服务，则替换为 `fabric:/EchoServerApplication/EchoServerService`。 *backend-id* 引用一个后端资源，在此示例中为在 *apim.json* 模板中定义的 `Microsoft.ApiManagement/service/backends` 资源。 *backend-id* 也可引用使用 API 管理 API 创建的另一后端资源。 对于本文，请将 *backend-id* 设置为 *service_fabric_backend_name* 参数的值。
+在 *inbound_policy* 中，如果之前部署了 .NET 后端服务，则将 *sf-service-instance-name* 值替换为 `fabric:/ApiApplication/WebApiService`，如果部署了 Java 服务，则替换为 `fabric:/EchoServerApplication/EchoServerService`。 *backend-id* 引用一个后端资源，在此示例中为在 `Microsoft.ApiManagement/service/backends`apim.json*模板中定义的* 资源。 *backend-id* 也可引用使用 API 管理 API 创建的另一后端资源。 对于本文，请将 *backend-id* 设置为 *service_fabric_backend_name* 参数的值。
 
 ```xml
 <policies>

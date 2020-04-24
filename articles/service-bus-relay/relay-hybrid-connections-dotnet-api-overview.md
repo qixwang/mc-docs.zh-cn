@@ -16,10 +16,10 @@ origin.date: 01/23/2018
 ms.date: 09/26/2019
 ms.author: v-lingwu
 ms.openlocfilehash: f037905e8ff538988d99b587a5b65dd58599f4e0
-ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77068236"
 ---
 # <a name="azure-relay-hybrid-connections-net-standard-api-overview"></a>Azure 中继混合连接 .NET 标准 API 概述
@@ -64,7 +64,7 @@ catch (ArgumentException ae)
 
 ## <a name="hybrid-connection-stream"></a>混合连接流
 
-无论使用的是 [HybridConnectionClient][HCClient]，还是 [HybridConnectionListener][HCListener]，[HybridConnectionStream][HCStream] 类这一主要对象均用于从 Azure 中继终结点发送和接收数据。
+无论使用的是 [HybridConnectionClient][HCStream]，还是 [HybridConnectionListener][HCClient]，[HybridConnectionStream][HCListener] 类这一主要对象均用于从 Azure 中继终结点发送和接收数据。
 
 ### <a name="getting-a-hybrid-connection-stream"></a>获取混合连接流
 
@@ -81,7 +81,7 @@ await listener.OpenAsync();
 var hybridConnectionStream = await listener.AcceptConnectionAsync();
 ```
 
-#### <a name="client"></a>客户端
+#### <a name="client"></a>Client
 
 使用 [HybridConnectionClient][HCClient] 对象可以获取 `HybridConnectionStream` 对象，如下所示：
 
@@ -128,7 +128,7 @@ var data = Encoding.UTF8.GetBytes("hello");
 await clientConnection.WriteAsync(data, 0, data.Length);
 ```
 
-但是，如果要直接发送文本，而无需每次都对字符串进行编码，则可以使用 [StreamWriter](https://msdn.microsoft.com/library/system.io.streamwriter(v=vs.110).aspx) 对象包装 `hybridConnectionStream` 对象。
+但是，如果要直接发送文本，而无需每次都对字符串进行编码，则可以使用 `hybridConnectionStream`StreamWriter[ 对象包装 ](https://msdn.microsoft.com/library/system.io.streamwriter(v=vs.110).aspx) 对象。
 
 ```csharp
 // The StreamWriter object only needs to be created once

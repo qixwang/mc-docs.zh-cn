@@ -10,10 +10,10 @@ ms.topic: reference
 origin.date: 03/18/2019
 ms.date: 02/10/2020
 ms.openlocfilehash: 66adc3e4808906aefc3c42bc3b5f54ce4873b8bf
-ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77067862"
 ---
 <!--Verify sucessfully-->
@@ -37,7 +37,7 @@ ms.locfileid: "77067862"
 
 <!--Not Available on ## Release notes-->
 
-## <a name="faq"></a>常见问题
+## <a name="faq"></a>常见问题解答
 
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 

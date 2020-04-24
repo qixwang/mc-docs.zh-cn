@@ -1,6 +1,6 @@
 ---
-title: Azure Cosmos DB 合规性
-description: 本文介绍了 Azure Cosmos DB 合规性产品的认证覆盖范围。
+title: Azure Cosmos DB 符合性
+description: 本文介绍了 Azure Cosmos DB 符合性产品的认证覆盖范围。
 author: rockboyfor
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -9,10 +9,10 @@ ms.date: 01/20/2020
 ms.author: v-yeche
 ms.reviewer: sngun
 ms.openlocfilehash: 541f6f9ce2de8a963b76ad6525902b4df376e5a8
-ms.sourcegitcommit: 304861faf39689348962127b8b56db8082ece2ef
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "76270042"
 ---
 # <a name="compliance-in-azure-cosmos-db"></a>Azure Cosmos DB 符合性 
@@ -37,9 +37,9 @@ Azure Cosmos DB 在所有 Azure 中国区域中提供。 Azure 为中国客户�
 
 ## <a name="next-steps"></a>后续步骤
 
-若要了解有关 Azure 合规性认证的详细信息，请参阅以下文章：
+若要了解有关 Azure 符合性认证的详细信息，请参阅以下文章：
 
-* 若要了解 Azure Cosmos DB 的最新合规性认证，请参阅[Azure 合规性概述](https://www.trustcenter.cn/cloudservices/azure.html)。  
+* 若要了解 Azure Cosmos DB 的最新符合性认证，请参阅[Azure 符合性概述](https://www.trustcenter.cn/cloudservices/azure.html)。  
 
 * 有关 Azure Cosmos DB 安全性的概述以及最新改进，请参阅 [Azure Cosmos 数据库安全性](database-security.md)一文。
 

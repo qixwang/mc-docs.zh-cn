@@ -15,10 +15,10 @@ ms.custom: aaddev
 ms.reviewer: shoatman, hahamil, brianmel
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 641a4096e3b20d7357f1c666f2c8d7c2cbcb04b0
-ms.sourcegitcommit: 1bc154c816a5dff47ee051c431cd94826e57aa60
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75776838"
 ---
 # <a name="brokered-authentication-in-android"></a>Android 中的中介身份验证

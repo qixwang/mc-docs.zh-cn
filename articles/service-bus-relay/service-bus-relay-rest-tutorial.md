@@ -16,10 +16,10 @@ origin.date: 11/05/2019
 ms.date: 11/20/2019
 ms.author: v-lingwu
 ms.openlocfilehash: 63fa39754cb39c9ad683553693bb7573e93a8180
-ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77067951"
 ---
 # <a name="tutorial-azure-wcf-relay-rest-tutorial"></a>教程：Azure WCF 中继 REST 教程
@@ -39,7 +39,7 @@ ms.locfileid: "77067951"
 > * 托管并运行基于 REST 的 WCF 服务。
 > * 运行和测试服务。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要完成本教程，需要满足以下先决条件：
 

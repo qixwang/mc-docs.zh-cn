@@ -6,10 +6,10 @@ origin.date: 03/16/2018
 ms.author: v-yeche
 ms.date: 01/06/2020
 ms.openlocfilehash: a08219b6188acfc988f0445beebaf32a754f2f74
-ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75741891"
 ---
 # <a name="service-fabric-application-and-service-security"></a>Service Fabric 应用程序和服务安全性
@@ -22,7 +22,7 @@ ms.locfileid: "75741891"
 ## <a name="authentication-and-authorization"></a>身份验证和授权
 通常，有必要将服务公开的资源和 API 限制给特定的受信任用户或客户端使用。 身份验证是可靠认定用户身份的过程。  授权是将 API 或服务提供给某些已经过身份验证的用户，而不提供给其他用户使用的过程。
 
-### <a name="authentication"></a>身份验证
+### <a name="authentication"></a>Authentication
 做出 API 级信任决策的第一个步骤就是身份验证。 身份验证是可靠认定用户身份的过程。  在微服务场景中，身份验证通常以集中方式处理。 如果使用 API 网关，可[将身份验证任务卸载](https://docs.microsoft.com/azure/architecture/patterns/gateway-offloading)到网关。 如果使用此方法，请确保除非部署了额外的安全措施来对消息（不管是否来自网关）进行身份验证，否则不能直接访问单个服务（在不使用 API 网关的情况下）。
 
 如果可以直接访问服务，则可以使用某个身份验证服务（例如 Azure Active Directory，或充当安全令牌服务 (STS) 的专用身份验证微服务）对用户进行身份验证。 信任决策在包含安全令牌或 Cookie 的服务之间共享。 
@@ -44,7 +44,7 @@ ms.locfileid: "75741891"
 API 管理直接与 Service Fabric 集成，以便可以使用一组丰富的路由规则向后端 Service Fabric 服务发布 API。  可以使用限制来保护对后端服务的访问、防止 DOS 攻击；还可以验证 API 密钥、JWT 令牌、证书和其他凭据。 有关详细信息，请参阅[有关 Service Fabric 与 Azure API 管理的概述](service-fabric-api-management-overview.md)。
 
 ## <a name="manage-application-secrets"></a>管理应用程序机密
-机密可以是任何敏感信息，例如存储连接字符串、密码或其他不应以明文形式处理的值。 本文使用 Azure Key Vault 来管理密钥和机密。 但是，在应用程序中 *使用* 机密的方式不区分云平台，因此可让应用程序部署到托管在任何位置的群集。
+机密可以是任何敏感信息，例如存储连接字符串、密码或其他不应以明文形式处理的值。 本文使用 Azure Key Vault 来管理密钥和机密。 但是，在应用程序中*使用*机密的方式不区分云平台，因此可让应用程序部署到托管在任何位置的群集。
 
 建议通过[服务配置包][config-package]来管理服务配置设置。 可以通过包含运行状况验证和自动回滚的托管滚动升级机制来控制配置包版本以及对其进行更新。 这比全局配置更有优势，因为可以减少全局服务中断的可能性。 加密的机密也不例外。 通过 Service Fabric 的内置功能，可以使用证书加密来加密和解密配置包 Settings.xml 文件中的值。
 
@@ -64,18 +64,18 @@ API 管理直接与 Service Fabric 集成，以便可以使用一组丰富的路
 有关示例，请参阅[管理应用程序机密](service-fabric-application-secret-management.md)。
 
 ## <a name="secure-the-hosting-environment"></a>保护宿主环境
-使用 Azure Service Fabric，可以保护群集中以不同用户帐户运行的应用程序。 使用用户帐户进行部署时，Service Fabric 还有助于保护应用程序所使用的资源，例如文件、目录和证书。 这样，即使是在共享托管环境中，运行应用程序会更加安全。
+使用 Azure Service Fabric，可以保护群集中以不同用户帐户运行的应用程序。 Service Fabric 还有助于在部署时使用用户帐户来保护应用程序所用的资源，例如文件、目录和证书。 这样，即使在共享托管环境中，也可确保运行的应用程序彼此更安全。
 
 应用程序清单声明运行服务和保护资源时所需的安全主体（用户和组）。  这些安全主体在运行方式帐户、终结点绑定、包共享或安全访问策略等策略中引用。  然后，将策略应用到应用程序清单的 **ServiceManifestImport** 节中的服务资源。
 
-声明主体时，还可以定义和创建用户组，以便将一个或多个要统一管理的用户添加到每个组。 如果不同的服务入口点有多个用户，而且这些用户需要拥有可在组级别使用的某些常用权限，则这种做法很有用。
+声明主体时，还可以定义和创建用户组，以便将一个或多个要统一管理的用户添加到每个组。 如果不同的服务入口点有多个用户，而且这些用户需要拥有可在组级别使用的某些常用权限，则这种做法特别有用。
 
-默认情况下，Service Fabric 应用程序在运行 Fabric.exe 进程的帐户之下运行。 Service Fabric 还允许使用应用程序清单中指定的本地用户帐户或本地系统帐户运行应用程序。 有关详细信息，请参阅[以本地用户帐户或本地系统帐户运行服务](service-fabric-application-runas-security.md)。  还可[以本地用户或系统帐户身份运行服务启动脚本](service-fabric-run-script-at-service-startup.md)。
+默认情况下，Service Fabric 应用程序在运行 Fabric.exe 程序的帐户之下运行。 借助 Service Fabric，还可以使用应用程序清单中指定的本地用户帐户或本地系统帐户运行应用程序。 有关详细信息，请参阅[以本地用户帐户或本地系统帐户运行服务](service-fabric-application-runas-security.md)。  还可[以本地用户或系统帐户身份运行服务启动脚本](service-fabric-run-script-at-service-startup.md)。
 
 在 Windows 独立群集上运行 Service Fabric 时，可以使用 [Active Directory 域帐户](service-fabric-run-service-as-ad-user-or-group.md)或[组托管服务帐户](service-fabric-run-service-as-gmsa.md)运行服务。
 
 ## <a name="secure-containers"></a>保护容器
-Service Fabric 提供一种机制，供容器内服务访问在 Windows 或 Linux 群集（5.7 版或更高版本）的节点中安装的证书。 此 PFX 证书可以用于对应用程序或服务或与其他服务的安全通信进行身份验证。 有关详细信息，请参阅[将证书导入容器](service-fabric-securing-containers.md)。
+Service Fabric 提供一种机制，供容器内服务访问在 Windows 或 Linux 群集（5.7 或更高版本）的节点中安装的证书。 此 PFX 证书可以用于对应用程序或服务或与其他服务的安全通信进行身份验证。 有关详细信息，请参阅[将证书导入容器](service-fabric-securing-containers.md)。
 
 此外，Service Fabric 还支持 Windows 容器的 gMSA（组托管服务帐户）。 有关详细信息，请参阅[设置 Windows 容器的 gMSA](service-fabric-setup-gmsa-for-windows-containers.md)。
 
@@ -84,9 +84,9 @@ Service Fabric 提供一种机制，供容器内服务访问在 Windows 或 Linu
 
 可以在 [ASP.NET Core 或 Java](service-fabric-service-manifest-resources.md#example-specifying-an-https-endpoint-for-your-service) Web 服务中启用 HTTPS 终结点。
 
-可以在反向代理与服务之间建立安全连接，从而启用端到端安全通道。 仅当反向代理配置为侦听 HTTPS 时，才支持连接到安全服务。 有关配置反向代理的信息，请参阅 [Azure Service Fabric 中的反向代理](service-fabric-reverseproxy.md)。  [连接到安全服务](service-fabric-reverseproxy-configure-secure-communication.md)介绍了如何在反向代理与服务之间建立安全连接。
+可以在反向代理与服务之间建立安全连接，从而启用端到端安全通道。 只有将反向代理配置为侦听 HTTPS 时，才支持连接到安全服务。 有关配置反向代理的信息，请参阅 [Azure Service Fabric 中的反向代理](service-fabric-reverseproxy.md)。  [连接到安全服务](service-fabric-reverseproxy-configure-secure-communication.md)介绍了如何在反向代理与服务之间建立安全连接。
 
-Reliable Services 应用程序框架提供了一些预先生成的通信堆栈和工具供你用来提高安全性。 了解如何在使用服务远程处理（在 [C#](service-fabric-reliable-services-secure-communication.md) 或 [Java](service-fabric-reliable-services-secure-communication-java.md) 中）或 [WCF](service-fabric-reliable-services-secure-communication-wcf.md) 时提高安全性。
+Reliable Services 应用程序框架提供了一些预先构建的通信堆栈和工具，可用来提高安全性。 了解如何在使用服务远程处理（在 [C#](service-fabric-reliable-services-secure-communication.md) 或 [Java](service-fabric-reliable-services-secure-communication-java.md) 中）或 [WCF](service-fabric-reliable-services-secure-communication-wcf.md) 时提高安全性。
 
 ## <a name="encrypt-application-data-at-rest"></a>加密应用程序的静态数据
 在 Azure 中运行的 Service Fabric 群集中的每个[节点类型](service-fabric-cluster-nodetypes.md)都受[虚拟机规模集](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)的支持。 可以使用 Azure 资源管理器模板将数据磁盘附加到组成 Service Fabric 群集的规模集。

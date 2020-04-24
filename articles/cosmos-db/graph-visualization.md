@@ -9,10 +9,10 @@ ms.topic: conceptual
 origin.date: 07/02/2019
 ms.date: 02/10/2020
 ms.openlocfilehash: cb6e086e9ed21f68c1b67d42c8b1e7a0243a396e
-ms.sourcegitcommit: 23dc63b6fea451f6a2bd4e8d0fbd7ed082ba0740
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "76980531"
 ---
 # <a name="visualize-graph-data-stored-in-azure-cosmos-db-gremlin-api-with-data-visualization-solutions"></a>使用数据可视化解决方案可视化在 Azure Cosmos DB Gremlin API 中存储的图数据

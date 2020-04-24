@@ -9,10 +9,10 @@ origin.date: 09/10/2019
 ms.date: 02/10/2020
 ms.author: v-yeche
 ms.openlocfilehash: 9b9cdc7213db8ae25dcdc8a6cace6b8b191c7f11
-ms.sourcegitcommit: 23dc63b6fea451f6a2bd4e8d0fbd7ed082ba0740
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "76980528"
 ---
 # <a name="azure-cosmos-db-gremlin-compatibility"></a>Azure Cosmos DB Gremlin 兼容性

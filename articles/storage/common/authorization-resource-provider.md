@@ -11,10 +11,10 @@ ms.author: v-jay
 ms.reviewer: cbrooks
 ms.subservice: common
 ms.openlocfilehash: 118982336b7698a07f5b676d7b6d2cf95133f1b3
-ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77068577"
 ---
 # <a name="use-the-azure-storage-resource-provider-to-access-management-resources"></a>使用 Azure 存储资源提供程序访问管理资源
@@ -49,7 +49,7 @@ Azure 提供用于授权调用管理操作的内置角色。 Azure 存储还提�
 |---------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------|
 | **所有者** | 可以管理所有存储资源和访问资源。  | 是，提供查看和重新生成存储帐户密钥的权限。 |
 | **参与者**  | 可以管理所有存储资源，但不能管理资源分配。 | 是，提供查看和重新生成存储帐户密钥的权限。 |
-| **读者** | 可以查看有关存储帐户的信息，但不能查看帐户密钥。 | 否。 |
+| **读取者** | 可以查看有关存储帐户的信息，但不能查看帐户密钥。 | 不是。 |
 | **存储帐户参与者** | 可以管理存储帐户、获取有关订阅的资源组和资源的信息，以及创建和管理订阅资源组部署。 | 是，提供查看和重新生成存储帐户密钥的权限。 |
 | **用户访问管理员** | 可以管理对存储帐户的访问权限。   | 是，允许安全主体将任何权限分配给自身和其他对象。 |
 | **虚拟机参与者** | 可以管理虚拟机，但不能管理虚拟机连接到的存储帐户。   | 是，提供查看和重新生成存储帐户密钥的权限。 |
@@ -71,12 +71,12 @@ Azure 还支持定义用于访问管理资源的自定义 RBAC 角色。 有关�
 
 ## <a name="azure-resource-manager-versus-classic-deployments"></a>Azure 资源管理器与经典部署
 
-Resource Manager 部署模型和经典部署模型代表两种不同的 Azure 解决方案部署和管理方式。 Azure 建议在创建新的存储帐户时使用 Azure 资源管理器部署模型。 Azure 还建议在可能的情况下，使用资源管理器模型重新创建现有的经典存储帐户。 尽管可以使用经典部署模型创建存储帐户，但经典模型较不灵活，且最终将被弃用。
+Resource Manager 和经典部署模型表示部署和管理 Azure 解决方案的两种不同方式。 Azure 建议在创建新的存储帐户时使用 Azure 资源管理器部署模型。 Azure 还建议在可能的情况下，使用资源管理器模型重新创建现有的经典存储帐户。 尽管可以使用经典部署模型创建存储帐户，但经典模型较不灵活，且最终将被弃用。
 
 有关 Azure 部署模型的详细信息，请参阅[资源管理器和经典部署](../../azure-resource-manager/management/deployment-models.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
-- [Azure Resource Manager 概述](/azure-resource-manager/resource-group-overview)
+- [Azure 资源管理器概述](/azure-resource-manager/resource-group-overview)
 - [什么是 Azure 资源的基于角色的访问控制 (RBAC)？](../../role-based-access-control/overview.md)
 - [Azure 存储资源提供程序的可伸缩性目标](scalability-targets-resource-provider.md)

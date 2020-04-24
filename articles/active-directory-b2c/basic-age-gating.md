@@ -11,10 +11,10 @@ ms.date: 02/04/2020
 ms.author: v-junlch
 ms.subservice: B2C
 ms.openlocfilehash: cd557c1807f0890d56f2e330fa8befd6f17de927
-ms.sourcegitcommit: 888cbc10f2348de401d4839a732586cf266883bf
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77028098"
 ---
 # <a name="enable-age-gating-in-azure-active-directory-b2c"></a>启用 Azure Active Directory B2C 中的年龄限制
@@ -48,7 +48,7 @@ Azure AD B2C 使用用户输入的信息来确定他们是否是未成年人。 
 | EG | 埃及 | 无 | 21 |
 | ES | 西班牙 | 13 | 18 |
 | FR | 法国 | 16 | 18 |
-| GB | 英国 | 13 | 18 |
+| GB | United Kingdom | 13 | 18 |
 | GR | 希腊 | 16 | 18 |
 | HR | 克罗地亚 | 16 | 18 |
 | HU | 匈牙利 | 16 | 18 |
@@ -59,7 +59,7 @@ Azure AD B2C 使用用户输入的信息来确定他们是否是未成年人。 
 | LU | 卢森堡 | 16 | 18 |
 | LV | 拉脱维亚 | 16 | 18 |
 | MT | 马耳他 | 16 | 18 |
-| 不可用 | 纳米比亚 | 无 | 21 |
+| NA | 纳米比亚 | 无 | 21 |
 | NL | 荷兰 | 16 | 18 |
 | PL | 波兰 | 13 | 18 |
 | PT | 葡萄牙 | 16 | 18 |
@@ -69,9 +69,9 @@ Azure AD B2C 使用用户输入的信息来确定他们是否是未成年人。 
 | SI | 斯洛文尼亚 | 16 | 18 |
 | SK | 斯洛伐克 | 16 | 18 |
 | TD | 乍得 | 无 | 21 |
-| TH | 泰国 | 无 | 20 个 |
-| TW | 台湾 | 无 | 20 个 |
-| US | 美国 | 13 | 18 |
+| TH | 泰国 | 无 | 20 |
+| TW | 中国台湾 | 无 | 20 |
+| 美国 | United States | 13 | 18 |
 
 ## <a name="age-gating-options"></a>年龄限制选项
 
@@ -103,7 +103,7 @@ Azure AD B2C 使用用户输入的信息来确定他们是否是未成年人。 
 1. 创建启用了年龄限制的用户流。
 2. 创建用户流后，在菜单中选择“属性”  。
 3. 在“年龄限制”部分，选择“已启用”   。
-4. 然后确定如何管理标识为未成年人的用户。 对于“注册或登录”，可以选择 `Allow minors to access your application` 或 `Block minors from accessing your application`  。 如果选择阻止未成年人，则选择 `Send a JSON back to the application` 或 `Show an error message`。
+4. 然后确定如何管理标识为未成年人的用户。 对于“注册或登录”，可以选择 **或**`Allow minors to access your application``Block minors from accessing your application`。 如果选择阻止未成年人，则选择 `Send a JSON back to the application` 或 `Show an error message`。
 
 <!-- Update_Description: link update -->
 

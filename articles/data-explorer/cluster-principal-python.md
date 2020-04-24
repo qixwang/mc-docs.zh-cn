@@ -9,10 +9,10 @@ ms.topic: conceptual
 origin.date: 02/03/2020
 ms.date: 02/17/2020
 ms.openlocfilehash: bef8f01bb3c8f8fc3287d14f35bc1adb206deda5
-ms.sourcegitcommit: 7c80405a6b48380814b4b414e9f8a5756c007880
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77067773"
 ---
 # <a name="add-cluster-principals-for-azure-data-explorer-by-using-python"></a>使用 Python 向 Azure 数据资源管理器添加群集主体
@@ -89,7 +89,7 @@ poller = kusto_management_client.cluster_principal_assignments.create_or_update(
 | cluster_name | mykustocluster  | 群集的名称。|
 | principal_assignment_name | *clusterPrincipalAssignment1* | 群集主体资源的名称。|
 | principal_id | *xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx* | 主体 ID，可以是用户电子邮件、应用程序 ID 或安全组名称。|
-| role | *AllDatabasesAdmin* | 群集主体的角色，可以是“AllDatabasesAdmin”或“AllDatabasesViewer”。|
+| 角色 (role) | *AllDatabasesAdmin* | 群集主体的角色，可以是“AllDatabasesAdmin”或“AllDatabasesViewer”。|
 | tenant_id_for_principal | *xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx* | 主体的租户 ID。|
 | principal_type | *应用* | 主体的类型，可以是“User”、“App”或“Group”|
 

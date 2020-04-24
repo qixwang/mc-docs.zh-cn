@@ -18,10 +18,10 @@ ms.author: v-jay
 ms.reviewer: misainat
 ms.lastreviewed: 11/05/2019
 ms.openlocfilehash: ce9b11bb4741b55ffd9c8166024d80da437f62c2
-ms.sourcegitcommit: 166549d64bbe28b28819d6046c93ee041f1d3bd7
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75737882"
 ---
 # <a name="troubleshoot-the-asdk"></a>排查 ASDK 问题
@@ -47,7 +47,7 @@ ms.locfileid: "75737882"
 如果在模板验证期间遇到错误消息，该消息指出系统不允许参数 'osProfile'，请确保对以下组件使用正确的 API 版本：
 
 - [计算](/azure-stack/user/azure-stack-profiles-azure-resource-manager-versions#microsoftcompute)
-- [网络](/azure-stack/user/azure-stack-profiles-azure-resource-manager-versions#microsoftnetwork)
+- [Network](/azure-stack/user/azure-stack-profiles-azure-resource-manager-versions#microsoftnetwork)
 
 若要将 VHD 从 Azure 复制到 Azure Stack，请使用 [AzCopy 7.3.0](/azure-stack/user/azure-stack-storage-transfer#download-and-install-azcopy)。 请联系供应商以解决映像本身的问题。 若要详细了解 Azure Stack 的 WALinuxAgent 要求，请参阅 [Azure LinuX 代理](../operator/azure-stack-linux.md#azure-linux-agent)。
 

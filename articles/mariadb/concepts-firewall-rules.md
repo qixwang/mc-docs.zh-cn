@@ -8,10 +8,10 @@ ms.topic: conceptual
 origin.date: 01/15/2020
 ms.date: 02/17/2020
 ms.openlocfilehash: b586d1b014b6522b29dbf5da3e66ff8a11e8c53c
-ms.sourcegitcommit: 3f9d780a22bb069402b107033f7de78b10f90dde
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77192474"
 ---
 # <a name="azure-database-for-mariadb-server-firewall-rules"></a>Azure Database for MariaDB 服务器防火墙规则

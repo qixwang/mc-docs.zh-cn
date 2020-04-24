@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure Cosmos DB 执行性能和规模测试
+title: 执行 Azure Cosmos DB 缩放和性能测试
 description: 了解如何执行 Azure Cosmos DB 缩放和性能测试。 然后可为高性能应用方案评估 Azure Cosmos DB 的功能。
 author: rockboyfor
 ms.service: cosmos-db
@@ -9,19 +9,19 @@ ms.date: 02/10/2020
 ms.author: v-yeche
 ms.custom: seodec18
 ms.openlocfilehash: e1c4749b712a489345284012effe203e718fa91b
-ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77028779"
 ---
-# <a name="performance-and-scale-testing-with-azure-cosmos-db"></a>使用 Azure Cosmos DB 执行性能和规模测试
+# <a name="performance-and-scale-testing-with-azure-cosmos-db"></a>执行 Azure Cosmos DB 缩放和性能测试
 
 性能和规模测试是应用程序开发过程中的关键步骤。 对许多应用程序而言，数据库层对整体性能和可伸缩性有重大影响。 因此，它是性能测试的关键组成部分。 [Azure Cosmos DB](https://www.azure.cn/home/features/cosmos-db/) 专为弹性缩放和可预测性能而构建。 这些功能使它非常适合需要高性能数据库层的应用程序。 
 
 要对 Azure Cosmos DB 工作负载实施性能测试的开发人员可将本文作为参考。 此外，本文还可用于评估 Azure Cosmos DB 是否适用于高性能应用程序方案。 本文重点演示隔离的数据库性能测试，但也提供适用于生产应用程序的最佳实践。
 
-阅读本文后，可以回答以下问题： 
+阅读本文之后，能够回答以下问题： 
 
 * 在哪里可以找到可用于 Azure Cosmos DB 性能测试的示例 .NET 客户端应用程序？ 
 * 如何从客户端应用程序实现 Azure Cosmos DB 的高吞吐量级别？
@@ -93,12 +93,12 @@ ms.locfileid: "77028779"
 
 <!-- Support ticket in [Azure Support](https://support.azure.cn/zh-cn/support/support-azure/) -->
 
-应用处于运行状态后，可以尝试不同的[编制索引策略](index-policy.md)和[一致性级别](consistency-levels.md)，以了解它们对吞吐量和延迟的影响。 用户也可以查看源代码，并在自己的测试套件或生产应用程序中实施类似的配置。
+应用处于运行状态后，可以尝试不同的[编制索引策略](index-policy.md)和[一致性级别](consistency-levels.md)，以了解它们对吞吐量和延迟的影响。 也可以查看源代码，并在自己的测试套件或生产应用程序中实施类似的配置。
 
 ## <a name="next-steps"></a>后续步骤
 本文介绍了如何使用 .NET 控制台应用对 Azure Cosmos DB 执行性能和缩放测试。 有关详细信息，请参阅以下文章：
 
-* [Azure Cosmos DB performance testing sample](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/documentdb-benchmark)（Azure Cosmos DB 性能测试示例）
+* [Azure Cosmos DB 性能测试示例](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/documentdb-benchmark)
 * [用于提高 Azure Cosmos DB 性能的客户端配置选项](performance-tips.md)
 * [Azure Cosmos DB 中的服务器端分区](partition-data.md)
 

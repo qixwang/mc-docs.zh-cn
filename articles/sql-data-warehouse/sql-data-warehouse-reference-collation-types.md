@@ -12,10 +12,10 @@ ms.author: v-jay
 ms.reviewer: jrasnick
 ms.custom: seo-lt-2019
 ms.openlocfilehash: 11c880f260e74f44ef436e25be76df2423dddc20
-ms.sourcegitcommit: 6e47d840eb0ac773067723254e60dd318272d73e
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75964896"
 ---
 # <a name="database-collation-support-for-azure-sql-data-warehouse"></a>Azure SQL 数据仓库的数据库排序规则支持。

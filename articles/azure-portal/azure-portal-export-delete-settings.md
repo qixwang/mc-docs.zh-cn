@@ -12,10 +12,10 @@ ms.custom: ''
 manager: mtillman
 ms.author: v-tawe
 ms.openlocfilehash: 97369b52ffc60297da8711ffc2345db54023021d
-ms.sourcegitcommit: 888cbc10f2348de401d4839a732586cf266883bf
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77028202"
 ---
 # <a name="export-or-delete-user-settings"></a>导出或删除用户设置
@@ -32,7 +32,7 @@ ms.locfileid: "77028202"
 
 ## <a name="export-or-delete-your-portal-settings"></a>导出或删除门户设置
 
-1. 登录到 [Azure 门户](https://portal.azure.cn)。
+1. 登录 [Azure 门户](https://portal.azure.cn)。
 
 1. 在门户的标题中，选择![“设置”图标](media/azure-portal-export-delete-settings/settings-icon.png)“设置”  。
 
@@ -54,5 +54,5 @@ ms.locfileid: "77028202"
 
 ## <a name="next-steps"></a>后续步骤
 
-* [使用基于角色的访问控制来共享 Azure 仪表板](azure-portal-dashboard-share-access.md)
+* [通过使用基于角色的访问控制来共享 Azure 仪表板](azure-portal-dashboard-share-access.md)
 * [添加、删除和重新排列收藏夹](azure-portal-add-remove-sort-favorites.md)

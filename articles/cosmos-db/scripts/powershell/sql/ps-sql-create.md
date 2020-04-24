@@ -9,13 +9,13 @@ origin.date: 09/20/2019
 ms.date: 01/20/2020
 ms.author: v-yeche
 ms.openlocfilehash: 1e1acc4ef99a5826a1a03a2b709f7d4db05175f1
-ms.sourcegitcommit: 304861faf39689348962127b8b56db8082ece2ef
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "76270087"
 ---
-# <a name="create-a-database-and-container-for-azure-cosmos-db---sql-core-api"></a>为 Azure Cosmos DB 创建数据库和容器 - SQL (Core) API
+# <a name="create-a-database-and-container-for-azure-cosmos-db---sql-core-api"></a>创建 Azure Cosmos DB 的数据库和容器 - SQL (Core) API
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
@@ -125,7 +125,7 @@ Remove-AzResourceGroup -ResourceGroupName "myResourceGroup"
 
 此脚本使用以下命令。 表中的每条命令均链接到特定于命令的文档。
 
-| 命令 | 注释 |
+| Command | 说明 |
 |---|---|
 |**Azure 资源**| |
 | [New-AzResource](https://docs.microsoft.com/powershell/module/az.resources/new-azresource) | 创建资源。 |

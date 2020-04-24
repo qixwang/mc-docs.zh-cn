@@ -16,10 +16,10 @@ origin.date: 08/19/2019
 ms.date: 01/20/2020
 ms.author: v-jay
 ms.openlocfilehash: a22f25c12a068c62a01a625bb9c776ffac76f7f1
-ms.sourcegitcommit: 779d674e865b23ae417eb492efca7508675b8ba6
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75939782"
 ---
 # <a name="smooth-streaming-protocol-ms-sstr-amendment-for-hevc"></a>HEVC 的平滑流式处理协议 (MS-SSTR) 修正 

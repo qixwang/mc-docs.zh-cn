@@ -6,10 +6,10 @@ origin.date: 07/20/2018
 ms.date: 01/13/2020
 ms.author: v-yeche
 ms.openlocfilehash: f0c0ba997799eb1d3491179f59f9d25510f0a397
-ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75742394"
 ---
 # <a name="dns-service-in-azure-service-fabric"></a>Azure Service Fabric 中的 DNS 服务
@@ -17,7 +17,7 @@ DNS 服务是可选的系统服务，可以在群集中启用，用于发现使�
 
 许多服务（特别是容器化服务）可以通过现存的 URL 来寻址。 能够使用标准 DNS 协议（而不是 Service Fabric 命名服务协议）解析这些名称是很有必要的。 借助 DNS 服务，可将 DNS 名称映射到服务名称，进而解析终结点 IP 地址。 此类功能可在不同的平台之间保持容器化服务的可移植性，并更方便地利用“直接迁移”方案，因为它可以让你使用现有的服务 URL，而无需重新编写代码来利用命名服务。 
 
-DNS 服务将 DNS 名称映射到服务名称，命名服务将服务名称进行解析并将其返回服务终结点。 在创建时提供服务的 DNS 名称。 下图显示了如何对无状态服务运行 DNS 服务。
+DNS 服务将 DNS 名称映射到服务名称，命名服务将服务名称进行解析并将其发送回服务终结点。 在创建时提供服务的 DNS 名称。 下图显示了如何对无状态服务运行 DNS 服务。
 
 ![服务终结点](./media/service-fabric-dnsservice/stateless-dns.png)
 
@@ -31,24 +31,24 @@ DNS 服务将 DNS 名称映射到服务名称，命名服务将服务名称进�
 
 ![有状态服务终结点](./media/service-fabric-dnsservice/stateful-dns.png)
 
-DNS 服务不支持动态端口。 若要解析在动态端口上公开的服务，请使用[反向代理服务](./service-fabric-reverseproxy.md)。
+DNS 服务不支持动态端口。 若要解析动态端口上公开的服务，请使用[反向代理服务](./service-fabric-reverseproxy.md)。
 
 ## <a name="enabling-the-dns-service"></a>启用 DNS 服务
 > [!NOTE]
 > 在 Linux 上尚不支持用于 Service Fabric 服务的 DNS 服务。
 
-使用门户创建群集时，默认情况下，会在“群集配置”菜单的“包括 DNS 服务”复选框中启用 DNS 服务   ：
+使用门户创建群集时，默认情况下，在“群集配置”菜单的“包括 DNS 服务”复选框中启用 DNS 服务   ：
 
 ![通过门户启用 DNS 服务](./media/service-fabric-dnsservice/enable-dns-service.png)
 
 如果不使用门户创建群集或者要更新现有群集，则需要在模板中启用 DNS 服务：
 
 - 若要部署新的群集，可以使用[示例模板](https://github.com/Azure/azure-quickstart-templates/tree/master/service-fabric-secure-cluster-5-node-1-nodetype)或创建自己的资源管理器模板。 
-- 若要更新现有群集，可以导航到门户的群集资源组并单击“自动化脚本”，使用反映群集和组中其他资源的当前状态的模板  。 若要了解详细信息，请参阅[从资源组导出模板](/azure-resource-manager/resource-manager-export-template)。
+- 若要更新现有群集，可以导航到门户的群集资源组并单击“自动化脚本”，使用反映群集和组中其他资源当前状态的模板  。 若要了解详细信息，请参阅[从资源组导出模板](/azure-resource-manager/resource-manager-export-template)。
 
 有了模板后，可以通过以下步骤启用 DNS 服务：
 
-1. 检查 `Microsoft.ServiceFabric/clusters` 资源的 `apiversion` 是否设置为 `2017-07-01-preview` 或更高，如果不是，请按以下示例所示进行更新：
+1. 检查 `apiversion` 资源的 `2017-07-01-preview` 是否设置为 `Microsoft.ServiceFabric/clusters` 或更高，如果不是，请按以下示例所示进行更新：
 
     ```json
     {
@@ -62,7 +62,7 @@ DNS 服务不支持动态端口。 若要解析在动态端口上公开的服务
 
 2. 现在，通过以下方式之一启用 DNS 服务：
 
-    - 若要启用采用默认设置的 DNS 服务，请将其添加到 `properties` 节中的 `addonFeatures` 节，如以下示例所示：
+    - 若要启用采用默认设置的 DNS 服务，请将其添加到 `addonFeatures` 节中的 `properties` 节，如以下示例所示：
 
         ```json
         "properties": {
@@ -74,7 +74,7 @@ DNS 服务不支持动态端口。 若要解析在动态端口上公开的服务
           ...
         }
         ```
-    - 若要启用采用非默认设置的服务，请将 `DnsService` 节添加到 `properties` 节中的 `fabricSettings` 节。 在这种情况下，不需要将 DnsService 添加到 `addonFeatures`。 若要详细了解可为 DNS 服务设置的属性，请参阅 [DNS 服务设置](./service-fabric-cluster-fabric-settings.md#dnsservice)。
+    - 若要启用采用非默认设置的服务，请将 `DnsService` 节添加到 `fabricSettings` 节中的 `properties` 节。 在这种情况下，不需要将 DnsService 添加到 `addonFeatures`。 若要详细了解可为 DNS 服务设置的属性，请参阅 [DNS 服务设置](./service-fabric-cluster-fabric-settings.md#dnsservice)。
 
         ```json
            "properties": {
@@ -115,7 +115,7 @@ DNS 服务不支持动态端口。 若要解析在动态端口上公开的服务
 
 服务的 DNS 名称可在整个群集中解析，因此，请务必确保 DNS 名称在整个群集中的唯一性。 
 
-强烈建议使用 `<ServiceDnsName>.<AppInstanceName>` 命名方案；例如 `service1.application1`。 如果使用 Docker Compose 部署来应用程序，则会自动为服务分配使用此命名方案的 DNS 名称。
+强烈建议使用 `<ServiceDnsName>.<AppInstanceName>` 命名方案；例如 `service1.application1`。 如果使用 Docker Compose 部署应用程序，服务会自动分配使用此命名方案的 DNS 名称。
 
 ### <a name="setting-the-dns-name-for-a-default-service-in-the-applicationmanifestxml"></a>在 ApplicationManifest.xml 中为默认服务设置 DNS 名称
 在 Visual Studio 中或所选的编辑器中打开项目，并打开 ApplicationManifest.xml 文件。 转到默认服务部分，为每个服务添加 `ServiceDnsName` 属性。 以下示例说明如何将服务的 DNS 名称设置为 `service1.application1`
@@ -159,7 +159,7 @@ New-ServiceFabricService `
 ```
 
 <a name="making-dns-queries-on-a-stateful-service-partition"></a>
-## <a name="preview-making-dns-queries-on-a-stateful-service-partition"></a>[预览版] 针对有状态服务分区发出 DNS 查询
+## <a name="preview-making-dns-queries-on-a-stateful-service-partition"></a><a name="preview-making-dns-queries-on-a-stateful-service-partition"></a>[预览版] 针对有状态服务分区发出 DNS 查询
 从 Service Fabric 版本 6.3 开始，Service Fabric DNS 服务支持针对服务分区的查询。
 
 对于 DNS 查询中使用的分区，适用以下命名限制：

@@ -16,10 +16,10 @@ origin.date: 02/01/2019
 ms.date: 01/13/2020
 ms.author: v-yeche
 ms.openlocfilehash: 1f85c499ff606a555d983ea476f87fa7a620cc10
-ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75742487"
 ---
 # <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>在 Service Fabric 群集中修补 Windows 操作系统
@@ -62,7 +62,7 @@ POA 由以下子组件构成：
 > [!NOTE]
 > POA 使用 Service Fabric 的修复管理器服务来禁用/启用节点和执行运行状况检查。 POA 创建的修复任务跟踪每个节点的 Windows 更新进度。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 > [!NOTE]
 > 所需的最低 .NET Framework 版本为 4.6。

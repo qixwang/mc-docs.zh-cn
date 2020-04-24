@@ -11,17 +11,17 @@ origin.date: 06/14/2019
 ms.date: 01/27/2020
 ms.author: v-tawe
 ms.openlocfilehash: c4463053737b32cd90b51fe962d14eae0581cadd
-ms.sourcegitcommit: 94e1c9621b8f81a7078f1412b3a73281d0a8668b
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "76123219"
 ---
 # <a name="enable-diagnostic-logging-for-azure-cognitive-services"></a>为 Azure 认知服务启用诊断日志记录
 
 本指南逐步说明如何为 Azure 认知服务启用诊断日志记录。 这些日志提供频繁生成的有关资源操作的丰富数据用于识别问题和调试。 在继续之前，你必须拥有至少订阅了一个认知服务（例如[语音服务](https://docs.azure.cn/cognitive-services/speech-service/overview)或 [LUIS](/cognitive-services/luis/what-is-luis)）的 Azure 帐户。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要启用诊断日志记录，需要指定某个位置用于存储日志数据。 本教程使用 Azure 存储和 Log Analytics。
 

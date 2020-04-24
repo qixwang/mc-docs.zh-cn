@@ -11,10 +11,10 @@ ms.date: 02/04/2020
 ms.author: v-junlch
 ms.subservice: B2C
 ms.openlocfilehash: 288c18b0ddc1982608c117adbcc6c5082e7b090c
-ms.sourcegitcommit: 888cbc10f2348de401d4839a732586cf266883bf
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77028305"
 ---
 # <a name="overview-of-tokens-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 中的令牌概述
@@ -52,7 +52,7 @@ ID 令牌中的声明不按任何特定顺序返回。 新的声明可以在任�
 
 | 名称 | 声明 | 示例值 | 说明 |
 | ---- | ----- | ------------- | ----------- |
-| 目标受众 | `aud` | `90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6` | 标识令牌的目标接收方。 对于 Azure AD B2C，受众是在应用程序 ID。 应用程序应该验证此值并拒绝不匹配的令牌。 受众是资源的同义词。 |
+| 读者 | `aud` | `90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6` | 标识令牌的目标接收方。 对于 Azure AD B2C，受众是在应用程序 ID。 应用程序应该验证此值并拒绝不匹配的令牌。 受众是资源的同义词。 |
 | 颁发者 | `iss` |`https://{tenant}.b2clogin.cn/775527ff-9a37-4307-8b3d-cc311f58d925/v2.0/` | 标识构造并返回令牌的安全令牌服务 (STS)。 它还标识在其中进行用户身份验证的目录。 应用程序应该验证颁发者声明，以确保令牌来自适当的终结点。 |
 | 颁发时间 | `iat` | `1438535543` | 颁发令牌的时间，以纪元时间表示。 |
 | 过期时间 | `exp` | `1438539443` | 令牌失效的时间，以纪元时间表示。 应用程序应该使用此声明来验证令牌生存期的有效性。 |
@@ -61,11 +61,11 @@ ID 令牌中的声明不按任何特定顺序返回。 新的声明可以在任�
 | 代码哈希 | `c_hash` | `SGCPtt01wxwfgnYZy2VJtQ` | 仅当令牌随 OAuth 2.0 授权代码一起颁发时，代码哈希才包含在 ID 令牌中。 代码哈希可用于验证授权代码的真实性。 有关如何执行此验证的详细信息，请参阅 [OpenID Connect 规范](https://openid.net/specs/openid-connect-core-1_0.html)。  |
 | 访问令牌哈希 | `at_hash` | `SGCPtt01wxwfgnYZy2VJtQ` | 仅当令牌随 OAuth 2.0 访问令牌一起颁发时，访问令牌哈希才包含在 ID 令牌中。 访问令牌哈希可用于验证访问令牌的真实性。 有关如何执行此验证的详细信息，请参阅 [OpenID Connect 规范](https://openid.net/specs/openid-connect-core-1_0.html)  |
 | Nonce | `nonce` | `12345` | Nonce 是缓和令牌重放攻击的策略。 应用程序可通过使用 `nonce` 查询参数，在授权请求中指定 nonce。 在请求中提供的值将仅在 ID 令牌的 `nonce` 声明中发出（未经修改）。 此声明可让应用程序根据请求中指定的值验证该值。 应用程序应该在 ID 令牌验证过程中执行这项验证。 |
-| 使用者 | `sub` | `884408e1-2918-4cz0-b12d-3aa027d7563b` | 令牌针对其断言信息的主体，例如应用程序的用户。 此值固定不变，无法重新分配或重复使用。 可以使用它来安全地执行授权检查，例如，当使用令牌访问资源时。 默认情况下，将使用目录中用户的对象 ID 填充使用者声明。 |
+| 主题 | `sub` | `884408e1-2918-4cz0-b12d-3aa027d7563b` | 令牌针对其断言信息的主体，例如应用程序的用户。 此值是固定不变的，无法重新分配或重复使用。 可使用它安全地执行授权检查，例如，使用令牌访问资源时。 默认情况下，将使用目录中用户的对象 ID 填充使用者声明。 |
 | 身份验证上下文类引用 | `acr` | 不适用 | 仅与旧策略配合使用。 |
 | 信任框架策略 | `tfp` | `b2c_1_signupsignin1` | 用于获取 ID 令牌的策略名称。 |
 | 身份验证时间 | `auth_time` | `1438535543` | 用户最后一次输入凭据的时间，以纪元时间表示。 该身份验证是全新登录、单一登录 (SSO) 会话还是其他登录类型之间没有区别。 `auth_time` 是应用程序（或用户）上次针对 Azure AD B2C 发起身份验证尝试的时间。 不区分用于身份验证的方法。 |
-| 作用域 | `scp` | `Read`| 授予访问令牌对资源的权限。 多个授予的权限以空格分隔。 |
+| 范围 | `scp` | `Read`| 授予访问令牌对资源的权限。 多个授予的权限以空格分隔。 |
 | 授权方 | `azp` | `975251ed-e4f5-4efd-abcb-5f1a8f566ab7` | 发起请求的客户端应用程序的**应用程序 ID**。 |
 
 ## <a name="configuration"></a>配置
@@ -89,11 +89,11 @@ ID 令牌中的声明不按任何特定顺序返回。 新的声明可以在任�
 
 以下属性用于[管理令牌兼容性](configure-tokens.md)：
 
-- **颁发者 (iss) 声明** - 此属性标识颁发令牌的 Azure AD B2C 租户。 默认值为 `https://<domain>/{B2C tenant GUID}/v2.0/`。 `https://<domain>/tfp/{B2C tenant GUID}/{Policy ID}/v2.0/` 值包含令牌请求中使用的 Azure AD B2C 租户和用户流的 ID。 如果应用程序或库需要 Azure AD B2C 才能符合 [OpenID Connect Discovery 1.0 规范](https://openid.net/specs/openid-connect-discovery-1_0.html)，请使用此值。
+- **颁发者 (iss) 声明** - 此属性标识颁发令牌的 Azure AD B2C 租户。 默认值是 `https://<domain>/{B2C tenant GUID}/v2.0/`。 `https://<domain>/tfp/{B2C tenant GUID}/{Policy ID}/v2.0/` 值包含令牌请求中使用的 Azure AD B2C 租户和用户流的 ID。 如果应用程序或库需要 Azure AD B2C 才能符合 [OpenID Connect Discovery 1.0 规范](https://openid.net/specs/openid-connect-discovery-1_0.html)，请使用此值。
 
 - **使用者 (sub) 声明** - 此属性标识令牌断言其信息的实体。 默认值为 **ObjectID**，即在令牌的 `sub` 声明中填充用户的对象 ID。 **Not supported** 值仅供用于实现后向兼容。 建议尽快改用 **ObjectID**。
 
-- **表示策略 ID 的声明** - 此属性标识要在其中填充令牌请求中使用的策略名称的声明类型。 默认值为 `tfp`。 `acr` 值仅供用于实现后向兼容。
+- **表示策略 ID 的声明** - 此属性标识要在其中填充令牌请求中使用的策略名称的声明类型。 默认值是 `tfp`。 `acr` 值仅供用于实现后向兼容。
 
 ## <a name="pass-through"></a>直通
 
@@ -128,7 +128,7 @@ https://contoso.b2clogin.cn/contoso.partner.onmschina.cn/discovery/v2.0/keys?p=b
 ```
 位于此 URL 的 JSON 文档包含将在特定时间点使用的所有公钥信息。 应用可以使用 JWT 标头中的 `kid` 声明，选择用于签名特定令牌的 JSON 文档中的公钥。 然后，可以使用正确的公钥和指定的算法来执行签名验证。
 
-`contoso.partner.onmschina.cn` 租户中的 `B2C_1_signupsignin1` 策略的元数据文档位于：
+`B2C_1_signupsignin1` 租户中的 `contoso.partner.onmschina.cn` 策略的元数据文档位于：
 
 ```
 https://contoso.b2clogin.cn/contoso.partner.onmschina.cn/v2.0/.well-known/openid-configuration?p=b2c_1_signupsignin1

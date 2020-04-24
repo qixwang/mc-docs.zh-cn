@@ -10,10 +10,10 @@ origin.date: 02/17/2020
 ms.author: v-tawe
 ms.custom: include file
 ms.openlocfilehash: 076a763feda549406f8f452dea6efce77c5961ed
-ms.sourcegitcommit: ee2a3063185cd4c5dc24901366dbb726119d045d
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "76979349"
 ---
 ## <a name="what-happens-to-my-app-during-deployment"></a>部署期间我的应用会发生什么情况？

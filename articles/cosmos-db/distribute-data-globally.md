@@ -8,10 +8,10 @@ ms.topic: conceptual
 origin.date: 07/23/2019
 ms.date: 02/10/2020
 ms.openlocfilehash: 72274746d8fa8274e97afa7bb12269ec3b0b1bfc
-ms.sourcegitcommit: 23dc63b6fea451f6a2bd4e8d0fbd7ed082ba0740
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "76980537"
 ---
 # <a name="multiple-region-data-distribution-with-azure-cosmos-db---overview"></a>使用 Azure Cosmos DB 多区域分配数据 - 概述
@@ -52,7 +52,7 @@ Azure Cosmos DB 是一个多区域分布式数据库服务，旨在提供低延�
 
 **从多个明确定义的一致性模型中进行选择。** Azure Cosmos 数据库复制协议提供了五种明确定义、实用且直观的一致性模型。 每个模型在一致性与性能之间进行了权衡。 使用这些一致性模型可以轻松生成多区域分布式应用程序。
 
-## <a name="Next Steps"></a>后续步骤
+## <a name="next-steps"></a><a name="Next Steps"></a>后续步骤
 
 阅读以下文章详细了解多区域分布：
 

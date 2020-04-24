@@ -11,10 +11,10 @@ ms.reviewer: sashan, moslake, carlrab
 origin.date: 11/13/2019
 ms.date: 02/17/2020
 ms.openlocfilehash: b6c3437c92ed8c9a39a2075bb1132d169d5ce788
-ms.sourcegitcommit: 3f9d780a22bb069402b107033f7de78b10f90dde
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77156825"
 ---
 # <a name="azure-hybrid-benefit"></a>Azure 混合权益

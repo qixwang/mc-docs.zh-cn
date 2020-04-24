@@ -6,15 +6,15 @@ origin.date: 12/06/2017
 ms.author: v-yeche
 ms.date: 01/06/2020
 ms.openlocfilehash: 16b07f83a3965578fa76afcd78bfeef78307fae0
-ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75741886"
 ---
 # <a name="host-a-nodejs-application-on-azure-service-fabric"></a>在 Azure Service Fabric 上托管 Node.js 应用程序
 
-本快速入门教程帮助将现有的应用程序（本示例中为 Node.js）部署到在 Azure 上运行的 Service Fabric 群集。
+本快速入门教程帮助你将现有的应用程序（本示例中为 Node.js）部署到在 Azure 上运行的 Service Fabric 群集。
 
 ## <a name="prerequisites"></a>必备条件
 
@@ -26,24 +26,24 @@ ms.locfileid: "75741886"
 
 ## <a name="create-the-service"></a>创建服务
 
-以**管理员**身份启动 Visual Studio。
+以管理员身份启动 Visual Studio。 
 
 使用 `CTRL`+`SHIFT`+`N` 创建一个项目
 
 在“新建项目”对话框中，选择“云”>“Service Fabric 应用程序”。  
 
-将应用程序命名为“MyGuestApp”，并按“确定”。  
+将应用程序命名为“MyGuestApp”，然后按“确定”。  
 
 >[!IMPORTANT]
->Node.js 可能会轻松突破针对 Windows 路径的 260 字符限制。 请对项目本身使用短路径，例如 **c:\code\svc1**。 （可选）可以按照 **[这些说明](https://stackoverflow.com/a/41687101/1664231)** 在 Windows 10 中启用长文件路径。
+>Node.js 可能会轻松突破针对 Windows 路径的 260 字符限制。 请对项目本身使用短路径，例如  c:\code\svc1。 （可选）可以按照 **[这些说明](https://stackoverflow.com/a/41687101/1664231)** 在 Windows 10 中启用长文件路径。
 
 ![Visual Studio 中的新建项目对话框][new-project]
 
 可以在下一对话框中创建任何类型的 Service Fabric 服务。 对于本快速入门教程，请选择“来宾可执行文件”。 
 
-将服务命名为“MyGuestService”，并将右侧的选项设置为以下值： 
+将服务命名为“MyGuestService”，然后将右侧的选项设置为以下值： 
 
-| 设置                   | Value |
+| 设置                   | 值 |
 | ------------------------- | ------ |
 | 代码包文件夹       | _&lt;包含 Node.js 应用的文件夹&gt;_ |
 | 代码包行为     | 将文件夹内容复制到项目 |
@@ -59,22 +59,22 @@ Visual Studio 会创建应用程序项目和执行组件服务项目，并在解
 
 应用程序项目 (**MyGuestApp**) 不直接包含任何代码。 该项目引用一组服务项目。 此外，它还包含三种其他类型的内容：
 
-* **发布配置文件**  
+* 发布配置文件   
 针对不同环境的工具首选项。
 
-* **脚本**  
+* 脚本   
 用于部署/升级应用程序的 PowerShell 脚本。
 
-* **应用程序定义**  
-包括 *ApplicationPackageRoot* 下的应用程序清单。 关联应用程序参数文件位于 *ApplicationParameters* 下，它们定义应用程序并使你可以专门为给定环境对其进行配置。
+* 应用程序定义   
+包括 ApplicationPackageRoot 下的应用程序清单。  关联应用程序参数文件位于 *ApplicationParameters* 下，它们定义应用程序并使你可以专门为给定环境对其进行配置。
 
 有关服务项目的内容概述，请参阅 [Reliable Services 入门](service-fabric-reliable-services-quick-start.md)。
 
 ## <a name="set-up-networking"></a>设置网络
 
-要部署的示例 Node.js 应用使用端口 **80**，我们需告知 Service Fabric：我们需公开该端口。
+要部署的示例 Node.js 应用使用端口 80  ，我们需告知 Service Fabric：我们需公开该端口。
 
-打开项目中的 **ServiceManifest.xml** 文件。 在清单的底部，有一个已定义了条目的 `<Resources> \ <Endpoints>`。 修改该条目，添加 `Port`、`Protocol` 和 `Type`。 
+打开项目中的 ServiceManifest.xml  文件。 在清单的底部，有一个已定义了条目的 `<Resources> \ <Endpoints>`。 修改该条目，添加 `Port`、`Protocol` 和 `Type`。 
 
 ```xml
   <Resources>
@@ -96,19 +96,19 @@ Visual Studio 会创建应用程序项目和执行组件服务项目，并在解
 
 ![用于 Service Fabric 服务的“发布到 Azure”对话框][publish]
 
-选择 **PublishProfiles\Cloud.xml** 目标配置文件。
+选择 PublishProfiles\Cloud.xml  目标配置文件。
 
 选择要将内容部署到其中的 Azure 帐户（如果尚未这样做）。 如果还没有该帐户，请[注册一个][create-account]。
 
-在“连接终结点”下，选择要将内容部署到其中的 Service Fabric 群集。  如果没有该群集，请选择“&lt;新建群集...&gt;”  ，此时会打开通往 Azure 门户的 Web 浏览器窗口。 有关详细信息，请参阅[在门户中创建群集](service-fabric-cluster-creation-via-portal.md#create-cluster-in-the-azure-portal)。 
+在“连接终结点”下，选择要将内容部署到其中的 Service Fabric 群集。  如果没有该群集，请选择“**新建群集...&lt;”&gt;** ，此时会打开通往 Azure 门户的 Web 浏览器窗口。 有关详细信息，请参阅[在门户中创建群集](service-fabric-cluster-creation-via-portal.md#create-cluster-in-the-azure-portal)。 
 
 创建 Service Fabric 群集时，请确保将“自定义终结点”设置设为“80”。  
 
 ![终结点为自定义的 Service Fabric 节点类型配置][custom-endpoint]
 
-创建新的 Service Fabric 群集需要一段时间来完成。 创建完以后，请回到发布对话框，并选择 **&lt;刷新&gt;** 。 新群集列在下拉列表框中；请将其选中。
+创建新的 Service Fabric 群集需要一段时间来完成。 创建完以后，请回到发布对话框，然后选择 **&lt;刷新&gt;** 。 新群集列在下拉列表框中；请将其选中。
 
-按“发布”  ，并等待部署完成。
+按“发布”  ，然后等待部署完成。
 
 这可能需要几分钟的时间。 完成后，可能还需要等待几分钟，该应用程序才会完全可用。
 
@@ -118,7 +118,7 @@ Visual Studio 会创建应用程序项目和执行组件服务项目，并在解
 
 首先，打开 Azure 门户并找到 Service Fabric 服务。
 
-检查服务地址的概览边栏选项卡。 使用“客户端连接终结点”  属性中的域名。 例如，`http://mysvcfab1.chinanorth2.cloudapp.chinacloudapi.cn`。
+检查服务地址的概览边栏选项卡。 使用“客户端连接终结点”  属性中的域名。 例如，`http://mysvcfab1.chinanorth2.cloudapp.chinacloudapi.cn` 。
 
 ![Azure 门户中的 Service Fabric 概览边栏选项卡][overview]
 

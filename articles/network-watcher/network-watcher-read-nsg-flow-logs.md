@@ -14,10 +14,10 @@ origin.date: 09/10/2018
 ms.date: 04/12/2019
 ms.author: v-lingwu
 ms.openlocfilehash: 0dcdf71b6dba83bb65a26f56acf88b2f9b7ff1d8
-ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77028878"
 ---
 # <a name="read-nsg-flow-logs"></a>读取 NSG 流日志

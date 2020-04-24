@@ -9,10 +9,10 @@ ms.date: 01/20/2020
 ms.author: v-yeche
 ms.reviewer: sngun
 ms.openlocfilehash: 77b7d77bc825a504c03d580988cf491017c0feb9
-ms.sourcegitcommit: 304861faf39689348962127b8b56db8082ece2ef
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "76270013"
 ---
 # <a name="conflict-types-and-resolution-policies"></a>冲突类型和解决策略

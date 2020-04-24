@@ -9,10 +9,10 @@ origin.date: 12/02/2019
 ms.date: 02/10/2020
 ms.custom: seodec18
 ms.openlocfilehash: 6a7b1a24e05c73a99baa0e71f116bc9dbad62f86
-ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77068327"
 ---
 # <a name="azure-cosmos-db-whitepapers"></a>Azure Cosmos DB 白皮书

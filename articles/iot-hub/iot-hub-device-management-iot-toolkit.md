@@ -10,10 +10,10 @@ origin.date: 01/04/2019
 ms.date: 01/27/2020
 ms.author: v-yiso
 ms.openlocfilehash: 61cdb26ad0941af40c30fcf3037bc1d005208d25
-ms.sourcegitcommit: a7a199c76ef4475b54edd7d5a7edb7b91ea8dff7
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "76966554"
 ---
 # <a name="use-azure-iot-tools-for-visual-studio-code-for-azure-iot-hub-device-management"></a>使用适用于 Visual Studio Code 的 Azure IoT 工具进行 Azure IoT 中心设备管理
@@ -45,7 +45,7 @@ ms.locfileid: "76966554"
 
 使用各种管理选项运行适用于 Visual Studio Code 的 Azure IoT 工具。
 
-## <a name="what-you-need"></a>需要什么
+## <a name="what-you-need"></a>所需条件
 
 * 一个有效的 Azure 订阅。
 * 已在订阅中创建一个 Azure IoT 中心。

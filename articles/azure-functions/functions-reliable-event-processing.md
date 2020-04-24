@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 01/13/2020
 ms.author: v-junlch
 ms.openlocfilehash: de57e5d29542c93f9a4363e61627f75962827a28
-ms.sourcegitcommit: 48d51745ca18de7fa05b77501b4a9bf16cea2068
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "76116836"
 ---
 # <a name="azure-functions-reliable-event-processing"></a>Azure Functions 可靠事件处理

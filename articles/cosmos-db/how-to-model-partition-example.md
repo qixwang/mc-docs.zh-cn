@@ -8,10 +8,10 @@ origin.date: 05/23/2019
 ms.date: 02/10/2020
 ms.author: v-yeche
 ms.openlocfilehash: c23353e58810b515096286543b50591d5137cc89
-ms.sourcegitcommit: 23dc63b6fea451f6a2bd4e8d0fbd7ed082ba0740
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "76980511"
 ---
 # <a name="how-to-model-and-partition-data-on-azure-cosmos-db-using-a-real-world-example"></a>如何使用真实示例为 Azure Cosmos DB 中的数据建模和分区
@@ -411,7 +411,7 @@ function updateUsernames(userId, username) {
 
 1. 此请求必须根据 `userId` 进行筛选，因为我们需要提取特定用户的所有帖子 
 1. 它的性能之所以不佳，是因为它是针对 `posts` 容器执行的，而该容器的分区依据不是 `userId`
-1. 明白地讲，我们需要针对某个容器执行此请求来解决性能问题，该容器的分区依据为 `userId` 
+1. 明白地讲，我们需要针对某个容器执行此请求来解决性能问题，该容器的分区依据为 `userId`
 1. 正好我们已有这样一个容器：`users` 容器！
 
 因此，我们通过将整个帖子复制到 `users` 容器，来引入第二级反规范化。 这样，我们便可以有效地获取只按一个不同维度分区的帖子副本，从而可以更有效地按帖子的 `userId` 来检索帖子。

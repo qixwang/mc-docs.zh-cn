@@ -14,10 +14,10 @@ ms.reviewer: genemi, amagarwa, maboja, jrasnick, vanto
 origin.date: 05/14/2019
 ms.date: 12/16/2019
 ms.openlocfilehash: 1be3f89fe69f6a64e4c32fd5e7d3a348dd3fb8ef
-ms.sourcegitcommit: d7b86a424b72849fe8ed32893dd05e4696e4fe85
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77155726"
 ---
 # <a name="powershell-for-dns-alias-to-azure-sql-database"></a>用于管理 Azure SQL 数据库 DNS 别名的 PowerShell
@@ -35,7 +35,7 @@ ms.locfileid: "77155726"
 
    `<yourServer>.database.chinacloudapi.cn`
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 如果想要运行演示这篇文章中提供的 PowerShell 脚本，适用以下先决条件：
 

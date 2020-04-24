@@ -10,10 +10,10 @@ ms.date: 01/20/2020
 ms.author: v-jay
 ms.custom: include file
 ms.openlocfilehash: f22c48a279d004d9df2ac1b9ac955f42201dc8d5
-ms.sourcegitcommit: 779d674e865b23ae417eb492efca7508675b8ba6
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75939763"
 ---
 生成 CA 证书。

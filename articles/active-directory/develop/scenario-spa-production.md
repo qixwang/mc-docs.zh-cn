@@ -16,10 +16,10 @@ ms.author: v-junlch
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0865a3780072afed33808f708f1449cffe33ea9c
-ms.sourcegitcommit: 1bc154c816a5dff47ee051c431cd94826e57aa60
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75776931"
 ---
 # <a name="single-page-application-move-to-production"></a>单页应用程序：移到生产环境

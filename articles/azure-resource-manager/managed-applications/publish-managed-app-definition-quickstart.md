@@ -7,10 +7,10 @@ origin.date: 09/13/2019
 ms.date: 01/20/2020
 ms.author: v-yeche
 ms.openlocfilehash: d082774dbaf41c1a84f941883b73c81f1dd69deb
-ms.sourcegitcommit: 8de025ca11b62e06ba3762b5d15cc577e0c0f15d
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "76170753"
 ---
 # <a name="publish-an-azure-managed-application-definition"></a>发布 Azure 托管应用程序定义
@@ -66,8 +66,8 @@ az managedapp definition create \
 前述示例中使用的部分参数包括：
 
 * **resource-group**：在其中创建托管应用程序定义的资源组的名称。
-* **lock-level**：在托管资源组上放置的锁的类型。 它防止客户对此资源组执行不良操作。 当前，ReadOnly 是唯一受支持的锁级别。 当指定了 ReadOnly 时，客户只能读取托管资源组中存在的资源。 授予对托管资源组的访问权限的发布者标识不受该锁控制。
-* **authorizations**：描述用于授予对托管资源组权限的主体 ID 和角色定义 ID。 它是以 `<principalId>:<roleDefinitionId>` 格式指定的。 如果需要多个值，请以 `<principalId1>:<roleDefinitionId1> <principalId2>:<roleDefinitionId2>` 格式指定它们。 请以空格分隔这些值。
+*  lock-level：在托管资源组上放置的锁的类型。 它防止客户对此资源组执行不良操作。 当前，ReadOnly 是唯一受支持的锁级别。 当指定了 ReadOnly 时，客户只能读取托管资源组中存在的资源。 授予对托管资源组的访问权限的发布者标识不受该锁控制。
+*  authorizations：描述用于授予对托管资源组权限的主体 ID 和角色定义 ID。 它是以 `<principalId>:<roleDefinitionId>` 格式指定的。 如果需要多个值，请以 `<principalId1>:<roleDefinitionId1> <principalId2>:<roleDefinitionId2>` 格式指定它们。 请以空格分隔这些值。
 * **package-file-uri**：包含所需文件的 .zip 包的位置。 该包必须包含 **mainTemplate.json** 和 **createUiDefinition.json** 文件。  mainTemplate.json 定义作为托管应用程序的一部分创建的 Azure 资源。 该模板与常规资源管理器模板并没有不同。  createUiDefinition.json：生成用户界面，供用户通过门户创建托管应用程序。
 
 ## <a name="next-steps"></a>后续步骤

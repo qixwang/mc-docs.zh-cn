@@ -6,10 +6,10 @@ origin.date: 04/09/2018
 ms.author: v-yeche
 ms.date: 01/06/2020
 ms.openlocfilehash: 3da6a2c1f0618ac4cee27b9409f2317ca2e379c1
-ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75741883"
 ---
 # <a name="azure-cli-az-and-azure-service-fabric-cli-sfctl-samples"></a>Azure CLI (az) 和 Azure Service Fabric CLI (sfctl) 示例

@@ -9,10 +9,10 @@ ms.date: 02/10/2020
 ms.author: v-yeche
 ms.custom: query-reference
 ms.openlocfilehash: f3396a21ac4b23d35978169db71301fd0debec02
-ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77028667"
 ---
 # <a name="degrees-azure-cosmos-db"></a>DEGREES (Azure Cosmos DB)
@@ -27,21 +27,21 @@ DEGREES (<numeric_expr>)
 ## <a name="arguments"></a>参数
 
 *numeric_expr*  
-  是一个数值表达式。  
+  为数值表达式。  
 
 ## <a name="return-types"></a>返回类型
 
-  返回一个数值表达式。  
+  返回数值表达式。  
 
 ## <a name="examples"></a>示例
 
-  以下示例返回 PI/2 弧度表示的角度的度数。  
+  以下示例将返回 PI/2 弧度角的度数。  
 
 ```sql
 SELECT DEGREES(PI()/2) AS degrees  
 ```  
 
- 下面是结果集。  
+ 下面是结果集：  
 
 ```json
 [{"degrees": 90}]  

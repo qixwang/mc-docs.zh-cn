@@ -16,10 +16,10 @@ origin.date: 09/20/2019
 ms.date: 02/10/2020
 ms.author: v-yeche
 ms.openlocfilehash: e171d3fe2858665930288f7fdf470e0c8fa3f8d0
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77428008"
 ---
 # <a name="install-and-configure-terraform-to-provision-azure-resources"></a>安装并配置 Terraform 以预配 Azure 资源
@@ -27,7 +27,7 @@ ms.locfileid: "77428008"
 借助 Terraform，可以轻松使用[简单模板语言](https://www.terraform.io/docs/configuration/syntax.html)来定义、预览和部署云基础结构。 本文介绍使用 Terraform 在 Azure 中预配资源的必要步骤。
 
 > [!NOTE]
-> 若要获得特定于 Terraform 的支持，请使用其社区渠道之一直接联系 Terraform：
+> 要获得特定于 Terraform 的支持，请直接使用以下社区通道之一联系 Terraform：
 >
 >   • 社区门户的 [Terraform 部分](https://discuss.hashicorp.com/c/terraform-core)包含问题、用例和有用模式。
 >
@@ -48,7 +48,7 @@ azureuser@Azure:~$ terraform
 Usage: terraform [--version] [--help] <command> [args]
 ```
 
-## <a name="set-up-terraform-access-to-azure"></a>设置 Terraform 对 Azure 的访问权限
+## <a name="set-up-terraform-access-to-azure"></a><a name="set-up-terraform-access-to-azure"></a>设置 Terraform 对 Azure 的访问权限
 
 要使 Terraform 能够将资源预配到 Azure，请创建 [Azure AD 服务主体](https://docs.azure.cn/cli/create-an-azure-service-principal-azure-cli?view=azure-cli-latest)。 服务主体允许你的 Terraform 脚本在 Azure 订阅中预配资源。
 
@@ -66,7 +66,7 @@ az account list --query "[].{name:name, subscriptionId:id, tenantId:tenantId}"
 az account set --subscription="${SUBSCRIPTION_ID}"
 ```
 
-现在，可以创建一个服务主体以与 Terraform 一起使用。 使用 [az ad sp create-for-rbac](https://docs.azure.cn/cli/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac)，并将*范围*设置为你的订阅，如下所示：
+现在，可以创建一个服务主体以与 Terraform 一起使用。 使用 [az ad sp create-for-rbac](https://docs.azure.cn/cli/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac)，并将“范围”设置为你的订阅，如下所示  ：
 
 ```azurecli
 az ad sp create-for-rbac --role="Contributor" --scopes="/subscriptions/${SUBSCRIPTION_ID}"

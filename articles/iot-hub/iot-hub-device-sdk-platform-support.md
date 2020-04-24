@@ -9,10 +9,10 @@ origin.date: 10/08/2019
 ms.date: 02/17/2020
 ms.author: v-yiso
 ms.openlocfilehash: 3516162ebfce1a4a93870dab1bfa3e58b3a4547a
-ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77068292"
 ---
 # <a name="azure-iot-device-sdks-platform-support"></a>Azure IoT 设备 SDK 平台支持

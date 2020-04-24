@@ -8,10 +8,10 @@ ms.topic: conceptual
 origin.date: 01/15/2020
 ms.date: 02/10/2020
 ms.openlocfilehash: c2a81f906a97d68dc85eea99e68c4f5c148186db
-ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77068348"
 ---
 # <a name="azure-database-for-mysql-server-firewall-rules"></a>Azure Database for MySQL 服务器防火墙规则

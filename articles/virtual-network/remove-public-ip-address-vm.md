@@ -14,10 +14,10 @@ origin.date: 12/04/2019
 ms.date: 01/13/2020
 ms.author: v-yeche
 ms.openlocfilehash: c4849309f4809143329f3ab3881df5a59d8f1bb0
-ms.sourcegitcommit: bc5f8b4f8ccd7c723f64055825508d1dfcc2162b
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75859465"
 ---
 # <a name="dissociate-a-public-ip-address-from-an-azure-vm"></a>将公共 IP 地址与 Azure VM 取消关联 
@@ -28,7 +28,7 @@ ms.locfileid: "75859465"
 
 ## <a name="azure-portal"></a>Azure 门户
 
-1. 登录到 [Azure 门户](https://portal.azure.cn)。
+1. 登录 [Azure 门户](https://portal.azure.cn)。
 2. 浏览或搜索要将公共 IP 地址与之取消关联的虚拟机，然后将其选中。
 3. 在“VM”页中选择“概览”  ，然后选择公共 IP 地址，如下图所示：
 

@@ -15,10 +15,10 @@ origin.date: 12/19/2019
 ms.author: v-yiso
 ms.date: 01/13/2020
 ms.openlocfilehash: 188768448de7bd6a95d90a51288f89b97e090b33
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75631108"
 ---
 # <a name="set-up-backup-and-replication-for-apache-hbase-and-apache-phoenix-on-hdinsight"></a>在 HDInsight 上为 Apache HBase 和 Apache Phoenix 设置备份与复制
@@ -40,7 +40,7 @@ Apache HBase 支持通过多种方法来防范数据丢失：
 
 使用此方法时，将会复制所有 HBase 数据，而无法选择表或列系列的子集。 后面所述的方法提供更高的控制度。
 
-HDInsight 中的 HBase 使用创建群集时选择的默认存储：Azure 存储 Blob 或 Azure Data Lake Storage。 无论使用哪种存储，HBase 都会将其数据和元数据文件存储在以下路径：
+HDInsight 中的 HBase 使用创建群集时选择的默认存储：Azure 存储 blob 或 Azure Data Lake Storage。 无论使用哪种存储，HBase 都会将其数据和元数据文件存储在以下路径：
 
     /hbase
 
@@ -62,7 +62,7 @@ HDInsight 中的 HBase 使用创建群集时选择的默认存储：Azure 存储
 
 * 创建指向当前存储位置的新 HDInsight 实例。 新实例是使用所有现有数据创建的。
 
-* 将 `hbase` 文件夹复制到不同的 Azure 存储 Blob 容器或 Data Lake Storage 位置，然后使用该数据启动新群集。 对于 Azure 存储，请使用 [AzCopy](../../storage/common/storage-use-azcopy.md)。
+* 将 `hbase` 文件夹复制到其他 Azure 存储 blob 容器或 Data Lake Storage 位置，然后使用该数据启动新群集。 对于 Azure 存储，请使用 [AzCopy](../../storage/common/storage-use-azcopy.md)。
 
 ## <a name="export-then-import"></a>导出再导入
 
@@ -128,7 +128,7 @@ CopyTable 实用工具还支持使用参数来指定要复制的行的时间范�
 CopyTable 将会扫描要复制到目标表的整个源表内容。 因此，在 CopyTable 执行时，这可能会降低 HBase 群集的性能。
 
 > [!NOTE]
-> 若要在表之间自动复制数据，请参阅 GitHub 上 [Azure HBase 实用工具](https://github.com/Azure/hbase-utils/tree/master/replication)存储库中的 `hdi_copy_table.sh` 脚本。
+> 若要在表之间自动复制数据，请参阅 GitHub 上 `hdi_copy_table.sh`Azure HBase 实用工具[存储库中的 ](https://github.com/Azure/hbase-utils/tree/master/replication) 脚本。
 
 ### <a name="manually-collect-the-apache-zookeeper-quorum-list"></a>手动收集 Apache ZooKeeper 仲裁列表
 

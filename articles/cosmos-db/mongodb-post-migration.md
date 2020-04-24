@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 02/10/2020
 ms.author: v-yeche
 ms.openlocfilehash: 75f4c1bd5ce6e23606542214ad07747f54ac82a0
-ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77028809"
 ---
 # <a name="post-migration-optimization-steps-when-using-azure-cosmos-dbs-api-for-mongodb"></a>使用 Azure Cosmos DB 的 API for MongoDB 进行迁移后的优化步骤 
@@ -68,7 +68,7 @@ Azure Cosmos DB 提供 5 个妥善定义的[一致性级别](consistency-levels.
 * [将 MongoDB 应用程序连接到 Azure Cosmos DB](connect-mongodb-account.md)
 * [使用 Studio 3T 连接到 Azure Cosmos DB 帐户](mongodb-mongochef.md)
 * [如何使用 Azure Cosmos DB MongoDB API 多区域分发读取操作](mongodb-readpreference.md)
-* [使用 Azure Cosmos DB MongoDB API 使数据过期](mongodb-time-to-live.md)
+* [使用 Azure Cosmos DB 的用于 MongoDB 的 API 过期数据](mongodb-time-to-live.md)
 * [Azure Cosmos DB 中的一致性级别](consistency-levels.md)
 * [Azure Cosmos DB 中的索引](index-overview.md)
 * [Azure Cosmos DB 中的请求单位](request-units.md)

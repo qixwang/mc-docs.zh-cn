@@ -12,10 +12,10 @@ ms.date: 02/04/2020
 ms.author: v-junlch
 ms.subservice: B2C
 ms.openlocfilehash: aec61a70ece1636f9d72df614530ac1bfae5d78f
-ms.sourcegitcommit: 888cbc10f2348de401d4839a732586cf266883bf
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77028338"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-wechat-account-using-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 设置通过微信帐户注册与登录
@@ -31,7 +31,7 @@ ms.locfileid: "77028338"
 1. 使用微信凭据登录 [https://open.weixin.qq.com/](https://open.weixin.qq.com/)。
 1. 选择“管理中心”  (management center)。
 1. 按照步骤注册新应用程序。
-1. 在“授权回调域”  (callback URL) 中输入 `https://your-tenant_name.b2clogin.cn/your-tenant-name.partner.onmschina.cn/oauth2/authresp`。 例如，如果租户名称是 contoso，请将 URL 设置为 `https://contoso.b2clogin.cn/contoso.partner.onmschina.cn/oauth2/authresp`。
+1. 在“授权回调域”`https://your-tenant_name.b2clogin.cn/your-tenant-name.partner.onmschina.cn/oauth2/authresp` **(callback URL) 中输入** 。 例如，如果租户名称是 contoso，请将 URL 设置为 `https://contoso.b2clogin.cn/contoso.partner.onmschina.cn/oauth2/authresp`。
 1. 复制“应用 ID”  和“应用密钥”  。 将标识提供者添加到租户时需要这两项。
 
 ## <a name="configure-wechat-as-an-identity-provider-in-your-tenant"></a>将微信配置为租户中的标识提供者
@@ -43,5 +43,5 @@ ms.locfileid: "77028338"
 1. 输入“名称”  。 例如，WeChat  。
 1. 对于**客户端 ID**，输入你之前创建的 WeChat 应用程序的应用 ID。
 1. 对于**客户端密码**，输入你记录的应用密钥。
-1. 选择“保存”  。
+1. 选择“保存”。 
 

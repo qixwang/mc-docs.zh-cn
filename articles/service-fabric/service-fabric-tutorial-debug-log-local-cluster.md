@@ -8,10 +8,10 @@ ms.date: 01/13/2020
 ms.author: v-yeche
 ms.custom: mvc
 ms.openlocfilehash: 0044b4d461cdfdfe2417911b6a28092a76e0f33c
-ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75742059"
 ---
 # <a name="tutorial-debug-a-java-application-deployed-on-a-local-service-fabric-cluster"></a>教程：调试本地 Service Fabric 群集上部署的 Java 应用程序
@@ -32,7 +32,7 @@ ms.locfileid: "75742059"
 > * 使用 Eclipse 调试 Java 应用程序
 > * 将日志重定向到可配置的位置
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 在开始学习本教程之前：
 

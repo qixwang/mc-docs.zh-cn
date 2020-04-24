@@ -12,10 +12,10 @@ origin.date: 12/19/2019
 ms.date: 01/20/2020
 ms.custom: seodec18
 ms.openlocfilehash: 9adb9fb101c2ddc6c9d10fe712ca9b80e35422b1
-ms.sourcegitcommit: a890a9cca495d332c9f3f53ff3a5259fd5f0c275
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75859661"
 ---
 # <a name="best-practices-for-choosing-a-time-series-id"></a>选择时序 ID 的最佳做法

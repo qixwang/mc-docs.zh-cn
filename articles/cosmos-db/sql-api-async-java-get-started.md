@@ -11,10 +11,10 @@ ms.date: 02/10/2020
 ms.author: v-yeche
 Customer intent: As a developer, I want to build a Java application with the Async Java SDK to access and manage Azure Cosmos DB resources so that customers can utilize the multiple-region distribution, elastic scaling, multi-master, and other capabilities offered by Azure Cosmos DB.
 ms.openlocfilehash: 6a8cd41358b34306b4dd795784a46c1862b6e836
-ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77028741"
 ---
 <!--Verify sucessfully-->
@@ -38,7 +38,7 @@ ms.locfileid: "77028741"
 > * 创建 JSON 文档
 > * 查询集合
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 请确保具有以下资源：
 

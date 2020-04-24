@@ -12,10 +12,10 @@ origin.date: 01/06/2020
 ms.date: 01/15/2020
 ms.author: v-lingwu
 ms.openlocfilehash: 8289264cc7e185844f4a9883c14cf10ba6b9be80
-ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77028843"
 ---
 # <a name="deploy-the-language-understanding-luis-container-to-azure-container-instances"></a>将语言理解 (LUIS) 容器部署到 Azure 容器实例

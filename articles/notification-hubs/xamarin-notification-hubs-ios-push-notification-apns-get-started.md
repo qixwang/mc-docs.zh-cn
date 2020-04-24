@@ -20,10 +20,10 @@ ms.author: v-tawe
 ms.reviewer: jowargo
 ms.lastreviewed: 05/23/2019
 ms.openlocfilehash: a94a739cdefd3640210b3f0907b72de113947344
-ms.sourcegitcommit: 94e1c9621b8f81a7078f1412b3a73281d0a8668b
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "76123156"
 ---
 # <a name="tutorial-send-push-notifications-to-xamarinios-apps-using-azure-notification-hubs"></a>教程：使用 Azure 通知中心向 Xamarin.iOS 应用发送推送通知
@@ -45,7 +45,7 @@ ms.locfileid: "76123156"
 > * 针对 iOS 推送通知配置通知中心
 > * 发送测试推送通知
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * **Azure 订阅**。 如果没有 Azure 订阅，请在开始前[创建一个试用 Azure 帐户](https://www.azure.cn/pricing/1rmb-trial/)。
 * 最新版本的 [Xcode][Install Xcode]

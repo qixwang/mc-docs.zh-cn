@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 01/13/2020
 ms.author: v-junlch
 ms.openlocfilehash: 88f6f637f141f39395d544d4be4f7b1e64c51c6d
-ms.sourcegitcommit: 48d51745ca18de7fa05b77501b4a9bf16cea2068
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "76116868"
 ---
 # <a name="continuous-delivery-by-using-github-action"></a>使用 Github Actions 进行持续交付
@@ -33,7 +33,7 @@ ms.locfileid: "76116868"
 
 ## <a name="create-a-service-principal"></a>创建服务主体
 
-可以在 [Azure CLI](/cli/) 中使用 [az ad sp create-for-rbac](/cli/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) 命令创建[服务主体](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object)。 
+可以在 [Azure CLI](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object) 中使用 [az ad sp create-for-rbac](/cli/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) 命令创建[服务主体](/cli/)。 
 
 ```azurecli
 az ad sp create-for-rbac --name "myApp" --role contributor --scopes /subscriptions/<SUBSCRIPTION_ID>/resourceGroups/<RESOURCE_GROUP>/providers/Microsoft.Web/sites/<APP_NAME> --sdk-auth
@@ -69,7 +69,7 @@ GitHub 现在可以针对 Azure 中的函数应用进行身份验证了。
 
 设置环境是使用特定于语言的发布设置操作完成的。
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 以下示例显示了使用 `actions/setup-node` 操作设置环境的工作流部分：
 
@@ -85,7 +85,7 @@ GitHub 现在可以针对 Azure 中的函数应用进行身份验证了。
 ```
 
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 以下示例显示了使用 `actions/setup-dotnet` 操作设置环境的工作流部分：
 
@@ -100,7 +100,7 @@ GitHub 现在可以针对 Azure 中的函数应用进行身份验证了。
         dotnet-version: '2.2.300'
 ```
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 以下示例显示了使用 `actions/setup-java` 操作设置环境的工作流部分：
 
@@ -124,7 +124,7 @@ GitHub 现在可以针对 Azure 中的函数应用进行身份验证了。
 
 以下示例显示了生成函数应用的工作流部分，该部分是特定于语言的：
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```yaml
     - name: 'Run npm'
@@ -139,7 +139,7 @@ GitHub 现在可以针对 Azure 中的函数应用进行身份验证了。
         popd
 ```
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```yaml
     - name: 'Run dotnet build'
@@ -152,7 +152,7 @@ GitHub 现在可以针对 Azure 中的函数应用进行身份验证了。
         popd
 ```
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 ```yaml
     - name: 'Run mvn'

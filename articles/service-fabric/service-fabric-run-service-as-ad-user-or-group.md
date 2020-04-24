@@ -7,20 +7,20 @@ origin.date: 03/29/2018
 ms.date: 01/13/2020
 ms.author: v-yeche
 ms.openlocfilehash: 882afde02df26a1a9b14fc879ace9c8a7249fcd1
-ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75742271"
 ---
 # <a name="run-a-service-as-an-active-directory-user-or-group"></a>以 Active Directory 用户或组身份运行服务
-在 Windows Server 独立群集上，可以使用 RunAs 策略以 Active Directory 用户或组的身份来运行服务。  默认情况下，Service Fabric 应用程序在运行 Fabric.exe 进程的帐户之下运行。 即使在共享托管环境中以不同帐户身份运行应用程序，也可确保运行的应用程序彼此更安全。 注意：这是域中的本地 Active Directory，不是 Azure Active Directory (Azure AD)。  还可以采用[组托管服务帐户 (gMSA)](service-fabric-run-service-as-gmsa.md) 的身份来运行服务。
+在 Windows Server 独立群集上，可以使用 RunAs 策略以 Active Directory 用户或组的身份来运行服务。  默认情况下，Service Fabric 应用程序在运行 Fabric.exe 程序的帐户之下运行。 即使在共享托管环境中以不同帐户身份运行应用程序，也可确保运行的应用程序彼此更安全。 注意：这是域中的本地 Active Directory，不是 Azure Active Directory (Azure AD)。  还可以采用[组托管服务帐户 (gMSA)](service-fabric-run-service-as-gmsa.md) 的身份来运行服务。
 
 通过使用域用户或组，可以访问域中已被授予权限的其他资源（例如文件共享）。
 
-下面的示例演示名为 TestUser 的 Active Directory 用户，其域密码使用名为 MyCert 的证书进行了加密   。 可以使用 `Invoke-ServiceFabricEncryptText` PowerShell 命令创建机密加密文本。 请参阅[管理 Service Fabric 应用程序中的机密](service-fabric-application-secret-management.md)获取详细信息。
+下面的示例演示名为 *TestUser* 的 Active Directory 用户，其域密码使用名为 *MyCert* 的证书进行了加密。 可以使用 `Invoke-ServiceFabricEncryptText` PowerShell 命令创建密码文本。 请参阅[管理 Service Fabric 应用程序中的机密](service-fabric-application-secret-management.md)获取详细信息。
 
-用于解密密码的证书私钥必须使用带外方法（在 Azure 中通过 Azure Resource Manager）部署到本地计算机。 这样，当 Service Fabric 将服务包部署到计算机时，便能够解密密码和用户名，向 Active Directory 进行身份验证以使用这些凭据运行。
+用于解密密码的证书私钥必须使用带外方法（在 Azure 中通过 Azure 资源管理器）部署到本地计算机。 这样，当 Service Fabric 将服务包部署到计算机时，便能够解密密码和用户名，向 Active Directory 进行身份验证以使用这些凭据运行。
 
 ```xml
 <Principals>

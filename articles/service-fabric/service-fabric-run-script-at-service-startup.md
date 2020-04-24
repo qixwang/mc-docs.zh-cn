@@ -7,19 +7,19 @@ origin.date: 03/21/2018
 ms.date: 01/13/2020
 ms.author: v-yeche
 ms.openlocfilehash: 6af2e3658c3621781af2fe77be6dfa519ba76dba
-ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75742272"
 ---
 # <a name="run-a-service-startup-script-as-a-local-user-or-system-account"></a>以本地用户或系统帐户身份运行服务启动脚本
 在启动 Service Fabric 服务可执行文件之前，可能需要进行某种配置或设置工作。  例如，配置环境变量。 可以在服务的服务清单中指定要在服务可执行文件启动前运行的脚本。 通过为服务安装程序入口点配置 RunAs 策略，可以更改在其下运行安装程序可执行文件的帐户。  使用单独的安装程序入口点，可在短时间内运行高权限配置，因此服务主机可执行文件不需要长时间使用高权限运行。
 
-安装程序入口点（[服务清单](service-fabric-application-and-service-manifests.md)中的 **SetupEntryPoint**）是特权入口点，默认情况下以与 Service Fabric 相同的凭据（通常是 *NetworkService* 帐户）先于任何其他入口点运行。 **EntryPoint** 指定的可执行文件通常是长时间运行的服务主机。 **EntryPoint** 可执行文件在 **SetupEntryPoint** 可执行文件成功退出后运行。 如果出现终止或崩溃，则监视并重启所产生的进程（再次从 **SetupEntryPoint** 开始）。 
+安装程序入口点（**服务清单**中的 [SetupEntryPoint](service-fabric-application-and-service-manifests.md)）是特权入口点，默认情况下以与 Service Fabric 相同的凭据（通常是 *NetworkService* 帐户）先于任何其他入口点运行。 **EntryPoint** 指定的可执行文件通常是长时间运行的服务主机。 **EntryPoint** 可执行文件在 **SetupEntryPoint** 可执行文件成功退出后运行。 如果总是终止或崩溃，则将监视并重启所产生的进程（再次从 **SetupEntryPoint** 开始）。 
 
 ## <a name="configure-the-service-setup-entry-point"></a>配置服务安装程序入口点
-下面是无状态服务的一个简单服务清单示例，该示例在服务 **SetupEntryPoint** 中指定了安装程序脚本 *MySetup.bat*。  **Arguments** 用于在脚本运行时将参数传递给脚本。
+下面是无状态服务的一个简单服务清单示例，该示例在服务 *SetupEntryPoint* 中指定了安装程序脚本 **MySetup.bat**。  **Arguments** 用于在脚本运行时将参数传递给脚本。
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -98,7 +98,7 @@ ms.locfileid: "75742272"
 
 首先，以用户名（例如 SetupAdminUser）创建 **Principals** 节。 SetupAdminUser 用户帐户是 Administrators 系统组的成员。
 
-接下来，在 ServiceManifestImport 节下面配置策略，以将此主体应用到 SetupEntryPoint   。 此策略会告知 Service Fabric，当 **MySetup.bat** 文件运行时，它应该以 SetupAdminUser （具有管理员特权）身份运行。 由于*尚未*将策略应用到主入口点，因此 **MyServiceHost.exe** 中的代码将以系统 **NetworkService** 帐户运行。 这是用于运行所有服务入口点的默认帐户。
+接下来，在 **ServiceManifestImport** 节下面配置策略，以将此主体应用到 **SetupEntryPoint**。 此策略会告知 Service Fabric，当 **MySetup.bat** 文件运行时，它应该以 SetupAdminUser （具有管理员特权）身份运行。 由于*尚未*将策略应用到主入口点，因此 **MyServiceHost.exe** 中的代码将以系统 **NetworkService** 帐户运行。 这是用于运行所有服务入口点的默认帐户。
 
 ### <a name="configure-the-policy-by-using-local-system-accounts"></a>使用本地系统帐户配置策略
 通常建议使用本地系统帐户，而不是管理员帐户运行启动脚本。 以 Administrators 组成员的身份运行 RunAs 策略通常效果不佳，因为计算机在默认情况下已启用用户访问控制 (UAC)。 在这种情况下，建议将 SetupEntryPoint 以 LocalSystem 身份运行，而不是以添加到 Administrators 组的本地用户身份来运行。 以下示例演示如何将 SetupEntryPoint 设置为作为 LocalSystem 运行：
@@ -139,7 +139,7 @@ ms.locfileid: "75742272"
 
 在 Visual Studio 中，右键单击服务项目，并添加名为 *MySetup.bat* 的新文件。
 
-接下来，请确保 *MySetup.bat* 文件已包含在服务包中。 默认情况下未包含该文件。 选择该文件，单击右键打开上下文菜单，然后选择“属性”  。 在“属性”对话框中，确保已将“复制到输出目录”设置为“有更新时才复制”   。 请参阅下面的屏幕截图。
+接下来，请确保 *MySetup.bat* 文件已包含在服务包中。 默认情况下未包含该文件。 选择该文件，单击右键打开上下文菜单，并选择“**属性**”。 在“属性”对话框中，确保已将“**复制到输出目录**”设置为“**有更新时才复制**”。 请参阅下面的屏幕截图。
 
 ![SetupEntryPoint 批处理文件的 Visual Studio CopyToOutput][image1]
 
@@ -162,16 +162,16 @@ PS C:\ [Environment]::GetEnvironmentVariable("TestVariable","Machine")
 MyValue
 ```
 
-接下来，记下已在 [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) 中部署并启动服务的节点名称， 例如“节点 2”。 接下来，导航到应用程序实例工作文件夹，找到显示 **TestVariable**值的 out.txt 文件。 例如，如果此服务已部署到节点 2，则可以转到 **MyApplicationType**的以下路径：
+接下来，记下已在 [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) 中部署并启动服务的节点名称， 例如“节点 2”。 接下来，导航到应用程序实例工作文件夹，找到显示 **TestVariable** 值的 out.txt 文件。 例如，如果此服务已部署到节点 2，则可以转到 **MyApplicationType** 的此路径：
 
 ```
 C:\SfDevCluster\Data\_App\Node.2\MyApplicationType_App\work\out.txt
 ```
 
 ## <a name="run-powershell-commands-from-a-setup-entry-point"></a>从安装程序入口点运行 PowerShell 命令
-若要从 SetupEntryPoint 点运行 PowerShell，可以在指向 PowerShell 文件的批处理文件中运行 PowerShell.exe   。 首先，将 PowerShell 文件添加到服务项目（例如 **MySetup.ps1**）。 请记住设置“如果较新则复制”属性，以便文件还包括在服务包中  。 下面的示例演示一个示例批处理文件，可启动名为 MySetup.ps1 的 PowerShell 文件，该文件用于设置系统环境变量 TestVariable  。
+若要从 **SetupEntryPoint** 点运行 PowerShell，可以在指向 PowerShell 文件的批处理文件中运行 **PowerShell.exe**。 首先，将 PowerShell 文件添加到服务项目（例如 **MySetup.ps1**）。 请记住设置“*如果较新则复制*”属性，以便文件还包括在服务包中。 下面的示例演示一个示例批处理文件，可启动名为 MySetup.ps1 的 PowerShell 文件，该文件用于设置系统环境变量 **TestVariable**。
 
-用于启动 PowerShell 文件的 MySetup.bat：
+MySetup.bat 可启动 PowerShell 文件：
 
 ```
 powershell.exe -ExecutionPolicy Bypass -Command ".\MySetup.ps1"
@@ -185,7 +185,7 @@ powershell.exe -ExecutionPolicy Bypass -Command ".\MySetup.ps1"
 ```
 
 > [!NOTE]
-> 默认情况下，当批处理文件运行时，它查找名为 work 应用程序文件夹中的文件  。 在此示例中，当 MySetup.bat 运行时，我们希望它在同一文件夹（即应用程序代码包文件夹）中找到 MySetup.ps1 文件  。 若要更改此文件夹，请设置工作文件夹：
+> 默认情况下，当批处理文件运行时，它查找名为 **work** 应用程序文件夹中的文件。 在此示例中，当 MySetup.bat 运行时，我们希望它在同一文件夹（即应用程序**代码包**文件夹）中找到 MySetup.ps1 文件。 若要更改此文件夹，请按如下所示设置工作文件夹：
 > 
 > 
 
@@ -218,7 +218,7 @@ powershell.exe -ExecutionPolicy Bypass -Command ".\MySetup.ps1"
 </SetupEntryPoint>
 ```
 
-如果现在更改 MySetup.ps1 文件以写入 **Echo** 命令，该命令会写入输出文件以进行调试：
+如果现在更改 MySetup.ps1 文件以写入 **Echo** 命令，该命令会写入到输出文件以进行调试：
 
 ```
 Echo "Test console redirection which writes to the application log folder on the node that the application is deployed to"

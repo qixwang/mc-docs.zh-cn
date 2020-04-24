@@ -9,10 +9,10 @@ origin.date: 09/30/2019
 ms.date: 02/10/2020
 ms.reviewer: sngun
 ms.openlocfilehash: 4cc46bfa19c8637f139f9156aade1dc7b8a56244
-ms.sourcegitcommit: 23dc63b6fea451f6a2bd4e8d0fbd7ed082ba0740
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "76980533"
 ---
 # <a name="multiple-regionally-distributed-transactional-and-analytical-storage-for-azure-cosmos-containers"></a>Azure Cosmos 容器的多区域分布式事务和分析存储
@@ -29,7 +29,7 @@ Azure Cosmos 容器由两个存储引擎提供内部支持 - 事务存储引擎�
 
 事务存储引擎以本地 SSD 为后盾，而分析存储则存储在群集外部的经济型 SSD 存储上。 下表汇总了事务存储与分析存储之间的重要差异。
 
-|功能  |事务存储  |分析存储 |
+|Feature  |事务存储  |分析存储 |
 |---------|---------|---------|
 |每个 Azure Cosmos 容器的最大存储空间 |   无限制      |    无限制     |
 |每个逻辑分区键的最大存储空间   |   10 GB      |   无限制      |

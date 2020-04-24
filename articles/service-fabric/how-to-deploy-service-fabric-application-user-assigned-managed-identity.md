@@ -6,10 +6,10 @@ origin.date: 12/09/2019
 ms.author: v-yeche
 ms.date: 01/06/2020
 ms.openlocfilehash: dc7a20a167f25b01ea657254b2ceeba7c948aad6
-ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75742451"
 ---
 <!--Not Available on "apiVersion": "2019-06-01-preview"-->
@@ -66,7 +66,7 @@ ms.locfileid: "75742451"
 
 ### <a name="application-package"></a>应用程序包
 
-1. 对于在 Azure 资源管理器模板的 `managedIdentities` 节中定义的每个标识，请在应用程序清单的 **Principals** 节下添加 `<ManagedIdentity>` 标记。 `Name` 属性需与 `managedIdentities` 节中定义的 `name` 属性匹配。
+1. 对于在 Azure 资源管理器模板的 `managedIdentities` 节中定义的每个标识，请在应用程序清单的 `<ManagedIdentity>`Principals**节下添加** 标记。 `Name` 属性需与 `name` 节中定义的 `managedIdentities` 属性匹配。
 
     **ApplicationManifest.xml**
 
@@ -90,7 +90,7 @@ ms.locfileid: "75742451"
       </ServiceManifestImport>
     ```
 
-3. 更新服务清单，将 **ManagedIdentity** 添加到 **Resources** 节中，其名称与应用程序清单的 `IdentityBindingPolicy` 中的 `ServiceIdentityRef` 匹配：
+3. 更新服务清单，将 **ManagedIdentity** 添加到 **Resources** 节中，其名称与应用程序清单的 `ServiceIdentityRef` 中的 `IdentityBindingPolicy` 匹配：
 
     **ServiceManifest.xml**
 

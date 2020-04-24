@@ -9,10 +9,10 @@ origin.date: 11/25/2019
 ms.date: 01/20/2020
 ms.author: v-yeche
 ms.openlocfilehash: 4709029a4f77722f3906d355541ee286ee7b3fc9
-ms.sourcegitcommit: a2e13b4f20aa85e5d696fa3233be14e522e76ba6
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "76288553"
 ---
 # <a name="change-feed-in-the-azure-cosmos-db-api-for-cassandra"></a>Azure Cosmos DB API for Cassandra 中的更改源

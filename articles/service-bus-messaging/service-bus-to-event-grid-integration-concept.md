@@ -16,10 +16,10 @@ origin.date: 01/27/2020
 ms.date: 2/6/2020
 ms.author: aschhab
 ms.openlocfilehash: f1799a75b93323235e9e4319ce42ce32074be3e3
-ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77068282"
 ---
 # <a name="azure-service-bus-to-event-grid-integration-overview"></a>Azure 服务总线到事件网格的集成概述

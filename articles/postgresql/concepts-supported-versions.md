@@ -9,10 +9,10 @@ origin.date: 12/03/2019
 ms.date: 01/13/2020
 ms.custom: fasttrack-edit
 ms.openlocfilehash: 912f8d82876dc4d301b492cc73d7de89481827fd
-ms.sourcegitcommit: 4f4694991e1c70929c7112ad45a0c404ddfbc8da
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75776678"
 ---
 # <a name="supported-postgresql-major-versions"></a>支持的 PostgreSQL 主版本
@@ -35,7 +35,7 @@ Azure Database for PostgreSQL 目前支持以下主版本：
 ## <a name="managing-upgrades"></a>管理升级
 PostgreSQL 项目定期发布次要版本来修复已报告的 bug。 Azure Database for PostgreSQL 在服务的每月部署期间会自动使用次要版本修补服务器。 
 
-不支持自动主版本升级。 例如，没有从 PostgreSQL 9.5 到 PostgreSQL 9.6 的自动升级。 若要升级到下一主版本，请[创建数据库转储并还原](./howto-migrate-using-dump-and-restore.md)到使用新引擎版本创建的服务器。
+不支持主版本自动升级。 例如，没有从 PostgreSQL 9.5 到 PostgreSQL 9.6 的自动升级。 若要升级到下一主版本，请创建数据库[转储并将其还原](./howto-migrate-using-dump-and-restore.md)到使用新引擎版本创建的服务器。
 
 ### <a name="version-syntax"></a>版本语法
 在 PostgreSQL 版本 10 之前，[PostgreSQL 版本控制策略](https://www.postgresql.org/support/versioning/)将_主版本_升级视为第一个_或_第二个数字的增加。 例如，9.5 到 9.6 的升级视为_主_版本升级。 从版本 10 开始，只有第一个数字更改才视为主版本升级。 例如，10.0 到 10.1 是_次要_版本升级。 版本 10 到 11 的升级是_主_版本升级。

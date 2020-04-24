@@ -16,10 +16,10 @@ origin.date: 01/23/2019
 ms.date: 09/23/2019
 ms.author: v-lingwu
 ms.openlocfilehash: 663944411122d0631dd0ccc82f5d9cbb74bc5340
-ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75853835"
 ---
 # <a name="quickstart-create-a-service-bus-namespace-and-a-queue-using-an-azure-resource-manager-template"></a>快速入门：使用 Azure Resource Manager 模板创建服务总线命名空间和队列

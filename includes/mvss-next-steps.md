@@ -5,13 +5,13 @@ ms.topic: include
 ms.date: 02/11/2020
 ms.author: v-junlch
 ms.openlocfilehash: 34b6088dfc59f44d07c9882a586022a9208dd575
-ms.sourcegitcommit: 99bd0019c5f01034b8765d7765ad7776c7d5e5ae
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77128875"
 ---
-可以按照 [Azure Resource Manager 文档](../articles/azure-resource-manager/templates/deploy-powershell.md)部署上述模板。
+可以按照 [Azure 资源管理器文档](../articles/azure-resource-manager/templates/deploy-powershell.md)部署上述模板。
 
 若要阅读这一系列的教程，可先阅读[基本规模集模板文章](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-mvss-start.md)。
 

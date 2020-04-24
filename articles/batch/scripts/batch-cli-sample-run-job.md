@@ -1,6 +1,6 @@
 ---
 title: Azure CLI 脚本示例 - 运行批处理作业
-description: 此脚本创建一个批处理作业，并将一系列任务添加到该作业。 它还演示了如何监视作业及其任务。
+description: 此脚本将创建一个批处理作业，并将一系列任务添加到该作业。 它还演示了如何监视作业及其任务。
 services: batch
 documentationcenter: ''
 author: dlepow
@@ -16,15 +16,15 @@ origin.date: 12/12/2019
 ms.date: 2/3/2020
 ms.author: v-lingwu
 ms.openlocfilehash: b7527c74375decb0e4dacb7c9b75dffbb8dbcd5a
-ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77028582"
 ---
 # <a name="cli-example-run-a-job-and-tasks-with-azure-batch"></a>CLI 示例：使用 Azure Batch 运行作业和任务
 
-此脚本创建一个批处理作业，并将一系列任务添加到该作业。 它还演示了如何监视作业及其任务。 
+此脚本将创建一个批处理作业，并将一系列任务添加到该作业。 它还演示了如何监视作业及其任务。 
 
 如果选择在本地安装并使用 CLI，本文要求运行 Azure CLI 2.0.20 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI 2.0](/cli/install-azure-cli)。 
 
@@ -106,9 +106,9 @@ az group delete --name myResourceGroup
 
 ## <a name="script-explanation"></a>脚本说明
 
-此脚本使用以下命令。 表中的每条命令链接到特定于命令的文档。
+此脚本使用以下命令。 表中的每条命令均链接到特定于命令的文档。
 
-| 命令 | 注释 |
+| Command | 说明 |
 |---|---|
 | [az group create](/cli/group#az-group-create) | 创建用于存储所有资源的资源组。 |
 | [az batch account create](/cli/batch/account#az-batch-account-create) | 创建批处理帐户。 |

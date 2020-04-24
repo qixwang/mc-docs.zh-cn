@@ -8,10 +8,10 @@ ms.topic: conceptual
 origin.date: 11/25/2019
 ms.date: 02/10/2020
 ms.openlocfilehash: 17567851e5b689e65ffede3305fe218397f5c78e
-ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77028753"
 ---
 # <a name="reading-azure-cosmos-db-change-feed"></a>读取 Azure Cosmos DB 更改源

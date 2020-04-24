@@ -13,10 +13,10 @@ ms.reviewer: carlrab
 origin.date: 12/20/2018
 ms.date: 02/17/2020
 ms.openlocfilehash: e042246d56ed960d5ec6674caf0fd22964789db2
-ms.sourcegitcommit: d7b86a424b72849fe8ed32893dd05e4696e4fe85
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77155730"
 ---
 # <a name="best-practices-for-sql-data-sync"></a>SQL 数据同步最佳做法 
@@ -28,7 +28,7 @@ ms.locfileid: "77155730"
 > [!IMPORTANT]
 > 目前，Azure SQL 数据同步不支持 Azure SQL 数据库托管实例  。
 
-## <a name="security-and-reliability"></a>安全性和可靠性
+## <a name="security-and-reliability"></a><a name="security-and-reliability"></a>安全性和可靠性
 
 ### <a name="client-agent"></a>客户端代理
 
@@ -53,7 +53,7 @@ Azure SQL 数据库仅支持单组凭据。 若要在此约束内完成这些任
 
 ## <a name="setup"></a>设置
 
-### <a name="database-considerations-and-constraints"></a> 数据库考虑因素和约束
+### <a name="database-considerations-and-constraints"></a><a name="database-considerations-and-constraints"></a> 数据库考虑因素和约束
 
 #### <a name="sql-database-instance-size"></a>SQL 数据库实例大小
 
@@ -62,7 +62,7 @@ Azure SQL 数据库仅支持单组凭据。 若要在此约束内完成这些任
 > [!IMPORTANT]
 > SQL 数据同步会为每个数据库存储额外的元数据。 请确保在计算所需的空间时考虑此元数据。 增加的开销量与表宽度（例如，窄表会需要更多的开销）和流量大小有关。
 
-### <a name="table-considerations-and-constraints"></a> 表考虑因素和约束
+### <a name="table-considerations-and-constraints"></a><a name="table-considerations-and-constraints"></a> 表考虑因素和约束
 
 #### <a name="selecting-tables"></a>选择表
 
@@ -78,7 +78,7 @@ Azure SQL 数据库仅支持单组凭据。 若要在此约束内完成这些任
 
 空表在初始化时提供最佳性能。 如果目标表为空表，则数据同步会使用批量插入来加载数据。 否则，数据同步会逐行进行比较和插入以检查是否存在冲突。 但是，如果不考虑性能，则可以在已包含数据的表之间设置同步。
 
-### <a name="provisioning-destination-databases"></a> 预配目标数据库
+### <a name="provisioning-destination-databases"></a><a name="provisioning-destination-databases"></a> 预配目标数据库
 
 SQL 数据同步提供了基本的数据库自动预配。
 
@@ -102,7 +102,7 @@ SQL 数据同步自动预配的限制如下：
 -   仅在尝试使用该服务时使用 SQL 数据同步自动预配功能。  
 -   对于生产环境，应预配数据库架构。
 
-### <a name="locate-hub"></a> 在哪里定位中心数据库
+### <a name="where-to-locate-the-hub-database"></a><a name="locate-hub"></a> 在哪里定位中心数据库
 
 #### <a name="enterprise-to-cloud-scenario"></a>企业到云方案
 
@@ -119,7 +119,7 @@ SQL 数据同步自动预配的限制如下：
 
 ## <a name="sync"></a>同步
 
-### <a name="avoid-a-slow-and-costly-initial-synchronization"></a> 避免缓慢且昂贵的初始同步
+### <a name="avoid-slow-and-costly-initial-sync"></a><a name="avoid-a-slow-and-costly-initial-synchronization"></a> 避免缓慢且昂贵的初始同步
 
 在本部分，我们将讨论同步组的初始同步。 了解如何帮助防止初始同步运行时间过长而产生不必要的昂贵开销。
 
@@ -133,13 +133,13 @@ SQL 数据同步自动预配的限制如下：
 
 如果可能，请先仅处理同步组中一个数据库的数据。
 
-### <a name="design-to-avoid-synchronization-loops"></a> 进行设计以避免同步循环
+### <a name="design-to-avoid-sync-loops"></a><a name="design-to-avoid-synchronization-loops"></a> 进行设计以避免同步循环
 
 在同步组中存在循环引用时将出现同步循环。 在此情况下，一个数据库中的每个更改都将通过同步组中的数据库进行循环无休止地复制。   
 
 请确保避免同步循环，因为它们会导致性能降低并可能显著增加成本。
 
-### <a name="handling-changes-that-fail-to-propagate"></a> 无法传播的更改
+### <a name="changes-that-fail-to-propagate"></a><a name="handling-changes-that-fail-to-propagate"></a> 无法传播的更改
 
 #### <a name="reasons-that-changes-fail-to-propagate"></a>更改无法传播的原因
 
@@ -165,7 +165,7 @@ SQL 数据同步自动预配的限制如下：
 
 ## <a name="maintenance"></a>维护
 
-### <a name="avoid-out-of-date-databases-and-sync-groups"></a> 避免过时的数据库和同步组
+### <a name="avoid-out-of-date-databases-and-sync-groups"></a><a name="avoid-out-of-date-databases-and-sync-groups"></a> 避免过时的数据库和同步组
 
 同步组或同步组中的数据库可能会过时。 如果同步组的状态为“过时”  ，则会停止运行。 如果数据库的状态为“过时”  ，数据可能会丢失。 最好避免这种情况，而不是尝试基于其还原。
 
@@ -190,7 +190,7 @@ SQL 数据同步自动预配的限制如下：
 -   更新外键值以包括失败的行中包含的值。
 -   更新失败的行中的数据值，以使其与目标数据库中的架构或外键兼容。
 
-### <a name="avoid-deprovisioning-issues"></a> 避免取消预配问题
+### <a name="avoid-deprovisioning-issues"></a><a name="avoid-deprovisioning-issues"></a> 避免取消预配问题
 
 在某些情况下，向客户端代理取消注册数据库可能会导致同步失败。
 
@@ -211,7 +211,7 @@ SQL 数据同步自动预配的限制如下：
 2. 将数据库重新添加回从中删除的每个同步组。  
 3. 部署每个受影响的同步组（此操作预配了数据库）。  
 
-### <a name="modifying-your-sync-group"></a> 修改同步组
+### <a name="modifying-a-sync-group"></a><a name="modifying-your-sync-group"></a> 修改同步组
 
 请勿尝试先从同步组中删除数据库，然后在不先部署其中一个更改的情况下编辑同步组。
 

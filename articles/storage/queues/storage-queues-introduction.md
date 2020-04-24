@@ -10,10 +10,10 @@ ms.subservice: queues
 ms.topic: overview
 ms.reviewer: cbrooks
 ms.openlocfilehash: c5528546f75ba996734e54b9c27ab578973d5fd8
-ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77028973"
 ---
 # <a name="what-are-azure-queues"></a>什么是 Azure 队列？
@@ -34,11 +34,11 @@ Azure 队列存储是一项可存储大量消息的服务。 可以使用 HTTP �
   
     `https://myaccount.queue.core.chinacloudapi.cn/images-to-download`
 
-* **存储帐户：** 对 Azure 存储进行的所有访问都要通过存储帐户完成。 有关存储帐户容量的信息，请参阅[标准存储帐户的可伸缩性和性能目标](../common/scalability-targets-standard-account.md?toc=%2fstorage%2fqueues%2ftoc.json)。
+* **存储帐户**：对 Azure 存储的所有访问都要通过存储帐户来完成。 有关存储帐户容量的信息，请参阅[标准存储帐户的可伸缩性和性能目标](../common/scalability-targets-standard-account.md?toc=%2fstorage%2fqueues%2ftoc.json)。
 
-* **队列：** 一个队列包含一组消息。 队列名称**必须**全部小写。 有关命名队列的详细信息，请参阅 [命名队列和元数据](https://msdn.microsoft.com/library/azure/dd179349.aspx)。
+* **队列：** 一个队列包含一组消息。 队列名称**必须**全部小写。 有关命名队列的信息，请参阅 [命名队列和元数据](https://msdn.microsoft.com/library/azure/dd179349.aspx)。
 
-* **消息：** 一条消息（不管采用何种格式）的最大大小为 64 KB。 在 2017-07-29 以前的版本中，允许的最大生存时间为 7 天。 在 2017-07-29 或更高版本中，最大生存时间可以是任何正数，或者是 -1（表示消息不会过期）。 如果省略此参数，则默认的生存时间为 7 天。
+* **消息：** 一条消息（无论哪种格式）的最大大小为 64 KB。 在 2017-07-29 以前的版本中，允许的最大生存时间为 7 天。 在 2017-07-29 或更高版本中，最大生存时间可以是任何正数，或者是 -1（表示消息不会过期）。 如果省略此参数，则默认的生存时间为 7 天。
 
 ## <a name="next-steps"></a>后续步骤
 

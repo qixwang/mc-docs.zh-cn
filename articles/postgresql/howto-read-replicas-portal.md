@@ -8,10 +8,10 @@ ms.topic: conceptual
 origin.date: 01/24/2020
 ms.date: 02/10/2020
 ms.openlocfilehash: f6177cbfd5a22642ca6eaf2f04e86caa071ef609
-ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77068379"
 ---
 # <a name="create-and-manage-read-replicas-in-azure-database-for-postgresql---single-server-from-the-azure-portal"></a>通过 Azure 门户创建和管理 Azure Database for PostgreSQL（单一服务器）中的只读副本
@@ -68,7 +68,7 @@ ms.locfileid: "77068379"
 
 5. 选择副本的位置。 默认位置与主服务器的位置相同。
 
-    ![选择位置](./media/howto-read-replicas-portal/location-replica.png)
+    ![选择一个位置](./media/howto-read-replicas-portal/location-replica.png)
 
    > [!NOTE]
    > 若要详细了解可以在哪些区域中创建副本，请访问[只读副本概念文章](concepts-read-replicas.md)。 
@@ -120,7 +120,7 @@ ms.locfileid: "77068379"
 
 1. 在 Azure 门户中，选择 Azure Database for PostgreSQL 主服务器。
 
-2. 此时会打开该服务器的“概述”页。  选择“删除”  。
+2. 此时会打开该服务器的“概述”页。  选择“删除”。 
 
    ![在服务器的“概述”页上，选择删除主服务器](./media/howto-read-replicas-portal/delete-server.png)
  
@@ -132,7 +132,7 @@ ms.locfileid: "77068379"
 ## <a name="delete-a-replica"></a>删除副本
 可以像删除主服务器一样删除只读副本。
 
-- 在 Azure 门户中，打开只读副本的“概述”页。  选择“删除”  。
+- 在 Azure 门户中，打开只读副本的“概述”页。  选择“删除”。 
 
    ![在副本的“概述”页上，选择删除该副本](./media/howto-read-replicas-portal/delete-replica.png)
  

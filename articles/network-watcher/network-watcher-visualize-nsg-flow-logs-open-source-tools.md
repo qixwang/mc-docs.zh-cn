@@ -15,10 +15,10 @@ origin.date: 02/22/2017
 ms.date: 11/26/2018
 ms.author: v-lingwu
 ms.openlocfilehash: 33a2d3682768b59a017d1db3baaa172533c4ed4a
-ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77028982"
 ---
 # <a name="visualize-azure-network-watcher-nsg-flow-logs-using-open-source-tools"></a>使用开源工具可视化 Azure 网络观察程序 NSG 流日志
@@ -30,7 +30,7 @@ ms.locfileid: "77028982"
 > [!Warning]  
 > 以下步骤适用于流日志版本 1。 有关详细信息，请参阅[针对网络安全组的流日志记录简介](network-watcher-nsg-flow-logging-overview.md)。 以下说明在未修改的情况下不适用于版本 2 的日志文件。
 
-## <a name="scenario"></a>方案
+## <a name="scenario"></a>场景
 
 在本文中，我们将设置一个解决方案，方便用户使用 Elastic Stack 来可视化网络安全组流日志。  将使用 Logstash 输入插件直接从已配置为存储流日志的存储 Blob 获取流日志。 然后使用 Elastic Stack 为流日志编制索引并将这些日志用于创建 Kibana 仪表板，实现信息的可视化。
 
@@ -239,7 +239,7 @@ sudo /etc/init.d/logstash start
 
 用户可以使用仪表板顶部的查询栏，根据流的任何参数（例如订阅 ID、资源组、规则或者任何其他感兴趣的变量）对仪表板的内容进行筛选。 有关 Kibana 的查询和筛选器的详细信息，请参阅[正式文档](https://www.elastic.co/guide/en/beats/packetbeat/current/kibana-queries-filters.html)
 
-## <a name="conclusion"></a>结论
+## <a name="conclusion"></a>结束语
 
 通过将网络安全组流日志与 Elastic Stack 组合使用，我们提出了一种用于可视化网络流量的方式，该方式功能强大并且可以自定义。 用户可以通过这些仪表板快速获取和共享针对网络流量的见解，并且可以通过筛选来调查任何潜在的异常问题。 使用 Kibana 时，用户可以根据安全、审核和符合性需要对这些仪表板进行定制，打造特定的可视化效果。
 

@@ -13,10 +13,10 @@ origin.date: 03/25/2019
 ms.date: 02/17/2020
 ms.custom: seo-javascript-september2019, seo-javascript-october2019
 ms.openlocfilehash: ba2ad4d7883e78736377bce06e680dbecb8da3f3
-ms.sourcegitcommit: d7b86a424b72849fe8ed32893dd05e4696e4fe85
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77155735"
 ---
 # <a name="quickstart-use-nodejs-to-query-an-azure-sql-database"></a>快速入门：使用 Node.js 查询 Azure SQL 数据库
@@ -29,17 +29,17 @@ ms.locfileid: "77155735"
 - 一个 [Azure SQL 数据库](sql-database-single-database-get-started.md)
 - [Node.js](https://nodejs.org) 相关软件
 
-  # <a name="macostabmacos"></a>[macOS](#tab/macos)
+  # <a name="macos"></a>[macOS](#tab/macos)
 
-  执行 [Create Node.js apps using SQL Server on macOS](https://www.microsoft.com/sql-server/developer-get-started/node/mac/)（使用 macOS 上的 SQL Server 创建 Node.js 应用）中的步骤 **1.2** 和 **1.3**，先安装 Homebrew 和 Node.js，然后安装 ODBC 驱动程序和 SQLCMD。
+  执行 **Create Node.js apps using SQL Server on macOS**（使用 macOS 上的 SQL Server 创建 Node.js 应用）中的步骤 **1.2** 和 [1.3](https://www.microsoft.com/sql-server/developer-get-started/node/mac/)，先安装 Homebrew 和 Node.js，然后安装 ODBC 驱动程序和 SQLCMD。
 
-  # <a name="ubuntutabubuntu"></a>[Ubuntu](#tab/ubuntu)
+  # <a name="ubuntu"></a>[Ubuntu](#tab/ubuntu)
 
-  执行 [Create Node.js apps using SQL Server on Ubuntu](https://www.microsoft.com/sql-server/developer-get-started/node/ubuntu/)（使用 Ubuntu 上的 SQL Server 创建 Node.js 应用）中的步骤 **1.2** 和 **1.3**，先安装 Node.js，然后安装 ODBC 驱动程序和 SQLCMD。
+  执行 **Create Node.js apps using SQL Server on Ubuntu**（使用 Ubuntu 上的 SQL Server 创建 Node.js 应用）中的步骤 **1.2** 和 [1.3](https://www.microsoft.com/sql-server/developer-get-started/node/ubuntu/)，先安装 Node.js，然后安装 ODBC 驱动程序和 SQLCMD。
 
-  # <a name="windowstabwindows"></a>[Windows](#tab/windows)
+  # <a name="windows"></a>[Windows](#tab/windows)
 
-  执行 [Create Node.js apps using SQL Server on Windows](https://www.microsoft.com/sql-server/developer-get-started/node/windows/)（使用 Windows 上的 SQL Server 创建 Node.js 应用）中的步骤 **1.2** 和 **1.3**，先安装 Chocolatey 和 Node.js，然后安装 ODBC 驱动程序和 SQLCMD。
+  执行 **Create Node.js apps using SQL Server on Windows**（使用 Windows 上的 SQL Server 创建 Node.js 应用）中的步骤 **1.2** 和 [1.3](https://www.microsoft.com/sql-server/developer-get-started/node/windows/)，先安装 Chocolatey 和 Node.js，然后安装 ODBC 驱动程序和 SQLCMD。
 
   ---
 
@@ -57,7 +57,7 @@ ms.locfileid: "77155735"
 
 获取连接到 Azure SQL 数据库所需的连接信息。 在后续过程中，将需要完全限定的服务器名称或主机名称、数据库名称和登录信息。
 
-1. 登录到 [Azure 门户](https://portal.azure.cn/)。
+1. 登录 [Azure 门户](https://portal.azure.cn/)。
 
 2. 转到“SQL 数据库”或“SQL 托管实例”页。  
 
@@ -65,7 +65,7 @@ ms.locfileid: "77155735"
 
 ## <a name="create-the-project"></a>创建项目
 
-打开命令提示符，并创建一个名为 *sqltest* 的文件夹。 打开已创建的文件夹，并运行以下命令：
+打开命令提示符，然后创建一个名为 sqltest 的文件夹  。 打开已创建的文件夹，并运行以下命令：
 
   ```bash
   npm init -y

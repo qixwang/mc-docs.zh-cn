@@ -8,10 +8,10 @@ ms.date: 01/13/2020
 ms.author: v-yeche
 ms.custom: mvc
 ms.openlocfilehash: 7f12384fdb2fa38003dd2b0e101afb9209d6b2cb
-ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75742027"
 ---
 # <a name="tutorial-configure-a-jenkins-environment-to-enable-cicd-for-a-java-application-on-service-fabric"></a>教程：配置 Jenkins 环境以便为 Service Fabric 上的 Java 应用程序启用 CI/CD
@@ -24,7 +24,7 @@ ms.locfileid: "75742027"
 > * 设置要部署到 Service Fabric 的 Jenkins 环境
 > * 升级应用程序
 
-在此系列教程中，你将学习如何：
+在此系列教程中，你会学习如何：
 > [!div class="checklist"]
 > * [生成 Java Service Fabric Reliable Services 应用程序](service-fabric-tutorial-create-java-app.md)
 > * [在本地群集上部署和调试应用程序](service-fabric-tutorial-debug-log-local-cluster.md)
@@ -79,21 +79,21 @@ ms.locfileid: "75742027"
 
 1. 首先，如果没有可用于在 GitHub 上托管投票项目的存储库，请创建一个存储库。 在本教程的余下内容中，此存储库名为 **dev_test**。
 
-1. 在 ``http://<HOST-IP>:8080`` 的 Jenkins 仪表板上创建一个**新项**。
+1. 在  **的 Jenkins 仪表板上创建一个**新项``http://<HOST-IP>:8080``。
 
-1. 输入项名称（例如 MyJob  ）。 选择“自由格式的项目”，并单击“确定”。  
+1. 输入项名称（例如 **MyJob**）。 选择“自由格式的项目”，并单击“确定”。  
 
 1. 转到作业页，单击“配置”。 
 
     a. 在常规部分中，选择“GitHub 项目”所对应的复选框，指定 GitHub 项目 URL。  此 URL 托管要与 Jenkins 持续集成和持续部署 (CI/CD) 流（例如 ``https://github.com/testaccount/dev_test``）集成的 Service Fabric Java 应用程序。
 
-    b. 在“源代码管理”  部分，选择 **Git**。 指定用于托管要与 Jenkins CI/CD 流（例如 *https://github.com/testaccount/dev_test.git* ）集成的 Service Fabric Java 应用程序的存储库 URL。 也可在此处指定要生成的分支（例如 /master  ）。
+    b. 在“源代码管理”  部分，选择 **Git**。 指定用于托管要与 Jenkins CI/CD 流（例如 *https://github.com/testaccount/dev_test.git* ）集成的 Service Fabric Java 应用程序的存储库 URL。 也可在此处指定要生成的分支（例如 **/master**）。
 
-1. 配置 GitHub  （存储库的托管位置），使它能够与 Jenkins 通信。 使用以下步骤：
+1. 配置 *GitHub*（存储库的托管位置），使它能够与 Jenkins 通信。 请使用以下步骤：
 
     a. 转到 GitHub 存储库页。 转到“设置”   >   “集成和服务”。
 
-    b. 选择“添加服务”，键入 Jenkins  ，并选择“Jenkins-GitHub 插件”。  
+    b. 选择“添加服务”，键入 **Jenkins**，并选择“Jenkins-GitHub 插件”。  
 
     c. 输入 Jenkins Webhook URL（默认为 ``http://<PublicIPorFQDN>:8081/github-webhook/``）。 单击“添加/更新服务”。 
 
@@ -121,7 +121,7 @@ ms.locfileid: "75742027"
 
 ## <a name="update-your-existing-application"></a>更新现有应用程序
 
-1. 使用 **Service Fabric 投票示例 V2** 更新 *VotingApplication/VotingWebPkg/Code/wwwroot/index.html* 文件中 HTML 的标题。
+1. 使用 *Service Fabric 投票示例 V2* 更新 **VotingApplication/VotingWebPkg/Code/wwwroot/index.html** 文件中 HTML 的标题。
 
     ```html
     <div ng-app="VotingApp" ng-controller="VotingAppController" ng-init="refresh()">
@@ -135,7 +135,7 @@ ms.locfileid: "75742027"
     </div>
     ```
 
-1. 在 *Voting/VotingApplication/ApplicationManifest.xml* 文件中，将 **ApplicationTypeVersion** 和 **ServiceManifestVersion** 版本更新为 **2.0.0**。
+1. 在 **Voting/VotingApplication/ApplicationManifest.xml** 文件中，将 **ApplicationTypeVersion** 和 **ServiceManifestVersion** 版本更新为 *2.0.0*。
 
     ```xml
     <?xml version="1.0" encoding="utf-8" standalone="no"?>
@@ -162,7 +162,7 @@ ms.locfileid: "75742027"
     </ApplicationManifest>
     ```
 
-1. 在 *Voting/VotingApplication/VotingWebPkg/ServiceManifest.xml* 文件中，将 **ServiceManifest** 中的 **Version** 字段以及 **CodePackage** 标记中的 **Version** 字段更新为 **2.0.0**。
+1. 在 **Voting/VotingApplication/VotingWebPkg/ServiceManifest.xml** 文件中，将 **ServiceManifest** 中的 **Version** 字段以及 **CodePackage** 标记中的 *Version* 字段更新为 **2.0.0**。
 
     ```xml
     <CodePackage Name="Code" Version="2.0.0">
@@ -186,7 +186,7 @@ ms.locfileid: "75742027"
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，你已学习了如何执行以下操作：
+在本教程中，你了解了如何执行以下操作：
 
 > [!div class="checklist"]
 > * 在计算机上部署 Service Fabric Jenkins 容器

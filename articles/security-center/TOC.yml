@@ -19,9 +19,9 @@
       href: security-center-compliance-dashboard.md
 - name: 概念
   items:
-    - name: 数据安全性
+    - name: 数据安全
       href: security-center-data-security.md
-- name: 操作指南
+- name: 操作方法指南
   items:
     - name: 保护应用服务
       href: security-center-app-services.md
@@ -40,13 +40,13 @@
       href: 'https://www.azure.cn/zh-cn/what-is-new/'
 - name: 资源
   items:
-    - name: 常见问题
+    - name: 常见问题解答
       href: security-center-faq.md
     - name: Azure 安全性
       href: /security/
     - name: Azure 安全性、隐私性与合规性博客
       href: 'https://blogs.msdn.com/b/azuresecurity/'
-    - name: Stack Overflow
+    - name: 堆栈溢出
       href: 'https://stackoverflow.com/search?q=security-center'
     - name: 定价
       href: /pricing/details/security-center/

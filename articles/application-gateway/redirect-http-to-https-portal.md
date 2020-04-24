@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 02/10/2020
 ms.author: v-junlch
 ms.openlocfilehash: 67bd95bf3801fba5fefe5faf5fe6be720fe2a2a2
-ms.sourcegitcommit: f388b7b1cdfe06ebda7d9c21cf39943611b62a75
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77155558"
 ---
 # <a name="create-an-application-gateway-with-http-to-https-redirection-using-the-azure-portal"></a>使用 Azure 门户创建支持 HTTP 到 HTTPS 重定向的应用程序网关
@@ -31,7 +31,7 @@ ms.locfileid: "77155558"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-本教程需要 Azure PowerShell 模块 1.0.0 或更高版本以创建证书并安装 IIS。 运行 `Get-Module -ListAvailable Az` 即可查找版本。 如果需要进行升级，请参阅 [Install Azure PowerShell module](https://docs.microsoft.com/powershell/azure/install-az-ps)（安装 Azure PowerShell 模块）。 若要运行本教程中的命令，还需要运行 `Connect-AzAccount -Environment AzureChinaCloud` 以创建与 Azure 的连接。
+本教程需要 Azure PowerShell 模块 1.0.0 或更高版本以创建证书并安装 IIS。 运行 `Get-Module -ListAvailable Az` 即可查找版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-az-ps)。 若要运行本教程中的命令，还需要运行 `Connect-AzAccount -Environment AzureChinaCloud` 以创建与 Azure 的连接。
 
 ## <a name="create-a-self-signed-certificate"></a>创建自签名证书
 
@@ -126,7 +126,7 @@ Export-PfxCertificate `
 6. 对于“重定向目标”  ，选择“侦听器”  。
 7. 确保“目标侦听器”  设置为“appGatewayHttpListener”  。
 8. 对于“包含查询字符串”  和“包含路径”  ，请选择“是”  。
-9. 选择“添加”   。
+9. 选择 **添加** 。
 
 ## <a name="create-a-virtual-machine-scale-set"></a>创建虚拟机规模集
 
@@ -157,13 +157,13 @@ Export-PfxCertificate `
 3. 选择“后端池”  。
 4. 选择“myAppGatewaymyvmss”  。
 5. 选择“从后端池中删除所有目标”  。
-6. 选择“保存”  。
+6. 选择“保存”。 
 7. 此过程完成之后，选择“myAppGatewaymyvmss”  后端池，选择“删除”  ，然后选择“确定”  以确认。
 8. 选择“appGatewayBackendPool”  。
 9. 在“目标”  下，选择“VMSS”  。
 10. 在“VMSS”  下，选择“myvmss”  。
 11. 在“网络接口配置”  下，选择“myvmssNic”  。
-12. 选择“保存”  。
+12. 选择“保存”。 
 
 ### <a name="upgrade-the-scale-set"></a>升级规模集
 

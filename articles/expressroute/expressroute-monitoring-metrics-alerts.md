@@ -9,10 +9,10 @@ origin.date: 08/22/2019
 ms.date: 01/20/2020
 ms.author: v-yiso
 ms.openlocfilehash: 0f6624f7ac36f13529b1004124fe3664cd55030f
-ms.sourcegitcommit: a890a9cca495d332c9f3f53ff3a5259fd5f0c275
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75859746"
 ---
 # <a name="expressroute-monitoring-metrics-and-alerts"></a>ExpressRoute 监视、指标和警报

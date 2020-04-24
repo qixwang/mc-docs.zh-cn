@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
 ms.openlocfilehash: 2501a8512aa4e4d5d83bee033f634e3f7c502da7
-ms.sourcegitcommit: 888cbc10f2348de401d4839a732586cf266883bf
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77028287"
 ---
 # <a name="tutorial-grant-access-to-an-aspnet-core-web-api-from-a-single-page-application-using-azure-active-directory-b2c"></a>教程：从单页应用程序使用 Azure Active Directory B2C 授予对 ASP.NET Core Web API 的访问权限
@@ -30,7 +30,7 @@ ms.locfileid: "77028287"
 > * 授予 Web API 权限
 > * 将示例配置为使用此应用程序
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * 完成[教程：使用 Azure Active Directory B2C 在单页应用程序中启用身份验证](tutorial-single-page-app.md)。
 * Visual Studio 2019 或更高版本，或 Visual Studio Code

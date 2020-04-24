@@ -10,10 +10,10 @@ origin.date: 01/30/2019
 ms.date: 02/10/2020
 ms.author: v-yeche
 ms.openlocfilehash: c2bdd82477888ebedb549c77c3da2982700d1c05
-ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77028725"
 ---
 # <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>.NET 更改源处理器 SDK：下载和发行说明
@@ -46,7 +46,7 @@ ms.locfileid: "77028725"
 <!-- Not Available on ## Release notes -->
 <!-- Not Avaialble on ## Release & Retirement dates -->
 
-## <a name="faq"></a>常见问题
+## <a name="faq"></a>常见问题解答
 
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 

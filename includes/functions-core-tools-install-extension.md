@@ -9,10 +9,10 @@ ms.date: 01/14/2020
 ms.author: v-junlch
 ms.custom: include file
 ms.openlocfilehash: 4e5a9bfce7234fc818254463f5d090e6e7d618ef
-ms.sourcegitcommit: 48d51745ca18de7fa05b77501b4a9bf16cea2068
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "76116838"
 ---
 ## <a name="register-extensions"></a>注册扩展

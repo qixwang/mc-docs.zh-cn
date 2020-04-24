@@ -7,10 +7,10 @@ origin.date: 02/28/2018
 ms.date: 01/13/2020
 ms.author: v-yeche
 ms.openlocfilehash: 8a8fcfbed9aa028d926887f734b24f906291505e
-ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75742437"
 ---
 # <a name="add-custom-service-fabric-health-reports"></a>添加自定义 Service Fabric 运行状况报告

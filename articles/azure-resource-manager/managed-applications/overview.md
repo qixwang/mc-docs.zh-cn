@@ -7,10 +7,10 @@ origin.date: 07/12/2019
 ms.date: 01/20/2020
 ms.author: v-yeche
 ms.openlocfilehash: c762f402e0dfbe7c1856c8c7748f755066dfe456
-ms.sourcegitcommit: 8de025ca11b62e06ba3762b5d15cc577e0c0f15d
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "76170755"
 ---
 # <a name="azure-managed-applications-overview"></a>Azure 托管应用程序概述

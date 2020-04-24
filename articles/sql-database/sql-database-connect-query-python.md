@@ -13,10 +13,10 @@ ms.reviewer: ''
 origin.date: 03/25/2019
 ms.date: 02/17/2020
 ms.openlocfilehash: c496938e282e40c8b8748d828acf9fe3f81ec2e4
-ms.sourcegitcommit: d7b86a424b72849fe8ed32893dd05e4696e4fe85
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77155685"
 ---
 # <a name="quickstart-use-python-to-query-an-azure-sql-database"></a>快速入门：使用 Python 查询 Azure SQL 数据库
@@ -29,13 +29,13 @@ ms.locfileid: "77155685"
 - 一个 [Azure SQL 数据库](sql-database-single-database-get-started.md)
 - [Python](https://python.org/downloads) 3 和相关软件
 
-  # <a name="macostabmacos"></a>[macOS](#tab/macos)
+  # <a name="macos"></a>[macOS](#tab/macos)
 
-  若要安装 Homebrew 和 Python、ODBC 驱动程序和 SQLCMD 以及适用于 SQL Server 的 Python 驱动程序，请使用[在 macOS 上创建使用 SQL Server 的 Python 应用](https://www.microsoft.com/sql-server/developer-get-started/python/mac/)中的步骤 **1.2**、**1.3** 和 **2.1**。
+  若要安装 Homebrew 和 Python、ODBC 驱动程序和 SQLCMD 以及适用于 SQL Server 的 Python 驱动程序，请使用**在 macOS 上创建使用 SQL Server 的 Python 应用**中的步骤 **1.2**、**1.3** 和 [2.1](https://www.microsoft.com/sql-server/developer-get-started/python/mac/)。
 
   有关更多信息，请参阅 [macOS 上的 Microsoft ODBC 驱动程序](https://docs.microsoft.com/sql/connect/odbc/linux-mac/installing-the-microsoft-odbc-driver-for-sql-server)。
 
-  # <a name="ubuntutabubuntu"></a>[Ubuntu](#tab/ubuntu)
+  # <a name="ubuntu"></a>[Ubuntu](#tab/ubuntu)
 
   若要安装 Python 和其他所需的包，请使用 `sudo apt-get install python python-pip gcc g++ build-essential`。
 
@@ -43,7 +43,7 @@ ms.locfileid: "77155685"
 
   有关更多信息，请参阅 [Linux 上的 Microsoft ODBC 驱动程序](https://docs.microsoft.com/sql/connect/odbc/linux-mac/installing-the-microsoft-odbc-driver-for-sql-server)。
 
-  # <a name="windowstabwindows"></a>[Windows](#tab/windows)
+  # <a name="windows"></a>[Windows](#tab/windows)
 
   若要安装 Python、ODBC 驱动程序、SQLCMD 以及适用于 SQL Server 的 Python 驱动程序，请参阅[配置 pyodbc Python 开发环境](https://docs.microsoft.com/sql/connect/python/pyodbc/step-1-configure-development-environment-for-pyodbc-python-development#windows)。
 
@@ -67,7 +67,7 @@ ms.locfileid: "77155685"
 
 获取连接到 Azure SQL 数据库所需的连接信息。 在后续过程中，将需要完全限定的服务器名称或主机名称、数据库名称和登录信息。
 
-1. 登录到 [Azure 门户](https://portal.azure.cn/)。
+1. 登录 [Azure 门户](https://portal.azure.cn/)。
 
 2. 转到“SQL 数据库”或“SQL 托管实例”页。  
 

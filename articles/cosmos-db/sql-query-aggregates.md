@@ -8,10 +8,10 @@ origin.date: 12/02/2019
 ms.date: 02/10/2020
 ms.author: v-yeche
 ms.openlocfilehash: c1e1906b911381a1fc55462d5a736bb8ae2d2695
-ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77028714"
 ---
 # <a name="aggregate-functions-in-azure-cosmos-db"></a>Azure Cosmos DB 中的聚合函数
@@ -68,8 +68,8 @@ SQL API 支持以下聚合函数。 SUM 和 AVG 针对数字值执行运算，CO
 |-------|-------------|
 | COUNT | 在表达式中返回项的数目。 |
 | SUM   | 在表达式中返回所有值的总和。 |
-| 最小值   | 在表达式中返回最小值。 |
-| MAX   | 在表达式中返回最大值。 |
+| 最小值   | 返回表达式中的最小值。 |
+| MAX   | 返回表达式中的最大值。 |
 | 平均值   | 在表达式中返回多个值的平均值。 |
 
 还可以基于数组迭代的结果进行聚合。

@@ -7,10 +7,10 @@ origin.date: 10/25/2017
 ms.date: 01/20/2020
 ms.author: v-yeche
 ms.openlocfilehash: 4cee4a0b41d8d92b158cd4aba5e3a2b343801efc
-ms.sourcegitcommit: 8de025ca11b62e06ba3762b5d15cc577e0c0f15d
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "76170630"
 ---
 # <a name="azure-cli-samples"></a>Azure CLI 示例

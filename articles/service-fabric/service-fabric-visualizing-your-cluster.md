@@ -7,10 +7,10 @@ origin.date: 01/24/2019
 ms.date: 01/13/2020
 ms.author: v-yeche
 ms.openlocfilehash: a6f292a89d4a0044ebe2d3d50a57d7a6f36d9cdd
-ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75741929"
 ---
 # <a name="visualize-your-cluster-with-service-fabric-explorer"></a>使用 Service Fabric Explorer 可视化群集
@@ -55,8 +55,8 @@ Service Fabric Explorer 同时在 Service Fabric 群集的 HTTP 管理终结点�
 
 如果尝试连接到安全群集，则将需提供客户端证书或使用 AAD 登录，具体取决于群集的配置。
 
-## <a name="understand-the-service-fabric-explorer-layout"></a>了解 Service Fabric Explorer 布局
-可以使用左侧的树导航 Service Fabric Explorer。 在树根中，群集仪表板提供了群集的概述，包括应用程序和节点运行状况的摘要。
+## <a name="understand-the-service-fabric-explorer-layout"></a>了解 SService Fabric Explorer 的布局
+可以使用左侧的树来导航 Service Fabric Explorer。 在树根中，群集仪表板提供了群集的概述，包括应用程序和节点运行状况的摘要。
 
 ![Service Fabric Explorer 群集仪表板][sfx-cluster-dashboard]
 
@@ -68,13 +68,13 @@ Service Fabric 群集中的节点横跨容错域和升级域的二维网格放�
 ### <a name="view-applications-and-services"></a>查看应用程序和服务
 群集包含两个子树：一个用于应用程序，另一个用于节点。
 
-可以使用应用程序视图导航 Service Fabric 的逻辑层次结构：应用程序、服务、分区和副本。
+可以使用应用程序视图来导航 Service Fabric 的逻辑层次结构：应用程序、服务、分区和副本。
 
-在以下示例中，应用程序 MyApp 由两个服务 MyStatefulService 与 WebService 组成    。 由于 **MyStatefulService** 是有状态的，因此它包含一个分区，其中有一个主要副本和两个次要副本。 相反，WebSvcService 是无状态的，只包含单个实例。
+在以下示例中，应用程序 **MyApp** 由两个服务 **MyStatefulService** 与 **WebService** 组成。 由于 **MyStatefulService** 是有状态的，因此它包含一个分区，其中有一个主副本和两个辅助副本。 相反，WebSvcService 是无状态的，只包含单个实例。
 
 ![Service Fabric Explorer 应用程序视图][sfx-application-tree]
 
-在树的每个级别，主窗格显示有关项目的信息。 例如，可以看到特定服务的运行状况状态和版本。
+在树的每个级别，主窗格显示有关项目的信息。 例如，可以看到特定服务的运行状况和版本。
 
 ![Service Fabric Explorer 基本信息窗格][sfx-service-essentials]
 
@@ -84,18 +84,18 @@ Service Fabric 群集中的节点横跨容错域和升级域的二维网格放�
 ## <a name="actions"></a>操作
 Service Fabric Explorer 提供用于对群集中的节点、应用程序和服务快速调用操作的方式。
 
-例如，若要删除某应用程序实例，只需从左侧树中选择该应用程序，然后选择“操作” > “删除应用程序”   。
+例如，要删除某应用程序实例，只需从左侧树中选择该应用程序，并选择“操作”   > “删除应用程序”  。
 
-![在 Service Fabric Explorer 中删除应用程序][sfx-delete-application]
+![Service Fabric Explorer 中删除应用程序][sfx-delete-application]
 
 > [!TIP]
-> 可以通过单击每个元素旁边的省略号执行相同的操作。
+> 可以通过单击每个元素旁边的省略号来执行相同的操作。
 >
 > 可以通过 Service Fabric Explorer 执行的每个操作也可以通过 PowerShell 或 REST API 执行，以实现自动化。
 >
 >
 
-还可使用 Service Fabric Explorer 为给定应用程序类型和版本创建应用程序实例。 在树视图中选择应用程序类型，并在右侧窗格中单击所需版本旁边的“创建应用实例”  链接。
+还可使用 Service Fabric Explorer 为给定应用程序类型和版本创建应用程序实例。 在树视图中选择应用程序类型，在右窗格中单击想要的版本旁边的“**创建应用实例**”链接。
 
 ![在 Service Fabric Explorer 中创建应用程序实例][sfx-create-app-instance]
 

@@ -8,27 +8,27 @@ origin.date: 05/31/2019
 ms.date: 02/10/2020
 ms.author: v-yeche
 ms.openlocfilehash: d79bf09362c349435705b4366a957fbb1c944333
-ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77028680"
 ---
 # <a name="azure-cosmos-db-sql-query-constants"></a>Azure Cosmos DB SQL 查询常量  
 
-常量也称为文本或标量值，是一个表示特定数据值的符号。 常量的格式取决于它表示的值的数据类型。  
+常量，也称为文字值或标量值，是表示一个特定数据值的符号。 常量的格式取决于它所表示的值的数据类型。  
 
-**支持的标量数据类型：**  
+受支持的标量数据类型：   
 
-|**类型**|**值顺序**|  
+|类型 |值顺序 |  
 |-|-|  
-|**Undefined**|单一值：**undefined**|  
-|**Null**|单一值：**null**|  
-|**布尔值**|值：**false**、**true**。|  
-|**数字**|双精度浮点数，按 IEEE 754 标准。|  
-|**字符串**|由零个或多个 Unicode 字符构成的序列。 字符串必须括在单引号或双引号中。|  
-|**数组**|由零个或多个元素构成的序列。 每个元素可以是任何标量数据类型的值，但 **Undefined** 除外。|  
-|**Object**|由零个或多个名称/值对构成的无序集。 名称是一个 Unicode 字符串，值可以是任何标量数据类型，但 **Undefined** 除外。|  
+|未定义 |单个值：未定义 |  
+|**Null**|单个值：null |  
+|**布尔值**|值："false"、"true"   。|  
+|**数字**|双精度浮点数，IEEE 754 标准。|  
+|**字符串**|零个或多个 Unicode 字符序列。 字符串必须用单引号或双引号括起来。|  
+|数组 |零个或多个元素序列。 每个元素可以是任何标量数据类型的值，但 **Undefined** 除外。|  
+|**Object**|零个或多个名称/值对的无序集。 当名称为一个Unicode字符串，值可以属于任何标量数据类型，“未定义”除外  。|  
 
 <a name="bk_syntax"></a>
 ## <a name="syntax"></a>语法
@@ -66,27 +66,27 @@ ms.locfileid: "77028680"
 
 * `<undefined_constant>; Undefined`  
 
-    表示类型为 Undefined 的未定义值。  
+    表示 Undefined 类型的未定义值。  
 
 * `<null_constant>; null`  
 
-    表示类型为 **Null** 的 **null** 值。  
+    表示 Null 类型的 null 值   。  
 
 * `<boolean_constant>`  
 
-    表示类型为 Boolean 的常量。  
+    表示 Boolean 类型的常数。  
 
 * `false`  
 
-    表示类型为 Boolean 的 **false** 值。  
+    表示 Boolean 类型的 false 值  。  
 
 * `true`  
 
-    表示类型为 Boolean 的 **true** 值。  
+    表示 Boolean 类型的 true 值  。  
 
 * `<number_constant>`  
 
-    表示一个常量。  
+    表示常数。  
 
 * `decimal_literal`  
 
@@ -94,11 +94,11 @@ ms.locfileid: "77028680"
 
 * `hexadecimal_literal`  
 
-    十六进制文本是使用前缀“0x”和后跟的一个或多个十六进制数位表示的数字。  
+    十六进制文本是使用 "0x" 前缀表示的数字，后跟一个或多个十六进制数字。  
 
 * `<string_constant>`  
 
-    表示类型为 String 的常量。  
+    表示字符串类型的常数。  
 
 * `string _literal`  
 
@@ -112,16 +112,16 @@ ms.locfileid: "77028680"
 |\\"|引号 (")|U+0022|  
 |\\\ |反斜线号 (\\)|U+005C|  
 |\\/|斜线号 (/)|U+002F|  
-|\b|退格键|U+0008|  
+|\b|退格符|U+0008|  
 |\f|换页符|U+000C|  
 |\n|换行符|U+000A|  
-|\r|回车键|U+000D|  
-|\t|tab 键|U+0009|  
-|\uXXXX|由 4 个十六进制数位定义的 Unicode 字符。|U+XXXX|  
+|\r|回车符|U+000D|  
+|\t|Tab|U+0009|  
+|\uXXXX|由 4 个十六进制数字定义的 Unicode 字符。|U+XXXX|  
 
 ## <a name="next-steps"></a>后续步骤
 
-- [Azure Cosmos DB .NET 示例](https://github.com/Azure/azure-cosmos-dotnet-v3)
+- [Azure Cosmos DB.NET 示例](https://github.com/Azure/azure-cosmos-dotnet-v3)
 - [模型文档数据](modeling-data.md)
 
 <!-- Update_Description: update meta properties, wording update, update link -->

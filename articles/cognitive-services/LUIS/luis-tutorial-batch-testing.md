@@ -13,10 +13,10 @@ origin.date: 12/19/2019
 ms.date: 1/2/2020
 ms.author: v-lingwu
 ms.openlocfilehash: 923d765e10f3bad4a5fc59863a912c84c61873b2
-ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75857477"
 ---
 # <a name="tutorial-batch-test-data-sets"></a>教程：成批测试数据集

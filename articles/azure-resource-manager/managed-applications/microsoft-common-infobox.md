@@ -7,10 +7,10 @@ origin.date: 06/15/2018
 ms.date: 01/20/2020
 ms.author: v-yeche
 ms.openlocfilehash: bd07ef0c426582685bc2d4d5029168214d068e53
-ms.sourcegitcommit: 8de025ca11b62e06ba3762b5d15cc577e0c0f15d
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "76170680"
 ---
 # <a name="microsoftcommoninfobox-ui-element"></a>Microsoft.Common.InfoBox UI 元素

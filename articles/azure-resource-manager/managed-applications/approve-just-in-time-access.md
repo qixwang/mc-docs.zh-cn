@@ -7,10 +7,10 @@ origin.date: 06/03/2019
 ms.date: 01/20/2020
 ms.author: v-yeche
 ms.openlocfilehash: b95af2a5ffdbdc5c958940e0482758c2a234d830
-ms.sourcegitcommit: 8de025ca11b62e06ba3762b5d15cc577e0c0f15d
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "76170641"
 ---
 # <a name="configure-and-approve-just-in-time-access-for-azure-managed-applications"></a>配置和批准对 Azure 托管应用程序的实时访问
@@ -36,7 +36,7 @@ ms.locfileid: "76170641"
 
 ## <a name="enable-during-deployment"></a>在部署期间启用
 
-1. 登录到 [Azure 门户](https://portal.azure.cn)。
+1. 登录 [Azure 门户](https://portal.azure.cn)。
 
 1. 查找启用了 JIT 的托管应用程序的市场项。 选择“创建”  。
 

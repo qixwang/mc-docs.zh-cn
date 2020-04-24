@@ -13,10 +13,10 @@ origin.date: 03/25/2019
 ms.date: 02/17/2020
 ms.custom: seo-java-july2019. seo-java-august2019
 ms.openlocfilehash: ed7e35727d656af7713cd7a0e8b63d253caf69fc
-ms.sourcegitcommit: d7b86a424b72849fe8ed32893dd05e4696e4fe85
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77155686"
 ---
 # <a name="quickstart-use-java-to-query-an-azure-sql-database"></a>快速入门：使用 Java 查询 Azure SQL 数据库
@@ -29,17 +29,17 @@ ms.locfileid: "77155686"
 - 一个 [Azure SQL 数据库](sql-database-single-database-get-started.md)
 - [Java](https://docs.microsoft.com/sql/connect/jdbc/microsoft-jdbc-driver-for-sql-server) 相关的软件
 
-  # <a name="macostabmacos"></a>[macOS](#tab/macos)
+  # <a name="macos"></a>[macOS](#tab/macos)
 
-  安装 Homebrew 和 Java，然后使用[在 macOS 上创建使用 SQL Server 的 Java 应用](https://www.microsoft.com/sql-server/developer-get-started/java/mac/)中的步骤 **1.2** 和 **1.3** 安装 Maven。
+  安装 Homebrew 和 Java，然后使用**在 macOS 上创建使用 SQL Server 的 Java 应用**中的步骤 **1.2** 和 [1.3](https://www.microsoft.com/sql-server/developer-get-started/java/mac/) 安装 Maven。
 
-  # <a name="ubuntutabubuntu"></a>[Ubuntu](#tab/ubuntu)
+  # <a name="ubuntu"></a>[Ubuntu](#tab/ubuntu)
 
-  安装 Java 和 Java 开发工具包，然后使用[在 Ubuntu 上创建使用 SQL Server 的 Java 应用](https://www.microsoft.com/sql-server/developer-get-started/java/ubuntu/)中的步骤 **1.2**、**1.3** 和 **1.4** 安装 Maven。
+  安装 Java 和 Java 开发工具包，然后使用**在 Ubuntu 上创建使用 SQL Server 的 Java 应用**中的步骤 **1.2**、**1.3** 和 [1.4](https://www.microsoft.com/sql-server/developer-get-started/java/ubuntu/) 安装 Maven。
 
-  # <a name="windowstabwindows"></a>[Windows](#tab/windows)
+  # <a name="windows"></a>[Windows](#tab/windows)
 
-  安装 Java，然后使用[在 Windows 上创建使用 SQL Server 的 Java 应用](https://www.microsoft.com/sql-server/developer-get-started/java/windows/)中的步骤 **1.2** 和 **1.3** 安装 Maven。
+  安装 Java，然后使用**在 Windows 上创建使用 SQL Server 的 Java 应用**中的步骤 **1.2** 和 [1.3](https://www.microsoft.com/sql-server/developer-get-started/java/windows/) 安装 Maven。
 
   ---
 
@@ -57,7 +57,7 @@ ms.locfileid: "77155686"
 
 获取连接到 Azure SQL 数据库所需的连接信息。 在后续过程中，将需要完全限定的服务器名称或主机名称、数据库名称和登录信息。
 
-1. 登录到 [Azure 门户](https://portal.azure.cn/)。
+1. 登录 [Azure 门户](https://portal.azure.cn/)。
 
 2. 选择“SQL 数据库”  或打开“SQL 托管实例”  页。
 
@@ -81,7 +81,7 @@ ms.locfileid: "77155686"
     </dependency>
     ```
 
-1. 另外，在 pom.xml  中添加项目的以下属性。 如果没有 properties 节，可以将其添加到 dependencies 后面。
+1. 另请在 pom.xml  中向项目添加以下属性。 如果没有 properties 节，可以将其添加到 dependencies 后面。
 
    ```xml
    <properties>

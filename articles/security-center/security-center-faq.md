@@ -15,10 +15,10 @@ origin.date: 03/19/2019
 ms.date: 06/22/2019
 ms.author: v-lingwu
 ms.openlocfilehash: 0dda408ece2140de79837e07773057079941dc24
-ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75857899"
 ---
 # <a name="azure-security-center-frequently-asked-questions-faq"></a>Azure 安全中心常见问题 (FAQ)
@@ -51,7 +51,7 @@ Azure 安全中心使用[基于角色的访问控制 (RBAC)](../role-based-acces
 安全中心从 Azure 虚拟机 (VM)、虚拟机规模集 (VMSS)、IaaS 容器和非 Azure（包括本地）计算机收集数据，以监视安全漏洞和威胁。 数据是使用 Azure Monitoring Agent 收集的，它从计算机中读取各种安全相关的配置和事件日志，然后将数据复制到工作区以进行分析。
 
 ### <a name="am-i-billed-for-azure-monitor-logs-on-the-workspaces-created-by-security-center"></a>安全中心创建的工作区中的 Azure Monitor 日志是否会产生费用？
-否。 由安全中心创建的并根据节点计费方式为 Azure Monitor 日志创建的工作区不会产生 Azure Monitor 日志费用。 安全中心的计费始终依据工作区上安装的以下安全中心安全策略和解决方案：
+不是。 由安全中心创建的并根据节点计费方式为 Azure Monitor 日志创建的工作区不会产生 Azure Monitor 日志费用。 安全中心的计费始终依据工作区上安装的以下安全中心安全策略和解决方案：
 
 - **免费层** – 安全中心在默认工作区中启用“SecurityCenterFree”解决方案。 免费层不会产生费用。
 - **标准层** – 安全中心在默认工作区中启用“Security”解决方案。
@@ -98,7 +98,7 @@ Windows 或 Linux IaaS VM 的合格条件如下：
    >
    >
 
-3. 选择“保存”  。
+3. 选择“保存”。 
 4. 选择“保存”  后，系统就会询问是否要重新配置受监视的 VM。
 
    - 如果只希望在新 VM 上应用  新的工作区设置，请选择“否”  。 新的工作区设置只会应用于新的代理安装；新发现的 VM 没有安装 Azure Monitoring Agent。
@@ -111,11 +111,11 @@ Windows 或 Linux IaaS VM 的合格条件如下：
 
    - 选择“取消”  ，以取消该操作。
 
-### 如果 Azure Monitoring Agent 已作为扩展安装到 VM 上，会怎样？<a name="mmaextensioninstalled"></a>
+### <a name="what-if-the-azure-monitoring-agent-was-already-installed-as-an-extension-on-the-vm"></a>如果 Azure Monitoring Agent 已作为扩展安装到 VM 上，会怎样？<a name="mmaextensioninstalled"></a>
 将 Monitoring Agent 作为扩展安装时，扩展配置仅允许向单个工作区报告。 安全中心不会覆盖用户工作区的现有连接。 安全中心将来自 VM 的安全数据存储在已连接的工作区中，前提是已在该工作区中安装“Security”或“SecurityCenterFree”解决方案。 在此过程中，安全中心可将扩展版本升级到最新版本。
 
 
-### 如果我的 Azure Monitoring Agent 直接安装在计算机上，而不是作为扩展（直接代理）安装的，会怎样？<a name="directagentinstalled"></a>
+### <a name="what-if-i-had-a-azure-monitoring-agent-is-directly-installed-on-the-machine-but-not-as-an-extension-direct-agent"></a>如果我的 Azure Monitoring Agent 直接安装在计算机上，而不是作为扩展（直接代理）安装的，会怎样？<a name="directagentinstalled"></a>
 如果直接在 VM 上安装 Azure Monitoring Agent（而不是作为 Azure 扩展安装），安全中心将会安装 Azure Monitoring Agent 扩展，并可能会将 Azure Monitoring Agent 升级到最新版本。
 安装的代理继续向已配置的工作区报告，此外，会向安全中心内配置的工作区报告（支持多宿主功能）。
 如果配置的工作区是用户工作区（而不是安全中心的默认工作区），则你需要在其上安装“Security”/“SecurityCenterFree”解决方案，这样，安全中心才会开始处理向该工作区报告的 VM 和计算机发来的事件。
@@ -124,7 +124,7 @@ Windows 或 Linux IaaS VM 的合格条件如下：
 
  有关详细信息，请参阅下一部分[如果已在 VM 上安装 System Center Operations Manager 或 OMS 直接代理，会发生什么情况？](#scomomsinstalled)
 
-### 如果我的 VM 上已安装 System Center Operations Manager (SCOM) 代理，会发生什么情况？<a name="scomomsinstalled"></a>
+### <a name="what-happens-if-a-system-center-operations-manager-scom-agent-is-already-installed-on-my-vm"></a>如果我的 VM 上已安装 System Center Operations Manager (SCOM) 代理，会发生什么情况？<a name="scomomsinstalled"></a>
 安全中心会安装 Azure Monitoring Agent 扩展，并保留现有的 System Center Operations Manager 代理。 正常情况下，现有的 SCOM 代理将继续向 System Center Operations Manager 服务器报告。 请注意，System Center Operations Manager 代理和 Azure Monitoring Agent 共享通用的运行时库，在此过程中，这些库会更新到最新版本。 请注意 - 如果已安装 System Center Operations Manager 代理版本 2012，请不要启用自动预配（如果 System Center Operations Manager 服务器的版本也是 2012，可能会失去管理功能）。
 
 ### <a name="what-is-the-impact-of-removing-these-extensions"></a>删除这些扩展会有什么影响？
@@ -170,7 +170,7 @@ Windows 或 Linux IaaS VM 的合格条件如下：
 
 安全中心将会根据选定的定价层在工作区中启用正确的解决方案。
 
-### 如何删除由安全中心安装的 OMS 扩展？<a name="remove-oms"></a>
+### <a name="how-do-i-remove-oms-extensions-installed-by-security-center"></a>如何删除由安全中心安装的 OMS 扩展？<a name="remove-oms"></a>
 可以手动删除 Azure Monitoring Agent。 不建议这样操作，因为这会限制安全中心的建议和提示。
 
 > [!NOTE]
@@ -213,7 +213,7 @@ Windows 或 Linux IaaS VM 的合格条件如下：
 ### <a name="where-is-my-data-stored"></a>我的数据存储在哪？
 通过此代理收集的数据存储在与订阅关联的现有 Log Analytics 工作区或新工作区中。 有关详细信息，请参阅[数据安全](security-center-data-security.md)。
 
-## 现有的 Azure Monitor 日志客户<a name="existingloganalyticscust"></a>
+## <a name="existing-azure-monitor-logs-customers"></a>现有的 Azure Monitor 日志客户<a name="existingloganalyticscust"></a>
 
 ### <a name="does-security-center-override-any-existing-connections-between-vms-and-workspaces"></a>安全中心是否会覆盖 VM 和工作区之间的任何现有连接？
 如果 VM 已将 Azure Monitoring Agent 作为 Azure 扩展进行安装，则安全中心不会覆盖现有工作区连接。 相反，安全中心会使用现有工作区。 如果在 VM 的报告目标工作区上安装了“Security”或“SecurityCenterFree”解决方案，则 VM 将受保护。 
@@ -271,7 +271,7 @@ Azure 安全中心自动从 Azure 资源、网络和合作伙伴解决方案（�
 * 对虚拟机的暴力破解攻击
 * 来自集成合作伙伴解决方案（例如反恶意软件或 Web 应用程序防火墙）的安全警报
 
-### 安全评分值为何会有变化？ <a name="secure-score-faq"></a>
+### <a name="why-did-secure-scores-values-change"></a>安全评分值为何会有变化？ <a name="secure-score-faq"></a>
 从 2019 年 2 月开始，安全中心调整了某些建议的评分，使之与严重性更相符。 做出此项调整后，总体安全评分值可能会有变化。
 
 ### <a name="whats-the-difference-between-threats-detected-and-alerted-on-by-azure-security-response-center-versus-azure-security-center"></a>Azure 安全响应中心与 Azure 安全中心检测和警示的威胁之间有何区别？

@@ -10,10 +10,10 @@ ms.topic: conceptual
 origin.date: 06/11/2019
 ms.date: 08/11/2019
 ms.openlocfilehash: 0391576910140c95d45e8a3204932bb84e9b7f5e
-ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75857139"
 ---
 # <a name="understand-inputs-for-azure-stream-analytics"></a>理解 Azure 流分析的输入

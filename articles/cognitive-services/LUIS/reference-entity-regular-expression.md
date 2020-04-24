@@ -12,10 +12,10 @@ origin.date: 09/29/2019
 ms.date: 10/31/2019
 ms.author: v-lingwu
 ms.openlocfilehash: 5961e128d14dc68aad67b281ddae78dbbfb0f950
-ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75858053"
 ---
 # <a name="regular-expression-entity"></a>正则表达式实体
@@ -49,9 +49,9 @@ ms.locfileid: "75858053"
 
 如果将 `kb[0-9]{6}` 用作正则表达式实体定义，则下面的 JSON 响应就是一个示例话语，其中包含查询返回的正则表达式实体：
 
-`When was kb123456 published?`：
+`When was kb123456 published?`设置用户帐户 ：
 
-#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 预测终结点响应](#tab/V2)
+#### <a name="v2-prediction-endpoint-response"></a>[V2 预测终结点响应](#tab/V2)
 
 ```JSON
 "entities": [
@@ -65,7 +65,7 @@ ms.locfileid: "75858053"
 ```
 
 
-#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 预测终结点响应](#tab/V3)
+#### <a name="v3-prediction-endpoint-response"></a>[V3 预测终结点响应](#tab/V3)
 
 
 如果在查询字符串中设置了 `verbose=false`，则这是 JSON：

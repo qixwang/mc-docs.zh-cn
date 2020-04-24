@@ -9,10 +9,10 @@ ms.date: 02/10/2020
 author: rockboyfor
 ms.author: v-yeche
 ms.openlocfilehash: bde4d9628f171a78b86868f012d42e8a8cb5f418
-ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77028823"
 ---
 # <a name="use-mongodb-compass-to-connect-to-azure-cosmos-dbs-api-for-mongodb"></a>使用 MongoDB Compass 连接到 Azure Cosmos DB 的 API for MongoDB 
@@ -25,12 +25,12 @@ Cosmos DB 是世纪互联提供的多区域分布式多模型数据库服务。 
 若要使用 Robo 3T 连接到 Cosmos DB 帐户，必须：
 
 * 下载并安装 [Compass](https://www.mongodb.com/download-center/compass?jmp=hero)
-* 具有 Cosmos DB [连接字符串](connect-mongodb-account.md)信息
+* 获得 Cosmos DB [连接字符串](connect-mongodb-account.md)信息
 
 ## <a name="connect-to-cosmos-dbs-api-for-mongodb"></a>连接到 Cosmos DB 的 API for MongoDB 
 若要将 Cosmos DB 帐户连接到 Compass，可以执行以下步骤：
 
-1. 按照[此处](connect-mongodb-account.md)的说明，检索使用 Azure Cosmos DB 的 API MongoDB 配置的 Cosmos 帐户的连接信息。
+1. 使用[此处](connect-mongodb-account.md)的说明检索使用 Azure Cosmos DB 的 API MongoDB 配置的 Cosmos 帐户的连接信息。
 
     ![连接字符串边栏选项卡的屏幕截图](./media/mongodb-compass/mongodb-compass-connection.png)
 
@@ -53,6 +53,6 @@ Cosmos DB 是世纪互联提供的多区域分布式多模型数据库服务。 
 ## <a name="next-steps"></a>后续步骤
 
 - 了解如何将 [Studio 3T](mongodb-mongochef.md) 与 Azure Cosmos DB 的用于 MongoDB 的 API 配合使用。
-- 通过 Azure Cosmos DB 的用于 MongoDB 的 API 来浏览 MongoDB [示例](mongodb-samples.md)。
+- 使用 Azure Cosmos DB 的用于 MongoDB 的 API 浏览 MongoDB [示例](mongodb-samples.md)。
 
 <!-- Update_Description: update meta properties, wording update, update link -->

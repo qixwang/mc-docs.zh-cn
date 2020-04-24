@@ -1,6 +1,6 @@
 ---
-title: 生成并导出用于点到站点的证书：Linux：CLI：Azure | Microsoft Docs
-description: 使用 Linux (strongSwan) CLI 创建自签名根证书、导出公钥以及生成客户端证书。
+title: 为点到站点连接生成和导出证书：Linux：CLI：Azure | Microsoft Docs
+description: 使用 Linux (strongSwan) CLI 创建自签名根证书、导出公钥和生成客户端证书。
 services: vpn-gateway
 author: WenJason
 ms.service: vpn-gateway
@@ -9,15 +9,15 @@ origin.date: 08/14/2019
 ms.date: 01/20/2020
 ms.author: v-jay
 ms.openlocfilehash: 3f360eaec65fc209c81f078d6be23a0d88b427fd
-ms.sourcegitcommit: 779d674e865b23ae417eb492efca7508675b8ba6
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75939762"
 ---
 # <a name="generate-and-export-certificates"></a>生成并导出证书
 
-点到站点连接使用证书进行身份验证。 本文介绍了如何使用 Linux CLI 和 strongSwan 创建自签名根证书并生成客户端证书。 如果要查找不同的证书说明，请参阅 [Powershell](vpn-gateway-certificates-point-to-site.md) 或 [MakeCert](vpn-gateway-certificates-point-to-site-makecert.md) 文章。 有关如何使用 GUI 而不是 CLI 安装 strongSwan 的信息，请参阅[客户端配置](point-to-site-vpn-client-configuration-azure-cert.md#install)一文中的步骤。
+点到站点连接使用证书进行身份验证。 本文说明如何使用 Linux CLI 和 strongSwan 创建自签名根证书以及生成客户端证书。 如果正在查找不同的证书说明，请参阅 [Powershell](vpn-gateway-certificates-point-to-site.md) 或 [MakeCert](vpn-gateway-certificates-point-to-site-makecert.md) 文章。 有关如何使用 GUI 而不是 CLI 安装 strongSwan 的信息，请参阅[客户端配置](point-to-site-vpn-client-configuration-azure-cert.md#install)一文中的步骤。
 
 ## <a name="install-strongswan"></a>安装 strongSwan
 
@@ -29,4 +29,4 @@ ms.locfileid: "75939762"
 
 ## <a name="next-steps"></a>后续步骤
 
-继续执行点到站点配置以[创建和安装 VPN 客户端配置文件](point-to-site-vpn-client-configuration-azure-cert.md#linuxinstallcli)。
+继续进行点到站点配置以[创建和安装 VPN 客户端配置文件](point-to-site-vpn-client-configuration-azure-cert.md#linuxinstallcli)。

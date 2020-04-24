@@ -13,10 +13,10 @@ ms.reviewer: bonova, sstein
 origin.date: 05/10/2019
 ms.date: 02/17/2020
 ms.openlocfilehash: efd40ea531cf4d3c5fef81818b77923e843f8041
-ms.sourcegitcommit: d7b86a424b72849fe8ed32893dd05e4696e4fe85
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77155684"
 ---
 # <a name="azure-sql-database-features"></a>Azure SQL 数据库功能

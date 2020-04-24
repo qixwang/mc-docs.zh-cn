@@ -7,10 +7,10 @@ ms.date: 01/15/2020
 ms.author: v-yeche
 ms.custom: mvc
 ms.openlocfilehash: d12f2aaf6f090667b3c0fab9337e7e72ded15913
-ms.sourcegitcommit: 97fdc3a6529136315605b86a150b345d6817dab9
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75965055"
 ---
 # <a name="azure-container-instances-and-container-orchestrators"></a>Azure 容器实例和容器协调器

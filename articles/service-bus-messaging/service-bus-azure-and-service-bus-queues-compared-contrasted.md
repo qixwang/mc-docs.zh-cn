@@ -16,10 +16,10 @@ origin.date: 01/23/2019
 ms.date: 09/23/2019
 ms.author: v-lingwu
 ms.openlocfilehash: 08cb6d34c2ce43ba88c542c2074c6b914d9ae0b2
-ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77028932"
 ---
 # <a name="storage-queues-and-service-bus-queues---compared-and-contrasted"></a>存储队列和服务总线队列 - 比较与对照

@@ -12,10 +12,10 @@ ms.date: 02/04/2020
 ms.author: v-junlch
 ms.subservice: B2C
 ms.openlocfilehash: e46239ac7cb05f4653be2c94341ff9f2bedb01a5
-ms.sourcegitcommit: 888cbc10f2348de401d4839a732586cf266883bf
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77028337"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-weibo-account-using-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 设置通过微博帐户注册与登录
@@ -44,7 +44,7 @@ ms.locfileid: "77028337"
 1. 选择“保存以上信息”  (save)。
 1. 选择“高级信息”  (advanced information)。
 1. 选择 OAuth2.0“授权设置”  (redirect URL) 字段旁边的“编辑”  (edit)。
-1. 为 OAuth2.0“授权设置”  (redirect URL) 输入 `https://your-tenant-name.b2clogin.cn/your-tenant-name.partner.onmschina.cn/oauth2/authresp`。 例如，如果租户名称是 contoso，请将 URL 设置为 `https://contoso.b2clogin.cn/contoso.partner.onmschina.cn/oauth2/authresp`。
+1. 为 OAuth2.0“授权设置”`https://your-tenant-name.b2clogin.cn/your-tenant-name.partner.onmschina.cn/oauth2/authresp` **(redirect URL) 输入** 。 例如，如果租户名称是 contoso，请将 URL 设置为 `https://contoso.b2clogin.cn/contoso.partner.onmschina.cn/oauth2/authresp`。
 1. 选择“提交”  (submit)。
 
 ## <a name="configure-a-weibo-account-as-an-identity-provider"></a>将微博帐户配置为标识提供者
@@ -56,5 +56,5 @@ ms.locfileid: "77028337"
 1. 输入“名称”  。 例如，Weibo  。
 1. 对于**客户端 ID**，输入你之前创建的 Weibo 应用程序的应用密钥。
 1. 对于**客户端密码**，输入你记录的应用机密。
-1. 选择“保存”  。
+1. 选择“保存”。 
 

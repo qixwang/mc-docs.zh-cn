@@ -12,19 +12,19 @@ origin.date: 12/09/2019
 ms.date: 02/17/2020
 ms.author: v-tawe
 ms.openlocfilehash: 134cf7091722ddc4799cca06c9282f53b4e04159
-ms.sourcegitcommit: 888cbc10f2348de401d4839a732586cf266883bf
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77029049"
 ---
 **选择目标环境**
 
-#### <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
+#### <a name="net"></a>[.NET](#tab/dotnet)
 [!INCLUDE [dotnet](./dotnet.md)]
-#### <a name="net-coretabdotnetcore"></a>[.NET Core](#tab/dotnetcore)
+#### <a name="net-core"></a>[.NET Core](#tab/dotnetcore)
 [!INCLUDE [dotnetcore](./dotnetcore.md)]
-#### <a name="uwptabuwp"></a>[UWP](#tab/uwp)
+#### <a name="uwp"></a>[UWP](#tab/uwp)
 [!INCLUDE [uwp](./uwp.md)]
 
 * * *

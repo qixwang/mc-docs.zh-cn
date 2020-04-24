@@ -9,10 +9,10 @@ ms.topic: conceptual
 origin.date: 04/29/2019
 ms.date: 01/13/2020
 ms.openlocfilehash: 69ba9cbf42ee0b6cbc6aace261c0e1c4d8210844
-ms.sourcegitcommit: 3f9d780a22bb069402b107033f7de78b10f90dde
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77179336"
 ---
 # <a name="machine-learning-capability-in-azure-data-explorer"></a>Azure 数据资源管理器中的机器学习功能
@@ -63,7 +63,7 @@ demo_clustering1
 | count
 ```
 
-|计数 |
+|Count |
 |---------|
 |972    |
 
@@ -114,7 +114,7 @@ demo_clustering1
 | evaluate autocluster()
 ```
 
-| 段 ID | 计数 | 百分比 | 区域 | 缩放单元 | 部署 ID | 服务主机 |
+| 段 ID | Count | 百分比 | 区域 | 缩放单元 | 部署 ID | 服务主机 |
 |-----------|-------|------------------|--------|-----------|----------------------------------|--------------------------------------|
 | 0 | 639 | 65.7407407407407 | eau | su7 | b5d1d4df547d4a04ac15885617edba57 | e7f60c5d-4944-42b3-922a-92e98a8e7dec |
 | 1 | 94 | 9.67078189300411 | scus | su5 | 9dbd1b161d5b4779a73cf19a7836ebd6 |  |
@@ -139,7 +139,7 @@ demo_clustering1
 | evaluate basket()
 ```
 
-| 段 ID | 计数 | 百分比 | 区域 | 缩放单元 | 部署 ID | 跟踪点 | 服务主机 |
+| 段 ID | Count | 百分比 | 区域 | 缩放单元 | 部署 ID | 跟踪点 | 服务主机 |
 |-----------|-------|------------------|--------|-----------|----------------------------------|------------|--------------------------------------|
 | 0 | 639 | 65.7407407407407 | eau | su7 | b5d1d4df547d4a04ac15885617edba57 |  | e7f60c5d-4944-42b3-922a-92e98a8e7dec |
 | 1 | 642 | 66.0493827160494 | eau | su7 | b5d1d4df547d4a04ac15885617edba57 |  |  |
@@ -151,7 +151,7 @@ demo_clustering1
 | 7 | 68 | 6.99588477366255 | scus | su3 | 90d3d2fc7ecc430c9621ece335651a01 |  |  |
 | 8 | 167 | 17.1810699588477 | scus |  |  |  |  |
 | 9 | 55 | 5.65843621399177 | weu | su4 | be1d6d7ac9574cbc9a22cb8ee20f16fc |  |  |
-| 10 个 | 92 | 9.46502057613169 |  |  |  | 10007007 |  |
+| 10 | 92 | 9.46502057613169 |  |  |  | 10007007 |  |
 | 11 | 90 | 9.25925925925926 |  |  |  | 10007006 |  |
 | 12 | 57 | 5.8641975308642 |  |  |  |  | 00000000-0000-0000-0000-000000000000 |
 
@@ -206,7 +206,7 @@ and ServiceHost == "e7f60c5d-4944-42b3-922a-92e98a8e7dec", "Problem", "Normal")
 
 在此图表中可以看出，星期二下午出现高峰的原因是，此特定段中发生了 `diffpatterns` 插件发现的异常。
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>总结
 
 Azure 数据资源管理器机器学习插件在很多方案中可以发挥作用。 `autocluster` 和 `basket` 实现非监督式学习算法，且易于使用。 `Diffpatterns` 实现监督式学习算法，尽管它更复杂，但在提取 RCA 的差异段时功能更强大。
 

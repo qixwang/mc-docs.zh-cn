@@ -10,10 +10,10 @@ ms.topic: conceptual
 origin.date: 05/22/2018
 ms.date: 11/26/2018
 ms.openlocfilehash: 8348f1805fe64d8a4507ad1deb99c10a07f83fb1
-ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75857758"
 ---
 # <a name="install-azure-stream-analytics-tools-for-visual-studio"></a>安装适用于 Visual Studio 的 Azure 流分析工具
@@ -28,7 +28,7 @@ Visual Studio Enterprise (Ultimate/Premium)、Professional 和 Community 版本�
 
 我们建议使用 Visual Studio 2019。
 
-### 安装 Visual Studio 2019 和 2017<a name="recommended-visual-studio-2019-and-2017"></a>
+### <a name="install-for-visual-studio-2019-and-2017"></a>安装 Visual Studio 2019 和 2017<a name="recommended-visual-studio-2019-and-2017"></a>
 
 Azure Data Lake 和流分析工具是 **Azure 开发**和**数据存储和处理**工作负荷的一部分。 在安装过程中启用这两个工作负荷之一。 如果已安装 Visual Studio，请选择“工具”   > “获取工具和功能”  以添加工作负荷。
 
@@ -52,7 +52,7 @@ Azure Data Lake 和流分析工具是 **Azure 开发**和**数据存储和处理
 
 ![Visual Studio 扩展和更新](./media/stream-analytics-tools-for-visual-studio-install/stream-analytics-tools-vs2019-extensions-updates.png)
 
-### 安装 Visual Studio 2015 和 2013<a name="visual-studio-2015-2013"></a>
+### <a name="install-for-visual-studio-2015-and-2013"></a>安装 Visual Studio 2015 和 2013<a name="visual-studio-2015-2013"></a>
 
 Visual Studio Enterprise (Ultimate/Premium)、Professional 和 Community 版本支持这些工具。 Express 版本不支持这些工具。
 
@@ -60,7 +60,7 @@ Visual Studio Enterprise (Ultimate/Premium)、Professional 和 Community 版本�
 * 使用 [Web 平台安装程序](https://www.microsoft.com/web/downloads/platform.aspx)安装用于 .NET 的 Microsoft Azure SDK 版本 2.7.1 或更高版本。
 * 安装[适用于 Visual Studio 的 Microsoft Azure Data Lake 和流分析工具](https://www.microsoft.com/en-us/download/details.aspx?id=49504)。
 
-## 更新<a name="visual-studio-2019-and-2017"></a><a name="visual-studio-2015-and-2013"></a>
+## <a name="update"></a>更新<a name="visual-studio-2019-and-2017"></a><a name="visual-studio-2015-and-2013"></a>
 
 对于 Visual Studio 2019 和 Visual Studio 2017，新版本提醒显示为 Visual Studio 通知。
 

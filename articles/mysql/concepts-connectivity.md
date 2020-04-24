@@ -9,10 +9,10 @@ ms.topic: conceptual
 origin.date: 12/02/2019
 ms.date: 02/10/2020
 ms.openlocfilehash: ca3ccedee6c2be8b029f6e076e056875c59228bf
-ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77068194"
 ---
 # <a name="handle-transient-errors-and-connect-efficiently-to-azure-database-for-mysql"></a>处理暂时性错误并有效地连接到 Azure Database for MySQL

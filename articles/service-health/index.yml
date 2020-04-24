@@ -11,10 +11,10 @@ metadata:
   ms.author: robb
   ms.date: 10/08/2019
   ms.openlocfilehash: c10047c62e92967f766753a2672d4126d7e652c3
-  ms.sourcegitcommit: a890a9cca495d332c9f3f53ff3a5259fd5f0c275
+  ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 01/10/2020
+  ms.lasthandoff: 04/17/2020
   ms.locfileid: "75859786"
 landingContent:
 - title: 关于 Azure 服务运行状况

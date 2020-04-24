@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a1a696761a962a2fa8c5577aa094c83da4474ee1
-ms.sourcegitcommit: bc5f8b4f8ccd7c723f64055825508d1dfcc2162b
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75859436"
 ---
 # <a name="quickstart-require-terms-of-use-to-be-accepted-before-accessing-cloud-apps"></a>快速入门：在访问云应用之前要求接受使用条款
@@ -62,7 +62,7 @@ ms.locfileid: "75859436"
 
 1. 在“Azure Active Directory”  页的“安全性”  部分中，单击“条件访问”  。
 
-   ![条件访问](./media/require-tou/03.png)
+   ![条件性访问](./media/require-tou/03.png)
 
 1. 在“管理”部分，单击“使用条款”。  
 
@@ -82,7 +82,7 @@ ms.locfileid: "75859436"
    1. 对于“语言”，请选择“英语”。  
    1. 对于“要求用户展开使用条款”，请选择“打开”。  
    1. 对于“强制实施条件访问策略模板”，请选择“自定义策略”。  
-   1. 单击**创建**。
+   1. 单击“创建”。 
 
 ## <a name="create-your-conditional-access-policy"></a>创建条件访问策略
 
@@ -93,7 +93,7 @@ ms.locfileid: "75859436"
 
 在策略中，设置：
 
-| 设置 | Value |
+| 设置 | 值 |
 | --- | --- |
 | 用户和组 | Isabella Simonsen |
 | 云应用 | Azure 管理 |
@@ -116,7 +116,7 @@ ms.locfileid: "75859436"
    ![用户和组](./media/require-tou/24.png)
 
    1. 单击“选择用户和组”，然后选择“用户和组”   。
-   1. 单击“选择”。 
+   1. 单击“选择”  。
    1. 在“选择”页上，选择“Isabella Simonsen”，然后单击“选择”    。
    1. 在“用户和组”页，单击“完成”   。
 1. 单击“云应用”  。
@@ -128,7 +128,7 @@ ms.locfileid: "75859436"
    ![选择云应用](./media/require-tou/26.png)
 
    1. 单击“选择应用”。 
-   1. 单击“选择”。 
+   1. 单击“选择”  。
    1. 在“选择”页上，选择“Azure 管理”，然后单击“选择”    。
    1. 在“云应用”页上，单击“完成”。  
 1. 在“访问控制”部分中，单击“授予”。  
@@ -141,12 +141,12 @@ ms.locfileid: "75859436"
 
    1. 选择“授予访问权限”  。
    1. 选择“我的 TOU”  。
-   1. 单击“选择”。 
+   1. 单击“选择”  。
 1. 在“启用策略”部分中，单击“开”   。
 
    ![启用策略](./media/require-tou/18.png)
 
-1. 单击**创建**。
+1. 单击“创建”。 
 
 ## <a name="evaluate-a-simulated-sign-in"></a>评估模拟登录
 
@@ -172,7 +172,7 @@ ms.locfileid: "75859436"
 
 1. 单击“用户”，选择“Isabella Simonsen”，然后单击“选择”    。
 
-   ![User](./media/require-tou/15.png)
+   ![用户](./media/require-tou/15.png)
 
 1. 选择云应用：
 
@@ -180,7 +180,7 @@ ms.locfileid: "75859436"
 
    1. 单击“云应用”  。
    1. 在“云应用”页上，单击“选择应用”   。
-   1. 单击“选择”。 
+   1. 单击“选择”  。
    1. 在“选择”页上，选择“Azure 管理”，然后单击“选择”    。
    1. 在“云应用”页上，单击“完成”  。
 1. 单击“What If”  。
@@ -189,7 +189,7 @@ ms.locfileid: "75859436"
 
 在上一部分中，你已经了解如何评估模拟登录。 除了模拟之外，还应该测试条件访问策略，以确保其按预期工作。
 
-若要测试策略，请尝试使用 **Isabella Simonsen** 测试帐户登录 [Azure 门户](https://portal.azure.cn)。 此时应会出现一个要求接受使用条款的对话框。
+若要测试策略，请尝试使用 [Isabella Simonsen](https://portal.azure.cn) 测试帐户登录 **Azure 门户**。 此时应会出现一个要求接受使用条款的对话框。
 
 ![使用条款](./media/require-tou/57.png)
 

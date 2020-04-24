@@ -14,10 +14,10 @@ origin.date: 12/06/2019
 ms.date: 01/13/2020
 ms.author: v-yiso
 ms.openlocfilehash: 6e5b7eed0894fb73277b655c6ecd10371ae41ddd
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75631105"
 ---
 # <a name="set-up-apache-hbase-cluster-replication-in-azure-virtual-networks"></a>在 Azure 虚拟网络中设置 Apache HBase 群集复制
@@ -324,7 +324,7 @@ sudo service bind9 status
 |----|-----------|
 |-su、--src-ambari-user | 指定源 HBase 群集的 Ambari 管理员用户名。 默认值为 **admin**。 |
 |-du、--dst-ambari-user | 指定目标 HBase 群集的 Ambari 管理员用户名。 默认值为 **admin**。 |
-|-t、--table-list | 指定要复制的表。 例如：--table-list="table1;table2;table3"。 如果不指定表，将复制所有现有的 HBase 表。|
+|-t、--table-list | 指定要复制的表。 例如：--table-list="table1;table2;table3"。 如果未指定表，则复制所有现有 HBase 表。|
 |-m、--machine | 指定要在其中运行脚本操作的头节点。 此值应当根据活动的头节点进行选择。 在 HDInsight 门户或 Azure PowerShell 中以脚本操作的形式运行 $0 脚本时，可使用此选项。|
 |-cp、-copydata | 在启用复制的情况下，允许迁移表中的现有数据。 |
 |-rpm、-replicate-phoenix-meta | 针对 Phoenix 系统表启用复制。 <br><br>*请慎用此选项。* 我们建议在使用此脚本之前，在副本群集上重新创建 Phoenix 表。 |

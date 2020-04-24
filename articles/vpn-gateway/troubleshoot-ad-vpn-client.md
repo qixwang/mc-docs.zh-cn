@@ -9,17 +9,17 @@ origin.date: 11/04/2019
 ms.date: 02/17/2020
 ms.author: v-jay
 ms.openlocfilehash: 47c851db63fdd7c0574ba0dd5440c865818f4cec
-ms.sourcegitcommit: 3f9d780a22bb069402b107033f7de78b10f90dde
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77156778"
 ---
 # <a name="troubleshoot-an-azure-ad-authentication-vpn-client"></a>排查 Azure AD 身份验证 VPN 客户端问题
 
 本文帮助你排查 VPN 客户端在使用点到站点 VPN 和 Azure Active Directory 身份验证连接到虚拟网络时出现的问题。
 
-## <a name="status"></a>查看状态日志
+## <a name="view-status-log"></a><a name="status"></a>查看状态日志
 
 查看状态日志中的错误消息。
 
@@ -29,7 +29,7 @@ ms.locfileid: "77156778"
 2. 在日志中检查可能指示出现了问题的错误。
 3. 错误消息以红色字体显示。
 
-## <a name="clear"></a>清除登录信息
+## <a name="clear-sign-in-information"></a><a name="clear"></a>清除登录信息
 
 清除登录信息。
 
@@ -40,7 +40,7 @@ ms.locfileid: "77156778"
 3. 尝试连接。
 4. 如果连接仍然失败，请转到下一部分。
 
-## <a name="diagnostics"></a>运行诊断
+## <a name="run-diagnostics"></a><a name="diagnostics"></a>运行诊断
 
 在 VPN 客户端上运行诊断。
 
@@ -56,7 +56,7 @@ ms.locfileid: "77156778"
 3. 如果上述任何测试失败，请联系网络管理员来解决问题。
 4. 下一部分介绍如何按需收集日志。
 
-## <a name="logfiles"></a>收集客户端日志文件
+## <a name="collect-client-log-files"></a><a name="logfiles"></a>收集客户端日志文件
 
 收集 VPN 客户端日志文件。 可以通过所选的方法将日志文件发送给支持人员/管理员。 例如，通过电子邮件发送。
 

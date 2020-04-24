@@ -16,10 +16,10 @@ origin.date: 06/12/2018
 ms.date: 01/21/2019
 ms.author: v-lingwu
 ms.openlocfilehash: a7e0458b484413f700244c229cd12ef78cae07b3
-ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77068128"
 ---
 # <a name="21vianet-azure-storage-explorer-release-notes"></a>世纪互联 Azure 存储资源管理器发行说明

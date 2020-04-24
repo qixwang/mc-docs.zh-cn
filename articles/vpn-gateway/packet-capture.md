@@ -9,10 +9,10 @@ origin.date: 10/15/2019
 ms.date: 01/20/2020
 ms.author: v-jay
 ms.openlocfilehash: 462ed6c8e5bc7459fdf76e3c51219546ab5b5abe
-ms.sourcegitcommit: 779d674e865b23ae417eb492efca7508675b8ba6
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75939768"
 ---
 # <a name="configure-packet-captures-for-vpn-gateways"></a>为 VPN 网关配置数据包捕获

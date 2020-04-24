@@ -15,10 +15,10 @@ origin.date: 01/24/2020
 ms.date: 2/6/2020
 ms.author: v-lingwu
 ms.openlocfilehash: 7567a5393f9038f4243548e5478925370b8c6382
-ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77067982"
 ---
 # <a name="distributed-tracing-and-correlation-through-service-bus-messaging"></a>通过服务总线消息传递进行分布式跟踪和关联
@@ -150,7 +150,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerF
   * `string Entity` - 实体（队列、主题等）的名称
   * `Uri Endpoint` - 服务总线终结点 URL
 
-每个“Stop”事件具有表示 `TaskStatus` 异步操作已完成的 `Status` 属性，为便于阅读，下表中也省略了该属性。
+每个“Stop”事件具有表示 `Status` 异步操作已完成的 `TaskStatus` 属性，为便于阅读，下表中也省略了该属性。
 
 下面是检测操作的完整列表：
 

@@ -11,10 +11,10 @@ ms.topic: article
 origin.date: 01/08/2020
 ms.date: 02/17/2020
 ms.openlocfilehash: 9a15619469e403181e66b45c66a951cb43c44fba
-ms.sourcegitcommit: 3f9d780a22bb069402b107033f7de78b10f90dde
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77156813"
 ---
 # <a name="how-to-migrate-your-sqlite-database-to-azure-sql-database-serverless"></a>如何将 SQLite 数据库迁移到 Azure SQL 数据库无服务器
@@ -24,7 +24,7 @@ Azure SQL 数据库无服务器计算层是适用于单一数据库的计算层�
 
 完成以下步骤后，数据库将会迁移到 Azure SQL 数据库无服务器，使你能够将数据库提供给云中的其他用户或应用程序使用，而且只需为使用的资源付费，只需对应用程序代码进行极少量的更改。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 - 一个 Azure 订阅
 - 要迁移的 SQLite2 或 SQLite3 数据库
 - 一个 Windows 环境

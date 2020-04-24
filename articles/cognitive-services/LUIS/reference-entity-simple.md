@@ -12,10 +12,10 @@ origin.date: 09/29/2019
 ms.date: 10/31/2019
 ms.author: v-lingwu
 ms.openlocfilehash: 2560cc76bc263b1b7f92b87bc5ac108c3205b711
-ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75855192"
 ---
 # <a name="simple-entity"></a>简单实体 
@@ -36,7 +36,7 @@ ms.locfileid: "75855192"
 
 从终结点返回的数据包括实体名称、从陈述中发现的文本、所发现文本的位置，以及评分：
 
-#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 预测终结点响应](#tab/V2)
+#### <a name="v2-prediction-endpoint-response"></a>[V2 预测终结点响应](#tab/V2)
 
 ```JSON
 "entities": [
@@ -50,7 +50,7 @@ ms.locfileid: "75855192"
 ]
 ```
 
-#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 预测终结点响应](#tab/V3)
+#### <a name="v3-prediction-endpoint-response"></a>[V3 预测终结点响应](#tab/V3)
 
 如果在查询字符串中设置了 `verbose=false`，则这是 JSON：
 
@@ -89,6 +89,6 @@ This is the JSON if `verbose=true` is set in the query string:
 
 * * *
 
-|数据对象|实体名称|Value|
+|数据对象|实体名称|值|
 |--|--|--|
 |简单实体|`Customer`|`bob jones`|

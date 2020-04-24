@@ -17,10 +17,10 @@ origin.date: 09/19/2017
 ms.date: 11/26/2018
 ms.author: v-lingwu
 ms.openlocfilehash: 1179d3d9b809859f29f626d355d5d0cc0efaa029
-ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77028493"
 ---
 # <a name="manage-and-analyze-network-security-group-flow-logs-in-azure-using-network-watcher-and-graylog"></a>在 Azure 中使用网络观察程序与 Graylog 来管理和分析网络安全组流日志
@@ -32,7 +32,7 @@ ms.locfileid: "77028493"
 > [!Warning]
 > 以下步骤适用于流日志版本 1。 有关详细信息，请参阅[针对网络安全组的流日志记录简介](network-watcher-nsg-flow-logging-overview.md)。 以下说明在未修改的情况下不适用于版本 2 的日志文件。
 
-## <a name="scenario"></a>方案
+## <a name="scenario"></a>场景
 
 已使用网络观察程序启用网络安全组流日志。 流日志流入 Azure Blob 存储。 Logstash 插件用于连接和处理 Blob 存储中的流日志并将其发送到 Graylog。 将流日志存储到 Graylog 中之后，可对其进行分析，并在自定义的仪表板中将其可视化。
 
@@ -155,7 +155,7 @@ Logstash 用于将 JSON 格式的流日志平展到流元组级别。 平展流�
 
 然后，filter 部分将平展每个流日志文件，以便使每个单独的流元组及其关联属性成为单独的 Logstash 事件。
 
-最后，output 部分将每个 Logstash 事件转发到 Graylog 服务器。 若要满足特定需要，可以根据需要修改 Logstash 配置文件。
+最后，output 节将每个 Logstash 事件转发到 Graylog 服务器。 若要满足特定需要，可根据需要修改 Logstash 配置文件。
 
     > [!NOTE]
     > The previous config file assumes that the Graylog server has been configured on the local host loopback IP address 127.0.0.1. If not, be sure to change the host parameter in the output section to the correct IP address.
@@ -216,7 +216,7 @@ sudo ./logstash-plugin install logstash-input-azureblob
 
 ### <a name="create-a-dashboard"></a>创建仪表板
 
-1. 在顶部导航栏中，选择“仪表板”或导航到 `http://<graylog-server-ip>:9000/dashboards/` 
+1. 在顶部导航栏中，选择“仪表板”或导航到  `http://<graylog-server-ip>:9000/dashboards/`
 
 2. 在此处，请单击绿色的“创建仪表板”按钮，并在简短表单中填写仪表板的标题和说明。  单击“保存”按钮创建新仪表板。  随后会出现如下图所示的仪表板：
 

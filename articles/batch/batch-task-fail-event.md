@@ -1,6 +1,6 @@
 ---
 title: Azure Batch 任务失败事件
-description: Batch 任务失败事件参考。 除了任务完成事件，还会发出此事件，此事件可用于检测任务何时已失败。
+description: 批处理任务失败事件参考。 除了任务完成事件，还会发出此事件，此事件可用于检测任务何时已失败。
 services: batch
 author: lingliw
 manager: digimobile
@@ -13,15 +13,15 @@ origin.date: 08/15/2019
 ms.date: 11/04/2019
 ms.author: v-lingwu
 ms.openlocfilehash: cecc28db3c0bc25d904f2b01eb95cf555657d1cd
-ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75858054"
 ---
 # <a name="task-fail-event"></a>任务失败事件
 
- 当任务以失败结束时，会发出此事件。 当前，所有非零退出代码都视为失败。 *除了*任务完成事件，还会发出此事件，该事件可用于检测任务失败的时间。
+ 当任务以失败结束时，会发出此事件。 当前，所有非零退出代码都视为失败。 *除了*任务完成事件，还将发出此事件，该事件可用于检测任务失败的时间。
 
 
  以下示例显示了任务失败事件的正文。
@@ -52,7 +52,7 @@ ms.locfileid: "75858054"
 }
 ```
 
-|元素名称|类型|注释|
+|元素名称|类型|说明|
 |------------------|----------|-----------|
 |`jobId`|String|包含任务的作业的 ID。|
 |`id`|String|任务的 ID。|
@@ -63,29 +63,29 @@ ms.locfileid: "75858054"
 |[`constraints`](#constraints)|复杂类型|应用到此任务的执行约束。|
 |[`executionInfo`](#executionInfo)|复杂类型|包含有关任务执行的信息。|
 
-###  <a name="nodeInfo"></a> nodeInfo
+###  <a name="nodeinfo"></a><a name="nodeInfo"></a> nodeInfo
 
-|元素名称|类型|注释|
+|元素名称|类型|说明|
 |------------------|----------|-----------|
 |`poolId`|String|运行任务的池的 ID。|
 |`nodeId`|String|运行任务的节点的 ID。|
 
-###  <a name="multiInstanceSettings"></a> multiInstanceSettings
+###  <a name="multiinstancesettings"></a><a name="multiInstanceSettings"></a> multiInstanceSettings
 
-|元素名称|类型|注释|
+|元素名称|类型|说明|
 |------------------|----------|-----------|
 |`numberOfInstances`|Int32|任务所需的计算节点数。|
 
-###  <a name="constraints"></a> constraints
+###  <a name="constraints"></a><a name="constraints"></a> constraints
 
-|元素名称|类型|注释|
+|元素名称|类型|说明|
 |------------------|----------|-----------|
-|`maxTaskRetryCount`|Int32|可以重试任务的最大次数。 批处理服务在其退出代码非零时重试任务。<br /><br /> 请注意，此值专门用于控制重试的次数。 批处理服务将尝试任务一次，并重试，直至达到此上限为止。 例如，如果最大重试计数为 3，则批处理任务最多尝试任务 4 次（一次是初始尝试，其余 3 次是重试）。<br /><br /> 如果最大重试计数为 0，则批处理服务不会重试任务。<br /><br /> 如果最大重试计数为 -1，则批处理服务会无限制地重试任务。<br /><br /> 默认值为 0（不重试）。|
+|`maxTaskRetryCount`|Int32|可以重试任务的最大次数。 批处理服务在其退出代码非零时重试任务。<br /><br /> 请注意，此值专门用于控制重试的次数。 批处理服务将尝试任务一次，然后重试，直至达到此上限为止。 例如，如果最大重试计数为 3，则批处理任务最多尝试任务 4 次（一次是初始尝试，其余 3 次是重试）。<br /><br /> 如果最大重试计数为 0，则批处理服务不会重试任务。<br /><br /> 如果最大重试计数为 -1，则批处理服务会无限制地重试任务。<br /><br /> 默认值为 0（不重试）。|
 
 
-###  <a name="executionInfo"></a> executionInfo
+###  <a name="executioninfo"></a><a name="executionInfo"></a> executionInfo
 
-|元素名称|类型|注释|
+|元素名称|类型|说明|
 |------------------|----------|-----------|
 |`startTime`|DateTime|任务开始运行的时间。 “Running”对应于**正在运行**状态，因此如果任务指定资源文件或应用程序包，则开始时间反映了任务开始下载或部署这些内容的时间。  如果任务已重启或重试，该时间是任务开始运行的最近时间。|
 |`endTime`|DateTime|任务完成的时间。|

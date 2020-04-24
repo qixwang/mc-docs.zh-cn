@@ -11,10 +11,10 @@ origin.date: 09/24/2018
 ms.date: 02/10/2020
 ms.custom: seo-java-august2019, seo-java-september2019
 ms.openlocfilehash: 5b075d40419295c36d16f7bff08a1fa8c28faa4f
-ms.sourcegitcommit: 23dc63b6fea451f6a2bd4e8d0fbd7ed082ba0740
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "76980558"
 ---
 <!--Verify sucessfully-->
@@ -31,7 +31,7 @@ ms.locfileid: "76980558"
 
 Azure Cosmos DB 是世纪互联提供的多区域分布式多模型数据库服务。 可快速创建和查询文档、表、键-值和图形数据库，所有这些都受益于 Azure Cosmos DB 核心的多区域分布和水平缩放功能。 
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 

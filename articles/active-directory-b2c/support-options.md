@@ -11,13 +11,13 @@ ms.date: 02/04/2020
 ms.author: v-junlch
 ms.subservice: B2C
 ms.openlocfilehash: afdad7c49ae0781f9bf7a5fbf8cdb87e591b16f6
-ms.sourcegitcommit: 888cbc10f2348de401d4839a732586cf266883bf
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77028314"
 ---
-# <a name="azure-active-directory-b2c-file-support-requests"></a>Azure Active Directory B2C：文件支持请求
+# <a name="azure-active-directory-b2c-file-support-requests"></a>Azure Active Directory B2C：提出支持请求
 可以按照以下步骤在 Azure 门户上提出对 Azure Active Directory B2C (Azure AD B2C) 的支持请求：
 
 1. 从 B2C 租户切换到另一个拥有与其关联的 Azure 订阅的租户。 通常，后者是员工租户或在注册 Azure 订阅时创建的默认租户。 若要了解详细信息，请参阅 [Azure 订阅如何与 Azure AD 关联](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)。
@@ -52,7 +52,7 @@ ms.locfileid: "77028314"
 
      ![Azure 门户中突出显示了“下一步”按钮的“问题”页](./media/support-options/support-problem.png)
 
-1. 在“联系人信息”  边栏选项卡中，添加联系人信息。 单击**创建**。
+1. 在“联系人信息”  边栏选项卡中，添加联系人信息。 单击“创建”。 
 
     ![门户中突出显示了“创建”按钮的“联系人信息”页](./media/support-options/support-contact.png)
 

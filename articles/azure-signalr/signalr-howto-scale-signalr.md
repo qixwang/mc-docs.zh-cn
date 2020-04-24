@@ -8,10 +8,10 @@ origin.date: 12/11/2019
 ms.date: 01/13/2020
 ms.author: v-tawe
 ms.openlocfilehash: 10993286506312a76aa55ece835fedd33ddbab87
-ms.sourcegitcommit: 3f9d780a22bb069402b107033f7de78b10f90dde
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77179331"
 ---
 # <a name="how-to-scale-an-azure-signalr-service-instance"></a>如何缩放 Azure SignalR 服务实例？

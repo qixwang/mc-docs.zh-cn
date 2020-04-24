@@ -12,10 +12,10 @@ ms.author: v-jay
 ms.reviewer: cbrooks
 ms.subservice: common
 ms.openlocfilehash: a687168a2de43112d0b9ec1c7c1ae953ad877911
-ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77028888"
 ---
 # <a name="use-the-azure-portal-to-assign-an-rbac-role-for-access-to-blob-and-queue-data"></a>使用 Azure 门户为 blob 和队列数据分配 RBAC 角色
@@ -85,9 +85,9 @@ Azure Active Directory (Azure AD) 通过[基于角色的访问控制 (RBAC)](../
 请遵循以下步骤分配“读取者”角色，使用户能够在 Azure 门户中访问 Blob。  在此示例中，分配范围限定为存储帐户：
 
 1. 在 [Azure 门户](https://portal.azure.cn)中导航到存储帐户。
-1. 选择“访问控制(IAM)”以显示存储帐户的访问控制设置  。 选择“角色分配”  选项卡以查看角色分配列表。
+1. 选择“访问控制(标识和访问管理)”以显示存储帐户的访问控制设置  。 选择“角色分配”  选项卡以查看角色分配列表。
 1. 在“添加角色分配”窗口中，选择“读取者”角色。   
-1. 在“将访问权限分配给”字段中，选择“Azure AD 用户、组或服务主体”   。
+1. 在“分配访问权限至”  字段中，选择“Azure AD 用户、组或服务主体”  。
 1. 通过搜索找到要为其分配该角色的安全主体。
 1. 保存角色分配。
 

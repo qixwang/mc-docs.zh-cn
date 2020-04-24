@@ -10,10 +10,10 @@ ms.date: 01/20/2020
 ms.author: v-jay
 ms.custom: include file
 ms.openlocfilehash: 9c600f15b01705c89695f01a8c24c0a29449de30
-ms.sourcegitcommit: 779d674e865b23ae417eb492efca7508675b8ba6
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75939750"
 ---
 1. 在 [Azure 门户](https://portal.azure.cn)菜单中，选择“创建资源”  。 

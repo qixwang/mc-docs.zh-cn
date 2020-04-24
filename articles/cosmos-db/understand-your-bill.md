@@ -9,10 +9,10 @@ origin.date: 08/01/2019
 ms.date: 02/10/2020
 ms.reviewer: sngun
 ms.openlocfilehash: 1bae6d1799ccb35774c8c31c321b61b237b5aadd
-ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77067887"
 ---
 # <a name="understand-your-azure-cosmos-db-bill"></a>了解 Azure Cosmos DB 帐单

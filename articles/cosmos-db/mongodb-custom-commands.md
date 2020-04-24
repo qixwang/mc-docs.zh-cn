@@ -8,10 +8,10 @@ origin.date: 03/26/2019
 ms.date: 02/10/2020
 ms.author: v-yeche
 ms.openlocfilehash: 241b6a3e5f7038b70eaebf0ae7b13ccb2cff7c14
-ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77028815"
 ---
 # <a name="use-mongodb-extension-commands-to-manage-data-stored-in-azure-cosmos-dbs-api-for-mongodb"></a>使用 MongoDB 扩展命令管理 Azure Cosmos DB's API for MongoDB 中存储的数据 
@@ -45,9 +45,9 @@ Azure Cosmos DB 是世纪互联提供的多区域分布式多模型数据库服�
 
 下表描述了该命令中的参数：
 
-|**字段**|**类型** |**说明** |
+|**字段**|类型  |**说明** |
 |---------|---------|---------|
-| customAction   |  string  |   自定义命令的名称，必须是“CreateDatabase”。      |
+| customAction   |  字符串  |   自定义命令的名称，必须是“CreateDatabase”。      |
 | offerThroughput | int  | 对数据库设置的预配吞吐量。 此参数是可选的。 |
 
 ### <a name="output"></a>输出
@@ -88,9 +88,9 @@ db.runCommand({customAction: "CreateDatabase", offerThroughput: 1000 });
 
 下表描述了该命令中的参数：
 
-|**字段**|**类型** |**说明** |
+|**字段**|类型  |**说明** |
 |---------|---------|---------|
-| customAction    |    string     |   自定义命令的名称。 必须是“UpdateDatabase”。      |
+| customAction    |    字符串     |   自定义命令的名称。 必须是“UpdateDatabase”。      |
 |  offerThroughput   |  int       |     要对数据库设置的新预配吞吐量。    |
 
 ### <a name="output"></a>输出
@@ -121,15 +121,15 @@ db.runCommand({customAction: "UpdateDatabase", offerThroughput: 1200 });
 
 下表描述了该命令中的参数：
 
-|**字段**|**类型** |**说明** |
+|**字段**|类型  |**说明** |
 |---------|---------|---------|
-|  customAction   |   string      |   自定义命令的名称。 必须是“GetDatabase”|
+|  customAction   |   字符串      |   自定义命令的名称。 必须是“GetDatabase”|
 
 ### <a name="output"></a>输出
 
 如果该命令成功，则响应包含带有以下字段的文档：
 
-|**字段**|**类型** |**说明** |
+|**字段**|类型  |**说明** |
 |---------|---------|---------|
 |  `ok`   |   `int`     |   响应的状态。 1 == 成功。 0 == 失败。      |
 | `database`    |    `string`        |   数据库的名称。      |
@@ -164,12 +164,12 @@ db.runCommand({customAction: "GetDatabase"});
 
 下表描述了该命令中的参数：
 
-|**字段**|**类型** |**说明** |
+|**字段**|类型  |**说明** |
 |---------|---------|---------|
-| customAction    | string | 自定义命令的名称。 必须是“CreateCollection”     |
-| collection      | string | 集合的名称                                   |
+| customAction    | 字符串 | 自定义命令的名称。 必须是“CreateCollection”     |
+| collection      | 字符串 | 集合的名称                                   |
 | offerThroughput | int    | 要对数据库设置的预配吞吐量。 它是一个可选参数 |
-| shardKey        | string | 要在其中创建分片集合的分片键路径。 它是一个可选参数 |
+| shardKey        | 字符串 | 要在其中创建分片集合的分片键路径。 它是一个可选参数 |
 
 ### <a name="output"></a>输出
 
@@ -210,10 +210,10 @@ db.runCommand({customAction: "CreateCollection", collection: "testCollection", o
 
 下表描述了该命令中的参数：
 
-|**字段**|**类型** |**说明** |
+|**字段**|类型  |**说明** |
 |---------|---------|---------|
-|  customAction   |   string      |   自定义命令的名称。 必须是“UpdateCollection”。      |
-|  collection   |   string      |   集合的名称。       |
+|  customAction   |   字符串      |   自定义命令的名称。 必须是“UpdateCollection”。      |
+|  collection   |   字符串      |   集合的名称。       |
 | offerThroughput   |int|   要对集合设置的预配吞吐量。|
 
 ## <a name="output"></a>输出
@@ -245,16 +245,16 @@ db.runCommand({customAction: "UpdateCollection", collection: "testCollection", o
 
 下表描述了该命令中的参数：
 
-|**字段**|**类型** |**说明** |
+|**字段**|类型  |**说明** |
 |---------|---------|---------|
-| customAction    |   string      |   自定义命令的名称。 必须是“GetCollection”。      |
-| collection    |    string     |    集合的名称。     |
+| customAction    |   字符串      |   自定义命令的名称。 必须是“GetCollection”。      |
+| collection    |    字符串     |    集合的名称。     |
 
 ### <a name="output"></a>输出
 
 如果该命令成功，则响应包含带有以下字段的文档
 
-|**字段**|**类型** |**说明** |
+|**字段**|类型  |**说明** |
 |---------|---------|---------|
 |  `ok`   |    `int`     |   响应的状态。 1 == 成功。 0 == 失败。      |
 | `database`    |    `string`     |   数据库的名称。      |
@@ -280,7 +280,7 @@ db.runCommand({customAction: "GetCollection", collection: "testCollection"});
 
 如果未指定，则自定义响应包含带有以下字段的文档：
 
-|**字段**|**类型** |**说明** |
+|**字段**|类型  |**说明** |
 |---------|---------|---------|
 |  `ok`   |    `int`     |   响应的状态。 1 == 成功。 0 == 失败。      |
 | `code`    |   `int`      |   仅当命令失败时才返回（即，正常 == 0）。 包含 MongoDB 错误代码。 这是一个可选的响应参数。      |

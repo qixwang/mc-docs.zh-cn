@@ -16,10 +16,10 @@ origin.date: 01/29/2018
 ms.date: 09/07/2018
 ms.author: v-lingwu
 ms.openlocfilehash: 3b029c0e50339da0cdb71b2867c0810127c0f4a9
-ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77028606"
 ---
 # <a name="cli-example-create-a-batch-account-in-user-subscription-mode"></a>CLI 示例：在用户订阅模式下创建 Batch 帐户
@@ -82,9 +82,9 @@ az group delete --name myResourceGroup
 
 ## <a name="script-explanation"></a>脚本说明
 
-此脚本使用以下命令。 表中的每条命令链接到特定于命令的文档。
+此脚本使用以下命令。 表中的每条命令均链接到特定于命令的文档。
 
-| 命令 | 注释 |
+| Command | 说明 |
 |---|---|
 | [az role assignment create](/cli/role#az-role-assignment-create) | 为用户、组或服务主体创建新的角色分配。 |
 | [az group create](/cli/group#az-group-create) | 创建用于存储所有资源的资源组。 |

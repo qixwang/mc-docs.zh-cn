@@ -13,10 +13,10 @@ origin.date: 01/10/2020
 ms.date: 01/27/2020
 ms.custom: seodec18
 ms.openlocfilehash: 546124b6b6b3c9cfe12b6438b1e808d3235333ae
-ms.sourcegitcommit: a7a199c76ef4475b54edd7d5a7edb7b91ea8dff7
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "76966517"
 ---
 # <a name="understand-data-retention-in-azure-time-series-insights"></a>了解 Azure 时序见解中的数据保留

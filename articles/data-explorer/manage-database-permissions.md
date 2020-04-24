@@ -9,10 +9,10 @@ ms.topic: conceptual
 origin.date: 09/24/2018
 ms.date: 02/17/2020
 ms.openlocfilehash: 2e57317dea26c3d86bef075f250113a8c5cb92b5
-ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77037920"
 ---
 # <a name="manage-azure-data-explorer-database-permissions"></a>管理 Azure 数据资源管理器数据库权限
@@ -37,7 +37,7 @@ Azure 数据资源管理器具有以下角色：
 
 ## <a name="manage-permissions-in-the-azure-portal"></a>在 Azure 门户中管理权限
 
-1. 登录到 [Azure 门户](https://portal.azure.cn/)。
+1. 登录 [Azure 门户](https://portal.azure.cn/)。
 
 1. 导航到 Azure 数据资源管理器群集。
 
@@ -57,7 +57,7 @@ Azure 数据资源管理器具有以下角色：
 
     ![在 Azure 门户中管理权限](media/manage-database-permissions/new-principals.png)
 
-1. 选择“保存”  。
+1. 选择“保存”。 
 
     ![在 Azure 门户中管理权限](media/manage-database-permissions/save-permission.png)
 

@@ -6,13 +6,13 @@ origin.date: 02/03/2019
 ms.date: 02/17/2020
 ms.author: v-tawe
 ms.openlocfilehash: 5ffcdbdd9098668ceb5c4be4c7ca1269d8330784
-ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77037924"
 ---
-## <a name="azure-resource-manager-template"></a>Azure Resource Manager 模板
+## <a name="azure-resource-manager-template"></a>Azure 资源管理器模板
 
 在本文中，你将使用 Azure 资源管理器模板来创建资源组、存储帐户和容器、事件中心以及 Azure 数据资源管理器群集和数据库。 将以下内容保存在名为 `template.json` 的文件中。 使用此文件来运行代码示例。
 

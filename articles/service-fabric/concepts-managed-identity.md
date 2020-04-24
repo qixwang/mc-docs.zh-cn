@@ -6,10 +6,10 @@ origin.date: 12/09/2019
 ms.author: v-yeche
 ms.date: 01/06/2020
 ms.openlocfilehash: 34561d29dc5c840cb15631b4425d186ddfedd411
-ms.sourcegitcommit: 0a933e8b5fd4eff22d361b4c7f8c2d0e5121180b
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75957105"
 ---
 <!--Verify successfully-->
@@ -75,7 +75,7 @@ Service Fabric 的托管标识仅在 Azure 部署的 Service Fabric 群集中受
     <!--Not Available on * [Deploy an Azure Service Fabric application with a user-assigned managed identity](./how-to-deploy-service-fabric-application-user-assigned-managed-identity.md)-->
     <!--Not Available on * [Leverage the managed identity of a Service Fabric application from service code](./how-to-managed-identity-service-fabric-app-code.md)-->
     
-* [向 Azure Service Fabric 应用程序授予对其他 Azure 资源的访问权限](./how-to-grant-access-other-resources.md)
+* [为 Azure Service Fabric 应用程序授予对其他 Azure 资源的访问权限](./how-to-grant-access-other-resources.md)
 * [声明应用程序机密并将其用作 KeyVaultReferences](./service-fabric-keyvault-references.md)
 
 <!-- Update_Description: update meta properties, wording update, update link -->

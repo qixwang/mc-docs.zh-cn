@@ -12,10 +12,10 @@ origin.date: 11/22/2019
 ms.date: 01/20/2020
 ms.custom: seodec18
 ms.openlocfilehash: 933b383f39b1f6f524caddb256696116b3f12d4d
-ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77068056"
 ---
 # <a name="plan-your-azure-time-series-insights-preview-environment"></a>计划 Azure 时序见解预览版环境

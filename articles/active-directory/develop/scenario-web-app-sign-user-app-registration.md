@@ -16,10 +16,10 @@ ms.author: v-junlch
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c1443bd40119942b3ac344f91636edf69d931cb2
-ms.sourcegitcommit: 1bc154c816a5dff47ee051c431cd94826e57aa60
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75776920"
 ---
 # <a name="web-app-that-signs-in-users-app-registration"></a>用于登录用户的 Web 应用：应用注册
@@ -49,7 +49,7 @@ ms.locfileid: "75776920"
 1. 如果你的帐户有权限访问多个租户，请在右上角选择该帐户。 然后，将门户会话设置为所需的 Azure Active Directory (Azure AD) 租户。
 1. 在左侧窗格中选择“Azure Active Directory”服务，然后选择“应用注册” > “新建注册”。   
 
-# <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
+# <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
 1. “注册应用程序”页出现后，请输入应用程序的注册信息： 
    1. 为应用程序选择支持的帐户类型。 （请参阅[支持的帐户类型](./v2-supported-account-types.md)。）
@@ -61,7 +61,7 @@ ms.locfileid: "75776920"
    1. 在“隐式授权”下，选择“ID 令牌”。  
    1. 选择“保存”  。
 
-# <a name="aspnettabaspnet"></a>[ASP.NET](#tab/aspnet)
+# <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
 1. 出现“注册应用程序”页后，请输入应用程序的注册信息： 
    1. 为应用程序选择支持的帐户类型。 （请参阅[支持的帐户类型](./v2-supported-account-types.md)。）
@@ -72,7 +72,7 @@ ms.locfileid: "75776920"
 1. 在“高级设置” | “隐式授权”部分，选择“ID 令牌”。    本示例需要启用[隐式授权流](v2-oauth2-implicit-grant-flow.md)才能将用户登录。
 1. 选择“保存”  。
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 1. “注册应用程序”页显示后，请输入应用程序的显示名称。  例如，输入 **java-webapp**。
 1. 选择“任何组织目录中的帐户”，然后为“应用程序类型”选择“Web 应用/API”。   
@@ -96,7 +96,7 @@ ms.locfileid: "75776920"
    1. 选择“添加”   。
    1. 显示密钥值后，请将其复制供稍后使用。 此值不会再次显示，也无法通过任何其他方式检索。
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 1. 出现“注册应用程序”页后，请输入应用程序的注册信息： 
    1. 在“名称”部分输入一个会显示给应用用户的有意义的应用程序名称。  例如，输入 **python-webapp**。

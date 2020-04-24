@@ -9,14 +9,14 @@ ms.date: 02/10/2020
 ms.author: v-yeche
 ms.custom: query-reference
 ms.openlocfilehash: ecf342d06c66a520801b76c14cfca3d627698c84
-ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77028692"
 ---
 # <a name="atn2-azure-cosmos-db"></a>ATN2 (Azure Cosmos DB)
- 返回 y/x 的反正切的主体值，以弧度表示。  
+ 返回 y/x 的反正切函数的主值（以弧度表示）。  
 
 ## <a name="syntax"></a>语法
 
@@ -27,21 +27,21 @@ ATN2(<numeric_expr>, <numeric_expr>)
 ## <a name="arguments"></a>参数
 
 *numeric_expr*  
-  是一个数值表达式。  
+  为数值表达式。  
 
 ## <a name="return-types"></a>返回类型
 
-  返回一个数值表达式。  
+  返回数值表达式。  
 
 ## <a name="examples"></a>示例
 
-  以下示例为指定的 x 和 y 组件计算 ATN2。  
+  以下示例可计算指定的 x 分量和 y 分量的 ATN2 值。  
 
 ```sql
 SELECT ATN2(35.175643, 129.44) AS atn2  
 ```  
 
- 下面是结果集。  
+ 下面是结果集：  
 
 ```json
 [{"atn2": 1.3054517947300646}]  

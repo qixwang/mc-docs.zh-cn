@@ -1,9 +1,9 @@
 ### YamlMime:Landing
 title: Azure 门户文档
-summary: Azure 门户是基于 Web 的统一控制台，提供可替代命令行工具的方法。 可以通过 Azure 门户管理 Azure 订阅。 生成、管理和监视一切内容，从简单的 Web 应用到复杂的云部署。 为资源的组织视图创建自定义仪表板，并配置辅助功能选项以获得最佳体验。
+summary: Azure 门户是一种基于 Web 的统一控制台，它提供了命令行工具的替代方法。 可以通过 Azure 门户管理 Azure 订阅。 生成、管理和监视一切内容，从简单的 Web 应用到复杂的云部署。 为资源的组织视图创建自定义仪表板，并配置辅助功能选项以获得最佳体验。
 metadata:
   title: Azure 门户文档
-  description: 了解如何使用基于 Web 的 Azure 门户控制台管理 Azure 订阅和资源。 Azure 门户是使用命令行工具的替代方案。
+  description: 了解如何使用基于 Web 的 Azure 门户控制台管理 Azure 订阅和资源。 Azure 门户是命令行工具的替代方法。
   services: Azure portal
   ms.service: azure-portal
   ms.subservice: 
@@ -14,10 +14,10 @@ metadata:
   origin.date: 12/19/2019
   ms.date: 02/17/2020
   ms.openlocfilehash: 15a3edf42ade0c6a137664ac42e05fcb75bdba7d
-  ms.sourcegitcommit: 888cbc10f2348de401d4839a732586cf266883bf
+  ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 02/05/2020
+  ms.lasthandoff: 04/17/2020
   ms.locfileid: "77028190"
 landingContent:
 - title: 关于 Azure 门户

@@ -10,10 +10,10 @@ ms.date: 02/10/2020
 ms.author: v-jay
 ms.custom: include file
 ms.openlocfilehash: b885df618a9b24db9573509c574527ccc8db9bc6
-ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77028924"
 ---
 存储帐户是一个共享的存储池，可以在其中部署 Azure 文件共享或其他存储资源，例如 Blob 或队列。 一个存储帐户可以包含无数个共享。 一个共享可以存储无数个文件，直至达到存储帐户的容量限制为止。
@@ -24,7 +24,7 @@ ms.locfileid: "77028924"
 2. 在搜索框中，输入“存储帐户”，选择“存储帐户 - Blob、文件、表、队列”，然后选择“创建”。   
     ![资源搜索对话框中显示的存储帐户条目的屏幕截图](../articles/storage/files/media/storage-how-to-use-files-portal/create-storage-account-1.png)
 
-3. 在“名称”中，输入 *mystorageacct* 并后接一些随机数字，直到出现绿色对号，指明该名称是唯一的。  存储帐户名称必须全部为小写，且全局唯一。 记下存储帐户名称。 稍后将使用它。 
+3. 在“名称”中，输入 **mystorageacct** 并后接一些随机数字，直到出现绿色对号，指明该名称是唯一的。  存储帐户名称必须全部为小写，且全局唯一。 记下存储帐户名称。 稍后将使用它。 
 4. 在“部署模型”中，保留默认值“资源管理器”。   若要详细了解 Azure 资源管理器与经典部署模型之间的差别，请参阅[了解部署模型和资源状态](../articles/azure-resource-manager/management/deployment-models.md)。
 5. 在“帐户类型”中，选择“StorageV2”。   若要详细了解不同类型的存储帐户，请参阅[了解 Azure 存储帐户](../articles/storage/common/storage-account-options.md?toc=%2fstorage%2ffiles%2ftoc.json)。
 6. 在“性能”，保留默认值“标准存储”。   Azure 文件目前仅支持标准存储；即使选择 Azure 高级存储，文件共享也会存储在标准存储中。

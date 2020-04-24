@@ -8,10 +8,10 @@ origin.date: 11/12/2019
 ms.date: 01/13/2020
 ms.author: v-yeche
 ms.openlocfilehash: 59ba851d0e3071b67842a14b8366e37ac3ef7f44
-ms.sourcegitcommit: 4f4694991e1c70929c7112ad45a0c404ddfbc8da
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75776729"
 ---
 # <a name="exclude-disks-from-replication"></a>从复制中排除磁盘

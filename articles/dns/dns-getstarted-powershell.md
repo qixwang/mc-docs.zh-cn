@@ -10,10 +10,10 @@ origin.date: 3/11/2019
 ms.date: 01/13/2020
 ms.author: v-jay
 ms.openlocfilehash: ba6066619b2133e0b42ccbdcb2e5204e39b2230c
-ms.sourcegitcommit: 157df1a5f11473dd3265d71f1543437f50f09adb
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75777453"
 ---
 # <a name="quickstart-create-an-azure-dns-zone-and-record-using-azure-powershell"></a>快速入门：使用 Azure PowerShell 创建 Azure DNS 区域和记录

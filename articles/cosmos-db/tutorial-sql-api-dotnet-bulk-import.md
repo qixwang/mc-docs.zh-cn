@@ -9,10 +9,10 @@ origin.date: 11/04/2019
 ms.date: 02/10/2020
 ms.reviewer: sngun
 ms.openlocfilehash: 25790b12f4de6a66e50112e88bcaf01f587f08d2
-ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77068333"
 ---
 # <a name="bulk-import-data-to-azure-cosmos-db-sql-api-account-by-using-the-net-sdk"></a>使用 .NET SDK 将数据批量导入 Azure Cosmos DB SQL API 帐户
@@ -28,7 +28,7 @@ ms.locfileid: "77068333"
 > * 连接到启用了批量支持的 Azure Cosmos 帐户
 > * 通过并发创建操作执行数据导入
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 在按照本文中的说明操作之前，请确保具备以下资源：
 

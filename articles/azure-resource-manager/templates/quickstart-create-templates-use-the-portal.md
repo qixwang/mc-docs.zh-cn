@@ -7,16 +7,16 @@ ms.date: 01/20/2020
 ms.topic: quickstart
 ms.author: v-yeche
 ms.openlocfilehash: c1738784c0c156b3d8616cdafcbe20696e0bc807
-ms.sourcegitcommit: 8de025ca11b62e06ba3762b5d15cc577e0c0f15d
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "76165477"
 ---
 <!--Verify successfully-->
 # <a name="quickstart-create-and-deploy-azure-resource-manager-templates-by-using-the-azure-portal"></a>快速入门：使用 Azure 门户创建和部署 Azure 资源管理器模板
 
-了解如何使用 Azure 门户生成资源管理器模板，以及从门户编辑和部署该模板的过程。 Resource Manager 模板为 JSON 文件，用于定义针对解决方案进行部署时所需的资源。 若要了解与部署和管理 Azure 解决方案关联的概念，请参阅[模版部署概述](overview.md)。
+了解如何使用 Azure 门户生成资源管理器模板，以及从门户编辑和部署该模板的过程。 Resource Manager 模板为 JSON 文件，用于定义针对解决方案进行部署时所需的资源。 若要了解与部署和管理 Azure 解决方案关联的概念，请参阅[模板部署概述](overview.md)。
 
 ![资源管理器模板快速入门门户图](./media/quickstart-create-templates-use-the-portal/azure-resource-manager-export-deploy-template-portal.png)
 
@@ -37,15 +37,15 @@ ms.locfileid: "76165477"
 
     ![在 Azure 门户菜单中，选择“创建资源”](./media/quickstart-create-templates-use-the-portal/azure-resource-manager-template-tutorial-create-a-resource.png)
 
-1. 选择“存储” > “存储帐户”   。
+1. 选择“存储” **“存储帐户”**  >   。
 
     ![创建 Azure 存储帐户](./media/quickstart-create-templates-use-the-portal/azure-resource-manager-template-tutorial-create-storage-account-portal.png)
 1. 输入以下信息：
 
-    |名称|Value|
+    |名称|值|
     |----|----|
     |**资源组**|选择“新建”  ，然后指定所选资源组的名称。 在屏幕截图中，资源组名称为 *mystorage1016rg*。 资源组是 Azure 资源的容器。 资源组方便 Azure 资源的管理。 |
-    |**名称**|为存储帐户指定唯一的名称。 存储帐户名称在整个 Azure 中必须是唯一的，且仅包含小写字母和数字。 名称长度必须介于 3 到 24 个字符之间。 如果收到错误消息“存储帐户名称‘mystorage1016’已被占用”，请尝试使用“&lt;名称>存储&lt;MMDD 格式的今日日期>”，例如“johndolestorage1016”   。 |
+    |**名称**|为存储帐户指定唯一的名称。 存储帐户名称在整个 Azure 中必须是唯一的，且仅包含小写字母和数字。 名称长度必须介于 3 到 24 个字符之间。 如果收到错误消息“存储帐户名称‘mystorage1016’已被占用”，请尝试使用“**名称>存储&lt;MMDD 格式的今日日期>”，例如“johndolestorage1016”&lt;**  。 |
 
     <!--Not Available on For more information, see [Naming rules and restrictions](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions#naming-rules-and-restrictions)-->
     
@@ -85,7 +85,7 @@ Azure 要求每个 Azure 服务都具有唯一的名称。 如果输入了已存
 
 1. 从 Azure 门户菜单或“主页”页面，选择“创建资源”   。
 1. 在“搜索市场”中键入“模板部署”，然后按 **ENTER**。  
-1. 选择“模板部署”  。
+1. 选择“模板部署”。 
 
     ![Azure 资源管理器模板库](./media/quickstart-create-templates-use-the-portal/azure-resource-manager-template-library.png)
 1. 选择“创建”  。
@@ -93,7 +93,7 @@ Azure 要求每个 Azure 服务都具有唯一的名称。 如果输入了已存
 1. 选择“加载文件”，  然后按说明加载在上部分下载的 template.json。
 1. 对模板进行以下三处更改：
 
-    ![Azure Resource Manager 模板](./media/quickstart-create-templates-use-the-portal/azure-resource-manager-template-tutorial-edit-storage-account-template-revised.png)
+    ![Azure 资源管理器模板](./media/quickstart-create-templates-use-the-portal/azure-resource-manager-template-tutorial-edit-storage-account-template-revised.png)
 
     - 删除“storageAccountName”参数，如上一屏幕截图所示  。
     - 添加一个名为“storageAccountName”的变量，如上一屏幕截图所示  ：
@@ -156,16 +156,16 @@ Azure 要求每个 Azure 服务都具有唯一的名称。 如果输入了已存
            "outputs": {}
         }
         ```
-1. 选择“保存”  。
+1. 选择“保存”。 
 1. 输入以下值：
 
-    |名称|Value|
+    |名称|值|
     |----|----|
     |**资源组**|选择在上一部分中创建的资源组名称。 |
     |**位置**|选择存储帐户的位置。 例如，**中国北部**。 |
     |**帐户类型**|对于本快速入门，请输入 **Standard_LRS**。 |
     |**种类**|对于本快速入门，请输入“StorageV2”。  |
-    |**访问层**|对于本快速入门，请输入“热”  。 |
+    |**访问层**|对于本快速入门，请输入“Hot”。  |
     |**启用仅限 Https 流量**| 对于本快速入门，请选择“true”。  |
     |**我同意上述条款和条件**|（选择）|
 
@@ -182,7 +182,7 @@ Azure 要求每个 Azure 服务都具有唯一的名称。 如果输入了已存
 
     ![Azure 资源管理器模板部署资源组](./media/quickstart-create-templates-use-the-portal/azure-resource-manager-template-tutorial-portal-deployment-resource-group.png)
 
-    可以看到部署状态为成功，资源组中只有一个存储帐户。 存储帐户名称是模板生成的唯一字符串。 若要详细了解如何使用 Azure 存储帐户，请参阅[快速入门：使用 Azure 门户上传、下载和列出 Blob](../../storage/blobs/storage-quickstart-blobs-portal.md)。
+    可以看到部署状态为成功，资源组中只有一个存储帐户。 存储帐户名称是模板生成的唯一字符串。 若要了解有关使用 Azure 存储帐户的更多信息，请参阅[快速入门：使用 Azure 门户上载、下载和列出 blob](../../storage/blobs/storage-quickstart-blobs-portal.md)。
 
 ## <a name="clean-up-resources"></a>清理资源
 

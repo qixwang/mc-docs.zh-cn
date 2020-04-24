@@ -7,10 +7,10 @@ ms.date: 01/13/2020
 ms.author: v-yeche
 ms.custom: mvc
 ms.openlocfilehash: c624ccb6e648d4ef0e37cc1a33698175c9d13b3e
-ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75742481"
 ---
 # <a name="quickstart-deploy-linux-containers-to-service-fabric"></a>快速入门：将 Linux 容器部署到 Service Fabric
@@ -23,7 +23,7 @@ Azure Service Fabric 是一款分布式系统平台，可用于部署和管理�
 
 ## <a name="prerequisites"></a>必备条件
 
-若要完成本快速入门教程，需先执行以下操作：
+完成本快速入门教程需要：
 
 1. 如果还没有订阅，请在开始前创建一个[试用版 Azure 帐户](https://www.azure.cn/pricing/1rmb-trial/)。
 

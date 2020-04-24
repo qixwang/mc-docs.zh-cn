@@ -7,10 +7,10 @@ origin.date: 11/12/2018
 ms.date: 01/06/2020
 ms.author: v-yeche
 ms.openlocfilehash: 711b4bf4b226b31aecb1c29c6e5629489146539b
-ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75742348"
 ---
 # <a name="configuration-settings-for-a-standalone-windows-cluster"></a>独立 Windows 群集的配置设置
@@ -38,7 +38,7 @@ ms.locfileid: "75742348"
 可为 Service Fabric 群集指定任何友好名称，只需将该名称分配到 name 变量即可。 clusterConfigurationVersion 是群集的版本号。 每次升级 Service Fabric 群集时，都应该递增该编号。 请将 apiVersion 保留为默认值。
 
 <a name="clusternodes"></a>
-## <a name="nodes-on-the-cluster"></a>群集上的节点
+## <a name="nodes-on-the-cluster"></a><a name="nodes-on-the-cluster"></a>群集上的节点
 
 可以使用 nodes 节配置 Service Fabric 群集上的节点，如以下代码片段中所示：
 ```json
@@ -76,11 +76,11 @@ ms.locfileid: "75742348"
 | faultDomain |容错域可让群集管理员定义可能因共享的物理依赖项而同时发生故障的物理节点。 |
 | upgradeDomain |升级域描述几乎在相同时间关闭以进行 Service Fabric 升级的节点集。 可以选择将哪些节点分配到哪些升级域，因为这不受任何物理要求的限制。 |
 
-## <a name="cluster-properties"></a>群集属性
+## <a name="cluster-properties"></a><a name="cluster-properties"></a>群集属性
 ClusterConfig.json 中的属性部分用于配置群集，如下所示：
 
-### <a name="reliability"></a>可靠性
-reliabilityLevel 的概念定义可在群集的主节点上运行的 Service Fabric 系统服务副本或实例数。 它确定这些服务以及群集的可靠性。 在群集创建和升级过程中，由系统计算该值。
+### <a name="reliability"></a><a name="reliability"></a>可靠性
+reliabilityLevel 的概念定义可在群集的主节点上运行的 Service Fabric 系统服务副本或实例数。 它会确定这些服务以及群集的可靠性。 在群集创建和升级过程中，由系统计算该值。
 
 ### <a name="diagnostics"></a>诊断
 在 diagnosticsStore 节中可以配置参数，以便能够诊断和排查节点或群集故障，如以下代码片段中所示： 
@@ -146,7 +146,7 @@ nodeTypes 节描述群集中的节点类型。 一个群集必须指定至少一
 }]
 ```
 
-name 是此特定节点类型的友好名称。 要创建这种类型的节点，请[如前所述](#nodes-on-the-cluster)，将该节点的友好名称分配到其 nodeTypeRef 变量。 对于每个节点类型，请定义要使用的连接终结点。 可为这些连接终结点选择任意端口号，只要不与此群集中的任何其他终结点冲突即可。 在多节点群集中，根据 [reliabilityLevel](#reliability)，将有一个或多个主节点（即，isPrimary 设置为 *true*）。 若要详细了解主节点类型和非主节点类型，请参阅 [Service Fabric 群集容量规划注意事项](service-fabric-cluster-capacity.md)，了解有关 nodeTypes 和 reliabilityLevel 的信息。 
+name 是此特定节点类型的友好名称。 要创建这种类型的节点，请[如前所述](#nodes-on-the-cluster)，将该节点的友好名称分配到其 nodeTypeRef 变量。 对于每个节点类型，请定义要使用的连接终结点。 可为这些连接终结点选择任意端口号，只要不与此群集中的任何其他终结点冲突即可。 在多节点群集中，根据 *reliabilityLevel*，将有一个或多个主节点（即，isPrimary 设置为 [true](#reliability)）。 若要详细了解主节点类型和非主节点类型，请参阅 [Service Fabric 群集容量规划注意事项](service-fabric-cluster-capacity.md)，了解有关 nodeTypes 和 reliabilityLevel 的信息。 
 
 #### <a name="endpoints-used-to-configure-the-node-types"></a>用于配置节点类型的终结点
 * clientConnectionEndpointPort 是使用客户端 API 时，客户端用来连接群集的端口。 
@@ -179,7 +179,7 @@ name 是此特定节点类型的友好名称。 要创建这种类型的节点�
 建议使用非 OS 驱动器作为 FabricDataRoot 和 FabricLogRoot。 此类驱动器提供更高的可靠性，可防止 OS 停止响应的情况。 如果只自定义数据根目录，则会将日志根目录放置在比数据根目录低一级的位置。
 
 ### <a name="stateful-reliable-services-settings"></a>有状态 Reliable Services 设置
-在 KtlLogger 节中，可以设置 Reliable Services 的全局配置设置。 有关这些设置的详细信息，请阅读[配置有状态 Reliable Services](service-fabric-reliable-services-configuration.md)。 以下示例说明如何更改为支持有状态服务的任何可靠集合而创建的共享事务日志：
+在 KtlLogger 节中，可以设置 Reliable Services 的全局配置设置。 有关这些设置的详细信息，请阅读[配置有状态 Reliable Services](service-fabric-reliable-services-configuration.md)。 以下示例演示如何更改创建的共享事务日志，以备份有状态服务的任何可靠集合：
 
 ```json
 "fabricSettings": [{

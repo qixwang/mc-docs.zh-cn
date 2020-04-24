@@ -18,10 +18,10 @@ ms.author: v-jay
 ms.reviewer: misainat
 ms.lastreviewed: 07/18/2019
 ms.openlocfilehash: 620727c5a4d050e69f82dadce8008b2b77c3b068
-ms.sourcegitcommit: 166549d64bbe28b28819d6046c93ee041f1d3bd7
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75737812"
 ---
 # <a name="start-and-stop-the-asdk"></a>启动和停止 ASDK

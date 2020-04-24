@@ -10,10 +10,10 @@ ms.date: 02/10/2020
 ms.author: v-jay
 ms.subservice: blobs
 ms.openlocfilehash: 82b37c39aeae9b9a83ea2f2bf0f43f9b557746c2
-ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77028948"
 ---
 # <a name="latency-in-blob-storage"></a>Blob 存储中的延迟
@@ -38,7 +38,7 @@ Azure 存储为块 blob 提供两个延迟指标。 可以在 Azure 门户中查
 
 - **服务器延迟**测量从 Azure 存储接收到请求的最后一个数据包直到从 Azure 存储返回响应的第一个数据包之间的时间间隔。
 
-下图显示了调用 `Get Blob` 操作的示例工作负荷的**平均成功 E2E 延迟**和**平均成功服务器延迟**：
+下图显示了调用  **操作的示例工作负荷的**平均成功 E2E 延迟**和**平均成功服务器延迟`Get Blob`：
 
 ![屏幕截图显示了 Get Blob 操作的延迟指标](media/storage-blobs-latency/latency-metrics-get-blob.png)
 

@@ -7,10 +7,10 @@ origin.date: 08/18/2017
 ms.date: 01/06/2020
 ms.author: v-yeche
 ms.openlocfilehash: 4726da9739921f0d6fbe379f7234bc864af0453a
-ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75742329"
 ---
 # <a name="service-movement-cost"></a>服务移动成本

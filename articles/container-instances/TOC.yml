@@ -37,7 +37,7 @@
   items:
     - name: 代码示例
       href: 'https://azure.microsoft.com/resources/samples/?sort=0&term=aci'
-    - name: Resource Manager 模板
+    - name: 资源管理器模板
       href: container-instances-samples-rm.md
 - name: 概念
   items:
@@ -51,7 +51,7 @@
       href: container-instances-orchestrator-relationship.md
     - name: 安全注意事项
       href: container-instances-image-security.md
-- name: 操作指南
+- name: 操作方法指南
   items:
     - name: 部署
       items:
@@ -85,7 +85,7 @@
       items:
         - name: Azure 文件共享
           href: container-instances-volume-azure-files.md
-        - name: Secret
+        - name: 机密
           href: container-instances-volume-secret.md
         - name: 空目录
           href: container-instances-volume-emptydir.md
@@ -143,5 +143,5 @@
       href: 'https://support.azure.cn/support/contact/'
     - name: 视频
       href: 'https://www.azure.cn/video-center/'
-    - name: 常见问题
+    - name: 常见问题解答
       href: container-instances-faq.md

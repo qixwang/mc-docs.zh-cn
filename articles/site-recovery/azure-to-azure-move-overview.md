@@ -9,10 +9,10 @@ ms.date: 01/13/2020
 ms.author: v-yeche
 ms.custom: MVC
 ms.openlocfilehash: b13b8bd58f7d988e27ee996bdb808c0cbd454fda
-ms.sourcegitcommit: 4f4694991e1c70929c7112ad45a0c404ddfbc8da
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75776756"
 ---
 <!--NOT AVAILABLE ON AZURE CHINA CLOUD-->

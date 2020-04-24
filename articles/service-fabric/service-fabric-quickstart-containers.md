@@ -7,10 +7,10 @@ ms.date: 01/13/2020
 ms.author: v-yeche
 ms.custom: mvc
 ms.openlocfilehash: 0922bf567583294aa143f8190108a8531120afa4
-ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75742480"
 ---
 <!--Verify Successfully-->
@@ -42,7 +42,7 @@ Azure Service Fabric 是一款分布式系统平台，可用于部署和管理�
 
 Service Fabric SDK 和工具提供服务模板，用于将容器部署到 Service Fabric 群集。
 
-以“管理员”身份启动 Visual Studio。  选择“文件” > “新建” > “项目”    。
+以“管理员”身份启动 Visual Studio。  选择“文件” **“新建”** “项目” >    >   。
 
 选择“Service Fabric 应用程序”，将其命名为“MyFirstContainer”，并单击“创建”   。
 
@@ -167,13 +167,13 @@ Thumbprint                                Subject
 
 在解决方案资源管理器中右键单击“MyFirstContainer”，选择“发布”。   此时，“发布”对话框显示。
 
-运行上述 `Import-PfxCertificate` 命令时，请复制 PowerShell 窗口中 **CN =** 后面的内容，并将端口 `19000` 添加到其中。 例如，`mysfcluster.chinaeast.cloudapp.chinacloudapi.cn:19000`。 复制到“连接终结点”  字段。 请记下此值，因为在后面的步骤中需要用到。
+运行上述 **命令时，请复制 PowerShell 窗口中**CN =`Import-PfxCertificate` 后面的内容，并将端口 `19000` 添加到其中。 例如，`mysfcluster.chinaeast.cloudapp.chinacloudapi.cn:19000` 。 复制到“连接终结点”  字段。 请记下此值，因为在后面的步骤中需要用到。
 
 单击“高级连接参数”，验证连接参数信息。   *FindValue* 和 *ServerCertThumbprint* 值必须与在前一步骤中运行 `Import-PfxCertificate` 时安装的证书的指纹匹配。
 
-![“发布”对话框](./media/service-fabric-quickstart-containers/publish-app.png)
+![发布对话框](./media/service-fabric-quickstart-containers/publish-app.png)
 
-单击“发布”。 
+单击“发布”  。
 
 群集中的每个应用程序都必须具有唯一名称。 如果存在名称冲突，请重命名 Visual Studio 项目并重新部署。
 
@@ -181,7 +181,7 @@ Thumbprint                                Subject
 
 此时会看到 IIS 默认网页：![IIS 默认网页][iis-default]
 
-## <a name="clean-up"></a>清理
+## <a name="clean-up"></a>清除
 
 只要群集处于运行状态，就会产生费用。 请考虑[删除群集](service-fabric-cluster-delete.md)。
 

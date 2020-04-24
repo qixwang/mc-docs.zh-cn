@@ -6,10 +6,10 @@ origin.date: 12/09/2019
 ms.author: v-yeche
 ms.date: 01/06/2020
 ms.openlocfilehash: 7ad97983c511d444821e56e500434956d49735d0
-ms.sourcegitcommit: 0a933e8b5fd4eff22d361b4c7f8c2d0e5121180b
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75957107"
 ---
 # <a name="granting-a-service-fabric-applications-managed-identity-access-to-azure-resources-preview"></a>为 Service Fabric 应用程序的托管标识授予对 Azure 资源的访问权限（预览）

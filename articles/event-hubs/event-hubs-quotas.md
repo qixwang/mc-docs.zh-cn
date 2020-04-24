@@ -17,15 +17,15 @@ origin.date: 12/06/2018
 ms.date: 02/17/2020
 ms.author: v-tawe
 ms.openlocfilehash: b0dc0faa54a819424d4a8fbaed80d3b314767c9d
-ms.sourcegitcommit: 7c80405a6b48380814b4b414e9f8a5756c007880
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77067730"
 ---
 # <a name="azure-event-hubs-quotas-and-limits"></a>Azure 事件中心的配额和限制
 
-本部分列出 Azure 事件中心的基本配额和限制。
+本部分列出了 Azure 事件中心的基本配额和限制。
 
 [!INCLUDE [event-hubs-limits](../../includes/event-hubs-limits.md)]
 
@@ -35,4 +35,4 @@ ms.locfileid: "77067730"
 
 * [事件中心概述](event-hubs-what-is-event-hubs.md)
 * [事件中心自动膨胀](event-hubs-auto-inflate.md)
-* [事件中心常见问题](event-hubs-faq.md)
+* [事件中心常见问题解答](event-hubs-faq.md)

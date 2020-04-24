@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 02/10/2020
 ms.author: v-junlch
 ms.openlocfilehash: 63e873ff4f750b76ab019fc9a622d5b6273ccf08
-ms.sourcegitcommit: 99bd0019c5f01034b8765d7765ad7776c7d5e5ae
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77128829"
 ---
 # <a name="encrypt-os-and-attached-data-disks-in-a-virtual-machine-scale-set-with-azure-powershell"></a>通过 Azure PowerShell 对虚拟机规模集中的操作系统和附加的数据磁盘进行加密
@@ -34,7 +34,7 @@ New-AzResourceGroup -Name $rgName -Location $location
 New-AzKeyVault -VaultName $vaultName -ResourceGroupName $rgName -Location $location -EnabledForDiskEncryption
 ```
 
-### <a name="use-an-existing-key-vault"></a>使用现有的 Key Vault
+### <a name="use-an-existing-key-vault"></a>使用现有的密钥保管库
 
 仅当你要将现有的 Key Vault 用于磁盘加密时，才需要执行此步骤。 如果在上一部分中创建了 Key Vault，请跳过此步骤。
 

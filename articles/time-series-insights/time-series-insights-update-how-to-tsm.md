@@ -12,10 +12,10 @@ origin.date: 12/20/2019
 ms.date: 02/17/2020
 ms.custom: seodec18
 ms.openlocfilehash: 0bf723e11b6a7437df1ff876cf9956174e92fc27
-ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77068066"
 ---
 # <a name="data-modeling-in-azure-time-series-insights-preview"></a>Azure 时序见解预览版中的数据建模
@@ -161,7 +161,7 @@ Azure 时序见解资源管理器在浏览器中支持类型“创建”、“�
 
 ### <a name="delete-a-type"></a>删除类型
 
-1. 选择该实例，然后选择“删除”或“垃圾桶图标”   。 上获取。
+1. 选择该实例，然后选择“删除”或“垃圾桶图标”   。 。
 
    [![通过选择“删除”来删除类型。](media/v2-update-how-to-tsm/how-to-tsm-delete-type.png)](media/v2-update-how-to-tsm/how-to-tsm-delete-type.png#lightbox)
 

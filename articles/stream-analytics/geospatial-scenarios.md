@@ -9,10 +9,10 @@ ms.topic: conceptual
 origin.date: 04/02/2019
 ms.date: 07/12/2019
 ms.openlocfilehash: 40d03d644054422fce3bc1abac49df3b96888684
-ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75858372"
 ---
 # <a name="geofencing-and-geospatial-aggregation-scenarios-with-azure-stream-analytics"></a>使用 Azure 流分析的地理围栏和地理空间聚合方案

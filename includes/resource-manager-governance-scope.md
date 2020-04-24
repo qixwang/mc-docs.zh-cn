@@ -10,16 +10,16 @@ ms.date: 01/17/2020
 ms.author: v-tawe
 ms.custom: include file
 ms.openlocfilehash: 458fc15768b0409cf6d345ab2480b99ece7b26cc
-ms.sourcegitcommit: 94e1c9621b8f81a7078f1412b3a73281d0a8668b
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "76158979"
 ---
 在创建任何项之前，让我们复习一下作用域的概念。 Azure 提供四个级别的管理：管理组、订阅、资源组和资源。 下图显示了这些层的一个示例。
 <!-- Not Available on [Management groups](../articles/billing/billing-enterprise-mgmt-group-overview.md) -->
 
-![作用域](./media/resource-manager-governance-scope/scope-levels.png)
+![范围](./media/resource-manager-governance-scope/scope-levels.png)
 
 将在上述任何级别的作用域中应用管理设置。 所选的级别确定应用设置的广泛程度。 较低级别继承较高级别的设置。 将设置应用到订阅时，该设置将应用于订阅中的所有资源组和资源。 将设置应用到资源组时，该设置将应用到资源组及其所有资源。 但是，其他资源组不具有该设置。
 

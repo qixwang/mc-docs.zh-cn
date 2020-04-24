@@ -9,16 +9,16 @@ ms.topic: conceptual
 origin.date: 06/11/2019
 ms.date: 1/6/2020
 ms.openlocfilehash: eee266f064c4d6e15f45ed87e711833b3106f8c3
-ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75857179"
 ---
 # <a name="introduction-to-stream-analytics-windowing-functions"></a>流分析开窗函数简介
 在实时流方案中，对临时窗口中包含的数据执行操作是一种常见模式。 流分析提供对开窗函数的本机支持，使开发人员能够最小的工作量创建复杂的流进程作业。
 
-有四种类型的时态窗口可供选择：[**翻滚**](https://msdn.microsoft.com/azure/stream-analytics/reference/tumbling-window-azure-stream-analytics)、[**跳跃**](https://msdn.microsoft.com/azure/stream-analytics/reference/hopping-window-azure-stream-analytics)、[**滑动**](https://msdn.microsoft.com/azure/stream-analytics/reference/sliding-window-azure-stream-analytics)和[**会话**](https://msdn.microsoft.com/azure/stream-analytics/reference/session-window-azure-stream-analytics)窗口。  可在流分析作业中查询语法的 [GROUP BY](https://msdn.microsoft.com/azure/stream-analytics/reference/group-by-azure-stream-analytics) 子句中使用开窗函数  。
+有四种类型临时窗口可供选择：[“翻转” **、** “跳跃”](https://msdn.microsoft.com/azure/stream-analytics/reference/tumbling-window-azure-stream-analytics)、[“滑动”**和**“会话”](https://msdn.microsoft.com/azure/stream-analytics/reference/hopping-window-azure-stream-analytics)窗口[  ](https://msdn.microsoft.com/azure/stream-analytics/reference/sliding-window-azure-stream-analytics)[  ](https://msdn.microsoft.com/azure/stream-analytics/reference/session-window-azure-stream-analytics)。  可在流分析作业中查询语法的 [GROUP BY **子句中使用开窗函数**](https://msdn.microsoft.com/azure/stream-analytics/reference/group-by-azure-stream-analytics)。
 
 所有[开窗](https://msdn.microsoft.com/azure/stream-analytics/reference/windowing-azure-stream-analytics)操作都在窗口“结束”时输出结果  。 窗口的输出是基于所用聚合函数的单个事件。 该输出事件包含窗口的结束时间戳，所有开窗函数都以固定的长度定义。 
 

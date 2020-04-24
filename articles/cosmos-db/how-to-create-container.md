@@ -8,10 +8,10 @@ origin.date: 12/02/2019
 ms.date: 02/10/2020
 ms.author: v-yeche
 ms.openlocfilehash: aabccbc6e822f0434559e3c584a4f82c586e22ee
-ms.sourcegitcommit: 23dc63b6fea451f6a2bd4e8d0fbd7ed082ba0740
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "76980521"
 ---
 # <a name="create-an-azure-cosmos-container"></a>创建 Azure Cosmos 容器
@@ -23,7 +23,7 @@ ms.locfileid: "76980521"
 <a name="portal-sql"></a>
 ### <a name="sql-api"></a>SQL API
 
-1. 登录到 [Azure 门户](https://portal.azure.cn/)。
+1. 登录 [Azure 门户](https://portal.azure.cn/)。
 
 1. [创建新的 Azure Cosmos 帐户](create-sql-api-dotnet.md#create-account)或选择现有的帐户。
 
@@ -40,7 +40,7 @@ ms.locfileid: "76980521"
 <a name="portal-mongodb"></a>
 ### <a name="azure-cosmos-db-api-for-mongodb"></a>用于 MongoDB 的 Azure Cosmos DB API
 
-1. 登录到 [Azure 门户](https://portal.azure.cn/)。
+1. 登录 [Azure 门户](https://portal.azure.cn/)。
 
 1. [创建新的 Azure Cosmos 帐户](create-mongodb-dotnet.md#create-a-database-account)或选择现有的帐户。
 
@@ -57,7 +57,7 @@ ms.locfileid: "76980521"
 <a name="portal-cassandra"></a>
 ### <a name="cassandra-api"></a>Cassandra API
 
-1. 登录到 [Azure 门户](https://portal.azure.cn/)。
+1. 登录 [Azure 门户](https://portal.azure.cn/)。
 
 1. [创建新的 Azure Cosmos 帐户](create-cassandra-dotnet.md#create-a-database-account)或选择现有的帐户。
 
@@ -77,7 +77,7 @@ ms.locfileid: "76980521"
 <a name="portal-gremlin"></a>
 ### <a name="gremlin-api"></a>Gremlin API
 
-1. 登录到 [Azure 门户](https://portal.azure.cn/)。
+1. 登录 [Azure 门户](https://portal.azure.cn/)。
 
 1. [创建新的 Azure Cosmos 帐户](create-graph-dotnet.md#create-a-database-account)或选择现有的帐户。
 
@@ -95,7 +95,7 @@ ms.locfileid: "76980521"
 <a name="portal-table"></a>
 ### <a name="table-api"></a>表 API
 
-1. 登录到 [Azure 门户](https://portal.azure.cn/)。
+1. 登录 [Azure 门户](https://portal.azure.cn/)。
 
 1. [创建新的 Azure Cosmos 帐户](create-table-dotnet.md#create-a-database-account)或选择现有的帐户。
 
@@ -110,7 +110,7 @@ ms.locfileid: "76980521"
     > [!Note]
     > 就表 API 来说，每次添加新行时，都会指定分区键。
 
-## 使用 Azure CLI 创建容器<a name="cli-sql"></a><a name="cli-mongodb"></a><a name="cli-cassandra"></a><a name="cli-gremlin"></a><a name="cli-table"></a>
+## <a name="create-a-container-using-azure-cli"></a>使用 Azure CLI 创建容器<a name="cli-sql"></a><a name="cli-mongodb"></a><a name="cli-cassandra"></a><a name="cli-gremlin"></a><a name="cli-table"></a>
 
 下面的链接说明如何使用 Azure CLI 为 Azure Cosmos DB 创建容器资源。
 
@@ -122,7 +122,7 @@ ms.locfileid: "76980521"
 * [使用 Azure CLI 创建 Gremlin 图](./scripts/cli/gremlin/create.md)
 * [使用 Azure CLI 创建表 API 表](./scripts/cli/table/create.md)
 
-## 使用 PowerShell 创建容器<a name="ps-sql"></a><a name="ps-mongodb"><a name="ps-cassandra"></a><a name="ps-gremlin"><a name="ps-table"></a>
+## <a name="create-a-container-using-powershella-nameps-mongodba-nameps-gremlin"></a>使用 PowerShell 创建容器<a name="ps-sql"></a><a name="ps-mongodb"><a name="ps-cassandra"></a><a name="ps-gremlin"><a name="ps-table"></a>
 
 下面的链接说明如何使用 PowerShell 为 Azure Cosmos DB 创建容器资源。
 

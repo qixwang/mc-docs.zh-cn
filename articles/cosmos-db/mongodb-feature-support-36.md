@@ -9,10 +9,10 @@ ms.date: 02/10/2020
 author: rockboyfor
 ms.author: v-yeche
 ms.openlocfilehash: 3e1cd62ab14b03018724809f48d1bb9b02fe821c
-ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77028812"
 ---
 # <a name="azure-cosmos-dbs-api-for-mongodb-36-version-supported-features-and-syntax"></a>Azure Cosmos DB 的 API for MongoDB（3.6 版本）：支持的功能和语法
@@ -541,7 +541,7 @@ $polygon |  是 |
 
 ## <a name="unique-indexes"></a>唯一索引
 
-唯一索引确保一个集合中所有文档的特定字段没有重复值，类似于在默认的“_id”键上保持唯一性的方式。 可以在 Cosmos DB 中创建自定义索引，方法是使用 createIndex 命令（包括“unique”约束）。
+唯一索引确保特定字段在一个集合的所有文档中都不会有重复值，类似于默认“_id”键上保持唯一性的方式。 可以在 Cosmos DB 中创建自定义索引，方法是使用 createIndex 命令（包括“unique”约束）。
 
 ## <a name="time-to-live-ttl"></a>生存时间 (TTL)
 

@@ -13,10 +13,10 @@ metadata:
   ms.topic: landing-page
   services: active-directory
   ms.openlocfilehash: 5326ecfae6abae345896e62a0e94496ae5814038
-  ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+  ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 02/18/2020
+  ms.lasthandoff: 04/17/2020
   ms.locfileid: "77429891"
 landingContent:
 - title: 关于 Identity Governance

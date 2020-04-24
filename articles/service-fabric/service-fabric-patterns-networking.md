@@ -6,10 +6,10 @@ origin.date: 01/19/2018
 ms.date: 01/13/2020
 ms.author: v-yeche
 ms.openlocfilehash: c850a09516138e477f75d885b2a98d0f20cbdd06
-ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75742485"
 ---
 # <a name="service-fabric-networking-patterns"></a>Service Fabric 网络模式
@@ -20,7 +20,7 @@ ms.locfileid: "75742485"
 - [仅限内部的负载均衡器](#internallb)
 - [内部和外部负载均衡器](#internalexternallb)
 
-Service Fabric 在标准的虚拟机规模集中运行。 可在虚拟机规模集中使用的任何功能同样可在 Service Fabric 群集中使用。 虚拟机规模集与 Service Fabric 的 Azure Resource Manager 模板的网络部分是相同的。 部署到现有虚拟网络后，可以轻松地整合其他网络功能，例如 Azure ExpressRoute、Azure VPN 网关、网络安全组和虚拟网络对等互连。
+Service Fabric 在标准的虚拟机规模集中运行。 可在虚拟机规模集中使用的任何功能同样可在 Service Fabric 群集中使用。 虚拟机规模集与 Service Fabric 的 Azure 资源管理器模板的网络部分是相同的。 部署到现有虚拟网络后，可以轻松地整合其他网络功能，例如 Azure ExpressRoute、Azure VPN 网关、网络安全组和虚拟网络对等互连。
 
 ### <a name="allowing-the-service-fabric-resource-provider-to-query-your-cluster"></a>允许 Service Fabric 资源提供程序查询群集
 
@@ -74,7 +74,7 @@ DnsSettings              : {
 <a name="existingvnet"></a>
 ## <a name="existing-virtual-network-or-subnet"></a>现有虚拟网络或子网
 
-1. 将子网参数更改为现有子网的名称，并添加两个新参数以引用现有的虚拟网络：
+1. 将子网参数更改为现有子网的名称，然后添加两个新参数以引用现有的虚拟网络：
 
     ```json
     "subnet0Name": {
@@ -101,7 +101,7 @@ DnsSettings              : {
         },*/
     ```
 
-2. 注释掉 `Microsoft.Compute/virtualMachineScaleSets` 的 `nicPrefixOverride` 属性，因为你使用的是现有子网，并且已在步骤 1 中禁用了此变量。
+2. 注释掉 `nicPrefixOverride` 的 `Microsoft.Compute/virtualMachineScaleSets` 属性，因为你使用的是现有子网，并且已在步骤 1 中禁用了此变量。
 
     ```json
     /*"nicPrefixOverride": "[parameters('subnet0Prefix')]",*/
@@ -144,7 +144,7 @@ DnsSettings              : {
     },*/
     ```
 
-5. 从 `Microsoft.Compute/virtualMachineScaleSets` 的 `dependsOn` 属性中注释掉虚拟网络，避免非得要创建新的虚拟网络：
+5. 从 `dependsOn` 的 `Microsoft.Compute/virtualMachineScaleSets` 属性中注释掉虚拟网络，避免非得要创建新的虚拟网络：
 
     ```json
     "apiVersion": "[variables('vmssApiVersion')]",
@@ -229,7 +229,7 @@ DnsSettings              : {
     }, */
     ```
 
-5. 从 `Microsoft.Network/loadBalancers` 的 `dependsOn` 属性中注释掉 IP 地址，避免非得要创建新的 IP 地址：
+5. 从 `dependsOn` 的 `Microsoft.Network/loadBalancers` 属性中注释掉 IP 地址，避免非得要创建新的 IP 地址：
 
     ```json
     "apiVersion": "[variables('lbIPApiVersion')]",
@@ -243,7 +243,7 @@ DnsSettings              : {
     "properties": {
     ```
 
-6. 在 `Microsoft.Network/loadBalancers` 资源中，将 `frontendIPConfigurations` 的 `publicIPAddress` 元素更改为引用现有的静态 IP 地址而不是新建的 IP 地址：
+6. 在 `Microsoft.Network/loadBalancers` 资源中，将 `publicIPAddress` 的 `frontendIPConfigurations` 元素更改为引用现有的静态 IP 地址而不是新建的 IP 地址：
 
     ```json
     "frontendIPConfigurations": [
@@ -327,7 +327,7 @@ DnsSettings              : {
     }, */
     ```
 
-4. 删除 `Microsoft.Network/loadBalancers` 的 IP 地址 `dependsOn` 属性，避免非得要创建新的 IP 地址。 添加虚拟网络 `dependsOn` 属性，因为负载均衡器现在依赖于虚拟网络中的子网：
+4. 删除 `dependsOn` 的 IP 地址 `Microsoft.Network/loadBalancers` 属性，避免非得要创建新的 IP 地址。 添加虚拟网络 `dependsOn` 属性，因为负载均衡器现在依赖于虚拟网络中的子网：
 
     ```json
     "apiVersion": "[variables('lbApiVersion')]",
@@ -377,7 +377,7 @@ DnsSettings              : {
     New-AzResourceGroupDeployment -Name deployment -ResourceGroupName sfnetworkinginternallb -TemplateFile C:\SFSamples\Final\template\_internalonlyLB.json
     ```
 
-部署后，负载均衡器使用专用静态 IP 地址 10.0.0.250。 如果同一虚拟网络中还有其他计算机，可以转到内部 [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) 终结点。 可以看到，该终结点已连接到负载均衡器后面的某个节点。
+部署后，负载均衡器将使用专用静态 IP 地址 10.0.0.250。 如果同一虚拟网络中还有其他计算机，可以转到内部 [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) 终结点。 可以看到，该终结点已连接到负载均衡器后面的某个节点。
 
 <a name="internalexternallb"></a>
 ## <a name="internal-and-external-load-balancer"></a>内部和外部负载均衡器
@@ -572,7 +572,7 @@ DnsSettings              : {
     },
     ```
 
-6. 在 `Microsoft.Compute/virtualMachineScaleSets` 资源的 `networkProfile` 中，添加内部后端地址池：
+6. 在 `networkProfile` 资源的 `Microsoft.Compute/virtualMachineScaleSets` 中，添加内部后端地址池：
 
     ```json
     "loadBalancerBackendAddressPools": [

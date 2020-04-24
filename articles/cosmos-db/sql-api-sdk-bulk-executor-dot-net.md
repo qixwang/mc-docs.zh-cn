@@ -10,10 +10,10 @@ origin.date: 01/16/2020
 ms.date: 02/10/2020
 ms.author: v-yeche
 ms.openlocfilehash: bd4165e3b489eeb8e721dd045a0e66e2a217a860
-ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77028727"
 ---
 # <a name="net-bulk-executor-library-download-information"></a>.NET 批量执行程序库：下载信息 

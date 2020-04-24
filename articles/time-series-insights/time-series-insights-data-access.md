@@ -13,10 +13,10 @@ origin.date: 01/10/2020
 ms.date: 01/27/2020
 ms.custom: seodec18
 ms.openlocfilehash: f320e5bb4bf040c9a658b1911620c16da9a0ca28
-ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77068122"
 ---
 # <a name="grant-data-access-to-an-environment"></a>授予对环境的数据访问权限
@@ -25,7 +25,7 @@ ms.locfileid: "77068122"
 
 ## <a name="sign-in-to-time-series-insights"></a>登录到 Azure 时序见解
 
-1. 登录到 [Azure 门户](https://portal.azure.cn/)。
+1. 登录 [Azure 门户](https://portal.azure.cn/)。
 1. 查找时序见解环境。 在“搜索”框中输入 `Time Series`。  在搜索结果中选择“时序环境”  。
 1. 从列表中选择时序见解环境。
 

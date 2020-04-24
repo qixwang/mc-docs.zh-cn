@@ -10,10 +10,10 @@ origin.date: 08/05/2019
 ms.date: 01/13/2020
 ms.author: v-yeche
 ms.openlocfilehash: 87f5e1c49d0b494ba856281384d143068d30d85c
-ms.sourcegitcommit: 4f4694991e1c70929c7112ad45a0c404ddfbc8da
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75776676"
 ---
 # <a name="replicate-azure-stack-vms-to-azure"></a>将 Azure Stack VM 复制到 Azure
@@ -60,7 +60,7 @@ Site Recovery 有助于实现业务连续性和灾难恢复 (BCDR) 策略。 该
 7. 复制的计算机与配置服务器通信（HTTPS 443 入站端口，用于复制管理）。 计算机将复制数据发送到进程服务器（HTTPS 9443 入站端口，可修改）。
 8. 流量通过 Internet 复制到 Azure 存储公共终结点。 或者，可以使用 Azure ExpressRoute 公共对等互连。 不支持通过站点到站点 VPN 将流量从本地站点复制到 Azure。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 下面是设置此方案所需的项。
 

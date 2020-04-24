@@ -6,10 +6,10 @@ ms.topic: quickstart
 ms.date: 01/13/2020
 ms.custom: mvc, cc996988-fb4f-47
 ms.openlocfilehash: 6afc477b3bf306768916a466cd1e76336e1ff97b
-ms.sourcegitcommit: 48d51745ca18de7fa05b77501b4a9bf16cea2068
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "76116890"
 ---
 # <a name="create-a-function-triggered-by-azure-blob-storage"></a>创建由 Azure Blob 存储触发的函数
@@ -35,7 +35,7 @@ ms.locfileid: "76116890"
 
 ## <a name="create-a-blob-storage-triggered-function"></a>创建 Blob 存储触发的函数
 
-1. 展开 Function App，单击“Functions”旁边的 + 按钮   。 如果这是函数应用中的第一个函数，请依次选择“门户中”  、“继续”  。 否则，请转到第三步。
+1. 展开 Function App，单击“Functions”旁边的  **按钮+**  。 如果这是函数应用中的第一个函数，请依次选择“门户中”  、“继续”  。 否则，请转到第三步。
 
    ![Azure 门户中的 Functions 快速入门页](./media/functions-create-storage-blob-triggered-function/function-app-quickstart-choose-portal.png)
 

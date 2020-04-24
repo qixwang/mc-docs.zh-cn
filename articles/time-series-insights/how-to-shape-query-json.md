@@ -11,10 +11,10 @@ ms.date: 01/27/2020
 ms.author: v-yiso
 ms.custom: seodec18
 ms.openlocfilehash: 320110b045b04166e308057ac263159e6b1b50ec
-ms.sourcegitcommit: a7a199c76ef4475b54edd7d5a7edb7b91ea8dff7
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "76966516"
 ---
 # <a name="shape-json-to-maximize-query-performance"></a>塑造 JSON 以最大化查询性能 

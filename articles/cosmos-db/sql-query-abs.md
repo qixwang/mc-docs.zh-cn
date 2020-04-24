@@ -9,10 +9,10 @@ ms.date: 02/10/2020
 ms.author: v-yeche
 ms.custom: query-reference
 ms.openlocfilehash: ad3623988793ab897c0555e7042310468d6c9c4d
-ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77028719"
 ---
 # <a name="abs-azure-cosmos-db"></a>ABS (Azure Cosmos DB)
@@ -27,11 +27,11 @@ ABS (<numeric_expr>)
 ## <a name="arguments"></a>参数
 
 *numeric_expr*  
-  是一个数值表达式。  
+  为数值表达式。  
 
 ## <a name="return-types"></a>返回类型
 
-  返回一个数值表达式。  
+  返回数值表达式。  
 
 ## <a name="examples"></a>示例
 
@@ -41,7 +41,7 @@ ABS (<numeric_expr>)
 SELECT ABS(-1) AS abs1, ABS(0) AS abs2, ABS(1) AS abs3 
 ```  
 
- 下面是结果集。  
+ 下面是结果集：  
 
 ```json
 [{abs1: 1, abs2: 0, abs3: 1}]  

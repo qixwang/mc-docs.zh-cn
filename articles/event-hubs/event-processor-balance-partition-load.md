@@ -14,10 +14,10 @@ origin.date: 01/16/2020
 ms.date: 02/17/2020
 ms.author: v-tawe
 ms.openlocfilehash: d1ddd89c117c60c7dcfa9395a530121fd6b2219a
-ms.sourcegitcommit: 7c80405a6b48380814b4b414e9f8a5756c007880
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77067794"
 ---
 # <a name="balance-partition-load-across-multiple-instances-of-your-application"></a>跨应用程序的多个实例均衡分区负载

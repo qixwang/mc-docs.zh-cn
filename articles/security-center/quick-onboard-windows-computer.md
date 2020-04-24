@@ -16,13 +16,13 @@ origin.date: 12/3/2018
 ms.date: 05/22/2019
 ms.author: v-lingwu
 ms.openlocfilehash: ddfb96d0884e58cb268d1d7d489e3f4f30094ce0
-ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75858013"
 ---
-# <a name="quickstart-onboard-windows-computers-to-azure-security-center"></a>快速入门：将 Windows 计算机加入安全中心
+# <a name="quickstart-onboard-windows-computers-to-azure-security-center"></a>快速入门：将 Windows 计算机登记到安全中心
 加入 Azure 订阅之后，可以通过预配 Microsoft Monitoring Agent 为 Azure 外部（例如，本地或在其他云中）运行的资源启用安全中心。
 
 本快速入门演示如何在 Windows 计算机上安装 Microsoft Monitoring Agent。

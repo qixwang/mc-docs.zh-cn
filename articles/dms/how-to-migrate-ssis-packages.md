@@ -14,10 +14,10 @@ ms.topic: article
 origin.date: 06/08/2019
 ms.date: 01/13/2020
 ms.openlocfilehash: 17a04e54c23a52f0d50aa50c1f2253178564562e
-ms.sourcegitcommit: 4f4694991e1c70929c7112ad45a0c404ddfbc8da
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75776689"
 ---
 # <a name="redeploy-ssis-packages-to-azure-sql-database-with-azure-database-migration-service"></a>使用 Azure 数据库迁移服务将 SSIS 包重新部署到 Azure SQL 数据库
@@ -79,7 +79,7 @@ ms.locfileid: "75776689"
 
     ![“部署向导选择源”页](media/how-to-migrate-ssis-packages/dms-deployment-wizard-select-source-page.png)
  
-8. 选择“**下一步**”。
+8. 选择“**下一页**”。
 9. 在“选择目标”页上，指定项目目标  。
 
     a. 在“服务器名称”文本框中，输入完全限定的 Azure SQL Database 服务器名称 (<server_name>.database.chinacloudapi.cn)。
@@ -97,7 +97,7 @@ ms.locfileid: "75776689"
 
     ![“部署向导验证”页](media/how-to-migrate-ssis-packages/dms-deployment-wizard-validate-page.png)
 
-11. 选择“**下一步**”。
+11. 选择“**下一页**”。
 
 12. 在“查看”页上，查看部署设置  。
 

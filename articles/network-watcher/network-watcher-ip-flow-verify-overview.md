@@ -14,10 +14,10 @@ origin.date: 11/30/2017
 ms.date: 12/24/2018
 ms.author: v-lingwu
 ms.openlocfilehash: b82b7c8c1e0b08b29f39e1b3c12fc1e6292a69a7
-ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77028483"
 ---
 # <a name="introduction-to-ip-flow-verify-in-azure-network-watcher"></a>Azure 网络观察程序中的“IP 流验证”简介

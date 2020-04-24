@@ -9,10 +9,10 @@ origin.date: 10/25/2019
 ms.author: v-yiso
 ms.date: 01/20/2020
 ms.openlocfilehash: defb38f4fb2781e623e1778724ec4b5d76a609e2
-ms.sourcegitcommit: a890a9cca495d332c9f3f53ff3a5259fd5f0c275
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75859591"
 ---
 # <a name="reset-expressroute-circuit-peerings"></a>重置 ExpressRoute 线路对等互连

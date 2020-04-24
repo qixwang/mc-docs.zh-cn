@@ -15,10 +15,10 @@ origin.date: 01/27/2020
 ms.date: 2/6/2020
 ms.author: v-lingwu
 ms.openlocfilehash: e10e433f27490ffd44a9949f27d6906c33dc3f5c
-ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77068008"
 ---
 # <a name="service-bus---migrate-from-azure-active-directory-access-control-service-to-shared-access-signature-authorization"></a>服务总线 - 从 Azure Active Directory 访问控制服务迁移到共享访问签名授权

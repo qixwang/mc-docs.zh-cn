@@ -9,10 +9,10 @@ ms.topic: quickstart
 origin.date: 12/26/2018
 ms.date: 02/10/2020
 ms.openlocfilehash: 774aaddf48402d976105538c23c4928b3c6920d5
-ms.sourcegitcommit: 23dc63b6fea451f6a2bd4e8d0fbd7ed082ba0740
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "76980552"
 ---
 # <a name="quickstart-build-a-console-app-using-azure-cosmos-dbs-api-for-mongodb-and-golang-sdk"></a>快速入门：使用 Azure Cosmos DB 的用于 MongoDB 的 API 和 Golang SDK 生成控制台应用
@@ -35,7 +35,7 @@ Azure Cosmos DB 是世纪互联提供的多区域分布式多模型数据库服�
 
 换而言之，Golang 应用程序仅知道它要使用 MongoDB 客户端进行连接。 该应用程序完全知道数据存储在 Cosmos 数据库中。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 - Azure 订阅。 如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial)。 
 

@@ -10,10 +10,10 @@ ms.date: 02/10/2020
 ms.author: v-jay
 ms.subservice: tables
 ms.openlocfilehash: fd4f786de5fd40b2b9525af336a727b5cabf219e
-ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77028970"
 ---
 # <a name="performance-and-scalability-checklist-for-table-storage"></a>表存储的性能与可伸缩性查检表

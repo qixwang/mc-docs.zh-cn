@@ -10,15 +10,15 @@ ms.date: 01/20/2020
 ms.reviewer: sngun
 ms.custom: seodec18
 ms.openlocfilehash: 75145b75cfed4e6da8b9c6a377b9a4960941386a
-ms.sourcegitcommit: 304861faf39689348962127b8b56db8082ece2ef
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "76270071"
 ---
 # <a name="change-feed-in-azure-cosmos-db---overview"></a>Azure Cosmos DB 中的更改源 - 概述
 
-Azure Cosmos DB 中更改源支持的工作原理是侦听 Azure Cosmos 容器中发生的任何更改。 然后会输出一个排序的列表，其中包含已更改的文档，其顺序与修改顺序一样。 所做的更改会持久保存，并能够以异步和增量方式进行处理，而且输出可以分发到一个或多个使用者进行并行处理。 
+Azure Cosmos DB 中更改源支持的工作原理是侦听 Azure Cosmos 容器中发生的任何更改。 然后，它会按照所更改文档的修改顺序输出这些文档的排序列表。 这些更改将会持久保留且能以异步和增量方式进行处理。可将输出分配到一个或多个使用者供并行处理。 
 
 Azure Cosmos DB 非常适合用于 IoT、游戏、零售和操作日志记录应用程序。 这些应用程序中的一种常见设计模式是使用数据更改来触发附加的操作。 附加操作的示例包括：
 
@@ -36,10 +36,10 @@ Azure Cosmos DB 非常适合用于 IoT、游戏、零售和操作日志记录应
 
 | **客户端驱动程序** | **Azure CLI** | **SQL API** | **用于 Cassandra 的 Azure Cosmos DB API** | **Azure Cosmos DB 的 API for MongoDB** | **Gremlin API**|**表 API** |
 | --- | --- | --- | --- | --- | --- | --- |
-| .NET | 不可用 | 是 | 是 | 是 | 是 | 否 |
-|Java|不可用|是|是|是|是|否|
-|Python|不可用|是|是|是|是|否|
-|Node/JS|不可用|是|是|是|是|否|
+| .NET | NA | 是 | 是 | 是 | 是 | 否 |
+|Java|NA|是|是|是|是|否|
+|Python|NA|是|是|是|是|否|
+|Node/JS|NA|是|是|是|是|否|
 
 ## <a name="change-feed-and-different-operations"></a>更改源和不同操作
 
@@ -87,7 +87,7 @@ _etag 属于内部格式，请不要依赖它，因为它随时可能更改。 _
 
 * 在[无服务器](https://azure.microsoft.com/solutions/serverless/) Web 应用或移动应用中，可以跟踪各种事件（例如，对客户配置文件、首选项或其位置的更改），并触发特定的操作（例如，使用 [Azure Functions](change-feed-functions.md) 向客户的设备发送推送通知）。
 
-* 例如，若要使用 Azure Cosmos DB 来构建游戏，可以使用更改源，根据已完成的游戏的分数实时更新排行榜。
+* 例如，若要使用 Azure Cosmos DB 构建游戏，可使用更改源，根据已完成的游戏的分数实时更新排行榜。
 
 ## <a name="working-with-change-feed"></a>使用更改源
 

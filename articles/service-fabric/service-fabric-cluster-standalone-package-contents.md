@@ -1,36 +1,36 @@
 ---
 title: 适用于 Windows Server 的 Azure Service Fabric 独立包
-description: 适用于 Windows Server 的 Azure Service Fabric 独立包的说明和内容。
+description: 适用于 Windows Server 的 Azure{1}{2}Service Fabric 独立包的说明和内容。
 author: rockboyfor
 ms.topic: conceptual
 origin.date: 08/10/2017
 ms.date: 01/06/2020
 ms.author: v-yeche
 ms.openlocfilehash: 2913b94edb7c54341e9b530b10712c0e681f52d8
-ms.sourcegitcommit: 713136bd0b1df6d9da98eb1da7b9c3cee7fd0cee
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75742321"
 ---
 # <a name="contents-of-service-fabric-standalone-package-for-windows-server"></a>适用于 Windows Server 的 Service Fabric 独立包的内容
-在 [已下载](https://go.microsoft.com/fwlink/?LinkId=730690) 的 Service Fabric 独立包中，找到以下文件：
+在[下载的](https://go.microsoft.com/fwlink/?LinkId=730690) Service Fabric 独立包中，可找到以下文件：
 
 | **文件名** | **简短说明** |
 | --- | --- |
-| CreateServiceFabricCluster.ps1 |一个 PowerShell 脚本，它可以使用 ClusterConfig.json 中的设置创建群集。 |
-| RemoveServiceFabricCluster.ps1 |一个 PowerShell 脚本，它可以使用 ClusterConfig.json 中的设置删除群集。 |
-| AddNode.ps1 |一个 PowerShell 脚本，用于将节点添加到当前计算机上的现有部署群集。 |
-| RemoveNode.ps1 |一个 PowerShell 脚本，用于将节点从当前计算机上的现有部署群集中删除。 |
-| CleanFabric.ps1 |一个 PowerShell 脚本，用于从当前计算机中清除独立的 Service Fabric 安装。 以前的 MSI 安装应使用其自身关联的卸载程序来删除。 |
-| TestConfiguration.ps1 |一个 PowerShell 脚本，用于分析 Cluster.json 中指定的基础结构。 |
-| DownloadServiceFabricRuntimePackage.ps1 |一个 PowerShell 脚本，在部署计算机未连接到 Internet 的方案中，用于在带外下载最新的运行时包。 |
-| DeploymentComponentsAutoextractor.exe |自解压存档，包含独立包脚本使用的部署组件。 |
-| EULA_ENU.txt |有关使用 Azure Service Fabric Windows Server 独立包的许可条款。 可以立即 [下载一份 EULA](https://go.microsoft.com/fwlink/?LinkID=733084) 。 |
-| Readme.txt |发行说明和基本安装说明的链接。 本文档包含此文件中的一部分说明。 |
-| ThirdPartyNotice.rtf |包中第三方软件的声明。 |
+| CreateServiceFabricCluster.ps1 |PowerShell 脚本，用于通过 ClusterConfig.json 中的设置创建群集。 |
+| RemoveServiceFabricCluster.ps1 |PowerShell 脚本，用于通过 ClusterConfig.json 中的设置删除群集。 |
+| AddNode.ps1 |PowerShell 脚本，用于在当前计算机上将节点添加到现有的部署群集。 |
+| RemoveNode.ps1 |PowerShell 脚本，用于在当前计算机上将节点从现有的部署群集中删除。 |
+| CleanFabric.ps1 |PowerShell 脚本，用于从当前计算机中清除独立 Service Fabric 安装。 应使用以前的 MSI 安装的自身关联卸载程序来删除以前的安装。 |
+| TestConfiguration.ps1 |PowerShell 脚本，用于分析 Cluster.json 中指定的基础结构。 |
+| DownloadServiceFabricRuntimePackage.ps1 |用于下载最新带外运行时包的 PowerShell 脚本，适用于部署计算机未连接到 Internet 的方案。 |
+| DeploymentComponentsAutoextractor.exe |包含独立包脚本所用部署组件的自解压缩存档。 |
+| EULA_ENU.txt |有关使用 Azure Service Fabric Windows Server 独立包的许可条款。 现在，可以[下载 EULA 的副本](https://go.microsoft.com/fwlink/?LinkID=733084)。 |
+| Readme.txt |发行说明和基本安装说明的链接。 这是本文中说明的子集。 |
+| ThirdPartyNotice.rtf |包中的第三方软件的通知。 |
 | Tools\Microsoft.Azure.ServiceFabric.WindowsServer.SupportPackage.zip |StandaloneLogCollector.exe 按需运行，收集跟踪日志并将其上传到 Azure 以提供支持。 |
-| Tools\ServiceFabricUpdateService.zip |用来为不具有 Internet 访问权限的群集启用自动代码升级的工具。 在[此处](service-fabric-cluster-upgrade-windows-server.md)可以找到更多详细信息|
+| Tools\ServiceFabricUpdateService.zip |用于为不具有 Internet 访问权限的群集启用自动代码升级的工具。 在[此处](service-fabric-cluster-upgrade-windows-server.md)可以找到更多详细信息|
 
 **模板** 
 
@@ -45,13 +45,13 @@ ms.locfileid: "75742321"
 | ClusterConfig.gMSA.Windows.MultiMachine.json |群集配置示例文件，其中包含安全型多计算机（或虚拟机）群集的所有设置，这些设置包括安全群集中每个节点的信息。 使用[组托管服务帐户](https://technet.microsoft.com/library/jj128431(v=ws.11).aspx)保护该群集。 |
 
 ## <a name="cluster-configuration-samples"></a>群集配置示例
-可在以下 GitHub 页中找到最新版本的群集配置模板：[独立群集配置示例](https://github.com/Azure-Samples/service-fabric-dotnet-standalone-cluster-configuration/tree/master/Samples)。
+可在以下 GitHub 页面找到最新版本的群集配置模板：[独立群集配置示例](https://github.com/Azure-Samples/service-fabric-dotnet-standalone-cluster-configuration/tree/master/Samples)。
 
 ## <a name="independent-runtime-package"></a>独立运行时包
 在从[下载链接 - Service Fabric 运行时 - Windows Server](https://go.microsoft.com/fwlink/?linkid=839354) 部署群集的过程中，会自动下载最新的运行时包。
 
 ## <a name="related"></a>相关内容
 * [创建独立 Azure Service Fabric 群集](service-fabric-cluster-creation-for-windows-server.md)
-* [Service Fabric 群集安全方案](service-fabric-windows-cluster-windows-security.md)
+* [Service Fabric 群集安全性方案](service-fabric-windows-cluster-windows-security.md)
 
 <!--Update_Description: update meta properties, wording update -->

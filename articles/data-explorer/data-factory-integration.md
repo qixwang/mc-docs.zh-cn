@@ -10,10 +10,10 @@ ms.topic: conceptual
 origin.date: 01/20/2020
 ms.date: 02/17/2020
 ms.openlocfilehash: 8ab070e2aeb19aeec4bce61a414f83728f18d1ed
-ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77037923"
 ---
 # <a name="integrate-azure-data-explorer-with-azure-data-factory"></a>将 Azure 数据资源管理器与 Azure 数据工厂集成

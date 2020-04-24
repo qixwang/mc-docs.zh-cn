@@ -16,10 +16,10 @@ origin.date: 11/05/2019
 ms.date: 1/2/2020
 ms.author: v-lingwu
 ms.openlocfilehash: c43c2d155eb0b78aec100059381343fd6ca9b69a
-ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75853716"
 ---
 # <a name="tutorial-respond-to-azure-service-bus-events-received-via-azure-event-grid-by-using-azure-functions-and-azure-logic-apps"></a>教程：使用 Azure Functions 和 Azure 逻辑应用对通过 Azure 事件网格收到的 Azure 服务总线事件做出响应
@@ -66,7 +66,7 @@ ms.locfileid: "75853716"
 然后执行以下步骤： 
 
 
-# <a name="azure-functions-v2tabv2"></a>[Azure Functions V2](#tab/v2)
+# <a name="azure-functions-v2"></a>[Azure Functions V2](#tab/v2)
 
 1. 在树视图中展开“函数”，并选择你的函数。  将函数代码替换为以下代码： 
 
@@ -123,7 +123,7 @@ ms.locfileid: "75853716"
 
     ![获取函数 URL](./media/service-bus-to-event-grid-integration-example/get-function-url.png)
 
-# <a name="azure-functions-v1tabv1"></a>[Azure Functions V1](#tab/v1)
+# <a name="azure-functions-v1"></a>[Azure Functions V1](#tab/v1)
 
 1. 将函数配置为使用 **V1** 版本： 
     1. 在树视图中选择你的函数应用，然后选择“函数应用设置”。  

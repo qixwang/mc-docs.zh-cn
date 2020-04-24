@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 02/14/2020
 ms.author: v-junlch
 ms.openlocfilehash: 5792489360fc32917cec157d3c1f793d63721595
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77428026"
 ---
 # <a name="handling-external-events-in-durable-functions-azure-functions"></a>在 Durable Functions 中处理外部事件 (Azure Functions)
@@ -20,7 +20,7 @@ ms.locfileid: "77428026"
 
 ## <a name="wait-for-events"></a>等待事件
 
-业务流程协调程序函数使用[业务流程触发器绑定](durable-functions-bindings.md#orchestration-trigger)的 `WaitForExternalEvent` (.NET) 和 `waitForExternalEvent` (JavaScript) 方法可异步等待和侦听外部事件。 侦听业务流程协调程序函数声明了事件的“名称”和它期望收到的“数据形态”。  
+业务流程协调程序函数使用`WaitForExternalEvent`业务流程触发器绑定`waitForExternalEvent`的 [ (.NET) 和 ](durable-functions-bindings.md#orchestration-trigger) (JavaScript) 方法可异步等待和侦听外部事件。 侦听业务流程协调程序函数声明了事件的“名称”和它期望收到的“数据形态”。  
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -173,7 +173,7 @@ module.exports = df.orchestrator(function*(context) {
 
 ## <a name="send-events"></a>发送事件
 
-[业务流程客户端绑定](durable-functions-bindings.md#orchestration-client)的 `RaiseEventAsync` (.NET) 或 `raiseEvent` (JavaScript) 方法发送 `WaitForExternalEvent` (.NET) 或 `waitForExternalEvent` (JavaScript) 等待的事件。  `RaiseEventAsync` 方法采用 *eventName* 和 *eventData* 作为参数。 事件数据必须是 JSON 可序列化的。
+`RaiseEventAsync`业务流程客户端绑定`raiseEvent`的 [ (.NET) 或 ](durable-functions-bindings.md#orchestration-client) (JavaScript) 方法发送 `WaitForExternalEvent` (.NET) 或 `waitForExternalEvent` (JavaScript) 等待的事件。  `RaiseEventAsync` 方法采用 *eventName* 和 *eventData* 作为参数。 事件数据必须是 JSON 可序列化的。
 
 下面是一个示例队列触发的函数，它将“Approval”事件发送到一个业务流程协调程序函数实例。 业务流程实例 ID 来自队列消息的正文。
 
@@ -190,7 +190,7 @@ public static async Task Run(
 ```
 
 > [!NOTE]
-> 前面的 C# 代码适用于 Durable Functions 2.x。 对于 Durable Functions 1.x，必须使用 `OrchestrationClient` 属性而不是 `DurableClient` 属性，并且必须使用 `DurableOrchestrationClient` 参数类型而不是 `IDurableOrchestrationClient`。 有关版本之间差异的详细信息，请参阅 [Durable Functions 版本](durable-functions-versions.md)一文。
+> 前面的 C# 代码适用于 Durable Functions 2.x。 对于 Durable Functions 1.x，必须使用 `OrchestrationClient` 属性而不是 `DurableClient` 属性，并且必须使用 `DurableOrchestrationClient` 参数类型，而不是 `IDurableOrchestrationClient`。 有关版本之间差异的详细信息，请参阅 [Durable Functions 版本](durable-functions-versions.md)一文。
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 

@@ -13,10 +13,10 @@ origin.date: 12/11/2019
 ms.author: v-yiso
 ms.date: 01/20/2020
 ms.openlocfilehash: 75b0ddf962619e4bd0145d8a6aae755e58f291c8
-ms.sourcegitcommit: a890a9cca495d332c9f3f53ff3a5259fd5f0c275
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75859556"
 ---
 # <a name="configure-expressroute-and-site-to-site-coexisting-connections-using-powershell"></a>使用 PowerShell 配置 ExpressRoute 和站点到站点共存连接
@@ -89,7 +89,7 @@ ms.locfileid: "75859556"
 
 
 
-## <a name="new"></a>创建新的虚拟网络和并存连接
+## <a name="to-create-a-new-virtual-network-and-coexisting-connections"></a><a name="new"></a>创建新的虚拟网络和并存连接
 本过程将指导你创建 VNet 以及将共存的站点到站点连接和 ExpressRoute 连接。 针对此配置使用的 cmdlet 可能与你熟悉的 cmdlet 稍有不同。 请务必使用说明内容中指定的 cmdlet。
 
 1. 登录并选择订阅。
@@ -190,7 +190,7 @@ ms.locfileid: "75859556"
     New-AzVirtualNetworkGatewayConnection -Name "ERConnection" -ResourceGroupName $resgrp.ResourceGroupName -Location $location -VirtualNetworkGateway1 $gw -PeerId $ckt.Id -ConnectionType ExpressRoute
     ```
 
-## <a name="add"></a>为现有的 VNet 配置并存连接
+## <a name="to-configure-coexisting-connections-for-an-already-existing-vnet"></a><a name="add"></a>为现有的 VNet 配置并存连接
 如果你的虚拟网络只有一个虚拟网络网关（例如，站点到站点 VPN 网关），并且你想要添加另一个不同类型的网关（例如，ExpressRoute 网关），请检查网关子网大小。 如果网关子网为 /27 或更大，则可以跳过以下步骤并按照上一部分中的步骤添加站点到站点 VPN 网关或 ExpressRoute 网关。 如果网关子网为 /28 或 /29，则必须先删除虚拟网络网关，然后增加网关子网大小。 本部分的步骤说明如何这样做。
 
 针对此配置使用的 cmdlet 可能与你熟悉的 cmdlet 稍有不同。 请务必使用说明内容中指定的 cmdlet。

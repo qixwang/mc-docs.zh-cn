@@ -13,10 +13,10 @@ origin.date: 01/31/2020
 ms.date: 02/17/2020
 ms.custom: seodec18
 ms.openlocfilehash: 2afcbbaca491ca57637dc11c3563ff7f07de8837
-ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77068089"
 ---
 # <a name="manage-ga-reference-data-for-an-azure-time-series-insights-environment-using-c"></a>使用 C# 管理 Azure 时序见解环境的正式版参考数据
@@ -26,7 +26,7 @@ ms.locfileid: "77068089"
 > [!TIP]
 > 查看 [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-tsi-ga-sample) 上的正式版 C# 代码示例。
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>总结
 
 下面的示例代码演示了以下功能：
 
@@ -43,7 +43,7 @@ ms.locfileid: "77068089"
 
 1. 在你的环境中[创建参考数据集](time-series-insights-add-reference-data-set.md)。 使用以下参考数据方案：
 
-   | 密钥名称 | 类型 |
+   | 项名 | 类型 |
    | --- | --- |
    | uuid | String | 
 
@@ -67,12 +67,12 @@ ms.locfileid: "77068089"
 * MSAL.NET [Microsoft.Identity.Client](https://www.nuget.org/packages/Microsoft.Identity.Client/) -  4.7.1 程序包。
 * [Newtonsoft.Json](https://www.nuget.org/packages/Newtonsoft.Json) - 12.0.3 程序包。
 
-使用 [NuGet 2.12+](https://www.nuget.org/) 添加这些程序包：
+使用 [NuGet 2.12+](https://www.nuget.org/) 添加包：
 
 * `dotnet add package Newtonsoft.Json --version 12.0.3`
 * `dotnet add package Microsoft.Identity.Client --version 4.7.1`
 
-或者：
+或：
 
 1. 声明一个 `csharp-tsi-msal-ga-sample.csproj` 文件：
 

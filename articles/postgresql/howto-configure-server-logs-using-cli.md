@@ -9,10 +9,10 @@ ms.topic: conceptual
 origin.date: 5/6/2019
 ms.date: 01/13/2020
 ms.openlocfilehash: 1dd6629bf20622cb2d76bef92049d1dd4088a4b8
-ms.sourcegitcommit: 4f4694991e1c70929c7112ad45a0c404ddfbc8da
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75776674"
 ---
 # <a name="configure-and-access-server-logs-by-using-azure-cli"></a>使用 Azure CLI 配置和访问服务器日志
@@ -26,7 +26,7 @@ ms.locfileid: "75776674"
 ## <a name="configure-logging"></a>配置日志记录
 可以将服务器配置为访问查询日志和错误日志。 错误日志包含自动清空、连接和检查点等信息。
 1. 启用日志。
-2. 要启动日期，请更新 log\_statement 和 log\_min\_duration\_statement   。
+2. 要启动日期，请更新 log**statement 和 log\_min**duration**statement\_\_\_** 。
 3. 更新保留期。
 
 请参阅[自定义服务器配置参数](howto-configure-server-parameters-using-cli.md)，了解详细信息。
@@ -34,7 +34,7 @@ ms.locfileid: "75776674"
 ## <a name="list-logs"></a>列出日志
 若要列出服务器的可用日志文件，请运行 [az postgres server-logs list](/cli/postgres/server-logs) 命令。
 
-可以列出资源组“myresourcegroup”  下的服务器 **mydemoserver.postgres.database.chinacloudapi.cn** 的日志文件。 然后在日志文件列表中找到名为“log\_files\_list.txt”的文本文件  。
+可以列出资源组“myresourcegroup”  下的服务器 **mydemoserver.postgres.database.chinacloudapi.cn** 的日志文件。 然后在日志文件列表中找到名为“log**files\_list.txt”的文本文件\_** 。
 ```azurecli
 az postgres server-logs list --resource-group myresourcegroup --server mydemoserver > log_files_list.txt
 ```

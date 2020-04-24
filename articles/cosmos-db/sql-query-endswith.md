@@ -9,10 +9,10 @@ ms.date: 02/10/2020
 ms.author: v-yeche
 ms.custom: query-reference
 ms.openlocfilehash: 4fda41c1ad57758409998b8ced48257205de861c
-ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77028664"
 ---
 # <a name="endswith-azure-cosmos-db"></a>ENDSWITH (Azure Cosmos DB)
@@ -38,13 +38,13 @@ ENDSWITH(<str_expr1>, <str_expr2>)
 
 ## <a name="examples"></a>示例
 
-  以下示例的返回结果指示“abc”是否以“b”和“bc”结尾。  
+  以下示例将返回以 "b" 和 "bc" 结尾的 "abc"。  
 
 ```sql
 SELECT ENDSWITH("abc", "b") AS e1, ENDSWITH("abc", "bc") AS e2 
 ```  
 
- 下面是结果集。  
+ 下面是结果集：  
 
 ```json
 [{"e1": false, "e2": true}]  

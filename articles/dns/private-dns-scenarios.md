@@ -9,10 +9,10 @@ origin.date: 10/05/2019
 ms.date: 01/13/2020
 ms.author: v-jay
 ms.openlocfilehash: ff39a1e3e6355e40e56857d5d0a797efe2b5a20d
-ms.sourcegitcommit: 157df1a5f11473dd3265d71f1543437f50f09adb
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75777478"
 ---
 # <a name="azure-dns-private-zones-scenarios"></a>Azure DNS 专用区域场景
@@ -44,7 +44,7 @@ Azure DNS 专用区域在虚拟网络内或虚拟网络之间提供名称解析�
 
 下图描绘了此方案。 虚拟网络 A 中有两个 VM（VNETA-VM1 和 VNETA-VM2），它们同时分配有专用 IP 和公用 IP。 你创建一个名为 contoso.com 的公用 DNS 区域，并且将这些 VM 的公用 IP 注册为该区域中的 DNS 记录。 你还创建名称也是 contoso.com 的一个专用 DNS 区域，并将 A 指定为“注册”虚拟网络。 Azure 会自动将 VM 作为 A 记录注册到专用区域中并指向其专用 IP。
 
-现在，当 Internet 客户端发出 DNS 查询来查找 VNETA-VM1.contoso.com 时，Azure 将返回来自公用区域的公用 IP 记录。 如果从同一虚拟网络 A 中的另一 VM（例如 VNETA-VM2）发出相同的 DNS 查询，则 Azure 将返回来自专用区域的专用 IP 记录。 
+现在，当 Internet 客户端发出 DNS 查询来查找 VNETA-VM1.contoso.com 时，Azure 将返回来自公用区域的公用 IP 记录。 如果同一虚拟网络 A 中的另一 VM（例如 VNETA-VM2）发出同一 DNS 查询，则 Azure 将返回来自专用区域的专用 IP 记录。 
 
 ![裂脑解析](./media/private-dns-scenarios/split-brain-resolution.png)
 
@@ -53,7 +53,7 @@ Azure DNS 专用区域在虚拟网络内或虚拟网络之间提供名称解析�
 
 了解如何在 Azure DNS 中[创建专用 DNS 区域](./private-dns-getstarted-powershell.md)。
 
-访问以下内容，了解 DNS 区域和记录：[DNS 区域和记录概述](dns-zones-records.md)。
+若要了解 DNS 区域和记录，请访问 [DNS 区域和记录概述](dns-zones-records.md)。
 
 了解 Azure 的一些其他关键[网络功能](../networking/networking-overview.md)。
 

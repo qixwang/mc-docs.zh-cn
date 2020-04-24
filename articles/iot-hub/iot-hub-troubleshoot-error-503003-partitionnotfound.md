@@ -10,10 +10,10 @@ origin.date: 01/30/2020
 ms.date: 02/17/2020
 ms.author: v-yiso
 ms.openlocfilehash: 12d320a0ab2c177faeded1703d18567f3b271baf
-ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77068542"
 ---
 # <a name="503003-partitionnotfound"></a>503003 PartitionNotFound

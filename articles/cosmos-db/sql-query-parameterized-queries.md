@@ -8,10 +8,10 @@ origin.date: 05/30/2019
 ms.date: 02/10/2020
 ms.author: v-yeche
 ms.openlocfilehash: d5400416ac60b49827deb83247443440ff9d06c8
-ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77067860"
 ---
 # <a name="parameterized-queries-in-azure-cosmos-db"></a>Azure Cosmos DB 中的参数化查询
@@ -55,7 +55,7 @@ Cosmos DB 支持使用带有常用 @ 表示法的参数进行查询。 参数化
 
 ## <a name="next-steps"></a>后续步骤
 
-- [Azure Cosmos DB .NET 示例](https://github.com/Azure/azure-cosmos-dotnet-v3)
+- [Azure Cosmos DB.NET 示例](https://github.com/Azure/azure-cosmos-dotnet-v3)
 - [模型文档数据](modeling-data.md)
 
 <!-- Update_Description: wording update, update link -->

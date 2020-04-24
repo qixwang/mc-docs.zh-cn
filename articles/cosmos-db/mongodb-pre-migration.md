@@ -9,13 +9,13 @@ origin.date: 04/17/2019
 ms.date: 02/10/2020
 ms.author: v-yeche
 ms.openlocfilehash: 04c2d8aef4b731d7544abe129fd93fa0d85daae4
-ms.sourcegitcommit: 5c4141f30975f504afc85299e70dfa2abd92bea1
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77028805"
 ---
-# <a name="pre-migration-steps-for-data-migrations-from-mongodb-to-azure-cosmos-dbs-api-for-mongodb"></a>将数据从 MongoDB 迁移到 Azure Cosmos DB's API for MongoDB 的迁移前步骤
+# <a name="pre-migration-steps-for-data-migrations-from-mongodb-to-azure-cosmos-dbs-api-for-mongodb"></a>将数据从 MongoDB 迁移到 Azure Cosmos DB MongoDB API 的迁移前步骤
 
 在将数据从 MongoDB（本地或云中）迁移到 Azure Cosmos DB’s API for MongoDB 之前，应执行以下操作：
 
