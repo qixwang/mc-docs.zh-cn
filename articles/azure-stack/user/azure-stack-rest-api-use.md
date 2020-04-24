@@ -9,10 +9,10 @@ ms.author: v-jay
 ms.reviewer: thoroet
 ms.lastreviewed: 01/14/2019
 ms.openlocfilehash: ac48327159730eb86868e58aed367781d2acef53
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77541016"
 ---
 <!--  cblackuk and charliejllewellyn. This is a community contribution by cblackuk-->
@@ -99,7 +99,7 @@ grant_type=password
   https://contoso.partner.onmschina.cn/4de154de-f8a8-4017-af41-df619da68155
   ```
 
-- client_id 
+- **client_id**
 
   此值已硬编码为默认值：
 
@@ -125,7 +125,7 @@ grant_type=password
   azurestackadmin@fabrikam.partner.onmschina.cn
   ```
 
-- **password**
+- password 
 
   Azure Stack Hub Azure AD 管理员密码。
 
@@ -160,7 +160,7 @@ curl -X "POST" "https://login.chinacloudapi.cn/fabrikam.partner.onmschina.cn/oau
 
 ## <a name="api-queries"></a>API 查询
 
-获取访问令牌后，请将其作为标头添加到每个 API 请求。 若要将其添加为标头，请创建值为 `Bearer <access token>` 的**授权**标头。 例如：
+获取访问令牌后，请将其作为标头添加到每个 API 请求。 若要将其添加为标头，请创建值为  **的**授权`Bearer <access token>`标头。 例如：
 
 请求：
 
@@ -185,7 +185,7 @@ subscriptionPolicies : @{locationPlacementId=AzureStack}
 通用请求 URI 包含：`{URI-scheme} :// {URI-host} / {resource-path} ? {query-string}`
 
 - **URI 方案**：  
-URI 指示用于发送请求的协议。 例如 `http` 或 `https`。
+URI 指示用于发送请求的协议。 例如，`http` 或 `https`。
 - **URI 主机**：  
 该主机指定 REST 服务终结点所在服务器的域名或 IP 地址，例如 `graph.microsoft.com` 或 `adminmanagement.local.azurestack.external`。
 - **资源路径**：  

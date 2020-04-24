@@ -11,10 +11,10 @@ ms.topic: conceptual
 origin.date: 07/31/2019
 ms.date: 02/24/2020
 ms.openlocfilehash: bc28034f9a2c574930ca9c126c7202f19294ac95
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77428914"
 ---
 # <a name="move-logic-app-resources-to-other-azure-subscriptions-resource-groups-or-regions"></a>将逻辑应用资源移到其他 Azure 订阅、资源组或区域
@@ -27,7 +27,7 @@ ms.locfileid: "77428914"
 
 * 移动资源时，Azure 将创建新的资源 ID。 因此，请确保改用新的 ID，并更新与所要移动的资源关联的任何脚本或工具。 在订阅、资源组或区域之间移动逻辑应用后，必须重新创建或重新授权任何基于 OAuth 的连接。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * 创建要移动的逻辑应用或集成帐户时所用的同一个 Azure 订阅
 

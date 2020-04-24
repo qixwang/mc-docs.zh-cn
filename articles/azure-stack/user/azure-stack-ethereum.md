@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.reviewer: seyadava
 ms.lastreviewed: 06/03/2019
 ms.openlocfilehash: 9dee601401c4a20fd4b4fbc8039cdee45821fce5
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77540809"
 ---
 # <a name="deploy-an-ethereum-blockchain-network-on-azure-stack-hub"></a>在 Azure Stack Hub 上部署 Ethereum 区块链网络
@@ -27,7 +27,7 @@ Ethereum 解决方案模板旨在利用最少的 Azure 和 Ethereum 知识，使
 
 稍后的连接步骤将连接 NVA 以创建完全配置的多成员区块链网络。
 
-若要设置，请执行以下操作：
+若要设置：
 
 - 选择部署体系结构。
 - 部署独立网络、联盟领导者网络或联盟成员网络。
@@ -65,7 +65,7 @@ Ethereum 解决方案模板旨在利用最少的 Azure 和 Ethereum 知识，使
     
     ![编辑领导者模板](./media/azure-stack-ethereum/edit-leader-template.png)
 
-5. 选择“保存”  。
+5. 选择“保存”。 
 6. 选择“编辑参数”并填写部署的模板参数。 
     
     ![编辑领导者模板参数](./media/azure-stack-ethereum/edit-leader-parameters.png)
@@ -75,7 +75,7 @@ Ethereum 解决方案模板旨在利用最少的 Azure 和 Ethereum 知识，使
     NAMEPREFIX | 用作已部署资源的命名基础的字符串。 | 1 到 6 个字母数字字符。 | eth
     AUTHTYPE | 向 VM 进行身份验证的方法。 | 密码或 SSH 公钥。 | 密码
     ADMINUSERNAME | 部署的每个 VM 的管理员用户名。 | 1 - 64 个字符。 | gethadmin
-    ADMINPASSWORD（身份验证类型 = 密码）| 部署的每个 VM 的管理员帐户密码。 密码必须包含以下要求中的 3 项：1 个大写字符、1 个小写字符、1 个数字和 1 个特殊字符。 <br />虽然所有 VM 最初都有相同的密码，但可以在预配后更改密码。|12 - 72 个字符。 |
+    ADMINPASSWORD（身份验证类型 = 密码）| 部署的每个 VM 的管理员帐户密码。 密码必须包含下列要求中的 3 项: 1 个大写字符，1 个小写字符，1 个数字和 1 个特殊字符。 <br />虽然所有 VM 最初都有相同的密码，但可以在预配后更改密码。|12 - 72 个字符。 |
     ADMINSSHKEY（身份验证类型 = sshPublicKey） | 用于远程登录的安全 shell 密钥。 | |
     GENESISBLOCK | 表示自定义起源块的 JSON 字符串。  此参数的值是可选的。 | |
     ETHEREUMACCOUNTPSSWD | 用于保护 Ethereum 帐户的管理员密码。 | |
@@ -117,7 +117,7 @@ Ethereum 解决方案模板旨在利用最少的 Azure 和 Ethereum 知识，使
 2. 在 Azure Stack Hub 租户门户中，选择“+ 创建资源”>“模板部署”，以从自定义模板进行部署。 
 3. 选择“编辑模板”以编辑新的自定义模板。 
 4. 在右侧的编辑窗格中，复制并粘贴前面下载的领导者模板 JSON。
-5. 选择“保存”  。
+5. 选择“保存”。 
 6. 选择“编辑参数”并填写部署的模板参数。 
 
     参数名称 | 说明 | 允许的值 | 示例值
@@ -125,7 +125,7 @@ Ethereum 解决方案模板旨在利用最少的 Azure 和 Ethereum 知识，使
     NAMEPREFIX | 用作已部署资源的命名基础的字符串。 | 1 到 6 个字母数字字符。 | eth
     AUTHTYPE | 向 VM 进行身份验证的方法 | 密码或 SSH 公钥。 | 密码
     ADMINUSERNAME | 部署的每个 VM 的管理员用户名 | 1 - 64 个字符。 | gethadmin
-    ADMINPASSWORD（身份验证类型 = 密码）| 部署的每个 VM 的管理员帐户密码。 密码必须包含以下要求中的 3 项：1 个大写字符、1 个小写字符、1 个数字和 1 个特殊字符。 <br />虽然所有 VM 最初都有相同的密码，但可以在预配后更改密码。|12 - 72 个字符。 |
+    ADMINPASSWORD（身份验证类型 = 密码）| 部署的每个 VM 的管理员帐户密码。 密码必须包含下列要求中的 3 项: 1 个大写字符，1 个小写字符，1 个数字和 1 个特殊字符。 <br />虽然所有 VM 最初都有相同的密码，但可以在预配后更改密码。|12 - 72 个字符。 |
     ADMINSSHKEY（身份验证类型 = sshPublicKey） | 用于远程登录的安全 shell 密钥。 | |
     CONSORTIUMMEMBERID | 与每个联盟网络成员关联的 ID。   | 此 ID 应在网络中唯一。 | 0
     NUMMININGNODES | 挖掘节点的数量。 | 介于 2 和 15 之间。 | 2
@@ -172,7 +172,7 @@ Ethereum 解决方案模板旨在利用最少的 Azure 和 Ethereum 知识，使
     
     ![编辑连接模板](./media/azure-stack-ethereum/edit-connect-template.png)
 
-5. 选择“保存”  。
+5. 选择“保存”。 
 6. 选择“编辑参数”并填写部署的模板参数。 
     
     ![编辑连接模板参数](./media/azure-stack-ethereum/edit-connect-parameters.png)

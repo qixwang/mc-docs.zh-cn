@@ -7,10 +7,10 @@ origin.date: 10/06/2017
 ms.date: 02/24/2020
 ms.author: v-yeche
 ms.openlocfilehash: ecea90aad03b60664dc85a46749704d4a344b0a5
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77540156"
 ---
 # <a name="actor-events"></a>执行组件事件
@@ -108,7 +108,7 @@ event.gameScoreUpdated(Id.getUUIDId(), score);
 * [执行组件可重入性](service-fabric-reliable-actors-reentrancy.md)
 * [执行组件诊断和性能监视](service-fabric-reliable-actors-diagnostics.md)
 * [执行组件 API 参考文档](https://msdn.microsoft.com/library/azure/dn971626.aspx)
-* [C# 示例代码](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
+* [C# 代码示例](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
 * [C# .NET Core 示例代码](https://github.com/Azure-Samples/service-fabric-dotnet-core-getting-started)
 * [Java 代码示例](https://github.com/Azure-Samples/service-fabric-java-getting-started)
 

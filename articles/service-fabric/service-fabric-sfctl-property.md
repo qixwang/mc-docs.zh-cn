@@ -7,10 +7,10 @@ origin.date: 01/16/2020
 ms.date: 02/24/2020
 ms.author: v-yeche
 ms.openlocfilehash: 267a766308e4bb3aabd36aa8a02d4d9a098512d7
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77540589"
 ---
 # <a name="sfctl-property"></a>sfctl property
@@ -18,9 +18,9 @@ ms.locfileid: "77540589"
 
 ## <a name="commands"></a>命令
 
-|命令|说明|
+|Command|说明|
 | --- | --- |
-| 删除 | 删除指定的 Service Fabric 属性。 |
+| delete | 删除指定的 Service Fabric 属性。 |
 | get | 获取指定的 Service Fabric 属性。 |
 | list | 获取给定名称下的所有 Service Fabric 属性的信息。 |
 | put | 创建或更新 Service Fabric 属性。 |
@@ -81,7 +81,7 @@ ms.locfileid: "77540589"
 |参数|说明|
 | --- | --- |
 | --name-id [必需] | Service Fabric 名称，不带“fabric\:”URI 方案。 |
-| --continuation-token | 继续标记参数用于获取下一组结果。 如果单个响应无法容纳来自系统的结果，则 API 响应中包括含有非空值的继续标记。 当此值传递到下一个 API 调用时，API 返回下一组结果。 如果没有更多结果，则继续标记不包含值。 不应将此参数的值进行 URL 编码。 |
+| --continuation-token | 继续标记参数用于获取下一组结果。 如果单个响应无法容纳来自系统的结果，则 API 响应中包括含有非空值的继续标记。 当此值传递到下一个 API 调用时，API 返回下一组结果。 如果没有更多结果，则该继续标记不包含值。 不应将此参数的值进行 URL 编码。 |
 | --include-values | 允许指定是否包括返回的属性的值。 如果值应随元数据一起返回，则为 true；如果为 false，则仅返回属性元数据。 |
 | --timeout -t | 执行操作的服务器超时，以秒为单位。 此超时指定客户端可以等待请求的操作完成的持续时间。 此参数的默认值为 60 秒。  默认值\: 60。 |
 

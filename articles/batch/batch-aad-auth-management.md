@@ -16,10 +16,10 @@ origin.date: 04/27/2017
 ms.date: 09/07/2018
 ms.author: v-junlch
 ms.openlocfilehash: c6b040af3bc490b4273ac19b69758a9b9c275689
-ms.sourcegitcommit: 27eaabd82b12ad6a6840f30763034a6360977186
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77497536"
 ---
 # <a name="authenticate-batch-management-solutions-with-active-directory"></a>使用 Active Directory 对 Batch 管理解决方案进行身份验证
@@ -36,17 +36,17 @@ ms.locfileid: "77497536"
 
 Azure [Active Directory 身份验证库][aad_adal] (ADAL) 提供一个可在应用程序中使用的 Azure AD 编程接口。 若要从应用程序调用 ADAL，必须在 Azure AD 租户中注册该应用程序。 注册应用程序时，请向 Azure AD 提供有关该应用程序的信息，包括该应用程序在 Azure AD 租户中的名称。 然后，Azure AD 将提供一个应用程序 ID，在运行时，可以使用该 ID 将应用程序与 Azure AD 相关联。 若要详细信息应用程序 ID，请参阅 [Azure Active Directory 中的应用程序对象和服务主体对象](../active-directory/develop/app-objects-and-service-principals.md)。
 
-要注册 AccountManagement 示例应用程序，请遵循“将应用程序与 Azure Active Directory 集成”的“添加应用程序”部分中的步骤。 指定“本机客户端应用程序”作为应用程序类型。  用于重定向 URI  的行业标准 OAuth 2.0 URI 是 `urn:ietf:wg:oauth:2.0:oob`。 但可为重定向 URI  指定任何有效的 URI（例如 `http://myaccountmanagementsample`），它不需要是实际的终结点：
+要注册 AccountManagement 示例应用程序，请遵循“将应用程序与 Azure Active Directory 集成”的“添加应用程序”部分中的步骤。 指定“本机客户端应用程序”作为应用程序类型。  用于重定向 URI  的行业标准 OAuth 2.0 URI 是 `urn:ietf:wg:oauth:2.0:oob`。 但可为重定向 URI`http://myaccountmanagementsample`**指定任何有效的 URI（例如**），它不需要是实际的终结点：
 
 ![](./media/batch-aad-auth-management/app-registration-management-plane.png)
 
-完成注册过程后，会列出应用程序的应用程序 ID 和对象（服务主体）ID。  
+完成注册过程后，将列出应用程序的应用程序 ID 和对象（服务主体）ID。  
 
 ![](./media/batch-aad-auth-management/app-registration-client-id.png)
 
-## <a name="grant-the-azure-resource-manager-api-access-to-your-application"></a>向 Azure Resource Manager API 授予应用程序访问权限
+## <a name="grant-the-azure-resource-manager-api-access-to-your-application"></a>向 Azure 资源管理器 API 授予应用程序访问权限
 
-接下来，需要将应用程序的访问权限委派给 Azure Resource Manager API。 Resource Manager API 的 Azure AD 标识符为 **Windows Azure Service Management API**。
+接下来，需要将应用程序的访问权限委派给 Azure 资源管理器 API。 Resource Manager API 的 Azure AD 标识符为 **Windows Azure Service Management API**。
 
 在 Azure 门户中执行以下步骤：
 
@@ -63,7 +63,7 @@ Azure [Active Directory 身份验证库][aad_adal] (ADAL) 提供一个可在应�
 
 现在，“所需的权限”边栏选项卡会显示向 ADAL 和 Resource Manager API 授予的应用程序权限。  首先在 Azure AD 中注册应用程序时，默认向 ADAL 授予权限。
 
-![向 Azure Resource Manager API 委派权限](./media/batch-aad-auth-management/required-permissions-management-plane.png)
+![向 Azure 资源管理器 API 委派权限](./media/batch-aad-auth-management/required-permissions-management-plane.png)
 
 ## <a name="azure-ad-endpoints"></a>Azure AD 终结点
 

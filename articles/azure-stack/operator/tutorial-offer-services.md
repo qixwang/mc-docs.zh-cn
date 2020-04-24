@@ -10,10 +10,10 @@ ms.date: 02/24/2020
 ms.reviewer: shriramnat
 ms.lastreviewed: 10/16/2019
 ms.openlocfilehash: 0766ef718dc0add1fae762a9c9072b0840b2f5c9
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77540872"
 ---
 # <a name="create-a-service-offering-for-users-in-azure-stack-hub"></a>在 Azure Stack Hub 中为用户创建服务产品

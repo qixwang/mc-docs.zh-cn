@@ -9,10 +9,10 @@ ms.author: v-jay
 ms.reviewer: hectorl
 ms.lastreviewed: 08/21/2019
 ms.openlocfilehash: 579dfe64572a936892155ce430b000ff64432ec3
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77540954"
 ---
 # <a name="enable-backup-for-azure-stack-hub-from-the-administrator-portal"></a>从管理员门户为 Azure Stack Hub 启用备份

@@ -12,10 +12,10 @@ origin.date: 12/07/2018
 ms.date: 09/24/2019
 ms.author: v-lingwu
 ms.openlocfilehash: ed8108f736c41d4cf4737d0fe333943f0a3af8b8
-ms.sourcegitcommit: 27eaabd82b12ad6a6840f30763034a6360977186
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77497398"
 ---
 # <a name="use-azure-batch-cli-templates-and-file-transfer"></a>使用 Azure Batch CLI 模板和文件传输
@@ -43,7 +43,7 @@ Batch 模板基于 [Azure CLI 中现有的 Batch 支持](batch-cli-get-started.m
 
 -   创建作业模板。 创建模板的用户了解如何调用 ffmpeg，以便将源视频转码为不同的分辨率，并指定任务命令行；他们还了解存在包含源视频文件（每个输入文件均包含所需任务）的文件夹。
 
--   具有一组要转码的视频文件的最终用户首先需要使用池模板创建一个池，然后仅指定池 ID 和所需的 VM 数量。 然后，他们可以上传源文件以进行转码。 可使用作业模板提交作业，仅指定池 ID 和上传的源文件的位置。 创建批处理作业时，每个输入文件生成一项任务。 最后，可以下载已转码的输出文件。
+-   具有一组要转码的视频文件的最终用户首先需要使用池模板创建一个池，然后仅指定池 ID 和所需的 VM 数量。 然后，他们可以上传源文件以进行转码。 可使用作业模板提交作业，仅指定池 ID 和上传的源文件的位置。 创建 Batch 作业时，每个输入文件生成一项任务。 最后，可以下载已转码的输出文件。
 
 ## <a name="installation"></a>安装
 
@@ -64,9 +64,9 @@ az extension add --name azure-batch-cli-extensions
 
 ## <a name="templates"></a>模板
 
-Azure 批处理模板在功能和语法上非常类似于 Azure 资源管理器模板。 它们是包含项属性名称和值的 JSON 文件，但添加了以下主要概念：
+Azure Batch 模板在功能和语法上非常类似于 Azure 资源管理器模板。 它们是包含项属性名称和值的 JSON 文件，但添加了以下主要概念：
 
--   **Parameters**
+-   **参数**
 
     -   允许在正文部分中指定属性值，使用模板时，仅需提供参数值。 例如，池的完整定义应放入正文且仅定义池 id 的一个参数；因此仅需提供一个池 ID 字符串来创建池。
         
@@ -260,7 +260,7 @@ CLI 同样会提示你提供参数的值。 也可以提供 JSON 文件中的参
 
 上传模板：
 
-1. 在 Batch Explorer 中，选择“库” > “本地模板”   。
+1. 在 Batch Explorer 中，选择“库” **“本地模板”**  >   。
 
 2. 选择或拖放本地池或作业模板。
 
@@ -284,9 +284,9 @@ az batch file download --file-group ffmpeg-output --local-path
 
 通过池和作业模板，可将存储在文件组中的文件指定为复制到池节点或离开池节点返回到文件组。 例如，在之前指定的作业模板中，为任务工厂指定文件组 ffmpeg-input ，作为复制到节点以供转码的源视频文件的位置  。 文件组 ffmpeg-output 是从运行每个任务的节点复制已转码输出文件的位置  。
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>总结
 
-目前仅对 Azure CLI 添加了模板和文件传输支持。 其目的在于，将可以使用 Batch 的受众扩大到无需使用 Batch API 开发代码的用户，例如研究人员和 IT 用户。 了解 Azure、批处理和批处理将要运行的应用程序的用户无需编码即可创建模板以创建池和作业。 有了模板参数，对批处理和应用程序没有深入了解的用户也可使用这些模板。
+目前仅对 Azure CLI 添加了模板和文件传输支持。 其目的在于，将可以使用 Batch 的受众扩大到无需使用 Batch API 开发代码的用户，例如研究人员和 IT 用户。 了解 Azure、Batch 和 Batch 运行的应用程序的用户无需编码即可创建模板以创建池和作业。 通过模板参数，对 Batch 和应用程序没有深入了解的用户也可使用这些模板。
 
 试用 Azure CLI 的 Batch 扩展，并通过本文的评论区或 [Batch 社区存储库](https://github.com/Azure/Batch)向我们提供任何反馈或建议。
 

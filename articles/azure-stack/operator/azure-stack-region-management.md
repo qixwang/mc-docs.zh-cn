@@ -10,10 +10,10 @@ ms.author: v-jay
 ms.reviewer: efemmano
 ms.lastreviewed: 11/27/2018
 ms.openlocfilehash: 1a49e5074ad66fab651d624b69e6c70ad29cd5fd
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77540354"
 ---
 # <a name="region-management-in-azure-stack-hub"></a>Azure Stack Hub 中的区域管理

@@ -7,10 +7,10 @@ origin.date: 01/16/2020
 ms.date: 02/24/2020
 ms.author: v-yeche
 ms.openlocfilehash: a5b06b194def5a5b9f0a20ca44a46ac08f2429ca
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77540003"
 ---
 # <a name="sfctl-service"></a>sfctl service
@@ -18,12 +18,12 @@ ms.locfileid: "77540003"
 
 ## <a name="commands"></a>命令
 
-|命令|说明|
+|Command|说明|
 | --- | --- |
 | app-name | 获取服务的 Service Fabric 应用程序名称。 |
 | code-package-list | 获取部署在 Service Fabric 节点上的代码包的列表。 |
 | create | 创建指定的 Service Fabric 服务。 |
-| 删除 | 删除现有的 Service Fabric 服务。 |
+| delete | 删除现有的 Service Fabric 服务。 |
 | deployed-type | 获取有关 Service Fabric 群集中节点上部署的应用程序的指定服务类型的信息。 |
 | deployed-type-list | 获取列表，其中包含有关 Service Fabric 群集中节点上部署的应用程序中的服务类型的信息。 |
 | description | 获取现有 Service Fabric 服务的说明。 |
@@ -147,7 +147,7 @@ ms.locfileid: "77540003"
 |参数|说明|
 | --- | --- |
 | --service-id [必需] | 服务的标识。 此 ID 通常是不带“fabric\:”URI 方案的服务全名。 从版本 6.0 开始，分层名称以“\~”字符隔开。 例如，如果服务名称为“fabric\:/myapp/app1/svc1”，则 6.0 及更高版本中的服务标识为“myapp\~app1\~svc1”，在以前的版本中为“myapp/app1/svc1”。 |
-| --force-remove | 强制删除 Service Fabric 应用程序或服务，跳过正常关闭序列。 若因服务代码中的问题而无法正常关闭副本，导致应用程序或服务删除超时，可使用此参数强制删除该应用程序或服务。 |
+| --force-remove | 强制删除 Service Fabric 应用程序或服务，跳过正常关闭序列。 若因服务代码中的问题而无法正常关闭副本，导致删除应用程序或服务操作超时，可使用此参数强制删除该应用程序或服务。 |
 | --timeout -t | 执行操作的服务器超时，以秒为单位。 此超时指定客户端可以等待请求的操作完成的持续时间。 此参数的默认值为 60 秒。  默认值\: 60。 |
 
 ### <a name="global-arguments"></a>全局参数
@@ -316,7 +316,7 @@ ms.locfileid: "77540003"
 |参数|说明|
 | --- | --- |
 | --application-id [必需] | 应用程序的标识。 这通常是不带“fabric\:”URI 方案的应用程序全名。 从版本 6.0 开始，分层名称以“\~”字符隔开。 例如，如果应用程序名称为“fabric\:/myapp/app1”，则 6.0 及更高版本中的应用程序标识为“myapp\~app1”，在以前的版本中为“myapp/app1”。 |
-| --continuation-token | 继续标记参数用于获取下一组结果。 如果单个响应无法容纳来自系统的结果，则 API 响应中包括含有非空值的继续标记。 当此值传递到下一个 API 调用时，API 返回下一组结果。 如果没有更多结果，则继续标记不包含值。 不应将此参数的值进行 URL 编码。 |
+| --continuation-token | 继续标记参数用于获取下一组结果。 如果单个响应无法容纳来自系统的结果，则 API 响应中包括含有非空值的继续标记。 当此值传递到下一个 API 调用时，API 返回下一组结果。 如果没有更多结果，则该继续标记不包含值。 不应将此参数的值进行 URL 编码。 |
 | --service-type-name | 用于筛选要查询的服务的服务类型名称。 |
 | --timeout -t | 执行操作的服务器超时，以秒为单位。 此超时指定客户端可以等待请求的操作完成的持续时间。 此参数的默认值为 60 秒。  默认值\: 60。 |
 

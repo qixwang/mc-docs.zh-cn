@@ -16,10 +16,10 @@ origin.date: 02/22/2018
 ms.date: 02/10/2020
 ms.author: v-yeche
 ms.openlocfilehash: 7399dbd3b385b0882cc6b3f9a4d8486f19866f29
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77428183"
 ---
 <!--MOONCAKE: "Preempt" equal to low priority which not support on China-->
@@ -101,7 +101,7 @@ ms.locfileid: "77428183"
 
 ## <a name="use-the-api"></a>使用 API
 
-### <a name="headers"></a>标头
+### <a name="headers"></a>头文件
 查询元数据服务时，必须提供标头 `Metadata:true` 以确保不会在无意中重定向该请求。 `Metadata:true` 标头对于所有预定事件请求是必需的。 不在请求中包含标头会导致元数据服务发出的“错误的请求”响应。
 
 ### <a name="query-for-events"></a>查询事件

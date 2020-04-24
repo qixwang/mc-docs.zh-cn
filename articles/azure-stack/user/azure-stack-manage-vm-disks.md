@@ -9,10 +9,10 @@ ms.author: v-jay
 ms.reviewer: jiahan
 ms.lastreviewed: 01/18/2019
 ms.openlocfilehash: e92597fa8e5094a9aa9cf251fb3a1c282a080c34
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77540789"
 ---
 # <a name="create-vm-disk-storage-in-azure-stack-hub"></a>在 Azure Stack Hub 中创建 VM 磁盘存储

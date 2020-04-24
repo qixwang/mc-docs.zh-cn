@@ -6,10 +6,10 @@ origin.date: 01/23/2020
 ms.date: 02/24/2020
 ms.author: v-yeche
 ms.openlocfilehash: 7491ab31b5358f6f1b402a6c180f8df21d2f9631
-ms.sourcegitcommit: 781f68d27903687f0aa9e1ed273eee25c6d129a1
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77611267"
 ---
 # <a name="create-and-customize-recovery-plans"></a>创建和自定义恢复计划

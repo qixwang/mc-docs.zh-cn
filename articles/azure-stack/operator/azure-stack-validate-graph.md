@@ -10,10 +10,10 @@ ms.author: v-jay
 ms.reviewer: jerskine
 ms.lastreviewed: 06/10/2019
 ms.openlocfilehash: b3ef18f4099bf659bd58c54f68a30001c852fc3c
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77540249"
 ---
 # <a name="validate-graph-integration-for-azure-stack-hub"></a>验证 Azure Stack Hub 的图形集成
@@ -33,7 +33,7 @@ ms.locfileid: "77540249"
 
 从 [PowerShell 库](https://aka.ms/AzsReadinessChecker)下载最新版本的 Azure Stack Hub 就绪性检查器工具 (AzsReadinessChecker)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 必须满足以下先决条件。
 

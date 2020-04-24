@@ -16,10 +16,10 @@ origin.date: 05/31/2018
 ms.date: 02/10/2020
 ms.author: v-yeche
 ms.openlocfilehash: 526464d38731a8b5c51cd0458b03bf1c19fadacd
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77428548"
 ---
 # <a name="virtual-machine-vcpu-quotas"></a>虚拟机 vCPU 配额

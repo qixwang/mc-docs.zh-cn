@@ -1,6 +1,6 @@
 ---
 title: Azure API 管理策略中的错误处理 | Azure
-description: 了解在 Azure API 管理中处理请求时，如何对可能发生的错误情况做出响应。
+description: 了解在 Azure API 管理中处理请求时，如何对可能发生的错误情况作出响应。
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -16,18 +16,18 @@ origin.date: 01/10/2020
 ms.author: v-yiso
 ms.date: 02/24/2020
 ms.openlocfilehash: f41a8106d6a5e00486de85d42b9a42e07d1801a4
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77428639"
 ---
 # <a name="error-handling-in-api-management-policies"></a>API 管理策略中的错误处理
 
-Azure API 管理通过提供 `ProxyError` 对象，允许发布服务器响应在处理请求的过程中可能发生的错误情况。 `ProxyError` 对象可通过 [context.LastError](api-management-policy-expressions.md#ContextVariables) 属性访问，并可由 `on-error` 策略节中的策略使用。 本文提供的参考针对 Azure API 管理中的错误处理功能。  
+Azure API 管理通过提供 `ProxyError` 对象，允许发布服务器响应在处理请求的过程中可能发生的错误情况。 `ProxyError` 对象可通过 [context.LastError](api-management-policy-expressions.md#ContextVariables) 属性访问，并可被策略用在 `on-error` 策略节。 本文提供的参考针对 Azure API 管理中的错误处理功能。  
   
 ## <a name="error-handling-in-api-management"></a>API 管理中的错误处理  
- Azure API 管理中的策略分为 `inbound`、`backend`、`outbound` 和 `on-error` 部分，如以下示例所示。  
+ Azure API 管理中的策略分为 `inbound`、`backend`、`outbound`、`on-error` 部分，如以下示例所示。  
   
 ```xml  
 <policies>  
@@ -56,7 +56,7 @@ Azure API 管理通过提供 `ProxyError` 对象，允许发布服务器响应�
 >   
 >  如果没有 `on-error` 节，则在出现错误情况时，调用方会收到 400 或 500 HTTP 响应消息。  
   
-### <a name="policies-allowed-in-on-error"></a>出错时允许的策略  
+### <a name="policies-allowed-in-on-error"></a>在错误时中允许的策略  
  以下策略可以用在 `on-error` 策略节中。  
   
 -   [choose](./api-management-advanced-policies.md#choose)  
@@ -83,19 +83,19 @@ Azure API 管理通过提供 `ProxyError` 对象，允许发布服务器响应�
   
 -   [xml-to-json](./api-management-transformation-policies.md#ConvertXMLtoJSON)  
   
-## <a name="lasterror"></a>LastError
+## <a name="lasterror"></a>lastError
 
  当发生错误且控制跳转到 `on-error` 策略节时，错误会存储在 [context.LastError](api-management-policy-expressions.md#ContextVariables) 属性中，该属性可以通过 `on-error` 节中的策略进行访问。 LastError 具有以下属性。  
   
-| 名称     | 类型   | 说明                                                                                               | 必须 |
+| 名称     | 类型   | 说明                                                                                               | 必选 |
 |----------|--------|-----------------------------------------------------------------------------------------------------------|----------|
-| Source   | string | 指定在其中发生错误的元素。 可以是策略或内置管道步骤名称。     | 是      |
-| Reason   | string | 计算机友好错误代码，可以用在错误处理中。                                       | 否       |
-| Message  | string | 用户可读的错误说明。                                                                         | 是      |
-| 作用域    | string | 在其中发生错误的范围的名称，可以是以下值之一：“全局”、“产品”、“API”、“操作” | 否       |
-| 部分  | string | 发生错误的节名称。 可能的值：“inbound”、“backend”、“outbound”或“on-error”。       | 否       |
-| `Path`     | string | 指定嵌套策略，例如“choose[3]/when[2]”。                                                        | 否       |
-| `PolicyId` | string | 在其中发生错误的策略的 `id` 属性（如果已由客户指定）的值             | 否       |
+| 源   | 字符串 | 指定在其中发生错误的元素。 可以是策略或内置管道步骤名称。     | 是      |
+| 原因   | 字符串 | 计算机友好错误代码，可以用在错误处理中。                                       | 否       |
+| 消息  | 字符串 | 用户可读的错误说明。                                                                         | 是      |
+| 范围    | 字符串 | 在其中发生错误的范围的名称，可以是以下值之一：“全局”、“产品”、“API”、“操作” | 否       |
+| 部分  | 字符串 | 发生错误的节名称。 可能的值：“inbound”、“backend”、“outbound”或“on-error”。       | 否       |
+| 路径     | 字符串 | 指定嵌套策略，例如“choose[3]/when[2]”。                                                        | 否       |
+| PolicyId | 字符串 | 在其中发生错误的策略的 `id` 属性（如果已由客户指定）的值             | 否       |
 
 > [!TIP]
 > 可以通过 context.Response.StatusCode 访问状态代码。  
@@ -104,9 +104,9 @@ Azure API 管理通过提供 `ProxyError` 对象，允许发布服务器响应�
 >  所有策略都有一个可选的 `id` 属性，该属性可以添加到策略的根元素。 如果出现错误情况时该属性存在于策略中，则可使用 `context.LastError.PolicyId` 属性检索该属性的值。  
   
 ## <a name="predefined-errors-for-built-in-steps"></a>针对内置步骤的预定义错误  
- 针对评估内置处理步骤期间可能发生的错误情况，预定义了以下错误。  
+ 以下错误为预定义错误，其所针对的错误情况可能发生在对内置处理步骤进行评估的时候。  
   
-| Source        | 条件                                 | Reason                  | Message                                                                                                                |
+| 源        | 条件                                 | 原因                  | 消息                                                                                                                |
 |---------------|-------------------------------------------|-------------------------|------------------------------------------------------------------------------------------------------------------------|
 | 配置 | URI 与任何 API 或操作均不匹配 | OperationNotFound       | 无法匹配操作的传入请求。                                                                      |
 | authorization | 未提供订阅密钥             | SubscriptionKeyNotFound | 由于缺少订阅密钥，访问被拒绝。 请确保在向此 API 发出请求时包括订阅密钥。 |
@@ -116,9 +116,9 @@ Azure API 管理通过提供 `ProxyError` 对象，允许发布服务器响应�
 | 多个 | 在计算特定表达式期间发生运行时异常 | ExpressionValueEvaluationFailure | 多个 |
   
 ## <a name="predefined-errors-for-policies"></a>针对策略的预定义错误  
- 针对策略评估期间可能发生的错误情况，预定义了以下错误。  
+ 以下错误为预定义错误，其所针对的错误情况可能发生在策略评估期间。  
   
-| Source       | 条件                                                       | Reason                    | Message                                                                                                                              |
+| 源       | 条件                                                       | 原因                    | 消息                                                                                                                              |
 |--------------|-----------------------------------------------------------------|---------------------------|--------------------------------------------------------------------------------------------------------------------------------------|
 | rate-limit   | 超出速率限制                                             | RateLimitExceeded         | 超出速率限制                                                                                                               |
 | quota        | 超出配额                                                  | QuotaExceeded             | 超出调用卷配额。 配额会在 xx:xx:xx 复原。 -或- 超出带宽配额。 配额会在 xx:xx:xx 复原。 |

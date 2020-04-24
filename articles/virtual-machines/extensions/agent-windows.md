@@ -16,10 +16,10 @@ origin.date: 07/20/2019
 ms.date: 02/10/2020
 ms.author: v-yeche
 ms.openlocfilehash: 4039e499bbafff54dd20e3012585a9bf59042f5e
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77428926"
 ---
 # <a name="azure-virtual-machine-agent-overview"></a>Azure 虚拟机代理概述
@@ -85,7 +85,7 @@ $vm | Update-AzVM
 Get-AzVM
 ```
 
-以下浓缩版示例输出演示了嵌套在 *OSProfile* 中的 *ProvisionVMAgent* 属性。 此属性可以用来确定 VM 代理是否已部署到 VM：
+以下精简示例输出展示了嵌套在 *OSProfile* 内的 *ProvisionVMAgent* 属性。 可以使用该属性来确定 VM 代理是否已部署到 VM：
 
 ```powershell
 OSProfile                  :

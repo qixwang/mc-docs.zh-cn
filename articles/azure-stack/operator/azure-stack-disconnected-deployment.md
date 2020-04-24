@@ -9,16 +9,16 @@ ms.author: v-jay
 ms.reviewer: wfayed
 ms.lastreviewed: 11/01/2019
 ms.openlocfilehash: f3b2aca6c67f84ecbf04fe2410edd49c2f3b941b
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77540916"
 ---
 # <a name="azure-disconnected-deployment-planning-decisions-for-azure-stack-hub-integrated-systems"></a>Azure Stack Hub 集成系统的 Azure 非联网部署计划决策
 在决定[如何将 Azure Stack Hub 集成到混合云环境](azure-stack-connection-models.md)后，即可完成 Azure Stack Hub 部署决策。
 
-无需连接到 Internet 即可部署和使用 Azure Stack Hub。 但是，使用断开连接部署，你将受限于一个 Active Directory 联合身份验证服务(AD FS) 标识存储和基于容量的计费模型。 由于多租户需要使用 Azure Active Directory (Azure AD)，因此非联网部署不支持多租户。
+无需连接到 Internet 即可部署和使用 Azure Stack Hub。 但是，使用断开连接部署，你将受限于一个 Active Directory 联合身份验证服务(AD FS) 标识存储和基于容量的计费模型。 由于多租户需要使用 Azure Active Directory (Azure AD)，因此离线部署不支持多租户。
 
 适用情况：
 - 存在要求你在未连接到 Internet 的环境中部署 Azure Stack Hub 的安全性或其他限制。
@@ -30,7 +30,7 @@ ms.locfileid: "77540916"
 
 非联网部署不会限制你以后将 Azure Stack Hub 实例连接到 Azure 以实现混合租户 VM 方案。 它只意味着在部署期间不连接到 Azure，或者不希望使用 Azure AD 作为标识存储。
 
-## <a name="features-that-are-impaired-or-unavailable-in-disconnected-deployments"></a>在非联网部署中被削弱或不可用的功能 
+## <a name="features-that-are-impaired-or-unavailable-in-disconnected-deployments"></a>在断开连接部署中被削弱或不可用的功能 
 Azure Stack Hub 设计为在连接到 Azure 的情况下功能最佳，因此请务必注意，在离线模式下，有些功能被损坏或完全不可用。
 
 |功能|断开连接模式的影响|

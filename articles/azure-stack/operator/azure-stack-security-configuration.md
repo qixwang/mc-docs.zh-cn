@@ -9,10 +9,10 @@ ms.author: v-jay
 ms.reviewer: fiseraci
 ms.lastreviewed: 06/17/2019
 ms.openlocfilehash: 3f16cff29531e7070ef4757c0929a1e6daea5c15
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77540325"
 ---
 # <a name="configure-azure-stack-hub-security-controls"></a>配置 Azure Stack Hub 安全控制
@@ -52,7 +52,7 @@ Set-TLSPolicy -Version <String>
 
 *Set-TLSPolicy* cmdlet 的参数：
 
-| 参数 | 说明 | 类型 | 必须 |
+| 参数 | 说明 | 类型 | 必选 |
 |---------|---------|---------|---------|
 | *版本* | Azure Stack Hub 中允许的 TLS 版本 | String | 是|
 

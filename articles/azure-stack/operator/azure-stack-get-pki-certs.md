@@ -9,10 +9,10 @@ ms.author: v-jay
 ms.reviewer: ppacent
 ms.lastreviewed: 09/10/2019
 ms.openlocfilehash: 2bd2372fd15cfac7781574f6aaf03a1b26205dc6
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77540994"
 ---
 # <a name="generate-certificate-signing-requests-for-azure-stack-hub"></a>为 Azure Stack Hub 生成证书签名请求
@@ -24,7 +24,7 @@ ms.locfileid: "77540994"
 - **标准证书请求** 根据[生成证书签名请求](azure-stack-get-pki-certs.md#generate-certificate-signing-requests)。
 - **平台即服务**：可以请求 [Azure Stack Hub 公钥基础结构证书要求 - 可选的 PaaS 证书](azure-stack-pki-certs.md#optional-paas-certificates)中指定的证书的平台即服务 (PaaS) 名称。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 在为 Azure Stack Hub 部署生成 PKI 证书的任何 CSR 之前，系统应符合以下先决条件：
 

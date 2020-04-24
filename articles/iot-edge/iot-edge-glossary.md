@@ -10,10 +10,10 @@ origin.date: 02/15/2018
 ms.date: 03/02/2020
 ms.author: v-tawe
 ms.openlocfilehash: 7d2a2931f74de42192d8774daca13aa1324dc397
-ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77494054"
 ---
 # <a name="glossary-of-terms-for-azure-iot-edge"></a>Azure IoT Edge 的术语表

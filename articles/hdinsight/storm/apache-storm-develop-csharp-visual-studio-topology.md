@@ -18,10 +18,10 @@ origin.date: 12/31/2019
 ms.date: 03/02/2020
 ms.author: v-yiso
 ms.openlocfilehash: c3bae8655cc8ca0a420c88e2d32ebf9926364984
-ms.sourcegitcommit: 46fd4297641622c1984011eac4cb5a8f6f94e9f5
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77563490"
 ---
 # <a name="develop-c-topologies-for-apache-storm-by-using-the-data-lake-tools-for-visual-studio"></a>使用针对 Visual Studio 的 Data Lake 工具开发 Apache Storm 的 C# 拓扑
@@ -500,7 +500,7 @@ SCP.NET 版本 0.9.4.203 引入了专用于事件中心 Spout（从事件中心�
 > [!NOTE]  
 > 仍然必须使用 `CustomizedInteropJSONSerializer` 来序列化 Spout 生成的数据。
 
-## <a id="configurationmanager"></a>使用 ConfigurationManager
+## <a name="use-configurationmanager"></a><a id="configurationmanager"></a>使用 ConfigurationManager
 
 请勿使用 ConfigurationManager 从 Bolt 和 Spout 组件检索配置值。  这样做可能导致空指针异常。 项目的配置将作为拓扑上下文中的键值对传递到 Storm 拓扑中。 每个依赖于配置值的组件都必须在初始化过程中从上下文检索这些值。
 

@@ -17,10 +17,10 @@ origin.date: 12/17/2019
 ms.date: 03/02/2020
 ms.author: v-yiso
 ms.openlocfilehash: f25e3d3176f1ea029acc81fa5aff0006574c1dec
-ms.sourcegitcommit: 46fd4297641622c1984011eac4cb5a8f6f94e9f5
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77563368"
 ---
 # <a name="bulk-load-data-into-apache-phoenix-using-psql"></a>使用 psql 将数据批量加载到 Apache Phoenix

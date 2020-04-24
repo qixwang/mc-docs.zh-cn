@@ -13,10 +13,10 @@ origin.date: 12/25/2019
 ms.author: v-yiso
 ms.date: 02/24/2020
 ms.openlocfilehash: 3ae797b6c1f577f04851c9d8a7c58b1fe05762c2
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77428729"
 ---
 # <a name="operationalize-a-data-analytics-pipeline"></a>使数据分析管道可操作化
@@ -101,13 +101,13 @@ Azure SQL 数据库现已准备就绪。
 
     `http://headnodehost:8080`
 
-1. 若要从 Ambari 内部访问“Oozie Web 控制台”，请导航到“Oozie” > “快速链接”>“[活动服务器]”>“Oozie Web UI”。    
+1. 若要从 Ambari 内部访问“Oozie Web 控制台”，请导航到“Oozie” **“快速链接”>“[活动服务器]”>“Oozie Web UI”。**   >   
 
 ## <a name="configure-hive"></a>配置 Hive
 
 ### <a name="upload-data"></a>上传数据
 
-1. 下载包含一个月航班数据的示例 CSV 文件。 从 [HDInsight GitHub 存储库](https://github.com/hdinsight/hdinsight-dev-guide)下载其 ZIP 文件 `2017-01-FlightData.zip`，并将其解压到 CSV 文件 `2017-01-FlightData.csv`。
+1. 下载包含一个月航班数据的示例 CSV 文件。 从 `2017-01-FlightData.zip`HDInsight GitHub 存储库[下载其 ZIP 文件 ](https://github.com/hdinsight/hdinsight-dev-guide)，并将其解压到 CSV 文件 `2017-01-FlightData.csv`。
 
 1. 将此 CSV 文件复制到附加到 HDInsight 群集的 Azure 存储帐户，并将其置于 `/example/data/flights` 文件夹中。
 
@@ -233,7 +233,7 @@ Azure SQL 数据库现已准备就绪。
     day=03
     ```
 
-    | 属性 | 值源 |
+    | properties | 值源 |
     | --- | --- |
     | nameNode | 附加到 HDInsight 群集的 Azure 存储容器的完整路径。 |
     | jobTracker | 活动群集的 YARN 头节点的内部主机名。 在 Ambari 主页上，从服务列表中选择 YARN，然后选择“活动资源管理器”。 主机名 URI 显示在页面顶部。 追加端口 8050。 |
@@ -502,15 +502,15 @@ Azure SQL 数据库现已准备就绪。
 
 可以看到，大部分协调器仅将配置信息传递到工作流实例。 但是，有几点需要强调。
 
-* 第 1 点：`coordinator-app` 元素本身上的 `start` 和 `end` 属性控制协调器运行的时间间隔。
+* 第 1 点：`start` 元素上的 `end` 和 `coordinator-app` 属性控制协调器运行的时间间隔。
 
     ```
     <coordinator-app ... start="2017-01-01T00:00Z" end="2017-01-05T00:00Z" frequency="${coord:days(1)}" ...>
     ```
 
-    协调器负责按照 `frequency` 属性指定的间隔，在 `start` 和 `end` 日期范围内计划操作。 每个计划的操作反过来按配置运行工作流。 在上面的协调器定义中，协调器被配置为从 2017 年 1 月 1 日到 2017 年 1 月 5 日运行操作。 频率通过 [Oozie 表达式语言](https://oozie.apache.org/docs/4.2.0/CoordinatorFunctionalSpec.html#a4.4._Frequency_and_Time-Period_Representation)频率表达式 `${coord:days(1)}` 设置为 1 天。 通过此操作，协调器会按每天一次的频率计划一个操作（以及工作流）。 对于过去的日期范围，如本示例所示，操作将计划为无延迟运行。 操作运行计划的开始日期称为“名义时间”  。 例如，若要处理 2017 年 1 月 1 日的数据，协调器将把操作的名义时间计划为 2017-01-01T00:00:00 GMT。
+    协调器负责按照 `start` 属性指定的间隔，在 `end` 和 `frequency` 日期范围内计划操作。 每个计划的操作反过来按配置运行工作流。 在上面的协调器定义中，协调器被配置为从 2017 年 1 月 1 日到 2017 年 1 月 5 日运行操作。 频率通过 [Oozie 表达式语言](https://oozie.apache.org/docs/4.2.0/CoordinatorFunctionalSpec.html#a4.4._Frequency_and_Time-Period_Representation)频率表达式 `${coord:days(1)}` 设置为 1 天。 通过此操作，协调器会按每天一次的频率计划一个操作（以及工作流）。 对于过去的日期范围，如本示例所示，操作将计划为无延迟运行。 操作运行计划的开始日期称为“名义时间”  。 例如，若要处理 2017 年 1 月 1 日的数据，协调器将把操作的名义时间计划为 2017-01-01T00:00:00 GMT。
 
-* 第 2 点：在工作流的日期范围内，`dataset` 元素指定 HDFS 中查找特定日期范围的数据的位置，并配置 Oozie 如何确定数据是否还可进行处理。
+* 第 2 点：在工作流的日期范围内，`dataset` 元素指定 HDFS 中查找特定日期范围的数据的位置，并配置 Oozie 如何确定数据是否可进行处理。
 
     ```xml
     <dataset name="ds_input1" frequency="${coord:days(1)}" initial-instance="2016-12-31T00:00Z" timezone="UTC">
@@ -535,7 +535,7 @@ Azure SQL 数据库现已准备就绪。
 
 结合上述三点的结果是：协调器按照逐日的方式计划源数据的处理。 
 
-* 第 1 点：协调器从名义时间 2017-01-01 开始运行。
+* 第 1 点：协调器从名义时间 2017-01-01 开始。
 
 * 第 2 点：Oozie 在 `sourceDataFolder/2017-01-FlightData.csv` 中查找可用数据。
 
@@ -562,7 +562,7 @@ sqlDatabaseTableName=dailyflights
 
 在此 `job.properties` 文件中引入的新属性为：
 
-| 属性 | 值源 |
+| properties | 值源 |
 | --- | --- |
 | oozie.coord.application.path | 指示 `coordinator.xml` 文件的位置，其中包含要运行的 Oozie 协调器。 |
 | hiveDailyTableNamePrefix | 动态创建临时表表名时使用的前缀。 |

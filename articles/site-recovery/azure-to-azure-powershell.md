@@ -9,17 +9,17 @@ origin.date: 03/29/2019
 ms.date: 02/24/2020
 ms.author: v-yeche
 ms.openlocfilehash: 90c3b68afd4106252bec9074df74afcf6f9e53a0
-ms.sourcegitcommit: 781f68d27903687f0aa9e1ed273eee25c6d129a1
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77611284"
 ---
 # <a name="set-up-disaster-recovery-for-azure-virtual-machines-using-azure-powershell"></a>使用 Azure PowerShell 为 Azure 虚拟机设置灾难恢复
 
 本文介绍了如何使用 Azure PowerShell 来设置和测试 Azure 虚拟机的灾难恢复。
 
-你将学习如何执行以下操作：
+学习如何：
 
 > [!div class="checklist"]
 > - 创建恢复服务保管库。
@@ -28,7 +28,7 @@ ms.locfileid: "77611284"
 > - 创建网络映射。
 > - 创建要将虚拟机复制到的存储帐户。
 > - 将 Azure 虚拟机复制到恢复区域以实现灾难恢复。
-> - 执行测试故障转移、验证和清理测试故障转移。
+> - 执行测试故障转移，进行验证，然后清理测试故障转移。
 > - 故障转移到恢复区域。
 
 > [!NOTE]
@@ -37,12 +37,12 @@ ms.locfileid: "77611284"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 开始之前：
 - 请确保了解[方案体系结构和组件](azure-to-azure-architecture.md)。
 - 查看所有组件的[支持要求](azure-to-azure-support-matrix.md)。
-- 设置 Azure PowerShell `Az` 模块。 如需安装或升级 Azure PowerShell，请参阅 [Azure PowerShell 安装和配置指南](https://docs.microsoft.com/powershell/azure/install-az-ps)。
+- 设置 Azure PowerShell `Az` 模块。 如需进安装或升级 Azure PowerShell，请遵循此[安装和配置 Azure PowerShell 指南](https://docs.microsoft.com/powershell/azure/install-az-ps)。
 
 ## <a name="sign-in-to-your-azure-subscription"></a>登录到 Azure 订阅
 
@@ -181,7 +181,7 @@ Set-AzRecoveryServicesAsrVaultContext -Vault $vault
 - 每个区域只能创建一个结构对象。
 - 如果之前已在 Azure 门户中为 VM 启用了 Site Recovery 复制，则 Site Recovery 会自动创建结构对象。 如果区域存在结构对象，则无法创建新结构对象。
 
-在开始之前，请注意 Site Recovery 操作以异步方式执行。 启动某个操作时，会提交一个 Azure Site Recovery 作业并返回一个作业跟踪对象。 使用作业跟踪对象获得最新的状态作业 (`Get-AzRecoveryServicesAsrJob`) 和监视操作状态。
+在开始之前，请注意 Site Recovery 操作以异步方式执行。 启动操作时，将提交 Azure Site Recovery 作业，并返回跟踪对象的作业。 使用作业跟踪对象获得最新的状态作业 (`Get-AzRecoveryServicesAsrJob`) 和监视操作状态。
 
 ```azurepowershell
 #Create Primary ASR fabric

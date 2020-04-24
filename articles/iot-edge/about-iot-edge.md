@@ -12,10 +12,10 @@ ms.date: 03/02/2020
 ms.author: v-tawe
 ms.custom: mvc
 ms.openlocfilehash: 98de2932c73fb0e0e44b245f5b195875de120cf0
-ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77494374"
 ---
 # <a name="what-is-azure-iot-edge"></a>什么是 Azure IoT Edge

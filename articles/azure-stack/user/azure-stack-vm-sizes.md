@@ -9,10 +9,10 @@ ms.author: v-jay
 ms.reviewer: kivenkat
 ms.lastreviewed: 12/3/2019
 ms.openlocfilehash: 89d6349b12ae4539b90ed8fc25b3b702325a7cbf
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77540735"
 ---
 # <a name="vm-sizes-supported-in-azure-stack-hub"></a>Azure Stack Hub 中支持的 VM 大小
@@ -141,7 +141,7 @@ Azure Stack Hub 上的磁盘 IOPS（每秒输入/输出操作次数）是 VM 大
 
 内存优化 VM 大小提供适用于关系数据库服务器、中到大型缓存和内存中分析的高内存 CPU 比率。
 
-### <a name="mo-d"></a>D 系列
+### <a name="d-series"></a><a name="mo-d"></a>D 系列
 |大小     |vCPU     |内存 (GiB) | 临时存储 (GiB)  | 最大 OS 磁盘吞吐量 (IOPS) | 最大临时存储吞吐量 (IOPS) | 最大数据磁盘数/吞吐量 (IOPS) | 最大 NIC 数 |
 |------------------|---|----|----|--------|------|------------|---------|
 |**Standard_D11**  |2  |14  |100 |500     |6000  |8/8x500   |2 |
@@ -149,7 +149,7 @@ Azure Stack Hub 上的磁盘 IOPS（每秒输入/输出操作次数）是 VM 大
 |**Standard_D13**  |8  |56  |400 |500     |24000 |32/32x500 |8 |
 |**Standard_D14**  |16 |112 |800 |500     |48000 |64/64x500 |8 |
 
-### <a name="mo-ds"></a>DS 系列
+### <a name="ds-series"></a><a name="mo-ds"></a>DS 系列
 |大小     |vCPU     |内存 (GiB) | 临时存储 (GiB)  | 最大 OS 磁盘吞吐量 (IOPS) | 最大临时存储吞吐量 (IOPS) | 最大数据磁盘数/吞吐量 (IOPS) | 最大 NIC 数 |
 |-------------------|---|----|----|--------|------|-------------|---------|
 |**Standard_DS11**  |2  |14  |28  |1000    |8000  |8 / 8x2300   |2 |
@@ -157,7 +157,7 @@ Azure Stack Hub 上的磁盘 IOPS（每秒输入/输出操作次数）是 VM 大
 |**Standard_DS13**  |8  |56  |112 |1000    |32000 |32 / 32x2300 |8 |
 |**Standard_DS14**  |16 |112 |224 |1000    |64000 |64 / 64x2300 |8 |
 
-### <a name="mo-dv2"></a>Dv2 系列
+### <a name="dv2-series"></a><a name="mo-dv2"></a>Dv2 系列
 |大小     |vCPU     |内存 (GiB) | 临时存储 (GiB)  | 最大 OS 磁盘吞吐量 (IOPS) | 最大临时存储吞吐量 (IOPS) | 最大数据磁盘数/吞吐量 (IOPS) | 最大 NIC 数 |
 |--------------------|----|----|-----|----|-------|-------------|---------|
 |**Standard_D11_v2** |2   |14  |100  |500 |6000   |8/8x500    |2 |
@@ -166,7 +166,7 @@ Azure Stack Hub 上的磁盘 IOPS（每秒输入/输出操作次数）是 VM 大
 |**Standard_D14_v2** |16  |112 |800  |500 |48000  |64/64x500  |8 |
 
 
-### <a name="mo-dsv2"></a>DSv2 系列
+### <a name="dsv2-series"></a><a name="mo-dsv2"></a>DSv2 系列
 |大小     |vCPU     |内存 (GiB) | 临时存储 (GiB)  | 最大 OS 磁盘吞吐量 (IOPS) | 最大临时存储吞吐量 (IOPS) | 最大数据磁盘数/吞吐量 (IOPS) | 最大 NIC 数 |
 |---------------------|----|----|-----|-----|-------|--------------|---------|
 |**Standard_DS11_v2** |2   |14  |28   |1000 |8000   |4 / 4x2300    |2 |

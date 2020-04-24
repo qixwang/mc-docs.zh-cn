@@ -17,10 +17,10 @@ ms.author: v-junlch
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ce8a7723b0025978bc9507a6a96ff8c8b4e2dd31
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77429934"
 ---
 # <a name="review-access-to-azure-resource-roles-in-privileged-identity-management"></a>在 Privileged Identity Management 中评审对 Azure 资源角色的访问权限
@@ -37,7 +37,7 @@ Privileged Identity Management (PIM) 访问评审有助于安全访问 Azure Act
 
 请遵循以下步骤来查找并完成访问权限审查：
 
-1. 登录到 [Azure 门户](https://portal.azure.cn/)。
+1. 登录 [Azure 门户](https://portal.azure.cn/)。
 1. 选择“Azure Active Directory”，打开“Privileged Identity Management”。  
 1. 选择“评审访问权限”。 
 

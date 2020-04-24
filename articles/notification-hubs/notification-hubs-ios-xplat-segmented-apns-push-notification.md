@@ -18,10 +18,10 @@ ms.author: v-tawe
 ms.reviewer: jowargo
 ms.lastreviewed: 11/07/2019
 ms.openlocfilehash: c4524bf41b1a2ab33e6aae943394688e862db1b2
-ms.sourcegitcommit: 094c057878de233180ff3b3a3e3c19bc11c81776
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77501349"
 ---
 # <a name="tutorial-push-notifications-to-specific-ios-devices-using-azure-notification-hubs"></a>教程：使用 Azure 通知中心向特定 iOS 设备推送通知
@@ -42,7 +42,7 @@ ms.locfileid: "77501349"
 > * 从设备发送通知
 > * 运行应用并生成通知
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 本主题基于以下教程中创建的应用：[教程：使用 Azure 通知中心向 iOS 应用推送通知][get-started]。 在开始学习本教程之前，必须已完成[教程：使用 Azure 通知中心向 iOS 应用推送通知][get-started]。
 

@@ -9,10 +9,10 @@ ms.author: v-jay
 ms.reviewer: wfayed
 ms.lastreviewed: 08/21/2019
 ms.openlocfilehash: 97f16899fee70971d39eb0fa22750a96d4bf3906
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77540989"
 ---
 # <a name="azure-stack-hub-datacenter-dns-integration"></a>Azure Stack Hub 数据中心 DNS 集成

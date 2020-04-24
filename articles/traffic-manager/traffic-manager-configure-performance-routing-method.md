@@ -14,10 +14,10 @@ origin.date: 03/20/2017
 ms.date: 02/24/2020
 ms.author: v-yeche
 ms.openlocfilehash: 9c4b441934bb6e67608dbfd55281cc8d32f099af
-ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77653226"
 ---
 # <a name="configure-the-performance-traffic-routing-method"></a>配置性能流量路由方法
@@ -38,7 +38,7 @@ ms.locfileid: "77653226"
 5. 按如下方式测试配置更改：
     1. 在门户的搜索栏中，搜索流量管理器配置文件名称，并在显示的结果中单击该流量管理器配置文件。
     2. 在“流量管理器配置文件”  边栏选项卡中，单击“概述”  。
-    3. “流量管理器配置文件”  边栏选项卡会显示新建的流量管理器配置文件的 DNS 名称。 任意客户端（例如通过 Web 浏览器导航到此名称）均可使用此名称路由到根据路由类型确定的相应终结点。 在此情况下，所有请求均通过客户端网络路由到终结点并保证最低延迟。
+    3. “流量管理器配置文件”  边栏选项卡会显示新建的流量管理器配置文件的 DNS 名称。 任何客户端（例如，通过使用 Web 浏览器导航到客户端）均可使用此名称来路由到由路由类型确定的相应终结点。 在此情况下，所有请求均通过客户端网络路由到终结点并保证最低延迟。
 6. 流量管理器配置文件正常工作后，请在权威 DNS 服务器上编辑 DNS 记录，将公司域名指向流量管理器域名。
 
     ![使用流量管理器配置性能流量路由方法][1]

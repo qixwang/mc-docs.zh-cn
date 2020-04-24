@@ -9,10 +9,10 @@ ms.author: v-jay
 ms.reviewer: alfredop
 ms.lastreviewed: 05/09/2019
 ms.openlocfilehash: 60e65106025aba46f04c0608a47fa486b9452cc2
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77540936"
 ---
 # <a name="usage-reporting-infrastructure-for-cloud-solution-providers"></a>适用于云解决方案提供商的使用情况报告基础结构
@@ -45,4 +45,4 @@ Azure Stack Hub 和 Azure 中的服务计价方式有一些差异。 例如，�
 ## <a name="next-steps"></a>后续步骤
 
 - 若要详细了解 CSP 计划，请参阅[云解决方案](https://partner.microsoft.com/solutions/microsoft-cloud-solutions)。
-- 若要详细了解如何从 Azure Stack Hub 检索资源使用情况信息，请参阅 [Azure Stack Hub 中的使用情况和计费](azure-stack-billing-and-chargeback.md)。
+- 若要详细了解如何从 Azure Stack Hub 检索资源用量信息，请参阅 [Azure Stack Hub 中的用量和计费](azure-stack-billing-and-chargeback.md)。

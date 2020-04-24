@@ -15,10 +15,10 @@ origin.date: 05/15/2019
 ms.date: 02/24/2020
 ms.author: v-yiso
 ms.openlocfilehash: ee5b85471a45bd136cd7c8bb1d7a5e54eb8c4458
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77429944"
 ---
 # <a name="use-an-external-azure-cache-for-redis-in-azure-api-management"></a>在 Azure API 管理中使用用于 Redis 的外部 Azure 缓存
@@ -48,13 +48,13 @@ ms.locfileid: "77429944"
 + [创建一个 Azure API 管理实例](get-started-create-service-instance.md)
 + 了解 [Azure API 管理中的缓存](api-management-howto-cache.md)
 
-## <a name="create-cache"> </a>创建 Azure Cache for Redis
+## <a name="create-azure-cache-for-redis"></a><a name="create-cache"> </a>创建 Azure Cache for Redis
 
 本部分介绍了如何在 Azure 中创建用于 Redis 的 Azure 缓存。 如果你已有用于 Redis 的 Azure 缓存（无论是在 Azure 内部还是外部），则可以<a href="#add-external-cache">跳到</a>下一部分。
 
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-create.md)]
 
-## <a name="add-external-cache"> </a>添加外部缓存
+## <a name="add-an-external-cache"></a><a name="add-external-cache"> </a>添加外部缓存
 
 按照以下步骤在 Azure API 管理中添加用于 Redis 的外部 Azure 缓存。
 
@@ -69,7 +69,7 @@ ms.locfileid: "77429944"
 
 1. 在 Azure 门户中浏览到你的 API 管理实例。
 2. 从左侧的菜单中选择“外部缓存”选项卡。 
-3. 单击“+ 添加”  按钮。
+3. 单击“ **+ 添加**”按钮。
 4. 从“缓存实例”下拉字段中选择你的缓存。 
 5. 在“使用以下位置中的”下拉字段中选择“默认”  或指定所需的区域。 
 6. 单击“保存”  。
@@ -78,7 +78,7 @@ ms.locfileid: "77429944"
 
 1. 在 Azure 门户中浏览到你的 API 管理实例。
 2. 从左侧的菜单中选择“外部缓存”选项卡。 
-3. 单击“+ 添加”  按钮。
+3. 单击“ **+ 添加**”按钮。
 4. 从“缓存实例”下拉字段中选择“自定义”。  
 5. 在“使用以下位置中的”下拉字段中选择“默认”  或指定所需的区域。 
 6. 在“连接字符串”字段中提供用于 Redis 的 Azure 缓存连接字符串。 
@@ -88,9 +88,9 @@ ms.locfileid: "77429944"
 
 在 Azure API 管理中配置外部缓存后，可以通过缓存策略使用该缓存。 有关详细步骤，请参阅[添加缓存以提高 Azure API 管理中的性能](api-management-howto-cache.md)。
 
-## <a name="next-steps"> </a>后续步骤
+## <a name="next-steps"></a><a name="next-steps"> </a>后续步骤
 
-* 有关缓存策略的详细信息，请参阅 [API 管理策略参考][API Management policy reference]中的[缓存策略][Caching policies]。
+* 有关缓存策略的详细信息，请参阅 [API 管理策略参考][Caching policies]中的[缓存策略][API Management policy reference]。
 * 有关使用策略表达式按密钥缓存项目的信息，请参阅 [Azure API 管理中的自定义缓存](api-management-sample-cache-by-key.md)。
 
 [API Management policy reference]: https://msdn.microsoft.com/library/azure/dn894081.aspx

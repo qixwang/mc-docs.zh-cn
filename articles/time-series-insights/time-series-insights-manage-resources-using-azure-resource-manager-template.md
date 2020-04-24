@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 02/19/2020
 ms.custom: seodec18
 ms.openlocfilehash: c401f08f6f44e4d1ce58106e9130c3555101c04d
-ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77494466"
 ---
 # <a name="create-time-series-insights-resources-using-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板创建时序见解资源
@@ -85,7 +85,7 @@ GitHub 上已发布 [201-timeseriesinsights-environment-with-eventhub](https://g
      | --- | --- |
      | eventHubNamespaceName | 源事件中心的命名空间。 |
      | eventHubName | 源事件中心的名称。 |
-     | consumerGroupName | 由时序见解服务用来从事件中心读取数据的使用者组的名称。 **注意：** 为了避免资源争用，此使用者组必须专门用于时序见解服务，而不能与其他读者共享。 |
+     | consumerGroupName | 由时序见解服务用来从事件中心读取数据的使用者组的名称。 **注意：** 为了避免资源争用，此使用者组必须专门用于时序见解服务，而不能与其他读取者共享。 |
      | environmentName | 环境的名称。 此名称不能包含 `<`、`>`、`%`、`&`、`:`、`\\`、`?`、`/` 和任何控制字符。 允许其他所有字符。|
      | eventSourceName | 事件源子资源的名称。 此名称不能包含 `<`、`>`、`%`、`&`、`:`、`\\`、`?`、`/` 和任何控制字符。 允许其他所有字符。 |
 
@@ -156,7 +156,7 @@ GitHub 上已发布 [201-timeseriesinsights-environment-with-eventhub](https://g
       Connect-AzAccount -Environment AzureChinaCloud
       ```
 
-    * 系统会提示你登录到 Azure 帐户。 登录后，运行以下命令以查看可用订阅：
+    * 系统会提示登录到 Azure 帐户。 登录后，运行以下命令以查看可用订阅：
 
       ```powershell
       Get-AzSubscription
@@ -196,7 +196,7 @@ GitHub 上已发布 [201-timeseriesinsights-environment-with-eventhub](https://g
 
 1. 创建部署
 
-    * 若要创建新部署，请运行 `New-AzResourceGroupDeployment` cmdlet，并在出现提示时提供必需的参数。 参数包括部署的名称、资源组的名称，以及模板文件的路径或 URL。 如果未指定 Mode 参数，则将使用默认值 Incremental。   有关详细信息，请阅读[增量部署和完整部署](../azure-resource-manager/templates/deployment-modes.md)。
+    * 若要创建新部署，请运行 `New-AzResourceGroupDeployment` cmdlet，并在出现提示时提供必需的参数。 参数包括部署的名称、资源组的名称，以及模板文件的路径或 URL。 如果未指定 **Mode** 参数，将使用 **Incremental** 的默认值。 有关详细信息，请阅读[增量部署和完整部署](../azure-resource-manager/templates/deployment-modes.md)。
 
     * 以下命令提示在 PowerShell 窗口中输入五个必需的参数：
 
@@ -216,7 +216,7 @@ GitHub 上已发布 [201-timeseriesinsights-environment-with-eventhub](https://g
       New-AzResourceGroupDeployment -Name MyDemoDeployment -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json -parameterName "parameterValue"
       ```
 
-    * 若要运行[完整](../azure-resource-manager/templates/deployment-modes.md)部署，请将 Mode 参数设置为 Complete：  
+    * 要运行[完整](../azure-resource-manager/templates/deployment-modes.md)部署，请将 **Mode** 参数设置为 **Complete**：
 
       ```powershell
       New-AzResourceGroupDeployment -Name MyDemoDeployment -Mode Complete -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json

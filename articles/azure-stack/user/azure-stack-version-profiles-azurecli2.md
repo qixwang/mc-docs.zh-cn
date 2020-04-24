@@ -9,10 +9,10 @@ ms.author: v-jay
 ms.reviewer: sijuman
 ms.lastreviewed: 12/10/2019
 ms.openlocfilehash: d6d0518f3ba9789c28b0236cfb88dad6be2b4771
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77540743"
 ---
 # <a name="manage-and-deploy-resources-to-azure-stack-hub-with-azure-cli"></a>使用 Azure CLI 管理资源以及将资源部署到 Azure Stack Hub

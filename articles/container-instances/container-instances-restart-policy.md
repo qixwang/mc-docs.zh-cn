@@ -6,10 +6,10 @@ origin.date: 04/15/2019
 ms.date: 01/15/2020
 ms.author: v-yeche
 ms.openlocfilehash: cb012e2c9aa8a90a4385db6c5386bc617b5f8d15
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77428939"
 ---
 <!--Verified successfully-->
@@ -35,7 +35,7 @@ ms.locfileid: "77428939"
 
 ## <a name="specify-a-restart-policy"></a>指定重启策略
 
-重启策略的指定方式取决于容器实例的创建方式，例如，是使用 Azure CLI、Azure PowerShell cmdlet 还是 Azure 门户。 在 Azure CLI 中，在调用 [az container create][az-container-create] 时指定 `--restart-policy` 参数。
+重启策略的指定方式取决于容器实例的创建方式，例如，是使用 Azure CLI、Azure PowerShell cmdlet 还是 Azure 门户。 在 Azure CLI 中，在调用 `--restart-policy`az container create[ 时指定 ][az-container-create] 参数。
 
 ```azurecli
 az container create \

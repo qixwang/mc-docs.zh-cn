@@ -10,10 +10,10 @@ ms.date: 02/10/2020
 ms.author: v-yeche
 ms.custom: include file
 ms.openlocfilehash: 98e09bd83c274c9c6a381cd0ea0adb69c663700e
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77428368"
 ---
 本部分提供了有关先前几代虚拟机大小的信息。 这些大小仍受支持，但无法接收更多的容量。 有更新的或备用的大小，这些大小已公开发布。 请参阅 [Azure 中 Windows 虚拟机的大小](../articles/virtual-machines/windows/sizes.md)或 [Azure 中 Linux 虚拟机的大小](../articles/virtual-machines/linux/sizes.md)，以便选择最适合自己需求的 VM 大小。  

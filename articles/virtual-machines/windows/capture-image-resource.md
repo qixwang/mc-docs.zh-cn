@@ -16,15 +16,15 @@ origin.date: 09/27/2018
 ms.date: 02/10/2020
 ms.author: v-yeche
 ms.openlocfilehash: 2ee3253a6f7080fccf3ce2be3b7bb09d3dc17b89
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77428895"
 ---
 # <a name="create-a-managed-image-of-a-generalized-vm-in-azure"></a>在 Azure 中创建通用 VM 的托管映像
 
-可通过在存储帐户中存储为托管/非托管磁盘的通用虚拟机 (VM) 创建托管的映像资源。 然后可以使用该映像创建多个 VM。 有关托管映像如何计费的信息，请参阅[托管磁盘定价](https://www.azure.cn/pricing/details/storage/)。 
+可通过在存储帐户中存储为托管/非托管磁盘的通用虚拟机 (VM) 创建托管的映像资源。 随后，该映像可用于创建多个 VM。 有关托管映像如何计费的信息，请参阅[托管磁盘定价](https://www.azure.cn/pricing/details/storage/)。 
 
 ## <a name="generalize-the-windows-vm-using-sysprep"></a>使用 Sysprep 通用化 Windows VM
 
@@ -53,7 +53,7 @@ Sysprep 将删除所有个人帐户和安全信息，并准备好要用作映像
 
     ![启动 Sysprep](./media/upload-generalized-managed/sysprepgeneral.png)
 
-6. Sysprep 在完成运行后会关闭 VM。 不要重新启动 VM。
+6. Sysprep 在完成运行后会关闭 VM。 请勿重启 VM。
 
     > [!TIP]
     > **可选** 使用 [DISM](https://docs.microsoft.com/windows-hardware/manufacture/desktop/dism-optimize-image-command-line-options) 优化映像并减少 VM 的首次启动时间。
@@ -69,7 +69,7 @@ Sysprep 将删除所有个人帐户和安全信息，并准备好要用作映像
 
 ## <a name="create-a-managed-image-in-the-portal"></a>在门户中创建托管映像 
 
-1. 转到 [Azure 门户](https://portal.azure.cn)以管理 VM 映像。 搜索并选择“虚拟机”  。
+1. 转到 [Azure 门户](https://portal.azure.cn)以管理 VM 映像。 搜索并选择“虚拟机”。 
 
 2. 从列表中选择 VM。
 
@@ -99,7 +99,7 @@ Sysprep 将删除所有个人帐户和安全信息，并准备好要用作映像
 
 若要创建 VM 映像，请遵循下列步骤：
 
-1. 创建一些变量。
+1. 创建若干变量。
 
     ```powershell
     $vmName = "myVM"
@@ -140,7 +140,7 @@ Sysprep 将删除所有个人帐户和安全信息，并准备好要用作映像
 
 如果仅想创建 OS 磁盘的映像，则将托管磁盘 ID 指定为 OS 磁盘：
 
-1. 创建一些变量。 
+1. 创建若干变量。 
 
     ```powershell
     $vmName = "myVM"
@@ -178,7 +178,7 @@ Sysprep 将删除所有个人帐户和安全信息，并准备好要用作映像
 
 通过执行以下步骤，可以从通用 VM 的快照创建托管映像：
 
-1. 创建一些变量。 
+1. 创建若干变量。 
 
     ```powershell
     $rgName = "myResourceGroup"
@@ -209,7 +209,7 @@ Sysprep 将删除所有个人帐户和安全信息，并准备好要用作映像
 
 若要从不使用托管磁盘的 VM 创建托管映像，需要存储帐户中 OS VHD 的 URI，格式如下： https://*mystorageaccount*.blob.core.chinacloudapi.cn/*vhdcontainer*/*vhdfilename.vhd*。 在本示例中，VHD 位于名为 vhdcontainer  的容器中的 mystorageaccount  中，且 VHD 文件名为 vhdfilename.vhd  。
 
-1. 创建一些变量。
+1. 创建若干变量。
 
     ```powershell
     $vmName = "myVM"
@@ -224,7 +224,7 @@ Sysprep 将删除所有个人帐户和安全信息，并准备好要用作映像
     Stop-AzVM -ResourceGroupName $rgName -Name $vmName -Force
     ```
 
-3. 将 VM 标记为通用。
+3. 将 VM 标记为通用化。
 
     ```powershell
     Set-AzVm -ResourceGroupName $rgName -Name $vmName -Generalized  

@@ -10,10 +10,10 @@ ms.topic: conceptual
 origin.date: 12/19/2019
 ms.date: 03/02/2020
 ms.openlocfilehash: cc7acf58af846eda7b31e1b6ca86e7b36ba4d70a
-ms.sourcegitcommit: 46fd4297641622c1984011eac4cb5a8f6f94e9f5
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77563387"
 ---
 # <a name="performance-optimization-for-apache-kafka-hdinsight-clusters"></a>Apache Kafka HDInsight 群集的性能优化
@@ -22,7 +22,7 @@ ms.locfileid: "77563387"
 
 ## <a name="architecture-overview"></a>体系结构概述
 
-Kafka 主题用于对记录进行组织。 记录由生成者生成，由使用者使用。 生成者将记录发送到 Kafka 代理，后者存储数据。 HDInsight 群集中的每个辅助角色节点都是一个 Kafka 中转站。
+Kafka 主题用于对记录进行组织。 记录由生成者生成，由使用者使用。 生成者将记录发送到 Kafka 代理，后者存储数据。 HDInsight 群集中的每个辅助角色节点都是 Kafka 代理。
 
 主题跨代理对记录进行分区。 在使用记录时，每个分区最多可使用一个使用者来实现数据并行处理。
 

@@ -13,10 +13,10 @@ origin.date: 04/20/2017
 ms.date: 05/14/2018
 ms.author: v-lingwu
 ms.openlocfilehash: fd0b2b7cd7ab5ccdfc6edd58e9618c5b8dfb944c
-ms.sourcegitcommit: 27eaabd82b12ad6a6840f30763034a6360977186
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77497400"
 ---
 # <a name="batch-analytics"></a>批处理分析

@@ -4,10 +4,10 @@ description: Azure Functions 支持多个版本的运行时。 了解如何在 A
 ms.topic: conceptual
 ms.date: 02/18/2020
 ms.openlocfilehash: 174b574c2dfcd63bf4e0897e2e513879ad118e48
-ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77494010"
 ---
 # <a name="how-to-target-azure-functions-runtime-versions"></a>如何面向 Azure Functions 运行时版本
@@ -49,7 +49,7 @@ Azure Functions 允许你通过使用函数应用中的 `FUNCTIONS_EXTENSION_VER
 > [!NOTE]
 > 使用 Azure 门户，无法更改已包含函数的函数应用的运行时版本。
 
-### <a name="view-and-update-the-runtime-version-using-azure-cli"></a>通过 Azure CLI
+### <a name="from-the-azure-cli"></a><a name="view-and-update-the-runtime-version-using-azure-cli"></a>通过 Azure CLI
 
 还可以通过 Azure CLI 查看和更新 `FUNCTIONS_EXTENSION_VERSION`。
 

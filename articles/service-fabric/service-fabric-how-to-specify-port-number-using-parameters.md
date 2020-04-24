@@ -7,10 +7,10 @@ origin.date: 12/06/2017
 ms.date: 02/24/2020
 ms.author: v-yeche
 ms.openlocfilehash: eb13140a7fb7aca1930285a51a751ee44efffc43
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77540668"
 ---
 # <a name="how-to-specify-the-port-number-of-a-service-using-parameters-in-service-fabric"></a>如何在 Service Fabric 中使用参数来指定服务的端口号
@@ -25,7 +25,7 @@ ms.locfileid: "77540668"
 1. 选择无状态 ASP.NET Core 模板。
 1. 选择 Web API。
 1. 打开 ServiceManifest.xml 文件。
-1. 记下为你的服务指定的终结点的名称。 默认值为 `ServiceEndpoint`。
+1. 记下为你的服务指定的终结点的名称。 默认为 `ServiceEndpoint`。
 1. 打开 ApplicationManifest.xml 文件
 1. 在 `ServiceManifestImport` 元素中，添加新的 `RessourceOverrides` 元素，其中包括对 ServiceManifest.xml 文件中终结点的引用。
 

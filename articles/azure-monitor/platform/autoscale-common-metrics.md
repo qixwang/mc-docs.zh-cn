@@ -8,10 +8,10 @@ ms.date: 02/19/2020
 ms.author: v-lingwu
 ms.subservice: autoscale
 ms.openlocfilehash: ed5364c3b3d50b9e071c09d5aa11dd6f68f5fb00
-ms.sourcegitcommit: 27eaabd82b12ad6a6840f30763034a6360977186
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77497604"
 ---
 # <a name="azure-monitor-autoscaling-common-metrics"></a>Azure Monitor 自动缩放常用指标

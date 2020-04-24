@@ -7,10 +7,10 @@ origin.date: 01/16/2020
 ms.date: 02/24/2020
 ms.author: v-yeche
 ms.openlocfilehash: 6a72fc1a7560e31c4b42bc3e9d4ea99485f6908b
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77539998"
 ---
 # <a name="sfctl-store"></a>sfctl store
@@ -18,9 +18,9 @@ ms.locfileid: "77539998"
 
 ## <a name="commands"></a>命令
 
-|命令|说明|
+|Command|说明|
 | --- | --- |
-| 删除 | 删除现有的映像存储内容。 |
+| delete | 删除现有的映像存储内容。 |
 | root-info | 获取映像存储根目录中的内容信息。 |
 | stat | 获取映像存储内容信息。 |
 

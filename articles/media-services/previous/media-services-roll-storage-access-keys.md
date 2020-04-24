@@ -1,6 +1,6 @@
 ---
 title: 轮转存储访问密钥后更新媒体服务 | Microsoft Docs
-description: 此文提供有关在轮转存储访问密钥后如何更新媒体服务的指导。
+description: 此文将提供有关在轮转存储访问密钥后如何更新媒体服务的指导。
 services: media-services
 documentationcenter: ''
 author: WenJason
@@ -17,13 +17,13 @@ ms.date: 02/24/2020
 ms.author: v-jay
 ms.reviewer: milanga;cenkdin
 ms.openlocfilehash: b8ed6359e41014fbb7bbd1ae6cb1e0ced36e9372
-ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77494209"
 ---
-# <a name="update-media-services-after-rolling-storage-access-keys"></a>更改存储访问密钥后更新媒体服务 
+# <a name="update-media-services-after-rolling-storage-access-keys"></a>轮转存储访问密钥后更新媒体服务 
 
 创建新的 Azure 媒体服务 (AMS) 帐户时，系统还会要求选择用于存储媒体内容的 Azure 存储帐户。 可将多个存储帐户添加到媒体服务帐户。 本文介绍如何轮换存储密钥。 此外，介绍如何将存储帐户添加到媒体帐户。 
 
@@ -33,12 +33,12 @@ ms.locfileid: "77494209"
 
 ## <a name="overview"></a>概述
 
-创建新的存储帐户后，Azure 会生成两个 512 位存储访问密钥，用于对对存储帐户的访问进行身份验证。 为保持存储连接更加安全，建议定期重新生成并轮转存储访问密钥。 将提供两个访问密钥（主密钥和辅助密钥），以便在你重新生成其中一个访问密钥时，始终能够使用另一个访问密钥连接到存储帐户。 此过程也称为“轮转访问密钥”。
+在创建新的存储帐户后，Azure 将生成两个 512 位存储访问密钥，用于对你存储帐户的访问进行身份验证。 要保持存储连接的安全性，我们建议定期重新生成并轮转存储访问密钥。 将提供两个访问密钥（主密钥和辅助密钥），以便在重新生成其中一个访问密钥时，始终能够使用另一个访问密钥连接到存储帐户。 此过程也称为“轮转访问密钥”。
 
-媒体服务依赖于向其提供的存储密钥。 具体而言，用于流式处理或下载资产的定位符依赖于指定的存储访问密钥。 创建 AMS 帐户时，媒体服务默认依赖于主存储访问密钥，但用户可以更新 AMS 的存储密钥。 必须遵照本文中所述的步骤，确保媒体服务知晓要使用的密钥。  
+媒体服务依赖于为它提供的存储密钥。 具体而言，用于流式传输或下载资产的定位符依赖于指定的存储访问密钥。 创建 AMS 帐户时，媒体服务默认依赖于主存储访问密钥，但用户可以更新 AMS 的存储密钥。 必须遵照本文中所述的步骤，确保媒体服务知晓要使用的密钥。  
 
 >[!NOTE]
-> 若有多个存储帐户，请对每个存储帐户执行此过程。 存储密钥的轮换顺序不是固定的。 可以先轮换辅助密钥，并再轮换主密钥，反之亦然。
+> 如果有多个存储帐户，请对每个存储帐户执行此过程。 存储密钥的轮换顺序不是固定的。 可以先轮换辅助密钥，再轮换主密钥，反之亦然。
 >
 > 在对生产帐户执行本文中所述的步骤之前，请确保对生产前帐户测试这些步骤。
 >
@@ -48,18 +48,18 @@ ms.locfileid: "77494209"
  1. 通过 PowerShell cmdlet 或 [Azure](https://portal.azure.cn/) 门户更改存储帐户主密钥。
  2. 使用适当的参数调用 Sync-AzMediaServiceStorageKeys cmdlet，强制媒体帐户选取存储帐户密钥
  
-    以下示例演示了如何将密钥同步到存储帐户。
+    以下示例演示如何将密钥同步到存储帐户。
   
          Sync-AzMediaServiceStorageKeys -ResourceGroupName $resourceGroupName -AccountName $mediaAccountName -StorageAccountId $storageAccountId
   
- 3. 等待一小时左右。 验证流式处理方案是否正常工作。
+ 3. 等待大约一小时。 验证流式处理方案是否正常工作。
  4. 通过 PowerShell cmdlet 或 Azure 门户更改存储帐户辅助密钥。
  5. 使用适当的参数调用 Sync-AzMediaServiceStorageKeys powershell，强制媒体帐户选取新的存储帐户密钥。 
- 6. 等待一小时左右。 验证流式处理方案是否正常工作。
+ 6. 等待大约一小时。 验证流式处理方案是否正常工作。
  
 ### <a name="a-powershell-cmdlet-example"></a>PowerShell cmdlet 示例 
 
-以下示例演示了如何获取存储帐户并通过 AMS 帐户将其同步。
+以下示例演示如何获取存储帐户并将它与 AMS 帐户同步。
 
     $regionName = "China East"
     $resourceGroupName = "SkyMedia-ChinaEast-App"
@@ -72,7 +72,7 @@ ms.locfileid: "77494209"
  
 ## <a name="steps-to-add-storage-accounts-to-your-ams-account"></a>将存储帐户添加到 AMS 帐户的步骤
 
-以下文章介绍了如何将存储帐户添加到 AMS 帐户：[将多个存储帐户附加到一个媒体服务帐户](meda-services-managing-multiple-storage-accounts.md)。
+下文介绍了如何将存储帐户添加到 AMS 帐户：[将多个存储帐户附加到媒体服务帐户](meda-services-managing-multiple-storage-accounts.md)。
 
 ## <a name="media-services-learning-paths"></a>媒体服务学习路径
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

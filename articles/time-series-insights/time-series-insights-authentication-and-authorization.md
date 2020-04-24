@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 02/19/2020
 ms.custom: seodec18
 ms.openlocfilehash: 83e538c312045ef280c65c7c30c44c915a0a676b
-ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77494542"
 ---
 # <a name="authentication-and-authorization-for-azure-time-series-insights-api"></a>Azure 时序见解 API 的身份验证和授权
@@ -38,7 +38,7 @@ Azure Active Directory 应用注册流程涉及三个主要步骤。
 
 1. 在 Azure Active Directory 中[注册应用程序](#azure-active-directory-app-registration)。
 1. 授权应用程序[对时序见解环境进行数据访问](#granting-data-access)。
-1. 使用**应用程序 ID** 和**客户端机密**从[客户端应用](#client-app-initialization)中的 `https://api.timeseries.azure.cn/` 获取令牌。 然后可使用该令牌调用时序见解 API。
+1. 使用**应用程序 ID** 和**客户端机密**从`https://api.timeseries.azure.cn/`客户端应用[中的 ](#client-app-initialization) 获取令牌。 然后可使用该令牌调用时序见解 API。
 
 根据**步骤 3**，将应用程序凭据和用户凭据隔离可以：
 
@@ -119,7 +119,7 @@ Azure Active Directory 应用注册流程涉及三个主要步骤。
 > [!TIP]
 > 请阅读 [Azure REST API 参考](https://docs.microsoft.com/rest/api/azure/)，了解有关如何使用 REST API、发出 HTTP 请求和处理 HTTP 响应的详细信息。
 
-### <a name="authentication"></a>身份验证
+### <a name="authentication"></a>Authentication
 
 若要对[时序见解 REST API](https://docs.microsoft.com/rest/api/time-series-insights/) 执行经过身份验证的查询，必须使用所选的 REST 客户端（Postman、JavaScript、C#）在[授权标头](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/authorizationserver/createorupdate)中传递有效的 OAuth 2.0 持有者令牌。 
 
@@ -136,7 +136,7 @@ Azure Active Directory 应用注册流程涉及三个主要步骤。
 
 > [!IMPORTANT]
 > 令牌必须严格颁发给 `https://api.timeseries.azure.com/` 资源（也称为令牌的“受众”）。
-> * 因此，[Postman](https://www.getpostman.com/) AuthURL 将为：`https://login.microsoftonline.com/microsoft.onmicrosoft.com/oauth2/authorize?resource=https://api.timeseries.azure.com/` 
+> * 因此，[Postman](https://www.getpostman.com/) AuthURL 将为：  `https://login.microsoftonline.com/microsoft.onmicrosoft.com/oauth2/authorize?resource=https://api.timeseries.azure.com/`
 > * `https://api.timeseries.azure.com/` 有效，而 `https://api.timeseries.azure.com` 无效。
 
 可选请求标头如下所述。
@@ -174,7 +174,7 @@ Azure Active Directory 应用注册流程涉及三个主要步骤。
 | 可选查询参数 | 说明 | 版本 |
 | --- |  --- | --- |
 | `timeout=<timeout>` | 用于执行 HTTP 请求的服务器端超时。 仅适用于[获取环境事件](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-events-api)和[获取环境聚合](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-aggregates-api) API。 超时值应采用 ISO 8601 持续时间格式（例如 `"PT20S"`），并且应在 `1-30 s` 范围内。 默认值为 `30 s`。 | GA |
-| `storeType=<storeType>` | 对于启用 Warm 存储的预览版环境，可以在 `WarmStore` 或 `ColdStore` 上执行查询。 查询中的此参数定义应在哪个存储中执行查询。 如果未定义，将对 Cold 存储执行查询。 若要查询 Warm 存储，需要将 storeType 设置为 `WarmStore`  。 如果未定义，将针对 Cold 存储执行查询。 | 预览 |
+| `storeType=<storeType>` | 对于启用 Warm 存储的预览版环境，可以在 `WarmStore` 或 `ColdStore` 上执行查询。 查询中的此参数定义应在哪个存储中执行查询。 如果未定义，将对 Cold 存储执行查询。 若要查询 Warm 存储，需要将 storeType 设置为  `WarmStore`。 如果未定义，将针对 Cold 存储执行查询。 | 预览 |
 
 ## <a name="next-steps"></a>后续步骤
 

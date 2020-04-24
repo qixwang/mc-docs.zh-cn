@@ -9,10 +9,10 @@ ms.author: v-jay
 ms.reviewer: fiseraci
 ms.lastreviewed: 11/05/2018
 ms.openlocfilehash: 022672fc6d7d104d26aa7008c2723fce74a8edbf
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77540909"
 ---
 # <a name="monitor-updates-in-azure-stack-hub-using-the-privileged-endpoint"></a>使用特权终结点监视 Azure Stack Hub 中的更新
@@ -28,7 +28,7 @@ Azure Stack Hub 集成系统 1710 更新版中包含以下用于更新管理的�
 | | |
 
 ## <a name="verify-the-cmdlets-are-available"></a>验证 cmdlet 是否可用
-由于 cmdlet 是适用于 Azure Stack Hub 1710 更新包中的新功能，因此 1710 更新过程需要运行到特定的步骤，才能使用监视功能。 一般而言，如果管理员门户中的状态指示 1710 更新正在执行“重启存储主机”步骤，则可以使用 cmdlet。  具体来说，cmdlet 更新发生在**步骤：正在运行步骤 2.6 - 更新 PrivilegedEndpoint 允许列表**期间。
+由于 cmdlet 是适用于 Azure Stack Hub 1710 更新包中的新功能，因此 1710 更新过程需要运行到特定的步骤，才能使用监视功能。 一般而言，如果管理员门户中的状态指示 1710 更新正在执行“重启存储主机”步骤，则可以使用 cmdlet。  具体而言，cmdlet 更新在执行“步骤: 正在运行步骤 2.6 - 更新 PrivilegedEndpoint 允许列表”期间发生。 
 
 也可以通过从特权终结点查询命令列表，来确定是否可以编程方式使用 cmdlet。 若要执行此查询，请从硬件生命周期主机或特权访问工作站运行以下命令。 此外，请确保特权终结点是受信任的主机。 有关详细信息，请参阅[访问特权终结点](azure-stack-privileged-endpoint.md#access-the-privileged-endpoint)的步骤 1。
 
@@ -102,7 +102,7 @@ $statusString.Value
 
 - 正在运行
 - 已完成
-- 已失败 
+- 失败 
 - 已取消
 
 可以重复运行这些命令来查看最新状态。 无需重新建立连接即可再次检查状态。
@@ -160,7 +160,7 @@ Invoke-Command -Session $pepSession -ScriptBlock { Resume-AzureStackUpdate }
 
 ## <a name="troubleshoot"></a>故障排除
 
-特权终结点适用于 Azure Stack Hub 环境中的所有 ERCS VM。 由于未与高度可用的终结点建立连接，因此可能会遇到偶发性中断、警告或错误消息。 这些消息可能指示会话已断开，或者与 ECE 服务通信时出错。 这是预期的行为。 可以在几分钟后重试此操作，或者在其他某个 ERCS VM 上新建特权终结点会话。
+特权终结点适用于 Azure Stack Hub 环境中的所有 ERCS VM。 由于未与高度可用的终结点建立连接，因此可能会遇到偶发性中断、警告或错误消息。 这些消息可能指示会话已断开，或者与 ECE 服务通信时出错。 此行为是预期的行为。 可以在几分钟后重试此操作，或者在其他某个 ERCS VM 上新建特权终结点会话。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 52ecbc0d557a2a6eda631a86ac14fd518a986282
-ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77494347"
 ---
 # <a name="create-and-provision-an-iot-edge-device-with-a-virtual-tpm-on-a-linux-virtual-machine"></a>使用 Linux 虚拟机上的虚拟 TPM 创建和预配 IoT Edge 设备
@@ -36,7 +36,7 @@ ms.locfileid: "77494347"
 
 * [已启用 Hyper-V](https://docs.microsoft.com/virtualization/hyper-v-on-windows/quick-start/enable-hyper-v) 的 Windows 开发计算机。 本文使用运行 Ubuntu Server VM 的 Windows 10。
 * 活动的 IoT 中心。
-* 如果使用模拟 TPM，则需要启用了[“使用 C++ 的桌面开发”](https://www.visualstudio.com/vs/support/selecting-workloads-visual-studio-2017/)工作负荷的 [Visual Studio](https://visualstudio.microsoft.com/vs/) 2015 或更高版本。
+* 如果使用模拟 TPM，则需要启用了[“使用 C++ 的桌面开发”](https://visualstudio.microsoft.com/vs/)工作负荷的 [Visual Studio](https://www.visualstudio.com/vs/support/selecting-workloads-visual-studio-2017/) 2015 或更高版本。
 
 > [!NOTE]
 > 将 TPM 证明与 DPS 一起使用时，TPM 2.0 是必需的，并且只能用于创建个人（而非组）注册。
@@ -65,13 +65,13 @@ ms.locfileid: "77494347"
 
 1. 下载虚拟机使用的磁盘映像文件，并将其保存在本地。 例如 [Ubuntu 服务器](https://www.ubuntu.com/download/server)。
 
-2. 返回 Hyper-V 管理器，在“操作”菜单中选择“新建” > “虚拟机”。   
+2. 返回 Hyper-V 管理器，在“操作”菜单中选择“新建” **“虚拟机”。**  >   
 
 3. 使用以下特定配置完成“新建虚拟机向导”： 
 
-   1. **指定代系**：选择“第 2 代”  。 第 2 代虚拟机已启用嵌套虚拟化，在虚拟机上运行 IoT Edge 必须启用此功能。
-   2. **配置网络**：设置“连接”的值设置为在上一部分创建的虚拟交换机  。
-   3. **安装选项**：选择“从可启动映像文件安装操作系统”，并浏览到本地保存的磁盘映像文件  。
+   1. **指定代次**：选择“第 2 代”。  第 2 代虚拟机已启用嵌套虚拟化，在虚拟机上运行 IoT Edge 必须启用此功能。
+   2. **配置网络**：设置“连接”的值设置为在上一部分创建的虚拟交换机。 
+   3. **安装选项**：选择“从可启动映像文件安装操作系统”，并浏览到本地保存的磁盘映像文件。 
 
 4. 在向导中选择“完成”以创建虚拟机。 
 
@@ -89,7 +89,7 @@ ms.locfileid: "77494347"
 
 4. 选中“启用受信任的平台模块”。 
 
-5. 单击 **“确定”** 。  
+5. 单击“确定”。   
 
 ### <a name="start-the-virtual-machine-and-collect-tpm-data"></a>启动虚拟机并收集 TPM 数据
 
@@ -190,7 +190,7 @@ ms.locfileid: "77494347"
       }
       ```
 
-   7. 选择“保存”  。
+   7. 选择“保存”。 
 
 既然此设备已存在注册，IoT Edge 运行时在安装期间可以自动预配设备。
 

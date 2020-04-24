@@ -8,10 +8,10 @@ origin.date: 09/18/2019
 ms.date: 02/24/2020
 ms.author: v-jay
 ms.openlocfilehash: 69397cfa09119b614cf438685919c627032fd1ec
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77540982"
 ---
 # <a name="move-azure-internal-load-balancer-to-another-region-using-the-azure-portal"></a>使用 Azure 门户将 Azure 内部负载均衡器移到另一个区域
@@ -21,7 +21,7 @@ ms.locfileid: "77540982"
 无法将 Azure 内部负载均衡器从一个区域移到另一个区域。 但是，可以使用 Azure 资源管理器模板导出内部负载均衡器的现有配置和虚拟网络。  然后，可将资源暂存在另一区域，方法是：将负载均衡器和虚拟网络导出到某个模板，根据目标区域修改参数，然后将该模板部署到新区域。  有关资源管理器和模板的详细信息，请参阅[快速入门：使用 Azure 门户创建和部署 Azure 资源管理器模板](/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal)。
 
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 - 确保 Azure 内部负载均衡器位于要从中移动的 Azure 区域。
 

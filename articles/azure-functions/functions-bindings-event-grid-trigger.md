@@ -7,10 +7,10 @@ ms.date: 02/17/2020
 ms.author: v-junlch
 ms.custom: fasttrack-edit
 ms.openlocfilehash: 839c1fcbdef15637b3c360ffea21a8ac56eac620
-ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77494602"
 ---
 # <a name="azure-event-grid-trigger-for-azure-functions"></a>Azure Functions 的 Azure 事件网格触发器
@@ -27,7 +27,7 @@ ms.locfileid: "77494602"
 
 ### <a name="c-2x-and-higher"></a>C#（2.x 及更高版本）
 
-以下示例演示绑定到 `EventGridEvent` 的 [C# 函数](functions-dotnet-class-library.md)：
+以下示例演示绑定到 [ 的 ](functions-dotnet-class-library.md)C# 函数`EventGridEvent`：
 
 ```cs
 using Microsoft.Azure.EventGrid.Models;
@@ -53,7 +53,7 @@ namespace Company.Function
 
 ### <a name="version-1x"></a>版本 1.x
 
-以下示例演示绑定到 `JObject` 的 Functions 1.x [C# 函数](functions-dotnet-class-library.md)：
+以下示例演示绑定到 [ 的 Functions 1.x ](functions-dotnet-class-library.md)C# 函数`JObject`：
 
 ```cs
 using Microsoft.Azure.WebJobs;
@@ -264,9 +264,9 @@ JavaScript 不支持特性。
 
 |function.json 属性 |说明|
 |---------|---------|
-| **type** | 必需 - 必须设置为 `eventGridTrigger`。 |
-| **direction** | 必需 - 必须设置为 `in`。 |
-| **name** | 必需 - 在函数代码中对接收事件数据的参数使用的变量名称。 |
+| type  | 必需 - 必须设置为 `eventGridTrigger`。 |
+| direction  | 必需 - 必须设置为 `in`。 |
+| name  | 必需 - 在函数代码中对接收事件数据的参数使用的变量名称。 |
 
 ## <a name="usage"></a>使用情况
 
@@ -304,7 +304,7 @@ JavaScript 不支持特性。
 
 # <a name="java"></a>[Java](#tab/java)
 
-事件网格事件实例可通过与类型为 `EventSchema` 的 `EventGridTrigger` 属性关联的参数提供。 请参阅[示例](#example)来了解更多详细信息。
+事件网格事件实例可通过与类型为 `EventGridTrigger` 的 `EventSchema` 属性关联的参数提供。 请参阅[示例](#example)来了解更多详细信息。
 
 ---
 

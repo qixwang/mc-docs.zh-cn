@@ -4,10 +4,10 @@ description: 了解如何更好地估算在 Azure 的消耗计划中运行函数
 ms.date: 02/12/2020
 ms.topic: conceptual
 ms.openlocfilehash: 4134f2d95ee56883f5608b2037262a4e3840b776
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77428755"
 ---
 # <a name="estimating-consumption-plan-costs"></a>估算消耗计划成本
@@ -211,7 +211,7 @@ performanceCounters
 
 ## <a name="next-steps"></a>后续步骤
 
-[定价页]: https://www.azure.cn/pricing/details/azure-functions/
+[定价页]:https://www.azure.cn/pricing/details/azure-functions/
 [Azure 门户]: https://portal.azure.cn
 
 <!-- Update_Description: wording update -->

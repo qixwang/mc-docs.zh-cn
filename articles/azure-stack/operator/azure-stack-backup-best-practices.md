@@ -9,10 +9,10 @@ ms.author: v-jay
 ms.reviewer: hectorl
 ms.lastreviewed: 02/08/2019
 ms.openlocfilehash: cdd4885f35b65a9fbd441b011f9f21c9d976a9da
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77540889"
 ---
 # <a name="infrastructure-backup-service-best-practices"></a>基础结构备份服务最佳做法
@@ -31,7 +31,7 @@ ms.locfileid: "77540889"
 
 路径的通用命名约定 (UNC) 字符串必须使用完全限定的域名 (FQDN)。 如果无法进行名称解析，则可以使用 IP 地址。 UNC 字符串指定资源（例如共享文件或设备）的位置。
 
-### <a name="encryption"></a>Encryption
+### <a name="encryption"></a>加密
 
 #### <a name="version-1901-and-newer"></a>版本 1901 及更新版本
 

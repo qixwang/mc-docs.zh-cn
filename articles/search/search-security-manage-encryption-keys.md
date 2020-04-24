@@ -10,10 +10,10 @@ ms.topic: conceptual
 origin.date: 01/08/2020
 ms.date: 03/02/2020
 ms.openlocfilehash: 9fb001dbe9951311e4d73fbee7ce8fa11f005287
-ms.sourcegitcommit: 094c057878de233180ff3b3a3e3c19bc11c81776
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77501340"
 ---
 # <a name="encryption-at-rest-of-content-in-azure-cognitive-search-using-customer-managed-keys-in-azure-key-vault"></a>使用 Azure Key Vault 中客户管理的密钥在 Azure 认知搜索中实现内容的静态加密
@@ -29,7 +29,7 @@ ms.locfileid: "77501340"
 > [!IMPORTANT] 
 > 此功能在 [REST API 版本 2019-05-06](https://docs.microsoft.com/rest/api/searchservice/) 和 [.NET SDK 版本 8.0-preview](search-dotnet-sdk-migration-version-9.md) 中可用。 当前不支持在 Azure 门户中配置客户管理的加密密钥。 搜索服务必须是在 2019 年 1 月之后创建的，且不能是免费（共享）服务。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 本示例使用以下服务： 
 
@@ -212,7 +212,7 @@ Azure 认知搜索支持通过两种方式来分配标识：托管标识，或�
 > 尽管无法将 **encryptionKey** 添加到现有的 Azure 认知搜索索引或同义词映射，但可以通过为三项 Key Vault 详细信息的任何一项提供不同的值，来更新该属性（例如，更新密钥版本）。 更改为新的 Key Vault 密钥或新的密钥版本时，必须先将使用该密钥的任何 Azure 认知搜索索引或同义词映射更新为使用新的密钥/版本，**然后**删除以前的密钥/版本。 否则会使该索引或同义词映射变得不可用，因为在失去密钥访问权限后无法解密内容。   
 > 以后还原 Key Vault 访问权限会还原内容访问权限。
 
-## <a name="aad-app"></a>高级：使用外部托管的 Azure Active Directory 应用程序
+## <a name="advanced-use-an-externally-managed-azure-active-directory-application"></a><a name="aad-app"></a>高级：使用外部托管的 Azure Active Directory 应用程序
 
 如果无法使用托管标识，可以使用 Azure 认知搜索服务的安全主体创建一个 Azure Active Directory 应用程序。 具体而言，在以下情况下无法使用托管标识：
 

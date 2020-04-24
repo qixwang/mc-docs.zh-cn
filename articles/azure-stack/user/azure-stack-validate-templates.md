@@ -9,10 +9,10 @@ ms.author: v-jay
 ms.reviewer: unknown
 ms.lastreviewed: 12/27/2018
 ms.openlocfilehash: 7844b613c05b955dc566d491d94b5cc670b0aa81
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77541008"
 ---
 # <a name="use-the-template-validation-tool-in-azure-stack-hub"></a>在 Azure Stack Hub 中使用模板验证工具

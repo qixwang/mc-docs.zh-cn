@@ -17,10 +17,10 @@ origin.date: 01/23/2019
 ms.date: 02/10/2020
 ms.author: v-yeche
 ms.openlocfilehash: e22654b6b71d358687b3dbb2f67236a282e1f762
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77428929"
 ---
 # <a name="cloud-init-support-for-virtual-machines-in-azure"></a>Azure 中虚拟机的 cloud-init 支持

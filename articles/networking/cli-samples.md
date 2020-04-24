@@ -17,10 +17,10 @@ origin.date: 04/25/2017
 ms.date: 03/02/2020
 ms.author: v-tawe
 ms.openlocfilehash: 447d38d473c7ce877c665f9b01db0df6f9c36099
-ms.sourcegitcommit: 094c057878de233180ff3b3a3e3c19bc11c81776
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77501447"
 ---
 # <a name="azure-cli-samples-for-networking"></a>用于网络的 Azure CLI 示例

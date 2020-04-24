@@ -6,14 +6,14 @@ origin.date: 03/29/2018
 ms.date: 02/24/2020
 ms.author: v-yeche
 ms.openlocfilehash: 7bb498230e870378d6d902c147062eaf86f5b2f3
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77540698"
 ---
 # <a name="run-a-service-as-a-local-user-account-or-local-system-account"></a>以本地用户帐户或本地系统帐户运行服务
-使用 Azure Service Fabric，可以保护群集中以不同用户帐户运行的应用程序。 默认情况下，Service Fabric 应用程序在运行 Fabric.exe 进程的帐户之下运行。 Service Fabric 还提供了在本地用户或系统帐户下运行应用程序的功能。 受支持的本地系统帐户类型为 LocalUser、NetworkService、LocalService 和 LocalSystem     。  如果在 Windows 独立群集上运行 Service Fabric，可以使用 [Active Directory 域帐户](service-fabric-run-service-as-ad-user-or-group.md)或[组托管服务帐户](service-fabric-run-service-as-gmsa.md)运行服务。
+使用 Azure Service Fabric，可以保护群集中以不同用户帐户运行的应用程序。 默认情况下，Service Fabric 应用程序在运行 Fabric.exe 程序的帐户之下运行。 Service Fabric 还提供了在本地用户或系统帐户下运行应用程序的功能。 受支持的本地系统帐户类型为 **LocalUser**、**NetworkService**、**LocalService** 和 **LocalSystem**。  如果在 Windows 独立群集上运行 Service Fabric，可以使用 [Active Directory 域帐户](service-fabric-run-service-as-ad-user-or-group.md)或[组托管服务帐户](service-fabric-run-service-as-gmsa.md)运行服务。
 
 在应用程序清单中，在 **Principals** 部分中定义运行服务或保护资源时所需的用户帐户。 还可以定义并创建用户组，以便统一管理一个或多个用户。 如果不同的服务入口点有多个用户，而且这些用户需要拥有可在组级别使用的常用权限，则这种做法特别有用。  然后，可以在 RunAs 策略中引用用户，该策略应用于应用程序中的特定服务或所有服务。 
 
@@ -24,7 +24,7 @@ ms.locfileid: "77540698"
 >
 
 ## <a name="run-a-service-as-a-local-user"></a>以本地用户身份运行服务
-可以创建一个本地用户，用于帮助保护应用程序中的服务。 在应用程序清单的 principals 节中指定 **LocalUser** 帐户类型时，Service Fabric 会在部署应用程序的计算机上创建本地用户帐户。 默认情况下，这些帐户的名称与应用程序清单中指定的名称不相同（例如，以下应用程序清单示例中的 *Customer3*）。 相反，它们是动态生成的并带有随机密码。
+可以创建一个本地用户，用于帮助保护应用程序中的服务。 当在应用程序清单的主体部分中指定 **LocalUser** 帐户类型时，Service Fabric 在部署应用程序的计算机上创建本地用户帐户。 默认情况下，这些帐户的名称与应用程序清单中指定的名称不相同（例如，以下应用程序清单示例中的 *Customer3*）。 相反，它们是动态生成的并带有随机密码。
 
 在 **ServiceManifestImport** 的 **RunAsPolicy** 部分中，从 **Principals** 部分中指定用来运行服务代码包的用户帐户。  以下示例展示了如何创建本地用户并将 RunAs 策略应用于主入口点：
 
@@ -119,7 +119,7 @@ ms.locfileid: "77540698"
 ```
 
 ## <a name="apply-a-default-policy-to-all-service-code-packages"></a>将默认策略应用到所有服务代码包
-**DefaultRunAsPolicy** 部分用于针对未定义特定 **RunAsPolicy** 的所有代码包指定默认用户帐户。 如果在应用程序所用的服务清单中指定的大多数代码包需要以同一用户运行，则应用程序可以只定义该用户帐户的默认 RunAs 策略。 以下示例指定如果代码包未指定 **RunAsPolicy**，则此代码包应该以 principals 部分中指定的 **MyDefaultAccount** 用户身份运行。  支持的帐户类型为 LocalUser、NetworkService、LocalSystem 和 LocalService。  如果使用本地用户或服务，则还需要指定帐户名称和密码。
+**DefaultRunAsPolicy** 部分用于针对未定义特定 **RunAsPolicy** 的所有代码包指定默认用户帐户。 如果在应用程序所用的服务清单中指定的大多数代码包必须以同一用户运行，则应用程序可以只定义该用户帐户的默认 RunAs 策略。 以下示例指定如果代码包未指定 **RunAsPolicy**，则此代码包应该以 principals 部分中指定的 **MyDefaultAccount** 用户身份运行。  支持的帐户类型为 LocalUser、NetworkService、LocalSystem 和 LocalService。  如果使用本地用户或服务，则还需要指定帐户名称和密码。
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>

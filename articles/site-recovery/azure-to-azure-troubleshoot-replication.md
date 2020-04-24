@@ -8,10 +8,10 @@ origin.date: 08/02/2019
 ms.date: 02/24/2020
 ms.author: v-yeche
 ms.openlocfilehash: 14d428a1ed08ba7e0b6b327aea36cc3009fcb5b7
-ms.sourcegitcommit: 781f68d27903687f0aa9e1ed273eee25c6d129a1
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77611283"
 ---
 # <a name="troubleshoot-replication-in-azure-vm-disaster-recovery"></a>排查 Azure VM 灾难恢复中的复制问题
@@ -95,7 +95,7 @@ Site Recovery 会将已复制数据发送到缓存存储帐户。 如果将数�
 
 **如何解决**：SQL Server 2008/2008 R2 有一个已知问题。 请参阅[托管 SQL Server 2008 R2 的服务器的 Azure Site Recovery 代理或其他非组件 VSS 备份失败](https://support.microsoft.com/help/4504103/non-component-vss-backup-fails-for-server-hosting-sql-server-2008-r2)一文。
 
-#### <a name="azure-site-recovery-jobs-fail-on-servers-hosting-any-version-of-sql-server-instances-with-auto_close-dbs"></a>在托管包含 AUTO_CLOSE DB 的任何版本的 SQL Server 实例的服务器上，Azure Site Recovery 作业失败
+#### <a name="azure-site-recovery-jobs-fail-on-servers-hosting-any-version-of-sql-server-instances-with-auto_close-dbs"></a>在使用 AUTO_CLOSE DB 托管任何版本的 SQL Server 实例的服务器上，Azure Site Recovery 作业失败
 
 **如何解决**：请参阅[托管包含 AUTO_CLOSE DB 的 SQL Server 实例上的非组件 VSS 备份（例如 Azure Site Recovery 作业）失败](https://support.microsoft.com/help/4504104/non-component-vss-backups-such-as-azure-site-recovery-jobs-fail-on-ser)一文。
 

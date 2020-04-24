@@ -9,19 +9,19 @@ ms.author: v-jay
 ms.reviewer: anajod
 ms.lastreviewed: 11/05/2019
 ms.openlocfilehash: f27201672f995b575f05350bba29087925a2bbee
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77540524"
 ---
 # <a name="hybrid-application-design-considerations"></a>混合应用程序设计注意事项 
 
 Azure 是唯一一致的混合云。 它可让你重复利用开发投资，并支持跨全球 Azure、Azure 主权云和 Azure Stack（数据中心内的一个 Azure 扩展）的应用程序。 跨云的应用程序也称为*混合应用程序*。
 
-[Azure 应用程序体系结构指南](https://docs.microsoft.com/azure/architecture/guide)中介绍了设计可缩放、可复原和高度可用的应用程序的结构化方法。  [Azure 应用程序体系结构指南](https://docs.microsoft.com/azure/architecture/guide)中所述的注意事项同样适用于针对单个云设计的应用程序和跨云的应用程序。 
+[Azure 应用程序体系结构指南*中介绍了设计可缩放、可复原和高度可用的应用程序的结构化方法。* ](https://docs.microsoft.com/azure/architecture/guide) [Azure 应用程序体系结构指南*中所述的注意事项同样适用于针对单个云设计的应用程序和跨云的应用程序。* ](https://docs.microsoft.com/azure/architecture/guide)
 
-本文补充了 [Azure 应用程序](https://docs.microsoft.com/azure/architecture/guide/)[体系结构指南](https://docs.microsoft.com/azure/architecture/guide/)中所述的[软件质量的要素](https://docs.microsoft.com/azure/architecture/guide/pillars)，重点说明如何设计混合应用程序。    此外，我们还添加了一个定位要素，因为混合应用程序并非专属于一个云或一个本地数据中心。 
+本文补充了 [Azure 应用程序  体系结构指南](https://docs.microsoft.com/azure/architecture/guide/pillars)中所述的[软件质量的要素 *，重点说明如何设计混合应用程序。* ](https://docs.microsoft.com/azure/architecture/guide/)[  ](https://docs.microsoft.com/azure/architecture/guide/) 此外，我们还添加了一个定位要素，因为混合应用程序并非专属于一个云或一个本地数据中心。 
 
 混合方案因可用于开发的资源而有很大的不同，并且涉及地理、安全性、Internet 访问等考虑因素。 尽管本指南无法列举具体的考虑因素，但可以提供一些重要的指导和最佳做法供你遵循。 要成功设计、配置、部署和维护混合应用程序体系结构涉及到许多可能不为你所熟知的设计考虑因素。
 
@@ -54,10 +54,10 @@ Azure 是唯一一致的混合云。 它可让你重复利用开发投资，并�
 ### <a name="table-1-common-app-components"></a>表 1. 常见的应用组件
 
 
-| **组件** | **混合应用程序指导** |
+| 组件  | **混合应用程序指导** |
 | ---- | ---- |
 | 客户端连接 | 应用程序（在任何设备上）可以从单个入口点通过多种方式访问用户，其中包括：<br>- 客户端服务器模型，该模型要求用户安装客户端以使用应用程序。 基于服务器的、可从 Web 浏览器访问的应用程序。<br>- 客户端连接可以包括连接中断时发出的通知，或发生漫游费时发出的警报。 |
-| 身份验证  | 连接到应用程序的用户或者从一个组件连接到另一个组件的用户可能需要执行身份验证。 |
+| Authentication  | 连接到应用程序的用户或者从一个组件连接到另一个组件的用户可能需要执行身份验证。 |
 | API  | 可让开发人员以编程方式使用 API 集和类库来访问你的应用程序，并根据 Internet 标准提供连接接口。 还可以使用 API 将应用程序分解成独立运行的逻辑单元。 |
 | 服务  | 可以使用简单的服务来提供应用程序的功能。 此类服务可以是应用程序运行所在的引擎。 |
 | 队列 | 可以使用队列来组织生命周期的状态，以及应用程序组件的状态。 这些队列可为订阅方提供消息传送、通知和缓冲功能。 |
@@ -74,14 +74,14 @@ Azure 是唯一一致的混合云。 它可让你重复利用开发投资，并�
 
 | **要素** | **说明** |
 | ----------- | --------------------------------------------------------- |
-| 定位  | 组件在混合应用程序中的战略定位。 |
+| 位置  | 组件在混合应用程序中的战略定位。 |
 | 可伸缩性  | 系统处理增加的负载的能力。 |
 | 可用性  | 混合应用程序正常运行的时间比例。 |
-| 复原能力 | 混合应用程序的恢复能力。 |
+| 复原 | 混合应用程序的恢复能力。 |
 | 可管理性 | 让系统在生产环境中持续运行的操作过程。 |
 | 安全性 | 保护混合应用程序和数据免受威胁。 |
 
-## <a name="placement"></a>定位
+## <a name="placement"></a>位置
 
 混合应用程序原本附带定位考虑因素，例如在数据中心的定位。
 
@@ -99,7 +99,7 @@ Azure 是唯一一致的混合云。 它可让你重复利用开发投资，并�
 
 **验证所需的位置。** 确保要求应用程序或其任何组件在特定的云中运行，或者需要经过认证才能在该云中运行。 这可能包括公司或法律规定的主权要求。 此外，确定特定的位置或区域设置是否需要任何本地操作。
 
-**确定连接依赖关系。** 所需的位置和其他因素可以指示组件之间的连接依赖关系。 定位组件时，请确定它们之间的通信的最佳连接和安全性。 选项包括 [*VPN*](/vpn-gateway/)、[*ExpressRoute*](/expressroute/) 和[混合连接](/app-service/app-service-hybrid-connections)。 
+**确定连接依赖关系。** 所需的位置和其他因素可以指示组件之间的连接依赖关系。 定位组件时，请确定它们之间的通信的最佳连接和安全性。 选项包括 [*VPN*](/vpn-gateway/)、[*ExpressRoute*](/expressroute/) 和[混合连接 *。* ](/app-service/app-service-hybrid-connections)
 
 **评估平台功能。** 对于每个应用程序组件，请确定云中是否提供了应用程序组件所需的资源提供程序，以及带宽是否足以应对预期的吞吐量和延迟要求。
 
@@ -115,7 +115,7 @@ Azure 是唯一一致的混合云。 它可让你重复利用开发投资，并�
 
 可伸缩性是指系统对于应用程序负载增加的处理能力，此能力可能随着其他因素和作用力而改变，除了影响应用程序的大小和范围外，还会影响受众大小。
 
-有关此要素的核心介绍，请参阅“软件质量的要素”中的[可伸缩性](https://docs.microsoft.com/azure/architecture/guide/pillars#scalability)。 
+有关此要素的核心介绍，请参阅“软件质量的要素”中的[可伸缩性 *。* ](https://docs.microsoft.com/azure/architecture/guide/pillars#scalability)
 
 通过混合应用程序的水平缩放方法可以添加更多实例来满足需求，并在使用频率较低时禁用这些实例。
 
@@ -143,7 +143,7 @@ Azure 是唯一一致的混合云。 它可让你重复利用开发投资，并�
 
 可用性是指系统正常运行的时间。 可用性以正常运行时间百分比来计量。 应用程序错误、基础结构问题和系统负载都会降低可用性。
 
-有关此要素的核心介绍，请参阅“软件质量的要素”中的[可用性](https://docs.microsoft.com/azure/architecture/framework/)。 
+有关此要素的核心介绍，请参阅“软件质量的要素”中的[可用性 *。* ](https://docs.microsoft.com/azure/architecture/framework/)
 
 ### <a name="availability-checklist"></a>可用性核对清单
 
@@ -159,11 +159,11 @@ Azure 是唯一一致的混合云。 它可让你重复利用开发投资，并�
 
 **维护服务级别协议 (SLA)。** 在任何协议中，要使你为客户提供的服务和应用程序保持连接，可用性关键重要。 混合应用程序所依赖的每个位置都可能有其本身的 SLA。 这些不同的 SLA 可能影响到混合应用程序的整体 SLA。
 
-## <a name="resiliency"></a>复原能力
+## <a name="resiliency"></a>复原
 
 复原能力是指混合应用程序和系统在发生故障后进行恢复，然后继续正常运行的能力。 复原能力的目标是在故障发生后将应用程序恢复到可完全正常运行的状态。 恢复策略包括备份、复制和灾难恢复等解决方案。
 
-有关此要素的核心介绍，请参阅“软件质量的要素”中的[复原能力](https://docs.microsoft.com/azure/architecture/guide/pillars#resiliency)。 
+有关此要素的核心介绍，请参阅“软件质量的要素”中的[复原能力 *。* ](https://docs.microsoft.com/azure/architecture/guide/pillars#resiliency)
 
 ### <a name="resiliency-checklist"></a>复原能力查检表
 
@@ -187,7 +187,7 @@ Azure 是唯一一致的混合云。 它可让你重复利用开发投资，并�
 
 在设计体系结构时，管理混合应用程序的方式是非常重要的考虑因素。 妥善管理的混合应用程序可提供代码形式的的基础结构，实现在通用开发管道中集成一致的应用程序代码。 通过对基础结构的更改实施一致的系统范围测试和单独测试，当更改通过测试时，可以确保集成的部署允许将这些更改合并到源代码中。
 
-有关此要素的核心介绍，请参阅“软件质量的要素”中的 [DevOps](https://docs.microsoft.com/azure/architecture/framework/#devops)。 
+有关此要素的核心介绍，请参阅“软件质量的要素”中的 [DevOps *。* ](https://docs.microsoft.com/azure/architecture/framework/#devops)
 
 ### <a name="manageability-checklist"></a>可管理性查检表
 
@@ -209,7 +209,7 @@ Azure 是唯一一致的混合云。 它可让你重复利用开发投资，并�
 
 安全性是任何云应用程序的主要考虑因素之一，对混合云应用程序而言更为关键。
 
-有关此要素的核心介绍，请参阅“软件质量的要素”中的[安全性](https://docs.microsoft.com/azure/architecture/guide/pillars#security)。 
+有关此要素的核心介绍，请参阅“软件质量的要素”中的[安全性 *。* ](https://docs.microsoft.com/azure/architecture/guide/pillars#security)
 
 ### <a name="security-checklist"></a>安全清单
 
@@ -227,7 +227,7 @@ Azure 是唯一一致的混合云。 它可让你重复利用开发投资，并�
 
 **审核系统。** 系统监视可以记录和聚合来自应用程序组件和相关云平台操作的数据。
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>总结
 
 本文提供了在创作和设计混合应用程序期间必须考虑到的事项的查检表。 在部署应用程序之前先查看这些要素可以防止在生产环境中断时遇到这些问题，并有助于避免重新访问设计。
 

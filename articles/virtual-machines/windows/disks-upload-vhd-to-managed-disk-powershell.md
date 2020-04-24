@@ -10,10 +10,10 @@ ms.service: virtual-machines-linux
 ms.tgt_pltfrm: linux
 ms.subservice: disks
 ms.openlocfilehash: bdda64ce4d31b57790e3dff147b0efbada470aa1
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77428130"
 ---
 # <a name="upload-a-vhd-to-azure-using-azure-powershell"></a>使用 Azure PowerShell 将 VHD 上传到 Azure
@@ -24,7 +24,7 @@ ms.locfileid: "77428130"
 
 目前，标准 HDD、标准 SSD 和高级 SSD 托管磁盘支持直接上传。 超级 SSD 尚不支持此功能。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 - 下载最新版本 [AzCopy v10](../../storage/common/storage-use-azcopy-v10.md#download-and-install-azcopy)。
 - [安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-Az-ps)。

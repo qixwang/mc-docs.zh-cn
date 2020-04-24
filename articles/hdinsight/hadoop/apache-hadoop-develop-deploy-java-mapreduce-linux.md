@@ -16,17 +16,17 @@ origin.date: 01/16/2020
 ms.date: 03/02/2020
 ms.author: v-yiso
 ms.openlocfilehash: 7d140fed7ebf3e6f503d7b9a71abdb05356b8c3e
-ms.sourcegitcommit: 46fd4297641622c1984011eac4cb5a8f6f94e9f5
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77563512"
 ---
 # <a name="develop-java-mapreduce-programs-for-apache-hadoop-on-hdinsight"></a>为 HDInsight 上的 Apache Hadoop 开发 Java MapReduce 程序
 
 了解如何使用 Apache Maven 创建基于 Java 的 MapReduce 应用程序，并使用 Azure HDInsight 中的 Apache Hadoop 运行它。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * [Java 开发人员工具包 (JDK) 版本 8](https://aka.ms/azure-jdks)。
 

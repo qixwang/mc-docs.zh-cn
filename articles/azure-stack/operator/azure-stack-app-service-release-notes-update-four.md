@@ -10,10 +10,10 @@ ms.author: v-jay
 ms.reviewer: anwestg
 ms.lastreviewed: 03/25/2019
 ms.openlocfilehash: 41ad193d109cc92a6bd841ed4b2bd2f95e8f081d
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77540891"
 ---
 # <a name="app-service-on-azure-stack-hub-update-4-release-notes"></a>Azure Stack Hub 上的应用服务 Update 4 发行说明
@@ -27,7 +27,7 @@ ms.locfileid: "77540891"
 
 Azure Stack Hub 上的应用服务 Update 4 的内部版本号为 **78.0.13698.5**
 
-### <a name="prerequisites"></a>必备条件
+### <a name="prerequisites"></a>先决条件
 
 在开始部署之前，请参阅[在 Azure Stack Hub 上部署应用服务的先决条件](azure-stack-app-service-before-you-get-started.md)。
 

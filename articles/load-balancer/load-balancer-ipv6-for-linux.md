@@ -16,10 +16,10 @@ origin.date: 03/22/2019
 ms.date: 02/24/2020
 ms.author: v-jay
 ms.openlocfilehash: 38042cea5cfd45176de9c676a5599a624a83d7a2
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77541155"
 ---
 # <a name="configure-dhcpv6-for-linux-vms"></a>为 Linux VM 配置 DHCPv6
@@ -126,7 +126,7 @@ Azure 中最新的 SUSE Linux Enterprise Server (SLES) 和 openSUSE 映像已预
 
 Azure 中最新的 SLES 和 openSUSE 映像已预先配置 DHCPv6。 使用这些映像不需要进行额外的更改。 如果 VM 基于旧版或自定义的 SUSE 映像，请执行以下步骤：
 
-1. 编辑 /etc/sysconfig/network/ifcfg-eth0 文件，并使用以下值替换 `#BOOTPROTO='dhcp4'` 参数  ：
+1. 编辑 /etc/sysconfig/network/ifcfg-eth0 文件，并使用以下值替换  *参数*`#BOOTPROTO='dhcp4'`：
 
         BOOTPROTO='dhcp'
 

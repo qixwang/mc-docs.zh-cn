@@ -15,15 +15,15 @@ ms.date: 02/24/2020
 ms.author: v-yeche
 ms.custom: ''
 ms.openlocfilehash: 665b99265ad035e9799589504353d8d7ae459fb4
-ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77653270"
 ---
 # <a name="tutorial-connect-virtual-networks-with-virtual-network-peering-using-the-azure-portal"></a>教程：通过 Azure 门户使用虚拟网络对等互连连接虚拟网络
 
-可以使用虚拟网络对等互连将虚拟网络互相连接。 这些虚拟网络可以位于相同区域或不同区域中（也称为全局 VNet 对等互连）。 将虚拟网络对等互连后，两个虚拟网络中的资源将能够以相同的延迟和带宽相互通信，就像这些资源位于同一个虚拟网络中一样。 本教程介绍如何执行下列操作：
+可以使用虚拟网络对等互连将虚拟网络互相连接。 这些虚拟网络可以位于相同区域或不同区域中（也称为全局 VNet 对等互连）。 将虚拟网络对等互连后，两个虚拟网络中的资源将能够以相同的延迟和带宽相互通信，就像这些资源位于同一个虚拟网络中一样。 在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 创建两个虚拟网络
@@ -33,11 +33,11 @@ ms.locfileid: "77653270"
 
 如果你愿意，可以使用 [Azure CLI](tutorial-connect-virtual-networks-cli.md) 或 [Azure PowerShell](tutorial-connect-virtual-networks-powershell.md) 完成本教程中的步骤。
 
-如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial)。
+如果没有 Azure 订阅，可在开始前创建一个 [试用帐户](https://www.azure.cn/pricing/1rmb-trial) 。
 
 ## <a name="log-in-to-azure"></a>登录 Azure
 
-在 https://portal.azure.cn 登录 Azure 门户。
+通过 https://portal.azure.cn 登录到 Azure 门户。
 
 ## <a name="create-virtual-networks"></a>创建虚拟网络
 
@@ -48,7 +48,7 @@ ms.locfileid: "77653270"
     
 3. 输入或选择以下信息，接受剩下的默认设置，然后选择“创建”  ：
 
-    |设置|Value|
+    |设置|值|
     |---|---|
     |名称|myVirtualNetwork1|
     |地址空间|10.0.0.0/16|
@@ -62,7 +62,7 @@ ms.locfileid: "77653270"
 
 4. 再次完成步骤 1-3，并做出以下更改：
 
-    |设置|Value|
+    |设置|值|
     |---|---|
     |名称|myVirtualNetwork2|
     |地址空间|10.1.0.0/16|
@@ -84,7 +84,7 @@ ms.locfileid: "77653270"
 
 3. 输入或选择以下信息，接受剩下的默认设置，然后选择“确定”  。
 
-    |设置|Value|
+    |设置|值|
     |---|---|
     |从 myVirtualNetwork1 到远程虚拟网络的对等互连的名称|myVirtualNetwork1-myVirtualNetwork2 - 当页面首次加载时，将在此处看到短语“remote virtual network”。 选择远程虚拟网络后，短语“远程虚拟网络”将替换为远程虚拟网络的名称。|
     |订阅| 选择订阅。|
@@ -100,7 +100,7 @@ ms.locfileid: "77653270"
 
 5. 再次完成步骤 2-3，并做出以下更改，然后选择“确定”  ：
 
-    |设置|Value|
+    |设置|值|
     |---|---|
     |创建从 myVirtualNetwork2 到 myVirtualNetwork1 的对等互连名称|myVirtualNetwork2-myVirtualNetwork1|
     |虚拟网络|myVirtualNetwork1|
@@ -129,7 +129,7 @@ ms.locfileid: "77653270"
     
 3. 对于“基本信息”输入或选择以下信息，接受剩下的默认设置，然后选择“创建”   ：
 
-    |设置|Value|
+    |设置|值|
     |---|---|
     |资源组| 选择“使用现有”，然后选择“myResourceGroup”   。|
     |名称|myVM1|
@@ -140,7 +140,7 @@ ms.locfileid: "77653270"
 4. 为“大小”  选项选择 VM 大小。
 5. 在“网络”  下选择以下值：
 
-    |设置|Value|
+    |设置|值|
     |---|---|
     |虚拟网络| myVirtualNetwork1 - 如果尚未选择它，请选择“虚拟网络”，然后选择“myVirtualNetwork1”。  |
     |子网| Subnet1 - 如果尚未选择它，请选择“子网”  ，然后选择“Subnet1”  。|
@@ -153,7 +153,7 @@ ms.locfileid: "77653270"
 
 再次完成步骤 1-6，并做出以下更改：
 
-|设置|Value|
+|设置|值|
 |---|---|
 |名称 | myVm2|
 |虚拟网络 | myVirtualNetwork2|

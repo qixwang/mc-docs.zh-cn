@@ -1,6 +1,6 @@
 ---
 title: 使用 Spark 中的 Python 库分析网站日志 - Azure | Azure
-description: 此笔记本演示如何结合使用自定义库和 Azure HDInsight 上的 Spark 来分析日志数据。
+description: 此笔记本演示如何将自定义库与 Azure HDInsight 上的 Spark 配合使用来分析日志数据。
 services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
@@ -11,34 +11,34 @@ origin.date: 12/27/2019
 ms.date: 03/02/2020
 ms.author: v-yiso
 ms.openlocfilehash: 2e0d98e1e0543ed0b14120c134a11999770a41f0
-ms.sourcegitcommit: 46fd4297641622c1984011eac4cb5a8f6f94e9f5
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77563456"
 ---
 # <a name="analyze-website-logs-using-a-custom-python-library-with-apache-spark-cluster-on-hdinsight"></a>将自定义 Python 库与 HDInsight 上的 Apache Spark 群集配合使用来分析网站日志
 
-此笔记本演示如何将自定义库与 HDInsight 上的 Apache Spark 配合使用来分析日志数据。 我们使用的自定义库是一个名为 **iislogparser.py**的 Python 库。
+此笔记本演示如何将自定义库与 HDInsight 上的 Apache Spark 配合使用来分析日志数据。 我们使用的自定义库是一个名为 **iislogparser.py** 的 Python 库。
 
 ## <a name="prerequisites"></a>必备条件
 
 HDInsight 上的 Apache Spark 群集。 有关说明，请参阅[在 Azure HDInsight 中创建 Apache Spark 群集](apache-spark-jupyter-spark-sql.md)。
 
 ## <a name="save-raw-data-as-an-rdd"></a>将原始数据另存为 RDD
-在本节中，使用与 HDInsight 中的 Apache Spark 群集关联的 [Jupyter](https://jupyter.org) 笔记本，运行处理原始数据示例并将其保存为 Hive 表的作业。 示例数据是所有群集在默认情况下均会提供的 .csv 文件 (hvac.csv)。
+在本部分中，将使用与 HDInsight 中的 Apache Spark 群集关联的 [Jupyter](https://jupyter.org) 笔记本来运行用于处理原始示例数据并将其保存为 Hive 表的作业。 示例数据是所有群集在默认情况下均会提供的 .csv 文件 (hvac.csv)。
 
 将数据保存为 Apache Hive 表之后，下一部分我们将使用 Power BI 和 Tableau 等 BI 工具来连接该 Hive 表。
 
-1. 在 Web 浏览器中，导航到 `https://CLUSTERNAME.azurehdinsight.cn/jupyter`，其中 `CLUSTERNAME` 是群集的名称。
+1. 在 Web 浏览器中导航到 `https://CLUSTERNAME.azurehdinsight.cn/jupyter`，其中的 `CLUSTERNAME` 是群集的名称。
 
 1. 创建新的笔记本。 依次选择“新建”、“PySpark”   。
 
     ![创建新的 Jupyter 笔记本](./media/apache-spark-custom-library-website-log-analysis/hdinsight-create-jupyter-notebook.png "创建新的 Jupyter 笔记本")
-4. 随即创建新笔记本，并以 Untitled.pynb 名称打开。 单击顶部的笔记本名称，并输入一个友好名称。
+4. 新笔记本随即已创建，并以 Untitled.pynb 名称打开。 在顶部单击笔记本名称，并输入一个友好名称。
 
     ![提供笔记本的名称](./media/apache-spark-custom-library-website-log-analysis/hdinsight-name-jupyter-notebook.png "提供笔记本的名称")
-5. 使用笔记本是使用 PySpark 内核创建的，因此不需要显式创建任何上下文。 运行第一个代码单元格时，系统自动创建 Spark 和 Hive 上下文。 首先，可以导入此方案所需的类型。 将以下代码段粘贴到空白单元格中，并按 **SHIFT + ENTER**。
+5. 使用笔记本是使用 PySpark 内核创建的，因此不需要显式创建任何上下文。 运行第一个代码单元格时，系统会自动创建 Spark 和 Hive 上下文。 首先可以导入此方案所需的类型。 将以下代码段粘贴到空白单元格中，然后按 **Shift+Enter**。
 
     ```pyspark
     from pyspark.sql import Row
@@ -71,13 +71,13 @@ HDInsight 上的 Apache Spark 群集。 有关说明，请参阅[在 Azure HDIns
 
 1. 在上面的输出中，前几行包括标头信息，其余的每一行均与此标头中描述的架构相匹配。 分析此类日志可能很复杂。 因此，可使用自定义 Python 库 (**iislogparser.py**)，它能使分析这类日志变得容易得多。 默认情况下，此库包含在 `/HdiSamples/HdiSamples/WebsiteLogSampleData/iislogparser.py` 处 HDInsight 上的 Spark 群集中。
 
-    但是，此库不在 `PYTHONPATH` 中，因此不能通过 `import iislogparser` 等导入语句来使用它。 要使用此库，必须将其分发给所有辅助角色节点。 运行以下代码片段。
+    但是，此库不在 `PYTHONPATH` 中，因此不能通过 `import iislogparser` 等导入语句来使用它。 要使用此库，必须将其分发给所有从节点。 运行以下代码段。
 
     ```pyspark
     sc.addPyFile('wasbs:///HdiSamples/HdiSamples/WebsiteLogSampleData/iislogparser.py')
     ```
 
-1. 如果日志行是标题行，则 `iislogparser` 提供返回 `None` 的函数 `parse_log_line`，并且在遇到日志行时返回 `LogLine` 类的实例。 使用 `LogLine` 类从 RDD 中仅提取日志行：
+1. 如果日志行是标题行，并且在遇到日志行时返回 `iislogparser` 类的实例，则 `parse_log_line` 提供返回 `None` 的函数 `LogLine`。 使用 `LogLine` 类从 RDD 中仅提取日志行：
 
     ```pyspark
     def parse_line(l):
@@ -111,7 +111,7 @@ HDInsight 上的 Apache Spark 群集。 有关说明，请参阅[在 Azure HDIns
 
     输出应该指出“`There are 30 errors and 646 log entries`”。
 
-1. 还可使用 **Matplotlib** 构造数据的可视化效果。 例如，如果要找出请求长时间运行的原因，可能需要查找平均执行时间最长的文件。 下面的代码片段检索执行请求花费时间最长的前 25 个资源。
+1. 还可以使用 **Matplotlib** 构造数据的可视化效果。 例如，如果要找出请求长时间运行的原因，可能需要查找平均执行时间最长的文件。 下面的代码段检索执行请求花费时间最长的前 25 个资源。
 
     ```pyspark
     def avgTimeTakenByKey(rdd):
@@ -153,7 +153,7 @@ HDInsight 上的 Apache Spark 群集。 有关说明，请参阅[在 Azure HDIns
     (u'/blogposts/mvc4/step1.png', 98.0)]
     ```
 
-1. 还可以图绘形式显示此信息。 创建绘图的第一步是创建一个临时表 **AverageTime**。 该表按照时间对日志进行分组，以查看在任何特定时间是否有任何异常延迟峰值。
+1. 还可以在此绘图窗体中显示此信息。 创建绘图的第一步是创建一个临时表 **AverageTime**。 该表按照时间对日志进行分组，以查看在任何特定时间是否有任何异常延迟峰值。
 
     ```pyspark
     avgTimeTakenByMinute = avgTimeTakenByKey(logLines.map(lambda p: (p.datetime.minute, p))).sortByKey()
@@ -171,7 +171,7 @@ HDInsight 上的 Apache Spark 群集。 有关说明，请参阅[在 Azure HDIns
     SELECT * FROM AverageTime
     ```
 
-   后接 `-o averagetime` 的 `%%sql` magic 可确保查询输出本地保存在 Jupyter 服务器上（通常在群集的头节点）。 输出作为 [Pandas](https://pandas.pydata.org/) 数据帧进行保存，指定名称为 **averagetime**。
+   后接 `%%sql` 的 `-o averagetime` magic 可确保查询输出本地保存在 Jupyter 服务器上（通常在群集的头结点）。 输出将作为 [Pandas](https://pandas.pydata.org/) 数据帧进行保存，指定名称为“averagetime”  。
 
    应该看到输出类似于下图：
 
@@ -179,7 +179,7 @@ HDInsight 上的 Apache Spark 群集。 有关说明，请参阅[在 Azure HDIns
 
    有关 `%%sql` magic 的详细信息，请参阅 [%%sql magic 支持的参数](apache-spark-jupyter-notebook-kernels.md#parameters-supported-with-the-sql-magic)。
 
-1. 现可使用 Matplotlib（用于构造数据效果可视化的库）创建绘图。 因为必须从本地保存的 **averagetime** 数据帧中创建绘图，所以代码片段必须以 `%%local` magic 开头。 这可确保代码在 Jupyter 服务器上本地运行。
+1. 现在可以使用 Matplotlib（用于构造数据可视化的库）来创建绘图。 因为必须从本地保存的 **averagetime** 数据帧中创建绘图，所以代码片段必须以 `%%local` magic 开头。 这可确保代码在 Jupyter 服务器上本地运行。
 
     ```pyspark
     %%local
@@ -195,7 +195,7 @@ HDInsight 上的 Apache Spark 群集。 有关说明，请参阅[在 Azure HDIns
 
    ![apache spark web 日志分析图](./media/apache-spark-custom-library-website-log-analysis/hdinsight-apache-spark-web-log-analysis-plot.png "Matplotlib 输出")
 
-1. 完成运行应用程序之后，应该要关闭 Notebook 以释放资源。 为此，请在 Notebook 的“文件”菜单中选择“关闭并停止”   。 此操作会关闭笔记本。
+1. 运行完应用程序之后，应该关闭笔记本以释放资源。 为此，请在 Notebook 的“文件”菜单中选择“关闭并停止”   。 此操作会关闭笔记本。
 
 ## <a name="next-steps"></a>后续步骤
 

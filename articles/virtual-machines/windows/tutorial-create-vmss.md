@@ -18,10 +18,10 @@ ms.date: 02/10/2020
 ms.author: v-yeche
 ms.custom: mvc
 ms.openlocfilehash: 8033ccdaf25e3daa70985e7860636c5a89bbeda1
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77428670"
 ---
 # <a name="tutorial-create-a-virtual-machine-scale-set-and-deploy-a-highly-available-app-on-windows-with-azure-powershell"></a>教程：使用 Azure PowerShell 在 Windows 上创建虚拟机规模集和部署高度可用的应用
@@ -41,7 +41,7 @@ ms.locfileid: "77428670"
 ## <a name="scale-set-overview"></a>规模集概述
 利用虚拟机规模集，可以部署和管理一组相同的、自动缩放的虚拟机。 规模集中的 VM 将分布在逻辑容错域和更新域的一个或多个*放置组*中。 放置组是配置类似的 VM 的组，与[可用性集](tutorial-availability-sets.md)相似。
 
-可以根据需要在规模集中创建 VM。 可以定义自动缩放规则来控制如何以及何时在规模集中添加或删除 VM。 这些规则可以根据 CPU 负载、内存用量或网络流量等指标触发。
+可以根据需要在规模集中创建 VM。 定义自动缩放规则，以控制如何以及何时在规模集中添加或删除 VM。 这些根据 CPU 负载、内存用量或网络流量等指标触发这些规则。
 
 使用 Azure 平台映像时，规模集最多支持 1,000 个 VM。 对于有重要安装或 VM 自定义要求的工作负荷，可能需要[创建自定义 VM 映像](tutorial-custom-images.md)。 使用自定义映像时，在规模集中最多可以创建 300 个 VM。
 
@@ -157,10 +157,10 @@ Get-AzPublicIPAddress `
 
 ![运行 IIS 网站](./media/tutorial-create-vmss/running-iis-site.png)
 
-若要查看规模集的实际运行情况，可以强制刷新 Web 浏览器，以查看负载均衡器如何在运行应用的所有 VM 之间分发流量。
+若要查看规模集的运作方式，可以强制刷新 Web 浏览器，以查看负载均衡器如何在运行应用的所有 VM 之间分配流量。
 
 ## <a name="management-tasks"></a>管理任务
-在规模集的整个生命周期内，可能需要运行一个或多个管理任务。 此外，可能还需要创建自动执行各种生命周期任务的脚本。 Azure PowerShell 提供了一种用于执行这些任务的快速方法。 以下是一些常见任务。
+在规模集的整个生命周期内，可能需要运行一个或多个管理任务。 此外，可能还需要创建自动执行各种生命周期任务的脚本。 Azure PowerShell 提供一种用于执行这些任务的快速方法。 以下是一些常见任务。
 
 ### <a name="view-vms-in-a-scale-set"></a>查看规模集中的 VM
 若要在规模集中查看 VM 实例的列表，请使用 [Get-AzVmssVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvmssvm)，如下所示：
@@ -213,10 +213,10 @@ Update-AzVmss -ResourceGroupName "myResourceGroupScaleSet" `
     -VirtualMachineScaleSet $scaleset
 ```
 
-这将花费数分钟来更新规模集中指定数目的实例。
+这会花费数分钟来更新规模集中实例的指定数量。
 
 ### <a name="configure-autoscale-rules"></a>配置自动缩放规则
-你可以定义自动缩放规则，而不是手动缩放规模集中实例的数目。 这些规则监视规模集中的实例，并根据所定义的指标和阈值做出相应响应。 如果在 5 分钟内平均 CPU 负载高于 60%，以下示例将增加一个实例。 如果平均 CPU 负载低于 30% 且持续时间超过 5 分钟，则将减少一个实例：
+定义自动缩放规则，而不是手动缩放规模集中实例的数目。 这些规则监视规模集中的实例，并根据所定义的指标和阈值做出相应响应。 如果在 5 分钟内平均 CPU 负载高于 60%，以下示例将增加一个实例。 如果在 5 分钟内平均 CPU 负载低于 30%，则将减少一个实例：
 
 ```powershell
 # Define your scale set information
@@ -272,7 +272,7 @@ Add-AzAutoscaleSetting `
 有关使用自动缩放的详细设计信息，请参阅[自动缩放最佳做法](https://docs.microsoft.com/azure/architecture/best-practices/auto-scaling)。
 
 ## <a name="next-steps"></a>后续步骤
-在本教程中，你已创建了一个虚拟机规模集。 你已学习了如何执行以下操作：
+在本教程中，已创建虚拟机规模集。 你已了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 使用自定义脚本扩展定义要缩放的 IIS 站点
@@ -281,9 +281,9 @@ Add-AzAutoscaleSetting `
 > * 增加或减少规模集中的实例数
 > * 创建自动缩放规则
 
-请继续学习下一教程，详细了解虚拟机的负载均衡概念。
+请继续学习下一篇教程，详细了解虚拟机的负载均衡概念。
 
 > [!div class="nextstepaction"]
-> [对虚拟机进行负载均衡](tutorial-load-balancer.md)
+> [均衡虚拟机的负载](tutorial-load-balancer.md)
 
 <!--Update_Description: update meta properties, wording update -->

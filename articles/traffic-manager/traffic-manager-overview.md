@@ -14,10 +14,10 @@ origin.date: 11/23/2019
 ms.date: 02/24/2020
 ms.author: v-yeche
 ms.openlocfilehash: 8599851d636e16bc7e2e04204ba46e2f10adae79
-ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77653207"
 ---
 # <a name="what-is-traffic-manager"></a>什么是流量管理器？

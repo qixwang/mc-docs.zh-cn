@@ -6,10 +6,10 @@ origin.date: 02/23/2018
 ms.date: 02/24/2020
 ms.author: v-yeche
 ms.openlocfilehash: c2d28c289a49f03bb7e3c452e9ba389dc119f451
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77540704"
 ---
 # <a name="model-an-application-in-service-fabric"></a>在 Service Fabric 中对应用程序建模
@@ -22,13 +22,13 @@ ms.locfileid: "77540704"
 
 应用程序类型是一个应用程序分类，包含大量服务类型。 服务类型是一个服务分类。 该分类可以具有不同的设置和配置，但核心功能保持相同。 服务实例是相同服务类型的不同服务配置变体。  
 
-通过 XML 文件（应用程序清单和服务清单）描述应用程序和服务的类（或“类型”）。  清单描述应用程序和服务，它们是模板，可依据这样的模板从群集的映像存储区中使应用程序实例化。  [应用程序和服务清单](service-fabric-application-and-service-manifests.md)中详细介绍了清单。 ServiceManifest.xml 和 ApplicationManifest.xml 文件的架构定义随 Service Fabric SDK 和工具一起安装到 *C:\Program Files\Microsoft SDKs\Service Fabric\schemas\ServiceFabricServiceModel.xsd*。 [ServiceFabricServiceModel.xsd 架构文档](service-fabric-service-model-schema.md)中记录了 XML 架构。
+通过 XML 文件（应用程序清单和服务清单）描述应用程序和服务的类（或“类型”）。  清单描述应用程序和服务，可对照这样的模板从群集的映像存储区中对应用程序进行实例化。  清单将在[应用程序和服务清单](service-fabric-application-and-service-manifests.md)中详细介绍。 ServiceManifest.xml 和 ApplicationManifest.xml 文件的架构定义随 Service Fabric SDK 和工具一起安装到 *C:\Program Files\Microsoft SDKs\Service Fabric\schemas\ServiceFabricServiceModel.xsd*。 XML 架构记录在 [ServiceFabricServiceModel.xsd 架构文档](service-fabric-service-model-schema.md)中。
 
-即使由同一 Service Fabric 节点托管时，不同应用程序实例的代码也将作为单独的进程运行。 此外，可以独立管理每个应用程序实例的生命周期（如升级）。 下图显示了应用程序类型如何由服务类型组成，而服务类型又如何由代码、配置和数据包组成。 为了简化示意图，这里只显示了 `ServiceType4` 的代码/配置/数据包，不过每个服务类型包括其中的部分或全部包类型。
+即使在由同一 Service Fabric 节点托管时，不同应用程序实例的代码也将作为单独的进程运行。 此外，可以独立管理每个应用程序实例的生命周期（如升级）。 下图显示了应用程序类型如何由服务类型组成，而服务类型又如何由代码、配置和数据包组成。 为了简化示意图，这里只显示了 `ServiceType4` 的代码/配置/数据包，不过每个服务类型包括其中的部分或全部包类型。
 
 ![Service Fabric 应用程序类型和服务类型][cluster-imagestore-apptypes]
 
-群集中可以有某一服务类型一个或多个实例处于活动状态。 例如，有状态服务实例（或称副本）通过在群集中不同节点上的副本之间复制状态实现高可靠性。 复制本质上是提供冗余，使服务即使在群集中的一个节点失败时也可用。 [分区服务](service-fabric-concepts-partitioning.md)进一步跨群集中的节点划分其状态（和该状态的访问模式）。
+群集中可以有一个或多个服务类型实例处于活动状态。 例如，有状态服务实例或副本通过复制位于群集中不同节点上的副本之间的状态实现高可靠性。 复制本质上是提供冗余，使服务即使在群集中的一个节点失败时也可用。 [分区服务](service-fabric-concepts-partitioning.md)进一步跨群集中的节点划分其状态（和该状态的访问模式）。
 
 下图显示应用程序和服务实例、分区与副本之间的关系。
 
@@ -42,8 +42,8 @@ ms.locfileid: "77540704"
 ## <a name="next-steps"></a>后续步骤
 - 了解[应用程序可伸缩性](service-fabric-concepts-scalability.md)。
 - 了解服务[状态](service-fabric-concepts-state.md)、[分区](service-fabric-concepts-partitioning.md)和[可用性](service-fabric-availability-services.md)。
-- 阅读有关如何在[应用程序和服务清单](service-fabric-application-and-service-manifests.md)中定义应用程序和服务的内容。
-- [应用程序托管模型](service-fabric-hosting-model.md)说明了已部署的服务和服务主机进程二者的副本（或实例）之间的关系。
+- 阅读有关如何在[应用程序和服务清单](service-fabric-application-and-service-manifests.md)中定义应用程序和服务的信息。
+- [应用程序托管模型](service-fabric-hosting-model.md)说明已部署的服务和服务主机进程二者的副本（或实例）之间的关系。
 
 <!--Image references-->
 

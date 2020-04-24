@@ -18,10 +18,10 @@ ms.author: v-tawe
 ms.reviewer: jowargo
 ms.lastreviewed: 12/04/2019
 ms.openlocfilehash: c1751c8e1527f7acb581f0e8057543bb4b5eec52
-ms.sourcegitcommit: 094c057878de233180ff3b3a3e3c19bc11c81776
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77501456"
 ---
 # <a name="routing-and-tag-expressions"></a>路由和标记表达式
@@ -32,10 +32,10 @@ ms.locfileid: "77501456"
 
 ## <a name="targeting-specific-registrations"></a>定向到特定注册
 
-定向到特定注册的唯一方法是将这些注册与标记相关联，并定向到这些标记。 如[注册管理](notification-hubs-push-notification-registration-management.md)中所述，若要接收推送通知，应用必须在通知中心内注册设备句柄。 应用在通知中心内创建注册后，应用程序后端便可向它发送推送通知。 应用程序后端可以通过以下方式选择要将特定通知定向到的注册：
+定向到特定注册的唯一方法是将这些注册与标记相关联，然后定向到这些标记。 如[注册管理](notification-hubs-push-notification-registration-management.md)中所述，若要接收推送通知，应用必须在通知中心内注册设备句柄。 应用在通知中心内创建注册后，应用程序后端便可向它发送推送通知。 应用程序后端可以通过以下方式选择要将特定通知定向到的注册：
 
-1. **广播**：通知中心内的所有注册均会收到通知。
-2. **标记**：包含指定标记的所有注册会收到通知。
+1. **广播**：通知中心内的所有注册均将收到通知。
+2. **标记**：包含指定标记的所有注册将收到通知。
 3. **标记表达式**：其标记集匹配指定表达式的所有注册将收到通知。
 
 ## <a name="tags"></a>Tags
@@ -48,7 +48,7 @@ ms.locfileid: "77501456"
 
 有关针对标记创建注册的详细信息，请参阅[注册管理](notification-hubs-push-notification-registration-management.md)。
 
-可使用 [Azure 通知中心](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/) SDK 中 `Microsoft.Azure.NotificationHubs.NotificationHubClient` 类的发送通知方法将通知发送到标记。 还可以使用 Node.js 或推送通知 REST API。  下面是使用 SDK 的示例。
+可使用 `Microsoft.Azure.NotificationHubs.NotificationHubClient`Azure 通知中心[ SDK 中 ](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/) 类的发送通知方法将通知发送到标记。 还可以使用 Node.js 或推送通知 REST API。  下面是使用 SDK 的示例。
 
 ```csharp
 Microsoft.Azure.NotificationHubs.NotificationOutcome outcome = null;
@@ -89,7 +89,7 @@ outcome = await Notifications.Instance.Hub.SendWindowsNativeNotificationAsync(to
 
 存在这样的情况：通知必须定向到一个注册集，该注册集不由单个标记标识，而是由使用标记的布尔表达式进行标识。
 
-考虑这样一个体育应用程序，它会向波士顿的所有用户发送有关红袜队和红雀队之间的比赛的提醒。 如果客户端应用注册了有关感兴趣的球队和位置的标记，则通知应定向到波士顿中对红袜队或红雀队感兴趣的所有用户。 此条件可以用以下布尔表达式表示：
+考虑这样一个体育应用程序，它将向波士顿的所有用户发送有关红袜队和红雀队之间的比赛的提醒。 如果客户端应用注册了有关感兴趣的球队和位置的标记，则通知应定向到波士顿中对红袜队或红雀队感兴趣的所有用户。 此条件可以用以下布尔表达式表示：
 
 ```csharp
 (follows_RedSox || follows_Cardinals) && location_Boston

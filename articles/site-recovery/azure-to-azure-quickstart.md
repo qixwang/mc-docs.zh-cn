@@ -10,10 +10,10 @@ ms.date: 02/24/2020
 ms.author: v-yeche
 ms.custom: mvc
 ms.openlocfilehash: e930c7781c87e071cfaeb4b80286deb809306f04
-ms.sourcegitcommit: 781f68d27903687f0aa9e1ed273eee25c6d129a1
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77611292"
 ---
 # <a name="set-up-disaster-recovery-to-a-secondary-azure-region-for-an-azure-vm"></a>为 Azure VM 设置到 Azure 次要区域的灾难恢复
@@ -22,7 +22,7 @@ ms.locfileid: "77611292"
 
 本快速入门介绍了如何通过将 Azure VM 复制到不同的 Azure 区域来为其设置灾难恢复。
 
-如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial)。
+如果没有 Azure 订阅，可在开始前创建一个 [试用帐户](https://www.azure.cn/pricing/1rmb-trial) 。
 
 > [!NOTE]
 > 本文是针对新用户的快速演练。 它使用带有默认选项和最小自定义的最简单路径。 有关完整演练，请参阅教程[启用复制](azure-to-azure-tutorial-enable-replication.md)。

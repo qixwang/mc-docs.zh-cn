@@ -18,10 +18,10 @@ ms.author: v-junlch
 ms.reviewer: jesakowi, justhu
 ms.custom: aaddev
 ms.openlocfilehash: 217bfa01f0c74de4769b366335a48f048f551669
-ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77653609"
 ---
 # <a name="permissions-and-consent-in-the-azure-active-directory-v10-endpoint"></a>Azure Active Directory v1.0 终结点中的权限和许可
@@ -63,8 +63,8 @@ Azure AD 中的权限提供多个属性用于帮助用户、管理员或应用�
 | 属性名称 | 说明 | 示例 |
 | --- | --- | --- |
 | `ID` | 这是唯一标识此权限的 GUID 值。 | 570282fd-fa5c-430d-a7fd-fc8dc98a9dca |
-| `IsEnabled` | 指示此权限是否可供使用。 | 是 |
-| `Type` | 指示此权限是否需要用户许可或管理员许可。 | User |
+| `IsEnabled` | 指示此权限是否可供使用。 | true |
+| `Type` | 指示此权限是否需要用户许可或管理员许可。 | 用户 |
 | `AdminConsentDescription` | 这是在管理员许可体验期间向管理员显示的说明 | 允许应用读取用户邮箱中的电子邮件。 |
 | `AdminConsentDisplayName` | 这是在管理员许可体验期间向管理员显示的友好名称。 | 读取用户邮件 |
 | `UserConsentDescription` | 这是在用户许可体验期间向用户显示的说明。 |  允许应用读取你邮箱中的电子邮件。 |
@@ -85,7 +85,7 @@ Azure AD 中的应用程序必须获得许可才能访问所需的资源或 API�
   
 * **管理员同意** - 当应用需要访问特定的高特权权限时必须执行。 管理员同意可以确保管理员在授权应用或用户访问组织中的高特权数据之前拥有某些额外的控制权。 [详细了解如何授予管理员许可](/active-directory/develop/v2-permissions-and-consent#using-the-admin-consent-endpoint)。
 
-## <a name="best-practices"></a>最佳实践
+## <a name="best-practices"></a>最佳做法
 
 ### <a name="client-best-practices"></a>客户端最佳实践
 

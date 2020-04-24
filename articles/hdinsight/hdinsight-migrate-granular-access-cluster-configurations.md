@@ -9,17 +9,17 @@ ms.topic: conceptual
 origin.date: 08/22/2019
 ms.date: 02/24/2020
 ms.openlocfilehash: f7121ae8990720115a97e49aa2c0478d36459416
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77428482"
 ---
-# <a name="Migrate-to-granular-role-based-access-for-cluster-configurations"></a> 迁移到群集配置的基于角色的细化访问权限
+# <a name="migrate-to-granular-role-based-access-for-cluster-configurations"></a><a name="Migrate-to-granular-role-based-access-for-cluster-configurations"></a> 迁移到群集配置的基于角色的细化访问权限
 
 我们正在引入一些重要更改，以支持使用更细化的基于角色的访问来获取敏感信息。 在实施这些更改的过程中，如果你使用的是某个[受影响的实体/方案](#am-i-affected-by-these-changes)，则可能需要**在 2019 年 9 月 3 日之前**采取某种措施。
 
-## <a name="What-is-changing"></a> 有什么变化？
+## <a name="what-is-changing"></a><a name="What-is-changing"></a> 有什么变化？
 
 以前，处理“所有者”、“参与者”或“读取者”[RBAC 角色](/role-based-access-control/rbac-and-directory-admin-roles)的群集用户可以通过 HDInsight API 获取机密，因为这些机密可以通过给具有 `*/read` 权限的任何人。 机密定义为值，可用于获取比用户角色允许的访问权限更高的权限。 这些值包括群集网关 HTTP 凭据、存储帐户密钥和数据库凭据等值。
 从 2019 年 9 月 3 日开始，访问这些机密需要 `Microsoft.HDInsight/clusters/configurations/action` 权限，这意味着这些机密不再可供具有“读取者”角色的用户访问。 拥有此权限的角色为“参与者”、“所有者”和新的“HDInsight 群集操作员”角色（下面将详细说明）。
@@ -35,7 +35,7 @@ ms.locfileid: "77428482"
 
 了解如何向用户添加 HDInsight 群集操作员角色分配，以授予其对群集机密的读/写访问权限的信息，请参阅以下部分[将 HDInsight 群集操作员角色分配添加到用户](#add-the-hdinsight-cluster-operator-role-assignment-to-a-user)。
 
-## <a name="Am-I-affected-by-these-changes"></a> 我是否受这些更改的影响？
+## <a name="am-i-affected-by-these-changes"></a><a name="Am-I-affected-by-these-changes"></a> 我是否受这些更改的影响？
 
 以下实体和方案将受到影响：
 
@@ -53,7 +53,7 @@ ms.locfileid: "77428482"
 - [Az.HDInsight PowerShell](#azhdinsight-powershell)，低于版本 2.0.0。
 请参阅以下部分（或使用上面的链接）了解适用于你的方案的迁移步骤。
 
-### <a name="API"></a> API
+### <a name="api"></a><a name="API"></a> API
 
 以下 API 将会更改或弃用：
 
@@ -76,25 +76,25 @@ ms.locfileid: "77428482"
 - [**POST /updateGatewaySettings**](https://docs.microsoft.com/rest/api/hdinsight/hdinsight-cluster#update-gateway-settings)
     - 使用此 API 可以更新网关设置（用户名和/或密码）。
 
-### <a name="Azure-HDInsight-Tools-for-Visual-Studio-Code"></a> Azure HDInsight Tools for Visual Studio Code
+### <a name="azure-hdinsight-tools-for-visual-studio-code"></a><a name="Azure-HDInsight-Tools-for-Visual-Studio-Code"></a> Azure HDInsight Tools for Visual Studio Code
 
 如果使用版本 1.1.1 或更低版本，请更新到[最新版本的 Azure HDInsight Tools for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=mshdinsight.azure-hdinsight&ssr=false)，以避免中断。
 
-### <a name="Azure-Toolkit-for-IntelliJ"></a> Azure Toolkit for IntelliJ
+### <a name="azure-toolkit-for-intellij"></a><a name="Azure-Toolkit-for-IntelliJ"></a> Azure Toolkit for IntelliJ
 
 如果使用版本 3.20.0 或更低版本，请更新到[最新版本的 Azure Toolkit for IntelliJ 插件](https://plugins.jetbrains.com/plugin/8053-azure-toolkit-for-intellij)，以避免中断。
 
-### <a name="Azure-Data-Lake-and-Stream-Analytics-Tools-for-Visual-Studio"></a> 用于 Visual Studio 的 Azure Data Lake 和流分析工具
+### <a name="azure-data-lake-and-stream-analytics-tools-for-visual-studio"></a><a name="Azure-Data-Lake-and-Stream-Analytics-Tools-for-Visual-Studio"></a> 用于 Visual Studio 的 Azure Data Lake 和流分析工具
 
 更新到 2.3.9000.1 或更高版本的[用于 Visual Studio 的 Azure Data Lake 和流分析工具](https://marketplace.visualstudio.com/items?itemName=ADLTools.AzureDataLakeandStreamAnalyticsTools&ssr=false#overview)可以避免中断。  如需更新方面的帮助，请参阅文档：[更新用于 Visual Studio 的 Data Lake 工具](/hdinsight/hadoop/apache-hadoop-visual-studio-tools-get-started#update-data-lake-tools-for-visual-studio)。
 
-### <a name="Azure-Toolkit-for-Eclipse"></a> Azure Toolkit for Eclipse
+### <a name="azure-toolkit-for-eclipse"></a><a name="Azure-Toolkit-for-Eclipse"></a> Azure Toolkit for Eclipse
 
 如果使用 3.15.0 或更低版本，请更新到[最新版本的 Azure Toolkit for Eclipse](https://marketplace.eclipse.org/content/azure-toolkit-eclipse)，以避免中断。
 
-### <a name="SDK-for-NET"></a> SDK for .NET
+### <a name="sdk-for-net"></a><a name="SDK-for-NET"></a> SDK for .NET
 
-#### <a name="Versions-1x-and-2x"></a> 版本 1.x 和 2.x
+#### <a name="versions-1x-and-2x"></a><a name="Versions-1x-and-2x"></a> 版本 1.x 和 2.x
 
 请更新到 HDInsight SDK for .NET [版本 2.1.0](https://www.nuget.org/packages/Microsoft.Azure.Management.HDInsight/2.1.0)。 如果使用受这些更改影响的方法，则可能需要对代码进行少量的修改：
 
@@ -108,7 +108,7 @@ ms.locfileid: "77428482"
 
 - `ConfigurationsOperationsExtensions.EnableHttp` 和 `DisableHttp` 现已弃用。 现在始终会启用 HTTP，因此不再需要这些方法。
 
-#### <a name="Versions-3x-and-up"></a> 版本 3.x 及更高版本
+#### <a name="versions-3x-and-up"></a><a name="Versions-3x-and-up"></a> 版本 3.x 及更高版本
 
 请更新到 HDInsight SDK for .NET [版本 5.0.0](https://www.nuget.org/packages/Microsoft.Azure.Management.HDInsight/5.0.0) 或更高版本。 如果使用受这些更改影响的方法，则可能需要对代码进行少量的修改：
 
@@ -118,7 +118,7 @@ ms.locfileid: "77428482"
 - [`ConfigurationsOperationsExtensions.Update`](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.hdinsight.configurationsoperationsextensions.update?view=azure-dotnet) 现已弃用，已由 [`ClusterOperationsExtensions.UpdateGatewaySettings`](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.hdinsight.clustersoperationsextensions.updategatewaysettings?view=azure-dotnet) 取代。 
 - [`ConfigurationsOperationsExtensions.EnableHttp`](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.hdinsight.configurationsoperationsextensions.enablehttp?view=azure-dotnet) 和 [`DisableHttp`](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.hdinsight.configurationsoperationsextensions.disablehttp?view=azure-dotnet) 现已弃用。 现在始终会启用 HTTP，因此不再需要这些方法。
 
-### <a name="SDK-for-Python"></a> SDK for Python
+### <a name="sdk-for-python"></a><a name="SDK-for-Python"></a> SDK for Python
 
 请更新到 HDInsight SDK for Python [版本 1.0.0](https://pypi.org/project/azure-mgmt-hdinsight/1.0.0/) 或更高版本。 如果使用受这些更改影响的方法，则可能需要对代码进行少量的修改：
 
@@ -127,14 +127,14 @@ ms.locfileid: "77428482"
     - 如果只要检索 HTTP 网关凭据，请使用 [`ClusterOperations.get_gateway_settings`](https://docs.microsoft.com/python/api/azure-mgmt-hdinsight/azure.mgmt.hdinsight.operations.clustersoperations#get-gateway-settings-resource-group-name--cluster-name--custom-headers-none--raw-false----operation-config-)。
 - [`ConfigurationsOperations.update`](https://docs.microsoft.com/python/api/azure-mgmt-hdinsight/azure.mgmt.hdinsight.operations.configurationsoperations#update-resource-group-name--cluster-name--configuration-name--parameters--custom-headers-none--raw-false--polling-true----operation-config-) 现已弃用，已由 [`ClusterOperations.update_gateway_settings`](https://docs.microsoft.com/python/api/azure-mgmt-hdinsight/azure.mgmt.hdinsight.operations.clustersoperations#update-gateway-settings-resource-group-name--cluster-name--parameters--custom-headers-none--raw-false--polling-true----operation-config-) 取代。
 
-### <a name="SDK-for-Java"></a> SDK For Java
+### <a name="sdk-for-java"></a><a name="SDK-for-Java"></a> SDK For Java
 
 请更新到 HDInsight SDK for Java [版本 1.0.0](https://search.maven.org/artifact/com.microsoft.azure.hdinsight.v2018_06_01_preview/azure-mgmt-hdinsight/) 或更高版本。 如果使用受这些更改影响的方法，则可能需要对代码进行少量的修改：
 
 - [`ConfigurationsInner.get`](https://docs.microsoft.com/java/api/com.microsoft.azure.management.hdinsight.v2018__06__01__preview.implementation._configurations_inner.get) 将**不再返回敏感参数**，例如存储密钥（核心站点）或 HTTP 凭据（网关）。
 - [`ConfigurationsInner.update`](https://docs.microsoft.com/java/api/com.microsoft.azure.management.hdinsight.v2018__06__01__preview.implementation._configurations_inner.update) 现已弃用，已由 [`ClustersInner.updateGatewaySettings`](https://docs.microsoft.com/java/api/com.microsoft.azure.management.hdinsight.v2018_06_01_preview.implementation.clustersinner.updategatewaysettings?view=azure-java-stable) 取代。
 
-### <a name="SDK-for-Go"></a> SDK For Go
+### <a name="sdk-for-go"></a><a name="SDK-for-Go"></a> SDK For Go
 
 请更新到 HDInsight SDK for Go [版本 27.1.0](https://github.com/Azure/azure-sdk-for-go/tree/master/services/preview/hdinsight/mgmt/2018-06-01-preview/hdinsight) 或更高版本。 如果使用受这些更改影响的方法，则可能需要对代码进行少量的修改：
 
@@ -143,7 +143,7 @@ ms.locfileid: "77428482"
     - 如果只要检索 HTTP 网关凭据，请使用 [`ClustersClient.get_gateway_settings`](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/preview/hdinsight/mgmt/2018-06-01-preview/hdinsight#ClustersClient.GetGatewaySettings)。
 - [`ConfigurationsClient.update`](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/preview/hdinsight/mgmt/2018-06-01-preview/hdinsight#ConfigurationsClient.Update) 现已弃用，已由 [`ClustersClient.update_gateway_settings`](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/preview/hdinsight/mgmt/2018-06-01-preview/hdinsight#ClustersClient.UpdateGatewaySettings) 取代。
 
-### <a name="AzHDInsight-PowerShell"></a> Az.HDInsight PowerShell
+### <a name="azhdinsight-powershell"></a><a name="AzHDInsight-PowerShell"></a> Az.HDInsight PowerShell
 更新到 [Az PowerShell 版本 2.0.0](https://www.powershellgallery.com/packages/Az) 或更高版本以避免中断。  如果使用受这些更改影响的方法，则可能需要对代码进行少量的修改。
 - `Grant-AzHDInsightHttpServicesAccess` 现已弃用，已由新的 `Set-AzHDInsightGatewayCredential` cmdlet 取代。
 - `Get-AzHDInsightJobOutput` 在更新后支持对存储密钥进行细化的基于角色的访问。
@@ -152,30 +152,30 @@ ms.locfileid: "77428482"
 - `Revoke-AzHDInsightHttpServicesAccess` 现已弃用。 现在始终会启用 HTTP，因此不再需要此 cmdlet。
  如需更多详细信息，请参阅 [az.HDInsight 迁移指南](https://github.com/Azure/azure-powershell/blob/master/documentation/migration-guides/Az.2.0.0-migration-guide.md#azhdinsight)。
 
-## <a name="Add-the-HDInsight-Cluster-Operator-role-assignment-to-a-user"></a> 向用户添加 HDInsight 群集操作员角色分配
+## <a name="add-the-hdinsight-cluster-operator-role-assignment-to-a-user"></a><a name="Add-the-HDInsight-Cluster-Operator-role-assignment-to-a-user"></a> 向用户添加 HDInsight 群集操作员角色分配
 
 具有[所有者](/role-based-access-control/built-in-roles#owner)角色的用户可以将 [HDInsight 群集操作员](/role-based-access-control/built-in-roles#hdinsight-cluster-operator)角色分配给你希望对敏感 HDInsight 群集配置值（如群集网关凭据和存储帐户密钥）具有读/写访问权限的用户。
 
-### <a name="Using-the-Azure-CLI"></a> 使用 Azure CLI
+### <a name="using-the-azure-cli"></a><a name="Using-the-Azure-CLI"></a> 使用 Azure CLI
 
 添加此角色分配的最简单方法是在 Azure CLI 中使用 `az role assignment create` 命令。
 
 > [!NOTE]
 > 此命令必须由具有“所有者”角色的用户运行，因为只有他们才能授予这些权限。 `--assignee` 是要将“HDInsight 群集操作员”角色分配到的用户的服务主体名称或电子邮件地址。 如果收到权限不足错误，请参阅下面的常见问题解答。
 
-#### <a name="Grant-role-at-the-resource-cluster-level"></a> 在资源（群集）级别授予角色
+#### <a name="grant-role-at-the-resource-cluster-level"></a><a name="Grant-role-at-the-resource-cluster-level"></a> 在资源（群集）级别授予角色
 
 ```azurecli
 az role assignment create --role "HDInsight Cluster Operator" --assignee <user@domain.com> --scope /subscriptions/<SubscriptionId>/resourceGroups/<ResourceGroupName>/providers/Microsoft.HDInsight/clusters/<ClusterName>
 ```
 
-#### <a name="Grant-role-at-the-resource-group-level"></a> 在资源组级别授予角色
+#### <a name="grant-role-at-the-resource-group-level"></a><a name="Grant-role-at-the-resource-group-level"></a> 在资源组级别授予角色
 
 ```azurecli
 az role assignment create --role "HDInsight Cluster Operator" --assignee user@domain.com -g <ResourceGroupName>
 ```
 
-#### <a name="Grant-role-at-the-subscription-level"></a> 在订阅级别授予角色
+#### <a name="grant-role-at-the-subscription-level"></a><a name="Grant-role-at-the-subscription-level"></a> 在订阅级别授予角色
 
 ```azurecli
 az role assignment create --role "HDInsight Cluster Operator" --assignee user@domain.com

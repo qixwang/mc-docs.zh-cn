@@ -10,10 +10,10 @@ origin.date: 09/23/2019
 ms.date: 02/24/2020
 ms.author: mbaldwin
 ms.openlocfilehash: 9eea49e927dd6324b235b0203927d9ee69a8a01a
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77428616"
 ---
 # <a name="security-controls-for-api-management"></a>API 管理的安全控制

@@ -9,10 +9,10 @@ ms.author: v-jay
 ms.reviewer: sijuman
 ms.lastreviewed: 10/03/2019
 ms.openlocfilehash: 8ea3b85e32d0ea0c10895cee2e1bc409661ddee3
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77540035"
 ---
 # <a name="establish-a-vnet-to-vnet-connection-in-azure-stack-hub-with-fortinet-fortigate-nva"></a>使用 Fortinet FortiGate NVA 在 Azure Stack Hub 中建立 VNET 到 VNET 连接
@@ -21,7 +21,7 @@ ms.locfileid: "77540035"
 
 本文介绍了当前的 Azure Stack Hub 限制：租户只能在两个环境之间设置一个 VPN 连接。 用户将了解如何在 Linux 虚拟机上设置自定义网关，以便在不同的 Azure Stack Hub 之间建立多个 VPN 连接。 本文中的过程将在每个 VNET 中部署两个具有 FortiGate NVA 的 VNET：每个 Azure Stack Hub 环境各部署一个。 此外，其中详细说明了在这两个 VNET 之间设置 IPSec VPN 所要做出的更改。 对于每个 Azure Stack Hub 中的每个 VNET，应该重复本文中的步骤。 
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 -  有权访问可提供足够容量用于部署此解决方案所需的计算、网络和资源的 Azure Stack Hub 集成系统。 
 

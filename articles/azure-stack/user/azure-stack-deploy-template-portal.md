@@ -9,10 +9,10 @@ ms.author: v-jay
 ms.reviewer: sijuman
 ms.lastreviewed: 05/07/2019
 ms.openlocfilehash: 67649d5dbeaa3e1d2aca8f14f26591173f7f4bdd
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77540845"
 ---
 # <a name="deploy-a-template-using-the-portal-in-azure-stack-hub"></a>使用 Azure Stack Hub 门户部署模板
@@ -25,11 +25,11 @@ ms.locfileid: "77540845"
 
    ![在 Azure Stack Hub 门户中创建资源](media/azure-stack-deploy-template-portal/template-deploy1.png)
 
-1. 选择“模板部署”  。
+1. 选择“模板部署”。 
 
    ![在 Azure Stack Hub 门户中部署模板](media/azure-stack-deploy-template-portal/template-deploy2.png)
 
-1. 选择“编辑模板”  ，然后将 JSON 模板代码粘贴到代码窗口中。 选择“保存”  。
+1. 选择“编辑模板”  ，然后将 JSON 模板代码粘贴到代码窗口中。 选择“保存”。 
 
    ![在 Azure Stack Hub 门户中编辑模板](media/azure-stack-deploy-template-portal/template-deploy3.png)
 
@@ -37,7 +37,7 @@ ms.locfileid: "77540845"
 
    ![在 Azure Stack Hub 门户中编辑参数](media/azure-stack-deploy-template-portal/template-deploy4.png)
 
-1. 选择“订阅”  。 选择要使用的订阅，然后选择“确定”  。
+1. 选择“订阅”。  选择要使用的订阅，然后选择“确定”  。
 
    ![在 Azure Stack Hub 门户中选择订阅](media/azure-stack-deploy-template-portal/template-deploy5.png)
 

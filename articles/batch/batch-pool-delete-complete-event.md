@@ -1,6 +1,6 @@
 ---
 title: Azure Batch 池删除完成事件
-description: Batch 池删除完成事件参考。 当完成池删除操作时，会发出此事件。
+description: 批处理池删除完成事件参考。 当完成池删除操作时，会发出此事件。
 services: batch
 author: lingliw
 manager: digimobile
@@ -13,10 +13,10 @@ origin.date: 04/20/2017
 ms.date: 05/14/2018
 ms.author: v-lingwu
 ms.openlocfilehash: f4f7c0ec52471a7351cbd8a5a26224c4e44b5b73
-ms.sourcegitcommit: 27eaabd82b12ad6a6840f30763034a6360977186
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77497386"
 ---
 # <a name="pool-delete-complete-event"></a>池删除完成事件
@@ -33,7 +33,7 @@ ms.locfileid: "77497386"
 }
 ```
 
-|元素|类型|注释|
+|元素|类型|说明|
 |-------------|----------|-----------|
 |`id`|String|池的 ID。|
 |`startTime`|DateTime|池删除开始的时间。|

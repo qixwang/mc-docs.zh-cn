@@ -9,10 +9,10 @@ ms.author: v-jay
 ms.reviewer: thoroet
 ms.lastreviewed: 06/05/2019
 ms.openlocfilehash: 98a007f65296d00d5c0f9203dcaa3011eb35da71
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77540932"
 ---
 # <a name="integrate-external-monitoring-solution-with-azure-stack-hub"></a>将外部监视解决方案与 Azure Stack Hub 集成
@@ -115,7 +115,7 @@ samples/etc/azurestack_services.cfg
 
 有关如何创建 SPN 的详细信息，请参阅[使用应用标识来访问资源](azure-stack-create-service-principals.md)。
 
-| 参数 | 说明 | 身份验证 |
+| 参数 | 说明 | Authentication |
 | --- | --- | --- |
 | **External_domain_fqdn ** | 外部域 FQDN |    |
 | **region: ** | 区域名称 |    |

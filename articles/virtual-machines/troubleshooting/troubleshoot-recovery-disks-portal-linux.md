@@ -14,10 +14,10 @@ origin.date: 08/19/2019
 ms.date: 02/10/2020
 ms.author: v-yeche
 ms.openlocfilehash: 60ca0dec9a76d945694e508e4a050da78861780f
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77428844"
 ---
 # <a name="troubleshoot-a-linux-vm-by-attaching-the-os-disk-to-a-recovery-vm-using-the-azure-portal"></a>通过使用 Azure 门户将 OS 磁盘附加到恢复 VM 来对 Linux VM 进行故障排除
@@ -38,13 +38,13 @@ ms.locfileid: "77428844"
 > 本文不适用于包含非托管磁盘的 VM。
 
 ## <a name="determine-boot-issues"></a>确定启动问题
-检查启动诊断信息和 VM 屏幕截图，确定 VM 不能正常启动的原因。 一个常见的例子是 `/etc/fstab`中存在无效条目，或底层虚拟硬盘已删除或移动。
+检查启动诊断信息和 VM 屏幕截图，确定 VM 不能正常启动的原因。 一个常见的例子是 `/etc/fstab` 中存在无效条目，或底层虚拟硬盘已删除或移动。
 
-在门户中选择 VM，然后向下滚动到“支持 + 故障排除”部分。   单击“启动诊断”，查看从 VM 流式传输的控制台消息。 查看控制台日志，以便了解是否能够确定 VM 遇到问题的原因。 以下示例显示某个 VM 停滞在维护模式，需要人工干预：
+在门户中选择 VM，并向下滚动到“支持 + 故障排除”部分。  单击“启动诊断”，查看从 VM 流式传输的控制台消息。  查看控制台日志，以便了解是否能够确定 VM 遇到问题的原因。 以下示例显示某个 VM 停滞在维护模式，需要人工干预：
 
 ![查看 VM 启动诊断控制台日志](./media/troubleshoot-recovery-disks-portal-linux/boot-diagnostics-error.png)
 
-也可以单击启动诊断日志顶部的“屏幕截图”，下载捕获的 VM 屏幕截图。 
+也可以单击启动诊断日志顶部的“屏幕截图”，下载 VM 的屏幕截图。 
 
 ## <a name="take-a-snapshot-of-the-os-disk"></a>拍摄 OS 磁盘的快照
 快照是虚拟硬盘 (VHD) 的完整只读副本。 建议在创建快照之前完全关闭 VM，以清除正在运行的所有进程。 若要创建 OS 磁盘的快照，请执行以下步骤：
@@ -100,7 +100,7 @@ ms.locfileid: "77428844"
 3. 如果命令运行成功，你将在提供的资源组中看到新磁盘。
 
 ## <a name="attach-disk-to-another-vm"></a>将磁盘附加到另一个 VM
-在后续几个步骤中，使用另一个 VM 进行故障排除。 将磁盘附加到故障排除 VM 后，可以浏览和编辑磁盘的内容。 此过程允许用户更正任何配置错误或者查看其他应用程序或系统日志文件。 若要将磁盘附加到另一个 VM，请执行以下步骤：
+在后续几个步骤中，将使用另一个 VM 进行故障排除。 将磁盘附加到故障排除 VM 后，可以浏览和编辑磁盘的内容。 此过程允许用户更正任何配置错误或者查看其他应用程序或系统日志文件。 若要将磁盘附加到另一个 VM，请执行以下步骤：
 
 1. 在门户中选择资源组，并选择故障排除 VM。 依次选择“磁盘”  、“编辑”  ，然后单击“添加数据磁盘”  ：
 
@@ -116,7 +116,7 @@ ms.locfileid: "77428844"
 
 <!-- Change Red Hat to CentOS -->
 
-1. 使用相应的凭据通过 SSH 连接到故障排除 VM。 如果此磁盘是附加到故障排除 VM 的第一个数据磁盘，则它可能已连接到 `/dev/sdc`。 使用 `dmseg` 列出附加的磁盘：
+1. 使用适当的凭据通过 SSH 登录到故障排除 VM。 如果此磁盘是附加到故障排除 VM 的第一个数据磁盘，则它可能已连接到 `/dev/sdc`。 使用 `dmseg` 列出附加的磁盘：
 
     ```bash
     dmesg | grep SCSI
@@ -133,7 +133,7 @@ ms.locfileid: "77428844"
 
     在前面的示例中，OS 磁盘位于 `/dev/sda`，为每个 VM 提供的临时磁盘位于 `/dev/sdb`。 如果有多个数据磁盘，它们应位于 `/dev/sdd`、`/dev/sde`，依次类推。
 
-2. 创建一个目录来装载现有的虚拟硬盘。 以下示例创建一个名为 `troubleshootingdisk`的目录：
+2. 创建一个目录来装载现有的虚拟硬盘。 以下示例创建一个名为 `troubleshootingdisk` 的目录：
 
     ```bash
     sudo mkdir /mnt/troubleshootingdisk
@@ -160,13 +160,13 @@ ms.locfileid: "77428844"
     cd /
     ```
 
-    现在卸载现有的虚拟硬盘。 以下示例卸载 `/dev/sdc1`中的设备：
+    现在卸载现有的虚拟硬盘。 以下示例卸载 `/dev/sdc1` 中的设备：
 
     ```bash
     sudo umount /dev/sdc1
     ```
 
-2. 现在从 VM 中分离虚拟硬盘。 在门户中选择 VM，然后单击“磁盘”。  Select your existing virtual hard disk and then click <bpt id="p1">**</bpt>Detach<ept id="p1">**</ept>:
+2. 现在从 VM 中分离虚拟硬盘。 在门户中选择 VM，然后单击“磁盘”。  选择现有的虚拟硬盘，并单击“分离”： 
 
     ![分离现有虚拟硬盘](./media/troubleshoot-recovery-disks-portal-windows/detach-disk.png)
 
@@ -174,7 +174,7 @@ ms.locfileid: "77428844"
 
 ## <a name="swap-the-os-disk-for-the-vm"></a>交换 VM 的 OS 磁盘
 
-Azure 门户现在支持更改 VM 的 OS 磁盘。 为此，请执行以下步骤：
+Azure 门户现在支持更改 VM 的 OS 磁盘。 为此，请按照下列步骤进行操作：
 
 1. 转到 [Azure 门户](https://portal.azure.cn)。 在边栏中选择“虚拟机”，然后选择有问题的 VM。 
 1. 在左窗格中选择“磁盘”，然后选择“交换 OS 磁盘”。  
@@ -185,8 +185,8 @@ Azure 门户现在支持更改 VM 的 OS 磁盘。 为此，请执行以下步�
 1. 选择“确定”。
 
 ## <a name="next-steps"></a>后续步骤
-如果在连接到 VM 时遇到问题，请参阅[排查 Azure VM 的 SSH 连接问题](troubleshoot-ssh-connection.md?toc=%2fvirtual-machines%2flinux%2ftoc.json)。 如果在访问 VM 上运行的应用时遇到问题，请参阅 [Troubleshoot application connectivity issues on a Linux VM](../windows/troubleshoot-app-connection.md?toc=%2fvirtual-machines%2flinux%2ftoc.json)（排查 Linux VM 上的应用程序连接问题）。
+如果在连接到 VM 时遇到问题，请参阅[排查 Azure VM 的 SSH 连接问题](troubleshoot-ssh-connection.md?toc=%2fvirtual-machines%2flinux%2ftoc.json)。 如果在访问 VM 上运行的应用时遇到问题，请参阅[排查 Linux VM 上的应用程序连接问题](../windows/troubleshoot-app-connection.md?toc=%2fvirtual-machines%2flinux%2ftoc.json)。
 
-有关使用 Resource Manager 的详细信息，请参阅 [Azure Resource Manager 概述](../../azure-resource-manager/management/overview.md?toc=%2fvirtual-machines%2flinux%2ftoc.json)。
+有关资源组的详细信息，请参阅 [Azure 资源管理器概述](../../azure-resource-manager/management/overview.md?toc=%2fvirtual-machines%2flinux%2ftoc.json)。
 
 <!-- Update_Description: update meta properties, wording update, update link -->

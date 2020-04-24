@@ -17,10 +17,10 @@ origin.date: 05/24/2017
 ms.date: 03/02/2020
 ms.author: v-tawe
 ms.openlocfilehash: b8def284655b51399b635926b5d19d3eb02e9022
-ms.sourcegitcommit: 094c057878de233180ff3b3a3e3c19bc11c81776
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77501458"
 ---
 # <a name="azure-powershell-samples-for-networking"></a>适用于网络的 Azure PowerShell 示例

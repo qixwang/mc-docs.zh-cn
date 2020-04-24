@@ -15,10 +15,10 @@ ms.date: 02/10/2020
 ms.author: v-yeche
 ms.reviewer: vashan, rajraj
 ms.openlocfilehash: 688cdee3b3f96fcf79466a3bf1b29366d5e662fc
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77428838"
 ---
 # <a name="troubleshooting-api-throttling-errors"></a>故障排除 API 限制错误 
@@ -88,7 +88,7 @@ Content-Type: application/json; charset=utf-8
 
 PowerShell cmdlet 使用 REST 服务 API，客户端可以轻松直接调用该 API（但是尚未提供正式支持）。 若要查看 HTTP 请求格式，请在使用 -Debug 开关的情况下运行 cmdlet 或者使用 Fiddler 探查其执行。
 
-## <a name="best-practices"></a>最佳实践 
+## <a name="best-practices"></a>最佳做法 
 
 - 请勿无条件地以及（或者）立即地重试 Azure 服务 API 错误。 遇到不可重试的错误时，常见的情况是客户端代码会进入快速的重试循环。 重试最终会耗光目标操作对应的组的允许调用限制，影响订阅的其他客户端。 
 - 在大容量 API 自动化示例中，如果目标操作组的可用调用计数掉到某个较低的阈值以下，则可考虑实施前摄性客户端自动限制。 

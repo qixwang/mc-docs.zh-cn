@@ -17,10 +17,10 @@ ms.author: v-junlch
 ms.reviwer: brandwe
 ms.custom: aaddev
 ms.openlocfilehash: 989c6a1b73e35322f6bd690a41e5b478af09668f
-ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77653163"
 ---
 # <a name="call-a-web-api-from-a-mobile-app"></a>从移动应用调用 Web API

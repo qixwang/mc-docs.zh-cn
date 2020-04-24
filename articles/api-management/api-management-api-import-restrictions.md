@@ -16,10 +16,10 @@ origin.date: 01/02/2020
 ms.author: v-yiso
 ms.date: 02/24/2020
 ms.openlocfilehash: c895e73c065b4913b72f14fbd978dcd5c49f9cba
-ms.sourcegitcommit: 27eaabd82b12ad6a6840f30763034a6360977186
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77497395"
 ---
 # <a name="api-import-restrictions-and-known-issues"></a>API 导入限制和已知问题
@@ -27,11 +27,11 @@ ms.locfileid: "77497395"
 
 导入 API 时，可能会遇到一些限制或识别问题，需要对其进行纠正才能成功执行导入。 本文将阐述这些限制，内容按照 API 的导入格式进行组织。 本文还将介绍 OpenAPI 导出的工作原理。
 
-## <a name="open-api"> </a>OpenAPI/Swagger 导入限制
+## <a name="openapiswagger-import-limitations"></a><a name="open-api"> </a>OpenAPI/Swagger 导入限制
 
 如果在导入 OpenAPI 文档时收到错误，请确保事先已对其进行了验证。 可以使用 Azure 门户中的设计器（设计 - 前端 - OpenAPI 规范编辑器）或使用第三方工具（例如 <a href="https://editor.swagger.io">Swagger 编辑器</a>）进行验证。
 
-### <a name="open-api-general"> </a>总则
+### <a name="general"></a><a name="open-api-general"> </a>总则
 
 * 路径和查询所需的参数必须具有唯一名称。 （在 OpenAPI 中，参数名称只需要在一个位置内是唯一的，例如路径、查询、标头。 但是，在 API 管理中，我们允许操作通过路径和查询参数进行区分（OpenAPI 不支持此方法）。 这就是要求参数名称在整个 URL 模板中是唯一的原因。）
 * **$ref** 指针不能引用外部文件。
@@ -44,11 +44,11 @@ ms.locfileid: "77497395"
 * 定义的 URL 参数需要是 URL 模板的一部分。
 * 不支持 **Produces** 关键字，该关键字描述 API 返回的 MIME 类型。 
 
-### <a name="open-api-v2"> </a>OpenAPI 版本 2
+### <a name="openapi-version-2"></a><a name="open-api-v2"> </a>OpenAPI 版本 2
 
 * 仅支持 JSON 格式。
 
-### <a name="open-api-v3"> </a>OpenAPI 版本 3
+### <a name="openapi-version-3"></a><a name="open-api-v3"> </a>OpenAPI 版本 3
 
 * 如果指定了多个服务器，API 管理将尝试选择第一个 HTTP URL  。 如果不存在任何 HTTP URL，则为第一个 HTTP URL。 如果不存在任何 HTTP URL，则服务器 URL 将为空。
 * 不支持“Examples”，但支持“example”   。
@@ -91,7 +91,7 @@ operationId 的规范化规则
 - 如果需要，以 `-1, -2, ..., -999` 格式使用剩余的 4 个字符作为重复项删除后缀。
 
 
-## <a name="wsdl"> </a>WSDL
+## <a name="wsdl"></a><a name="wsdl"> </a>WSDL
 
 WSDL 文件用于创建 SOAP 传递和 SOAP到 REST API。
 
@@ -119,5 +119,5 @@ WSDL 文件用于创建 SOAP 传递和 SOAP到 REST API。
     </complexType>
 ```
 
-## <a name="wadl"> </a>WADL
+## <a name="wadl"></a><a name="wadl"> </a>WADL
 目前没有已知的 WADL 导入问题。

@@ -10,10 +10,10 @@ ms.author: v-jay
 ms.reviewer: avishwan
 ms.lastreviewed: 08/29/2019
 ms.openlocfilehash: f3e1ceef0c489233d6e2e6141f4a06f343a26889
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77540245"
 ---
 # <a name="windows-server-in-azure-stack-hub-marketplace-faq"></a>Azure Stack Hub 市场中的 Windows Server 常见问题解答
@@ -71,7 +71,7 @@ $vm.LicenseType = "Windows_Server"
 Update-AzureRmVM -ResourceGroupName "<your RG>" -VM $vm
 ```
 
-### <a name="what-about-other-vms-that-use-windows-server-such-as-sql-or-machine-learning-server"></a>对于使用 Windows Server 的其他 VM（例如 SQL 或 Machine Learning Server），该如何处理？
+### <a name="what-about-other-vms-that-use-windows-server-such-as-sql-or-machine-learning-server"></a>对于使用 Windows Server 的其他 VM （例如 SQL 或 Machine Learning Server），该如何处理？
 
 这些映像应用 **licenseType** 参数，因此它们采用即用即付模式。 可以设置此参数（请参阅以前的常见问题解答）。 这只适用于 Windows Server 软件，而不适用于 SQL 等分层产品（需要自带许可证）。 即付即付许可不适用于分层软件产品。
 

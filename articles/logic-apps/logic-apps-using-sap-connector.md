@@ -13,10 +13,10 @@ ms.date: 02/24/2020
 ms.reviewer: klam, divswa, LADocs
 tags: connectors
 ms.openlocfilehash: ac9a38b53a9a1d880299134f6af59f2626954bb0
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77428261"
 ---
 # <a name="connect-to-sap-systems-from-azure-logic-apps"></a>从 Azure 逻辑应用连接到 SAP 系统
@@ -42,7 +42,7 @@ SAP 连接器通过[本地数据网关](../logic-apps/logic-apps-gateway-connect
 
 <a name="pre-reqs"></a>
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要按本文中的步骤操作，需准备好以下各项：
 

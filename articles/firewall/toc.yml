@@ -35,7 +35,7 @@
       href: rule-processing.md
     - name: 服务标记
       href: service-tags.md
-- name: 操作指南
+- name: 操作方法指南
   items:
     - name: 使用 Azure PowerShell 进行部署
       href: deploy-ps.md
@@ -65,11 +65,11 @@
       href: 'https://docs.azure.cn/develop/python/'
     - name: REST
       href: 'https://docs.microsoft.com/rest/api/firewall'
-    - name: Azure Resource Manager
+    - name: Azure 资源管理器
       href: ../azure-resource-manager/management/overview.md
 - name: 资源
   items:
-    - name: 常见问题
+    - name: 常见问题解答
       href: firewall-faq.md
     - name: 创作模板
       href: ../azure-resource-manager/templates/template-syntax.md

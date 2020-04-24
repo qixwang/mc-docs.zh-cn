@@ -16,10 +16,10 @@ origin.date: 06/25/2018
 ms.date: 02/24/2020
 ms.author: v-jay
 ms.openlocfilehash: a79f1d34615782c2ee5cc964a4284285309be3b2
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77541153"
 ---
 # <a name="create-a-public-load-balancer-with-ipv6-using-azure-cli"></a>使用 Azure CLI 创建使用 IPv6 的公共负载均衡器
@@ -27,7 +27,7 @@ ms.locfileid: "77541153"
 >[!NOTE] 
 >本文介绍了一项简介性的 IPv6 功能，该功能允许基本负载均衡器提供 IPv4 和 IPv6 连接。 [适用于 Azure VNET 的 IPv6](../virtual-network/ipv6-overview.md) 现在提供综合性 IPv6 连接，可以将 IPv6 连接与虚拟网络集成，包含 IPv6 网络安全组规则、IPv6 用户定义路由、IPv6 基本和标准负载均衡等关键功能。  适用于 Azure VNET 的 IPv6 是建议用于 Azure 中的 IPv6 应用程序的标准。 请参阅[适用于 Azure VNET PowerShell 部署的 IPv6](../virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md) 
 
-Azure 负载均衡器是位于第 4 层 (TCP, UDP) 的负载均衡器。 该负载均衡器可以在云服务或负载均衡器集的虚拟机中运行状况良好的服务实例之间分配传入流量，从而提供高可用性。 负载均衡器还可以在多个端口和/或多个 IP 地址上显示这些服务。
+Azure load balancer 是位于第 4 层 (TCP, UDP) 的负载均衡器。 该负载均衡器可以在云服务或负载均衡器集的虚拟机中运行状况良好的服务实例之间分配传入流量，从而提供高可用性。 负载均衡器还可以在多个端口和/或多个 IP 地址上显示这些服务。
 
 ## <a name="example-deployment-scenario"></a>示例部署方案
 
@@ -53,7 +53,7 @@ Azure 负载均衡器是位于第 4 层 (TCP, UDP) 的负载均衡器。 该负�
 * **后端地址池**：包含从负载均衡器接收网络流量的虚拟机网络接口 (NIC)。
 * **负载均衡规则**：所含规则可将负载均衡器上的公共端口映射到后端地址池的端口上。
 * **入站 NAT 规则**：所含网络地址转换 (NAT) 规则可将负载均衡器上的公共端口映射到后端地址池中特定虚拟机的端口。
-* **探测器**：包含用于检查后端地址池中虚拟机实例的可用性的运行状况探测器。
+* **探测器**：包含用于检查后端地址池中虚拟机实例的可用性的运行状况探测器
 
 ## <a name="set-up-azure-cli"></a>设置 Azure CLI
 

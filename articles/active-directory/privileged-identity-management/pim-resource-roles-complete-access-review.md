@@ -16,10 +16,10 @@ ms.author: v-junlch
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 30e8e673c6e3a7cd3d702bdef62a70155484833e
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77429937"
 ---
 # <a name="complete-an-access-review-of-azure-resource-roles-in-privileged-identity-management"></a>在 Privileged Identity Management 中完成对 Azure 资源角色的访问评审
@@ -56,7 +56,7 @@ ms.locfileid: "77429937"
 
 完成访问评审后，选择“应用”来实现评审结果  。 如果在评审中拒绝了用户的访问，则此步骤会删除其角色分配。  
 
-### <a name="delete"></a>Delete
+### <a name="delete"></a>删除
 
 如果不再想了解审阅，可将其删除。 选择“删除”  即可从 Privileged Identity Management 服务中删除评审。
 

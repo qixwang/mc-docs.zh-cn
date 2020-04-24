@@ -18,10 +18,10 @@ origin.date: 01/06/2020
 ms.date: 03/02/2020
 ms.author: v-yiso
 ms.openlocfilehash: f351395ab4b7dd6e967773e0d92f34d2c030e32c
-ms.sourcegitcommit: 46fd4297641622c1984011eac4cb5a8f6f94e9f5
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77563504"
 ---
 # <a name="run-apache-hive-queries-with-apache-hadoop-in-hdinsight-using-rest"></a>使用 REST 在 HDInsight 中通过 Apache Hadoop 运行 Apache Hive 查询
@@ -30,7 +30,7 @@ ms.locfileid: "77563504"
 
 了解如何使用 WebHCat REST API 通过 Apache Hadoop on Azure HDInsight 群集运行 Apache Hive 查询。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * HDInsight 中的 Apache Hadoop 群集。 请参阅 [Linux 上的 HDInsight 入门](./apache-hadoop-linux-tutorial-get-started.md)。
 
@@ -82,7 +82,7 @@ $clusterName = (ConvertFrom-Json $resp.Content).items.Clusters.cluster_name;
 $clusterName
 ```
 
-## <a id="curl"></a>运行 Hive 查询
+## <a name="run-a-hive-query"></a><a id="curl"></a>运行 Hive 查询
 
 1. 若要验证是否可以连接到 HDInsight 群集，请使用下列命令之一：
 
@@ -194,7 +194,7 @@ $clusterName
 
     可以使用 [Azure CLI](/cli/install-azure-cli) 列出并下载这些文件。 有关将 Azure CLI 与 Azure 存储配合使用的详细信息，请参阅[将 Azure CLI 与 Azure 存储配合使用](../../storage/common/storage-azure-cli.md#create-and-manage-blobs)文档。
 
-## <a id="nextsteps"></a>后续步骤
+## <a name="next-steps"></a><a id="nextsteps"></a>后续步骤
 
 
 

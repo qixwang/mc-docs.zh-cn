@@ -8,17 +8,17 @@ ms.date: 02/24/2020
 ms.author: v-yeche
 ms.custom: mvc
 ms.openlocfilehash: 99d5221cc937902393dfb4519ac6d84c1aa3bb86
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77540574"
 ---
 # <a name="tutorial-deploy-a-service-fabric-application-to-a-cluster-in-azure"></a>教程：将 Service Fabric 应用程序部署到 Azure 中的群集
 
 本教程是一个系列中的第二部分。 它介绍如何将 Azure Service Fabric 应用程序部署到 Azure 中的新群集。
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 > [!div class="checklist"]
 > * 创建群集。
 > * 使用 Visual Studio 将应用程序部署到远程群集。
@@ -55,7 +55,7 @@ git clone https://github.com/Azure-Samples/service-fabric-dotnet-quickstart
 
 ## <a name="create-a-cluster"></a>创建群集
 
-应用程序就绪以后，即可创建 Service Fabric 群集，然后将应用程序部署到群集。 [Service Fabric 群集](/service-fabric/service-fabric-deploy-anywhere)是一组通过网络连接在一起的虚拟机或物理计算机，你的微服务会在其中部署和管理。
+应用程序就绪以后，即可创建 Service Fabric 群集，然后将应用程序部署到群集。 [Service Fabric 群集](/service-fabric/service-fabric-deploy-anywhere)是一组通过网络连接在一起的虚拟机或物理计算机，微服务会在其中部署和管理。
 
 在本教程中，请在 Visual Studio IDE 中创建一个新的三节点型测试群集，然后将应用程序发布到该群集。 请参阅[有关创建和管理群集的教程](service-fabric-tutorial-create-vnet-and-windows-cluster.md)，了解如何创建生产群集。 也可通过 [Azure 门户](https://portal.azure.cn)、[PowerShel](./scripts/service-fabric-powershell-create-secure-cluster-cert.md)、[Azure CLI](./scripts/cli-create-cluster.md) 脚本或 [Azure 资源管理器模板](service-fabric-tutorial-create-vnet-and-windows-cluster.md)将应用程序部署到此前已创建的现有群集。
 
@@ -77,15 +77,15 @@ git clone https://github.com/Azure-Samples/service-fabric-dotnet-quickstart
 
 在“连接终结点”中，选择“创建新群集”   。  如果要部署到现有群集，请从列表中选择群集终结点。  此时会打开“创建 Service Fabric 群集”对话框。
 
-在“群集”  选项卡中，输入**群集名称**（例如“mytestcluster”），选择订阅，选择群集的区域（例如“中国东部”），输入群集节点的数目（对于测试群集，建议使用三节点），然后输入资源组（例如“mytestclustergroup”）。 单击“下一步”  。
+在“群集”  选项卡中，输入**群集名称**（例如“mytestcluster”），选择订阅，选择群集的区域（例如“中国东部”），输入群集节点的数目（对于测试群集，建议使用三节点），然后输入资源组（例如“mytestclustergroup”）。 单击“下一步”。 
 
 ![创建群集](./media/service-fabric-tutorial-deploy-app-to-party-cluster/create-cluster.png)
 
-在“证书”选项卡中，输入群集证书的密码和输出路径。  自签名证书创建为 PFX 文件并保存到指定的输出路径。  使用证书是为了确保节点到节点和客户端到节点的安全。  请勿将自签名证书用于生产群集。  此证书由 Visual Studio 用于对群集进行身份验证，以及用于部署应用程序。 选择“导入证书”，以便  将 PFX 安装在计算机的 CurrentUser\My certificate 存储中。  单击“下一步”  。
+在“证书”选项卡中，输入群集证书的密码和输出路径。  自签名证书创建为 PFX 文件并保存到指定的输出路径。  使用证书是为了确保节点到节点和客户端到节点的安全。  请勿将自签名证书用于生产群集。  此证书由 Visual Studio 用于对群集进行身份验证，以及用于部署应用程序。 选择“导入证书”，以便  将 PFX 安装在计算机的 CurrentUser\My certificate 存储中。  单击“下一步”。 
 
 ![创建群集](./media/service-fabric-tutorial-deploy-app-to-party-cluster/certificate.png)
 
-在“VM 详细信息”选项卡中，输入群集管理员帐户的“用户名”和“密码”。     选择群集节点的“虚拟机映像”，以及每个群集节点的“虚拟机大小”。    单击“高级”选项卡  。
+在“VM 详细信息”选项卡中，输入群集管理员帐户的“用户名”和“密码”。     选择群集节点的“虚拟机映像”，以及每个群集节点的“虚拟机大小”。    单击“高级”  选项卡。
 
 ![创建群集](./media/service-fabric-tutorial-deploy-app-to-party-cluster/vm-detail.png)
 
@@ -104,7 +104,7 @@ git clone https://github.com/Azure-Samples/service-fabric-dotnet-quickstart
 
 选择“发布”  。
 
-应用程序部署完以后，请打开浏览器并输入群集地址，后跟 **:8080**。 或者输入另一端口（如果已配置一个）。 例如 `http://mytestcluster.chinaeast.cloudapp.chinacloudapi.cn:8080`。 会看到应用程序在 Azure 群集中运行。 在投票网页中，尝试添加和删除投票选项，并针对这些选项中的一个或多个进行投票。
+应用程序部署完以后，请打开浏览器并输入群集地址，后跟 **:8080**。 或者输入另一端口（如果已配置一个）。 示例为 `http://mytestcluster.chinaeast.cloudapp.chinacloudapi.cn:8080`。 会看到应用程序在 Azure 群集中运行。 在投票网页中，尝试添加和删除投票选项，并针对这些选项中的一个或多个进行投票。
 
 ![Service Fabric 投票示例](./media/service-fabric-tutorial-deploy-app-to-party-cluster/application-screenshot-new-azure.png)
 
@@ -115,7 +115,7 @@ git clone https://github.com/Azure-Samples/service-fabric-dotnet-quickstart
 > * 创建群集。
 > * 使用 Visual Studio 将应用程序部署到远程群集。
 
-进入下一教程：
+转到下一教程：
 > [!div class="nextstepaction"]
 > [启用 HTTPS](service-fabric-tutorial-dotnet-app-enable-https-endpoint.md)
 

@@ -10,10 +10,10 @@ ms.date: 03/09/2020
 ms.author: v-tawe
 ms.custom: include file
 ms.openlocfilehash: e9b01465e457e58793ef36b4f81a23d300dd4158
-ms.sourcegitcommit: 60e32ec1b1e62de6e84f7c6e43bb1400bd42c9cf
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/24/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77574790"
 ---
 Azure IoT Edge 的主要功能之一是能够从云中将代码部署到 IoT Edge 设备。 **IoT Edge 模块**是以容器形式实现的可执行程序包。 在本部分中，你将直接从 Azure IoT 中心的 [Azure 市场的 IoT Edge 模块部分](https://market.azure.cn/marketplace/apps/category/internet-of-things?page=1&subcategories=iot-edge-modules)部署一个预建的模块。

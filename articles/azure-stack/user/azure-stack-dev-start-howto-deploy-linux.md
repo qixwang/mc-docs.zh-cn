@@ -9,10 +9,10 @@ ms.author: v-jay
 ms.reviewer: sijuman
 ms.lastreviewed: 10/02/2019
 ms.openlocfilehash: 19d4bac8f06507552b0ca5452c116ea61f6e5629
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77540834"
 ---
 # <a name="deploy-a-linux-vm-to-host-a-web-app-in-azure-stack-hub"></a>在 Azure Stack Hub 中部署用于托管 Web 应用的 Linux VM
@@ -34,7 +34,7 @@ ms.locfileid: "77540834"
 
 在开始之前，请确保一切已准备就绪。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 - 一个有权访问 Ubuntu Server 16.04 LTS 映像的 Azure Stack Hub 订阅。 可以使用更高版本的映像，但请注意，本文中的说明是根据 16.04 LTS 编写的。 如果没有此映像，请联系云运营商，以将映像放入 Azure Stack Hub 市场。
 
@@ -175,4 +175,4 @@ ms.locfileid: "77540834"
 
 ## <a name="next-steps"></a>后续步骤
 
-了解如何[设置 Azure Stack Hub 中的开发环境](azure-stack-dev-start.md)。
+了解如何[在 Azure Stack Hub 中设置开发环境](azure-stack-dev-start.md)。

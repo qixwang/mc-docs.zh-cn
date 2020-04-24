@@ -9,10 +9,10 @@ ms.author: v-jay
 ms.reviewer: unknown
 ms.lastreviewed: 01/04/2019
 ms.openlocfilehash: 323ebe159296b2a184021bbae4e0c0b58fe33efa
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77540804"
 ---
 # <a name="install-visual-studio-and-connect-to-azure-stack-hub"></a>安装 Visual Studio 并连接到 Azure Stack Hub
@@ -59,7 +59,7 @@ ms.locfileid: "77540804"
 
     ![添加新的 Azure Cloud Discovery 终结点](./media/azure-stack-install-visual-studio/image5.png)
 
-5. 选择“添加”   。  
+5. 选择 **添加** 。  
 
     Visual Studio 会调用 Azure 资源管理器，并发现终结点，包括 Active Directory 联合身份验证服务 (AD FS) 的身份验证终结点。
 

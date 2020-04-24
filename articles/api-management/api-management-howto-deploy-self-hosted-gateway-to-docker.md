@@ -14,10 +14,10 @@ origin.date: 10/31/2019
 ms.date: 02/24/2020
 ms.author: v-yiso
 ms.openlocfilehash: a3eddf4a07d671f83d85c3740e9db638c1e51502
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77428635"
 ---
 # <a name="deploy-an-azure-api-management-self-hosted-gateway-to-docker"></a>将 Azure API 管理自承载网关部署到 Docker
@@ -29,7 +29,7 @@ ms.locfileid: "77428635"
 
 ## <a name="prerequisites"></a>必备条件
 
-- 完成以下快速入门：[创建一个 Azure API 管理实例](get-started-create-service-instance.md)
+- 完成以下快速入门：[创建 Azure API 管理实例](get-started-create-service-instance.md)
 - 创建 Docker 环境。 [Docker for Desktop](https://www.docker.com/products/docker-desktop) 是用于开发和评估的极佳选项。 有关所有 Docker 版本、其功能以及 Docker 本身的综合文档的信息，请参阅 [Docker 文档](https://docs.docker.com)。
 - [在 API 管理实例中预配网关资源](api-management-howto-provision-self-hosted-gateway.md)
 

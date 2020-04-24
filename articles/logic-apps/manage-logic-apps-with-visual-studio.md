@@ -14,10 +14,10 @@ origin.date: 10/29/2019
 ms.author: v-yiso
 ms.date: 02/24/2020
 ms.openlocfilehash: 2228b0bd769a55c1a1b34afa255289c08d46b1af
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77428938"
 ---
 # <a name="manage-logic-apps-with-visual-studio"></a>使用 Visual Studio 管理逻辑应用
@@ -29,7 +29,7 @@ ms.locfileid: "77428938"
 
 <a name="requirements"></a>
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * 如果没有 Azure 订阅，请<a href="https://www.azure.cn/pricing/1rmb-trial" target="_blank">注册一个免费 Azure 帐户</a>。
 

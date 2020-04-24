@@ -7,14 +7,14 @@ origin.date: 04/20/2017
 ms.date: 02/24/2020
 ms.author: v-yeche
 ms.openlocfilehash: 7cf873eeab7de98c8709849b5ef542ab51a9c6cc
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77541056"
 ---
 # <a name="secure-wcf-based-communications-for-a-service"></a>保护服务的基于 WCF 的通信
-安全是通信最为重视的要素之一。 Reliable Services 应用程序框架提供了一些预先生成的通信堆栈和工具供你用来提高安全性。 本文介绍如何在使用服务远程处理时提高安全性。
+安全是通信最为重视的要素之一。 Reliable Services 应用程序框架提供了一些预先构建的通信堆栈和工具，可用来提高安全性。 本文介绍如何在使用服务远程处理时提高安全性。
 
 我们将使用一个现有[示例](service-fabric-reliable-services-communication-wcf.md)来解释如何为 Reliable Services 设置基于 WCF 的通信堆栈。 若要在使用基于 WCF 的通信堆栈时帮助保护服务，请遵循以下步骤：
 
@@ -55,7 +55,7 @@ ms.locfileid: "77541056"
         return b;
     }
     ```
-2. 在客户端中，在前面[示例](service-fabric-reliable-services-communication-wcf.md)中创建的 `WcfCommunicationClient` 类保持不变。 但是，需要重写 `WcfCommunicationClientFactory` 的 `CreateClientAsync` 方法：
+2. 在客户端中，在前面`WcfCommunicationClient`示例[中创建的 ](service-fabric-reliable-services-communication-wcf.md) 类保持不变。 但是，需要重写 `CreateClientAsync` 的 `WcfCommunicationClientFactory` 方法：
 
     ```csharp
     public class SecureWcfCommunicationClientFactory<TServiceContract> : WcfCommunicationClientFactory<TServiceContract> where TServiceContract : class

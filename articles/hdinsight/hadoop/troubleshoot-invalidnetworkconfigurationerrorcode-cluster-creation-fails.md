@@ -8,15 +8,15 @@ ms.author: v-yiso
 origin.date: 01/22/2020
 ms.date: 03/02/2020
 ms.openlocfilehash: 5c5b42fbcf793ba1f64ec4c9fd36c44934a68a6d
-ms.sourcegitcommit: 46fd4297641622c1984011eac4cb5a8f6f94e9f5
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77563489"
 ---
 # <a name="cluster-creation-fails-with-invalidnetworkconfigurationerrorcode-in-azure-hdinsight"></a>在 Azure HDInsight 中创建群集失败并出现 InvalidNetworkConfigurationErrorCode
 
-本文介绍在与 Azure HDInsight 群集交互时出现的问题的故障排除步骤和可能的解决方法。
+本文介绍在与 Azure HDInsight 群集交互时出现的问题的故障排除步骤和可能的解决方案。
 
 如果看到错误代码 `InvalidNetworkConfigurationErrorCode` 和说明“虚拟网络配置与 HDInsight 要求不兼容”，这往往表示群集的[虚拟网络配置](../hdinsight-plan-virtual-network-deployment.md)有问题。 请根据错误说明中的余下内容，按照以下部分所述解决问题。
 
@@ -60,7 +60,7 @@ Azure 存储和 SQL 没有固定的 IP 地址，因此，我们需要允许与�
 
 * 如果群集使用[网络安全组 (NSG)](../../virtual-network/virtual-network-vnet-plan-design-arm.md)。
 
-    转到 Azure 门户，并找到与其中部署了群集的子网关联的 NSG。 在“出站安全规则”部分，允许不受限制地对 Internet 进行出站访问（请注意，此处的**优先级**编号越小，表示优先级越高）。  另外，在“子网”部分确认此 NSG 是否已应用到群集子网。 
+    转到 Azure 门户并找到与部署了群集的子网关联的 NSG。 在“出站安全规则”部分，允许不受限制地对 Internet 进行出站访问（请注意，此处的**优先级**编号越小，表示优先级越高）。  另外，在“子网”部分确认此 NSG 是否已应用到群集子网。 
 
 * 如果群集使用[用户定义的路由 (UDR)](../../virtual-network/virtual-networks-udr-overview.md)。
 
@@ -89,13 +89,13 @@ ErrorDescription: Virtual Network configuration is not compatible with HDInsight
 
 验证 168.63.129.16 是否在自定义 DNS 链中。 虚拟网络中的 DNS 服务器可以将 DNS 查询转发到 Azure 的递归解析程序，以便解析该虚拟网络中的主机名。 有关详细信息，请参阅[虚拟网络中的名称解析](../../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server)。 可以通过虚拟 IP 168.63.129.16 访问 Azure 的递归解析程序。
 
-1. 使用 [ssh 命令](../hdinsight-hadoop-linux-use-ssh-unix.md)连接到群集。 编辑以下命令（将 CLUSTERNAME 替换为群集的名称），然后输入该命令：
+1. 使用 [ssh 命令](../hdinsight-hadoop-linux-use-ssh-unix.md)连接到群集。 编辑以下命令，将 CLUSTERNAME 替换为群集的名称，然后输入该命令：
 
     ```cmd
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.cn
     ```
 
-1. 运行以下命令：
+1. 执行以下命令：
 
     ```bash
     cat /etc/resolv.conf | grep nameserver*
@@ -116,7 +116,7 @@ ErrorDescription: Virtual Network configuration is not compatible with HDInsight
 **选项 1**  
 使用[规划 Azure HDInsight 的虚拟网络](../hdinsight-plan-virtual-network-deployment.md)中所述的步骤，将 168.63.129.16 添加为虚拟网络的第一个自定义 DNS。 仅当自定义 DNS 服务器在 Linux 上运行时，这些步骤才适用。
 
-**方法 2**  
+**选项 2**  
 为虚拟网络部署 DNS 服务器 VM。 这包括以下步骤：
 
 * 在虚拟网络中创建一个要配置为 DNS 转发器的 VM（可以是 Linux VM 或 Windows VM）。

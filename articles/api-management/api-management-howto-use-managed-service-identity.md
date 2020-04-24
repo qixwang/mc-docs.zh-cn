@@ -13,10 +13,10 @@ origin.date: 10/18/2017
 ms.date: 02/24/2020
 ms.author: v-yiso
 ms.openlocfilehash: 6f350f2ef6378235abdb385bba7e239467f11e18
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77429941"
 ---
 # <a name="use-managed-identities-in-azure-api-management"></a>在 Azure API 管理中使用托管标识
@@ -237,5 +237,5 @@ Set-AzureKeyVaultSecret -VaultName KEY_VAULT_NAME -Name KEY_VAULT_SECRET_NAME -S
 详细了解 Azure 资源的托管标识：
 
 * [什么是 Azure 资源的托管标识？](../active-directory/managed-identities-azure-resources/overview.md)
-* [Azure Resource Manager 模板](https://github.com/Azure/azure-quickstart-templates)
+* [Azure 资源管理器模板](https://github.com/Azure/azure-quickstart-templates)
 * [在策略中使用托管标识进行身份验证](./api-management-authentication-policies.md#ManagedIdentity)

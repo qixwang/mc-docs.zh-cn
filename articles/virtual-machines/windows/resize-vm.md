@@ -16,10 +16,10 @@ origin.date: 01/13/2020
 ms.date: 02/10/2020
 ms.author: v-yeche
 ms.openlocfilehash: 59d0a501e230531a929ee7c914b8304f1915a2c0
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77428527"
 ---
 # <a name="resize-a-windows-vm"></a>调整 Windows VM 的大小

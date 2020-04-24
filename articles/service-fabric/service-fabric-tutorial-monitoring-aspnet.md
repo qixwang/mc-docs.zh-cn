@@ -8,10 +8,10 @@ ms.date: 02/24/2020
 ms.author: v-yeche
 ms.custom: mvc
 ms.openlocfilehash: 9b6d454a8a2b061bce9e746347c56590e8c656fb
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77540135"
 ---
 # <a name="tutorial-monitor-and-diagnose-an-aspnet-core-application-on-service-fabric-using-application-insights"></a>教程：使用 Application Insights 在 Service Fabric 上监视和诊断 ASP.NET Core 应用程序
@@ -25,7 +25,7 @@ ms.locfileid: "77540135"
 > * 使用 Application Insights 中的应用映射功能
 > * 使用 Application Insights API 添加自定义事件
 
-在此系列教程中，你将学习如何：
+在此系列教程中，你会学习如何：
 > [!div class="checklist"]
 > * [构建 .NET Service Fabric 应用程序](service-fabric-tutorial-create-dotnet-app.md)
 > * [将应用程序部署到远程群集](service-fabric-tutorial-deploy-app-to-party-cluster.md)
@@ -43,7 +43,7 @@ ms.locfileid: "77540135"
 
 ## <a name="download-the-voting-sample-application"></a>下载投票示例应用程序
 
-如果未生成[本系列教程的第一部分](service-fabric-tutorial-create-dotnet-app.md)中的投票示例应用程序，可以下载它。 在命令窗口或终端中运行以下命令，将示例应用存储库克隆到本地计算机。
+如果未生成[本教程系列的第一部分](service-fabric-tutorial-create-dotnet-app.md)中的投票示例应用程序，还可以下载它。 在命令窗口或终端中运行以下命令，将示例应用存储库克隆到本地计算机。
 
 ```git
 git clone https://github.com/Azure-Samples/service-fabric-dotnet-quickstart
@@ -114,7 +114,7 @@ Application Insights 有两个特定于 Service Fabric 的 NuGet，可以根据�
     
 5. 在显示的“审阅更改”对话框中单击“确定”，接受“接受许可证”中的条款。    这样即可将 NuGet 添加到服务。
 6. 现在需在两个服务中设置遥测初始值设定项。 为此，请打开“VotingWeb.cs”和“VotingData.cs”。   对这两个文件执行下述两项步骤：
-    1. 在每个  \<ServiceName>.cs 顶部的现有 *using* 语句之后添加下面这两个 using  语句：
+    1. 在每个  *ServiceName>.cs 顶部的现有 \<using* 语句之后添加下面这两个 using  语句：
 
         ```csharp
         using Microsoft.ApplicationInsights.Extensibility;
@@ -162,7 +162,7 @@ Application Insights 有两个特定于 Service Fabric 的 NuGet，可以根据�
             .Build();
         ```
 
-仔细进行检查，确保在 *VotingWeb.cs* 和 *VotingData.cs* 中调用 `UseApplicationInsights()` 方法，如上所示。
+仔细进行检查，确保在 `UseApplicationInsights()`VotingWeb.cs*和*VotingData.cs*中调用* 方法，如上所示。
 
 >[!NOTE]
 >此示例应用使用 http 供服务通信。 如果使用 Service Remoting V2 来开发应用，则需在以前添加代码的位置添加以下代码行
@@ -270,7 +270,7 @@ public async Task<IActionResult> Delete(string name)
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，你已学习了如何执行以下操作：
+在本教程中，你了解了如何执行以下操作：
 > [!div class="checklist"]
 > * 为应用程序配置 Application Insights
 > * 收集响应遥测数据，跟踪服务之间基于 HTTP 的通信

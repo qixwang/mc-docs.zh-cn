@@ -15,10 +15,10 @@ origin.date: 10/24/2019
 ms.date: 02/24/2020
 ms.author: v-jay
 ms.openlocfilehash: f58176052eeb81409f8578f145fb7468bbfcee65
-ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77494491"
 ---
 # <a name="live-event-states-and-billing"></a>直播活动状态和计费
@@ -30,7 +30,7 @@ ms.locfileid: "77494491"
 > [!NOTE]
 > 直通直播活动不会自动关闭，必须通过 API 显式停止，以避免过多计费。 
 
-## <a name="states"></a>States
+## <a name="states"></a>状态
 
 直播活动可能会处于以下任一状态。
 

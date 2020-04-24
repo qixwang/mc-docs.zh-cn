@@ -7,10 +7,10 @@ origin.date: 01/16/2020
 ms.date: 02/24/2020
 ms.author: v-yeche
 ms.openlocfilehash: 9ee515ceac460953be2101c036f04832bbfa04ef
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77540005"
 ---
 # <a name="sfctl-container"></a>sfctl container
@@ -18,7 +18,7 @@ ms.locfileid: "77540005"
 
 ## <a name="commands"></a>命令
 
-|命令|说明|
+|Command|说明|
 | --- | --- |
 | invoke-api | 在 Service Fabric 节点上部署的容器上调用给定代码包的容器 API。 |
 | 日志 | 获取 Service Fabric 节点上部署的容器的容器日志。 |

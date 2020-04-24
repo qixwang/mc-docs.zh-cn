@@ -12,10 +12,10 @@ ms.date: 02/25/2020
 ms.author: v-junlch
 ms.custom: aaddev, vs-azure
 ms.openlocfilehash: 90bc63a4876b15edc15d26b93e4375f8b0d83f6c
-ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77653114"
 ---
 # <a name="getting-started-with-azure-active-directory-aspnet-mvc-projects"></a>Azure Active Directory（ASP.NET MVC 项目）入门
@@ -30,7 +30,7 @@ ms.locfileid: "77653114"
 
 ## <a name="requiring-authentication-to-access-controllers"></a>访问控制器需要身份验证
 
-项目中的所有控制器均带有 `[Authorize]` 属性。 此属性要求用户先进行身份验证，然后才能访问这些控制器。 若要允许匿名访问控制器，请从控制器删除此属性。 如果想要更详细地设置这些权限，请将该属性应用到需要身份验证的每个方法，而不是将它应用到控制器类。
+项目中的所有控制器均带有 `[Authorize]` 属性。 此属性要求用户先进行身份验证，才能访问这些控制器。 若要允许匿名访问控制器，请从控制器删除此属性。 如果想要更详细地设置这些权限，请将该属性应用到需要身份验证的每个方法，而不是将它应用到控制器类。
 
 ## <a name="adding-signin--signout-controls"></a>添加 SignIn/SignOut 控件
 

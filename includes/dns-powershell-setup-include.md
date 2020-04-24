@@ -10,19 +10,19 @@ ms.date: 02/17/2020
 ms.author: v-jay
 ms.custom: include file for PowerShell for Azure DNS
 ms.openlocfilehash: 841d7bda82fb26471396a0f0f09c63c50917e64e
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77428748"
 ---
 ## <a name="set-up-azure-powershell-for-azure-dns"></a>设置适用于 Azure DNS 的 Azure PowerShell
 
-### <a name="before-you-begin"></a>准备阶段
+### <a name="before-you-begin"></a>开始之前
 
 [!INCLUDE [requires-azurerm](requires-azurerm.md)]
 
-在开始配置之前，请确保具备以下各项。
+在开始配置之前，请确认你具备以下项。
 
 * Azure 订阅。 如果还没有 Azure 订阅，可在开始前创建一个 [1 元人民币的试用](https://www.azure.cn/pricing/1rmb-trial/)帐户。
 * 需安装最新版本的 Azure 资源管理器 PowerShell cmdlet。 有关详细信息，请参阅[如何安装和配置 Azure PowerShell](https://docs.microsoft.com/powershell/azureps-cmdlets-docs)。
@@ -75,7 +75,7 @@ Select-AzureRmSubscription -SubscriptionName "your_subscription_name"
 
 ### <a name="create-a-resource-group"></a>创建资源组
 
-Azure Resource Manager 要求所有资源组指定一个位置。 此位置用作该资源组中的资源的默认位置。 但是，由于所有 DNS 资源都是全局性而非区域性的，因此资源组位置的选择不会影响 Azure DNS。
+Azure 资源管理器要求所有资源组指定一个位置。 此位置将用作该资源组中的资源的默认位置。 但是，由于所有 DNS 资源都是全局性而非区域性的，因此资源组位置的选择不会影响 Azure DNS。
 
 如果使用现有资源组，可跳过此步骤。
 

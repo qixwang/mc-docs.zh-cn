@@ -16,10 +16,10 @@ origin.date: 09/20/2019
 ms.date: 02/10/2020
 ms.author: v-yeche
 ms.openlocfilehash: b95c5700c49d211cc6b3937b36497494b4116e2a
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77428645"
 ---
 # <a name="create-a-complete-linux-virtual-machine-infrastructure-in-azure-with-terraform"></a>在 Azure 中使用 Terraform 创建完整的 Linux 虚拟机基础结构
@@ -27,7 +27,7 @@ ms.locfileid: "77428645"
 使用 Terraform 可以在 Azure 中定义和创建完整的基础结构部署。 以用户可读格式生成 Terraform 模板，用于以一致且可重现的方式创建和配置 Azure 资源。 本文介绍了如何使用 Terraform 创建完整的 Linux 环境和支持资源。 另外，还可以了解如何[安装和配置 Terraform](terraform-install-configure.md)。
 
 > [!NOTE]
-> 若要获得特定于 Terraform 的支持，请使用其社区渠道之一直接联系 Terraform：
+> 要获得特定于 Terraform 的支持，请直接使用以下社区通道之一联系 Terraform：
 >
 >   • 社区门户的 [Terraform 部分](https://discuss.hashicorp.com/c/terraform-core)包含问题、用例和有用模式。
 >
@@ -57,7 +57,7 @@ provider "azurerm" {
 
 <!--MOONCAKE CUSTOMIZE  environment     = "china" -->
 
-以下部分在 `chinaeast` 位置创建名为 `myResourceGroup` 的资源组：
+以下部分在 `myResourceGroup` 位置创建名为 `chinaeast` 的资源组：
 
 ```hcl
 resource "azurerm_resource_group" "myterraformgroup" {

@@ -10,10 +10,10 @@ ms.author: v-jay
 ms.reviewer: unknown
 ms.lastreviewed: 03/23/2019
 ms.openlocfilehash: 91f9533e8393b41cfaae81211627a7d2a91a624d
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77540611"
 ---
 # <a name="validate-azure-registration"></a>验证 Azure 注册
@@ -27,11 +27,11 @@ ms.locfileid: "77540611"
 
 ## <a name="get-the-readiness-checker-tool"></a>获取就绪性检查器工具
 
-从 [PowerShell 库](https://aka.ms/AzsReadinessChecker)下载最新版本的 **AzsReadinessChecker**。  
+从 **PowerShell 库**下载最新版本的 [AzsReadinessChecker](https://aka.ms/AzsReadinessChecker)。  
 
 ## <a name="prerequisites"></a>必备条件
 
-以下系统必备组件是必需的：
+需要以下先决条件：
 
 ### <a name="the-computer-on-which-the-tool-runs"></a>运行该工具的计算机
 

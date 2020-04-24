@@ -9,10 +9,10 @@ origin.date: 09/19/2019
 ms.date: 10/23/2019
 ms.topic: conceptual
 ms.openlocfilehash: d96349ab6fcad2dddaca3410ada3756143ded146
-ms.sourcegitcommit: 27eaabd82b12ad6a6840f30763034a6360977186
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77497381"
 ---
 # <a name="pre-installed-applications-on-rendering-vm-images"></a>在渲染 VM 映像上预安装的应用程序

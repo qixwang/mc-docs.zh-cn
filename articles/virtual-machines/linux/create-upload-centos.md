@@ -13,10 +13,10 @@ origin.date: 11/25/2019
 ms.date: 02/10/2020
 ms.author: v-yeche
 ms.openlocfilehash: 91ec5e67dca7033843aaf08f910ecda59c305633
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77428673"
 ---
 # <a name="prepare-a-centos-based-virtual-machine-for-azure"></a>为 Azure 准备基于 CentOS 的虚拟机
@@ -28,14 +28,14 @@ ms.locfileid: "77428673"
 
 ## <a name="prerequisites"></a>必备条件
 
-本文假设已在虚拟硬盘中安装 CentOS（或类似的衍生产品）Linux 操作系统。 可使用多种工具创建 .vhd 文件，如 Hyper-V 等虚拟化解决方案。 有关说明，请参阅 [安装 Hyper-V 角色和配置虚拟机](https://technet.microsoft.com/library/hh846766.aspx)。
+本文假设已在虚拟硬盘中安装了 CentOS（或类似的衍生产品）Linux 操作系统。 存在多个用于创建 .vhd 文件的工具，例如 Hyper-V 等虚拟化解决方案。 有关说明，请参阅[安装 Hyper-V 角色和配置虚拟机](https://technet.microsoft.com/library/hh846766.aspx)。
 
 **CentOS 安装说明**
 
 * 另请参阅[常规 Linux 安装说明](create-upload-generic.md#general-linux-installation-notes)，获取更多有关如何为 Azure 准备 Linux 的提示。
-* Azure 不支持 VHDX 格式，仅支持 **固定大小的 VHD**。  可使用 Hyper-V 管理器或 convert-vhd cmdlet 将磁盘转换为 VHD 格式。 如果使用 VirtualBox，则意味着选择的是“固定大小”，而不是在创建磁盘时动态分配默认大小。 
-* 在安装 Linux 系统时，*建议*使用标准分区而不是 LVM（通常是许多安装的默认值）。 这可以避免与克隆 VM 发生 LVM 名称冲突，尤其是在需要将 OS 磁盘连接到另一个同类 VM 进行故障排除时。 [LVM](configure-lvm.md?toc=%2fvirtual-machines%2flinux%2ftoc.json) 或 [RAID](configure-raid.md?toc=%2fvirtual-machines%2flinux%2ftoc.json) 可以在数据磁盘上使用。
-* 需要装载 UDF 文件系统的内核支持。 在 Azure 上首次启动时，预配配置会通过附加到来宾的 UDF 格式媒体传递到 Linux VM。 Azure Linux 代理必须能够装载 UDF 文件系统才能读取其配置和预配 VM。
+* Azure 不支持 VHDX 格式，仅支持**固定大小的 VHD**。  可使用 Hyper-V 管理器或 convert-vhd cmdlet 将磁盘转换为 VHD 格式。 如果使用 VirtualBox，则意味着选择的是“固定大小”，而不是在创建磁盘时动态分配默认大小。 
+* 在安装 Linux 系统时，*建议*使用标准分区而不是 LVM（通常是许多安装的默认值）。 这会避免 LVM 与克隆 VM 发生名称冲突，特别是在 OS 磁盘需要连接到另一台相同的 VM 进行故障排除的情况下。 [LVM](configure-lvm.md?toc=%2fvirtual-machines%2flinux%2ftoc.json) 或 [RAID](configure-raid.md?toc=%2fvirtual-machines%2flinux%2ftoc.json) 可以在数据磁盘上使用。
+* 需要装载 UDF 文件系统的内核支持。 在 Azure 上首次启动时，预配配置将通过附加到来宾的 UDF 格式媒体传递到 Linux VM。 Azure Linux 代理必须能够装载 UDF 文件系统才能读取其配置和预配 VM。
 * 低于 2.6.37 的 Linux 内核版本不支持具有更大 VM 大小的 Hyper-V 上的 NUMA。 
 
     <!-- Not Available on Line 39:  Red Hat 2.6.32 kernel, and was fixed in RHEL 6.6 (kernel-2.6.32-504). Systems running custom kernels older than 2.6.37, or RHEL-based kernels older than 2.6.32-504 must set the boot parameter `numa=off` on the kernel command-line in grub.conf. For more information see Red Hat [KB 436883](https://access.redhat.com/solutions/436883)-->
@@ -47,22 +47,22 @@ ms.locfileid: "77428673"
 
 1. 在 Hyper-V 管理器中，选择虚拟机。
 
-2. 单击“连接”  以打开该虚拟机的控制台窗口。
+2. 单击“连接”打开该虚拟机的控制台窗口。 
 
-3. 在 CentOS 6 中，NetworkManager 可能会干扰 Azure Linux 代理。 请运行以下命令来卸载该包：
+3. 在 CentOS 6 中，NetworkManager 可能会干扰 Azure Linux 代理。 运行以下命令卸载此包：
 
     ```bash
     sudo rpm -e --nodeps NetworkManager
     ```
 
-4. 创建或编辑 `/etc/sysconfig/network` 文件，添加以下文本：
+4. 创建或编辑文件 `/etc/sysconfig/network` 并添加以下文本：
 
     ```console
     NETWORKING=yes
     HOSTNAME=localhost.localdomain
     ```
 
-5. 创建或编辑 `/etc/sysconfig/network-scripts/ifcfg-eth0` 文件，添加以下文本：
+5. 创建或编辑文件 `/etc/sysconfig/network-scripts/ifcfg-eth0` 并添加以下文本：
 
     ```console
     DEVICE=eth0
@@ -74,20 +74,20 @@ ms.locfileid: "77428673"
     IPV6INIT=no
     ```
 
-6. 修改 udev 规则，以免为以太网接口生成静态规则。 在 Azure 或 Hyper-V 中克隆虚拟机时，这些规则可能会引发问题：
+6. 修改 udev 规则，以避免产生以太网接口的静态规则。 在 Azure 或 Hyper-V 中克隆虚拟机时，这些规则可能会引发问题：
 
     ```bash
     sudo ln -s /dev/null /etc/udev/rules.d/75-persistent-net-generator.rules
     sudo rm -f /etc/udev/rules.d/70-persistent-net.rules
     ```
 
-7. 通过运行以下命令，确保网络服务在引导时启动：
+7. 通过运行以下命令，确保网络服务会在引导时启动：
 
     ```bash
     sudo chkconfig network on
     ```
 
-8. 如果要使用 Azure 数据中心托管的 OpenLogic 镜像，请使用以下存储库替换 `/etc/yum.repos.d/CentOS-Base.repo` 文件。  这还会添加包含 Azure Linux 代理等其他包的 **[openlogic]** 存储库：
+8. 如果要使用 Azure 数据中心托管的 OpenLogic 镜像，则将 `/etc/yum.repos.d/CentOS-Base.repo` 文件替换为以下存储库。  这还会添加包含 Azure Linux 代理等其他包的 **[openlogic]** 存储库：
 
     ```console
     [openlogic]
@@ -139,21 +139,21 @@ ms.locfileid: "77428673"
     ```
 
     > [!Note]
-    > 本指南的余下部分假设用户至少会使用 `[openlogic]` 存储库，下面将使用该存储库安装 Azure Linux 代理。
+    > 本指南的余下部分假设你至少会使用 `[openlogic]` 存储库，下面将使用该存储库安装 Azure Linux 代理。
 
-9. 将以下行添加到 /etc/yum.conf：
+9. 将下列行添加到 /etc/yum.conf：
 
     ```console
     http_caching=packages
     ```
 
-10. 运行以下命令，清除当前的 yum 元数据并使用最新的包更新系统：
+10. 运行以下命令清除当前 yum 元数据并使用最新包更新系统：
 
     ```bash
     yum clean all
     ```
 
-    建议将所有包都更新到最新版本，除非要为旧版 CentOS 创建映像：
+    除非要创建较旧版本的 CentOS 的映像，否则建议将所有包更新到最新：
 
     ```bash
     sudo yum -y update
@@ -164,14 +164,14 @@ ms.locfileid: "77428673"
 11. （可选）安装适用于 Linux Integration Services (LIS) 的驱动程序。
 
     > [!IMPORTANT]
-    > 此步骤对于 CentOS 6.3 及更低版本来说是 **必需** 步骤，对于更高版本来说是可选步骤。
+    > 此步骤对于 CentOS 6.3 和更早版本是**必需**的，对于之后的版本是可选的。
 
     ```bash
     sudo rpm -e hypervkvpd  ## (may return error if not installed, that's OK)
     sudo yum install microsoft-hyper-v
     ```
 
-    也可按照 [LIS 下载页](https://www.microsoft.com/download/details.aspx?id=51612) 上的手动安装说明进行操作，将 RPM 安装到 VM。
+    此外，可以按照 [LIS 下载页](https://www.microsoft.com/download/details.aspx?id=51612)上的手动安装说明操作将 RPM 安装到 VM 中。
 
 12. 安装 Azure Linux 代理和依赖项。 启动并启用 waagent 服务：
 
@@ -181,17 +181,17 @@ ms.locfileid: "77428673"
     sudo chkconfig waagent on
     ```
 
-    如果没有如步骤 3 中所述删除 NetworkManager 包和 NetworkManager-gnome 包，则 WALinuxAgent 包会将其删除。
+    如果没有按步骤 3 中所述删除 NetworkManager 包和 NetworkManager-gnome 包，则安装 WALinuxAgent 包时会删除它们。
 
-13. 在 grub 配置中修改内核引导行，使其包含 Azure 的其他内核参数。 为此，请在文本编辑器中打开 `/boot/grub/menu.lst` ，并确保默认内核包含以下参数：
+13. 在 grub 配置中修改内核引导行，以使其包含 Azure 的其他内核参数。 为此，请在文本编辑器中打开 `/boot/grub/menu.lst`，并确保默认内核包含以下参数：
 
     ```console
     console=ttyS0 earlyprintk=ttyS0 rootdelay=300
     ```
 
-    这还可以确保所有控制台消息都发送到第一个串行端口，从而可以协助 Azure 支持人员调试问题。
+    这还将确保所有控制台消息都发送到第一个串行端口，从而可以协助 Azure 支持人员调试问题。
 
-    除此之外，建议 *删除* 以下参数：
+    除此之外，建议*删除*以下参数：
 
     ```console
     rhgb quiet crashkernel=auto
@@ -204,11 +204,11 @@ ms.locfileid: "77428673"
     
     <!-- Not Available on See Red Hat [KB 436883](https://access.redhat.com/solutions/436883) -->
 
-14. 请确保已安装 SSH 服务器且将其配置为在引导时启动。  这通常是默认设置。
+14. 请确保已安装 SSH 服务器且已将其配置为在引导时启动。  这通常是默认设置。
 
 15. 不要在 OS 磁盘上创建交换空间。
 
-    Azure Linux 代理可使用在 Azure 上设置后附加到虚拟机的本地资源磁盘自动配置交换空间。 请注意，本地资源磁盘是 *临时* 磁盘，并可能在取消设置虚拟机时被清空。 在安装 Azure Linux 代理（参见上一步）后，相应地在 `/etc/waagent.conf` 中修改以下参数：
+    Azure Linux 代理可使用在 Azure 上设置后附加到虚拟机的本地资源磁盘自动配置交换空间。 请注意，本地资源磁盘是*临时*磁盘，并可能在取消预配 VM 时被清空。 在安装 Azure Linux 代理（请参见前一步骤）后，相应地在 `/etc/waagent.conf` 中修改以下参数：
 
     ```console
     ResourceDisk.Format=y
@@ -226,32 +226,32 @@ ms.locfileid: "77428673"
     logout
     ```
 
-17. 在 Hyper-V 管理器中单击“操作”->“关闭”  。 现在，准备将 Linux VHD 上传到 Azure。
+17. 在 Hyper-V 管理器中单击“操作”->“关闭”。  Linux VHD 现已准备好上传到 Azure。
 
 ## <a name="centos-70"></a>CentOS 7.0+
 
 **CentOS 7（和类似衍生产品）中的更改**
 
-为 Azure 准备 CentOS 7 虚拟机与 CentOS 6 非常类似，但有几个值得注意的重要区别：
+为 Azure 准备 CentOS 7 虚拟机非常类似于 CentOS 6，但有几个值得注意的重要区别：
 
-* NetworkManager 包不再与 Azure Linux 代理冲突。 默认会安装此包，建议不要删除。
-* GRUB2 现在用作默认引导加载程序，因此编辑内核参数的过程已更改（见下文）。
+* NetworkManager 包不再与 Azure Linux 代理冲突。 默认情况下将安装此包，建议不要删除它。
+* GRUB2 现在用作默认引导加载程序，因此用于编辑内核参数的过程已更改（请参见下文）。
 * XFS 现在是默认文件系统。 如果需要，仍可以使用 ext4 文件系统。
 
 **配置步骤**
 
 1. 在 Hyper-V 管理器中，选择虚拟机。
 
-2. 单击“连接”  以打开该虚拟机的控制台窗口。
+2. 单击“连接”打开该虚拟机的控制台窗口。 
 
-3. 创建或编辑 `/etc/sysconfig/network` 文件，添加以下文本：
+3. 创建或编辑文件 `/etc/sysconfig/network` 并添加以下文本：
 
     ```console
     NETWORKING=yes
     HOSTNAME=localhost.localdomain
     ```
 
-4. 创建或编辑 `/etc/sysconfig/network-scripts/ifcfg-eth0` 文件，添加以下文本：
+4. 创建或编辑文件 `/etc/sysconfig/network-scripts/ifcfg-eth0` 并添加以下文本：
 
     ```console
     DEVICE=eth0
@@ -264,13 +264,13 @@ ms.locfileid: "77428673"
     NM_CONTROLLED=no
     ```
 
-5. 修改 udev 规则，以免为以太网接口生成静态规则。 在 Azure 或 Hyper-V 中克隆虚拟机时，这些规则可能会引发问题：
+5. 修改 udev 规则，以避免产生以太网接口的静态规则。 在 Azure 或 Hyper-V 中克隆虚拟机时，这些规则可能会引发问题：
 
     ```bash
     sudo ln -s /dev/null /etc/udev/rules.d/75-persistent-net-generator.rules
     ```
 
-6. 如果要使用 Azure 数据中心托管的 OpenLogic 镜像，请使用以下存储库替换 `/etc/yum.repos.d/CentOS-Base.repo` 文件。  这还会添加包含 Azure Linux 代理包的 **[openlogic]** 存储库：
+6. 如果要使用 Azure 数据中心托管的 OpenLogic 镜像，则将 `/etc/yum.repos.d/CentOS-Base.repo` 文件替换为以下存储库。  这还会添加包含 Azure Linux 代理包的 **[openlogic]** 存储库：
 
     ```console
     [openlogic]
@@ -313,15 +313,15 @@ ms.locfileid: "77428673"
     ```
 
     > [!Note]
-    > 本指南的余下部分假设用户至少会使用 `[openlogic]` 存储库，下面将使用该存储库安装 Azure Linux 代理。
+    > 本指南的余下部分假设你至少会使用 `[openlogic]` 存储库，下面将使用该存储库安装 Azure Linux 代理。
 
-7. 运行以下命令清除当前 yum 元数据并安装所有更新：
+7. 运行以下命令以清除当前 yum 元数据并安装所有更新：
 
     ```bash
     sudo yum clean all
     ```
 
-    建议将所有包都更新到最新版本，除非要为旧版 CentOS 创建映像：
+    除非要创建较旧版本的 CentOS 的映像，否则建议将所有包更新到最新：
 
     ```bash
     sudo yum -y update
@@ -329,19 +329,19 @@ ms.locfileid: "77428673"
 
     运行此命令后，可能需要重新启动。
 
-8. 在 grub 配置中修改内核引导行，使其包含 Azure 的其他内核参数。 为此，请在文本编辑器中打开 `/etc/default/grub` 并编辑 `GRUB_CMDLINE_LINUX` 参数，例如：
+8. 在 grub 配置中修改内核引导行，以使其包含 Azure 的其他内核参数。 为此，请在文本编辑器中打开 `/etc/default/grub` 并编辑 `GRUB_CMDLINE_LINUX` 参数，例如：
 
     ```console
     GRUB_CMDLINE_LINUX="rootdelay=300 console=ttyS0 earlyprintk=ttyS0 net.ifnames=0"
     ```
 
-   这还可以确保所有控制台消息都发送到第一个串行端口，从而可以协助 Azure 支持人员调试问题。 此外还会关闭新的针对 NIC 的 CentOS 7 命名约定。 除此之外，建议 *删除* 以下参数：
+   这还将确保所有控制台消息都发送到第一个串行端口，从而可以协助 Azure 支持人员调试问题。 此外，还会关闭 NIC 的新 CentOS 7 命名约定。 除此之外，建议*删除*以下参数：
 
     ```console
     rhgb quiet crashkernel=auto
     ```
 
-    图形界面式引导和安静引导在云环境中不适用，在云环境中，我们希望所有日志都发送到串行端口。 根据需要可以配置 `crashkernel` 选项，但请注意此参数会使 VM 中的可用内存量减少 128 MB 或更多，这在较小的 VM 上可能会出现问题。
+    图形界面式引导和安静引导在云环境中不适用，在云环境中，我们希望所有日志都发送到串行端口。 根据需要可以配置 `crashkernel` 选项，但请注意此参数会使虚拟机中的可用内存量减少 128MB 或更多，这在较小的虚拟机上可能会出现问题。
 
 9. 按照上面所示完成编辑 `/etc/default/grub` 后，运行以下命令以重新生成 grub 配置：
 
@@ -349,7 +349,7 @@ ms.locfileid: "77428673"
     sudo grub2-mkconfig -o /boot/grub2/grub.cfg
     ```
 
-10. 如果从 VMware、VirtualBox 或 KVM  生成映像：请确保 initramfs 中包含 HYPER-V 驱动程序：
+10. 如果要从 **VMware、VirtualBox 或 KVM** 生成映像：请确保 initramfs 中包含 Hyper-V 驱动程序：
 
     编辑 `/etc/dracut.conf`，添加内容：
 
@@ -372,7 +372,7 @@ ms.locfileid: "77428673"
 
 12. 不要在 OS 磁盘上创建交换空间。
 
-    Azure Linux 代理可使用在 Azure 上设置后附加到虚拟机的本地资源磁盘自动配置交换空间。 请注意，本地资源磁盘是 *临时* 磁盘，并可能在取消设置虚拟机时被清空。 在安装 Azure Linux 代理（参见上一步）后，相应地在 `/etc/waagent.conf` 中修改以下参数：
+    Azure Linux 代理可使用在 Azure 上设置后附加到虚拟机的本地资源磁盘自动配置交换空间。 请注意，本地资源磁盘是*临时*磁盘，并可能在取消预配 VM 时被清空。 在安装 Azure Linux 代理（请参见前一步骤）后，相应地在 `/etc/waagent.conf` 中修改以下参数：
 
     ```console
     ResourceDisk.Format=y
@@ -390,10 +390,10 @@ ms.locfileid: "77428673"
     logout
     ```
 
-14. 在 Hyper-V 管理器中单击“操作”->“关闭”  。 Linux VHD 现已准备好上传到 Azure。
+14. 在 Hyper-V 管理器中单击“操作”->“关闭”。  Linux VHD 现已准备好上传到 Azure。
 
 ## <a name="next-steps"></a>后续步骤
 
-现在，可以使用 CentOS Linux 虚拟硬盘在 Azure 中创建新的 Azure 虚拟机了。 如果是首次将 .vhd 文件上传到 Azure，请参阅[从自定义磁盘创建 Linux VM](upload-vhd.md#option-1-upload-a-vhd)。
+现在，可以使用 CentOS Linux 虚拟硬盘在 Azure 中创建新的 Azure 虚拟机。 如果是首次将 .vhd 文件上传到 Azure，请参阅[从自定义磁盘创建 Linux VM](upload-vhd.md#option-1-upload-a-vhd)。
 
 <!-- Update_Description: wording update, update meta properties -->

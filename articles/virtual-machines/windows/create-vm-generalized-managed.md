@@ -1,5 +1,5 @@
 ---
-title: 从托管映像创建 VM
+title: 从托管的映像创建 VM
 description: 在资源管理器部署模型中，使用 Azure PowerShell 或 Azure 门户从通用托管映像创建 Windows 虚拟机。
 services: virtual-machines-windows
 documentationcenter: ''
@@ -15,15 +15,15 @@ origin.date: 09/17/2018
 ms.date: 02/10/2020
 ms.author: v-yeche
 ms.openlocfilehash: 8193223053907d2db573ec8f4ac36f67bc902af2
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77428566"
 ---
-# <a name="create-a-vm-from-a-managed-image"></a>从托管映像创建 VM
+# <a name="create-a-vm-from-a-managed-image"></a>从托管的映像创建 VM
 
-可以使用 Azure 门户或 PowerShell 基于 Azure 托管 VM 映像创建多台虚拟机 (VM)。 托管 VM 映像包含创建 VM 所需的信息，包括 OS 和数据磁盘。 构成映像的虚拟硬盘 (VHD)（包括 OS 磁盘和任何数据磁盘）均作为托管磁盘存储。 
+可以使用 Azure 门户或 PowerShell 基于 Azure 托管 VM 映像创建多台虚拟机 (VM)。 托管 VM 映像包含创建 VM（包括 OS 和数据磁盘）所需的信息。 构成映像的虚拟硬盘 (VHD)（包括 OS 磁盘和任何数据磁盘）均作为托管磁盘存储。 
 
 在创建新的 VM 之前，你需要[创建一个托管 VM 映像](capture-image-resource.md)来用作源映像，并向应当有权访问映像的任何用户授予对该映像的读取访问权限。 
 

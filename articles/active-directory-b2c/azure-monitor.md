@@ -12,10 +12,10 @@ ms.author: v-junlch
 ms.subservice: B2C
 ms.date: 02/20/2020
 ms.openlocfilehash: 1df220db96d3a2682e82de940e9306e45cbe7d2d
-ms.sourcegitcommit: 1bd7711964586b41ff67fd1346dad368fe7383da
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77531339"
 ---
 # <a name="monitor-azure-ad-b2c-with-azure-monitor"></a>使用 Azure Monitor 监视 Azure AD B2C
@@ -83,7 +83,7 @@ Azure AD B2C 目录的“目录 ID”（也称为租户 ID）。
 - [rgDelegatedResourceManagement.json](https://raw.githubusercontent.com/Azure/Azure-Lighthouse-samples/master/Azure-Delegated-Resource-Management/templates/rg-delegated-resource-management/rgDelegatedResourceManagement.json)
 - [rgDelegatedResourceManagement.parameters.json](https://raw.githubusercontent.com/Azure/Azure-Lighthouse-samples/master/Azure-Delegated-Resource-Management/templates/rg-delegated-resource-management/rgDelegatedResourceManagement.parameters.json)
 
-接下来，请使用前面记下的值更新参数文件。 以下 JSON 代码片段演示了 Azure 资源管理器模板参数文件的示例。 对于 `authorizations.value.roleDefinitionId`，请使用“参与者”角色的[内置角色](../role-based-access-control/built-in-roles.md)值 `b24988ac-6180-42a0-ab88-20f7382dd24c`。 
+接下来，请使用前面记下的值更新参数文件。 以下 JSON 代码片段演示了 Azure 资源管理器模板参数文件的示例。 对于 `authorizations.value.roleDefinitionId`，请使用“参与者”角色的[内置角色](../role-based-access-control/built-in-roles.md)值 *。* `b24988ac-6180-42a0-ab88-20f7382dd24c`
 
 ```JSON
 {

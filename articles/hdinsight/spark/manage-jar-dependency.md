@@ -10,10 +10,10 @@ ms.topic: conceptual
 origin.date: 02/05/2020
 ms.date: 03/02/2020
 ms.openlocfilehash: a1fbd2a086ac21ca879466d28037257bd160b781
-ms.sourcegitcommit: 46fd4297641622c1984011eac4cb5a8f6f94e9f5
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77563581"
 ---
 # <a name="jar-dependency-management-best-practices"></a>JAR 依赖项管理最佳做法

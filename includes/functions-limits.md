@@ -5,18 +5,18 @@ ms.topic: include
 ms.date: 02/17/2020
 ms.author: v-junlch
 ms.openlocfilehash: 45a575589f95a71d7f809434e1935e499803c71c
-ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77494185"
 ---
 | 资源 | [消耗计划](../articles/azure-functions/functions-scale.md#consumption-plan) | 高级计划 | [应用服务计划](../articles/azure-functions/functions-scale.md#app-service-plan)<sup>1</sup> |
 | --- | --- | --- | --- |
-| 向外扩展 | 事件驱动 | 事件驱动 | [手动/自动缩放](../articles/app-service/manage-scale-up.md) | 
+| 横向扩展 | 事件驱动 | 事件驱动 | [手动/自动缩放](../articles/app-service/manage-scale-up.md) | 
 | 最大实例数 | 200 | 100 | 10-20 |
 |默认[超时持续时间](../articles/azure-functions/functions-scale.md#timeout)（分钟） |5 | 30 |30<sup>2</sup> |
-|最大[超时持续时间](../articles/azure-functions/functions-scale.md#timeout)（分钟） |10 个 | 无限<sup>8</sup> | 不受限制<sup>3</sup> |
+|最大[超时持续时间](../articles/azure-functions/functions-scale.md#timeout)（分钟） |10 | 无限<sup>8</sup> | 不受限制<sup>3</sup> |
 | 最大出站连接数（每个实例） | 600 个处于活动状态（总共 1200 个） | unbounded | unbounded |
 | 最大请求大小 (MB)<sup>4</sup> | 100 | 100 | 100 |
 | 最大查询字符串长度<sup>4</sup> | 4096 | 4096 | 4096 |

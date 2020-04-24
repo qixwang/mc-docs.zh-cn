@@ -9,10 +9,10 @@ ms.author: v-jay
 ms.reviewer: avishwan
 ms.lastreviewed: 05/07/2019
 ms.openlocfilehash: a21e0b004a8d70e13c5d859f57c21f5e3462775a
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77540942"
 ---
 # <a name="create-and-publish-a-custom-azure-stack-hub-marketplace-item"></a>创建并发布自定义 Azure Stack Hub 市场项

@@ -13,15 +13,15 @@ origin.date: 04/20/2017
 ms.date: 05/15/2018
 ms.author: v-lingwu
 ms.openlocfilehash: 5ae9c989dc5f8d748583d832bab91d141d77f95d
-ms.sourcegitcommit: 27eaabd82b12ad6a6840f30763034a6360977186
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77497359"
 ---
 # <a name="task-start-event"></a>任务开始事件
 
- 当任务已计划由计划程序在计算节点上启动时，会发出此事件。 请注意，如果重试任务或对其进行重新排队，此事件会再次发出，但重试计数和系统任务版本将相应更新。
+ 当任务已计划由计划程序在计算节点上启动时，会发出此事件。 请注意，如果重试任务或对其进行重新排队，此事件将再次发出，但重试计数和系统任务版本将相应更新。
 
 
  以下示例显示任务开始事件的正文。
@@ -48,7 +48,7 @@ ms.locfileid: "77497359"
 }
 ```
 
-|元素名称|类型|注释|
+|元素名称|类型|说明|
 |------------------|----------|-----------|
 |`jobId`|String|包含任务的作业的 ID。|
 |`id`|String|任务的 ID。|
@@ -59,28 +59,28 @@ ms.locfileid: "77497359"
 |[`constraints`](#constraints)|复杂类型|应用到此任务的执行约束。|
 |[`executionInfo`](#executionInfo)|复杂类型|包含有关任务执行的信息。|
 
-###  <a name="nodeInfo"></a> nodeInfo
+###  <a name="nodeinfo"></a><a name="nodeInfo"></a> nodeInfo
 
-|元素名称|类型|注释|
+|元素名称|类型|说明|
 |------------------|----------|-----------|
 |`poolId`|String|运行任务的池的 ID。|
 |`nodeId`|String|运行任务的节点的 ID。|
 
-###  <a name="multiInstanceSettings"></a> multiInstanceSettings
+###  <a name="multiinstancesettings"></a><a name="multiInstanceSettings"></a> multiInstanceSettings
 
-|元素名称|类型|注释|
+|元素名称|类型|说明|
 |------------------|----------|-----------|
-|`numberOfInstances`|int|任务所需的计算节点数。|
+|`numberOfInstances`|Int|任务所需的计算节点数。|
 
-###  <a name="constraints"></a> constraints
+###  <a name="constraints"></a><a name="constraints"></a> constraints
 
-|元素名称|类型|注释|
+|元素名称|类型|说明|
 |------------------|----------|-----------|
-|`maxTaskRetryCount`|Int32|可以重试任务的最大次数。 批处理服务在其退出代码非零时重试任务。<br /><br /> 请注意，此值专门用于控制重试的次数。 批处理服务将尝试任务一次，并重试，直至达到此上限为止。 例如，如果最大重试计数为 3，则批处理任务最多尝试任务 4 次（一次是初始尝试，其余 3 次是重试）。<br /><br /> 如果最大重试计数为 0，则批处理服务不会重试任务。<br /><br /> 如果最大重试计数为 -1，则批处理服务会无限制地重试任务。<br /><br /> 默认值为 0（不重试）。|
+|`maxTaskRetryCount`|Int32|可以重试任务的最大次数。 批处理服务在其退出代码非零时重试任务。<br /><br /> 请注意，此值专门用于控制重试的次数。 批处理服务将尝试任务一次，然后重试，直至达到此上限为止。 例如，如果最大重试计数为 3，则批处理任务最多尝试任务 4 次（一次是初始尝试，其余 3 次是重试）。<br /><br /> 如果最大重试计数为 0，则批处理服务不会重试任务。<br /><br /> 如果最大重试计数为 -1，则批处理服务会无限制地重试任务。<br /><br /> 默认值为 0（不重试）。|
 
-###  <a name="executionInfo"></a> executionInfo
+###  <a name="executioninfo"></a><a name="executionInfo"></a> executionInfo
 
-|元素名称|类型|注释|
+|元素名称|类型|说明|
 |------------------|----------|-----------|
 |`retryCount`|Int32|批处理服务重试任务的次数。 如果任务使用非零退出代码退出，该任务会重试，直至达到指定的 MaxTaskRetryCount|
 

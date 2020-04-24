@@ -1,7 +1,7 @@
 ---
-title: 检查自定义语音的数据质量 - 语音服务
+title: 检查自定义语音识别的数据质量 - 语音服务
 titleSuffix: Azure Cognitive Services
-description: 自定义语音提供的工具可以将音频数据与相应的识别结果进行比较，因此可以通过视觉方式检查模型的质量。 你可以播放上传的音频，确定提供的识别结果是否正确。
+description: 自定义语音识别提供的工具可以将音频数据与相应的识别结果进行比较，因此可以通过视觉方式检查模型的质量。 你可以播放上传的音频，确定提供的识别结果是否正确。
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -12,18 +12,18 @@ origin.date: 12/02/2019
 ms.date: 03/02/2020
 ms.author: v-tawe
 ms.openlocfilehash: 65102eea793f24a0c1cfe6ca17e23768a0a93a99
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77541132"
 ---
 # <a name="inspect-custom-speech-data"></a>检查自定义语音数据
 
 > [!NOTE]
-> 此页假定你已阅读[准备自定义语音的测试数据](how-to-custom-speech-test-data.md)，并已上传用于检查的数据集。
+> 此页假定你已阅读[准备自定义语音识别的测试数据](how-to-custom-speech-test-data.md)，并已上传用于检查的数据集。
 
-自定义语音提供的工具可以将音频数据与相应的识别结果进行比较，因此可以通过视觉方式检查模型的质量。 在[自定义语音门户](https://speech.azure.cn/customspeech)中，你可以播放上传的音频，确定提供的识别结果是否正确。 可以通过此工具快速检查 Microsoft 的基线语音转文本模型或某个经训练的自定义模型的质量，不需听录任何音频数据。
+自定义语音识别提供的工具可以将音频数据与相应的识别结果进行比较，因此可以通过视觉方式检查模型的质量。 在[自定义语音识别门户](https://speech.azure.cn/customspeech)中，你可以播放上传的音频，确定提供的识别结果是否正确。 可以通过此工具快速检查 Microsoft 的基线语音转文本模型或某个经训练的自定义模型的质量，不需听录任何音频数据。
 
 本文档介绍如何使用以前上传的训练数据以视觉方式检查模型的质量。
 
@@ -33,12 +33,12 @@ ms.locfileid: "77541132"
 
 按这些说明创建测试：
 
-1. 登录到[自定义语音门户](https://speech.azure.cn/customspeech)。
-2. 导航到“语音转文本”>“自定义语音”>“测试”。 
+1. 登录到[自定义语音识别门户](https://speech.azure.cn/customspeech)。
+2. 导航到“语音转文本”&gt;“自定义语音识别”&gt;“测试”。 
 3. 单击“添加测试”。 
 4. 选择“检查质量(仅音频数据)”。  为测试提供名称和说明，然后选择你的音频数据集。
 5. 选择最多两个要测试的模型。
-6. 单击**创建**。
+6. 单击“创建”。 
 
 成功创建测试后，可以并排比较模型。
 
@@ -60,4 +60,4 @@ ms.locfileid: "77541132"
 
 ## <a name="additional-resources"></a>其他资源
 
-- [准备自定义语音的测试数据](how-to-custom-speech-test-data.md)
+- [准备自定义语音识别的测试数据](how-to-custom-speech-test-data.md)

@@ -9,10 +9,10 @@ ms.author: v-jay
 ms.reviewer: sijuman
 ms.lastreviewed: 11/11/2019
 ms.openlocfilehash: b0c975e16265af448eaa3400739610b9fdae3983
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77540829"
 ---
 # <a name="deploy-a-c-aspnet-web-app-to-a-vm-in-azure-stack-hub"></a>将 C# ASP.NET Web 应用部署到 Azure Stack Hub 中的 VM
@@ -60,13 +60,13 @@ ms.locfileid: "77540829"
     | 443 | HTTPS | 安全超文本传输协议 (HTTPS) 是 HTTP 的安全版本，它需要一个安全证书，并允许对信息进行加密传输。  |
     | 22 | SSH | 安全外壳 (SSH) 是一种用于安全通信的加密网络协议。 你将在 SSH 客户端上使用此连接来配置 VM 并部署应用。 |
     | 3389 | RDP | 可选。 远程桌面协议允许远程桌面连接使用计算机的图形用户界面。   |
-    | 8172 | “自定义” | WebDeploy 使用的端口。 |
+    | 8172 | 自定义 | WebDeploy 使用的端口。 |
 
     对于每个端口：
 
     a. 对于“源”，请选择“任何”。  
 
-    b. 对于“源端口范围”，请键入星号 ( **\*** )。 
+    b. 对于“源端口范围”，请键入星号 (  **)。\***
 
     c. 对于“目标”，请选择“任何”。  
 
@@ -78,9 +78,9 @@ ms.locfileid: "77540829"
 
     g. 对于“优先级”，请保留默认选项。 
 
-    h.如果该值不存在，请单击“添加行”。 输入**名称**和**说明**，以帮助记住打开端口的原因。
+    h. 输入**名称**和**说明**，以帮助记住打开端口的原因。
 
-    i. 选择“添加”   。
+    i. 选择 **添加** 。
 
 1.  对于 Azure Stack Hub 中的 VM，在“网络”设置中创建服务器的 DNS 名称。  用户可以使用 URL 连接到你的网站。
 
@@ -113,11 +113,11 @@ ms.locfileid: "77540829"
 1. 选择“IIS”、“FTP”等  。
 1. 选择“发布”  。
 1. 对于“发布方法”，请选择“Web 部署”。  
-1. 对于“服务器”，请输入前面定义的 DNS 名称，例如 *w21902.local.cloudapp.azurestack.external*。 
+1. 对于“服务器”，请输入前面定义的 DNS 名称，例如 **w21902.local.cloudapp.azurestack.external**。 
 1. 对于“站点名称”，请输入“默认网站”。  
 1. 对于“用户名”，请输入计算机的用户名。 
 1. 对于“密码”，请输入计算机的密码。 
-1. 对于“目标 URL”，请输入站点的 URL，例如 *mywebapp.local.cloudapp.azurestack.external*。 
+1. 对于“目标 URL”，请输入站点的 URL，例如 **mywebapp.local.cloudapp.azurestack.external**。 
 
     ![部署 ASP.NET Web 应用 - 配置 Web 部署](media/azure-stack-dev-start-howto-vm-dotnet/configure-web-deploy.png)
 
@@ -125,7 +125,7 @@ ms.locfileid: "77540829"
 1. 将“配置”设置为“发布”。  
 1. 将“目标框架”设置为“netcoreapp2.2”。  
 1. 将“目标运行时”设置为“便携式”。  
-1. 选择“保存”  。
+1. 选择“保存”。 
 1. 选择“发布”  。
 1. 转到新服务器。 应会看到你的 Web 应用程序正在运行。
 

@@ -16,10 +16,10 @@ origin.date: 02/07/2020
 ms.author: v-yiso
 ms.date: 03/02/2020
 ms.openlocfilehash: 41723c19bea1e15aa8c868e58cb0872756ff1a0e
-ms.sourcegitcommit: 46fd4297641622c1984011eac4cb5a8f6f94e9f5
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77563486"
 ---
 # <a name="apache-hadoop-architecture-in-hdinsight"></a>HDInsight 中的 Apache Hadoop 体系结构
@@ -70,7 +70,7 @@ NodeManagers 先运行应用程序包含的任务，然后将其进度和状态�
 
 ## <a name="trash-purging"></a>垃圾清除
 
-“HDFS”   > “高级 core-site”  中的 `fs.trash.interval` 属性应保持默认值 `0`，因为不应在本地文件系统上存储任何数据。 此值不影响远程存储帐户（WASB、ADLS GEN1、ABFS）
+“HDFS”`fs.trash.interval` “高级 core-site” > **中的**  属性应保持默认值 `0`，因为不应在本地文件系统上存储任何数据。 此值不影响远程存储帐户（WASB、ADLS GEN1、ABFS）
 
 ## <a name="next-steps"></a>后续步骤
 

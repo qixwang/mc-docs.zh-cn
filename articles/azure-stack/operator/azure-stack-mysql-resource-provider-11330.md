@@ -9,10 +9,10 @@ ms.author: v-jay
 ms.reviewer: jiahan
 ms.lastreviewed: 01/09/2019
 ms.openlocfilehash: 82570db09819774526cbd96993064304a6dddb09
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77540904"
 ---
 # <a name="mysql-resource-provider-11330--release-notes"></a>MySQL 资源提供程序 1.1.33.0 发行说明

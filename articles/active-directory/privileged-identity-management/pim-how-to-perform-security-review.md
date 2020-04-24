@@ -15,10 +15,10 @@ ms.author: v-junlch
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a5b24ce4d149a63aa439c7b1c5d47fcb721fe6f0
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77429959"
 ---
 # <a name="review-access-to-azure-ad-roles-in-privileged-identity-management"></a>在 Privileged Identity Management 中评审对 Azure AD 角色的访问权限
@@ -33,7 +33,7 @@ Privileged Identity Management (PIM) 简化了企业管理以特权身份访问 
 
 如果未在 Azure 门户中将 Azure AD Privileged Identity Management 固定到仪表板，请按以下步骤开始操作。
 
-1. 登录到 [Azure 门户](https://portal.azure.cn/)。
+1. 登录 [Azure 门户](https://portal.azure.cn/)。
 2. 选择 Azure 门户右上角的用户名，并选择要操作的目录。
 3. 选择“所有服务”  ，并使用“筛选器”文本框搜索“Azure AD Privileged Identity Management”  。
 4. 选中“固定到仪表板”  ，并单击“创建”  。 Privileged Identity Management 应用程序会打开。

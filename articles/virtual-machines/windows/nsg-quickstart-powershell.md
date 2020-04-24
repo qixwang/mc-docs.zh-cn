@@ -1,6 +1,6 @@
 ---
 title: 如何在 Azure 中使用 PowerShell 打开 VM 的端口和终结点
-description: 了解如何使用 Azure Resource Manager 部署模型和 Azure PowerShell 在 Windows VM 上打开端口/创建终结点
+description: 了解如何使用 Azure Resource Manager 部署模型和 Azure PowerShell 为 Windows VM 打开端口/创建终结点
 services: virtual-machines-windows
 documentationcenter: ''
 author: rockboyfor
@@ -15,19 +15,19 @@ origin.date: 12/13/2017
 ms.date: 02/10/2020
 ms.author: v-yeche
 ms.openlocfilehash: 53ec7315a25fb15896f58376bcbcd189ed830e77
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77428108"
 ---
 # <a name="how-to-open-ports-and-endpoints-to-a-vm-in-azure-using-powershell"></a>如何在 Azure 中使用 PowerShell 打开 VM 的端口和终结点
 [!INCLUDE [virtual-machines-common-nsg-quickstart](../../../includes/virtual-machines-common-nsg-quickstart.md)]
 
 ## <a name="quick-commands"></a>快速命令
-若要创建网络安全组和 ACL 规则，需要[安装最新版本的 Azure PowerShell](https://docs.microsoft.com/powershell/azureps-cmdlets-docs)。 也可以[使用 Azure 门户执行这些步骤](nsg-quickstart-portal.md)。
+若要创建网络安全组和 ACL 规则，需要[安装最新版本的 Azure PowerShell](https://docs.microsoft.com/powershell/azureps-cmdlets-docs)。 还可以[使用 Azure 门户执行这些步骤](nsg-quickstart-portal.md)。
 
-登录 Azure 帐户：
+登录到 Azure 帐户：
 
 ```powershell
 Connect-AzAccount -Environment AzureChinaCloud
@@ -51,7 +51,7 @@ $httprule = New-AzNetworkSecurityRuleConfig `
     -DestinationPortRange 80
 ```
 
-接下来，使用 [New-AzNetworkSecurityGroup](https://docs.microsoft.com/powershell/module/az.network/new-aznetworksecuritygroup) 创建网络安全组，并按以下步骤分配刚刚创建的 HTTP 规则。 以下示例创建名为“myNetworkSecurityGroup”  的网络安全组：
+接下来，使用 [New-AzNetworkSecurityGroup](https://docs.microsoft.com/powershell/module/az.network/new-aznetworksecuritygroup) 创建网络安全组，并按以下步骤分配刚刚创建的 HTTP 规则。 以下示例创建名为 myNetworkSecurityGroup  的网络安全组：
 
 ```powershell
 $nsg = New-AzNetworkSecurityGroup `
@@ -61,7 +61,7 @@ $nsg = New-AzNetworkSecurityGroup `
     -SecurityRules $httprule
 ```
 
-现在将网络安全组分配给子网。 以下示例使用 [Get-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/get-azvirtualnetwork) 向变量 *$vnet* 分配名为 *myVnet* 的现有虚拟网络：
+现在我们将网络安全组分配给子网。 以下示例使用 *Get-AzVirtualNetwork* 向变量 *$vnet* 分配名为 [myVnet](https://docs.microsoft.com/powershell/module/az.network/get-azvirtualnetwork) 的现有虚拟网络：
 
 ```powershell
 $vnet = Get-AzVirtualNetwork `
@@ -93,9 +93,9 @@ Set-AzVirtualNetwork -VirtualNetwork $vnet
 对于高可用性 Web 应用程序，应将 VM 放置在 Azure 负载均衡器后。 当负载均衡器向 VM 分配流量时，网络安全组可以筛选流量。 有关详细信息，请参阅[如何在 Azure 中均衡 Linux 虚拟机负载以创建高可用性应用程序](tutorial-load-balancer.md)。
 
 ## <a name="next-steps"></a>后续步骤
-在本示例中，创建了简单的规则来允许 HTTP 流量。 下列文章更介绍了有关创建更详细环境的信息：
+在本示例中，创建了简单的规则来允许 HTTP 流量。 可以从下列文章中，找到有关创建更详细环境的信息：
 
-* [Azure Resource Manager 概述](../../azure-resource-manager/management/overview.md)
+* [Azure 资源管理器概述](../../azure-resource-manager/management/overview.md)
 * [什么是网络安全组？](../../virtual-network/security-overview.md)
 * [Azure 负载均衡器概述](../../load-balancer/load-balancer-overview.md)
 

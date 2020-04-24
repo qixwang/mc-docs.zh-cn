@@ -8,10 +8,10 @@ ms.author: v-yiso
 origin.date: 08/05/2019
 ms.date: 03/02/2020
 ms.openlocfilehash: d3fc90da58714b2778b35a3696e69715d51aa6f3
-ms.sourcegitcommit: 46fd4297641622c1984011eac4cb5a8f6f94e9f5
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77563493"
 ---
 # <a name="scenario-apache-ambari-ui-502-error-in-azure-hdinsight"></a>方案：Azure HDInsight 中的 Apache Ambari UI 502 错误

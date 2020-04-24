@@ -1,6 +1,6 @@
 ---
 title: 排查在 Azure 中新建 Windows VM 时遇到的部署问题
-description: 排查在 Azure 中新建 Windows 虚拟机时遇到的 Resource Manager 部署问题
+description: 排查在 Azure 中创建新 Windows 虚拟机时遇到的 Resource Manager 部署问题
 services: virtual-machines-windows, azure-resource-manager
 documentationcenter: ''
 author: rockboyfor
@@ -17,10 +17,10 @@ ms.date: 02/10/2020
 ms.author: v-yeche
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: cc630c05e4dc0b96c4d7c0287fc9194b75900fae
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77428727"
 ---
 # <a name="troubleshoot-deployment-issues-when-creating-a-new-windows-vm-in-azure"></a>排查在 Azure 中新建 Windows VM 时遇到的部署问题
@@ -44,9 +44,9 @@ ms.locfileid: "77428727"
 
 [!INCLUDE [virtual-machines-windows-troubleshoot-deployment-new-vm-table](../../../includes/virtual-machines-windows-troubleshoot-deployment-new-vm-table.md)]
 
-**Y：** 如果 OS 是通用的 Windows，并且是使用通用设置上载和/或捕获的，则不会有任何错误。 同理，如果 OS 是专用的 Windows，并且是使用专用设置上传和/或捕获的，也不会有任何错误。
+**Y：** 如果 OS 是通用的 Windows，并且是使用通用设置上传和/或捕获的，则不会有任何错误。 同理，如果 OS 是专用的 Windows，并且是使用专用设置上传和/或捕获的，也不会有任何错误。
 
-**上传错误：**
+**上载错误：**
 
 **N<sup>1</sup>：** 如果 OS 是通用的 Windows，但是以专用设置上载的，则会发生预配超时错误，并且 VM 会卡在 OOBE 屏幕上。
 
@@ -64,23 +64,23 @@ ms.locfileid: "77428727"
 
 **解决方法**
 
-若要解决这两个错误，请从门户中删除当前映像，并[从当前 VHD 重新捕获映像](../windows/create-vm-specialized.md)，其设置与 OS 的设置相同（通用/专用）。
+若要解决这两个错误，请从门户中删除当前映像，并[从当前 VHD 重新捕获映像](../windows/create-vm-specialized.md)，该映像具有与该 OS（通用/专用）相同的设置。
 
-## <a name="issue-customgallerymarketplace-image-allocation-failure"></a>问题：自定义/库/市场映像；分配失败
+## <a name="issue-customgallerymarketplace-image-allocation-failure"></a>问题：自定义/库/应用商店映像；分配失败
 当新的 VM 请求被固定到不支持所请求的 VM 大小、或没有可用空间可处理请求的群集时，便会发生此错误。
 
-**原因 1：** 群集无法支持所请求的 VM 大小。
+**原因 1：** 群集不支持请求的 VM 大小。
 
 **解决方法 1：**
 
-* 使用更小的 VM 大小来重试请求。
+* 以更小的 VM 大小重试请求。
 * 如果无法更改请求的 VM 大小：
     * 停止可用性集中的所有 VM。
-        单击“资源组” >  *你的资源组*  > “资源” >  *你的可用性集*  > “虚拟机” >  *你的虚拟机*  > “停止”。    
+        单击“资源组”  资源组 >  *“资源”*  > 可用性集  “虚拟机” > *虚拟机* > “停止”。   >    >  
     * 所有 VM 都停止后，创建所需大小的新 VM。
-    * 先启动新 VM，选择每个已停止的 VM，然后单击“启动”。 
+    * 先启动新 VM，选择每个已停止的 VM，并单击“启动”。 
 
-**原因 2：** 群集没有空闲的资源。
+**原因 2：** 群集没有可用的资源。
 
 **解决方法 2：**
 

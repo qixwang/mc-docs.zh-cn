@@ -9,10 +9,10 @@ ms.author: v-jay
 ms.reviewer: alfredop
 ms.lastreviewed: 05/20/2019
 ms.openlocfilehash: 76dcfcf949f2977dcf7db956b60884077e9f1376
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77540844"
 ---
 # <a name="let-your-cloud-solution-provider-manage-your-azure-stack-hub-subscription"></a>让云解决方案提供商管理 Azure Stack Hub 订阅

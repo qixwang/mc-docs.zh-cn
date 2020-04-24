@@ -9,10 +9,10 @@ ms.author: v-jay
 ms.reviewer: kivenkat
 ms.lastreviewed: 1/10/2020
 ms.openlocfilehash: 13e6023e7fd3ac5ae5bb8dac92a54f1ba2f932ab
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77541031"
 ---
 # <a name="quickstart-create-a-linux-server-vm-by-using-the-azure-stack-hub-portal"></a>快速入门：使用 Azure Stack Hub 门户创建 Linux 服务器 VM
@@ -26,7 +26,7 @@ ms.locfileid: "77541031"
 > [!NOTE]  
 > 本文中的插像已更新，以匹配 Azure Stack Hub 版本 1808 中引入的更改。 除了非托管磁盘外，版本 1808 还添加了对使用*托管磁盘*的支持。 如果使用较早的版本，某些任务图像（例如磁盘选择）与 UI 中显示的内容不同。  
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * Azure Stack Hub 市场中的 Linux 映像
 

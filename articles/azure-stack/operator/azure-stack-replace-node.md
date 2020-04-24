@@ -10,15 +10,15 @@ ms.author: v-jay
 ms.reviewer: thoroet
 ms.lastreviewed: 11/11/2019
 ms.openlocfilehash: dbfb3cf973dba3dec4492feec2d2add116b913fc
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77540341"
 ---
 # <a name="replace-a-scale-unit-node-on-an-azure-stack-hub-integrated-system"></a>更换 Azure Stack Hub 集成系统上的缩放单元节点
 
-本文介绍更换 Azure Stack Hub 集成系统上的物理计算机（也称为缩放单元节点）的一般过程。 实际的缩放单元节点更换步骤将因原始设备制造商 (OEM) 硬件供应商而异。 有关你系统特有的详细步骤，请参阅供应商的现场可更换部件 (FRU) 文档。
+本文介绍更换 Azure Stack Hub 集成系统上的物理计算机（也称为缩放单元节点）的一般过程。 实际的缩放单元节点更换步骤将因原始设备制造商 (OEM) 硬件供应商而异。 请参阅供应商的现场可更换单元 (FRU) 文档来了解特定于你的系统的详细步骤。
 
 > [!CAUTION]  
 > 固件分级对于本文中所述的操作的成功至关重要。 缺少此步骤可能会导致系统不稳定、性能降低、安全威胁或阻止 Azure Stack Hub 自动化部署操作系统。 更换硬件时，请始终参阅硬件合作伙伴的文档，以确保应用的固件与 [Azure Stack Hub 管理员门户](azure-stack-updates.md)中显示的 OEM 版本匹配。 有关详细信息和合作伙伴文档的链接，请参阅[更换硬件组件](azure-stack-replace-component.md)。
@@ -37,8 +37,8 @@ ms.locfileid: "77540341"
 如果缩放单元节点已关闭，你会收到以下严重警报：
 
 - 节点未连接到网络控制器
-- 无法访问节点以供虚拟机放置
-- 缩放单元节点已脱机
+- 节点不可访问，无法实现虚拟机放置
+- 缩放单元节点处于脱机状态
 
 ![缩放单元节点关闭的警报列表](media/azure-stack-replace-node/nodedownalerts.png)
 

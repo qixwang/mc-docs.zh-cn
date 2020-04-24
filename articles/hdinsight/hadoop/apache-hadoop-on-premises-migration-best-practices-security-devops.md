@@ -11,10 +11,10 @@ origin.date: 12/19/2019
 ms.date: 03/02/2020
 ms.author: v-yiso
 ms.openlocfilehash: 97929e5393446e9cd210527f0cde3653c535ddb9
-ms.sourcegitcommit: 46fd4297641622c1984011eac4cb5a8f6f94e9f5
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77563508"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---security-and-devops-best-practices"></a>将本地 Apache Hadoop 群集迁移到 Azure HDInsight - 安全性和 DevOps 最佳做法
@@ -56,7 +56,7 @@ ms.locfileid: "77563508"
 
 有关详细信息，请参阅文章：
 
-[Azure Monitor 概述](../../azure-monitor/overview.md)
+[Azure 监视器概述](../../azure-monitor/overview.md)
 
 ## <a name="upgrade-clusters"></a>升级群集
 

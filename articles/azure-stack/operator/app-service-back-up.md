@@ -9,10 +9,10 @@ ms.author: v-jay
 ms.reviewer: anwestg
 ms.lastreviewed: 03/21/2019
 ms.openlocfilehash: 94889c4df188a2275c06b6a6084f2329ddc50c49
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77540636"
 ---
 # <a name="back-up-app-service-on-azure-stack-hub"></a>备份 Azure Stack Hub 上的应用服务
@@ -35,7 +35,7 @@ ms.locfileid: "77540636"
 
 1. 以服务管理员身份登录到 Azure Stack Hub 管理员门户。
 
-2. 浏览到“应用服务” -> “机密”。   
+2. 浏览到“应用服务” **“机密”。**  ->   
 
 3. 选择“下载机密”。 
 

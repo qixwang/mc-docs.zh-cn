@@ -7,10 +7,10 @@ origin.date: 06/30/2017
 ms.date: 02/24/2020
 ms.author: v-yeche
 ms.openlocfilehash: 974f87a4c5404186d10048d0a7ffd97ae6d488ca
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77541057"
 ---
 # <a name="secure-service-remoting-communications-in-a-java-service"></a>保护 Java 服务的服务远程处理通信
@@ -20,11 +20,11 @@ ms.locfileid: "77541057"
 >
 >
 
-安全是通信最为重视的要素之一。 Reliable Services 应用程序框架提供了一些预先生成的通信堆栈和工具供你用来提高安全性。 本文介绍如何在 Java 服务中使用服务远程处理时提高安全性。 它基于现有的[示例](service-fabric-reliable-services-communication-remoting-java.md)构建，该示例解释了如何为使用 Java 编写的可靠服务设置远程处理。 
+安全是通信最为重视的要素之一。 Reliable Services 应用程序框架提供了一些预先构建的通信堆栈和工具，可用来提高安全性。 本文介绍如何在 Java 服务中使用服务远程处理时提高安全性。 它基于现有的[示例](service-fabric-reliable-services-communication-remoting-java.md)构建，该示例解释了如何为使用 Java 编写的可靠服务设置远程处理。 
 
 若要在 Java 服务中使用服务远程处理时帮助保护服务，请遵循以下步骤：
 
-1. 创建接口 `HelloWorldStateless`，用于定义可供服务的远程过程调用使用的方法。 服务会使用 `microsoft.serviceFabric.services.remoting.fabricTransport.runtime` 包中声明的 `FabricTransportServiceRemotingListener`。 这是可以提供远程处理功能的 `CommunicationListener` 实现。
+1. 创建接口 `HelloWorldStateless`，用于定义可供服务的远程过程调用使用的方法。 服务将使用 `FabricTransportServiceRemotingListener` 包中声明的 `microsoft.serviceFabric.services.remoting.fabricTransport.runtime`。 这是可以提供远程处理功能的 `CommunicationListener` 实现。
 
     ```java
     public interface HelloWorldStateless extends Service {
@@ -81,7 +81,7 @@ ms.locfileid: "77541057"
         }
         ```
 
-        如果要在 settings.xml 中添加 `TransportSettings` 节而不添加任何前缀，`FabricTransportListenerSettings` 将默认加载此节中的所有设置。
+        如果将在 settings.xml 中添加 `TransportSettings` 节而不添加任何前缀，则 `FabricTransportListenerSettings` 将按默认加载此节中的所有设置。
 
         ```xml
         <!--"TransportSettings" section without any prefix.-->

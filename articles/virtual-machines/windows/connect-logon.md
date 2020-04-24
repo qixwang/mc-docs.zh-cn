@@ -16,10 +16,10 @@ origin.date: 11/26/2018
 ms.date: 02/10/2020
 ms.author: v-yeche
 ms.openlocfilehash: 134b813e74641dd7cbe030673f41e135d250cfc5
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77428150"
 ---
 # <a name="how-to-connect-and-sign-on-to-an-azure-virtual-machine-running-windows"></a>如何连接并登录到运行 Windows 的 Azure 虚拟机
@@ -28,7 +28,7 @@ ms.locfileid: "77428150"
 若要从 Mac 连接到 Windows VM，需要为 Mac 安装 RDP 客户端，例如 [Microsoft 远程桌面](https://aka.ms/rdmac)。
 
 ## <a name="connect-to-the-virtual-machine"></a>连接到虚拟机
-1. 转到 [Azure 门户](https://portal.azure.cn/)以连接到 VM。 搜索并选择“虚拟机”  。
+1. 转到 [Azure 门户](https://portal.azure.cn/)以连接到 VM。 搜索并选择“虚拟机”。 
 2. 从列表中选择虚拟机。
 3. 在虚拟机页的开头，选择“连接”  。
 4. 在“连接到虚拟机”  页上，选择 **RDP**，然后选择相应的 **IP 地址**和**端口号**。 在大多数情况下，应使用默认的 IP 地址和端口。 选择“下载 RDP 文件”  。 如果 VM 具有实时策略集，则首先需要选择“请求访问”  按钮来请求访问，然后才能下载 RDP 文件。 有关实时策略的详细信息，请参阅[使用实时策略管理虚拟机访问](../../security-center/security-center-just-in-time.md)。

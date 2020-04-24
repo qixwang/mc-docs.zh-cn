@@ -16,10 +16,10 @@ origin.date: 11/24/2019
 ms.date: 02/10/2020
 ms.author: v-yeche
 ms.openlocfilehash: 5dcfd4d30286d429ac1a5d0bf61a6959979b9a1e
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77428781"
 ---
 # <a name="troubleshooting-a-linux-vm-when-the-disk-layout-is-using-lvm-logical-volume-manager"></a>当磁盘布局使用 LVM（逻辑卷管理器）时对 Linux VM 进行故障排除

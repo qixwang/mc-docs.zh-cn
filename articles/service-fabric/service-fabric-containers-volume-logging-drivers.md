@@ -6,10 +6,10 @@ origin.date: 06/10/2018
 ms.date: 02/24/2020
 ms.author: v-yeche
 ms.openlocfilehash: 3e3dcc0b7656a1fef3a20fdb585d0e209a5a891d
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77540688"
 ---
 # <a name="azure-files-volume-driver-for-service-fabric"></a>适用于 Service Fabric 的 Azure 文件存储卷驱动程序

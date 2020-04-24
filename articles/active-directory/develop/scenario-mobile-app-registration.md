@@ -18,10 +18,10 @@ ms.reviwer: brandwe
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e9970e85efd55ab320803c698ed3d206d2ef75c8
-ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77653162"
 ---
 # <a name="register-mobile-apps-that-call-web-apis"></a>注册调用 Web API 的移动应用
@@ -48,13 +48,13 @@ ms.locfileid: "77653162"
 
 ### <a name="interactive-authentication"></a>交互式身份验证
 
-构建使用交互式身份验证的移动应用时，最关键的注册步骤是重定向 URI。 可以通过[“身份验证”边栏选项卡上的平台配置](https://portal.azure.cn/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredAppsPreview)来设置交互式身份验证。 
+构建使用交互式身份验证的移动应用时，最关键的注册步骤是重定向 URI。 可以通过[“身份验证”边栏选项卡上的平台配置**来设置交互式身份验证。** ](https://portal.azure.cn/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredAppsPreview)
 
 应用可以在此体验中通过 Microsoft Authenticator（以及 Android 上的 Intune 公司门户）实现单一登录 (SSO)。 它还支持设备管理策略。
 
 应用注册门户提供一个预览版体验来帮助你计算 iOS 和 Android 应用程序的中介回复 URI：
 
-1. 在应用注册门户中选择“身份验证” > “尝试新体验”。  
+1. 在应用注册门户中选择“身份验证” **“尝试新体验”。**  >  
 
    ![“身份验证”边栏选项卡，可在其中选择新体验](https://user-images.githubusercontent.com/13203188/60799285-2d031b00-a173-11e9-9d28-ac07a7ae894a.png)
 

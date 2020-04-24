@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
 ms.openlocfilehash: a3dbb13f094f7c5a23cc890175e43aa9cd54c1cb
-ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77494534"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-for-linux-devices"></a>教程：开发适用于 Linux 设备的 C IoT Edge 模块
@@ -45,7 +45,7 @@ ms.locfileid: "77494534"
 | **Linux AMD64** | ![使用 VS Code 开发 Linux AMD64 上的 C 模块](./media/tutorial-c-module/green-check.png) | ![在 Linux AMD64 上使用适用于 C 模块的 VS](./media/tutorial-c-module/green-check.png) |
 | **Linux ARM32** | ![使用 VS Code 开发 Linux ARM32 上的 C 模块](./media/tutorial-c-module/green-check.png) | ![在 Linux ARM32 上使用适用于 C 模块的 VS](./media/tutorial-c-module/green-check.png) |
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 在开始学习本教程之前，应已完成上一篇教程来设置用于开发 Linux 容器的开发环境：[开发适用于 Linux 设备的 IoT Edge 模块](tutorial-develop-for-linux.md)。 完成该教程后，已应准备好以下必备组件：
 

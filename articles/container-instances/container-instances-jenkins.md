@@ -6,10 +6,10 @@ origin.date: 08/31/2018
 ms.date: 01/15/2020
 ms.author: v-yeche
 ms.openlocfilehash: ea0c33d02a461776ce2337b37744c5dbc515b0e4
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77428934"
 ---
 <!--NOT AVAILABLE ON MOONCAKE-->
@@ -29,8 +29,8 @@ Azure 容器实例 (ACI) 提供按需、可迸发的隔离环境用于运行容�
     - **名称**：输入 Jenkins 部署的名称。
     - **用户名**：输入 Jenkins 虚拟机的管理员用户名。
     - **身份验证类型**：建议使用 SSH 公钥进行身份验证。 如果选择此选项，请粘贴一个 SSH 公钥，以便在登录到 Jenkins 虚拟机时使用。
-    - **订阅**：选择 Azure 订阅。
-    - **资源组**：创建一个资源组或选择一个现有的资源组。
+    - **订阅**：选择一个 Azure 订阅。
+    - **资源组**：创建资源组，或选择现有的资源组。
     - **位置**：选择 Jenkins 服务器的位置。
 
     ![Jenkins 门户部署的基本设置](./media/container-instances-jenkins/jenkins-portal-01.png)
@@ -38,12 +38,12 @@ Azure 容器实例 (ACI) 提供按需、可迸发的隔离环境用于运行容�
 3. 在“其他设置”窗体中填写以下各项： 
 
     - **大小**：选择适合于 Jenkins 虚拟机的调整大小选项。
-    - **VM 磁盘类型**：为 Jenkins 服务器指定“HDD”  （机械硬盘）或“SSD”  （固态硬盘）。
+    - **VM 磁盘类型**：为 Jenkins 服务器指定“HDD”（机械硬盘）或“SSD”（固态硬盘）。  
     - **虚拟网络**：若要修改默认设置，请选择箭头。
-    - **子网**：选择箭头，检查信息，然后选择“确定”  。
+    - **子网**：选择箭头，检查信息，然后选择“确定”。 
     - **公共 IP 地址**：选择箭头，为公共 IP 地址指定自定义名称，配置 SKU，并设置分配方法。
     - **域名标签**：指定用于创建 Jenkins 虚拟机完全限定 URL 的值。
-    - **Jenkins 发行类型**：从以下选项中选择所需的版本类型：LTS  、每周版本  ，或 Azure 已验证  。
+    - **Jenkins 版本类型**：从以下选项中选择所需的版本类型：“LTS”、“每周版本”或“Azure 认证”。   
 
     ![Jenkins 门户部署的其他设置](./media/container-instances-jenkins/jenkins-portal-02.png)
 
@@ -105,7 +105,7 @@ Azure 容器实例 (ACI) 提供按需、可迸发的隔离环境用于运行容�
 
     ![包含生成步骤选项的“生成”选项卡](./media/container-instances-jenkins/jenkins-job-02.png)
 
-5. 选择“保存”  。
+5. 选择“保存”。 
 
 ## <a name="run-the-build-job"></a>运行生成作业
 

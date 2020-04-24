@@ -8,10 +8,10 @@ origin.date: 09/17/2019
 ms.date: 02/24/2020
 ms.author: v-jay
 ms.openlocfilehash: de564e39e269ed5ac2aa968e52c123d8347ed4fb
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77540981"
 ---
 # <a name="move-azure-internal-load-balancer-to-another-region-using-powershell"></a>使用 PowerShell 将 Azure 内部负载均衡器移到另一个区域
@@ -108,7 +108,7 @@ ms.locfileid: "77540981"
     ```
 8.  还可以选择更改 **\<resource-group-name>.json** 文件中的其他参数，这些参数是可选的，具体取决于你的要求：
 
-    * **地址空间** - 在保存之前，可以通过在 **\<resource-group-name>.json** 文件中修改 **resources** > **addressSpace** 节并更改 **addressPrefixes** 属性，来更改 VNET 的地址空间：
+    * **地址空间** - 在保存之前，可以通过在  resource-group-name>.json >  文件中修改 **resources**  addressSpace **节并更改 \<addressPrefixes** 属性，来更改 VNET 的地址空间：
 
         ```json
                 "resources": [
@@ -128,7 +128,7 @@ ms.locfileid: "77540981"
 
         ```
 
-    * **子网** - 可以通过修改 **\<resource-group-name>.json** 文件的 **subnets** 节来更改子网名称和子网地址空间。 可以通过更改 **name** 属性来更改子网的名称。 可以通过更改 **\<resource-group-name>.json** 文件中的 **addressPrefix** 属性来更改子网地址空间：
+    * **子网** - 可以通过修改  resource-group-name>.json **文件的 \<subnets** 节来更改子网名称和子网地址空间。 可以通过更改 **name** 属性来更改子网的名称。 可以通过更改  resource-group-name>.json **文件中的 \<addressPrefix** 属性来更改子网地址空间：
 
         ```json
                 "subnets": [
@@ -203,7 +203,7 @@ ms.locfileid: "77540981"
     New-AzResourceGroup -Name <target-resource-group-name> -location <target-region>
     ```
     
-11. 使用 [New-AzResourceGroupDeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment?view=azps-2.6.0) 将编辑的 **\<resource-group-name>.json** 文件部署到在上一步创建的资源组：
+11. 使用 **New-AzResourceGroupDeployment\< 将编辑的** [resource-group-name>.json](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment?view=azps-2.6.0) 文件部署到在上一步创建的资源组：
 
     ```azurepowershell
 
@@ -292,7 +292,7 @@ ms.locfileid: "77540981"
              }
     ```
 
-8. 若要编辑内部负载均衡器配置将要移到的目标区域，请更改 **\<resource-group-name>.json** 文件中 **resources** 下的 **location** 属性：
+8. 若要编辑内部负载均衡器配置将要移到的目标区域，请更改  resource-group-name>.json**文件中**resources **下的 \<location** 属性：
 
     ```json
         "resources": [
@@ -316,7 +316,7 @@ ms.locfileid: "77540981"
     ```
 12. 也可选择更改模板中的其他参数，这些参数是可选的，具体取决于你的要求：
     
-    * **SKU** - 可以在配置中将内部负载均衡器的 SKU 从 standard 更改为 basic 或者从 basic 更改为 standard，只需在 **\<resource-group-name>.json** 文件中更改 **sku** > **name** 属性即可：
+    * **SKU** - 可以在配置中将内部负载均衡器的 SKU 从 standard 更改为 basic 或者从 basic 更改为 standard，只需在  resource-group-name>.json >  文件中更改 **sku** **\<name** 属性即可：
 
         ```json
         "resources": [
@@ -332,7 +332,7 @@ ms.locfileid: "77540981"
         ```
       若要详细了解基本和标准 sku 负载均衡器之间的区别，请参阅 [Azure 标准负载均衡器概述](/load-balancer/load-balancer-standard-overview)
 
-    * **负载均衡规则** - 可以通过在 **\<resource-group-name>.json** 文件的 **loadBalancingRules** 节中添加或删除条目，在配置中添加或删除负载均衡规则：
+    * **负载均衡规则** - 可以通过在  resource-group-name>.json **文件的 \<loadBalancingRules** 节中添加或删除条目，在配置中添加或删除负载均衡规则：
 
         ```json
         "loadBalancingRules": [
@@ -364,7 +364,7 @@ ms.locfileid: "77540981"
         ```
        有关负载均衡规则的详细信息，请参阅[什么是 Azure 负载均衡器？](/load-balancer/load-balancer-overview)。
 
-    * **探测** - 可以通过在 **\<resource-group-name>.json** 文件的 **probes** 节中添加或删除条目，在配置中添加或删除负载均衡器的探测：
+    * **探测** - 可以通过在  resource-group-name>.json **文件的 \<probes** 节中添加或删除条目，在配置中添加或删除负载均衡器的探测：
 
         ```json
         "probes": [
@@ -384,7 +384,7 @@ ms.locfileid: "77540981"
         ```
        有关 Azure 负载均衡器运行状况探测的详细信息，请参阅[负载均衡器运行状况探测](/load-balancer/load-balancer-custom-probe-overview)
 
-    * **入站 NAT 规则** - 可以通过在 **\<resource-group-name>.json** 文件的 **inboundNatRules** 节中添加或删除条目，来添加或删除负载均衡器的入站 NAT 规则：
+    * **入站 NAT 规则** - 可以通过在  resource-group-name>.json **文件的 \<inboundNatRules** 节中添加或删除条目，来添加或删除负载均衡器的入站 NAT 规则：
 
         ```json
         "inboundNatRules": [
@@ -439,7 +439,7 @@ ms.locfileid: "77540981"
     ```azurepowershell
     New-AzResourceGroup -Name <target-resource-group-name> -location <target-region>
     ```
-11. 使用 [New-AzResourceGroupDeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment?view=azps-2.6.0) 将编辑的 **\<resource-group-name>.json** 文件部署到在上一步创建的资源组：
+11. 使用 **New-AzResourceGroupDeployment\< 将编辑的** [resource-group-name>.json](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment?view=azps-2.6.0) 文件部署到在上一步创建的资源组：
 
     ```azurepowershell
 
@@ -471,7 +471,7 @@ Remove-AzResourceGroup -Name <resource-group-name>
 
 ```
 
-## <a name="clean-up"></a>清理
+## <a name="clean-up"></a>清除
 
 若要提交所做的更改并完成 NSG 的移动，并删除源 NSG 或资源组，请使用 [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup?view=azps-2.6.0) 或 [Remove-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/remove-azvirtualnetwork?view=azps-2.6.0) 和 [Remove-AzLoadBalancer](https://docs.microsoft.com/powershell/module/az.network/remove-azloadbalancer?view=azps-2.6.0)
 

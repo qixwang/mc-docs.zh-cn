@@ -13,10 +13,10 @@ metadata:
   origin.date: 08/05/2019
   ms.date: 03/02/2020
   ms.openlocfilehash: f6e074460cf5b4dc253bf5d8e4d6fd868bd2cdbd
-  ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
+  ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 02/20/2020
+  ms.lasthandoff: 04/17/2020
   ms.locfileid: "77494471"
 landingContent:
 - title: 针对 Linux 设备进行开发

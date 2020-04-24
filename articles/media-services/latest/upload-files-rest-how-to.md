@@ -15,10 +15,10 @@ origin.date: 02/10/2019
 ms.date: 09/23/2019
 ms.author: v-jay
 ms.openlocfilehash: ddae3837eef58b6aeeb7671bfbc8ef6b9c8989ac
-ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77494463"
 ---
 # <a name="upload-files-into-a-media-services-v3-account-using-rest"></a>使用 REST 将文件上传到媒体服务 v3 帐户
@@ -27,7 +27,7 @@ ms.locfileid: "77494463"
 
 本文介绍如何使用 REST 上传本地文件。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要完成本主题中所述的步骤，必须：
 

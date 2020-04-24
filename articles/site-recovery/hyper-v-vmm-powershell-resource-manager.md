@@ -9,10 +9,10 @@ origin.date: 01/10/2020
 ms.date: 02/24/2020
 ms.author: v-yeche
 ms.openlocfilehash: b198758b2623c8e434d8c23061d67a44d0023aa1
-ms.sourcegitcommit: 781f68d27903687f0aa9e1ed273eee25c6d129a1
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77611277"
 ---
 # <a name="set-up-disaster-recovery-of-hyper-v-vms-to-a-secondary-site-by-using-powershell-resource-manager"></a>使用 PowerShell（资源管理器）设置 Hyper-V VM 到辅助站点的灾难恢复
@@ -21,7 +21,7 @@ ms.locfileid: "77611277"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - 查看[方案体系结构和组件](hyper-v-vmm-architecture.md)。
 - 查看所有组件的[支持要求](site-recovery-support-matrix-to-sec-site.md)。
@@ -30,11 +30,11 @@ ms.locfileid: "77611277"
 
 ## <a name="prepare-for-network-mapping"></a>准备网络映射
 
-[网络映射](hyper-v-vmm-network-mapping.md)在源和目标云中的本地 Virtual Machine Manager VM 网络之间映射。 映射将执行以下操作：
+[网络映射](hyper-v-vmm-network-mapping.md)在源和目标云中的本地 Virtual Machine Manager VM 网络之间映射。 映射可执行以下操作：
 
 - 故障转移后，将 VM 连接到适当的目标 VM 网络。
 - 最好将副本 VM 放于目标 Hyper-V 主机服务器上。
-- 如果不配置网络映射，则故障转移后，副本 VM 不会连接到 VM 网络。
+- 如果不配置网络映射，则故障转移后，VM 副本不会连接到 VM 网络。
 
 如下所述准备 Virtual Machine Manager：
 
@@ -265,11 +265,11 @@ ms.locfileid: "77611277"
 > 1. 通过更新 VM 属性启用到托管磁盘的故障转移
 > 1. 使用 `Get-AzRecoveryServicesAsrReplicationProtectedItem` cmdlet 获取受保护项的每个磁盘的磁盘 ID
 > 1. 使用 `New-Object "System.Collections.Generic.Dictionary``2[System.String,System.String]"` cmdlet 创建包含磁盘 ID 到磁盘加密集映射的字典对象。 这些磁盘加密集将由你在目标区域中预先创建。
-> 1. 通过在 **DiskIdToDiskEncryptionSetMap** 参数中传递字典对象，使用 `Set-AzRecoveryServicesAsrReplicationProtectedItem` cmdlet 更新 VM 属性。
+> 1. 通过在 `Set-AzRecoveryServicesAsrReplicationProtectedItem`DiskIdToDiskEncryptionSetMap**参数中传递字典对象，使用** cmdlet 更新 VM 属性。
 
 ## <a name="run-a-test-failover"></a>运行测试故障转移
 
-若要测试部署，请针对单个虚拟机运行测试故障转移。 也可以创建包含多个 VM 的恢复计划，并针对该计划运行测试故障转移。 测试故障转移在隔离的网络中模拟用户的故障转移和恢复机制。
+若要测试部署，请针对单个虚拟机运行测试故障转移。 也可以创建包含多个 VM 的恢复计划，并针对该计划运行测试故障转移。 测试故障转移在隔离的网络中模拟故障转移和恢复机制。
 
 1. 检索需要将 VM 故障转移到其中的 VM。
 

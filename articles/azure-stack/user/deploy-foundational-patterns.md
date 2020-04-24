@@ -9,10 +9,10 @@ ms.author: v-jay
 ms.reviewer: sijuman
 ms.lastreviewed: 11/06/2019
 ms.openlocfilehash: 2b621463da80bc30c8df7e1b5d1a2f4cf9ae0b2f
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77541102"
 ---
 # <a name="deploy-foundational-patterns-overview"></a>部署基础模式的概述
@@ -47,7 +47,7 @@ ms.locfileid: "77541102"
 | --- | --- | --- |
 | ![连接到 iSCSI 存储](media/deploy-foundational-patterns/icon-storage-87-storage-accounts-classic.svg)<br>[连接到 iSCSI 存储](azure-stack-network-howto-iscsi-storage.md) | ![扩展数据中心](media/deploy-foundational-patterns/icon-storage-88-recovery-services-vaults.svg)<br>[扩展数据中心](azure-stack-network-howto-extend-datacenter.md) |
 
-## <a name="backup"></a>Backup
+## <a name="backup"></a>备份
 
 可以使用备份和灾难恢复模式，将订阅中的所有资源复制到 Azure 或另一个 Azure Stack Hub 实例。 这些模式探讨如何使用 Commvault 实时同步将 VM 内部存储的信息复制到另一个环境。 可以查找用于创建存储帐户的脚本，以及用于发送数据的备份存储帐户。 使用 Azure 订阅复制器模块可以协调资源复制，并可以自定义处理器来处理各种资源。 
 

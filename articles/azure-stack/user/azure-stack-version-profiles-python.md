@@ -9,10 +9,10 @@ ms.author: v-jay
 ms.reviewer: sijuman
 ms.lastreviewed: 05/16/2019
 ms.openlocfilehash: 97f4094c90a554a26a454c0e8208cfcafa31f3cf
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77541005"
 ---
 # <a name="use-api-version-profiles-with-python-in-azure-stack-hub"></a>在 Azure Stack Hub 中将 API 版本配置文件与 Python 配合使用
@@ -44,7 +44,7 @@ Python SDK 支持以下 API 配置文件：
 4. 创建服务主体并保存其 ID 和机密。 有关如何为 Azure Stack Hub 创建服务主体的说明，请参阅[提供对 Azure Stack Hub 的应用程序访问权限](../operator/azure-stack-create-service-principals.md)。
 5. 确保服务主体在订阅上具有“参与者/所有者”角色。 有关如何为服务主体分配角色的说明，请参阅[提供对 Azure Stack Hub 的应用程序访问权限](../operator/azure-stack-create-service-principals.md)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要将 Python Azure SDK 与 Azure Stack Hub 配合使用，必须提供以下值，然后使用环境变量来设置值。 若要设置环境变量，请参阅下表后面针对特定操作系统的说明。
 

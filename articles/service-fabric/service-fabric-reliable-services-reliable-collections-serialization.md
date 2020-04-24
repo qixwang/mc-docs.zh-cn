@@ -6,35 +6,35 @@ origin.date: 05/08/2017
 ms.date: 02/24/2020
 ms.author: v-yeche
 ms.openlocfilehash: c32ad9a493d4b9c8ca8967de5f88b52b435b288c
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77541061"
 ---
 # <a name="reliable-collection-object-serialization-in-azure-service-fabric"></a>Azure Service Fabric 中的 Reliable Collection 对象序列化
 Reliable Collections 通过复制和保留项目，确保这些项目在机器故障和电力中断时能够持久。
 若要复制和保留项目，Reliable Collections 需要对其进行串行化。
 
-Reliable Collections 从 Reliable State Manager 获取与给定类型对应的串行化程序。
-Reliable State Manager 包含内置序列化程序，允许针对给定类型注册自定义串行化程序。
+Reliable Collections 从可靠状态管理器获取与给定类型对应的串行化程序。
+可靠状态管理器包含内置序列化程序，允许针对给定类型注册自定义串行化程序。
 
 ## <a name="built-in-serializers"></a>内置串行化程序
 
-Reliable State Manager 包含针对一些常见类型的内置串行化程序，以便在默认情况下对其进行高效串行化。 对于其他类型，Reliable State Manager 回退为使用 [DataContractSerializer](https://msdn.microsoft.com/library/system.runtime.serialization.datacontractserializer(v=vs.110).aspx)。
+可靠状态管理器包含针对一些常见类型的内置串行化程序，以便在默认情况下对其进行高效串行化。 对于其他类型，可靠状态管理器回退为使用 [DataContractSerializer](https://msdn.microsoft.com/library/system.runtime.serialization.datacontractserializer(v=vs.110).aspx)。
 内置串行化程序更高效，因为它们知道其类型无法更改，且它们无需包含类型名称等有关类型的信息。
 
-Reliable State Manager 拥有针对以下类型的内置串行化程序： 
+可靠状态管理器拥有针对以下类型的内置串行化程序： 
 - Guid
 - bool
 - 字节
 - sbyte
 - byte[]
 - char
-- string
-- decimal
-- Double
-- float
+- 字符串
+- Decimal
+- double
+- FLOAT
 - int
 - uint
 - long
@@ -44,7 +44,7 @@ Reliable State Manager 拥有针对以下类型的内置串行化程序：
 
 ## <a name="custom-serialization"></a>自定义序列化
 
-自定义串行化程序通常用于提高性能，或用于在网络传输时以及在磁盘上加密数据。 除了其他原因外，自定义序列化程序还通常比通用序列化程序更高效，因为它们不需要串行化有关类型的信息。 
+自定义串行化程序通常用于提高性能，或用于在网络传输时以及在磁盘上加密数据。 自定义串行化程序通常比通用序列化程序更高效，因为它们不需要串行化有关类型的信息。 
 
 [IReliableStateManager.TryAddStateSerializer\<T>](https://docs.azure.cn/dotnet/api/microsoft.servicefabric.data.ireliablestatemanager.tryaddstateserializer?view=azure-dotnet) 用于为给定类型 T 注册自定义序列化程序。此注册应在 StatefulServiceBase 构造内发生，以确保在开始恢复前，所有可靠集合都有权访问相关序列化程序来读取其保留的数据。
 
@@ -146,6 +146,6 @@ public class OrderKeySerializer : IStateSerializer<OrderKey>
   * [使用 Powershell 升级应用程序](service-fabric-application-upgrade-tutorial-powershell.md)逐步讲解了如何使用 PowerShell 进行应用程序升级。
   * 使用[升级参数](service-fabric-application-upgrade-parameters.md)来控制应用程序的升级方式。
   * 参考[高级主题](service-fabric-application-upgrade-advanced.md)，了解如何在升级应用程序时使用高级功能。
-  * 参考 [Troubleshooting Application Upgrades](service-fabric-application-upgrade-troubleshooting.md)（对应用程序升级进行故障排除）中的步骤来解决应用程序升级时的常见问题。
+  * 参考[对应用程序升级进行故障排除](service-fabric-application-upgrade-troubleshooting.md)中的步骤来解决应用程序升级时的常见问题。
 
 <!-- Update_Description: update meta properties, wording update -->

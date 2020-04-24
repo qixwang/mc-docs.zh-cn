@@ -16,17 +16,17 @@ origin.date: 06/15/2018
 ms.date: 02/24/2020
 ms.author: v-yiso
 ms.openlocfilehash: 668227947a0cce599a5133d5b73fe26113653004
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77428638"
 ---
 # <a name="debug-your-apis-using-request-tracing"></a>使用请求跟踪调试 API
 
 本教程介绍如何检查请求处理，以帮助对 API 进行调试和故障排除。 
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 跟踪调用
@@ -36,8 +36,8 @@ ms.locfileid: "77428638"
 ## <a name="prerequisites"></a>必备条件
 
 + 了解 [Azure API 管理术语](api-management-terminology.md)。
-+ 完成以下快速入门：[创建一个 Azure API 管理实例](get-started-create-service-instance.md)。
-+ 此外，请完成以下教程：[导入和发布第一个 API](import-and-publish.md)。
++ 完成以下快速入门：[创建 Azure API 管理实例](get-started-create-service-instance.md)。
++ 此外，请完成以下教程：[导入并发布第一个 API](import-and-publish.md)。
 
 ## <a name="trace-a-call"></a>跟踪调用
 
@@ -69,12 +69,12 @@ ms.locfileid: "77428638"
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，你已学习了如何执行以下操作：
+在本教程中，你了解了如何执行以下操作：
 
 > [!div class="checklist"]
 > * 跟踪调用
 
-进入下一教程：
+转到下一教程：
 
 > [!div class="nextstepaction"]
 > [使用修订版](api-management-get-started-revise-api.md)

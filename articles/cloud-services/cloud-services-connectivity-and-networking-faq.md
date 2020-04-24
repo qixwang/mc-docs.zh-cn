@@ -16,15 +16,15 @@ ms.topic: article
 ms.date: 02/19/2020
 ms.author: v-junlch
 ms.openlocfilehash: c2a0a420394d3fe0441ff943b835c0037572babb
-ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77494422"
 ---
-# <a name="connectivity-and-networking-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Azure 云服务的连接和网络问题：常见问题 (FAQ)
+# <a name="connectivity-and-networking-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Azure 云服务连接性和网络问题：常见问题解答 (FAQ)
 
-本文包含 [Azure 云服务](https://www.azure.cn/home/features/cloud-services)的常见连接和网络问题。 有关大小信息，请参阅[云服务 VM 大小页](cloud-services-sizes-specs.md)。
+本文包括一些关于 [Azure 云服务](https://www.azure.cn/home/features/cloud-services)连接性和网络问题的常见问题解答。 有关大小信息，请参阅[云服务 VM 大小页](cloud-services-sizes-specs.md)。
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
@@ -36,19 +36,19 @@ ms.locfileid: "77494422"
 
 ## <a name="can-i-ping-a-cloud-service"></a>是否可以 ping 云服务？
 
-否，使用普通的 "ping"/ ICMP 协议是行不通的。 不允许通过 Azure 负载均衡器使用 ICMP 协议。
+否，不能通过使用正常 "ping"/ICMP 协议 ping 云服务。 通过 Azure 负载均衡器不允许使用 ICMP 协议。
 
-若要测试连接，我们建议执行端口 ping。 当 Ping.exe 使用 ICMP 时，其他工具（如 PSPing、Nmap 和 telnet）允许你测试到特定 TCP 端口的连接性。
+若要测试连接性，我们建议执行端口 ping 操作。 当 Ping.exe 使用 ICMP 时，其他工具（如 PSPing、Nmap 和 telnet）允许你测试到特定 TCP 端口的连接性。
 
-有关详细信息，请参阅[使用端口 ping 而不是 ICMP 来测试 Azure VM 连接](https://blogs.msdn.microsoft.com/mast/2014/06/22/use-port-pings-instead-of-icmp-to-test-azure-vm-connectivity/)。
+有关详细信息，请参阅[使用端口 ping 而不是 ICMP 来测试 Azure VM 连接性](https://blogs.msdn.microsoft.com/mast/2014/06/22/use-port-pings-instead-of-icmp-to-test-azure-vm-connectivity/)。
 
 ## <a name="how-do-i-prevent-receiving-thousands-of-hits-from-unknown-ip-addresses-that-might-indicate-a-malicious-attack-to-the-cloud-service"></a>如何防止接收来自未知 IP 地址的数千次点击，这些 IP 地址是否会对云服务造成某种形式的恶意攻击？
-Azure 实施多层网络安全性来防范其平台服务遭到分布式拒绝服务 (DDoS) 攻击。 Azure DDoS 防御系统是 Azure 持续监视过程的一部分，通过渗透测试不断改进。 此 DDoS 防御系统不仅能够承受外部的攻击，而且也能承受其他 Azure 租户的攻击。 有关详细信息，请参阅 [Azure 网络安全](https://download.microsoft.com/download/C/A/3/CA3FC5C0-ECE0-4F87-BF4B-D74064A00846/AzureNetworkSecurity_v3_Feb2015.pdf)。
+Azure 实现多层网络安全性，以保护其平台服务免受分布式拒绝服务 (DDoS) 攻击。 Azure DDoS 防御系统是 Azure 持续监视过程的一部分，通过渗透测试不断改进。 该 DDoS 防御系统的设计不仅可以抵御外部的攻击，还可以承受其他 Azure 租户的攻击。 有关详细信息，请参阅 [Azure 网络安全](https://download.microsoft.com/download/C/A/3/CA3FC5C0-ECE0-4F87-BF4B-D74064A00846/AzureNetworkSecurity_v3_Feb2015.pdf)。
 
 还可以创建一个启动任务来选择性地阻止某些特定 IP 地址。 有关详细信息，请参阅[阻止特定 IP 地址](cloud-services-startup-tasks-common.md#block-a-specific-ip-address)。
 
 ## <a name="when-i-try-to-rdp-to-my-cloud-service-instance-i-get-the-message-the-user-account-has-expired"></a>当尝试 RDP 到我的云服务实例时，我收到消息：“此用户帐户已过期。”
-当绕过 RDP 设置中配置的到期日期时，你可能会收到“此用户帐户已过期”的错误消息。 可以在门户中执行以下步骤来更改过期日期：
+当绕过 RDP 设置中配置的到期日期时，你可能会收到“此用户帐户已过期”的错误消息。 你可以按照以下步骤从门户更改到期日期：
 
 1. 登录到 [Azure 门户](https://portal.azure.cn)，导航到云服务并选择“远程桌面”  选项卡。
 
@@ -56,7 +56,7 @@ Azure 实施多层网络安全性来防范其平台服务遭到分布式拒绝�
 
 3. 更改“到期日期”字段中的日期，然后保存配置。 
 
-现在，应该能够通过 RDP 连接到计算机。
+你现在应能够 RDP 到你的计算机了。
 
 ## <a name="why-is-azure-load-balancer-not-balancing-traffic-equally"></a>为什么 Azure 负载均衡器不平均地均衡流量？
 有关内部负载均衡器工作原理的信息，请参阅 [Azure 负载均衡器新分发模式](https://azure.microsoft.com/blog/azure-load-balancer-new-distribution-mode/)。

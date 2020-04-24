@@ -6,10 +6,10 @@ origin.date: 06/08/2018
 ms.date: 02/24/2020
 ms.author: v-yeche
 ms.openlocfilehash: 328ca3141098de6508fe6ae0dbcbabe1f5e1a9d7
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77540432"
 ---
 # <a name="create-service-fabric-container-running-apache-tomcat-server-on-linux"></a>在 Linux 上创建运行 Apache Tomcat 服务器的 Service Fabric 容器
@@ -103,7 +103,7 @@ Apache Tomcat 是 Java Servlet 和 Java Server 技术的常见开源实现。 �
 
 1. 运行 `docker login`，以使用[注册表凭据](../container-registry/container-registry-authentication.md)登录到容器注册表。
 
-    以下示例传递了 Azure Active Directory [服务主体](../active-directory/develop/app-objects-and-service-principals.md)的 ID 和密码。 例如，在自动化方案中，可能已向注册表分配了服务主体。 或者，可以使用注册表用户名和密码登录。
+    以下示例传递了 Azure Active Directory [服务主体](../active-directory/develop/app-objects-and-service-principals.md)的 ID 和密码。 例如，你可能在自动化方案中向注册表分配了服务主体。 或者，可以使用注册表用户名和密码登录。
 
     ```bash
     docker login myregistry.azurecr.cn -u xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -p myPassword
@@ -132,9 +132,9 @@ Apache Tomcat 是 Java Servlet 和 Java Server 技术的常见开源实现。 �
     系统提示时输入以下值：
 
     * 命名应用程序：ServiceFabricTomcat
-    * 应用程序服务的名称：TomcatService
+    * 应用程序服务名称：TomcatService
     * 输入映像名称：提供容器注册表中容器映像的 URL（例如，myregistry.azurecr.cn/samples/tomcattest）。
-    * 命令：将此项留空。 此映像中定义了一个工作负荷入口点，因此不需显式指定输入命令（命令在容器中运行，这可以在启动后使容器保持运行）。
+    * 命令：将此选项留空。 此映像中定义了一个工作负荷入口点，因此不需显式指定输入命令（命令在容器中运行，这可以在启动后使容器保持运行）。
     * 来宾容器应用程序的实例数：1
 
     ![适用于容器的 Service Fabric Yeoman 生成器](./media/service-fabric-get-started-tomcat/yo-generator.png)
@@ -212,7 +212,7 @@ Apache Tomcat 是 Java Servlet 和 Java Server 技术的常见开源实现。 �
     * http://PublicIPorFQDN:8080/hello/sayhello
     * http://PublicIPorFQDN:8080/hello/sayhi
 
-## <a name="clean-up"></a>清理
+## <a name="clean-up"></a>清除
 使用模板中提供的卸载脚本从群集中删除应用程序实例并注销应用程序类型。
 
 ```bash

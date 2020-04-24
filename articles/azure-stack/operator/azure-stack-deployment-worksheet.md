@@ -9,10 +9,10 @@ ms.author: v-jay
 ms.reviewer: wamota
 ms.lastreviewed: 04/19/2019
 ms.openlocfilehash: 017a02e288c33362b6bd9b21b8ba937b5b0bfe9a
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77540998"
 ---
 # <a name="deployment-worksheet-for-azure-stack-hub-integrated-systems"></a>Azure Stack Hub 集成系统的部署工作表

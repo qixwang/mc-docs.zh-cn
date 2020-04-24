@@ -10,16 +10,16 @@ ms.date: 02/24/2020
 ms.author: v-yeche
 ms.custom: include file
 ms.openlocfilehash: f00986d067912cb181fdc58fd29091904ff2864b
-ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77653265"
 ---
 <a name="os-config"></a>
 ## <a name="add-ip-addresses-to-a-vm-operating-system"></a>将 IP 地址添加到 VM 操作系统
 
-连接并登录到使用多个专用 IP 地址创建的 VM。 必须手动添加所有添加到 VM 的专用 IP 地址（包括主地址）。 根据 VM 操作系统完成后面的步骤。
+连接并登录到使用多个专用 IP 地址创建的 VM。 必须手动添加 VM 中的所有专用 IP 地址（包括主要地址）。 根据 VM 操作系统完成后面的步骤。
 
 ### <a name="windows"></a>Windows
 
@@ -29,7 +29,7 @@ ms.locfileid: "77653265"
 4. 双击“Internet 协议版本 4 (IPv4)”。
 5. 单击“使用下面的 IP 地址”并输入以下值： 
 
-    * **IP 地址**：输入 *Primary* 专用 IP 地址
+    * **IP 地址**：输入*主要*专用 IP 地址
     * **子网掩码**：根据子网设置此值。 例如，如果子网为 /24 子网，则子网掩码为 255.255.255.0。
     * **默认网关**：子网中的第一个 IP 地址。 如果子网为 10.0.0.0/24，则网关 IP 地址为 10.0.0.1。
     * 选择“使用下面的 DNS 服务器地址”  并输入以下值：
@@ -45,20 +45,20 @@ ms.locfileid: "77653265"
 
 ### <a name="validation-windows"></a>验证 (Windows)
 
-要确保能够通过关联的公共 IP 从辅助 IP 配置连接到 Internet，请在使用上述步骤正确地添加它以后，执行以下命令：
+要确保能够从辅助 IP 配置通过与之关联的公共 IP 连接到 Internet，请在通过上述步骤将其正确添加以后，使用以下命令：
 
 ```bash
 ping -S 10.0.0.5 hotmail.com
 ```
 >[!NOTE]
->对于辅助 IP 配置，仅当该配置具有与之关联的公共 IP 地址的情况下，才能 ping 到 Internet。 对于主 IP 配置，不需公共 IP 地址也可 ping 到 Internet。
+>对于辅助 IP 配置，仅当该配置存在关联的公共 IP 地址的情况下，才能 ping Internet。 对于主 IP 配置，不需公共 IP 地址也可 ping Internet。
 
 ### <a name="linux-ubuntu-1416"></a>Linux (Ubuntu 14/16)
 
 我们建议你查看 Linux 发行版的最新文档。 
 
 1. 打开终端窗口。
-2. 请确保以 root 用户身份操作。 如果不是，请输入以下命令：
+2. 请确保以 root 用户身份操作。 否则，请输入以下命令：
 
     ```bash
     sudo -i
@@ -66,7 +66,7 @@ ping -S 10.0.0.5 hotmail.com
 
 3. 更新网络接口（假设为“eth0”）的配置文件。
 
-   * 保留 dhcp 的现有行项。 主 IP 地址会保留之前的配置。
+   * 保留 dhcp 的现有行项。 主要 IP 地址将保留以前的配置。
    * 使用以下命令添加其他静态 IP 地址的配置：
 
        ```bash
@@ -119,7 +119,7 @@ ping -S 10.0.0.5 hotmail.com
 Ubuntu 18.04 及更高版本已更改为 `netplan` 以进行 OS 网络管理。 我们建议你查看 Linux 发行版的最新文档。 
 
 1. 打开终端窗口。
-2. 请确保以 root 用户身份操作。 如果不是，请输入以下命令：
+2. 请确保以 root 用户身份操作。 否则，请输入以下命令：
 
     ```bash
     sudo -i
@@ -192,7 +192,7 @@ Ubuntu 18.04 及更高版本已更改为 `netplan` 以进行 OS 网络管理。 
 <!--Not Available on Red Hat-->
 
 1. 打开终端窗口。
-2. 请确保以 root 用户身份操作。 如果不是，请输入以下命令：
+2. 请确保以 root 用户身份操作。 否则，请输入以下命令：
 
     ```bash
     sudo -i
@@ -210,7 +210,7 @@ Ubuntu 18.04 及更高版本已更改为 `netplan` 以进行 OS 网络管理。 
     ls ifcfg-*
     ```
 
-    应会看到其中一个文件是 *ifcfg-eth0* 。
+    应会看到其中一个文件是 *ifcfg-eth0*。
 
 5. 若要添加 IP 地址，请为其创建配置文件，如下所示。 请注意，必须为每个 IP 配置创建一个文件。
 
@@ -224,7 +224,7 @@ Ubuntu 18.04 及更高版本已更改为 `netplan` 以进行 OS 网络管理。 
     vi ifcfg-eth0:0
     ```
 
-7. 在此示例中，请使用以下命令向文件 *eth0:0* 添加内容。 请务必根据 IP 地址更新信息。
+7. 使用以下命令将内容添加到该文件（此示例中为 *eth0:0*）。 请务必更新基于 IP 地址的信息。
 
     ```bash
     DEVICE=eth0:0
@@ -251,15 +251,15 @@ Ubuntu 18.04 及更高版本已更改为 `netplan` 以进行 OS 网络管理。 
 
 ### <a name="validation-linux"></a>验证 (Linux)
 
-要确保能够通过关联的公共 IP 从辅助 IP 配置连接到 Internet，请执行以下命令：
+要确保能够从辅助 IP 配置通过与之关联的公共 IP 连接到 Internet，请使用以下命令：
 
 ```bash
 ping -I 10.0.0.5 hotmail.com
 ```
 >[!NOTE]
->对于辅助 IP 配置，仅当该配置具有与之关联的公共 IP 地址的情况下，才能 ping 到 Internet。 对于主 IP 配置，不需公共 IP 地址也可 ping 到 Internet。
+>对于辅助 IP 配置，仅当该配置存在关联的公共 IP 地址的情况下，才能 ping Internet。 对于主 IP 配置，不需公共 IP 地址也可 ping Internet。
 
-对于 Linux VM，在尝试验证源自辅助 NIC 的出站连接时，可能需要添加适当的路由。 可通过多种方式执行此操作。 对于 Linux 分发版，请参阅相应的文档。 下面是实现此目的的一种方法：
+对于 Linux VM，在尝试验证来自辅助 NIC 的出站连接时，可能需要添加适当的路由。 可通过多种方式来执行此操作。 请参阅针对 Linux 分发的相应文档。 下面是实现此目的的一种方法：
 
 ```bash
 echo 150 custom >> /etc/iproute2/rt_tables 
@@ -268,8 +268,8 @@ ip rule add from 10.0.0.5 lookup custom
 ip route add default via 10.0.0.1 dev eth2 table custom
 
 ```
-- 确保执行以下替换：
-    - **10.0.0.5** 替换为有关联的公共 IP 地址的专用 IP 地址
+- 确保将
+    - **10.0.0.5** 替换为专用 IP 地址，该地址有一个与之关联的公共 IP 地址。
     - **10.0.0.1** 替换为默认网关
     - **eth2** 替换为辅助 NIC 的名称
 

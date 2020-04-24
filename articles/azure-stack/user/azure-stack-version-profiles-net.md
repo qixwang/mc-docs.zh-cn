@@ -9,10 +9,10 @@ ms.author: v-jay
 ms.reviewer: sijuman
 ms.lastreviewed: 05/16/2019
 ms.openlocfilehash: 05f6ba4d6857432317728563bc624a7e36b634d8
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77541006"
 ---
 # <a name="use-api-version-profiles-with-net-in-azure-stack-hub"></a>在 Azure Stack Hub 中将 API 版本配置文件与 .NET 配合使用
@@ -57,7 +57,7 @@ API 配置文件是资源提供程序和 API 版本的组合。 可以使用 API
 
 - 确保服务主体在订阅上具有“参与者/所有者”角色。 有关如何将角色分配到服务主体的信息，请参阅[为应用程序提供对 Azure Stack Hub 的访问权限][]。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要将 .NET Azure SDK 与 Azure Stack Hub 配合使用，必须提供以下值，然后使用环境变量来设置值。 若要设置环境变量，请参阅表后针对特定操作系统的说明。
 

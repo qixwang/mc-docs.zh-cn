@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 7742b879880db246b70c2d7877bb4bebdeb7195b
-ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77494055"
 ---
 # <a name="how-an-iot-edge-device-can-be-used-as-a-gateway"></a>如何将 IoT Edge 设备用作网关
@@ -62,5 +62,5 @@ IoT Edge 解决方案中的网关为 IoT 设备提供了设备连接和边缘分
 了解如何设置透明网关：
 
 * [配置 IoT Edge 设备以充当透明网关](how-to-create-transparent-gateway.md)
-* [在 Azure IoT 中心对下游设备进行身份验证](how-to-authenticate-downstream-device.md)
+* [通过 Azure IoT 中心对下游设备进行身份验证](how-to-authenticate-downstream-device.md)
 * [将下游设备连接到 Azure IoT Edge 网关](how-to-connect-downstream-device.md)

@@ -13,10 +13,10 @@ origin.date: 07/08/2019
 ms.date: 02/24/2020
 ms.author: v-jay
 ms.openlocfilehash: f0593e5f0115b8f5029a101d463212ee4c55204d
-ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77494037"
 ---
 # <a name="manage-azure-media-services-v3-accounts"></a>管理 Azure 媒体服务 v3 帐户

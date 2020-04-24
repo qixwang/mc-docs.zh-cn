@@ -10,10 +10,10 @@ ms.topic: troubleshooting
 origin.date: 08/26/2019
 ms.date: 03/02/2020
 ms.openlocfilehash: 69c18ff64ae8cb3a1ca29dbce89c7bfa9b71c409
-ms.sourcegitcommit: 46fd4297641622c1984011eac4cb5a8f6f94e9f5
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77563407"
 ---
 # <a name="troubleshoot-cluster-creation-failures-with-azure-hdinsight"></a>排查 Azure HDInsight 中的群集创建失败问题

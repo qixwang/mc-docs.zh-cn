@@ -10,17 +10,17 @@ metadata:
   ms.author: v-junlch
   ms.date: 02/18/2020
   ms.openlocfilehash: 5c76c91ce65570d49b9ea110506d3568a7115160
-  ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
+  ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 02/20/2020
+  ms.lasthandoff: 04/17/2020
   ms.locfileid: "77494511"
 landingContent:
 - title: 关于 Azure Functions
   linkLists:
   - linkListType: overview
     links:
-    - text: 什么是 Azure Functions？
+    - text: Azure Functions 是什么？
       url: functions-overview.md
   - linkListType: concept
     links:
@@ -100,7 +100,7 @@ landingContent:
     links:
     - text: Azure 无服务器社区库
       url: https://www.serverlesslibrary.net/
-    - text: Azure Resource Manager 模板
+    - text: Azure 资源管理器模板
       url: https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Web&term=functions
   - linkListType: how-to-guide
     links:

@@ -17,10 +17,10 @@ origin.date: 01/01/2020
 ms.date: 03/02/2020
 ms.author: v-yiso
 ms.openlocfilehash: 992ef18ef7559fcd9774e74f3b2a0e50a7fc360b
-ms.sourcegitcommit: 46fd4297641622c1984011eac4cb5a8f6f94e9f5
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77563506"
 ---
 # <a name="run-custom-mapreduce-programs"></a>运行自定义 MapReduce 程序
@@ -64,7 +64,7 @@ ms.locfileid: "77563506"
 
     将 CLUSTERNAME 替换为群集名称。 如果使用了密码保护 SSH 帐户，系统会提示输入该密码。 如果使用了证书，则可能需要使用 `-i` 参数指定私钥文件。
 
-1. 使用 [ssh 命令](../hdinsight-hadoop-linux-use-ssh-unix.md)连接到群集。 编辑以下命令（将 CLUSTERNAME 替换为群集的名称），然后输入该命令：
+1. 使用 [ssh 命令](../hdinsight-hadoop-linux-use-ssh-unix.md)连接到群集。 编辑以下命令，将 CLUSTERNAME 替换为群集的名称，然后输入该命令：
 
     ```cmd
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.cn

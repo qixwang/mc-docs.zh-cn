@@ -6,10 +6,10 @@ origin.date: 06/08/2018
 ms.date: 01/15/2020
 ms.author: v-yeche
 ms.openlocfilehash: cb90ede1ba3e43004de4ea6d0d64e966aabe7f47
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77428931"
 ---
 <!--Verified successfully-->
@@ -63,7 +63,7 @@ az container create --resource-group myResourceGroup --name livenesstest -f live
 
 ### <a name="start-command"></a>启动命令
 
-该部署定义了要在容器首次开始运行时运行的启动命令（由接受字符串数组的 `command` 属性定义）。 在此示例中，它将通过传递以下命令启动 bash 会话并在 `/tmp` 目录中创建名为 `healthy` 的文件：
+该部署定义了要在容器首次开始运行时运行的启动命令（由接受字符串数组的 `command` 属性定义）。 在此示例中，它将通过传递以下命令启动 bash 会话并在 `healthy` 目录中创建名为 `/tmp` 的文件：
 
 ```bash
 /bin/sh -c "touch /tmp/healthy; sleep 30; rm -rf /tmp/healthy; sleep 600"

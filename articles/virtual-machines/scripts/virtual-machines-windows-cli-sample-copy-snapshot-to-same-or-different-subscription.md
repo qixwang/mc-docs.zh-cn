@@ -1,6 +1,6 @@
 ---
-title: 使用 CLI 将托管磁盘的快照复制到相同或不同的订阅
-description: Azure CLI 脚本示例 - 使用 CLI 将托管磁盘的快照复制（移动）到相同或不同的订阅
+title: 使用 CLI 将托管磁盘的快照复制到同一订阅或不同订阅
+description: Azure CLI 脚本示例 - 使用 CLI 将托管磁盘的快照复制（移动）到同一订阅或不同订阅
 services: virtual-machines-windows
 documentationcenter: storage
 author: rockboyfor
@@ -18,15 +18,15 @@ ms.date: 02/10/2020
 ms.author: v-yeche
 ms.custom: mvc
 ms.openlocfilehash: f98d62b0f4fa846220a1fa59b7f2b38276d74eb9
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77428161"
 ---
-# <a name="copy-snapshot-of-a-managed-disk-to-same-or-different-subscription-with-cli"></a>使用 CLI 将托管磁盘的快照复制到相同或不同的订阅
+# <a name="copy-snapshot-of-a-managed-disk-to-same-or-different-subscription-with-cli"></a>使用 CLI 将托管磁盘的快照复制到同一订阅或不同订阅
 
-此脚本会将托管磁盘的快照复制到相同或不同的订阅。 将此脚本用于以下方案：
+此脚本会将托管磁盘的快照复制到同一订阅或不同订阅。 将此脚本用于以下方案：
 
 1. 将高级存储 (Premium_LRS) 中的快照迁移到标准存储（Standard_LRS 或 Standard_ZRS）以降低成本。
 1. 将快照从本地冗余存储（Premium_LRS、Standard_LRS）迁移到区域冗余存储（Standard_ZRS），以从 ZRS 存储的更高可靠性中受益。
@@ -77,12 +77,12 @@ az snapshot create --resource-group $targetResourceGroupName --name $snapshotNam
 
 ## <a name="script-explanation"></a>脚本说明
 
-此脚本使用以下命令，通过源快照的 ID 在目标订阅中创建快照。 表中的每条命令均链接到特定于命令的文档。
+此脚本使用以下命令并使用源快照的 Id 在目标订阅中创建新快照。 表中的每条命令均链接到特定于命令的文档。
 
-| 命令 | 注释 |
+| Command | 说明 |
 |---|---|
-| [az snapshot show](https://docs.azure.cn/cli/snapshot?view=azure-cli-latest#az-snapshot-show) | 使用快照的名称和资源组属性获取该快照的所有属性。 使用 ID 属性将快照复制到其他订阅。  |
-| [az snapshot create](https://docs.azure.cn/cli/snapshot?view=azure-cli-latest#az-snapshot-create) | 通过使用父快照的 ID 和名称在不同订阅中创建快照来复制快照。  |
+| [az snapshot show](https://docs.azure.cn/cli/snapshot?view=azure-cli-latest#az-snapshot-show) | 使用快照的名称和资源组属性获取快照的所有属性。 Id 属性用于将快照复制到其他订阅。  |
+| [az snapshot create](https://docs.azure.cn/cli/snapshot?view=azure-cli-latest#az-snapshot-create) | 通过使用父快照的 Id 和名称在其他订阅中创建快照来复制快照。  |
 
 ## <a name="next-steps"></a>后续步骤
 

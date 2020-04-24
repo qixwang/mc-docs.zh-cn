@@ -16,10 +16,10 @@ origin.date: 02/22/2018
 ms.date: 02/10/2020
 ms.author: v-yeche
 ms.openlocfilehash: a114e322356ad37ccd0b2c1deaf84e868472c549
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77428800"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-windows-vms"></a>Azure 元数据服务：适用于 Windows VM 的计划事件
@@ -87,7 +87,7 @@ Azure 元数据服务公开在 VM 中使用可访问的 REST 终结点运行虚�
 
 ## <a name="using-the-api"></a>使用 API
 
-### <a name="headers"></a>标头
+### <a name="headers"></a>头文件
 查询元数据服务时，必须提供标头 `Metadata:true` 以确保不会在无意中重定向该请求。 `Metadata:true` 标头对于所有预定事件请求是必需的。 不在请求中包含标头会导致元数据服务发出的“错误的请求”响应。
 
 ### <a name="query-for-events"></a>查询事件

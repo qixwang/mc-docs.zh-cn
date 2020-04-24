@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: nigu
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2cfbf2a5d97cab941a3f935aa2ee4f8b5e5c0f19
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77540038"
 ---
 # <a name="migrate-a-classic-policy-in-the-azure-portal"></a>在 Azure 门户中迁移经典策略
@@ -52,13 +52,13 @@ ms.locfileid: "77540038"
 1. 在“分配”  部分中，单击“云应用或操作”  。
 1. 在“云应用或操作”页上执行以下步骤： 
    1. 单击“选择应用”。 
-   1. 单击“选择”。 
+   1. 单击“选择”  。
    1. 在“选择”页上选择云应用，单击“选择”。  
    1. 在“云应用”页上，单击“完成”。  
 1. 如果已选择“需要多重身份验证”： 
    1. 在“访问控制”部分中，单击“授予”。  
    1. 在“授予”页上，依次单击“授予访问权限”、“需要多重身份验证”。   
-   1. 单击“选择”。 
+   1. 单击“选择”  。
 1. 单击“打开”  启用策略，然后选择“保存”  。
 
    ![创建条件访问策略](./media/policy-migration-mfa/conditional-access-policy-migration.png)

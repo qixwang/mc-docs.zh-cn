@@ -10,25 +10,25 @@ ms.author: v-jay
 ms.reviewer: thoroet
 ms.lastreviewed: 12/02/2019
 ms.openlocfilehash: a197041185cc9188545652241ccc5cfed7b84b63
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77540349"
 ---
 # <a name="replace-a-physical-disk-in-azure-stack-hub"></a>更换 Azure Stack Hub 中的物理磁盘
 
-本文介绍更换 Azure Stack Hub 中的物理磁盘的一般过程。 如果物理磁盘发生故障，应尽快更换它。
+本文介绍更换 Azure Stack Hub 中的物理磁盘的一般过程。 如果物理磁盘发生故障，应尽快更换。
 
 > [!Note]  
 > 更换物理数据驱动器**不**需要将缩放单位节点提前置于维护模式（清空）状态。 此外，在更换物理驱动器后，不需要使用 Azure Stack Hub 管理员门户来修复缩放单位节点。 以下文章详细介绍了何时需要修复：[更换 Azure Stack Hub 缩放单元节点上的硬件组件](azure-stack-replace-component.md)。
 
 可以将此过程用于具有热插拔磁盘的部署。
 
-实际的磁盘更换步骤将因原始设备制造商 (OEM) 硬件供应商而异。 有关你系统特有的详细步骤，请参阅供应商的现场可更换部件 (FRU) 文档。
+实际的磁盘更换步骤因原始设备制造商 (OEM) 硬件供应商而异。 请参阅供应商的现场可更换单元 (FRU) 文档来了解特定于你的系统的详细步骤。
 
 ## <a name="review-disk-alert-information"></a>查看磁盘警报信息
-当磁盘发生故障时，你会收到通知你物理磁盘已丢失的警报。
+磁盘发生故障时，你将收到一个警报，告知你与物理磁盘的连接已丢失。
 
 ![在 Azure Stack Hub 管理中显示物理磁盘连接丢失的警报](media/azure-stack-replace-disk/DiskAlert.png)
 
@@ -36,7 +36,7 @@ ms.locfileid: "77540349"
 
 ## <a name="replace-the-physical-disk"></a>更换物理磁盘
 
-请按照 OEM 硬件供应商的 FRU 说明来实际更换磁盘。
+请按照 OEM 硬件供应商的 FRU 说明进行实际磁盘更换。
 
 > [!note]
 > 每次更换一个缩放单元节点的磁盘。 等待虚拟磁盘修复作业完成，然后移到下一个缩放单元节点。

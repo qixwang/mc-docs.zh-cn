@@ -7,10 +7,10 @@ ms.author: v-lingwu
 origin.date: 01/07/2020
 ms.date: 2/18/2020
 ms.openlocfilehash: 9a412fb127d1ac7f0b1c1754e34b442d1efc4fbf
-ms.sourcegitcommit: 27eaabd82b12ad6a6840f30763034a6360977186
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77497613"
 ---
 # <a name="azure-monitor-for-containers-overview"></a>用于容器的 Azure Monitor 概述

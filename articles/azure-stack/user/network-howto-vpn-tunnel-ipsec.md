@@ -9,10 +9,10 @@ ms.author: v-jay
 ms.reviewer: sijuman
 ms.lastreviewed: 09/19/2019
 ms.openlocfilehash: 4016d85ba90093a58a2eb0e396b80cda187f49ad
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77540055"
 ---
 # <a name="how-to-create-a-vpn-tunnel-using-ipsec--in-azure-stack-hub"></a>如何在 Azure Stack Hub 中使用 IPSEC 创建 VPN 隧道
@@ -46,7 +46,7 @@ ms.locfileid: "77540055"
 
 ## <a name="optional"></a>可选
 
-- 可以通过 _artifactsLocation 和 _artifactsLocationSasToken 参数使用自己的 Blob 存储帐户和 SAS 令牌
+- 可以通过 _artifactsLocation 和 _artifactsLocationSasToken 参数使用自己的 Blob 存储帐户和 SAS 令牌。
 - 此模板上有两个输出 INTERNALSUBNETREFVNET1 和 INTERNALSUBNETREFVNET2，这是内部子网的资源 ID（如果要在管道样式部署模式中使用）。
 
 此模板为 VNet 命名和 IP 寻址提供默认值。  它需要管理员 (rrasadmin) 的密码，还提供了将自己的存储 blob 与 SAS 令牌配合使用的功能。  请谨慎地使这些值保持在合法的范围内，否则部署可能失败。  PowerShell DSC 包将在每个 RRAS VM 上执行，并安装路由和所有必需的依赖服务和功能。  如果需要，可以进一步自定义此 DSC。  自定义脚本扩展运行以下脚本，Add-Site2SiteIKE.ps1 使用共享密钥在两个 RRAS 服务器之间配置 VPNS2S 隧道。  可以查看自定义脚本扩展的详细输出，以查看 VPN 隧道配置的结果

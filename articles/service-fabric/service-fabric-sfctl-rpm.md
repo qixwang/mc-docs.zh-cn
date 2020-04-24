@@ -7,10 +7,10 @@ origin.date: 01/16/2020
 ms.date: 02/24/2020
 ms.author: v-yeche
 ms.openlocfilehash: cdb27b5c0d9c4a64efb60806fd7ba02653eddffe
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77540580"
 ---
 # <a name="sfctl-rpm"></a>sfctl rpm
@@ -18,10 +18,10 @@ ms.locfileid: "77540580"
 
 ## <a name="commands"></a>命令
 
-|命令|说明|
+|Command|说明|
 | --- | --- |
 | approve-force | 强制批准给定的修复任务。 |
-| 删除 | 删除已完成的修复任务。 |
+| delete | 删除已完成的修复任务。 |
 | list | 获取与给定筛选器匹配的修复任务列表。 |
 
 ## <a name="sfctl-rpm-approve-force"></a>sfctl rpm approve-force

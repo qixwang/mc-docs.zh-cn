@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 ms.openlocfilehash: 00253412cf8179105786e9915193e9088cfbd942
-ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77494579"
 ---
 # <a name="how-to-do-proof-of-possession-for-x509-ca-certificates-with-your-device-provisioning-service"></a>如何使用设备预配服务执行 X.509 CA 证书的所有权证明
@@ -32,7 +32,7 @@ ms.locfileid: "77494579"
 
 1. 在 Azure 门户中导航到预配服务，从左侧菜单打开“证书”。  
 2. 单击“添加”以添加新证书。 
-3. 输入证书的友好显示名称。 浏览到表示 X.509 证书公共部分的 .cer 或 .pem 文件。 单击“上传”。 
+3. 输入证书的友好显示名称。 浏览到表示 X.509 证书公共部分的 .cer 或 .pem 文件。 单击“上载” 。 
 4. 收到已成功上传证书的通知后，单击“保存”。 
 
     ![上传证书](./media/how-to-verify-certificates/add-new-cert.png)  

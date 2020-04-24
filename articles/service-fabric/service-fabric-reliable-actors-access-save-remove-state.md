@@ -7,29 +7,29 @@ origin.date: 03/19/2018
 ms.date: 02/24/2020
 ms.author: v-yeche
 ms.openlocfilehash: da5a0658c871cd7ed95507d48dca7fecbb54e237
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77540113"
 ---
 # <a name="access-save-and-remove-reliable-actors-state"></a>访问、保存和删除 Reliable Actors 状态
 [Reliable Actors](service-fabric-reliable-actors-introduction.md) 是可封装逻辑与状态并稳定维护状态的单线程对象。 每个执行组件实例都有其自身的[状态管理器](service-fabric-reliable-actors-state-management.md)：一种类似于字典的数据结构，能够可靠地存储密钥/值对。 状态管理器是围绕状态提供程序的包装。 无论使用哪个[持久性设置](service-fabric-reliable-actors-state-management.md#state-persistence-and-replication)，都可以使用它来存储数据。
 
-状态管理器密钥必须为字符串。 值是泛型的，可以是任何类型（包括自定义类型）。 存储在状态管理器中的值必须可进行数据协定序列化的，因为根据执行组件的状态持久性设置，它们可能在复制期间通过网络传输到其他节点，并且可能写入磁盘。
+状态管理器密钥必须为字符串。 值是泛型的，可以是任何类型（包括自定义类型）。 存储在状态管理器中的值必须可进行数据约定序列化的，因为根据执行组件的状态持久性设置，它们可能在复制期间通过网络传输到其他节点，并且可能写入磁盘。
 
 状态管理器公开通用字典方法来管理状态，类似于在可靠字典中找到的项目。
 
 有关信息，请参阅[管理执行组件状态的最佳做法](service-fabric-reliable-actors-state-management.md#best-practices)。
 
 ## <a name="access-state"></a>访问状态
-通过状态管理器根据键来访问状态。 状态管理器方法全都是异步的，因为当执行组件具有持久化状态时，它们可能需要磁盘 I/O。 首次访问时，状态对象将缓存在内存中。 重复访问操作从内存中直接访问对象并以同步方式返回，而不造成磁盘 I/O 或异步上下文切换的开销。 在以下情况中，将从缓存中删除状态对象：
+通过状态管理器根据键来访问状态。 状态管理器方法全都是异步的，因为当执行组件具有持久化状态时，它们可能需要磁盘 I/O。 首次访问时，状态对象将缓存在内存中。 重复访问操作将从内存中直接访问对象并以同步方式返回，而不造成磁盘 I/O 或异步上下文切换的开销。 在以下情况下，，将从缓存中删除状态对象：
 
 * 从状态管理器中检索对象之后，执行组件方法将引发未经处理的异常。
-* 执行组件在停用之后或发生故障后会重新激活。
+* 执行组件在停用之后或发生故障后将重新激活。
 * 状态提供程序将状态分页到磁盘。 此行为取决于状态提供程序实现。 `Persisted` 设置的默认状态提供程序具有此行为。
 
-如果键的条目不存在，可以使用引发 `KeyNotFoundException` (C#) 或 `NoSuchElementException`(Java) 的标准 *Get* 操作来检索状态：
+如果键的条目不存在，可以使用引发 *(C#) 或*(Java) 的标准 `KeyNotFoundException`Get`NoSuchElementException` 操作来检索状态：
 
 ```csharp
 [StatePersistence(StatePersistence.Persisted)]
@@ -105,7 +105,7 @@ class MyActorImpl extends FabricActor implements  MyActor
 ```
 
 ## <a name="save-state"></a>保存状态
-状态管理器检索方法返回对本地内存中对象的引用。 只是在本地内存中修改此对象并不会永久存储该对象。 从状态管理器检索和修改对象时，必须将它重新插入状态管理器才能永久保存。
+状态管理器检索方法将返回对本地内存中对象的引用。 只是在本地内存中修改此对象并不会永久存储该对象。 从状态管理器检索和修改对象时，必须将它重新插入状态管理器才能永久保存。
 
 可以使用无条件的 *Set*（相当于 `dictionary["key"] = value` 语法）来插入状态：
 
@@ -216,7 +216,7 @@ class MyActorImpl extends FabricActor implements  MyActor
 }
 ```
 
-在执行组件方法结束时，状态管理器会自动保存通过插入或更新操作添加或修改的任何值。 根据所用的设置，“保存”可能包括持久保存到磁盘和复制。 未修改的值不会持久保存或复制。 如果未修改任何值，保存操作不起作用。 如果保存失败，会丢弃修改的状态并重新加载原始状态。
+在执行组件方法结束时，状态管理器会自动保存通过插入或更新操作添加或修改的任何值。 根据所用的设置，“保存”可能包括持久保存到磁盘和复制。 未修改的值不会持久保存或复制。 如果未修改任何值，保存操作不起作用。 如果保存失败，将丢弃修改的状态并重新加载原始状态。
 
 也可以通过对执行组件基调用 `SaveStateAsync` 方法来手动保存状态：
 

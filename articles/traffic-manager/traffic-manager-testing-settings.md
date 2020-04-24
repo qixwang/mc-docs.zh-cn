@@ -12,10 +12,10 @@ origin.date: 03/16/2017
 ms.date: 02/24/2020
 ms.author: v-yeche
 ms.openlocfilehash: 41558e32e02698d767ddd755f62b9a5f3f154f7c
-ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77653195"
 ---
 # <a name="verify-traffic-manager-settings"></a>验证流量管理器设置
@@ -34,14 +34,14 @@ ms.locfileid: "77653195"
 
 1. 以管理员身份打开命令提示符或 Windows PowerShell 提示符。
 2. 键入 `ipconfig /flushdns` 以刷新 DNS 解析程序缓存。
-3. 键入 `nslookup <your Traffic Manager domain name>`。 例如，以下命令将检查前缀为 *myapp.contoso*
+3. 键入 `nslookup <your Traffic Manager domain name>`。 例如，以下命令会检查前缀为 *myapp.contoso* 的域名
 
         nslookup myapp.contoso.trafficmanager.cn
 
     典型的结果会显示以下信息：
 
     + 为解析此流量管理器域名而访问的 DNS 服务器的 DNS 名称和 IP 地址。
-    + 在命令行中“nslookup”后键入的流量管理器域名以及该流量管理器域解析为的 IP 地址。 需要重点检查第二个 IP 地址。 它应当与所测试的流量管理器配置文件中某个云服务或网站的公共虚拟 IP (VIP) 地址匹配。
+    + 在命令行中“nslookup”后键入的流量管理器域名以及该流量管理器域解析为的 IP 地址。 需要重点检查第二个 IP 地址。 它应当与所测试的流量管理器配置文件中某个云服务或网站的公用虚拟 IP (VIP) 地址匹配。
 
 ## <a name="how-to-test-the-failover-traffic-routing-method"></a>如何测试故障转移流量路由方法
 

@@ -18,10 +18,10 @@ origin.date: 01/01/2020
 ms.date: 03/02/2020
 ms.author: v-yiso
 ms.openlocfilehash: 231546db7b689b98b580b4754f8f7e18a669246f
-ms.sourcegitcommit: 46fd4297641622c1984011eac4cb5a8f6f94e9f5
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77563518"
 ---
 # <a name="deep-dive---advanced-analytics"></a>深入探讨 - 高级分析

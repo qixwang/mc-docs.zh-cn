@@ -8,10 +8,10 @@ ms.date: 02/24/2020
 ms.author: v-jay
 ms.lastreviewed: 1/10/2020
 ms.openlocfilehash: 928e0de3ecf44554b0320fa2165ed531e0d414bb
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77540792"
 ---
 # <a name="manage-key-vault-in-azure-stack-hub-using-the-portal"></a>使用门户管理 Azure Stack Hub 中的 Key Vault
@@ -22,7 +22,7 @@ ms.locfileid: "77540792"
 
 必须订阅包含 Azure Key Vault 服务的产品/服务。
 
-## <a name="create-a-key-vault"></a>创建密钥保管库
+## <a name="create-a-key-vault"></a>创建 key vault
 
 1. 登录到[用户门户](https://portal.local.azurestack.external)。
 

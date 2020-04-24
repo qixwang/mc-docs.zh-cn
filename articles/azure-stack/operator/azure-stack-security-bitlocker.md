@@ -10,10 +10,10 @@ ms.author: inhenkel
 ms.reviewer: fiseraci
 ms.lastreviewed: 03/11/2019
 ms.openlocfilehash: 464a0782c0e538c57ce397479ac80785df1247b7
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77540330"
 ---
 # <a name="data-at-rest-encryption-in-azure-stack-hub"></a>Azure Stack Hub 中的静态数据加密
@@ -41,9 +41,9 @@ Get-AzsRecoveryKeys
 
 *Get-AzsRecoveryKeys* cmdlet 的可选参数：
 
-| 参数 | 说明 | 类型 | 必须 |
+| 参数 | 说明 | 类型 | 必选 |
 |---------|---------|---------|---------|
-|*raw* | 返回每个加密卷的恢复密钥、计算机名和密码 ID 之间映射的原始数据。  | Switch | 否（专为支持方案设计）|
+|*raw* | 返回每个加密卷的恢复密钥、计算机名和密码 ID 之间映射的原始数据。  | 开关 | 否（专为支持方案设计）|
 
 ## <a name="troubleshoot-issues"></a>排查问题
 

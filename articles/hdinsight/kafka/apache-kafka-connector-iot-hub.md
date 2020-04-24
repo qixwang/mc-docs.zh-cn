@@ -12,10 +12,10 @@ origin.date: 11/26/2019
 ms.date: 03/02/2020
 ms.author: v-yiso
 ms.openlocfilehash: 42787ecfa14150a49e77c46b41f0b8ac82b0a96c
-ms.sourcegitcommit: 46fd4297641622c1984011eac4cb5a8f6f94e9f5
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77563495"
 ---
 # <a name="use-apache-kafka-on-hdinsight-with-azure-iot-hub"></a>将 Apache Kafka on HDInsight 与 Azure IoT 中心配合使用
@@ -54,7 +54,7 @@ ms.locfileid: "77563495"
     sbt assembly
     ```
 
-    该生成可能需要几分钟时间才能完成。 使用此命令在项目的 `toketi-kafka-connect-iothub-master\target\scala-2.11` 目录中创建名为 `kafka-connect-iothub-assembly_2.11-0.7.0.jar` 的文件。
+    该生成可能需要几分钟时间才能完成。 使用此命令在项目的 `kafka-connect-iothub-assembly_2.11-0.7.0.jar` 目录中创建名为 `toketi-kafka-connect-iothub-master\target\scala-2.11` 的文件。
 
 ## <a name="install-the-connector"></a>安装连接器
 
@@ -126,9 +126,9 @@ ms.locfileid: "77563495"
     |`bootstrap.servers=localhost:9092`|将 `localhost:9092` 值替换为在上一步骤中获取的代理主机|将边缘节点的独立配置配置为查找 Kafka 代理。|
     |`key.converter=org.apache.kafka.connect.json.JsonConverter`|`key.converter=org.apache.kafka.connect.storage.StringConverter`|做出此项更改后，可以使用 Kafka 随附的控制台生成方执行测试。 对于其他生产方和使用方，可能需要不同的转换器。 有关使用其他转换器值的信息，请参阅 [https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md](https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md)。|
     |`value.converter=org.apache.kafka.connect.json.JsonConverter`|`value.converter=org.apache.kafka.connect.storage.StringConverter`|同上。|
-    |不适用|`consumer.max.poll.records=10`|添加到文件末尾。 此项更改会将接收器连接器限制为每次处理 10 条记录，防止该连接器发生超时。 有关详细信息，请参阅 [https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md](https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md)。|
+    |空值|`consumer.max.poll.records=10`|添加到文件末尾。 此项更改会将接收器连接器限制为每次处理 10 条记录，防止该连接器发生超时。 有关详细信息，请参阅 [https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md](https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md)。|
 
-6. 若要保存文件，请使用 Ctrl+X、Y，然后按 Enter。   
+6. 要保存文件，请使用 __Ctrl + X__、__Y__，并按 __Enter__。
 
 7. 若要创建连接器使用的主题，请使用以下命令：
 
@@ -209,7 +209,7 @@ ms.locfileid: "77563495"
 
 若要将源配置为使用 IoT 中心，请在与边缘节点建立 SSH 连接后执行以下操作：
 
-1. 在 `/usr/hdp/current/kafka-broker/config/` 目录中创建 `connect-iot-source.properties` 文件的副本。 若要从 toketi-kafka-connect-iothub 项目下载文件，请使用以下命令：
+1. 在 `connect-iot-source.properties` 目录中创建 `/usr/hdp/current/kafka-broker/config/` 文件的副本。 若要从 toketi-kafka-connect-iothub 项目下载文件，请使用以下命令：
 
     ```bash
     sudo wget -P /usr/hdp/current/kafka-broker/config/ https://raw.githubusercontent.com/Azure/toketi-kafka-connect-iothub/master/connect-iothub-source.properties
@@ -244,7 +244,7 @@ ms.locfileid: "77563495"
 
 若要将接收器连接配置为使用 IoT 中心，请在与边缘节点建立 SSH 连接后执行以下操作：
 
-1. 在 `/usr/hdp/current/kafka-broker/config/` 目录中创建 `connect-iothub-sink.properties` 文件的副本。 若要从 toketi-kafka-connect-iothub 项目下载文件，请使用以下命令：
+1. 在 `connect-iothub-sink.properties` 目录中创建 `/usr/hdp/current/kafka-broker/config/` 文件的副本。 若要从 toketi-kafka-connect-iothub 项目下载文件，请使用以下命令：
 
     ```bash
     sudo wget -P /usr/hdp/current/kafka-broker/config/ https://raw.githubusercontent.com/Azure/toketi-kafka-connect-iothub/master/connect-iothub-sink.properties
@@ -261,7 +261,7 @@ ms.locfileid: "77563495"
     |当前值 |编辑|
     |---|---|
     |`topics=PLACEHOLDER`|将 `PLACEHOLDER` 替换为 `iotout`。 写入 `iotout` 主题的消息将转发到 IoT 中心。|
-    |`IotHub.ConnectionString=PLACEHOLDER`|将 `service` 替换为  策略的连接字符串。|
+    |`IotHub.ConnectionString=PLACEHOLDER`|将 `PLACEHOLDER` 替换为 `service` 策略的连接字符串。|
 
      有关示例配置，请参阅 [https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md](https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md)。
 
@@ -362,7 +362,7 @@ t.runtime.WorkerSinkTask:262)
 
 ## <a name="next-steps"></a>后续步骤
 
-本文档已介绍如何使用 Apache Kafka Connect API 在 HDInsight 上启动 IoT Kafka 连接器。 请使用以下链接探索 Kafka 的其他用法：
+本文档已介绍如何使用 Apache Kafka Connect API 在 HDInsight 上启动 IoT Kafka 连接器。 使用以下链接来发现与 Kafka 配合使用的其他方式：
 
 * [将 Apache Spark 与 Apache Kafka on HDInsight 配合使用](../hdinsight-apache-spark-with-kafka.md)
 * [将 Apache Storm 与 Apache Kafka on HDInsight 配合使用](../hdinsight-apache-storm-with-kafka.md)

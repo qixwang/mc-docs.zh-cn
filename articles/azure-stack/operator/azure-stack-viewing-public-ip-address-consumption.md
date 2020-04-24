@@ -10,10 +10,10 @@ ms.author: v-jay
 ms.reviewer: scottnap
 ms.lastreviewed: 09/17/2019
 ms.openlocfilehash: 06e7c45f22be7f395f0d24b11a7ab2e973375e95
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77540609"
 ---
 # <a name="manage-network-resources-in-azure-stack-hub"></a>在 Azure Stack Hub 中管理网络资源

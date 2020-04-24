@@ -9,15 +9,15 @@ ms.author: v-jay
 ms.reviewer: sijuman
 ms.lastreviewed: 11/11/2019
 ms.openlocfilehash: 21b6e7645eb6f7b4b6875c48a33e9a9ecd6b6c63
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77540814"
 ---
 # <a name="set-up-a-development-environment-in-azure-stack-hub"></a>在 Azure Stack Hub 中设置开发环境 
 
-可以使用 Windows 10、Linux 或 macOS 工作站开发适用于 Azure Stack Hub 的应用程序。 本文内容： 
+可以使用 Windows 10、Linux 或 macOS 工作站开发适用于 Azure Stack Hub 的应用程序。 本文介绍： 
 
 - 应用在 Azure Stack Hub 中运行时所处的各种上下文。 
 - 使用 Windows 10、Linux 或 macOS 工作站进行设置时可以遵循的步骤。 

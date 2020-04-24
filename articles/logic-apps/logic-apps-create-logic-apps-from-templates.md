@@ -17,10 +17,10 @@ ms.date: 02/2/2020
 ms.author: v-yiso
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 6ef3361235e031a41de6436e0b8d19452383da11
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77428680"
 ---
 # <a name="create-logic-app-workflows-from-prebuilt-templates"></a>从预构建的模板创建逻辑应用工作流
@@ -44,7 +44,7 @@ ms.locfileid: "77428680"
 
 1. 登录到 [Azure 门户](https://portal.azure.cn "Azure 门户")（如果尚未登录）。
 
-2. 在 Azure 主菜单中，选择“创建资源” > “企业集成” > “逻辑应用”    。
+2. 在 Azure 主菜单中，选择“创建资源” **“企业集成”** “逻辑应用” >    >   。
 
    ![Azure 门户 >“新建”>“Enterprise Integration”>“逻辑应用”](./media/logic-apps-create-logic-apps-from-templates/azure-portal-create-logic-app.png)
 
@@ -52,7 +52,7 @@ ms.locfileid: "77428680"
 
    ![提供逻辑应用的详细信息](./media/logic-apps-create-logic-apps-from-templates/logic-app-settings.png)
 
-   | 设置 | Value | 说明 | 
+   | 设置 | 值 | 说明 | 
    | ------- | ----- | ----------- | 
    | **名称** |  your-logic-app-name | 提供一个唯一的逻辑应用名称。 | 
    | **订阅** |  your-Azure-subscription-name | 选择要使用的 Azure 订阅。 | 

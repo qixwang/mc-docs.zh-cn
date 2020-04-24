@@ -9,10 +9,10 @@ ms.author: v-jay
 ms.reviewer: anwestg
 ms.lastreviewed: 03/21/2019
 ms.openlocfilehash: 3094d26c4781566246566bef9ce0f5233aea1647
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77540627"
 ---
 # <a name="app-service-recovery-on-azure-stack-hub"></a>Azure Stack Hub 上的应用服务恢复

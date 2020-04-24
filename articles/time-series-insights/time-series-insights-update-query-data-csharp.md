@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 02/19/2020
 ms.custom: seodec18
 ms.openlocfilehash: 5c220d5c92f64b13d8ee867c70b02c108cd1e2ae
-ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77494437"
 ---
 # <a name="query-data-from-the-azure-time-series-insights-preview-environment-using-c"></a>使用 C# 查询 Azure 时序见解预览版环境中的数据
@@ -25,7 +25,7 @@ ms.locfileid: "77494437"
 > [!TIP]
 > 查看 [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-tsi-preview-sample) 上的预览版 C# 代码示例。
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>总结
 
 下面的示例代码演示了以下功能：
 
@@ -50,7 +50,7 @@ ms.locfileid: "77494437"
 
 1. [预配预览版 Azure 时序见解](/time-series-insights/time-series-insights-update-how-to-manage#create-the-environment)环境。
 1. 为 Azure Active Directory 配置 Azure 时序见解环境，如[身份验证和授权](time-series-insights-authentication-and-authorization.md)中所述。 
-1. 按照 [Readme.md](https://github.com/Azure-Samples/Azure-Time-Series-Insights/blob/master/csharp-tsi-preview-sample/DataPlaneClient/Readme.md) 中指定的方式运行 [GenerateCode.bat](https://github.com/Azure-Samples/Azure-Time-Series-Insights/blob/master/csharp-tsi-preview-sample/DataPlaneClient/GenerateCode.bat)，以生成时序见解预览版客户端依赖项。
+1. 按照 [Readme.md](https://github.com/Azure-Samples/Azure-Time-Series-Insights/blob/master/csharp-tsi-preview-sample/DataPlaneClient/GenerateCode.bat) 中指定的方式运行 [GenerateCode.bat](https://github.com/Azure-Samples/Azure-Time-Series-Insights/blob/master/csharp-tsi-preview-sample/DataPlaneClient/Readme.md)，以生成时序见解预览版客户端依赖项。
 1. 在 Visual Studio 中打开 `TSIPreviewDataPlaneclient.sln` 解决方案，并将 `DataPlaneClientSampleApp` 设置为默认项目。
 1. 使用[下文](#project-dependencies)所述的步骤安装所需的项目依赖项，并将示例编译为可执行 `.exe` 文件。
 1. 双击 `.exe` 文件来运行该文件。
@@ -63,7 +63,7 @@ ms.locfileid: "77494437"
 
 示例代码具有几个必需的依赖项，可以在 [packages.config](https://github.com/Azure-Samples/Azure-Time-Series-Insights/blob/master/csharp-tsi-preview-sample/DataPlaneClientSampleApp/packages.config) 文件中查看这些依赖项。
 
-在 Visual Studio 2019 中，通过选择“生成” > “生成解决方案”选项来下载程序包。   
+在 Visual Studio 2019 中，通过选择“生成”   > “生成解决方案”  选项来下载包。 
 
 或者，使用 [NuGet 2.12+](https://www.nuget.org/) 添加这些程序包。 例如：
 

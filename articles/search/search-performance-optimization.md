@@ -11,10 +11,10 @@ ms.topic: conceptual
 origin.date: 02/14/2020
 ms.date: 03/02/2020
 ms.openlocfilehash: 65cf2ab5418bc6fe34a86b4c8eb8007e1258bde4
-ms.sourcegitcommit: 094c057878de233180ff3b3a3e3c19bc11c81776
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77501339"
 ---
 # <a name="scale-for-performance-on-azure-cognitive-search"></a>Azure 认知搜索的性能缩放

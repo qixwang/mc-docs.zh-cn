@@ -49,7 +49,7 @@
       href: ../networking/disaster-recovery-dns-traffic-manager.md
     - name: 流量管理器的工作方式
       href: traffic-manager-how-it-works.md
-    - name: 常见问题
+    - name: 常见问题解答
       href: traffic-manager-FAQs.md
 - name: 如何
   items:

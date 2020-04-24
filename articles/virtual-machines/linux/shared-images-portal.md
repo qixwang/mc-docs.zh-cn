@@ -15,10 +15,10 @@ ms.date: 02/10/2020
 ms.author: v-yeche
 ms.custom: ''
 ms.openlocfilehash: 396e1d44f35a52f3fda7d5e3ee21cc84b4b9c5c3
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77428827"
 ---
 <!--Verified the Shared Image Gallery exist-->

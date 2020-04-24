@@ -14,10 +14,10 @@ ms.author: v-junlch
 ms.reviewer: zachowd, lenalepa, jesakowi
 ms.custom: aaddev
 ms.openlocfilehash: 8fd9d33eeb5573937d3b8e81547eb266b350a3f8
-ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77653301"
 ---
 # <a name="azure-active-directory-consent-framework"></a>Azure Active Directory 许可框架
@@ -44,7 +44,7 @@ ms.locfileid: "77653301"
 
     ![用户或管理员登录到 Azure AD](./media/consent-framework/usersignin.png)
 
-1. 用户登录后，Azure AD 将决定是否要向该用户显示同意页。 根据该用户（或其组织的管理员）是否已授予应用程序许可而决定。 如果尚未授予许可，Azure AD 会提示用户授予许可，并显示运行该应用程序所需的权限。 许可对话框中显示的权限集与在 Azure 门户中的“委托权限”  中选择的权限集相匹配。
+1. 用户登录后，Azure AD 将决定是否要向该用户显示同意页。 此决定基于该用户（或其组织的管理员）是否已授予应用程序许可。 如果尚未授予许可，Azure AD 会提示用户授予许可，并显示运行该应用程序所需的权限。 许可对话框中显示的权限集与在 Azure 门户中的“委托权限”  中选择的权限集相匹配。
 
     ![显示“同意”对话框中显示的权限的示例](./media/consent-framework/consent.png)
 
@@ -57,7 +57,7 @@ ms.locfileid: "77653301"
    1. 转到应用程序的“API 权限”  页
    1. 单击“授予管理员同意”  按钮。
 
-      ![授予权限以获得管理员的显式许可](./media/consent-framework/grant-consent.png)
+      ![授予显式管理许可权限](./media/consent-framework/grant-consent.png)
 
    > [!IMPORTANT]
    > 使用 ADAL.js 的单页应用程序 (SPA) 目前要求使用“授予权限”按钮授予显式许可  。 否则，在请求访问令牌时应用程序会失败。
@@ -65,6 +65,6 @@ ms.locfileid: "77653301"
 ## <a name="next-steps"></a>后续步骤
 
 * 请参阅[如何将应用转换为多租户应用](howto-convert-app-to-be-multi-tenant.md)
-* 如需更深入的了解，请参阅[如何在授权代码授予流程中在 OAuth 2.0 协议层提供许可支持](/active-directory/develop/active-directory-protocols-oauth-code#request-an-authorization-code)。
+* 有关详细信息，请参阅[在授权代码授权流期间如何在 OAuth 2.0 协议层支持同意](/active-directory/develop/active-directory-protocols-oauth-code#request-an-authorization-code)
 
 <!-- Update_Description: wording update -->

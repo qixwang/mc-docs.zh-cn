@@ -1,19 +1,19 @@
 ---
 title: 使用 Linux Azure 诊断聚合事件
-description: 了解如何使用 LAD 聚合和收集事件，以便对 Azure Service Fabric 群集进行监视和诊断。
+description: 了解有关聚合和使用 LAD 监视和诊断 Azure Service Fabric 群集的收集事件。
 author: rockboyfor
 ms.topic: conceptual
 origin.date: 02/25/2019
 ms.date: 02/24/2020
 ms.author: v-yeche
 ms.openlocfilehash: 27008c0085ec66869448004cca51912e6fb0b26f
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77540445"
 ---
-# <a name="event-aggregation-and-collection-using-linux-azure-diagnostics"></a>使用 Linux Azure 诊断聚合和收集事件
+# <a name="event-aggregation-and-collection-using-linux-azure-diagnostics"></a>使用 Linux Azure 诊断的事件聚合和集合
 > [!div class="op_single_selector"]
 > * [Windows](service-fabric-diagnostics-event-aggregation-wad.md)
 > * [Linux](service-fabric-diagnostics-event-aggregation-lad.md)
@@ -30,7 +30,7 @@ ms.locfileid: "77540445"
 ## <a name="log-and-event-sources"></a>日志和事件源
 
 ### <a name="service-fabric-platform-events"></a>Service Fabric 平台事件
-Service Fabric 通过 [LTTng](https://lttng.org) 发出几个现成可用的日志，包括操作事件或运行时事件。 这些日志存储在群集的资源管理器模板指定的位置。 若要获取或设置存储帐户详细信息，请搜索 AzureTableWinFabETWQueryable  标记，然后查找 StoreConnectionString  。
+Service Fabric 通过 [LTTng](https://lttng.org) 发出几个现成可用的日志，包括操作事件或运行时事件。 这些日志存储在群集的资源管理器模板指定的位置。 若要获取存储帐户的详细信息，请搜索 AzureTableWinFabETWQueryable  标记，然后查找 StoreConnectionString  。
 
 ### <a name="application-events"></a>应用程序事件
  检测软件时，事件按指定从应用程序和服务的代码中发出。 可以使用任何能够写入基于文本的日志的日志记录解决方案，例如 LTTng。 有关详细信息，请参阅有关跟踪应用程序的 LTTng 文档。
@@ -40,9 +40,9 @@ Service Fabric 通过 [LTTng](https://lttng.org) 发出几个现成可用的日�
 ## <a name="deploy-the-diagnostics-extension"></a>部署诊断扩展
 收集日志的第一个步骤是将诊断扩展部署在 Service Fabric 群集的每个 VM 上。 诊断扩展将收集每个 VM 上的日志，并将它们上传到指定的存储帐户。 
 
-要在创建群集期间将诊断扩展部署到群集中的 VM，请将“**诊断**”设置为“**打开**”。 创建群集后，无法使用门户更改此设置，因此，必须在资源管理器模板中进行相应更改。
+要在创建群集期间将诊断扩展部署到群集中的 VM，请将“**诊断**”设置为“**打开**”。 创建群集后，无法使用门户更改此设置，因此必须在资源管理器模板中进行相应的更改。
 
-这将配置 LAD 代理来监视指定的日志文件。 每当在文件中追加新行时，该代理都会创建一个 syslog 条目并将其发送到指定的存储（表）。
+这会将 LAD 代理配置为监视指定的日志文件。 每当在文件中追加新行时，该代理将创建一个 syslog 条目并将其发送到指定的存储（表）。
 
 ## <a name="next-steps"></a>后续步骤
 

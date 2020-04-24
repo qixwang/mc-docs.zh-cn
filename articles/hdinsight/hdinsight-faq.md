@@ -11,10 +11,10 @@ ms.topic: conceptual
 origin.date: 11/20/2019
 ms.date: 02/24/2020
 ms.openlocfilehash: a2efa0adf26ae597dcd3c94bb8e8dc20830c335a
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77428328"
 ---
 # <a name="azure-hdinsight-frequently-asked-questions"></a>Azure HDInsight：常见问题

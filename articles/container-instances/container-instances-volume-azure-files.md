@@ -7,10 +7,10 @@ ms.date: 01/15/2020
 ms.author: v-yeche
 ms.custom: mvc
 ms.openlocfilehash: 6c835a370b143884105194ee87889a9fa21eb5db
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77428301"
 ---
 <!--Verified successfully-->
@@ -145,7 +145,7 @@ tags: {}
 type: Microsoft.ContainerInstance/containerGroups
 ```
 
-若要使用 YAML 模板进行部署，请将前面的 YAML 保存到名为 `deploy-aci.yaml` 的文件中，然后使用 `--file` 参数执行 [az container create][az-container-create] 命令：
+若要使用 YAML 模板进行部署，请将前面的 YAML 保存到名为 `deploy-aci.yaml` 的文件中，然后使用 [ 参数执行 ][az-container-create]az container create`--file` 命令：
 
 ```azurecli
 # Deploy with YAML template
@@ -157,9 +157,9 @@ az container create --resource-group myResourceGroup --file deploy-aci.yaml
 
 <!--Not Available on [Resource Manager template](https://docs.microsoft.com/azure/templates/microsoft.containerinstance/containergroups)-->
 
-首先，在模板的容器组 `properties` 节中填充 `volumes` 数组。 
+首先，在模板的容器组 `volumes` 节中填充 `properties` 数组。 
 
-然后，针对容器组中要在其中装载卷的每个容器，在容器定义的 `properties` 部分中填充 `volumeMounts` 数组。
+然后，针对容器组中要在其中装载卷的每个容器，在容器定义的 `volumeMounts` 部分中填充 `properties` 数组。
 
 以下资源管理器模板定义了一个容器组，其中包含使用 `aci-hellofiles` 映像创建的容器。 该容器将之前创建的 Azure 文件共享 *acishare* 装载为卷。 在指定的位置，输入承载着文件共享的存储帐户的名称和存储密钥。 
 
@@ -232,7 +232,7 @@ az container create --resource-group myResourceGroup --file deploy-aci.yaml
 }
 ```
 
-若要使用资源管理器模板进行部署，请将前面的 JSON 保存到名为 `deploy-aci.json` 的文件中，然后使用 `--template-file` 参数执行 [az group deployment create][az-group-deployment-create] 命令：
+若要使用资源管理器模板进行部署，请将前面的 JSON 保存到名为 `deploy-aci.json` 的文件中，然后使用 [ 参数执行 ][az-group-deployment-create]az group deployment create`--template-file` 命令：
 
 ```azurecli
 # Deploy with Resource Manager template
@@ -241,7 +241,7 @@ az group deployment create --resource-group myResourceGroup --template-file depl
 
 ## <a name="mount-multiple-volumes"></a>装载多个卷
 
-若要将多个卷装载到容器实例中，必须使用 Azure 资源管理器模板、YAML 文件或其他编程方法进行部署。 若要使用模板或 YAML 文件，请提供共享详细信息，并通过在文件的 `properties` 部分填充 `volumes` 数组来定义卷。 
+若要将多个卷装载到容器实例中，必须使用 Azure 资源管理器模板、YAML 文件或其他编程方法进行部署。 若要使用模板或 YAML 文件，请提供共享详细信息，并通过在文件的 `volumes` 部分填充 `properties` 数组来定义卷。 
 
 <!--Not Avaiable on [Azure Resource Manager template](https://docs.microsoft.com/azure/templates/microsoft.containerinstance/containergroups)-->
 
@@ -266,7 +266,7 @@ az group deployment create --resource-group myResourceGroup --template-file depl
 }]
 ```
 
-接下来，针对容器组中希望装载卷的每个容器，在容器定义的 `properties` 部分填充 `volumeMounts` 数组。 例如，填充以下内容将装载之前定义的两个卷：myvolume1 和 myvolume2：  
+接下来，针对容器组中希望装载卷的每个容器，在容器定义的 `volumeMounts` 部分填充 `properties` 数组。 例如，填充以下内容将装载之前定义的两个卷：myvolume1 和 myvolume2：  
 
 ```JSON
 "volumeMounts": [{

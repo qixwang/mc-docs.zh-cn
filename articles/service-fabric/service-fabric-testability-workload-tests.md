@@ -7,10 +7,10 @@ origin.date: 06/15/2017
 ms.date: 02/24/2020
 ms.author: v-yeche
 ms.openlocfilehash: 80176606416a7a095037ba324bd7bfe9cd32cca7
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77540566"
 ---
 # <a name="simulate-failures-during-service-workloads"></a>在服务工作负荷期间模拟故障
@@ -19,9 +19,9 @@ Azure Service Fabric 中的可测试性方案可让开发人员不用再担心�
 ## <a name="sample-custom-scenario"></a>自定义方案示例
 此测试显示一种方案，其中业务工作负荷与[常规故障和非常规故障](service-fabric-testability-actions.md#graceful-vs-ungraceful-fault-actions)交错出现。 为了获得最佳结果，故障应在服务操作或计算的中间引入。
 
-让我们来了解一个显示了四个工作负荷（A、B、C、D）的服务示例。每个负荷对应一组工作流程，可以是计算、存储或者二者的混合。 为简单起见，我们对示例中的工作负荷进行抽象化。 本示例中执行的不同故障为：
+让我们来了解一个显示了四个工作负荷 A、B、C、D 的服务示例。每个负荷对应一组工作流程，可以是计算、存储或者二者的混合。 为简单起见，我们将对示例中的工作负荷进行抽象化。 本示例中执行的不同故障为：
 
-* RestartNode：用于模拟计算机重启的非常规故障。
+* RestartNode：用于模拟计算机重启操作的非正常故障。
 * RestartDeployedCodePackage：用于模拟服务主机进程崩溃的非正常故障。
 * RemoveReplica：用于模拟副本删除操作的正常故障。
 * MovePrimary：用于模拟 Service Fabric 负载均衡器触发的副本移动操作的正常故障。

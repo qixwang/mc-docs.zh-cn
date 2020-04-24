@@ -16,10 +16,10 @@ origin.date: 04/01/2019
 ms.date: 02/24/2020
 ms.author: v-jay
 ms.openlocfilehash: 2836c69db80f0e55fac4b1b92611bef9d5ba6e4b
-ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77494277"
 ---
 # <a name="perform-live-streaming-using-media-services-to-create-multi-bitrate-streams-with-azure-portal"></a>使用媒体服务实时传送视频流，通过 Azure 门户创建多比特率流  
@@ -62,7 +62,7 @@ ms.locfileid: "77494277"
 1. 要停止流式传输和归档事件时，停止事件。
 1. 删除事件（并选择性地删除资产）。   
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 以下是完成本教程所需具备的条件。
 

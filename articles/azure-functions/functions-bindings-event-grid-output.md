@@ -7,17 +7,17 @@ ms.date: 02/17/2020
 ms.author: v-junlch
 ms.custom: fasttrack-edit
 ms.openlocfilehash: 1769fcd0892faac6d8fb140dc61ba3619333c050
-ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77494603"
 ---
 # <a name="azure-event-grid-output-binding-for-azure-functions"></a>Azure Functions 的 Azure 事件网格输出绑定
 
 使用事件网格输出绑定将事件写入到自定义主题。 必须具有有效的[自定义主题访问密钥](../event-grid/security-authentication.md#custom-topic-publishing)。
 
-有关设置和配置详细信息，请参阅[概述](./functions-bindings-event-grid.md)。
+若要了解设置和配置详细信息，请参阅[概述](./functions-bindings-event-grid.md)。
 
 > [!NOTE]
 > 事件网格输出绑定不支持共享访问签名（SAS 令牌）。 必须使用主题的访问密钥。
@@ -205,9 +205,9 @@ JavaScript 不支持特性。
 
 |function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
-|**type** | 不适用 | 必须设置为“eventGrid”。 |
-|**direction** | 不适用 | 必须设置为“out”。 在 Azure 门户中创建绑定时，会自动设置该参数。 |
-|**name** | 不适用 | 函数代码中使用的表示事件的变量名称。 |
+|type  | 不适用 | 必须设置为“eventGrid”。 |
+|direction  | 不适用 | 必须设置为“out”。 在 Azure 门户中创建绑定时，会自动设置该参数。 |
+|name  | 不适用 | 函数代码中使用的表示事件的变量名称。 |
 |**topicEndpointUri** |**TopicEndpointUri** | 包含自定义主题 URI 的应用设置的名称，例如 `MyTopicEndpointUri`。 |
 |**topicKeySetting** |**TopicKeySetting** | 包含自定义主题访问密钥的应用设置的名称。 |
 
@@ -224,11 +224,11 @@ JavaScript 不支持特性。
 
 # <a name="c-script"></a>[C# 脚本](#tab/csharp-script)
 
-使用 `out EventGridEvent paramName` 等方法参数发送消息。 在 C# 脚本中，`paramName` 是在 *function.json* 的 `name` 属性中指定的值。 若要编写多条消息，可以使用 `ICollector<EventGridEvent>` 或 `IAsyncCollector<EventGridEvent>` 代替 `out EventGridEvent`。
+使用 `out EventGridEvent paramName` 等方法参数发送消息。 在 C# 脚本中，`paramName` 是在 `name`function.json*的* 属性中指定的值。 若要编写多条消息，可以使用 `ICollector<EventGridEvent>` 或 `IAsyncCollector<EventGridEvent>` 代替 `out EventGridEvent`。
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-使用 `context.bindings.<name>` 访问输出事件，其中 `<name>` 是在 *function.json* 的 `name` 属性中指定的值。
+使用 `context.bindings.<name>` 访问输出事件，其中 `<name>` 是在 `name`function.json*的* 属性中指定的值。
 
 # <a name="java"></a>[Java](#tab/java)
 

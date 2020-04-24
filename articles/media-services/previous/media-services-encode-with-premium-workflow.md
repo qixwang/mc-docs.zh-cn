@@ -1,6 +1,6 @@
 ---
 title: 通过媒体编码器高级工作流进行高级编码 | Microsoft Docs
-description: 了解如何使用 Media Encoder Premium Workflow 进行编码。 代码示例用 C# 编写且使用适用于 .NET 的媒体服务 SDK。
+description: 了解如何使用媒体编码器高级工作流进行编码。 代码示例用 C# 编写且使用适用于 .NET 的媒体服务 SDK。
 services: media-services
 documentationcenter: ''
 author: WenJason
@@ -15,25 +15,25 @@ origin.date: 03/18/2019
 ms.date: 02/24/2020
 ms.author: v-jay
 ms.openlocfilehash: e6e7607747eab9242072f64195a2780b726c4658
-ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77494311"
 ---
-# <a name="advanced-encoding-with-media-encoder-premium-workflow"></a>使用 Media Encoder Premium Workflow 进行高级编码
+# <a name="advanced-encoding-with-media-encoder-premium-workflow"></a>使用媒体编码器高级工作流进行高级编码
 
 ## <a name="overview"></a>概述
 Azure 媒体服务即将推出**媒体编码器高级工作流**媒体处理器。 此处理器针对高级按需工作流提供高级编码功能。
 
-以下主题概述了与 **媒体编码器高级工作流**相关的详细信息：
+以下主题概述了与**媒体编码器高级工作流**相关的详细信息：
 
-* [媒体编码器高级工作流支持的格式](media-services-premium-workflow-encoder-formats.md) – 介绍 **媒体编码器高级工作流**支持的文件格式和编解码器。
+* [媒体编码器高级工作流支持的格式](media-services-premium-workflow-encoder-formats.md) - 介绍**媒体编码器高级工作流**支持的文件格式和编解码器。
 * [Azure 点播媒体编码器的概述和比较](media-services-encode-asset.md)比较了 Media Encoder Premium Workflow 和 Media Encoder Standard 的编码功能   。
 
 本文演示如何在 Media Encoder Premium Workflow 中使用 .NET 进行编码  。
 
-**媒体编码器高级工作流** 的编码任务需要一个名为“工作流文件”的独立配置文件。 这些文件的扩展名为 .workflow，是使用 [工作流设计器](media-services-workflow-designer.md) 工具创建的。
+**媒体编码器高级工作流**的编码任务需要一个名为“Workflow”文件的单独配置文件。 这些文件的扩展名为 .workflow，由[工作流设计器](media-services-workflow-designer.md)工具创建。
 
 也可以从[此处](https://github.com/Azure/azure-media-services-samples/tree/master/Encoding%20Presets/VoD/MediaEncoderPremiumWorkfows)获取默认的工作流文件。 该文件夹还包含这些文件的相关说明。
 
@@ -41,13 +41,13 @@ Azure 媒体服务即将推出**媒体编码器高级工作流**媒体处理器�
 
 ## <a name="create-and-configure-a-visual-studio-project"></a>创建和配置 Visual Studio 项目
 
-设置开发环境，并在 app.config 文件中填充连接信息，如[使用 .NET 进行媒体服务开发](media-services-dotnet-how-to-use.md)中所述。 
+设置开发环境，并根据[使用 .NET 进行媒体服务开发](media-services-dotnet-how-to-use.md)中所述，在 app.config 文件中填充连接信息。 
 
 ## <a name="encoding-example"></a>编码示例
 
-以下示例演示了如何使用 **媒体编码器高级工作流**进行编码。
+以下示例演示了如何使用**媒体编码器高级工作流**进行编码。
 
-执行以下步骤：
+将执行以下步骤：
 
 1. 创建资产并上传工作流文件。
 2. 创建资产并上传源媒体文件。

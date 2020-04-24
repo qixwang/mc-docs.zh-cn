@@ -16,10 +16,10 @@ origin.date: 12/24/2019
 ms.date: 03/02/2020
 ms.author: v-yiso
 ms.openlocfilehash: b106751665d498fd1b07ce521ec9a59e9e91e39a
-ms.sourcegitcommit: 46fd4297641622c1984011eac4cb5a8f6f94e9f5
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77563505"
 ---
 # <a name="run-apache-hive-queries-using-hdinsight-net-sdk"></a>使用 HDInsight .NET SDK 运行 Apache Hive 查询
@@ -28,14 +28,14 @@ ms.locfileid: "77563505"
 了解如何使用 HDInsight .NET SDK 提交 Apache Hive 查询。 编写 C# 程序来提交 Hive 查询以列出 Hive 表，并显示结果。
 
 > [!NOTE]
-> 必须从 Windows 客户端执行本文中的步骤。 有关使用 Linux、OS X 或 Unix 客户端处理 Hive 的信息，请使用本文顶部显示的选项卡选择器。
+> 必须从 Windows 客户端执行本文中的步骤。 有关使用 Linux、OS X 或 Unix 客户端来使用 Hive 的信息，请使用本文顶部显示的选项卡选择器。
 > 
 > 
 
 ## <a name="prerequisites"></a>必备条件
-在开始阅读本文前，必须具有以下项：
+在开始阅读本文前，必须具有以下项目：
 
-* **HDInsight 中的 Apache Hadoop 群集**。 请参阅[在 HDInsight 中开始使用基于 Linux 的 Hadoop](apache-hadoop-linux-tutorial-get-started.md)。
+* **HDInsight 中的 Apache Hadoop 群集**。 请参阅[在 HDInsight 中使用基于 Linux 的 Hadoop](apache-hadoop-linux-tutorial-get-started.md)。
 
     > [!IMPORTANT]  
     > 自 2017 年 9 月 15 日起，HDInsight .NET SDK 仅支持从 Azure 存储帐户返回 Hive 查询结果。 如果将此示例用于使用 Azure Data Lake Storage 作为主存储的 HDInsight 群集，则无法使用 .NET SDK 检索搜索结果。
@@ -46,7 +46,7 @@ ms.locfileid: "77563505"
 HDInsight .NET SDK 提供 .NET 客户端库，可简化从 .NET 中使用 HDInsight 群集的操作。 
 
 1. 在 Visual Studio 中创建 C# 控制台应用程序。
-2. 通过 Nuget 包管理器控制台运行以下命令：
+2. 在 Nuget 包管理器控制台运行以下命令：
 
         Install-Package Microsoft.Azure.Management.HDInsight.Job
 
@@ -143,7 +143,7 @@ HDInsight .NET SDK 提供 .NET 客户端库，可简化从 .NET 中使用 HDInsi
 
 ## <a name="next-steps"></a>后续步骤
 
-本文介绍了如何使用 HDInsight .NET SDK 提交 Apache Hive 查询。 要了解更多信息，请参阅下列文章：
+本文介绍了如何使用 HDInsight .NET SDK 提交 Apache Hive 查询。 若要了解详细信息，请参阅以下文章：
 
 * [Azure HDInsight 入门](apache-hadoop-linux-tutorial-get-started.md)
 * [在 HDInsight 中创建 Apache Hadoop 群集](../hdinsight-hadoop-provision-linux-clusters.md)

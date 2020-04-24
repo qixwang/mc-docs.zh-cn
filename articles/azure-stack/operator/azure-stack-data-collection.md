@@ -9,10 +9,10 @@ ms.author: v-jay
 ms.reviewer: chengwei
 ms.lastreviewed: 06/10/2019
 ms.openlocfilehash: 6fa9e8fd487605bc8c42f4438184558f20cbf713
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77541003"
 ---
 # <a name="azure-stack-hub-log-and-customer-data-handling"></a>Azure Stack Hub 日志和客户数据处理 

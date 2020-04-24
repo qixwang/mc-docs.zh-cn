@@ -7,14 +7,14 @@ origin.date: 08/18/2017
 ms.date: 02/24/2020
 ms.author: v-yeche
 ms.openlocfilehash: d4dea6121e222134c9bd67330d8bd918f0916033
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77540459"
 ---
 # <a name="service-state"></a>服务状态
-服务状态指的是服务正常运行所需的内存中数据或磁盘上数据  。 这包括（例如）服务为正常工作而读取和写入的数据结构和成员变量等。 这可能还包括存储在磁盘上的文件或其他资源，具体取决于服务的体系结构。 例如，数据库用于存储数据和事务日志的文件。
+服务状态指的是服务正常运行所需的内存或磁盘数据  。 这包括（例如）服务为正常工作而读取和写入的数据结构和成员变量等。 这可能还包括存储在磁盘上的文件或其他资源，具体取决于服务的体系结构。 例如，数据库用于存储数据和事务日志的文件。
 
 例如，请设想一个计算器服务。 基本计算器服务需要两个数字并返回总和。 执行此计算不涉及成员变量或其他信息。
 

@@ -10,17 +10,17 @@ ms.custom: hdinsightactive
 origin.date: 12/04/2019
 ms.date: 03/02/2020
 ms.openlocfilehash: 7e63d7016b8997d8b75c129583c63356abcead9a
-ms.sourcegitcommit: 46fd4297641622c1984011eac4cb5a8f6f94e9f5
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77563587"
 ---
 # <a name="use-azure-kubernetes-service-with-apache-kafka-on-hdinsight"></a>将 Azure Kubernetes 服务与 Apache Kafka on HDInsight 配合使用
 
 了解如何将 Azure Kubernetes 服务 (AKS) 与 [Apache Kafka](https://kafka.apache.org/) on HDInsight 群集配合使用。 本文档中的步骤使用 AKS 中托管的 Node.js 应用程序来验证与 Kafka 的连接。 此应用程序使用 [kafka-node](https://www.npmjs.com/package/kafka-node) 包来与 Kafka 通信。 它使用 [Socket.io](https://socket.io/) 在浏览器客户端与托管在 AKS 中的后端之间进行事件驱动的消息传送。
 
-[Apache Kafka](https://kafka.apache.org) 是开源分布式流式处理平台，可用于构建实时流数据管道和应用程序。 Azure Kubernetes 服务管理托管的 Kubernetes 环境，使用它可以快速轻松地部署容器化应用程序。 使用 Azure 虚拟网络可以连接这两个服务。
+[Apache Kafka](https://kafka.apache.org) 是一个分布式流式处理平台，以开源方式提供，可用于构建实时流式处理数据管道和应用程序。 Azure Kubernetes 服务管理托管的 Kubernetes 环境，使用它可以快速轻松地部署容器化应用程序。 使用 Azure 虚拟网络可以连接这两个服务。
 
 > [!NOTE]  
 > 本文重点讲解需要执行哪些步骤才能让 Azure Kubernetes 服务与 Kafka on HDInsight 通信。 示例本身只是一个用于演示配置工作原理的基本 Kafka 客户端。
@@ -74,11 +74,11 @@ HDInsight 和 AKS 使用 Azure 虚拟网络作为计算资源的容器。 若要
 
 ### <a name="create-virtual-network"></a>创建虚拟网络
 
-1. 若要为 HDInsight 创建虚拟网络，请导航到“+ 创建资源” > “网络” > “虚拟网络”。   
+1. 若要为 HDInsight 创建虚拟网络，请导航到“+ 创建资源” __“网络”__ “虚拟网络”。 >    >  
 
 1. 对于某些属性，请按照以下准则创建网络：
 
-    |属性 | Value |
+    |properties | 值 |
     |---|---|
     |地址空间|使用的地址空间不得与 AKS 群集网络使用的地址空间重叠。|
     |位置|使用 AKS 群集所用的相同虚拟网络__位置__。|
@@ -91,7 +91,7 @@ HDInsight 和 AKS 使用 Azure 虚拟网络作为计算资源的容器。 若要
 
 1. 选择“+ 添加”，然后使用以下值填充表单： 
 
-    |属性 |Value |
+    |properties |值 |
     |---|---|
     |从 \<此 VN> 到远程虚拟网络的对等互连的名称|输入此对等互连配置的唯一名称。|
     |虚拟网络|选择 **AKS 群集**的虚拟网络。|
@@ -107,21 +107,21 @@ HDInsight 和 AKS 使用 Azure 虚拟网络作为计算资源的容器。 若要
 
 使用以下步骤将 Kafka 配置为播发 IP 地址而不是域名：
 
-1. 使用 Web 浏览器时，请访问 `https://CLUSTERNAME.azurehdinsight.cn`。 将 CLUSTERNAME 替换为 Kafka on HDInsight 群集的名称。
+1. 使用 Web 浏览器转到 `https://CLUSTERNAME.azurehdinsight.cn`。 将 CLUSTERNAME 替换为 Kafka on HDInsight 群集的名称。
 
     出现提示时，使用群集的 HTTPS 用户名称密码。 将显示群集的 Ambari Web UI。
 
-2. 要查看 Kafka 的相关信息，请从左侧列表中选择“Kafka”。 
+2. 要查看 Kafka 的相关信息，请从左侧列表中选择“Kafka”  。
 
-    ![服务列表，其中突出显示了 Kafka](./media/apache-kafka-azure-container-services/select-kafka-service.png)
+    ![Kafka 突出显示的服务列表](./media/apache-kafka-azure-container-services/select-kafka-service.png)
 
-3. 要查看 Kafka 配置，请在顶端的中间位置选择“配置”。 
+3. 要查看 Kafka 配置，请在顶端的中间位置选择“配置”  。
 
     ![Apache Ambari 服务配置](./media/apache-kafka-azure-container-services/select-kafka-config1.png)
 
-4. 要查找“kafka-env” 配置，请在右上方的“筛选器”字段中输入 `kafka-env`。  
+4. 要查找“kafka-env”  配置，请在右上方的“筛选器”`kafka-env`__字段中输入__ 。
 
-    ![针对 kafka-env 的 Kafka 配置](./media/apache-kafka-azure-container-services/search-for-kafka-env.png)
+    ![Kafka 配置，适用于 kafka-env](./media/apache-kafka-azure-container-services/search-for-kafka-env.png)
 
 5. 要配置 Kafka 来播发 IP 地址，请将下列文本添加到“kafka-env-template”  字段的底部：
 
@@ -133,23 +133,23 @@ HDInsight 和 AKS 使用 Azure 虚拟网络作为计算资源的容器。 若要
     echo "advertised.listeners=PLAINTEXT://$IP_ADDRESS:9092" >> /usr/hdp/current/kafka-broker/conf/server.properties
     ```
 
-6. 要配置 Kafka 侦听的接口，请在右上方的“筛选器”字段中输入 `listeners`。 
+6. 要配置 Kafka 侦听的接口，请在右上方的“筛选器”`listeners`__字段中输入__ 。
 
-7. 要将 Kafka 配置为侦听所有网络接口，请将“侦听器”字段的值更改为 `PLAINTEXT://0.0.0.0:9092`。 
+7. 要将 Kafka 配置为侦听所有网络接口，请将“侦听器”  字段的值更改为 `PLAINTEXT://0.0.0.0:9092`。
 
-8. 单击“保存”按钮以保存配置。  输入描述更改的文本消息。 保存更改后，选择“确定”。 
+8. 单击“保存”  按钮保存配置。 输入描述更改的文本消息。 保存更改后，请选择“确定”  。
 
     ![Apache Ambari 保存配置](./media/apache-kafka-azure-container-services/save-configuration-button.png)
 
-9. 要防止在重启 Kafka 时出错，请使用“服务操作”按钮，并选择“打开维护模式”。   选择“确定”完成操作。
+9. 要防止在重启 Kafka 时出错，请使用“服务操作”  按钮，并选择“打开维护模式”  。 选择“确定”完成操作。
 
-    ![服务操作，其中已突出显示了“打开维护”](./media/apache-kafka-azure-container-services/turn-on-maintenance-mode.png)
+    ![服务操作，其中已突出显示“打开维护”](./media/apache-kafka-azure-container-services/turn-on-maintenance-mode.png)
 
-10. 要重启 Kafka，请使用“重启”按钮，然后选择“重启所有受影响的项”。   确认重启，在操作完成后再使用“确定”按钮。 
+10. 要重启 Kafka，请使用“重启”  按钮，并选择“重启所有受影响的项”  。 确认重启，在操作完成后再使用“确定”  按钮。
 
     ![重启按钮，其中突出显示了所有受影响的重启项](./media/apache-kafka-azure-container-services/restart-required-button.png)
 
-11. 要禁用维护模式，请使用“服务操作”按钮，然后选择“关闭维护模式”。   选择“确定”完成操作。 
+11. 要禁用维护模式，请使用“服务操作”  按钮，并选择“关闭维护模式”  。 选择“确定”  完成操作。
 
 ## <a name="test-the-configuration"></a>测试配置
 
@@ -161,8 +161,8 @@ HDInsight 和 AKS 使用 Azure 虚拟网络作为计算资源的容器。 若要
 
 3. 编辑 `index.js` 文件并更改以下行：
 
-    * `var topic = 'mytopic'`：将 `mytopic` 替换为此应用程序使用的 Kafka 主题的名称。
-    * `var brokerHost = '176.16.0.13:9092`：将 `176.16.0.13` 替换为群集的某个中转站主机的内部 IP 地址。
+    * `var topic = 'mytopic'`：将 `mytopic` 替换为此应用程序使用的 Kafka 主题名称。
+    * `var brokerHost = '176.16.0.13:9092`：将 `176.16.0.13` 替换为群集的某个代理主机的内部 IP 地址。
 
         若要查找群集中代理主机（工作节点）的内部 IP 地址，请参阅 [Apache Ambari REST API](../hdinsight-hadoop-manage-ambari-rest-api.md#example-get-the-internal-ip-address-of-cluster-nodes) 文档。 选择域名以 `wn` 开头的某个条目的 IP 地址。
 
@@ -226,7 +226,7 @@ HDInsight 和 AKS 使用 Azure 虚拟网络作为计算资源的容器。 若要
 
 ## <a name="next-steps"></a>后续步骤
 
-单击以下链接了解如何使用 Apache Kafka on HDInsight：
+使用以下链接了解如何使用 Apache Kafka on HDInsight：
 
 * [Apache Kafka on HDInsight 入门](apache-kafka-get-started.md)
 

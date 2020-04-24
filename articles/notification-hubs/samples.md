@@ -15,10 +15,10 @@ ms.author: v-tawe
 ms.reviewer: jowargo
 ms.lastreviewed: 03/28/2019
 ms.openlocfilehash: 1d40ed657869ae688c7fe0461007c95dbb4a819a
-ms.sourcegitcommit: 094c057878de233180ff3b3a3e3c19bc11c81776
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77501442"
 ---
 # <a name="azure-notification-hubs-samples"></a>Azure 通知中心示例

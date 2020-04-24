@@ -15,10 +15,10 @@ origin.date: 10/15/2019
 ms.date: 02/24/2020
 ms.author: v-yiso
 ms.openlocfilehash: 86722b557ae442bf1e63d0c8c9b19acc83d43914
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77428709"
 ---
 # <a name="ports-used-by-apache-hadoop-services-on-hdinsight"></a>HDInsight 上的 Apache Hadoop 服务所使用的端口
@@ -32,7 +32,7 @@ ms.locfileid: "77428709"
 在内部，HDInsight 由在 Azure 虚拟网络上运行的多个 Azure 虚拟机（群集内的节点）实现。 从虚拟网络内部可以访问不是通过 Internet 公开的端口。 例如，如果使用 SSH 连接到某个头节点，则可以从该头节点直接访问群集节点上运行的服务。
 
 > [!IMPORTANT]  
-> 如果尚未指定某个 Azure 虚拟网络作为 HDInsight 的配置选项，系统自动创建一个 Azure 虚拟网络。 但无法将其他计算机（例如其他 Azure 虚拟机或客户端开发计算机）加入到此虚拟网络中。
+> 如果尚未指定某个 Azure 虚拟网络作为 HDInsight 的配置选项，系统会自动创建一个 Azure 虚拟网络。 但无法将其他计算机（例如其他 Azure 虚拟机或客户端开发计算机）加入到此虚拟网络中。
 
 要将其他计算机添加到虚拟网络，必须先创建虚拟网络，然后在创建 HDInsight 群集时指定该网络。 有关详细信息，请参阅[为 HDInsight 规划虚拟网络](hdinsight-plan-virtual-network-deployment.md)。
 
@@ -42,13 +42,13 @@ HDInsight 群集中的所有节点都位于 Azure 虚拟网络中，无法直接
 
 | 服务 | 端口 | 协议 | 说明 |
 | --- | --- | --- | --- |
-| sshd |22 |SSH |将客户端连接到主头节点上的 sshd。 有关详细信息，请参阅 [将 SSH 与 HDInsight 配合使用](hdinsight-hadoop-linux-use-ssh-unix.md)。 |
-| sshd |22 |SSH |将客户端连接到边缘节点上的 sshd。 有关详细信息，请参阅 [将 SSH 与 HDInsight 配合使用](hdinsight-hadoop-linux-use-ssh-unix.md)。 |
-| sshd |23 |SSH |将客户端连接到辅助头节点上的 sshd。 有关详细信息，请参阅 [将 SSH 与 HDInsight 配合使用](hdinsight-hadoop-linux-use-ssh-unix.md)。 |
+| sshd |22 |SSH |将客户端连接到主头节点上的 sshd。 有关详细信息，请参阅 [Use SSH with HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md)（对 HDInsight 使用 SSH）。 |
+| sshd |22 |SSH |将客户端连接到边缘节点上的 sshd。 有关详细信息，请参阅 [Use SSH with HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md)（对 HDInsight 使用 SSH）。 |
+| sshd |23 |SSH |将客户端连接到辅助头节点上的 sshd。 有关详细信息，请参阅 [Use SSH with HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md)（对 HDInsight 使用 SSH）。 |
 | Ambari |443 |HTTPS |Ambari Web UI。 请参阅[使用 Apache Ambari Web UI 管理 HDInsight](hdinsight-hadoop-manage-ambari.md)。 |
 | Ambari |443 |HTTPS |Ambari REST API。 请参阅[使用 Apache Ambari REST API 管理 HDInsight](hdinsight-hadoop-manage-ambari-rest-api.md)。 |
 | WebHCat |443 |HTTPS |HCatalog REST API。 请参阅[将 MapReduce 与 Curl 配合使用](hadoop/apache-hadoop-use-mapreduce-curl.md)。 |
-| HiveServer2 |443 |ODBC |使用 ODBC 连接到 Hive。 请参阅 [Connect Excel to HDInsight with the Microsoft ODBC driver](hadoop/apache-hadoop-connect-excel-hive-odbc-driver.md)（使用 Microsoft ODBC 驱动程序将 Excel 连接到 HDInsight）。 |
+| HiveServer2 |443 |ODBC |使用 ODBC 连接到 Hive。 请参阅[使用 Microsoft ODBC 驱动程序将 Excel 连接到 HDInsight](hadoop/apache-hadoop-connect-excel-hive-odbc-driver.md)。 |
 | HiveServer2 |443 |JDBC |使用 JDBC 连接到 Apache Hive。 请参阅[使用 Hive JDBC 驱动程序连接到 HDInsight 上的 Apache Hive](hadoop/apache-hadoop-connect-hive-jdbc-driver.md) |
 
 以下各项适用于特定的群集类型：
@@ -61,7 +61,7 @@ HDInsight 群集中的所有节点都位于 Azure 虚拟网络中，无法直接
 | Storm |443 |HTTPS |Storm |Storm Web UI。 请参阅[在 HDInsight 上部署和管理 Apache Storm 拓扑](storm/apache-storm-deploy-monitor-topology-linux.md)。 |
 | Kafka Rest 代理 |443 |HTTPS |Kafka |Kafka REST API。 请参阅[使用 REST 代理与 Azure HDInsight 中的 Apache Kafka 群集进行交互](kafka/rest-proxy.md) |
 
-### <a name="authentication"></a>身份验证
+### <a name="authentication"></a>Authentication
 
 在 Internet 上公开的所有服务都必须经过身份验证：
 
@@ -85,7 +85,7 @@ HDInsight 群集中的所有节点都位于 Azure 虚拟网络中，无法直接
 | Ambari Web UI | 头节点 | 8080 | / | HTTP |
 | Ambari REST API | 头节点 | 8080 | /api/v1 | HTTP |
 
-示例:
+示例：
 
 * Ambari REST API：`curl -u admin "http://10.0.0.11:8080/api/v1/clusters"`
 
@@ -162,8 +162,8 @@ HDInsight 群集中的所有节点都位于 Azure 虚拟网络中，无法直接
 
 | 服务 | Nodes | 端口 | 协议 | 说明 |
 | --- | --- | --- | --- | --- |
-| 代理 |辅助角色节点 |9092 |[Kafka 线路协议](https://kafka.apache.org/protocol.html) |用于客户端通信 |
-| &nbsp; |Zookeeper 节点 |2181 |&nbsp; |客户端用来连接 ZooKeeper 的端口 |
+| 代理 |辅助角色节点 |9092 |[Kafka Wire Protocol](https://kafka.apache.org/protocol.html)（Kafka 线路协议） |用于客户端通信 |
+| &nbsp; |Zookeeper 节点 |2181 |&nbsp; |客户端用来连接 Zookeeper 的端口 |
 
 ### <a name="spark-ports"></a>Spark 端口
 
@@ -173,6 +173,6 @@ HDInsight 群集中的所有节点都位于 Azure 虚拟网络中，无法直接
 | Livy 服务器 | 头节点 | 8998 | HTTP | &nbsp; | 用于运行语句、作业和应用程序的服务 |
 | Jupyter 笔记本 | 头节点 | 8001 | HTTP | &nbsp; | Jupyter notebook 网站 |
 
-示例:
+示例：
 
 * Livy：`curl -u admin -G "http://10.0.0.11:8998/"`。 在此示例中，`10.0.0.11` 是托管 Livy 服务的头节点的 IP 地址。

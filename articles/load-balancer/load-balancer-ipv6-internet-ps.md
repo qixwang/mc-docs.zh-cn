@@ -16,10 +16,10 @@ origin.date: 09/25/2017
 ms.date: 02/24/2020
 ms.author: v-jay
 ms.openlocfilehash: e615913044da8284fc8b9013179b46fd1ebfe2d1
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77541151"
 ---
 # <a name="get-started-creating-an-internet-facing-load-balancer-with-ipv6-using-powershell-for-resource-manager"></a>开始使用用于 Resource Manager 的 PowerShell 创建具有 IPv6 的面向 Internet 的负载均衡器
@@ -32,7 +32,7 @@ ms.locfileid: "77541151"
 >[!NOTE] 
 >本文介绍了一项简介性的 IPv6 功能，该功能允许基本负载均衡器提供 IPv4 和 IPv6 连接。 [适用于 Azure VNET 的 IPv6](../virtual-network/ipv6-overview.md) 现在提供综合性 IPv6 连接，可以将 IPv6 连接与虚拟网络集成，包含 IPv6 网络安全组规则、IPv6 用户定义路由、IPv6 基本和标准负载均衡等关键功能。  适用于 Azure VNET 的 IPv6 是建议用于 Azure 中的 IPv6 应用程序的标准。 请参阅[适用于 Azure VNET PowerShell 部署的 IPv6](../virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md) 
 
-Azure 负载均衡器是位于第 4 层 (TCP, UDP) 的负载均衡器。 该负载均衡器可以在云服务或负载均衡器集的虚拟机中运行状况良好的服务实例之间分配传入流量，从而提供高可用性。 Azure 负载均衡器还可以在多个端口和/或多个 IP 地址上显示这些服务。
+Azure load balancer 是位于第 4 层 (TCP, UDP) 的负载均衡器。 该负载均衡器可以在云服务或负载均衡器集的虚拟机中运行状况良好的服务实例之间分配传入流量，从而提供高可用性。 Azure Load Balancer 还可以在多个端口和/或多个 IP 地址上显示这些服务。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -42,7 +42,7 @@ Azure 负载均衡器是位于第 4 层 (TCP, UDP) 的负载均衡器。 该负�
 
 ![负载均衡器方案](./media/load-balancer-ipv6-internet-ps/lb-ipv6-scenario.png)
 
-在此方案中，会创建以下 Azure 资源：
+在此方案中，将创建以下 Azure 资源：
 
 * 已分配 IPv4 和 IPv6 公共 IP 地址的面向 Internet 的负载均衡器
 * 两个负载均衡规则，用于将公共 VIP 映射到专用终结点
@@ -52,7 +52,7 @@ Azure 负载均衡器是位于第 4 层 (TCP, UDP) 的负载均衡器。 该负�
 
 ## <a name="deploying-the-solution-using-the-azure-powershell"></a>使用 Azure PowerShell 部署解决方案
 
-以下步骤说明如何使用 Azure Resource Manager 和 PowerShell 创建面向 Internet 的负载均衡器。 借助 Azure Resource Manager，可单独创建和配置每个资源，再将其合成一个新资源。
+以下步骤说明如何使用 Azure 资源管理器和 PowerShell 创建面向 Internet 的负载均衡器。 借助 Azure 资源管理器，可单独创建和配置每个资源，再将其合成一个新资源。
 
 若要部署负载均衡器，需要创建并配置以下对象：
 
@@ -66,7 +66,7 @@ Azure 负载均衡器是位于第 4 层 (TCP, UDP) 的负载均衡器。 该负�
 
 ## <a name="set-up-powershell-to-use-resource-manager"></a>将 PowerShell 设置为使用 Resource Manager
 
-确保具备 Azure Resource Manager 模块的最新生产版本才可用于 PowerShell。
+确保具备 Azure 资源管理器模块的最新生产版本才可用于 PowerShell。
 
 1. 登录 Azure
 
@@ -161,7 +161,7 @@ Azure 负载均衡器是位于第 4 层 (TCP, UDP) 的负载均衡器。 该负�
     $RDPprobe = New-AzLoadBalancerProbeConfig -Name 'RDPprobe' -Protocol Tcp -Port 3389 -IntervalInSeconds 15 -ProbeCount 2
     ```
 
-    对于本示例，我们使用 TCP 探测。
+    对于本示例，我们将使用 TCP 探测。
 
 3. 创建负载均衡器规则。
 
@@ -200,7 +200,7 @@ Azure 负载均衡器是位于第 4 层 (TCP, UDP) 的负载均衡器。 该负�
 
 ## <a name="create-virtual-machines-and-assign-the-newly-created-nics"></a>创建虚拟机并分配新建的 NIC
 
-有关创建 VM 的详细信息，请参阅 [Create and preconfigure a Windows Virtual Machine with Resource Manager and Azure PowerShell](../virtual-machines/virtual-machines-windows-ps-create.md?toc=%2fload-balancer%2ftoc.json)
+有关创建 VM 的详细信息，请参阅[使用 Resource Manager 和 Azure PowerShell 创建并预先配置 Windows 虚拟机](../virtual-machines/virtual-machines-windows-ps-create.md?toc=%2fload-balancer%2ftoc.json)
 
 1. 创建可用性集和存储帐户
 

@@ -10,10 +10,10 @@ ms.author: v-jay
 ms.reviewer: unknown
 ms.lastreviewed: 10/23/2018
 ms.openlocfilehash: 13dd6839065b7e4e54cdf23e40979a001d79e13b
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77540250"
 ---
 # <a name="azure-stack-hub-validation-report"></a>Azure Stack Hub 验证报表
@@ -128,10 +128,10 @@ Azure Stack Hub ADFS Validation results not available.
 - 证书
 - AzureRegistration
 - AzureIdentity
-- Graph
+- 图形
 - ADFS
 - 作业
-- 全部  
+- All  
 
 例如，若要仅查看证书的报表摘要，请使用以下 PowerShell 命令行：
 

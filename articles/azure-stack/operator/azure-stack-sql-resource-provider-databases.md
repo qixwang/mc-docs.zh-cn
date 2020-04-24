@@ -10,10 +10,10 @@ ms.author: v-jay
 ms.reviewer: xiaofmao
 ms.lastreviewed: 10/16/2018
 ms.openlocfilehash: e7f3f358b818e2269f55b51b787ccd30a22beef0
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77540312"
 ---
 # <a name="create-sql-databases"></a>创建 SQL 数据库
@@ -38,7 +38,7 @@ ms.locfileid: "77540312"
    >[!NOTE]
    >向 Azure Stack Hub 添加宿主服务器时，系统会为它们分配 SKU。 将在 SKU 的宿主服务器池中创建数据库。
 
-5. 选择“登录名”。 
+5. 选择“登录”。 
 
 6. 在“选择登录名”下选择现有登录名，或者选择“+ 创建新登录名”。  
 

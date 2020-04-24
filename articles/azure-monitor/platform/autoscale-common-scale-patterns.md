@@ -8,10 +8,10 @@ ms.date: 05/07/2018
 ms.author: v-lingwu
 ms.subservice: autoscale
 ms.openlocfilehash: e1b809cb814463b82206d9deea8e3585a84b2ccc
-ms.sourcegitcommit: 27eaabd82b12ad6a6840f30763034a6360977186
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77497606"
 ---
 # <a name="overview-of-common-autoscale-patterns"></a>常见自动缩放模式的概述
@@ -27,7 +27,7 @@ Azure Monitor 自动缩放仅适用于[虚拟机规模集](/virtual-machine-scal
 
 拥有 Web 应用（/VMSS/云服务角色）并且
 
-- 要基于 CPU 进行扩大/缩小。
+- 要基于 CPU 进行横向扩展/横向缩减。
 - 此外，你希望确保实例数最小。
 - 同时，希望确保为可以扩展到的实例数设置最大限制。
 
@@ -38,7 +38,7 @@ Azure Monitor 自动缩放仅适用于[虚拟机规模集](/virtual-machine-scal
 拥有 Web 应用（/VMSS/云服务角色）并且
 
 - 默认情况下想要 3 个实例（在工作日）
-- 不希望在周末有流量，因此希望在周末减少到 1 个实例。
+- 不希望在周末有流量，因此希望在周末纵向缩减到 1 个实例。
 
 ![在工作日与周末以不同方式缩放][3]
 
@@ -55,7 +55,7 @@ Azure Monitor 自动缩放仅适用于[虚拟机规模集](/virtual-machine-scal
 
 有一个 Web 前端和一个可与后端通信的 API 层。
 
-- 想要基于前端中的自定义事件缩放 API 层（示例：想要基于购物车中的项目数缩放结帐进程）
+- 想要基于前端中的自定义事件缩放 API 层（示例：想要基于购物车中的项目数缩放结账进程）
 
 ![基于自定义指标进行缩放][5]
 

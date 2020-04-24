@@ -14,10 +14,10 @@ origin.date: 11/20/2018
 ms.date: 02/10/2020
 ms.author: v-yeche
 ms.openlocfilehash: fd87d4e59b3ad44b5aac5ab5bfc012b4cedd5e87
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77428848"
 ---
 <!--Verify successfully-->

@@ -8,10 +8,10 @@ ms.date: 02/24/2020
 ms.author: v-jay
 ms.lastreviewed: 12/01/2018
 ms.openlocfilehash: e9f3e7e750d471c95f286197d06b4726df747d4f
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77540762"
 ---
 # <a name="use-azure-monitor-on-azure-stack-hub"></a>使用 Azure Stack Hub 上的 Azure Monitor

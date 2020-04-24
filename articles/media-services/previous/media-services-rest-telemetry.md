@@ -1,6 +1,6 @@
 ---
 title: 使用 .REST 配置 Azure 媒体服务遥测 | Microsoft Docs
-description: 本文介绍如何通过 REST API 使用 Azure 媒体服务遥测...
+description: 本文介绍如何通过 REST API 使用 Azure 媒体服务遥测。
 services: media-services
 documentationcenter: ''
 author: WenJason
@@ -16,10 +16,10 @@ origin.date: 03/20/2019
 ms.date: 02/24/2020
 ms.author: v-jay
 ms.openlocfilehash: ef910e1af7dfdefef9f156c783d5a2db1ff49bbe
-ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77494211"
 ---
 # <a name="configuring-azure-media-services-telemetry-with-rest"></a>使用 REST 配置 Azure 媒体服务遥测
@@ -236,7 +236,7 @@ ms.locfileid: "77494211"
 
 ## <a name="consuming-telemetry-information"></a>使用遥测信息
 
-有关使用遥测信息的信息，请参阅 [此主题](media-services-telemetry-overview.md)。
+有关使用遥测信息的信息，请参阅[此](media-services-telemetry-overview.md)主题。
 
 ## <a name="next-steps"></a>后续步骤
 

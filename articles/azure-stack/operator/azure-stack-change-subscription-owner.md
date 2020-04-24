@@ -9,10 +9,10 @@ ms.author: v-jay
 ms.reviewer: shnatara
 ms.lastreviewed: 10/19/2018
 ms.openlocfilehash: 2fe90019a8bbb9fe9f138306d44e0f1ef9798a15
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77540880"
 ---
 # <a name="change-the-billing-owner-for-an-azure-stack-hub-user-subscription"></a>更改 Azure Stack Hub 用户订阅的计费所有者

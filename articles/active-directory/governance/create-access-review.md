@@ -16,10 +16,10 @@ ms.author: v-junlch
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5edaaa777f5b15efc85d19896ef5eabe43f81daf
-ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77653088"
 ---
 # <a name="create-an-access-review-of-groups-and-applications-in-azure-ad-access-reviews"></a>在 Azure AD 访问评审中创建对组和应用程序的访问评审
@@ -28,7 +28,7 @@ ms.locfileid: "77653088"
 
 本文介绍如何针对组成员或应用程序访问权限创建一个或多个访问评审。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - Azure AD Premium P2
 - 全局管理员或用户管理员

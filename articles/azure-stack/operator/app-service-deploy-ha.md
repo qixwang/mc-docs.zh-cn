@@ -9,10 +9,10 @@ ms.author: v-jay
 ms.reviewer: anwestg
 ms.lastreviewed: 01/02/2020
 ms.openlocfilehash: 04401faead636c13f994821c006241a8613d285d
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77540658"
 ---
 # <a name="deploy-app-service-in-a-highly-available-configuration"></a>在高可用性配置中部署应用服务
@@ -48,12 +48,12 @@ ms.locfileid: "77540658"
 
 1. [!INCLUDE [azs-admin-portal](../includes/azs-admin-portal.md)]
 
-2. 选择“\+ 创建资源” > “自定义”，然后选择“模板部署”。    
+2. 选择“ **创建资源”\+“自定义”，然后选择“模板部署”。**   >   
 
    ![自定义模板部署](media/app-service-deploy-ha/1.png)
 
 
-3. 在“自定义部署”边栏选项卡上，选择“编辑模板” > “快速入门模板”，然后在可用自定义模板下拉列表中选择“appservice-fileshare-sqlserver-ha”模板。     单击“确定”，然后单击“保存”。  
+3. 在“自定义部署”边栏选项卡上，选择“编辑模板” **“快速入门模板”，然后在可用自定义模板下拉列表中选择“appservice-fileshare-sqlserver-ha”模板。**   >    单击“确定”，然后单击“保存”。  
 
    ![选择 appservice-fileshare-sqlserver-ha 快速入门模板](media/app-service-deploy-ha/2.png)
 
@@ -154,7 +154,7 @@ ms.locfileid: "77540658"
 
     ![在应用服务上进行的 VNet 选择](media/app-service-deploy-ha/06.png)
 
-8. 提供前面记录的文件共享路径和文件共享所有者参数的模板输出信息。 完成后，单击“下一步”。 
+8. 提供前面记录的文件共享路径和文件共享所有者参数的模板输出信息。 完成后，单击 **“下一步”** 。
 
     ![应用服务上的文件共享输出信息](media/app-service-deploy-ha/07.png)
 
@@ -163,7 +163,7 @@ ms.locfileid: "77540658"
     ![应用服务上的预期错误对话框](media/app-service-deploy-ha/08.png)
 
     如果选择部署到现有虚拟网络并使用内部 IP 地址连接到文件服务器，则必须添加出站安全规则。 此规则允许辅助角色子网和文件服务器之间的 SMB 流量。 转到管理员门户中的 WorkersNsg 并添加包含以下属性的出站安全规则：
-    - 源：任意
+    - 源：任何
     - 源端口范围：*
     - 目标：IP 地址
     - 目标 IP 地址范围：文件服务器的 IP 范围
@@ -171,7 +171,7 @@ ms.locfileid: "77540658"
     - 协议：TCP
     - 操作：允许
     - 优先级：700
-    - 姓名：Outbound_Allow_SMB445
+    - 名称：Outbound_Allow_SMB445
 
 10. 提供标识应用程序 ID 以及标识证书的路径和密码，然后单击“下一步”： 
     - 标识应用程序证书（格式为 **sso.appservice.local.azurestack.external.pfx**）
@@ -190,7 +190,7 @@ ms.locfileid: "77540658"
 
     ![应用服务上的 SQL Server 连接信息](media/app-service-deploy-ha/10.png)
 
-13. 由于用于安装应用服务的计算机与用于托管应用服务数据库的 SQL Server 不在同一 VNet 上，因此无法解析名称。  **这是预期行为**。<br><br>验证为 SQL Server 名称和帐户信息输入的信息是否正确，然后按“是”以继续安装应用服务。  单击“下一步”  。
+13. 由于用于安装应用服务的计算机与用于托管应用服务数据库的 SQL Server 不在同一 VNet 上，因此无法解析名称。  **这是预期行为**。<br><br>验证为 SQL Server 名称和帐户信息输入的信息是否正确，然后按“是”以继续安装应用服务。  单击“下一步”。 
 
     ![应用服务上的 SQL Server 连接信息](media/app-service-deploy-ha/11.png)
 
@@ -200,7 +200,7 @@ ms.locfileid: "77540658"
     |-----|-----|-----|
     |控制器角色|2|2|
     |管理角色|1|3|
-    |发布者角色|1|3|
+    |“发布者”角色|1|3|
     |前端角色|1|3|
     |共享辅助角色|1|2|
     |     |     |     |

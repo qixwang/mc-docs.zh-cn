@@ -7,10 +7,10 @@ origin.date: 04/20/2017
 ms.date: 02/24/2020
 ms.author: v-yeche
 ms.openlocfilehash: 138a9704e6bca60f80f9cd50695e754694984cfa
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77541055"
 ---
 # <a name="secure-service-remoting-communications-in-a-c-service"></a>保护 C# 服务的服务远程处理通信
@@ -20,11 +20,11 @@ ms.locfileid: "77541055"
 >
 >
 
-安全是通信最为重视的要素之一。 Reliable Services 应用程序框架提供了一些预先生成的通信堆栈和工具供你用来提高安全性。 本文介绍如何在 C# 服务中使用服务远程处理时提高安全性。 它基于现有的[示例](service-fabric-reliable-services-communication-remoting.md)构建，该示例解释了如何为使用 C# 编写的 Reliable Services 设置远程处理。 
+安全是通信最为重视的要素之一。 Reliable Services 应用程序框架提供了一些预先构建的通信堆栈和工具，可用来提高安全性。 本文介绍如何在 C# 服务中使用服务远程处理时提高安全性。 它基于现有的[示例](service-fabric-reliable-services-communication-remoting.md)构建，该示例解释了如何为使用 C# 编写的 Reliable Services 设置远程处理。 
 
 若要在 C# 服务中使用服务远程处理时帮助保护服务，请遵循以下步骤：
 
-1. 创建接口 `IHelloWorldStateful`，用于定义可供服务的远程过程调用使用的方法。 服务将使用 `Microsoft.ServiceFabric.Services.Remoting.FabricTransport.Runtime` 命名空间中声明的 `FabricTransportServiceRemotingListener`。 这是可以提供远程处理功能的 `ICommunicationListener` 实现。
+1. 创建接口 `IHelloWorldStateful`，用于定义可供服务的远程过程调用使用的方法。 服务将使用 `FabricTransportServiceRemotingListener` 命名空间中声明的 `Microsoft.ServiceFabric.Services.Remoting.FabricTransport.Runtime`。 这是可以提供远程处理功能的 `ICommunicationListener` 实现。
 
     ```csharp
     public interface IHelloWorldStateful : IService
@@ -142,7 +142,7 @@ ms.locfileid: "77541055"
             };
         }
         ```
-3. 在安全服务上使用远程堆栈（而不是使用 `Microsoft.ServiceFabric.Services.Remoting.Client.ServiceProxy` 类）调用方法来创建服务代理时，请使用 `Microsoft.ServiceFabric.Services.Remoting.Client.ServiceProxyFactory`。 传入包含 `SecurityCredentials` 的 `FabricTransportRemotingSettings`。
+3. 在安全服务上使用远程堆栈（而不是使用 `Microsoft.ServiceFabric.Services.Remoting.Client.ServiceProxy` 类）调用方法来创建服务代理时，请使用 `Microsoft.ServiceFabric.Services.Remoting.Client.ServiceProxyFactory`。 传入包含 `FabricTransportRemotingSettings` 的 `SecurityCredentials`。
 
     ```csharp
 
@@ -172,7 +172,7 @@ ms.locfileid: "77541055"
 
     ```
 
-    如果客户端代码正在作为服务一部分运行，可以从 settings.xml 文件中加载 `FabricTransportRemotingSettings`。 创建与服务代码类似的 HelloWorldClientTransportSettings 节，如上所示。 对客户端代码进行以下更改。
+    如果客户端代码正在作为服务的一部分运行，则可以从 settings.xml 文件中加载 `FabricTransportRemotingSettings`。 创建与服务代码类似的 HelloWorldClientTransportSettings 节，如上所示。 对客户端代码进行以下更改。
 
     ```csharp
     ServiceProxyFactory serviceProxyFactory = new ServiceProxyFactory(
@@ -185,11 +185,11 @@ ms.locfileid: "77541055"
 
     ```
 
-    如果客户端不是作为服务一部分运行，可以在 client_name.exe 所在的同一位置中创建 client_name.settings.xml 文件。 然后，在该文件中创建 TransportSettings 节。
+    如果客户端不是作为服务一部分运行，可以在 client_name.exe 所在的同一位置中创建 client_name.settings.xml 文件。 然后在该文件中创建 TransportSettings 节。
 
     类似于服务，如果在客户端 settings.xml/client_name.settings.xml 中添加 `TransportSettings` 节，则 `FabricTransportRemotingSettings` 将默认加载此节中的所有设置。
 
-    在此情况下，上述代码会进一步简化：  
+    在此情况下，上述代码将进一步简化：  
 
     ```csharp
 

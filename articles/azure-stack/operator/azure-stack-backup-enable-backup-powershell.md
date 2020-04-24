@@ -9,10 +9,10 @@ ms.author: v-jay
 ms.reviewer: hectorl
 ms.lastreviewed: 03/14/2019
 ms.openlocfilehash: f273746b257cad61457373b54cde0d48e0bd8f6c
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77540887"
 ---
 # <a name="enable-backup-for-azure-stack-hub-with-powershell"></a>使用 PowerShell 为 Azure Stack Hub 启用备份
@@ -37,7 +37,7 @@ ms.locfileid: "77540887"
 
 | 变量        | 说明   |
 |---              |---                                        |
-| `$username`       | 使用共享驱动器位置具有足够访问权限的域和用户名输入**用户名**，以便读取和写入文件。 例如，`Contoso\backupshareuser`。 |
+| `$username`       | 使用共享驱动器位置具有足够访问权限的域和用户名输入**用户名**，以便读取和写入文件。 例如，`Contoso\backupshareuser` 。 |
 | `$password`       | 键入用户的**密码**。 |
 | `$sharepath`      | 键入**备份存储位置**的路径。 必须使用通用命名约定 (UNC) 字符串表示单独的设备上托管的文件共享的路径。 UNC 字符串指定资源（例如共享文件或设备）的位置。 若要确保备份数据的可用性，设备应放置在单独的位置。 |
 | `$frequencyInHours` | “频率(小时)”决定了以何频率创建备份。 默认值为 12。 计划程序支持的最大值为 12，最小值为 4。|

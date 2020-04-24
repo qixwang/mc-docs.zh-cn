@@ -11,10 +11,10 @@ origin.date: 02/12/2020
 ms.date: 03/02/2020
 ms.author: v-yiso
 ms.openlocfilehash: b76507f65d0ac8a525b2bcb8fdbdf17c9608cb2c
-ms.sourcegitcommit: 46fd4297641622c1984011eac4cb5a8f6f94e9f5
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77563447"
 ---
 # <a name="tutorial-load-data-and-run-queries-on-an-apache-spark-cluster-in-azure-hdinsight"></a>教程：在 Azure HDInsight 中的 Apache Spark 群集上加载数据并运行查询
@@ -26,7 +26,7 @@ ms.locfileid: "77563447"
 > * 从 csv 文件创建数据帧
 > * 对数据帧运行查询
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 HDInsight 上的 Apache Spark 群集。 请参阅[创建 Apache Spark 群集](./apache-spark-jupyter-spark-sql-use-portal.md)。
 

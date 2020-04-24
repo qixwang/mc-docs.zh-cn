@@ -9,10 +9,10 @@ ms.author: v-jay
 ms.reviewer: ppacent
 ms.lastreviewed: 01/14/2020
 ms.openlocfilehash: 8f15f78f839194c3b4c52c46f1eca03e9a9d1689
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77541050"
 ---
 # <a name="azure-stack-hub-update-activity-checklist"></a>Azure Stack Hub 更新活动清单

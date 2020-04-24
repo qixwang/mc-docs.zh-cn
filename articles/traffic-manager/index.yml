@@ -3,7 +3,7 @@ title: 流量管理器文档
 summary: 了解如何使用 Azure 流量管理器。 快速入门、教程、示例等内容说明了如何管理传入流量以实现最佳应用程序性能，以及如何将流量分配到 Azure 或外部服务终结点。
 metadata:
   title: 流量管理器文档
-  description: 了解如何使用流量管理器来路由传入流量，以获得最佳应用程序性能和可靠性。 快速入门、教程、示例等介绍了如何管理传入 Azure 或外部服务终结点的流量。
+  description: 了解如何使用流量管理器来路由传入的流量，以实现最佳的应用程序性能与可靠性。 快速入门、教程、示例等介绍了如何管理传入 Azure 或外部服务终结点的流量。
   services: traffic-manager
   ms.service: traffic-manager
   ms.topic: landing-page
@@ -13,10 +13,10 @@ metadata:
   ms.date: 02/24/2020
   ms.author: v-yeche
   ms.openlocfilehash: 47e7c5a9a8959bfbcb296f7549a5a6e8315c0e10
-  ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
+  ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 02/27/2020
+  ms.lasthandoff: 04/17/2020
   ms.locfileid: "77653052"
 landingContent:
 - title: 关于流量管理器

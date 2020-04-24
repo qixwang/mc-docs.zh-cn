@@ -12,10 +12,10 @@ ms.date: 02/25/2020
 ms.author: v-junlch
 ms.custom: aaddev, vs-azure
 ms.openlocfilehash: 3260e3bc1c47c83ce02c3571c8aed621adbff9e4
-ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77653098"
 ---
 # <a name="what-happened-to-my-webapi-project-visual-studio-azure-active-directory-connected-service"></a>我的 WebAPI 项目（Visual Studio Azure Active Directory 连接服务）发生了什么情况
@@ -89,7 +89,7 @@ ms.locfileid: "77653098"
     <add key="ida:MetadataAddress" value="<domain URL + /federationmetadata/2007-06/federationmetadata.xml>" />
     ```
 
-- 在 `System.IdentityModel.Tokens.Jwt` 的 `<runtime><assemblyBinding>` 节点下添加了 `<dependentAssembly>` 元素。
+- 在 `<dependentAssembly>` 的 `<runtime><assemblyBinding>` 节点下添加了 `System.IdentityModel.Tokens.Jwt` 元素。
 
 - 如果选择了“读取目录数据”  选项，在 `<appSettings>` 下添加了以下配置条目：
 
@@ -99,7 +99,7 @@ ms.locfileid: "77653098"
 
 ## <a name="code-changes-and-additions"></a>代码更改和添加
 
-- 向 `Controllers/ValueController.cs` 和任何其他现有控制器添加了 `[Authorize]` 属性。
+- 向 `[Authorize]` 和任何其他现有控制器添加了 `Controllers/ValueController.cs` 属性。
 
 - 添加了身份验证启动类 `App_Start/Startup.Auth.cs`（其中包含 Azure AD 身份验证的启动逻辑）或相应地对其进行了修改。 如果选择了“读取目录数据”  选项，则此文件还包含用于接收 OAuth 代码以及用 OAuth 代码交换访问令牌的代码。
 

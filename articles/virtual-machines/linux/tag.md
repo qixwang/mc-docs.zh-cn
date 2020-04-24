@@ -16,10 +16,10 @@ origin.date: 02/28/2017
 ms.date: 02/10/2020
 ms.author: v-yeche
 ms.openlocfilehash: 1284d3c814951245f3c3d542db1949f910ca94f3
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77428366"
 ---
 # <a name="how-to-tag-a-linux-virtual-machine-in-azure"></a>如何在 Azure 中标记 Linux 虚拟机
@@ -48,7 +48,7 @@ az vm update \
     --set tags.myNewTagName1=myNewTagValue1 tags.myNewTagName2=myNewTagValue2
 ```
 
-若要删除标记，可以在 `azure vm update` 命令中使用 **--remove** 参数。
+若要删除标记，可以在 **命令中使用**--remove`azure vm update` 参数。
 
 ```azurecli
 az vm update --resource-group MyResourceGroup --name MyTestVM --remove tags.myNewTagName1

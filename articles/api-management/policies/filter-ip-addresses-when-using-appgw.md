@@ -14,10 +14,10 @@ ms.date: 02/24/2020
 ms.author: v-yiso
 ms.custom: fasttrack-new
 ms.openlocfilehash: 15cf0e4ba13adce5169959b968bcabf81e0ad19f
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77429949"
 ---
 # <a name="filter-on-request-ip-address-when-using-an-application-gateway"></a>使用应用程序网关时对请求 IP 地址进行筛选

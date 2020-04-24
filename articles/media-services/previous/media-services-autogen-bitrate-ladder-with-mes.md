@@ -15,10 +15,10 @@ origin.date: 03/14/2019
 ms.date: 09/23/2019
 ms.author: v-jay
 ms.openlocfilehash: 3b6bb5b77b2990594bf56223c3f0281841f98e3b
-ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77494455"
 ---
 #  <a name="use-media-encoder-standard-to-auto-generate-a-bitrate-ladder"></a>使用 Media Encoder Standard 自动生成比特率阶梯  
@@ -29,13 +29,13 @@ ms.locfileid: "77494455"
 
 ### <a name="encoding-for-streaming-only"></a>编码为仅流式处理
 
-如果打算将源视频编码为仅流式处理，则应在创建编码任务时使用“自适应流式处理”预设。 使用“自适应流式处理”预设时，  MES 编码器会以智能方式为比特率阶梯设置一个上限。 但是，用户无法控制编码成本，因为是由服务确定要使用的层数和分辨率。 可以在本文末尾看到 MES 生成的输出层示例，这些示例是使用“自适应流式处理”预设进行编码得来的  。 该输出资产包含无音频和视频交错的 MP4 文件。
+如果打算将源视频编码为仅用于流式处理，则应在创建编码任务时使用“自适应流式处理”预设。 使用“自适应流式处理”预设时，  MES 编码器会以智能方式为比特率阶梯设置一个上限。 但是，用户无法控制编码成本，因为是由服务确定要使用的层数和分辨率。 可以在本文末尾看到 MES 生成的输出层示例，这些示例是使用“自适应流式处理”预设进行编码得来的  。 输出资产包含无音频和视频交错的 MP4 文件。
 
 ### <a name="encoding-for-streaming-and-progressive-download"></a>编码为流式处理和渐进式下载
 
-如果打算将源视频编码为流式处理以及生成可供渐进式下载的 MP4 文件，则应在创建编码任务时使用“内容自适应多比特率 MP4”预设。 使用“内容自适应多比特率 MP4”预设时，MES 编码器应用与上述相同的编码逻辑，但现在输出资产会包含音频和视频交错的 MP4 文件  。 可使用其中一个 MP4 文件（例如，最高比特率版本）作为渐进式下载文件。
+如果打算将源视频编码为用于流式处理以及生成可供渐进式下载的 MP4 文件，则应在创建编码任务时使用“内容自适应多比特率 MP4”预设。 使用“内容自适应多比特率 MP4”预设时，MES 编码器将应用与上述相同的编码逻辑，但现在输出资产将包含音频和视频交叠的 MP4 文件  。 可使用其中一个 MP4 文件（例如，最高比特率版本）作为渐进式下载文件。
 
-## <a id="encoding_with_dotnet"></a>使用媒体服务 .NET SDK 进行编码
+## <a name="encoding-with-media-services-net-sdk"></a><a id="encoding_with_dotnet"></a>使用媒体服务 .NET SDK 进行编码
 
 以下代码示例使用媒体服务 .NET SDK 执行下列任务：
 
@@ -48,7 +48,7 @@ ms.locfileid: "77494455"
 
 #### <a name="create-and-configure-a-visual-studio-project"></a>创建和配置 Visual Studio 项目
 
-设置开发环境，并在 app.config 文件中填充连接信息，如[使用 .NET 进行媒体服务开发](media-services-dotnet-how-to-use.md)中所述。 
+设置开发环境，并根据[使用 .NET 进行媒体服务开发](media-services-dotnet-how-to-use.md)中所述，在 app.config 文件中填充连接信息。 
 
 #### <a name="example"></a>示例
 
@@ -168,7 +168,7 @@ namespace AdaptiveStreamingMESPresest
 }
 ```
 
-## <a id="output"></a>输出
+## <a name="output"></a><a id="output"></a>输出
 
 此部分显示 MES 生成的输出层的三个示例，是使用“自适应流式处理”  预设进行编码得来的。 
 

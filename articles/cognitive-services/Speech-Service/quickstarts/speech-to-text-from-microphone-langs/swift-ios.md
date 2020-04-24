@@ -12,10 +12,10 @@ origin.date: 12/23/2019
 ms.date: 01/27/2020
 ms.author: v-tawe
 ms.openlocfilehash: beb4fec0d2b82bd2cdbb2c30cc0d39f51cb8c4b8
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77428856"
 ---
 # <a name="quickstart-recognize-speech-in-swift-on-ios-by-using-the-speech-sdk"></a>快速入门：在 iOS 上使用语音 SDK 通过 Swift 识别语音
@@ -24,7 +24,7 @@ ms.locfileid: "77428856"
 
 本文介绍如何使用 Azure 认知服务语音 SDK 在 Swift 中创建一个 iOS 应用，以便将通过麦克风录制的语音转录为文本。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 准备工作：
 

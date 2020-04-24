@@ -9,10 +9,10 @@ ms.date: 02/24/2020
 ms.author: v-jay
 ms.reviewer: ''
 ms.openlocfilehash: 98474b3d053b592ea22335c9d46d91e2f7e5121b
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77540955"
 ---
 # <a name="app-service-on-azure-stack-hub-update-6-release-notes"></a>Azure Stack Hub 上的应用服务 Update 6 发行说明
@@ -38,7 +38,7 @@ Azure Stack Hub 上的应用服务 Update 6 的内部版本号为 **82.0.1.50**
 - 备份应用服务和 Master 数据库：
   - AppService_Hosting；
   - AppService_Metering；
-  - Master
+  - 主设备
 
 - 备份租户应用内容文件共享
 
@@ -80,7 +80,7 @@ Azure Stack Hub 上的 Azure 应用服务 Update 6 包含以下改进和修复�
 - 如 Azure Stack Hub 上的 Azure 应用服务部署文档中所述，当应用服务部署在现有虚拟网络中并且文件服务器仅在专用网络上可用时，工作人员将无法访问文件服务器。
 
 如果选择部署到现有虚拟网络和内部 IP 地址以连接到文件服务器，则必须添加出站安全规则，以便在工作子网和文件服务器之间启用 SMB 流量。 转到管理门户中的 WorkersNsg 并添加具有以下属性的出站安全规则：
- * 源：任意
+ * 源：任何
  * 源端口范围：*
  * 目标：IP 地址
  * 目标 IP 地址范围：文件服务器的 IP 范围
@@ -88,7 +88,7 @@ Azure Stack Hub 上的 Azure 应用服务 Update 6 包含以下改进和修复�
  * 协议：TCP
  * 操作：允许
  * 优先级：700
- * 姓名：Outbound_Allow_SMB445
+ * 名称：Outbound_Allow_SMB445
 
 ### <a name="known-issues-for-cloud-admins-operating-azure-app-service-on-azure-stack-hub"></a>云管理员在操作基于 Azure Stack Hub 的 Azure 应用服务时的已知问题
 

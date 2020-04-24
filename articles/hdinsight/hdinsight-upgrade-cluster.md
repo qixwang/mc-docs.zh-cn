@@ -11,10 +11,10 @@ ms.topic: conceptual
 origin.date: 01/31/2020
 ms.date: 02/24/2020
 ms.openlocfilehash: 6ccc8a4c5a6d49d680a0ab689498fa3b9d6186fe
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77428697"
 ---
 # <a name="migrate-hdinsight-cluster-to-a-newer-version"></a>将 HDInsight 群集迁移到较新版本
@@ -29,9 +29,9 @@ ms.locfileid: "77428697"
 
 升级 HDInsight 群集的工作流如下所示。
 
-![升级工作流关系图](./media/hdinsight-upgrade-cluster/upgrade-workflow-diagram.png)
+![升级工作流示意图](./media/hdinsight-upgrade-cluster/upgrade-workflow-diagram.png)
 
-1. 请阅读本文档的每个部分，以了解升级 Linux 群集时可能需要进行的更改。
+1. 请阅读本文档的每个部分，了解在升级 HDInsight 群集时可能需要进行的更改。
 2. 创建群集作为测试/质量保证环境。 有关创建群集的详细信息，请参阅[了解如何创建基于 Linux 的 HDInsight 群集](hdinsight-hadoop-provision-linux-clusters.md)
 3. 将现有作业、数据源及接收器复制到新环境。
 4. 执行验证测试，以确保作业在新群集上按预期工作。
@@ -41,7 +41,7 @@ ms.locfileid: "77428697"
 
 1.  备份所有存储在本地群集节点上的暂时性数据。 例如，如果数据直接存储在头节点上。
 2.  删除现有的群集。
-3.  使用以前群集使用的同一默认数据存储在与最新（或支持）的 HDI 版本相同的 VNET 子网中创建群集。 这样，新群集便可根据现有生产数据继续运行。
+3.  使用前一群集使用的同一默认数据存储在具有最新（或支持）的 HDI 版本的同一 VNET 子网中创建群集。 这样，新群集便可针对现有生产数据继续运行。
 4.  导入任何已备份的暂时性数据。
 5.  使用新群集启动作业/继续处理。
 

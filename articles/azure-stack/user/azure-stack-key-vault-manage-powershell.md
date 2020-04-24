@@ -8,10 +8,10 @@ ms.date: 02/24/2020
 ms.author: v-jay
 ms.lastreviewed: 05/09/2019
 ms.openlocfilehash: 9ab84c98aa92fcb6de696a232defb3805f979705
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77540791"
 ---
 # <a name="manage-key-vault-in-azure-stack-hub-using-powershell"></a>使用 PowerShell 管理 Azure Stack Hub 中的 Key Vault
@@ -25,7 +25,7 @@ ms.locfileid: "77540791"
 >[!NOTE]
 >本文中介绍的 Key Vault PowerShell cmdlet 在 Azure PowerShell SDK 中提供。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * 必须订阅包含 Azure Key Vault 服务的产品/服务。
 * [安装适用于 Azure Stack Hub 的 PowerShell](../operator/azure-stack-powershell-install.md)。

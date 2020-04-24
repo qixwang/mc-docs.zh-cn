@@ -12,10 +12,10 @@ origin.date: 07/05/2019
 ms.date: 01/13/2020
 ms.author: v-tawe
 ms.openlocfilehash: f8fcbb24bc093803356b456d3f49af5fbc6ef9d8
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77428774"
 ---
 # <a name="about-the-speech-sdk-audio-input-stream-api"></a>语音 SDK 的音频输入流 API 简介

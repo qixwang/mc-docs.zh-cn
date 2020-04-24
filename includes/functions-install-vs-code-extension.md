@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 02/13/2020
 ms.author: v-junlch
 ms.openlocfilehash: c400e3ecc4b8059992a6cf3f84697a57c2a451bd
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77428758"
 ---
 ## <a name="install-the-azure-functions-extension"></a>安装 Azure Functions 扩展

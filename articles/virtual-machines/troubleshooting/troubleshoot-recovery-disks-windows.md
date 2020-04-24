@@ -1,6 +1,6 @@
 ---
 title: 通过使用 Azure PowerShell 将 OS 磁盘附加到恢复 VM 来对 Windows VM 进行故障排除
-description: 了解如何通过 Azure PowerShell 将 OS 磁盘连接到恢复 VM，以便排查 Azure 中的 Windows VM 问题。
+description: 了解如何使用 Azure PowerShell 将 OS 磁盘连接到恢复 VM，以便排查 Azure 中的 Windows VM 问题。
 services: virtual-machines-windows
 documentationCenter: ''
 author: rockboyfor
@@ -14,10 +14,10 @@ origin.date: 08/09/2018
 ms.date: 02/10/2020
 ms.author: v-yeche
 ms.openlocfilehash: fe920cb5f9517a0bac217a029f87b7fa499eeff3
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77428843"
 ---
 # <a name="troubleshoot-a-windows-vm-by-attaching-the-os-disk-to-a-recovery-vm-using-azure-powershell"></a>通过使用 Azure PowerShell 将 OS 磁盘附加到恢复 VM 来对 Windows VM 进行故障排除
@@ -52,18 +52,18 @@ Connect-AzAccount -Environment AzureChinaCloud
 在以下示例中，请将参数名称替换为自己的值。 
 
 ## <a name="determine-boot-issues"></a>确定启动问题
-用户可以通过查看 Azure 中 VM 的屏幕快照来排查启动问题。 此屏幕快照有助于确定为何 VM 无法启动。 以下示例从名为 `myResourceGroup` 的资源组中名为 `myVM` 的 Windows VM 获取屏幕快照：
+用户可以通过查看 Azure 中 VM 的屏幕快照来排查启动问题。 此屏幕快照有助于确定为何 VM 无法启动。 以下示例从名为 `myVM` 的资源组中名为 `myResourceGroup` 的 Windows VM 获取屏幕快照：
 
 ```powershell
 Get-AzVMBootDiagnosticsData -ResourceGroupName myResourceGroup `
     -Name myVM -Windows -LocalPath C:\Users\ops\
 ```
 
-检查屏幕快照，确定 VM 无法启动的原因。 请注意所提供的任何特定错误消息或错误代码。
+检查屏幕快照，确定 VM 无法启动的原因。 请注意所提供的任何具体错误消息或错误代码。
 
 ## <a name="stop-the-vm"></a>停止 VM
 
-以下示例在名为 `myResourceGroup` 的资源组中停止名为 `myVM` 的 VM：
+以下示例在名为 `myVM` 的资源组中停止名为 `myResourceGroup` 的 VM：
 
 ```powershell
 Stop-AzVM -ResourceGroupName "myResourceGroup" -Name "myVM"
@@ -103,7 +103,7 @@ New-AzSnapshot `
 
 ## <a name="create-a-disk-from-the-snapshot"></a>从快照创建磁盘
 
-此脚本从名为 `mysnapshot` 的快照创建名为 `newOSDisk` 的托管磁盘。  
+此脚本从名为 `newOSDisk` 的快照创建名为 `mysnapshot` 的托管磁盘。  
 
 ```powershell
 #Set the context to the subscription Id where Managed Disk will be created
@@ -165,7 +165,7 @@ Update-AzVM -VM $vm -ResourceGroupName $rgName
 
 ## <a name="connect-to-the-recovery-vm-and-fix-issues-on-the-attached-disk"></a>连接到恢复 VM，并修复所附加的磁盘上的问题
 
-1. 使用相应的凭据通过 RDP 连接到恢复 VM。 以下示例为名为 `myResourceGroup` 的资源组中名为 `RecoveryVM` 的 VM 下载 RDP 连接文件，并将其下载到 `C:\Users\ops\Documents`。
+1. 使用相应的凭据通过 RDP 连接到恢复 VM。 以下示例为名为 `RecoveryVM` 的资源组中名为 `myResourceGroup` 的 VM 下载 RDP 连接文件，并将其下载到 `C:\Users\ops\Documents`。
 
     ```powershell
     Get-AzRemoteDesktopFile -ResourceGroupName "myResourceGroup" -Name "RecoveryVM" `
@@ -194,7 +194,7 @@ Update-AzVM -VM $vm -ResourceGroupName $rgName
 ## <a name="unmount-and-detach-original-os-disk"></a>卸载并分离原始 OS 磁盘
 解决错误后，可从恢复 VM 中卸载并分离现有磁盘。 在将磁盘附加到恢复 VM 的租约释放之前，不能将该磁盘用于其他任何 VM。
 
-1. 从 RDP 会话卸载恢复 VM 上的数据磁盘。 需要以前的 `Get-Disk` cmdlet 中的磁盘编号。 然后，使用 `Set-Disk` 将磁盘设置为脱机：
+1. 从 RDP 会话卸载恢复 VM 上的数据磁盘。 需要使用前面的 `Get-Disk` cmdlet 中的磁盘编号。 然后，使用 `Set-Disk` 将磁盘设置为脱机：
 
     ```powershell
     Set-Disk -Number 2 -IsOffline $True
@@ -247,7 +247,7 @@ Start-AzVM -Name $vm.Name -ResourceGroupName myResourceGroup
 
 ## <a name="verify-and-enable-boot-diagnostics"></a>验证和启用启动诊断
 
-以下示例在名为 `myResourceGroup` 的资源组中名为 `myVMDeployed` 的 VM 上启用诊断扩展：
+以下示例在名为 `myVMDeployed` 的资源组中名为 `myResourceGroup` 的 VM 上启用诊断扩展：
 
 ```powershell
 $myVM = Get-AzVM -ResourceGroupName "myResourceGroup" -Name "myVMDeployed"
@@ -258,6 +258,6 @@ Update-AzVM -ResourceGroup "myResourceGroup" -VM $myVM
 ## <a name="next-steps"></a>后续步骤
 如果在连接到 VM 时遇到问题，请参阅[对 Azure VM 的 RDP 连接进行故障排除](troubleshoot-rdp-connection.md?toc=%2fvirtual-machines%2fwindows%2ftoc.json)。 如果在访问 VM 上运行的应用程序时遇到问题，请参阅[对 Windows VM 上的应用程序连接问题进行故障排除](troubleshoot-app-connection.md?toc=%2fvirtual-machines%2fwindows%2ftoc.json)。
 
-有关资源组的详细信息，请参阅 [Azure Resource Manager 概述](../../azure-resource-manager/management/overview.md)。
+有关资源组的详细信息，请参阅 [Azure 资源管理器概述](../../azure-resource-manager/management/overview.md)。
 
 <!-- Update_Description: update meta properties, wording update, update link -->

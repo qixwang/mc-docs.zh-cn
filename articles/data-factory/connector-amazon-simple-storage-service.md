@@ -13,10 +13,10 @@ ms.custom: seo-lt-2019
 origin.date: 12/13/2019
 ms.date: 03/02/2020
 ms.openlocfilehash: 17a173764e4be2d0569bac76b64f2c8959c2ea42
-ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77653254"
 ---
 # <a name="copy-data-from-amazon-simple-storage-service-using-azure-data-factory"></a>使用 Azure 数据工厂从 Amazon 简单存储服务复制数据

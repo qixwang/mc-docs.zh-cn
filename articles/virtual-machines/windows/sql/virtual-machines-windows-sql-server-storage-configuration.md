@@ -15,17 +15,17 @@ origin.date: 12/26/2019
 ms.date: 02/10/2020
 ms.author: v-yeche
 ms.openlocfilehash: acb685929590864013bc04711d5274d38d4b0e8e
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77428070"
 ---
 # <a name="storage-configuration-for-sql-server-vms"></a>SQL Server VM 的存储配置
 
 在 Azure 中配置 SQL Server 虚拟机映像时，可以借助门户自动完成存储配置。 这包括将存储附加到 VM、使该存储可供 SQL Server 访问，并对其进行配置以根据特定的性能要求优化。
 
-本主题介绍 Azure 如何在预配期间针对 SQL Server VM 以及针对现有的 VM 配置存储。 此配置基于运行 SQL Server 的 Azure VM 的[性能最佳做法](virtual-machines-windows-sql-performance.md)。
+本主题介绍 Azure 如何在预配期间针对 SQL Server VM 以及针对现有的 VM 配置存储。 此配置基于运行 SQL Server 的 Azure VM 的[性能最佳实践](virtual-machines-windows-sql-performance.md)。
 
 [!INCLUDE [learn-about-deployment-models](../../../../includes/learn-about-deployment-models-rm-include.md)]
 
@@ -61,9 +61,9 @@ ms.locfileid: "77428070"
 * 配置 SQL Server 可访问的数据磁盘。
 * 根据指定的大小和性能（IOPS 和吞吐量）要求，在存储池中配置数据磁盘。
 * 将存储池与虚拟机上的新驱动器相关联。
-* 根据指定的工作负荷类型（“数据仓库”、“事务处理”或“常规”）优化此新驱动器。
+* 根据指定的工作负荷类型（“数据仓库”、“事务处理”或“常规”）优化新驱动器。
 
-有关 Azure 如何配置存储设置的详细信息，请参阅 [存储配置部分](#storage-configuration)。 有关如何在 Azure 门户中创建 SQL Server VM 的完整演练，请参阅[预配教程](virtual-machines-windows-portal-sql-server-provision.md)。
+有关 Azure 如何配置存储设置的详细信息，请参阅[存储配置部分](#storage-configuration)。 有关如何在 Azure 门户中创建 SQL Server VM 的完整演练，请参阅[预配教程](virtual-machines-windows-portal-sql-server-provision.md)。
 
 ### <a name="resource-manage-templates"></a>Resource Manager 模板
 
@@ -103,14 +103,14 @@ ms.locfileid: "77428070"
 
 如果首次使用此功能，可以指定新驱动器的存储大小和性能限制。 这种体验与预配类似。 主要差别在于无法指定工作负荷类型。 此限制可防止中断虚拟机上任何现有的 SQL Server 配置。
 
-Azure 根据规范创建新驱动器。 在此方案中，Azure 将执行以下存储配置任务：
+Azure 会根据规范创建新驱动器。 在此方案中，Azure 将执行以下存储配置任务：
 
 * 创建高级存储数据磁盘并将其连接到虚拟机。
 * 配置 SQL Server 可访问的数据磁盘。
 * 根据指定的大小和性能（IOPS 和吞吐量）要求，在存储池中配置数据磁盘。
 * 将存储池与虚拟机上的新驱动器相关联。
 
-有关 Azure 如何配置存储设置的详细信息，请参阅 [存储配置部分](#storage-configuration)。
+有关 Azure 如何配置存储设置的详细信息，请参阅[存储配置部分](#storage-configuration)。
 
 ### <a name="add-a-new-drive"></a>添加新驱动器
 
@@ -133,13 +133,13 @@ Azure 根据规范创建新驱动器。 在此方案中，Azure 将执行以下�
 * Azure 通过从 VM 中选择的存储配置存储池。 本主题的下一部分提供了有关存储池配置的详细信息。
 * 自动存储配置始终使用[高级 SSD](../disks-types.md) P30 数据磁盘。 因此，所选 TB 数目与附加到 VM 的数据磁盘数目之间存在 1:1 映射。
 
-有关价格信息，请参阅“磁盘存储”  选项卡上的[存储定价](https://www.azure.cn/pricing/details/storage/)页。
+有关价格信息，请参阅 [磁盘存储](https://www.azure.cn/pricing/details/storage/) 选项卡上的 **存储定价** 页。
 
 ### <a name="creation-of-the-storage-pool"></a>创建存储池
 
 Azure 使用以下设置在 SQL Server VM 上创建存储池。
 
-| 设置 | Value |
+| 设置 | 值 |
 | --- | --- |
 | 条带大小 |256 KB（数据仓库）；64 KB（事务） |
 | 磁盘大小 |每个磁盘 1 TB |

@@ -8,10 +8,10 @@ ms.date: 02/24/2020
 ms.author: mabrigg
 ms.lastreviewed: 01/14/2019
 ms.openlocfilehash: d6341faae162f39631eae53271fa91b6bb7a1496
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77541042"
 ---
 # <a name="quickstart-create-a-linux-server-vm-by-using-the-azure-cli-in-azure-stack-hub"></a>快速入门：在 Azure Stack Hub 中使用 Azure CLI 创建 Linux 服务器 VM
@@ -22,7 +22,7 @@ ms.locfileid: "77541042"
 * 安装 NGINX Web 服务器并查看默认主页。
 * 清理未使用的资源。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * Azure Stack Hub 市场中的 Linux 映像
 

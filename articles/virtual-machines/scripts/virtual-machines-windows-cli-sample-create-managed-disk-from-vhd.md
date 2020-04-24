@@ -1,6 +1,6 @@
 ---
-title: 使用 CLI 在相同订阅的存储帐户中从 VHD 文件创建托管磁盘
-description: Azure CLI 脚本示例 - 在相同订阅的存储帐户中从 VHD 文件创建托管磁盘
+title: 使用 CLI 基于相同订阅的存储帐户中的 VHD 文件创建托管磁盘
+description: Azure CLI 脚本示例 - 基于相同订阅的存储帐户中的 VHD 文件创建托管磁盘
 services: virtual-machines-windows
 documentationcenter: storage
 author: rockboyfor
@@ -18,15 +18,15 @@ ms.date: 02/10/2020
 ms.author: v-yeche
 ms.custom: mvc
 ms.openlocfilehash: aa4a917f9079ac72cdf6ca7faeaf41c240c5d3e4
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77428331"
 ---
-# <a name="create-a-managed-disk-from-a-vhd-file-in-a-storage-account-in-the-same-subscription-with-cli"></a>使用 CLI 在相同订阅的存储帐户中从 VHD 文件创建托管磁盘
+# <a name="create-a-managed-disk-from-a-vhd-file-in-a-storage-account-in-the-same-subscription-with-cli"></a>使用 CLI 基于相同订阅的存储帐户中的 VHD 文件创建托管磁盘
 
-此脚本在相同订阅的存储帐户中从 VHD 文件创建托管磁盘。 使用此脚本将专用 VHD（未通用化/未进行 sysprep）导入到托管 OS 磁盘以创建虚拟机。 或使用它将数据 VHD 导入到托管数据磁盘。
+此脚本基于相同订阅的存储帐户中的 VHD 文件创建托管磁盘。 使用此脚本将专用（未经过通用化/sysprep 处理）的 VHD 导入到托管 OS 磁盘以创建虚拟机。 或者使用它将数据 VHD 导入到托管数据磁盘。
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
 
@@ -72,11 +72,11 @@ az disk create --resource-group $resourceGroupName --name $diskName --sku $stora
 
 ## <a name="script-explanation"></a>脚本说明
 
-此脚本使用以下命令从 VHD 创建托管磁盘。 表中的每条命令均链接到特定于命令的文档。
+此脚本使用以下命令基于 VHD 创建托管磁盘。 表中的每条命令均链接到特定于命令的文档。
 
-| 命令 | 注释 |
+| Command | 说明 |
 |---|---|
-| [az disk create](https://docs.azure.cn/cli/disk?view=azure-cli-latest#az-disk-create) | 在相同订阅的存储帐户中使用 VHD 的 URI 创建托管磁盘 |
+| [az disk create](https://docs.azure.cn/cli/disk?view=azure-cli-latest#az-disk-create) | 使用相同订阅的存储帐户中的 VHD 的 URI 创建托管磁盘 |
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -7,10 +7,10 @@ origin.date: 01/16/2020
 ms.date: 02/24/2020
 ms.author: v-yeche
 ms.openlocfilehash: fdd8d3044fa5f44872c8b21eb158bc194bb57572
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77540006"
 ---
 # <a name="sfctl-compose"></a>sfctl compose
@@ -18,12 +18,12 @@ ms.locfileid: "77540006"
 
 ## <a name="commands"></a>命令
 
-|命令|说明|
+|Command|说明|
 | --- | --- |
 | create | 创建 Service Fabric compose 部署。 |
 | list | 获取在 Service Fabric 群集中创建的 compose 部署列表。 |
 | remove | 从群集中删除现有的 Service Fabric compose 部署。 |
-| 状态 | 获取有关 Service Fabric compose 部署的信息。 |
+| status | 获取有关 Service Fabric compose 部署的信息。 |
 | 升级 | 开始升级 Service Fabric 群集中的 compose 部署。 |
 | upgrade-rollback | 开始在 Service Fabric 群集中回退 compose 部署升级。 |
 | upgrade-status | 获取在此 Service Fabric Compose 部署中执行的最新升级的详细信息。 |
@@ -61,7 +61,7 @@ ms.locfileid: "77540006"
 
 |参数|说明|
 | --- | --- |
-| --continuation-token | 继续标记参数用于获取下一组结果。 如果单个响应无法容纳来自系统的结果，则 API 响应中包括含有非空值的继续标记。 当此值传递到下一个 API 调用时，API 返回下一组结果。 如果没有更多结果，则继续标记不包含值。 不应将此参数的值进行 URL 编码。 |
+| --continuation-token | 继续标记参数用于获取下一组结果。 如果单个响应无法容纳来自系统的结果，则 API 响应中包括含有非空值的继续标记。 当此值传递到下一个 API 调用时，API 返回下一组结果。 如果没有更多结果，则该继续标记不包含值。 不应将此参数的值进行 URL 编码。 |
 | --max-results | 作为分页查询的一部分返回的最大结果数。 此参数定义返回结果数的上限。 如果根据配置中定义的最大消息大小限制，无法将这些结果容纳到消息中，则返回的结果数可能小于指定的最大结果数。 如果此参数为零或者未指定，则分页查询包含返回消息中最多可容纳的结果数。 |
 | --timeout -t | 执行操作的服务器超时，以秒为单位。 此超时指定客户端可以等待请求的操作完成的持续时间。 此参数的默认值为 60 秒。  默认值\: 60。 |
 
@@ -138,7 +138,7 @@ ms.locfileid: "77540006"
 | --health-check-retry | 应用程序或群集不正常时尝试执行运行状况检查所间隔的时间长度。 |
 | --health-check-stable | 升级继续到下一升级域之前，应用程序或群集必须保持正常的时长。 <br /><br /> 首先，会将其解释为表示 ISO 8601 持续时间的一个字符串。 如果那失败，则会将其解释为表示总毫秒数的一个数字。 |
 | --health-check-wait | 启动运行状况检查进程之前，完成升级域后等待的时间长度。 |
-| --replica-set-check | 出现意外问题时，阻止升级域的处理并防止可用性丢失的最大时长。 <br /><br /> 当此超时到期时，无论是否存在可用性丢失问题，都将继续处理升级域。 每个升级域启动时重置超时。 有效值介于 0 和 42949672925（含）之间。 |
+| --replica-set-check | 出现意外问题时，阻止处理升级域并防止可用性丢失的最大时长。 <br /><br /> 当此超时到期时，无论是否存在可用性丢失问题，都将继续处理升级域。 每个升级域启动时重置超时。 有效值介于 0 和 42949672925（含）之间。 |
 | --svc-type-health-map | 描述用于评估不同服务类型的运行状况的运行状况策略的 JSON 编码对象列表。 |
 | --timeout -t | 默认值\: 60。 |
 | --unhealthy-app | 报告错误之前允许的最大不正常应用程序百分比。 <br /><br /> 例如，若要允许 10% 的应用程序处于不正常状态，此值为 10。 该百分比表示在将群集视为出错之前可处于不正常状态的应用程序的最大容许百分比。 如果未超过该百分比，但至少存在一个不正常的应用程序，则将运行状况评估为 Warning。 该百分比的计算方式是将不正常的应用程序数除以群集中的应用程序实例总数。 |

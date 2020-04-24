@@ -9,10 +9,10 @@ ms.topic: troubleshooting
 origin.date: 01/23/2020
 ms.date: 03/02/2020
 ms.openlocfilehash: 287e318b2ee3dd5ff05c5d3a2a8c58cb06e8ec4d
-ms.sourcegitcommit: 46fd4297641622c1984011eac4cb5a8f6f94e9f5
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77563604"
 ---
 # <a name="scenario-port-conflict-when-starting-services-in-azure-hdinsight"></a>方案：在 Azure HDInsight 中启动服务时端口冲突

@@ -10,15 +10,15 @@ ms.author: v-jay
 ms.reviewer: xiaofmao
 ms.lastreviewed: 10/25/2018
 ms.openlocfilehash: 773cba747f347908a63f04909d6ae80cf378cbd5
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77540283"
 ---
 # <a name="use-sql-databases-on-azure-stack-hub"></a>在 Azure Stack Hub 中使用 SQL 数据库
 
-在 [Azure Stack Hub](azure-stack-overview.md) 上使用 SQL 资源提供程序来提供 SQL 数据库。 安装资源提供程序并将它连接到一个或多个 SQL Server 实例之后，你和用户可以创建：
+在 [Azure Stack Hub](azure-stack-overview.md) 上使用 SQL 资源提供程序来提供 SQL 数据库。 在安装资源提供程序并将其连接到一个或多个 SQL Server 实例后，你和你的用户可以创建：
 
 - 适用于云原生应用的 SQL 数据库。
 - 用于 Web 应用程序的 SQL 数据库。
@@ -47,4 +47,4 @@ ms.locfileid: "77540283"
 
 ## <a name="next-steps"></a>后续步骤
 
-[部署 SQL Server 资源提供程序](azure-stack-sql-resource-provider-deploy.md)
+[部署 SQL 服务器资源提供程序](azure-stack-sql-resource-provider-deploy.md)

@@ -9,10 +9,10 @@ ms.author: v-jay
 ms.reviewer: kivenkat
 ms.lastreviewed: 11/01/2019
 ms.openlocfilehash: c5e09454cb4ed8fdcdffdc7eb5baa24ca3becf58
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77540537"
 ---
 # <a name="run-a-linux-virtual-machine-on-azure-stack-hub"></a>在 Azure Stack Hub 上运行 Linux 虚拟机
@@ -43,7 +43,7 @@ Azure Stack Hub 上的磁盘 IOPS（每秒输入/输出操作次数）是 [VM �
 
 OS 磁盘是存储在 [Azure Stack Hub 存储](/azure-stack/user/azure-stack-storage-overview)中的 VHD，因此即使主机关闭，OS 磁盘也仍然存在。 对于 Linux VM，OS 磁盘是 /dev/sda1。 我们还建议创建一个或多个[数据磁盘](/azure-stack/user/azure-stack-manage-vm-disks)（用于保存应用程序数据的持久性 VHD）。
 
-刚创建的 VHD 尚未格式化， 登录到 VM 对磁盘进行格式化。 在 Linux shell 中，数据磁盘显示为 /dev/sdc、/dev/sdd 等。 可以运行 lsblk 以列出块设备，包括磁盘。 若要使用数据磁盘，请创建一个分区和文件系统，然后装载磁盘。 例如：
+刚创建的 VHD 尚未格式化， 登录到 VM 对磁盘进行格式化。 在 Linux shell 中，数据磁盘显示为 /dev/sdc、/dev/sdd 等。 可以运行 lsblk 以列出块设备，包括磁盘。 要使用数据磁盘，请创建一个分区和文件系统，并装载磁盘。 例如：
 
 ```bash
 # Create a partition.
@@ -71,7 +71,7 @@ sudo mount /dev/sdc1 /data1
 
 -   **公共 IP 地址/VIP**。 需要使用公共 IP 地址才能与 VM 通信 - 例如，通过远程桌面 (RDP)。 公共 IP 地址可以是动态的或静态的。 默认是动态的。 如果 VM 需要多个 NIC，请注意每种 [VM 大小](/azure-stack/user/azure-stack-vm-sizes)都定义了最大 NIC 数量。
 
--   还可以为 IP 地址创建完全限定的域名 (FQDN)。 然后，可以在 DNS 中注册指向 FQDN 的 [CNAME 记录](https://en.wikipedia.org/wiki/CNAME_record)。 有关详细信息，请参阅[在 Azure 门户中创建完全限定的域名](/virtual-machines/virtual-machines-linux-portal-create-fqdn)。
+-   还可以为 IP 地址创建完全限定域名 (FQDN)。 然后，可以在 DNS 中注册指向 FQDN 的 [CNAME 记录](https://en.wikipedia.org/wiki/CNAME_record)。 有关详细信息，请参阅[在 Azure 门户中创建完全限定的域名](/virtual-machines/virtual-machines-linux-portal-create-fqdn)。
 
 -   **网络安全组 (NSG)。** 网络安全组用于允许或拒绝向 VM 传送网络流量。 NSG 可与子网或单个 VM 实例相关联。
 
@@ -79,17 +79,17 @@ sudo mount /dev/sdc1 /data1
 
 ## <a name="operations"></a>操作
 
-**SSH**。 在创建 Linux VM 之前，生成 2048 位 RSA 公共/专用密钥对。 创建 VM 时，请使用公钥文件。 有关详细信息，请参阅[如何在 Azure 中将 SSH 用于 Linux](/virtual-machines/virtual-machines-linux-mac-create-ssh-keys)。
+**SSH**。 在创建 Linux VM 之前，生成 2048 位 RSA 公共/专用密钥对。 创建 VM 时，使用公钥文件。 有关详细信息，请参阅[如何在 Azure 中将 SSH 用于 Linux](/virtual-machines/virtual-machines-linux-mac-create-ssh-keys)。
 
 **诊断**。 启用监视和诊断，包括基本运行状况指标、诊断基础结构日志和[启动诊断](https://azure.microsoft.com/blog/boot-diagnostics-for-virtual-machines-v2/)。 如果 VM 陷入不可启动状态，启动诊断有助于诊断启动故障。 创建用于存储日志的 Azure 存储帐户。 标准的本地冗余存储 (LRS) 帐户足以存储诊断日志。 有关详细信息，请参阅[启用监视和诊断](/azure-stack/user/azure-stack-metrics-azure-data)。
 
-**可用性**。 由于 Azure Stack Hub 操作员计划的计划内维护，你的 VM 可能需要重新启动。 为了提高可用性，请在[可用性集](/azure-stack/operator/app-service-deploy-ha)中部署多个 VM。
+**可用性**。 由于 Azure Stack Hub 操作员计划的计划内维护，你的VM 可能需要重新启动。 为了提高可用性，请在[可用性集](/azure-stack/operator/app-service-deploy-ha)中部署多个 VM。
 
 **备份** 有关保护 Azure Stack Hub IaaS VM 的建议，请参阅[此文](/azure-stack/user/azure-stack-manage-vm-protect)。
 
-**停止 VM**。 Azure 对“已停止”和“已解除分配”状态进行了区分。 VM 状态为“已停止”时，将计费，但 VM 为“已解除分配”状态时，则不计费。 在 Azure Stack Hub 门户中，“停止”  按钮可解除分配 VM。 如果在已登录时通过 OS 关闭，VM 会停止，但  不会解除分配，因此仍会产生费用。
+**停止 VM**。 Azure 对“已停止”和“已解除分配”状态做了区分。 当 VM 状态为已停止时（而不是当 VM 已解除分配时）将向你收费。 在 Azure Stack Hub 门户中，“停止”  按钮可解除分配 VM。 如果在已登录时通过 OS 关闭，VM 会停止，但  不会解除分配，因此仍会产生费用。
 
-**删除 VM**。 如果删除 VM，不会删除 VM 磁盘。 这意味着可以安全地删除 VM，而不会丢失数据。 但是，仍将收取存储费用。 若要删除 VM 磁盘，请删除托管磁盘对象。 若要防止意外删除，请使用[资源锁](/resource-group-lock-resources)锁定整个资源组或锁定单个资源（如 VM）。
+**删除 VM**。 如果删除 VM，不会删除 VM 磁盘。 这意味着可以安全地删除 VM，而不会丢失数据。 但是，仍将向你收取存储费用。 若要删除 VM 磁盘，请删除托管磁盘对象。 若要防止意外删除，请使用[资源锁](/resource-group-lock-resources)锁定整个资源组或锁定单个资源（如 VM）。
 
 ## <a name="security-considerations"></a>安全注意事项
 
@@ -97,9 +97,9 @@ sudo mount /dev/sdc1 /data1
 
 **修补程序管理**。 在 VM 上配置修补程序管理。 如果启用，安全中心会检查是否缺少任何安全更新和关键更新。 使用 VM 上的[组策略设置](https://docs.microsoft.com/windows-server/administration/windows-server-update-services/deploy/4-configure-group-policy-settings-for-automatic-updates)可启用自动系统更新。
 
-**反恶意软件**。 如果启用，安全中心将检查是否已安装反恶意软件。 还可以使用安全中心从 Azure 门户中安装反恶意软件。
+**反恶意软件**。 如果启用，安全中心会检查是否已安装反恶意软件。 还可以使用安全中心从 Azure 门户中安装反恶意软件。
 
-**访问控制**。 使用[基于角色的访问控制 (RBAC)](/active-directory/role-based-access-control-what-is) 来控制对 Azure 资源的访问。 RBAC 允许你将授权角色分配给开发运营团队的成员。 例如，“读者”角色可以查看 Azure 资源，但不能创建、管理或删除这些资源。 某些权限特定于 Azure 资源类型。 例如，“虚拟机参与者”角色可以执行重启或解除分配 VM、重置管理员密码、创建新的 VM 等操作。 可能对此体系结构有用的其他[内置 RBAC 角色](/active-directory/role-based-access-built-in-roles)包括[开发测试实验室用户](/active-directory/role-based-access-built-in-roles#devtest-labs-user)和[网络参与者](/active-directory/role-based-access-built-in-roles#network-contributor)。
+**访问控制**。 使用[基于角色的访问控制 (RBAC)](/active-directory/role-based-access-control-what-is) 来控制对 Azure 资源的访问。 RBAC 允许将授权角色分配给开发运营团队的成员。 例如，“读者”角色可以查看 Azure 资源，但不能创建、管理或删除这些资源。 某些权限特定于 Azure 资源类型。 例如，“虚拟机参与者”角色可以执行重启或解除分配 VM、重置管理员密码、创建新的 VM 等操作。 可能对此体系结构有用的其他[内置 RBAC 角色](/active-directory/role-based-access-built-in-roles)包括[开发测试实验室用户](/active-directory/role-based-access-built-in-roles#devtest-labs-user)和[网络参与者](/active-directory/role-based-access-built-in-roles#network-contributor)。
 
 > [!Note]  
 > RBAC 不限制已登录到 VM 的用户可以执行的操作。 这些权限由来宾 OS 上的帐户类型决定。

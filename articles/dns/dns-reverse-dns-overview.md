@@ -14,10 +14,10 @@ origin.date: 05/29/2017
 ms.date: 02/17/2020
 ms.author: v-jay
 ms.openlocfilehash: ac82c94b54e957ac0df7c143121d1989a093c131
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77428868"
 ---
 # <a name="overview-of-reverse-dns-and-support-in-azure"></a>反向 DNS 和 Azure 支持概述

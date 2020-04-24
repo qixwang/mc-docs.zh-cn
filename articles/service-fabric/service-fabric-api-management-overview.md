@@ -7,10 +7,10 @@ origin.date: 06/22/2017
 ms.date: 02/24/2020
 ms.author: v-yeche
 ms.openlocfilehash: e3047202460cb4349b8d9e27c82cdba9e48fd992
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77540507"
 ---
 # <a name="service-fabric-with-azure-api-management-overview"></a>有关 Azure Service Fabric 与 API 管理的概述
@@ -60,7 +60,7 @@ Azure API 管理可与无状态服务、有状态服务和任何分区方案的�
 
 **示例**
 
-在以下方案中，Service Fabric 应用程序包含名为 `fabric:/app/userservice` 的已分区有状态服务，用于公开内部 HTTP API。 服务实例名称已知，并可直接在 API 管理入站处理策略中进行硬编码。  
+在以下方案中，Service Fabric 应用程序包含名为“`fabric:/app/userservice`”的已分区有状态服务，用于公开内部 HTTP API。 服务实例名称已知，并可直接在 API 管理入站处理策略中进行硬编码。  
 
 服务通过 Int64 分区方案分为两个分区，键范围介于 `Int64.MinValue` 到 `Int64.MaxValue` 之间。 后端策略将 URL 请求路径中的 `id` 值转换为 64 位整数，在此范围内计算分区键，尽管可以使用任何算法来计算分区键。 
 
@@ -97,7 +97,7 @@ Azure API 管理可与无状态服务、有状态服务和任何分区方案的�
 
 - `fabric:/app/users/<username>`
 
-    每个服务都有一个独一无二的名称，但这些名称并不是提前已知，因为服务是根据用户或管理员输入创建而成，无法硬编码到 APIM 策略或路由规则中。 相反，向其发送请求的服务的名称是根据 URL 请求路径中的 `name` 值在后端策略定义中生成的。 例如：
+    每个服务都有一个独一无二的名称，但这些名称并不是提前已知，因为服务是根据用户或管理员输入创建而成，无法硬编码到 APIM 策略或路由规则中。 相反，向其发送请求的服务的名称是根据 URL 请求路径中的 `name` 值在后端策略定义中生成。 例如：
 
     - 对 `/api/users/foo` 发出的请求被路由到服务实例 `fabric:/app/users/foo`
     - 对 `/api/users/bar` 发出的请求被路由到服务实例 `fabric:/app/users/bar`

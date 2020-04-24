@@ -7,10 +7,10 @@ origin.date: 02/01/2019
 ms.date: 02/24/2020
 ms.author: v-yeche
 ms.openlocfilehash: 43a6f25285682cb5868b66906cb1c7ff1f5f3964
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77540002"
 ---
 # <a name="understanding-periodic-backup-configuration-in-azure-service-fabric"></a>了解 Azure Service Fabric 中的定期备份配置

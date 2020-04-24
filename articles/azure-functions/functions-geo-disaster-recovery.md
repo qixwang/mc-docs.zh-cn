@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: v-junlch
 ms.openlocfilehash: 02bd2b4f7078fd245df7ce62dbdd34899b3dbae4
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77428513"
 ---
 # <a name="azure-functions-geo-disaster-recovery"></a>Azure Functions 异地灾难恢复

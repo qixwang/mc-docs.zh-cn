@@ -17,10 +17,10 @@ ms.date: 02/24/2020
 ms.author: v-jay
 ms.reviewer: juliako
 ms.openlocfilehash: 26847628ffdf53bd95e06c370a133da7adbaf8fb
-ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77494283"
 ---
 # <a name="live-streaming-using-azure-media-services-to-create-multi-bitrate-streams"></a>使用 Azure 媒体服务执行实时流式处理以创建多比特率流
@@ -58,7 +58,7 @@ ms.locfileid: "77494283"
 若要阻止通道进一步计费，必须通过 API 或 Azure 门户停止通道。
 使用完实时编码通道后，需要亲自停止通道。  不停止编码通道会导致持续计费。
 
-### <a id="states"></a>通道状态及其如何映射到计费模式
+### <a name="channel-states-and-how-they-map-to-the-billing-mode"></a><a id="states"></a>通道状态及其如何映射到计费模式
 通道的当前状态。 可能的值包括：
 
 * **已停止**。 这是通道在创建后的初始状态（除非在门户中选择了自动启动）。此状态下不会发生计费。 此状态下可以更新通道属性，但不允许进行流式传输。
@@ -86,7 +86,7 @@ ms.locfileid: "77494283"
 
 ![实时工作流][live-overview]
 
-## <a id="scenario"></a>常见的实时流处理方案
+## <a name="common-live-streaming-scenario"></a><a id="scenario"></a>常见的实时流处理方案
 以下是创建常见的实时流应用程序时涉及的常规步骤。
 
 > [!NOTE]
@@ -124,14 +124,14 @@ ms.locfileid: "77494283"
 > 
 > 
 
-## <a id="channel"></a>频道输入（引入）配置
-### <a id="Ingest_Protocols"></a>引入流式传输协议
+## <a name="channels-input-ingest-configurations"></a><a id="channel"></a>频道输入（引入）配置
+### <a name="ingest-streaming-protocol"></a><a id="Ingest_Protocols"></a>引入流式传输协议
 如果“编码器类型”设为“标准”，则有效选项为   ：
 
 * 单比特率 **RTMP**
 * 单比特率分片 MP4（平滑流式处理） 
 
-#### <a id="single_bitrate_RTMP"></a>单比特率 RTMP
+#### <a name="single-bitrate-rtmp"></a><a id="single_bitrate_RTMP"></a>单比特率 RTMP
 注意事项：
 
 * 传入流不能包含多码率视频
@@ -211,7 +211,7 @@ ms.locfileid: "77494283"
 #### <a name="language"></a>语言
 音频流的语言标识符符合 ISO 639-2 标准，如 ENG。 如果不存在，则默认为 UND（未定义）。
 
-### <a id="preset"></a>系统预设
+### <a name="system-preset"></a><a id="preset"></a>系统预设
 指定此通道内的实时编码器要使用的预设。 目前，唯一允许的值是 Default720p（默认值）  。
 
  Default720p 会将视频编码为以下 6 层。
@@ -263,7 +263,7 @@ ms.locfileid: "77494283"
 ### <a name="insert-slate-on-ad-marker"></a>在 Ad 标记上插入静态图像
 当设为 true 时，此设置会将实时编码器配置为在广告期间插入静态图像。 默认值为 true。 
 
-### <a id="default_slate"></a>默认静态图像资产 ID
+### <a name="default-slate-asset-id"></a><a id="default_slate"></a>默认静态图像资产 ID
 
 可选。 指定媒体服务资源（包含静态图像）的资源 ID。 默认值为 null。 
 
@@ -300,7 +300,7 @@ ms.locfileid: "77494283"
 ## <a name="getting-a-thumbnail-preview-of-a-live-feed"></a>获取实时源的缩略图预览
 启用实时编码后，可以在实时源到达通道时获得实时源的预览。 这是一个很有用的工具，可用于检查实时源是否实际到达通道。 
 
-## <a id="states"></a>通道状态，以及状态如何映射到计费模式
+## <a name="channel-states-and-how-states-map-to-the-billing-mode"></a><a id="states"></a>通道状态，以及状态如何映射到计费模式
 通道的当前状态。 可能的值包括：
 
 * **已停止**。 这是通道在创建后的初始状态。 此状态下可以更新通道属性，但不允许进行流式传输。
@@ -323,7 +323,7 @@ ms.locfileid: "77494283"
 > 
 > 
 
-## <a id="Considerations"></a>注意事项
+## <a name="considerations"></a><a id="Considerations"></a>注意事项
 * 当某个编码类型为**标准**的通道出现输入源/贡献源丢失的情况时，该通道会采取相应的补偿措施，将源视频/音频替换为表示错误的静态图像和静音。 该通道会持续发出静态图像，直到输入/贡献源恢复。 我们建议不要让实时通道处于此类状态的时间超过 2 小时。 如果超出该限制，该通道无法保证输入重新连接时的行为，也无法保证其响应重置命令时的行为。 这种情况下必须停止通道并将其删除，并创建一个新的。
 * 通道或其关联的节目正在运行时，无法更改输入协议。 如果需要不同的协议，应当针对每个输入协议创建单独的频道。
 * 每次重新配置实时编码器后，请对通道调用 **重置** 方法。 重置通道之前，必须停止节目。 在重置频道后，重新启动节目。

@@ -15,10 +15,10 @@ oirgin.date: 08/21/2019
 ms.date: 02/24/2020
 ms.author: v-jay
 ms.openlocfilehash: a462be09a3d3e153b31a8e7f1083dbe5f8b1d11c
-ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77494544"
 ---
 # <a name="migrate-from-azure-media-encoder-to-media-encoder-standard"></a>从 Azure 媒体编码器迁移到 Media Encoder Standard

@@ -9,10 +9,10 @@ ms.author: v-jay
 ms.lastreviewed: 08/15/2019
 ms.reviewer: ppacent
 ms.openlocfilehash: 313ba6e9c69fd86b3f57d725cac653554d83549e
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77540268"
 ---
 # <a name="apply-azure-stack-hub-original-equipment-manufacturer-oem-updates"></a>应用 Azure Stack Hub 原始设备制造商 (OEM) 更新
@@ -33,12 +33,12 @@ ms.locfileid: "77540268"
 
 此部分包含 OEM 联系人信息以及 OEM Azure Stack Hub 参考资料的链接。
 
-| 硬件合作伙伴 | 区域 | URL |
+| 硬件合作伙伴 | 区域 | 代码 |
 |------------------|--------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Cisco | 全部 | [适用于 Microsoft Azure Stack Hub 的 Cisco 集成系统操作指南](https://aka.ms/aa708e2)<br><br>[UCS C 系列机架式 UCS 托管服务器软件](https://aka.ms/aa700rq) |
-| Dell EMC | 全部 | [Cloud for Azure Stack Hub 14G（需要帐户和登录）](https://support.emc.com/downloads/44615_Cloud-for-Microsoft-Azure-Stack-14G)<br><br>[Cloud for Azure Stack Hub 13G（需要帐户和登录）](https://support.emc.com/downloads/42238_Cloud-for-Microsoft-Azure-Stack-13G) |
-| HPE | 全部 | [HPE ProLiant for Azure Stack Hub](http://www.hpe.com/info/MASupdates) |
-| Lenovo | 全部 | [ThinkAgile SXM 最佳食谱](https://datacentersupport.lenovo.com/us/en/solutions/ht505122)
+| Cisco | All | [适用于 Microsoft Azure Stack Hub 的 Cisco 集成系统操作指南](https://aka.ms/aa708e2)<br><br>[UCS C 系列机架式 UCS 托管服务器软件](https://aka.ms/aa700rq) |
+| Dell EMC | All | [Cloud for Azure Stack Hub 14G（需要帐户和登录）](https://support.emc.com/downloads/44615_Cloud-for-Microsoft-Azure-Stack-14G)<br><br>[Cloud for Azure Stack Hub 13G（需要帐户和登录）](https://support.emc.com/downloads/42238_Cloud-for-Microsoft-Azure-Stack-13G) |
+| HPE | All | [HPE ProLiant for Azure Stack Hub](http://www.hpe.com/info/MASupdates) |
+| Lenovo | All | [ThinkAgile SXM 最佳食谱](https://datacentersupport.lenovo.com/us/en/solutions/ht505122)
 | Wortmann |  | [OEM/固件包](https://aka.ms/AA6z600)<br>[terra Azure Stack Hub 文档（包括 FRU）](https://aka.ms/aa6zktc)
 
 ## <a name="apply-oem-updates"></a>应用 OEM 更新
@@ -46,7 +46,7 @@ ms.locfileid: "77540268"
 按以下步骤应用 OEM 包：
 
 > [!IMPORTANT]
-> 在 Azure Stack Hub 中应用更新之前，请确保已完成[更新前清单](release-notes-checklist.md)中的**所有**步骤，并为要应用的更新类型计划了相应的维护时段。
+> 在 Azure Stack Hub 中应用更新之前，请确保已完成**更新前清单**中的[所有](release-notes-checklist.md)步骤，并为要应用的更新类型计划了相应的维护时段。
 
 1. 以下事项需联系 OEM：
       - 确定 OEM 包的当前版本。  
@@ -57,7 +57,7 @@ ms.locfileid: "77540268"
 
 ## <a name="configure-hardware-vendor-vm"></a>配置硬件供应商 VM
 
-某些硬件供应商可能会要求使用 VM 来处理 OEM 更新过程。 如果在运行 **Set-OEMExternalVM**cmdlet 时需要将 `ProxyVM` 或 `HardwareManager` 用于 **-VMType**，以及应将哪个凭据用于 **-Credential**，则硬件供应商将负责创建这些 VM 并进行记录。 这些 VM 创建好以后，请通过特权终结点使用 **Set-OEMExternalVM** 配置它们。
+某些硬件供应商可能会要求使用 VM 来处理 OEM 更新过程。 如果在运行 `ProxyVM`Set-OEMExternalVM`HardwareManager`cmdlet 时需要将 **或** 用于 **-VMType**，以及应将哪个凭据用于 **-Credential**，则硬件供应商将负责创建这些 VM 并进行记录。 这些 VM 创建好以后，请通过特权终结点使用 **Set-OEMExternalVM** 配置它们。
 
 有关 Azure Stack Hub 上的特权终结点的详细信息，请参阅[使用 Azure Stack Hub 中的特权终结点](azure-stack-privileged-endpoint.md)。
 

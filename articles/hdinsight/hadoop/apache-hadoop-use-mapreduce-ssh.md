@@ -18,10 +18,10 @@ origin.date: 01/10/2020
 ms.date: 03/02/2020
 ms.author: v-yiso
 ms.openlocfilehash: 7e1351a1efef5e388b9518096a86d98c04019afe
-ms.sourcegitcommit: 46fd4297641622c1984011eac4cb5a8f6f94e9f5
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77563499"
 ---
 # <a name="use-mapreduce-with-apache-hadoop-on-hdinsight-with-ssh"></a>通过 SSH 将 MapReduce 与 HDInsight 上的 Apache Hadoop 配合使用
@@ -39,7 +39,7 @@ HDInsight 中的 Apache Hadoop 群集。 请参阅[使用 Azure 门户创建 Apa
 
 ## <a name="use-hadoop-commands"></a>使用 Hadoop 命令
 
-1. 使用 [ssh 命令](../hdinsight-hadoop-linux-use-ssh-unix.md)连接到群集。 编辑以下命令（将 CLUSTERNAME 替换为群集的名称），然后输入该命令：
+1. 使用 [ssh 命令](../hdinsight-hadoop-linux-use-ssh-unix.md)连接到群集。 编辑以下命令，将 CLUSTERNAME 替换为群集的名称，然后输入该命令：
 
     ```cmd
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.cn
@@ -51,7 +51,7 @@ HDInsight 中的 Apache Hadoop 群集。 请参阅[使用 Azure 门户创建 Apa
     yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar wordcount /example/data/gutenberg/davinci.txt /example/data/WordCountOutput
     ```
 
-    此命令启动 `hadoop-mapreduce-examples.jar` 文件中包含的 `wordcount` 类。 它使用 `/example/data/gutenberg/davinci.txt` 文档作为输入，并将输出存储在 `/example/data/WordCountOutput` 中。
+    此命令启动 `wordcount` 文件中包含的 `hadoop-mapreduce-examples.jar` 类。 它使用 `/example/data/gutenberg/davinci.txt` 文档作为输入，并将输出存储在 `/example/data/WordCountOutput` 中。
 
     > [!NOTE]
     > 有关此 MapReduce 作业和示例数据的详细信息，请参阅[在 Apache Hadoop on HDInsight 中使用 MapReduce](hdinsight-use-mapreduce.md)。
@@ -96,7 +96,7 @@ HDInsight 中的 Apache Hadoop 群集。 请参阅[使用 Azure 门户创建 Apa
 
 ## <a name="next-steps"></a>后续步骤
 
-如用户所见，Hadoop 命令提供简单的方法让用户在 HDInsight 群集上运行 MapReduce 作业，并查看作业输出。 有关 HDInsight 上 Hadoop 的其他使用方法的信息：
+如你所见，Hadoop 命令提供简单的方法让你在 HDInsight 群集上运行 MapReduce 作业，并查看作业输出。 有关 HDInsight 上的 Hadoop 的其他使用方法的信息：
 
 * [在 HDInsight Hadoop 上使用 MapReduce](hdinsight-use-mapreduce.md)
 * [将 Apache Hive 与 Apache Hadoop on HDInsight 配合使用](hdinsight-use-hive.md)

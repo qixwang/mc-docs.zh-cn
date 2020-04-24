@@ -10,10 +10,10 @@ ms.custom: hdinsightactive
 origin.date: 12/06/2019
 ms.date: 02/24/2020
 ms.openlocfilehash: eaf129f0741143d7f95e531218a9d6afdcedcee8
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77428730"
 ---
 # <a name="machine-learning-on-hdinsight"></a>HDInsight 中的机器学习

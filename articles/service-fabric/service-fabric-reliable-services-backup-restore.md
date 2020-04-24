@@ -7,17 +7,17 @@ origin.date: 10/29/2018
 ms.date: 02/24/2020
 ms.author: v-yeche
 ms.openlocfilehash: c3573399eb81a4c8b8075505c0562a349b9d189b
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77540143"
 ---
 # <a name="backup-and-restore-reliable-services-and-reliable-actors"></a>备份和还原 Reliable Services 及 Reliable Actors
-Azure Service Fabric 是一个高可用性平台，用于复制多个节点中的状态以维护此高可用性。  因此，即使群集中的一个节点出现故障，服务也将继续可用。 尽管此平台提供的内置冗余对某些情况来说可能已经足够使用，但在特定情况下，仍需要服务备份数据（到外部存储）。
+Azure Service Fabric 是一个高可用性平台，用于复制多个节点中的状态以维护此高可用性。  因此，即使群集中的一个节点出现故障，服务也将继续可用。 尽管此平台提供的此内置冗余对某些情况来说可能已足够用了，但在特定情况下，仍需要服务备份数据（到外部存储）。
 
 > [!NOTE]
-> 请务必备份和还原数据（并测试它是否正常工作），以便从数据丢失的情形中进行恢复。
+> 请务必备份和还原数据（并测试它是否正常运行），以便从数据丢失情形中恢复。
 > 
 
 > [!NOTE]
@@ -32,7 +32,7 @@ Azure Service Fabric 是一个高可用性平台，用于复制多个节点中�
 - 服务中的 bug 导致数据损坏。 例如，当某个服务代码升级程序开始将错误数据写入到可靠集合中时可能发生此情况。 在此情况下，代码和数据可能都必须还原到先前的状态。
 - 离线数据处理。 对于商业智能来说使用离线处理的数据很方便，此处理是独立于生成数据的服务进行的。
 
-备份/还原功能允许在 Reliable Services API 上构建的服务创建和还原备份。 平台提供的备份 API 允许在不阻止读取或写入操作的情况下备份服务分区的状态。 还原 API 允许从选定的备份还原服务分区的状态。
+备份/还原功能允许在 Reliable Services API 上构建的服务来创建和还原备份。 平台提供的备份 API 允许在不阻止读取或写入操作的情况下备份服务分区的状态。 还原 API 允许从选定的备份还原服务分区的状态。
 
 ## <a name="types-of-backup"></a>备份的类型
 有两个备份选项：完整和增量。
@@ -72,15 +72,15 @@ await this.BackupAsync(myBackupDescription);
 
 采用增量备份的请求可能因 `FabricMissingFullBackupException` 而失败。 此异常指示正在发生以下情况之一：
 
-- 副本在成为主要副本后从未执行完整备份，
-- 自上次备份被截断后记录了部分日志，或
+- 副本在变为主副本后从未执行过完整备份
+- 自上次备份以来的一些日志记录已截断
 - 副本传递了 `MaxAccumulatedBackupLogSizeInMB` 限制。
 
 用户可以通过配置 `MinLogSizeInMB` 或 `TruncationThresholdFactor` 增加能够执行增量备份的可能性。
 增加这些值会增加每个副本磁盘的使用。
 有关详细信息，请参阅 [Reliable Services 配置](service-fabric-reliable-services-configuration.md)。
 
-`BackupInfo` 提供有关备份的信息，包括运行时保存备份的文件夹位置 (`BackupInfo.Directory`)。 此回调函数可将 `BackupInfo.Directory` 移到外部存储或其他位置。  此函数也返回一个布尔值，此值表示是否已成功将备份文件夹移动到其目标位置。
+`BackupInfo` 提供有关备份的信息，包括运行时保存备份的文件夹位置 (`BackupInfo.Directory`)。 此回调函数可以将 `BackupInfo.Directory` 移到外部存储或其他位置。  此函数也返回一个布尔值，此值表示是否已成功将备份文件夹移动到其目标位置。
 
 以下代码演示如何使用 `BackupCallbackAsync` 方法将备份上传到 Azure 存储：
 
@@ -99,14 +99,14 @@ private async Task<bool> BackupCallbackAsync(BackupInfo backupInfo, Cancellation
 
 请注意：
 
-  - 在任何给定时间，每个副本只能有一项正在进行的备份操作。 同时多次 `BackupAsync` 调用会引发 `FabricBackupInProgressException`，将即时备份数限制为一。
-  - 如果备份正在进行时副本发生故障转移，那么备份可能没有完成。 因此，故障转移完成后，服务应负责根据需要通过调用 `BackupAsync` 来重启备份。
+  - 在任何给定时间，每个副本只能有一项正在进行的备份操作。 同时多次 `BackupAsync` 调用将引发 `FabricBackupInProgressException`，将即时备份数限制为一。
+  - 如果备份正在进行时副本发生故障转移，那么备份可能没有完成。 因此，故障转移完成后，服务应负责根据需要通过调用 `BackupAsync` 来重新启动备份。
 
 ## <a name="restore-reliable-services"></a>还原 Reliable Services
 一般而言，可能需要执行还原操作的情况可以为以下类型之一：
 
-  - 服务分区丢失数据。 例如，分区的三个副本中两个副本（包括主副本）的磁盘数据已损坏或被擦除。 新的主副本可能需要从备份中还原数据。
-  - 整个服务已丢失。 例如，管理员删除了整个服务，因此需要还原该服务和数据。
+  - 服务分区丢失数据。 例如，分区的三个副本中的两个（包括主副本）的磁盘数据已损坏或被擦除。 新的主副本可能需要从备份中还原数据。
+  - 整个服务已丢失。 例如，管理员删除了整个服务，因此需要还原此服务和数据。
   - 服务复制了损坏的应用程序数据（例如，由于应用程序的 bug）。 在此情况下，必须升级或还原服务来消除损坏的原因，并还原未损坏的数据。
 
 虽然有许多恢复方法，但是我们仅针对上述情形提供一些使用 `RestoreAsync` 进行恢复的示例。
@@ -119,7 +119,7 @@ private async Task<bool> BackupCallbackAsync(BackupInfo backupInfo, Cancellation
   - 重写虚拟基类方法 `OnDataLossAsync`。
   - 在包含服务的备份的外部位置中查找最新备份。
   - 下载最新的备份（如果备份已压缩，则将其解压缩到备份文件夹中）。
-  - `OnDataLossAsync` 方法提供 `RestoreContext`。 对所提供的 `RestoreContext` 调用 `RestoreAsync` API。
+  - `OnDataLossAsync` 方法可提供 `RestoreContext`。 对所提供的 `RestoreAsync` 调用 `RestoreContext` API。
   - 如果还原成功，则返回 true。
 
 以下是 `OnDataLossAsync` 方法的实现示例：
@@ -137,15 +137,15 @@ protected override async Task<bool> OnDataLossAsync(RestoreContext restoreCtx, C
 }
 ```
 
-传入 `RestoreContext.RestoreAsync` 调用的 `RestoreDescription` 包含名为 `BackupFolderPath` 的成员。
+传入 `RestoreDescription` 调用的 `RestoreContext.RestoreAsync` 包含名为 `BackupFolderPath` 的成员。
 还原单个完整备份时，此 `BackupFolderPath` 应设置为包含完整备份的文件夹的本地路径。
 还原一个完整备份和一些增量备份时，`BackupFolderPath` 应设置为包含完整备份以及所有增量备份的文件夹的本地路径。
-如果所提供的 `BackupFolderPath` 不包含完整的备份，则 `RestoreAsync` 调用可引发 `FabricMissingFullBackupException`。
-如果 `BackupFolderPath` 具有已断开的增量备份链，它还可引发 `ArgumentException`。
+如果所提供的 `RestoreAsync` 不包含完整的备份，则 `FabricMissingFullBackupException` 调用可引发 `BackupFolderPath`。
+如果 `ArgumentException` 具有已断开的增量备份链，它还可引发 `BackupFolderPath`。
 例如，如果它包含完整备份、第一个增量备份和第三个增量备份，但不包含第二个增量备份。
 
 > [!NOTE]
-> 默认情况下，RestorePolicy 设置为安全。  这表示如果检测到备份文件夹中包含的状态早于或等于此副本中包含的状态，则 `RestoreAsync` API 会因 ArgumentException 而失败。  可以使用 `RestorePolicy.Force` 来跳过此安全检查。 这被指定为 `RestoreDescription` 的一部分。
+> 默认情况下，RestorePolicy 设置为安全。  这表示如果检测到备份文件夹中包含的状态早于或等于此副本中包含的状态，则 `RestoreAsync` API 将因 ArgumentException 而失败。  可以使用 `RestorePolicy.Force` 来跳过此安全检查。 这被指定为 `RestoreDescription` 的一部分。
 > 
 
 ## <a name="deleted-or-lost-service"></a>删除或丢失服务
@@ -162,9 +162,9 @@ protected override async Task<bool> OnDataLossAsync(RestoreContext restoreCtx, C
 
 在检测到这样一个导致数据损坏的严重 bug 之后首先要做的是在应用程序级别冻结服务，并且如果可以，请升级到没有此 bug 的应用程序代码版本。  但是，即使修复了服务代码，数据仍可能是损坏的，因此可能需要还原数据。  在此情况下，还原最新备份可能不足以解决问题，因为此最新备份可能已损坏。  因此，需要查找在数据被损坏之前创建的最新备份。
 
-如果用户不确定哪些备份已损坏，那么用户可以部署一个新的 Service Fabric 群集，并还原受影响分区的备份，正如上面的“删除或丢失服务”情况一样。  针对每个分区，从最新备份到最旧备份开始还原。 找到一个未被损坏的备份时，移动或删除此分区的较新（比此备份更新）的所有备份。 对每个分区重复此过程。 此时，如果在生产群集中的分区上调用 `OnDataLossAsync`，在外部存储中找到的最新备份是通过上述过程选取的备份。
+如果不确定哪些备份已损坏，那么可以部署一个新的 Service Fabric 群集，并还原受影响分区的备份，正如上面的“删除或丢失服务”情况一样。  针对每个分区，从最新备份到最旧备份开始还原。 找到一个未被损坏的备份时，移动或删除此分区的比此备份更新的所有备份。 对每个分区重复此过程。 此时，如果在生产群集中的分区上调用 `OnDataLossAsync`，在外部存储中找到的最新备份将是通过上述过程选取的备份。
 
-现在，可使用“删除或丢失服务”部分中的步骤将服务的状态还原到错误代码损坏此状态之前的状态。
+现在，可使用“删除或丢失服务”部分中的步骤来将服务的状态还原到错误代码损坏此状态之前的状态。
 
 请注意：
 
@@ -173,7 +173,7 @@ protected override async Task<bool> OnDataLossAsync(RestoreContext restoreCtx, C
 
 ## <a name="back-up-and-restore-reliable-actors"></a>备份和还原 Reliable Actors
 
-Reliable Actors 框架在 Reliable Services 的基础之上构建。 承载着执行组件的 ActorService 是有状态的可靠服务。 因此，Reliable Services 中提供的所有备份和还原功能也可用于 Reliable Actors（状态提供程序特定的行为除外）。 由于会基于每个分区执行备份，因此该分区中所有执行组件的状态都会进行备份（还原也类似，会基于每个分区进行）。 如果要执行备份/还原，服务所有者应创建一个派生自 ActorService 类的自定义执行组件服务类，并像之前部分所述的 Reliable Services 一样进行备份/还原。
+Reliable Actors 框架在 Reliable Services 的基础之上构建。 承载着执行组件的 ActorService 是有状态的可靠服务。 因此，Reliable Services 中提供的所有备份和还原功能也可用于 Reliable Actors（状态提供程序特定的行为除外）。 由于会基于每个分区执行备份，因此该分区中所有执行组件的状态都会进行备份（还原也类似，会基于每个分区进行）。 要执行备份/还原，服务所有者应创建一个派生自 ActorService 类的自定义执行组件服务类，并像之前部分所述的 Reliable Services 一样进行备份/还原。
 
 ```csharp
 class MyCustomActorService : ActorService
@@ -196,7 +196,7 @@ ActorRuntime.RegisterActorAsync<MyActor>(
     (context, typeInfo) => new MyCustomActorService(context, typeInfo)).GetAwaiter().GetResult();
 ```
 
-Reliable Actors 的默认状态提供程序是 `KvsActorStateProvider`。 默认情况下，未为 `KvsActorStateProvider` 启用增量备份。 可以通过在其构造函数中使用相应设置创建 `KvsActorStateProvider`，然后将其传递给 ActorService 构造函数来启用增量备份，如以下代码片段中所示：
+Reliable Actors 的默认状态提供程序是 `KvsActorStateProvider`。 默认情况下，未为 `KvsActorStateProvider` 启用增量备份。 可以通过在其构造函数中使用相应设置创建 `KvsActorStateProvider`，然后将其传递给 ActorService 构造函数来启用增量备份，如下面的代码片段中所示：
 
 ```csharp
 class MyCustomActorService : ActorService
@@ -212,14 +212,14 @@ class MyCustomActorService : ActorService
 }
 ```
 
-启用增量备份后，由于以下原因之一，执行增量备份会失败，显示 FabricMissingFullBackupException，并需要在执行增量备份前执行完整备份：
+启用增量备份后，由于以下原因之一，执行增量备份会失败，显示 FabricMissingFullBackupException，并将需要在执行增量备份前执行完整备份：
 
   - 副本在变为主副本后从未执行过完整备份。
   - 自上次执行备份后，一些日志记录被截断。
 
-启用增量备份后，`KvsActorStateProvider` 未使用循环缓冲区管理其日志记录和定期截取它。 如果在 45 分钟的时间内用户未执行备份，则系统自动截断日志记录。 可以通过在 `KvsActorStateProvider` 构造函数中指定 `logTruncationIntervalInMinutes` 来配置此间隔（与启用增量备份时类似）。 如果主副本需要通过发送其所有数据来生成另一个副本，日志记录也可能会被截断。
+启用增量备份后，`KvsActorStateProvider` 未使用循环缓冲区管理其日志记录和定期截取它。 如果在 45 分钟的时间内用户未执行备份，则系统会自动截断日志记录。 可以通过在 `logTruncationIntervalInMinutes` 构造函数中指定 `KvsActorStateProvider` 来配置此间隔（与启用增量备份时类似）。 如果主副本需要通过发送其所有数据来生成另一个副本，日志记录也可能会被截断。
 
-从备份链进行还原时，与 Reliable Services 类似，BackupFolderPath 应包含子目录（其中一个子目录包含完整备份，其他子目录包含增量备份）。 如果备份链验证失败，还原 API 会引发 FabricException 并显示相应的错误消息。 
+从备份链进行还原时，与 Reliable Services 类似，BackupFolderPath 应包含子目录（其中一个子目录包含完整备份，其他子目录包含增量备份）。 如果备份链验证失败，还原 API 将引发 FabricException 并显示相应的错误消息。 
 
 > [!NOTE]
 > `KvsActorStateProvider` 目前会忽略 RestorePolicy.Safe 选项。 计划在将来的版本中支持此功能。
@@ -236,21 +236,21 @@ class MyCustomActorService : ActorService
 ## <a name="under-the-hood-more-details-on-backup-and-restore"></a>表象之下：有关备份和还原的更多详细信息
 下面提供了有关备份和还原的更多详细信息。
 
-### <a name="backup"></a>Backup
-可靠性状态管理器具有在不阻止任何读取或写入操作的情况下创建一致的备份的功能。 为了实现此功能，它利用了检查点和日志持久性机制。  可靠性状态管理器在特定时间点采用模糊（轻型）检查点来缓解来自事务日志的压力，并缩短恢复时间。  调用 `BackupAsync` 时，可靠状态管理器指示所有可靠对象将其最新的检查点文件复制到本地备份文件夹。  然后，可靠性状态管理器将复制所有日志记录（从“开始指针”开始到最新的日志记录）到备份文件夹中。  由于所有日志记录直至最新日志记录都包含在备份中，并且可靠状态管理器保留了预写日志记录，因此，可靠状态管理器保证所有提交的事务（`CommitAsync` 已成功返回）都包含在备份中。
+### <a name="backup"></a>备份
+可靠性状态管理器具有在不阻止任何读取或写入操作的情况下创建一致的备份的功能。 要实现此功能，它利用了检查点和日志持久性机制。  可靠性状态管理器在特定时间点采用模糊（轻型）检查点来缓解来自事务日志的压力，并缩短恢复时间。  调用 `BackupAsync` 时，可靠状态管理器指示所有可靠对象将其最新的检查点文件复制到本地备份文件夹。  然后，可靠性状态管理器将复制所有日志记录（从“开始指针”开始到最新的日志记录）到备份文件夹中。  由于所有日志记录直至最新日志记录都包含在备份中，并且可靠状态管理器保留了预写日志记录，因此，可靠状态管理器保证所有提交的事务（`CommitAsync` 已成功返回）都包含在备份中。
 
 在调用 `BackupAsync` 之后提交的任何事务可能在备份中，也可能不在备份中。  一旦平台填充此本地备份文件夹（也就是说，本地备份是由运行时完成的），就将调用此服务的备份回调。  此回调负责将此备份文件夹移至 Azure 存储等外部位置。
 
 ### <a name="restore"></a>还原
 可靠状态管理器具有使用 `RestoreAsync` API 从备份还原的功能。  
-仅可在 `OnDataLossAsync` 方法内调用 `RestoreContext` 的 `RestoreAsync` 方法。
+仅可在 `RestoreAsync` 方法内调用 `RestoreContext` 的 `OnDataLossAsync` 方法。
 由 `OnDataLossAsync` 返回的布尔值表示服务是否从外部源还原其状态。
-如果 `OnDataLossAsync` 返回 true，则 Service Fabric 会使用此主要副本重新生成所有其他副本。 Service Fabric 可确保将接收 `OnDataLossAsync` 调用的副本先转换为主角色，但不会授予其读取状态或写入状态。
+如果 `OnDataLossAsync` 返回 true，则 Service Fabric 将使用此主副本重新生成所有其他副本。 Service Fabric 可确保将接收 `OnDataLossAsync` 调用的副本先转换为主角色，但不会授予其读取状态或写入状态。
 这意味着对于 StatefulService 实现程序，不会调用 `RunAsync`，直到 `OnDataLossAsync` 成功完成。
-然后，会对新的主要副本调用 `OnDataLossAsync`。
+然后，会对新的主副本调用 `OnDataLossAsync`。
 将一次调用一回 API，如此循环，直到服务成功完成此 API（返回 true 或 false），并完成相关的重新配置。
 
-`RestoreAsync` 首先删除调用它的主要副本中的所有现有状态。 之后，可靠状态管理器创建备份文件夹中存在的所有可靠对象。 接下来，指示可靠对象从备份文件夹中的它们的检查点还原。 最后，可靠性状态管理器从备份文件夹中的日志记录中恢复其自己的状态，并执行恢复。 作为恢复过程的一部分，将对可靠对象重播从“起始点”开始的操作，该起始点已提交备份文件夹中的日志记录。 此步骤可以确保恢复的状态是一致的。
+`RestoreAsync` 首先删除调用它的主副本中的所有现有状态。 之后，可靠状态管理器创建备份文件夹中存在的所有可靠对象。 接下来，指示可靠对象从备份文件夹中的它们的检查点还原。 最后，可靠性状态管理器从备份文件夹中的日志记录中恢复其自己的状态，并执行恢复。 作为恢复过程的一部分，将对可靠对象重播从“起始点”开始的操作，该起始点已提交备份文件夹中的日志记录。 此步骤可以确保恢复的状态是一致的。
 
 ## <a name="next-steps"></a>后续步骤
   - [Reliable Collections](service-fabric-work-with-reliable-collections.md)

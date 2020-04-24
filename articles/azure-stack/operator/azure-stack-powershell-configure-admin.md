@@ -9,10 +9,10 @@ ms.author: v-jay
 ms.reviewer: thoroet
 ms.lastreviewed: 09/19/2019
 ms.openlocfilehash: f8ae06bad5f4bbaa3dc21ca3851f62c04c1b0427
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77540371"
 ---
 # <a name="connect-to-azure-stack-hub-with-powershell"></a>使用 PowerShell 连接到 Azure Stack Hub
@@ -21,7 +21,7 @@ ms.locfileid: "77540371"
 
 ## <a name="prerequisites"></a>必备条件
 
-如果[已通过 VPN 连接到 ASDK](../asdk/asdk-connect.md#connect-with-vpn)，请通过 [Azure Stack 开发工具包 (ASDK)](../asdk/asdk-connect.md#connect-with-rdp) 或基于 Windows 的外部客户端运行以下先决条件操作。
+如果[已通过 VPN 连接到 ASDK](../asdk/asdk-connect.md#connect-with-rdp)，请通过 [Azure Stack 开发工具包 (ASDK)](../asdk/asdk-connect.md#connect-with-vpn) 或基于 Windows 的外部客户端运行以下先决条件操作。
 
 - 安装 [Azure Stack Hub 兼容的 Azure PowerShell 模块](azure-stack-powershell-install.md)。  
 - 下载[使用 Azure Stack Hub 所需的工具](azure-stack-powershell-download.md)。  

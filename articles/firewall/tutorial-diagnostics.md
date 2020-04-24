@@ -9,10 +9,10 @@ origin.date: 10/24/2018
 ms.date: 02/24/2020
 ms.author: v-yeche
 ms.openlocfilehash: 9f4f4432f0545bd0834dc258ecc439075a7499ec
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77540084"
 ---
 # <a name="tutorial-monitor-azure-firewall-logs-and-metrics"></a>教程：监视 Azure 防火墙日志和指标
@@ -23,7 +23,7 @@ ms.locfileid: "77540084"
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 通过 Azure 门户启用日志记录
@@ -58,7 +58,7 @@ ms.locfileid: "77540084"
 8. 在“Log Analytics 工作区”页中，单击“创建新工作区”。 
 9. 在“Log Analytics 工作区”页中，键入 **firewall-oms** 作为新 **Log Analytics 工作区**的名称。 
 10. 选择订阅，使用现有的防火墙资源组 (**Test-FW-RG**)，选择“中国东部”作为位置，然后选择“免费”定价层。  
-11. 单击 **“确定”** 。
+11. 单击“确定”。 
     
     ![启动配置过程][1] OMS 工作区现在称为 Log Analytics 工作区。  
 12. 在“日志”下面，单击“AzureFirewallApplicationRule”和“AzureFirewallNetworkRule”收集应用程序和网络规则的日志。   
@@ -72,13 +72,13 @@ ms.locfileid: "77540084"
 
 若要启用诊断日志记录，请使用以下步骤：
 
-1. 记下存储帐户的资源 ID，其中存储日志数据。 此值采用以下格式： */subscriptions/\<订阅 ID\>/resourceGroups/\<资源组名称\>/providers/Microsoft.Storage/storageAccounts/\<存储帐户名称\>* 。
+1. 记下存储日志数据的存储帐户资源 ID。 此值采用以下格式： */subscriptions/\<订阅 ID\>/resourceGroups/\<资源组名称\>/providers/Microsoft.Storage/storageAccounts/\<存储帐户名称\>* 。
 
-    可以使用订阅中的任何存储帐户。 可以使用 Azure 门户查找以下信息。 此信息位于资源的“属性”页中。 
+    订阅中的所有存储帐户均可使用。 可使用 Azure 门户查找此信息。 此信息位于资源的“属性”页中。 
 
 2. 记下为其启用了日志记录的防火墙的资源 ID。 此值采用以下格式： */subscriptions/\<订阅 ID\>/resourceGroups/\<资源组名称\>/providers/Microsoft.Network/azureFirewalls/\<防火墙名称\>* 。
 
-    可以使用门户查找以下信息。
+    可使用门户查找此信息。
 
 3. 使用以下 PowerShell cmdlet 启用诊断日志记录：
 
@@ -93,10 +93,10 @@ ms.locfileid: "77540084"
 
 ## <a name="view-and-analyze-the-activity-log"></a>查看和分析活动日志
 
-可使用以下任意方法查看和分析活动日志数据：
+可使用以下任一方法查看和分析活动日志数据：
 
-* **Azure 工具**：通过 Azure PowerShell、Azure CLI、Azure REST API 或 Azure 门户检索活动日志中的信息。 [使用 Resource Manager 的活动操作](../azure-resource-manager/management/view-activity-logs.md)一文中详细介绍了每种方法的分步说明。
-* **Power BI**：如果还没有 [Power BI](https://powerbi.microsoft.com/pricing) 帐户，可以免费试用。 使用[适用于 Power BI 的 Azure 活动日志内容包](https://powerbi.microsoft.com/documentation/powerbi-content-pack-azure-audit-logs/)，可以借助预配置的仪表板（可直接使用或进行自定义）分析数据。
+* Azure 工具  ：通过 Azure PowerShell、Azure CLI、Azure REST API 或 Azure 门户检索活动日志中的信息。 [使用 Resource Manager 活动操作](../azure-resource-manager/management/view-activity-logs.md)一文中详细介绍了每种方法的分步说明。
+* Power BI  ：如果尚无 [Power BI](https://powerbi.microsoft.com/pricing) 帐户，可免费试用。 使用[适用于 Power BI 的 Azure 活动日志内容包](https://powerbi.microsoft.com/documentation/powerbi-content-pack-azure-audit-logs/)，可以借助预配置的仪表板（可直接使用或进行自定义）分析数据。
 
 ## <a name="view-and-analyze-the-network-and-application-rule-logs"></a>查看和分析网络与应用程序规则日志
 
@@ -104,7 +104,7 @@ ms.locfileid: "77540084"
 
 如需 Azure 防火墙 Log Analytics 示例查询，请参阅 [Azure 防火墙 Log Analytics 示例](log-analytics-samples.md)。
 
-还可以连接到存储帐户并检索访问和性能日志的 JSON 日志条目。 下载 JSON 文件后，可以将其转换为 CSV 并在 Excel、Power BI 或任何其他数据可视化工具中查看。
+还可以连接到存储帐户并检索访问和性能日志的 JSON 日志条目。 下载 JSON 文件后，可以将它们转换为 CSV 并在 Excel、Power BI 或任何其他数据可视化工具中查看。
 
 > [!TIP]
 > 如果熟悉 Visual Studio 和更改 C# 中的常量和变量值的基本概念，则可以使用 GitHub 提供的[日志转换器工具](https://github.com/Azure-Samples/networking-dotnet-log-converter)。

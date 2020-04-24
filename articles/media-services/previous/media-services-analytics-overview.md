@@ -17,10 +17,10 @@ ms.date: 02/24/2020
 ms.author: v-jay
 ms.reviewer: milanga; johndeu
 ms.openlocfilehash: 8f628fdb18a015c398117bf9ec0710893e1970e8
-ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77494456"
 ---
 # <a name="media-analytics-on-the-media-services-platform"></a>媒体服务平台上的媒体分析 
@@ -68,7 +68,7 @@ Azure 媒体修订器是一种媒体分析媒体处理器，可用于在云中�
 ## <a name="common-scenarios"></a>常见方案
 媒体分析可帮助组织和企业从视频搜集新的见解，并更有效地管理大量视频内容。 下面介绍几种方案：
 
-* **呼叫中心**。 即使出现了社交媒体，客户呼叫中心仍能帮助解决大量的客户服务事务。 此音频数据中编码了大量客户信息，分析这些信息可实现更高的客户满意度。 通过使用媒体索引器，组织可以提取文本并生成搜索索引和仪表板。 然后，他们可以围绕常见抱怨、投诉源和其他相关数据提取情报。
+* **呼叫中心**。 即使出现了社交媒体，客户呼叫中心仍能帮助解决大量的客户服务事务。 此音频数据中编码了大量客户信息，分析这些信息可实现更高的客户满意度。 通过使用媒体索引器，组织可以提取文本并生成搜索索引和仪表板。 然后，他们可以提取围绕常见的投诉、投诉原因以及其他相关数据的情报。
 * **用户生成的内容仲裁**。 从新闻媒体分支机构到公安部门，许多组织都设立了对外公开的门户，用于在其中接受用户生成的媒体，例如视频和图像。 内容的数量可能因意外事件而激增。 在这些情况下，仅凭人力几乎不可能有效地审查内容的适宜性。 客户可以依赖于内容仲裁服务，将工作重点放在适当的内容上。
 
 ## <a name="media-analytics-media-processors"></a>媒体分析媒体处理器
@@ -76,9 +76,9 @@ Azure 媒体修订器是一种媒体分析媒体处理器，可用于在云中�
 
 ### <a name="mp-names"></a>MP 名称
 
-* Azure Media Indexer
+* Azure 媒体索引器
 * Azure 媒体面部检测器
-* Azure 媒体动作检测器
+* Azure Media Motion Detector
 * Azure 媒体视频缩略图
 * Azure 媒体 OCR
 * Azure 媒体内容审查器

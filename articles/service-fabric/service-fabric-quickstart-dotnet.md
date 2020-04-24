@@ -8,10 +8,10 @@ ms.date: 02/24/2020
 ms.author: v-yeche
 ms.custom: mvc, devcenter, vs-azure
 ms.openlocfilehash: d4c2aa5cf579f31e6c0859f5c01ab9705e5279a5
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77540178"
 ---
 # <a name="quickstart-deploy-a-net-reliable-services-application-to-service-fabric"></a>快速入门：将 .NET Reliable Services 应用程序部署到 Service Fabric
@@ -33,12 +33,12 @@ Azure Service Fabric 是一款分布式系统平台，可用于部署和管理�
 
 ## <a name="prerequisites"></a>必备条件
 
-若要完成本快速入门教程，需先执行以下操作：
+完成本快速入门教程需要：
 
 1. [安装 Visual Studio 2019](https://www.visualstudio.com/)，其中包含“Azure 开发”  以及“ASP.NET 和 Web 开发”  工作负荷。
 2. [安装 Git](https://git-scm.com/)
 3. [安装 Azure Service Fabric SDK](https://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-CoreSDK)
-4. 运行以下命令，以便 Visual Studio 将应用程序部署到本地 Service Fabric 群集：
+4. 运行以下命令，将 Visual Studio 启用为把应用程序部署到本地 Service Fabric 群集：
 
     ```powershell
     Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Force -Scope CurrentUser
@@ -53,7 +53,7 @@ Azure Service Fabric 是一款分布式系统平台，可用于部署和管理�
 > 尽管这在此特定快速入门中并非必要，但在创建群集时运行 Docker 是一种最佳做法。
 > 若要测试 Docker 是否正在运行，请打开一个终端窗口，运行 `docker ps` 并查看是否出错。 如果响应中未指示错误，则表示 Docker 正在运行，可以生成群集。
 >
-> [为容器设置 Windows 10 或 Windows Server](https://docs.microsoft.com/virtualization/windowscontainers/quick-start/set-up-environment?tabs=Windows-10-Client)
+> [设置 Windows 10 或 Windows Server 用以运行容器](https://docs.microsoft.com/virtualization/windowscontainers/quick-start/set-up-environment?tabs=Windows-10-Client)
 
 1. 以管理员身份打开权限提升的新 PowerShell 窗口。
 2. 运行以下 PowerShell 命令创建开发群集：
@@ -73,7 +73,7 @@ Azure Service Fabric 是一款分布式系统平台，可用于部署和管理�
 
 ## <a name="download-the-sample"></a>下载示例
 
-在命令窗口中，运行以下命令，将示例应用存储库克隆到本地计算机。
+在命令窗口中，运行以下命令，将示例应用程序存储库克隆到本地计算机。
 
 ```git
 git clone https://github.com/Azure-Samples/service-fabric-dotnet-quickstart
@@ -96,14 +96,14 @@ git clone https://github.com/Azure-Samples/service-fabric-dotnet-quickstart
 
 ![应用程序前端](./media/service-fabric-quickstart-dotnet/application-screenshot-new.png)
 
-现在可以添加一组投票选项，并开始投票。 此应用程序可以运行，并将所有数据存储到 Service Fabric 群集中，而无需单独提供数据库。
+现在可以添加一组投票选项，并开始进行投票。 此应用程序可以运行，并将所有数据存储到 Service Fabric 群集中，而无需单独提供数据库。
 
 ## <a name="walk-through-the-voting-sample-application"></a>大致了解投票示例应用程序
 
 投票应用程序由以下两个服务组成：
 
 * Web 前端服务 (VotingWeb) - ASP.NET Core Web 前端服务，可提供网页服务，并公开用于与后端服务进行通信的 Web API。
-* 后端服务 (VotingData) - ASP.NET Core Web 服务，可公开用于将投票结果存储到磁盘上保留的可靠字典中的 API。
+* 后端服务 (VotingData) - ASP.NET Core Web 服务，可公开用于将投票结果存储在可靠字典中并保留在磁盘上的API。
 
 ![应用程序关系图](./media/service-fabric-quickstart-dotnet/application-diagram.png)
 
@@ -134,7 +134,7 @@ git clone https://github.com/Azure-Samples/service-fabric-dotnet-quickstart
     * 然后，向 ReverseProxy 发送 HTTP PUT 请求  (2)。
     * 最后，将后端服务的响应返回到客户端  (3)。
 
-4. 按 F5  继续操作
+4. 按 F5  以继续操作
     - 在浏览器提示时，授予 ServiceFabricAllowedUsers 组读取和执行权限（适用于调试模式）。
     - 此时，到达后端服务中的断点。
 
@@ -143,13 +143,13 @@ git clone https://github.com/Azure-Samples/service-fabric-dotnet-quickstart
     - 在方法 (1) 的第一行  ，`StateManager` 获取或添加一个可靠字典 `counts`。
     - 与可靠字典中的值进行的所有交互都需要使用事务，这个 using 语句（图中标识为2）  负责创建此事务。
     - 在事务中更新投票选项的相关键值，并提交操作  (3)。 提交方法返回后，便会更新字典中的数据，并将数据复制到群集中的其他节点。 数据现在安全地存储在群集中，并且后端服务可以故障转移到其他节点，同时数据仍可用。
-5. 按 F5  继续操作
+5. 按 F5  以继续操作
 
 若要停止调试会话，请按 Shift+F5  。
 
 ## <a name="perform-a-rolling-application-upgrade"></a>执行应用程序滚动升级
 
-将新更新部署到应用程序时，Service Fabric 会安全地分阶段发布更新。 借助滚动升级，可以杜绝升级时的故障时间，并在出错时自动回退。
+将新更新部署到应用程序时，Service Fabric 会安全地分阶段发布更新。 借助滚动升级，可以杜绝升级时的故障时间，并在出错时自动回滚。
 
 若要升级应用程序，请执行以下操作：
 
@@ -167,11 +167,11 @@ git clone https://github.com/Azure-Samples/service-fabric-dotnet-quickstart
 
     ![“发布”对话框中的升级设置](./media/service-fabric-quickstart-dotnet/upgrade-app.png)
 
-10. 单击“发布”。 
+10. 单击“发布”  。
 
     运行升级期间，仍可以使用应用程序。 由于在群集中运行的服务有两个实例，因此一些请求可能会获取升级版应用程序，另一些请求可能仍获取旧版应用程序。
 
-11. 打开浏览器，并在端口 19080 上转到群集地址。 例如，`http://localhost:19080/`。
+11. 打开浏览器，并在端口 19080 上转到群集地址。 例如，`http://localhost:19080/` 。
 12. 单击树视图中的“应用程序”  节点，再单击右侧窗格中的“进行中的升级”  。 可以了解如何通过群集中的升级域滚动升级，同时确保在继续执行下一步之前每个域都能够正常运行。 在验证域运行状况后，进度栏中的升级域将显示为绿色。
     
     ![Service Fabric Explorer 中的升级视图](./media/service-fabric-quickstart-dotnet/upgrading.png)

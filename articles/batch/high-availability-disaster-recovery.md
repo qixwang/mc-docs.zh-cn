@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 01/29/2019
 ms.author: v-lingwu
 ms.openlocfilehash: 13788b5adfcc68b765fce34f8867b97a35b15be3
-ms.sourcegitcommit: 27eaabd82b12ad6a6840f30763034a6360977186
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77497640"
 ---
 # <a name="design-your-application-for-high-availability"></a>针对高可用性设计应用程序

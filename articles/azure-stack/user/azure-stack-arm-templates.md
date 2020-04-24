@@ -9,10 +9,10 @@ ms.author: v-jay
 ms.reviewer: justini
 ms.lastreviewed: 11/14/2018
 ms.openlocfilehash: 90754f6214c35c658a447f0d6aa93ff453a6bd7c
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77540859"
 ---
 # <a name="use-azure-resource-manager-templates-in-azure-stack-hub"></a>在 Azure Stack Hub 中使用 Azure 资源管理器模板
@@ -74,4 +74,4 @@ ms.locfileid: "77540859"
 * [通过门户部署模板](azure-stack-deploy-template-portal.md)
 * [通过 PowerShell 部署模板](azure-stack-deploy-template-powershell.md)
 * [通过 Visual Studio 部署模板](azure-stack-deploy-template-visual-studio.md)
-* [Azure Resource Manager 概述](/azure-resource-manager/resource-group-overview)
+* [Azure 资源管理器概述](/azure-resource-manager/resource-group-overview)

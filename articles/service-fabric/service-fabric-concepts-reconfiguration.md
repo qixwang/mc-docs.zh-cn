@@ -7,10 +7,10 @@ origin.date: 01/10/2018
 ms.date: 02/24/2020
 ms.author: v-yeche
 ms.openlocfilehash: 188740ac3010c7572d671a9a6d3ed8ddb4a20ce7
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77540461"
 ---
 # <a name="reconfiguration-in-azure-service-fabric"></a>Azure Service Fabric 中的重新配置
@@ -25,14 +25,14 @@ ms.locfileid: "77540461"
 
 - 主要副本发生改变的重新配置：
     - **故障转移**：故障转移是为了应对正在运行的主要副本发生故障而启动的重新配置。
-    - **交换主要副本**：在交换型重新配置中，为了应对负载均衡或升级，Service Fabric 通常需要将正在运行的主要副本从一个节点移动到另一个节点。
+    - **交换主要副本**：在交换型重新配置中，Service Fabric 需要将正在运行的主要副本从一个节点移至另一个节点，通常是为了应对负载均衡或升级。
 
 - 主要副本未发生改变的重新配置。
 
 ## <a name="reconfiguration-phases"></a>重新配置阶段
 重新配置按以下几个阶段进行：
 
-- **阶段 0**：此阶段在交换主要副本的重新配置期间发生，重新配置时，当前主要副本会将状态转让给新的主要副本，并转换为有效的次要副本。
+- **阶段 0**：此阶段在交换主要副本的重新配置期间发生，即当前主要副本将状态转让给新的主要副本，并转换为有效的次要副本。
 
 - **阶段 1**：此阶段在主要副本发生改变的重新配置期间发生。 在此阶段，Service Fabric 在当前副本中确定正确的主要副本。 在交换主要副本的重新配置期间，无需执行此阶段，因为已经选择了新的主要副本。 
 
@@ -44,7 +44,7 @@ ms.locfileid: "77540461"
 重新配置无法执行  的原因有很多种。 一些常见原因包括：
 
 - **副本故障**：一些重新配置阶段要求配置中的大多数副本能够正常运行。
-- **网络或通信问题**：重新配置需要不同节点之间存在网络连接。
+- **网络或通信问题**：重新配置要求在不同的节点之间建立网络连接。
 - **API 故障**：重新配置协议要求服务实现完成特定的 API。 例如，不履行可靠服务中的取消令牌会导致交换主要副本的重新配置无法运行。
 
 使用系统组件（如 System.FM、System.RA、System.RAP）提供的运行状况报告，诊断在哪里无法运行重新配置。 [系统健康状况报表页](service-fabric-understand-and-troubleshoot-with-system-health-reports.md)将介绍这些健康状况报表。

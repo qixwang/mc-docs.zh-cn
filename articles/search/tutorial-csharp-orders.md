@@ -10,10 +10,10 @@ ms.topic: tutorial
 origin.date: 02/10/2020
 ms.date: 03/02/2020
 ms.openlocfilehash: 7c9a65e8de75324295c5161e4fff784148dc6d0b
-ms.sourcegitcommit: 094c057878de233180ff3b3a3e3c19bc11c81776
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77501441"
 ---
 # <a name="c-tutorial-order-the-results---azure-cognitive-search"></a>C# 教程：对结果排序 - Azure 认知搜索
@@ -29,7 +29,7 @@ ms.locfileid: "77501441"
 > * 根据到某地理点的距离筛选结果
 > * 根据计分概要文件对结果排序
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 要完成本教程，需要：
 

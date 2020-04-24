@@ -9,10 +9,10 @@ origin.date: 10/05/2019
 ms.date: 02/17/2020
 ms.author: v-jay
 ms.openlocfilehash: a6cb44294ad488ef0d3489ebd3879a7b61c76894
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77428747"
 ---
 # <a name="azure-private-dns-faq"></a>Azure 专用 DNS 常见问题解答
@@ -31,7 +31,7 @@ ms.locfileid: "77428747"
 
 ## <a name="is-connectivity-to-the-internet-from-virtual-networks-required-for-private-zones"></a>专用区域是否需要在虚拟网络与 Internet 之间建立连接？
 
-否。 专用区域配合虚拟网络工作。 你可在虚拟网络内部或跨虚拟网络管理虚拟机的域或其他资源。 无需建立 Internet 连接即可进行名称解析。
+不是。 专用区域配合虚拟网络工作。 你可在虚拟网络内部或跨虚拟网络管理虚拟机的域或其他资源。 无需建立 Internet 连接即可进行名称解析。
 
 ## <a name="can-the-same-private-zone-be-used-for-several-virtual-networks-for-resolution"></a>是否可将同一专用区域用于解析多个虚拟网络？
 
@@ -55,7 +55,7 @@ ms.locfileid: "77428747"
 
 ## <a name="what-happens-when-we-delete-a-linked-virtual-network-thats-linked-to-a-private-zone-do-we-have-to-manually-update-the-private-zone-to-unlink-the-virtual-network-as-a-linked-virtual-network-from-the-zone"></a>删除链接到专用区域的链接虚拟网络时会发生什么情况？ 是否必须手动更新专用区域，才能从该区域中取消已链接虚拟网络的链接？
 
-否。 如果删除链接的虚拟网络而不先将其从专用区域中取消链接，则删除操作将会成功，并且会自动清除对 DNS 区域的链接。
+不是。 如果删除链接的虚拟网络而不先将其从专用区域中取消链接，则删除操作将会成功，并且会自动清除对 DNS 区域的链接。
 
 ## <a name="will-dns-resolution-by-using-the-default-fqdn-internalchinacloudappcn-still-work-even-when-a-private-zone-for-example-privatecontosocom-is-linked-to-a-virtual-network"></a>是否即使专用区域（例如 private.contoso.com）已链接到虚拟网络，也仍可使用默认 FQDN (internal.chinacloudapp.cn) 进行 DNS 解析？
 
@@ -63,7 +63,7 @@ ms.locfileid: "77428747"
 
 ## <a name="will-the-dns-suffix-on-virtual-machines-within-a-linked-virtual-network-be-changed-to-that-of-the-private-zone"></a>链接的虚拟网络中虚拟机上的 DNS 后缀是否会更改为专用区域的 DNS 后缀？
 
-否。 链接的虚拟网络中虚拟机的 DNS 后缀将保留为 Azure 提供的默认后缀（“*.internal.chinacloudapp.cn”）。 可以手动将虚拟机上的此 DNS 后缀更改为专用区域的 DNS 后缀。
+不是。 链接的虚拟网络中虚拟机的 DNS 后缀将保留为 Azure 提供的默认后缀（“*.internal.chinacloudapp.cn”）。 可以手动将虚拟机上的此 DNS 后缀更改为专用区域的 DNS 后缀。
 有关如何更改此后缀的指导，请参阅 [使用动态 DNS 在自己的 DNS 服务器中注册主机名](/virtual-network/virtual-networks-name-resolution-ddns#windows-clients)
 
 ## <a name="what-are-the-usage-limits-for-azure-dns-private-zones"></a>Azure DNS 专用区域有哪些使用限制？

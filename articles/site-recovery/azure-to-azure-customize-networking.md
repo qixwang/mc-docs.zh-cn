@@ -10,10 +10,10 @@ origin.date: 10/21/2019
 ms.date: 02/24/2020
 ms.author: v-yeche
 ms.openlocfilehash: 83d4caa8b55b9972ebe84a19f72c0995ac154e96
-ms.sourcegitcommit: 781f68d27903687f0aa9e1ed273eee25c6d129a1
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77611252"
 ---
 <!--Verify sucessfully-->
@@ -33,7 +33,7 @@ ms.locfileid: "77611252"
 - [公共 IP](/virtual-network/virtual-network-ip-addresses-overview-arm#public-ip-addresses)
 - 子网和 NIC 的[网络安全组](/virtual-network/manage-network-security-group)
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - 确保提前规划恢复端的配置。
 - 提前创建网络资源。 请将此配置作为输入提供，使 Azure Site Recovery 服务能够遵守这些设置，并确保故障转移 VM 遵守这些设置。

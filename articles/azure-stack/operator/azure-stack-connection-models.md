@@ -9,10 +9,10 @@ ms.author: v-jay
 ms.reviewer: wfayed
 ms.lastreviewed: 02/21/2019
 ms.openlocfilehash: aa1b05460d0ef3445ddb23c2479078c61f2cebc0
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77540939"
 ---
 # <a name="azure-stack-hub-integrated-systems-connection-models"></a>Azure Stack Hub 集成系统连接模型
@@ -36,8 +36,8 @@ ms.locfileid: "77540939"
 |基于使用的计费|![支持](media/azure-stack-connection-models/check.png)| |
 |基于容量的计费|![支持](media/azure-stack-connection-models/check.png)|![支持](media/azure-stack-connection-models/check.png)|
 |授权| 企业协议或云解决方案提供商 | 企业协议 |
-|修补和更新|可以直接从 Internet 将更新包下载到 Azure Stack Hub |  必须<br><br>还需要可移动媒体<br> 和独立的连接设备 |
-| 注册 | 自动 | 必须<br><br>还需要可移动媒体<br> 和独立的连接设备 |
+|修补和更新|可以直接从 Internet 将更新包下载到 Azure Stack Hub |  必选<br><br>还需要可移动媒体<br> 和独立的连接设备 |
+| 注册 | 自动 | 必选<br><br>还需要可移动媒体<br> 和独立的连接设备 |
 
 选定 Azure Stack Hub 部署要使用的 Azure 连接模型后，必须对标识存储和计费方法做出其他与连接相关的决策。
 

@@ -7,10 +7,10 @@ origin.date: 03/27/2018
 ms.date: 02/24/2020
 ms.author: v-yeche
 ms.openlocfilehash: 32c5a02d34dfe07007e1e3b5620f09927e3d5ed5
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77540670"
 ---
 # <a name="add-logging-to-your-service-fabric-application"></a>向 Service Fabric 应用程序添加日志记录
@@ -164,7 +164,7 @@ ASP.NET Core 日志记录（[Microsoft.Extensions.Logging NuGet 包](https://www
 5. 可以像在不使用 Serilog 的情况下运行 ASP.NET Core 一样检测代码。
 
     >[!NOTE]
-    >建议不要在前面的示例中使用静态 `Log.Logger`  。 Service Fabric 可在单个进程中托管同一服务类型的多个实例。 如果使用静态 `Log.Logger`，属性扩充器的最后一个写入者会显示所有正在运行的实例的值。 这是 _logger 变量为何是服务类的专用成员变量的原因之一。 另外，必须将 `_logger` 提供给可跨服务使用的通用代码使用。
+    >建议不要在前面的示例中使用静态  `Log.Logger`。 Service Fabric 可在单个进程中托管同一服务类型的多个实例。 如果使用静态 `Log.Logger`，属性扩充器的最后一个写入者会显示所有正在运行的实例的值。 这是 _logger 变量为何是服务类的专用成员变量的原因之一。 另外，必须将 `_logger` 提供给可跨服务使用的通用代码使用。
 
 ## <a name="next-steps"></a>后续步骤
 

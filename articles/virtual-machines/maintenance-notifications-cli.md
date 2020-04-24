@@ -11,10 +11,10 @@ origin.date: 11/19/2019
 ms.date: 02/17/2020
 ms.author: v-yeche
 ms.openlocfilehash: a808ce07e69ac7f808a18c855b10c81cc4a274db
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77429965"
 ---
 # <a name="handling-planned-maintenance-notifications-using-the-azure-cli"></a>使用 Azure CLI 处理计划内维护通知

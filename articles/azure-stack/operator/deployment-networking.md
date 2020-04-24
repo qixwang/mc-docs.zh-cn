@@ -10,10 +10,10 @@ ms.author: v-jay
 ms.reviewer: wamota
 ms.lastreviewed: 12/05/2019
 ms.openlocfilehash: 8fc1e99cf8ac04323a802919a3978f7f4f651ecb
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77540602"
 ---
 # <a name="deployment-network-traffic"></a>部署网络流量

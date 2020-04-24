@@ -9,10 +9,10 @@ ms.date: 02/24/2020
 ms.reviewer: shriramnat
 ms.lastreviewed: 10/06/2019
 ms.openlocfilehash: 31dfdc0b48a2126defc043f55db2181cd59aa8c9
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77540865"
 ---
 # <a name="tutorial-test-a-service-offering"></a>教程：测试服务套餐
@@ -25,7 +25,7 @@ ms.locfileid: "77540865"
 > * 创建订阅
 > * 创建并部署资源
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 在开始学习本教程之前，必须满意以下先决条件：
 

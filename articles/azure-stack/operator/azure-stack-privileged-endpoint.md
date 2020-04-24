@@ -9,10 +9,10 @@ ms.author: v-jay
 ms.reviewer: fiseraci
 ms.lastreviewed: 1/8/2020
 ms.openlocfilehash: e4df274c41227cfd9b281719ca8aaa861ad94407
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77540360"
 ---
 # <a name="use-the-privileged-endpoint-in-azure-stack-hub"></a>使用 Azure Stack Hub 中的特权终结点

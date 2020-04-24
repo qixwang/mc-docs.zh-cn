@@ -15,10 +15,10 @@ origin.date: 09/27/2018
 ms.date: 02/10/2020
 ms.author: v-yeche
 ms.openlocfilehash: 10cd8b46c3ffc99d983547806fabab866176f789
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77428933"
 ---
 # <a name="how-to-open-ports-to-a-virtual-machine-with-the-azure-portal"></a>如何使用 Azure 门户打开虚拟机端口
@@ -84,8 +84,8 @@ ms.locfileid: "77428933"
 ## <a name="next-steps"></a>后续步骤
 在本文中，已经创建了网络安全组、创建了允许端口 80 上的 HTTP 流量的入站规则，并将该规则与子网进行了关联。 
 
-下列文章更介绍了有关创建更详细环境的信息：
-- [Azure Resource Manager 概述](../../azure-resource-manager/management/overview.md)
+可以从下列文章中，找到有关创建更详细环境的信息：
+- [Azure 资源管理器概述](../../azure-resource-manager/management/overview.md)
 - [安全组](../../virtual-network/security-overview.md)
 
 <!-- Update_Description: update meta properties， wording update, update link -->

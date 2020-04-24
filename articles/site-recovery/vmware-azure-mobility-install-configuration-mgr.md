@@ -7,10 +7,10 @@ origin.date: 02/05/2020
 ms.date: 02/24/2020
 ms.author: v-yeche
 ms.openlocfilehash: e8c851bf0f6dd7f503e1f09c0e2cdcdbbcd66a65
-ms.sourcegitcommit: 781f68d27903687f0aa9e1ed273eee25c6d129a1
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77611204"
 ---
 # <a name="automate-mobility-service-installation"></a>自动执行移动服务安装

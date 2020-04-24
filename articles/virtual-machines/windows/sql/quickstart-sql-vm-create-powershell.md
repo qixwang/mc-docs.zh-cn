@@ -15,10 +15,10 @@ ms.date: 02/10/2020
 ms.author: v-yeche
 ms.reviewer: jroth
 ms.openlocfilehash: b246eb9ffbc60efa3c9528014c9736f34872e061
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77428421"
 ---
 # <a name="quickstart-create-a-sql-server-windows-virtual-machine-with-azure-powershell"></a>快速入门：使用 Azure PowerShell 创建 SQL Server Windows 虚拟机
@@ -32,7 +32,7 @@ ms.locfileid: "77428421"
 <a name="subscription"></a>
 ## <a name="get-an-azure-subscription"></a>获取 Azure 订阅
 
-如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial)。
+如果没有 Azure 订阅，可在开始前创建一个 [试用帐户](https://www.azure.cn/pricing/1rmb-trial) 。
 
 <a name="powershell"></a>
 ## <a name="get-azure-powershell"></a>获取 Azure PowerShell
@@ -131,7 +131,7 @@ ms.locfileid: "77428421"
     $Cred = New-Object System.Management.Automation.PSCredential ("azureadmin", $securePassword)
     ```
 
-1. 创建虚拟机配置对象，然后创建 VM。 以下命令在 Windows Server 2016 上创建 SQL Server 2017 Developer Edition VM。
+1. 创建虚拟机配置对象，然后创建 VM。 以下命令创建基于 Windows Server 2016 的 SQL Server 2017 Developer Edition VM。
 
     ```powershell
     # Create a virtual machine configuration
@@ -146,7 +146,7 @@ ms.locfileid: "77428421"
     ```
 
     > [!TIP]
-    > 创建 VM 需要几分钟时间。
+    > 创建 VM 需要数分钟。
 
 ## <a name="install-the-sql-iaas-agent"></a>安装 SQL IaaS 代理
 
@@ -170,19 +170,19 @@ ms.locfileid: "77428421"
     mstsc /v:<publicIpAddress>
     ```
 
-1. 出现输入凭据的提示时，请选择输入另一个帐户的凭据。 输入带前置反斜杠的用户名（例如 `\azureadmin`），以及此前在本快速入门中设置的密码。
+1. 系统提示输入凭据时，选择输入另一帐户的凭据。 输入带前置反斜杠的用户名（例如 `\azureadmin`），以及此前在本快速入门中设置的密码。
 
 ## <a name="connect-to-sql-server"></a>连接到 SQL Server
 
 1. 登录到远程桌面会话以后，从开始菜单启动 **SQL Server Management Studio 2017**。
 
-1. 在“连接到服务器”对话框中，保留默认设置  。 服务器名称是 VM 的名称。 身份验证设置为“Windows 身份验证”。  选择“连接”  。
+1. 在“连接到服务器”对话框中，保留默认设置  。 服务器名称为 VM 名称。 身份验证设置为“Windows 身份验证”  。 选择“连接”  。
 
 你现在已通过本地方式连接到 SQL Server。 若要进行远程连接，必须通过门户或手动[配置连接性](virtual-machines-windows-sql-connect.md)。
 
 ## <a name="clean-up-resources"></a>清理资源
 
-如果不需要让 VM 持续运行，可以在不使用它时将它停止，以免产生不必要的费用。 以下命令可停止 VM，但会保留它供将来使用。
+如果不需要让 VM 持续运行，可以在不使用它时将它停止，以免产生不必要的费用。 以下命令可停止 VM，但保留它供将来使用。
 
 ```powershell
 Stop-AzVM -Name $VMName -ResourceGroupName $ResourceGroupName

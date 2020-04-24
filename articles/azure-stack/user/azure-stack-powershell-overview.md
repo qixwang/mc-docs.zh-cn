@@ -9,10 +9,10 @@ ms.author: v-jay
 ms.reviewer: sijuman
 ms.lastreviewed: 10/02/2019
 ms.openlocfilehash: 41fde727fc094868bf9b54aeb97948e30c76fe00
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77541046"
 ---
 # <a name="get-started-with-powershell-in-azure-stack-hub"></a>Azure Stack Hub 中的 PowerShell 入门
@@ -23,7 +23,7 @@ PowerShell 用于从命令行管理资源。 若要生成使用 Azure 资源管�
 
 | API | PowerShell 参考 | REST 参考 |
 | --- | --- | --- |
-| Azure Resource Manager | [Azure PowerShell 模块](https://github.com/Azure/azure-powershell/blob/master/documentation/azure-powershell-modules.md) | [REST API 浏览器](https://docs.microsoft.com/rest/api/) |
+| Azure 资源管理器 | [Azure PowerShell 模块](https://github.com/Azure/azure-powershell/blob/master/documentation/azure-powershell-modules.md) | [REST API 浏览器](https://docs.microsoft.com/rest/api/) |
 | Azure Stack Hub 资源管理器 | [管理 Azure Stack Hub 中的 API 版本配置文件](azure-stack-version-profiles.md) | [管理 Azure Stack Hub 中的 API 版本配置文件](azure-stack-version-profiles.md) |
 | Azure Stack Hub 管理员终结点 | [Azure Stack Hub 管理模块](https://docs.microsoft.com/powershell/azure/azure-stack/overview) | [REST API 浏览器 - Azure Stack Hub](https://docs.microsoft.com/rest/api/?term=Azure%20Azure%20Stack%20Admin) |
 | Azure Stack Hub 特权终结点 | [使用 Azure Stack Hub 中的特权终结点](../operator/azure-stack-privileged-endpoint.md) | |

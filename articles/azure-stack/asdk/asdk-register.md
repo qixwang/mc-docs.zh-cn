@@ -9,10 +9,10 @@ ms.author: v-jay
 ms.reviewer: misainat
 ms.lastreviewed: 06/14/2019
 ms.openlocfilehash: 811208875720a2a8e951b3c8fed3b6c88c4833e2
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77540968"
 ---
 # <a name="register-the-asdk-with-azure"></a>将 ASDK 注册到 Azure
@@ -21,7 +21,7 @@ ms.locfileid: "77540968"
 
 如果未注册 ASDK，你可能会看到“需要激活”  警告警报，其中建议注册 ASDK。 这是预期的行为。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 在按这些说明将 ASDK 注册到 Azure 之前，请确保已安装 Azure Stack PowerShell，并已下载[部署后配置](asdk-post-deploy.md)一文中所述的 Azure Stack 工具。
 

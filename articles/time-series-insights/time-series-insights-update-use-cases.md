@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 02/19/2020
 ms.custom: seodec18
 ms.openlocfilehash: 1cc1f4169ee00e3feac9076ca09d64a4803c83c0
-ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77494434"
 ---
 # <a name="azure-time-series-insights-preview-use-cases"></a>Azure 时序见解预览版用例
@@ -30,7 +30,7 @@ ms.locfileid: "77494434"
 
 以下部分描述了这些使用方案的概述。
 
-## <a name="introduction"></a>简介
+## <a name="introduction"></a>介绍
 
 Azure 时序见解是一种端到端的平台即服务产品/服务。 它用于收集、处理、分析和查询高度情景化且优化了时序的 IoT 规模的数据。 时序见解是即席数据浏览和运营分析的理想选择。 时序见解是唯一可扩展且自定义的服务产品/服务，满足行业 IoT 部署的广泛需求。
 

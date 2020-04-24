@@ -18,10 +18,10 @@ origin.date: 01/02/2020
 ms.date: 02/24/2020
 ms.author: v-yiso
 ms.openlocfilehash: 131a19d6531f28e7fd82e3b4de6ceaf5ecbb0fbd
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77428808"
 ---
 # <a name="enable-heap-dumps-for-apache-hadoop-services-on-linux-based-hdinsight"></a>在基于 Linux 的 HDInsight 上为 Apache Hadoop 服务启用堆转储
@@ -30,7 +30,7 @@ ms.locfileid: "77428808"
 
 堆转储包含应用程序的内存快照，其中包括创建转储时各变量的值。 因此，它们在诊断发生在运行时的问题时很有用。
 
-## <a name="whichServices"></a>服务
+## <a name="services"></a><a name="whichServices"></a>服务
 
 可以启用以下服务的堆转储：
 
@@ -42,7 +42,7 @@ ms.locfileid: "77428808"
 
 还可以启用映射的堆转储，并减少由 HDInsight 运行的流程数。
 
-## <a name="configuration"></a>了解堆转储配置
+## <a name="understanding-heap-dump-configuration"></a><a name="configuration"></a>了解堆转储配置
 
 在某项服务启动时，可以通过将选项（有时称为 opts 或参数）传递到 JVM 来启用堆转储。 对于大多数 [Apache Hadoop](https://hadoop.apache.org/) 服务，可以修改用于启动该服务的 shell 脚本来传递这些选项。
 
@@ -62,7 +62,7 @@ ms.locfileid: "77428808"
 
     -XX:+HeapDumpOnOutOfMemoryError
 
-**+** 指示是否启用了此选项。 默认为禁用。
+**指示是否启用了此选项+** 。 默认为禁用。
 
 > [!WARNING]
 > 默认情况下，在 HDInsight 上不为 Hadoop 服务启用堆转储，因为转储文件可能很大。 如果启用了堆转储来进行故障诊断，请记住在重现问题并收集转储文件后禁用堆转储。
@@ -90,9 +90,9 @@ ms.locfileid: "77428808"
 
 若要修改服务配置，请使用以下步骤：
 
-1. 在 Web 浏览器中，导航到 `https://CLUSTERNAME.azurehdinsight.net`，其中 `CLUSTERNAME` 是群集的名称。
+1. 在 Web 浏览器中导航到 `https://CLUSTERNAME.azurehdinsight.net`，其中的 `CLUSTERNAME` 是群集的名称。
 
-2. 使用左侧的列表，选择你想要修改的服务区。 例如， **HDFS**。 在中心区域，选择 **“配置”** 选项卡。
+2. 使用左侧的列表，选择你想要修改的服务区。 例如，**HDFS**。 在中心区域，选择“配置”  选项卡。
 
     ![“HDFS 配置”选项卡已选定的 Ambari 网站的图像](./media/hdinsight-hadoop-collect-debug-heap-dump-linux/hdi-service-config-tab.png)
 

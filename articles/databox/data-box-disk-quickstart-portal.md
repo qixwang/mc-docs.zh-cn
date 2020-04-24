@@ -11,10 +11,10 @@ ms.date: 02/17/2020
 ms.author: v-jay
 ms.localizationpriority: high
 ms.openlocfilehash: 2353e72c22e108de3a703919bf55c0a571694e5d
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77428735"
 ---
 ::: zone target="docs"
@@ -37,7 +37,7 @@ ms.locfileid: "77428735"
 
 ::: zone target="docs"
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 开始之前：
 

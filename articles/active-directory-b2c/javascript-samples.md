@@ -12,10 +12,10 @@ ms.date: 02/20/2020
 ms.author: v-junlch
 ms.subservice: B2C
 ms.openlocfilehash: fae0f00be848a00bc9432bd571d86cd5f2f89b8e
-ms.sourcegitcommit: 1bd7711964586b41ff67fd1346dad368fe7383da
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77531316"
 ---
 # <a name="javascript-samples-for-use-in-azure-active-directory-b2c"></a>用于 Azure Active Directory B2C 中的 JavaScript 示例
@@ -35,7 +35,7 @@ ms.locfileid: "77531316"
 > [!NOTE]
 > 如果要为用户流启用 JavaScript，请参阅 [Azure Active Directory B2C 中的 JavaScript 和页面布局版本](user-flow-javascript-overview.md)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 ### <a name="select-a-page-layout"></a>选择页面布局
 

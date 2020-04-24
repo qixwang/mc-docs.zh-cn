@@ -17,10 +17,10 @@ ms.date: 02/10/2020
 ms.author: v-yeche
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 8b96a1767defc836e4adcde3dc2e8fc3975a137e
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77428878"
 ---
 # <a name="create-a-fully-qualified-domain-name-in-the-azure-portal-for-a-linux-vm"></a>在 Azure 门户中为 Linux VM 创建完全限定的域名
@@ -39,6 +39,6 @@ ms.locfileid: "77428878"
 ## <a name="next-steps"></a>后续步骤
 VM 已经有公共 IP 和 DNS 名称，现在可以部署通用应用程序框架或服务，例如 nginx、MongoDB、Docker 等等。
 
-也可以深入了解[使用 Resource Manager](../../azure-resource-manager/management/overview.md)，获取生成 Azure 部署的相关提示。
+也可以深入了解[使用 Resource Manager](../../azure-resource-manager/management/overview.md)，以获取生成 Azure 部署的相关提示。
 
 <!-- Update_Description: update meta properties, wording update, update link -->

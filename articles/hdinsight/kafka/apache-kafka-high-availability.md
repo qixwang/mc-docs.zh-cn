@@ -16,10 +16,10 @@ origin.date: 12/09/2019
 ms.date: 03/02/2020
 ms.author: v-yiso
 ms.openlocfilehash: 67fe8495841c0b18bbda62f8f812372fbf73d020
-ms.sourcegitcommit: 46fd4297641622c1984011eac4cb5a8f6f94e9f5
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77563399"
 ---
 # <a name="high-availability-of-your-data-with-apache-kafka-on-hdinsight"></a>通过 Apache Kafka on HDInsight 实现数据的高可用性
@@ -41,7 +41,7 @@ ms.locfileid: "77563399"
 
 * 创建新主题或分区时
 
-* 纵向扩展群集时
+* 扩展群集时
 
 ## <a name="replication-factor"></a>复制因子
 

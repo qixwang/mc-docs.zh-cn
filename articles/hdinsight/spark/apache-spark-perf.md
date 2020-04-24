@@ -17,10 +17,10 @@ origin.date: 02/12/2020
 ms.date: 03/02/2020
 ms.author: maxluk
 ms.openlocfilehash: c106f8103a26cc1595adeb05473d7a8419ea5114
-ms.sourcegitcommit: 46fd4297641622c1984011eac4cb5a8f6f94e9f5
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77563433"
 ---
 # <a name="optimize-apache-spark-jobs-in-hdinsight"></a>在 HDInsight 中优化 Apache Spark 作业
@@ -67,8 +67,8 @@ Spark 支持多种格式，比如 csv、json、xml、parquet、orc 和 avro。 S
 
 | 存储类型 | 文件系统 | Speed | 暂时性 | 用例 |
 | --- | --- | --- | --- | --- |
-| Azure Blob 存储 | **wasb:** //url/ | **标准** | 是 | 暂时性群集 |
-| Azure Blob 存储（安全） | **wasbs:** //url/ | **标准** | 是 | 暂时性群集 |
+| Azure Blob 存储 | **wasb:** //url/ | **Standard** | 是 | 暂时性群集 |
+| Azure Blob 存储（安全） | **wasbs:** //url/ | **Standard** | 是 | 暂时性群集 |
 | Azure Data Lake Storage Gen 2| **abfs:** //url/ | **较快** | 是 | 暂时性群集 |
 | 本地 HDFS | **hdfs:** //url/ | **最快** | 否 | 全天候交互型群集 |
 
@@ -186,7 +186,7 @@ sql("SELECT col1, col2 FROM V_JOIN")
     2. 在较大的群集（超过 100 个执行程序）上减少执行程序 (N2) 之间已打开的连接数。
     3. 增加堆大小，以容纳占用大量内存的任务。
     4. 可选：减少每个执行程序的内存开销。
-    5. 可选：通过超额订阅 CPU 来增加利用率和并发性。
+    5. 可选：通过超额订阅 CPU 来增加利用率和并发。
 
 选择执行程序大小时，一般遵循以下做法：
     

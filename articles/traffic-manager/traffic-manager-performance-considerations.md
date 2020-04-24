@@ -13,15 +13,15 @@ origin.date: 03/16/2017
 ms.date: 02/24/2020
 ms.author: v-yeche
 ms.openlocfilehash: 0decf69a421325372a5e26040739be1780d52df6
-ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77653208"
 ---
 # <a name="performance-considerations-for-traffic-manager"></a>流量管理器的性能注意事项
 
-本页介绍使用流量管理器的性能注意事项。 假设出现了下面这种情景：
+本页介绍使用流量管理器的性能注意事项。 请考虑下列方案：
 
 在中国北部和中国东部区域分别创建了网站的实例。 其中一个实例未通过流量管理器探测的运行状况检查。 应用程序流量定向到正常的区域。 这种故障转移是意料之中的，但由于流量现在要传送到远方区域，这种延迟会给性能造成问题。
 
@@ -35,7 +35,7 @@ ms.locfileid: "77653208"
 
 流量管理器由多个组件构成：DNS 名称服务器、API 服务、存储层和终结点监视服务。 如果流量管理器服务组件发生故障，与流量管理器配置文件关联的 DNS 名称不会受到影响。 Azure DNS 服务器中的记录将保持不变。 但是，终结点监视和 DNS 更新不会发生。 因此，当主站点关闭时，流量管理器无法将 DNS 更新为指向故障转移站点。
 
-DNS 名称解析速度会加快，结果将被缓存。 初始 DNS 查找速度取决于客户端用于名称解析的 DNS 服务器。 通常，客户端可在大约 50 毫秒内完成一个 DNS 查找。 查找结果在 DNS 生存时间 (TTL) 期间内缓存。 流量管理器的默认 TTL 为 300 秒。
+DNS 名称解析速度会加快，结果会被缓存。 初始 DNS 查找速度取决于客户端用于名称解析的 DNS 服务器。 通常，客户端可在大约 50 毫秒内完成一个 DNS 查找。 查找结果按照 DNS 生存时间 (TTL) 的持续时间缓存。 流量管理器的默认 TTL 为 300 秒。
 
 流量不会通过流量管理器。 完成 DNS 查找后，客户端便获得了网站实例的 IP 地址。 客户端直接连接到该地址，而不通过流量管理器。 选择的流量管理器策略对 DNS 性能没有影响。 但是，“性能”路由方法可能会对应用程序体验产生负面影响。 例如，如果策略将来自中国北部的流量重定向到中国东部托管的实例，这些会话的网络延迟可能会造成性能问题。
 
@@ -77,11 +77,11 @@ DNS 名称解析速度会加快，结果将被缓存。 初始 DNS 查找速度�
 
     此工具提供网页上每个元素的性能统计信息。 “Page Analysis”（页面分析）选项卡显示 DNS 查找花费的时间百分比。
 
-* [What's My DNS?](https://www.whatsmydns.net/)
+* [我的 DNS 是什么？](https://www.whatsmydns.net/)
 
     此站点从 20 个不同的位置执行 DNS 查找，并在地图上显示结果。
 
-* [Dig Web Interface](https://www.digwebinterface.com)
+* [深入了解 Web 接口](https://www.digwebinterface.com)
 
     此站点显示更详细的 DNS 信息，包括 CNAME 和 A 记录。 请确保在选项下选中“着色输出”和“统计信息”，并在 Nameservers 下选中“全部”。
 
@@ -93,6 +93,6 @@ DNS 名称解析速度会加快，结果将被缓存。 初始 DNS 查找速度�
 
 [流量管理器上的操作（REST API 参考）](https://go.microsoft.com/fwlink/?LinkId=313584)
 
-[Azure 流量管理器 Cmdlet](https://docs.microsoft.com/powershell/module/az.trafficmanager)
+[Azure 流量管理器 cmdlet](https://docs.microsoft.com/powershell/module/az.trafficmanager)
 
 <!--Update_Description: update meta properties, wording update, update link-->

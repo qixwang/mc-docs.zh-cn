@@ -1,6 +1,6 @@
 ---
-title: 使用 CLI 将托管磁盘复制到相同或不同的订阅
-description: Azure CLI 脚本示例 - 将托管磁盘复制（移动）到相同或不同的订阅
+title: 使用 CLI 将托管磁盘复制（移动）到相同或不同订阅
+description: Azure CLI 脚本示例 - 将托管磁盘复制（移动）到相同或不同订阅
 services: virtual-machines-windows
 documentationcenter: storage
 author: rockboyfor
@@ -18,15 +18,15 @@ ms.date: 02/10/2020
 ms.author: v-yeche
 ms.custom: mvc
 ms.openlocfilehash: a571bb391429b32ad1e8bdc181565c2d85bdb8f0
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77428163"
 ---
-# <a name="copy-managed-disks-to-same-or-different-subscription-with-cli"></a>使用 CLI 将托管磁盘复制到相同或不同的订阅
+# <a name="copy-managed-disks-to-same-or-different-subscription-with-cli"></a>使用 CLI 将托管磁盘复制（移动）到相同或不同订阅
 
-此脚本会将托管磁盘复制到位于同一区域的相同或不同的订阅中。 仅当订阅属于同一 AAD 租户时，复制才适用。
+此脚本会将托管磁盘复制到相同订阅或相同区域中的不同订阅。 仅当订阅属于同一 AAD 租户时，复制才适用。
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
 
@@ -69,12 +69,12 @@ az disk create --resource-group $targetResourceGroupName --name $managedDiskName
 
 ## <a name="script-explanation"></a>脚本说明
 
-此脚本使用以下命令，通过源托管磁盘的 ID 在目标订阅中创建新的托管磁盘。 表中的每条命令均链接到特定于命令的文档。
+此脚本使用以下命令并使用源托管磁盘的 Id 在目标订阅中创建新托管磁盘。 表中的每条命令均链接到特定于命令的文档。
 
-| 命令 | 注释 |
+| Command | 说明 |
 |---|---|
-| [az disk show](https://docs.azure.cn/cli/disk?view=azure-cli-latest#az-disk-show) | 使用托管磁盘的名称和资源组属性获取该托管磁盘的所有属性。 使用 ID 属性将托管磁盘复制到其他订阅。  |
-| [az disk create](https://docs.azure.cn/cli/disk?view=azure-cli-latest#az-disk-create) | 通过使用父托管磁盘的 ID 和名称在不同订阅中创建新的托管磁盘来复制该托管磁盘。  |
+| [az disk show](https://docs.azure.cn/cli/disk?view=azure-cli-latest#az-disk-show) | 使用托管磁盘的名称和资源组属性获取托管磁盘的所有属性。 Id 属性用于将托管磁盘复制到其他订阅。  |
+| [az disk create](https://docs.azure.cn/cli/disk?view=azure-cli-latest#az-disk-create) | 使用父托管磁盘的 ID 和名称在其他订阅中新建托管磁盘，从而复制托管磁盘。  |
 
 ## <a name="next-steps"></a>后续步骤
 

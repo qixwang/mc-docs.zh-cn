@@ -16,10 +16,10 @@ ms.date: 02/24/2020
 ms.author: v-yeche
 ms.custom: mvc
 ms.openlocfilehash: f9865de4c6170398fc288ec1091e95d56abf1d49
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77540711"
 ---
 # <a name="update-the-admin-username-and-password-of-the-vms-in-a-cluster"></a>更新群集中 VM 的管理员用户名和密码
@@ -54,7 +54,7 @@ Update-AzVmss -ResourceGroupName $resourceGroup -Name $nodeTypeName -VirtualMach
 
 此脚本使用以下命令：表中的每条命令均链接到特定于命令的文档。
 
-| 命令 | 注释 |
+| Command | 说明 |
 |---|---|
 | [Get-AzVmss](https://docs.microsoft.com/powershell/module/az.compute/get-azvmss) | 获取群集节点类型（虚拟机规模集）的属性。   |
 | [Add-AzVmssExtension](https://docs.microsoft.com/powershell/module/az.compute/add-azvmssextension)| 将扩展添加到虚拟机规模集。|

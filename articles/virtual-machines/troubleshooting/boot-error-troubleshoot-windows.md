@@ -14,10 +14,10 @@ origin.date: 12/19/2019
 ms.date: 02/10/2020
 ms.author: v-yeche
 ms.openlocfilehash: 0e369d806083cf0e1da8748de7dfb6a486a9f2eb
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77429953"
 ---
 # <a name="azure-windows-vm-restart-is-stuck-on-restarting-shutting-down-or-stopping-services"></a>Azure Windows VM 重启时停滞在“正在重启”、“正在关闭”或“正在停止服务”的状态

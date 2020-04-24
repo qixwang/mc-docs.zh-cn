@@ -7,17 +7,17 @@ origin.date: 04/20/2017
 ms.date: 02/24/2020
 ms.author: v-yeche
 ms.openlocfilehash: 7a7ceb90d92041b71920aa78e52e2f29f8374e46
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77540154"
 ---
 # <a name="configure-fabrictransport-settings-for-reliable-actors"></a>配置 Reliable Actors 的 FabricTransport 设置
 
 以下为用户可以配置的设置：
-- C#：[FabricTransportRemotingSettings](https://docs.azure.cn/java/api/microsoft.servicefabric.services.remoting.fabrictransport.fabrictransportremotingsettings)
-- Java:[FabricTransportRemotingSettings](https://docs.azure.cn/java/api/microsoft.servicefabric.services.remoting.fabrictransport.fabrictransportremotingsettings)
+- C#: [FabricTransportRemotingSettings](https://docs.azure.cn/java/api/microsoft.servicefabric.services.remoting.fabrictransport.fabrictransportremotingsettings)
+- Java：[FabricTransportRemotingSettings](https://docs.azure.cn/java/api/microsoft.servicefabric.services.remoting.fabrictransport.fabrictransportremotingsettings)
 
 可以通过以下方式修改 FabricTransport 的默认配置。
 
@@ -49,7 +49,7 @@ using Microsoft.ServiceFabric.Actors.Remoting.FabricTransport;
 
 ### <a name="configure-fabrictransport-settings-for-the-actor-service"></a>配置执行组件服务的 FabricTransport 设置
 
-在 settings.xml 文件中添加 TransportSettings 部分。
+在 settings.xml 文件中添加 TransportSettings 节。
 
 默认情况下，执行组件代码寻找“&lt;ActorName&gt;TransportSettings”形式的 SectionName。 如果未找到，则会查找“TransportSettings”形式的 SectionName。
 
@@ -70,7 +70,7 @@ using Microsoft.ServiceFabric.Actors.Remoting.FabricTransport;
 
 ### <a name="configure-fabrictransport-settings-for-the-actor-client-assembly"></a>配置执行组件客户端程序集的 FabricTransport 设置
 
-如果客户端不是作为服务一部分运行，则可在客户端 .exe 文件所在的同一位置创建“&lt;Client Exe Name&gt;.settings.xml”文件。 然后，在该文件中添加 TransportSettings 部分。 SectionName 应为“TransportSettings”。
+如果客户端不是作为服务一部分运行，则可在客户端 .exe 文件所在的同一位置创建“&lt;Client Exe Name&gt;.settings.xml”文件。 然后，在此文件中添加 TransportSettings 部分。 SectionName 应为“TransportSettings”。
 
   ```xml
   <?xml version="1.0" encoding="utf-8"?>

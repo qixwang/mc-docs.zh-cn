@@ -11,10 +11,10 @@ origin.date: 01/23/2020
 ms.date: 02/24/2020
 ms.author: v-yiso
 ms.openlocfilehash: bfaf671ed55e6f0ef359339356b1d094ccb0e7a9
-ms.sourcegitcommit: 46fd4297641622c1984011eac4cb5a8f6f94e9f5
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77563348"
 ---
 # <a name="access-apache-hadoop-yarn-application-logs-on-linux-based-hdinsight"></a>在基于 Linux 的 HDInsight 上访问 Apache Hadoop YARN 应用程序日志
@@ -29,7 +29,7 @@ YARN 通过将资源管理与应用程序计划/监视相分离，来支持多�
 
 若要通过缩放群集来支持更高的处理吞吐量，可按照[使用几种不同的语言手动缩放群集](hdinsight-scaling-best-practices.md#utilities-to-scale-clusters)进行操作。
 
-## <a name="YARNTimelineServer"></a>YARN Timeline Server
+## <a name="yarn-timeline-server"></a><a name="YARNTimelineServer"></a>YARN Timeline Server
 
 [Apache Hadoop YARN Timeline Server](https://hadoop.apache.org/docs/r2.7.3/hadoop-yarn/hadoop-yarn-site/TimelineServer.html) 提供有关已完成应用程序的一般信息
 
@@ -40,7 +40,7 @@ YARN Timeline Server 包括以下类型的数据：
 * 尝试完成应用程序的相关信息
 * 任何给定应用程序尝试所用的容器
 
-## <a name="YARNAppsAndLogs"></a>YARN 应用程序和日志
+## <a name="yarn-applications-and-logs"></a><a name="YARNAppsAndLogs"></a>YARN 应用程序和日志
 
 YARN 通过将资源管理与应用程序计划/监视相分离，来支持多种编程模型（[Apache Hadoop MapReduce](https://hadoop.apache.org/docs/r1.2.1/mapred_tutorial.html) 就是其中之一）。 YARN 使用全局 *ResourceManager* (RM)、按辅助角色节点 *NodeManagers* (NM) 和按应用程序 *ApplicationMasters* (AM)。 按应用程序 AM 与 RM 协商用于运行应用程序的资源（CPU、内存、磁盘、网络）。 RM 与 NM 合作来授予这些资源（以容器  的形式授予）。 AM 负责跟踪 RM 为其分配容器的进度。 根据应用程序性质，应用程序可能需要多个容器。
 

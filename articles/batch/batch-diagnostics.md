@@ -16,10 +16,10 @@ ms.date: 9/23/2019
 ms.author: v-lingwu
 ms.custom: seodec18
 ms.openlocfilehash: 63bae798d246f7492e8323adb676aa27281d7256
-ms.sourcegitcommit: 27eaabd82b12ad6a6840f30763034a6360977186
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77497612"
 ---
 # <a name="batch-metrics-alerts-and-logs-for-diagnostic-evaluation-and-monitoring"></a>用于诊断评估和监视的 Batch 指标、警报和日志
@@ -29,7 +29,7 @@ ms.locfileid: "77497612"
 
 ## <a name="batch-metrics"></a>Batch 指标
 
-指标是 Azure Monitor 服务使用的 Azure 资源发出的 Azure 遥测数据（也称为性能计数器）。 Batch 帐户中的示例指标包括：“池创建事件”、“低优先级节点计数”和“任务完成事件”。 
+指标是 Azure Monitor 服务使用的 Azure 资源发出的 Azure 遥测数据（也称为性能计数器）。 Batch 帐户中的指标示例包括：“池创建事件”、“低优先级节点计数”和“任务完成事件”。 
 
 请参阅[支持的 Batch 指标列表](../azure-monitor/platform/metrics-supported.md#microsoftbatchbatchaccounts)。
 
@@ -45,7 +45,7 @@ ms.locfileid: "77497612"
 
 查看所有 Batch 帐户指标： 
 
-1. 在门户中，单击“所有服务” > “Batch 帐户”，然后单击 Batch 帐户的名称。  
+1. 在门户中，单击“所有服务” **“Batch 帐户”，然后单击 Batch 帐户的名称。**  >  
 2. 在“监视”下，单击“指标”。  
 3. 选择一个或多个指标。 如果需要，请使用“订阅”、“资源组”、“资源类型”和“资源”下拉菜单选择其他资源指标。    
     * 对于基于计数的指标（如“专用核心计数”或“低优先级节点计数”），请使用“平均”聚合。 对于基于事件的指标（如“池重设大小完成事件数”），请使用“计数”聚合。
@@ -69,7 +69,7 @@ ms.locfileid: "77497612"
 在门户中配置指标警报：
 
 1. 单击“所有服务”   >   “Batch 帐户”，然后单击 Batch 帐户的名称。
-2. 在“监视”下，单击“警报规则” > “添加指标警报”。   
+2. 在“监视”下，单击“警报规则” **“添加指标警报”。**   >  
 3. 选择一个指标、一个警报条件（例如，在某个时间段内当某个指标超过特定的值时）和一个或多个通知。
 
 还可以使用 [REST API](https://docs.microsoft.com/rest/api/monitor/) 配置准实时警报。 有关详细信息，请参阅[警报概述](../azure-monitor/platform/alerts-overview.md)
@@ -90,7 +90,7 @@ ms.locfileid: "77497612"
 
 诊断日志的其他可选目标：
 
-* 将 Batch 诊断日志事件流式传输到 [Azure 事件中心](../event-hubs/event-hubs-what-is-event-hubs.md)。 数据中心每秒可以接受数百万事件，用户可以使用任何实时分析提供程序转换并存储这些事件。 
+* 将 Batch 诊断日志事件流式传输到 [Azure 事件中心](../event-hubs/event-hubs-what-is-event-hubs.md)。 数据中心每秒可以接受数百万事件，然后可以使用任何实时分析提供程序转换并存储这些事件。 
 
 > [!NOTE]
 > 使用 Azure 服务存储或处理诊断日志数据可能会产生额外的费用。 
@@ -98,8 +98,8 @@ ms.locfileid: "77497612"
 
 ### <a name="enable-collection-of-batch-diagnostic-logs"></a>启用 Batch 诊断日志的收集
 
-1. 在门户中，单击“所有服务” > “Batch 帐户”，然后单击 Batch 帐户的名称。  
-2. 在“监视”下，单击“诊断日志” > “启用诊断”。   
+1. 在门户中，单击“所有服务” **“Batch 帐户”，然后单击 Batch 帐户的名称。**  >  
+2. 在“监视”下，单击“诊断日志” **“启用诊断”。**   >  
 3. 在“诊断设置”中，输入设置的名称，并选择日志目标（现有存储帐户、事件中心或 Azure Monitor 日志）。  选择“ServiceLog”和/或“AllMetrics”。  
 
     选择存储帐户时，请选择性地设置保留策略。 如果未指定保留天数，则数据在存储帐户的生存期内会一直保留。
@@ -131,7 +131,7 @@ BATCHACCOUNTS/MYBATCHACCOUNT/y=2018/m=03/d=05/h=22/m=00/PT1H.json
 ```
 每个 `PT1H.json` Blob 文件包含 JSON 格式的事件，这些事件是在 Blob URL 中指定的小时（例如 `h=12`）内发生的。 在当前的小时内发生的事件将追加​​到 `PT1H.json` 文件。 分钟值 (`m=00`) 始终为 `00`，因为诊断日志事件按小时细分成单个 blob。 （所有时间均是 UTC 时间。）
 
-以下是 `PT1H.json` 日志文件中 `PoolResizeCompleteEvent` 条目的示例。 它包括有关专用和低优先级节点的当前和目标数量以及操作的开始和结束时间的信息：
+以下是 `PoolResizeCompleteEvent` 日志文件中 `PT1H.json` 条目的示例。 它包括有关专用和低优先级节点的当前和目标数量以及操作的开始和结束时间的信息：
 
 ```
 { "Tenant": "65298bc2729a4c93b11c00ad7e660501", "time": "2019-08-22T20:59:13.5698778Z", "resourceId": "/SUBSCRIPTIONS/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/RESOURCEGROUPS/MYRESOURCEGROUP/PROVIDERS/MICROSOFT.BATCH/BATCHACCOUNTS/MYBATCHACCOUNT/", "category": "ServiceLog", "operationName": "PoolResizeCompleteEvent", "operationVersion": "2017-06-01", "properties": {"id":"MYPOOLID","nodeDeallocationOption":"Requeue","currentDedicatedNodes":10,"targetDedicatedNodes":100,"currentLowPriorityNodes":0,"targetLowPriorityNodes":0,"enableAutoScale":false,"isAutoPool":false,"startTime":"2019-08-22 20:50:59.522","endTime":"2019-08-22 20:59:12.489","resultCode":"Success","resultMessage":"The operation succeeded"}}

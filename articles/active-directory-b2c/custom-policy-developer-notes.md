@@ -12,10 +12,10 @@ ms.date: 02/20/2020
 ms.author: v-junlch
 ms.subservice: B2C
 ms.openlocfilehash: e21d0f1154a04c7ccda5a0f32577a3d5ecb00ca3
-ms.sourcegitcommit: 1bd7711964586b41ff67fd1346dad368fe7383da
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77531294"
 ---
 # <a name="developer-notes-for-custom-policies-in-azure-active-directory-b2c"></a>有关 Azure Active Directory B2C 中的自定义策略的开发人员说明
@@ -61,7 +61,7 @@ Azure Active Directory B2C 中的自定义策略配置现已正式发布。 此�
 
 ### <a name="identity-providers-tokens-protocols"></a>标识提供者、令牌、协议
 
-| 功能 | 开发 | 预览 | GA | 注释 |
+| Feature | 开发 | 预览 | GA | 说明 |
 |-------- | :-----------: | :-------: | :--: | ----- |
 | IDP-OpenIDConnect |  |  | X |  |
 | IDP-OAUTH2 |  |  | X |  |
@@ -76,7 +76,7 @@ Azure Active Directory B2C 中的自定义策略配置现已正式发布。 此�
 
 ### <a name="component-support"></a>组件支持
 
-| 功能 | 开发 | 预览 | GA | 注释 |
+| Feature | 开发 | 预览 | GA | 说明 |
 | ------- | :-----------: | :-------: | :--: | ----- |
 | Azure 多重身份验证 |  |  | X |  |
 | Azure Active Directory 用作本地目录 |  |  | X |  |
@@ -87,7 +87,7 @@ Azure Active Directory B2C 中的自定义策略配置现已正式发布。 此�
 
 ### <a name="content-definition"></a>内容定义
 
-| 功能 | 开发 | 预览 | GA | 注释 |
+| Feature | 开发 | 预览 | GA | 说明 |
 | ------- | :-----------: | :-------: | :--: | ----- |
 | 错误页，api.error |  |  | X |  |
 | IDP 选择页，api.idpselections |  |  | X |  |
@@ -103,7 +103,7 @@ Azure Active Directory B2C 中的自定义策略配置现已正式发布。 此�
 
 ### <a name="app-ief-integration"></a>App-IEF 集成
 
-| 功能 | 开发 | 预览 | GA | 注释 |
+| Feature | 开发 | 预览 | GA | 说明 |
 | ------- | :-----------: | :-------: | :--: | ----- |
 | 查询字符串参数 domain_hint |  |  | X | 作为声明提供时，可以传递给 IDP。 |
 | 查询字符串参数 login_hint |  |  | X | 作为声明提供时，可以传递给 IDP。 |
@@ -113,7 +113,7 @@ Azure Active Directory B2C 中的自定义策略配置现已正式发布。 此�
 
 ### <a name="session-management"></a>会话管理
 
-| 功能 | 开发 | 预览 | GA | 注释 |
+| Feature | 开发 | 预览 | GA | 说明 |
 | ------- | :-----------: | :-------: | :--: | ----- |
 | SSO 会话提供程序 |  |  | X |  |
 | 外部登录会话提供程序 |  |  | X |  |
@@ -122,7 +122,7 @@ Azure Active Directory B2C 中的自定义策略配置现已正式发布。 此�
 
 ### <a name="security"></a>安全性
 
-| 功能 | 开发 | 预览 | GA | 注释 |
+| Feature | 开发 | 预览 | GA | 说明 |
 |-------- | :-----------: | :-------: | :--: | ----- |
 | 策略密钥 - 生成、手动、上传 |  |  | X |  |
 | 策略密钥 - RSA/证书、机密 |  |  | X |  |
@@ -130,7 +130,7 @@ Azure Active Directory B2C 中的自定义策略配置现已正式发布。 此�
 
 ### <a name="developer-interface"></a>开发人员接口
 
-| 功能 | 开发 | 预览 | GA | 注释 |
+| Feature | 开发 | 预览 | GA | 说明 |
 | ------- | :-----------: | :-------: | :--: | ----- |
 | Azure 门户-IEF UX |  |  | X |  |
 

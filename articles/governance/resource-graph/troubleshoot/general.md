@@ -7,10 +7,10 @@ origin.date: 10/18/2019
 ms.date: 03/02/2020
 ms.topic: troubleshooting
 ms.openlocfilehash: b15679807962612badf77376177d8ed86176b7fa
-ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77494550"
 ---
 # <a name="troubleshoot-errors-using-azure-resource-graph"></a>排查使用 Azure Resource Graph 时出现的错误
@@ -23,7 +23,7 @@ ms.locfileid: "77494550"
 
 ## <a name="general-errors"></a>常规错误
 
-### <a name="toomanysubscription"></a>场景：订阅过多
+### <a name="scenario-too-many-subscriptions"></a><a name="toomanysubscription"></a>场景：订阅过多
 
 #### <a name="issue"></a>问题
 
@@ -60,7 +60,7 @@ foreach ($batch in $subscriptionsBatch){ $response += Search-AzGraph -Query $que
 $response
 ```
 
-### <a name="rest-contenttype"></a>场景：不支持的 Content-Type REST 标头
+### <a name="scenario-unsupported-content-type-rest-header"></a><a name="rest-contenttype"></a>场景：不支持的 Content-Type REST 标头
 
 #### <a name="issue"></a>问题
 
@@ -74,7 +74,7 @@ Azure Resource Graph REST API 仅支持 **application/json** 的 `Content-Type`�
 
 验证用于查询 Azure Resource Graph 的工具或代理是否为 **application/json** 配置了 REST API 标头 `Content-Type`。
 
-### <a name="rest-403"></a>场景：对列表中的所有订阅没有读取权限
+### <a name="scenario-no-read-permission-to-all-subscriptions-in-list"></a><a name="rest-403"></a>场景：对列表中的所有订阅没有读取权限
 
 #### <a name="issue"></a>问题
 

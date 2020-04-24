@@ -10,10 +10,10 @@ ms.author: v-jay
 ms.reviewer: anwestg
 ms.lastreviewed: 06/10/2019
 ms.openlocfilehash: 812b6cd2c0d28091a65efde4f2a4a6298d967aa1
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77540633"
 ---
 # <a name="azure-app-service-on-azure-stack-hub-billing-overview-and-faq"></a>Azure Stack Hub 上的 Azure 应用服务计费概述和常见问题解答
@@ -28,7 +28,7 @@ Azure Stack Hub 云运营商选择将 Azure Stack Hub 上的 Azure 应用服务�
 
 - 控制器
 - 管理角色
-- 发布者
+- 发布服务器
 - 前端
 
 辅助角色层包括两种主要类型：共享和专用。 辅助角色使用费将根据以下准则计入云运营商的默认提供商订阅帐户。

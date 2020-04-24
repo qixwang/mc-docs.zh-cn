@@ -17,10 +17,10 @@ ms.author: v-junlch
 ms.reviwer: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 6283cb14a84f9e35fc6da83547ae361e8774b181
-ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77653158"
 ---
 # <a name="prepare-mobile-apps-for-production"></a>准备用于生产的移动应用

@@ -9,10 +9,10 @@ ms.author: v-jay
 ms.reviewer: prchint
 ms.lastreviewed: 07/25/2019
 ms.openlocfilehash: a951228717496b1d59d88699327fa979bc984003
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77540949"
 ---
 # <a name="best-practices-for-automatic-azure-stack-hub-log-collection"></a>有关 Azure Stack Hub 日志自动收集的最佳做法 

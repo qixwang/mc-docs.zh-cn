@@ -8,10 +8,10 @@ ms.author: v-jay
 ms.reviewer: xiaofmao
 ms.lastreviewed: 10/16/2018
 ms.openlocfilehash: a6aaf8253ea702246387aff306747c6b49b0bc84
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77540906"
 ---
 # <a name="create-mysql-databases-in-azure-stack-hub"></a>在 Azure Stack Hub 中创建 MySQL 数据库
@@ -50,7 +50,7 @@ ms.locfileid: "77540906"
 
 若要修改密码，可以在 MySQL 服务器实例上更改密码。
 
-1. 选择“管理资源” > “MySQL 宿主服务器”。   选择宿主服务器。
+1. 选择“管理资源” **“MySQL 宿主服务器”。**  >   选择宿主服务器。
 2. 在“设置”下，选择“密码”。  
 3. 在“密码”下输入  新密码，然后选择“保存”。 
 

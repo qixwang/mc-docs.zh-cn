@@ -9,10 +9,10 @@ ms.author: v-jay
 ms.reviewer: scottnap
 ms.lastreviewed: 01/14/2019
 ms.openlocfilehash: 15c278acdffec897f00b867363f10a18c6605a41
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77541047"
 ---
 # <a name="introduction-to-azure-stack-hub-networking"></a>Azure Stack Hub 网络简介

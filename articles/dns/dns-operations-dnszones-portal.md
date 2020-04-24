@@ -14,16 +14,16 @@ origin.date: 05/18/2017
 ms.date: 02/17/2020
 ms.author: v-jay
 ms.openlocfilehash: a8ca95a89ac89e11c389b045f00e81995ade5c41
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77428750"
 ---
 # <a name="how-to-manage-dns-zones-in-the-azure-portal"></a>如何在 Azure 门户中管理 DNS 区域
 
 > [!div class="op_single_selector"]
-> * [Portal](dns-operations-dnszones-portal.md)
+> * [门户](dns-operations-dnszones-portal.md)
 > * [PowerShell](dns-operations-dnszones.md)
 > * [Azure 经典 CLI](dns-operations-dnszones-cli-nodejs.md)
 > * [Azure CLI](dns-operations-dnszones-cli.md)
@@ -43,8 +43,8 @@ ms.locfileid: "77428750"
    | **设置** | **值** | **详细信息** |
    |---|---|---|
    |**名称**|contoso.com|DNS 区域的名称|
-   |**订阅**|[你的订阅]|选择要在其中创建 DNS 区域的订阅。|
-   |**资源组**|**新建：** contosoDNSRG|创建资源组。 资源组名称在所选订阅中必须唯一。 若要详细了解资源组，请阅读 [Resource Manager](../azure-resource-manager/management/overview.md?toc=%2fazure%2fdns%2ftoc.json#resource-groups) 概述文章。|
+   |**订阅**|[订阅]|选择要在其中创建 DNS 区域的订阅。|
+   |**资源组**|**新建：** contosoDNSRG|创建资源组。 资源组名称必须在所选订阅中唯一。 若要详细了解资源组，请阅读 [Resource Manager](../azure-resource-manager/management/overview.md?toc=%2fazure%2fdns%2ftoc.json#resource-groups) 这篇概述文章。|
    |**位置**|中国东部||
 
 > [!NOTE]

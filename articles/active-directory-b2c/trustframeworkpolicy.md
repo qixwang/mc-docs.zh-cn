@@ -11,10 +11,10 @@ ms.date: 02/21/2020
 ms.author: v-junlch
 ms.subservice: B2C
 ms.openlocfilehash: f3bad4ba8997bd48759ee44e108f1f7a20e73b2a
-ms.sourcegitcommit: 1bd7711964586b41ff67fd1346dad368fe7383da
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77531325"
 ---
 # <a name="trustframeworkpolicy"></a>TrustFrameworkPolicy
@@ -38,12 +38,12 @@ ms.locfileid: "77531325"
 
 **TrustFrameworkPolicy** 元素包含以下属性：
 
-| 属性 | 必须 | 说明 |
+| Attribute | 必选 | 说明 |
 |---------- | -------- | ----------- |
 | PolicySchemaVersion | 是 | 用于执行策略的架构版本。 值必须是 `0.3.0.0` |
 | TenantObjectId | 否 | Azure Active Directory B2C (Azure AD B2C) 租户的唯一对象标识符。 |
 | TenantId | 是 | 此策略所属的租户的唯一标识符。 |
-| `PolicyId` | 是 | 策略的唯一标识符。 此标识符必须带有 *B2C_1A_* 前缀 |
+| PolicyId | 是 | 策略的唯一标识符。 此标识符必须带有 *B2C_1A_* 前缀 |
 | PublicPolicyUri | 是 | 策略的 URI，它是租户 ID 和策略 ID 的组合。 |
 | DeploymentMode | 否 | 可能的值：`Production` 或 `Development`。 `Production` 为默认值。 使用此属性来调试策略。  |
 
@@ -87,7 +87,7 @@ ms.locfileid: "77531325"
 | 元素 | 出现次数 | 说明 |
 | ------- | ----------- | --------|
 | TenantId | 1:1 | Azure AD B2C 租户的标识符。 |
-| `PolicyId` | 1:1 | 父策略的标识符。 |
+| PolicyId | 1:1 | 父策略的标识符。 |
 
 
 以下示例演示如何指定基本策略。 此 **B2C_1A_TrustFrameworkExtensions** 策略派生自 **B2C_1A_TrustFrameworkBase** 策略。
@@ -114,7 +114,7 @@ ms.locfileid: "77531325"
 
 信赖方应用程序（例如 Web、移动或桌面应用程序）调用[信赖方 (RP) 策略](relyingparty.md)。 RP 策略文件执行特定任务，例如登录、重置密码，或编辑配置文件。 RP 策略将信赖方应用程序收到的声明列表配置为所颁发令牌的一部分。 多个应用程序可以使用同一策略。 所有应用程序都会收到包含声明的相同令牌，用户会经历相同的用户旅程。 单个应用程序可以使用多个策略。
 
-在 RP 策略文件中，指定指向 [UserJourney](userjourneys.md) 的 **DefaultUserJourney** 元素。 用户旅程通常在基本或扩展策略中定义。
+在 RP 策略文件中，指定指向 **UserJourney** 的 [DefaultUserJourney](userjourneys.md) 元素。 用户旅程通常在基本或扩展策略中定义。
 
 B2C_1A_signup_signin 策略：
 
@@ -134,7 +134,7 @@ B2C_1A_TrustFrameWorkBase 或 B2C_1A_TrustFrameworkExtensionPolicy：
 
 用户旅程定义用户所要经历的业务逻辑。 每个用户旅程是按顺序执行一系列操作，以进行身份验证和收集信息的一组业务流程步骤。
 
-`starter pack` 中的 **SocialAndLocalAccounts** 策略文件包含 SignUpOrSignIn、ProfileEdit 和 PasswordReset 用户旅程。 可为其他方案添加更多的用户旅程，例如，更改电子邮件地址或链接和取消链接社交帐户。 
+**中的**SocialAndLocalAccounts`starter pack` 策略文件包含 SignUpOrSignIn、ProfileEdit 和 PasswordReset 用户旅程。 可为其他方案添加更多的用户旅程，例如，更改电子邮件地址或链接和取消链接社交帐户。 
 
 业务流程步骤可以调用[技术配置文件](technicalprofiles.md)。 技术配置文件提供带有内置机制的框架来与不同类型的参与方通信。 例如，技术配置文件可执行以下操作：
 

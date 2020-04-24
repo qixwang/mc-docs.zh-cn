@@ -9,10 +9,10 @@ ms.topic: troubleshooting
 origin.date: 01/22/2020
 ms.date: 03/02/2020
 ms.openlocfilehash: cbecb453dc7fe70410bc7ebac4d9e293892ed015
-ms.sourcegitcommit: 46fd4297641622c1984011eac4cb5a8f6f94e9f5
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77563614"
 ---
 # <a name="scenario-apache-ambari-stale-alerts-in-azure-hdinsight"></a>方案：Azure HDInsight 中的 Apache Ambari 过时警报

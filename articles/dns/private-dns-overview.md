@@ -9,10 +9,10 @@ origin.date: 6/12/2019
 ms.date: 01/17/2020
 ms.author: v-jay
 ms.openlocfilehash: 0b5f70a0541a97f14226523efa237aab7dd75361
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77428901"
 ---
 # <a name="what-is-azure-private-dns"></a>什么是 Azure 专用 DNS？

@@ -9,10 +9,10 @@ ms.author: v-jay
 ms.reviewer: hectorl
 ms.lastreviewed: 3/19/2018
 ms.openlocfilehash: 51277c06e0299d40c1787105f3d2b75de302ed7f
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77540776"
 ---
 # <a name="protect-vms-deployed-on-azure-stack-hub"></a>保护在 Azure Stack Hub 上部署的 VM
@@ -134,7 +134,7 @@ Azure Stack Hub 物理冗余和基础结构服务可用性只能针对硬件级�
 环境中的某些应用可能不需要针对计划外停机或数据丢失进行保护。 例如，用于开发和测试的 VM 通常不需要进行恢复。 是否不对应用或特定的 VM 进行保护由你自行决定。 Azure Stack Hub 不通过底层基础结构提供 VM 的备份或复制。 与 Azure 一样，你需要在每个订阅中选择加入才能对每个 VM 进行保护。
 
  - RTO：无法恢复
- - RPO：完全数据丢失
+ - RPO：数据彻底丢失
 
 ## <a name="recommended-topologies"></a>建议的拓扑
 

@@ -9,10 +9,10 @@ ms.date: 02/24/2020
 ms.author: v-jay
 ms.reviewer: ''
 ms.openlocfilehash: 368a26c3ac697cd688bdb71637af258906d03d57
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77540958"
 ---
 # <a name="app-service-on-azure-stack-hub-update-7-release-notes"></a>Azure Stack Hub 上的应用服务 Update 7 发行说明
@@ -27,7 +27,7 @@ ms.locfileid: "77540958"
 
 Azure Stack Hub 上的应用服务 Update 7 的内部版本号为 **84.0.2.10**。
 
-### <a name="prerequisites"></a>必备条件
+### <a name="prerequisites"></a>先决条件
 
 在开始部署之前，请参阅[准备工作文档](azure-stack-app-service-before-you-get-started.md)。
 

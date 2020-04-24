@@ -12,10 +12,10 @@ ms.date: 02/24/2020
 ms.author: v-yeche
 ms.custom: sfrev
 ms.openlocfilehash: 6fa685ca8e19c8f3ff48812ff9eaf82a208325d6
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77540517"
 ---
 # <a name="update-the-rdp-port-range-values"></a>更新 RDP 端口范围值
@@ -57,7 +57,7 @@ Set-AzResource -PropertyObject $lb.Properties -ResourceGroupName $groupname -Res
 
 此脚本使用以下命令。 表中的每条命令均链接到特定于命令的文档。
 
-| 命令 | 注释 |
+| Command | 说明 |
 |---|---|
 | [Get-AzResource](https://docs.microsoft.com/powershell/module/az.resources/get-azresource) | 获取 `Microsoft.Network/loadBalancers` 资源。 |
 |[Set-AzResource](https://docs.microsoft.com/powershell/module/az.resources/set-azresource)|更新 `Microsoft.Network/loadBalancers` 资源。|

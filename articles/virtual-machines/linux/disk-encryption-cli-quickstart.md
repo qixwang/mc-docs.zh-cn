@@ -8,10 +8,10 @@ ms.topic: quickstart
 origin.date: 05/17/2019
 ms.date: 02/10/2020
 ms.openlocfilehash: 4b0bfe3660d926bd3f43a9a2bb790f6f8c8d56c1
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77428876"
 ---
 <!--Verfied successfully-->

@@ -16,25 +16,25 @@ origin.date: 07/05/2016
 ms.date: 02/10/2020
 ms.author: v-yeche
 ms.openlocfilehash: 413cf9ae6efca18579a12218288e7d7fa40649b0
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77428675"
 ---
 # <a name="how-to-tag-a-windows-virtual-machine-in-azure"></a>如何在 Azure 中标记 Windows 虚拟机
-本文介绍了在 Azure 中通过 Resource Manager 部署模型标记 Windows 虚拟机的不同方式。 标记是用户定义的键/值对，可直接放置在资源或资源组中。 针对每个资源和资源组，Azure 当前支持最多 15 个标记。 标记可以在创建时放置在资源中或添加到现有资源中。 请注意，只有通过 Resource Manager 部署模型创建的资源支持标记。 如果想要标记 Linux 虚拟机，请参阅[如何在 Azure 中标记 Linux 虚拟机](../linux/tag.md?toc=%2fvirtual-machines%2flinux%2ftoc.json)。
+本文介绍在 Azure 中通过 Resource Manager 部署模型标记 Windows 虚拟机的不同方式。 标记是用户定义的键/值对，可直接放置在资源或资源组中。 针对每个资源和资源组，Azure 当前支持最多 15 个标记。 标记可以在创建时放置在资源中或添加到现有资源中。 请注意，只有通过 Resource Manager 部署模型创建的资源支持标记。 如果想要标记 Linux 虚拟机，请参阅[如何在 Azure 中标记 Linux 虚拟机](../linux/tag.md?toc=%2fvirtual-machines%2flinux%2ftoc.json)。
 
 [!INCLUDE [virtual-machines-common-tag](../../../includes/virtual-machines-common-tag.md)]
 
 ## <a name="tagging-with-powershell"></a>使用 PowerShell 进行标记
-若要通过 PowerShell 创建、添加和删除标记，首先需要 [使用 Azure Resource Manager 设置 PowerShell 环境][PowerShell environment with Azure Resource Manager]。 一旦完成设置后，就可以在创建计算、网络和存储资源时或创建之后通过 PowerShell 将标记放置在这些资源中。 本文章将重点说明如何查看/编辑虚拟机上放置的标记。
+要通过 PowerShell 创建、添加和删除标记，首先需要设置[将 PowerShell 环境与 Azure 资源管理器配合使用][PowerShell environment with Azure Resource Manager]。 一旦完成安装后，可以在创建时或创建资源之后通过 PowerShell 将标记放置在计算、网络和存储资源中。 本文章将重点说明查看/编辑虚拟机上放置的标记。
 
 首先，通过 `Get-AzVM`cmdlet 导航到虚拟机。
 
         PS C:\> Get-AzVM -ResourceGroupName "MyResourceGroup" -Name "MyTestVM"
 
-如果虚拟机已包含标记，会在资源中看到所有标记：
+如果虚拟机已包含标记，那么会在资源中看到所有标记：
 
         Tags : {
                 "Application": "MyApp1",
@@ -43,13 +43,13 @@ ms.locfileid: "77428675"
                 "Environment": "Production"
                }
 
-如果想要通过 PowerShell 添加标记，则可以使用 `Set-AzResource` 命令。 请注意，通过 PowerShell 更新时，标记会作为整体进行更新。 因此，如果要向已具有标记的资源添加标记，需要包括想要放置在资源中的所有标记。 以下示例说明了如何通过 PowerShell Cmdlet 将其他标记添加到资源中。
+如果想要通过 PowerShell 添加标记，则可以使用 `Set-AzResource` 命令。 请注意，通过 PowerShell 更新时，标记会作为整体进行更新。 因此，如果要向已具有标记的资源添加标记，则需要包括想要在资源中放置的所有标记。 下面是如何通过 PowerShell Cmdlet 将其他标记添加到资源的示例。
 
-第一个 cmdlet 使用 `Get-AzResource` 和 `Tags` 属性将 *MyTestVM* 中放置的所有标记放置到 *$tags* 变量中。
+第一个 cmdlet 使用 *和* 属性将 *MyTestVM* 中放置的所有标记放置到 `Get-AzResource`$tags`Tags` 变量中。
 
         PS C:\> $tags = (Get-AzResource -ResourceGroupName MyResourceGroup -Name MyTestVM).Tags
 
-第二个命令可显示给定变量的标记。
+第二个命令显示给定变量的标记。
 
 ```
     PS C:\> $tags
@@ -70,7 +70,7 @@ ms.locfileid: "77428675"
 
         PS C:\> Set-AzResource -ResourceGroupName MyResourceGroup -Name MyTestVM -ResourceType "Microsoft.Compute/VirtualMachines" -Tag $tags
 
-第五个命令可显示资源上的所有标记。 可以看到，*Location* 现在定义为值为 *MyLocation* 的标记。
+第五个命令显示资源上的所有标记。 可以看到，*Location* 现在定义为值为 *MyLocation* 的标记。
 
 ```
     PS C:\> (Get-AzResource -ResourceGroupName MyResourceGroup -Name MyTestVM).Tags
@@ -84,7 +84,7 @@ ms.locfileid: "77428675"
     Location      MyLocation
 ```
 
-若要了解有关通过 PowerShell 进行标记的详细信息，请查看 [Azure 资源 Cmdlet][Azure Resource Cmdlets]。
+若要了解有关通过 PowerShell 标记的详细信息，请查看 [Azure 资源 Cmdlet][Azure Resource Cmdlets]。
 
 [!INCLUDE [virtual-machines-common-tag-usage](../../../includes/virtual-machines-common-tag-usage.md)]
 

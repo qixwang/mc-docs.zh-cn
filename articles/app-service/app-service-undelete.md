@@ -7,10 +7,10 @@ origin.date: 09/23/2019
 ms.date: 03/09/2020
 ms.topic: article
 ms.openlocfilehash: 065fbc811a0346b7da1050ce9132b138e0002bfd
-ms.sourcegitcommit: 1e68aea05a8d979237d6377a3637bb7654097111
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/24/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77566651"
 ---
 # <a name="restore-deleted-app-service-app-using-powershell"></a>使用 PowerShell 还原已删除的应用服务应用

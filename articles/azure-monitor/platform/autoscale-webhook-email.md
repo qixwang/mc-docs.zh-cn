@@ -8,10 +8,10 @@ ms.date: 04/03/2018
 ms.author: v-lingwu
 ms.subservice: autoscale
 ms.openlocfilehash: 91e05815e5c367acf876a6e6745e95295d8c0c59
-ms.sourcegitcommit: 27eaabd82b12ad6a6840f30763034a6360977186
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77497599"
 ---
 # <a name="use-autoscale-actions-to-send-email-and-webhook-alert-notifications-in-azure-monitor"></a>使用自动缩放操作在 Azure 监视器中发送电子邮件和 webhook 警报通知
@@ -105,7 +105,7 @@ webhook 可使用基于令牌的身份验证进行身份验证：将具有令牌
 | 字段 | 必需？ | 说明 |
 | --- | --- | --- |
 | 状态 |是 |指示生成自动缩放操作的状态 |
-| operation |是 |对于实例的增加，它会是“Scale Out”，对于实例的减少，它会是“Scale In” |
+| operation |是 |对于实例的增加，它会是“Scale Out”（横向扩展），对于实例的减少，它会是“Scale In”（横向缩减） |
 | 上下文 |是 |自动缩放操作上下文 |
 | timestamp |是 |触发自动缩放操作时的时间戳 |
 | id |是 |自动缩放设置的 Resource Manager ID |

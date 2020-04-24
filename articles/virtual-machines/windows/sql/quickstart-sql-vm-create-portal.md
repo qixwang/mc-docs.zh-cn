@@ -15,10 +15,10 @@ ms.date: 02/10/2020
 ms.author: v-yeche
 ms.reviewer: jroth
 ms.openlocfilehash: e3a0762034fb7e1db335c094aaeb5674b23d3457
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77428796"
 ---
 # <a name="quickstart-create-a-sql-server-2017-windows-virtual-machine-in-the-azure-portal"></a>快速入门：在 Azure 门户中创建 SQL Server 2017 Windows 虚拟机
@@ -36,7 +36,7 @@ ms.locfileid: "77428796"
 <a name="subscription"></a>
 ## <a name="get-an-azure-subscription"></a>获取 Azure 订阅
 
-如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial)。
+如果没有 Azure 订阅，可在开始前创建一个 [试用帐户](https://www.azure.cn/pricing/1rmb-trial) 。
 
 <a name="select"></a>
 ## <a name="select-a-sql-server-vm-image"></a>选择 SQL Server VM 映像
@@ -52,7 +52,7 @@ ms.locfileid: "77428796"
     <!--Not Available on Expand the SQL Server 2017 on Windows Server 2016 option.-->
     <!--MOONCAKE: ONLY ONE IMAGES Free SQL Server License: SQL Server 2017 Developer on Windows Server 2016-->
 
-1. 选择“免费 SQL Server 许可证：  Windows Server 2016 上的 SQL Server 2017 Developer”映像。
+1. 选择“免费 SQL Server 许可证: Windows Server 2016 上的 SQL Server 2017 Developer”映像。 
 
     ![新搜索窗口](./media/quickstart-sql-vm-create-portal/newsearch.png)
     
@@ -122,7 +122,7 @@ ms.locfileid: "77428796"
 
 在“摘要”窗口上查看摘要，并单击“确定”以创建为此 VM 指定的 SQL Server、资源组和资源。  
 
-可以从 Azure 门户监视部署情况。 屏幕顶部的“通知”  按钮显示部署的基本状态。
+可以从 Azure 门户监视部署情况。 屏幕顶部的“ **通知** ”按钮显示部署的基本状态。
 
 > [!TIP]
 > 部署 Windows SQL Server VM 可能需要几分钟时间。
@@ -136,7 +136,7 @@ ms.locfileid: "77428796"
 
 1. 在连接到 Internet 的其他计算机上，打开 [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)。
 
-1. 在“连接到服务器”或“连接到数据库引擎”对话框中，编辑“服务器名称”值    。 输入 VM 的公共 IP 地址。 添加一个逗号，然后添加配置新 VM 时指定的自定义端口 **1401**。 例如，`11.22.33.444,1401`。
+1. 在“连接到服务器”或“连接到数据库引擎”对话框中，编辑“服务器名称”值    。 输入 VM 的公共 IP 地址。 添加一个逗号，然后添加配置新 VM 时指定的自定义端口 **1401**。 例如，`11.22.33.444,1401` 。
 
 1. 在“身份验证”框中，选择“SQL Server 身份验证”   。
 

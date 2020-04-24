@@ -9,10 +9,10 @@ ms.author: v-jay
 ms.reviewer: fiseraci
 ms.lastreviewed: 05/09/2019
 ms.openlocfilehash: 7fa06cd76f06f211334a24f8f28c7d4aaa474fc2
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77540991"
 ---
 # <a name="identity-architecture-for-azure-stack-hub"></a>Azure Stack Hub 的标识体系结构

@@ -9,10 +9,10 @@ ms.author: v-jay
 ms.reviewer: unknown
 ms.lastreviewed: 06/03/2019
 ms.openlocfilehash: 73ef3a5e681e77b4d0cd302b01cb7f250fc75bf5
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77540894"
 ---
 # <a name="add-a-new-azure-stack-hub-user-account-in-active-directory-federation-services-ad-fs"></a>在 Active Directory 联合身份验证服务 (AD FS) 中添加新的 Azure Stack Hub 用户帐户
@@ -29,7 +29,7 @@ ms.locfileid: "77540894"
 
 3. 选择“Active Directory 用户和计算机”   > “directory-domain”   > “用户”  。
 4. 选择“操作”   > “新建”   > “用户”  。
-5. 在“新建对象 - 用户”中，提供用户详细信息。 选择“**下一步**”。
+5. 在“新建对象 - 用户”中，提供用户详细信息。 选择“**下一页**”。
 6. 提供并确认密码。
 7. 选择“下一步”  以完成值。 选择“完成”  以创建用户。
 

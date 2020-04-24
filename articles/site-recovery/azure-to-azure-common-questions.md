@@ -8,10 +8,10 @@ ms.date: 02/24/2020
 ms.author: v-yeche
 ms.topic: conceptual
 ms.openlocfilehash: 823f6897a8ae982cfb7927d8ad76d9f73bd4c329
-ms.sourcegitcommit: 781f68d27903687f0aa9e1ed273eee25c6d129a1
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77611258"
 ---
 # <a name="common-questions-azure-to-azure-disaster-recovery"></a>常见问题：Azure 到 Azure 的灾难恢复

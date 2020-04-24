@@ -15,10 +15,10 @@ ms.author: v-junlch
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cc31172e38adad3f0d24e993f4939ae34ec17982
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77429938"
 ---
 # <a name="complete-an-access-review-of-azure-ad-roles-in-privileged-identity-management"></a>在 Privileged Identity Management 中完成对 Azure AD 角色的访问评审
@@ -49,11 +49,11 @@ ms.locfileid: "77429938"
 
 结束访问审阅后，“应用”  按钮将实现审阅结果，因为结束日期已到或已手动停止它。 如果在审阅中拒绝了用户的访问，在此步骤中将删除其角色分配。  
 
-### <a name="export"></a>导出
+### <a name="export"></a>Export
 
 如果要手动应用访问评审的结果，可以导出该评审。 “导出”  按钮将开始下载 CSV 文件。 可以在 Excel 或可打开 CSV 文件的其他程序中管理结果。
 
-### <a name="delete"></a>Delete
+### <a name="delete"></a>删除
 
 如果不想要进一步了解审阅，请将其删除。 “删除”按钮  可从 Privileged Identity Management 服务中删除评审。
 

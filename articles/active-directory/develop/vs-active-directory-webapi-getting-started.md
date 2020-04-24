@@ -12,10 +12,10 @@ ms.date: 02/25/2020
 ms.author: v-junlch
 ms.custom: aaddev, vs-azure
 ms.openlocfilehash: bf318401453a3fe6456cee3ea4de61bf80e17baf
-ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77653099"
 ---
 # <a name="get-started-with-azure-active-directory-webapi-projects"></a>Azure Active Directory 入门（WebApi 项目）

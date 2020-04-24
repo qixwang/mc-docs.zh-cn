@@ -14,10 +14,10 @@ ms.author: v-junlch
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 43b9119fce956c9521c025dcc2509774631a6d0d
-ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77653289"
 ---
 # <a name="support-and-help-options-for-developers"></a>开发人员的支持和帮助选项

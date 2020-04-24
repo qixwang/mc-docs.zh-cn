@@ -9,10 +9,10 @@ ms.topic: conceptual
 origin.date: 01/16/2019
 ms.date: 03/02/2020
 ms.openlocfilehash: 70b095c56bdcd65f3ed2c7f3c689ff4d3e5bf7b2
-ms.sourcegitcommit: 46fd4297641622c1984011eac4cb5a8f6f94e9f5
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77563575"
 ---
 # <a name="migrate-azure-hdinsight-36-apache-storm-to-hdinsight-40-apache-spark"></a>将 Azure HDInsight 3.6 Apache Storm 迁移到 HDInsight 4.0 Apache Spark
@@ -152,5 +152,5 @@ Spark 结构化流以表的形式表示数据流，该表的深度不受限。 �
 
 有关 Storm、Spark 流和 Spark 结构化流的详细信息，请参阅以下文档：
 
-* [Apache Spark 流的概述](../spark/apache-spark-streaming-overview.md)
+* [Apache Spark 流式处理概述](../spark/apache-spark-streaming-overview.md)
 * [Apache Spark 结构化流的概述](../spark/apache-spark-structured-streaming-overview.md)

@@ -6,10 +6,10 @@ origin.date: 01/28/2020
 ms.date: 02/24/2020
 ms.author: v-yeche
 ms.openlocfilehash: a006d458d247557ff506a8bbebc8caadd8a7e5f0
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77540223"
 ---
 # <a name="service-fabric-application-upgrade-advanced-topics"></a>Service Fabric 应用程序升级：高级主题

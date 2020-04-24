@@ -15,10 +15,10 @@ origin.date: 10/16/2018
 ms.date: 02/24/2020
 ms.author: v-jay
 ms.openlocfilehash: b57e6e7784d2815e75b0cf6a720c82bff554ac8d
-ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77494183"
 ---
 # <a name="media-services-v3-with-playready-license-template"></a>带有 PlayReady 许可证模板的媒体服务 v3 
@@ -59,7 +59,7 @@ XML 遵循 [PlayReady 许可证模板 XML 架构](#schema)部分中定义的 Pla
     </PlayReadyLicenseResponseTemplate>
 
 
-## <a id="classes"></a>使用媒体服务 API 配置许可证模板
+## <a name="use-media-services-apis-to-configure-license-templates"></a><a id="classes"></a>使用媒体服务 API 配置许可证模板
 
 媒体服务提供了可用于配置 PlayReady 许可证模板的类型。 
 
@@ -89,7 +89,7 @@ objContentKeyPolicyPlayReadyLicense = new ContentKeyPolicyPlayReadyLicense
 };
 ```
 
-## <a id="schema"></a>PlayReady 许可证模板 XML 架构
+## <a name="playready-license-template-xml-schema"></a><a id="schema"></a>PlayReady 许可证模板 XML 架构
     <?xml version="1.0" encoding="utf-8"?>
     <xs:schema xmlns:tns="http://schemas.microsoft.com/Azure/MediaServices/KeyDelivery/PlayReadyTemplate/v1" xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/Azure/MediaServices/KeyDelivery/PlayReadyTemplate/v1" xmlns:xs="https://www.w3.org/2001/XMLSchema">
       <xs:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />

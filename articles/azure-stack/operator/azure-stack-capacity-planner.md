@@ -9,10 +9,10 @@ ms.author: v-jay
 ms.reviewer: prchint
 ms.lastreviewed: 05/31/2019
 ms.openlocfilehash: 3a37f29342c7aacdada020c3f2567fe2e11ff05d
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77540882"
 ---
 # <a name="azure-stack-hub-capacity-planner"></a>Azure Stack Hub Capacity Planner
@@ -26,7 +26,7 @@ Azure Stack Hub Capacity Planner 是显示不同计算资源分配如何配合�
 |工作表名称|说明|
 |-----|-----|
 |Version-Disclaimer|计算器用途、版本号和发行日期。|
-|说明|有关为虚拟机 (VM) 集合的容量规划建模的分步说明。|
+|Instructions|有关为虚拟机 (VM) 集合的容量规划建模的分步说明。|
 |DefinedSolutionSKUs|包含最多五个硬件定义的表。 这些条目都是示例。 请根据要考虑的系统配置更改详细信息。|
 |DefineByVMFootprint|将配置与不同的 VM 大小和数量进行比较，以找出适当的硬件 SKU。|
 |DefineByWorkloadFootprint|通过创建 Azure Stack Hub 工作负荷的集合来找到相应的硬件 SKU。|

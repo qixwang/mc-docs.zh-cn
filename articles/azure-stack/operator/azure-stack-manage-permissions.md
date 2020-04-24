@@ -9,10 +9,10 @@ ms.author: v-jay
 ms.reviewer: thoroet
 ms.lastreviewed: 12/23/2019
 ms.openlocfilehash: d27ec0465d9d56afe6f5ef5f0b4fc83931397b0b
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77540926"
 ---
 # <a name="set-access-permissions-using-role-based-access-control"></a>使用基于角色的访问控制设置访问权限

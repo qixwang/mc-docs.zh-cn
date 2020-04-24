@@ -10,10 +10,10 @@ ms.date: 02/24/2020
 ms.author: v-jay
 ms.custom: include file
 ms.openlocfilehash: 0cafeef330bfb3568909e0f9a795a4a1c14f3ce5
-ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77494468"
 ---
 ## <a name="access-the-media-services-api"></a>访问媒体服务 API

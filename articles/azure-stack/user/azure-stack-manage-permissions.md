@@ -9,10 +9,10 @@ ms.author: v-jay
 ms.reviewer: fiseraci
 ms.lastreviewed: 03/11/2019
 ms.openlocfilehash: 217266bc358059066e484cf42775c39f0977c342
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77540775"
 ---
 # <a name="manage-access-to-resources-in-azure-stack-hub-with-role-based-access-control"></a>使用基于角色的访问控制管理 Azure Stack Hub 中的资源访问
@@ -44,7 +44,7 @@ Azure Stack Hub 具有以下资源层次结构：
 
 子范围将继承在父范围授予的访问权限。 例如：
 
-* 你向某个 Azure AD 组分配了在订阅范围内的**读者**角色。 该组的成员可以查看订阅中的每个资源组和资源。
+* 你向某个 Azure AD 组分配了在订阅范围内的**读者**角色。 该组成员可以查看订阅中的每个资源组和资源。
 * 你向某个应用分配了资源组范围内的**参与者**角色。 此应用可以管理该资源组中所有类型的资源，但不能管理订阅中的其他资源组。
 
 ### <a name="assigning-roles"></a>分配角色
@@ -71,7 +71,7 @@ Azure [角色分配](/role-based-access-control/role-assignments-portal)一文�
    * 从“将访问权限分配到”下拉列表中选择要分配的资源。 
    * 在你的目录中选择要向其授予访问权限的用户、组或应用。 可以通过显示名称、电子邮件地址和对象标识符搜索该目录。
 
-7. 选择“保存”  。
+7. 选择“保存”。 
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -9,10 +9,10 @@ ms.author: v-jay
 ms.reviewer: thoroet
 ms.lastreviewed: 11/21/2019
 ms.openlocfilehash: a5009df5995146e51b20f72dc7a037578d4a5443
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77541004"
 ---
 # <a name="update-the-dns-forwarder-in-azure-stack-hub"></a>在 Azure Stack Hub 中更新 DNS 转发器

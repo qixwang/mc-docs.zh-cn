@@ -14,10 +14,10 @@ origin.date: 09/10/2018
 ms.date: 02/24/2020
 ms.author: v-yeche
 ms.openlocfilehash: 711cfa2800f41c991d2db43bcc2a4d8d937cf3a3
-ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77653228"
 ---
 <!-- Verify sucessfully-->
@@ -46,7 +46,7 @@ ms.locfileid: "77653228"
 
 2. 在“创建流量管理器配置文件”中输入或选择以下信息，接受其余设置的默认值，然后选择“创建”   ：
 
-    | 设置                 | Value                                              |
+    | 设置                 | 值                                              |
     | ---                     | ---                                                |
     | 名称                   | 此名称必须在 trafficmanager.cn 区域中唯一，并会生成用于访问流量管理器配置文件的 DNS 名称 trafficmanager.cn。                                   |
     | 路由方法          | 选择“多值”路由方法  。                                       |
@@ -65,7 +65,7 @@ ms.locfileid: "77653228"
 2. 在“流量管理器配置文件”  的“设置”  部分单击“终结点”  ，然后单击“添加”。 
 3. 输入或选择以下信息，保留剩下的默认设置，然后选择“确定”  ：
 
-    | 设置                 | Value                                              |
+    | 设置                 | 值                                              |
     | ---                     | ---                                                |
     | 类型                    | 外部终结点                                   |
     | 名称           | myEndpoint1                                        |

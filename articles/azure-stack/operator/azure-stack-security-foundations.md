@@ -10,10 +10,10 @@ ms.author: v-jay
 ms.reviewer: fiseraci
 ms.lastreviewed: 1/16/2020
 ms.openlocfilehash: 8db0f81491e34c9c2d2f7b40d0aa7541e6f62343
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77540322"
 ---
 # <a name="azure-stack-hub-infrastructure-security-controls"></a>Azure Stack Hub 基础结构安全控制
@@ -32,7 +32,7 @@ Azure Stack Hub 的安全态势功能旨在防范新式威胁，为符合主要�
 - **默认强化**  
     由于基础结构在妥善定义的硬件和软件中运行，因此 Azure Stack Hub 会在默认情况下启用、配置和验证所有安全功能。 
 
-由于 Azure Stack Hub 是以集成系统的形式交付的，因此 Azure Stack Hub 基础结构的安全态势由 Azure 定义。 如同在 Azure 中一样，租户需负责定义其租户工作负荷的安全态势。 本文档提供有关 Azure Stack Hub 基础结构安全态势的基础知识。
+由于 Azure Stack Hub 是以集成系统的形式交付的，因此 Azure Stack Hub 基础结构的安全态势由 Azure 定义。 如同在 Azure 中一样，租户需负责定义其租户工作负荷的安全局势。 本文档提供有关 Azure Stack Hub 基础结构安全态势的基础知识。
 
 ## <a name="data-at-rest-encryption"></a>静态数据加密
 
@@ -56,7 +56,7 @@ Azure Stack Hub 基础结构对其所有内部证书使用 4096 位 RSA 密钥�
 
 ## <a name="windows-defender-application-control"></a>Windows Defender 应用程序控制
 
-Azure Stack Hub 使用最新的 Windows Server 安全功能。 其中的一项功能是 Windows Defender 应用程序控制（WDAC，前称为“代码完整性”）。此功能提供可执行文件允许列表，确保只有已授权的代码可在 Azure Stack Hub 基础结构中运行。
+Azure Stack Hub 使用最新的 Windows Server 安全功能。 其中的一项功能是 Windows Defender 应用程序控制（WDAC，前称为“代码完整性”）。此功能提供可执行文件白名单，确保只有已授权的代码可在 Azure Stack Hub 基础结构中运行。
 
 经授权的代码是由 Azure 或 OEM 合作伙伴签名的。 已签名的经授权代码包括在由 Azure 定义的策略中指定的允许软件列表中。 换而言之，只能执行已批准在 Azure Stack Hub 基础结构中运行的软件。 系统会阻止任何执行未经授权代码的企图并生成警报。 Azure Stack Hub 强制实施用户模式代码完整性 (UMCI) 和虚拟机监控程序代码完整性 (HVCI)。
 

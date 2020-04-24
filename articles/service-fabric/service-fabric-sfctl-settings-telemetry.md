@@ -7,10 +7,10 @@ origin.date: 01/16/2020
 ms.date: 02/24/2020
 ms.author: v-yeche
 ms.openlocfilehash: 46a3d3fb051211f1905963ca9718458fcfabae96
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77540578"
 ---
 # <a name="sfctl-settings-telemetry"></a>sfctl settings telemetry
@@ -20,7 +20,7 @@ Sfctl 遥测收集未提供参数的命令名称或其值、sfctl 版本、OS �
 
 ## <a name="commands"></a>命令
 
-|命令|说明|
+|Command|说明|
 | --- | --- |
 | set-telemetry | 启用或禁用遥测。 |
 

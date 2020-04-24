@@ -10,10 +10,10 @@ ms.topic: quickstart
 origin.date: 12/05/2019
 ms.date: 03/02/2020
 ms.openlocfilehash: eb39aace1999ff06a0ca77e4eb15d0eeb8c43ee8
-ms.sourcegitcommit: 094c057878de233180ff3b3a3e3c19bc11c81776
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77501430"
 ---
 # <a name="quickstart-create-a-search-app-in-the-portal-azure-cognitive-search"></a>快速入门：在门户中创建搜索应用（Azure 认知搜索）
@@ -22,7 +22,7 @@ ms.locfileid: "77501430"
 
 如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial/)。 
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 需升级到[最新版 Microsoft Edge](https://www.microsoft.com/edge)，或者现在就使用 Google 的适用于本快速入门的 Chrome 浏览器。
 

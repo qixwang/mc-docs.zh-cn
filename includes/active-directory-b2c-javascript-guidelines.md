@@ -6,10 +6,10 @@ ms.topic: include
 ms.date: 02/21/2020
 ms.author: v-junlch
 ms.openlocfilehash: cb9b5175cb057bfa89112b9e6b4d6c67fbba8bc0
-ms.sourcegitcommit: 1bd7711964586b41ff67fd1346dad368fe7383da
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77531317"
 ---
 ## <a name="guidelines-for-using-javascript"></a>JavaScript 的使用准则

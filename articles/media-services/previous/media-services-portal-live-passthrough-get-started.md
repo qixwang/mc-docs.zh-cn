@@ -16,10 +16,10 @@ origin.date: 04/01/2019
 ms.date: 02/24/2020
 ms.author: v-jay
 ms.openlocfilehash: 974cd715baeb8a4ed415cfc58f915762643a6c3f
-ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77494276"
 ---
 # <a name="perform-live-streaming-with-on-premises-encoders-using-azure-portal"></a>在 Azure 门户中使用本地编码器实时传送流
@@ -35,7 +35,7 @@ ms.locfileid: "77494276"
 
 本教程指导你完成相关步骤，使用 Azure 门户创建经配置后可直通传递的“通道”  。 
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 以下是完成本教程所需具备的条件：
 
 * 一个 Azure 帐户。 有关详细信息，请参阅 [Azure 试用版](https://www.azure.cn/pricing/1rmb-trial/)。 
@@ -48,7 +48,7 @@ ms.locfileid: "77494276"
 * [使用 Azure 媒体服务实时传送视频流概述](media-services-manage-channels-overview.md)
 * [使用可创建多比特率流的本地编码器实时传送视频流](media-services-live-streaming-with-onprem-encoders.md)
 
-## <a id="scenario"></a>常见实时流式处理方案
+## <a name="common-live-streaming-scenario"></a><a id="scenario"></a>常见实时流式处理方案
 
 以下步骤说明了在创建常用的实时传送视频流应用程序时涉及的任务，这些应用程序使用的通道经配置后可以进行直通传递。 本教程说明了如何创建和管理直通通道和直播活动。
 

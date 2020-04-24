@@ -17,10 +17,10 @@ ms.author: v-tawe
 ms.reviewer: jowargo
 ms.lastreviewed: 02/13/2019
 ms.openlocfilehash: ea688b3bc8c935c59fc144a2b8a4c53af4971b29
-ms.sourcegitcommit: 094c057878de233180ff3b3a3e3c19bc11c81776
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77501350"
 ---
 # <a name="token-based-http2-authentication-for-apns"></a>针对 APNS 进行基于令牌的 (HTTP/2) 身份验证

@@ -9,10 +9,10 @@ ms.author: v-jay
 ms.lastreviewed: 09/10/2019
 ms.reviewer: ppacent
 ms.openlocfilehash: b6d0d7a13d40b3d8fbe78026f819f50730c7679a
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77540267"
 ---
 # <a name="prepare-an-azure-stack-hub-update-package"></a>准备 Azure Stack Hub 更新包
@@ -28,9 +28,9 @@ ms.locfileid: "77540267"
 
 | 更新类型 | 连接 | 所需的操作 |
 | --- | --- | --- |
-| Azure Stack Hub 软件更新 | 已连接 | 应用更新时，将自动下载并准备更新。 |
-| Azure Stack Hub 修补程序 | 已连接 | 应用更新时，将自动下载并准备更新。 |
-| OEM 包更新 | 已连接 | 必须准备更新包。 遵循本文中的步骤。 |
+| Azure Stack Hub 软件更新 | 连续 | 应用更新时，将自动下载并准备更新。 |
+| Azure Stack Hub 修补程序 | 连续 | 应用更新时，将自动下载并准备更新。 |
+| OEM 包更新 | 连续 | 必须准备更新包。 遵循本文中的步骤。 |
 | Azure Stack Hub 软件更新 | 断开连接或连接质量很差 | 必须准备更新包。 遵循本文中的步骤。 |
 | Azure Stack Hub 修补程序 | 断开连接或连接质量很差 | 必须准备更新包。 遵循本文中的步骤。 |
 | OEM 包更新 | 断开连接或连接质量很差 | 必须准备更新包。 遵循本文中的步骤。 |
@@ -44,7 +44,7 @@ Azure Stack Hub 更新和修补程序的更新包可通过已连接系统的更�
 - **Metadata.xml 文件**。 此文件包含有关更新的基本信息，例如发布者、名称、先决条件、大小和支持路径 URL。
 
 ### <a name="automatic-download-and-preparation-for-update-packages"></a>自动下载和准备更新包
-对于已连接到 **Azure Stack Hub 自动更新终结点**的系统，系统会自动准备 Azure Stack Hub 软件更新和修补程序： https://*.azureedge.net 和 https://aka.ms/azurestackautomaticupdate 。 有关与 **Azure Stack Hub 自动更新终结点**建立连接的详细信息，请参阅 [Azure Stack Hub 防火墙集成](/azure-stack/operator/azure-stack-integrate-endpoints#ports-and-urls-outbound)中所述的**修补升级**终结点
+对于已连接到 **Azure Stack Hub 自动更新终结点**的系统，系统会自动准备 Azure Stack Hub 软件更新和修补程序： https://*.azureedge.net 和 https://aka.ms/azurestackautomaticupdate 。 有关与 **Azure Stack Hub 自动更新终结点**建立连接的详细信息，请参阅 **Azure Stack Hub 防火墙集成**中所述的[修补升级](/azure-stack/operator/azure-stack-integrate-endpoints#ports-and-urls-outbound)终结点
 
 ### <a name="where-to-download-azure-stack-hub-update-packages"></a>Azure Stack Hub 更新包的下载位置
 

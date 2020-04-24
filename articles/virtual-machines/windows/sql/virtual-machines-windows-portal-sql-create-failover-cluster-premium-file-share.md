@@ -16,10 +16,10 @@ origin.date: 10/09/2019
 ms.date: 02/10/2020
 ms.author: v-yeche
 ms.openlocfilehash: fa8d7694f1fe53636692cb701db2ecab6dc51b34
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77428908"
 ---
 # <a name="configure-a-sql-server-failover-cluster-instance-with-premium-file-share-on-azure-virtual-machines"></a>在 Azure 虚拟机上配置使用高级文件共享的 SQL Server 故障转移群集实例
@@ -74,7 +74,7 @@ ms.locfileid: "77428908"
 
 使用高级文件共享的故障转移群集不支持文件流。 若要使用文件流，请使用[存储空间直通](virtual-machines-windows-portal-sql-create-failover-cluster.md)部署群集。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 在完成本文中的步骤之前，应已做好以下准备：
 

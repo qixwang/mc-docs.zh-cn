@@ -14,10 +14,10 @@ origin.date: 08/19/2019
 ms.date: 12/09/2019
 ms.author: v-jay
 ms.openlocfilehash: 276e1a89eed743110a231d6835928a7d3b74d5d9
-ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77494464"
 ---
 # <a name="transforms-and-jobs-in-media-services"></a>媒体服务中的转换和作业

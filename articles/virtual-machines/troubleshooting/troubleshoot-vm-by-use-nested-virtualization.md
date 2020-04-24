@@ -15,17 +15,17 @@ origin.date: 11/19/2019
 ms.date: 02/10/2020
 ms.author: v-yeche
 ms.openlocfilehash: a08def73b339d45c12fde5694ade61ecdc1bbe07
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77428840"
 ---
 # <a name="troubleshoot-a-faulty-azure-vm-by-using-nested-virtualization-in-azure"></a>使用 Azure 中的嵌套虚拟化排查故障 Azure VM
 
 本文介绍如何在 Azure 中创建一个嵌套虚拟化环境，以便能在 Hyper-V 主机（救援 VM）上装载故障 VM 磁盘来进行故障排除。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要装载故障 VM，救援 VM 与故障 VM 必须使用相同类型的存储帐户（标准或高级）。
 

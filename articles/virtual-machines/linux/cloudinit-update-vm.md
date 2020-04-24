@@ -15,10 +15,10 @@ origin.date: 04/20/2018
 ms.date: 02/10/2020
 ms.author: v-yeche
 ms.openlocfilehash: 94fea1eb0d5345dba964fb4cfd99398bf2b1c719
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77428290"
 ---
 # <a name="use-cloud-init-to-update-and-install-packages-in-a-linux-vm-in-azure"></a>使用 cloud-init 在 Azure 的 Linux VM 中更新和安装包
@@ -67,7 +67,7 @@ ssh <publicIpAddress>
 sudo yum update
 ```
 
-由于 cloud-init 在启动时已检查和安装更新，因此，应没有要应用的其他更新。  你可以通过运行 `yum history` 来查看更新过程、更改的程序包数量以及 `httpd` 的安装，并查看类似于以下内容的输出。
+由于 cloud-init 在启动时已检查和安装更新，因此，应没有要应用的其他更新。  你可以通过运行 `httpd` 来查看更新过程、更改的程序包数量以及 `yum history` 的安装，并查看类似于以下内容的输出。
 
 ```bash
 Loaded plugins: fastestmirror, langpacks

@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 7d52f35b2707acd5306e81b6aa0b221665d51ca3
-ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77494053"
 ---
 # <a name="understand-azure-iot-edge-modules"></a>了解 Azure IoT Edge 模块
@@ -30,7 +30,7 @@ ms.locfileid: "77494053"
 IoT Edge 模块映像包含能够充分利用 IoT Edge 运行时的管理、安全性和通信功能的应用程序。 你可以开发自己的模块映像，或从支持的 Azure 服务导出一个模块映像，如 Azure 流分析。
 映像存在于云中，可以在不同解决方案中对其进行更新、更改和部署。 例如，使用机器学习来预测生产线输出的模块作为一个单独映像（而不是一个使用计算机视觉来控制无人机的模块）存在。
 
-每当将模块映像部署到设备上，并由 IoT Edge 运行时启动时，就会创建该模块的一个新实例。 世界不同地区的两台设备可以使用相同的模块映像。 但是，当模块在设备上启动时，每个模块都有其自己的模块实例。
+每当将模块映像部署到设备上，并由 IoT Edge 运行时启动时，就会创建该模块的一个新实例。 在世界不同地区的两个设备可以使用相同的模块映像。 但是，在设备上启动模块时每个设备都会有其自己的模块实例。
 
 ![关系图 - 云中的模块映像，设备上的模块实例](./media/iot-edge-modules/image_instance.png)
 

@@ -9,10 +9,10 @@ ms.author: v-jay
 ms.reviewer: kivenkat
 ms.lastreviewed: 10/22/2018
 ms.openlocfilehash: 9fd541a7cd8dcab0b3569c620262012b565db26a
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77540878"
 ---
 # <a name="make-virtual-machine-scale-sets-available-in-azure-stack-hub"></a>在 Azure Stack Hub 中提供虚拟机规模集
@@ -28,7 +28,7 @@ Azure Stack Hub 上的虚拟机规模集与 Azure 上的虚拟机规模集类似
 
 在 Azure Stack Hub 上，虚拟机规模集不支持自动缩放。 可以使用资源管理器模板、CLI 或 PowerShell 将更多实例添加到规模集。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * **Azure Stack Hub 市场：** 将 Azure Stack Hub 注册到全球 Azure 以启用 Azure Stack Hub 市场中项目的可用性。 请遵照[将 Azure Stack Hub 注册到 Azure](azure-stack-registration.md) 中的说明操作。
 * **操作系统映像：** 在创建虚拟机规模集之前，必须从 [Azure Stack Hub 市场](azure-stack-download-azure-marketplace-item.md)下载 VM 映像，以便在规模集中使用。 必须已存在映像，然后用户才能创建新的规模集。

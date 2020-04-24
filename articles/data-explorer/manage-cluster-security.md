@@ -9,10 +9,10 @@ ms.topic: conceptual
 origin.date: 08/20/2019
 ms.date: 03/09/2020
 ms.openlocfilehash: 00e4d7401dd280bd3920e78a5c2b997f7d35cb8f
-ms.sourcegitcommit: ced17aa58e800b9e4335276a1595b8045836b256
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77590238"
 ---
 # <a name="secure-your-cluster-in-azure-data-explorer---azure-portal"></a>在 Azure 数据资源管理器中保护群集 - Azure 门户
@@ -29,7 +29,7 @@ ms.locfileid: "77590238"
 
 1. 在“安全性”  窗口中，为“磁盘加密”  安全设置选择“打开”  。 
 
-1. 选择“保存”  。
+1. 选择“保存”。 
  
 > [!NOTE]
 > 启用加密后，选择“关闭”  可禁用加密。

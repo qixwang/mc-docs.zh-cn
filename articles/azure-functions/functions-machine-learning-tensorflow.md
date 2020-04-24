@@ -7,10 +7,10 @@ ms.date: 02/13/2020
 ms.author: v-junlch
 ms.custom: mvc
 ms.openlocfilehash: 7774ebce4c267c0e9cb8de66e78046d4e8aeb8bd
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77428690"
 ---
 # <a name="tutorial-apply-machine-learning-models-in-azure-functions-with-python-and-tensorflow"></a>教程：在 Azure Functions 中使用 Python 和 TensorFlow 应用机器学习模型
@@ -23,7 +23,7 @@ ms.locfileid: "77428690"
 > * 生成一个无服务器 HTTP API，用于分类包含狗或猫的图像。
 > * 从 Web 应用使用该 API。
 
-## <a name="prerequisites"></a>必备条件 
+## <a name="prerequisites"></a>先决条件 
 
 - 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://www.azure.cn/pricing/1rmb-trial/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 - [Python 3.7.4](https://www.python.org/downloads/release/python-374/)。 （Python 3.7.4 和 Python 3.6.x 已在 Azure Functions 中进行验证；目前尚不支持 Python 3.8 和更高版本。）

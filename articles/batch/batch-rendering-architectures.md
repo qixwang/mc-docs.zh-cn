@@ -10,10 +10,10 @@ ms.date: 02/07/2019
 ms.author: v-lingwu
 ms.topic: conceptual
 ms.openlocfilehash: fbfab6798f647a907ea49fd6ba8e511f264b3d64
-ms.sourcegitcommit: 27eaabd82b12ad6a6840f30763034a6360977186
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77497384"
 ---
 # <a name="reference-architectures-for-azure-rendering"></a>Azure 渲染的参考体系结构

@@ -15,10 +15,10 @@ ms.author: v-tawe
 ms.reviewer: jowargo
 ms.lastreviewed: 01/28/2019
 ms.openlocfilehash: 689b71fd548df5fc642c4568e5f6a59f08f65f4a
-ms.sourcegitcommit: 094c057878de233180ff3b3a3e3c19bc11c81776
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77501460"
 ---
 # <a name="change-pricing-tier-of-an-azure-notification-hubs-namespace"></a>更改 Azure 通知中心命名空间的定价层
@@ -37,7 +37,7 @@ ms.locfileid: "77501460"
 ### <a name="change-tier-on-the-namespace-page"></a>在命名空间页上更改层
 以下过程提供的步骤用于在命名空间页上更改命名空间的定价层。 更改命名空间的层时，所做的更改会应用到命名空间的所有中心。
 
-1. 登录到 [Azure 门户](https://portal.azure.cn)。
+1. 登录 [Azure 门户](https://portal.azure.cn)。
 2. 在左侧菜单中，选择“所有服务”  。 
 3. 在“物联网”部分选择“通知中心命名空间”。   如果选择文本旁边的星号 (`*`)，则会将其添加到“收藏夹”下的左侧导航栏。  这样一来，从下次开始就可以更快地访问命名空间页。 将其添加到“收藏夹”后，选择“通知中心命名空间”。  
 
@@ -57,7 +57,7 @@ ms.locfileid: "77501460"
 ### <a name="change-tier-on-the-hub-page"></a>在中心页上更改层
 以下过程提供的步骤用于在中心页上更改命名空间的定价层。 即使是从中心页开始执行这些步骤，但实际上也会更改命名空间以及命名空间中的所有中心的定价层。 
 
-1. 登录到 [Azure 门户](https://portal.azure.cn)。
+1. 登录 [Azure 门户](https://portal.azure.cn)。
 2. 在左侧菜单中，选择“所有服务”  。
 3. 在“物联网”部分选择“通知中心”。   
 4. 选择通知**中心**。 

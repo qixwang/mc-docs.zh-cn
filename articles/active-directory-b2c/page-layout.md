@@ -12,10 +12,10 @@ ms.date: 02/20/2020
 ms.author: v-junlch
 ms.subservice: B2C
 ms.openlocfilehash: 0a53e20bc16a5b75248e184bf4f9b497f2f1fa25
-ms.sourcegitcommit: 1bd7711964586b41ff67fd1346dad368fe7383da
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77531336"
 ---
 # <a name="page-layout-versions"></a>页面布局版本
@@ -39,7 +39,7 @@ ms.locfileid: "77531336"
   - 电子邮件字段现在为 `type=email`，移动键盘将提供正确的建议
   - 对 Chrome 转换的支持
 - “统一和自断言”页
-  - “用户名/电子邮件”和“密码”字段现在使用 `form` HTML 元素，以允许 Microsoft Edge 和 Internet Explorer (IE) 正确保存此信息。
+  - “用户名/电子邮件”和“密码”字段现在使用 `form` HTML 元素，以允许 Edge 和 Internet Explorer (IE) 正确保存此信息。
 
 ## <a name="110"></a>1.1.0
 

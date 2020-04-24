@@ -9,10 +9,10 @@ ms.author: v-jay
 ms.reviewer: sijuman
 ms.lastreviewed: 10/02/2019
 ms.openlocfilehash: 592cd4e6151eff703f983f6f801f767c974ea7be
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77540815"
 ---
 # <a name="deploy-a-ruby-web-app-to-a-vm-in-azure-stack-hub"></a>将 Ruby Web 应用部署到 Azure Stack Hub 中的 VM
@@ -33,7 +33,7 @@ ms.locfileid: "77540815"
     | 443 | HTTPS | 安全超文本传输协议 (HTTPS) 是 HTTP 的安全版本，它需要一个安全证书，并允许对信息进行加密传输。 |
     | 22 | SSH | 安全外壳 (SSH) 是一种用于安全通信的加密网络协议。 你在 SSH 客户端上使用此连接来配置 VM 并部署应用。 |
     | 3389 | RDP | 可选。 远程桌面协议 (RDP) 允许远程桌面连接使用计算机的图形用户界面。   |
-    | 3000 | “自定义” | 开发中的 Ruby on Rails Web 框架使用的端口。 对于生产服务器，通过 80 和 443 路由流量。 |
+    | 3000 | 自定义 | 开发中的 Ruby on Rails Web 框架使用的端口。 对于生产服务器，通过 80 和 443 路由流量。 |
 
 ## <a name="install-ruby"></a>安装 Ruby
 
@@ -69,7 +69,7 @@ ms.locfileid: "77540815"
     > [!Note]  
     > 安装 Ruby on Rails 依赖项时，可能需要反复运行 `sudo gem install bundler`。 如果安装失败，请查看错误日志并解决问题。
 
-4. 验证安装。 仍在 SSH 会话中连接到 VM 时，输入以下命令：
+4. 验证你的安装。 仍在 SSH 会话中连接到 VM 时，输入以下命令：
 
     ```bash  
         ruby -v

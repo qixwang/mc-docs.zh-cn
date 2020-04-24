@@ -15,10 +15,10 @@ origin.date: 08/24/2018
 ms.date: 02/24/2020
 ms.author: v-jay
 ms.openlocfilehash: 0fd2bf0dc4c69cbc66a3631dc0192d60dc3aaacf
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77541150"
 ---
 # <a name="overview-of-ipv6-for-azure-load-balancer"></a>Azure 负载均衡器的 IPv6 概述
@@ -43,7 +43,7 @@ ms.locfileid: "77541150"
 
 ## <a name="features"></a>功能
 
-通过 Azure Resource Manager 部署的本机 IPv6 支持提供以下功能：
+通过 Azure 资源管理器部署的本机 IPv6 支持提供以下功能：
 
 1. 为 Internet 上的 IPv6 客户端提供负载均衡的 IPv6 服务
 2. 在 VM上提供本机 IPv6 和 IPv4 终结点（“双堆栈”）
@@ -63,7 +63,7 @@ ms.locfileid: "77541150"
 
 * Azure DNS 服务包含 IPv4 A 和 IPv6 AAAA 名称记录，可对负载均衡器的两种记录做出响应。 客户端选择要与哪个地址（IPv4 或 IPv6）通信。
 * 当 VM 与已连接到公共 Internet IPv6 的设备发起连接时，VM 的源 IPv6 地址是经网络地址转换 (NAT) 后的负载均衡器公共 IPv6 地址。
-* 运行 Linux 操作系统的 VM 必须配置为通过 DHCP 接收 IPv6 IP 地址。 Azure 库中的许多 Linux 映像已配置为支持 IPv6，不需要修改。 有关详细信息，请参阅 [Configuring DHCPv6 for Linux VMs](load-balancer-ipv6-for-linux.md)
+* 运行 Linux 操作系统的 VM 必须配置为通过 DHCP 接收 IPv6 IP 地址。 Azure 库中的许多 Linux 映像已配置为支持 IPv6，不需要修改。 有关详细信息，请参阅[配置适用于 Linux VM 的 DHCPv6](load-balancer-ipv6-for-linux.md)
 * 如果选择在负载均衡器中使用运行状况探测，请创建 IPv4 探测，并将它同时用于 IPv4 和 IPv6 终结点。 如果 VM 上的服务中断，IPv4 和 IPv6 终结点将脱离轮换。
 
 限制

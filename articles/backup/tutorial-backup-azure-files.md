@@ -7,10 +7,10 @@ origin.date: 06/10/2019
 ms.date: 10/18/2019
 ms.author: v-lingwu
 ms.openlocfilehash: 9dd9e0a29aa3cf0bbd3b1854635ed8fd0cf0f4cf
-ms.sourcegitcommit: 27eaabd82b12ad6a6840f30763034a6360977186
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77497627"
 ---
 # <a name="back-up-azure-file-shares-in-the-azure-portal"></a>在 Azure 门户中备份 Azure 文件共享

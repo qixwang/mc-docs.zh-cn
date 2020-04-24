@@ -10,10 +10,10 @@ origin.date: 08/22/2019
 ms.date: 04/23/2019
 ms.author: v-lingwu
 ms.openlocfilehash: a66c37ae0ded2ab48b7cbb2a105a4a6d5152c979
-ms.sourcegitcommit: 27eaabd82b12ad6a6840f30763034a6360977186
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77497564"
 ---
 # <a name="application-insights-agent-api-set-applicationinsightsmonitoringconfig"></a>Application Insights 代理 API：Set-ApplicationInsightsMonitoringConfig

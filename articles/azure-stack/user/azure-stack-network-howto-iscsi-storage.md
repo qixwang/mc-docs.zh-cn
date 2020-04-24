@@ -9,17 +9,17 @@ ms.author: v-jay
 ms.reviewer: sijuman
 ms.lastreviewed: 10/28/2019
 ms.openlocfilehash: 07823a434c71d88d5414be8e14933d858080591b
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77540032"
 ---
 # <a name="connect-to-iscsi-storage-with-azure-stack-hub"></a>使用 Azure Stack Hub 连接到 iSCSI 存储
 
 可以使用本文中的模板，将 Azure Stack Hub 虚拟机 (VM) 连接到本地 iSCSI 目标，并将 VM 设置为使用托管在 Azure Stack Hub 外部和数据中心其他位置的存储。 本文介绍如何将 Windows 计算机用作 iSCSI 目标。
 
-可以在 [Azure 智能边缘模式](https://github.com/lucidqdreams/azure-intelligent-edge-patterns) GitHub 存储库的 **lucidqdreams** 分支中找到该模板。 该模板位于 **storage-iSCSI** 文件夹中。 该模板旨在用于设置 Azure Stack Hub 端所需的基础结构，以便连接到 iSCSI 目标。 此配置包括用作 iSCSI 发起程序的虚拟机，及其随附的 VNet、NSG、PIP 和存储。 部署该模板之后，需要运行两个 PowerShell 脚本来完成配置。 其中一个脚本在本地 VM（目标）上运行，另一个在 Azure Stack Hub VM（发起端）上运行。 这些操作完成后，本地存储即会添加到 Azure Stack Hub VM。 
+可以在 **Azure 智能边缘模式** GitHub 存储库的 [lucidqdreams](https://github.com/lucidqdreams/azure-intelligent-edge-patterns) 分支中找到该模板。 该模板位于 **storage-iSCSI** 文件夹中。 该模板旨在用于设置 Azure Stack Hub 端所需的基础结构，以便连接到 iSCSI 目标。 此配置包括用作 iSCSI 发起程序的虚拟机，及其随附的 VNet、NSG、PIP 和存储。 部署该模板之后，需要运行两个 PowerShell 脚本来完成配置。 其中一个脚本在本地 VM（目标）上运行，另一个在 Azure Stack Hub VM（发起端）上运行。 这些操作完成后，本地存储即会添加到 Azure Stack Hub VM。 
 
 ## <a name="overview"></a>概述
 
@@ -62,7 +62,7 @@ ms.locfileid: "77540032"
 
 ### <a name="the-deployment-process"></a>部署过程
 
-资源组模板生成输出作为下一步骤的输入。 它着重于发出 iSCSI 流量的服务器名称和 Azure Stack Hub 公共 IP 地址。 对于此示例：
+资源组模板生成输出作为下一步骤的输入。 它着重于发出 iSCSI 流量的服务器名称和 Azure Stack Hub 公共 IP 地址。 对于本示例：
 
 1. 部署基础结构模板。
 2. 将 Azure Stack Hub VM 部署到托管在数据中心其他位置的 VM。 
@@ -73,7 +73,7 @@ ms.locfileid: "77540032"
 
 ### <a name="inputs-for-azuredeployjson"></a>azuredeploy.json 的输入
 
-|**Parameters**|**default**|description |
+|**参数**|default |**description**|
 |------------------|---------------|------------------------------|
 |WindowsImageSKU         |2019-Datacenter   |请选择 Windows VM 基础映像
 |VMSize                  |Standard_D2_v2    |请输入 VM 大小
@@ -115,7 +115,7 @@ ms.locfileid: "77540032"
 
 `Create-iSCSITarget.ps1 ` 脚本将在提供存储的系统上运行。 可以创建受到发起端限制的多个磁盘和目标。 可运行此脚本多次，以创建多个可附加到不同目标的虚拟磁盘。 可将多个磁盘连接到一个目标。 
 
-|**输入**|**default**|description |
+|**输入**|default |**description**|
 |------------------|---------------|------------------------------|
 |RemoteServer         |FileServer               |连接到 iSCSI 目标的服务器的名称
 |RemoteServerIPs      |1.1.1.1                  |iSCSI 流量的来源 IP 地址
@@ -130,7 +130,7 @@ ms.locfileid: "77540032"
 
 `Connect-toiSCSITarget.ps1` 是最后一个脚本，它在 iSCSI 客户端上运行，将 iSCSI 目标提供的磁盘装载到 iSCSI 客户端。
 
-|**输入**|**default**|description |
+|**输入**|default |**description**|
 |------------------|---------------|------------------------------|
 |TargetiSCSIAddresses   |"2.2.2.2","2.2.2.3"    |iSCSI 目标的 IP 地址
 |LocalIPAddresses       |"10.10.1.4"            |这是 iSCSI 流量的来源内部 IP 地址

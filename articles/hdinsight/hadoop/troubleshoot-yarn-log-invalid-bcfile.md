@@ -9,10 +9,10 @@ ms.topic: troubleshooting
 origin.date: 01/23/2020
 ms.date: 03/02/2020
 ms.openlocfilehash: 96a48ec875d37e4619e0cce7956fcba41dec469e
-ms.sourcegitcommit: 46fd4297641622c1984011eac4cb5a8f6f94e9f5
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77563603"
 ---
 # <a name="scenario-unable-to-read-apache-yarn-log-in-azure-hdinsight"></a>方案：无法在 Azure HDInsight 中读取 Apache Yarn 日志

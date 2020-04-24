@@ -1,5 +1,5 @@
 ---
-title: 评估自定义语音的准确度 - 语音服务
+title: 评估自定义语音识别的准确度 - 语音服务
 titleSuffix: Azure Cognitive Services
 description: 本文档介绍如何以定量方式度量我们的语音转文本模型或你的自定义模型的质量。 需要使用音频 + 人为标记的听录数据来测试准确度，并应提供 30 分钟到 5 小时的代表性音频。
 services: cognitive-services
@@ -12,13 +12,13 @@ origin.date: 09/06/2019
 ms.date: 03/02/2020
 ms.author: v-tawe
 ms.openlocfilehash: 347634549221eef709e72ab72b09d4ca0d695a45
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77541138"
 ---
-# <a name="evaluate-custom-speech-accuracy"></a>评估自定义语音准确度
+# <a name="evaluate-custom-speech-accuracy"></a>评估自定义语音识别准确度
 
 本文档介绍如何以定量方式度量 Microsoft 的语音转文本模型或你的自定义模型的质量。 需要使用音频 + 人为标记的听录数据来测试准确度，并应提供 30 分钟到 5 小时的代表性音频。
 
@@ -52,8 +52,8 @@ ms.locfileid: "77541138"
 
 若要并排评估模型，请执行以下操作：
 
-1. 登录到[自定义语音门户](https://speech.azure.cn/customspeech)。
-2. 导航到“语音转文本”>“自定义语音”>“测试”。 
+1. 登录到[自定义语音识别门户](https://speech.azure.cn/customspeech)。
+2. 导航到“语音转文本”&gt;“自定义语音识别”&gt;“测试”。 
 3. 单击“添加测试”。 
 4. 选择“评估准确度”。  为测试提供名称和说明，然后选择你的音频和人为标记的听录数据集。
 5. 选择最多两个要测试的模型。

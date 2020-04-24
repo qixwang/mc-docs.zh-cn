@@ -9,10 +9,10 @@ ms.author: v-jay
 ms.reviewer: anwestg
 ms.lastreviewed: 03/13/2019
 ms.openlocfilehash: bfc044c7cda2420a9ff7c61c0f31dfafe269fac7
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77540961"
 ---
 # <a name="capacity-planning-for-app-service-server-roles-in-azure-stack-hub"></a>针对 Azure Stack Hub 中的应用服务服务器角色的容量计划

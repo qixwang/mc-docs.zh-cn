@@ -14,10 +14,10 @@ origin.date: 10/31/2019
 ms.date: 02/10/2020
 ms.author: v-yeche
 ms.openlocfilehash: a2e2f7ce8c5e0b3b24f47f79697ef604d890fa5f
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77429955"
 ---
 # <a name="troubleshoot-virtual-machine-deployment-due-to-detached-disks"></a>对由于磁盘分离导致的虚拟机部署错误进行故障排除

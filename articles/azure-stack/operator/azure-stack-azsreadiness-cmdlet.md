@@ -9,10 +9,10 @@ ms.author: v-jay
 ms.reviewer: unknown
 ms.lastreviewed: 05/09/2019
 ms.openlocfilehash: d950bdee271608d4d38c19e32187f1e39ad351f3
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77540888"
 ---
 # <a name="start-azsreadinesschecker-cmdlet-reference"></a>Start-AzsReadinessChecker cmdlet 参考
@@ -294,8 +294,8 @@ Start-AzsReadinessChecker -ReportPath Contoso-AzsReadinessReport.json -ReportSec
 
 |  |  |
 |----------------------------|--------------|
-|类型：                       |字符串        |
-|位置：                   |指定         |
+|键入：                       |String        |
+|位置：                   |名为         |
 |默认值：              |无          |
 |接受管道输入：      |False         |
 |接受通配符： |False         |
@@ -306,8 +306,8 @@ Start-AzsReadinessChecker -ReportPath Contoso-AzsReadinessReport.json -ReportSec
 
 |  |  |
 |----------------------------|--------------|
-|类型：                       |String        |
-|位置：                   |指定         |
+|键入：                       |String        |
+|位置：                   |名为         |
 |默认值：              |ExternalFQDN、ExternalDomainName |
 |接受管道输入：      |False         |
 |接受通配符： |False         |
@@ -318,8 +318,8 @@ Start-AzsReadinessChecker -ReportPath Contoso-AzsReadinessReport.json -ReportSec
 
 |  |  |
 |----------------------------|--------------|
-|类型：                       |String        |
-|位置：                   |指定         |
+|键入：                       |String        |
+|位置：                   |名为         |
 |默认值：              |无          |
 |有效值：               |'AAD'、'ADFS'  |
 |接受管道输入：      |False         |
@@ -331,8 +331,8 @@ Start-AzsReadinessChecker -ReportPath Contoso-AzsReadinessReport.json -ReportSec
 
 |  |  |
 |----------------------------|---------|
-|类型：                       |SecureString |
-|位置：                   |指定    |
+|键入：                       |SecureString |
+|位置：                   |名为    |
 |默认值：              |无     |
 |接受管道输入：      |False    |
 |接受通配符： |False    |
@@ -343,8 +343,8 @@ Start-AzsReadinessChecker -ReportPath Contoso-AzsReadinessReport.json -ReportSec
 
 |  |  |
 |----------------------------|---------|
-|类型：                       |Hashtable |
-|位置：                   |指定    |
+|键入：                       |Hashtable |
+|位置：                   |名为    |
 |默认值：              |无     |
 |接受管道输入：      |False    |
 |接受通配符： |False    |
@@ -355,8 +355,8 @@ Start-AzsReadinessChecker -ReportPath Contoso-AzsReadinessReport.json -ReportSec
 
 |  |  |
 |----------------------------|---------|
-|类型：                       |String   |
-|位置：                   |指定    |
+|键入：                       |String   |
+|位置：                   |名为    |
 |默认值：              |无     |
 |接受管道输入：      |False    |
 |接受通配符： |False    |
@@ -367,8 +367,8 @@ Start-AzsReadinessChecker -ReportPath Contoso-AzsReadinessReport.json -ReportSec
 
 |  |  |
 |----------------------------|---------|
-|类型：                       |String   |
-|位置：                   |指定    |
+|键入：                       |String   |
+|位置：                   |名为    |
 |默认值：              |无     |
 |接受管道输入：      |False    |
 |接受通配符： |False    |
@@ -379,8 +379,8 @@ Start-AzsReadinessChecker -ReportPath Contoso-AzsReadinessReport.json -ReportSec
 
 |  |  |
 |----------------------------|---------|
-|类型：                       |String   |
-|位置：                   |指定    |
+|键入：                       |String   |
+|位置：                   |名为    |
 |默认值：              |无     |
 |接受管道输入：      |False    |
 |接受通配符： |False    |
@@ -391,8 +391,8 @@ Start-AzsReadinessChecker -ReportPath Contoso-AzsReadinessReport.json -ReportSec
 
 |  |  |
 |----------------------------|---------|
-|类型：                       |OrderedDictionary   |
-|位置：                   |指定    |
+|键入：                       |OrderedDictionary   |
+|位置：                   |名为    |
 |默认值：              |无     |
 |接受管道输入：      |False    |
 |接受通配符： |False    |
@@ -406,8 +406,8 @@ Start-AzsReadinessChecker -ReportPath Contoso-AzsReadinessReport.json -ReportSec
 
 |  |  |
 |----------------------------|---------|
-|类型：                       |String   |
-|位置：                   |指定    |
+|键入：                       |String   |
+|位置：                   |名为    |
 |默认值：              |无     |
 |有效值：               |'MultipleCSR'、'SingleCSR' |
 |接受管道输入：      |False    |
@@ -419,8 +419,8 @@ Start-AzsReadinessChecker -ReportPath Contoso-AzsReadinessReport.json -ReportSec
 
 |  |  |
 |----------------------------|---------|
-|类型：                       |String   |
-|位置：                   |指定    |
+|键入：                       |String   |
+|位置：                   |名为    |
 |默认值：              |无     |
 |接受管道输入：      |False    |
 |接受通配符： |False    |
@@ -431,8 +431,8 @@ Start-AzsReadinessChecker -ReportPath Contoso-AzsReadinessReport.json -ReportSec
 
 |  |  |
 |----------------------------|---------|
-|类型：                       |PSCredential   |
-|位置：                   |指定    |
+|键入：                       |PSCredential   |
+|位置：                   |名为    |
 |默认值：              |无     |
 |接受管道输入：      |False    |
 |接受通配符： |False    |
@@ -443,8 +443,8 @@ Start-AzsReadinessChecker -ReportPath Contoso-AzsReadinessReport.json -ReportSec
 
 |  |  |
 |----------------------------|---------|
-|类型：                       |String   |
-|位置：                   |指定    |
+|键入：                       |String   |
+|位置：                   |名为    |
 |默认值：              |无     |
 |接受管道输入：      |False    |
 |接受通配符： |False    |
@@ -455,8 +455,8 @@ Start-AzsReadinessChecker -ReportPath Contoso-AzsReadinessReport.json -ReportSec
 
 |  |  |
 |----------------------------|---------|
-|类型：                       |String   |
-|位置：                   |指定    |
+|键入：                       |String   |
+|位置：                   |名为    |
 |默认值：              |无     |
 |有效值：               |“AzureChinaCloud” |
 |接受管道输入：      |False    |
@@ -468,8 +468,8 @@ Start-AzsReadinessChecker -ReportPath Contoso-AzsReadinessReport.json -ReportSec
 
 |  |  |
 |----------------------------|---------|
-|类型：                       |String   |
-|位置：                   |指定    |
+|键入：                       |String   |
+|位置：                   |名为    |
 |默认值：              |无     |
 |接受管道输入：      |False    |
 |接受通配符： |False    |
@@ -480,8 +480,8 @@ Start-AzsReadinessChecker -ReportPath Contoso-AzsReadinessReport.json -ReportSec
 
 |  |  |
 |----------------------------|---------|
-|类型：                       |Guid     |
-|位置：                   |指定    |
+|键入：                       |Guid     |
+|位置：                   |名为    |
 |默认值：              |无     |
 |接受管道输入：      |False    |
 |接受通配符： |False    |
@@ -492,8 +492,8 @@ Start-AzsReadinessChecker -ReportPath Contoso-AzsReadinessReport.json -ReportSec
 
 |  |  |
 |----------------------------|---------|
-|类型：                       |String   |
-|位置：                   |指定    |
+|键入：                       |String   |
+|位置：                   |名为    |
 |默认值：              |全部      |
 |接受管道输入：      |False    |
 |接受通配符： |False    |
@@ -514,8 +514,8 @@ Start-AzsReadinessChecker -ReportPath Contoso-AzsReadinessReport.json -ReportSec
 
 |  |  |
 |----------------------------|---------|
-|类型：                       |String   |
-|位置：                   |指定    |
+|键入：                       |String   |
+|位置：                   |名为    |
 |默认值：              |.\Certificates |
 |接受管道输入：      |False    |
 |接受通配符： |False    |
@@ -526,8 +526,8 @@ Start-AzsReadinessChecker -ReportPath Contoso-AzsReadinessReport.json -ReportSec
 
 |  |  |
 |----------------------------|------------------|
-|类型：                       |SwitchParameter   |
-|位置：                   |指定             |
+|键入：                       |SwitchParameter   |
+|位置：                   |名为             |
 |默认值：              |False             |
 |接受管道输入：      |False             |
 |接受通配符： |False             |
@@ -538,8 +538,8 @@ Start-AzsReadinessChecker -ReportPath Contoso-AzsReadinessReport.json -ReportSec
 
 |  |  |
 |----------------------------|---------|
-|类型：                       |String   |
-|位置：                   |指定    |
+|键入：                       |String   |
+|位置：                   |名为    |
 |默认值：              |全部      |
 |有效值：               |'Certificate'、'AzureRegistration'、'AzureIdentity'、'Jobs'、'All' |
 |接受管道输入：      |False    |
@@ -551,8 +551,8 @@ Start-AzsReadinessChecker -ReportPath Contoso-AzsReadinessReport.json -ReportSec
 
 |  |  |
 |----------------------------|------------------|
-|类型：                       |SwitchParameter   |
-|位置：                   |指定             |
+|键入：                       |SwitchParameter   |
+|位置：                   |名为             |
 |默认值：              |False             |
 |接受管道输入：      |False             |
 |接受通配符： |False             |
@@ -563,9 +563,9 @@ Start-AzsReadinessChecker -ReportPath Contoso-AzsReadinessReport.json -ReportSec
 
 |  |  |
 |----------------------------|------------------|
-|类型：                       |SwitchParameter   |
+|键入：                       |SwitchParameter   |
 |别名：                    |cf                |
-|位置：                   |指定             |
+|位置：                   |名为             |
 |默认值：              |False             |
 |接受管道输入：      |False             |
 |接受通配符： |False             |
@@ -576,8 +576,8 @@ Start-AzsReadinessChecker -ReportPath Contoso-AzsReadinessReport.json -ReportSec
 
 |  |  |
 |----------------------------|------------------|
-|类型：                       |String            |
-|位置：                   |指定             |
+|键入：                       |String            |
+|位置：                   |名为             |
 |默认值：              |$ENV:TEMP\AzsReadinessChecker  |
 |接受管道输入：      |False             |
 |接受通配符： |False             |
@@ -588,9 +588,9 @@ Start-AzsReadinessChecker -ReportPath Contoso-AzsReadinessReport.json -ReportSec
 
 |  |  |
 |----------------------------|------------------|
-|类型：                       |SwitchParameter   |
+|键入：                       |SwitchParameter   |
 |别名：                    |cf                |
-|位置：                   |指定             |
+|位置：                   |名为             |
 |默认值：              |False             |
 |接受管道输入：      |False             |
 |接受通配符： |False             |
@@ -601,9 +601,9 @@ Start-AzsReadinessChecker -ReportPath Contoso-AzsReadinessReport.json -ReportSec
 
 |  |  |
 |----------------------------|------------------|
-|类型：                       |SwitchParameter   |
+|键入：                       |SwitchParameter   |
 |别名：                    |wi                |
-|位置：                   |指定             |
+|位置：                   |名为             |
 |默认值：              |False             |
 |接受管道输入：      |False             |
 |接受通配符： |False             |

@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 02/13/2020
 ms.author: v-junlch
 ms.openlocfilehash: 70b412ae73669fcfa503e4052f7d0496273670c9
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77428528"
 ---
 ## <a name="publish-the-project-to-azure"></a>将项目发布到 Azure

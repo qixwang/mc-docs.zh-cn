@@ -9,10 +9,10 @@ ms.author: v-jay
 ms.reviewer: sijuman
 ms.lastreviewed: 09/19/2019
 ms.openlocfilehash: d2ebd93312473e39c98bd17492daa87ada8c77a8
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77540037"
 ---
 # <a name="how-to-set-up-a-multiple-site-to-site-vpn-tunnel-in-azure-stack-hub"></a>如何在 Azure Stack Hub 中设置多个站点到站点 VPN 隧道
@@ -107,7 +107,7 @@ ms.locfileid: "77540037"
 
 1.  打开 Azure Stack Hub 用户门户，选择“创建资源”。 
 
-2.  选择“模板部署”  。
+2.  选择“模板部署”。 
 
 3.  粘贴 **azuredeploy.tunnel.ike.json** 的内容。
 
@@ -162,7 +162,7 @@ ms.locfileid: "77540037"
 
 1.  打开 Azure Stack Hub 用户门户，选择“创建资源”。 
 
-2.  选择“模板部署”  。
+2.  选择“模板部署”。 
 
 3.  粘贴 **azuredeploy.tunnel.ike.json** 的内容。
 

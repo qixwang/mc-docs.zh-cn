@@ -16,10 +16,10 @@ ms.date: 08/08/2018
 ms.author: v-lingwu
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 5b930d241d3fac6d21725b53b591cadfe1b86d96
-ms.sourcegitcommit: 27eaabd82b12ad6a6840f30763034a6360977186
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77497378"
 ---
 # <a name="create-task-dependencies-to-run-tasks-that-depend-on-other-tasks"></a>创建任务依赖关系，以运行依赖于其他任务的任务
@@ -31,14 +31,14 @@ ms.locfileid: "77497378"
 * 渲染前和渲染后过程，其中只有在完成每个任务后，其后续任务才能开始。
 * 下游任务依赖于上游任务输出的任何其他作业。
 
-使用批处理任务依赖关系，可以创建在完成一个或多个父任务后在计算节点上按计划执行的任务。 例如，可以创建一个作业，使用单独的并行任务渲染 3D 影片的每个帧。 最后一个任务为“合并任务”，仅在所有帧已成功渲染后，才将渲染的帧合并为完整影片。
+使用批处理任务依赖关系，可以创建在完成一个或多个父任务后在计算节点上按计划执行的任务。 例如，可以创建一个作业，使用单独的并行任务渲染 3D 影片的每个帧。 最后一个任务为“合并任务”，仅在所有帧已成功呈现后，才将呈现的帧合并为完整影片。
 
 默认情况下，依赖任务计划为仅在成功完成父任务后执行。 可以指定一个依赖关系操作来重写默认行为，并在父任务失败时运行任务。 有关详细信息，请参阅[依赖关系操作](#dependency-actions)部分。  
 
 用户可以创建依赖于一对一或一对多关系中其他任务的任务。 甚至可以创建一个范围依赖关系，使其中一项任务依赖于特定任务 ID 范围内一组任务的完成。 可以组合这三种基本方案，以创建多对多关系。
 
 ## <a name="task-dependencies-with-batch-net"></a>Batch .NET 的任务依赖关系
-本文讨论如何使用 [Batch .NET][net_msdn] 库配置任务依赖关系。 本文首先说明如何为作业[启用任务依赖关系](#enable-task-dependencies)，然后演示如何[为任务配置依赖关系](#create-dependent-tasks)。 本文还会介绍如何指定一个依赖关系操作，以便在父任务失败时运行依赖任务。 最后介绍 Batch 支持的[依赖关系方案](#dependency-scenarios)。
+本文讨论如何使用 [Batch .NET][net_msdn] 库配置任务依赖关系。 本文首先说明如何为作业[启用任务依赖关系](#enable-task-dependencies)，然后演示如何[为任务配置依赖关系](#create-dependent-tasks)。 本文还介绍如何指定一个依赖关系操作，以便在父任务失败时运行依赖任务。 最后介绍 Batch 支持的[依赖关系方案](#dependency-scenarios)。
 
 ## <a name="enable-task-dependencies"></a>启用任务依赖关系
 要在批处理应用程序中使用任务依赖关系，必须先将作业配置为使用任务依赖关系。 在 Batch .NET 中，为 [CloudJob][net_cloudjob] 启用任务依赖关系的方法是将其 [UsesTaskDependencies][net_usestaskdependencies] 属性设置为 `true`：
@@ -79,7 +79,7 @@ new CloudTask("Flowers", "cmd.exe /c echo Flowers")
 |:---:| --- | --- |
 |  [一对一](#one-to-one) |*taskB* 取决于 *taskA* <p/> *taskA* 成功完成后，*taskB* 才会按计划执行 |![关系图：一对一任务依赖关系][1] |
 |  [一对多](#one-to-many) |*taskC* 同时取决于 *taskA* 和 *taskB* <p/> *taskA* 和 *taskB* 成功完成后，*taskC* 才会按计划执行 |![关系图：一对多任务依赖关系][2] |
-|  [任务 ID 范围](#task-id-range) |*taskD* 取决于一系列任务 <p/> ID 为 *1* 到 *10* 的任务成功完成后，*taskD* 才会按计划执行 |![示意图：任务 ID 范围依赖项][3] |
+|  [任务 ID 范围](#task-id-range) |*taskD* 取决于一系列任务 <p/> ID 为 *1* 到 *10* 的任务成功完成后，*taskD* 才会按计划执行 |![关系图：任务 ID 范围依赖关系][3] |
 
 > [!TIP]
 > 可以创建**多对多**关系，例如，在此关系中任务 C、D、E 和 F 都依赖于任务 A 和 B。这很有用，例如，在下游任务依赖于多个上游任务的输出的并行化预处理方案中，即可以这样操作。
@@ -87,7 +87,7 @@ new CloudTask("Flowers", "cmd.exe /c echo Flowers")
 > 在本部分的示例中，仅在父任务成功完成时才运行依赖任务。 此行为是依赖任务的默认行为。 可以通过指定一个依赖关系操作来重写默认行为，在父任务失败后运行依赖任务。 有关详细信息，请参阅[依赖关系操作](#dependency-actions)部分。
 
 ### <a name="one-to-one"></a>一对一
-在一对一关系中，任务依赖于一个父任务的成功完成。 若要创建该依赖关系，请在填充 [CloudTask][net_cloudtask] 的 [DependsOn][net_dependson] 属性时，为 [TaskDependencies][net_taskdependencies].[OnId][net_onid] 静态方法提供单个任务 ID。
+在一对一关系中，任务依赖于一个父任务的成功完成。 若要创建该依赖关系，请在填充 [CloudTask][net_taskdependencies] 的 [DependsOn][net_onid] 属性时，为 [TaskDependencies][net_dependson].[OnId][net_cloudtask] 静态方法提供单个任务 ID。
 
 ```csharp
 // Task 'taskA' doesn't depend on any other tasks
@@ -101,7 +101,7 @@ new CloudTask("taskB", "cmd.exe /c echo taskB")
 ```
 
 ### <a name="one-to-many"></a>一对多
-在一对多关系中，任务依赖于多个父任务的完成。 若要创建该依赖关系，请在填充 [CloudTask][net_cloudtask] 的 [DependsOn][net_dependson] 属性时，为 [TaskDependencies][net_taskdependencies].[OnIds][net_onids] 静态方法提供任务 ID 的集合。
+在一对多关系中，任务依赖于多个父任务的完成。 若要创建该依赖关系，请在填充 [CloudTask][net_taskdependencies] 的 [DependsOn][net_onids] 属性时，为 [TaskDependencies][net_dependson].[OnIds][net_cloudtask] 静态方法提供任务 ID 的集合。
 
 ```csharp
 // 'Rain' and 'Sun' don't depend on any other tasks
@@ -118,12 +118,12 @@ new CloudTask("Flowers", "cmd.exe /c echo Flowers")
 
 ### <a name="task-id-range"></a>任务 ID 范围
 在依赖于一系列父任务的关系中，任务依赖于其 ID 位于某个范围内的任务的完成。
-若要创建该依赖关系，请在填充 [CloudTask][net_cloudtask] 的 [DependsOn][net_dependson] 属性时，为 [TaskDependencies][net_taskdependencies].[OnIdRange][net_onidrange] 静态方法提供该范围内的第一个和最后一个任务 ID。
+若要创建该依赖关系，请在填充 [CloudTask][net_taskdependencies] 的 [DependsOn][net_onidrange] 属性时，为 [TaskDependencies][net_dependson].[OnIdRange][net_cloudtask] 静态方法提供该范围内的第一个和最后一个任务 ID。
 
 > [!IMPORTANT]
 > 将任务 ID 范围用于依赖项时，只有 ID 表示整数值的任务将由范围选定。 因此范围 `1..10` 将选择任务 `3` 和 `7`，而不是 `5flamingoes`。 
 > 
-> 在评估范围依赖项时，前导零不重要，因此，带字符串标识符 `4`、`04` 和 `004` 的任务都将处于范围内，它们将全部视为任务 `4`，因此，要完成的第一个任务将满足依赖项  。
+> 在评估范围依赖项时，前导零不重要，因此，带字符串标识符 `4`、`04` 和 `004` 的任务都将处于范围内，它们将全部视为任务 *，因此，要完成的第一个任务将满足依赖项*`4`。
 > 
 > 范围内的每个任务必须通过成功完成或者已完成但出现了映射到设置为 **Satisfy** 的某个依赖关系操作的失败，来满足该依赖关系。 有关详细信息，请参阅[依赖关系操作](#dependency-actions)部分。
 >
@@ -147,19 +147,19 @@ new CloudTask("4", "cmd.exe /c echo 4")
 },
 ```
 
-## 依赖关系操作<a name="dependency-actions"></a>
+## <a name="dependency-actions"></a>依赖关系操作<a name="dependency-actions"></a>
 
-默认情况下，只有在父任务成功完成后，才能运行某个依赖任务或任务集。 在某些情况下，你可能希望即使父任务失败，也能运行依赖任务。 可以通过指定依赖关系操作来重写默认行为。 依赖关系操作根据父任务的成功或失败状态指定某个依赖任务是否符合运行的条件。 
+默认情况下，只有在父任务成功完成后，才能运行某个依赖任务或任务集。 在某些情况下，建议运行依赖任务，即使父任务失败。 可以通过指定依赖关系操作来重写默认行为。 依赖关系操作根据父任务的成功或失败状态指定某个依赖任务是否符合运行的条件。 
 
 例如，假设某个依赖任务正在等待完成上游任务后提供的数据。 如果上游任务失败，依赖任务仍可使用旧数据运行。 在这种情况下，依赖关系操作可以指定即使父任务失败，依赖任务也符合运行的条件。
 
 依赖关系操作基于父任务的退出条件。 可为以下任一退出条件指定依赖关系操作；对于 .NET，请参阅 [ExitConditions][net_exitconditions] 类了解详细信息：
 
-- 预处理错误发生时。
-- 文件上传错误发生时。 如果任务退出并返回通过 **exitCodes** 或 **exitCodeRanges** 指定的退出代码，然后遇到文件上传错误，则优先执行退出代码指定的操作。
-- 任务退出并返回 **ExitCodes** 属性定义的退出代码时。
-- 任务退出并返回处于 **ExitCodeRanges** 属性指定的范围内的退出代码时。
-- 默认情况下，如果任务退出时返回 **ExitCodes** 或 **ExitCodeRanges** 未定义的退出代码，或者如果任务退出时返回预处理错误并且 **PreProcessingError** 属性未设置，或者如果任务失败时返回文件上传错误并且 **FileUploadError** 属性未设置。 
+- 发生预处理错误时。
+- 发生文件上传错误时。 如果任务退出，并返回通过“exitCodes”或“exitCodeRanges”指定的退出代码，然后遇到文件上传错误，则优先执行退出代码指定的操作   。
+- 任务退出并返回“ExitCodes”属性定义的退出代码时  。
+- 任务退出并返回处于“ExitCodeRanges”属性指定的范围内的退出代码时  。
+- 如果任务退出，并返回非由“ExitCodes”或“ExitCodeRanges”定义的退出代码，或者如果任务退出，并返回预处理错误，而“PreProcessingError”属性未设置，或者如果任务失败，并返回文件上传错误，而“FileUploadError”属性未设置，则为默认情况     。 
 
 若要在 .NET 中指定依赖关系操作，请为退出条件设置 [ExitOptions][net_exitoptions].[DependencyAction][net_dependencyaction] 属性。 **DependencyAction** 属性采用以下两个值之一：
 
@@ -239,6 +239,6 @@ new CloudTask("B", "cmd.exe /c echo B")
 
 [1]: ./media/batch-task-dependency/01_one_to_one.png "关系图：一对一依赖关系"
 [2]: ./media/batch-task-dependency/02_one_to_many.png "关系图：一对多依赖关系"
-[3]: ./media/batch-task-dependency/03_task_id_range.png "Diagram: task id range dependency"
+[3]: ./media/batch-task-dependency/03_task_id_range.png "关系图：任务 ID 范围依赖关系"
 
 <!-- Update_Description: wording update -->

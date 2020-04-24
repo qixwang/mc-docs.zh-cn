@@ -7,10 +7,10 @@ origin.date: 02/25/2019
 ms.date: 02/24/2020
 ms.author: v-yeche
 ms.openlocfilehash: 5ff3d56f3c0ad95a98819e5bbe4b5f321d9ca5c8
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77540442"
 ---
 # <a name="query-eventstore-apis-for-cluster-events"></a>查询群集事件的 EventStore API
@@ -115,7 +115,7 @@ Body:
 
 设置好 Service Fabric 客户端后，可以通过访问 EventStore（如 `sfhttpClient.EventStore.<request>`）来查询事件
 
-以下是通过 `GetClusterEventListAsync` 函数请求 `2018-04-03T18:00:00Z` 和 `2018-04-04T18:00:00Z` 之间的所有群集事件的示例。
+以下是通过 `2018-04-03T18:00:00Z` 函数请求 `2018-04-04T18:00:00Z` 和 `GetClusterEventListAsync` 之间的所有群集事件的示例。
 
 ```csharp
 var sfhttpClient = ServiceFabricClientFactory.Create(clusterUrl, settings);

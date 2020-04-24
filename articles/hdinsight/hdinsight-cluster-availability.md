@@ -11,10 +11,10 @@ origin.date: 02/06/2020
 ms.date: 03/02/2020
 ms.author: v-yiso
 ms.openlocfilehash: 5eb7e46ce560c2938a8aefba8dfc394be24a63cb
-ms.sourcegitcommit: 46fd4297641622c1984011eac4cb5a8f6f94e9f5
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77563382"
 ---
 # <a name="how-to-monitor-cluster-availability-with-apache-ambari-and-azure-monitor-logs"></a>如何使用 Apache Ambari 和 Azure Monitor 日志监视群集可用性

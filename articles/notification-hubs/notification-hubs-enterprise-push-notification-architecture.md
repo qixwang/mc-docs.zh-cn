@@ -18,10 +18,10 @@ ms.author: v-tawe
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.openlocfilehash: 6a97a23b4e5c4be2ce8ad03d1ff7d0669b68d6bb
-ms.sourcegitcommit: 094c057878de233180ff3b3a3e3c19bc11c81776
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77501448"
 ---
 # <a name="enterprise-push-architectural-guidance"></a>企业推送架构指南
@@ -59,7 +59,7 @@ ms.locfileid: "77501448"
 
 ## <a name="sample"></a>示例
 
-### <a name="prerequisites"></a>必备条件
+### <a name="prerequisites"></a>先决条件
 
 完成以下教程，熟悉相关概念以及常见的创建和配置步骤：
 

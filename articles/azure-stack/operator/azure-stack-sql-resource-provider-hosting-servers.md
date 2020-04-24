@@ -10,10 +10,10 @@ ms.author: v-jay
 ms.reviewer: xiaofmao
 ms.lastreviewed: 10/16/2018
 ms.openlocfilehash: e4de942f04fc6abdf2b9c2cdb4a776e11fd37374
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77540304"
 ---
 # <a name="add-hosting-servers-for-the-sql-resource-provider"></a>为 SQL 资源提供程序添加托管服务器

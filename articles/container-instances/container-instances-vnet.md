@@ -6,10 +6,10 @@ origin.date: 01/06/2020
 ms.date: 01/15/2020
 ms.author: v-yeche
 ms.openlocfilehash: 4dadf9a6d2a5f2d0011468955f284c5d93a32256
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77428306"
 ---
 <!--NOT AVAILABLE ON MOONCAKE-->

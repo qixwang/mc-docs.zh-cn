@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: martincoetzer
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7e0791aa4a6a06b94151bfc76389874daa01a0a7
-ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77653323"
 ---
 # <a name="how-to-plan-your-conditional-access-deployment-in-azure-active-directory"></a>如何：规划 Azure Active Directory 中的条件访问部署

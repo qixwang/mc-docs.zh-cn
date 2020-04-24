@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 02/17/2020
 ms.author: v-junlch
 ms.openlocfilehash: 5d11c9e2c098435e1a3e19b210167b60ecfdb8da
-ms.sourcegitcommit: f5bc5bf51a4ba589c94c390716fc5761024ff353
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77494041"
 ---
 # <a name="ssl-termination-with-key-vault-certificates"></a>使用 Key Vault 证书实现 SSL 终止

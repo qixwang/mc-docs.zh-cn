@@ -9,10 +9,10 @@ ms.author: v-jay
 ms.reviewer: sijuman
 ms.lastreviewed: 05/08/2019
 ms.openlocfilehash: 94c59242d084e9184bdf52e8d793d4546749493a
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77541043"
 ---
 # <a name="resource-provider-api-versions-supported-by-profiles-in-azure-stack-hub"></a>Azure Stack Hub 中的配置文件支持的资源提供程序 API 版本
@@ -116,7 +116,7 @@ API 配置文件使用三个命名约定：
 | 事件类型 | 2015-04-01 |
 | 事件类别 | 2015-04-01 |
 | 指标定义 | 2018-01-01 |
-| 指标 | 2018-01-01 |
+| 度量值 | 2018-01-01 |
 | 诊断设置 | 2017-05-01-preview |
 | 诊断设置类别 | 2017-05-01-preview |
 
@@ -167,7 +167,7 @@ API 配置文件使用三个命名约定：
 | 提供程序 | 2018-05-01 |
 | ResourceGroups| 2018-05-01 |
 | 资源 | 2018-05-01/ |
-| 订阅 | 2018-05-01 |
+| Subscriptions | 2018-05-01 |
 | 订阅/位置 | 2016-06-01 |
 | 订阅/操作结果 | 2018-05-01 |
 | 订阅/提供程序 | 2018-05-01 |

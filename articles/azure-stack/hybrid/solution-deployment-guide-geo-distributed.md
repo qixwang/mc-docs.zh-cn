@@ -9,10 +9,10 @@ ms.author: v-jay
 ms.reviewer: anajod
 ms.lastreviewed: 11/05/2019
 ms.openlocfilehash: 6928c5bcf744803362f8979a5a5e4352a6e55a0f
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77540692"
 ---
 # <a name="create-a-geo-distributed-app-solution-to-direct-traffic-with-azure-and-azure-stack-hub"></a>使用 Azure 和 Azure Stack Hub 创建异地分布式应用解决方案用于定向流量
@@ -77,7 +77,7 @@ ms.locfileid: "77540692"
 > - 将应用生成指向多个云目标。
 > - 管理和配置 CD 过程。
 
-### <a name="prerequisites"></a>必备条件
+### <a name="prerequisites"></a>先决条件
 
 需要 Azure 订阅并安装 Azure Stack Hub。
 
@@ -249,7 +249,7 @@ Azure DevOps Services 提供高度可配置、可管理的管道，用于将内�
 
 若要将实时站点及其 DNS 域名迁移到应用服务，请参阅[将活动 DNS 名称迁移到 Azure 应用服务](/app-service/manage-custom-dns-migrate-domain)。
 
-### <a name="prerequisites"></a>必备条件
+### <a name="prerequisites"></a>先决条件
 
 若要完成此解决方案：
 
@@ -360,7 +360,7 @@ Azure DevOps Services 提供高度可配置、可管理的管道，用于将内�
 > [!Note]  
 > 如果需要，请在 Azure 门户中获取客户 SSL 证书并将其绑定到 Web 应用。 有关详细信息，请参阅[应用服务证书教程](/app-service/configure-ssl-certificate)。
 
-### <a name="prerequisites"></a>必备条件
+### <a name="prerequisites"></a>先决条件
 
 若要完成此解决方案：
 

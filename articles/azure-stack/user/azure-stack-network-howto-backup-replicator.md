@@ -9,10 +9,10 @@ ms.author: v-jay
 ms.reviewer: rtiberiu
 ms.lastreviewed: 11/07/2019
 ms.openlocfilehash: 072ace92cd463262438cd2d437fb45bbd07373f7
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77540756"
 ---
 # <a name="replicate-resources-using-the-azure-stack-hub-subscription-replicator"></a>使用 Azure Stack Hub 订阅复制器复制资源
@@ -105,7 +105,7 @@ Deployment_Files 包含两个文件：**DeployResourceGroups.ps1** 和 **DeployR
 
 4.  运行 `Get-Job` 以检查状态。 Get-Job | Receive-Job 将返回结果。
 
-## <a name="clean-up"></a>清理
+## <a name="clean-up"></a>清除
 
 在 replicatorV3 文件夹中，有一个名为 **cleanup_generated_items.ps1** 的文件 - 该文件将删除 **Deployment_Files**、**Parameter_Files** 和 **Custom_ARM_Templates** 文件夹及其所有内容。
 

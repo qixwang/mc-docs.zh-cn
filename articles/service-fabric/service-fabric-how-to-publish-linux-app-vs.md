@@ -7,10 +7,10 @@ origin.date: 05/20/2019
 ms.date: 02/24/2020
 ms.author: v-yeche
 ms.openlocfilehash: f72370cab8f9e21f5a239e80a075ab5c1922bc79
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77540418"
 ---
 <!--Verify successfully-->
@@ -23,7 +23,7 @@ ms.locfileid: "77540418"
 >
 
 ## <a name="create-a-service-fabric-application-targeting-net-core"></a>创建面向 .NET Core 的 Service Fabric 应用程序
-1. 以**管理员**身份启动 Visual Studio。
+1. 以管理员身份启动 Visual Studio。 
 2. 通过单击“文件”->“新建”->“项目”来创建项目。 
 3. 在“新建项目”对话框中，选择“云”->“Service Fabric 应用程序”。  
     

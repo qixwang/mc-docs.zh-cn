@@ -7,10 +7,10 @@ origin.date: 04/03/2019
 ms.date: 09/12/2019
 ms.author: v-lingwu
 ms.openlocfilehash: 60de7db989e2f0077c58e00f7d9f7ad5267ff33f
-ms.sourcegitcommit: 27eaabd82b12ad6a6840f30763034a6360977186
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77497587"
 ---
 # <a name="back-up-and-restore-encrypted-azure-vm"></a>备份和还原已加密的 Azure VM

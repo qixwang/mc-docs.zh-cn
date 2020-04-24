@@ -9,10 +9,10 @@ ms.author: v-jay
 ms.reviewer: thoroet
 ms.lastreviewed: 09/17/2018
 ms.openlocfilehash: 1f162ad13717101ab27093e867c1e9346442e4ad
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77540967"
 ---
 # <a name="add-additional-scale-unit-nodes-in-azure-stack-hub"></a>在 Azure Stack Hub 中添加更多的缩放单元节点
@@ -102,7 +102,7 @@ Azure Stack Hub 操作员可以通过添加更多的物理计算机来提高现�
 |正在运行              |所有节点都积极参与缩放单元。|
 |已停止              |缩放单元节点已停机或不可访问。|
 |正在扩展            |当前正在将一个或多个缩放单元节点添加为计算容量。|
-|正在配置存储  |计算容量已扩展，存储配置正在运行。|
+|配置存储  |计算容量已扩展，存储配置正在运行。|
 |需要修正 |检测到错误，需要修复一个或多个缩放单元节点。|
 
 
@@ -121,17 +121,17 @@ Azure Stack Hub 操作员可以通过添加更多的物理计算机来提高现�
 ## <a name="troubleshooting"></a>故障排除
 下面是添加节点时的常见问题。 
 
-**场景 1：** “添加缩放单元节点”操作失败，但一个或多个节点在列出时其状态为“已停止”。  
-- 补救措施：使用修复操作来修复一个或多个节点。 一次只能运行一个修复操作。
+**场景 1：** “添加缩放单元节点”操作失败，但一个或多个节点在列出时，其状态为“已停止”。  
+- 修正：使用修复操作来修复一个或多个节点。 一次只能运行一个修复操作。
 
 **场景 2：** 添加了一个或多个缩放单元节点，但存储扩展失败。 在这种情况下，缩放单元节点对象报告的状态为“正在运行”，但“配置存储”任务未启动。  
-- 补救措施：通过运行以下 PowerShell cmdlet，使用特权终结点来查看存储运行状况：
+- 修正：通过运行以下 PowerShell cmdlet，使用特权终结点来查看存储运行状况：
   ```powershell
      Get-VirtualDisk -CimSession s-cluster | Get-StorageJob
   ```
  
 **场景 3：** 收到一个警报，指出存储横向扩展作业失败。  
-- 补救措施：在这种情况下，存储配置任务已失败。 此问题需要联系支持部门。
+- 修正：在这种情况下，存储配置任务已失败。 此问题需要联系支持部门。
 
 
 ## <a name="next-steps"></a>后续步骤 

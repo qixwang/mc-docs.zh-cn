@@ -9,10 +9,10 @@ ms.author: v-jay
 ms.reviewer: anajod
 ms.lastreviewed: 01/14/2019
 ms.openlocfilehash: 27952342068b5c4c49db6a416c4546c4d1f9c859
-ms.sourcegitcommit: afe972418a883551e36ede8deae32ba6528fb8dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77541015"
 ---
 # <a name="sql-server-best-practices-to-optimize-performance-in-azure-stack-hub"></a>有关优化 Azure Stack Hub 性能的 SQL Server 最佳做法

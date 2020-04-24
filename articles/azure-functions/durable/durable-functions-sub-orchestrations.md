@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 02/14/2020
 ms.author: v-junlch
 ms.openlocfilehash: cd9ad8c767979d2f9ea6bb57101278710a761044
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77428056"
 ---
 # <a name="sub-orchestrations-in-durable-functions-azure-functions"></a>Durable Functions 中的子业务流程 (Azure Functions)
@@ -66,7 +66,7 @@ module.exports = df.orchestrator(function*(context) {
 
 ---
 
-此业务流程协调程序函数可以按现样用于一次性设备预配，也可以用作大型业务流程的一部分。 在后一种情况下，父业务流程协调程序函数可以使用 `CallSubOrchestratorAsync` (.NET) 或 `callSubOrchestrator` (JavaScript) API 调度 `DeviceProvisioningOrchestration` 的实例。
+此业务流程协调程序函数可以按现样用于一次性设备预配，也可以用作大型业务流程的一部分。 在后一种情况下，父业务流程协调程序函数可以使用 `DeviceProvisioningOrchestration` (.NET) 或 `CallSubOrchestratorAsync` (JavaScript) API 调度 `callSubOrchestrator` 的实例。
 
 下面是一个示例，它展示了如何并行运行多个业务流程协调程序函数。
 

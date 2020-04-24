@@ -8,10 +8,10 @@ origin.date: 11/27/2018
 ms.date: 02/24/2020
 ms.author: v-yeche
 ms.openlocfilehash: 3e1ba5498342350b77842a56eb323e84d97669ce
-ms.sourcegitcommit: 781f68d27903687f0aa9e1ed273eee25c6d129a1
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77611268"
 ---
 # <a name="troubleshoot-azure-vm-extension-issues"></a>排查 Azure VM 扩展问题

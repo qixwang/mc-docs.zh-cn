@@ -10,10 +10,10 @@ ms.topic: conceptual
 origin.date: 01/14/2020
 ms.date: 03/02/2020
 ms.openlocfilehash: 4b096e7464d19d5f814979331d9cb0a85061a26b
-ms.sourcegitcommit: 094c057878de233180ff3b3a3e3c19bc11c81776
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77504176"
 ---
 # <a name="match-on-patterns-and-special-characters-dashes"></a>模式和特殊字符（短划线）匹配
