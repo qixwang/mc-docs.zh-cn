@@ -15,10 +15,10 @@ ms.date: 04/06/2020
 ms.author: v-jay
 ms.custom: seodec18
 ms.openlocfilehash: b482b6c50271ba7e779b27bc7f94fb75fae023ab
-ms.sourcegitcommit: fe9ed98aaee287a21648f866bb77cb6888f75b0c
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80625793"
 ---
 # <a name="filtering-ordering-and-paging-of-media-services-entities"></a>媒体服务实体的筛选、排序和分页

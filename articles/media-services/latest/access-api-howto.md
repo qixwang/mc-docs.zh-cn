@@ -15,10 +15,10 @@ origin.date: 03/15/2020
 ms.date: 04/06/2020
 ms.author: v-jay
 ms.openlocfilehash: 24b60290179e4fba1d9cc54eb61a4ab5571d648f
-ms.sourcegitcommit: fe9ed98aaee287a21648f866bb77cb6888f75b0c
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80625845"
 ---
 # <a name="get-credentials-to-access-media-services-api"></a>获取用于访问媒体服务 API 的凭据  

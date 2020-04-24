@@ -6,10 +6,10 @@ ms.author: v-junlch
 ms.date: 03/30/2020
 ms.topic: article
 ms.openlocfilehash: 8c01a864f5caf7240a12757ce163729e3ab43ffa
-ms.sourcegitcommit: 64584c0bf31b4204058ae2b4641356b904ccdd58
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80581857"
 ---
 # <a name="azure-functions-custom-handlers-preview"></a>Azure Functions 自定义处理程序（预览版）
@@ -24,7 +24,7 @@ ms.locfileid: "80581857"
 - 在默认不支持的某个语言版本或运行时中实现函数应用
 - 对应用执行环境进行精细控制
 
-使用自定义处理程序时，将通过[扩展绑定](./functions-bindings-register.md)来支持所有[触发器以及输入和输出绑定](./functions-triggers-bindings.md)。
+使用自定义处理程序时，将通过[扩展绑定](./functions-triggers-bindings.md)来支持所有[触发器以及输入和输出绑定](./functions-bindings-register.md)。
 
 ## <a name="overview"></a>概述
 
@@ -60,7 +60,7 @@ ms.locfileid: "80581857"
 
 应用程序是通过 host.json 文件配置的。  此文件指向能够处理 HTTP 事件的 Web 服务器，以此告知 Functions 主机要将请求发送到哪个位置。
 
-自定义处理程序的定义方式是通过 `httpWorker` 节在 host.json 文件中配置有关如何运行 Web 服务器的详细信息。 
+自定义处理程序的定义方式是通过  *节在 host.json 文件中配置有关如何运行 Web 服务器的详细信息。* `httpWorker`
 
 ```json
 {
@@ -183,7 +183,7 @@ ms.locfileid: "80581857"
 | ------------- | --------- | ------------------------------------------------------------ |
 | `Outputs`     | JSON      | 保存 function.json 文件中 `bindings` 数组定义的响应值。 <br /><br />例如，如果为某个函数定义了名为“blob”的 blob 存储输出绑定，则 `Outputs` 将包含名为 `blob` 的键，此键设置为 blob 的值。 |
 | `Logs`        | array     | 消息将显示在 Functions 调用日志中。<br /> |
-| `ReturnValue` | string    | 将输出配置为 function.json 文件中的 `$return` 时用于提供响应。  |
+| `ReturnValue` | 字符串    | 将输出配置为 function.json 文件中的 `$return` 时用于提供响应。  |
 
 请参阅[示例有效负载](#bindings-implementation)。
 
@@ -235,7 +235,7 @@ content-type: application/json
 
 该函数配置为接受 `GET` 和 `POST` 请求，结果值通过名为 `res` 的参数提供。
 
-在应用的根目录中，host.json 文件配置为运行 Node.js 并指向 `server.js` 文件。 
+在应用的根目录中，host.json 文件配置为运行 Node.js 并指向  *文件。* `server.js`
 
 ```json
 {
@@ -331,9 +331,9 @@ content-type: application/json
 
 ```
 
-此函数定义为返回 [HTTP 响应](./functions-bindings-http-webhook-output.md)并输出[队列存储](./functions-bindings-storage-queue-output.md)消息的 [HTTP 触发的函数](./functions-bindings-http-webhook-trigger.md)。
+此函数定义为返回 [HTTP 响应](./functions-bindings-http-webhook-trigger.md)并输出[队列存储](./functions-bindings-http-webhook-output.md)消息的 [HTTP 触发的函数](./functions-bindings-storage-queue-output.md)。
 
-在应用的根目录中，host.json 文件配置为运行 Node.js 并指向 `server.js` 文件。 
+在应用的根目录中，host.json 文件配置为运行 Node.js 并指向  *文件。* `server.js`
 
 ```json
 {

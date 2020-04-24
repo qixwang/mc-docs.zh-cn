@@ -12,10 +12,10 @@ ms.date: 04/01/2020
 ms.author: v-junlch
 ms.subservice: B2C
 ms.openlocfilehash: ebab6d3bc9d8e65915d254395d67d5c1cde3c647
-ms.sourcegitcommit: 64584c0bf31b4204058ae2b4641356b904ccdd58
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80581852"
 ---
 # <a name="define-a-phone-factor-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>在 Azure Active Directory B2C 自定义策略中定义电话因素技术配置文件
@@ -33,7 +33,7 @@ Azure Active Directory B2C (Azure AD B2C) 支持注册和验证电话号码。 �
 
 ## <a name="protocol"></a>协议
 
-“Protocol”  元素的“Name”  属性必须设置为 `Proprietary`。 handler 属性必须包含 Azure AD B2C 对电话因素使用的协议处理程序程序集的完全限定名称：`Web.TPEngine.Providers.PhoneFactorProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null` 
+“Protocol”  元素的“Name”  属性必须设置为 `Proprietary`。 handler 属性必须包含 Azure AD B2C 对电话因素使用的协议处理程序程序集的完全限定名称：  `Web.TPEngine.Providers.PhoneFactorProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null`
 
 以下示例演示了用于注册和验证的电话因素技术配置文件：
 
@@ -89,9 +89,9 @@ OutputClaimsTransformations 元素可以包含用于修改输出声明或生成�
 不使用“CryptographicKeys”  元素。
 
 
-## <a name="metadata"></a>Metadata
+## <a name="metadata"></a>元数据
 
-| 属性 | 必须 | 说明 |
+| Attribute | 必选 | 说明 |
 | --------- | -------- | ----------- |
 | ContentDefinitionReferenceId | 是 | 与此技术配置文件关联的[内容定义](contentdefinitions.md)的标识符。 |
 | ManualPhoneNumberEntryAllowed| 否 | 指定是否允许用户手动输入电话号码。 可能的值：`true` 或 `false`（默认值）。|

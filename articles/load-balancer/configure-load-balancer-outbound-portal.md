@@ -10,10 +10,10 @@ origin.date: 09/24/2019
 ms.date: 04/06/2020
 ms.author: v-jay
 ms.openlocfilehash: 6de0bf9bdff424e3a898943457521847d2ad9758
-ms.sourcegitcommit: fe9ed98aaee287a21648f866bb77cb6888f75b0c
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80625803"
 ---
 # <a name="configure-load-balancing-and-outbound-rules-in-standard-load-balancer-by-using-the-azure-portal"></a>使用 Azure 门户在标准负载均衡器中配置负载均衡和出站规则
@@ -36,10 +36,10 @@ ms.locfileid: "80625803"
 
 在本部分，你将创建一个负载均衡器用于对虚拟机进行负载均衡。 可以创建公共负载均衡器或内部负载均衡器。 创建公共负载均衡器时，将创建一个新的公共 IP 地址，该地址配置为负载均衡器的前端。 前端默认命名为 LoadBalancerFrontEnd。 
 
-1. 在屏幕的左上方，选择“创建资源” > “网络” > “负载均衡器”    。
+1. 在屏幕的左上方，选择“创建资源” **“网络”** “负载均衡器” >    >   。
 2. 在“创建负载均衡器”页的“基本信息”选项卡中，输入或选择以下信息：  
 
-    | 设置                 | Value                                              |
+    | 设置                 | 值                                              |
     | ---                     | ---                                                |
     | 订阅               | 选择订阅。    |    
     | 资源组         | 选择“新建”并在文本框中键入 **myResourceGroupSLB**  。|
@@ -79,7 +79,7 @@ ms.locfileid: "80625803"
 1. 在左侧菜单中选择“所有服务”，选择“所有资源”，然后在资源列表中选择“myLoadBalancer”。   
 2. 在“设置”下，依次选择“运行状况探测”、“添加”。   
     
-    | 设置 | Value |
+    | 设置 | 值 |
     | ------- | ----- |
     | 名称 | 输入 **myHealthProbe**。 |
     | 协议 | 选择“HTTP”。  |
@@ -106,7 +106,7 @@ ms.locfileid: "80625803"
 2. 在“设置”下，依次选择“负载均衡规则”、“添加”。   
 3. 使用以下值配置负载均衡规则：
     
-    | 设置 | Value |
+    | 设置 | 值 |
     | ------- | ----- |
     | 名称 | 输入 **myHTTPRule**。 |
     | 协议 | 选择“TCP”  。 |
@@ -128,14 +128,14 @@ ms.locfileid: "80625803"
 
 3. 使用以下值完成出站前端 IP 配置：
 
-    | 设置 | Value |
+    | 设置 | 值 |
     | ------- | ----- |
     | 名称 | 输入 LoadBalancerFrontEndOutbound。  |
     | IP 版本 | 选择“IPv4”。  |
     | IP 类型 | 选择“IP 地址”。 |
     | 公共 IP 地址 | 选择“新建”。  在“添加公共 IP 地址”中输入 myPublicIPOutbound。    选择“确定”  。 |
 
-4. 选择“添加”   。
+4. 选择 **添加** 。
 
 ### <a name="create-an-outbound-backend-pool"></a>创建出站后端池
 
@@ -153,18 +153,18 @@ ms.locfileid: "80625803"
 
 3. 使用以下值配置出站规则：
 
-    | 设置 | Value |
+    | 设置 | 值 |
     | ------- | ----- |
     | 名称 | 输入 myOutboundRule。  |
     | 前端 IP 地址 | 选择“LoadBalancerFrontEndOutbound”。  |
-    | 空闲超时(分钟) | 将滑块移到 **15 分钟位置。|
+    | 空闲超时（分钟） | 将滑块移到 **15 分钟位置。|
     | TCP 重置 | 选择“启用”。 |
     | 后端池 | 选择“myBackendPoolOutbound”  |
     | 端口分配 -> 端口分配 | 选择“手动选择出站端口数”  |
     | 出站端口 -> 选择方式 | 选择“每个实例的端口数”  |
     | 出站端口 -> 每个实例的端口数 | 输入 10,000。  |
 
-4. 选择“添加”   。
+4. 选择 **添加** 。
 
 ## <a name="clean-up-resources"></a>清理资源
 

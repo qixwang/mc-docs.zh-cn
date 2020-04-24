@@ -8,10 +8,10 @@ ms.date: 04/06/2020
 ms.author: v-yeche
 zone_pivot_groups: client-operating-system
 ms.openlocfilehash: 8bb7cdb0d5080d593d1dcfe5e74469f0d81e23a4
-ms.sourcegitcommit: 76280dd9854dc0ff0ba1e5e62fb3dc3af049fbe2
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80517006"
 ---
 <!--CORRECT ON client-operating-system-->
@@ -24,7 +24,7 @@ ms.locfileid: "80517006"
 > [!NOTE]
 > 以下说明引用 Istio 版本 `1.4.0`。
 >
-> Istio 团队已针对 Kubernetes 版本 `1.13`、`1.14` 和 `1.15` 测试了 `1.4.x` 版本。 可以在 [GitHub - Istio 版本][istio-github-releases]中找到其他 Istio 版本，在 [Istio 新闻][istio-release-notes]中找到有关每个版本的信息，在[一般的 Istio 常见问题解答][istio-faq]中找到支持的 Kubernetes 版本。
+> Istio 团队已针对 Kubernetes 版本 `1.4.x`、`1.13` 和 `1.14` 测试了 `1.15` 版本。 可以在 [GitHub - Istio 版本][istio-github-releases]中找到其他 Istio 版本，在 [Istio 新闻][istio-release-notes]中找到有关每个版本的信息，在[一般的 Istio 常见问题解答][istio-faq]中找到支持的 Kubernetes 版本。
 
 在本文中，学习如何：
 
@@ -35,7 +35,7 @@ ms.locfileid: "80517006"
 > * 访问加载项
 > * 从 AKS 中卸载 Istio
 
-## <a name="before-you-begin"></a>准备阶段
+## <a name="before-you-begin"></a>开始之前
 
 本文中详述的步骤假设已创建 AKS 群集（已启用 RBAC 的 Kubernetes `1.13` 及更高版本）并已与该群集建立 `kubectl` 连接。 如果需要帮助完成这些项目，请参阅 [AKS 快速入门][aks-quickstart]。
 
@@ -67,7 +67,7 @@ ms.locfileid: "80517006"
 
 我们将安装 [Grafana][grafana] 和 [Kiali][kiali] 作为 Istio 安装的一部分。 Grafana 提供分析和监视仪表板，Kiali 提供服务网格观察仪表板。 在设置中，上述每个组件都需要凭据，必须以[机密][kubernetes-secrets]的形式提供这些凭据。
 
-在安装 Istio 组件之前，必须为 Grafana 和 Kiali 创建机密。 需要将这些机密安装到 Istio 将使用的 `istio-system` 命名空间中，因此我们还需要创建该命名空间。 在通过 `kubectl create` 创建命名空间时，需要使用 `--save-config` 选项，以便 Istio 安装程序将来可以在此对象上运行 `kubectl apply`。
+在安装 Istio 组件之前，必须为 Grafana 和 Kiali 创建机密。 需要将这些机密安装到 Istio 将使用的 `istio-system` 命名空间中，因此我们还需要创建该命名空间。 在通过 `--save-config` 创建命名空间时，需要使用 `kubectl create` 选项，以便 Istio 安装程序将来可以在此对象上运行 `kubectl apply`。
 
 ```console
 kubectl create namespace istio-system --save-config
@@ -399,7 +399,7 @@ kubectl delete -f istio-components-aks -R
 
 - [Istio - 安装指南][istio-installation-guides]
 
-也可以使用以下示例应用程序按照其他方案操作：
+也可使用以下项按照其他方案操作：
 
 - [Istio Bookinfo 应用程序示例][istio-bookinfo-example]
 

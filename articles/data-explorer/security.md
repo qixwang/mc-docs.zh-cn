@@ -9,10 +9,10 @@ ms.topic: conceptual
 origin.date: 01/06/2020
 ms.date: 03/16/2020
 ms.openlocfilehash: d44199e0a14918c16d3c5d06deea39a1b5cce205
-ms.sourcegitcommit: 44d3fe59952847e5394bbe6c05bd6f333bb56345
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80522055"
 ---
 # <a name="secure-azure-data-explorer-clusters-in-azure"></a>在 Azure 中保护 Azure 数据资源管理器群集
@@ -59,7 +59,7 @@ Use Azure Key Vault to store your customer-managed keys. You can create your own
 
 ## <a name="role-based-access-control"></a>基于角色的访问控制
 
-使用[基于角色的访问控制 (RBAC)](/role-based-access-control/overview) 可以在团队中分离职责，并只向群集用户授予所需的访问权限。 可以仅允许某些操作，而不是向群集上的每个人授予不受限制的权限。 可以使用 [Azure 门户](/role-based-access-control/role-assignments-portal)、[Azure CLI](/role-based-access-control/role-assignments-cli) 或 [Azure PowerShell](/role-based-access-control/role-assignments-powershell) [针对数据库配置访问控制](/data-explorer/manage-database-permissions)。
+使用[基于角色的访问控制 (RBAC)](/role-based-access-control/overview) 可以在团队中分离职责，并只向群集用户授予所需的访问权限。 可以仅允许某些操作，而不是向群集上的每个人授予不受限制的权限。 可以使用 [Azure 门户](/data-explorer/manage-database-permissions)、[Azure CLI](/role-based-access-control/role-assignments-portal) 或 [Azure PowerShell](/role-based-access-control/role-assignments-cli) [针对数据库配置访问控制](/role-based-access-control/role-assignments-powershell)。
 
 ## <a name="next-steps"></a>后续步骤
 

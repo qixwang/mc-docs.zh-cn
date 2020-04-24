@@ -9,10 +9,10 @@ ms.date: 03/31/2020
 ms.author: v-junlch
 ms.custom: mvc
 ms.openlocfilehash: 72296519533437e60266d24958f5bfa974807be8
-ms.sourcegitcommit: 64584c0bf31b4204058ae2b4641356b904ccdd58
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80581715"
 ---
 # <a name="tutorial-create-and-use-a-custom-image-for-virtual-machine-scale-sets-with-the-azure-cli"></a>教程：通过 Azure CLI 创建和使用虚拟机规模集的自定义映像
@@ -77,7 +77,7 @@ exit
 ## <a name="create-a-custom-vm-image-from-the-source-vm"></a>从源 VM 创建自定义 VM 映像
 现已自定义源 VM，其上已安装 Nginx Web 服务器。 让我们创建与规模集配合使用的自定义 VM 映像。
 
-若要创建映像，需要解除分配 VM。 使用 [az vm deallocate](/cli/vm)解除分配 VM。 然后，使用 [az vm generalize](/cli/vm) 将 VM 的状态设置为已通用化，以便 Azure 平台知道该 VM 可使用自定义映像。 只能从通用化 VM 创建映像：
+若要创建映像，需要解除分配 VM。 使用 [az vm deallocate](/cli/vm) 解除分配 VM。 然后，使用 [az vm generalize](/cli/vm) 将 VM 的状态设置为已通用化，以便 Azure 平台知道该 VM 可使用自定义映像。 只能从通用化 VM 创建映像：
 
 
 ```azurecli
@@ -146,7 +146,7 @@ az network public-ip show `
 
 
 ## <a name="clean-up-resources"></a>清理资源
-若要删除规模集和其他资源，请使用 [az group delete](/cli/group) 删除资源组及其所有资源。 `--no-wait` 参数会使光标返回提示符处，无需等待操作完成。 `--yes` 参数将确认是否希望删除资源，而不会有额外提示。
+若要删除规模集和其他资源，请使用 [az group delete](/cli/group) 删除资源组及其所有资源。 `--no-wait` 参数会使光标返回提示符处，不会等待操作完成。 `--yes` 参数将确认是否希望删除资源，不会显示询问是否删除的额外提示。
 
 ```azurecli
 az group delete --name myResourceGroup --no-wait --yes

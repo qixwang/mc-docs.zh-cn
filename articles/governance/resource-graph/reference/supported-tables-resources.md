@@ -6,15 +6,15 @@ ms.date: 03/30/2020
 ms.topic: reference
 ms.author: v-tawe
 ms.openlocfilehash: 686a2ada382b66d82eb9d0c450f68a81fbf2b38b
-ms.sourcegitcommit: 260800ede66f48c886d1426a0fac18b4d402b4f2
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80586775"
 ---
 # <a name="azure-resource-graph-table-and-resource-type-reference"></a>Azure Resource Graph 表和资源类型引用
 
-Azure Resource Graph 支持 [Azure 资源管理器](../../../azure-resource-manager/management/overview.md)的下列**资源类型**。 每个**资源类型**都是 Resource Graph 中的**表**的一部分。
+Azure Resource Graph 支持 **Azure 资源管理器**的下列[资源类型](../../../azure-resource-manager/management/overview.md)。 每个**资源类型**都是 Resource Graph 中的**表**的一部分。
 
 ## <a name="advisorresources"></a>advisorresources
 
@@ -36,7 +36,7 @@ Azure Resource Graph 支持 [Azure 资源管理器](../../../azure-resource-mana
 - microsoft.resources/subscriptions
 - microsoft.resources/subscriptions/resourcegroups
 
-## <a name="resources"></a>resources
+## <a name="resources"></a>资源
 
 - 84codes.cloudamqp/servers
 - citrix.services/xenappessentials

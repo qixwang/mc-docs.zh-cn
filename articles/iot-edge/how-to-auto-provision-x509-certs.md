@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: f9608390f6d540367944bfa3239ba388ab867e48
-ms.sourcegitcommit: 260800ede66f48c886d1426a0fac18b4d402b4f2
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80586835"
 ---
 # <a name="create-and-provision-an-iot-edge-device-using-x509-certificates"></a>使用 X.509 证书创建和预配 IoT Edge 设备
@@ -31,7 +31,7 @@ ms.locfileid: "80586835"
 
 ## <a name="prerequisites"></a>先决条件
 
-* 一个有效的 IoT 中心。
+* 活动的 IoT 中心。
 * 一个充当 IoT Edge 设备的物理设备或虚拟设备。
 * 已安装最新版本的 [Git](https://git-scm.com/download/)。
 * Azure 中的一个 IoT 中心设备预配服务实例，该实例已链接到 IoT 中心。

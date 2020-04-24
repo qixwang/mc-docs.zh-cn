@@ -9,10 +9,10 @@ origin.date: 01/23/2020
 ms.date: 04/06/2020
 ms.author: v-jay
 ms.openlocfilehash: a6c7e50e0e2e830a66d13dd950697594ac60b5ef
-ms.sourcegitcommit: fe9ed98aaee287a21648f866bb77cb6888f75b0c
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80625826"
 ---
 # <a name="upgrade-azure-internal-load-balancer---outbound-connection-required"></a>升级 Azure 内部负载均衡器 - 需要出站连接

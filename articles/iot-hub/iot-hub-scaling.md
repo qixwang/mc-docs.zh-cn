@@ -12,10 +12,10 @@ origin.date: 06/28/2019
 ms.author: v-yiso
 ms.date: 09/30/2019
 ms.openlocfilehash: a08ea96409e185085a80559b675594ede6dbdc37
-ms.sourcegitcommit: 5fb45da006859215edc8211481f13174aa43dbeb
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80634369"
 ---
 # <a name="choose-the-right-iot-hub-tier-for-your-solution"></a>选择适用于解决方案的 IoT 中心层
@@ -51,7 +51,7 @@ IoT 中心的标准层启用了所有功能，是任何需要使用双向通信�
 IoT 中心还提供一个免费层，用于测试和评估。 它具有标准层的所有功能，但消息传递有限额。 不能从免费层升级到基本层或标准层。 
 
 
-## <a name="partitions"></a>分区
+## <a name="partitions"></a>“度量值组”
 
 Azure IoT 中心包含 [Azure 事件中心](../event-hubs/event-hubs-features.md)的许多核心组件，包括[分区](../event-hubs/event-hubs-features.md#partitions)。 IoT 中心的事件流通常由各种 IoT 设备报告的传入遥测数据进行填充。 事件流的分区功能用来减少当事件流有并发的读取和写入时发生的连接。 
 
@@ -128,7 +128,7 @@ IoT 中心的流量按单元进行度量。 创建 IoT 中心时，请选择其�
 ### <a name="identity-registry-operation-throughput"></a>标识注册表操作吞吐量
 由于大多数 IoT 中心标识注册表操作都与设备预配相关，因此不认为这些操作是运行时操作。
 
-有关具体的突发性能数字，请参阅 [IoT 中心配额和限制](iot-hub-devguide-quotas-throttling.md)。
+有关特定脉冲性能数字，请参阅 [IoT 中心配额和限制](iot-hub-devguide-quotas-throttling.md)。
 
 ## <a name="auto-scale"></a>自动缩放
 如果即将达到 IoT 中心允许的消息限制，可以使用这些[用于自动缩放的步骤](https://azure.microsoft.com/resources/samples/iot-hub-dotnet-autoscale/)在同一 IoT 中心层内增加一个 IoT 中心单元。

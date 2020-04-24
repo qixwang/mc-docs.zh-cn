@@ -22,7 +22,7 @@
           href: stream-files-tutorial-with-rest.md
         - name: 使用 CLI
           href: stream-files-cli-quickstart.md
-        - name: （使用 .NET）
+        - name: 使用 .NET
           href: stream-files-dotnet-quickstart.md
         - name: 利用 Node.js
           href: stream-files-nodejs-quickstart.md
@@ -174,10 +174,10 @@
         - name: v2 与 v3
           displayName: 'migrate, v2 to v3'
           href: media-services-v2-vs-v3.md
-        - name: 迁移指南
+        - name: 迁移指导
           href: migrate-from-v2-to-v3.md
           displayName: naming
-- name: 操作指南
+- name: 操作方法指南
   items:
     - name: 入门
       items:
@@ -216,7 +216,7 @@
           href: job-input-from-http-how-to.md
         - name: 从本地文件
           items:
-            - name: （使用 .NET）
+            - name: 使用 .NET
               displayName: upload
               href: job-input-from-local-file-how-to.md
             - name: 使用 REST
@@ -242,7 +242,7 @@
           href: job-input-from-local-file-how-to.md
         - name: 通过自定义转换进行编码
           items:
-            - name: （使用 .NET）
+            - name: 使用 .NET
               displayName: 'encode, encoding, custom, transform'
               href: customize-encoder-presets-how-to.md
             - name: 使用 CLI
@@ -253,7 +253,7 @@
               href: custom-preset-rest-howto.md
         - name: 对视频进行子剪辑
           items:
-            - name: （使用 .NET）
+            - name: 使用 .NET
               href: subclip-video-dotnet-howto.md
               displayName: 'subclipping, clip, edit, trim, clipping'
             - name: 使用 REST
@@ -283,7 +283,7 @@
           href: offline-plaready-streaming-for-windows-10.md
     - name: 创建筛选器
       items:
-        - name: （使用 .NET）
+        - name: 使用 .NET
           href: filters-dynamic-manifest-dotnet-howto.md
           displayName: filters
         - name: 使用 REST
@@ -336,7 +336,7 @@
           href: 'https://aka.ms/ams-v3-nodejs-ref'
         - name: Go
           href: 'https://aka.ms/ams-v3-go-ref'
-    - name: Resource Manager 模板
+    - name: 资源管理器模板
       href: 'https://docs.microsoft.com/azure/templates/microsoft.media/allversions'
 - name: 资源
   items:

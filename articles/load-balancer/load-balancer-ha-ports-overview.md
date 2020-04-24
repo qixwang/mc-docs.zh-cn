@@ -15,10 +15,10 @@ origin.date: 09/19/2019
 ms.date: 04/06/2020
 ms.author: v-jay
 ms.openlocfilehash: c23be47f62d6390ac61c865bde3bf3d3298312fe
-ms.sourcegitcommit: fe9ed98aaee287a21648f866bb77cb6888f75b0c
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80625637"
 ---
 # <a name="high-availability-ports-overview"></a>高可用性端口概述

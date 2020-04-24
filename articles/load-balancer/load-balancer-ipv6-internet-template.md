@@ -16,10 +16,10 @@ origin.date: 09/25/2017
 ms.date: 04/06/2020
 ms.author: v-jay
 ms.openlocfilehash: f667c28891fb36dc0255cdbfba79f4da2035b7e1
-ms.sourcegitcommit: fe9ed98aaee287a21648f866bb77cb6888f75b0c
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80625642"
 ---
 # <a name="deploy-an-internet-facing-load-balancer-solution-with-ipv6-using-a-template"></a>使用模板部署分配了 IPv6 的面向 Internet 的负载均衡器解决方案
@@ -33,7 +33,7 @@ ms.locfileid: "80625642"
 >[!NOTE] 
 >本文介绍了一项简介性的 IPv6 功能，该功能允许基本负载均衡器提供 IPv4 和 IPv6 连接。 [适用于 Azure VNET 的 IPv6](../virtual-network/ipv6-overview.md) 现在提供综合性 IPv6 连接，可以将 IPv6 连接与虚拟网络集成，包含 IPv6 网络安全组规则、IPv6 用户定义路由、IPv6 基本和标准负载均衡等关键功能。  适用于 Azure VNET 的 IPv6 是建议用于 Azure 中的 IPv6 应用程序的标准。 请参阅[适用于 Azure VNET PowerShell 部署的 IPv6](../virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md)  
 
-Azure 负载均衡器是位于第 4 层 (TCP, UDP) 的负载均衡器。 该负载均衡器可以在云服务或负载均衡器集的虚拟机中运行状况良好的服务实例之间分配传入流量，从而提供高可用性。 Azure 负载均衡器还可以在多个端口和/或多个 IP 地址上显示这些服务。
+Azure load balancer 是位于第 4 层 (TCP, UDP) 的负载均衡器。 该负载均衡器可以在云服务或负载均衡器集的虚拟机中运行状况良好的服务实例之间分配传入流量，从而提供高可用性。 Azure Load Balancer 还可以在多个端口和/或多个 IP 地址上显示这些服务。
 
 ## <a name="example-deployment-scenario"></a>示例部署方案
 
@@ -41,7 +41,7 @@ Azure 负载均衡器是位于第 4 层 (TCP, UDP) 的负载均衡器。 该负�
 
 ![负载均衡器方案](./media/load-balancer-ipv6-internet-template/lb-ipv6-scenario.png)
 
-在此方案中，会创建以下 Azure 资源：
+在此方案中，将创建以下 Azure 资源：
 
 * 虚拟网络接口，用于每个已分配 IPv4 和 IPv6 地址的 VM
 * 已分配 IPv4 和 IPv6 公共 IP 地址的面向 Internet 的负载均衡器
@@ -51,7 +51,7 @@ Azure 负载均衡器是位于第 4 层 (TCP, UDP) 的负载均衡器。 该负�
 
 ## <a name="deploying-the-template-using-the-azure-portal"></a>使用 Azure 门户部署模板
 
-本文档参考了 [Azure 快速入门模板](https://azure.microsoft.com/documentation/templates/201-load-balancer-ipv6-create/) 库中发布的模板。 可以从该库下载模板，或者在 Azure 中直接从库启动部署。 本文假设已将模板下载到本地计算机。
+本文档参考了 [Azure 快速入门模板](https://azure.microsoft.com/documentation/templates/201-load-balancer-ipv6-create/)库中发布的模板。 可以从该库下载模板，或者在 Azure 中直接从库启动部署。 本文假设已将模板下载到本地计算机。
 
 1. 打开 Azure 门户，使用有权在 Azure 订阅中创建 VM 和网络资源的帐户登录。 此外，除非使用现有资源，否则该帐户必须有权创建资源组和存储帐户。
 2. 在菜单中单击“+新建”，并在搜索框中键入“模板”。 在搜索结果中选择“模板部署”。
@@ -77,9 +77,9 @@ Azure 负载均衡器是位于第 4 层 (TCP, UDP) 的负载均衡器。 该负�
 
     ![lb-ipv6-portal-step6](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step6.png)
 
-    有关这些参数的详细信息，请参阅本文稍后的 [模板参数和变量](#template-parameters-and-variables) 部分。
+    有关这些参数的详细信息，请参阅本文后面的[模板参数和变量](#template-parameters-and-variables)部分。
 
-7. 如果要查看模板创建的资源，请单击“浏览”，向下滚动列表，直到看到“资源组”，并单击它。
+7. 要查看模板创建的资源，请单击“浏览”，向下滚动列表，直到看到“资源组”，并单击它。
 
     ![lb-ipv6-portal-step7](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step7.png)
 
@@ -88,7 +88,7 @@ Azure 负载均衡器是位于第 4 层 (TCP, UDP) 的负载均衡器。 该负�
     ![lb-ipv6-portal-step8](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step8.png)
 
     > [!NOTE]
-    > 如果在完成步骤 6 之后立即浏览资源组，“上次部署”会显示“正在部署”状态，因为此时正在部署资源。
+    > 正在部署资源时，如果在完成步骤 6 之后立即浏览资源组，“上次部署”将显示“正在部署”状态。
 
 9. 在资源列表中单击“myIPv6PublicIP”。 可以看到它在 IP 地址下有一个 IPv6 地址，其 DNS 名称是在步骤 6 中为 dnsNameforIPv6LbIP 参数指定的值。 此资源是公共 IPv6 地址和主机名，可以访问 Internet 客户端。
 
@@ -108,11 +108,11 @@ Azure 负载均衡器是位于第 4 层 (TCP, UDP) 的负载均衡器。 该负�
 
 ## <a name="template-parameters-and-variables"></a>模板参数和变量
 
-Azure Resource Manager 模板包含可根据需要自定义的多个变量和参数。 对于不希望用户更改的固定值，可以使用变量。 对于在部署模板不希望用户提供的值，可以使用参数。 该示例模板是针对本文所述的方案配置的。 可以根据环境需求自定义此模板。
+Azure 资源管理器模板包含可根据需要自定义的多个变量和参数。 对于不希望用户更改的固定值，可以使用变量。 对于在部署模板不希望用户提供的值，可以使用参数。 该示例模板是针对本文所述的方案配置的。 可以根据环境需求自定义此模板。
 
 本文中使用的示例模板包含以下变量和参数：
 
-| 参数/变量 | 注释 |
+| 参数/变量 | 说明 |
 | --- | --- |
 | adminUsername |指定用于登录到虚拟机的管理员帐户名。 |
 | adminPassword |指定用于登录到虚拟机的管理员帐户密码。 |

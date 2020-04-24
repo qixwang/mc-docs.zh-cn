@@ -11,10 +11,10 @@ origin.date: 12/02/2019
 ms.date: 03/30/2020
 ms.author: v-tawe
 ms.openlocfilehash: ebfff9a00b174a848ab7b0f4d74471b0f30d9de4
-ms.sourcegitcommit: 260800ede66f48c886d1426a0fac18b4d402b4f2
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80586817"
 ---
 # <a name="event-hubs-frequently-asked-questions"></a>事件中心常见问题
@@ -39,7 +39,7 @@ Azure 事件中心标准层提供的功能超出了基本层中提供的功能�
 
 * 更长的事件保留期
 * 其他中转连接，对于超出包含的数量的部分收取超额费用
-* 多于单个[使用者组](event-hubs-features.md#consumer-groups)
+* 多个[使用者组](event-hubs-features.md#consumer-groups)
 * [捕获](event-hubs-capture-overview.md)
 
 有关定价层的详细信息（包括专用事件中心），请参阅[事件中心定价详细信息](https://www.azure.cn/pricing/details/event-hubs/)。
@@ -114,7 +114,7 @@ Azure 事件中心标准层提供的功能超出了基本层中提供的功能�
 是的，吞吐量单位 (TU) 适用于事件中心命名空间中的所有事件中心。 这意味着，TU 是在命名空间级别购买的，并在该命名空间下的事件中心之间共享。 每个 TU 为命名空间赋予以下功能：
 
 - 入口事件（发送到事件中心的事件）最多为每秒 1 MB，但每秒不超过 1000 个入口事件、管理操作或控制 API 调用。
-- 出口事件（从事件中心使用的事件）最多达每秒 2 MB，但不超过 4096 个。
+- 出口事件（从事件中心耗用的事件）最多达每秒 2 MB，但不超过 4096 个出口事件。
 - 事件存储空间最多为 84 GB（对于默认的 24 小时保留期而言已足够）。
 
 ### <a name="how-are-throughput-units-billed"></a>吞吐量单位如何计费？
@@ -166,7 +166,7 @@ Azure 事件中心标准层提供的功能超出了基本层中提供的功能�
 ### <a name="how-do-i-create-an-event-hubs-dedicated-cluster"></a>如何创建事件中心专用群集？
 可以通过提交[提高配额支持请求](https://portal.azure.cn/#create/Microsoft.Support)或联系[事件中心团队](mailto:askeventhubs@microsoft.com)来创建事件中心专用群集。 通常，我们需要花费大约两周时间来部署群集，并将其转交给你使用。 此过程是暂时性的，到时会 Azure 门户或 Azure 资源管理器模板提供完全自助的服务，只需大约两个小时即可部署群集。
 
-## <a name="best-practices"></a>最佳实践
+## <a name="best-practices"></a>最佳做法
 
 ### <a name="how-many-partitions-do-i-need"></a>需要多少分区？
 分区数在创建时指定，必须介于 2 到 32 之间。 分区计数不可更改，因此在设置分区计数时应考虑长期规模。 分区是一种数据组织机制，与使用方应用程序中所需的下游并行度相关。 事件中心的分区数与预期会有的并发读取者数直接相关。 有关分区的详细信息，请参阅[分区](event-hubs-features.md#partitions)。
@@ -193,7 +193,7 @@ Azure 事件中心标准层提供的功能超出了基本层中提供的功能�
 
 ### <a name="how-are-event-hubs-ingress-events-calculated"></a>事件中心入口事件是怎样计算的？
 
-发送到事件中心的每个事件均计为一条可计费消息。 *入口事件* 定义为小于等于 64 KB 的数据单位。 任何小于等于 64 KB 的事件均被视为一个计费事件。 如果该事件大于 64 KB，则根据事件大小按 64 KB 的倍数来计算计费事件的数量。 例如，发送到事件中心的 8-KB 事件按一个事件计费，而发送到事件中心的 96-KB 的消息则按两个事件计费。
+发送到事件中心的每个事件均计为一条可计费消息。 *入口事件*定义为小于等于 64 KB 的数据单位。 任何小于等于 64 KB 的事件均被视为一个计费事件。 如果该事件大于 64 KB，则根据事件大小按 64 KB 的倍数来计算计费事件的数量。 例如，发送到事件中心的 8-KB 事件按一个事件计费，而发送到事件中心的 96-KB 的消息则按两个事件计费。
 
 从事件中心耗用的事件，以及管理操作和控制调用（例如检查点），不统计为计费入口事件，但会累计，上限为吞吐量单位限额。
 
@@ -228,7 +228,7 @@ Azure 事件中心标准层提供的功能超出了基本层中提供的功能�
 
 ### <a name="support-and-sla"></a>支持和 SLA
 
-事件中心的技术支持可通过 [社区论坛](https://www.azure.cn/support/contact/)获得。 计费和订阅管理支持免费提供。
+事件中心的技术支持可通过[社区论坛](https://www.azure.cn/support/contact/)获得。 计费和订阅管理支持免费提供。
 
 若要详细了解我们的 SLA，请参阅[服务级别协议](https://www.azure.cn/support/legal/sla/)页面。
 

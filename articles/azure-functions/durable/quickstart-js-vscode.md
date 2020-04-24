@@ -6,10 +6,10 @@ ms.topic: quickstart
 ms.date: 03/31/2020
 ms.reviewer: azfuncdf, antchu
 ms.openlocfilehash: 53494afff3bd7601cbeefe7d0e6d0b440f0c7209
-ms.sourcegitcommit: 64584c0bf31b4204058ae2b4641356b904ccdd58
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80581797"
 ---
 # <a name="create-your-first-durable-function-in-javascript"></a>使用 JavaScript 创建你的第一个持久函数
@@ -22,7 +22,7 @@ ms.locfileid: "80581797"
 
 ![在 Azure 中运行持久函数](./media/quickstart-js-vscode/functions-vs-code-complete.png)
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 完成本教程：
 
@@ -36,7 +36,7 @@ ms.locfileid: "80581797"
 
 * 确保已安装 [Node.js](https://nodejs.org/) 版本 10.x 或 12.x。
 
-如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial)。
+如果没有 Azure 订阅，可在开始前创建一个 [试用帐户](https://www.azure.cn/pricing/1rmb-trial) 。
 
 ## <a name="create-your-local-project"></a><a name="create-an-azure-functions-project"></a>创建本地项目 
 
@@ -50,9 +50,9 @@ ms.locfileid: "80581797"
 
 1. 按照提示提供以下信息：
 
-    | Prompt | Value | 说明 |
+    | Prompt | 值 | 说明 |
     | ------ | ----- | ----------- |
-    | 选择函数应用项目的语言 | Javascript | 创建本地 Node.js Functions 项目。 |
+    | 选择函数应用项目的语言 | JavaScript | 创建本地 Node.js Functions 项目。 |
     | 选择版本 | Azure Functions v3 | 仅当尚未安装 Core Tools 时，才会出现此选项。 在本例中，当你首次运行应用时即已安装 Core Tools。 |
     | 为项目的第一个函数选择模板 | 暂时跳过 | |
     | 选择打开项目的方式 | 在当前窗口中打开 | 在所选的文件夹中重新打开 VS Code。 |
@@ -86,7 +86,7 @@ Visual Studio Code 会根据需要安装 Azure Functions Core Tools。 它还会
 
 1. 使用“视图”菜单或按 Ctrl+Shift+`，在 VS Code 中打开新的终端。 
 
-1. 通过运行函数应用的根目录中的 `npm install durable-functions` 来安装 `durable-functions` npm 包。
+1. 通过运行函数应用的根目录中的 `durable-functions` 来安装 `npm install durable-functions` npm 包。
 
 ## <a name="creating-your-functions"></a>创建函数
 
@@ -104,7 +104,7 @@ Visual Studio Code 会根据需要安装 Azure Functions Core Tools。 它还会
 
 1. 按照提示提供以下信息：
 
-    | Prompt | Value | 说明 |
+    | Prompt | 值 | 说明 |
     | ------ | ----- | ----------- |
     | 选择函数的模板 | Durable Functions 业务流程协调程序 | 创建 Durable Functions 业务流程 |
     | 提供函数名称 | HelloOrchestrator | 持久函数的名称 |
@@ -119,7 +119,7 @@ Visual Studio Code 会根据需要安装 Azure Functions Core Tools。 它还会
 
 1. 按照提示提供以下信息：
 
-    | Prompt | Value | 说明 |
+    | Prompt | 值 | 说明 |
     | ------ | ----- | ----------- |
     | 选择函数的模板 | Durable Functions 活动 | 创建活动函数 |
     | 提供函数名称 | 你好 | 活动函数的名称 |
@@ -134,7 +134,7 @@ Visual Studio Code 会根据需要安装 Azure Functions Core Tools。 它还会
 
 1. 按照提示提供以下信息：
 
-    | Prompt | Value | 说明 |
+    | Prompt | 值 | 说明 |
     | ------ | ----- | ----------- |
     | 选择函数的模板 | Durable Functions HTTP 启动器 | 创建 HTTP 启动器函数 |
     | 提供函数名称 | DurableFunctionsHttpStart | 活动函数的名称 |
@@ -156,13 +156,13 @@ Visual Studio Code 会根据需要安装 Azure Functions Core Tools。 它还会
 
 1. 按照提示提供以下信息，以在 Azure 中创建新的存储帐户。
 
-    | Prompt | Value | 说明 |
+    | Prompt | 值 | 说明 |
     | ------ | ----- | ----------- |
     | 选择订阅 | *订阅的名称* | 选择 Azure 订阅 |
     | 选择存储帐户 | 新建存储帐户 |  |
     | 输入新存储帐户的名称 | *唯一名称* | 要创建的存储帐户的名称 |
     | 选择资源组 | *唯一名称* | 要创建的资源组名称 |
-    | 选择位置 | *region* | 选择离你较近的区域 |
+    | 选择一个位置 | *region* | 选择离你较近的区域 |
 
 1. 在“终端”  面板中，复制 HTTP 触发的函数的 URL 终结点。
 

@@ -14,10 +14,10 @@ origin.date: 7/17/2019
 ms.date: 04/06/2020
 ms.author: v-jay
 ms.openlocfilehash: 4a01ed844a5f0ca4d2da2b573e3cbb98184c49a2
-ms.sourcegitcommit: fe9ed98aaee287a21648f866bb77cb6888f75b0c
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80625798"
 ---
 # <a name="load-balancer-outbound-rules"></a>负载均衡器出站规则
@@ -37,7 +37,7 @@ ms.locfileid: "80625798"
 - 用于出站连接空闲超时的持续时间（4-120 分钟）。
 - 是否要在空闲超时时发送 TCP Reset
 
-出站规则扩展了[出站连接](load-balancer-outbound-connections.md)一文中所述的[方案 2](load-balancer-outbound-connections.md#lb)，方案优先顺序保持不变。
+出站规则扩展了[出站连接](load-balancer-outbound-connections.md#lb)一文中所述的[方案 2](load-balancer-outbound-connections.md)，方案优先顺序保持不变。
 
 ## <a name="outbound-rule"></a>出站规则
 
@@ -124,7 +124,7 @@ API 版本“2018-07-01”允许按如下所示构建出站规则定义：
 - 优化同时用于入站和出站连接的 IP 地址的出站 NAT 参数。  必须禁用自动出站 NAT 编程才能让出站规则接管控制权。  例如，若要更改同时用于入站连接的某个地址的 SNAT 端口分配，则必须将此参数设置为 true。  如果尝试使用出站规则来重新定义同时用于入站连接的某个 IP 地址的参数，但尚未释放负载均衡规则的出站 NAT 编程，则配置出站规则的操作将会失败。
 
 >[!IMPORTANT]
-> 如果将此参数设置为 true，但没有任何出站规则（或[实例级公共 IP 方案](load-balancer-outbound-connections.md#ilpip)）定义出站连接，则虚拟机将无法访问公网。  VM或应用程序的某些操作可能依赖于公网连接。 请务必了解方案的依赖关系，并考虑此项更改造成的影响。
+> 如果将此参数设置为 true，但没有任何出站规则（或[实例级公共 IP 方案](load-balancer-outbound-connections.md#ilpip)）定义出站连接，则虚拟机不会建立出站连接。  VM 或应用程序的某些操作可能依赖于可用的出站连接。 请务必了解方案的依赖关系，并考虑此项更改造成的影响。
 
 可以使用以下配置参数在负载均衡规则中禁用出站 SNAT：
 
@@ -193,14 +193,14 @@ disableOutboundSNAT 参数默认为 false，这意味着，负载均衡规则**�
    1. 在负载均衡规则中禁用出站 SNAT。
    2. 在同一个负载均衡器上配置出站规则。
    3. 重复使用 VM 已用的后端池。
-   4. 指定“协议”：“所有”作为出站规则的一部分。
+   4. 在出站规则中指定“协议”:“所有”。
 
 - 只使用入站 NAT 规则时，不会提供出站 NAT。
 
    1. 将 VM 放入后端池。
    2. 使用公共 IP 地址或公共 IP 前缀定义一个或多个前端 IP 配置。
    3. 在同一个负载均衡器上配置出站规则。
-   4. 指定“协议”：“所有”作为出站规则的一部分
+   4. 在出站规则中指定“协议”:“所有”
 
 ## <a name="limitations"></a>限制
 

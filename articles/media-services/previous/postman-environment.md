@@ -15,15 +15,15 @@ origin.date: 02/08/2019
 ms.date: 03/04/2019
 ms.author: v-jay
 ms.openlocfilehash: a1efcc39e373fd4717e37e34975f360461159ee8
-ms.sourcegitcommit: fe9ed98aaee287a21648f866bb77cb6888f75b0c
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80625782"
 ---
 # <a name="import-the-postman-environment"></a>导入 Postman 环境  
 
-本文包含 [Postman 集合](postman-collection.md)使用的 **Postman** 环境变量的定义，该集合包含调用媒体服务 REST API 的分组 HTTP 请求。 [配置 Postman 以便进行媒体服务 REST API 调用](media-rest-apis-with-postman.md)教程将使用这些环境和集合文件。
+本文包含 **Postman 集合**使用的 [Postman](postman-collection.md) 环境变量的定义，该集合包含调用媒体服务 REST API 的分组 HTTP 请求。 [配置 Postman 以便进行媒体服务 REST API 调用](media-rest-apis-with-postman.md)教程将使用这些环境和集合文件。
 
 > [!NOTE]
 > `AzureADSTSEndpoint ` 的值 =  `https://login.partner.microsoftonline.cn/{{TenantId}}/oauth2/token`。 若要获取你的租户 ID，可以将鼠标悬停在门户中的用户名上（在右上角）。

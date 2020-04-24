@@ -35,9 +35,9 @@
   items:
     - name: 故障转移和修补
       href: cache-failover.md
-    - name: 最佳实践
+    - name: 最佳做法
       href: cache-best-practices.md
-- name: 操作指南
+- name: 操作方法指南
   items:
     - name: 计划
       items:
@@ -91,7 +91,7 @@
           href: cache-remove-tls-10-11.md
     - name: 监视
       items:
-        - name: 在 Azure 门户中进行监视
+        - name: 在 Azure 门户中监视
           href: cache-how-to-monitor.md
         - name: 设置异常警报
           href: 'cache-how-to-monitor.md#operations-and-alerts'
@@ -129,7 +129,7 @@
       href: 'https://redis.io/commands#'
     - name: REST
       href: 'https://docs.microsoft.com/rest/api/redis/'
-    - name: Resource Manager 模板
+    - name: 资源管理器模板
       href: 'https://docs.microsoft.com/azure/templates/microsoft.cache/allversions'
 - name: 资源
   items:

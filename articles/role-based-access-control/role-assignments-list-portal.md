@@ -15,10 +15,10 @@ ms.date: 03/31/2020
 ms.author: v-junlch
 ms.reviewer: bagovind
 ms.openlocfilehash: 6cdd0b08af50bcca86dc9a1a91bc348fe8d628e4
-ms.sourcegitcommit: 64584c0bf31b4204058ae2b4641356b904ccdd58
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80581729"
 ---
 # <a name="list-role-assignments-using-azure-rbac-and-the-azure-portal"></a>使用 Azure RBAC 和 Azure 门户列出角色分配

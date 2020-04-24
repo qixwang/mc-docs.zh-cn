@@ -12,10 +12,10 @@ ms.date: 04/01/2020
 ms.author: v-junlch
 ms.subservice: B2C
 ms.openlocfilehash: 042fa1b0dc2e93ec363571bbbeae0d3d8f7e4112
-ms.sourcegitcommit: 64584c0bf31b4204058ae2b4641356b904ccdd58
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80581613"
 ---
 # <a name="customize-the-user-interface-in-azure-active-directory-b2c"></a>自定义 Azure Active Directory B2C 中的用户界面
@@ -41,7 +41,7 @@ ms.locfileid: "80581613"
 
 如果需要根据客户的决策提供动态内容，可以使用可根据查询字符串中发送的参数动态更改页面内容的自定义策略。 例如，可以基于从 Web 或移动应用程序传递的参数，更改 Azure AD B2C 注册或登录页面上的背景图像。
 
-### <a name="javascript"></a>Javascript
+### <a name="javascript"></a>JavaScript
 
 可以在[用户流](user-flow-javascript-overview.md)和[自定义策略](page-layout.md)中启用客户端 JavaScript 代码。
 
@@ -91,7 +91,7 @@ Azure AD B2C 使用称作[跨源资源共享 (CORS)](https://www.w3.org/TR/cors/
 
 请遵循以下指导原则在用户体验页面中开始使用自己的 HTML 和 CSS。
 
-- 使用位于 `<body>` 中某处的空 `<div id="api"></div>` 元素创建格式正确的 HTML 内容。 此元素标记插入 Azure AD B2C 内容的位置。 以下示例显示了一个最小化页面：
+- 使用位于 `<div id="api"></div>` 中某处的空 `<body>` 元素创建格式正确的 HTML 内容。 此元素标记插入 Azure AD B2C 内容的位置。 以下示例显示了一个最小化页面：
 
     ```html
     <!DOCTYPE html>

@@ -9,10 +9,10 @@ ms.date: 03/30/2020
 ms.author: v-junlch
 ms.custom: include file
 ms.openlocfilehash: 1b8e74596b7d3da286195ea51708a446143e6ed3
-ms.sourcegitcommit: 64584c0bf31b4204058ae2b4641356b904ccdd58
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80581623"
 ---
 1. **在“解决方案资源管理器”** 中，右键单击该项目并选择“发布”  。

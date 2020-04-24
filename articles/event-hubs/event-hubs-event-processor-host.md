@@ -16,10 +16,10 @@ origin.date: 01/10/2020
 ms.date: 03/30/2020
 ms.author: v-tawe
 ms.openlocfilehash: 7830119b942e52a23f54409a65a6283660357778
-ms.sourcegitcommit: 260800ede66f48c886d1426a0fac18b4d402b4f2
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80586781"
 ---
 # <a name="event-processor-host"></a>事件处理程序主机

@@ -15,21 +15,21 @@ ms.date: 03/31/2020
 ms.author: v-junlch
 ms.reviewer: bagovind
 ms.openlocfilehash: 28e115fdb0547b0df75ed1721033028781e24245
-ms.sourcegitcommit: 64584c0bf31b4204058ae2b4641356b904ccdd58
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80581728"
 ---
 # <a name="list-role-assignments-using-azure-rbac-and-azure-cli"></a>使用 Azure RBAC 和 Azure CLI 列出角色分配
 
 [!INCLUDE [Azure RBAC definition list access](../../includes/role-based-access-control-definition-list.md)] 本文介绍如何使用 Azure CLI 列出角色分配。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - [Azure CLI](/cli)
 
-## <a name="list-role-assignments-for-a-user"></a>列出用户的角色分配
+## <a name="list-role-assignments-for-a-user"></a>为用户列出角色分配
 
 若要列出特定用户的角色分配，请使用 [az role assignment list](/cli/role/assignment#az-role-assignment-list)：
 

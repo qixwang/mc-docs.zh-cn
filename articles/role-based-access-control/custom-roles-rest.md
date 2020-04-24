@@ -16,10 +16,10 @@ ms.date: 03/31/2020
 ms.author: v-junlch
 ms.reviewer: bagovind
 ms.openlocfilehash: 560a9e3f31d3a577bb0378212c1609a03c026643
-ms.sourcegitcommit: 64584c0bf31b4204058ae2b4641356b904ccdd58
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80581678"
 ---
 # <a name="create-or-update-custom-roles-for-azure-resources-using-the-rest-api"></a>使用 REST API 为 Azure 资源创建或更新自定义角色
@@ -44,7 +44,7 @@ ms.locfileid: "80581678"
 1. 将 *{filter}* 替换为角色类型。
 
     > [!div class="mx-tableFixed"]
-    > | 筛选器 | 说明 |
+    > | “筛选器” | 说明 |
     > | --- | --- |
     > | `$filter=type+eq+'CustomRole'` | 基于 CustomRole 类型的筛选器 |
 
@@ -61,7 +61,7 @@ ms.locfileid: "80581678"
 1. 在 URI 中，将 *{scope}* 替换为要列出角色的范围。
 
     > [!div class="mx-tableFixed"]
-    > | 作用域 | 类型 |
+    > | 范围 | 类型 |
     > | --- | --- |
     > | `subscriptions/{subscriptionId1}` | 订阅 |
     > | `subscriptions/{subscriptionId1}/resourceGroups/{resourceGroup1}` | 资源组 |
@@ -71,7 +71,7 @@ ms.locfileid: "80581678"
 1. 将 *{filter}* 替换为角色类型。
 
     > [!div class="mx-tableFixed"]
-    > | 筛选器 | 说明 |
+    > | “筛选器” | 说明 |
     > | --- | --- |
     > | `$filter=type+eq+'CustomRole'` | 基于 CustomRole 类型的筛选器 |
 
@@ -88,7 +88,7 @@ ms.locfileid: "80581678"
 1. 在 URI 中，将 *{scope}* 替换为要列出角色的范围。
 
     > [!div class="mx-tableFixed"]
-    > | 作用域 | 类型 |
+    > | 范围 | 类型 |
     > | --- | --- |
     > | `subscriptions/{subscriptionId1}` | 订阅 |
     > | `subscriptions/{subscriptionId1}/resourceGroups/{resourceGroup1}` | 资源组 |
@@ -98,9 +98,9 @@ ms.locfileid: "80581678"
 1. 将 *{filter}* 替换为角色的显示名称。
 
     > [!div class="mx-tableFixed"]
-    > | 筛选器 | 说明 |
+    > | “筛选器” | 说明 |
     > | --- | --- |
-    > | `$filter=roleName+eq+'{roleDisplayName}'` | 使用角色的具体显示名称的 URL 编码形式。 例如 `$filter=roleName+eq+'Virtual%20Machine%20Contributor'` |
+    > | `$filter=roleName+eq+'{roleDisplayName}'` | 使用角色的准确显示名称的 URL 编码形式。 例如 `$filter=roleName+eq+'Virtual%20Machine%20Contributor'` |
 
 ## <a name="list-a-custom-role-definition-by-id"></a>按 ID 列出自定义角色定义
 
@@ -117,7 +117,7 @@ ms.locfileid: "80581678"
 1. 在 URI 中，将 *{scope}* 替换为要列出角色的范围。
 
     > [!div class="mx-tableFixed"]
-    > | 作用域 | 类型 |
+    > | 范围 | 类型 |
     > | --- | --- |
     > | `subscriptions/{subscriptionId1}` | 订阅 |
     > | `subscriptions/{subscriptionId1}/resourceGroups/{resourceGroup1}` | 资源组 |
@@ -128,7 +128,7 @@ ms.locfileid: "80581678"
 
 ## <a name="create-a-custom-role"></a>创建自定义角色
 
-若要创建自定义角色，请使用[角色定义 - 创建或更新](https://docs.microsoft.com/rest/api/authorization/roledefinitions/createorupdate) REST API。 若要调用此 API，登录时使用的用户必须分配有一个角色，该角色在所有 `assignableScopes` 上具有 `Microsoft.Authorization/roleDefinitions/write` 权限。 在内置角色中，只有[所有者](built-in-roles.md#owner)和[用户访问管理员](built-in-roles.md#user-access-administrator)包含此权限。
+若要创建自定义角色，请使用[角色定义 - 创建或更新](https://docs.microsoft.com/rest/api/authorization/roledefinitions/createorupdate) REST API。 若要调用此 API，登录时使用的用户必须分配有一个角色，该角色在所有 `Microsoft.Authorization/roleDefinitions/write` 上具有 `assignableScopes` 权限。 在内置角色中，只有[所有者](built-in-roles.md#owner)和[用户访问管理员](built-in-roles.md#user-access-administrator)包含此权限。
 
 1. 查看可用来为自定义角色创建权限的[资源提供程序操作](resource-provider-operations.md)列表。
 
@@ -171,7 +171,7 @@ ms.locfileid: "80581678"
 1. 在 URI 中，将 *{scope}* 替换为自定义角色的第一个 `assignableScopes`。
 
     > [!div class="mx-tableFixed"]
-    > | 作用域 | 类型 |
+    > | 范围 | 类型 |
     > | --- | --- |
     > | `subscriptions/{subscriptionId1}` | 订阅 |
     > | `subscriptions/{subscriptionId1}/resourceGroups/{resourceGroup1}` | 资源组 |
@@ -227,7 +227,7 @@ ms.locfileid: "80581678"
 
 ## <a name="update-a-custom-role"></a>更新自定义角色
 
-若要更新自定义角色，请使用[角色定义 - 创建或更新](https://docs.microsoft.com/rest/api/authorization/roledefinitions/createorupdate) REST API。 若要调用此 API，登录时使用的用户必须分配有一个角色，该角色在所有 `assignableScopes` 上具有 `Microsoft.Authorization/roleDefinitions/write` 权限。 在内置角色中，只有[所有者](built-in-roles.md#owner)和[用户访问管理员](built-in-roles.md#user-access-administrator)包含此权限。
+若要更新自定义角色，请使用[角色定义 - 创建或更新](https://docs.microsoft.com/rest/api/authorization/roledefinitions/createorupdate) REST API。 若要调用此 API，登录时使用的用户必须分配有一个角色，该角色在所有 `Microsoft.Authorization/roleDefinitions/write` 上具有 `assignableScopes` 权限。 在内置角色中，只有[所有者](built-in-roles.md#owner)和[用户访问管理员](built-in-roles.md#user-access-administrator)包含此权限。
 
 1. 使用[角色定义 - 列出](https://docs.microsoft.com/rest/api/authorization/roledefinitions/list)或[角色定义 - 获取](https://docs.microsoft.com/rest/api/authorization/roledefinitions/get) REST API 获取有关自定义角色的信息。 有关详细信息，请参阅前面的[列出自定义角色](#list-custom-roles)部分。
 
@@ -240,7 +240,7 @@ ms.locfileid: "80581678"
 1. 在 URI 中，将 *{scope}* 替换为自定义角色的第一个 `assignableScopes`。
 
     > [!div class="mx-tableFixed"]
-    > | 作用域 | 类型 |
+    > | 范围 | 类型 |
     > | --- | --- |
     > | `subscriptions/{subscriptionId1}` | 订阅 |
     > | `subscriptions/{subscriptionId1}/resourceGroups/{resourceGroup1}` | 资源组 |
@@ -317,7 +317,7 @@ ms.locfileid: "80581678"
 
 ## <a name="delete-a-custom-role"></a>删除自定义角色
 
-若要删除自定义角色，请使用[角色定义 - 删除](https://docs.microsoft.com/rest/api/authorization/roledefinitions/delete) REST API。 若要调用此 API，登录时使用的用户必须分配有一个角色，该角色在所有 `assignableScopes` 上具有 `Microsoft.Authorization/roleDefinitions/delete` 权限。 在内置角色中，只有[所有者](built-in-roles.md#owner)和[用户访问管理员](built-in-roles.md#user-access-administrator)包含此权限。
+若要删除自定义角色，请使用[角色定义 - 删除](https://docs.microsoft.com/rest/api/authorization/roledefinitions/delete) REST API。 若要调用此 API，登录时使用的用户必须分配有一个角色，该角色在所有 `Microsoft.Authorization/roleDefinitions/delete` 上具有 `assignableScopes` 权限。 在内置角色中，只有[所有者](built-in-roles.md#owner)和[用户访问管理员](built-in-roles.md#user-access-administrator)包含此权限。
 
 1. 使用[角色定义 - 列出](https://docs.microsoft.com/rest/api/authorization/roledefinitions/list)或[角色定义 - 获取](https://docs.microsoft.com/rest/api/authorization/roledefinitions/get) REST API 获取自定义角色的 GUID 标识符。 有关详细信息，请参阅前面的[列出自定义角色](#list-custom-roles)部分。
 
@@ -330,7 +330,7 @@ ms.locfileid: "80581678"
 1. 在 URI 中，将 *{scope}* 替换为要删除自定义角色的范围。
 
     > [!div class="mx-tableFixed"]
-    > | 作用域 | 类型 |
+    > | 范围 | 类型 |
     > | --- | --- |
     > | `subscriptions/{subscriptionId1}` | 订阅 |
     > | `subscriptions/{subscriptionId1}/resourceGroups/{resourceGroup1}` | 资源组 |

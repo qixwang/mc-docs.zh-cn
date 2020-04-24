@@ -9,10 +9,10 @@ origin.date: 01/03/2020
 ms.author: v-yiso
 ms.date: 03/02/2020
 ms.openlocfilehash: 69d2eddb44da35c8497ecc82a7b04bdcce896d22
-ms.sourcegitcommit: 5fb45da006859215edc8211481f13174aa43dbeb
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80634556"
 ---
 # <a name="hdinsight-sdk-for-go-preview"></a>用于 Go 的 HDInsight SDK（预览版）
@@ -23,7 +23,7 @@ ms.locfileid: "80634556"
 > [!NOTE]
 >还可以[从此处获得](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/preview/hdinsight/mgmt/2018-06-01-preview/hdinsight)适用于此 SDK 的GoDoc 参考资料。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * [`go get` 工具](https://github.com/golang/go/wiki/GoGetTools)。
 * [Go](https://golang.org/dl/)。
@@ -32,7 +32,7 @@ ms.locfileid: "80634556"
 
 从 GOPATH 位置中，运行 `go get github.com/Azure/azure-sdk-for-go/tree/master/services/preview/hdinsight/mgmt/2018-06-01-preview/hdinsight`
 
-## <a name="authentication"></a>身份验证
+## <a name="authentication"></a>Authentication
 
 首先需要使用 Azure 订阅对该 SDK 进行身份验证。  请遵循以下示例创建服务主体，然后使用该服务主体进行身份验证。 完成此操作后，将会获得 `ClustersClient` 的实例，其中包含可用于执行管理操作的许多函数（以下部分将概述这些函数）。
 
@@ -345,12 +345,12 @@ extClient.Authorizer, _ = credentials.Authorizer()
 ```
 
 > [!NOTE]
-> 下面的监视示例假定你已如上所示初始化了一个名为 `extClient` 的 `ExtensionClient` 并设置了其 `Authorizer`。
+> 下面的监视示例假定你已如上所示初始化了一个名为 `ExtensionClient` 的 `extClient` 并设置了其 `Authorizer`。
 
 ### <a name="enable-oms-monitoring"></a>启用 OMS 监视
 
 > [!NOTE]
-> 若要启用 OMS 监视，必须已有一个 Log Analytics 工作区。 如果尚未创建工作区，可在此了解创建方法：[在 Azure 门户中创建 Log Analytics 工作区](/log-analytics/log-analytics-quick-create-workspace)。
+> 若要启用 OMS 监视，必须已有一个 Log Analytics 工作区。 如果尚未创建此工作区，可以参阅[在 Azure 门户中创建 Log Analytics 工作区](/log-analytics/log-analytics-quick-create-workspace)了解相关操作。
 
 在群集上启用 OMS 监视：
 
@@ -378,7 +378,7 @@ extClient.DisableMonitoring(context.Background(), "<Resource Group Name", "Clust
 
 HDInsight 提供了一个称为“脚本操作”的配置函数，用以调用自定义脚本来自定义群集。
 > [!NOTE]
-> 有关如何使用脚本操作的详细信息见此处：[使用脚本操作自定义基于 Linux 的 HDInsight 群集](/hdinsight/hdinsight-hadoop-customize-cluster-linux)
+> 有关如何使用脚本操作的详细信息，请参阅[使用脚本操作自定义基于 Linux 的 HDInsight 群集](/hdinsight/hdinsight-hadoop-customize-cluster-linux)
 
 ### <a name="execute-script-actions"></a>执行脚本操作
 
@@ -397,7 +397,7 @@ scriptActionsClient.Authorizer, _ = credentials.Authorizer()
 ```
 
 > [!NOTE]
-> 下面的脚本操作示例假定你已如上所示初始化了一个名为 `scriptActionsClient` 的 `ScriptActionsClient` 并设置了其 `Authorizer`。
+> 下面的脚本操作示例假定你已如上所示初始化了一个名为 `ScriptActionsClient` 的 `scriptActionsClient` 并设置了其 `Authorizer`。
 
 ### <a name="delete-script-action"></a>删除脚本操作
 
@@ -445,7 +445,7 @@ scriptExecutionHistoryClient.Authorizer, _ = credentials.Authorizer()
 ```
 
 > [!NOTE]
-> 以下示例假定你已如上所示初始化了一个名为 `scriptExecutionHistoryClient` 的 `ScriptExecutionHistoryClient` 并设置了其 `Authorizer`。
+> 以下示例假定你已如上所示初始化了一个名为 `ScriptExecutionHistoryClient` 的 `scriptExecutionHistoryClient` 并设置了其 `Authorizer`。
 
 列出指定群集的所有脚本的执行历史记录：
 

@@ -1,5 +1,5 @@
 ---
-title: 使用 P2S：Azure VPN 网关实现远程工作
+title: 使用 P2S：Azure VPN 网关
 description: 本页介绍在 COVID-19（新冠病毒）疫情期间如何利用 Azure Bastion 来实现远程工作。
 services: vpn-gateway
 author: WenJason
@@ -9,10 +9,10 @@ origin.date: 03/23/2020
 ms.date: 04/06/2020
 ms.author: v-jay
 ms.openlocfilehash: d278bc78c2e18499cb235070a16962e20de9fb1f
-ms.sourcegitcommit: 5fb45da006859215edc8211481f13174aa43dbeb
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80634690"
 ---
 # <a name="remote-work-using-azure-vpn-gateway-point-to-site"></a>使用 Azure VPN 网关点到站点连接实现远程工作
@@ -55,7 +55,7 @@ ms.locfileid: "80634690"
 
 在此场景中，远程用户需要访问 Azure 中以及本地数据中心内的资源。
 
-![点到站点](./media/working-remotely-support/scenario2.png "场景 2")
+![点到站点](./media/working-remotely-support/scenario2.png "方案 2")
 
 从较高层面讲，需要执行以下步骤才能使用户安全连接到 Azure 资源：
 

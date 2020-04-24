@@ -12,10 +12,10 @@ ms.date: 04/01/2020
 ms.author: v-junlch
 ms.subservice: B2C
 ms.openlocfilehash: f2ff27e7778cf514cd03e11de0d7b7fddfbf0ff8
-ms.sourcegitcommit: 64584c0bf31b4204058ae2b4641356b904ccdd58
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80581589"
 ---
 # <a name="about-claim-resolvers-in-azure-active-directory-b2c-custom-policies"></a>关于 Azure Active Directory B2C 自定义策略中的声明解析程序
@@ -66,7 +66,7 @@ Azure Active Directory B2C (Azure AD B2C) [自定义策略](custom-policy-overvi
 
 | 声明 | 说明 | 示例 |
 | ----- | ----------- | --------|
-| {OIDC:AuthenticationContextReferences} |`acr_values` 查询字符串参数。 | 空值 |
+| {OIDC:AuthenticationContextReferences} |`acr_values` 查询字符串参数。 | 不适用 |
 | {OIDC:ClientId} |`client_id` 查询字符串参数。 | 00000000-0000-0000-0000-000000000000 |
 | {OIDC:DomainHint} |`domain_hint` 查询字符串参数。 |  |
 | {OIDC:LoginHint} |  `login_hint` 查询字符串参数。 | someone@contoso.com |
@@ -75,7 +75,7 @@ Azure Active Directory B2C (Azure AD B2C) [自定义策略](custom-policy-overvi
 | {OIDC:Password}| 资源所有者密码凭据流用户的密码。| password1| 
 | {OIDC:Prompt} | `prompt` 查询字符串参数。 | 登录 |
 | {OIDC:RedirectUri} |`redirect_uri` 查询字符串参数。 | https://jwt.ms |
-| {OIDC:Resource} |`resource` 查询字符串参数。 | 不适用 |
+| {OIDC:Resource} |`resource` 查询字符串参数。 | 空值 |
 | {OIDC:scope} |`scope` 查询字符串参数。 | openid |
 | {OIDC:Username}| 资源所有者密码凭据流用户的用户名。| emily@contoso.com| 
 
@@ -105,7 +105,7 @@ Azure Active Directory B2C (Azure AD B2C) [自定义策略](custom-policy-overvi
 
 | 声明 | 说明 | 示例 |
 | ----- | ----------------------- | --------|
-| {oauth2:access_token} | 访问令牌。 | 不适用 |
+| {oauth2:access_token} | 访问令牌。 | 空值 |
 
 
 ### <a name="saml"></a>SAML

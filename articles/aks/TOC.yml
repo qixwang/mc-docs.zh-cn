@@ -53,7 +53,7 @@
       href: concepts-storage.md
     - name: 缩放
       href: concepts-scale.md
-    - name: 最佳实践
+    - name: 最佳做法
       items:
         - name: 概述
           href: best-practices.md
@@ -91,7 +91,7 @@
       href: supported-kubernetes-versions.md
     - name: 主机 OS 中的安全强化
       href: security-hardened-vm-host-image.md
-- name: 操作指南
+- name: 操作方法指南
   items:
     - name: 群集操作
       items:
@@ -262,5 +262,5 @@
       href: 'https://support.azure.cn/support/contact/'
     - name: 视频
       href: 'https://www.azure.cn/video-center/'
-    - name: 常见问题
+    - name: 常见问题解答
       href: faq.md

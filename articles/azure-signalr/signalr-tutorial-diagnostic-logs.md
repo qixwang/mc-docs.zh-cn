@@ -8,10 +8,10 @@ origin.date: 12/17/2019
 ms.date: 03/30/2020
 ms.author: v-tawe
 ms.openlocfilehash: 07aed74312d14c1d7880dab0661e96c5dd695688
-ms.sourcegitcommit: 44d3fe59952847e5394bbe6c05bd6f333bb56345
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80522094"
 ---
 # <a name="diagnostic-logs-for-azure-signalr-service"></a>Azure SignalR 服务的诊断日志

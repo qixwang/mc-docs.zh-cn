@@ -11,13 +11,13 @@ ms.date: 04/01/2020
 ms.author: v-junlch
 ms.subservice: B2C
 ms.openlocfilehash: 688def99fbe3a04ec0de93dae95871438b565146
-ms.sourcegitcommit: 64584c0bf31b4204058ae2b4641356b904ccdd58
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80581855"
 ---
-# <a name="user-profile-attributes"></a>用户配置文件特性
+# <a name="user-profile-attributes"></a>用户配置文件属性
 
 Azure Active Directory (Azure AD) B2C 目录用户配置文件附带了一组内置特征，例如名字、姓氏、城市、邮政编码和电话号码。 你可以使用自己的应用程序数据来扩展用户配置文件，而无需外部数据存储。 可用于 Azure AD B2C 用户配置文件的大多数特性也受 Microsoft Graph 的支持。 本文介绍支持的 Azure AD B2C 用户配置文件特性。 此外，说明 Microsoft Graph 不支持的特性，以及不应该用于 Azure AD B2C 的 Microsoft Graph 特性。
 

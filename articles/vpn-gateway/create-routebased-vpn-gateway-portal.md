@@ -10,10 +10,10 @@ origin.date: 03/03/2020
 ms.date: 04/06/2020
 ms.author: v-jay
 ms.openlocfilehash: 3e84c334bb37fdef16b55be054d2bad15e892a65
-ms.sourcegitcommit: 5fb45da006859215edc8211481f13174aa43dbeb
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80634627"
 ---
 # <a name="create-a-route-based-vpn-gateway-using-the-azure-portal"></a>使用 Azure 门户创建基于路由的 VPN 网关
@@ -28,7 +28,7 @@ ms.locfileid: "80634627"
 
 ## <a name="configure-and-create-the-gateway"></a><a name="gwvalues"></a>配置和创建网关
 
-在此步骤中为 VNet 创建虚拟网络网关。 创建网关通常需要 45 分钟或更长的时间，具体取决于所选网关 SKU。
+在此步骤中，为 VNet 创建虚拟网络网关。 创建网关通常需要 45 分钟或更长的时间，具体取决于所选的网关 SKU。
 
 [!INCLUDE [About gateway subnets](../../includes/vpn-gateway-about-gwsubnet-portal-include.md)]
 
@@ -43,7 +43,7 @@ ms.locfileid: "80634627"
 
 1. 创建网关后，请在门户中导航到 VNet1。 VPN 网关将作为已连接的设备显示在概述页上。
 
-   ![连接的设备](./media/create-routebased-vpn-gateway-portal/view-connected-devices.png "连接的设备数")
+   ![连接的设备](./media/create-routebased-vpn-gateway-portal/view-connected-devices.png "已连接的设备")
 
 2. 在设备列表中，单击 **VNet1GW** 可查看详细信息。
 

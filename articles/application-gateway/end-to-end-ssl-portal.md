@@ -10,10 +10,10 @@ ms.date: 03/30/2020
 ms.author: v-junlch
 ms.custom: mvc
 ms.openlocfilehash: 14134a0ae7a0b9c358dff25e18c47090a82c2e1e
-ms.sourcegitcommit: 64584c0bf31b4204058ae2b4641356b904ccdd58
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80581720"
 ---
 # <a name="configure-end-to-end-tls-by-using-application-gateway-with-the-portal"></a>在门户中使用应用程序网关配置端到端 TLS
@@ -25,7 +25,7 @@ ms.locfileid: "80581720"
 
 如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial)。
 
-## <a name="before-you-begin"></a>准备阶段
+## <a name="before-you-begin"></a>开始之前
 
 若要使用应用程序网关配置端到端 TLS，首先获取网关的证书。 后端服务器也需要证书。 网关证书用来根据 TLS 协议规范派生对称密钥。 然后，可以使用该对称密钥来加密和解密发送到网关的流量。 
 
@@ -67,7 +67,7 @@ ms.locfileid: "80581720"
 
    ![根证书](./media/end-to-end-ssl-portal/trustedrootcert.png)
 
-8. 选择“保存”  。
+8. 选择“保存”。 
 
 ## <a name="enable-end-to-end-tls-for-an-existing-application-gateway"></a>为现有的应用程序网关启用端到端 TLS
 
@@ -119,7 +119,7 @@ ms.locfileid: "80581720"
 
    ![添加受信任的根证书](./media/end-to-end-ssl-portal/trustedrootcert-portal.png)
 
-8. 选择“保存”  。
+8. 选择“保存”。 
 
 ## <a name="next-steps"></a>后续步骤
 

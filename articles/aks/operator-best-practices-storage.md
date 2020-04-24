@@ -7,10 +7,10 @@ origin.date: 05/06/2019
 ms.date: 04/06/2020
 ms.author: v-yeche
 ms.openlocfilehash: d6ac01199baca322e14f8947bb022b03a8737ea0
-ms.sourcegitcommit: 76280dd9854dc0ff0ba1e5e62fb3dc3af049fbe2
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80516971"
 ---
 # <a name="best-practices-for-storage-and-backups-in-azure-kubernetes-service-aks"></a>有关 Azure Kubernetes 服务 (AKS) 中的存储和备份的最佳做法
@@ -35,7 +35,7 @@ ms.locfileid: "80516971"
 
 <!--Not Available on   Windows Server container support-->
 
-| 使用案例 | 卷插件 | 读/写一次 | 只读多次 | 读/写多次 |
+| 用例 | 卷插件 | 读/写一次 | 只读多次 | 读/写多次 |
 |----------|---------------|-----------------|----------------|-----------------|
 | 共享配置       | Azure 文件   | 是 | 是 | 是 |
 | 结构化应用数据        | Azure 磁盘   | 是 | 否  | 否  |

@@ -9,10 +9,10 @@ ms.topic: conceptual
 origin.date: 04/24/2019
 ms.date: 03/16/2020
 ms.openlocfilehash: 1f539b0f4e02d232badd2110631c67d97233d35f
-ms.sourcegitcommit: 44d3fe59952847e5394bbe6c05bd6f333bb56345
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80521966"
 ---
 # <a name="anomaly-detection-and-forecasting-in-azure-data-explorer"></a>在 Azure 数据资源管理器中进行异常情况检测和预测
@@ -21,7 +21,7 @@ Azure 数据资源管理器持续从云服务或 IoT 设备收集遥测数据。
 
 本文将详细介绍 Azure 数据资源管理器时序异常情况检测和预测功能。 适用的时序函数基于一个可靠的已知分解模型，其中的每个原始时序将分解成季节性组件、趋势组件和残余组件。 异常情况是根据残余组件上的离群值检测的，而预测则是通过推算季节性组件和趋势组件执行的。 Azure 数据资源管理器实现显著增强了基本分解模型，它可以自动检测季节性、可靠分析离群值，并使用矢量化实现在几秒钟内处理数千个时序。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 有关时序功能的概述，请参阅 [Azure 数据资源管理器中的时序分析](https://docs.azure.cn/data-explorer/time-series-analysis)。
 
@@ -123,7 +123,7 @@ demo_make_series2
 
 ![时序可伸缩性](media/anomaly-detection/series-scalability.png)
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>总结
 
 本文档详细介绍了用于时序异常情况检测和预测的本机 Azure 数据资源管理器函数。 每个原始时序将分解成季节性、趋势和残余组件，以检测异常情况和/或进行预测。 这些功能可用于近实时监视方案，例如故障检测、预测性维护以及需求和负载预测。
 

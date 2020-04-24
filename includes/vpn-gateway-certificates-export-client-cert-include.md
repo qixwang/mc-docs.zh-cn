@@ -10,20 +10,20 @@ ms.date: 04/06/2020
 ms.author: v-jay
 ms.custom: include file
 ms.openlocfilehash: 0ad6d31573f04a90f82276ac2242b77a34cb669c
-ms.sourcegitcommit: 5fb45da006859215edc8211481f13174aa43dbeb
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80634540"
 ---
 生成客户端证书时，该证书会自动安装在用于生成它的计算机上。 如果想要在另一台客户端计算机上安装客户端证书，需要导出生成的客户端证书。
 
-1. 若要导出客户端证书，请打开“管理用户证书”  。 生成的客户端证书默认位于“Certificates - Current User\Personal\Certificates”中。 右键单击要导出的客户端证书，单击“所有任务”  ，并单击“导出”  打开“证书导出向导”  。
+1. 若要导出客户端证书，请打开“管理用户证书”  。 生成的客户端证书默认位于“Certificates - Current User\Personal\Certificates”中。 右键单击要导出的客户端证书，单击“所有任务”  ，并单击“导出”  打开“证书导出向导”。 
 
-   ![导出](./media/vpn-gateway-certificates-export-client-cert-include/export.png)
+   ![Export](./media/vpn-gateway-certificates-export-client-cert-include/export.png)
 2. 在“证书导出向导”中，单击“下一步”以继续。 
 
-   ![下一步](./media/vpn-gateway-certificates-export-client-cert-include/next.png)
+   ![Next](./media/vpn-gateway-certificates-export-client-cert-include/next.png)
 3. 选择“是，导出私钥”  ，并单击“下一步”  。
 
    ![导出私钥](./media/vpn-gateway-certificates-export-client-cert-include/privatekeyexport.png)

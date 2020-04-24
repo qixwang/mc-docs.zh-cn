@@ -16,10 +16,10 @@ origin.date: 03/18/2019
 ms.date: 04/06/2020
 ms.author: v-jay
 ms.openlocfilehash: e5eaf186d022a39aee29696f1ce95baa961591c3
-ms.sourcegitcommit: fe9ed98aaee287a21648f866bb77cb6888f75b0c
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80625783"
 ---
 # <a name="embedding-an-mpeg-dash-adaptive-streaming-video-in-an-html5-application-with-dashjs"></a>使用 DASH.js 在 HTML5 应用程序中嵌入 MPEG-DASH 自适应流式处理视频  
@@ -42,7 +42,7 @@ Dash.js 是用 JavaScript 编写的开源 MPEG-DASH 视频播放器。 其目标
 只需几行 JavaScript 代码，即可完成初始化播放器。 使用 dash.js，将 MPEG-DASH 视频嵌入到基于浏览器的应用程序中确实就这么简单。
 
 ## <a name="creating-the-html-page"></a>创建 HTML 页
-第一步是创建一个包含 **video** 元素的标准 HTML 页面，将此文件保存为 basicPlayer.html，如以下示例所示：
+第一步是创建一个包含 **video** 元素的标准 HTML 页，将此文件保存为 basicPlayer.html，如以下示例所示：
 
 ```html
     <!DOCTYPE html>
@@ -58,7 +58,7 @@ Dash.js 是用 JavaScript 编写的开源 MPEG-DASH 视频播放器。 其目标
 ## <a name="adding-the-dashjs-player"></a>添加 DASH.js 播放器
 要将 dash.js 引用实现添加到应用程序，需要从最新版本的 dash.js 项目中找到 dash.all.js 文件。 此文件应保存到应用程序的 JavaScript 文件夹中。 此文件是一个易用文件，将所有必要的 dash.js 代码一起提取到单个文件中。 如果浏览 dash.js 存储库，将找到各个文件、测试代码以及更多内容，但如果只想使用 dash.js，那么 dash.all.js 文件就是你所需的文件。
 
-要将 dash.js 播放器添加到你的应用程序，请将脚本标记添加到 basicPlayer.html 的 head 部分中：
+要将 dash.js 播放器添加到应用程序，请将脚本标记添加到 basicPlayer.html 的 head 部分中：
 
 ```html
     <!-- DASH-AVC/265 reference implementation -->
@@ -85,7 +85,7 @@ Dash.js 是用 JavaScript 编写的开源 MPEG-DASH 视频播放器。 其目标
 
 接下来，实例化 dash.js 框架的主类 MediaPlayer。 此类包含所需的核心方法（如播放和暂停）、管理与 video 元素的关系，还管理媒体演示描述 (MPD) 文件的解释，该文件说明了要播放的视频。
 
-调用 MediaPlayer 类的 startup() 函数可确保播放器已准备好播放视频。 除了其他用处以外，此函数还可确保已加载所有必需的类（如上下文所定义）。 播放器准备就绪后，便可以使用 attachView() 函数将 video 元素附加上去。 startup 函数使 MediaPlayer 可以将视频流注入到该元素，还可以根据需要控制播放。
+调用 MediaPlayer 类的 startup() 函数可确保播放器已准备好播放视频。 除了其他用处以外，此函数还可确保已加载所有必需的类（如上下文所定义）。 播放器准备就绪后，便可以使用 attachView() 函数将 video 元素附加到它。 startup 函数使 MediaPlayer 可以将视频流注入到该元素，还可以根据需要控制播放。
 
 将 MPD 文件的 URL 传递到 MediaPlayer，以便它了解应播放的视频。 刚刚创建的 setupVideo() 函数需要在完全加载页后执行一次。 可通过使用 body 元素的 onload 事件来执行此操作。 将 `<body>` 元素更改为：
 

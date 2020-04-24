@@ -9,10 +9,10 @@ ms.topic: conceptual
 origin.date: 03/19/2020
 ms.date: 03/30/2020
 ms.openlocfilehash: f916cc6841b41ea988cae5abc992e4883ca69e11
-ms.sourcegitcommit: 44d3fe59952847e5394bbe6c05bd6f333bb56345
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80523179"
 ---
 # <a name="azure-data-explorer-data-ingestion-properties"></a>Azure 数据资源管理器的数据引入属性 
@@ -23,7 +23,7 @@ ms.locfileid: "80523179"
 
 下表列出了 Azure 数据资源管理器支持的属性，对其进行了说明，并提供了示例： 
 
-|属性              |说明                                              |示例                                             |
+|properties              |说明                                              |示例                                             |
 |----------------------|---------------------------------------------------------|----------------------------------------------------|
 |`ingestionMapping`    |一个字符串值，表示如何将数据从源文件映射到表中的实际列。 使用相关的映射类型定义 `format` 值。 请参阅[数据映射](https://docs.microsoft.com/azure/kusto/management/mappings)。|`with (format="json", ingestionMapping = "[{\"column\":\"rownumber\", \"Properties\":{\"Path\":\"$.RowNumber\"}}, {\"column\":\"rowguid\", \"Properties\":{\"Path\":\"$.RowGuid\"}}]")`<br>（已弃用：`avroMapping`、`csvMapping`、`jsonMapping`） |
 |`ingestionMappingReference`|一个字符串值，表示如何使用命名的映射策略对象将数据从源文件映射到表中的实际列。 使用相关的映射类型定义 `format` 值。 请参阅[数据映射](https://docs.microsoft.com/azure/kusto/management/mappings)。|`with (format="csv", ingestionMappingReference = "Mapping1")`<br>（已弃用：`avroMappingReference`、`csvMappingReference`、`jsonMappingReference`）|

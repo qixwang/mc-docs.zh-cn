@@ -9,10 +9,10 @@ origin.date: 06/25/2019
 md.date: 03/30/2020
 ms.author: v-tawe
 ms.openlocfilehash: 008430f9b4cfb2400ffd9a0bbaf55d0a907fd9c2
-ms.sourcegitcommit: 44d3fe59952847e5394bbe6c05bd6f333bb56345
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80521983"
 ---
 # <a name="add-push-notifications-to-your-windows-app"></a>向 Windows 应用添加推送通知
@@ -23,7 +23,7 @@ ms.locfileid: "80521983"
 
 本教程介绍如何向 [Windows 快速入门](app-service-mobile-windows-store-dotnet-get-started.md)项目添加推送通知，以便每次插入一条记录时，向设备发送一条推送通知。
 
-如果不使用下载的快速入门服务器项目，则需要推送通知扩展包。 有关详细信息，请参阅 [使用适用于 Azure 移动应用的 .NET 后端服务器 SDK](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md) 。
+如果不使用下载的快速入门服务器项目，则需要推送通知扩展包。 有关详细信息，请参阅[使用用于 Azure 移动应用的 .NET 后端服务器 SDK](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md)。
 
 ## <a name="configure-a-notification-hub"></a><a name="configure-hub"></a>配置通知中心
 
@@ -37,7 +37,7 @@ ms.locfileid: "80521983"
 
     ![将应用与 Microsoft Store 相关联](./media/app-service-mobile-windows-store-dotnet-get-started-push/notification-hub-associate-uwp-app.png)
 
-2. 在向导中，单击“下一步”  ，使用 Microsoft 帐户登录，在“保留新应用名称”  中键入应用的名称，然后单击“保留”  。
+2. 在向导中，单击“下一步”  ，使用 Microsoft 帐户登录，在“保留新应用名称”  中键入应用的名称，并单击“保留”  。
 3. 成功创建应用注册后，选择新应用名称，再依次单击“下一步”  和“关联”  。 这会将所需的 Microsoft Store 注册信息添加到应用程序清单中。
 4. 导航到[应用程序注册门户](https://apps.dev.microsoft.com/)，并使用 Microsoft 帐户登录。 单击上一步中关联的 Windows 应用商店应用。
 5. 在注册页中，记下“应用程序机密”  和“包 SID”  下的值，后面将使用这些值配置移动应用后端。
@@ -59,7 +59,7 @@ ms.locfileid: "80521983"
 
 ### <a name="net-backend-project"></a><a name="dotnet"></a>.NET 后端项目
 
-1. 在 Visual Studio 中，右键单击服务器项目并单击“管理 NuGet 包”  ，搜索 Microsoft.Azure.NotificationHubs，然后单击“安装”  。 这会安装通知中心客户端库。
+1. 在 Visual Studio 中，右键单击服务器项目并单击“管理 NuGet 包”  ，搜索 Microsoft.Azure.NotificationHubs，并单击“安装”  。 这会安装通知中心客户端库。
 2. 展开“控制器”  ，打开 TodoItemController.cs，并添加以下 using 语句：
 
     ```csharp
@@ -68,7 +68,7 @@ ms.locfileid: "80521983"
     using Microsoft.Azure.Mobile.Server.Config;
     ```
 
-3. 在 PostTodoItem 方法中，在调用 InsertAsync 后添加如下代码   ：
+3. 在 **PostTodoItem** 方法中，在调用 **InsertAsync** 后添加如下代码：
 
     ```csharp
     // Get the settings for the server project.
@@ -156,9 +156,9 @@ ms.locfileid: "80521983"
 
     插入新的待办事项时，会发送一条包含 item.text 的 WNS toast 通知。
 
-3. 编辑本地计算机上的文件时，重新发布服务器项目。
+3. 编辑本地计算机上的文件时，请重新发布服务器项目。
 
-## <a name="add-push-notifications-to-your-app"></a><a id="update-app"></a>向应用程序添加推送通知
+## <a name="add-push-notifications-to-your-app"></a><a id="update-app"></a>向应用添加推送通知
 下一步，应用必须在启动时注册推送通知。 已启用身份验证时，请确保用户先登录，再尝试注册推送通知。
 
 1. 打开 **App.xaml.cs** 项目文件并添加以下 `using` 语句：
@@ -182,7 +182,7 @@ ms.locfileid: "80521983"
     }
     ```
 
-    此代码从 WNS 检索应用的 ChannelURI，并将该 ChannelURI 注册到应用服务移动应用。
+    此代码从 WNS 检索应用的 ChannelURI，然后将该 ChannelURI 注册到应用服务移动应用。
 
 3. 在 **App.xaml.cs** 中 **OnLaunched** 事件处理程序的顶部，为方法定义添加 **async** 修饰符，并添加对新 **InitNotificationsAsync** 方法的以下调用，如以下示例所示：
 
@@ -199,7 +199,7 @@ ms.locfileid: "80521983"
 
 4. 重新生成 UWP 应用项目。 应用现在已能够接收 toast 通知。
 
-## <a name="test-push-notifications-in-your-app"></a><a id="test"></a>在应用程序中测试推送通知
+## <a name="test-push-notifications-in-your-app"></a><a id="test"></a>在应用中测试推送通知
 
 [!INCLUDE [app-service-mobile-windows-universal-test-push](../../includes/app-service-mobile-windows-universal-test-push.md)]
 

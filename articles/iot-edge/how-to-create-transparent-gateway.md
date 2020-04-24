@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 37f42ef2e9d1de16225274c45f554239bd9fb9e5
-ms.sourcegitcommit: 260800ede66f48c886d1426a0fac18b4d402b4f2
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80586754"
 ---
 # <a name="configure-an-iot-edge-device-to-act-as-a-transparent-gateway"></a>将 IoT Edge 设备配置为充当透明网关
@@ -47,7 +47,7 @@ ms.locfileid: "80586754"
 
 以下步骤将演示创建证书并将它们安装在网关上的正确位置的过程。 可以使用任一计算机生成证书，然后将其复制到 IoT Edge 设备。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 配置了[生产证书](how-to-manage-device-certificates.md)的 Azure IoT Edge 设备。
 
@@ -67,7 +67,7 @@ IoT Edge 中心负责接收来自下游设备的传入消息，并将它们路�
 
 3. 选择“设置模块”  。
 
-4. 选择“**下一步**”。
+4. 选择“**下一页**”。
 
 5. 在“指定路由”页中，应有一个默认路由可将来自所有模块的所有消息发送到 IoT 中心。  如果没有，请添加以下代码，然后选择“下一步”。 
 

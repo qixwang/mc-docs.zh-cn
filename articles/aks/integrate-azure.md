@@ -7,10 +7,10 @@ origin.date: 12/05/2017
 ms.date: 04/06/2020
 ms.author: v-yeche
 ms.openlocfilehash: d846e3ea620c49a5af4004b0db4ecde9eba204cc
-ms.sourcegitcommit: 76280dd9854dc0ff0ba1e5e62fb3dc3af049fbe2
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80517013"
 ---
 <!--IMPORT: NOT AVAILABLE ON MOONCAKE-->
@@ -19,7 +19,7 @@ ms.locfileid: "80517013"
 
 结合使用 [Kubernetes 服务目录][kubernetes-service-catalog]和 Open Service Broker for Azure (OSBA) 时，开发人员可利用 Kubernetes 中的 Azure 托管服务。 本指南重点介绍如何使用 Kubernetes 部署 Kubernetes 服务目录、Open Service Broker for Azure (OSBA) 和使用 Azure 托管服务的应用程序。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 * Azure 订阅
 
 * Azure CLI：[在本地安装它][azure-cli-install]。
@@ -168,7 +168,7 @@ Now, list installed service brokers:
 ./svcat get brokers
 ```
 
-应该会看到与下面类似的输出：
+会得到类似于下面的输出：
 
 ```output
   NAME                               URL                                STATUS

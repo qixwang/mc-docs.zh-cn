@@ -16,10 +16,10 @@ origin.date: 04/01/2019
 ms.date: 04/06/2020
 ms.author: v-jay
 ms.openlocfilehash: d0b8f041612ad6e4fe78c6c8f5dd63d61f1416ce
-ms.sourcegitcommit: fe9ed98aaee287a21648f866bb77cb6888f75b0c
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80625745"
 ---
 # <a name="content-protection-overview"></a>内容保护概述 

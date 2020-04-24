@@ -8,17 +8,17 @@ ms.topic: article
 origin.date: 03/26/2020
 ms.date: 04/06/2020
 ms.openlocfilehash: d7191c804d3c054ecc572bad61a4a626982b65ed
-ms.sourcegitcommit: fe9ed98aaee287a21648f866bb77cb6888f75b0c
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80625805"
 ---
 # <a name="configure-a-virtual-machine-scale-set-with-an-existing-azure-load-balancer-using-azure-powershell"></a>使用 Azure PowerShell 配置包含现有 Azure 负载均衡器的虚拟机规模集
 
 本文介绍如何配置包含现有 Azure 负载均衡器的虚拟机规模集。 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - Azure 订阅。
 - 要将虚拟机规模集部署到的订阅中的现有标准 SKU 负载均衡器。

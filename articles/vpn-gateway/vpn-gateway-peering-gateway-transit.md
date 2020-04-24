@@ -11,10 +11,10 @@ origin.date: 03/25/2018
 ms.date: 04/06/2020
 ms.author: v-jay
 ms.openlocfilehash: c0c79ca9149d59afe4987423f337cf1378594d78
-ms.sourcegitcommit: 5fb45da006859215edc8211481f13174aa43dbeb
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80634620"
 ---
 # <a name="configure-vpn-gateway-transit-for-virtual-network-peering"></a>针对虚拟网络对等互连配置 VPN 网关传输
@@ -49,18 +49,18 @@ ms.locfileid: "80634620"
 2. [使用相同的部署模型创建虚拟网络对等互连](../virtual-network/tutorial-connect-virtual-networks-portal.md)
 3. [使用不同的部署模型创建虚拟网络对等互连](../virtual-network/create-peering-different-deployment-models.md)
 
-## <a name="permissions"></a><a name="permissions"></a>权限
+## <a name="permissions"></a><a name="permissions"></a>Permissions
 
 用于创建虚拟网络对等互连的帐户必须具有所需的角色或权限。 在以下示例中，若要将两个名为 Hub-RM 和 Spoke-Classic 的虚拟网络进行对等互连，帐户必须具有适用于每个虚拟网络的以下角色或权限：
     
 |虚拟网络|部署模型|角色|权限|
 |---|---|---|---|
-|Hub-RM|Resource Manager|[网络参与者](../role-based-access-control/built-in-roles.md#network-contributor)|Microsoft.Network/virtualNetworks/virtualNetworkPeerings/write|
+|Hub-RM|资源管理器|[网络参与者](../role-based-access-control/built-in-roles.md#network-contributor)|Microsoft.Network/virtualNetworks/virtualNetworkPeerings/write|
 | |经典|[经典网络参与者](../role-based-access-control/built-in-roles.md#classic-network-contributor)|空值|
-|Spoke-Classic|Resource Manager|[网络参与者](../role-based-access-control/built-in-roles.md#network-contributor)|Microsoft.Network/virtualNetworks/peer|
+|Spoke-Classic|资源管理器|[网络参与者](../role-based-access-control/built-in-roles.md#network-contributor)|Microsoft.Network/virtualNetworks/peer|
 ||经典|[经典网络参与者](../role-based-access-control/built-in-roles.md#classic-network-contributor)|Microsoft.ClassicNetwork/virtualNetworks/peer|
 
-详细了解[内置角色](../role-based-access-control/built-in-roles.md#network-contributor)以及将特定的权限分配到[自定义角色](../active-directory/role-based-access-control-custom-roles.md)（仅限 Resource Manager）。
+详细了解[内置角色](../role-based-access-control/built-in-roles.md#network-contributor)以及将特定的权限分配到[自定义角色](../active-directory/role-based-access-control-custom-roles.md)（仅限资源管理器）。
 
 ## <a name="resource-manager-to-resource-manager-peering-with-gateway-transit"></a>通过网关传输进行的资源管理器到资源管理器对等互连
 

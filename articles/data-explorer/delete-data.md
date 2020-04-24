@@ -9,10 +9,10 @@ ms.topic: conceptual
 origin.date: 03/12/2020
 ms.date: 03/30/2020
 ms.openlocfilehash: bae085f5e784bdaffc6f9634ed835969deb590aa
-ms.sourcegitcommit: 44d3fe59952847e5394bbe6c05bd6f333bb56345
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80522063"
 ---
 # <a name="delete-data-from-azure-data-explorer"></a>从 Azure 数据资源管理器中删除数据

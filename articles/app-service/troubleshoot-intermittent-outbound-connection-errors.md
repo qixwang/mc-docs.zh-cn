@@ -9,10 +9,10 @@ ms.date: 03/30/2020
 ms.author: v-tawe
 ms.custom: security-recommendations
 ms.openlocfilehash: 13e8bdc7e913f27d8103db99044fb2f6a0b3e4ce
-ms.sourcegitcommit: 44d3fe59952847e5394bbe6c05bd6f333bb56345
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80523176"
 ---
 # <a name="troubleshooting-intermittent-outbound-connection-errors-in-azure-app-service"></a>排查 Azure 应用服务中的间歇性出站连接错误

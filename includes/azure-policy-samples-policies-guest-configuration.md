@@ -5,16 +5,17 @@ ms.topic: include
 origin.date: 03/12/2020
 ms.date: 03/16/2020
 ms.author: v-tawe
-ms.openlocfilehash: 5163eb48871576500429596b710b6238ee7deaea
-ms.sourcegitcommit: 1d3d8dfdaf6281f06640cbee7124a1e8bf102c50
+ms.openlocfilehash: b13238ab009715a4d0cb0481e5f4f15efbb3b5f7
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "80272936"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "80989246"
 ---
+<!-- |[Configure time zone on Windows machines.](https://portal.azure.cn/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F6141c932-9384-44c6-a395-59e4c057d7c9) |This policy creates a Guest Configuration assignment to set specified time zone on Windows virtual machines. |deployIfNotExists |1.0.0-preview |[Link](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Guest%20Configuration/GuestConfiguration_SetWindowsTimeZone_Deploy.json) -->
+
 |名称 |说明 |效果 |版本 |GitHub |
 |---|---|---|---|---|
-|[在 Windows 计算机上配置时区。](https://portal.azure.cn/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F6141c932-9384-44c6-a395-59e4c057d7c9) |此策略创建一个 Guest Configuration 分配用于在 Windows 虚拟机上设置指定的时区。 |deployIfNotExists |1.0.0-preview |[链接](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Guest%20Configuration/GuestConfiguration_SetWindowsTimeZone_Deploy.json)。
 |[部署必备组件，以审核允许通过没有密码的帐户进行远程连接的 Linux VM](https://portal.azure.cn/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fec49586f-4939-402d-a29e-6ff502b20592) |此策略创建一个 Guest Configuration 分配用于审核允许通过没有密码的帐户进行远程连接的 Linux 虚拟机。 它还会创建系统分配的托管标识，并部署 Guest Configuration 的 VM 扩展。 此策略应结合计划中的相应审核策略一起使用。 有关 Guest Configuration 策略的详细信息，请访问 https://aka.ms/gcpol |deployIfNotExists |1.1.0-preview |[链接](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Guest%20Configuration/GuestConfiguration_LinuxPassword110_Deploy.json)。
 |[部署必备组件用于审核未将密码文件权限设置为 0644 的 Linux VM](https://portal.azure.cn/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff19aa1c1-6b91-4c27-ae6a-970279f03db9) |此策略创建一个 Guest Configuration 分配用于审核未将密码文件权限设置为 0644 的 Linux  虚拟机。 它还会创建系统分配的托管标识，并部署 Guest Configuration 的 VM 扩展。 此策略应结合计划中的相应审核策略一起使用。 有关 Guest Configuration 策略的详细信息，请访问 https://aka.ms/gcpol |deployIfNotExists |1.1.0-preview |[链接](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Guest%20Configuration/GuestConfiguration_LinuxPassword121_Deploy.json)。
 |[部署必备组件来审核未安装指定应用程序的 Linux VM](https://portal.azure.cn/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F4d1c04de-2172-403f-901b-90608c35c721) |此策略创建一个 Guest Configuration 分配用于审核未安装指定应用程序的 Linux 虚拟机。 它还会创建系统分配的托管标识，并部署 Guest Configuration 的 VM 扩展。 此策略应结合计划中的相应审核策略一起使用。 有关 Guest Configuration 策略的详细信息，请访问 https://aka.ms/gcpol |deployIfNotExists |1.1.0 |[链接](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Guest%20Configuration/GuestConfiguration_InstalledApplicationLinux_Deploy.json)。

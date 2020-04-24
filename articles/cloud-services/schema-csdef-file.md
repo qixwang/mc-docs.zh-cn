@@ -10,10 +10,10 @@ caps.latest.revision: 42
 author: tgore03
 ms.author: v-junlch
 ms.openlocfilehash: bf7d8b502c8637b1a0490a54d819bb4e39e0b31f
-ms.sourcegitcommit: 64584c0bf31b4204058ae2b4641356b904ccdd58
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80581713"
 ---
 # <a name="azure-cloud-services-definition-schema-csdef-file"></a>Azure 云服务定义架构（.csdef 文件）
@@ -63,7 +63,7 @@ ms.locfileid: "80581713"
 
 下表介绍了 `ServiceDefinition` 元素的属性。
 
-| 属性               | 说明 |
+| Attribute               | 说明 |
 | ----------------------- | ----------- |
 | name                    |必需。 服务的名称。 该名称在服务帐户中必须是唯一的。|
 | topologyChangeDiscovery | 可选。 指定拓扑更改通知的类型。 可能的值包括：<br /><br /> -   `Blast` - 将更新尽早发送到所有角色实例。 如果选择此选项，则角色应该能够在不重启的情况下处理拓扑更新。<br />-   `UpgradeDomainWalk` - 在前一个实例成功接受更新后，按顺序将更新发送到每个角色实例。|

@@ -14,10 +14,10 @@ metadata:
   origin.date: 03/17/2020
   ms.date: 03/30/2020
   ms.openlocfilehash: 4914d4433d6d2e5e8e09c3a07e818d3082c70a5d
-  ms.sourcegitcommit: 5fb45da006859215edc8211481f13174aa43dbeb
+  ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 04/03/2020
+  ms.lasthandoff: 04/17/2020
   ms.locfileid: "80634676"
 highlightedContent:
   items:
@@ -48,7 +48,7 @@ conceptualContent:
       text: 排查网络流量筛选问题
     footerLink:
       url: ../virtual-network/index.yml
-      text: 查看更多
+      text: 查看详细信息
   - title: 从本地连接到 Azure - VPN 加密
     links:
     - url: ../vpn-gateway/vpn-gateway-about-vpngateways.md
@@ -65,7 +65,7 @@ conceptualContent:
       text: 排查 VPN 网关问题
     footerLink:
       url: ../vpn-gateway/index.yml
-      text: 查看更多
+      text: 查看详细信息
   - title: 从本地扩展到 Azure - 专用连接
     links:
     - url: ../expressroute/expressroute-introduction.md
@@ -82,7 +82,7 @@ conceptualContent:
       text: 排查网络性能问题
     footerLink:
       url: ../expressroute/index.yml
-      text: 查看更多
+      text: 查看详细信息
   - title: DNS
     links:
     - url: ../dns/dns-overview.md
@@ -96,7 +96,7 @@ conceptualContent:
       text: 排查 Azure DNS 问题
     footerLink:
       url: ../dns/index.yml
-      text: 查看更多
+      text: 查看详细信息
   - title: 网络负载均衡器
     links:
     - url: ../load-balancer/load-balancer-overview.md
@@ -110,10 +110,10 @@ conceptualContent:
       text: 配置端口转发
     - url: ../load-balancer/load-balancer-troubleshoot.md
       itemType: how-to-guide
-      text: 对 Azure 负载均衡器进行故障排除
+      text: 排查 Azure 负载均衡器问题
     footerLink:
       url: ../load-balancer/index.yml
-      text: 查看更多
+      text: 查看详细信息
   - title: 基于 DNS 的负载均衡器
     links:
     - url: ../traffic-manager/traffic-manager-overview.md
@@ -130,7 +130,7 @@ conceptualContent:
       text: 排查流量管理器的降级状态
     footerLink:
       url: ../traffic-manager/index.yml
-      text: 查看更多
+      text: 查看详细信息
   - title: Web 应用程序负载均衡器
     links:
     - url: ../application-gateway/overview.md
@@ -147,7 +147,7 @@ conceptualContent:
       text: 排查“错误的网关”错误
     footerLink:
       url: ../application-gateway/index.yml
-      text: 查看更多
+      text: 查看详细信息
   - title: 监视网络运行状况
     links:
     - url: ../network-watcher/network-watcher-monitoring-overview.md
@@ -161,7 +161,7 @@ conceptualContent:
       text: 记录传入和传出 VM 的网络流量流
     footerLink:
       url: ../network-watcher/index.yml
-      text: 查看更多
+      text: 查看详细信息
   - title: 网络防火墙
     links:
     - url: ../firewall/overview.md
@@ -175,7 +175,7 @@ conceptualContent:
       text: 使用 Azure 防火墙筛选入站 Internet 流量
     footerLink:
       url: ../firewall/index.yml
-      text: 查看更多
+      text: 查看详细信息
   - title: Web 应用程序防火墙
     links:
     - url: ../web-application-firewall/ag/ag-overview.md
@@ -197,7 +197,7 @@ conceptualContent:
       text: Azure CDN 的标准规则引擎参考
     footerLink:
       url: /cdn
-      text: 查看更多
+      text: 查看详细信息
   - title: 自动分支连接
     links:
     - url: ../virtual-wan/virtual-wan-about.md
@@ -211,7 +211,7 @@ conceptualContent:
       text: Azure 虚拟 WAN 合作伙伴和位置
     footerLink:
       url: ../virtual-wan/index.yml
-      text: 查看更多
+      text: 查看详细信息
 additionalContent:
   sections:
   - items:

@@ -16,10 +16,10 @@ origin.date: 03/18/2019
 ms.date: 04/06/2020
 ms.author: v-jay
 ms.openlocfilehash: 7ad4cde92a94f8bc52b1ef493a49a62590ffb574
-ms.sourcegitcommit: fe9ed98aaee287a21648f866bb77cb6888f75b0c
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80625739"
 ---
 # <a name="get-started-with-delivering-content-on-demand-using-net-sdk"></a>使用 .NET SDK 开始传送点播内容  

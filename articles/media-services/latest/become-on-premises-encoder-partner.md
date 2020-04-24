@@ -10,10 +10,10 @@ ms.date: 04/06/2020
 ms.topic: article
 ms.service: media-services
 ms.openlocfilehash: 3eef1dd5155a15e173391c0fe00bd873099b19f5
-ms.sourcegitcommit: fe9ed98aaee287a21648f866bb77cb6888f75b0c
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80625841"
 ---
 # <a name="how-to-verify-your-on-premises-live-streaming-encoder"></a>如何验证本地实时传送视频流编码器

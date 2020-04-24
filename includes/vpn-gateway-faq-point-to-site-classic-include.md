@@ -10,10 +10,10 @@ ms.date: 04/06/2020
 ms.author: v-jay
 ms.custom: include file
 ms.openlocfilehash: 3ffe237577caaf223ed4804d8f7006bafd6a7985
-ms.sourcegitcommit: 5fb45da006859215edc8211481f13174aa43dbeb
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80634572"
 ---
 此常见问题解答适用于使用经典部署模型的 P2S 连接。
@@ -32,14 +32,14 @@ ms.locfileid: "80634572"
 
 ### <a name="can-i-use-any-software-vpn-client-that-supports-sstp-for-point-to-site"></a>是否可以使用支持将 SSTP 用于点到站点连接的任何软件 VPN 客户端？
 
-否。 仅支持所列出的 Windows 操作系统版本。
+不是。 仅支持所列出的 Windows 操作系统版本。
 
 ### <a name="how-many-vpn-client-endpoints-can-exist-in-my-point-to-site-configuration"></a>在我的点到站点配置中，可以存在多少 VPN 客户端终结点？
 
 VPN 客户端终结点的数量取决于网关 SKU 和协议。
 [!INCLUDE [Aggregated throughput by SKU](./vpn-gateway-table-gwtype-aggtput-include.md)]
 
-### <a name="can-i-use-my-own-internal-pki-root-ca-for-point-to-site-connectivity"></a>是否可以将我自己的内部 PKI 根 CA 用于点到站点连接？
+### <a name="can-i-use-my-own-internal-pki-root-ca-for-point-to-site-connectivity"></a>能否将我自己的内部 PKI 根 CA 用于点到站点连接？
 
 是的。 以前只可使用自签名根证书。 现在还可以上传最多 20 个根证书。
 
@@ -53,13 +53,13 @@ VPN 客户端终结点的数量取决于网关 SKU 和协议。
 
 ### <a name="does-point-to-site-support-auto-reconnect-and-ddns-on-the-vpn-clients"></a>点到站点在 VPN 客户端上是否支持自动重新连接和 DDNS？
 
-否。 点到站点 VPN 中当前不支持自动重新连接和 DDNS。
+不是。 点到站点 VPN 中当前不支持自动重新连接和 DDNS。
 
 ### <a name="can-i-have-site-to-site-and-point-to-site-configurations-for-the-same-virtual-network"></a>同一虚拟网络中是否可以同时存在站点到站点和点到站点配置？
 
 是的。 如果网关使用 RouteBased VPN 类型，这两种解决方案都可行。 对于经典部署模型，需要一个动态网关。 我们不支持将点到站点连接用于静态路由 VPN 网关，也不支持将其用于使用 **-VpnType PolicyBased** cmdlet 的网关。
 
-### <a name="can-i-configure-a-point-to-site-client-to-connect-to-multiple-virtual-networks-at-the-same-time"></a>是否可以将点到站点客户端配置为同时连接到多个虚拟网络？
+### <a name="can-i-configure-a-point-to-site-client-to-connect-to-multiple-virtual-networks-at-the-same-time"></a>能否将点到站点客户端配置为同时连接到多个虚拟网络？
 
 是的。 但是，虚拟网络的 IP 前缀不得重叠，并且点到站点地址空间在虚拟网络之间不得重叠。
 

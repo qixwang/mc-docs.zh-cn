@@ -16,10 +16,10 @@ origin.date: 03/14/2019
 ms.date: 04/06/2020
 ms.author: v-jay
 ms.openlocfilehash: 45a4f3b127d8f28383584ac0302ba4b59286f462
-ms.sourcegitcommit: fe9ed98aaee287a21648f866bb77cb6888f75b0c
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80625747"
 ---
 # <a name="use-azure-media-content-moderator-to-detect-possible-adult-and-racy-content"></a>使用 Azure 媒体内容审查器检测可能的成人和猥亵内容 
@@ -51,22 +51,22 @@ ms.locfileid: "80625747"
 | 元素 | 说明 |
 | --- | --- |
 | 版本 |内容审查器的版本。 |
-| timescale |视频每秒的“刻度”数。 |
+| 时间刻度 |视频每秒的“刻度”数。 |
 | offset |时间戳的时间偏移量。 在版本 1.0 的视频 API 中，此值将始终为 0。 此值在将来可能会更改。 |
-| framerate |视频的每秒帧数。 |
+| 帧速率 |视频的每秒帧数。 |
 | width |输出视频帧的宽度，以像素为单位。|
 | height |输出视频帧的高度，以像素为单位。|
 | totalDuration |输入视频的持续时间，以“时钟周期”为单位。 |
-| [fragments](#fragments-json-elements) |元数据划分成称为“片段”的不同段。 每个片段是一个自动检测到的快照，包含开始时间、持续时间、间隔数字和事件。 |
+| [片段](#fragments-json-elements) |元数据划分成称为“片段”的不同段。 每个片段是一个自动检测到的快照，包含开始时间、持续时间、间隔数字和事件。 |
 
 ### <a name="fragments-json-elements"></a>片段 JSON 元素
 
 |元素|说明|
 |---|---|
-| start |第一个事件的开始时间，以时钟周期为单位。 |
+| start |第一个事件的开始时间（以“刻度”为单位）。 |
 | duration |片段的长度（以“刻度”为单位）。 |
 | interval |片段中每个事件条目的间隔（以“刻度”为单位）。 |
-| [events](#events-json-elements) |每个事件都代表一个剪辑，每个剪辑包含在该持续时间内检测到和跟踪的关键帧。 它是一个事件数组。 外部数组代表一个时间间隔。 内部数组包含在该时间点发生的 0 个或多个事件。|
+| [events](#events-json-elements) |每个事件都代表一个剪辑，每个剪辑包含在该持续时间内检测到和跟踪的关键帧。 它是事件的数组。 外部数组代表一个时间间隔。 内部数组包含在该时间点发生的 0 个或多个事件。|
 
 ### <a name="events-json-elements"></a>事件 JSON 元素
 
@@ -75,7 +75,7 @@ ms.locfileid: "80625747"
 | reviewRecommended | `true` 或 `false`，具体取决于 **adultScore** 或 **racyScore** 是否超出了内部阈值。 |
 | adultScore | 可能的成人内容的可信度分数，范围为 0.00 到 0.99。 |
 | racyScore | 可能的猥亵内容的可信度分数，范围为 0.00 到 0.99。 |
-| index | 帧的索引，处于从第一个帧索引到最后一个帧索引这一范围内。 |
+| 索引 | 帧的索引，处于从第一个帧索引到最后一个帧索引这一范围内。 |
 | timestamp | 帧的位置，以“刻度”为单位。 |
 | shotIndex | 父快照的索引。 |
 

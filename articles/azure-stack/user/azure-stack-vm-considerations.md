@@ -9,10 +9,10 @@ ms.author: v-jay
 ms.reviewer: kivenkat
 ms.lastreviewed: 10/09/2019
 ms.openlocfilehash: 8473ca75a64999ee6ae91cbe6d1005b80f59d94e
-ms.sourcegitcommit: fe9ed98aaee287a21648f866bb77cb6888f75b0c
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80625727"
 ---
 # <a name="azure-stack-hub-vm-features"></a>Azure Stack Hub VM 功能

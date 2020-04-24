@@ -15,10 +15,10 @@ ms.date: 03/31/2020
 ms.author: v-junlch
 ms.reviewer: bagovind
 ms.openlocfilehash: f8c6618523d86120e76ba03376b312944480664f
-ms.sourcegitcommit: 64584c0bf31b4204058ae2b4641356b904ccdd58
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80581723"
 ---
 # <a name="list-role-definitions-in-azure-rbac"></a>列出 Azure RBAC 中的角色定义
@@ -325,7 +325,7 @@ az role definition list --name "Virtual Machine Contributor" --output json | jq 
 1. 在 URI 中，将“{scope}”  替换为要列出角色定义的范围。
 
     > [!div class="mx-tableFixed"]
-    > | 作用域 | 类型 |
+    > | 范围 | 类型 |
     > | --- | --- |
     > | `providers/Microsoft.Management/managementGroups/{groupId1}` | 管理组 |
     > | `subscriptions/{subscriptionId1}` | 订阅 |
@@ -337,7 +337,7 @@ az role definition list --name "Virtual Machine Contributor" --output json | jq 
 1. 将 *{filter}* 替换为筛选角色定义列表时要应用的条件。
 
     > [!div class="mx-tableFixed"]
-    > | 筛选器 | 说明 |
+    > | “筛选器” | 说明 |
     > | --- | --- |
     > | `$filter=atScopeAndBelow()` | 列出指定范围和任何子范围的角色定义。 |
     > | `$filter=type+eq+'{type}'` | 列出指定类型的角色定义。 角色的类型可以是 `CustomRole` 或 `BuiltInRole`。 |
@@ -361,7 +361,7 @@ az role definition list --name "Virtual Machine Contributor" --output json | jq 
 1. 在 URI 中，将“{scope}”  替换为要列出角色定义的范围。
 
     > [!div class="mx-tableFixed"]
-    > | 作用域 | 类型 |
+    > | 范围 | 类型 |
     > | --- | --- |
     > | `providers/Microsoft.Management/managementGroups/{groupId1}` | 管理组 |
     > | `subscriptions/{subscriptionId1}` | 订阅 |

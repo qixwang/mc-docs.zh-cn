@@ -9,10 +9,10 @@ origin.date: 05/29/2017
 ms.date: 04/06/2020
 ms.author: v-jay
 ms.openlocfilehash: 1a2fba503d6cd28bfa65b4fa5d9824a2c16d1083
-ms.sourcegitcommit: 5fb45da006859215edc8211481f13174aa43dbeb
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80634516"
 ---
 # <a name="host-reverse-dns-lookup-zones-in-azure-dns"></a>在 Azure DNS 中托管反向 DNS 查找区域
@@ -29,7 +29,7 @@ ms.locfileid: "80634516"
 
 ## <a name="create-a-reverse-lookup-dns-zone"></a>创建反向查找 DNS 区域
 
-1. 登录到 [Azure 门户](https://portal.azure.cn)。
+1. 登录 [Azure 门户](https://portal.azure.cn)。
 1. 在“中心”菜单上，选择“新建”> 搜索“DNS 区域”，然后选择“DNS 区域”。    
 
    ![“DNS 区域”选项](./media/dns-reverse-dns-hosting/figure1.png)
@@ -241,7 +241,7 @@ azure network dns record-set list MyResourceGroup 0.0.0.0.c.d.b.a.8.b.d.0.1.0.0.
 az network dns record-set list -g MyResourceGroup -z 0.0.0.0.c.d.b.a.8.b.d.0.1.0.0.2.ip6.arpa
 ```
 
-## <a name="faq"></a>常见问题
+## <a name="faq"></a>常见问题解答
 
 ### <a name="can-i-host-reverse-dns-lookup-zones-for-my-isp-assigned-ip-blocks-on-azure-dns"></a>是否可以在 Azure DNS 上托管 ISP 分配的 IP 块的反向 DNS 查找区域？
 

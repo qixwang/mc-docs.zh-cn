@@ -16,10 +16,10 @@ ms.date: 03/31/2020
 ms.author: v-junlch
 ms.reviewer: bagovind
 ms.openlocfilehash: 48011188746d71e51936b0b323a67c630b42fa91
-ms.sourcegitcommit: 64584c0bf31b4204058ae2b4641356b904ccdd58
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80581823"
 ---
 # <a name="list-deny-assignments-for-azure-resources-using-the-rest-api"></a>使用 REST API 列出 Azure 资源的拒绝分配
@@ -29,7 +29,7 @@ ms.locfileid: "80581823"
 > [!NOTE]
 > 不能直接创建自己的拒绝分配。 有关如何创建拒绝分配的详细信息，请参阅[拒绝分配](deny-assignments.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 如要获取拒绝分配的相关信息，必须具有：
 
@@ -46,7 +46,7 @@ ms.locfileid: "80581823"
 1. 在 URI 中，将 {scope} 替换为要列出拒绝分配的范围  。
 
     > [!div class="mx-tableFixed"]
-    > | 作用域 | 类型 |
+    > | 范围 | 类型 |
     > | --- | --- |
     > | `subscriptions/{subscriptionId}` | 订阅 |
     > | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | 资源组 |
@@ -71,7 +71,7 @@ ms.locfileid: "80581823"
 1. 在 URI 中，将 {scope} 替换为要列出拒绝分配的范围  。
 
     > [!div class="mx-tableFixed"]
-    > | 作用域 | 类型 |
+    > | 范围 | 类型 |
     > | --- | --- |
     > | `subscriptions/{subscriptionId}` | 订阅 |
     > | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | 资源组 |
@@ -80,7 +80,7 @@ ms.locfileid: "80581823"
 1. 将 {filter} 替换为筛选拒绝分配列表时要应用的条件  。
 
     > [!div class="mx-tableFixed"]
-    > | 筛选器 | 说明 |
+    > | “筛选器” | 说明 |
     > | --- | --- |
     > | (无筛选器) | 列出指定范围之内、之上和之下的所有拒绝分配。 |
     > | `$filter=atScope()` | 仅列出指定范围内及其上的拒绝分配。 不包含子范围处的拒绝分配。 |
@@ -102,7 +102,7 @@ ms.locfileid: "80581823"
 1. 将 {filter} 替换为筛选拒绝分配列表时要应用的条件  。 需使用筛选器。
 
     > [!div class="mx-tableFixed"]
-    > | 筛选器 | 说明 |
+    > | “筛选器” | 说明 |
     > | --- | --- |
     > | `$filter=atScope()` | 仅列出根范围处的拒绝分配。 不包含子范围处的拒绝分配。 |
     > | `$filter=denyAssignmentName+eq+'{deny-assignment-name}'` | 列出具有指定名称的拒绝分配。 |

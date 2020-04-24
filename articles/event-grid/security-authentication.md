@@ -10,10 +10,10 @@ origin.date: 03/06/2020
 ms.date: 3/16/2020
 ms.author: v-lingwu
 ms.openlocfilehash: ade44d145adea9d83a26ae2a82ed18bb7d0df310
-ms.sourcegitcommit: 78a05172a813b87428b87f3a2695e6bb3ae81ede
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80417388"
 ---
 # <a name="authenticating-access-to-event-grid-resources"></a>对事件网格资源的访问者进行身份验证

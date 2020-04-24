@@ -17,10 +17,10 @@ ms.date: 04/06/2020
 ms.author: v-jay
 ms.reviewer: milanga
 ms.openlocfilehash: 106f9b89f330c57bc1d2272ab0af5d57e5fe2766
-ms.sourcegitcommit: fe9ed98aaee287a21648f866bb77cb6888f75b0c
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80625707"
 ---
 # <a name="use-azure-media-video-thumbnails-to-create-a-video-summarization"></a>使用 Azure 媒体视频缩略图创建视频摘要  
@@ -30,15 +30,15 @@ ms.locfileid: "80625707"
 
 ## <a name="overview"></a>概述
 
-通过 Azure Media Video Thumbnails 媒体处理器 (MP)，可创建视频摘要，这对于要预览长视频摘要的客户来说很有用  。 例如，当客户将鼠标悬停在缩略图上时，他们可能希望看到一小段“摘要视频”。 使用配置预设值稍稍调整 **Azure 媒体视频缩略图** 的参数，就可使用 MP 的强大镜头检测和串联技术，以算法形式生成描述性子剪辑。  
+通过 **Azure Media Video Thumbnails** 媒体处理器 (MP)，可创建视频摘要，这对于要预览长视频摘要的客户来说很有用。 例如，当客户将鼠标悬停在缩略图上时，他们可能希望看到一小段“摘要视频”。 通过配置预设值稍稍调整 **Azure Media Video Thumbnails** 的参数，即可使用 MP 的强大快照检测和串联技术，以算法形式生成描述性子剪辑。  
 
-**Azure 媒体视频缩略图** MP 目前处于预览状态。
+**Azure Media Video Thumbnail** MP 目前以预览版提供。
 
-本文提供了有关 **Azure 媒体视频缩略图**的详细信息，并演示了如何将它与适用于 .NET 的媒体服务 SDK 配合使用。
+本文详细介绍 Azure Media Video Thumbnail，并演示如何将它与用于 .NET 的媒体服务 SDK 配合使用  。
 
 ## <a name="limitations"></a>限制
 
-在某些情况下，如果视频不是由不同的场景构成，则输出仅为单张快照。
+在某些情况下，如果视频不是由不同的场景组成，则输出将只是一个镜头。
 
 ## <a name="video-summary-example"></a>视频摘要示例
 下面是 Azure 媒体视频缩略图媒体处理器可以执行的操作的一些示例：
@@ -50,7 +50,7 @@ ms.locfileid: "80625707"
 [视频缩略图结果](https://ampdemo.azureedge.net/azuremediaplayer.html?url=https%3A%2F%2Fnimbuscdn-nimbuspm.streaming.mediaservices.chinacloudapi.cn%2Ff5c91052-4232-41d4-b531-062e07b6a9ae%2FHololens%2520Demo_VideoThumbnails_MotionThumbnail.mp4)
 
 ## <a name="task-configuration-preset"></a>任务配置（预设）
-使用 **Azure 媒体视频缩略图**创建视频缩略图时，必须指定配置预设值。 以上缩略图示例使用以下 JSON 基本配置创建：
+使用 **Azure Media Video Thumbnails** 创建视频缩略图任务时，必须指定配置预设值。 以上缩略图示例使用以下 JSON 基本配置创建：
 
 ```json
     {
@@ -62,11 +62,11 @@ ms.locfileid: "80625707"
 
 | Param | 说明 |
 | --- | --- |
-| outputAudio |指定生成的视频是否包含音频。 <br/>允许值包括：True 或 False。 默认值为 True。 |
-| fadeInFadeOut |指定单独动态缩略图之间是否使用淡入淡出转换。  <br/>允许值包括：True 或 False。  默认值为 True。 |
+| outputAudio |指定生成的视频是否包含音频。 <br/>允许的值为：True 或 False。 默认值为 True。 |
+| fadeInFadeOut |指定单独动态缩略图之间是否使用淡入淡出转换。  <br/>允许的值为：True 或 False。  默认值为 True。 |
 | maxMotionThumbnailDurationInSecs |指定生成的整个视频的时长的整数。  默认值取决于原始视频的持续时间。 |
 
-下表描述了当 **maxMotionThumbnailInSecs** 未使用时的默认持续时间。
+下表描述了未使用 **maxMotionThumbnailInSecs** 时的默认持续时间。
 
 |  |  |  |
 | --- | --- | --- |
@@ -91,7 +91,7 @@ ms.locfileid: "80625707"
 以下程序演示如何：
 
 1. 创建资产并将媒体文件上传到资产。
-2. 基于包含以下 json 预设的配置文件创建含有视频缩略图任务的作业： 
+2. 使用基于配置文件的视频缩略图任务创建一个作业，该配置文件包含以下 json 预设值： 
     
     ```json
             {                
@@ -108,7 +108,7 @@ ms.locfileid: "80625707"
 
 #### <a name="create-and-configure-a-visual-studio-project"></a>创建和配置 Visual Studio 项目
 
-设置开发环境，并在 app.config 文件中填充连接信息，如[使用 .NET 进行媒体服务开发](media-services-dotnet-how-to-use.md)中所述。 
+设置开发环境，并根据[使用 .NET 进行媒体服务开发](media-services-dotnet-how-to-use.md)中所述，在 app.config 文件中填充连接信息。 
 
 #### <a name="example"></a>示例
 
@@ -291,5 +291,5 @@ ms.locfileid: "80625707"
 ## <a name="related-links"></a>相关链接
 [Azure 媒体服务分析概述](media-services-analytics-overview.md)
 
-[Azure Media Analytics demos（Azure 媒体分析演示）](https://azuremedialabs.azurewebsites.net/demos/Analytics.html)
+[Azure 媒体分析演示](https://azuremedialabs.azurewebsites.net/demos/Analytics.html)
 

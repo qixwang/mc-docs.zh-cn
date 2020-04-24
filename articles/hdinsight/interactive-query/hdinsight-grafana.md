@@ -9,10 +9,10 @@ ms.topic: conceptual
 origin.date: 12/27/2019
 ms.date: 04/06/2020
 ms.openlocfilehash: 9e31af7dd9b35615884da757f29711cf6739bebd
-ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80343597"
 ---
 # <a name="access-grafana-in-azure-hdinsight"></a>在 Azure HDInsight 中访问 Grafana
@@ -41,7 +41,7 @@ ms.locfileid: "80343597"
 
 如果不打算继续使用此应用程序，请使用以下步骤删除创建的群集：
 
-1. 登录到 [Azure 门户](https://portal.azure.cn/)。
+1. 登录 [Azure 门户](https://portal.azure.cn/)。
 
 1. 在顶部的“搜索”框中，键入 **HDInsight**。 
 
@@ -49,7 +49,7 @@ ms.locfileid: "80343597"
 
 1. 在显示的 HDInsight 群集列表中，选择你创建的群集旁边的“...”。 
 
-1. 选择“删除”  。 请选择“是”。 
+1. 选择“删除”。  请选择“是”。 
 
 ## <a name="next-steps"></a>后续步骤
 

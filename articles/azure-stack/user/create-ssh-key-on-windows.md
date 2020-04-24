@@ -9,10 +9,10 @@ ms.author: v-jay
 ms.reviewer: waltero
 ms.lastreviewed: 2/28/2020
 ms.openlocfilehash: a71e9f64cf24b8488632126cb27f718924d88078
-ms.sourcegitcommit: fe9ed98aaee287a21648f866bb77cb6888f75b0c
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80625724"
 ---
 # <a name="create-an-ssh-key-for-linux-on-azure-stack-hub"></a>在 Azure Stack Hub 上为 Linux 创建 SSH 密钥

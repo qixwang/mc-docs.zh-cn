@@ -10,21 +10,21 @@ ms.date: 04/06/2020
 ms.author: v-jay
 ms.custom: include file
 ms.openlocfilehash: 15f485666a0addd00a1b4bfa4c0cb93663ce4082
-ms.sourcegitcommit: 5fb45da006859215edc8211481f13174aa43dbeb
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80634546"
 ---
-|**SKU**   | **S2S/VNet 到 VNet<br>隧道** | **P2S<br> SSTP 连接** | **P2S<br> IKEv2 连接** | **聚合<br>吞吐量基准** | **BGP** |
+|**SKU**   | S2S/VNet 到 VNet**隧道<br>** | **P2S<br> SSTP 连接** | **P2S<br> IKEv2 连接** | **<br>聚合**吞吐量基准 | **BGP** |
 |---         | ---        | ---       | ---            | ---       | ---       | ---|
-|**基本**   | 最大 10 个    | 最大 128  | 不支持  | 100 Mbps  | 不支持|
-|**VpnGw1**  | 最大 30   | 最大 128  | 最大 250       | 650 Mbps  | 支持 |
-|**VpnGw2**  | 最大 30   | 最大 128  | 最大 500       | 1 Gbps    | 支持 |
-|**VpnGw3**  | 最大 30   | 最大 128  | 最大 1000      | 1.25 Gbps | 支持 |
+|**基本**   | 最大 10    | 最大 128  | 不支持  | 100 Mbps  | 不支持|
+|VpnGw1   | 最大 30   | 最大 128  | 最大 250       | 650 Mbps  | 支持 |
+|VpnGw2   | 最大 30   | 最大 128  | 最大 500       | 1 Gbps    | 支持 |
+|VpnGw3   | 最大 30   | 最大 128  | 最大 1000      | 1.25 Gbps | 支持 |
 |            |            |           |                |           |           |     |
-|**VpnGw2**  | 最大 30   | 最大 128  | 最大 500       | 1.25 Gbps | 支持 |
-|**VpnGw3**  | 最大 30   | 最大 128  | 最大 1000      | 2.5 Gbps  | 支持 |
+|VpnGw2   | 最大 30   | 最大 128  | 最大 500       | 1.25 Gbps | 支持 |
+|VpnGw3   | 最大 30   | 最大 128  | 最大 1000      | 2.5 Gbps  | 支持 |
 |**VpnGw4**  | 最大 30   | 最大 128  | 最大 1000      | 5 Gbps    | 支持 |
 |**VpnGw5**  | 最大 30   | 最大 128  | 最大 1000      | 10 Gbps   | 支持 |
 
@@ -34,7 +34,7 @@ ms.locfileid: "80634546"
 
 * 可在 [定价](https://www.azure.cn/pricing/details/vpn-gateway) 页上找到定价信息。
 
-* 可在 [SLA](https://www.azure.cn/support/sla/vpn-gateway/) 页上查看 SLA（服务级别协议）信息。
+* 可在 [SLA](https://www.azure.cn/support/sla/vpn-gateway/) 页查看 SLA（服务级别协议）信息。
 
 * 在单个隧道中，最多可以达到 1 Gbps 的吞吐量。 上表中的聚合吞吐量基准基于对通过单个网关聚合的多个隧道的测量。 适用于 VPN 网关的聚合吞吐量基准组合了 S2S 和 P2S。 **如果有大量的 P2S 连接，则可能会对 S2S 连接造成负面影响，因为存在吞吐量限制。** 受 Internet 流量情况和应用程序行为影响，无法保证聚合吞吐量基准。
 
@@ -42,6 +42,6 @@ ms.locfileid: "80634546"
 
 |**SKU**   | **使用<br>的算法** | **观察到的<br>吞吐量** | **观察到的<br>每秒数据包数** |
 |---       | ---                 | ---            | ---                    |
-|**VpnGw1**| GCMAES256<br>AES256 & SHA256<br>DES3 & SHA256| 650 Mbps<br>500 Mbps<br>120 Mbps   | 58,000<br>50,000<br>50,000|
-|**VpnGw2**| GCMAES256<br>AES256 & SHA256<br>DES3 & SHA256| 1 Gbps<br>500 Mbps<br>120 Mbps | 90,000<br>80,000<br>55,000|
-|**VpnGw3**| GCMAES256<br>AES256 & SHA256<br>DES3 & SHA256| 1.25 Gbps<br>550 Mbps<br>120 Mbps | 105,000<br>90,000<br>60,000|
+|VpnGw1 | GCMAES256<br>AES256 & SHA256<br>DES3 & SHA256| 650 Mbps<br>500 Mbps<br>120 Mbps   | 58,000<br>50,000<br>50,000|
+|VpnGw2 | GCMAES256<br>AES256 & SHA256<br>DES3 & SHA256| 1 Gbps<br>500 Mbps<br>120 Mbps | 90,000<br>80,000<br>55,000|
+|VpnGw3 | GCMAES256<br>AES256 & SHA256<br>DES3 & SHA256| 1.25 Gbps<br>550 Mbps<br>120 Mbps | 105,000<br>90,000<br>60,000|

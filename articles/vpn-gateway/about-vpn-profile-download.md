@@ -9,10 +9,10 @@ origin.date: 03/17/2020
 ms.date: 04/06/2020
 ms.author: v-jay
 ms.openlocfilehash: b47814eadc7540987a8c0e2e0b27972b04e3e93f
-ms.sourcegitcommit: 5fb45da006859215edc8211481f13174aa43dbeb
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80634523"
 ---
 # <a name="about-p2s-vpn-client-profiles"></a>关于 P2S VPN 客户端配置文件

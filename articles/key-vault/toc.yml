@@ -1,4 +1,4 @@
-- name: Key Vault 文档
+- name: 密钥保管库文档
   href: index.yml
 - name: 概述
   items:
@@ -54,7 +54,7 @@
           href: key-vault-overview-storage-keys-powershell.md
         - name: 通过编写代码提取共享访问签名令牌
           href: storage-keys-sas-tokens-code.md
-    - name: Azure Resource Manager 模板
+    - name: Azure 资源管理器模板
       href: ../azure-resource-manager/templates/key-vault-parameter.md
       displayName: ARM
     - name: 设置密钥轮换和审核
@@ -93,7 +93,7 @@
           href: create-certificate.md
         - name: 监视和管理证书创建
           href: create-certificate-scenarios.md
-- name: 操作指南
+- name: 操作方法指南
   items:
     - name: 安全性
       items:
@@ -145,7 +145,7 @@
       href: /rest/api/keyvault
     - name: 最佳实践
       href: key-vault-best-practices.md
-    - name: Resource Manager 模板
+    - name: 资源管理器模板
       href: 'https://docs.microsoft.com/azure/templates/microsoft.keyvault/allversions'
       displayName: ARM
     - name: 身份验证、请求和响应

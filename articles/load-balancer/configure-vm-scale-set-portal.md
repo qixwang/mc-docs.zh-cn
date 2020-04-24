@@ -8,17 +8,17 @@ ms.topic: article
 origin.date: 03/25/2020
 ms.date: 04/06/2020
 ms.openlocfilehash: e1add788c63fd340ddc9391c4641b9091f8913ec
-ms.sourcegitcommit: fe9ed98aaee287a21648f866bb77cb6888f75b0c
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80625806"
 ---
 # <a name="configure-a-virtual-machine-scale-set-with-an-existing-azure-load-balancer-using-the-azure-portal"></a>使用 Azure 门户配置包含现有 Azure 负载均衡器的虚拟机规模集
 
 本文介绍如何配置包含现有 Azure 负载均衡器的虚拟机规模集。 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - Azure 订阅。
 - 要将虚拟机规模集部署到的订阅中的现有标准 SKU 负载均衡器。
@@ -37,13 +37,13 @@ ms.locfileid: "80625806"
 > [!NOTE]
 > 以下步骤假设已事先部署名为 myVNet 的虚拟网络，以及名为 myLoadBalancer 的 Azure 负载均衡器。  
 
-1. 在屏幕的左上方，单击“创建资源” > “计算” > “虚拟机规模集”，或者在市场搜索中搜索“虚拟机规模集”。    
+1. 在屏幕的左上方，单击“创建资源” **“计算”** “虚拟机规模集”，或者在市场搜索中搜索“虚拟机规模集”。 >    >   
 
 2. 选择“创建”  。
 
 3. 在“创建虚拟机规模集”中输入 ，或者在“基本信息”选项卡中选择以下信息：  
 
-    | 设置                        | Value                                                                                                 |
+    | 设置                        | 值                                                                                                 |
     |--------------------------------|-------------------------------------------------------------------------------------------------------|
     | **项目详细信息**            |                                                                                                       |
     | 订阅                   | 选择 Azure 订阅                                                                        |
@@ -68,7 +68,7 @@ ms.locfileid: "80625806"
 
 5. 在“网络”选项卡中输入或选择以下信息： 
 
-     设置                           | Value                                                    |
+     设置                           | 值                                                    |
     |-----------------------------------|----------------------------------------------------------|
     | **虚拟网络配置** |                                                          |
     | 虚拟网络                   | 选择“myVNet”或现有的虚拟网络。       |

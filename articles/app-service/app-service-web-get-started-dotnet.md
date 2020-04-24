@@ -8,10 +8,10 @@ ms.date: 03/30/2020
 ms.author: v-tawe
 ms.custom: mvc, devcenter, vs-azure, seodec18
 ms.openlocfilehash: 9c76cd9c0321876d91e874b2a90aee0832473126
-ms.sourcegitcommit: 44d3fe59952847e5394bbe6c05bd6f333bb56345
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80521975"
 ---
 # <a name="quickstart-create-an-aspnet-core-web-app-in-azure"></a>快速入门：在 Azure 中创建 ASP.NET Core Web 应用

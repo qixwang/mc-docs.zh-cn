@@ -11,10 +11,10 @@ ms.author: v-tawe
 ms.reviewer: cephalin
 ms.custom: seodec18
 ms.openlocfilehash: 671f33136e95a4ef4deb560366b9c3d72cdd5f01
-ms.sourcegitcommit: 44d3fe59952847e5394bbe6c05bd6f333bb56345
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80522064"
 ---
 # <a name="configure-a-windows-java-app-for-azure-app-service"></a>为 Azure 应用服务配置 Windows Java 应用

@@ -8,10 +8,10 @@ ms.date: 03/30/2020
 ms.author: v-tawe
 ms.custom: mvc, devcenter, seodec18
 ms.openlocfilehash: ab56e18649ef4b21d119fd04e54db370f49317d9
-ms.sourcegitcommit: 44d3fe59952847e5394bbe6c05bd6f333bb56345
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80521984"
 ---
 # <a name="create-an-aspnet-framework-web-app-in-azure"></a>在 Azure 中创建 ASP.NET Framework Web 应用

@@ -8,23 +8,23 @@ ms.topic: article
 origin.date: 03/25/2020
 ms.date: 04/06/2020
 ms.openlocfilehash: d160a14a1f822c3ae8100050a2c8ed018c6264cc
-ms.sourcegitcommit: fe9ed98aaee287a21648f866bb77cb6888f75b0c
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80625807"
 ---
 # <a name="configure-a-virtual-machine-scale-set-with-an-existing-azure-load-balancer-using-the-azure-cli"></a>使用 Azure CLI 配置包含现有 Azure 负载均衡器的虚拟机规模集
 
 本文介绍如何配置包含现有 Azure 负载均衡器的虚拟机规模集。 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - Azure 订阅。
 - 要将虚拟机规模集部署到的订阅中的现有标准 SKU 负载均衡器。
 - 虚拟机规模集的 Azure 虚拟网络。
 
-本文要求安装 Azure CLI 2.0.28 或更高版本。 若要查找版本，请运行 `az --version`。 如果需要进行安装或升级，请参阅[安装 Azure CLI 2.0](/cli/install-azure-cli)。
+本文要求安装 Azure CLI 2.0.28 或更高版本。 要查找版本，请运行 `az --version`。 如果需要进行安装或升级，请参阅[安装 Azure CLI 2.0](/cli/install-azure-cli)。
 
 ## <a name="sign-in-to-azure-cli"></a>登录 Azure CLI
 

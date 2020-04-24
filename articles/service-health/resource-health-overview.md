@@ -4,10 +4,10 @@ description: Azure 资源运行状况概述
 ms.topic: conceptual
 ms.date: 03/31/2020
 ms.openlocfilehash: cfe1a67cae777e0b42c9fcb249842c4c7ed29823
-ms.sourcegitcommit: 64584c0bf31b4204058ae2b4641356b904ccdd58
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80581598"
 ---
 # <a name="resource-health-overview"></a>资源运行状况概述
@@ -85,12 +85,12 @@ Azure 资源运行状况有助于在服务问题影响到 Azure 资源时进行�
 若要为某个资源打开“资源运行状况”，请执行以下操作：
 
 1. 登录到 Azure 门户。
-2. 浏览到你的资源。
+2. 浏览资源。
 3. 在左窗格中的资源菜单上，选择“资源运行状况”  。
 
 ![通过资源视图打开“资源运行状况”](./media/resource-health-overview/from-resource-blade.png)
 
-此外，还可以通过选择“所有服务”  ，并在筛选器文本框中键入“资源运行状况”  来访问“资源运行状况”。 在“帮助 + 支持”  窗格中，选择“[资源运行状况](https://portal.azure.cn/#blade/Microsoft_Azure_Monitoring/AzureMonitoringBrowseBlade/resourceHealth)”。
+此外，还可以通过选择“所有服务”  ，并在筛选器文本框中键入“资源运行状况”  来访问“资源运行状况”。 在“帮助 + 支持”  窗格中，选择 [资源运行状况](https://portal.azure.cn/#blade/Microsoft_Azure_Monitoring/AzureMonitoringBrowseBlade/resourceHealth)。
 
 ![通过“所有服务”打开“资源运行状况”](./media/resource-health-overview/FromOtherServices.png)
 

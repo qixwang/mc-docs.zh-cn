@@ -7,10 +7,10 @@ ms.date: 04/06/2020
 ms.author: v-yeche
 ms.custom: seodec18, mvc
 ms.openlocfilehash: 2c6ed14361e42d7a5170f344f3048cf394d9c31f
-ms.sourcegitcommit: 76280dd9854dc0ff0ba1e5e62fb3dc3af049fbe2
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80517011"
 ---
 <!--Verified successfully-->
@@ -42,7 +42,7 @@ ms.locfileid: "80517011"
 
 在“基本信息”页的“资源组”、“容器名称”和“容器映像”文本框中输入以下值     。 将其他值保留为默认值，然后选择“确定”  。
 
-* 资源组：“新建” > `myresourcegroup` 
+* 资源组：“新建” > `myresourcegroup`
 * 容器名称：`mycontainer`
 * 映像源：**快速启动映像**
 * 容器映像：`mcr.microsoft.com/azuredocs/aci-helloworld` (Linux)

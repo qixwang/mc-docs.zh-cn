@@ -4,7 +4,7 @@
   items:
     - name: 关于应用程序网关
       href: overview.md
-    - name: 新增功能
+    - name: 新增功能？
       href: whats-new.md
 - name: 快速入门
   expanded: true
@@ -36,11 +36,11 @@
       href: powershell-samples.md
     - name: Azure CLI
       href: cli-samples.md
-    - name: Resource Manager 模板
+    - name: 资源管理器模板
       href: resource-manager-template-samples.md
 - name: 概念
   items:
-    - name: 基础知识
+    - name: 基础
       items:
         - name: 应用程序网关功能
           href: features.md
@@ -82,15 +82,15 @@
           href: application-gateway-probe-overview.md
         - name: 诊断日志和后端运行状况
           href: application-gateway-diagnostics.md
-        - name: 指标
+        - name: 度量值
           href: application-gateway-metrics.md
     - name: 应用服务 Web 应用和多租户支持
       href: application-gateway-web-app-overview.md
     - name: WebSocket 支持
       href: application-gateway-websocket.md
-    - name: 常见问题
+    - name: 常见问题解答
       href: application-gateway-faq.md
-- name: 操作指南
+- name: 操作方法指南
   items:
     - name: 托管单一站点
       items:
@@ -250,10 +250,10 @@
       href: /develop/python/
     - name: REST
       href: 'https://docs.microsoft.com/rest/api/applicationgateway'
-    - name: Azure Resource Manager
+    - name: Azure 资源管理器
       displayName: ARM
       href: ../azure-resource-manager/management/overview.md
-    - name: Resource Manager 模板
+    - name: 资源管理器模板
       displayName: ARM
       href: 'https://docs.microsoft.com/azure/templates/microsoft.network/applicationgateways'
 - name: 资源
@@ -268,5 +268,5 @@
       href: 'https://www.azure.cn/pricing/details/application-gateway/'
     - name: 区域可用性
       href: 'https://azure.microsoft.com/regions/services/'
-    - name: Stack Overflow
+    - name: 堆栈溢出
       href: 'https://stackoverflow.com/questions/tagged/azure-application-gateway'

@@ -11,10 +11,10 @@ origin.date: 09/04/2019
 ms.date: 12/09/2019
 ms.author: alkohli
 ms.openlocfilehash: 051271e570dc8ea2207923caa7fb41f862ba12c3
-ms.sourcegitcommit: 5fb45da006859215edc8211481f13174aa43dbeb
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80634465"
 ---
 ::: zone target="docs"

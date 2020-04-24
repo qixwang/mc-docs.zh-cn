@@ -8,10 +8,10 @@ ms.date: 04/06/2020
 ms.author: v-yeche
 ms.custom: mvc
 ms.openlocfilehash: 1295b07b8af64f49f81071a6b4a371c35c36a858
-ms.sourcegitcommit: 76280dd9854dc0ff0ba1e5e62fb3dc3af049fbe2
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80516974"
 ---
 <!--Verified successfully-->

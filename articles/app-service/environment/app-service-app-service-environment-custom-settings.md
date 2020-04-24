@@ -9,21 +9,21 @@ ms.date: 03/30/2020
 ms.author: v-tawe
 ms.custom: mvc, seodec18
 ms.openlocfilehash: 8cf704e24f6502146c2a89ddc0ba9e4dd98622bc
-ms.sourcegitcommit: 44d3fe59952847e5394bbe6c05bd6f333bb56345
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80522074"
 ---
 # <a name="custom-configuration-settings-for-app-service-environments"></a>应用服务环境的自定义配置设置
 ## <a name="overview"></a>概述
 由于应用服务环境 (ASE) 对单个客户是隔离的，因此有一些可专门应用于应用服务环境的配置设置。 本文介绍各种可用于应用服务环境的特定自定义设置。
 
-如果没有应用服务环境，请参阅 [如何创建应用服务环境](create-external-ase.md)。
+如果没有应用服务环境，请参阅 [How to Create an App Service Environment](create-external-ase.md)（如何创建应用服务环境）。
 
-可以在新的 **clusterSettings** 属性中使用数组存储应用服务环境自定义设置。 可以在 *hostingEnvironments* Azure Resource Manager 实体的“Properties”字典中找到此属性。
+可以在新的 **clusterSettings** 属性中使用数组存储应用服务环境自定义设置。 可以在 *hostingEnvironments* Azure 资源管理器实体的“Properties”字典中找到此属性。
 
-以下简略的 Resource Manager 模板代码段显示了 **clusterSettings** 属性：
+以下简略的 Resource Manager 模板代码片段显示了 **clusterSettings** 属性：
 
     "resources": [
     {
@@ -48,7 +48,7 @@ ms.locfileid: "80522074"
 <!-- Azure Resource Explorer not available -->
 ## <a name="enable-internal-encryption"></a>启用内部加密
 
-应用服务环境作为一个黑框系统运行，在此系统中，你将看不到内部组件或通信。 为了实现更高的吞吐量，默认情况下，在内部组件之间不启用加密。 系统是安全的，因为流量完全无法访问，无法被监视或访问。 不过，如果必须按符合性要求从端到端对数据路径进行完全加密，则可通过一种方法使用 clusterSetting 实现此要求。  
+应用服务环境作为一个黑框系统运行，你将看不到系统中的内部组件或通信。 为了实现更高的吞吐量，默认情况下，在内部组件之间不启用加密。 系统很安全，因为流量完全无法访问，不管你是要监视流量还是要访问流量。 如果你的符合性要求必须从端到端对数据路径进行完全加密，则可通过一种方法使用 clusterSetting 实现此要求。  
 
         "clusterSettings": [
             {
@@ -57,7 +57,7 @@ ms.locfileid: "80522074"
             }
         ],
  
-启用 InternalEncryption clusterSetting 后，可能会影响系统性能。 进行更改以启用 InternalEncryption 后，ASE 将处于不稳定状态，直到更改传播完毕。 完成更改可能需要几个小时，具体取决于 ASE 中有多少个实例。 强烈建议不要在它仍处于使用状态时在 ASE 上启用它。 如果需要对主动使用的 ASE 启用此操作，强烈建议将流量转移到备份环境，直到操作完成。 
+启用 InternalEncryption clusterSetting 后，可能会影响系统性能。 进行更改以启用 InternalEncryption 后，ASE 会处于不稳定状态，直到更改传播完毕。 更改的传播可能需要几个小时才能完成，具体取决于 ASE 中有多少实例。 强烈建议不要在它仍处于使用状态的情况下在 ASE 上启用它。 如果需要对主动使用的 ASE 启用此操作，强烈建议将流量转移到备份环境，直到操作完成。 
 
 ## <a name="disable-tls-10-and-tls-11"></a>禁用 TLS 1.0 和 TLS 1.1
 
@@ -91,7 +91,7 @@ ms.locfileid: "80522074"
 > 
 
 ## <a name="get-started"></a>入门
-Azure 快速入门 Resource Manager 模板站点包含具有 [创建应用服务环境](https://azure.microsoft.com/documentation/templates/201-web-app-ase-create/)基本定义的模板。
+Azure 快速入门 Resource Manager 模板站点包含具有[创建应用服务环境](https://azure.microsoft.com/documentation/templates/201-web-app-ase-create/)基本定义的模板。
 
 <!-- LINKS -->
 

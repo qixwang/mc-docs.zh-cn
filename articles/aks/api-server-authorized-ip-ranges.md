@@ -7,10 +7,10 @@ origin.date: 11/05/2019
 ms.date: 04/06/2020
 ms.author: v-yeche
 ms.openlocfilehash: 9815e9abce1551f5277e7a20579599570db0dd15
-ms.sourcegitcommit: 76280dd9854dc0ff0ba1e5e62fb3dc3af049fbe2
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80517020"
 ---
 # <a name="secure-access-to-the-api-server-using-authorized-ip-address-ranges-in-azure-kubernetes-service-aks"></a>使用 Azure Kubernetes 服务 (AKS) 中的已授权 IP 地址范围保护对 API 服务器的访问
@@ -22,7 +22,7 @@ ms.locfileid: "80517020"
 > [!IMPORTANT]
 > 在新的群集上，仅支持在标准 SKU 负载均衡器中使用 API 服务器已授权 IP 地址范围。  配置了基本 SKU 负载均衡器和 API 服务器已授权 IP 地址范围的现有群集将继续按原有方式工作，但不能迁移到标准 SKU 负载均衡器   。 即使 Kubernetes 版本或控制平面升级后，这些现有群集也会继续工作。
 
-## <a name="before-you-begin"></a>准备阶段
+## <a name="before-you-begin"></a>开始之前
 
 API 服务器已授权 IP 范围仅适用于创建的新 AKS 群集。 本文介绍如何使用 Azure CLI 创建 AKS 群集。
 

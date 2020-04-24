@@ -9,10 +9,10 @@ origin.date: 10/01/2019
 ms.date: 11/04/2019
 ms.author: v-lingwu
 ms.openlocfilehash: 7d105e4e8953bad410166c26c4cc2e2a96e5b11a
-ms.sourcegitcommit: 78a05172a813b87428b87f3a2695e6bb3ae81ede
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80417383"
 ---
 # <a name="send-log-data-to-azure-monitor-with-the-http-data-collector-api-public-preview"></a>使用 HTTP 数据收集器 API（公共预览版）将日志数据发送到 Azure Monitor

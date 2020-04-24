@@ -11,10 +11,10 @@ origin.date: 03/19/2020
 ms.date: 03/30/2020
 ms.author: v-tawe
 ms.openlocfilehash: cc1657f7e9834ea352c552fb6ff52880b20f2134
-ms.sourcegitcommit: 260800ede66f48c886d1426a0fac18b4d402b4f2
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80586689"
 ---
 # <a name="run-azure-iot-edge-on-ubuntu-virtual-machines"></a>在 Ubuntu 虚拟机上运行 Azure IoT Edge
@@ -71,7 +71,7 @@ ms.locfileid: "80586689"
     > [!div class="mx-imgBorder"]
     > [![显示 IoT Edge VM 的 DNS 名称的屏幕截图](./media/how-to-install-iot-edge-ubuntuvm/iotedge-vm-dns-name.png)](./media/how-to-install-iot-edge-ubuntuvm/iotedge-vm-dns-name.png)
 
-1. 设置后若要通过 SSH 连接到此 VM，请在命令中使用关联的“DNS 名称”：`ssh <adminUsername>@<DNS_Name>` 
+1. 设置后若要通过 SSH 连接到此 VM，请在命令中使用关联的“DNS 名称”：`ssh <adminUsername>@<DNS_Name>`
 
 ## <a name="deploy-from-azure-cli"></a>从 Azure CLI 部署
 
@@ -160,7 +160,7 @@ ms.locfileid: "80586689"
     > [!div class="mx-imgBorder"]
     > [![显示 IoT Edge VM 的 DNS 名称的屏幕截图](./media/how-to-install-iot-edge-ubuntuvm/iotedge-vm-dns-name.png)](./media/how-to-install-iot-edge-ubuntuvm/iotedge-vm-dns-name.png)
 
-1. 设置后若要通过 SSH 连接到此 VM，请在命令中使用关联的“DNS 名称”：`ssh <adminUsername>@<DNS_Name>` 
+1. 设置后若要通过 SSH 连接到此 VM，请在命令中使用关联的“DNS 名称”：`ssh <adminUsername>@<DNS_Name>`
 
 ## <a name="next-steps"></a>后续步骤
 

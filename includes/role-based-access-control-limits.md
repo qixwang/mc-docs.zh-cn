@@ -9,10 +9,10 @@ ms.date: 04/01/2020
 ms.author: v-junlch
 ms.custom: include file
 ms.openlocfilehash: 84876301713ab10834a167d0b058570849b9869f
-ms.sourcegitcommit: 64584c0bf31b4204058ae2b4641356b904ccdd58
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80587124"
 ---
 | 资源 | 限制 |

@@ -8,10 +8,10 @@ origin.date: 11/15/2019
 ms.date: 04/06/2020
 ms.author: v-yeche
 ms.openlocfilehash: 396da43c975ae24cd2c703cc3dec11bb54f961e4
-ms.sourcegitcommit: 76280dd9854dc0ff0ba1e5e62fb3dc3af049fbe2
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80517017"
 ---
 <!--NOT SUITABLE FOR MOONCAKE-->
@@ -22,7 +22,7 @@ Azure Kubernetes 服务 (AKS) 使用证书对其许多组件进行身份验证�
 
 本文介绍如何轮换 AKS 群集中的证书。
 
-## <a name="before-you-begin"></a>准备阶段
+## <a name="before-you-begin"></a>开始之前
 
 本文要求运行 Azure CLI 2.0.77 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][azure-cli-install]。
 
@@ -75,7 +75,7 @@ $ kubectl get no
 Unable to connect to the server: x509: certificate signed by unknown authority (possibly because of "crypto/rsa: verification error" while trying to verify candidate authority certificate "ca")
 ```
 
-通过运行 `az aks get-credentials` 来更新 `kubectl` 使用的证书。
+通过运行 `kubectl` 来更新 `az aks get-credentials` 使用的证书。
 
 ```azurecli
 az aks get-credentials -g $RESOURCE_GROUP_NAME -n $CLUSTER_NAME --overwrite-existing

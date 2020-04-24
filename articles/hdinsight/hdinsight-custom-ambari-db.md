@@ -9,15 +9,15 @@ ms.topic: conceptual
 ms.date: 10/29/2019
 ms.author: hrasheed
 ms.openlocfilehash: 724c71e39da3543b41695242d69e9304a75f31b9
-ms.sourcegitcommit: 5fb45da006859215edc8211481f13174aa43dbeb
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80634624"
 ---
 # <a name="set-up-hdinsight-clusters-with-a-custom-ambari-db"></a>设置包含自定义 Ambari DB 的 HDInsight 群集
 
-Apache Ambari 简化了 Apache Hadoop 群集的管理和监视。 Ambari 提供易于使用的 Web UI 和 REST API。 Ambari 包含在 HDInsight 群集上，用于监视群集和进行配置更改。
+Apache Ambari 简化了 Apache Hadoop 群集的管理和监视。 Ambari 提供易于使用的 Web UI 和 REST API。 Ambari 包括在 HDInsight 群集中，用于监视群集和进行配置更改。
 
 在一般的群集创建过程中，如其他文章（例如[在 HDInsight 中设置群集](hdinsight-hadoop-provision-linux-clusters.md)）中所述，Ambari 将部署在由 HDInsight 管理的、不可供用户访问的 [S0 Azure SQL 数据库](../sql-database/sql-database-dtu-resource-limits-single-databases.md#standard-service-tier)中。
 

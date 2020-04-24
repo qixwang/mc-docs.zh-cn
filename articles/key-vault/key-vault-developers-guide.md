@@ -10,10 +10,10 @@ origin.date: 03/11/2020
 ms.date: 03/30/2020
 ms.author: v-tawe
 ms.openlocfilehash: c1f69c163a32e75c9c2fa8536a63f533cdcfa6c5
-ms.sourcegitcommit: 5fb45da006859215edc8211481f13174aa43dbeb
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80634444"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Azure 密钥保管库开发人员指南
@@ -23,9 +23,9 @@ ms.locfileid: "80634444"
 - 无需自己编写代码即可保护密钥和机密信息，并且能够轻松地在应用程序中使用它们。
 - 能够让客户拥有和管理其自己的密钥，因此可以专注于提供核心软件功能。 这样，应用程序便不会对客户的租户密钥和机密承担职责或潜在责任。
 - 应用程序可以使用密钥进行签名和加密，不过使密钥管理与应用程序分开，可以使解决方案适用于地理分散的应用。
-- 管理 Key Vault 证书。 有关详细信息，请参阅 [About keys, secrets, and certificates](about-keys-secrets-and-certificates.md)（关于密钥、机密和证书）。
+- 管理 Key Vault 证书。 有关详细信息，请参阅[关于密钥、机密和证书](about-keys-secrets-and-certificates.md)。
 
-有关 Azure Key Vault 的更多常规信息，请参阅[什么是 Key Vault](key-vault-overview.md)。
+有关 Azure 密钥保管库的更多常规信息，请参阅[什么是密钥保管库](key-vault-overview.md)。
 
 ## <a name="public-previews"></a>公共预览版
 
@@ -33,7 +33,7 @@ ms.locfileid: "80634444"
 
 ## <a name="creating-and-managing-key-vaults"></a>创建和管理密钥保管库
 
-虽然 Azure Key Vault 可用于安全存储凭据以及其他密钥和机密，但代码需要通过 Key Vault 的身份验证才能检索它们。 Azure 资源的托管标识为 Azure 服务提供了 Azure Active Directory (Azure AD) 中的自动托管标识，更巧妙地解决了这个问题。 此标识可用于通过支持 Azure AD 身份验证的任何服务（包括 Key Vault）的身份验证，这样就无需在代码中插入任何凭据了。 
+虽然 Azure Key Vault 可用于安全存储凭据以及其他密钥和机密，但代码需要通过 Key Vault 的身份验证才能检索它们。 “Azure 资源的托管标识”为 Azure 服务提供了 Azure Active Directory (Azure AD) 中的自动托管标识，更巧妙地解决了这个问题。 此标识可用于通过支持 Azure AD 身份验证的任何服务（包括 Key Vault）的身份验证，这样就无需在代码中插入任何凭据了。 
 
 有关 Azure 资源的托管标识的详细信息，请参阅[标识概述](../active-directory/managed-identities-azure-resources/overview.md)。 若要详细了解如何使用 AAD，请参阅[将应用程序与 Azure Active Directory 集成](../active-directory/develop/active-directory-integrating-applications.md)。
 
@@ -46,7 +46,7 @@ ms.locfileid: "80634444"
 - [使用 Java 创建和管理 Key Vault](quick-create-java.md)
 - [使用 Node.js 创建和管理 Key Vault](quick-create-node.md)
 - [使用 .NET (v4 SDK) 创建和管理 Key Vault](quick-create-net.md)
-- [通过 Azure Resource Manager 模板创建密钥保管库并添加机密](quick-create-template.md)
+- [通过 Azure 资源管理器模板创建密钥保管库并添加机密](quick-create-template.md)
 - [使用 REST 创建和管理 Key Vault](https://docs.microsoft.com/rest/api/keyvault/)
 
 
@@ -60,7 +60,7 @@ ms.locfileid: "80634444"
 
 通过 REST 接口，可以访问所有 Key Vault 资源：保管库、密钥、机密等。 
 
-[Key Vault REST API Reference](https://docs.microsoft.com/rest/api/keyvault/)（Key Vault REST API 参考）。 
+[Key Vault REST API 参考](https://docs.microsoft.com/rest/api/keyvault/)。 
 
 #### <a name="net"></a>.NET
 
@@ -70,7 +70,7 @@ ms.locfileid: "80634444"
 
 #### <a name="java"></a>Java
 
-[Java SDK for Key Vault](/java/api/overview/keyvault)（适用于 Key Vault 的 Java SDK）
+[适用于 Key Vault 的 Java SDK](/java/api/overview/keyvault)
 
 #### <a name="nodejs"></a>Node.js
 
@@ -92,26 +92,26 @@ ms.locfileid: "80634444"
 
 ### <a name="code-examples"></a>代码示例
 
-有关在应用程序中使用密钥保管库的完整示例，请参阅：
+有关将密钥保管库用于应用程序的完整示例，请参阅：
 
-- [Azure Key Vault 代码示例](https://azure.microsoft.com/resources/samples/?service=key-vault) - Azure Key Vault 的代码示例。 
-- [从 Web 应用程序使用 Azure Key Vault](quick-create-net.md) - 此教程介绍如何从 Azure 中的 Web 应用程序使用 Azure Key Vault。 
+- [Azure 密钥保管库代码示例](https://azure.microsoft.com/resources/samples/?service=key-vault) - Azure 密钥保管库代码示例。 
+- [从 Web 应用程序使用 Azure Key Vault](quick-create-net.md) - 此教程有助于你了解如何从 Azure 中的 Web 应用程序使用 Azure Key Vault。 
 
 ## <a name="how-tos"></a>操作方法
 
-以下文章和方案提供了特定于任务的指导，方便用户使用 Azure Key Vault：
+以下文章和方案提供了特定于任务的指导，方便你使用 Azure Key Vault：
 
 <!-- - [How to Generate and Transfer HSM-Protected Keys for Azure Key Vault](key-vault-hsm-protected-keys.md) - This will help you plan for, generate and then transfer your own HSM-protected keys to use with Azure Key Vault. -->
 
 - [订阅移动后更改密钥保管库租户 ID](key-vault-subscription-move-fix.md) - 将 Azure 订阅从租户 A 移到租户 B 时，租户 B.中的主体（用户和应用程序）无法访问现有的密钥保管库。使用本指南解决此问题。
-- [访问防火墙后面的密钥保管库](key-vault-access-behind-firewall.md) - 若要访问密钥保管库，密钥保管库客户端应用程序需要能够访问多个终结点才能使用各种功能。
-- [如何在部署期间传递安全值（如密码）](../azure-resource-manager/templates/key-vault-parameter.md) - 需要在部署期间以参数形式传递安全值（例如密码）时，可以将该值存储为 Azure Key Vault 中的机密，并在其他资源管理模板中引用该值。
-- [如何使用 Key Vault，以便通过 SQL Server 进行可扩展的密钥管理](https://msdn.microsoft.com/library/dn198405.aspx) - 适用于 Azure Key Vault 的 SQL Server 连接器允许 SQL Server 和 VM 中的 SQL 将 Azure Key Vault 服务用作可扩展密钥管理 (EKM) 提供程序，以便保护其针对应用程序链接的加密密钥；透明数据加密、备份加密和列级加密。
-- [如何将 Key Vault 中的证书部署到 VM](https://blogs.technet.microsoft.com/kv/2015/07/14/deploy-certificates-to-vms-from-customer-managed-key-vault/) - 在 Azure 上的 VM 中运行的云应用程序需要一个证书。 现在，如何将此证书部署到此 VM 中？
-- [如何使用端到端密钥轮换和审核设置 Key Vault](key-vault-key-rotation-log-monitoring.md) - 逐步介绍如何设置 Azure Key Vault 的密钥轮换和审核。
+- [访问位于防火墙后面的密钥保管库](key-vault-access-behind-firewall.md) -若要访问密钥保管库，密钥保管库客户端应用程序必须能够访问各种功能的多个终结点。
+- [如何在部署期间传递安全值（如密码）](../azure-resource-manager/templates/key-vault-parameter.md) - 当需要在部署期间以参数形式传递安全值（例如密码）时，可以将该值存储为 Azure 密钥保管库中的机密，并在其他资源管理模板中引用该值。
+- [如何使用密钥保管库，以便通过 SQL Server 进行可扩展的密钥管理](https://msdn.microsoft.com/library/dn198405.aspx) - 适用于 Azure 密钥保管库的 SQL Server 连接器允许 SQL Server 和 VM 中的 SQL 将 Azure 密钥保管库服务用作可扩展密钥管理 (EKM) 提供程序，以便保护其针对应用程序链接的加密密钥；透明数据加密、备份加密和列级加密。
+- [如何将证书从密钥保管库部署到虚拟机](https://blogs.technet.microsoft.com/kv/2015/07/14/deploy-certificates-to-vms-from-customer-managed-key-vault/) - 在 Azure 虚拟机上运行的云应用程序需要证书。 现在，要如何将此证书部署到此 VM 中呢？
+- [如何使用端到端密钥轮替和审核设置 Key Vault](key-vault-key-rotation-log-monitoring.md) - 逐步介绍如何设置 Azure Key Vault 的密钥轮替和审核。
 - [通过 Key Vault 部署 Azure Web 应用证书]( https://blogs.msdn.microsoft.com/appserviceteam/2016/05/24/deploying-azure-web-app-certificate-through-key-vault/)提供有关部署作为[应用服务证书](https://azure.microsoft.com/blog/internals-of-app-service-certificate/)产品的一部分存储在 Key Vault 中的证书的分步说明。
-- [向多个应用程序授予 Key Vault 的访问权限](key-vault-group-permissions-for-apps.md) Key Vault 访问控制策略最多支持 1024 个条目。 但是，可以创建一个 Azure Active Directory 安全组。 将所有关联的服务主体添加到此安全组，并为此安全组授予密钥保管库的访问权限。
-- 如需更多将 Key Vault 与 Azure 集成和结合使用的特定于任务的指导，请参阅 [Ryan Jones Azure Resource Manager template examples for Key Vault](https://github.com/rjmax/ArmExamples/tree/master/keyvaultexamples)（针对 Key Vault 的 Ryan Jones Azure 资源管理器模板示例）。
+- [向多个应用程序授予 Key Vault 的访问权限](key-vault-group-permissions-for-apps.md)密钥保管库访问控制策略支持多达 1024 个条目。 但是，可以创建一个 Azure Active Directory 安全组。 将所有关联的服务主体添加到此安全组，并为此安全组授予密钥保管库的访问权限。
+- 如需更多将密钥保管库与 Azure 集成和结合使用的特定于任务的指导，请参阅[针对 Key Vault 的 Ryan Jones Azure 资源管理器模板示例](https://github.com/rjmax/ArmExamples/tree/master/keyvaultexamples)。
 - [如何将 Key Vault 软删除与 CLI 配合使用](key-vault-soft-delete-cli.md)介绍了 Key Vault 的使用和生命周期以及各种已启用软删除的 Key Vault 对象。
 - [如何将 Key Vault 软删除与 PowerShell 配合使用](key-vault-soft-delete-powershell.md)介绍了 Key Vault 的使用和生命周期以及各种已启用软删除的 Key Vault 对象。
 
@@ -119,7 +119,7 @@ ms.locfileid: "80634444"
 
 这些文章介绍了使用 Key Vault 或与之集成的其他方案和服务。
 
-- [Azure 磁盘加密](../security/azure-security-disk-encryption.md)利用 Windows 的行业标准 [BitLocker](https://technet.microsoft.com/library/cc732774.aspx) 功能和 Linux 的 [DM-Crypt](https://wikipedia.org/wiki/Dm-crypt) 功能，为 OS 和数据磁盘提供卷加密。 该解决方案与 Azure 密钥保管库集成，可帮助你控制和管理密钥保管库订阅中的磁盘加密密钥和机密，同时确保虚拟机磁盘中的所有数据可在 Azure 存储中静态加密。
+- [Azure 磁盘加密](../security/azure-security-disk-encryption.md)利用 Windows 的行业标准 [BitLocker](https://technet.microsoft.com/library/cc732774.aspx) 功能和 Linux 的 [DM-Crypt](https://wikipedia.org/wiki/Dm-crypt) 功能，为 OS 和数据磁盘提供卷加密。 该解决方案与 Azure 密钥保管库集成，可帮助你控制和管理密钥保管库订阅中的磁盘加密密钥和机密，同时确保虚拟机磁盘中的所有数据可在 Azure 存储空间中静态加密。
 
 ## <a name="key-vault-overviews-and-concepts"></a>Key Vault 概述和概念
 

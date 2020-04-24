@@ -7,10 +7,10 @@ origin.date: 09/13/2019
 ms.date: 11/14/2019
 ms.author: v-lingwu
 ms.openlocfilehash: 0a2bc9733bc54912a3468ccec7cc3ae7d30222ae
-ms.sourcegitcommit: 44d3fe59952847e5394bbe6c05bd6f333bb56345
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80522090"
 ---
 # <a name="security-features-to-help-protect-cloud-workloads-that-use-azure-backup"></a>有助于保护使用 Azure 备份的云工作负荷的安全功能

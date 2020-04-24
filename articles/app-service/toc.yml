@@ -47,7 +47,7 @@
       href: samples-cli.md
     - name: Azure PowerShell
       href: samples-powershell.md
-    - name: Resource Manager 模板
+    - name: 资源管理器模板
       href: samples-resource-manager-templates.md
 - name: 概念
   items:
@@ -103,7 +103,7 @@
               href: deploy-run-package.md
             - name: 部署 ZIP 或 WAR
               href: deploy-zip.md
-            - name: 通过 FTP 部署
+            - name: 通过 FTP 进行部署
               href: deploy-ftp.md
             - name: 从本地 Git 进行部署
               href: deploy-local-git.md
@@ -197,7 +197,7 @@
       href: 'https://docs.microsoft.com/powershell/module/az.websites/#app_service'
     - name: REST API
       href: 'https://docs.microsoft.com/rest/api/appservice/'
-    - name: Resource Manager 模板
+    - name: 资源管理器模板
       href: 'https://docs.microsoft.com/azure/templates/microsoft.web/allversions'
 - name: 资源
   items:
@@ -209,7 +209,7 @@
       href: 'https://www.azure.cn/what-is-new'
     - name: 迁移助手指南
       href: 'https://github.com/Azure/App-Service-Migration-Assistant/tree/master/MigrationDocs'
-    - name: 最佳实践
+    - name: 最佳做法
       href: app-service-best-practices.md
     - name: 示例
       href: 'https://azure.microsoft.com/resources/samples/?service=app-service'
@@ -227,7 +227,7 @@
           href: troubleshoot-performance-degradation.md
         - name: 排查域和证书问题
           href: troubleshoot-domain-ssl-certificates.md
-        - name: 常见问题
+        - name: 常见问题解答
           items:
             - name: 可用性、性能和应用程序常见问题解答
               href: faq-availability-performance-application-issues.md

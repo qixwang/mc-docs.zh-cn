@@ -6,17 +6,17 @@ ms.topic: quickstart
 ms.date: 03/30/2020
 ms.custom: mvc, devcenter, cc996988-fb4f-47
 ms.openlocfilehash: 1869cca2168b759189c1eeed0c1e8f76e88fa612
-ms.sourcegitcommit: 64584c0bf31b4204058ae2b4641356b904ccdd58
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80581779"
 ---
 # <a name="create-your-first-function-in-the-azure-portal"></a>在 Azure 门户中创建第一个函数
 
 Azure Functions 用于在无服务器环境中运行代码，无需先创建虚拟机 (VM) 或发布 Web 应用程序。 本文介绍如何使用 Azure Functions 在 Azure 门户中创建 HTTP 触发的“hello world”函数。
 
-如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial)。
+如果没有 Azure 订阅，可在开始前创建一个 [试用帐户](https://www.azure.cn/pricing/1rmb-trial) 。
 
 如果你是 C# 开发人员，则请考虑[在 Visual Studio 2019 中创建第一个函数](functions-create-your-first-function-visual-studio.md)，而不要在门户中这样做。 
 
@@ -34,7 +34,7 @@ Azure Functions 用于在无服务器环境中运行代码，无需先创建虚�
 
 ## <a name="create-an-http-triggered-function"></a><a name="create-function"></a>创建 HTTP 触发的函数
 
-1. 展开新的函数应用，选择 **Functions** 旁边的 **+** 按钮，接着选择“门户中”  ，然后选择“继续”  。
+1. 展开新的函数应用，选择 **Functions+ 旁边的**  按钮，接着选择“门户中”  ，然后选择“继续”  。
 
     ![有关选择平台的 Functions 快速入门。](./media/functions-create-first-azure-function/function-app-quickstart-choose-portal.png)
 

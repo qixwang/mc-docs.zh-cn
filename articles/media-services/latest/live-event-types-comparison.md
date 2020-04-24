@@ -15,10 +15,10 @@ origin.date: 06/13/2019
 ms.date: 04/06/2020
 ms.author: v-jay
 ms.openlocfilehash: ec88fc6001035ecbed3202d25493d0e9b6b1128d
-ms.sourcegitcommit: fe9ed98aaee287a21648f866bb77cb6888f75b0c
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80625788"
 ---
 # <a name="live-event-types-comparison"></a>实时事件类型比较
@@ -35,7 +35,7 @@ ms.locfileid: "80625788"
 * **LiveEventEncodingType.Standard** - 本地实时编码器将单比特率流发送到实时事件，媒体服务创建多比特率流。 如果贡献源的分辨率为 720p 或更高，则 **Default720p** 预设将编码一组 6 分辨率/比特率对（本文稍后会提供详细信息）。
 * **LiveEventEncodingType.Premium1080p** - 本地实时编码器将单比特率流发送到实时事件，媒体服务创建多比特率流。 Default1080p 预设指定分辨率/比特率对的输出集（本文稍后会提供详细信息）。 
 
-| 功能 | 直通直播活动 | Standard 或 Premium1080p 实时事件 |
+| Feature | 直通直播活动 | Standard 或 Premium1080p 实时事件 |
 | --- | --- | --- |
 | 单比特率输入在云中被编码为多比特率 |否 |是 |
 | 贡献源的最大视频分辨率 |4K（4096x2160，60 帧/秒） |1080p（1920x1088，30 帧/秒）|
@@ -74,7 +74,7 @@ ms.locfileid: "80625788"
 
 如果贡献源的分辨率为 720p 或更高，则 **Default720p** 预设会将源编码到以下 6 个层中。 在下表中，比特率以 kbps 为单位，MaxFPS 表示允许的最大帧速率（帧/秒），Profile 表示使用的 H.264 配置文件。
 
-| 比特率 | 宽度 | 高度 | MaxFPS | 配置文件 |
+| Bitrate | 宽度 | 高度 | MaxFPS | 配置文件 |
 | --- | --- | --- | --- | --- |
 | 3500 |1280 |720 |30 |高 |
 | 2200 |960 |540 |30 |高 |
@@ -91,7 +91,7 @@ ms.locfileid: "80625788"
 
 如果贡献源的分辨率为 1080p，则 **Default1080p** 预设会将源编码到以下 6 个层中。
 
-| 比特率 | 宽度 | 高度 | MaxFPS | 配置文件 |
+| Bitrate | 宽度 | 高度 | MaxFPS | 配置文件 |
 | --- | --- | --- | --- | --- |
 | 5500 |1920 |1080 |30 |高 |
 | 3000 |1280 |720 |30 |高 |

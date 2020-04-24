@@ -9,10 +9,10 @@ ms.date: 03/30/2020
 ms.author: v-tawe
 ms.custom: seodec18
 ms.openlocfilehash: ad5b3a1bdc79525e7e27ba67204a546fa77b21ad
-ms.sourcegitcommit: 44d3fe59952847e5394bbe6c05bd6f333bb56345
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80522071"
 ---
 # <a name="locking-down-an-app-service-environment"></a>锁定应用服务环境
@@ -114,7 +114,7 @@ Azure 防火墙可将日志发送到 Azure 存储、事件中心或 Azure Monito
 
 #### <a name="service-endpoint-capable-dependencies"></a>支持服务终结点的依赖项 
 
-| 终结点 |
+| 端点 |
 |----------|
 | Azure SQL |
 | Azure 存储 |
@@ -122,7 +122,7 @@ Azure 防火墙可将日志发送到 Azure 存储、事件中心或 Azure Monito
 
 #### <a name="ip-address-dependencies"></a>IP 地址依赖项
 
-| 终结点 | 详细信息 |
+| 端点 | 详细信息 |
 |----------| ----- |
 | \*:123 | NTP 时钟检查。 在端口 123 上的多个终结点中检查流量 |
 | \*:12000 | 此端口用于某些系统监视活动。 如果阻止此端口，则有些问题将难以诊断，但 ASE 会继续运行 |
@@ -139,7 +139,7 @@ Azure 防火墙可将日志发送到 Azure 存储、事件中心或 Azure Monito
 
 #### <a name="fqdn-httphttps-dependencies"></a>FQDN HTTP/HTTPS 依赖项 
 
-| 终结点 |
+| 端点 |
 |----------|
 |graph.chinacloudapi.cn:443 |
 |login.live.com:443 |
@@ -220,7 +220,7 @@ Azure 防火墙可将日志发送到 Azure 存储、事件中心或 Azure Monito
 
 #### <a name="wildcard-httphttps-dependencies"></a>通配符 HTTP/HTTPS 依赖项 
 
-| 终结点 |
+| 端点 |
 |----------|
 |gr-Prod-\*.cloudapp.cn:443 |
 | \*.management.chinacloudapi.cn:443 |

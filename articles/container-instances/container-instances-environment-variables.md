@@ -6,10 +6,10 @@ origin.date: 04/17/2019
 ms.date: 04/06/2020
 ms.author: v-yeche
 ms.openlocfilehash: 7b7c5f206ae99ae12a1d10bc4593cb45b60a60a9
-ms.sourcegitcommit: 76280dd9854dc0ff0ba1e5e62fb3dc3af049fbe2
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80516979"
 ---
 <!--Verified successfully-->
@@ -25,7 +25,7 @@ ms.locfileid: "80516979"
 
 *NumWords*：发送到 STDOUT 的单词数。
 
-*MinLength*：单词中最少包含几个字符才将它计为一个单词。 如果指定较大的数字，将会忽略“of”和“the”等常见单词。
+*MinLength*：单词中最少包含几个字符才将它统计为一个单词。 如果指定较大的数字，将会忽略“of”和“the”等常见单词。
 
 如果需要以环境变量的形式传递机密，Azure 容器实例支持 Linux 容器的[安全值](#secure-values)。
 
@@ -94,7 +94,7 @@ az container logs --resource-group myResourceGroup --name mycontainer2
 
 在 PowerShell 中设置环境变量类似于在 CLI 中进行的相应操作，但需使用 `-EnvironmentVariable` 命令行参数。
 
-首先，使用此 [New-AzContainerGroup][new-Azcontainergroup] 命令在默认配置中启动 [aci-wordcount][aci-wordcount] 容器：
+首先，使用此 [New-AzContainerGroup][aci-wordcount] 命令在默认配置中启动 [aci-wordcount][new-Azcontainergroup] 容器：
 
 ```powershell
 New-AzContainerGroup `
@@ -103,7 +103,7 @@ New-AzContainerGroup `
     -Image mcr.microsoft.com/azuredocs/aci-wordcount:latest
 ```
 
-现在请运行以下 [New-AzContainerGroup][new-Azcontainergroup] 命令。 此命令在填充数组变量 `envVars` 后指定 *NumWords* 和 *MinLength* 环境变量：
+现在请运行以下 [New-AzContainerGroup][new-Azcontainergroup] 命令。 此命令在填充数组变量 *后指定*NumWords*和*MinLength`envVars` 环境变量：
 
 ```powershell
 $envVars = @{'NumWords'='5';'MinLength'='8'}
@@ -153,7 +153,7 @@ Azure:\
 在 Azure 门户中启动容器时，若要设置环境变量，请在创建容器时所在的“高级”页中指定它们。 
 
 1. 在“高级”页上将“重启策略”设置为“在故障时”   
-2. 在“环境变量”下，为第一个变量输入值为 `5` 的 `NumWords`，并为第二个变量输入值为 `8` 的 `MinLength`。  
+2. 在“环境变量”下，为第一个变量输入值为 **的**，并为第二个变量输入值为 `NumWords` 的 `5`。`MinLength``8` 
 1. 选择“查看 + 创建”进行验证，然后部署容器。 
 
 ![门户页，显示环境变量“启用”按钮和文本框][portal-env-vars-01]

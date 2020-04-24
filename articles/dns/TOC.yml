@@ -49,7 +49,7 @@
           href: dns-alias.md
         - name: 使用 Azure DNS 进行委派
           href: dns-domain-delegation.md
-        - name: 常见问题
+        - name: 常见问题解答
           href: dns-faq.md
         - name: DNS 指标和警报
           href: dns-alerts-metrics.md
@@ -69,7 +69,7 @@
           href: private-dns-scenarios.md
         - name: 在虚拟网络中进行 DNS 解析
           href: ../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md
-        - name: 常见问题
+        - name: 常见问题解答
           href: dns-faq-private.md
 - name: 如何
   items:

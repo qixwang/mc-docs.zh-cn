@@ -48,7 +48,7 @@
           href: ../networking/connectivty-interoperability-data-plane.md?toc=%2fvpn-gateway%2ftoc.json
     - name: 内置安全控件
       href: vpn-gateway-security-controls.md
-- name: 操作指南
+- name: 操作方法指南
   items:
     - name: 创建和管理 VPN 网关
       items:
@@ -98,7 +98,7 @@
               href: vpn-gateway-vnet-vnet-rm-ps.md
             - name: Azure CLI
               href: vpn-gateway-howto-vnet-vnet-cli.md
-        - name: 在部署模型之间配置 VNet 到 VNet 连接
+        - name: 配置部署模型之间的 VNet 到 VNet 连接
           items:
             - name: Azure 门户
               href: vpn-gateway-connect-different-deployment-models-portal.md

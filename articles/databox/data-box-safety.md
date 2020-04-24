@@ -10,10 +10,10 @@ origin.date: 08/13/2019
 ms.date: 04/06/2020
 ms.author: v-jay
 ms.openlocfilehash: e6278414531bec7481cfbac2bf75c3318746ccfa
-ms.sourcegitcommit: 5fb45da006859215edc8211481f13174aa43dbeb
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80634628"
 ---
 # <a name="safely-install-and-operate-your-azure-data-box"></a>安全安装和运行 Azure Data Box
@@ -55,7 +55,7 @@ ms.locfileid: "80634628"
 * 将设备放置在平坦、坚固、稳定的表面上，以免翻倒。
 * 机架安装式设备不可用作支架或工作空间。 请勿将 Data Box 放置在机架安装式设备的顶部。 将任何类型的负载放到扩展的机架安装式单元中可能有设备翻倒的危险，造成人身伤亡或产品损坏。
 
-![警告图标](./media/data-box-safety/warning_icon.png)**警告！**
+![警告图标](./media/data-box-safety/warning_icon.png) **警告！**
 
 * 请将设备安装在有充足气流的工作区域。
 * 请将设备安装在无传导性污染物、有充足气流且温度受控的室内。
@@ -78,9 +78,9 @@ ms.locfileid: "80634628"
 * 在移动之前，或者如果认为该设备出现了任何形式的损坏，请永久拔掉电源。
 * 根据以下电源规格提供带电力过载保护的合适电源：
 
-    - 电压：100 V AC 到 240 V AC
-    - 电流：最大 6 A
-    - 频率：50 Hz 到 60 Hz
+    - 电压：100V AC 到 240V AC
+    - 电流：最大 6A
+    - 频率：50Hz 到 60Hz
 
 ![警告图标](./media/data-box-safety/warning_icon.png)**小心：**
 
@@ -121,7 +121,7 @@ ms.locfileid: "80634628"
 
 本设备符合 FCC 规则第 15 部分，以及加拿大工业部许可证豁免 RSS 标准。 操作时需满足以下两个条件：(1) 本设备不会造成有害干扰；(2) 本设备必须接受任何干扰，包括可能导致设备意外运行的干扰。
 
-![加拿大](./media/data-box-safety/canada.png)
+![Canada](./media/data-box-safety/canada.png)
 
 CAN ICES-3(A)/NMB-3(A)
 
@@ -143,7 +143,7 @@ Azure Corporation, One Microsoft Way, Redmond, WA 98052, USA.
 
 ![电池处置图标](./media/data-box-safety/battery_disposal_icon.png)
 
-本产品、其电池或包装上的此符号表示本产品包含的任何电池不可当作家庭垃圾进行处置。 你需要负责将此废弃物递送到适当的电池以及电力和电子设备回收点。 由于电池以及电力和电子设备中可能包含有害物质，这种独立的回收和循环利用有助于保护自然资源，并防止不当的处置可能对人类健康和环境造成的不利后果。 有关电池以及电力和电子废弃物投放点的详细信息，请联系当地的市政办公室、家庭垃圾处置服务部门，或销售本产品的商店。 有关 WEEE 的其他信息，请与 erecycle\@microsoft.com  联系。
+本产品、其电池或包装上的此符号表示本产品包含的任何电池不可当作家庭垃圾进行处置。 你需要负责将此废弃物递送到适当的电池以及电力和电子设备回收点。 由于电池以及电力和电子设备中可能包含有害物质，这种独立的回收和循环利用有助于保护自然资源，并防止不当的处置可能对人类健康和环境造成的不利后果。 有关电池以及电力和电子废弃物投放点的详细信息，请联系当地的市政办公室、家庭垃圾处置服务部门，或销售本产品的商店。 有关 WEEE 的其他信息，请与 erecycle*microsoft.com\@* 联系。
 
 本产品包含钮扣电池。
 

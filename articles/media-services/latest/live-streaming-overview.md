@@ -15,10 +15,10 @@ origin.date: 03/18/2020
 ms.date: 04/06/2020
 ms.author: v-jay
 ms.openlocfilehash: 46f4b3a689586fdf7f4190bd640617ea6484aba9
-ms.sourcegitcommit: fe9ed98aaee287a21648f866bb77cb6888f75b0c
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80625659"
 ---
 # <a name="live-streaming-with-azure-media-services-v3"></a>使用 Azure 媒体服务 v3 实时传送视频流

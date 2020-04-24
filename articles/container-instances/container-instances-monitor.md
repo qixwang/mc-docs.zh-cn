@@ -6,10 +6,10 @@ origin.date: 04/24/2019
 ms.date: 04/06/2020
 ms.author: v-yeche
 ms.openlocfilehash: c2f7242692fa4b3db3d64713e0fd5ab1fa3a71dc
-ms.sourcegitcommit: 76280dd9854dc0ff0ba1e5e62fb3dc3af049fbe2
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80516980"
 ---
 <!--Verified successfully-->
@@ -26,7 +26,7 @@ ms.locfileid: "80516980"
 
 目前，仅提供了 Linux 容器的 Azure Monitor 指标。
 
-## <a name="available-metrics"></a>可用度量值
+## <a name="available-metrics"></a>可用指标
 
 Azure Monitor 提供下述 [Azure 容器实例指标][supported-metrics]。 这些指标适用于容器组和单独的容器。
 

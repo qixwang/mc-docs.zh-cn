@@ -17,10 +17,10 @@ ms.date: 04/06/2020
 ms.author: v-jay
 ms.custom: seodec18
 ms.openlocfilehash: 0bf3656a77698c5f2af223f60058dd1018dc17a2
-ms.sourcegitcommit: fe9ed98aaee287a21648f866bb77cb6888f75b0c
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80625797"
 ---
 # <a name="protect-your-content-with-media-services-dynamic-encryption"></a>使用媒体服务动态加密保护内容

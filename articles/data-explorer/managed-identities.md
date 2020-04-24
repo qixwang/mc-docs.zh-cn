@@ -9,10 +9,10 @@ ms.topic: conceptual
 origin.date: 03/12/2020
 ms.date: 03/30/2020
 ms.openlocfilehash: a495e5ae3519fcd85d6553ea1953cbef8510096a
-ms.sourcegitcommit: 44d3fe59952847e5394bbe6c05bd6f333bb56345
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80522084"
 ---
 # <a name="configure-managed-identities-for-your-azure-data-explorer-cluster"></a>配置 Azure 数据资源管理器群集的托管标识
@@ -30,7 +30,7 @@ ms.locfileid: "80522084"
 
 ### <a name="add-a-system-assigned-identity-using-the-azure-portal"></a>使用 Azure 门户添加系统分配的标识
 
-1. 登录到 [Azure 门户](https://portal.azure.cn/)。
+1. 登录 [Azure 门户](https://portal.azure.cn/)。
 
 #### <a name="new-azure-data-explorer-cluster"></a>新建 Azure 数据资源管理器群集
 
@@ -43,7 +43,7 @@ ms.locfileid: "80522084"
 #### <a name="existing-azure-data-explorer-cluster"></a>现有的 Azure 数据资源管理器群集
 
 1. 打开现有的 Azure 数据资源管理器群集。
-1. 在门户的左窗格中，选择“设置” > “标识”。  
+1. 在门户的左窗格中，选择“设置” **“标识”。**  >  
 1. 在“标识”窗格的“系统分配”选项卡中，执行以下操作：  
    1. 将“状态”滑块移到“打开”。  
    1. 选择“保存” 
@@ -61,7 +61,7 @@ ms.locfileid: "80522084"
 
 ### <a name="add-a-system-assigned-identity-using-c"></a>使用 C# 添加系统分配的标识
 
-#### <a name="prerequisites"></a>先决条件
+#### <a name="prerequisites"></a>必备条件
 
 若要使用 Azure 数据资源管理器 C# 客户端设置托管标识，请执行以下操作：
 
@@ -107,7 +107,7 @@ ms.locfileid: "80522084"
     kustoManagementClient.Clusters.Get(resourceGroupName, clusterName);
     ```
 
-    如果结果中包含具有 `Succeeded` 值的 `ProvisioningState`，则表示已创建或更新群集，群集应具有以下属性：
+    如果结果中包含具有 `ProvisioningState` 值的 `Succeeded`，则表示已创建或更新群集，群集应具有以下属性：
 
     ```csharp
     var principalId = cluster.Identity.PrincipalId;
@@ -173,8 +173,8 @@ Azure 资源管理器模板可以用于自动化 Azure 资源部署。 若要详
 
 ### <a name="remove-a-system-assigned-identity-using-the-azure-portal"></a>使用 Azure 门户删除系统分配的标识
 
-1. 登录到 [Azure 门户](https://portal.azure.cn/)。
-1. 在门户的左窗格中，选择“设置” > “标识”。  
+1. 登录 [Azure 门户](https://portal.azure.cn/)。
+1. 在门户的左窗格中，选择“设置” **“标识”。**  >  
 1. 在“标识”窗格的“系统分配”选项卡中，执行以下操作：  
     1. 将“状态”滑块移到“关闭”。  
     1. 选择“保存” 

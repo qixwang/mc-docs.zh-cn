@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 03/31/2020
 ms.author: v-junlch
 ms.openlocfilehash: b4d454d1e3bb9bbcff8894f78cb1b5028f7b0cce
-ms.sourcegitcommit: 64584c0bf31b4204058ae2b4641356b904ccdd58
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80581822"
 ---
 # <a name="azure-virtual-machine-scale-sets-and-attached-data-disks"></a>Azure 虚拟机规模集和附加数据磁盘
@@ -32,7 +32,7 @@ ms.locfileid: "80581822"
 
 
 ## <a name="create-a-service-fabric-cluster-with-attached-data-disks"></a>使用附加的数据磁盘创建 Service Fabric 群集
-在 Azure 中运行的 [Service Fabric](/service-fabric) 群集中的每个[节点类型](../service-fabric/service-fabric-cluster-nodetypes.md)都受虚拟机规模集的支持。 可以使用 Azure 资源管理器模板将数据磁盘附加到组成 Service Fabric 群集的规模集。 可以使用[现有模板](https://github.com/Azure-Samples/service-fabric-cluster-templates)作为起点。 在模板中包括 _Microsoft.Compute/virtualMachineScaleSets_ 资源的 _storageProfile_ 中的 _dataDisks_ 节，然后部署模板。 以下示例附加一个 128 GB 的数据磁盘：
+在 Azure 中运行的 [Service Fabric](../service-fabric/service-fabric-cluster-nodetypes.md) 群集中的每个[节点类型](/service-fabric)都受虚拟机规模集的支持。 可以使用 Azure 资源管理器模板将数据磁盘附加到组成 Service Fabric 群集的规模集。 可以使用[现有模板](https://github.com/Azure-Samples/service-fabric-cluster-templates)作为起点。 在模板中包括 _Microsoft.Compute/virtualMachineScaleSets_ 资源的 _storageProfile_ 中的 _dataDisks_ 节，然后部署模板。 以下示例附加一个 128 GB 的数据磁盘：
 
 ```json
 "dataDisks": [
@@ -90,9 +90,9 @@ ms.locfileid: "80581822"
 
 
 ## <a name="additional-notes"></a>附加说明
-Microsoft.Compute API 的 API 版本 [_2016-04-30-preview_](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/compute/resource-manager/Microsoft.Compute/preview/2016-04-30-preview/compute.json) 或更高版本中提供了对 Azure 托管磁盘和规模集附加数据磁盘的支持。
+Microsoft.Compute API [_2016-04-30-preview_](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/compute/resource-manager/Microsoft.Compute/preview/2016-04-30-preview/compute.json) 或更高版本中提供了对 Azure 托管磁盘和规模集附加数据磁盘的支持。
 
-Azure 门户对规模集中附加数据磁盘的支持是有限的。 根据需求，可使用 Azure 模板、CLI、PowerShell、SDK 和 REST API 来管理附加磁盘。
+Azure 门户对规模集中附加数据磁盘的支持是有限的。 可以根据需要使用 Azure 模板、CLI、PowerShell、SDK 和 REST API 管理附加磁盘。
 
 <!-- Update_Description: wording update -->
 

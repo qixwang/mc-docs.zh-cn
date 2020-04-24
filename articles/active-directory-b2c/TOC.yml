@@ -65,7 +65,7 @@
       href: user-overview.md
     - name: 用户配置文件属性
       href: user-profile-attributes.md
-- name: 操作指南
+- name: 操作方法指南
   items:
     - name: 应用集成
       items:
@@ -182,7 +182,7 @@
                 - name: ClaimsTransformations
                   href: claimstransformations.md
                   items:
-                    - name: 布尔
+                    - name: Boolean
                       href: boolean-transformations.md
                     - name: Date
                       href: date-transformations.md
@@ -327,7 +327,7 @@
       href: 'https://azure.microsoft.com/updates/?product=active-directory-b2c'
     - name: 解决方案和培训
       href: solution-articles.md
-    - name: Stack Overflow
+    - name: 堆栈溢出
       href: 'https://stackoverflow.com/questions/tagged/azure-ad-b2c+identity-experience-framework'
     - name: 支持
       href: support-options.md

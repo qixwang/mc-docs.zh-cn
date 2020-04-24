@@ -7,10 +7,10 @@ ms.date: 03/31/2020
 ms.author: v-junlch
 zone_pivot_groups: code-editors-set-one
 ms.openlocfilehash: b7420c4b60bdc13c4ee1e76f4adff6563bb90498
-ms.sourcegitcommit: 64584c0bf31b4204058ae2b4641356b904ccdd58
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80581626"
 ---
 # <a name="create-your-first-durable-function-in-c"></a>使用 C\# 创建你的第一个持久函数
@@ -23,7 +23,7 @@ ms.locfileid: "80581626"
 
 ![在 Azure 中运行持久函数](./media/durable-functions-create-first-csharp/functions-vscode-complete.png)
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 完成本教程：
 
@@ -39,7 +39,7 @@ ms.locfileid: "80581626"
 
 * 请确保安装 3.1 或更高版本的 [.NET Core SDK](https://dotnet.microsoft.com/download)。
 
-如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial)。
+如果没有 Azure 订阅，可在开始前创建一个 [试用帐户](https://www.azure.cn/pricing/1rmb-trial) 。
 
 ## <a name="create-your-local-project"></a><a name="create-an-azure-functions-project"></a>创建本地项目 
 
@@ -53,7 +53,7 @@ ms.locfileid: "80581626"
 
 1. 按照提示提供以下信息：
 
-    | Prompt | Value | 说明 |
+    | Prompt | 值 | 说明 |
     | ------ | ----- | ----------- |
     | 选择函数应用项目的语言 | C# | 创建本地 C# Functions 项目。 |
     | 选择版本 | Azure Functions v3 | 仅当尚未安装 Core Tools 时，才会出现此选项。 在本例中，当你首次运行应用时即已安装 Core Tools。 |
@@ -70,7 +70,7 @@ Visual Studio Code 会根据需要安装 Azure Functions Core Tools。 它还会
 
 1. 按照提示提供以下信息：
 
-    | Prompt | Value | 说明 |
+    | Prompt | 值 | 说明 |
     | ------ | ----- | ----------- |
     | 选择函数的模板 | DurableFunctionsOrchestration | 创建 Durable Functions 业务流程 |
     | 提供函数名称 | HelloOrchestration | 在其中创建函数的类的名称 |
@@ -78,13 +78,13 @@ Visual Studio Code 会根据需要安装 Azure Functions Core Tools。 它还会
 
 1. 当 VS Code 提示选择存储帐户时，请选择“选择存储帐户”。  按照提示提供以下信息，以在 Azure 中创建新的存储帐户。
 
-    | Prompt | Value | 说明 |
+    | Prompt | 值 | 说明 |
     | ------ | ----- | ----------- |
     | 选择订阅 | *订阅的名称* | 选择 Azure 订阅 |
     | 选择存储帐户 | 新建存储帐户 |  |
     | 输入新存储帐户的名称 | *唯一名称* | 要创建的存储帐户的名称 |
     | 选择资源组 | *唯一名称* | 要创建的资源组名称 |
-    | 选择位置 | *region* | 选择离你较近的区域 |
+    | 选择一个位置 | *region* | 选择离你较近的区域 |
 
 包含新函数的类会添加到此项目。 VS Code 还将存储帐户连接字符串添加到 *local.settings.json*，并将对 [`Microsoft.Azure.WebJobs.Extensions.DurableTask`](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DurableTask) NuGet 包的引用添加到 *.csproj* 项目文件。
 
@@ -164,21 +164,21 @@ Visual Studio Code 会根据需要安装 Azure Functions Core Tools。 它还会
 
 ![在 Azure 中运行持久函数](./media/durable-functions-create-first-csharp/functions-vs-complete.png)
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 完成本教程：
 
-* 安装 [Visual Studio 2019](https://visualstudio.microsoft.com/vs/)。 确保还安装了“Azure 开发”工作负荷。  Visual Studio 2017 也支持 Durable Functions 开发，但 UI 和步骤不同。
+* 安装 [Visual Studio 2019](https://visualstudio.microsoft.com/vs/)。 确保还安装了 **Azure 开发**工作负荷。 Visual Studio 2017 也支持 Durable Functions 开发，但 UI 和步骤不同。
 
 * 验证 [Azure 存储模拟器](../../storage/common/storage-use-emulator.md)是否已安装且正在运行。
 
-如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial)。
+如果没有 Azure 订阅，可在开始前创建一个 [试用帐户](https://www.azure.cn/pricing/1rmb-trial) 。
 
 ## <a name="create-a-function-app-project"></a>创建函数应用项目
 
 Azure Functions 模板创建一个项目，该项目可发布到 Azure 中的函数应用。 函数应用可将函数分组为逻辑单元，以便更轻松地管理、部署、缩放和共享资源。
 
-1. 在 Visual Studio 中，从“文件”  菜单中选择“新建”   > “项目”  。
+1. 在 Visual Studio 中，从“文件”  菜单中选择“新建” >   “项目”  。
 
 1. 在“创建新项目”  对话框中，搜索 `functions`，选择“Azure Functions”  模板，然后选择“下一步”  。 
 
@@ -202,7 +202,7 @@ Azure Functions 模板创建一个项目，该项目可发布到 Azure 中的函
 
 以下步骤使用模板在项目中创建持久函数代码。
 
-1. 在 Visual Studio 中右键单击该项目并选择“添加” > “新建 Azure 函数”。  
+1. 在 Visual Studio 中右键单击该项目并选择“添加” **“新建 Azure 函数”。**  >  
 
     ![添加新函数](./media/durable-functions-create-first-csharp/functions-vs-add-function.png)
 
@@ -232,7 +232,7 @@ Azure Functions 模板创建一个项目，该项目可发布到 Azure 中的函
 
     ![Azure 本地运行时](./media/durable-functions-create-first-csharp/functions-vs-debugging.png)
 
-3. 将 HTTP 请求的 URL 粘贴到浏览器的地址栏中并执行请求。 下面显示了该函数返回的对本地 GET 请求在浏览器中的响应：
+3. 将 HTTP 请求的 URL 粘贴到浏览器的地址栏中并执行请求。 下面演示浏览器中函数返回的对本地 GET 请求的响应：
 
     ![浏览器中的函数 localhost 响应](./media/durable-functions-create-first-csharp/functions-vs-status.png)
 

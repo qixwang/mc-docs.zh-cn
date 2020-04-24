@@ -9,10 +9,10 @@ ms.topic: conceptual
 origin.date: 03/19/2020
 ms.date: 03/30/2020
 ms.openlocfilehash: 36e3d4a474a7f16684ef06c84f15628318affd5a
-ms.sourcegitcommit: 44d3fe59952847e5394bbe6c05bd6f333bb56345
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80523178"
 ---
 # <a name="data-formats-supported-by-azure-data-explorer-for-ingestion"></a>Azure 数据资源管理器支持的用于引入的数据格式

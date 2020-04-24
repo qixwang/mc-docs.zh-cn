@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 03/30/2020
 ms.author: v-junlch
 ms.openlocfilehash: e6c191b5c2a092ce69e1b0f49184bd7b8cecfd4a
-ms.sourcegitcommit: 64584c0bf31b4204058ae2b4641356b904ccdd58
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80581808"
 ---
 # <a name="rewrite-http-headers-with-application-gateway"></a>重写应用程序网关的 HTTP 标头

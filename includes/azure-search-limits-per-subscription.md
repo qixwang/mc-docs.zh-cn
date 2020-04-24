@@ -1,20 +1,19 @@
 ---
 title: include 文件
 description: include 文件
-services: search
 author: HeidiSteen
-ms.service: search
+ms.service: cognitive-search
 ms.topic: include
 origin.date: 05/06/2019
-ms.date: 06/03/2019
-ms.author: v-biyu
+ms.date: 03/30/2020
+ms.author: v-tawe
 ms.custom: include file
-ms.openlocfilehash: 9eef8f53a12f0b0459f4bf5fee6bf84461043d08
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.openlocfilehash: 09d90810b2ae8e7846c38e66ec1b205781a2e58d
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75336516"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81112874"
 ---
 可以在一个订阅中创建多个服务。 每一个服务都可以在特定层上进行预配。 你仅受每个层允许的服务数量限制。 例如，在同一订阅中，最多可以在基本层创建 12 个服务，在 S1 层也创建 12 个服务。 有关层的详细信息，请参阅[为 Azure 认知搜索选择 SKU 或层](../articles/search/search-sku-tier.md)。
 
@@ -23,7 +22,7 @@ ms.locfileid: "75336516"
 | 资源            | 免费<sup>1</sup> | 基本 | S1  | S2 | S3 | S3&nbsp;HD | L1 | L2 |
 | ------------------- | ---- | ----- | --- | -- | -- | ----- | -- | -- |
 | 最大服务数    |1     | 16    | 16  | 8  | 6  | 6     | 6  | 6  |
-| 搜索单位 (SU) 的最大规模<sup>2</sup> |不适用 |3 SU |36 个 SU |36 个 SU |36 个 SU |36 个 SU |36 个 SU |36 个 SU |
+| 搜索单位 (SU) 的最大规模<sup>2</sup> |空值 |3 SU |36 个 SU |36 个 SU |36 个 SU |36 个 SU |36 个 SU |36 个 SU |
 
 <sup>1</sup> 免费层基于共享资源，而不基于专用资源。 共享资源不支持纵向扩展。
 

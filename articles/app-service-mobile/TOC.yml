@@ -22,7 +22,7 @@
       href: app-service-mobile-xamarin-forms-get-started.md
     - name: Xamarin.iOS
       href: app-service-mobile-xamarin-ios-get-started.md
-- name: 操作指南
+- name: 操作方法指南
   items:
     - name: 规划和设计
       items:
@@ -176,7 +176,7 @@
           items:
             - name: 配置 Web 应用程序防火墙
               href: ../app-service/environment/app-service-app-service-environment-web-application-firewall.md?toc=%2fapp-service-mobile%2ftoc.json
-    - name: Backup
+    - name: 备份
       items:
         - name: 在 Azure 中备份应用
           href: ../app-service/manage-backup.md?toc=%2fapp-service-mobile%2ftoc.json
@@ -195,7 +195,7 @@
           href: ../app-service/overview-managed-identity.md?toc=%2fapp-service-mobile%2ftoc.json
     - name: 故障排除
       items:
-        - name: 移动应用常规故障排除
+        - name: 移动应用的一般故障排除
           items:
             - name: .NET 后端
               href: 'app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#how-to-debug-and-troubleshoot-the-net-server-sdk'
@@ -235,7 +235,7 @@
       href: 'https://www.azure.cn/pricing/calculator/'
     - name: 服务更新
       href: 'https://updates.azure.cn'
-    - name: Stack Overflow
+    - name: 堆栈溢出
       href: 'https://stackoverflow.com/questions/tagged/azure-mobile-services'
     - name: 示例
       items:
@@ -243,7 +243,7 @@
           href: 'https://azure.microsoft.com/resources/samples/app-service-mobile-dotnet-fieldengineer/'
         - name: 结构化数据同步
           href: 'https://azure.microsoft.com/resources/samples/app-service-mobile-dotnet-todo-list-files/'
-        - name: 已完成快速入门
+        - name: 快速入门已完成
           items:
             - name: .NET 后端
               href: 'https://azure.microsoft.com/resources/samples/app-service-mobile-dotnet-backend-quickstart/'

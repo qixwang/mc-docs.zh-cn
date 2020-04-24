@@ -15,10 +15,10 @@ origin.date: 02/27/2020
 ms.date: 04/06/2020
 ms.author: v-jay
 ms.openlocfilehash: 6ff7a2202427153686ea423aed574febbae48a23
-ms.sourcegitcommit: fe9ed98aaee287a21648f866bb77cb6888f75b0c
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80625746"
 ---
 # <a name="azure-media-services-legacy-components"></a>Azure 媒体服务旧组件

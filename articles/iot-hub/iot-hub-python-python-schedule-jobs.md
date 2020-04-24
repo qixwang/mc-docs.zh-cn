@@ -13,10 +13,10 @@ origin.date: 03/17/2020
 ms.date: 12/23/2019
 ms.author: v-yiso
 ms.openlocfilehash: 046500483e340b9da078d14da1c5c28109dac6d2
-ms.sourcegitcommit: 5fb45da006859215edc8211481f13174aa43dbeb
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80634632"
 ---
 # <a name="schedule-and-broadcast-jobs-python"></a>计划和广播作业 (Python)

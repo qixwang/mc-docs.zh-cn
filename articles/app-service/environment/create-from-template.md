@@ -9,10 +9,10 @@ ms.date: 03/30/2020
 ms.author: v-tawe
 ms.custom: seodec18
 ms.openlocfilehash: 5e0472a9e95aa483b9ebc742f9a4d3c77942529e
-ms.sourcegitcommit: 44d3fe59952847e5394bbe6c05bd6f333bb56345
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80522079"
 ---
 # <a name="create-an-ase-by-using-an-azure-resource-manager-template"></a>使用 Azure 资源管理器模板创建 ASE
@@ -63,7 +63,7 @@ New-AzResourceGroupDeployment -Name "CHANGEME" -ResourceGroupName "YOUR-RG-NAME-
 创建 ASE 可能需要约一小时。 然后，对于触发部署的订阅，ASE 将显示在门户的 ASE 列表中。
 
 ## <a name="upload-and-configure-the-default-ssl-certificate"></a>上传和配置“默认”SSL 证书
-SSL 证书必须与 ASE 关联，作为用于建立应用的 SSL 连接的“默认”SSL 证书。 如果 ASE 的默认 DNS 后缀是 internal-contoso.com  ，则需要对 *.internal-contoso.com 有效的 SSL 证书才可连接到 `https://some-random-app.internal-contoso.com`  。 
+SSL 证书必须与 ASE 关联，作为用于建立应用的 SSL 连接的“默认”SSL 证书。 如果 ASE 的默认 DNS 后缀是 internal-contoso.com  ，则需要对 *.internal-contoso.com 有效的 SSL 证书才可连接到 `https://some-random-app.internal-contoso.com` 。 
 
 可通过三种方式获取有效的 SSL 证书：使用内部证书颁发机构、向外部颁发者购买证书或使用自签名证书。 无论 SSL 证书的来源如何，都需要正确配置以下证书属性：
 

@@ -10,10 +10,10 @@ origin.date: 9/25/2018
 ms.date: 03/23/2020
 ms.author: v-jay
 ms.openlocfilehash: ad4d7ebf6155b31e12113050a8d9fdf6e82fcf1d
-ms.sourcegitcommit: f204ec3ae220b96475db60e6ac8a2807af3de40e
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80418026"
 ---
 # <a name="tutorial-configure-an-alias-record-to-support-apex-domain-names-with-traffic-manager"></a>教程：使用流量管理器配置支持顶点域名的别名记录 

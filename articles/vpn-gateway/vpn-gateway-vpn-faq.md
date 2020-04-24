@@ -9,10 +9,10 @@ origin.date: 03/05/2020
 ms.date: 04/06/2020
 ms.author: v-jay
 ms.openlocfilehash: 60968ddd7d2af738c540f1e25fea397860e52a00
-ms.sourcegitcommit: 5fb45da006859215edc8211481f13174aa43dbeb
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80634401"
 ---
 # <a name="vpn-gateway-faq"></a>VPN 网关常见问题

@@ -16,10 +16,10 @@ origin.date: 08/22/2019
 ms.date: 04/06/2020
 ms.author: v-jay
 ms.openlocfilehash: a280d7be734cf22b9c6358b6a260d6395fb9daf1
-ms.sourcegitcommit: fe9ed98aaee287a21648f866bb77cb6888f75b0c
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80625759"
 ---
 # <a name="signaling-timed-metadata-in-live-streaming"></a>实时传送视频流中的超时元数据信号 

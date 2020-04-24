@@ -8,10 +8,10 @@ ms.date: 03/30/2020
 ms.author: v-junlch
 ms.topic: overview
 ms.openlocfilehash: b4d022faf56dff415aeb05540a36eed6dd65bea4
-ms.sourcegitcommit: 64584c0bf31b4204058ae2b4641356b904ccdd58
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80581813"
 ---
 # <a name="enable-web-application-firewall-using-the-azure-cli"></a>使用 Azure CLI 启用 Web 应用程序防火墙
@@ -32,11 +32,11 @@ ms.locfileid: "80581813"
 
 如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial)。
 
-根据本文的要求，如果选择在本地安装并使用 CLI，则需要运行 Azure CLI 2.0.4 或更高版本。 若要查找版本，请运行 `az --version`。 如果需要进行安装或升级，请参阅[安装 Azure CLI](/cli/install-azure-cli)。
+根据本文的要求，如果选择在本地安装并使用 CLI，则需要运行 Azure CLI 2.0.4 或更高版本。 要查找版本，请运行 `az --version`。 如果需要进行安装或升级，请参阅[安装 Azure CLI](/cli/install-azure-cli)。
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
-资源组是在其中部署和管理 Azure 资源的逻辑容器。 使用 [az group create](/cli/group#az-group-create) 创建名为 *myResourceGroupAG* 的 Azure 资源组。
+资源组是在其中部署和管理 Azure 资源的逻辑容器。 使用 *az group create* 创建名为 [myResourceGroupAG](/cli/group#az-group-create) 的 Azure 资源组。
 
 ```azurecli
 az group create --name myResourceGroupAG --location chinanorth
@@ -44,7 +44,7 @@ az group create --name myResourceGroupAG --location chinanorth
 
 ## <a name="create-network-resources"></a>创建网络资源
 
-虚拟网络和子网用于提供与应用程序网关及其关联资源的网络连接。 创建名为 myVNet  的虚拟网络和名为 myAGSubnet  的子网。 然后创建名为 myAGPublicIPAddress  的公共 IP 地址。
+虚拟网络和子网用于提供与应用程序网关及其关联资源的网络连接。 创建名为 myVNet  的虚拟网络和名为 myAGSubnet  的子网。 创建名为 myAGPublicIPAddress  的公共 IP 地址。
 
 ```azurecli
 az network vnet create `
@@ -141,7 +141,7 @@ az vmss extension set `
 
 ### <a name="create-a-storage-account"></a>创建存储帐户
 
-使用 [az storage account create](/cli/storage/account?view=azure-cli-latest#az-storage-account-create) 创建名为 *myagstore1* 的存储帐户。
+使用 *az storage account create* 创建名为 [myagstore1](/cli/storage/account?view=azure-cli-latest#az-storage-account-create) 的存储帐户。
 
 ```azurecli
 az storage account create `

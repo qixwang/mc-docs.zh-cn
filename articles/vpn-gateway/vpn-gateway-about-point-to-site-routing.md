@@ -9,10 +9,10 @@ origin.date: 03/24/2020
 ms.date: 04/06/2020
 ms.author: v-jay
 ms.openlocfilehash: d61da3e4090a8991a09969df055ab54343851d48
-ms.sourcegitcommit: 5fb45da006859215edc8211481f13174aa43dbeb
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80634552"
 ---
 # <a name="about-point-to-site-vpn-routing"></a>关于点到站点 VPN 路由

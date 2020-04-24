@@ -12,10 +12,10 @@ ms.date: 04/01/2020
 ms.author: v-junlch
 ms.subservice: B2C
 ms.openlocfilehash: 2d43e3e5df7a4ecfd7d1f26260728b0b89b195a9
-ms.sourcegitcommit: 64584c0bf31b4204058ae2b4641356b904ccdd58
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80581592"
 ---
 # <a name="contentdefinitions"></a>ContentDefinitions
@@ -44,7 +44,7 @@ ms.locfileid: "80581592"
     ...
 ```
 
-**LocalAccountSignUpWithLogonEmail** 自我断言技术配置文件的元数据包含设置为 `api.localaccountsignup` 的内容定义标识符 **ContentDefinitionReferenceId**
+**LocalAccountSignUpWithLogonEmail** 自我断言技术配置文件的元数据包含设置为 **的内容定义标识符**ContentDefinitionReferenceId`api.localaccountsignup`
 
 ```XML
 <TechnicalProfile Id="LocalAccountSignUpWithLogonEmail">
@@ -61,7 +61,7 @@ ms.locfileid: "80581592"
 
 **ContentDefinition** 元素包含以下属性：
 
-| 属性 | 必须 | 说明 |
+| Attribute | 必选 | 说明 |
 | --------- | -------- | ----------- |
 | ID | 是 | 内容定义标识符。 其值为本页稍后的“内容定义 ID”部分指定的值。  |
 
@@ -72,7 +72,7 @@ ms.locfileid: "80581592"
 | LoadUri | 1:1 | 一个字符串，包含内容定义 HTML5 页面的 URL。 |
 | RecoveryUri | 1:1 | 一个字符串，包含用于显示内容定义相关错误的 HTML 页面的 URL。 当前未使用，此值必须为 `~/common/default_page_error.html`。 |
 | DataUri | 1:1 | 一个字符串，包含一个 HTML 文件的相对 URL，该文件提供要为步骤调用的用户体验。 |
-| Metadata | 0:1 | 一个键/值对集合，包含内容定义使用的元数据。 |
+| 元数据 | 0:1 | 一个键/值对集合，包含内容定义使用的元数据。 |
 | LocalizedResourcesReferences | 0:1 | 本地化的资源引用集合。 使用此元素可以自定义用户界面和声明属性的本地化。 |
 
 ### <a name="datauri"></a>DataUri
@@ -82,7 +82,7 @@ ms.locfileid: "80581592"
 | 页面标识符 | 说明 |
 | ----- | ----------- |
 | `globalexception` | 遇到异常或错误时显示错误页面。 |
-| `providerselection`, `idpselection` | 列出可供用户在登录期间选择的标识提供者。  |
+| `providerselection`、`idpselection` | 列出可供用户在登录期间选择的标识提供者。  |
 | `unifiedssp` | 显示一个窗体，用于通过基于电子邮件地址或用户名的本地帐户进行登录。 此值还提供“使我保持登录功能”和“忘记了密码?” 链接。 |
 | `unifiedssd` | 显示一个窗体，用于通过基于电子邮件地址或用户名的本地帐户进行登录。 |
 | `multifactor` | 在注册或登录期间使用短信或语音来验证电话号码。 |
@@ -90,13 +90,13 @@ ms.locfileid: "80581592"
 
 ### <a name="select-a-page-layout"></a>选择页面布局
 
-在 `elements` 和页面类型之间插入 `contract` 即可启用 [JavaScript 客户端代码](javascript-samples.md)。 例如，`urn:com:microsoft:aad:b2c:elements:contract:page-name:version`。
+在 [ 和页面类型之间插入 ](javascript-samples.md) 即可启用 `contract`JavaScript 客户端代码`elements`。 例如，`urn:com:microsoft:aad:b2c:elements:contract:page-name:version` 。
 
 [!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
 
-`DataUri` 的 [version](page-layout.md) 部分指定内容包，其中包含的 HTML、CSS 和 JavaScript 适用于策略中的用户界面元素。 如果打算启用 JavaScript 客户端代码，则 JavaScript 所基于的元素必须是不可变的。 如果它们不是不可变的，则任何更改都可能会导致用户页上出现意外行为。 为了防止这些问题，请强制使用页面布局，并指定页面布局版本。 这样做可以确保 JavaScript 所基于的所有内容定义不可变。 即使不打算启用 JavaScript，也仍然需要为页面指定页面布局版本。
+[ 的 ](page-layout.md)version`DataUri` 部分指定内容包，其中包含的 HTML、CSS 和 JavaScript 适用于策略中的用户界面元素。 如果打算启用 JavaScript 客户端代码，则 JavaScript 所基于的元素必须是不可变的。 如果它们不是不可变的，则任何更改都可能会导致用户页上出现意外行为。 为了防止这些问题，请强制使用页面布局，并指定页面布局版本。 这样做可以确保 JavaScript 所基于的所有内容定义不可变。 即使不打算启用 JavaScript，也仍然需要为页面指定页面布局版本。
 
-以下示例显示版本 `1.2.0` 的 **DataUri** 为 `selfasserted`：
+以下示例显示版本 **的**DataUri`selfasserted` 为 `1.2.0`：
 
 ```xml
 <ContentDefinition Id="api.localaccountpasswordreset">
@@ -127,25 +127,25 @@ ms.locfileid: "80581592"
 | `urn:com:microsoft:aad:b2c:elements:unifiedssp:1.1.0` | `urn:com:microsoft:aad:b2c:elements:contract:unifiedssp:1.2.0` |
 
 
-### <a name="metadata"></a>Metadata
+### <a name="metadata"></a>元数据
 
 **Metadata** 元素包含以下元素：
 
 | 元素 | 出现次数 | 说明 |
 | ------- | ----------- | ----------- |
-| 项目 | 0:n | 与内容定义相关的元数据。 |
+| Item | 0:n | 与内容定义相关的元数据。 |
 
 **Metadata** 元素的 **Item** 元素包含以下属性：
 
-| 属性 | 必须 | 说明 |
+| Attribute | 必选 | 说明 |
 | --------- | -------- | ----------- |
-| 键 | 是 | 元数据密钥。  |
+| 密钥 | 是 | 元数据密钥。  |
 
 #### <a name="metadata-keys"></a>元数据键
 
 内容定义支持以下元数据项：
 
-| 键 | 必须 | 说明 |
+| 密钥 | 必选 | 说明 |
 | --------- | -------- | ----------- |
 | DisplayName | 否 | 一个包含内容定义名称的字符串。 |
 
@@ -159,7 +159,7 @@ ms.locfileid: "80581592"
 
 **LocalizedResourcesReference** 元素包含以下属性：
 
-| 属性 | 必须 | 说明 |
+| Attribute | 必选 | 说明 |
 | --------- | -------- | ----------- |
 | 语言 | 是 | 一个字符串，包含符合 RFC 5646“用于标识语言的标记”的策略支持的语言。 |
 | LocalizedResourcesReferenceId | 是 | **LocalizedResources** 元素的标识符。 |

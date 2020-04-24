@@ -10,10 +10,10 @@ origin.date: 08/29/2019
 ms.date: 12/02/2019
 ms.author: v-jay
 ms.openlocfilehash: d3b245d6a1eafa08135daf27c97f74e0895dcbf9
-ms.sourcegitcommit: 5fb45da006859215edc8211481f13174aa43dbeb
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80634457"
 ---
 # <a name="azure-data-box-disk-frequently-asked-questions"></a>Azure Data Box Disk：常见问题解答

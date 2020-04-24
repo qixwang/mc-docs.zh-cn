@@ -16,10 +16,10 @@ ms.date: 04/06/2020
 ms.author: v-yiso
 ms.custom: mvc
 ms.openlocfilehash: a02552d9196756c3eb892a74dabe140d6433a6f5
-ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80343610"
 ---
 <!-- **TODO** Update publish config with repo paths before publishing! -->
@@ -42,7 +42,7 @@ ms.locfileid: "80343610"
 
 如果没有 Azure 订阅，请在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 本快速入门中运行的两个示例应用程序是使用 Node.js 编写的。 开发计算机上需要有 Node.js v10.x.x 或更高版本。
 

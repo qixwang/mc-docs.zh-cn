@@ -7,10 +7,10 @@ ms.date: 03/30/2020
 ms.author: v-junlch
 ms.reviewer: jehollan
 ms.openlocfilehash: 4c05135ca8cef90540db835be0a152d4de32884b
-ms.sourcegitcommit: 64584c0bf31b4204058ae2b4641356b904ccdd58
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80581710"
 ---
 # <a name="use-dependency-injection-in-net-azure-functions"></a>在 .NET Azure Functions 中使用依赖项注入

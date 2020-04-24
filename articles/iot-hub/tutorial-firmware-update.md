@@ -14,13 +14,13 @@ ms.date: 04/06/2020
 ms.author: v-yiso
 ms.custom: mvc
 ms.openlocfilehash: 0ffe989b56c0d8b9f1b5805cf464e7fd7d4ad4fa
-ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80343609"
 ---
-# <a name="tutorial-implement-a-device-firmware-update-process"></a>教程：实现设备固件更新过程
+# <a name="tutorial-implement-a-device-firmware-update-process"></a>教程：实施设备固件更新过程
 
 可能需要更新连接到 IoT 中心的设备上的固件。 例如，可能需要向固件添加新功能，或者需要应用安全修补程序。 在许多 IoT 方案中，以物理方式访问设备并以手动方式对设备应用固件更新是不现实的。 本教程介绍如何通过连接到中心的后端应用程序以远程方式启动并监视固件更新过程。
 
@@ -39,7 +39,7 @@ ms.locfileid: "80343609"
 
 如果没有 Azure 订阅，请在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 本快速入门中运行的两个示例应用程序是使用 Node.js 编写的。 开发计算机上需要有 Node.js v10.x.x 或更高版本。
 

@@ -15,10 +15,10 @@ origin.date: 07/08/2019
 ms.date: 04/06/2020
 ms.author: v-jay
 ms.openlocfilehash: 1e63d516e1b8cbabddd4d2653d42f8d12e7b6b1a
-ms.sourcegitcommit: fe9ed98aaee287a21648f866bb77cb6888f75b0c
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80625789"
 ---
 # <a name="monitor-media-services-diagnostic-logs"></a>监视媒体服务诊断日志
@@ -30,14 +30,14 @@ ms.locfileid: "80625789"
 
 本文介绍如何将数据路由到存储帐户并查看数据。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - [创建媒体服务帐户](create-account-cli-how-to.md)。
 - 参阅[监视媒体服务指标和诊断日志](media-services-metrics-diagnostic-logs.md)。
 
 ## <a name="route-data-to-the-storage-account-using-the-portal"></a>使用门户将数据路由到存储帐户
 
-1. 在 https://portal.azure.cn 登录 Azure 门户。
+1. 通过 https://portal.azure.cn 登录到 Azure 门户。
 1. 导航到其中的媒体服务帐户，然后单击“监视”下的“诊断设置”。   在此处查看订阅中所有资源的列表，这些资源通过 Azure Monitor 生成监视数据。
 
     ![诊断设置部分](media/media-services-diagnostic-logs/logs01.png)

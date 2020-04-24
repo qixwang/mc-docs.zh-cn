@@ -9,10 +9,10 @@ ms.custom: hdinsightactive
 origin.date: 03/10/2020
 ms.date: 04/06/2020
 ms.openlocfilehash: a229e9caa3c27af20b9b93720f4f4eadf046f7ab
-ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80343608"
 ---
 # <a name="network-security-group-nsg-service-tags-for-azure-hdinsight"></a>Azure HDInsight 的网络安全组 (NSG) 服务标记
@@ -78,7 +78,7 @@ ms.locfileid: "80343608"
 
 | 国家/地区 | 区域 | 服务标记 |
 | ---- | ---- | ---- |
-| 美国 | 美国东部 2 | HDInsight.EastUS2 |
+| United States | 美国东部 2 | HDInsight.EastUS2 |
 | &nbsp; | 美国中部 | HDInsight.CentralUS |
 | &nbsp; | 美国中北部 | HDInsight. NorthCentralUS |
 | &nbsp; | 美国中南部 | HDInsight.SouthCentralUS |

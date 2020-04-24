@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 03/30/2020
 ms.author: v-junlch
 ms.openlocfilehash: 560853dace6ad86693c2cefdec649c5d37e2b3ea
-ms.sourcegitcommit: 64584c0bf31b4204058ae2b4641356b904ccdd58
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80581827"
 ---
 # <a name="application-gateway-configuration-overview"></a>应用程序网关配置概述
@@ -85,7 +85,7 @@ Azure 应用程序网关由多个组件构成，可根据不同的方案以不�
    > 错误配置路由表可能会导致应用程序网关 v2 中出现非对称路由。 确保所有管理平面/控制平面流量直接发送到 Internet，且不通过虚拟设备发送。 日志和指标也可能会受影响。
 
 
-  **方案 1**：使用 UDR 禁用向应用程序网关子网进行边界网关协议 (BGP) 路由传播
+  **场景 1**：使用 UDR 禁用向应用程序网关子网进行边界网关协议 (BGP) 路由传播
 
    有时，默认网关路由 (0.0.0.0/0) 会通过与应用程序网关虚拟网络关联的 ExpressRoute 或 VPN 网关进行播发。 这会中断管理平面流量，因此需要 Internet 的直接路径。 在这种情况下，可以使用 UDR 来禁用 BGP 路由传播。 
 
@@ -97,7 +97,7 @@ Azure 应用程序网关由多个组件构成，可根据不同的方案以不�
 
    为此方案启用 UDR 不应会破坏任何现有设置。
 
-  **方案 2**：使用 UDR 将 0.0.0.0/0 定向到 Internet
+  **场景 2**：使用 UDR 将 0.0.0.0/0 定向到 Internet
 
    可以创建一个 UDR，用于将 0.0.0.0/0 流量直接发送到 Internet。 
 
@@ -116,7 +116,7 @@ Azure 应用程序网关由多个组件构成，可根据不同的方案以不�
     
   **v2 不支持的方案**
 
-  **方案 1**：对虚拟设备使用 UDR
+  **场景 1**：对虚拟设备使用 UDR
 
   v2 公共预览版不支持需要通过任何虚拟设备、中心辐射型虚拟网络或者在本地（强制隧道）重定向 0.0.0.0/0 的任何方案。 
 

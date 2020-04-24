@@ -12,10 +12,10 @@ ms.reviewer: larryfr
 origin.date: 11/04/2019
 ms.date: 03/16/2020
 ms.openlocfilehash: 3b2bc13e00be18b9c981518a993e53631cc7c0c6
-ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80343587"
 ---
 # <a name="create-event-driven-machine-learning-workflows-preview"></a>创建事件驱动的机器学习工作流（预览）
@@ -35,7 +35,7 @@ ms.locfileid: "80343587"
 > 目前，只有当运行状态为 **failed** 时才会触发 runStatusChanged 事件
 >
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 * 对要为其创建事件的 Azure 机器学习工作区具备参与者或所有者访问权限。
 
 ### <a name="configure-eventgrid-using-the-azure-portal"></a>使用 Azure 门户配置 EventGrid
@@ -145,7 +145,7 @@ az eventgrid event-subscription create \
 
     ![search-logic-app](./media/how-to-use-event-grid/search-for-logic-app.png)
 
-1. 填写所需信息。 若要简化此过程，请使用与 Azure 数据工厂管道和 Azure 机器学习工作区相同的订阅和资源组。
+1. 填写必需的信息。 若要简化此过程，请使用与 Azure 数据工厂管道和 Azure 机器学习工作区相同的订阅和资源组。
 
     ![set-up-logic-app-for-adf](./media/how-to-use-event-grid/set-up-logic-app-for-adf.png)
 

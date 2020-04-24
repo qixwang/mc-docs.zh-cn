@@ -8,10 +8,10 @@ origin.date: 12/13/2019
 ms.date: 04/06/2020
 ms.author: v-yeche
 ms.openlocfilehash: f374355d7beac251b9870ddc0db6204e4ba12a99
-ms.sourcegitcommit: 76280dd9854dc0ff0ba1e5e62fb3dc3af049fbe2
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80517002"
 ---
 # <a name="aks-troubleshooting"></a>AKS 疑难解答
@@ -184,7 +184,7 @@ MountVolume.WaitForAttach failed for volume "pvc-f1562ecb-3e5f-11e8-ab6b-000d3af
 | -- | :--: |
 | 1.10 | 1.10.2 或更高版本 |
 | 1.11 | 1.11.0 或更高版本 |
-| 1.12 和更高版本 | 不适用 |
+| 1.12 和更高版本 | 空值 |
 
 ### <a name="failure-when-setting-uid-and-gid-in-mountoptions-for-azure-disk"></a>在 Azure 磁盘的 mountOptions 中设置 uid 和 gid 失败
 
@@ -257,7 +257,7 @@ MountVolume.WaitForAttach failed for volume "pvc-12b458f4-c23f-11e8-8d27-46799c2
 | 1.11 | 1.11.5 或更高版本 |
 | 1.12 | 1.12.3 或更高版本 |
 | 1.13 | 1.13.0 或更高版本 |
-| 1.14 或更高版本 | 空值 |
+| 1.14 或更高版本 | 不适用 |
 
 如果使用的 Kubernetes 版本未解决此问题，可以等待几分钟再重试，这样就可以缓解此问题。
 

@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 03/31/2020
 ms.author: v-junlch
 ms.openlocfilehash: 0eb03d1b48fcf57b4680a3636b10797081314d47
-ms.sourcegitcommit: 64584c0bf31b4204058ae2b4641356b904ccdd58
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80587190"
 ---
 | 资源 | 限制 |

@@ -15,10 +15,10 @@ ms.workload: ''
 ms.date: 03/31/2020
 ms.author: v-junlch
 ms.openlocfilehash: 4a4b28c0f41a5fcf25ebde27294dc06fc9d137b2
-ms.sourcegitcommit: 64584c0bf31b4204058ae2b4641356b904ccdd58
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80581829"
 ---
 # <a name="troubleshooting-applications-that-dont-support-tls-12"></a>排查不支持 TLS 1.2 的应用程序的问题

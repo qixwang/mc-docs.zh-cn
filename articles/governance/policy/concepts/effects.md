@@ -6,10 +6,10 @@ origin.date: 03/23/2019
 ms.date: 03/30/2020
 ms.topic: conceptual
 ms.openlocfilehash: 3d27ec956b01cb3be3abcc2dca4ecbca0c4af1f9
-ms.sourcegitcommit: 260800ede66f48c886d1426a0fac18b4d402b4f2
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80586786"
 ---
 # <a name="understand-azure-policy-effects"></a>了解 Azure Policy 效果

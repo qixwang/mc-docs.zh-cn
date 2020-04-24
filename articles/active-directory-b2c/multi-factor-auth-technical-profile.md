@@ -12,10 +12,10 @@ ms.date: 04/01/2020
 ms.author: v-junlch
 ms.subservice: B2C
 ms.openlocfilehash: 0cd6832a03673f1d690974eac0589a2fb5594510
-ms.sourcegitcommit: 64584c0bf31b4204058ae2b4641356b904ccdd58
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80581644"
 ---
 # <a name="define-an-azure-mfa-technical-profile-in-an-azure-ad-b2c-custom-policy"></a>在 Azure AD B2C 自定义策略中定义 Azure MFA 技术配置文件
@@ -26,7 +26,7 @@ Azure Active Directory B2C (Azure AD B2C) 使用 Azure 多重身份验证 (MFA) 
 
 此技术配置文件：
 
-- 不提供与用户交互的接口， 而是从[自断言](self-asserted-technical-profile.md)技术配置文件或充当[验证技术配置文件](validation-technical-profile.md)的[显示控件](display-controls.md)中调用用户界面。
+- 不提供与用户交互的接口， 而是从[自断言](self-asserted-technical-profile.md)技术配置文件或充当[验证技术配置文件](display-controls.md)的[显示控件](validation-technical-profile.md)中调用用户界面。
 - 使用 Azure MFA 服务生成代码并将其发送到某个手机号，然后验证该代码。  
 - 通过文本消息验证电话号码。
 
@@ -57,7 +57,7 @@ Web.TPEngine.Providers.AzureMfaProtocolProvider, Web.TPEngine, Version=1.0.0.0, 
 
 InputClaims 元素包含要发送到 Azure MFA 的声明的列表  。 还可将声明名称映射到 MFA 技术配置文件中定义的名称。
 
-| ClaimReferenceId | 必须 | 说明 |
+| ClaimReferenceId | 必选 | 说明 |
 | --------- | -------- | ----------- |
 | userPrincipalName | 是 | 拥有此电话号码的用户的标识符。 |
 | phoneNumber | 是 | 要将短信代码发送到的电话号码。 |
@@ -72,17 +72,17 @@ Azure MFA 协议提供程序未返回任何 OutputClaims，因此无需指定输
 
 **OutputClaimsTransformations** 元素可能包含用于修改输出声明或生成新输出声明的 **OutputClaimsTransformation** 元素集合。
 
-### <a name="metadata"></a>Metadata
+### <a name="metadata"></a>元数据
 
-| 属性 | 必须 | 说明 |
+| Attribute | 必选 | 说明 |
 | --------- | -------- | ----------- |
-| 操作 | 是 | 必须是 OneWaySMS  。  |
+| Operation | 是 | 必须是 OneWaySMS  。  |
 
 #### <a name="ui-elements"></a>UI 元素
 
 以下元数据可用于配置在发送短信失败时显示的错误消息。 元数据应该在[自断言](self-asserted-technical-profile.md)技术配置文件中进行配置。 可以将错误消息[本地化](localization-string-ids.md#azure-mfa-error-messages)。
 
-| 属性 | 必须 | 说明 |
+| Attribute | 必选 | 说明 |
 | --------- | -------- | ----------- |
 | UserMessageIfCouldntSendSms | 否 | 提供的电话号码不可接收短信时显示的用户错误消息。 |
 | UserMessageIfInvalidFormat | 否 | 提供的电话号码不是有效电话号码时显示的用户错误消息。 |
@@ -119,7 +119,7 @@ Azure MFA 协议提供程序未返回任何 OutputClaims，因此无需指定输
 
 InputClaims 元素包含要发送到 Azure MFA 的声明的列表  。 还可将声明名称映射到 MFA 技术配置文件中定义的名称。
 
-| ClaimReferenceId | 必须 | 说明 |
+| ClaimReferenceId | 必选 | 说明 |
 | --------- | -------- | ----------- | ----------- |
 | phoneNumber| 是 | 与之前用于发送代码的手机号相同。 它也用来定位电话验证会话。 |
 | verificationCode  | 是 | 待验证用户提供的验证码 |
@@ -132,17 +132,17 @@ Azure MFA 协议提供程序未返回任何 OutputClaims，因此无需指定输
 
 **OutputClaimsTransformations** 元素可能包含用于修改输出声明或生成新输出声明的 **OutputClaimsTransformation** 元素集合。
 
-### <a name="metadata"></a>Metadata
+### <a name="metadata"></a>元数据
 
-| 属性 | 必须 | 说明 |
+| Attribute | 必选 | 说明 |
 | --------- | -------- | ----------- |
-| 操作 | 是 | 必须是“验证”  |
+| Operation | 是 | 必须是“验证”  |
 
 #### <a name="ui-elements"></a>UI 元素
 
 以下元数据可用于配置在代码验证失败时显示的错误消息。 元数据应该在[自断言](self-asserted-technical-profile.md)技术配置文件中进行配置。 可以将错误消息[本地化](localization-string-ids.md#azure-mfa-error-messages)。
 
-| 属性 | 必须 | 说明 |
+| Attribute | 必选 | 说明 |
 | --------- | -------- | ----------- |
 | UserMessageIfMaxAllowedCodeRetryReached| 否 | 用户多次尝试提交某验证码时显示的用户错误消息。 |
 | UserMessageIfServerError | 否 | 服务器遇到内部错误时显示的用户错误消息。 |

@@ -12,10 +12,10 @@ ms.date: 04/01/2020
 ms.author: v-junlch
 ms.subservice: B2C
 ms.openlocfilehash: a2841bcd1bdd3661d10b1884746f94eb0fc2eb12
-ms.sourcegitcommit: 64584c0bf31b4204058ae2b4641356b904ccdd58
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80581639"
 ---
 # <a name="define-a-one-time-password-technical-profile-in-an-azure-ad-b2c-custom-policy"></a>在 Azure AD B2C 自定义策略中定义一次性密码技术配置文件
@@ -51,9 +51,9 @@ Web.TPEngine.Providers.OneTimePasswordProtocolProvider, Web.TPEngine, Version=1.
 
 InputClaims 元素包含发送到一次性密码协议提供程序所需的声明列表  。 还可将声明名称映射到下面定义的名称。
 
-| ClaimReferenceId | 必须 | 说明 |
+| ClaimReferenceId | 必选 | 说明 |
 | --------- | -------- | ----------- |
-| 标识符 | 是 | 一个标识符，用于标识需在稍后验证代码的用户。 此标识符通常用作代码传递的目标对象的标识符，例如电子邮件地址或电话号码。 |
+| 标识符 (identifier) | 是 | 一个标识符，用于标识需在稍后验证代码的用户。 此标识符通常用作代码传递的目标对象的标识符，例如电子邮件地址或电话号码。 |
 
 InputClaimsTransformations 元素可以包含 InputClaimsTransformation 元素的集合，这些元素用于在将声明发送到一次性密码协议提供程序之前修改输入声明或生成新的输入声明   。
 
@@ -61,24 +61,24 @@ InputClaimsTransformations 元素可以包含 InputClaimsTransformation 元素�
 
 OutputClaims 元素包含由一次性密码协议提供程序生成的声明列表  。 还可将声明名称映射到下面定义的名称。
 
-| ClaimReferenceId | 必须 | 说明 |
+| ClaimReferenceId | 必选 | 说明 |
 | --------- | -------- | ----------- |
 | otpGenerated | 是 | 一段生成代码，由 Azure AD B2C 管理其会话。 |
 
 **OutputClaimsTransformations** 元素可能包含用于修改输出声明或生成新输出声明的 **OutputClaimsTransformation** 元素集合。
 
-### <a name="metadata"></a>Metadata
+### <a name="metadata"></a>元数据
 
 以下设置可用于配置代码生成模式：
 
-| 属性 | 必须 | 说明 |
+| Attribute | 必选 | 说明 |
 | --------- | -------- | ----------- |
 | CodeExpirationInSeconds | 否 | 代码过期之前的时间（秒）。 最小值：`60`；大值：`1200`；默认值：`600` |
-| CodeLength | 否 | 代码的长度。 默认值为 `6`。 |
-| CharacterSet | 否 | 代码的字符集，其格式设置为可在正则表达式中使用。 例如，`a-z0-9A-Z`。 默认值为 `0-9`。 字符集必须在指定的集中至少包含 10 个不同的字符。 |
-| NumRetryAttempts | 否 | 代码被视为无效之前的验证尝试次数。 默认值为 `5`。 |
-| 操作 | 是 | 要执行的操作。 可能的值：`GenerateCode`。 |
-| ReuseSameCode | 否 | 给定代码未过期且仍然有效时，是否应提供重复的代码而不生成新代码。 默认值为 `false`。 |
+| CodeLength | 否 | 代码的长度。 默认值是 `6`。 |
+| CharacterSet | 否 | 代码的字符集，其格式设置为可在正则表达式中使用。 例如，`a-z0-9A-Z` 。 默认值是 `0-9`。 字符集必须在指定的集中至少包含 10 个不同的字符。 |
+| NumRetryAttempts | 否 | 代码被视为无效之前的验证尝试次数。 默认值是 `5`。 |
+| Operation | 是 | 要执行的操作。 可能的值：`GenerateCode`。 |
+| ReuseSameCode | 否 | 给定代码未过期且仍然有效时，是否应提供重复的代码而不生成新代码。 默认值是 `false`。 |
 
 ### <a name="example"></a>示例
 
@@ -107,15 +107,15 @@ OutputClaims 元素包含由一次性密码协议提供程序生成的声明列�
 
 ## <a name="verify-code"></a>验证验证码
 
-此技术配置文件的第二种模式是验证代码。 下面是可以为此模式配置的选项。
+该技术配置文件的第二种模式是验证代码。 下面是可以为此模式配置的选项。
 
 ### <a name="input-claims"></a>输入声明
 
 InputClaims 元素包含发送到一次性密码协议提供程序所需的声明列表  。 还可将声明名称映射到下面定义的名称。
 
-| ClaimReferenceId | 必须 | 说明 |
+| ClaimReferenceId | 必选 | 说明 |
 | --------- | -------- | ----------- |
-| 标识符 | 是 | 一个标识符，用于标识之前生成代码的用户。 此标识符通常用作代码传递的目标对象的标识符，例如电子邮件地址或电话号码。 |
+| 标识符 (identifier) | 是 | 一个标识符，用于标识之前生成代码的用户。 此标识符通常用作代码传递的目标对象的标识符，例如电子邮件地址或电话号码。 |
 | otpToVerify | 是 | 用户提供的验证码。 |
 
 InputClaimsTransformations 元素可以包含 InputClaimsTransformation 元素的集合，这些元素用于在将声明发送到一次性密码协议提供程序之前修改输入声明或生成新的输入声明   。
@@ -126,20 +126,20 @@ InputClaimsTransformations 元素可以包含 InputClaimsTransformation 元素�
 
 **OutputClaimsTransformations** 元素可能包含用于修改输出声明或生成新输出声明的 **OutputClaimsTransformation** 元素集合。
 
-### <a name="metadata"></a>Metadata
+### <a name="metadata"></a>元数据
 
 以下设置可用于代码验证模式：
 
-| 属性 | 必须 | 说明 |
+| Attribute | 必选 | 说明 |
 | --------- | -------- | ----------- |
-| 操作 | 是 | 要执行的操作。 可能的值：`VerifyCode`。 |
+| Operation | 是 | 要执行的操作。 可能的值：`VerifyCode`。 |
 
 
 ### <a name="ui-elements"></a>UI 元素
 
 以下元数据可用于配置在代码验证失败时显示的错误消息。 元数据应该在[自断言](self-asserted-technical-profile.md)技术配置文件中进行配置。 可以将错误消息[本地化](localization-string-ids.md#one-time-password-error-messages)。
 
-| 属性 | 必须 | 说明 |
+| Attribute | 必选 | 说明 |
 | --------- | -------- | ----------- |
 | UserMessageIfSessionDoesNotExist | 否 | 代码验证会话过期后向用户显示的消息。 代码已过期，或从未为给定标识符生成代码。 |
 | UserMessageIfMaxRetryAttempted | 否 | 用户尝试验证的次数超过允许的最大值时显示的消息。 |

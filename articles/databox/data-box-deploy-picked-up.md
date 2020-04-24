@@ -10,10 +10,10 @@ origin.date: 03/19/2019
 ms.date: 06/10/2019
 ms.author: v-jay
 ms.openlocfilehash: 76aa975241e69b99317333884af0490cf3bfd0db
-ms.sourcegitcommit: 5fb45da006859215edc8211481f13174aa43dbeb
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80634480"
 ---
 ::: zone target="docs"

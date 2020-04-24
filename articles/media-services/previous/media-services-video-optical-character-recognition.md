@@ -16,10 +16,10 @@ origin.date: 03/20/2019
 ms.date: 04/06/2020
 ms.author: v-jay
 ms.openlocfilehash: f690958ef0f39aa062fb40bbbcb73ff2325cac63
-ms.sourcegitcommit: fe9ed98aaee287a21648f866bb77cb6888f75b0c
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80625710"
 ---
 # <a name="use-azure-media-analytics-to-convert-text-content-in-video-files-into-digital-text"></a>使用 Azure 媒体分析将视频文件中的文本内容转换为数字文本  
@@ -34,7 +34,7 @@ ms.locfileid: "80625710"
 
 **Azure 媒体 OCR** 媒体处理器目前以预览版提供。
 
-本文提供了有关 **Azure 媒体 OCR** 的详细信息，并演示了如何通过适用于 .NET 的媒体服务 SDK 使用它。 有关详细信息和示例，请参阅[此博客](https://azure.microsoft.com/blog/announcing-video-ocr-public-preview-new-config/)。
+本文提供有关 **Azure 媒体 OCR** 的详细信息，并演示如何通过适用于 .NET 的媒体服务 SDK 使用它。 有关更多信息和示例，请参阅[此博客](https://azure.microsoft.com/blog/announcing-video-ocr-public-preview-new-config/)。
 
 ## <a name="ocr-input-files"></a>OCR 输入文件
 视频文件。 目前支持以下格式：MP4、MOV 和 WMV。
@@ -49,11 +49,11 @@ ms.locfileid: "80625710"
 ### <a name="attribute-descriptions"></a>属性说明
 | 属性名称 | 说明 |
 | --- | --- |
-|AdvancedOutput| 如果将 AdvancedOutput 设置为 true，则 JSON 输出将包含每个单词的位置数据（除了短语和区域以外）。 如果不想查看这些详细信息，请将标志设置为 false。 默认值为 false。 有关详细信息，请参阅[此博客](https://azure.microsoft.com/blog/azure-media-ocr-simplified-output/)。|
-| 语言 |（可选）描述要查找的文本的语言。 下列类型作之一：AutoDetect（默认值）、Arabic、简体中文、繁体中文、Czech Danish、Dutch、English、Finnish、French、German、Greek、Hungarian、Italian、Japanese、Korean、Norwegian、Polish、Portuguese、Romanian、Russian、SerbianCyrillic、SerbianLatin、Slovak、Spanish、Swedish、Turkish。 |
-| TextOrientation |（可选）描述要查找的文本的方向。  “Left”表示所有字母顶部朝向左侧。  默认文本（例如书籍中出现的文本）的方向为“Up”。  下列类型作之一：AutoDetect（默认值）、Up、Right、Down、Left。 |
+|AdvancedOutput| 如果将 AdvancedOutput 设置为 true，则 JSON 输出将包含每个单词的位置数据（除了短语和区域以外）。 如果不想查看这些详细信息，请将标志设置为 false。 默认值是 False。 有关详细信息，请参阅[此博客](https://azure.microsoft.com/blog/azure-media-ocr-simplified-output/)。|
+| 语言 |（可选）描述要查找的文本的语言。 下列其中一项：“自动检测”（默认值）、“阿拉伯语”、“简体中文”、“繁体中文”、“捷克语”、“丹麦语”、“荷兰语”、“英语”、“芬兰语”、“法语”、“德语”、“希腊语”、“匈牙利语”、“意大利语”、“日语”、“韩语”、“挪威语”、“波兰语”、“葡萄牙语”、“罗马尼亚语”、“俄语”、“塞尔维亚语(西里尔文)”、“塞尔维亚语(拉丁语)”、“斯洛伐克语”、“西班牙语”、“瑞典语”、“土耳其语”。 |
+| TextOrientation |（可选）描述要查找的文本的方向。  “Left”表示所有字母顶部朝向左侧。  默认文本（例如书籍中出现的文本）的方向为“Up”。  下列其中一项：AutoDetect（默认值）、Up、Right、Down、Left。 |
 | TimeInterval |（可选）描述采样率。  默认值为每 1/2 秒。<br/>JSON 格式 - HH:mm:ss.SSS（默认值 00:00:00.500）<br/>XML 格式 - W3C XSD 持续时间基元（默认值 PT0.5） |
-| DetectRegions |（可选）指定要在其中检测文本的视频帧中的区域的 DetectRegion 对象数组。<br/>DetectRegion 对象由以下四个整数值组成：<br/>Left – 左边距中的像素<br/>Top – 上边距中的像素<br/>Width – 以像素为单位的区域宽度<br/>Height – 以像素为单位的区域高度 |
+| DetectRegions |（可选）指定要在其中检测文本的视频帧中的区域的 DetectRegion 对象数组。<br/>DetectRegion 对象由以下四个整数值组成：<br/>左 - 左边距中的像素<br/>上 - 上边距中的像素<br/>宽度 - 以像素为单位的区域宽度<br/>高度 - 以像素为单位的区域高度 |
 
 #### <a name="json-preset-example"></a>JSON 预设示例
 
@@ -119,7 +119,7 @@ OCR 媒体处理器的输出是一个 JSON 文件。
 | start |片段的开始时间（以“刻度”为单位） |
 | duration |片段的长度（以“刻度”为单位） |
 | interval |给定片段中每个事件的间隔 |
-| events |包含区域的数组 |
+| 活动 |包含区域的数组 |
 | region |表示检测到的单词或短语的对象 |
 | 语言 |区域中检测到的文本的语言 |
 | orientation |区域中检测到的文本的方向 |
@@ -194,7 +194,7 @@ OCR 媒体处理器的输出是一个 JSON 文件。
    
 #### <a name="create-and-configure-a-visual-studio-project"></a>创建和配置 Visual Studio 项目
 
-设置开发环境，并在 app.config 文件中填充连接信息，如[使用 .NET 进行媒体服务开发](media-services-dotnet-how-to-use.md)中所述。 
+设置开发环境，并根据[使用 .NET 进行媒体服务开发](media-services-dotnet-how-to-use.md)中所述，在 app.config 文件中填充连接信息。 
 
 #### <a name="example"></a>示例
 
@@ -371,5 +371,5 @@ namespace OCR
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
 ## <a name="related-links"></a>相关链接
-[Azure Media Services Analytics Overview（Azure 媒体服务分析概述）](media-services-analytics-overview.md)
+[Azure 媒体服务分析概述](media-services-analytics-overview.md)
 

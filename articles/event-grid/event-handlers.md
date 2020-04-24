@@ -9,10 +9,10 @@ origin.date: 01/21/2020
 ms.date: 3/16/2020
 ms.author: v-lingwu
 ms.openlocfilehash: 9aaa9e8e898c99beb9c4f3a703ecd40fb6832b13
-ms.sourcegitcommit: 78a05172a813b87428b87f3a2695e6bb3ae81ede
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80417384"
 ---
 # <a name="event-handlers-in-azure-event-grid"></a>Azure 事件网格中的事件处理程序

@@ -10,10 +10,10 @@ ms.topic: howto
 origin.date: 11/13/2019
 ms.date: 04/06/2020
 ms.openlocfilehash: ba231f1c990c48875b85243e5106db25d8ab6c9e
-ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80343606"
 ---
 # <a name="migrate-azure-hdinsight-36-hive-workloads-to-hdinsight-40"></a>将 Azure HDInsight 3.6 Hive 工作负荷迁移到 HDInsight 4.0
@@ -122,12 +122,12 @@ HDInsight 3.6 和 HDInsight 4.0 需要不同的元存储架构，并且不能共
 
 接下来使用下表中的值。 请将 `SQLSERVERNAME DATABASENAME USERNAME PASSWORD` 替换为**复制的** Hive 元存储的相应值，并以空格分隔。 指定 SQL 服务器名称时，请不要包含“.database.windows.net”。
 
-|属性 | Value |
+|properties | 值 |
 |---|---|
 |脚本类型|- Custom|
 |名称|Hive 升级|
 |Bash 脚本 URI|`https://hdiconfigactions.blob.core.windows.net/hivemetastoreschemaupgrade/launch-schema-upgrade.sh`|
-|节点类型|头|
+|节点类型|Head|
 |parameters|SQLSERVERNAME DATABASENAME USERNAME PASSWORD|
 
 > [!Warning]  

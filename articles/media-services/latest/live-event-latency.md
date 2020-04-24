@@ -15,10 +15,10 @@ origin.date: 04/22/2019
 ms.date: 04/06/2020
 ms.author: v-jay
 ms.openlocfilehash: d980734c2ef277b0547bdbe2e466a00c23eb54a2
-ms.sourcegitcommit: fe9ed98aaee287a21648f866bb77cb6888f75b0c
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80625664"
 ---
 # <a name="live-event-low-latency-settings"></a>直播活动低延迟设置
@@ -53,7 +53,7 @@ LiveEvent liveEvent = new LiveEvent(
         );
 ```                
 
-查看完整示例：[MediaV3LiveApp](https://github.com/Azure-Samples/media-services-v3-dotnet-core-tutorials/blob/master/NETCore/Live/MediaV3LiveApp/Program.cs#L126)。
+参阅完整示例：[MediaV3LiveApp](https://github.com/Azure-Samples/media-services-v3-dotnet-core-tutorials/blob/master/NETCore/Live/MediaV3LiveApp/Program.cs#L126)。
 
 ## <a name="live-events-latency"></a>直播活动延迟
 

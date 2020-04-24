@@ -10,10 +10,10 @@ ms.date: 04/06/2020
 ms.author: v-jay
 ms.custom: include file
 ms.openlocfilehash: 4500d6f661685fccdd05350734e0af19a72da94c
-ms.sourcegitcommit: 5fb45da006859215edc8211481f13174aa43dbeb
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80634399"
 ---
 ### <a name="how-many-vpn-client-endpoints-can-i-have-in-my-point-to-site-configuration"></a>在我的点到站点配置中，可以有多少 VPN 客户端终结点？
@@ -37,7 +37,7 @@ ms.locfileid: "80634399"
 
 [!INCLUDE [TLS](vpn-gateway-tls-updates.md)]
 
-### <a name="can-i-traverse-proxies-and-firewalls-using-point-to-site-capability"></a>是否可以使用点到站点功能穿越代理和防火墙？
+### <a name="can-i-traverse-proxies-and-firewalls-using-point-to-site-capability"></a>能否使用点到站点功能穿越代理和防火墙？
 
 Azure 支持三种类型的点到站点 VPN 选项：
 
@@ -49,7 +49,7 @@ Azure 支持三种类型的点到站点 VPN 选项：
 
 ### <a name="if-i-restart-a-client-computer-configured-for-point-to-site-will-the-vpn-automatically-reconnect"></a>如果重新启动进行过点到站点配置的客户端计算机，是否会自动重新连接 VPN？
 
-默认情况下，客户端计算机不自动重新建立 VPN 连接。
+默认情况下，客户端计算机将不自动重新建立 VPN 连接。
 
 ### <a name="does-point-to-site-support-auto-reconnect-and-ddns-on-the-vpn-clients"></a>点到站点在 VPN 客户端上是否支持自动重新连接和 DDNS？
 
@@ -63,7 +63,7 @@ Azure 支持三种类型的点到站点 VPN 选项：
 
 根据所使用的 VPN 客户端软件，你可能可以连接到多个虚拟网络网关，前提是，要连接到的虚拟网络在它们或客户端要从中进行连接的网络之间不存在冲突的地址空间。  尽管 Azure VPN 客户端支持多个 VPN 连接，但在任何给定时间，都只能建立一个连接。
 
-### <a name="can-i-configure-a-point-to-site-client-to-connect-to-multiple-virtual-networks-at-the-same-time"></a>是否可以将点到站点客户端配置为同时连接到多个虚拟网络？
+### <a name="can-i-configure-a-point-to-site-client-to-connect-to-multiple-virtual-networks-at-the-same-time"></a>能否将点到站点客户端配置为同时连接到多个虚拟网络？
 
 可以。与其他 VNet 对等互连的 VNet 中部署的虚拟网络网关之间的点到站点连接可能可以访问其他对等互连 VNet。  如果对等互连 VNet 使用 UseRemoteGateway/AllowGatewayTransit 功能，点到站点客户端将能够连接到这些对等互连 VNet。  有关详细信息，请参阅[此文](../articles/vpn-gateway/vpn-gateway-about-point-to-site-routing.md)。
 
@@ -73,7 +73,7 @@ Azure 支持三种类型的点到站点 VPN 选项：
 
 ### <a name="can-i-use-any-software-vpn-client-for-point-to-site-that-supports-sstp-andor-ikev2"></a>是否可以将任何软件 VPN 客户端用于支持 SSTP 和/或 IKEv2 的点到站点配置？
 
-否。 只能将 Windows 上的本机 VPN 客户端用于 SSTP，只能将 Mac 上的本机 VPN 客户端用于 IKEv2。 但是，可以在所有平台上使用 OpenVPN 客户端，以便通过 OpenVPN 协议进行连接。 请参阅支持的客户端操作系统的列表。
+不是。 只能将 Windows 上的本机 VPN 客户端用于 SSTP，只能将 Mac 上的本机 VPN 客户端用于 IKEv2。 但是，可以在所有平台上使用 OpenVPN 客户端，以便通过 OpenVPN 协议进行连接。 请参阅支持的客户端操作系统的列表。
 
 ### <a name="does-azure-support-ikev2-vpn-with-windows"></a>Azure 是否支持使用 Windows 的 IKEv2 VPN？
 

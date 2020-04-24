@@ -9,17 +9,17 @@ origin.date: 12/12/2019
 ms.date: 04/06/2020
 ms.author: v-jay
 ms.openlocfilehash: 92543094c8e1fa22299b1ce13317cc16bcae7bb2
-ms.sourcegitcommit: 5fb45da006859215edc8211481f13174aa43dbeb
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80634409"
 ---
 # <a name="configure-openvpn-clients-for-azure-vpn-gateway"></a>为 Azure VPN 网关配置 OpenVPN 客户端
 
-本文可帮助你配置 OpenVPN &reg; 协议  客户端。
+本文可帮助你配置 OpenVPN  **协议&reg;** 客户端。
 
-## <a name="before-you-begin"></a>准备阶段
+## <a name="before-you-begin"></a>开始之前
 
 验证你已完成为 VPN 网关配置 OpenVPN 的步骤。 有关详细信息，请参阅[为 Azure VPN 网关配置 OpenVPN](vpn-gateway-howto-openvpn.md)。
 

@@ -10,10 +10,10 @@ origin.date: 09/03/2019
 ms.date: 04/06/2020
 ms.author: v-jay
 ms.openlocfilehash: 155ecee323fca1686b4b0b12ee814e47b067b85c
-ms.sourcegitcommit: 5fb45da006859215edc8211481f13174aa43dbeb
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80634455"
 ---
 # <a name="azure-data-box-frequently-asked-questions"></a>Azure Data Box：常见问题解答

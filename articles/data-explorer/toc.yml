@@ -48,7 +48,7 @@
       items:
         - name: 安全概述
           href: security.md
-- name: 操作指南
+- name: 操作方法指南
   items:
     - name: 创建群集和数据库
       items:
@@ -60,7 +60,7 @@
           href: create-cluster-database-csharp.md
         - name: Python
           href: create-cluster-database-python.md
-        - name: Azure Resource Manager 模板
+        - name: Azure 资源管理器模板
           href: create-cluster-database-resource-manager.md
     - name: 引入数据
       items:
@@ -78,7 +78,7 @@
               href: data-connection-event-hub-csharp.md
             - name: Python
               href: data-connection-event-hub-python.md
-            - name: Azure Resource Manager 模板
+            - name: Azure 资源管理器模板
               href: data-connection-event-hub-resource-manager.md
         - name: IoT 中心
           items:
@@ -88,7 +88,7 @@
               href: data-connection-iot-hub-csharp.md
             - name: Python
               href: data-connection-iot-hub-python.md
-            - name: Azure Resource Manager 模板
+            - name: Azure 资源管理器模板
               href: data-connection-iot-hub-resource-manager.md
         - name: 使用 SDK
           items:
@@ -126,13 +126,13 @@
       items:
         - name: Power BI
           items:
-            - name: 最佳实践
+            - name: 最佳做法
               href: power-bi-best-practices.md
             - name: 连接器
               href: power-bi-connector.md
             - name: 导入的查询
               href: power-bi-imported-query.md
-            - name: SQL 查询
+            - name: SQL 查询 (SQL query)
               href: power-bi-sql-query.md
         - name: Excel
           items:
@@ -170,7 +170,7 @@
                   href: cluster-principal-csharp.md
                 - name: Python
                   href: cluster-principal-python.md
-                - name: Azure Resource Manager 模板
+                - name: Azure 资源管理器模板
                   href: cluster-principal-resource-manager.md
         - name: 数据库
           items:
@@ -184,7 +184,7 @@
                   href: database-principal-csharp.md
                 - name: Python
                   href: database-principal-python.md
-                - name: Azure Resource Manager 模板
+                - name: Azure 资源管理器模板
                   href: database-principal-resource-manager.md
             - name: 策略
               items:
@@ -192,7 +192,7 @@
                   href: database-table-policies-csharp.md
                 - name: Python
                   href: database-table-policies-python.md
-        - name: 数据
+        - name: data
           items:
             - name: 删除数据
               href: delete-data.md
@@ -246,7 +246,7 @@
       href: 'https://azure.microsoft.com/blog/tag/azure-data-explorer/'
     - name: 论坛
       items:
-        - name: Stack Overflow
+        - name: 堆栈溢出
           href: 'https://stackoverflow.com/questions/tagged/azure-data-explorer'
         - name: Microsoft 技术社区
           href: 'https://techcommunity.microsoft.com/t5/Azure-Data-Explorer/bd-p/Kusto'

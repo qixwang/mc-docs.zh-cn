@@ -10,10 +10,10 @@ ms.date: 03/30/2020
 ms.author: v-junlch
 ms.custom: mvc
 ms.openlocfilehash: 04e9e7ab1f99efbca00e730bb66c1c1b769acbd7
-ms.sourcegitcommit: 64584c0bf31b4204058ae2b4641356b904ccdd58
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80581865"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway---resource-manager-template"></a>快速入门：使用 Azure 应用程序网关定向 Web 流量 - 资源管理器模板

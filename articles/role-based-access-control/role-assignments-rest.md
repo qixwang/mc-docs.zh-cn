@@ -16,17 +16,17 @@ ms.date: 03/31/2020
 ms.author: v-junlch
 ms.reviewer: bagovind
 ms.openlocfilehash: 00e4f89f49c98d758bb8d752479ca917f2d58318
-ms.sourcegitcommit: 64584c0bf31b4204058ae2b4641356b904ccdd58
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80581724"
 ---
 # <a name="add-or-remove-role-assignments-using-azure-rbac-and-the-rest-api"></a>使用 Azure RBAC 和 REST API 添加或删除角色分配
 
 [!INCLUDE [Azure RBAC definition grant access](../../includes/role-based-access-control-definition-grant.md)] 本文介绍如何使用 REST API 分配角色。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要添加或删除角色分配，必须拥有以下权限：
 
@@ -58,7 +58,7 @@ ms.locfileid: "80581724"
 1. 在 URI 内，将“{scope}”  替换为角色分配的范围。
 
     > [!div class="mx-tableFixed"]
-    > | 作用域 | 类型 |
+    > | 范围 | 类型 |
     > | --- | --- |
     > | `providers/Microsoft.Management/managementGroups/{groupId1}` | 管理组 |
     > | `subscriptions/{subscriptionId1}` | 订阅 |
@@ -72,7 +72,7 @@ ms.locfileid: "80581724"
 1. 在请求正文中，将 *{scope}* 替换为角色分配的范围。
 
     > [!div class="mx-tableFixed"]
-    > | 作用域 | 类型 |
+    > | 范围 | 类型 |
     > | --- | --- |
     > | `providers/Microsoft.Management/managementGroups/{groupId1}` | 管理组 |
     > | `subscriptions/{subscriptionId1}` | 订阅 |
@@ -98,7 +98,7 @@ ms.locfileid: "80581724"
 1. 在 URI 内，将“{scope}”  替换为删除角色分配的范围。
 
     > [!div class="mx-tableFixed"]
-    > | 作用域 | 类型 |
+    > | 范围 | 类型 |
     > | --- | --- |
     > | `providers/Microsoft.Management/managementGroups/{groupId1}` | 管理组 |
     > | `subscriptions/{subscriptionId1}` | 订阅 |

@@ -9,40 +9,40 @@ origin.date: 10/01/2016
 md.date: 03/30/2020
 ms.author: v-tawe
 ms.openlocfilehash: d42024f9018e04c0fae806283e5d130ff2fb1345
-ms.sourcegitcommit: 44d3fe59952847e5394bbe6c05bd6f333bb56345
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80522093"
 ---
 # <a name="client-and-server-versioning-in-mobile-apps-and-mobile-services"></a>移动应用和移动服务中的客户端与服务器版本控制
 
-Azure 移动服务的最新版本是 Azure 应用服务的 **移动应用** 功能。
+Azure 移动服务的最新版本是 Azure 应用服务的**移动应用**功能。
 
-移动应用客户端和服务器 SDK 最初基于移动服务中的 SDK，但它们彼此 *不* 兼容。
-也就是说，必须将移动应用  客户端 SDK 与移动应用  服务器 SDK 配合使用，移动服务  也是如此。 可以通过客户端和服务器 SDK 使用的特殊标头值 `ZUMO-API-VERSION`来强制实施此合约。
+移动应用客户端和服务器 SDK 最初基于移动服务中的 SDK，但它们彼此*不*兼容。
+也就是说，必须将*移动应用*客户端 SDK 与*移动应用*服务器 SDK 配合使用，*移动服务*也是如此。 可以通过客户端和服务器 SDK 使用的特殊标头值 `ZUMO-API-VERSION` 来强制实施此合约。
 
-注意：每当本文档提到 *移动服务* 后端时，该后端不一定要托管在移动服务中。 现在，可以将移动服务迁移到应用服务上运行，而无需更改任何代码，但服务还是使用移动服务  SDK 版本。
+注意：每当本文档提到*移动服务*后端时，该后端不一定要托管在移动服务中。 现在，可以将移动服务迁移到应用服务上运行，而无需更改任何代码，但服务还是使用*移动服务* SDK 版本。
 
 ## <a name="header-specification"></a>标头规范
-可以在 HTTP 标头或查询字符串中指定键 `ZUMO-API-VERSION` 。 值为版本字符串，格式为 **x.y.z**。
+可以在 HTTP 标头或查询字符串中指定键 `ZUMO-API-VERSION`。 值为版本字符串，格式为 **x.y.z**。
 
 例如：
 
 GET https://service.chinacloudsites.cn/tables/TodoItem`
 
-标头：ZUMO-API-VERSION：2.0.0
+HEADERS: ZUMO-API-VERSION: 2.0.0
 
 POST https://service.chinacloudsites.cn/tables/TodoItem?ZUMO-API-VERSION=2.0.0`
 
 ## <a name="opting-out-of-version-checking"></a>选择不进行版本检查
-可以将应用设置“MS_SkipVersionCheck”  的值设置为“true”  ，选择不进行版本检查。 在 web.config 中或在 Azure 门户的“应用程序设置”部分中可以指定此设置。
+可以将应用设置 **MS_SkipVersionCheck** 的值设置为 **true**，选择不进行版本检查。 在 web.config 中或在 Azure 门户的“应用程序设置”部分中可以指定此设置。
 
 > [!NOTE]
-> 移动服务和移动应用之间有许多行为发生了变化，尤其是在脱机同步、身份验证和推送通知方面。 应在完成测试之后才选择不要进行版本检查，以确保这些行为的更改不会影响应用功能。
+> 移动服务和移动应用之间有许多行为发生了变化，尤其是在脱机同步、身份验证和推送通知方面。 应该在完成测试之后才选择不要进行版本检查，确保这些行为的更改不会影响应用功能。
 
 ## <a name="azure-mobile-apps-client-and-server"></a><a name="2.0.0"></a>Azure 移动应用客户端和服务器
-### <a name="mobile-apps-client-sdks"></a><a name="MobileAppsClients"></a> 移动 *应用* 客户端 SDK
+### <a name="mobile-apps-client-sdks"></a><a name="MobileAppsClients"></a>移动*应用*客户端 SDK
 版本检查从 **Azure 移动应用**以下版本的客户端 SDK 开始引入：
 
 | 客户端平台 | 版本 | 版本标头值 |
@@ -51,7 +51,7 @@ POST https://service.chinacloudsites.cn/tables/TodoItem?ZUMO-API-VERSION=2.0.0`
 | iOS |[3.0.0](https://go.microsoft.com/fwlink/?LinkID=529823) |2.0.0 |
 | Android |[3.0.0](https://go.microsoft.com/fwlink/?LinkID=717033&clcid=0x409) |3.0.0 |
 
-### <a name="mobile-apps-server-sdks"></a>移动 *应用* 服务器 SDK
+### <a name="mobile-apps-server-sdks"></a>移动*应用*服务器 SDK
 以下服务器 SDK 版本包含版本检查：
 
 | 服务器平台 | SDK 中 IsInRole 中的声明 | 接受的版本标头 |

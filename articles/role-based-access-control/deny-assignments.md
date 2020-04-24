@@ -16,10 +16,10 @@ ms.author: v-junlch
 ms.reviewer: bagovind
 ms.custom: ''
 ms.openlocfilehash: a060fe6c19eb6d107f047853ff78205be20a0b5f
-ms.sourcegitcommit: 64584c0bf31b4204058ae2b4641356b904ccdd58
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80581828"
 ---
 # <a name="understand-deny-assignments-for-azure-resources"></a>了解 Azure 资源的拒绝分配

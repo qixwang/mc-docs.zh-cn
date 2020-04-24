@@ -16,10 +16,10 @@ ms.date: 03/31/2020
 ms.author: v-junlch
 ms.reviewer: bagovind
 ms.openlocfilehash: 31acbf76ad159c227cd65b3be0b45026e6a3f3e7
-ms.sourcegitcommit: 64584c0bf31b4204058ae2b4641356b904ccdd58
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80581726"
 ---
 # <a name="list-role-assignments-using-azure-rbac-and-the-rest-api"></a>使用 Azure RBAC 和 REST API 列出角色分配
@@ -39,7 +39,7 @@ ms.locfileid: "80581726"
 1. 在 URI 中，将“{scope}”  替换为要列出角色分配的范围。
 
     > [!div class="mx-tableFixed"]
-    > | 作用域 | 类型 |
+    > | 范围 | 类型 |
     > | --- | --- |
     > | `providers/Microsoft.Management/managementGroups/{groupId1}` | 管理组 |
     > | `subscriptions/{subscriptionId1}` | 订阅 |
@@ -51,7 +51,7 @@ ms.locfileid: "80581726"
 1. 将“{filter}”  替换为筛选角色分配列表时要应用的条件。
 
     > [!div class="mx-tableFixed"]
-    > | 筛选器 | 说明 |
+    > | “筛选器” | 说明 |
     > | --- | --- |
     > | `$filter=atScope()` | 只列出指定范围内的角色分配，而不包括子范围内的角色分配。 |
     > | `$filter=assignedTo('{objectId}')` | 列出指定用户或服务主体的角色分配。<br/>如果用户是具有角色分配的组的成员，则该角色分配也会列出。 此筛选器对于组是可传递的，这意味着如果用户是组的成员，并且该组是具有角色分配的另一个组的成员，则该角色分配也会列出。<br/>此筛选器仅接受用户或服务主体的对象 ID。 不能传递组的对象 ID。 |

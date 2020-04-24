@@ -16,10 +16,10 @@ origin.date: 03/11/2020
 ms.date: 04/06/2020
 ms.author: v-jay
 ms.openlocfilehash: 260aeae77d4027e4d52605ed9928048ac59f1410
-ms.sourcegitcommit: fe9ed98aaee287a21648f866bb77cb6888f75b0c
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80625808"
 ---
 # <a name="manage-streaming-endpoints-with--media-services-v3"></a>通过媒体服务 v3 管理流式处理终结点

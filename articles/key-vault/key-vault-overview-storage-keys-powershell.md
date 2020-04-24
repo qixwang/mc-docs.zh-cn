@@ -9,12 +9,12 @@ ms.author: v-tawe
 manager: rkarlin
 origin.date: 09/10/2019
 ms.date: 03/16/2020
-ms.openlocfilehash: aaaca7f00a96dccf3d0543d7043776a8cd4546b2
-ms.sourcegitcommit: 764b3d26aedce2de0e1948468a706fd3204a3d5e
+ms.openlocfilehash: 4ad8a1efc8b015281e031681c5a897d37843dced
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2020
-ms.locfileid: "79543323"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81442031"
 ---
 # <a name="manage-storage-account-keys-with-key-vault-and-azure-powershell"></a>使用 Key Vault 和 Azure PowerShell 管理存储帐户密钥
 
@@ -48,9 +48,9 @@ Key Vault 是已在所有 Azure AD 租户中预先注册的 Microsoft 应用程�
 | --- | --- | --- |
 | Azure AD | Azure Government | `7e7c393b-45d0-48b1-a35e-2905ddf8183c` |
 | Azure AD | Azure 公有云 | `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` |
-| 其他  | 任意 | `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` |
+| 其他  | Any | `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` |
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要完成本指南，必须先执行以下操作：
 
@@ -115,12 +115,12 @@ DisplayName        : Azure Key Vault
 SignInName         :
 RoleDefinitionName : storage account Key Operator Service Role
 RoleDefinitionId   : 81a9662b-bebf-436f-a333-f67b29880f12
-ObjectId           : 93c27d83-f79b-4cb2-8dd4-4aa716542e74
+ObjectId           : 2330fcd0-aceb-49c4-a58f-27980b31efc5
 ObjectType         : ServicePrincipal
 CanDelegate        : False
 ```
 
-如果 Key Vault 已添加到存储帐户中的角色，则你会收到“角色分配已存在”  ”错误。 还可以使用 Azure 门户中存储帐户的“访问控制(IAM)”页验证角色分配。  
+如果 Key Vault 已添加到存储帐户中的角色，则你会收到“角色分配已存在”  错误。 还可以使用 Azure 门户中存储帐户的“访问控制(IAM)”页验证角色分配。  
 
 ### <a name="give-your-user-account-permission-to-managed-storage-accounts"></a>向托管存储帐户授予用户帐户权限
 

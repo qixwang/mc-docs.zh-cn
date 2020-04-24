@@ -11,10 +11,10 @@ ms.date: 04/06/2020
 ms.author: v-jay
 ms.localizationpriority: high
 ms.openlocfilehash: 8d93403b97b6ab2c2f5dc68e1b88be0b572ff68e
-ms.sourcegitcommit: 5fb45da006859215edc8211481f13174aa43dbeb
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80634626"
 ---
 # <a name="get-started-with-azure-data-box"></a>Azure Data Box 入门 

@@ -9,10 +9,10 @@ origin.date: 08/01/2017
 ms.date: 04/06/2020
 ms.author: v-jay
 ms.openlocfilehash: 679881ef87ea77e91f7d236e8a7e220919131480
-ms.sourcegitcommit: 5fb45da006859215edc8211481f13174aa43dbeb
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80634553"
 ---
 # <a name="configure-forced-tunneling-using-the-classic-deployment-model"></a>使用经典部署模型配置强制隧道

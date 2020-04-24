@@ -10,10 +10,10 @@ ms.topic: conceptual
 origin.date: 11/04/2019
 ms.date: 03/02/2020
 ms.openlocfilehash: 574b342272f9eaee0e70bf532c8ff2adafc7a5ba
-ms.sourcegitcommit: 44d3fe59952847e5394bbe6c05bd6f333bb56345
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80522087"
 ---
 # <a name="security-and-data-privacy-in-azure-cognitive-search"></a>Azure 认知搜索中的安全性和数据隐私
@@ -102,7 +102,7 @@ Azure 认知搜索针对以下标准进行了认证，如 [2018 年 6 月发布�
 
 下表概述了 Azure 认知搜索中允许的操作，以及哪个密钥可以解锁特定操作的访问。
 
-| 操作 | 权限 |
+| Operation | 权限 |
 |-----------|-------------------------|
 | 创建服务 | Azure 订阅持有者|
 | 缩放服务 | 管理密钥，资源中的 RBAC 所有者或参与者  |

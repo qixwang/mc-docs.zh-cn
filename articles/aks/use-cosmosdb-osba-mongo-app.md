@@ -12,10 +12,10 @@ ms.author: v-yeche
 ms.custom: mvc
 keywords: Cosmos DB, Open Service Broker, 用于 Azure 的 Open Service Broker
 ms.openlocfilehash: 83fe0eed65ea5f083c689bf58424462db6b22552
-ms.sourcegitcommit: 76280dd9854dc0ff0ba1e5e62fb3dc3af049fbe2
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80517022"
 ---
 <!--IMPORTANT: http_application_routing NOT AVAILABLE ON MOONCAKE-->
@@ -27,13 +27,13 @@ Azure Cosmos DB 是一种全球分布式多模型数据库服务。 它还提供
 
 本文使用现有的 Java 应用程序，该应用程序使用 MongoDB 数据库并对其进行更新，以便使用 Cosmos DB 数据库，而后者又使用 Open Service Broker for Azure。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 在继续操作之前，必须满足以下条件：
 
 * 创建 [Azure Kubernetes 服务群集](kubernetes-walkthrough.md)。
 * [在 AKS 群集上安装并配置 Open Service Broker for Azure](integrate-azure.md)。 
-* 安装并配置运行 `svcat` 命令所需的[服务目录 CLI](https://svc-cat.io/docs/install/)。
+* 安装并配置运行 [ 命令所需的](https://svc-cat.io/docs/install/)服务目录 CLI`svcat`。
 * 有一个现有的 [MongoDB](https://www.mongodb.com/) 数据库。 例如，可以让 MongoDB 在[开发计算机](https://docs.mongodb.com/manual/administration/install-community/)上或 [Azure VM](../virtual-machines/linux/install-mongodb.md) 中运行。
 * 通过某种方式（例如 [mongo shell](https://docs.mongodb.com/manual/mongo/)）连接到 MongoDB 数据库并对其进行查询。
 

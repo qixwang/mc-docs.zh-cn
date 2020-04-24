@@ -83,7 +83,7 @@
           href: /virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-cli
         - name: Azure PowerShell
           href: /virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell
-        - name: Azure Resource Manager 模板
+        - name: Azure 资源管理器模板
           href: /virtual-network/ipv6-configure-standard-load-balancer-template-json
           displayName: ARM
     - name: 配置内部负载均衡器
@@ -92,7 +92,7 @@
           href: load-balancer-get-started-ilb-arm-cli.md
         - name: Azure PowerShell
           href: load-balancer-get-started-ilb-arm-ps.md
-        - name: Azure Resource Manager 模板
+        - name: Azure 资源管理器模板
           href: load-balancer-get-started-ilb-arm-template.md
           displayName: ARM
     - name: 配置负载均衡器的 TCP 空闲超时
@@ -120,7 +120,7 @@
           href: move-across-regions-internal-load-balancer-powershell.md
     - name: 故障排除
       items:
-        - name: 对 Azure 负载均衡器进行故障排除
+        - name: 排查 Azure 负载均衡器问题
           href: load-balancer-troubleshoot.md
 - name: 参考
   items:

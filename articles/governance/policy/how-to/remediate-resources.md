@@ -6,10 +6,10 @@ origin.date: 02/26/2020
 ms.date: 03/30/2020
 ms.topic: how-to
 ms.openlocfilehash: cbc897a0cac51dfd138cff8639fb0a0d3368c36d
-ms.sourcegitcommit: 260800ede66f48c886d1426a0fac18b4d402b4f2
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80586815"
 ---
 # <a name="remediate-non-compliant-resources-with-azure-policy"></a>修正 Azure Policy 中的不符合资源

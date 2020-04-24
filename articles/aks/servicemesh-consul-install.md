@@ -8,10 +8,10 @@ ms.date: 04/06/2020
 ms.author: v-yeche
 zone_pivot_groups: client-operating-system-aks-lm
 ms.openlocfilehash: 841fea30e315d079c8f5eae3456785fce791ea7a
-ms.sourcegitcommit: 76280dd9854dc0ff0ba1e5e62fb3dc3af049fbe2
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80517007"
 ---
 <!--CORRECT ON client-operating-system-aks-lm-->
@@ -25,7 +25,7 @@ ms.locfileid: "80517007"
 > [!NOTE]
 > 这些说明引用 Consul 版本 `1.6.0`，并至少使用 Helm 版本 `2.14.2`。
 >
-> 可针对 Kubernetes 版本 `1.13+` 运行 Consul `1.6.x` 版本。 可以在 [GitHub - Consul 版本][consul-github-releases]中找到其他 Consul 版本，并可以在 [Consul - 发行说明][consul-release-notes]中找到有关每个版本的信息。
+> 可针对 Kubernetes 版本 `1.6.x` 运行 Consul `1.13+` 版本。 可以在 [GitHub - Consul 版本][consul-github-releases]中找到其他 Consul 版本，并可以在 [Consul - 发行说明][consul-release-notes]中找到有关每个版本的信息。
 
 在本文中，学习如何：
 
@@ -34,7 +34,7 @@ ms.locfileid: "80517007"
 > * 验证 Consul 安装
 > * 从 AKS 中卸载 Consul
 
-## <a name="before-you-begin"></a>准备阶段
+## <a name="before-you-begin"></a>开始之前
 
 本文中详述的步骤假设已创建 AKS 群集（已启用 RBAC 的 Kubernetes `1.13` 及更高版本）并已与该群集建立 `kubectl` 连接。 如果需要帮助完成这些项目，请参阅 [AKS 快速入门][aks-quickstart]。 确保群集在 Linux 节点池中至少有 3 个节点。
 
@@ -115,7 +115,7 @@ kubectl get svc --namespace consul --output wide
 kubectl get pod --namespace consul --output wide
 ```
 
-以下示例输出显示了现在应该正在运行的服务和 Pod（安排在 Linux 节点上）：
+以下示例输出显示了现在应该正在运行的服务和 Pod（在 Linux 节点上计划）：
 
 ```output
 NAME                                 TYPE           CLUSTER-IP    EXTERNAL-IP             PORT(S)                                                                   AGE     SELECTOR
@@ -171,7 +171,7 @@ kubectl delete namespace consul
 - [Consul - Helm 安装指南][consul-install-k8]
 - [Consul - Helm 安装选项][consul-install-helm-options]
 
-也可以使用以下示例应用程序按照其他方案操作：
+也可使用以下项按照其他方案操作：
 
 - [Consul 示例应用程序][consul-app-example]
 

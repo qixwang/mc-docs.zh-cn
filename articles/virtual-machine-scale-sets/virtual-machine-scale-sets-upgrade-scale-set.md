@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 03/31/2020
 ms.author: v-junlch
 ms.openlocfilehash: f486af15dae7a6450bb7316a3fa247fcc247a4d6
-ms.sourcegitcommit: 64584c0bf31b4204058ae2b4641356b904ccdd58
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80581816"
 ---
 # <a name="modify-a-virtual-machine-scale-set"></a>修改虚拟机规模集
@@ -380,7 +380,7 @@ $ az vmss get-instance-view --resource-group myResourceGroup --name myScaleSet -
 ### <a name="update-the-os-image-for-your-scale-set"></a>更新规模集的 OS 映像
 你可能具有运行旧版 Ubuntu LTS 16.04 的规模集。 你希望将其更新到新版 Ubuntu LTS 16.04，例如版本 *16.04.201801090*。 映像引用版本属性不是列表的一部分，因此可以使用下列命令之一直接修改这些属性：
 
-- 如下所示，通过 Azure PowerShell 使用 [Update-AzVmss](https://docs.microsoft.com/powershell/module/az.compute/update-azvmss)：
+- 如下所示通过 Azure PowerShell 使用 [Update-AzVmss](https://docs.microsoft.com/powershell/module/az.compute/update-azvmss)：
 
     ```powershell
     Update-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -ImageReferenceVersion 16.04.201801090
@@ -394,7 +394,7 @@ $ az vmss get-instance-view --resource-group myResourceGroup --name myScaleSet -
 
 或者，你可能想要更改规模集使用的映像。 例如，你可能想要更新或更改规模集使用的自定义映像。 可以通过更新“映像引用 ID”属性来更改规模集使用的映像。 “映像引用 ID”属性不是列表的一部分，因此可以使用下列命令之一直接修改该属性：
 
-- 如下所示，通过 Azure PowerShell 使用 [Update-AzVmss](https://docs.microsoft.com/powershell/module/az.compute/update-azvmss)：
+- 如下所示通过 Azure PowerShell 使用 [Update-AzVmss](https://docs.microsoft.com/powershell/module/az.compute/update-azvmss)：
 
     ```powershell
     Update-AzVmss `

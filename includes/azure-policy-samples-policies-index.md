@@ -1,18 +1,18 @@
 ---
-ms.openlocfilehash: 4b345d128891206a5c2e4b92e0d7135a10c84192
-ms.sourcegitcommit: 1d3d8dfdaf6281f06640cbee7124a1e8bf102c50
+ms.openlocfilehash: e00b42cc2388f4b59d0a9fbf24a2720abac30757
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "80272724"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "80989243"
 ---
-## <a name="app-configuration"></a>应用配置
+<!-- ## App Configuration
 
-[!INCLUDE [azure-policy-samples-policies-app-configuration](azure-policy-samples-policies-app-configuration.md)]
+[!INCLUDE [azure-policy-samples-policies-app-configuration](azure-policy-samples-policies-app-configuration.md)] -->
 
-## <a name="app-platform"></a>应用平台
+<!-- ## App Platform
 
-[!INCLUDE [azure-policy-samples-policies-app-platform](azure-policy-samples-policies-app-platform.md)]
+[!INCLUDE [azure-policy-samples-policies-app-platform](azure-policy-samples-policies-app-platform.md)] -->
 
 ## <a name="app-service"></a>应用服务
 
@@ -22,11 +22,11 @@ ms.locfileid: "80272724"
 
 [!INCLUDE [azure-policy-samples-policies-automation](azure-policy-samples-policies-automation.md)]
 
-## <a name="backup"></a>Backup
+## <a name="backup"></a>备份
 
 [!INCLUDE [azure-policy-samples-policies-backup](azure-policy-samples-policies-backup.md)]
 
-## <a name="batch"></a>批处理
+## <a name="batch"></a>Batch
 
 [!INCLUDE [azure-policy-samples-policies-batch](azure-policy-samples-policies-batch.md)]
 
@@ -42,13 +42,13 @@ ms.locfileid: "80272724"
 
 <!-- [!INCLUDE [azure-policy-samples-policies-container-registry](azure-policy-samples-policies-container-registry.md)] -->
 
-## <a name="cosmos-db"></a>Cosmos DB
+<!-- ## Cosmos DB
 
-[!INCLUDE [azure-policy-samples-policies-cosmos-db](azure-policy-samples-policies-cosmos-db.md)]
+[!INCLUDE [azure-policy-samples-policies-cosmos-db](azure-policy-samples-policies-cosmos-db.md)] -->
 
-## <a name="custom-provider"></a>自定义提供程序
+<!-- ## Custom Provider
 
-[!INCLUDE [azure-policy-samples-policies-custom-provider](azure-policy-samples-policies-custom-provider.md)]
+[!INCLUDE [azure-policy-samples-policies-custom-provider](azure-policy-samples-policies-custom-provider.md)] -->
 
 <!-- ## Data Lake -->
 
@@ -70,7 +70,7 @@ ms.locfileid: "80272724"
 
 [!INCLUDE [azure-policy-samples-policies-internet-of-things](azure-policy-samples-policies-internet-of-things.md)]
 
-## <a name="key-vault"></a>密钥保管库
+## <a name="key-vault"></a>Key Vault
 
 [!INCLUDE [azure-policy-samples-policies-key-vault](azure-policy-samples-policies-key-vault.md)]
 
@@ -90,9 +90,9 @@ ms.locfileid: "80272724"
 
 [!INCLUDE [azure-policy-samples-policies-logic-apps](azure-policy-samples-policies-logic-apps.md)]
 
-## <a name="managed-application"></a>托管应用程序
+<!-- ## Managed Application
 
-[!INCLUDE [azure-policy-samples-policies-managed-application](azure-policy-samples-policies-managed-application.md)]
+[!INCLUDE [azure-policy-samples-policies-managed-application](azure-policy-samples-policies-managed-application.md)] -->
 
 ## <a name="monitoring"></a>监视
 

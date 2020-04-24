@@ -9,10 +9,10 @@ origin.date: 02/03/2020
 ms.date: 2/18/2020
 ms.author: v-lingwu
 ms.openlocfilehash: 92b7705a0766c965e26a4a79ee0fd7e0d73b8626
-ms.sourcegitcommit: 78a05172a813b87428b87f3a2695e6bb3ae81ede
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80417386"
 ---
 # <a name="azure-monitor-logs-for-service-providers"></a>面向服务提供商的 Azure Monitor 日志

@@ -15,10 +15,10 @@ origin.date: 07/08/2019
 ms.date: 04/06/2020
 ms.author: v-jay
 ms.openlocfilehash: da4153e63bd93175d625b4f04ab16bf5b573333c
-ms.sourcegitcommit: fe9ed98aaee287a21648f866bb77cb6888f75b0c
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80625787"
 ---
 # <a name="monitor-media-services-metrics"></a>监视媒体服务指标
@@ -27,7 +27,7 @@ ms.locfileid: "80625787"
 
 Azure Monitor 提供多种方式来与指标交互，包括在门户中制作指标图表、通过 REST API 访问指标，或者使用 Azure CLI 查询指标。 本文介绍如何使用 Azure 门户图表和 Azure CLI 监视指标。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - [创建媒体服务帐户](create-account-cli-how-to.md)
 - 参阅[监视媒体服务指标和诊断日志](media-services-metrics-diagnostic-logs.md)
@@ -46,14 +46,14 @@ Azure Monitor 提供多种方式来与指标交互，包括在门户中制作指
 
     选择资源并按“应用”。  有关支持的资源和指标的详细信息，请参阅[监视媒体服务指标](media-services-metrics-diagnostic-logs.md)。
 
-    ![指标](media/media-services-metrics/metrics02.png)
+    ![度量值](media/media-services-metrics/metrics02.png)
 
     > [!NOTE]
     > 若要在你要监视其指标的资源之间切换，请再次单击“资源”框，然后重复上述步骤。 
 1. （可选）为图表命名（按顶部的铅笔图标来编辑名称）。
 1. 添加要查看的指标
 
-    ![指标](media/media-services-metrics/metrics03.png)
+    ![度量值](media/media-services-metrics/metrics03.png)
 1. 可将图表固定到仪表板。
 
 ## <a name="view-metrics-with-azure-cli"></a>使用 Azure CLI 查看指标

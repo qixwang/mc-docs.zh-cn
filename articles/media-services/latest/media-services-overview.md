@@ -19,10 +19,10 @@ ms.date: 04/06/2020
 ms.author: v-jay
 ms.custom: mvc
 ms.openlocfilehash: 834a074593eb00cbb04d07b853fc2793028f6963
-ms.sourcegitcommit: fe9ed98aaee287a21648f866bb77cb6888f75b0c
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80625785"
 ---
 # <a name="azure-media-services-v3-overview"></a>Azure 媒体服务 v3 概述
@@ -48,7 +48,7 @@ Azure 媒体服务是一个基于云的平台，用于生成解决方案，以�
 
 使用媒体服务，你可以在云中构建各种媒体工作流。 下面是媒体服务的功能的一些示例：
 
-* 提供各种格式的视频，以便通过各种浏览器和设备播放视频。 为了将点播和实时传送视频流传输到各种客户端（移动设备、电视、电脑等），需要对视频和音频进行适当的编码和打包。 要了解如何交付和流式传输此类内容，请参阅[快速入门：编码和流式传输文件](stream-files-dotnet-quickstart.md)。
+* 提供各种格式的视频，以便通过各种浏览器和设备播放视频。 为了将点播和实时传送视频流传输到各种客户端（移动设备、电视、电脑等），需要对视频和音频进行适当的编码和打包。 若要了解如何交付和流式传输此类内容，请参阅[快速入门：编码和流式传输文件](stream-files-dotnet-quickstart.md)。
 * 向大量在线观众流式传输实时体育赛事，例如足球、棒球、大学和高中体育运动等等。
 * 广播公共会议和活动，例如市政厅、市议会和立法机构。
 * 分析录制的视频或音频内容。 例如，为了实现更高的客户满意度，组织可以提取语音转文本并生成搜索索引和仪表板。 然后，他们可以提取围绕常见的投诉、投诉原因以及其他相关数据的情报。
@@ -90,7 +90,7 @@ Azure 媒体服务是一个基于云的平台，用于生成解决方案，以�
 
 使用[此示例浏览器](https://docs.microsoft.com/samples/browse/?products=azure-media-services)浏览 Azure 媒体服务代码示例。
 
-### <a name="how-to-guides"></a>操作指南
+### <a name="how-to-guides"></a>操作方法指南
 
 操作指南包含演示如何完成某项任务的代码示例。 在本部分中，你将看到许多示例。 下面是其中几个示例：
 

@@ -16,10 +16,10 @@ ms.author: v-junlch
 ms.reviewer: bagovind
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 3cdbdd9132f537d5ccc0ae3e34144f052327e733
-ms.sourcegitcommit: 64584c0bf31b4204058ae2b4641356b904ccdd58
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80581680"
 ---
 # <a name="custom-roles-for-azure-resources"></a>Azure 资源的自定义角色
@@ -124,7 +124,7 @@ ms.locfileid: "80581680"
 - 每个目录最多可以有 **5000** 个自定义角色。
 - Azure 德国和 Azure 中国世纪互联的每个目录最多可以有 2000 个自定义角色。
 - 不能将 `AssignableScopes` 设置为根范围 (`"/"`)。
-- 只能在自定义角色的 `AssignableScopes` 中定义一个管理组。 将管理组添加到 `AssignableScopes` 的功能目前处于预览状态。
+- 只能在自定义角色的 `AssignableScopes` 中定义一个管理组。 将管理组添加到 `AssignableScopes` 的功能目前为预览版。
 - 无法在管理组范围内分配具有 `DataActions` 的自定义角色。
 - Azure 资源管理器不验证管理组是否存在于角色定义的可分配范围中。
 

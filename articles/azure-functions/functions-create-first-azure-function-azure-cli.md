@@ -4,10 +4,10 @@ description: 了解如何通过命令行创建函数，然后将本地项目发�
 ms.date: 03/31/2020
 ms.topic: quickstart
 ms.openlocfilehash: c1404c18390ee59f8d99e7648ef7b1cbb5a3c123
-ms.sourcegitcommit: 64584c0bf31b4204058ae2b4641356b904ccdd58
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80581773"
 ---
 # <a name="quickstart-create-a-function-in-azure-that-responds-to-http-requests"></a>快速入门：在 Azure 中创建用于响应 HTTP 请求的函数

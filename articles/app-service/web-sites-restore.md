@@ -8,14 +8,14 @@ ms.date: 01/13/2020
 ms.author: v-tawe
 ms.custom: seodec18
 ms.openlocfilehash: 4789f1681d3b82983fe4ec252911d825936eeb24
-ms.sourcegitcommit: 5fb45da006859215edc8211481f13174aa43dbeb
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80634338"
 ---
 # <a name="restore-an-app-in-azure"></a>在 Azure 中还原应用
-本文演示如何在 [Azure 应用服务](../app-service/overview.md)中还原已事先备份的应用（请参阅[在 Azure 中备份应用](manage-backup.md)）。 可以根据需要将应用及其链接的数据库还原到以前的状态，或者基于原始应用的备份之一创建新的应用。 Azure 应用服务支持用于备份和还原的以下数据库：
+本文将演示如何在 [Azure 应用服务](../app-service/overview.md) 中还原已事先备份的应用（请参阅[在 Azure 中备份应用](manage-backup.md)）。 可以根据需要将应用及其链接的数据库还原到以前的状态，或者基于原始应用的备份之一创建新的应用。 Azure 应用服务支持用于备份和还原的以下数据库：
 - [SQL 数据库](https://www.azure.cn/home/features/sql-database/)
 - [Azure Database for MySQL](https://www.azure.cn/home/features/mysql)
 - [Azure Database for PostgreSQL](https://www.azure.cn/home/features/postgresql)
@@ -25,22 +25,22 @@ ms.locfileid: "80634338"
 <a name="PreviousBackup"></a>
 
 ## <a name="restore-an-app-from-an-existing-backup"></a>从现有备份还原应用
-1. 在 Azure 门户中应用的“设置”页上，单击“备份”以显示“备份”页    。 然后，单击“还原”  。
+1. 在 Azure 门户中应用的“设置”页上，单击“备份”以显示“备份”页    。 然后，单击“还原”。 
    
     ![选择“立即还原”][ChooseRestoreNow]
 2. 在“还原”页中，首先选择备份源  。
    
     ![](./media/web-sites-restore/021ChooseSource1.png)
    
-    “应用备份”  选项显示当前应用的所有现有备份，使你能够轻松地选择一个。
-    “存储”  选项使你能够从任何现有 Azure 存储帐户和订阅中的容器中选择任何备份 ZIP 文件。
+    “应用备份”选项显示当前应用的所有现有备份，使你能够轻松地选择一个。 
+    “存储”选项使你能够从任何现有 Azure 存储帐户和订阅中的容器中选择任何备份 ZIP 文件。 
     如果正在尝试还原其他应用的备份，请使用“存储”  选项。
-3. 然后，在“还原目标”  中指定应用还原的目标。
+3. 然后，在“还原目标”中指定应用还原的目标。 
    
     ![](./media/web-sites-restore/022ChooseDestination1.png)
    
    > [!WARNING]
-   > 如果选择“覆盖”  ，则会清除并覆盖当前应用中所有的现有数据。 在单击“确定”  之前，请确保该操作正是想要执行的操作。
+   > 如果选择“覆盖”  ，将清除并覆盖当前应用中所有的现有数据。 在单击“确定”  之前，请确保该操作正是想要执行的操作。
    > 
    > 
    
@@ -49,14 +49,14 @@ ms.locfileid: "80634338"
    > 
    > 
    
-    可选择“现有应用”将应用备份还原到同一资源组中的其他应用  。 使用此选项之前，应已使用应用备份中定义的镜像数据库配置在资源组中创建了其他应用。 还可以创建一个**新**应用，以便将内容还原到其中。
+    可选择“现有应用”将应用备份还原到同一资源组中的其他应用  。 使用此选项之前，应已使用应用备份中定义的镜像数据库配置在资源组中创建了其他应用。 还可以创建“新”  应用来将内容还原到其中。
 
-4. 单击 **“确定”** 。
+4. 单击“确定”。 
 
 <a name="StorageAccount"></a>
 
 ## <a name="download-or-delete-a-backup-from-a-storage-account"></a>从存储帐户中下载或删除备份
-1. 在 Azure 门户的主“浏览”页中，选择“存储帐户”   。 会显示现有存储帐户的列表。
+1. 在 Azure 门户的主“浏览”页中，选择“存储帐户”   。 将显示现有存储帐户的列表。
 2. 选择包含要下载或删除的备份的存储帐户。 此时显示存储帐户页。
 3. 在存储帐户页中，选择所需的容器
    
@@ -76,7 +76,7 @@ ms.locfileid: "80634338"
 
 “详细信息”页会显示与还原操作相关的可用信息。
 
-## <a name="automate-with-scripts"></a>使用脚本自动执行
+## <a name="automate-with-scripts"></a>使用脚本自动化
 
 可以在 [Azure CLI](/cli/install-azure-cli?view=azure-cli-lastest) 或 [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) 中使用脚本自动备份管理。
 

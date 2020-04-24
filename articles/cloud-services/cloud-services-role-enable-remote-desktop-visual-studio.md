@@ -13,10 +13,10 @@ ms.workload: azure-vs
 ms.date: 03/31/2020
 ms.author: v-junlch
 ms.openlocfilehash: ee3e8f80c61d61cc65cdd5b9c0d6ba637ad07c1b
-ms.sourcegitcommit: 64584c0bf31b4204058ae2b4641356b904ccdd58
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80581676"
 ---
 # <a name="enable-remote-desktop-connection-for-a-role-in-azure-cloud-services-using-visual-studio"></a>使用 Visual Studio 为 Azure 云服务中的角色启用远程桌面连接
@@ -26,7 +26,7 @@ ms.locfileid: "80581676"
 > * [PowerShell](cloud-services-role-enable-remote-desktop-powershell.md)
 > * [Visual Studio](cloud-services-role-enable-remote-desktop-visual-studio.md)
 
-可以通过远程桌面访问在 Azure 中运行的角色的桌面。 也可以使用远程桌面连接，在应用程序正在运行时排查和诊断其问题。
+可以通过远程桌面访问在 Azure 中运行的角色的桌面。 可以使用远程桌面连接，在应用程序正在运行时排查和诊断其问题。
 
 Visual Studio 为云服务提供的发布向导中包括一个选项，用于在发布过程中使用提供的凭据启用远程桌面。 使用 Visual Studio 2017 版本 15.4 和更低版本时，比较适合使用此选项。
 
@@ -47,7 +47,7 @@ Visual Studio 为云服务提供的发布向导中包括一个选项，用于在
    > [!Note]
    > 用于建立远程桌面连接的证书与用于其他 Azure 操作的证书不同。 远程访问证书必须有一个私钥。
 
-5. 从列表中选择一个证书，或选择“&lt;创建...&gt;”。  如果创建新证书，请在出现提示时提供新证书的友好名称，并选择“确定”。  新证书将显示在下拉列表框中。
+5. 从列表中选择一个证书，或选择“**创建...&lt;”。&gt;** 如果创建新证书，请在出现提示时提供新证书的友好名称，并选择“确定”。  新证书将显示在下拉列表框中。
 
 6. 提供用户名和密码。 不能使用现有帐户。 请不要使用“Administrator”作为新帐户的用户名。
 
@@ -84,7 +84,7 @@ Certificate with thumbprint [thumbprint] doesn't exist.
 
 可以在生成代理中，从装有 Visual Studio 2017 版本 15.5 或更高版本的生成服务器（例如，使用 Azure DevOps Services）部署云服务项目。 使用此方法时，部署将在可提供加密证书的同一台计算机上进行。
 
-若要使用 Azure DevOps Services 中的 RDP 扩展，请在生成管道中包含以下详细信息：
+若要从 Azure DevOps Services 中使用 RDP 扩展，请在生成管道中包含以下详细信息：
 
 1. 在 MSBuild 参数中包含 `/p:ForceRDPExtensionOverPlugin=true`，确保部署使用 RDP 扩展而不是 RDP 插件。 例如：
 
@@ -95,7 +95,7 @@ Certificate with thumbprint [thumbprint] doesn't exist.
 
 1. 在生成步骤的后面，添加“Azure 云服务部署”步骤并设置其属性。 
 
-1. 在部署步骤之后，添加一个 **Azure Powershell** 步骤，将其“显示名称”  属性设置为“Azure Deployment:Enable RDP Extension”（或其他合适名称），并选择相应的 Azure 订阅。
+1. 在部署步骤的后面，添加“Azure Powershell”步骤，将其“显示名称”属性设置为“Azure 部署: 启用 RDP 扩展”（或其他适当的名称），然后选择相应的 Azure订阅。  
 
 1. 将“脚本类型”设置为“内联”，并在“内联脚本”字段中粘贴以下代码。   （也可以使用此脚本在项目中创建 `.ps1` 文件，将“脚本类型”设置为“脚本文件路径”，并将“脚本路径”设置为指向该文件。）  
 
@@ -140,7 +140,7 @@ Certificate with thumbprint [thumbprint] doesn't exist.
 
 在 Azure 上发布云服务并启用远程桌面后，可以使用 Visual Studio 服务器资源管理器登录到云服务 VM：
 
-1. 在服务器资源管理器中，展开“Azure”  节点，并展开云服务及其角色之一的节点，以显示实例列表。
+1. 在服务器资源管理器中，展开“Azure”节点，然后展开云服务及其角色之一的节点，以显示实例列表。 
 
 2. 右键单击某个实例节点，并选择“使用远程桌面进行连接”。 
 

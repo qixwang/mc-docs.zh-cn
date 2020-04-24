@@ -16,10 +16,10 @@ origin.date: 03/20/2019
 ms.date: 03/04/2020
 ms.author: v-jay
 ms.openlocfilehash: 89f203df045b09212c6672e1706740b2b496488d
-ms.sourcegitcommit: fe9ed98aaee287a21648f866bb77cb6888f75b0c
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80625801"
 ---
 # <a name="use-playready-dynamic-common-encryption"></a>使用 PlayReady 动态通用加密
@@ -28,7 +28,7 @@ ms.locfileid: "80625801"
 > Google Widevine 内容保护服务目前在 Azure 中国区域不可用。
 
 > [!NOTE]
-> 若要完成本教程，需要一个 Azure 帐户。 有关详细信息，请参阅 [Azure 1 元试用](https://wd.azure.cn/zh-cn/pricing/1rmb-trial-full)。 不会向媒体服务 v2 添加任何新特性或新功能。 <br/>查看最新版本：[媒体服务 v3](/media-services/latest/)。 另请参阅[从 v2 到 v3 的迁移指南](../latest/migrate-from-v2-to-v3.md)
+> 要完成本教程，需要一个 Azure 帐户。 有关详细信息，请参阅 [1 元试用](https://wd.azure.cn/zh-cn/pricing/1rmb-trial-full)。 不会向媒体服务 v2 添加任何新特性或新功能。 <br/>查看最新版本：[媒体服务 v3](/media-services/latest/)。 另请参阅[从 v2 到 v3 的迁移指南](../latest/migrate-from-v2-to-v3.md)
 
 ## <a name="overview"></a>概述
 
@@ -142,7 +142,7 @@ Console.WriteLine("The authorization token is:\nBearer {0}", testToken);
 
 1. 设置开发环境，并根据[使用 .NET 进行媒体服务开发](media-services-dotnet-how-to-use.md)中所述，在 app.config 文件中填充连接信息。
 
-2. 将以下元素添加到 app.config 文件中定义的  appSettings：
+2. 将以下元素添加到 app.config 文件中定义的 **appSettings**：
 
     ```xml
     <add key="Issuer" value="http://testissuer.com"/>

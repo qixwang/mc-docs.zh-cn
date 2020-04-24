@@ -16,10 +16,10 @@ ms.author: v-junlch
 ms.reviewer: bagovind
 ms.custom: seohack1
 ms.openlocfilehash: fd7ed1b2500cd6bd1e2453940d78013b3653e8fe
-ms.sourcegitcommit: 64584c0bf31b4204058ae2b4641356b904ccdd58
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80581725"
 ---
 # <a name="troubleshoot-azure-rbac"></a>排查 Azure RBAC 的问题

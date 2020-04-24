@@ -9,10 +9,10 @@ origin.date: 03/17/2020
 ms.date: 12/02/2019
 ms.author: philmea
 ms.openlocfilehash: 0ca1f748ca73616d5e1c9c629e5a4a7b672b65ed
-ms.sourcegitcommit: 5fb45da006859215edc8211481f13174aa43dbeb
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80634588"
 ---
 # <a name="iot-hub-high-availability-and-disaster-recovery"></a>IoT 中心高可用性和灾难恢复

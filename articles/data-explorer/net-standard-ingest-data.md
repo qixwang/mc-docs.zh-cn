@@ -9,19 +9,19 @@ ms.topic: conceptual
 origin.date: 06/03/2019
 ms.date: 03/16/2020
 ms.openlocfilehash: ae285bda409dc5a04d222e704ff0a861440d555e
-ms.sourcegitcommit: 44d3fe59952847e5394bbe6c05bd6f333bb56345
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80522122"
 ---
 # <a name="ingest-data-using-the-azure-data-explorer-net-standard-sdk-preview"></a>使用 Azure 数据资源管理器 .NET Standard SDK（预览版）引入数据
 
 Azure 数据资源管理器 (ADX) 是一项快速且高度可缩放的数据探索服务，适用于日志和遥测数据。 ADX 为 .NET Standard 提供了两个客户端库：[引入库](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Ingest.NETStandard)和[数据库](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Data.NETStandard)。 可以使用这些库在群集中引入（加载）数据并从代码中查询数据。 本文首先在测试群集中创建一个表和数据映射。 然后将引入排列到群集并验证结果。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
-* 如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial)。
+* 如果没有 Azure 订阅，可在开始前创建一个 [试用帐户](https://www.azure.cn/pricing/1rmb-trial) 。
 
 * [测试群集和数据库](create-cluster-database-portal.md)
 
@@ -31,7 +31,7 @@ Azure 数据资源管理器 (ADX) 是一项快速且高度可缩放的数据探�
 Install-Package Microsoft.Azure.Kusto.Ingest.NETStandard
 ```
 
-## <a name="authentication"></a>身份验证
+## <a name="authentication"></a>Authentication
 
 Azure 数据资源管理器使用 AAD 租户 ID，以对应用程序进行身份验证。 要查找租户 ID，请使用以下 URL，并将域替换为 YourDomain  。
 
@@ -39,7 +39,7 @@ Azure 数据资源管理器使用 AAD 租户 ID，以对应用程序进行身份
 https://login.chinacloudapi.cn/<YourDomain>/.well-known/openid-configuration/
 ```
 
-例如，如果域名为 contoso.com，则该 URL 将是：[https://login.chinacloudapi.cn/contoso.com/.well-known/openid-configuration/](https://login.chinacloudapi.cn/contoso.com/.well-known/openid-configuration/)  。 单击此 URL 以查看结果；第一行如下所示。 
+例如，如果域名为 contoso.com，则该 URL 将是：  [https://login.chinacloudapi.cn/contoso.com/.well-known/openid-configuration/](https://login.chinacloudapi.cn/contoso.com/.well-known/openid-configuration/)。 单击此 URL 以查看结果；第一行如下所示。 
 
 ```
 "authorization_endpoint":"https://login.chinacloudapi.cn/6babcaad-604b-40ac-a9d7-9fd97c0b779f/oauth2/authorize"
@@ -82,7 +82,7 @@ var blobPath = "https://kustosamplefiles.blob.core.chinacloudapi.cn/samplefiles/
 ```
 
 ## <a name="create-a-table-on-your-test-cluster"></a>在测试群集上创建表
-创建与 `StormEvents.csv` 文件中的数据架构匹配的名为 `StormEvents` 的表。
+创建与 `StormEvents` 文件中的数据架构匹配的名为 `StormEvents.csv` 的表。
 
 ```csharp
 var table = "StormEvents";

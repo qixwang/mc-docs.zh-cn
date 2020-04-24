@@ -8,10 +8,10 @@ origin.date: 06/25/2019
 md.date: 03/30/2020
 ms.author: v-tawe
 ms.openlocfilehash: ff45a353d8eafe89aaa0c341fd34021f91084e30
-ms.sourcegitcommit: 44d3fe59952847e5394bbe6c05bd6f333bb56345
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80522075"
 ---
 # <a name="about-mobile-apps-in-azure-app-service"></a><a name="getting-started"> </a>关于 Azure 应用服务中的移动应用

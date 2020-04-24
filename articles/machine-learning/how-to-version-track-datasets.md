@@ -13,10 +13,10 @@ origin.date: 11/04/2019
 ms.date: 03/16/2020
 ms.custom: ''
 ms.openlocfilehash: 27f184cf1cd44ebed82909cf28e4b38d6176eee6
-ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80343593"
 ---
 # <a name="version-and-track-datasets-in-experiments"></a>在试验中对数据集进行版本控制和跟踪
@@ -29,7 +29,7 @@ ms.locfileid: "80343593"
 * 当新数据可用于重新训练时
 * 应用不同的数据准备或特征工程方法时
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 对于本教程的内容，你需要：
 
@@ -53,7 +53,7 @@ ms.locfileid: "80343593"
 
 ### <a name="register-a-dataset-version"></a>注册数据集版本
 
-下面的代码通过将 `create_new_version` 参数设置为 `True` 来注册 `titanic_ds` 数据集的新版本。 如果没有向工作区注册现有 `titanic_ds` 数据集，则代码会创建一个名为 `titanic_ds` 的新数据集，并将其版本设置为 1。
+下面的代码通过将 `titanic_ds` 参数设置为 `create_new_version` 来注册 `True` 数据集的新版本。 如果没有向工作区注册现有 `titanic_ds` 数据集，则代码会创建一个名为 `titanic_ds` 的新数据集，并将其版本设置为 1。
 
 ```Python
 titanic_ds = titanic_ds.register(workspace = workspace,
@@ -64,7 +64,7 @@ titanic_ds = titanic_ds.register(workspace = workspace,
 
 ### <a name="retrieve-a-dataset-by-name"></a>按名称检索数据集
 
-默认情况下，`Dataset` 类中的 [get_by_name()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#get-by-name-workspace--name--version--latest--) 方法返回已注册到工作区的数据集的最新版本。 
+默认情况下，[ 类中的 ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#get-by-name-workspace--name--version--latest--)get_by_name()`Dataset` 方法返回已注册到工作区的数据集的最新版本。 
 
 下面的代码获取 `titanic_ds` 数据集的版本 1。
 
@@ -170,9 +170,9 @@ input_dataset = inputs[0]['dataset']
 input_dataset.to_path()
 ```
 
-还可以使用 https://ml.azure.com/ 从试验中查找 `input_datasets` 。 
+还可以使用 `input_datasets` 从试验中查找 https://ml.azure.com/ 。 
 
-下图展示了在 Azure 机器学习工作室中从何处查找试验的输入数据集。 对于此示例，请转到“试验”  窗格，并打开试验 `keras-mnist` 的特定运行的“属性”  选项卡。
+下图展示了在 Azure 机器学习工作室中从何处查找试验的输入数据集。 对于此示例，请转到“试验”  窗格，并打开试验  **的特定运行的“属性”** `keras-mnist`选项卡。
 
 ![输入数据集](./media/how-to-version-track-datasets/input-datasets.png)
 

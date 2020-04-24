@@ -9,10 +9,10 @@ origin.date: 10/04/2018
 ms.date: 04/06/2019
 ms.author: v-jay
 ms.openlocfilehash: d1ff3778611890711a2a3de3606ff6a128ab196e
-ms.sourcegitcommit: 5fb45da006859215edc8211481f13174aa43dbeb
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80634585"
 ---
 # <a name="create-a-route-based-vpn-gateway-using-cli"></a>使用 CLI 创建基于路由的 VPN 网关

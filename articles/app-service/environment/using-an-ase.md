@@ -9,10 +9,10 @@ ms.date: 03/30/2020
 ms.author: v-tawe
 ms.custom: seodec18
 ms.openlocfilehash: 5890b8d74f82bf6265f8467686169ca057cc414c
-ms.sourcegitcommit: 44d3fe59952847e5394bbe6c05bd6f333bb56345
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80522059"
 ---
 # <a name="use-an-app-service-environment"></a>使用应用服务环境
@@ -176,7 +176,7 @@ ASE 为其中的所有应用提供 1 TB 存储空间。 默认情况下，“隔
 
 如果你有多个 ASE，你可能希望先升级某些 ASE，再升级其他 ASE。 在 ASE“HostingEnvironment 资源管理器”对象中，可以设置 upgradePreference 的值。   可以使用模板、ARMClient 或 https://resources.azure.com 配置 upgradePreference 设置。  三个可能的值为：
 
-- **None**：Azure 将在非特定的批次中升级 ASE。 此值为默认值。
+- **无**：Azure 将在非特定的批次中升级 ASE。 此值为默认值。
 - **Early**：ASE 将在应用服务升级过程的上半阶段升级。
 - **Late**：ASE 将在应用服务升级过程的下半阶段升级。
 

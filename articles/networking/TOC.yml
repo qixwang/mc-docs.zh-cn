@@ -4,7 +4,7 @@
       href: networking-overview.md
     - name: 体系结构
       items:
-        - name: 具有多个网络路径的非对称路由
+        - name: 非对称路由与多个网络路径
           href: ../expressroute/expressroute-asymmetric-routing.md?toc=%2fnetworking%2ftoc.json
         - name: 网络安全最佳实践
           href: ../security/azure-security-network-security-best-practices.md?toc=%2fnetworking%2ftoc.json
@@ -50,7 +50,7 @@
           href: ../expressroute/expressroute-introduction.md?toc=%2fnetworking%2ftoc.json
 - name: 快速入门
   items:
-    - name: 创建首个虚拟网络
+    - name: 创建自己的首个虚拟网络
       href: ../virtual-network/quick-create-portal.md?toc=%2fnetworking%2ftoc.json
 - name: 如何
   items:
@@ -130,5 +130,5 @@
       href: 'https://www.azure.cn/pricing/calculator/'
     - name: 区域可用性
       href: 'https://www.azure.cn/home/features/products-by-region'
-    - name: Stack Overflow
+    - name: 堆栈溢出
       href: 'https://stackoverflow.com/questions/tagged/azure-virtual-network'

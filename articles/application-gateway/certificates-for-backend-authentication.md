@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 03/30/2020
 ms.author: v-junlch
 ms.openlocfilehash: 8b4652f008bac683462000c0617806449b817fe6
-ms.sourcegitcommit: 64584c0bf31b4204058ae2b4641356b904ccdd58
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80581811"
 ---
 # <a name="create-certificates-to-allow-the-backend-with-azure-application-gateway"></a>创建证书以允许 Azure 应用程序网关中的后端
@@ -26,7 +26,7 @@ ms.locfileid: "80581811"
 > - 从后端证书中导出身份验证证书（对于 v1 SKU）
 > - 从后端证书中导出受信任的根证书（适用于 v2 SKU）
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要允许应用程序网关中的后端实例，需要使用现有的后端证书来生成身份验证证书或受信任的根证书。 后端证书可与 TLS/SSL 证书相同，为了提高安全性，两者也可以不同。 应用程序网关不会提供任何机制用于创建或购买 TLS/SSL 证书。 对于测试，可以创建自签名证书，但不应将其用于生产工作负荷。 
 
@@ -38,7 +38,7 @@ ms.locfileid: "80581811"
 
 1. 若要获取证书 .cer 文件，请打开“管理用户证书”  。 找到该证书（通常位于“证书 - 当前用户”>“个人”>“证书”中），并单击右键。 单击“所有任务”  ，并单击“导出”  。 此操作将打开“证书导出向导”  。 如果在 Current User\Personal\Certificates 下找不到证书，可能会意外地打开“Certificates - Local Computer”而不是“Certificates - Current User”）。 如果想要使用 PowerShell 在当前用户范围内打开证书管理程序，请在控制台窗口中键入“certmgr”  。
 
-   ![导出](./media/certificates-for-backend-authentication/export.png)
+   ![Export](./media/certificates-for-backend-authentication/export.png)
 
 2. 在向导中，单击“下一步”  。
 

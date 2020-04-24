@@ -9,10 +9,10 @@ origin.date: 03/21/2020
 ms.date: 04/06/2020
 ms.author: v-jay
 ms.openlocfilehash: 40d2716f568d69fdcbb9952068b259a6fcd57772
-ms.sourcegitcommit: 5fb45da006859215edc8211481f13174aa43dbeb
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80634687"
 ---
 # <a name="working-remotely-network-virtual-appliance-nva-considerations-for-remote-work"></a>远程工作：用于远程工作的网络虚拟设备 (NVA) 的注意事项

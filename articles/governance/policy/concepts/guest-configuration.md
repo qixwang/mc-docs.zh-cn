@@ -6,10 +6,10 @@ origin.date: 11/04/2019
 ms.date: 03/30/2020
 ms.topic: conceptual
 ms.openlocfilehash: 462103eae975e3fe45724fe0c85c00236c122c6a
-ms.sourcegitcommit: 260800ede66f48c886d1426a0fac18b4d402b4f2
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80586785"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>了解 Azure Policy 的来宾配置

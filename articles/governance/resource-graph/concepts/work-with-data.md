@@ -6,10 +6,10 @@ origin.date: 03/20/2020
 ms.date: 03/30/2020
 ms.topic: conceptual
 ms.openlocfilehash: 89e68af1f82ca0d625a1da23ba8858291ae2edf8
-ms.sourcegitcommit: 260800ede66f48c886d1426a0fac18b4d402b4f2
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80586672"
 ---
 # <a name="working-with-large-azure-resource-data-sets"></a>处理大型 Azure 资源数据集
@@ -65,7 +65,7 @@ Search-AzGraph -Query "Resources | project name | order by name asc" -Skip 10
 如果有必要将结果集拆分为更小的记录集进行处理，或者结果集会超过允许的最大返回记录数（即 1000  ），请使用分页。 [REST API](https://docs.microsoft.com/rest/api/azureresourcegraph/resourcegraph(2018-09-01-preview)/resources/resources) **QueryResponse** 提供指示结果集已拆分的值：**resultTruncated** 和 **$skipToken**。
 resultTruncated  是布尔值，用于指示使用者返回的响应中是否还有其他记录。 如果 count  属性小于 totalRecords  属性，也可以确定此条件。 totalRecords  定义匹配查询的记录数。
 
- 如果由于没有 `id` 列而禁用了分页或无法进行分页，或者可用资源少于查询请求的资源，resultTruncated  为 true  。 如果 resultTruncated  为 true  ，则不会设置 $skipToken  属性。
+ 如果由于没有  **列而禁用了分页或无法进行分页，或者可用资源少于查询请求的资源，resultTruncated** **为 true**`id`。 如果 resultTruncated  为 true  ，则不会设置 $skipToken  属性。
 
 以下示例演示了如何使用 Azure CLI 和 Azure PowerShell **跳过**前 3000 条记录，返回这些跳过的记录之后的**前** 1000 条记录：
 

@@ -10,10 +10,10 @@ ms.date: 04/06/2020
 ms.author: v-jay
 ms.custom: include file
 ms.openlocfilehash: 61ad04f73cf34495329d763615b8672691246c6f
-ms.sourcegitcommit: 5fb45da006859215edc8211481f13174aa43dbeb
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80634405"
 ---
 ## <a name="windows-clients"></a><a name="windows"></a>Windows 客户端
@@ -165,7 +165,7 @@ ms.locfileid: "80634405"
     sudo openvpn –-config <name and path of your VPN profile file>&
     ```
 12. 要使用 GUI 进行连接，请转到系统设置。
-13. 单击 + 添加新的 VPN 连接  。
+13. 单击  **添加新的 VPN 连接+** 。
 14. 在“添加 VPN”下，选择“从文件导入...”  
 15. 浏览到配置文件，然后双击或选择“打开”。 
 16. 单击“添加 VPN”窗口上的“添加”   。
