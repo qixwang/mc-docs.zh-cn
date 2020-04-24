@@ -22221,11 +22221,6 @@
       "redirect_document_id": true
     },
     {
-      "source_path": "articles/active-directory/develop/v1-permissions-and-consent.md",
-      "redirect_url": "/active-directory/azuread-dev/v1-permissions-and-consent",
-      "redirect_document_id": true
-    },
-    {
       "source_path": "articles/active-directory/develop/v1-protocols-oauth-code.md",
       "redirect_url": "/active-directory/azuread-dev/v1-protocols-oauth-code",
       "redirect_document_id": true
@@ -23191,6 +23186,22 @@
       "redirect_document_id": false
     },
     {
+      "source_path": "articles/cognitive-services/speech-service/ship-application.md",
+      "redirect_url": "/cognitive-services/speech-service/speech-sdk"
+    },
+    {
+      "source_path": "articles/cognitive-services/speech-service/how-to-custom-speech-test-data.md",
+      "redirect_url": "/cognitive-services/speech-service/how-to-custom-speech-test-and-train"
+    },
+    {
+      "source_path": "articles/cognitive-services/Speech-Service/quickstart-voice-assistant-csharp-uwp.md",
+      "redirect_url": "/cognitive-services/speech-service/quickstarts/voice-assistants?pivots=programming-language-csharp&tabs=uwp"
+    },
+    {
+      "source_path": "articles/cognitive-services/speech-service/how-to-migrate-from-custom-speech-service.md",
+      "redirect_url": "/cognitive-services/speech-service",
+    },
+    {
       "source_path": "articles/sql-database/sql-database-features-index.yml",
       "redirect_url": "/sql-database/sql-database-features"
     },
@@ -23211,9 +23222,5 @@
       "redirect_url": "/sql-database/elastic-jobs-overview",
       "redirect_document_id": false
     }
-
-
-    
-
   ]
 }
