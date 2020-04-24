@@ -9,10 +9,10 @@ ms.topic: conceptual
 origin.date: 02/25/2020
 ms.date: 03/23/2020
 ms.openlocfilehash: f989ad13f98a2df08e5da94f4235ff53638f590d
-ms.sourcegitcommit: 32997a7d7585deaeb0ab7b8f928d397b18b343fa
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79295961"
 ---
 # <a name="plan-a-virtual-network-for-azure-hdinsight"></a>规划 Azure HDInsight 的虚拟网络
@@ -46,7 +46,7 @@ ms.locfileid: "79295961"
 
     HDInsight 必须与 Azure 数据中心的特定 IP 地址进行不受限制的通信。 此外还必须通过防火墙启用数个端口，以便进行客户端通信。 有关详细信息，请参阅[控制网络流量](#networktraffic)部分。
 
-## <a id="existingvnet"></a>将 HDInsight 添加到现有的虚拟网络
+## <a name="add-hdinsight-to-an-existing-virtual-network"></a><a id="existingvnet"></a>将 HDInsight 添加到现有的虚拟网络
 
 使用本部分中的步骤，了解如何将 HDInsight 添加到现有 Azure 虚拟网络。
 
@@ -110,7 +110,7 @@ ms.locfileid: "79295961"
    > [!IMPORTANT]  
    > 向虚拟网络添加 HDInsight 是一项可选的配置步骤。 请确保在配置群集时选择虚拟网络。
 
-## <a id="multinet"></a>连接多个网络
+## <a name="connecting-multiple-networks"></a><a id="multinet"></a>连接多个网络
 
 多网络配置的最大难题是在网络之间进行名称解析。
 
@@ -201,7 +201,7 @@ Azure 为安装在虚拟网络中的 Azure 服务提供名称解析。 此内置
 
 2. 若要确定服务可用的节点和端口，请参阅 [HDInsight 的 Hadoop 服务所用的端口](./hdinsight-hadoop-port-settings-for-services.md)一文。
 
-## <a id="networktraffic"></a> 控制网络流量
+## <a name="controlling-network-traffic"></a><a id="networktraffic"></a> 控制网络流量
 
 ### <a name="techniques-for-controlling-inbound-and-outbound-traffic-to-hdinsight-clusters"></a>控制 HDInsight 群集的入站和出站流量的技术
 
@@ -237,11 +237,11 @@ Azure 为安装在虚拟网络中的 Azure 服务提供名称解析。 此内置
 
 强制隧道是用户定义的路由配置，用于将子网中的所有流量强制流向特定的网络或位置，例如本地网络。 HDInsight 不  支持将流量通过强制隧道传输到本地网络。 
 
-## <a id="hdinsight-ip"></a> 所需 IP 地址
+## <a name="required-ip-addresses"></a><a id="hdinsight-ip"></a> 所需 IP 地址
 
 如果使用网络安全组或用户定义的路由来控制流量，请参阅 [HDInsight 管理 IP 地址](hdinsight-management-ip-addresses.md)。
     
-## <a id="hdinsight-ports"></a> 所需端口
+## <a name="required-ports"></a><a id="hdinsight-ports"></a> 所需端口
 
 如果计划使用**防火墙**并在特定端口上从外部访问群集，则需要允许你的方案所需的那些端口上的流量。 默认情况下，只要允许上一部分中介绍的 Azure 管理流量在端口 443 上到达群集，则不需要特地将端口列入允许列表。
 

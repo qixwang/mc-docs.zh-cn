@@ -6,10 +6,10 @@ origin.date: 01/23/2020
 ms.date: 02/24/2020
 ms.author: v-yeche
 ms.openlocfilehash: 89ab20b6db500fff20101691de9f5d99e0efcf3c
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79293281"
 ---
 # <a name="about-recovery-plans"></a>关于恢复计划
@@ -66,7 +66,7 @@ ms.locfileid: "79293281"
     * 在 Azure VM 上创建一个公共 IP 地址。
     * 将一个网络安全组分配给 Azure VM 的网络适配器。
     * 将负载均衡器添加到可用性集。
-* **故障转移后 VM 内的任务**：这些任务通常重新配置在计算机上运行的应用，让应用能够在新的环境中继续正常运行。 例如：
+* **故障转移后 VM 内的任务**：这些任务通常重新配置在计算机上运行的应用，让应用程序能够在新的环境中继续正常运行。 例如：
     * 在计算机内修改数据库连接字符串。
     * 更改 Web 服务器配置或规则。
 

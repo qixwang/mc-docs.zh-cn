@@ -9,10 +9,10 @@ ms.date: 8/4/2019
 ms.author: v-lingwu
 ms.subservice: application-insights
 ms.openlocfilehash: b3b3ad9cab1e33f972da06606c53bc9c5ab80846
-ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/17/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79452365"
 ---
 # <a name="application-insights-log-based-metrics"></a>基于 Application Insights 日志的指标

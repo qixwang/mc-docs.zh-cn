@@ -8,10 +8,10 @@ origin.date: 05/19/2019
 ms.date: 06/19/2019
 ms.author: v-lingwu
 ms.openlocfilehash: b8bb130dbe3481c0caa31e02c8d6226984134eb0
-ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/17/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79452412"
 ---
 # <a name="manage-log-analytics-workspace-in-azure-monitor-using-powershell"></a>使用 PowerShell 管理 Azure Monitor 中的 Log Analytics 工作区
@@ -37,7 +37,7 @@ ms.locfileid: "79452412"
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 这些示例适用于 Az.OperationalInsights 模块 1.0.0 或更高版本。
 
 
@@ -196,7 +196,7 @@ New-AzOperationalInsightsCustomLogDataSource -ResourceGroupName $ResourceGroup -
 ## <a name="configuring-log-analytics-to-send-azure-diagnostics"></a>将 Log Analytics 配置为发送 Azure 诊断
 要对 Azure 资源进行无代理监视，则需要为资源启用 Azure 诊断，并将其配置为写入到 Log Analytics 工作区。 此方法将数据直接发送到工作区并且不要求将数据写入到存储帐户。 支持的资源包括：
 
-| 资源类型 | 日志 | 指标 |
+| 资源类型 | 日志 | 度量值 |
 | --- | --- | --- |
 | 应用程序网关    | 是 | 是 |
 | 自动化帐户     | 是 | |
@@ -206,7 +206,7 @@ New-AzOperationalInsightsCustomLogDataSource -ResourceGroupName $ResourceGroup -
 | SQL 弹性池        |     | 是 |
 | 事件中心命名空间     |     | 是 |
 | IoT 中心                |     | 是 |
-| 密钥保管库               | 是 | |
+| Key Vault               | 是 | |
 | 负载均衡器          | 是 | |
 | 逻辑应用              | 是 | 是 |
 | 网络安全组 | 是 | |

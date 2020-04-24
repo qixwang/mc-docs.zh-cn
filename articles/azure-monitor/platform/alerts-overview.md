@@ -8,10 +8,10 @@ origin.date: 01/28/2018
 ms.date: 9/23/2019
 ms.author: v-lingwu
 ms.openlocfilehash: bb928893023cb5c63357bd84e0eaab38746b76d7
-ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/17/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79452379"
 ---
 # <a name="overview-of-alerts-in-21vianet-azure"></a>世纪互联 Azure 中的警报概述 

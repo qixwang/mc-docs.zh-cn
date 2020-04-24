@@ -9,10 +9,10 @@ origin.date: 09/20/2019
 ms.date: 11/04/2019
 ms.author: v-lingwu
 ms.openlocfilehash: 4ba7b9cc9ee2bd1f85b46e4313f239f4b74c359a
-ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/17/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79452496"
 ---
 # <a name="designing-your-azure-monitor-logs-deployment"></a>设计 Azure Monitor 日志部署

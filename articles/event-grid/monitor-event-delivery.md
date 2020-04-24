@@ -10,10 +10,10 @@ origin.date: 01/23/2020
 ms.author: v-lingwu
 ms.date: 3/16/2020
 ms.openlocfilehash: c72e20ff64b882bc562ead7e700db1919680a439
-ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/17/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79452533"
 ---
 # <a name="monitor-event-grid-message-delivery"></a>监视事件网格消息传送 

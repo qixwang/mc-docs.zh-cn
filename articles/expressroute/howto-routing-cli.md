@@ -17,10 +17,10 @@ origin.date: 04/24/2019
 ms.author: v-yiso
 ms.date: 12/02/2019
 ms.openlocfilehash: 9e24df4524f65575c7fad8d3dad86ab33a67512c
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79292892"
 ---
 # <a name="create-and-modify-peering-for-an-expressroute-circuit-using-cli"></a>使用 CLI 创建和修改 ExpressRoute 线路的对等互连
@@ -44,7 +44,7 @@ ms.locfileid: "79292892"
 
 可以为 ExpressRoute 线路配置一到三个对等互连（Azure 专用、Azure 公共和 Microsoft）。 可以按照所选的任意顺序配置对等互连。 但是，必须确保一次只完成一个对等互连的配置。 有关路由域和对等互连的详细信息，请参阅 [ExpressRoute 路由域](expressroute-circuit-peerings.md)。
 
-## <a name="msft"></a>Microsoft 对等互连
+## <a name="microsoft-peering"></a><a name="msft"></a>Microsoft 对等互连
 
 本文介绍如何为 ExpressRoute 线路创建、获取、更新和删除 Microsoft 对等互连配置。
 
@@ -122,7 +122,7 @@ ms.locfileid: "79292892"
    az network express-route peering create --circuit-name MyCircuit --peer-asn 100 --primary-peer-subnet 123.0.0.0/30 -g ExpressRouteResourceGroup --secondary-peer-subnet 123.0.0.4/30 --vlan-id 300 --peering-type MicrosoftPeering --advertised-public-prefixes 123.1.0.0/24
    ```
 
-### <a name="getmsft"></a>查看 Microsoft 对等互连详细信息
+### <a name="to-view-microsoft-peering-details"></a><a name="getmsft"></a>查看 Microsoft 对等互连详细信息
 
 可以使用以下示例来获取配置详细信息：
 
@@ -170,7 +170,7 @@ az network express-route peering show -g ExpressRouteResourceGroup --circuit-nam
 }
 ```
 
-### <a name="updatemsft"></a>更新 Microsoft 对等互连配置
+### <a name="to-update-microsoft-peering-configuration"></a><a name="updatemsft"></a>更新 Microsoft 对等互连配置
 
 可以更新配置的任何部分。 在以下示例中，线路的播发前缀将从 123.1.0.0/24 更新为124.1.0.0/24：
 
@@ -178,13 +178,13 @@ az network express-route peering show -g ExpressRouteResourceGroup --circuit-nam
 az network express-route peering update --circuit-name MyCircuit -g ExpressRouteResourceGroup --peering-type MicrosoftPeering --advertised-public-prefixes 124.1.0.0/24
 ```
 
-### <a name="addIPv6msft"></a>将 IPv6 Microsoft 对等互连设置添加到现有的 IPv4 配置
+### <a name="to-add-ipv6-microsoft-peering-settings-to-an-existing-ipv4-configuration"></a><a name="addIPv6msft"></a>将 IPv6 Microsoft 对等互连设置添加到现有的 IPv4 配置
 
 ```azurecli-interactive
 az network express-route peering update -g ExpressRouteResourceGroup --circuit-name MyCircuit --peering-type MicrosoftPeering --ip-version ipv6 --primary-peer-subnet 2002:db00::/126 --secondary-peer-subnet 2003:db00::/126 --advertised-public-prefixes 2002:db00::/126
 ```
 
-### <a name="deletemsft"></a>删除 Microsoft 对等互连
+### <a name="to-delete-microsoft-peering"></a><a name="deletemsft"></a>删除 Microsoft 对等互连
 
 可以运行以下示例来删除对等互连配置：
 
@@ -192,7 +192,7 @@ az network express-route peering update -g ExpressRouteResourceGroup --circuit-n
 az network express-route peering delete -g ExpressRouteResourceGroup --circuit-name MyCircuit --name MicrosoftPeering
 ```
 
-## <a name="private"></a>Azure 专用对等互连
+## <a name="azure-private-peering"></a><a name="private"></a>Azure 专用对等互连
 
 本文介绍了如何为 ExpressRoute 线路创建、获取、更新和删除 Azure 专用对等互连配置。
 
@@ -273,7 +273,7 @@ az network express-route peering delete -g ExpressRouteResourceGroup --circuit-n
    > 
    > 
 
-### <a name="getprivate"></a>查看 Azure 专用对等互连详细信息
+### <a name="to-view-azure-private-peering-details"></a><a name="getprivate"></a>查看 Azure 专用对等互连详细信息
 
 可以使用以下示例来获取配置详细信息：
 
@@ -309,7 +309,7 @@ az network express-route peering show -g ExpressRouteResourceGroup --circuit-nam
 }
 ```
 
-### <a name="updateprivate"></a>更新 Azure 专用对等互连配置
+### <a name="to-update-azure-private-peering-configuration"></a><a name="updateprivate"></a>更新 Azure 专用对等互连配置
 
 可以使用以下示例来更新配置的任何部分。 在此示例中，线路的 VLAN ID 将从 100 更新为 500。
 
@@ -317,7 +317,7 @@ az network express-route peering show -g ExpressRouteResourceGroup --circuit-nam
 az network express-route peering update --vlan-id 500 -g ExpressRouteResourceGroup --circuit-name MyCircuit --name AzurePrivatePeering
 ```
 
-### <a name="deleteprivate"></a>删除 Azure 专用对等互连
+### <a name="to-delete-azure-private-peering"></a><a name="deleteprivate"></a>删除 Azure 专用对等互连
 
 可以运行以下示例来删除对等互连配置：
 
@@ -330,7 +330,7 @@ az network express-route peering update --vlan-id 500 -g ExpressRouteResourceGro
 az network express-route peering delete -g ExpressRouteResourceGroup --circuit-name MyCircuit --name AzurePrivatePeering
 ```
 
-## <a name="public"></a>Azure 公共对等互连
+## <a name="azure-public-peering"></a><a name="public"></a>Azure 公共对等互连
 
 本文介绍了如何为 ExpressRoute 线路创建、获取、更新和删除 Azure 公共对等互连配置。
 
@@ -409,7 +409,7 @@ az network express-route peering delete -g ExpressRouteResourceGroup --circuit-n
    > [!IMPORTANT]
    > 请确保将 AS 编号指定为对等互连 ASN，而不是客户 ASN。
 
-### <a name="getpublic"></a>查看 Azure 公共对等互连详细信息
+### <a name="to-view-azure-public-peering-details"></a><a name="getpublic"></a>查看 Azure 公共对等互连详细信息
 
 可以使用以下示例来获取配置详细信息：
 
@@ -444,7 +444,7 @@ az network express-route peering show -g ExpressRouteResourceGroup --circuit-nam
 }
 ```
 
-### <a name="updatepublic"></a>更新 Azure 公共对等互连配置
+### <a name="to-update-azure-public-peering-configuration"></a><a name="updatepublic"></a>更新 Azure 公共对等互连配置
 
 可以使用以下示例来更新配置的任何部分。 在此示例中，线路的 VLAN ID 将从 200 更新为 600。
 
@@ -452,7 +452,7 @@ az network express-route peering show -g ExpressRouteResourceGroup --circuit-nam
 az network express-route peering update --vlan-id 600 -g ExpressRouteResourceGroup --circuit-name MyCircuit --name AzurePublicPeering
 ```
 
-### <a name="deletepublic"></a>删除 Azure 公共对等互连
+### <a name="to-delete-azure-public-peering"></a><a name="deletepublic"></a>删除 Azure 公共对等互连
 
 可以运行以下示例来删除对等互连配置：
 

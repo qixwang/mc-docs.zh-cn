@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: diberry
 ms.openlocfilehash: f11e97d6f19e327ef4f433ad4cb35493c90fe157
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79292727"
 ---
 # <a name="machine-learned-features"></a>机器习得的特征 
@@ -86,7 +86,7 @@ ms.locfileid: "79292727"
 
 例如，如果检测到街道地址实体 (A)，则查找街道地址 (A) 会将权重添加到发货地址实体 (B) 的预测。 
 
-## <a name="best-practices"></a>最佳实践
+## <a name="best-practices"></a>最佳做法
 了解[最佳实践](luis-concept-best-practices.md)。
 
 ## <a name="next-steps"></a>后续步骤

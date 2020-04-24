@@ -13,10 +13,10 @@ origin.date: 12/09/2019
 ms.date: 1/2/2020
 ms.author: v-lingwu
 ms.openlocfilehash: ef73ff1dd10440a1804de81e38a7cadf60c74b78
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79292129"
 ---
 # <a name="language-and-region-support-for-luis"></a>LUIS 的语言和区域支持
@@ -43,7 +43,7 @@ LUIS 理解以下语言：
 | Hindi | `hi-IN`|-|-|-|-|
 | 意大利语 |`it-IT` |✔| ✔ |✔|✔|
 | *[日语](#japanese-support-notes) |`ja-JP` |✔| ✔ |✔|仅关键短语|
-| 朝鲜语 |`ko-KR` |✔|   -   |-|仅关键短语|
+| 韩语 |`ko-KR` |✔|   -   |-|仅关键短语|
 | 葡萄牙语（巴西） |`pt-BR` |✔| ✔ |✔ |并非所有亚区域性|
 | 西班牙语(西班牙) |`es-ES` |✔| ✔ |✔|✔|
 | 西班牙语（墨西哥）|`es-MX` |-|  -   |✔|✔|
@@ -74,14 +74,14 @@ LUIS 理解以下语言：
 |阿拉伯语|||||
 |中文||✔||✔|
 |荷兰语|||✔|✔|
-|英语 (en-us)|✔ ||||
+|美国英语|✔ ||||
 |法语 (fr-FR)|✔||||
 |法语 (fr-CA)|✔||||
 |德语|||✔|✔|
 | Hindi |✔|-|-|-|-|
 |意大利语|✔||||
 |日语||||✔|
-|朝鲜语||✔||✔|
+|韩语||✔||✔|
 |葡萄牙语（巴西）|✔||||
 |西班牙语 (es-ES)|✔||||
 |西班牙语 (es-MX)|✔||||

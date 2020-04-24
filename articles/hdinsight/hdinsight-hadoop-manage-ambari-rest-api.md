@@ -11,10 +11,10 @@ origin.date: 06/07/2019
 ms.date: 11/11/2019
 ms.author: v-yiso
 ms.openlocfilehash: c51cb99e90ceecdfeeb8a80d885bb200c934311e
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79292072"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-rest-api"></a>使用 Apache Ambari REST API 管理 HDInsight 群集
@@ -23,7 +23,7 @@ ms.locfileid: "79292072"
 
 了解如何使用 Apache Ambari REST API 管理和监视 Azure HDInsight 中的 Apache Hadoop 群集。
 
-## <a id="whatis"></a>什么是 Apache Ambari
+## <a name="what-is-apache-ambari"></a><a id="whatis"></a>什么是 Apache Ambari
 [Apache Ambari](https://ambari.apache.org) 提供基于 [REST API](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md) 的简单易用型 Web UI 来简化 Hadoop 群集的管理和监视。  基于 Linux 的 HDInsight 群集已按默认提供 Ambari。
 
 ## <a name="prerequisites"></a>先决条件
@@ -97,7 +97,7 @@ $respObj = ConvertFrom-Json $resp.Content
 $respObj.Clusters.health_report
 ```   
 
-### <a name="example-get-the-fqdn-of-cluster-nodes"></a>获取群集节点的 FQDN
+### <a name="get-the-fqdn-of-cluster-nodes"></a><a name="example-get-the-fqdn-of-cluster-nodes"></a>获取群集节点的 FQDN
 
 使用 HDInsight 时，可能需要知道群集节点的完全限定域名 (FQDN)。 可使用以下示例轻松检索群集中各个节点的 FQDN：
 
@@ -157,7 +157,7 @@ $respObj = ConvertFrom-Json $resp.Content
 $respObj.host_components.HostRoles.host_name
 ```
 
-### <a name="example-get-the-internal-ip-address-of-cluster-nodes"></a>获取群集节点的内部 IP 地址
+### <a name="get-the-internal-ip-address-of-cluster-nodes"></a><a name="example-get-the-internal-ip-address-of-cluster-nodes"></a>获取群集节点的内部 IP 地址
 
 本部分中的示例所返回的 IP 地址不可直接通过 Internet 进行访问。 仅可在包含 HDInsight 群集的 Azure 虚拟网络内部对其进行访问。
 
@@ -252,7 +252,7 @@ $respObj.items.configurations.properties.'fs.defaultFS'
 > [Azure PowerShell](/powershell/azure/overview) 提供的 [Get-AzHDInsightCluster](https://docs.microsoft.com/powershell/module/az.hdinsight/get-azhdinsightcluster) cmdlet 也返回群集的存储信息。
 
 
-### <a name="get-all-configurations"></a>获取所有配置
+### <a name="get-all-configurations"></a><a name="get-all-configurations"></a>获取所有配置
 
 获取可用于群集的配置。
 

@@ -10,10 +10,10 @@ origin.date: 10/29/2018
 ms.author: v-yiso
 ms.date: 07/15/2019
 ms.openlocfilehash: 8662b4f98336e34e89a3257498f19dfe0bf037b7
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79293434"
 ---
 # <a name="iot-hub-query-language-for-device-and-module-twins-jobs-and-message-routing"></a>用于设备和模块孪生、作业和消息路由的 IoT 中心查询语言
@@ -81,7 +81,7 @@ IoT 中心提供类似于 SQL 的强大语言，用于检索有关[设备孪生]
 }
 ```
 
-### <a name="device-twin-queries"></a>设备孪生查询
+### <a name="device-twin-queries"></a><a name="device-twin-queries"></a>设备孪生查询
 
 IoT 中心将设备孪生公开为名为**设备**的文档集合。 例如，以下查询将检索设备孪生的整个集：
 

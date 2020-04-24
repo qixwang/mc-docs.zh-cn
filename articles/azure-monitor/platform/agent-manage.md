@@ -8,10 +8,10 @@ origin.date: 06/14/2019
 ms.date: 07/14/2019
 ms.author: v-lingwu
 ms.openlocfilehash: 5e3c8ae3286544dc495710bb6783710809f4359a
-ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/17/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79452581"
 ---
 # <a name="managing-and-maintaining-the-log-analytics-agent-for-windows-and-linux"></a>管理并维护 Windows 和 Linux 的 Log Analytics 代理
@@ -34,7 +34,7 @@ ms.locfileid: "79452581"
 
 可以通过执行以下步骤从你的 Log Analytics 工作区下载 Windows 代理的最新版本。
 
-1. 登录到 [Azure 门户](https://portal.azure.cn)。
+1. 登录 [Azure 门户](https://portal.azure.cn)。
 
 2. 在 Azure 门户中，单击“所有服务”  。 在资源列表中，键入“Log Analytics”  。 开始键入时，会根据输入筛选该列表。 选择“Log Analytics 工作区”  。
 
@@ -97,7 +97,7 @@ ms.locfileid: "79452581"
 
 4. 若要删除工作区，请选中该工作区，然后单击“删除”  。 如果还需代理停止向任何其他工作区报告，请重复此步骤。
 5. 若要添加工作区，请单击“添加”，然后在“添加 Log Analytics 工作区”对话框中粘贴工作区 ID 和工作区密钥（主密钥）   。 如果计算机应向 Azure 中国云中的 Log Analytics 工作区报告，请从“Azure 云”下拉列表中选择“Azure 中国政府”。
-6.  单击“确定”以保存你的更改。
+6. 单击 **“确定”** 保存所做的更改。
 
 #### <a name="remove-a-workspace-using-powershell"></a>使用 PowerShell 删除工作区
 
@@ -236,7 +236,7 @@ $healthServiceSettings.SetProxyInfo($ProxyDomainName, $ProxyUserName, $cred.GetN
 3. 在“程序和功能”中依次单击“Microsoft Monitoring Agent”、“卸载”、“是”     。
 
 >[!NOTE]
->还可以通过双击“MMASetup-\<platform\>.exe”运行代理安装向导，该程序可从 Azure 门户中的工作区下载  。
+>还可以通过双击“MMASetup-**platform\<.exe”运行代理安装向导，该程序可从 Azure 门户中的工作区下载\>** 。
 
 #### <a name="uninstall-from-the-command-line"></a>从命令行卸载
 下载的代理文件是使用 IExpress 创建的独立安装包。 代理和支持文件的安装程序包含在该包中，需要提取才能使用以下示例中所示的命令行正确卸载。
@@ -284,7 +284,7 @@ $healthServiceSettings.SetProxyInfo($ProxyDomainName, $ProxyUserName, $cred.GetN
 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
 
-1. 编辑 `/etc/opt/omi/conf/omiserver.conf`
+1. 编辑 `/etc/opt/omi/conf/omiserver.conf` 文件
 
 2. 确保以 `httpsport=` 开头的行定义了端口 1270。 例如：`httpsport=1270`
 

@@ -8,10 +8,10 @@ ms.date: 08/03/2018
 ms.author: v-lingwu
 ms.assetid: b80b3a41-87bf-49ca-8ef2-68e43c04c1a3
 ms.openlocfilehash: e27618859ff15950dd6ac2b2edacb9881f5fbb51
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79291461"
 ---
 # <a name="back-up-an-azure-vm-using-azure-backup-via-rest-api"></a>通过 REST API 使用 Azure 备份来备份 Azure VM
@@ -105,13 +105,13 @@ GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{
 
 *GET* URI 包含所有必需的参数。 无需额外的请求正文。
 
-#### <a name="responses-1"></a>响应
+#### <a name="responses"></a><a name="responses-1"></a>响应
 
 |名称  |类型  |说明  |
 |---------|---------|---------|
 |200 正常     | [WorkloadProtectableItemResourceList](https://docs.microsoft.com/rest/api/backup/backupprotectableitems/list#workloadprotectableitemresourcelist)        |       OK |
 
-#### <a name="example-responses-1"></a>示例响应
+#### <a name="example-responses"></a><a name="example-responses-1"></a>示例响应
 
 提交 GET 请求后，将返回 200（确定）响应  。
 
@@ -326,7 +326,7 @@ POST https://management.chinacloudapi.cn/Subscriptions/00000000-0000-0000-0000-0
 |---------|---------|---------|
 |202 已接受     |         |     已接受    |
 
-##### <a name="example-responses-3"></a>示例响应
+##### <a name="example-responses"></a><a name="example-responses-3"></a>示例响应
 
 一旦提交按需备份的 POST 请求后，初始响应为 202（已接受），其中包含 location 标头或 Azure-async 标头  。
 
@@ -436,7 +436,7 @@ DELETE https://management.chinacloudapi.cn/Subscriptions/{subscriptionId}/resour
 DELETE https://management.chinacloudapi.cn//Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/Microsoft.RecoveryServices/vaults/testVault/backupFabrics/Azure/protectionContainers/iaasvmcontainer;iaasvmcontainerv2;testRG;testVM/protectedItems/vm;iaasvmcontainerv2;testRG;testVM?api-version=2016-12-01
 ```
 
-### <a name="responses-2"></a>响应
+### <a name="responses"></a><a name="responses-2"></a>响应
 
 DELETE 操作是一种[异步操作](/azure-resource-manager/resource-manager-async-operations)  。 这意味着，此操作会创建另一个需要单独跟踪的操作。
 

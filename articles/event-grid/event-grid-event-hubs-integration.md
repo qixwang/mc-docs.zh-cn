@@ -10,10 +10,10 @@ ms.date: 11/05/2019
 origin.date: 3/16/2020
 ms.author: v-lingwu
 ms.openlocfilehash: 30a0c8e18fbe8adacba248b00b66af886b9f1348
-ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/17/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79452542"
 ---
 # <a name="tutorial-stream-big-data-into-a-data-warehouse"></a>教程：将大数据流式传输到数据仓库

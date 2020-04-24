@@ -9,10 +9,10 @@ ms.date: 12/31/2019
 ms.author: v-lingwu
 ms.subservice: metrics
 ms.openlocfilehash: de2f9ae5b5361a73a7456bf94be0df436bd5bd05
-ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/17/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79452425"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Azure 监视器支持的指标

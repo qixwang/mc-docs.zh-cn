@@ -16,10 +16,10 @@ origin.date: 01/04/2018
 ms.date: 11/25/2019
 ms.author: v-yeche
 ms.openlocfilehash: fd822207dccb3be9c987d6f7b7fe01c6cf491af8
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79293341"
 ---
 # <a name="create-a-windows-virtual-machine-with-accelerated-networking-using-azure-powershell"></a>使用 Azure PowerShell 创建具有加速网络的 Windows 虚拟机

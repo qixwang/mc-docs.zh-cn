@@ -15,15 +15,15 @@ origin.date: 11/08/2019
 ms.date: 03/02/2020
 ms.author: v-yiso
 ms.openlocfilehash: 24ac0f78de9389e323e1de4c6d75c7fa1eeb60c2
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79291567"
 ---
 # <a name="troubleshoot-apache-storm-by-using-azure-hdinsight"></a>使用 Azure HDInsight 对 Apache Storm 进行故障排除
 
-了解处理 [Apache Ambari](https://ambari.apache.org/) 中的 [Apache Storm](https://storm.apache.org/) 有效负载时的最常见问题及其解决方法。
+了解处理 [Apache Ambari](https://storm.apache.org/) 中的 [Apache Storm](https://ambari.apache.org/) 有效负载时的最常见问题及其解决方法。
 
 ## <a name="how-do-i-access-the-storm-ui-on-a-cluster"></a>如何在群集上访问 Storm UI？
 可以使用两个选项从浏览器访问 Storm UI：
@@ -142,7 +142,7 @@ Storm 工作节点运行以下服务：
 ### <a name="source-code-examples"></a>源代码示例
 参阅有关如何在 Azure HDInsight 群集上使用 Apache Storm 拓扑（以 Java 编写）从 Azure 事件中心读取和写入数据的[示例](https://github.com/Azure-Samples/hdinsight-java-storm-eventhub)。
  
-## <a name="how-do-i-locate-storm-log4j-configuration-files-on-clusters"></a> 如何在群集上查找 Storm Log4J 2 配置文件？
+## <a name="how-do-i-locate-storm-log4j-2-configuration-files-on-clusters"></a><a name="how-do-i-locate-storm-log4j-configuration-files-on-clusters"></a> 如何在群集上查找 Storm Log4J 2 配置文件？
  
 识别 Storm 服务的 [Apache Log4j 2](https://logging.apache.org/log4j/2.x/) 配置文件。
  

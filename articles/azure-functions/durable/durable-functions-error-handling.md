@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 02/18/2020
 ms.author: v-junlch
 ms.openlocfilehash: f8086f37bd5e1844e5575bfdf5f13b0fee71e89f
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79291261"
 ---
 # <a name="handling-errors-in-durable-functions-azure-functions"></a>处理 Durable Functions 中的错误 (Azure Functions)

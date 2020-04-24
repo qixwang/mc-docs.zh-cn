@@ -10,10 +10,10 @@ ms.custom: H1Hack27Feb2017
 ms.date: 03/23/2020
 ms.author: v-yiso
 ms.openlocfilehash: c01ee7a44612c6ea14518822b3899f5d9779f79a
-ms.sourcegitcommit: 32997a7d7585deaeb0ab7b8f928d397b18b343fa
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79295930"
 ---
 # <a name="understand-and-invoke-direct-methods-from-iot-hub"></a>了解和调用 IoT 中心的直接方法

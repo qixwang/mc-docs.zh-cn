@@ -7,10 +7,10 @@ origin.date: 01/04/2019
 ms.date: 01/06/2020
 ms.author: v-yeche
 ms.openlocfilehash: 0f83fe6bb77d313b1fc22210a125851e08638f17
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79291603"
 ---
 # <a name="manage-encrypted-secrets-in-service-fabric-applications"></a>管理 Service Fabric 应用程序中的已加密机密
@@ -29,7 +29,7 @@ ms.locfileid: "79291603"
 ## <a name="specify-encrypted-secrets-in-an-application"></a>在应用程序中指定加密的机密
 上一步骤介绍了如何使用证书来加密机密，并生成要在应用程序中使用的 base-64 编码的字符串。 可以在服务的 Settings.xml 中将此 base-64 编码的字符串指定为加密的[参数][parameters-link]，也可以在服务的 ServiceManifest.xml 中将其指定为加密的[环境变量][environment-variables-link]。
 
-通过在服务的 Settings.xml 配置文件中将 `IsEncrypted` 属性设置为 `true` 来指定加密的[参数][parameters-link]：
+通过在服务的 Settings.xml 配置文件中将 [ 属性设置为 ][parameters-link] 来指定加密的`IsEncrypted`参数`true`：
 
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>
@@ -39,7 +39,7 @@ ms.locfileid: "79291603"
   </Section>
 </Settings>
 ```
-通过在服务的 ServiceManifest.xml 文件中将 `Type` 属性设置为 `Encrypted` 来指定加密的[环境变量][environment-variables-link]：
+通过在服务的 ServiceManifest.xml 文件中将 [ 属性设置为 ][environment-variables-link] 来指定加密的`Type`环境变量`Encrypted`：
 ```xml
 <CodePackage Name="Code" Version="1.0.0">
   <EnvironmentVariables>
@@ -59,7 +59,7 @@ ms.locfileid: "79291603"
 </ApplicationManifest>
 ```
 
-### <a name="inject-application-secrets-into-application-instances"></a>将应用程序机密注入应用程序实例
+### <a name="inject-application-secrets-into-application-instances"></a>将应用程序机密插入应用程序实例
 理想情况下，部署到不同环境的过程应尽可能自动化。 这可以通过在生成环境中执行机密加密，并在创建应用程序实例时提供加密机密作为参数来实现。
 
 #### <a name="use-overridable-parameters-in-settingsxml"></a>在 Settings.xml 中使用可重写参数
@@ -95,15 +95,15 @@ Settings.xml 配置文件允许使用可在创建应用程序时提供的可重�
   </ServiceManifestImport>
 ```
 
-现在，可以在创建应用程序实例时将值指定为*应用程序参数* 。 可以使用 PowerShell 或 C# 编写用于创建应用程序实例的脚本，方便在生成过程中轻松集成。
+现在，可以在创建应用程序实例时会值指定为*应用程序参数*。 可以使用 PowerShell 或 C# 编写用于创建应用程序实例的脚本，方便在生成过程中轻松集成。
 
-使用 PowerShell 时，参数将以[哈希表](https://technet.microsoft.com/library/ee692803.aspx)的形式提供给 `New-ServiceFabricApplication`：
+使用 PowerShell 时，参数以`New-ServiceFabricApplication`哈希表[的形式提供给 ](https://technet.microsoft.com/library/ee692803.aspx)：
 
 ```powershell
 New-ServiceFabricApplication -ApplicationName fabric:/MyApp -ApplicationTypeName MyAppType -ApplicationTypeVersion 1.0.0 -ApplicationParameter @{"MySecret" = "I6jCCAeYCAxgFhBXABFxzAt ... gNBRyeWFXl2VydmjZNwJIM="}
 ```
 
-使用 C# 时，应用程序参数将以 `NameValueCollection` 的形式在 `ApplicationDescription` 中指定：
+使用 C# 时，应用程序参数以 `ApplicationDescription` 的形式在 `NameValueCollection` 中指定：
 
 ```csharp
 FabricClient fabricClient = new FabricClient();

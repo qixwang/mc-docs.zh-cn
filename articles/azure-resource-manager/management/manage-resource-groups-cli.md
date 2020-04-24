@@ -7,10 +7,10 @@ origin.date: 02/11/2019
 ms.date: 01/06/2020
 ms.author: v-yeche
 ms.openlocfilehash: 789706745c83e86022cb35fd536be8154f0f2c90
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79291854"
 ---
 <!--Verfiy successfully-->
@@ -25,9 +25,9 @@ ms.locfileid: "79291854"
 
 ## <a name="what-is-a-resource-group"></a>什么是资源组
 
-资源组是用于保存 Azure 解决方案相关资源的容器。 资源组可以包含解决方案的所有资源，也可以只包含想要作为组来管理的资源。 根据对组织有利的原则，决定如何将资源分配到资源组。 通常可将共享相同生命周期的资源添加到同一资源组，以便将其作为一个组轻松部署、更新和删除。
+资源组是用于保存 Azure 解决方案相关资源的容器。 资源组可以包含解决方案的所有资源，也可以只包含以组的形式进行管理的资源。 根据对组织有利的原则，决定如何将资源分配到资源组。 通常可将共享相同生命周期的资源添加到同一资源组，以便将其作为一个组轻松部署、更新和删除。
 
-资源组存储与资源有关的元数据。 因此，在指定资源组的位置时，是在指定元数据的存储位置。 出于合规性原因，可能需要确保数据存储在某一特定区域。
+” 资源组存储有关资源的元数据。 因此，当指定资源组的位置时，也就指定了元数据的存储位置。 出于合规性原因，可能需要确保数据存储在某一特定区域。
 
 <!--MOONCAKE: DUPLICATE ON The resource group stores metadata about the resources. When you specify a location for the resource group, you're specifying where that metadata is stored.-->
 
@@ -69,7 +69,7 @@ read resourceGroupName &&
 az group delete --name $resourceGroupName
 ```
 
-若要详细了解 Azure 资源管理器如何控制资源的删除，请参阅 [Azure 资源管理器资源组的删除](delete-resource-group.md)。
+若要详细了解 Azure 资源管理器如何管理资源的删除，请参阅 [Azure 资源管理器资源组的删除](delete-resource-group.md)。
 
 ## <a name="deploy-resources-to-an-existing-resource-group"></a>将资源部署到现有的资源组
 
@@ -117,7 +117,7 @@ read lockName &&
 az lock delete --name $lockName --resource-group $resourceGroupName
 ```
 
-更多信息请参阅 [使用 Azure Resource Manager 锁定资源](lock-resources.md)。
+有关详细信息，请参阅 [使用 Azure 资源管理器锁定资源](lock-resources.md)。
 
 ## <a name="tag-resource-groups"></a>标记资源组
 

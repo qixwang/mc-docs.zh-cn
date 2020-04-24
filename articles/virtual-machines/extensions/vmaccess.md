@@ -17,22 +17,22 @@ origin.date: 05/10/2018
 ms.date: 11/11/2019
 ms.author: v-yeche
 ms.openlocfilehash: e7a7bb9a54975ddcb1e5245b2981e4359b5803ff
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79292802"
 ---
 # <a name="manage-administrative-users-ssh-and-check-or-repair-disks-on-linux-vms-using-the-vmaccess-extension-with-the-azure-cli"></a>配合使用 VMAccess 扩展和 Azure CLI 管理管理用户、SSH，并检查或修复 Linux VM 上的磁盘
 ## <a name="overview"></a>概述
-Linux VM 上的磁盘显示错误。 不知道怎样重置 Linux VM 的根密码，或者不小心删除了 SSH 私钥。 如果在数据中心时代发生这种情况，则需要开车到那里，并打开 KVM 访问服务器控制台。 请将 Azure VMAccess 扩展想像成该 KVM 交换机，它允许访问控制台以重置 Linux 访问或执行磁盘级维护。
+Linux VM 上的磁盘显示错误。 不知道怎样重置 Linux VM 的 root 密码，或者不小心删除了 SSH 私钥。 如果在数据中心的时代发生这种情况，则需要开车到那里，并打开 KVM 访问服务器控制台。 请将 Azure VMAccess 扩展想像成该 KVM 交换机，它允许访问控制台以重置 Linux 访问或执行磁盘级维护。
 
 本文介绍：如何在 Azure VMAccess Extension 作为 Azure Resource Manager 虚拟机运行时，检查或修复磁盘、重置用户访问权限、管理行政性用户帐户，或更新 Linux 上的 SSH 配置。 如果你需要管理经典虚拟机，可以按照[经典 VM 文档](../linux/classic/reset-access-classic.md)中的说明进行操作。 
 
 > [!NOTE]
 > 如果在安装 AAD 登录扩展后使用 VMAccess 扩展来重置 VM 的密码，则需要重新运行 AAD 登录扩展以重新启用计算机的 AAD 登录。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 ### <a name="operating-system"></a>操作系统
 
 VM 访问扩展可以针对这些 Linux 分发运行：
@@ -58,7 +58,7 @@ VM 访问扩展可以针对这些 Linux 分发运行：
 下面的示例使用 [az vm user](https://docs.azure.cn/cli/vm/user?view=azure-cli-latest#az-vm-user) 命令。 若要执行这些步骤，需要安装最新的 [Azure CLI](https://docs.azure.cn/cli/install-az-cli2?view=azure-cli-latest)，并使用 [az login](https://docs.azure.cn/cli/reference-index?view=azure-cli-latest#az-login) 登录到 Azure 帐户。
 
 ## <a name="update-ssh-key"></a>更新 SSH 密钥
-以下示例更新名为 `myVM` 的 VM 上用户 `azureuser` 的 SSH 密钥：
+以下示例更新名为 `azureuser` 的 VM 上用户 `myVM` 的 SSH 密钥：
 
 ```azurecli
 az vm user update \
@@ -68,10 +68,10 @@ az vm user update \
   --ssh-key-value ~/.ssh/id_rsa.pub
 ```
 
-> **注意：** `az vm user update` 命令将新公钥文本追加​​到 VM 上管理员用户的 `~/.ssh/authorized_keys` 文件。 此操作不会替换或删除任何现有的 SSH 密钥。 这不会删除在部署时设置的先前密钥或通过 VMAccess 扩展进行的后续更新。
+> 注意：**命令将新公钥文本附加到 VM 上管理员用户的** 文件`az vm user update``~/.ssh/authorized_keys`。 此操作不会替换或删除任何现有的 SSH 密钥。 这不会删除在部署时设置的先前密钥或通过 VMAccess 扩展进行的后续更新。
 
 ## <a name="reset-password"></a>重置密码
-以下示例重置名为 `myVM` 的 VM 上用户 `azureuser` 的密码：
+以下示例重置名为 `azureuser` 的 VM 上用户 `myVM` 的密码：
 
 ```azurecli
 az vm user update \
@@ -102,7 +102,7 @@ az vm user update \
 ```
 
 ## <a name="delete-a-user"></a>删除用户
-以下示例删除名为 `myVM` 的 VM 上名为 `myNewUser` 的用户：
+以下示例将删除名为 `myNewUser` 的 VM 上名为 `myVM` 的用户：
 
 ```azurecli
 az vm user delete \
@@ -112,12 +112,12 @@ az vm user delete \
 ```
 
 ## <a name="use-json-files-and-the-vmaccess-extension"></a>使用 JSON 文件和 VMAccess 扩展
-以下示例使用原始 JSON 文件。 然后使用 [az vm extension set](https://docs.azure.cn/cli/vm/extension?view=azure-cli-latest#az-vm-extension-set) 调用 JSON 文件。 也可以从 Azure 模板调用这些 JSON 文件。 
+以下示例使用原始 JSON 文件。 然后使用 [az vm extension set](https://docs.azure.cn/cli/vm/extension?view=azure-cli-latest#az-vm-extension-set) 调用 JSON 文件。 从 Azure 模板也可以调用这些 JSON 文件。 
 
 ### <a name="reset-user-access"></a>重置用户访问权限
 如果已失去 Linux VM 的 root 访问权限，可以启动 VMAccess 脚本更新用户的 SSH 密钥或密码。
 
-若要更新用户的 SSH 公钥，请创建名为 `update_ssh_key.json` 的文件并添加以下格式的设置。 用自己的值替换 `username` 和 `ssh_key` 参数：
+若要更新用户的 SSH 公钥，请创建名为 `update_ssh_key.json` 的文件并添加以下格式的设置。 用你自己的值替换 `username` 和 `ssh_key` 参数：
 
 ```json
 {
@@ -138,7 +138,7 @@ az vm extension set \
   --protected-settings update_ssh_key.json
 ```
 
-若要重置用户密码，请创建名为 `reset_user_password.json` 的文件并添加以下格式的设置。 用自己的值替换 `username` 和 `password` 参数：
+若要重置用户密码，请创建名为 `reset_user_password.json` 的文件并添加以下格式的设置。 用你自己的值替换 `username` 和 `password` 参数：
 
 ```json
 {
@@ -182,7 +182,7 @@ az vm extension set \
 
 ### <a name="manage-administrative-users"></a>管理管理用户
 
-若要创建具有 sudo 权限且使用 SSH 密钥进行身份验证的用户，请创建名为 `create_new_user.json` 的文件并添加以下格式的设置  。 用你自己的值替换 `username` 和 `ssh_key` 参数的值。 丢失或忘记当前凭据时，此方法有助于重新获取对 VM 的访问权限。 作为最佳做法，应限制具有 sudo 权限的帐户  。
+若要创建具有 sudo 权限且使用 SSH 密钥进行身份验证的用户，请创建名为  **的文件并添加以下格式的设置**`create_new_user.json`。 用你自己的值替换 `username` 和 `ssh_key` 参数的值。 丢失或忘记当前凭据时，此方法有助于重新获取对 VM 的访问权限。 作为最佳做法，应限制具有 sudo 权限的帐户  。
 
 ```json
 {
@@ -204,7 +204,7 @@ az vm extension set \
   --protected-settings create_new_user.json
 ```
 
-若要删除用户，请创建名为 `delete_user.json` 的文件并添加以下内容。 用自己的值替换 `remove_user` 参数：
+若要删除用户，请创建名为 `delete_user.json` 的文件并添加以下内容。 用你自己的值替换 `remove_user` 参数：
 
 ```json
 {
@@ -227,7 +227,7 @@ az vm extension set \
 ### <a name="check-or-repair-the-disk"></a>检查或修复磁盘
 使用 VMAccess 还可以检查并修复添加到 Linux VM 的磁盘。
 
-若要检查并修复磁盘，请创建名为 `disk_check_repair.json` 的文件并添加以下格式的设置。 用自己的值替换 `repair_disk` 的名称：
+若要检查并修复磁盘，请创建名为 `disk_check_repair.json` 的文件并添加以下格式的设置。 用你自己的值替换 `repair_disk` 名称：
 
 ```json
 {
@@ -259,6 +259,6 @@ az vm extension list --resource-group myResourceGroup --vm-name myVM -o table
 
 ### <a name="support"></a>支持
 
-如果对本文中的任何观点存在疑问，可以联系 [Azure 支持](https://support.azure.cn/support/contact/)上的 Azure 专家。 或者，也可以提出 Azure 支持事件。 请转到 [Azure 支持站点](https://support.azure.cn/support/support-azure/)提交请求。 有关使用 Azure 支持的信息，请阅读 [Azure 支持常见问题](https://www.azure.cn/support/faq/)。
+如果对本文中的任何观点存在疑问，可以联系 [Azure 支持](https://support.azure.cn/support/contact/)上的 Azure 专家。 或者，你也可以提出 Azure 支持事件。 请转到 [Azure 支持站点](https://support.azure.cn/support/support-azure/)提交请求。 有关使用 Azure 支持的信息，请阅读 [Azure 支持常见问题](https://www.azure.cn/support/faq/)。
 
 <!-- Update_Description: wording update, update meta properties -->

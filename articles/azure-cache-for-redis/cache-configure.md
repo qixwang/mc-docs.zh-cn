@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 02/05/2020
 ms.author: v-junlch
 ms.openlocfilehash: 7690d8faad7f7ac42ed7d51007ca7524a3eea176
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79291988"
 ---
 # <a name="how-to-configure-azure-cache-for-redis"></a>如何配置 Azure Redis 缓存
@@ -125,7 +125,7 @@ ms.locfileid: "79291988"
 ![Azure Redis 缓存访问端口](./media/cache-configure/redis-cache-access-ports.png)
 
 <a name="maxmemory-policy-and-maxmemory-reserved"></a>
-#### 内存策略 <a name="memory-policies"></a>
+#### <a name="memory-policies"></a>内存策略 <a name="memory-policies"></a>
 “高级设置”  边栏选项卡上的“Maxmemory policy”  、“maxmemory-reserved”  和“maxfragmentationmemory-reserved”  设置用于为缓存配置内存策略。
 
 ![Azure Redis 缓存 Maxmemory 策略](./media/cache-configure/redis-cache-maxmemory-policy.png)

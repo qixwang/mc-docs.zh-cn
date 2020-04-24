@@ -11,10 +11,10 @@ origin.date: 04/09/2019
 ms.date: 06/10/2019
 ms.author: v-yeche
 ms.openlocfilehash: 945686cc9f236ee931e5f4d6deab8c81246b0de2
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79291695"
 ---
 # <a name="set-up-disaster-recovery-for-active-directory-and-dns"></a>为 Active Directory 和 DNS 设置灾难恢复
@@ -25,7 +25,7 @@ ms.locfileid: "79291695"
 
 本文介绍如何为 Active Directory 创建灾难恢复解决方案。 其中包括先决条件，以及故障转移的说明。 开始之前，应先熟悉 Active Directory 和 Site Recovery。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * 如果要复制到 Azure，请[准备 Azure 资源](tutorial-prepare-azure.md)，包括订阅、Azure 虚拟网络、存储帐户和恢复服务保管库。
 * 查看所有组件的[支持要求](site-recovery-support-matrix-to-azure.md)。
@@ -54,7 +54,7 @@ ms.locfileid: "79291695"
 ## <a name="protect-active-directory"></a>保护 Active Directory
 
 ### <a name="site-to-site-protection"></a>站点到站点保护
-在辅助站点上创建域控制器。 将服务器提升为域控制器角色时，请指定在主站点中使用的同一域名。 可以使用 **Active Directory 站点和服务** 管理单元来配置站点要添加到的站点链接对象的设置。 通过在站点链接上配置设置，可以控制何时在两个或更多站点之间进行复制，以及复制的频率。 有关详细信息，请参阅[计划站点之间的复制](https://technet.microsoft.com/library/cc731862.aspx)。
+在辅助站点上创建域控制器。 将服务器提升为域控制器角色时，请指定在主站点中使用的同一域名。 可以使用 **Active Directory 站点和服务**管理单元来配置站点要添加到的站点链接对象的设置。 通过在站点链接上配置设置，可以控制何时在两个或更多站点之间进行复制，以及复制的频率。 有关详细信息，请参阅[计划站点之间的复制](https://technet.microsoft.com/library/cc731862.aspx)。
 
 <a name="protect-active-directory-with-active-directory-replication"></a>
 ### <a name="site-to-azure-protection"></a>站点到 Azure 的保护
@@ -64,7 +64,7 @@ ms.locfileid: "79291695"
 
 ![Azure 网络](./media/site-recovery-active-directory/azure-network.png)
 
-### <a name="azure-to-azure-protection"></a>Azure 到 Azure 保护
+### <a name="azure-to-azure-protection"></a>Azure 到 Azure 的保护
 首先，在 Azure 虚拟网络中创建域控制器。 将服务器提升为域控制器角色时，请指定主站点中使用的同一域名。
 
 然后，为虚拟网络重新配置 DNS 服务器以在 Azure 中使用 DNS 服务器。
@@ -92,7 +92,7 @@ ms.locfileid: "79291695"
 1. 如果要复制到其他本地站点并使用 DHCP，请[针对测试故障转移设置 DNS 和 DHCP](hyper-v-vmm-test-failover.md#prepare-dhcp)。
 2. 对隔离网络中运行的域控制器虚拟机执行测试故障转移。 使用域控制器虚拟机最新可用的应用程序一致  恢复点来执行测试故障转移。
 3. 针对包含虚拟机（应用程序在其中运行）的恢复计划运行测试故障转移。
-4. 测试完成后，请在域控制器虚拟机上清理测试故障转移  。 此步骤会删除为测试性故障转移创建的域控制器。
+4. 测试完成后，请在域控制器虚拟机上清理测试故障转移  。 此步骤删除为测试性故障转移创建的域控制器。
 
 ### <a name="remove-references-to-other-domain-controllers"></a>删除对其他域控制器的引用
 进行测试故障转移时，不需要将所有域控制器都引入测试网络中。 若要删除生产环境中存在的对其他域控制器的引用，可能需要为缺失的域控制器[获取 FSMO Active Directory 角色](https://aka.ms/ad_seize_fsmo)并执行[元数据清理](https://technet.microsoft.com/library/cc816907.aspx)。
@@ -114,17 +114,17 @@ ms.locfileid: "79291695"
 
 `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\gencounter\Start`
 
-#### <a name="symptoms-of-virtualization-safeguards"></a>虚拟化防护措施的症状
+#### <a name="symptoms-of-virtualization-safeguards"></a>虚拟化安全措施的症状
 
 如果在测试故障转移后触发了虚拟化安全措施，则可能会看到下述一项或多项症状：  
 
 * GenerationID  值发生变化。
 
-    ![生成 ID 发生更改](./media/site-recovery-active-directory/Event2170.png)
+    ![生成 ID 更改](./media/site-recovery-active-directory/Event2170.png)
 
 * InvocationID  值发生变化。
 
-    ![调用 ID 发生更改](./media/site-recovery-active-directory/Event1109.png)
+    ![调用 ID 更改](./media/site-recovery-active-directory/Event1109.png)
 
 * Sysvol 文件夹和 NETLOGON 共享不可用。
 
@@ -153,9 +153,9 @@ ms.locfileid: "79291695"
 
 3. 在输出日志中，查找以下文本。 下列文本可用于确认域控制器正常运作。
 
-    * "passed test Connectivity"
-    * "passed test Advertising"
-    * "passed test MachineAccount"
+    * “通过测试连接”
+    * “通过测试播发”
+    * “通过测试 MachineAccount”
 
 如果满足上述条件，则域控制器很可能运行良好。 否则，请完成以下步骤：
 
@@ -171,7 +171,7 @@ ms.locfileid: "79291695"
 
     `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\NTDS\Parameters\Repl Perform Initial Synchronizations`
 
-    有关详细信息，请参阅[排查 DNS 事件 ID 4013：DNS 服务器无法加载 AD 集成的 DNS 区域](https://support.microsoft.com/kb/2001093)。
+    有关详细信息，请参阅[解决 DNS 事件 ID 4013：DNS 服务器不能加载 AD 集成的 DNS 区域](https://support.microsoft.com/kb/2001093)。
 
 3. 禁用需要全局编录服务器才能验证用户登录的要求。 为此，请在本地域控制器中，将以下注册表项设置为 1  。 如果 DWORD 不存在，可在“Lsa”  节点下创建。
 
@@ -187,7 +187,7 @@ ms.locfileid: "79291695"
 
 1. 确保在恢复计划中的任何其他虚拟机启动之前，以下设置已准备就绪：
     * 区域必须以林根名称命名。
-    * 必须在区域中备份文件。
+    * 区域必须备份文件。
     * 必须启用区域以进行安全和非安全更新。
     * 托管域控制器的虚拟机的解析程序应指向 DNS 虚拟机的 IP 地址。
 

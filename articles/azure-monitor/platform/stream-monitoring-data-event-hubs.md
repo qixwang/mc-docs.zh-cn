@@ -9,10 +9,10 @@ ms.date: 11/19/2019
 ms.author: v-lingwu
 ms.subservice: ''
 ms.openlocfilehash: d5e5c014c30a03d89f0b750a26561afa25d158d0
-ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/17/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79452545"
 ---
 # <a name="stream-azure-monitoring-data-to-an-event-hub"></a>将 Azure 监视数据流式传输到事件中心
@@ -34,7 +34,7 @@ Azure Monitor 为 Azure、其他云和本地的应用程序与服务提供全堆
 ## <a name="monitoring-data-available"></a>提供的监视数据
 [Azure Monitor 的监视数据源](data-sources.md)介绍了 Azure 应用程序的各种数据层，以及为每个层提供的监视数据类型。 下表列出了每个层，并描述了如何将该数据流式传输到事件中心。 可单击提供的链接了解更多详细信息。
 
-| 层 | 数据 | 方法 |
+| 层 | data | 方法 |
 |:---|:---|:---|
 | [Azure 租户](data-sources.md#azure-tenant) | Azure Active Directory 审核日志 | 在 AAD 租户上配置租户诊断设置。 |
 | [Azure 订阅](data-sources.md#azure-subscription) | Azure 活动日志 | 创建日志配置文件，以将活动日志事件导出到事件中心。  有关详细信息，请参阅[将 Azure 平台日志流式传输到 Azure 事件中心](resource-logs-stream-event-hubs.md)。 |

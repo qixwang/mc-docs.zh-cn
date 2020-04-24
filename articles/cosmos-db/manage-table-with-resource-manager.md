@@ -8,10 +8,10 @@ origin.date: 11/12/2019
 ms.date: 02/10/2020
 ms.author: v-yeche
 ms.openlocfilehash: f06adce040460f327e2f6b1133fb4141ae435d9b
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79293397"
 ---
 <!--Verify successfully-->
@@ -26,7 +26,7 @@ ms.locfileid: "79293397"
 
 > [!NOTE]
 > 帐户名称必须为小写且不超过 44 个字符。
-> 若要更新 RU/秒，请使用更新的吞吐量属性值重新提交模板。
+> 若要更新 RU/秒，请重新提交包含已更新吞吐量属性值的模板。
 
 ```json
 {

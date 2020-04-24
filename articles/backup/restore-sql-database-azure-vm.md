@@ -7,10 +7,10 @@ origin.date: 05/22/2019
 ms.date: 09/16/2019
 ms.author: v-lingwu
 ms.openlocfilehash: bd802e4574535dc8a7436ff18fc91ddbda5bbc64
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79292397"
 ---
 # <a name="restore-sql-server-databases-on-azure-vms"></a>还原 Azure VM 上的 SQL Server 数据库

@@ -14,10 +14,10 @@ ms.custom: seo-lt-2019
 origin.date: 01/28/2020
 ms.date: 03/02/2020
 ms.openlocfilehash: a83b3c137d917374b6fbbc4fa255b5b3eb1fb1c2
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79292395"
 ---
 # <a name="integration-runtime-in-azure-data-factory"></a>Azure 数据工厂中的集成运行时

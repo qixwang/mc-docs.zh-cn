@@ -10,10 +10,10 @@ origin.date: 02/12/2020
 ms.date: 03/23/2020
 ms.author: v-yiso
 ms.openlocfilehash: 9515b78b1aaa3c663332338f451c608bf71b32b7
-ms.sourcegitcommit: 32997a7d7585deaeb0ab7b8f928d397b18b343fa
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79295989"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>使用 Azure 门户管理 HDInsight 中的 Apache Hadoop 群集
@@ -30,12 +30,12 @@ HDInsight 中的现有 Apache Hadoop 群集。  请参阅[使用 Azure 门户在
 登录到 [https://portal.azure.cn](https://portal.azure.cn)。
 
 
-## <a name="list-and-show-clusters"></a> 列出并显示群集
+## <a name="list-and-show-clusters"></a><a name="list-and-show-clusters"></a> 列出并显示群集
 从“HDInsight 群集”页会列出现有的群集  。  在门户中：
 1. 在左侧菜单中，选择“所有服务”  。
 2. 在“ANALYTICS”下，选择“HDInsight 群集”   。
 
-## <a name="homePage"></a> 群集主页 
+## <a name="cluster-home-page"></a><a name="homePage"></a> 群集主页 
 从“HDInsight 群集”页选择群集名称  。  此时会打开“概览”视图，该视图类似于下图： 
 
 ![Azure 门户 HDInsight 群集概要](./media/hdinsight-administer-use-portal-linux/hdinsight-essentials2.png)
@@ -94,7 +94,7 @@ HDInsight 中的现有 Apache Hadoop 群集。  请参阅[使用 Azure 门户在
     |资源运行状况|参阅 [Azure 资源运行状况概述](../service-health/resource-health-overview.md)。|
     |新建支持请求|允许用户通过 Microsoft 支持创建支持票证。|
 
-## <a name="properties"></a> 群集属性
+## <a name="cluster-properties"></a><a name="properties"></a> 群集属性
 
 在“[群集主页](#homePage)”的“设置”下，选择“属性”。  
 
@@ -108,7 +108,7 @@ HDInsight 中的现有 Apache Hadoop 群集。  请参阅[使用 Azure 门户在
 |区域|Azure 位置。 有关受支持的 Azure 位置的列表，请参阅 [HDInsight 定价](https://www.azure.cn/pricing/details/hdinsight/)中的“区域”  下拉列表框。|
 |创建日期|部署群集的日期。|
 |操作系统|“Windows”或“Linux”。  |
-|类型|Hadoop、HBase、Storm、Spark。|
+|TYPE|Hadoop、HBase、Storm、Spark。|
 |版本|请参阅 [HDInsight 版本](hdinsight-component-versioning.md)。|
 |最低 TLS 版本|TLS 版本。|
 |订阅|订阅名称。|

@@ -8,10 +8,10 @@ origin.date: 09/17/2019
 ms.date: 09/23/2019
 ms.author: v-lingwu
 ms.openlocfilehash: 3f581a8cfba47957cc7a5cea1e37d5cc6ff1756f
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79290795"
 ---
 # <a name="frequently-asked-questions-back-up-azure-vms"></a>常见问题 - 备份 Azure VM

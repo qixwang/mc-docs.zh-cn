@@ -8,10 +8,10 @@ origin.date: 03/19/2018
 ms.date: 05/19/2019
 ms.author: v-lingwu
 ms.openlocfilehash: 21285ae072f41a3cb1dac8478327fa8463c49ad6
-ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/17/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79452553"
 ---
 # <a name="azure-monitoring-rest-api-walkthrough"></a>Azure 监视 REST API 演练
@@ -27,7 +27,7 @@ ms.locfileid: "79452553"
 
 第一步是对请求进行身份验证。
 
-针对 Azure 监视器 API 执行的所有任务都使用 Azure Resource Manager 身份验证模型。 因此，所有请求必须使用 Azure Active Directory (Azure AD) 进行身份验证。 对客户端应用程序进行身份验证的方法之一是创建 Azure AD 服务主体，并检索身份验证 (JWT) 令牌。 以下示例脚本演示如何通过 PowerShell 创建 Azure AD 服务主体。 有关更详细的演练，请参阅有关[使用 Azure PowerShell 创建用于访问资源的服务主体](https://docs.microsoft.com/powershell/azure/create-azure-service-principal-azureps)的文档。 还可以[通过 Azure 门户创建服务主体](../../active-directory/develop/howto-create-service-principal-portal.md)。
+针对 Azure 监视器 API 执行的所有任务都使用 Azure 资源管理器身份验证模型。 因此，所有请求必须使用 Azure Active Directory (Azure AD) 进行身份验证。 对客户端应用程序进行身份验证的方法之一是创建 Azure AD 服务主体，并检索身份验证 (JWT) 令牌。 以下示例脚本演示如何通过 PowerShell 创建 Azure AD 服务主体。 有关更详细的演练，请参阅有关[使用 Azure PowerShell 创建用于访问资源的服务主体](https://docs.microsoft.com/powershell/azure/create-azure-service-principal-azureps)的文档。 还可以[通过 Azure 门户创建服务主体](../../active-directory/develop/howto-create-service-principal-portal.md)。
 
 ```powershell
 $subscriptionId = "{azure-subscription-id}"
@@ -56,7 +56,7 @@ New-AzRoleAssignment -RoleDefinitionName Reader `
 
 ```
 
-若要查询 Azure 监视器 API，客户端应用程序应使用事先创建的服务主体进行身份验证。 以下示例 PowerShell 脚本演示了一种使用 [Active Directory 身份验证库](../../active-directory/azuread-dev/active-directory-authentication-libraries.md) (ADAL) 来获取 JWT 身份验证令牌的方法。 JWT 令牌作为请求中 HTTP 授权参数的一部分传递给 Azure Monitor REST API。
+若要查询 Azure 监视器 API，客户端应用程序应使用事先创建的服务主体进行身份验证。 以下示例 PowerShell 脚本演示了一种使用 [Active Directory 身份验证库](../../active-directory/azuread-dev/active-directory-authentication-libraries.md) (ADAL) 来获取 JWT 身份验证令牌的方法。 JWT 令牌作为请求中 HTTP 授权参数的一部分传递给 Azure 监视器 REST API。
 
 ```powershell
 $azureAdApplication = Get-AzADApplication -IdentifierUri "https://localhost/azure-monitor"
@@ -92,7 +92,7 @@ $authHeader = @{
 
 ## <a name="retrieve-metric-definitions-multi-dimensional-api"></a>检索指标定义（多维 API）
 
-使用 [Azure Monitor 指标定义 REST API](https://docs.microsoft.com/rest/api/monitor/metricdefinitions) 可以访问服务可用的指标列表。
+使用[Azure 监视器指标定义 REST API](https://docs.microsoft.com/rest/api/monitor/metricdefinitions)访问服务可用的指标列表。
 
 **方法**：GET
 
@@ -114,7 +114,7 @@ Invoke-RestMethod -Uri $request `
 >
 >
 
-生成的 JSON 响应正文将类似于以下示例：（请注意第二个指标具有维度）
+生成的 JSON 响应正文将类似于以下示例：（请注意，第二个指标具有维）
 
 ```JSON
 {
@@ -228,7 +228,7 @@ Invoke-RestMethod -Uri $request `
 ## <a name="retrieve-dimension-values-multi-dimensional-api"></a>检索维值（多维 API）
 了解可用的指标定义后，可能会发现一些指标具有多个维。 在查询指标前，可能需要查明某个维具有的值的范围。 然后，根据这些维值，在查询指标时，可以选择根据维值对指标进行筛选或分段。  为此，请使用 [Azure Monitor 指标 REST API](https://docs.microsoft.com/rest/api/monitor/metrics)。
 
-对于任何筛选请求，请使用指标的名称“value”（而非“localizedValue”）。 如果未指定筛选器，则返回默认指标。 使用此 API 仅允许一个维度具有通配符筛选器。
+对于任何筛选请求，请使用指标的名称“value”（而非“localizedValue”）。 如果未指定筛选器，将返回默认指标。 使用此 API 仅允许一个维度具有通配符筛选器。
 
 > [!NOTE]
 > 若要使用 Azure Monitor REST API 检索维度值，请使用“2018-01-01”作为 API 版本。
@@ -384,7 +384,7 @@ Invoke-RestMethod -Uri $request `
 ```
 
 ## <a name="retrieve-metric-definitions"></a>检索指标定义
-使用 [Azure Monitor 指标定义 REST API](https://msdn.microsoft.com/library/mt743621.aspx) 可以访问服务可用的指标列表。
+使用[Azure 监视器指标定义 REST API](https://msdn.microsoft.com/library/mt743621.aspx)访问服务可用的指标列表。
 
 **方法**：GET
 
@@ -448,11 +448,11 @@ Invoke-RestMethod -Uri $request `
 }
 ```
 
-有关详细信息，请参阅 [List the metric definitions for a resource in Azure Monitor REST API](https://msdn.microsoft.com/library/azure/mt743621.aspx)（在 Azure Monitor REST API 中列出资源的指标定义）文档。
+有关详细信息，请参阅 [List the metric definitions for a resource in Azure Monitor REST API](https://msdn.microsoft.com/library/azure/mt743621.aspx)（在 Azure 监视器 REST API 中列出资源的指标定义）文档。
 
 ## <a name="retrieve-metric-values"></a>检索指标值
 
-知道可用的指标定义后，即可检索相关的指标值。 将指标的名称“value”（而不是“localizedValue”）用于任何筛选请求（例如，检索“CpuTime”和“Requests”指标数据点）。 如果未指定筛选器，则返回默认指标。
+知道可用的指标定义后，即可检索相关的指标值。 将指标的名称“value”（而不是“localizedValue”）用于任何筛选请求（例如，检索“CpuTime”和“Requests”指标数据点）。 如果未指定筛选器，将返回默认指标。
 
 > [!NOTE]
 > 若要使用 Azure Monitor REST API 检索指标值，请使用“2016-09-01”作为 API 版本。
@@ -576,7 +576,7 @@ Invoke-RestMethod -Uri $request `
 
 ### <a name="use-armclient"></a>使用 ARMClient
 
-另一种方法是使用 Windows 计算机上的 [ARMClient](https://github.com/projectkudu/armclient)。 ARMClient 将自动处理 Azure AD 身份验证（及生成的 JWT 令牌）。 以下步骤概述如何使用 ARMClient 检索指标数据：
+另一种方法是使用 Windows 计算机上的 [ARMClient](https://github.com/projectkudu/armclient)。 ARMClient 会自动处理 Azure AD 身份验证（及生成的 JWT 令牌）。 以下步骤概述如何使用 ARMClient 检索指标数据：
 
 1. 安装 [Chocolatey](https://chocolatey.org/) 和 [ARMClient](https://github.com/projectkudu/armclient)。
 2. 在终端窗口中，键入 *armclient.exe login*。 这样做会提示登录到 Azure。
@@ -715,7 +715,7 @@ Invoke-RestMethod -Uri $request `
 
 ## <a name="next-steps"></a>后续步骤
 
-* 查看 [监视概述](../../azure-monitor/overview.md)。
+* 查看[监视概述](../../azure-monitor/overview.md)。
 * 查看 [Azure 监视器支持的指标](metrics-supported.md)。
 * 查看[世纪互联 Azure Monitor REST API 参考](https://msdn.microsoft.com/library/azure/dn931943.aspx)。
 * 查看 [Azure 管理库](https://msdn.microsoft.com/library/azure/mt417623.aspx)。

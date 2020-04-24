@@ -18,10 +18,10 @@ origin.date: 06/01/2017
 ms.date: 01/10/2019
 ms.author: v-junlch
 ms.openlocfilehash: 4e220c8a9cff0876f5195ae52e318cb0bfd5708b
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79293095"
 ---
 # <a name="design-considerations-for-scale-sets"></a>规模集的设计注意事项

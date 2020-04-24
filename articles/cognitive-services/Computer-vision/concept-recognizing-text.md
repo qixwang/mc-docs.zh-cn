@@ -13,10 +13,10 @@ ms.date: 06/10/2019
 ms.author: v-junlch
 ms.custom: seodec18
 ms.openlocfilehash: abe421f62b54a2156a16e89604280c9bc3ad827b
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79292978"
 ---
 # <a name="recognize-printed-and-handwritten-text"></a>识别打印文本和手写文本
@@ -85,13 +85,13 @@ OCR API 可以处理符合以下要求的图像：
 
 文本识别操作的准确度取决于图像的质量。 以下因素可能导致读取结果不准确：
 
-* 图像模糊。
-* 文本为手书或草书。
-* 字体为艺术体。
-* 文本大小过小。
-* 背景复杂、阴影、文本反光或透视扭曲。
+* 模糊的图像。
+* 手写文本或草体文本。
+* 艺术字体样式。
+* 文本太小。
+* 文本上的复杂背景、阴影、炫光或透视变形。
 * 文本过长，或单词的开头缺少大写字母。
-* 文本包含下标、上标或删除线。
+* 下标、上标或删除线文本。
 
 ## <a name="next-steps"></a>后续步骤
 

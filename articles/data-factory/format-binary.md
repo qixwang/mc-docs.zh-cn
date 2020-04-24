@@ -11,10 +11,10 @@ origin.date: 11/26/2019
 ms.date: 01/06/2020
 ms.author: v-jay
 ms.openlocfilehash: 2a9d731ee0047dbc026faa292f0f5f4bf1a7961d
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79293178"
 ---
 # <a name="binary-format-in-azure-data-factory"></a>Azure 数据工厂中的二进制格式

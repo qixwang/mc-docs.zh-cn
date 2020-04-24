@@ -10,10 +10,10 @@ origin.date: 12/07/2018
 ms.date: 12/04/2019
 ms.author: v-lingwu
 ms.openlocfilehash: f21141048fcd6d50691f5d3a42384d2b756780d1
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79291545"
 ---
 # <a name="overview-of-batch-apis-and-tools"></a>批处理 API 和工具概述
@@ -44,13 +44,13 @@ ms.locfileid: "79291545"
 | **批处理 Node.js** |[docs.azure.cn][api_nodejs] |[npm][api_nodejs_npm] |[教程](batch-nodejs-get-started.md) |- | [自述文件](https://github.com/Azure/azure-sdk-for-node/tree/master/lib/services/batch) |
 | **批处理 Java** |[docs.azure.cn][api_java] |[Maven][api_java_jar] |- |[自述文件][api_sample_java] | [自述文件](https://github.com/Azure/azure-batch-sdk-for-java)|
 
-## 批处理管理 API <a name="batch-development-apis"></a>
+## <a name="batch-management-apis"></a>批处理管理 API <a name="batch-development-apis"></a>
 
 通过用于 Batch 的 Azure Resource Manager API，可以编程方式访问批处理帐户。 可以使用这些 API 通过 Microsoft.Batch 提供程序以编程方式管理 Batch 帐户、配额、应用程序包和其他资源。  
 
 |             API              |             API 参考             |           下载           |                教程                |                                 代码示例                                  |
 |------------------------------|---------------------------------------|------------------------------|----------------------------------------|-------------------------------------------------------------------------------|
-|  **批次管理 REST**   |  [docs.azure.cn][api_rest_mgmt]  |             不适用              |                   -                    | [GitHub](https://github.com/Azure-Samples/batch-dotnet-manage-batch-accounts) |
+|  **批次管理 REST**   |  [docs.azure.cn][api_rest_mgmt]  |             空值              |                   -                    | [GitHub](https://github.com/Azure-Samples/batch-dotnet-manage-batch-accounts) |
 |  **Batch Management .NET**   |  [docs.azure.cn][api_net_mgmt]   | [NuGet ][api_net_mgmt_nuget] | [教程](batch-management-dotnet.md) |                           [GitHub][api_sample_net]                            |
 | **批次管理 Python**  | [docs.azure.cn][api_python_mgmt] | [PyPI][api_python_mgmt_pypi] |                   -                    |                                       -                                       |
 | **批次管理 Node.js** | [docs.azure.cn][api_nodejs_mgmt] |  [npm][api_nodejs_mgmt_npm]  |                   -                    |                                       -                                       |

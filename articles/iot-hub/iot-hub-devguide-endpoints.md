@@ -10,10 +10,10 @@ origin.date: 06/10/2019
 ms.author: v-yiso
 ms.date: 09/02/2019
 ms.openlocfilehash: d38396e34295403c861a140207427a556dc9ea99
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79293447"
 ---
 # <a name="reference---iot-hub-endpoints"></a>参考 - IoT 中心终结点
@@ -46,7 +46,7 @@ Azure IoT 中心属于多租户服务，向各种执行组件公开功能。 下
 
   * *启动文件上传*。 设备使用此终结点接收来自 IoT 中心的 Azure 存储 SAS URI，以便[上传文件](iot-hub-devguide-file-upload.md)。
 
-  * *检索并更新设备孪生的属性*。 设备使用此终结点访问其[设备孪生](iot-hub-devguide-device-twins.md)的属性。
+  * *检索和更新设备孪生属性*。 设备使用此终结点访问其[设备孪生](iot-hub-devguide-device-twins.md)的属性。
 
   * *接收直接方法请求*。 设备使用此终结点侦听[直接方法](iot-hub-devguide-direct-methods.md)的请求。
 
@@ -54,9 +54,9 @@ Azure IoT 中心属于多租户服务，向各种执行组件公开功能。 下
 
 * **服务终结点**。 每个 IoT 中心公开一组终结点，供解决方案后端用于与设备通信。 除了一个例外，这些终结点只使用 [AMQP](https://www.amqp.org/) 协议进行公开。 方法调用终结点通过 HTTPS 协议进行公开。
   
-  * *接收设备到云的消息*。 此终结点与 [Azure 事件中心](/event-hubs/)兼容。 后端服务可用它来读取由设备发送的[设备到云的消息](iot-hub-devguide-messages-d2c.md)。 除了此内置终结点外，还可以在 IoT 中心创建自定义终结点。
+  * *接收设备到云的消息*。 此终结点与 [Azure 事件中心](/event-hubs/)兼容。 后端服务可用它来读取由设备发送的[设备到云的消息](iot-hub-devguide-messages-d2c.md)。 可以在此内置终结点之外的 IoT 中心创建自定义终结点。
   
-  * *发送云到设备的消息并接收传递确认*。 这些终结点可让解决方案后端发送可靠的[云到设备的消息](iot-hub-devguide-messages-c2d.md)，以及接收对应的传送或过期确认。
+  * *发送云到设备的消息和接收送达确认*。 这些终结点可让解决方案后端发送可靠的[云到设备的消息](iot-hub-devguide-messages-c2d.md)，以及接收对应的传送或过期确认。
   
   * *接收文件通知*。 此消息传递终结点允许在设备成功上传文件时接收通知。 
   
@@ -70,7 +70,7 @@ Azure IoT 中心属于多租户服务，向各种执行组件公开功能。 下
 
 ## <a name="custom-endpoints"></a>自定义终结点
 
-可将订阅中的现有 Azure 服务链接到用作消息路由终结点的 IoT 中心。 这些终结点充当服务终结点，并用作消息路由的接收器。 设备无法直接写入附加终结点。 详细了解[消息路由](../iot-hub/iot-hub-devguide-messages-d2c.md)。
+可将订阅中的现有 Azure 服务链接到充当消息路由终结点的 IoT 中心。 这些终结点充当服务终结点，用作消息路由的接收器。 设备无法直接写入附加终结点。 详细了解[消息路由](../iot-hub/iot-hub-devguide-messages-d2c.md)。
 
 IoT 中心当前支持将以下 Azure 服务作为附加终结点：
 
@@ -83,7 +83,7 @@ IoT 中心当前支持将以下 Azure 服务作为附加终结点：
 
 可以使用 REST API [Get Endpoint Health](https://docs.microsoft.com/rest/api/iothub/iothubresource/getendpointhealth#iothubresource_getendpointhealth) 获取终结点的运行状况状态。 我们建议使用与路由消息延迟相关的 [IoT 中心指标](iot-hub-metrics.md)来识别和调试终结点运行状况不佳或运行不正常时的错误，因为我们预计当终结点处于其中一种状态时，延迟会更高。
 
-|运行状况状态|说明|
+|运行状况|说明|
 |---|---|
 |healthy|终结点按预期方式接受消息。|
 |不正常|终结点未按预期方式接受消息，IoT 中心正重试将数据发送到此终结点。 当 IoT 中心建立了最终一致的运行状况状态以后，系统会将不正常终结点的状态更新为正常。|
@@ -92,7 +92,7 @@ IoT 中心当前支持将以下 Azure 服务作为附加终结点：
 
 ## <a name="field-gateways"></a>现场网关
 
-在 IoT 解决方案中， *现场网关* 位于设备和 IoT 中心终结点之间。 它通常位于靠近设备的位置。 设备使用设备支持的协议，直接与现场网关通信。 现场网关使用 IoT 中心支持的协议连接到 IoT 中心终结点。 现场网关可能是专用硬件设备或运行自定义网关软件的低功率计算机。
+在 IoT 解决方案中，*现场网关*位于设备和 IoT 中心终结点之间。 它通常位于靠近设备的位置。 设备使用设备支持的协议，直接与现场网关通信。 现场网关使用 IoT 中心支持的协议连接到 IoT 中心终结点。 现场网关可能是专用硬件设备或运行自定义网关软件的低功率计算机。
 
 可使用 [Azure IoT Edge](/iot-edge/) 实现现场网关。 IoT Edge 提供一些功能，例如从多台设备向同一 IoT 中心连接多路复用通信。
 

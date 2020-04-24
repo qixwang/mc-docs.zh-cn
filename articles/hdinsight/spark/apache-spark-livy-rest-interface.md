@@ -11,10 +11,10 @@ origin.date: 02/28/2020
 ms.date: 03/23/2020
 ms.author: v-yiso
 ms.openlocfilehash: bc78f7b4dd8e1bd1d6c60135607acc73af7b4030
-ms.sourcegitcommit: 32997a7d7585deaeb0ab7b8f928d397b18b343fa
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79295941"
 ---
 # <a name="use-apache-spark-rest-api-to-submit-remote-jobs-to-an-hdinsight-spark-cluster"></a>使用 Apache Spark REST API 将远程作业提交到 HDInsight Spark 群集
@@ -23,7 +23,7 @@ ms.locfileid: "79295941"
 
 可以使用 Livy 运行交互式 Spark shell，或提交要在 Spark 上运行的批处理作业。 本文介绍如何使用 Livy 提交批处理作业。 本文中的代码片段使用 cURL 向Livy Spark 终结点发出 REST API 调用。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * HDInsight 上的 Apache Spark 群集。 有关说明，请参阅[在 Azure HDInsight 中创建 Apache Spark 群集](apache-spark-jupyter-spark-sql.md)。
 
@@ -49,7 +49,7 @@ curl -k --user "admin:password" -v -H "Content-Type: application/json" -X POST -
     curl -k  --user "admin:mypassword1!" -v -H "Content-Type: application/json" -X POST --data @C:\Temp\input.txt "https://mysparkcluster.azurehdinsight.cn/livy/batches" -H "X-Requested-By: admin"
     ```
 
-## <a name="get-information-on-livy-spark-batches-running-on-the-cluster"></a>获取在群集上运行的 Livy Spark 批处理的相关信息
+## <a name="get-information-on-livy-spark-batches-running-on-the-cluster"></a>获取在群集上运行的 Spark 批处理的相关信息
 
 语法：
 
@@ -88,7 +88,7 @@ curl -k --user "admin:mypassword1!" -v -X DELETE "https://mysparkcluster.azurehd
 ## <a name="livy-spark-and-high-availability"></a>Livy Spark 和高可用性
 Livy 可为群集上运行的 Spark 作业提供高可用性。 下面是几个示例。
 
-* 将作业远程提交到 Spark 群集之后，如果 Livy 服务关闭，作业将继续在后台运行。 当 Livy 恢复运行时，会还原并报告作业的状态。
+* 将作业远程提交到 Spark 群集之后，如果 Livy 服务关闭，作业将继续在后台运行。 当 Livy 恢复运行时，将还原并报告作业的状态。
 * 适用于 HDInsight 的 Jupyter 笔记本由后端中的 Livy 提供支持。 如果在 Notebook 运行 Spark 作业时重启 Livy 服务，Notebook 会继续运行代码单元。 
 
 ## <a name="show-me-an-example"></a>举个例子
@@ -126,7 +126,7 @@ Livy 可为群集上运行的 Spark 作业提供高可用性。 下面是几个�
     {"from":0,"total":0,"sessions":[]}* Connection #0 to host mysparkcluster.azurehdinsight.cn left intact
     ```
 
-    请注意输出中的最后一行显示为 **total:0**，这意味着未运行任何批处理。
+    请注意输出中的最后一行显示为 **total:0**，这意味着未运行任何批。
 
 2. 现在，让我们提交批处理作业。 以下代码片段使用输入文件 (input.txt) 传递 jar 名称和类名称作为参数。 如果要从 Windows 计算机运行这些步骤，我们建议使用输入文件。
 
@@ -155,7 +155,7 @@ Livy 可为群集上运行的 Spark 作业提供高可用性。 下面是几个�
     {"id":0,"state":"starting","log":[]}* Connection #0 to host mysparkcluster.azurehdinsight.cn left intact
     ```
 
-    请注意输出的最后一行显示为 **state:starting**。 此外还显示了 **id:0**。 此处的 **0** 为批 ID。
+    请注意输出的最后一行显示为 **state:starting**。 此外显示了 **id:0**。 此处的 **0** 为批 ID。
 
 3. 现在，可以使用批 ID 来检索此特定批的状态。
 
@@ -199,7 +199,7 @@ Livy 可为群集上运行的 Spark 作业提供高可用性。 下面是几个�
     {"msg":"deleted"}* Connection #0 to host mysparkcluster.azurehdinsight.cn left intact
     ```
 
-    输出的最后一行显示批已成功删除。 删除正在运行的作业也会终止该作业 如果删除已完成的作业，则不管该作业是否已成功完成，都会完全删除该作业的信息。
+    输出的最后一行显示批已成功删除。 删除正在运行的作业也会终止该作业 如果删除已完成的作业，则不管该作业是否已成功完成，都将完全删除该作业的信息。
 
 ## <a name="updates-to-livy-configuration-starting-with-hdinsight-35-version"></a>更新到从 HDInsight 3.5 版本开始的 Livy 配置
 

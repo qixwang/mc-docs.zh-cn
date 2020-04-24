@@ -8,10 +8,10 @@ ms.topic: conceptual
 origin.date: 10/25/2019
 ms.date: 03/02/2020
 ms.openlocfilehash: bfc1eab567ac5708474d6c90f2b41488c1723e2d
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79291708"
 ---
 # <a name="logs-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - 单一服务器中的日志
@@ -100,17 +100,17 @@ AzureDiagnostics
 | TenantId | 租户 ID |
 | SourceSystem | `Azure` |
 | TimeGenerated [UTC] | 记录日志时的时间戳 (UTC) |
-| 类型 | 日志的类型。 始终是 `AzureDiagnostics` |
+| 类型 | 日志类型。 始终是 `AzureDiagnostics` |
 | SubscriptionId | 服务器所属的订阅的 GUID |
-| resourceGroup | 服务器所属的资源组的名称 |
+| ResourceGroup | 服务器所属的资源组的名称 |
 | ResourceProvider | 资源提供程序的名称。 始终是 `MICROSOFT.DBFORPOSTGRESQL` |
 | ResourceType | `Servers` |
 | ResourceId | 资源 URI |
 | 资源 | 服务器的名称 |
-| Category | `PostgreSQLLogs` |
+| 类别 | `PostgreSQLLogs` |
 | OperationName | `LogEvent` |
-| errorLevel | 日志记录级别，例如：LOG, ERROR, NOTICE |
-| Message | 主要日志消息 | 
+| errorLevel | 日志记录级别，示例：LOG、ERROR、NOTICE |
+| 消息 | 主要日志消息 | 
 | 域 | 服务器版本，示例：postgres-10 |
 | 详细信息 | 辅助日志消息（如果适用） |
 | ColumnName | 列名称（如果适用） |

@@ -17,21 +17,21 @@ ms.date: 11/11/2019
 ms.author: v-yeche
 ms.custom: mvc
 ms.openlocfilehash: dbb48e8118da01c337a4bb30301340d13242c3b5
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79291973"
 ---
 # <a name="tutorial-create-and-manage-azure-virtual-networks-for-linux-virtual-machines-with-the-azure-cli"></a>教程：使用 Azure CLI 为 Linux 虚拟机创建和管理 Azure 虚拟网络
 
-Azure 虚拟机使用 Azure 网络进行内部和外部网络通信。 本教程将指导读者部署两个虚拟机，并为这些 VM 配置 Azure 网络。 本教程中的示例假设 VM 将要托管包含数据库后端的 Web 应用程序，但本教程并不介绍如何部署应用程序。 本教程介绍如何执行下列操作：
+Azure 虚拟机使用 Azure 网络进行内部和外部网络通信。 本教程会指导读者部署两个虚拟机，并为这些 VM 配置 Azure 网络。 本教程中的示例假设 VM 将要托管包含数据库后端的 Web 应用程序，但本教程并未介绍如何部署应用程序。 在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 创建虚拟网络和子网
 > * 创建公共 IP 地址
 > * 创建前端 VM
-> * 安全的网络流量
+> * 保护网络流量的安全
 > * 创建后端 VM
 
 [!INCLUDE [azure-cli-2-azurechinacloud-environment-parameter](../../../includes/azure-cli-2-azurechinacloud-environment-parameter.md)]
@@ -58,7 +58,7 @@ Azure 虚拟网络在虚拟机、Internet 与其他 Azure 服务（例如 Azure 
 
 ## <a name="create-a-virtual-network-and-subnet"></a>创建虚拟网络和子网
 
-本教程将创建包含两个子网的单个虚拟网络。 一个前端子网用于托管 Web 应用程序，一个后端子网用于托管数据库服务器。
+本教程会创建包含两个子网的单个虚拟网络。 一个前端子网用于托管 Web 应用程序，一个后端子网用于托管数据库服务器。
 
 在创建虚拟网络之前，请先使用 [az group create](https://docs.azure.cn/cli/group?view=azure-cli-latest#az-group-create) 创建一个资源组。 以下示例在“chinaeast”位置创建名为 myRGNetwork  的资源组。
 
@@ -147,13 +147,13 @@ az vm create \
   --generate-ssh-keys
 ```
 
-## <a name="secure-network-traffic"></a>安全的网络流量
+## <a name="secure-network-traffic"></a>保护网络流量的安全
 
 网络安全组 (NSG) 包含一系列安全规则，这些规则可以允许或拒绝流向连接到 Azure 虚拟网络 (VNet) 的资源的网络流量。 NSG 可以关联到子网或单个网络接口。 当 NSG 与网络接口关联时，NSG 只会应用到关联的 VM。 将 NSG 关联到子网时，规则适用于连接到该子网的所有资源。 
 
 ### <a name="network-security-group-rules"></a>网络安全组规则
 
-NSG 规则定义要允许或拒绝哪些网络端口上的流量。 这些规则可以包括源和目标 IP 地址范围，以便控制特定系统或子网之间的流量。 NSG 规则还包括优先级（介于 1 和 4096 之间）。 将按优先级顺序来评估规则。 优先级为 100 的规则将在优先级为 200 的规则之前评估。
+NSG 规则定义要允许或拒绝哪些网络端口上的流量。 这些规则可以包括源和目标 IP 地址范围，以便控制特定系统或子网之间的流量。 NSG 规则还包括优先级（介于 1 和 4096 之间）。 将按优先级顺序来评估规则。 优先级为 100 的规则会在优先级为 200 的规则之前评估。
 
 所有 NSG 都包含一组默认规则。 默认规则无法删除，但由于给它们分配的优先级最低，可以用创建的规则来重写它们。
 
@@ -161,11 +161,11 @@ NSG 的默认规则包括：
 
 - **虚拟网络** - 从方向上来说，在虚拟网络中发起和结束的通信可以是入站通信，也可以是出站通信。
 - **Internet** - 允许出站通信，但阻止入站通信。
-- **负载均衡器** - 允许 Azure 的负载均衡器探测 VM 和角色实例的运行状况。 如果不使用负载均衡集，则可覆盖此规则。
+- **负载均衡器** - 允许 Azure 的负载均衡器探测 VM 和角色实例的运行状况。 如果不使用负载均衡集，则可替代此规则。
 
 ### <a name="create-network-security-groups"></a>创建网络安全组
 
-可以在创建 VM 时使用 [az vm create](https://docs.azure.cn/cli/vm?view=azure-cli-latest#az-vm-create) 命令创建网络安全组。 执行此操作时，会将 NSG 与 VM 网络接口相关联，并自动创建一个 NSG 规则来允许 *22* 端口上来自任何源的流量。 在本教程的前面部分中，已在前端 VM 上自动创建了前端 NSG。 也会为端口 22 自动创建 NSG 规则。 
+可以在创建 VM 时使用 [az vm create](https://docs.azure.cn/cli/vm?view=azure-cli-latest#az-vm-create) 命令创建网络安全组。 执行此操作时，会将 NSG 与 VM 网络接口相关联，并自动创建一个 NSG 规则来允许任何源发到 *22* 端口上的流量。 在本教程的前面部分中，已在前端 VM 上自动创建了前端 NSG。 也会为端口 22 自动创建 NSG 规则。 
 
 在某些情况下，预先创建 NSG 可能会有帮助，例如，在不应创建默认 SSH 规则时，或者应该将 NSG 附加到子网时。 
 
@@ -208,7 +208,7 @@ az network nsg rule create \
   --destination-port-range 80
 ```
 
-只能在端口 *22* 和端口 *80* 上访问前端 VM。 其他所有传入流量将在网络安全组中被阻止。 可视化 NSG 规则配置可能很有帮助。 使用 [az network nsg rule list](https://docs.azure.cn/cli/network/nsg/rule?view=azure-cli-latest#az-network-nsg-rule-list) 命令返回 NSG 规则配置。 
+只能在端口 *22* 和端口 *80* 上访问前端 VM。 其他所有传入流量会在网络安全组中被阻止。 可视化 NSG 规则配置可能很有帮助。 使用 [az network nsg rule list](https://docs.azure.cn/cli/network/nsg/rule?view=azure-cli-latest#az-network-nsg-rule-list) 命令返回 NSG 规则配置。 
 
 <!--MOONCAKE: CORRECT ON [az network nsg rule list](https://docs.azure.cn/cli/network/nsg/rule?view=azure-cli-latest#az-network-nsg-rule-list)-->
 
@@ -287,7 +287,7 @@ az vm create \
   --generate-ssh-keys
 ```
 
-只能通过前端子网在端口 *22* 和端口 *3306* 上访问后端 VM。 其他所有传入流量将在网络安全组中被阻止。 可视化 NSG 规则配置可能很有帮助。 使用 [az network nsg rule list](https://docs.azure.cn/cli/network/nsg/rule?view=azure-cli-latest#az-network-nsg-rule-list) 命令返回 NSG 规则配置。 
+只能通过前端子网在端口 *22* 和端口 *3306* 上访问后端 VM。 其他所有传入流量会在网络安全组中被阻止。 可视化 NSG 规则配置可能很有帮助。 使用 [az network nsg rule list](https://docs.azure.cn/cli/network/nsg/rule?view=azure-cli-latest#az-network-nsg-rule-list) 命令返回 NSG 规则配置。 
 
 <!--MOONCAKE: CORRECT ON [az network nsg rule list](https://docs.azure.cn/cli/network/nsg/rule?view=azure-cli-latest#az-network-nsg-rule-list)-->
 
@@ -297,13 +297,13 @@ az network nsg rule list --resource-group myRGNetwork --nsg-name myBackendNSG --
 
 ## <a name="next-steps"></a>后续步骤
 
-本教程介绍了如何创建和保护与虚拟机相关的 Azure 网络。 你已了解如何：
+本教程介绍了如何创建和保护与虚拟机相关的 Azure 网络。 你已了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 创建虚拟网络和子网
 > * 创建公共 IP 地址
 > * 创建前端 VM
-> * 安全的网络流量
+> * 保护网络流量的安全
 > * 创建后端 VM
 
 请继续学习下一教程，了解如何使用 Azure 备份保护虚拟机上的数据。 

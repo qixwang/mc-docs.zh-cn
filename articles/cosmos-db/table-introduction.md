@@ -9,14 +9,14 @@ origin.date: 07/26/2019
 ms.date: 09/09/2019
 ms.author: v-yeche
 ms.openlocfilehash: 7ef5911dae63eb3987721b059f31f06e39bd6968
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79292356"
 ---
 <!--Verify sucessfully-->
-# <a name="introduction-to-azure-cosmos-db-table-api"></a>Azure Cosmos DB 简介：表 API
+# <a name="introduction-to-azure-cosmos-db-table-api"></a>Azure Cosmos DB：表 API 简介
 
 [Azure Cosmos DB](introduction.md) 提供的表 API 适用于为 Azure 表存储编写且需要以下高级功能的应用程序：
 
@@ -55,7 +55,7 @@ ms.locfileid: "79292356"
 
 ## <a name="next-steps"></a>后续步骤
 
-下面是一些可帮助入门的指南：
+下面是一些可帮助你入门的指南：
 * [使用表 API 生成 .NET 应用程序](create-table-dotnet.md)
 * [在 .NET 中使用表 API 进行开发](tutorial-develop-table-dotnet.md)
 * [使用表 API 查询表数据](tutorial-query-table.md)

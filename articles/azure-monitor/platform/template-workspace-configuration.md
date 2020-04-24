@@ -9,10 +9,10 @@ origin.date: 01/09/2020
 ms.date: 2/18/2020
 ms.author: v-lingwu
 ms.openlocfilehash: c235eaa7e0aa83a52cd223f4bff1ee99ccf6b690
-ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/17/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79452549"
 ---
 # <a name="manage-log-analytics-workspace-using-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板管理 Log Analytics 工作区

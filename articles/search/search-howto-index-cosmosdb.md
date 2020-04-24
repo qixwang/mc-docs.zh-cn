@@ -11,10 +11,10 @@ ms.topic: conceptual
 origin.date: 01/02/2020
 ms.date: 03/16/2020
 ms.openlocfilehash: d2c9b718f162e10919cf04fc52b67b7209494b15
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79292430"
 ---
 # <a name="how-to-index-cosmos-db-data-using-an-indexer-in-azure-cognitive-search"></a>如何使用 Azure 认知搜索中的索引器为 Cosmos DB 数据编制索引 
@@ -364,7 +364,7 @@ Azure 认知搜索中的 Cosmos DB 索引器可以抓取通过不同协议访问
         }
     }
 
-## <a name="NextSteps"></a>后续步骤
+## <a name="next-steps"></a><a name="NextSteps"></a>后续步骤
 
 祝贺！ 你已了解如何使用索引器将 Azure Cosmos DB 与 Azure 认知搜索集成。
 

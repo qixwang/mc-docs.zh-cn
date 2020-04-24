@@ -9,10 +9,10 @@ ms.topic: conceptual
 origin.date: 09/26/2019
 ms.date: 11/18/2019
 ms.openlocfilehash: bf103181b1e722ca8947ab36d3f99f09376fb835
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79292704"
 ---
 # <a name="best-practices-for-using-power-bi-to-query-and-visualize-azure-data-explorer-data"></a>有关使用 Power BI 查询和可视化 Azure 数据资源管理器数据的最佳做法
@@ -79,9 +79,9 @@ in
 
 这些选项会连同查询一起发出 [set 语句](https://docs.microsoft.com/azure/kusto/query/setstatement)，以更改默认查询限制：
 
-  * “限制查询结果记录数”生成 `set truncationmaxrecords` 
-  * “限制查询结果数据大小(字节)”生成 `set truncationmaxsize` 
-  * “禁用结果集截断”生成 `set notruncation` 
+  * “限制查询结果记录数”生成 `set truncationmaxrecords`
+  * “限制查询结果数据大小(字节)”生成 `set truncationmaxsize`
+  * “禁用结果集截断”生成 `set notruncation`
 
 ### <a name="using-query-parameters"></a>使用查询参数
 

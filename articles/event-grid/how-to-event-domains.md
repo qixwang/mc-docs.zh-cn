@@ -9,10 +9,10 @@ ms.topic: conceptual
 origin.date: 01/17/2019
 ms.date: 06/03/2019
 ms.openlocfilehash: c0d8ecec559af5db81229211bbb63df9fd5589d5
-ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/17/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79452283"
 ---
 # <a name="manage-topics-and-publish-events-using-event-domains"></a>使用事件域管理主题和发布事件

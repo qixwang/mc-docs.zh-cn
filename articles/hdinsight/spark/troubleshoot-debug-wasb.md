@@ -9,10 +9,10 @@ ms.topic: troubleshooting
 origin.date: 02/18/2020
 ms.date: 03/23/2020
 ms.openlocfilehash: 98ad33b7c5cda47bda89375fff2af0f48bfb08ae
-ms.sourcegitcommit: 32997a7d7585deaeb0ab7b8f928d397b18b343fa
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79295935"
 ---
 # <a name="debug-wasb-file-operations-in-azure-hdinsight"></a>在 Azure HDInsight 中调试 WASB 文件操作

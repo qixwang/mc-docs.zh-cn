@@ -9,10 +9,10 @@ origin.date: 10/17/2019
 ms.date: 12/02/2019
 ms.author: v-jay
 ms.openlocfilehash: 0ee7ec42ef2f74faef432c5006e4092c77165044
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79292692"
 ---
 # <a name="about-vpn-devices-and-ipsecike-parameters-for-site-to-site-vpn-gateway-connections"></a>关于用于站点到站点 VPN 网关连接的 VPN 设备和 IPsec/IKE 参数
@@ -30,7 +30,7 @@ ms.locfileid: "79292692"
   * 动态路由 = RouteBased
 * 除非另有说明，否则高性能 VPN 网关和 RouteBased VPN 网关的规范相同。 例如，经验证与 RouteBased VPN 网关兼容的 VPN 设备也与高性能 VPN 网关兼容。
 
-## <a name="devicetable"></a>验证的 VPN 设备和设备配置指南
+## <a name="validated-vpn-devices-and-device-configuration-guides"></a><a name="devicetable"></a>验证的 VPN 设备和设备配置指南
 
 我们在与设备供应商合作的过程中验证了一系列的标准 VPN 设备。 以下列表的设备系列中的所有设备都应适用于 VPN 网关。 请参阅[关于 VPN 网关设置](vpn-gateway-about-vpn-gateway-settings.md#vpntype)，了解如何将 VPN 类型（PolicyBased 或 RouteBased）用于要配置的 VPN 网关解决方案。
 
@@ -76,7 +76,7 @@ ms.locfileid: "79292692"
 >
 > (\*\*) ISR 7200 系列路由器仅支持 PolicyBased VPN。
 
-## <a name="configscripts"></a>从 Azure 下载 VPN 设备配置脚本
+## <a name="download-vpn-device-configuration-scripts-from-azure"></a><a name="configscripts"></a>从 Azure 下载 VPN 设备配置脚本
 
 对于某些设备，你可以直接从 Azure 下载配置脚本。 有关详细信息和下载说明，请参阅[下载 VPN 设备配置脚本](vpn-gateway-download-vpndevicescript.md)。
 
@@ -84,11 +84,11 @@ ms.locfileid: "79292692"
 
 [!INCLUDE [scripts](../../includes/vpn-gateway-device-configuration-scripts.md)]
 
-## <a name="additionaldevices"></a>未验证的 VPN 设备
+## <a name="non-validated-vpn-devices"></a><a name="additionaldevices"></a>未验证的 VPN 设备
 
 即使没有看到设备在“已验证的 VPN 设备”表列出中，该设备也有可能适用于站点到站点连接。 请联系设备制造商了解更多支持和配置说明。
 
-## <a name="editing"></a>编辑设备配置示例
+## <a name="editing-device-configuration-samples"></a><a name="editing"></a>编辑设备配置示例
 
 在下载提供的 VPN 设备配置示例后，需要替换一些值来反映你环境的设置。
 
@@ -111,7 +111,7 @@ ms.locfileid: "79292692"
 | &lt;SP_AzureGatewayIpAddress&gt; |此信息特定于虚拟网络，位于管理门户的“网关 IP 地址”  中。 |
 | &lt;SP_PresharedKey&gt; |此信息特定于虚拟网络，位于管理门户的“管理密钥”中。 |
 
-## <a name="ipsec"></a>IPsec/IKE 参数
+## <a name="ipsecike-parameters"></a><a name="ipsec"></a>IPsec/IKE 参数
 
 > [!IMPORTANT]
 > 1. 下面各表包含了 Azure VPN 网关在默认配置中使用的算法和参数的组合。 对于使用 Azure 资源管理器部署模型创建的基于路由的 VPN 网关，可以在每个单独的连接上指定一个自定义策略。 有关详细说明，请参阅[配置 IPsec/IKE 策略](vpn-gateway-ipsecikepolicy-rm-powershell.md)。
@@ -147,7 +147,7 @@ ms.locfileid: "79292692"
 | 死对等体检测 (DPD)     |不支持  |支持                                    |
 
 
-### <a name ="RouteBasedOffers"></a>RouteBased VPN IPsec 安全关联（IKE 快速模式 SA）产品/服务
+### <a name="routebased-vpn-ipsec-security-association-ike-quick-mode-sa-offers"></a><a name ="RouteBasedOffers"></a>RouteBased VPN IPsec 安全关联（IKE 快速模式 SA）产品/服务
 
 下表列出了 IPsec SA（IKE 快速模式）产品/服务。 这些产品按提供或接受产品的偏好顺序列出。
 
@@ -196,7 +196,7 @@ ms.locfileid: "79292692"
 * 可以使用 RouteBased 和 HighPerformance VPN 网关指定 IPsec ESP NULL 加密。 基于 Null 的加密不对传输中的数据提供保护，仅应在需要最大吞吐量和最小延迟时才使用。 客户端可以在 VNet 到 VNet 通信方案中选择使用此方法，或者在解决方案中的其他位置应用加密时使用此方法。
 * 若要通过 Internet 建立跨界连接，请使用默认的 Azure VPN 网关设置以及上表中列出的加密和哈希算法，确保关键通信的安全性。
 
-## <a name="known"></a>已知的设备兼容性问题
+## <a name="known-device-compatibility-issues"></a><a name="known"></a>已知的设备兼容性问题
 
 > [!IMPORTANT]
 > 这些是第三方 VPN 设备与 Azure VPN 网关之间的已知兼容性问题。 Azure 团队正积极与供应商合作解决此处列出的问题。 解决问题后，使用最新的信息更新此页。 请定期查看。

@@ -14,10 +14,10 @@ origin.date: 07/11/2017
 ms.date: 04/30/2018
 ms.author: v-lingwu
 ms.openlocfilehash: 2225c40e435cbf202f01f834fbe56dd89cbc5c2c
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79293396"
 ---
 # <a name="introduction-to-connection-troubleshoot-in-azure-network-watcher"></a>Azure 网络观察程序中排查连接问题功能的简介
@@ -31,7 +31,7 @@ ms.locfileid: "79293396"
 
 下表显示了运行完连接问题故障排除后返回的属性。
 
-|属性  |说明  |
+|properties  |说明  |
 |---------|---------|
 |ConnectionStatus     | 连接检查的状态。 可能的结果为 **Reachable** 和 **Unreachable**。        |
 |AvgLatencyInMs     | 连接检查期间的平均延迟，以毫秒为单位。 （仅当检查状态为 reachable 时才显示）        |
@@ -48,7 +48,7 @@ ms.locfileid: "79293396"
 |Hops[].Issues | 在该跃点上检查期间遇到的问题集合。 如果未出现任何问题，则该值为空。|
 |Hops[].Issues[].Origin | 当前跃点上出现问题的位置。 可能的值包括：<br/> **Inbound** - 问题出现在从前一跃点到当前跃点的链接上<br/>**Outbound** - 问题出现在从当前跃点到下一跃点的链接上<br/>**Local** - 问题出现在当前跃点上。|
 |Hops[].Issues[].Severity | 检测到的问题的严重性。 可能的值为 **Error** 和 **Warning**。 |
-|Hops[].Issues[].Type |所发现问题的类型。 可能的值包括： <br/>**CPU**<br/>**内存**<br/>**GuestFirewall**<br/>**DnsResolution**<br/>**NetworkSecurityRule**<br/>**UserDefinedRoute** |
+|Hops[].Issues[].Type |所发现问题的类型。 可能的值包括： <br/>CPU <br/>**内存**<br/>**GuestFirewall**<br/>**DnsResolution**<br/>**NetworkSecurityRule**<br/>**UserDefinedRoute** |
 |Hops[].Issues[].Context |有关发现的问题的详细信息。|
 |Hops[].Issues[].Context[].key |返回的键值对中的键。|
 |Hops[].Issues[].Context[].value |返回的键值对中的值。|

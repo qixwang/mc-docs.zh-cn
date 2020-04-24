@@ -12,10 +12,10 @@ ms.date: 04/01/2019
 ms.author: v-jay
 ms.reviewer: igorstan
 ms.openlocfilehash: 718cc2079989d5feadb1618ff9f7135d17a4c051
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79293014"
 ---
 # <a name="maximizing-rowgroup-quality-for-columnstore"></a>最大化列存储的行组质量
@@ -34,7 +34,7 @@ ms.locfileid: "79293014"
 
 批量加载或重建列存储索引期间，有时可能因内存不足而无法压缩为每个行组指定的所有行。 如果出现内存压力，列存储索引将修剪行组大小，以便能成功将行组压缩到列存储中。 
 
-如果内存不足，无法将至少 10,000 个行压缩到每个行组中，SQL 数据仓库会生成错误。
+如果内存不足，无法将至少 10,000 个行压缩到每个行组中，SQL 数据仓库将生成错误。
 
 有关批量加载的详细信息，请参阅 [Bulk load into a clustered columnstore index](https://msdn.microsoft.com/library/dn935008.aspx#Bulk )（批量加载到聚集列存储索引中）。
 
@@ -87,7 +87,7 @@ To view an estimate of the memory requirements to compress a rowgroup of maximum
 
 其中，short-string-columns 使用 <= 32 字节的字符串数据类型，long-string-columns 使用 > 32 字节的字符串数据类型。
 
-使用专为压缩文本设计的压缩方法来压缩长字符串。 此压缩方法使用 *词典* 来存储文本模式。 词典最大大小为 16 MB。 行组中每个长字符串列只能有一个词典。
+使用专为压缩文本设计的压缩方法来压缩长字符串。 此压缩方法使用*字典*来存储文本模式。 字典最大大小为 16 MB。 行组中每个长字符串列只能有一个字典。
 
 有关列存储内存需求的深入讨论，请观看视频 [Azure SQL Data Warehouse scaling: configuration and guidance](https://channel9.msdn.com/Events/Ignite/2016/BRK3291)（Azure SQL 数据仓库缩放：配置和指南）。
 
@@ -96,7 +96,7 @@ To view an estimate of the memory requirements to compress a rowgroup of maximum
 使用以下技巧来减少内存需求，以便能将行组压缩到列存储索引中。
 
 ### <a name="use-fewer-columns"></a>减少所用列数
-设计表时尽可能减少所用列数。 如果行组已压缩到列存储中，列存储索引会单独压缩每个列段。 因此，用于压缩行组的内存需求随列数的增加而增加。
+设计表时尽可能减少所用列数。 如果行组已压缩到列存储中，列存储索引将单独压缩每个列段。 因此，用于压缩行组的内存需求将随列数的增加而增加。
 
 
 ### <a name="use-fewer-string-columns"></a>减少字符串列数
@@ -105,7 +105,7 @@ To view an estimate of the memory requirements to compress a rowgroup of maximum
 字符串压缩的额外内存需求：
 
 - 对于最多 32 个字符的字符串数据类型，每个值可能需要 32 个额外字节。
-- 具有超过 32 个字符的字符串数据类型会通过词典的方法来进行压缩。  行组中每个列可能需要最多 16 MB 的额外内存来生成词典。
+- 具有超过 32 个字符的字符串数据类型会通过字典的方法来进行压缩。  行组中每个列可能需要最多 16 MB 的额外内存来生成字典。
 
 ### <a name="avoid-over-partitioning"></a>避免过度分区
 
@@ -117,7 +117,7 @@ To view an estimate of the memory requirements to compress a rowgroup of maximum
 
 数据库会在查询的所有运算符之间共享查询的内存授予。 如果加载查询的排序和联接复杂，可用于压缩的内存将减少。
 
-请仅针对加载查询而设计加载查询。 如果要对数据运行转换，请与加载查询分开来运行转换。 例如，将数据暂存在一个堆表中，运行转换，并将临时表加载到列存储索引中。 也可先加载数据，并使用 MPP 系统来转换数据。
+请仅针对加载查询而设计加载查询。 如果要对数据运行转换，请与加载查询分开来运行转换。 例如，将数据暂存在一个堆表中，运行转换，然后将临时表加载到列存储索引中。 也可先加载数据，然后使用 MPP 系统来转换数据。
 
 ### <a name="adjust-maxdop"></a>调整 MAXDOP
 

@@ -8,10 +8,10 @@ origin.date: 10/07/2019
 ms.date: 2/20/2020
 ms.author: v-lingwu
 ms.openlocfilehash: d5acdc693748e56f18a03bf396d60406ec15afde
-ms.sourcegitcommit: dc862610e2169c1fce6fb0ae9eb7dd7567f86a0a
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79293760"
 ---
 # <a name="azure-monitor-overview"></a>Azure Monitor 概述
@@ -27,7 +27,7 @@ Azure Monitor 提供用于收集、分析和处理来自云与本地环境的遥
 
 ## <a name="overview"></a>概述
 
-下图提供了 Azure Monitor 的概要视图。 示意图的中心是用于存储指标和日志（Azure Monitor 使用的两种基本数据类型）的数据存储。 左侧是用于填充这些[数据存储](platform/data-platform.md)的[监视数据源](platform/data-sources.md)。 右侧是 Azure Monitor 针对这些收集的数据执行的不同功能，例如分析、警报和流式传输到外部系统。
+下图提供了 Azure Monitor 的概要视图。 示意图的中心是用于存储指标和日志（Azure Monitor 使用的两种基本类型的数据）的数据存储。 左侧是用于填充这些[数据存储](platform/data-sources.md)的[监视数据源](platform/data-platform.md)。 右侧是 Azure Monitor 针对这些收集的数据执行的不同功能，例如分析、警报和流式传输到外部系统。
 
 ![Azure Monitor 概述](media/overview/overview.png)
 
@@ -37,7 +37,7 @@ Azure Monitor 收集的所有数据属于以下两种基本类型之一：[指�
 
 Azure 门户中的“概述”页会直接显示 Azure Monitor 针对许多 Azure 资源收集的数据。 例如，在查看任一虚拟机时，多个图表会显示性能指标。 单击任一图形会在 Azure 门户上的[指标资源管理器](platform/metrics-charts.md)中打开数据，可在其中绘制多个指标在不同时间段的值的图表。  可以通过交互方式查看图表，也可以将其固定到某个仪表板，与其他可视化效果一起查看。
 
-![指标](media/overview/metrics.png)
+![度量值](media/overview/metrics.png)
 
 可以使用[查询](log-query/log-query-overview.md)来分析 Azure Monitor 收集的日志数据，这些查询可以快速检索、合并和分析所收集的数据。  可以在 Azure 门户中使用 Log Analytics 创建和测试查询，然后直接使用这些工具分析数据，或者保存查询以用于[可视化效果](visualizations.md)或[警报规则](platform/alerts-overview.md)。
 
@@ -47,7 +47,7 @@ Azure Monitor 使用 Azure 数据资源管理器使用的 [Kusto 查询语言](/
 
 ## <a name="what-data-does-azure-monitor-collect"></a>Azure Monitor 收集哪些数据？
 
-Azure Monitor 可从各种源收集数据。 可以将应用程序的监视数据按层划分，范围从应用程序、应用程序依赖的任何操作系统和服务，到平台本身。 Azure Monitor 从以下每个层收集数据：
+Azure Monitor 可从各种源收集数据。 可将应用程序的监视数据视为划分了层次，范围从应用程序、应用程序依赖的任何操作系统和服务，直到平台本身。 Azure Monitor 从以下每个层收集数据：
 
 - **应用程序监视数据**：有关编写的代码的性能和功能的数据，不管平台是什么。
 - **来宾 OS 监视数据**：有关运行应用程序的操作系统的数据。 此应用程序可以在 Azure 中运行，也可以在其他云中或本地运行。 
@@ -65,7 +65,7 @@ Azure Monitor 可从各种源收集数据。 可以将应用程序的监视数�
 
 Azure Monitor 可以使用[数据收集器 API](platform/data-collector-api.md) 从任何 REST 客户端收集日志数据。 这样，便可以创建自定义监视方案，并将监视范围扩展到不通过其他源公开遥测数据的资源。
 
-## <a name="insights"></a>见解
+## <a name="insights"></a>洞察力
 仅当能够有利于洞察计算环境的操作时，监视数据才有作用。 Azure Monitor 包含多种功能和工具，可以提供应用程序及其依赖的其他资源的有用见解。 [监视解决方案](insights/solutions.md)和 [Application Insights](app/app-insights-overview.md) 与[用于容器的 Azure Monitor](insights/container-insights-overview.md) 等功能在应用程序和特定 Azure 服务的不同方面提供深入见解。 
 
 ### <a name="application-insights"></a>Application Insights
@@ -100,7 +100,7 @@ Azure Monitor 中的警报规则使用[操作组](platform/action-groups.md)，�
 ![自动缩放](media/overview/autoscale.png)
 
 ## <a name="visualizing-monitoring-data"></a>可视化监视数据
-图表和表等[可视化效果](visualizations.md)是用于汇总监视数据并向不同的受众呈现这些数据的有效工具。 Azure Monitor 自身具有可视化监视数据的功能，并可利用其他 Azure 服务将这些数据发布到不同的受众。
+图表和表等[可视化效果](visualizations.md)是用于汇总监视数据并向不同的受众呈现这些数据的有效工具。 Azure Monitor 具有自身的可视化监视数据的功能，并可利用其他 Azure 服务将这些数据发布到不同的受众。
 
 ### <a name="dashboards"></a>仪表板
 使用 [Azure 仪表板](../azure-portal/azure-portal-dashboards.md)可将不同类型的数据（包括指标和日志）合并到 [Azure 门户](https://portal.azure.com)的单个窗格中。 可以选择与其他 Azure 用户共享仪表板。 除了任何日志查询或指标图表的输出以外，还可将整个 Azure Monitor 中的元素添加到 Azure 仪表板。 例如，可以创建一个包含多个磁贴的仪表板，这些磁贴分别用于显示指标图、活动日志表、Application Insights 的使用情况图表，以及日志查询的输出。

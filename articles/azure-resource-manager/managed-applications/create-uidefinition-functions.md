@@ -7,10 +7,10 @@ origin.date: 10/12/2017
 ms.date: 01/20/2020
 ms.author: v-yeche
 ms.openlocfilehash: 5e63a95765455ae06c7810dc94ef52544d2196ed
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79293018"
 ---
 # <a name="createuidefinition-functions"></a>CreateUiDefinition 函数
@@ -49,7 +49,7 @@ ms.locfileid: "79293018"
 ### <a name="steps"></a>steps
 返回在指定步骤中定义的元素的输出值。 若要获取 Basics 步骤中的元素的输出值，请改用 `basics()`。
 
-下面的示例返回 `foo` 步骤中名为 `bar` 的元素的输出：
+下面的示例返回 `bar` 步骤中名为 `foo` 的元素的输出：
 
 ```json
 "[steps('foo').bar]"
@@ -94,7 +94,7 @@ ms.locfileid: "79293018"
 "[replace('Everything is terrible!', 'terrible', 'awesome')]"
 ```
 
-### <a name="guid"></a>GUID
+### <a name="guid"></a>guid
 生成全局唯一字符串 (GUID)。
 
 以下示例可能返回 `"c7bc8bdc-7252-4a82-ba53-7c468679a511"`：
@@ -157,7 +157,7 @@ ms.locfileid: "79293018"
 "[contains(steps('foo').element1, 'key1')]"
 ```
 
-### <a name="length"></a>length
+### <a name="length"></a>长度
 返回字符串中的字符数、数组中的值数，或对象中的键数。
 
 #### <a name="example-1-string"></a>示例 1：字符串
@@ -463,7 +463,7 @@ ms.locfileid: "79293018"
 ```
 
 ### <a name="not"></a>not
-如果参数的计算结果为 `false`，则返回 `true`。 此函数仅支持布尔类型的参数。
+如果参数的计算结果为 `true`，则返回 `false`。 此函数仅支持布尔类型的参数。
 
 以下示例返回 `true`：
 
@@ -504,7 +504,7 @@ ms.locfileid: "79293018"
 "[int(2.9)]"
 ```
 
-### <a name="float"></a>float
+### <a name="float"></a>FLOAT
 将参数转换为浮点。 此函数支持数字和字符串类型的参数。
 
 以下示例返回 `1.0`：
@@ -519,7 +519,7 @@ ms.locfileid: "79293018"
 "[float(2.9)]"
 ```
 
-### <a name="string"></a>string
+### <a name="string"></a>字符串
 将参数转换为字符串。 此函数支持所有 JSON 数据类型的参数。
 
 以下示例返回 `"1"`：

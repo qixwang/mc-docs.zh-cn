@@ -10,10 +10,10 @@ ms.date: 3/13/2019
 ms.author: v-lingwu
 ms.subservice: logs
 ms.openlocfilehash: 323593980b6a4c1e320df79552682db4c0d2e945
-ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/17/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79452584"
 ---
 # <a name="view-and-retrieve-azure-activity-log-events"></a>查看和检索 Azure 活动日志事件

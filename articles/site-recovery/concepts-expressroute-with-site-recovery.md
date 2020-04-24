@@ -10,10 +10,10 @@ origin.date: 10/13/2019
 ms.date: 01/13/2020
 ms.author: v-yeche
 ms.openlocfilehash: 505508445d923868c929e128f2ef907e6b62f5ee
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79292866"
 ---
 # <a name="azure-expressroute-with-azure-site-recovery"></a>将 Azure ExpressRoute 与 Azure Site Recovery 结合使用
@@ -27,7 +27,7 @@ ms.locfileid: "79292866"
 
 ## <a name="expressroute-circuits"></a>ExpressRoute 线路
 
-ExpressRoute 线路表示通过连接提供商在本地基础结构与 Azure 云服务之间建立的逻辑连接。 可以订购多条 ExpressRoute 线路。 每条线路可以位于相同或不同的区域，且可以通过不同的连接提供商连接到各个场所。 从[此处](../expressroute/expressroute-circuit-peerings.md)详细了解 ExpressRoute 线路。
+ExpressRoute 线路表示通过连接提供商在本地基础结构与 Azure 云服务之间建立的逻辑连接。 可以订购多条 ExpressRoute 线路。 每条线路可以位于相同或不同的区域，且可以通过不同的连接提供程序连接到本地。 从[此处](../expressroute/expressroute-circuit-peerings.md)详细了解 ExpressRoute 线路。
 
 一条 ExpressRoute 线路有多个关联的路由域。 从[此处](../expressroute/expressroute-circuit-peerings.md#peeringcompare)详细了解并比较 ExpressRoute 路由域。
 

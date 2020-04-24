@@ -8,10 +8,10 @@ ms.topic: conceptual
 origin.date: 2/27/2020
 ms.date: 03/16/2020
 ms.openlocfilehash: 02604ba42ec74ba031550abe63b9a0f92244a500
-ms.sourcegitcommit: 32997a7d7585deaeb0ab7b8f928d397b18b343fa
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79295887"
 ---
 # <a name="migrate-your-mysql-database-by-using-import-and-export"></a>使用导入和导出迁移 MySQL 数据库
@@ -21,7 +21,7 @@ ms.locfileid: "79295887"
 
 本文介绍通过使用 MySQL Workbench 将数据导入和导出到 Azure Database for MySQL 服务器的两种常用方法。 
 
-## <a name="before-you-begin"></a>准备阶段
+## <a name="before-you-begin"></a>开始之前
 若要逐步执行本操作方法指南，需要：
 - 按照[使用 Azure 门户创建 Azure Database for MySQL 服务器](quickstart-create-mysql-server-database-using-azure-portal.md)所述创建的 Azure Database for MySQL 服务器。
 - MySQL Workbench [MySQL Workbench 下载](https://dev.mysql.com/downloads/workbench/)或其他用于执行导入/导出的第三方 MySQL 工具。
@@ -47,7 +47,7 @@ ms.locfileid: "79295887"
 ## <a name="determine-when-to-use-import-and-export-techniques-instead-of-a-dump-and-restore"></a>确定何时使用导入和导出技术（而不是转储和还原技术）
 在以下情况下，使用 MySQL 工具将数据库导入和导出到 Azure MySQL 数据库中。 而在其他情况下，使用[转储和还原](concepts-migrate-dump-restore.md)可能更有益。 
 
-- 需要有选择性地选择要从现有 MySQL 数据库导入到 Azure MySQL 数据库的几个表时，最好使用导入和导出技术。  这样做，可以在迁移过程中省略任何不需要的表，从而节省时间和资源。 例如，使用带有 [mysqlpump](https://dev.mysql.com/doc/refman/5.7/en/mysqlpump.html#option_mysqlpump_include-tables) 的 `--include-tables` 或 `--exclude-tables` switch 语句以及带有 [mysqldump](https://dev.mysql.com/doc/refman/5.7/en/mysqldump.html#option_mysqldump_tables) 的 `--tables` switch 语句。
+- 需要有选择性地选择要从现有 MySQL 数据库导入到 Azure MySQL 数据库的几个表时，最好使用导入和导出技术。  这样做，可以在迁移过程中省略任何不需要的表，从而节省时间和资源。 例如，使用带有 `--include-tables`mysqlpump`--exclude-tables` 的 [ 或 ](https://dev.mysql.com/doc/refman/5.7/en/mysqlpump.html#option_mysqlpump_include-tables) switch 语句以及带有 `--tables`mysqldump[ 的 ](https://dev.mysql.com/doc/refman/5.7/en/mysqldump.html#option_mysqldump_tables) switch 语句。
 - 移动表以外的数据库对象时，显式创建这些对象。 包括约束（主键、外键、索引）、视图、函数、过程、触发器和想要迁移的任何其他数据库对象。
 - 从 MySQL 数据库以外的外部数据源迁移数据时，使用 [mysqlimport](https://dev.mysql.com/doc/refman/5.7/en/mysqlimport.html) 创建平面文件并导入它们。
 
@@ -88,7 +88,7 @@ ms.locfileid: "79295887"
 下面的示例将从 CSV 文件导入表：
 1. 右键单击要导入的数据库的表。 
 2. 浏览要导入的 CSV 文件并选择它，然后单击“下一步”  。 
-3. 选择目标表（新的或现有的），然后选择或取消选择“导入前截断表”  复选框。 单击“下一步”  。
+3. 选择目标表（新的或现有的），然后选择或取消选择“导入前截断表”  复选框。 单击“下一步”。 
 4. 选择编码和要导入的列，然后单击“下一步”  。 
 5. 在“导入数据”  页上，单击“下一步”  。 向导相应地导入数据。
 

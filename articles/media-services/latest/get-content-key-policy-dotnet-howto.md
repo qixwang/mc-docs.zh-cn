@@ -14,10 +14,10 @@ origin.date: 04/15/2019
 ms.date: 03/04/2020
 ms.author: v-jay
 ms.openlocfilehash: bdd1211250c1f8661b4b20ebae403b3218a6e3de
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79291558"
 ---
 # <a name="get-a-signing-key-from-the-existing-policy"></a>从现有策略获取签名密钥

@@ -8,21 +8,21 @@ origin.date: 10/18/2018
 ms.date: 03/06/2020
 ms.author: v-lingwu
 ms.openlocfilehash: 6f093276b0ed0b6bcc3df26de6051931376e1163
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79290850"
 ---
 # <a name="back-up-sql-server-to-azure-as-a-dpm-workload"></a>将 SQL Server 备份到 Azure 作为 DPM 工作负荷
 
 本文将引导你使用 Azure 备份完成 SQL Server 数据库的备份配置步骤。
 
-若要将 SQL Server 数据库备份到 Azure，需要一个 Azure 帐户。 如果没有帐户，只需几分钟就能创建一个试用帐户。 有关详细信息，请参阅[创建 Azure 试用帐户](https://wd.azure.cn/zh-cn/pricing/1rmb-trial-full)。
+要将 SQL Server 数据库备份到 Azure，需要一个 Azure 帐户。 如果没有帐户，只需几分钟就能创建一个试用帐户。 有关详细信息，请参阅[创建 Azure 试用帐户](https://wd.azure.cn/zh-cn/pricing/1rmb-trial-full)。
 
 若要将 SQL Server 数据库备份到 Azure 并从 Azure 恢复该数据库：
 
-1. 创建一个备份策略用于保护 Azure 中的 SQL Server 数据库。
+1. 创建一个备份策略以便在 Azure 中保护 SQL Server 数据库。
 1. 在 Azure 中创建按需备份副本。
 1. 从 Azure 恢复数据库。
 
@@ -36,7 +36,7 @@ ms.locfileid: "79290850"
 
 ## <a name="create-a-backup-policy"></a>创建备份策略 
 
-若要保护 Azure 中的 SQL Server 数据库，请先创建一个备份策略：
+若要在 Azure 中保护 SQL Server 数据库，请先创建一个备份策略：
 
 1. 在 Data Protection Manager (DPM) 服务器上选择“保护”工作区。 
 1. 选择“新建”以创建保护组。 
@@ -59,11 +59,11 @@ ms.locfileid: "79290850"
     ![设置备份保护的短期目标](./media/backup-azure-backup-sql/pg-shortterm.png)
 
    > [!NOTE]
-   > 在此示例中，将在每天晚上 8:00 创建一个备份点。 将传输自前一天晚上 8:00 的备份点以来修改了的数据。 此过程称为 **快速完整备份**。 尽管事务日志每隔 15 分钟同步一次，但如果需要在晚上 9:00 恢复数据库，则会重播自上一个快速完整备份点（在本示例中为晚上 8 点）以来的日志，从而创建备份点。
+   > 在此示例中，将在每天晚上 8:00 创建一个备份点。 自前一天晚上 8:00 的备份点以来修改了的数据将被传输。 此过程称为“**快速完整备份**”。 尽管事务日志每隔 15 分钟同步一次，但如果需要在晚上 9:00 恢复数据库，则会重播自上一个快速完整备份点（在本示例中为晚上 8:00）以来的日志，从而创建备份点。
    >
    >
 
-1. 选择“**下一步**”。 DPM 将显示可用的总存储空间。 它还显示潜在的磁盘空间利用率。
+1. 选择“**下一页**”。 DPM 将显示可用的总存储空间。 它还显示潜在的磁盘空间利用率。
 
     ![设置磁盘分配](./media/backup-azure-backup-sql/pg-storage.png)
 
@@ -150,7 +150,7 @@ ms.locfileid: "79290850"
 1. 右键单击数据库名称并选择“恢复”。 
 
     ![从 Azure 恢复数据库](./media/backup-azure-backup-sql/sqlbackup-recover.png)
-1. DPM 会显示恢复点的详细信息。 选择“**下一步**”。 选择恢复类型“**恢复到 SQL Server 的原始实例**”。 然后，选择“下一步”  。
+1. DPM 会显示恢复点的详细信息。 选择“**下一页**”。 选择恢复类型“**恢复到 SQL Server 的原始实例**”。 然后，选择“下一步”  。
 
     ![将数据库恢复到其原始位置](./media/backup-azure-backup-sql/sqlbackup-recoveroriginal.png)
 

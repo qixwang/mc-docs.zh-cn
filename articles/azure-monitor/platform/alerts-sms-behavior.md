@@ -1,5 +1,5 @@
 ---
-title: 操作组中的短信通知行为
+title: 操作组中的短信警报行为
 description: 短信格式，以及回复短信以取消订阅、重新订阅或请求帮助。
 author: dkamstra
 services: monitoring
@@ -9,10 +9,10 @@ ms.date: 02/26/2018
 ms.author: dukek
 ms.subservice: alerts
 ms.openlocfilehash: d2711f12991f4a6304c16591d118a4816bf890c5
-ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/17/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79452367"
 ---
 # <a name="sms-alert-behavior-in-action-groups"></a>操作组中的短信通知行为

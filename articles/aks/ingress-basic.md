@@ -7,10 +7,10 @@ origin.date: 12/20/2019
 ms.date: 03/10/2020
 ms.author: v-yeche
 ms.openlocfilehash: d8317592e6788d78223a828cb0e49f534c12a12a
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79290827"
 ---
 # <a name="create-an-ingress-controller-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中创建入口控制器
@@ -19,7 +19,7 @@ ms.locfileid: "79290827"
 
 本文介绍如何在 Azure Kubernetes 服务 (AKS) 群集中部署 [NGINX 入口控制器][nginx-ingress]。 然后在 AKS 群集中运行两个应用程序（可通过单个 IP 地址访问其中的每个应用程序）。
 
-也可执行以下操作：
+你还可以：
 
 <!--Not Available on - [Enable the HTTP application routing add-on][aks-http-app-routing]-->
 
@@ -27,7 +27,7 @@ ms.locfileid: "79290827"
 - [创建使用你自己的 TLS 证书的入口控制器][aks-ingress-own-tls]
 - 创建一个使用 Let's Encrypt 的入口控制器，以自动生成[具有动态公共 IP 地址][aks-ingress-tls]或[具有静态公共 IP 地址][aks-ingress-static-tls]的 TLS 证书
 
-## <a name="before-you-begin"></a>准备阶段
+## <a name="before-you-begin"></a>开始之前
 
 本文使用 Helm 安装 NGINX 入口控制器和示例 Web 应用。
 
@@ -240,7 +240,7 @@ kubectl delete namespace ingress-basic
 - [Helm CLI][helm-cli]
 - [NGINX 入口控制器][nginx-ingress]
 
-也可执行以下操作：
+你还可以：
 
 <!--Not Available on - [Enable the HTTP application routing add-on][aks-http-app-routing]-->
 

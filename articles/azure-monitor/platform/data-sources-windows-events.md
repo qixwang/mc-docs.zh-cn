@@ -10,10 +10,10 @@ origin.date: 11/28/2018
 ms.date: 01/21/2019
 ms.author: v-lingwu
 ms.openlocfilehash: 133db6df8d72b5a15a546a65461ba590860a6cac
-ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/17/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79452290"
 ---
 # <a name="windows-event-log-data-sources-in-azure-monitor"></a>Azure Monitor 中的 Windows 事件日志数据源
@@ -24,7 +24,7 @@ ms.locfileid: "79452290"
 ## <a name="configuring-windows-event-logs"></a>配置 Windows 事件日志
 可以从[“高级设置”中的“数据”菜单](agent-data-sources.md#configuring-data-sources)配置 Windows 事件日志。
 
-Azure Monitor 仅从在设置中指定的 Windows 事件日志收集事件。  可以通过键入日志名称并单击“+”  添加事件日志。  对于每个日志，仅收集具有所选严重级别的事件。  检查要收集的特定日志的严重级别。  不能向筛选事件提供任何其他条件。
+Azure Monitor 仅从在设置中指定的 Windows 事件日志收集事件。  可以通过键入日志名称并单击“ **”+** 添加事件日志。  对于每个日志，仅收集具有所选严重级别的事件。  检查要收集的特定日志的严重级别。  不能向筛选事件提供任何其他条件。
 
 键入事件日志名称时，Azure Monitor 会提供常见事件日志名称的建议。 如果要添加的日志未显示在列表中，仍可以通过键入日志全名添加。 可以使用事件查看器查找日志全名。 在事件查看器中，打开日志的“属性”  页面，并从“全名”  字段复制字符串。
 
@@ -43,7 +43,7 @@ Azure Monitor 在事件创建时从受监视的事件日志中收集与所选严
 ## <a name="windows-event-records-properties"></a>Windows 事件的记录属性
 Windows 事件记录都有一个**事件**类型，并且具有下表中的属性：
 
-| 属性 | 说明 |
+| properties | 说明 |
 |:--- |:--- |
 | Computer |从中收集事件的计算机的名称。 |
 | EventCategory |事件的类别。 |
@@ -55,7 +55,7 @@ Windows 事件记录都有一个**事件**类型，并且具有下表中的属�
 | ParameterXml |XML 格式的事件参数值。 |
 | ManagementGroupName |System Center Operations Manager 代理的管理组名称。  对于其他代理，该值为 `AOI-<workspace ID>` |
 | RenderedDescription |具有参数值的事件描述 |
-| Source |事件源。 |
+| 源 |事件源。 |
 | SourceSystem |从中收集事件的代理类型。 <br> OpsManager – Windows 代理，直接连接或 Operations Manager 管理 <br> Linux - 所有 Linux 代理  <br> AzureStorage – Azure 诊断 |
 | TimeGenerated |在 Windows 中创建事件的日期和时间。 |
 | UserName |记录事件的帐户的用户名。 |

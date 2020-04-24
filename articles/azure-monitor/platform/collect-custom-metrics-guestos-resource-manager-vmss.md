@@ -9,10 +9,10 @@ ms.date: 09/23/2019
 ms.author: v-lingwu
 ms.subservice: metrics
 ms.openlocfilehash: 5e369b0fe7d9678207bd8e114d0d7da4d9a40b7a
-ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/17/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79452324"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-by-using-an-azure-resource-manager-template-for-a-windows-virtual-machine-scale-set"></a>使用 Windows 虚拟机规模集的 Azure 资源管理器模板将来宾 OS 指标发送到 Azure Monitor 指标存储
@@ -25,7 +25,7 @@ ms.locfileid: "79452324"
 
 如果你不熟悉资源管理器模板，请了解[模板部署](../../azure-resource-manager/management/overview.md)及其结构和语法。  
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - 你的订阅必须已注册到 [Microsoft.Insights](/azure-resource-manager/resource-manager-supported-services)。 
 
@@ -286,7 +286,7 @@ MSI 扩展中的以下代码还会将诊断扩展和配置作为扩展资源添�
 
 1. 在命名空间下拉菜单中，选择“azure.vm.windows.guest”。  
 
-1. 在指标下拉菜单中，选择“内存”\%“已提交的使用字节数”  。  
+1. 在指标下拉菜单中，选择“内存” **“已提交的使用字节数”\%** 。  
 
 然后，还可以选择使用此指标中的维度，来为特定的 VM 绘制此指标的图表，或者绘制规模集中每个 VM 的图表。 
 

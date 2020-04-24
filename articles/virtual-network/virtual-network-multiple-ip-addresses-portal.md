@@ -17,21 +17,21 @@ origin.date: 11/30/2016
 ms.date: 02/24/2020
 ms.author: v-yeche
 ms.openlocfilehash: 5fd89e04fa164883d3ef7e10b55e15ec1600ca44
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79292299"
 ---
 # <a name="assign-multiple-ip-addresses-to-virtual-machines-using-the-azure-portal"></a>使用 Azure 门户将多个 IP 地址分配给虚拟机
 
 > [!INCLUDE [virtual-network-multiple-ip-addresses-intro.md](../../includes/virtual-network-multiple-ip-addresses-intro.md)]
 > 
-> 本文介绍如何使用 Azure 门户通过 Azure Resource Manager 部署模型创建虚拟机 (VM)。 无法将多个 IP 地址分配到通过经典部署模型创建的资源。 若要详细了解 Azure 部署模型，请阅读 [Understand deployment models](../resource-manager-deployment-model.md)（了解部署模型）一文。
+> 本文介绍如何使用 Azure 门户通过 Azure 资源管理器部署模型创建虚拟机 (VM)。 无法将多个 IP 地址分配到通过经典部署模型创建的资源。 若要详细了解 Azure 部署模型，请阅读 [Understand deployment models](../resource-manager-deployment-model.md)（了解部署模型）一文。
 
 [!INCLUDE [virtual-network-multiple-ip-addresses-scenario.md](../../includes/virtual-network-multiple-ip-addresses-scenario.md)]
 
-## <a name = "create"></a>创建具有多个 IP 地址的 VM
+## <a name="create-a-vm-with-multiple-ip-addresses"></a><a name = "create"></a>创建具有多个 IP 地址的 VM
 
 若要创建具有多个 IP 地址或一个静态专用 IP 地址的 VM，则必须使用 PowerShell 或 Azure CLI 来创建。 相关操作步骤，请单击本文顶部的 PowerShell 或 CLI 选项。 可使用单个动态专用 IP 地址和（可选）单个公共 IP 地址创建 VM。 请按照[创建 Windows VM](../virtual-machines/virtual-machines-windows-hero-tutorial.md) 或[创建 Linux VM](../virtual-machines/linux/quick-create-portal.md) 文章中的步骤使用门户。 创建 VM 后，可以按照本文[向 VM 添加 IP 地址](#add)部分中的以下步骤，可使用门户将 IP 地址类型从动态更改为静态并添加其他 IP 地址。
 
@@ -47,7 +47,7 @@ ms.locfileid: "79292299"
 2. 在门户中单击“更多服务”> 在筛选框中键入“虚拟机”，并单击“虚拟机”    。
 3. 在“虚拟机”窗格中，单击要向其添加 IP 地址的 VM  。 在显示的“虚拟机”窗格中单击“网络接口”，并选择要向其添加 IP 地址的网络接口  。 在下图所示的示例中，已从名为“myVM”的 VM 中选定名为“myNIC”的 NIC   ：
 
-    ![Linux](./media/virtual-network-multiple-ip-addresses-portal/figure1.png)
+    ![网络接口](./media/virtual-network-multiple-ip-addresses-portal/figure1.png)
 
 4. 在针对所选 NIC 显示的窗格中，单击“IP 配置”  。
 
@@ -57,7 +57,7 @@ ms.locfileid: "79292299"
 
 完成以下步骤，添加新的专用 IP 地址：
 
-1. 完成本文 [核心步骤](#coreadd) 部分的步骤。
+1. 完成本文[核心步骤](#coreadd)部分的步骤。
 2. 单击“添加”  。 在显示的“添加 IP 配置”窗格中，创建名为“IPConfig-4”的 IP 配置，以“10.0.0.7”作为“静态”专用 IP 地址，并单击“确定”      。
 
     > [!NOTE]
@@ -72,7 +72,7 @@ ms.locfileid: "79292299"
 将公共 IP 地址资源关联到新 IP 配置或现有 IP 配置即可添加公共 IP 地址。
 
 > [!NOTE]
-> 公共 IP 地址会产生少许费用。 有关 IP 地址定价的详细信息，请阅读 [IP 地址定价](https://www.azure.cn/pricing/details/ip-addresses/)页。 可在一个订阅中使用的公共 IP 地址数有限制。 有关限制的详细信息，请阅读 [Azure limits](../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits)（Azure 限制）一文。
+> 公共 IP 地址会产生少许费用。 有关 IP 地址定价的详细信息，请阅读 [IP 地址定价](https://www.azure.cn/pricing/details/ip-addresses/)页。 在一个订阅中可以使用的公共 IP 地址数有限制。 有关限制的详细信息，请阅读 [Azure limits](../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits)（Azure 限制）一文。
 > 
 
 <a name="create-public-ip"></a>
@@ -81,7 +81,7 @@ ms.locfileid: "79292299"
 公共 IP 地址是针对公共 IP 地址资源的一种设置。 如果公共 IP 地址资源目前所关联到的 IP 配置不是你想要关联到的 IP 配置，可跳过以下步骤，根据需要完成后面某个部分的步骤。 如果没有可用的公共 IP 地址资源，可通过以下步骤创建一个：
 
 1. 根据需要浏览到 Azure 门户（网址为 https://portal.azure.cn ）并登录。
-3. 在门户中，单击“创建资源” > “网络” > “公共 IP 地址”    。
+3. 在门户中，单击“创建资源” **“网络”** “公共 IP 地址” >    >   。
 4. 在显示的“创建公共 IP 地址”窗格中，再输入名称，选择“IP 地址分配”类型、“订阅”、“资源组”和“位置”，然后单击“创建”，如下图所示        ：
 
     ![创建公共 IP 地址资源](./media/virtual-network-multiple-ip-addresses-portal/figure5.png)
@@ -97,7 +97,7 @@ ms.locfileid: "79292299"
 
 3. 查看新 IP 配置。 即使没有向 IP 配置显式分配专用 IP 地址，也会自动分配一个，因为所有 IP 配置都必须有一个专用 IP 地址。
 4. 可以单击“添加”添加其他 IP 配置，也可以关闭所有打开的边栏选项卡，完成添加 IP 地址的操作  。
-5. 将专用 IP 地址添加到 VM 操作系统，只需完成本文 [将 IP 地址添加到 VM 操作系统](#os-config) 部分针对操作系统的步骤即可。 请勿向操作系统添加公共 IP 地址。
+5. 将专用 IP 地址添加到 VM 操作系统，只需完成本文[将 IP 地址添加到 VM 操作系统](#os-config)部分针对操作系统的步骤即可。 请勿向操作系统添加公共 IP 地址。
 
 #### <a name="associate-the-public-ip-address-resource-to-an-existing-ip-configuration"></a>将公共 IP 地址资源关联到现有 IP 配置
 

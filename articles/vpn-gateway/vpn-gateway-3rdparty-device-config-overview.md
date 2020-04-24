@@ -9,10 +9,10 @@ origin.date: 06/20/2017
 ms.date: 02/24/2020
 ms.author: v-jay
 ms.openlocfilehash: 6d470b34c32730fa38ea4344b329956aec183339
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79293492"
 ---
 # <a name="overview-of-partner-vpn-device-configurations"></a>合作伙伴 VPN 设备配置概述
@@ -23,7 +23,7 @@ ms.locfileid: "79293492"
 ## <a name="device-requirements"></a>设备要求
 Azure VPN 网关使用标准 IPsec/IKE 协议套件建立站点到站点 (S2S) VPN 隧道。 若要获取 Azure VPN 网关的 IPsec/IKE 参数和加密算法列表，请参阅[关于 VPN 设备](vpn-gateway-about-vpn-devices.md)。 还可以根据[关于加密要求](vpn-gateway-about-compliance-crypto.md)中所述，为特定的连接指定确切的算法与密钥长度。
 
-## <a name ="singletunnel"></a>单一 VPN 隧道
+## <a name="single-vpn-tunnel"></a><a name ="singletunnel"></a>单一 VPN 隧道
 示例中的首个配置由 Azure VPN 网关与本地 VPN 设备之间的单个 S2S VPN 隧道构成。 可选择性配置[跨 VPN 隧道的边界网关协议(BGP)](#bgp)。
 
 ![单一 S2S VPN 隧道图示](./media/vpn-gateway-3rdparty-device-config-overview/singletunnel.png)
@@ -33,7 +33,7 @@ Azure VPN 网关使用标准 IPsec/IKE 协议套件建立站点到站点 (S2S) V
 ### <a name="connection-parameters"></a>连接参数
 本部分列出了前几部分中示例中所用的参数。
 
-| **参数**                | **值**                    |
+| **Parameter**                | **值**                    |
 | ---                          | ---                          |
 | 虚拟网络地址前缀        | 10.11.0.0/16<br>10.12.0.0/16 |
 | Azure VPN 网关 IP         | Azure VPN 网关 IP         |
@@ -112,7 +112,7 @@ $lng5gw  = Get-AzLocalNetworkGateway -Name $LNGName5 -ResourceGroupName $RG1
 New-AzVirtualNetworkGatewayConnection -Name $Connection15 -ResourceGroupName $RG1 -VirtualNetworkGateway1 $vnet1gw -LocalNetworkGateway2 $lng5gw -Location $Location1 -ConnectionType IPsec -SharedKey 'AzureA1b2C3' -EnableBGP $False
 ```
 
-### <a name ="policybased"></a>（可选）结合“UsePolicyBasedTrafficSelectors”使用自定义 IPsec/IKE 策略
+### <a name="optional-use-custom-ipsecike-policy-with-usepolicybasedtrafficselectors"></a><a name ="policybased"></a>（可选）结合“UsePolicyBasedTrafficSelectors”使用自定义 IPsec/IKE 策略
 如果 VPN 设备不支持“任意到任意”流量选择器（例如基于路由或基于 VTI 的配置），请创建自定义 IPsec/IKE 策略并配置[“UsePolicyBasedTrafficSelectors”](vpn-gateway-connect-multiple-policybased-rm-ps.md)选项。
 
 > [!IMPORTANT]
@@ -121,7 +121,7 @@ New-AzVirtualNetworkGatewayConnection -Name $Connection15 -ResourceGroupName $RG
 
 示例脚本使用以下算法和参数创建 IPsec/IKE 策略：
 * IKEv2：AES256、SHA384、DHGroup24
-* IPsec：AES256、SHA1、PFS24、SA 生存期 7,200 秒和 20,480,000 KB (20 GB)
+* IPsec：AES256、SHA1、PFS24、SA 生存期 7200 秒和 20480000KB (20GB)
 
 该脚本应用 IPsec/IKE 策略，并对连接启用“UsePolicyBasedTrafficSelectors”选项  。
 
@@ -134,7 +134,7 @@ $lng5gw  = Get-AzLocalNetworkGateway -Name $LNGName5 -ResourceGroupName $RG1
 New-AzVirtualNetworkGatewayConnection -Name $Connection15 -ResourceGroupName $RG1 -VirtualNetworkGateway1 $vnet1gw -LocalNetworkGateway2 $lng5gw -Location $Location1 -ConnectionType IPsec -SharedKey 'AzureA1b2C3' -EnableBGP $False -IpsecPolicies $ipsecpolicy5 -UsePolicyBasedTrafficSelectors $True
 ```
 
-### <a name ="bgp"></a>（可选）在 S2S VPN 连接中使用 BGP
+### <a name="optional-use-bgp-on-s2s-vpn-connection"></a><a name ="bgp"></a>（可选）在 S2S VPN 连接中使用 BGP
 创建 S2S VPN 连接时，可选择性地使用[用于 VPN 网关的 BGP](vpn-gateway-bgp-resource-manager-ps.md)。 这种方法有两点不同：
 
 * 本地地址前缀可以是单个主机地址。 本地 BGP 对等 IP 地址指定如下：

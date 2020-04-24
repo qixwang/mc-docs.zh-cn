@@ -8,10 +8,10 @@ origin.date: 09/18/2018
 ms.date: 04/12/2019
 ms.author: v-lingwu
 ms.openlocfilehash: a52c8b2a3b8a4e47a035e4694b13212dcf1d74d5
-ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/17/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79452562"
 ---
 # <a name="create-view-and-manage-classic-metric-alerts-using-azure-monitor"></a>使用 Azure Monitor 创建、查看和管理经典指标警报
@@ -44,7 +44,7 @@ Azure Monitor 中的经典指标警报提供了一种在指标超出阈值时获
 
 10. 选择“确定”  以创建警报。
 
-在几分钟后，警报将如前所述激活并触发。
+几分钟后，警报将处于活动状态，并按前面所述进行触发。
 
 创建警报后，可以选择它并执行以下任务之一：
 
@@ -89,7 +89,7 @@ az monitor alert delete --name <alert name> --resource-group <group name>
 
 本部分展示了如何使用 PowerShell 命令创建、查看和管理经典指标警报。本文中的示例展示了如何将 Azure Monitor cmdlet 用于经典指标警报。
 
-1. 如果尚未安装，请在计算机上安装要运行的 PowerShell。 有关详细信息，请参阅[如何安装和配置 PowerShell](https://docs.microsoft.com/powershell/azure/overview)。 还可以在 [Azure Monitor (Insights) Cmdlet](https://docs.microsoft.com/powershell/module/az.applicationinsights) 上查看 Azure Monitor PowerShell cmdlet 的完整列表。
+1. 如果尚未安装，请在计算机上安装要运行的 PowerShell。 有关详细信息，请参阅[如何安装和配置 PowerShell](https://docs.microsoft.com/powershell/azure/overview)。 还可以在 [Azure 监视器 (Insights) Cmdlet](https://docs.microsoft.com/powershell/module/az.applicationinsights) 上查看 Azure 监视器 PowerShell cmdlet 的完整列表。
 
 2. 首先，登录到 Azure 订阅。
 
@@ -97,7 +97,7 @@ az monitor alert delete --name <alert name> --resource-group <group name>
     Connect-AzAccount -Environment AzureChinaCloud
     ```
 
-3. 会出现登录界面。 登录帐户后，会出现 TenantID 和默认订阅 ID。 所有 Azure cmdlet 都可用于默认订阅的上下文。 若要查看有权访问的订阅的列表，请使用以下命令：
+3. 会出现登录界面。 登录帐户后，会出现 TenantID 和默认订阅 ID。 所有 Azure cmdlets 都在默认订阅的上下文中工作。 若要查看有权访问的订阅的列表，请使用以下命令：
 
     ```powershell
     Get-AzSubscription

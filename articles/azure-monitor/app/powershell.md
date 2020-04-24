@@ -8,10 +8,10 @@ origin.date: 10/17/2019
 ms.date: 11/04/2019
 ms.author: v-lingwu
 ms.openlocfilehash: 6b3afff048947ee0e37804241946ff8762d471be
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79291712"
 ---
 #  <a name="manage-application-insights-resources-using-powershell"></a>使用 PowerShell 管理 Application Insights 资源

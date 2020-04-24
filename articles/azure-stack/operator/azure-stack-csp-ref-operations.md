@@ -9,10 +9,10 @@ ms.author: v-jay
 ms.reviewer: alfredop
 ms.lastreviewed: 10/14/2019
 ms.openlocfilehash: 67b8ed7bb087e84dda67a2d5c80c2b0f173752d0
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79292435"
 ---
 # <a name="register-tenants-for-usage-tracking-in-azure-stack-hub"></a>在 Azure Stack Hub 中注册租户以跟踪使用情况
@@ -58,9 +58,9 @@ New-AzureRmResource -ResourceId "subscriptions/{registrationSubscriptionId}/reso
 
 ### <a name="api-call"></a>API 调用
 
-**Operation**：PUT  
+**操作**：PUT  
 **RequestURI**：`subscriptions/{registrationSubscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.AzureStack/registrations/{registrationName}/customerSubscriptions/{customerSubscriptionId}?api-version=2017-06-01 HTTP/1.1`  
-**响应**：201 Created  
+**响应**：201 已创建  
 **响应正文**：空  
 
 ## <a name="list-all-registered-tenants"></a>列出所有已注册租户
@@ -90,7 +90,7 @@ Get-AzureRmResource -ResourceId "subscriptions/{registrationSubscriptionId}/reso
 
 可以使用 GET 操作获取所有租户映射的列表。
 
-**Operation**：GET  
+**操作**：GET  
 **RequestURI**：`subscriptions/{registrationSubscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.AzureStack/registrations/{registrationName}/customerSubscriptions?api-version=2017-06-01 HTTP/1.1`  
 **响应**：200  
 **响应正文**：
@@ -139,7 +139,7 @@ Remove-AzureRmResource -ResourceId "subscriptions/{registrationSubscriptionId}/r
 
 可以使用 DELETE 操作删除租户映射。
 
-**Operation**：DELETE  
+**操作**：DELETE  
 **RequestURI**：`subscriptions/{registrationSubscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.AzureStack/registrations/{registrationName}/customerSubscriptions/{customerSubscriptionId}?api-version=2017-06-01 HTTP/1.1`  
 **响应**：204 无内容  
 **响应正文**：空

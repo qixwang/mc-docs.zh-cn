@@ -8,10 +8,10 @@ origin.date: 12/02/2019
 ms.date: 02/10/2020
 ms.author: v-yeche
 ms.openlocfilehash: 21c70ab10ba3845a6e0191e3dbb88890d0c26a1f
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79291665"
 ---
 # <a name="working-with-arrays-and-objects-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中使用数组和对象
@@ -92,7 +92,7 @@ SQL API 支持循环访问 JSON 数组，它可以通过 FROM 源中的 [IN 关�
     ]
 ```
 
-下一个查询循环访问 `Families` 容器中的 `children`。 输出的数组与前面的查询不同。 此示例拆分 `children` 并将结果平展为单个数组：  
+下一个查询循环访问 `children` 容器中的 `Families`。 输出的数组与前面的查询不同。 此示例拆分 `children` 并将结果平展为单个数组：  
 
 ```sql
     SELECT *
@@ -160,7 +160,7 @@ SQL API 支持循环访问 JSON 数组，它可以通过 FROM 源中的 [IN 关�
 ## <a name="next-steps"></a>后续步骤
 
 - [入门](sql-query-getting-started.md)
-- [Azure Cosmos DB .NET 示例](https://github.com/Azure/azure-cosmos-dotnet-v3)
+- [Azure Cosmos DB.NET 示例](https://github.com/Azure/azure-cosmos-dotnet-v3)
 - [联接](sql-query-join.md)
 
 <!-- Update_Description: wording update, update link -->

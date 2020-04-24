@@ -10,15 +10,15 @@ ms.date: 11/04/2019
 ms.author: v-lingwu
 ms.custom: mvc
 ms.openlocfilehash: 4775496f1d1d63ebc86c78641be725bd8388c574
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79292677"
 ---
 # <a name="find-and-diagnose-performance-issues-with-azure-application-insights"></a>使用 Azure Application Insights 查找和诊断性能问题
 
-Azure Application Insights 从应用程序收集遥测，以帮助分析操作和性能。  可以使用此信息确定可能发生的问题，或识别对用户影响最大的应用程序改进。  本教程将从应用程序服务器组件和客户端这两方面介绍分析性能的过程。  你将学习如何执行以下操作：
+Azure Application Insights 从应用程序收集遥测，以帮助分析操作和性能。  可以使用此信息确定可能发生的问题，或识别对用户影响最大的应用程序改进。  本教程将从应用程序服务器组件和客户端这两方面介绍分析性能的过程。  学习如何：
 
 > [!div class="checklist"]
 > * 识别服务器端操作的性能
@@ -27,7 +27,7 @@ Azure Application Insights 从应用程序收集遥测，以帮助分析操作�
 > * 使用查询语言分析页面视图的详细信息
 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 完成本教程：
 
@@ -72,7 +72,7 @@ Application Insights 收集应用程序中不同操作的性能详细信息。 �
 
     ![性能提示](media/tutorial-performance/6-perf-tip.png)
 
-8.   如需进一步分析，可单击“下载跟踪”下载跟踪  。 可以使用 [PerfView](https://github.com/Microsoft/perfview#perfview-overview) 查看此数据。
+8.   如需进一步分析，可单击“下载跟踪”以下载跟踪  。 可以使用 [PerfView](https://github.com/Microsoft/perfview#perfview-overview) 查看此数据。
 
 ## <a name="use-logs-data-for-server"></a>使用服务器的日志数据
  日志提供丰富的查询语言，可用于分析 Application Insights 收集的所有数据。 可以用它对请求和性能数据进行深度分析。

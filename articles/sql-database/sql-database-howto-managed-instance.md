@@ -13,10 +13,10 @@ ms.reviewer: sstein, carlr
 origin.date: 04/16/2019
 ms.date: 12/16/2019
 ms.openlocfilehash: 5ade51e24d09c5e398ecaead403076a88854121f
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79291736"
 ---
 # <a name="how-to-use-a-managed-instance-in-azure-sql-database"></a>如何在 Azure SQL 数据库中使用托管实例

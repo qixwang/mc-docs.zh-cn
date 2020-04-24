@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 02/19/2020
 ms.custom: seodec18
 ms.openlocfilehash: 543080fb682340ca9fcb750172645615762a9078
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79293527"
 ---
 # <a name="send-events-to-a-time-series-insights-environment-by-using-an-event-hub"></a>通过使用事件中心向时序见解环境发送事件
@@ -55,7 +55,7 @@ ms.locfileid: "79293527"
 
 ## <a name="add-a-time-series-insights-instance"></a>添加时序见解实例
 
-时序见解更新使用实例将上下文数据添加到传入的遥测数据中。 使用时间序列 ID 在查询时加入数据  。 在本文后面使用的示例 windmills 项目的“时间序列 ID”是 `id`  。 若要详细了解时序见解实例和**时序 ID**，请阅读[时序模型](./time-series-insights-update-tsm.md)。
+时序见解更新使用实例将上下文数据添加到传入的遥测数据中。 使用时间序列 ID 在查询时加入数据  。 在本文后面使用的示例 windmills 项目的“时间序列 ID”是 `id` 。 若要详细了解时序见解实例和**时序 ID**，请阅读[时序模型](./time-series-insights-update-tsm.md)。
 
 ### <a name="create-a-time-series-insights-event-source"></a>创建时序见解事件源
 

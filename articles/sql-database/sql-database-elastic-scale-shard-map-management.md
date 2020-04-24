@@ -14,10 +14,10 @@ manager: digimobile
 origin.date: 01/25/2019
 ms.date: 04/08/2019
 ms.openlocfilehash: 0b0a1317bc768983f01b39b37d4e633734d4f2c0
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79292792"
 ---
 # <a name="scale-out-databases-with-the-shard-map-manager"></a>使用分片映射管理器扩大数据库

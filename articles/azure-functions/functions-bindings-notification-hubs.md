@@ -6,10 +6,10 @@ ms.topic: reference
 ms.date: 12/30/2019
 ms.author: v-junlch
 ms.openlocfilehash: f138efe8bc7c7f1799d60d188456f129a177bf2b
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79293301"
 ---
 # <a name="notification-hubs-output-binding-for-azure-functions"></a>适用于 Azure Functions 的 通知中心输出绑定
@@ -45,7 +45,7 @@ ms.locfileid: "79293301"
 
 ### <a name="c-script-template-example---out-parameter"></a>C# 脚本模板示例 - out 参数
 
-此示例发送一条在模板中包含 `message` 占位符的[模板注册](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md)通知。
+此示例发送一条在模板中包含 [ 占位符的](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md)模板注册`message`通知。
 
 ```cs
 using System;
@@ -93,7 +93,7 @@ private static IDictionary<string, string> GetTemplateProperties(string message)
 
 ### <a name="c-script-template-example---json"></a>C# 脚本模板示例 - JSON
 
-此示例使用有效的 JSON 字符串，发送一条在模板中包含 `message` 占位符的[模板注册](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md)通知。
+此示例使用有效的 JSON 字符串，发送一条在模板中包含 [ 占位符的](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md)模板注册`message`通知。
 
 ```cs
 using System;
@@ -132,7 +132,7 @@ private static TemplateNotification GetTemplateNotification(string message)
 
 ### <a name="f-template-example"></a>F # 模板示例
 
-此示例发送一条包含 `location` 和 `message` 的[模板注册](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md)的通知。
+此示例发送一条包含 [ 和 ](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md) 的`location`模板注册`message`的通知。
 
 ```fsharp
 let Run(myTimer: TimerInfo, notification: byref<IDictionary<string, string>>) =
@@ -141,7 +141,7 @@ let Run(myTimer: TimerInfo, notification: byref<IDictionary<string, string>>) =
 
 ### <a name="javascript-template-example"></a>JavaScript 模板示例
 
-此示例发送一条包含 `location` 和 `message` 的[模板注册](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md)的通知。
+此示例发送一条包含 [ 和 ](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md) 的`location`模板注册`message`的通知。
 
 ```javascript
 module.exports = function (context, myTimer) {
@@ -246,9 +246,9 @@ public static async Task Run(string myQueueItem, IAsyncCollector<Notification> n
 
 |function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
-|**type** |不适用| 必须设置为 `notificationHub`。 |
-|**direction** |不适用| 必须设置为 `out`。 | 
-|**name** |不适用| 在通知中心消息的函数代码中使用的变量名。 |
+|type  |不适用| 必须设置为 `notificationHub`。 |
+|direction  |不适用| 必须设置为 `out`。 | 
+|name  |不适用| 在通知中心消息的函数代码中使用的变量名。 |
 |**tagExpression** |**TagExpression** | 标记表达式允许指定将通知传递到一组已注册接收通知的与标记表达式匹配的设备。  有关详细信息，请参阅[路由和标记表达式](../notification-hubs/notification-hubs-tags-segment-push-message.md)。 |
 |**hubName** | **HubName** | 在 Azure 门户中通知中心资源的名称。 |
 |连接  | **ConnectionStringSetting** | 包含通知中心连接字符串的应用设置的名称。  连接字符串必须设置为通知中心的 *DefaultFullSharedAccessSignature* 值。 请参阅本文稍后的[连接字符串设置](#connection-string-setup)部分。|
@@ -285,7 +285,7 @@ public static async Task Run(string myQueueItem, IAsyncCollector<Notification> n
 
 1. 导航到 [Azure 门户](https://portal.azure.cn)中的通知中心，选择“访问策略”，然后选择 DefaultFullSharedAccessSignature 策略旁边的复制按钮   。 这会将 DefaultFullSharedAccessSignature 策略的连接字符串复制到通知中心  。 此连接字符串可让函数将通知消息发送到中心。
     ![复制通知中心连接字符串](./media/functions-bindings-notification-hubs/get-notification-hub-connection.png)
-1. 导航到 Azure 门户中的函数应用，选择“应用程序设置”，添加一个键（例如 **MyHubConnectionString**），粘贴复制的 *DefaultFullSharedAccessSignature* 作为通知中心的值，然后单击“保存”。  
+1. 导航到 Azure 门户中的函数应用，选择“应用程序设置”，添加一个键（例如 **MyHubConnectionString**），粘贴复制的 **DefaultFullSharedAccessSignature** 作为通知中心的值，然后单击“保存”。  
 
 此应用程序设置的名称将传入 *function.json* 中的输出绑定连接设置或 .NET 特性。 请参阅本文前面的[配置部分](#configuration)。
 

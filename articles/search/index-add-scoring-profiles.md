@@ -21,10 +21,10 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: 847d46cb45496d349a7969bdacac81cc11004ac7
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79292309"
 ---
 # <a name="add-scoring-profiles-to-an-azure-cognitive-search-index"></a>将计分概要文件添加到 Azure 认知搜索索引
@@ -88,7 +88,7 @@ GET /indexes/hotels/docs?search=inn&scoringProfile=geo&scoringParameter=currentL
 
  基于相关性的排序也通过计分概要文件实现。 请考虑过去使用的可以按价格、日期、评分或相关性排序的搜索结果页。 在 Azure 认知搜索中，计分概要文件驱动“相关性”选项。 相关性定义由你控制，基于业务目标和希望提供的搜索体验类型断定。  
 
-##  <a name="bkmk_ex"></a> 示例  
+##  <a name="example"></a><a name="bkmk_ex"></a> 示例  
  如前所述，自定义计分是通过索引模式中定义的一个或多个计分概要文件实现的。  
 
  此示例演示具有两个计分概要文件的索引架构（`boostGenre`、`newAndHighlyRated`）。 针对此索引的任何查询（包含任一概要文件作为查询参数）将使用此概要文件对结果集进行计分。  
@@ -174,7 +174,7 @@ GET /indexes/hotels/docs?search=inn&scoringProfile=geo&scoringParameter=currentL
 
  定义索引后，请通过上传索引架构（后跟文档）建立索引。 有关这些操作的说明，请参阅[创建索引（Azure 认知搜索 REST API）](https://docs.microsoft.com/rest/api/searchservice/create-index)和[添加、更新或删除文档（Azure 认知搜索 REST API）](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents)。 建立索引后，应获得适用于搜索数据的函数计分概要文件。  
 
-##  <a name="bkmk_template"></a> 模板  
+##  <a name="template"></a><a name="bkmk_template"></a> 模板  
  本部分演示计分概要文件的语法和模板。 请参阅下一部分的[索引属性参考](#bkmk_indexref)，获取属性的说明。  
 
 ```  
@@ -228,7 +228,7 @@ GET /indexes/hotels/docs?search=inn&scoringProfile=geo&scoringParameter=currentL
 . . .  
 ```  
 
-##  <a name="bkmk_indexref"></a> 索引属性参考  
+##  <a name="index-attributes-reference"></a><a name="bkmk_indexref"></a> 索引属性参考  
 
 > [!NOTE]  
 >  计分函数仅可应用于可筛选的字段。  
@@ -257,7 +257,7 @@ GET /indexes/hotels/docs?search=inn&scoringProfile=geo&scoringParameter=currentL
 |`functionAggregation`|可选。 仅在函数已指定时适用。 有效值包括：sum（默认值）、average、minimum、maximum和 firstMatching。 搜索分数是从多个变量（包括多个函数）中计算的单个值。 此属性指示所有函数的提升如何组合到随后应用到基本文档分数的单个聚合提升中。 基本分数基于从文档和搜索查询计算得出的 [tf-idf](http://www.tfidf.com/) 值。|  
 |`defaultScoringProfile`|在执行搜索请求时，如果未指定任何计分概要文件，则使用默认计分（仅限 [tf-idf](http://www.tfidf.com/)）。<br /><br /> 可以在此处设置默认计分概要文件名称，以使 Azure 认知搜索在搜索请求中未给定任何特定概要文件时使用默认概要文件。|  
 
-##  <a name="bkmk_interpolation"></a> 设置内插  
+##  <a name="set-interpolations"></a><a name="bkmk_interpolation"></a> 设置内插  
  通过内插，可设置用于计分的坡度形状。 由于评分从高到低，坡度总是在下降，但内插决定了下坡的曲线。 可以使用以下内插：  
 
 |||  
@@ -269,7 +269,7 @@ GET /indexes/hotels/docs?search=inn&scoringProfile=geo&scoringParameter=currentL
 
  ![关系图上的常数、线性、二次、log10 线](media/scoring-profiles/azuresearch_scorefunctioninterpolationgrapht.png "AzureSearch_ScoreFunctionInterpolationGrapht")  
 
-##  <a name="bkmk_boostdur"></a>设置 boostingDuration  
+##  <a name="set-boostingduration"></a><a name="bkmk_boostdur"></a>设置 boostingDuration  
  `boostingDuration` 是 `freshness` 函数的属性。 使用它设置一个有效期，超过这个有效期之后，针对特定文档的提升将停止。 例如，要在 10 天促销期内提升某个产品系列或品牌，应针对这些文档将 10 天期限指定为 "P10D"。  
 
  `boostingDuration` 必须设置为 XSD "dayTimeDuration" 值（ISO 8601 持续时间值的受限子集）的格式。 它的模式为：“P[nD][T[nH][nM][nS]]”。  

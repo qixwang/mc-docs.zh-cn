@@ -1,5 +1,5 @@
 ---
-title: 在 Azure 自动化 State Configuration 中编译配置
+title: 在 Azure Automation State Configuration 中编译配置
 description: 本文介绍如何为 Azure 自动化编译 Desired State Configuration (DSC) 配置。
 services: automation
 ms.subservice: dsc
@@ -7,13 +7,13 @@ origin.date: 09/10/2018
 ms.date: 03/16/2020
 ms.topic: conceptual
 ms.openlocfilehash: 81c6dbf71bdb23291ad23e6b6b1681e88a67bf55
-ms.sourcegitcommit: dc862610e2169c1fce6fb0ae9eb7dd7567f86a0a
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79293848"
 ---
-# <a name="compiling-dsc-configurations-in-azure-automation-state-configuration"></a>在自动化 State Configuration 中编译 DSC 配置
+# <a name="compiling-dsc-configurations-in-azure-automation-state-configuration"></a>在 Automation State Configuration 中编译 DSC 配置
 
 可通过以下方式在 Azure 自动化 State Configuration 中编译 Desired State Configuration (DSC) 配置：
 
@@ -282,5 +282,5 @@ Import-AzAutomationDscNodeConfiguration -AutomationAccountName 'MyAutomationAcco
 - 有关入门信息，请参阅 [Azure 自动化 State Configuration 入门](automation-dsc-getting-started.md)。
 - 若要了解如何编译 DSC 配置，以便将它们分配给目标节点，请参阅[在 Azure 自动化 State Configuration 中编译配置](automation-dsc-compile.md)。
 - 有关 PowerShell cmdlet 参考，请参阅 [Azure 自动化 State Configuration cmdlet](https://docs.microsoft.com/powershell/module/az.automation)。
-- 有关定价信息，请参阅 [Azure 自动化 State Configuration 定价](https://azure.cn/pricing/details/automation/)
+- 有关定价信息，请参阅 [Azure Automation State Configuration 定价](https://azure.cn/pricing/details/automation/)
 - 若要查看在持续部署管道中使用 Azure 自动化 State Configuration 的示例，请参阅[使用 Azure 自动化 State Configuration 和 Chocolatey 持续部署到虚拟机](automation-dsc-cd-chocolatey.md)。

@@ -7,10 +7,10 @@ origin.date: 01/12/2020
 ms.date: 03/09/2020
 ms.author: v-yeche
 ms.openlocfilehash: e1fc05de881c51d0cf94f9e8f6402519beb7a885
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79290772"
 ---
 <!--NOT SUITABLE FOR MOONCAKE-->
@@ -21,7 +21,7 @@ Azure 存储对静态存储帐户中的所有数据进行加密。 默认情况�
 
 <!--Not Available on > Linux and Windows based AKS clusters are both supported.-->
 
-## <a name="before-you-begin"></a>准备阶段
+## <a name="before-you-begin"></a>开始之前
 
 * 本文假定你要创建*新的 AKS 群集*。
 
@@ -37,7 +37,7 @@ Azure 存储对静态存储帐户中的所有数据进行加密。 默认情况�
 
 ## <a name="install-latest-aks-cli-preview-extension"></a>安装最新的 AKS CLI 预览版扩展
 
-若要使用客户管理的密钥，需要具有 *aks-preview* CLI 扩展版本 0.4.26 或更高版本。 使用 [az extension add][az-extension-add] 命令安装 *aks-preview* Azure CLI 扩展，然后使用 [az extension update][az-extension-update] 命令检查是否有任何可用的更新：
+若要使用客户管理的密钥，需要具有 *aks-preview* CLI 扩展版本 0.4.26 或更高版本。 使用 *az extension add* 命令安装 [aks-preview][az-extension-add] Azure CLI 扩展，然后使用 [az extension update][az-extension-update] 命令检查是否有任何可用的更新：
 
 ```azurecli
 # Install the aks-preview extension

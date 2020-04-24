@@ -11,10 +11,10 @@ ms.topic: tutorial
 origin.date: 01/30/2020
 ms.date: 03/16/2020
 ms.openlocfilehash: 70f4a81f0e5eab898276d7e7d58c9b12cf3c7d5a
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79291798"
 ---
 # <a name="tutorial-predict-automobile-price-with-the-designer-preview"></a>教程：使用设计器预测汽车价格（预览）

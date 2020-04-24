@@ -12,10 +12,10 @@ ms.date: 11/29/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 02a9ec74e509a93e6b2997a840d034a6331dc51f
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79291605"
 ---
 # <a name="the-team-data-science-process-in-action-use-azure-hdinsight-hadoop-clusters"></a>运行中的 Team Data Science Process：使用 Azure HDInsight Hadoop 群集
@@ -25,7 +25,7 @@ ms.locfileid: "79291605"
 
 也可以通过 IPython Notebook 来完成使用 1 TB 数据集的演练中介绍的任务。 有关详细信息，请参阅[使用 Hive ODBC 连接的 Criteo 演练](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/iPythonNotebooks/machine-Learning-data-science-process-hive-walkthrough-criteo.ipynb)。
 
-## <a name="dataset"></a>NYC 出租车行程数据集介绍
+## <a name="nyc-taxi-trips-dataset-description"></a><a name="dataset"></a>NYC 出租车行程数据集介绍
 NYC 出租车行程数据是大约 20 GB（未压缩时约为 48 GB）的压缩逗号分隔值 (CSV) 文件。 其中包含超过 1.73 亿个单独行程及每个行程支付的费用。 每个行程记录会包括上车和下车的位置和时间、匿名的出租车司机驾驶证编号和牌照编号（出租车的唯一 ID）。 数据涵盖 2013 年的所有行程，并在每个月的以下两个数据集中提供：
 
 - trip_data CSV 文件包含行程的详细信息。 这包括乘客数、上车和下车地点、行程持续时间和行程距离。 下面是一些示例记录：
@@ -47,7 +47,7 @@ NYC 出租车行程数据是大约 20 GB（未压缩时约为 48 GB）的压缩�
 
 联接 trip\_data 和 trip\_fare 的唯一键由以下字段组成：medallion、hack\_license 和 pickup\_datetime。 若要获取与特定行程相关的所有详细信息，只需联接这三个键即可。
 
-## <a name="mltasks"></a>预测任务示例
+## <a name="examples-of-prediction-tasks"></a><a name="mltasks"></a>预测任务示例
 根据数据分析确定要进行的预测类型。 这有助于明确需要包含在过程中的任务。 下面是本演练中讨论的三个预测问题示例。 这些示例基于 *tip\_amount*：
 
 - **二元分类**：预测某个行程是否支付小费。 即大于 $0 的 *tip\_amount* 是正例，等于 $0 的 *tip\_amount* 是反例。
@@ -63,7 +63,7 @@ NYC 出租车行程数据是大约 20 GB（未压缩时约为 48 GB）的压缩�
         Class 4: tip_amount > $20
 - **回归任务**：预测为行程支付的小费金额。  
 
-## <a name="setup"></a>针对高级分析设置 HDInsight Hadoop 群集
+## <a name="set-up-an-hdinsight-hadoop-cluster-for-advanced-analytics"></a><a name="setup"></a>针对高级分析设置 HDInsight Hadoop 群集
 > [!NOTE]
 > 这通常是管理任务。
 > 
@@ -78,7 +78,7 @@ NYC 出租车行程数据是大约 20 GB（未压缩时约为 48 GB）的压缩�
    * 创建群集后，启用对其头节点的远程访问。 浏览到“配置”  选项卡，并选择“启用远程”  。 此步骤指定用于远程登录的用户凭据。
 3. [创建 Azure 机器学习工作区](../studio/create-workspace.md)：此工作区用于生成机器学习模型。 使用 HDInsight 群集完成初始数据探索并进行下采样后，此任务将得到解决。
 
-## <a name="getdata"></a>从公共源获取数据
+## <a name="get-the-data-from-a-public-source"></a><a name="getdata"></a>从公共源获取数据
 > [!NOTE]
 > 这通常是管理任务。
 > 
@@ -94,7 +94,7 @@ NYC 出租车行程数据是大约 20 GB（未压缩时约为 48 GB）的压缩�
 
 1. 复制完成后，所选数据文件夹中总共会出现 24 个压缩文件。 将下载的文件解压缩到本地计算机上的同一目录。 记下未压缩的文件所在的文件夹。 此文件夹在下文中称为 \<path\_to\_unzipped_data\_files\>  。
 
-## <a name="upload"></a>将数据上传到 HDInsight Hadoop 群集的默认容器
+## <a name="upload-the-data-to-the-default-container-of-the-hdinsight-hadoop-cluster"></a><a name="upload"></a>将数据上传到 HDInsight Hadoop 群集的默认容器
 > [!NOTE]
 > 这通常是管理任务。
 > 
@@ -119,7 +119,7 @@ NYC 出租车行程数据是大约 20 GB（未压缩时约为 48 GB）的压缩�
 
 现在，数据应在 Blob 存储中，并且可以在 HDInsight 群集中使用。
 
-## <a name="#download-hql-files"></a>登录到 Hadoop 群集的头节点，并为探索数据分析做好准备
+## <a name="sign-in-to-the-head-node-of-hadoop-cluster-and-prepare-for-exploratory-data-analysis"></a><a name="#download-hql-files"></a>登录到 Hadoop 群集的头节点，并为探索数据分析做好准备
 > [!NOTE]
 > 这通常是管理任务。
 > 
@@ -137,7 +137,7 @@ NYC 出租车行程数据是大约 20 GB（未压缩时约为 48 GB）的压缩�
 
 这两个命令会将本演练中需要的所有 .hql 文件下载到头节点中的本地目录 ***C:\temp&#92;***。
 
-## <a name="#hive-db-tables"></a>创建按月分区的 Hive 数据库和表
+## <a name="create-hive-database-and-tables-partitioned-by-month"></a><a name="#hive-db-tables"></a>创建按月分区的 Hive 数据库和表
 > [!NOTE]
 > 这通常是管理任务。
 > 
@@ -205,7 +205,7 @@ NYC 出租车行程数据是大约 20 GB（未压缩时约为 48 GB）的压缩�
 
 如果需要有关这些过程的任何其他帮助或想要了解另外的过程，请参阅[直接从 Hadoop 命令行提交 Hive 查询](move-hive-tables.md#submit)部分。
 
-## <a name="#load-data"></a>按分区将数据加载到 Hive 表
+## <a name="load-data-to-hive-tables-by-partitions"></a><a name="#load-data"></a>按分区将数据加载到 Hive 表
 > [!NOTE]
 > 这通常是管理任务。
 > 
@@ -222,12 +222,12 @@ NYC 出租车数据集具有按月划分的自然分区，用于加快处理和�
 
 请注意，探索进程中使用的多个 Hive 查询只会查找一个或两个分区。 但是可以针对整个数据集运行这些查询。
 
-### <a name="#show-db"></a>在 HDInsight Hadoop 群集中显示数据库
+### <a name="show-databases-in-the-hdinsight-hadoop-cluster"></a><a name="#show-db"></a>在 HDInsight Hadoop 群集中显示数据库
 若要在 Hadoop 命令行窗口中显示 HDInsight Hadoop 群集中创建的数据库，请在 Hadoop 命令行中运行以下命令：
 
     hive -e "show databases;"
 
-### <a name="#show-tables"></a>显示 **nyctaxidb** 数据库中的 Hive 表
+### <a name="show-the-hive-tables-in-the-nyctaxidb-database"></a><a name="#show-tables"></a>显示 **nyctaxidb** 数据库中的 Hive 表
 若要显示 **nyctaxidb** 数据库中的表，请在 Hadoop 命令行中运行以下命令：
 
     hive -e "show tables in nyctaxidb;"
@@ -272,7 +272,7 @@ NYC 出租车数据集具有按月划分的自然分区，用于加快处理和�
     month=9
     Time taken: 1.887 seconds, Fetched: 12 row(s)
 
-## <a name="#explore-hive"></a>Hive 中的数据探索和功能设计
+## <a name="data-exploration-and-feature-engineering-in-hive"></a><a name="#explore-hive"></a>Hive 中的数据探索和功能设计
 > [!NOTE]
 > 这通常是数据科学家的任务。
 > 
@@ -565,7 +565,7 @@ NYC 出租车数据集中的牌照标识一辆唯一的出租车。 通过询问
 
 将此数据驻留在 Azure Blob 中的一个主要优点是，我们可以使用[导入数据][import-data]模块在机器学习中探索数据。
 
-## <a name="#downsample"></a>在机器学习中对数据进行下采样和构建模型
+## <a name="down-sample-data-and-build-models-in-machine-learning"></a><a name="#downsample"></a>在机器学习中对数据进行下采样和构建模型
 > [!NOTE]
 > 这通常是数据科学家的任务。
 > 
@@ -754,7 +754,7 @@ NYC 出租车数据集中的牌照标识一辆唯一的出租车。 通过询问
 
 现在，可将数据集用作构建机器学习模型的起点。
 
-### <a name="mlmodel"></a>在机器学习中构建模型
+### <a name="build-models-in-machine-learning"></a><a name="mlmodel"></a>在机器学习中构建模型
 现在，可以在[机器学习](https://studio.azureml.net)中继续构建模型以及为部署建模。 数据已可用于解决上述预测问题：
 
 - **二元分类**：预测某个行程是否支付小费。

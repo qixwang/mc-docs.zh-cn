@@ -9,10 +9,10 @@ origin.date: 02/10/2019
 ms.date: 2/18/2020
 ms.author: v-lingwu
 ms.openlocfilehash: d4eb41dcb35c8780c9c0acdeced852c0402d42bb
-ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/17/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79452543"
 ---
 # <a name="create-custom-views-by-using-view-designer-in-azure-monitor"></a>在 Azure Monitor 中使用视图设计器创建自定义视图
@@ -33,7 +33,7 @@ ms.locfileid: "79452543"
 
 使用视图设计器创建的视图所包含的元素在下表中进行了说明：
 
-| 部分 | 说明 |
+| 组成部分 | 说明 |
 |:--- |:--- |
 | 磁贴 | 显示在 Azure Monitor“概述”  页上。 每个磁贴都会显示一个可视化摘要，其中包含磁贴所代表的自定义视图。 每个磁贴类型提供的记录可视化效果各不相同。 选择磁贴即可显示自定义视图。 |
 | 自定义视图 | 在选择磁贴时显示。 每个视图包含一个或多个可视化部件。 |
@@ -71,7 +71,7 @@ ms.locfileid: "79452543"
 
 视图设计器有三个窗格： 
 * **设计**：包含正在创建或编辑的自定义视图。 
-* **控件**：包含添加到“设计”窗格的磁贴和部件  。 
+* **控件**：包含添加到“设计”窗格的磁贴和部件。  
 * **属性**：显示磁贴或所选部件的属性。
 
 ![视图设计器](media/view-designer/view-designer-screenshot.png)
@@ -101,8 +101,8 @@ ms.locfileid: "79452543"
 | 保存        | 保存所做的更改并关闭视图。 |
 | 取消      | 放弃所做的更改并关闭视图。 |
 | 删除视图 | 删除视图。 |
-| 导出      | 将视图导出至 [Azure 资源管理器模板](../../azure-resource-manager/templates/template-syntax.md)，可将此模板导入其它工作区。 文件的名称为视图的名称，包含 *omsview* 扩展名。 |
-| 导入      | 导入从另一个工作区中导出的 *omsview* 文件。 此操作覆盖现有视图的配置。 |
+| Export      | 将视图导出至 [Azure 资源管理器模板](../../azure-resource-manager/templates/template-syntax.md)，可将此模板导入其它工作区。 文件的名称为视图的名称，包含 *omsview* 扩展名。 |
+| Import      | 导入从另一个工作区中导出的 *omsview* 文件。 此操作覆盖现有视图的配置。 |
 | 克隆       | 创建一个新视图，并在视图设计器中打开它。 新视图的名称与原始名称相同，但其末尾附加了 *Copy* 字样。 |
 
 ## <a name="next-steps"></a>后续步骤

@@ -9,14 +9,14 @@ origin.date: 06/25/2019
 ms.date: 11/04/2019
 ms.author: v-lingwu
 ms.openlocfilehash: ddfb607beb8571935343945f119554299709f3ca
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79293520"
 ---
 # <a name="log-query-scope-and-time-range-in-azure-monitor-log-analytics"></a>Azure Monitor Log Analytics 中的日志查询范围和时间范围
-在 [Azure 门户上的 Log Analytics 中](get-started-portal.md)运行[日志查询](log-query-overview.md)时，该查询评估的数据集取决于所选的范围和时间范围。 本文介绍范围和时间范围，以及如何根据要求设置这两项。 本文还介绍了不同范围类型的行为。
+在 [Azure 门户上的 Log Analytics 中](log-query-overview.md)运行[日志查询](get-started-portal.md)时，该查询评估的数据集取决于所选的范围和时间范围。 本文介绍范围和时间范围，以及如何根据要求设置这两项。 本文还介绍了不同范围类型的行为。
 
 
 ## <a name="query-scope"></a>查询范围
@@ -24,7 +24,7 @@ ms.locfileid: "79293520"
 
 范围始终显示在 Log Analytics 窗口的左上方。 如果出现了图标，则表示范围是 Log Analytics 工作区或 Application Insights 应用程序。 如果没有图标，则表示范围是另一个 Azure 资源。
 
-![作用域](media/scope/scope.png)
+![范围](media/scope/scope.png)
 
 范围由启动 Log Analytics 所用的方法确定，在某些情况下，可以通过单击范围来更改范围。 下表列出了所用的不同类型的范围及其各种详细信息。
 
@@ -34,7 +34,7 @@ ms.locfileid: "79293520"
 | Application Insights 应用程序 | Application Insights 应用程序中的所有记录。 | 从 Application Insights 的“概述”页中选择“分析”。   | 只能将范围更改为另一个 Application Insights 应用程序。 |
 | 资源组 | 资源组中的所有资源创建的记录。 可以包含多个 Log Analytics 工作区中的数据。 | 从资源组菜单中选择“日志”。  | 无法更改范围。|
 | 订阅 | 订阅中的所有资源创建的记录。 可以包含多个 Log Analytics 工作区中的数据。 | 从订阅菜单中选择“日志”。    | 无法更改范围。 |
-| 其他 Azure 资源 | 资源创建的记录。 可以包含多个 Log Analytics 工作区中的数据。  | 从资源菜单中选择“日志”。 <br>OR<br>从“Azure Monitor”菜单中选择“日志”，然后选择新范围。   | 只能将范围更改为相同的资源类型。 |
+| 其他 Azure 资源 | 资源创建的记录。 可以包含多个 Log Analytics 工作区中的数据。  | 从资源菜单中选择“日志”。 <br>或<br>从“Azure Monitor”菜单中选择“日志”，然后选择新范围。   | 只能将范围更改为相同的资源类型。 |
 
 ### <a name="limitations-when-scoped-to-a-resource"></a>将范围限定为资源时的限制
 
@@ -67,7 +67,7 @@ Log Analytics 有助于防止跨多个区域中工作区的查询的过量开销
 ## <a name="time-range"></a>时间范围
 时间范围根据记录的创建时间，指定查询要评估的记录集。 此项设置由工作区或应用程序中每条记录上的标准属性定义，下表指定了这些属性。
 
-| 位置 | 属性 |
+| 位置 | properties |
 |:---|:---|
 | Log Analytics 工作区          | TimeGenerated |
 | Application Insights 应用程序 | timestamp     |

@@ -13,10 +13,10 @@ ms.author: v-jay
 ms.reviewer: jrasnick
 ms.custom: seoapril2019
 ms.openlocfilehash: 94e57a09b6ebd6f31e1c61102a9a56197d2a193c
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79293008"
 ---
 # <a name="indexing-tables-in-sql-data-warehouse"></a>为 SQL 数据仓库中的表编制索引

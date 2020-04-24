@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 6400774d43a5e51d1a76fa7cc4324fe70742fc4f
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79293169"
 ---
 # <a name="learn-how-to-deploy-modules-and-establish-routes-in-iot-edge"></a>了解如何在 IoT Edge 中部署模块和建立路由
@@ -134,7 +134,7 @@ IoT Edge 中心管理模块、IoT 中心与所有叶设备之间的通信。 因
 
 每个路由需要源和接收器，但条件是可用于筛选消息的可选片断。
 
-### <a name="source"></a>Source
+### <a name="source"></a>源
 
 源指定消息来自何处。 IoT Edge 可以路由来自模块或叶设备的消息。
 
@@ -142,7 +142,7 @@ IoT Edge 中心管理模块、IoT 中心与所有叶设备之间的通信。 因
 
 源属性可采用以下任何值：
 
-| Source | 说明 |
+| 源 | 说明 |
 | ------ | ----------- |
 | `/*` | 所有设备到云的消息，或者来自任何模块或叶设备的孪生更改通知 |
 | `/twinChangeNotifications` | 来自任何模块或叶设备的任何孪生更改（报告属性） |
@@ -185,7 +185,7 @@ FROM /messages/* WHERE NOT IS_DEFINED($connectionModuleId) INTO $upstream
 
 IoT Edge 提供至少一次保证。 IoT Edge 中心在本地存储消息，以防路由无法将消息传送到其接收器。 例如，如果 IoT Edge 中心无法连接到 IoT 中心，或者目标模块未连接。
 
-IoT Edge 中心会一直存储消息，直到达到在 [IoT Edge 中心所需属性](module-edgeagent-edgehub.md)的 `storeAndForwardConfiguration.timeToLiveSecs` 属性中指定的时间。
+IoT Edge 中心会一直存储消息，直到达到在 `storeAndForwardConfiguration.timeToLiveSecs`IoT Edge 中心所需属性[的 ](module-edgeagent-edgehub.md) 属性中指定的时间。
 
 ## <a name="define-or-update-desired-properties"></a>定义或更新所需属性
 

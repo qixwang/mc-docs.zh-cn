@@ -8,10 +8,10 @@ origin.date: 09/16/2019
 ms.date: 11/4/2019
 ms.author: v-lingwu
 ms.openlocfilehash: 32a50a0f77562c531fb8a62f7fee8f8c130e4bab
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79293026"
 ---
 # <a name="deploy-azure-monitor-application-insights-agent-for-on-premises-servers"></a>为本地服务器部署 Azure Monitor Application Insights 代理
@@ -33,7 +33,7 @@ Application Insights 代理位于此处： https://www.powershellgallery.com/pac
 ![PowerShell 库](https://img.shields.io/powershellgallery/v/Az.ApplicationMonitor.svg?color=Blue&label=Current%20Version&logo=PowerShell&style=for-the-badge)
 
 
-## <a name="instructions"></a>说明
+## <a name="instructions"></a>Instructions
 - 请参阅[入门说明](status-monitor-v2-get-started.md)，从简明的代码示例开始学习。
 - 请参阅[详细说明](status-monitor-v2-detailed-instructions.md)，以深入了解如何开始使用。
 
@@ -52,7 +52,7 @@ Application Insights 代理位于此处： https://www.powershellgallery.com/pac
 - [已知问题](status-monitor-v2-troubleshoot.md#known-issues)
 
 
-## <a name="faq"></a>常见问题
+## <a name="faq"></a>常见问题解答
 
 - Application Insights 代理是否支持代理安装？
 

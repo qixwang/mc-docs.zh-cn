@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 1bf9ed23cc0f6eda4329c026857ad82548951e84
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79292176"
 ---
 # <a name="deploy-and-monitor-iot-edge-modules-at-scale-using-the-azure-portal"></a>使用 Azure 门户大规模部署和监视 IoT Edge 模块
@@ -116,7 +116,7 @@ IoT Edge 提供两种不同类型的自动部署，可用于自定义你的方�
 
 将模块添加到部署后，选择模块名称，打开“更新 IoT Edge 模块”页面  。 可在此页面编辑模块设置、环境变量、创建选项和模块孪生。 如果你从市场添加了模块，则该模块可能已经填充了其中的一些参数。
 
-如果要创建分层部署，则可能需要配置针对相同设备的其他部署中的模块。 若要更新模块孪生但不覆盖其他版本，请打开“模块孪生设置”选项卡  。创建新的“模块孪生属性”，使其具有模块孪生所需属性中某个子节的唯一名称，例如 `properties.desired.settings`  。 如果只在 `properties.desired` 字段中定义属性，它将覆盖在任何较低优先级部署中定义的模块的所需属性。
+如果要创建分层部署，则可能需要配置针对相同设备的其他部署中的模块。 若要更新模块孪生但不覆盖其他版本，请打开“模块孪生设置”选项卡  。创建新的“模块孪生属性”，使其具有模块孪生所需属性中某个子节的唯一名称，例如 `properties.desired.settings` 。 如果只在 `properties.desired` 字段中定义属性，它将覆盖在任何较低优先级部署中定义的模块的所需属性。
 
 ![为分层部署设置模块孪生属性](./media/how-to-deploy-monitor/module-twin-property.png)
 

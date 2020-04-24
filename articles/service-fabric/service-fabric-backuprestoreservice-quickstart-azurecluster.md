@@ -7,10 +7,10 @@ origin.date: 05/24/2019
 ms.date: 01/06/2020
 ms.author: v-yeche
 ms.openlocfilehash: 7892a842cadade2458d00111636467550ae0ca35
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79292647"
 ---
 # <a name="periodic-backup-and-restore-in-an-azure-service-fabric-cluster"></a>在 Azure Service Fabric 群集中定期备份和还原
@@ -36,7 +36,7 @@ Service Fabric 中的备份和还原服务可以轻松自动备份存储在有�
 
 Service Fabric 提供了一组 API 以实现与定期备份和还原功能相关的以下功能：
 
-- 通过支持将备份上传到（外部）存储位置，计划可靠有状态服务和 Reliable Actors 的定期备份。 支持的存储位置
+- 通过支持将备份上传到（外部）存储位置，计划可靠有状态服务和 Reliable Actors 的定期备份。 受支持的存储位置
     - Azure 存储
     - 文件共享（本地）
 - 枚举备份
@@ -45,7 +45,7 @@ Service Fabric 提供了一组 API 以实现与定期备份和还原功能相关
 - 暂时暂停备份
 - 备份的保留期管理（即将推出）
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 * 具有 Fabric 6.4 或更高版本的 Service Fabric 群集。 有关使用 Azure 资源模板创建 Service Fabric 群集的步骤，请参阅此[文章](service-fabric-cluster-creation-via-arm.md)。
 * 用于加密机密的 X.509 证书，连接到存储以存储备份时需要此机密。 请参阅[文章](service-fabric-cluster-creation-via-arm.md)，了解如何获取或创建 X.509 证书。
 * 使用 Service Fabric SDK 3.0 或更高版本生成的 Service Fabric 可靠有状态应用程序。 对于面向 .NET Core 2.0 的应用程序，应使用 Service Fabric SDK 3.1 或更高版本生成应用程序。
@@ -68,14 +68,14 @@ Service Fabric 提供了一组 API 以实现与定期备份和还原功能相关
 
 ### <a name="using-azure-portal"></a>使用 Azure 门户
 
-启用 `Cluster Configuration` 选项卡中 `+ Show optional settings` 下的 `Include backup restore service` 复选框。
+启用 `Include backup restore service` 选项卡中 `+ Show optional settings` 下的 `Cluster Configuration` 复选框。
 
 ![使用门户启用备份还原服务][1]
 
 ### <a name="using-azure-resource-manager-template"></a>使用 Azure 资源管理器模板
 首先，需要在群集中启用备份和还原服务  。 获取要部署的群集的模板。 可使用[示例模板](https://github.com/Azure/azure-quickstart-templates/tree/master/service-fabric-secure-cluster-5-node-1-nodetype)或创建资源管理器模板。 通过以下步骤启用备份和还原服务  ：
 
-1. 检查 `apiversion` 是否针对 `Microsoft.ServiceFabric/clusters` 资源设置为 `2018-02-01`，如果没有，请按以下代码片段所示进行更新  ：
+1. 检查 `apiversion` 是否针对  **资源设置为 `2018-02-01`，如果没有，请按以下代码片段所示进行更新**`Microsoft.ServiceFabric/clusters`：
 
     ```json
     {
@@ -87,7 +87,7 @@ Service Fabric 提供了一组 API 以实现与定期备份和还原功能相关
     }
     ```
 
-2. 现在，通过在 `properties` 部分下添加以下 `addonFeatures` 部分来启用备份和还原服务，如以下代码片段所示  ： 
+2. 现在，通过在 _部分下添加以下_ 部分来启用备份和还原服务，如以下代码片段所示`addonFeatures``properties`： 
 
     ```json
         "properties": {
@@ -98,7 +98,7 @@ Service Fabric 提供了一组 API 以实现与定期备份和还原功能相关
         }
 
     ```
-3. 配置 X.509 证书以用于加密凭据。 此步骤非常重要，可确保在保留之前对提供用于连接存储的凭据进行加密。 通过在 `fabricSettings` 部分下添加以下 `BackupRestoreService` 部分来配置加密证书，如以下代码片段所示： 
+3. 配置 X.509 证书以用于加密凭据。 此步骤非常重要，可确保在保留之前对提供用于连接存储的凭据进行加密。 通过在 `BackupRestoreService` 部分下添加以下 `fabricSettings` 部分来配置加密证书，如以下代码片段所示： 
 
     ```json
     "properties": {

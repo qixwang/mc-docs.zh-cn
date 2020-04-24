@@ -9,10 +9,10 @@ ms.date: 2/18/2020
 ms.author: v-lingwu
 ms.subservice: alerts
 ms.openlocfilehash: f1e9c50c68ee66b103b0fb57f5130d76d901ebe3
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79291675"
 ---
 # <a name="create-view-and-manage-metric-alerts-using-azure-monitor"></a>使用 Azure Monitor 创建、查看和管理指标警报
@@ -32,11 +32,11 @@ Azure Monitor 中的指标警报提供了一种在指标超出阈值时获得通
     > [!TIP]
     > 大多数资源边栏选项卡的资源菜单中的“监视”下面也包含“警报”，同样可从中创建警报。  
 
-3. 在加载的上下文窗格中单击“选择目标”，选择要触发警报的目标资源。  使用“订阅”和“资源类型”下拉列表查找要监视的资源。   也可以使用搜索栏查找资源。
+3. 在加载的上下文窗格中单击“选择目标”，选择要发出警报的目标资源  。 使用“订阅”和“资源类型”下拉列表查找要监视的资源。   也可以使用搜索栏查找资源。
 
 4. 如果选定的资源具有可创建警报的指标，则右下方的“可用信号”将包含这些指标。  可在[此文](../../azure-monitor/platform/alerts-metric-near-real-time.md#metrics-and-dimensions-supported)中查看指标警报支持的资源类型的完整列表。
 
-5. 选择目标资源之后，单击“添加条件”  。
+5. 选择目标资源后，单击“添加条件”  。
 
 6. 此时会显示资源支持的信号列表，请选择要为其创建警报的指标。
 
@@ -55,9 +55,9 @@ Azure Monitor 中的指标警报提供了一种在指标超出阈值时获得通
 
 10. （可选）通过调整“聚合粒度”  和“评估频率”  来优化条件。 
 
-11. 单击“Done”（完成）  。
+11. 单击“完成”  。
 
-12. （可选）若要监视复杂的警报规则，请添加另一个条件。 目前，用户可以将警报规则的动态阈值条件作为单一条件。
+12. （可选）若要监视复杂的预警规则，请添加另一个条件。 目前，用户可以将包含动态阈值条件的预警规则用作单一条件。
 
 13. 填写“警报详细信息”，例如“警报规则名称”、“说明”和“严重性”。    
 
@@ -68,7 +68,7 @@ Azure Monitor 中的指标警报提供了一种在指标超出阈值时获得通
 > [!NOTE]
 > 通过门户创建的指标警报规则将在目标资源所在的同一个资源组中创建。
 
-## 使用 Azure 门户查看和管理 <a name="with-azure-cli"></a>
+## <a name="view-and-manage-with-azure-portal"></a>使用 Azure 门户查看和管理 <a name="with-azure-cli"></a>
 
 可以使用“警报”下的“管理规则”边栏选项卡查看和管理指标警报规则。 以下过程说明如何查看指标警报规则，以及编辑其中的某个规则。
 
@@ -102,7 +102,7 @@ Azure Monitor 中的指标警报提供了一种在指标超出阈值时获得通
     az monitor metrics alert --help
     ```
 
-3. 可以创建一个简单的指标警报规则来监视 VM 上的平均 CPU 百分比是否大于 90
+3. 可以创建一个简单的指标预警规则来监视 VM 上的平均 CPU 百分比是否大于 90
 
     ```azurecli
     az monitor metrics alert create -n {nameofthealert} -g {ResourceGroup} --scopes {VirtualMachineResourceID} --condition "avg Percentage CPU > 90" --description {descriptionofthealert}

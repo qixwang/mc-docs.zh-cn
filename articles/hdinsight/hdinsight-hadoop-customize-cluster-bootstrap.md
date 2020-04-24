@@ -18,10 +18,10 @@ origin.date: 11/21/2019
 ms.date: 02/24/2020
 ms.author: v-yiso
 ms.openlocfilehash: 16c0628b5446e9a69b1108b9cf7bbacfddc9bffa
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79292081"
 ---
 # <a name="customize-hdinsight-clusters-using-bootstrap"></a>使用 Bootstrap 自定义 HDInsight 群集
@@ -32,7 +32,7 @@ Bootstrap 脚本允许你以编程方式在 Azure HDInsight 中安装和配置�
 
 * 使用 Azure PowerShell
 * 使用 .NET SDK
-* 使用 Azure Resource Manager 模板
+* 使用 Azure 资源管理器模板
 
 例如，使用这些编程方法，你可以在以下文件中配置选项：
 
@@ -55,7 +55,7 @@ Bootstrap 脚本允许你以编程方式在 Azure HDInsight 中安装和配置�
 
 有关在创建时在 HDInsight 群集上安装其他组件的信息，请参阅[使用脚本操作自定义 HDInsight 群集 (Linux)](hdinsight-hadoop-customize-cluster-linux.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * 如果使用 PowerShell，你将需要 [Az 模块](https://docs.microsoft.com/powershell/azure/overview)。
 
@@ -92,7 +92,7 @@ New-AzHDInsightCluster `
 
 可在[附录](#appendix-powershell-sample)中找到完整的有效 PowerShell 脚本。
 
-**若要验证更改，请执行以下操作：**
+**验证更改：**
 
 1. 导航至 `https://CLUSTERNAME.azurehdinsight.cn/`，其中 `CLUSTERNAME` 是群集的名称。
 1. 从左侧菜单中，导航到“Hive”   > “配置”   > “高级”  。
@@ -120,7 +120,7 @@ $OozieConfigValues = @{ "oozie.service.coord.normal.default.timeout"="150" }  # 
 请参阅[用于 .NET 的 Azure HDInsight SDK](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight?view=azure-dotnet)。
 
 ## <a name="use-resource-manager-template"></a>使用 Resource Manager 模板
-可以在 Resource Manager 模板中使用 bootstrap：
+可在 Resource Manager 模板中使用 Bootstrap：
 
 ```json
 "configurations": {
@@ -132,7 +132,7 @@ $OozieConfigValues = @{ "oozie.service.coord.normal.default.timeout"="150" }  # 
 }
 ```
 
-![HDInsight Hadoop, 自定义群集, bootstrap, Azure Resource Manager 模板](./media/hdinsight-hadoop-customize-cluster-bootstrap/hdinsight-customize-cluster-bootstrap-arm.png)
+![HDInsight Hadoop 自定义群集 Bootstrap Azure 资源管理器模板](./media/hdinsight-hadoop-customize-cluster-bootstrap/hdinsight-customize-cluster-bootstrap-arm.png)
 
 ## <a name="see-also"></a>另请参阅
 * [在 HDInsight 中创建 Apache Hadoop 群集][hdinsight-provision-cluster]提供了有关如何使用其他自定义选项创建 HDInsight 群集的说明。

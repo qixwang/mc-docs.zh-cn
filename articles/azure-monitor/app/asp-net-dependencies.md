@@ -8,10 +8,10 @@ origin.date: 06/25/2019
 ms.date: 08/22/2019
 ms.author: v-lingwu
 ms.openlocfilehash: eb188bcacedc5a0937f9064333583ad0af3fdd69
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79291728"
 ---
 # <a name="dependency-tracking-in-azure-application-insights"></a>在 Azure Application Insights 中跟踪依赖项 
@@ -111,7 +111,7 @@ ms.locfileid: "79291728"
 * 单击缓慢或失败的请求可以检查其依赖性调用。
 * [Analytics](#logs-analytics) 可用于查询依赖性数据。
 
-## <a name="diagnosis"></a>诊断慢速请求
+## <a name="diagnose-slow-requests"></a><a name="diagnosis"></a>诊断慢速请求
 
 每个请求事件都与应用处理请求时跟踪的依赖项调用、异常和其他事件相关联。 因此，如果某些请求的执行状态不佳，可以判断其原因是否为某个依赖项的响应速度缓慢。
 

@@ -8,10 +8,10 @@ origin.date: 05/30/2019
 ms.date: 10/24/2019
 ms.author: v-lingwu
 ms.openlocfilehash: 5924e7aa4e568d99593a1a4b9acf89cb6d46d5da
-ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/17/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79452573"
 ---
 # <a name="manage-alert-instances-with-unified-alerts"></a>使用统一警报管理警报实例
@@ -25,7 +25,7 @@ ms.locfileid: "79452573"
 
 可以通过以下任意一种方式转到“警报”页：
 
-   + 在 [Azure 门户](https://portal.azure.cn/)中，选择“监视” > “警报”。    
+   + 在 [Azure 门户](https://portal.azure.cn/)中，选择“监视” **“警报”。**  >    
      ![监视警报的屏幕截图](media/alerts-managing-alert-instances/monitoring-alerts-managing-alert-instances-toc.jpg)
   
 - 使用特定资源的上下文。 打开资源，转到“监视”  部分，然后选择“警报”  。 登陆页已经过预先筛选，以显示有关特定资源的警报。

@@ -10,10 +10,10 @@ ms.date: 10/28/2019
 ms.author: v-jay
 ms.reviewer: cbrooks
 ms.openlocfilehash: 32a9721410d9b6ccac232765125e3d39c47aeb4a
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79293420"
 ---
 # <a name="manage-anonymous-read-access-to-containers-and-blobs"></a>管理对容器和 Blob 的匿名读取访问

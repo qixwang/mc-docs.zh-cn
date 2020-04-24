@@ -11,10 +11,10 @@ ms.date: 03/16/2020
 ms.topic: conceptual
 manager: digimobile
 ms.openlocfilehash: 2d35d7f2208d6a31b3b1a6e0a97ebaab9e8a8858
-ms.sourcegitcommit: dc862610e2169c1fce6fb0ae9eb7dd7567f86a0a
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79293738"
 ---
 # <a name="scheduling-a-runbook-in-azure-automation"></a>在 Azure 自动化中计划 Runbook
@@ -43,7 +43,7 @@ ms.locfileid: "79293738"
 可以使用 Azure 门户或 PowerShell 为 Runbook 创建新计划。
 
 > [!NOTE]
-> 当运行新的计划作业时，Azure 自动化将在自动化帐户中使用最新模块。  若要避免影响 Runbook 以及其自动执行进程，应首先使用测试专用自动化帐户测试已链接计划的任何 Runbook。  这将验证计划的 runbook 是否继续正常运行，如果没有，则可以进一步排除故障并在将更新的 runbook 版本迁移到生产之前应用所需的任何更改。
+> 当运行新的计划作业时，Azure 自动化将在自动化帐户中使用最新模块。  为了避免影响 runbook 及其自动化进程，你应该首先测试已将计划与专用于测试的自动化帐户进行链接的 runbook。  这将验证计划的 runbook 是否继续正常运行，如果没有，则可以进一步排除故障并在将更新的 runbook 版本迁移到生产之前应用所需的任何更改。
 
 ### <a name="to-create-a-new-schedule-in-the-azure-portal"></a>在 Azure 门户中创建新计划
 
@@ -127,7 +127,7 @@ New-AzureRmAutomationSchedule -AutomationAccountName "TestAzureAuto" -Name "1st,
 ### <a name="to-link-a-schedule-to-a-runbook-with-powershell"></a>使用 PowerShell 将计划链接到 Runbook
 
 可使用 [Register-AzureRmAutomationScheduledRunbook](https://docs.microsoft.com/powershell/module/azurerm.automation/register-azurermautomationscheduledrunbook) cmdlet 链接计划。 可以使用 Parameters 参数为 Runbook 的参数指定值。 有关指定参数值的详细信息，请参阅[在 Azure 自动化中启动 Runbook](../automation-starting-a-runbook.md)。
-以下示例命令演示了如何使用带参数的 Azure Resource Manager cmdlet 将计划链接到 Runbook。
+以下示例命令演示了如何使用带参数的 Azure 资源管理器 cmdlet 将计划链接到 Runbook。
 
 ```powershell
 $automationAccountName = "MyAutomationAccount"
@@ -155,16 +155,16 @@ Register-AzureRmAutomationScheduledRunbook –AutomationAccountName $automationA
 
 1. 在 Azure 门户中，从你的自动化帐户中，从左侧的“共享资源”部分下选择“计划”。  
 2. 单击某个计划的名称以打开详细信息窗格。
-3. 将“已启用”更改为“否”   。
+3. 将“已启用”  更改为“否”  。
 
 > [!NOTE]
 > 若要禁用开始时间已过去的计划，必须将开始日期更改为将来的某个时间，然后保存计划。
 
 ### <a name="to-disable-a-schedule-with-powershell"></a>使用 PowerShell 禁用计划
 
-可使用 [Set-AzureRmAutomationSchedule](https://docs.microsoft.com/powershell/module/azurerm.automation/set-azurermautomationschedule) cmdlet 更改现有计划的属性。 若要禁用计划，请将“IsEnabled”参数指定为“false”   。
+可使用 [Set-AzureRmAutomationSchedule](https://docs.microsoft.com/powershell/module/azurerm.automation/set-azurermautomationschedule) cmdlet 更改现有计划的属性。 若要禁用计划，请为 **IsEnabled** 参数指定 **false**。
 
-以下示例命令演示了如何使用 Azure Resource Manager cmdlet 禁用 Runbook 的计划。
+以下示例命令演示了如何使用 Azure 资源管理器 cmdlet 禁用 Runbook 的计划。
 
 ```powershell
 $automationAccountName = "MyAutomationAccount"
@@ -175,5 +175,5 @@ Set-AzureRmAutomationSchedule –AutomationAccountName $automationAccountName `
 
 ## <a name="next-steps"></a>后续步骤
 
-* 若要在 Azure 自动化中开始使用 Runbook，请参阅 [在 Azure 自动化中启动 Runbook](../automation-starting-a-runbook.md)
+* 若要在 Azure 自动化中开始使用 Runbook，请参阅[在 Azure 自动化中启动 Runbook](../automation-starting-a-runbook.md)
 

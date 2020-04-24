@@ -17,10 +17,10 @@ origin.date: 05/26/2017
 ms.date: 12/23/2019
 ms.author: v-yiso
 ms.openlocfilehash: 4983f98115506650d4ecb4d2d3800c320d378c18
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79291525"
 ---
 # <a name="create-custom-apis-you-can-call-from-azure-logic-apps"></a>创建可从 Azure 逻辑应用调用的自定义 API
@@ -33,7 +33,7 @@ ms.locfileid: "79291525"
 
 连接器本质上是 Web API，此类 API 将 REST 用于可插入接口、将 [Swagger 元数据格式](https://swagger.io/specification/)用于文档、将 JSON 用作其数据交换格式。 因为连接器是通过 HTTP 终结点进行通信的 REST API，所以可以使用任何语言生成连接器，如 .NET、Java、Python 或 Node.js。 此外，还可在 [Azure 应用服务](../app-service/overview.md)上托管API，前者是一款平台即服务 (PaaS) 产品，可为 API 托管提供一种最简单且可缩放性最高的最佳方法。 
 
-对于要用于逻辑应用的自定义 API，API 可以提供在逻辑应用工作流中执行特定任务的[操作](./logic-apps-overview.md#logic-app-concepts)  。 API 还可充当[触发器](./logic-apps-overview.md#logic-app-concepts)  ，在新数据或事件满足指定条件时启动逻辑应用工作流。 本主题介绍根据想要 API 提供的行为，在 API 中生成操作和触发器可以遵循的常见模式。
+对于要用于逻辑应用的自定义 API，API 可以提供在逻辑应用工作流中执行特定任务的[操作  ](./logic-apps-overview.md#logic-app-concepts)。 API 还可充当[触发器  ](./logic-apps-overview.md#logic-app-concepts)，在新数据或事件满足指定条件时启动逻辑应用工作流。 本主题介绍根据想要 API 提供的行为，在 API 中生成操作和触发器可以遵循的常见模式。
 
 可在 [Azure App Service](../app-service/overview.md) 上托管API，它是一款平台即服务 (PaaS) 产品，可提供简单的高缩放性 API 托管。
 
@@ -72,7 +72,7 @@ ms.locfileid: "79291525"
 
 ## <a name="action-patterns"></a>操作模式
 
-对于执行任务的逻辑应用，自定义 API 应提供[操作](./logic-apps-overview.md#logic-app-concepts)  。 API 中的每个操作 (operation) 将映射到操作 (action)。 基本操作是接受 HTTP 请求并返回 HTTP 响应的控制器。 例如，逻辑应用将 HTTP 请求发送到 Web 应用或 API 应用。 然后应用返回 HTTP 响应及逻辑应用可处理的内容。
+对于执行任务的逻辑应用，自定义 API 应提供[操作  ](./logic-apps-overview.md#logic-app-concepts)。 API 中的每个操作 (operation) 将映射到操作 (action)。 基本操作是接受 HTTP 请求并返回 HTTP 响应的控制器。 例如，逻辑应用将 HTTP 请求发送到 Web 应用或 API 应用。 然后应用返回 HTTP 响应及逻辑应用可处理的内容。
 
 对于标准操作，可在 API 中编写 HTTP 请求方法，并在 Swagger 文件中描述该方法。 然后，可以使用 [HTTP 操作](../connectors/connectors-native-http.md)或 [HTTP + Swagger](../connectors/connectors-native-http-swagger.md) 操作直接调用 API。 默认情况下，必须在[请求超时限制](./logic-apps-limits-and-config.md)内返回响应。 
 
@@ -106,9 +106,9 @@ ms.locfileid: "79291525"
    
    `202 ACCEPTED` 响应应包含这些标头：
    
-   * *必需*：用于指定逻辑应用引擎检查 API 作业状态的 URL 的绝对路径的 `location` 标头
+   * 必需  ：用于指定逻辑应用引擎检查 API 作业状态的 URL 的绝对路径的 `location` 标头
 
-   * *可选*：用于指定引擎检查 `location` URL 获知作业状态之前应等待秒数的 `retry-after` 标头。 
+   * 可选  ：用于指定引擎检查 `retry-after` URL 获知作业状态之前应等待秒数的 `location` 标头。 
 
      默认情况下，引擎每隔 20 秒检查一次。 若要指定不同的时间间隔，请包括 `retry-after` 标头和下次轮询前的秒数。
 
@@ -138,7 +138,7 @@ ms.locfileid: "79291525"
 
 *  `subscribe` 终结点：当执行到达工作流中的 API 操作时，逻辑应用引擎调用 `subscribe` 终结点。 此步骤导致逻辑应用创建 API 将存储的回叫 URL，然后等待工作完成时 API 的回叫。 API 通过 HTTP POST 回叫 URL，并将任何返回的内容和标头作为输入传递到逻辑应用。
 
-* `unsubscribe` 终结点：如果逻辑应用运行已取消，逻辑应用引擎将调用 `unsubscribe` 终结点。 然后 API 可以取消注册回叫 URL，并根据需要停止任何进程。
+* `unsubscribe` 终结点： 如果逻辑应用运行已取消，逻辑应用引擎将调用 `unsubscribe` 终结点。 然后 API 可以取消注册回叫 URL，并根据需要停止任何进程。
 
 ![Webhook 操作模式](./media/logic-apps-create-api-app/custom-api-webhook-action-pattern.png)
 
@@ -152,7 +152,7 @@ ms.locfileid: "79291525"
 
 ## <a name="trigger-patterns"></a>触发器模式
 
-自定义 API 还可充当[触发器](./logic-apps-overview.md#logic-app-concepts)，在新数据或事件满足指定条件时启动逻辑应用  。 此触发器可以定期检查或者等待侦听服务终结点上的新数据或事件。 如果新数据或事件满足指定的条件，触发器触发并启动正在侦听该触发器的逻辑应用。 若要以这种方式启动逻辑应用，API 可以遵循[轮询触发器](#polling-triggers)  或 [Webhook 触发器](#webhook-triggers)  模式。 这些模式类似于其[轮询操作](#async-pattern)和 [Webhook 操作](#webhook-actions)的对应项。 另请详细了解[触发器的用量计量](logic-apps-pricing.md)。
+自定义 API 还可充当[触发器 *，在新数据或事件满足指定条件时启动逻辑应用*](./logic-apps-overview.md#logic-app-concepts)。 此触发器可以定期检查或者等待侦听服务终结点上的新数据或事件。 如果新数据或事件满足指定的条件，触发器触发并启动正在侦听该触发器的逻辑应用。 若要以这种方式启动逻辑应用，API 可以遵循[轮询触发器  ](#polling-triggers)或 [Webhook 触发器  ](#webhook-triggers)模式。 这些模式类似于其[轮询操作](#async-pattern)和 [Webhook 操作](#webhook-actions)的对应项。 另请详细了解[触发器的用量计量](logic-apps-pricing.md)。
 
 <a name="polling-triggers"></a>
 
@@ -177,8 +177,8 @@ ms.locfileid: "79291525"
 
 | 请求是否包含 `triggerState`？ | API 响应 | 
 | -------------------------------- | -------------| 
-| 否 | 返回 HTTP `202 ACCEPTED` 状态及 `triggerState` 设置为当前时间、`retry-after` 间隔为 15 秒的 `location` 标头。 | 
-| 是 | 在 `triggerState` 的 `DateTime` 之后检查服务的已添加文件。 | 
+| 否 | 返回 HTTP `202 ACCEPTED` 状态及 `location` 设置为当前时间、`triggerState` 间隔为 15 秒的 `retry-after` 标头。 | 
+| 是 | 在 `DateTime` 的 `triggerState` 之后检查服务的已添加文件。 | 
 ||| 
 
 | 找到的文件数 | API 响应 | 
@@ -205,7 +205,7 @@ Webhook 触发器的行为非常类似于之前本主题中所述的 [Webhook �
 ![Webhook 触发器模式](./media/logic-apps-create-api-app/custom-api-webhook-trigger-pattern.png)
 
 > [!NOTE]
-> 目前，逻辑应用设计器不支持通过 Swagger 发现 Webhook 终结点。 因此对于此模式，需要添加 [Webhook 触发器](../connectors/connectors-native-webhook.md)  并指定 URL、 标头以及请求正文。 另请参阅 [HTTPWebhook 触发器](logic-apps-workflow-actions-triggers.md#httpwebhook-trigger)。 若要传入回叫 URL，可以根据需要使用以前任何字段中的 `@listCallbackUrl()` 工作流函数。
+> 目前，逻辑应用设计器不支持通过 Swagger 发现 Webhook 终结点。 因此对于此模式，需要添加 [Webhook 触发器  ](../connectors/connectors-native-webhook.md)并指定 URL、 标头以及请求正文。 另请参阅 [HTTPWebhook 触发器](logic-apps-workflow-actions-triggers.md#httpwebhook-trigger)。 若要传入回叫 URL，可以根据需要使用以前任何字段中的 `@listCallbackUrl()` 工作流函数。
 >
 > 若要防止多次处理相同数据，触发器应清理已读取且传递到逻辑应用的数据。
 

@@ -12,10 +12,10 @@ origin.date: 12/09/2019
 ms.date: 1/2/2020
 ms.author: diberry
 ms.openlocfilehash: a4eaa8d71c488a768d1166389dcd21b3255fea67
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79291775"
 ---
 # <a name="pattern-syntax"></a>模式语法
@@ -54,7 +54,7 @@ ms.locfileid: "79291775"
 |嵌套的分组话语示例|说明|
 |--|--|
 |RedWest-C|匹配外层分组实体|
-|西雅图|匹配内层分组实体之一|
+|Seattle|匹配内层分组实体之一|
 |开罗|匹配内层分组实体之一|
 
 ## <a name="nesting-limits-for-groups-with-optional-syntax"></a>带有可选语法的组的嵌套限制
@@ -92,7 +92,7 @@ ms.locfileid: "79291775"
 ## <a name="syntax-to-add-a-patternany-to-pattern-template"></a>用于向模式模板添加 pattern.any 的语法
 Pattern.any 实体可用于向模式添加不同长度的实体。 只要按照模式模板操作，pattern.any 即可为任意长度。
 
-要向模式模板添加 Pattern.any 实体，需用花括号将 Pattern.any 实体括起，比如 `How much does {Booktitle} cost and what format is it available in?`  。
+要向模式模板添加 Pattern.any 实体，需用花括号将 Pattern.any 实体括起，比如  `How much does {Booktitle} cost and what format is it available in?`。
 
 |模式与 Pattern.any 实体|
 |--|
@@ -126,7 +126,7 @@ Pattern.any 实体可用于向模式添加不同长度的实体。 只要按照�
 
 在上表中，主题应当是 `the man from La Mancha`（书名），但因为主题包含可选字词 `from`，因此书名没有正确预测。
 
-要避免模式出现此异常，需使用[显式列表的创作 API](https://{region}.dev.cognitive.azure.cn/docs/services/5890b47c39e2bb17b84a55ff/operations/5ade550bd5b81c209ce2e5a8) 添加 `the man from la mancha` 作为 {subject} 实体的显式列表匹配。
+要避免模式出现此异常，需使用`the man from la mancha`显式列表的创作 API[ 添加 ](https://{region}.dev.cognitive.azure.cn/docs/services/5890b47c39e2bb17b84a55ff/operations/5ade550bd5b81c209ce2e5a8) 作为 {subject} 实体的显式列表匹配。
 
 ## <a name="syntax-to-mark-optional-text-in-a-template-utterance"></a>用于在模板话语中标记可选文本的语法
 使用正则表达式方括号语法 `[]` 标出话语中的可选文本。 最多能对两个括号使用方括号嵌套可选文本。

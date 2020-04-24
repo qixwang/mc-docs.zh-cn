@@ -8,10 +8,10 @@ origin.date: 07/05/2019
 ms.date: 09/05/2019
 ms.author: v-lingwu
 ms.openlocfilehash: c9c7d2c016d4d519ad634281936b57e0cfb387ed
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79293460"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>对 Azure 备份失败进行故障排除：代理或扩展的问题
@@ -20,7 +20,7 @@ ms.locfileid: "79293460"
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
-## <a name="UserErrorGuestAgentStatusUnavailable-vm-agent-unable-to-communicate-with-azure-backup"></a>UserErrorGuestAgentStatusUnavailable - VM 代理无法与 Azure 备份通信
+## <a name="usererrorguestagentstatusunavailable---vm-agent-unable-to-communicate-with-azure-backup"></a><a name="UserErrorGuestAgentStatusUnavailable-vm-agent-unable-to-communicate-with-azure-backup"></a>UserErrorGuestAgentStatusUnavailable - VM 代理无法与 Azure 备份通信
 
 **错误代码**：UserErrorGuestAgentStatusUnavailable <br>
 **错误消息**：VM 代理无法与 Azure 备份进行通信<br>
@@ -83,7 +83,7 @@ Azure VM 代理可能已停止、已过期、处于不一致状态或未安装�
 
 要使备份操作在加密的 VM 上成功，该服务必须具有访问密钥保管库的权限。 可以通过 [Azure 门户](/backup/backup-azure-vms-encryption#provide-permissions-to-backup)或 [PowerShell](/backup/backup-azure-vms-automation#enable-protection) 来设置权限
 
-## <a name="ExtensionSnapshotFailedNoNetwork-snapshot-operation-failed-due-to-no-network-connectivity-on-the-virtual-machine"></a>ExtensionSnapshotFailedNoNetwork - 由于虚拟机上无网络连接，快照操作失败
+## <a name="extensionsnapshotfailednonetwork---snapshot-operation-failed-due-to-no-network-connectivity-on-the-virtual-machine"></a><a name="ExtensionSnapshotFailedNoNetwork-snapshot-operation-failed-due-to-no-network-connectivity-on-the-virtual-machine"></a>ExtensionSnapshotFailedNoNetwork - 由于虚拟机上无网络连接，快照操作失败
 
 **错误代码**：ExtensionSnapshotFailedNoNetwork<br>
 **错误消息**：由于虚拟机上无网络连接，快照操作失败<br>
@@ -93,7 +93,7 @@ Azure VM 代理可能已停止、已过期、处于不一致状态或未安装�
 **原因 1：[无法检索快照状态或无法创建快照](#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken)**  
 **原因 2：[备份扩展无法更新或加载](#the-backup-extension-fails-to-update-or-load)**  
 
-## <a name="ExtensionOperationFailed-vmsnapshot-extension-operation-failed"></a>ExtensionOperationFailedForManagedDisks - VMSnapshot 扩展操作失败
+## <a name="extensionoperationfailedformanageddisks---vmsnapshot-extension-operation-failed"></a><a name="ExtensionOperationFailed-vmsnapshot-extension-operation-failed"></a>ExtensionOperationFailedForManagedDisks - VMSnapshot 扩展操作失败
 
 **错误代码**：ExtensionOperationFailedForManagedDisks <br>
 **错误消息**：VMSnapshot 扩展操作失败<br>
@@ -150,7 +150,7 @@ Azure VM 代理可能已停止、已过期、处于不一致状态或未安装�
 
 ## <a name="causes-and-solutions"></a>原因和解决方法
 
-### <a name="the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms"></a>代理安装在 VM 中，但无响应（针对 Windows VM）
+### <a name="the-agent-is-installed-in-the-vm-but-its-unresponsive-for-windows-vms"></a><a name="the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms"></a>代理安装在 VM 中，但无响应（针对 Windows VM）
 
 #### <a name="solution"></a>解决方案
 
@@ -202,7 +202,7 @@ VM 代理可能已损坏或服务可能已停止。 重新安装 VM 代理可帮
 配置文件 (/etc/waagent.conf) 可控制 waagent 的操作。 配置文件选项“Extensions.Enable”和“Provisioning.Agent”应设置为“y”，以使备份正常工作    。
 有关 VM-Agent 配置文件选项的完整列表，请参阅 <https://github.com/Azure/WALinuxAgent#configuration-file-options>
 
-### <a name="the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken"></a>无法检索快照状态或无法创建快照
+### <a name="the-snapshot-status-cant-be-retrieved-or-a-snapshot-cant-be-taken"></a><a name="the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken"></a>无法检索快照状态或无法创建快照
 
 VM 备份依赖于向基础存储帐户发出快照命令。 备份失败的原因可能是它无法访问存储帐户，也可能是快照任务的执行被延迟。
 
@@ -235,7 +235,7 @@ VM 备份依赖于向基础存储帐户发出快照命令。 备份失败的原�
 
 完成这些步骤可在下一次备份期间重新安装扩展。
 
-### <a name="remove_lock_from_the_recovery_point_resource_group"></a>删除恢复点资源组中的锁
+### <a name="remove-lock-from-the-recovery-point-resource-group"></a><a name="remove_lock_from_the_recovery_point_resource_group"></a>删除恢复点资源组中的锁
 
 1. 登录到 [Azure 门户](https://portal.azure.cn/)。
 2. 转到“所有资源选项”，选择采用 AzureBackupRG_`<Geo>`_`<number>` 格式的还原点集合资源组。 
@@ -244,7 +244,7 @@ VM 备份依赖于向基础存储帐户发出快照命令。 备份失败的原�
 
     ![删除锁](./media/backup-azure-arm-vms-prepare/delete-lock.png)
 
-### <a name="clean_up_restore_point_collection"></a>清理还原点集合
+### <a name="clean-up-restore-point-collection"></a><a name="clean_up_restore_point_collection"></a>清理还原点集合
 
 删除锁后，必须清理还原点。
 
@@ -255,14 +255,14 @@ VM 备份依赖于向基础存储帐户发出快照命令。 备份失败的原�
 - [通过运行按需备份来清理还原点集合](#clean-up-restore-point-collection-by-running-on-demand-backup)<br>
 - [从 Azure 门户清理还原点集合](#clean-up-restore-point-collection-from-azure-portal)<br>
 
-#### <a name="clean-up-restore-point-collection-by-running-on-demand-backup"></a>通过运行按需备份来清理还原点集合
+#### <a name="clean-up-restore-point-collection-by-running-on-demand-backup"></a><a name="clean-up-restore-point-collection-by-running-on-demand-backup"></a>通过运行按需备份来清理还原点集合
 
 删除锁后，将触发按需备份。 此操作可以确保自动清理还原点。 预期此按需操作第一次会失败；但是，它可以确保自动完成清理，而无需手动删除还原点。 清理后，下一个计划的备份应会成功。
 
 > [!NOTE]
 > 自动清理将在触发按需备份的数小时后发生。 如果计划的备份仍然失败，请尝试使用[此处](#clean-up-restore-point-collection-from-azure-portal)列出的步骤手动删除还原点集合。
 
-#### <a name="clean-up-restore-point-collection-from-azure-portal"></a>从 Azure 门户清理还原点集合 <br>
+#### <a name="clean-up-restore-point-collection-from-azure-portal-br"></a><a name="clean-up-restore-point-collection-from-azure-portal"></a>从 Azure 门户清理还原点集合 <br>
 
 若要手动清除由于资源组中存在锁而未能清除的还原点集合，请尝试以下步骤：
 

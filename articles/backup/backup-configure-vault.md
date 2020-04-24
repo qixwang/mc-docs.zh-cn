@@ -7,10 +7,10 @@ origin.date: 06/04/2019
 ms.date: 03/06/2020
 ms.author: v-lingwu
 ms.openlocfilehash: ec2135ed096d4bb04134407820bceecbe652f4a3
-ms.sourcegitcommit: dc862610e2169c1fce6fb0ae9eb7dd7567f86a0a
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79293771"
 ---
 # <a name="back-up-windows-machines-by-using-the-azure-backup-mars-agent"></a>使用 Azure 备份 MARS 代理备份 Windows 计算机

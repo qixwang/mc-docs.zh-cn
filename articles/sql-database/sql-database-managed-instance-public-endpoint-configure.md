@@ -12,10 +12,10 @@ ms.reviewer: vanto, carlrab
 origin.date: 05/07/2019
 ms.date: 12/16/2019
 ms.openlocfilehash: 005dedea79798c455f287605aa7cb702ad3c8a08
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79291264"
 ---
 # <a name="configure-public-endpoint-in-azure-sql-database-managed-instance"></a>在 Azure SQL 数据库托管实例中配置公共终结点

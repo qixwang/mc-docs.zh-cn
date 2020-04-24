@@ -6,10 +6,10 @@ origin.date: 08/14/2019
 ms.author: v-yeche
 ms.date: 01/06/2020
 ms.openlocfilehash: 9f9b1c68e29e4399b235a21112e553f3d6768fff
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79291254"
 ---
 <!--Verify successfully-->
@@ -102,7 +102,7 @@ az storage blob upload \
 要在存储帐户中部署专用模板，请生成 SAS 令牌，并将其包括在模板的 URI 中。 设置到期时间以允许足够的时间来完成部署。
 
 > [!IMPORTANT]
-> 只有帐户所有者可以访问包含模板的 Blob。 但是，如果为 blob 创建 SAS 令牌，则拥有该 URI 的任何人都可以访问 blob。 如果其他用户截获了该 URI，则此用户可以访问该模板。 SAS 令牌是限制对模板的访问的好方法，但不应直接在模板中包括密码等敏感数据。
+> 只有帐户所有者才能访问包含该模板的 Blob。 但是，如果为 blob 创建 SAS 令牌，则拥有该 URI 的任何人都可以访问 blob。 如果其他用户截获了该 URI，则此用户可以访问该模板。 使用 SAS 令牌是限制对模板的访问的好办法，但不应直接在模板中包括密码等敏感数据。
 >
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
@@ -148,7 +148,7 @@ az group deployment create \
 
 ---
 
-有关将 SAS 令牌与链接模板配合使用的示例，请参阅[将已链接的模版与 Azure Resource Manager 配合使用](linked-templates.md)。
+有关将 SAS 令牌与链接模板配合使用的示例，请参阅[将已链接的模版与 Azure 资源管理器配合使用](linked-templates.md)。
 
 ## <a name="next-steps"></a>后续步骤
 * 有关部署模板的简介，请参阅[使用 Resource Manager 模板和 Azure PowerShell 部署资源](deploy-powershell.md)。

@@ -9,10 +9,10 @@ origin.date: 09/05/2019
 ms.date: 09/30/2019
 ms.author: v-yeche
 ms.openlocfilehash: f2c16f73732b71ae47a13a973bcb20e057754872
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79291692"
 ---
 # <a name="monitor-the-process-server"></a>监视进程服务器
@@ -59,11 +59,11 @@ ms.locfileid: "79291692"
 ![警告][yellow] | 过去 15 分钟的缓存文件夹可用空间小于 30%
 ![警告][yellow] | Site Recovery 每五分钟监视一次挂起/传出数据，并估计进程服务器缓存中的数据无法在 30 分钟内上传到 Azure。
 ![警告][yellow] | 进程服务器服务在过去 15 分钟未运行
-![关键][red] | 过去 15 分钟的 CPU 利用率超过 95%
-![关键][red] | 过去 15 分钟的内存使用率超过 95%
-![关键][red] | 过去 15 分钟的缓存文件夹可用空间小于 25%
-![关键][red] | Site Recovery 每五分钟监视一次挂起/传出数据，并估计进程服务器缓存中的数据无法在 45 分钟内上传到 Azure。
-![关键][red] | 进程服务器有 15 分钟未发出检测信号。
+![严重][red] | 过去 15 分钟的 CPU 利用率超过 95%
+![严重][red] | 过去 15 分钟的内存使用率超过 95%
+![严重][red] | 过去 15 分钟的缓存文件夹可用空间小于 25%
+![严重][red] | Site Recovery 每五分钟监视一次挂起/传出数据，并估计进程服务器缓存中的数据无法在 45 分钟内上传到 Azure。
+![严重][red] | 进程服务器有 15 分钟未发出检测信号。
 
 ![表键](./media/vmware-physical-azure-monitor-process-server/table-key.png)
 

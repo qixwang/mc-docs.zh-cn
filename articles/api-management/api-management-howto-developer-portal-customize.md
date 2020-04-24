@@ -14,17 +14,17 @@ origin.date: 11/22/2019
 ms.date: 12/16/2019
 ms.author: apimpm
 ms.openlocfilehash: c51daf18263ef0abf315bae5fabd9834be686374
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79291280"
 ---
 # <a name="access-and-customize-developer-portal"></a>访问和自定义开发人员门户
 
 开发人员门户是一个自动生成的、完全可自定义的网站，其中包含 API 的文档。 API 使用者可在其中找到 API、了解 API 的用法以及请求访问权限。
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 访问托管版开发人员门户
@@ -37,9 +37,9 @@ ms.locfileid: "79291280"
 
 ![API 管理开发人员门户 - 管理模式](media/api-management-howto-developer-portal-customize/cover.png)
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
-- 完成以下快速入门：[创建一个 Azure API 管理实例](get-started-create-service-instance.md)
+- 完成以下快速入门：[创建 Azure API 管理实例](get-started-create-service-instance.md)
 - 导入并发布 Azure API 管理实例。 有关详细信息，请参阅[导入和发布](import-and-publish.md)
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
@@ -108,7 +108,7 @@ ms.locfileid: "79291280"
 
 
 
-## <a name="publish"> </a>发布门户
+## <a name="publish-the-portal"></a><a name="publish"> </a>发布门户
 
 若要将门户提供给访问者使用并反映其最新更改，需要发布门户。
 

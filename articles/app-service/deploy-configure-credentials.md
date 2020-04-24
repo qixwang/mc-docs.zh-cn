@@ -8,10 +8,10 @@ ms.author: v-tawe
 ms.reviewer: byvinyal
 ms.custom: seodec18
 ms.openlocfilehash: cc9322e77bc0a72053234457b128090701e06c36
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79293082"
 ---
 # <a name="configure-deployment-credentials-for-azure-app-service"></a>为 Azure 应用服务配置部署凭据
@@ -21,7 +21,7 @@ ms.locfileid: "79293082"
 
 * **应用级凭据**：用于每个应用的一组凭据。 只能使用它部署到该应用。 每个应用的凭据在其创建时自动生成。 这些凭据不能手动进行配置，但可随时进行重置。 若要通过 (RBAC) 授予用户访问应用级别凭据的权限，该用户必须是应用的参与者或更高级别角色（包括“网站参与者”内置角色）。 读者不可进行发布，因此无法访问这些凭据。
 
-## <a name="userscope"></a>配置用户级凭据
+## <a name="configure-user-level-credentials"></a><a name="userscope"></a>配置用户级凭据
 
 可以在任何应用的[资源页面](../azure-resource-manager/management/manage-resources-portal.md#manage-resources)中配置用户级凭据。 无论在哪个应用中配置这些凭据，这些凭据都适用于 Azure 帐户中的所有应用和所有订阅。 
 
@@ -69,7 +69,7 @@ JSON 输出会将该密码显示为 `null`。 如果收到 `'Conflict'. Details:
 
 由于用户级凭据链接到用户而不是特定资源，因此用户名必须采用此格式才能将登录操作定向到正确的应用终结点。
 
-## <a name="appscope"></a>设置和重置应用级凭据
+## <a name="get-and-reset-app-level-credentials"></a><a name="appscope"></a>设置和重置应用级凭据
 若要获取应用级凭据，请执行以下操作：
 
 1. 在 [Azure 门户](https://portal.azure.cn)中，从左侧菜单中选择“应用程序服务”   > “&lt;any_app>”   > “部署中心”   > “FTP/凭据”  。

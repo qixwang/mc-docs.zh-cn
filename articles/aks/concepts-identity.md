@@ -7,10 +7,10 @@ origin.date: 02/28/2019
 ms.date: 03/09/2020
 ms.author: v-yeche
 ms.openlocfilehash: 36a9c90fc8c1285f8c9a2c46551b9c6f8a8be848
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79291685"
 ---
 # <a name="access-and-identity-options-for-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS) 的访问和标识选项

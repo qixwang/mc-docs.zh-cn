@@ -16,10 +16,10 @@ origin.date: 10/18/2019
 ms.date: 11/11/2019
 ms.author: v-junlch
 ms.openlocfilehash: a2d8a367773851e29c206b63f59975ce4783b869
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79291928"
 ---
 # <a name="troubleshoot-azure-cache-for-redis-server-side-issues"></a>排查 Azure Cache for Redis 服务器端问题
@@ -28,16 +28,16 @@ ms.locfileid: "79291928"
 
 - [Redis 服务器上的内存压力](#memory-pressure-on-redis-server)
 - [CPU 使用率或服务器负载过高](#high-cpu-usage-or-server-load)
-- [长时间运行的命令](#long-running-commands)
+- [长时间运行命令](#long-running-commands)
 - [服务器端带宽限制](#server-side-bandwidth-limitation)
 
 > [!NOTE]
-> 本指南中的多个故障排除步骤包括了运行 Redis 命令和监视各种性能指标的说明。 如需更多信息和说明，请参阅 [其他信息](#additional-information) 部分的文章。
+> 本指南中的多个故障排除步骤包括了运行 Redis 命令和监视各种性能指标的说明。 有关详细信息和说明，请参阅[其他信息](#additional-information)部分的文章。
 >
 
 ## <a name="memory-pressure-on-redis-server"></a>Redis 服务器上的内存压力
 
-服务器端的内存压力会导致各种性能问题，从而延缓对请求的处理。 出现内存压力时，系统可能会将数据分页到磁盘。 此 _分页错误_ 导致系统的性能显著下降。 这种内存压力可能有多个原因：
+服务器端的内存压力会导致各种性能问题，从而延缓对请求的处理。 出现内存压力时，系统可能会将数据分页到磁盘。 此分页错误  导致系统性能显著下降。 这种内存压力可能有多个原因：
 
 - 缓存中填充的数据即将达到其最大容量。
 - Redis 出现大量内存碎片。 这种碎片往往是存储大型对象造成的，因为 Redis 已针对小型对象进行优化。
@@ -86,7 +86,7 @@ Redis 通过 [INFO](https://redis.io/commands/info) 命令公开以下两项统�
 
 - [排查 Azure Cache for Redis 客户端问题](cache-troubleshoot-client.md)
 - [我应使用哪种 Azure Redis 缓存产品/服务和大小？](cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use)
-- [如何制定基准和测试缓存的性能？](cache-faq.md#how-can-i-benchmark-and-test-the-performance-of-my-cache)
+- [如何制定基准和测试缓存性能？](cache-faq.md#how-can-i-benchmark-and-test-the-performance-of-my-cache)
 - [如何监视 Azure Redis 缓存](cache-how-to-monitor.md)
 - [如何运行 Redis 命令？](cache-faq.md#how-can-i-run-redis-commands)
 

@@ -18,15 +18,15 @@ ms.date: 11/26/2018
 ms.author: v-lingwu
 ms.custom: mvc
 ms.openlocfilehash: 1e530c2db6b60308bbc8f84e977fd89c36449ff0
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79290799"
 ---
 # <a name="tutorial-monitor-network-communication-between-two-virtual-machines-using-the-azure-portal"></a>教程：使用 Azure 门户监视两个虚拟机之间的网络通信
 
-在虚拟机 (VM) 和终结点（例如另一 VM）之间成功通信对于组织来说可能很重要。 有时候，引入配置更改可能会导致通信中断。 本教程介绍如何执行下列操作：
+在虚拟机 (VM) 和终结点（例如另一 VM）之间成功通信对于组织来说可能很重要。 有时候，引入配置更改可能会导致通信中断。 在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 创建两个 VM
@@ -34,11 +34,11 @@ ms.locfileid: "79290799"
 > * 根据连接监视器指标生成警报
 > * 诊断两个 VM 之间的通信问题，并了解如何解决该问题
 
-如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial)。
+如果没有 Azure 订阅，可在开始前创建一个 [试用帐户](https://www.azure.cn/pricing/1rmb-trial) 。
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
-登录到 [Azure 门户](https://portal.azure.cn)。
+登录 [Azure 门户](https://portal.azure.cn)。
 
 ## <a name="create-vms"></a>创建 VM
 
@@ -50,7 +50,7 @@ ms.locfileid: "79290799"
 2. 选择“计算”  ，然后选择操作系统。 在本教程中，使用的是 **Windows Server 2016 Datacenter**。
 3. 输入或选择以下信息，保留剩下的默认设置，然后选择“确定”  ：
 
-    |设置|Value|
+    |设置|值|
     |---|---|
     |名称|myVM1|
     |用户名| 输入所选用户名。|
@@ -72,7 +72,7 @@ ms.locfileid: "79290799"
 
 再次完成[创建第一个 VM](#create-the-first-vm) 中的步骤，并做出以下更改：
 
-|步骤|设置|Value|
+|步骤|设置|值|
 |---|---|---|
 | 1 | 选择某一版本的 **Ubuntu Server** |                                                                         |
 | 3 | 名称                                  | myVm2                                                                   |
@@ -92,10 +92,10 @@ ms.locfileid: "79290799"
 4. 选择“+ 添加”  。
 5. 输入或选择要监视的连接信息，然后选择“添加”  。 在下图所示的示例中，将通过端口 22 监视从 *myVm1* VM 到 *myVm2* VM 的连接：
 
-    | 设置                  | Value               |
+    | 设置                  | 值               |
     | ---------                | ---------           |
     | 名称                     | myVm1-myVm2(22)     |
-    | Source                   |                     |
+    | 源                   |                     |
     | 虚拟机          | myVM1               |
     | 目标              |                     |
     | 选择一个虚拟机 |                     |
@@ -116,7 +116,7 @@ ms.locfileid: "79290799"
 
     请注意以下信息：
 
-    | 项目                     | Value                      | 详细信息                                                     |
+    | Item                     | 值                      | 详细信息                                                     |
     | ---------                | ---------                  |--------                                                     |
     | 状态                   | 可访问                  | 指示终结点是否可以访问。|
     | 平均 往返时间          | 指示进行连接所需的往返时间，以毫秒为单位。 连接监视器每 60 秒探测一次连接，因此可以监视一段时间的延迟情况。                                         |
@@ -148,11 +148,11 @@ ms.locfileid: "79290799"
 
 4. 允许在一个虚拟网络的所有 VM 之间通信的默认规则是名为 **AllowVnetInBound** 的规则。 创建一项优先级高于（数字较小）**AllowVnetInBound** 规则（拒绝通过端口 22 进行的入站通信）的规则。 选择或输入以下信息，接受剩下的默认设置，然后选择“添加”  ：
 
-    | 设置                 | Value          |
+    | 设置                 | 值          |
     | ---                     | ---            |
     | 目标端口范围 | 22             |
     | 操作                  | 拒绝           |
-    | 优先级                | 100            |
+    | 优先度                | 100            |
     | 名称                    | DenySshInbound |
 
 5. 由于连接监视器按 60 秒的时间间隔进行探测，因此请等待数分钟，然后在门户左侧选择“网络观察程序”、“连接监视器”，并再次选择“myVm1-myVm2(22)”监视器。    如下图所示，现在的结果有所不同：
@@ -161,7 +161,7 @@ ms.locfileid: "79290799"
 
     可以看到在 **myvm2529** 网络接口的状态列中有一个红色感叹号。
 
-6. 若要了解状态变化的原因，请选择上图中的“10.0.0.5”。 连接监视器通知你通信失败的原因是：“由于以下网络安全组规则，通信被阻止：  UserRule_DenySshInbound”。
+6. 若要了解状态变化的原因，请选择上图中的“10.0.0.5”。 连接监视器指示通信故障的原因是：  流量被以下网络安全组规则阻止: UserRule_DenySshInbound。
 
     如果你并不知道某人已实施你在步骤 4 中创建的安全规则，则可以从连接监视器中了解到，该规则是引发通信问题的原因。 然后，你就可以更改、覆盖或删除该规则，以便还原 VM 之间的通信。
 

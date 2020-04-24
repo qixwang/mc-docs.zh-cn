@@ -8,10 +8,10 @@ ms.topic: conceptual
 origin.date: 07/23/2019
 ms.date: 12/16/2019
 ms.openlocfilehash: 77c4e49efa95c1b2d39db0c7c7a967eeeff023c3
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79291319"
 ---
 # <a name="request-units-in-azure-cosmos-db"></a>Azure Cosmos DB 中的请求单位

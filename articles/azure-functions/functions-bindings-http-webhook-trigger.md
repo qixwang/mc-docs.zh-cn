@@ -6,10 +6,10 @@ ms.topic: reference
 ms.date: 03/02/2020
 ms.author: v-junlch
 ms.openlocfilehash: 8f42efd1a69c41df164bd974bdd86375b5ab47f1
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79292319"
 ---
 # <a name="azure-functions-http-trigger"></a>Azure Functions HTTP 触发器
@@ -733,7 +733,7 @@ Functions 允许使用密钥来增大开发期间访问 HTTP 函数终结点的�
 
 ### <a name="github-webhooks"></a>GitHub Webhook
 
-要响应 GitHub webhook，首先请创建包含 HTTP 触发器的函数，并将 webHookType 属性设置为 `github`  。 然后将其 URL 和 API 密钥复制到 GitHub 存储库的“添加 Webhook”页。  
+要响应 GitHub webhook，首先请创建包含 HTTP 触发器的函数，并将 webHookType 属性设置为 `github` 。 然后将其 URL 和 API 密钥复制到 GitHub 存储库的“添加 Webhook”页。  
 
 ![](./media/functions-bindings-http-webhook/github-add-webhook.png)
 

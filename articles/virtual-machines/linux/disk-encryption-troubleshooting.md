@@ -9,10 +9,10 @@ origin.date: 08/06/2019
 ms.date: 11/11/2019
 ms.custom: seodec18
 ms.openlocfilehash: 2ed80328b402bcd588e2429b047fb1a19076f230
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79292150"
 ---
 # <a name="azure-disk-encryption-troubleshooting-guide"></a>Azure 磁盘加密故障排除指南

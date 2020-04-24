@@ -6,10 +6,10 @@ origin.date: 02/19/2020
 ms.date: 03/02/2020
 ms.author: v-yeche
 ms.openlocfilehash: bd0e0d752bd57cd2affc5de8a8e02826996f3f8f
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79292525"
 ---
 # <a name="resource-availability-for-azure-container-instances-in-azure-regions"></a>Azure 容器实例在 Azure 区域的资源可用性
@@ -29,7 +29,7 @@ ms.locfileid: "79292525"
 
 <!--Not Available on [supported](container-instances-faq.md#what-windows-base-os-images-are-supported) Windows Server 2016-based-->
 
-| 区域 | 操作系统 | 最大 CPU | 最大内存 (GB) | 存储器 (GB) |
+| 区域 | OS | 最大 CPU | 最大内存 (GB) | 存储器 (GB) |
 | -------- | -- | :---: | :-----------: | :---: |
 | 中国东部 2 | Linux | 4 | 16 | 50 |
 

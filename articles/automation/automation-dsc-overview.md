@@ -1,7 +1,7 @@
 ---
 title: Azure Automation State Configuration 概述
 description: 对 Azure Automation State Configuration (DSC) 及其术语和已知问题的概述
-keywords: powershell dsc, desired state configuration, powershell dsc azure
+keywords: powershell dsc, 所需状态配置, powershell dsc azure
 services: automation
 ms.service: automation
 ms.subservice: dsc
@@ -12,10 +12,10 @@ ms.date: 03/03/2020
 ms.topic: conceptual
 manager: digimobile
 ms.openlocfilehash: 20ee37508f21a080b19fce88b44c3eb12182997a
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79292624"
 ---
 # <a name="azure-automation-state-configuration-overview"></a>Azure Automation State Configuration 概述
@@ -42,7 +42,7 @@ Azure Automation State Configuration 向 [PowerShell Desired State Configuration
 
 使用 Azure Automation State Configuration 进行管理的节点将详细的报表状态数据发送到内置拉取服务器。 可以将 Azure Automation State Configuration 配置为将此数据发送到 Log Analytics 工作区。 若要了解如何将 State Configuration 状态数据发送到 Log Analytics 工作区，请参阅[将 Azure Automation State Configuration 报表数据转发到 Azure Monitor 日志](automation-dsc-diagnostics.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 在使用 Azure Automation State Configuration (DSC) 时，请考虑以下要求。
 
@@ -59,7 +59,7 @@ Azure Automation State Configuration 向 [PowerShell Desired State Configuration
 - Windows 8.1
 - Windows 7
 
-[Microsoft Hyper-V Server](https://docs.microsoft.com/windows-server/virtualization/hyper-v/hyper-v-server-2016) 独立产品 SKU 不包含 Desired State Configuraion 的实现，因此无法通过 PowerShell DSC 或 Azure 自动化 State Configuration 进行管理。
+由于 [Microsoft Hyper-V Server](https://docs.microsoft.com/windows-server/virtualization/hyper-v/hyper-v-server-2016) 独立产品 SKU 不包含 Desired State Configuraion 实现，因此无法由 PowerShell DSC 或 Azure Automation State Configuration 管理。
 
 运行 Linux 的节点支持以下发行版/版本：
 
@@ -71,11 +71,11 @@ DSC Linux 扩展支持[支持的 Linux 发行版](https://github.com/Azure/azure
 
 对于在 Azure 中运行的所有 Linux 节点，[PowerShell DSC for Linux](https://github.com/Microsoft/PowerShell-DSC-for-Linux) 将在载入时安装。
 
-### <a name="network-planning"></a>配置专用网络
+### <a name="configure-private-networks"></a><a name="network-planning"></a>配置专用网络
 
 如果节点位于专用网络中，则 State Configuration (DSC) 需要以下端口和 URL 才能与自动化通信：
 
-* 端口：只需使用 TCP 443 即可进行出站 Internet 访问。
+* 端口：只需使用 TCP 443 进行出站 Internet 访问。
 * 全局 URL：*.azure-automation.cn
 * 代理服务： https://\<workspaceId\>.agentsvc.azure-automation.cn
 
@@ -86,7 +86,7 @@ DSC Linux 扩展支持[支持的 Linux 发行版](https://github.com/Azure/azure
 #### <a name="proxy-support"></a>代理支持
 
 Windows 版本 1809 及更高版本中提供了适用于 DSC 代理的代理支持。
-若要配置此选项，请在用于注册节点的 [metaconfiguration 脚本](automation-dsc-onboarding.md#generating-dsc-metaconfigurations)中设置 **ProxyURL** 和 **ProxyCredential** 的值。
+若要配置此选项，请在用于注册节点的 **metaconfiguration 脚本**中设置 **ProxyURL** 和 [ProxyCredential](automation-dsc-onboarding.md#generating-dsc-metaconfigurations) 的值。
 代理在以前版本的 Windows 的 DSC 中不可用。
 
 对于 Linux 节点，DSC 代理支持代理，并将利用 http_proxy 变量来确定 URL。

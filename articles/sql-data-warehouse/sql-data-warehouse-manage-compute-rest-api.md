@@ -12,10 +12,10 @@ ms.date: 08/19/2019
 ms.author: v-jay
 ms.reviewer: igorstan
 ms.openlocfilehash: 2ba4351734f9d4e8c00edbceae31f3cd65d68e84
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79293017"
 ---
 # <a name="rest-apis-for-azure-sql-data-warehouse"></a>Azure SQL 数据仓库的 REST API
@@ -37,7 +37,7 @@ Content-Type: application/json; charset=UTF-8
 
 ## <a name="pause-compute"></a>暂停计算
 
-若要暂停数据库，请使用[暂停数据库](https://docs.microsoft.com/rest/api/sql/databases/pause) REST API。 以下示例暂停 Server01 服务器上托管的 Database02 数据库。 该服务器位于名为 ResourceGroup1 的 Azure 资源组中。
+若要暂停数据库，请使用[暂停数据库](https://docs.microsoft.com/rest/api/sql/databases/pause) REST API。 以下示例将暂停 Server01 服务器上托管的 Database02 数据库。 该服务器位于名为 ResourceGroup1 的 Azure 资源组中。
 
 ```
 POST https://management.chinacloudapi.cn/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Sql/servers/{server-name}/databases/{database-name}/pause?api-version=2014-04-01-preview HTTP/1.1
@@ -45,7 +45,7 @@ POST https://management.chinacloudapi.cn/subscriptions/{subscription-id}/resourc
 
 ## <a name="resume-compute"></a>恢复计算
 
-若要启动数据库，请使用[恢复数据库](https://docs.microsoft.com/rest/api/sql/databases/resume) REST API。 以下示例启动 Server01 服务器上托管的 Database02 数据库。 该服务器位于名为 ResourceGroup1 的 Azure 资源组中。 
+若要启动数据库，请使用[恢复数据库](https://docs.microsoft.com/rest/api/sql/databases/resume) REST API。 以下示例将启动 Server01 服务器上托管的 Database02 数据库。 该服务器位于名为 ResourceGroup1 的 Azure 资源组中。 
 
 ```
 POST https://management.chinacloudapi.cn/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Sql/servers/{server-name}/databases/{database-name}/resume?api-version=2014-04-01-preview HTTP/1.1

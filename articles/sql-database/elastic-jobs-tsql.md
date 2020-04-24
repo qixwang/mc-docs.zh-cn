@@ -13,10 +13,10 @@ ms.reviewer: sstein
 origin.date: 02/07/2020
 ms.date: 03/16/2020
 ms.openlocfilehash: a8487da8fb69531ebaaeda9f5ff007bf08a75c9d
-ms.sourcegitcommit: dc862610e2169c1fce6fb0ae9eb7dd7567f86a0a
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79293835"
 ---
 # <a name="use-transact-sql-t-sql-to-create-and-manage-elastic-database-jobs"></a>使用 Transact-SQL (T-SQL) 创建和管理弹性数据库作业
@@ -429,7 +429,7 @@ EXEC jobs.sp_delete_job @job_name='ResultsPoolsJob'
 
 
 
-### <a name="sp_add_job"></a>sp_add_job
+### <a name="sp_add_job"></a><a name="sp_add_job"></a>sp_add_job
 
 添加新的作业。 
   
@@ -495,7 +495,7 @@ sp_add_job 必须从创建作业代理时指定的作业代理数据库运行。
 
 若要详细了解这些角色的权限，请参阅本文档中的“权限”部分。 仅 sysadmin 的成员可以使用此存储过程来编辑其他用户拥有的作业的属性。
 
-### <a name="sp_update_job"></a>sp_update_job
+### <a name="sp_update_job"></a><a name="sp_update_job"></a>sp_update_job
 
 更新现有的作业。
 
@@ -558,7 +558,7 @@ sp_add_job 必须从创建作业代理时指定的作业代理数据库运行。
 
 
 
-### <a name="sp_delete_job"></a>sp_delete_job
+### <a name="sp_delete_job"></a><a name="sp_delete_job"></a>sp_delete_job
 
 删除现有的作业。
 
@@ -590,7 +590,7 @@ sp_add_job 必须从创建作业代理时指定的作业代理数据库运行。
 
 
 
-### <a name="sp_add_jobstep"></a>sp_add_jobstep
+### <a name="sp_add_jobstep"></a><a name="sp_add_jobstep"></a>sp_add_jobstep
 
 向作业添加步骤。
 
@@ -716,7 +716,7 @@ sp_add_job 必须从创建作业代理时指定的作业代理数据库运行。
 
 
 
-### <a name="sp_update_jobstep"></a>sp_update_jobstep
+### <a name="sp_update_jobstep"></a><a name="sp_update_jobstep"></a>sp_update_jobstep
 
 更新作业步骤。
 
@@ -841,7 +841,7 @@ sp_add_job 必须从创建作业代理时指定的作业代理数据库运行。
 
 
 
-### <a name="sp_delete_jobstep"></a>sp_delete_jobstep
+### <a name="sp_delete_jobstep"></a><a name="sp_delete_jobstep"></a>sp_delete_jobstep
 
 从作业中删除作业步骤。
 
@@ -887,7 +887,7 @@ sp_add_job 必须从创建作业代理时指定的作业代理数据库运行。
 
 
 
-### <a name="sp_start_job"></a>sp_start_job
+### <a name="sp_start_job"></a><a name="sp_start_job"></a>sp_start_job
 
 开始执行作业。
 
@@ -918,7 +918,7 @@ sp_add_job 必须从创建作业代理时指定的作业代理数据库运行。
 
 若要详细了解这些角色的权限，请参阅本文档中的“权限”部分。 仅 sysadmin 的成员可以使用此存储过程来编辑其他用户拥有的作业的属性。
 
-### <a name="sp_stop_job"></a>sp_stop_job
+### <a name="sp_stop_job"></a><a name="sp_stop_job"></a>sp_stop_job
 
 停止作业的执行。
 
@@ -947,7 +947,7 @@ sp_add_job 必须从创建作业代理时指定的作业代理数据库运行。
 若要详细了解这些角色的权限，请参阅本文档中的“权限”部分。 仅 sysadmin 的成员可以使用此存储过程来编辑其他用户拥有的作业的属性。
 
 
-### <a name="sp_add_target_group"></a>sp_add_target_group
+### <a name="sp_add_target_group"></a><a name="sp_add_target_group"></a>sp_add_target_group
 
 添加目标组。
 
@@ -978,7 +978,7 @@ sp_add_job 必须从创建作业代理时指定的作业代理数据库运行。
 
 若要详细了解这些角色的权限，请参阅本文档中的“权限”部分。 仅 sysadmin 的成员可以使用此存储过程来编辑其他用户拥有的作业的属性。
 
-### <a name="sp_delete_target_group"></a>sp_delete_target_group
+### <a name="sp_delete_target_group"></a><a name="sp_delete_target_group"></a>sp_delete_target_group
 
 删除目标组。
 
@@ -1006,7 +1006,7 @@ sp_add_job 必须从创建作业代理时指定的作业代理数据库运行。
 
 若要详细了解这些角色的权限，请参阅本文档中的“权限”部分。 仅 sysadmin 的成员可以使用此存储过程来编辑其他用户拥有的作业的属性。
 
-### <a name="sp_add_target_group_member"></a>sp_add_target_group_member
+### <a name="sp_add_target_group_member"></a><a name="sp_add_target_group_member"></a>sp_add_target_group_member
 
 向目标组添加一个或一组数据库。
 
@@ -1095,7 +1095,7 @@ SELECT * FROM [jobs].target_group_members WHERE target_group_name= N'Servers Mai
 GO
 ```
 
-### <a name="sp_delete_target_group_member"></a>sp_delete_target_group_member
+### <a name="sp_delete_target_group_member"></a><a name="sp_delete_target_group_member"></a>sp_delete_target_group_member
 
 从目标组中删除目标组成员。
 
@@ -1146,7 +1146,7 @@ EXEC jobs.sp_delete_target_group_member
 GO
 ```
 
-### <a name="sp_purge_jobhistory"></a>sp_purge_jobhistory
+### <a name="sp_purge_jobhistory"></a><a name="sp_purge_jobhistory"></a>sp_purge_jobhistory
 
 删除作业的历史记录。
 
@@ -1207,7 +1207,7 @@ GO
 |[target_group_members](#target_group_members-view)     |   显示所有目标组的所有成员。      |
 
 
-### <a name="job_executions-view"></a>job_executions 视图
+### <a name="job_executions-view"></a><a name="job_executions-view"></a>job_executions 视图
 
 [jobs].[job_executions]
 
@@ -1254,7 +1254,7 @@ GO
 |**schedule_end_time**| datetime2(7)|   作业上次完成执行的日期和时间。|
 
 
-### <a name="job_versions-view"></a>job_versions 视图
+### <a name="job_versions-view"></a><a name="job_versions-view"></a>job_versions 视图
 
 [jobs].[job_versions]
 
@@ -1302,13 +1302,13 @@ GO
 |**max_parallelism**|   int|    每次在弹性池的数据库上执行此作业步骤时，该弹性池允许的最大数据库数。 默认值为 NULL，这意味着没有限制。 |
 
 
-### <a name="jobstep_versions-view"></a>jobstep_versions 视图
+### <a name="jobstep_versions-view"></a><a name="jobstep_versions-view"></a>jobstep_versions 视图
 
 [jobs].[jobstep_versions]
 
 显示每项作业的所有版本中的所有步骤。 架构与 [jobsteps](#jobsteps-view) 相同。
 
-### <a name="target_groups-view"></a>target_groups 视图
+### <a name="target_groups-view"></a><a name="target_groups-view"></a>target_groups 视图
 
 [jobs].[target_groups]
 
@@ -1319,7 +1319,7 @@ GO
 |**target_group_name**| nvarchar(128)   |目标组（数据库集合）的名称。 
 |**target_group_id**    |uniqueidentifier   |目标组的唯一 ID。
 
-### <a name="target_group_members-view"></a>target_group_members 视图
+### <a name="target_group_members-view"></a><a name="target_group_members-view"></a>target_group_members 视图
 
 [jobs].[target_group_members]
 

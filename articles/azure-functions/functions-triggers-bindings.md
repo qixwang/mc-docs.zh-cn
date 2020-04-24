@@ -12,10 +12,10 @@ origin.date: 02/18/2019
 ms.date: 03/04/2019
 ms.author: v-junlch
 ms.openlocfilehash: e187afed3d9e75a407866a47fb404a5360f5d775
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79293158"
 ---
 # <a name="azure-functions-triggers-and-bindings-concepts"></a>Azure Functions 触发器和绑定概念
@@ -34,10 +34,10 @@ ms.locfileid: "79293158"
 
 | 示例方案 | 触发器 | 输入绑定 | 输出绑定 |
 |-------------|---------|---------------|----------------|
-| 新的队列消息抵达，此时会运行一个函数来写入到另一个队列。 | 队列<sup>*</sup> | *无* | 队列<sup>*</sup> |
+| 新的队列消息抵达，此时会运行一个函数来写入到另一个队列。 | 队列<sup>*</sup> | 无  | 队列<sup>*</sup> |
 |计划的作业读取 Blob 存储内容，并创建新的 Cosmos DB 文档。 | Timer | Blob 存储 | Cosmos DB |
 |事件网格用于读取 Blob 存储中的映像以及 Cosmos DB 中的文档，以发送电子邮件。 | 事件网格 | Blob 存储和 Cosmos DB | SendGrid |
-| 一个 Webhook，它使用 Microsoft Graph 来更新 Excel 工作表。 | HTTP | *无* | Microsoft Graph |
+| 一个 Webhook，它使用 Microsoft Graph 来更新 Excel 工作表。 | HTTP | 无  | Microsoft Graph |
 
 <sup>\*</sup> 表示不同的队列
 
@@ -56,7 +56,7 @@ ms.locfileid: "79293158"
 
 在 .NET 中，参数类型定义了输入数据的数据类型。 例如，使用 `string` 绑定到队列触发器的文本、一个要读取为二进制内容的字节数组，以及一个要反序列化为对象的自定义类型。
 
-对于动态键入的语言（如 JavaScript），请在 function.json  文件中使用 `dataType` 属性。 例如，若要以二进制格式读取 HTTP 请求的内容，将 `dataType` 设置为 `binary`：
+对于动态键入的语言（如 JavaScript），请在 function.json `dataType`*文件中使用*  属性。 例如，若要以二进制格式读取 HTTP 请求的内容，将 `dataType` 设置为 `binary`：
 
 ```json
 {
@@ -71,7 +71,7 @@ ms.locfileid: "79293158"
 
 ## <a name="binding-direction"></a>绑定方向
 
-所有触发器和绑定在 [function.json](./functions-reference.md) 文件中都有一个 `direction` 属性：
+所有触发器和绑定在 `direction`function.json[ 文件中都有一个 ](./functions-reference.md) 属性：
 
 - 对于触发器，方向始终为 `in`
 - 输入和输出绑定使用 `in` 和 `out`

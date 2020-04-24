@@ -9,10 +9,10 @@ origin.date: 10/18/2019
 ms.date: 01/20/2020
 ms.author: v-yiso
 ms.openlocfilehash: 688e587e9121aeff436b52602c188b53c9e5ba4a
-ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/17/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79452301"
 ---
 # <a name="azure-event-grid-event-schema-for-azure-machine-learning"></a>Azure 机器学习的 Azure 事件网格事件架构
@@ -193,73 +193,73 @@ Azure 机器学习发出以下事件类型：
 
 事件具有以下顶级数据：
 
-| 属性 | 类型 | 说明 |
+| properties | 类型 | 说明 |
 | -------- | ---- | ----------- |
-| 主题 | string | 事件源的完整资源路径。 此字段不可写入。 事件网格提供此值。 |
-| subject | string | 事件主题的发布者定义路径。 |
-| eventType | string | 此事件源的一个注册事件类型。 |
-| EventTime | string | 基于提供程序 UTC 时间的事件生成时间。 |
-| id | string | 事件的唯一标识符。 |
-| 数据 | object | Blob 存储事件数据。 |
-| dataVersion | string | 数据对象的架构版本。 发布者定义架构版本。 |
-| metadataVersion | string | 事件元数据的架构版本。 事件网格定义顶级属性的架构。 事件网格提供此值。 |
+| 主题 | 字符串 | 事件源的完整资源路径。 此字段不可写入。 事件网格提供此值。 |
+| subject | 字符串 | 事件主题的发布者定义路径。 |
+| eventType | 字符串 | 此事件源的一个注册事件类型。 |
+| EventTime | 字符串 | 基于提供程序 UTC 时间的事件生成时间。 |
+| id | 字符串 | 事件的唯一标识符。 |
+| data | 对象 (object) | Blob 存储事件数据。 |
+| dataVersion | 字符串 | 数据对象的架构版本。 发布者定义架构版本。 |
+| metadataVersion | 字符串 | 事件元数据的架构版本。 事件网格定义顶级属性的架构。 事件网格提供此值。 |
 
 对于每个事件类型，数据对象具有以下属性：
 
 ### <a name="microsoftmachinelearningservicesmodelregistered"></a>Microsoft.MachineLearningServices.ModelRegistered
 
-| 属性 | 类型 | 说明 |
+| properties | 类型 | 说明 |
 | -------- | ---- | ----------- |
-| ModelName | string | 已注册模型的名称。 |
-| ModelVersion | string | 已注册模型的版本。 |
-| ModelTags | object | 已注册模型的标记。 |
-| ModelProperties | object | 已注册模型的属性。 |
+| ModelName | 字符串 | 已注册模型的名称。 |
+| ModelVersion | 字符串 | 已注册模型的版本。 |
+| ModelTags | 对象 (object) | 已注册模型的标记。 |
+| ModelProperties | 对象 (object) | 已注册模型的属性。 |
 
 ### <a name="microsoftmachinelearningservicesmodeldeployed"></a>Microsoft.MachineLearningServices.ModelDeployed
 
-| 属性 | 类型 | 说明 |
+| properties | 类型 | 说明 |
 | -------- | ---- | ----------- |
-| ServiceName | string | 已部署服务的名称。 |
-| ServiceComputeType | string | 已部署服务的计算类型（例如 ACI、AKS）。 |
-  | ModelIds | string | 模型 ID 的逗号分隔列表。 服务中部署的模型的 ID。 |
-| ServiceTags | object | 已部署服务的标记。 |
-| ServiceProperties | object | 已部署服务的属性。 |
+| ServiceName | 字符串 | 已部署服务的名称。 |
+| ServiceComputeType | 字符串 | 已部署服务的计算类型（例如 ACI、AKS）。 |
+  | ModelIds | 字符串 | 模型 ID 的逗号分隔列表。 服务中部署的模型的 ID。 |
+| ServiceTags | 对象 (object) | 已部署服务的标记。 |
+| ServiceProperties | 对象 (object) | 已部署服务的属性。 |
 
 ### <a name="microsoftmachinelearningservicesruncompleted"></a>Microsoft.MachineLearningServices.RunCompleted
 
-| 属性 | 类型 | 说明 |
+| properties | 类型 | 说明 |
 | -------- | ---- | ----------- |
-| ExperimentId | string | 此运行所属的试验的 ID。 |
-| ExperimentName | string | 此运行所属的试验的名称。 |
-| RunId | string | 已完成的运行的 ID。 |
-| RunType | string | 已完成的运行的运行类型。 |
-| RunTags | object | 已完成的运行的标记。 |
-| RunProperties | object | 已完成的运行的属性。 |
+| ExperimentId | 字符串 | 此运行所属的试验的 ID。 |
+| ExperimentName | 字符串 | 此运行所属的试验的名称。 |
+| RunId | 字符串 | 已完成的运行的 ID。 |
+| RunType | 字符串 | 已完成的运行的运行类型。 |
+| RunTags | 对象 (object) | 已完成的运行的标记。 |
+| RunProperties | 对象 (object) | 已完成的运行的属性。 |
 
 ### <a name="microsoftmachinelearningservicesdatasetdriftdetected"></a>Microsoft.MachineLearningServices.DatasetDriftDetected
 
-| 属性 | 类型 | 说明 |
+| properties | 类型 | 说明 |
 | -------- | ---- | ----------- |
-| DataDriftId | string | 触发了事件的数据偏移监视器的 ID。 |
-| DataDriftName | string | 触发了事件的数据偏移监视器的名称。 |
-| RunId | string | 检测到数据偏移的运行的 ID。 |
-| BaseDatasetId | string | 用于检测偏移的基础数据集的 ID。 |
-| TargetDatasetId | string | 用于检测偏移的目标数据集的 ID。 |
-| DriftCoefficient | Double | 触发了事件的系数结果。 |
+| DataDriftId | 字符串 | 触发了事件的数据偏移监视器的 ID。 |
+| DataDriftName | 字符串 | 触发了事件的数据偏移监视器的名称。 |
+| RunId | 字符串 | 检测到数据偏移的运行的 ID。 |
+| BaseDatasetId | 字符串 | 用于检测偏移的基础数据集的 ID。 |
+| TargetDatasetId | 字符串 | 用于检测偏移的目标数据集的 ID。 |
+| DriftCoefficient | double | 触发了事件的系数结果。 |
 | StartTime | datetime | 导致了偏移检测的目标数据集时序的开始时间。  |
 | EndTime | datetime | 导致了偏移检测的目标数据集时序的结束时间。 |
 
 ### <a name="microsoftmachinelearningservicesrunstatuschanged"></a>Microsoft.MachineLearningServices.RunStatusChanged
 
-| 属性 | 类型 | 说明 |
+| properties | 类型 | 说明 |
 | -------- | ---- | ----------- |
-| ExperimentId | string | 此运行所属的试验的 ID。 |
-| ExperimentName | string | 此运行所属的试验的名称。 |
-| RunId | string | 已完成的运行的 ID。 |
-| RunType | string | 已完成的运行的运行类型。 |
-| RunTags | object | 已完成的运行的标记。 |
-| RunProperties | object | 已完成的运行的属性。 |
-| RunStatus | string | 运行的状态。 |
+| ExperimentId | 字符串 | 此运行所属的试验的 ID。 |
+| ExperimentName | 字符串 | 此运行所属的试验的名称。 |
+| RunId | 字符串 | 已完成的运行的 ID。 |
+| RunType | 字符串 | 已完成的运行的运行类型。 |
+| RunTags | 对象 (object) | 已完成的运行的标记。 |
+| RunProperties | 对象 (object) | 已完成的运行的属性。 |
+| RunStatus | 字符串 | 运行的状态。 |
 
 ## <a name="next-steps"></a>后续步骤
 

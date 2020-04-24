@@ -8,10 +8,10 @@ origin.date: 09/24/2018
 ms.date: 3/13/2020
 ms.author: v-lingwu
 ms.openlocfilehash: c366ffc14614c5dd3133fd9c3ae43fa56f0b0f29
-ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/17/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79452559"
 ---
 # <a name="manage-smart-groups"></a>管理智能组
@@ -21,7 +21,7 @@ ms.locfileid: "79452559"
 1. 若要查看为警报实例创建的智能组，可以执行以下任一操作
 
      1. 从“警报摘要”  页单击“智能组”     
-    ![监视](./media/alerts-managing-smart-groups/sg-alerts-summary.jpg)
+    ![Monitoring](./media/alerts-managing-smart-groups/sg-alerts-summary.jpg)
     
      1. 从“所有警报”页单击“警报(按智能组)”   
      ![监视](./media/alerts-managing-smart-groups/sg-all-alerts.jpg)

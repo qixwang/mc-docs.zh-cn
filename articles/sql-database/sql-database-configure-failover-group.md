@@ -13,10 +13,10 @@ ms.reviewer: sstein, carlrab
 origin.date: 08/14/2019
 ms.date: 03/16/2020
 ms.openlocfilehash: 538e235db0bb96373812b13a019af765826f7c74
-ms.sourcegitcommit: dc862610e2169c1fce6fb0ae9eb7dd7567f86a0a
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79293820"
 ---
 # <a name="configure-a-failover-group-for-azure-sql-database"></a>为 Azure SQL 数据库配置故障转移组

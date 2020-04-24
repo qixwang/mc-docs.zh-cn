@@ -9,10 +9,10 @@ origin.date: 07/18/2019
 ms.date: 08/18/2019
 ms.author: v-lingwu
 ms.openlocfilehash: b2480d60f524e373ddb3116c9606b1d9b6a59034
-ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/17/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79452327"
 ---
 # <a name="log-data-ingestion-time-in-azure-monitor"></a>Azure Monitor 中的日志数据引入时间

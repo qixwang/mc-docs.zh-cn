@@ -10,10 +10,10 @@ origin.date: 08/08/2019
 ms.date: 12/02/2019
 ms.author: v-jay
 ms.openlocfilehash: e5ff86243076af6d28017d8ca42bb3711c29a2bb
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79293361"
 ---
 # <a name="tracking-and-event-logging-for-your-azure-data-box-and-azure-data-box-heavy"></a>Azure Data Box 和 Azure Data Box Heavy 的跟踪与事件日志记录
@@ -65,7 +65,7 @@ Data Box 或 Data Box Heavy 订单会经历以下步骤：订购、设置、数�
 
 - 当 Data Box 抵达你的所在地时处于锁定状态。 可以使用 Azure 门户中根据订单提供的设备凭据。  
 
-    如果已安装 Data Box，你可能需要知道谁访问过设备凭据。 若要了解谁访问过“设备凭据”边栏选项卡，可以查询活动日志。   涉及到访问“设备详细信息”>“凭据”边栏选项卡的任何操作都会作为 `ListCredentials` 操作记录到活动日志。 
+    如果已安装 Data Box，你可能需要知道谁访问过设备凭据。 若要了解谁访问过“设备凭据”边栏选项卡，可以查询活动日志。   涉及到访问“设备详细信息”>“凭据”边栏选项卡的任何操作都会作为  **操作记录到活动日志。** `ListCredentials`
 
     ![查询活动日志](media/data-box-logs/query-activity-log-1.png)
 
@@ -79,7 +79,7 @@ Data Box 或 Data Box Heavy 订单会经历以下步骤：订购、设置、数�
 
 请确保复制作业已完成且未出错。 如果复制过程中出错，请从“连接和复制”页下载日志。 
 
-- 如果将未经 512 字节对齐的文件复制到 Data Box 上的托管磁盘文件夹，该文件不会作为页 Blob 上传到临时存储帐户。 日志中会显示一条错误。 请删除该文件，并复制经过 512 字节对齐的文件。
+- 如果将未经 512 字节对齐的文件复制到 Data Box 上的托管磁盘文件夹，该文件不会作为页 Blob 上传到临时存储帐户。 日志中会出现错误。 请删除该文件，并复制经过 512 字节对齐的文件。
 - 如果复制了 VHDX、动态 VHD 或差异 VHD（不支持这些文件），将在日志中看到错误。
 
 下面是复制到托管磁盘时出现的不同错误的 *error.xml* 示例。
@@ -206,7 +206,7 @@ BOM 或清单文件还会复制到 Azure 存储帐户。 可以使用 BOM 或清
 
 默认情况下，日志将写入一个名为 `copylog` 的容器中。 使用以下命名约定存储日志：
 
-`storage-account-name/databoxcopylog/ordername_device-serial-number_CopyLog_guid.xml`。
+`storage-account-name/databoxcopylog/ordername_device-serial-number_CopyLog_guid.xml` 列中的一个值匹配。
 
 复制日志路径也会显示在门户的“概述”边栏选项卡上。 
 

@@ -7,10 +7,10 @@ origin.date: 03/27/2019
 ms.date: 08/22/2019
 ms.author: v-lingwu
 ms.openlocfilehash: e8f7d7dcdcb50c67a64d1d3c664f515dc6bbc2de
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79291847"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>用于处理自定义事件和指标的 Application Insights API

@@ -12,10 +12,10 @@ origin.date: 03/15/2018
 ms.author: v-yiso
 ms.date: 03/23/2020
 ms.openlocfilehash: c92393fc2790cd4506cdaff871c719bf06a6c5b2
-ms.sourcegitcommit: 32997a7d7585deaeb0ab7b8f928d397b18b343fa
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79295928"
 ---
 # <a name="send-cloud-to-device-messages-from-an-iot-hub"></a>从 IoT 中心发送云到设备的消息

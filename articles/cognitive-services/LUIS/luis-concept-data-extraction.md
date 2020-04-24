@@ -8,10 +8,10 @@ origin.date: 01/23/2020
 ms.date: 2/25/2020
 ms.author: v-lingwu
 ms.openlocfilehash: 3b2d541ff8211b9388fd9101d913f430b38b02b4
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79292740"
 ---
 # <a name="extract-data-from-utterance-text-with-intents-and-entities"></a>从包含意向和实体的话语文本中提取数据
@@ -75,7 +75,7 @@ HTTPS 响应包含 LUIS 可基于当前发布的暂存或生产终结点的模�
 
 * * * 
 
-|数据对象|数据类型|数据位置|Value|
+|数据对象|数据类型|数据位置|值|
 |--|--|--|--|
 |Intent|String|topScoringIntent.intent|"GetStoreInfo"|
 
@@ -137,7 +137,7 @@ HTTPS 响应包含 LUIS 可基于当前发布的暂存或生产终结点的模�
 
 意向按评分从高到低排序。
 
-|数据对象|数据类型|数据位置|Value|Score|
+|数据对象|数据类型|数据位置|值|Score|
 |--|--|--|--|:--|
 |Intent|String|intents[0].intent|"GetStoreInfo"|0.984749258|
 |Intent|String|intents[1].intent|"None"|0.0168218873|
@@ -198,7 +198,7 @@ HTTPS 响应包含 LUIS 可基于当前发布的暂存或生产终结点的模�
 
 * * * 
 
-|域|数据对象|数据类型|数据位置|Value|
+|域|数据对象|数据类型|数据位置|值|
 |--|--|--|--|--|
 |实用程序|Intent|String|intents[0].intent|"<b>Utilities</b>.ShowNext"|
 |通信|Intent|String|intents[1].intent|<b>Communication</b>.StartOver"|

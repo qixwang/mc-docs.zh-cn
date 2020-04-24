@@ -12,10 +12,10 @@ ms.reviewer: trbye
 origin.date: 11/04/2019
 ms.date: 03/16/2020
 ms.openlocfilehash: 1a71dcec93d30afc7d56999548b93b9bcfeedc0c
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79293373"
 ---
 # <a name="tutorial-train-your-first-ml-model"></a>教程：训练第一个 ML 模型

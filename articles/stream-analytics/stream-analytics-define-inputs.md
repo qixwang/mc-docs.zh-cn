@@ -11,10 +11,10 @@ ms.topic: conceptual
 origin.date: 01/17/2020
 ms.date: 02/27/2020
 ms.openlocfilehash: badd7fc8549242a98bdeaee150f68a037966e817
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79292219"
 ---
 # <a name="stream-data-as-input-into-stream-analytics"></a>将数据作为流分析的输入进行流式传输

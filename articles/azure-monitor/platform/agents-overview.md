@@ -9,10 +9,10 @@ origin.date: 02/14/2020
 ms.date: 3/13/2020
 ms.author: v-lingwu
 ms.openlocfilehash: 5d637a535f9b11767fd8086c52440000a6adf362
-ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/17/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79452579"
 ---
 # <a name="overview-of-azure-monitor-agents"></a>Azure Monitor 代理概述

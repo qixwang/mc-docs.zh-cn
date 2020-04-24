@@ -10,10 +10,10 @@ ms.date: 12/31/2019
 ms.author: v-lingwu
 ms.subservice: logs
 ms.openlocfilehash: 8af1b57656dcb2c97f52b36d6d338ed392a9e570
-ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/17/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79452536"
 ---
 # <a name="create-diagnostic-setting-to-collect-platform-logs-and-metrics-in-azure"></a>创建诊断设置以收集 Azure 中的平台日志和指标
@@ -85,7 +85,7 @@ Azure 中的[平台日志](platform-logs-overview.md)（包括 Azure 活动日�
    > [!NOTE]
    > 当前不支持通过诊断设置发送多维指标。 多维指标将按平展后的单维指标导出，并跨维值聚合。
    >
-   > 例如：  可以基于每个队列级别浏览和绘制事件中心上的“传入消息”指标。 但是，当通过诊断设置导出时，该指标将表示为事件中心的所有队列中的所有传入消息。
+   >  例如：可以基于每个队列级别浏览和绘制事件中心上的“传入消息”指标。 但是，当通过诊断设置导出时，该指标将表示为事件中心的所有队列中的所有传入消息。
 
 6. 单击“保存”  。
 
@@ -94,7 +94,7 @@ Azure 中的[平台日志](platform-logs-overview.md)（包括 Azure 活动日�
 
 
 ## <a name="create-diagnostic-settings-using-powershell"></a>使用 PowerShell 创建诊断设置
-在 [Azure PowerShell](powershell-quickstart-samples.md) 中使用 [Set-AzDiagnosticSetting](https://docs.microsoft.com/powershell/module/az.monitor/set-azdiagnosticsetting) cmdlet 创建诊断设置。 有关参数说明，请参阅此 cmdlet 的文档。
+在 [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.monitor/set-azdiagnosticsetting) 中使用 [Set-AzDiagnosticSetting](powershell-quickstart-samples.md) cmdlet 创建诊断设置。 有关参数说明，请参阅此 cmdlet 的文档。
 
 > [!IMPORTANT]
 > 不能将此方法用于 Azure 活动日志。 请改为利用[使用资源管理器模板在 Azure Monitor 中创建诊断设置](diagnostic-settings-template.md)，创建资源管理器模板并使用 PowerShell 进行部署。
@@ -108,7 +108,7 @@ Set-AzDiagnosticSetting -Name KeyVault-Diagnostics -ResourceId /subscriptions/xx
 
 
 ## <a name="create-diagnostic-settings-using-azure-cli"></a>使用 Azure CLI 创建诊断设置
-在 [Azure CLI](https://docs.microsoft.com/cli/azure/monitor?view=azure-cli-latest) 中使用 [az monitor diagnostic-settings create](/cli/monitor/diagnostic-settings?view=azure-cli-latest#az-monitor-diagnostic-settings-create) 命令创建诊断设置。 有关参数说明，请参阅此命令的文档。
+在 [Azure CLI](/cli/monitor/diagnostic-settings?view=azure-cli-latest#az-monitor-diagnostic-settings-create) 中使用 [az monitor diagnostic-settings create](https://docs.microsoft.com/cli/azure/monitor?view=azure-cli-latest) 命令创建诊断设置。 有关参数说明，请参阅此命令的文档。
 
 以下示例 CLI 命令使用所有三个目标创建诊断设置。
 
@@ -126,7 +126,7 @@ az monitor diagnostic-settings create  \
 ```
 
 ### <a name="configure-diagnostic-settings-using-rest-api"></a>使用 REST API 配置诊断设置
-若要使用 [Azure Monitor REST API](https://docs.microsoft.com/rest/api/monitor/) 创建或更新诊断设置，请参阅[诊断设置](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings)。
+若要使用 [Azure Monitor REST API](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings) 创建或更新诊断设置，请参阅[诊断设置](https://docs.microsoft.com/rest/api/monitor/)。
 
 
 ### <a name="configure-diagnostic-settings-using-resource-manager-template"></a>使用资源管理器模板配置诊断设置

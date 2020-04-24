@@ -12,10 +12,10 @@ ms.date: 11/11/2018
 ms.reviewer: klam, LADocs
 ms.suite: integration
 ms.openlocfilehash: 97bb7be09b1bd242dcec61ae99506ba8d2de14a0
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79291500"
 ---
 # <a name="perform-data-operations-in-azure-logic-apps"></a>在 Azure 逻辑应用中执行数据操作

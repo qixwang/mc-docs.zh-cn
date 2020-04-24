@@ -13,10 +13,10 @@ ms.custom: seo-lt-2019; seo-dt-2019
 origin.date: 01/11/2018
 ms.date: 03/02/2020
 ms.openlocfilehash: e8472266e7d79361d17e515a39d9eba355323fdc
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79291272"
 ---
 # <a name="copy-data-from-an-on-premises-sql-server-database-to-azure-blob-storage"></a>将数据从本地 SQL Server 数据库复制到 Azure Blob 存储

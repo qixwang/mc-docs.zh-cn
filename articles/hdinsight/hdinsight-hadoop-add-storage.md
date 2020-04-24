@@ -17,10 +17,10 @@ ms.date: 03/23/2020
 ms.author: v-yiso
 ms.custom: H1Hack27Feb2017,hdinsightactive
 ms.openlocfilehash: 22f7f88a745b6f8b38cf625c381fc524d92c97af
-ms.sourcegitcommit: 32997a7d7585deaeb0ab7b8f928d397b18b343fa
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79295893"
 ---
 # <a name="add-additional-storage-accounts-to-hdinsight"></a>将其他存储帐户添加到 HDInsight
@@ -30,7 +30,7 @@ ms.locfileid: "79295893"
 > [!IMPORTANT]  
 > 本文档中的信息是关于在创建群集后将其他存储帐户添加到群集。 有关如何在创建群集期间添加存储帐户的信息，请参阅[使用 Apache Hadoop、Apache Spark、Apache Kafka 等设置 HDInsight 中的群集](hdinsight-hadoop-provision-linux-clusters.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * HDInsight 上的 Hadoop 群集。 请参阅 [Linux 上的 HDInsight 入门](./hadoop/apache-hadoop-linux-tutorial-get-started.md)。
 * 存储帐户名和密钥。 请参阅[管理存储帐户访问密钥](../storage/common/storage-account-keys-manage.md)。
@@ -38,11 +38,11 @@ ms.locfileid: "79295893"
 
 ## <a name="how-it-works"></a>工作原理
 
-在处理期间，脚本执行以下操作：
+处理过程中，此脚本执行以下操作：
 
-* 如果群集的 core-site.xml 配置中已存在该存储帐户，脚本会退出，并不执行任何进一步操作。
+* 如果存储帐户已存在于群集的 core-site.xml 配置中，则脚本将退出，且不执行进一步操作。
 
-* 使用密钥验证该存储帐户是否存在并且是否可以访问。
+* 验证存储帐户是否存在，以及是否可以使用密钥访问。
 
 * 使用群集凭据对密钥进行加密。
 
@@ -57,10 +57,10 @@ ms.locfileid: "79295893"
 
 使用[脚本操作](hdinsight-hadoop-customize-cluster-linux.md#script-action-to-a-running-cluster)应用更改时请注意以下事项：
 
-|属性 | Value |
+|properties | 值 |
 |---|---|
 |Bash 脚本 URI|`https://hdiconfigactions.blob.core.windows.net/linuxaddstorageaccountv01/add-storage-account-v01.sh`|
-|节点类型|头|
+|节点类型|Head|
 |parameters|`ACCOUNTNAME` `ACCOUNTKEY` `-p`（可选）|
 
 * `ACCOUNTNAME` 是要添加到 HDInsight 群集的存储帐户的名称。
@@ -103,7 +103,7 @@ foreach ($name in $value ) { $name.Name.Split(".")[4]}
 
 ### <a name="apache-ambari"></a>Apache Ambari
 
-1. 在 Web 浏览器中，导航到 `https://CLUSTERNAME.azurehdinsight.cn`，其中 `CLUSTERNAME` 是群集的名称。
+1. 在 Web 浏览器中导航到 `https://CLUSTERNAME.azurehdinsight.cn`，其中的 `CLUSTERNAME` 是群集的名称。
 
 1. 导航到“HDFS”   >   “配置” >   “高级” >   “自定义 core-site”。
 
@@ -131,9 +131,9 @@ foreach ($name in $value ) { $name.Name.Split(".")[4]}
 
 ### <a name="unable-to-access-storage-after-changing-key"></a>更改密钥后，无法访问存储
 
-如果更改了存储帐户的密钥，HDInsight 不再能够访问存储帐户。 HDInsight 使用群集的 core-site.xml 中缓存的密钥副本。 必须更新此缓存的副本，使其匹配新密钥。
+如果更改存储帐户的密钥，则 HDInsight 不再能够访问该存储帐户。 HDInsight 将 core-site.xml 中密钥的缓存副本用于群集。 必须更新此缓存的副本，使之匹配新的密钥。
 
-再次运行脚本操作 __不__ 会更新密钥，因为脚本会检查该存储帐户的条目是否已存在。 如果该条目已存在，则它不执行任何更改。
+重新运行脚本操作__不会__更新密钥，因为该脚本会检查存储帐户的某个条目是否已存在。 如果已存在条目，则不进行任何更改。
 
 若要解决此问题，请执行以下操作：  
 1. 删除存储帐户。
@@ -142,15 +142,15 @@ foreach ($name in $value ) { $name.Name.Split(".")[4]}
 > [!IMPORTANT]  
 > 对于附加到群集的主存储帐户，不支持轮换使用存储密钥。
 
-### <a name="poor-performance"></a>性能不佳
+### <a name="poor-performance"></a>性能低下
 
-如果存储帐户与 HDInsight 群集不在同一个区域中，可能会遇到性能不佳的情况。 访问不同区域中的数据会在区域 Azure 数据中心外部跨公共 Internet 发送网络流量，从而会导致延迟。
+如果存储帐户与 HDInsight 群集位于不同的区域，则可能会遇到性能低下问题。 访问不同区域中的数据会在区域 Azure 数据中心之外和公共 Internet 上发送网络流量，这会导致延迟。
 
 ### <a name="additional-charges"></a>额外费用
 
-如果存储帐户与 HDInsight 群集不在同一个区域中，可能会在 Azure 帐单上发现额外出口费用。 当数据离开区域数据中心时，将收取出口费用。 即使流量发往另一区域中的另一个 Azure 数据中心，也将收取此费用。
+如果存储帐户与 HDInsight 群集位于不同的区域，则可能会在 Azure 帐单上发现额外的出口费用。 当数据离开区域数据中心时，将收取出口费用。 即使流量发往另一区域中的另一个 Azure 数据中心，也将收取此费用。
 
 ## <a name="next-steps"></a>后续步骤
 
-已学习如何将其他存储帐户添加到现有 HDInsight 群集。 有关脚本操作的详细信息，请参阅[使用脚本操作自定义基于 Linux 的 HDInsight 群集](hdinsight-hadoop-customize-cluster-linux.md)。
+你已了解如何将其他存储帐户添加到现有 HDInsight 群集。 有关脚本操作的详细信息，请参阅[使用脚本操作自定义基于 Linux 的 HDInsight 群集](hdinsight-hadoop-customize-cluster-linux.md)。
 <!--Update_Description: wording update-->

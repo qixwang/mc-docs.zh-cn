@@ -9,10 +9,10 @@ origin.date: 08/22/2019
 ms.date: 09/30/2019
 ms.author: v-yeche
 ms.openlocfilehash: 869a338db4f1fa6aa936b56332f3174d97c10124
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79291693"
 ---
 # <a name="about-site-recovery-components-configuration-process-master-target"></a>关于 Site Recovery 组件（配置服务器、进程服务器、主目标服务器）
@@ -26,7 +26,7 @@ ms.locfileid: "79291693"
 **设置** | **详细信息** | **链接**
 --- | --- | ---
 **组件**  | 配置服务器计算机运行所有本地 Site Recovery 组件，包括配置服务器、进程服务器和主目标服务器。<br/><br/> 安装配置服务器时，所有组件会自动进行安装。 | [阅读](vmware-azure-common-questions.md#configuration-server)配置服务器常见问题解答。
-**角色** | 配置服务器在本地与 Azure 之间协调通信并管理数据复制。 | 详细了解将 [VMware](vmware-azure-architecture.md) 和[物理服务器](physical-azure-architecture.md)灾难恢复到 Azure 所需的体系结构。
+**角色** | 配置服务器在本地和 Azure 之间协调通信并管理数据复制。 | 详细了解将 [VMware](vmware-azure-architecture.md) 和[物理服务器](physical-azure-architecture.md)灾难恢复到 Azure 所需的体系结构。
 **VMware 要求** | 若要对本地 VMware VM 进行灾难恢复，必须将配置服务器作为高度可用的本地 VMware VM 进行安装和运行。 | [了解](vmware-azure-deploy-configuration-server.md#prerequisites)先决条件。
 **VMware 部署** | 建议使用下载的 OVA 模板部署配置服务器。 可以通过此方法轻松地设置符合所有要求和先决条件的配置服务器。<br/><br/> 如果因为某种原因而无法使用 OVA 模板部署 VMware VM，则可按照下面的针对物理计算机灾难恢复的说明手动设置配置服务器计算机。 | 使用 OVA 模板进行[部署](vmware-azure-deploy-configuration-server.md#deployment-of-configuration-server-through-ova-template)。
 **物理服务器要求** | 若要在本地物理服务器上进行灾难恢复，需手动部署配置服务器。 | [了解](physical-azure-set-up-source.md#prerequisites)先决条件。

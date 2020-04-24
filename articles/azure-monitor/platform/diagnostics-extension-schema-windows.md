@@ -8,10 +8,10 @@ origin.date: 01/20/2020
 ms.date: 3/2/2020
 ms.author: v-lingwu
 ms.openlocfilehash: 0412a5a7982079c4f5a94db8f96cfc5cf45cde8a
-ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/17/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79453260"
 ---
 # <a name="windows-diagnostics-extension-schema"></a>Windows 诊断扩展架构

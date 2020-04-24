@@ -10,19 +10,19 @@ ms.date: 03/16/2020
 ms.author: v-jay
 ms.subservice: common
 ms.openlocfilehash: 4773ddf183ecb8c143f242c0a57645acf7ed9bbc
-ms.sourcegitcommit: dc862610e2169c1fce6fb0ae9eb7dd7567f86a0a
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79293842"
 ---
 # <a name="use-the-azure-importexport-service-to-export-data-from-azure-blob-storage"></a>使用 Azure 导入/导出服务从 Azure Blob 存储导出数据
 本文分步说明如何使用 Azure 导入/导出服务从 Azure Blob 存储安全地导出大量数据。 该服务要求你将空驱动器寄送到 Azure 数据中心。 该服务将数据从存储帐户导出到驱动器，然后将驱动器寄回。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 在创建导出作业以从 Azure Blob 存储传输数据之前，请仔细查看并完成以下此服务的先决条件列表。
-必须具备以下条件：
+必须：
 
 - 拥有可用于导入/导出服务的有效 Azure 订阅。
 - 拥有至少一个 Azure 存储帐户。 请参阅[导入/导出服务支持的存储帐户和存储类型](storage-import-export-requirements.md)的列表。 有关创建新存储帐户的信息，请参阅[如何创建存储帐户](storage-account-create.md)。
@@ -50,7 +50,7 @@ ms.locfileid: "79293842"
     - 选择一个订阅。
     - 输入或选择一个资源组。
 
-        ![基础知识](./media/storage-import-export-data-from-blobs/export-from-blob3.png)
+        ![基础](./media/storage-import-export-data-from-blobs/export-from-blob3.png)
 
 5. 在“作业详细信息”中  ：
 
@@ -63,7 +63,7 @@ ms.locfileid: "79293842"
 
     - 可以指定要导出的容器和 blob。
         - **指定要导出的 blob**：使用“等于”  选择器。 指定 blob 的相对路径，以容器名称开头。 使用 *$root* 指定根容器。
-        - **指定以某个前缀开头的所有 blob**：使用“开头为”  选择器。 指定以正斜杠“/”开头的前缀。 该前缀可以是容器名称的前缀、完整容器名称或者后跟 Blob 名称前缀的完整容器名称。 必须以有效格式提供 blob 路径，以免在处理过程中出现错误，如以下屏幕截图所示。 有关详细信息，请参阅[有效 blob 路径示例](#examples-of-valid-blob-paths)。
+        - **指定以前缀开头的所有 blob**：使用“开头为”  选择器。 指定以正斜杠“/”开头的前缀。 该前缀可以是容器名称的前缀、完整容器名称或者后跟 Blob 名称前缀的完整容器名称。 必须以有效格式提供 blob 路径，以免在处理过程中出现错误，如以下屏幕截图所示。 有关详细信息，请参阅[有效 blob 路径示例](#examples-of-valid-blob-paths)。
 
            ![导出所选容器和 blob](./media/storage-import-export-data-from-blobs/export-from-blob5.png)
 
@@ -124,11 +124,11 @@ ms.locfileid: "79293842"
    | --- | --- | --- |
    | 开头为 |/ |导出存储帐户中的所有 Blob |
    | 开头为 |/$root/ |导出根容器中的所有 Blob |
-   | 开头为 |/book |导出任何容器中以前缀 book  开头的所有 Blob |
-   | 开头为 |/music/ |导出容器 music  中的所有 Blob |
-   | 开头为 |/music/love |导出容器 music  中以前缀 love  开头的所有 Blob |
-   | 等于 |$root/logo.bmp |导出根容器中的 Blob logo.bmp  |
-   | 等于 |videos/story.mp4 |导出容器 videos  中的 Blob story.mp4  |
+   | 开头为 |/book |导出任何容器中以前缀 **book** 开头的所有 Blob |
+   | 开头为 |/music/ |导出容器 **music** 中的所有 Blob |
+   | 开头为 |/music/love |导出容器 **music** 中以前缀 **love** 开头的所有 Blob |
+   | 等于 |$root/logo.bmp |导出根容器中的 Blob **logo.bmp** |
+   | 等于 |videos/story.mp4 |导出容器 **videos** 中的 Blob **story.mp4** |
 
 ## <a name="next-steps"></a>后续步骤
 

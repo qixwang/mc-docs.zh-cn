@@ -10,10 +10,10 @@ origin.date: 04/08/2019
 ms.date: 04/22/2019
 ms.author: v-yeche
 ms.openlocfilehash: 202432e824aa9af99d8f3e917aac4999b2232557
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79292864"
 ---
 # <a name="set-up-public-ip-addresses-after-failover"></a>设置故障转移后的公共 IP 地址
@@ -27,7 +27,7 @@ ms.locfileid: "79292864"
 * 虚拟机网络接口
 * 面向 Internet 的负载均衡器
 * VPN 网关
-* 应用程序网关
+* 应用程序网关数
 
 本文介绍如何将公共 IP 地址与 Site Recovery 配合使用。
 

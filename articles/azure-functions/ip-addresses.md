@@ -4,10 +4,10 @@ description: 了解如何查找函数应用的入站和出站 IP 地址，以及
 ms.topic: conceptual
 ms.date: 01/13/2020
 ms.openlocfilehash: 5f3f18256956eb50e8573a112032a8e4487fe49d
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79293198"
 ---
 # <a name="ip-addresses-in-azure-functions"></a>Azure Functions 中的 IP 地址
@@ -30,7 +30,7 @@ IP 地址与函数应用而不是单个函数相关联。 传入的 HTTP 请求�
 3. 选择“平台功能”。 
 4. 选择“属性”，然后选择“虚拟 IP 地址”下面显示的入站 IP 地址。  
 
-## <a name="find-outbound-ip-addresses"></a>函数应用的出站 IP 地址
+## <a name="function-app-outbound-ip-addresses"></a><a name="find-outbound-ip-addresses"></a>函数应用的出站 IP 地址
 
 每个函数应用具有一组可用的出站 IP 地址。 从某个函数发起的任何出站连接（例如，与后端数据库的连接）使用某个可用的出站 IP 地址作为源 IP 地址。 无法事先知道给定的连接要使用哪个 IP 地址。 因此，后端服务必须向函数应用的所有出站 IP 地址开放其防火墙。
 
@@ -71,7 +71,7 @@ az webapp show --resource-group <group_name> --name <app_name> --query possibleO
 
  有关此文件何时更新以及 IP 地址何时更改的信息，请展开[下载中心页](https://www.microsoft.com/en-us/download/details.aspx?id=56519)的“详细信息”部分。 
 
-## <a name="inbound-ip-address-changes"></a>入站 IP 地址更改
+## <a name="inbound-ip-address-changes"></a><a name="inbound-ip-address-changes"></a>入站 IP 地址更改
 
 如果执行以下操作，入站 IP 地址**可能**会更改：
 

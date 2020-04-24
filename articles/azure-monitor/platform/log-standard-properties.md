@@ -9,10 +9,10 @@ origin.date: 07/18/2019
 ms.date: 07/21/2019
 ms.author: v-lingwu
 ms.openlocfilehash: dabcdd0a8df526f879b388db9325ea34a6820b4e
-ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/17/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79452439"
 ---
 # <a name="standard-properties-in-azure-monitor-logs"></a>Azure Monitor 日志中的标准属性

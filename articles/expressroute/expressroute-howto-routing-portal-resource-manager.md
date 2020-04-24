@@ -17,10 +17,10 @@ origin.date: 06/28/2019
 ms.author: v-yiso
 ms.date: 12/02/2019
 ms.openlocfilehash: cab3bdad374af0f279da6d2a525e50211c6c6eef
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79291913"
 ---
 # <a name="create-and-modify-peering-for-an-expressroute-circuit"></a>创建和修改 ExpressRoute 线路的对等互连
@@ -49,7 +49,7 @@ ms.locfileid: "79291913"
 > 
 > 
 
-## <a name="msft"></a>Microsoft 对等互连
+## <a name="microsoft-peering"></a><a name="msft"></a>Microsoft 对等互连
 
 本文介绍如何为 ExpressRoute 线路创建、获取、更新和删除 Microsoft 对等互连配置。
 
@@ -102,24 +102,24 @@ ms.locfileid: "79291913"
 
    ![对等互连状态：已配置](./media/expressroute-howto-routing-portal-resource-manager/configured-m.png "对等互连状态：已配置")]
 
-### <a name="getmsft"></a>查看 Microsoft 对等互连详细信息
+### <a name="to-view-microsoft-peering-details"></a><a name="getmsft"></a>查看 Microsoft 对等互连详细信息
 
 可以通过选择对等互连行来查看 Microsoft 对等互连的属性。
 
 [![查看 Microsoft 对等互连属性](./media/expressroute-howto-routing-portal-resource-manager/view-peering-m.png "查看属性")](./media/expressroute-howto-routing-portal-resource-manager/view-peering-m-lightbox.png#lightbox)
-### <a name="updatemsft"></a>更新 Microsoft 对等互连配置
+### <a name="to-update-microsoft-peering-configuration"></a><a name="updatemsft"></a>更新 Microsoft 对等互连配置
 
 可以选择要修改的对等互连行，然后修改对等互连属性并保存修改。
 
 ![选择对等互连行](./media/expressroute-howto-routing-portal-resource-manager/update-peering-m.png)
 
-### <a name="deletemsft"></a>删除 Microsoft 对等互连
+### <a name="to-delete-microsoft-peering"></a><a name="deletemsft"></a>删除 Microsoft 对等互连
 
 可以通过单击“删除”图标来删除对等互连配置，如下图中所示：
 
 ![删除对等互连](./media/expressroute-howto-routing-portal-resource-manager/delete-peering-m.png)
 
-## <a name="private"></a>Azure 专用对等互连
+## <a name="azure-private-peering"></a><a name="private"></a>Azure 专用对等互连
 本文介绍了如何为 ExpressRoute 线路创建、获取、更新和删除 Azure 专用对等互连配置。
 
 ### <a name="to-create-azure-private-peering"></a>创建 Azure 专用对等互连
@@ -154,25 +154,25 @@ ms.locfileid: "79291913"
 
    ![已保存专用对等互连](./media/expressroute-howto-routing-portal-resource-manager/save-p.png)
 
-### <a name="getprivate"></a>查看 Azure 专用对等互连详细信息
+### <a name="to-view-azure-private-peering-details"></a><a name="getprivate"></a>查看 Azure 专用对等互连详细信息
 
 可以通过选择对等互连查看 Azure 专用对等互连的属性。
 
 [![查看专用对等互连属性](./media/expressroute-howto-routing-portal-resource-manager/view-p.png "查看专用对等互连属性")](./media/expressroute-howto-routing-portal-resource-manager/view-p-lightbox.png#lightbox)
 
-### <a name="updateprivate"></a>更新 Azure 专用对等互连配置
+### <a name="to-update-azure-private-peering-configuration"></a><a name="updateprivate"></a>更新 Azure 专用对等互连配置
 
 可以选择用于对等互连的行并修改对等互连属性。 更新后，保存所做的更改。
 
 ![更新专用对等互连](./media/expressroute-howto-routing-portal-resource-manager/update-peering-p.png)
 
-### <a name="deleteprivate"></a>删除 Azure 专用对等互连
+### <a name="to-delete-azure-private-peering"></a><a name="deleteprivate"></a>删除 Azure 专用对等互连
 
 可以通过选择“删除”图标来删除对等互连配置，如下图中所示：
 
 ![删除专用对等互连](./media/expressroute-howto-routing-portal-resource-manager/delete-p.png)
 
-## <a name="public"></a>Azure 公共对等互连
+## <a name="azure-public-peering"></a><a name="public"></a>Azure 公共对等互连
 
 本文介绍了如何为 ExpressRoute 线路创建、获取、更新和删除 Azure 公共对等互连配置。
 
@@ -198,15 +198,15 @@ ms.locfileid: "79291913"
 
    ![保存公共对等互连配置](./media/expressroute-howto-routing-portal-resource-manager/rpublic3.png)
 
-### <a name="getpublic"></a>查看 Azure 公共对等互连详细信息
+### <a name="to-view-azure-public-peering-details"></a><a name="getpublic"></a>查看 Azure 公共对等互连详细信息
 
 通过选择对等互连查看 Azure 公共对等互连的属性。
 
-### <a name="updatepublic"></a>更新 Azure 公共对等互连配置
+### <a name="to-update-azure-public-peering-configuration"></a><a name="updatepublic"></a>更新 Azure 公共对等互连配置
 
 选择对等互连所对应的行，然后修改对等互连属性。
 
-### <a name="deletepublic"></a>删除 Azure 公共对等互连
+### <a name="to-delete-azure-public-peering"></a><a name="deletepublic"></a>删除 Azure 公共对等互连
 
 通过选择“删除”图标来删除对等互连配置。
 

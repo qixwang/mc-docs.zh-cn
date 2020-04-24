@@ -8,10 +8,10 @@ origin.date: 01/22/2019
 ms.date: 6/4/2019
 ms.author: v-lingwu
 ms.openlocfilehash: da03ffc9890bce4e35b17d4f4963cb9f1b8d5467
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79291723"
 ---
 # <a name="exploring-metrics-in-application-insights"></a>在 Application Insights 中浏览指标
@@ -179,7 +179,7 @@ ms.locfileid: "79291723"
 ### <a name="power-bi"></a>Power BI
 如果想要获得数据的更丰富视图，可以[导出到 Power BI](https://blogs.msdn.com/b/powerbi/archive/2015/11/04/explore-your-application-insights-data-with-power-bi.aspx)。
 
-## <a name="analytics"></a>分析
+## <a name="analytics"></a>Analytics
 [Analytics](../../azure-monitor/log-query/log-query-overview.md) 是使用强大查询语言来分析遥测数据的更灵活方式。 如果想要合并或计算指标的结果或执行应用程序近期性能的深入分析，可以使用该功能。 
 
 在指标图表中，可以单击“分析”图标，直接访问等效的分析查询。

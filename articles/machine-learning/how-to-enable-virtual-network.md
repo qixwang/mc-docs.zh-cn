@@ -12,10 +12,10 @@ author: aashishb
 origin.date: 01/13/2020
 ms.date: 03/16/2020
 ms.openlocfilehash: b17d20f76744026d731076c3dd49c2744e364849
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79291512"
 ---
 # <a name="secure-azure-ml-experimentation-and-inference-jobs-within-an-azure-virtual-network"></a>在 Azure 虚拟网络中保护 Azure ML 试验和推理作业
@@ -124,7 +124,7 @@ Azure 机器学习使用与工作区关联的 Key Vault 实例来存储以下凭
 
 <a id="amlcompute"></a>
 
-## <a name="compute-instance"></a>使用机器学习计算
+## <a name="use-a-machine-learning-compute"></a><a name="compute-instance"></a>使用机器学习计算
 
 若要在虚拟网络中使用 Azure 机器学习计算实例或计算群集，必须满足以下网络要求：
 
@@ -145,7 +145,7 @@ Azure 机器学习使用与工作区关联的 Key Vault 实例来存储以下凭
 > 这些资源受订阅的[资源配额](/azure-subscription-service-limits)限制。
 
 
-### <a id="mlcports"></a> 所需端口
+### <a name="required-ports"></a><a id="mlcports"></a> 所需端口
 
 机器学习计算目前使用 Azure Batch 服务在指定的虚拟网络中预配 VM。 子网必须允许来自 Batch 服务的入站通信。 可以使用这种通信在机器学习计算节点上计划运行，以及与 Azure 存储和其他资源进行通信。 Batch 服务在附加到 VM 的网络接口 (NIC) 级别添加网络安全组 (NSG)。 这些 NSG 自动配置允许以下流量的入站和出站规则：
 
@@ -171,7 +171,7 @@ Azure 机器学习使用与工作区关联的 Key Vault 实例来存储以下凭
 
 ![机器学习计算的出站 NSG 规则](./media/how-to-enable-virtual-network/experimentation-virtual-network-outbound.png)
 
-### <a id="limiting-outbound-from-vnet"></a> 限制来自虚拟网络的出站连接
+### <a name="limit-outbound-connectivity-from-the-virtual-network"></a><a id="limiting-outbound-from-vnet"></a> 限制来自虚拟网络的出站连接
 
 如果你不想要使用默认的出站规则，同时想要限制虚拟网络的出站访问，请执行以下步骤：
 
@@ -180,7 +180,7 @@ Azure 机器学习使用与工作区关联的 Key Vault 实例来存储以下凭
 - 对于__计算实例__或__计算群集__，请将出站流量限制为以下各项：
    - Azure 存储 - 使用__服务标记__ __Storage.RegionName__。 其中 `{RegionName}` 是 Azure 区域的名称。
    - Azure 容器注册表 - 使用__服务标记__ __AzureContainerRegistry.RegionName__。 其中 `{RegionName}` 是 Azure 区域的名称。
-   - Azure 机器学习 - 使用__服务标记__ __AzureMachineLearning__
+   - Azure 机器学习 - 使用 __AzureMachineLearning__ 的服务标记 
    
 - 对于__计算实例__，还需添加以下项：
    - Azure 资源管理器 - 使用__服务标记__ __AzureResourceManager__

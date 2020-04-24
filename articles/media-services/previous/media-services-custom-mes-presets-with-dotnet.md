@@ -16,32 +16,32 @@ origin.date: 03/26/2019
 ms.date: 09/23/2019
 ms.author: v-jay
 ms.openlocfilehash: 9d25df026bb21c98c8d883bf45395f44262fa0a7
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79292155"
 ---
 # <a name="customizing-media-encoder-standard-presets"></a>自定义 Media Encoder Standard 预设  
 
 ## <a name="overview"></a>概述
 
-本文展示了如何通过使用自定义预设的 Media Encoder Standard (MES) 执行高级编码。 本文使用 .NET 创建一个编码任务和一个执行此任务的作业。  
+本文演示如何通过使用自定义预设的 Media Encoder Standard (MES) 执行高级编码。 本文使用 .NET 创建编码任务和执行此任务的作业。  
 
-本文展示了何通过使用 [H264 多比特率 720p](media-services-mes-preset-H264-Multiple-Bitrate-720p.md) 预设并减少层数来自定义预设。 [自定义 Media Encoder Standard 预设](media-services-advanced-encoding-with-mes.md)一文演示了可用于执行高级编码任务的自定义预设。
+本文介绍如何使用 [H264 多比特率 720p](media-services-mes-preset-H264-Multiple-Bitrate-720p.md) 预设并减少层数，从而自定义预设。 [自定义 Media Encoder Standard 预设](media-services-advanced-encoding-with-mes.md)这篇文章演示了可用于执行高级编码任务的自定义预设。
 
 > [!NOTE]
 > 本文中所述的自定义预设不能用于[媒体服务 V3](/media-services/latest/) 转换或 CLI 命令。 有关更多详细信息，请参阅[从 v2 到 v3 的迁移指南](../latest/migrate-from-v2-to-v3.md)。
 
-## <a id="customizing_presets"></a> 自定义 MES 预设
+## <a name="customizing-a-mes-preset"></a><a id="customizing_presets"></a>自定义 MES 预设
 
 ### <a name="original-preset"></a>原始预设
 
-将 [H264 多比特率 720p](media-services-mes-preset-H264-Multiple-Bitrate-720p.md) 一文中定义的 JSON 保存到某个具有 .json 扩展名的文件。 例如，CustomPreset_JSON.json  。
+将在 [H264 多比特率 720p](media-services-mes-preset-H264-Multiple-Bitrate-720p.md) 文章中定义的 JSON 保存到具有 .json 扩展名的文件。 例如，**CustomPreset_JSON.json**。
 
 ### <a name="customized-preset"></a>自定义的预设
 
-打开“CustomPreset_JSON.json”  文件，删除“H264Layers”  中的前三层，使文件如下所示。
+打开 **CustomPreset_JSON.json** 文件，删除 **H264Layers** 中的前三层，使文件如下所示。
 
 ```json 
     {  
@@ -114,7 +114,7 @@ ms.locfileid: "79292155"
     }  
 ```
 
-## <a id="encoding_with_dotnet"></a>使用媒体服务 .NET SDK 进行编码
+## <a name="encoding-with-media-services-net-sdk"></a><a id="encoding_with_dotnet"></a>使用媒体服务 .NET SDK 进行编码
 
 以下代码示例使用媒体服务 .NET SDK 执行下列任务：
 
@@ -133,7 +133,7 @@ ms.locfileid: "79292155"
    
 #### <a name="create-and-configure-a-visual-studio-project"></a>创建和配置 Visual Studio 项目
 
-设置开发环境，并在 app.config 文件中填充连接信息，如[使用 .NET 进行媒体服务开发](media-services-dotnet-how-to-use.md)中所述。 
+设置开发环境，并根据[使用 .NET 进行媒体服务开发](media-services-dotnet-how-to-use.md)中所述，在 app.config 文件中填充连接信息。 
 
 #### <a name="example"></a>示例   
 

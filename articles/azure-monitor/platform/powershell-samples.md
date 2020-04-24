@@ -10,10 +10,10 @@ ms.date: 04/12/2019
 ms.author: v-lingwu
 ms.custom: mvc
 ms.openlocfilehash: 06a50f9f23cb58464314f75d5367b841f1863abf
-ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/17/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79452415"
 ---
 # <a name="azure-monitor-powershell-samples"></a>Azure Monitor PowerShell 示例

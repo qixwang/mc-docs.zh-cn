@@ -13,10 +13,10 @@ ms.reviewer: nibaccam
 origin.date: 09/25/2019
 ms.date: 03/16/2020
 ms.openlocfilehash: e395d9e72a644483f6d3ef4ec6899881a01b1f2d
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79292898"
 ---
 # <a name="train-with-datasets-in-azure-machine-learning"></a>使用 Azure 机器学习中的数据集进行训练

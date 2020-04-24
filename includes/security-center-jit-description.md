@@ -5,10 +5,10 @@ manager: rkarlin
 ms.date: 02/24/2020
 ms.topic: include
 ms.openlocfilehash: 99a88c36c0fddcb734205d3c3ce3f3b3a4d01fb3
-ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/17/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79452351"
 ---
 ## <a name="attack-scenario"></a>攻击方案

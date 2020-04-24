@@ -9,10 +9,10 @@ ms.date: 01/21/2019
 ms.author: v-lingwu
 ms.subservice: logs
 ms.openlocfilehash: e140a40d1d08e1eea4065d7469edde93df979bff
-ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/17/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79452491"
 ---
 # <a name="prepare-for-format-change-to-azure-monitor-resource-logs-archived-to-a-storage-account"></a>为存档到存储帐户的 Azure Monitor 资源日志的格式更改做准备

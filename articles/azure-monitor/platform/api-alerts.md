@@ -9,10 +9,10 @@ origin.date: 07/29/2018
 ms.date: 02/19/2020
 ms.author: v-lingwu
 ms.openlocfilehash: 06539efa961a448df0edf7d91527d9e9bb82a5c2
-ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/17/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79452366"
 ---
 # <a name="create-and-manage-alert-rules-in-log-analytics-with-rest-api"></a>在 Log Analytics 中通过 REST API 创建和管理警报规则 
@@ -21,14 +21,14 @@ ms.locfileid: "79452366"
 
 Log Analytics 搜索 REST API 为 RESTful，可通过 Azure 资源管理器 REST API 访问。 在此文档中，你会发现使用 [ARMClient](https://github.com/projectkudu/ARMClient) 通过 PowerShell 命令行访问 API 的示例。ARMClient 是可简化 Azure 资源管理器 API 调用的开源命令行工具。 ARMClient 和 PowerShell 的使用是访问 Log Analytics 搜索 API 的许多选项之一。 借助这些工具，可以利用 RESTful Azure 资源管理器 API 对 Log Analytics 工作区进行调用并在其中执行搜索命令。 API 以 JSON 格式输出搜索结果，从而允许通过编程以许多不同的方式来使用搜索结果。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 目前，仅可以使用 Log Analytics 中已保存的搜索来创建警报。  有关详细信息，请参阅[日志搜索 REST API](../../azure-monitor/log-query/log-query-overview.md)。
 
 ## <a name="schedules"></a>计划
 已保存的搜索可以有一个或多个计划。 计划定义搜索的运行频率以及进行条件识别的时间间隔。
 计划具有下表中的属性。
 
-| 属性 | 说明 |
+| properties | 说明 |
 |:--- |:--- |
 | 时间间隔 |搜索的运行频率。 以分钟为度量单位。 |
 | QueryTimeSpan |计算条件的时间间隔。 必须等于或大于间隔。 以分钟为度量单位。 |
@@ -88,7 +88,7 @@ Log Analytics 搜索 REST API 为 RESTful，可通过 Azure 资源管理器 REST
 
 所有操作具有下表中的属性。  不同类型的警报具有不同的其他属性，如下所述。
 
-| 属性 | 说明 |
+| properties | 说明 |
 |:--- |:--- |
 | `Type` |操作的类型。  目前可能的值为警报和 Webhook。 |
 | `Name` |警报的显示名称。 |
@@ -126,7 +126,7 @@ Log Analytics 搜索 REST API 为 RESTful，可通过 Azure 资源管理器 REST
 | 部分 | 说明 | 使用情况 |
 |:--- |:--- |:--- |
 | 阈值 |用于确定何时运行操作的条件。| 每个警报所必需的，无论是在警报扩展到 Azure 之前还是之后。 |
-| severity |当触发时用来对警报进行分类的标签。| 每个警报所必需的，无论是在警报扩展到 Azure 之前还是之后。 |
+| 严重性 |当触发时用来对警报进行分类的标签。| 每个警报所必需的，无论是在警报扩展到 Azure 之前还是之后。 |
 | 取消 |用于停止警报通知的选项。 | 对于每个警报均为可选，无论是在警报扩展到 Azure 之前还是之后。 |
 | 操作组 |在其中指定所需操作的 Azure 操作组的 ID，例如 - 电子邮件、SMS、语音呼叫、Webhook、自动化 Runbook、ITSM 连接器，等等。| 警报扩展到 Azure 后所必需的|
 | 自定义操作|修改有关从操作组中选择操作的标准输出| 对于每个警报都是可选的，可以在警报扩展到 Azure 后使用。 |
@@ -136,7 +136,7 @@ Log Analytics 搜索 REST API 为 RESTful，可通过 Azure 资源管理器 REST
 
 阈值具有下表中的属性。
 
-| 属性 | 说明 |
+| properties | 说明 |
 |:--- |:--- |
 | `Operator` |阈值比较运算符。 <br> gt = 大于 <br> lt = 小于 |
 | `Value` |阈值的数值。 |
@@ -166,7 +166,7 @@ Log Analytics 搜索 REST API 为 RESTful，可通过 Azure 资源管理器 REST
     $thresholdJson = "{'etag': 'W/\"datetime'2016-02-25T20%3A54%3A20.1302566Z'\"','properties': { 'Name': 'My Threshold', 'Version':'1', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 10 } } }"
     armclient put /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/mythreshold?api-version=2015-03-20 $thresholdJson
 
-#### <a name="severity"></a>severity
+#### <a name="severity"></a>严重性
 Log Analytics 允许你将警报归类到各个类别，以便更轻松地进行管理和会审。 定义的警报严重性是：信息性、警告和严重。 它们如下所示映射到 Azure 警报的常规严重性级别：
 
 |Log Analytics 严重性级别  |Azure 警报严重性级别  |
@@ -268,7 +268,7 @@ Azure 中的所有警报都使用操作组作为用来处理操作的默认机�
 默认情况下，操作遵循用于通知的标准模板和格式。 但是，用户可以自定义某些操作，即使它们是由操作组控制的。 目前可以自定义电子邮件主题和 Webhook 有效负载。
 
 ##### <a name="customize-e-mail-subject-for-action-group"></a>自定义操作组的电子邮件主题
-默认情况下，警报的电子邮件主题是：`<WorkspaceName>` 的警报通知 `<AlertName>`。 但这可以自定义，因此你可以指定词语或标签，以便轻松在收件箱中利用筛选规则。 自定义的电子邮件标题详细信息需要随操作组详细信息一起发送，如以下示例中所示。
+默认情况下，警报的电子邮件主题是：`<AlertName>` 的警报通知 `<WorkspaceName>`。 但这可以自定义，因此你可以指定词语或标签，以便轻松在收件箱中利用筛选规则。 自定义的电子邮件标题详细信息需要随操作组详细信息一起发送，如以下示例中所示。
 
      "etag": "W/\"datetime'2017-12-13T10%3A52%3A21.1697364Z'\"",
       "properties": {

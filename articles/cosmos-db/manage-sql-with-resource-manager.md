@@ -8,10 +8,10 @@ origin.date: 11/12/2019
 ms.date: 02/10/2020
 ms.author: v-yeche
 ms.openlocfilehash: c17d945048e187ea56b392273b21172d83d879c4
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79293401"
 ---
 <!--Verify successfully-->
@@ -350,7 +350,7 @@ ms.locfileid: "79293401"
 ```
 
 > [!NOTE]
-> 若要使用大的分区键创建容器，请修改前面的模板以在 `partitionKey` 对象内包括 `"version":2` 属性。
+> 若要使用大的分区键创建容器，请修改前面的模板以在 `"version":2` 对象内包括 `partitionKey` 属性。
 
 ### <a name="deploy-via-powershell"></a>通过 PowerShell 部署
 
@@ -671,7 +671,7 @@ az cosmosdb show --resource-group $resourceGroupName --name accountName --output
 
 ```
 
-### <a name="deploy-with-powershell"></a>使用 PowerShell 进行部署
+### <a name="deploy-with-powershell"></a>使用 PowerShell 部署
 
 若要使用 PowerShell 部署 Azure 资源管理器模板，请执行以下操作：
 

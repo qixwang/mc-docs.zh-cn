@@ -7,17 +7,17 @@ origin.date: 12/06/2018
 ms.date: 03/09/2020
 ms.author: v-yeche
 ms.openlocfilehash: 5b22769075134adb42462d8abaa65a16548d9f18
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79290719"
 ---
 # <a name="best-practices-for-cluster-security-and-upgrades-in-azure-kubernetes-service-aks"></a>有关 Azure Kubernetes 服务 (AKS) 中的群集安全性和升级的最佳做法
 
 在 Azure Kubernetes 服务 (AKS) 中管理群集时，关键是要确保工作负荷和数据的安全性。 特别是在使用逻辑隔离运行多租户群集时，需要保护对资源和工作负荷的访问。 为了尽量减少攻击风险，还需确保应用最新的 Kubernetes 和节点 OS 安全更新。
 
-本文重点介绍如何保护 AKS 群集。 你将学习如何执行以下操作：
+本文重点介绍如何保护 AKS 群集。 学习如何：
 
 > [!div class="checklist"]
 > * 使用 Azure Active Directory 和基于角色的访问控制来保护 API 服务器访问

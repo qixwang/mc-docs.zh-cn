@@ -13,10 +13,10 @@ ms.reviewer: genemi
 origin.date: 11/14/2019
 ms.date: 12/16/2019
 ms.openlocfilehash: 86c8dad98ae7f069fa3ea2b5b600ace1f7a8064c
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79293534"
 ---
 # <a name="sql-database-application-development-overview"></a>SQL 数据库应用程序开发概述
@@ -33,7 +33,7 @@ ms.locfileid: "79293534"
 
 你可以利用类似 [cheetah](https://github.com/wunderlist/cheetah)、[sql-cli](https://www.npmjs.com/package/sql-cli)、[VS Code](https://code.visualstudio.com/) 的开源工具。 此外，Azure SQL 数据库可与 Microsoft 工具（如 [Visual Studio](https://www.visualstudio.com/downloads/) 和 [SQL Server Management Studio](https://msdn.microsoft.com/library/ms174173.aspx)）配合使用。 还可以使用 Azure 门户、PowerShell 和 REST API 帮助提高工作效率。
 
-## <a name="authentication"></a>身份验证
+## <a name="authentication"></a>Authentication
 
 对 Azure SQL 数据库的访问使用登录名和防火墙进行保护。 Azure SQL 数据库支持 SQL Server 和 [Azure Active Directory (AAD) 身份验证](sql-database-aad-authentication.md)用户和登录名。 AAD 登录名仅在托管实例中可用。 
 
@@ -43,11 +43,11 @@ ms.locfileid: "79293534"
 
 在客户端连接逻辑中，将默认超时替换为 30 秒。 默认值 15 秒对于依赖于 Internet 的连接而言太短。
 
-如果在使用 [连接池](https://msdn.microsoft.com/library/8xx3tyca.aspx)，请确保在程序不活跃地使用连接时将其关闭，而不是准备重用它。
+如果在使用[连接池](https://msdn.microsoft.com/library/8xx3tyca.aspx)，请确保在程序不活跃地使用连接时将其关闭，而不是准备重用它。
 
 避免长时间运行的事务，因为任何基础结构或连接故障可能会使事务回滚。 如果可能，将事务拆分为多个较小事务，并使用[批处理改进性能](sql-database-use-batching-to-improve-performance.md)。
 
-## <a name="resiliency"></a>复原能力
+## <a name="resiliency"></a>复原
 
 Azure SQL 数据库是一种云服务，在其中可能会遇到在底层基础结构中或云实体之间的通信中发生的暂时性错误。 尽管 Azure SQL 数据库在发生暂时性基础结构故障时可复原，但这些故障可能会影响连接。 如果在连接到 SQL 数据库时发生暂时性错误，代码应[重试调用](sql-database-connectivity-issues.md)。 建议让重试逻辑使用退让逻辑，这样就不会因为多个客户端同时重试而对 SQL 数据库造成混乱。 重试逻辑取决于 [SQL 数据库客户端程序的错误消息](troubleshoot-connectivity-issues-microsoft-azure-sql-database.md)。
 
@@ -62,4 +62,4 @@ Azure SQL 数据库是一种云服务，在其中可能会遇到在底层基础�
 
 ## <a name="next-steps"></a>后续步骤
 
-浏览 [SQL 数据库的所有功能](sql-database-technical-overview.md)。
+浏览所有 [SQL 数据库的功能](sql-database-technical-overview.md)。

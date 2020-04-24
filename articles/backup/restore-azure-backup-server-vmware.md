@@ -7,10 +7,10 @@ origin.date: 08/18/2019
 ms.date: 12/04/2019
 ms.author: v-lingwu
 ms.openlocfilehash: 7651d39e0b925a9c1a45d4f4d7849ea093030ccc
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79290887"
 ---
 # <a name="restore-vmware-virtual-machines"></a>还原 VMware 虚拟机

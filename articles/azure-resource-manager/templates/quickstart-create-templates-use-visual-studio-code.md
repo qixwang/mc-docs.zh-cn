@@ -7,15 +7,15 @@ ms.date: 01/06/2020
 ms.topic: quickstart
 ms.author: v-yeche
 ms.openlocfilehash: d4607fdab651653690e0ba0ce1918b9a9385d301
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79291257"
 ---
 # <a name="quickstart-create-azure-resource-manager-templates-by-using-visual-studio-code"></a>快速入门：使用 Visual Studio Code 创建 Azure 资源管理器模板
 
-了解如何使用 Visual Studio Code 和 Azure 资源管理器工具扩展创建和编辑 Azure 资源管理器模板。 可以在 Visual Studio Code 中不使用扩展创建资源管理器模板，但是该扩展提供自动完成选项，可以简化模板开发。 若要了解与部署和管理 Azure 解决方案关联的概念，请参阅[模版部署概述](overview.md)。
+了解如何使用 Visual Studio Code 和 Azure 资源管理器工具扩展创建和编辑 Azure 资源管理器模板。 可以在 Visual Studio Code 中不使用扩展创建资源管理器模板，但是该扩展提供自动完成选项，可以简化模板开发。 若要了解与部署和管理 Azure 解决方案关联的概念，请参阅[模板部署概述](overview.md)。
 
 在本快速入门中，你将部署存储帐户：
 
@@ -23,7 +23,7 @@ ms.locfileid: "79291257"
 
 如果没有 Azure 订阅，请在开始前[创建一个试用帐户](https://www.azure.cn/pricing/1rmb-trial/)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要完成本文，需要做好以下准备：
 
@@ -41,7 +41,7 @@ ms.locfileid: "79291257"
 
 本快速入门中使用的模板称为[创建标准存储帐户](https://github.com/Azure/azure-quickstart-templates/tree/master/101-storage-account-create/)。 该模板定义 Azure 存储帐户资源。
 
-1. 在 Visual Studio Code 中，选择“文件”>“打开文件”。  
+1. 在 Visual Studio Code 中，选择“文件” **“打开文件”。** > 
 2. 在“文件名”中粘贴以下 URL： 
 
     ```url
@@ -49,7 +49,7 @@ ms.locfileid: "79291257"
     ```
 
 3. 选择“打开”以打开该文件。 
-4. 选择“文件”>“另存为”，将该文件作为 **azuredeploy.json** 保存到本地计算机。  
+4. 选择“文件” **“另存为”，将该文件作为** azuredeploy.json> 保存到本地计算机。  
 
 ## <a name="edit-the-template"></a>编辑模板
 
@@ -83,7 +83,7 @@ ms.locfileid: "79291257"
 
     ![资源管理器模板 - Visual Studio Code - IntelliSense](./media/quickstart-create-templates-use-visual-studio-code/resource-manager-templates-visual-studio-code-intellisense.png)
 
-2. 选择“文件”>“保存”以保存文件。  
+2. 选择“文件” **“保存”以保存文件。** > 
 
 ## <a name="deploy-the-template"></a>部署模板
 
@@ -125,7 +125,7 @@ ms.locfileid: "79291257"
 
     如果将模板文件保存到了 **azuredeploy.json** 之外的其他文件中，其更新其名称。
 
-    以下屏幕截图显示了示例部署：
+    以下屏幕截图显示了一个示例部署：
 
     # <a name="cli"></a>[CLI](#tab/CLI)
 
@@ -160,7 +160,7 @@ ms.locfileid: "79291257"
 
     ---
 
-若要详细了解如何使用 Azure 存储帐户，请参阅[快速入门：使用 Azure 门户上传、下载和列出 Blob](../../storage/blobs/storage-quickstart-blobs-portal.md)。
+若要了解有关使用 Azure 存储帐户的更多信息，请参阅[快速入门：使用 Azure 门户上载、下载和列出 blob](../../storage/blobs/storage-quickstart-blobs-portal.md)。
 
 ## <a name="clean-up-resources"></a>清理资源
 
@@ -173,7 +173,7 @@ ms.locfileid: "79291257"
 
 ## <a name="next-steps"></a>后续步骤
 
-本快速入门的主要关注点是如何使用 Visual Studio Code 编辑 Azure 快速入门模板中的现有模板。 此外还介绍了如何通过本地电脑使用 CLI 或 PowerShell 部署模板。 Azure 快速入门模板中的模板可能并未提供你所需的一切。若要详细了解模板开发，请参阅新的初学者教程系列：
+本快速入门的主要关注点是如何使用 Visual Studio Code 来编辑 Azure 快速入门模板中的现有模板。 此外还介绍了如何通过本地电脑使用 CLI 或 PowerShell 部署模板。 Azure 快速入门模板中的模板可能并未提供你所需的一切。若要详细了解模板开发，请参阅新的初学者教程系列：
 
 <!--Not Available on Cloud Shell-->
 

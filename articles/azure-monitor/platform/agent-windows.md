@@ -9,10 +9,10 @@ origin.date: 10/07/2019
 ms.date: 10/25/2019
 ms.author: v-lingwu
 ms.openlocfilehash: 6f4f3de8b3ea6e8d68ddb61d9b0a57acfc506cc5
-ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/17/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79452506"
 ---
 # <a name="connect-windows-computers-to-azure-monitor"></a>将 Windows 计算机连接到 Azure Monitor
@@ -94,7 +94,7 @@ ms.locfileid: "79452506"
 
 下表突出显示了代理的安装程序支持的特定参数，包括使用 Automation DSC 进行部署的时间。
 
-|特定于 MMA 的选项                   |注释         |
+|特定于 MMA 的选项                   |说明         |
 |---------------------------------------|--------------|
 | NOAPM=1                               | 可选参数。 安装不带 .NET 应用程序性能监视的代理。|   
 |ADD_OPINSIGHTS_WORKSPACE               | 1 = 将代理配置为向工作区报告                |
@@ -133,7 +133,7 @@ ms.locfileid: "79452506"
 >[!NOTE]
 >此过程和脚本示例不支持升级已部署到 Windows 计算机的代理。
 
-32 位和 64 位版本的代理包具有不同的产品代码，新发布的版本也具有唯一的产品代码。  产品代码是一个 GUID，它是应用程序或产品的主体标志，由 Windows Installer 的“ProductCode”属性表示  。  **MMAgent.ps1** 脚本中的 `ProductId` 值必须与 32 位或 64 位代理安装程序包的产品代码匹配。
+32 位和 64 位版本的代理包具有不同的产品代码，新发布的版本也具有唯一的产品代码。  产品代码是一个 GUID，它是应用程序或产品的主体标志，由 Windows Installer 的“ProductCode”属性表示  。  `ProductId`MMAgent.ps1**脚本中的** 值必须与 32 位或 64 位代理安装程序包的产品代码匹配。
 
 若要直接从代理安装包检索产品代码，可使用[适用于 Windows Installer 开发者的 Windows SDK 组件](https://msdn.microsoft.com/library/windows/desktop/aa370834%28v=vs.85%29.aspx)中的 Orca.exe，该组件是 Windows 软件开发工具包的一个组件，或按照 Azure 最有价值专家 (MVP) 编写的[示例脚本](https://www.scconfigmgr.com/2014/08/22/how-to-get-msi-file-information-with-powershell/)来使用 PowerShell。  对于上述任一种方法，都需要先从 MMASetup 安装包中提取 **MOMagent.msi** 文件。  在前面[使用命令行安装代理](#install-the-agent-using-the-command-line)部分下的第一个步骤中演示了此操作。  
 
@@ -185,7 +185,7 @@ ms.locfileid: "79452506"
 
 代理安装完毕后，可通过两种方式来验证是否成功连接和完成报告。  
 
-在计算机的“控制面板”中，找到“Microsoft Monitoring Agent”项   。  选择该项，在“Azure Log Analytics”选项卡上，代理应显示一条消息  ：“Microsoft Monitoring Agent 已成功连接到Microsoft Operations Management Suite 服务”  。<br><br> ![MMA 与 Log Analytics 的连接状态](media/agent-windows/log-analytics-mma-laworkspace-status.png)
+在计算机的“控制面板”中，找到“Microsoft Monitoring Agent”项   。  选择此项，代理应会在“Azure Log Analytics”选项卡上显示一条消息，指出：“Microsoft Monitoring Agent 已成功连接到 Microsoft Operations Management Suite 服务”   。<br><br> ![MMA 与 Log Analytics 的连接状态](media/agent-windows/log-analytics-mma-laworkspace-status.png)
 
 还可在 Azure 门户中执行简单的日志查询。  
 

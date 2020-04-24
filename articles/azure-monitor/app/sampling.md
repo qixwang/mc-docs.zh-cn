@@ -9,10 +9,10 @@ ms.date: 2/18/2020
 ms.reviewer: vitalyg
 ms.custom: fasttrack-edit
 ms.openlocfilehash: de8f198b2c9e3fd3ea500715942af5f0b240e7f7
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79291709"
 ---
 # <a name="sampling-in-application-insights"></a>在 Application Insights 中采样

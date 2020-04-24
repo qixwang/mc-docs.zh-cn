@@ -12,10 +12,10 @@ origin.date: 03/26/2019
 ms.date: 6/4/2019
 ms.author: v-lingwu
 ms.openlocfilehash: 9e48a377771144745682f215a8b54e36a59e194d
-ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/17/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79452284"
 ---
 # <a name="azure-monitor-data-platform"></a>Azure Monitor 数据平台
@@ -33,7 +33,7 @@ ms.locfileid: "79452284"
 Azure 资源会生成大量的监视数据。 Azure Monitor 将这些数据连同其他源中的监视数据一起整合到指标或日志平台。 每个平台已针对特定的监视方案进行优化，各自支持 Azure Monitor 中的不同功能。 使用数据分析、可视化或警报等功能需要了解数据的差异，以便能够以最经济高效的方式实现所需的方案。 Azure Monitor 中的见解功能（例如 [Application Insights](../app/app-insights-overview.md) 或用于 VM 的 Azure Monitor）提供分析工具让你专注于特定的监视方案，而无需了解这两种数据类型之间的差异。 
 
 
-### <a name="metrics"></a>指标
+### <a name="metrics"></a>度量值
 [指标](data-platform-metrics.md)是数字值，用于描述系统某些方面在特定时间点的情况。 指标是定期收集的，使用一个时间戳、一个名称、一个值以及一个或多个定义标签进行标识。 可以使用各种算法聚合指标、将其与其他指标进行比较，以及分析不同时间的指标趋势。 
 
 Azure Monitor 中的指标存储在时序数据库中，该数据库经过优化，可用于分析带时间戳的数据。 因此，指标特别适合用于警报和快速检测问题。 它们可以告知系统的运行状况，但通常需要与日志相结合才能识别问题的根本原因。
@@ -67,10 +67,10 @@ Azure Monitor 中的分布式跟踪是使用 [Application Insights SDK](../app/d
 
 下表对 Azure Monitor 中的指标和日志做了比较。
 
-| 属性  | 指标 | 日志 |
+| Attribute  | 度量值 | 日志 |
 |:---|:---|:---|
 | 优点 | 轻型数据，支持警报等近实时方案。 非常适合用于快速检测问题。 | 使用丰富查询语言进行分析。 非常适合用于深入分析和识别根本原因。 |
-| 数据 | 仅限数字值 | 文本或数字数据 |
+| data | 仅限数字值 | 文本或数字数据 |
 | 结构 | 标准属性集，包括采样时间、受监视的资源、数字值。 某些指标包含多个维度用于进一步的定义。 | 取决于日志类型的唯一属性集。 |
 | 集合 | 定期收集。 | 可以在事件触发要创建的记录时偶发性地收集。 |
 | 在 Azure 门户中查看 | 指标资源管理器 | Log Analytics |

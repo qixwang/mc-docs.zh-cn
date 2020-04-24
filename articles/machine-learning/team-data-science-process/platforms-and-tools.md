@@ -11,10 +11,10 @@ ms.date: 09/04/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: ef5af8b599da30bd220774093428c87ced5e26ea
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79292214"
 ---
 # <a name="platforms-and-tools-for-data-science-projects"></a>用于数据科学项目的平台和工具
@@ -59,7 +59,7 @@ Apache Spark 是一种开源并行处理框架，支持使用内存中处理来�
 
 在 HDInsight 中创建 Spark 群集时，即会创建已安装并配置了 Spark 的 Azure 计算资源。 在 HDInsight 中创建 Spark 群集需要约 10 分钟。 将要处理的数据存储在 Azure Blob 存储中。 有关在群集中使用 Azure Blob 存储的信息，请参阅[将 HDFS 兼容的 Azure Blob 存储与 HDInsight 中的 Hadoop 配合使用](../../hdinsight/hdinsight-hadoop-use-blob-storage.md)。
 
-Microsoft 的 TDSP 团队发布了两篇端到端演练，介绍如何使用 Azure HDInsight Spark 群集生成数据科学解决方案，其中一个解决方案使用 Python，另一个使用 Scala。 有关 Azure HDInsight“Spark 群集”的详细信息，请参阅[概述  ：HDInsight Linux 上的 Apache Spark](../../hdinsight/spark/apache-spark-overview.md)。 若要了解如何在 Azure HDInsight Spark 群集上使用 **Python** 生成数据科学解决方案，请参阅[有关在 Azure HDInsight 上使用 Spark 展开数据科学的概述](spark-overview.md)。 若要了解如何在 Azure HDInsight Spark 群集上使用 **Scala** 生成数据科学解决方案，请参阅[在 Azure 上使用 Scala 和 Spark 展开数据科学](scala-walkthrough.md)。 
+Microsoft 的 TDSP 团队发布了两篇端到端演练，介绍如何使用 Azure HDInsight Spark 群集生成数据科学解决方案，其中一个解决方案使用 Python，另一个使用 Scala。 有关 Azure HDInsight **Spark 群集**的详细信息，请参阅[概述：HDInsight Linux 上的 Apache Spark](../../hdinsight/spark/apache-spark-overview.md)。 若要了解如何在 Azure HDInsight Spark 群集上使用 **Python** 生成数据科学解决方案，请参阅[有关在 Azure HDInsight 上使用 Spark 展开数据科学的概述](spark-overview.md)。 若要了解如何在 Azure HDInsight Spark 群集上使用 **Scala** 生成数据科学解决方案，请参阅[在 Azure 上使用 Scala 和 Spark 展开数据科学](scala-walkthrough.md)。 
 
 
 ##  <a name="azure-sql-data-warehouse"></a>Azure SQL 数据仓库
@@ -73,14 +73,14 @@ Microsoft 的 TDSP 团队发布了两篇端到端演练，介绍如何使用 Azu
 
 Azure Data Lake 是在施加任何正式要求或架构之前，在单个位置收集的每种数据的企业级存储库。 这种灵活性允许将每种数据保留在 Data Lake 中，而不管数据的大小或结构或引入速度如何。 然后，组织可以使用 Hadoop 或高级分析功能在这些 Data Lake 中查找模式。 在策划数据并其转移到数据仓库之前，Data Lake 还可以充当较低成本的数据准备工作的存储库。
 
-有关 Azure Data Lake 的详细信息，请参阅 [Azure Data Lake 简介](https://azure.microsoft.com/blog/introducing-azure-data-lake/)。 要了解如何使用 Azure Data Lake 生成可缩放的端到端数据科学解决方案，请参阅 [Azure Data Lake 中可缩放的数据科学：端到端演练](data-lake-walkthrough.md)
+有关 Azure Data Lake 的详细信息，请参阅 [Azure Data Lake 简介](https://azure.microsoft.com/blog/introducing-azure-data-lake/)。 若要了解如何使用 Azure Data Lake 生成可缩放的端到端数据科学解决方案，请参阅[Azure Data Lake 中可缩放的数据科学：端到端演练](data-lake-walkthrough.md)
 
 
 ## <a name="azure-hdinsight-hive-hadoop-clusters"></a>Azure HDInsight Hive (Hadoop) 群集
 
 Apache Hive 是适用于 Hadoop 的数据仓库系统，可让你使用 HiveQL（类似于 SQL 的查询语言）来进行数据汇总、查询和数据分析。 使用 Hive 能够以交互方式浏览数据，或者创建可重用的批处理作业。
 
-Hive 可以实现将结构投影到很大程度上未结构化的数据上。 定义结构后，可以使用 Hive 在 Hadoop 群集中查询这些数据，而无需使用甚至无需了解 Java 或 MapReduce。 借助 HiveQL（Hive 查询语言）可以使用类似于 T-SQL 的语句编写查询。
+Hive 允许在很大程度上未结构化的数据上投影结构。 定义结构后，可以使用 Hive 在 Hadoop 群集中查询这些数据，而无需使用甚至无需了解 Java 或 MapReduce。 借助 HiveQL（Hive 查询语言）可以使用类似于 T-SQL 的语句编写查询。
 
 对于数据科学家而言，Hive 可以在 Hive 查询中运行 Python 用户定义的函数 (UDF) 来处理记录。 这种能力大大扩展了数据分析中的 Hive 查询功能。 具体而言，Hive 可让数据科学家使用他们最熟悉的语言（包括类似于 SQL 的 HiveQL 和 Python）开展可缩放的特征工程。 
 
@@ -103,7 +103,7 @@ R 服务（数据库内部）凭借一套综合性的 SQL Server 工具和技术
 Microsoft 的 TDSP 团队发布了两篇端到端演练，介绍如何在 SQL Server 2016 R 服务中生成数据科学解决方案：一篇面向 R 程序员，另一篇面向 SQL 开发人员。 **R 程序员**可参阅[数据科学端到端演练](https://docs.microsoft.com/sql/advanced-analytics/tutorials/walkthrough-data-science-end-to-end-walkthrough)。 **SQL 开发人员**可参阅[面向 SQL 开发人员的数据库内部高级分析（教程）](https://docs.microsoft.com/sql/advanced-analytics/tutorials/sqldev-in-database-r-for-sql-developers)。
 
 
-## <a name="appendix"></a>附录：用于设置数据科学项目的工具
+## <a name="appendix-tools-to-set-up-data-science-projects"></a><a name="appendix"></a>附录：用于设置数据科学项目的工具
 
 ### <a name="install-git-credential-manager-on-windows"></a>在 Windows 上安装 Git 凭据管理器
 
@@ -135,7 +135,7 @@ Microsoft 的 TDSP 团队发布了两篇端到端演练，介绍如何在 SQL Se
 
 1. 复制整个 SSH 密钥，包括 *ssh-rsa*。 
 1. 登录到 Azure DevOps Services。 
-1. 单击页面右上角的“<你的姓名\>”，再单击“安全性”。   
+1. 单击页面右上角的“<你的姓名 **”，再单击“安全性”。\>**  
     
    ![单击你的姓名，再单击“安全性”](./media/platforms-and-tools/resources-2-user-setting.png)
 

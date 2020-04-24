@@ -9,10 +9,10 @@ ms.date: 3/12/2019
 ms.author: dukek
 ms.subservice: alerts
 ms.openlocfilehash: 4f527cd8fe75717da0fd84734564dc8dfcce7722
-ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/17/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79452371"
 ---
 # <a name="rate-limiting-for-voice-sms-emails-azure-app-push-notifications-and-webhook-posts"></a>语音、短信、电子邮件、Azure 应用推送通知和 webhook 帖子的速率限制
@@ -20,7 +20,7 @@ ms.locfileid: "79452371"
 
 速率限制阈值为：
 
-- **短信**：每 5 分钟最多 1 条短信。
+- **SMS**：每 5 分钟最多 1 条短信。
 - **语音**：每 5 分钟最多 1 条语音呼叫。
 - **电子邮件**：一小时内最多 100 个电子邮件。
  

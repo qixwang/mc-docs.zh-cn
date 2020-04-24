@@ -191,7 +191,7 @@
           href: 'https://docs.microsoft.com/rest/api/hdinsight/'
         - name: REST API (Apache Spark)
           href: 'https://docs.microsoft.com/rest/api/hdinsightspark/'
-        - name: Resource Manager 模板
+        - name: 资源管理器模板
           href: 'https://docs.microsoft.com/azure/templates/microsoft.hdinsight/allversions'
     - name: 资源
       items:
@@ -281,7 +281,7 @@
               items:
                 - name: 流式处理概述
                   href: ./spark/apache-spark-streaming-overview.md
-                - name: 结构化流式处理概述
+                - name: 结构化流概述
                   href: ./spark/apache-spark-structured-streaming-overview.md
                 - name: 在 Apache Hadoop YARN 中创建高度可用的 Apache Spark 流作业
                   href: ./spark/apache-spark-streaming-high-availability.md

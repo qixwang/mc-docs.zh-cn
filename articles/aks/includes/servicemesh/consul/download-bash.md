@@ -5,10 +5,10 @@ origin.date: 10/09/2019
 ms.date: 03/09/2020
 ms.author: v-yeche
 ms.openlocfilehash: ae5ec0b0f1fd97a40e88e7505880bb8b2d9cbe8c
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79290706"
 ---
 在 Linux 或[适用于 Linux 的 Windows 子系统][install-wsl]或 MacOS 上的基于 bash 的 shell 中，使用 `curl` 下载 Consul Helm 图表版本，如下所示：

@@ -8,17 +8,17 @@ origin.date: 11/7/2019
 ms.date: 03/12/2020
 ms.author: v-lingwu
 ms.openlocfilehash: 987115a957f081cd8e8821138fc7af118936f7cb
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79293102"
 ---
 # <a name="frequently-asked-questions--back-up-sap-hana-databases-on-azure-vms"></a>常见问题 - 备份基于 Azure VM 的 SAP HANA 数据库
 
 本文解答有关使用 Azure 备份服务备份 SAP HANA 数据库的常见问题。
 
-## <a name="backup"></a>Backup
+## <a name="backup"></a>备份
 
 ### <a name="how-many-full-backups-are-supported-per-day"></a>每天支持多少次完整备份？
 
@@ -26,7 +26,7 @@ ms.locfileid: "79293102"
 
 ### <a name="do-successful-backup-jobs-create-alerts"></a>成功的备份作业是否会创建警报？
 
-否。 成功的备份作业不会生成警报。 仅针对失败的备份作业发送警报。 [此文](/backup/backup-azure-monitoring-built-in-monitor)介绍了门户警报的详细行为。 但是，如果希望在作业成功的情况下也收到警报，可以使用 [Azure Monitor](/backup/backup-azure-monitoring-use-azuremonitor)。
+不是。 成功的备份作业不会生成警报。 仅针对失败的备份作业发送警报。 [此文](/backup/backup-azure-monitoring-built-in-monitor)介绍了门户警报的详细行为。 但是，如果希望在作业成功的情况下也收到警报，可以使用 [Azure Monitor](/backup/backup-azure-monitoring-use-azuremonitor)。
 
 ### <a name="can-i-see-scheduled-backup-jobs-in-the-backup-jobs-menu"></a>“备份作业”菜单中是否会显示计划的备份作业？
 

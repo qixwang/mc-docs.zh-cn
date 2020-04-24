@@ -11,10 +11,10 @@ origin.date: 10/23/2019
 ms.date: 01/27/2020
 ms.author: v-tawe
 ms.openlocfilehash: 31ae4e458cb716e84bbafeed4b75816eb2d663bb
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79291838"
 ---
 # <a name="create-a-cognitive-services-resource-using-the-azure-portal"></a>使用 Azure 门户创建认知服务资源
@@ -24,7 +24,7 @@ ms.locfileid: "79291838"
 
 [!INCLUDE [cognitive-services-subscription-types](../../includes/cognitive-services-subscription-types.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * 有效的 Azure 订阅 - [创建 1 元人民币试用帐户](https://www.azure.cn/pricing/1rmb-trial/)。
 
@@ -68,7 +68,7 @@ ms.locfileid: "79291838"
 
     ![“创建资源”屏幕](media/cognitive-services-apis-create-account/resource_create_screen-multi.png)
 
-    单击**创建**。
+    单击“创建”。 
 
     #### <a name="single-service-resource"></a>[单服务资源](#tab/singleservice)
 
@@ -82,7 +82,7 @@ ms.locfileid: "79291838"
 
     ![“创建资源”屏幕](media/cognitive-services-apis-create-account/resource_create_screen.png)
 
-    单击**创建**。
+    单击“创建”。 
 
     ***
 

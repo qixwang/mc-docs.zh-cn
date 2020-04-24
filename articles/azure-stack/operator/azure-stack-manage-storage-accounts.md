@@ -9,10 +9,10 @@ ms.author: v-jay
 ms.reviewer: xiaofmao
 ms.lastreviewed: 03/19/2019
 ms.openlocfilehash: f10b7cd186adc029b4f6dfc41e55175971881dfa
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79292195"
 ---
 # <a name="manage-azure-stack-hub-storage-accounts"></a>管理 Azure Stack Hub 存储帐户
@@ -25,13 +25,13 @@ ms.locfileid: "79292195"
 
 1. 登录到[管理员门户](https://adminportal.local.azurestack.external)。
 
-2. 选择“所有服务” > “存储” > “存储帐户”。   
+2. 选择“所有服务” **“存储”** “存储帐户” >    >   。
 
    ![Azure Stack Hub 存储帐户](media/azure-stack-manage-storage-accounts/image4.png)
 
 默认显示前 10 个帐户。 可以单击列表底部的“加载更多”链接来提取更多的帐户。 
 
-OR
+或
 
 如果只想查看特定的存储帐户，可以只**筛选并提取相关的帐户**。
 
@@ -86,12 +86,12 @@ OR
   删除的帐户已作为垃圾回收后，该帐户可能不会显示在帐户列表中。 在此情况下，无法恢复该帐户。 有关详细信息，请参阅本文中的[回收容量](#reclaim)。
 
 ## <a name="set-the-retention-period"></a>设置保留期
-云操作员可以使用保留期设置来指定时间间隔天数（0 到 9999 天），在此期间，任何已删除的帐户都有可能能够恢复。 默认保留期设置为 0 天。 将值设置为“0”表示任何已删除的帐户会立即超出保留期，并标记为定期进行垃圾回收。
+云操作员可以使用“保留期”设置来指定一个时间段（以天为单位，值为 0 到 9999 天），在此时间段内删除的帐户有可能能够恢复。 默认保留期设置为 0 天。 将值设置为“0”表示任何已删除的帐户会立即失去保留期，并标记为定期接受垃圾回收。
 
 **更改保留期：**
 
 1. 登录到[管理员门户](https://adminportal.local.azurestack.external)。
-2. 在“管理”  下选择“所有服务”   > “区域管理”  。
+2. 在“管理”  下选择“所有服务” >   “区域管理”  。
 3. 选择“资源提供程序”   > “存储”   >   “设置”。 路径为主目录 > *区域* - 资源提供程序 > 存储。
 4. 选择“配置”，然后编辑保留期值。 
 
@@ -101,7 +101,7 @@ OR
 
    ![在管理员门户中编辑保留期](media/azure-stack-manage-storage-accounts/image10.png)
 
-## <a name="reclaim"></a>回收容量
+## <a name="reclaim-capacity"></a><a name="reclaim"></a>回收容量
 使用保留期的负面影响之一是，已删除的帐户在超出保留期之前会一直消耗容量。 云操作员可能需要通过某种方式，在保留期尚未到来之前回收已删除帐户占用的空间。
 
 可以使用门户或 PowerShell 来回收容量。

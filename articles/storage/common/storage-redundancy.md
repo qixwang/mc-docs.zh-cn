@@ -12,10 +12,10 @@ ms.author: v-jay
 ms.reviewer: artek
 ms.subservice: common
 ms.openlocfilehash: e0d5b219fccd6ae74f43e3e2ee4fe9f9b3fb9885
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79291897"
 ---
 # <a name="azure-storage-redundancy"></a>Azure 存储冗余
@@ -89,13 +89,13 @@ Azure 存储提供一个将数据复制到次要区域的选项：
 
 下表根据存储帐户中启用的冗余类型显示了数据在给定场景下的持久性和可用性：
 
-| 方案                                                                                                 | LRS                             | GRS/RA-GRS                                  |
+| 场景                                                                                                 | LRS                             | GRS/RA-GRS                                  |
 | :------------------------------------------------------------------------------------------------------- | :------------------------------ | :----------------------------------- |
 | 数据中心内的某个节点不可用                                                                 | 是                             | 是                                  |
 | 整个数据中心（区域性或非区域性）不可用                                           | 否                              |  是                                  |
 | 发生区域范围的服务中断                                                                                     | 否                              |  是                                  |
 | 如果主要区域不可用，则对次要区域中的数据进行读取访问 | 否                              | 是（通过 RA-GRS）                                   |
-| 给定一年内的对象持久性百分比<sup>1</sup>                                          | 至少 99.999999999%（11 个 9） | 至少 99.99999999999999%（16 个 9） |
+| 给定一年内的对象持久性百分比<sup>1</sup>                                          | 至少为 99.999999999% (11 9's) | 至少为 99.99999999999999% (16 9's) |
 | 支持的存储帐户类型<sup>2</sup>                                                                   | GPv2、GPv1、BlobStorage                | GPv2、GPv1、BlobStorage                     |
 | 读取请求的可用性 SLA<sup>1</sup>  | 至少为 99.9%（冷访问层为 99%） | GRS 至少为 99.9%（冷访问层为 99%）<br /><br />RA-GRS 至少为 99.99%（冷访问层为 99.9%） |
 | 写入请求的可用性 SLA<sup>1</sup>  | 至少为 99.9%（冷访问层为 99%） | 至少为 99.9%（冷访问层为 99%） |

@@ -17,10 +17,10 @@ origin.date: 04/01/2019
 ms.date: 02/24/2020
 ms.author: v-yeche
 ms.openlocfilehash: 0264ccdef3c726ee3734920160cf69586ccd48af
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79292295"
 ---
 # <a name="create-change-or-delete-a-virtual-network-peering"></a>创建、更改或删除虚拟网络对等互连
@@ -43,7 +43,7 @@ ms.locfileid: "79292295"
 
 <a name="create"></a>
 <a name="create-peering"></a>
-## <a name="create-a-peering"></a>创建对等互连
+## <a name="create-a-peering"></a><a name="create-a-peering"></a>创建对等互连
 
 创建对等互连之前，请熟悉要求和约束以及[所需权限](#permissions)。
 

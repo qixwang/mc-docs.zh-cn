@@ -10,10 +10,10 @@ ms.date: 6/4/2019
 ms.author: v-lingwu
 ms.subservice: alerts
 ms.openlocfilehash: ae76d2628e9e56b56181438a3e8dbf4a4ba630a7
-ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/17/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79452437"
 ---
 # <a name="create-an-action-group-with-a-resource-manager-template"></a>使用资源管理器模板创建操作组

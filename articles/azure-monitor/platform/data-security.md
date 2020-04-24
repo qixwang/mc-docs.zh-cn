@@ -9,10 +9,10 @@ origin.date: 03/04/2019
 ms.date: 05/04/2019
 ms.author: v-lingwu
 ms.openlocfilehash: 13f05762e62a53043d6fbaaff5c574acb1965b58
-ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/17/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79452346"
 ---
 # <a name="log-analytics-data-security"></a>Log Analytics 数据安全

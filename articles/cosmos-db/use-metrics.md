@@ -9,10 +9,10 @@ origin.date: 06/18/2019
 ms.date: 07/29/2019
 ms.reviewer: sngun
 ms.openlocfilehash: 283294d72e23c8de7e45da7343a441522dd9d71d
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79292350"
 ---
 <!--Verify sucessfully-->

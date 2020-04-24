@@ -12,10 +12,10 @@ origin.date: 01/21/2020
 ms.date: 3/16/2020
 ms.author: v-lingwu
 ms.openlocfilehash: ed56a9901d810f22db4c83900ed29d72cc251dca
-ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/17/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79452526"
 ---
 # <a name="azure-cli-samples-for-event-grid"></a>事件网格的 Azure CLI 示例

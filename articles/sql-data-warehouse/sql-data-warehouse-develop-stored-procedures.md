@@ -12,10 +12,10 @@ ms.date: 10/15/2018
 ms.author: v-jay
 ms.reviewer: igorstan
 ms.openlocfilehash: 2e5f585df2c8767d24c9a4db36db273e716b2a65
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79293311"
 ---
 # <a name="using-stored-procedures-in-sql-data-warehouse"></a>使用 SQL 数据仓库中的存储过程
@@ -72,7 +72,7 @@ SQL 数据仓库不允许通过 INSERT 语句使用存储过程的结果集。 �
 ## <a name="limitations"></a>限制
 SQL 数据仓库中未实现 Transact-SQL 存储过程的某些方面。
 
-它们具有以下特点：
+它们分别是：
 
 * 临时存储过程
 * 编号的存储过程
@@ -87,5 +87,5 @@ SQL 数据仓库中未实现 Transact-SQL 存储过程的某些方面。
 * return 语句
 
 ## <a name="next-steps"></a>后续步骤
-有关更多开发技巧，请参阅 [开发概述](sql-data-warehouse-overview-develop.md)。
+有关更多开发技巧，请参阅[开发概述](sql-data-warehouse-overview-develop.md)。
 

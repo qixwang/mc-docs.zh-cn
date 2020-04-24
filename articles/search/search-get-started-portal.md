@@ -10,10 +10,10 @@ ms.topic: quickstart
 origin.date: 02/10/2020
 ms.date: 03/16/2020
 ms.openlocfilehash: 366dfcde779f46048ec560e2353e139ee5066cfd
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79292839"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-the-azure-portal"></a>快速入门：在 Azure 门户中创建 Azure 认知搜索索引
@@ -44,7 +44,7 @@ ms.locfileid: "79292839"
 
 ![索引、索引器和数据源的列表](media/search-get-started-portal/tiles-indexers-datasources.png)
 
-## <a name="create-index"></a> 创建索引并加载数据
+## <a name="create-an-index-and-load-data"></a><a name="create-index"></a> 创建索引并加载数据
 
 搜索查询可循环访问[索引](search-what-is-an-index.md)，索引中包含可搜索数据、元数据，以及其他用于优化某些搜索行为的构造。 
 
@@ -133,7 +133,7 @@ ms.locfileid: "79292839"
 
 若要清楚地了解在索引设计过程中可以和不可以编辑哪些内容，请花点时间查看索引定义选项。 灰显的选项表示对应的值不可修改或删除。 
 
-## <a name="query-index"></a>使用搜索浏览器查询
+## <a name="query-using-search-explorer"></a><a name="query-index"></a>使用搜索浏览器查询
 
 我们继续。现在应已创建了一个可以使用内置[**搜索资源管理器**](search-explorer.md)查询页查询的搜索索引。 该页提供了一个搜索框，用于测试任意查询字符串。
 
@@ -176,7 +176,7 @@ ms.locfileid: "79292839"
 
 * **$top=10** 返回所有文档中排名最高的 10 个文档。 默认情况下，Azure 认知搜索返回前 50 个最佳匹配项。 可以通过 **$top** 增加或减少返回的结果。
 
-### <a name="filter-query"></a> 筛选查询
+### <a name="filter-the-query"></a><a name="filter-query"></a> 筛选查询
 
 追加 **$filter** 参数时，会将筛选器包括在搜索请求中。 
 
@@ -186,7 +186,7 @@ ms.locfileid: "79292839"
 
 * 筛选器语法是一种 OData 构造。 有关详细信息，请参阅 [Filter OData syntax](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search)（筛选器 OData 语法）。
 
-### <a name="facet-query"></a> 分面查询
+### <a name="facet-the-query"></a><a name="facet-query"></a> 分面查询
 
 分面筛选器包括在搜索请求中。 可以使用分面参数，返回与所提供分面值匹配的文档的聚合计数。
 
@@ -206,7 +206,7 @@ ms.locfileid: "79292839"
 * “评分”字段  为双精度浮点，将按精度值分组。 若要详细了解如何按间隔来分组（例如，“3 星评分”、“4 星评分”等），请参阅[如何在 Azure 认知搜索中实现分面导航](https://docs.azure.cn/search/search-faceted-navigation#filter-based-on-a-range)。
 
 
-### <a name="highlight-query"></a> 突出显示搜索结果
+### <a name="highlight-search-results"></a><a name="highlight-query"></a> 突出显示搜索结果
 
 搜索词突出显示是对与关键字匹配的文本设置的格式，表示在特定字段中找到的匹配项。 如果搜索词深藏在说明中，可以添加搜索词突出显示来方便找到这些词。
 
@@ -220,7 +220,7 @@ ms.locfileid: "79292839"
 
 * Azure 认知搜索支持 Lucene 和 Microsoft 提供的 56 种分析器。 Azure 认知搜索使用的默认分析器是标准的 Lucene 分析器。
 
-### <a name="fuzzy-search"></a> 试用模糊搜索
+### <a name="try-fuzzy-search"></a><a name="fuzzy-search"></a> 试用模糊搜索
 
 默认情况下，执行典型搜索时，如果拼错查询字词（例如，将“Seattle”错拼为“seatle”），则无法返回匹配项。  以下示例不会返回任何结果。
 
@@ -238,7 +238,7 @@ ms.locfileid: "79292839"
 
 有关完整查询分析器支持的查询方案的详细信息，请参阅 [Lucene query syntax in Azure Cognitive Search](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search)（Azure 认知搜索中的 Lucene 查询语法）。
 
-### <a name="geo-search"></a> 尝试地理空间搜索
+### <a name="try-geospatial-search"></a><a name="geo-search"></a> 尝试地理空间搜索
 
 对于包含坐标的字段，支持通过 [edm.GeographyPoint 数据类型](https://docs.microsoft.com/rest/api/searchservice/supported-data-types)执行地理空间搜索。 地域搜索是 [Filter OData syntax](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search)（筛选器 OData 语法）中指定的一种筛选器类型。
 

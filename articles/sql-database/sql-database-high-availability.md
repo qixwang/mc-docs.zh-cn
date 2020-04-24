@@ -13,10 +13,10 @@ ms.reviewer: carlrab, sashan
 origin.date: 10/14/2019
 ms.date: 12/16/2019
 ms.openlocfilehash: 13d2ae1c40729f6ec231fffe2bffebfbe39de5f9
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79291738"
 ---
 # <a name="high-availability-and-azure-sql-database"></a>高可用性和 Azure SQL 数据库

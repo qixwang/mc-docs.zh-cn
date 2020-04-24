@@ -9,10 +9,10 @@ origin.date: 09/19/2019
 ms.author: v-yiso
 ms.date: 12/02/2019
 ms.openlocfilehash: a94467597e3e710fa6bfbe6a602f2071ac73a0f6
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79291950"
 ---
 # <a name="expressroute-routing-requirements"></a>ExpressRoute 路由要求

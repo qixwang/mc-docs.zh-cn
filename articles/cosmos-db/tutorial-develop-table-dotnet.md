@@ -10,10 +10,10 @@ ms.topic: sample
 origin.date: 12/03/2019
 ms.date: 02/10/2020
 ms.openlocfilehash: 07df4850ce560dba37d01ddb3d796206dac878c8
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79291479"
 ---
 <!--Verify sucessfully-->
@@ -27,7 +27,7 @@ ms.locfileid: "79291479"
 
 本教程介绍了一个示例，展示如何将[适用于 .NET 的 Azure Cosmos DB 表库](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table)用于 Azure Cosmos DB 表 API 和 Azure 表存储方案。 必须使用特定于 Azure 服务的连接。 这些方案使用 C# 示例进行讨论，说明了如何创建表、插入/更新数据、查询数据和删除表。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要成功完成此示例，需要以下项：
 
@@ -45,7 +45,7 @@ ms.locfileid: "79291479"
 
 在 Visual Studio 中，创建新的 .NET 控制台应用程序。 以下步骤演示了如何在 Visual Studio 2019 中创建控制台应用程序。 可以在任意类型的 .NET 应用程序（包括 Azure 云服务或 Web 应用，以及桌面和移动应用程序）中使用 Azure Cosmos DB 表库。 为简单起见，我们在本指南中使用控制台应用程序。
 
-1. 选择“文件” > “新建” > “项目”    。
+1. 选择“文件” **“新建”** “项目” >    >   。
 
 1. 选择“控制台应用程序 (.NET Core)”，然后选择“下一个”   。
 
@@ -59,7 +59,7 @@ ms.locfileid: "79291479"
 
 要获取 NuGet 包，请执行以下步骤：
 
-1. 在“解决方案资源管理器”  中，右键单击自己的项目并选择“管理 NuGet 包”  。
+1. 在“解决方案资源管理器”  中，右键单击项目并选择“管理 NuGet 包”  。
 
 1. 联机搜索 [`Microsoft.Azure.Cosmos.Table`](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table)、[`Microsoft.Extensions.Configuration`](https://www.nuget.org/packages/Microsoft.Extensions.Configuration)、[`Microsoft.Extensions.Configuration.Json`](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.Json)、[`Microsoft.Extensions.Configuration.Binder`](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.Binder)，并选择“安装”以安装 Azure Cosmos DB 表库  。
 
@@ -150,7 +150,7 @@ ms.locfileid: "79291479"
 
 ## <a name="create-a-table"></a>创建表 
 
-[CloudTableClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.table.cloudtableclient?view=azure-dotnet) 类使你能够检索存储在表存储中的表和实体。 由于 Cosmos DB 表 API 帐户中没有任何表，请将 `CreateTableAsync` 方法添加到 Common.cs 类来创建表  ：
+[CloudTableClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.table.cloudtableclient?view=azure-dotnet) 类用于检索存储在表存储中的表和实体。 由于 Cosmos DB 表 API 帐户中没有任何表，请将 `CreateTableAsync` 方法添加到 Common.cs 类来创建表  ：
 
 ```csharp
 public static async Task<CloudTable> CreateTableAsync(string tableName)
@@ -290,7 +290,7 @@ public static async Task<CustomerEntity> RetrieveEntityUsingPointQueryAsync(Clou
     }
 ```
 
-## <a name="delete-an-entity"></a>删除条目
+## <a name="delete-an-entity"></a>删除实体
 
 在检索实体之后，可使用更新实体的相同演示模式轻松删除该实体。 以下代码检索并删除一个客户实体。 要删除实体，请将以下代码追加到“SamplesUtils.cs”文件  ： 
 

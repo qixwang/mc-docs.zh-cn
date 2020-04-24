@@ -16,10 +16,10 @@ ms.date: 12/04/2019
 ms.author: v-lingwu
 ms.custom: seodec18
 ms.openlocfilehash: a5a755cab0ac022e3a2f79938318d15f2d6dc5cb
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79292840"
 ---
 # <a name="batch-service-quotas-and-limits"></a>Batch 服务配额和限制
@@ -32,7 +32,7 @@ ms.locfileid: "79292840"
 
 如果打算在 Batch 中运行生产工作负荷，可能需要将一个或多个配额提高到默认值以上。 如果需要提高配额，可以免费提出在线 [客户支持请求](#increase-a-quota) 。
 
-## 资源配额 <a name="resource-quotas"></a>
+## <a name="resource-quotas"></a>资源配额 <a name="resource-quotas"></a>
 
 配额是一种信用限制，不附带容量保证。 如果有大规模的容量需求，请联系 Azure 支持。
 

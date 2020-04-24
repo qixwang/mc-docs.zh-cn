@@ -9,10 +9,10 @@ ms.date: 08/29/2019
 ms.author: v-lingwu
 ms.subservice: ''
 ms.openlocfilehash: 4db8f52159b00fa53a1d1f3f1ea7a0efd5f74ba6
-ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/17/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79452558"
 ---
 # <a name="metric-chart-examples"></a>指标图表示例 

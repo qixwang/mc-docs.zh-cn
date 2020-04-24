@@ -11,10 +11,10 @@ origin.date: 12/10/2019
 ms.date: 01/06/2020
 ms.author: v-jay
 ms.openlocfilehash: 728a1c0d3476ff8cb586e0d5b3ad5f1110b2a932
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79292324"
 ---
 # <a name="supported-file-formats-and-compression-codecs-in-azure-data-factory-legacy"></a>Azure 数据工厂（旧版）中支持的文件格式和压缩编解码器
@@ -444,7 +444,7 @@ ms.locfileid: "79292324"
 
 | 数据工厂临时数据类型 | Parquet 基元类型 | Parquet 原始类型（反序列化） | Parquet 原始类型（串行化） |
 |:--- |:--- |:--- |:--- |
-| 布尔 | 布尔 | 不适用 | 不适用 |
+| 布尔 | 布尔 | 不适用 | 空值 |
 | SByte | Int32 | Int8 | Int8 |
 | Byte | Int32 | UInt8 | Int16 |
 | Int16 | Int32 | Int16 | Int16 |
@@ -453,17 +453,17 @@ ms.locfileid: "79292324"
 | UInt32 | Int64 | UInt32 | Int64 |
 | Int64 | Int64 | Int64 | Int64 |
 | UInt64 | Int64/二进制 | UInt64 | 小数 |
-| Single | Float | 不适用 | 不适用 |
+| Single | Float | 不适用 | 空值 |
 | Double | Double | 不适用 | 不适用 |
 | 小数 | 二进制 | 小数 | 小数 |
 | String | 二进制 | Utf8 | Utf8 |
 | DateTime | Int96 | 不适用 | 不适用 |
-| TimeSpan | Int96 | 不适用 | 不适用 |
+| TimeSpan | Int96 | 空值 | 不适用 |
 | DateTimeOffset | Int96 | 不适用 | 不适用 |
-| ByteArray | 二进制 | 不适用 | 不适用 |
+| ByteArray | 二进制 | 不适用 | 空值 |
 | Guid | 二进制 | Utf8 | Utf8 |
 | Char | 二进制 | Utf8 | Utf8 |
-| CharArray | 不支持 | 不适用 | 不适用 |
+| CharArray | 不支持 | 空值 | 不适用 |
 
 ## <a name="orc-format-legacy"></a><a name="orc-format"></a> ORC 格式（旧版）
 

@@ -11,10 +11,10 @@ origin.date: 02/05/2020
 ms.date: 03/02/2020
 ms.author: v-yiso
 ms.openlocfilehash: 97669525a3df19a0f31777bbe07e60ffe061c2e8
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79292060"
 ---
 # <a name="manage-logs-for-an-hdinsight-cluster"></a>管理 HDInsight 群集的日志

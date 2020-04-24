@@ -10,10 +10,10 @@ ms.topic: conceptual
 origin.date: 05/07/2018
 ms.date: 06/21/2019
 ms.openlocfilehash: 74ccc5483dc3e5b593a810e41e0c3d6ebb2442ba
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79291690"
 ---
 # <a name="leverage-query-parallelization-in-azure-stream-analytics"></a>利用 Azure 流分析中的查询并行化

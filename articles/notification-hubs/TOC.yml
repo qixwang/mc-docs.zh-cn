@@ -4,7 +4,7 @@
   items:
     - name: 关于通知中心
       href: notification-hubs-push-notification-overview.md
-    - name: 与应用服务 Mobile Apps 集成
+    - name: 与应用服务移动应用集成
       href: notification-hubs-app-service.md
 - name: 快速入门
   expanded: true
@@ -76,7 +76,7 @@
           href: notification-hubs-templates-cross-platform-push-messages.md
     - name: 安全模型
       href: notification-hubs-push-notification-security.md
-- name: 操作指南
+- name: 操作方法指南
   items:
     - name: 更改定价层
       href: change-pricing-tier.md
@@ -132,11 +132,11 @@
       href: 'https://docs.microsoft.com/powershell/module/azurerm.notificationhubs'
     - name: REST API
       href: 'https://docs.microsoft.com/rest/api/notificationhubs'
-    - name: Resource Manager 模板
+    - name: 资源管理器模板
       href: 'https://docs.microsoft.com/azure/templates/microsoft.notificationhubs/allversions'
 - name: 资源
   items:
-    - name: 常见问题
+    - name: 常见问题解答
       href: notification-hubs-push-notification-faq.md
     - name: SDK
       href: notification-hubs-sdks.md
@@ -144,7 +144,7 @@
       href: 'https://www.azure.cn/pricing/details/notification-hubs/'
     - name: MSDN 论坛
       href: 'https://social.msdn.microsoft.com/Forums/zh-CN/home?forum=windowsazurezhchs'
-    - name: Stack Overflow
+    - name: 堆栈溢出
       href: 'https://stackoverflow.com/questions/tagged/azure-notificationhub'
     - name: 上市区域
       href: 'https://www.azure.cn/home/features/products-by-region'

@@ -9,15 +9,15 @@ origin.date: 05/21/2019
 ms.date: 05/21/2019
 ms.author: v-lingwu
 ms.openlocfilehash: 04f3abe61195a805f882e1018933172ab5e5f4f5
-ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/17/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79452328"
 ---
 # <a name="monitoring-data-locations-in-azure-monitor"></a>Azure Monitor 中的监视数据位置
 
-Azure Monitor 基于[日志](data-platform-logs.md)和[指标](data-platform-metrics.md)的[数据平台](data-platform.md)，如 [Azure Monitor 数据平台](data-platform.md)中所述。 但是，来自 Azure 资源的监视数据可能会写入其他位置，或者在它们复制到 Azure Monitor 之前，或者为了支持其他方案。 
+Azure Monitor 基于[日志](data-platform.md)和[指标](data-platform-logs.md)的[数据平台](data-platform-metrics.md)，如 [Azure Monitor 数据平台](data-platform.md)中所述。 但是，来自 Azure 资源的监视数据可能会写入其他位置，或者在它们复制到 Azure Monitor 之前，或者为了支持其他方案。 
 
 ## <a name="monitoring-data-locations"></a>监视数据位置
 

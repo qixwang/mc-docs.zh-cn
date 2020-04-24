@@ -8,10 +8,10 @@ origin.date: 03/14/2019
 ms.date: 12/04/2019
 ms.author: v-lingwu
 ms.openlocfilehash: 52c8a1a760b32e7abbf652f5280cb69d1814197e
-ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/17/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79452443"
 ---
 # <a name="azure-monitor-partner-integrations"></a>Azure 监视器合作伙伴集成
@@ -40,7 +40,7 @@ AppDynamics Application Performance Management (APM) 可让应用程序所有者
 
 ![Atlassian 徽标](./media/partners/atlassian.png)
 
-可针对 Azure Monitor 警报创建 JIRA 票证。
+可以在 Azure 监视器警报上创建 JIRA 票证。
 
 [查看相关文档。][atlassian-doc]
 
@@ -163,7 +163,7 @@ Microsoft Azure DSM 和 Microsoft Azure 事件中心协议可从 [IBM 支持网�
 
 ![ScienceLogic 徽标](./media/partners/sciencelogic.png)
 
-ScienceLogic 提供了下一代 IT 服务保证平台，以便在任何位置管理任何技术。 ScienceLogic 提供必要的规模、安全性、自动化和复原性，简化管理任务（管理 IT 资源、服务和应用程序）。 ScienceLogic 平台使用 Azure API 与 Microsoft Azure 交互。 可以通过 ScienceLogic 实时了解 Azure 服务和资源， 以便了解何时会出现问题并进行快速修正。 还可以将 Azure 与其他云、数据中心系统和服务一起进行管理。
+ScienceLogic 提供下一代 IT 服务保证平台，用于随时随地管理任何技术。 ScienceLogic 提供必要的规模、安全性、自动化和复原性，简化管理任务（管理 IT 资源、服务和应用程序）。 ScienceLogic 平台通过 Azure API 与 Microsoft Azure 配合。 可以通过 ScienceLogic 实时了解 Azure 服务和资源， 以便了解何时会出现问题并进行快速修正。 还可将 Azure 与其他云、数据中心系统以及服务一起管理。
 
 [了解详细信息。][sciencelogic-doc]
 

@@ -5,10 +5,10 @@ ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 03/03/2020
 ms.openlocfilehash: e0ddf5fe47a13e26b6496ed0dcafcf2e4447d81a
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79292591"
 ---
 # <a name="develop-azure-functions-using-visual-studio"></a>使用 Visual Studio 开发 Azure Functions  
@@ -27,11 +27,11 @@ Visual Studio 在开发函数时提供以下优势：
 
 除非另有说明，否则将演示 Visual Studio 2019 的过程和示例。 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 从 Visual Studio 2017 开始，Azure Functions Tools 包含在 Visual Studio 的 Azure 开发工作负荷中。 请确保在 Visual Studio 安装中包括 **Azure 开发**工作负荷。
 
-如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial)。
+如果没有 Azure 订阅，可在开始前创建一个 [试用帐户](https://www.azure.cn/pricing/1rmb-trial) 。
 
 所需的其他资源（例如 Azure 存储帐户）将在发布过程中在订阅中创建。
 
@@ -40,7 +40,7 @@ Visual Studio 在开发函数时提供以下优势：
 >
 > 使用 Visual Studio 2019 时，请跳过这些部分。
 
-### <a name="check-your-tools-version"></a>在 Visual Studio 2017 中检查工具版本
+### <a name="check-your-tools-version-in-visual-studio-2017"></a><a name="check-your-tools-version"></a>在 Visual Studio 2017 中检查工具版本
 
 1. 在“工具”菜单中，选择“扩展和更新”   。 展开“已安装”   > “工具”  ，选择“Azure Functions 和 Web 作业工具”  。
 
@@ -90,11 +90,11 @@ Visual Studio 在开发函数时提供以下优势：
 
 ## <a name="configure-the-project-for-local-development"></a>为本地开发配置项目
 
-Functions 运行时在内部使用 Azure 存储帐户。 对于除 HTTP 和 Webhook 以外的所有触发器类型，必须将 **Values.AzureWebJobsStorage** 键设置为有效的 Azure 存储帐户连接字符串。 函数应用还可以在项目所需的 AzureWebJobsStorage 连接设置中使用 [Azure 存储模拟器](../storage/common/storage-use-emulator.md)  。 若要使用模拟器，请将 AzureWebJobsStorage 的值设置为 `UseDevelopmentStorage=true`  。 在部署之前，请将此设置更改为实际的存储帐户连接字符串。
+Functions 运行时在内部使用 Azure 存储帐户。 对于除 HTTP 和 Webhook 以外的所有触发器类型，必须将 **Values.AzureWebJobsStorage** 键设置为有效的 Azure 存储帐户连接字符串。 函数应用还可以在项目所需的 AzureWebJobsStorage 连接设置中使用 [Azure 存储模拟器](../storage/common/storage-use-emulator.md)  。 若要使用模拟器，请将 AzureWebJobsStorage 的值设置为  `UseDevelopmentStorage=true`。 在部署之前，请将此设置更改为实际的存储帐户连接字符串。
 
 若要设置存储帐户连接字符串，请执行以下操作：
 
-1. 在 Visual Studio 中，打开“Cloud Explorer”，展开“存储帐户” >  你的存储帐户，然后在“属性”  选项卡中复制**主连接字符串**值。   
+1. 在 Visual Studio 中，打开“Cloud Explorer”，展开“存储帐户” **你的存储帐户，然后在“属性”** **选项卡中复制**主连接字符串 > 值。   
 
 2. 在项目内，打开 local.settings.json 项目文件，并将“AzureWebJobsStorage”键的值设置为复制的连接字符串。 
 
@@ -148,7 +148,7 @@ Functions 运行时在内部使用 Azure 存储帐户。 对于除 HTTP 和 Webh
 
 2. 为特定绑定添加适当的 NuGet 扩展包。 有关详细信息，请参阅“触发器和绑定”一文中的[使用 Visual Studio 进行本地 C# 开发](./functions-bindings-register.md#local-csharp)。 特定于绑定的 NuGet 包要求位于绑定的参考文章中。 例如，可以在[事件中心绑定参考文章](functions-bindings-event-hubs.md)中找到事件中心触发器的包要求。
 
-3. 如果有绑定需要的应用设置，请将其添加到[本地设置文件](functions-run-local.md#local-settings-file)中的 **Values** 集合。 当函数在本地运行时，会使用这些值。 当函数在 Azure 的函数应用中运行时，会使用[函数应用设置](#function-app-settings)。
+3. 如果有绑定需要的应用设置，请将其添加到**本地设置文件**中的 [Values](functions-run-local.md#local-settings-file) 集合。 当函数在本地运行时，会使用这些值。 当函数在 Azure 的函数应用中运行时，会使用[函数应用设置](#function-app-settings)。
 
 4. 将适当的绑定属性添加到方法签名。 在以下示例中，一条队列消息触发了该函数，而输出绑定则创建了一条新的队列消息，在不同的队列中使用了相同的文本。
 

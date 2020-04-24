@@ -13,10 +13,10 @@ ms.reviewer: GeneMi, vanto
 origin.date: 10/11/2019
 ms.date: 03/16/2020
 ms.openlocfilehash: 060a2e528b30be7bae5ce04047d9245a79e1456e
-ms.sourcegitcommit: dc862610e2169c1fce6fb0ae9eb7dd7567f86a0a
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79293913"
 ---
 # <a name="connect-to-azure-sql-database-with-azure-multi-factor-authentication"></a>使用 Azure 多重身份验证连接到 Azure SQL 数据库

@@ -17,10 +17,10 @@ origin.date: 01/21/2020
 ms.date: 03/23/2020
 ms.author: v-yiso
 ms.openlocfilehash: 170049decaa61e91da3d26bd29985a0d02cf9472
-ms.sourcegitcommit: 32997a7d7585deaeb0ab7b8f928d397b18b343fa
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79295960"
 ---
 # <a name="configure-the-os-patching-schedule-for-linux-based-hdinsight-clusters"></a>为基于 Linux 的 HDInsight 群集配置 OS 修补计划 
@@ -71,7 +71,7 @@ Run 'do-release-upgrade' to upgrade it
 | 要执行的重启类型 | 0、1 或 2 | 值为 0 表示禁用重启。 值为 1 表示启用计划重启，为 2 表示启用即时重启。 如果未提供任何参数，则默认值为 0。 用户必须更改输入参数 1 才能输入参数 2。 |
 
 > [!NOTE]
-> 在将某个脚本应用到现有群集后，必须将其标记为持久性脚本。 否则，任何通过缩放操作创建的新节点都会使用默认的修补计划。 如果在群集创建过程中应用该脚本，则其会自动持久化。
+> 在将某个脚本应用到现有群集后，必须将其标记为持久性脚本。 否则，通过缩放操作创建的任何新节点都将使用默认修补计划。 如果在群集创建过程中应用该脚本，则其会自动持久化。
 
 ## <a name="next-steps"></a>后续步骤
 

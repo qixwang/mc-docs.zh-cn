@@ -10,10 +10,10 @@ ms.date: 08/22/2019
 ms.author: v-lingwu
 ms.custom: mvc, sec-javascript-october2019
 ms.openlocfilehash: ef0824763d599a86a48f12f608f5afa36b5cbc22
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79293406"
 ---
 # <a name="collect-data-from-an-azure-virtual-machine-with-azure-monitor"></a>使用 Azure Monitor 从 Azure 虚拟机收集数据
@@ -76,7 +76,7 @@ Azure Monitor 可以从你为长期分析和报告指定的 Windows 事件日志
 
 2. 选择“数据”  ，然后选择“Windows 事件日志”  。
 
-3. 可通过键入日志名称添加事件日志。  键入“System”，然后选择加号 ( **+** )。 
+3. 可通过键入日志名称添加事件日志。  键入“System”，然后选择加号 (  **)。+**
 
 4. 在表中，选中严重性“错误”  和“警告”  。
 
@@ -96,7 +96,7 @@ Azure Monitor 可以从你为长期分析和报告指定的 Windows 事件日志
 
 1. 选择“Syslog”  。  
 
-2. 可通过键入日志名称添加事件日志。  键入“Syslog”，然后选择加号 ( **+** )。   
+2. 可通过键入日志名称添加事件日志。  键入“Syslog”，然后选择加号 (  **)。+**  
 
 3. 在表中，取消选中严重性“信息”  、“通知”  和“调试”  。 
 

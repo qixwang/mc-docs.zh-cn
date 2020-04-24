@@ -9,10 +9,10 @@ origin.date: 10/22/2019
 ms.author: v-yiso
 ms.date: 3/16/2020
 ms.openlocfilehash: 6b6512c6c08f51e48f22f5062f7641837c0eadfd
-ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/17/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79452296"
 ---
 # <a name="dead-letter-and-retry-policies"></a>死信与重试策略

@@ -8,10 +8,10 @@ origin.date: 05/30/2019
 ms.date: 03/13/2020
 ms.author: v-lingwu
 ms.openlocfilehash: 840cf7a1227a6801b5f16045edeacdcdb949126d
-ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/17/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79452509"
 ---
 # <a name="manage-alert-and-smart-group-states"></a>管理警报和智能组状态
@@ -42,7 +42,7 @@ Azure Monitor 中的警报现在具有[警报状态和监视条件](https://aka.
     1. 可在“智能组详细信息”页中单击“更改状态”        
     ![监视](./media/alerts-managing-alert-states/state-sg-details.jpg)
 1. 单击“更改状态”后，随即打开弹出窗口，可在其中选择状态（“新建/已确认/已关闭”）并在必要时输入注释。 
-![监视](./media/alerts-managing-alert-states/state-sg-change.jpg)
+![Monitoring](./media/alerts-managing-alert-states/state-sg-change.jpg)
    > [!NOTE]
    >  更改智能组状态不会更改各个成员警报的状态。
 

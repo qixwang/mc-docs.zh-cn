@@ -9,10 +9,10 @@ origin.date: 08/23/2018
 ms.author: v-yiso
 ms.date: 10/08/2018
 ms.openlocfilehash: e35b43b7f7a5fd1a7aaaec8116b67ff1aad102e6
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79293253"
 ---
 # <a name="create-an-iot-hub-using-the-azure-cli"></a>使用 Azure CLI 创建 IoT 中心
@@ -21,9 +21,9 @@ ms.locfileid: "79293253"
 
 本文介绍如何使用 Azure CLI 创建 IoT 中心。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
-若要完成本操作说明，需要 Azure 订阅。 如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial)。
+若要完成本操作说明，需要 Azure 订阅。 如果没有 Azure 订阅，可在开始前创建一个 [试用帐户](https://www.azure.cn/pricing/1rmb-trial) 。
 
 
 ## <a name="sign-in-and-set-your-azure-account"></a>登录并设置 Azure 帐户

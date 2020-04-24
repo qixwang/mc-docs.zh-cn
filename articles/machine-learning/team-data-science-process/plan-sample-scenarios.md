@@ -12,10 +12,10 @@ ms.date: 11/13/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 8b980e5a2322da3965a892c85d1275079fbfb6a8
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79292215"
 ---
 # <a name="scenarios-for-advanced-analytics-in-azure-machine-learning"></a>用于 Azure 机器学习中高级分析的方案
@@ -35,7 +35,7 @@ ms.locfileid: "79292215"
 > 
 > 
 
-## <a name="smalllocal"></a>场景 \#1：本地文件中的小型到中型表格数据集
+## <a name="scenario-1-small-to-medium-tabular-dataset-in-a-local-files"></a><a name="smalllocal"></a>场景 \#1：本地文件中的小型到中型表格数据集
 ![小型到中型本地文件][1]
 
 #### <a name="additional-azure-resources-none"></a>其他 Azure 资源：无
@@ -43,7 +43,7 @@ ms.locfileid: "79292215"
 1. 上传数据集。
 1. 开始使用上传的数据集生成 Azure 机器学习实验流。
 
-## <a name="smalllocalprocess"></a>场景 \#2：需要处理的本地文件的小型到中型数据集
+## <a name="scenario-2-small-to-medium-dataset-of-local-files-that-require-processing"></a><a name="smalllocalprocess"></a>场景 \#2：需要处理的本地文件的小型到中型数据集
 ![需要处理的小型到中型本地文件][2]
 
 #### <a name="additional-azure-resources-azure-virtual-machine-ipython-notebook-server"></a>其他 Azure 资源：Azure 虚拟机（IPython Notebook 服务器）
@@ -56,7 +56,7 @@ ms.locfileid: "79292215"
 1. 使用[导入数据][import-data]模块从 Azure blob 中读取数据。
 1. 开始使用引入的数据集生成 Azure 机器学习实验流。
 
-## <a name="largelocal"></a>场景 \#3：本地文件针对 Azure Blob 的大型数据集
+## <a name="scenario-3-large-dataset-of-local-files-targeting-azure-blobs"></a><a name="largelocal"></a>场景 \#3：本地文件针对 Azure Blob 的大型数据集
 ![大型本地文件][3]
 
 #### <a name="additional-azure-resources-azure-virtual-machine-ipython-notebook-server"></a>其他 Azure 资源：Azure 虚拟机（IPython Notebook 服务器）
@@ -71,7 +71,7 @@ ms.locfileid: "79292215"
 1. 使用[导入数据][import-data]模块从 Azure blob 中读取数据。
 1. 开始使用引入的数据集生成 Azure 机器学习实验流。
 
-## <a name="smalllocaltodb"></a>场景 \#4：本地文件中针对 Azure 虚拟机中 SQL Server 的小型到中型数据集
+## <a name="scenario-4-small-to-medium-dataset-of-local-files-targeting-sql-server-in-an-azure-virtual-machine"></a><a name="smalllocaltodb"></a>场景 \#4：本地文件中针对 Azure 虚拟机中 SQL Server 的小型到中型数据集
 ![Azure 中 SQL DB 的小型到中型本地文件][4]
 
 #### <a name="additional-azure-resources-azure-virtual-machine-sql-server--ipython-notebook-server"></a>其他 Azure 资源：Azure 虚拟机（SQL Server/IPython Notebook 服务器）
@@ -101,7 +101,7 @@ ms.locfileid: "79292215"
 1. 使用[导入数据][import-data]模块直接从 SQL Server 中读取数据。 直接在[导入数据][import-data]查询中粘贴必要的查询，该查询可提取字段、创建特征并根据需要对数据进行采样。
 1. 开始使用引入的数据集生成 Azure 机器学习实验流。
 
-## <a name="largelocaltodb"></a>场景 \#5：本地文件中针对 Azure VM 中 SQL Server 的大型数据集
+## <a name="scenario-5-large-dataset-in-a-local-files-target-sql-server-in-azure-vm"></a><a name="largelocaltodb"></a>场景 \#5：本地文件中针对 Azure VM 中 SQL Server 的大型数据集
 ![Azure 中 SQL DB 的大型本地文件][5]
 
 #### <a name="additional-azure-resources-azure-virtual-machine-sql-server--ipython-notebook-server"></a>其他 Azure 资源：Azure 虚拟机（SQL Server/IPython Notebook 服务器）
@@ -142,7 +142,7 @@ ms.locfileid: "79292215"
 1. 使用[导入数据][import-data]模块直接从 SQL Server 中读取数据。 直接在[导入数据][import-data]查询中粘贴必要的查询，该查询可提取字段、创建特征并根据需要对数据进行采样。
 1. 开始使用上传的数据集对 Azure 机器学习实验流进行采样
 
-## <a name="largedbtodb"></a>场景 \#6：本地 SQL Server 数据库中针对 Azure 虚拟机中 SQL Server 的大型数据集
+## <a name="scenario-6-large-dataset-in-a-sql-server-database-on-premises-targeting-sql-server-in-an-azure-virtual-machine"></a><a name="largedbtodb"></a>场景 \#6：本地 SQL Server 数据库中针对 Azure 虚拟机中 SQL Server 的大型数据集
 ![Azure 中 SQL DB 的本地大型 SQL DB][6]
 
 #### <a name="additional-azure-resources-azure-virtual-machine-sql-server--ipython-notebook-server"></a>其他 Azure 资源：Azure 虚拟机（SQL Server/IPython Notebook 服务器）
@@ -190,7 +190,7 @@ ms.locfileid: "79292215"
 
 [通过分离和附加来移动数据库 (Transact-SQL)](https://technet.microsoft.com/library/ms187858\(v=sql.110\).aspx)
 
-## <a name="largedbtohive"></a>场景 \#7：本地文件中针对 Azure HDInsight Hadoop 群集中 Hive 数据库的大数据
+## <a name="scenario-7-big-data-in-local-files-target-hive-database-in-azure-hdinsight-hadoop-clusters"></a><a name="largedbtohive"></a>场景 \#7：本地文件中针对 Azure HDInsight Hadoop 群集中 Hive 数据库的大数据
 ![本地目标 Hive 中的大数据][9]
 
 #### <a name="additional-azure-resources-azure-hdinsight-hadoop-cluster-and-azure-virtual-machine-ipython-notebook-server"></a>其他 Azure 资源：Azure HDInsight Hadoop 群集和 Azure 虚拟机（IPython Notebook 服务器）
@@ -234,7 +234,7 @@ ms.locfileid: "79292215"
 1. 使用[导入数据][import-data]模块直接从 `Hive Queries` 中读取数据。 直接在[导入数据][import-data]查询中粘贴必要的查询，该查询可提取字段、创建特征并根据需要对数据进行采样。
 1. 开始使用上传的数据集对 Azure 机器学习实验流进行采样。
 
-## <a name="decisiontree"></a>用于方案选择的决策树
+## <a name="decision-tree-for-scenario-selection"></a><a name="decisiontree"></a>用于方案选择的决策树
 ---
 下面的图表总结了上述的方案以及让你采用每个详细方案的高级分析流程和技术选择。 请注意，数据处理、浏览、特征工程和采样可能会出现在一个或多个方法/环境中（在源、中间和/或目标环境中），并且可能会根据需要以迭代方式进行。 此图只用于列举某些可能流，并不提供详尽的枚举。
 

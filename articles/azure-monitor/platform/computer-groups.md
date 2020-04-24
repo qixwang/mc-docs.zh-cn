@@ -9,10 +9,10 @@ origin.date: 02/05/2019
 ms.date: 11/04/2019
 ms.author: v-lingwu
 ms.openlocfilehash: e2ef06296e3daf783518de36a74bfcbd109762b9
-ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/17/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79452523"
 ---
 # <a name="computer-groups-in-azure-monitor-log-queries"></a>Azure Monitor 日志查询中的计算机组
@@ -48,11 +48,11 @@ ms.locfileid: "79452523"
 
 下表介绍了用于定义计算机组的属性。
 
-| 属性 | 说明 |
+| properties | 说明 |
 |:---|:---|
 | 名称   | 要在门户中显示的查询名称。 |
 | 函数别名 | 查询中用于标识计算机组的唯一别名。 |
-| Category       | 用于在门户中对查询进行组织的类别。 |
+| 类别       | 用于在门户中对查询进行组织的类别。 |
 
 
 ### <a name="active-directory"></a>Active Directory
@@ -120,7 +120,7 @@ ms.locfileid: "79452523"
 ## <a name="computer-group-records"></a>计算机组记录
 会在通过 Active Directory 或 WSUS 创建的每个计算机组成员身份的 Log Analytics 工作区中创建记录。  这些记录的类型为 **ComputerGroup**，并且具有下表中的属性。  不会基于日志查询为计算机组创建记录。
 
-| 属性 | 说明 |
+| properties | 说明 |
 |:--- |:--- |
 | `Type` |*ComputerGroup* |
 | `SourceSystem` |*SourceSystem* |

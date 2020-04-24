@@ -1,6 +1,6 @@
 ---
 title: Azure 上的 Kubernetes 教程 - 更新应用程序
-description: 本 Azure Kubernetes 服务 (AKS) 教程介绍如何使用新版应用程序代码更新 AKS 中的现有应用程序部署。
+description: 本 Azure Kubernetes 服务 (AKS) 教程介绍如何使用新版应用程序代码将现有应用程序部署更新到 AKS。
 services: container-service
 ms.topic: tutorial
 origin.date: 12/19/2018
@@ -8,25 +8,25 @@ ms.date: 03/09/2020
 ms.author: v-yeche
 ms.custom: mvc
 ms.openlocfilehash: 15e30b3cb391f790d3ee69b8232be567db5b14ca
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79290852"
 ---
-# <a name="tutorial-update-an-application-in-azure-kubernetes-service-aks"></a>教程：在 Azure Kubernetes 服务 (AKS) 中更新应用程序。
+# <a name="tutorial-update-an-application-in-azure-kubernetes-service-aks"></a>教程：在 Azure Kubernetes 服务 (AKS) 中更新应用程序
 
 在 Kubernetes 中部署应用程序后，可以指定新的容器映像或映像版本，从而更新应用程序。 更新分阶段进行，因此，只有一部分部署会同时更新。 借助这种暂存更新，可以让应用程序在更新期间继续运行。 如果发生部署故障，还可以利用它的回滚机制。
 
-在本教程的第 6 部分（共 7 部分），便完成了对 Azure Vote 应用示例的更新。 你将学习如何执行以下操作：
+在本教程的第 6 部分（共 7 部分），便完成了对 Azure Vote 应用示例的更新。 学习如何：
 
 > [!div class="checklist"]
 > * 更新前端应用程序代码
 > * 创建更新的容器映像
-> * 将容器映像推送到 Azure 容器注册表
+> * 向 Azure 容器注册表推送容器映像
 > * 部署更新的容器映像
 
-## <a name="before-you-begin"></a>准备阶段
+## <a name="before-you-begin"></a>开始之前
 
 上一教程中，应用程序已打包到容器映像中。 该映像已上传到 Azure容器注册表，同时，你创建了 AKS 群集。 然后，应用程序部署到了 AKS 群集。
 
@@ -36,7 +36,7 @@ ms.locfileid: "79290852"
 
 ## <a name="update-an-application"></a>更新应用程序
 
-让我们对示例应用程序进行更改，然后更新已部署到 AKS 群集的版本。 确保在克隆的 *azure-voting-app-redis* 目录中操作。 可在 *azure-vote* 目录中找到示例应用程序的源代码。 使用编辑器（例如 `vi`）打开 *config_file.cfg* 文件：
+让我们更改示例应用程序，然后更新已部署到 AKS 群集的版本。 确保在克隆的 *azure-voting-app-redis* 目录中操作。 可在 *azure-vote* 目录中找到示例应用程序的源代码。 使用编辑器（例如 *）打开* config_file.cfg`vi` 文件：
 
 ```console
 vi azure-vote/azure-vote/config_file.cfg
@@ -64,7 +64,7 @@ docker-compose up --build -d
 
 ## <a name="test-the-application-locally"></a>在本地测试应用程序
 
-若要验证更新后的容器映像是否会显示所做的更改，请打开本地 Web 浏览器并访问 `http://localhost:8080`。
+若要验证已更新的容器映像是否显示所做的更改，请打开一个本地 Web 浏览器并访问 `http://localhost:8080`。
 
 ![Azure 上的 Kubernetes 群集映像](media/container-service-kubernetes-tutorials/vote-app-updated.png)
 
@@ -72,7 +72,7 @@ docker-compose up --build -d
 
 ## <a name="tag-and-push-the-image"></a>标记并推送映像
 
-若要正确使用更新的映像，请使用 ACR 注册表的登录服务器名称标记 *azure-vote-front* 映像。 运行 [az acr list](https://docs.azure.cn/cli/acr?view=azure-cli-latest#az-acr-list) 命令获取登录服务器名称：
+若要正确使用已更新的映像，请使用 ACR 注册表的登录服务器名称标记 *azure-vote-front* 映像。 运行 [az acr list](https://docs.azure.cn/cli/acr?view=azure-cli-latest#az-acr-list) 命令，获取登录服务器名称：
 
 ```azurecli
 az acr list --resource-group myResourceGroup --query "[].{acrLoginServer:loginServer}" --output table
@@ -87,7 +87,7 @@ docker tag azure-vote-front <acrLoginServer>/azure-vote-front:v2
 现在，请使用 [docker push][docker-push] 将映像上传到注册表。 将 `<acrLoginServer>` 替换为 ACR 登录服务器名称。
 
 > [!NOTE]
-> 如果在推送到 ACR 注册表时遇到问题，请确保你仍已登录。 使用在 [创建 Azure 容器注册表](tutorial-kubernetes-prepare-acr.md#create-an-azure-container-registry)步骤中创建的 Azure 容器注册表的名称运行 [az acr login][az-acr-login] 命令。 例如，`az acr login --name <azure container registry name>`。
+> 如果在推送到 ACR 注册表时遇到问题，请确保你仍已登录。 使用在 [创建 Azure 容器注册表][az-acr-login]步骤中创建的 Azure 容器注册表的名称运行 [az acr login](tutorial-kubernetes-prepare-acr.md#create-an-azure-container-registry) 命令。 例如，`az acr login --name <azure container registry name>` 。
 
 ```console
 docker push <acrLoginServer>/azure-vote-front:v2
@@ -125,7 +125,7 @@ kubectl set image deployment azure-vote-front azure-vote-front=<acrLoginServer>/
 kubectl get pods
 ```
 
-以下示例输出显示了部署过程中正在终止的 pod 以及正在运行的新实例：
+以下示例输出显示，在部署进行时，Pod 正在终止，新实例正在运行：
 
 ```
 $ kubectl get pods
@@ -151,15 +151,15 @@ kubectl get service azure-vote-front
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，你更新了一个应用程序并向 AKS 群集推出了此更新。 你已了解如何：
+在本教程中，你更新了一个应用程序并向 AKS 群集推出了此更新。 你已了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 更新前端应用程序代码
 > * 创建更新的容器映像
-> * 将容器映像推送到 Azure 容器注册表
+> * 向 Azure 容器注册表推送容器映像
 > * 部署更新的容器映像
 
-继续学习下一篇教程，了解如何将 AKS 群集升级到新版 Kubernetes。
+请继续学习下一个教程，了解如何将 AKS 群集升级到新版 Kubernetes。
 
 > [!div class="nextstepaction"]
 > [升级 Kubernetes][aks-tutorial-upgrade]

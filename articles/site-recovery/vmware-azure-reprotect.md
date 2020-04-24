@@ -9,17 +9,17 @@ origin.date: 12/17/2019
 ms.date: 01/13/2020
 ms.author: v-yeche
 ms.openlocfilehash: f98452124059cd5946e6cac6ac3e1ef29ed82be6
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79291340"
 ---
-# <a name="reprotect-from-azure-to-on-premises"></a>从 Azure 重新保护到本地
+# <a name="reprotect-from-azure-to-on-premises"></a>从 Azure 到本地进行重新保护
 
 将本地 VMware VM 或物理服务器[故障转移](site-recovery-failover.md)到 Azure 后，故障回复到本地站点的第一步是重新保护故障转移期间创建的 Azure VM。 本文介绍如何执行此操作。 
 
-## <a name="before-you-begin"></a>准备阶段
+## <a name="before-you-begin"></a>开始之前
 
 1. 按照[本文](vmware-azure-prepare-failback.md)的步骤，为重新保护和故障回复做好准备，包括在 Azure 中设置进程服务器，以及在本地主目标服务器中设置站点到站点 VPN 或 ExpressRoute 专用对等互连，以进行故障回复。
 2. 请确保本地配置服务器正在运行并已连接到 Azure。 在故障转移到 Azure 的过程中，本地站点可能无法访问，因此配置服务器可能不可用或关闭。 故障回复期间，VM 必须位于配置服务器数据库中。 否则，故障回复不会成功。
@@ -51,7 +51,7 @@ ms.locfileid: "79291340"
 
 - 故障转移后，在 Azure 中启动 VM 后，会留出一段时间让代理重新注册到配置服务器（最多 15 分钟）。 在此期间，将无法进行重新保护并会返回一条错误消息，指出未安装代理。 如果发生这种情况，请等待几分钟，然后重新保护。
 - 如果要将 Azure VM 故障回复到现有本地 VM，请使用读/写访问权限将本地 VM 的数据存储装载到主目标服务器的 ESXi 主机上。
-- 如果要故障回复到备用位置（例如，如果本地 VM 不存在），请选择针对主目标服务器配置的保留驱动器和数据存储。 故障回复到本地站点时，故障回复保护计划中的 VMware 虚拟机会使用与主目标服务器相同的数据存储。 然后，将在 vCenter 中创建新 VM。
+- 如果要故障回复到备用位置（例如，如果本地 VM 不存在），请选择针对主目标服务器配置的保留驱动器和数据存储。 故障回复到本地站点时，故障回复保护计划中的 VMware 虚拟机将使用与主目标服务器相同的数据存储。 然后，将在 vCenter 中创建新 VM。
 
 按如下所述启用重新保护：
 
@@ -60,12 +60,12 @@ ms.locfileid: "79291340"
 3. 在“主目标服务器”和“进程服务器”中，选择本地主目标服务器和进程服务器。    
 4. 对于“数据存储”，选择要将本地磁盘恢复到的数据存储。  删除本地虚拟机后，如果需要创建新磁盘，可使用此选项。 如果磁盘已存在，则会忽略此选项。 仍需指定一个值。
 5. 选择保留驱动器。
-6. 会自动选择故障回复策略。
+6. 将自动选择故障回复策略。
 7. 选择“确定”开始重新保护。 
 
     ![“重新保护”对话框](./media/vmware-azure-reprotect/reprotectinputs.png)
 
-8. 一个作业会开始将 Azure VM 复制到本地站点。 可以在“作业”  选项卡上跟踪进度。
+8. 一个作业会开始将 Azure VM 复制到本地站点。 可以在“**作业**”选项卡上跟踪进度。
     - 重新保护成功后，VM 进入受保护状态。
     - 重新保护期间，本地 VM 将关闭。 这有助于确保复制期间的数据一致性。
     - 重新保护完成后，请勿打开本地 VM。

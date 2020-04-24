@@ -9,10 +9,10 @@ ms.author: v-jay
 ms.reviewer: wamota
 ms.lastreviewed: 12/11/2019
 ms.openlocfilehash: b452034a152394b175da5f483372d71b379a5274
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79291448"
 ---
 # <a name="publish-azure-stack-hub-services-in-your-datacenter"></a>在数据中心发布 Azure Stack Hub 服务 
@@ -50,7 +50,7 @@ SSL 流量拦截[不受支持](azure-stack-firewall.md#ssl-interception)，并�
 |Azure 资源管理器（管理员）|Adminmanagement. *&lt;region>.&lt;fqdn>*|HTTPS|443|
 |门户（用户）|Portal. *&lt;region>.&lt;fqdn>*|HTTPS|443|
 |Azure 资源管理器（用户）|Management. *&lt;region>.&lt;fqdn>*|HTTPS|443|
-|Graph|Graph. *&lt;region>.&lt;fqdn>*|HTTPS|443|
+|图形|Graph. *&lt;region>.&lt;fqdn>*|HTTPS|443|
 |证书吊销列表|Crl. *&lt;region>.&lt;fqdn>*|HTTP|80|
 |DNS|&#42;. *&lt;region>.&lt;fqdn>*|TCP 和 UDP|53|
 |Hosting | *.hosting.\<region>.\<fqdn> | HTTPS | 443 |

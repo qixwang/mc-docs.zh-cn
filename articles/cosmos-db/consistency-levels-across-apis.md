@@ -9,10 +9,10 @@ origin.date: 07/23/2019
 ms.date: 01/20/2020
 ms.reviewer: sngun
 ms.openlocfilehash: 70cabbbf3c9abb7e06d196910f95b1014d02d908
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79292947"
 ---
 # <a name="consistency-levels-and-azure-cosmos-db-apis"></a>一致性级别和 Azure Cosmos DB API
@@ -60,7 +60,7 @@ Azure Cosmos DB 为常用数据库提供对与线路协议兼容的 API 的本�
 详细了解 Azure Cosmos DB API 与开源 API 之间的一致性级别和兼容性。 请参阅以下文章：
 
 * [各种一致性级别的可用性和性能权衡](consistency-levels-tradeoffs.md)
-* [Azure Cosmos DB 的用于 MongoDB 的 API 支持的 MongoDB 功能](mongodb-feature-support.md)
+* [Azure Cosmos DB 的 API for MongoDB 支持的 MongoDB 功能](mongodb-feature-support.md)
 * [Azure Cosmos DB Cassandra API 支持的 Apache Cassandra 功能](cassandra-support.md)
 
 <!-- Update_Description: update meta properties, wording update -->

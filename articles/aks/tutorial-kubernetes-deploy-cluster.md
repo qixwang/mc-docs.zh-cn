@@ -8,15 +8,15 @@ ms.date: 03/09/2020
 ms.author: v-yeche
 ms.custom: mvc
 ms.openlocfilehash: cf58ea70bbfc9b8e2ad66c101f088da953b5fef8
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79290777"
 ---
 # <a name="tutorial-deploy-an-azure-kubernetes-service-aks-cluster"></a>教程：部署 Azure Kubernetes 服务 (AKS) 群集
 
-Kubernetes 为容器化应用程序提供一个分布式平台。 使用 AKS 可以快速创建生产就绪的 Kubernetes 群集。 在本教程的第 3 部分（共 7 部分）中，在 AKS 中部署了 Kubernetes 群集。 你将学习如何执行以下操作：
+Kubernetes 为容器化应用程序提供一个分布式平台。 使用 AKS 可以快速创建生产就绪的 Kubernetes 群集。 在本教程的第 3 部分（共 7 部分）中，在 AKS 中部署了 Kubernetes 群集。 学习如何：
 
 > [!div class="checklist"]
 > * 部署可对 Azure 容器注册表进行身份验证的 Kubernetes AKS 群集
@@ -25,7 +25,7 @@ Kubernetes 为容器化应用程序提供一个分布式平台。 使用 AKS 可
 
 在其他教程中，Azure 投票应用程序将部署到群集，并进行缩放和更新。
 
-## <a name="before-you-begin"></a>准备阶段
+## <a name="before-you-begin"></a>开始之前
 
 在以前的教程中，已创建容器映像并上传到 Azure 容器注册表实例。 如果尚未完成这些步骤，并且想要逐一完成，请先参阅[教程 1 - 创建容器映像][aks-tutorial-prepare-app]。
 
@@ -100,7 +100,7 @@ aks-nodepool1-12345678-0   Ready    agent   32m   v1.14.8
 
 ## <a name="next-steps"></a>后续步骤
 
-本教程在 AKS 中部署了一个 Kubernetes 群集并将 `kubectl` 配置为连接到该群集。 你已了解如何：
+本教程在 AKS 中部署了一个 Kubernetes 群集并将 `kubectl` 配置为连接到该群集。 你已了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 部署可对 Azure 容器注册表进行身份验证的 Kubernetes AKS 群集

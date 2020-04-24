@@ -7,10 +7,10 @@ origin.date: 12/02/2019
 ms.date: 12/30/2019
 ms.author: v-lingwu
 ms.openlocfilehash: c06ebab6739271883713239c1bbc9e64b6fb037d
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79293299"
 ---
 # <a name="create-an-application-insights-resource"></a>创建 Application Insights 资源
@@ -19,7 +19,7 @@ Azure Application Insights 在 Microsoft Azure *资源*中显示有关应用程�
 
 ## <a name="sign-in-to-microsoft-azure"></a>登录 Microsoft Azure
 
-如果没有 Azure 订阅，请在开始前创建一个[试用帐户](https://www.azure.cn/zh-cn/pricing/1rmb-trial-full/?form-type=identityauth)。
+如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.azure.cn/zh-cn/pricing/1rmb-trial-full/?form-type=identityauth)。
 
 ## <a name="create-an-application-insights-resource"></a>创建 Application Insights 资源
 
@@ -27,10 +27,10 @@ Azure Application Insights 在 Microsoft Azure *资源*中显示有关应用程�
 
 ![单击左上角的“+”号。 选择开发人员工具，然后选择“Application Insights”](./media/create-new-resource/new-app-insights.png)
 
-   | 设置        |  Value           | 说明  |
+   | 设置        |  值           | 说明  |
    | ------------- |:-------------|:-----|
    | **名称**      | 唯一值 | 标识所监视的应用的名称。 |
-   | **资源组**     | MyResourceGroup      | 用于托管 App Insights 数据的新资源组或现有资源组的名称。 |
+   | **资源组**     | myResourceGroup      | 用于托管 App Insights 数据的新资源组或现有资源组的名称。 |
    | **位置** | 中国东部 2 | 选择离你近的位置或离托管应用的位置近的位置。 |
 
 在必填字段中输入适当的值，然后选择“查看 + 创建”  。

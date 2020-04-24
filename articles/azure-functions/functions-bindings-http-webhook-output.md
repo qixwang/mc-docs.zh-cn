@@ -6,10 +6,10 @@ ms.topic: reference
 ms.date: 02/17/2020
 ms.author: v-junlch
 ms.openlocfilehash: bf75d6399baff17bf7accdbf0881f222da499a33
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79292832"
 ---
 # <a name="azure-functions-http-output-bindings"></a>Azure Functions HTTP 输出绑定
@@ -23,13 +23,13 @@ HTTP 触发函数的默认返回值如下：
 
 ## <a name="configuration"></a>配置
 
-下表解释了在 function.json  文件中设置的绑定配置属性。 在 C# 类库中，没有与这些 *function.json* 属性对应的特性。
+下表解释了在 function.json  文件中设置的绑定配置属性。 在 C# 类库中，没有与这些 function.json  属性对应的属性。
 
-|属性  |说明  |
+|properties  |说明  |
 |---------|---------|
-| **type** |必须设置为 `http`。 |
-| **direction** | 必须设置为 `out`。 |
-| **name** | 在响应的函数代码中使用的变量名称，或者 `$return` 以使用返回值。 |
+| type  |必须设置为 `http`。 |
+| direction  | 必须设置为 `out`。 |
+| name  | 在响应的函数代码中使用的变量名称，或者 `$return` 以使用返回值。 |
 
 ## <a name="usage"></a>使用情况
 
@@ -64,11 +64,11 @@ HTTP 触发函数的默认返回值如下：
 }
 ```
 
-|属性  |默认 | 说明 |
+|properties  |默认 | 说明 |
 |---------|---------|---------| 
-| customHeaders|无|使你可以在 HTTP 响应中设置自定义标头。 前面的示例将 `X-Content-Type-Options` 标头添加到响应中，以避免内容类型探查。 |
+| customHeaders|none|使你可以在 HTTP 响应中设置自定义标头。 前面的示例将 `X-Content-Type-Options` 标头添加到响应中，以避免内容类型探查。 |
 |dynamicThrottlesEnabled|true<sup>\*</sup>|启用后，此设置将导致请求处理管道定期检查系统性能计数器（例如 `connections/threads/processes/memory/cpu/etc`），如果这些计数器中的任何一个超过内置高阈值 (80%)，则请求将被拒绝并返回 `429 "Too Busy"` 响应，直到计数器恢复正常水平为止。<br/><sup>\*</sup>消耗计划中的默认值为 `true`。 专用计划中的默认值为 `false`。|
-|hsts|未启用|`isEnabled` 设置为 `true` 时，将强制执行 [.NET Core 的 HTTP 严格传输安全性 (HSTS) 行为](https://docs.microsoft.com/aspnet/core/security/enforcing-ssl?view=aspnetcore-3.0&tabs=visual-studio#hsts)，如 [`HstsOptions` 类](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.httpspolicy.hstsoptions?view=aspnetcore-3.0)中所定义。 上面的示例还将 [`maxAge`](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.httpspolicy.hstsoptions.maxage?view=aspnetcore-3.0#Microsoft_AspNetCore_HttpsPolicy_HstsOptions_MaxAge) 属性设置为 10 天。 `hsts` 支持的属性包括： <table><tr><th>属性</th><th>说明</th></tr><tr><td>excludedHosts</td><td>未添加 HSTS 标头的主机名的字符串数组。</td></tr><tr><td>includeSubDomains</td><td>布尔值，指示是否启用了 Strict-Transport-Security 标头的 includeSubDomain 参数。</td></tr><tr><td>maxAge</td><td>定义 Strict-Transport-Security 标头的 max-age 参数的字符串。</td></tr><tr><td>preload</td><td>布尔值，指示是否启用了 Strict-Transport-Security 标头的 preload 参数。</td></tr></table>|
+|hsts|未启用|`isEnabled` 设置为 `true` 时，将强制执行 [.NET Core 的 HTTP 严格传输安全性 (HSTS) 行为](https://docs.microsoft.com/aspnet/core/security/enforcing-ssl?view=aspnetcore-3.0&tabs=visual-studio#hsts)，如 [`HstsOptions` 类](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.httpspolicy.hstsoptions?view=aspnetcore-3.0)中所定义。 上面的示例还将 [`maxAge`](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.httpspolicy.hstsoptions.maxage?view=aspnetcore-3.0#Microsoft_AspNetCore_HttpsPolicy_HstsOptions_MaxAge) 属性设置为 10 天。 `hsts` 支持的属性包括： <table><tr><th>properties</th><th>说明</th></tr><tr><td>excludedHosts</td><td>未添加 HSTS 标头的主机名的字符串数组。</td></tr><tr><td>includeSubDomains</td><td>布尔值，指示是否启用了 Strict-Transport-Security 标头的 includeSubDomain 参数。</td></tr><tr><td>maxAge</td><td>定义 Strict-Transport-Security 标头的 max-age 参数的字符串。</td></tr><tr><td>preload</td><td>布尔值，指示是否启用了 Strict-Transport-Security 标头的 preload 参数。</td></tr></table>|
 |maxConcurrentRequests|100<sup>\*</sup>|并行执行的 HTTP 函数数目上限。 使用此值可以控制并发性，从而帮助管理资源利用率。 例如，某个 HTTP 函数可能使用了大量系统资源（内存/CPU/套接字），从而在并发性过高时导致问题。 或者，如果某个函数向第三方服务发出了出站请求，则可能需要限制这些调用的速率。 在这种情况下，应用限制可能有帮助。 <br/><sup>*</sup>消耗计划的默认值为 100。 专用计划的默认值为“无限”(`-1`)。|
 |maxOutstandingRequests|200<sup>\*</sup>|在任意给定时间搁置的未完成请求数上限。 此限制包括已排队但尚未开始执行的请求，以及正在执行的所有请求。 超出此限制的任何传入请求将被拒绝，并返回 429“太忙”响应。 允许调用方使用基于时间的重试策略，还可帮助控制最大请求延迟。 此设置仅控制脚本宿主执行路径中发生的排队。 其他队列（例如 ASP.NET 请求队列）仍有效，不受此设置的影响。 <br/><sup>\*</sup>消耗计划的默认值为 200。 专用计划的默认值为“无限”(`-1`)。|
 |routePrefix|api|应用到所有路由的路由前缀。 使用空字符串可删除默认前缀。 |

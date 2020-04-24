@@ -8,10 +8,10 @@ origin.date: 11/12/2019
 ms.date: 02/10/2020
 ms.author: v-yeche
 ms.openlocfilehash: 6e286a222941780845ad135aed3131c1d6981096
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79292548"
 ---
 <!--Verify successfully-->
@@ -19,7 +19,7 @@ ms.locfileid: "79292548"
 
 本文介绍如何使用 Azure 资源管理器模板执行不同的操作来自动管理 Azure Cosmos DB 帐户、数据库和容器。 本文的示例仅适用于 SQL API 帐户。若要查找其他 API 类型帐户的示例，请参阅将 Azure 资源管理器模板与 Azure Cosmos DB 的适用于 [SQL](manage-sql-with-resource-manager.md)、[Gremlin](manage-gremlin-with-resource-manager.md)、[MongoDB](manage-mongodb-with-resource-manager.md)、[表](manage-table-with-resource-manager.md)的 API 配合使用的相关文章。
 
-## 创建 Azure Cosmos 帐户、密钥空间和表 <a name="create-resource"></a>
+## <a name="create-azure-cosmos-account-keyspace-and-table"></a>创建 Azure Cosmos 帐户、密钥空间和表 <a name="create-resource"></a>
 
 使用 Azure 资源管理器模板创建 Azure Cosmos DB 资源。 此模板将创建一个适用于 Cassandra API 的 Azure Cosmos 帐户，所使用的两个表在密钥空间级别共享 400 RU/秒的吞吐量。 复制模板并按如下所示进行部署，或者访问 [Azure 快速入门库](https://github.com/Azure/azure-quickstart-templates/tree/master/101-cosmosdb-cassandra/)，然后从 Azure 门户进行部署。 还可以将模板下载到本地计算机，或者创建新模板并使用 `--template-file` 参数指定本地路径。
 

@@ -6,15 +6,15 @@ ms.topic: reference
 ms.date: 03/03/2020
 ms.author: v-junlch
 ms.openlocfilehash: 12577232a4b568097e32f0f50c260fdf47aecb7b
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79293206"
 ---
 # <a name="azure-blob-storage-bindings-for-azure-functions-overview"></a>适用于 Azure Functions 的 Azure Blob 存储绑定概述
 
-Azure Functions 通过[触发器和绑定](./functions-triggers-bindings.md)与 [Azure 存储](/storage/)集成。 与 Blob 存储集成即可构建函数，用于响应 blob 数据中的更改以及读取和写入值。
+Azure Functions 通过[触发器和绑定](/storage/)与 [Azure 存储](./functions-triggers-bindings.md)集成。 与 Blob 存储集成即可构建函数，用于响应 blob 数据中的更改以及读取和写入值。
 
 | 操作 | 类型 |
 |---------|---------|
@@ -26,7 +26,7 @@ Azure Functions 通过[触发器和绑定](./functions-triggers-bindings.md)与 
 
 ### <a name="functions-2x-and-higher"></a>Functions 2.x 及更高版本
 
-使用触发器和绑定需要引用相应的程序包。 NuGet 包用于 .NET 类库，而扩展捆绑包用于其他所有应用程序类型。
+使用触发器和绑定需要引用相应的包。 NuGet 包用于 .NET 类库，而扩展捆绑包用于其他所有应用程序类型。
 
 | 语言                                        | 添加方式...                                   | 备注 
 |-------------------------------------------------|---------------------------------------------|-------------|

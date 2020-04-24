@@ -6,10 +6,10 @@ origin.date: 02/23/2018
 ms.date: 02/24/2020
 ms.author: v-yeche
 ms.openlocfilehash: b170e6edcc2a9868e6965816da8e21d4ee6701cb
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79292016"
 ---
 # <a name="package-an-application"></a>打包应用程序
@@ -41,7 +41,7 @@ D:\TEMP\MYAPPLICATIONTYPE
             init.dat
 ```
 
-文件夹的名称与每个相应元素的 **Name** 特性匹配。 例如，如果服务清单包含两个名为 **MyCodeA** 和 **MyCodeB** 的代码包，则两个同名的文件夹会包含用于每个代码包的必要二进制文件。
+文件夹的名称与每个相应元素的 **Name** 特性匹配。 例如，如果服务清单包含两个名为 **MyCodeA** 和 **MyCodeB** 的代码包，则两个同名的文件夹将包含用于每个代码包的必要二进制文件。
 
 ## <a name="use-setupentrypoint"></a>使用 SetupEntryPoint
 
@@ -60,7 +60,7 @@ D:\TEMP\MYAPPLICATIONTYPE
 
 如果已使用 Visual Studio 创建应用程序，则可以使用 Package  命令自动创建匹配上述布局的包。
 
-若要创建包，请在解决方案资源管理器中右键单击应用程序项目，选择 **Package** 命令  ：
+若要创建包，请在解决方案资源管理器中右键单击应用程序项目，选择 *Package* 命令  ：
 
 ![使用 Visual Studio 打包应用程序][vs-package-command]
 
@@ -90,7 +90,7 @@ Test-ServiceFabricApplicationPackage : The EntryPoint MySetup.bat is not found.
 FileName: C:\Users\servicefabric\AppData\Local\Temp\TestApplicationPackage_7195781181\nrri205a.e2h\MyApplicationType\MyServiceManifest\ServiceManifest.xml
 ```
 
-此错误显示代码包中缺少服务清单 **SetupEntryPoint** 中引用的 *MySetup.bat* 文件。 添加缺少的文件后，应用程序验证通过：
+此错误显示代码包中缺少服务清单 *SetupEntryPoint* 中引用的 **MySetup.bat** 文件。 添加缺少的文件后，应用程序验证通过：
 
 ```
 tree /f .\MyApplicationType
@@ -134,11 +134,11 @@ True
 与上传未压缩的包相比，对于压缩的应用程序包，[上传应用程序包](service-fabric-deploy-remove-applications.md#upload-the-application-package)可能要花费更长的时间，尤其是当压缩是在复制过程中执行的时。 使用压缩，[注册](service-fabric-deploy-remove-applications.md#register-the-application-package)和[注销应用程序类型](service-fabric-deploy-remove-applications.md#unregister-an-application-type)时速度会更快。
 
 压缩包和未压缩包的部署机制相同。 如果为压缩包，则存储在群集映像存储等位置，并且在应用程序运行前在节点上解压缩。
-压缩会将有效的 Service Fabric 包替换为已压缩版本。 文件夹必须允许写入操作。 对已压缩的包运行压缩不会产生任何更改。
+压缩会将有效的 Service Fabric 包替换为已压缩版本。 文件夹必须允许写入操作。 对已压缩的包运行压缩将不会产生任何更改。
 
-可以通过使用 `CompressPackage` 开关运行 Powershell 命令 [Copy-ServiceFabricApplicationPackage](https://docs.microsoft.com/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) 来压缩包。 可以通过使用 `UncompressPackage` 开关运行同一命令来解压缩包。
+可以通过使用 [ 开关运行 Powershell 命令 ](https://docs.microsoft.com/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps)Copy-ServiceFabricApplicationPackage`CompressPackage` 来压缩包。 可以通过使用 `UncompressPackage` 开关运行同一命令来解压缩包。
 
-以下命令可压缩包，但不会将包复制到映像存储区。 通过使用不带 `SkipCopy` 标志的 [Copy-ServiceFabricApplicationPackage](https://docs.microsoft.com/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) 将压缩的包复制到一个或多个 Service Fabric 群集中。
+以下命令可压缩包，但不会将包复制到映像存储区。 通过使用不带 [ 标志的 ](https://docs.microsoft.com/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps)Copy-ServiceFabricApplicationPackage`SkipCopy` 将压缩的包复制到一个或多个 Service Fabric 群集中。
 包中现在包括 `code`、`config` 和 `data` 包的压缩文件。 应用程序清单和服务清单不会被压缩，因为它们是许多内部操作所必需的。 例如，进行某些验证时的包共享、应用程序类型名称和版本提取都需要访问清单。 压缩清单会使这些操作无效。
 
 ```
@@ -187,15 +187,15 @@ D:\TEMP\MYAPPLICATIONTYPE
 Copy-ServiceFabricApplicationPackage -ApplicationPackagePath .\MyApplicationType -ApplicationPackagePathInImageStore MyApplicationType -ImageStoreConnectionString fabric:ImageStore -CompressPackage -TimeoutSec 5400
 ```
 
-在内部，Service Fabric 将计算应用程序包的校验和以进行验证。 使用压缩时，会对每个包的压缩版本计算校验和。 基于同一个应用程序包生成新 zip 会创建不同的校验和。 若要防止验证错误，请使用[差异预配](service-fabric-application-upgrade-advanced.md)。 使用此选项时，不要在新版本中包括未更改的包。 相反，请直接从新的服务清单中引用它们。
+在内部，Service Fabric 将计算应用程序包的校验和以进行验证。 使用压缩时，将对每个包的压缩版本计算校验和。 基于同一个应用程序包生成新 zip 会创建不同的校验和。 若要防止验证错误，请使用[差异预配](service-fabric-application-upgrade-advanced.md)。 使用此选项时，不要在新版本中包括未更改的包。 相反，请直接从新的服务清单中引用它们。
 
 如果差异预配不是一个选项并且你必须包括这些包，请为 `code`、`config` 和 `data` 包生成新版本以避免校验和不匹配。 当使用压缩的包时，无论以前的版本是否使用压缩，都需要为未更改的包生成新版本。
 
 现在已将包进行了正确打包、验证和压缩（如需要），因此可以将其[部署](service-fabric-deploy-remove-applications.md)到一个或多个 Service Fabric 群集。
 
-### <a name="compress-packages-when-deploying-using-visual-studio"></a>使用 Visual Studio 部署时压缩包
+### <a name="compress-packages-when-deploying-using-visual-studio"></a>使用 Visual Studio 部署时压缩程序包
 
-可以指示 Visual Studio 在部署时压缩包，具体方法为将 `CopyPackageParameters` 元素添加到发布配置文件，并将 `CompressPackage` 属性设置为 `true`。
+可以指示 Visual Studio 在部署时压缩程序包，具体方法为将 `CopyPackageParameters` 元素添加到发布配置文件，并将 `CompressPackage` 属性设置为 `true`。
 
 ```xml
     <PublishProfile xmlns="http://schemas.microsoft.com/2015/05/fabrictools">

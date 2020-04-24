@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 01/14/2020
 ms.author: v-junlch
 ms.openlocfilehash: 506ada1b0caefdc3dcfccc02bad1d2305b2d0cfd
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79292130"
 ---
 # <a name="http-api-reference"></a>HTTP API 引用
@@ -498,7 +498,7 @@ POST /runtime/webhooks/durabletask/instances/{instanceId}/raiseEvent/{eventName}
 * **HTTP 404 (找不到)** ：找不到指定的实例。
 * **HTTP 410 (消失)** ：指定的实例已完成或失败，且无法处理任何引发的事件。
 
-下面的请求示例向等待名为 operation 的事件的实例发送 JSON 字符串 `"incr"`  ：
+下面的请求示例向等待名为 operation 的事件的实例发送 JSON 字符串 `"incr"` ：
 
 ```http
 POST /admin/extensions/DurableTaskExtension/instances/bcf6fb5067b046fbb021b52ba7deae5a/raiseEvent/operation?taskHub=DurableFunctionsHub&connection=Storage&code=XXX

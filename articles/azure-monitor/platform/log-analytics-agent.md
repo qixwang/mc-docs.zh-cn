@@ -9,10 +9,10 @@ origin.date: 12/24/2019
 ms.date: 12/31/2019
 ms.author: v-lingwu
 ms.openlocfilehash: 8fcb08526236b4db2b19a61c474e75350a35a31f
-ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/17/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79452448"
 ---
 # <a name="log-analytics-agent-overview"></a>Log Analytics 代理概述
@@ -112,7 +112,7 @@ Windows 代理官方支持以下版本的 Windows 操作系统：
 
 下表重点介绍了要安装代理的受支持 Linux 发行版所需的包。
 
-|所需的包 |说明 |最低版本 |
+|所需程序包 |说明 |最低版本 |
 |-----------------|------------|----------------|
 |Glibc |    GNU C 库 | 2.5-12 
 |Openssl    | OpenSSL 库 | 1.0.x 或 1.1.x |
@@ -150,7 +150,7 @@ Windows 和 Linux 代理支持使用 HTTPS 协议通过代理服务器或 Log An
 > [!NOTE]
 > 如果代理服务器无需进行身份验证，Linux 代理仍要求提供伪用户名/密码。 这可以是任何用户名或密码。
 
-|属性| 说明 |
+|properties| 说明 |
 |--------|-------------|
 |协议 | https |
 |user | 用于代理身份验证的可选用户名 |

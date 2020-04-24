@@ -9,10 +9,10 @@ ms.date: 11/20/2019
 ms.author: v-lingwu
 ms.assetid: b234533e-ac51-4482-9452-d97444f98b38
 ms.openlocfilehash: e1dbfecbad66ea856652a8b954731a3107eef57c
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79291459"
 ---
 # <a name="track-backup-and-restore-jobs-using-rest-api"></a>使用 REST API 跟踪备份和还原作业

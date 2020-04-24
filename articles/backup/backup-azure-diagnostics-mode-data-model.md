@@ -7,10 +7,10 @@ ms.date: 02/26/2019
 ms.author: v-lingwu
 ms.topic: conceptual
 ms.openlocfilehash: 8db6aff011f23f13120b5ffe4f0a6a3599acfddf
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79290877"
 ---
 # <a name="log-analytics-data-model-for-azure-backup-data"></a>Azure 备份数据的 Log Analytics 数据模型

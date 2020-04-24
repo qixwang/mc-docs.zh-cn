@@ -8,10 +8,10 @@ origin.date: 10/18/2019
 ms.date: 11/22/2019
 ms.author: v-junlch
 ms.openlocfilehash: 44b8329def6f3d9e4b2aad1ae4998f78b1a76849
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79291966"
 ---
 # <a name="troubleshoot-azure-cache-for-redis-timeouts"></a>排查 Azure Cache for Redis 超时问题

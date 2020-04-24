@@ -10,10 +10,10 @@ origin.date: 12/13/2019
 ms.date: 01/13/2020
 ms.author: v-yiso
 ms.openlocfilehash: 3626811d0189510ea17544ad419faabf60972f78
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79293256"
 ---
 # <a name="automatic-iot-device-and-module-management-using-the-azure-portal"></a>使用 Azure 门户自动管理 IoT 设备和模块
@@ -69,7 +69,7 @@ Azure IoT 中心的自动设备管理功能可自动完成许多复杂且重复�
 
 1. 为配置指定不超过 128 个小写字母的唯一名称。 避免空格和以下无效字符：`& ^ [ ] { } \ | " < > /`。
 
-2. 添加标签以帮助跟踪配置。 标签是描述配置的 <名称, 值> 对。   例如 `HostPlatform, Linux` 或 `Version, 3.0.1`。
+2. 添加标签以帮助跟踪配置。 标签是描述配置的 <名称, 值> 对。   例如，`HostPlatform, Linux` 或 `Version, 3.0.1`。
 
 3. 选择“下一步”，转到下一步。  
 
@@ -103,7 +103,7 @@ Azure IoT 中心的自动设备管理功能可自动完成许多复杂且重复�
 
 每个配置最多可以有五个自定义指标。 
 
-1. 在“指标名称”中输入名称。 
+1. 在“指标名称”中输入名称  。
 
 2. 在“指标条件”中输入查询。   该查询基于设备孪生报告的属性。  指标表示查询返回的行数。
 
@@ -122,7 +122,7 @@ SELECT deviceId FROM devices
   WHERE configurations.[[yourconfigname]].status='Applied'
 ```
 
-如果要构建用于报告已配置模块的指标，请从 `devices.modules` 中选择 `moduleId`。 例如：
+如果要构建用于报告已配置模块的指标，请从 `moduleId` 中选择 `devices.modules`。 例如：
 
 ```sql
 SELECT deviceId, moduleId FROM devices.modules
@@ -141,9 +141,9 @@ SELECT deviceId, moduleId FROM devices.modules
 
 2. 输入一个**目标条件**来确定此配置的目标设备或模块。 该条件基于孪生标记或孪生报告的属性，应与表达式格式相匹配。 
 
-   对于自动设备配置，可以仅指定要用作目标的标记或报告的属性。 例如 `tags.environment='test'` 或 `properties.reported.chillerProperties.model='4000x'`。 可以指定 `*` 来定目标到所有设备。 
+   对于自动设备配置，可以仅指定要用作目标的标记或报告的属性。 例如，`tags.environment='test'` 或 `properties.reported.chillerProperties.model='4000x'`。 可以指定 `*` 来定目标到所有设备。 
    
-   对于自动模块配置，请使用查询来指定注册到 IoT 中心的模块中的标记或报告的属性。 例如 `from devices.modules where tags.environment='test'` 或 `from devices.modules where properties.reported.chillerProperties.model='4000x'`。 不能使用通配符来指定以所有模块为目标。 
+   对于自动模块配置，请使用查询来指定注册到 IoT 中心的模块中的标记或报告的属性。 例如，`from devices.modules where tags.environment='test'` 或 `from devices.modules where properties.reported.chillerProperties.model='4000x'`。 不能使用通配符来指定以所有模块为目标。 
 
 3. 选择“下一步”  ，进入到最后一步。
 
@@ -209,10 +209,10 @@ SELECT deviceId, moduleId FROM devices.modules
 
    * 目标条件 
    * 标签 
-   * 优先级 
-   * 指标
+   * 优先度 
+   * 度量值
 
-4. 选择“保存”  。
+4. 选择“保存”。 
 
 5. 按照[监视配置](#monitor-a-configuration)中的步骤观察更改的实施。 
 
@@ -226,7 +226,7 @@ SELECT deviceId, moduleId FROM devices.modules
 
 3. 使用复选框选择想要删除的配置。 
 
-4. 选择“删除”  。
+4. 选择“删除”。 
 
 5. 系统会提示确认。
 

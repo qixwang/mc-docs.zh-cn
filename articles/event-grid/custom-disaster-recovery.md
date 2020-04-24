@@ -9,10 +9,10 @@ origin.date: 01/21/2020
 ms.date: 02/17/2020
 ms.author: v-yiso
 ms.openlocfilehash: 0bd182cc52144c17d9ea3496390a562b8ae4889f
-ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/17/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79452528"
 ---
 # <a name="build-your-own-disaster-recovery-for-custom-topics-in-event-grid"></a>为事件网格中的自定义主题构建自己的灾难恢复方案
@@ -48,7 +48,7 @@ ms.locfileid: "79452528"
 
 首先创建两个事件网格主题。 这些主题充当主要和辅助主题。 默认情况下，事件将会通过主要主题传送。 如果主要区域中发生服务中断，次要区域将接管工作。
 
-1. 登录到 [Azure 门户](https://portal.azure.cn)。 
+1. 登录 [Azure 门户](https://portal.azure.cn)。 
 
 1. 在 Azure 主菜单的左上角，选择“所有服务”> 搜索“事件网格”> 选择“事件网格主题”。   
 

@@ -13,10 +13,10 @@ ms.date: 12/04/2019
 ms.author: v-lingwu
 ms.custom: seodec18
 ms.openlocfilehash: 30ca7eaf405e307bd7d6dda3e30da45afe0e853b
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79292361"
 ---
 # <a name="boundaries-for-your-luis-model-and-keys"></a>LUIS 模型和密钥的边界

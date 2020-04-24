@@ -16,10 +16,10 @@ origin.date: 03/22/2019
 ms.author: v-yiso
 ms.date: 11/04/2019
 ms.openlocfilehash: defbe44d4d3b1140ac27aa294db4f57a09906c01
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79291791"
 ---
 # <a name="api-management-policy-expressions"></a>API 管理策略表达式
@@ -35,12 +35,12 @@ ms.locfileid: "79291791"
 - 要下载策略语句，请参阅 [api-management-samples/policies](https://github.com/Azure/api-management-samples/tree/master/policies) GitHub 存储库。
 
 
-## <a name="Syntax"></a> 语法
+## <a name="syntax"></a><a name="Syntax"></a> 语法
 单一语句表达式括在 `@(expression)` 中，其中 `expression` 是格式正确的 C# 表达式语句。
 
 多语句表达式括在 `@{expression}` 中。 多语句表达式中的所有代码路径必须以 `return` 语句结尾。
 
-## <a name="PolicyExpressionsExamples"></a> 示例
+## <a name="examples"></a><a name="PolicyExpressionsExamples"></a> 示例
 
 ```
 @(true)
@@ -67,13 +67,13 @@ ms.locfileid: "79291791"
 }
 ```
 
-## <a name="PolicyExpressionsUsage"></a>用法
+## <a name="usage"></a><a name="PolicyExpressionsUsage"></a>用法
 在任何 API 管理[策略](api-management-policies.md)中，表达式都可用作属性值或文本值（除非策略引用另行指定）。
 
 > [!IMPORTANT]
 > 使用策略表达式定义策略时，只能对策略表达式进行有限的验证。 在运行时，表达式由网关执行，策略表达式生成的任何异常将导致运行时错误。
 
-## <a name="CLRTypes"></a> 策略表达式中允许的 .NET Framework 类型
+## <a name="net-framework-types-allowed-in-policy-expressions"></a><a name="CLRTypes"></a> 策略表达式中允许的 .NET Framework 类型
 下表列出了策略表达式中允许的 .NET Framework 类型及其成员。
 
 |类型|受支持的成员|
@@ -207,7 +207,7 @@ ms.locfileid: "79291791"
 |System.Xml.Linq.XText|全部|
 |System.Xml.XmlNodeType|全部|
 
-## <a name="ContextVariables"></a> 上下文变量
+## <a name="context-variable"></a><a name="ContextVariables"></a> 上下文变量
 在每个策略[表达式](api-management-policy-expressions.md#Syntax)中均可隐式使用名为 `context` 的变量。 其成员提供与 `\request` 相关的信息。 所有 `context` 成员均为只读的。
 
 |上下文变量|允许的方法、属性和参数值|

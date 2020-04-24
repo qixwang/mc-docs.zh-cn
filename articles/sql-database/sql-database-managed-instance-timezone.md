@@ -12,10 +12,10 @@ ms.reviewer: ''
 origin.date: 09/03/2019
 ms.date: 09/30/2019
 ms.openlocfilehash: d40443ffbf989702a11046a06434bfd4a22316b8
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79293218"
 ---
 # <a name="time-zones-in-azure-sql-database-managed-instance"></a>Azure SQL 数据库托管实例中的时区
@@ -49,7 +49,7 @@ ms.locfileid: "79293218"
   
 ![在创建实例期间设置时区](media/sql-database-managed-instance-timezone/01-setting_timezone-during-instance-creation.png)
 
-### <a name="azure-resource-manager-template"></a>Azure Resource Manager 模板
+### <a name="azure-resource-manager-template"></a>Azure 资源管理器模板
 
 创建实例期间，在[资源管理器模板](/sql-database/scripts/sql-managed-instance-create-powershell-azure-resource-manager-template)中指定 timezoneId 属性来设置时区。
 
@@ -82,7 +82,7 @@ ms.locfileid: "79293218"
 
 可以从使用不同时区设置的实例或服务器还原备份文件或者将数据导入托管实例。 请务必谨慎执行此操作。 分析应用程序的行为以及查询和报告的结果，如同在使用不同时区设置的两个 SQL Server 实例之间传输数据时一样。
 
-### <a name="point-in-time-restore"></a>时间点还原
+### <a name="point-in-time-restore"></a>时点还原
 
 执行时间点还原时，要还原到的时间将解释为 UTC 时间。 这样就可避免由于夏令时及其潜在变化而产生的任何歧义。
 
@@ -150,13 +150,13 @@ ms.locfileid: "79293218"
 | UTC | (UTC) 协调世界时 |
 | GMT 标准时间 | (UTC+00:00) 都柏林，爱丁堡，里斯本，伦敦 |
 | 格林威治标准时间 | (UTC+00:00) 蒙罗维亚，雷克雅未克 |
-| 西欧 标准时间 | (UTC+01:00) 阿姆斯特丹，柏林，伯尔尼，罗马，斯德哥尔摩，维也纳 |
+| W. 标准时间 | (UTC+01:00) 阿姆斯特丹，柏林，伯尔尼，罗马，斯德哥尔摩，维也纳 |
 | 中欧标准时间 | (UTC+01:00) 贝尔格莱德，布拉迪斯拉发，布达佩斯，卢布尔雅那，布拉格 |
 | 罗马标准时间 | (UTC+01:00) 布鲁塞尔，哥本哈根，马德里，巴黎 |
 | 摩洛哥标准时间 | (UTC+01:00) 卡萨布兰卡 |
 | 圣多美标准时间 | (UTC+01:00) 圣多美 |
 | 中欧标准时间 | (UTC+01:00) 萨拉热窝，斯科普里，华沙，萨格勒布 |
-| 中非 西部标准时间 | (UTC+01:00) 中非西部 |
+| W. 西部标准时间 | (UTC+01:00) 中非西部 |
 | 约旦标准时间 | (UTC+02:00) 安曼 |
 | GTB 标准时间 | (UTC+02:00) 雅典，布加勒斯特 |
 | 中东标准时间 | (UTC+02:00) 贝鲁特 |
@@ -200,14 +200,14 @@ ms.locfileid: "79293218"
 | 缅甸标准时间 | (UTC+06:30) 仰光 |
 | 东南亚标准时间 | (UTC+07:00) 曼谷，河内，雅加达 |
 | 阿尔泰标准时间 | (UTC+07:00) 巴尔瑙尔，戈尔诺-阿尔泰斯克 |
-| 西 蒙古标准时间 | (UTC+07:00) 科布多 |
+| W. 蒙古标准时间 | (UTC+07:00) 科布多 |
 | 北亚标准时间 | (UTC+07:00) 克拉斯诺亚尔斯克 |
-| 中北 亚标准时间 | (UTC+07:00) 新西伯利亚 |
+| N. 中亚标准时间 | (UTC+07:00) 新西伯利亚 |
 | 托木斯克标准时间 | (UTC+07:00) 托木斯克 |
 | 中国标准时间 | (UTC+08:00) 北京，重庆，香港特别行政区，乌鲁木齐 |
 | 东北亚标准时间 | (UTC+08:00) 伊尔库次克 |
 | 新加坡标准时间 | (UTC+08:00) 吉隆坡，新加坡 |
-| 西 澳大利亚标准时间 | (UTC+08:00) 珀斯 |
+| W. 澳大利亚标准时间 | (UTC+08:00) 珀斯 |
 | 台北标准时间 | (UTC+08:00) 台北 |
 | 乌兰巴托标准时间 | (UTC+08:00) 乌兰巴托 |
 | 澳大利亚中西部标准时间 | (UTC+08:45) 尤克拉 |

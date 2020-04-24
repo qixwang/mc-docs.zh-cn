@@ -10,10 +10,10 @@ ms.author: v-lingwu
 ms.reviewer: Dale.Koetke
 ms.subservice: ''
 ms.openlocfilehash: 3c1b4e9c53fc5471626e0dc4ee58831d168e14be
-ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/17/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79452548"
 ---
 # <a name="monitoring-usage-and-estimated-costs-in-azure-monitor"></a>在 Azure Monitor 中监视使用情况和预估成本

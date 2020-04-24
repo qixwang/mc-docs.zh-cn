@@ -8,10 +8,10 @@ origin.date: 03/14/2019
 ms.date: 04/14/2019
 ms.author: anantr
 ms.openlocfilehash: 6c4c523ee2593eb35f245df65ecf2c1cd7e6334f
-ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/17/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79452578"
 ---
 # <a name="common-alert-schema-definitions"></a>常见警报架构定义

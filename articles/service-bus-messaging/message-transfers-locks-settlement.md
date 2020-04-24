@@ -15,10 +15,10 @@ origin.date: 01/24/2019
 ms.date: 2/6/2020
 ms.author: v-lingwu
 ms.openlocfilehash: 36d4297a42cd388af8bf5d76878781fefef99867
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79291475"
 ---
 # <a name="message-transfers-locks-and-settlement"></a>消息传输、锁定和处置
@@ -97,7 +97,7 @@ for (int i = 0; i < 100; i++)
 
 ## <a name="settling-receive-operations"></a>处置接收操作
 
-对于接收操作，服务总线 API 客户端启用两种不同的显式模式：*Receive-and-Delete* 和 *Peek-Lock*。
+对于接收操作，服务总线 API 客户端启用两种不同的显式模式：接收并删除  和扫视锁定  。
 
 ### <a name="receiveanddelete"></a>ReceiveAndDelete
 

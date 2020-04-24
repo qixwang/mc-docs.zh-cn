@@ -9,10 +9,10 @@ author: lingliw
 ms.date: 08/22/2019
 ms.author: v-lingwu
 ms.openlocfilehash: fdd2ee130d2d43b224844493b7a4067f3dd45272
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79292563"
 ---
 # <a name="diagnose-exceptions-in-your-web-apps-with-application-insights"></a>使用 Application Insights 诊断 Web 应用中的异常
@@ -94,7 +94,7 @@ Application Insights 附带了精选的 APM 体验，帮助你诊断所监视应
 * 在应用程序中插入代码以调用 [Microsoft.ApplicationInsights.TrackTrace()](../../azure-monitor/app/api-custom-events-metrics.md#tracktrace)。 在消息参数中发送 POST 数据。 允许的大小有限制，因此，应该尝试仅发送必要数据。
 * 调查失败的请求时，查找关联的跟踪。
 
-## <a name="exceptions"></a>捕获异常和相关的诊断数据
+## <a name="capturing-exceptions-and-related-diagnostic-data"></a><a name="exceptions"></a>捕获异常和相关的诊断数据
 首先，不会在门户中看到在应用中导致失败的所有异常。 将显示所有浏览器异常（如果在网页中使用 [JavaScript SDK](../../azure-monitor/app/javascript.md)）， 但大多数服务器异常由 IIS 导致，必须编写几行代码才能看到它们。
 
 方法：

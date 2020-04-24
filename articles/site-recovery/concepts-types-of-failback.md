@@ -9,10 +9,10 @@ origin.date: 08/07/2019
 ms.date: 08/26/2019
 ms.author: v-yeche
 ms.openlocfilehash: 5b33003c45942a8e1a680b8b7fd478a98f08a6fc
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79292873"
 ---
 # <a name="failback-of-vmware-vms-after-disaster-recovery-to-azure"></a>灾难恢复后将 VMware VM 故障回复到 Azure
@@ -39,7 +39,7 @@ ms.locfileid: "79292873"
 > 请务必启用 disk.enableUUID= TRUE，以便故障回复期间 Azure Site Recovery 服务能够识别将向其写入未完成更改的虚拟机上的原始 VMDK。 如果此值未设置为 TRUE，则该服务会尽力尝试识别相应的本地 VMDK。 如果找不到合适的 VMDK，它会创建额外的磁盘，并将数据写入到该磁盘。
 
 ## <a name="alternate-location-recovery-alr"></a>备用位置恢复 (ALR)
-如果在重新保护本地虚拟机之前该虚拟机不存在，则该方案称为备用位置恢复。 重新保护工作流会重新创建本地虚拟机。 这样也会下载完整的数据。
+如果在重新保护本地虚拟机之前该虚拟机不存在，则该方案称为备用位置恢复。 重新保护工作流将重新创建本地虚拟机。 这还会导致完整数据下载。
 
 * 故障回复到备用位置时，会将虚拟机恢复到主目标服务器所部署到的同一 ESX 主机。 用于创建磁盘的数据存储将与重新保护虚拟机时选择的数据存储相同。
 * 只能故障回复到虚拟机文件系统 (VMFS) 或 vSAN 数据存储。 如果有 RDM，重新保护和故障回复将不起作用。

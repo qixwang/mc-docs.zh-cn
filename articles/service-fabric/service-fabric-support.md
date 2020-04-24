@@ -7,10 +7,10 @@ origin.date: 08/24/2018
 ms.date: 01/13/2020
 ms.author: v-yeche
 ms.openlocfilehash: 5cf41f731b3b78f2e50db476e2003e8d92d12506
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79292004"
 ---
 # <a name="azure-service-fabric-support-options"></a>Azure Service Fabric 支持选项
@@ -51,7 +51,7 @@ ms.locfileid: "79292004"
 
 ### <a name="github-repo"></a>GitHub 存储库 
 
-在 [Service-Fabric-issues git 存储库](https://github.com/Azure/service-fabric-issues)中报告 Azure Service Fabric 问题。 此存储库用于报告和跟踪 Azure Service Fabric 问题，以及进行小型功能请求。 **请勿使用此存储库报告实时站点问题**。
+在 [Service-Fabric-issues git 存储库](https://github.com/Azure/service-fabric-issues)中报告 Azure Service Fabric 问题。 此存储库用于报告和跟踪 Azure Service Fabric 问题，以及进行小型功能请求。 **请勿使用此功能报告实时站点问题**。
 
 ### <a name="msdn-forums"></a>MSDN 论坛
 

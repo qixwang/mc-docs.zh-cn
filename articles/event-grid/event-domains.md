@@ -9,10 +9,10 @@ ms.topic: conceptual
 origin.date: 01/21/2020
 ms.date: 3/16/2020
 ms.openlocfilehash: 7f5353e9ec66781df8d75568a8f876c25a5078bb
-ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/17/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79452348"
 ---
 # <a name="understand-event-domains-for-managing-event-grid-topics"></a>了解用于管理事件网格主题的事件域

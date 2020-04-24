@@ -8,13 +8,13 @@ origin.date: 02/19/2019
 ms.date: 12/04/2019
 ms.author: v-lingwu
 ms.openlocfilehash: 70124455229253d221682f809fdc66ca043bd283
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79291468"
 ---
-# Azure 备份体系结构和组件 <a name="architecture-built-in-azure-vm-backup"></a>
+# <a name="azure-backup-architecture-and-components"></a>Azure 备份体系结构和组件 <a name="architecture-built-in-azure-vm-backup"></a>
 
 可以使用 [Azure 备份服务](backup-overview.md)将数据备份到 Microsoft Azure 云平台。 本文汇总了 Azure 备份体系结构、组件和流程。
 

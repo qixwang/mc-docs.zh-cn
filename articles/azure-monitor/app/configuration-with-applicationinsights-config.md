@@ -8,10 +8,10 @@ ms.date: 6/4/2019
 ms.reviewer: olegan
 ms.author: v-lingwu
 ms.openlocfilehash: bfa94ffbde2cbac6ac8d09f6b884b8328fcb10eb
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79291727"
 ---
 # <a name="configuring-the-application-insights-sdk-with-applicationinsightsconfig-or-xml"></a>使用 ApplicationInsights.config 或 .xml 配置 Application Insights SDK
@@ -109,9 +109,9 @@ Microsoft.ApplicationInsights 包提供 SDK 的[核心 API](https://msdn.microso
 
 * `AccountIdTelemetryInitializer` 设置 AccountId 属性。
 * `AuthenticatedUserIdTelemetryInitializer` 像 JavaScript SDK 一样设置 AuthenticatedUserId 属性。
-* 对于包含从 Azure 运行时环境提取的信息的所有遥测项，`AzureRoleEnvironmentTelemetryInitializer` 将更新 `Device` 上下文的 `RoleName` 和 `RoleInstance` 属性。
-* 对于包含从 MS 版本生成的 `BuildInfo.config` 文件提取的值的所有遥测项，`BuildInfoConfigComponentVersionTelemetryInitializer` 将更新 `Component` 上下文的 `Version` 属性。
-* `ClientIpHeaderTelemetryInitializer` 根据请求的 `X-Forwarded-For` HTTP 标头更新所有遥测项的 `Location` 上下文的 `Ip` 属性。
+* 对于包含从 Azure 运行时环境提取的信息的所有遥测项，`AzureRoleEnvironmentTelemetryInitializer` 将更新 `RoleName` 上下文的 `RoleInstance` 和 `Device` 属性。
+* 对于包含从 MS 版本生成的 `BuildInfoConfigComponentVersionTelemetryInitializer` 文件提取的值的所有遥测项，`Version` 将更新 `Component` 上下文的 `BuildInfo.config` 属性。
+* `ClientIpHeaderTelemetryInitializer` 根据请求的 `Ip` HTTP 标头更新所有遥测项的 `Location` 上下文的 `X-Forwarded-For` 属性。
 * `DeviceTelemetryInitializer` 更新所有遥测项的 `Device` 上下文的以下属性。
   * `Type` 设置为“PC”
   * `Id` 设置为 Web 应用程序运行所在的计算机的域名。
@@ -119,14 +119,14 @@ Microsoft.ApplicationInsights 包提供 SDK 的[核心 API](https://msdn.microso
   * `Model` 设置为使用 WMI 从 `Win32_ComputerSystem.Model` 字段提取的值。
   * `NetworkType` 设置为从 `NetworkInterface` 字段提取的值。
   * `Language` 设置为 `CurrentCulture` 的名称。
-* 对于包含 Web 应用程序运行所在计算机的域名的所有遥测项，`DomainNameRoleInstanceTelemetryInitializer` 将更新 `Device` 上下文的 `RoleInstance` 属性。
-* `OperationNameTelemetryInitializer` 根据 HTTP 方法、ASP.NET MVC 控制器的名称以及为了处理请求而调用的操作，更新所有遥测项的 `RequestTelemetry` 的 `Name` 属性，以及 `Operation` 上下文的 `Name` 属性。
-* `OperationIdTelemetryInitializer` 或 `OperationCorrelationTelemetryInitializer` 在处理包含自动生成的 `RequestTelemetry.Id` 的请求时，更新跟踪的所有遥测项的 `Operation.Id` 上下文属性。
-* 对于包含从用户浏览器中运行的 Application Insights JavaScript 检测代码生成的 `ai_session` Cookie 提取的值的所有遥测项，`SessionTelemetryInitializer` 将更新 `Session` 上下文的 `Id` 属性。
+* 对于包含 Web 应用程序运行所在计算机的域名的所有遥测项，`DomainNameRoleInstanceTelemetryInitializer` 将更新 `RoleInstance` 上下文的 `Device` 属性。
+* `OperationNameTelemetryInitializer` 根据 HTTP 方法、ASP.NET MVC 控制器的名称以及为了处理请求而调用的操作，更新所有遥测项的 `Name` 的 `RequestTelemetry` 属性，以及 `Name` 上下文的 `Operation` 属性。
+* `OperationIdTelemetryInitializer` 或 `OperationCorrelationTelemetryInitializer` 在处理包含自动生成的 `Operation.Id` 的请求时，更新跟踪的所有遥测项的 `RequestTelemetry.Id` 上下文属性。
+* 对于包含从用户浏览器中运行的 Application Insights JavaScript 检测代码生成的 `SessionTelemetryInitializer` Cookie 提取的值的所有遥测项，`Id` 将更新 `Session` 上下文的 `ai_session` 属性。
 * `SyntheticTelemetryInitializer` 或 `SyntheticUserAgentTelemetryInitializer` 在处理来自综合源（例如可用性测试或搜索引擎 Bot）的请求时，更新跟踪的所有遥测项的 `User`、`Session` 和 `Operation` 上下文属性。 默认情况下，[指标资源管理器](../../azure-monitor/app/metrics-explorer.md)不显示综合遥测数据。
 
     `<Filters>` 设置请求的标识属性。
-* 对于包含从用户浏览器中运行的 Application Insights JavaScript 检测代码生成的 `ai_user` Cookie 提取的值的所有遥测项，`UserTelemetryInitializer` 将更新 `User` 上下文的 `Id` 和 `AcquisitionDate` 属性。
+* 对于包含从用户浏览器中运行的 Application Insights JavaScript 检测代码生成的 `UserTelemetryInitializer` Cookie 提取的值的所有遥测项，`Id` 将更新 `AcquisitionDate` 上下文的 `User` 和 `ai_user` 属性。
 * `WebTestTelemetryInitializer` 设置用户 ID、会话 ID，以及来自[可用性测试](../../azure-monitor/app/monitor-web-app-availability.md)的 HTTP 请求的综合源属性。
   `<Filters>` 设置请求的标识属性。
 
@@ -216,7 +216,7 @@ Microsoft.ApplicationInsights 包提供 SDK 的[核心 API](https://msdn.microso
 
 * 最小值：1
 * 最大值：100
-* 默认值：10 个
+* 默认值：10
 
 ```
 

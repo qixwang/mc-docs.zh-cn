@@ -9,10 +9,10 @@ ms.author: v-jay
 ms.reviewer: sijuman
 ms.lastreviewed: 10/02/2019
 ms.openlocfilehash: 716264530b9b2ac584c7b7c6d61081d679f8887b
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79292399"
 ---
 # <a name="use-an-ssh-public-key"></a>使用 SSH 公钥
@@ -78,13 +78,13 @@ BvpmONCSR3YnyUtgWV27N6zC7U1OBdmv7TN6M7g01uOYQKI/GQ==
 
     ![PuTTY 配置窗格](media/azure-stack-dev-start-howto-ssh-public-key/002-putty-connect.png)
 
-2. 在“主机名(或 IP 地址)”框中，输入用户名和计算机的公共 IP 地址（例如 **username@192.XXX.XXX.XX** ）。  
+2. 在“主机名(或 IP 地址)”框中，输入用户名和计算机的公共 IP 地址（例如  **）。username@192.XXX.XXX.XX** 
 3. 检查“端口”是否为“22”，“连接类型”是否为“SSH”。    
 4. 在“类别”树中，展开“SSH”和“身份验证”。   
 
     ![PuTTY 配置窗格 - SSH 私钥](media/azure-stack-dev-start-howto-ssh-public-key/002-putty-set-private-key.png)
 
-5. 在“用于身份验证的私钥文件”框的旁边选择“浏览”，然后搜索公钥和私钥对的私钥文件 ( *\<filename>.ppk*)。  
+5. 在“用于身份验证的私钥文件”框的旁边选择“浏览”，然后搜索公钥和私钥对的私钥文件 (  filename>.ppk **)。** *\<*
 6. 在“类别”树中选择“会话”。  
 
     ![PuTTY 配置窗格 -“保存的会话”框](media/azure-stack-dev-start-howto-ssh-public-key/003-puTTY-save-session.png)
@@ -101,7 +101,7 @@ BvpmONCSR3YnyUtgWV27N6zC7U1OBdmv7TN6M7g01uOYQKI/GQ==
 
 1. [下载并安装 FileZilla](https://filezilla-project.org/download.php)。
 1. 打开 FileZilla。
-1. 选择“文件” > “站点管理器”。  
+1. 选择“文件” **“站点管理器”。**  >  
 
     ![FileZilla 站点管理器窗格](media/azure-stack-dev-start-howto-ssh-public-key/005-filezilla-file-manager.png)
 
@@ -110,18 +110,18 @@ BvpmONCSR3YnyUtgWV27N6zC7U1OBdmv7TN6M7g01uOYQKI/GQ==
 1. 在“登录类型”框中，选择“正常”。  
 1. 输入用户名和密码。
 1. 选择“确定”  。
-1. 选择“编辑” > “设置”。  
+1. 选择“编辑” **“设置”。**  >  
 
     ![FileZilla 设置窗格](media/azure-stack-dev-start-howto-ssh-public-key/006-filezilla-add-private-key.png)
 
 1. 在“选择页”树中展开“连接”，然后选择“SFTP”。   
-1. 选择“添加密钥文件”，然后输入私钥文件（例如 *\<filename>.ppk*）。 
+1. 选择“添加密钥文件”，然后输入私钥文件（例如  filename>.ppk *）。\<*
 1. 选择“确定”  。
 
 ### <a name="open-your-connection"></a>打开连接
 
 1. 打开 FileZilla。
-1. 选择“文件” > “站点管理器”。  
+1. 选择“文件” **“站点管理器”。**  >  
 1. 选择站点名称，然后选择“连接”。 
 
 ## <a name="next-steps"></a>后续步骤

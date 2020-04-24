@@ -7,10 +7,10 @@ origin.date: 03/26/2019
 ms.date: 01/06/2020
 ms.author: v-yeche
 ms.openlocfilehash: 6d3f1344fc907b3f44daedb2d6b09c515a1a9eae
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79292492"
 ---
 # <a name="manage-azure-resource-manager-resource-groups-by-using-the-azure-portal"></a>使用 Azure 门户管理 Azure 资源管理器资源组

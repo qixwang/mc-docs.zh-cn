@@ -18,18 +18,18 @@ ms.date: 02/10/2020
 ms.author: v-yeche
 ms.custom: mvc
 ms.openlocfilehash: 2e7cb81a81e5438319aeb0bec234a1459954b41a
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79293036"
 ---
 # <a name="tutorial-create-a-virtual-machine-scale-set-and-deploy-a-highly-available-app-on-linux-with-the-azure-cli"></a>教程：使用 Azure CLI 在 Linux 上创建虚拟机规模集和部署高度可用的应用
 
-利用虚拟机规模集，可以部署和管理一组相同的、自动缩放的虚拟机。 可以手动缩放规模集中的 VM 数，也可以定义规则，以便根据资源使用情况（如 CPU 使用率、内存需求或网络流量）进行自动缩放。 在本教程中，将在 Azure 中部署虚拟机规模集。 你将学习如何执行以下操作：
+利用虚拟机规模集，可以部署和管理一组相同的、自动缩放的虚拟机。 可以手动缩放规模集中的 VM 数，也可以定义规则，以便根据资源使用情况（如 CPU 使用率、内存需求或网络流量）进行自动缩放。 在本教程中，会在 Azure 中部署虚拟机规模集。 学习如何：
 
 > [!div class="checklist"]
-> * 使用 cloud-init 创建可缩放的应用
+> * 使用 cloud-init 创建用于缩放的应用
 > * 创建虚拟机规模集
 > * 增加或减少规模集中的实例数
 > * 创建自动缩放规则
@@ -43,12 +43,12 @@ ms.locfileid: "79293036"
 ## <a name="scale-set-overview"></a>规模集概述
 利用虚拟机规模集，可以部署和管理一组相同的、自动缩放的虚拟机。 规模集中的 VM 将分布在逻辑容错域和更新域的一个或多个*放置组*中。 这些放置组由配置类似的 VM 组成，与[可用性集](tutorial-availability-sets.md)相似。
 
-可以根据需要在规模集中创建 VM。 可以定义自动缩放规则来控制如何以及何时在规模集中添加或删除 VM。 这些规则基于 CPU 负载、内存用量或网络流量等指标触发。
+可以根据需要在规模集中创建 VM。 定义自动缩放规则，以控制如何以及何时在规模集中添加或删除 VM。 这些规则基于 CPU 负载、内存用量或网络流量等指标触发。
 
 使用 Azure 平台映像时，规模集最多支持 1,000 个 VM。 对于有重要安装或 VM 自定义要求的工作负荷，可能需要[创建自定义 VM 映像](tutorial-custom-images.md)。 使用自定义映像时，在规模集中最多可以创建 300 个 VM。
 
 ## <a name="create-an-app-to-scale"></a>创建用于缩放的应用
-对于生产用途，可能需要[创建自定义 VM 映像](tutorial-custom-images.md)，其中包含已安装和配置的应用程序。 在本教程中，我们将在首次启动时自定义 VM，以便快速了解规模集的运作方式。
+对于生产用途，可能需要[创建自定义 VM 映像](tutorial-custom-images.md)，其中包含已安装和配置的应用程序。 在本教程中，我们会在首次启动时自定义 VM，以便快速了解规模集的运作方式。
 
 上一篇教程已介绍[如何使用 cloud-init 在首次启动时自定义 Linux 虚拟机](tutorial-automate-vm-deployment.md)。 可使用同一个 cloud-init 配置文件安装 NGINX 并运行简单的“Hello World”Node.js 应用。
 
@@ -99,13 +99,13 @@ runcmd:
 ```
 
 ## <a name="create-a-scale-set"></a>创建规模集
-使用 [az group create](https://docs.azure.cn/cli/group?view=azure-cli-latest#az-group-create) 创建资源组，然后才能创建规模集。 以下示例在“chinaeast”  位置创建名为“myResourceGroupScaleSet”  的资源组：
+使用 [az group create](https://docs.azure.cn/cli/group?view=azure-cli-latest#az-group-create) 创建资源组，才能创建规模集。 以下示例在“chinaeast”  位置创建名为“myResourceGroupScaleSet”  的资源组：
 
 ```azurecli
 az group create --name myResourceGroupScaleSet --location chinaeast
 ```
 
-现在，使用 [az vmss create](https://docs.azure.cn/cli/vmss?view=azure-cli-latest#az-vmss-create) 创建虚拟机规模集。 以下示例创建名为“myScaleSet”  的规模集，使用 cloud-int 文件自定义 VM，然后生成 SSH 密钥（如果不存在）：
+现在，使用 [az vmss create](https://docs.azure.cn/cli/vmss?view=azure-cli-latest#az-vmss-create) 创建虚拟机规模集。 以下示例创建名为“myScaleSet”  的规模集，使用 cloud-int 文件自定义 VM，并生成 SSH 密钥（如果不存在）：
 
 ```azurecli
 az vmss create \
@@ -118,10 +118,10 @@ az vmss create \
   --generate-ssh-keys
 ```
 
-创建和配置所有的规模集资源和 VM 需要几分钟时间。 在 Azure CLI 返回提示之后，仍然存在继续运行的后台任务。 可能还需等待几分钟才能访问应用。
+创建和配置所有的规模集资源和 VM 需要几分钟时间。 在 Azure CLI 向你返回提示之后，仍然存在继续运行的后台任务。 可能还需等待几分钟才能访问应用。
 
 ## <a name="allow-web-traffic"></a>允许 Web 流量
-已自动创建一个负载均衡器，作为虚拟机规模集的一部分。 负载均衡器使用负载均衡器规则将流量分配到一组定义的 VM。 可以在下一篇教程[如何在 Azure 中实现虚拟机的负载均衡](tutorial-load-balancer.md)中详细了解负载均衡器的概念和配置。
+已自动创建一个负载均衡器，作为虚拟机规模集的一部分。 负载均衡器使用负载均衡器规则将流量分配到一组定义的 VM。 可以在下一篇教程[如何对 Azure 中的虚拟机进行负载均衡](tutorial-load-balancer.md)中详细了解负载均衡器的概念和配置。
 
 若要允许通信流到达 Web 应用，请使用 [az network lb rule create](https://docs.azure.cn/cli/network/lb/rule?view=azure-cli-latest#az-network-lb-rule-create) 创建一个规则。 以下示例创建名为“myLoadBalancerRuleWeb”  的规则：
 
@@ -137,7 +137,7 @@ az network lb rule create \
   --protocol tcp
 ```
 
-## <a name="test-your-app"></a>测试应用程序
+## <a name="test-your-app"></a>测试应用
 若要在 Web 上查看 Node.js 应用，请使用 [az network public-ip show](https://docs.azure.cn/cli/network/public-ip?view=azure-cli-latest#az-network-public-ip-show) 获取负载均衡器的公共 IP 地址。 以下示例获取创建为规模集一部分的“myScaleSetLBPublicIP”  的 IP 地址：
 
 ```azurecli
@@ -152,7 +152,7 @@ az network public-ip show \
 
 ![运行 Node.js 应用](./media/tutorial-create-vmss/running-nodejs-app.png)
 
-若要查看规模集的实际运行情况，可以强制刷新 Web 浏览器，以查看负载均衡器如何在运行应用的所有 VM 之间分发流量。
+若要查看规模集的运作方式，可以强制刷新 Web 浏览器，以查看负载均衡器如何在运行应用的所有 VM 之间分配流量。
 
 ## <a name="management-tasks"></a>管理任务
 在规模集的整个生命周期内，可能需要运行一个或多个管理任务。 此外，可能还需要创建自动执行各种生命周期任务的脚本。 Azure CLI 提供一种用于执行这些任务的快速方法。 以下是一些常见任务。
@@ -177,7 +177,7 @@ az vmss list-instances \
 ```
 
 ### <a name="manually-increase-or-decrease-vm-instances"></a>手动增加或减少 VM 实例
-若要查看规模集中当前包含的实例数，请使用 [az vmss show](https://docs.azure.cn/cli/vmss?view=azure-cli-latest#az-vmss-show) 并查询 “sku.capacity”  ：
+若要查看规模集中当前包含的实例数，请使用 [az vmss show](https://docs.azure.cn/cli/vmss?view=azure-cli-latest#az-vmss-show) 并查询 sku.capacity  ：
 
 ```azurecli
 az vmss show \
@@ -206,10 +206,10 @@ az vmss list-instance-connection-info \
 ```
 
 ## <a name="use-data-disks-with-scale-sets"></a>将数据磁盘与规模集配合使用
-可以创建数据磁盘并与规模集配合使用。 前面的教程介绍了如何[管理 Azure 磁盘](tutorial-manage-disks.md)，其中概述了在数据磁盘而非 OS 磁盘上生成应用的最佳做法和用于实现此目的的性能改进。
+可以创建数据磁盘并与规模集配合使用。 前面的教程介绍了如何[管理 Azure 磁盘](tutorial-manage-disks.md)，其中概述了在数据磁盘而非 OS 磁盘上生成应用的最佳做法和性能改进。
 
 ### <a name="create-scale-set-with-data-disks"></a>创建具有数据磁盘的规模集
-若要创建规模集并附加数据磁盘，请将 `--data-disk-sizes-gb` 参数添加到 [az vmss create](https://docs.azure.cn/cli/vmss?view=azure-cli-latest#az-vmss-create) 命令中。 以下示例创建一个规模集，它具有附加到每个实例的 50  GB 数据磁盘：
+要创建规模集并附加数据磁盘，请将 `--data-disk-sizes-gb` 参数添加到 [az vmss create](https://docs.azure.cn/cli/vmss?view=azure-cli-latest#az-vmss-create) 命令中。 以下示例创建具有附加到每个实例的 50  GB 数据磁盘的规模集：
 
 ```azurecli
 az vmss create \
@@ -247,19 +247,19 @@ az vmss disk detach \
 ```
 
 ## <a name="next-steps"></a>后续步骤
-在本教程中，你已创建了一个虚拟机规模集。 你已了解如何：
+在本教程中，已创建虚拟机规模集。 你已了解如何执行以下操作：
 
 > [!div class="checklist"]
-> * 使用 cloud-init 创建可缩放的应用
+> * 使用 cloud-init 创建用于缩放的应用
 > * 创建虚拟机规模集
 > * 增加或减少规模集中的实例数
 > * 创建自动缩放规则
 > * 查看规模集实例的连接信息
 > * 在规模集中使用数据磁盘
 
-请继续学习下一教程，详细了解虚拟机的负载均衡概念。
+请继续学习下一篇教程，详细了解虚拟机的负载均衡概念。
 
 > [!div class="nextstepaction"]
-> [对虚拟机进行负载均衡](tutorial-load-balancer.md)
+> [均衡虚拟机的负载](tutorial-load-balancer.md)
 
 <!--Update_Description: update meta properties -->

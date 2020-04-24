@@ -12,10 +12,10 @@ ms.topic: conceptual
 origin.date: 12/17/2019
 ms.date: 03/16/2020
 ms.openlocfilehash: 59553e493ae00227f2d89102d0a234d7199d6fbd
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79291501"
 ---
 # <a name="set-up-authentication-for-azure-machine-learning-resources-and-workflows"></a>为 Azure 机器学习资源和工作流设置身份验证
@@ -33,7 +33,7 @@ ms.locfileid: "79291501"
 
 有关 Azure 机器学习内的安全性和身份验证的一般性概述，请参阅[概念文章](concept-enterprise-security.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * 创建 [Azure 机器学习工作区](how-to-manage-workspace.md)。
 * [配置开发环境](how-to-configure-environment.md)以安装 Azure 机器学习 SDK，或使用已安装 SDK 的 [Azure 机器学习 Notebook VM](concept-azure-machine-learning-architecture.md#compute-instance)。
@@ -259,7 +259,7 @@ print(token_response)
 
 Azure 机器学习中的 Web 服务使用不同于上述的身份验证模式。 要对部署的 Web 服务进行身份验证，最简单的方法是使用基于密钥的身份验证，这种身份验证会生成静态持有者类型身份验证密钥，无需刷新  。 如果你只需对部署的 Web 服务进行身份验证，则无需设置如上所述的服务主体身份验证。
 
-部署在 Azure Kubernetes 服务上的 Web 服务默认情况下会启用基于密钥的身份验证  。 默认情况下，Azure 容器实例部署的服务禁用基于密钥的身份验证，但你可以在创建 ACI Web 服务时通过设置 `auth_enabled=True` 来启用它  。 以下是创建已启用基于密钥的身份验证的 ACI 部署配置的示例。
+部署在 Azure Kubernetes 服务上的 Web 服务默认情况下会启用基于密钥的身份验证  。 默认情况下，Azure 容器实例部署的服务禁用基于密钥的身份验证，但你可以在创建 ACI Web 服务时通过设置  *来启用它*`auth_enabled=True`。 以下是创建已启用基于密钥的身份验证的 ACI 部署配置的示例。
 
 ```python
 from azureml.core.webservice import AciWebservice
@@ -302,7 +302,7 @@ Web 服务还支持基于令牌的身份验证，但仅用于 Azure Kubernetes �
 * 部署到 Azure Kubernetes 服务时，会默认禁用令牌身份验证  。
 * 部署到 Azure 容器实例时，不支持令牌身份验证  。
 
-若要控制令牌身份验证，请在创建或更新部署时使用 `token_auth_enabled` 参数。
+要控制令牌身份验证，请在创建或更新部署时使用 `token_auth_enabled` 参数。
 
 如果启用了令牌身份验证，可以使用 `get_token` 方法检索 JSON Web (JWT) 令牌以及该令牌的到期时间：
 

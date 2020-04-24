@@ -12,10 +12,10 @@ ms.date: 11/04/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 4c81064dc6a3b49e93c0e41ee4318a055341e1d3
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79292709"
 ---
 # <a name="create-hive-tables-and-load-data-from-azure-blob-storage"></a>从 Blob 存储创建 Hive 表和加载数据
@@ -40,7 +40,7 @@ ms.locfileid: "79292709"
 * 将所有文件**解压缩**为 .csv 文件，然后
 * 将它们上传  到 Azure 存储帐户的默认设置（或适当的容器）；在[将 Azure 存储与 Azure HDInsight 群集配合使用](../../hdinsight/hdinsight-hadoop-use-blob-storage.md)主题中介绍了用于这类帐户的选项。 可在此[文章](hive-walkthrough.md#upload)中找到将 .csv 文件上传到存储帐户的默认容器的流程。
 
-## <a name="submit"></a>如何提交 Hive 查询
+## <a name="how-to-submit-hive-queries"></a><a name="submit"></a>如何提交 Hive 查询
 可通过以下方法提交 Hive 查询：
 
 1. [在 Hadoop 群集的头节点中通过 Hadoop 命令行提交 Hive 查询](#headnode)
@@ -51,7 +51,7 @@ Hive 查询类似于 SQL。 如果熟悉 SQL，可能会发现[适用于 SQL 用
 
 提交 Hive 查询时，还可控制 Hive 查询的输出目标，无论是输出到屏幕上还是头节点上的本地文件，或是输入到 Azure blob。
 
-### <a name="headnode"></a> 1.在 Hadoop 群集的头节点中通过 Hadoop 命令行提交 Hive 查询
+### <a name="1-submit-hive-queries-through-hadoop-command-line-in-headnode-of-hadoop-cluster"></a><a name="headnode"></a> 1.在 Hadoop 群集的头节点中通过 Hadoop 命令行提交 Hive 查询
 如果是复杂的 Hive 查询，在 Hadoop 群集的头节点中直接提交通常比使用 Hive 编辑器或 Azure PowerShell 脚本进行提交的处理速度更快。
 
 登录到 Hadoop 群集的头节点，在头节点的桌面上打开 Hadoop 命令行，并输入命令 `cd %hive_home%\bin`。
@@ -111,13 +111,13 @@ Hive 查询类似于 SQL。 如果熟悉 SQL，可能会发现[适用于 SQL 用
 
 ![显示 Hive 查询输出的 Azure 存储资源管理器](./media/move-hive-tables/output-hive-results-3.png)
 
-### <a name="hive-editor"></a> 2.使用 Hive 编辑器提交 Hive 查询
+### <a name="2-submit-hive-queries-with-the-hive-editor"></a><a name="hive-editor"></a> 2.使用 Hive 编辑器提交 Hive 查询
 此外，还可以通过在 Web 浏览器中输入 URL 来使用查询控制台（Hive 编辑器），该 URL 的格式为“https:\//\<Hadoop 群集名称>.azurehdinsight.net/Home/HiveEditor”  。 必须先登录才能查看此控制台，因此需要使用 Hadoop 群集凭据进行登录。
 
-### <a name="ps"></a> 3.使用 Azure PowerShell 命令提交 Hive 查询
+### <a name="3-submit-hive-queries-with-azure-powershell-commands"></a><a name="ps"></a> 3.使用 Azure PowerShell 命令提交 Hive 查询
 也可以使用 PowerShell 来提交 Hive 查询。 有关说明，请参阅[使用 PowerShell 提交 Hive 作业](../../hdinsight/hadoop/apache-hadoop-use-hive-powershell.md)。
 
-## <a name="create-tables"></a>创建 Hive 数据库和表
+## <a name="create-hive-database-and-tables"></a><a name="create-tables"></a>创建 Hive 数据库和表
 Hive 查询在 [GitHub 存储库](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_create_db_tbls_load_data_generic.hql)中共享，并可从该处下载。
 
 以下是创建一个 Hive 表的 Hive 查询。
@@ -144,7 +144,7 @@ Hive 查询在 [GitHub 存储库](https://github.com/Azure/Azure-MachineLearning
 * **\<存储位置\>** ：用于保存 Hive 表数据的 Azure 存储位置。 如果你未指定 *LOCATION \<存储位置\>* ，则默认情况下，数据库和表存储在 Hive 群集的默认容器的 hive/warehouse/  目录中。 如果要指定存储位置，该存储位置必须在数据库和表的默认容器中。 此位置必须引用为与群集的默认容器相对的位置，格式为“wasb:///\<directory 1>/”  或“wasb:///\<directory 1>/\<directory 2>/”  等。执行查询后，相对目录会创建在默认容器中。
 * **TBLPROPERTIES("skip.header.line.count"="1")** ：如果数据文件具有标题行，则必须在 create table  查询的**末尾处**添加此属性。 否则，标题行将作为记录加载到表。 如果数据文件没有标题行，则可以在查询中省略此配置。
 
-## <a name="load-data"></a>将数据加载到 Hive 表
+## <a name="load-data-to-hive-tables"></a><a name="load-data"></a>将数据加载到 Hive 表
 以下是将数据加载到 Hive 表的 Hive 查询。
 
     LOAD DATA INPATH '<path to blob data>' INTO TABLE <database name>.<table name>;
@@ -156,7 +156,7 @@ Hive 查询在 [GitHub 存储库](https://github.com/Azure/Azure-MachineLearning
   >
   >
 
-## <a name="partition-orc"></a>高级主题：已分区表以及将 Hive 数据存储为 ORC 格式
+## <a name="advanced-topics-partitioned-table-and-store-hive-data-in-orc-format"></a><a name="partition-orc"></a>高级主题：已分区表以及将 Hive 数据存储为 ORC 格式
 如果数据较大，对表进行分区则有利于仅需要对表的少量分区进行扫描的查询。 例如，可以将网站的日志数据按照日期进行分区，这是合理的。
 
 除了对 Hive 表进行分区以外，还有益于以优化行纵栏表 (ORC) 格式存储 Hive 数据。 有关 ORC 格式设置的详细信息，请参阅<a href="https://cwiki.apache.org/confluence/display/Hive/LanguageManual+ORC#LanguageManualORC-ORCFiles" target="_blank">使用 ORC 文件提高 Hive 读取、写入和处理数据时的性能</a>。
@@ -181,7 +181,7 @@ Hive 查询在 [GitHub 存储库](https://github.com/Azure/Azure-MachineLearning
     from <database name>.<partitioned table name>
     where <partitionfieldname>=<partitionfieldvalue> and ...;
 
-### <a name="orc"></a>将 Hive 数据存储为 ORC 格式
+### <a name="store-hive-data-in-orc-format"></a><a name="orc"></a>将 Hive 数据存储为 ORC 格式
 不能直接将 Blob 存储中的数据加载到存储为 ORC 格式的 Hive 表中。 下面的步骤介绍了如何将 Azure blob 中的数据加载到存储为 ORC 格式的 Hive 表中。
 
 创建外部表 **STORED AS TEXTFILE**，然后将 Blob 存储中的数据加载到此表。

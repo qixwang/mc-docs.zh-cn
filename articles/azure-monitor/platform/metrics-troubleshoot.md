@@ -9,10 +9,10 @@ ms.date: 06/20/2019
 ms.author: v-lingwu
 ms.subservice: metrics
 ms.openlocfilehash: 4dbdfc0d6859eb373aab1c58d59bf13e24c84d49
-ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/17/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79452429"
 ---
 # <a name="troubleshooting-metrics-charts"></a>排查指标图表问题

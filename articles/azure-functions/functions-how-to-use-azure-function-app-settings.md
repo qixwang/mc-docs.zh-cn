@@ -11,10 +11,10 @@ ms.date: 09/29/2019
 ms.author: v-junlch
 ms.custom: cc996988-fb4f-47
 ms.openlocfilehash: e3408d094767d9098223c6bca6369372fde1173f
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79292967"
 ---
 # <a name="manage-your-function-app"></a>管理函数应用 
@@ -38,7 +38,7 @@ ms.locfileid: "79292967"
 
 可以从概述页导航到管理函数应用所需的所有内容，特别是 **[应用程序设置](#settings)** 和 **[平台功能](#platform-features)** 。
 
-## <a name="settings"></a>应用程序设置
+## <a name="application-settings"></a><a name="settings"></a>应用程序设置
 
 “应用程序设置”  选项卡维护函数应用使用的设置。 这些设置是加密存储的，必须选择“显示值”  才能查看门户中的值。 也可使用 Azure CLI 访问应用程序设置。
 
@@ -92,7 +92,7 @@ Function App 运行于 Azure 应用服务平台，并由该平台维护。 在�
 
 若要深入了解如何使用应用服务设置，请参阅[配置 Azure 应用服务设置](../app-service/configure-common.md)。
 
-### <a name="editor"></a>应用服务编辑器
+### <a name="app-service-editor"></a><a name="editor"></a>应用服务编辑器
 
 ![应用服务编辑器](./media/functions-how-to-use-azure-function-app-settings/configure-function-app-appservice-editor.png)
 
@@ -100,7 +100,7 @@ Function App 运行于 Azure 应用服务平台，并由该平台维护。 在�
 
 建议你考虑在本地计算机上开发函数。 在本地开发项目并将其发布到 Azure 时，项目文件在门户中处于只读状态。 若要了解详细信息，请参阅[在本地对 Azure Functions 进行编码和测试](functions-develop-local.md)。
 
-### <a name="console"></a>控制台
+### <a name="console"></a><a name="console"></a>控制台
 
 ![Function App 控制台](./media/functions-how-to-use-azure-function-app-settings/configure-function-console.png)
 
@@ -108,18 +108,18 @@ Function App 运行于 Azure 应用服务平台，并由该平台维护。 在�
 
 在本地进行开发时，建议使用 [Azure Functions Core Tools](functions-run-local.md) 和 [Azure CLI]。
 
-### <a name="kudu"></a>高级工具 (Kudu)
+### <a name="advanced-tools-kudu"></a><a name="kudu"></a>高级工具 (Kudu)
 
 ![配置 Kudu](./media/functions-how-to-use-azure-function-app-settings/configure-function-app-kudu.png)
 
-应用服务的高级工具（也称为 Kudu）提供对 Function App 高级管理功能的访问。 从 Kudu 中，可以管理系统信息、应用设置、环境变量、站点扩展、HTTP 头和服务器变量。 也可以通过浏览到 Function App 的 SCM 终结点（如 `https://<myfunctionapp>.scm.chinacloudsites.cn/`），启动 Kudu  
+应用服务的高级工具（也称为 Kudu）提供对 Function App 高级管理功能的访问。 从 Kudu 中，可以管理系统信息、应用设置、环境变量、站点扩展、HTTP 头和服务器变量。 也可以通过浏览到 Function App 的 SCM 终结点（如 **），启动 Kudu**`https://<myfunctionapp>.scm.chinacloudsites.cn/` 
 
 
-### <a name="deployment"></a>部署中心
+### <a name="deployment-center"></a><a name="deployment"></a>部署中心
 
 使用源代码管理解决方案来开发和维护函数代码时，可以使用部署中心通过源代码管理进行生成和部署。 进行更新时，会生成项目并将其部署到 Azure。 有关详细信息，请参阅 [Azure Functions 中的部署技术](functions-deployment-technologies.md)。
 
-### <a name="cors"></a>跨域资源共享
+### <a name="cross-origin-resource-sharing"></a><a name="cors"></a>跨域资源共享
 
 为了防止在客户端执行恶意代码，新式的浏览器会阻止 Web 应用程序向正在单独的域中运行的资源发送请求。 [跨域资源共享 (CORS)](https://developer.mozilla.org/docs/Web/HTTP/CORS) 允许 `Access-Control-Allow-Origin` 标头声明允许哪些域调用函数应用上的终结点。
 
@@ -141,7 +141,7 @@ az functionapp cors add --name <FUNCTION_APP_NAME> \
 
 使用 [`az functionapp cors show`](/cli/functionapp/cors#az-functionapp-cors-show) 命令列出目前允许的域。
 
-### <a name="auth"></a>身份验证
+### <a name="authentication"></a><a name="auth"></a>身份验证
 
 ![配置 Function App 的身份验证](./media/functions-how-to-use-azure-function-app-settings/configure-function-app-authentication.png)
 

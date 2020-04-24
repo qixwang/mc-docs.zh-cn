@@ -9,10 +9,10 @@ ms.date: 12/31/2019
 ms.author: v-lingwu
 ms.subservice: logs
 ms.openlocfilehash: 90732289f4223e9da27dacfa712bce7da23cb59a
-ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/17/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79452420"
 ---
 # <a name="overview-of-azure-platform-logs"></a>Azure 平台日志概述
@@ -28,7 +28,7 @@ ms.locfileid: "79452420"
 | Azure Active Directory 日志 | Azure 租户 |  包含特定租户的 Azure Active Directory 中的登录活动和更改审核日志的历史记录。 |
 
 > [!NOTE]
-> Azure 活动日志主要适用于 Azure Resource Manager 中发生的活动。 它不跟踪使用经典/RDFE 模型的资源。 某些经典资源类型在 Azure Resource Manager 中具有代理资源提供程序（例如 Microsoft.ClassicCompute）。 如果使用这些代理资源提供程序通过 Azure Resource Manager 与经典资源类型交互，相关操作出现在活动日志中。 如果在 Azure 资源管理器代理外部与经典资源类型进行交互，则操作只会记录在操作日志中。 可以在门户的一个单独部分中浏览操作日志。
+> Azure 活动日志主要用于在 Azure 资源管理器中发生的活动。 它不跟踪使用经典/RDFE 模型的资源。 某些经典资源类型在 Azure 资源管理器中具有代理资源提供程序（例如 Microsoft.ClassicCompute）。 如果通过 Azure 资源管理器使用这些代理资源提供程序与经典资源类型进行交互，则操作会显示在活动日志中。 如果在 Azure 资源管理器代理外部与经典资源类型进行交互，则操作只会记录在操作日志中。 可以在门户的一个单独部分中浏览操作日志。
 
 ![平台日志概述](media/platform-logs-overview/logs-overview.png)
 
@@ -44,7 +44,7 @@ ms.locfileid: "79452420"
 ## <a name="destinations"></a>Destinations
 可以将平台日志发送到下表中的一个或多个目标，具体取决于监视要求。 通过[创建诊断设置](diagnostic-settings.md)为平台日志配置目标。
 
-| 目标 | 方案 | 参考 |
+| 目标 | 场景 | 参考 |
 |:---|:---|:---|:---|
 | Log Analytics 工作区 | 借助其他监视数据对日志进行分析，并利用 Azure Monitor 功能（例如日志查询和警报）。 | [活动日志和资源日志](resource-logs-collect-workspace.md)<br> |
 | Azure 存储 | 将日志存档供审核、静态分析或备份。 |[活动日志和资源日志](archive-diagnostic-logs.md)<br> |

@@ -9,10 +9,10 @@ origin.date: 06/25/2019
 md.date: 03/23/2020
 ms.author: v-tawe
 ms.openlocfilehash: 917beb8d7acbd6a1a3782262003ab721cb1dc7cf
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79292148"
 ---
 # <a name="add-push-notifications-to-your-xamarinios-app"></a>向 Xamarin.iOS 应用添加推送通知
@@ -21,11 +21,11 @@ ms.locfileid: "79292148"
 
 ## <a name="overview"></a>概述
 
-本教程介绍如何向 [Xamarin.iOS 快速入门](app-service-mobile-xamarin-ios-get-started.md)项目添加推送通知，以便每次插入一条记录时，向设备发送一条推送通知。
+本教程介绍如何向 [Xamarin iOS 快速入门](app-service-mobile-xamarin-ios-get-started.md)项目添加推送通知，以便每次插入一条记录时，向设备发送一条推送通知。
 
-如果不使用下载的快速入门服务器项目，则需要推送通知扩展包。 有关详细信息，请参阅 [使用适用于 Azure 移动应用的 .NET 后端服务器 SDK](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md) 。
+如果不使用下载的快速入门服务器项目，则需要推送通知扩展包。 有关详细信息，请参阅[使用用于 Azure 移动应用的 .NET 后端服务器 SDK](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * 完成 [Xamarin.iOS 快速入门](app-service-mobile-xamarin-ios-get-started.md)教程。
 * 物理 iOS 设备。 iOS 模拟器不支持推送通知。
@@ -63,7 +63,7 @@ ms.locfileid: "79292148"
     }
     ```
 
-2. 在 **AppDelegate.cs** 文件顶部添加以下 `using` 语句。
+2. 在 `using`AppDelegate.cs**文件顶部添加以下** 语句。
 
     ```csharp
     using Microsoft.WindowsAzure.MobileServices;
@@ -134,15 +134,15 @@ ms.locfileid: "79292148"
 
 应用现已更新，可支持推送通知。
 
-## <a name="test"></a>在应用程序中测试推送通知
+## <a name="test-push-notifications-in-your-app"></a><a name="test"></a>在应用中测试推送通知
 
-1. 在支持 iOS 的设备中按“运行”  按钮，以生成项目并启动应用，然后单击“确定”  接受推送通知。
+1. 在支持 iOS 的设备中按“运行”  按钮，生成项目并启动应用，并单击“确定”  接受推送通知。
 
    > [!NOTE]
    > 必须显式接受来自应用程序的推送通知。 此请求只会在首次运行应用程序时出现。
 
-2. 在应用中，键入一项任务，然后单击加号 ( **+** ) 图标。
-3. 检查是否已收到通知，并单击“确定”以取消通知  。
-4. 重复步骤 2 并立即关闭应用，并检查是否已显示通知。
+2. 在应用中，键入一项任务，并单击加号 ( **+** ) 图标。
+3. 检查是否已收到通知，并单击“确定”  取消通知。
+4. 重复步骤 2 并立即关闭应用，然后验证是否显示通知。
 
 已成功完成本教程。

@@ -11,10 +11,10 @@ author: sdgilley
 origin.date: 11/04/2019
 ms.date: 03/09/2020
 ms.openlocfilehash: d65e472d5074fa8007526d924f35e3cd1af75b0e
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79292394"
 ---
 #  <a name="what-are-compute-targets-in-azure-machine-learning"></a>什么是 Azure 机器学习中的计算目标? 
@@ -28,7 +28,7 @@ ms.locfileid: "79292394"
 
 你用于计算目标的计算资源附加到[工作区](concept-workspace.md)。 本地计算机以外的计算资源由工作区的用户共享。
 
-## <a name="train"></a> 训练计算目标
+## <a name="training-compute-targets"></a><a name="train"></a> 训练计算目标
 
 Azure 机器学习为不同的计算资源提供不同的支持。  你也可以附加自己的计算资源，不过，为各种方案提供的支持可能有所不同。
 
@@ -36,7 +36,7 @@ Azure 机器学习为不同的计算资源提供不同的支持。  你也可以
 
 详细了解[设置并使用计算目标进行模型训练](how-to-set-up-training-targets.md)。
 
-## <a name="deploy"></a>部署目标
+## <a name="deployment-targets"></a><a name="deploy"></a>部署目标
 
 以下计算资源可用来托管模型部署。
 
@@ -51,7 +51,7 @@ Azure 机器学习为不同的计算资源提供不同的支持。  你也可以
 
 可以通过以下方法创建 Azure 机器学习计算实例（预览版）或计算群集：
 
-| | Azure 机器学习工作室 | Azure 门户 | SDK | Resource Manager 模板 | CLI |
+| | Azure 机器学习工作室 | Azure 门户 | SDK 中 IsInRole 中的声明 | 资源管理器模板 | CLI |
 |---| ----- | ----- | ----- | ----- | ----- |
 | 计算实例 | 是 | 是 | 是 | 是 |  |
 | 计算群集 | 是 | 是 | 是 | 是 | 是 |
@@ -75,6 +75,6 @@ Azure 机器学习为不同的计算资源提供不同的支持。  你也可以
 
 ## <a name="next-steps"></a>后续步骤
 
-了解如何：
+了解如何操作：
 * [设置用来训练模型的计算目标](how-to-set-up-training-targets.md)
 * [将模型部署到计算目标](how-to-deploy-and-where.md)

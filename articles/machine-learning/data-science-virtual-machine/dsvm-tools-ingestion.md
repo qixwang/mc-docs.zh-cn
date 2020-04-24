@@ -11,10 +11,10 @@ ms.author: gopalv
 ms.topic: conceptual
 ms.date: 10/11/2019
 ms.openlocfilehash: a208d683579762586905217fd2d9d12ee330f172
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79293425"
 ---
 # <a name="data-science-virtual-machine-data-ingestion-tools"></a>数据科学虚拟机数据引入工具
@@ -77,7 +77,7 @@ ms.locfileid: "79293425"
 | 支持的 DSVM 版本      | Windows      |
 | 典型用途      | 从 DSVM 导出数据或将数据导入其中。    |
 |  如何使用/运行它？    | 在“开始”菜单中搜索“Azure 存储资源管理器”。 |
-| 指向示例的链接      | [Azure 存储资源管理器](vm-do-ten-things.md#access-azure-data-and-analytics-services)      |
+| 指向示例的链接      | [Azure 存储浏览器](vm-do-ten-things.md#access-azure-data-and-analytics-services)      |
 
 
 ## <a name="bcp"></a>bcp

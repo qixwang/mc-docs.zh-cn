@@ -15,10 +15,10 @@ origin.date: 11/04/2019
 ms.author: v-yiso
 ms.date: 11/18/2018
 ms.openlocfilehash: 34b5399a9175a5185ad47bae3443e45c918cb0cb
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79291210"
 ---
 # <a name="azure-api-management-page-controls"></a>Azure API 管理页面控件
@@ -54,7 +54,7 @@ Azure API 管理提供以下控件，适用于开发人员门户模板。
   
 -   [subscription-cancel](#subscription-cancel)  
   
-##  <a name="app-actions"></a> app-actions  
+##  <a name="app-actions"></a><a name="app-actions"></a> app-actions  
  `app-actions` 控件提供的用户界面适用于与开发人员门户中用户配置文件页上的应用程序交互。  
   
  ![app&#45;actions 控件](./media/api-management-page-controls/APIM-app-actions-control.png "APIM app-actions 控件")  
@@ -76,7 +76,7 @@ Azure API 管理提供以下控件，适用于开发人员门户模板。
   
 -   [应用程序](./api-management-user-profile-templates.md#Applications)  
   
-##  <a name="basic-signin"></a> basic-signin  
+##  <a name="basic-signin"></a><a name="basic-signin"></a> basic-signin  
  `basic-signin` 控件提供了一个控件，用于收集开发人员门户中登录页上的用户登录信息。  
   
  ![basic&#45;signin 控件](./media/api-management-page-controls/APIM-basic-signin-control.png "APIM basic-signin 控件")  
@@ -95,8 +95,8 @@ Azure API 管理提供以下控件，适用于开发人员门户模板。
   
 -   [登录](./api-management-page-templates.md#SignIn)  
   
-##  <a name="paging-control"></a> paging-control  
- `paging-control` 在显示项目列表的开发人员门户页上提供分页功能。  
+##  <a name="paging-control"></a><a name="paging-control"></a> paging-control  
+ `paging-control` 在开发人员门户页上提供分页功能，该页面会显示项目列表。  
   
  ![分页控件](./media/api-management-page-controls/APIM-paging-control.png "APIM 分页控件")  
   
@@ -118,7 +118,7 @@ Azure API 管理提供以下控件，适用于开发人员门户模板。
   
 -   [产品列表](./api-management-product-templates.md#ProductList)  
   
-##  <a name="providers"></a> providers  
+##  <a name="providers"></a><a name="providers"></a> 提供程序  
  `providers` 控件提供了一个控件，用于选择开发人员门户的登录页中的身份验证提供程序。  
   
  ![提供程序控件](./media/api-management-page-controls/APIM-providers-control.png "APIM 提供程序控件")  
@@ -137,8 +137,8 @@ Azure API 管理提供以下控件，适用于开发人员门户模板。
   
 -   [登录](./api-management-page-templates.md#SignIn)  
   
-##  <a name="search-control"></a> search-control  
- `search-control` 在显示项目列表的开发人员门户页上提供搜索功能。  
+##  <a name="search-control"></a><a name="search-control"></a> search-control  
+ `search-control` 在开发人员门户页上提供搜索功能，该页面会显示项目列表。  
   
  ![搜索控件](./media/api-management-page-controls/APIM-search-control.png "APIM 搜索控件")  
   
@@ -158,7 +158,7 @@ Azure API 管理提供以下控件，适用于开发人员门户模板。
   
 -   [产品列表](./api-management-product-templates.md#ProductList)  
   
-##  <a name="sign-up"></a> sign-up  
+##  <a name="sign-up"></a><a name="sign-up"></a> 注册  
  `sign-up` 控件提供了一个控件，用于收集开发人员门户中注册页上的用户配置文件信息。  
   
  ![sign&#45;up 控件](./media/api-management-page-controls/APIM-sign-up-control.png "APIM 注册控件")  
@@ -177,7 +177,7 @@ Azure API 管理提供以下控件，适用于开发人员门户模板。
   
 -   [注册](./api-management-page-templates.md#SignUp)  
   
-##  <a name="subscribe-button"></a> subscribe-button  
+##  <a name="subscribe-button"></a><a name="subscribe-button"></a> subscribe-button  
  `subscribe-button` 提供了一个控件，可供用户订阅产品。  
   
  ![subscribe&#45;button 控件](./media/api-management-page-controls/APIM-subscribe-button-control.png "APIM subscribe-button 控件")  
@@ -194,9 +194,9 @@ Azure API 管理提供以下控件，适用于开发人员门户模板。
 ### <a name="developer-portal-templates"></a>开发人员门户模板  
  `subscribe-button` 控件可用于以下开发人员门户模板：  
   
--   [产品](./api-management-product-templates.md#Product)  
+-   [Product](./api-management-product-templates.md#Product)  
   
-##  <a name="subscription-cancel"></a> subscription-cancel  
+##  <a name="subscription-cancel"></a><a name="subscription-cancel"></a> subscription-cancel  
  `subscription-cancel` 控件提供了一个控件，用于在开发人员门户的用户配置文件页中取消产品订阅。  
   
  ![subscription&#45;cancel 控件](./media/api-management-page-controls/APIM-subscription-cancel-control.png "APIM subscription-cancel 控件")  
@@ -219,7 +219,7 @@ Azure API 管理提供以下控件，适用于开发人员门户模板。
 ### <a name="developer-portal-templates"></a>开发人员门户模板  
  `subscription-cancel` 控件可用于以下开发人员门户模板：  
   
--   [产品](./api-management-product-templates.md#Product)
+-   [Product](./api-management-product-templates.md#Product)
 
 ## <a name="next-steps"></a>后续步骤
 如需详细了解如何使用模板，请参阅[如何使用模板自定义 API 管理开发人员门户](./api-management-developer-portal-templates.md)。

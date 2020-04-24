@@ -8,10 +8,10 @@ origin.date: 02/11/2020
 ms.date: 02/21/2020
 ms.author: v-lingwu
 ms.openlocfilehash: 0f169ecd492a0f2bee362901fd9cad8e99db2edf
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79293382"
 ---
 # <a name="alter-utterance-data-before-or-during-prediction"></a>在预测之前或预测期间更改话语数据
@@ -24,7 +24,7 @@ LUIS 提供在预测之前或预测期间操作陈述的方法。 这些方法�
 
 终结点需要两个参数以进行拼写更正：
 
-|Param|Value|
+|Param|值|
 |--|--|
 |`spellCheck`|boolean|
 |`bing-spell-check-subscription-key`|[必应拼写检查 API V7](https://www.azure.cn/home/features/cognitive-services/spell-check/) 终结点密钥|
@@ -72,14 +72,14 @@ LUIS 中使用的必应拼写检查 API 不支持在拼写检查更改期间要�
 LUIS 应用使用预生成的 datetimeV2 实体时，可以在预测响应中返回日期/时间值。 请求的时区用于确定要返回的正确日期/时间。 如果请求在到达 LUIS 之前来自机器人或另一个集中式应用程序，则更正 LUIS 使用的时区。 
 
 ### <a name="endpoint-querystring-parameter"></a>终结点 querystring 参数
-通过使用 `timezoneOffset` 参数将用户的时区添加到[终结点](https://go.microsoft.com/fwlink/?linkid=2092356)来更正时区。 要更改时间，则 `timezoneOffset` 的值应为正数或负数（以分钟为单位）。  
+通过使用 [ 参数将用户的时区添加到](https://go.microsoft.com/fwlink/?linkid=2092356)终结点`timezoneOffset`来更正时区。 要更改时间，则 `timezoneOffset` 的值应为正数或负数（以分钟为单位）。  
 
-|Param|Value|
+|Param|值|
 |--|--|
 |`timezoneOffset`|正数或负数（以分钟为单位）|
 
 ### <a name="daylight-savings-example"></a>夏令时示例
-如果需要返回的预生成 datetimeV2 来调整夏令时，则对于该[终结点](https://go.microsoft.com/fwlink/?linkid=2092356)查询应使用值为正数/负数（以分钟为单位）的 `timezoneOffset` querystring 参数。
+如果需要返回的预生成 datetimeV2 来调整夏令时，则对于该`timezoneOffset`终结点[查询应使用值为正数/负数（以分钟为单位）的 ](https://go.microsoft.com/fwlink/?linkid=2092356) querystring 参数。
 
 #### <a name="v2-prediction-endpoint-request"></a>[V2 预测终结点请求](#tab/V2)
 

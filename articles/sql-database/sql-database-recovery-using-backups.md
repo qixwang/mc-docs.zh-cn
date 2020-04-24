@@ -13,10 +13,10 @@ ms.reviewer: mathoma, carlrab, danil
 origin.date: 09/26/2019
 ms.date: 03/16/2020
 ms.openlocfilehash: 6224d3587047dd027d7a9cdc98d1a98781b775f7
-ms.sourcegitcommit: dc862610e2169c1fce6fb0ae9eb7dd7567f86a0a
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79293763"
 ---
 # <a name="recover-an-azure-sql-database-by-using-automated-database-backups"></a>使用自动数据库备份恢复 Azure SQL 数据库

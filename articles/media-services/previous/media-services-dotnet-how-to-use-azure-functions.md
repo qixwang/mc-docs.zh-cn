@@ -16,10 +16,10 @@ origin.date: 03/18/2019
 ms.date: 04/01/2019
 ms.author: v-jay
 ms.openlocfilehash: 9402c962c9db755d87870939a070a40b8cf043c4
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79292478"
 ---
 # <a name="develop-azure-functions-with-media-services"></a>开发使用媒体服务的 Azure Functions
@@ -28,7 +28,7 @@ ms.locfileid: "79292478"
 
 如果你想要浏览并部署使用 Azure Media Services 的现有 Azure 功能，请查看[媒体服务 Azure Functions](https://github.com/Azure-Samples/media-services-dotnet-functions-integration)。 此存储库包含几个示例，示例中将使用媒体服务来演示有关直接从 Blob 存储引入内容、编码以及将内容写回 Blob 存储的工作流。 此存储库还包含演示如何通过 WebHook 和 Azure 队列监视作业通知的示例。 也可根据[媒体服务 Azure Functions](https://github.com/Azure-Samples/media-services-dotnet-functions-integration) 存储库中的示例进行 Functions 开发。 若要部署此函数，请按“部署到 Azure”  按钮。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - 必须先具有有效的 Azure 帐户，然后才能创建第一个函数。 如果还没有 Azure 帐户，[可以使用 1 元人民币试用帐户](https://www.azure.cn/zh-cn/pricing/1rmb-trial-full/?form-type=identityauth)。
 - 若要创建针对 Azure 媒体服务 (AMS) 帐户执行操作或者侦听媒体服务发送的事件的 Azure Functions，应该根据[此文](media-services-portal-create-account.md)中所述创建一个 AMS 帐户。
@@ -71,7 +71,7 @@ ms.locfileid: "79292478"
 
     ![files](./media/media-services-azure-functions/media-services-azure-functions005.png)
 
-4. 单击**创建**。 
+4. 单击“创建”。  
 
 ## <a name="files"></a>文件
 
@@ -136,7 +136,7 @@ project.json 文件包含依赖项。 下面是一个 **project.json** 文件示
 
 在实际方案中，很可能需要跟踪作业进度，并发布编码的资产。 有关详细信息，请参阅[使用 Azure WebHook 监视媒体服务作业通知](media-services-dotnet-check-job-progress-with-webhooks.md)。 有关更多示例，请参阅[媒体服务 Azure Functions](https://github.com/Azure-Samples/media-services-dotnet-functions-integration)。  
 
-将现有 run.csx 文件的内容替换为以下代码：定义后，请单击“保存并运行”  。
+使用以下代码替换现有 run.csx 文件的内容：函数定义完成后，单击“保存并运行”  。
 
 ```csharp
 #r "Microsoft.WindowsAzure.Storage"

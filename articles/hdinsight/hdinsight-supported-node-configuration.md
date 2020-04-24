@@ -11,10 +11,10 @@ ms.topic: conceptual
 origin.date: 08/26/2019
 ms.date: 03/13/2020
 ms.openlocfilehash: f493392e3fd926d5e235cb8eecc9053f457f14c7
-ms.sourcegitcommit: 32997a7d7585deaeb0ab7b8f928d397b18b343fa
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79295983"
 ---
 # <a name="what-are-the-default-and-recommended-node-configurations-for-azure-hdinsight"></a>Azure HDInsight 的默认的和建议的节点配置是什么？

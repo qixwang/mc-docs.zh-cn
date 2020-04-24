@@ -1,6 +1,6 @@
 ---
 title: 排查发送到 Azure 中 Windows VM 的特定 RDP 错误消息 | Azure
-description: 了解在尝试使用远程桌面连接到 Azure 中的 Windows 虚拟机时可能会收到的特定错误消息
+description: 了解在尝试使用远程桌面与 Azure 中 Windows 虚拟机的连接时收到的特定错误消息
 keywords: 远程桌面错误,远程桌面连接错误,无法连接到 VM,远程桌面故障排除
 services: virtual-machines-windows
 documentationcenter: ''
@@ -17,22 +17,22 @@ origin.date: 10/31/2018
 ms.date: 11/11/2019
 ms.author: v-yeche
 ms.openlocfilehash: 81f7c719ba05cecad4dc015614d9d3a89baeb1ce
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79293264"
 ---
-# <a name="troubleshooting-specific-rdp-error-messages-to-a-windows-vm-in-azure"></a>排查发送到 Azure 中 Windows VM 的特定 RDP 错误消息
-使用远程桌面连接到 Azure 中的 Windows 虚拟机 (VM) 时，可能会收到特定错误消息。 本文详细介绍遇到的一些更常见的错误消息，以及解决这些错误消息的故障排除步骤。 如果在使用 RDP 连接到 VM 时出现问题，但没有收到特定错误消息，请参阅[远程桌面故障排除指南](troubleshoot-rdp-connection.md)。
+# <a name="troubleshooting-specific-rdp-error-messages-to-a-windows-vm-in-azure"></a>Azure 中 Windows VM 特定 RDP 错误消息故障排除
+在使用远程桌面与 Azure 中 Windows 虚拟机 (VM) 的连接时，可能会收到特定错误消息。 本文详细介绍了一些遇到的更常见错误消息以及解决错误的故障排除步骤。 如果在使用 RDP 连接到 VM 时出现问题，但没有收到特定错误消息，请参阅[远程桌面故障排除指南](troubleshoot-rdp-connection.md)。
 
-有关特定错误消息的信息，请参阅以下文章：
+有关特定错误消息的信息，请参阅以下内容：
 
-* [由于没有可用于提供许可证的远程桌面许可证服务器，远程会话已断开连接](#rdplicense)。
-* [远程桌面找不到计算机“名称”。](#rdpname)
+* [由于没有可用于提供许可证的远程桌面授权服务器，远程会话已断开连接](#rdplicense)。
+* [远程桌面找不到计算机“名称”](#rdpname)。
 * [身份验证出错。无法联系本地安全机构](#rdpauth)。
-* [Windows 安全性错误：你的凭据不起作用](#wincred)。
-* [此计算机无法连接到远程计算机。](#rdpconnect)
+* [Windows 安全性错误：凭据无效](#wincred)。
+* [此计算机无法连接到远程计算机](#rdpconnect)。
 
 <a name="rdplicense"></a>
 
@@ -45,17 +45,17 @@ ms.locfileid: "79293264"
 
 如果实际上不需要两个以上同时与 VM 的远程桌面连接，可以使用服务器管理器删除远程桌面服务器角色。
 
-有关详细信息，请参阅博客文章 [Azure VM fails with "No Remote Desktop License Servers available"](https://blogs.msdn.microsoft.com/mast/2014/01/21/rdp-to-azure-vm-fails-with-no-remote-desktop-license-servers-available/)（Azure VM 失败并出现“没有可用的远程桌面许可证服务器”）。
+有关详细信息，请参阅博客文章 [Azure VM 失败并出现“没有可用的远程桌面许可证服务器”](https://blogs.msdn.microsoft.com/mast/2014/01/21/rdp-to-azure-vm-fails-with-no-remote-desktop-license-servers-available/)。
 
 <a name="rdpname"></a>
 
 ## <a name="remote-desktop-cant-find-the-computer-name"></a>远程桌面找不到计算机“名称”。
-原因：计算机上的远程桌面客户端无法解析 RDP 文件设置中的计算机名称。
+原因：计算机的远程桌面客户端无法解析 RDP 文件设置中的计算机名称。
 
 可能的解决方法：
 
 * 如果使用组织的 Intranet，请确保计算机可以访问代理服务器，并可以向其发送 HTTPS 流量。
-* 如果使用本地存储的 RDP 文件，请尝试使用门户生成的 RDP 文件。 此步骤可确保使用虚拟机或云服务的正确 DNS 名称和 VM 的终结点端口。 以下是门户生成的 RDP 文件示例：
+* 如果使用本地存储的 RDP 文件，请尝试使用门户生成的 RDP 文件。 此步骤确保使用虚拟机或云服务的正确 DNS 名称和 VM 的终结点端口。 以下是门户生成的 RDP 文件示例：
 
         full address:s:tailspin-azdatatier.chinacloudapp.cn:55919
         prompt for credentials:i:1
@@ -73,9 +73,9 @@ ms.locfileid: "79293264"
 <a name="rdpauth"></a>
 
 ## <a name="an-authentication-error-has-occurred-the-local-security-authority-cannot-be-contacted"></a>发生身份验证错误。 无法联系本地安全机构。
-原因：目标 VM 在凭据的用户名部分中找不到安全机构。
+原因：目标 VM 在凭据的用户名部分找不到安全机构。
 
-如果用户名格式为 SecurityAuthority  \\UserName  （例如：CORP\User1），则 SecurityAuthority  部分是 VM 的计算机名（表示本地安全机构）或 Active Directory 域名。
+如果用户名格式为 *SecurityAuthority*\\*UserName*（例如：CORP\User1），则 *SecurityAuthority* 部分是 VM 的计算机名（表示本地安全机构）或 Active Directory 域名。
 
 可能的解决方法：
 
@@ -85,15 +85,15 @@ ms.locfileid: "79293264"
 
 <a name="wincred"></a>
 
-## <a name="windows-security-error-your-credentials-did-not-work"></a>Windows 安全性错误：你的凭据无效。
+## <a name="windows-security-error-your-credentials-did-not-work"></a>Windows 安全性错误：凭据无效。
 原因：目标 VM 无法验证帐户名和密码。
 
 基于 Windows 的计算机可以验证本地帐户或域帐户的凭据。
 
-* 对于本地帐户，请使用 ComputerName  \\UserName  语法（例如：SQL1\Admin4798）。
-* 对于域帐户，请使用 DomainName  \\UserName  语法（例如：CONTOSO\peterodman）。
+* 对于本地帐户，请使用 *ComputerName*\\*UserName* 语法（例如：SQL1\Admin4798）。
+* 对于域帐户，请使用 *DomainName*\\*UserName* 语法（例如：CONTOSO\peterodmane）。
 
-如果已将 VM 提升为新的 Active Directory 林中的域控制器，则会将用于登录的本地管理员帐户转换为新的林和域中具有相同密码的等效帐户。 然后会删除本地帐户。
+如果已将 VM 提升为新的 Active Directory 林中的域控制器，则会将用于登录的本地管理员帐户转换为新的林和域中具有相同密码的等效帐户。 然后，将删除本地帐户。
 
 例如，如果使用本地帐户 DC1\DCAdmin 登录并将虚拟机提升为 corp.contoso.com 域的新林中的域控制器，则将删除 DC1\DCAdmin 本地帐户，并使用同一密码创建新的域帐户 (CORP\DCAdmin)。
 
@@ -113,7 +113,7 @@ ms.locfileid: "79293264"
 ## <a name="next-steps"></a>后续步骤
 如果没有发生这些错误，但在使用 RDP 连接时出现未知问题，请参阅[远程桌面故障排除指南](troubleshoot-rdp-connection.md?toc=%2fvirtual-machines%2fwindows%2ftoc.json)。
 
-* 有关排查访问 VM 上运行的应用程序时遇到的问题的步骤，请参阅 [Troubleshoot access to an application running on an Azure VM](../linux/troubleshoot-app-connection.md?toc=%2fvirtual-machines%2flinux%2ftoc.json)（排查访问 Azure VM 上运行的应用程序时遇到的问题）。
+* 有关用于访问 VM 上运行的应用程序的故障排除步骤，请参阅[对在 Azure VM 上运行的应用程序的访问进行故障排除](../linux/troubleshoot-app-connection.md?toc=%2fvirtual-machines%2flinux%2ftoc.json)。
 * 如果在 Azure 中使用 Secure Shell (SSH) 连接到 Linux VM 时遇到问题，请参阅[对 Azure 中到 Linux VM 的 SSH 连接进行故障排除](../linux/troubleshoot-ssh-connection.md?toc=%2fvirtual-machines%2flinux%2ftoc.json)。
 
 <!--Update_Description: update meta properties, wording update -->

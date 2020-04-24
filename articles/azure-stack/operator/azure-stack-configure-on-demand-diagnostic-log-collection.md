@@ -9,10 +9,10 @@ ms.author: v-jay
 ms.reviewer: shisab
 ms.lastreviewed: 01/16/2020
 ms.openlocfilehash: 891217e8d9ec0f951d128bffd13b13cb6161dddf
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79291851"
 ---
 # <a name="collect-azure-stack-hub-diagnostic-logs-on-demand"></a>按需收集 Azure Stack Hub 诊断日志

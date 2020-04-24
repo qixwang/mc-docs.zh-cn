@@ -6,10 +6,10 @@ origin.date: 09/23/2019
 ms.date: 03/09/2020
 ms.topic: conceptual
 ms.openlocfilehash: 6bde77b51de1e8d3ea9e474307236596b5974e3b
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79292787"
 ---
 # <a name="azure-policy-assignment-structure"></a>Azure Policy 分配结构
@@ -23,7 +23,7 @@ Azure Policy 使用策略分配来定义为哪些资源分配了哪些策略或�
 - metadata
 - 强制模式
 - 策略定义
-- 参数
+- parameters
 
 例如，以下 JSON 显示包含动态参数的、处于 _DoNotEnforce_ 模式的策略分配：
 
@@ -61,12 +61,12 @@ Azure Policy 使用策略分配来定义为哪些资源分配了哪些策略或�
 
 此属性具有以下值：
 
-|Mode |JSON 值 |类型 |手动修正 |活动日志条目 |说明 |
+|“模式” |JSON 值 |类型 |手动修正 |活动日志条目 |说明 |
 |-|-|-|-|-|-|
-|Enabled |默认 |string |是 |是 |在创建或更新资源期间强制实施策略效果。 |
-|已禁用 |DoNotEnforce |string |是 |否 | 在创建或更新资源期间不强制实施策略效果。 |
+|已启用 |默认 |字符串 |是 |是 |在创建或更新资源期间强制实施策略效果。 |
+|已禁用 |DoNotEnforce |字符串 |是 |否 | 在创建或更新资源期间不强制实施策略效果。 |
 
-如果未在策略或计划定义中指定 **enforcementMode**，则使用值 _Default_。 即使 **enforcementMode** 设置为 _DoNotEnforce_，也可以针对 [deployIfNotExists](./effects.md#deployifnotexists) 策略启动[修正任务](../how-to/remediate-resources.md)。
+如果未在策略或计划定义中指定 **enforcementMode**，则使用值 _Default_。 即使 [enforcementMode](../how-to/remediate-resources.md) 设置为 [DoNotEnforce](./effects.md#deployifnotexists)，也可以针对 **deployIfNotExists** 策略启动_修正任务_。
 
 ## <a name="policy-definition-id"></a>策略定义 ID
 
@@ -95,6 +95,6 @@ Azure Policy 使用策略分配来定义为哪些资源分配了哪些策略或�
 
 - 了解[策略定义结构](./definition-structure.md)。
 - 了解如何[以编程方式创建策略](../how-to/programmatically-create.md)。
-- 了解如何[获取合规性数据](../how-to/get-compliance-data.md)。
-- 了解如何[修正不合规的资源](../how-to/remediate-resources.md)。
+- 了解如何[获取符合性数据](../how-to/get-compliance-data.md)。
+- 了解如何[修正不符合的资源](../how-to/remediate-resources.md)。
 - 参阅[使用 Azure 管理组来组织资源](../../management-groups/overview.md)，了解什么是管理组。

@@ -7,10 +7,10 @@ origin.date: 04/25/2019
 ms.date: 10/25/2019
 ms.author: v-lingwu
 ms.openlocfilehash: 4291ed8c58bce2b44970038d5a45f5a7a01c0964
-ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/17/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79452568"
 ---
 # <a name="action-rules-preview"></a>操作规则（预览版）

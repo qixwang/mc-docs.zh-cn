@@ -4,10 +4,10 @@ description: 使用 v2 运行时的 Azure Functions host.json 文件的参考文
 ms.topic: conceptual
 ms.date: 03/03/2020
 ms.openlocfilehash: 72047f78508ba7bc679daeed10efaf6eea9738aa
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79292952"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x-and-later"></a>Azure Functions 2.x 及更高版本的 host.json 参考 
@@ -84,7 +84,7 @@ host.json 中与绑定相关的配置将同样地应用于函数应用中的每�
 
 ## <a name="extensions"></a>扩展
 
-返回包含所有特定于绑定的设置的对象的属性，例如 [http](#http) 和 [eventHub](#eventhub)。
+该属性返回一个对象，其中包含所有特定于绑定的设置，例如 [http](#http) 和 [eventHub](#eventhub)。
 
 ## <a name="extensionbundle"></a>extensionBundle 
 
@@ -94,7 +94,7 @@ host.json 中与绑定相关的配置将同样地应用于函数应用中的每�
 
 ## <a name="functions"></a>functions
 
-作业主机运行的函数列表。 空数组表示运行所有函数。 仅供在[本地运行](functions-run-local.md)时使用。 在 Azure 的函数应用中，应改为按照[如何在 Azure Functions 中禁用函数](disable-function.md)中的步骤禁用特定函数，而不是使用此设置。
+作业宿主运行的函数的列表。 空数组表示运行所有函数。 仅供在[本地运行](functions-run-local.md)时使用。 在 Azure 中的函数应用中，你应当改为按照[如何在 Azure Functions 中禁用函数](disable-function.md)中的步骤来禁用特定函数，而不是使用此设置。
 
 ```json
 {
@@ -130,9 +130,9 @@ host.json 中与绑定相关的配置将同样地应用于函数应用中的每�
 }
 ```
 
-|属性  |默认 | 说明 |
+|properties  |默认 | 说明 |
 |---------|---------|---------| 
-|enabled|是|指定是否已启用该功能。 | 
+|已启用|true|指定是否启用此功能。 | 
 |healthCheckInterval|10 秒|定期后台运行状况检查之间的时间间隔。 | 
 |healthCheckWindow|2 分钟|与 `healthCheckThreshold` 设置结合使用的滑动时间窗口。| 
 |healthCheckThreshold|6|在启动主机回收之前，运行状况检查可以失败的最大次数。| 
@@ -183,7 +183,7 @@ host.json 中与绑定相关的配置将同样地应用于函数应用中的每�
 }
 ```
 
-|属性  |默认 | 说明 |
+|properties  |默认 | 说明 |
 |---------|---------|---------| 
 |lockPeriod|00:00:15|占用函数级锁的时间段。 锁自动续订。| 
 |listenerLockPeriod|00:01:00|占用侦听器锁的时间段。| 

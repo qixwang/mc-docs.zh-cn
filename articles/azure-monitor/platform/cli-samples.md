@@ -1,6 +1,6 @@
 ---
 title: Azure Monitor CLI 快速入门示例
-description: Azure Monitor 功能的示例 CLI 命令。 Azure Monitor 是一项 Microsoft Azure 服务，允许用户发送警报通知、基于所配置的遥测数据调用 Web URL 和自动缩放云服务、虚拟机和 Web 应用。
+description: Azure 监视器功能的示例 CLI 命令。 Azure 监视器是一项 Microsoft Azure 服务，允许用户发送警报通知、基于所配置的遥测数据调用 Web URL 和自动缩放云服务、虚拟机和 Web 应用。
 author: lingliw
 ms.subservice: ''
 ms.topic: conceptual
@@ -8,16 +8,16 @@ origin.date: 05/16/2018
 ms.date: 01/21/2019
 ms.author: v-lingwu
 ms.openlocfilehash: e14a7b142219fa8ff6a5a1d8aee17029c916dd25
-ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/17/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79452355"
 ---
 # <a name="azure-monitor-cli-quick-start-samples"></a>Azure Monitor CLI 快速入门示例
-本文演示有助于访问 Azure 监视器功能的示例命令行接口 (CLI) 命令。 Azure Monitor 允许基于配置的遥测数据值自动缩放云服务、虚拟机和 Web 应用，以及发送警报通知或调用 Web URL。
+本文演示有助于访问 Azure 监视器功能的示例命令行接口 (CLI) 命令。 使用 Azure 监视器，可以基于配置的遥测数据值自动缩放云服务、虚拟机和 Web 应用以及发送警报通知或调用 Web URL。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 如果尚未安装 Azure CLI，请按照[安装 Azure CLI](/cli/install-azure-cli) 的说明进行操作。 请参阅 [Azure Monitor CLI 参考](/cli/monitor?view=azure-cli-latest)中的所有可用命令的完整参考。 
 
@@ -43,7 +43,7 @@ az account show
 az account set -s <Subscription ID or name>
 ```
 
-若要查看所有支持的 Azure Monitor 命令的列表，请执行以下操作。
+若要查看所有受支持的 Azure 监视器命令的列表，请执行以下操作。
 
 ```azurecli
 az monitor -h

@@ -4,10 +4,10 @@ description: 有关 Azure Functions 应用设置或环境变量的参考文档�
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.openlocfilehash: 97e416895e6aa6c6c07921f9d9daf06bc4c06076
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79293366"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Azure Functions 的应用设置参考

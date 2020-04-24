@@ -10,10 +10,10 @@ origin.date: 03/20/2019
 ms.date: 04/22/2019
 ms.author: v-yeche
 ms.openlocfilehash: d342c5b4b7b1c1a8a3cd8c18df60c62f44c14444
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79291367"
 ---
 # <a name="analyze-the-azure-site-recovery-deployment-planner-report"></a>分析 Azure Site Recovery 部署规划器报告

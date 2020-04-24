@@ -7,10 +7,10 @@ origin.date: 04/05/2019
 ms.date: 03/03/2020
 ms.topic: conceptual
 ms.openlocfilehash: 4062435497625589e9907f81c56d19fdb23dde05
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79292618"
 ---
 # <a name="automate-resources-in-your-datacenter-or-cloud-by-using-hybrid-runbook-worker"></a>使用混合 Runbook 辅助角色使数据中心或云端的资源实现自动化
@@ -31,7 +31,7 @@ Azure 自动化中的 Runbook 可能无权访问其他云或本地环境中的�
 
 若要安装和配置 Windows 混合 Runbook 辅助角色，可使用两种方法。 建议的方法是使用自动化 Runbook 来彻底实现配置 Windows 计算机过程的自动化。 第二种方法使用分步过程来手动安装和配置角色。 对于 Linux 计算机，运行 Python 脚本，在计算机上安装代理。
 
-|操作系统  |部署类型  |
+|OS  |部署类型  |
 |---------|---------|
 |Windows     | [PowerShell](automation-windows-hrw-install.md#automated-deployment)<br>[手动](automation-windows-hrw-install.md#manual-deployment)        |
 |Linux     | [Python](automation-linux-hrw-install.md#installing-a-linux-hybrid-runbook-worker)        |
@@ -53,7 +53,7 @@ Azure 自动化中的 Runbook 可能无权访问其他云或本地环境中的�
 
 ### <a name="windows"></a>Windows
 
-在管理员模式下打开 PowerShell 会话，并运行以下命令。 使用 **-Verbose** 开关可获取删除过程的详细日志。
+在管理员模式下打开 PowerShell 会话，并运行以下命令。 可使用 **-Verbose** 开关获取删除过程的详细日志。
 
 ```powershell
 Remove-HybridRunbookWorker -url <URL> -key <PrimaryAccessKey>
@@ -91,7 +91,7 @@ sudo python onboarding.py --deregister --endpoint="<URL>" --key="<PrimaryAccessK
 
    完成此过程可能需要数秒钟的时间。 可以在菜单中的“通知”下面跟踪操作进度  。
 
-## <a name="network-planning"></a>配置网络
+## <a name="configure-your-network"></a><a name="network-planning"></a>配置网络
 
 ### <a name="hybrid-worker-role"></a>混合辅助角色
 
@@ -103,7 +103,7 @@ sudo python onboarding.py --deregister --endpoint="<URL>" --key="<PrimaryAccessK
 
 混合 Runbook 辅助角色与自动化通信时需要以下端口和 URL：
 
-* 端口：只需使用 TCP 443 即可进行出站 Internet 访问。
+* 端口：只需使用 TCP 443 进行出站 Internet 访问。
 * 全局 URL：*.azure-automation.cn
 * 代理服务： https://\<workspaceId\>.agentsvc.azure-automation.cn
 

@@ -11,10 +11,10 @@ ms.date: 03/16/2020
 ms.topic: conceptual
 manager: digimobile
 ms.openlocfilehash: ed15ec9c45c988893567e379c16b9a8d091a3ae0
-ms.sourcegitcommit: dc862610e2169c1fce6fb0ae9eb7dd7567f86a0a
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79293849"
 ---
 # <a name="forward-azure-automation-state-configuration-reporting-data-to-azure-monitor-logs"></a>将 Azure Automation State Configuration 报表数据转发到 Azure Monitor 日志
@@ -32,7 +32,7 @@ Azure Automation State Configuration 会将节点状态数据保留 30 天。
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要开始将 Automation State Configuration 报表发送到 Azure Monitor 日志，需要准备：
 
@@ -133,7 +133,7 @@ Azure 自动化诊断在 Azure Monitor 日志中创建两种类别的记录：
 
 ### <a name="dscnodestatusdata"></a>DscNodeStatusData
 
-| 属性 | 说明 |
+| properties | 说明 |
 | --- | --- |
 | TimeGenerated |符合性检查运行的日期和时间。 |
 | OperationName |DscNodeStatusData。 |
@@ -141,12 +141,12 @@ Azure 自动化诊断在 Azure Monitor 日志中创建两种类别的记录：
 | NodeName_s |托管节点的名称。 |
 | NodeComplianceStatus_s |节点是否符合。 |
 | DscReportStatus |符合性检查是否已成功运行。 |
-| ConfigurationMode | 如何将配置应用到节点。 可能的值包括： <ul><li>*ApplyOnly*：DSC 将应用配置，且不执行进一步操作，除非有新配置被推送到目标节点或从服务器请求新配置。 首次应用新配置后，DSC 将不检查以前配置状态的偏离。 在 *ApplyOnly* 值生效之前，DSC 将尝试应用配置，直到成功。 </li><li>*ApplyAndMonitor*：这是默认值。 LCM 将应用任意新配置。 首次应用新配置后，如果目标节点偏离所需状态，DSC 将在日志中报告差异。 在 *ApplyAndMonitor* 值生效之前，DSC 将尝试应用配置，直到成功。</li><li>*ApplyAndAutoCorrect*：DSC 将应用任何新配置。 首次应用新配置后，如果目标节点偏离所需状态，DSC 将在日志中报告差异，然后重新应用当前配置。</li></ul> |
+| ConfigurationMode | 如何将配置应用到节点。 可能的值包括： <ul><li>ApplyOnly  ：DSC 将应用配置，且不执行进一步操作，除非有新配置被推送到目标节点或从服务器请求新配置。 首次应用新配置后，DSC 将不检查以前配置状态的偏离。 在 *ApplyOnly* 值生效之前，DSC 将尝试应用配置，直到成功。 </li><li>ApplyAndMonitor  ：这是默认值。 LCM 将应用任意新配置。 首次应用新配置后，如果目标节点偏离所需状态，DSC 将在日志中报告差异。 在 *ApplyAndMonitor* 值生效之前，DSC 将尝试应用配置，直到成功。</li><li>*ApplyAndAutoCorrect*：DSC 将应用任何新配置。 首次应用新配置后，如果目标节点偏离所需状态，DSC 将在日志中报告差异，然后重新应用当前配置。</li></ul> |
 | HostName_s | 托管节点的名称。 |
 | IPAddress | 托管节点的 IPv4 地址。 |
-| Category | DscNodeStatus。 |
+| 类别 | DscNodeStatus。 |
 | 资源 | Azure 自动化帐户的名称。 |
-| Tenant_g | 标识调用方的租户的 GUID。 |
+| Tenant_g | GUID，用于为 Caller 标识租户。 |
 | NodeId_g |标识托管节点的 GUID。 |
 | DscReportId_g |标识报表的 GUID。 |
 | LastSeenTime_t |上一次查看报表的日期和时间。 |
@@ -157,22 +157,22 @@ Azure 自动化诊断在 Azure Monitor 日志中创建两种类别的记录：
 | ResourceId |Azure 自动化帐户的标识符。 |
 | ResultDescription | 此操作的说明。 |
 | SubscriptionId | 自动化帐户的 Azure 订阅 ID (GUID)。 |
-| resourceGroup | 自动化帐户的资源组名称。 |
+| ResourceGroup | 自动化帐户的资源组的名称。 |
 | ResourceProvider | MICROSOFT.AUTOMATION。 |
 | ResourceType | AUTOMATIONACCOUNTS。 |
 | CorrelationId |作为合规性报告的相关性标识符的 GUID。 |
 
 ### <a name="dscresourcestatusdata"></a>DscResourceStatusData
 
-| 属性 | 说明 |
+| properties | 说明 |
 | --- | --- |
 | TimeGenerated |符合性检查运行的日期和时间。 |
 | OperationName |DscResourceStatusData|
 | ResultType |资源是否符合。 |
 | NodeName_s |托管节点的名称。 |
-| Category | DscNodeStatus。 |
+| 类别 | DscNodeStatus。 |
 | 资源 | Azure 自动化帐户的名称。 |
-| Tenant_g | 标识调用方的租户的 GUID。 |
+| Tenant_g | GUID，用于为 Caller 标识租户。 |
 | NodeId_g |标识托管节点的 GUID。 |
 | DscReportId_g |标识报表的 GUID。 |
 | DscResourceId_s |DSC 资源实例的名称。 |
@@ -184,20 +184,20 @@ Azure 自动化诊断在 Azure Monitor 日志中创建两种类别的记录：
 | ErrorCode_s | 资源失败时的错误代码。 |
 | ErrorMessage_s |资源失败时的错误消息。 |
 | DscResourceDuration_d |DSC 资源运行的时间（以秒为单位）。 |
-| SourceSystem | Azure Monitor 日志收集数据的方式。 对于 Azure 诊断，始终为 *Azure* 。 |
+| SourceSystem | Azure Monitor 日志收集数据的方式。 对于 Azure 诊断，始终为 Azure  。 |
 | ResourceId |指定 Azure 自动化帐户。 |
 | ResultDescription | 此操作的说明。 |
 | SubscriptionId | 自动化帐户的 Azure 订阅 ID (GUID)。 |
-| resourceGroup | 自动化帐户的资源组名称。 |
+| ResourceGroup | 自动化帐户的资源组的名称。 |
 | ResourceProvider | MICROSOFT.AUTOMATION。 |
 | ResourceType | AUTOMATIONACCOUNTS。 |
 | CorrelationId |作为合规性报告相关性 ID 的 GUID。 |
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>总结
 
 将 Automation State Configuration 数据发送到 Azure Monitor 日志后，可以通过以下操作更好地了解 Automation State Configuration 节点的状态：
 
-- 设置警报，以便在出现问题时通知你
+- 设置警报，以便在出现问题时获得通知
 - 使用自定义视图和搜索查询直观地显示 Runbook 结果、Runbook 作业状态，以及其他相关的关键指标。
 
 Azure Monitor 日志可以更直观地显示 Automation State Configuration 数据的运行情况，并且有助于更快地解决事件。

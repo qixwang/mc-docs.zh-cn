@@ -13,10 +13,10 @@ origin.date: 11/11/2019
 ms.date: 12/04/2019
 ms.author: v-lingwu
 ms.openlocfilehash: cfade31efe8fbc4d2361f8d865589138d5a32da7
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79292718"
 ---
 # <a name="patterns-improve-prediction-accuracy"></a>模式可提高预测的准确性
@@ -62,7 +62,7 @@ ms.locfileid: "79292718"
 ## <a name="pattern-only-apps"></a>只有模式的应用
 你可以构建其中的意向没有示例话语的应用，只要每个意向具有模式即可。 对于只有模式的应用，模式不能包含通过机器学习到的实体，因为这些实体要求具有示例话语。 
 
-## <a name="best-practices"></a>最佳实践
+## <a name="best-practices"></a>最佳做法
 了解[最佳实践](luis-concept-best-practices.md)。
 
 ## <a name="pattern-syntax"></a>模式语法

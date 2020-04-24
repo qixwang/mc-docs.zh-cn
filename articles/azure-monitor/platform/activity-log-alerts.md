@@ -8,10 +8,10 @@ origin.date: 09/17/2018
 ms.date: 6/4/2019
 ms.author: v-lingwu
 ms.openlocfilehash: cc5fbd6e0fa7b6c572160a304481f1b9abeb470b
-ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/17/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79452285"
 ---
 # <a name="alerts-on-activity-log"></a>根据活动日志发出警报 

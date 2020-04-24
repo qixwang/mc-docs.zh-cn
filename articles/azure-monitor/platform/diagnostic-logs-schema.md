@@ -8,10 +8,10 @@ ms.author: v-lingwu
 origin.date: 10/22/2019
 ms.date: 12/31/2019
 ms.openlocfilehash: dfbabbb4e4b0d62b435d76f996f3f26b83f431b1
-ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/17/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79452308"
 ---
 # <a name="supported-services-schemas-and-categories-for-azure-resource-logs"></a>Azure 资源日志支持的服务、架构和类别
@@ -27,12 +27,12 @@ ms.locfileid: "79452308"
 
 | 名称 | 必需/可选 | 说明 |
 |---|---|---|
-| time | 必须 | 事件时间戳 (UTC)。 |
-| ResourceId | 必须 | 发出事件的资源的资源 ID。 对于租户服务，其形式为 /tenants/tenant-id/providers/provider-name。 |
+| time | 必选 | 事件时间戳 (UTC)。 |
+| resourceId | 必选 | 发出事件的资源的资源 ID。 对于租户服务，其形式为 /tenants/tenant-id/providers/provider-name。 |
 | tenantId | 对于租户日志而言是必需的 | 此事件关联到的 Active Directory 租户的租户 ID。 此属性仅用于租户级日志，它不会出现在资源级日志中。 |
-| operationName | 必须 | 此事件表示的操作的名称。 如果该事件表示 RBAC 操作，则这是 RBAC 操作名称 （例如 Microsoft.Storage/storageAccounts/blobServices/blobs/Read）。 通常以资源管理器操作的形式建模，即使它们不是实际记录的资源管理器操作 (`Microsoft.<providerName>/<resourceType>/<subtype>/<Write/Read/Delete/Action>`) |
+| operationName | 必选 | 此事件表示的操作的名称。 如果该事件表示 RBAC 操作，则这是 RBAC 操作名称 （例如 Microsoft.Storage/storageAccounts/blobServices/blobs/Read）。 通常以资源管理器操作的形式建模，即使它们不是实际记录的资源管理器操作 (`Microsoft.<providerName>/<resourceType>/<subtype>/<Write/Read/Delete/Action>`) |
 | operationVersion | 可选 | 如果使用 API 执行 operationName，则 api-version 与该操作关联（例如 `http://myservice.windowsazure.net/object?api-version=2016-06-01`）。 如果没有与此操作相对应的 API，则该版本表示该操作的版本，以防与操作相关联的属性在将来发生更改。 |
-| category | 必须 | 事件的日志类别。 类别是可以在特定资源上启用或禁用日志的粒度。 在事件的属性 blob 内显示的属性在特定日志类别和资源类型中相同。 典型的日志类别是“Audit”、“Operational”、“Execution”和“Request”。 |
+| category | 必选 | 事件的日志类别。 类别是可以在特定资源上启用或禁用日志的粒度。 在事件的属性 blob 内显示的属性在特定日志类别和资源类型中相同。 典型的日志类别是“Audit”、“Operational”、“Execution”和“Request”。 |
 | resultType | 可选 | 事件的状态。 典型值包括“Started”、“In Progress”、“Succeeded”、“Failed”、“Active”和“Resolved”。 |
 | resultSignature | 可选 | 事件的子状态。 如果此操作对应于 REST API 调用，则这是相应 REST 调用的 HTTP 状态代码。 |
 | resultDescription | 可选 | 此操作的静态文本说明，例如 “获取存储文件”。 |
@@ -40,7 +40,7 @@ ms.locfileid: "79452308"
 | callerIpAddress | 可选 | 调用方 IP 地址，如果该操作对应于来自具有公开 IP 地址的实体的 API 调用。 |
 | correlationId | 可选 | 用于将一组相关事件组合在一起的 GUID。 通常情况下，如果两个事件具有相同 operationName，但具有两个不同状态（例如 “Started”和“Succeeded”），则它们共享相同的关联 ID。 这也可以代表事件之间的其他关系。 |
 | identity | 可选 | 描述执行操作的用户或应用程序的标识的 JSON Blob。 通常，这将包括 Active Directory 中的授权和声明/JWT 令牌。 |
-| Level | 可选 | 事件的严重级别。 必须是信息性、警告、错误或严重。 |
+| 级别 | 可选 | 事件的严重级别。 必须是信息性、警告、错误或严重。 |
 | location | 可选 | 发出事件的资源区域，例如 “中国东部”或“中国北部” |
 | properties | 可选 | 与此特定类别的事件相关的任何扩展属性。 所有自定义/唯一属性都必须放入此架构的“B 部分”。 |
 
@@ -52,8 +52,8 @@ ms.locfileid: "79452308"
 | Analysis Services | https://azure.microsoft.com/blog/azure-analysis-services-integration-with-azure-diagnostic-logs/ |
 | API 管理 | [API 管理诊断日志](../../api-management/api-management-howto-use-azure-monitor.md#diagnostic-logs) |
 | 应用程序网关 |[应用程序网关的诊断日志记录](../../application-gateway/application-gateway-diagnostics.md) |
-| Azure 自动化 |[适用于 Azure 自动化的 Log Analytics](../../automation/automation-manage-send-joblogs-log-analytics.md) |
-| Azure Batch |[Azure Batch 诊断日志记录](../../batch/batch-diagnostics.md) |
+| Azure 自动化 |[Azure 自动化的 Log Analytics](../../automation/automation-manage-send-joblogs-log-analytics.md) |
+| Azure 批处理 |[Azure Batch 诊断日志记录](../../batch/batch-diagnostics.md) |
 | Azure Database for MySQL | [Azure Database for MySQL 诊断日志](../../mysql/concepts-server-logs.md#diagnostic-logs) |
 | Azure Database for PostgreSQL | [Azure Database for PostgreSQL 诊断日志](../../postgresql/concepts-server-logs.md#diagnostic-logs) |
 | 认知服务 | 架构不可用。 |
@@ -70,7 +70,7 @@ ms.locfileid: "79452308"
 | 虚拟网络网关 | 架构不可用。 |
 
 ## <a name="supported-log-categories-per-resource-type"></a>每种资源类型支持的日志类别
-|资源类型|Category|类别显示名称|
+|资源类型|类别|类别显示名称|
 |---|---|---|
 |Microsoft.AAD/domainServices|SystemSecurity|SystemSecurity|
 |Microsoft.AAD/domainServices|AccountManagement|AccountManagement|
@@ -113,7 +113,7 @@ ms.locfileid: "79452308"
 |Microsoft.Databricks/workspaces|笔记本|Databricks Notebook|
 |Microsoft.Databricks/workspaces|ssh|Databricks SSH|
 |Microsoft.Databricks/workspaces|工作区|Databricks 工作区|
-|Microsoft.Databricks/workspaces|secrets|Databricks 机密|
+|Microsoft.Databricks/workspaces|机密|Databricks 机密|
 |Microsoft.Databricks/workspaces|sqlPermissions|Databricks SQLPermissions|
 |Microsoft.Databricks/workspaces|instancePools|实例池|
 |Microsoft.DataCatalog/datacatalogs|ScanStatusLogEvent|ScanStatus|
@@ -121,9 +121,9 @@ ms.locfileid: "79452308"
 |Microsoft.DataFactory/factories|PipelineRuns|管道运行日志|
 |Microsoft.DataFactory/factories|TriggerRuns|触发器运行日志|
 |Microsoft.DataLakeAnalytics/accounts|审核|审核日志|
-|Microsoft.DataLakeAnalytics/accounts|请求|请求日志|
+|Microsoft.DataLakeAnalytics/accounts|Requests|请求日志|
 |Microsoft.DataLakeStore/accounts|审核|审核日志|
-|Microsoft.DataLakeStore/accounts|请求|请求日志|
+|Microsoft.DataLakeStore/accounts|Requests|请求日志|
 |Microsoft.DataShare/accounts|共享|共享|
 |Microsoft.DataShare/accounts|ShareSubscriptions|共享订阅|
 |Microsoft.DataShare/accounts|SentShareSnapshots|已发送共享快照|
@@ -136,14 +136,14 @@ ms.locfileid: "79452308"
 |Microsoft.DBforPostgreSQL/serversv2|PostgreSQLLogs|PostgreSQL 服务器日志|
 |Microsoft.DBforPostgreSQL/serversv2|QueryStoreRuntimeStatistics|PostgreSQL 查询存储运行时统计信息|
 |Microsoft.DBforPostgreSQL/serversv2|QueryStoreWaitStatistics|PostgreSQL 查询存储等待统计信息|
-|Microsoft.DesktopVirtualization/workspaces|检查点|检查点|
+|Microsoft.DesktopVirtualization/workspaces|Checkpoint|Checkpoint|
 |Microsoft.DesktopVirtualization/workspaces|错误|错误|
 |Microsoft.DesktopVirtualization/workspaces|管理|管理|
 |Microsoft.DesktopVirtualization/workspaces|源|源|
-|Microsoft.DesktopVirtualization/applicationGroups|检查点|检查点|
+|Microsoft.DesktopVirtualization/applicationGroups|Checkpoint|Checkpoint|
 |Microsoft.DesktopVirtualization/applicationGroups|错误|错误|
 |Microsoft.DesktopVirtualization/applicationGroups|管理|管理|
-|Microsoft.DesktopVirtualization/hostPools|检查点|检查点|
+|Microsoft.DesktopVirtualization/hostPools|Checkpoint|Checkpoint|
 |Microsoft.DesktopVirtualization/hostPools|错误|错误|
 |Microsoft.DesktopVirtualization/hostPools|管理|管理|
 |Microsoft.DesktopVirtualization/hostPools|连接|连接|
@@ -171,7 +171,7 @@ ms.locfileid: "79452308"
 |Microsoft.DocumentDB/databaseAccounts|ControlPlaneRequests|ControlPlaneRequests|
 |Microsoft.EnterpriseKnowledgeGraph/services|AuditEvent|AuditEvent 日志|
 |Microsoft.EnterpriseKnowledgeGraph/services|DataIssue|DataIssue 日志|
-|Microsoft.EnterpriseKnowledgeGraph/services|请求|配置日志|
+|Microsoft.EnterpriseKnowledgeGraph/services|Requests|配置日志|
 |Microsoft.EventHub/namespaces|ArchiveLogs|存档日志|
 |Microsoft.EventHub/namespaces|OperationalLogs|操作日志|
 |Microsoft.EventHub/namespaces|AutoScaleLogs|自动缩放日志|

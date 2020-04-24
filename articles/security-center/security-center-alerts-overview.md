@@ -12,10 +12,10 @@ origin.date: 11/04/2019
 ms.date: 03/13/2020
 ms.author: v-lingwu
 ms.openlocfilehash: 0f4bc84a76460d13b8ee4742e985fd8643b4d622
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79290663"
 ---
 # <a name="security-alerts-in-azure-security-center"></a>Azure 安全中心的安全警报
@@ -24,7 +24,7 @@ Azure 安全中心提供许多不同资源类型的各种警报。 安全中心�
 
 安全警报由高级检测触发，仅在 Azure 安全中心标准层中提供。 有免费试用版可用。 可以在 [安全策略](security-center-pricing.md)中从选择定价层开始升级。 访问 [“安全中心”页](https://www.azure.cn/zh-cn/pricing/details/security-center/) ，了解详细的定价情况。
 
-## 应对当前的威胁 <a name="respond-threats"> </a>
+## <a name="responding-to-todays-threats"></a>应对当前的威胁 <a name="respond-threats"> </a>
 
 过去 20 年里，威胁态势有了很大的改变。 在过去，公司通常只需担心网站被各个攻击者改头换面。许多情况下，这些攻击者感兴趣的是看看“自己能够做什么”。 而现在，攻击者则更为复杂，更有组织性。 他们通常有具体的经济和战略目标。 他们的可用资源也更多，因为他们可能是由国家/地区提供资金支持的，可能是有组织犯罪。
 
@@ -37,7 +37,7 @@ Azure 安全中心提供许多不同资源类型的各种警报。 安全中心�
 
 警报是安全中心在检测到资源遭受威胁时生成的通知。 安全中心按优先级列出警报，同时会提供所需的信息让你快速调查问题。 安全中心还提供有关如何针对攻击采取补救措施的建议。
 
-## 安全中心如何检测威胁？ <a name="detect-threats"> </a>
+## <a name="how-does-security-center-detect-threats"></a>安全中心如何检测威胁？ <a name="detect-threats"> </a>
 
 Microsoft 安全研究人员始终在不断地寻找威胁。 由于 Microsoft 在云中和本地的广泛存在，他们可以访问大量的遥测数据。 由于能够广泛访问和收集各种数据集，因此可以通过本地消费产品和企业产品以及联机服务发现新的攻击模式和趋势。 因此，当攻击者发布新的越来越复杂的漏斗利用方式时，安全中心就可以快速更新其检测算法。 此方法可以让用户始终跟上变化莫测的威胁环境。
 

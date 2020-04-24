@@ -15,10 +15,10 @@ origin.date: 06/11/2019
 ms.date: 03/23/2020
 ms.author: v-yiso
 ms.openlocfilehash: 0732b14a63ab46bc1420fd79a0e336b046c303f5
-ms.sourcegitcommit: 32997a7d7585deaeb0ab7b8f928d397b18b343fa
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79295959"
 ---
 # <a name="what-is-apache-hadoop-in-azure-hdinsight"></a>什么是 Azure HDInsight 中的 Apache Hadoop？
@@ -27,15 +27,15 @@ ms.locfileid: "79295959"
 
 Azure HDInsight 是云中适用于企业的分析服务，具有完全托管、全面且开源的特点。 Azure HDInsight 中的 Apache Hadoop 群集类型可让你使用 HDFS、YARN 资源管理和简单的 MapReduce 编程模型来并行处理和分析批数据。
 
-若要查看 HDInsight 上的可用 Hadoop 技术堆栈组件，请参阅[可以与 HDInsight 配合使用的组件和版本][component-versioning]。 若要详细了解 HDInsight 中的 Hadoop，请参阅 [Azure 上介绍了 HDInsight 功能的页面](/hdinsight/)。
+若要查看 HDInsight 上的可用 Hadoop 技术堆栈组件，请参阅[可以与 HDInsight 配合使用的组件和版本][component-versioning]。 若要详细了解 HDInsight 中的 Hadoop，请参阅 [HDInsight 的 Azure 功能页](/hdinsight/)。
 
-## <a id="whatis"></a>什么是 MapReduce
+## <a name="what-is-mapreduce"></a><a id="whatis"></a>什么是 MapReduce
 
 Apache Hadoop MapReduce 是一个软件框架，用于编写处理海量数据的作业。 输入的数据将拆分为独立的区块。 每个区块跨群集中的节点并行进行处理。 MapReduce 作业包括两个函数：
 
-* **Mapper**：使用输入数据，对数据进行分析（通常使用筛选器和排序操作），并发出元组（键/值对）
+* **映射器**：使用输入数据，对数据进行分析（通常使用筛选器和排序操作），并发出元组（键/值对）
 
-* **Reducer**：使用 Mapper 发出的元组并执行汇总运算，以基于 Mapper 数据创建更小的合并结果
+* **化简器**：使用映射器发出的元组并执行汇总运算，以基于映射器数据创建更小的合并结果
 
 下图演示了一个基本的单词计数 MapReduce 作业示例：   
 
@@ -43,7 +43,7 @@ Apache Hadoop MapReduce 是一个软件框架，用于编写处理海量数据�
 
 此作业的输出是文本中每个单词出现次数的计数。
 
-* mapper 将输入文本中的每一行作为一个输入并将其拆分为多个单词。 每当一个单词出现时，mapper 发出一个键/值对，其中在该单词后跟一个 1。 然后将输出排序，再发送到 reducer。
+* 映射器将输入文本中的每行用作一个输入并将其拆分为多个单词。 每当文本中的单词后跟一个 1 时，映射器将发出一个键/值对。 输出在发送到化简器之前经过排序。
 * 随后，化简器会计算每个单词的计数的和并发出一个键/值对（包含单词，后跟该单词的总出现次数）。
 
 MapReduce 可使用多种语言实现。 Java 是最常见的实现，本文档中使用该语言进行演示。

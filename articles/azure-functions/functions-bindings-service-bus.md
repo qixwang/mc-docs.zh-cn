@@ -7,15 +7,15 @@ ms.topic: reference
 ms.date: 03/03/2020
 ms.author: v-junlch
 ms.openlocfilehash: fbe5e81437b1e6ecb60f3c3074f383b55d614453
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79292845"
 ---
 # <a name="azure-service-bus-bindings-for-azure-functions"></a>Azure Functions 的 Azure 服务总线绑定
 
-Azure Functions 通过[触发器和绑定](./functions-triggers-bindings.md)与 [Azure 服务总线](https://www.azure.cn/home/features/service-bus)集成。 与服务总线集成后，你可以构建响应和发送队列或主题消息的函数。
+Azure Functions 通过[触发器和绑定](https://www.azure.cn/home/features/service-bus)与 [Azure 服务总线](./functions-triggers-bindings.md)集成。 与服务总线集成后，你可以构建响应和发送队列或主题消息的函数。
 
 | 操作 | 类型 |
 |---------|---------|
@@ -26,7 +26,7 @@ Azure Functions 通过[触发器和绑定](./functions-triggers-bindings.md)与 
 
 ### <a name="functions-2x-and-higher"></a>Functions 2.x 及更高版本
 
-使用触发器和绑定需要引用相应的程序包。 NuGet 包用于 .NET 类库，而扩展捆绑包用于其他所有应用程序类型。
+使用触发器和绑定需要引用相应的包。 NuGet 包用于 .NET 类库，而扩展捆绑包用于其他所有应用程序类型。
 
 | 语言                                        | 添加方式...                                   | 备注 
 |-------------------------------------------------|---------------------------------------------|-------------|

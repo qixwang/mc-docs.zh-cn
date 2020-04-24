@@ -9,10 +9,10 @@ origin.date: 02/13/2019
 ms.date: 6/4/2019
 ms.author: v-lingwu
 ms.openlocfilehash: 08e47dda2ae9e76c958b7c68cbf09519687416b4
-ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/17/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79452381"
 ---
 # <a name="application-insights-connector-management-solution-deprecated"></a>Application Insights 连接器管理解决方案（已弃用）
@@ -50,7 +50,7 @@ ms.locfileid: "79452381"
 | [Linux 代理](../../azure-monitor/learn/quick-collect-linux-computer.md) | 否 | 解决方案不会从 Linux 代理收集信息。 |
 | [Azure 存储帐户](resource-logs-collect-workspace.md) | 否 | 该解决方案不会从 Azure 存储收集信息。 |
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - 若要访问 Application Insights 连接器信息，必须拥有 Azure 订阅
 - 必须至少配置了一个 Application Insights 资源。
@@ -162,8 +162,8 @@ ApplicationInsights | summarize AggregatedValue = sum(SampledCount) by Telemetry
 解决方案从连接的 Application Insights 应用接收以下遥测类型的数据：
 
 - 可用性
-- 异常
-- 请求
+- 例外
+- Requests
 - 页面视图 - 要使工作区接收页面视图，必须将应用配置为收集该信息。 有关详细信息，请参阅 [PageViews](../../azure-monitor/app/api-custom-events-metrics.md#page-views)。
 - 自定义事件 - 要使工作区接收自定义事件，必须将应用配置为收集该信息。 有关详细信息，请参阅 [TrackEvent](../../azure-monitor/app/api-custom-events-metrics.md#trackevent)。
 
@@ -175,7 +175,7 @@ ApplicationInsights | summarize AggregatedValue = sum(SampledCount) by Telemetry
 
 ### <a name="generic-fields"></a>泛型字段
 
-| 属性 | 说明 |
+| properties | 说明 |
 | --- | --- |
 | 类型 | ApplicationInsights |
 | ClientIP |   |
@@ -201,7 +201,7 @@ ApplicationInsights | summarize AggregatedValue = sum(SampledCount) by Telemetry
 
 ### <a name="availability-specific-fields"></a>可用性特定的字段
 
-| 属性 | 说明 |
+| properties | 说明 |
 | --- | --- |
 | TelemetryType | 可用性 |
 | AvailabilityTestName | Web 测试的名称 |
@@ -243,7 +243,7 @@ ApplicationInsights | summarize AggregatedValue = sum(SampledCount) by Telemetry
 
 ### <a name="request-specific-fields"></a>请求特定的字段
 
-| 属性 | 说明 |
+| properties | 说明 |
 | --- | --- |
 | 类型 | ApplicationInsights |
 | TelemetryType | 请求 |
@@ -252,7 +252,7 @@ ApplicationInsights | summarize AggregatedValue = sum(SampledCount) by Telemetry
 | RequestID | 用于唯一标识请求的 ID |
 | RequestName | GET/POST + URL 基 |
 | RequestDuration | 请求持续时间（秒） |
-| URL | 请求的 URL，不包括主机 |
+| 代码 | 请求的 URL，不包括主机 |
 | 主机 | Web 服务器主机 |
 | URLBase | 请求的完整 URL |
 | ApplicationProtocol | 应用程序使用的协议类型 |

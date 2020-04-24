@@ -13,10 +13,10 @@ ms.date: 02/25/2020
 ms.custom: mvc
 ms.author: v-lingwu
 ms.openlocfilehash: 6065f7c49f9fe1554b8ecdaf866e27a93df1d8c0
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79291764"
 ---
 # <a name="what-is-azure-service-bus"></a>什么是 Azure 服务总线？
@@ -103,7 +103,7 @@ Microsoft Azure 服务总线是一种完全托管的企业集成消息中转站�
 
 ### <a name="geo-disaster-recovery"></a>异地灾难恢复
 
-在 Azure 区域或数据中心遭遇停机的情况下，可以使用异地灾难恢复在其他区域或数据中心进行数据处理，以实现连续运行。 有关详细信息，请参阅 [Azure 服务总线异地灾难恢复](service-bus-geo-dr.md)。
+在 Azure 区域数据中心遭遇停机的情况下，可以使用异地灾难恢复在其他区域或数据中心进行数据处理，以实现连续运行。 有关详细信息，请参阅 [Azure 服务总线异地灾难恢复](service-bus-geo-dr.md)。
 
 ### <a name="security"></a>安全性
 

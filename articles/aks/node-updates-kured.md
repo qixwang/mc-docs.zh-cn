@@ -7,10 +7,10 @@ origin.date: 02/28/2019
 ms.date: 03/09/2020
 ms.author: v-yeche
 ms.openlocfilehash: a72d88f8dfb2d5baba1341390d707add91a0bba5
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79290724"
 ---
 # <a name="apply-security-and-kernel-updates-to-linux-nodes-in-azure-kubernetes-service-aks"></a>将安全更新和内核更新应用于 Azure Kubernetes 服务 (AKS) 中的 Linux 节点
@@ -24,7 +24,7 @@ ms.locfileid: "79290724"
 > [!NOTE]
 > `Kured` 是 Weaveworks 提供的一个开源项目。 我们尽可能地在 AKS 中提供对该项目的支持。 在 #weave-community Slack 通道中可找到其他支持。
 
-## <a name="before-you-begin"></a>准备阶段
+## <a name="before-you-begin"></a>开始之前
 
 本文假定你拥有现有的 AKS 群集。 如果需要 AKS 群集，请参阅 AKS 快速入门[使用 Azure CLI][aks-quickstart-cli] 或[使用 Azure 门户][aks-quickstart-portal]。
 
@@ -92,7 +92,7 @@ NAME                       STATUS                     ROLES     AGE       VERSIO
 aks-nodepool1-28993262-0   Ready,SchedulingDisabled   agent     1h        v1.11.7
 ```
 
-更新过程完成后，可使用带有 `--output wide` 参数的 [kubectl get nodes][kubectl-get-nodes] 命令查看节点的状态。 通过此附加输出，可发现基础节点的 KERNEL-VERSION 会有所差异，如以下示例输出所示  。 在上一步中已更新 *aks-nodepool1-28993262-0*，并显示内核版本为 *4.15.0-1039-azure*。 尚未更新的 *aks-nodepool1-28993262-1* 节点显示的内核版本为 *4.15.0-1037-azure*。
+更新过程完成后，可使用带有 [ 参数的 ][kubectl-get-nodes]kubectl get nodes`--output wide` 命令查看节点的状态。 通过此附加输出，可发现基础节点的 KERNEL-VERSION 会有所差异，如以下示例输出所示  。 在上一步中已更新 *aks-nodepool1-28993262-0*，并显示内核版本为 *4.15.0-1039-azure*。 尚未更新的 *aks-nodepool1-28993262-1* 节点显示的内核版本为 *4.15.0-1037-azure*。
 
 ```
 NAME                       STATUS    ROLES     AGE       VERSION   INTERNAL-IP   EXTERNAL-IP   OS-IMAGE             KERNEL-VERSION      CONTAINER-RUNTIME

@@ -8,18 +8,18 @@ origin.date: 06/24/2019
 ms.date: 09/23/2019
 ms.author: v-lingwu
 ms.openlocfilehash: 030ac15fd9dcf89a00da92c93c1afce63b7cf49b
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79292099"
 ---
 # <a name="use-role-based-access-control-to-manage-azure-backup-recovery-points"></a>使用基于角色的访问控制管理 Azure 备份恢复点
 
-Azure 基于角色的访问控制 (RBAC) 可用于对 Azure 进行细致的访问管理。 使用 RBAC，可以在团队中对职责进行分配，仅向用户授予执行作业所需的访问权限。
+Azure 基于角色的访问控制 (RBAC) 可用于对 Azure 进行细致的访问管理。 使用 RBAC，可以在团队中实现职责分离，仅向用户授予执行作业所需的访问权限。
 
 > [!IMPORTANT]
-> Azure 备份提供的角色仅限于执行可在 Azure 门户中执行的操作，或者通过 REST API 或恢复服务保管库 PowerShell 或 CLI cmdlet 执行的操作。 这些角色对在 Azure 备份代理客户端 UI、System Center Data Protection Manager UI 或 Azure 备份服务器 UI 中执行的操作不具有控制权。
+> Azure 备份提供的角色仅限于执行可在 Azure 门户中执行的操作，或者通过 REST API 或恢复服务保管库 PowerShell 或 CLI cmdlet 执行的操作。 这些角色对在 Azure 备份代理客户端 UI、System Center Data Protection Manager UI 或 Azure 备份服务器 UI 中执行的操作不具有控制。
 
 Azure 备份提供三个用于控制备份管理操作的内置角色。 详细了解 [Azure RBAC 内置角色](../role-based-access-control/built-in-roles.md)
 
@@ -31,14 +31,14 @@ Azure 备份提供三个用于控制备份管理操作的内置角色。 详细�
 
 ## <a name="mapping-backup-built-in-roles-to-backup-management-actions"></a>将备份内置角色映射到备份管理操作
 
-下表包含备份管理操作和执行这些操作所需的最低 RBAC 角色。
+下表包含了备份管理操作和执行这些操作所需的最低 RBAC 角色。
 
 | 管理操作 | 所需的最低 RBAC 角色 | 所需的范围 |
 | --- | --- | --- |
 | 创建恢复服务保管库 | 备份参与者 | 包含保管库的资源组 |
 | 启用 Azure VM 备份 | 备份操作员 | 包含保管库的资源组 |
 | | 虚拟机参与者 | VM 资源 |
-| 按需备份 VM | 备份操作员 | 恢复服务保管库 |
+| 按需 VM 备份 | 备份操作员 | 恢复服务保管库 |
 | 还原 VM | 备份操作员 | 恢复服务保管库 |
 | | 参与者 | 将在其中部署 VM 的资源组 |
 | | 虚拟机参与者 | 已备份的源 VM |
@@ -69,7 +69,7 @@ Azure 备份提供三个用于控制备份管理操作的内置角色。 详细�
 | --- | --- | --- |
 | 启用 Azure 文件共享的备份 | 备份参与者 |恢复服务保管库 |
 | |存储帐户 | 参与者存储帐户资源 |
-| 按需备份 VM | 备份操作员 | 恢复服务保管库 |
+| 按需 VM 备份 | 备份操作员 | 恢复服务保管库 |
 | 还原文件共享 | 备份操作员 | 恢复服务保管库 |
 | | 存储帐户参与者 | 存在还原源和目标文件共享的存储帐户资源 |
 | 还原单个文件 | 备份操作员 | 恢复服务保管库 |
@@ -85,6 +85,6 @@ Azure 备份提供三个用于控制备份管理操作的内置角色。 详细�
   * [PowerShell](../role-based-access-control/role-assignments-powershell.md)
   * [Azure CLI](../role-based-access-control/role-assignments-cli.md)
   * [REST API](../role-based-access-control/role-assignments-rest.md)
-* [基于角色的访问控制故障排除](../role-based-access-control/troubleshooting.md)：获取有关修复常见问题的建议。
+* [基于角色的访问控制故障排除](../role-based-access-control/troubleshooting.md)：获取解决常见问题的建议。
 
 <!-- Update_Description: wording update -->

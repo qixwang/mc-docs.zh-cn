@@ -9,10 +9,10 @@ ms.date: 03/13/2020
 ms.author: v-lingwu
 ms.subservice: alerts
 ms.openlocfilehash: f8ea1e2a22952ad71799d1e488ac3f25a90b3465
-ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/17/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79452575"
 ---
 # <a name="create-a-classic-metric-alert-with-a-resource-manager-template"></a>使用资源管理器模板创建经典指标警报
@@ -22,12 +22,12 @@ ms.locfileid: "79452575"
 >
 
 
-基本步骤如下所示：
+基本步骤如下所述：
 
 1. 创建一个描述如何创建警报的 JSON 文件作为模板。
 2. [使用任意部署方法部署模板](../../azure-resource-manager/templates/deploy-powershell.md)。
 
-下面我们先单独针对警报，然后针对创建其他资源期间的警报，描述如何创建 Resource Manager 模板。
+下面我们先单独针对警报，然后针对创建其他资源期间的警报，说明如何创建资源管理器模板。
 
 ## <a name="resource-manager-template-for-a-classic-metric-alert"></a>经典指标警报的资源管理器模板
 若要使用 Resource Manager 模板创建警报，需要创建 `Microsoft.Insights/alertRules` 类型的资源，并填充所有相关属性。 下面是用于创建警报规则的模板。
@@ -401,5 +401,5 @@ ms.locfileid: "79452575"
 
 ## <a name="next-steps"></a>后续步骤
 * [详细了解警报](alerts-overview.md)
-* [将诊断设置添加](../../azure-monitor/platform/diagnostic-settings-template.md) 到 Resource Manager 模板
+* [将诊断设置添加](../../azure-monitor/platform/diagnostic-settings-template.md)到 Resource Manager 模板
 

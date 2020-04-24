@@ -16,10 +16,10 @@ origin.date: 06/18/2019
 ms.date: 02/17/2020
 ms.author: v-tawe
 ms.openlocfilehash: b67ecb27fafc5103404d9f0922dccf1a67fec6b0
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79291799"
 ---
 # <a name="scaling-with-event-hubs"></a>通过事件中心进行缩放

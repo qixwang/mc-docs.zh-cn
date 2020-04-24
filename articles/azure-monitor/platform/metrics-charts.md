@@ -9,10 +9,10 @@ ms.date: 6/4/2019
 ms.author: v-lingwu
 ms.subservice: metrics
 ms.openlocfilehash: e1c51fc17c91e1b92bfa837cc13a78d6eb870edd
-ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/17/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79452405"
 ---
 # <a name="advanced-features-of-azure-metrics-explorer"></a>Azure 指标资源管理器的高级功能

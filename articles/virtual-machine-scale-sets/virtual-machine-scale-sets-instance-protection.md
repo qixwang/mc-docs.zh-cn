@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 03/10/2020
 ms.author: v-junlch
 ms.openlocfilehash: 160f3f9152c2114003b2ce48c09a158fb743d015
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79291619"
 ---
 # <a name="instance-protection-for-azure-virtual-machine-scale-set-instances"></a>针对 Azure 虚拟机规模集实例的实例保护
@@ -52,7 +52,7 @@ Azure 虚拟机规模集可以通过[自动缩放](virtual-machine-scale-sets-au
 1. 选择要保护的实例的名称。
 1. 选择“保护策略”  选项卡。
 1. 在“保护策略”  边栏选项卡中，选择“防止进行横向缩减”  选项。
-1. 选择“保存”  。 
+1. 选择“保存”。  
 
 ### <a name="rest-api"></a>REST API
 
@@ -120,7 +120,7 @@ az vmss update \
 1. 选择要保护的实例的名称。
 1. 选择“保护策略”  选项卡。
 1. 在“保护策略”  边栏选项卡中，选择“使其不受规模集操作的影响”  选项。
-1. 选择“保存”  。 
+1. 选择“保存”。  
 
 ### <a name="rest-api"></a>REST API
 

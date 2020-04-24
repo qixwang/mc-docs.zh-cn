@@ -1,6 +1,6 @@
 ---
 title: 在 Azure Site Recovery 中的两个 Azure 区域之间映射虚拟网络 | Azure
-description: Azure Site Recovery 可协调虚拟机和物理服务器的复制、故障转移与恢复。 了解有关故障转移到 Azure 或辅助数据中心的信息。
+description: Azure Site Recovery 可以协调虚拟机和物理服务器的复制、故障转移与恢复。 了解有关故障转移到 Azure 或辅助数据中心的信息。
 author: rockboyfor
 manager: digimobile
 ms.service: site-recovery
@@ -9,10 +9,10 @@ origin.date: 04/09/2019
 ms.date: 09/30/2019
 ms.author: v-yeche
 ms.openlocfilehash: 726eb51ae0f8ecb05d28fa60bdda7e08e8d15792
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79293521"
 ---
 # <a name="set-up-network-mapping-and-ip-addressing-for-vnets"></a>设置 VNet 的网络映射和 IP 寻址
@@ -21,7 +21,7 @@ ms.locfileid: "79293521"
 
 本文介绍如何映射不同 Azure 区域中的两个 Azure 虚拟网络 (VNet) 实例，以及如何设置网络之间的 IP 寻址。 启用复制时，网络映射为基于源网络的目标网络选择提供了默认行为。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 在映射网络之前，应在源和目标 Azure 区域中创建 [Azure VNet](../virtual-network/virtual-networks-overview.md)。 
 

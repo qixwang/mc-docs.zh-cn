@@ -13,10 +13,10 @@ origin.date: 10/10/2019
 ms.date: 12/05/2019
 ms.author: v-lingwu
 ms.openlocfilehash: 03d73ea42c22ea20539247fe6b014db03c0d181e
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79292726"
 ---
 # <a name="concepts-about-intents-in-your-luis-app"></a>关于 LUIS 应用中的意向的概念
@@ -35,7 +35,7 @@ ms.locfileid: "79292726"
 所有应用程序均附带了预定义意向“[None](#none-intent)”，这是一个回退意向。 
 
 ## <a name="prebuilt-domains-provide-intents"></a>预生成域提供意向
-除了定义的意向外，还可以使用其中一个预生成域中的预生成意向。 获取详细信息。
+除了定义的意向外，还可以使用其中一个预生成域中的预生成意向。 有关详细信息，
 
 ## <a name="return-all-intents-scores"></a>返回所有意向的得分
 将陈述分配给单个意向。 当 LUIS 在终结点上收到话语时，默认情况下，它将返回该话语的最高意向。 
@@ -77,7 +77,7 @@ ms.locfileid: "79292726"
 
 ## <a name="intents-and-patterns"></a>意向和模式
 
-如果你有可部分或全部定义为正则表达式的示例话语，请考虑使用与[模式](luis-concept-patterns.md)配对的[正则表达式实体](luis-concept-entity-types.md#regular-expression-entity)。 
+如果你有可部分或全部定义为正则表达式的示例话语，请考虑使用与[模式](luis-concept-entity-types.md#regular-expression-entity)配对的[正则表达式实体](luis-concept-patterns.md)。 
 
 使用正则表达式实体可以确保数据提取，以便匹配模式。 模式匹配可确保返回确切的意向。 
 

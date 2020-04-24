@@ -8,10 +8,10 @@ ms.author: v-yiso
 origin.date: 07/30/2019
 ms.date: 03/23/2020
 ms.openlocfilehash: 556599cb7d76e217e1ae58a5782d9a1bfb8e3084
-ms.sourcegitcommit: 32997a7d7585deaeb0ab7b8f928d397b18b343fa
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79295981"
 ---
 # <a name="scenario-apache-hive-view-times-out-when-fetching-a-query-result-in-azure-hdinsight"></a>方案：在 Azure HDInsight 中提取查询结果时，Apache Hive 视图超时

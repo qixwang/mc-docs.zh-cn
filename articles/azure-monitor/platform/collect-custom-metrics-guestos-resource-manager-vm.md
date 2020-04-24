@@ -9,10 +9,10 @@ ms.date: 01/21/2019
 ms.author: v-lingwu
 ms.subservice: metrics
 ms.openlocfilehash: 426fbcaacf51d0974ac5dd5023f56f7dbb509825
-ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/17/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79452354"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-using-a-resource-manager-template-for-a-windows-virtual-machine"></a>使用 Windows 虚拟机的资源管理器模板将来宾 OS 指标发送到 Azure Monitor 指标存储
@@ -27,7 +27,7 @@ ms.locfileid: "79452354"
 
 如果你不熟悉资源管理器模板，请了解[模板部署](../../azure-resource-manager/management/overview.md)及其结构和语法。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - 你的订阅必须已注册到 [Microsoft.Insights](/azure-resource-manager/resource-manager-supported-services#portal)。
 
@@ -284,7 +284,7 @@ Azure 诊断扩展使用名为“数据接收器”的功能将指标和日志�
 
 6. 在命名空间下拉菜单中，选择“azure.vm.windows.guest” 
 
-7. 在指标下拉菜单中，选择“内存”\%“已提交的使用字节数”  。
+7. 在指标下拉菜单中，选择“内存” **“已提交的使用字节数”\%** 。
 
 
 ## <a name="next-steps"></a>后续步骤

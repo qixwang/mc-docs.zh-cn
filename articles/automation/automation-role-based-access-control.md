@@ -8,10 +8,10 @@ origin.date: 05/17/2018
 ms.date: 03/16/2020
 ms.topic: conceptual
 ms.openlocfilehash: d6cc8ea3df4ab970e3498bdaa455266062a49bbf
-ms.sourcegitcommit: dc862610e2169c1fce6fb0ae9eb7dd7567f86a0a
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79293706"
 ---
 # <a name="role-based-access-control-in-azure-automation"></a>Azure 自动化中基于角色的访问控制

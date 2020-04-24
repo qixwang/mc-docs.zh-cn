@@ -4,10 +4,10 @@ description: 了解 Azure Functions 的存储要求以及如何加密存储的�
 ms.topic: conceptual
 ms.date: 02/18/2020
 ms.openlocfilehash: c01112fe5280b2b5f07ed7c77a391c8ddf5c5454
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79291722"
 ---
 # <a name="storage-considerations-for-azure-functions"></a>Azure Functions 的存储注意事项
@@ -35,7 +35,7 @@ ms.locfileid: "79291722"
 
 ## <a name="storage-account-guidance"></a>有关存储帐户的指导
 
-每个函数应用都需要存储帐户才能运行。 如果该帐户已被删除，则函数应用不会运行。 若要解决存储相关的问题，请参阅[如何排查存储相关的问题](functions-recover-storage-account.md)。 以下附加注意事项适用于函数应用使用的存储帐户。
+每个 Function App 都需要存储帐户才能运行。 如果该帐户已被删除，则函数应用不会运行。 若要解决存储相关的问题，请参阅[如何排查存储相关的问题](functions-recover-storage-account.md)。 以下附加注意事项适用于函数应用使用的存储帐户。
 
 ### <a name="storage-account-connection-setting"></a>存储帐户连接设置
 

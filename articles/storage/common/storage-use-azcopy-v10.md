@@ -9,10 +9,10 @@ ms.date: 01/06/2020
 ms.author: v-jay
 ms.subservice: common
 ms.openlocfilehash: 2a2ec0b2f7fa03fbe4057d5346d71431cea5826e
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79293535"
 ---
 # <a name="get-started-with-azcopy"></a>AzCopy 入门

@@ -15,10 +15,10 @@ origin.date: 03/20/2019
 ms.date: 11/19/2019
 ms.author: v-lingwu
 ms.openlocfilehash: abfd48addbd0131b5e69fa6d622d00dd2bed0916
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79293064"
 ---
 # <a name="protect-your-machines-and-applications"></a>保护计算机和应用程序
@@ -59,7 +59,7 @@ ms.locfileid: "79293064"
 > 安全建议与“建议”  页上的相同，但此处会将其筛选为所选的特定资源类型。 有关如何解决建议的详细信息，请参阅[在 Azure 安全中心实施安全建议](security-center-recommendations.md)。
 >
 
-### <a name="vms-and-computers"></a>VM 和计算机
+### <a name="vms-and-computers"></a><a name="vms-and-computers"></a>VM 和计算机
 “VM 和计算机”部分概述了有关 VM 和计算机的所有安全建议。 包括四种类型的计算机：
 
 ![非 Azure 计算机](./media/security-center-virtual-machine-recommendations/security-center-monitoring-icon1.png) 非 Azure 计算机。
@@ -77,14 +77,14 @@ ms.locfileid: "79293064"
 
 [![云服务](./media/security-center-virtual-machine-recommendations/recommendation-list.png)](./media/security-center-virtual-machine-recommendations/recommendation-list.png#lightbox)
 
-### <a name="cloud-services"></a>云服务
+### <a name="cloud-services"></a><a name="cloud-services"></a>云服务
 对于云服务，会在操作系统版本过期时创建建议。
 
 ![云服务](./media/security-center-virtual-machine-recommendations/security-center-monitoring-fig1-new006-2017.png)
 
 在有建议的方案中，请按建议中的步骤更新操作系统。 如果有可用的更新，会出现警报（红色或橙色 - 取决于问题的严重性）。 有关此建议的完整说明，请在“说明”栏下单击“更新 OS 版本”。  
 
-### <a name="app-services"></a>应用服务
+### <a name="app-services"></a><a name="app-services"></a>应用服务
 若要查看应用服务信息，你必须在安全中心的“标准”定价层上，并在订阅中启用应用服务。 有关如何启用此功能的说明，请参阅[使用 Azure 安全中心保护应用服务](security-center-app-services.md)。
 
 
@@ -116,7 +116,7 @@ ms.locfileid: "79293064"
 
    - 从评估说明列表、不正常和正常资源列表以及未扫描的资源列表中选择一个已通过的评估。 不正常的资源有一个对应的选项卡，但其中的列表始终为空，因为评估已经通过。
 
-### <a name="vmscale-sets"></a>虚拟机规模集
+### <a name="virtual-machine-scale-sets"></a><a name="vmscale-sets"></a>虚拟机规模集
 安全中心会自动发现你是否有规模集，并会建议你在其上安装 Microsoft Monitoring Agent。
 
 若要安装 Microsoft Monitoring Agent，请执行以下操作： 

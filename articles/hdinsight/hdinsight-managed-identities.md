@@ -10,10 +10,10 @@ ms.custom: hdinsightactive
 origin.date: 11/20/2019
 ms.date: 03/23/2020
 ms.openlocfilehash: 552cd21cd8cb55884f82e60cded5abd023520b98
-ms.sourcegitcommit: 32997a7d7585deaeb0ab7b8f928d397b18b343fa
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79295962"
 ---
 # <a name="managed-identities-in-azure-hdinsight"></a>Azure HDInsight 中的托管标识
@@ -34,7 +34,7 @@ ms.locfileid: "79295962"
 
 * [Azure 门户](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)
 * [Azure PowerShell](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md)
-* [Azure Resource Manager](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-arm.md)
+* [Azure 资源管理器](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-arm.md)
 * [Azure CLI](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli.md)
 
 托管标识的剩余配置步骤取决于使用该托管标识的方案。
@@ -47,7 +47,7 @@ Azure HDInsight 中的多种方案都会使用托管标识。 有关详细的设
 
 * [客户管理的密钥磁盘加密](disk-encryption.md)
 
-## <a name="faq"></a>常见问题
+## <a name="faq"></a>常见问题解答
 ### <a name="what-happens-if-i-delete-the-managed-identity-after-the-cluster-creation"></a>如果在创建群集后删除托管标识，会发生什么情况？
 需要托管标识时，群集会遇到问题。 创建群集后，当前没有办法更新或更改托管标识。 建议确保在群集运行时不删除托管标识。 也可重新创建群集并分配一个新的托管标识。
 

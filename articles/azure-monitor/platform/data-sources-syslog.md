@@ -10,10 +10,10 @@ origin.date: 03/22/2019
 ms.date: 04/22/2019
 ms.author: v-lingwu
 ms.openlocfilehash: e79b2bd11293881c298d7c9ae0041d800160c12e
-ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/17/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79452292"
 ---
 # <a name="syslog-data-sources-in-azure-monitor"></a>Azure Monitor 中的 Syslog 数据源
@@ -50,7 +50,7 @@ Syslog 收集器支持以下功能：
 ### <a name="configure-syslog-in-the-azure-portal"></a>在 Azure 门户中配置 Syslog
 从[“高级设置”中的“数据”菜单](agent-data-sources.md#configuring-data-sources)配置 Syslog。 此配置将传递到每个 Linux 代理上的配置文件。
 
-可以通过以下方法添加新设施：首先选择选项“将下列配置应用到我的计算机”  ，然后输入其名称并单击“+”  。 对于每个设施，将仅收集具有所选严重级别的消息。  检查要收集的特定设施的严重级别。 不能向筛选消息提供任何其他条件。
+可以通过以下方法添加新设施：首先选择选项“将下列配置应用到我的计算机”  ，然后输入其名称并单击“ **”+** 。 对于每个设施，将仅收集具有所选严重级别的消息。  检查要收集的特定设施的严重级别。 不能向筛选消息提供任何其他条件。
 
 ![配置 Syslog](media/data-sources-syslog/configure.png)
 
@@ -197,7 +197,7 @@ Log Analytics 代理在端口 25224 侦听本地客户端上的 Syslog 消息。
 ## <a name="syslog-record-properties"></a>Syslog 记录属性
 record 记录的类型为 **Syslog**，并且具有下表中的属性。
 
-| 属性 | 说明 |
+| properties | 说明 |
 |:--- |:--- |
 | Computer |从中收集事件的计算机。 |
 | 设施 |定义生成消息的系统部分。 |

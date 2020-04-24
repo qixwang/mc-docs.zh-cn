@@ -13,10 +13,10 @@ ms.reviewer: sstein, carlrab
 origin.date: 06/03/2019
 ms.date: 03/16/2020
 ms.openlocfilehash: 8de6d8b9c3270e19596b8918abb6a69b3430222a
-ms.sourcegitcommit: dc862610e2169c1fce6fb0ae9eb7dd7567f86a0a
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79293761"
 ---
 # <a name="use-read-only-replicas-to-load-balance-read-only-query-workloads"></a>使用只读副本对只读的查询工作负荷进行负载均衡

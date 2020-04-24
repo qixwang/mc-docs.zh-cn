@@ -14,10 +14,10 @@ origin.date: 08/19/2018
 ms.date: 02/10/2020
 ms.author: v-yeche
 ms.openlocfilehash: afbf9ad43e8aadbd64e7c6c3218f55c11a615428
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79293265"
 ---
 # <a name="troubleshoot-a-windows-vm-by-attaching-the-os-disk-to-a-recovery-vm-using-the-azure-portal"></a>通过使用 Azure 门户将 OS 磁盘附加到恢复 VM，对 Windows VM 进行故障排除
@@ -37,7 +37,7 @@ ms.locfileid: "79293265"
 > [!NOTE]
 > 本文不适用于包含非托管磁盘的 VM。
 
-## <a name="take-a-snapshot-of-the-os-disk"></a>创建 OS 磁盘的快照
+## <a name="take-a-snapshot-of-the-os-disk"></a>拍摄 OS 磁盘的快照
 快照是虚拟硬盘 (VHD) 的完整只读副本。 建议在创建快照之前完全关闭 VM，以清除正在运行的所有进程。 若要创建 OS 磁盘的快照，请执行以下步骤：
 
 1. 转到 [Azure 门户](https://portal.azure.cn)。 在边栏中选择“虚拟机”，然后选择有问题的 VM。 
@@ -88,7 +88,7 @@ ms.locfileid: "79293265"
 3. 如果命令运行成功，你将在提供的资源组中看到新磁盘。
 
 ## <a name="attach-the-disk-to-another-vm"></a>将磁盘附加到另一个 VM
-在后续几个步骤中，使用另一个 VM 进行故障排除。 将磁盘附加到故障排除 VM 后，可以浏览和编辑磁盘的内容。 此过程允许用户更正任何配置错误或者查看其他应用程序或系统日志文件。 若要将磁盘附加到另一个 VM，请执行以下步骤：
+在后续几个步骤中，将使用另一个 VM 进行故障排除。 将磁盘附加到故障排除 VM 后，可以浏览和编辑磁盘的内容。 此过程允许用户更正任何配置错误或者查看其他应用程序或系统日志文件。 若要将磁盘附加到另一个 VM，请执行以下步骤：
 
 1. 在门户中选择资源组，并选择故障排除 VM。 依次选择“磁盘”  、“编辑”  ，然后单击“添加数据磁盘”  ：
 
@@ -104,11 +104,11 @@ ms.locfileid: "79293265"
 
 2. 在故障排除 VM 中打开“服务器管理器”，然后选择“文件和存储服务”。   
 
-    ![在服务器管理器中选择“文件和存储服务”](./media/troubleshoot-recovery-disks-portal-windows/server-manager-select-storage.png)
+    ![在“服务器管理器”中选择“文件和存储服务”](./media/troubleshoot-recovery-disks-portal-windows/server-manager-select-storage.png)
 
 3. 系统会自动检测并附加数据磁盘。 若要查看已连接磁盘的列表，请选择“磁盘”  。 可选择要查看卷信息（包括驱动器号）的数据磁盘。 以下示例显示了使用 **F:** 的附加数据磁盘：
 
-    ![服务器管理器中的附加磁盘和卷信息](./media/troubleshoot-recovery-disks-portal-windows/server-manager-disk-attached.png)
+    ![“服务器管理器”中的附加磁盘和卷信息](./media/troubleshoot-recovery-disks-portal-windows/server-manager-disk-attached.png)
 
 ## <a name="fix-issues-on-original-virtual-hard-disk"></a>修复原始虚拟硬盘上的问题
 装载现有虚拟硬盘后，可以根据需要执行任何维护和故障排除步骤。 解决问题后，请继续执行以下步骤。
@@ -116,15 +116,15 @@ ms.locfileid: "79293265"
 ## <a name="unmount-and-detach-original-virtual-hard-disk"></a>卸载并分离原始虚拟硬盘
 解决错误后，可从故障排除 VM 中分离现有虚拟硬盘。 在将虚拟硬盘附加到故障排除 VM 的租约释放前，不能将该虚拟硬盘用于任何其他 VM。
 
-1. 在与 VM 的 RDP 会话中，打开“服务器管理器”  ，然后选择“文件和存储服务”  ：
+1. 在到 VM 的 RDP 会话中，打开“服务器管理器”  ，并选择“文件和存储服务”  ：
 
-    ![在服务器管理器中选择“文件和存储服务”](./media/troubleshoot-recovery-disks-portal-windows/server-manager-select-storage.png)
+    ![在“服务器管理器”中选择“文件和存储服务”](./media/troubleshoot-recovery-disks-portal-windows/server-manager-select-storage.png)
 
 2. 选择“磁盘”  ，并选择数据磁盘。 右键单击数据磁盘，并选择“脱机”  ：
 
-    ![在服务器管理器中将数据磁盘设置为脱机](./media/troubleshoot-recovery-disks-portal-windows/server-manager-set-disk-offline.png)
+    ![在“服务器管理器”中将数据磁盘设置为脱机](./media/troubleshoot-recovery-disks-portal-windows/server-manager-set-disk-offline.png)
 
-3. 现在从 VM 中分离虚拟硬盘。 在 Azure 门户中选择 VM，然后单击“磁盘”  。 
+3. 现在从 VM 中分离虚拟硬盘。 在 Azure 门户中选择 VM，并单击“磁盘”  。 
 
 4. 选择“编辑”  ，选择附加的 OS 磁盘，然后单击“分离”  ：
 
@@ -134,7 +134,7 @@ ms.locfileid: "79293265"
 
 ## <a name="swap-the-os-disk-for-the-vm"></a>交换 VM 的 OS 磁盘
 
-Azure 门户现在支持更改 VM 的 OS 磁盘。 为此，请执行以下步骤：
+Azure 门户现在支持更改 VM 的 OS 磁盘。 为此，请按照下列步骤进行操作：
 
 1. 转到 [Azure 门户](https://portal.azure.cn)。 在边栏中选择“虚拟机”，然后选择有问题的 VM。 
 1. 在左窗格中选择“磁盘”，然后选择“交换 OS 磁盘”。  
@@ -147,6 +147,6 @@ Azure 门户现在支持更改 VM 的 OS 磁盘。 为此，请执行以下步�
 ## <a name="next-steps"></a>后续步骤
 如果在连接到 VM 时遇到问题，请参阅[对 Azure VM 的 RDP 连接进行故障排除](troubleshoot-rdp-connection.md)。 如果在访问 VM 上运行的应用程序时遇到问题，请参阅[对 Windows VM 上的应用程序连接问题进行故障排除](troubleshoot-app-connection.md)。
 
-有关资源组的详细信息，请参阅 [Azure Resource Manager 概述](../../azure-resource-manager/management/overview.md)。
+有关资源组的详细信息，请参阅 [Azure 资源管理器概述](../../azure-resource-manager/management/overview.md)。
 
 <!--Update_Description: update meta properties, wording update, update link -->

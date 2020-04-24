@@ -7,10 +7,10 @@ origin.date: 03/01/2019
 ms.date: 03/09/2020
 ms.author: v-yeche
 ms.openlocfilehash: f74c71bbfa8f7cb9c762a5fd10a8af5e5650daa2
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79290762"
 ---
 # <a name="storage-options-for-applications-in-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS) 中的应用程序存储选项
@@ -123,7 +123,7 @@ spec:
 
 ## <a name="next-steps"></a>后续步骤
 
-如需相关的最佳做法，请参阅 [AKS 中的存储和备份最佳做法][operator-best-practices-storage]。
+如需相关的最佳做法，请参阅[在 AKS 中存储和备份的最佳做法][operator-best-practices-storage]。
 
 若要了解如何创建使用 Azure 磁盘或 Azure 文件的动态和静态卷，请参阅以下操作指南：
 
@@ -138,7 +138,7 @@ spec:
 - [Kubernetes/AKS 标识][aks-concepts-identity]
 - [Kubernetes/AKS 安全性][aks-concepts-security]
 - [Kubernetes/AKS 虚拟网络][aks-concepts-network]
-- [Kubernetes/AKS 缩放][aks-concepts-scale]
+- [Kubernetes/AKS 规模][aks-concepts-scale]
 
 <!-- EXTERNAL LINKS -->
 

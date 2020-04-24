@@ -9,10 +9,10 @@ ms.author: v-jay
 ms.reviewer: wamota
 ms.lastreviewed: 11/11/2019
 ms.openlocfilehash: b32158f38ad11c5a80a105e6e53e2e71663d8694
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79292433"
 ---
 #  <a name="modify-specific-settings-on-your-azure-stack-hub-switch-configuration"></a>修改 Azure Stack Hub 交换机配置上的特定设置
@@ -40,7 +40,7 @@ ms.locfileid: "79292433"
 
 操作员可以配置简单网络管理协议 (SNMP) v2 或 v3，以便监视网络设备并向数据中心的网络监视应用程序发送陷阱。 出于安全考虑，请使用 SNMPv3，因为它比 v2 更安全。 对于所需的 MIB 和配置，请咨询 OEM 硬件提供商。 请查看[访问控制列表更新](#access-control-list-updates)部分，大致了解如何配置进行交换机管理访问所需的权限。
 
-## <a name="authentication"></a>身份验证
+## <a name="authentication"></a>Authentication
 
 操作员可以配置 RADIUS 或 TACACS，以便管理网络设备上的身份验证。 对于所需的受支持的方法和配置，请咨询 OEM 硬件提供商。  请查看[访问控制列表更新](#access-control-list-updates)部分，大致了解如何配置进行交换机管理访问所需的权限。
 

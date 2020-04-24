@@ -11,10 +11,10 @@ ms.date: 03/16/2020
 ms.topic: conceptual
 manager: digimobile
 ms.openlocfilehash: d61725efd3166db9f310bed84ece79c34427d54d
-ms.sourcegitcommit: dc862610e2169c1fce6fb0ae9eb7dd7567f86a0a
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79293719"
 ---
 # <a name="troubleshoot-issues-with-azure-automation-desired-state-configuration-dsc"></a>排查 Azure 自动化 Desired State Configuration (DSC) 问题
@@ -49,7 +49,7 @@ Azure State Configuration 在 PowerShell DSC 基础上构建。 可以在 [Power
 
 ## <a name="common-errors-when-working-with-dsc"></a>使用 DSC 时的常见错误
 
-### <a name="unsupported-characters"></a>场景：无法从门户删除带有特殊字符的配置
+### <a name="scenario-a-configuration-with-special-characters-cannot-be-deleted-from-the-portal"></a><a name="unsupported-characters"></a>场景：无法从门户删除带有特殊字符的配置
 
 #### <a name="issue"></a>问题
 
@@ -69,7 +69,7 @@ An error occurred while deleting the DSC configuration '<name>'.  Error-details:
 * 此 cmdlet 的文档尚未更新。  在其更新前，请参考 AzureRM 模块的文档。
   * [Remove-AzureRmAutomationDSCConfiguration](https://docs.microsoft.com/powershell/module/azurerm.automation/Remove-AzureRmAutomationDscConfiguration)
 
-### <a name="failed-to-register-agent"></a>场景：无法注册 Dsc 代理
+### <a name="scenario-failed-to-register-dsc-agent"></a><a name="failed-to-register-agent"></a>场景：无法注册 Dsc 代理
 
 #### <a name="issue"></a>问题
 
@@ -94,7 +94,7 @@ ps://<location>-agentservice-prod-1.azure-automation.cn/accounts/00000000-0000-0
 
 请验证计算机是否可以访问 Azure Automation DSC 的相应终结点，然后重试。 有关所需端口和地址的列表，请参阅[网络规划](../automation-dsc-overview.md#network-planning)
 
-### <a name="a-nameunauthorizedascenario-status-reports-return-response-code-unauthorized"></a><a name="unauthorized"><a/>场景：状态报告返回响应代码“未授权”
+### <a name="a-nameunauthorizedscenario-status-reports-return-response-code-unauthorized"></a><a name="unauthorized"><a/>场景：状态报告返回响应代码“未授权”
 
 #### <a name="issue"></a>问题
 
@@ -156,7 +156,7 @@ If (($certs.Count) -gt 0)
 4. 选择故障节点。
 5. 单击“连接”，然后选择所需的选项。
 
-### <a name="failed-not-found"></a>场景：节点处于失败状态，出现“未找到”错误
+### <a name="scenario-node-is-in-failed-status-with-a-not-found-error"></a><a name="failed-not-found"></a>场景：节点处于失败状态，出现“未找到”错误
 
 #### <a name="issue"></a>问题
 
@@ -178,7 +178,7 @@ The attempt to get the action from server https://<url>//accounts/<account-id>/N
   * 若要使用 Azure 门户将节点配置分配给节点，请打开“DSC 节点”页，然后选择一个节点，并单击“分配节点配置”按钮   。
   * 若要使用 PowerShell cmdlet 将节点配置分配给节点，请使用 **Set-AzureRmAutomationDscNode** cmdlet
 
-### <a name="no-mof-files"></a>场景：编译配置时未生成节点配置（MOF 文件）
+### <a name="scenario-no-node-configurations-mof-files-were-produced-when-a-configuration-is-compiled"></a><a name="no-mof-files"></a>场景：编译配置时未生成节点配置（MOF 文件）
 
 #### <a name="issue"></a>问题
 
@@ -199,7 +199,7 @@ Compilation completed successfully, but no node configuration.mofs were generate
 * 确保配置定义中 **Node** 关键字旁边的表达式的计算结果不为 $null。
 * 如果要在编译配置时传递 ConfigurationData，请确保从 [ConfigurationData](../automation-dsc-compile.md)传递配置需要的预期值。
 
-### <a name="dsc-in-progress"></a>场景：DSC 节点报告卡在了“正在进行”状态
+### <a name="scenario-the-dsc-node-report-becomes-stuck-in-progress-state"></a><a name="dsc-in-progress"></a>场景：DSC 节点报告卡在了“正在进行”状态
 
 #### <a name="issue"></a>问题
 
@@ -217,7 +217,7 @@ No instance found with given property values
 
 若要解决此问题，请按照 [DSC 已知问题和限制](https://docs.microsoft.com/powershell/scripting/wmf/known-issues/known-issues-dsc)一文中的说明进行操作。
 
-### <a name="issue-using-credential"></a>场景：无法在 DSC 配置中使用凭据
+### <a name="scenario-unable-to-use-a-credential-in-a-dsc-configuration"></a><a name="issue-using-credential"></a>场景：无法在 DSC 配置中使用凭据
 
 #### <a name="issue"></a>问题
 
@@ -235,7 +235,7 @@ System.InvalidOperationException error processing property 'Credential' of type 
 
 * 确保传入正确的 **ConfigurationData**，以便将配置中涉及的每个节点配置的 **PSDscAllowPlainTextPassword** 设置为 true。 有关详细信息，请参阅[在 Automation State Configuration 中编译 DSC 配置](../automation-dsc-compile.md)。
 
-### <a name="failure-processing-extension"></a>场景：从 dsc 扩展载入时，出现“处理扩展失败”错误
+### <a name="scenario-onboarding-from-dsc-extension-failure-processing-extension-error"></a><a name="failure-processing-extension"></a>场景：从 dsc 扩展载入时，出现“处理扩展失败”错误
 
 #### <a name="issue"></a>问题
 
@@ -254,7 +254,7 @@ VM has reported a failure when processing extension 'Microsoft.Powershell.DSC'. 
 * 确保要为节点分配的节点配置名称与服务中的名称完全匹配。
 * 可以选择不包含节点配置名称，这将导致载入节点，而不分配节点配置
 
-### <a name="failure-linux-temp-noexec"></a>场景：在 Linux 中应用配置时出现故障，并显示一般错误
+### <a name="scenario-applying-a-configuration-in-linux-a-failure-occurs-with-a-general-error"></a><a name="failure-linux-temp-noexec"></a>场景：在 Linux 中应用配置时出现故障，并显示一般错误
 
 #### <a name="issue"></a>问题
 
@@ -272,7 +272,7 @@ This event indicates that failure happens when LCM is processing the configurati
 
 * 从 `/tmp` 位置中删除 `noexec` 选项。
 
-### <a name="compilation-node-name-overlap"></a>场景：节点配置名称重叠可能导致发布错误
+### <a name="scenario-node-configuration-names-that-overlap-could-result-in-bad-release"></a><a name="compilation-node-name-overlap"></a>场景：节点配置名称重叠可能导致发布错误
 
 #### <a name="issue"></a>问题
 

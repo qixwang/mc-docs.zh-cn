@@ -17,10 +17,10 @@ origin.date: 04/24/2019
 ms.author: v-yiso
 ms.date: 12/23/2019
 ms.openlocfilehash: afc774d4553ea9f88987bc1257a896cf8086ae77
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79291915"
 ---
 # <a name="create-and-modify-peering-for-an-expressroute-circuit-using-powershell"></a>使用 PowerShell 创建和修改 ExpressRoute 线路的对等互连
@@ -54,7 +54,7 @@ ms.locfileid: "79291915"
 [!INCLUDE [updated-for-az](../../includes/hybrid-az-ps.md)]
 
 
-## <a name="msft"></a>Microsoft 对等互连
+## <a name="microsoft-peering"></a><a name="msft"></a>Microsoft 对等互连
 
 本文介绍如何为 ExpressRoute 线路创建、获取、更新和删除 Microsoft 对等互连配置。
 
@@ -142,7 +142,7 @@ ms.locfileid: "79291915"
    Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
    ```
 
-### <a name="getmsft"></a>获取 Microsoft 对等互连详细信息
+### <a name="to-get-microsoft-peering-details"></a><a name="getmsft"></a>获取 Microsoft 对等互连详细信息
 
 可以使用以下示例来获取配置详细信息：
 
@@ -152,7 +152,7 @@ $ckt = Get-AzExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupNa
 Get-AzExpressRouteCircuitPeeringConfig -Name "MicrosoftPeering" -ExpressRouteCircuit $ckt
 ```
 
-### <a name="updatemsft"></a>更新 Microsoft 对等互连配置
+### <a name="to-update-microsoft-peering-configuration"></a><a name="updatemsft"></a>更新 Microsoft 对等互连配置
 
 可以使用以下示例来更新配置的任何部分：
 
@@ -164,7 +164,7 @@ Set-AzExpressRouteCircuitPeeringConfig  -Name "MicrosoftPeering" -ExpressRouteCi
 Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
 ```
 
-### <a name="deletemsft"></a>删除 Microsoft 对等互连
+### <a name="to-delete-microsoft-peering"></a><a name="deletemsft"></a>删除 Microsoft 对等互连
 
 可以运行以下 cmdlet 来删除对等互连配置：
 
@@ -174,7 +174,7 @@ Remove-AzExpressRouteCircuitPeeringConfig -Name "MicrosoftPeering" -ExpressRoute
 Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
 ```
 
-## <a name="private"></a>Azure 专用对等互连
+## <a name="azure-private-peering"></a><a name="private"></a>Azure 专用对等互连
 
 本文介绍了如何为 ExpressRoute 线路创建、获取、更新和删除 Azure 专用对等互连配置。
 
@@ -274,7 +274,7 @@ Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
    > 
    >
 
-### <a name="getprivate"></a>获取 Azure 专用对等互连详细信息
+### <a name="to-get-azure-private-peering-details"></a><a name="getprivate"></a>获取 Azure 专用对等互连详细信息
 
 可以使用以下示例来获取配置详细信息：
 
@@ -284,7 +284,7 @@ $ckt = Get-AzExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupNa
 Get-AzExpressRouteCircuitPeeringConfig -Name "AzurePrivatePeering" -ExpressRouteCircuit $ckt
 ```
 
-### <a name="updateprivate"></a>更新 Azure 专用对等互连配置
+### <a name="to-update-azure-private-peering-configuration"></a><a name="updateprivate"></a>更新 Azure 专用对等互连配置
 
 可以使用以下示例来更新配置的任何部分。 在此示例中，线路的 VLAN ID 将从 100 更新为 500。
 
@@ -294,7 +294,7 @@ Set-AzExpressRouteCircuitPeeringConfig -Name "AzurePrivatePeering" -ExpressRoute
 Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
 ```
 
-### <a name="deleteprivate"></a>删除 Azure 专用对等互连
+### <a name="to-delete-azure-private-peering"></a><a name="deleteprivate"></a>删除 Azure 专用对等互连
 
 可以运行以下示例来删除对等互连配置：
 
@@ -309,7 +309,7 @@ Remove-AzExpressRouteCircuitPeeringConfig -Name "AzurePrivatePeering" -ExpressRo
 Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
 ```
 
-## <a name="public"></a>Azure 公共对等互连
+## <a name="azure-public-peering"></a><a name="public"></a>Azure 公共对等互连
 
 本文介绍了如何为 ExpressRoute 线路创建、获取、更新和删除 Azure 公共对等互连配置。
 
@@ -414,7 +414,7 @@ Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
    > 
    >
 
-### <a name="getpublic"></a>获取 Azure 公共对等互连详细信息
+### <a name="to-get-azure-public-peering-details"></a><a name="getpublic"></a>获取 Azure 公共对等互连详细信息
 
 可以使用以下 cmdlet 来获取配置详细信息：
 
@@ -424,7 +424,7 @@ Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
   Get-AzExpressRouteCircuitPeeringConfig -Name "AzurePublicPeering" -Circuit $ckt
   ```
 
-### <a name="updatepublic"></a>更新 Azure 公共对等互连配置
+### <a name="to-update-azure-public-peering-configuration"></a><a name="updatepublic"></a>更新 Azure 公共对等互连配置
 
 可以使用以下示例来更新配置的任何部分。 在此示例中，线路的 VLAN ID 将从 200 更新为 600。
 
@@ -434,7 +434,7 @@ Set-AzExpressRouteCircuitPeeringConfig  -Name "AzurePublicPeering" -ExpressRoute
 Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
 ```
 
-### <a name="deletepublic"></a>删除 Azure 公共对等互连
+### <a name="to-delete-azure-public-peering"></a><a name="deletepublic"></a>删除 Azure 公共对等互连
 
 可以运行以下示例来删除对等互连配置：
 

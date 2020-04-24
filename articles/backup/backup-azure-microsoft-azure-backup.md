@@ -7,10 +7,10 @@ origin.date: 11/13/2018
 ms.date: 11/26/2018
 ms.author: v-lingwu
 ms.openlocfilehash: 524664bd36c85201a71c1e4b72eebd4fe5eced37
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79291648"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>安装和升级 Azure 备份服务器 

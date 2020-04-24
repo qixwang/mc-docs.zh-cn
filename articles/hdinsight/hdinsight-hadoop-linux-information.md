@@ -13,10 +13,10 @@ origin.date: 11/14/2019
 ms.date: 03/02/2020
 ms.author: v-yiso
 ms.openlocfilehash: 6c2f1c7e15e400fdae256f2bb668a13cf2b6ea1d
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79292075"
 ---
 # <a name="information-about-using-hdinsight-on-linux"></a>有关在 Linux 上使用 HDInsight 的信息
@@ -111,7 +111,7 @@ Hadoop 相关文件可在群集节点上的 `/usr/hdp`中找到。 此目录包�
 在 HDInsight 中，从计算资源中分离数据存储资源。 因此，你可以根据需要创建 HDInsight 群集来执行计算，然后在工作完成后删除该群集，同时，在云存储中安全地将数据文件持久保存所需的任意时长。
 
 
-### <a name="URI-and-scheme"></a>URI 和方案
+### <a name="uri-and-scheme"></a><a name="URI-and-scheme"></a>URI 和方案
 
 在访问文件时，一些命令可能需要用户将方案指定为 URI 的一部分。 例如，Storm-HDFS 组件需要用户指定方案。 使用非默认存储（作为“附加”存储添加到群集的存储）时，必须始终将方案作为 URI 的一部分来使用。
 
@@ -175,7 +175,7 @@ curl -u admin -G "https://CLUSTERNAME.azurehdinsight.cn/api/v1/clusters/CLUSTERN
     * [.NET](https://github.com/Azure/azure-sdk-for-net)
     * [存储 REST API](https://msdn.microsoft.com/library/azure/dd135733.aspx)
 
-## <a name="scaling"></a>缩放你的群集
+## <a name="scaling-your-cluster"></a><a name="scaling"></a>缩放你的群集
 
 使用群集缩放功能可动态更改群集使用的数据节点数。 可以在其他作业或进程正在群集上运行时执行缩放操作。  另请参阅[缩放 HDInsight 群集](./hdinsight-scaling-best-practices.md)
 

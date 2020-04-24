@@ -9,10 +9,10 @@ origin.date: 08/03/2018
 ms.date: 06/03/2019
 ms.author: v-yiso
 ms.openlocfilehash: 0ce6ab0c7c9b369d2870da1e556306f2b9d80ff7
-ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/17/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79452525"
 ---
 # <a name="concepts-in-azure-event-grid"></a>Azure 事件网格中的概念

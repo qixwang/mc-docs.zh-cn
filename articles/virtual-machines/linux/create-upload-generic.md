@@ -16,17 +16,17 @@ origin.date: 10/08/2018
 ms.date: 02/10/2020
 ms.author: v-yeche
 ms.openlocfilehash: 183c85f2b51f6cd67919eb19cdd364b775770b2d
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79292512"
 ---
 # <a name="information-for-non-endorsed-distributions"></a>有关未认可分发版的信息
 
-仅当使用某个[认可的发行版](endorsed-distros.md?toc=%2fvirtual-machines%2flinux%2ftoc.json)时，Azure 平台 SLA 才适用于运行 Linux OS 的虚拟机。 对于这些认可的分发版，Azure 市场中提供了预配置的 Linux 映像。
+仅当使用某个[认可的分发版](endorsed-distros.md?toc=%2fvirtual-machines%2flinux%2ftoc.json)时，Azure 平台 SLA 才适用于运行 Linux OS 的虚拟机。 对于这些认可的分发版，Azure 市场中提供了预配置的 Linux 映像。
 
-* Azure 上的 Linux - [认可的发行版](endorsed-distros.md?toc=%2fvirtual-machines%2flinux%2ftoc.json)
+* [Azure 上的 Linux - 认可的分发版](endorsed-distros.md?toc=%2fvirtual-machines%2flinux%2ftoc.json)
 * [Azure 中对 Linux 映像的支持](https://support.microsoft.com/kb/2941892)
 
 Azure 上运行的所有分发版都要满足一些先决条件。 本文的内容并不全面，因为每个分发版不同。 即使满足以下所有条件，但仍可能需要大幅调整 Linux 系统才能让其正常运行。
@@ -35,7 +35,7 @@ Azure 上运行的所有分发版都要满足一些先决条件。 本文的内�
 
 <!--MOONCAKE: CORRECT ON Red Hat Enterprise Linux is correct when it show how to on existing red hat vhd-->
 
-* **[基于 CentOS 的分发版](create-upload-centos.md?toc=%2fvirtual-machines%2flinux%2ftoc.json)**
+* **[基于 CentOS 的分发](create-upload-centos.md?toc=%2fvirtual-machines%2flinux%2ftoc.json)**
 * **[Debian Linux](debian-create-upload-vhd.md?toc=%2fvirtual-machines%2flinux%2ftoc.json)**
 * **[Oracle Linux](oracle-create-upload-vhd.md?toc=%2fvirtual-machines%2flinux%2ftoc.json)**
 * **[Red Hat Enterprise Linux](redhat-create-upload-vhd.md?toc=%2fvirtual-machines%2flinux%2ftoc.json)**
@@ -54,12 +54,12 @@ Azure 上运行的所有分发版都要满足一些先决条件。 本文的内�
 * 需要装载 UDF 文件系统的内核支持。 在 Azure 上首次启动时，预配配置将使用附加到来宾的 UDF 格式媒体传递到 Linux VM。 Azure Linux 代理必须装载 UDF 文件系统才能读取其配置和预配 VM。
 * 低于 2.6.37 的 Linux 内核版本不支持具有更大 VM 大小的 Hyper-V 上的 NUMA。 此问题主要影响使用上游 Red Hat 2.6.32 内核的旧分发版，在 Red Hat Enterprise Linux (RHEL) 6.6 (kernel-2.6.32-504) 中已解决。 运行版本低于 2.6.37 的自定义内核的系统，或者版本低于 2.6.32-504 的基于 RHEL 的内核必须在 grub.conf 中的内核命令行上设置启动参数 `numa=off`。 有关详细信息，请参阅 [Red Hat KB 436883](https://access.redhat.com/solutions/436883)。
 * 不要在 OS 磁盘上配置交换分区。 可根据以下步骤中所述配置 Linux 代理，并在临时资源磁盘上创建交换文件。
-* Azure 上所有 VHD 的虚拟大小必须已按 1 MB 对齐。 从原始磁盘转换为 VHD 时，必须根据以下步骤中所述，确保在转换前原始磁盘大小是 1 MB 的倍数。
+* Azure 上的所有 VHD 必须已将虚拟大小调整为 1 MB。 从原始磁盘转换为 VHD 时，必须根据以下步骤中所述，确保在转换前原始磁盘大小是 1 MB 的倍数。
 
 ### <a name="installing-kernel-modules-without-hyper-v"></a>安装无 Hyper-V 的内核模块
 Azure 在 Hyper-V 虚拟机监控程序上运行，因此 Linux 需要某些内核模块才能在 Azure 中运行。 如果具有在 Hyper-V 外部创建的虚拟机，Linux 安装程序可能无法在初始 ramdisk（initrd 或 initramfs）中包含 Hyper-V 驱动程序，除非 VM 检测到它正在 Hyper-V 环境中运行。 使用不同的虚拟化系统（例如 Virtualbox、KVM 等）来准备 Linux 映像时，可能需要重新生成 initrd，以便至少 hv_vmbus 和 hv_storvsc 内核模块可在初始 ramdisk 上使用。  在基于上游 Red Hat 分发版的系统上（可能还包括其他系统），这是一个已知问题。
 
-重新生成 initrd 或 initramfs 映像的机制可能会因发行版而有所不同。 查阅分发的文档或相应过程的支持。  以下示例演示如何使用 `mkinitrd` 实用工具重新生成 initrd：
+重新生成 initrd 或 initramfs 映像的机制可能会因分发而有所不同。 查阅分发的文档或相应过程的支持。  以下示例演示如何使用 `mkinitrd` 实用工具重新生成 initrd：
 
 1. 备份现有 initrd 映像：
 
@@ -151,7 +151,7 @@ Hyper-V 和 Azure 的 Linux 集成服务 (LIS) 驱动程序会直接影响上游
 必须在内核中包含以下修补程序。 此列表并不完整，并未包括所有分发版。
 
 * [ata_piix：默认情况下，将磁盘交由 Hyper-V 驱动程序处理](https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/drivers/ata/ata_piix.c?id=cd006086fa5d91414d8ff9ff2b78fbb593878e3c)
-* [storvsc：考虑 RESET 路径中正在传输的数据包](https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/drivers/scsi/storvsc_drv.c?id=5c1b10ab7f93d24f29b5630286e323d1c5802d5c)
+* [storvsc：解释 RESET 路径中传输中的数据包](https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/drivers/scsi/storvsc_drv.c?id=5c1b10ab7f93d24f29b5630286e323d1c5802d5c)
 * [storvsc：避免使用 WRITE_SAME](https://git.kernel.org/cgit/linux/kernel/git/next/linux-next.git/commit/drivers/scsi/storvsc_drv.c?id=3e8f4f4065901c8dfc51407e1984495e1748c090)
 * [storvsc：对 RAID 和虚拟主机适配器驱动程序禁用 WRITE SAME](https://git.kernel.org/cgit/linux/kernel/git/next/linux-next.git/commit/drivers/scsi/storvsc_drv.c?id=54b2b50c20a61b51199bedb6e5d2f8ec2568fb43)
 * [storvsc：NULL 指针取消引用修补程序](https://git.kernel.org/cgit/linux/kernel/git/next/linux-next.git/commit/drivers/scsi/storvsc_drv.c?id=b12bb60d6c350b348a4e1460cd68f97ccae9822e)
@@ -161,9 +161,9 @@ Hyper-V 和 Azure 的 Linux 集成服务 (LIS) 驱动程序会直接影响上游
 ## <a name="the-azure-linux-agent"></a>Azure Linux 代理
 [Azure Linux 代理](../extensions/agent-linux.md) `waagent` 在 Azure 中预配 Linux 虚拟机。 可以在 [Linux 代理 GitHub 存储库](https://github.com/Azure/WALinuxAgent)中获取最新版本、文件问题或提交拉取请求。
 
-* Linux 代理根据 Apache 2.0 许可证发布。 许多发行版已经为该代理提供 RPM 或 .deb 包，可以轻松安装和更新这些包。
+* 根据 Apache 2.0 许可证发布 Linux 代理。 许多发行版已经为该代理提供 RPM 或 .deb 包，可以轻松安装和更新这些包。
 * Azure Linux 代理需要 Python v2.6 以上版本。
-* 此外，该代理还需要 python-pyasn1 模块。 大多数分发版提供此模块作为可安装的单独包。
+* 该代理还需要 python-pyasn1 模块。 大多数分发版提供此模块作为可安装的单独包。
 * 在某些情况下，Azure Linux 代理可能与 NetworkManager 不兼容。 发行版提供的许多 RPM/deb 包都将 NetworkManager 配置为与 waagent 包冲突。 在这种情况下，它会在你安装 Linux 代理包时卸载 NetworkManager。
 * Azure Linux 代理必须至少是[支持的最低版本](https://support.microsoft.com/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support)。
 
@@ -181,7 +181,7 @@ Hyper-V 和 Azure 的 Linux 集成服务 (LIS) 驱动程序会直接影响上游
 
 1. 安装 Azure Linux 代理。
 
-    在 Azure 上预配 Linux 映像需要 Azure Linux 代理。  许多发行版以 RPM 或 .deb 包的形式提供代理（该包通常称为 WALinuxAgent 或 walinuxagent）。  还可以按照 [Linux 代理指南](../extensions/agent-linux.md)中的步骤手动安装该代理。
+    Azure Linux 代理是在 Azure 上设置 Linux 映像所必需的。  许多发行版以 RPM 或 .deb 包的形式提供代理（该包通常称为 WALinuxAgent 或 walinuxagent）。  还可以按照 [Linux 代理指南](../extensions/agent-linux.md)中的步骤手动安装该代理。
 
 1. 确保已安装 SSH 服务器且已将其配置为在引导时启动。  此配置通常是默认值。
 

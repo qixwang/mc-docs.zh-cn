@@ -8,24 +8,24 @@ ms.date: 03/09/2020
 ms.author: v-yeche
 ms.custom: mvc
 ms.openlocfilehash: 98310ab8cad742a43955727f7cea9fd479b13f49
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79290791"
 ---
 # <a name="tutorial-upgrade-kubernetes-in-azure-kubernetes-service-aks"></a>教程：在 Azure Kubernetes 服务 (AKS) 中升级 Kubernetes
 
 在应用程序和群集生命周期中，你可能希望升级到最新可用的 Kubernetes 版本并使用新功能。 可使用 Azure CLI 升级 Azure Kubernetes 服务 (AKS) 群集。
 
-在本教程的第 7 部分中，升级了 Kubernetes 群集。 你将学习如何执行以下操作：
+在本教程的第 7 部分中，升级了 Kubernetes 群集。 学习如何：
 
 > [!div class="checklist"]
 > * 确定 Kubernetes 的当前版本和可用版本
 > * 升级 Kubernetes 节点
 > * 验证升级是否成功
 
-## <a name="before-you-begin"></a>准备阶段
+## <a name="before-you-begin"></a>开始之前
 
 上一教程中，应用程序已打包到容器映像中。 该映像已上传到 Azure容器注册表，同时，你创建了 AKS 群集。 然后，应用程序部署到了 AKS 群集。 如果尚未完成这些步骤，并且想要逐一完成，请先参阅[教程 1 - 创建容器映像][aks-tutorial-prepare-app]。
 
@@ -120,7 +120,7 @@ az group delete --name myResourceGroup --yes --no-wait
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，在 AKS 群集中升级了 Kubernetes。 你已了解如何：
+在本教程中，在 AKS 群集中升级了 Kubernetes。 你已了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 确定 Kubernetes 的当前版本和可用版本

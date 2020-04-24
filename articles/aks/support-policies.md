@@ -8,10 +8,10 @@ origin.date: 01/24/2020
 ms.date: 03/09/2020
 ms.author: v-yeche
 ms.openlocfilehash: cfbac7ae221cd57e34cb8c40182c537d782364fa
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79290690"
 ---
 # <a name="support-policies-for-azure-kubernetes-service"></a>Azure Kubernetes 服务的支持策略
@@ -129,7 +129,7 @@ Azure 不会自动重新启动工作器节点来应用 OS 级修补程序。 尽
 
 ## <a name="network-ports-access-and-nsgs"></a>网络端口、访问和 NSG
 
-作为一项托管服务，AKS 在网络和连接方面存在特定的要求。 与普通 IaaS 组件的要求相比，这些要求不太灵活。 在 AKS 中，自定义 NSG 规则、阻止特定端口（例如，使用防火墙规则阻止出站端口 443）以及将 URL 加入允许列表等操作可能导致群集不受支持。
+作为一项托管服务，AKS 在网络和连接方面存在特定的要求。 与普通 IaaS 组件的要求相比，这些要求不太灵活。 在 AKS 中，自定义 NSG 规则、阻止特定端口（例如，使用防火墙规则阻止出站端口 443）以及将 URL 加入白名单等操作可能导致群集不受支持。
 
 > [!NOTE]
 > 目前，AKS 不允许你完全锁定群集的出口流量。

@@ -8,10 +8,10 @@ origin.date: 11/19/2019
 ms.date: 12/05/2019
 ms.author: v-lingwu
 ms.openlocfilehash: 47b540dacd695e8afb32d0e47bc0ce422287f5a1
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79291436"
 ---
 # <a name="authoring-and-publishing-regions-and-the-associated-keys"></a>创作和发布区域及关联的密钥
@@ -31,7 +31,7 @@ ms.locfileid: "79291436"
 
 <a name="regions-and-azure-resources"></a>
 
-## 发布区域和 Azure 资源 <a name="publishing-regions"></a>
+## <a name="publishing-regions-and-azure-resources"></a>发布区域和 Azure 资源 <a name="publishing-regions"></a>
 该应用将发布到与 LUIS 门户中添加的 LUIS 资源关联的所有区域。 例如，对于在 [luis.azure.cn][luis.azure.cn] 上创建的应用，如果你在 **chinaeast** 中创建 LUIS 或认知服务资源并[将其作为资源添加到该应用](luis-how-to-azure-subscription.md)，则该应用将发布到此区域中。 
 
 ## <a name="public-apps"></a>公共应用

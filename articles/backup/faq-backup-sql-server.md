@@ -8,10 +8,10 @@ origin.date: 04/23/2019
 ms.date: 12/04/2019
 ms.author: v-lingwu
 ms.openlocfilehash: a6e9247a2dc6cc8d43299abba869b7c69b9b38c9
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79292090"
 ---
 # <a name="faq-about-sql-server-databases-that-are-running-on-an-azure-vm-backup"></a>有关备份 Azure VM 上运行的 SQL Server 数据库的常见问题解答
@@ -63,7 +63,7 @@ DefaultBackupTasksThreshold 的默认值为 **20**。
 
 ## <a name="can-i-protect-availability-groups-on-premises"></a>是否可以保护本地的可用性组？
 
-否。 Azure 备份可以保护 Azure 中运行的 SQL Server 数据库。 如果可用性组 (AG) 分散在 Azure 与本地计算机之间，则仅当主要副本在 Azure 中运行时，才可以保护 AG。 此外，Azure 备份只能保护恢复服务保管库所在的同一 Azure 区域中运行的节点。
+不是。 Azure 备份可以保护 Azure 中运行的 SQL Server 数据库。 如果可用性组 (AG) 分散在 Azure 与本地计算机之间，则仅当主要副本在 Azure 中运行时，才可以保护 AG。 此外，Azure 备份只能保护恢复服务保管库所在的同一 Azure 区域中运行的节点。
 
 ## <a name="can-i-protect-availability-groups-across-regions"></a>是否可跨区域保护可用性组？
 
@@ -71,7 +71,7 @@ Azure 备份恢复服务保管库可以检测并保护保管库所在的同一�
 
 ## <a name="do-successful-backup-jobs-create-alerts"></a>成功的备份作业是否会创建警报？
 
-否。 成功的备份作业不会生成警报。 仅针对失败的备份作业发送警报。 [此文](backup-azure-monitoring-built-in-monitor.md)介绍了门户警报的详细行为。 但是，如果你希望同时收到已成功作业的警报，可以[使用 Azure Monitor 进行监视](backup-azure-monitoring-use-azuremonitor.md)。
+不是。 成功的备份作业不会生成警报。 仅针对失败的备份作业发送警报。 [此文](backup-azure-monitoring-built-in-monitor.md)介绍了门户警报的详细行为。 但是，如果你希望同时收到已成功作业的警报，可以[使用 Azure Monitor 进行监视](backup-azure-monitoring-use-azuremonitor.md)。
 
 ## <a name="can-i-see-scheduled-backup-jobs-in-the-backup-jobs-menu"></a>“备份作业”菜单中是否会显示计划的备份作业？
 

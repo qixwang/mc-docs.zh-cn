@@ -10,17 +10,17 @@ origin.date: 12/18/2019
 ms.date: 01/13/2020
 ms.author: v-yiso
 ms.openlocfilehash: 3b565cb415833c66f3eadd56f2e77c02cf5d6cc3
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79293165"
 ---
 # <a name="deploy-and-manage-apache-storm-topologies-on-azure-hdinsight"></a>在 Azure HDInsight 中部署和管理 Apache Storm 拓扑 
 
 本文档介绍有关如何在 HDInsight 群集上管理和监视 Storm 上运行的 [Apache Storm](https://storm.apache.org/) 拓扑的基本知识。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * HDInsight 上的 Apache Storm 群集。 请参阅[使用 Azure 门户创建 Apache Hadoop 群集](../hdinsight-hadoop-create-linux-clusters-portal.md)，并选择 **Storm** 作为**群集类型**。
 
@@ -41,9 +41,9 @@ ms.locfileid: "79293165"
 
 1. 启动 Visual Studio。
 
-1. 在“开始”窗口中，选择“创建新项目”。  
+1. 在“开始”窗口中，选择“创建新项目”   。
 
-1. 在“创建新项目”窗口中，选择搜索框并输入 `Storm`。  从结果列表中选择“Storm 示例”，然后选择“下一步”。  
+1. 在“创建新项目”窗口中，选择搜索框并输入 **。** `Storm` 从结果列表中选择“Storm 示例”，然后选择“下一步”。  
 
 1. 在“配置新项目”窗口输入一个**项目名称**，然后转到或创建一个**位置**用于保存新项目。  然后选择“创建”  。
 
@@ -54,13 +54,13 @@ ms.locfileid: "79293165"
 1. 在“解决方案资源管理器”中右键单击项目，然后选择“提交到 Storm on HDInsight”。  
 
     > [!NOTE]  
-    > 如果出现提示，请输入 Azure 订阅的登录凭据。 如果有多个订阅，请登录到包含 Storm on HDInsight 群集的订阅。
+    > 如果出现提示，请输入 Azure 订阅的登录凭据。 如果有多个订阅，请登录包含 Storm on HDInsight 群集的订阅。
 
 1. 从“提交拓扑”对话框中的“Storm 群集”下拉列表内，选择你的 Storm on HDInsight 群集，然后选择“提交”。    可以查看“输出”窗格来监视提交是否成功。 
 
 ## <a name="submit-a-topology-using-ssh-and-the-storm-command"></a>使用 SSH 和 Storm 命令提交拓扑
 
-1. 使用 [ssh 命令](../hdinsight-hadoop-linux-use-ssh-unix.md)连接到群集。 编辑以下命令（将 CLUSTERNAME 替换为群集的名称），然后输入该命令：
+1. 使用 [ssh 命令](../hdinsight-hadoop-linux-use-ssh-unix.md)连接到群集。 编辑以下命令，将 CLUSTERNAME 替换为群集的名称，然后输入该命令：
 
     ```cmd
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.cn
@@ -90,7 +90,7 @@ ms.locfileid: "79293165"
 ![监视拓扑，“Storm 拓扑视图”窗口，Visual Studio](./media/apache-storm-deploy-monitor-topology-linux/visual-studio-monitor.png)
 
 > [!NOTE]  
-> 也可在“服务器资源管理器”中查看“Storm 拓扑”。   展开“Azure” > “HDInsight”，右键单击 Storm on HDInsight 群集，然后选择“查看 Storm 拓扑”。   
+> 也可以从“服务器资源管理器”  查看“Storm 拓扑”  。 展开“Azure”   > “HDInsight”  ，右键单击 Storm on HDInsight 群集，然后选择“查看 Storm 拓扑”  。
 
 选择 Spout 或 Bolt 的形状可查看有关这些组件的信息。 此时会显示所选项的工具提示，其中包含组件信息。
 
@@ -145,7 +145,7 @@ storm Activate TOPOLOGYNAME
 
 ### <a name="kill-a-running-topology"></a>终止正在运行的拓扑
 
-Storm 拓扑在启动后，将会不断运行，直到将其停止。 若要停止拓扑，请使用以下命令：
+Storm 拓扑在启动后，会不断运行，直到将其停止。 若要停止拓扑，请使用以下命令：
 
 ```shell
 storm kill TOPOLOGYNAME
@@ -156,7 +156,7 @@ storm kill TOPOLOGYNAME
 重新平衡拓扑可以让系统修改拓扑的并行度。 例如，如果调整了群集的大小以添加更多节点，则重新平衡允许拓扑查看新节点。
 
 > [!WARNING]  
-> 重新平衡某个拓扑会停用该拓扑，跨群集平均重新分布辅助角色，然后让拓扑返回到发生重新平衡之前的状态。 如果该拓扑原本处于活动状态，则它会再次变为活动状态。 如果它原本已停用，则保持停用状态。
+> 重新平衡某个拓扑会停用该拓扑，跨群集平均重新分布辅助角色，然后让拓扑返回到发生重新平衡之前的状态。 如果该拓扑原本处于活动状态，则它会再次变为活动状态。 如果它原本已停用，则将保持停用状态。
 
 ```shell
 storm rebalance TOPOLOGYNAME
@@ -226,10 +226,10 @@ Storm 拓扑摘要页类似于以下网页：
 | **组件操作** | “调试”和“停止调试”按钮。   |
 | “Spout 统计信息”或“Bolt 统计信息”   | 有关 Spout 或 Bolt 的统计信息。 若要为此部分中的某个条目设置期限，请在“窗口”列中选择其对应的链接。  |
 | （仅适用于 Bolt）<br/>**输入统计信息**（期限）  | 有关 Bolt 使用的输入流的信息。 |
-| **输出统计信息**（期限）  | 有关此 Spout 或 Bolt 所发出的流的信息。 |
+| **输出统计信息**（期限）  | 有关 Spout 或 Bolt 所发出的流的信息。 |
 | **分析和调试** | 用于在此页上分析和调试组件的控件。 可以设置“状态/超时(分钟)”值，还可以选择“JStack”、“重启辅助角色”和“堆”对应的按钮。     |
 | **执行器**（期限）  | 有关 Spout 或 Bolt 实例的信息。 若要查看针对此实例生成的诊断信息的日志，请选择特定执行器的“端口”项。  还可以查看与特定执行器关联的辅助角色资源，只需在“主机”列中选择此执行器对应的链接即可。  |
-| **错误** | 此 Spout 或 Bolt 的任何错误信息。 |
+| **错误** | Spout 或 Bolt 的任何错误信息。 |
 
 Storm Bolt 摘要页类似于以下网页：
 
@@ -252,16 +252,16 @@ Storm UI 是以 REST API 为基础生成的，因此，可以使用 API 执行�
 
 | FQDN 发现方法 | 说明 |
 | --- | --- |
-| SSH 会话 | 通过与群集建立的 SSH 会话使用命令 `headnode -f`。 |
+| SSH 会话 | 通过与群集建立的 SSH 会话使用 `headnode -f` 命令。 |
 | Ambari Web | 在 Ambari 群集网页 (`https://CLUSTERNAME.azurehdinsight.net`) 的顶部选择“服务”，然后选择“Storm”。   在“摘要”  选项卡中，选择“Storm UI 服务器”  。 页面顶部会显示承载 Storm UI 和 REST API 的节点的 FQDN。 |
-| Ambari REST API | 使用命令 `curl -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/STORM/components/STORM_UI_SERVER"` 来检索有关 Storm UI 和 REST API 正在其上运行的节点的信息。 请将两处出现的 *CLUSTERNAME* 替换为群集名称。 出现提示时，输入用户 (admin) 帐户的密码。 在响应中，JSON 输出的“host_name”条目包含节点的 FQDN。 |
+| Ambari REST API | 使用 `curl -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/STORM/components/STORM_UI_SERVER"` 命令来检索有关 Storm UI 和 REST API 正在其上运行的节点的信息。 请将两处出现的 *CLUSTERNAME* 替换为群集名称。 出现提示时，输入用户 (admin) 帐户的密码。 在响应中，JSON 输出的“host_name”条目包含节点的 FQDN。 |
 
-### <a name="authentication"></a>身份验证
+### <a name="authentication"></a>Authentication
 
 对 REST API 的请求必须使用基本身份验证，因此必须使用 HDInsight 群集的管理员名称和密码。 
 
 > [!NOTE]  
-> 由于基本身份验证是使用明文发送的，因此 *始终* 应该使用 HTTPS 来保护与群集之间的通信。
+> 由于基本身份验证使用明文发送，因此*始终*应该使用 HTTPS 来保护与群集之间的通信。
 
 ### <a name="return-values"></a>返回值
 

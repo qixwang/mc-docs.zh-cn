@@ -8,10 +8,10 @@ origin.date: 04/03/2019
 ms.date: 09/23/2019
 ms.author: v-lingwu
 ms.openlocfilehash: 1fc62baea3079c958e104d17c6624f0d5789a328
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79293469"
 ---
 # <a name="back-up-azure-vms-in-a-recovery-services-vault"></a>将 Azure VM 备份到恢复服务保管库中

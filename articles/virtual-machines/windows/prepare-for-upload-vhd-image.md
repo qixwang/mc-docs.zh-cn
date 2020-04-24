@@ -16,10 +16,10 @@ origin.date: 05/11/2019
 ms.date: 02/10/2020
 ms.author: v-yeche
 ms.openlocfilehash: 34deedcb69542c26791ef0eb731922188c2f290a
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79292805"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>准备好要上传到 Azure 的 Windows VHD 或 VHDX
@@ -417,7 +417,7 @@ Get-Service -Name RemoteRegistry | Where-Object { $_.StartType -ne 'Automatic' }
 > [!NOTE]
 > 为避免在 VM 预配期间意外重新启动，我们建议确保所有 Windows 更新安装均已完成，并且没有任何更新待处理。 完成此操作的一种方法是在运行 Sysprep 命令之前安装所有可能的 Windows 更新并重新启动一次。
 
-### 确定何时使用 sysprep <a name="step23"></a>    
+### <a name="determine-when-to-use-sysprep"></a>确定何时使用 sysprep <a name="step23"></a>    
 
 系统准备工具 (Sysprep) 是一个可以重置 Windows 安装的进程。 Sysprep 会删除所有个人数据并重置多个组件，从而为你提供“全新安装”体验。 
 

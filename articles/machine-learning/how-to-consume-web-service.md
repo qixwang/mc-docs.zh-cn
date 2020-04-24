@@ -13,10 +13,10 @@ origin.date: 01/07/2020
 ms.date: 03/09/2020
 ms.custom: seodec18
 ms.openlocfilehash: 810bae985c718883612b28bdadd8ae9b7cc0e8ce
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79292168"
 ---
 # <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>使用部署为 Web 服务的 Azure 机器学习模型
@@ -89,8 +89,8 @@ Azure 机器学习提供了两种方法来控制对 Web 服务的访问。
 
 |身份验证方法|ACI|AKS|
 |---|---|---|
-|键|默认已禁用| 默认已启用|
-|令牌| 不可用| 默认已禁用 |
+|密钥|默认已禁用| 默认已启用|
+|标记| 不可用| 默认已禁用 |
 
 将请求发送到由密钥或令牌保护的服务时，请使用 __Authorization__ 标头来传递密钥或令牌。 密钥或令牌的格式必须为 `Bearer <key-or-token>`，其中 `<key-or-token>` 为密钥或令牌值。
 

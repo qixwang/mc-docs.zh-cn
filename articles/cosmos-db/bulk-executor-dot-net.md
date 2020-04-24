@@ -11,10 +11,10 @@ ms.date: 01/20/2020
 ms.author: v-yeche
 ms.reviewer: sngun
 ms.openlocfilehash: 8236bfd1d21b9fbb4dd29be445929ea92fed6555
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79292964"
 ---
 # <a name="use-the-bulk-executor-net-library-to-perform-bulk-operations-in-azure-cosmos-db"></a>使用批量执行程序 .NET 库在 Azure Cosmos DB 中执行批量操作
@@ -23,13 +23,13 @@ ms.locfileid: "79292964"
 
 目前，批量执行程序库仅受 Azure Cosmos DB SQL API 和 Gremlin API 帐户支持。 本文介绍如何配合使用 SQL API 帐户和批量执行程序 .NET 库。 若要了解如何配合使用 Gremlin API 帐户和批量执行程序 .NET 库，请参阅[在 Azure Cosmos DB Gremlin API 中执行批量操作](bulk-executor-graph-dotnet.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * 如果尚未安装 Visual Studio 2019，可以下载并使用 [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/)。 在安装 Visual Studio 的过程中，请确保启用“Azure 开发”。
 
-* 如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial/)。
+* 如果没有 Azure 订阅，可在开始前创建一个 [试用帐户](https://www.azure.cn/pricing/1rmb-trial/) 。
 
-* 可以通过 `https://localhost:8081` 终结点使用 [Azure Cosmos DB 仿真器](/cosmos-db/local-emulator)。 [对请求进行身份验证](local-emulator.md#authenticating-requests)中提供了主密钥。
+* 可以通过 [ 终结点使用 ](/cosmos-db/local-emulator)Azure Cosmos DB 仿真器`https://localhost:8081`。 [对请求进行身份验证](local-emulator.md#authenticating-requests)中提供了主密钥。
 
     <!-- Not Available on [Try Azure Cosmos DB for free](https://www.azure.cn/try/cosmosdb/) -->
     
@@ -106,7 +106,7 @@ git clone https://github.com/Azure/azure-cosmosdb-bulkexecutor-dotnet-getting-st
     ```
     **BulkImportAsync 方法接受以下参数：**
 
-    |**参数**  |**说明** |
+    |**Parameter**  |**说明** |
     |---------|---------|
     |enableUpsert    |   用于对文档启用更新插入操作的标志。 如果已存在具有给定 ID 的文档，则会更新该文档。 此值默认设置为 false。      |
     |disableAutomaticIdGeneration    |    用于禁用自动生成 ID 的标志。 此值默认设置为 true。     |
@@ -116,7 +116,7 @@ git clone https://github.com/Azure/azure-cosmosdb-bulkexecutor-dotnet-getting-st
 
     **批量导入响应对象定义**批量导入 API 调用的结果包含以下属性：
 
-    |**参数**  |**说明**  |
+    |**Parameter**  |**说明**  |
     |---------|---------|
     |NumberOfDocumentsImported (long)   |  从提供给批量导入 API 调用的总文档数中成功导入的文档总数。       |
     |TotalRequestUnitsConsumed (double)   |   批量导入 API 调用消耗的请求单位 (RU) 总数。      |
@@ -157,7 +157,7 @@ git clone https://github.com/Azure/azure-cosmosdb-bulkexecutor-dotnet-getting-st
     ```  
     **BulkUpdateAsync 方法接受以下参数：**
 
-    |**参数**  |**说明** |
+    |**Parameter**  |**说明** |
     |---------|---------|
     |maxConcurrencyPerPartitionKeyRange    |   每个分区键范围的最大并发度，将此参数设置为 null 会让库使用默认值 (20)。   |
     |maxInMemorySortingBatchSize    |    从在每个阶段中传递给 API 调用的更新项枚举器提取的最大更新项数。 对于批量导入之前发生的每个内存中排序阶段，将此参数设置为 null 会导致库使用默认最小值 (updateItems.count, 1000000)。     |
@@ -165,7 +165,7 @@ git clone https://github.com/Azure/azure-cosmosdb-bulkexecutor-dotnet-getting-st
 
     **批量更新响应对象定义**批量更新 API 调用的结果包含以下属性：
 
-    |**参数**  |**说明** |
+    |**Parameter**  |**说明** |
     |---------|---------|
     |NumberOfDocumentsUpdated (long)    |   从提供给批量更新 API 调用的总文档数中成功更新的文档数。      |
     |TotalRequestUnitsConsumed (double)   |    批量更新 API 调用消耗的请求单位 (RU) 总数。    |

@@ -9,17 +9,17 @@ origin.date: 07/13/2019
 ms.date: 02/17/2020
 ms.author: v-jay
 ms.openlocfilehash: 2fa305cc38845c4f56044180150162da414f26b4
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79291511"
 ---
 # <a name="use-azure-dns-to-provide-custom-domain-settings-for-an-azure-service"></a>使用 Azure DNS 为 Azure 服务提供自定义域设置
 
 Azure DNS 为支持自定义域或具有完全限定域名 (FQDN) 的任何 Azure 资源的自定义域提供 DNS。 例如，你有一个 Azure Web 应用，并且希望用户使用 contoso.com 或 www\.contoso.com 作为 FQDN 来访问它。 本文逐步讲解如何使用 Azure DNS 配置 Azure 服务，以便使用自定义域。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要对自定义域使用 Azure DNS，首先必须将该域委派给 Azure DNS。 有关如何为委派配置名称服务器的说明，请访问[将域委派给 Azure DNS](./dns-delegate-domain-azure-dns.md)。 将域委派给 Azure DNS 区域后，便可以配置所需的 DNS 记录。
 
@@ -39,13 +39,13 @@ Azure DNS 为支持自定义域或具有完全限定域名 (FQDN) 的任何 Azur
 
 导航到 DNS 区域，单击“+ 记录集”。  在“添加记录集”边栏选项卡上填写以下信息，单击“确定”创建该记录集。  
 
-|属性  |Value  |说明  |
+|properties  |值  |说明  |
 |---------|---------|---------|
 |名称     | myfunctionapp        | 此值连同域名标签是自定义域名的 FQDN。        |
 |类型     | CNAME        | 使用 CNAME 记录相当于使用别名。        |
 |TTL     | 1        | 1 表示 1 小时        |
 |TTL 单位     | 小时        | 小时用作时间计量单位         |
-|别名     | adatumfunction.chinacloudsites.cn        | 为其创建别名的 DNS 名称，在本示例中，为默认提供给函数应用的 adatumfunction.chinacloudsites.cn DNS 名称。        |
+|Alias     | adatumfunction.chinacloudsites.cn        | 为其创建别名的 DNS 名称，在本示例中，为默认提供给函数应用的 adatumfunction.chinacloudsites.cn DNS 名称。        |
 
 导航回到函数应用，单击“平台功能”，在“网络”下面单击“自定义域”，在“自定义主机名”下面单击“+ 添加主机名”。     
 
@@ -57,14 +57,14 @@ Azure DNS 为支持自定义域或具有完全限定域名 (FQDN) 的任何 Azur
 
 若要为使用公共 IP 地址资源（例如应用程序网关、负载均衡器、云服务、资源管理器 VM 和经典 VM）的服务配置自定义域，请使用 A 记录。
 
-导航到“网络” > “公共 IP 地址”，选择“公共 IP 资源”，单击“配置”。    记下显示的 IP 地址。
+导航到“网络” **“公共 IP 地址”，选择“公共 IP 资源”，单击“配置”。**  >    记下显示的 IP 地址。
 
 ![公共 IP 边栏选项卡](./media/dns-custom-domain/publicip.png)
 
 导航到 DNS 区域，单击“+ 记录集”。  在“添加记录集”边栏选项卡上填写以下信息，单击“确定”创建该记录集。  
 
 
-|属性  |Value  |说明  |
+|properties  |值  |说明  |
 |---------|---------|---------|
 |名称     | mywebserver        | 此值连同域名标签是自定义域名的 FQDN。        |
 |类型     | A        | 由于资源是 IP 地址，因此应使用 A 记录。        |
@@ -91,13 +91,13 @@ Azure DNS 为支持自定义域或具有完全限定域名 (FQDN) 的任何 Azur
 导航到 DNS 区域，单击“+ 记录集”。  在“添加记录集”边栏选项卡上填写以下信息，单击“确定”创建该记录集。  
 
 
-|属性  |Value  |说明  |
+|properties  |值  |说明  |
 |---------|---------|---------|
 |名称     | mywebserver        | 此值连同域名标签是自定义域名的 FQDN。        |
 |类型     | CNAME        | 使用 CNAME 记录相当于使用别名。 如果资源使用了 IP 地址，则会使用 A 记录。        |
 |TTL     | 1        | 1 表示 1 小时        |
 |TTL 单位     | 小时        | 小时用作时间计量单位         |
-|别名     | webserver.chinacloudsites.cn        | 为其创建别名的 DNS 名称，在本示例中，为默认提供给 Web 应用的 webserver.chinacloudsites.cn DNS 名称。        |
+|Alias     | webserver.chinacloudsites.cn        | 为其创建别名的 DNS 名称，在本示例中，为默认提供给 Web 应用的 webserver.chinacloudsites.cn DNS 名称。        |
 
 
 ![创建 CNAME 记录](./media/dns-custom-domain/createcnamerecord.png)
@@ -118,22 +118,22 @@ Azure DNS 为支持自定义域或具有完全限定域名 (FQDN) 的任何 Azur
 
 下面逐步介绍如何使用 asverify 方法配置 Blob 存储帐户的 CNAME 记录。 此方法可确保不会造成停机。
 
-导航到“存储” > “存储帐户”，选择自己的存储帐户，单击“自定义域”。    记下步骤 2 中的 FQDN，此值用于创建第一条 CNAME 记录
+导航到“存储” **“存储帐户”，选择自己的存储帐户，单击“自定义域”。**  >    记下步骤 2 中的 FQDN，此值用于创建第一条 CNAME 记录
 
 ![Blob 存储自定义域](./media/dns-custom-domain/blobcustomdomain.png)
 
 导航到 DNS 区域，单击“+ 记录集”。  在“添加记录集”边栏选项卡上填写以下信息，单击“确定”创建该记录集。  
 
 
-|属性  |Value  |说明  |
+|properties  |值  |说明  |
 |---------|---------|---------|
 |名称     | asverify.mystorageaccount        | 此值连同域名标签是自定义域名的 FQDN。        |
 |类型     | CNAME        | 使用 CNAME 记录相当于使用别名。        |
 |TTL     | 1        | 1 表示 1 小时        |
 |TTL 单位     | 小时        | 小时用作时间计量单位         |
-|别名     | asverify.adatumfunctiona9ed.blob.core.chinacloudapi.cn        | 为其创建别名的 DNS 名称，在本示例中，为默认提供给存储帐户的 asverify.adatumfunctiona9ed.blob.core.chinacloudapi.cn DNS 名称。        |
+|Alias     | asverify.adatumfunctiona9ed.blob.core.chinacloudapi.cn        | 为其创建别名的 DNS 名称，在本示例中，为默认提供给存储帐户的 asverify.adatumfunctiona9ed.blob.core.chinacloudapi.cn DNS 名称。        |
 
-单击“存储” > “存储帐户”导航回到存储帐户，选择该存储帐户，单击“自定义域”。    在文本框中键入创建的别名（不带 asverify 前缀），选中“使用间接 CNAME 验证”，单击“保存”   。 完成此步骤后，返回 DNS 区域，并创建不带 asverify 前缀的 CNAME 记录。  此后，可以安全删除带有 cdnverify 前缀的 CNAME 记录。
+单击“存储” **“存储帐户”导航回到存储帐户，选择该存储帐户，单击“自定义域”。**  >    在文本框中键入创建的别名（不带 asverify 前缀），选中“使用间接 CNAME 验证”，单击“保存”   。 完成此步骤后，返回 DNS 区域，并创建不带 asverify 前缀的 CNAME 记录。  此后，可以安全删除带有 cdnverify 前缀的 CNAME 记录。
 
 ![Blob 存储自定义域](./media/dns-custom-domain/indirectvalidate.png)
 

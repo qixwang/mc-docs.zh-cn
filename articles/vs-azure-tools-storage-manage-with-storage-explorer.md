@@ -10,10 +10,10 @@ origin.date: 11/08/2019
 ms.date: 11/18/2019
 ms.author: v-lingwu
 ms.openlocfilehash: 6719c5b23132b383ba07f7cb2bc871b2e8848231
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79293381"
 ---
 # <a name="get-started-with-storage-explorer"></a>存储资源管理器入门
@@ -236,7 +236,7 @@ snap connect storage-explorer:password-manager-service :password-manager-service
 
 本示例使用 Data Lake Storage Gen1。 Azure Data Lake Storage Gen2 现已推出。
 
-## 在存储资源管理器中生成共享访问签名<a name="generate-a-sas-in-storage-explorer"></a>
+## <a name="generate-a-shared-access-signature-in-storage-explorer"></a>在存储资源管理器中生成共享访问签名<a name="generate-a-sas-in-storage-explorer"></a>
 
 ### <a name="account-level-shared-access-signature"></a>帐户级共享访问签名
 

@@ -5,10 +5,10 @@ origin.date: 11/15/2019
 ms.date: 03/09/2020
 ms.author: v-yeche
 ms.openlocfilehash: e21fce9b54b5c657c5c87a41020b2993adb46d60
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79290700"
 ---
 ## <a name="download-and-install-the-istio-istioctl-client-binary"></a>下载并安装 Istio istioctl 客户端二进制文件

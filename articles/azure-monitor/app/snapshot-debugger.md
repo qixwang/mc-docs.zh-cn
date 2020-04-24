@@ -9,10 +9,10 @@ origin.date: 08/06/2019
 ms.date: 08/12/2019
 ms.author: v-lingwu
 ms.openlocfilehash: 19459279835de5dd2de86edd5fab050c02f53663
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79293028"
 ---
 # <a name="debug-snapshots-on-exceptions-in-net-apps"></a>.NET 应用中发生异常时的调试快照

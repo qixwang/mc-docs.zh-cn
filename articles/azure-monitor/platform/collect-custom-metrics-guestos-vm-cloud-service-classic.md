@@ -9,10 +9,10 @@ ms.date: 09/23/2019
 ms.author: v-lingwu
 ms.subservice: metrics
 ms.openlocfilehash: 8ef94c6fb72e7dd6c2d9dfb1e814a35e5260f81d
-ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/17/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79452316"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-classic-cloud-services"></a>将来宾 OS 指标发送到 Azure Monitor 指标存储经典云服务 
@@ -27,7 +27,7 @@ ms.locfileid: "79452316"
 
 本文中所述的过程仅适用于 Azure 云服务上的性能计数器。 它不适用于其他自定义指标。 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - 你必须是 Azure 订阅的[服务管理员或共同管理员](https://docs.azure.cn/zh-cn/billing/billing-add-change-azure-subscription-administrator)。 
 

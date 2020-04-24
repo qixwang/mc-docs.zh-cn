@@ -7,10 +7,10 @@ ms.date: 03/02/2020
 ms.author: v-junlch
 ms.custom: cc996988-fb4f-47
 ms.openlocfilehash: 7c9d9ab3bddb25102772fe49eac929092e372ab2
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79293271"
 ---
 # <a name="azure-queue-storage-output-bindings-for-azure-functions"></a>适用于 Azure Functions 的 Azure 队列存储输出绑定

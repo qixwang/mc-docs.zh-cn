@@ -13,10 +13,10 @@ origin.date: 10/25/2019
 ms.date: 12/04/2019
 ms.author: v-lingwu
 ms.openlocfilehash: 1491ba63e36fd0e550e45d47fa0a4ee7ccd48542
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79292722"
 ---
 # <a name="authoring-and-runtime-keys"></a>创作和运行时密钥
@@ -45,7 +45,7 @@ ms.locfileid: "79292722"
 
 LUIS 允许三类 Azure 资源： 
  
-|键|目的|认知服务 `kind`|认知服务 `type`|
+|密钥|目的|认知服务 `kind`|认知服务 `type`|
 |--|--|--|--|
 |[创作密钥](#programmatic-key)|通过创作、训练、发布和测试访问和管理应用程序的数据。 若要以编程方式创作 LUIS 应用，请创建 LUIS 创作密钥。<br><br>`LUIS.Authoring` 密钥的目的是让你执行以下操作：<br>* 以编程方式管理语言理解应用和模型，包括训练和发布<br> * 为人员分配[参与者角色](#contributions-from-other-authors)，控制对创作资源的权限。|`LUIS.Authoring`|`Cognitive Services`|
 |[预测密钥](#prediction-endpoint-runtime-key)| 查询预测终结点请求。 在客户端应用请求的预测超出初学者资源提供的 1,000 个请求之前，创建 LUIS 预测密钥。 |`LUIS`|`Cognitive Services`|
@@ -59,7 +59,7 @@ LUIS 允许三类 Azure 资源：
 > 为了方便起见，很多示例使用[初学者密钥](#starter-key)，因为该密钥在[配额](luis-boundaries.md#key-limits)中提供了几个免费的预测终结点调用。  
 
 
-### 查询预测资源 <a name="use-endpoint-key-in-query"></a>
+### <a name="query-prediction-resources"></a>查询预测资源 <a name="use-endpoint-key-in-query"></a>
 
 * 运行时密钥可用于所有 LUIS 应用或特定 LUIS 应用。 
 * 请勿将运行时密钥用于创作 LUIS 应用。 
@@ -70,7 +70,7 @@ LUIS 运行时终结点接受两种样式的查询，这两种查询都使用预
 
 ## <a name="assignment-of-the-key"></a>分配密钥
 
-可以通过 [LUIS 门户](https://luis.azure.cn)或相应的 API [分配](luis-how-to-azure-subscription.md)运行时密钥。 
+可以通过 [LUIS 门户](luis-how-to-azure-subscription.md)或相应的 API [分配](https://luis.azure.cn)运行时密钥。 
 
 ## <a name="key-limits"></a>密钥限制
 
@@ -85,7 +85,7 @@ LUIS 运行时终结点接受两种样式的查询，这两种查询都使用预
 
 ## <a name="contributions-from-other-authors"></a>其他作者的贡献
 
-**用于创作资源迁移应用**：_参与者_在用于创作资源的 Azure 门户中使用“访问控制(IAM)”  页进行管理。 了解如何使用协作者的电子邮件地址和_参与者_角色[添加用户](luis-how-to-collaborate.md)。 
+**用于创作资源迁移应用**：_参与者_在用于创作资源的 Azure 门户中使用“访问控制(IAM)”  页进行管理。 了解如何使用协作者的电子邮件地址和[参与者](luis-how-to-collaborate.md)角色_添加用户_。 
 
 **对于尚未迁移的应用**：所有协作者  都在 LUIS 门户中通过“管理 -> 协作者”页面进行管理。 
 
@@ -110,7 +110,7 @@ LUIS 运行时终结点接受两种样式的查询，这两种查询都使用预
 
 所有者和所有参与者具有创作应用所需的访问权限。 
 
-|创作访问权限包括|注释|
+|创作访问权限包括|说明|
 |--|--|
 |添加或删除终结点密钥||
 |导出版本||
@@ -132,7 +132,7 @@ LUIS 运行时终结点接受两种样式的查询，这两种查询都使用预
 |:--|:--|
 |可供所有者和参与者使用|可供所有者、参与者以及知道应用 ID 的任何其他人使用|
 
-可以通过在服务器到服务器环境中调用 LUIS 运行时密钥来控制谁可以查看该密钥。 如果在机器人上使用 LUIS，则机器人和 LUIS 之间的连接已经安全。 如果直接调用 LUIS 终结点，则应创建具有受控访问权限（如 [AAD](https://www.azure.cn/home/features/active-directory/)）的服务器端 API（如 Azure [函数](https://www.azure.cn/home/features/functions/)）。 如果调用并验证服务器端 API，则在确认授权后将调用传递到 LUIS。 尽管此策略不能防范中间人攻击，但它会针对用户模糊化处理密钥和终结点 URL，允许你跟踪访问，并允许你添加终结点响应日志记录（如 [Application Insights](https://www.azure.cn/home/features/application-insights/)）。
+可以通过在服务器到服务器环境中调用 LUIS 运行时密钥来控制谁可以查看该密钥。 如果在机器人上使用 LUIS，则机器人和 LUIS 之间的连接已经安全。 如果直接调用 LUIS 终结点，则应创建具有受控访问权限（如 [AAD](https://www.azure.cn/home/features/functions/)）的服务器端 API（如 Azure [函数](https://www.azure.cn/home/features/active-directory/)）。 如果调用并验证服务器端 API，则在确认授权后将调用传递到 LUIS。 尽管此策略不能防范中间人攻击，但它会针对用户模糊化处理密钥和终结点 URL，允许你跟踪访问，并允许你添加终结点响应日志记录（如 [Application Insights](https://www.azure.cn/home/features/application-insights/)）。
 
 #### <a name="runtime-security-for-private-apps"></a>专用应用的运行时安全性
 
@@ -158,7 +158,7 @@ LUIS 没有转让资源所有权的概念。
 
 ## <a name="securing-the-endpoint"></a>保护终结点安全 
 
-可以通过在服务器到服务器环境中调用 LUIS 预测运行时终结点密钥来控制谁可以查看该密钥。 如果在机器人上使用 LUIS，则机器人和 LUIS 之间的连接已经安全。 如果直接调用 LUIS 终结点，则应创建具有受控访问权限（如 [AAD](https://www.azure.cn/home/features/active-directory/)）的服务器端 API（如 Azure [函数](https://www.azure.cn/home/features/functions/)）。 如果调用服务器端 API 并且身份验证和授权得到验证，则将调用传递到 LUIS。 尽管此策略不会防止中间人攻击，但它针对用户模糊化处理终结点，允许跟踪访问，并允许添加终结点响应日志记录（如 [Application Insights](https://www.azure.cn/home/features/application-insights/)）。  
+可以通过在服务器到服务器环境中调用 LUIS 预测运行时终结点密钥来控制谁可以查看该密钥。 如果在机器人上使用 LUIS，则机器人和 LUIS 之间的连接已经安全。 如果直接调用 LUIS 终结点，则应创建具有受控访问权限（如 [AAD](https://www.azure.cn/home/features/functions/)）的服务器端 API（如 Azure [函数](https://www.azure.cn/home/features/active-directory/)）。 如果调用服务器端 API 并且身份验证和授权得到验证，则将调用传递到 LUIS。 尽管此策略不会防止中间人攻击，但它针对用户模糊化处理终结点，允许跟踪访问，并允许添加终结点响应日志记录（如 [Application Insights](https://www.azure.cn/home/features/application-insights/)）。  
 
 ## <a name="next-steps"></a>后续步骤
 

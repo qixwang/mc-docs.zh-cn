@@ -10,10 +10,10 @@ origin.date: 01/07/2019
 ms.author: v-yiso
 ms.date: 06/03/2019
 ms.openlocfilehash: 358705061cff67fe54dbe0fd8670de1371c80671
-ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/17/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79452294"
 ---
 # <a name="map-custom-fields-to-event-grid-schema"></a>将自定义字段映射到事件网格架构

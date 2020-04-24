@@ -9,10 +9,10 @@ ms.date: 03/09/2020
 ms.author: v-tawe
 ms.custom: seodec18
 ms.openlocfilehash: b868972037043f13feae9cbb44567f8ae2bb7702
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79291938"
 ---
 # <a name="manage-an-app-service-plan-in-azure"></a>在 Azure 中管理应用服务计划
@@ -51,7 +51,7 @@ ms.locfileid: "79291938"
 > [!NOTE]
 > Azure 会将每个新的应用服务计划部署到部署单元（在内部称为 Web 空间）中。 每个区域都可以有许多 Web 空间，但应用只能在相同 Web 空间中创建的计划之间移动。 应用服务环境是一个独立的 Web 空间，因此可以在相同应用服务环境中的计划之间移动应用，但无法在不同应用服务环境中的计划之间移动应用。
 >
-> 无法在创建计划时指定所需的 Web 空间，但这可确保计划创建于与现有计划相同的 Web 空间中。 简而言之，使用同一资源组和区域组合创建的所有计划都部署到同一 Web 空间中。 例如，如果你在资源组 A 和区域 B 中创建了一个计划，那么你随后在资源组 A 和区域 B 中创建的任何计划都将部署到同一 Web 空间中。 请注意，计划创建之后便不能移动 Web 空间，所以无法通过将计划移至另一个资源组，将其移到与另一个计划“相同的 Web 空间”中。
+> 无法在创建计划时指定所需的 Web 空间，但这可确保计划创建于与现有计划相同的 Web 空间中。 简而言之，所有使用相同资源组和区域组合创建的计划都会部署到相同的 Web 空间中。 比方说，如果在资源组 A 和区域 B 中创建了计划，则后续在资源组 A 和区域 B 中创建的所有计划都会部署到相同的 Web 空间中。 请注意，计划创建之后便不能移动 Web 空间，所以无法通过将计划移至另一个资源组，将其移到与另一个计划“相同的 Web 空间”中。
 > 
 
 1. 在 [Azure 门户](https://portal.azure.cn)中，搜索并选择“应用服务”  ，然后选择要移动的应用。
@@ -73,16 +73,16 @@ ms.locfileid: "79291938"
 
 ## <a name="move-an-app-to-a-different-region"></a>将应用移到不同的区域
 
-运行应用的区域是该应用的应用服务计划所在的区域。 但是，无法更改应用服务计划的区域。 如果想要在不同的区域中运行应用，替代方法是使用应用克隆。 克隆可以复制任何区域的新的或现有的应用服务计划中的应用。
+运行应用的区域是该应用的应用服务计划所在的区域。 但是，无法更改应用服务计划的区域。 如果想要在不同的区域中运行应用，替代方法是使用应用克隆。 不管位于什么区域，克隆都会在新的或现有的应用服务计划中复制应用。
 
-可以在菜单的“开发工具”部分找到“克隆应用”。  
+可以在菜单的“开发工具”  部分中找到“克隆应用”  。
 
 > [!IMPORTANT]
 > 克隆具有一些限制。 可以在 [Azure 应用服务应用克隆](app-service-web-app-cloning.md)中查看相关信息。
 
 ## <a name="scale-an-app-service-plan"></a>缩放应用服务计划
 
-若要提高应用服务计划的定价层，请参阅[在 Azure 中纵向扩展应用](manage-scale-up.md)。
+若要纵向扩展应用服务计划的定价层，请参阅[在 Azure 中纵向扩展应用](manage-scale-up.md)。
 
 若要增加应用的实例计数，请参阅[手动或自动缩放实例计数](../monitoring-and-diagnostics/insights-how-to-scale.md)。
 

@@ -15,10 +15,10 @@ origin.date: 01/22/2020
 ms.date: 02/24/2020
 ms.author: v-yeche
 ms.openlocfilehash: cb1d1b75744f3dd2b01a625f13cd45ea33f8b6d1
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79292331"
 ---
 # <a name="create-change-or-delete-a-network-interface"></a>创建、更改或删除网络接口
@@ -41,7 +41,7 @@ ms.locfileid: "79292331"
 
 登录或连接到 Azure 所用的帐户必须分配有[网络参与者](../role-based-access-control/built-in-roles.md?toc=%2fvirtual-network%2ftoc.json#network-contributor)角色或者分配有可执行[权限](#permissions)中列出的适当操作的[自定义角色](../role-based-access-control/custom-roles.md?toc=%2fvirtual-network%2ftoc.json)。
 
-## <a name="create-a-network-interface"></a>创建网络接口
+## <a name="create-a-network-interface"></a><a name="create-a-network-interface"></a>创建网络接口
 
 使用 Azure 门户创建虚拟机时，门户会使用默认设置创建一个网络接口。 如果想要指定所有网络接口设置，可使用自定义设置创建网络接口并在创建虚拟机（使用 PowerShell 或 Azure CLI）时向其附加此网络接口。 还可创建网络接口并将其添加到现有的虚拟机（使用 PowerShell 或 Azure CLI）。 若要了解如何创建包含现有网络接口的虚拟机，或者要在现有虚拟机中添加或删除网络接口，请参阅[添加或删除网络接口](virtual-network-network-interface-vm.md)。 创建网络接口之前，创建该接口时所在的同一位置和订阅中必须存在现有的[虚拟网络](manage-virtual-network.md)。
 
@@ -107,7 +107,7 @@ ms.locfileid: "79292331"
 |PowerShell|使用 [Get-AzNetworkInterface](https://docs.microsoft.com/powershell/module/az.network/get-aznetworkinterface) 查看订阅中的网络接口或查看网络接口的设置|
 
 <a name="dns"></a>
-## <a name="change-dns-servers"></a>更改 DNS 服务器
+## <a name="change-dns-servers"></a><a name="change-dns-servers"></a>更改 DNS 服务器
 
 DNS 服务器由 Azure DHCP 服务器分配到虚拟机操作系统中的网络接口。 分配的 DNS 服务器设置就是网络接口的 DNS 服务器设置。 若要详细了解网络接口的名称解析设置，请参阅[虚拟机的名称解析](virtual-networks-name-resolution-for-vms-and-role-instances.md)。 网络接口可从虚拟网络继承设置，或使用自身唯一的设置替代虚拟网络的设置。
 

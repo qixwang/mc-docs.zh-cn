@@ -9,10 +9,10 @@ origin.date: 08/13/2019
 ms.date: 12/04/2019
 ms.author: v-lingwu
 ms.openlocfilehash: 48b143ddd07d8419f823eef295a3bc3b03e40927
-ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/17/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79452428"
 ---
 # <a name="connect-operations-manager-to-azure-monitor"></a>将 Operations Manager 连接到 Azure Monitor
@@ -35,7 +35,7 @@ ms.locfileid: "79452428"
 
 如果 IT 安全策略不允许网络上的计算机连接到 Internet，可将管理服务器配置为连接到 Log Analytics 网关，以根据启用的解决方案接收配置信息并发送收集的数据。 有关如何将 Operations Manager 管理组配置为通过 Log Analytics 网关与 Azure Monitor 通信的详细信息和步骤，请参阅[使用 Log Analytics 网关将计算机连接到 Azure Monitor](../../azure-monitor/platform/gateway.md)。  
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 在开始之前，请查看以下要求。
 
@@ -107,19 +107,19 @@ ms.locfileid: "79452428"
 1. 在 Operations Manager 控制台中，选择“**管理**”工作区。
 1. 展开 Operations Management Suite 节点，并单击“**连接**”。
 1. 单击“**向 Operations Management Suite 注册**”链接。
-1. 在“Operations Management Suite 载入向导:  身份验证”页上，输入与 OMS 订阅相关联的管理员帐户的电子邮件地址或电话号码和密码，然后单击“登录”  。
+1. 在“**Operations Management Suite 载入向导: 身份验证**”页面上，输入电子邮件地址或电话号码以及与 OMS 订阅关联的管理员帐户的密码，并单击“**登录**”。
 
    >[!NOTE]
    >Operations Management Suite 名称已弃用。
 
-1. 成功进行身份验证后，在“Operations Management Suite 载入向导:  选择工作区”页上，系统会提示你选择 Azure 租户、订阅和 Log Analytics 工作区。 如果有多个工作区，从下拉列表中选择想要在 Operations Manager 管理组中注册的工作区，并单击“**下一步**”。
+1. 成功进行身份验证后，在“Operations Management Suite 载入向导: 选择工作区”页面上，系统会提示选择 Azure 租户、订阅和 Log Analytics 工作区。  如果有多个工作区，从下拉列表中选择想要在 Operations Manager 管理组中注册的工作区，并单击“**下一步**”。
 
    > [!NOTE]
    > Operations Manager 一次仅支持一个 Log Analytics 工作区。 连接以及通过上一个工作区注册到 Azure Monitor 的计算机将从 Azure Monitor 中删除。
    >
    >
-1. 在“Operations Management Suite 载入向导:  摘要”页上，确认设置，如果它们正确无误，请单击“创建”  。
-1. 在“Operations Management Suite 载入向导:  完成”页上，单击“关闭”  。
+1. 在“**Operations Management Suite 载入向导:摘要**”页面上确认设置，如果设置正确无误，请单击 “**创建**”。
+1. 在“**Operations Management Suite 载入向导:完成**”页面上，单击“**关闭**”。
 
 ### <a name="add-agent-managed-computers"></a>添加代理管理的计算机
 
@@ -139,7 +139,7 @@ ms.locfileid: "79452428"
 1. 打开 Operations Manager 控制台并选择“**管理**”工作区。
 1. 展开 Operations Management Suite，并单击“**连接**”。
 1. 在“OMS 连接”视图中，单击“**配置代理服务器**”。
-1. 在“Operations Management Suite 向导:  代理服务器”页上，选择“使用代理服务器访问 Operations Management Suite”  ，然后键入带端口号的 URL，例如 http://corpproxy:80 ，然后单击“完成”  。
+1. 在“Operations Management Suite 向导: 代理服务器”  页上，选择“使用代理服务器访问 Operations Management Suite”  ，键入包含端口号的 URL，例如 http://corpproxy:80 ，并单击“完成”  。
 
 如果代理服务器要求身份验证，请执行以下步骤，配置需要向管理组中 Azure Monitor 报告的受管理计算机传播的凭据和设置。
 
@@ -179,7 +179,7 @@ ms.locfileid: "79452428"
 1. 按照  “Log Analytics 载入向导”操作，输入与新 Log Analytics 工作区关联的管理员帐户的电子邮件地址（或电话号码）和密码。
 
    > [!NOTE]
-   > “Operations Management Suite 载入向导:  选择工作区”页会显示正在使用的现有工作区。
+   > “Operations Management Suite 载入向导：选择工作区”页面会显示使用中的现有工作区。 
    >
    >
 

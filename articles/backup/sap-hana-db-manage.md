@@ -8,10 +8,10 @@ origin.date: 11/12/2019
 ms.date: 03/12/2020
 ms.author: v-lingwu
 ms.openlocfilehash: 6c743ece971fa1b1a921f0339471ad3e2296777d
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79293131"
 ---
 # <a name="manage-and-monitor-backed-up-sap-hana-databases"></a>管理和监视已备份的 SAP HANA 数据库
@@ -36,7 +36,7 @@ Azure 备份在 Azure 门户上的“备份作业”部分中显示所有手动�
 
 警报是监视 SAP HANA 数据库备份的一种简单方法。 警报可以帮助你集中精力处理最关心的事件，而不会在备份生成的众多事件中迷失方向。 Azure 备份允许你设置警报，可以如下所述来监视警报：
 
-* 登录到 [Azure 门户](https://portal.azure.cn/)。
+* 登录 [Azure 门户](https://portal.azure.cn/)。
 * 在保管库仪表板中，选择“备份警报”。 
 
   ![保管库仪表板上的备份警报](./media/sap-hana-db-manage/backup-alerts-dashboard.png)
@@ -67,8 +67,8 @@ Azure 备份通过其支持的大量管理操作，使备份的 SAP HANA 数据�
 
 1. 在保管库菜单中，单击“备份项”  。
 2. 在“备份项”  中，选择运行 SAP HANA 数据库的 VM，然后单击“立即备份”  。
-3. 在“立即备份”中，使用日历控件选择恢复点的最后保留日期  。  。
-4. 监视门户通知。 可以在保管库仪表板 >“备份作业” > “进行中”监视作业进度。   创建初始备份可能需要一些时间，具体取决于你的数据库的大小。
+3. 在“立即备份”中，使用日历控件选择恢复点的最后保留日期  。 然后单击“确定”  。
+4. 监视门户通知。 可以在保管库仪表板 >“备份作业” **“进行中”监视作业进度。**  >   创建初始备份可能需要一些时间，具体取决于你的数据库的大小。
 
 ### <a name="run-sap-hana-native-client-backup-on-a-database-with-azure-backup-enabled"></a>在启用了 Azure 备份的数据库上运行 SAP HANA 本机客户端备份
 
@@ -76,7 +76,7 @@ Azure 备份通过其支持的大量管理操作，使备份的 SAP HANA 数据�
 
 1. 等待数据库的所有完整备份或日志备份完成。 在 SAP HANA Studio / Cockpit 中检查状态。
 2. 禁用日志备份，并将备份目录设置为相关数据库的文件系统。
-3. 为此，请双击“systemdb” > “配置” > “选择数据库” > “筛选器(日志)”。    
+3. 为此，请双击“systemdb” **“配置”** “选择数据库” > “筛选器(日志)”。   >    >  
 4. 将 **enable_auto_log_backup** 设置为 **No**。
 5. 将 **log_backup_using_backint** 设置为 **False**。
 6. 创建数据库的完整备份。
@@ -126,9 +126,9 @@ Azure 备份通过其支持的大量管理操作，使备份的 SAP HANA 数据�
 
 如果选择保留恢复点，请记住以下详细内容：
 
-* 所有恢复点永远保留不变，在停止保护时所有修剪操作都会停止，但会保留数据。
+* 所有恢复点都将永久保持不变，所有删除操作都应在停止保护时停止，并保留数据。
 * 需要为受保护的实例和消耗的存储空间付费。 有关详细信息，请参阅 [Azure 备份定价](https://www.azure.cn/pricing/details/backup/)。
-* 如果在不停止备份的情况下删除数据源，则新备份将会失败。
+* 如果在不停止备份的情况下删除数据源，则新备份会失败。
 
 停止数据库的保护：
 

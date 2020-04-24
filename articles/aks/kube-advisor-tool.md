@@ -8,10 +8,10 @@ origin.date: 11/05/2018
 ms.date: 03/09/2020
 ms.author: v-yeche
 ms.openlocfilehash: d6e79bed80d33d48795972c6fc3357e3a8771c15
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79290731"
 ---
 # <a name="checking-for-kubernetes-best-practices-in-your-cluster"></a>检查 Kubernetes 群集中的最佳做法

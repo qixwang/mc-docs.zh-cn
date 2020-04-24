@@ -1,6 +1,6 @@
 ---
 title: Azure API 管理中的 API 模板
-description: 了解如何在 Azure API 管理中自定义开发人员门户中 API 页面的内容。
+description: 了解如何在 Azure API 管理中自定义开发人员门户中的 API 页面的内容。
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -16,20 +16,20 @@ origin.date: 11/04/2019
 ms.author: v-yiso
 ms.date: 11/18/2019
 ms.openlocfilehash: 79703f2c17ed4b46b2835ca3e120c14c232127be
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79291213"
 ---
 # <a name="api-templates-in-azure-api-management"></a>Azure API 管理中的 API 模板
-通过 Azure API 管理，用户能够使用一组用于配置内容的模板自定义开发人员门户页的内容。 使用 [DotLiquid](http://dotliquidmarkup.org/) 语法和所选编辑器（例如 [DotLiquid for Designers](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers)），以及提供的一组本地化[字符串资源](./api-management-template-resources.md#strings)、[字形资源](./api-management-template-resources.md#glyphs)和[页面控件](./api-management-page-controls.md)，即可根据这些模板的使用需要非常灵活地配置页面内容。  
+通过 Azure API 管理，用户能够使用一组用于配置内容的模板自定义开发人员门户页面的内容。 使用 [DotLiquid](http://dotliquidmarkup.org/) 语法和所选编辑器（例如 [DotLiquid for Designers](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers)），以及提供的一组本地化[字符串资源](./api-management-template-resources.md#strings)、[字形资源](./api-management-template-resources.md#glyphs)和[页面控件](./api-management-page-controls.md)，即可根据这些模板的使用需要非常灵活地配置页面内容。  
   
- 本部分中的模板可用于自定义开发人员门户中 API 页面的内容。  
+ 本部分中的模板可用于自定义开发人员门户中的 API 页面的内容。  
   
 -   [API 列表](#APIList)  
 -   [操作](#Product)  
--   [代码示例](#CodeSamples)  
+-   [示例代码](#CodeSamples)  
     -   [Curl](#Curl)  
     -   [C#](#CSharp)  
     -   [Java](#Stub)  
@@ -45,7 +45,7 @@ ms.locfileid: "79291213"
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
   
-##  <a name="APIList"></a> API 列表  
+##  <a name="api-list"></a><a name="APIList"></a> API 列表  
  **API 列表**模板可用于自定义开发人员门户中 API 列表页的正文。  
   
  ![开发人员门户 API 列表](./media/api-management-api-templates/APIM-Developer-Portal-Templates-API-List.png "APIM 开发人员门户模板 API 列表")  
@@ -89,7 +89,7 @@ ms.locfileid: "79291213"
   
 ### <a name="data-model"></a>数据模型  
   
-|属性|类型|说明|  
+|properties|类型|说明|  
 |--------------|----------|-----------------|  
 |apis|[API 摘要](./api-management-template-data-model-reference.md#APISummary)实体的集合。|对当前用户可见的 API。|  
   
@@ -113,7 +113,7 @@ ms.locfileid: "79291213"
 }  
 ```  
   
-##  <a name="Product"></a> 操作  
+##  <a name="operation"></a><a name="Product"></a> 操作  
  **操作**模板可用于自定义开发人员门户中操作页的正文。  
   
  ![开发人员门户操作页](./media/api-management-api-templates/APIM-Developer-Portal-templates-Operation-page.png "APIM 开发人员门户模板操作页")  
@@ -344,15 +344,15 @@ ms.locfileid: "79291213"
   
 ### <a name="data-model"></a>数据模型  
   
-|属性|类型|说明|  
+|properties|类型|说明|  
 |--------------|----------|-----------------|  
-|`apiId`|string|当前 API 的 ID。|  
-|`apiName`|string|API 的名称。|  
-|`apiDescription`|string|API 的说明。|  
+|`apiId`|字符串|当前 API 的 ID。|  
+|`apiName`|字符串|API 的名称。|  
+|`apiDescription`|字符串|API 的说明。|  
 |`api`|[API 摘要](api-management-template-data-model-reference.md#APISummary)实体。|当前 API。|  
 |`operation`|[操作](api-management-template-data-model-reference.md#Operation)|当前显示的操作。|  
-|`sampleUrl`|string|当前操作的 URL。|  
-|`operationMenu`|[操作菜单](api-management-template-data-model-reference.md#Menu)|此 API 的操作菜单。|  
+|`sampleUrl`|字符串|当前操作的 URL。|  
+|`operationMenu`|[操作菜单](api-management-template-data-model-reference.md#Menu)|此 API 的操作的菜单。|  
 |`consoleUrl`|URI|“试用”按钮的 URI。 |  
 |`samples`|[代码示例](api-management-template-data-model-reference.md#Sample)实体的集合。|当前操作的代码示例。|  
   
@@ -643,7 +643,7 @@ ms.locfileid: "79291213"
 }  
 ```  
   
-##  <a name="CodeSamples"></a> 代码示例  
+##  <a name="code-samples"></a><a name="CodeSamples"></a> 代码示例  
  以下模板用于在操作页上自定义各个代码示例的正文。  
   
  ![开发人员门户模板代码示例](./media/api-management-api-templates/APIM-Developer-Portal-Templates-Code-samples.png "APIM 开发人员门户模板代码示例")  
@@ -664,7 +664,7 @@ ms.locfileid: "79291213"
   
 -   [Ruby](#Ruby)  
   
-###  <a name="Curl"></a> Curl  
+###  <a name="curl"></a><a name="Curl"></a> Curl  
  **DocumentationSamplesCurl** 模板用于在操作页的代码示例部分自定义该代码示例。  
   
 #### <a name="default-template"></a>默认模板  
@@ -717,7 +717,7 @@ curl -v -X {{method}} "{{scheme}}://{{host}}{{path}}{{query | escape }}"
 }  
 ```  
   
-###  <a name="CSharp"></a> C#  
+###  <a name="c"></a><a name="CSharp"></a> C#  
  **DocumentationSamplesCsharp** 模板用于在操作页的代码示例部分自定义该代码示例。  
   
 #### <a name="default-template"></a>默认模板  
@@ -896,7 +896,7 @@ namespace CSHttpClientSample
 }  
 ```  
   
-###  <a name="Stub"></a> Java  
+###  <a name="java"></a><a name="Stub"></a> Java  
  **DocumentationSamplesJava** 模板用于在操作页的代码示例部分自定义该代码示例。  
   
 #### <a name="default-template"></a>默认模板  
@@ -992,7 +992,7 @@ public class JavaSample
 }  
 ```  
   
-###  <a name="JavaScript"></a> JavaScript  
+###  <a name="javascript"></a><a name="JavaScript"></a> JavaScript  
  **DocumentationSamplesJs** 模板用于在操作页的代码示例部分自定义该代码示例。  
   
 #### <a name="default-template"></a>默认模板  
@@ -1081,7 +1081,7 @@ public class JavaSample
 }  
 ```  
   
-###  <a name="ObjectiveC"></a> Objective C  
+###  <a name="objective-c"></a><a name="ObjectiveC"></a> Objective C  
  **DocumentationSamplesObjc** 模板用于在操作页的代码示例部分自定义该代码示例。  
   
 #### <a name="default-template"></a>默认模板  
@@ -1193,7 +1193,7 @@ int main(int argc, const char * argv[])
 }  
 ```  
   
-###  <a name="PHP"></a> PHP  
+###  <a name="php"></a><a name="PHP"></a> PHP  
  **DocumentationSamplesPhp** 模板用于在操作页的代码示例部分自定义该代码示例。  
   
 #### <a name="default-template"></a>默认模板  
@@ -1283,7 +1283,7 @@ catch (HttpException $ex)
 }  
 ```  
   
-###  <a name="Python"></a> Python  
+###  <a name="python"></a><a name="Python"></a> Python  
  **DocumentationSamplesPython** 模板用于在操作页的代码示例部分自定义该代码示例。  
   
 #### <a name="default-template"></a>默认模板  
@@ -1401,7 +1401,7 @@ except Exception as e:
 }  
 ```  
   
-###  <a name="Ruby"></a> Ruby  
+###  <a name="ruby"></a><a name="Ruby"></a> Ruby  
  **DocumentationSamplesRuby** 模板用于在操作页的代码示例部分自定义该代码示例。  
   
 #### <a name="default-template"></a>默认模板  

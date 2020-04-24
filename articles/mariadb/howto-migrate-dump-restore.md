@@ -8,10 +8,10 @@ ms.topic: conceptual
 origin.date: 2/27/2020
 ms.date: 03/16/2020
 ms.openlocfilehash: f200a3097090666b63fd12687e8d77fa85e800c3
-ms.sourcegitcommit: 32997a7d7585deaeb0ab7b8f928d397b18b343fa
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79295958"
 ---
 # <a name="migrate-your-mariadb-database-to-azure-database-for-mariadb-using-dump-and-restore"></a>使用转储和还原将 MariaDB 数据库迁移到 Azure Database for MariaDB
@@ -19,7 +19,7 @@ ms.locfileid: "79295958"
 - 从命令行转储和还原（使用 mysqldump） 
 - 使用 PHPMyAdmin 转储和还原
 
-## <a name="before-you-begin"></a>准备阶段
+## <a name="before-you-begin"></a>开始之前
 若要逐步执行本操作方法指南，需要具备以下条件：
 - [创建 Azure Database for MariaDB 服务器 - Azure 门户](quickstart-create-mariadb-server-database-using-azure-portal.md)
 - 已在计算机上安装 [mysqldump](https://mariadb.com/kb/en/library/mysqldump/) 命令行实用程序。

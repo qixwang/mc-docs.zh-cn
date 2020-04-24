@@ -14,10 +14,10 @@ manager: digimobile
 origin.date: 03/12/2019
 ms.date: 05/20/2019
 ms.openlocfilehash: dbcb60a5abbfc4ee0c9b1703aaac815c3024eb69
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79293483"
 ---
 # <a name="managed-api-reference-for-azure-sql-database-managed-instances"></a>Azure SQL 数据库托管实例的托管 API 引用

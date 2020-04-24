@@ -12,10 +12,10 @@ ms.reviewer: trbye
 origin.date: 02/10/2020
 ms.date: 03/16/2020
 ms.openlocfilehash: 100b24662dd70dd4e8e78e1aa88dee7c7a2e2911
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79292159"
 ---
 # <a name="tutorial-get-started-creating-your-first-ml-experiment-with-the-python-sdk"></a>教程：开始使用 Python SDK 创建第一个 ML 试验
@@ -44,7 +44,7 @@ Azure 机器学习工作区是云中的基础资源，用于试验、训练和�
 >[!IMPORTANT] 
 > 记下你的工作区和订阅   。 你将需要这些项才能确保在正确的位置创建试验。 
 
-## <a name="azure"></a>在工作区中运行笔记本
+## <a name="run-notebook-in-your-workspace"></a><a name="azure"></a>在工作区中运行笔记本
 
 本教程使用工作区中的云笔记本服务器来实现免安装的预配置体验。 如果你希望控制环境、包和依赖项，请使用[自己的环境](how-to-configure-environment.md#local)。
 

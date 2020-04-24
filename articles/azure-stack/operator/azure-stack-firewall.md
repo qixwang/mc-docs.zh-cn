@@ -9,10 +9,10 @@ ms.author: v-jay
 ms.reviewer: thoroet
 ms.lastreviewed: 11/15/2019
 ms.openlocfilehash: 9d5dc985c0a822bd2fa40167b8ad03a11adf63ed
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79291449"
 ---
 # <a name="azure-stack-hub-firewall-integration"></a>Azure Stack Hub 防火墙集成

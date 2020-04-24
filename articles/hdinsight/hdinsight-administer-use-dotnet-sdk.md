@@ -16,10 +16,10 @@ origin.date: 05/14/2018
 ms.date: 02/24/2020
 ms.author: v-yiso
 ms.openlocfilehash: c8c3c2e3fda12f2e45bc89556e3bc1d46e81b60a
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79291228"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-net-sdk"></a>使用 .NET SDK 管理 HDInsight 中的 Apache Hadoop 群集
@@ -31,7 +31,7 @@ ms.locfileid: "79291228"
 
 在开始阅读本文前，必须具有：
 
-* **一个 Azure 订阅**。 请参阅[获取 Azure 试用版](https://www.azure.cn/pricing/1rmb-trial/)。
+* **Azure 订阅**。 请参阅 [获取 Azure 试用版](https://www.azure.cn/pricing/1rmb-trial/)。
 
 ## <a name="connect-to-azure-hdinsight"></a>连接到 Azure HDInsight
 
@@ -43,7 +43,7 @@ Install-Package Microsoft.Azure.Management.ResourceManager -Pre
 Install-Package Microsoft.Azure.Management.HDInsight
 ```
 
-以下代码示例演示如何先连接到 Azure，并管理 Azure 订阅下面的 HDInsight 群集。
+以下代码示例演示了连接到 Azure 以管理 Azure 订阅下面的 HDInsight 群集的方法。
 
 ```csharp
 using System;
@@ -113,12 +113,12 @@ using Microsoft.Rest.Azure.Authentication;
     }
 ```
 
-运行此程序时，会看到提示。  若不想看到提示，请参阅[创建非交互式身份验证 .NET HDInsight 应用程序](hdinsight-create-non-interactive-authentication-dotnet-applications.md)。
+运行此程序时，会出现提示。  若不想看到提示，请参阅[创建非交互式身份验证 .NET HDInsight 应用程序](hdinsight-create-non-interactive-authentication-dotnet-applications.md)。
 
 
 ## <a name="list-clusters"></a>列出群集
 
-以下代码片段列出了群集和一些属性：
+以下代码段列出了群集和一些属性：
 
 ```csharp
 var results = _hdiManagementClient.Clusters.List();
@@ -131,7 +131,7 @@ foreach (var name in results.Clusters) {
 ```
 
 ## <a name="delete-clusters"></a>删除群集
-使用以下代码片段以同步或异步方式删除群集： 
+使用以下代码段以同步或异步方式删除群集： 
 
 ```csharp
 _hdiManagementClient.Clusters.Delete("<Resource Group Name>", "<Cluster Name>");
@@ -139,10 +139,10 @@ _hdiManagementClient.Clusters.DeleteAsync("<Resource Group Name>", "<Cluster Nam
 ```
 
 ## <a name="scale-clusters"></a>缩放群集
-使用群集缩放功能，可更改 Azure HDInsight 中运行的群集使用的辅助节点数，而无需重新创建群集。
+使用群集缩放功能可更改 Azure HDInsight 中运行的群集使用的工作节点数，而无需重新创建群集。
 
 > [!NOTE]
-> 只支持使用 HDInsight 3.1.3 或更高版本的群集。 如果不确定群集的版本，可以查看“属性”页面。  请参阅 [列出并显示群集](hdinsight-administer-use-portal-linux.md#list-and-show-clusters)。
+> 只支持使用 HDInsight 3.1.3 或更高版本的群集。 如果不确定群集的版本，可以查看“属性”页。  请参阅[列出和显示群集](hdinsight-administer-use-portal-linux.md#list-and-show-clusters)。
 > 
 > 
 
@@ -150,12 +150,12 @@ _hdiManagementClient.Clusters.DeleteAsync("<Resource Group Name>", "<Cluster Nam
 
 * Apache Hadoop
   
-    可顺利增加正在运行的 Hadoop 群集中的辅助节点数，而不会影响任何挂起或运行中的作业。 也可在操作进行中提交新作业。 系统会正常处理失败的缩放操作，让群集始终保持正常运行状态。
+    可以顺利地增加正在运行的 Hadoop 群集中的辅助节点数，而不会影响任何挂起或运行中的作业。 还可以在操作进行中提交新作业。 系统会正常处理失败的缩放操作，让群集始终保持正常运行状态。
   
-    减少数据节点数目以缩减 Hadoop 群集时，系统会重新启动群集中的某些服务。 这会导致所有正在运行和挂起的作业在缩放操作完成时失败。 但是，可在操作完成后重新提交这些作业。
+    减少数据节点数目以缩减 Hadoop 群集时，系统会重新启动群集中的某些服务。 这会导致所有正在运行和挂起的作业在缩放操作完成时失败。 但是，可以在操作完成后重新提交这些作业。
 * Apache HBase
   
-    可在 HBase 群集运行时顺利添加或删除节点。 完成缩放操作后的几分钟内，区域服务器自动平衡。 但也可手动平衡区域服务器，方法是登录到群集的头节点，并在命令提示符窗口中运行以下命令：
+    可以顺利地在 HBase 群集运行时对其添加或删除节点。 在完成缩放操作后的几分钟内，区域服务器就能自动平衡。 不过，也可以手动平衡区域服务器，方法是登录到群集的头节点，并在命令提示符窗口中运行以下命令：
   
     ```bash
     >pushd %HBASE_HOME%\bin
@@ -164,7 +164,7 @@ _hdiManagementClient.Clusters.DeleteAsync("<Resource Group Name>", "<Cluster Nam
     ```
 * Apache Storm
 
-    可在 Storm 群集运行时顺利添加或删除数据节点。 但是，缩放操作成功完成后，需要重新平衡拓扑。
+    可以顺利地在 Storm 群集运行时对其添加或删除数据节点。 但是，在缩放操作成功完成后，需要重新平衡拓扑。
 
     可以使用两种方法来完成重新平衡操作：
 
@@ -175,7 +175,7 @@ _hdiManagementClient.Clusters.DeleteAsync("<Resource Group Name>", "<Cluster Nam
     
     HDInsight 群集上提供了 Storm Web UI：
     
-    ![HDInsight Storm 缩放重新平衡](./media/hdinsight-administer-use-powershell/hdinsight-portal-scale-cluster-storm-rebalance.png)
+    ![HDInsight Storm 规模重新平衡](./media/hdinsight-administer-use-powershell/hdinsight-portal-scale-cluster-storm-rebalance.png)
     
     以下是有关如何使用 CLI 命令重新平衡 Storm 拓扑的示例：
     
@@ -186,7 +186,7 @@ _hdiManagementClient.Clusters.DeleteAsync("<Resource Group Name>", "<Cluster Nam
     $ storm rebalance mytopology -n 5 -e blue-spout=3 -e yellow-bolt=10
     ```
 
-以下代码片段显示如何以同步或异步方式调整群集的大小：
+以下代码片段会显示如何以同步或异步方式调整群集的大小：
 
 ```csharp
 _hdiManagementClient.Clusters.Resize("<Resource Group Name>", "<Cluster Name>", <New Size>);   
@@ -202,7 +202,7 @@ HDInsight 群集提供以下 HTTP Web 服务（所有这些服务都有 REST 样
 * Apache Oozie
 * Apache Templeton
 
-默认情况下，这些服务会获得访问授权。 可以撤消/授予访问权限。 若要撤消：
+默认情况下，将授权这些服务进行访问。 可以撤消/授予访问权限。 若要撤消：
 
 ```csharp
 var httpParams = new HttpSettingsParameters
@@ -227,17 +227,17 @@ _hdiManagementClient.Clusters.ConfigureHttpSettings("<Resource Group Name>, <Clu
 ```
 
 > [!NOTE]
-> 授予/撤消访问权限时，会重设群集用户的用户名和密码。
+> 授予/撤消访问权限时，将重设群集用户的用户名和密码。
 > 
 > 
 
-也可以通过门户完成此操作。 请参阅[使用 Azure 门户管理 HDInsight 中的 Apache Hadoop 群集](hdinsight-administer-use-portal-linux.md)。
+也可以使用门户完成此操作。 请参阅[使用 Azure 门户管理 HDInsight 中的 Apache Hadoop 群集](hdinsight-administer-use-portal-linux.md)。
 
 ## <a name="update-http-user-credentials"></a>更新 HTTP 用户凭据
 此过程与授予/撤销 HTTP 访问权限相同。  如果已授予群集 HTTP 访问权限，必须先撤销该权限。  然后再使用新的 HTTP 用户凭据授予访问权限。
 
 ## <a name="find-the-default-storage-account"></a>查找默认存储帐户
-以下代码片段演示如何获取群集的默认存储帐户名称和默认存储帐户密钥。
+以下代码段演示如何获取群集的默认存储帐户名称和默认存储帐户密钥。
 
 ```csharp
 var results = _hdiManagementClient.Clusters.GetClusterConfigurations(<Resource Group Name>, <Cluster Name>, "core-site");

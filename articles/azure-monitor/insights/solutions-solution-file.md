@@ -9,10 +9,10 @@ ms.date: 01/21/2019
 ms.author: v-lingwu
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 2c20fd567e95bf05dc13b2d2bd870717f6d8a994
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79292908"
 ---
 # <a name="creating-a-management-solution-file-in-azure-preview"></a>在 Azure 中创建管理解决方案文件（预览版）
@@ -62,7 +62,7 @@ Azure 中的管理解决方案作为[资源管理器模板](../../azure-resource
 
 下表描述了参数属性。
 
-| 属性 | 说明 |
+| Attribute | 说明 |
 |:--- |:--- |
 | type |参数的数据类型。 向用户显示的输入控件取决于数据类型。<br><br>bool - 下拉框<br>string - 文本框<br>int - 文本框<br>securestring - 密码字段<br> |
 | category |参数的可选类别。  相同类别中的参数分到一组。 |
@@ -79,12 +79,12 @@ Azure 中的管理解决方案作为[资源管理器模板](../../azure-resource
 
 | 参数 | 类型 | 说明 |
 |:--- |:--- |:--- |
-| accountName |string |Azure 自动化帐户名称。 |
-| pricingTier |string |Log Analytics 工作区和 Azure 自动化帐户的定价层。 |
-| regionId |string |Azure 自动化帐户的区域。 |
-| solutionName |string |解决方案名称。  如果要通过快速入门模板部署解决方案，则应将 solutionName 定义为参数，以便能够定义字符串，而无需用户指定一个字符串。 |
-| workspaceName |string |Log Analytics 工作区名称。 |
-| workspaceRegionId |string |Log Analytics 工作区的区域。 |
+| accountName |字符串 |Azure 自动化帐户名称。 |
+| pricingTier |字符串 |Log Analytics 工作区和 Azure 自动化帐户的定价层。 |
+| regionId |字符串 |Azure 自动化帐户的区域。 |
+| solutionName |字符串 |解决方案名称。  如果要通过快速入门模板部署解决方案，则应将 solutionName 定义为参数，以便能够定义字符串，而无需用户指定一个字符串。 |
+| workspaceName |字符串 |Log Analytics 工作区名称。 |
+| workspaceRegionId |字符串 |Log Analytics 工作区的区域。 |
 
 
 以下是可以复制并粘贴到解决方案文件的标准参数的结构。  
@@ -159,7 +159,7 @@ Azure 中的管理解决方案作为[资源管理器模板](../../azure-resource
 
 
 ### <a name="dependencies"></a>依赖项
-**dependsOn** 元素指定对另一个资源的[依赖](../../azure-resource-manager/templates/define-resource-dependency.md)。  安装解决方案时，资源的所有依赖均已创建后才能创建资源。  例如，如果解决方案使用[作业资源](solutions-resources-automation.md#automation-jobs)安装，则该解决方案需要[启动 runbook](solutions-resources-automation.md#runbooks)。  作业资源将依赖于 runbook 资源，以确保在创建作业之前创建 runbook。
+**dependsOn** 元素指定对另一个资源的[依赖](../../azure-resource-manager/templates/define-resource-dependency.md)。  安装解决方案时，资源的所有依赖均已创建后才能创建资源。  例如，如果解决方案使用[作业资源](solutions-resources-automation.md#runbooks)安装，则该解决方案需要[启动 runbook](solutions-resources-automation.md#automation-jobs)。  作业资源将依赖于 runbook 资源，以确保在创建作业之前创建 runbook。
 
 ### <a name="log-analytics-workspace-and-automation-account"></a>Log Analytics 工作区和自动化帐户
 管理解决方案需要 [Log Analytics 工作区](../../azure-monitor/platform/manage-access.md)来包含视图，也需要[自动化帐户](../../automation/automation-security-overview.md#automation-account-overview)来包含 runbook 和相关资源。  这些内容在解决方案中的资源创建之前必须已经存在，并且不能在解决方案本身中定义。  部署解决方案时，用户将[指定工作区和帐户](solutions.md#log-analytics-workspace-and-automation-account)，但作为作者，应考虑以下几点。
@@ -205,23 +205,23 @@ Azure 中的管理解决方案作为[资源管理器模板](../../azure-resource
 ### <a name="properties"></a>属性
 解决方案资源具有下表中的属性。  这包括由用于定义安装解决方案后如何管理资源的解决方案引用和包含的资源。  解决方案中的每个资源应在 **referencedResources** 或 **containedResources** 属性中列出。
 
-| 属性 | 说明 |
+| properties | 说明 |
 |:--- |:--- |
 | workspaceResourceId |格式为 *\<Resource Group ID>/providers/Microsoft.OperationalInsights/workspaces/\<Workspace Name\>* 的 Log Analytics 工作区的 ID。 |
 | referencedResources |解决方案中不应随解决方案一起删除的资源的列表。 |
 | containedResources |解决方案中应随解决方案一起删除的资源的列表。 |
 
-上面的示例适用于具有 runbook、计划和视图的解决方案。  在 **properties** 元素中*引用* 计划和 runbook，这样它们就不会随解决方案一起删除。  *包含*视图，以便它将随解决方案一起删除。
+上面的示例适用于具有 runbook、计划和视图的解决方案。  在 *properties* 元素中**引用** 计划和 runbook，这样它们就不会随解决方案一起删除。  *包含*视图，以便它将随解决方案一起删除。
 
 ### <a name="plan"></a>计划
 解决方案资源的 **plan** 实体具有下表中的属性。
 
-| 属性 | 说明 |
+| properties | 说明 |
 |:--- |:--- |
 | name |解决方案名称。 |
 | 版本 |由作者确定的解决方案版本。 |
 | product |标识解决方案的唯一字符串。 |
-| publisher |解决方案发布者。 |
+| 发布者 |解决方案发布者。 |
 
 
 

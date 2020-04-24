@@ -15,10 +15,10 @@ origin.date: 10/10/2019
 ms.date: 02/10/2020
 ms.author: v-yeche
 ms.openlocfilehash: aee98e4e4094a15b59705dcf5e01a7f4ca1c99f3
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79291817"
 ---
 # <a name="create-a-windows-vm-from-a-specialized-disk-by-using-powershell"></a>使用 PowerShell 从专用磁盘创建 Windows VM
@@ -68,9 +68,9 @@ $osDisk = Get-AzDisk `
 
 现在可以直接将 VHD 上传到托管磁盘中。 有关说明，请参阅[使用 Azure PowerShell 将 VHD 上传到 Azure](disks-upload-vhd-to-managed-disk-powershell.md)。
 
-## <a name="option-3-copy-an-existing-azure-vm"></a>选项 3：复制现有的 Azure VM
+## <a name="option-3-copy-an-existing-azure-vm"></a>选项 3：复制现有 Azure VM
 
-通过创建 VM 快照来创建使用托管磁盘的 VM 副本，然后使用该快照创建一个新的托管磁盘和一个新 VM。
+通过拍摄 VM 快照来创建使用托管磁盘的 VM 副本，然后使用该快照创建一个新的托管磁盘和一个新 VM。
 
 如果要将现有 VM 复制到其他区域，可能需要使用 azcopy [在其他区域中创建磁盘副本](disks-upload-vhd-to-managed-disk-powershell.md#copy-a-managed-disk)。 
 
@@ -110,7 +110,7 @@ $snapshotConfig =  New-AzSnapshotConfig `
    -Location $location 
 ```
 
-创建快照。
+拍摄快照。
 
 ```powershell
 $snapShot = New-AzSnapshot `
@@ -200,7 +200,7 @@ $nsg = New-AzNetworkSecurityGroup `
 ### <a name="create-a-public-ip-address-and-nic"></a>创建公共 IP 地址和 NIC
 若要与虚拟网络中的虚拟机通信，需要一个 [公共 IP 地址](../../virtual-network/virtual-network-ip-addresses-overview-arm.md)和网络接口。
 
-1. 创建公共 IP。 在此示例中，公共 IP 地址名称设置为 *myIP*。
+1. 创建公共 IP 地址。 在本示例中，公共 IP 地址名称设置为 *myIP*。
 
     ```powershell
     $ipName = "myIP"
@@ -210,7 +210,7 @@ $nsg = New-AzNetworkSecurityGroup `
        -AllocationMethod Dynamic
     ```       
 
-2. 创建 NIC。 在此示例中，NIC 名称设置为 *myNicName*。
+2. 创建 NIC。 在本示例中，NIC 名称设置为 *myNicName*。
 
     ```powershell
     $nicName = "myNicName"
@@ -245,7 +245,7 @@ $vm = Set-AzVMOSDisk -VM $vm -ManagedDiskId $osDisk.Id -StorageAccountType Stand
     -DiskSizeInGB 128 -CreateOption Attach -Windows
 ```
 
-### <a name="complete-the-vm"></a>完成该 VM 
+### <a name="complete-the-vm"></a>完成 VM 
 
 使用 [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) 以及刚才创建的配置创建 VM。
 
@@ -263,7 +263,7 @@ RequestId IsSuccessStatusCode StatusCode ReasonPhrase
 ```
 
 ### <a name="verify-that-the-vm-was-created"></a>验证是否已创建 VM
-应会在 [Azure 门户](https://portal.azure.cn)的“浏览” > “虚拟机”下看到新建的 VM，也可以使用以下 PowerShell 命令查看该 VM。  
+应会在 [Azure 门户](https://portal.azure.cn)的“浏览” **“虚拟机”下看到新建的 VM，也可以使用以下 PowerShell 命令查看该 VM。**  >  
 
 ```powershell
 $vmList = Get-AzVM -ResourceGroupName $destinationResourceGroup

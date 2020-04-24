@@ -16,23 +16,23 @@ ms.date: 11/18/2019
 ms.author: v-jay
 ms.reviewer: anilmur
 ms.openlocfilehash: 5397962b7a417fcc0d02cd86de6fc2c783d264ae
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79292377"
 ---
 # <a name="media-encoder-premium-workflow-formats-and-codecs"></a>媒体编码器高级工作流格式和编解码器
 
-本文档包含的输入和输出文件格式及编解码器列表受 **媒体编码器高级工作流** 编码器的公开预览版支持。
+本文档包含受**媒体编码器高级工作流**公开预览版编码器支持的输入和输出文件格式及编解码器列表。
 
 [Media Encoder Premium Workflow 输入格式和编解码器](#input_formats)
 
 Media Encoder Premium Workflow 输出格式和编解码器
 
-**媒体编码器高级工作流** 支持 [此](#closed_captioning) 部分中所述的隐藏式字幕。 
+**媒体编码器高级工作流**支持[此](#closed_captioning)部分中所述的隐藏字幕。 
 
-## <a id="input_formats"></a>媒体编码器高级工作流输入格式和编解码器
+## <a name="media-encoder-premium-workflow-input-formats-and-codecs"></a><a id="input_formats"></a>Media Encoder Premium Workflow 输入格式和编解码器
 
 以下部分列出了此媒体处理器支持的作为输入的编解码器和文件格式。
 
@@ -63,15 +63,15 @@ Media Encoder Premium Workflow 输出格式和编解码器
 * AES（SMPTE 331M 和 302M、AES3-2003）
 * Dolby® E
 * Dolby® Digital (AC3)
-* AAC（AAC-LC、AAC-HE 和 AAC-HEv2；最高支持 5.1）
+* AAC(AAC-LC、AAC-HE 和 AAC-HEv2；最高支持 5.1）
 * MPEG Layer 2
 * MP3 (MPEG-1 Audio Layer 3)
 * Windows Media 音频
 * WAV/PCM
 
-## <a id="output_format"></a>媒体编码器高级工作流输出格式和编解码器
+## <a name="media-encoder-premium-workflow-output-formats-and-codecs"></a><a id="output_format"></a>Media Encoder Premium Workflow 输出格式和编解码器
 
-以下部分列出了支持作为此媒体处理器输出的编解码器和文件格式。
+以下部分列出了支持作为此媒体处理器输入的编解码器和文件格式。
 
 ### <a name="output-containerfile-formats"></a>输出容器/文件格式
 
@@ -93,7 +93,7 @@ Media Encoder Premium Workflow 输出格式和编解码器
 * Mpeg-2（最高支持 422 Profile 和 High Level；包括 XDCAM、XDCAM HD、XDCAM IMX、CableLabs® 和 D10 等变体）
 * MPEG-1
 * Windows Media 视频/VC-1
-* JPEG 缩略图创建
+* JPEG 缩图创建
 * HEVC（H.265；8 位和 10 位，Main 和 Main 10 Profile）
 
 
@@ -102,7 +102,7 @@ Media Encoder Premium Workflow 输出格式和编解码器
 * AES（SMPTE 331M 和 302M、AES3-2003）
 * Dolby® Digital (AC3)
 * Dolby® Digital Plus (E-AC3)，最高支持 7.1
-* AAC（AAC-LC、AAC-HE 和 AAC-HEv2；最高支持 5.1）
+* AAC(AAC-LC、AAC-HE 和 AAC-HEv2；最高支持 5.1）
 * MPEG Layer 2
 * MP3 (MPEG-1 Audio Layer 3)
 * Windows Media 音频
@@ -110,9 +110,9 @@ Media Encoder Premium Workflow 输出格式和编解码器
 >[!NOTE]
 >如果编码为 Dolby® Digital (AC3)，则只能将输出写入到 ISO MP4 文件。
 
-## <a id="closed_captioning"></a>支持隐藏式字幕
+## <a name="support-for-closed-captioning"></a><a id="closed_captioning"></a>支持隐藏式字幕
 
-引入时， **媒体编码器高级工作流** 支持：
+引入时，**媒体编码器高级工作流**支持：
 
 1. SCC 文件
 2. SMPTE-TT 文件
@@ -133,7 +133,7 @@ Media Encoder Premium Workflow 输出格式和编解码器
 
 ## <a name="known-issues"></a>已知问题
 
-如果输入视频不包含隐藏式字幕，输出资产仍包含一个空的 TTML 文件。 
+如果输入视频不包含隐藏式字幕，输出资产仍将包含一个空的 TTML 文件。 
 
 ## <a name="media-services-learning-paths"></a>媒体服务学习路径
 

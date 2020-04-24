@@ -6,10 +6,10 @@ ms.topic: reference
 ms.date: 03/03/2020
 ms.author: v-junlch
 ms.openlocfilehash: 66c1b8b235935f303df45284531e871553f336aa
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79293358"
 ---
 # <a name="register-azure-functions-binding-extensions"></a>注册 Azure Functions 绑定扩展
@@ -31,7 +31,7 @@ ms.locfileid: "79293358"
 |使用 Visual Studio 的 C# 类库|[使用 NuGet 工具](#vs)|[使用 NuGet 工具](#vs)|
 |使用 Visual Studio Code 的 C# 类库|不适用|[使用 .NET Core CLI](#vs-code)|
 
-## <a name="extension-bundles"></a>用于本地开发的扩展捆绑
+## <a name="extension-bundles-for-local-development"></a><a name="extension-bundles"></a>用于本地开发的扩展捆绑
 
 扩展捆绑是一种部署技术，可让你将一组兼容的 Functions 绑定扩展添加到函数应用。 生成应用时，会添加一组预定义的扩展。 捆绑中定义的扩展包彼此兼容，这有助于避免包之间发生冲突。 可以在应用的 host.json 文件中启用扩展捆绑。  
 
@@ -47,7 +47,7 @@ ms.locfileid: "79293358"
 
 <a name="local-csharp"></a>
 
-## <a name="vs"></a>使用 Visual Studio 的 C\# 类库
+## <a name="c-class-library-with-visual-studio"></a><a name="vs"></a>使用 Visual Studio 的 C\# 类库
 
 在 **Visual Studio** 中，可以使用 [Install-Package](https://docs.microsoft.com/nuget/tools/ps-ref-install-package) 命令从包管理器控制台安装包，如以下示例所示：
 
@@ -61,7 +61,7 @@ Install-Package Microsoft.Azure.WebJobs.Extensions.ServiceBus -Version <TARGET_V
 
 如果使用 `Install-Package` 来引用绑定，则无需使用[扩展捆绑](#extension-bundles)。 此方法特定于在 Visual Studio 中生成的类库。
 
-## <a name="vs-code"></a> 使用 Visual Studio Code 的 C# 类库
+## <a name="c-class-library-with-visual-studio-code"></a><a name="vs-code"></a> 使用 Visual Studio Code 的 C# 类库
 
 在 **Visual Studio Code** 中，请使用 .NET Core CLI 中的 [dotnet add package](https://docs.microsoft.com/dotnet/core/tools/dotnet-add-package) 命令通过命令提示符安装 C# 类库项目的包。 以下示例演示如何添加绑定：
 

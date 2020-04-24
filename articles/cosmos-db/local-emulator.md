@@ -8,10 +8,10 @@ ms.author: v-yeche
 origin.date: 07/26/2019
 ms.date: 02/10/2020
 ms.openlocfilehash: 2d6810087e0f5c88504c982de4eeb5ef3218ae78
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79292556"
 ---
 # <a name="use-the-azure-cosmos-emulator-for-local-development-and-testing"></a>使用 Azure Cosmos 模拟器进行本地开发和测试
@@ -184,7 +184,7 @@ table.Execute(TableOperation.Insert(new DynamicTableEntity("partitionKey", "rowK
 
 * [安装 apache-tinkerpop-gremlin-console-3.3.4](https://archive.apache.org/dist/tinkerpop/3.3.4)。
 
-* 在模拟器的数据资源管理器中，创建数据库“db1”和集合“coll1”，并选择“/name”作为分区键
+* 在模拟器的数据资源管理器中创建数据库“db1”和集合“coll1”，并选择“/name”作为分区键
 
 * 在常规命令提示符窗口中运行以下命令：
 
@@ -426,7 +426,7 @@ cd $env:LOCALAPPDATA\CosmosDBEmulator\bind-mount
 
 如果你有在 Linux docker 容器上运行的 .NET 客户端应用程序，并且你在主机上运行 Azure Cosmos 模拟器，请根据适用于 Linux 的以下部分将证书导入到 Linux docker 容器中。
 
-## 在 Mac 或 Linux 上运行<a name="mac"></a>
+## <a name="running-on-mac-or-linux"></a>在 Mac 或 Linux 上运行<a name="mac"></a>
 
 目前 Cosmos 模拟器只能在 Windows 上运行。 运行 Mac 或 Linux 的用户可以在托管虚拟机监控程序（如 Parallels 或 VirtualBox）的 Windows 虚拟机中运行模拟器。 以下是启用此功能的步骤。
 

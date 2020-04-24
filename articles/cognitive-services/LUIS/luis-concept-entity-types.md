@@ -13,10 +13,10 @@ origin.date: 11/12/2019
 ms.date: 12/05/2019
 ms.author: v-lingwu
 ms.openlocfilehash: 79582c1ee65b3e339e44b881c3b68c95e9ed7ed6
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79292728"
 ---
 # <a name="entities-and-their-purpose-in-luis"></a>实体及其在 LUIS 中的用途
@@ -38,10 +38,10 @@ ms.locfileid: "79292728"
 
  你可以定义自己的实体，也可以使用预生成实体来节省处理 [datetimeV2](luis-reference-prebuilt-datetimev2.md)、[序号](luis-reference-prebuilt-ordinal.md)、[电子邮件](luis-reference-prebuilt-email.md)和[电话号码](luis-reference-prebuilt-phonenumber.md)等为常见概念的时间。
 
-|话语|实体|数据|
+|话语|实体|data|
 |--|--|--|
 |购买 3 张到纽约的机票|预生成的数字<br>Location.Destination|3<br>纽约|
-|购买 3 月 5 日从纽约到伦敦的机票|Location.Origin<br>Location.Destination<br>预生成的 datetimeV2|纽约<br>伦敦<br>2018 年 3 月 5 日|
+|购买 3 月 5 日从纽约到伦敦的机票|Location.Origin<br>Location.Destination<br>预生成的 datetimeV2|纽约<br>London<br>2018 年 3 月 5 日|
 
 ### <a name="entities-are-optional"></a>实体是可选的
 
@@ -61,8 +61,8 @@ ms.locfileid: "79292728"
 |--|--|--|--|
 |帮助|help|-|没有要提取的内容。|
 |Send something|sendSomething|-|没有要提取的内容。 模型尚未训练，不会在此上下文中提取 `something`，并且没有任何接收方。|
-|Send Bob a present|sendSomething|`Bob`, `present`|已使用提取了名字 `Bob` 的 [personName](luis-reference-prebuilt-person.md) 预生成实体训练模型。 已使用机器学习实体提取 `present`。|
-|Send Bob a box of chocolates|sendSomething|`Bob`, `box of chocolates`|实体已提取两个重要数据片段 `Bob` 和 `box of chocolates`。|
+|Send Bob a present|sendSomething|`Bob`、`present`|已使用提取了名字 [ 的 ](luis-reference-prebuilt-person.md)personName`Bob` 预生成实体训练模型。 已使用机器学习实体提取 `present`。|
+|Send Bob a box of chocolates|sendSomething|`Bob`、`box of chocolates`|实体已提取两个重要数据片段 `Bob` 和 `box of chocolates`。|
 
 ## <a name="design-entities-for-decomposition"></a>设计分解实体
 
@@ -74,7 +74,7 @@ ms.locfileid: "79292728"
 
 **机器学习实体**是顶级数据单位。 子组件是机器学习实体的子实体。
 
-机器学习实体根据通过训练言语习得的上下文触发。 **约束**是应用于机器学习实体的可选规则，这些规则根据 [List](reference-entity-list.md) 或 [Regex](reference-entity-regular-expression.md) 等非机器学习实体的精确文本匹配定义进一步约束触发。 例如，`size` 机器学习实体可以包含 `sizeList` 列表实体的约束，用于将 `sizeList` 实体约束为仅当遇到包含在 `size` 实体中的值时才触发。
+机器学习实体根据通过训练言语习得的上下文触发。 **约束**是应用于机器学习实体的可选规则，这些规则根据 [List](reference-entity-list.md) 或 [Regex](reference-entity-regular-expression.md) 等非机器学习实体的精确文本匹配定义进一步约束触发。 例如，`size` 机器学习实体可以包含 `sizeList` 列表实体的约束，用于将 `size` 实体约束为仅当遇到包含在 `sizeList` 实体中的值时才触发。
 
 在 LUIS 应用中创建短语列表特征时，默认会全局启用该特征，并均匀地在所有意向和实体之间应用该特征。 但是，如果将短语列表作为机器学习实体（或模型）的描述符（特征）应用，则其应用范围将缩减为仅限该模型，而不再用于其他所有模型。  使用短语列表作为模型的描述符有助于分解，因为这对它应用到的模型的准确度有帮助。
 
@@ -108,7 +108,7 @@ ms.locfileid: "79292728"
 可通过两种方法提取上下文相关的数据：
 
  * `location` 实体是机器学习实体，它使用两个子组件实体来捕获 `origin` 和 `destination`（首选）
- * `location` 实体使用 `origin` 和 `destination` 这两个**角色**
+ * `location` 实体使用 **和** 这两个`origin`角色`destination`
 
 多个实体可以在一个言语中存在，如果使用这些实体的上下文没有意义，则无需使用分解或角色即可提取这些实体。 例如，如果言语 `I want to travel to Seattle, Cairo, and London.` 包含位置列表，该列表中的每个项没有其他含义。
 

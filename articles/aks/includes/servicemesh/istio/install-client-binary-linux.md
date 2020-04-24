@@ -5,10 +5,10 @@ origin.date: 11/15/2019
 ms.date: 03/09/2020
 ms.author: v-yeche
 ms.openlocfilehash: 48d245873b821f5895a4f93fe2395009d47fd4a2
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79290703"
 ---
 ## <a name="download-and-install-the-istio-istioctl-client-binary"></a>下载并安装 Istio istioctl 客户端二进制文件
@@ -22,7 +22,7 @@ ISTIO_VERSION=1.4.0
 curl -sL "https://github.com/istio/istio/releases/download/$ISTIO_VERSION/istio-$ISTIO_VERSION-linux.tar.gz" | tar xz
 ```
 
-`istioctl` 客户端二进制文件在客户端计算机上运行，用来与 Istio 服务网格交互。 使用以下命令在 Linux 或[适用于 Linux 的 Windows 子系统][install-wsl]上的基于 bash 的 shell 中安装 Istio `istioctl` 客户端二进制文件。 这些命令可将 `istioctl` 客户端二进制文件复制到 `PATH` 中的标准用户程序位置。
+`istioctl` 客户端二进制文件在客户端计算机上运行，用来与 Istio 服务网格交互。 使用以下命令在 Linux 或`istioctl`适用于 Linux 的 Windows 子系统[上的基于 bash 的 shell 中安装 Istio ][install-wsl] 客户端二进制文件。 这些命令可将 `istioctl` 客户端二进制文件复制到 `PATH` 中的标准用户程序位置。
 
 ```bash
 cd istio-$ISTIO_VERSION

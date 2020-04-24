@@ -8,10 +8,10 @@ ms.date: 03/09/2020
 ms.author: v-yeche
 ms.custom: mvc
 ms.openlocfilehash: 3774dafdab4bfd06b9d0a5e941f7c4e289ef1249
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79290835"
 ---
 # <a name="azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS)
@@ -80,7 +80,7 @@ AKS 支持创建启用了 GPU 的节点池。 Azure 目前提供单个或多个�
 
 有关详细信息，请参阅 [AKS 中应用程序的存储选项][concepts-storage]。
 
-使用 [Azure 磁盘][azure-disk]或 [Azure 文件存储][azure-files]完成动态永久性卷入门。
+使用 [Azure 磁盘][azure-disk]或 [Azure 文件存储][azure-files]完成动态永久性卷的入门。
 
 ## <a name="virtual-networks-and-ingress"></a>虚拟网络和入口
 

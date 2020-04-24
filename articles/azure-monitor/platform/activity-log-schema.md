@@ -9,10 +9,10 @@ ms.date: 3/13/2019
 ms.author: v-lingwu
 ms.subservice: logs
 ms.openlocfilehash: 931602f8998cfa364ea2dade5b1923eb38438ac7
-ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/17/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79452564"
 ---
 # <a name="azure-activity-log-event-schema"></a>Azure 活动日志事件架构
@@ -795,7 +795,7 @@ ms.locfileid: "79452564"
 | correlationId | correlationId |  |
 | identity | 声明和授权属性 |  |
 | Level | Level |  |
-| location | 不适用 | 处理事件的位置。 这不是资源所在位置，而是处理事件的位置。  未来更新中将删除此属性。 |
+| location | 空值 | 处理事件的位置。 这不是资源所在位置，而是处理事件的位置。  未来更新中将删除此属性。 |
 | 属性 | properties.eventProperties |  |
 | properties.eventCategory | category | 如果不存在 properties.eventCategory，则 category 是“管理” |
 | properties.eventName | eventName |  |

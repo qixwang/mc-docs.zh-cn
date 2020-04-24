@@ -7,10 +7,10 @@ origin.date: 03/09/2018
 ms.date: 01/13/2020
 ms.author: v-yeche
 ms.openlocfilehash: 100400dc5b53e2a17bf7bf007660947c615effa1
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79292009"
 ---
 # <a name="how-reliable-actors-use-the-service-fabric-platform"></a>Reliable Actors 如何使用 Service Fabric 平台
@@ -43,19 +43,19 @@ ms.locfileid: "79292009"
 ### <a name="service-manifest"></a>服务清单
 执行组件框架生成工具自动生成执行组件服务的 ServiceManifest.xml 文件的内容。 此文件包括：
 
-* 执行组件服务类型。 根据执行组件项目名称生成此类型名称。 根据执行组件的持久性属性，还会相应设置 HasPersistedState 标志。
+* 执行组件服务类型。 根据执行组件项目名称生成此类型名称。 根据执行组件的持久性属性，还将相应设置 HasPersistedState 标志。
 * 代码包。
 * 配置包。
 * 资源和终结点。
 
 ### <a name="application-manifest"></a>应用程序清单
-执行组件框架生成工具为你的执行组件服务自动创建默认的服务定义。 生成工具填充默认的服务属性：
+执行组件框架生成工具将为执行组件服务自动创建默认的服务定义。 生成工具填充默认的服务属性：
 
-* 副本集计数由执行组件的持久性属性决定。 每次更改执行组件的持久性属性时，会相应地重置默认服务定义中的副本集计数。
+* 副本集计数由执行组件的持久性属性决定。 每次更改执行组件的持久性属性时，将相应地重置默认服务定义中的副本集计数。
 * 分区方案和范围设置为具有完整的 Int64 键范围的统一 Int64。
 
 <a name="service-fabric-partition-concepts-for-stateful-actors"></a>
-## <a name="service-fabric-partition-concepts-for-actors"></a>针对执行组件的 Service Fabric 分区概念
+## <a name="service-fabric-partition-concepts-for-actors"></a><a name="service-fabric-partition-concepts-for-actors"></a>针对执行组件的 Service Fabric 分区概念
 执行组件服务是已分区的有状态服务。 执行组件服务的每个分区包含一组执行组件。 服务分区在 Service Fabric 的多个节点中自动分布。 因此，执行组件实例分布到各个节点中。
 
 ![执行组件分区和分布][5]
@@ -85,7 +85,7 @@ ActorProxyBase.create(MyActor.class, new ActorId("myActorId"));
 ActorProxyBase.create(MyActor.class, new ActorId(1234));
 ```
 
-使用 GUID/UUID 和字符串时，这些值经过哈希算法转换为 Int64。 但是，如果向 `ActorId` 显式提供 Int64，此 Int64 会直接映射到分区，而无需进行哈希转换。 可以使用此方法来控制将执行组件置于哪个分区。
+使用 GUID/UUID 和字符串时，这些值将经过哈希算法转换为 Int64。 但是，如果向 `ActorId` 显式提供 Int64，此 Int64 将直接映射到分区，而无需进行哈希转换。 可以使用此方法来控制将执行组件置于哪个分区。
 
 ## <a name="next-steps"></a>后续步骤
 * [执行组件状态管理](service-fabric-reliable-actors-state-management.md)

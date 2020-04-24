@@ -9,14 +9,14 @@ origin.date: 12/19/2019
 ms.date: 02/19/2020
 ms.author: v-lingwu
 ms.openlocfilehash: 95efd813aae3b9717da5d8d7aa1728b5c84b9455
-ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/17/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79452298"
 ---
 # <a name="sources-of-monitoring-data-for-azure-monitor"></a>Azure Monitor 的监视数据源
-Azure Monitor 基于包含[日志](data-platform-logs.md)和[指标](data-platform-metrics.md)的[通用监视数据平台](data-platform.md)。 将数据收集到此平台后，可以使用 Azure Monitor 中的一组通用工具统一分析来自多个资源的数据。 还可以将监视数据发送到其他位置以支持特定的方案，某些资源可能会将数据写入到其他位置，然后可以在日志或指标中收集数据。
+Azure Monitor 基于包含[日志](data-platform.md)和[指标](data-platform-logs.md)的[通用监视数据平台](data-platform-metrics.md)。 将数据收集到此平台后，可以使用 Azure Monitor 中的一组通用工具统一分析来自多个资源的数据。 还可以将监视数据发送到其他位置以支持特定的方案，某些资源可能会将数据写入到其他位置，然后可以在日志或指标中收集数据。
 
 本文介绍 Azure Monitor 收集的不同监视数据源，以及 Azure 资源创建的监视数据。 本文还提供了有关在不同位置收集这些数据所需的配置的详细信息的链接。
 

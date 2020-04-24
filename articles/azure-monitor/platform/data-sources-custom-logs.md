@@ -9,10 +9,10 @@ origin.date: 09/26/2019
 ms.date: 11/04/2019
 ms.author: v-lingwu
 ms.openlocfilehash: 1154977d46290f6aee88cce7341b23599926e52c
-ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/17/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79452535"
 ---
 # <a name="custom-logs-in-azure-monitor"></a>Azure Monitor 中的自定义日志
@@ -63,10 +63,10 @@ Azure Monitor 中的自定义日志数据源可以从 Windows 和 Linux 计算�
 如果使用时间戳分隔符，则存储在Azure Monitor 中的每个记录的 TimeGenerated 属性将填充为日志文件中为该条目指定的日期/时间。  如果使用换行分隔符，则 TimeGenerated 将填充为 Azure Monitor 收集此条目的日期和时间。
 
 1. 单击“浏览”  ，浏览到示例文件。  请注意，此按钮在某些浏览器中可能标记为“选择文件”  。
-2. 单击“下一步”  。
+2. 单击“下一步”。 
 3. 自定义日志向导将上传文件，并列出其标识的记录。
 4. 更改用于标识新记录的分隔符。根据日志文件中的记录，选择标识效果最好的分隔符。
-5. 单击“下一步”  。
+5. 单击“下一步”。 
 
 ### <a name="step-3-add-log-collection-paths"></a>步骤 3. 添加日志集合路径
 必须在可查找自定义日志的代理上定义一个或多个路径；  可以提供日志文件的特定路径和名称，也可以使用通配符为名称指定路径。 这样，应用程序就可以每天创建新文件，或者在某个文件达到一定大小时创建新文件。 还可以为单个日志文件提供多个路径。
@@ -75,7 +75,7 @@ Azure Monitor 中的自定义日志数据源可以从 Windows 和 Linux 计算�
 
 下表提供了有效模式示例，用来指定不同的日志文件。
 
-| 说明 | `Path` |
+| 说明 | 路径 |
 |:--- |:--- |
 | Windows 代理上的 *C:\Logs* 中带 .txt 扩展名的所有文件 |C:\Logs\\\*.txt |
 | Windows 代理上的 *C:\Logs* 中具有以 log 开头的名称和 .txt 扩展名的所有文件 |C:\Logs\log\*.txt |
@@ -118,7 +118,7 @@ Azure Monitor 大概每隔 5 分钟就会从每个自定义日志中收集新条
 ## <a name="custom-log-record-properties"></a>自定义日志记录属性
 自定义日志记录的类型与提供的日志名称一致，且具有下表中的属性。
 
-| 属性 | 说明 |
+| properties | 说明 |
 |:--- |:--- |
 | TimeGenerated |Azure Monitor 收集该记录时的日期和时间。  如果日志使用基于时间的分隔符，则此时间是从条目中收集的时间。 |
 | SourceSystem |从中收集记录的代理类型。 <br> OpsManager – Windows 代理，直接连接或 System Center Operations Manager <br> Linux - 所有 Linux 代理 |

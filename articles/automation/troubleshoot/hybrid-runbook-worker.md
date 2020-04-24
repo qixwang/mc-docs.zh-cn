@@ -11,10 +11,10 @@ ms.date: 03/16/2020
 ms.topic: conceptual
 manager: digimobile
 ms.openlocfilehash: 7ea7544bdc28d0d46d7aa58592b69ad1ecfb26e1
-ms.sourcegitcommit: dc862610e2169c1fce6fb0ae9eb7dd7567f86a0a
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79293718"
 ---
 # <a name="troubleshoot-hybrid-runbook-workers"></a>对混合 Runbook 辅助角色进行故障排除
@@ -25,7 +25,7 @@ ms.locfileid: "79293718"
 
 混合 Runbook 辅助角色依靠代理与自动化帐户通信，以注册辅助角色、接收 Runbook 作业和报告状态。 对于 Windows，此代理是适用于 Windows 的 Log Analytics 代理，也称为 Microsoft Monitoring Agent (MMA)。 对于 Linux，它是适用于 Linux 的 Log Analytics 代理。
 
-### <a name="runbook-execution-fails"></a>场景：Runbook 执行失败
+### <a name="scenario-runbook-execution-fails"></a><a name="runbook-execution-fails"></a>场景：Runbook 执行失败
 
 #### <a name="issue"></a>问题
 
@@ -57,7 +57,7 @@ Runbook 在三次尝试执行后立刻暂停。 在某些情况下，Runbook 可
 
 检查 **Microsoft-SMA** 事件日志中是否有描述为 Win32 Process Exited with code [4294967295]  的相应事件。 此错误的原因是你尚未在 runbook 中配置身份验证，或者未为混合 Runbook 辅助角色组指定运行方式凭据。 在[混合 Runbook 辅助角色上运行 Runbook](../automation-hrw-run-runbooks.md) 中查看 Runbook 权限，以确认已正确配置 Runbook 的身份验证。
 
-### <a name="no-cert-found"></a>场景：在混合 Runbook 辅助角色上的证书存储中找不到证书
+### <a name="scenario-no-certificate-was-found-in-the-certificate-store-on-hybrid-runbook-worker"></a><a name="no-cert-found"></a>场景：在混合 Runbook 辅助角色上的证书存储中找不到证书
 
 #### <a name="issue"></a>问题
 
@@ -83,7 +83,7 @@ At line:3 char:1
 
 Linux 混合 Runbook 辅助角色依靠[适用于 Linux 的 Log Analytics 代理](../../azure-monitor/platform/log-analytics-agent.md)与自动化帐户通信，以注册辅助角色、接收 Runbook 作业和报告状态。 如果辅助角色注册失败，以下是一些可能导致此错误的原因：
 
-### <a name="oms-agent-not-running"></a>场景：适用于 Linux 的 Log Analytics 代理未运行
+### <a name="scenario-the-log-analytics-agent-for-linux-isnt-running"></a><a name="oms-agent-not-running"></a>场景：适用于 Linux 的 Log Analytics 代理未运行
 
 #### <a name="issue"></a>问题
 
@@ -113,7 +113,7 @@ nxautom+   8595      1  0 14:45 ?        00:00:02 python /opt/microsoft/omsconfi
 
 如果代理未运行，请运行以下命令启动该服务：`sudo /opt/microsoft/omsagent/bin/service_control restart`。
 
-### <a name="class-does-not-exist"></a>场景：指定的类不存在
+### <a name="scenario-the-specified-class-doesnt-exist"></a><a name="class-does-not-exist"></a>场景：指定的类不存在
 
 如果看到错误“指定的类不存在。”  出现在 `/var/opt/microsoft/omsconfig/omsconfig.log` 中，则需要更新适用于 Linux 的 Log Analytics 代理。 运行以下命令重新安装代理：
 
@@ -125,7 +125,7 @@ wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/inst
 
 Windows 混合 Runbook 辅助角色依靠[适用于 Windows 的 Log Analytics 代理](../../azure-monitor/platform/log-analytics-agent.md)与自动化帐户通信，以注册辅助角色、接收 Runbook 作业和报告状态。 如果辅助角色注册失败，以下是一些可能导致此错误的原因：
 
-### <a name="mma-not-running"></a>场景：Microsoft Monitoring Agent 未运行
+### <a name="scenario-the-microsoft-monitoring-agent-isnt-running"></a><a name="mma-not-running"></a>场景：Microsoft Monitoring Agent 未运行
 
 #### <a name="issue"></a>问题
 
@@ -139,7 +139,7 @@ Windows 混合 Runbook 辅助角色依靠[适用于 Windows 的 Log Analytics �
 
 在 PowerShell 中输入以下命令，验证代理是否正在运行：`Get-Service healthservice`。 如果该服务已停止，请在 PowerShell 中输入以下命令启动该服务：`Start-Service healthservice`。
 
-### <a name="event-4502"></a>场景：Operations Manager 日志中的事件 4502
+### <a name="scenario-event-4502-in-operations-manager-log"></a><a name="event-4502"></a>场景：Operations Manager 日志中的事件 4502
 
 #### <a name="issue"></a>问题
 
@@ -155,7 +155,7 @@ Windows 混合 Runbook 辅助角色依靠[适用于 Windows 的 Log Analytics �
 
 [Runbook 输出和消息](../automation-runbook-output-and-messages.md)将从混合辅助角色发送到 Azure 自动化，就像在云中运行的 Runbook 作业一样。 就像在其他 Runbook 中一样，还可以启用详细流和进度流。
 
-### <a name="corrupt-cache"></a>场景：混合 Runbook 辅助角色未提供报告
+### <a name="scenario-hybrid-runbook-worker-not-reporting"></a><a name="corrupt-cache"></a>场景：混合 Runbook 辅助角色未提供报告
 
 #### <a name="issue"></a>问题
 
@@ -185,7 +185,7 @@ Remove-Item -Path 'C:\Program Files\Microsoft Monitoring Agent\Agent\Health Serv
 Start-Service -Name HealthService
 ```
 
-### <a name="already-registered"></a>场景：无法添加混合 Runbook 辅助角色
+### <a name="scenario-you-cant-add-a-hybrid-runbook-worker"></a><a name="already-registered"></a>场景：无法添加混合 Runbook 辅助角色
 
 #### <a name="issue"></a>问题
 

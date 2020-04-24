@@ -10,10 +10,10 @@ origin.date: 01/09/2019
 ms.date: 06/10/2019
 ms.author: v-jay
 ms.openlocfilehash: 300adc47632f1a9c85537f3126d0f4eadfd43bf3
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79293357"
 ---
 # <a name="use-azure-portal-to-administer-your-data-box-disk"></a>使用 Azure 门户管理 Data Box Disk
@@ -52,7 +52,7 @@ ms.locfileid: "79293357"
 
     ![克隆订单 1](media/data-box-portal-ui-admin/clone-order1.png)
 
-2.  订单的所有详细信息保持不变。 订单名称是原始订单名称后接 *-Clone*。 选中表示确认你已查看隐私信息的复选框。 单击**创建**。    
+2.  订单的所有详细信息保持不变。 订单名称是原始订单名称后接 *-Clone*。 选中表示确认你已查看隐私信息的复选框。 单击“创建”。     
 
 几分钟后将会创建克隆的订单，并且门户会更新，以显示新订单。
 
@@ -72,7 +72,7 @@ ms.locfileid: "79293357"
 
     ![删除 Data Box 磁盘订单 1](media/data-box-portal-ui-admin/delete-order1.png)
 
-3. 当系统提示确认删除订单时，请输入订单名称。 单击“删除”  。
+3. 当系统提示确认删除订单时，请输入订单名称。 单击 **“删除”** 。
 
      ![删除 Data Box 磁盘订单 2](media/data-box-portal-ui-admin/delete-order2.png)
 

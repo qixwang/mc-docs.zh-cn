@@ -15,10 +15,10 @@ origin.date: 02/09/2018
 ms.date: 02/24/2020
 ms.author: v-yeche
 ms.openlocfilehash: 2f8978ae007e9ce1e5bfa698cf0d3abb0cfa8aa7
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79292344"
 ---
 # <a name="add-change-or-delete-a-virtual-network-subnet"></a>添加、更改或删除虚拟网络子网

@@ -9,10 +9,10 @@ origin.date: 11/24/2018
 ms.date: 6/4/2019
 ms.author: v-lingwu
 ms.openlocfilehash: 0b52aad50e6c0b7e708a411d788936e13bd64509
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79291176"
 ---
 # <a name="visualizing-data-from-azure-monitor"></a>可视化 Azure Monitor 中的数据

@@ -9,10 +9,10 @@ ms.date: 6/4/2019
 ms.reviewer: sdash
 ms.author: v-lingwu
 ms.openlocfilehash: 7a42888728e9248030557227c94ba30bdd643e74
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79293022"
 ---
 # <a name="monitor-performance-in-web-applications"></a>在 Web 应用程序中监视性能
@@ -53,7 +53,7 @@ Application Insights 可监视 Java 和 ASP.NET Web 应用程序和服务、WCF 
 ## <a name="what-does-it-all-mean-performance-tiles-and-reports"></a>这一切意味着什么？ 性能磁贴和报表
 有多个性能指标可供获取。 让我们先从默认在应用程序边栏选项卡上显示的指标开始。
 
-### <a name="requests"></a>请求
+### <a name="requests"></a>Requests
 指定时间段内收到的 HTTP 请求数。 将此结果与其他报表中的结果比较，查看应用行为如何因负载而异。
 
 HTTP 请求包括对页面、数据和图像的所有 GET 或 POST 请求。

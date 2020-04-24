@@ -9,10 +9,10 @@ origin.date: 07/18/2019
 ms.date: 01/19/2020
 ms.author: v-yeche
 ms.openlocfilehash: 6eb7bbb2a00656c3f3bfbff0c7a083c2b706c0f8
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79290770"
 ---
 <!--NOT SUITABLE FOR MOONCAKE-->
@@ -23,7 +23,7 @@ ms.locfileid: "79290770"
 
 本文演示如何在 AKS 群集中启用和管理群集自动缩放程序。 
 
-## <a name="before-you-begin"></a>准备阶段
+## <a name="before-you-begin"></a>开始之前
 
 本文要求运行 Azure CLI 2.0.76 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][azure-cli-install]。
 

@@ -8,10 +8,10 @@ ms.author: v-lingwu
 origin.date: 02/04/2020
 ms.date: 12/31/2019
 ms.openlocfilehash: 3961ab194f017763d874865d03f7f599e7d9fe19
-ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/17/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79452310"
 ---
 # <a name="update-to-azure-activity-log-collection-and-export"></a>Azure 活动日志收集和导出的更新

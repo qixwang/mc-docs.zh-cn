@@ -17,23 +17,23 @@ origin.date: 04/18/2017
 ms.date: 02/10/2020
 ms.author: v-yeche
 ms.openlocfilehash: 7fba641c9b584124b9c895f6f482edf5b48d5d6b
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79292829"
 ---
 # <a name="azure-cli-commands-in-resource-manager-mode"></a>Resource Manager 模式下的 Azure CLI 命令
-本文提供常用于在 Azure Resource Manager 部署模型中创建和管理 Azure 资源的 Azure 命令行接口 (CLI) 命令的语法和选项。 通过在 Resource Manager (arm) 模式下运行 CLI 可以访问这些命令。 本参考内容并不完整，CLI 版本可能会显示稍微不同的命令或参数。 有关 Azure 资源和资源组的一般概述，请参阅 [Azure Resource Manager 概述](../azure-resource-manager/management/overview.md)。  
+本文提供常用于在 Azure 资源管理器部署模型中创建和管理 Azure 资源的 Azure 命令行接口 (CLI) 命令的语法和选项。 通过在 Resource Manager (arm) 模式下运行 CLI 可以访问这些命令。 本参考内容并不完整，CLI 版本可能会显示略微不同的命令或参数。 有关 Azure 资源和资源组的一般概述，请参阅 [Azure 资源管理器概述](../azure-resource-manager/management/overview.md)。  
 
 > [!NOTE]
 > 本文介绍了 Azure CLI（有时亦称为“Azure 经典 CLI”）中的资源管理器模式命令。 若要使用 Resource Manager 模型，还可试用下一代多平台 CLI，即 [Azure CLI](https://docs.azure.cn/cli/install-az-cli2?view=azure-cli-latest)。
->了解有关 [旧版和新版 Azure CLI](https://docs.azure.cn/cli/old-and-new-clis?view=azure-cli-latest)的详细信息。
+>查找有关[新旧 Azure CLI](https://docs.azure.cn/cli/old-and-new-clis?view=azure-cli-latest)的详细信息。
 >
 
 若要开始，请先[安装 Azure CLI](../cli-install-nodejs.md) 并[连接到 Azure 订阅](https://docs.azure.cn/cli/authenticate-azure-cli?view=azure-cli-latest)。
 
-要在 Resource Manager 模式下在命令行中查看当前的命令语法和选项，请键入 `azure help`；要显示某个命令的帮助，请键入 `azure help [command]`。 还可以在创建和管理特定 Azure 服务的说明文档中找到 CLI 示例。
+要在 Resource Manager 模式下在命令行中查看当前的命令语法和选项，请键入 `azure help`；要显示某个命令的帮助，请键入 `azure help [command]`。 还可以在创建和管理具体 Azure 服务的说明文档中找到 CLI 示例。
 
 可选参数显示在方括号中（例如，`[parameter]`）。 其他所有参数都是必需的。
 
@@ -45,7 +45,7 @@ ms.locfileid: "79292829"
     azure config mode arm
 
 > [!NOTE]
-> CLI 的 Azure Resource Manager 模式与 Azure 服务管理模式互斥。 即，在一种模式下创建的资源不能通过另一种模式进行管理。
+> CLI 的 Azure 资源管理器模式与 Azure 服务管理模式互斥。 即在一种模式下创建的资源不能从另一种模式进行管理。
 > 
 > 
 
@@ -142,7 +142,7 @@ ms.locfileid: "79292829"
 
     feature list [options]
 
-**显示一项功能**
+**显示一个功能**
 
     feature show [options] <providerName> <featureName>
 
@@ -155,7 +155,7 @@ ms.locfileid: "79292829"
 
     group create [options] <name> <location>
 
-**向资源组设置标记**
+**资源组的标记**
 
     group set [options] <name> <tags>
 
@@ -306,7 +306,7 @@ ms.locfileid: "79292829"
 
     hdinsight cluster disable-rdp-access [options] <clusterName>
 
-## <a name="azure-insights-commands-related-to-monitoring-insights-events-alert-rules-autoscale-settings-metrics"></a>azure insights：与监视 Insights（事件、警报规则、自动缩放设置、指标）相关的命令
+## <a name="azure-insights-commands-related-to-monitoring-insights-events-alert-rules-autoscale-settings-metrics"></a>azure insights：与监视 Insights（事件、警报规则、自动缩放设置、度量值）相关的命令
 **检索订阅、correlationId、资源组、资源或资源提供程序的操作日志**
 
     insights logs list [options]
@@ -320,7 +320,7 @@ ms.locfileid: "79292829"
 **用于管理虚拟网络的命令**
 
     network vnet create [options] <resource-group> <name> <location>
-创建虚拟网络。 在以下示例中，我们将为中国北部区域的资源组 myresourcegroup 创建名为 newvnet 的虚拟网络。
+创建虚拟网络。 在以下示例中，我们为中国北部区域的资源组 myresourcegroup 创建名为 newvnet 的虚拟网络。
 
     azure network vnet create myresourcegroup newvnet "China North"
     info:    Executing command network vnet create
@@ -410,7 +410,7 @@ ms.locfileid: "79292829"
 
     network vnet list [options] <resource-group>
 
-该命令列出资源组中的所有虚拟网络。
+该命令可列出资源组中的所有虚拟网络。
 
     C:\>azure network vnet list myresourcegroup
 
@@ -480,7 +480,7 @@ ms.locfileid: "79292829"
 
     network vnet subnet create [options] <resource-group> <vnet-name> <name>
 
-将另一个子网添加到现有的虚拟网络。
+将另一子网添加到现有虚拟网络。
 
     azure network vnet subnet create -g myresourcegroup --vnet-name newvnet -n subnet --address-prefix 10.0.1.0/24
 
@@ -728,7 +728,7 @@ ms.locfileid: "79292829"
 
     network lb probe set [options] <resource-group> <lb-name> <name>
 
-使用新值更新现有的负载均衡器探测。
+使用新值更新现有负载均衡器探测。
 
     azure network lb probe set -g myresourcegroup -l mylb -n mylbprobe -p mylbprobe1 -p TCP -o 443 -i 300
 
@@ -994,7 +994,7 @@ ms.locfileid: "79292829"
     network lb rule create [options] <resource-group> <lb-name> <name>
 创建负载均衡器规则。
 
-可创建负载均衡器规则，用于配置负载均衡器的前端终结点以及要接收传入网络流量的后端地址池范围。 设置还包括前端 IP 终结点的端口，以及后端地址池范围的端口。
+可以创建负载均衡器规则，用于配置负载均衡器的前端终结点以及要接收传入网络流量的后端地址池范围。 设置还包括前端 IP 终结点的端口，以及后端地址池范围的端口。
 
 下例演示了如何创建负载均衡器规则、侦听端口 80 TCP 的前端终结点，以及发送到后端地址池范围的端口 8080 的负载均衡网络流量。
 
@@ -1023,7 +1023,7 @@ ms.locfileid: "79292829"
 
     network lb rule set [options] <resource-group> <lb-name> <name>
 
-更新特定资源组中设置的现有负载均衡器规则。 在以下示例中，我们已将规则名称从 mylbrule 更改为 mynewlbrule。
+更新特定资源组中设置的现有负载均衡器规则。 下例中已将规则名称从 mylbrule 更改为 mynewlbrule。
 
     azure network lb rule set -g myresourcegroup -l mylb -n mylbrule -r mynewlbrule -p tcp -f 80 -b 8080 -i 10 -t myfrontendip -o mybackendpool
 
@@ -1113,7 +1113,7 @@ ms.locfileid: "79292829"
 **用于管理负载均衡器入站 NAT 规则的命令**
 
     network lb inbound-nat-rule create [options] <resource-group> <lb-name> <name>
-为负载均衡器创建入站 NAT 规则。
+创建负载均衡器入站 NAT 规则。
 
 下例中我们从前端 IP 创建了一个 NAT 规则（之前已使用“azure network frontend-ip”进行定义），其中包含一个入站侦听端口和负载均衡器用于发送网络流量的出站端口。
 
@@ -1157,7 +1157,7 @@ ms.locfileid: "79292829"
 <br />
 
     network lb inbound-nat-rule set [options] <resource-group> <lb-name> <name>
-更新现有的入站 NAT 规则。 在以下示例中，我们已将入站侦听端口从 80 更改为 81。
+更新现有入站 NAT 规则。 在以下示例中，我们已将入站侦听端口从 80 更改为 81。
 
     azure network lb inbound-nat-rule set -g group-1 -l mylb -n myinboundnat -p tcp -f 81 -b 8080 -i myfrontendip
 
@@ -1676,7 +1676,7 @@ ms.locfileid: "79292829"
     storage table policy set [options] [table] [name]
     storage table policy delete [options] [table] [name]
 
-## <a name="azure-tag-commands-to-manage-your-resource-manager-tag"></a>azure tag：用于管理资源管理器标记的命令
+## <a name="azure-tag-commands-to-manage-your-resource-manager-tag"></a>azure tag：用于管理 Resource Manager 标记的命令
 **添加标记**
 
     tag create [options] <name> <value>
@@ -1703,7 +1703,7 @@ ms.locfileid: "79292829"
     vm quick-create [options] <resource-group> <name> <location> <os-type> <image-urn> <admin-username> <admin-password
 
 > [!TIP]
-> 从 CLI 0.10 版开始，可以为某些热门市场映像提供“UbuntuLTS”或“Win2012R2Datacenter”之类的简短别名作为 `image-urn`。 针对选项运行 `azure help vm quick-create` 。 另外，从版本 0.10 开始， `azure vm quick-create` 默认使用高级存储，前提是所选区域提供该存储。
+> 从 CLI 0.10 版开始，可以为某些热门市场映像提供“UbuntuLTS”或“Win2012R2Datacenter”之类的简短别名作为 `image-urn`。 针对选项运行 `azure help vm quick-create`。 另外，从 0.10 版开始，`azure vm quick-create` 默认使用高级存储，前提是所选区域提供该存储。
 > 
 > 
 
@@ -1723,7 +1723,7 @@ ms.locfileid: "79292829"
 
     vm stop [options] <resource-group> <name>
 
-**重新启动资源组中的一个虚拟机**
+**重启资源组中的一个虚拟机**
 
     vm restart [options] <resource-group> <name>
 
@@ -1751,7 +1751,7 @@ ms.locfileid: "79292829"
 
     vm get-instance-view [options] <resource-group> <name>
 
-**可让你重置虚拟机上的远程桌面访问或 SSH 设置，以及重置具有管理员或 sudo 权限的帐户的密码**
+**可重置虚拟机上的远程桌面访问或 SSH 设置，以及重置具有管理员或 sudo 权限的帐户的密码**
 
     vm reset-access [options] <resource-group> <name>
 

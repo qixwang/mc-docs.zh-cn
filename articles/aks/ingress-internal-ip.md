@@ -7,10 +7,10 @@ origin.date: 05/24/2019
 ms.date: 03/10/2020
 ms.author: v-yeche
 ms.openlocfilehash: f0701c8eef47f6782110c3926edc35cd6b641cd8
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79290785"
 ---
 # <a name="create-an-ingress-controller-to-an-internal-virtual-network-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中创建内部虚拟网络的入口控制器
@@ -19,14 +19,14 @@ ms.locfileid: "79290785"
 
 本文介绍如何在 Azure Kubernetes 服务 (AKS) 群集中部署 [NGINX 入口控制器][nginx-ingress]。 入口控制器在内部专用虚拟网络和 IP 地址上配置。 不允许外部访问。 然后在 AKS 群集中运行两个应用程序（可通过单个 IP 地址访问其中的每个应用程序）。
 
-也可执行以下操作：
+你还可以：
 
 - [使用外部网络连接创建基本入口控制器][aks-ingress-basic]
     <!--Not Available on - [Enable the HTTP application routing add-on][aks-http-app-routing]-->
 - [创建使用你自己的 TLS 证书的入口控制器][aks-ingress-own-tls]
 - 创建一个使用 Let's Encrypt 的入口控制器，以自动生成[具有动态公共 IP 地址][aks-ingress-tls]或[具有静态公共 IP 地址][aks-ingress-static-tls]的 TLS 证书
 
-## <a name="before-you-begin"></a>准备阶段
+## <a name="before-you-begin"></a>开始之前
 
 本文使用 Helm 安装 NGINX 入口控制器、cert-manager 和示例 Web 应用。 你需要在 AKS 群集中初始化 Helm 并使用 Tiller 服务帐户。 有关配置和使用 Helm 的详细信息，请参阅[在 Azure Kubernetes 服务 (AKS) 中使用 Helm 安装应用程序][use-helm]。
 
@@ -161,7 +161,7 @@ ingress.extensions/hello-world-ingress created
 kubectl run -it --rm aks-ingress-test --image=debian --namespace ingress-basic
 ```
 
-使用 `apt-get` 在 Pod 中安装 `curl`：
+使用 `curl` 在 Pod 中安装 `apt-get`：
 
 ```console
 apt-get update && apt-get install -y curl
@@ -265,7 +265,7 @@ kubectl delete namespace ingress-basic
 - [Helm CLI][helm-cli]
 - [NGINX 入口控制器][nginx-ingress]
 
-也可执行以下操作：
+你还可以：
 
 - [创建具有外部网络连接的基本入口控制器][aks-ingress-basic]
     

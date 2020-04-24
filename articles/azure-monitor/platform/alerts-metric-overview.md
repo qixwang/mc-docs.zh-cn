@@ -8,10 +8,10 @@ ms.date: 12/31/2019
 ms.topic: conceptual
 ms.subservice: alerts
 ms.openlocfilehash: 1ace61c06fd053944b32bc71aa05ad3a70ec30cb
-ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/17/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79452374"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>了解指标警报在 Azure Monitor 中的工作原理

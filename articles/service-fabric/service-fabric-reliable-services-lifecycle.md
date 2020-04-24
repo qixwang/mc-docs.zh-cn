@@ -7,10 +7,10 @@ origin.date: 08/18/2017
 ms.date: 02/24/2020
 ms.author: v-yeche
 ms.openlocfilehash: 2af9d57d4eb3b82f8c3a4ae8ef2fa24d59afe1d2
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79292465"
 ---
 # <a name="reliable-services-lifecycle-overview"></a>Reliable Services 生命周期概述
@@ -31,9 +31,9 @@ ms.locfileid: "79292465"
     - 取消传递给 **RunAsync** 的取消令牌，同时关闭侦听器。
     - 侦听器关闭后，销毁服务对象本身。
 
-有相应的文档详细介绍了有关这些事件的确切顺序。 事件的顺序可能会根据 Reliable Service 是无状态服务还是有状态服务而略有变化。 此外，对于有状态服务，必须处理主副本交换方案。 在执行此序列期间，主副本的角色转移到另一个副本（或者转移回来），而无需关闭服务。 最后，必须考虑到错误或失败状态。
+有相应的文档详细介绍了有关这些事件的确切顺序。 事件的顺序可能会根据 Reliable Service 是无状态服务还是有状态服务而略有变化。 此外，对于有状态服务，必须处理主副本交换方案。 在执行此序列期间，主副本的角色将转移到另一个副本（或者转移回来），而无需关闭服务。 最后，必须考虑到错误或失败状态。
 
-## <a name="stateless-service-startup"></a>无状态服务
+## <a name="stateless-service-startup"></a>无状态服务启动
 无状态服务的生命周期非常直接了当。 下面是事件的顺序：
 
 1. 构造服务。
@@ -64,7 +64,7 @@ ms.locfileid: "79292465"
 有状态服务的模式与无状态服务类似，只是稍有不同。 启动有状态服务时，事件的顺序如下所述：
 
 1. 构造服务。
-2. `StatefulServiceBase.OnOpenAsync()` 。 此调用是服务中不常见的重写。
+2. 调用 `StatefulServiceBase.OnOpenAsync()`。 此调用是服务中不常见的重写。
 3. 以下情况将并行发生：
     - 调用 `StatefulServiceBase.CreateServiceReplicaListeners()`。 
         - 如果服务是主要服务，则打开所有返回的侦听器。 对每个侦听器调用 `ICommunicationListener.OpenAsync()`。
@@ -111,21 +111,21 @@ ms.locfileid: "79292465"
 2. 所有副本侦听器的 `OpenAsync()` 调用完成并已调用 `RunAsync()` 后，将调用 `StatefulServiceBase.OnChangeRoleAsync()`。 此调用是服务中不常见的重写。
 
 ### <a name="common-issues-during-stateful-service-shutdown-and-primary-demotion"></a>有状态服务关闭和主副本降级期间的常见问题
-Service Fabric 更改有状态服务的主要副本的原因有多种。 最常见的原因是[群集重新均衡](service-fabric-cluster-resource-manager-balancing.md)和[应用程序升级](service-fabric-application-upgrade.md)。 在执行这些操作的过程中（以及在普通服务关闭过程中，例如查看服务是否已删除），服务必须遵从 `CancellationToken`。 
+Service Fabric 更改有状态服务的主副本的原因有多种。 最常见的原因是[群集重新平衡](service-fabric-cluster-resource-manager-balancing.md)和[应用程序升级](service-fabric-application-upgrade.md)。 在这些操作的过程中（以及在普通服务关闭过程中，比如你会了解是否已删除服务），服务必须遵从 `CancellationToken`。 
 
 如果服务不完全处理取消，可能会导致若干问题。 这些操作的速度之所以缓慢，是因为 Service Fabric 要等待服务正常停止。 最终导致升级超时失败，然后回滚。 未能遵循取消令牌也可能导致群集不均衡。 群集之所以不均衡，是因为节点变热，但将它们移到其他位置耗时过长，因此无法重新均衡服务。 
 
-由于服务有状态，它们也可能使用 [Reliable Collections](service-fabric-reliable-services-reliable-collections.md)。 在 Service Fabric 中，主要副本降级后，首先会撤销基础状态的写入访问权限。 这会导致可能影响服务生命周期的另外一系列问题。 集合将根据计时和是否已移动或关闭副本返回异常。 应正确处理这些异常。 由 Service Fabric 引发的异常分为永久性 [(`FabricException`)](https://docs.azure.cn/dotnet/api/system.fabric.fabricexception?view=azure-dotnet) 和暂时性 [(`FabricTransientException`)](https://docs.azure.cn/dotnet/api/system.fabric.fabrictransientexception?view=azure-dotnet) 类别。 永久性异常应记录并引发，而暂时性异常可以基于某种重试逻辑重试。
+由于服务有状态，它们也可能使用 [Reliable Collections](service-fabric-reliable-services-reliable-collections.md)。 在 Service Fabric 中，主副本降级后，首先会撤销基础状态的写入访问权限。 这会导致可能影响服务生命周期的另外一系列问题。 集合将根据计时和是否已移动或关闭副本返回异常。 应正确处理这些异常。 由 Service Fabric 引发的异常分为永久性 [(`FabricException`)](https://docs.azure.cn/dotnet/api/system.fabric.fabricexception?view=azure-dotnet) 和暂时性 [(`FabricTransientException`)](https://docs.azure.cn/dotnet/api/system.fabric.fabrictransientexception?view=azure-dotnet) 类别。 永久性异常应记录并引发，而暂时性异常可以基于某种重试逻辑重试。
 
 处理因结合使用 `ReliableCollections` 和服务生命周期事件而产生的异常是测试和验证 Reliable Service 的重要环节。 建议在执行升级和[混沌测试](service-fabric-controlled-chaos.md)时始终低负载运行服务，然后再部署到生产环境。 以下基本步骤有助于确保已正确实现服务并正确处理生命周期事件。
 
 ## <a name="notes-on-the-service-lifecycle"></a>有关服务生命周期的说明
   - `RunAsync()` 方法和 `CreateServiceReplicaListeners/CreateServiceInstanceListeners` 调用都是可选的。 服务可能使用其中的一个或两个，或者都不使用。 例如，如果服务执行的所有工作都只是为了响应用户调用，则无需实现 `RunAsync()`。 只需提供通信侦听器及其关联的代码。 同样，创建和返回通信侦听器的操作也是可选的，因为服务可能只需执行后台工作，在这种情况下，只需实现 `RunAsync()`。
   - 服务成功完成 `RunAsync()` 并从中返回即可。 完成不是失败条件。 完成 `RunAsync()` 表示该服务的后台工作已完成。 对于有状态可靠服务，如果副本已从主副本降级为次要副本，然后重新升级为主副本，则会再次调用 `RunAsync()`。
-  - 如果服务因引发某种意外的异常从 `RunAsync()` 退出，会导致失败。 已关闭服务对象，并已报告运行状况错误。
+  - 如果服务因引发某种意外的异常从 `RunAsync()` 退出，将导致失败。 已关闭服务对象，并已报告运行状况错误。
   - 虽然从这些方法返回没有时间限制，但会立即丧失写入到可靠集合的能力，并因此无法完成任何实际工作。 建议尽快在收到取消请求后返回。 如果服务在合理的时间内未响应这些 API 调用，Service Fabric 可能会强行终止服务。 通常，只有在应用程序升级期间或删除服务时，才发生这种情况。 此超时默认为 15 分钟。
   - `OnCloseAsync()` 路径中的失败会导致调用 `OnAbort()`，服务可以凭借这最后一个机会，尽最大努力清理并释放它们所占用的资源。 当在节点上检测到永久性故障时，或者当 Service Fabric 由于内部错误而无法可靠地管理服务实例的生命周期时，通常会调用此方法。
-  - 当有状态服务副本要更改角色（例如，更改为主要副本或次要副本）时，调用 `OnChangeRoleAsync()`。 主副本将指定为写状态（允许创建和写入可靠集合）。 辅助副本将指定为读取状态（只能从现有的可靠集合读取）。 有状态服务中的大部分工作在主要副本执行。 次要副本可执行只读验证、报表生成、数据挖掘或其他只读作业。
+  - 当有状态服务副本要更改角色（例如，更改为主要副本或次要副本）时，调用 `OnChangeRoleAsync()`。 主副本将指定为写状态（允许创建和写入可靠集合）。 辅助副本将指定为读取状态（只能从现有的可靠集合读取）。 有状态服务中的大部分工作在主副本执行。 辅助副本可执行只读验证、报表生成、数据挖掘或其他只读作业。
 
 ## <a name="next-steps"></a>后续步骤
 - [Reliable Services 简介](service-fabric-reliable-services-introduction.md)

@@ -13,10 +13,10 @@ origin.date: 10/15/2019
 ms.date: 12/04/2019
 ms.author: v-lingwu
 ms.openlocfilehash: 59b7d4f479742bcb1e174f745c2b8c394c7ec78b
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79292357"
 ---
 # <a name="understand-what-good-utterances-are-for-your-luis-app"></a>了解哪些良好的话语适用于你的 LUIS 应用
@@ -115,11 +115,11 @@ LUIS 使用由 LUIS 模型作者精心挑选的话语构建有效的模型。 �
 
 ### <a name="ignoring-words-and-punctuation"></a>忽略单词和标点
 
-若要忽略模式中的特定单词或标点，请将 [pattern](luis-concept-patterns.md#pattern-syntax) 与方括号 `[]` 的 _ignore_ 语法配合使用。 
+若要忽略模式中的特定单词或标点，请将 [pattern](luis-concept-patterns.md#pattern-syntax) 与方括号 _的_ignore`[]` 语法配合使用。 
 
 ## <a name="training-utterances"></a>训练陈述
 
-训练通常是非确定性的：在不同版本或应用中，陈述预测可能略有不同。 可以通过使用 `UseAllTrainingData` 名称/值对更新[版本设置](https://{region}.dev.cognitive.azure.cn/docs/services/5890b47c39e2bb17b84a55ff/operations/versions-update-application-version-settings) API 来使用所有训练数据。
+训练通常是非确定性的：在不同版本或应用中，陈述预测可能略有不同。 可以通过使用 [ 名称/值对更新](https://{region}.dev.cognitive.azure.cn/docs/services/5890b47c39e2bb17b84a55ff/operations/versions-update-application-version-settings)版本设置`UseAllTrainingData` API 来使用所有训练数据。
 
 ## <a name="testing-utterances"></a>测试陈述 
 
@@ -129,7 +129,7 @@ LUIS 使用由 LUIS 模型作者精心挑选的话语构建有效的模型。 �
 
 在模型经过训练、发布并接收[终结点](luis-glossary.md#endpoint)查询后，请审查 LUIS 建议的话语。 LUIS 会选择意向或实体得分较低的终结点陈述。 
 
-## <a name="best-practices"></a>最佳实践
+## <a name="best-practices"></a>最佳做法
 
 查看[最佳做法](luis-concept-best-practices.md)并将其应用为常规创作周期的一部分。
 

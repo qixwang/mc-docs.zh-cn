@@ -10,10 +10,10 @@ origin.date: 02/27/2019
 ms.date: 07/15/2019
 ms.author: v-yiso
 ms.openlocfilehash: 3efa6bc0277f7f2859789b53b443b75ef0e28139
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79293230"
 ---
 # <a name="monitor-the-health-of-azure-iot-hub-and-diagnose-problems-quickly"></a>监视 Azure IoT 中心的运行状况并快速诊断问题
@@ -98,7 +98,7 @@ Azure Monitor 跟踪 IoT 中心内发生的不同操作。 每个类别都有一
 
 #### <a name="device-identity-operations"></a>设备标识操作
 
-设备标识操作类别跟踪你尝试在其 IoT 中心的标识注册表中创建、更新或删除条目时所发生的错误。 预配方案就很适合跟踪此类别。
+设备标识操作类别跟踪你尝试在 IoT 中心的标识注册表中创建、更新或删除条目时所发生的错误。 预配方案就很适合跟踪此类别。
 
 ```json
 {
@@ -148,7 +148,7 @@ Azure Monitor 跟踪 IoT 中心内发生的不同操作。 每个类别都有一
 
 #### <a name="device-telemetry"></a>设备遥测
 
-设备遥测类别跟踪在 IoT 中心发生且与遥测管道相关的错误。 此类别包括发送遥测事件（例如限制）和接收遥测事件（例如未经授权的读取者）时发生的错误。 此类别无法捕捉设备本身运行的代码所造成的错误。
+设备遥测类别跟踪在 IoT 中心发生的、与遥测管道相关的错误。 此类别包括发送遥测事件（例如限制）和接收遥测事件（例如未经授权的读取者）时发生的错误。 此类别无法捕捉设备本身运行的代码所造成的错误。
 
 ```json
 {
@@ -171,10 +171,10 @@ Azure Monitor 跟踪 IoT 中心内发生的不同操作。 每个类别都有一
 
 #### <a name="file-upload-operations"></a>文件上传操作
 
-文件上传类别跟踪在 IoT 中心发生且与文件上传功能相关的错误。 此类别包括：
+文件上传类别跟踪在 IoT 中心发生的、与文件上传功能相关的错误。 此类别包括：
 
-* SAS URI 发生的错误，例如它在设备就上传完毕通知中心之前到期。
-* 设备报告的失败上传。
+* SAS URI 发生的错误，例如，它在设备向中心通知某个完成的上传前失效。
+* 由设备报告的失败上传。
 * 创建 IoT 中心通知消息期间在存储中找不到文件时发生的错误。
 
 此类别不能捕获在设备将文件上传到存储时直接发生的错误。
@@ -385,8 +385,8 @@ Azure IoT 中心指示区域级别的运行状况。 如果区域性服务中断
 
 若要检查 IoT 中心的运行状况，请遵循以下步骤：
 
-1. 登录到 [Azure 门户](https://portal.azure.cn)。
-1. 导航到“服务运行状况” > “资源运行状况”。  
+1. 登录 [Azure 门户](https://portal.azure.cn)。
+1. 导航到“服务运行状况” **“资源运行状况”。**  >  
 1. 从下拉列表框中，选择你的订阅，然后选择“IoT 中心”  作为资源类型。
 
 若要详细了解如何解释运行状况数据，请参阅 [Azure 资源运行状况概述][lnk-ARH]

@@ -12,10 +12,10 @@ origin.date: 09/01/2019
 ms.date: 11/11/2019
 ms.reviewer: klam, LADocs
 ms.openlocfilehash: 6ff6cad64db4ea3f440f777e176ef1b01db7fe9c
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79291524"
 ---
 # <a name="data-operation-code-samples-for-azure-logic-apps"></a>Azure 逻辑应用的数据操作代码示例
@@ -327,7 +327,7 @@ ms.locfileid: "79291524"
 
 <a name="select-action-example"></a>
 
-## <a name="select"></a>选择
+## <a name="select"></a>Select
 
 若要尝试[**选择**操作示例](../logic-apps/logic-apps-perform-data-operations.md#select-action)，可使用以下操作定义：
 

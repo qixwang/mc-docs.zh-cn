@@ -7,10 +7,10 @@ origin.date: 08/18/2017
 ms.date: 02/24/2020
 ms.author: v-yeche
 ms.openlocfilehash: 7a9beb03db6c942cb14f1ea313ed2409219669c4
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79292576"
 ---
 # <a name="describe-a-service-fabric-cluster-by-using-cluster-resource-manager"></a>使用群集资源管理器描述 Service Fabric 群集
@@ -240,7 +240,7 @@ Azure Service Fabric 的群集资源管理器功能提供多种机制用于描�
 
 |  | FD0 | FD1 | FD2 | FD3 | FD4 | UDTotal |
 | --- |:---:|:---:|:---:|:---:|:---:|:---:|
-| **UD0** |不适用 |不适用 |不适用 |不适用 |不适用 |不适用 |
+| **UD0** |不适用 |不适用 |不适用 |空值 |空值 |空值 |
 | **UD1** |R2 | | | | |1 |
 | **UD2** | |R3 |R4 | | |2 |
 | **UD3** | | | |R1 | |1 |

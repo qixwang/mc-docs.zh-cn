@@ -8,10 +8,10 @@ origin.date: 01/10/2020
 ms.date: 02/24/2020
 ms.author: v-yeche
 ms.openlocfilehash: 0c507b1fb40fc902f6405339c3fb39caa945fefc
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79291370"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-hyper-v-vms-using-powershell-and-azure-resource-manager"></a>使用 PowerShell 和 Azure 资源管理器对 Hyper-V VM 设置到 Azure 的灾难恢复
@@ -24,7 +24,7 @@ ms.locfileid: "79291370"
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 
-Azure PowerShell 提供用于通过 Windows PowerShell 管理 Azure 的 cmdlet。 Site Recovery PowerShell cmdlet 在 Azure PowerShell for Azure Resource Manager 中提供，可帮助你保护和恢复你在 Azure 中的服务器。
+Azure PowerShell 提供用于通过 Windows PowerShell 管理 Azure 的 cmdlet。 适用于 Azure 资源管理器的 Azure PowerShell 随附 Site Recovery PowerShell cmdlet，有助于保护和恢复 Azure 中的服务器。
 
 尽管无需成为一名 PowerShell 专家就可以使用本文章，但你还是需要理解诸如模块、cmdlet 和会话等基本概念。 有关详细信息，请参阅 [PowerShell 文档](https://docs.microsoft.com/powershell)和 [将 Azure PowerShell 与 Azure 资源管理器配合使用](../powershell-azure-resource-manager.md)。
 
@@ -35,7 +35,7 @@ Azure PowerShell 提供用于通过 Windows PowerShell 管理 Azure 的 cmdlet�
 
 确保已满足以下先决条件：
 
-- 一个 [Azure](https://www.azure.cn/) 帐户。 你可以从[试用版](https://www.azure.cn/pricing/1rmb-trial/)开始。 此外，可以阅读 [Azure Site Recovery Manager 定价](https://www.azure.cn/pricing/details/site-recovery/)。
+- 一个 [Azure](https://www.azure.cn/) 帐户。 可以从 [试用版](https://www.azure.cn/pricing/1rmb-trial/)开始。 此外，可以阅读 [Azure Site Recovery Manager 定价](https://www.azure.cn/pricing/details/site-recovery/)。
 - Azure PowerShell。 若要深入了解此版本及其安装方法，请参阅[安装 Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps)。
 
 此外，本文中提及的特定示例要求满足以下先决条件：
@@ -46,7 +46,7 @@ Azure PowerShell 提供用于通过 Windows PowerShell 管理 Azure 的 cmdlet�
 ## <a name="step-1-sign-in-to-your-azure-account"></a>步骤 1：登录到 Azure 帐户
 
 1. 打开 PowerShell 控制台，并运行以下命令以登录到 Azure 帐户。 此 cmdlet 会打开一个网页，提示输入帐户凭据：`Connect-AzAccount -Environment AzureChinaCloud`。
-    - 或者，可以使用 **Credential** 参数，在 `Connect-AzAccount -Environment AzureChinaCloud` cmdlet 中将帐户凭据作为参数包括。
+    - 或者，可以使用 `Connect-AzAccount -Environment AzureChinaCloud`Credential**参数，在** cmdlet 中将帐户凭据作为参数包括。
     
     <!-- Not Available on CSP partner working on behalf of a tenant -->
     
@@ -117,7 +117,7 @@ Set-AzRecoveryServicesAsrVaultContext -Vault $vault
     $path = Get-AzRecoveryServicesVaultSettingsFile -Vault $vault -SiteIdentifier $SiteIdentifier -SiteFriendlyName $sitename
     ```
 
-1. 将已下载的密钥复制到 Hyper-V 主机。 你需要通过该密钥将 Hyper-V 主机注册到站点。
+1. 将已下载的密钥复制到 Hyper-V 主机。 需要通过该密钥将 Hyper-V 主机注册到站点。
 
 ## <a name="step-5-install-the-provider-and-agent"></a>步骤 5：安装提供程序和代理
 
@@ -245,7 +245,7 @@ Set-AzRecoveryServicesAsrVaultContext -Vault $vault
 > 1. 通过更新 VM 属性启用到托管磁盘的故障转移
 > 1. 使用 `Get-AzRecoveryServicesAsrReplicationProtectedItem` cmdlet 获取受保护项的每个磁盘的磁盘 ID
 > 1. 使用 `New-Object "System.Collections.Generic.Dictionary``2[System.String,System.String]"` cmdlet 创建包含磁盘 ID 到磁盘加密集映射的字典对象。 这些磁盘加密集将由你在目标区域中预先创建。
-> 1. 通过在 **DiskIdToDiskEncryptionSetMap** 参数中传递字典对象，使用 `Set-AzRecoveryServicesAsrReplicationProtectedItem` cmdlet 更新 VM 属性。
+> 1. 通过在 `Set-AzRecoveryServicesAsrReplicationProtectedItem`DiskIdToDiskEncryptionSetMap**参数中传递字典对象，使用** cmdlet 更新 VM 属性。
 
 ## <a name="step-8-run-a-test-failover"></a>步骤 8：运行测试故障转移
 

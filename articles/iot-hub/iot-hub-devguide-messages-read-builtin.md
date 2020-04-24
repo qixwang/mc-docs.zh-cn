@@ -10,10 +10,10 @@ origin.date: 08/08/2019
 ms.author: v-yiso
 ms.date: 09/02/2019
 ms.openlocfilehash: fabf42de23e9592acb1fff002e3b55fc119a20f6
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79293440"
 ---
 # <a name="read-device-to-cloud-messages-from-the-built-in-endpoint"></a>从内置终结点读取设备到云的消息

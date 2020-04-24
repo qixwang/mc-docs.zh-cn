@@ -8,10 +8,10 @@ ms.date: 03/09/2020
 ms.author: v-yeche
 zone_pivot_groups: client-operating-system
 ms.openlocfilehash: 2223411306741ab07d952c7d49069e5478578134
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79290696"
 ---
 # <a name="install-linkerd-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中安装 Linkerd
@@ -23,7 +23,7 @@ ms.locfileid: "79290696"
 > [!NOTE]
 > 这些说明引用 Linkerd 版本 `stable-2.6.0`。
 >
-> 可针对 Kubernetes 版本 `1.13+` 运行 Linkerd `stable-2.6.x`。 可以在 [GitHub - Linkerd 版本][linkerd-github-releases]中找到 Stable 和 Edge 的其他 Linkerd 版本。
+> 可针对 Kubernetes 版本 `stable-2.6.x` 运行 Linkerd `1.13+`。 可以在 [GitHub - Linkerd 版本][linkerd-github-releases]中找到 Stable 和 Edge 的其他 Linkerd 版本。
 
 在本文中，学习如何：
 
@@ -34,7 +34,7 @@ ms.locfileid: "79290696"
 > * 访问仪表板
 > * 从 AKS 中卸载 Linkerd
 
-## <a name="before-you-begin"></a>准备阶段
+## <a name="before-you-begin"></a>开始之前
 
 本文中详述的步骤假设已创建 AKS 群集（已启用 RBAC 的 Kubernetes `1.13` 及更高版本）并已与该群集建立 `kubectl` 连接。 如果需要帮助完成这些项目，请参阅 [AKS 快速入门][aks-quickstart]。
 

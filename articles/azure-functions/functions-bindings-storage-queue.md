@@ -7,10 +7,10 @@ ms.date: 03/03/2020
 ms.author: v-junlch
 ms.custom: cc996988-fb4f-47
 ms.openlocfilehash: 790212f49c781a2704728a6828dcff2372931828
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79293263"
 ---
 # <a name="azure-queue-storage-trigger-and-bindings-for-azure-functions-overview"></a>适用于 Azure Functions 的 Azure 队列存储触发器和绑定概述
@@ -26,7 +26,7 @@ Azure Functions 可以在创建新的 Azure 队列存储消息时运行，并可
 
 ### <a name="functions-2x-and-higher"></a>Functions 2.x 及更高版本
 
-使用触发器和绑定需要引用相应的程序包。 NuGet 包用于 .NET 类库，而扩展捆绑包用于其他所有应用程序类型。
+使用触发器和绑定需要引用相应的包。 NuGet 包用于 .NET 类库，而扩展捆绑包用于其他所有应用程序类型。
 
 | 语言                                        | 添加方式...                                   | 备注 
 |-------------------------------------------------|---------------------------------------------|-------------|
@@ -49,5 +49,5 @@ Functions 1.x 应用会自动引用 [Microsoft.Azure.WebJobs](https://www.nuget.
 ## <a name="next-steps"></a>后续步骤
 
 - [在队列存储数据更改时运行函数（触发器）](./functions-bindings-storage-queue-trigger.md)
-- [写入队列存储消息（输出绑定）](./functions-bindings-storage-queue-output.md)
+- [向队列存储写入消息（输出绑定）](./functions-bindings-storage-queue-output.md)
 

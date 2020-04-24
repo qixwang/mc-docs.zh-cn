@@ -10,10 +10,10 @@ origin.date: 02/25/2020
 ms.date: 03/13/2020
 ms.author: v-lingwu
 ms.openlocfilehash: 2a58ad330f54bfeb37a4269a0866f25e0bd679b8
-ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/17/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79452350"
 ---
 # <a name="secure-your-management-ports-with-just-in-time-access"></a>使用实时访问保护管理端口

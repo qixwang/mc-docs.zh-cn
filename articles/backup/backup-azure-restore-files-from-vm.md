@@ -7,10 +7,10 @@ origin.date: 03/01/2019
 ms.date: 03/06/2020
 ms.author: v-lingwu
 ms.openlocfilehash: 92f6f33da93eb5e10313d4655b47dc381aa6f6c2
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79293038"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>从 Azure 虚拟机备份恢复文件

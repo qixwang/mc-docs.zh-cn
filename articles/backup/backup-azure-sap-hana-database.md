@@ -8,10 +8,10 @@ origin.date: 11/7/2019
 ms.date: 03/12/2020
 ms.author: v-lingwu
 ms.openlocfilehash: 0e6f4a6453790539c4ea4020c96598a892701bd0
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79292583"
 ---
 # <a name="back-up-sap-hana-databases-in-azure-vms"></a>备份 Azure VM 中的 SAP HANA 数据库

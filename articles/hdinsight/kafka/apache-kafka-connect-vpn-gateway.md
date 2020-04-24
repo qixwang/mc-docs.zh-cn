@@ -13,10 +13,10 @@ origin.date: 05/28/2019
 ms.date: 10/28/2019
 ms.author: v-yiso
 ms.openlocfilehash: d0c724bd20db33d3df904910f94dc226d53c8337
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79292880"
 ---
 # <a name="connect-to-apache-kafka-on-hdinsight-through-an-azure-virtual-network"></a>通过 Azure 虚拟网络连接到 Apache Kafka on HDInsight
@@ -62,7 +62,7 @@ HDInsight 不允许通过公共 Internet 直接连接到 Kafka。 Kafka 客户�
 
 有关在虚拟网络中使用 HDInsight 的详细信息，请参阅[为 Azure HDInsight 群集规划虚拟网络](../hdinsight-plan-virtual-network-deployment.md)。
 
-## <a id="on-premises"></a>从本地网络连接到 Apache Kafka
+## <a name="connect-to-apache-kafka-from-an-on-premises-network"></a><a id="on-premises"></a>从本地网络连接到 Apache Kafka
 
 若要创建可与本地网络通信的 Kafka 群集，请遵循[将 HDInsight 连接到本地网络](./../connect-on-premises-network.md)文档中所述的步骤。
 
@@ -78,7 +78,7 @@ HDInsight 不允许通过公共 Internet 直接连接到 Kafka。 Kafka 客户�
 
 若要验证 Kafka 客户端是否可从本地连接到群集，请使用[示例：Python 客户端](#python-client)部分中的步骤。
 
-## <a id="vpnclient"></a>使用 VPN 客户端连接到 Apache Kafka
+## <a name="connect-to-apache-kafka-with-a-vpn-client"></a><a id="vpnclient"></a>使用 VPN 客户端连接到 Apache Kafka
 
 使用本部分中的步骤创建以下配置：
 
@@ -246,21 +246,21 @@ HDInsight 不允许通过公共 Internet 直接连接到 Kafka。 Kafka 客户�
 
 默认情况下，Apache Zookeeper 向客户端返回 Kafka 中转站的域名。 此配置不使用 VPN 软件客户端，因为它无法对虚拟网络中的实体使用名称解析。 对于此配置，请使用以下步骤来配置 Kafka，以播发 IP 地址而不是域名：
 
-1. 使用 Web 浏览器时，请访问 https://CLUSTERNAME.azurehdinsight.cn 。 将 __CLUSTERNAME__ 替换为 Kafka on HDInsight 群集的名称。
+1. 使用 Web 浏览器转到 https://CLUSTERNAME.azurehdinsight.cn 。 将 CLUSTERNAME  替换为 Kafka on HDInsight 群集的名称。
 
     出现提示时，使用群集的 HTTPS 用户名称密码。 将显示群集的 Ambari Web UI。
 
-2. 要查看 Kafka 的相关信息，请从左侧列表中选择“Kafka”。 
+2. 要查看 Kafka 的相关信息，请从左侧列表中选择“Kafka”  。
 
-    ![服务列表，其中突出显示了 Kafka](./media/apache-kafka-connect-vpn-gateway/select-kafka-service.png)
+    ![Kafka 突出显示的服务列表](./media/apache-kafka-connect-vpn-gateway/select-kafka-service.png)
 
-3. 要查看 Kafka 配置，请在顶端的中间位置选择“配置”。 
+3. 要查看 Kafka 配置，请在顶端的中间位置选择“配置”  。
 
     ![Kafka 的配置链接](./media/apache-kafka-connect-vpn-gateway/select-kafka-config1.png)
 
-4. 要查找“kafka-env” 配置，请在右上方的“筛选器”字段中输入 `kafka-env`。  
+4. 要查找“kafka-env”  配置，请在右上方的“筛选器”`kafka-env`__字段中输入__ 。
 
-    ![针对 kafka-env 的 Kafka 配置](./media/apache-kafka-connect-vpn-gateway/search-for-kafka-env.png)
+    ![Kafka 配置，适用于 kafka-env](./media/apache-kafka-connect-vpn-gateway/search-for-kafka-env.png)
 
 5. 要配置 Kafka 来播发 IP 地址，请将下列文本添加到“kafka-env-template”  字段的底部：
 
@@ -272,32 +272,32 @@ HDInsight 不允许通过公共 Internet 直接连接到 Kafka。 Kafka 客户�
     echo "advertised.listeners=PLAINTEXT://$IP_ADDRESS:9092" >> /usr/hdp/current/kafka-broker/conf/server.properties
     ```
 
-6. 要配置 Kafka 侦听的接口，请在右上方的“筛选器”字段中输入 `listeners`。 
+6. 要配置 Kafka 侦听的接口，请在右上方的“筛选器”`listeners`__字段中输入__ 。
 
-7. 要将 Kafka 配置为侦听所有网络接口，请将“侦听器”字段的值更改为 `PLAINTEXT://0.0.0.0:9092`。 
+7. 要将 Kafka 配置为侦听所有网络接口，请将“侦听器”  字段的值更改为 `PLAINTEXT://0.0.0.0:9092`。
 
-8. 单击“保存”按钮以保存配置。  输入描述更改的文本消息。 保存更改后，选择“确定”。 
+8. 单击“保存”  按钮保存配置。 输入描述更改的文本消息。 保存更改后，请选择“确定”  。
 
     ![保存配置按钮](./media/apache-kafka-connect-vpn-gateway/save-configuration-button.png)
 
-9. 要防止在重启 Kafka 时出错，请使用“服务操作”按钮，并选择“打开维护模式”。   选择“确定”完成操作。
+9. 要防止在重启 Kafka 时出错，请使用“服务操作”  按钮，并选择“打开维护模式”  。 选择“确定”完成操作。
 
-    ![服务操作，其中已突出显示了“打开维护”](./media/apache-kafka-connect-vpn-gateway/turn-on-maintenance-mode.png)
+    ![服务操作，其中已突出显示“打开维护”](./media/apache-kafka-connect-vpn-gateway/turn-on-maintenance-mode.png)
 
-10. 要重启 Kafka，请使用“重启”按钮，然后选择“重启所有受影响的项”。   确认重启，在操作完成后再使用“确定”按钮。 
+10. 要重启 Kafka，请使用“重启”  按钮，并选择“重启所有受影响的项”  。 确认重启，在操作完成后再使用“确定”  按钮。
 
     ![重启按钮，其中突出显示了所有受影响的重启项](./media/apache-kafka-connect-vpn-gateway/restart-required-button.png)
 
-11. 要禁用维护模式，请使用“服务操作”按钮，然后选择“关闭维护模式”。   选择“确定”完成操作。 
+11. 要禁用维护模式，请使用“服务操作”  按钮，并选择“关闭维护模式”  。 选择“确定”  完成操作。
 
 ### <a name="connect-to-the-vpn-gateway"></a>连接到 VPN 网关
 
-若要连接到 VPN 网关，请按[配置点到站点连接](../../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md#connect)文档中__连接到 Azure__ 部分进行操作。
-## <a id="python-client"></a> 示例：Python 客户端
+若要连接到 VPN 网关，请按__配置点到站点连接__文档中[连接到 Azure](../../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md#connect) 部分进行操作。
+## <a name="example-python-client"></a><a id="python-client"></a>示例：Python 客户端
 
 若要验证与 Kafka 的连接，请使用以下步骤来创建并运行 Python 生成者和使用者：
 
-1. 使用以下方法之一检索 Kafka 群集中节点的完全限定的域名 (FQDN) 和 IP 地址：
+1. 使用以下方法之一检索 Kafka 群集中节点的完全限定域名 (FQDN) 和 IP 地址：
 
     ```powershell
     $resourceGroupName = "The resource group that contains the virtual network used with HDInsight"

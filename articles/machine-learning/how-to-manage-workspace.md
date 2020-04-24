@@ -12,10 +12,10 @@ origin.date: 12/27/2019
 ms.date: 03/16/2020
 ms.custom: seodec18
 ms.openlocfilehash: 1b92e716e2aa8bee4cb7b21817bcabfb2c406d5b
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79292913"
 ---
 # <a name="create-and-manage-azure-machine-learning-workspaces-in-the-azure-portal"></a>在 Azure 门户中创建并管理 Azure 机器学习工作区
@@ -70,7 +70,7 @@ ms.locfileid: "79292913"
    
    使用 Python 脚本或 Jupyter Notebook 将此文件放入到目录结构中。 它可以位于同一目录（名为 *.azureml* 的子目录）中，也可以位于父目录中。 创建计算实例时，此文件会添加到 VM 上的正确目录中。
 
-## <a name="upgrade"></a>升级到企业版
+## <a name="upgrade-to-enterprise-edition"></a><a name="upgrade"></a>升级到企业版
 
 可以将工作区从基本版升级到企业版，以利用增强的功能，例如低代码体验和增强的安全功能。
 
@@ -88,7 +88,7 @@ ms.locfileid: "79292913"
 > [!IMPORTANT]
 > 不能将企业版工作区降级为基本版工作区。 
 
-## <a name="view"></a>查找工作区
+## <a name="find-a-workspace"></a><a name="view"></a>查找工作区
 
 1. 在顶部搜索字段中，键入“机器学习”。   
 
@@ -124,7 +124,7 @@ ms.locfileid: "79292913"
 
 ### <a name="deleting-the-azure-container-registry"></a>删除 Azure 容器注册表
 
-Azure 机器学习工作区使用 Azure 容器注册表 (ACR) 进行某些操作。 当它第一次需要 ACR 实例时，它会自动创建一个。
+Azure 机器学习工作区使用 Azure 容器注册表 (ACR) 执行某些操作。 首次需要 ACR 实例时，它会自动创建一个。
 
 [!INCLUDE [machine-learning-delete-acr](../../includes/machine-learning-delete-acr.md)]
 

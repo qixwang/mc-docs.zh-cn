@@ -14,10 +14,10 @@ origin.date: 02/05/2020
 ms.author: v-lingwu
 ms.date: 02/25/2020
 ms.openlocfilehash: e95c1b29c35dee96194b5804dff20edb0bb5a4d4
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79291592"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>如何将 Azure API 管理与虚拟网络配合使用
@@ -42,7 +42,7 @@ ms.locfileid: "79291592"
 
 + 一个 APIM 实例。 有关详细信息，请参阅[创建 Azure API 管理实例](get-started-create-service-instance.md)。
 
-## <a name="enable-vpn"></a>启用 VNET 连接
+## <a name="enable-vnet-connection"></a><a name="enable-vpn"></a>启用 VNET 连接
 
 ### <a name="enable-vnet-connectivity-using-the-azure-portal"></a>使用 Azure 门户启用 VNET 连接
 
@@ -85,19 +85,19 @@ ms.locfileid: "79291592"
 > [!IMPORTANT]
 > 如果从 VNET 中删除 API 管理或更改在其中部署的 API 管理，则之前使用的 VNET 可最多 6 小时保持锁定状态。 在此期间，无法删除该 VNET 或向其部署新资源。 对于使用 api-version 2018-01-01 及更早版本的客户端，此行为是正确的。 使用 api-version 2019-01-01 及更高版本的客户端，在删除关联的 API 管理服务后，将释放 VNET。
 
-## <a name="enable-vnet-powershell"></a>使用 PowerShell cmdlet 启用 VNET 连接
+## <a name="enable-vnet-connection-using-powershell-cmdlets"></a><a name="enable-vnet-powershell"></a>使用 PowerShell cmdlet 启用 VNET 连接
 还可以使用 PowerShell cmdlet 启用 VNET 连接。
 
 * **在 VNET 内创建 API 管理服务**：使用 cmdlet [New-AzApiManagement](https://docs.microsoft.com/powershell/module/az.apimanagement/new-azapimanagement) 在 VNET 内创建 Azure API 管理服务。
 
 * **在 VNET 内部署现有 API 管理服务**：使用 cmdlet [Update-AzApiManagementRegion](https://docs.microsoft.com/powershell/module/az.apimanagement/update-azapimanagementregion) 将现有 Azure API 管理服务移到虚拟网络内。
 
-## <a name="connect-vnet"></a>连接到虚拟网络中托管的 Web 服务
+## <a name="connect-to-a-web-service-hosted-within-a-virtual-network"></a><a name="connect-vnet"></a>连接到虚拟网络中托管的 Web 服务
 将 API 管理服务连接到 VNET 后，访问 VNET 中的后端服务与访问公共服务无异。 在创建新的 API 或编辑现有 API 时，只需将 Web 服务的本地 IP 地址或主机名（如果为 VNET 配置了 DNS 服务器）键入到“Web 服务 URL”字段。 
 
 ![从 VPN 添加 API][api-management-setup-vpn-add-api]
 
-## <a name="network-configuration-issues"></a>常见网络配置问题
+## <a name="common-network-configuration-issues"></a><a name="network-configuration-issues"></a>常见网络配置问题
 下面是将 API 管理服务部署到虚拟网络时可能会发生的常见错误配置问题的列表。
 
 * **自定义 DNS 服务器设置**：API 管理服务依赖于多项 Azure 服务。 当 API 管理托管在包含自定义 DNS 服务器的 VNET 中时，API 管理需要解析这些 Azure 服务的主机名。 请根据[此指南](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server)进行自定义 DNS 设置。 有关参考信息，请参阅下面的端口表和其他网络要求。
@@ -159,7 +159,7 @@ ms.locfileid: "79291592"
       - SMTP 中继
       - 开发人员门户验证码
 
-## <a name="troubleshooting"></a>故障排除
+## <a name="troubleshooting"></a><a name="troubleshooting"></a>故障排除
 * **初始设置**：如果在某个子网中初次部署 API 管理服务未成功，建议首先在同一子网中部署一个虚拟机。 接下来，在虚拟机中部署远程桌面，并验证是否存在与 Azure 订阅中的以下每个源的连接
     * Azure 存储 Blob
     * Azure SQL 数据库
@@ -172,26 +172,26 @@ ms.locfileid: "79291592"
 
 * **资源导航链接**：部署到资源管理器样式的 VNET 子网中时，API 管理会通过创建一个资源导航链接来保留子网。 如果子网已包含来自其他提供程序的资源，则部署将**失败**。 类似地，将 API 管理服务移动到其他子网中或删除它时，将会删除该资源导航链接。
 
-## <a name="subnet-size"> </a> 子网大小要求
+## <a name="subnet-size-requirement"></a><a name="subnet-size"> </a> 子网大小要求
 Azure 会保留每个子网中的某些 IP 地址，不可以使用这些地址。 子网的第一个和最后一个 IP 地址仅为协议一致性而保留，其他三个地址用于 Azure 服务。 有关详细信息，请参阅[使用这些子网中的 IP 地址是否有任何限制？](../virtual-network/virtual-networks-faq.md#are-there-any-restrictions-on-using-ip-addresses-within-these-subnets)
 
 除了 Azure VNET 基础结构使用的 IP 地址外，子网中的每个 Api 管理实例还会针对开发人员 SKU 使用每个高级 SKU 单位两个 IP 地址和一个单 IP 地址。 每个实例为外部负载均衡器保留一个附加的 IP 地址。 部署到内部 vnet 时，它需要对内部负载均衡器使用额外的 IP 地址。
 
 如果计算结果大于子网的最小大小，则可以在其中部署 API 管理的是 /29，它提供了三个可用的 IP 地址。
 
-## <a name="routing"> </a> 路由
+## <a name="routing"></a><a name="routing"> </a> 路由
 + 负载均衡公共 IP 地址 (VIP) 也将保留，用于访问所有服务终结点。
 + 将使用子网 IP 范围中的一个 IP 地址 (DIP) 来访问 vnet 中的资源，并使用一个公共 IP 地址 (VIP) 来访问 vnet 外部的资源。
 + 可以在 Azure 门户中的“概述/概要”边栏选项卡上找到负载均衡公共 IP 地址。
 
-## <a name="limitations"> </a>限制
+## <a name="limitations"></a><a name="limitations"> </a>限制
 * 包含 API 管理实例的子网不能包含任何其他 Azure 资源类型。
 * 子网和 API 管理服务必须在同一个订阅中。
 * 包含 API 管理实例的子网不能在订阅之间移动。
 * 对于在内部虚拟网络模式下配置的多区域 API 管理部署，用户负责管理多个区域之间的负载均衡，因为路由归他们拥有。
 * 由于平台限制，从另一个区域中的全局对等互连 VNET 中的资源到内部模式下的 API 管理服务的连接将不起作用。 有关详细信息，请参阅[一个虚拟网络中的资源无法与对等互连虚拟网络中 Azure 内部负载均衡器通信](../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints)
 
-## <a name="control-plane-ips"> </a> 控制平面 IP 地址
+## <a name="control-plane-ip-addresses"></a><a name="control-plane-ips"> </a> 控制平面 IP 地址
 
 IP 地址由 **Azure 环境**划分。 允许入站请求时，标记为 **Global** 的 IP 地址必须与**区域**特定的 IP 地址一起加入允许列表。
 
@@ -201,7 +201,7 @@ IP 地址由 **Azure 环境**划分。 允许入站请求时，标记为 **Globa
 | Azure 中国世纪互联| 中国东部| 40.126.120.30|
 | Azure 中国世纪互联| 中国北部 2| 40.73.41.178|
 | Azure 中国世纪互联| 中国东部 2| 40.73.104.4|
-## <a name="related-content"> </a>相关内容
+## <a name="related-content"></a><a name="related-content"> </a>相关内容
 * [使用 Vpn 网关将虚拟网络连接到后端](../vpn-gateway/vpn-gateway-about-vpngateways.md#s2smulti)
 * [通过不同的部署模型连接虚拟网络](../vpn-gateway/vpn-gateway-connect-different-deployment-models-powershell.md)
 * [如何使用 API 检查器跟踪 Azure API 管理中的调用](api-management-howto-api-inspector.md)

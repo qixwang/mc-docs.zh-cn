@@ -9,10 +9,10 @@ ms.date: 06/25/2019
 ms.author: v-lingwu
 ms.subservice: alerts
 ms.openlocfilehash: def65328d2f173e4969a33ca8bc982a4caa3b9ea
-ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/17/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79452571"
 ---
 # <a name="webhook-actions-for-log-alert-rules"></a>用于日志警报规则的 Webhook 操作
@@ -27,7 +27,7 @@ ms.locfileid: "79452571"
 
 Webhook 操作需要下表中的属性。
 
-| 属性 | 说明 |
+| properties | 说明 |
 |:--- |:--- |
 | **Webhook URL** |Webhook 的 URL。 |
 | **自定义 JSON 有效负载** |如果在创建警报期间选择了此选项，请自定义要通过 webhook 发送的有效负载。 有关详细信息，请参阅[管理日志警报](alerts-log.md)。|
@@ -53,7 +53,7 @@ Webhooks 包括 URL 和 JSON 格式的有效负载（即发送到外部服务的
 | *SearchResults* |"IncludeSearchResults": true|如果在自定义 JSON Webhook 定义中添加了 "IncludeSearchResults": true 作为顶级属性，则查询以 JSON 表形式返回的记录将限制为前 1,000 条记录。 |
 | 警报类型 | #alerttype | 配置为[指标度量](alerts-unified-log.md#metric-measurement-alert-rules) 或 [结果数](alerts-unified-log.md#number-of-results-alert-rules)的日志警报规则的类型。|
 | *WorkspaceID* |#workspaceid |Log Analytics 工作区的 ID。 |
-| *应用程序 ID* |#applicationid |Application Insights 应用的 ID。 |
+| 应用程序 ID  |#applicationid |Application Insights 应用的 ID。 |
 | *订阅 ID* |#subscriptionid |使用的 Azure 订阅的 ID。 
 
 > [!NOTE]

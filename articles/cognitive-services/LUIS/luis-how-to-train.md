@@ -13,10 +13,10 @@ origin.date: 11/15/2019
 ms.date: 12/05/2019
 ms.author: v-lingwu
 ms.openlocfilehash: 3bd3a54532ba40b88ba857cb560725383947a0e7
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79292134"
 ---
 # <a name="train-your-active-version-of-the-luis-app"></a>训练 LUIS 应用的有效版本 

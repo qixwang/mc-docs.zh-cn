@@ -9,10 +9,10 @@ origin.date: 04/15/2019
 ms.date: 08/26/2019
 ms.author: v-yeche
 ms.openlocfilehash: ad799c26994706d81bbc57603667432025262a34
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79291354"
 ---
 # <a name="manage-the-configuration-server-for-vmware-vm-disaster-recovery"></a>为 VMware VM 灾难恢复管理配置服务器
@@ -107,7 +107,7 @@ ms.locfileid: "79291354"
     ```
 
     >[!NOTE] 
-    >若要从配置服务器**拉取最新的证书**来横向扩展进程服务器，请执行命令 "\<安装驱动器\Azure Site Recovery\agent\cdpcli.exe>" --registermt 
+    >若要从配置服务器**拉取最新的证书**来横向扩展进程服务器，请执行命令 "*安装驱动器\Azure Site Recovery\agent\cdpcli.exe>" --registermt\<*
 
 8. 最后，通过执行以下命令重启 obengine。
     ```
@@ -148,7 +148,7 @@ ms.locfileid: "79291354"
 
 1. 在保管库中，转到“管理”   > “Site Recovery 基础结构”   > “配置服务器”  。
 2. 如果有可用的更新，链接将显示在“代理版本”  > 列中。
-    ![更新](./media/vmware-azure-manage-configuration-server/update2.png)
+    ![Update](./media/vmware-azure-manage-configuration-server/update2.png)
 3. 将更新安装程序文件下载到配置服务器上。
 
     ![更新](./media/vmware-azure-manage-configuration-server/update1.png)
@@ -181,19 +181,19 @@ ms.locfileid: "79291354"
 
 |参数名称| 类型 | 说明| 值|
 |-|-|-|-|
-| /ServerMode|必须|指定是要同时安装配置服务器和进程服务器，还是只安装进程服务器|CS<br />PS|
-|/InstallLocation|必须|用于安装组件的文件夹| 计算机上的任意文件夹|
-|/MySQLCredsFilePath|必须|存储 MySQL 服务器凭据的文件路径|该文件应采用以下指定格式|
-|/VaultCredsFilePath|必须|保管库凭据文件的路径|有效的文件路径|
-|/EnvType|必须|要保护的环境类型 |VMware<br />NonVMware|
-|/PSIP|必须|要用于复制数据传输的 NIC 的 IP 地址| 任何有效的 IP 地址|
-|/CSIP|必须|配置服务器正在侦听的 NIC 的 IP 地址| 任何有效的 IP 地址|
-|/PassphraseFilePath|必须|密码文件位置的完整路径|有效的文件路径|
-|/BypassProxy|可选|指定配置服务器在不使用代理的情况下连接到 Azure|从 Venu 获取此值|
-|/ProxySettingsFilePath|可选|代理设置（默认代理需要身份验证，或自定义代理）|该文件应采用以下指定格式|
-|DataTransferSecurePort|可选|用于复制数据的 PSIP 上的端口号| 有效端口号（默认值为 9433）|
+| /ServerMode|必选|指定是要同时安装配置服务器和进程服务器，还是只安装进程服务器|CS<br />PS|
+|/InstallLocation|必选|用于安装组件的文件夹| 计算机上的任意文件夹|
+|/MySQLCredsFilePath|必选|MySQL 服务器凭据存储到的文件路径|文件应采用以下指定格式|
+|/VaultCredsFilePath|必选|保管库凭据文件的路径|有效的文件路径|
+|/EnvType|必选|要保护的环境类型 |VMware<br />NonVMware|
+|/PSIP|必选|要用于复制数据传输的 NIC 的 IP 地址| 任何有效的 IP 地址|
+|/CSIP|必选|配置服务器侦听时所在的 NIC 的 IP 地址| 任何有效的 IP 地址|
+|/PassphraseFilePath|必选|通行短语文件位置的完整路径|有效的文件路径|
+|/BypassProxy|可选|指定配置服务器不使用代理连接到 Azure|若要从 Venu 获取此值|
+|/ProxySettingsFilePath|可选|代理设置（默认代理需要身份验证，或自定义代理）|文件应采用以下指定格式|
+|DataTransferSecurePort|可选|PSIP 上用于复制数据的端口号| 有效端口号（默认值为 9433）|
 |/SkipSpaceCheck|可选|跳过缓存磁盘的空间检查| |
-|/AcceptThirdpartyEULA|必须|该标志表示接受第三方 EULA| |
+|/AcceptThirdpartyEULA|必选|该标志表示接受第三方 EULA| |
 |/ShowThirdpartyEULA|可选|显示第三方 EULA。 如果作为输入提供，将忽略所有其他参数| |
 
 ### <a name="create-file-input-for-mysqlcredsfilepath"></a>创建 MYSQLCredsFilePath 的文件输入
@@ -221,7 +221,7 @@ ProxyPassword="Password"
 1. 对配置服务器下的所有 VM [禁用保护](site-recovery-manage-registration-and-protection.md#disable-protection-for-a-vmware-vm-or-physical-server-vmware-to-azure)。
 2. 从配置服务器中[取消关联](vmware-azure-set-up-replication.md#disassociate-or-delete-a-replication-policy)和[删除](vmware-azure-set-up-replication.md#disassociate-or-delete-a-replication-policy)所有复制策略。
 3. [删除](vmware-azure-manage-vcenter.md#delete-a-vcenter-server)与配置服务器关联的所有 vCenters 服务器/vSphere 主机。
-4. 在保管库中，打开“Site Recovery 基础结构” > “配置服务器”。  
+4. 在保管库中，打开“Site Recovery 基础结构” **“配置服务器”。**  >  
 5. 选择要删除的配置服务器。 然后，在“详细信息”  页上，选择“删除”  。
 
     ![删除配置服务器](./media/vmware-azure-manage-configuration-server/delete-configuration-server.png)
@@ -231,7 +231,7 @@ ProxyPassword="Password"
 还可以选择使用 PowerShell 删除配置服务器。
 
 1. [安装](https://docs.microsoft.com/powershell/azure/install-Az-ps) Azure PowerShell 模块。
-2. 使用以下命令登录到 Azure 帐户：
+2. 使用以下命令登录到你的 Azure 帐户：
 
     `Connect-AzAccount -Environment AzureChinaCloud`
 3. 选择保管库订阅。
@@ -274,16 +274,16 @@ ProxyPassword="Password"
 
 ### <a name="renew-the-certificate"></a>续订证书
 
-1. 在保管库中，打开“Site Recovery 基础结构” > “配置服务器”。   选择所需的配置服务器。
+1. 在保管库中，打开“Site Recovery 基础结构” **“配置服务器”。**  >   选择所需的配置服务器。
 2. 到期日期显示在“配置服务器运行状况”  下。
 3. 选择“续订证书”  。
 
 ## <a name="refresh-configuration-server"></a>刷新配置服务器
 
-1. 在 Azure 门户中，导航至“恢复服务保管库” > “管理” > “站点恢复基础结构” > “对于 VMware 和物理机” > “配置服务器”     
+1. 在 Azure 门户中，导航至“恢复服务保管库” **“管理”** “站点恢复基础结构” > “对于 VMware 和物理机” **“配置服务器”**  >    >    >  
 2. 单击要刷新的配置服务器。
-3. 在包含所选配置服务器详细信息的边栏选项卡上，单击“更多” > “刷新服务器”   。
-4. 在“恢复服务保管库” > “监控” > “站点恢复作业”下监控作业进度    。
+3. 在包含所选配置服务器详细信息的边栏选项卡上，单击“更多” **“刷新服务器”**  >   。
+4. 在“恢复服务保管库” **“监控”** “站点恢复作业”下监控作业进度 >    >   。
 
 ## <a name="update-windows-license"></a>更新 Windows 许可证
 

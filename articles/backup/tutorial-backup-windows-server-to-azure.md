@@ -8,10 +8,10 @@ ms.date: 12/04/2019
 ms.author: v-lingwu
 ms.custom: mvc
 ms.openlocfilehash: f693464baafffbe6d3f306301515f1b60d7fc6ef
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79291894"
 ---
 # <a name="back-up-windows-server-to-azure"></a>将 Windows Server 备份到 Azure
@@ -32,7 +32,7 @@ ms.locfileid: "79291894"
 
 备份 Windows Server 前，必须创建一个存储备份或还原点的位置。 [恢复服务保管库](backup-azure-recovery-services-vault-overview.md)是 Azure 中存储来自 Windows Server 的备份的容器。 按照以下步骤在 Azure 门户中创建恢复服务保管库。
 
-1. 在左侧菜单上，选择“所有服务”，然后在服务列表中键入“恢复服务”   。 单击“恢复服务保管库”  。
+1. 在左侧菜单上，选择“所有服务”，然后在服务列表中键入“恢复服务”   。 单击“**恢复服务保管库**”。
 
    ![打开恢复服务保管库](./media/tutorial-backup-windows-server-to-azure/full-browser-open-rs-vault_2.png)
 
@@ -107,9 +107,9 @@ Microsoft Azure 恢复服务 (MARS) 代理在 Windows Server 和恢复服务保�
 
 3. 单击“下一步”，导航到“选择要备份的项”页面   。
 
-4. 单击“添加项”，然后在打开的对话框中选择“系统状态”，以及要备份的文件或文件夹   。  。
+4. 单击“添加项”，然后在打开的对话框中选择“系统状态”，以及要备份的文件或文件夹   。 然后单击“确定”  。
 
-5. 单击“下一步”  。
+5. 单击“下一步”。 
 
 6. 在“指定备份计划(系统状态)”页上，指定需触发系统状态备份的时间（哪天或哪周），然后单击“下一步”   。
 
@@ -132,7 +132,7 @@ Microsoft Azure 恢复服务 (MARS) 代理在 Windows Server 和恢复服务保�
     ![准备基础结构](./media/tutorial-backup-windows-server-to-azure/backup-now.png)
 
 2. 在“立即备份”  向导上，从“文件和文件夹”  或“系统状态”  中选择要备份的内容，然后单击“下一步”  。
-3. 在“确认”页上，检查“立即备份”向导用于备份服务器的设置   。 然后单击“备份”  。
+3. 在“确认”页上，检查“立即备份”向导用于备份服务器的设置   。 然后单击“**备份**”。
 4. 单击“**关闭**”以关闭向导。 如果在备份过程完成之前关闭向导，向导将继续在后台运行。
 5. 完成初始备份后，MARS 代理控制台的“作业”窗格中会显示“作业已完成”状态   。
 
