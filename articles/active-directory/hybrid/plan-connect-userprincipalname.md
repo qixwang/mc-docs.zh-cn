@@ -11,11 +11,11 @@ ms.workload: identity
 ms.service: active-Directory
 manager: mtillman
 ms.openlocfilehash: 39cf23b6162f34e21ff47e6af5d932a69e31e9f8
-ms.sourcegitcommit: 4f91d9bc4c607cf254479a6e5c726849caa95ad8
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53996220"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63828661"
 ---
 # <a name="azure-ad-userprincipalname-population"></a>Azure AD UserPrincipalName 填充
 
@@ -52,7 +52,7 @@ Azure AD 使用 UPN 让用户登录。  用户可以使用的 UPN 取决于域�
 
 备用登录 ID 允许配置登录体验，用户可以使用其 UPN 以外的属性（如邮件）登录。
 
-若要在 Azure AD 中启用备用登录 ID，可以使用 Azure AD Connect，而无需执行任何附加的配置步骤。 可以直接通过向导配置备用 ID。 请参阅“同步”部分中适用于用户的 Azure AD 登录配置。在“用户主体名称”下拉列表中，选择“备用登录 ID”对应的属性。
+若要在 Azure AD 中启用备用登录 ID，可以使用 Azure AD Connect，而无需执行任何附加的配置步骤。 可以直接通过向导配置备用 ID。 请参阅“同步”部分中适用于用户的 Azure AD 登录配置。在“用户主体名称”下拉列表中，选择“备用登录 ID”对应的属性。 
 
 ![未验证的域](./media/plan-connect-userprincipalname/altloginid.png)  
 
@@ -85,7 +85,7 @@ Azure AD 使用 UPN 让用户登录。  用户可以使用的 UPN 取决于域�
 ## <a name="upn-scenarios"></a>UPN 方案
 下面是根据给定的方案计算 UPN 的示例方案。
 
-### <a name="scenario-1-non-verified-upn-suffix---initial-synchronization"></a>方案 1：未验证的 UPN 后缀 - 初始同步
+### <a name="scenario-1-non-verified-upn-suffix---initial-synchronization"></a>应用场景 1：未验证的 UPN 后缀 - 初始同步
 
 ![方案 1](./media/plan-connect-userprincipalname/example1.png)
 
@@ -105,7 +105,7 @@ Azure AD 租户用户对象：
 - UserPrincipalName：us1@contoso.partner.onmschina.cn
 
 
-### <a name="scenario-2-non-verified-upn-suffix---set-on-premises-mailnickname-attribute"></a>方案 2：未验证的 UPN 后缀 - 设置本地 mailNickName 属性
+### <a name="scenario-2-non-verified-upn-suffix---set-on-premises-mailnickname-attribute"></a>应用场景 2：未验证的 UPN 后缀 - 设置本地 mailNickName 属性
 
 ![方案 2](./media/plan-connect-userprincipalname/example2.png)
 
@@ -123,7 +123,7 @@ Azure AD 租户用户对象：
 - MailNickName：us4
 - UserPrincipalName：us1@contoso.partner.onmschina.cn
 
-### <a name="scenario-3-non-verified-upn-suffix---update-on-premises-userprincipalname-attribute"></a>方案 3：未验证的 UPN 后缀 - 更新本地 userPrincipalName 属性
+### <a name="scenario-3-non-verified-upn-suffix---update-on-premises-userprincipalname-attribute"></a>应用场景 3：未验证的 UPN 后缀 - 更新本地 userPrincipalName 属性
 
 ![方案 3](./media/plan-connect-userprincipalname/example3.png)
 

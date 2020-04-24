@@ -17,10 +17,10 @@ origin.date: 10/21/2016
 ms.date: 10/21/2016
 ms.author: v-yeche
 ms.openlocfilehash: c8bc43ff6b3f54a45dd974689d83441981761609
-ms.sourcegitcommit: d75065296d301f0851f93d6175a508bdd9fd7afc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52651246"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63825918"
 ---
 # <a name="to-be-submitted"></a>待提交。

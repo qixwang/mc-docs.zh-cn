@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: magoedte
 ms.openlocfilehash: 07110f6cdbee83738031ff44cef9eb272227ffdc
-ms.sourcegitcommit: 7e25a709734f03f46418ebda2c22e029e22d2c64
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56441038"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63822859"
 ---
 ### <a name="troubleshoot-azure-diagnostics"></a>排查 Azure 诊断问题
 
@@ -19,11 +19,11 @@ ms.locfileid: "56441038"
 
 若要注册资源提供程序，请在 Azure 门户中执行以下步骤：
 
-1.  在左侧导航窗格中，单击“订阅”
+1.  在左侧导航窗格中，单击“订阅” 
 2.  选择在错误消息中标识的订阅
-3.  单击“资源提供程序”
+3.  单击“资源提供程序” 
 4.  找到 *Microsoft.insights* 提供程序
-5.  单击“注册”链接
+5.  单击“注册”  链接
 
 ![注册 microsoft.insights 资源提供程序](./media/log-analytics-troubleshoot-azure-diagnostics/log-analytics-register-microsoft-diagnostics-resource-provider.png)
 

@@ -16,10 +16,10 @@ ms.date: 08/12/2019
 ms.author: v-yeche
 ms.topic: conceptual
 ms.openlocfilehash: 42ca8a25cc35f212f386cf4f40c632680680b378
-ms.sourcegitcommit: d624f006b024131ced8569c62a94494931d66af7
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "69538975"
 ---
 # <a name="secure-and-use-policies-on-virtual-machines-in-azure"></a>在 Azure 中保护和使用虚拟机上的策略

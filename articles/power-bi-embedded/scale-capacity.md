@@ -16,11 +16,11 @@ origin.date: 01/19/2018
 ms.date: 07/18/2018
 ms.author: v-junlch
 ms.openlocfilehash: 4011a4c7fbdfee37c0151e385ad0aa5f7f1c9766
-ms.sourcegitcommit: d75065296d301f0851f93d6175a508bdd9fd7afc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52655666"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63825990"
 ---
 # <a name="scale-your-power-bi-embedded-capacity"></a>缩放 Power BI Embedded 容量
 
@@ -35,7 +35,7 @@ ms.locfileid: "52655666"
 
 1. 登录到 [Azure 门户](https://portal.azure.cn/)。
 
-2. 选择“所有服务” > “Power BI Embedded”以查看容量。
+2. 选择“所有服务”   > “Power BI Embedded”  以查看容量。
 
     ![Azure 门户中的“所有服务”](./media/scale-capacity/azure-portal-more-services.png)
 
@@ -43,7 +43,7 @@ ms.locfileid: "52655666"
 
     ![Azure 门户中的 Power BI Embedded 容量列表](./media/scale-capacity/azure-portal-capacity-list.png)
 
-4. 在该容量内，选择“缩放”下的“定价层”。
+4. 在该容量内，选择“缩放”  下的“定价层”  。
 
     ![“缩放”下的“定价层”选项](./media/scale-capacity/azure-portal-scale-pricing-tier.png)
 
@@ -51,7 +51,7 @@ ms.locfileid: "52655666"
 
     ![以蓝色框出的当前定价层](./media/scale-capacity/azure-portal-current-tier.png)
 
-5. 若要提升或降低，请选择要迁移到的新层。 选择新层会在所选项周围显示蓝色虚线边框。 选择“选择”以扩展到新层。
+5. 若要提升或降低，请选择要迁移到的新层。 选择新层会在所选项周围显示蓝色虚线边框。 选择“选择”  以扩展到新层。
 
     ![选择新层](./media/scale-capacity/azure-portal-select-new-tier.png)
 

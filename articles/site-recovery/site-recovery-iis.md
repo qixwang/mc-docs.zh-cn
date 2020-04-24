@@ -9,10 +9,10 @@ origin.date: 11/27/2018
 ms.date: 07/08/2019
 ms.author: v-yeche
 ms.openlocfilehash: e4c3cc74f412385577d69dcf3e46182fd703f8cd
-ms.sourcegitcommit: e575142416298f4d88e3d12cca58b03c80694a32
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "67861650"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-iis-based-web-application"></a>为基于 IIS 的多层 Web 应用程序设置灾难恢复
@@ -27,7 +27,7 @@ ms.locfileid: "67861650"
 
 本文介绍如何使用 [Azure Site Recovery](site-recovery-overview.md) 保护基于 Internet Information Services (IIS) 的 Web 应用程序。 内容包括如何将基于 IIS 的三层 Web 应用程序复制到 Azure、如何执行灾难恢复演练，以及如何将应用程序故障转移到 Azure 的最佳做法。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 开始之前，请确保自己知道如何执行以下任务：
 
@@ -59,18 +59,18 @@ ms.locfileid: "67861650"
 
 ### <a name="source-and-target"></a>源和目标
 
-方案 | 到辅助站点 | 到 Azure
+场景 | 到辅助站点 | 到 Azure
 --- | --- | ---
 Hyper-V | 是 | 是
 VMware | 是 | 是
 物理服务器 | 否 | 是
-Azure|不可用|是
+Azure|NA|是
 
 ## <a name="replicate-virtual-machines"></a>复制虚拟机
 
 若要开始将所有 IIS Web 场虚拟机复制到 Azure，请遵照[在 Site Recovery 中执行到 Azure 的测试故障转移](site-recovery-test-failover-to-azure.md)中的指导。
 
-如果使用的是静态 IP，可以指定希望虚拟机采用的 IP 地址。 若要设置 IP 地址，请转到“计算和网络设置” > “目标 IP”   。
+如果使用的是静态 IP，可以指定希望虚拟机采用的 IP 地址。 若要设置 IP 地址，请转到“计算和网络设置” **“目标 IP”**  >   。
 
 ![演示如何在 Site Recovery 的“计算和网络”窗格中设置目标 IP 的屏幕截图](./media/site-recovery-active-directory/dns-target-ip.png)
 

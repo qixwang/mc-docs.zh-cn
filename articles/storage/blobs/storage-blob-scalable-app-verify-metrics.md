@@ -12,10 +12,10 @@ ms.author: v-jay
 ms.custom: mvc
 ms.subservice: blobs
 ms.openlocfilehash: 36901a9eb82de6c05241429230c14c6a1b5f1a1f
-ms.sourcegitcommit: 80336a53411d5fce4c25e291e6634fa6bd72695e
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "67844497"
 ---
 # <a name="verify-throughput-and-latency-metrics-for-a-storage-account"></a>验证存储帐户的吞吐量和延迟指标
@@ -44,7 +44,7 @@ ms.locfileid: "67844497"
 |---|---|
 |**成功 E2E 延迟**|向存储服务或指定的 API 操作发出的成功请求的平均端到端延迟。 此值包括在 Azure 存储中读取请求、发送响应和接收响应确认所需的处理时间。|
 |**成功服务器延迟**|Azure 存储处理成功请求所用的平均时间。 此值不包括 SuccessE2ELatency 中指定的网络延迟。 |
-|**Transactions**|向存储服务或指定的 API 操作发出的请求数。 此数字包括成功和失败的请求数，以及引发错误的请求数。 在该示例中，块大小设置为 100 MB。 在这种情况下，每个 100 MB 的块被认为是一个事务。|
+|**中的**|向存储服务或指定的 API 操作发出的请求数。 此数字包括成功和失败的请求数，以及引发错误的请求数。 在该示例中，块大小设置为 100 MB。 在这种情况下，每个 100 MB 的块被认为是一个事务。|
 |**流入量**|流入数据量。 此数字包括从外部客户端到 Azure 存储流入的数据量，以及流入 Azure 中的数据量。 |
 |**流出量**|流出数据量。 此数字包括从外部客户端到 Azure 存储流出的数据量，以及流出 Azure 中的数据量。 因此，此数字不反映计费的流出量。 |
 

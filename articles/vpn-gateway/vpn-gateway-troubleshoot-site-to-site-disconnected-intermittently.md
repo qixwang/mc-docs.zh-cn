@@ -16,15 +16,15 @@ origin.date: 10/30/2018
 ms.date: 12/10/2018
 ms.author: v-jay
 ms.openlocfilehash: 341cf2915428d2e3bb59bb005ada7fa906891aa2
-ms.sourcegitcommit: dd55b3de7e1af671d2631b146d96b478d11db554
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58899625"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63844652"
 ---
-# <a name="troubleshooting-azure-site-to-site-vpn-disconnects-intermittently"></a>故障排除：Azure 站点到站点 VPN 间歇性断开连接
+# <a name="troubleshooting-azure-site-to-site-vpn-disconnects-intermittently"></a>故障排除：Azure 站点到站点 VPN 间歇性地断开连接
 
-我们可能会遇到新的或现有的 Azure 站点到站点 VPN 连接不稳定或定期断开连接的问题。 本文提供故障排除步骤，帮助确定并解决问题的原因。 
+我们可能会遇到新的或现有的 Azure 站点到站点 VPN 连接不稳定或定期断开连接的问题。 本文提供了故障排除步骤，以帮助你确定并解决问题的原因。 
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
@@ -63,13 +63,13 @@ ms.locfileid: "58899625"
 
 ### <a name="step-6-check-on-premises-vpn-device-external-interface-address"></a>步骤 6 检查本地 VPN 设备外部接口地址
 
-- 如果 VPN 设备面向 Internet 的 IP 地址包含在 Azure 的**本地网络网关**定义中，可能会遇到偶发的断开连接。
+- 如果 VPN 设备面向 Internet 的 IP 地址包含在 Azure 的**本地网络网关**定义中，你可能会遇到偶发的断开连接。
 - 设备的外部接口必须直接在 Internet 上。 在 Internet 和设备之间应该没有网络地址转换 (NAT) 或防火墙。
 -  如果将防火墙群集配置为具有虚拟 IP，则必须中断群集并直接向可以与网关连接的公共接口公开 VPN 设备。
 
 ### <a name="step-7-check-whether-the-on-premises-vpn-device-has-perfect-forward-secrecy-enabled"></a>步骤 7 检查本地 VPN 设备是否已启用“完全向前保密”
 
-“完全向前保密”功能可能会导致断开连接问题。 如果 VPN 设备已启用“完全向前保密”，请禁用该功能。 然后[更新虚拟网络网关 IPsec 策略](vpn-gateway-ipsecikepolicy-rm-powershell.md#managepolicy)。
+“完全向前保密”功能可能会导致断开连接问题  。 如果 VPN 设备已启用“完全向前保密”  ，请禁用该功能。 然后[更新虚拟网络网关 IPsec 策略](vpn-gateway-ipsecikepolicy-rm-powershell.md#managepolicy)。
 
 ## <a name="next-steps"></a>后续步骤
 

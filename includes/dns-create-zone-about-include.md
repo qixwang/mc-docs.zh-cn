@@ -6,11 +6,11 @@ origin.date: 11/25/2018
 ms.date: 12/24/2018
 ms.author: victorh
 ms.openlocfilehash: 021c8d875ed65bfe4f8e194b107e09403038f5a1
-ms.sourcegitcommit: 895e9accaae8f8c2a29ed91d8e84911fda6111cf
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53615230"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63852652"
 ---
 DNS 区域用来托管某个特定域的 DNS 记录。 若要开始在 Azure DNS 中托管域，需要为该域名创建 DNS 区域。 随后会在此 DNS 区域内为每个 DNS 记录创建域。
 

@@ -8,10 +8,10 @@ origin.date: 05/06/2019
 ms.date: 05/20/2019
 ms.topic: conceptual
 ms.openlocfilehash: b362297a255fcc86e7fb8fcf47712b223e4f2472
-ms.sourcegitcommit: 11d81f0e4350a72d296e5664c2e5dc7e5f350926
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "65731947"
 ---
 # <a name="connecting-azure-kubernetes-service-and-azure-database-for-postgresql---single-server"></a>将 Azure Kubernetes 服务与 Azure Database for PostgreSQL - 单一服务器连接
@@ -30,7 +30,7 @@ Azure Kubernetes 服务 (AKS) 提供可在 Azure 中使用的托管 Kubernetes �
 3. 复制**基础结构资源组**的名称。
 4. 使用门户搜索栏找到并打开基础结构资源组。
 5. 在该资源组中选择一个 VM。
-6. 转到 VM 的“网络”选项卡。
+6. 转到 VM 的“网络”  选项卡。
 7. 确认是否已启用**加速网络**。
 
 也可以通过 Azure CLI 使用以下两个命令：

@@ -10,13 +10,13 @@ ms.date: 06/11/2018
 ms.author: v-yeche
 ms.custom: include file
 ms.openlocfilehash: 984c88ed57a464719b6407f4946361b7f30bb88a
-ms.sourcegitcommit: d75065296d301f0851f93d6175a508bdd9fd7afc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52652329"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63854185"
 ---
-## <a name="scenario"></a>方案
+## <a name="scenario"></a>场景
 为了更好地说明如何创建 NSG，本文档使用以下方案：
 
 ![VNet 方案](./media/virtual-networks-create-nsg-scenario-include/figure1.png)

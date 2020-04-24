@@ -10,10 +10,10 @@ origin.date: 07/08/2019
 ms.date: 07/22/2019
 ms.author: v-jay
 ms.openlocfilehash: 6c13c936c4d1285d83a3b3e63b1f07ebb61724d9
-ms.sourcegitcommit: 98cc8aa5b8d0e04cd4818b34f5350c72f617a225
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "68298232"
 ---
 # <a name="safely-install-and-operate-your-azure-data-box-heavy"></a>安全安装和运行 Azure Data Box Heavy
@@ -44,7 +44,7 @@ ms.locfileid: "68298232"
 
 ## <a name="handling-precautions"></a>操作注意事项
 
-![警告图标](./media/data-box-heavy-safety/warning-icon.png) **WARNING!**
+![警告图标](./media/data-box-heavy-safety/warning-icon.png)**警告！**
 
 * 在移动和搬运托盘时，必须使用适当的设施（例如叉车）和个人防护装备（例如手套）。
 * 在拆卸设备之前，必须先使用随附的螺丝将斜板固定在托盘上，以免发生伤害或财产损坏。

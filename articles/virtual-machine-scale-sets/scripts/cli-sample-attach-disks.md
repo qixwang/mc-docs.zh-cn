@@ -18,18 +18,18 @@ ms.date: 02/12/2019
 ms.author: v-junlch
 ms.custom: mvc
 ms.openlocfilehash: 1ab6f90cef20382826a3884907bfd1e8ff313a1f
-ms.sourcegitcommit: 24dd5964eafbe8aa4badbca837c2a1a7836f2df7
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56101604"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63860067"
 ---
 # <a name="attach-and-use-data-disks-with-a-virtual-machine-scale-set-with-the-azure-cli"></a>使用 Azure CLI 为虚拟机规模集附加并使用数据磁盘
 此脚本创建虚拟机规模集并附加和准备数据磁盘。
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
 
-如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial)。
+如果没有 Azure 订阅，可在开始前创建一个 [试用帐户](https://www.azure.cn/pricing/1rmb-trial) 。
 
 ## <a name="sample-script"></a>示例脚本
 ```azurecli
@@ -77,7 +77,7 @@ az group delete --name myResourceGroup
 ## <a name="script-explanation"></a>脚本说明
 此脚本使用以下命令创建资源组、虚拟机规模集和所有相关资源。 表中的每条命令均链接到特定于命令的文档。
 
-| 命令 | 注释 |
+| Command | 说明 |
 |---|---|
 | [az group create](/cli/ad/group) | 创建用于存储所有资源的资源组。 |
 | [az vmss create](/cli/vmss) | 创建虚拟机规模集并将其连接到虚拟网络、子网和网络安全组。 负载均衡器也会被创建，以将流量分配到多个 VM 实例。 此命令还指定要使用的 VM 映像和管理凭据。  |

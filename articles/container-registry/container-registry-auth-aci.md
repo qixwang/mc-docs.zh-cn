@@ -9,10 +9,10 @@ origin.date: 04/23/2018
 ms.date: 03/25/2019
 ms.author: v-yeche
 ms.openlocfilehash: 92cf63b09da3c8ce5fef145813c2f3d6955c38e5
-ms.sourcegitcommit: 70289159901086306dd98e55661c1497b7e02ed9
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "67276450"
 ---
 # <a name="authenticate-with-azure-container-registry-from-azure-container-instances"></a>使用 Azure 容器注册表从 Azure 容器实例进行身份验证

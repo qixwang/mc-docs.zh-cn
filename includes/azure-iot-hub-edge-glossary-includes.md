@@ -1,3 +1,11 @@
+---
+ms.openlocfilehash: 4ff9e6317309e18eb90b8d85e435943c62c0d943
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63847479"
+---
 ## <a name="automatic-device-management"></a>自动设备管理
 Azure IoT 中心内的自动设备管理功能可将许多复杂且重复性的任务自动化，包括在大型设备阵列的整个生命周期内对其进行管理。 使用自动设备管理，可以根据设备的属性将一组设备指定为目标、定义所需的配置，并在设备进入管理范畴时让 IoT 中心更新这些设备。  包括[自动设备配置](/articles/iot-hub/iot-hub-auto-device-config.md)和 [IoT Edge 自动部署](/articles/iot-edge/how-to-deploy-monitor.md)。
 
@@ -47,4 +55,4 @@ IoT Edge 运行时包括 Microsoft 分发用于安装在 IoT Edge 设备上的�
 在一个设备的模块孪生上复制 IoT Edge 清单内容的操作。 基础 API 是泛型“应用配置”，仅将 IoT Edge 清单作为输入。
 
 ## <a name="iot-edge-target-condition"></a>IoT Edge 目标条件
-在 IoT Edge 部署中，目标条件是设备孪生标记上的任意布尔条件，以选择部署的目标设备（例如 tag.environment = prod）。持续评估目标条件，以包括满足需求的任何新设备或者删除不再满足要求的设备。 了解有关[目标条件](https://docs.microsoft.com/azure/iot-edge/module-deployment-monitoring#target-condition)的详细信息
+在 IoT Edge 部署中，目标条件是设备孪生标记上的任意布尔条件，以选择部署的目标设备（例如 tag.environment = prod）  。持续评估目标条件，以包括满足需求的任何新设备或者删除不再满足要求的设备。 了解有关[目标条件](https://docs.microsoft.com/azure/iot-edge/module-deployment-monitoring#target-condition)的详细信息

@@ -13,10 +13,10 @@ ms.date: 05/14/2019
 ms.author: v-junlch
 ms.custom: seodec18
 ms.openlocfilehash: c7654d5cb234ec5b809d6c493b7b92ce32f6792d
-ms.sourcegitcommit: 9235a1f313393f21b5c42cb7a1626b1b93feb8be
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "65598894"
 ---
 # <a name="face-detection-with-computer-vision"></a>使用计算机视觉进行人脸检测
@@ -30,7 +30,7 @@ ms.locfileid: "65598894"
 
 以下示例演示了计算机视觉为包含单个人脸的图像返回的 JSON 响应。
 
-![视觉分析屋顶的女人人脸](./Images/woman_roof_face.png)
+![视觉分析女士屋顶人脸](./Images/woman_roof_face.png)
 
 ```json
 {

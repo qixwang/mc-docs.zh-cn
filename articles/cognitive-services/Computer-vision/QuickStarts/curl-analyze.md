@@ -13,10 +13,10 @@ ms.date: 07/08/2019
 ms.author: v-junlch
 ms.custom: seodec18
 ms.openlocfilehash: bf6678455fc15a451d04af8e8d9b9c4caf6d3252
-ms.sourcegitcommit: 8f49da0084910bc97e4590fc1a8fe48dd4028e34
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "67844944"
 ---
 # <a name="quickstart-analyze-a-remote-image-using-the-computer-vision-rest-api-and-curl"></a>快速入门：使用计算机视觉 REST API 和 cURL 分析远程图像

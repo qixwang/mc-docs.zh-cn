@@ -16,11 +16,11 @@ ms.date: 08/13/2018
 ms.author: v-yiso
 ms.custom: mvc
 ms.openlocfilehash: f72ccced0865b7eacd68bc91e94145626ac48d95
-ms.sourcegitcommit: d75065296d301f0851f93d6175a508bdd9fd7afc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52663860"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63825007"
 ---
 # <a name="azure-powershell-samples-for-api-management"></a>适用于 API 管理的 Azure PowerShell 示例
 

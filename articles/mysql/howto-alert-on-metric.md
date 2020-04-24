@@ -8,15 +8,15 @@ ms.topic: conceptual
 origin.date: 01/10/2019
 ms.date: 07/15/2019
 ms.openlocfilehash: 6ee4fbcf96456147e94c097ab8d5845d17cebf35
-ms.sourcegitcommit: f4351979a313ac7b5700deab684d1153ae51d725
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "67845112"
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-mysql"></a>使用 Azure 门户设置针对 Azure Database for MySQL 指标的警报 
 
-本文介绍了如何使用 Azure 门户设置 Azure Database for MySQL 警报。 你可以收到基于 Azure 服务的监视指标的警报。
+本文介绍了如何使用 Azure 门户设置 Azure Database for MySQL 警报。 可根据监视指标接收 Azure 服务的警报。
 
 当指定的指标值越过了分配的阈值时，就会触发此警报。 首次满足条件时，以及之后不再满足条件时，都会触发此警报。 
 
@@ -75,7 +75,7 @@ ms.locfileid: "67845112"
 
 12. 选择“创建警报规则”可以创建警报  。
 
-    在几分钟后，警报将如前所述激活并触发。
+    几分钟后，警报将处于活动状态，并按前面所述进行触发。
 
 ## <a name="manage-your-alerts"></a>管理警报
 创建警报后，可选择它并执行以下操作：
@@ -87,4 +87,4 @@ ms.locfileid: "67845112"
 
 ## <a name="next-steps"></a>后续步骤
 * 了解[在警报中配置 Webhook](../azure-monitor/platform/alerts-webhooks.md)的详细信息。
-* [大致了解指标收集](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md)以确保服务可用且响应迅速。
+* 获取[指标集合概述](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md)以确保服务可用且响应迅速。

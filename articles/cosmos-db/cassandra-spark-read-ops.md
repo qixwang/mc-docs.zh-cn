@@ -12,11 +12,11 @@ origin.date: 12/06/2018
 ms.date: 03/18/2019
 ms.custom: seodec18
 ms.openlocfilehash: 19f5d0d6d959d8cf3f6cf6f068c8f21e6bf94be9
-ms.sourcegitcommit: 66e360fe2577c9b7ddd96ff78e0ede36c3593b99
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/15/2019
-ms.locfileid: "57988651"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63856939"
 ---
 <!--Verify sucessfully-->
 # <a name="read-data-from-azure-cosmos-db-cassandra-api-tables-using-spark"></a>使用 Spark 读取 Azure Cosmos DB Cassandra API 表中的数据

@@ -14,19 +14,19 @@ manager: digimobile
 origin.date: 01/25/2019
 ms.date: 02/25/2019
 ms.openlocfilehash: 4be04b07fec583ca08ba4f3d053a0ffc95792ef9
-ms.sourcegitcommit: 5ea744a50dae041d862425d67548a288757e63d1
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56663501"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63823080"
 ---
-# <a name="query-across-cloud-databases-with-different-schemas-preview"></a>跨具有不同架构的云数据库进行查询（预览版）
+# <a name="query-across-cloud-databases-with-different-schemas-preview"></a>在具有不同架构的云数据库中进行查询。（预览）
 
 ![跨不同数据库中的表进行查询][1]
 
 垂直分区的数据库在不同的数据库中使用不同的表集。 这意味着不同数据库上的架构是不同的。 例如，清单的所有表都位于一个数据库上，而与会计相关的所有表都位于第二个数据库上。 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * 用户必须拥有 ALTER ANY EXTERNAL DATA SOURCE 权限。 此权限包含在 ALTER DATABASE 权限中。
 * 引用基础数据源需要 ALTER ANY EXTERNAL DATA SOURCE 权限。
@@ -38,9 +38,9 @@ ms.locfileid: "56663501"
 >
 
 1. [CREATE MASTER KEY](https://msdn.microsoft.com/library/ms174382.aspx)
-2. [CREATE DATABASE SCOPED CREDENTIAL](https://msdn.microsoft.com/library/mt270260.aspx)
-3. [CREATE EXTERNAL DATA SOURCE](https://msdn.microsoft.com/library/dn935022.aspx)（创建外部数据源）
-4. [CREATE EXTERNAL TABLE](https://msdn.microsoft.com/library/dn935021.aspx) 
+2. [创建数据库范围的凭据](https://msdn.microsoft.com/library/mt270260.aspx)
+3. [CREATE EXTERNAL DATA SOURCE](https://msdn.microsoft.com/library/dn935022.aspx)
+4. [创建外部表](https://msdn.microsoft.com/library/dn935021.aspx) 
 
 ## <a name="create-database-scoped-master-key-and-credentials"></a>创建数据库范围的主密钥和凭据
 
@@ -52,7 +52,7 @@ ms.locfileid: "56663501"
     [;]
 
 > [!NOTE]
-> 确保 `<username>` 不包含任何“\@servername”后缀。 
+> 确保 `<username>` 不包含任何“**servername”\@** 后缀。 
 >
 
 ## <a name="create-external-data-sources"></a>创建外部数据源
@@ -167,16 +167,16 @@ DATA_SOURCE 子句定义用于外部表的外部数据源（即，在垂直分�
     WHERE c_id = 100
 ```
 
-## <a name="stored-procedure-for-remote-t-sql-execution-spexecuteremote"></a>用于远程 T-SQL 执行的存储过程：sp\_execute_remote
+## <a name="stored-procedure-for-remote-t-sql-execution-sp_execute_remote"></a>远程 T-SQL 执行的存储过程：sp\_execute_remote
 
-弹性查询还引入了一个存储过程，以便提供对远程数据库的直接访问。 该存储过程名为 [sp\_execute \_remote](https://msdn.microsoft.com/library/mt703714)，可用于在远程数据库上执行远程存储过程或 T-SQL 代码。 它采用了以下参数： 
+弹性查询还引入了一个存储过程，以便提供对远程数据库的直接访问。 该存储过程名为 [sp\_execute \_remote](https://msdn.microsoft.com/library/mt703714)，可用于执行远程存储过程或远程数据库上的 T-SQL 代码。 它采用了以下参数： 
 
 * 数据源名称 (nvarchar)：RDBMS 类型的外部数据源名称。 
 * 查询 (nvarchar)：要在远程数据库上执行的 T-SQL 查询。 
 * 参数声明 (nvarchar) - 可选：在查询参数（如 sp_executesql）中使用的参数的字符串（包含数据类型定义）。 
 * 参数值列表 - 可选：以逗号分隔的参数值（如 sp_executesql）的列表。
 
-sp\_execute\_remote 使用调用参数中提供的外部数据源在远程数据库上执行给定的 T-SQL 语句。 它使用外部数据源的凭据连接到远程数据库。  
+Sp\_execute\_remote 使用调用参数中提供的外部数据源在远程数据库上执行给定的 T-SQL 语句。 它使用外部数据源的凭据连接到远程数据库。  
 
 示例： 
 
@@ -188,9 +188,9 @@ sp\_execute\_remote 使用调用参数中提供的外部数据源在远程数据
 
 ## <a name="connectivity-for-tools"></a>工具的连接
 
-可以使用常规 SQL Server 连接字符串将 BI 和数据集成工具连接到 SQL 数据库服务器上已启用弹性查询并已定义外部表的数据库。 请确保支持将 SQL Server 用作工具的数据源。 然后可以引用弹性查询数据库及其外部表，就如同使用工具连接的任何其他 SQL Server 数据库一样。 
+可以使用常规 SQL Server 连接字符串将 BI 和数据集成工具连接到 SQL 数据库服务器上已启用弹性查询并已定义外部表的数据库。 请确保支持将 SQL Server 用作工具的数据源。 然后，引用弹性查询数据库及其外部表，就像使用工具连接到其他任何 SQL Server 数据库一样。 
 
-## <a name="best-practices"></a>最佳实践
+## <a name="best-practices"></a>最佳做法
 
 * 确保已通过在 SQL 数据库防火墙配置中启用对 Azure 服务的访问授予弹性查询终结点数据库访问远程数据库的权限。 另请确保外部数据源定义中提供的凭据可以成功登录到远程数据库并有权访问远程表。  
 * 弹性查询最适合大部分计算可以在远程数据库上完成的查询。 使用可以在远程数据库或联接上求值的选择性筛选器谓词（可以完全在远程数据库上执行），通常可以获得最佳查询性能。 其他查询模式可能需要从远程数据库加载大量数据并且可能会执行效果不佳。 

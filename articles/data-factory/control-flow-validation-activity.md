@@ -14,10 +14,10 @@ origin.date: 03/25/2019
 ms.date: 07/08/2019
 ms.author: v-jay
 ms.openlocfilehash: 3884651cd950ed1b0c7cceceab6781548b8cea39
-ms.sourcegitcommit: 5191c30e72cbbfc65a27af7b6251f7e076ba9c88
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "67570546"
 ---
 # <a name="validation-activity-in-azure-data-factory"></a>Azure 数据工厂中的 Validation 活动

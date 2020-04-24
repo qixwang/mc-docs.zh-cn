@@ -9,11 +9,11 @@ origin.date: 10/19/2018
 ms.date: 03/04/2019
 ms.author: v-jay
 ms.openlocfilehash: 06cd82747eb31a8953fe681195220843ce787eb9
-ms.sourcegitcommit: dcd11929ada5035d127be1ab85d93beb72909dc3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56833179"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63844442"
 ---
 # <a name="sample-configuration-cisco-asa-device-ikev2no-bgp"></a>示例配置：Cisco ASA 设备（IKEv2/无 BGP）
 本文提供将 Cisco 自适应安全 (ASA) 设备连接到 Azure VPN 网关的示例配置。 该示例适用于运行 IKEv2 而不使用边界网关协议 (BGP) 的 Cisco ASA 设备。 
@@ -33,9 +33,9 @@ ms.locfileid: "56833179"
 |                        |                                   |
 
 > [!NOTE]
-> 示例配置将 Cisco ASA 设备连接到 Azure 基于路由的 VPN 网关。 连接使用自定义 IPsec/IKE 策略并启用“UsePolicyBasedTrafficSelectors”选项，如[这篇文章](vpn-gateway-connect-multiple-policybased-rm-ps.md)中所述。
+> 示例配置将 Cisco ASA 设备连接到 Azure 基于路由的 VPN 网关。  连接使用自定义 IPsec/IKE 策略并启用“UsePolicyBasedTrafficSelectors”选项，如[这篇文章](vpn-gateway-connect-multiple-policybased-rm-ps.md)中所述。 
 >
-> 示例要求 ASA 设备中的“IKEv2”策略使用基于访问列表的配置，而不是基于 VTI 的配置。 请查阅 VPN 设备供应商规范，验证本地 VPN 设备是否支持 IKEv2 策略。
+> 示例要求 ASA 设备中的“IKEv2”策略使用基于访问列表的配置，而不是基于 VTI 的配置。  请查阅 VPN 设备供应商规范，验证本地 VPN 设备是否支持 IKEv2 策略。
 
 
 ## <a name="vpn-device-requirements"></a>VPN 设备要求
@@ -111,14 +111,14 @@ Azure VPN 网关使用标准 IPsec/IKE 协议套件建立站点到站点 (S2S) V
 * 标识内部/专用和外部/公共网络的路由。
 * 确保所有名称和策略编号在设备上唯一。
 * 确保设备支持加密算法。
-* 将以下“占位符值”替换为你配置的实际值：
-  - 外部接口名称："outside"
-  - Azure_Gateway_Public_IP
-  - OnPrem_Device_Public_IP
+* 将以下“占位符值”替换为你配置的实际值： 
+  - 外部接口名称："outside" 
+  - Azure_Gateway_Public_IP 
+  - OnPrem_Device_Public_IP 
   - IKE：**Pre_Shared_Key**
   - 虚拟网络和本地网络网关名称：**VNetName** 和 **LNGName**
-  - 虚拟网络和本地网络地址前缀
-  - 正确的网络掩码
+  - 虚拟网络和本地网络地址前缀 
+  - 正确的网络掩码 
 
 #### <a name="sample-script"></a>示例脚本
 

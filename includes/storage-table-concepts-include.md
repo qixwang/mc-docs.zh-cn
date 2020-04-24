@@ -6,11 +6,11 @@ origin.date: 10/26/2018
 ms.date: 12/03/2018
 ms.author: v-yeche
 ms.openlocfilehash: 78e0fa30f53e20fc4289643a1854617da38a1f21
-ms.sourcegitcommit: 59db70ef3ed61538666fd1071dcf8d03864f10a9
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52676032"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63851055"
 ---
 ## <a name="what-is-table-storage"></a>什么是表存储
 Azure 表存储可存储大量结构化数据。 该服务是一个 NoSQL 数据存储，接受来自 Azure 云内部和外部的通过验证的呼叫。 Azure 表最适合存储结构化非关系型数据。 表存储的常见用途包括：

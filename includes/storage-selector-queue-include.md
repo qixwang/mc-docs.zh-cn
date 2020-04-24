@@ -6,11 +6,11 @@ origin.date: 10/26/2018
 ms.date: 01/14/2019
 ms.author: v-jay
 ms.openlocfilehash: d28beb7b994e0deb61754988efd96ca17c164f5b
-ms.sourcegitcommit: 5eff40f2a66e71da3f8966289ab0161b059d0263
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54193308"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63823309"
 ---
 > [!div class="op_single_selector"]
 > * [.NET](../articles/storage/queues/storage-dotnet-how-to-use-queues.md)

@@ -16,10 +16,10 @@ origin.date: 10/30/2018
 ms.date: 05/27/2019
 ms.author: v-jay
 ms.openlocfilehash: cedc705bbf50fd112b9ded11ed1adc5f5cd6b89b
-ms.sourcegitcommit: 5a57f99d978b78c1986c251724b1b04178c12d8c
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/24/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "66195029"
 ---
 # <a name="troubleshooting-an-azure-site-to-site-vpn-connection-cannot-connect-and-stops-working"></a>故障排除：Azure 站点到站点 VPN 连接无法建立连接并停止工作
@@ -38,13 +38,13 @@ ms.locfileid: "66195029"
 
 1. 转到 [Azure 门户](https://portal.azure.cn)。
 
-2. 有关类型信息，请查看 VPN 网关的“概述”页。
+2. 有关类型信息，请查看 VPN 网关的“概述”页。 
     
     ![网关概述](media/vpn-gateway-troubleshoot-site-to-site-cannot-connect/gatewayoverview.png)
 
 ### <a name="step-1-check-whether-the-on-premises-vpn-device-is-validated"></a>步骤 1。 检查是否已验证本地 VPN 设备
 
-1. 检查是否使用的是[已验证的 VPN 设备和操作系统版本](vpn-gateway-about-vpn-devices.md#devicetable)。 如果设备是未经验证的 VPN 设备，可能需要与设备制造商联系，了解是否存在兼容性问题。
+1. 检查是否使用的是[已验证的 VPN 设备和操作系统版本](vpn-gateway-about-vpn-devices.md#devicetable)。 如果设备是未经验证的 VPN 设备，你可能需要与设备制造商联系，了解是否存在兼容性问题。
 
 2. 确保已正确配置 VPN 设备。 有关详细信息，请参阅[编辑设备配置示例](vpn-gateway-about-vpn-devices.md#editing)。
 
@@ -58,7 +58,7 @@ ms.locfileid: "66195029"
 
 1. 转到创建的 VPN 网关站点到站点连接。
 
-2. 在“设置”部分中，单击“共享密钥”。
+2. 在“设置”部分中，单击“共享密钥”。  
     
     ![共享密钥](media/vpn-gateway-troubleshoot-site-to-site-cannot-connect/sharedkey.png)
 
@@ -76,23 +76,23 @@ ms.locfileid: "66195029"
 
 ### <a name="step-3-verify-the-vpn-peer-ips"></a>步骤 3. 验证 VPN 对等 IP
 
--   Azure 的“本地网络网关”对象中的 IP 定义应与本地设备的 IP 相匹配。
+-   Azure 的“本地网络网关”对象中的 IP 定义应与本地设备的 IP 相匹配。 
 -   在本地设备中设置的 Azure 网关 IP 定义应与 Azure 网关 IP 匹配。
 
 ### <a name="step-4-check-udr-and-nsgs-on-the-gateway-subnet"></a>步骤 4. 检查网关子网上的 UDR 和 NSG
 
-检查并删除网关子网中的用户定义的路由 (UDR) 或网络安全组 (NSG)，并测试结果。 如果问题得到解决，请验证 NSG 或 UDR 应用的设置。
+检查并删除网关子网中的用户定义的路由 (UDR) 或网络安全组 (NSG)，然后测试结果。 如果问题得到解决，请验证 NSG 或 UDR 应用的设置。
 
 ### <a name="step-5-check-the-on-premises-vpn-device-external-interface-address"></a>步骤 5。 检查本地 VPN 设备的外部接口地址
 
-- 如果 VPN 设备面向 Internet 的 IP 地址包含在 Azure 的“本地网络”定义中，可能会出现偶发的断开连接。
+- 如果 VPN 设备面向 Internet 的 IP 地址包含在 Azure 的“本地网络”定义中，可能会出现偶发的断开连接。 
 - 设备的外部接口必须直接在 Internet 上。 在 Internet 和设备之间应该没有网络地址转换或防火墙。
 - 若要将防火墙群集配置为具有虚拟 IP，必须中断群集并直接向可以与网关连接的公共接口公开 VPN 设备。
 
 ### <a name="step-6-verify-that-the-subnets-match-exactly-azure-policy-based-gateways"></a>步骤 6. 验证子网是否完全匹配（基于 Azure Policy 的网关）
 
 -   验证虚拟网络地址空间与 Azure 虚拟网络和本地定义之间的子网是否完全匹配。
--   验证“本地网络网关”与本地网络本地定义之间的子网是否完全匹配。
+-   验证“本地网络网关”与本地网络本地定义之间的子网是否完全匹配。 
 
 ### <a name="step-7-verify-the-azure-gateway-health-probe"></a>步骤 7. 验证 Azure 网关的运行状况探测
 

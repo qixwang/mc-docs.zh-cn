@@ -16,14 +16,14 @@ origin.date: 12/15/2016
 ms.author: v-yiso
 ms.date: 03/19/2018
 ms.openlocfilehash: 047b1d861000c9a362303d049239679d482a9d79
-ms.sourcegitcommit: 5191c30e72cbbfc65a27af7b6251f7e076ba9c88
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "67569590"
 ---
 # <a name="custom-caching-in-azure-api-management"></a>Azure API 管理中的自定义缓存
-Azure API 管理服务使用资源 URL 作为键，提供对 [HTTP 响应缓存](./api-management-howto-cache.md)的内置支持。 可以使用 `vary-by` 属性根据请求标头修改键。 这种做法适合用于缓存整个 HTTP 响应（也称为“表示形式”），但有时也适合用于只缓存一部分表示形式。 使用新的 [cache-lookup-value](/api-management/api-management-caching-policies#GetFromCacheByKey) 和 [cache-store-value](/api-management/api-management-caching-policies#StoreToCacheByKey) 策略可以存储和检索策略定义中的任意数据。 此功能使得以前推出的 [send-request](/api-management/api-management-caching-policies#StoreToCacheByKey) 策略更有作用，因为现在可以缓存来自外部服务的响应。
+Azure API 管理服务使用资源 URL 作为键，提供对 [HTTP 响应缓存](./api-management-howto-cache.md)的内置支持。 可以使用 `vary-by` 属性根据请求标头修改键。 这种做法适合用于缓存整个 HTTP 响应（也称为“表示形式”），但有时也适合用于只缓存一部分表示形式。 使用新的 [cache-lookup-value](/api-management/api-management-caching-policies#GetFromCacheByKey) 和 [cache-store-value](/api-management/api-management-caching-policies#StoreToCacheByKey) 策略可以存储和检索策略定义中的任意数据。 此功能使得以前推出的 [send-request](/api-management/api-management-caching-policies#StoreToCacheByKey) 策略更有价值，因为现在可以缓存来自外部服务的响应。
 
 ## <a name="architecture"></a>体系结构
 API 管理服务使用基于租户的共享数据缓存，因此，在增加到多个单位后，仍可以访问相同的缓存数据。 但是，使用多区域部署时，每个区域内有独立的缓存。 不得将缓存视为数据存储，因为数据存储是某些信息片段的唯一源。 如果这样做，后来又决定利用多区域部署，则具有移动工作人员的客户可能会失去对该缓存数据的访问权限。

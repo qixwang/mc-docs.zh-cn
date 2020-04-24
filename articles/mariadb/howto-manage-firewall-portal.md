@@ -8,10 +8,10 @@ ms.topic: conceptual
 origin.date: 04/09/2019
 ms.date: 05/27/2019
 ms.openlocfilehash: 7ac4998baff00db84b37b243a659d3970f51bc16
-ms.sourcegitcommit: 60169f39663ae62016f918bdfa223c411e249883
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "66173220"
 ---
 # <a name="create-and-manage-azure-database-for-mariadb-firewall-rules-by-using-the-azure-portal"></a>使用 Azure 门户创建和管理 Azure Database for MariaDB 防火墙规则
@@ -19,7 +19,7 @@ ms.locfileid: "66173220"
 
 也可使用虚拟网络 (VNet) 规则来保护对服务器进行的访问。 详细了解如何[使用 Azure 门户创建和管理虚拟网络服务终结点和规则](howto-manage-vnet-portal.md)。
 
-## <a name="create-a-server-level-firewall-rule-in-the-azure-portal"></a>在 Azure 门户中创建服务器级别的防火墙规则
+## <a name="create-a-server-level-firewall-rule-in-the-azure-portal"></a>在 Azure 门户中创建服务器级防火墙规则
 
 1. 在 MariaDB 服务器页上的“设置”标题下，单击“连接安全性”  ，以打开 Azure Database for MariaDB 的“连接安全性”页。
 
@@ -42,7 +42,7 @@ ms.locfileid: "66173220"
    ![Azure 门户 - 单击“保存”](./media/howto-manage-firewall-portal/5-save-firewall-rule.png)
 
 ## <a name="connecting-from-azure"></a>从 Azure 连接
-若要允许来自 Azure 的应用程序连接到 Azure Database for MariaDB 服务器，必须启用 Azure 连接。 例如，为了托管“Azure Web 应用”应用程序或 Azure VM 中运行的应用程序，或者为了从 Azure 数据工厂数据管理网关进行连接。 资源无需在同一虚拟网络 (VNet) 或资源组中，即可使用防火墙规则启用这些连接。 在应用程序尝试从 Azure 连接到你的数据库服务器时，防火墙将验证是否允许 Azure 连接。 有几种方法可启用这些类型的连接。 如果防火墙设置的开始地址和结束地址都等于 0.0.0.0，则表示允许这些连接。 或者，可以在门户中从“连接安全性”  窗格将“允许访问 Azure 服务”  选项设为“启用”  并单击“保存”  。 如果不允许连接尝试，则请求将不会到达 Azure Database for MariaDB 服务器。
+若要允许来自 Azure 的应用程序连接到 Azure Database for MariaDB 服务器，必须启用 Azure 连接。 例如，为了托管“Azure Web 应用”应用程序或 Azure VM 中运行的应用程序，或者为了从 Azure 数据工厂数据管理网关进行连接。 资源无需在同一虚拟网络 (VNet) 或资源组中，即可使用防火墙规则启用这些连接。 在应用程序尝试从 Azure 连接到数据库服务器时，防火墙会验证是否允许 Azure 连接。 有几种方法可启用这些类型的连接。 如果防火墙设置的开始地址和结束地址都等于 0.0.0.0，则表示允许这些连接。 或者，可以在门户中从“连接安全性”  窗格将“允许访问 Azure 服务”  选项设为“启用”  并单击“保存”  。 如果不允许连接尝试，则请求将不会到达 Azure Database for MariaDB 服务器。
 
 > [!IMPORTANT]
 > 该选项将防火墙配置为允许来自 Azure 的所有连接，包括来自其他客户的订阅的连接。 选择该选项时，请确保登录名和用户权限将访问权限限制为仅已授权用户使用。

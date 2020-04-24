@@ -19,10 +19,10 @@ ms.subservice: hybrid
 ms.author: v-junlch
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f97e8614e35e50a8a0b2be9d48d360b6e70e16ff
-ms.sourcegitcommit: 5f85d6fe825db38579684ee1b621d19b22eeff57
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "67568630"
 ---
 # <a name="federate-multiple-instances-of-azure-ad-with-single-instance-of-ad-fs"></a>将 Azure AD 的多个实例与 AD FS 的单个实例联合
@@ -54,7 +54,7 @@ ms.locfileid: "67568630"
  
 ## <a name="step-3-federate-fabrikamcom-with-ad-fs"></a>步骤 3：通过 AD FS 联合 fabrikam.com
  
-在 Azure AD powershell 会话中执行以下步骤：连接到包含域 fabrikam.com 的 Azure Active Directory
+在 Azure AD PowerShell 会话中，执行以下步骤：连接到 Azure Active Directory，其中包含域 fabrikam.com
 
     Connect-MsolService -AzureEnvironment AzureChinaCloud
 
@@ -65,6 +65,6 @@ ms.locfileid: "67568630"
 上述操作会将域 fabrikam.com 与同一 AD FS 联合。 可以对两个域使用 Get-MsolDomainFederationSettings，以便验证域设置。
 
 ## <a name="next-steps"></a>后续步骤
-[将 Active Directory 与 Azure Active Directory 连接](whatis-hybrid-identity.md)
+[将 Active Directory 连接到 Azure Active Directory](whatis-hybrid-identity.md)
 
 <!-- Update_Description: update metedata properties -->

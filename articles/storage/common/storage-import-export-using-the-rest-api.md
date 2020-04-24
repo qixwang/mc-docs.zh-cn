@@ -16,11 +16,11 @@ origin.date: 01/15/2017
 ms.date: 01/01/2018
 ms.author: v-nany
 ms.openlocfilehash: 06efa94b1330fa02ce722070b59f9d0ab7092f54
-ms.sourcegitcommit: d75065296d301f0851f93d6175a508bdd9fd7afc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52652539"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63822462"
 ---
 # <a name="using-the-azure-importexport-service-rest-api"></a>使用 Azure 导入/导出服务 REST API
 
@@ -30,7 +30,7 @@ Azure 导入/导出服务公开一个 REST API 来实现对导入/导出作业�
 
 ## <a name="service-endpoints"></a>服务终结点
 
-Azure 导入/导出服务是 Azure Resource Manager 的资源提供程序，它在以下 HTTPS 终结点上提供一组 REST API 用于管理导入/导出作业：
+Azure 导入/导出服务是 Azure 资源管理器的资源提供程序，它在以下 HTTPS 终结点上提供一组 REST API 用于管理导入/导出作业：
 
 ```
 https://management.chinacloudapi.cn/subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.ImportExport/jobs/<job-name>

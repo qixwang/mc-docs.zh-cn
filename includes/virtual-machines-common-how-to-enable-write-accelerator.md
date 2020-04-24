@@ -10,10 +10,10 @@ ms.date: 07/01/2019
 ms.author: v-yeche
 ms.custom: include file
 ms.openlocfilehash: cd3254a5dc24b134dc46cc3b2b4e4c994199ae0e
-ms.sourcegitcommit: c61b10764d533c32d56bcfcb4286ed0fb2bdbfea
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "68332774"
 ---
 # <a name="enable-write-accelerator"></a>启用写入加速器
@@ -63,7 +63,7 @@ IOPS 限制是针对每个 VM 而不是每个磁盘  。 对于每个 VM，所�
 
 以下几个部分介绍如何在 Azure 高级存储 VHD 上启用写入加速器。
 
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>必备条件
 
 目前，使用写入加速器必须满足以下先决条件：
 

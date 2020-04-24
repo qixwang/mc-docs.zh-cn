@@ -13,10 +13,10 @@ ms.date: 05/14/2019
 ms.author: v-junlch
 ms.custom: seodec18
 ms.openlocfilehash: d250ef576f5b95bf8149cea7184904c78dfd929c
-ms.sourcegitcommit: 9235a1f313393f21b5c42cb7a1626b1b93feb8be
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "65598897"
 ---
 # <a name="sample-explore-an-image-processing-app-with-c"></a>示例：使用 C# 探索图像处理应用
@@ -70,24 +70,24 @@ git clone --recurse-submodules https://github.com/Microsoft/Cognitive-Face-Windo
    * VisionAPI-WPF-Samples  
 
    如果没有 SampleUserControlLibrary 项目，请确认已经以递归方式克隆 `Microsoft/Cognitive-Vision-Windows` 存储库。
-1. 在 Visual Studio 中，按 Ctrl+Shift+B 或从功能区菜单中选择“构建”，然后选择“构建解决方案”以构建该解决方案。
+1. 在 Visual Studio 中，按 Ctrl+Shift+B 或从功能区菜单中选择“构建”，然后选择“构建解决方案”以构建该解决方案   。
 
 ## <a name="run-and-interact-with-the-sample-app"></a>运行示例应用并与之交互
 
 可以运行示例应用，以便在执行各种任务（例如生成缩略图或标记图像）时查看它与你以及与计算机视觉客户端库的交互方式。 要运行示例应用并与之交互，请执行以下步骤：
 
-1. 构建完成后，按“F5”或从功能区菜单中选择“调试”，然后选择“开始调试”以运行示例应用。
-1. 显示示例应用时，从导航窗格中选择“订阅密钥管理”以显示“订阅密钥管理”页面。
+1. 构建完成后，按“F5”或从功能区菜单中选择“调试”，然后选择“开始调试”以运行示例应用    。
+1. 显示示例应用时，从导航窗格中选择“订阅密钥管理”以显示“订阅密钥管理”页面  。
    ![订阅密钥管理页面](../Images/Vision_UI_Subscription.PNG)  
-1. 在“订阅密钥”中输入订阅密钥。
-1. 在“终结点”中输入订阅密钥的计算机视觉资源的终结点 URL（省略 `/vision/v1.0`）。  
+1. 在“订阅密钥”中输入订阅密钥  。
+1. 在“终结点”中输入订阅密钥的计算机视觉资源的终结点 URL（省略 `/vision/v1.0`）  。  
    例如，如果使用的是计算机视觉试用版中的订阅密钥，请输入以下中国北部 Azure 区域的终结点 URL：`https://chinanorth.api.cognitive.azure.cn`
-1. 如果不想在下次运行该示例应用时输入订阅密钥和终结点 URL，请选择“保存设置”以将订阅密钥和终结点 URL 保存到计算机。 如果要删除以前保存的订阅密钥和终结点 URL，请选择“删除设置”。
+1. 如果不想在下次运行该示例应用时输入订阅密钥和终结点 URL，请选择“保存设置”以将订阅密钥和终结点 URL 保存到计算机  。 如果要删除以前保存的订阅密钥和终结点 URL，请选择“删除设置”  。
 
    > [!NOTE]
    > 示例应用使用独立存储和 `System.IO.IsolatedStorage` 来存储订阅密钥和终结点 URL。
 
-1. 在导航窗格中的“选择场景”处，选择示例应用当前包含的场景之一：  
+1. 在导航窗格中的“选择场景”处，选择示例应用当前包含的场景之一  ：  
 
    | 方案 | 说明 |
    |----------|-------------|

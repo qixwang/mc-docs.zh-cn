@@ -6,13 +6,13 @@ origin.date: 10/26/2018
 ms.date: 01/14/2019
 ms.author: v-jay
 ms.openlocfilehash: 809fec4f44ccf34ffa90fb562cc2fb687fab1c02
-ms.sourcegitcommit: 5eff40f2a66e71da3f8966289ab0161b059d0263
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54192936"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63844395"
 ---
-Azure 存储中的每个 Blob 必须驻留在一个容器中。 该容器构成 Blob 名称的一部分。 例如，在这些示例 Blob URI 中，`mycontainer` 是容器的名称：
+Azure 存储中的每个 Blob 必须驻留在一个容器中。 该容器构成 Blob 名称的一部分。 例如，在这些示例 Blob URI 中， `mycontainer` 是容器的名称：
 
 https://storagesample.blob.core.chinacloudapi.cn/mycontainer/blob1.txt https://storagesample.blob.core.chinacloudapi.cn/mycontainer/photos/myphoto.jpg
 

@@ -10,11 +10,11 @@ ms.date: 01/14/2019
 ms.author: v-jay
 ms.custom: include file
 ms.openlocfilehash: 50cb2b08acdc1c1d00229687b97c9a430367c6c2
-ms.sourcegitcommit: 5eff40f2a66e71da3f8966289ab0161b059d0263
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54192942"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63823593"
 ---
 可以使用 EMS 将包裹寄送到 Azure 数据中心。 
 

@@ -9,10 +9,10 @@ ms.topic: reference
 ms.date: 01/19/2019
 ms.author: v-yiso
 ms.openlocfilehash: b204ad718770cb0daddd8af3810988475c1a97c8
-ms.sourcegitcommit: 5a57f99d978b78c1986c251724b1b04178c12d8c
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/24/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "66195313"
 ---
 # <a name="event-grid-sdks-for-management-and-publishing"></a>用于管理和发布的事件网格 SDK

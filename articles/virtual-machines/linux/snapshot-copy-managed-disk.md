@@ -1,6 +1,6 @@
 ---
 title: 在 Azure 中创建 VHD 的快照 | Azure
-description: 了解如何在 Azure 中何创建 VHD 的副本作为备份或用于排查问题。
+description: 了解如何在 Azure 中创建 VHD 的副本作为备份或用于解决问题。
 documentationcenter: ''
 author: rockboyfor
 manager: digimobile
@@ -16,10 +16,10 @@ ms.date: 05/20/2019
 ms.author: v-yeche
 ms.subservice: disks
 ms.openlocfilehash: fadd3839a3a13a4fffc203a8130ec147e834de5b
-ms.sourcegitcommit: bf4afcef846cc82005f06e6dfe8dd3b00f9d49f3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "66004286"
 ---
 # <a name="create-a-snapshot"></a>创建快照 
@@ -44,7 +44,7 @@ osDiskId=$(az vm show \
    -o tsv)
 ```
 
-使用 [az snapshot create](https://docs.azure.cn/zh-cn/cli/snapshot?view=azure-cli-latest#az-snapshot-create) 创建名为 *osDisk-backup* 的快照。
+使用 *az snapshot create* 创建名为 [osDisk-backup](https://docs.azure.cn/zh-cn/cli/snapshot?view=azure-cli-latest#az-snapshot-create) 的快照。
 
 ```azurecli
 az snapshot create \
@@ -67,17 +67,17 @@ az snapshot list \
 
 ## <a name="use-azure-portal"></a>使用 Azure 门户 
 
-1. 登录到 [Azure 门户](https://portal.azure.cn)。
-2. 首先在左上角单击“创建资源”并搜索“快照”。 从搜索结果中选择“快照”。
-3. 在“快照”边栏选项卡中，单击“创建”。
-4. 输入快照的 **名称** 。
+1. 登录 [Azure 门户](https://portal.azure.cn)。
+2. 首先在左上角单击“创建资源”  并搜索“快照”  。 从搜索结果中选择“快照”  。
+3. 在“快照”边栏选项卡中，单击“创建”   。
+4. 输入快照的“名称”  。
 5. 选择现有的资源组，或键入新资源组的名称。 
 7. 对于**源磁盘**，选择要获取其快照的托管磁盘。
-8. 选择用于存储快照的“帐户类型”。 使用 **Standard HDD**，除非需要将其存储在高性能 SSD 上。
-9. 单击**创建**。
+8. 选择用于存储快照的“帐户类型”  。 使用 **Standard HDD**，除非需要将其存储在高性能 SSD 上。
+9. 单击“创建”。 
 
 ## <a name="next-steps"></a>后续步骤
 
- 通过从快照创建托管磁盘，然后将新的托管磁盘附加为 OS 磁盘，来从快照创建虚拟机。 有关详细信息，请参阅[从快照创建 VM](./../scripts/virtual-machines-linux-cli-sample-create-vm-from-snapshot.md?toc=%2fcli%2fmodule%2ftoc.json) 脚本。
+ 通过从快照创建托管磁盘，然后将新的托管磁盘附加为 OS 磁盘来从快照创建虚拟机。 有关详细信息，请参阅[从快照创建 VM](./../scripts/virtual-machines-linux-cli-sample-create-vm-from-snapshot.md?toc=%2fcli%2fmodule%2ftoc.json) 脚本。
 
 <!-- Update_Description: update link, wording update, update meta properties -->

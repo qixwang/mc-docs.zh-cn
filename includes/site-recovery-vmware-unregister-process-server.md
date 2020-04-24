@@ -6,10 +6,10 @@ origin.date: 04/28/2019
 ms.date: 06/10/2019
 ms.author: v-yeche
 ms.openlocfilehash: 4bf7c4c4130edc8e6640c5f676fa2cb4777d7ab1
-ms.sourcegitcommit: 440d53bb61dbed39f2a24cc232023fc831671837
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "66390710"
 ---
 根据你的具体情况执行以下步骤。
@@ -33,7 +33,7 @@ ms.locfileid: "66390710"
     ```
     perl Unregister-ASRComponent.pl -IPAddress <IP_of_Process_Server> -Component PS
     ```
-    - 序列 号：进程服务器序列号。
+    - S. 号：进程服务器序列号。
     - IP/名称：运行进程服务器的计算机的 IP 地址和名称。
     - 检测信号：进程服务器计算机发出的上一个检测信号。
     ![Unregister-cmd](media/site-recovery-vmware-unregister-process-server/Unregister-cmd.PNG)

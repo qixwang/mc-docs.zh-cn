@@ -10,15 +10,15 @@ origin.date: 01/29/2018
 ms.author: v-yiso
 ms.date: 09/10/2018
 ms.openlocfilehash: f08f68ac32979bd963cbb996344ebd942e672a10
-ms.sourcegitcommit: d75065296d301f0851f93d6175a508bdd9fd7afc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52649464"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63847485"
 ---
 # <a name="send-device-to-cloud-and-cloud-to-device-messages-with-iot-hub"></a>使用 IoT 中心发送设备到云和云到设备的消息
 
-IoT 中心支持与设备进行双向通信。 使用 IoT 中心消息与设备进行通信，方法是：将消息从设备发送到解决方案后端，以及将命令从 IoT 解决方案后端发送到设备。 了解有关 [IoT 中心消息格式](iot-hub-devguide-messages-construct.md)的详细信息。
+IoT 中心支持与设备进行双向通信。 使用 IoT 中心消息传递，通过将消息从设备发送到解决方案后端，并将命令从 IoT 解决方案后端发送到设备，可实现与设备的通信。 了解有关 [IoT 中心消息格式](iot-hub-devguide-messages-construct.md)的详细信息。
 
 ## <a name="sending-device-to-cloud-messages-to-iot-hub"></a>将设备到云的消息发送到 IoT 中心
 
@@ -36,7 +36,7 @@ IoT 中心消息传送功能的核心属性是消息的可靠性和持久性。 
 
 ## <a name="choosing-the-right-type-of-iot-hub-messaging"></a>选择适当类型的 IoT 中心消息传递
 
-使用设备到云消息从设备应用发送时序遥测数据和警报，使用云到设备消息向设备应用发送单向通知。
+使用设备到云的消息从设备应用发送时序遥测数据和警报，使用云到设备的消息向设备应用发送单向通知。
 
 * 有关在使用设备到云的消息、报告属性或文件上传方面进行选择的信息，请参阅[设备到云通信指南](/iot-hub/iot-hub-devguide-d2c-guidance)。
 

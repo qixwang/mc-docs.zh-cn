@@ -7,10 +7,10 @@ origin.date: 05/21/2019
 ms.date: 06/10/2019
 ms.author: v-jay
 ms.openlocfilehash: f9364d392a6f4d24cd4301216ff1b9f8d9a2e291
-ms.sourcegitcommit: 67a78cae1f34c2d19ef3eeeff2717aa0f78de38e
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "66726532"
 ---
  - 如果通过 Data Box 服务使用多个存储帐户，则所有存储帐户应属于同一 Azure 区域。

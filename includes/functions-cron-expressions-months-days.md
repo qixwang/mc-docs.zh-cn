@@ -6,10 +6,10 @@ origin.date: 06/27/2019
 ms.date: 07/17/2019
 ms.author: v-junlch
 ms.openlocfilehash: e9315abc7d827b5973635afa44241aa2125a4c6b
-ms.sourcegitcommit: c61b10764d533c32d56bcfcb4286ed0fb2bdbfea
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "68331879"
 ---
 若要指定月份或天，可以使用数字值、名称或名称的缩写：

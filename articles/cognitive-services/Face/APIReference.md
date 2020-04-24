@@ -12,10 +12,10 @@ origin.date: 03/01/2018
 ms.date: 05/14/2019
 ms.author: v-junlch
 ms.openlocfilehash: 699efc1f1f1cf57755fb2f39ad9891e75c048f89
-ms.sourcegitcommit: 71172ca8af82d93d3da548222fbc82ed596d6256
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/15/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "65668971"
 ---
 # <a name="api-reference"></a>API 参考

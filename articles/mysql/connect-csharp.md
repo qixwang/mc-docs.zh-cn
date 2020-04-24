@@ -13,20 +13,20 @@ ms.topic: quickstart
 origin.date: 02/28/2018
 ms.date: 08/13/2018
 ms.openlocfilehash: aacb20acb4fbaaac14b2f252f8eee0c1d8673c06
-ms.sourcegitcommit: 5fc46672ae90b6598130069f10efeeb634e9a5af
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "67236662"
 ---
-# <a name="azure-database-for-mysql-use-net-c-to-connect-and-query-data"></a>Azure Database for MySQL：使用 .NET (C#) 连接和查询数据
+# <a name="azure-database-for-mysql-use-net-c-to-connect-and-query-data"></a>适用于 MySQL 的 Azure 数据库：使用 .NET (C#) 进行连接并查询数据
 
 > [!NOTE]
 > 将要查看的是 Azure Database for MySQL 的新服务。 若要查看经典 MySQL Database for Azure 的文档，请访问[此页](https://docs.azure.cn/zh-cn/mysql-database-on-azure/)。
 
 本快速入门演示如何使用 C# 应用程序连接到 Azure Database for MySQL。 同时还介绍了如何使用 SQL 语句在数据库中查询、插入、更新和删除数据。 本主题假设你熟悉如何使用 C# 进行开发，但不太熟悉 Azure Database for MySQL 的用法。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 此快速入门使用以下任意指南中创建的资源作为起点：
 - [使用 Azure 门户创建用于 MySQL 服务器的 Azure 数据库](./quickstart-create-mysql-server-database-using-azure-portal.md)
 - [使用 Azure CLI 创建用于 MySQL 服务器的 Azure 数据库](./quickstart-create-mysql-server-database-using-azure-cli.md)

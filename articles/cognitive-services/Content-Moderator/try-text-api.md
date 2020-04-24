@@ -12,10 +12,10 @@ ms.topic: conceptual
 origin.date: 05/29/2019
 ms.date: 07/10/2019
 ms.openlocfilehash: bb72168054b1d721a13a9b2f6453635ee4de7818
-ms.sourcegitcommit: 8f49da0084910bc97e4590fc1a8fe48dd4028e34
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "67844935"
 ---
 # <a name="moderate-text-from-the-api-console"></a>从 API 控制台审查文本
@@ -24,7 +24,7 @@ ms.locfileid: "67844935"
 
 ## <a name="get-your-api-key"></a>获取 API 密钥
 
-可以在联机控制台中体验 API 之前，需要提供订阅密钥。 订阅密钥位于“设置”  选项卡上的“Ocp-Apim-Subscription-Key”  框中。 有关详细信息，请参阅[概述](overview.md)。
+必须有订阅密钥，才能在联机控制台中试用 API。 订阅密钥位于“设置”  选项卡上的“Ocp-Apim-Subscription-Key”  框中。 有关详细信息，请参阅[概述](overview.md)。
 
 ## <a name="navigate-to-the-api-reference"></a>导航到 API 参考
 
@@ -34,7 +34,7 @@ ms.locfileid: "67844935"
 
 ## <a name="open-the-api-console"></a>打开 API 控制台
 
-若要打开 API 测试控制台  ，选择最贴切地描述你所在位置的区域。 
+对于“开放 API 测试控制台”  ，选择与所在位置最相关的区域。 
 
   ![“文本 - 屏幕”页区域选择](images/test-drive-region.png)
 
@@ -47,7 +47,7 @@ ms.locfileid: "67844935"
 在文本屏幕中选择要使用的查询参数。 在本例中，使用语言  的默认值。 也可以将其留空，因为作为其执行的一部分，该操作将自动检测可能的语言。
 
 > [!NOTE]
-> 有关 language  参数，分配 `eng` 或留空以查看计算机辅助的分类  响应（预览功能）。 **此功能仅支持英语**。
+> 对于 **language** 参数，请分配 `eng` 或将其留空以查看机器辅助的**分类**响应（预览功能）。 **此功能仅支持英语**。
 >
 > 对于不雅用语  检测，请使用本文所列的支持语言的 [ISO 639-3 代码](http://www-01.sil.org/iso639-3/codes.asp)或留空。
 
@@ -57,7 +57,7 @@ ms.locfileid: "67844935"
 
 ### <a name="content-type"></a>内容类型
 
-有关 **Content-Type**，选择你想要显示的内容类型。 在本例中，使用默认的 text/plain  内容类型。 在“Ocp-Apim-Subscription-Key”  框中，输入订阅密钥。
+有关 **Content-Type**，选择你想要显示的内容类型。 在本例中，使用默认的 text/plain  内容类型。 在“Ocp-Apim-Subscription-Key”框中，输入订阅密钥  。
 
 ### <a name="sample-text-to-scan"></a>要扫描的示例文本
 

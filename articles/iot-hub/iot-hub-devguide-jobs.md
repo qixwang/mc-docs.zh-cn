@@ -10,15 +10,15 @@ origin.date: 05/06/2019
 ms.date: 05/27/2019
 ms.author: v-yiso
 ms.openlocfilehash: 4320834e7b0ae0545fe2b756f20ddf42ae643657
-ms.sourcegitcommit: 99ef971eb118e3c86a6c5299c7b4020e215409b3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "65829329"
 ---
 # <a name="schedule-jobs-on-multiple-devices"></a>在多个设备上计划作业
 
-Azure IoT 中心可启用多个构建基块（如 [设备孪生属性和标记][lnk-twin-devguide]和[直接方法][lnk-dev-methods]）。  通常情况下，后端应用允许设备管理员和操作员在计划的时间批量更新 IoT 设备并与之交互。  作业在计划的时间针对一组设备执行设备孪生更新和直接方法。  例如，操作员可使用用于启动和跟踪作业的后端应用在不会中断大楼运作的时间重新启动 43 号大楼第 3 层中的一组设备。
+Azure IoT 中心可启用多个构建基块（如[设备孪生属性和标记][lnk-twin-devguide]和[直接方法][lnk-dev-methods]）。  通常情况下，后端应用允许设备管理员和操作员在计划的时间批量更新 IoT 设备并与之交互。  作业在计划的时间针对一组设备执行设备孪生更新和直接方法。  例如，操作员可使用用于启动和跟踪作业的后端应用在不会中断大楼运作的时间重新启动 43 号大楼第 3 层中的一组设备。
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
@@ -65,7 +65,7 @@ Content-Type: application/json; charset=utf-8
 "queryCondition" = "deviceId IN ['MyDevice1','MyDevice2']"
 "queryCondition" = "deviceId IN ['MyDevice1']"
 ```
-[IoT 中心查询语言][lnk-query] 格外详细地介绍了 IoT 中心查询语言。
+[IoT 中心查询语言][lnk-query]格外详细地介绍了 IoT 中心查询语言。
 
 以下代码片段演示了特定作业的请求和响应，该作业计划在 contoso-hub-1 的所有设备上调用名为 testMethod 的直接方法：
 
@@ -199,11 +199,11 @@ Content-Type: application/json; charset=utf-8
 ### <a name="additional-reference-material"></a>其他参考资料
 IoT 中心开发人员指南中的其他参考主题包括：
 
-* [IoT 中心终结点][lnk-endpoints] ，介绍了每个 IoT 中心针对运行时和管理操作公开的各种终结点。
-* [限制和配额][lnk-quotas]，说明了适用于 IoT 中心服务的配额，以及使用服务时预期会碰到的限制行为。
-* [Azure IoT 设备和服务 SDK][lnk-sdks]，列出了在开发与 IoT 中心交互的设备和服务应用时可使用的各种语言 SDK。
+* [IoT 中心终结点][lnk-endpoints]介绍了每个 IoT 中心针对运行时和管理操作公开的各种终结点。
+* [限制和配额][lnk-quotas]介绍了适用于 IoT 中心服务的配额，以及使用服务时预期会碰到的限制行为。
+* [Azure IoT 设备和服务 SDK][lnk-sdks] 列出了开发与 IoT 中心交互的设备和服务应用时可使用的各种语言 SDK。
 * [设备孪生、作业和消息路由的 IoT 中心查询语言][lnk-query]介绍 IoT 中心查询语言。 使用此查询语言从 IoT 中心检索设备孪生和作业的相关信息。
-* [IoT 中心 MQTT 支持][lnk-devguide-mqtt] 提供有关 IoT 中心对 MQTT 协议的支持的详细信息。
+* [IoT 中心 MQTT 支持][lnk-devguide-mqtt]提供了有关 IoT 中心对 MQTT 协议的支持的详细信息。
 
 ## <a name="next-steps"></a>后续步骤
 要尝试本文中介绍的一些概念，请参阅以下 IoT 中心教程：

@@ -10,11 +10,11 @@ origin.date: 07/03/2017
 ms.author: v-yiso
 ms.date: 09/10/2018
 ms.openlocfilehash: 6f8f91c9691fc9e1b363e7b04475a583edc11e4f
-ms.sourcegitcommit: d75065296d301f0851f93d6175a508bdd9fd7afc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52654739"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63822177"
 ---
 # <a name="configure-iot-hub-file-uploads-using-the-azure-portal"></a>使用 Azure 门户配置 IoT 中心文件上传
 
@@ -22,11 +22,11 @@ ms.locfileid: "52654739"
 
 ## <a name="file-upload"></a>文件上传
 
-若要使用 [IoT 中心的文件上传功能](iot-hub-devguide-file-upload.md)，必须先将 Azure 存储帐户与中心关联。 选择“文件上传”，以显示正在修改的 IoT 中心的文件上传属性列表。
+若要使用 [IoT 中心的文件上传功能](iot-hub-devguide-file-upload.md)，必须先将 Azure 存储帐户与中心关联。 选择“文件上传”，以显示正在修改的 IoT 中心的文件上传属性列表。 
 
 ![在门户中查看 IoT 中心文件上传设置](./media/iot-hub-configure-file-upload/file-upload-settings.png)
 
-* **存储容器**：使用 Azure 门户在当前 Azure 订阅中选择 Azure 存储帐户中的 blob 容器，以便与 IoT 中心关联。 如有必要，可以在“存储帐户”边栏选项卡上创建 Azure 存储帐户，并在“容器”边栏选项卡上创建 blob 容器。 IoT 中心会自动生成对此 Blob 容器具有写入权限的 SAS URI，以供设备上传文件时使用。
+* **存储容器**：使用 Azure 门户在当前 Azure 订阅中选择 Azure 存储帐户中的 blob 容器，以便与 IoT 中心关联。 如有必要，可以在“存储帐户”  边栏选项卡上创建 Azure 存储帐户，并在“容器”  边栏选项卡上创建 blob 容器。 IoT 中心会自动生成对此 Blob 容器具有写入权限的 SAS URI，以供设备上传文件时使用。
 
    ![在门户中查看用于文件上传的存储容器](./media/iot-hub-configure-file-upload/file-upload-container-selection.png)
 

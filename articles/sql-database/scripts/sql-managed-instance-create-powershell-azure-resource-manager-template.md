@@ -14,10 +14,10 @@ manager: digimobile
 origin.date: 03/12/2019
 ms.date: 04/29/2019
 ms.openlocfilehash: 253ebac530a62ed80052f9f7c6784d3e396af866
-ms.sourcegitcommit: 666b43a8f208bbbfd46e50eda7b342b0cd382258
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "67277010"
 ---
 # <a name="use-powershell-with-azure-resource-manager-template-to-create-a-managed-instance-in-azure-sql-database"></a>将 PowerShell 与 Azure 资源管理器模板配合使用，以在 Azure SQL 数据库中创建托管实例
@@ -27,7 +27,7 @@ ms.locfileid: "67277010"
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-本教程需要 AZ PowerShell 1.4.0 或更高版本。 如果需要进行升级，请参阅 [Install Azure PowerShell module](https://docs.microsoft.com/powershell/azure/install-az-ps)（安装 Azure PowerShell 模块）。 需要运行 `Connect-AzAccount -Environment AzureChinaCloud` 以创建与 Azure 的连接。
+本教程需要 AZ PowerShell 1.4.0 或更高版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-az-ps)。 需要运行 `Connect-AzAccount -Environment AzureChinaCloud` 以创建与 Azure 的连接。
 
 Azure PowerShell 命令可以使用预定义的 Azure 资源管理器模板启动部署。 可以在模板中指定以下属性：
 
@@ -39,7 +39,7 @@ Azure PowerShell 命令可以使用预定义的 Azure 资源管理器模板启�
 
 实例名称、SQL 管理员用户名、VNet/子网和排序规则以后无法更改。 其他实例属性可以更改。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 此示例假定已为托管实例[创建了有效的网络环境](../sql-database-managed-instance-create-vnet-subnet.md)或[修改了现有的 VNet](../sql-database-managed-instance-configure-vnet-subnet.md)。 此示例使用 cmdlet [New-AzResourceGroupDeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment) 和 [Get-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/get-azvirtualnetwork)，因此请确保已安装以下 PowerShell 模块：
 
@@ -48,7 +48,7 @@ Install-Module Az.Network
 Install-Module Az.Resources
 ```
 
-## <a name="azure-resource-manager-template"></a>Azure Resource Manager 模板
+## <a name="azure-resource-manager-template"></a>Azure 资源管理器模板
 
 应当在表示模板的文件中放置将用来创建实例的以下内容：
 

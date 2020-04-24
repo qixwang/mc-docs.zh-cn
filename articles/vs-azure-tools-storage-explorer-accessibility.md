@@ -16,10 +16,10 @@ origin.date: 02/20/2018
 ms.date: 07/12/2018
 ms.author: v-junlch
 ms.openlocfilehash: 3262d82df6761edc89d749a5bb8e062d093517ee
-ms.sourcegitcommit: 5738c2b28f5cd95a52847591b26cf310afd81394
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "65586898"
 ---
 # <a name="storage-explorer-accessibility"></a>存储资源管理器可访问性
@@ -35,7 +35,7 @@ Linux    | （Linux 不支持屏幕阅读器）
 如果使用存储资源管理器时遇到可访问性问题，请[在 GitHub 上提交问题](https://github.com/Microsoft/AzureStorageExplorer/issues)。
 
 ## <a name="zoom"></a>Zoom
-可通过放大操作，将存储资源管理器中的文本放大。 若要放大，请在“帮助”菜单中单击“放大”。 还可使用“帮助”菜单缩小文本和将缩放级别重置回默认级别。
+可通过放大操作，将存储资源管理器中的文本放大。 若要放大，请在“帮助”菜单中单击“放大”  。 还可使用“帮助”菜单缩小文本和将缩放级别重置回默认级别。
 
 ![帮助菜单中的缩放选项][0]
 
@@ -43,7 +43,7 @@ Linux    | （Linux 不支持屏幕阅读器）
 
 ## <a name="high-contrast-themes"></a>高对比度主题
 
-存储资源管理器具有两个高对比度主题，“高对比度浅色”和“高对比度深色”。 可以通过从“帮助”>“主题”菜单中进行选择来更改主题。
+存储资源管理器具有两个高对比度主题，“高对比度浅色”和“高对比度深色”   。 可以通过从“帮助”>“主题”菜单中进行选择来更改主题。
 
 ![“主题”子菜单][1]
 
@@ -52,7 +52,7 @@ Linux    | （Linux 不支持屏幕阅读器）
 ## <a name="shortcut-keys"></a>快捷键
 ### <a name="window-commands"></a>窗口命令
 
-命令       | 键盘快捷键
+Command       | 键盘快捷键
 --------------|--------------------
 新建窗口    | **Control+Shift+N**
 关闭编辑器  | **Control+F4**
@@ -60,7 +60,7 @@ Linux    | （Linux 不支持屏幕阅读器）
 
 ### <a name="navigation-commands"></a>导航命令
 
-命令                | 键盘快捷键
+Command                | 键盘快捷键
 -----------------------|----------------------
 聚焦于下一个面板       | **F6**
 聚焦于上一个面板   | **Shift+F6**
@@ -75,14 +75,14 @@ Linux    | （Linux 不支持屏幕阅读器）
 
 ### <a name="zoom-commands"></a>缩放命令
 
-命令  | 键盘快捷键
+Command  | 键盘快捷键
 ---------|------------------
 放大  | **Control+=**
 缩小 | **Control+-**
 
 ### <a name="blob-and-file-share-editor-commands"></a>Blob 和文件共享编辑器命令
 
-命令 | 键盘快捷键
+Command | 键盘快捷键
 --------|--------------------
 后退    | **Alt+向左箭头**
 前进 | **Alt+向右箭头**
@@ -90,7 +90,7 @@ Linux    | （Linux 不支持屏幕阅读器）
 
 ### <a name="editor-commands"></a>编辑器命令
 
-命令 | 键盘快捷键
+Command | 键盘快捷键
 --------|------------------
 复制    | **Control+C**
 剪切     | **Control+X**
@@ -99,7 +99,7 @@ Linux    | （Linux 不支持屏幕阅读器）
 
 ### <a name="other-commands"></a>其他命令
 
-命令                | 键盘快捷键
+Command                | 键盘快捷键
 -----------------------|------------------
 切换开发人员工具 | **F12**
 重新加载                 | **Alt+Control+R**

@@ -13,17 +13,17 @@ ms.date: 05/14/2019
 ms.author: v-junlch
 ms.custom: seodec18
 ms.openlocfilehash: 85e494ddbadec9ce44dc09126343d821d7c197bc
-ms.sourcegitcommit: 9235a1f313393f21b5c42cb7a1626b1b93feb8be
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "65598880"
 ---
 # <a name="categorize-images-by-subject-matter"></a>按主题对图像进行分类
 
 除了标记和说明以外，计算机视觉还返回图像中检测到的基于分类的类别。 不同于标记，类别是在父/子继承层次结构中组织的，并且数量更少（86 个，与数千个标记截然相反）。 所有类别名称均采用英语。 它可以单独完成分类，也可以与新的标记模型共同完成。
 
-## <a name="the-86-category-concept"></a>“86 类”概念
+## <a name="the-86-category-concept"></a>86 类别概念
 
 计算机视觉可以使用下图中 86 个类别的列表广泛或具体地对图像进行分类。 有关文本格式的完整分类，请参阅[类别分类](category-taxonomy.md)。
 
@@ -54,7 +54,7 @@ ms.locfileid: "65598880"
 
 下表说明了典型的图像集以及计算机视觉为每个图像返回的类别。
 
-| 映像 | Category |
+| 映像 | 类别 |
 |-------|----------|
 | ![四个人一起摆出一家人的姿势](./Images/family_photo.png) | people_group |
 | ![一只小狗坐在草地上](./Images/cute_dog.png) | animal_dog |

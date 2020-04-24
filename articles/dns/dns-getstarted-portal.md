@@ -9,10 +9,10 @@ origin.date: 3/11/2019
 ms.date: 05/20/2019
 ms.author: v-jay
 ms.openlocfilehash: e859e7c38566703bb4484b65d1f6baa92b333f4d
-ms.sourcegitcommit: 11d81f0e4350a72d296e5664c2e5dc7e5f350926
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "65731920"
 ---
 # <a name="quickstart-create-an-azure-dns-zone-and-record-using-the-azure-portal"></a>快速入门：使用 Azure 门户创建 Azure DNS 区域和记录
@@ -67,9 +67,9 @@ DNS 区域包含域的 DNS 条目。 若要开始在 Azure DNS 中托管域，�
    - **类型**：选择 A  。“A”记录是最常见的，但是也有其他适用于邮件服务器（“MX”）、IP v6 地址（“AAAA”）等的记录类型。 
    - **TTL**：键入 1  。 DNS 请求的*存活时间*指定 DNS 服务器和客户端可以将响应缓存多长时间。
    - **TTL 单位**：选择“小时”  。 这是用于 **TTL** 值的时间单位。 
-   - **IP 地址**：对于本快速入门示例，键入 10.10.10.10  。 此值是记录名称解析为的 IP 地址。 在现实场景中，则应输入 Web 服务器的公用 IP 地址。
+   - **IP 地址**：对于本快速入门示例，键入 10.10.10.10  。 此值是记录名称解析为的 IP 地址。 在现实场景中，则应输入 Web 服务器的公共 IP 地址。
 
-因为本快速入门仅用于快速测试目的，因此不需要在域名注册机构那里配置 Azure DNS 名称服务器。 对于现实生产域，你希望 Internet 上的任何人都能够解析主机名，以便连接到你的 Web 服务器或应用。 你将访问域名注册机构来将名称服务器记录替换为 Azure DNS 名称服务器。 有关详细信息，请参见[教程：在 Azure DNS 中托管域](dns-delegate-domain-azure-dns.md#delegate-the-domain)。
+因为本快速入门仅用于快速测试目的，因此不需要在域名注册机构那里配置 Azure DNS 名称服务器。 对于现实生产域，你希望 Internet 上的任何人都能够解析主机名，以便连接到你的 Web 服务器或应用。 你将访问域名注册机构来将名称服务器记录替换为 Azure DNS 名称服务器。 有关详细信息，请参阅[教程：在 Azure DNS 中托管域](dns-delegate-domain-azure-dns.md#delegate-the-domain)。
 
 ## <a name="test-the-name-resolution"></a>测试名称解析
 

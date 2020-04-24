@@ -13,10 +13,10 @@ ms.date: 05/14/2019
 ms.author: v-junlch
 ms.custom: seodec18
 ms.openlocfilehash: 0bf12a9f32b5812dd2ecb5f955bded8698b52ebe
-ms.sourcegitcommit: 9235a1f313393f21b5c42cb7a1626b1b93feb8be
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "65598861"
 ---
 # <a name="quickstart-analyze-an-image-using-the-computer-vision-sdk-and-c"></a>快速入门：使用计算机视觉 SDK 和 C# 分析图像
@@ -35,9 +35,9 @@ ms.locfileid: "65598861"
 
 1. 在 Visual Studio 中创建一个新的 Visual C# 控制台应用。
 1. 安装计算机视觉客户端库 NuGet 包。
-    1. 在菜单上，单击“工具”，然后依次选择“NuGet 包管理器”、“管理解决方案的 NuGet 包”。
-    1. 单击“浏览”选项卡，在“搜索”框中键入“Microsoft.Azure.CognitiveServices.Vision.ComputerVision”。
-    1. 选择显示的 **Microsoft.Azure.CognitiveServices.Vision.ComputerVision**，单击项目名称旁边的复选框，然后单击“安装”。
+    1. 在菜单上，单击“工具”，然后依次选择“NuGet 包管理器”、“管理解决方案的 NuGet 包”    。
+    1. 单击“浏览”  选项卡，在“搜索”  框中键入“Microsoft.Azure.CognitiveServices.Vision.ComputerVision”。
+    1. 选择显示的 **Microsoft.Azure.CognitiveServices.Vision.ComputerVision**，单击项目名称旁边的复选框，然后单击“安装”  。
 1. 将 *Program.cs* 的内容替换为以下代码。 `AnalyzeImageAsync` 和 `AnalyzeImageInStreamAsync` 方法分别为远程图像和本地图像包装[分析图像 REST API](https://dev.cognitive.azure.cn/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa)。
 
     ```csharp

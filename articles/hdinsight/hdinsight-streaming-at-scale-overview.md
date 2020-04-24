@@ -18,10 +18,10 @@ origin.date: 01/19/2018
 ms.author: v-yiso
 ms.date: 07/22/2019
 ms.openlocfilehash: ebaf576724268d416ef8cac868d70b342f3de388
-ms.sourcegitcommit: f4351979a313ac7b5700deab684d1153ae51d725
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "67845241"
 ---
 # <a name="streaming-at-scale-in-hdinsight"></a>HDInsight 中的大规模流式处理
@@ -58,7 +58,7 @@ Spark Streaming 是 Spark 的一个扩展，可让你重复使用执行批处理
 
 ### <a name="scale-the-stream-buffering-layer"></a>缩放流缓冲层
 
-事件中心和 Kafka 流缓冲技术都使用分区，使用者从这些分区读取数据。 缩放输入吞吐量需要增大分区数目，而添加分区又能提供更高的并行度。 在事件中心，部署后无法更改分区计数，因此，必须一开始就有目标缩放的意识。 即使 Kafka 正在处理数据，也能使用 Kafka [添加分区](https://kafka.apache.org/documentation.html#basic_ops_cluster_expansion)。 Kafka 提供 `kafka-reassign-partitions.sh` 工具用于重新分配分区。 HDInsight 提供[分区副本重新均衡工具](https://github.com/hdinsight/hdinsight-kafka-tools) `rebalance_rackaware.py`。 此重新均衡工具在调用 `kafka-reassign-partitions.sh` 工具时，可让每个副本位于不同的容错域和更新域，以便可以识别 Kafka 机架，并提高容错能力。
+事件中心和 Kafka 流缓冲技术都使用分区，使用者从这些分区读取数据。 缩放输入吞吐量需要增大分区数目，而添加分区又能提供更高的并行度。 在事件中心，部署后无法更改分区计数，因此，必须一开始就有目标缩放的意识。 即使 Kafka 正在处理数据，也能使用 Kafka [添加分区](https://kafka.apache.org/documentation.html#basic_ops_cluster_expansion)。 Kafka 提供 `kafka-reassign-partitions.sh` 工具用于重新分配分区。 HDInsight 提供[分区副本重新均衡工具](https://github.com/hdinsight/hdinsight-kafka-tools)`rebalance_rackaware.py`。 此重新均衡工具在调用 `kafka-reassign-partitions.sh` 工具时，可让每个副本位于不同的容错域和更新域，以便可以识别 Kafka 机架，并提高容错能力。
 
 ### <a name="scale-the-stream-processing-layer"></a>缩放流处理层
 

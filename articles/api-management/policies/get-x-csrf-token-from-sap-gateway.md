@@ -15,11 +15,11 @@ origin.date: 10/13/2017
 ms.date: 02/26/2018
 ms.author: v-yiso
 ms.openlocfilehash: e2b874290fe62f4b6b0ca4465e4015c0794d1957
-ms.sourcegitcommit: d75065296d301f0851f93d6175a508bdd9fd7afc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52644425"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63858236"
 ---
 # <a name="implement-x-csrf-pattern"></a>实现 X-CSRF 模式
 
@@ -27,7 +27,7 @@ ms.locfileid: "52644425"
 
 ## <a name="policy"></a>策略
 
-将代码粘贴到“入站”块中。
+将代码粘贴到“入站”块中  。
 
 ```xml
 <!-- The policy defined in this file shows how to implement X-CSRF pattern used by many APIs. The example is specific to SAP Gateway.  -->

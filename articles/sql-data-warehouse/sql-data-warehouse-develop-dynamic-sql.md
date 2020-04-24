@@ -12,11 +12,11 @@ ms.date: 10/15/2018
 ms.author: v-jay
 ms.reviewer: igorstan
 ms.openlocfilehash: 32ee71063a14fec27f00bc86f50aaa3b3c062037
-ms.sourcegitcommit: d75065296d301f0851f93d6175a508bdd9fd7afc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52654705"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63824981"
 ---
 # <a name="dynamic-sql-in-sql-data-warehouse"></a>SQL 数据仓库中的动态 SQL
 有关在开发解决方案时使用 Azure SQL 数据仓库中的动态 SQL 的技巧。
@@ -43,5 +43,5 @@ EXEC( @sql_fragment1 + @sql_fragment2 + @sql_fragment3);
 > 
 
 ## <a name="next-steps"></a>后续步骤
-有关更多开发技巧，请参阅 [开发概述](sql-data-warehouse-overview-develop.md)。
+有关更多开发技巧，请参阅[开发概述](sql-data-warehouse-overview-develop.md)。
 

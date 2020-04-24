@@ -12,10 +12,10 @@ origin.date: 11/28/2017
 ms.date: 06/04/2019
 ms.author: v-junlch
 ms.openlocfilehash: 07fbccc161e13a007dab24d7697577422acb2af9
-ms.sourcegitcommit: 9e839c50ac69907e54ddc7ea13ae673d294da77a
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "66491402"
 ---
 # <a name="azure-functions-runtime-overview-preview"></a>Azure Functions 运行时概述（预览版）

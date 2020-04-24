@@ -9,20 +9,20 @@ ms.topic: quickstart
 origin.date: 02/28/2018
 ms.date: 04/29/2019
 ms.openlocfilehash: d64ca7879b7ca6a8513adb4ab80f3490229f4b5b
-ms.sourcegitcommit: 5fc46672ae90b6598130069f10efeeb634e9a5af
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "67236657"
 ---
-# <a name="azure-database-for-mysql-use-mysql-workbench-to-connect-and-query-data"></a>Azure Database for MySQL：使用 MySQL Workbench 连接和查询数据
+# <a name="azure-database-for-mysql-use-mysql-workbench-to-connect-and-query-data"></a>Azure Database for MySQL：使用 MySQL Workbench 进行连接并查询数据
 
 > [!NOTE]
 > 将要查看的是 Azure Database for MySQL 的新服务。 若要查看经典 MySQL Database for Azure 的文档，请访问[此页](https://docs.azure.cn/zh-cn/mysql-database-on-azure/)。
 
 本快速入门演示如何使用 MySQL Workbench 应用程序连接到 Azure Database for MySQL。 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 此快速入门使用以下任意指南中创建的资源作为起点：
 - [使用 Azure 门户创建用于 MySQL 服务器的 Azure 数据库](./quickstart-create-mysql-server-database-using-azure-portal.md)
 - [使用 Azure CLI 创建用于 MySQL 服务器的 Azure 数据库](./quickstart-create-mysql-server-database-using-azure-cli.md)
@@ -57,7 +57,7 @@ ms.locfileid: "67236657"
     | 连接方法 | 标准 (TCP/IP) | 标准 (TCP/IP) 就足够了。 |
     | 主机名 | 服务器名称  | 指定此前在创建 Azure Database for MySQL 时使用过的服务器名称值。 显示的示例服务器为 mydemoserver.mysql.database.chinacloudapi.cn。 请使用完全限定的域名 (\*.mysql.database.chinacloudapi.cn)，如示例中所示。 如果记不起服务器名称，请按上一部分的步骤操作，以便获取连接信息。  |
     | 端口 | 3306 | 在连接到 Azure Database for MySQL 时，始终使用端口 3306。 |
-    | 用户名 |  服务器管理员登录名  | 键入此前在创建 Azure Database for MySQL 时提供的服务器管理员登录用户名。 示例用户名为 myadmin@mydemoserver。 如果记不起用户名，请按上一部分的步骤操作，以便获取连接信息。 格式为“username\@servername”  。
+    | 用户名 |  服务器管理员登录名  | 键入此前在创建 Azure Database for MySQL 时提供的服务器管理员登录用户名。 示例用户名为 myadmin@mydemoserver。 如果记不起用户名，请按上一部分的步骤操作，以便获取连接信息。 格式为 username*servername\@* 。
     | 密码 | 你的密码 | 单击“在保管库中存储...”  按钮来保存密码。 |
 
 3.   单击“测试连接”  以测试是否所有参数均已正确配置。 

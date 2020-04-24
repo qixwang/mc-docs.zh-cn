@@ -9,19 +9,19 @@ ms.date: 7/16/2019
 ms.author: victorh
 ms.custom: include file
 ms.openlocfilehash: d54cc71344673528882826d7bd966a718989d728
-ms.sourcegitcommit: 1414c787aa13b802e43fc7317af96a9e14889e20
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "68332769"
 ---
-| Resource | 默认限制 |
+| 资源 | 默认限制 |
 | --- | --- |
 | 数据吞吐量 |30 Gbps<sup>1</sup> |
 |规则|10,000（已组合所有规则类型）。|
 |最小 AzureFirewallSubnet 大小 |/26|
 |网络和应用程序规则的端口范围|0-64,000。 目前正在努力放宽此限制。|
 |公共 IP 地址|最大为 100|
-|路由表|默认情况下，AzureFirewallSubnet 使用其 NextHopType 值设置为“Internet”  的 0.0.0.0/0 路由。<br><br>Azure 防火墙必须具有直接的 Internet 连接。 如果 AzureFirewallSubnet 知道通过 BGP 的本地网络的默认路由，则必须将其替代为 0.0.0.0/0 UDR，将 NextHopType 值设置为 Internet 以保持 Internet 直接连接   。 默认情况下，Azure 防火墙不支持强制的安全加密链路连接到本地网络。<br><br>但是，如果你的配置要求强制的安全加密链路连接到本地网络，Microsoft 将基于具体的情况提供支持。 请联系支持人员，以便我们可以查看你的情况。 如果接受，我们将允许你的订阅，并确保保持所需的防火墙 Internet 连接。|
+|路由表|默认情况下，AzureFirewallSubnet 使用其 NextHopType 值设置为“Internet”  的 0.0.0.0/0 路由。<br><br>Azure 防火墙必须具有直接的 Internet 连接。 如果 AzureFirewallSubnet 知道通过 BGP 的本地网络的默认路由，则必须将其替代为 0.0.0.0/0 UDR，将 NextHopType 值设置为 Internet 以保持 Internet 直接连接   。 默认情况下，Azure 防火墙不支持强制的安全加密链路连接到本地网络。<br><br>但是，如果你的配置要求强制的安全加密链路连接到本地网络，Microsoft 将基于具体的情况提供支持。 请联系支持人员，以便我们可以查看你的情况。 如果接受，我们将允许你的订阅，确保保持所需的防火墙 Internet 连接。|
 
 <sup>1</sup>如果需要增加这些限制，请与 Azure 支持部门联系。

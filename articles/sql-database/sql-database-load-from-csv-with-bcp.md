@@ -14,11 +14,11 @@ manager: digimobile
 origin.date: 01/25/2019
 ms.date: 03/04/2019
 ms.openlocfilehash: 586406b3f10a71bdd28a9bffcba717de6fa16e2a
-ms.sourcegitcommit: 0ccbf718e90bc4e374df83b1460585d3b17239ab
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57347162"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63823329"
 ---
 # <a name="load-data-from-csv-into-azure-sql-database-flat-files"></a>将数据从 CSV 加载到 Azure SQL 数据库（平面文件）
 

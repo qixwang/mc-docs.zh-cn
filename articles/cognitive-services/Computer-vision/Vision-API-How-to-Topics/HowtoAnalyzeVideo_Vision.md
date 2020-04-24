@@ -13,10 +13,10 @@ ms.date: 05/14/2019
 ms.author: v-junlch
 ms.custom: seodec18
 ms.openlocfilehash: c90fed743217d9d9b92214c9dacbd29bef9be542
-ms.sourcegitcommit: 9235a1f313393f21b5c42cb7a1626b1b93feb8be
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "65598881"
 ---
 # <a name="how-to-analyze-videos-in-real-time"></a>如何实时分析视频
@@ -26,7 +26,7 @@ ms.locfileid: "65598881"
 - 从视频源中获取帧
 - 选择要分析的帧
 - 将这些帧提交到 API
-- 使用从 API 调用返回的每个分析结果
+- 使用 API 调用返回的每个分析结果
 
 这些示例是使用 C# 编写的，代码可以在 GitHub 上找到，网址为：[https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/)。
 
@@ -71,7 +71,7 @@ while (true)
 }
 ```
 
-此方法会在单独的任务中启动每个分析，当我们继续捕捉新帧时，这些任务可在后台运行。 这可避免在等待 API 调用返回时阻塞主线程，但是我们失去了简单版本提供的一些保证：多个 API 调用可能并行执行，但结果可能以错误的顺序返回。 此方法还可能导致多个线程同时进入 ConsumeResult() 函数，如果该函数非线程安全，这可能会很危险。 最后，此简单代码不会跟踪所创建的任务，异常会以无提示方式消失。 因此，我们要添加的最终成分是“使用者”线程，它会跟踪分析任务，引发异常，终止长时间运行的任务，并确保按正确的顺序逐个使用结果。
+此方法会在单独的任务中启动每个分析，当我们继续捕捉新帧时，这些任务可在后台运行。 这可避免在等待 API 调用返回时阻塞主线程，但是我们失去了简单版本提供的一些保证：多个 API 调用可能并行执行，但结果可能以错误的顺序返回。 此方法还可能导致多个线程同时进入 ConsumeResult() 函数，如果该函数非线程安全，这可能会很危险。 最后，此简单代码不会跟踪所创建的任务，异常会以无提示方式消失。 因此，我们要添加的最终成分是“使用者”线程，它会跟踪分析任务，引发异常，终止长时间运行的任务，并确保按正确的顺序逐个使用结果。
 
 ### <a name="a-producer-consumer-design"></a>生成者-使用者设计
 
@@ -142,7 +142,7 @@ while (true)
 
 为了尽快启动并运行应用，我们已实现上述系统，目的是让它足够灵活地实现多种方案并保持易用性。 若要访问代码，请转到 [https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis)。
 
-该库包含 FrameGrabber 类，该类可实现上面所述的生产者-使用者系统，以处理来自网络摄像头的视频帧。 用户可以指定确切的 API 调用格式，该类使用事件来告知调用代码何时获取了新帧，或者有新的分析结果可用。
+该库包含 FrameGrabber 类，该类会通过实现上述生产者-使用者系统来处理网络摄像头中的视频帧。 用户可以指定确切的 API 调用格式，该类使用事件来告知调用代码何时获取了新帧，或者有新的分析结果可用。
 
 为了说明一些可能性，下面例举了使用该库的两个示例应用。 第一个应用是简单的控制台应用，下面再现了此应用的简化版本。 此应用从默认网络摄像头抓帧，并将其提交给人脸 API 进行人脸检测。
 
@@ -193,7 +193,7 @@ namespace VideoFrameConsoleApplication
 
 第二个示例应用更有趣，允许选择对视频帧调用哪个 API。 在左侧，应用显示实时视频预览，在右侧，它显示重叠在相应帧上的最新 API 结果。
 
-在大多数模式下，左侧的实时视频与右侧的可视化分析之间存在明显的延迟。 这种延迟是发出 API 调用所花费的时间。 例外情况是“EmotionsWithClientFaceDetect”模式，它使用 OpenCV 在客户端计算机上本地执行人脸检测，然后将全部图像提交给认知服务。 通过执行此操作，我们可以立即将检测到的人脸可视化，然后在 API 调用返回后更新情感。 此示例演示了“混合”方法的可行性，其中的一些简单处理可在客户端上执行，然后，可以使用认知服务 API 并根据需要配合更高级的分析来增强这种处理。
+在大多数模式下，左侧的实时视频与右侧的可视化分析之间存在明显的延迟。 这种延迟是发出 API 调用所花费的时间。 “EmotionsWithClientFaceDetect”模式则例外，它在将任何图像提交到认知服务之前，会使用 OpenCV 在客户端计算机本地执行人脸检测。 通过执行此操作，我们可以立即将检测到的人脸可视化，然后在 API 调用返回后更新情感。 此示例演示了“混合”方法的可行性，其中的一些简单处理可在客户端上执行，然后，可以使用认知服务 API 并根据需要配合更高级的分析来增强这种处理。
 
 ![LiveCameraSample 应用的屏幕截图，其中显示了带有标签的图像](../../Video/Images/FramebyFrame.jpg)
 
@@ -208,7 +208,7 @@ namespace VideoFrameConsoleApplication
 2. 克隆 [Cognitive-Samples-VideoFrameAnalysis](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/) GitHub 存储库
 
 3. 在 Visual Studio 2015 中打开示例，生成并运行示例应用程序：
-    - 对于 BasicConsoleSample，人脸 API 密钥直接在  [BasicConsoleSample/Program.cs](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/blob/master/Windows/BasicConsoleSample/Program.cs) 中进行硬编码。
+    - 对于 BasicConsoleSample，人脸 API 密钥已在  [BasicConsoleSample/Program.cs](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/blob/master/Windows/BasicConsoleSample/Program.cs) 中直接进行硬编码。
     - 对于 LiveCameraSample，应在应用的“设置”窗格中输入密钥。 在切换不同的会话后，这些密钥将持久保存为用户数据。
 
 如果已做好集成的准备，**只需从自己的项目引用 VideoFrameAnalyzer 库。**

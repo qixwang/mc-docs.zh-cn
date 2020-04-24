@@ -16,10 +16,10 @@ origin.date: 10/18/2017
 ms.date: 04/17/2019
 ms.author: v-johch
 ms.openlocfilehash: ce3eef126e935570525d50060df89003aff13770
-ms.sourcegitcommit: e9c62212a0d1df1f41c7f40eb58665f4f1eaffb3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "68878474"
 ---
 # <a name="get-started-guide-for-azure-in-china-developers"></a>中国区 Azure 开发人员入门指南

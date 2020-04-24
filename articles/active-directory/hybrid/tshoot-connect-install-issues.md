@@ -17,15 +17,15 @@ ms.subservice: hybrid
 ms.author: v-junlch
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b80a6e83ca912121cc50220324fabdff1abd1e80
-ms.sourcegitcommit: 2836cce46ecb3a8473dfc0ad2c55b1c47d2f0fad
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59355860"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63821806"
 ---
-# <a name="troubleshoot-azure-ad-connect-install-issues"></a>故障排除：Azure AD Connect 安装问题
+# <a name="troubleshoot-azure-ad-connect-install-issues"></a>疑难解答：Azure AD Connect 安装问题
 
-## **<a name="recommended-steps"></a>建议的步骤**
+## <a name="recommended-steps"></a>**建议的步骤**
 请查看适合你的 [Azure AD Connect 安装类型](/active-directory/hybrid/how-to-connect-install-select-installation)。 如果满足快速安装的条件，则强烈建议进行快速安装。 快速安装提供完成安装所需的最少选项，因此出现问题的可能性更小。 
 
 但是，如果不满足快速安装的条件，并且必须执行自定义安装，则下文提供一些可用于避免常见问题的最佳做法。 为简单起见，此处仅提及有选择的选项：
@@ -40,15 +40,15 @@ ms.locfileid: "59355860"
 
     ![AD 林帐户](./media/tshoot-connect-install-issues/tshoot-connect-install-issues/createnewaccount.png)
 
-### **<a name="common-issues"></a>常见问题**
+### <a name="common-issues"></a>**常见问题**
 
 * [本地 Active Directory 的连接问题](/active-directory/hybrid/reference-connect-adconnectivitytools)。
 
 * [联机 Azure Active Directory 的连接问题](/active-directory/hybrid/tshoot-connect-connectivity)。
 
-## **<a name="recommended-documents"></a>建议的文档**
+## <a name="recommended-documents"></a>**建议的文档**
 * [Azure AD Connect 的先决条件](/active-directory/hybrid/how-to-connect-install-prerequisites)
-* [选择用于 Azure AD Connect 的安装类型](/active-directory/hybrid/how-to-connect-install-select-installation)
+* [选择要使用的 Azure AD Connect 安装类型](/active-directory/hybrid/how-to-connect-install-select-installation)
 * [通过快速设置开始使用 Azure AD Connect](/active-directory/hybrid/how-to-connect-install-express)
 * [Azure AD Connect 的自定义安装](/active-directory/hybrid/how-to-connect-install-custom)
 * [Azure AD Connect：从以前版本升级到最新版本](/active-directory/hybrid/how-to-upgrade-previous-version)

@@ -11,10 +11,10 @@ ms.date: 06/03/2019
 ms.author: v-junlch
 ms.custom: include file
 ms.openlocfilehash: 6899d36860ca8d6218696c0af2f24516c5e00c7f
-ms.sourcegitcommit: 9e839c50ac69907e54ddc7ea13ae673d294da77a
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "66491416"
 ---
 还可以在代码中将函数应用设置值读取为环境变量。 有关详细信息，请参阅以下特定于语言的参考主题的“环境变量”部分：

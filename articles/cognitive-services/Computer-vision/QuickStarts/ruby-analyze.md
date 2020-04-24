@@ -13,10 +13,10 @@ ms.date: 05/14/2019
 ms.author: v-junlch
 ms.custom: seodec18
 ms.openlocfilehash: 0a0784ba9fb8e9ff2bee8d210335111cb5a03dcc
-ms.sourcegitcommit: 9235a1f313393f21b5c42cb7a1626b1b93feb8be
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "65598875"
 ---
 # <a name="quickstart-analyze-a-remote-image-using-the-rest-api-and-ruby-in-computer-vision"></a>快速入门：使用计算机视觉中的 REST API 和 Ruby 分析远程图像
@@ -25,7 +25,7 @@ ms.locfileid: "65598875"
 
 如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - 必须安装有 [Ruby](https://www.ruby-lang.org/en/downloads/) 2.4.x 或更高版本。
 - 必须具有计算机视觉的订阅密钥。 你可以按照[创建认知服务帐户](/cognitive-services/cognitive-services-apis-create-account)中的说明订阅计算机视觉并获取密钥。
@@ -40,9 +40,9 @@ ms.locfileid: "65598875"
     1. 如果需要，将 `https://api.cognitive.azure.cn/vision/v2.0/analyze` 替换为你在其中获取了订阅密钥的 Azure 区域中的[分析图像](https://dev.cognitive.azure.cn/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) 方法的终结点 URL。
     1. （可选）将 `language` 请求参数的值替换为其他语言。 
     1. （可选）将 `http://upload.wikimedia.org/wikipedia/commons/3/3c/Shaki_waterfall.jpg\` 替换为要分析的其他图像的 URL。
-1. 将代码保存为以 `.rb` 为扩展名的文件。 例如，`analyze-image.rb`。
+1. 将代码保存为以 `.rb` 为扩展名的文件。 例如，`analyze-image.rb` 。
 1. 打开命令提示符窗口。
-1. 在提示符处，使用 `ruby` 命令运行示例。 例如，`ruby analyze-image.rb`。
+1. 在提示符处，使用 `ruby` 命令运行示例。 例如，`ruby analyze-image.rb` 。
 
 ```ruby
 require 'net/http'

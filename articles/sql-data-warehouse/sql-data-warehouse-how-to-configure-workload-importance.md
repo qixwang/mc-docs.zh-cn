@@ -12,10 +12,10 @@ ms.date: 08/19/2019
 ms.author: v-jay
 ms.reviewer: igorstan
 ms.openlocfilehash: 0b8feeefb20c10dba62522f2346d1eb28b6d5149
-ms.sourcegitcommit: 52ce0d62ea704b5dd968885523d54a36d5787f2d
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "69544864"
 ---
 # <a name="configure-workload-importance-in-azure-sql-data-warehouse"></a>在 Azure SQL 数据仓库中配置工作负荷重要性

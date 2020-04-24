@@ -15,11 +15,11 @@ origin.date: 10/13/2017
 ms.date: 02/26/2018
 ms.author: v-yiso
 ms.openlocfilehash: 8eb0397f3e792fc125faf51478fa6e05293a53b2
-ms.sourcegitcommit: d75065296d301f0851f93d6175a508bdd9fd7afc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52661153"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63824718"
 ---
 # <a name="add-a-forwarded-header"></a>添加 Forwarded 标头
 
@@ -27,7 +27,7 @@ ms.locfileid: "52661153"
 
 ## <a name="code"></a>代码
 
-将代码粘贴到“入站”块中。
+将代码粘贴到“入站”块中  。
 
 ```xml
 <!-- The policy defined in this file demonstrates how to add a Forwarded header in the inbound request to allow the backend API to construct proper URLs.

@@ -10,10 +10,10 @@ ms.topic: quickstart
 origin.date: 09/24/2018
 ms.date: 03/18/2019
 ms.openlocfilehash: d23d8177796dc7439cfbfee5c640618ef3b95d95
-ms.sourcegitcommit: df1adc5cce721db439c1a7af67f1b19280004b2d
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "69578622"
 ---
 <!--Verify sucessfully-->
@@ -63,7 +63,7 @@ Azure Cosmos DB 是世纪互联提供的多区域分布式多模型数据库服�
     cd "C:\git-samples"
     ```
 
-3. 运行下列命令以克隆示例存储库。 此命令在计算机上创建示例应用程序的副本。
+3. 运行下列命令，克隆示例存储库。 此命令在计算机上创建示例应用程序的副本。
 
     ```bash
     git clone https://github.com/Azure-Samples/azure-cosmos-db-cassandra-python-getting-started.git

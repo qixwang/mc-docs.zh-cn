@@ -10,11 +10,11 @@ ms.date: 01/14/2019
 ms.author: v-jay
 ms.custom: include file
 ms.openlocfilehash: 50d906e5346483fb90718bf2bb6c13e46f892b42
-ms.sourcegitcommit: 5eff40f2a66e71da3f8966289ab0161b059d0263
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54192935"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63823314"
 ---
 ## <a name="create-an-azure-storage-account"></a>创建 Azure 存储帐户
 

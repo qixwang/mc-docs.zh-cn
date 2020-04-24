@@ -17,11 +17,11 @@ origin.date: 08/30/2017
 ms.date: 02/26/2019
 ms.author: v-junlch
 ms.openlocfilehash: f38895e4b8a0bef07a804cf8323d2af96f3ff77c
-ms.sourcegitcommit: 1e5ca29cde225ce7bc8ff55275d82382bf957413
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56903109"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63829300"
 ---
 # <a name="create-an-azure-cache-for-redis"></a>创建 Azure Redis 缓存
 
@@ -49,7 +49,7 @@ az redis create --name contosoCache --resource-group contosoGroup --location chi
 
 此脚本使用以下命令创建资源组和 Azure Redis 缓存。 表中的每条命令均链接到特定于命令的文档。
 
-| 命令 | 注释 |
+| Command | 说明 |
 |---|---|
 | [az group create](/cli/group) | 创建用于存储所有资源的资源组。 |
 | [az redis create](/cli/redis) | 创建 Azure Redis 缓存实例。 |

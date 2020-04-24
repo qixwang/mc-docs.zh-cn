@@ -10,11 +10,11 @@ ms.service: mysql
 ms.topic: article
 ms.date: 02/28/2018
 ms.openlocfilehash: 84c441fd248123fef44306943f6be407e5f97bda
-ms.sourcegitcommit: c3f2948c7350c71dd66228ccf10332e21b686030
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/18/2019
-ms.locfileid: "54396987"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63860730"
 ---
 # <a name="azure-database-for-mysql-videos"></a>Azure Database for MySQL 视频
 

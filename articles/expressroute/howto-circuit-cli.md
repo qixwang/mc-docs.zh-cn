@@ -17,10 +17,10 @@ origin.date: 10/19/2017
 ms.author: v-yiso
 ms.date: 08/12/2019
 ms.openlocfilehash: c89af6d7f4fe815c93426319a9bb3b8520dd3ce4
-ms.sourcegitcommit: fcc768b955bab5c6cb7f898c913bc7ede6815743
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "68733528"
 ---
 # <a name="create-and-modify-an-expressroute-circuit-using-cli"></a>使用 CLI 创建和修改 ExpressRoute 线路
@@ -41,11 +41,11 @@ ms.locfileid: "68733528"
 * 在开始之前，请安装最新版本的 CLI 命令（2.0 或更高版本）。 有关安装 CLI 命令的信息，请参阅[安装 Azure CLI](https://docs.azure.cn/zh-cn/cli/install-azure-cli?view=azure-cli-lastest) 和 [Azure CLI 入门](https://docs.azure.cn/zh-cn/cli/get-started-with-azure-cli?view=azure-cli-lastest)。
 * 在开始配置之前，请查看[先决条件](expressroute-prerequisites.md)和[工作流](expressroute-workflows.md)。
 
-## <a name="create"></a>创建和预配 ExpressRoute 线路
+## <a name="create-and-provision-an-expressroute-circuit"></a><a name="create"></a>创建和预配 ExpressRoute 线路
 
-### <a name="1-sign-in-to-your-azure-account-and-select-your-subscription"></a>1.登录到 Azure 帐户，然后选择订阅
+### <a name="1-sign-in-to-your-azure-account-and-select-your-subscription"></a>1.登录到 Azure 帐户，并选择订阅
 
-要开始配置，请登录到 Azure 帐户。 使用以下示例来帮助连接：
+要开始配置，请登录到 Azure 帐户。 使用下面的示例来帮助你连接：
 
 ```azurecli
 az login
@@ -65,7 +65,7 @@ az account set --subscription "<subscription ID>"
 
 ### <a name="2-get-the-list-of-supported-providers-locations-and-bandwidths"></a>2.获取支持的提供商、位置和带宽的列表
 
-在创建 ExpressRoute 线路之前，需要支持的连接服务提供商、位置和带宽选项的列表。 CLI 命令“az network express-route list-service-providers”会返回此信息，在随后的步骤中将使用此信息：
+在创建 ExpressRoute 线路之前，需要支持的连接服务提供商、位置和带宽选项的列表。 CLI 命令“az network express-route list-service-providers”会返回此信息，在随后的步骤中会使用此信息：
 
 ```azurecli
 az network express-route list-service-providers
@@ -170,9 +170,9 @@ az network express-route list-service-providers
 ]
 ```
 
-查看此响应以检查你的连接服务提供商是否已在此处列出。 请记下以下信息，稍后在创建线路时需要用到：
+查看此响应以检查自己的连接服务提供商是否已在此处列出。 请记下以下信息，稍后在创建线路时需要用到：
 
-* Name
+* 名称
 * PeeringLocations
 * BandwidthsOffered
 
@@ -181,7 +181,7 @@ az network express-route list-service-providers
 ### <a name="3-create-an-expressroute-circuit"></a>3.创建 ExpressRoute 线路
 
 > [!IMPORTANT]
-> 从发布服务密钥的那一刻起，将对 ExpressRoute 线路进行计费。 在连接服务提供商准备好预配线路后，请执行此操作。
+> 从发布服务密钥的那一刻起，会对 ExpressRoute 线路进行计费。 在连接服务提供商准备好预配线路后，请执行此操作。
 > 
 > 
 
@@ -263,14 +263,14 @@ az network express-route list -h
 "circuitProvisioningState": "Enabled"
 ```
 
-当连接服务提供商正在为你启用线路时，线路将更改为以下状态：
+当连接服务提供商正在启用线路时，线路会更改为以下状态：
 
 ```azurecli
 "serviceProviderProvisioningState": "Provisioning"
 "circuitProvisioningState": "Enabled"
 ```
 
-只有 ExpressRoute 线路处于以下状态时，才能使用它。
+ExpressRoute 线路必须处于以下状态时才能使用：
 
 ```azurecli
 "serviceProviderProvisioningState": "Provisioned"
@@ -327,9 +327,9 @@ az network express-route show --resource-group ExpressRouteResourceGroup --name 
 
 ### <a name="8-link-a-virtual-network-to-an-expressroute-circuit"></a>8.将虚拟网络链接到 ExpressRoute 线路
 
-接下来，将虚拟网络链接到 ExpressRoute 线路。 按照[将虚拟网络链接到 ExpressRoute 线路](howto-linkvnet-cli.md)文章中的内容进行操作。
+接下来，将虚拟网络链接到 ExpressRoute 线路。 按照[将虚拟网络链接到 ExpressRoute 线路](howto-linkvnet-cli.md)一文中的内容操作。
 
-## <a name="modify"></a>修改 ExpressRoute 线路
+## <a name="modifying-an-expressroute-circuit"></a><a name="modify"></a>修改 ExpressRoute 线路
 
 可以在不影响连接的情况下修改 ExpressRoute 线路的某些属性。 可以在不停机的情况下进行以下更改：
 
@@ -359,9 +359,9 @@ az network express-route update -n MyCircuit -g ExpressRouteResourceGroup --sku-
 
 在禁用 ExpressRoute 高级版外接程序之前，请了解以下条件：
 
-* 从高级版降级到标准版之前，必须确保链接到线路的虚拟网络数量少于 10。 如果超过 10 个，更新请求则会失败，并且我们将按高级版费率进行收费。
-* 必须取消其他地理政治区域的所有虚拟网络的链接。 如果没有对所有虚拟网络取消链接，更新请求则会失败，并且我们将按高级版费率进行收费。
-* 路由表中专用对等互连的路由必须少于 4,000。 如果你的路由表大小大于 4,000 路由，BGP 会话则会掉线。 在播发的前缀数量小于 4,000 之前，不会重新启用此会话。
+* 从高级版降级到标准版之前，必须确保链接到线路的虚拟网络数量少于 10。 如果超过 10 个，更新请求则会失败，并且我们会按高级版费率进行收费。
+* 必须取消其他地理政治区域的所有虚拟网络的链接。 如果没有对所有虚拟网络取消链接，更新请求则会失败，并且我们会按高级版费率进行收费。
+* 路由表中专用对等互连的路由必须少于 4,000。 如果路由表大小大于 4,000 路由，BGP 会话则会掉线。 在播发的前缀数量小于 4,000 之前，不会重新启用此会话。
 
 可以使用以下示例为现有线路禁用 ExpressRoute 高级版外接程序：
 
@@ -385,7 +385,7 @@ az network express-route update -n MyCircuit -g ExpressRouteResourceGroup --sku-
 az network express-route update -n MyCircuit -g ExpressRouteResourceGroup --bandwidth 1000
 ```
 
-线路的大小会在 Microsoft 端进行调整。 接着，必须联系连接服务提供商，让他们在那一端根据此更改更新配置。 在发出此通知后，我们将开始对更新后的带宽选项进行计费。
+线路的大小会在 Microsoft 端进行调整。 接着，必须联系连接服务提供商，让他们在那一端根据此更改更新配置。 在发出此通知后，我们会开始对更新后的带宽选项进行计费。
 
 ### <a name="to-move-the-sku-from-metered-to-unlimited"></a>将 SKU 从按流量计费转为不受限制
 
@@ -399,7 +399,7 @@ az network express-route update -n MyCircuit -g ExpressRouteResourceGroup --sku-
 
 查看[将 ExpressRoute 线路从经典部署模型转移到资源管理器部署模型](expressroute-howto-move-arm.md)中的说明。
 
-## <a name="delete"></a>取消设置和删除 ExpressRoute 线路
+## <a name="deprovisioning-and-deleting-an-expressroute-circuit"></a><a name="delete"></a>取消设置和删除 ExpressRoute 线路
 
 若要取消预配并删除 ExpressRoute 线路，请确保已了解以下条件：
 

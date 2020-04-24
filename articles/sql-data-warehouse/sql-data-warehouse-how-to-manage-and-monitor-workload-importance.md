@@ -12,10 +12,10 @@ ms.date: 08/19/2019
 ms.author: v-jay
 ms.reviewer: igorstan
 ms.openlocfilehash: b920ed912f2acd49cc537af5141140ec0320e898
-ms.sourcegitcommit: 52ce0d62ea704b5dd968885523d54a36d5787f2d
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "69544863"
 ---
 # <a name="manage-and-monitor-workload-importance-in-azure-sql-data-warehouse"></a>管理和监视 Azure SQL 数据仓库中的工作负荷重要性

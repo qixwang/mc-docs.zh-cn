@@ -10,19 +10,19 @@ ms.date: 04/15/2019
 ms.author: v-yeche
 ms.custom: include file
 ms.openlocfilehash: 42c3899b204cc6fe545a9b4d73db6b5a4e853f25
-ms.sourcegitcommit: f85e05861148b480d6c9ea95ce84a17145872442
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59615273"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63825066"
 ---
 可以在数据资源管理器中使用查询来检索和筛选数据。
 
-1. 在数据资源管理器的“文档”选项卡顶部，查看默认查询 `SELECT * FROM c`。 此查询按 ID 顺序检索并显示集合中的所有文档。 
+1. 在数据资源管理器的“文档”选项卡顶部，  查看默认查询 `SELECT * FROM c`。 此查询按 ID 顺序检索并显示集合中的所有文档。 
 
     ![数据资源管理器中的默认查询是“SELECT * FROM c”](./media/cosmos-db-create-sql-api-query-data/azure-cosmosdb-data-explorer-query.png)
 
-1. 若要更改查询，请选择“编辑筛选器”，将默认查询替换为 `ORDER BY c._ts DESC`，然后选择“应用筛选器”。
+1. 若要更改查询，请选择“编辑筛选器”，  将默认查询替换为 `ORDER BY c._ts DESC`，然后选择“应用筛选器”。 
 
     ![添加“ORDER BY c._ts DESC”并单击“应用筛选器”，更改默认查询](./media/cosmos-db-create-sql-api-query-data/azure-cosmosdb-data-explorer-edit-query.png)
 

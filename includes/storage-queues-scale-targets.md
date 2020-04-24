@@ -6,11 +6,11 @@ origin.date: 10/26/2018
 ms.date: 03/25/2019
 ms.author: v-jay
 ms.openlocfilehash: c00499b37e26b39506a492728ad47290d05a5297
-ms.sourcegitcommit: c70402dacd23ccded50ec6aea9f27f1cf0ec22ba
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58261527"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63846590"
 ---
 | 资源 | 目标 |
 |----------|---------------|

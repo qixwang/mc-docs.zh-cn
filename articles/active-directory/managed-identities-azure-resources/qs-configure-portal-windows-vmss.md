@@ -17,10 +17,10 @@ ms.date: 08/05/2019
 ms.author: v-junlch
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fb8597e9e765c0d83f61219234a33e8dc748f7af
-ms.sourcegitcommit: 461c7b2e798d0c6f1fe9c43043464080fb8e8246
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "68818658"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-a-virtual-machine-scale-set-using-the-azure-portal"></a>使用 Azure 门户在虚拟机规模集上配置 Azure 资源的托管标识
@@ -78,7 +78,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
 在本部分中，你将学习如何使用 Azure 门户从虚拟机规模集中添加和删除用户分配的托管标识。
 
-### <a name="assign-a-user-assigned-managed-identity-during-the-creation-of-a-virtual-machine-scale-set"></a>在创建虚拟机规模集的过程中分配用户分配的托管标识
+### <a name="assign-a-user-assigned-managed-identity-during-the-creation-of-a-virtual-machine-scale-set"></a>在创建虚拟机规模集的过程中分配用户分配托管标识
 
 当前，Azure 门户不支持在创建虚拟机规模集期间分配用户分配的托管标识。 请改为参考以下虚拟机规模集创建快速入门文章来首先创建虚拟机规模集，然后，转到下一部分来了解有关为其分配用户分配的托管标识的详细信息：
 

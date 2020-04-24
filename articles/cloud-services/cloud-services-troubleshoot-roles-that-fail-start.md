@@ -17,11 +17,11 @@ origin.date: 06/15/2018
 ms.author: v-yiso
 ms.date: 07/19/2018
 ms.openlocfilehash: 54daa5d29db8050979772d75ad670f61adf4890a
-ms.sourcegitcommit: d75065296d301f0851f93d6175a508bdd9fd7afc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52655654"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63852034"
 ---
 # <a name="troubleshoot-cloud-service-roles-that-fail-to-start"></a>对无法启动的云服务角色进行故障排除
 
@@ -31,18 +31,18 @@ ms.locfileid: "52655654"
 
 ## <a name="missing-dlls-or-dependencies"></a>缺少 DLL 或依赖项
 
-DLL 或程序集缺失可能导致出现不响应的角色以及在“正在初始化”、“忙”和“正在停止”状态之间循环的角色。
+DLL 或程序集缺失可能导致出现不响应的角色以及在“**正在初始化**”、“**忙**”和“**正在停止**”状态之间循环的角色。
 
 DLL 或程序集缺失的症状可能为：
 
-- 角色实例的状态在“正在初始化”、“忙”、“正在停止”之间循环。
-- 角色实例已转为“就绪”  状态，但导航到 Web 应用程序后未显示相应页面。
+- 角色实例的状态在“**正在初始化**”、“**忙**”、“**正在停止**”之间循环。
+- 角色实例已转为“**就绪**”状态，但在导航到 Web 应用程序时未显示相应页面。
 
 若要调查这些问题，可采用几种推荐的方法。
 
 ## <a name="diagnose-missing-dll-issues-in-a-web-role"></a>在 Web 角色中诊断缺失 DLL 的问题
 
-如果导航到 Web 角色中部署的网站，且浏览器显示类似于下面的服务器错误，可能指示 DLL 缺失。
+如果导航到在 Web 角色中部署的网站，且浏览器显示类似于下面的服务器错误，可能指示 DLL 缺失。
 
 !['/' 应用程序中出现服务器错误。](./media/cloud-services-troubleshoot-roles-that-fail-start/ic503388.png)
 
@@ -74,7 +74,7 @@ DLL 或程序集缺失的症状可能为：
 
 1. 确保安装了 Azure SDK 1.3 或更高版本。
 2. 在使用 Visual Studio 部署解决方案的过程中，启用远程桌面。 有关详细信息，请参阅[使用 Visual Studio 为 Azure 云服务中的角色启用远程桌面连接](cloud-services-role-enable-remote-desktop-visual-studio.md)。
-3. 在 Azure 门户中，在实例显示“就绪”状态后，远程连接到该实例。 有关通过云服务使用远程桌面的详细信息，请参阅[远程连接到角色实例](cloud-services-role-enable-remote-desktop-new-portal.md#remote-into-role-instances)。
+3. 在 Azure 门户中，在实例显示“就绪”状态后，远程连接到该实例  。 有关通过云服务使用远程桌面的详细信息，请参阅[远程连接到角色实例](cloud-services-role-enable-remote-desktop-new-portal.md#remote-into-role-instances)。
 5. 使用在远程桌面配置期间指定的凭据登录到虚拟机。
 
 6. 打开命令窗口。
@@ -85,9 +85,9 @@ DLL 或程序集缺失的症状可能为：
 
 9. 打开 Internet Explorer。
 
-10. 键入 Web 应用程序的地址和名称。 例如， `http://<IPV4 Address>/default.aspx`。
+10. 键入 Web 应用程序的地址和名称。 例如，`http://<IPV4 Address>/default.aspx` 。
 
-现在，导航到网站返回更明确的错误消息：
+现在，导航到网站将返回更明确的错误消息：
 
 * '/' 应用程序中出现服务器错误。
 
@@ -111,11 +111,11 @@ DLL 或程序集缺失的症状可能为：
 
 3. 在 Windows 资源管理器中，导航到云服务项目的 bin\debug 文件夹。
 
-4. 将 .csx 文件夹和 .cscfg 文件复制到用于调试问题的计算机。
+4. 将 .csx 文件夹和 .cscfg 文件复制到用来调试问题的计算机。
 
 5. 在干净的计算机上打开 Azure SDK 命令提示符窗口并键入 `csrun.exe /devstore:start`。
 
-6. 在命令提示符处，键入 `run csrun <path to .csx folder> <path to .cscfg file> /launchBrowser`。
+6. 在命令提示符下键入 `run csrun <path to .csx folder> <path to .cscfg file> /launchBrowser`。
 
 7. 角色启动后，会在 Internet Explorer 中看到详细的错误信息。 还可使用标准的 Windows 故障排除工具来进一步诊断问题。
 
@@ -126,19 +126,19 @@ DLL 或程序集缺失的症状可能为：
 
 1. 确认已安装 Azure SDK 1.3 或更高版本。
 
-2. 使用 Visual Studio 部署解决方案。 在部署期间，请选中“为 .NET 4 角色启用 IntelliTrace”  复选框。
+2. 使用 Visual Studio 部署解决方案。 在部署期间，请选中“**为 .NET 4 角色启用 IntelliTrace**”复选框。
 
-3. 实例启动后，打开“服务器资源管理器” 。
+3. 实例启动后，打开“**服务器资源管理器**”。
 
-4. 展开“Azure\\Cloud Services”节点并查找部署。
+4. 展开 **Azure\\Cloud Services** 节点并查找部署。
 
 5. 展开部署，直至看到角色实例。 右键单击其中一个实例。
 
-6. 选择“查看 IntelliTrace 日志” 。 此时会打开“IntelliTrace 摘要”  。
+6. 选择“**查看 IntelliTrace 日志**”。 此时会打开“**IntelliTrace 摘要**”。
 
-7. 查找摘要的异常部分。 如果存在异常，则会将该部分标记为“异常数据” 。
+7. 查找摘要的异常部分。 如果存在异常，则会将该部分标记为“**异常数据**”。
 
-8. 展开“异常数据”并查找类似如下内容的 System.IO.FileNotFoundException 错误：
+8. 展开“**异常数据**”并查找类似如下内容的 **System.IO.FileNotFoundException** 错误：
 
 ![异常数据、缺少文件或程序集](./media/cloud-services-troubleshoot-roles-that-fail-start/ic503390.png)
 
@@ -148,15 +148,15 @@ DLL 或程序集缺失的症状可能为：
 
 1. 在 Visual Studio 中打开解决方案。
 
-2. 在“解决方案资源管理器”中，打开 References 文件夹。
+2. 在“**解决方案资源管理器**”中，打开 **References** 文件夹。
 
 3. 单击错误中标识的程序集。
 
-4. 在“属性”窗格中，找到“复制本地属性”并将值设置为“True”。
+4. 在“**属性**”窗格中，找到“**复制本地属性**”并将值设置为 **True**。
 
 5. 重新部署云服务。
 
-确认所有错误均已更正后，可以在不选中“为 .NET 4 角色启用 IntelliTrace”  复选框的情况下部署服务。
+确认所有错误均已更正后，可以在不选中“**为 .NET 4 角色启用 IntelliTrace**”复选框的情况下部署服务。
 
 ## <a name="next-steps"></a>后续步骤
 

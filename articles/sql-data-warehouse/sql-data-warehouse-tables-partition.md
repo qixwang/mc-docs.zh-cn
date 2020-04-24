@@ -12,11 +12,11 @@ ms.date: 04/01/2019
 ms.author: v-jay
 ms.reviewer: igorstan
 ms.openlocfilehash: e2c3aaa49346883e03bc759f9f8dcf7ef283fded
-ms.sourcegitcommit: b8fb6890caed87831b28c82738d6cecfe50674fd
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58627524"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63829711"
 ---
 # <a name="partitioning-tables-in-sql-data-warehouse"></a>对 SQL 数据仓库中的表进行分区
 在 Azure SQL 数据仓库中使用表分区的建议和示例。
@@ -35,9 +35,9 @@ ms.locfileid: "58627524"
 分区还可用来提高查询性能。 对分区数据应用筛选器的查询可以将扫描限制在合格的分区上。 此筛选方法可以避免全表扫描且仅扫描数据的一个较小子集。 引入聚集列存储索引以后，谓词消除的性能好处不再那么明显，但在某些情况下，可能会对查询有好处。 例如，如果使用销售日期字段将销售事实表分区成 36 个月，以销售日期进行筛选的查询便可以跳过对不符合筛选条件的分区的搜索。
 
 ## <a name="sizing-partitions"></a>调整分区大小
-虽然在某些情况下可以使用分区来改进性能，但如果在创建表时使用 **过多** 分区，则在某些情况下可能会降低性能。  对于聚集列存储表，尤其要考虑到这一点。 若要使数据分区有益于性能，务必了解使用数据分区的时机，以及要创建的分区的数目。 对于多少分区属于分区过多并没有简单的硬性规定，具体取决于数据，以及要同时加载多少分区。 一个成功的分区方案通常只有数十到数百的分区，没有数千个。
+虽然在某些情况下可以使用分区来改进性能，但如果在创建表时使用**过多**分区，则在某些情况下可能会降低性能。  对于聚集列存储表，尤其要考虑到这一点。 若要使数据分区有益于性能，务必了解使用数据分区的时机，以及要创建的分区的数目。 对于多少分区属于分区过多并没有简单的硬性规定，具体取决于数据，以及要同时加载多少分区。 一个成功的分区方案通常只有数十到数百的分区，没有数千个。
 
-在“聚集列存储”表上创建分区时，务请考虑每个分区可容纳的行数。 对于聚集列存储表来说，若要进行最合适的压缩并获得最佳性能，则每个分布和分区至少需要 1 百万行。 在创建分区之前，SQL 数据仓库已将每个表细分到 60 个分布式数据库中。 向表添加的任何分区都是基于在后台创建的分布。 根据此示例，如果销售事实表包含 36 个月的分区，并假设 SQL 数据仓库有 60 个分布区，则销售事实表每个月应包含 6000 万行，或者在填充所有月份时包含 21 亿行。 如果表包含的行数少于每个分区行数的最小建议值，可考虑使用较少的分区，以增加每个分区的行数。 有关详细信息，请参阅[索引编制](sql-data-warehouse-tables-index.md)一文，其中包含的查询可用于评估群集列存储索引的质量。
+在“聚集列存储”表上创建分区时，务请考虑每个分区可容纳的行数  。 对于聚集列存储表来说，若要进行最合适的压缩并获得最佳性能，则每个分布和分区至少需要 1 百万行。 在创建分区之前，SQL 数据仓库已将每个表细分到 60 个分布式数据库中。 向表添加的任何分区都是基于在后台创建的分布。 根据此示例，如果销售事实表包含 36 个月的分区，并假设 SQL 数据仓库有 60 个分布区，则销售事实表每个月应包含 6000 万行，或者在填充所有月份时包含 21 亿行。 如果表包含的行数少于每个分区行数的最小建议值，可考虑使用较少的分区，以增加每个分区的行数。 有关详细信息，请参阅[索引编制](sql-data-warehouse-tables-index.md)一文，其中包含的查询可用于评估群集列存储索引的质量。
 
 ## <a name="syntax-differences-from-sql-server"></a>与 SQL Server 的语法差异
 SQL 数据仓库引入了一种定义比 SQL Server 简单的分区的方法。 在 SQL 数据仓库中不像在 SQL Server 中一样使用分区函数和方案。 只需识别分区列和边界点。 尽管分区的语法可能与 SQL Server 稍有不同，但基本概念是相同的。 SQL Server 和 SQL 数据仓库支持一个表一个分区列，后者可以是范围分区。 若要详细了解分区，请参阅[已分区表和已分区索引](https://docs.microsoft.com/sql/relational-databases/partitions/partitioned-tables-and-indexes)。
@@ -171,7 +171,7 @@ WHERE t.[name] = 'FactInternetSales'
 ALTER TABLE FactInternetSales SPLIT RANGE (20010101);
 ```
 
-消息 35346，级别 15，状态 1，行 44: ALTER PARTITION 语句的 SPLIT 子句失败，因为分区不为空。 仅当表上存在列存储索引时，才可以拆分空分区。 请考虑在发出 ALTER PARTITION 语句前禁用列存储索引，并在 ALTER PARTITION 完成后重建列存储索引。
+消息 35346，级别 15，状态 1，行 44: ALTER PARTITION 语句的 SPLIT 子句失败，因为分区不为空。 如果表中存在列存储索引，则只能拆分空的分区。 请考虑在发出 ALTER PARTITION 语句前禁用列存储索引，并在 ALTER PARTITION 完成后重建列存储索引。
 
 但是，可以使用 `CTAS` 创建新表以保存数据。
 
@@ -227,7 +227,7 @@ UPDATE STATISTICS [dbo].[FactInternetSales];
 ```
 
 ### <a name="load-new-data-into-partitions-that-contain-data-in-one-step"></a>通过一个步骤将新数据加载到包含数据的分区中
-将数据加载到使用分区开关的分区中可以很方便地将新数据暂存在对用户不可见的表中，然后将新数据切换进来。  在繁忙且需要处理与分区切换相关联的锁定争用的系统中，这可能很具挑战性。  在过去，若要清除分区中的现有数据，需要使用 `ALTER TABLE` 将数据切换出来，  然后需要使用另一 `ALTER TABLE` 将新数据切换进去。  在 SQL 数据仓库中，支持在 `ALTER TABLE` 命令中使用 `TRUNCATE_TARGET` 选项。  带 `TRUNCATE_TARGET` 的 `ALTER TABLE` 命令会使用新数据覆盖分区中的现有数据。  下面是一个示例。此示例使用 `CTAS` 创建一个包含现有数据的新表，插入新数据，然后将所有数据切换回目标表中，覆盖现有的数据。
+将数据加载到使用分区开关的分区中可以很方便地将新数据暂存在对用户不可见的表中，然后将新数据切换进来。  在繁忙且需要处理与分区切换相关联的锁定争用的系统中，这可能很具挑战性。  在过去，若要清除分区中的现有数据，需要使用 `ALTER TABLE` 将数据切换出来，  然后需要使用另一 `ALTER TABLE` 将新数据切换进去。  在 SQL 数据仓库中，支持在 `TRUNCATE_TARGET` 命令中使用 `ALTER TABLE` 选项。  带 `TRUNCATE_TARGET` 的 `ALTER TABLE` 命令会使用新数据覆盖分区中的现有数据。  下面是一个示例。此示例使用 `CTAS` 创建一个包含现有数据的新表，插入新数据，然后将所有数据切换回目标表中，覆盖现有的数据。
 
 ```sql
 CREATE TABLE [dbo].[FactInternetSales_NewSales]
@@ -276,7 +276,7 @@ ALTER TABLE dbo.FactInternetSales_NewSales SWITCH PARTITION 2 TO dbo.FactInterne
     ;
     ```
 
-1. `SPLIT` 表：
+1. 在部署过程中 `SPLIT` 表：
 
     ```sql
      -- Create a table containing the partition boundaries
@@ -328,7 +328,7 @@ ALTER TABLE dbo.FactInternetSales_NewSales SWITCH PARTITION 2 TO dbo.FactInterne
     DROP TABLE #partitions;
     ```
 
-使用这种方法时，源代码管理中的代码保持静态，允许动态的分区边界值，并不断地与仓库一起演进。
+使用这种方法时，源代码管理中的代码将保持静态，允许动态的分区边界值，并不断地与仓库一起演进。
 
 ## <a name="next-steps"></a>后续步骤
 有关开发表的详细信息，请参阅[表概述](sql-data-warehouse-tables-overview.md)上的文章。

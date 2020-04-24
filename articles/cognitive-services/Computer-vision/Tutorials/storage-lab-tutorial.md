@@ -12,10 +12,10 @@ origin.date: 04/17/2019
 ms.date: 06/06/2019
 ms.author: v-junlch
 ms.openlocfilehash: eb0bbfe637753a7e18342176e87ad1b8c40eaa41
-ms.sourcegitcommit: 259c97c9322da7add9de9f955eac275d743c9424
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "66830048"
 ---
 # <a name="tutorial-use-computer-vision-to-generate-image-metadata-in-azure-storage"></a>教程：使用计算机视觉在 Azure 存储中生成图像元数据

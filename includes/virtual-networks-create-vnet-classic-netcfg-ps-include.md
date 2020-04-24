@@ -10,10 +10,10 @@ ms.date: 06/10/2019
 ms.author: v-yeche
 ms.custom: include file
 ms.openlocfilehash: 7d155ee5ac78244ed54b848c01a78b2b1d23ec3e
-ms.sourcegitcommit: 5191c30e72cbbfc65a27af7b6251f7e076ba9c88
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "67608081"
 ---
 ## <a name="how-to-create-a-virtual-network-using-a-network-config-file-from-powershell"></a>如何通过 PowerShell 使用网络配置文件创建虚拟网络
@@ -36,8 +36,8 @@ Azure 使用 xml 文件定义适用于订阅的所有虚拟网络。 可以下�
     <?xml version="1.0" encoding="utf-8"?>...
     ```
 
-3. 使用任何 XML 或文本编辑器应用程序打开步骤 2 中保存的文件，并查找 \<VirtualNetworkSites>  元素。 如果已创建网络，每个网络会显示为其自身的 \<VirtualNetworkSite>  元素。
-4. 若要创建此方案中所述的虚拟网络，请在 \<VirtualNetworkSites>  元素的正下方添加以下 XML：
+3. 使用任何 XML 或文本编辑器应用程序打开步骤 2 中保存的文件，并查找 **VirtualNetworkSites>\<** 元素。 如果已创建网络，每个网络会显示为其自身的 **VirtualNetworkSite>\<** 元素。
+4. 若要创建此方案中所述的虚拟网络，请在 **VirtualNetworkSites>\<** 元素的正下方添加以下 XML：
 
     ```xml
      <?xml version="1.0" encoding="utf-8"?>

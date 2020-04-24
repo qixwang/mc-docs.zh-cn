@@ -19,10 +19,10 @@ ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f7953eea850b7f042672cdfadd9dce1aba7cd83d
-ms.sourcegitcommit: 9d5fd3184b6a47bf3b60ffdeeee22a08354ca6b1
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/21/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "67305951"
 ---
 # <a name="user-gets-consent-for-several-resources-using-msalnet"></a>用户使用 MSAL.NET 获得多个资源的同意
@@ -36,7 +36,7 @@ Microsoft 标识平台终结点不允许你一次获取多个资源的令牌。 
 - https:\//mytenant.partner.onmschina.cn/customerapi（具有 2 个范围 `customer.read` 和 `customer.write`）
 - https:\//mytenant.partner.onmschina.cn/vendorapi（具有 2 个范围 `vendor.read` 和 `vendor.write`）
 
-应该使用具有 *extraScopesToConsent* 参数的 `.WithExtraScopeToConsent` 修饰符，如以下示例所示：
+应该使用具有 `.WithExtraScopeToConsent`extraScopesToConsent*参数的* 修饰符，如以下示例所示：
 
 ```csharp
 string[] scopesForCustomerApi = new string[]

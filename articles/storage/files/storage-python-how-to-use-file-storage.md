@@ -11,11 +11,11 @@ ms.date: 02/25/2019
 ms.author: v-jay
 ms.subservice: files
 ms.openlocfilehash: d8476fbd897be34d269f68bf1572b679ba185d4d
-ms.sourcegitcommit: 0fd74557936098811166d0e9148e66b350e5b5fa
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56665480"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63824494"
 ---
 # <a name="develop-for-azure-files-with-python"></a>使用 Python 针对 Azure 文件进行开发
 [!INCLUDE [storage-selector-file-include](../../../includes/storage-selector-file-include.md)]

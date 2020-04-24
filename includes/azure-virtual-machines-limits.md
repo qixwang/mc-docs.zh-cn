@@ -6,13 +6,13 @@ origin.date: 11/09/2018
 ms.date: 05/20/2019
 ms.author: v-yeche
 ms.openlocfilehash: 16a91ad3ae8c7b41d5417bbb627c0b44e6d636ca
-ms.sourcegitcommit: bf4afcef846cc82005f06e6dfe8dd3b00f9d49f3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "66039219"
 ---
-| Resource | 默认限制 | 最大限制 |
+| 资源 | 默认限制 | 最大限制 |
 | --- | --- | --- |
 | 每个云服务的[虚拟机数](../articles/virtual-machines/virtual-machines-linux-about.md?toc=%2fvirtual-machines%2flinux%2ftoc.json)<sup>1</sup> |50 |50 |
 | 每个云服务的输入终结点数<sup>2</sup> |150 |150 |

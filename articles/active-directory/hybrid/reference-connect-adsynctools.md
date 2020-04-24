@@ -12,11 +12,11 @@ ms.author: v-junlch
 ms.topic: reference
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3247ffa56547cbd4d5107c97e68f952d05ab4f7f
-ms.sourcegitcommit: 46a8da077726a15b5923e4e688fd92153ebe2bf0
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58186679"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63829127"
 ---
 # <a name="azure-ad-connect--adsynctools-powershell-reference"></a>Azure AD Connect：ADSyncTools PowerShell 参考
 以下文档提供了 Azure AD Connect 随附的 ADSyncTools.psm1 PowerShell 模块的参考信息。
@@ -26,7 +26,7 @@ ms.locfileid: "58186679"
 ### <a name="synopsis"></a>摘要
 清除 AD 用户的 mS-Ds-ConsistencyGuid
 
-### <a name="syntax"></a>语法
+### <a name="syntax"></a>SYNTAX
 
 ```
 Clear-ADSyncToolsConsistencyGuid [-User] <Object> [<CommonParameters>]
@@ -47,7 +47,7 @@ Example of how to use this cmdlet
 Another example of how to use this cmdlet
 ```
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>PARAMETERS
 
 #### <a name="-user"></a>-User
 要在 AD 中设置的目标用户
@@ -66,14 +66,14 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 此 cmdlet 支持以下常见参数：-Debug、-ErrorAction、-ErrorVariable、-InformationAction、-InformationVariable、-OutVariable、-OutBuffer、-PipelineVariable、-Verbose、-WarningAction 和 -WarningVariable。
-有关详细信息，请参阅 about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216)。
+有关详细信息，请参阅 about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216) 。
 
 ## <a name="confirm-adsynctoolsadmoduleloaded"></a>Confirm-ADSyncToolsADModuleLoaded
 
 ### <a name="synopsis"></a>摘要
 {{Fill in the Synopsis}}
 
-### <a name="syntax"></a>语法
+### <a name="syntax"></a>SYNTAX
 
 ```
 Confirm-ADSyncToolsADModuleLoaded
@@ -96,7 +96,7 @@ PS C:\> {{ Add example code here }}
 ### <a name="synopsis"></a>摘要
 {{Fill in the Synopsis}}
 
-### <a name="syntax"></a>语法
+### <a name="syntax"></a>SYNTAX
 
 ```
 Connect-AdSyncDatabase [-Server] <String> [[-Instance] <String>] [[-Database] <String>] [[-UserName] <String>]
@@ -115,7 +115,7 @@ PS C:\> {{ Add example code here }}
 
 {{ Add example description here }}
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>PARAMETERS
 
 #### <a name="-database"></a>-Database
 {{Fill Database Description}}
@@ -194,14 +194,14 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 此 cmdlet 支持以下常见参数：-Debug、-ErrorAction、-ErrorVariable、-InformationAction、-InformationVariable、-OutVariable、-OutBuffer、-PipelineVariable、-Verbose、-WarningAction 和 -WarningVariable。
-有关详细信息，请参阅 about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216)。
+有关详细信息，请参阅 about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216) 。
 
 ## <a name="export-adsynctoolsconsistencyguidmigration"></a>Export-ADSyncToolsConsistencyGuidMigration
 
 ### <a name="synopsis"></a>摘要
 导出 ConsistencyGuid 报告
 
-### <a name="syntax"></a>语法
+### <a name="syntax"></a>SYNTAX
 
 ```
 Export-ADSyncToolsConsistencyGuidMigration [-AlternativeLoginId] [-UserPrincipalName] <String>
@@ -223,7 +223,7 @@ Import-Csv .\AllSyncUsers.csv | Export-ADSyncToolsConsistencyGuidMigration -Outp
 Another example of how to use this cmdlet
 ```
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>PARAMETERS
 
 #### <a name="-alternativeloginid"></a>-AlternativeLoginId
 使用备用登录 ID（邮件）
@@ -287,14 +287,14 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 此 cmdlet 支持以下常见参数：-Debug、-ErrorAction、-ErrorVariable、-InformationAction、-InformationVariable、-OutVariable、-OutBuffer、-PipelineVariable、-Verbose、-WarningAction 和 -WarningVariable。
-有关详细信息，请参阅 about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216)。
+有关详细信息，请参阅 about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216) 。
 
 ## <a name="get-adsyncsqlbrowserinstances"></a>Get-ADSyncSQLBrowserInstances
 
 ### <a name="synopsis"></a>摘要
 {{Fill in the Synopsis}}
 
-### <a name="syntax"></a>语法
+### <a name="syntax"></a>SYNTAX
 
 ```
 Get-ADSyncSQLBrowserInstances [[-hostName] <String>]
@@ -312,7 +312,7 @@ PS C:\> {{ Add example code here }}
 
 {{ Add example description here }}
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>PARAMETERS
 
 #### <a name="-hostname"></a>-hostName
 {{Fill hostName Description}}
@@ -334,7 +334,7 @@ Accept wildcard characters: False
 ### <a name="synopsis"></a>摘要
 从 AD 获取用户
 
-### <a name="syntax"></a>语法
+### <a name="syntax"></a>SYNTAX
 
 ```
 Get-ADSyncToolsADuser [-User] <Object> [<CommonParameters>]
@@ -355,7 +355,7 @@ Example of how to use this cmdlet
 Another example of how to use this cmdlet
 ```
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>PARAMETERS
 
 #### <a name="-user"></a>-User
 AD 中要设置 ConsistencyGuid AD 的目标用户
@@ -374,14 +374,14 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 此 cmdlet 支持以下常见参数：-Debug、-ErrorAction、-ErrorVariable、-InformationAction、-InformationVariable、-OutVariable、-OutBuffer、-PipelineVariable、-Verbose、-WarningAction 和 -WarningVariable。
-有关详细信息，请参阅 about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216)。
+有关详细信息，请参阅 about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216) 。
 
 ## <a name="get-adsynctoolsconsistencyguid"></a>Get-ADSyncToolsConsistencyGuid
 
 ### <a name="synopsis"></a>摘要
 从 AD 用户获取 mS-Ds-ConsistencyGuid
 
-### <a name="syntax"></a>语法
+### <a name="syntax"></a>SYNTAX
 
 ```
 Get-ADSyncToolsConsistencyGuid [-User] <Object> [<CommonParameters>]
@@ -402,7 +402,7 @@ Example of how to use this cmdlet
 Another example of how to use this cmdlet
 ```
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>PARAMETERS
 
 #### <a name="-user"></a>-User
 要在 AD 中设置的目标用户
@@ -421,14 +421,14 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 此 cmdlet 支持以下常见参数：-Debug、-ErrorAction、-ErrorVariable、-InformationAction、-InformationVariable、-OutVariable、-OutBuffer、-PipelineVariable、-Verbose、-WarningAction 和 -WarningVariable。
-有关详细信息，请参阅 about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216)。
+有关详细信息，请参阅 about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216) 。
 
 ## <a name="get-adsynctoolsobjectguid"></a>Get-ADSyncToolsObjectGuid
 
 ### <a name="synopsis"></a>摘要
 从 AD 用户获取 ObjectGuid
 
-### <a name="syntax"></a>语法
+### <a name="syntax"></a>SYNTAX
 
 ```
 Get-ADSyncToolsObjectGuid [-User] <Object> [<CommonParameters>]
@@ -449,7 +449,7 @@ Example of how to use this cmdlet
 Another example of how to use this cmdlet
 ```
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>PARAMETERS
 
 #### <a name="-user"></a>-User
 要在 AD 中设置的目标用户
@@ -468,14 +468,14 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 此 cmdlet 支持以下常见参数：-Debug、-ErrorAction、-ErrorVariable、-InformationAction、-InformationVariable、-OutVariable、-OutBuffer、-PipelineVariable、-Verbose、-WarningAction 和 -WarningVariable。
-有关详细信息，请参阅 about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216)。
+有关详细信息，请参阅 about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216) 。
 
 ## <a name="get-adsynctoolsrunhistory"></a>Get-ADSyncToolsRunHistory
 
 ### <a name="synopsis"></a>摘要
 获取 AAD Connect 运行历史记录
 
-### <a name="syntax"></a>语法
+### <a name="syntax"></a>SYNTAX
 
 ```
 Get-ADSyncToolsRunHistory [[-Days] <Int32>] [<CommonParameters>]
@@ -496,7 +496,7 @@ Get-ADSyncToolsRunHistory
 Get-ADSyncToolsRunHistory -Days 1
 ```
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>PARAMETERS
 
 #### <a name="-days"></a>-Days
 {{Fill Days Description}}
@@ -515,21 +515,21 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 此 cmdlet 支持以下常见参数：-Debug、-ErrorAction、-ErrorVariable、-InformationAction、-InformationVariable、-OutVariable、-OutBuffer、-PipelineVariable、-Verbose、-WarningAction 和 -WarningVariable。
-有关详细信息，请参阅 about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216)。
+有关详细信息，请参阅 about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216) 。
 
 ## <a name="get-adsynctoolssourceanchorchanged"></a>Get-ADSyncToolsSourceAnchorChanged
 
 ### <a name="synopsis"></a>摘要
 获取发生了 SourceAnchor 更改错误的用户
 
-### <a name="syntax"></a>语法
+### <a name="syntax"></a>SYNTAX
 
 ```
 Get-ADSyncToolsSourceAnchorChanged [-sourcePath] <Object> [-outputPath] <Object> [<CommonParameters>]
 ```
 
 ### <a name="description"></a>说明
-函数将查询 AAD Connect 运行历史记录，并导出报告以下错误的所有用户：“SourceAnchor 属性已更改”。
+函数将查询 AAD Connect 运行历史记录，并导出报告以下错误的所有用户：“SourceAnchor 属性已更改”错误的所有用户。
 
 ### <a name="examples"></a>示例
 
@@ -547,7 +547,7 @@ $sourcePath = Read-Host -Prompt "Enter your log file path with file name" #"\<So
 Another example of how to use this cmdlet
 ```
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>PARAMETERS
 
 #### <a name="-sourcepath"></a>-sourcePath
 {{Fill sourcePath Description}}
@@ -581,14 +581,14 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 此 cmdlet 支持以下常见参数：-Debug、-ErrorAction、-ErrorVariable、-InformationAction、-InformationVariable、-OutVariable、-OutBuffer、-PipelineVariable、-Verbose、-WarningAction 和 -WarningVariable。
-有关详细信息，请参阅 about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216)。
+有关详细信息，请参阅 about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216) 。
 
 ## <a name="import-adsynctoolsimmutableidmigration"></a>Import-ADSyncToolsImmutableIdMigration
 
 ### <a name="synopsis"></a>摘要
 从 AAD 导入 ImmutableID
 
-### <a name="syntax"></a>语法
+### <a name="syntax"></a>SYNTAX
 
 ```
 Import-ADSyncToolsImmutableIdMigration [-Output] <String> [-IncludeSyncUsersFromRecycleBin]
@@ -610,7 +610,7 @@ Import-ADSyncToolsImmutableIdMigration -OutputFile '.\AllSyncUsers.csv'
 Another example of how to use this cmdlet
 ```
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>PARAMETERS
 
 #### <a name="-output"></a>-Output
 输出 CSV 文件
@@ -644,7 +644,7 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 此 cmdlet 支持以下常见参数：-Debug、-ErrorAction、-ErrorVariable、-InformationAction、-InformationVariable、-OutVariable、-OutBuffer、-PipelineVariable、-Verbose、-WarningAction 和 -WarningVariable。
-有关详细信息，请参阅 about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216)。
+有关详细信息，请参阅 about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216) 。
 
 
 ## <a name="invoke-adsyncdatabasequery"></a>Invoke-AdSyncDatabaseQuery
@@ -652,7 +652,7 @@ Accept wildcard characters: False
 ### <a name="synopsis"></a>摘要
 {{Fill in the Synopsis}}
 
-### <a name="syntax"></a>语法
+### <a name="syntax"></a>SYNTAX
 
 ```
 Invoke-AdSyncDatabaseQuery [-SqlConnection] <SqlConnection> [[-Query] <String>] [<CommonParameters>]
@@ -670,7 +670,7 @@ PS C:\> {{ Add example code here }}
 
 {{ Add example description here }}
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>PARAMETERS
 
 #### <a name="-query"></a>-Query
 {{Fill Query Description}}
@@ -704,14 +704,14 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 此 cmdlet 支持以下常见参数：-Debug、-ErrorAction、-ErrorVariable、-InformationAction、-InformationVariable、-OutVariable、-OutBuffer、-PipelineVariable、-Verbose、-WarningAction 和 -WarningVariable。
-有关详细信息，请参阅 about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216)。
+有关详细信息，请参阅 about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216) 。
 
 ## <a name="remove-adsynctoolsexpiredcertificates"></a>Remove-ADSyncToolsExpiredCertificates
 
 ### <a name="synopsis"></a>摘要
 用于从 UserCertificate 属性中删除已过期证书的脚本
 
-### <a name="syntax"></a>语法
+### <a name="syntax"></a>SYNTAX
 
 ```
 Remove-ADSyncToolsExpiredCertificates [-TargetOU] <String> [[-BackupOnly] <Boolean>] [-ObjectClass] <String>
@@ -740,7 +740,7 @@ Delete Expired Certs from all Computer objects in target OU - Expired Certificat
 
 Remove-ADSyncToolsExpiredCertificates -TargetOU "OU=Computers,OU=Corp,DC=Contoso,DC=com" -ObjectClass computer -BackupOnly $false
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>PARAMETERS
 
 #### <a name="-targetou"></a>-TargetOU
 要在其中查找 AD 对象的目标 OU
@@ -789,14 +789,14 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 此 cmdlet 支持以下常见参数：-Debug、-ErrorAction、-ErrorVariable、-InformationAction、-InformationVariable、-OutVariable、-OutBuffer、-PipelineVariable、-Verbose、-WarningAction 和 -WarningVariable。
-有关详细信息，请参阅 about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216)。
+有关详细信息，请参阅 about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216) 。
 
 ## <a name="repair-adsynctoolsautoupgradestate"></a>Repair-ADSyncToolsAutoUpgradeState
 
 ### <a name="synopsis"></a>摘要
 简短说明
 
-### <a name="syntax"></a>语法
+### <a name="syntax"></a>SYNTAX
 
 ```
 Repair-ADSyncToolsAutoUpgradeState
@@ -822,7 +822,7 @@ Another example of how to use this cmdlet
 ### <a name="synopsis"></a>摘要
 {{Fill in the Synopsis}}
 
-### <a name="syntax"></a>语法
+### <a name="syntax"></a>SYNTAX
 
 ```
 Resolve-ADSyncHostAddress [[-hostName] <String>]
@@ -840,7 +840,7 @@ PS C:\> {{ Add example code here }}
 
 {{ Add example description here }}
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>PARAMETERS
 
 #### <a name="-hostname"></a>-hostName
 {{Fill hostName Description}}
@@ -862,7 +862,7 @@ Accept wildcard characters: False
 ### <a name="synopsis"></a>摘要
 (TO DO) 从证书文件还原 AD UserCertificate 属性
 
-### <a name="syntax"></a>语法
+### <a name="syntax"></a>SYNTAX
 
 ```
 Restore-ADSyncToolsExpiredCertificates
@@ -888,7 +888,7 @@ Another example of how to use this cmdlet
 ### <a name="synopsis"></a>摘要
 对 AD 用户设置 mS-Ds-ConsistencyGuid
 
-### <a name="syntax"></a>语法
+### <a name="syntax"></a>SYNTAX
 
 ```
 Set-ADSyncToolsConsistencyGuid [-User] <Object> [-Value] <Object> [<CommonParameters>]
@@ -909,7 +909,7 @@ Example of how to use this cmdlet
 Another example of how to use this cmdlet
 ```
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>PARAMETERS
 
 #### <a name="-user"></a>-User
 AD 中要设置 ConsistencyGuid AD 的目标用户
@@ -943,14 +943,14 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 此 cmdlet 支持以下常见参数：-Debug、-ErrorAction、-ErrorVariable、-InformationAction、-InformationVariable、-OutVariable、-OutBuffer、-PipelineVariable、-Verbose、-WarningAction 和 -WarningVariable。
-有关详细信息，请参阅 about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216)。
+有关详细信息，请参阅 about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216) 。
 
 ## <a name="test-adsyncnetworkport"></a>Test-ADSyncNetworkPort
 
 ### <a name="synopsis"></a>摘要
 {{Fill in the Synopsis}}
 
-### <a name="syntax"></a>语法
+### <a name="syntax"></a>SYNTAX
 
 ```
 Test-ADSyncNetworkPort [[-hostName] <String>] [[-port] <String>]
@@ -968,7 +968,7 @@ PS C:\> {{ Add example code here }}
 
 {{ Add example description here }}
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>PARAMETERS
 
 #### <a name="-hostname"></a>-hostName
 {{Fill hostName Description}}
@@ -1005,7 +1005,7 @@ Accept wildcard characters: False
 ### <a name="synopsis"></a>摘要
 通过 AD 导入步骤创建跟踪文件
 
-### <a name="syntax"></a>语法
+### <a name="syntax"></a>SYNTAX
 
 ```
 Trace-ADSyncToolsADImport [[-ADConnectorXML] <String>] [[-dc] <String>] [[-rootDN] <String>]
@@ -1027,7 +1027,7 @@ Example of how to use this cmdlet
 Another example of how to use this cmdlet
 ```
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>PARAMETERS
 
 #### <a name="-adconnectorxml"></a>-ADConnectorXML
 {{Fill ADConnectorXML Description}}
@@ -1122,14 +1122,14 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 此 cmdlet 支持以下常见参数：-Debug、-ErrorAction、-ErrorVariable、-InformationAction、-InformationVariable、-OutVariable、-OutBuffer、-PipelineVariable、-Verbose、-WarningAction 和 -WarningVariable。
-有关详细信息，请参阅 about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216)。
+有关详细信息，请参阅 about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216) 。
 
 ## <a name="trace-adsynctoolsldapquery"></a>Trace-ADSyncToolsLdapQuery
 
 ### <a name="synopsis"></a>摘要
 简短说明
 
-### <a name="syntax"></a>语法
+### <a name="syntax"></a>SYNTAX
 
 ```
 Trace-ADSyncToolsLdapQuery [-Context] <String> [-Server] <String> [-Port] <Int32> [-Filter] <String>
@@ -1151,7 +1151,7 @@ Example of how to use this cmdlet
 Another example of how to use this cmdlet
 ```
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>PARAMETERS
 
 #### <a name="-context"></a>-Context
 参数 1 帮助说明
@@ -1215,14 +1215,14 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 此 cmdlet 支持以下常见参数：-Debug、-ErrorAction、-ErrorVariable、-InformationAction、-InformationVariable、-OutVariable、-OutBuffer、-PipelineVariable、-Verbose、-WarningAction 和 -WarningVariable。
-有关详细信息，请参阅 about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216)。
+有关详细信息，请参阅 about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216) 。
 
 ## <a name="update-adsynctoolsconsistencyguidmigration"></a>Update-ADSyncToolsConsistencyGuidMigration
 
 ### <a name="synopsis"></a>摘要
 使用新的 ConsistencyGuid (ImmutableId) 更新用户
 
-### <a name="syntax"></a>语法
+### <a name="syntax"></a>SYNTAX
 
 ```
 Update-ADSyncToolsConsistencyGuidMigration [[-DistinguishedName] <String>] [-ImmutableIdGUID] <String>
@@ -1244,7 +1244,7 @@ Import-Csv .\AllSyncUsersTEST-Report.csv -Delimiter "`t"| Update-ADSyncToolsCons
 Import-Csv .\AllSyncUsersTEST-Report.csv -Delimiter "`t"| Update-ADSyncToolsConsistencyGuidMigration -Output .\AllSyncUsersTEST-Result2
 ```
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>PARAMETERS
 
 #### <a name="-distinguishedname"></a>-DistinguishedName
 DistinguishedName
@@ -1339,6 +1339,6 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 此 cmdlet 支持以下常见参数：-Debug、-ErrorAction、-ErrorVariable、-InformationAction、-InformationVariable、-OutVariable、-OutBuffer、-PipelineVariable、-Verbose、-WarningAction 和 -WarningVariable。
-有关详细信息，请参阅 about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216)。
+有关详细信息，请参阅 about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216) 。
 
 <!-- Update_Description: wording update -->

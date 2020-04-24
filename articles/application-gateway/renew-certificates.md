@@ -10,11 +10,11 @@ origin.date: 08/15/2018
 ms.date: 03/12/2019
 ms.author: v-junlch
 ms.openlocfilehash: d4d5e5832e6fe7030ff8ed9df233e6ee5186ac42
-ms.sourcegitcommit: d750a61a0e52a41cff5607149e33b6be189075d4
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57788729"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63849544"
 ---
 # <a name="renew-application-gateway-certificates"></a>续订应用程序网关证书
 
@@ -24,11 +24,11 @@ ms.locfileid: "57788729"
 
 ## <a name="azure-portal"></a>Azure 门户
 
-若要从门户续订侦听器证书，请导航到应用程序网关侦听器。 单击具有需要续订的证书的侦听器，然后单击“续订或编辑所选证书”。
+若要从门户续订侦听器证书，请导航到应用程序网关侦听器。 单击具有需要续订的证书的侦听器，然后单击“续订或编辑所选证书”  。
 
 ![续订证书](./media/renew-certificate/ssl-cert.png)
 
-上传新的 PFX 证书，为其命名，输入密码，然后单击“保存”。
+上传新的 PFX 证书，为其命名，输入密码，然后单击“保存”  。
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 

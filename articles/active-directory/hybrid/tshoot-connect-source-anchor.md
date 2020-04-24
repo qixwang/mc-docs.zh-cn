@@ -12,10 +12,10 @@ ms.date: 05/10/2019
 ms.subservice: hybrid
 ms.author: v-junlch
 ms.openlocfilehash: 666b090a3e3c4b4f27c4c1f96e2bf74bf2350f51
-ms.sourcegitcommit: 8b9dff249212ca062ec0838bafa77df3bea22cc3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "65520838"
 ---
 # <a name="troubleshooting-source-anchor-issues-during-installation"></a>在安装期间排查源定位点问题
@@ -47,5 +47,5 @@ ms.locfileid: "65520838"
 
 
 ## <a name="next-steps"></a>后续步骤
-了解有关 [将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)的详细信息。
+了解有关[将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)的详细信息。
 

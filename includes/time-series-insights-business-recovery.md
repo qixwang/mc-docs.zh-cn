@@ -5,10 +5,10 @@ author: kingdomofends
 ms.author: adgera
 ms.date: 04/29/2019
 ms.openlocfilehash: 5341a7a06a25e9724594ff398b3b1397bd14c221
-ms.sourcegitcommit: c0f7c439184efa26597e97e5431500a2a43c81a5
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "67456382"
 ---
 ## <a name="business-disaster-recovery"></a>业务灾难恢复

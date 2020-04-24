@@ -6,17 +6,17 @@ origin.date: 10/26/2018
 ms.date: 05/20/2019
 ms.author: v-yeche
 ms.openlocfilehash: 633fc14993fc6ae619e91c83f3a3e866ff809acc
-ms.sourcegitcommit: 878a2d65e042b466c083d3ede1ab0988916eaa3d
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "65835647"
 ---
 可以通过 Azure CLI 在 macOS、Linux 和 Windows 上创建和管理 Azure 资源。 本文详述了一些最常用于创建和管理虚拟机 (VM) 的命令。
 
-本文需要 Azure CLI 2.0.4 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行升级，请参阅[安装 Azure CLI](https://docs.azure.cn/zh-cn/cli/install-azure-cli?view=azure-cli-latest)。 上获取。
+本文需要 Azure CLI 2.0.4 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行升级，请参阅[安装 Azure CLI](https://docs.azure.cn/zh-cn/cli/install-azure-cli?view=azure-cli-latest)。 。
 
-## <a name="basic-azure-resource-manager-commands-in-azure-cli"></a>Azure CLI 中的基本 Azure Resource Manager 命令
+## <a name="basic-azure-resource-manager-commands-in-azure-cli"></a>Azure CLI 中的基本 Azure 资源管理器命令
 有关特定命令行开关和选项的详细帮助，可以通过键入 `az <command> <subcommand> --help` 来使用联机命令帮助和选项。
 
 ### <a name="create-vms"></a>创建 VM

@@ -12,10 +12,10 @@ origin.date: 04/26/2019
 ms.date: 06/10/2019
 ms.author: v-junlch
 ms.openlocfilehash: 6f4791aadbf89262301b808ab15036ef8a80f884
-ms.sourcegitcommit: 259c97c9322da7add9de9f955eac275d743c9424
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "66830119"
 ---
 # <a name="face-detection-and-attributes"></a>人脸检测和属性

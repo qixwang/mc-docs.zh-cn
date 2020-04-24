@@ -16,27 +16,27 @@ origin.date: 07/18/2017
 ms.author: v-yiso
 ms.date: 08/20/2018
 ms.openlocfilehash: a3b2588cc42f979ebecb13153ea78f7f9fcbc34f
-ms.sourcegitcommit: d75065296d301f0851f93d6175a508bdd9fd7afc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52653218"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63859068"
 ---
 # <a name="connecting-azure-cloud-services-roles-to-a-custom-ad-domain-controller-hosted-in-azure"></a>将 Azure 云服务角色连接到 Azure 中托管的自定义 AD 域控制器
 我们先在 Azure 中设置一个虚拟网络 (VNet)。 然后将 Active Directory 域控制器（托管在 Azure 虚拟机上）添加到该 VNet。 接下来，将现有云服务角色添加预先创建的 VNet，然后将它们连接到域控制器。
 
 在开始之前，请特别注意以下几点：
 
-1. 本教程使用 Powershell，因此请确保已安装 Azure Powershell 并已准备就绪。 有关设置 Azure Powershell 的帮助，请参阅[如何安装和配置 Azure PowerShell](../powershell-install-configure.md)。
+1. 本教程使用 Powershell，因此请确保已安装 Azure Powershell 并已准备就绪。 有关设置 Azure Powershell 的帮助，请参阅 [如何安装和配置 Azure PowerShell](../powershell-install-configure.md)。
 
 2. AD 域控制器和 Web/辅助角色实例需要在 VNET 中。
 
-请遵循以下分步指南。如果遇到任何问题，请在本文末尾留言。 我们将回复你（没错，我们真的会阅读留言）。
+请遵循以下分步指南，如果你遇到任何问题，请在本文末尾留言。 我们将回复你（没错，我们真的会阅读留言）。
 
 由云服务引用的网络必须为**经典虚拟网络**。
 
 ## <a name="create-a-virtual-network"></a>创建虚拟网络
-可以使用 Azure 门户或 PowerShell 在 Azure 中创建虚拟网络。 在本教程中，使用 PowerShell。 要使用 Azure 门户创建虚拟网络，请参阅[创建虚拟网络](../virtual-network/quick-create-portal.md)。 本文介绍创建虚拟网络（资源管理器），但必须创建用于云服务的虚拟网络（经典）。 为此，请在门户中选择“创建资源”，在“搜索”框中键入“虚拟网络”，然后按 Enter。 在搜索结果的“所有内容”中，选择“虚拟网络”。 在“选择部署模型”下，选择“经典”，然后选择“创建”。 然后可以执行本文中的步骤。
+可以使用 Azure 门户或 PowerShell 在 Azure 中创建虚拟网络。 在本教程中，使用 PowerShell。 要使用 Azure 门户创建虚拟网络，请参阅[创建虚拟网络](../virtual-network/quick-create-portal.md)。 本文介绍创建虚拟网络（资源管理器），但必须创建用于云服务的虚拟网络（经典）。 为此，请在门户中选择“创建资源”，在“搜索”框中键入“虚拟网络”，然后按 Enter     。 在搜索结果的“所有内容”中，选择“虚拟网络”   。 在“选择部署模型”  下，选择“经典”  ，然后选择“创建”  。 然后可以执行本文中的步骤。
 
 ```powershell
 #Create Virtual Network
@@ -69,7 +69,7 @@ Set-AzureVNetConfig -ConfigurationPath $vnetConfigPath
 
 完成虚拟网络的设置后，需要创建 AD 域控制器。 在本教程中，我们会在 Azure 虚拟机上设置 AD 域控制器。
 
-为此，请在 PowerShell 中使用以下命令创建虚拟机：
+为此，请使用以下命令通过 PowerShell 创建虚拟机：
 
 ```powershell
 # Initialize variables
@@ -135,7 +135,7 @@ Get-AzureRemoteDesktopFile -ServiceName $vmsvc1 -Name $vm1 -LocalPath <rdp-file-
 接下来，请生成云服务项目并将它部署到 Azure。 有关将云服务包部署到 Azure 的帮助，请参阅[如何创建和部署云服务](cloud-services-how-to-create-deploy-portal.md)
 
 ## <a name="connect-your-webworker-roles-to-the-domain"></a>将 Web/辅助角色连接到域
-在 Azure 上部署云服务项目后，请使用 AD 域扩展将角色实例连接到自定义 AD 域。 若要将 AD 域扩展添加到现有云服务部署并加入自定义域，请在 PowerShell 中执行以下命令：
+在 Azure 上部署云服务项目后，请使用 AD 域扩展将角色实例连接到自定义 AD 域。 要将 AD 域扩展添加到现有云服务部署并加入自定义域，请在 PowerShell 中执行以下命令：
 
 ```powershell
 # Initialize domain variables

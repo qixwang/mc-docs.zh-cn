@@ -11,11 +11,11 @@ origin.date: 04/02/2018
 ms.date: 09/10/2018
 ms.author: v-yiso
 ms.openlocfilehash: 6337aee28f7e12e9423006749202014a864f948d
-ms.sourcegitcommit: d75065296d301f0851f93d6175a508bdd9fd7afc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52659180"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63825273"
 ---
 # <a name="send-messages-to-an-mqtt-server"></a>向 MQTT 服务器发送消息
 
@@ -29,7 +29,7 @@ ms.locfileid: "52659180"
 - 如何使用 MQTT 客户端库向 MQTT 代理发送消息。
 - 如何将 MXChip Iot DevKit 配置为 MQTT 客户端。
 
-## <a name="what-you-need"></a>需要什么
+## <a name="what-you-need"></a>所需条件
 
 完成[入门指南](./iot-hub-arduino-iot-devkit-az3166-get-started.md)来实现以下目的：
 
@@ -46,10 +46,10 @@ ms.locfileid: "52659180"
 
 ## <a name="open-the-mqttclient-sample"></a>打开 MQTTClient 示例
 
-展开左侧的“ARDUINO 示例”部分，浏览到“MXCHIP AZ3166 的示例 > MQTT”，然后选择“MQTTClient”。 此时会打开一个新的 VS Code 窗口，其中包含一个项目文件夹。
+展开左侧的“ARDUINO 示例”  部分，浏览到  “MXCHIP AZ3166 的示例 > MQTT”，然后选择“MQTTClient”  。 此时会打开一个新的 VS Code 窗口，其中包含一个项目文件夹。
 
 > [!NOTE]
-> 也可以从命令面板打开示例。 使用 `Ctrl+Shift+P` (macOS: `Cmd+Shift+P`) 打开命令面板，键入“Arduino”，然后找到并选择“Arduino: Examples”。
+> 也可以从命令面板打开示例。 使用 `Ctrl+Shift+P` (macOS: `Cmd+Shift+P`) 打开命令面板，键入“Arduino”，然后找到并选择“Arduino: Examples”   。
 
 ## <a name="build-and-upload-the-arduino-sketch-to-the-devkit"></a>生成 Arduino 草图并将其上传到 DevKit
 

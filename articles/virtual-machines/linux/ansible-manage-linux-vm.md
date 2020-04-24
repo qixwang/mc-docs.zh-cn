@@ -10,10 +10,10 @@ ms.author: v-yeche
 origin.date: 04/30/2019
 ms.date: 08/12/2019
 ms.openlocfilehash: 583666592be2c82e8c21835f31eef9cf4757caaa
-ms.sourcegitcommit: 8ac3d22ed9be821c51ee26e786894bf5a8736bfc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "68912915"
 ---
 # <a name="quickstart-manage-linux-virtual-machines-in-azure-using-ansible"></a>快速入门：使用 Ansible 管理 Azure 中的 Linux 虚拟机
@@ -79,7 +79,7 @@ ms.locfileid: "68912915"
     ansible-playbook azure-vm-stop.yml
     ```
 
-1. 运行 playbook 后，将看到类似于以下结果的输出：
+1. 运行 playbook 后，可看到类似于以下结果的输出：
 
     ```bash
     PLAY [Stop Azure VM] ********************************************************

@@ -5,10 +5,10 @@ ms.service: azure-monitor
 ms.topic: include
 ms.date: 01/19/2019
 ms.openlocfilehash: 5fdc1165767c85fe68f107c0ecacbd9a5e149f71
-ms.sourcegitcommit: fd927ef42e8e7c5829d7c73dc9864e26f2a11aaa
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/04/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "67568297"
 ---
 >[!NOTE]

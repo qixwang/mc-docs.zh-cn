@@ -13,10 +13,10 @@ ms.date: 07/08/2019
 ms.author: v-junlch
 ms.custom: seodec18
 ms.openlocfilehash: 3ae8fb6fe4ecf26d7acbf527180e075f5cba65bd
-ms.sourcegitcommit: 8f49da0084910bc97e4590fc1a8fe48dd4028e34
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "67844871"
 ---
 # <a name="quickstart-analyze-a-remote-image-using-the-computer-vision-rest-api-with-nodejs"></a>快速入门：使用计算机视觉 REST API 和 Node.js 分析远程图像
@@ -36,7 +36,7 @@ ms.locfileid: "67844871"
 要创建和运行示例，请执行以下步骤：
 
 1. 安装 npm [`request`](https://www.npmjs.com/package/request) 包。
-   1. 以管理员身份打开命令提示符窗口。
+   1. 以管理员身份打开“命令提示符”窗口。
    1. 运行以下命令：
 
       ```console
@@ -99,7 +99,7 @@ request.post(options, (error, response, body) => {
 
 ## <a name="examine-the-response"></a>检查响应
 
-成功的响应以 JSON 格式返回。 示例会在命令提示符窗口中分析和显示成功响应，如下例所示：
+成功响应将以 JSON 格式返回。 示例会在命令提示符窗口中分析和显示成功响应，如下例所示：
 
 ```json
 {
@@ -171,7 +171,7 @@ request.post(options, (error, response, body) => {
 
 不再需要文件时，请将其删除，然后卸载 npm `request` 包。 要卸载包，请执行以下步骤：
 
-1. 以管理员身份打开命令提示符窗口。
+1. 以管理员身份打开“命令提示符”窗口。
 2. 运行以下命令：
 
    ```console

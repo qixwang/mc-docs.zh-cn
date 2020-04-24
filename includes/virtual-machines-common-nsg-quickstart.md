@@ -10,11 +10,11 @@ ms.date: 11/12/2018
 ms.author: v-yeche
 ms.custom: include file
 ms.openlocfilehash: 36922bffdd5f4d3b47c7b63df65cb2d6db4b162b
-ms.sourcegitcommit: d75065296d301f0851f93d6175a508bdd9fd7afc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52646060"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63845703"
 ---
 通过在子网或 VM 网络接口上创建网络筛选器可为 Azure 中的虚拟机 (VM) 打开端口或创建终结点。 将这些筛选器（控制入站和出站流量）置于附加到接收流量的资源的网络安全组中。
 

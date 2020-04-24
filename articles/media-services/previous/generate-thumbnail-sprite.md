@@ -13,10 +13,10 @@ origin.date: 03/14/2019
 ms.date: 06/03/2019
 ms.author: v-jay
 ms.openlocfilehash: 9815021674d067c6011c78033d00f2f6da92c890
-ms.sourcegitcommit: 440d53bb61dbed39f2a24cc232023fc831671837
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "66390824"
 ---
 # <a name="generate-a-thumbnail-sprite"></a>生成缩略图子画面  

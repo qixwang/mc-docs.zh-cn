@@ -9,10 +9,10 @@ origin.date: 07/09/2019
 ms.date: 08/06/2019
 ms.author: v-junlch
 ms.openlocfilehash: 1c9422e8a83a09031d685059425403ae6c217c12
-ms.sourcegitcommit: 17cd5461e7d99f40b9b1fc5f1d579f82b2e27be9
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "68819533"
 ---
 # <a name="azure-application-gateway-resource-health-overview"></a>Azure 应用程序网关资源运行状况概述
@@ -44,7 +44,7 @@ ms.locfileid: "68819533"
 
 ![不可用状态](./media/resource-health-overview/unavailable.png)
 
-## <a name="unknown"></a>Unknown
+## <a name="unknown"></a>未知
 
 此 **Unknown** 运行状况状态指示资源运行状况未收到此网关的相关信息已超过 10 分钟。 此状态不是网关状态的最终指示， 但它是故障排除过程中一个重要的数据点。
 

@@ -6,11 +6,11 @@ origin.date: 10/26/2018
 ms.date: 12/10/2018
 ms.author: v-yeche
 ms.openlocfilehash: 6ea5335eee54fee63ccb613233fe21192fffa720
-ms.sourcegitcommit: 5f2849d5751cb634f1cdc04d581c32296e33ef1b
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53029230"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63826941"
 ---
 本文假设
 

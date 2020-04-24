@@ -6,10 +6,10 @@ ms.topic: include
 origin.date: 04/16/2019
 ms.date: 07/12/2019
 ms.openlocfilehash: 9ae857970fdec2115c0e4c30e47344069255d6bc
-ms.sourcegitcommit: c72fba1cacef1444eb12e828161ad103da338bb1
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "67844951"
 ---
 对该容器的查询在用于 `<ApiKey>` 的 Azure 资源的定价层计费。

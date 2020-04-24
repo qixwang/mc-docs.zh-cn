@@ -12,10 +12,10 @@ origin.date: 02/18/2019
 ms.date: 07/17/2019
 ms.author: v-junlch
 ms.openlocfilehash: 41f49a0f595197bd5d87add7ba40d08e49b76065
-ms.sourcegitcommit: c61b10764d533c32d56bcfcb4286ed0fb2bdbfea
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "68331920"
 ---
 # <a name="azure-functions-trigger-and-binding-example"></a>Azure Functions 触发器和绑定示例
@@ -58,7 +58,7 @@ ms.locfileid: "68331920"
 
 ## <a name="c-script-example"></a>C# 脚本示例
 
-以下是适用于此触发器和绑定的 C# 脚本代码。 请注意，提供队列消息内容的参数的名称是 `order`；需使用此名称是因为 function.json  中的 `name` 属性值是 `order` 
+以下是适用于此触发器和绑定的 C# 脚本代码。 请注意，提供队列消息内容的参数的名称是 `order`；需使用此名称是因为 function.json`name`*中的* 属性值是 `order` 
 
 ```cs
 #r "Newtonsoft.Json"

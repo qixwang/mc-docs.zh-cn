@@ -14,10 +14,10 @@ manager: digimobile
 origin.date: 06/26/2019
 ms.date: 08/19/2019
 ms.openlocfilehash: 978a7add8bc3e457bc86153b27e34c56d7a133c2
-ms.sourcegitcommit: 52ce0d62ea704b5dd968885523d54a36d5787f2d
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "69544379"
 ---
 # <a name="dns-alias-for-azure-sql-database"></a>Azure SQL 数据库的 DNS 别名
@@ -62,7 +62,7 @@ Azure SQL 数据库的 DNS 别名功能有助于实现以下方案：
   - 删除某个 SQL 数据库服务器时，Azure 系统也会删除指向该服务器的所有 DNS 别名。
 - 不受限于任一区域：  DNS 别名不受限于某一区域。 可以将任何 DNS 别名更新为指向位于任何地理区域中的 Azure SQL 数据库服务器。
   - 但是，将别名更新为引用另一台服务器时，这两台服务器必须位于同一个 Azure 订阅中。 
-- 权限：  管理 DNS 别名的用户必须拥有“服务器参与者”权限或更高权限  。 有关详细信息，请参阅 [Azure 门户中基于角色的访问控制入门](../role-based-access-control/overview.md)。
+- *权限：* 管理 DNS 别名的用户必须拥有“服务器参与者”权限或更高权限  。 有关详细信息，请参阅 [Azure 门户中基于角色的访问控制入门](../role-based-access-control/overview.md)。
 
 ## <a name="manage-your-dns-aliases"></a>管理 DNS 别名
 

@@ -16,14 +16,14 @@ origin.date: 11/29/2017
 ms.date: 08/12/2019
 ms.author: v-yeche
 ms.openlocfilehash: 9cf7f1dd45234fe6afcff0356855480e28671df2
-ms.sourcegitcommit: 8ac3d22ed9be821c51ee26e786894bf5a8736bfc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "68912898"
 ---
 # <a name="use-cloud-init-to-run-a-bash-script-in-a-linux-vm-in-azure"></a>在 Azure 上的 Linux VM 中使用 cloud-init 运行 bash 脚本
-本文介绍如何在 Azure 中使用 [cloud-init](https://cloudinit.readthedocs.io) 在预配时在 Linux 虚拟机 (VM) 或虚拟机规模集 (VMSS) 中运行现有的 bash 脚本。 Azure 预配资源后首次启动时，会运行这些 cloud-init 脚本。 有关 cloud-init 如何在 Azure 以及受支持的 Linux 发行版中本机工作的详细信息，请参阅 [cloud-init 概述](using-cloud-init.md)
+本文介绍如何在 Azure 中使用 [cloud-init](https://cloudinit.readthedocs.io) 在预配时在 Linux 虚拟机 (VM) 或虚拟机规模集 (VMSS) 中运行现有的 bash 脚本。 Azure 预配资源后，这些 cloud-init 脚本即会在第一次启动时运行。 有关 cloud-init 如何在 Azure 以及受支持的 Linux 发行版中本机工作的详细信息，请参阅 [cloud-init 概述](using-cloud-init.md)
 
 ## <a name="run-a-bash-script-with-cloud-init"></a>使用 cloud-init 运行 bash 脚本
 使用 cloud-init 时，不需要将现有的脚本转换为 cloud-config，因为 cloud-init 接受多种输入类型，其中一种类型就是 bash 脚本。

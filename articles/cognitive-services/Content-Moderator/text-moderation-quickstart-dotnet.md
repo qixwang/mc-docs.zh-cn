@@ -12,10 +12,10 @@ origin.date: 07/03/2019
 ms.date: 07/10/2019
 ms.author: v-junlch
 ms.openlocfilehash: 84e0c2ef14e82acddd50b681a9443f8e63c0906d
-ms.sourcegitcommit: 8f49da0084910bc97e4590fc1a8fe48dd4028e34
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "67844938"
 ---
 # <a name="quickstart-analyze-text-content-for-objectionable-material-in-c"></a>快速入门：使用 C# 分析文本内容中是否存在令人反感的材料
@@ -42,7 +42,7 @@ ms.locfileid: "67844938"
 
 ## <a name="add-text-moderation-code"></a>添加文本审查代码
 
-接下来，需将代码从本指南复制并粘贴到项目中，以便实施基本的内容审查方案。
+接下来，将代码从本指南复制并粘贴到项目中，以便实施基本的内容审查方案。
 
 ### <a name="include-namespaces"></a>包括命名空间
 

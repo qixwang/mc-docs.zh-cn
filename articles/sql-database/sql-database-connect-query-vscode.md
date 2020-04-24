@@ -15,10 +15,10 @@ manager: digimobile
 origin.date: 03/25/2019
 ms.date: 08/19/2019
 ms.openlocfilehash: cac5ff4b1416f600bf1d6c98991af90f6a188c63
-ms.sourcegitcommit: 52ce0d62ea704b5dd968885523d54a36d5787f2d
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "69544371"
 ---
 # <a name="quickstart-use-visual-studio-code-to-connect-and-query-an-azure-sql-database"></a>快速入门：使用 Visual Studio Code 连接和查询 Azure SQL 数据库
@@ -27,7 +27,7 @@ ms.locfileid: "69544371"
 
 ## <a name="prerequisites"></a>先决条件
 
-- Azure SQL 数据库。 可以根据下述快速入门中的一个的说明在 Azure SQL 数据库中创建数据库，然后对其进行配置：
+- Azure SQL 数据库。 可以根据下述快速入门之一，在 Azure SQL 数据库中创建数据库，然后对其进行配置：
 
   || 单一数据库 | 托管实例 |
   |:--- |:--- |:---|

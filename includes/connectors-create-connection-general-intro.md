@@ -9,10 +9,10 @@ ms.date: 05/14/2018
 ms.author: estfan
 ms.custom: include file
 ms.openlocfilehash: 7c26d5fd4de9bdcf8e0a60891e4a99229f72771e
-ms.sourcegitcommit: d75065296d301f0851f93d6175a508bdd9fd7afc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52652527"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63830176"
 ---
-要使逻辑应用能够访问某个服务，必须在逻辑应用与该服务之间创建连接。 如果以前未创建此连接，则在向逻辑应用添加该服务的触发器或操作时，系统会提示输入连接信息。 可以使用逻辑应用设计器轻松地直接从逻辑应用创建此连接。
+要使逻辑应用能够访问某个服务，必须在逻辑应用与该服务之间创建连接  。 如果以前未创建此连接，则在向逻辑应用添加该服务的触发器或操作时，系统会提示输入连接信息。 可以使用逻辑应用设计器轻松地直接从逻辑应用创建此连接。

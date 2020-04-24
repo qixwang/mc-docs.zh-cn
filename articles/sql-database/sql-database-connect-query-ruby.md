@@ -14,10 +14,10 @@ manager: digimobile
 origin.date: 03/25/2019
 ms.date: 08/19/2019
 ms.openlocfilehash: 2f0af15fa6869d9d01280227827c2ef8b2c63633
-ms.sourcegitcommit: 52ce0d62ea704b5dd968885523d54a36d5787f2d
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "69544137"
 ---
 # <a name="quickstart-use-ruby-to-query-an-azure-sql-database"></a>快速入门：使用 Ruby 查询 Azure SQL 数据库
@@ -28,7 +28,7 @@ ms.locfileid: "69544137"
 
 若要完成本快速入门，需要具备以下先决条件：
 
-- Azure SQL 数据库。 可以根据下述快速入门中的一个的说明在 Azure SQL 数据库中创建数据库，然后对其进行配置：
+- Azure SQL 数据库。 可以根据下述快速入门之一，在 Azure SQL 数据库中创建数据库，然后对其进行配置：
 
   || 单一数据库 | 托管实例 |
   |:--- |:--- |:---|
@@ -50,7 +50,7 @@ ms.locfileid: "69544137"
   
   - **Ubuntu**：安装 Ruby、rbenv 和 ruby-build、Ruby、FreeTDS 和 TinyTDS 的先决条件。 请参阅 [Create Ruby apps using SQL Server on Ubuntu](https://www.microsoft.com/sql-server/developer-get-started/ruby/ubuntu/)（在 Ubuntu 上使用 SQL Server 创建 Ruby 应用）中的步骤 1.2、1.3、1.4、1.5 和 2.1。
   
-  - Windows  ：安装 Ruby、Ruby Devkit 和 TinyTDS。 请参阅[配置用于 Ruby 开发的开发环境](https://docs.microsoft.com/sql/connect/ruby/step-1-configure-development-environment-for-ruby-development)。
+  - **Windows**：安装 Ruby、Ruby Devkit 和 TinyTDS。 请参阅[配置用于 Ruby 开发的开发环境](https://docs.microsoft.com/sql/connect/ruby/step-1-configure-development-environment-for-ruby-development)。
 
 ## <a name="get-sql-server-connection-information"></a>获取 SQL Server 连接信息
 

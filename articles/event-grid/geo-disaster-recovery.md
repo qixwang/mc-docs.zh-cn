@@ -9,10 +9,10 @@ origin.date: 05/24/2019
 ms.date: 07/29/2019
 ms.author: v-yiso
 ms.openlocfilehash: ff55cae4128d2aa037881cb478deea06ce0140d2
-ms.sourcegitcommit: 5fea6210f7456215f75a9b093393390d47c3c78d
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "68337592"
 ---
 # <a name="server-side-geo-disaster-recovery-in-azure-event-grid"></a>Azure 事件网格中的服务器端异地灾难恢复

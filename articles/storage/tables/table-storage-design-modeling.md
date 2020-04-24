@@ -10,11 +10,11 @@ ms.date: 02/25/2019
 ms.author: v-jay
 ms.subservice: tables
 ms.openlocfilehash: 61e861412c8a855309b0941b1455d2c27f015c7c
-ms.sourcegitcommit: 0fd74557936098811166d0e9148e66b350e5b5fa
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56665424"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63821835"
 ---
 # <a name="modeling-relationships"></a>为关系建模
 本文讨论可帮助设计 Azure 表存储解决方案的建模流程。
@@ -37,7 +37,7 @@ ms.locfileid: "56665424"
 
 ![员工实体](media/storage-table-design-guide/storage-table-design-IMAGE02.png)
 
-有关详细信息，请参阅本指南后面的 [反规范化模式](table-storage-design-patterns.md#denormalization-pattern) 。  
+有关详细信息，请参阅本指南后面的[反规范化模式](table-storage-design-patterns.md#denormalization-pattern)。  
 
 下表总结了上述每种方法对于存储具有一对多关系的员工和部门的优缺点。 还应考虑希望执行各种操作的频率：如果设计中包含的代价高昂的操作很少发生，则这可能是可以接受的。  
 
@@ -97,7 +97,7 @@ ms.locfileid: "56665424"
 如何在这些选项中进行选择，以及哪些优点和缺点最重要，取决于特定应用程序方案。 例如，修改部门实体的频率；所有员工查询是否都需要附加部门信息；有多接近对分区或存储帐户的伸缩性限制？  
 
 ## <a name="one-to-one-relationships"></a>一对一关系
-域模型可能包括实体之间的一对一关系。 如果需要在表服务中实现一对一关系，还必须选择在需要检索两个相关的实体时如何链接这两个实体。 此链接可为隐式或显式，前者基于键值中的约定，后者在每个实体中按 **PartitionKey** 和 **RowKey** 值的形式存储指向其相关实体的链接。 有关是否应将相关实体存储在同一个分区中的讨论，请参阅[一对多关系](#one-to-many-relationships)这部分。  
+域模型可能包括实体之间的一对一关系。 如果需要在表服务中实现一对一关系，还必须选择在需要检索两个相关的实体时如何链接这两个实体。 此链接可为隐式或显式，前者基于键值中的约定，后者在每个实体中按 **PartitionKey** and **RowKey** 值的形式存储指向其相关实体的链接。 若要了解是否应在同一分区存储相关实体，请参阅[一对多关系](#one-to-many-relationships)部分。  
 
 还有可能引导在表服务中实现一对一关系的实现注意事项：  
 
@@ -110,7 +110,7 @@ ms.locfileid: "56665424"
 例如，如果小型表包含不经常更改的数据，则可以检索一次此类数据并将其缓存到客户端。 这可以避免为检索相同数据而进行的重复往返操作。 在本指南中我们已查看过的示例中，小型组织中的部门集可能很小并且不经常更改，使它成为合适的数据候选项，客户端应用程序可以下载一次该数据并将其缓存为查找数据。  
 
 ## <a name="inheritance-relationships"></a>继承关系
-如果客户端应用程序使用一组构成继承关系的的类来表示业务实体，则可以轻松地在表服务中持久保存这些实体。 例如，可能在客户端应用程序中定义了以下一组类，其中 **Person** 是一个抽象类。
+如果客户端应用程序使用一组构成继承关系的的类来表示业务实体，则可以轻松地在表服务中持久保存这些实体。 例如，客户端应用程序中可能定义了以下一组类，其中 **Person** 是一个抽象类。
 
 ![抽象 Person 类](media/storage-table-design-guide/storage-table-design-IMAGE03.png)
 

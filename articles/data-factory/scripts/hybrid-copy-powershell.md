@@ -13,10 +13,10 @@ origin.date: 10/31/2017
 ms.date: 07/08/2019
 ms.author: v-jay
 ms.openlocfilehash: 4c3dbf0659e7680a29f242812114dea1f0409172
-ms.sourcegitcommit: 5191c30e72cbbfc65a27af7b6251f7e076ba9c88
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "67569904"
 ---
 # <a name="use-powershell-to-create-a-data-factory-pipeline-to-copy-data-from-on-premises-to-azure"></a>使用 PowerShell 创建用于将数据从本地复制到 Azure 的数据工厂管道
@@ -27,7 +27,7 @@ ms.locfileid: "67569904"
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh-az.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - **SQL Server**。 在本示例中，将本地 SQL Server 数据库用作源数据存储。 
 - **Azure 存储帐户**。 本示例使用 Azure Blob 存储作为“目标/接收器”数据存储。  如果没有 Azure 存储帐户，请参阅[创建存储帐户](../../storage/common/storage-quickstart-create-account.md)一文获取创建步骤。
@@ -315,7 +315,7 @@ Remove-AzDataFactoryV2 -Name $dataFactoryName -ResourceGroupName $resourceGroupN
 
 此脚本使用以下命令： 
 
-| 命令 | 注释 |
+| Command | 说明 |
 |---|---|
 | [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) | 创建用于存储所有资源的资源组。 |
 | [Set-AzDataFactoryV2](https://docs.microsoft.com/powershell/module/az.datafactory/set-Azdatafactoryv2) | 创建数据工厂。 |

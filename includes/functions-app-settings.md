@@ -11,10 +11,10 @@ ms.date: 09/21/2018
 ms.author: v-junlch
 ms.custom: include file
 ms.openlocfilehash: 1b5156796ac93e24fe53910cba1677733c37d63f
-ms.sourcegitcommit: 66a77af2fab8a5f5b34723dc99e4d7ce0c380e78
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/02/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "63847573"
 ---
 可以通过以下几种方法添加、更新和删除函数应用设置：

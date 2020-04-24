@@ -6,11 +6,11 @@ origin.date: 11/09/2018
 ms.date: 12/24/2018
 ms.author: v-yeche
 ms.openlocfilehash: c9948d41f309fcbc6ae9d814885495571d6dcd46
-ms.sourcegitcommit: 96ceb27357f624536228af537b482df08c722a72
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53736797"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63825818"
 ---
 **高级非托管虚拟机磁盘：每个帐户的限制**
 
@@ -20,7 +20,7 @@ ms.locfileid: "53736797"
 | 每个帐户的总快照容量 |10 TB |
 | 每个帐户的最大带宽（传入 + 传出<sup>1</sup>） |<=50 Gbps |
 
-<sup>1</sup>“传入”是指发送到存储帐户的所有数据（请求）。 “传出”是指从存储帐户接收的所有数据（响应）。
+<sup>1</sup>“传入”是指发送到存储帐户的所有数据（请求）。  “传出”是指从存储帐户接收的所有数据（响应）。 
 
 **高级非托管虚拟机磁盘：每个磁盘的限制**
 

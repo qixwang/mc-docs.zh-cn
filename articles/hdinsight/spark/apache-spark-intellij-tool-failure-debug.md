@@ -11,10 +11,10 @@ ms.topic: conceptual
 origin.date: 07/12/2019
 ms.date: 08/19/2019
 ms.openlocfilehash: 9c6f69008a528f3f931f0e283429bc4e6c0478bd
-ms.sourcegitcommit: e9c62212a0d1df1f41c7f40eb58665f4f1eaffb3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "68886369"
 ---
 # <a name="failure-spark-job-debugging-with-azure-toolkit-for-intellij-preview"></a>使用 Azure Toolkit for IntelliJ 进行失败 Spark 作业调试（预览）
@@ -114,13 +114,13 @@ ms.locfileid: "68886369"
 
 5. 调试后，如果项目成功完成，则可将失败的作业重新提交到 Spark on HDInsight 群集。
 
-## <a name="seealso"></a>后续步骤
+## <a name="next-steps"></a><a name="seealso"></a>后续步骤
 * [概述：调试 Apache Spark 应用程序](apache-spark-intellij-tool-debug-remotely-through-ssh.md)
 
 ### <a name="scenarios"></a>方案
 * [Apache Spark 与 BI：使用 HDInsight 中的 Spark 和 BI 工具进行交互式数据分析](apache-spark-use-bi-tools.md)
-* [Apache Spark 与机器学习：使用 HDInsight 中的 Spark 来通过 HVAC 数据分析建筑物温度](apache-spark-ipython-notebook-machine-learning.md)
-* [Apache Spark 与机器学习：使用 HDInsight 中的 Spark 预测食品检验结果](apache-spark-machine-learning-mllib-ipython.md)
+* [Apache Spark 与机器学习：通过 HDInsight 中的 Spark 使用 HVAC 数据分析建筑物温度](apache-spark-ipython-notebook-machine-learning.md)
+* [Apache Spark 与机器学习：使用 HDInsight 中的 Spark 预测食品检查结果](apache-spark-machine-learning-mllib-ipython.md)
 * [使用 HDInsight 中的 Apache Spark 分析网站日志](../hdinsight-apache-spark-custom-library-website-log-analysis.md)
 
 ### <a name="create-and-run-applications"></a>创建和运行应用程序

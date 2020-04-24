@@ -13,11 +13,11 @@ ms.date: 03/27/2019
 ms.author: v-junlch
 ms.custom: seodec18
 ms.openlocfilehash: f0d7e0cc1c2df90e747e5a1829bb83644a5ec64f
-ms.sourcegitcommit: c5599eb7dfe9fd5fe725b82a861c97605635a73f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58505400"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63844516"
 ---
 # <a name="detecting-image-types-with-computer-vision"></a>使用计算机视觉检测图像类型
 
@@ -29,7 +29,7 @@ ms.locfileid: "58505400"
 
 | 值 | 含义 |
 |-------|---------|
-| 0 | Non-clip-art |
+| 0 | 非剪贴画 |
 | 1 | 不明确 |
 | 2 | 正常剪贴画 |
 | 3 | 良好剪贴画 |

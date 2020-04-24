@@ -6,16 +6,16 @@ origin.date: 10/26/2018
 ms.date: 05/20/2019
 ms.author: v-yeche
 ms.openlocfilehash: dbe630514a8cfcb1e83ba152c0e5a3abe1fe043a
-ms.sourcegitcommit: bf4afcef846cc82005f06e6dfe8dd3b00f9d49f3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "66039220"
 ---
 若要诊断 Azure 云服务的问题，需要在问题发生时收集虚拟机上该服务的日志文件。 可以使用 AzureLogCollector 扩展按需从一个或多个云服务 VM（通过 Web 角色和辅助角色）执行一次性日志收集，并将收集到的文件传输到 Azure 存储帐户 - 所有这些操作都无需远程登录到任何 VM。
 
 > [!NOTE]
-> 有关大多数记录的信息的说明，请参阅 http://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.asp。
+> 有关大多数记录的信息的说明，请参阅 http://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.asp 。
 > 
 > 
 
@@ -32,12 +32,12 @@ ms.locfileid: "66039220"
 
 在两种收集模式下，均可使用以下结构的集合来指定额外的数据收集文件夹：
 
-* **名称**：集合的名称，用作包含已收集文件的 zip 文件中子文件夹的名称。
-* **位置**：要收集的文件所在虚拟机上的文件夹路径。
-* **SearchPattern**：要收集的文件的名称模式。 默认值为“\*”
+* **Name**：集合的名称，用作已收集文件所在的 zip 文件中子文件夹的名称。
+* **Location**：要收集文件所在虚拟机上的文件夹路径。
+* **SearchPattern**：要收集的文件名的样式。 默认值为“\*”
 * **Recursive**：如果要收集的文件以递归方式列于指定位置下。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 [!INCLUDE [updated-for-az](./updated-for-az.md)]
 
@@ -47,9 +47,9 @@ ms.locfileid: "66039220"
 ## <a name="add-the-extension"></a>添加扩展
 可以使用 [Azure PowerShell](https://msdn.microsoft.com/library/dn495240.aspx) cmdlet 或[服务管理 REST API](https://msdn.microsoft.com/library/ee460799.aspx) 添加 AzureLogCollector 扩展。
 
-对于云服务，可以使用现有的 Azure Powershell cmdlet **Set-AzureServiceExtension**来启用云服务角色实例上的扩展。 每次通过此 cmdlet 启用此扩展时，都会在所选角色的所选角色实例上触发日志收集。
+对于云服务，可以使用现有的 Azure Powershell cmdlet **Set-AzureServiceExtension** 启用云服务角色实例上的扩展。 每次通过此 cmdlet 启用此扩展时，都会在所选角色的所选角色实例上触发日志收集。
 
-对于虚拟机，可以使用现有的 Azure Powershell cmdlet **Set-AzureVMExtension**来启用虚拟机上的扩展。 每次通过 cmdlet 启用此扩展时，都会在每个实例上触发日志收集。
+对于虚拟机，可以使用现有的 Azure Powershell cmdlet **Set-AzureVMExtension** 启用虚拟机上的扩展。 每次通过 cmdlet 启用此扩展时，都会在每个实例上触发日志收集。
 
 在内部，此扩展使用基于 JSON 的 PublicConfiguration 和 PrivateConfiguration。 下面是公共和私有配置的示例 JSON 的布局。
 
@@ -180,9 +180,9 @@ param (
 
 * **ServiceName**：云服务名称。
 * **Roles**：角色列表，例如“WebRole1”或“WorkerRole1”。
-* **Instances**：逗号分隔的角色实例名称的列表 -- 使用通配符字符串（“*”）代表所有角色实例。
+* **Instances**：逗号分隔的角色实例名称列表 — 使用通配符字符串（“*”）代表所有角色实例。
 * **Slot**：槽名称。 “生产”或“过渡”。
-* **模式**：收集模式。 “完整”或“GA”。
+* **Mode**：收集模式。 “完整”或“GA”。
 * **StorageAccountName**：用于存储所收集数据的 Azure 存储帐户的名称。
 * **StorageAccountKey**：Azure 存储帐户密钥的名称。
 * **AdditionalDataLocationList**：以下结构的列表：
@@ -262,7 +262,7 @@ param (
 
 * **ServiceName**：云服务名称。
 * **VMName**：VM 的名称。
-* **模式**：收集模式。 “完整”或“GA”。
+* **Mode**：收集模式。 “完整”或“GA”。
 * **StorageAccountName**：用于存储所收集数据的 Azure 存储帐户的名称。
 * **StorageAccountKey**：Azure 存储帐户密钥的名称。
 * **AdditionalDataLocationList**：以下结构的列表：

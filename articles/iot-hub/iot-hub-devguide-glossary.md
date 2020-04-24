@@ -10,10 +10,10 @@ origin.date: 01/15/2019
 ms.author: v-yiso
 ms.date: 04/01/2019
 ms.openlocfilehash: 3643f4bb54a4940a14941e676994953087af632a
-ms.sourcegitcommit: e77582e79df32272e64c6765fdb3613241671c20
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "67135986"
 ---
 # <a name="glossary-of-iot-hub-terms"></a>IoT 中心术语表
@@ -80,7 +80,7 @@ Azure IoT 中心内的自动设备管理功能可将许多复杂且重复性的�
 - *IoT 中心连接字符串* 使后端应用能够连接到 IoT 中心上面向服务的终结点。
 
 ## <a name="custom-endpoints"></a>自定义终结点
-可在 IoT 中心创建自定义[终结点](./iot-hub-devguide-endpoints.md)来传递由[路由规则](#routing-rules)调度的消息。 自定义终结点直接连接事件中心、服务总线队列或服务总线主题。
+可在 IoT 中心创建自定义[终结点](./iot-hub-devguide-endpoints.md)来传递由[路由规则](#routing-rules)调度的消息。 自定义终结点会直接连接到事件中心、服务总线队列或服务总线主题。
 
 ## <a name="custom-gateway"></a>自定义网关
 网关使不能直接连接到 [IoT 中心](#iot-hub)的设备能建立连接。 可以使用 Azure IoT Edge 生成自定义网关，以便使用自定义逻辑处理消息、自定义协议转换和进行边缘上的其他处理。
@@ -140,7 +140,7 @@ IoT 中心公开了多个[终结点](./iot-hub-devguide-endpoints.md)，以便�
 [事件中心](../event-hubs/event-hubs-what-is-event-hubs.md)是高度可缩放的数据引入服务，每秒可以引入数以百万计的事件。 该服务使用户能够处理和分析连接设备和应用程序产生的大量数据。 有关该服务与 IoT 中心服务的比较的信息，请参阅 [Azure IoT 中心与 Azure 事件中心的比较](./iot-hub-compare-event-hubs.md)。
 
 ## <a name="event-hub-compatible-endpoint"></a>与事件中心兼容的终结点
-若要读取发送到 IoT 中心的[设备到云](#device-to-cloud)消息，可以连接到中心上的终结点，并使用任何事件中心兼容的方法读取这些消息。 事件中心兼容的方法包括使用[事件中心 SDK](../event-hubs/event-hubs-programming-guide.md) 和 [Azure 流分析](../stream-analytics/stream-analytics-introduction.md)。
+如果要读取发送到 IoT 中心的 [设备到云](#device-to-cloud) 的消息，可以先连接到中心的终结点，然后使用与事件中心兼容的任何方法读取这些消息。 事件中心兼容的方法包括使用[事件中心 SDK](../event-hubs/event-hubs-programming-guide.md) 和 [Azure 流分析](../stream-analytics/stream-analytics-introduction.md)。
 
 ## <a name="field-gateway"></a>现场网关
 无法直接连接到 [IoT 中心](#iot-hub) 的设备可以通过现场网关进行连接，而现场网关通常与设备一起部署在本地。 有关详细信息，请参阅[什么是 Azure IoT 中心？](about-iot-hub.md)
@@ -151,7 +151,7 @@ IoT 中心公开了多个[终结点](./iot-hub-devguide-endpoints.md)，以便�
 ## <a name="gateway"></a>网关
 网关使不能直接连接到 [IoT 中心](#iot-hub)的设备能建立连接。 另请参阅[现场网关](#field-gateway)、[云网关](#cloud-gateway)和[自定义网关](#custom-gateway)。
 
-## <a id="identity-registry"></a> 标识注册表
+## <a name="identity-registry"></a><a id="identity-registry"></a> 标识注册表
 [标识注册表](./iot-hub-devguide-identity-registry.md)是 IoT 中心的内置组件，用于存储允许连接到 IoT 中心的单个设备的信息。
 
 ## <a name="interactive-message"></a>交互式消息

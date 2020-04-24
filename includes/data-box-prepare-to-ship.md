@@ -6,10 +6,10 @@ origin.date: 04/25/2019
 ms.date: 06/10/2019
 ms.author: v-jay
 ms.openlocfilehash: ca78da360df95267cbcd8a6586b3555091d505e0
-ms.sourcegitcommit: 67a78cae1f34c2d19ef3eeeff2717aa0f78de38e
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "66726489"
 ---
 最后一步是准备好要交付的设备。 在此步骤中，所有设备共享将会脱机。 启动此过程后，就无法访问共享。

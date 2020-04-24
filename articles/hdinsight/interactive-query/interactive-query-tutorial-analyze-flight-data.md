@@ -10,10 +10,10 @@ ms.date: 08/19/2019
 ms.author: v-yiso
 ms.custom: hdinsightactive,mvc
 ms.openlocfilehash: 139f1ec386dd69c4bd3a7077ef690a11669bcdca
-ms.sourcegitcommit: e9c62212a0d1df1f41c7f40eb58665f4f1eaffb3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "68886367"
 ---
 # <a name="tutorial-extract-transform-and-load-data-using-interactive-query-in-azure-hdinsight"></a>教程：在 Azure HDInsight 中使用交互式查询提取、转换和加载数据
@@ -43,7 +43,7 @@ ms.locfileid: "68886367"
 
 2. 在页面上，清除所有字段，然后选择以下值：
 
-   | Name | 值 |
+   | 名称 | Value |
    | --- | --- |
    | 筛选年份 |2019 |
    | 筛选期间 |1 月 |
@@ -194,7 +194,7 @@ ms.locfileid: "68886367"
 
     此查询会检索遇到天气延迟的城市的列表以及平均延迟时间，并将其保存到 `/tutorials/flightdelays/output` 中。 稍后，Sqoop 会从该位置读取数据并将其导出到 Azure SQL 数据库。
 
-7. 若要退出 Beeline，请在提示符处输入 `!quit`。
+7. 若要退出 Beeline，请在提示符处输入 `!quit` 。
 
 ## <a name="create-a-sql-database-table"></a>创建 SQL 数据库表
 
@@ -290,7 +290,7 @@ ms.locfileid: "68886367"
 
 ## <a name="clean-up-resources"></a>清理资源
 
-完成本教程后，可以删除群集。 有了 HDInsight，便可以将数据存储在 Azure 存储中，因此可以在群集不用时安全地删除群集。 此外，还需要支付 HDInsight 群集费用，即使未使用。 由于群集费用高于存储空间费用数倍，因此在不使用群集时将其删除可以节省费用。
+完成教程之后，可能想要删除该群集。 有了 HDInsight，便可以将数据存储在 Azure 存储中，因此可以在群集不用时安全地删除群集。 此外，还需要支付 HDInsight 群集费用，即使未使用。 由于群集费用高于存储空间费用数倍，因此在不使用群集时将其删除可以节省费用。
 
 若要删除群集，请参阅[使用浏览器、PowerShell 或 Azure CLI 删除 HDInsight 群集](../hdinsight-delete-cluster.md)。
 

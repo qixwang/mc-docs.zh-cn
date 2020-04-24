@@ -16,11 +16,11 @@ origin.date: 05/15/2018
 ms.date: 04/15/2019
 ms.author: v-jay
 ms.openlocfilehash: 6955f953d68f975722e07101f3e8a91f6c37d225
-ms.sourcegitcommit: cf8ad305433d47f9a6760f7a91ee361dc01573db
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59502615"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63852656"
 ---
 # <a name="manage-dns-records-and-recordsets-in-azure-dns-using-the-azure-cli"></a>使用 Azure CLI 管理 Azure DNS 中的 DNS 记录和记录集
 

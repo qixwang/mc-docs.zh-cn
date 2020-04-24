@@ -6,15 +6,15 @@ origin.date: 10/26/2018
 ms.date: 11/26/2018
 ms.author: v-yeche
 ms.openlocfilehash: c3b584fbe6ff838416e2398b29261a962b8c5c94
-ms.sourcegitcommit: 59db70ef3ed61538666fd1071dcf8d03864f10a9
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52676285"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63853220"
 ---
 ## <a name="next-steps"></a>后续步骤
 
-启用 Azure Key Vault 集成之后，可以在 SQL VM 上启用 SQL Server 加密。 首先，需要在密钥保管库内创建一个非对称密钥，并在 VM 上的 SQL Server 中创建一个对称密钥。 然后，将能够执行 T-SQL 语句，启用对数据库和备份的加密。
+启用 Azure 密钥保管库集成之后，可以在 SQL VM 上启用 SQL Server 加密。 首先，需要在密钥保管库内创建一个非对称密钥，并在 VM 上的 SQL Server 中创建一个对称密钥。 然后，能够执行的 T-SQL 语句，以启用对数据库和备份的加密。
 
 可以利用以下几种形式的加密：
 
@@ -26,7 +26,7 @@ ms.locfileid: "52676285"
 
 ### <a name="prerequisites-for-examples"></a>先决条件示例
 
-每个示例基于两个先决条件：密钥保管库中名为 CONTOSO_KEY 的非对称密钥，以及 AKV 集成功能创建的名为 Azure_EKM_TDE_cred 的凭据。 以下 Transact-SQL 命令设置这些运行示例所需的先决条件。
+每个示例基于两个先决条件：密钥保管库中名为 **CONTOSO_KEY** 的非对称密钥，以及 AKV 集成功能创建的名为 **Azure_EKM_TDE_cred** 的凭据。 以下 Transact-SQL 命令设置这些运行示例所需的先决条件。
 
 ``` sql
 USE master;
@@ -51,7 +51,7 @@ CREATION_DISPOSITION = OPEN_EXISTING;
 
 ### <a name="transparent-data-encryption-tde"></a>透明数据加密 (TDE)
 
-1. 创建数据库引擎将用于 TDE 的 SQL Server 登录名，然后向其添加凭据。
+1. 创建数据库引擎用于 TDE 的 SQL Server 登录名，然后向其添加凭据。
 
    ``` sql
    USE master;
@@ -69,7 +69,7 @@ CREATION_DISPOSITION = OPEN_EXISTING;
    GO
    ```
 
-1. 创建将用于 TDE 的数据库加密密钥。
+1. 创建用于 TDE 的数据库加密密钥。
 
    ``` sql
    USE ContosoDatabase;
@@ -88,7 +88,7 @@ CREATION_DISPOSITION = OPEN_EXISTING;
 
 ### <a name="encrypted-backups"></a>加密备份
 
-1. 创建数据库引擎将用于加密备份的 SQL Server 登录名，然后向其添加凭据。
+1. 创建数据库引擎用于加密备份的 SQL Server 登录名，然后向其添加凭据。
 
    ``` sql
    USE master;
@@ -118,7 +118,7 @@ CREATION_DISPOSITION = OPEN_EXISTING;
 
 ### <a name="column-level-encryption-cle"></a>列级加密 (CLE)
 
-此脚本创建一个受密钥保管库中的非对称密钥保护的对称密钥，然后使用该对称密钥对数据库中的数据进行加密。
+此脚本创建一个受密钥保管库中的非对称密钥保护的对称密钥，并使用该对称密钥对数据库中的数据进行加密。
 
 ``` sql
 CREATE SYMMETRIC KEY DATA_ENCRYPTION_KEY
@@ -145,6 +145,6 @@ CLOSE SYMMETRIC KEY DATA_ENCRYPTION_KEY;
 
 有关如何使用这些加密功能的详细信息，请参阅[将 EKM 用于 SQL Server 加密功能](https://msdn.microsoft.com/library/dn198405.aspx#UsesOfEKM)。
 
-请注意，本文中的步骤假定用户已经具有在 Azure 虚拟机上运行的 SQL Server。 如果没有，请参阅[在 Azure 中预配 SQL Server 虚拟机](../articles/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision.md)。 有关在 Azure VM 中运行 SQL Server 的其他指南，请参阅 [Azure 虚拟机上的 SQL Server 概述](../articles/virtual-machines/windows/sql/virtual-machines-windows-sql-server-iaas-overview.md)。
+请注意，本文中的步骤假定已经具有在 Azure 虚拟机上运行的 SQL Server。 如果没有，请参阅[在 Azure 中预配 SQL Server 虚拟机](../articles/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision.md)。 有关在 Azure VM 中运行 SQL Server 的其他指南，请参阅 [Azure 虚拟机上的 SQL Server 概述](../articles/virtual-machines/windows/sql/virtual-machines-windows-sql-server-iaas-overview.md)。
 
 <!--Update_Description: wording update, update link-->

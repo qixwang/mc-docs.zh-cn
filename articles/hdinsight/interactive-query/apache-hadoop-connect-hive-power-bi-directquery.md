@@ -10,10 +10,10 @@ origin.date: 02/25/2018
 ms.date: 06/10/2019
 ms.author: v-yiso
 ms.openlocfilehash: c7128e462d9bac1201b0641a0fe3ec41003b1211
-ms.sourcegitcommit: e9c62212a0d1df1f41c7f40eb58665f4f1eaffb3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "68878744"
 ---
 # <a name="visualize-interactive-query-apache-hive-data-with-microsoft-power-bi-using-direct-query-in-azure-hdinsight"></a>在 Azure HDInsight 中使用 Microsoft Power BI 通过直接查询直观显示交互式查询 Apache Hive 数据
@@ -24,7 +24,7 @@ ms.locfileid: "68878744"
 
 可以利用 [Apache Hive ODBC 驱动程序](../hadoop/apache-hadoop-connect-hive-power-bi.md)，通过 Power BI Desktop 中的通用 ODBC 连接器执行导入操作。 但是，鉴于 Hive 查询引擎的非交互性质，不建议对 BI 工作负荷执行此操作。 [HDInsight 交互式查询连接器](./apache-hadoop-connect-hive-power-bi-directquery.md)和 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 在开始阅读本文前，必须具备以下项：
 
 * **HDInsight 群集**。 该群集可以是包含 Apache Hive 的 HDInsight 群集，也可以是新发布的交互式查询群集。 有关创建群集的信息，请参阅[创建群集](../hadoop/apache-hadoop-linux-tutorial-get-started.md#create-cluster)。
@@ -36,7 +36,7 @@ ms.locfileid: "68878744"
 
 1. 启动 Power BI Desktop。
 
-2. 在菜单栏中，导航到“主页” > “获取数据” > “更多...”。   
+2. 在菜单栏中，导航到“主页” **“获取数据”** “更多...”。 >    >  
 
     ![HDInsight Power BI 开放数据](./media/apache-hadoop-connect-hive-power-bi-directquery/hdinsight-power-bi-open-odbc.png)
 
@@ -48,7 +48,7 @@ ms.locfileid: "68878744"
 
 6. 在“HDInsight 交互式查询”窗口中输入以下信息，然后选择“确定”   ：
 
-    |属性 | Value |
+    |properties | 值 |
     |---|---|
     |服务器 |输入群集名称，例如，myiqcluster.azurehdinsight.cn  。|
     |数据库 |就本文来说，请输入“default”。 |
@@ -56,7 +56,7 @@ ms.locfileid: "68878744"
 
     ![HDInsight 交互式查询 Power BI DirectQuery 连接](./media/apache-hadoop-connect-hive-power-bi-directquery/hdinsight-interactive-query-power-bi-connect.png)
 
-7. 输入 HTTP 凭据，然后选择“连接”  。 默认的用户名为 **admin**。
+7. 输入 HTTP 凭据，然后选择“连接”  。 默认的用户名为 admin  。
 
 8. 在左侧窗格的“导航器”窗口中，选择“hivesampletale”   。
 

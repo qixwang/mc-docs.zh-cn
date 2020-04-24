@@ -15,11 +15,11 @@ origin.date: 11/14/2018
 ms.date: 04/22/2019
 ms.author: v-yiso
 ms.openlocfilehash: 60bc0056f42ec149d895b98a929490258802cf65
-ms.sourcegitcommit: 9f7a4bec190376815fa21167d90820b423da87e7
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59529293"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63857867"
 ---
 # <a name="create-subscriptions-in-azure-api-management"></a>在 Azure API 管理中创建订阅
 
@@ -27,7 +27,7 @@ ms.locfileid: "59529293"
 
 本文展示了用于在 Azure 门户中创建订阅的步骤。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要执行本文中的步骤，必须具备以下先决条件：
 
@@ -40,7 +40,7 @@ ms.locfileid: "59529293"
 2. 选择“添加订阅”  。
 3. 提供订阅的名称，并选择范围。
 4. （可选）选择订阅是否应当与某个用户关联。
-5. 选择“保存”  。
+5. 选择“保存”。 
 
 ![灵活的订阅](./media/api-management-subscriptions/flexible-subscription.png)
 

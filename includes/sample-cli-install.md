@@ -6,11 +6,11 @@ origin.date: 11/25/2018
 ms.date: 02/18/2019
 ms.author: v-yeche
 ms.openlocfilehash: a9b9f70966a51c063fe0eff110d7f9f340e4a5bd
-ms.sourcegitcommit: dd6cee8483c02c18fd46417d5d3bcc2cfdaf7db4
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56666712"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63821589"
 ---
 若要运行此示例，请确保已安装最新版本的 [Azure CLI](https://docs.azure.cn/zh-cn/cli/install-azure-cli?view=azure-cli-latest)。 若要开始，请运行 `az login` 以创建与 Azure 的连接。
 

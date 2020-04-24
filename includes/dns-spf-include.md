@@ -6,11 +6,11 @@ origin.date: 11/25/2018
 ms.date: 12/24/2018
 ms.author: v-jay
 ms.openlocfilehash: 95216e00b0bd026e4450eea1bc3bc6bd91e7530c
-ms.sourcegitcommit: 895e9accaae8f8c2a29ed91d8e84911fda6111cf
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53615192"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63852660"
 ---
 发送方策略框架 (SPF) 记录用于指定可以代表域名发送电子邮件的电子邮件服务器。 正确配置 SPF 记录非常重要，可防止收件人将你的电子邮件标记为“垃圾邮件”。
 

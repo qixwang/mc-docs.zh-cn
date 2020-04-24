@@ -17,11 +17,11 @@ ms.date: 11/12/2018
 ms.component: hybrid
 ms.author: v-junlch
 ms.openlocfilehash: a387a6d9466b13ab22f64ba96f0f9272f5bac1cc
-ms.sourcegitcommit: d75065296d301f0851f93d6175a508bdd9fd7afc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52658013"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63824265"
 ---
 # <a name="azure-ad-connect-sync-technical-concepts"></a>Azure AD Connect 同步：技术概念
 本文是[了解体系结构](how-to-connect-sync-technical-concepts.md)主题的总结。
@@ -65,7 +65,7 @@ metaverse 是相邻连接器空间中的所有已联接标识的合并视图。 
 每个已连接数据源都表示为连接器空间中对象和属性的已筛选子集。
 此特点允许同步服务在本地工作，并且当同步对象时，不需要联系远程系统，此外还将交互限制为仅导入和导出。
 
-当数据源和连接器具有提供更改列表（增量导入）的功能时，则操作效率作为仅有的更改会显著增加，因为最后一个轮询周期进行了交换。 连接器空间通过要求连接器计划导入和导出保护已连接数据源免于进行自动传播的更改。 当测试、预览或确认下一次更新时，此添加的保护让你高枕无忧。
+当数据源和连接器具有提供更改列表（增量导入）的功能时，则操作效率作为仅有的更改会显著增加，因为最后一个轮询周期进行了交换。 连接器空间通过要求连接器计划导入和导出保护已连接数据源免于进行自动传播的更改。 当测试、预览或确认下一次更新时，此添加的保护可让你高枕无忧。
 
 ## <a name="metaverse"></a>Metaverse
 metaverse 是相邻连接器空间中的所有已联接标识的合并视图。

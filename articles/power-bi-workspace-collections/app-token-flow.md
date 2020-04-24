@@ -12,11 +12,11 @@ origin.date: 02/15/2019
 ms.date: 03/05/2019
 ms.author: v-junlch
 ms.openlocfilehash: f820ac402489a56e10f1f7e54770aa8a6bef5181
-ms.sourcegitcommit: 07a24e9a846705df3b98fc8ff193ec7d9ec913dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58408286"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63825968"
 ---
 # <a name="authenticating-and-authorizing-with-power-bi-workspace-collections"></a>通过 Power BI 工作区集合进行身份验证和授权
 
@@ -27,13 +27,13 @@ Power BI 工作区集合使用**密钥**和**应用令牌**进行身份验证和
 
 ## <a name="two-ways-to-authenticate"></a>进行身份验证的两种方式
 
-**密钥** - 对于所有 Power BI 工作区集合 REST API 调用，可以使用密钥。 在 **Azure 门户**中，可以通过依次选择“所有设置”和“访问密钥”来找到密钥。 请始终像对待密码一样对待密钥。 这些密钥有权在特定的工作区集合上执行任何 REST API 调用。
+**密钥** - 对于所有 Power BI 工作区集合 REST API 调用，可以使用密钥。 在 **Azure 门户**中，可以通过依次选择“所有设置”和“访问密钥”来找到密钥   。 请始终像对待密码一样对待密钥。 这些密钥有权在特定的工作区集合上执行任何 REST API 调用。
 
 若要在 REST 调用中使用密钥，请添加以下授权标头：
 
     Authorization: AppKey {your key}
 
-**应用令牌** - 应用令牌用于所有嵌入请求。 它们被设计为运行客户端，令牌限用于单个报表，并且最好设置一个过期时间。
+**应用令牌** - 应用令牌可用于所有嵌入请求。 它们被设计为运行客户端，令牌限用于单个报表，并且最好设置一个过期时间。
 
 应用令牌是由某个密钥签名的 JWT（JSON Web 令牌）。
 
@@ -44,7 +44,7 @@ Power BI 工作区集合使用**密钥**和**应用令牌**进行身份验证和
 | **ver** |应用令牌的版本。 当前版本为 0.2.0。 |
 | **aud** |令牌的目标接收方。 对于 Power BI 工作区集合，请使用：*https:\//analysis.chinacloudapi.cn/powerbi/api* |
 | **iss** |一个字符串，指示颁发了令牌的应用程序。 |
-| **类型** |要创建的应用令牌的类型。 当前唯一支持的类型是 **embed**。 |
+| type  |要创建的应用令牌的类型。 当前唯一支持的类型是 **embed**。 |
 | **wcn** |要为其颁发令牌的工作区集合名称。 |
 | **wid** |要为其颁发令牌的工作区 ID。 |
 | **rid** |要为其颁发令牌的报表 ID。 |
@@ -95,7 +95,7 @@ SDK 中提供了可以更轻松地创建应用令牌的方法。 例如，对于
 
 下面是针对 Power BI 工作区集合的可用作用域。
 
-|作用域|说明|
+|范围|说明|
 |---|---|
 |Dataset.Read|提供对指定数据集进行读取的权限。|
 |Dataset.Write|提供向指定数据集进行写入的权限。|
@@ -143,7 +143,7 @@ Body
 
 ### <a name="operations-and-scopes"></a>操作和作用域
 
-|操作|目标资源|令牌权限|
+|Operation|目标资源|令牌权限|
 |---|---|---|
 |基于数据集创建（在内存中）新报表。|数据集|Dataset.Read|
 |基于数据集创建（在内存中）新报表并保存该报表。|数据集|* Dataset.Read<br>* Workspace.Report.Create|
@@ -183,6 +183,6 @@ Body
 [Power BI 工作区集合入门](get-started.md)  
 [PowerBI-CSharp Git 存储库](https://github.com/Microsoft/PowerBI-CSharp)
 
-有更多问题？ [试用 Power BI 社区](https://community.powerbi.com/)
+更多疑问？ [尝试 Power BI 社区](https://community.powerbi.com/)
 
 <!-- Update_Description: link update -->

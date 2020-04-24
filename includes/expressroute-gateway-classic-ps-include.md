@@ -1,12 +1,12 @@
 ---
 ms.openlocfilehash: 75f4f9a9a70cf6e6f7aa7479a6fa94c530bbea64
-ms.sourcegitcommit: b8fb6890caed87831b28c82738d6cecfe50674fd
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58632857"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63829234"
 ---
-用户必须先创建 VNet 和网关子网，再处理以下任务。
+必须先创建 VNet 和网关子网，再处理以下任务。
 
 > [!NOTE]
 > 这些示例不适用于 S2S/ExpressRoute 共存配置。
@@ -77,7 +77,7 @@ New-AzureVNetGateway -VNetName "MyAzureVNET" -GatewayType DynamicRouting -Gatewa
 
 ## <a name="verify-the-gateway-was-created"></a>验证是否已创建网关
 
-使用以下命令来验证是否已创建网关。 此命令还会检索执行其他操作所需的网关 ID。
+使用以下命令来验证是否已创建网关。 此命令还将检索执行其他操作所需的网关 ID。
 
 ```powershell
 Get-AzureVNetGateway

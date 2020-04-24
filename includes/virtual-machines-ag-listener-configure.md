@@ -6,10 +6,10 @@ origin.date: 10/26/2018
 ms.date: 05/20/2019
 ms.author: v-yeche
 ms.openlocfilehash: 92f24285981bb717ec2e647a54b25a89c129d6cd
-ms.sourcegitcommit: bf4afcef846cc82005f06e6dfe8dd3b00f9d49f3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "66004100"
 ---
 可用性组侦听器是 SQL Server 可用性组侦听的 IP 地址和网络名称。 若要创建可用性组侦听器，请执行以下操作：

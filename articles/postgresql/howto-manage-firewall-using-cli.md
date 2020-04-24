@@ -9,10 +9,10 @@ ms.topic: conceptual
 origin.date: 5/6/2019
 ms.date: 05/20/2019
 ms.openlocfilehash: a1149f04cf86410ce0cd59a09b2ecde0d2363e13
-ms.sourcegitcommit: 11d81f0e4350a72d296e5664c2e5dc7e5f350926
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "65732023"
 ---
 # <a name="create-and-manage-firewall-rules-in-azure-database-for-postgresql---single-server-using-azure-cli"></a>使用 Azure CLI 在 Azure Database for PostgreSQL - 单一服务器中创建和管理防火墙规则
@@ -20,7 +20,7 @@ ms.locfileid: "65732023"
 
 也可使用虚拟网络 (VNet) 规则来保护对服务器进行的访问。 详细了解如何[使用 Azure CLI 创建和管理虚拟网络服务终结点和规则](howto-manage-vnet-using-cli.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 若要逐步执行本操作方法指南，需要：
 - 安装 [Azure CLI](/cli/install-azure-cli) 命令行实用程序。
 - [Azure Database for PostgreSQL 服务器和数据库](quickstart-create-server-database-azure-cli.md)。

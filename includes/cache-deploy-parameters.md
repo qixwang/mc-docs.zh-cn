@@ -1,3 +1,11 @@
+---
+ms.openlocfilehash: 6bbccb5180e2aca079c3a0f7e81a2b847e0a521f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63829527"
+---
 
 ### <a name="cacheskuname"></a>cacheSKUName
 新 Azure Redis 缓存的定价层。

@@ -16,17 +16,17 @@ origin.date: 12/01/2016
 ms.date: 01/03/2017
 ms.author: v-yiso
 ms.openlocfilehash: be88f1d3fd90b5d96ca53f44cc813922df4092e0
-ms.sourcegitcommit: d75065296d301f0851f93d6175a508bdd9fd7afc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52655819"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63853511"
 ---
 # <a name="how-to-scale-a-cloud-service-in-powershell"></a>如何在 PowerShell 中缩放云服务
 
 可以使用 Windows PowerShell 通过添加或删除实例来缩放 web 角色或辅助角色。  
 
-## <a name="log-in-to-azure"></a>登录到 Azure
+## <a name="log-in-to-azure"></a>登录 Azure
 
 若希望通过 PowerShell 对订阅执行任何操作，必须首先登录：
 
@@ -60,13 +60,13 @@ Get-AzureRole -ServiceName '<your_service_name>' -RoleName '<your_role_name>'
 
 ## <a name="scale-out-the-role-by-adding-more-instances"></a>通过添加更多实例来扩展角色
 
-若要扩展角色，请将所需的实例数作为 Count 参数传递给 Set-AzureRole cmdlet   ：
+要扩展角色，请将所需的实例数作为 **Count** 参数传递给 **Set-AzureRole** cmdlet：
 
 ```powershell
 Set-AzureRole -ServiceName '<your_service_name>' -RoleName '<your_role_name>' -Slot <target_slot> -Count <desired_instances>
 ```
 
-当预配并启动新实例时，此 cmdlet 立即阻止。 在此期间，如果打开一个新的 PowerShell 窗口，并调用 **Get-AzureRole** （如前面所示），将看到新的目标实例计数。 如果在门户中查看角色状态，应看到新实例正在启动：
+当预配并启动新实例时，此 cmdlet 将立即阻止。 在此期间，如果打开一个新的 PowerShell 窗口，然后调用 **Get-AzureRole**（如前面所示），将看到新的目标实例计数。 如果在门户中查看角色状态，应看到新实例正在启动：
 
 ![VM 实例正在门户中启动](./media/cloud-services-how-to-scale-powershell/role-instance-starting.png)
 
@@ -76,7 +76,7 @@ Set-AzureRole -ServiceName '<your_service_name>' -RoleName '<your_role_name>' -S
 
 ## <a name="scale-in-the-role-by-removing-instances"></a>通过删除实例横向缩减角色
 
-同样，可通过删除实例横向缩减角色。 将 Set-AzureRole 中的 Count 参数设置为缩小操作完成后所需的实例数   。
+同样，可通过删除实例横向缩减角色。 将 **Set-AzureRole** 中的 **Count** 参数设置为横向缩减操作完成后所需的实例数。
 
 ## <a name="next-steps"></a>后续步骤
 

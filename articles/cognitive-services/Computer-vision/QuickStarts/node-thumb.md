@@ -13,10 +13,10 @@ ms.date: 07/08/2019
 ms.author: v-junlch
 ms.custom: seodec18
 ms.openlocfilehash: 5dfe3cce5963438fac83edc45938e839fad10167
-ms.sourcegitcommit: 8f49da0084910bc97e4590fc1a8fe48dd4028e34
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "67844867"
 ---
 # <a name="quickstart-generate-a-thumbnail-using-the-computer-vision-rest-api-and-nodejs"></a>快速入门：使用计算机视觉 REST API 和 Node.js 生成缩略图
@@ -36,7 +36,7 @@ ms.locfileid: "67844867"
 要创建和运行示例，请执行以下步骤：
 
 1. 安装 npm [`request`](https://www.npmjs.com/package/request) 包。
-   1. 以管理员身份打开命令提示符窗口。
+   1. 以管理员身份打开“命令提示符”窗口。
    1. 运行以下命令：
 
       ```console

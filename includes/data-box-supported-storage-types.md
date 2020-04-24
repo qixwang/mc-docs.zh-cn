@@ -7,10 +7,10 @@ origin.date: 05/22/2019
 ms.date: 06/10/2019
 ms.author: v-jay
 ms.openlocfilehash: 840e71d76f1446e1f40ba5551d00f385b40d5077
-ms.sourcegitcommit: 67a78cae1f34c2d19ef3eeeff2717aa0f78de38e
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "66726509"
 ---
 下面是 Data Box 设备支持的存储类型列表。

@@ -19,10 +19,10 @@ ms.date: 07/22/2019
 ms.author: v-yeche
 ms.custom: mvc
 ms.openlocfilehash: f3185d18205c4f305f6218f707730a17faf89556
-ms.sourcegitcommit: 021dbf0003a25310a4c8582a998c17729f78ce42
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "68514438"
 ---
 # <a name="filter-network-traffic-with-a-network-security-group-using-powershell"></a>在 PowerShell 中使用网络安全组筛选网络流量
@@ -36,11 +36,11 @@ ms.locfileid: "68514438"
 * 将虚拟机 (VM) 部署到子网中
 * 测试流量筛选器
 
-如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial)。
+如果没有 Azure 订阅，可在开始前创建一个 [试用帐户](https://www.azure.cn/pricing/1rmb-trial) 。
 
 <!--[!INCLUDE [cloud-shell-powershell](../../../includes/cloud-shell-powershell.md)]-->
 
-如果选择在本地安装和使用 PowerShell，则本文需要 Azure PowerShell 模块 1.0.0 或更高版本。 运行 `Get-Module -ListAvailable Az` 查找已安装的版本。 如果需要进行升级，请参阅 [Install Azure PowerShell module](https://docs.microsoft.com/powershell/azure/install-az-ps)（安装 Azure PowerShell 模块）。 如果在本地运行 PowerShell，则还需运行 `Connect-AzAccount -Environment AzureChinaCloud` 来创建与 Azure 的连接。
+如果选择在本地安装和使用 PowerShell，则本文需要 Azure PowerShell 模块 1.0.0 或更高版本。 运行 `Get-Module -ListAvailable Az` 查找已安装的版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-az-ps)。 如果在本地运行 PowerShell，则还需运行 `Connect-AzAccount -Environment AzureChinaCloud` 来创建与 Azure 的连接。
 
 ## <a name="create-a-network-security-group"></a>创建网络安全组
 

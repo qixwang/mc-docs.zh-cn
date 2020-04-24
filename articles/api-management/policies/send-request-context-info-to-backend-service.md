@@ -15,11 +15,11 @@ origin.date: 10/13/2017
 ms.date: 02/26/2018
 ms.author: v-yiso
 ms.openlocfilehash: 9e7b2cca5b1c220c2b28cb0fa2fce11cec2c7e33
-ms.sourcegitcommit: d75065296d301f0851f93d6175a508bdd9fd7afc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52645519"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63858235"
 ---
 # <a name="send-request-context-information-to-the-backend-service"></a>将请求上下文信息转发到后端服务
 
@@ -27,7 +27,7 @@ ms.locfileid: "52645519"
 
 ## <a name="policy"></a>策略
 
-将代码粘贴到“入站”块中。
+将代码粘贴到“入站”块中  。
 
 ```xml
 <!-- The policies described in this file show how to send some context information to the backend service for logging or processing. -->

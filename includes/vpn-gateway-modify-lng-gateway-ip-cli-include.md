@@ -10,11 +10,11 @@ ms.date: 03/04/2019
 ms.author: v-jay
 ms.custom: include file
 ms.openlocfilehash: 272e19b474695cb6554ff209fba225d7d5d294ff
-ms.sourcegitcommit: dcd11929ada5035d127be1ab85d93beb72909dc3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56833222"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63849098"
 ---
 ### <a name="to-modify-the-local-network-gateway-gatewayipaddress"></a>修改本地网关的“gatewayIpAddress”
 

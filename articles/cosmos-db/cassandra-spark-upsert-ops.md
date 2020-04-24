@@ -10,11 +10,11 @@ ms.topic: conceptual
 origin.date: 09/24/2018
 ms.date: 03/18/2019
 ms.openlocfilehash: 035eea30e829de43c57bf6231d37b4bc11f92d27
-ms.sourcegitcommit: 66e360fe2577c9b7ddd96ff78e0ede36c3593b99
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/15/2019
-ms.locfileid: "57988328"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63856903"
 ---
 <!--Verify sucessfully-->
 # <a name="upsert-data-into-azure-cosmos-db-cassandra-api-from-spark"></a>从 Spark 将数据更新插入到 Azure Cosmos DB Cassandra API
@@ -48,7 +48,7 @@ spark.conf.set("spark.cassandra.output.batch.grouping.buffer.size", "1000")
 spark.conf.set("spark.cassandra.connection.keep_alive_ms", "600000000")
 ```
 
-## <a name="dataframe-api"></a>Dataframe API
+## <a name="dataframe-api"></a>数据帧 API
 
 ### <a name="create-a-dataframe"></a>创建 dataframe 
 

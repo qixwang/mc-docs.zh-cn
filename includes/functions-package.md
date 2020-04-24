@@ -11,10 +11,10 @@ ms.date: 07/17/2019
 ms.author: v-junlch
 ms.custom: include file
 ms.openlocfilehash: d58c1a75f785d01ad1611a264f765b5748ede04c
-ms.sourcegitcommit: c61b10764d533c32d56bcfcb4286ed0fb2bdbfea
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "68332781"
 ---
 下表说明了如何在每个开发环境中添加对此绑定的支持。

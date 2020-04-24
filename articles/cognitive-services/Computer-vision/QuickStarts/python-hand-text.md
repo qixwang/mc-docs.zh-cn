@@ -13,10 +13,10 @@ ms.date: 07/08/2019
 ms.author: v-junlch
 ms.custom: seodec18
 ms.openlocfilehash: a6b1050ba7fb55b406a8e472ecc56ad4f3bf777a
-ms.sourcegitcommit: 8f49da0084910bc97e4590fc1a8fe48dd4028e34
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "67844853"
 ---
 # <a name="quickstart-extract-handwritten-text-using-the-computer-vision-rest-api-and-python"></a>快速入门：使用计算机视觉 REST API 和 Python 提取手写文本

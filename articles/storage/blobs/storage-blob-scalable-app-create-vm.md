@@ -12,17 +12,17 @@ ms.author: v-jay
 ms.custom: mvc
 ms.component: blobs
 ms.openlocfilehash: fed43757281521efccaca3f6e1359c1bc84b6bd4
-ms.sourcegitcommit: 5eff40f2a66e71da3f8966289ab0161b059d0263
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54192841"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63858803"
 ---
 # <a name="create-a-virtual-machine-and-storage-account-for-a-scalable-application"></a>为可缩放的应用程序创建虚拟机和存储帐户
 
 本教程是一个系列中的第一部分。 本教程演示如何部署使用 Azure 存储帐户上传和下载大量随机数据的应用程序。 完成后，会有一个控制台应用程序在虚拟机上运行，用于将大量数据上传和下载到存储帐户。
 
-在该系列的第一部分中，你将学习如何：
+在该系列的第一部分中，你会学习如何：
 
 > [!div class="checklist"]
 > * 创建存储帐户
@@ -33,7 +33,7 @@ ms.locfileid: "54192841"
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-在本地安装并使用 PowerShell，本教程需要 Azure PowerShell 模块 Az 版本 0.7 或更高版本。 运行 ` Get-Module -ListAvailable Az` 即可查找版本。 如果需要进行升级，请参阅 [Install Azure PowerShell module](https://docs.microsoft.com/powershell/azure/install-Az-ps)（安装 Azure PowerShell 模块）。 此外，还需要运行 `Connect-AzAccount -EnvironmentName AzureChinaCloud` 以创建与 Azure 的连接。
+在本地安装并使用 PowerShell，本教程需要 Azure PowerShell 模块 Az 版本 0.7 或更高版本。 运行 ` Get-Module -ListAvailable Az` 即可查找版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-Az-ps)。 此外，还需要运行 `Connect-AzAccount -EnvironmentName AzureChinaCloud` 以创建与 Azure 的连接。
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
@@ -59,7 +59,7 @@ $storageAccount = New-AzStorageAccount -ResourceGroupName myResourceGroup `
 
 ## <a name="create-a-virtual-machine"></a>创建虚拟机
 
-创建虚拟机配置。 此配置包括部署虚拟机时使用的设置，例如虚拟机映像、大小和身份验证配置。 运行此步骤时，会提示输入凭据。 你输入的值将配置为用于虚拟机的用户名和密码。
+创建虚拟机配置。 此配置包括部署虚拟机时使用的设置，例如虚拟机映像、大小和身份验证配置。 运行此步骤时，会提示输入凭据。 输入的值将配置为用于虚拟机的用户名和密码。
 
 使用 [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) 创建虚拟机。
 

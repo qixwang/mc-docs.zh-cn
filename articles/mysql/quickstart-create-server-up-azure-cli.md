@@ -10,11 +10,11 @@ origin.date: 3/18/2019
 ms.date: 04/01/2019
 ms.custom: mvc
 ms.openlocfilehash: 706d7642d1b1c140d067dc5d47103a89ef1b8962
-ms.sourcegitcommit: 5b827b325a85e1c52b5819734ac890d2ed6fc273
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58503683"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63860788"
 ---
 # <a name="quickstart-create-an-azure-database-for-mysql-using-a-simple-azure-cli-command---az-mysql-up-preview"></a>快速入门：使用简单的 Azure CLI 命令 az mysql up 创建 Azure Database for MySQL（预览）
 
@@ -39,7 +39,7 @@ az cloud set --name AzureChinaCloud
 az login
 ```
 
-如果有多个订阅，请选择应计费的资源所在的相应订阅。 使用 [az account set](/cli/account) 命令选择帐户下的特定订阅 ID。 将订阅 ID 占位符替换为订阅的 az login 输出中的“订阅 ID”属性。
+如果有多个订阅，请选择应计费的资源所在的相应订阅。 使用 [az account set](/cli/account) 命令选择帐户下的特定订阅 ID。 将订阅 ID 占位符替换为订阅的 az login 输出中的“订阅 ID”属性   。
 
 ```azurecli
 az account set --subscription <subscription id>

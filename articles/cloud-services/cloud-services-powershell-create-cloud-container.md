@@ -14,11 +14,11 @@ origin.date: 11/18/2016
 ms.date: 04/22/2019
 ms.author: v-yiso
 ms.openlocfilehash: 83f37bcc087324dcdc6d6f55a4ac3a716dbfcd8b
-ms.sourcegitcommit: 9f7a4bec190376815fa21167d90820b423da87e7
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59529263"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63852143"
 ---
 # <a name="use-an-azure-powershell-command-to-create-an-empty-cloud-service-container"></a>使用 Azure PowerShell 命令可创建一个空的云服务容器
 本文介绍如何使用 Azure PowerShell cmdlet 快速创建云服务容器。 请执行以下步骤：
@@ -51,5 +51,5 @@ Get-help New-AzureService
 ```
 
 ### <a name="next-steps"></a>后续步骤
-* 若要管理云服务部署，请参阅 [Get-AzureService](https://docs.microsoft.com/en-us/powershell/module/servicemanagement/azure/Get-AzureService?view=azuresmps-4.0.0)、[Remove-AzureService](https://docs.microsoft.com/en-us/powershell/module/servicemanagement/azure/Remove-AzureService?view=azuresmps-4.0.0) 和 [Set-AzureService](/powershell/module/servicemanagement/azure/set-azureservice?view=azuresmps-4.0.0) 命令。 有关更多信息，还可以参阅 [如何配置云服务](cloud-services-how-to-configure-portal.md)。
-* 若要将云服务项目发布到 Azure，请参见[已存档的云服务存储库](https://github.com/MicrosoftDocs/azure-cloud-services-files/tree/master/Scripts/cloud-services-continuous-delivery)中的 **PublishCloudService.ps1** 代码示例。
+* 若要管理云服务部署，请参阅 [Get-AzureService](https://docs.microsoft.com/en-us/powershell/module/servicemanagement/azure/Get-AzureService?view=azuresmps-4.0.0)、[Remove-AzureService](https://docs.microsoft.com/en-us/powershell/module/servicemanagement/azure/Remove-AzureService?view=azuresmps-4.0.0) 和 [Set-AzureService](/powershell/module/servicemanagement/azure/set-azureservice?view=azuresmps-4.0.0) 命令。 有关更多信息，还可以参阅[如何配置云服务](cloud-services-how-to-configure-portal.md)。
+* 若要将云服务项目发布到 Azure，请参见**已存档的云服务存储库**中的 [PublishCloudService.ps1](https://github.com/MicrosoftDocs/azure-cloud-services-files/tree/master/Scripts/cloud-services-continuous-delivery) 代码示例。

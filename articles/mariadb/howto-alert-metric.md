@@ -8,10 +8,10 @@ ms.topic: conceptual
 origin.date: 01/07/2019
 ms.date: 07/22/2019
 ms.openlocfilehash: e683f1e26c9f1c7c0871a0c5a17c264e72e7a786
-ms.sourcegitcommit: 1dac7ad3194357472b9c0d554bf1362c391d1544
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "68308897"
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-mariadb"></a>使用 Azure 门户设置针对 Azure Database for MariaDB 指标的警报
@@ -75,7 +75,7 @@ ms.locfileid: "68308897"
 
 12. 选择“创建警报规则”可以创建警报  。
 
-    在几分钟后，警报将如前所述激活并触发。
+    几分钟后，警报将处于活动状态，并按前面所述进行触发。
 
 ## <a name="manage-your-alerts"></a>管理警报
 创建警报后，可选择它并执行以下操作：
@@ -87,4 +87,4 @@ ms.locfileid: "68308897"
 
 ## <a name="next-steps"></a>后续步骤
 * 了解[在警报中配置 Webhook](../monitoring-and-diagnostics/insights-webhooks-alerts.md)的详细信息。
-* [大致了解指标收集](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md)以确保服务可用且响应迅速。
+* 获取[指标集合概述](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md)以确保服务可用且响应迅速。

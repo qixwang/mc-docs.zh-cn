@@ -1,3 +1,11 @@
+---
+ms.openlocfilehash: 3467e62d8e6a5fb885a651e7f646de6e4db8a9dd
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63860070"
+---
 ## <a name="create-a-ruby-application"></a>创建 Ruby 应用程序
 有关说明，请参阅[在 Azure 上创建 Ruby 应用程序](../articles/virtual-machines/linux/classic/ruby-rails-web-app.md)。
 
@@ -16,7 +24,7 @@ require "azure"
 ```
 
 ## <a name="set-up-a-service-bus-connection"></a>设置服务总线连接
-使用以下代码设置命名空间、密钥名称、密钥、签名程序和主机的值：
+使用以下代码，设置命名空间、密钥名称、密钥、签名程序和主机的值：
 
 ```ruby
 Azure.configure do |config|
@@ -28,4 +36,4 @@ signer = Azure::ServiceBus::Auth::SharedAccessSigner.new
 sb_host = "https://#{Azure.sb_namespace}.servicebus.chinacloudapi.cn"
 ```
 
-将命名空间值设置为你创建的值，而不是整个 URL 的值。 例如，使用 **"yourexamplenamespace"**，而不是 "yourexamplenamespace.servicebus.chinacloudapi.cn"。
+将命名空间值设置为创建的值，而不是整个 URL 的值。 例如，使用 **"yourexamplenamespace"** ，而不是 "yourexamplenamespace.servicebus.chinacloudapi.cn"。

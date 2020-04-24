@@ -16,11 +16,11 @@ origin.date: 06/20/2018
 ms.author: v-yiso
 ms.date: 04/22/2019
 ms.openlocfilehash: 8dcc71b6e9200f1a6d033c3c78d6db0df89ca720
-ms.sourcegitcommit: 9f7a4bec190376815fa21167d90820b423da87e7
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59529460"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63857837"
 ---
 # <a name="how-to-use-role-based-access-control-in-azure-api-management"></a>如何在 Azure API 管理中使用基于角色的访问控制
 Azure API 管理依赖于 Azure 基于角色的访问控制 (RBAC) 来为 API 管理服务和实体（例如，API 和策略）启用精细访问管理。 本文概述 API 管理中的内置角色和自定义角色。 有关 Azure 门户中的访问管理的详细信息，请参阅 [Azure 门户中的访问管理入门](../active-directory/role-based-access-control-what-is.md)
@@ -35,7 +35,7 @@ API 管理目前提供了三个内置角色，不久之后会再添加两个角�
 | 角色          | 读取访问权限<sup>[1]</sup> | 写入访问权限<sup>[2]</sup> | 服务创建、删除、缩放，VPN 和自定义域配置 | 对旧版发布者门户拥有访问权限 | 说明
 | ------------- | ---- | ---- | ---- | ---- | ---- 
 | Azure API 管理服务参与者 | ✓ | ✓ | ✓ | ✓ | 超级用户。 对 API 管理服务和实体（例如，API 和策略）拥有完全 CRUD 访问权限。 对旧版发布者门户拥有访问权限。 |
-| Azure API 管理服务读取者 | ✓ | | || 对 API 管理服务和实体拥有只读访问权限。 |
+| Azure API 管理服务读者 | ✓ | | || 对 API 管理服务和实体拥有只读访问权限。 |
 | Azure API 管理服务操作员 | ✓ | | ✓ | | 可以管理 API 管理服务，但不能管理实例。|
 | Azure API 管理服务编辑者<sup>*</sup> | ✓ | ✓ | |  | 可以管理 API 管理实体，但不能管理服务。|
 | Azure API 管理内容管理员<sup>*</sup> | ✓ | | | ✓ | 可以管理开发人员门户。 对服务和实体拥有只读访问权限。|

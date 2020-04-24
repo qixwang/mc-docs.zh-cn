@@ -6,10 +6,10 @@ origin.date: 11/09/2018
 ms.date: 12/31/2018
 ms.author: v-jay
 ms.openlocfilehash: 77e5ed1e5d6c14a330e0093384731852751e2560
-ms.sourcegitcommit: df1adc5cce721db439c1a7af67f1b19280004b2d
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "65835770"
 ---
 Azure 内部负载均衡器 (ILB) 可在驻留于云服务或虚拟网络（具有区域性作用域）中的虚拟机之间提供网络负载均衡。

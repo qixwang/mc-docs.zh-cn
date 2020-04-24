@@ -11,15 +11,15 @@ ms.service: storage
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: jamesbak
 ms.openlocfilehash: dea419a5f0de4353c01c250d5393e0f887a80667
-ms.sourcegitcommit: bf4afcef846cc82005f06e6dfe8dd3b00f9d49f3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "66004058"
 ---
 # <a name="use-the-azure-data-lake-storage-gen2-uri"></a>使用 Azure Data Lake Storage Gen2 URI
 
-通过方案标识符 `abfs`（Azure Blob 文件系统）可以知道与 Azure Data Lake Storage Gen2 兼容的 [Hadoop 文件系统](https://www.aosabook.org/en/hdfs.html)驱动程序。 与其他 Hadoop 文件系统驱动程序一样，ABFS 驱动程序使用 URI 格式寻址支持 Data Lake Storage Gen2 的帐户中的文件和目录。
+通过方案标识符 [（Azure Blob 文件系统）可以知道与 Azure Data Lake Storage Gen2 兼容的 ](https://www.aosabook.org/en/hdfs.html)Hadoop 文件系统`abfs`驱动程序。 与其他 Hadoop 文件系统驱动程序一样，ABFS 驱动程序使用 URI 格式寻址支持 Data Lake Storage Gen2 的帐户中的文件和目录。
 
 ## <a name="uri-syntax"></a>URI 语法
 
@@ -37,7 +37,7 @@ Data Lake Storage Gen2 的 URI 语法依赖于存储帐户是否设置为将 Dat
 
 4. **路径**：目录结构采用正斜杠分隔 (`/`) 表示形式。
 
-5. **文件名**：单个文件的名称。 如果对目录寻址，则此参数是可选的。
+5. **文件名称**：单个文件的名称。 如果对目录寻址，则此参数是可选的。
 
 但是，如果希望寻址的帐户在帐户创建期间设为默认文件系统，则简写 URI 语法为：
 
@@ -45,7 +45,7 @@ Data Lake Storage Gen2 的 URI 语法依赖于存储帐户是否设置为将 Dat
 
 1. **路径**：目录结构采用正斜杠分隔 (`/`) 表示形式。
 
-2. **文件名**：单个文件的名称。
+2. **文件名称**：单个文件的名称。
 
 
 ## <a name="next-steps"></a>后续步骤

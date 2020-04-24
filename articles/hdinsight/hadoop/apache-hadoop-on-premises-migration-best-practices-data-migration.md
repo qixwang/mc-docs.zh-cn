@@ -11,10 +11,10 @@ origin.date: 04/08/2019
 ms.date: 05/20/2019
 ms.author: v-yiso
 ms.openlocfilehash: d1def6f8dfe9c4d3fb5f5f74bf8a70a3d6a9675b
-ms.sourcegitcommit: e9c62212a0d1df1f41c7f40eb58665f4f1eaffb3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "68878510"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---data-migration-best-practices"></a>将本地 Apache Hadoop 群集迁移到 Azure HDInsight - 数据迁移最佳做法
@@ -26,7 +26,7 @@ ms.locfileid: "68878510"
 有两个主要选项可将数据从本地迁移到 Azure 环境：
 
 1.  使用 TLS 通过网络传输数据
-    1. 通过 Internet - 可以使用以下多个工具中的任意一个将数据通过常规 Internet 连接传输到 Azure 存储：Azure 存储资源管理器、AzCopy、Azure Powershell 和 Azure CLI。  有关详细信息，请参阅[将数据移入和移出 Azure 存储](../../storage/common/storage-moving-data.md)。
+    1. 通过 Internet - 可以使用以下多个工具中的任意一个将数据通过 Internet 传输到 Azure 存储：Azure 存储资源管理器、AzCopy、Azure Powershell 和 Azure CLI。  有关详细信息，请参阅[将数据移入和移出 Azure 存储](../../storage/common/storage-moving-data.md)。
     2. Express Route - ExpressRoute 是一项 Azure 服务，允许在 Microsoft 数据中心与本地环境或共同租用设施中的基础结构之间创建专用连接。 ExpressRoute 连接不通过公共 Internet，与通过 Internet 的典型连接相比，提供更高的安全性、可靠性、速度和更低的延迟。 有关详细信息，请参阅[创建和修改 ExpressRoute 线路](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md)。
     1. Data Box 联机数据传输 - Data Box Edge 和 Data Box Gateway 是联机数据传输产品，它们用作网络存储网关来管理站点和 Azure 之间的数据。 Data Box Edge 是一种本地网络设备，可将数据传入和传出 Azure，并使用支持人工智能 (AI) 的边缘计算来处理数据。 Data Box Gateway 是具有存储网关功能的虚拟设备。 有关详细信息，请参阅 [Azure Data Box 文档 - 联机传输](https://docs.microsoft.com/azure/databox-online/)。
 1.  脱机寄送数据

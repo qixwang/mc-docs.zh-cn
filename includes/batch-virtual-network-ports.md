@@ -1,9 +1,9 @@
 ---
 ms.openlocfilehash: 12471b3bb405b3289104adbf8f6e574f8b0bc183
-ms.sourcegitcommit: 021dbf0003a25310a4c8582a998c17729f78ce42
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "63829449"
 ---
 - VNet 与 Batch 帐户必须位于同一 Azure 区域  和订阅  中。

@@ -6,10 +6,10 @@ origin.date: 04/30/2019
 ms.date: 07/01/2019
 ms.author: v-yeche
 ms.openlocfilehash: a779022a4b81f7a1a9d61fbc6be20c1b71da0e6a
-ms.sourcegitcommit: c61b10764d533c32d56bcfcb4286ed0fb2bdbfea
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "68332800"
 ---
 - **安装 Ansible**：  <!--Not Available on  Do one of the following options:-->

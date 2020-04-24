@@ -19,10 +19,10 @@ ms.date: 06/10/2019
 ms.author: v-yeche
 ms.custom: ''
 ms.openlocfilehash: 8eaba85d635f6850b70c0563d10919e457652109
-ms.sourcegitcommit: df1b896faaa87af1d7b1f06f1c04d036d5259cc2
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "66250333"
 ---
 # <a name="route-network-traffic-with-a-route-table-using-the-azure-cli"></a>使用 Azure CLI 通过路由表路由网络流量

@@ -14,15 +14,15 @@ origin.date: 03/30/2018
 ms.date: 11/26/2018
 ms.author: v-lingwu
 ms.openlocfilehash: 70d28480bde67800c6002723a63a28d87a9c63e7
-ms.sourcegitcommit: 59db70ef3ed61538666fd1071dcf8d03864f10a9
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52674537"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63824698"
 ---
 # <a name="security-documentation"></a>安全文档
 
-了解如何使用 Azure 安全性来保护云中的服务和数据。 教程和其他文档可帮助根据部署要求，在 Azure 服务中自定义安全选项。
+了解如何使用 Azure 安全性来保护云中的服务和数据。 教程和其他文档可帮助你根据部署要求，在 Azure 服务中自定义安全选项。
 
 <ul class="panelContent cardsFTitle">
     <li>

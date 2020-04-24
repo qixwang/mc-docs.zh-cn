@@ -16,15 +16,15 @@ origin.date: 01/15/2017
 ms.date: 10/16/2017
 ms.author: v-johch
 ms.openlocfilehash: c420c113d49ea41dcfc4741050eac5712388a7eb
-ms.sourcegitcommit: d75065296d301f0851f93d6175a508bdd9fd7afc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52656810"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63849582"
 ---
 # <a name="using-the-azure-importexport-tool-classic-deployment-model"></a>使用 Azure 导入/导出工具（经典部署模型）
 
-使用 Azure 导入/导出工具 (WAImportExport.exe) 可以创建和管理 Azure 导入/导出服务的作业，以便将大量数据传入或传出 Azure Blob 存储。
+使用 Azure 导入/导出工具 (WAImportExport.exe) 可以创建和管理 Azure 导入/导出服务的作业，将大量数据传入或传出 Azure Blob 存储。
 
 本文档适用于 Azure 导入/导出工具的经典部署模型。 有关该工具的最新版本的使用信息，请参阅[使用 Azure 导入/导出工具](../storage-import-export-tool-how-to.md)。
 

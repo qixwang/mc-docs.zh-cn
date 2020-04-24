@@ -10,11 +10,11 @@ origin.date: 01/09/2019
 ms.date: 04/01/2019
 ms.custom: mvc
 ms.openlocfilehash: 9f2ae11ac19589a2e60919ffc4b5fbb08bb12bc9
-ms.sourcegitcommit: 5b827b325a85e1c52b5819734ac890d2ed6fc273
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58503547"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63860789"
 ---
 # <a name="quickstart-create-an-azure-database-for-mysql-server-using-azure-cli"></a>快速入门：使用 Azure CLI 为 MySQL 服务器创建 Azure 数据库
 
@@ -110,7 +110,7 @@ az mysql server firewall-rule create --resource-group myresourcegroup --server m
 az mysql server show --resource-group myresourcegroup --name mydemoserver
 ```
 
-结果采用 JSON 格式。 记下 **fullyQualifiedDomainName** 和 **administratorLogin**。
+结果采用 JSON 格式。 记下 fullyQualifiedDomainName  和 administratorLogin  。
 ```json
 {
   "administratorLogin": "myadmin",

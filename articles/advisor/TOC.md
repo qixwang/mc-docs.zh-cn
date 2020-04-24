@@ -12,7 +12,7 @@
 # 入门
 ## [顾问入门](advisor-get-started.md)
 
-# 引用
+# 参考
 ## [REST API](https://docs.microsoft.com/rest/api/advisor)
 ## [CLI](/cli/advisor)
 

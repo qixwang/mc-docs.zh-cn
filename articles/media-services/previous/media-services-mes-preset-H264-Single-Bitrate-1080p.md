@@ -16,18 +16,18 @@ origin.date: 03/19/2019
 ms.date: 04/01/2019
 ms.author: v-jay
 ms.openlocfilehash: bfc1e66189c00e2dcba6fdce83f7d55e7d7a59d9
-ms.sourcegitcommit: 2d43e48f4c80e085e628e83822eeaa38f62d1cb2
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58624098"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63859935"
 ---
 # <a name="h264-single-bitrate-1080p"></a>H264 单比特率 1080p
-`Media Encoder Standard` 定义一组可在创建编码作业时使用的编码预设。 可以使用 `preset name` 指定编码媒体文件采用的格式。 也可以创建自己的 JSON 或基于 XML 的预设（使用 UTF-8 或 UTF-16 编码）。 然后，将自定义预设传递到编码器。 有关此 `Media Encoder Standard` 编码器支持的所有预设名称的列表，请参阅 [Media Encoder Standard 的任务预设](media-services-mes-presets-overview.md)。  
+`Media Encoder Standard` 定义了一组在创建编码作业时可使用的编码预设。 可以使用 `preset name` 指定编码媒体文件采用的格式。 也可以创建自己的 JSON 或基于 XML 的预设（使用 UTF-8 或 UTF-16 编码）。 然后，将自定义预设传递到编码器。 有关此 `Media Encoder Standard` 编码器支持的所有预设名称的列表，请参阅 [Media Encoder Standard 的任务预设](media-services-mes-presets-overview.md)。  
   
- 本主题演示 XML 和 JSON 格式的 `H264 Single Bitrate 1080p` 预设。  
+ 本主题介绍 XML 和 JSON 格式的 `H264 Single Bitrate 1080p` 预设。  
   
- 此预设会生成单个 MP4 文件，其比特率为 6750 kbps，并且带有立体声 AAC 音频。 若要深入了解此预设的配置文件、比特率、采样率等，请检查下面定义的 XML 或 JSON。 有关这些预设中的每个元素的含义及其有效值的说明，请参阅 [Media Encoder Standard 架构](media-services-mes-schema.md)主题。  
+ 此预设产生比特率为 6750 kbps 的单个 MP4 文件和立体声 AAC 音频。 有关此预设的配置文件、比特率、采样率等的详细信息，请观察下面定义的 XML 或 JSON。 有关这些预设中的每个元素的含义及其有效值的说明，请参阅 [Media Encoder Standard 架构](media-services-mes-schema.md)主题。  
   
  XML  
   

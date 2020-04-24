@@ -17,11 +17,11 @@ origin.date: 08/30/2017
 ms.date: 02/26/2019
 ms.author: v-junlch
 ms.openlocfilehash: 64fe4f9ba611fd13d6d29291257be01b4c3cdabc
-ms.sourcegitcommit: 1e5ca29cde225ce7bc8ff55275d82382bf957413
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56903083"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63853509"
 ---
 # <a name="delete-an-azure-cache-for-redis"></a>删除 Azure Redis 缓存
 
@@ -45,9 +45,9 @@ az redis delete --name contosoCache --resource-group contosoGroup
 
 此脚本使用以下命令删除 Azure Redis 缓存实例。 表中的每条命令均链接到特定于命令的文档。
 
-| 命令 | 注释 |
+| Command | 说明 |
 |---|---|
-| [az redis delete](/cli/redis) | 删除 Azure Redis 缓存实例。 |
+| [az redis 删除](/cli/redis) | 删除 Azure Redis 缓存实例。 |
 
 
 ## <a name="next-steps"></a>后续步骤

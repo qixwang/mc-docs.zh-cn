@@ -12,10 +12,10 @@ origin.date: 08/29/2017
 ms.date: 08/05/2019
 ms.author: v-yiso
 ms.openlocfilehash: fb26d7d157a9a91a2af64af3323abded62bc96ca
-ms.sourcegitcommit: 021dbf0003a25310a4c8582a998c17729f78ce42
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "68514453"
 ---
 # <a name="azure-iot-device-sdk-for-c--more-about-iothubclient"></a>适用于 C 语言的 Azure IoT 设备 SDK - 有关 IoTHubClient 的详细信息
@@ -24,7 +24,7 @@ ms.locfileid: "68514453"
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
-前一篇文章介绍了如何使用 **IoTHubClient** 库将事件发送到 IoT 中心及接收消息。 本文扩大讨论范围，介绍 *较低级别 API* ，介绍如何更精确地管理发送和接收数据的 **时机**。 此外将说明如何使用 **IoTHubClient** 库中的属性处理功能，将属性附加到事件（以及从消息中检索属性）。 最后，进一步说明如何以不同的方式来处理从 IoT 中心收到的消息。
+前一篇文章介绍了如何使用 **IoTHubClient** 库将事件发送到 IoT 中心及接收消息。 本文扩大讨论范围，介绍 *较低级别 API* ，介绍如何更精确地管理发送和接收数据的 **时机**。 此外将说明如何使用 **IoTHubClient** 库中的属性处理功能，将属性附加到事件（以及从消息中检索属性）。 最后，进一步介绍如何以不同的方式来处理从 IoT 中心收到的消息。
 
 本文结尾提供了几个其他主题，深入介绍了设备凭据以及如何通过配置选项更改 **IoTHubClient** 的行为。
 
@@ -76,7 +76,7 @@ IoTHubClient_Destroy(iotHubClientHandle);
 
 同样，当使用 **IoTHubClient\_SetMessageCallback** 注册消息的回调函数时，则会指示 SDK 在收到消息时让后台线程调用回调函数（独立于主线程）。
 
-**LL** API 不会创建后台线程。 必须调用一个新 API 明确地与 IoT 中心之间相互发送和接收数据。 以下示例就将此进行演示。
+**LL** API 不会创建后台线程。 必须调用一个新 API 明确地与 IoT 中心之间相互发送和接收数据。 以下示例就此进行演示。
 
 SDK 中附带的 **iothub\_client\_sample\_http** 应用程序演示了较低级别的 API。 在该示例中，使用如下代码将事件发送到 IoT 中心：
 
@@ -124,7 +124,7 @@ while ((IoTHubClient_LL_GetSendStatus(iotHubClientHandle, &status) == IOTHUB_CLI
 IoTHubClient_LL_Destroy(iotHubClientHandle);
 ```
 
-基本上，只有一组 API 使用后台线程来发送和接收数据，而另一组 API 不会使用后台线程来执行相同的操作。 许多开发人员可能偏好非 LL API，但是当他们想要明确控制网络传输时，较低级别 API 就很有用。 例如，有些设备会收集各时间段的数据，并且只按指定的时间间隔引入事件（例如，每小时一次或每天一次）。 较低级别 API 可以在与 IoT 中心之间发送和接收数据时提供明确控制的能力。 还有一些人纯粹偏好较低级别 API 提供的简单性。 所有操作都发生在主线程上，而不是有些操作在后台发生。
+基本上，只有一组 API 使用后台线程来发送和接收数据，而另一组 API 不会使用后台线程来执行相同的操作。 许多开发人员可能更喜欢使用非 LL API，但是当他们想要明确控制网络传输时，较低级别 API 就很有用。 例如，有些设备会收集各时间段的数据，并且只按指定的时间间隔引入事件（例如，每小时一次或每天一次）。 较低级别 API 可以在与 IoT 中心之间发送和接收数据时提供明确控制的能力。 还有一些人纯粹偏好较低级别 API 提供的简单性。 所有操作都发生在主线程上，而不是有些操作在后台发生。
 
 无论选择哪种模型，都必须与使用的 API 相一致。 如果首先调用 **IoTHubClient\_LL\_CreateFromConnectionString**，则对于任何后续工作，请务必只使用相应的较低级别的 API：
 
@@ -151,7 +151,7 @@ message.messageHandle = IoTHubMessage_CreateFromByteArray((const unsigned char*)
 IoTHubClient_LL_SendEventAsync(iotHubClientHandle, message.messageHandle, SendConfirmationCallback, &message)
 ```
 
-此示例将包含文本“Hello World”的消息发送到 IoT 中心。 但是，IoT 中心也允许将属性附加到每个消息。 这些属性是可附加到消息的名称/值对。 例如，我们可以修改上述代码，以将属性附加到消息：
+此示例包含文本“Hello World”的消息发送到 IoT 中心。 但是，IoT 中心也允许将属性附加到每个消息。 这些属性是可附加到消息的名称/值对。 例如，我们可以修改上述代码，以将属性附加到消息：
 
 ```C
 MAP_HANDLE propMap = IoTHubMessage_Properties(message.messageHandle);
@@ -219,7 +219,7 @@ static IOTHUBMESSAGE_DISPOSITION_RESULT ReceiveMessageCallback(IOTHUB_MESSAGE_HA
 
 -   **IOTHUBMESSAGE\_ABANDONED** - 消息未成功处理，但 **IoTHubClient** 库应该对同一消息再次调用回调函数。
 
-对于前两个返回代码，**IoTHubClient** 库会将消息发送到 IoT 中心，指示应该从设备队列中删除消息且不再传送。 最终结果一样（从设备队列删除消息），但还记录了是已接受还是已拒绝消息。  对于可听取反馈并了解设备是已接受还是拒绝特定消息的消息发送者而言，记录这种区分信息的功能非常有用。
+对于前两个返回代码， **IoTHubClient** 库会将消息发送到 IoT 中心，指示应该从设备队列中删除消息且不再传送。 最终结果一样（从设备队列删除消息），但还记录了是已接受还是已拒绝消息。  对于可听取反馈并了解设备是已接受还是拒绝特定消息的消息发送者而言，记录这种区分信息的功能非常有用。
 
 在最后一个案例中，消息也会发送到 IoT 中心，但指示应重新传送消息。 如果遇到了错误但想要再次尝试处理消息，通常会放弃消息。 相比之下，当遇到不可恢复的错误（或者只是决定你不想要处理消息）时，拒绝消息是适当的方式。
 

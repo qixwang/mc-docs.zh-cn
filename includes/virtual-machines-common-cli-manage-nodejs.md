@@ -6,15 +6,15 @@ origin.date: 10/26/2018
 ms.date: 02/18/2019
 ms.author: v-yeche
 ms.openlocfilehash: c1986937ad1775f427f8714d26d6b981059d4a4d
-ms.sourcegitcommit: dd6cee8483c02c18fd46417d5d3bcc2cfdaf7db4
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56666481"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63860887"
 ---
 通过 Resource Manager 命令和模板使用 Azure CLI 以利用资源组部署 Azure 资源和工作负荷之前，需要一个 Azure 帐户。 如果没有帐户，可以[在此处获取免费 Azure 试用帐户](https://www.azure.cn/pricing/1rmb-trial/)。
 
-如果尚未安装 Azure CLI 并连接到订阅，请参阅[安装 Azure CLI](../articles/cli-install-nodejs.md) 以使用 `azure config mode arm` 将模式设置为 `arm`，并使用 `azure login -e AzureChinaCloud` 命令连接到 Azure。
+如果尚未安装 Azure CLI 并连接到订阅，请参阅[安装 Azure CLI](../articles/cli-install-nodejs.md) 以使用 `arm` 将模式设置为 `azure config mode arm`，并使用 `azure login -e AzureChinaCloud` 命令连接到 Azure。
 
 ## <a name="cli-versions-to-complete-the-task"></a>用于完成任务的 CLI 版本
 可以使用以下 CLI 版本之一完成任务：
@@ -27,13 +27,13 @@ ms.locfileid: "56666481"
 本文介绍需要用于 Azure 经典 CLI 的基本命令，以便在 Azure 订阅中管理资源（主要 VM）并与之交互。  有关特定命令行开关和选项的详细帮助，可以通过键入 `azure <command> <subcommand> --help` 或 `azure help <command> <subcommand>` 来使用联机命令帮助和选项。
 
 > [!NOTE]
-> 这些示例不包括通常为 Resource Manager 中的 VM 部署建议的基于模板的操作。 有关信息，请参阅[将 Azure CLI 与 Azure Resource Manager 配合使用](../articles/xplat-cli-azure-resource-manager.md)和[使用 Azure Resource Manager 模板和 Azure CLI 部署和管理虚拟机](../articles/virtual-machines/linux/create-ssh-secured-vm-from-template.md?toc=%2fvirtual-machines%2flinux%2ftoc.json)。
+> 这些示例不包括通常为 Resource Manager 中的 VM 部署建议的基于模板的操作。 有关信息，请参阅[将 Azure CLI 与 Azure 资源管理器配合使用](../articles/xplat-cli-azure-resource-manager.md)和[使用 Azure 资源管理器模板和 Azure CLI 部署和管理虚拟机](../articles/virtual-machines/linux/create-ssh-secured-vm-from-template.md?toc=%2fvirtual-machines%2flinux%2ftoc.json)。
 > 
 > 
 
-| 任务 | Resource Manager |
+| 任务 | 资源管理器 |
 | --- | --- | --- |
-| 创建最基本的 VM |`azure vm quick-create [options] <resource-group> <name> <location> <os-type> <image-urn> <admin-username> <admin-password>`<br/><br/>（从 `azure vm image list` 命令获取 `image-urn`。 有关示例，请参阅[此文](../articles/virtual-machines/linux/cli-ps-findimage.md?toc=%2fvirtual-machines%2flinux%2ftoc.json)。） |
+| 创建最基本的 VM |`azure vm quick-create [options] <resource-group> <name> <location> <os-type> <image-urn> <admin-username> <admin-password>`<br/><br/>（从 `image-urn` 命令获取 `azure vm image list`。 有关示例，请参阅[此文](../articles/virtual-machines/linux/cli-ps-findimage.md?toc=%2fvirtual-machines%2flinux%2ftoc.json)。） |
 | 创建 Linux VM |`azure  vm create [options] <resource-group> <name> <location> -y "Linux"` |
 | 创建 Windows VM |`azure  vm create [options] <resource-group> <name> <location> -y "Windows"` |
 | 列出 VM |`azure  vm list [options]` |
@@ -56,6 +56,6 @@ ms.locfileid: "56666481"
 | 获取所有可用 VM 大小 |`azure vm sizes [options]` |
 
 ## <a name="next-steps"></a>后续步骤
-* 有关超越基本 VM 管理的其他 CLI 命令示例，请参阅[将 Azure CLI 与 Azure Resource Manager 配合使用](../articles/virtual-machines/azure-cli-arm-commands.md)。
+* 有关超越基本 VM 管理的其他 CLI 命令示例，请参阅[将 Azure CLI 与 Azure 资源管理器配合使用](../articles/virtual-machines/azure-cli-arm-commands.md)。
 
 <!-- Update_Description: update meta properties -->

@@ -12,11 +12,11 @@ ms.date: 10/15/2018
 ms.author: v-jay
 ms.reviewer: igorstan
 ms.openlocfilehash: 65e055c60e823ad4e6f56fe7a59fe08bb608cf9f
-ms.sourcegitcommit: d75065296d301f0851f93d6175a508bdd9fd7afc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52658644"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63860518"
 ---
 # <a name="table-data-types-in-azure-sql-data-warehouse"></a>Azure SQL 数据仓库中的表数据类型
 有关在 Azure SQL 数据仓库中定义表数据类型的建议。 
@@ -26,7 +26,7 @@ ms.locfileid: "52658644"
 SQL 数据仓库支持最常用的数据类型。 有关受支持数据类型的列表，请参阅 CREATE TABLE 语句中的[数据类型](https://docs.microsoft.com/sql/t-sql/statements/create-table-azure-sql-data-warehouse#DataTypes)。 
 
 ## <a name="minimize-row-length"></a>最大限度缩短行长度
-最大限度地减小数据类型大小可以缩短行长度，从而获得更好的查询性能。 使用适用于数据的最小数据类型。 
+最大限度减小数据类型大小可缩短行长度，获得更好的查询性能。 使用适用于数据的最小数据类型。 
 
 - 避免使用较大默认长度定义字符列。 例如，如果最长的值是 25 个字符，则将列定义为 VARCHAR(25)。 
 - 当仅需要 VARCHAR 时请避免使用 [NVARCHAR][NVARCHAR]
@@ -47,14 +47,14 @@ WHERE y.[name] IN ('geography','geometry','hierarchyid','image','text','ntext','
 ```
 
 
-## <a name="unsupported-data-types"></a>对不受支持的数据类型的解决方法
+## <a name="workarounds-for-unsupported-data-types"></a><a name="unsupported-data-types"></a>对不受支持的数据类型的解决方法
 
 以下列表显示 SQL 数据仓库不支持的数据类型，同时提供可替代不支持的数据类型的可用数据类型。
 
 | 不支持的数据类型 | 解决方法 |
 | --- | --- |
 | [geometry](https://docs.microsoft.com/sql/t-sql/spatial-geometry/spatial-types-geometry-transact-sql) |[varbinary](https://docs.microsoft.com/sql/t-sql/data-types/binary-and-varbinary-transact-sql) |
-| [geography](https://docs.microsoft.com/sql/t-sql/spatial-geography/spatial-types-geography) |[varbinary](https://docs.microsoft.com/sql/t-sql/data-types/binary-and-varbinary-transact-sql) |
+| [地理](https://docs.microsoft.com/sql/t-sql/spatial-geography/spatial-types-geography) |[varbinary](https://docs.microsoft.com/sql/t-sql/data-types/binary-and-varbinary-transact-sql) |
 | [hierarchyid](https://docs.microsoft.com/sql/t-sql/data-types/hierarchyid-data-type-method-reference) |[nvarchar](https://docs.microsoft.com/sql/t-sql/data-types/nchar-and-nvarchar-transact-sql)(4000) |
 | [图像](https://docs.microsoft.com/sql/t-sql/data-types/ntext-text-and-image-transact-sql) |[varbinary](https://docs.microsoft.com/sql/t-sql/data-types/binary-and-varbinary-transact-sql) |
 | [text](https://docs.microsoft.com/sql/t-sql/data-types/ntext-text-and-image-transact-sql) |[varchar](https://docs.microsoft.com/sql/t-sql/data-types/char-and-varchar-transact-sql) |

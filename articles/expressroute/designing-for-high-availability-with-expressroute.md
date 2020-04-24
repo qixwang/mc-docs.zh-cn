@@ -12,10 +12,10 @@ origin.date: 06/28/2019
 ms.date: 08/12/2019
 ms.author: v-yiso
 ms.openlocfilehash: e5fe2d797b49b4ab05113690ac95b0a7a4b7a48f
-ms.sourcegitcommit: fcc768b955bab5c6cb7f898c913bc7ede6815743
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "68738017"
 ---
 # <a name="designing-for-high-availability-with-expressroute"></a>使用 ExpressRoute 进行高可用性设计

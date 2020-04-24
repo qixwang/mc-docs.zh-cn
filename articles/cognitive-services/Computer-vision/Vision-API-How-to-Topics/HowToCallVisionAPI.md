@@ -13,10 +13,10 @@ ms.date: 05/14/2019
 ms.author: v-junlch
 ms.custom: seodec18
 ms.openlocfilehash: 7fd288ce95b8fb6edd24f23ed4c5544a693875b2
-ms.sourcegitcommit: 9235a1f313393f21b5c42cb7a1626b1b93feb8be
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "65598873"
 ---
 # <a name="example-how-to-call-the-computer-vision-api"></a>示例：如何调用计算机视觉 API
@@ -26,7 +26,7 @@ ms.locfileid: "65598873"
 - 如何获取 "Tags"、"Description" 和 "Categories"。
 - 如何获取“特定领域”的信息（名人）。
 
-### <a name="Prerequisites"></a>先决条件
+### <a name="prerequisites"></a><a name="Prerequisites"></a>先决条件
 
 - 本地存储图像的图像 URL 或路径。
 - 支持的输入方法：原始图像二进制，采用应用程序/八位字节流或图像 URL 的形式
@@ -170,7 +170,7 @@ POST https://api.cognitive.azure.cn/vision/v2.0/analyze?details=celebrities
 Tags  | `object` | 标记数组的顶级对象
 tags[].Name | `string`  | 标记分类器中的关键字
 tags[].Score    | `number`  | 置信度，介于 0 和 1 之间。
-说明  | `object` | 说明的顶级对象。
+description  | `object` | 说明的顶级对象。
 description.tags[] |    `string`    | 标记列表。  如果因置信度不够而无法生成标题，则调用方能够获得的唯一信息可能就是标记。
 description.captions[].text | `string`  | 描述图像的短语。
 description.captions[].confidence   | `number`  | 短语的置信度。

@@ -18,11 +18,11 @@ origin.date: 05/14/2018
 ms.date: 04/15/2019
 ms.author: v-yiso
 ms.openlocfilehash: d98aeaf2b872ef0f68170735f960e8793e41b041
-ms.sourcegitcommit: 3b05a8982213653ee498806dc9d0eb8be7e70562
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "59003777"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63856737"
 ---
 # <a name="index-of-apache-hadoop-in-hdinsight-troubleshooting-articles"></a>HDInsight 中的 Apache Hadoop 索引故障排除文章
 这些文章已按错误类型进行组织。

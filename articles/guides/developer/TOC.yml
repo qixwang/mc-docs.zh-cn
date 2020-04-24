@@ -140,7 +140,7 @@
       items:
         - name: Web 和移动应用
           href: /app-service/app-service-web-tutorial-custom-ssl
-    - name: Backup
+    - name: 备份
       items:
         - name: Web 和移动应用
           href: /app-service/manage-backup

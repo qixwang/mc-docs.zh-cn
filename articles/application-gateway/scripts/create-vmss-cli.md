@@ -16,19 +16,19 @@ ms.date: 02/26/2019
 ms.author: v-junlch
 ms.custom: mvc
 ms.openlocfilehash: 61a7ba45428880d0d5e12d2f26473e5086b380ed
-ms.sourcegitcommit: e9f088bee395a86c285993a3c6915749357c2548
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56836896"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63849707"
 ---
 # <a name="manage-web-traffic-using-the-azure-cli"></a>使用 Azure CLI 管理 Web 流量
 
-此脚本创建使用虚拟机规模集作为后端服务器的应用程序网关。 然后，可以对应用程序网关进行配置来管理 Web 流量。 在运行脚本后，可以使用应用程序网关的公用 IP 地址测试该网关。
+此脚本创建使用虚拟机规模集作为后端服务器的应用程序网关。 然后，可以对应用程序网关进行配置来管理 Web 流量。 在运行脚本后，可以使用应用程序网关的公共 IP 地址测试该网关。
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
 
-如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial)。
+如果没有 Azure 订阅，可在开始前创建一个 [试用帐户](https://www.azure.cn/pricing/1rmb-trial) 。
 
 ## <a name="sample-script"></a>示例脚本
 
@@ -112,12 +112,12 @@ az group delete --name myResourceGroupAG --yes
 
 此脚本使用以下命令创建部署。 表中的每一项均链接到特定于命令的文档。
 
-| 命令 | 注释 |
+| Command | 说明 |
 |---|---|
 | [az group create](/cli/group) | 创建用于存储所有资源的资源组。 |
 | [az network vnet create](/cli/network/vnet) | 创建虚拟网络。 |
 | [az network vnet subnet create](/cli/network/vnet/subnet#az-network-vnet-subnet-create) | 在虚拟网络中创建子网。 |
-| [az network public-ip create](/cli/network/public-ip?view=azure-cli-latest) | 创建应用程序网关的公用 IP 地址。 |
+| [az network public-ip create](/cli/network/public-ip?view=azure-cli-latest) | 创建应用程序网关的公共 IP 地址。 |
 | [az network application-gateway create](/cli/network/application-gateway?view=azure-cli-latest) | 创建应用程序网关。 |
 | [az vmss create](/cli/vmss) | 创建虚拟机规模集。 |
 | [az network public-ip show](https://docs.azure.cn/zh-cn/cli/network/public-ip?view=azure-cli-latest#az-network-public-ip-show) | 获取应用程序网关的公共 IP 地址。 |

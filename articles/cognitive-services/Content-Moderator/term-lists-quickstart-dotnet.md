@@ -12,13 +12,13 @@ origin.date: 07/03/2019
 ms.date: 07/10/2019
 ms.author: v-junlch
 ms.openlocfilehash: 32ba65cea50f4559237b6fb28648dd9c7616ad51
-ms.sourcegitcommit: 8f49da0084910bc97e4590fc1a8fe48dd4028e34
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "67844792"
 ---
-# <a name="check-text-against-a-custom-term-list-in-c"></a>对照 C# 中的自定义术语列表检查文本
+# <a name="check-text-against-a-custom-term-list-in-c"></a>对照以 C# 编写的自定义术语列表检查文本
 
 Azure 内容审查器中的默认全局术语列表足以满足大多数内容审查需求。 但是，可能需要屏蔽特定于组织的术语。 例如，可能需要标记竞争对手的名称作进一步审查。 
 
@@ -41,7 +41,7 @@ Azure 内容审查器中的默认全局术语列表足以满足大多数内容�
 
 ## <a name="create-your-visual-studio-project"></a>创建 Visual Studio 项目
 
-1. 向解决方案添加新的“控制台应用 (.NET Framework)”项目  。
+1. 向解决方案添加新的“控制台应用(.NET Framework)”  项目。
 
 1. 将该项目命名为 TermLists  。 将此项目选为解决方案的单一启动项目。
 

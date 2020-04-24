@@ -6,17 +6,17 @@ origin.date: 10/26/2018
 ms.date: 11/26/2018
 ms.author: v-yeche
 ms.openlocfilehash: c44e654d7e6eb1314f1637f094a5be4a2662cbc2
-ms.sourcegitcommit: 59db70ef3ed61538666fd1071dcf8d03864f10a9
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52675763"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63825599"
 ---
 ## <a name="create-a-resource-group"></a>创建资源组
 
 使用 [az group create](https://docs.azure.cn/zh-cn/cli/group?view=azure-cli-latest#az-group-create) 命令创建资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。 
 
-以下示例在“chinaeast”位置创建名为“myResourceGroup”的资源组。
+以下示例在“chinaeast”  位置创建名为“myResourceGroup”  的资源组。
 
 ```azurecli 
 az group create --name myResourceGroup --location chinaeast

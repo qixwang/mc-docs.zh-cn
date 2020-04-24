@@ -9,19 +9,19 @@ ms.topic: article
 origin.date: 05/10/2019
 ms.date: 08/05/2019
 ms.openlocfilehash: 627d9a9459e5165620d1707634343bdb5f8ae25a
-ms.sourcegitcommit: 021dbf0003a25310a4c8582a998c17729f78ce42
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "68514520"
 ---
 # <a name="what-is-azure-service-health"></a>什么是 Azure 服务运行状况？
 
-Azure 提供了一套体验，可让你随时了解云资源的运行状况。 此信息包括当前和即将发生的问题，例如影响服务的事件、计划内维护以及可能影响可用性的其他更改。
+Azure 提供了一套体验，让你随时了解云资源的运行状况。 这些信息包括当前和即将发生的问题，例如影响服务的事件、计划内维护以及其他可能影响可用性的更改。
 
-Azure 服务运行状况是三个单独的小型服务的组合。
+Azure 服务运行状况是三个独立的较小服务的组合。
 
-[Azure 状态](azure-status-overview.md)会在 [“Azure 状态”页](https://status.azure.com)  上通知你 Azure 中的服务中断。 该页是所有 Azure 区域的所有 Azure 服务运行状况的全局视图。 对于具有广泛影响的事件而言，该状态页是一个很好的参考，但我们强烈建议当前的 Azure 用户利用“Azure 服务运行状况”随时了解 Azure 事件和维护的相关信息。
+[Azure 状态](azure-status-overview.md)在 **[Azure 状态页](https://status.azure.com)** 上通知你 Azure 中的服务中断。 该页是所有 Azure 区域中所有 Azure 服务运行状况的全局视图。 对于具有广泛影响的事件而言，该状态页是一个很好的参考，但我们强烈建议当前的 Azure 用户利用 Azure 服务运行状况随时了解 Azure 事件和维护的相关信息。
 
 [Azure 服务运行状况](service-health-overview.md)提供正在使用的 Azure 服务和区域的运行状况的个性化视图。 这是查找有关停机、计划内维护活动以及其他运行状况建议等影响服务的信息的最佳地方，因为已经过身份验证的 Azure 服务运行状况体验知道你当前使用哪些服务和资源。 使用服务运行状况的最佳方法是，设置服务运行状况警报，以便在服务问题、计划内维护或其他更改可能会影响你使用的 Azure 服务和区域时通过你首选的通信通道通知你。
 

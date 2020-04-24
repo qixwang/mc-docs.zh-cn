@@ -9,16 +9,16 @@ ms.date: 02/07/2019
 ms.author: robb
 ms.custom: include file
 ms.openlocfilehash: 5a22de473cc1bbf4fdc2d534f14fa474b218f825
-ms.sourcegitcommit: fd927ef42e8e7c5829d7c73dc9864e26f2a11aaa
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/04/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "67562861"
 ---
-| Resource | 默认限制 | 最大限制 |
+| 资源 | 默认限制 | 最大限制 |
 | --- | --- | --- |
 | Azure 应用推送 | 每个操作组 10 个 Azure 应用操作。 | 致电支持人员。 |
-| Email | 一个操作组中有 1,000 个电子邮件操作。<br>一小时内最多 100 个电子邮件。<br>另请参阅[速率限制信息](../articles/azure-monitor/platform/alerts-rate-limiting.md)。 | 致电支持人员。 |
+| 电子邮件 | 一个操作组中有 1,000 个电子邮件操作。<br>一小时内最多 100 个电子邮件。<br>另请参阅[速率限制信息](../articles/azure-monitor/platform/alerts-rate-limiting.md)。 | 致电支持人员。 |
 | ITSM | 一个操作组中有 10 个 ITSM 操作。 | 致电支持人员。 | 
 | 逻辑应用 | 一个操作组中有 10 个逻辑应用操作。 | 致电支持人员。 |
 | Runbook | 一个操作组中有 10 个 runbook 操作。 | 致电支持人员。 |

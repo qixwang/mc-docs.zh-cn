@@ -12,10 +12,10 @@ origin.date: 04/10/2019
 ms.date: 07/10/2019
 ms.author: v-junlch
 ms.openlocfilehash: 772a72f5ec854c83107a0bf67fee63a911b2bbee
-ms.sourcegitcommit: 8f49da0084910bc97e4590fc1a8fe48dd4028e34
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "67844665"
 ---
 # <a name="add-faces-to-a-persongroup"></a>将人脸添加到 PersonGroup

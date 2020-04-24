@@ -12,15 +12,15 @@ origin.date: 07/03/2019
 ms.date: 07/10/2019
 ms.author: v-junlch
 ms.openlocfilehash: 1ddc07de1e341a0091872980e92cf8fc1897d5c0
-ms.sourcegitcommit: 8f49da0084910bc97e4590fc1a8fe48dd4028e34
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "67844697"
 ---
 # <a name="tutorial-create-a-wpf-app-to-display-face-data-in-an-image"></a>教程：创建一个用于显示图像中人脸数据的 WPF 应用
 
-本教程介绍如何通过 .NET 客户端 SDK 使用 Azure Face API 检测图像中的人脸，然后在 UI 中显示该数据。 你将创建一个 Windows Presentation Framework (WPF) 应用程序，以检测人脸，围绕每张脸绘制一个框架，并在状态栏中显示人脸的描述。 
+本教程介绍如何通过 .NET 客户端 SDK 使用 Azure 人脸 API 检测图像中的人脸，然后在 UI 中显示该数据。 你将创建一个 Windows Presentation Framework (WPF) 应用程序，用于检测人脸，围绕每张脸绘制一个框架，并在状态栏中显示人脸描述。 
 
 本教程演示如何：
 
@@ -29,7 +29,7 @@ ms.locfileid: "67844697"
 > - 安装人脸 API 客户端库
 > - 使用客户端库检测图像中的人脸
 > - 围绕每个检测到的人脸绘制一个框架
-> - 在状态栏上显示突出显示的人脸的描述
+> - 在状态栏上显示被框出的人脸的描述
 
 ![显示使用矩形将检测到的人脸定格的屏幕截图](../Images/getting-started-cs-detected.png)
 
@@ -38,7 +38,7 @@ ms.locfileid: "67844697"
 如果没有 Azure 订阅，请在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial/)。 
 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - 人脸 API 订阅密钥。 可以按照[创建认知服务帐户](/cognitive-services/cognitive-services-apis-create-account)中的说明订阅人脸 API 服务并获取密钥。
 - 任何版本的 [Visual Studio 2015 或 2017](https://www.visualstudio.com/downloads/)。
@@ -48,7 +48,7 @@ ms.locfileid: "67844697"
 执行以下步骤，以便创建新的 WPF 应用程序项目。
 
 1. 在 Visual Studio 中打开“新建项目”对话框。 展开“已安装”，接着展开“Visual C#”，然后选择“WPF 应用(.NET Framework)”。   
-1. 将应用程序命名为 **FaceTutorial**，单击“确定”。 
+1. 将应用程序命名为“FaceTutorial”，然后单击“确定”   。
 1. 获取所需的 NuGet 包。 右键单击解决方案资源管理器中的项目，选择“管理 NuGet 包”，然后找到并安装以下包： 
     - [Microsoft.Azure.CognitiveServices.Vision.Face 2.2.0-preview](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.Face/2.2.0-preview)
 
@@ -58,7 +58,7 @@ ms.locfileid: "67844697"
 
 ### <a name="create-the-ui"></a>创建 UI
 
-打开 *MainWindow.xaml*，将其中的内容替换为以下代码&mdash;此代码将创建 UI 窗口。 `FacePhoto_MouseMove` 和 `BrowseButton_Click` 方法是将在稍后定义的事件处理程序。
+打开 *MainWindow.xaml*，将其中的内容替换为以下代码&mdash;此代码将创建 UI 窗口。 请注意，`FacePhoto_MouseMove` 和 `BrowseButton_Click` 方法是将在稍后定义的事件处理程序。
 
 ```csharp
 <Window x:Class="FaceTutorial.MainWindow"
@@ -81,7 +81,7 @@ ms.locfileid: "67844697"
 </Window>
 ```
 
-### <a name="create-the-main-class"></a>创建 main 类
+### <a name="create-the-main-class"></a>创建主类
 
 打开 *MainWindow.xaml.cs*，添加客户端库命名空间和其他必需的命名空间。 
 
@@ -405,7 +405,7 @@ if (!mouseOverFace) faceDescriptionStatusBar.Text = defaultStatusBarText;
 ```
 
 
-## <a name="run-the-app"></a>运行应用程序
+## <a name="run-the-app"></a>运行应用
 
 运行此应用程序并通过浏览方式查找包含人脸的图像。 等待几秒钟，以便人脸服务响应。 此时会在图像中的每个人脸上看到一个红色矩形。 如果将鼠标移到人脸矩形上，状态栏中会显示该人脸的描述。
 

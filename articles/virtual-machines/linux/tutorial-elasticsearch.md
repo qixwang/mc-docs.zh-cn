@@ -15,11 +15,11 @@ origin.date: 10/11/2017
 ms.date: 02/18/2019
 ms.author: v-yeche
 ms.openlocfilehash: 3603e7fac283c6bfca142e102d48fd35ed967456
-ms.sourcegitcommit: dd6cee8483c02c18fd46417d5d3bcc2cfdaf7db4
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56665967"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63854960"
 ---
 # <a name="install-the-elastic-stack-on-an-azure-vm"></a>在 Azure VM 上安装 Elastic Stack
 

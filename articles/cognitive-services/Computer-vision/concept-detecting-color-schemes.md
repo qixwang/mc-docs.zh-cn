@@ -13,10 +13,10 @@ ms.date: 05/14/2019
 ms.author: v-junlch
 ms.custom: seodec18
 ms.openlocfilehash: d1423122da90a2ce74425a6c06a20548e22e19d9
-ms.sourcegitcommit: 9235a1f313393f21b5c42cb7a1626b1b93feb8be
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "65598886"
 ---
 # <a name="detect-color-schemes-in-images"></a>检测图像中的配色方案
@@ -76,7 +76,7 @@ ms.locfileid: "65598886"
 
 | 映像 | 黑色还是白色？ |
 |-------|----------------|
-|![曼哈顿建筑的黑白照片](./Images/bw_buildings.png) | 是 |
+|![曼哈顿建筑的黑白照片](./Images/bw_buildings.png) | true |
 |![一座蓝色的房子和前院](./Images/house_yard.png) | false |
 
 ## <a name="next-steps"></a>后续步骤

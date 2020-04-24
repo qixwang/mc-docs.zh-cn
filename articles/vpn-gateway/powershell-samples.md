@@ -17,11 +17,11 @@ origin.date: 04/25/2018
 ms.date: 12/10/2018
 ms.author: v-jay
 ms.openlocfilehash: 043ea0d1796f2157b2f3f45fbc0be6ff952a1f4d
-ms.sourcegitcommit: 5f2849d5751cb634f1cdc04d581c32296e33ef1b
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53028841"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63849238"
 ---
 # <a name="azure-powershell-samples-for-vpn-gateway"></a>适用于 VPN 网关的 Azure PowerShell 示例
 

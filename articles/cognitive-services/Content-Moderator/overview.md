@@ -12,10 +12,10 @@ origin.date: 07/03/2019
 ms.date: 07/10/2019
 ms.author: v-junlch
 ms.openlocfilehash: f83996d4e9db6ca39100469d5d6fb30233bd925c
-ms.sourcegitcommit: 8f49da0084910bc97e4590fc1a8fe48dd4028e34
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "67844941"
 ---
 # <a name="what-is-azure-content-moderator"></a>什么是 Azure 内容审查器？
@@ -33,7 +33,7 @@ Azure 内容审查器 API 是一项认知服务，用于检查文本、图像和
 - K-12 教育解决方案提供商为学生和教师筛选掉不当的内容。
 
 > [!NOTE]
-> 不能使用内容审查器检测非法儿童剥削图像。 不过，合格组织可以使用 [PhotoDNA 云服务](https://www.microsoft.com/photodna "Microsoft PhotoDNA 云服务")筛查此类内容。
+> 不能使用内容审查器检测非法儿童剥削图像。 不过，合格组织可以使用 [PhotoDNA 云服务](https://www.microsoft.com/photodna "Microsoft PhotoDNA 云服务")来筛查此类内容。
 
 ## <a name="what-it-includes"></a>组成部分
 

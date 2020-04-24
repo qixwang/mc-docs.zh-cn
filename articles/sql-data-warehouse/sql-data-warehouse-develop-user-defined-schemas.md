@@ -12,11 +12,11 @@ ms.date: 10/15/2018
 ms.author: v-jay
 ms.reviewer: igorstan
 ms.openlocfilehash: 5a630c6e6b1b15671ba7c104eb30555dce37a5f9
-ms.sourcegitcommit: d75065296d301f0851f93d6175a508bdd9fd7afc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52660390"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63824958"
 ---
 # <a name="using-user-defined-schemas-in-sql-data-warehouse"></a>在 SQL 数据仓库中使用用户定义架构
 有关在 Azure SQL 数据仓库中使用 T-SQL 用户定义架构开发解决方案的技巧。
@@ -37,7 +37,7 @@ ms.locfileid: "52660390"
 
 1. 使用一个 SQL 数据仓库数据库来运行整个数据仓库工作负荷
 2. 合并现有的数据仓库环境，以使用一个 SQL 数据仓库数据库
-3. 利用 **用户定义的架构** 来提供以前使用数据库实现的边界。
+3. 利用**用户定义架构**可以提供以前使用数据库实现的边界。
 
 如果以前尚未使用用户定义的架构，则就不会存在任何记录。 只需使用旧数据库名称作为 SQL 数据仓库数据库中用户定义架构的基础。
 
@@ -52,7 +52,7 @@ ms.locfileid: "52660390"
 > 
 > 
 
-### <a name="examples"></a>示例:
+### <a name="examples"></a>示例：
 基于数据库名称实现用户定义的架构
 
 ```sql
@@ -122,5 +122,5 @@ FROM    [edw].customer
 > 
 
 ## <a name="next-steps"></a>后续步骤
-有关更多开发技巧，请参阅 [开发概述](sql-data-warehouse-overview-develop.md)。
+有关更多开发技巧，请参阅[开发概述](sql-data-warehouse-overview-develop.md)。
 

@@ -10,10 +10,10 @@ ms.date: 05/20/2019
 ms.author: v-yeche
 ms.custom: include file
 ms.openlocfilehash: b340486eb6c3325a889a39dfe65705c2ce67b615
-ms.sourcegitcommit: 878a2d65e042b466c083d3ede1ab0988916eaa3d
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "65835816"
 ---
 ## <a name="update-resources"></a>更新资源
@@ -55,7 +55,7 @@ Update-AzGalleryImageDefinition `
    -EndOfLifeDate 01/01/2030
 ```
 
-此示例演示如何使用 [Update-AzGalleryImageVersion](https://docs.microsoft.com/powershell/module/az.compute/update-azgalleryimageversion) 来排除此映像版本，使之不能用作最新映像。
+此示例演示如何使用 [Update-AzGalleryImageVersion](https://docs.microsoft.com/powershell/module/az.compute/update-azgalleryimageversion) 来排除此映像版本，使之不能用作最新映像。 
 
 ```powershell
 Update-AzGalleryImageVersion `

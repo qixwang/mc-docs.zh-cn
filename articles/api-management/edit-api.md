@@ -15,11 +15,11 @@ origin.date: 11/08/2017
 ms.date: 02/26/2018
 ms.author: v-yiso
 ms.openlocfilehash: bdc160707d5e6d5e0936708698e007cff6e817e9
-ms.sourcegitcommit: d75065296d301f0851f93d6175a508bdd9fd7afc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52666595"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "64339197"
 ---
 # <a name="edit-an-api"></a>编辑 API
 
@@ -28,7 +28,7 @@ ms.locfileid: "52666595"
 + 可以通过在 APIM 实例中添加、删除、重命名操作来执行此操作。 
 + 可以编辑 API 的 swagger。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 + [创建一个 Azure API 管理实例](get-started-create-service-instance.md)
 + [导入和发布第一个 API](import-and-publish.md)
@@ -39,18 +39,18 @@ ms.locfileid: "52666595"
 
 ![编辑 API](./media/edit-api/edit-api001.png)
 
-1. 单击 **API** 选项卡。
+1. 单击“API”选项卡。 
 2. 选择以前导入的某个 API。
-3. 选择“设计”选项卡。
+3. 选择“设计”  选项卡。
 4. 选择要编辑的操作。
-5. 若要重命名该操作，请在“前端”窗口中选择“铅笔”。
+5. 若要重命名该操作，请在“前端”  窗口中选择“铅笔”  。
 
 ## <a name="update-the-swagger"></a>更新 swagger
 
 可以通过执行以下步骤来从 Azure 门户更新后端 API：
 
-1. 选择“所有操作”
-2. 单击“前端”窗口中的铅笔。
+1. 选择“所有操作” 
+2. 单击“前端”  窗口中的铅笔。
 
     ![编辑 API](./media/edit-api/edit-api002.png)
 
@@ -59,7 +59,7 @@ ms.locfileid: "52666595"
     ![编辑 API](./media/edit-api/edit-api003.png)
 
 3. 更新 swagger。
-4. 按“保存” 。
+4. 按“保存”  。
 
 [!INCLUDE [api-management-define-api-topics.md](../../includes/api-management-define-api-topics.md)]
 

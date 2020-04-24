@@ -10,23 +10,23 @@ ms.date: 08/12/2019
 ms.topic: article
 manager: digimobile
 ms.openlocfilehash: c2513d448b23ae7160bf6d36743a0566659f50da
-ms.sourcegitcommit: 8ac3d22ed9be821c51ee26e786894bf5a8736bfc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "68913010"
 ---
 # <a name="run-scripts-in-your-linux-vm"></a>在 Linux VM 中运行脚本
 
-若要自动执行任务或解决问题，可能需要在 VM 中运行命令。 下文概述了可以用来在 VM 中运行脚本和命令的功能。
+若要自动执行任务或解决问题，可能需要在 VM 中运行命令。 以下文章简要概述了可用于在 VM 中运行脚本和命令的功能。
 
 ## <a name="custom-script-extension"></a>自定义脚本扩展
 
-[自定义脚本扩展](../extensions/custom-script-linux.md)主要用于部署后配置和软件安装。
+[自定义脚本扩展](../extensions/custom-script-linux.md)主要用于发布部署配置和软件安装。
 
 * 在 Azure 虚拟机中下载并运行脚本。
-* 可以使用 Azure 资源管理器模板、Azure CLI、REST API、PowerShell 或 Azure 门户来运行。
-* 脚本文件可以从 Azure 存储或 GitHub 下载，也可以从电脑获取（通过 Azure 门户运行时）。
+* 可以使用 Azure 资源管理器模板、Azure CLI、REST API、PowerShell 或 Azure 门户运行。
+* 脚本文件可以从 Azure 存储或 GitHub 下载，或者在从 Azure 门户运行时从电脑提供。
 * 在 Windows 计算机中运行 PowerShell 脚本，在 Linux 计算机中运行 Bash 脚本。
 * 适用于部署后配置、软件安装和其他配置或管理任务。
 
@@ -48,7 +48,7 @@ ms.locfileid: "68913010"
 <!-- Not Available on ## Serial console-->
 ## <a name="next-steps"></a>后续步骤
 
-详细了解可以用来在 VM 中运行脚本和命令的不同功能。
+详细了解可用于在 VM 中运行脚本和命令的不同功能。
 
 * [自定义脚本扩展](../extensions/custom-script-linux.md)
 * [运行命令](run-command.md)

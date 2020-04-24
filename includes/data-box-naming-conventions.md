@@ -7,10 +7,10 @@ origin.date: 05/21/2019
 ms.date: 06/10/2019
 ms.author: alkohli
 ms.openlocfilehash: 6ba8bba3e6f540ddb141ecb033ebfb36f664facf
-ms.sourcegitcommit: 67a78cae1f34c2d19ef3eeeff2717aa0f78de38e
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "66726528"
 ---
 | 实体                                       | 约定   |

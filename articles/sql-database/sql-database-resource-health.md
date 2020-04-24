@@ -14,10 +14,10 @@ manager: digimobile
 origin.date: 02/26/2019
 ms.date: 08/19/2019
 ms.openlocfilehash: ea3009e496ec66650a35b6a67b5f21281209ad81
-ms.sourcegitcommit: 52ce0d62ea704b5dd968885523d54a36d5787f2d
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "69544165"
 ---
 # <a name="use-resource-health-to-troubleshoot-connectivity-for-azure-sql-database"></a>使用资源运行状况排查 Azure SQL 数据库的连接问题
@@ -52,11 +52,11 @@ ms.locfileid: "69544165"
 
 ![不可用](./media/sql-database-resource-health/sql-resource-health-unavailable.jpg)
 
-### <a name="unknown"></a>Unknown
+### <a name="unknown"></a>未知
 
 运行状况为“未知”  指示资源运行状况未收到此资源的相关信息已超过 10 分钟。 尽管此状态不是资源状态的最终指示，但它是故障排除过程中一个重要的数据点。 如果资源正在按预期方式运行，资源状态会在几分钟后更改为“可用”。 如果资源遇到问题，“未知”运行状态可能暗示平台中的事件正在影响资源。
 
-![Unknown](./media/sql-database-resource-health/sql-resource-health-unknown.jpg)
+![未知](./media/sql-database-resource-health/sql-resource-health-unknown.jpg)
 
 ## <a name="historical-information"></a>历史信息
 

@@ -10,10 +10,10 @@ origin.date: 04/09/2019
 ms.date: 06/10/2019
 ms.author: v-yeche
 ms.openlocfilehash: 62c373f70b0143af879b512b45297e4f724ad532
-ms.sourcegitcommit: 440d53bb61dbed39f2a24cc232023fc831671837
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "66390866"
 ---
 # <a name="cost-estimation-report-by-azure-site-recovery-deployment-planner"></a>Azure Site Recovery 部署规划器成本估算报表 

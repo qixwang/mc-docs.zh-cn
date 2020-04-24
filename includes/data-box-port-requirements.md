@@ -7,13 +7,13 @@ origin.date: 07/11/2019
 ms.date: 07/22/2019
 ms.author: v-jay
 ms.openlocfilehash: 04e1b85932d599de6c7a1be99e0a48df09e77578
-ms.sourcegitcommit: 98cc8aa5b8d0e04cd4818b34f5350c72f617a225
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "68298140"
 ---
-| 端口号。| 入或出 | 端口范围| 必须| 注释 |   |
+| 端口号。| 入或出 | 端口范围| 必选| 说明 |   |
 |--------|-----|-----|-----------|----------|-----------|
 | TCP 80 (HTTP)|In|LAN|是|此端口用于通过 HTTP 连接到 Data Box Blog 存储 REST API。 如果未连接到 REST API，则此端口会通过 8443 自动重定向到本地 Web UI。 |
 | TCP 443 (HTTPS)|In|LAN|是|此端口用于通过 HTTPS 连接到 Data Box Blog 存储 REST API。 如果未连接到 REST API，则此端口会通过 8443 自动重定向到本地 Web UI。 |

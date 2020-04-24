@@ -18,11 +18,11 @@ origin.date: 03/11/2019
 ms.date: 04/15/2019
 ms.author: v-yiso
 ms.openlocfilehash: 60d0eeb1afbbdb97ec37f6a9bb808470b183bf77
-ms.sourcegitcommit: 3b05a8982213653ee498806dc9d0eb8be7e70562
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "59003960"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63856083"
 ---
 # <a name="overview-of-apache-spark-streaming"></a>Apache Spark 流式处理概述
 
@@ -30,15 +30,15 @@ ms.locfileid: "59003960"
 
 ![使用 HDInsight 和 Spark 流式处理的流处理](./media/apache-spark-streaming-overview/hdinsight-spark-streaming.png)
 
-Spark 流式处理应用程序必须先等待一会，以收集事件的每个微批处理，才能发送该批处理进行处理。 与此相反，事件驱动应用程序会立即处理每个事件。 Spark 流式处理延迟一般为几秒钟。 微批处理方法的优点是数据处理效率更高和聚合计算更简单。
+Spark 流式处理应用程序必须先等待一会，以收集事件的每个微批处理，才能发送该批处理进行处理。  与此相反，事件驱动应用程序会立即处理每个事件。 Spark 流式处理延迟一般为几秒钟。 微批处理方法的优点是数据处理效率更高和聚合计算更简单。
 
 ## <a name="introducing-the-dstream"></a>引入 DStream
 
-Spark 流式处理使用称为 DStream 的离散流表示传入数据的连续流。 可以基于输入源（例如事件中心或 Kafka）或通过对另一个 DStream 应用转换来创建此 DStream。
+Spark 流式处理使用称为 DStream 的离散流表示传入数据的连续流  。 可以基于输入源（例如事件中心或 Kafka）或通过对另一个 DStream 应用转换来创建此 DStream。
 
 DStream 可提供基于原始事件数据的抽象层。 
 
-从单一事件开始，例如已连接调温器的温度读数。 此事件到达 Spark 流式处理应用程序后，系统将以可靠方式存储事件，即在多个节点上进行复制。 此容错功能可确保任何单个节点的故障都不会导致事件丢失。 Spark 核心使用将数据分布到群集中的多个节点的数据结构，其中每个节点通常维护其自己的内存中数据，以实现最佳性能。 此数据结构称为弹性分布式数据集 (RDD)。
+从单一事件开始，例如已连接调温器的温度读数。 此事件到达 Spark 流式处理应用程序后，系统将以可靠方式存储事件，即在多个节点上进行复制。 此容错功能可确保任何单个节点的故障都不会导致事件丢失。 Spark 核心使用将数据分布到群集中的多个节点的数据结构，其中每个节点通常维护其自己的内存中数据，以实现最佳性能。 此数据结构称为弹性分布式数据集 (RDD)  。
 
 每个 RDD 表示在用户定义的时间范围（称为*批处理间隔*）内收集的事件。 每个批处理间隔后，将生成新的 RDD，其中包含该间隔的所有数据。 连续的 RDD 集将被收集到 DStream。 例如，如果批处理间隔为 1 秒，则 DStream 将每秒发出一个批处理，其中包含一个 RDD（包含该秒期间引入的所有数据）。 处理 DStream 时，温度事件将出现在其中一个批处理中。 Spark 流式处理应用程序处理包含事件的批处理并最终作用于每个 RDD 中存储的数据。
 
@@ -161,9 +161,9 @@ SELECT * FROM demo_numbers
 
 生成的输出如下所示：
 
-| value | time |
+| 值 | time |
 | --- | --- |
-|10 个 | 1497314465256 |
+|10 | 1497314465256 |
 |11 | 1497314470272 |
 |12 | 1497314475289 |
 |13 | 1497314480310 |
@@ -174,7 +174,7 @@ SELECT * FROM demo_numbers
 
 ## <a name="sliding-windows"></a>滑动窗口
 
-若要对某个时间段内的 DStream 执行聚合计算，例如获取最后 2 秒钟内的平均温度，可以使用 Spark 流式处理中包括的“滑动窗口”操作。 滑动窗口具有一个持续时间（窗口长度）和在期间计算窗口内容的时间间隔（即滑动间隔）。
+若要对某个时间段内的 DStream 执行聚合计算，例如获取最后 2 秒钟内的平均温度，可以使用 Spark 流式处理中包括的“滑动窗口”操作。  滑动窗口具有一个持续时间（窗口长度）和在期间计算窗口内容的时间间隔（即滑动间隔）。
 
 滑动窗口可以重叠，例如，可以定义长度为两秒的窗口，每一秒滑动一次。 这意味着每次执行聚合计算时，窗口将包括上一个窗口最后一秒的数据以及下一秒的任何新数据。
 
@@ -229,7 +229,7 @@ ssc.start()
 
 第一分钟后，会产生 12 个条目 - 窗口中收集到的两个批处理中各有 6 个条目。
 
-| value | time |
+| 值 | time |
 | --- | --- |
 | 1 | 1497316294139 |
 | 2 | 1497316299158
@@ -240,7 +240,7 @@ ssc.start()
 | 7 | 1497316324260
 | 8 | 1497316329278
 | 9 | 1497316334293
-| 10 个 | 1497316339314
+| 10 | 1497316339314
 | 11 | 1497316344339
 | 12 | 1497316349361
 
@@ -261,5 +261,5 @@ Spark 流式传输 API 中可用的滑动窗口函数包括 window、countByWind
 ## <a name="next-steps"></a>后续步骤
 
 * [在 HDInsight 中创建 Apache Spark 群集](../hdinsight-hadoop-create-linux-clusters-portal.md)
-* [Apache Spark 流式处理编程指南](https://people.apache.org/~pwendell/spark-releases/latest/streaming-programming-guide.html)
+* [Apache Spark Streaming Programming Guide](https://people.apache.org/~pwendell/spark-releases/latest/streaming-programming-guide.html)（Apache Spark 流式处理编程指南）
 * [使用 Apache LIVY 远程启动 Apache Spark 作业](apache-spark-livy-rest-interface.md)

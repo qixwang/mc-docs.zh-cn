@@ -12,11 +12,11 @@ origin.date: 09/26/2018
 ms.date: 03/05/2019
 ms.author: v-junlch
 ms.openlocfilehash: 87c0fb35b09df82e419f3eff6bf75086575261f0
-ms.sourcegitcommit: 07a24e9a846705df3b98fc8ff193ec7d9ec913dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58408257"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63825938"
 ---
 # <a name="save-reports-in-power-bi-workspace-collections"></a>在 Power BI 工作区集合中保存报表
 
@@ -25,7 +25,7 @@ ms.locfileid: "58408257"
 > [!IMPORTANT]
 > Power BI 工作区集合已弃用，到 2018 年 6 月 或合同指示时可用。 建议你规划到 Power BI Embedded 的迁移以避免应用程序中断。 有关如何将数据迁移到 Power BI Embedded 的信息，请参阅[如何将 Power BI 工作区集合内容迁移到 Power BI Embedded](https://powerbi.microsoft.com/documentation/powerbi-developer-migrate-from-powerbi-embedded/)。
 
-在 Power BI 工作区集合中，可编辑和保存现有报表。 还可以创建一个新报表，并将它另存为新报表来创建另一个报表。
+在 Power BI 工作区集合中，可编辑和保存现有报表。 还可以创建一个新报表，然后将它另存为新报表来创建另一个报表。
 
 若要保存报表，首先需要为特定的报表创建具有适当范围的令牌：
 
@@ -40,11 +40,11 @@ ms.locfileid: "58408257"
 - models.Permissions.All
 
 > [!NOTE]
-> 访问令牌也需要适当的范围。 有关详细信息，请参阅[范围](app-token-flow.md#scopes)。
+> 访问令牌也需要适当的范围。 有关详细信息，请参阅[作用域](app-token-flow.md#scopes)。
 
 ## <a name="embed-report-in-edit-mode"></a>嵌入处于编辑模式的报表
 
-假设用户要在应用中嵌入一个处于编辑模式的报表，为此，只需在 Embed 配置中传递适当的属性，并调用 powerbi.embed()。 提供权限和 viewMode 才能在编辑模式下看到“保存”和“另存为”按钮。 有关详细信息，请参阅 [Embed 配置详细信息](https://github.com/Microsoft/PowerBI-JavaScript/wiki/Embed-Configuration-Details)。
+假设要在应用中嵌入一个处于编辑模式的报表，为此，只需在 Embed 配置中传递适当的属性，并调用 powerbi.embed()。 提供权限和 viewMode 才能在编辑模式下看到“保存”和“另存为”按钮。 有关详细信息，请参阅[嵌入配置详细信息](https://github.com/Microsoft/PowerBI-JavaScript/wiki/Embed-Configuration-Details)。
 
 例如，在 JavaScript 中：
 
@@ -109,9 +109,9 @@ ms.locfileid: "58408257"
 ```
 
 > [!IMPORTANT]
-> 只有在调用“另存为”之后，才能创建新报表。 保存后，画布仍显示处于编辑模式的旧报表，而不是新报表。 嵌入已创建的新报表。 嵌入新报表需要获取新的访问令牌，因为令牌是针对每个报表创建的。
+> 只有在调用“另存为”之后，才能创建新报表。  保存后，画布仍显示处于编辑模式的旧报表，而不是新报表。 嵌入已创建的新报表。 嵌入新报表需要获取新的访问令牌，因为令牌是针对每个报表创建的。
 
-然后，需要在执行“另存为”操作后加载新报表。 加载新报表类似于嵌入任何报表。
+然后，需要在执行“另存为”  操作后加载新报表。 加载新报表类似于嵌入任何报表。
 
 ```html
 <div id="reportContainer"></div>
@@ -139,7 +139,7 @@ var embedConfiguration = {
 [Power BI Desktop](https://powerbi.microsoft.com/documentation/powerbi-desktop-get-the-desktop/)  
 [JavaScript 嵌入示例](https://microsoft.github.io/PowerBI-JavaScript/demo/)  
 
-有更多问题？ [试用 Power BI 社区](https://community.powerbi.com/)
+更多疑问？ [尝试 Power BI 社区](https://community.powerbi.com/)
 
 
 <!-- Update_Description: update metedata properties -->

@@ -8,10 +8,10 @@ ms.topic: conceptual
 origin.date: 2/7/2019
 ms.date: 05/27/2019
 ms.openlocfilehash: 2c1f603e2151a8e78e679370a8dc2f3805437c9c
-ms.sourcegitcommit: 60169f39663ae62016f918bdfa223c411e249883
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "66173338"
 ---
 # <a name="restart-azure-database-for-mariadb-server-using-azure-portal"></a>使用 Azure 门户重启 Azure Database for MariaDB 服务器

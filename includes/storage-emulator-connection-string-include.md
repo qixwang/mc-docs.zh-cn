@@ -6,13 +6,13 @@ origin.date: 10/26/2018
 ms.date: 01/14/2019
 ms.author: v-jay
 ms.openlocfilehash: 85072774791ab7ab91757bb8f6779810badeee53
-ms.sourcegitcommit: 80336a53411d5fce4c25e291e6634fa6bd72695e
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "67850777"
 ---
-存储模拟器支持单一固定的帐户和众所周知的用于共享密钥身份验证的身份验证密钥。 此帐户和密钥是允许用于存储模拟器的唯一共享密钥凭据。 它们具有以下特点：
+存储模拟器支持单一固定的帐户和众所周知的用于共享密钥身份验证的身份验证密钥。 此帐户和密钥是允许用于存储模拟器的唯一共享密钥凭据。 它们分别是：
 
 ```
 Account name: devstoreaccount1
@@ -35,7 +35,7 @@ Account key: Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZ
 ```
 
 #### <a name="connect-to-the-emulator-account-using-the-well-known-account-name-and-key"></a>使用从众所周知的帐户名称和密钥连接到存储模拟器
-要创建引用存储模拟器帐户名称和密钥的连接字符串，必须在连接字符串中希望从模拟器中使用的每个服务指定终结点。 这是必须的，这样连接字符串将引用与生产存储帐户中的终结点不同的模拟器终结点。 例如，你的连接字符串的值将如下所示：
+要创建引用存储模拟器帐户名称和密钥的连接字符串，必须在连接字符串中希望从模拟器中使用的每个服务指定终结点。 这是必须的，这样连接字符串将引用与生产存储帐户中的终结点不同的模拟器终结点。 例如，连接字符串的值将如下所示：
 
 ```
 DefaultEndpointsProtocol=http;AccountName=devstoreaccount1;

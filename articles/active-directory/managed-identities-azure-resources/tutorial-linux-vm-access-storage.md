@@ -17,10 +17,10 @@ ms.date: 08/05/2019
 ms.author: v-junlch
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 38e0e405039a21188c784faec799d1a3b0c849d0
-ms.sourcegitcommit: 461c7b2e798d0c6f1fe9c43043464080fb8e8246
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "68818596"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-storage"></a>教程：使用 Linux VM 系统分配的托管标识访问 Azure 存储 
@@ -38,7 +38,7 @@ ms.locfileid: "68818596"
 > [!NOTE]
 > 适用于 Azure 存储的 Azure Active Directory 身份验证当前处于公共预览版。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 [!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
 

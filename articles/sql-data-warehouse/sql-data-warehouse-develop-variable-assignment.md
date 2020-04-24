@@ -12,11 +12,11 @@ ms.date: 04/01/2019
 ms.author: v-jay
 ms.reviewer: igorstan
 ms.openlocfilehash: 3e24f4185fe2fef2ff168d635f3c7e92a956a639
-ms.sourcegitcommit: b8fb6890caed87831b28c82738d6cecfe50674fd
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58625307"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63824956"
 ---
 # <a name="assigning-variables-in-azure-sql-data-warehouse"></a>在 Azure SQL 数据仓库中分配变量
 
@@ -68,4 +68,4 @@ SET     @v +=1;
 
 ## <a name="next-steps"></a>后续步骤
 
-有关更多开发技巧，请参阅 [开发概述](sql-data-warehouse-overview-develop.md)。
+有关更多开发技巧，请参阅[开发概述](sql-data-warehouse-overview-develop.md)。

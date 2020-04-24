@@ -17,16 +17,16 @@ ms.date: 11/08/2018
 ms.component: hybrid
 ms.author: v-junlch
 ms.openlocfilehash: aa662185708c6e494a92555203a8788a24921d02
-ms.sourcegitcommit: d75065296d301f0851f93d6175a508bdd9fd7afc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52654869"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63824049"
 ---
-# <a name="azure-ad-connect-sync-understanding-declarative-provisioning-expressions"></a>Azure AD Connect 同步：了解声明性设置表达式
-Azure AD Connect 同步基于 Forefront Identity Manager 2010 中最先引入的声明性设置。 使用该功能可以实现完整的标识集成业务逻辑，而无需编写已编译的代码。
+# <a name="azure-ad-connect-sync-understanding-declarative-provisioning-expressions"></a>Azure AD Connect 同步：了解声明性预配表达式
+Azure AD Connect 同步基于 Forefront Identity Manager 2010 中最先引入的声明式预配。 使用该功能可以实现完整的标识集成业务逻辑，而无需编写已编译的代码。
 
-声明性设置的一个重要组成部分是属性流中使用的表达式语言。 所用的语言是 Microsoft® Visual Basic® for Applications (VBA) 的子集。 Microsoft Office 中使用了这种语言，具有 VBScript 经验的用户都认识该语言。 声明性设置表达式语言只使用函数，不属于结构化语言。 它不提供任何方法或语句。 函数嵌套在表达式程序流中。
+声明性设置的一个重要组成部分是属性流中使用的表达式语言。 所用的语言是 Microsoft® Visual Basic® for Applications (VBA) 的子集。 Microsoft Office 中使用了这种语言，具有 VBScript 经验的用户都认识该语言。 声明性预配表达式语言只使用函数，不属于结构化语言。 它不提供任何方法或语句。 函数嵌套在表达式程序流中。
 
 有关详细信息，请参阅 [Welcome to the Visual Basic for Applications language reference for Office 2013](https://msdn.microsoft.com/library/gg264383.aspx)（欢迎使用适用于 Office 2013 的 Visual Basic 应用程序语言参考）。
 
@@ -34,19 +34,19 @@ Azure AD Connect 同步基于 Forefront Identity Manager 2010 中最先引入的
 
 ## <a name="language-definitions-and-identifiers"></a>语言定义和标识符
 - 函数名称后跟加括号的参数：FunctionName(argument 1, argument N)。
-- 属性用方括号标识：[attributeName]
+- 属性采用方括号标识，如 [attributeName]。
 - 参数通过百分比符号标识：%ParameterName%
 - 字符串常量放在引号中：例如 "Contoso"（注意：必须使用直引号 ""，而不能使用弯引号“”）
 - 数字值表示不带引号，并且应为十进制。 十六进制值带有前缀 &H。 例如，98052, &HFF
-- 布尔值以常量表示： True、 False。
+- 表示布尔值的常量： True、 False。
 - 内置常量和文本仅使用其名称表示：NULL、CRLF、IgnoreThisFlow
 
 ### <a name="functions"></a>函数
-声明性设置使用许多函数来实现转换属性值的可能性。 这些函数可以嵌套，因此，一个函数的结果会传递到另一个函数。
+声明性预配使用许多函数来实现转换属性值的可能性。 这些函数可以嵌套，因此，一个函数的结果将传递到另一个函数。
 
 `Function1(Function2(Function3()))`
 
-函数的完整列表可在[函数引用](reference-connect-sync-functions-reference.md)中找到。
+有关函数的完整列表，请参阅[函数参考](reference-connect-sync-functions-reference.md)。
 
 ### <a name="parameters"></a>parameters
 通过连接器或由管理员使用 PowerShell 定义参数。 参数通常包含因系统不同而各异的值，例如用户所在域的名称。 这些参数可在属性流中使用。
@@ -77,10 +77,10 @@ Active Directory 连接器为入站同步规则提供以下参数：
 - **逻辑**：&&（和）、||（或）
 - **计算顺序**：( )
 
-运算符从左到右进行求值，并具有相同的求值优先级。 也就是说，\*（乘号）不会在 -（减号）之前求值。 2\*(5+3) 与 2\*5+3 不同。 如果从左到右的计算顺序不适当，则使用括号 () 来更改计算顺序。
+运算符从左到右进行求值，并具有相同的求值优先级。 也就是说，\*（乘号）不会在 -（减号）之前求值。 2\*(5+3) 与 2\*5+3 不同。 如果从左到右的求值顺序不适当，可以使用括号 () 来更改求值顺序。
 
 ## <a name="multi-valued-attributes"></a>多值属性
-可对单值和多值属性运行函数。 对于多值属性，函数针对每个值运行，向每个值应用相同的函数。
+可对单值和多值属性运行函数。 对于多值属性，函数将针对每个值运行，向每个值应用相同的函数。
 
 例如：  
 `Trim([proxyAddresses])` 对 proxyAddress 属性中的每个值执行 Trim。  
@@ -88,9 +88,9 @@ Active Directory 连接器为入站同步规则提供以下参数：
 `IIF(InStr([proxyAddresses],"SIP:")=1,NULL,[proxyAddresses])` 查找 SIP 地址并从值中删除该地址。
 
 ## <a name="next-steps"></a>后续步骤
-- 在[了解声明性预配](concept-azure-ad-connect-sync-declarative-provisioning.md)中阅读有关配置模型的详细信息。
-- 在[了解默认配置](concept-azure-ad-connect-sync-default-configuration.md)中了解如何现成使用声明性设置。
-- 在[如何更改默认配置](how-to-connect-sync-change-the-configuration.md)中了解如何使用声明性预配进行实际更改。
+- 在 [Understanding Declarative Provisioning](concept-azure-ad-connect-sync-declarative-provisioning.md)（了解声明性预配）中了解有关配置模型的详细信息。
+- 在 [Understanding the default configuration](concept-azure-ad-connect-sync-default-configuration.md)（了解默认配置）中了解如何现成地使用声明式预配。
+- 在 [How to make a change to the default configuration](how-to-connect-sync-change-the-configuration.md)（如何对默认配置进行更改）中了解如何使用声明性预配进行实际更改。
 
 **概述主题**
 
@@ -99,6 +99,6 @@ Active Directory 连接器为入站同步规则提供以下参数：
 
 **参考主题**
 
-- [Azure AD Connect 同步：函数引用](reference-connect-sync-functions-reference.md)
+- [Azure AD Connect 同步：函数参考](reference-connect-sync-functions-reference.md)
 
 

@@ -17,11 +17,11 @@ origin.date: 04/20/2018
 ms.date: 03/04/2019
 ms.author: v-jay
 ms.openlocfilehash: 6d0a4fb5729452ce18c8b887e9d69d2f08d4c13d
-ms.sourcegitcommit: e9f088bee395a86c285993a3c6915749357c2548
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56837006"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63847755"
 ---
 # <a name="azure-cli-script-example-load-balance-multiple-websites"></a>Azure CLI 脚本示例：对多个网站进行负载均衡
 
@@ -230,14 +230,14 @@ az group delete --name myResourceGroup --yes
 
 此脚本使用以下命令创建资源组、虚拟网络、负载均衡器和所有相关资源。 表中的每条命令均链接到特定于命令的文档。
 
-| 命令 | 注释 |
+| Command | 说明 |
 |---|---|
 | [az group create](/cli/group#az-group-create) | 创建用于存储所有资源的资源组。 |
 | [az network vnet create](/cli/network/vnet#az-network-vnet-create) | 创建 Azure 虚拟网络和子网。 |
 | [az network public-ip create](/cli/network/public-ip#az-network-public-ip-create) | 使用静态 IP 地址和关联的 DNS 名称创建公共 IP 地址。 |
 | [az network lb create](/cli/network/lb#az-network-lb-create) | 创建 Azure 负载均衡器。 |
-| [az network lb probe create](/cli/network/lb/probe#az-network-lb-probe-create) | 创建负载均衡器探测。 负载均衡器探测用于监视负载均衡器集中的每个 VM。 如果任何 VM 无法访问，流量不会路由到该 VM。 |
-| [az network lb rule create](/cli/network/lb/rule#az-network-lb-rule-create) | 创建负载均衡器规则。 在此示例中，为端口 80 创建一个规则。 当 HTTP 流量到达负载均衡器时，它会路由到负载均衡器集中某个 VM 的端口 80。 |
+| [az network lb probe create](/cli/network/lb/probe#az-network-lb-probe-create) | 创建负载均衡器探测。 负载均衡器探测用于监视负载均衡器集中的每个 VM。 如果任何 VM 无法访问，流量将不会路由到该 VM。 |
+| [az network lb rule create](/cli/network/lb/rule#az-network-lb-rule-create) | 创建负载均衡器规则。 在此示例中，将为端口 80 创建一个规则。 当 HTTP 流量到达负载均衡器时，它会路由到负载均衡器集中某个 VM 的端口 80。 |
 | [az network lb frontend-ip create](/cli/network/lb/frontend-ip#az-network-lb-frontend-ip-create) | 为负载均衡器创建前端 IP 地址。 |
 | [az network lb address-pool create](/cli/network/lb/address-pool#az-network-lb-address-pool-create) | 创建后端地址池。 |
 | [az network nic create](/cli/network/nic#az-network-nic-create) | 创建虚拟网卡并将其连接到虚拟网络和子网。 |

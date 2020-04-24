@@ -13,10 +13,10 @@ ms.date: 07/09/2019
 ms.author: v-junlch
 ms.custom: seodec18
 ms.openlocfilehash: 0ff260aaa5519b440f62caaf8a3e313343f8d4e7
-ms.sourcegitcommit: 8f49da0084910bc97e4590fc1a8fe48dd4028e34
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "67844694"
 ---
 # <a name="computer-vision-api-frequently-asked-questions"></a>计算机视觉 API 常见问题解答

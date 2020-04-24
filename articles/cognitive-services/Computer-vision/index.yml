@@ -55,7 +55,7 @@ sections:
   - title: 5 分钟快速入门
     items:
       - type: paragraph
-        text: 使用以下语言分析图像、生成缩略图，以及从图像中提取文本：
+        text: 通过以下途径分析图像、生成缩略图并从图像提取文本：
       - type: list
         style: icon48
         items:

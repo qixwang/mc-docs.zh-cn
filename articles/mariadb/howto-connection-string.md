@@ -8,10 +8,10 @@ ms.topic: conceptual
 origin.date: 09/24/2018
 ms.date: 05/27/2019
 ms.openlocfilehash: 50b7f85184c8668c4cdc225d62aa3072fe1be8ff
-ms.sourcegitcommit: 60169f39663ae62016f918bdfa223c411e249883
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "66173235"
 ---
 # <a name="how-to-connect-applications-to-azure-database-for-mariadb"></a>如何将应用程序连接到 Azure Database for MariaDB

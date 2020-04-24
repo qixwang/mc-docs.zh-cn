@@ -15,15 +15,15 @@ origin.date: 03/19/2018
 ms.date: 04/17/2019
 ms.author: v-junlch
 ms.openlocfilehash: fdaacb2bfe8638481be03eb01aacd829a719efab
-ms.sourcegitcommit: bf3df5d77e5fa66825fe22ca8937930bf45fd201
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59686480"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63849542"
 ---
 # <a name="application-gateway-redirect-overview"></a>应用程序网关重定向概述
 
-可以使用应用程序网关来重定向流量。  它有一种泛型重定向机制，用于将一个侦听器上接收到的流量重定向到另一个侦听器或外部站点。 这样可以简化应用程序配置、优化资源使用情况，并支持全局重定向和基于路径的重定向等新的重定向方案。
+可以使用应用程序网关来重定向流量。  它有一种泛型重定向机制，可以将一个侦听器上接收的流量重定向到另一个侦听器或外部站点。 这样可以简化应用程序配置、优化资源使用情况，并支持全局重定向和基于路径的重定向等新的重定向方案。
 
 为确保应用程序及其用户之间的所有通信都通过加密路径进行，适用于许多 Web 应用的常见重定向方案是支持 HTTP 到 HTTPS 自动重定向。 过去用户曾使用创建专用的后端池等技术，其唯一目的在于将通过 HTTP 接收的请求重定向到 HTTPS。 由于应用程序网关提供重定向支持，因此你可以很容易地完成此操作，只需向路由规则添加一个新的重定向配置，然后将使用 HTTPS 协议的另一个侦听器指定为目标侦听器即可。
 

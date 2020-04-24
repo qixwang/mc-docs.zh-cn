@@ -12,11 +12,11 @@ origin.date: 02/15/2019
 ms.date: 03/05/2019
 ms.author: v-junlch
 ms.openlocfilehash: 5c208673335b66c15370024f3ef0d24ef010be74
-ms.sourcegitcommit: 07a24e9a846705df3b98fc8ff193ec7d9ec913dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58408255"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63856158"
 ---
 # <a name="embed-a-report-in-power-bi-workspace-collections"></a>嵌入 Power BI 工作区集合中的报表
 
@@ -35,7 +35,7 @@ ms.locfileid: "58408255"
 
 ## <a name="get-a-report-id"></a>获取报表 ID
 
-每个访问令牌基于某个报表。 需要获取想要嵌入的报表的给定报表 ID。 可以通过调用 [获取报表](https://msdn.microsoft.com/library/azure/mt711510.aspx) REST API 来实现此目的。 此操作返回报表 ID 和嵌入 URL。 可以使用 Power BI .NET SDK 或通过直接调用 REST API 来实现此目的。
+每个访问令牌基于某个报表。 需要获取想要嵌入的报表的给定报表 ID。 可以通过调用[获取报表](https://msdn.microsoft.com/library/azure/mt711510.aspx) REST API 来实现此目的。 此操作将返回报表 ID 和嵌入 URL。 可以使用 Power BI .NET SDK 或通过直接调用 REST API 来实现此目的。
 
 ### <a name="using-the-power-bi-net-sdk"></a>使用 Power BI .NET SDK
 
@@ -83,7 +83,7 @@ using (var response = request.GetResponse() as System.Net.HttpWebResponse)
 
 ## <a name="create-an-access-token"></a>创建访问令牌
 
-Power BI 工作区集合使用嵌入标记，即 HMAC 签名的 JSON Web 令牌。 令牌已使用 Power BI 工作区集合中的访问密钥签名。 默认情况下，嵌入令牌用于提供对要嵌入到应用程序的报表的只读访问权限。 嵌入令牌是针对特定报表颁发的，应该与嵌入 URL 相关联。
+Power BI 工作区集合使用嵌入标记，即 HMAC 签名的 JSON Web 令牌。 已使用 Power BI 工作区集合中的访问密钥对令牌进行了签名。 默认情况下，嵌入令牌用于提供对要嵌入到应用程序的报表的只读访问权限。 嵌入令牌是针对特定报表颁发的，应该与嵌入 URL 相关联。
 
 应在服务器上创建访问令牌，因为要使用访问密钥对令牌进行签名/加密。 有关如何创建访问令牌的信息，请参阅[通过 Power BI 工作区集合进行身份验证和授权](app-token-flow.md)。 此外，还可以查看 [CreateReportEmbedToken](https://docs.azure.cn/zh-cn/dotnet/api/microsoft.powerbi.security.powerbitoken?redirectedfrom=MSDN) 方法。 以下示例演示了如何使用用于 Power BI 的 .NET SDK。
 
@@ -108,11 +108,11 @@ var token = embedToken.Generate("{access key}");
 
 ### <a name="adding-permission-scopes-to-embed-tokens"></a>将权限范围添加到嵌入令牌
 
-使用 Embed 令牌时，对于允许对其进行访问的资源，你可能希望限制其使用。 为此，可以生成一个权限范围受到约束的令牌。 有关详细信息，请参阅[范围](app-token-flow.md#scopes)
+使用 Embed 令牌时，对于允许对其进行访问的资源，你可能希望限制其使用。 为此，可以生成一个包含带作用域的权限的令牌。 有关详细信息，请参阅[范围](app-token-flow.md#scopes)
 
 ## <a name="embed-using-javascript"></a>使用 JavaScript 嵌入
 
-获取访问令牌和报表 ID 后，可以使用 JavaScript 来嵌入报表。 这就需要安装 NuGet [Power BI JavaScript 包](https://www.nuget.org/packages/Microsoft.PowerBI.JavaScript/)。 embedUrl 将只是 https://embedded.powerbi.cn/appTokenReportEmbed。
+获取访问令牌和报表 ID 后，可以使用 JavaScript 来嵌入报表。 这就需要安装 NuGet [Power BI JavaScript 包](https://www.nuget.org/packages/Microsoft.PowerBI.JavaScript/)。 embedUrl 将只是 https://embedded.powerbi.cn/appTokenReportEmbed 。
 
 > [!NOTE]
 > 可以使用 [JavaScript 报表嵌入示例](https://microsoft.github.io/PowerBI-JavaScript/demo/)测试功能。 我们还提供了适用于不同操作的代码示例。
@@ -144,7 +144,7 @@ var report = powerbi.embed($reportContainer.get(0), embedConfiguration);
 
 ### <a name="set-the-size-of-embedded-elements"></a>设置嵌入元素的大小
 
-报表根据其容器大小自动嵌入。 若要重写默认的嵌入项大小，只需添加 CSS 类属性，或者宽度和高度的内联样式。
+报表会根据其容器大小自动嵌入。 若要重写默认的嵌入项大小，只需添加 CSS 类属性，或者宽度和高度的内联样式。
 
 ## <a name="see-also"></a>另请参阅
 
@@ -158,6 +158,6 @@ var report = powerbi.embed($reportContainer.get(0), embedConfiguration);
 [PowerBI-CSharp Git 存储库](https://github.com/Microsoft/PowerBI-CSharp)  
 [PowerBI-Node Git 存储库](https://github.com/Microsoft/PowerBI-Node)  
 
-有更多问题？ [试用 Power BI 社区](https://community.powerbi.com/)
+更多疑问？ [尝试 Power BI 社区](https://community.powerbi.com/)
 
 <!-- Update_Description: link update -->

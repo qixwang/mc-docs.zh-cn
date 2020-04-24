@@ -10,10 +10,10 @@ origin.date: 07/03/2019
 ms.date: 07/22/2019
 ms.author: v-jay
 ms.openlocfilehash: 9acf40f6776b8d947a9420d1e20398e2766d6f7f
-ms.sourcegitcommit: 98cc8aa5b8d0e04cd4818b34f5350c72f617a225
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "68298243"
 ---
 # <a name="tutorial-use-data-box-heavy-to-import-data-as-managed-disks-in-azure"></a>教程：在 Azure 中使用 Data Box Heavy 将数据作为托管磁盘导入

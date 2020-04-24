@@ -15,15 +15,15 @@ origin.date: 02/20/2019
 ms.date: 02/26/2019
 ms.author: v-junlch
 ms.openlocfilehash: a8a79df2b161ee2161c2a916e31e590364edf3d3
-ms.sourcegitcommit: e9f088bee395a86c285993a3c6915749357c2548
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56836979"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63849966"
 ---
 # <a name="tutorial-create-a-custom-role-for-azure-resources-using-azure-cli"></a>教程：使用 Azure CLI 为 Azure 资源创建自定义角色
 
-如果 [Azure 资源的内置角色](built-in-roles.md)不能满足组织的特定需求，则可以创建你自己的自定义角色。 对于本教程，你将使用 Azure CLI 创建名为 Reader Support Tickets 的自定义角色。 该自定义角色允许用户查看订阅管理平面中的所有内容，以及开具支持票证。
+如果 [Azure 资源的内置角色](built-in-roles.md)不能满足组织的特定需求，则可以创建自定义角色。 对于本教程，你将使用 Azure CLI 创建名为 Reader Support Tickets 的自定义角色。 该自定义角色允许用户查看订阅管理平面中的所有内容，以及开具支持票证。
 
 本教程介绍如何执行下列操作：
 
@@ -37,7 +37,7 @@ ms.locfileid: "56836979"
 
 ## <a name="prerequisites"></a>先决条件
 
-要完成本教程，需要：
+若要完成本教程，需要：
 
 - 有权创建自定义角色，例如[所有者](built-in-roles.md#owner)或[用户访问管理员](built-in-roles.md#user-access-administrator)
 - [Azure CLI](/cli/install-azure-cli)

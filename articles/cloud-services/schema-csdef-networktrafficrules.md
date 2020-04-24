@@ -15,11 +15,11 @@ author: jpconnock
 ms.author: v-yiso
 manager: timlt
 ms.openlocfilehash: 3cc7ddd2aae63491f16e3dcb84c185474a602dd6
-ms.sourcegitcommit: 2bcf3b51503f38df647c08ba68589850d91fedfe
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56302922"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63847859"
 ---
 # <a name="azure-cloud-services-definition-networktrafficrules-schema"></a>Azure 云服务定义 NetworkTrafficRules 架构
 `NetworkTrafficRules` 节点是服务定义文件中的一个可选元素，用于指定角色如何彼此进行通信。 它限制哪些角色可以访问特定角色的内部终结点。 `NetworkTrafficRules` 不是一个独立的元素；它在服务定义文件中与两个或更多角色结合使用。
@@ -65,16 +65,16 @@ ms.locfileid: "56302922"
 
 [FromRole 元素](#FromRole)
 
-##  <a name="NetworkTrafficRules"></a> NetworkTrafficRules 元素
+##  <a name="networktrafficrules-element"></a><a name="NetworkTrafficRules"></a> NetworkTrafficRules 元素
 `NetworkTrafficRules` 元素指定哪些角色可以与另一角色上的哪个终结点进行通信。 服务可以包含一个 `NetworkTrafficRules` 定义。
 
-##  <a name="OnlyAllowTrafficTo"></a> OnlyAllowTrafficTo 元素
+##  <a name="onlyallowtrafficto-element"></a><a name="OnlyAllowTrafficTo"></a> OnlyAllowTrafficTo 元素
 `OnlyAllowTrafficTo` 元素描述目标终结点的集合以及可以与它们进行通信的角色。 可以指定多个 `OnlyAllowTrafficTo` 节点。
 
-##  <a name="Destinations"></a> Destinations 元素
+##  <a name="destinations-element"></a><a name="Destinations"></a> Destinations 元素
 `Destinations` 元素描述可以与之进行通信的 RoleEndpoint 的集合。
 
-##  <a name="RoleEndpoint"></a> RoleEndpoint 元素
+##  <a name="roleendpoint-element"></a><a name="RoleEndpoint"></a> RoleEndpoint 元素
 `RoleEndpoint` 元素描述角色上允许与之进行通信的终结点。 如果角色上有多个终结点，可以指定多个 `RoleEndpoint` 元素。
 
 | 属性      | 类型     | 说明 |
@@ -82,17 +82,17 @@ ms.locfileid: "56302922"
 | `endpointName` | `string` | 必需。 允许将流量发送到的终结点的名称。|
 | `roleName`     | `string` | 必需。 允许与之进行通信的 web 角色的名称。|
 
-##  <a name="AllowAllTraffic"></a> AllowAllTraffic 元素
+##  <a name="allowalltraffic-element"></a><a name="AllowAllTraffic"></a> AllowAllTraffic 元素
 `AllowAllTraffic` 元素是一个规则，它允许所有角色与 `Destinations` 节点中定义的终结点进行通信。
 
-##  <a name="WhenSource"></a> WhenSource 元素
+##  <a name="whensource-element"></a><a name="WhenSource"></a> WhenSource 元素
 `WhenSource` 元素描述可以与 `Destinations` 节点中定义的终结点进行通信的角色的集合。
 
 | 属性 | 类型     | 说明 |
 | --------- | -------- | ----------- |
 | `matches` | `string` | 必需。 指定允许通信时要应用的规则。 目前唯一有效的值是 `AnyRule`。|
   
-##  <a name="FromRole"></a> FromRole 元素
+##  <a name="fromrole-element"></a><a name="FromRole"></a> FromRole 元素
 `FromRole` 元素指定可以与 `Destinations` 节点中定义的终结点进行通信的角色。 如果有多个可以与终结点进行通信的角色，可以指定多个 `FromRole` 元素。
 
 | 属性  | 类型     | 说明 |

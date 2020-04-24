@@ -10,14 +10,14 @@ ms.date: 07/30/2018
 ms.author: v-yeche
 ms.custom: include file
 ms.openlocfilehash: a237499d08e58714b7a705a890f478948137e38c
-ms.sourcegitcommit: d75065296d301f0851f93d6175a508bdd9fd7afc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52664227"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63854184"
 ---
 > [!div class="op_single_selector"]
-> * [Portal](../articles/virtual-network/tutorial-filter-network-traffic.md)
+> * [门户](../articles/virtual-network/tutorial-filter-network-traffic.md)
 > * [PowerShell](../articles/virtual-network/tutorial-filter-network-traffic.md)
 > * [Azure CLI](../articles/virtual-network/tutorial-filter-network-traffic-cli.md)
 > * [PowerShell（经典）](../articles/virtual-network/virtual-networks-create-nsg-classic-ps.md)

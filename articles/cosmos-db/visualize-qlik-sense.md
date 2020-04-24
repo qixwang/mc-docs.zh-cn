@@ -9,10 +9,10 @@ origin.date: 05/23/2019
 ms.date: 07/29/2019
 ms.reviewer: sngun
 ms.openlocfilehash: 5d35fd337fe3c006612ed790c70ac14cf9f7daa9
-ms.sourcegitcommit: 5a4a826eea3914911fd93592e0f835efc9173133
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "68672208"
 ---
 # <a name="connect-qlik-sense-to-azure-cosmos-db-and-visualize-your-data"></a>将 Qlik Sense 连接到 Azure Cosmos DB 并可视化数据

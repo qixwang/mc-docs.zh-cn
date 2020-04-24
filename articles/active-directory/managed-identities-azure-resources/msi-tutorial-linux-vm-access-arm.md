@@ -18,10 +18,10 @@ ms.author: v-junlch
 ROBOTS: NOINDEX,NOFOLLOW
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3003b346cea3abaca104d1a53621d2089ac09f12
-ms.sourcegitcommit: 461c7b2e798d0c6f1fe9c43043464080fb8e8246
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "68818667"
 ---
 # <a name="tutorial-use-a-user-assigned-managed-identity-on-a-linux-vm-to-access-azure-resource-manager"></a>教程：使用 Linux VM 上的用户分配托管标识访问 Azure 资源管理器
@@ -180,6 +180,6 @@ az role assignment create --assignee <UAMI PRINCIPALID> --role 'Reader' --scope 
 本教程介绍了如何创建用户分配托管标识并将其附加到 Linux 虚拟机，以访问 Azure 资源管理器 API。  若要详细了解 Azure 资源管理器，请参阅：
 
 > [!div class="nextstepaction"]
->[Azure 资源管理器](/azure-resource-manager/resource-group-overview)
+>[Azure Resource Manager](/azure-resource-manager/resource-group-overview)
 
 

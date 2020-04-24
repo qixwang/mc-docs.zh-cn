@@ -12,10 +12,10 @@ ms.author: v-junlch
 ms.topic: reference
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 247143c06e6915cdcf43070644115a718e5767cb
-ms.sourcegitcommit: 5f85d6fe825db38579684ee1b621d19b22eeff57
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "67568618"
 ---
 # <a name="azure-ad-connect--adconnectivitytools-powershell-reference"></a>Azure AD Connect：ADConnectivityTools PowerShell 参考
@@ -28,13 +28,13 @@ ms.locfileid: "67568618"
 
 检测本地 DNS 问题。
 
-### <a name="syntax"></a>语法
+### <a name="syntax"></a>SYNTAX
 
 ```
 Confirm-DnsConnectivity [-Forest] <String> [-DCs] <Array> [-ReturnResultAsPSObject] [<CommonParameters>]
 ```
 
-### <a name="description"></a>说明
+### <a name="description"></a>DESCRIPTION
 
 运行本地 DNS 连接测试。
 若要配置 Active Directory 连接器，用户必须能够对他们尝试连接的林进行名称解析，同时，必须能够在与此林关联的域控制器中进行名称解析。
@@ -53,7 +53,7 @@ Confirm-DnsConnectivity -Forest "TEST.CONTOSO.COM" -DCs "MYDC1.CONTOSO.COM","MYD
 Confirm-DnsConnectivity -Forest "TEST.CONTOSO.COM"
 ```
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>PARAMETERS
 
 #### <a name="-forest"></a>-Forest
 
@@ -115,13 +115,13 @@ Accept wildcard characters: False
 
 确定指定的林是否存在。
 
-### <a name="syntax"></a>语法
+### <a name="syntax"></a>SYNTAX
 
 ```
 Confirm-ForestExists [-Forest] <String> [<CommonParameters>]
 ```
 
-### <a name="description"></a>说明
+### <a name="description"></a>DESCRIPTION
 
 在 DNS 服务器中查询与林关联的 IP 地址。
 
@@ -133,7 +133,7 @@ Confirm-ForestExists [-Forest] <String> [<CommonParameters>]
 Confirm-TargetsAreReachable -Forest "TEST.CONTOSO.COM"
 ```
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>PARAMETERS
 
 #### <a name="-forest"></a>-Forest
 
@@ -162,7 +162,7 @@ Accept wildcard characters: False
 
 验证 AD 林功能级别。
 
-### <a name="syntax"></a>语法
+### <a name="syntax"></a>SYNTAX
 
 #### <a name="samaccount"></a>SamAccount
 
@@ -176,7 +176,7 @@ Confirm-FunctionalLevel -Forest <String> [-RunWithCurrentlyLoggedInUserCredentia
 Confirm-FunctionalLevel -ForestFQDN <Forest> [-RunWithCurrentlyLoggedInUserCredentials] [<CommonParameters>]
 ```
 
-### <a name="description"></a>说明
+### <a name="description"></a>DESCRIPTION
 
 验证 AD 林功能级别是等于还是超过给定的 MinAdForestVersion (WindowsServer2003)。
 可以请求帐户（域\用户名）和密码。
@@ -201,7 +201,7 @@ Confirm-FunctionalLevel -Forest "test.contoso.com" -RunWithCurrentlyLoggedInUser
 Confirm-FunctionalLevel -ForestFQDN $ForestFQDN -RunWithCurrentlyLoggedInUserCredentials -Verbose
 ```
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>PARAMETERS
 
 #### <a name="-forest"></a>-Forest
 
@@ -263,13 +263,13 @@ Accept wildcard characters: False
 
 检测本地网络连接问题。
 
-### <a name="syntax"></a>语法
+### <a name="syntax"></a>SYNTAX
 
 ```
 Confirm-NetworkConnectivity [-DCs] <Array> [-SkipDnsPort] [-ReturnResultAsPSObject] [<CommonParameters>]
 ```
 
-### <a name="description"></a>说明
+### <a name="description"></a>DESCRIPTION
 
 运行本地网络连接测试。
 
@@ -290,7 +290,7 @@ Confirm-NetworkConnectivity -SkipDnsPort -DCs "MYDC1.CONTOSO.COM","MYDC2.CONTOSO
 Confirm-NetworkConnectivity -DCs "MYDC1.CONTOSO.COM","MYDC2.CONTOSO.COM" -Verbose
 ```
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>PARAMETERS
 
 #### <a name="-dcs"></a>-DCs
 
@@ -353,13 +353,13 @@ Accept wildcard characters: False
 
 确定是否可访问指定的林及其关联的域控制器。
 
-### <a name="syntax"></a>语法
+### <a name="syntax"></a>SYNTAX
 
 ```
 Confirm-TargetsAreReachable [-Forest] <String> [-DCs] <Array> [<CommonParameters>]
 ```
 
-### <a name="description"></a>说明
+### <a name="description"></a>DESCRIPTION
 
 运行“ping”测试（某台计算机是否可以通过网络和/或 Internet 访问目标计算机）
 
@@ -377,7 +377,7 @@ Confirm-TargetsAreReachable -Forest "TEST.CONTOSO.COM" -DCs "MYDC1.CONTOSO.COM",
 Confirm-TargetsAreReachable -Forest "TEST.CONTOSO.COM"
 ```
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>PARAMETERS
 
 #### <a name="-forest"></a>-Forest
 
@@ -422,7 +422,7 @@ Accept wildcard characters: False
 
 验证是否可访问所获取的林 FQDN 中的域
 
-### <a name="syntax"></a>语法
+### <a name="syntax"></a>SYNTAX
 
 #### <a name="samaccount"></a>SamAccount
 
@@ -436,7 +436,7 @@ Confirm-ValidDomains [-Forest <String>] [-RunWithCurrentlyLoggedInUserCredential
 Confirm-ValidDomains -ForestFQDN <Forest> [-RunWithCurrentlyLoggedInUserCredentials] [<CommonParameters>]
 ```
 
-### <a name="description"></a>说明
+### <a name="description"></a>DESCRIPTION
 
 通过尝试检索 DomainGuid 和 DomainDN，验证是否可访问所获取的林 FQDN 中的所有域。
 可以请求帐户（域\用户名）和密码。
@@ -461,7 +461,7 @@ Confirm-ValidDomains -Forest "test.contoso.com" -RunWithCurrentlyLoggedInUserCre
 Confirm-ValidDomains -ForestFQDN $ForestFQDN -RunWithCurrentlyLoggedInUserCredentials -Verbose
 ```
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>PARAMETERS
 
 #### <a name="-forest"></a>-Forest
 
@@ -522,13 +522,13 @@ Accept wildcard characters: False
 
 验证用户是否有企业管理员凭据。
 
-### <a name="syntax"></a>语法
+### <a name="syntax"></a>SYNTAX
 
 ```
 Confirm-ValidEnterpriseAdminCredentials [-RunWithCurrentlyLoggedInUserCredentials] [<CommonParameters>]
 ```
 
-### <a name="description"></a>说明
+### <a name="description"></a>DESCRIPTION
 
 通过搜索验证提供的用户是否有企业管理员凭据。
 可以请求帐户（域\用户名）和密码。
@@ -547,7 +547,7 @@ Confirm-ValidEnterpriseAdminCredentials -DomainName test.contoso.com -Verbose
 Confirm-ValidEnterpriseAdminCredentials -RunWithCurrentlyLoggedInUserCredentials -Verbose
 ```
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>PARAMETERS
 
 #### <a name="-runwithcurrentlyloggedinusercredentials"></a>-RunWithCurrentlyLoggedInUserCredentials
 
@@ -576,14 +576,14 @@ Accept wildcard characters: False
 
 从帐户和密码组合中检索 DomainFQDN。
 
-### <a name="syntax"></a>语法
+### <a name="syntax"></a>SYNTAX
 
 ```
 Get-DomainFQDNData [[-DomainFQDNDataType] <String>] [-RunWithCurrentlyLoggedInUserCredentials]
  [-ReturnExceptionOnError] [<CommonParameters>]
 ```
 
-### <a name="description"></a>说明
+### <a name="description"></a>DESCRIPTION
 
 尝试从提供的凭据中获取 domainFQDN 对象。
 如果 domainFQDN 有效，则会根据用户的选择返回 DomainFQDNName 或 RootDomainName。
@@ -603,7 +603,7 @@ Get-DomainFQDNData -DomainFQDNDataType DomainFQDNName -Verbose
 Get-DomainFQDNData -DomainFQDNDataType RootDomainName -RunWithCurrentlyLoggedInUserCredentials
 ```
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>PARAMETERS
 
 #### <a name="-domainfqdndatatype"></a>-DomainFQDNDataType
 
@@ -665,13 +665,13 @@ Accept wildcard characters: False
 
 从帐户和密码组合中检索 ForestFQDN。
 
-### <a name="syntax"></a>语法
+### <a name="syntax"></a>SYNTAX
 
 ```
 Get-ForestFQDN [-Forest] <String> [-RunWithCurrentlyLoggedInUserCredentials] [<CommonParameters>]
 ```
 
-### <a name="description"></a>说明
+### <a name="description"></a>DESCRIPTION
 
 尝试从提供的凭据中获取 ForestFQDN。
 可以请求帐户（域\用户名）和密码。
@@ -690,7 +690,7 @@ Get-ForestFQDN -Forest CONTOSO.MICROSOFT.COM -Verbose
 Get-ForestFQDN -Forest CONTOSO.MICROSOFT.COM -RunWithCurrentlyLoggedInUserCredentials -Verbose
 ```
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>PARAMETERS
 
 #### <a name="-forest"></a>-Forest
 
@@ -735,14 +735,14 @@ Accept wildcard characters: False
 
 主函数。
 
-### <a name="syntax"></a>语法
+### <a name="syntax"></a>SYNTAX
 
 ```
 Start-ConnectivityValidation [-Forest] <String> [-AutoCreateConnectorAccount] <Boolean> [[-UserName] <String>]
  [<CommonParameters>]
 ```
 
-### <a name="description"></a>说明
+### <a name="description"></a>DESCRIPTION
 
 运行用于验证 AD 凭据是否有效的所有可用机制。
 
@@ -754,7 +754,7 @@ Start-ConnectivityValidation [-Forest] <String> [-AutoCreateConnectorAccount] <B
 Start-ConnectivityValidation -Forest "test.contoso.com" -AutoCreateConnectorAccount $True -Verbose
 ```
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>PARAMETERS
 
 #### <a name="-forest"></a>-Forest
 
@@ -776,7 +776,7 @@ Accept wildcard characters: False
 
 对于自定义安装：如果用户在 AADConnect 向导的“AD 林帐户”窗口中选择了“创建新的 AD 帐户”，则该标志的值为 $True。
 如果用户选择了“使用现有 AD 帐户”，则值为 $False。
-对于快速安装：对于快速安装，此变量的值必须为 $True。
+对于快速安装：此变量的值必须为 $True。
 
 ```yml
 Type: Boolean
@@ -817,7 +817,7 @@ Accept wildcard characters: False
 
 用于网络连接测试的主函数。
 
-### <a name="syntax"></a>语法
+### <a name="syntax"></a>SYNTAX
 
 ```
 Start-NetworkConnectivityDiagnosisTools [[-Forest] <String>] [-Credentials] <PSCredential>
@@ -825,7 +825,7 @@ Start-NetworkConnectivityDiagnosisTools [[-Forest] <String>] [-Credentials] <PSC
  [-ValidCredentials] [<CommonParameters>]
 ```
 
-### <a name="description"></a>说明
+### <a name="description"></a>DESCRIPTION
 
 运行本地网络连接测试。
 
@@ -843,7 +843,7 @@ Start-NetworkConnectivityDiagnosisTools -Forest "TEST.CONTOSO.COM"
 Start-NetworkConnectivityDiagnosisTools -Forest "TEST.CONTOSO.COM" -DCs "DC1.TEST.CONTOSO.COM", "DC2.TEST.CONTOSO.COM"
 ```
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>PARAMETERS
 
 #### <a name="-forest"></a>-Forest
 

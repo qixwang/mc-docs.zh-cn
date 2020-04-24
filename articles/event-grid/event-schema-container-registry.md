@@ -9,10 +9,10 @@ ms.topic: reference
 ms.date: 03/12/2019
 ms.author: v-yiso
 ms.openlocfilehash: 75803d7f9e3d35cc21d6c17cfc3a80af6e8ffa3a
-ms.sourcegitcommit: 5a57f99d978b78c1986c251724b1b04178c12d8c
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/24/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "66195218"
 ---
 # <a name="azure-event-grid-event-schema-for-container-registry"></a>容器注册表的 Azure 事件网格事件架构
@@ -157,22 +157,22 @@ Azure 容器注册表发出以下事件类型：
 
 | 属性 | 类型 | 说明 |
 | -------- | ---- | ----------- |
-| 主题 | 字符串 | 事件源的完整资源路径。 此字段不可写入。 事件网格提供此值。 |
-| subject | 字符串 | 事件主题的发布者定义路径。 |
-| eventType | 字符串 | 此事件源的一个注册事件类型。 |
-| EventTime | 字符串 | 基于提供程序 UTC 时间的事件生成时间。 |
-| id | 字符串 | 事件的唯一标识符。 |
+| 主题 | string | 事件源的完整资源路径。 此字段不可写入。 事件网格提供此值。 |
+| subject | string | 事件主题的发布者定义路径。 |
+| eventType | string | 此事件源的一个注册事件类型。 |
+| EventTime | string | 基于提供程序 UTC 时间的事件生成时间。 |
+| id | string | 事件的唯一标识符。 |
 | 数据 | object | Blob 存储事件数据。 |
-| dataVersion | 字符串 | 数据对象的架构版本。 发布者定义架构版本。 |
-| metadataVersion | 字符串 | 事件元数据的架构版本。 事件网格定义顶级属性的架构。 事件网格提供此值。 |
+| dataVersion | string | 数据对象的架构版本。 发布者定义架构版本。 |
+| metadataVersion | string | 事件元数据的架构版本。 事件网格定义顶级属性的架构。 事件网格提供此值。 |
 
 数据对象具有以下属性：
 
 | 属性 | 类型 | 说明 |
 | -------- | ---- | ----------- |
-| id | 字符串 | 事件 ID。 |
-| timestamp | 字符串 | 发生事件的时间。 |
-| action | 字符串 | 包含所提供事件的操作。 |
+| id | string | 事件 ID。 |
+| timestamp | string | 发生事件的时间。 |
+| action | string | 包含所提供事件的操作。 |
 | 目标 | object | 事件的目标。 |
 | request | object | 生成事件的请求。 |
 
@@ -180,24 +180,24 @@ Azure 容器注册表发出以下事件类型：
 
 | 属性 | 类型 | 说明 |
 | -------- | ---- | ----------- |
-| mediaType | 字符串 | 引用对象的 MIME 类型。 |
+| mediaType | string | 引用对象的 MIME 类型。 |
 | 大小 | integer | 内容的字节数。 与 Length 字段相同。 |
-| digest | 字符串 | 内容摘要，由注册表 V2 HTTP API 规范定义。 |
+| digest | string | 内容摘要，由注册表 V2 HTTP API 规范定义。 |
 | length | integer | 内容的字节数。 与 Size 字段相同。 |
-| repository | 字符串 | 存储库名称。 |
-| 标记 | 字符串 | 标记名称。 |
-| name | 字符串 | 图表名称。 |
-| 版本 | 字符串 | 图表版本。 |
+| repository | string | 存储库名称。 |
+| 标记 | string | 标记名称。 |
+| name | string | 图表名称。 |
+| 版本 | string | 图表版本。 |
 
 请求对象具有以下属性：
 
 | 属性 | 类型 | 说明 |
 | -------- | ---- | ----------- |
-| id | 字符串 | 启动事件的请求 ID。 |
-| addr | 字符串 | 启动事件的客户端连接的 IP 或主机名可能还有端口。 此值是标准 http 请求中的 RemoteAddr。 |
-| host | 字符串 | 注册表实例的外部可访问主机名，由传入请求中的 http 主机标头指定。 |
-| method | 字符串 | 生成事件的请求方法。 |
-| useragent | 字符串 | 请求的用户代理标头。 |
+| id | string | 启动事件的请求 ID。 |
+| addr | string | 启动事件的客户端连接的 IP 或主机名可能还有端口。 此值是标准 http 请求中的 RemoteAddr。 |
+| host | string | 注册表实例的外部可访问主机名，由传入请求中的 http 主机标头指定。 |
+| method | string | 生成事件的请求方法。 |
+| useragent | string | 请求的用户代理标头。 |
 
 ## <a name="next-steps"></a>后续步骤
 

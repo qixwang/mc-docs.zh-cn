@@ -6,10 +6,10 @@ origin.date: 10/26/2018
 ms.date: 08/12/2019
 ms.author: v-yeche
 ms.openlocfilehash: 46bfe1936af85ad8a8813e472e138558a6b4ba0b
-ms.sourcegitcommit: 8ac3d22ed9be821c51ee26e786894bf5a8736bfc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "68913015"
 ---
 1. 安装 dapl、rdmacm、ibverbs 和 mlx4
@@ -20,7 +20,7 @@ ms.locfileid: "68913015"
     sudo apt-get install libdapl2 libmlx4-1
     ```
 
-2. 在 /etc/waagent.conf 中，通过取消注释以下配置行来启用 RDMA。 需要根访问权限才能编辑此文件。
+2. 在 /etc/waagent.conf 中，通过取消注释以下配置行来启用 RDMA。 需要根访问权限才能编辑该文件。
 
     ```
     OS.EnableRDMA=y
@@ -28,7 +28,7 @@ ms.locfileid: "68913015"
     OS.UpdateRdmaDriver=y
     ```
 
-3. 在 /etc/security/limits.conf 文件中，添加或更改 KB 中的以下内存设置。 需要根访问权限才能编辑此文件。 出于测试目的，可以将 memlock 设置为不受限制。 例如：`<User or group name>   hard    memlock   unlimited`。
+3. 在 /etc/security/limits.conf 文件中，添加或更改 KB 中的以下内存设置。 需要根访问权限才能编辑该文件。 出于测试目的，可以将 memlock 设置为不受限制。 例如：`<User or group name>   hard    memlock   unlimited`。
 
     ```
     <User or group name> hard    memlock <memory required for your application in KB>

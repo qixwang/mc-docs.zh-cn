@@ -12,11 +12,11 @@ ms.date: 10/15/2017
 ms.author: v-jay
 ms.reviewer: igorstan
 ms.openlocfilehash: 5099cec9fb097a473d82d39dd8fd34f2dae6ecd3
-ms.sourcegitcommit: d75065296d301f0851f93d6175a508bdd9fd7afc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52663907"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63824969"
 ---
 # <a name="group-by-options-in-sql-data-warehouse"></a>SQL 数据仓库中的 Group By 选项
 有关在开发解决方案时实现 Azure SQL 数据仓库中的 Group By 选项的技巧。
@@ -146,7 +146,7 @@ WITH
 ;
 ```
 
-第三步是是循环访问执行聚合的列 cube。 查询为 #Cube 临时表中的每个行运行一次，并将结果存储在 #Results 临时表中
+第三步是是循环访问执行聚合的列 cube。 查询将为 #Cube 临时表中的每个行运行一次，并将结果存储在 #Results 临时表中
 
 ```sql
 SET @nbr =(SELECT MAX(Seq) FROM #Cube);
@@ -182,5 +182,5 @@ ORDER BY 1,2,3
 通过将代码拆分成不同的部分并生成循环构造，代码将更好管理和维护。
 
 ## <a name="next-steps"></a>后续步骤
-有关更多开发技巧，请参阅 [开发概述](sql-data-warehouse-overview-develop.md)。
+有关更多开发技巧，请参阅[开发概述](sql-data-warehouse-overview-develop.md)。
 

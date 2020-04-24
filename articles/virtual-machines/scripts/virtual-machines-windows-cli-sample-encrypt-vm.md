@@ -1,6 +1,6 @@
 ---
 title: Azure CLI 脚本示例 - 加密 Windows VM | Azure
-description: Azure CLI 脚本示例 - 加密 Windows VM
+description: Azure CLI Script 示例 - 加密 Windows VM
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: rockboyfor
@@ -17,13 +17,13 @@ origin.date: 12/15/2017
 ms.date: 08/12/2019
 ms.author: v-yeche
 ms.openlocfilehash: 2c13b29b6749612596c15135dd14038597f2c0ec
-ms.sourcegitcommit: d624f006b024131ced8569c62a94494931d66af7
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "69539086"
 ---
-# <a name="encrypt-a-windows-virtual-machine-in-azure"></a>在 Azure 中加密 Windows 虚拟机
+# <a name="encrypt-a-windows-virtual-machine-in-azure"></a>加密 Azure 中的 Windows 虚拟机
 
 此脚本创建安全的 Azure Key Vault、加密密钥、Azure Active Directory 服务主体和 Windows 虚拟机 (VM)。 然后使用来自 Key Vault 和服务主体凭据的加密密钥对 VM 进行加密。
 
@@ -101,12 +101,12 @@ az group delete --name myResourceGroup
 
 ## <a name="script-explanation"></a>脚本说明
 
-此脚本使用以下命令创建资源组、Azure 密钥保管库、服务主体、虚拟机和所有相关资源。 表中的每条命令均链接到特定于命令的文档。
+此脚本使用以下命令创建资源组、Azure Key Vault、服务主体、虚拟机和所有相关资源。 表中的每条命令均链接到特定于命令的文档。
 
-| 命令 | 注释 |
+| Command | 说明 |
 |---|---|
 | [az group create](https://docs.azure.cn/cli/group?view=azure-cli-latest#az-group-create) | 创建用于存储所有资源的资源组。 |
-| [az keyvault create](https://docs.azure.cn/cli/keyvault?view=azure-cli-latest#az-keyvault-create) | 创建 Azure Key Vault，存储加密密钥等安全数据。 |
+| [az keyvault create](https://docs.azure.cn/cli/keyvault?view=azure-cli-latest#az-keyvault-create) | 创建 Azure Key Vault 来存储安全的数据，例如加密密钥。 |
 | [az keyvault key create](https://docs.azure.cn/cli/keyvault/key?view=azure-cli-latest#az-keyvault-key-create) | 在 Key Vault 中创建加密密钥。 |
 | [az ad sp create-for-rbac](https://docs.azure.cn/cli/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) | 创建 Azure Active Directory 服务主体来安全地进行身份验证并控制对加密密钥的访问。 |
 | [az keyvault set-policy](https://docs.azure.cn/cli/keyvault?view=azure-cli-latest#az-keyvault-set-policy) | 设置对 Key Vault 的权限来向服务主体授予对加密密钥的访问权限。 |

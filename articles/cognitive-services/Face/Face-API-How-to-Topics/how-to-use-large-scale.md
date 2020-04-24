@@ -12,10 +12,10 @@ origin.date: 05/01/2019
 ms.date: 07/10/2019
 ms.author: v-junlch
 ms.openlocfilehash: f0706ae43ec18cf2ef375205b44bc5c9000cd922
-ms.sourcegitcommit: 8f49da0084910bc97e4590fc1a8fe48dd4028e34
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "67844658"
 ---
 # <a name="example-use-the-large-scale-feature"></a>示例：使用大规模使用的功能
@@ -65,8 +65,8 @@ faceClient.Endpoint = SubscriptionEndpoint
 | FaceList API | LargeFaceList API |
 |:---:|:---:|
 | 创建 | 创建 |
-| 删除 | 删除 |
-| 获取 | 获取 |
+| Delete | Delete |
+| Get | Get |
 | 列出 | 列出 |
 | 更新 | 更新 |
 | - | 定型 |
@@ -274,6 +274,6 @@ private static void TrainTimerOnElapsed(string largePersonGroupId, int timeInter
 请遵循操作指南了解如何将人脸添加到 PersonGroup，或针对 PersonGroup 执行“识别”操作。
 
 - [添加人脸](how-to-add-faces.md)
-- [在图像中识别人脸](HowtoIdentifyFacesinImage.md)
+- [识别图像中的人脸](HowtoIdentifyFacesinImage.md)
 
 <!-- Update_Description: code update -->

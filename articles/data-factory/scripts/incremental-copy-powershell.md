@@ -13,10 +13,10 @@ origin.date: 10/31/2017
 ms.date: 07/08/2019
 ms.author: v-jay
 ms.openlocfilehash: 669ae0ecb5654fefa8ebce58ae71c8fb84d18a78
-ms.sourcegitcommit: 5191c30e72cbbfc65a27af7b6251f7e076ba9c88
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "67570237"
 ---
 # <a name="powershell-script---incrementally-load-data-by-using-azure-data-factory"></a>PowerShell 脚本 - 使用 Azure 数据工厂以增量方式加载数据
@@ -370,7 +370,7 @@ Remove-AzDataFactoryV2 -Name $dataFactoryName -ResourceGroupName $resourceGroupN
 
 此脚本使用以下命令： 
 
-| 命令 | 注释 |
+| Command | 说明 |
 |---|---|
 | [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) | 创建用于存储所有资源的资源组。 |
 | [Set-AzDataFactoryV2](https://docs.microsoft.com/powershell/module/az.datafactory/set-Azdatafactoryv2) | 创建数据工厂。 |

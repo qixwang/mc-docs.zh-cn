@@ -18,10 +18,10 @@ ms.date: 05/16/2019
 ms.author: v-junlch
 ms.custom: mvc
 ms.openlocfilehash: 12b12737a5c20ce33a29b9aaa14c1c001e5fbc49
-ms.sourcegitcommit: 10a858569fbfde321e71b649701ca3862bbc0178
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "65917454"
 ---
 # <a name="azure-powershell-samples-for-virtual-machine-scale-sets"></a>虚拟机规模集的 Azure PowerShell 示例。

@@ -11,11 +11,11 @@ ms.date: 12/10/2018
 ms.author: v-jay
 ms.component: tables
 ms.openlocfilehash: 16f2a1143853d827e50229f4bd116d67006734de
-ms.sourcegitcommit: 5f2849d5751cb634f1cdc04d581c32296e33ef1b
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53028836"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63851056"
 ---
 # <a name="introduction-to-table-storage-in-azure"></a>Azure 中的表存储简介
 

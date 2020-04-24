@@ -14,10 +14,10 @@ manager: digimobile
 origin.date: 03/19/2019
 ms.date: 08/19/2019
 ms.openlocfilehash: c0a89760ec912f768aaf2d3bd01c0cec04499eed
-ms.sourcegitcommit: 52ce0d62ea704b5dd968885523d54a36d5787f2d
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "69544288"
 ---
 # <a name="optimize-performance-by-using-in-memory-technologies-in-sql-database"></a>在 SQL 数据库中使用内存中技术优化性能
@@ -48,7 +48,7 @@ Azure SQL 数据库采用以下内存中技术：
 
 由于查询和事务处理的效率提升，内存中技术还可降低成本。 用户通常不需要升级数据库的定价层即可实现性能提升。 在某些情况下，即使是降低定价层，使用内存中技术也能实现性能改善。
 
-以下两个示例演示了如何借助内存中 OLTP 大幅改善性能：
+以下两个示例演示了如何借助内存中 OLTP 大幅提升性能：
 
 - 使用内存中 OLTP，[仲裁商业解决方案能够使其工作负荷增加一倍，同时节省 70% 的 DTU](https://customers.microsoft.com/story/quorum-doubles-key-databases-workload-while-lowering-dtu-with-sql-database)。
 

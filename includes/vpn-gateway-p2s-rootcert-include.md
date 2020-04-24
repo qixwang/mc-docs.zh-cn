@@ -10,11 +10,11 @@ ms.date: 12/24/2018
 ms.author: v-jay
 ms.custom: include file
 ms.openlocfilehash: a6c16debcb1e93f35754579ae8869f5dac558c76
-ms.sourcegitcommit: 0a5a7daaf864ef787197f2b8e62539786b6835b3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53656632"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63823224"
 ---
 使用通过企业解决方案生成的根证书（推荐），或者生成自签名证书。 创建根证书后，将公共证书数据（不是私钥）作为 Base64 编码的 X.509 .cer 文件导出。 然后，将公共证书数据上传到 Azure 服务器。
 

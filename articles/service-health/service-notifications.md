@@ -10,10 +10,10 @@ origin.date: 6/27/2019
 ms.date: 08/05/2019
 ms.subservice: ''
 ms.openlocfilehash: 999b3c266e30cfe995d17d7872098e6d2202aa66
-ms.sourcegitcommit: 021dbf0003a25310a4c8582a998c17729f78ce42
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "68514498"
 ---
 # <a name="view-service-health-notifications-by-using-the-azure-portal"></a>使用 Azure 门户查看服务运行状况通知

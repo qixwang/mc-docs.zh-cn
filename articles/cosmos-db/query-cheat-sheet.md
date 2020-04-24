@@ -8,10 +8,10 @@ origin.date: 05/28/2019
 ms.date: 06/17/2019
 ms.author: v-yeche
 ms.openlocfilehash: 701f8bef52e6d7be82e3fba8eabb9511a2debf36
-ms.sourcegitcommit: 153236e4ad63e57ab2ae6ff1d4ca8b83221e3a1c
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "67171301"
 ---
 # <a name="azure-cosmos-db-query-cheat-sheets"></a>Azure Cosmos DB 查询备忘单

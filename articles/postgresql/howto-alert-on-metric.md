@@ -8,10 +8,10 @@ ms.topic: conceptual
 origin.date: 5/6/2019
 ms.date: 08/05/2019
 ms.openlocfilehash: dc605dde54dcf75c24d7733e8aad2146c6d6c5fa
-ms.sourcegitcommit: 0de1021cff162a602777858b3f0b7949557fd22c
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "69013552"
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-postgresql---single-server"></a>使用 Azure 门户设置针对 Azure Database for PostgreSQL（单一服务器）指标的警报
@@ -22,7 +22,7 @@ ms.locfileid: "69013552"
 
 可配置警报，使警报触发时执行以下操作：
 * 向服务管理员和共同管理员发送电子邮件通知。
-* 将电子邮件发送到指定的其他电子邮件。
+* 将电子邮件发送到指定的其他电子邮件地址。
 * 调用 Webhook。
 
 可使用以下项配置并获取预警规则相关信息：
@@ -75,7 +75,7 @@ ms.locfileid: "69013552"
 
 12. 选择“创建警报规则”可以创建警报  。
 
-    在几分钟后，警报将如前所述激活并触发。
+    几分钟后，警报将处于活动状态，并按前面所述进行触发。
 
 ## <a name="manage-your-alerts"></a>管理警报
 创建警报后，可选择它并执行以下操作：
@@ -86,4 +86,4 @@ ms.locfileid: "69013552"
 
 ## <a name="next-steps"></a>后续步骤
 * 了解[在警报中配置 Webhook](../azure-monitor/platform/alerts-webhooks.md)的详细信息。
-* [大致了解指标收集](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md)以确保服务可用且响应迅速。
+* 获取[指标集合概述](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md)以确保服务可用且响应迅速。

@@ -10,10 +10,10 @@ ms.date: 07/01/2019
 ms.author: v-yeche
 ms.custom: include file
 ms.openlocfilehash: f9a88cbcc8e4a894c884be7301782342460ce861
-ms.sourcegitcommit: 9e50dde3362b6e6b192761ead6cd3f434dfb2168
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "67791320"
 ---
 ## <a name="launch-azure-local-shell"></a>启动 Azure 本地 Shell

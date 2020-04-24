@@ -10,18 +10,18 @@ ms.date: 12/24/2018
 ms.author: v-jay
 ms.custom: include file
 ms.openlocfilehash: 65bf0dc1d6fed7e57a127f937d88e6e07b387f0d
-ms.sourcegitcommit: 0a5a7daaf864ef787197f2b8e62539786b6835b3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53656628"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63851638"
 ---
 创建远程桌面连接来连接到部署到 VNet 的 VM。 若要验证是否能够连接到 VM，最好的方式是使用其专用 IP 地址而不是计算机名称进行连接。 这种方式测试的是能否进行连接，而不是测试名称解析是否已正确配置。 
 
 1. 定位 VM 的专用 IP 地址。 若要查找 VM 的专用 IP 地址，可以在 Azure 门户中或使用 PowerShell 查看 VM 的属性。
 2. 验证你是否已使用点到站点 VPN 连接连接到 VNet。 
-3. 若要打开远程桌面连接，请在任务栏上的搜索框中键入 *RDP* 或*远程桌面连接*，然后选择“远程桌面连接”。 也可以在 PowerShell 中使用 **mstsc** 命令打开远程桌面连接。 
-3. 在“远程桌面连接”中，输入 VM 的专用 IP 地址。 如果需要，选择“显示选项”来调整其他设置，然后进行连接。
+3. 若要打开远程桌面连接，请在任务栏上的搜索框中键入 *RDP* 或*远程桌面连接*，然后选择“远程桌面连接”。  也可以在 PowerShell 中使用 **mstsc** 命令打开远程桌面连接。 
+3. 在“远程桌面连接”中，输入 VM 的专用 IP 地址。  如果需要，选择“显示选项”来调整其他设置，然后进行连接。 
 
 ### <a name="to-troubleshoot-an-rdp-connection-to-a-vm"></a>排查到 VM 的 RDP 连接的问题
 

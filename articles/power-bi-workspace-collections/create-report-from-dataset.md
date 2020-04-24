@@ -12,11 +12,11 @@ origin.date: 02/15/2019
 ms.date: 03/05/2019
 ms.author: v-junlch
 ms.openlocfilehash: a44e5aa69459fbf689b9f856c3ced6e1fe4e5019
-ms.sourcegitcommit: 07a24e9a846705df3b98fc8ff193ec7d9ec913dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58408265"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63849256"
 ---
 # <a name="create-a-new-report-from-a-dataset-in-power-bi-workspace-collections"></a>在 Power BI 工作区集合中基于数据集创建新报表
 
@@ -59,7 +59,7 @@ var token = embedToken.Generate("{access key}");
 
 ## <a name="create-a-new-blank-report"></a>创建新的空白报表
 
-若要创建新报表，应提供 create 配置。 此配置应包含访问令牌、embedURL，以及用于创建报表的 datasetID。 这就需要安装 [Power BI JavaScript NuGet 包](https://www.nuget.org/packages/Microsoft.PowerBI.JavaScript/)。 embedUrl 将只是 https://embedded.powerbi.cn/appTokenReportEmbed。
+若要创建新报表，应提供 create 配置。 此配置应包含访问令牌、embedURL，以及用于创建报表的 datasetID。 这就需要安装 [Power BI JavaScript NuGet 包](https://www.nuget.org/packages/Microsoft.PowerBI.JavaScript/)。 embedUrl 将只是 https://embedded.powerbi.cn/appTokenReportEmbed 。
 
 > [!NOTE]
 > 可以使用 [JavaScript 报表嵌入示例](https://microsoft.github.io/PowerBI-JavaScript/demo/)测试功能。 我们还提供了适用于不同操作的代码示例。
@@ -96,7 +96,7 @@ var embedCreateConfiguration = {
 
 ## <a name="save-new-reports"></a>保存新报表
 
-在调用“另存为”操作之前，不会创建报表。 可以通过文件菜单或 JavaScript 完成此操作。
+在调用“另存为”操作之前，不会创建报表。  可以通过文件菜单或 JavaScript 完成此操作。
 
 ```javascript
  // Get a reference to the embedded report.
@@ -111,13 +111,13 @@ var embedCreateConfiguration = {
 ```
 
 > [!IMPORTANT]
-> 只有在调用“另存为”之后，才创建新报表。 保存后，画布仍以编辑模式而不是报表模式显示数据集。 需要重新加载新报表，就像使用其他任何报表时一样。
+> 只有在调用“另存为”之后，才创建新报表。  保存后，画布仍以编辑模式而不是报表模式显示数据集。 需要重新加载新报表，就像使用其他任何报表时一样。
 
 ![文件菜单 - 另存为](./media/create-report-from-dataset/save-new-report.png)
 
 ## <a name="load-the-new-report"></a>加载新报表
 
-如果要与新报表交互，需要像应用程序嵌入常规报表一样来嵌入新报表，这意味着，必须专门针对新报表颁发新令牌，并调用 embed 方法。
+要与新报表交互，需要像应用程序嵌入常规报表一样来嵌入新报表，这意味着，必须专门针对新报表颁发新令牌，并调用 embed 方法。
 
 ```html
 <div id="reportContainer"></div>
@@ -210,6 +210,6 @@ var embedCreateConfiguration = {
 [Power BI Core NuGut 包](https://www.nuget.org/packages/Microsoft.PowerBI.Core/)  
 [Power BI JavaScript 包](https://www.nuget.org/packages/Microsoft.PowerBI.JavaScript/)  
 
-有更多问题？ [试用 Power BI 社区](https://community.powerbi.com/)
+更多疑问？ [尝试 Power BI 社区](https://community.powerbi.com/)
 
 <!-- Update_Description: link update -->

@@ -18,10 +18,10 @@ ms.author: v-junlch
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 956c89da09c57845f066b47e48737ac94a9a22fb
-ms.sourcegitcommit: 5f85d6fe825db38579684ee1b621d19b22eeff57
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "67568601"
 ---
 # <a name="problems-signing-in-to-a-custom-developed-application"></a>登录自定义开发的应用程序时出现的问题

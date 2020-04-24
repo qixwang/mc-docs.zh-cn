@@ -10,20 +10,20 @@ ms.topic: quickstart
 origin.date: 02/28/2018
 ms.date: 07/15/2019
 ms.openlocfilehash: f1bda654e5815de7bad5b834bcd732de02d3ca5a
-ms.sourcegitcommit: f4351979a313ac7b5700deab684d1153ae51d725
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "67845407"
 ---
-# <a name="azure-database-for-mysql-use-go-language-to-connect-and-query-data"></a>Azure Database for MySQL：使用 Go 语言连接和查询数据
+# <a name="azure-database-for-mysql-use-go-language-to-connect-and-query-data"></a>Azure Database for MySQL：使用 Go 语言进行连接并查询数据
 
 > [!NOTE]
 > 将要查看的是 Azure Database for MySQL 的新服务。 若要查看经典 MySQL Database for Azure 的文档，请访问[此页](https://docs.azure.cn/zh-cn/mysql-database-on-azure/)。
 
 本快速入门演示如何在 Windows、Ubuntu Linux 和 Apple macOS 平台中使用以 [Go](https://golang.org/) 语言编写的代码连接到 Azure Database for MySQL。 同时还介绍了如何使用 SQL 语句在数据库中查询、插入、更新和删除数据。 本主题假设你熟悉如何使用 Go 进行开发，但不太熟悉 Azure Database for MySQL 的用法。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 此快速入门使用以下任意指南中创建的资源作为起点：
 - [使用 Azure 门户创建用于 MySQL 服务器的 Azure 数据库](./quickstart-create-mysql-server-database-using-azure-portal.md)
 - [使用 Azure CLI 创建用于 MySQL 服务器的 Azure 数据库](./quickstart-create-mysql-server-database-using-azure-cli.md)
@@ -32,12 +32,12 @@ ms.locfileid: "67845407"
 在自己的计算机上安装 [Go](https://golang.org/doc/install) 和[适用于 MySQL 的 go-sql-driver](https://github.com/go-sql-driver/mysql#installation)。 根据自己的平台执行相应部分中的步骤：
 
 ### <a name="windows"></a>Windows
-1. 根据[安装说明](https://golang.org/doc/install)[下载](https://golang.org/dl/)和安装用于 Microsoft Windows 的 Go。
+1. 根据[安装说明](https://golang.org/dl/)[下载](https://golang.org/doc/install)和安装用于 Microsoft Windows 的 Go。
 2. 从开始菜单启动命令提示符。
-3. 为项目创建一个文件夹，例如 `mkdir  %USERPROFILE%\go\src\mysqlgo`。
+3. 为项目创建一个文件夹，例如 `mkdir  %USERPROFILE%\go\src\mysqlgo` 列中的一个值匹配。
 4. 将目录转到项目文件夹，例如 `cd %USERPROFILE%\go\src\mysqlgo`。
-5. 设置 GOPATH 的环境变量，使之指向源代码目录。 `set GOPATH=%USERPROFILE%\go`。
-6. 通过运行 `go get github.com/go-sql-driver/mysql` 命令安装[用于 MySQL 的 go-sql-driver](https://github.com/go-sql-driver/mysql#installation)。
+5. 设置 GOPATH 的环境变量，使之指向源代码目录。 `set GOPATH=%USERPROFILE%\go` 列中的一个值匹配。
+6. 通过运行 [ 命令安装](https://github.com/go-sql-driver/mysql#installation)用于 MySQL 的 go-sql-driver`go get github.com/go-sql-driver/mysql`。
 
    总起来说就是，安装 Go，然后在命令提示符处运行以下命令：
    ```cmd
@@ -53,7 +53,7 @@ ms.locfileid: "67845407"
 3. 在主目录中为项目创建一个文件夹，例如 `mkdir -p ~/go/src/mysqlgo/`。
 4. 将目录转到该文件夹，例如 `cd ~/go/src/mysqlgo/`。
 5. 设置 GOPATH 环境变量，使之指向有效的源目录，例如当前主目录的 Go 文件夹。 在 Bash shell 中运行 `export GOPATH=~/go`，将 Go 目录添加为当前 Shell 会话的 GOPATH。
-6. 通过运行 `go get github.com/go-sql-driver/mysql` 命令安装[用于 MySQL 的 go-sql-driver](https://github.com/go-sql-driver/mysql#installation)。
+6. 通过运行 [ 命令安装](https://github.com/go-sql-driver/mysql#installation)用于 MySQL 的 go-sql-driver`go get github.com/go-sql-driver/mysql`。
 
    总起来说就是，运行以下 bash 命令：
    ```bash
@@ -70,7 +70,7 @@ ms.locfileid: "67845407"
 3. 在主目录中为项目创建一个文件夹，例如 `mkdir -p ~/go/src/mysqlgo/`。
 4. 将目录转到该文件夹，例如 `cd ~/go/src/mysqlgo/`。
 5. 设置 GOPATH 环境变量，使之指向有效的源目录，例如当前主目录的 Go 文件夹。 在 Bash shell 中运行 `export GOPATH=~/go`，将 Go 目录添加为当前 Shell 会话的 GOPATH。
-6. 通过运行 `go get github.com/go-sql-driver/mysql` 命令安装[用于 MySQL 的 go-sql-driver](https://github.com/go-sql-driver/mysql#installation)。
+6. 通过运行 [ 命令安装](https://github.com/go-sql-driver/mysql#installation)用于 MySQL 的 go-sql-driver`go get github.com/go-sql-driver/mysql`。
 
    总起来说就是，安装 Go，然后运行以下 bash 命令：
    ```bash

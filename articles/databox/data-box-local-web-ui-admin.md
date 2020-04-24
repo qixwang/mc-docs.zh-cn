@@ -10,10 +10,10 @@ origin.date: 06/03/2019
 ms.date: 07/22/2019
 ms.author: v-jay
 ms.openlocfilehash: 91ee065f5dedd360b9fecc333ae2cce5dc1e38a7
-ms.sourcegitcommit: 98cc8aa5b8d0e04cd4818b34f5350c72f617a225
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "68298146"
 ---
 # <a name="use-the-local-web-ui-to-administer-your-data-box-and-data-box-heavy"></a>使用本地 Web UI 管理 Data Box 和 Data Box Heavy
@@ -71,7 +71,7 @@ Data Box 和 Data Box Heavy 的本地 Web UI 用于设备的初始配置。 还�
 要重启 Data Box，请执行以下步骤。
 
 1. 在本地 Web UI 中，转到“关闭或重启”  。
-2. 单击“重新启动”  。
+2. 请单击“重启”  。
 
     ![重启 Data Box 1](media/data-box-local-web-ui-admin/restart-local-web-ui-1.png)
 

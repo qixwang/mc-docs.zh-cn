@@ -16,15 +16,15 @@ origin.date: 10/01/2017
 ms.date: 11/06/2017
 ms.author: v-johch
 ms.openlocfilehash: 157a6ae32f087408fef592d532acafbea186c28f
-ms.sourcegitcommit: d75065296d301f0851f93d6175a508bdd9fd7afc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52646649"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63846376"
 ---
 # <a name="sample-presets-for-media-encoder-standard-mes"></a>Media Encoder Standard (MES) 的示例预设
 
-Media Encoder Standard 定义了一组可在创建编码作业时使用的预定义系统编码预设。 如果想要使用媒体服务对视频进行编码以实现流式处理，建议使用“自适应流式处理”预设。 指定此预设时，Media Encoder Standard 将[自动生成比特率阶梯](media-services-autogen-bitrate-ladder-with-mes.md)。 
+Media Encoder Standard  定义了一组可在创建编码作业时使用的预定义系统编码预设。 如果想要使用媒体服务对视频进行编码以实现流式处理，建议使用“自适应流式处理”预设。 指定此预设时，Media Encoder Standard 将[自动生成比特率阶梯](media-services-autogen-bitrate-ladder-with-mes.md)。 
 
 ### <a name="creating-custom-presets-from-samples"></a>从示例创建自定义预设
 媒体服务完全支持自定义预设中的所有值，可满足特定的编码需求和要求。 如果需要自定义编码预设，应先采用此部分中提供的以下系统预设之一作为模板，以用于自定义配置。 有关这些预设中的每个元素的含义及其有效值的说明，请参阅 [Media Encoder Standard 架构](media-services-mes-schema.md)主题。  

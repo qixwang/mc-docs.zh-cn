@@ -16,11 +16,11 @@ origin.date: 01/23/2018
 ms.author: v-yiso
 ms.date: 03/11/2019
 ms.openlocfilehash: aaba38edaf3b4ea59811e73eb067fec4d14ad54f
-ms.sourcegitcommit: 9f7a4bec190376815fa21167d90820b423da87e7
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59529250"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "64339769"
 ---
 # <a name="monitor-your-apis-with-azure-api-management-event-hubs-and-moesif"></a>使用 Azure API 管理、事件中心和 Moesif 监视 API
 [API 管理服务](api-management-key-concepts.md)提供许多功能来增强发送到 HTTP API 的 HTTP 请求的处理。 但是，请求和响应都是暂时性存在的。 在请求发出后，将通过 API 管理服务流送到后端 API。 API 将处理该请求，然后将响应返回给 API 使用者。 API 管理服务保留要在 Azure 门户仪表板中显示的有关 API 的一些重要统计信息，但除此之外不显示详细信息。
@@ -160,7 +160,7 @@ HTTP 标头可以转换为采用简单键/值对格式的消息格式。 我们�
 `set-variable` 策略创建一个可供 `<inbound>` 节和 `<outbound>` 节中的 `log-to-eventhub` 策略访问的值。  
 
 ## <a name="receiving-events-from-event-hubs"></a>从事件中心接收事件
-使用 [AMQP 协议](https://www.amqp.org/)可从 Azure 事件中心接收事件。 Microsoft 服务总线团队提供了客户端库来方便使用事件。 支持两种不同的方法：一种是成为直接使用者，另一种是使用 `EventProcessorHost` 类。 在[事件中心编程指南](../event-hubs/event-hubs-programming-guide.md)中可以找到这两种方法的示例。 简而言之，两者的差别在于：`Direct Consumer` 提供给完全控制权，而 `EventProcessorHost` 可以自动完成一些繁琐的工作，但在如何处理这些事件上做出了假设。
+使用 [AMQP 协议](https://www.amqp.org/)可从 Azure 事件中心接收事件。 Microsoft 服务总线团队提供了客户端库来方便使用事件。 支持两种不同的方法：一种是成为直接使用者  ，另一种是使用 `EventProcessorHost` 类。 在[事件中心编程指南](../event-hubs/event-hubs-programming-guide.md)中可以找到这两种方法的示例。 简而言之，两者的差别在于：`Direct Consumer` 提供给完全控制权，而 `EventProcessorHost` 可以自动完成一些繁琐的工作，但在如何处理这些事件上做出了假设。
 
 ### <a name="eventprocessorhost"></a>EventProcessorHost
 为方便起见，本示例将使用 `EventProcessorHost`，但这不一定是此特定方案的最佳选择。 `EventProcessorHost` 努力确保用户无需担心特定事件处理器类中发生线程问题。 但是，在我们的方案中，只需将消息转换为另一种格式，并使用异步方法将它传递到另一个服务。 不需要更新共享状态，因此没有线程问题的风险。 在大多数情况下，`EventProcessorHost` 可能是最佳选择，当然也是更方便的选项。     
@@ -294,7 +294,7 @@ public class MoesifHttpMessageProcessor : IHttpMessageProcessor
 }
 ```
 
-`MoesifHttpMessageProcessor` 利用可轻松将 HTTP 事件数据推送到其服务的[适用于 Moesif 的 C# API 库](https://www.moesif.com/docs/api?csharp#events)。 若要将 HTTP 数据发送到 Moesif 收集器 API，需要拥有帐户和应用程序 ID。可通过在 [Moesif 网站](https://www.moesif.com)上创建帐户，然后转到_右上方菜单_ -> “应用设置”来获取 Moesif 应用程序 ID。
+`MoesifHttpMessageProcessor` 利用可轻松将 HTTP 事件数据推送到其服务的[适用于 Moesif 的 C# API 库](https://www.moesif.com/docs/api?csharp#events)。 若要将 HTTP 数据发送到 Moesif 收集器 API，需要拥有帐户和应用程序 ID。可通过在 [Moesif 网站](https://www.moesif.com)上创建帐户，然后转到_右上方菜单_ -> “应用设置”来获取 Moesif 应用程序 ID  。
 
 ## <a name="complete-sample"></a>完整示例
 GitHub 上提供了本示例的[源代码](https://github.com/dgilling/ApimEventProcessor)和测试。 需要准备好 [API 管理服务](get-started-create-service-instance.md)、[连接的事件中心](api-management-howto-log-event-hubs.md)和[存储帐户](../storage/common/storage-create-storage-account.md)才能自行运行本示例。   

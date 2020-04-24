@@ -10,10 +10,10 @@ ms.custom: sample, mvc
 origin.date: 5/6/2019
 ms.date: 05/20/2019
 ms.openlocfilehash: 8f364d5125fe7fbceef92f4932d88d4cc2299c5b
-ms.sourcegitcommit: 11d81f0e4350a72d296e5664c2e5dc7e5f350926
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "65731984"
 ---
 # <a name="azure-cli-samples-for-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - 单个服务器的 Azure CLI 示例

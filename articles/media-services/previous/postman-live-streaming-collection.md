@@ -15,15 +15,15 @@ origin.date: 02/08/2019
 ms.date: 03/04/2019
 ms.author: v-jay
 ms.openlocfilehash: 0dc0310fbfec3025207501ad2aaf723b8ad744b0
-ms.sourcegitcommit: 7b93bc945ba49490ea392476a8e9ba1a273098e3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56833338"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63829530"
 ---
 # <a name="import-a-postman-collection-with-live-streaming-operations"></a>使用实时传送视频流操作导入一个 Postman 集合 
 
-本文包含 Postman 集合的定义，该集合包含调用实时传送视频流 Azure 媒体服务 REST API 的分组 HTTP 请求。 有关如何配置 Postman 以用于调用媒体服务 REST API 的信息，请参阅[配置 Postman 以便进行媒体服务 REST API 调用](media-rest-apis-with-postman.md)教程。
+本文包含 Postman  集合的定义，该集合包含调用实时传送视频流  Azure 媒体服务 REST API 的分组 HTTP 请求。 有关如何配置 Postman  以用于调用媒体服务 REST API 的信息，请参阅[配置 Postman 以便进行媒体服务 REST API 调用](media-rest-apis-with-postman.md)教程。
 
 ```
 {

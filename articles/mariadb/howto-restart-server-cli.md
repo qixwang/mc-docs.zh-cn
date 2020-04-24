@@ -8,20 +8,20 @@ ms.topic: conceptual
 origin.date: 3/28/2019
 ms.date: 05/27/2019
 ms.openlocfilehash: f7b3e4cc01a3b32cdf7fd7dc7c600077c9255474
-ms.sourcegitcommit: 60169f39663ae62016f918bdfa223c411e249883
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "66173345"
 ---
 # <a name="restart-azure-database-for-mariadb-server-using-the-azure-cli"></a>使用 Azure CLI 重启 Azure Database for MariaDB 服务器
 本主题介绍了如何重启 Azure Database for MariaDB 服务器。 出于维护原因，可能需要重启服务器，这会在服务器执行操作时导致短暂中断。
 
-如果服务处于繁忙状态，则会阻止重启服务器。 例如，服务可能正在处理先前请求的操作（例如缩放 vCore）。
+如果服务处于繁忙状态，则会阻止重启服务器。 例如，服务可以处理缩放 vCores 等先前请求的操作。
 
 完成重启所需的时间取决于 MariaDB 恢复过程。 若要减少重启时间，建议在重启之前尽量减少服务器上发生的活动量。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 若要完成本操作指南，需要：
 - [Azure Database for MariaDB 服务器](quickstart-create-mariadb-server-database-using-azure-cli.md)
 

@@ -18,10 +18,10 @@ ms.author: v-junlch
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0d5304f5e8ba6892c7a7e7a50e355ac4e8c80b9f
-ms.sourcegitcommit: 5f85d6fe825db38579684ee1b621d19b22eeff57
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "67568603"
 ---
 # <a name="unexpected-consent-prompt-when-signing-in-to-an-application"></a>登录到应用程序时出现的意外许可提示

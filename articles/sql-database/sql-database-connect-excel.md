@@ -14,15 +14,15 @@ manager: digimobile
 origin.date: 02/12/2019
 ms.date: 08/19/2019
 ms.openlocfilehash: c9cc9aec2416fdace7692dba7ee9a02bab869d34
-ms.sourcegitcommit: 52ce0d62ea704b5dd968885523d54a36d5787f2d
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "69544401"
 ---
 # <a name="connect-excel-to-a-single-database-in-azure-sql-database-and-create-a-report"></a>将 Excel 连接到 Azure SQL 数据库中的单一数据库并创建报表
 
-将 Excel 连接到 Azure SQL 数据库中的单一数据库，导入数据并根据数据库中的值来创建表和图表。 在本教程中，用户将设置 Excel 与数据库表之间的连接，保存用于存储 Excel 的数据和连接信息的文件，并根据数据库值创建分析数据透视图。
+将 Excel 连接到 Azure SQL 数据库中的单一数据库，导入数据并根据数据库中的值来创建表和图表。 在本教程中，将设置 Excel 与数据库表之间的连接，保存用于存储 Excel 的数据和连接信息的文件，然后根据数据库值创建分析数据透视图。
 
 在开始之前，需要有一个单一数据库。 如果没有，请参阅[创建单一数据库](sql-database-single-database-get-started.md)和[创建服务器级 IP 防火墙](sql-database-server-level-firewall-rule.md)，以在几分钟内搭建并运行包含示例数据的单一数据库。
 
@@ -37,8 +37,8 @@ ms.locfileid: "69544401"
 
    ![选择数据源：将 Excel 连接到 SQL 数据库。](./media/sql-database-connect-excel/excel_data_source.png)
 
-   “数据连接”向导打开。
-3. 在“连接到数据库服务器”  对话框中，以格式 <*服务器名称*> **.database.chinacloudapi.cn** 键入要连接到的 SQL 数据库的**服务器名称**。 例如，**msftestserver.database.chinacloudapi.cn**。 输入数据库名称（可选）。 选择“确定”以打开凭据窗口  。
+   此时会打开“数据连接”向导。
+3. 在“连接到数据库服务器”  对话框中，以格式 <**服务器名称**  .database.chinacloudapi.cn> 键入要连接到的 SQL 数据库的**服务器名称**。 例如，**msftestserver.database.chinacloudapi.cn**。 输入数据库名称（可选）。 选择“确定”以打开凭据窗口  。
 
    ![“连接到数据库服务器”对话框](media/sql-database-connect-excel/server-name.png)
 
@@ -81,10 +81,10 @@ ms.locfileid: "69544401"
 
       ![“新建连接”对话框](media/sql-database-connect-excel/new-connection.png)
 
-2. 在“数据连接向导”中键入服务器名称和 SQL 数据库凭据  。 选择“**下一步**”。 
+2. 在“数据连接向导”中键入服务器名称和 SQL 数据库凭据  。 选择“**下一页**”。 
    1. 从下拉列表中选择包含数据的数据库。 
    2. 选择感兴趣的表格或视图。 我们选择的是“vGetAllCategories”。
-   3. 选择“**下一步**”。 
+   3. 选择“**下一页**”。 
 
       ![数据连接向导](media/sql-database-connect-excel/data-connection-wizard.png) 
 

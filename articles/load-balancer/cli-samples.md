@@ -17,11 +17,11 @@ origin.date: 06/14/2018
 ms.date: 07/16/2018
 ms.author: v-yeche
 ms.openlocfilehash: b449a25aaf79f83eebc0eab7d7daf30aa43599de
-ms.sourcegitcommit: d75065296d301f0851f93d6175a508bdd9fd7afc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52658299"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63855496"
 ---
 # <a name="azure-cli-samples-for-load-balancer"></a>适用于负载均衡器的 Azure CLI 示例
 

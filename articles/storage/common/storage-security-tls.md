@@ -10,11 +10,11 @@ ms.date: 02/25/2019
 ms.author: v-jay
 ms.subservice: common
 ms.openlocfilehash: bcf3d17abb204f43cdfa4ec420552a5776ea48fe
-ms.sourcegitcommit: 0fd74557936098811166d0e9148e66b350e5b5fa
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56665643"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63860350"
 ---
 # <a name="enable-secure-tls-for-azure-storage-client"></a>为 Azure 存储客户端启用安全 TLS
 

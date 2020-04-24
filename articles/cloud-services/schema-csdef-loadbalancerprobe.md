@@ -15,11 +15,11 @@ author: thraka
 ms.author: v-yiso
 manager: timlt
 ms.openlocfilehash: 3e2508ad7f767af468fdd3d9322b11c8678a809f
-ms.sourcegitcommit: d75065296d301f0851f93d6175a508bdd9fd7afc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52662705"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63847853"
 ---
 # <a name="azure-cloud-services-definition-loadbalancerprobe-schema"></a>Azure 云服务定义 LoadBalancerProbe 架构
 负载均衡器探测是由客户定义的，用于探测 UDP 终结点和角色实例中的终结点的运行状况。 `LoadBalancerProbe` 不是一个独立的元素；它在服务定义文件中与 Web 角色或辅助角色结合。 `LoadBalancerProbe` 可由多个角色使用。
@@ -52,10 +52,10 @@ Azure 负载均衡器负责将传入流量路由到角色实例。 负载均衡�
 - [LoadBalancerProbes 元素](#LoadBalancerProbes)
 - [LoadBalancerProbe 元素](#LoadBalancerProbe)
 
-##  <a name="LoadBalancerProbes"></a> LoadBalancerProbes 元素
+##  <a name="loadbalancerprobes-element"></a><a name="LoadBalancerProbes"></a> LoadBalancerProbes 元素
 `LoadBalancerProbes` 元素描述负载均衡器探测的内容集合。 此元素是 [LoadBalancerProbe 元素](#LoadBalancerProbe)的父元素。 
 
-##  <a name="LoadBalancerProbe"></a> LoadBalancerProbe 元素
+##  <a name="loadbalancerprobe-element"></a><a name="LoadBalancerProbe"></a> LoadBalancerProbe 元素
 `LoadBalancerProbe` 元素可定义模型的运行状况探测。 可定义多个负载均衡器探测。 
 
 下表描述 `LoadBalancerProbe` 元素的属性：

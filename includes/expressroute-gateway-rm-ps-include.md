@@ -1,9 +1,9 @@
 ---
 ms.openlocfilehash: 03824cca2ae86d7e2d595be22b4dc22225ec0f99
-ms.sourcegitcommit: df1adc5cce721db439c1a7af67f1b19280004b2d
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "65835626"
 ---
 此任务的步骤使用的 VNet 基于以下配置参考列表中的值。 此列表中也概述了其他设置和名称。 尽管我们确实基于此列表中的值添加变量，但是我们在任何步骤中不会直接使用此列表。 可以复制列表作为参考，并将列表中的值替换为自己的值。
@@ -14,8 +14,8 @@ ms.locfileid: "65835626"
 - 虚拟网络地址空间 = 192.168.0.0/16
 - 资源组 = “TestRG”
 - Subnet1 名称 = “FrontEnd” 
-- Subnet1 地址空间 =“192.168.1.0/24”
-- 网关子网名称：“GatewaySubnet”必须始终将网关子网命名为“GatewaySubnet”。
+- Subnet1 地址空间 = “192.168.1.0/24”
+- 网关子网名称：“GatewaySubnet”必须始终将网关子网命名为 *GatewaySubnet*。
 - 网关子网地址空间 = “192.168.200.0/26”
 - 区域 =“China East”
 - 网关名称 = “GW”
@@ -65,7 +65,7 @@ ms.locfileid: "65835626"
    ```powershell
    $subnet = Get-AzureRmVirtualNetworkSubnetConfig -Name 'GatewaySubnet' -VirtualNetwork $vnet
    ```
-7. 请求公共 IP 地址。 创建网关之前请求 IP 地址。 无法指定要使用的 IP 地址；它会进行动态分配。 后面的配置部分会用到此 IP 地址。 AllocationMethod 必须是动态的。
+7. 请求公共 IP 地址。 创建网关之前请求 IP 地址。 无法指定要使用的 IP 地址；它会进行动态分配。 后面的配置部分将使用此 IP 地址。 AllocationMethod 必须是动态的。
 
    ```powershell
    $pip = New-AzureRmPublicIpAddress -Name $GWIPName  -ResourceGroupName $RG -Location $Location -AllocationMethod Dynamic
@@ -83,7 +83,7 @@ ms.locfileid: "65835626"
    ```
 
 ## <a name="verify-the-gateway-was-created"></a>验证是否已创建网关
-使用以下命令验证是否已创建网关：
+使用以下命令来验证是否已创建网关：
 
 ```powershell
 Get-AzVirtualNetworkGateway -ResourceGroupName $RG

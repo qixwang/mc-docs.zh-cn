@@ -12,11 +12,11 @@ ms.date: 04/01/2019
 ms.author: v-jay
 ms.reviewer: jrasnick
 ms.openlocfilehash: 567a81313ae304101c3770bd9e047fcc64b355f2
-ms.sourcegitcommit: b8fb6890caed87831b28c82738d6cecfe50674fd
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58626461"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63857709"
 ---
 # <a name="analyze-your-workload-in-azure-sql-data-warehouse"></a>分析 Azure SQL 数据仓库中的工作负荷
 
@@ -28,7 +28,7 @@ SQL 数据仓库提供资源类，可以将系统资源分配给查询。  有�
 
 ## <a name="queued-query-detection-and-other-dmvs"></a>对排队的查询进行的检测，以及其他 DMV
 
-可以使用 `sys.dm_pdw_exec_requests` DMV 来确定在并发队列中等待的查询。 正在等待并发槽的查询的状态为“已挂起”。
+可以使用 `sys.dm_pdw_exec_requests` DMV 来确定在并发队列中等待的查询。 正在等待并发槽的查询的状态为“已挂起”  。
 
 ```sql
 SELECT  r.[request_id]                           AS Request_ID
@@ -41,7 +41,7 @@ FROM    sys.dm_pdw_exec_requests r
 ;
 ```
 
-可以使用 `sys.database_principals`来查看工作负荷管理角色。
+可以使用 `sys.database_principals` 来查看工作负荷管理角色。
 
 ```sql
 SELECT  ro.[name]           AS [db_role_name]
@@ -67,7 +67,7 @@ SQL 数据仓库具有以下等待类型：
 
 * **LocalQueriesConcurrencyResourceType**：位于并发槽框架外部的查询。 DMV 查询和 `SELECT @@VERSION` 等系统函数是本地查询的示例。
 * **UserConcurrencyResourceType**：位于并发槽框架内部的查询。 针对最终用户表的查询代表使用此资源类型的示例。
-* **DmsConcurrencyResourceType**：数据移动操作导致的等待。
+* **DmsConcurrencyResourceType**：数据移动操作生成的等待。
 * **BackupConcurrencyResourceType**：此等待表明正在备份数据库。 此资源类型的最大值为 1。 如果同时请求了多个备份，则其他备份会排队。 通常情况下，建议连续快照的最小间隔时间为 10 分钟。 
 
 可以使用 `sys.dm_pdw_waits` DMV 来查看请求所等待的具体资源。
@@ -153,4 +153,4 @@ FROM    sys.dm_pdw_wait_stats w
 
 ## <a name="next-steps"></a>后续步骤
 
-有关如何管理数据库用户和安全性的详细信息，请参阅[保护 SQL 数据仓库中的数据库](sql-data-warehouse-overview-manage-security.md)。 有关如何通过更大型资源类来改进聚集列存储索引质量的详细信息，请参阅[重建索引以提升段质量](sql-data-warehouse-tables-index.md#rebuilding-indexes-to-improve-segment-quality)。
+有关如何管理数据库用户和安全性的详细信息，请参阅[保护 SQL 数据仓库中的数据库](sql-data-warehouse-overview-manage-security.md)。 有关如何通过更大型资源类来改进聚集列存储索引质量的详细信息，请参阅[重新生成索引以提升段质量](sql-data-warehouse-tables-index.md#rebuilding-indexes-to-improve-segment-quality)。

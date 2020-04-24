@@ -13,11 +13,11 @@ ms.date: 03/27/2019
 ms.author: v-junlch
 ms.custom: seodec18
 ms.openlocfilehash: 2fc2fc1637dc34d18816bc39e1b7bac659527ece
-ms.sourcegitcommit: c5599eb7dfe9fd5fe725b82a861c97605635a73f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58505505"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63848229"
 ---
 # <a name="detect-adult-and-racy-content"></a>检测成人和不雅内容
 
@@ -28,9 +28,9 @@ ms.locfileid: "58505505"
 
 ## <a name="content-flag-definitions"></a>内容标记定义
 
-“成人”图像的定义为实质上淫秽并且通常描绘裸体和性行为的图像。 
+“成人”图像的定义为实质上淫秽并且通常描绘裸体和性行为的图像  。 
 
-“不雅”图像的定义为实际具有性暗示且往往包含露骨的描绘性内容（比“成人”图像少）的图像。 
+“不雅”图像的定义为实际具有性暗示且往往包含露骨的描绘性内容（比“成人”图像少）的图像   。 
 
 ## <a name="identify-adult-and-racy-content"></a>标识成人和不雅内容
 

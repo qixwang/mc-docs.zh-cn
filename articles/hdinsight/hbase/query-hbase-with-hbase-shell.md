@@ -11,10 +11,10 @@ origin.date: 06/12/2019
 ms.date: 07/22/2019
 ms.author: hrasheed
 ms.openlocfilehash: f697b240d9bf133ddba8be6e6868cf61c5d0f710
-ms.sourcegitcommit: f4351979a313ac7b5700deab684d1153ae51d725
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "67845554"
 ---
 # <a name="quickstart-query-apache-hbase-in-azure-hdinsight-with-hbase-shell"></a>快速入门：使用 HBase Shell 在 Azure HDInsight 中查询 Apache HBase
@@ -41,7 +41,7 @@ ms.locfileid: "67845554"
 
 可以使用 SSH 连接到 HBase 群集，然后使用 Apache HBase Shell 来创建 HBase 表以及插入和查询数据。
 
-1. 使用 `ssh` 命令连接到 HBase 群集。 通过将 `CLUSTERNAME` 替换为群集的名称来编辑以下命令，然后输入该命令：
+1. 使用 `ssh` 命令连接到 HBase 群集。 编辑以下命令，将 `CLUSTERNAME` 替换为群集的名称，然后输入该命令：
 
     ```cmd
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.cn

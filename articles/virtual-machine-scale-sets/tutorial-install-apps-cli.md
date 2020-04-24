@@ -18,11 +18,11 @@ ms.date: 02/12/2019
 ms.author: v-junlch
 ms.custom: mvc
 ms.openlocfilehash: 49dcee95e34d366d3658492ddea7e23000415fcb
-ms.sourcegitcommit: 24dd5964eafbe8aa4badbca837c2a1a7836f2df7
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56101592"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63852244"
 ---
 # <a name="tutorial-install-applications-in-virtual-machine-scale-sets-with-the-azure-cli"></a>教程：使用 Azure CLI 在虚拟机规模集中安装应用程序
 若要在规模集中的虚拟机 (VM) 实例上运行应用程序，首先需要安装应用程序组件和所需文件。 前一篇教程介绍了如何创建自定义 VM 映像并使用它来部署 VM 实例。 使用此自定义映像可以手动安装和配置应用程序。 也可以在部署每个 VM 实例之后，将应用程序自动安装到规模集，或者更新已在规模集中运行的应用程序。 本教程介绍如何执行下列操作：
@@ -48,7 +48,7 @@ ms.locfileid: "56101592"
 ## <a name="create-custom-script-extension-definition"></a>创建自定义脚本扩展定义
 若要查看自定义脚本扩展的运行方式，请创建一个可以安装 NGINX Web 服务器并输出规模集 VM 实例主机名的规模集。 以下自定义脚本扩展定义从 GitHub 下载示例脚本，安装所需的包，然后将 VM 实例主机名写入一个基本的 HTML 页面。
 
-在当前 shell 中，创建名为“customConfig.json”的文件并粘贴下面的配置。 
+在当前 shell 中，创建名为“customConfig.json”的文件并粘贴下面的配置  。 
 
 ```json
 {
@@ -59,13 +59,13 @@ ms.locfileid: "56101592"
 
 
 ## <a name="create-a-scale-set"></a>创建规模集
-使用 [az group create](/cli/group) 创建资源组。 以下示例在“chinanorth”位置创建名为“myResourceGroup”的资源组：
+使用 [az group create](/cli/group) 创建资源组。 以下示例在“chinanorth”  位置创建名为“myResourceGroup”  的资源组：
 
 ```azurecli
 az group create --name myResourceGroup --location chinanorth
 ```
 
-现在，使用 [az vmss create](/cli/vmss) 创建虚拟机规模集。 以下示例创建名为“myScaleSet”的规模集，并生成 SSH 密钥（如果不存在）：
+现在，使用 [az vmss create](/cli/vmss) 创建虚拟机规模集。 以下示例创建名为“myScaleSet”  的规模集，并生成 SSH 密钥（如果不存在）：
 
 ```azurecli
 az vmss create `
@@ -82,7 +82,7 @@ az vmss create `
 
 
 ## <a name="apply-the-custom-script-extension"></a>应用自定义脚本扩展
-使用 [az vmss extension set](/cli/vmss/extension) 将自定义脚本扩展配置应用到规模集中的 VM 实例。 以下示例将 customConfig.json 配置应用于名为 myResourceGroup 的资源组中的 myScaleSet VM 实例：
+使用 [az vmss extension set](/cli/vmss/extension) 将自定义脚本扩展配置应用到规模集中的 VM 实例。 以下示例将 customConfig.json 配置应用于名为 myResourceGroup 的资源组中的 myScaleSet VM 实例    ：
 
 ```azurecli
 az vmss extension set `
@@ -98,7 +98,7 @@ az vmss extension set `
 
 
 ## <a name="test-your-scale-set"></a>测试规模集
-若要允许通信流到达 Web 服务器，请使用 [az network lb rule create](/cli/network/lb/rule) 命令创建负载均衡器规则。 以下示例创建名为“myLoadBalancerRuleWeb”的规则：
+若要允许通信流到达 Web 服务器，请使用 [az network lb rule create](/cli/network/lb/rule) 命令创建负载均衡器规则。 以下示例创建名为“myLoadBalancerRuleWeb”  的规则：
 
 ```azurecli
 az network lb rule create `
@@ -112,7 +112,7 @@ az network lb rule create `
   --protocol tcp
 ```
 
-若要查看运行中的 Web 服务器，请使用 [az network public-ip show](https://docs.azure.cn/zh-cn/cli/network/public-ip?view=azure-cli-latest#az-network-public-ip-show) 命令获取负载均衡器的公共 IP 地址。 以下示例获取创建为规模集一部分的“myScaleSetLBPublicIP”的 IP 地址：
+若要查看运行中的 Web 服务器，请使用 [az network public-ip show](https://docs.azure.cn/zh-cn/cli/network/public-ip?view=azure-cli-latest#az-network-public-ip-show) 命令获取负载均衡器的公共 IP 地址。 以下示例获取创建为规模集一部分的“myScaleSetLBPublicIP”  的 IP 地址：
 
 ```azurecli
 az network public-ip show `
@@ -132,7 +132,7 @@ az network public-ip show `
 ## <a name="update-app-deployment"></a>更新应用部署
 在规模集的整个生命周期内，都可能需要部署应用程序的更新版本。 使用自定义脚本扩展可以引用更新的部署脚本，然后将扩展重新应用到规模集。 在上一步骤中创建规模集时，`--upgrade-policy-mode` 已设置为 *automatic*。 此设置可让规模集中的 VM 实例自动更新应用程序并应用其最新版本。
 
-在当前 shell 中，创建名为“customConfigv2.json”的文件并粘贴下面的配置。 此定义运行应用程序安装脚本的 *v2* 更新版本：
+在当前 shell 中，创建名为“customConfigv2.json”的文件并粘贴下面的配置  。 此定义运行应用程序安装脚本的 *v2* 更新版本：
 
 ```json
 {

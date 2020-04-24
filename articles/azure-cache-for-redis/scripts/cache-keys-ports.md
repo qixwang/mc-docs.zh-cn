@@ -17,11 +17,11 @@ origin.date: 08/30/2017
 ms.date: 02/26/2019
 ms.author: v-junlch
 ms.openlocfilehash: c4fa85a75b2995f332abae7fca656a2cc6b26875
-ms.sourcegitcommit: 1e5ca29cde225ce7bc8ff55275d82382bf957413
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56903088"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63856889"
 ---
 # <a name="get-the-hostname-ports-and-keys-for-azure-cache-for-redis"></a>获取 Azure Redis 缓存的主机名、端口和密钥
 
@@ -55,7 +55,7 @@ echo "Secondary Key:" ${keys[1]}
 
 此脚本使用以下命令检索 Azure Redis 缓存实例的主机名、密钥和端口。 表中的每条命令均链接到特定于命令的文档。
 
-| 命令 | 注释 |
+| Command | 说明 |
 |---|---|
 | [az redis show](/cli/redis) | 检索 Azure Redis 缓存实例的详细信息。 |
 | [az redis list-keys](/cli/redis) | 检索 Azure Redis 缓存实例的访问密钥。 |

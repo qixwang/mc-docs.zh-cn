@@ -10,11 +10,11 @@ ms.date: 12/10/2018
 ms.author: v-jay
 ms.component: tables
 ms.openlocfilehash: e76bcc0b9323a42544e8a4eba4dabbf7c9f6c1d0
-ms.sourcegitcommit: 5f2849d5751cb634f1cdc04d581c32296e33ef1b
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53029043"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63858161"
 ---
 # <a name="guidelines-for-table-design"></a>表设计准则
 
@@ -27,7 +27,7 @@ ms.locfileid: "53029043"
 * ***请考虑存储实体的重复副本。*** 表存储比较便宜，因此请考虑多次存储同一实体（使用不同键）以实现更高效的查询。  
 * ***请考虑反规范化处理数据。*** 表存储比较便宜，因此请考虑反规范化数据。 例如，存储摘要实体，以便对聚合数据的查询只需访问单个实体。  
 * ***使用复合键值。*** 具有的唯一键是 **PartitionKey** 和 **RowKey**。 例如，使用复合键值来启用对实体的备用键控访问路径。  
-* ***使用查询投影。*** 可以通过使用只选择所需字段的查询来减少网络上传输的数据量。  
+* ***使用查询投影。*** 可使用仅选择所需字段的查询，减少网络上传输的数据量。  
 
 ## <a name="design-your-table-service-solution-to-be-write-efficient"></a>设计表服务解决方案，实现高效写入  
 

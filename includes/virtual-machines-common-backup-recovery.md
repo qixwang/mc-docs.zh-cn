@@ -10,11 +10,11 @@ ms.date: 04/16/2018
 ms.author: v-yeche
 ms.custom: include file
 ms.openlocfilehash: 937b78aaa4187902034ea5753b379c3b53d95482
-ms.sourcegitcommit: d75065296d301f0851f93d6175a508bdd9fd7afc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52648997"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63855453"
 ---
 ## <a name="azure-backup"></a>Azure 备份
 
@@ -26,11 +26,11 @@ ms.locfileid: "52648997"
 
 ## <a name="azure-site-recovery"></a>Azure Site Recovery
 
-当整个区域因重大自然灾难或大规模服务中断而发生中断时，Azure Site Recovery 可以保护 VM，使其免受重大灾难影响。 可以为 VM 配置 Azure Site Recovery，只需单击一下，几分钟内即可恢复应用程序。 可复制到所选的 Azure 区域（并不局限于配对区域）。 
+当整个区域因重大自然灾难或大规模服务中断而发生中断时，Azure Site Recovery 可以保护 VM，使其免受重大灾难影响。 可为 VM 配置 Azure Site Recovery，从而只需单击一下便可在几分钟内恢复应用程序。 可复制到所选的 Azure 区域（并不局限于配对区域）。 
 
 可以通过按需测试故障转移进行灾难恢复演练，而不影响生产工作负荷或正在进行的复制。 创建恢复计划，为多个 VM 上运行的整个应用程序安排故障转移和故障回复。 恢复计划功能将与 Azure 自动化 Runbook 集成。
 
-可以通过[复制虚拟机](https://aka.ms/a2a-getting-started)来启动。 
+可通过[复制虚拟机](https://aka.ms/a2a-getting-started)入门。 
 
 ## <a name="managed-snapshots"></a>托管快照 
 
@@ -38,8 +38,8 @@ ms.locfileid: "52648997"
 
 有关创建快照的详细信息，请参阅：
 
-* [使用 Windows 中的快照创建作为托管磁盘存储的 VHD 的副本](../articles/virtual-machines/windows/snapshot-copy-managed-disk.md)
-* [使用 Linux 中的快照创建作为托管磁盘存储的 VHD 的副本](../articles/virtual-machines/linux/snapshot-copy-managed-disk.md)
+* [在 Windows 中使用快照创建存储为托管磁盘的 VHD 的副本](../articles/virtual-machines/windows/snapshot-copy-managed-disk.md)
+* [在 Linux 中使用快照创建存储为托管磁盘的 VHD 的副本](../articles/virtual-machines/linux/snapshot-copy-managed-disk.md)
 
 ## <a name="next-steps"></a>后续步骤
 可以按照适用于 [Linux](../articles/virtual-machines/linux/tutorial-backup-vms.md) 或 [Windows](../articles/virtual-machines/windows/tutorial-backup-vms.md) 的“备份 Windows 虚拟机教程”试用 Azure 备份。

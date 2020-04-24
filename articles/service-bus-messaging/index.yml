@@ -62,7 +62,7 @@ sections:
         items:
           - title: 命令行
             html: '<p><a href="https://docs.microsoft.com/powershell/module/azurerm.servicebus/">Azure PowerShell</a></p><p><a href="/cli/azure/servicebus">Azure CLI</a></p>'
-          - title: 语言
-            html: <p><a href="/dotnet/api/microsoft.servicebus.messaging">.NET framework</a></p><p><a href="/dotnet/api/microsoft.azure.servicebus">.NET 标准</a></p><p><a href="/java/api/overview/servicebus">Java</a></p>
+          - title: Languages
+            html: <p><a href="/dotnet/api/microsoft.servicebus.messaging">.NET Framework</a></p><p><a href="/dotnet/api/microsoft.azure.servicebus">.NET Standard</a></p><p><a href="/java/api/overview/servicebus">Java</a></p>
           - title: REST
             html: '<p><a href="https://docs.microsoft.com/rest/api/servicebus/">REST API 参考</a></p>'

@@ -9,10 +9,10 @@ author: kingdomofends
 ms.author: adgera
 ms.date: 07/02/2019
 ms.openlocfilehash: 51126b131874d3ec242cf3a324e1e058d086572c
-ms.sourcegitcommit: 5fea6210f7456215f75a9b093393390d47c3c78d
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "68337311"
 ---
 > [!IMPORTANT]

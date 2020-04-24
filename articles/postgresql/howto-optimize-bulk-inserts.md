@@ -8,10 +8,10 @@ ms.topic: conceptual
 origin.date: 5/6/2019
 ms.date: 05/20/2019
 ms.openlocfilehash: e4a2ab23d6ebe4bbd5617423c687831f610c7032
-ms.sourcegitcommit: 11d81f0e4350a72d296e5664c2e5dc7e5f350926
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "65732008"
 ---
 # <a name="optimize-bulk-inserts-and-use-transient-data-on-an-azure-database-for-postgresql---single-server"></a>优化 Azure Database for PostgreSQL - 单一服务器中的批量插入和使用瞬态数据 

@@ -13,17 +13,17 @@ ms.custom: seodec18
 origin.date: 04/30/2019
 ms.date: 06/06/2019
 ms.openlocfilehash: 52cdea003f688c0205f024301deb7fd3b74ed982
-ms.sourcegitcommit: 259c97c9322da7add9de9f955eac275d743c9424
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "66830062"
 ---
 # <a name="use-computer-vision-features-with-the-rest-api-and-java"></a>通过 REST API 和 Java 使用计算机视觉功能
 
 本教程展示 Azure 认知服务计算机视觉 REST API 的功能。
 
-介绍一款 Java Swing 应用程序，它使用计算机视觉 REST API 执行光学符号识别 (OCR)、创建智能裁剪的缩略图，还检测、分类、标记和描述图像中的人脸等视觉特征。 通过本示例可提交一个图像 URL 进行分析和处理。 可以使用此开源示例作为模板在 Java 中生成自己的应用，以便使用计算机视觉 REST API。
+探讨一个使用计算机视觉 REST API 执行光学字符识别 (OCR)、创建智能裁剪的缩略图，以及在图像中检测、标记和描述视觉特征（包括人脸）并对其分类的 Java Swing 应用程序。 此示例允许提交图像 URL 来分析或处理图像。 可以使用此开源示例作为模板在 Java 中生成自己的应用，以便使用计算机视觉 REST API。
 
 本教程介绍如何将计算机视觉用于以下领域：
 
@@ -96,7 +96,7 @@ Java Swing 应用程序设置了六个选项卡。 每个选项卡展示计算�
 复制以下代码并将其粘贴到  analyzeImageButtonActionPerformed 方法中。
 
 > [!NOTE]
-> NetBeans 不允许粘贴到方法定义行 (```private void```) 或该方法的右大括号。 若要复制代码，请复制方法定义和右大括号之间的行，然后将其通过粘贴方式覆盖方法的内容。
+> NetBeans 不允许将内容粘贴到方法定义行 (```private void```) 或该方法的右大括号处。 若要复制代码，请复制方法定义和右大括号之间的行，然后将其通过粘贴方式覆盖方法的内容。
 
 ```java
     private void analyzeImageButtonActionPerformed(java.awt.event.ActionEvent evt) {
@@ -205,7 +205,7 @@ Java Swing 应用程序设置了六个选项卡。 每个选项卡展示计算�
 
 #### <a name="run-the-analyze-function"></a>运行 Analyze 函数
 
-按  F6 运行应用程序。 在“订阅密钥”字段中填写订阅密钥，并验证确保“订阅区域中”使用的区域正确无误   。 输入图像 URL 进行分析，然后单击“分析图像”按钮以分析图像并查看结果  。
+按  F6 运行应用程序。 将订阅密钥置于“订阅密钥”字段中，  然后在“订阅区域”中验证是否使用了正确的区域。  输入要分析的图像的 URL，然后单击“分析图像”按钮对图像进行分析并查看结果。 
 
 ### <a name="recognize-a-landmark"></a>识别地标
 
@@ -220,7 +220,7 @@ Java Swing 应用程序设置了六个选项卡。 每个选项卡展示计算�
 复制以下代码并将其粘贴到  landmarkImageButtonActionPerformed 方法中。
 
 > [!NOTE]
-> NetBeans 不允许粘贴到方法定义行 (```private void```) 或该方法的右大括号。 若要复制代码，请复制方法定义和右大括号之间的行，然后将其通过粘贴方式覆盖方法的内容。
+> NetBeans 不允许将内容粘贴到方法定义行 (```private void```) 或该方法的右大括号处。 若要复制代码，请复制方法定义和右大括号之间的行，然后将其通过粘贴方式覆盖方法的内容。
 
 ```java
     private void landmarkImageButtonActionPerformed(java.awt.event.ActionEvent evt) {
@@ -329,7 +329,7 @@ Java Swing 应用程序设置了六个选项卡。 每个选项卡展示计算�
 
 #### <a name="run-the-landmark-function"></a>运行 landmark 函数
 
-按  F6 运行应用程序。 在“订阅密钥”字段中填写订阅密钥，并验证确保“订阅区域中”使用的区域正确无误   。 单击“地标”选项卡，输入地标图像的 URL，然后单击“分析图像”按钮对图像进行分析并查看结果。  
+按  F6 运行应用程序。 将订阅密钥置于“订阅密钥”字段中，  然后在“订阅区域”中验证是否使用了正确的区域。  单击“地标”选项卡，输入地标图像的 URL，然后单击“分析图像”按钮对图像进行分析并查看结果。  
 
 ### <a name="recognize-celebrities"></a>识别名人
 
@@ -344,7 +344,7 @@ Java Swing 应用程序设置了六个选项卡。 每个选项卡展示计算�
 复制以下代码并将其粘贴到  celebritiesImageButtonActionPerformed 方法中。
 
 > [!NOTE]
-> NetBeans 不允许粘贴到方法定义行 (```private void```) 或该方法的右大括号。 若要复制代码，请复制方法定义和右大括号之间的行，然后将其通过粘贴方式覆盖方法的内容。
+> NetBeans 不允许将内容粘贴到方法定义行 (```private void```) 或该方法的右大括号处。 若要复制代码，请复制方法定义和右大括号之间的行，然后将其通过粘贴方式覆盖方法的内容。
 
 ```java
     private void celebritiesImageButtonActionPerformed(java.awt.event.ActionEvent evt) {
@@ -453,7 +453,7 @@ Java Swing 应用程序设置了六个选项卡。 每个选项卡展示计算�
 
 #### <a name="run-the-celebrities-function"></a>运行 celebrities 函数
 
-按  F6 运行应用程序。 在“订阅密钥”字段中填写订阅密钥，并验证确保“订阅区域中”使用的区域正确无误   。 单击“名人”选项卡，输入名人图像的 URL，然后单击“分析图像”按钮对图像进行分析并查看结果。  
+按  F6 运行应用程序。 将订阅密钥置于“订阅密钥”字段中，  然后在“订阅区域”中验证是否使用了正确的区域。  单击“名人”选项卡，输入名人图像的 URL，然后单击“分析图像”按钮对图像进行分析并查看结果。  
 
 ### <a name="intelligently-generate-a-thumbnail"></a>以智能方式生成缩略图
 
@@ -576,7 +576,7 @@ Java Swing 应用程序设置了六个选项卡。 每个选项卡展示计算�
 
 #### <a name="run-the-thumbnail-function"></a>运行 thumbnail 函数
 
-按  F6 运行应用程序。 在“订阅密钥”字段中填写订阅密钥，并验证确保“订阅区域中”使用的区域正确无误   。 单击“缩略图”选项卡，输入图像的 URL，然后单击“生成缩略图”按钮对图像进行分析并查看结果。  
+按  F6 运行应用程序。 将订阅密钥置于“订阅密钥”字段中，  然后在“订阅区域”中验证是否使用了正确的区域。  单击“缩略图”选项卡，输入图像的 URL，然后单击“生成缩略图”按钮对图像进行分析并查看结果。  
 
 ### <a name="read-printed-text-ocr"></a>读取印刷体文本 (OCR)
 
@@ -591,7 +591,7 @@ Java Swing 应用程序设置了六个选项卡。 每个选项卡展示计算�
 复制以下代码并将其粘贴到  ocrImageButtonActionPerformed 方法中。
 
 > [!NOTE]
-> NetBeans 不允许粘贴到方法定义行 (```private void```) 或该方法的右大括号。 若要复制代码，请复制方法定义和右大括号之间的行，然后将其通过粘贴方式覆盖方法的内容。
+> NetBeans 不允许将内容粘贴到方法定义行 (```private void```) 或该方法的右大括号处。 若要复制代码，请复制方法定义和右大括号之间的行，然后将其通过粘贴方式覆盖方法的内容。
 
 ```java
     private void ocrImageButtonActionPerformed(java.awt.event.ActionEvent evt) {
@@ -687,11 +687,11 @@ Java Swing 应用程序设置了六个选项卡。 每个选项卡展示计算�
 
 #### <a name="run-the-ocr-function"></a>运行 OCR 函数
 
-按  F6 运行应用程序。 在“订阅密钥”字段中填写订阅密钥，并验证确保“订阅区域中”使用的区域正确无误   。 单击“OCR”选项卡，输入印刷体文本图像的 URL，然后单击“读取图像”按钮对图像进行分析并查看结果。  
+按  F6 运行应用程序。 将订阅密钥置于“订阅密钥”字段中，  然后在“订阅区域”中验证是否使用了正确的区域。  单击“OCR”选项卡，输入印刷体文本图像的 URL，然后单击“读取图像”按钮对图像进行分析并查看结果。  
 
 ### <a name="read-handwritten-text-handwriting-recognition"></a>读取手写文本（手写识别）
 
-计算机视觉的手写体识别功能可分析图像中的手写文本。 分析完以后，手写识别功能会返回一个 JSON 对象，其中包含图像中的文本和文本位置。
+计算机视觉的手写识别功能分析图像中是否有手写文本。 分析完以后，手写识别功能会返回一个 JSON 对象，其中包含图像中的文本和文本位置。
 
 若要完成教程应用程序的手写识别功能，请执行以下步骤：
 
@@ -702,7 +702,7 @@ Java Swing 应用程序设置了六个选项卡。 每个选项卡展示计算�
 复制以下代码并将其粘贴到  handwritingImageButtonActionPerformed 方法中。
 
 > [!NOTE]
-> NetBeans 不允许粘贴到方法定义行 (```private void```) 或该方法的右大括号。 若要复制代码，请复制方法定义和右大括号之间的行，然后将其通过粘贴方式覆盖方法的内容。
+> NetBeans 不允许将内容粘贴到方法定义行 (```private void```) 或该方法的右大括号处。 若要复制代码，请复制方法定义和右大括号之间的行，然后将其通过粘贴方式覆盖方法的内容。
 
 ```java
     private void handwritingImageButtonActionPerformed(java.awt.event.ActionEvent evt) {
@@ -845,7 +845,7 @@ Java Swing 应用程序设置了六个选项卡。 每个选项卡展示计算�
 
 #### <a name="run-the-handwriting-function"></a>运行 handwriting 函数
 
-若要运行应用程序，请按  F6。 在“订阅密钥”字段中填写订阅密钥，并验证确保“订阅区域中”使用的区域正确无误   。 单击“读取手写文本”选项卡，输入手写文本图像的 URL，然后单击“读取图像”按钮以分析图像并查看结果   。
+若要运行应用程序，请按  F6。 将订阅密钥置于“订阅密钥”字段中，  然后在“订阅区域”中验证是否使用了正确的区域。  单击“读取手写文本”选项卡，输入手写文本图像的 URL，然后单击“读取图像”按钮对图像进行分析并查看结果。  
 
 ## <a name="next-steps"></a>后续步骤
 

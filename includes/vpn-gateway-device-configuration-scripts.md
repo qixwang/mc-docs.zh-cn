@@ -10,10 +10,10 @@ ms.date: 01/21/2019
 ms.author: v-jay
 ms.custom: include file
 ms.openlocfilehash: bbcd478da5952102a567f6a4116797d1cb96f01b
-ms.sourcegitcommit: 235c6c8a11af703474236c379aa6310e84ff03a3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/12/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "68951403"
 ---
 | **供应商** | **设备系列** | **固件版本** |

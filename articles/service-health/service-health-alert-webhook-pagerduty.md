@@ -16,10 +16,10 @@ origin.date: 06/10/2019
 ms.date: 08/05/2019
 ms.author: v-yiso
 ms.openlocfilehash: 9a1b7274795e032ae1250565b099280fcb646a44
-ms.sourcegitcommit: 021dbf0003a25310a4c8582a998c17729f78ce42
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "68514431"
 ---
 # <a name="send-azure-service-health-alerts-with-pagerduty-using-webhooks"></a>使用 Webhook 通过 PagerDuty 发送 Azure 服务运行状况警报

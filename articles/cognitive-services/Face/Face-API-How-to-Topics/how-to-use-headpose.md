@@ -11,10 +11,10 @@ origin.date: 05/29/2019
 ms.date: 07/10/2019
 ms.author: v-junlch
 ms.openlocfilehash: 2a015e5408042166d3a0f67ecdb356d8c4d18c53
-ms.sourcegitcommit: 8f49da0084910bc97e4590fc1a8fe48dd4028e34
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "67844591"
 ---
 # <a name="use-the-headpose-attribute"></a>使用 HeadPose 属性
@@ -29,7 +29,7 @@ ms.locfileid: "67844591"
 
 ### <a name="explore-the-sample-code"></a>探索示例代码
 
-可以使用 HeadPose 属性以编程方式旋转人脸矩形。 如果在检测人脸（请参阅[如何检测人脸](HowtoDetectFacesinImage.md)）时指定此属性，则稍后可以查询此属性。 [认知服务人脸 WPF](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/app-samples/Cognitive-Services-Face-WPF) 应用中的以下方法采用 **DetectedFace** 对象的列表，并返回 **[Face](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/blob/master/app-samples/Cognitive-Services-Face-WPF/Sample-WPF/Controls/Face.cs)** 对象的列表。 此处的 **Face** 是一个自定义类，它用于存储人脸数据，包括更新的矩形坐标。 将计算**顶边缘**、**左边缘**、**宽度**和**高度**的新值；新字段 **FaceAngle** 指定旋转角度。
+可使用 HeadPose 属性以编程方式旋转人脸矩形。 如果在检测人脸（请参阅[如何检测人脸](HowtoDetectFacesinImage.md)）时指定此属性，可以稍后对其进行查询。 [认知服务人脸 WPF](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/app-samples/Cognitive-Services-Face-WPF) 应用中的以下方法采用一系列 **DetectedFace** 对象，返回一系列 **[Face](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/blob/master/app-samples/Cognitive-Services-Face-WPF/Sample-WPF/Controls/Face.cs)** 对象。 此处的 **Face** 是一个自定义类，用于存储人脸数据，包括更新的矩形坐标。 将会针对 **top**、**left**、**width** 和 **height** 计算新值，而新字段 **FaceAngle** 用于指定旋转。
 
 ```csharp
 /// <summary>
@@ -109,7 +109,7 @@ public static IEnumerable<Face> CalculateFaceRectangleForRendering(IList<Detecte
 
 ### <a name="display-the-updated-rectangle"></a>显示更新的矩形
 
-在此处，可以使用显示画面中返回的 **Face** 对象。 [FaceDetectionPage.xaml](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/blob/master/app-samples/Cognitive-Services-Face-WPF/Sample-WPF/Controls/FaceDetectionPage.xaml) 中的以下行显示如果根据该数据呈现新矩形：
+在这里，可以在显示中使用返回的 **Face** 对象。 [FaceDetectionPage.xaml](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/blob/master/app-samples/Cognitive-Services-Face-WPF/Sample-WPF/Controls/FaceDetectionPage.xaml) 中的以下行显示如果根据该数据呈现新矩形：
 
 ```xaml
  <DataTemplate>

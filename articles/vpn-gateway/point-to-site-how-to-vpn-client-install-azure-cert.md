@@ -10,25 +10,25 @@ origin.date: 09/06/2018
 ms.date: 10/01/2018
 ms.author: v-jay
 ms.openlocfilehash: ad080fa2b2b43816f8d167e41a3fed3c386eb5ff
-ms.sourcegitcommit: d75065296d301f0851f93d6175a508bdd9fd7afc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52653872"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63820986"
 ---
 # <a name="install-client-certificates-for-p2s-certificate-authentication-connections"></a>安装用于 P2S 证书身份验证连接的客户端证书
 
 使用点到站点 Azure 证书身份验证连接到虚拟机的所有客户端都需要一个客户端证书。 本文可用来帮助安装在使用 P2S 连接到 VNet 时用于身份验证的客户端证书。
 
-## <a name="generate"></a>获取客户端证书
+## <a name="acquire-a-client-certificate"></a><a name="generate"></a>获取客户端证书
 
-无论你要从哪个客户端操作系统进行连接，都必须始终拥有客户端证书。 可以基于使用企业 CA 解决方案生成的根证书来生成客户端证书，也可以生成自签名证书。 有关生成客户端证书的步骤，请参阅 [PowerShell](vpn-gateway-certificates-point-to-site.md)、[MakeCert](vpn-gateway-certificates-point-to-site-makecert.md) 或 [Linux](vpn-gateway-certificates-point-to-site-linux.md) 说明。 
+无论要从什么客户端操作系统进行连接，都必须具有客户端证书。 可以基于使用企业 CA 解决方案生成的根证书来生成客户端证书，也可以生成自签名证书。 有关生成客户端证书的步骤，请参阅 [PowerShell](vpn-gateway-certificates-point-to-site.md)、[MakeCert](vpn-gateway-certificates-point-to-site-makecert.md) 或 [Linux](vpn-gateway-certificates-point-to-site-linux.md) 说明。 
 
-## <a name="installwin"></a>Windows
+## <a name="windows"></a><a name="installwin"></a>Windows
 
 [!INCLUDE [Install on Windows](../../includes/vpn-gateway-certificates-install-client-cert-include.md)]
 
-## <a name="installmac"></a>Mac
+## <a name="mac"></a><a name="installmac"></a>Mac
 
 >[!NOTE]
 >Mac VPN 客户端仅在资源管理器部署模型中受支持。 经典部署模型不支持它们。
@@ -37,10 +37,10 @@ ms.locfileid: "52653872"
 
 [!INCLUDE [Install on Mac](../../includes/vpn-gateway-certificates-install-mac-client-cert-include.md)]
 
-## <a name="installlinux"></a>Linux
+## <a name="linux"></a><a name="installlinux"></a>Linux
 
-Linux 客户端证书将作为客户端配置的一部分安装在客户端上。 有关说明，请参阅[客户端配置 - Linux](point-to-site-vpn-client-configuration-azure-cert.md#linuxinstallcli)。
+Linux 客户端证书作为客户端配置的一部分安装在客户端上。 有关说明,请参阅[客户端配置 - Linux](point-to-site-vpn-client-configuration-azure-cert.md#linuxinstallcli)。
 
 ## <a name="next-steps"></a>后续步骤
 
-继续执行点到站点配置步骤[创建和安装 VPN 客户端配置文件](point-to-site-vpn-client-configuration-azure-cert.md)。
+继续执行点到站点配置步骤来[创建和安装 VPN 客户端配置文件](point-to-site-vpn-client-configuration-azure-cert.md)。

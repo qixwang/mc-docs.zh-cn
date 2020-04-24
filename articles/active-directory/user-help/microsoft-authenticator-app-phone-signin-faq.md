@@ -1,6 +1,6 @@
 ---
 title: Microsoft Authenticator 手机登录 - Azure 和 Microsoft 帐户 | Microsoft Docs
-description: 使用手机登录 Microsoft 帐户，而不是键入密码。 本文提供有关此功能的常见问题解答。
+description: 使用手机登录 Microsoft 帐户，而不是键入密码。 本文解答有关此功能的常见问题。
 services: active-directory
 author: eross-msft
 manager: mtillman
@@ -13,10 +13,10 @@ ms.date: 11/13/2018
 ms.author: v-junlch
 ms.reviewer: librown
 ms.openlocfilehash: 116013e2492a2a54d1693104876e066e0dc73571
-ms.sourcegitcommit: 5fc46672ae90b6598130069f10efeeb634e9a5af
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "67236456"
 ---
 # <a name="sign-in-with-your-phone-not-your-password"></a>使用手机而不是密码登录

@@ -12,10 +12,10 @@ origin.date: 07/03/2019
 ms.date: 07/10/2019
 ms.author: v-junlch
 ms.openlocfilehash: b16d2bdae79a928ff7c7b4f5f0b8825585653533
-ms.sourcegitcommit: 8f49da0084910bc97e4590fc1a8fe48dd4028e34
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "67844939"
 ---
 # <a name="quickstart-analyze-images-for-objectionable-content-in-c"></a>快速入门：使用 C# 分析图像中是否存在令人反感的内容
@@ -44,7 +44,7 @@ ms.locfileid: "67844939"
 
 ## <a name="add-image-moderation-code"></a>添加图像审查代码
 
-接下来，需将代码从本指南复制并粘贴到项目中，以便实施基本的内容审查方案。
+接下来，将代码从本指南复制并粘贴到项目中，以便实施基本的内容审查方案。
 
 ### <a name="include-namespaces"></a>包括命名空间
 

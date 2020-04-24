@@ -16,10 +16,10 @@ origin.date: 02/09/2017
 ms.author: antonba
 ms.date: 12/31/2018
 ms.openlocfilehash: 09fdadf46717780d55142088818fc34a37d8ea8d
-ms.sourcegitcommit: 77475d11bc3b6a1fa7ab8aa1421fcdf39c0cd370
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "72323803"
 ---
 # <a name="modify-the-content-and-layout-of-pages-on-the-developer-portal-in-azure-api-management"></a>在 Azure API 管理中修改开发人员门户上的页面内容和页面布局
@@ -31,7 +31,7 @@ ms.locfileid: "72323803"
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
-## <a name="page-structure"> </a>开发人员门户页面结构
+## <a name="structure-of-developer-portal-pages"></a><a name="page-structure"> </a>开发人员门户页面结构
 
 开发人员门户基于内容管理系统。 每页的布局是基于一组小型页面元素（称为小组件）构建的：
 
@@ -43,7 +43,7 @@ ms.locfileid: "72323803"
 
 在日常页面编辑中，通常只修改“内容”小组件，此组件拥有针对每个单独页面的不同内容。
 
-## <a name="modify-layout-widget"> </a>修改布局小组件的内容
+## <a name="modifying-the-contents-of-a-layout-widget"></a><a name="modify-layout-widget"> </a>修改布局小组件的内容
 
 开发人员门户可从 Azure 门户进行访问。 
 
@@ -54,9 +54,9 @@ ms.locfileid: "72323803"
     可以在字段中对小组件进行编辑。
 4. 做好发布更改的准备以后，请单击页面底部的“发布”。 
 
-现在，就能够在开发人员门户中的每一页上看见此新的标题。
+现在，就能够在开发人员门户中的每一页上看见此新的标头。
 
-## <a name="next-steps"></a>后续步骤
+## <a name="next-steps"></a><a name="next-steps"> </a>后续步骤
 * [跨开发人员门户更新页面元素所用的样式][customize-styles]
 * [修改门户生成的页面所用的模板][portal-templates]（例如 API 文档、产品、用户身份验证等）
 

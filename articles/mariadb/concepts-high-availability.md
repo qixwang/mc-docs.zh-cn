@@ -8,10 +8,10 @@ ms.topic: conceptual
 origin.date: 12/03/2018
 ms.date: 05/27/2019
 ms.openlocfilehash: df332fb5503c2821bd2f20938cf566424a5e0cbd
-ms.sourcegitcommit: 60169f39663ae62016f918bdfa223c411e249883
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "66173295"
 ---
 # <a name="high-availability-concepts-in-azure-database-for-mariadb"></a>Azure Database for MariaDB 中的高可用性概念

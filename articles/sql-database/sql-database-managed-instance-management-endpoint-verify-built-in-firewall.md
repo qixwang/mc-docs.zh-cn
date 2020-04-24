@@ -14,11 +14,11 @@ manager: digimobile
 origin.date: 12/04/2018
 ms.date: 12/31/2018
 ms.openlocfilehash: 45b465d95aae06a705b022ffaeecb7a7ce329be3
-ms.sourcegitcommit: e96e0c91b8c3c5737243f986519104041424ddd5
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53806383"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63821453"
 ---
 # <a name="verifying-the-managed-instance-built-in-firewall"></a>验证托管实例内置防火墙
 

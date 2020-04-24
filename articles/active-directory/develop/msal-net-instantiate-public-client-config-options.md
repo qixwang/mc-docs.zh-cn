@@ -19,10 +19,10 @@ ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b77ed5c1dc37eaa97704e5edbcb17b8cffb7dfd3
-ms.sourcegitcommit: 9d5fd3184b6a47bf3b60ffdeeee22a08354ca6b1
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/21/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "67305839"
 ---
 # <a name="instantiate-a-public-client-application-with-configuration-options-using-msalnet"></a>通过 MSAL.NET 使用配置选项实例化公共客户端应用程序
@@ -32,7 +32,7 @@ ms.locfileid: "67305839"
 在初始化应用程序之前，首先需要[注册](quickstart-register-app.md)它，以便应用可以与 Microsoft 标识平台集成。 注册后，可能需要以下信息（可在 Azure 门户中找到）：
 
 - 客户端 ID（表示 GUID 的字符串）
-- 标识提供者 URL（命名了实例）和应用程序的登录受众。 这两个参数统称为颁发机构。
+- 标识提供者 URL（为实例命名）和应用程序的登录受众。 这两个参数统称为颁发机构。
 - 如果你仅在为组织编写业务线应用程序（也称为单租户应用程序），则为租户 ID。
 - 对于 Web 应用，有时对于公共客户端应用（特别是当你的应用需要使用中转站时），还将需要设置 redirectUri，标识提供者将在其中使用安全令牌联系你的应用程序。
 

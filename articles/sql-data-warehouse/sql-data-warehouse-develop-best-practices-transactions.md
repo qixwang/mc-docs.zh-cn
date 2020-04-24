@@ -11,11 +11,11 @@ origin.date: 04/19/2018
 ms.date: 10/15/2018
 ms.author: v-jay
 ms.openlocfilehash: 5f22b718b16c5232c31a3b36b4aec249b9e73017
-ms.sourcegitcommit: d75065296d301f0851f93d6175a508bdd9fd7afc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52657782"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63824973"
 ---
 # <a name="optimizing-transactions-in-azure-sql-data-warehouse"></a>优化 Azure SQL 数据仓库中的事务
 了解如何在尽量降低长时间回退风险的情况下优化 Azure SQL 数据仓库中的事务性代码的性能。
@@ -67,14 +67,14 @@ CTAS 和 INSERT...SELECT 都是批量加载操作。 但两者都受目标表定
 
 | 主索引 | 加载方案 | 日志记录模式 |
 | --- | --- | --- |
-| 堆 |任意 |**最少** |
+| 堆 |Any |**最少** |
 | 聚集索引 |空目标表 |**最少** |
 | 聚集索引 |加载的行不与目标中现有页面重叠 |**最少** |
-| 聚集索引 |加载的行与目标中现有页面重叠 |完整 |
+| 聚集索引 |加载的行与目标中现有页面重叠 |完全 |
 | 聚集列存储索引 |批大小 >= 102,400/每分区对齐的分布区 |**最少** |
-| 聚集列存储索引 |批大小 < 102,400/每分区对齐的分布区 |完整 |
+| 聚集列存储索引 |批大小 < 102,400/每分区对齐的分布区 |完全 |
 
-值得注意的是，任何更新辅助或非聚集索引的写入都会始终是完整记录的操作。
+值得注意的是，任何更新辅助或非聚集索引的写入都将始终是完整记录的操作。
 
 > [!IMPORTANT]
 > SQL 数据仓库具有 60 个分布区。 因此，假设所有行均匀分布且处于单个分区中，批在写入到聚集列存储索引时会需有 6,144,000 行（或更多）要按最少记录的方式记入日志。 如果对表进行分区且正插入的行跨越分区边界，则每个分区边界都需 6,144,000 行，假定数据分布很均匀。 每个分布区的每个分区各自必须超过 102,400 行的阈值，从而使插入以最少记录的方式记录到分布区中。
@@ -84,7 +84,7 @@ CTAS 和 INSERT...SELECT 都是批量加载操作。 但两者都受目标表定
 将数据加载到含聚集索引的非空表通常可以包含完整记录和最少记录的行的组合。 聚集索引是页面的平衡树 (b-tree)。 如果正写入的页面已包含其他事务中的行，则这些写入操作会被完整记录。 但如果该页面为空，则写入到该页面会按最少记录的方式记录。
 
 ## <a name="optimizing-deletes"></a>优化删除
-DELETE 是一个完整记录的操作。  如果需要删除表或分区中的大量数据， `SELECT` 要保留的数据通常更有意义，其可作为最少记录的操作来运行。  若要选择数据，可使用 [CTAS](sql-data-warehouse-develop-ctas.md) 创建新表。  创建后，可通过 [RENAME](https://docs.microsoft.com/sql/t-sql/statements/rename-transact-sql) 操作使用新创建的表将旧表交换出来。
+DELETE 是一个完整记录的操作。  如果需要删除表或分区中的大量数据，`SELECT` 要保留的数据通常更有意义，其可作为最少记录的操作来运行。  若要选择数据，可使用 [CTAS](sql-data-warehouse-develop-ctas.md) 创建新表。  创建后，可通过 [RENAME](https://docs.microsoft.com/sql/t-sql/statements/rename-transact-sql) 操作使用新创建的表将旧表交换出来。
 
 ```sql
 -- Delete all sales transactions for Promotions except PromotionKey 2.
@@ -345,7 +345,7 @@ DROP TABLE #ptn_data
 ## <a name="minimize-logging-with-small-batches"></a>使用小批量尽量减少日志记录
 对于大型数据修改操作，将操作划分为区块或批次来界定工作单元很有效。
 
-以下代码是一个可行的示例。 批大小已设置为一个简单的数字来突显该方法。 实际中批大小会变得非常大。 
+以下代码是可工作的示例。 批大小已设置为一个简单的数字来突显该方法。 实际中批大小会变得非常大。 
 
 ```sql
 SET NO_COUNT ON;

@@ -13,19 +13,19 @@ ms.author: v-yiso
 ms.custom: H1Hack27Feb2017
 ms.date: 08/05/2019
 ms.openlocfilehash: 5f67dd3f1fa41630c37d3683f1ed9c0b93755ef6
-ms.sourcegitcommit: 021dbf0003a25310a4c8582a998c17729f78ce42
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "68514469"
 ---
 # <a name="connect-raspberry-pi-to-azure-iot-hub-c"></a>将 Raspberry Pi 连接到 Azure IoT 中心 (C)
 
 [!INCLUDE [iot-hub-get-started-device-selector](../../includes/iot-hub-get-started-device-selector.md)]
 
-在本教程中，首先学习有关使用运行 Raspbian 的 Raspberry Pi 的基础知识。 然后学习如何使用 [Azure IoT 中心](about-iot-hub.md)将设备无缝连接到云。 有关 Windows 10 IoT Core 的示例，请访问 [Windows 开发人员中心](https://www.windowsondevices.com/)。
+在本教程中，用户首先将学习使用运行 Raspbian 的 Raspberry Pi 的基础知识。 然后将学习如何使用 [Azure IoT 中心](about-iot-hub.md)将设备无缝连接到云。 有关 Windows 10 IoT Core 的示例，请访问 [Windows 开发人员中心](https://www.windowsondevices.com/)。
 
-还没有工具包？ 试用 [Raspberry Pi 联机模拟器](./iot-hub-raspberry-pi-web-simulator-get-started.md)。 或在[此处](https://docs.azure.cn/zh-cn/develop/iot/iot-starter-kits)购买新工具包。
+还没有工具包？ 请尝试 [Raspberry Pi 联机模拟器](./iot-hub-raspberry-pi-web-simulator-get-started.md)。 或在[此处](https://docs.azure.cn/zh-cn/develop/iot/iot-starter-kits)购买新工具包。
 
 ## <a name="what-you-do"></a>准备工作
 
@@ -34,7 +34,7 @@ ms.locfileid: "68514469"
 * 设置 Raspberry Pi。
 * 在 Pi 上运行示例应用程序，以将传感器数据发送到 IoT 中心。
 
-将 Raspberry Pi 连接到所创建的 IoT 中心。 然后，在 Pi 上运行示例应用程序，从 BME280 传感器收集温度和湿度数据。 最后，将传感器数据发送到 IoT 中心。
+将 Raspberry Pi 连接到创建的 IoT 中心。 然后，在 Pi 上运行示例应用程序，以从 BME280 传感器收集温度和湿度数据。 最后，将传感器数据发送到 IoT 中心。
 
 ## <a name="what-you-learn"></a>学习内容
 
@@ -43,20 +43,20 @@ ms.locfileid: "68514469"
 * 如何通过在 Pi 上运行示例应用程序来收集传感器数据。
 * 如何将传感器数据发送到 IoT 中心。
 
-## <a name="what-you-need"></a>需要什么
+## <a name="what-you-need"></a>所需条件
 
-![需要什么](./media/iot-hub-raspberry-pi-kit-c-get-started/0-starter-kit.png)
+![所需条件](./media/iot-hub-raspberry-pi-kit-c-get-started/0-starter-kit.png)
 
 * Raspberry Pi 2 或 Raspberry Pi 3 电路板。
 * 一个有效的 Azure 订阅。 如果没有 Azure 帐户，只需几分钟时间就能[创建一个免费的 Azure 试用帐户](https://www.azure.cn/pricing/1rmb-trial/)。
 * 监视器、USB 键盘和连接到 Pi 的鼠标。
-* 运行 Windows 或 Linux 的 Mac 或电脑。
+* 运行 Windows 或 Linux 的 Mac 或 PC。
 * Internet 连接。
-* 16 GB 或更大容量的 microSD 卡。
+* 16 GB 或更大内存的 microSD 卡。
 * USB-SD 适配器或 microSD 卡，用于将操作系统映像刻录到 microSD 卡中。
 * 带有 6 英尺微型 USB 电缆的 5 伏 2 安电源。
 
-以下项可选：
+以下项是可选项：
 
 * 已装配的 Adafruit BME280 温度、压力和湿度传感器。
 * 试验板。
@@ -85,23 +85,23 @@ ms.locfileid: "68514469"
 
 1. 下载 Raspbian。
    1. [下载 Raspbian Stretch with Desktop](https://www.raspberrypi.org/downloads/raspbian/)（.zip 文件）。
-   1. 将 Raspbian 映像解压缩到计算机的某个文件夹中。
+   1. 将 Raspbian 映像提取到计算机上的一个文件夹中。
 1. 将 Raspbian 安装到 microSD 卡。
    1. [下载并安装 Etcher SD 卡刻录机实用工具](https://etcher.io/)。
-   1. 运行 Etcher 并选择已在步骤 1 中解压缩的 Raspbian 映像。
+   1. 运行 Etcher 并选择你在步骤 1 中提取的 Raspbian 映像。
    1. 选择 microSD 卡驱动器。 注意，Etcher 可能已选择了正确的驱动器。
    1. 单击“刷机”，将 Raspbian 安装到 microSD 卡。
-   1. 在安装完成后，从计算机中移除 microSD 卡。 可以安全地直接取出 microSD 卡，因为 Etcher 会在完成后自动弹出或卸载 microSD 卡。
-   1. 将 microSD 卡插入 Pi。
+   1. 在安装完成后，从计算机中移除 microSD 卡。 可以安全地直接移除 microSD 卡，因为在完成时 Etcher 会自动弹出或卸载 microSD 卡。
+   1. 将 microSD 卡插入到 Pi 中。
 
 ### <a name="enable-ssh-and-spi"></a>启用 SSH 和 SPI
 
 1. 将 Pi 连接到监视器、键盘和鼠标，启动 Pi，然后通过将 `pi` 用作用户名并将 `raspberry` 用作密码来登录 Raspbian。
-1. 依次单击 Raspberry 图标 >“首选项” > “Raspberry Pi 配置”。  
+1. 依次单击 Raspberry 图标 >“首选项”   > “Raspberry Pi 配置”  。
 
    ![Raspbian 首选项菜单](./media/iot-hub-raspberry-pi-kit-c-get-started/1-raspbian-preferences-menu.png)
 
-1. 在“接口”  选项卡上，将“SPI”  和“SSH”  设置为“启用”  ，然后单击“确定”  。 如果没有物理传感器，但希望使用模拟传感器数据，可选择执行此步骤。
+1. 在“接口”  选项卡上，将“SPI”  和“SSH”  设置为“启用”  ，并单击“确定”  。 如果没有物理传感器并且想要使用模拟的传感器数据，则此步骤是可选的。
 
    ![在 Raspberry Pi 上启用 SPI 和 SSH](./media/iot-hub-raspberry-pi-kit-c-get-started/2-enable-spi-ssh-on-raspberry-pi.png)
 
@@ -115,15 +115,15 @@ ms.locfileid: "68514469"
 
 ![Raspberry Pi 和传感器连接](./media/iot-hub-raspberry-pi-kit-c-get-started/3-raspberry-pi-sensor-connection.png)
 
-BME280 传感器可以收集温度和湿度数据。 如果设备和云之间有通信，LED 将闪烁。
+BME280 传感器可收集温度和湿度数据。 如果设备和云之间有通信，LED 将闪烁。
 
 对于传感器引脚，请使用以下接线：
 
-| 始端（传感器和 LED 灯）     | 结束（开发板）            | 线缆颜色   |
+| 启动（传感器和 LED 灯）     | 结束（开发板）            | 线缆颜色   |
 | -----------------------  | ---------------------- | ------------: |
 | LED VDD（引脚 5G）         | GPIO 4（引脚 7）         | 白线   |
 | LED GND（引脚 6G）         | GND（引脚 6）            | 黑线   |
-| VDD（引脚 18F）            | 3.3V 电源（引脚 17）      | 白线   |
+| VDD（引脚 18F）            | 3.3 伏 PWR（引脚 17）      | 白线   |
 | GND（引脚 20F）            | GND（引脚 20）           | 黑线   |
 | SCK（引脚 21F）            | SPI0 SCLK（引脚 23）     | 橙色电缆  |
 | SDO（引脚 22F）            | SPI0 MISO（引脚 21）     | 黄色电缆  |
@@ -138,7 +138,7 @@ BME280 传感器可以收集温度和湿度数据。 如果设备和云之间有
 
 ### <a name="connect-pi-to-the-network"></a>将 Pi 连接到网络
 
-使用 USB 微电缆和电源开启 Pi。 使用以太网电缆将 Pi 连接到有线网络，或者按照 [Raspberry Pi Foundation 中的说明](https://www.raspberrypi.org/learning/software-guide/wifi/)将 Pi 连接到无线网络。 将 Pi 成功连接到网络后，需要记下 [Pi 的 IP 地址](https://learn.adafruit.com/adafruits-raspberry-pi-lesson-3-network-setup/finding-your-pis-ip-address)。
+通过使用微型 USB 电缆和电源为 Pi 通电。 使用以太网电缆将 Pi 连接到有线网络，或者按照 [Raspberry Pi Foundation 中的说明](https://www.raspberrypi.org/learning/software-guide/wifi/)将 Pi 连接到无线网络。 将 Pi 成功连接到网络后，需要记下 [Pi 的 IP 地址](https://learn.adafruit.com/adafruits-raspberry-pi-lesson-3-network-setup/finding-your-pis-ip-address)。
 
 ![已连接到有线网络](./media/iot-hub-raspberry-pi-kit-c-get-started/5-power-on-pi.png)
 
@@ -203,7 +203,7 @@ BME280 传感器可以收集温度和湿度数据。 如果设备和云之间有
    > 确保将设备连接字符串复制并粘贴到单引号中。
    >
 
-应看到以下输出，其中显示传感器数据以及发送至 IoT 中心的消息。
+应看到以下输出，该输出显示传感器数据和发送到 IoT 中心的消息。
 
 ![输出 - 从 Raspberry Pi 发送到 IoT 中心的传感器数据](./media/iot-hub-raspberry-pi-kit-c-get-started/8-run-output.png)
 
@@ -215,7 +215,7 @@ BME280 传感器可以收集温度和湿度数据。 如果设备和云之间有
 
 ## <a name="next-steps"></a>后续步骤
 
-此时已运行示例应用程序，收集传感器数据并将其发送到 IoT 中心。
+此时已运行示例应用程序，以收集传感器数据并将其发送到 IoT 中心。
 
 [!INCLUDE [iot-hub-get-started-next-steps](../../includes/iot-hub-get-started-next-steps.md)]
 

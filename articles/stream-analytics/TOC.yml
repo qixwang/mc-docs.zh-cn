@@ -26,7 +26,7 @@
           href: stream-analytics-documentdb-output.md
     - name: 开窗函数
       href: stream-analytics-window-functions.md
-    - name: 兼容性级别
+    - name: 兼容级别
       href: stream-analytics-compatibility-level.md
     - name: 通用查询模式
       href: stream-analytics-stream-analytics-query-patterns.md
@@ -36,7 +36,7 @@
       href: stream-analytics-out-of-order-and-late-events.md
     - name: 检查点和重播
       href: stream-analytics-concepts-checkpoint-replay.md
-- name: 操作方法指南
+- name: 操作方式指南
   items:
     - name: 管理
       items:

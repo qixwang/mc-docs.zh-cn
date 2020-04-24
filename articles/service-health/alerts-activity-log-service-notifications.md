@@ -9,10 +9,10 @@ ms.topic: conceptual
 origin.date: 06/27/2019
 ms.date: 08/05/2019
 ms.openlocfilehash: 78aafa76f6be418b46e9e96d9cab220e48703a01
-ms.sourcegitcommit: 021dbf0003a25310a4c8582a998c17729f78ce42
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "68514493"
 ---
 # <a name="create-activity-log-alerts-on-service-notifications"></a>创建有关服务通知的活动日志警报
@@ -22,7 +22,7 @@ ms.locfileid: "68514493"
 
 服务运行状况通知存储在 [Azure 活动日志](../azure-monitor/platform/activity-logs-overview.md)中；鉴于活动日志中存储的信息量可能很大，因此有一个单独的用户界面，以便更轻松地查看和设置有关服务运行状况通知的警报。 
 
-当 Azure 将服务运行状况通知发送到 Azure 订阅时，可以收到警报。 可以基于以下内容配置警报：
+当 Azure 将服务运行状况通知发送到 Azure 订阅时，你可以收到警报。 可以基于以下内容配置警报：
 
 - 服务运行状况通知的类别（服务问题、计划内维护、运行状况公告）。
 - 受影响的订阅。
@@ -63,7 +63,7 @@ ms.locfileid: "68514493"
 > [!NOTE]
 > 此订阅用于保存活动日志警报。 警报资源部署到此订阅，并在其中监视活动日志事件。
 
-1. 选择要针对其发出警报的**事件类型**：“服务问题”  、“计划内维护”  和“运行状况公告”  
+1. 选择要针对其发出警报的**事件类型**：*服务问题*、*计划内维护*和*运行状况公告* 
 
 1. 通过输入**警报规则名称**和**说明**定义警报详细信息。
 

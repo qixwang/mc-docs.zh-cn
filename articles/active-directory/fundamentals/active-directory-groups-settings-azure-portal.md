@@ -15,11 +15,11 @@ ms.reviewer: krbain
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ca72635885e9480e44a472cd6ee5dc32a57ca834
-ms.sourcegitcommit: 2836cce46ecb3a8473dfc0ad2c55b1c47d2f0fad
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59355854"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63824096"
 ---
 # <a name="edit-your-group-information-using-azure-active-directory"></a>使用 Azure Active Directory 编辑组信息
 
@@ -28,21 +28,21 @@ ms.locfileid: "59355854"
 ## <a name="to-edit-your-group-settings"></a>编辑组设置
 1. 使用目录的全局管理员帐户登录到 [Azure 门户](https://portal.azure.cn)。
 
-2. 选择“Azure Active Directory”，然后选择“组”。
+2. 依次选择“Azure Active Directory”、“组”。  
 
-    此时会出现“组 - 所有组”页，其中显示了所有处于活动状态的组。
+    此时会出现“组 - 所有组”页，其中显示了所有处于活动状态的组。 
 
-3. 从“组 - 所有组”页面上，在“搜索”框中尽量完整地键入组名称。 对于本文而言，我们将搜索“MDM 策略 - 西部”组。
+3. 从“组 - 所有组”  页面上，在“搜索”  框中尽量完整地键入组名称。 对于本文而言，我们将搜索“MDM 策略 - 西部”  组。
 
-    搜索结果将显示在“搜索”框中，随着你键入更多的字符而进行更新。
+    搜索结果将显示在“搜索”  框中，随着你键入更多的字符而进行更新。
 
     ![“所有组”页面，其中的“搜索”框中具有搜索文本](./media/active-directory-groups-settings-azure-portal/search-for-specific-group.png)
 
-4. 选择“MDM 策略 - 西部”组，然后从“管理”区域中选择“属性”。
+4. 选择“MDM 策略 - 西部”  组，然后从“管理”区域中选择“属性”。  
 
     ![“组概述”页面，其中突出显示了“成员”选项和信息](./media/active-directory-groups-settings-azure-portal/group-overview-blade.png)
 
-5. 根据需要更新“常规设置”信息，包括：
+5. 根据需要更新“常规设置”  信息，包括：
 
     ![组的属性设置](./media/active-directory-groups-settings-azure-portal/group-properties-settings.png)
 
@@ -54,7 +54,7 @@ ms.locfileid: "59355854"
     
     - **成员身份类型。** 更改成员身份类型。 有关各种可用成员身份类型的详细信息，请参阅[如何：使用 Azure Active Directory 门户创建基本组并添加成员](active-directory-groups-create-azure-portal.md)。
     
-    - **对象 ID。** 无法更改对象 ID，但可以复制它以在用于组的 PowerShell 命令中使用。 有关 PowerShell cmdlet 的详细信息，请参阅[用于配置组设置的 Azure Active Directory cmdlet](../users-groups-roles/groups-settings-v2-cmdlets.md)。
+    - **对象 ID。** 无法更改对象 ID，但可以复制它以在用于组的 PowerShell 命令中使用。 有关使用 PowerShell cmdlet 的详细信息，请参阅[用于配置组设置的 Azure Active Directory cmdlet](../users-groups-roles/groups-settings-v2-cmdlets.md)。
 
 ## <a name="next-steps"></a>后续步骤
 这些文章提供了有关 Azure Active Directory 的更多信息。

@@ -10,10 +10,10 @@ ms.date: 06/29/2018
 ms.author: v-junlch
 ms.custom: include file
 ms.openlocfilehash: 77acf7813dd4243ac388f6e3cef7577174b4dc0d
-ms.sourcegitcommit: e9c62212a0d1df1f41c7f40eb58665f4f1eaffb3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "68912292"
 ---
 > [!NOTE]

@@ -15,11 +15,11 @@ origin.date: 10/13/2017
 ms.date: 02/26/2018
 ms.author: v-yiso
 ms.openlocfilehash: a456c1bb312e544e1d8fe42b1c7cd635a34445a9
-ms.sourcegitcommit: d75065296d301f0851f93d6175a508bdd9fd7afc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52644424"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63852372"
 ---
 # <a name="filter-response-content"></a>筛选响应内容
 
@@ -27,7 +27,7 @@ ms.locfileid: "52644424"
 
 ## <a name="policy"></a>策略
 
-将代码粘贴到“出站”块中。
+将代码粘贴到“出站”块中  。
 
 ```xml
 <!-- The policy defined in this file demonstrates how to filter data elements from the response payload based on the product associated with the request.

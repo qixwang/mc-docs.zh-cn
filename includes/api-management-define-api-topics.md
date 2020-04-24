@@ -1,3 +1,11 @@
+---
+ms.openlocfilehash: 11caa13e645dc62797e6b5e8a8ae57e295f98b3c
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63824657"
+---
 ## <a name="related-topics"></a>相关主题
 
 * [导入 OpenAPI 规范](../articles/api-management/import-api-from-oas.md)

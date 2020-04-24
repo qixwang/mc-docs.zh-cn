@@ -15,10 +15,10 @@ origin.date: 05/16/2018
 ms.date: 07/22/2019
 ms.author: v-yiso
 ms.openlocfilehash: c50a4c4515094e2cc102073046d60dfe68ebe5d0
-ms.sourcegitcommit: f4351979a313ac7b5700deab684d1153ae51d725
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "67845199"
 ---
 # <a name="submit-apache-hadoop-jobs-in-hdinsight"></a>在 HDInsight 中提交 Apache Hadoop 作业
@@ -31,14 +31,14 @@ ms.locfileid: "67845199"
 
   - [创建非交互式身份验证 .NET 应用程序](../hdinsight-create-non-interactive-authentication-dotnet-applications.md)
   - [使用 HDInsight .NET SDK 运行 Apache Hive 查询](apache-hadoop-use-hive-dotnet-sdk.md)
-  - [使用用于 HDInsight 中的 Apache Hadoop 的 .NET SDK 运行 Apache Sqoop 作业](apache-hadoop-use-sqoop-dotnet-sdk.md)
+  - [使用 HDInsight 中用于 Apache Hadoop 的 .NET SDK 运行 Apache Sqoop 作业](apache-hadoop-use-sqoop-dotnet-sdk.md)
   - [使用 HDInsight .NET SDK 运行 MapReduce 作业](apache-hadoop-use-mapreduce-dotnet-sdk.md)
 
 - curl  ：
 
-  - [使用 curl 通过 HDInsight 中的 Apache Hadoop 运行 Apache Hive 查询](apache-hadoop-use-hive-curl.md)
-  - [使用 curl 通过 HDInsight 中的 Apache Hadoop 运行 Apache Sqoop 作业](apache-hadoop-use-sqoop-curl.md)
-  - [使用 curl 通过 HDInsight 中的 Apache Hadoop 运行 MapReduce 作业](apache-hadoop-use-mapreduce-curl.md)
+  - [使用 Curl 通过 HDInsight 中的 Apache Hadoop 运行 Apache Hive 查询](apache-hadoop-use-hive-curl.md)
+  - [使用 Curl 通过 HDInsight 中的 Apache Hadoop 运行 Apache Sqoop 作业](apache-hadoop-use-sqoop-curl.md)
+  - [使用 Curl 通过 HDInsight 中的 Apache Hadoop 运行 MapReduce 作业](apache-hadoop-use-mapreduce-curl.md)
 
 - PowerShell  ：
 

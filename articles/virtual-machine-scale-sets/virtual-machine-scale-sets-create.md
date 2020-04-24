@@ -17,10 +17,10 @@ origin.date: 07/21/2017
 ms.date: 08/28/2017
 ms.author: v-haiqya
 ms.openlocfilehash: 1b7d132390ef0f767a0e0163a0cbd093570c25c2
-ms.sourcegitcommit: 5fc46672ae90b6598130069f10efeeb634e9a5af
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "67236469"
 ---
 # <a name="create-and-deploy-a-virtual-machine-scale-set"></a>创建和部署虚拟机规模集
@@ -33,7 +33,7 @@ ms.locfileid: "67236469"
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
-若要使用 Azure CLI 2.0 或 Azure PowerShell 创建规模集，首先需要登录到订阅。
+如果要使用 Azure CLI 2.0 或 Azure PowerShell 创建规模集，首先需要登录到订阅。
 
 有关如何使用 Azure CLI 或 PowerShell 安装、设置和登录到 Azure 的详细信息，请参阅 [Azure CLI 2.0 入门](/cli/get-started-with-azure-cli)或 [Azure PowerShell cmdlet 入门](https://docs.microsoft.com/powershell/azure/overview)。
 
@@ -61,12 +61,12 @@ New-AzureRmResourceGroup -Location chinanorth -Name MyResourceGroup1
 
 ## <a name="create-from-azure-cli"></a>从 Azure CLI 创建
 
-使用 Azure CLI，只需最少的工作量就可创建虚拟机规模集。 如果省略默认值，则将为你提供它们。 例如，如果未指定任何虚拟网络信息，系统会自动创建一个虚拟网络。 如果省略以下组成部分，系统会自动予以创建： 
+使用 Azure CLI，只需最少的工作量就可创建虚拟机规模集。 如果省略默认值，则将提供它们。 例如，如果未指定任何虚拟网络信息，将创建一个虚拟网络。 如果省略以下部分，则会创建它们： 
 - 负载均衡器
 - 虚拟网络
 - 公共 IP 地址
 
-选择要用于虚拟机规模集的虚拟机映像时，可以使用几个选项：
+选择要用于虚拟机规模集的虚拟机映像时，有几个选择：
 
 - URN  
 资源的标识符：  
@@ -90,7 +90,7 @@ HTTP URI 的路径：
 若要创建虚拟机规模集，必须指定以下各项：
 
 - 资源组 
-- Name
+- 名称
 - 操作系统映像
 - 身份验证信息 
 
@@ -100,7 +100,7 @@ HTTP URI 的路径：
 az vmss create --resource-group MyResourceGroup1 --name MyScaleSet --image UbuntuLTS --authentication-type password --admin-username azureuser --admin-password P@ssw0rd! --vm-sku Standard_DS1
 ```
 
-完成该命令后，即已创建虚拟机规模集。 可能需要获取虚拟机的 IP 地址，以便能够与它建立连接。 可以使用以下命令获取有关虚拟机的各种不同信息（包括 IP 地址）。 
+该命令完成后，虚拟机规模集就创建好了。 可能需要获取虚拟机的 IP 地址，以便可以连接到该虚拟机。 可以使用以下命令获取有关虚拟机的大量不同信息（包括 IP 地址）。 
 
 ```azurecli
 az vmss list-instance-connection-info --resource-group MyResourceGroup1 --name MyScaleSet
@@ -108,7 +108,7 @@ az vmss list-instance-connection-info --resource-group MyResourceGroup1 --name M
 
 ## <a name="create-from-powershell"></a>从 PowerShell 创建
 
-PowerShell 的用法比 Azure CLI 更复杂。 Azure CLI 为网络相关的资源（例如负载均衡器、IP 地址和虚拟网络）提供默认值，而 PowerShell 则不提供。 使用 PowerShell 引用映像也略微复杂一些。 可以使用以下 cmdlet 获取映像：
+PowerShell 的使用比 Azure CLI 更复杂。 Azure CLI 为网络相关资源（如负载均衡器、IP 地址和虚拟网络）提供默认值，而 PowerShell 则不提供。 使用 PowerShell 引用映像也稍微复杂一些。 可以使用以下 cmdlet 获取映像：
 
 1. Get-AzureRMVMImagePublisher
 2. Get-AzureRMVMImageOffer
@@ -133,15 +133,15 @@ MicrosoftRServer           RServer-WS2016 Enterprise
 ...
 ```
 
-用于创建虚拟机规模集的工作流如下：
+用于创建虚拟机规模集的工作流如下所示：
 
 1. 创建包含规模集相关信息的配置对象。
 2. 引用基本 OS 映像。
-3. 配置操作系统设置：身份验证、VM 名称前缀和用户/密码。
+3. 配置操作系统设置：身份验证、VM 名称前缀及用户/密码。
 4. 配置网络。
 5. 创建规模集。
 
-本示例为装有 Windows Server 2016 的计算机创建一个基本的双实例规模集。
+此示例为安装了 Windows Server 2016 的计算机创建基本 2 实例规模集。
 
 ```powershell
 # Resource group name from above
@@ -191,16 +191,16 @@ Set-AzureRmVmssStorageProfile -OsDiskCreateOption FromImage -ManagedDisk Premium
 
 ## <a name="create-from-a-template"></a>从模板创建
 
-可以使用 Azure Resource Manager 模板部署虚拟机规模集。 可以创建自己的模板，也可以使用[模板存储库](https://github.com/Azure/azure-quickstart-templates/?term=vmss)中的模板。 可以直接将这些模板部署到 Azure 订阅。
+可使用 Azure 资源管理器模板部署虚拟机规模集。 可以创建自己的模板，也可以使用[模板存储库](https://github.com/Azure/azure-quickstart-templates/?term=vmss)中的模板。 可以直接将这些模板部署到 Azure 订阅。
 
 >[!NOTE]
->若要创建自己的模板，请创建一个 JSON 文本文件。 有关如何创建和自定义模板的常规信息，请参阅 [Azure Resource Manager 模板](../azure-resource-manager/resource-group-authoring-templates.md)。
+>若要创建自己的模板，请创建 JSON 文本文件。 有关如何创建和自定义模板的常规信息，请参阅 [Azure 资源管理器模板](../azure-resource-manager/resource-group-authoring-templates.md)。
 
-[GitHub 上](https://github.com/gatneil/mvss/tree/minimum-viable-scale-set)提供了一个示例模板。 有关如何创建和使用该示例的详细信息，请参阅[最小的可行规模集](./virtual-machine-scale-sets-mvss-start.md)。
+[GitHub 上](https://github.com/gatneil/mvss/tree/minimum-viable-scale-set)提供了一个示例模板。 有关如何创建和使用该示例的详细信息，请参阅[最小可行规模集](./virtual-machine-scale-sets-mvss-start.md)。
 
 ## <a name="create-from-visual-studio"></a>从 Visual Studio 创建
 
-使用 Visual Studio 可以创建 Azure 资源组项目，并在其中添加虚拟机规模集模板。 可以选择是要从 GitHub 还是 Azure Web 应用程序库导入该模板。 还会生成部署 PowerShell 脚本。 有关详细信息，请参阅[如何使用 Visual Studio 创建虚拟机规模集](virtual-machine-scale-sets-vs-create.md)。
+使用 Visual Studio，可以创建 Azure 资源组项目，并向其添加虚拟机规模集模板。 可以选择是从 GitHub 还是从 Azure Web 应用程序库将其导入。 还会生成部署 PowerShell 脚本。 有关详细信息，请参阅[如何使用 Visual Studio 创建虚拟机规模集](virtual-machine-scale-sets-vs-create.md)。
 
 ## <a name="create-from-the-azure-portal"></a>从 Azure 门户中创建
 
@@ -208,7 +208,7 @@ Azure 门户提供了快速创建规模集的简便方式。 有关详细信息�
 
 ## <a name="next-steps"></a>后续步骤
 
-了解有关[数据磁盘](virtual-machine-scale-sets-attached-disks.md)的详细信息。
+详细了解[数据磁盘](virtual-machine-scale-sets-attached-disks.md)。
 
 了解如何[管理应用](virtual-machine-scale-sets-deploy-app.md)。
 

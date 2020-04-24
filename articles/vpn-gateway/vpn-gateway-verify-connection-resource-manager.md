@@ -17,11 +17,11 @@ origin.date: 05/16/2017
 ms.date: 10/01/2018
 ms.author: v-jay
 ms.openlocfilehash: 1c46cb0354007d560d0ab25a90a3c7820184aab8
-ms.sourcegitcommit: d75065296d301f0851f93d6175a508bdd9fd7afc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52661624"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63844699"
 ---
 # <a name="verify-a-vpn-gateway-connection"></a>验证 VPN 网关连接
 
@@ -33,7 +33,7 @@ ms.locfileid: "52661624"
 
 ## <a name="powershell"></a>PowerShell
 
-若要使用 PowerShell 验证 Resource Manager 部署模型的 VPN 网关连接，请安装最新版本的 [Azure Resource Manager PowerShell cmdlet](https://docs.microsoft.com/powershell/azure/overview)。
+若要使用 PowerShell 验证资源管理器部署模型的 VPN 网关连接，请安装最新版本的 [Azure 资源管理器 PowerShell cmdlet](https://docs.microsoft.com/powershell/azure/overview)。
 
 [!INCLUDE [PowerShell](../../includes/vpn-gateway-verify-connection-ps-rm-include.md)]
 

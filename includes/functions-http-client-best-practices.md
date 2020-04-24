@@ -6,11 +6,11 @@ origin.date: 09/04/2018
 ms.date: 11/21/2018
 ms.author: v-junlch
 ms.openlocfilehash: 2ef35d72318e63e2ac6b6d9a1eb2f72822508d80
-ms.sourcegitcommit: bfd0b25b0c51050e51531fedb4fca8c023b1bf5c
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52677015"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63828175"
 ---
 > [!TIP]
 >

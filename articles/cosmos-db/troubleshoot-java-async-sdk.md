@@ -11,10 +11,10 @@ ms.devlang: java
 ms.subservice: cosmosdb-sql
 ms.reviewer: sngun
 ms.openlocfilehash: 221a6ab84129ad6752a7daf709494773331cd5ef
-ms.sourcegitcommit: 71172ca8af82d93d3da548222fbc82ed596d6256
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/15/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "65668865"
 ---
 # <a name="troubleshoot-issues-when-you-use-the-java-async-sdk-with-azure-cosmos-db-sql-api-accounts"></a>排查将 Java 异步 SDK 与 Azure Cosmos DB SQL API 帐户配合使用时出现的问题
@@ -142,7 +142,7 @@ public void badCodeWithReadTimeoutException() throws Exception {
 ExecutorService ex  = Executors.newFixedThreadPool(30);
 Scheduler customScheduler = rx.schedulers.Schedulers.from(ex);
    ```
-   你可能会需要完成需耗费一定时间的工作，例如，计算工作量繁重的工作或阻塞性 IO。 在这种情况下，使用 `.observeOn(customScheduler)` API 将线程切换为 `customScheduler` 提供的辅助角色。
+   你可能会需要完成需耗费一定时间的工作，例如，计算工作量繁重的工作或阻塞性 IO。 在这种情况下，使用 `customScheduler` API 将线程切换为 `.observeOn(customScheduler)` 提供的辅助角色。
 ```java
 Observable<ResourceResponse<Document>> createObservable = client
         .createDocument(getCollectionLink(), docDefinition, null, false);
@@ -157,7 +157,7 @@ createObservable
 
 ### <a name="connection-pool-exhausted-issue"></a>连接池耗尽问题
 
-`PoolExhaustedException` 是客户端故障。 此故障表明应用工作负荷高于 SDK 连接池可以提供的工作负载。 增加连接池大小或将负载分发到多个应用。
+`PoolExhaustedException` 是客户端故障。 此故障表明应用工作负载高于 SDK 连接池可以提供的工作负载。 增加连接池大小或将负载分发到多个应用。
 
 ### <a name="request-rate-too-large"></a>请求速率过大
 此故障是服务器端故障。 它表明预配的吞吐量已用完。 请稍后重试。 如果经常遇到此故障，请考虑增加集合吞吐量。

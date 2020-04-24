@@ -9,10 +9,10 @@ origin.date: 09/24/2018
 ms.date: 06/28/2019
 ms.author: v-yeche
 ms.openlocfilehash: 04001bda89d3a50f8f89ffd4dd256f19db65ef03
-ms.sourcegitcommit: 7ad1a199e9f81de27b9098b50062ef059099f765
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "67461880"
 ---
 # <a name="office-365-control-plane-in-virtual-wan"></a>虚拟 WAN 中的 Office 365 控制平面

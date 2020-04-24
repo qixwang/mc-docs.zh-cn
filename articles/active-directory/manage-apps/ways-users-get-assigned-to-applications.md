@@ -17,10 +17,10 @@ ms.date: 07/04/2019
 ms.author: v-junlch
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 956cd1b54880ab0c74de0ee367ff961900953499
-ms.sourcegitcommit: 5f85d6fe825db38579684ee1b621d19b22eeff57
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "67568584"
 ---
 # <a name="how-to-assign-users-to-applications"></a>如何将用户分配给应用程序

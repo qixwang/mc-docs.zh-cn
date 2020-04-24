@@ -10,10 +10,10 @@ ms.date: 08/12/2019
 ms.author: v-yeche
 ms.custom: include file
 ms.openlocfilehash: 0a91e3e157f7564ec114366bf6703542d0a69c4e
-ms.sourcegitcommit: 8ac3d22ed9be821c51ee26e786894bf5a8736bfc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "68913032"
 ---
 ## <a name="premium-ssd"></a>高级·SSD

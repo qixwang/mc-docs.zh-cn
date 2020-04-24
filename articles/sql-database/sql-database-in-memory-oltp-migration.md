@@ -14,13 +14,13 @@ manager: digimobile
 origin.date: 11/07/2018
 ms.date: 02/25/2019
 ms.openlocfilehash: 3e5de3aa8cffb3231c8055e4eaaa95d209e0e00b
-ms.sourcegitcommit: 5ea744a50dae041d862425d67548a288757e63d1
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56663691"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63823416"
 ---
-# <a name="use-in-memory-oltp-to-improve-your-application-performance-in-sql-database"></a>使用内存中 OLTP 改善 SQL 数据库中应用程序的性能
+# <a name="use-in-memory-oltp-to-improve-your-application-performance-in-sql-database"></a>使用内存中 OLTP 改善 SQL 数据库中的应用程序性能
 
 [内存中 OLTP](sql-database-in-memory.md) 可以用来改善[高级和业务关键层](sql-database-service-tiers-vcore.md)数据库中事务处理、数据引入和暂时性数据方案的性能，而不需要提高定价层。 
 
@@ -32,30 +32,30 @@ ms.locfileid: "56663691"
 
 ## <a name="step-1-ensure-you-are-using-a-premium-and-business-critical-tier-database"></a>步骤 1：确保使用的是高级和业务关键层数据库
 
-只有高级和业务关键层数据库才支持内存中 OLTP。 如果返回的结果为 1（不是 0），则支持内存中 OLTP：
+只有高级和业务关键层数据库才支持内存中 OLTP。 如果返回的结果为 1（不是 0），则支持 In-Memory：
 
 ```
 SELECT DatabasePropertyEx(Db_Name(), 'IsXTPSupported');
 ```
 
-XTP 代表*极端事务处理*
+*XTP* 代表*极端事务处理*
 
 
 
 ## <a name="step-2-identify-objects-to-migrate-to-in-memory-oltp"></a>步骤 2：标识要迁移到 In-Memory OLTP 的对象
-SSMS 包含可以针对具有活动工作负荷的数据库运行的“事务性能分析概述”。 该报告识别要迁移到内存中 OLTP 的候选表和存储过程。
+SSMS 包含可以针对具有活动工作负荷的数据库运行的**事务性能分析概述**。 该报告识别要迁移到 In-Memory OLTP 的候选表和存储过程。
 
 若要在 SSMS 中生成报告，请执行以下操作：
 
-* 在“对象资源管理器”中，右键单击数据库节点。
-* 单击“报表” > “标准报表” > “事务性能分析概述”。
+* 在“对象资源管理器”  中，右键单击数据库节点。
+* 单击“报表”   > “标准报表”   > “事务能分析概述”  。
 
-有关详细信息，请参阅[确定是否应将某个表或存储过程移植到 In-Memory OLTP](https://msdn.microsoft.com/library/dn205133.aspx)。
+有关详细信息，请参阅[确定表或存储过程是否应移植到内存中 OLTP](https://msdn.microsoft.com/library/dn205133.aspx)
 
 ## <a name="step-3-create-a-comparable-test-database"></a>步骤 3：创建可比较的测试数据库
 假设报告指出数据库的某个表在转换成内存优化的表后会带来好处。 我们建议先进行测试，以确认这项指示。
 
-需要创建生产数据库的测试副本。 测试数据库应该位于与生产数据库相同的服务层级别。
+需要创建生产数据库的测试副本。 测试数据库应当位于与生产数据库相同的服务层级级别。
 
 为了简化测试，请按以下方式调整测试数据库：
 
@@ -78,12 +78,12 @@ SSMS 包含可以针对具有活动工作负荷的数据库运行的“事务性
 若要使用此迁移选项，请执行以下操作：
 
 1. 使用 SSMS 连接到测试数据库。
-2. 在“对象资源管理器”中，右键单击该表，然后单击“内存优化顾问”。
+2. 在“对象资源管理器”  中，右键单击该表，并单击“内存优化顾问”  。
    
-   * 此时将显示“表内存优化顾问”向导。
-3. 在向导中，单击“迁移验证”（或“下一步”按钮），查看该表是否包含任何在内存优化表中不受支持的功能。 有关详细信息，请参阅：
+   * 此时会显示“表内存优化顾问”  向导。
+3. 在向导中，单击“迁移验证”  （或“下一步”  按钮），以查看该表是否有任何在内存优化表中不受支持的功能。 有关详细信息，请参阅：
    
-   * [内存优化顾问中的](https://msdn.microsoft.com/library/dn284308.aspx)内存优化清单。
+   * *内存优化顾问中的*[内存优化清单](https://msdn.microsoft.com/library/dn284308.aspx)。
    * [内存中 OLTP 不支持的 Transact-SQL 构造](https://msdn.microsoft.com/library/dn246937.aspx)。
    * [迁移到内存中 OLTP](https://msdn.microsoft.com/library/dn247639.aspx)。
 4. 如果该表没有不受支持的功能，顾问可执行实际的架构和数据迁移。
@@ -95,7 +95,7 @@ SSMS 包含可以针对具有活动工作负荷的数据库运行的“事务性
 2. 获取表及其索引的完整 T-SQL 脚本。
    
    * 在 SSMS 中，右键单击表节点。
-   * 单击“编写表脚本为” > “创建到” > “新建查询窗口”。
+   * 单击“编写表脚本为”   > “创建到”   > “新建查询窗口”  。
 3. 在脚本窗口中，将 WITH (MEMORY_OPTIMIZED = ON) 添加到 CREATE TABLE 语句。
 4. 如果存在 CLUSTERED 索引，请将其更改为 NONCLUSTERED。
 5. 使用 SP_RENAME 重命名现有表。
@@ -117,7 +117,7 @@ In-Memory 功能还可以修改存储过程，以改善性能。
 * NATIVE_COMPILATION
 * SCHEMABINDING：表示除非丢弃存储过程，否则无法由存储过程以任何影响到存储过程的方式更改其列定义的表。
 
-本机模块必须使用一个大型 [ATOMIC 块](https://msdn.microsoft.com/library/dn452281.aspx)进行事务管理。 显式 BEGIN TRANSACTION 或 ROLLBACK TRANSACTION 没有角色。 如果你的代码检测到违反业务规则，它可以使用 [THROW](https://msdn.microsoft.com/library/ee677615.aspx) 语句终止 ATOMIC 块。
+本机模块必须使用一个大型 [ATOMIC 块](https://msdn.microsoft.com/library/dn452281.aspx)进行事务管理。 显式 BEGIN TRANSACTION 或 ROLLBACK TRANSACTION 没有角色。 如果代码检测到违反业务规则，它可以使用 [THROW](https://msdn.microsoft.com/library/ee677615.aspx) 语句终止原子块。
 
 ### <a name="typical-create-procedure-for-natively-compiled"></a>本机编译存储过程的典型 CREATE PROCEDURE
 创建本机编译存储过程的 T-SQL 通常类似于以下模板：
@@ -135,7 +135,7 @@ CREATE PROCEDURE schemaname.procedurename
         END;
 ```
 
-* 对于 TRANSACTION_ISOLATION_LEVEL，SNAPSHOT 是本机编译存储过程最常用的值。 但是，也支持其他值的子集：
+* 就 TRANSACTION_ISOLATION_LEVEL 而言，SNAPSHOT 是本机编译存储过程最常用的值。 但是，也支持其他值的子集：
   
   * REPEATABLE READ
   * SERIALIZABLE

@@ -15,11 +15,11 @@ origin.date: 10/13/2017
 ms.date: 02/26/2018
 ms.author: v-yiso
 ms.openlocfilehash: 6c52ff19996fd7fb1b4ac5656ead4f5b39e1ec21
-ms.sourcegitcommit: d75065296d301f0851f93d6175a508bdd9fd7afc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52643832"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63826491"
 ---
 # <a name="add-capabilities-to-a-backend-service"></a>向后端服务添加功能
 
@@ -27,7 +27,7 @@ ms.locfileid: "52643832"
 
 ## <a name="policy"></a>策略
 
-将代码粘贴到“入站”块中。
+将代码粘贴到“入站”块中  。
 
 ```xml
 <!-- The policy defined in this file shows how to use a few policies to add a capability to a backend service. -->

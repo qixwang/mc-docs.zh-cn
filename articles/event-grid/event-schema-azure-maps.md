@@ -9,10 +9,10 @@ origin.date: 02/08/2019
 ms.date: 06/03/2019
 ms.author: v-yiso
 ms.openlocfilehash: 4342322a55e32d1717b9fdfcf23911c4cdbe974f
-ms.sourcegitcommit: 5a57f99d978b78c1986c251724b1b04178c12d8c
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/24/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "66195220"
 ---
 # <a name="azure-event-grid-event-schema-for-azure-maps"></a>Azure Maps 的 Azure 事件网格事件架构
@@ -103,66 +103,66 @@ Azure Maps 帐户发出以下事件类型：
 
 事件具有以下顶级数据：
 
-| 属性 | 类型 | 说明 |
+| properties | 类型 | 说明 |
 | -------- | ---- | ----------- |
 | 主题 | 字符串 | 事件源的完整资源路径。 此字段不可写入。 事件网格提供此值。 |
 | subject | 字符串 | 事件主题的发布者定义路径。 |
 | eventType | 字符串 | 此事件源的一个注册事件类型。 |
 | EventTime | 字符串 | 基于提供程序 UTC 时间的事件生成时间。 |
 | id | 字符串 | 事件的唯一标识符。 |
-| 数据 | object | 地理围栏事件数据。 |
+| data | 对象 (object) | 地理围栏事件数据。 |
 | dataVersion | 字符串 | 数据对象的架构版本。 发布者定义架构版本。 |
 | metadataVersion | 字符串 | 事件元数据的架构版本。 事件网格定义顶级属性的架构。 事件网格提供此值。 |
 
 数据对象具有以下属性：
 
-| 属性 | 类型 | 说明 |
+| properties | 类型 | 说明 |
 | -------- | ---- | ----------- |
 | apiCategory | 字符串 | 事件的 API 类别。 |
 | apiName | 字符串 | 事件的 API 名称。 |
-| issues | object | 列出处理过程中遇到的问题。 如果返回了任何问题，则不会随响应一起返回几何图形。 |
-| responseCode | number | HTTP 响应代码 |
-| geometries | object | 列出围栏几何图形，这些几何图形包含坐标位置，或者覆盖该位置周围的 searchBuffer。 |
+| issues | 对象 (object) | 列出处理过程中遇到的问题。 如果返回了任何问题，则不会随响应一起返回几何图形。 |
+| responseCode | 数字 | HTTP 响应代码 |
+| geometries | 对象 (object) | 列出围栏几何图形，这些几何图形包含坐标位置，或者覆盖该位置周围的 searchBuffer。 |
 
 当 Maps API 中发生错误时，将返回 error 对象。 error 对象具有以下属性：
 
-| 属性 | 类型 | 说明 |
+| properties | 类型 | 说明 |
 | -------- | ---- | ----------- |
 | error | ErrorDetails |当 Maps API 中发生错误时，将返回此对象  |
 
 当 Maps API 中发生错误时，将返回 ErrorDetails 对象。 ErrorDetails 对象具有以下属性：
 
-| 属性 | 类型 | 说明 |
+| properties | 类型 | 说明 |
 | -------- | ---- | ----------- |
-| code | 字符串 | HTTP 状态代码。 |
+| 代码 | 字符串 | HTTP 状态代码。 |
 | message | 字符串 | 在适用的情况下，将提供该错误的用户可读说明。 |
 | innererror | InnerError | 在适用的情况下，将提供一个包含有关该错误的特定于服务的信息的对象。 |
 
 InnerError 是包含有关该错误的特定于服务的信息的对象。 InnerError 对象具有以下属性： 
 
-| 属性 | 类型 | 说明 |
+| properties | 类型 | 说明 |
 | -------- | ---- | ----------- |
-| code | 字符串 | 错误消息。 |
+| 代码 | 字符串 | 错误消息。 |
 
 几何图形对象，其中列出了相对于请求中用户时间已过期的地理围栏的几何图形 ID。 geometries 对象包含具有以下属性的几何图形项： 
 
-| 属性 | 类型 | 说明 |
+| properties | 类型 | 说明 |
 |:-------- |:---- |:----------- |
 | deviceid | 字符串 | 设备的 ID。 |
 | distance | 字符串 | <p>从坐标到最近的地理围栏边界的距离。 正值表示坐标在地理围栏的外部。 如果坐标在地理围栏外部，但大于 searchBuffer 与最近地理围栏边界之间的距离值，则该值为 999。 负值表示坐标在地理围栏的内部。 如果坐标在多边形的内部，但大于 searchBuffer 与最近地理围栏边界之间的距离值，则该值为 -999。 值 999 表示坐标位于地理围栏外部的置信度很高。 值 -999 表示坐标位于地理围栏内部的置信度很高。<p> |
 | geometryid |字符串 | 用于标识地理围栏几何图形的唯一 ID。 |
-| nearestlat | number | 最近几何图形点的纬度。 |
-| nearestlon | number | 最近几何图形点的经度。 |
+| nearestlat | 数字 | 最近几何图形点的纬度。 |
+| nearestlon | 数字 | 最近几何图形点的经度。 |
 | udId | 字符串 | 上传地理围栏时由用户上传服务返回的唯一 ID。 不会包含地理围栏 POST API 中。 |
 
 数据对象具有以下属性：
 
-| 属性 | 类型 | 说明 |
+| properties | 类型 | 说明 |
 | -------- | ---- | ----------- |
 | expiredGeofenceGeometryId | string[] | 相对于请求中用户时间已过期的地理围栏的几何图形 ID 列表。 |
 | geometries | geometries[] |列出围栏几何图形，这些几何图形包含坐标位置，或者覆盖该位置周围的 searchBuffer。 |
 | invalidPeriodGeofenceGeometryId | string[]  | 相对于请求中用户时间处于失效期的地理围栏的几何图形 ID 列表。 |
-| isEventPublished | 布尔值 | 如果至少已将一个事件发布到 Azure Maps 事件订阅服务器，则为 true；如果未将任何事件发布到 Azure Maps 事件订阅服务器，则为 false。 |
+| isEventPublished | boolean | 如果至少已将一个事件发布到 Azure Maps 事件订阅服务器，则为 true；如果未将任何事件发布到 Azure Maps 事件订阅服务器，则为 false。 |
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 08/07/2019
 ms.author: v-junlch
 ms.openlocfilehash: 7ad003bcb3e77a9f897a6c55d5f1b9698d4e9de6
-ms.sourcegitcommit: e9c62212a0d1df1f41c7f40eb58665f4f1eaffb3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "68912294"
 ---
 .NET 应用程序可以使用 **StackExchange.Redis** 缓存客户端，可使用 NuGet 包在 Visual Studio 中进行配置，以简化缓存客户端应用程序的配置。 
@@ -18,7 +18,7 @@ ms.locfileid: "68912294"
 >
 >
 
-如果要使用 StackExchange.Redis NuGet 包配置客户端应用程序，请在“解决方案资源管理器”中右键单击项目，并选择“管理 NuGet 包”。   
+要使用 StackExchange.Redis NuGet 包配置客户端应用程序，请在“解决方案资源管理器”中右键单击项目，并选择“管理 NuGet 包”。   
 
 ![管理 NuGet 包](./media/redis-cache-configure-stackexchange-redis-nuget/redis-cache-manage-nuget-menu.png)
 

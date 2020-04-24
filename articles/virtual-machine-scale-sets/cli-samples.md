@@ -18,11 +18,11 @@ ms.date: 02/12/2019
 ms.author: v-junlch
 ms.custom: mvc
 ms.openlocfilehash: bb41480eda7a08b95812264151b33426aa9ef163
-ms.sourcegitcommit: 24dd5964eafbe8aa4badbca837c2a1a7836f2df7
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56101567"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63826527"
 ---
 # <a name="azure-cli-samples-for-virtual-machine-scale-sets"></a>用于虚拟机规模集的 Azure CLI 示例
 

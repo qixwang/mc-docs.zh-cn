@@ -15,11 +15,11 @@ origin.date: 10/13/2017
 ms.date: 02/26/2018
 ms.author: v-yiso
 ms.openlocfilehash: dc83398160b27f8c10dfc52b4569a2060ac373d4
-ms.sourcegitcommit: d75065296d301f0851f93d6175a508bdd9fd7afc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52655398"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63847001"
 ---
 # <a name="set-response-cache-duration"></a>设置响应缓存持续时间
 
@@ -27,7 +27,7 @@ ms.locfileid: "52655398"
 
 ## <a name="policy"></a>策略
 
-将代码粘贴到“入站”块中。
+将代码粘贴到“入站”块中  。
 
 ```xml
 <!-- This snippet demonstrates how to set response cache duration using maxAge value in Cache-Control header sent by the backend. -->

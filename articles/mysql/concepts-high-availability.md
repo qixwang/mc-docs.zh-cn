@@ -8,11 +8,11 @@ ms.topic: conceptual
 origin.date: 02/01/2019
 ms.date: 02/25/2019
 ms.openlocfilehash: 8b8b6e726306ea1e1410692871f671ce284e52bc
-ms.sourcegitcommit: 5ea744a50dae041d862425d67548a288757e63d1
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56663507"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63856668"
 ---
 # <a name="high-availability-concepts-in-azure-database-for-mysql"></a>Azure Database for MySQL 中的高可用性概念
 

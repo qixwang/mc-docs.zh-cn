@@ -10,10 +10,10 @@ origin.date: 07/03/2019
 ms.date: 07/22/2019
 ms.author: v-jay
 ms.openlocfilehash: 686a9bf71941c812f029926191c51d5ef0d29f63
-ms.sourcegitcommit: 98cc8aa5b8d0e04cd4818b34f5350c72f617a225
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "68298240"
 ---
 # <a name="tutorial-use-the-data-copy-service-to-copy-data-into-azure-data-box-heavy-preview"></a>教程：使用数据复制服务将数据复制到 Azure Data Box Heavy（预览版）
@@ -68,7 +68,7 @@ ms.locfileid: "68298240"
     |**复制文件匹配模式**    | 可按以下两种方式输入文件名匹配模式：<ul><li>**使用通配符表达式：** 通配符表达式中仅支持 `*` 和 `?`。 例如，表达式 `*.vhd` 匹配扩展名为 `.vhd` 的所有文件。 类似地，`*.dl?` 匹配扩展名为 `.dl` 或以 `.dl` 开头的所有文件，例如 `.dll`。 同理，`*foo` 匹配名称以 `foo` 结尾的所有文件。<br>可以直接在该字段中输入通配符表达式。 默认情况下，在该字段中输入的值被视为通配符表达式。</li><li>**使用正则表达式：** 支持基于 POSIX 的正则表达式。 例如，正则表达式 `.*\.vhd` 匹配扩展名为 `.vhd` 的所有文件。 对于正则表达式，请直接提供 `<pattern>` 作为 `regex(<pattern>)`。 有关正则表达式的详细信息，请转到[正则表达式语言 - 快速参考](https://docs.microsoft.com/dotnet/standard/base-types/regular-expression-language-quick-reference)。</li><ul>|
     |**文件优化**              |启用此功能后，引入期间会打包小于 1 MB 的文件。 打包可以加快小型文件的数据复制速度。 如果文件数远远超出目录数，则打包还可以显著节省时间。        |
  
-4. 选择“启动”。  随后会验证输入，如果验证成功，则启动某个作业。 启动该作业可能需要花费几分钟时间。
+4. 选择“开始”  。 随后会验证输入，如果验证成功，则启动某个作业。 启动该作业可能需要花费几分钟时间。
 
     ![从“配置作业并启动”对话框启动作业](media/data-box-deploy-copy-data-via-copy-service/configure-and-start.png)
 
@@ -112,7 +112,7 @@ ms.locfileid: "68298240"
 
 6. 当作业正在进行时，在“复制数据”页上： 
 
-    - 在“状态”列中，可以查看复制作业的状态。  状态可能是：
+    - 在“状态”列中，可以查看复制作业的状态。  状态可以为：
         - **正在运行**
         - 失败 
         - 成功 

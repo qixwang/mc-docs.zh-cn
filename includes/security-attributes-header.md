@@ -6,10 +6,10 @@ origin.date: 04/17/2019
 ms.date: 07/22/2019
 ms.author: v-yeche
 ms.openlocfilehash: 9099090683fae2ac4934b66d239a815f067dca32
-ms.sourcegitcommit: 17cd5461e7d99f40b9b1fc5f1d579f82b2e27be9
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "68818840"
 ---
 安全属性是 Azure 服务的质量或功能。 它有助于服务预防、检测和响应安全漏洞。

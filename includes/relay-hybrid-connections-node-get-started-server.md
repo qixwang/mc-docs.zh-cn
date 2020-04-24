@@ -1,3 +1,11 @@
+---
+ms.openlocfilehash: fa5d08e0010e93a7cc6094ab049420bb4c755045
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63860532"
+---
 ### <a name="create-a-nodejs-application"></a>创建 Node.js 应用程序
 * 创建一个名为 `listener.js` 的新 JavaScript 文件。
 
@@ -5,7 +13,7 @@
 * 从项目文件夹中的 Node 命令提示符运行 `npm install hyco-ws`。
 
 ### <a name="write-some-code-to-receive-messages"></a>编写一些代码来接收消息
-1. 在 `listener.js` 文件的顶部，添加以下`constant`。
+1. 在 `constant` 文件的顶部，添加以下`listener.js`。
    
     ```js
     const WebSocket = require('hyco-ws');

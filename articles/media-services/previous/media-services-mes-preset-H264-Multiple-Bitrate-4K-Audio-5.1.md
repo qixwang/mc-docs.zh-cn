@@ -1,6 +1,6 @@
 ---
 title: 264 多比特率 4K Audio 5.1 | Microsoft 文档
-description: 本主题概述了“264 多比特率 4K Audio 5.1”任务预设。
+description: 本主题概述了“264 多比特率 4K Audio 5.1”任务预设  。
 author: WenJason
 manager: digimobile
 editor: ''
@@ -16,18 +16,18 @@ origin.date: 03/18/2019
 ms.date: 04/01/2019
 ms.author: v-jay
 ms.openlocfilehash: fb59f4144f6f29bfcbecde3c876b91e5a0dcbdbb
-ms.sourcegitcommit: 2d43e48f4c80e085e628e83822eeaa38f62d1cb2
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58624140"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63803003"
 ---
-# <a name="h264-multiple-bitrate-4k-audio-51"></a>H264 多比特率 4K 音频 5.1
-`Media Encoder Standard` 定义一组可在创建编码作业时使用的编码预设。 可以使用 `preset name` 指定编码媒体文件采用的格式。 也可以创建自己的 JSON 或基于 XML 的预设（使用 UTF-8 或 UTF-16 编码）。 然后，将自定义预设传递到编码器。 有关此 `Media Encoder Standard` 编码器支持的所有预设名称的列表，请参阅 [Media Encoder Standard 的任务预设](media-services-mes-presets-overview.md)。  
+# <a name="h264-multiple-bitrate-4k-audio-51"></a>H264 多比特率 4K Audio 5.1
+`Media Encoder Standard` 定义了一组在创建编码作业时可使用的编码预设。 可以使用 `preset name` 指定编码媒体文件采用的格式。 也可以创建自己的 JSON 或基于 XML 的预设（使用 UTF-8 或 UTF-16 编码）。 然后，将自定义预设传递到编码器。 有关此 `Media Encoder Standard` 编码器支持的所有预设名称的列表，请参阅 [Media Encoder Standard 的任务预设](media-services-mes-presets-overview.md)。  
   
- 本主题演示 XML 和 JSON 格式的 `H264 Multiple Bitrate 4K Audio 5.1` 预设。  
+ 本主题介绍 XML 和 JSON 格式的 `H264 Multiple Bitrate 4K Audio 5.1` 预设。  
   
- 此预设生成一组 12 个 GOP 对齐的 MP4 文件，范围为 20000 kbps - 1000 kbps，以及 AAC 5.1 音频。 若要深入了解此预设的配置文件、比特率、采样率等，请检查下面定义的 XML 或 JSON。 有关每个元素的含义及其有效值的说明，请参阅 [Media Encoder Standard 架构](media-services-mes-schema.md)。  
+ 此预设产生一组 12 GOP 对齐的 MP4 文件，范围从 20000 kbps 到 1000 kbps，以及 AAC 5.1 音频。 有关此预设的配置文件、比特率、采样率等的详细信息，请观察下面定义的 XML 或 JSON。 有关每个元素的含义及其有效值的说明，请参阅 [Media Encoder Standard 架构](media-services-mes-schema.md)。  
   
 > [!NOTE]
 >  应当会获得采用 4K 编码的“高级”预留单位类型。 有关详细信息，请参阅[如何缩放编码](/media-services/media-services-scale-media-processing-overview)。  

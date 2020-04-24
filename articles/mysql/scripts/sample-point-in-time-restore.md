@@ -13,11 +13,11 @@ ms.custom: mvc
 origin.date: 02/28/2018
 ms.date: 08/27/2018
 ms.openlocfilehash: 14c5a47e541748cecb4cf8b87038ae4d82591df0
-ms.sourcegitcommit: e96e0c91b8c3c5737243f986519104041424ddd5
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53806188"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63860779"
 ---
 # <a name="restore-an-azure-database-for-mysql-server-using-azure-cli"></a>使用 Azure CLI 还原 Azure Database for MySQL 服务器
 
@@ -75,5 +75,5 @@ az group delete --name myresource
 | [az group delete](/cli/group#az-group-delete) | 删除资源组，包括所有嵌套的资源。 |
 
 ## <a name="next-steps"></a>后续步骤
-- 阅读有关 Azure CLI 的更多信息：[Azure CLI 文档](/cli)。
-- 请尝试其他脚本：[用于 MySQL 的 Azure 数据库的 Azure CLI 示例](../sample-scripts-azure-cli.md)
+- 有关 Azure CLI 的详细信息，请参阅 [Azure CLI 文档](/cli)。
+- 尝试其他脚本：[Azure Database for MySQL 的 Azure CLI 示例](../sample-scripts-azure-cli.md)

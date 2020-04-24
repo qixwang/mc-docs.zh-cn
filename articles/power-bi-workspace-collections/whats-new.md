@@ -12,18 +12,18 @@ origin.date: 09/20/2017
 ms.date: 11/30/2018
 ms.author: v-junlch
 ms.openlocfilehash: 8d6da85e6b7059a340c77b5675b267f2792f873f
-ms.sourcegitcommit: 5f2849d5751cb634f1cdc04d581c32296e33ef1b
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53028744"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63825934"
 ---
 # <a name="whats-new-in-power-bi-workspace-collections"></a>Power BI 工作区集合中的新增功能
 
 定期发布 **Power BI 工作区集合**更新。 但是，并非每个版本都包括面向用户的新功能；某些版本聚焦于后端的服务功能。 此处将重点介绍面向用户的新功能。
 
 > [!IMPORTANT]
-> Power BI 工作区集合已弃用，到 2018 年 6 月或合同指示时可用。 建议你规划到 Power BI Embedded 的迁移以避免应用程序中断。 有关如何将数据迁移到 Power BI Embedded 的信息，请参阅[如何将 Power BI 工作区集合内容迁移到 Power BI Embedded](https://powerbi.microsoft.com/documentation/powerbi-developer-migrate-from-powerbi-embedded/)。
+> Power BI 工作区集合已弃用，到 2018 年 6 月 或合同指示时可用。 建议你规划到 Power BI Embedded 的迁移以避免应用程序中断。 有关如何将数据迁移到 Power BI Embedded 的信息，请参阅[如何将 Power BI 工作区集合内容迁移到 Power BI Embedded](https://powerbi.microsoft.com/documentation/powerbi-developer-migrate-from-powerbi-embedded/)。
 
 ## <a name="march-2017"></a>2017 年 3 月
 

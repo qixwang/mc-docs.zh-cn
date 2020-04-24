@@ -14,10 +14,10 @@ origin.date: 01/12/2018
 ms.date: 07/08/2019
 ms.author: v-jay
 ms.openlocfilehash: d54909a5e5a6b23092e26d9c253b3f5d839bccc6
-ms.sourcegitcommit: 5191c30e72cbbfc65a27af7b6251f7e076ba9c88
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "67570545"
 ---
 # <a name="execute-wait-activity-in-azure-data-factory"></a>在 Azure 数据工厂中执行等待活动
@@ -38,7 +38,7 @@ ms.locfileid: "67570545"
 
 ## <a name="type-properties"></a>Type 属性
 
-属性 | 说明 | 允许的值 | 必须
+properties | 说明 | 允许的值 | 必选
 -------- | ----------- | -------------- | --------
 name | `Wait` 活动的名称。 | String | 是
 type | 必须被设置为 **Wait**。 | String | 是
@@ -50,7 +50,7 @@ waitTimeInSeconds | 管道在继续进行处理前所等待的秒数。 | Intege
 > 本部分提供运行管道的 JSON 定义和示例 PowerShell 命令。 有关使用 Azure PowerShell 和 JSON 定义创建数据工厂管道的分步说明演练，请参阅[教程：使用 Azure PowerShell 创建数据工厂](quickstart-create-data-factory-powershell.md)。
 
 ### <a name="pipeline-with-wait-activity"></a>等待活动的管道
-在此示例中，管道包含两个活动：**Until** 和 **Wait**。 等待活动被配置为等待 1 秒。 管道循环运行 Web 活动，在每次运行之间等待 1 秒。 
+在此示例中，管道具有两个活动：**Until** 和 **Wait**。 等待活动被配置为等待 1 秒。 管道循环运行 Web 活动，在每次运行之间等待 1 秒。 
 
 ```json
 {

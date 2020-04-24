@@ -16,11 +16,11 @@ origin.date: 04/14/2017
 ms.date: 02/27/2019
 ms.author: v-junlch
 ms.openlocfilehash: 5b93b5ffb0a61a4565c04a68563d643222626d29
-ms.sourcegitcommit: 1e5ca29cde225ce7bc8ff55275d82382bf957413
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56902979"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63821638"
 ---
 # <a name="azure-cli-samples-for-azure-cache-for-redis"></a>Azure CLI 的 Azure Redis 缓存示例
 
@@ -30,8 +30,8 @@ ms.locfileid: "56902979"
 |---|---|
 |**创建缓存**||
 | [创建缓存](./scripts/create-cache.md) | 创建资源组和基本层 Azure Redis 缓存。 |
-| [创建具有群集功能的高级缓存](./scripts/create-premium-cache-cluster.md) | 创建资源组以及启用群集功能的高级层缓存。|
-| [获取缓存详细信息](./scripts/show-cache.md) | 获取 Azure Redis 缓存实例的详细信息，包括预配状态。 |
+| [使用群集创建高级缓存](./scripts/create-premium-cache-cluster.md) | 通过启用群集来创建资源组和高级层缓存。|
+| [获取缓存的详细信息](./scripts/show-cache.md) | 获取 Azure Redis 缓存实例的详细信息，包括预配状态。 |
 | [获取主机名、端口和密钥](./scripts/cache-keys-ports.md) | 获取 Azure Redis 缓存实例的主机名、端口和密钥。 |
 |**Web 应用和缓存**||
 | [将 Web 应用连接到 Azure Redis 缓存](../app-service/scripts/cli-connect-to-redis.md) | 创建 Azure Web 应用和 Azure Redis 缓存，然后将 Redis 连接详细信息添加到应用设置。 |

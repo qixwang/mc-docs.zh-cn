@@ -16,11 +16,11 @@ origin.date: 09/28/2017
 ms.date: 07/18/2018
 ms.author: v-junlch
 ms.openlocfilehash: 5d4c0f8264747b9d3d3a0f95b26e00a3a9519e53
-ms.sourcegitcommit: d75065296d301f0851f93d6175a508bdd9fd7afc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52666942"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63829670"
 ---
 # <a name="pause-and-start-your-power-bi-embedded-capacity-in-the-azure-portal"></a>在 Azure 门户中暂停和启动 Power BI Embedded 容量
 
@@ -37,7 +37,7 @@ ms.locfileid: "52666942"
 
 1. 登录到 [Azure 门户](https://portal.azure.cn/)。
 
-2. 选择“所有服务” > “Power BI Embedded”以查看容量。
+2. 选择“所有服务”   > “Power BI Embedded”  以查看容量。
 
     ![Azure 门户中的“所有服务”](./media/pause-start/azure-portal-more-services.png)
 
@@ -45,11 +45,11 @@ ms.locfileid: "52666942"
 
     ![Azure 门户中的 Power BI Embedded 容量列表](./media/pause-start/azure-portal-capacity-list.png)
 
-4. 在容量详细信息中选择“暂停”。
+4. 在容量详细信息中选择“暂停”  。
 
     ![暂停容量](./media/pause-start/azure-portal-pause-capacity.png)
 
-5. 选择“是”，这可确认要暂停容量。
+5. 选择“是”  ，这可确认要暂停容量。
 
     ![确认暂停](./media/pause-start/azure-portal-confirm-pause.png)
 
@@ -59,7 +59,7 @@ ms.locfileid: "52666942"
 
 1. 登录到 [Azure 门户](https://portal.azure.cn/)。
 
-2. 选择“所有服务” > “Power BI Embedded”以查看容量。
+2. 选择“所有服务”   > “Power BI Embedded”  以查看容量。
 
     ![Azure 门户中的“所有服务”](./media/pause-start/azure-portal-more-services.png)
 
@@ -67,11 +67,11 @@ ms.locfileid: "52666942"
 
     ![Azure 门户中的 Power BI Embedded 容量列表](./media/pause-start/azure-portal-capacity-list.png)
 
-4. 在容量详细信息中选择“启动”。
+4. 在容量详细信息中选择“启动”  。
 
     ![启动容量](./media/pause-start/azure-portal-start-capacity.png)
 
-5. 选择“是”，这可确认要启动容量。
+5. 选择“是”  ，这可确认要启动容量。
 
     ![确认启动](./media/pause-start/azure-portal-confirm-start.png)
 
@@ -83,5 +83,5 @@ ms.locfileid: "52666942"
 
 若要开始在应用程序中嵌入 Power BI 内容，请参阅[如何嵌入 Power BI 仪表板、报表和磁贴](https://powerbi.microsoft.com/documentation/powerbi-developer-embedding-content/)。
 
-有更多问题？ [尝试在 Power BI 社区中提问](http://community.powerbi.com/)
+更多疑问？ [尝试在 Power BI 社区中提问](http://community.powerbi.com/)
 

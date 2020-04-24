@@ -7,14 +7,14 @@ manager: digimobile
 ms.service: site-recovery
 ms.topic: article
 origin.date: 11/27/2018
-ms.date: 01/21/2019
+ms.date: 04/22/2019
 ms.author: v-yeche
-ms.openlocfilehash: ba48ef508b944a2ca0f7132a77521a3388f249e5
-ms.sourcegitcommit: 26957f1f0cd708f4c9e6f18890861c44eb3f8adf
+ms.openlocfilehash: 0bf936e93b59cfdaada9ce706c706dc4943b7561
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54363565"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63826939"
 ---
 # <a name="set-up-a-process-server-in-azure-for-failback"></a>在 Azure 中设置进程服务器以便进行故障回复
 
@@ -28,16 +28,16 @@ ms.locfileid: "54363565"
 
 ## <a name="deploy-a-process-server-in-azure"></a>在 Azure 中部署进程服务器
 
-1. 在保管库 >“Site Recovery 基础结构”> “管理” > “配置服务器”中，选择配置服务器。
-2. 在服务器页中，单击“+ 进程服务器”
-3. 在“添加进程服务器”页中，选择在 Azure 中部署进程服务器。
+1. 在保管库 >“Site Recovery 基础结构”  > “管理”   > “配置服务器”  中，选择配置服务器。
+2. 在服务器页中，单击“+ 进程服务器” 
+3. 在“添加进程服务器”  页中，选择在 Azure 中部署进程服务器。
 4. 指定 Azure 设置，包括用于故障转移的订阅、资源组、用于故障转移的 Azure 区域以及 Azure VM 所位于的虚拟网络。 如果使用多个 Azure 网络，则需要在每个 Azure 网络中部署进程服务器。
 
     ![添加进程服务器库项](./media/vmware-azure-set-up-process-server-azure/add-ps-page-1.png)
 
 4. 在**服务器名称**、**用户名**和**密码**中指定进程服务器的名称以及将为其分配服务器上的管理员权限的凭据。
 5. 指定要用于服务器 VM 磁盘的存储帐户、进程服务器 VM 将位于的子网以及 VM 启动时将分配的服务器 IP 地址。
-6. 单击“确定”按钮开始部署进程服务器 VM。
+6. 单击“确定”  按钮开始部署进程服务器 VM。
 
 ## <a name="registering-the-process-server-running-in-azure-to-a-configuration-server-running-on-premises"></a>将进程服务器（在 Azure 中运行）注册到配置服务器（在本地运行）
 

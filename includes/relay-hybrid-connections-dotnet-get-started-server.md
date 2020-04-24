@@ -1,14 +1,22 @@
+---
+ms.openlocfilehash: 445cd381ec5f39b1f4f37c7daf4e29141f417626
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63847083"
+---
 ### <a name="create-a-console-application"></a>创建控制台应用程序
 
 在 Visual Studio 中创建新的**控制台应用 (.NET Framework)** 项目。
 
 ### <a name="add-the-relay-nuget-package"></a>添加中继 NuGet 包
 
-1. 右键单击新创建的项目，然后选择“管理 NuGet 包”。
-2. 选择“包括预发行版”选项。 
-3. 选择“浏览”，然后搜索 **Microsoft.Azure.Relay**。 在搜索结果中，选择“Microsoft Azure 中继”。
+1. 右键单击新创建的项目，然后选择“管理 NuGet 包”  。
+2. 选择“包括预发行版”选项。  
+3. 选择“浏览”，然后搜索 **Microsoft.Azure.Relay**。  在搜索结果中，选择“Microsoft Azure 中继”。 
 4. 对于版本，选择 **2.0.0-preview1-20180523**。 
-5. 选择“安装”即可完成安装。 关闭对话框。
+5. 选择“安装”  即可完成安装。 关闭对话框。
 
 ### <a name="write-code-to-receive-messages"></a>编写接收消息的代码
 
@@ -126,7 +134,7 @@
         await listener.CloseAsync(cts.Token);
     }
     ```
-5. 在 `Program` 类的 `Main` 方法中添加以下代码行：
+5. 在 `Main` 类的 `Program` 方法中添加以下代码行：
    
     ```csharp
     RunAsync().GetAwaiter().GetResult();

@@ -6,11 +6,11 @@ origin.date: 11/09/2018
 ms.date: 12/24/2018
 ms.author: v-yeche
 ms.openlocfilehash: c46a922b15a12e3f00d87419704bd1ea57cb3189
-ms.sourcegitcommit: 96ceb27357f624536228af537b482df08c722a72
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53736813"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63825816"
 ---
 Azure 虚拟机支持附加许多的数据磁盘。 本文介绍 VM 的数据磁盘的可伸缩性和性能目标。 使用这些目标可帮助确定满足性能和容量要求所需的磁盘数量和磁盘类型。 
 
@@ -28,10 +28,10 @@ Azure 虚拟机支持附加许多的数据磁盘。 本文介绍 VM 的数据磁
 > | 标准 ZRS 快照 | 10,000 | 50,000 |
 > | 托管映像 | 10,000 | 50,000 |
 
-* **对于标准存储帐户：** 标准存储帐户的总请求率上限为 20,000 IOPS。 在标准存储帐户中，所有虚拟机磁盘的 IOPS 总数不应超过此限制。
+* **标准存储帐户：** 标准存储帐户的总请求率上限为 20,000 IOPS。 在标准存储帐户中，所有虚拟机磁盘的 IOPS 总数不应超过此限制。
 
     可以根据请求率的限制，大致计算单个标准存储帐户可支持的重度使用磁盘数。 例如，对于基本层 VM，重度使用的磁盘数上限约为 66（每个磁盘 20,000/300 IOPS）；对于标准层 VM，约为 40（每个磁盘 20,000/500 IOPS）。 
 
-* **对于高级存储帐户：** 高级存储帐户的总吞吐量速率上限为 50 Gbps。 所有 VM 磁盘的总吞吐量不应超过此限制。
+* **高级存储帐户：** 高级存储帐户的总吞吐量速率上限为 50 Gbps。 所有 VM 磁盘的总吞吐量不应超过此限制。
 
 <!-- Update_Description: update meta properties -->

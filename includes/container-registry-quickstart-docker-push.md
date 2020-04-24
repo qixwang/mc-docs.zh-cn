@@ -10,16 +10,16 @@ ms.date: 02/18/2019
 ms.author: v-yeche
 ms.custom: include file
 ms.openlocfilehash: 80b4c5a9f613ff4626100d15e7bc70fdfc26a25e
-ms.sourcegitcommit: 7e25a709734f03f46418ebda2c22e029e22d2c64
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56440056"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63823449"
 ---
 <!--Verify successfully-->
 ## <a name="push-image-to-registry"></a>将映像推送到注册表
 
-要将映像推送到 Azure 容器注册表，首先必须具有一个映像。 如果还没有任何本地容器映像，请运行以下 [docker pull][docker-pull] 命令，从 Docker 中心拉取现有映像。 就此示例来说，请拉取 `hello-world` 映像。
+要将映像推送到 Azure 容器注册表，首先必须具有一个映像。 如果还没有任何本地容器映像，请运行以下 [docker pull][docker-pull] 命令，从 Docker Hub 拉取现有映像。 就此示例来说，请拉取 `hello-world` 映像。
 
 ```
 docker pull hello-world

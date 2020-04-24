@@ -17,14 +17,14 @@ origin.date: 02/14/2019
 ms.date: 08/12/2019
 ms.author: v-yeche
 ms.openlocfilehash: 4b7e7bacd8d4292ad1953e16ae58d0675a322509
-ms.sourcegitcommit: 8ac3d22ed9be821c51ee26e786894bf5a8736bfc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "68912978"
 ---
 # <a name="get-started-with-docker-and-compose-to-define-and-run-a-multi-container-application-in-azure"></a>使用 Docker 和 Compose 在 Azure 中定义和运行多容器应用程序入门
-借助 [Compose](https://github.com/docker/compose)，可以使用简单的文本文件定义由多个 Docker 容器组成的应用程序。 然后，使用单个命令启动应用程序，该命令会执行部署定义环境的所有操作。 作为示例，本文说明如何在 Ubuntu VM 上使用后端 MariaDB SQL 数据库快速设置 WordPress 博客。 也可以使用 Compose 设置更复杂的应用程序。
+借助 [Compose](https://github.com/docker/compose)，可以使用简单的文本文件定义由多个 Docker 容器组成的应用程序。 然后使用单个命令启动应用程序，该命令会执行部署定义的环境所需的所有操作。 作为示例，本文说明如何在 Ubuntu VM 上使用后端 MariaDB SQL 数据库快速设置 WordPress 博客。 也可以使用 Compose 设置更复杂的应用程序。
 
 本文最后一次使用 [Azure CLI](https://docs.azure.cn/cli/install-azure-cli?view=azure-cli-latest) 版本 2.0.58 于 2019 年 2 月 14 日进行了测试。
 
@@ -41,13 +41,13 @@ ms.locfileid: "68912978"
 az group create --name myDockerGroup --location chinaeast
 ```
 
-创建名为“cloud-init.txt”  的文件并粘贴以下配置。 输入 `sensible-editor cloud-init.txt` 以创建文件并查看可用编辑器的列表。 
+创建名为“cloud-init.txt”的文件并粘贴下面的配置  。 输入 `sensible-editor cloud-init.txt` 以创建文件并查看可用编辑器的列表。 
 
 ```yaml
 #include https://get.docker.com
 ```
 
-现在，请使用 [az vm create](https://docs.azure.cn/cli/vm?view=azure-cli-latest#az-vm-create) 创建 VM。 使用 `--custom-data` 参数传入 cloud-init 配置文件。 如果未将 cloud-init.txt  配置文件保存在现有工作目录中，请提供该文件的完整路径。 下面的示例创建了名为 myDockerVM 的 VM 并打开了 Web 流量端口 80  。
+现使用 [az vm create](https://docs.azure.cn/cli/vm?view=azure-cli-latest#az-vm-create) 创建 VM。 使用 `--custom-data` 参数传递到 cloud-init 配置文件中。 如果未将 cloud-init.txt  配置文件保存在现有工作目录中，请提供该文件的完整路径。 下面的示例创建了名为 myDockerVM 的 VM 并打开了 Web 流量端口 80  。
 
 ```azurecli
 az vm create \
@@ -62,7 +62,7 @@ az vm open-port --port 80 \
     --name myDockerVM
 ```
 
-创建 VM、安装程序包和启动应用需耗时几分钟。 在 Azure CLI 返回提示之后，仍然存在继续运行的后台任务。 创建 VM 后，请记下 Azure CLI 显示的 `publicIpAddress`。 
+创建 VM、安装程序包和启动应用需耗时几分钟。 在 Azure CLI 向你返回提示之后，仍然存在继续运行的后台任务。 创建 VM 后，请记下 Azure CLI 显示的 `publicIpAddress`。 
 
 ## <a name="install-compose"></a>安装 Compose
 
@@ -81,7 +81,7 @@ sudo apt install docker-compose
 ## <a name="create-a-docker-composeyml-configuration-file"></a>创建 docker-compose.yml 配置文件
 创建 `docker-compose.yml` 配置文件，用于定义要在 VM 上运行的 Docker 容器。 该文件指定要在每个容器中运行的映像、必要的环境变量和依赖关系、端口以及容器之间的链接。 有关 yml 文件语法的详细信息，请参阅 [Compose 文件参考](https://docs.docker.com/compose/compose-file/)。
 
-创建 docker-compose.yml  文件。 使用最喜欢的文本编辑器向文件添加一些数据。 以下示例创建带有 `sensible-editor` 提示的文件，以便选择要使用的编辑器。
+创建 docker-compose.yml  文件。 使用最喜欢的文本编辑器将一些数据添加到文件。 以下示例创建带有 `sensible-editor` 提示的文件，以便选择要使用的编辑器。
 
 ```bash
 sensible-editor docker-compose.yml
@@ -104,13 +104,13 @@ db:
 ```
 
 ## <a name="start-the-containers-with-compose"></a>使用 Compose 启动容器
-在 *docker-compose.yml* 文件所在的目录中，运行以下命令（可能需要使用 `sudo` 运行 `docker-compose`，具体取决于环境）：
+在 docker-compose.yml 文件所在的目录中，运行以下命令（可能需要使用 *运行*，具体取决于用户环境）：`docker-compose``sudo`
 
 ```bash
 sudo docker-compose up -d
 ```
 
-此命令启动 *docker-compose.yml* 中指定的 Docker 容器。 此步骤需要一到两分钟才能完成。 将显示类似于下面的输出：
+此命令启动 docker-compose.yml 中指定的 Docker 容器。  完成此步骤需要一两分钟时间。 将显示类似于下面的输出：
 
 ```
 Creating wordpress_db_1...
@@ -133,7 +133,7 @@ azureuser_wordpress_1   docker-entrypoint.sh apach ...   Up      0.0.0.0:80->80/
 
 ## <a name="next-steps"></a>后续步骤
 * 有关构建和部署多容器应用的更多示例，请查阅 [Compose 命令行参考](https://docs.docker.com/compose/reference/)和[用户指南](https://docs.docker.com/compose/)。
-* 使用 Azure Resource Manager 模板（自己的或[社区](https://github.com/Azure/azure-quickstart-templates/)提供的），通过 Docker 部署 Azure VM 和使用 Compose 设置的应用程序。 例如， [使用 Docker 部署 WordPress 博客](https://github.com/Azure/azure-quickstart-templates/tree/master/docker-wordpress-mysql) 模板使用 Docker 和 Compose 通过 Ubuntu VM 上的 MySQL 后端快速部署 WordPress。
-* 尝试将 Docker Compose 与 Docker Swarm 群集集成。 相关方案请参阅 [Using Compose with Swarm](https://docs.docker.com/compose/swarm/)（将 Compose 与 Swarm 配合使用）。
+* 使用 Azure 资源管理器模板（自己的或[社区](https://github.com/Azure/azure-quickstart-templates/)提供的），通过 Docker 部署 Azure VM 和使用 Compose 设置的应用程序。 例如，[使用 Docker 部署 WordPress 博客](https://github.com/Azure/azure-quickstart-templates/tree/master/docker-wordpress-mysql)模板使用 Docker 和 Compose 通过 Ubuntu VM 上的 MySQL 后端快速部署 WordPress。
+* 请尝试将 Docker Compose 与 Docker Swarm 群集集成。 相关方案请参阅 [Using Compose with Swarm](https://docs.docker.com/compose/swarm/)（将 Compose 与 Swarm 配合使用）。
 
 <!--Update_Description: update meta properties -->

@@ -13,10 +13,10 @@ ms.date: 07/08/2019
 ms.author: v-junlch
 ms.custom: seodec18
 ms.openlocfilehash: 8acc8100fed5d64dc976ba5283e708dfd516045e
-ms.sourcegitcommit: 8f49da0084910bc97e4590fc1a8fe48dd4028e34
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "67844884"
 ---
 # <a name="quickstart-extract-handwritten-text-using-the-computer-vision-rest-api-and-java"></a>快速入门：使用计算机视觉 REST API 和 Java 提取手写文本
@@ -177,7 +177,7 @@ public class Main {
 
 ## <a name="examine-the-response"></a>检查响应
 
-成功的响应以 JSON 格式返回。 示例应用程序会在控制台窗口中分析和显示成功响应，如下例所示：
+成功响应将以 JSON 格式返回。 示例应用程序会在控制台窗口中分析和显示成功响应，如下例所示：
 
 ```json
 Handwritten text submitted. Waiting 10 seconds to retrieve the recognized text.

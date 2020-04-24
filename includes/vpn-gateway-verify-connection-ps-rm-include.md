@@ -10,11 +10,11 @@ ms.date: 03/04/2019
 ms.author: v-jay
 ms.custom: include file
 ms.openlocfilehash: 7ffa8edc75e1bf0735641258d855e111de4b61f7
-ms.sourcegitcommit: dcd11929ada5035d127be1ab85d93beb72909dc3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56833215"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63844672"
 ---
 可以验证连接是否成功，方法是使用“Get-AzVirtualNetworkGatewayConnection”cmdlet，带或不带“-Debug”。 
 

@@ -5,10 +5,10 @@ origin.date: 05/31/2019
 ms.date: 07/22/2019
 ms.author: v-yeche
 ms.openlocfilehash: 930a7d38c71b9184406ea4f4b78374cbe7aaffa1
-ms.sourcegitcommit: 021dbf0003a25310a4c8582a998c17729f78ce42
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "68514156"
 ---
 ## <a name="prerequisite-install-the-azure-cli"></a>先决条件：安装 Azure CLI

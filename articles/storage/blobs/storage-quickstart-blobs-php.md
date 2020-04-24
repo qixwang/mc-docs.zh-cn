@@ -11,16 +11,16 @@ ms.date: 07/15/2019
 ms.author: v-jay
 ms.reviewer: seguler
 ms.openlocfilehash: 6f2b8b1ada4168f09b2cd1482db3108a2a02f825
-ms.sourcegitcommit: 80336a53411d5fce4c25e291e6634fa6bd72695e
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "67844534"
 ---
 #  <a name="transfer-objects-tofrom-azure-blob-storage-using-php"></a>使用 PHP 将对象转移到 Azure Blob 存储或从 Azure Blob 存储转移对象
 本快速入门介绍如何使用 PHP 上传、下载和列出 Azure Blob 存储的容器中的块 Blob。 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 [!INCLUDE [storage-quickstart-prereq-include](../../../includes/storage-quickstart-prereq-include.md)]
 
@@ -45,14 +45,14 @@ git clone https://github.com/Azure-Samples/storage-blobs-php-quickstart.git
 ## <a name="configure-your-storage-connection-string"></a>配置存储连接字符串
 在应用程序中，必须提供存储帐户名称和帐户密钥，以创建应用程序的 **BlobRestProxy** 实例。 建议将这些标识符存储在运行应用程序的本地计算机的环境变量中。 根据操作系统按照下面的一个示例创建环境变量。 将 youraccountname  和 youraccountkey  值分别替换为帐户名称和密钥。
 
-# <a name="linuxtablinux"></a>[Linux](#tab/linux)
+# <a name="linux"></a>[Linux](#tab/linux)
 
 ```bash
 export ACCOUNT_NAME=<youraccountname>
 export ACCOUNT_KEY=<youraccountkey>
 ```
 
-# <a name="windowstabwindows"></a>[Windows](#tab/windows)
+# <a name="windows"></a>[Windows](#tab/windows)
 
 ```cmd
 setx ACCOUNT_NAME=<youraccountname>
@@ -66,7 +66,7 @@ setx ACCOUNT_KEY=<youraccountkey>
 ## <a name="run-the-sample"></a>运行示例
 此示例在“.”文件夹中创建一个测试文件。 示例程序会将该测试文件上传到 Blob 存储，列出容器中的 blob，并使用新名称下载此文件。 
 
-运行示例。 以下输出是运行应用程序时返回的输出的示例：
+运行该示例。 以下输出是运行应用程序时返回的输出的示例：
   
 ```
 Uploading BlockBlob: HelloWorld.txt
@@ -78,7 +78,7 @@ This is the content of the blob uploaded: Hello Azure!
 
 还可以使用工具（如 [Azure 存储资源管理器](https://storageexplorer.com)）查看 Blob 存储中的文件。 Azure 存储资源管理器是免费的跨平台工具，可用于访问存储帐户信息。 
 
-验证文件后，按任意键可完成演示并删除测试文件。 了解此示例的用途后，请打开 example.rb 文件来查看代码。 
+验证文件后，按任意键可完成演示并删除测试文件。 了解此示例的用途以后，即可打开 example.rb 文件来查看代码。 
 
 ## <a name="understand-the-sample-code"></a>了解示例代码
 
@@ -89,7 +89,7 @@ This is the content of the blob uploaded: Hello Azure!
 
 * 创建 Azure 存储 **BlobRestProxy** 对象的实例，用于设置连接凭据。 
 * 创建 **BlobService** 对象，使之指向存储帐户中的 Blob 服务。 
-* 创建**容器**对象，使之代表要访问的容器。 容器用于组织 blob，就像使用计算机上的文件夹组织文件一样。
+* 创建**容器**对象，让其代表要访问的容器。 容器用于组织 blob，就像使用计算机上的文件夹组织文件一样。
 
 有了云 **blobClient** 容器对象后，可以创建**块** Blob 对象，使之指向你感兴趣的特定 Blob， 然后执行上传、下载、复制等操作。
 
@@ -144,7 +144,7 @@ Blob 存储支持块 blob、追加 blob 和页 blob。 块 blob 是最常用的 
     $blobClient->createBlockBlob($containerName, $fileToUpload, $content);
 ```
 
-若要对块 Blob 进行部分更新，请使用 **createblocklist()** 方法。 块 blob 最大可以为 4.7 TB，并且可以是从 Excel 电子表格到大视频文件的任何内容。 页 blob 主要用于用于备份 IaaS VM 的 VHD 文件。 追加 blob 用于日志记录，例如有时需要写入到文件，再继续添加更多信息。 追加 Blob 应在单一编写器模型中使用。 存储在 Blob 存储中的大多数对象都是块 blob。
+若要对块 Blob 进行部分更新，请使用 **createblocklist()** 方法。 块 blob 最大可以为 4.7 TB，并且可以是从 Excel 电子表格到大视频文件的任何内容。 页 blob 主要用于用于备份 IaaS VM 的 VHD 文件。 追加 blob 用于日志记录，例如有时需要写入到文件，再继续添加更多信息。 追加 Blob 应在单编写器模型中使用。 存储在 Blob 存储中的大多数对象都是块 blob。
 
 ### <a name="list-the-blobs-in-a-container"></a>列出容器中的 Blob
 
@@ -209,7 +209,7 @@ Blob 存储支持块 blob、追加 blob 和页 blob。 块 blob 是最常用的 
 本快速入门介绍了如何使用 PHP 在本地磁盘和 Azure Blob 存储之间转移文件。 若要详细了解 PHP 的用法，请转到 PHP 开发人员中心。
 
 > [!div class="nextstepaction"]
-> [PHP 开发中心](https://azure.microsoft.com/develop/php/)
+> [PHP 开发人员中心](https://azure.microsoft.com/develop/php/)
 
 
 若要详细了解存储资源管理器和 Blob，请参阅[使用存储资源管理器管理 Azure Blob 存储资源](../../vs-azure-tools-storage-explorer-blobs.md?toc=%2fstorage%2fblobs%2ftoc.json)。

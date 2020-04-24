@@ -10,10 +10,10 @@ ms.date: 06/28/2019
 ms.author: v-yeche
 ms.custom: include file
 ms.openlocfilehash: 82c1033a1eb1baaf06c3dc620bf9e70a7ab6eebc
-ms.sourcegitcommit: ab87d30f4435c3b7c03f7edd33c9f374b7fe88c9
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "67540088"
 ---
 中心包含网关。 创建中心后，即使你没有附加任何站点，也会对该中心收取费用。 创建中心和网关需要 30 分钟。
@@ -23,7 +23,7 @@ ms.locfileid: "67540088"
 3. 在“创建虚拟中心”  页上，请填写以下字段：
 
     * 位置
-    * Name
+    * 名称
     * 中心专用地址空间
 
 单击“确认”以创建中心。  单击“刷新”以在“中心”页上查看该中心   。

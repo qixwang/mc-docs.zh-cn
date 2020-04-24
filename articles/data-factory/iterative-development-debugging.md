@@ -13,10 +13,10 @@ author: WenJason
 ms.author: v-jay
 manager: digimobile
 ms.openlocfilehash: d7baa9051c4803174b5d0d747206d347b6dd74a1
-ms.sourcegitcommit: 5191c30e72cbbfc65a27af7b6251f7e076ba9c88
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "67570316"
 ---
 # <a name="iterative-development-and-debugging-with-azure-data-factory"></a>使用 Azure 数据工厂进行迭代开发和调试

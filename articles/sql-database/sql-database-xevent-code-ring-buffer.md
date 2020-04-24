@@ -1,6 +1,6 @@
 ---
 title: SQL 数据库的 XEvent 环形缓冲区代码 | Microsoft 文档
-description: 提供一个 Transact-SQL 代码示例，以帮助你快速轻松地在 Azure SQL 数据库中使用环形缓存区目标。
+description: 提供一个 Transact-SQL 代码示例，以帮助你快速轻松地在 Azure SQL 数据库中使用环形缓冲区目标。
 services: sql-database
 ms.service: sql-database
 ms.subservice: monitor
@@ -14,10 +14,10 @@ manager: digimobile
 origin.date: 12/19/2018
 ms.date: 04/29/2019
 ms.openlocfilehash: bab79004b2df4a1978a95e6bd38efddd07b1168a
-ms.sourcegitcommit: 9642fa6b5991ee593a326b0e5c4f4f4910f50742
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "64854757"
 ---
 # <a name="ring-buffer-target-code-for-extended-events-in-sql-database"></a>SQL 数据库中扩展事件的环形缓冲区目标代码
@@ -31,24 +31,24 @@ ms.locfileid: "64854757"
 1. 创建一个包含要演示的数据的表。
 2. 创建现有扩展事件的会话，即 **sqlserver.sql_statement_starting**。
    
-   * 此事件仅限于包含特定 Update 字符串的 SQL 语句： **statement LIKE '%UPDATE tabEmployee%'**。
+   * 此事件仅限于包含特定 Update 字符串的 SQL 语句：**statement LIKE '%UPDATE tabEmployee%'** 。
    * 选择要将事件的输出发送给环形缓冲区类型的目标，即 **package0.ring_buffer**。
 3. 启动事件会话。
 4. 发出几个简单的 SQL UPDATE 语句。
 5. 发出 SQL SELECT 语句，从环形缓冲区检索事件输出。
    
-   * 将 **sys.dm_xe_database_session_targets** 和其他动态管理视图 (DMV) 联接在一起。
+   * **sys.dm_xe_database_session_targets** 和其他动态管理视图 (DMV) 联接在一起。
 6. 停止事件会话。
 7. 删除环形缓冲区目标以释放其资源。
 8. 删除事件会话和演示表。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
-* Azure 帐户和订阅。 可以注册[试用版](https://www.azure.cn/pricing/1rmb-trial/)。
-* 可在其中创建表的任何数据库。
+* Azure 帐户和订阅。 可注册以便 [试用](https://www.azure.cn/pricing/1rmb-trial/)。
+* 可以在其中创建表的任何数据库。
   
-  * 或者，也可以在几分钟内[创建一个 **AdventureWorksLT** 演示数据库](sql-database-get-started.md)。
-* SQL Server Management Studio (ssms.exe)，最好是每月最新更新版。 
+  * 或者，也可以快速[创建一个 **AdventureWorksLT** 演示数据库](sql-database-get-started.md)。
+* SQL Server Management Studio (ssms.exe)，最好是每月更新版。 
   可从以下位置下载最新的 ssms.exe：
   
   * 标题为[下载 SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx) 的主题。
@@ -56,7 +56,7 @@ ms.locfileid: "64854757"
 
 ## <a name="code-sample"></a>代码示例
 
-只要稍加修改，就可以在 Azure SQL 数据库或 Microsoft SQL Server 上运行以下环形缓冲区的代码示例。 不同之处在于步骤 5 的 FROM 子句中使用的某些动态管理视图 (DMV) 的名称中出现了节点“_database”。 例如：
+只要稍加修改，就可以在 Azure SQL 数据库或 Microsoft SQL Server 上运行以下环形缓冲区的代码示例。 不同之处在于步骤 5 的 FROM 子句中使用的某些动态管理视图 (DMV) 名称出现了节点“_database”。 例如：
 
 * sys.dm_xe<strong>_database</strong>_session_targets
 * sys.dm_xe_session_targets
@@ -222,7 +222,7 @@ GO
 
 为了查看结果，我们单击了 **target_data_XML** 列标题下的单元格。
 
-然后，在结果窗格中，我们单击了 **target_data_XML** 列标题下的单元格。 这个单击动作在 ssms.exe 中按结果单元格内容显示的顺序，以 XML 格式创建了另一个文件选项卡。
+然后，在结果窗格中，我们单击了 target_data_XML 列标题下的单元格  。 这个单击动作在 ssms.exe 中按结果单元格内容显示的顺序，以 XML 格式创建了另一个文件选项卡。
 
 输出显示在以下块中。 结果看起来很长，但其实只是两个 **\<event>** 元素。
 
@@ -345,9 +345,9 @@ ALTER EVENT SESSION eventsession_gm_azuresqldb51
 
 有关 Azure SQL 数据库中扩展事件的主要主题是：
 
-* [SQL 数据库中扩展事件的注意事项](sql-database-xevent-db-diff-from-svr.md)，对比了 Azure SQL 数据库与 Microsoft SQL Server 之间存在差异的扩展事件的某些方面。
+* [SQL 数据库中扩展事件的注意事项](sql-database-xevent-db-diff-from-svr.md)，对比 Azure SQL 数据库与 Microsoft SQL Server 的扩展事件的某些方面。
 
-可通过以下链接访问有关扩展事件的其他代码示例主题。 不过，必须定期检查所有示例，以确定这些示例是针对 Microsoft SQL Server 还是 Azure SQL 数据库。 然后，用户可以在运行示例时确定是否要做出细微的更改。
+可通过以下链接访问有关扩展事件的其他代码示例主题。 不过，必须定期检查所有示例，以确定这些示例是针对 Microsoft SQL Server 还是 Azure SQL 数据库。 然后，可以在运行示例时确定是否要做出细微的更改。
 
 * Azure SQL 数据库的代码示例：[SQL 数据库中扩展事件的事件文件目标代码](sql-database-xevent-code-event-file.md)
 

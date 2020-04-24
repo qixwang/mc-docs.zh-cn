@@ -13,10 +13,10 @@ ms.date: 07/08/2019
 ms.author: v-junlch
 ms.custom: seodec18
 ms.openlocfilehash: e8dadfccb335bf58b838e74187c9101e063691f7
-ms.sourcegitcommit: 8f49da0084910bc97e4590fc1a8fe48dd4028e34
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "67844855"
 ---
 # <a name="quickstart-use-a-domain-model-using-the-rest-api-and-python-in-computer-vision"></a>快速入门：通过计算机视觉中的 REST API 和 Python 使用域模型
@@ -90,7 +90,7 @@ _ = plt.title(landmark_name, size="x-large", y=-0.1)
 
 ## <a name="examine-the-response-for-the-landmarks-sample"></a>检查地标示例的响应
 
-成功的响应以 JSON 格式返回。 示例网页会在命令提示符窗口中分析和显示成功响应，如下例所示：
+成功响应将以 JSON 格式返回。 示例网页会在命令提示符窗口中分析和显示成功响应，如下例所示：
 
 ```json
 {
@@ -167,7 +167,7 @@ _ = plt.title(celebrity_name, size="x-large", y=-0.1)
 
 ## <a name="examine-the-response-for-the-celebrities-sample"></a>检查名人示例的响应
 
-成功的响应以 JSON 格式返回。 示例网页会在命令提示符窗口中分析和显示成功响应，如下例所示：
+成功响应将以 JSON 格式返回。 示例网页会在命令提示符窗口中分析和显示成功响应，如下例所示：
 
 
 ```json

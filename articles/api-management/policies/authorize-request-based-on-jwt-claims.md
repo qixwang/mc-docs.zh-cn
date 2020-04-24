@@ -15,11 +15,11 @@ origin.date: 10/13/2017
 ms.date: 02/26/2018
 ms.author: v-yiso
 ms.openlocfilehash: a3d6e664cd84d4a6732b22571f45bd2390b4ea62
-ms.sourcegitcommit: d75065296d301f0851f93d6175a508bdd9fd7afc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52652721"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63854097"
 ---
 # <a name="authorize-access-based-on-jwt-claims"></a>基于 JWT 声明授权访问权限
 
@@ -27,7 +27,7 @@ ms.locfileid: "52652721"
 
 ## <a name="policy"></a>策略
 
-将代码粘贴到“入站”块中。
+将代码粘贴到“入站”块中  。
 
 ```xml
 <!-- The policy defined in this file shows how to authorize access to specific HTTP methods on an API based on JWT claims. -->

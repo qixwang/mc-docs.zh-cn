@@ -9,11 +9,11 @@ origin.date: 08/08/2017
 ms.author: v-yiso
 ms.date: 09/10/2018
 ms.openlocfilehash: 7e6ca8c2ccf03701707d7fbf69df4aef4abdd4d9
-ms.sourcegitcommit: d75065296d301f0851f93d6175a508bdd9fd7afc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52656480"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63822194"
 ---
 # <a name="configure-iot-hub-file-uploads-using-azure-cli"></a>使用 Azure CLI 配置 IoT 中心文件上传
 
@@ -23,7 +23,7 @@ ms.locfileid: "52656480"
 
 要完成本教程，需要以下各项：
 
-* 有效的 Azure 帐户。 如果没有帐户，可以创建一个[试用帐户][lnk-free-trial]，只需几分钟即可完成。
+* 有效的 Azure 帐户。 若尚无帐户，只需几分钟即可创建一个 [试用帐户][lnk-free-trial] 。
 * [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
 
 * Azure IoT 中心。 如果没有 IoT 中心，可以使用 [`az iot hub create` 命令](https://docs.azure.cn/zh-cn/cli/iot/hub#az-iot-hub-create)创建一个，或[使用门户创建 IoT 中心](iot-hub-create-through-portal.md)。
@@ -42,7 +42,7 @@ ms.locfileid: "52656480"
 
     按照说明使用代码进行身份验证，并通过 Web 浏览器登录 Azure 帐户。
 
-1. 如果有多个 Azure 订阅，登录 Azure 可获得与凭据关联的所有 Azure 帐户的访问权限。 使用以下 [命令，列出可供使用的 Azure 帐户][lnk-az-account-command] ：
+1. 如果有多个 Azure 订阅，登录 Azure 可获得与凭据关联的所有 Azure 帐户的访问权限。 使用[以下命令列出可供使用的 Azure 帐户][lnk-az-account-command]：
 
     ```azurecli
     az account list
@@ -88,7 +88,7 @@ az storage account show-connection-string --name {your storage account name} --r
 
 **存储容器**：当前 Azure 订阅中要与 IoT 中心关联的 Azure 存储帐户中的 Blob 容器。 检索在上一部分中必要的存储帐户信息。 IoT 中心会自动生成对此 Blob 容器具有写入权限的 SAS URI，以供设备上传文件时使用。
 
-**接收已上传文件的通知**：启用或禁用文件上传通知。
+接收已上传文件的通知：启用或禁用文件上传通知。 
 
 **SAS TTL**：此设置是 IoT 中心返回给设备的 SAS URI 生存时间。 默认设置为一小时。
 

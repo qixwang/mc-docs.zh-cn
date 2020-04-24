@@ -14,10 +14,10 @@ manager: digimobile
 origin.date: 12/13/2018
 ms.date: 04/29/2019
 ms.openlocfilehash: bec2b32cbc56f319a76567b5048a6bdfd595bc0d
-ms.sourcegitcommit: 9642fa6b5991ee593a326b0e5c4f4f4910f50742
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "64855602"
 ---
 # <a name="sync-networking-configuration-for-azure-app-service-hosting-plan"></a>Azure 应用服务托管计划的同步网络配置
@@ -32,11 +32,11 @@ ms.locfileid: "64855602"
 
    ![应用服务计划](./media/sql-database-managed-instance-sync-networking/app-service-plan.png)
 
-2. 单击“网络”，然后单击“单击此处进行管理”。
+2. 单击“网络”，然后单击“单击此处进行管理”   。
 
    ![管理服务计划](./media/sql-database-managed-instance-sync-networking/manage-plan.png)
 
-3. 选择“VNet”，并单击“同步网络”。
+3. 选择“VNet”，并单击“同步网络”   。
 
    ![同步网络](./media/sql-database-managed-instance-sync-networking/sync.png)
 

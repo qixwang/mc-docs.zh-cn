@@ -16,10 +16,10 @@ origin.date: 01/13/2019
 ms.author: v-yiso
 ms.date: 08/26/2019
 ms.openlocfilehash: 3615a117050bc5aa0147ff5821ddf62c13eaf4eb
-ms.sourcegitcommit: d624f006b024131ced8569c62a94494931d66af7
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "69538748"
 ---
 # <a name="connect-to-on-premises-file-systems-with-azure-logic-apps"></a>使用 Azure 逻辑应用连接到本地文件系统
@@ -32,7 +32,7 @@ ms.locfileid: "69538748"
 
 本文介绍如何根据本示例方案所述连接到本地文件系统：将上传至 Dropbox 的文件复制到文件共享，然后发送一封电子邮件。 为了安全连接和访问本地系统，逻辑应用将使用[本地数据网关](../logic-apps/logic-apps-gateway-connection.md)。 如果你不熟悉逻辑应用，请查看[什么是 Azure 逻辑应用？](../logic-apps/logic-apps-overview.md)
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要按照此示例进行操作，需要以下这些项：
 
@@ -54,7 +54,7 @@ ms.locfileid: "69538748"
 
 1. 登录到 [Azure 门户](https://portal.azure.cn)，在逻辑应用设计器中打开逻辑应用（如果尚未打开）。
 
-1. 在搜索框中，输入“dropbox”作为筛选器。 从触发器列表中选择此触发器：**创建文件时** 
+1. 在搜索框中，输入“dropbox”作为筛选器。 在触发器列表中选择以下触发器：“创建文件时”  
 
    ![选择 Dropbox 触发器](media/logic-apps-using-file-connector/select-dropbox-trigger.png)
 
@@ -66,7 +66,7 @@ ms.locfileid: "69538748"
 
 ## <a name="add-actions"></a>添加操作
 
-1. 在触发器下，选择“下一步”。  在搜索框中，输入“文件系统”作为筛选器。 在操作列表中选择此操作：**创建文件 - 文件系统**
+1. 在触发器下，选择“下一步”。  在搜索框中，输入“文件系统”作为筛选器。 在操作列表中选择以下操作：“创建文件 - 文件系统” 
 
    ![查找文件系统连接器](media/logic-apps-using-file-connector/find-file-system-action.png)
 
@@ -74,9 +74,9 @@ ms.locfileid: "69538748"
 
    ![创建连接](media/logic-apps-using-file-connector/file-system-connection.png)
 
-   | 属性 | 必须 | Value | 说明 | 
+   | properties | 必选 | 值 | 说明 | 
    | -------- | -------- | ----- | ----------- | 
-   | **连接名称** | 是 | <*connection-name*> | 连接使用的名称 | 
+   | **连接名称** | 是 | <connection-name  > | 连接使用的名称 | 
    | **根文件夹** | 是 | <*root-folder-name*> | 文件系统的根文件夹，例如，如果安装了本地数据网关，比如安装了本地数据网关的计算机上的本地文件夹，或者计算机可以访问的网络共享文件夹。 <p>例如： `\\PublicShare\\DropboxFiles` <p>根文件夹是主要的父文件夹，用作所有与文件有关的操作的相对路径。 | 
    | **身份验证类型** | 否 | <*auth-type*> | 文件系统使用的身份验证类型，例如 **Windows** | 
    | **用户名** | 是 | <*domain*>\\<*username*> | 拥有文件系统的计算机用户名 | 

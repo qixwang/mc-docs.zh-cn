@@ -9,10 +9,10 @@ origin.date: 05/20/2019
 ms.author: v-yiso
 ms.date: 06/24/2019
 ms.openlocfilehash: 461951e1b4f34d6bd55d5f4daa1e22ea5b845d1f
-ms.sourcegitcommit: e77582e79df32272e64c6765fdb3613241671c20
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "67135872"
 ---
 # <a name="expressroute-overview"></a>ExpressRoute 概述

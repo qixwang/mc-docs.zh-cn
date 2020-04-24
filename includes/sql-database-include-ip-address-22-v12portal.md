@@ -12,35 +12,35 @@ origin.date: 07/13/2018
 ms.date: 09/02/2018
 ms.author: v-jay
 ms.openlocfilehash: c2dfb283a765b72a62ab6568de162781fce3d1cb
-ms.sourcegitcommit: d75065296d301f0851f93d6175a508bdd9fd7afc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52665509"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63858637"
 ---
-1. 登录到 [Azure 门户](https://portal.azure.cn/)。
+1. 登录 [Azure 门户](https://portal.azure.cn/)。
 
-2. 在左侧的列表中，选择“所有服务”。
+2. 在左侧的列表中，选择“所有服务”  。
 
-3. 滚动并选择“SQL Server”。
+3. 滚动并选择“SQL Server”。 
 
     ![在门户中找到 Azure SQL 数据库服务器][b21-FindServerInPortal]
 5. 在筛选器文本框中，开始键入服务器的名称。 此时会显示行。
 
 6. 选择服务器所对应的行。 此时会显示服务器的边栏选项卡。
 
-7. 在服务器边栏选项卡上选择“设置”。
+7. 在服务器边栏选项卡上选择“设置”。 
 
-8. 选择“防火墙”。
+8. 选择“防火墙”  。
 
     ![选择“设置”>“防火墙”][b31-SettingsFirewallNavig]
-9. 选择“添加客户端 IP”。 在第一个文本框中键入新规则的名称。
+9. 选择“添加客户端 IP”。  在第一个文本框中键入新规则的名称。
 
-10. 键入你想要启用的范围的下限和上限 IP 地址值。
+10. 键入要启用的范围的下限和上限 IP 地址值。
 
     * 为方便起见，可以让下限值以 **.0** 结尾，让上限值以 **.255** 结尾。
 
-11. 选择“其他安全性验证” 。
+11. 选择“保存”。 
 
 <!-- Image references. -->
 

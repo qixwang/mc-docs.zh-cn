@@ -1,6 +1,6 @@
 ---
 title: 使用 REST API 获取 Azure 资源运行状况事件 | Microsoft Docs
-description: 使用 Azure REST API 获取 Azure 资源的运行状况事件。
+description: 使用 Azure REST API 以获取 Azure 资源的运行状况事件。
 services: Resource health
 author: rloutlaw
 ms.reviewer: routlaw
@@ -12,21 +12,21 @@ origin.date: 06/06/2017
 ms.date: 08/05/2018
 ms.author: v-yiso
 ms.openlocfilehash: f8560f44a38d14b0fc56197052e5e94bb0c4cb03
-ms.sourcegitcommit: 021dbf0003a25310a4c8582a998c17729f78ce42
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "68514274"
 ---
 # <a name="get-resource-health-using-the-rest-api"></a>使用 REST API 获取资源运行状况 
 
-本示例文章介绍如何使用 [Azure REST API](https://docs.microsoft.com/en-us/rest/api/azure/) 检索订阅中 Azure 资源的运行状况事件的列表。
+此示例文章演示如何使用 [Azure REST API](https://docs.microsoft.com/en-us/rest/api/azure/) 检索订阅中 Azure 资源的运行状况事件列表。
 
-有关 REST API 的完整参考文档和其他示例，请查看 [Azure Monitor REST reference](https://docs.microsoft.com/en-us/rest/api/monitor/)（Azure Monitor REST 参考）。 
+[Azure Monitor REST 参考](https://docs.microsoft.com/en-us/rest/api/monitor/)中提供了完整的参考文档和 REST API 的其他示例。 
 
 ## <a name="build-the-request"></a>生成请求
 
-使用以下 `GET` HTTP 请求列出 `2018-05-16` 到 `2018-06-20` 这个时间范围内订阅的运行状况事件。
+使用以下 `GET` HTTP 请求列出 `2018-05-16` 和 `2018-06-20` 之间的时间范围内订阅的运行状况事件。
 
 ```http
 https://management.azure.cn/subscriptions/{subscription-id}/providers/microsoft.insights/eventtypes/management/values?api-version=2015-04-01&%24filter=eventTimestamp%20ge%20'2018-05-16T04%3A36%3A37.6407898Z'%20and%20eventTimestamp%20le%20'2018-06-20T04%3A36%3A37.6407898Z'
@@ -39,24 +39,24 @@ https://management.azure.cn/subscriptions/{subscription-id}/providers/microsoft.
 |请求标头|说明|  
 |--------------------|-----------------|  
 |Content-Type： |必需。 设置为 `application/json`。|  
-|Authorization： |必需。 设置为有效的 `Bearer` [访问令牌](https://docs.microsoft.com/en-us/rest/api/azure/#authorization-code-grant-interactive-clients)。 |  
+|Authorization： |必需。 设置为有效的`Bearer` [访问令牌](https://docs.microsoft.com/en-us/rest/api/azure/#authorization-code-grant-interactive-clients)。 |  
 
 ### <a name="uri-parameters"></a>URI 参数
 
-| Name | 说明 |
+| 名称 | 说明 |
 | :--- | :---------- |
 | subscriptionId | 用于标识 Azure 订阅的订阅 ID。 如果拥有多个订阅，请参阅[使用多个订阅](https://docs.azure.cn/cli/manage-azure-subscriptions-azure-cli?view=azure-cli-latest#working-with-multiple-subscriptions)。 |
-| api-version | 用于请求的 API 版本。<br /><br /> 本文档介绍上述 URL 中包括的 api-version `2015-04-01`。  |
-| $filter | 一个筛选选项，用于缩减返回结果集。 此参数的允许模式在[活动日志操作参考](https://docs.microsoft.com/en-us/rest/api/monitor/activitylogs/list#uri-parameters)中可用。 所示示例捕获了 2018-05-16 到 2018-06-20 这个时间范围内的所有事件 |
+| api-version | 要用于请求的 API 版本。<br /><br /> 本文档涵盖 API 版本 `2015-04-01`，包含于上述 URL 中。  |
+| $filter | 用于减少返回的结果集的筛选选项。 此参数的允许模式在[活动日志操作参考](https://docs.microsoft.com/en-us/rest/api/monitor/activitylogs/list#uri-parameters)中可用。 所示的示例捕获 2018-05-16 和 2018-06-20 之间的时间范围内的所有事件 |
 | &nbsp; | &nbsp; |
 
 ### <a name="request-body"></a>请求正文
 
-此操作不需请求正文。
+此操作无需任何请求正文。
 
 ## <a name="handle-the-response"></a>处理响应
 
-返回状态代码 200 和一个对应于筛选器参数的运行状况事件值的列表，并返回一个 `nextlink` URI，用于检索下一页的结果。
+返回状态代码 200，其中包含与筛选器参数相对应的运行状况事件值，以及用于检索下一页结果的 `nextlink` URI。
 
 ## <a name="example-response"></a>示例响应 
 

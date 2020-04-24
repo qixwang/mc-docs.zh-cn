@@ -1,7 +1,7 @@
 ---
 title: 执行图像操作 - Python
 titlesuffix: Azure Cognitive Services
-description: 通过 Jupyter Notebook 了解如何使用 Python 中的计算机视觉 API。 使用流行库可视化结果。
+description: 通过 Jupyter Notebook 了解如何使用 Python 中的计算机视觉 API。 使用常用库直观显示结果。
 services: cognitive-services
 author: KellyDF
 manager: nitinme
@@ -13,17 +13,17 @@ ms.date: 07/08/2019
 ms.author: v-junlch
 ms.custom: seodec18
 ms.openlocfilehash: 0e5d818357584973fb77d4c1e37caaaa1db3c80d
-ms.sourcegitcommit: 8f49da0084910bc97e4590fc1a8fe48dd4028e34
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "67844844"
 ---
 # <a name="computer-vision-api-jupyter-notebook"></a>计算机视觉 API Jupyter Notebook
 
 本指南介绍如何在 Python 中使用计算机视觉 API 以及如何使用常用库直观显示结果。 你将使用 Jupyter 运行本教程。 若要了解如何开始使用交互式 Jupyter Notebook，请参阅 [Jupyter 文档](https://jupyter.readthedocs.io/en/latest/index.html)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - [Python 2.7+ 或 3.5+](https://www.python.org/downloads/)
 - [pip](https://pip.pypa.io/en/stable/installing/) 工具
@@ -40,7 +40,7 @@ ms.locfileid: "67844844"
 
 ## <a name="run-the-notebook"></a>运行笔记本
 
-若要使用此 Notebook，需要计算机视觉 API 的订阅密钥。 访问 [Azure 门户](https://portal.azure.cn/)进行注册，主密钥或辅助密钥都将有效。 确保将密钥括在引号中以使其成为字符串。
+若要使用此笔记本，将需要计算机视觉 API 的订阅密钥。 访问 [Azure 门户](https://portal.azure.cn/)进行注册，主密钥或辅助密钥都将有效。 确保将密钥括在引号中以使其成为字符串。
 
 还需要确保 `_region` 字段与你的订阅对应的区域匹配。
 

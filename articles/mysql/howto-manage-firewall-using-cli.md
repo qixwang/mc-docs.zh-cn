@@ -9,10 +9,10 @@ ms.topic: conceptual
 origin.date: 04/09/2018
 ms.date: 04/29/2019
 ms.openlocfilehash: 0d6d6deff7e80394ea282d9ffef80e0081f3fb40
-ms.sourcegitcommit: 9642fa6b5991ee593a326b0e5c4f4f4910f50742
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "64854749"
 ---
 # <a name="create-and-manage-azure-database-for-mysql-firewall-rules-by-using-the-azure-cli"></a>使用 Azure CLI 创建和管理 Azure Database for MySQL 防火墙规则
@@ -24,22 +24,22 @@ ms.locfileid: "64854749"
 
 也可使用虚拟网络 (VNet) 规则来保护对服务器进行的访问。 详细了解如何[使用 Azure CLI 创建和管理虚拟网络服务终结点和规则](howto-manage-vnet-using-cli.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 * [安装 Azure CLI](/cli/install-azure-cli)。
 * [Azure Database for MySQL 服务器和数据库](quickstart-create-mysql-server-database-using-azure-cli.md)。
 
 ## <a name="firewall-rule-commands"></a>防火墙规则命令：
-从 Azure CLI 中使用 az mysql server firewall-rule 命令，创建、删除、列出、显示和更新防火墙规则。
+从 Azure CLI 中使用 az mysql server firewall-rule 命令，创建、删除、列出、显示和更新防火墙规则  。
 
 命令：
-- **create**：创建 Azure MySQL 服务器防火墙规则。
-- **delete**：删除 Azure MySQL 服务器防火墙规则。
+- create：创建 Azure MySQL 服务器防火墙规则。 
+- delete：删除 Azure MySQL 服务器防火墙规则。 
 - **list**：列出 Azure MySQL 服务器防火墙规则。
 - **show**：显示 Azure MySQL 服务器防火墙规则的详细信息。
-- **update**：更新 Azure MySQL 服务器防火墙规则。
+- update：更新 Azure MySQL 服务器防火墙规则。 
 
 ## <a name="sign-in-to-azure-and-list-your-azure-database-for-mysql-servers"></a>登录到 Azure，并列出 Azure Database for MySQL 服务器
-使用 az login 命令通过 Azure 帐户安全连接到 Azure CLI。
+使用 az login  命令通过 Azure 帐户安全连接到 Azure CLI。
 
 1. 从命令行运行以下命令：
     ```azurecli
@@ -69,11 +69,11 @@ ms.locfileid: "64854749"
     ```
 
 ## <a name="list-firewall-rules-on-azure-database-for-mysql-server"></a>列出 Azure Database for MySQL 服务器上的防火墙规则 
-使用服务器名称和资源组名称，列出服务器上现有的服务器防火墙规则。 使用 [az mysql server firewall list](/cli/mysql/server/firewall-rule#az-mysql-server-firewall-rule-list) 命令。  请注意，应在“--server”开关（而不是在“--name”开关）中指定服务器名称属性。 
+使用服务器名称和资源组名称，列出服务器上现有的服务器防火墙规则。 使用 [az mysql server firewall list](/cli/mysql/server/firewall-rule#az-mysql-server-firewall-rule-list) 命令。  请注意，应在“--server”开关（而不是在“--name”开关）中指定服务器名称属性   。 
 ```azurecli
 az mysql server firewall-rule list --resource-group myresourcegroup --server-name mydemoserver
 ```
-输出会默认采用 JSON 格式列出规则（如果有）。 可使用“--output table”开关，以更具可读性的表格格式输出结果。
+输出会默认采用 JSON 格式列出规则（如果有）。 可使用“--output table”  开关，以更具可读性的表格格式输出结果。
 ```azurecli
 az mysql server firewall-rule list --resource-group myresourcegroup --server-name mydemoserver --output table
 ```

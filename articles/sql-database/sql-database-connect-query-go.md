@@ -14,10 +14,10 @@ manager: digimobile
 origin.date: 02/12/2019
 ms.date: 08/19/2019
 ms.openlocfilehash: cffc469346eb0838dd25324eab23a9b2d6c74dbe
-ms.sourcegitcommit: 52ce0d62ea704b5dd968885523d54a36d5787f2d
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "69544386"
 ---
 # <a name="quickstart-use-golang-to-query-an-azure-sql-database"></a>快速入门：使用 Golang 查询 Azure SQL 数据库
@@ -28,7 +28,7 @@ ms.locfileid: "69544386"
 
 要完成本教程，需要：
 
-- Azure SQL 数据库。 可以根据下述快速入门中的一个的说明在 Azure SQL 数据库中创建数据库，然后对其进行配置：
+- Azure SQL 数据库。 可以根据下述快速入门之一，在 Azure SQL 数据库中创建数据库，然后对其进行配置：
 
   || 单一数据库 | 托管实例 |
   |:--- |:--- |:---|
@@ -48,7 +48,7 @@ ms.locfileid: "69544386"
 
   - **MacOS**：安装 Homebrew 和 Golang。 请参阅[步骤 1.2](https://www.microsoft.com/sql-server/developer-get-started/go/mac/)。
   - **Ubuntu**：安装 Golang。 请参阅[步骤 1.2](https://www.microsoft.com/sql-server/developer-get-started/go/ubuntu/)。
-  - Windows  ：安装 Golang。 请参阅[步骤 1.2](https://www.microsoft.com/sql-server/developer-get-started/go/windows/)。
+  - **Windows**：安装 Golang。 请参阅[步骤 1.2](https://www.microsoft.com/sql-server/developer-get-started/go/windows/)。
 
 ## <a name="get-sql-server-connection-information"></a>获取 SQL Server 连接信息
 
@@ -307,7 +307,7 @@ ms.locfileid: "69544386"
 
 ## <a name="run-the-code"></a>运行代码
 
-1. 在命令提示符处运行以下命令。
+1. 在命令提示符下运行以下命令。
 
    ```bash
    go run sample.go

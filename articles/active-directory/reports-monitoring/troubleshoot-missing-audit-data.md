@@ -18,11 +18,11 @@ ms.date: 08/28/2018
 ms.author: v-junlch
 ms.reviewer: dhanyahk
 ms.openlocfilehash: 4c246a56d879826d673ace55d8c06b59d9924a01
-ms.sourcegitcommit: d75065296d301f0851f93d6175a508bdd9fd7afc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52648100"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63822798"
 ---
 # <a name="troubleshoot-missing-data-in-the-azure-active-directory-activity-logs"></a>故障排除：Azure Active Directory 活动日志中缺少数据 
 
@@ -32,7 +32,7 @@ ms.locfileid: "52648100"
 
 我在 Azure 门户中执行了一些操作，本应在`Activity logs > Audit Logs`边栏选项卡中看到这些操作的审核日志，但却找不到。
 
- ![报告](./media/troubleshoot-missing-audit-data/01.png)
+ ![报表](./media/troubleshoot-missing-audit-data/01.png)
  
 ### <a name="cause"></a>原因
 

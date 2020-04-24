@@ -13,10 +13,10 @@ ms.date: 05/14/2019
 ms.author: v-junlch
 ms.custom: seodec18
 ms.openlocfilehash: 939c6e7aca8c7723aef815ffaa92c2da2f699634
-ms.sourcegitcommit: 9235a1f313393f21b5c42cb7a1626b1b93feb8be
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "65598914"
 ---
 # <a name="quickstart-analyze-a-remote-image-using-the-rest-api-and-javascript-in-computer-vision"></a>快速入门：使用计算机视觉中的 REST API 和 JavaScript 分析远程图像
@@ -41,7 +41,7 @@ ms.locfileid: "65598914"
 1. 将代码保存为以 `.html` 为扩展名的文件。 例如，`analyze-image.html`。
 1. 打开一个浏览器窗口。
 1. 在浏览器中，将文件拖放到浏览器窗口。
-1. 在浏览器中显示网页时，选择“分析图像”按钮。
+1. 在浏览器中显示网页时，选择“分析图像”按钮  。
 
 ```html
 <!DOCTYPE html>
@@ -135,7 +135,7 @@ Image to analyze:
 
 ## <a name="examine-the-response"></a>检查响应
 
-成功的响应以 JSON 格式返回。 示例网页会在浏览器窗口中分析和显示成功响应，如下例所示：
+成功响应将以 JSON 格式返回。 示例网页会在浏览器窗口中分析和显示成功响应，如下例所示：
 
 ```json
 {

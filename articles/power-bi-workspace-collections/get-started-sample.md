@@ -12,11 +12,11 @@ origin.date: 02/15/2019
 ms.date: 03/05/2019
 ms.author: v-junlch
 ms.openlocfilehash: caa1811ae358bac7abd3fcb73958701205c0ef17
-ms.sourcegitcommit: 07a24e9a846705df3b98fc8ff193ec7d9ec913dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58408263"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63825948"
 ---
 # <a name="get-started-with-power-bi-workspace-collections-sample"></a>Power BI 工作区集合入门示例
 
@@ -43,13 +43,13 @@ ms.locfileid: "58408263"
 
     >[!IMPORTANT]
     > 本示例中的某些 URL 只能在全球环境中使用。 若要在 Azure 中国区环境中使用它，必须执行一些替换。
-    > 例如：将 https://api.powerbi.com 替换为 https://api.powerbi.cn，将 https://management.azure.com 替换为文件 \ProvisionSample\App.config 中的 https://management.chinacloudapi.cn，将 https://management.core.windows.net 替换为文件 \ProvisionSample\Program.cs 中的 https://management.core.chinacloudapi.cn，将 https://login.windows.net 替换为文件\ProvisionSample\ProgramExtensions.cs 中的 https://login.chinacloudapi.cn。 有关全球环境与中国区环境中 URL 的差别的详细信息，请参阅 [此文](/articles/developerdifferences)。
+    > 例如：将 https://api.powerbi.com 替换为 https://api.powerbi.cn ，将 https://management.azure.com 替换为文件 \ProvisionSample\App.config 中的 https://management.chinacloudapi.cn ，将 https://management.core.windows.net 替换为文件 \ProvisionSample\Program.cs 中的 https://management.core.chinacloudapi.cn ，将 https://login.windows.net 替换为文件\ProvisionSample\ProgramExtensions.cs 中的 https://login.chinacloudapi.cn 。 有关全球环境与中国区环境中 URL 的差别的详细信息，请参阅 [此文](/articles/developerdifferences)。
 
 2. 在 Visual Studio 中打开“PowerBI embedded.sln”  。 可能需要在 NuGet 程序包管理器控制台中执行 **Update-Package** 命令来更新此解决方案中使用的程序包。
 3. 生成解决方案。
 4. 运行“ProvisionSample”  控制台应用。 在示例控制台应用中，预配一个工作区并导入 PBIX 文件。
-5. 要预配新的工作区，请选择选项 1“收集管理”，并选择选项 6“预配新的工作区”
-6. 要导入新的“报表”，请选择选项 2“报表管理”，然后选择选项 3“将 PBIX 桌面文件导入到工作区”。
+5. 要预配新的工作区  ，请选择选项 1“收集管理”  ，并选择选项 6“预配新的工作区” 
+6. 要导入新的“报表”  ，请选择选项 2“报表管理”  ，然后选择选项 3“将 PBIX 桌面文件导入到工作区”  。
 
 7. 输入**工作区集合**名称和**访问密钥**。 可以通过 **Azure 门户**获取这些信息。 若要详细了解如何获取**访问密钥**，请参阅“Power BI Embedded 入门”中的[查看 Power BI API 访问密钥](get-started.md#view-power-bi-api-access-keys)。
 
@@ -57,7 +57,7 @@ ms.locfileid: "58408263"
 8. 复制并保存新创建的 **工作区 ID** 以便在本文后面部分使用。 创建**工作区 ID** 之后，可以在 **Azure 门户**中找到该数据。
 
     ![Azure 门户中的工作区 ID](./media/get-started-sample/workspace-id.png)
-9. 要将 PBIX 文件导入到**工作区**，请选择选项 6 **。**“将 PBIX 文件导入到现有工作区”。 如果没有现有的 PBIX 文件，则可以下载 [Retail Analysis Sample PBIX](https://go.microsoft.com/fwlink/?LinkID=780547)（零售分析示例 PBIX）。
+9. 要将 PBIX 文件导入到**工作区**，请选择选项 6 **。** “将 PBIX 文件导入到现有工作区”。 如果没有现有的 PBIX 文件，则可以下载 [Retail Analysis Sample PBIX](https://go.microsoft.com/fwlink/?LinkID=780547)（零售分析示例 PBIX）。
 10. 如果出现提示，请为**数据集**输入一个易记的名称。
 
 应该会看到如下所示的响应：
@@ -76,7 +76,7 @@ Checking import state... Succeeded
 
 Web 应用示例是一个示例应用程序，用于呈现**工作区**中导入的报表。 下面介绍了如何配置 Web 应用示例。
 
-1. 在 **PowerBI Embedded** Visual Studio 解决方案中，右键单击“EmbedSample”Web 应用程序，并选择“设为启动项目”。
+1. 在 **PowerBI Embedded** Visual Studio 解决方案中，右键单击“EmbedSample”  Web 应用程序，并选择“设为启动项目”  。
 2. 在 **web.config** 中，在 **EmbedSample** Web 应用程序中，编辑 **appSettings**：**AccessKey**、**WorkspaceCollection** 名称和 **WorkspaceId**。
 
     ```xml
@@ -89,7 +89,7 @@ Web 应用示例是一个示例应用程序，用于呈现**工作区**中导入
     ```
 3. 运行 **EmbedSample** Web 应用程序。
 
-运行 **EmbedSample** Web 应用程序后，左侧的导航面板应包含“报表”菜单。 如果要查看导入的报表，请展开“报表” ，并单击任一报表。 如果已导入了 [Retail Analysis Sample PBIX](https://go.microsoft.com/fwlink/?LinkID=780547)（零售分析示例 PBIX），则示例 Web 应用将如下所示：
+运行 **EmbedSample** Web 应用程序后，左侧的导航面板应包含“报表”菜单。  如果要查看导入的报表，请展开“报表”  ，并单击任一报表。 如果已导入了 [Retail Analysis Sample PBIX](https://go.microsoft.com/fwlink/?LinkID=780547)（零售分析示例 PBIX），则示例 Web 应用将如下所示：
 
 ![示例应用程序中的示例左导航栏](./media/get-started-sample/sample-left-nav.png)
 

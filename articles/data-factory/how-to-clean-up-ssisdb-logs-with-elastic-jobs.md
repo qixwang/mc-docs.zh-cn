@@ -14,10 +14,10 @@ ms.author: v-jay
 ms.reviewer: douglasl
 manager: digimobile
 ms.openlocfilehash: 3d829ce3c7b3c38043fdaf5d952976778cabc349
-ms.sourcegitcommit: 5191c30e72cbbfc65a27af7b6251f7e076ba9c88
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "67570539"
 ---
 # <a name="clean-up-ssisdb-logs-with-azure-elastic-database-jobs"></a>使用 Azure 弹性数据库作业清理 SSISDB 日志

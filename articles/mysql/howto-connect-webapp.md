@@ -8,10 +8,10 @@ ms.topic: conceptual
 origin.date: 5/21/2019
 ms.date: 07/15/2019
 ms.openlocfilehash: fcf480e7c84a8175b5f2c4269dcbcac1ffcdc7db
-ms.sourcegitcommit: f4351979a313ac7b5700deab684d1153ae51d725
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "67845102"
 ---
 # <a name="connect-an-existing-azure-app-service-to-azure-database-for-mysql-server"></a>将现有的 Azure 应用服务连接到 Azure Database for MySQL 服务器
@@ -21,8 +21,8 @@ ms.locfileid: "67845102"
 
 本主题将说明如何将现有的 Azure App Service 连接到 Azure Database for MySQL 服务器。
 
-## <a name="before-you-begin"></a>准备阶段
-登录到 [Azure 门户](https://portal.azure.cn)。 创建 Azure Database for MySQL 服务器。 有关详细信息，请参阅[如何在门户中创建 Azure Database for MySQL 服务器](quickstart-create-mysql-server-database-using-azure-portal.md)或[如何使用 CLI 创建 Azure Database for MySQL 服务器](quickstart-create-mysql-server-database-using-azure-cli.md)。
+## <a name="before-you-begin"></a>开始之前
+登录 [Azure 门户](https://portal.azure.cn)。 创建 Azure Database for MySQL 服务器。 有关详细信息，请参阅[如何在门户中创建 Azure Database for MySQL 服务器](quickstart-create-mysql-server-database-using-azure-portal.md)或[如何使用 CLI 创建 Azure Database for MySQL 服务器](quickstart-create-mysql-server-database-using-azure-cli.md)。
 
 当前有两种解决方案，都允许从 Azure 应用服务访问 Azure Database for MySQL。 这两种解决方案都涉及设置服务器级别的防火墙规则。
 

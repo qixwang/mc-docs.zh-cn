@@ -1,3 +1,11 @@
+---
+ms.openlocfilehash: 013df3c4aea840a31cc4abc8984b5ed8963d27ca
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63860535"
+---
 ### <a name="create-a-nodejs-application"></a>创建 Node.js 应用程序
 
 创建一个名为 `sender.js` 的新 JavaScript 文件。
@@ -7,7 +15,7 @@
 从项目文件夹中的 Node 命令提示符运行 `npm install hyco-ws`。
 
 ### <a name="write-some-code-to-send-messages"></a>编写一些代码来发送消息
-1. 在 `sender.js` 文件的顶部，添加以下`constants`。
+1. 在 `constants` 文件的顶部，添加以下`sender.js`。
    
     ```js
     const WebSocket = require('hyco-ws');

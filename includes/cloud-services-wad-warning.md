@@ -1,9 +1,17 @@
+---
+ms.openlocfilehash: 519b2a673520e10dcbafb0c10482f866b5317c43
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63848043"
+---
 > [!WARNING]
 > 为现有角色启用诊断时，将禁用部署包时已设置的所有扩展。 其中包括：
 >
-> * Microsoft Monitoring Agent 诊断
+> * Microsoft 监视代理诊断
 > * Microsoft Azure 安全监视
-> * Microsoft Antimalware                 
+> * Microsoft 反恶意软件                 
 > * Microsoft Monitoring Agent
 > * Microsoft 服务探查器代理      
 > * Microsoft Azure 域扩展        

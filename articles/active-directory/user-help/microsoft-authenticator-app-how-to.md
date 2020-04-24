@@ -14,11 +14,11 @@ ms.date: 12/10/2018
 ms.author: v-junlch
 ms.reviewer: librown
 ms.openlocfilehash: 464140bc50739e1109109f9f1da4008e53e75751
-ms.sourcegitcommit: 6cd0a8d22061aba7390579a80e19cb9d2f7faf12
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53233785"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63849297"
 ---
 # <a name="get-started-with-the-microsoft-authenticator-app"></a>Microsoft 验证器应用入门
 
@@ -26,9 +26,9 @@ Microsoft Authenticator 应用可以帮助阻止未经授权的人员访问帐�
 
 将该应用用于双重验证时，它采用以下两种工作方式之一：
 
-- **通知。** 该应用会向设备发送一条通知。 请确保通知正确，然后选择“验证”。 如果无法识别该通知，请选择“拒绝”。 单击“拒绝”后，还可以将请求标记为欺骗性请求。
+- **通知。** 该应用会向设备发送一条通知。 请确保通知正确，然后选择“验证”。  如果无法识别该通知，请选择“拒绝”。  单击“拒绝”后，还可以将请求标记为欺骗性请求  。
 
-- **验证码。** 键入用户名和密码后，可以打开应用，并将“帐户”屏幕上提供的验证码复制到登录屏幕。 验证码充当第二种形式的身份验证。
+- **验证码。** 键入用户名和密码后，可以打开应用，并将“帐户”屏幕上提供的验证码复制到登录屏幕。  验证码充当第二种形式的身份验证。
 
 ## <a name="opt-in-for-two-step-verification"></a>针对双重验证选择加入
 
@@ -54,46 +54,46 @@ Microsoft Authenticator 应用适用于 [Android](https://go.microsoft.com/fwlin
 
 1. 如果可能，请在另一台电脑或设备上转到[其他安全性验证](https://account.activedirectory.windowsazure.cn/proofup.aspx?culture=en-US)屏幕。 有关如何转到此屏幕的信息，请参阅[更改安全设置](multi-factor-authentication-end-user-manage-settings.md#where-to-find-the-settings-page)，或者与管理员联系。
 
-2. 选择“移动应用”，然后选择“设置”。
+2. 选择“移动应用”，然后选择“设置”。  
 
     ![安全验证设置屏幕上的“配置”按钮](./media/microsoft-authenticator-app-how-to/auth-app-configure.png)
 
-    此时会出现“配置移动应用”屏幕，其中显示了要在 Authenticator 应用中扫描的 QR 码。
+    此时会出现“配置移动应用”屏幕，其中显示了要在 Authenticator 应用中扫描的 QR 码。 
 
     ![提供 QR 码的屏幕](./media/microsoft-authenticator-app-how-to/auth-app-barcode.png)
 
-3. 打开 Microsoft Authenticator 应用。 在“帐户”屏幕上，依次选择“添加帐户”、“工作或学校帐户”。
+3. 打开 Microsoft Authenticator 应用。 在“帐户”屏幕上，依次选择“添加帐户”、“工作或学校帐户”。   
 
-4. 使用设备的相机扫描 QR 码，然后选择“完成”关闭 QR 码屏幕。
+4. 使用设备的相机扫描 QR 码，然后选择“完成”关闭 QR 码屏幕。 
 
     >[!Note]
     >如果相机不能正常工作，可以[手动输入 QR 码和 URL](#add-an-account-to-the-app-manually)。
 
-    应用的“帐户”屏幕将显示你的帐户名，以及六位数的验证码。 为了提高安全性，验证码每隔 30 秒更改一次，以防止使用同一代码两次。  
+    应用的“帐户”屏幕将显示你的帐户名，以及六位数的验证码。  为了提高安全性，验证码每隔 30 秒更改一次，以防止使用同一代码两次。  
 
     ![帐户屏幕](./media/microsoft-authenticator-app-how-to/auth-app-accounts.png)
 
 ### <a name="add-an-account-to-the-app-manually"></a>手动将帐户添加到应用
 
-1. 转到“其他安全性验证”屏幕。 有关如何访问此屏幕的信息，请参阅[更改安全设置](multi-factor-authentication-end-user-manage-settings.md#where-to-find-the-settings-page)。
+1. 转到“其他安全性验证”屏幕。  有关如何访问此屏幕的信息，请参阅[更改安全设置](multi-factor-authentication-end-user-manage-settings.md#where-to-find-the-settings-page)。
 
-2. 选择“移动应用”，然后选择“设置”。
+2. 选择“移动应用”，然后选择“设置”。  
 
-    此时会显示“配置移动应用”屏幕。
+    此时会显示“配置移动应用”屏幕。 
 
-3. 复制“配置移动应用”屏幕中的代码和 URL 信息，以便可以手动将其键入到 QR 扫描程序中。
+3. 复制“配置移动应用”屏幕中的代码和 URL 信息，以便可以手动将其键入到 QR 扫描程序中。 
 
-4. 打开 Microsoft Authenticator 应用。 在“帐户”屏幕上，依次选择“添加帐户”、“工作或学校帐户”。
+4. 打开 Microsoft Authenticator 应用。 在“帐户”屏幕上，依次选择“添加帐户”、“工作或学校帐户”。   
 
-5. 在 QR 扫描程序屏幕中，选择“手动输入代码”。
+5. 在 QR 扫描程序屏幕中，选择“手动输入代码”  。
 
     ![用于扫描 QR 码的屏幕](./media/microsoft-authenticator-app-how-to/auth-app-manual-code.png)
    
-6. 将包含 QR 码的屏幕中的代码和 URL 键入到“添加帐户”屏幕，然后选择“完成”。
+6. 将包含 QR 码的屏幕中的代码和 URL 键入到“添加帐户”屏幕，然后选择“完成”。  
 
     ![用于输入代码和 URL 的屏幕](./media/microsoft-authenticator-app-how-to/auth-app-code-url.png)
 
-    应用的“帐户”屏幕将显示你的帐户名，以及六位数的验证码。 为了提高安全性，验证码每隔 30 秒更改一次，以防止使用同一代码两次。
+    应用的“帐户”屏幕将显示你的帐户名，以及六位数的验证码。  为了提高安全性，验证码每隔 30 秒更改一次，以防止使用同一代码两次。
 
 ### <a name="using-your-devices-fingerprint-or-facial-recognition-capabilities"></a>使用设备的指纹或面部识别功能
 
@@ -103,7 +103,7 @@ Microsoft Authenticator 应用适用于 [Android](https://go.microsoft.com/fwlin
 
 将帐户添加到应用后，可以使用该应用登录到帐户。
 
-如果选择在应用中使用验证码，则会在“帐户”页上看到验证码。 这些代码每隔 30 秒更改一次，以便在需要验证码时始终有新的验证码可用。 但是，在登录且系统提示输入验证码之前，不需要对它们执行任何操作。
+如果选择在应用中使用验证码，则会在“帐户”页上看到验证码。  这些代码每隔 30 秒更改一次，以便在需要验证码时始终有新的验证码可用。 但是，在登录且系统提示输入验证码之前，不需要对它们执行任何操作。
 
 ## <a name="next-steps"></a>后续步骤
 

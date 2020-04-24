@@ -16,32 +16,32 @@ origin.date: 05/18/2017
 ms.author: v-yiso
 ms.date: 03/19/2018
 ms.openlocfilehash: 228c2eab12b713eb107e2d775d5ce596b00485e9
-ms.sourcegitcommit: d75065296d301f0851f93d6175a508bdd9fd7afc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52653045"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63853489"
 ---
 # <a name="how-to-configure-auto-scaling-for-a-cloud-service-in-the-portal"></a>如何在门户中为云服务配置自动缩放
 
 针对云服务辅助角色设置条件，以触发横向缩减或扩展操作。 针对角色的条件可以基于 CPU、磁盘或角色的网络负载。 也可以基于消息队列或与订阅关联的其他一些 Azure 资源的指标来设置条件。
 
 > [!NOTE]
-> 本文着重于云服务 Web 和辅助角色。 如果直接创建虚拟机（经典），该虚拟机将托管在云服务中。 可以通过将标准虚拟机与[可用性集](../virtual-machines/windows/classic/configure-availability-classic.md)相关联来缩放标准虚拟机，并可以手动将其打开或关闭。
+> 本文着重于云服务 Web 和辅助角色。 如果直接创建虚拟机（经典），该虚拟机将托管在云服务中。 可以通过将标准虚拟机与[可用性集](../virtual-machines/windows/classic/configure-availability-classic.md)相关联来缩放标准虚拟机，并手动将其打开或关闭。
 
 ## <a name="considerations"></a>注意事项
 在配置应用程序的缩放之前，应考虑以下信息：
 
 - 缩放受内核使用情况影响。
 
-    角色实例越大，使用的核心越多。 只能在订阅的内核限制内缩放应用程序。 例如，假设订阅有 20 个核心的限制。 如果通过两个中等规模的云服务（一共 4 个核心）运行某个应用程序，则对于订阅中的其他云服务部署，只有 16 个核心的扩展空间。 有关大小的详细信息，请参阅[云服务的大小](./cloud-services-sizes-specs.md)。
+    角色实例越大，使用的内核越多。 只能在订阅的内核限制内缩放应用程序。 例如，假设订阅有 20 个核心的限制。 如果通过两个中等规模的云服务（一共 4 个核心）运行某个应用程序，则对于订阅中的其他云服务部署，只有 16 个核心的扩展空间。 有关大小的详细信息，请参阅[云服务的大小](./cloud-services-sizes-specs.md)。
 
 - 可以基于队列消息阈值来进行缩放。 有关如何使用队列的详细信息，请参阅[如何使用队列存储服务](../storage/queues/storage-dotnet-how-to-use-queues.md)。
 
 - 还可以缩放与订阅关联的其他资源。
 
 - 若要使应用程序具有高可用性，应确保为其部署两个或更多角色实例。 有关详细信息，请参阅[服务级别协议](https://www.azure.cn/support/legal/sla/)。
-- 仅当所有角色都处于**就绪**状态时才能自动缩放。  
+- 仅当所有角色都处于“就绪”状态时才能自动缩放  。  
 
 
 ## <a name="where-scale-is-located"></a>缩放位置
@@ -92,7 +92,7 @@ ms.locfileid: "52653045"
 配置了配置文件之后，请选择配置文件边栏选项卡底部的“确定”  按钮。
 
 #### <a name="rule"></a>规则
-规则添加到配置文件，代表触发缩放的条件。 
+规则将添加到配置文件，代表触发缩放的条件。 
 
 规则触发器基于云服务的指标（CPU 使用量、磁盘活动或网络活动），可以在其中添加条件值。 此外，也可以基于消息队列或与订阅关联的其他一些 Azure 资源的指标来设置触发器。
 
@@ -101,7 +101,7 @@ ms.locfileid: "52653045"
 配置规则之后，请选择规则边栏选项卡底部的“确定”  按钮。
 
 ## <a name="back-to-manual-scale"></a>返回到手动缩放
-导航到[缩放设置](#where-scale-is-located)，并将“缩放依据”  选项设置为“手动输入的实例计数”  。
+导航到 [缩放设置](#where-scale-is-located)，并将 **缩放方式** 选项设置为 **手动输入的实例计数**。
 
 ![包含配置文件和规则的云服务缩放设置](./media/cloud-services-how-to-scale-portal/manual-basics.png)
 

@@ -9,10 +9,10 @@ origin.date: 12/11/2018
 ms.date: 03/04/2019
 ms.author: v-jay
 ms.openlocfilehash: 1d8195c2bfcfbc55991a7be34bc2e7945e242fcc
-ms.sourcegitcommit: 193f49f19c361ac6f49c59045c34da5797ed60ac
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "68732291"
 ---
 在使用点到站点连接连接到 VNet 的每台客户端计算机上，必须安装客户端证书。 请从根证书生成它，然后将它安装在每个客户端计算机上。 如果未安装有效的客户端证书，则当客户端尝试连接到 VNet 时，身份验证会失败。

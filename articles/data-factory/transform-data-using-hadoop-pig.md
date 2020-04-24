@@ -13,10 +13,10 @@ author: WenJason
 ms.author: v-jay
 manager: digimobile
 ms.openlocfilehash: 931abbfa65cc0a895e060900f4e4529262cadcd2
-ms.sourcegitcommit: 5191c30e72cbbfc65a27af7b6251f7e076ba9c88
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "67569702"
 ---
 # <a name="transform-data-using-hadoop-pig-activity-in-azure-data-factory"></a>在 Azure 数据工厂中使用 Hadoop Pig 活动转换数据
@@ -54,16 +54,16 @@ ms.locfileid: "67569702"
 ```
 ## <a name="syntax-details"></a>语法详细信息
 
-| 属性            | 说明                              | 必须 |
+| properties            | 说明                              | 必选 |
 | ------------------- | ---------------------------------------- | -------- |
 | name                | 活动名称                     | 是      |
-| 说明         | 描述活动用途的文本 | 否       |
+| description         | 描述活动用途的文本 | 否       |
 | type                | 对于 Hive 活动，活动类型是 HDinsightPig | 是      |
 | linkedServiceName   | 引用在数据工厂中注册为链接服务的 HDInsight 群集。 若要了解此链接服务，请参阅[计算链接服务](compute-linked-services.md)一文。 | 是      |
 | scriptLinkedService | 对 Azure 存储链接服务的引用，该服务用于存储要执行的 Pig 脚本。 如果未指定此链接服务，则使用 HDInsight 链接服务中定义的 Azure 存储链接服务。 | 否       |
 | scriptPath          | 提供由 scriptLinkedService 引用的 Azure 存储中存储的脚本文件的路径。 文件名称需区分大小写。 | 否       |
-| getDebugInfo        | 指定何时将日志文件复制到 HDInsight 群集使用的（或者）scriptLinkedService 指定的 Azure 存储。 允许的值：None、Always 或 Failure。 默认值：无。 | 否       |
-| arguments           | 指定 Hadoop 作业的参数数组。 参数以命令行参数的形式传递到每个任务。 | 否       |
+| getDebugInfo        | 指定何时将日志文件复制到 HDInsight 群集使用的（或者）scriptLinkedService 指定的 Azure 存储。 允许的值：None、Always 或 Failure。 默认值：None。 | 否       |
+| 参数           | 指定 Hadoop 作业的参数数组。 参数以命令行参数的形式传递到每个任务。 | 否       |
 | 定义             | 在 Pig 脚本中指定参数作为键/值对，以供引用。 | 否       |
 
 ## <a name="next-steps"></a>后续步骤

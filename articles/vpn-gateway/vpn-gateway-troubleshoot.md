@@ -17,19 +17,19 @@ origin.date: 01/31/2018
 ms.date: 04/01/2018
 ms.author: v-jay
 ms.openlocfilehash: f3a684e8adc41442538cfeca219e35e3f7491d26
-ms.sourcegitcommit: b8fb6890caed87831b28c82738d6cecfe50674fd
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58627634"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63844630"
 ---
 # <a name="troubleshoot-vpn-gateway"></a>VPN 网关疑难解答
 
-VPN 网关连接可能会因多种原因而失败。 本文包含的链接有助于你开始进行疑难解答。 有关完整列表，请参阅本页左侧“疑难解答”下方的目录中包含的文章。
+VPN 网关连接可能会因多种原因而失败。 本文包含的链接有助于你开始进行疑难解答。 有关完整列表，请参阅本页左侧“疑难解答”下方的目录中包含的文章  。
 
 ## <a name="troubleshooting-scenarios-and-solutions"></a>方案和解决方案疑难解答
 
-* [验证 VNet 的 VPN 吞吐量](vpn-gateway-validate-throughput-to-vnet.md)<br>通过 VPN 网关连接，可以在 Azure 内的虚拟网络与本地 IT 基础结构之间创建安全的跨界连接。 本文将演示如何验证从本地资源到达 Azure 虚拟机 (VM) 的网络吞吐量。 还会提供故障排除指南。
+* [验证到达 VNet 的 VPN 吞吐量](vpn-gateway-validate-throughput-to-vnet.md)<br>通过 VPN 网关连接，可以在 Azure 内的虚拟网络与本地 IT 基础结构之间创建安全的跨界连接。 本文将演示如何验证从本地资源到达 Azure 虚拟机 (VM) 的网络吞吐量。 还会提供故障排除指南。
 
 * [VPN 和防火墙设备设置](vpn-gateway-third-party-settings.md)<br>本文针对与 VPN 网关一起使用的第三方 VPN 或防火墙设备提供了几种建议的解决方案。 对第三方 VPN 或防火墙设备的技术支持是由设备供应商提供的。
 

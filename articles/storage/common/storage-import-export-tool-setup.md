@@ -16,11 +16,11 @@ origin.date: 06/29/2017
 ms.date: 10/16/2017
 ms.author: v-johch
 ms.openlocfilehash: 6ee753fae84ad56b64584703812825adcd6c40ae
-ms.sourcegitcommit: d75065296d301f0851f93d6175a508bdd9fd7afc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52648773"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63844632"
 ---
 # <a name="setting-up-the-azure-importexport-tool"></a>设置 Azure 导入/导出工具
 
@@ -30,9 +30,9 @@ Azure 导入/导出工具是可与 Azure 导入/导出服务一起使用的驱�
 * 完成某个导入作业后，可以使用此工具修复已损坏、丢失或与其他 Blob 冲突的任何 Blob。
 * 通过某个已完成的导出作业收到驱动器后，可以使用此工具修复这些驱动器上已损坏或丢失的任何文件。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
-若要为导入作业准备驱动器，必须满足以下先决条件：
+若要为导入作业准备驱动器  ，必须满足以下先决条件：
 
 * 必须拥有一个有效的 Azure 订阅。
 * 该订阅必须包含一个存储帐户，其中有足够的可用空间可存储所要导入的文件。
@@ -43,12 +43,12 @@ Azure 导入/导出工具是可与 Azure 导入/导出服务一起使用的驱�
 * 需要一个或多个已连接到复制计算机的空 2.5 英寸或 3.5 英寸 SATA II、III 或 SSD 硬盘。
 * 打算导入的文件必须可从复制计算机访问，无论这些文件是位于网络共享还是本地硬盘驱动器上。
 
-若要尝试修复部分失败的导入，需要：
+若要尝试  修复部分失败的导入，需要：
 
 * 复制日志文件
 * 存储帐户密钥
 
-若要尝试修复部分失败的导出，需要：
+若要尝试  修复部分失败的导出，需要：
 
 * 复制日志文件
 * 清单文件（可选）
@@ -56,7 +56,7 @@ Azure 导入/导出工具是可与 Azure 导入/导出服务一起使用的驱�
 
 ## <a name="installing-the-azure-importexport-tool"></a>安装 Azure 导入/导出工具
 
-首先，[下载 Azure 导入/导出工具](https://www.microsoft.com/download/details.aspx?id=55280)，并将其提取到计算机上的某个目录，如 `c:\WAImportExport`。
+首先，请[下载 Azure 导入/导出工具](https://www.microsoft.com/download/details.aspx?id=55280)，并将其解压缩到计算机上的某个目录，如 `c:\WAImportExport`。
 
 Azure 导入/导出工具由以下文件组成：
 

@@ -13,10 +13,10 @@ ms.date: 06/06/2019
 ms.author: v-junlch
 ms.custom: seodec18
 ms.openlocfilehash: c5a47993399d819fbaf029247d43fd6beab2130c
-ms.sourcegitcommit: 259c97c9322da7add9de9f955eac275d743c9424
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "66830065"
 ---
 # <a name="quickstart-extract-handwritten-text-using-the-computer-vision-c-sdk"></a>快速入门：使用计算机视觉 C# SDK 提取手写文本
@@ -35,7 +35,7 @@ ms.locfileid: "66830065"
 
 1. 在 Visual Studio 中创建一个新的 Visual C# 控制台应用。
 1. 安装计算机视觉客户端库 NuGet 包。
-    1. 在菜单上，单击“工具”  ，然后依次选择“NuGet 包管理器”  、“管理解决方案的 NuGet 包”  。
+    1. 在菜单上，单击“工具”，然后依次选择“NuGet 包管理器”、“管理解决方案的 NuGet 包”    。
     1. 单击“浏览”  选项卡，在“搜索”  框中键入“Microsoft.Azure.CognitiveServices.Vision.ComputerVision”。
     1. 选择显示的 **Microsoft.Azure.CognitiveServices.Vision.ComputerVision**，单击项目名称旁边的复选框，然后单击“安装”  。
 1. 将 `Program.cs` 替换为以下代码。 `BatchReadFileAsync` 和 `BatchReadFileInStreamAsync` 方法分别为远程图像和本地图像包装[批量读取 API](https://dev.cognitive.azure.cn/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb)。 `GetReadOperationResultAsync` 方法包装[获取读取操作结果 API](https://dev.cognitive.azure.cn/docs/services/5adf991815e1060e6355ad44/operations/5be108e7498a4f9ed20bf96d)。

@@ -10,10 +10,10 @@ ms.topic: quickstart
 origin.date: 04/12/2018
 ms.date: 07/15/2019
 ms.openlocfilehash: 895b1d1fd9532c4e1b9dfacdbba744ab2da3c252
-ms.sourcegitcommit: f4351979a313ac7b5700deab684d1153ae51d725
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "67845110"
 ---
 # <a name="azure-database-for-mysql-use-connectorc-to-connect-and-query-data"></a>Azure Database for MySQL：使用 Connector/C++ 连接和查询数据

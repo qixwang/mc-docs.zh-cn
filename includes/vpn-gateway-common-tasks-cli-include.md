@@ -10,11 +10,11 @@ ms.date: 03/04/2019
 ms.author: v-jay
 ms.custom: include file
 ms.openlocfilehash: 8f0f72f980fb0ff8f9d365563aac7e50702d4f63
-ms.sourcegitcommit: dcd11929ada5035d127be1ab85d93beb72909dc3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56833223"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63849101"
 ---
 ### <a name="to-view-local-network-gateways"></a>查看本地网关
 
@@ -30,7 +30,7 @@ az network local-gateway list --resource-group TestRG1
 
 ### <a name="to-verify-the-shared-key-values"></a>验证共享密钥值
 
-验证共享密钥值与用于 VPN 设备配置的值是否相同。 如果不同，请使用设备提供的值再次运行链接，或者使用返回的值更新设备。 值必须匹配。 若要查看共享密钥，请使用 [az network vpn-connection-list](https://docs.microsoft.com/cli/azure/network/vpn-connection) 命令。
+验证共享密钥值与用于 VPN 设备配置的值是否相同。 如果不同，请使用设备提供的值再次运行链接，或者使用返回的值更新设备。 值必须匹配。 若要查看共享的密钥，请使用 [az network vpn-connection-list](https://docs.microsoft.com/cli/azure/network/vpn-connection)。
 
 ```azurecli
 az network vpn-connection shared-key show --connection-name VNet1toSite2 --resource-group TestRG1

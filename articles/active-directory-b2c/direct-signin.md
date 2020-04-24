@@ -12,10 +12,10 @@ ms.date: 07/23/2019
 ms.author: v-junlch
 ms.subservice: B2C
 ms.openlocfilehash: 9ff89861318b35baeec8d3f8a65bdf629cabf2f0
-ms.sourcegitcommit: e2af455871bba505d80180545e3c528ec08cb112
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "68391573"
 ---
 # <a name="set-up-direct-sign-in-using-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 设置直接登录

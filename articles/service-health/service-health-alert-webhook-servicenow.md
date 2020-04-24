@@ -14,10 +14,10 @@ origin.date: 06/10/2019
 ms.date: 08/05/2019
 ms.author: v-yiso
 ms.openlocfilehash: e931135efdb11926f1246f3cf62631265fafa116
-ms.sourcegitcommit: 021dbf0003a25310a4c8582a998c17729f78ce42
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "68514430"
 ---
 # <a name="send-azure-service-health-alerts-with-servicenow-using-webhooks"></a>使用 Webhook 通过 ServiceNow 发送 Azure 服务运行状况警报
@@ -45,7 +45,7 @@ ms.locfileid: "68514430"
 
     ![ServiceNow 中的“资源选项卡”](./media/webhook-alerts/servicenow-resources-tab.png)
 
-7.  为新资源 `event` **命名**，然后将“HTTP 方法”更改为 `POST`。 
+7.  为新资源 `event`**命名**，然后将“HTTP 方法”更改为 `POST`。 
 
 8.  在“脚本”  部分，添加以下 JavaScript 代码：
 

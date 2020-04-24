@@ -9,11 +9,11 @@ ms.date: 05/02/2018
 ms.author: clemensv
 ms.custom: include file
 ms.openlocfilehash: d0fd3e88bdb25fdfd430924ef6b7f571d070b733
-ms.sourcegitcommit: d75065296d301f0851f93d6175a508bdd9fd7afc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52650338"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63845472"
 ---
 ### <a name="create-a-nodejs-application"></a>创建 Node.js 应用程序
 
@@ -37,7 +37,7 @@ ms.locfileid: "52650338"
    3. `const keyrule` - SAS 密钥的名称。
    4. `const key` - SAS 密钥值。
 
-3. 将以下代码添加到 `listener.js` 文件。 :
+3. 将以下代码添加到 `listener.js` 文件。 解码的字符：
 
     可以发现，该代码与 Node.js 入门教程中提供的任何简单 HTTP 服务器示例并无太大不同，只是使用的是 `createRelayedServer` 而不是典型的 `createServer` 函数。
 

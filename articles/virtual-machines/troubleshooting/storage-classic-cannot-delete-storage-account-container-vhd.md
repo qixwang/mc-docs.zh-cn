@@ -10,10 +10,10 @@ origin.date: 01/11/2019
 ms.date: 05/20/2019
 ms.author: v-yeche
 ms.openlocfilehash: 8695c14f5d24503c433bc4093e862070ad0ad2fb
-ms.sourcegitcommit: 878a2d65e042b466c083d3ede1ab0988916eaa3d
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/17/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "65835803"
 ---
 # <a name="troubleshoot-classic-storage-resource-deletion-errors"></a>排查经典存储资源删除错误
@@ -43,7 +43,7 @@ ms.locfileid: "65835803"
 当用户尝试删除不再需要的经典存储帐户时，可能会看到以下行为。
 
 #### <a name="azure-portal"></a>Azure 门户 
-当用户在 [Azure 门户](https://portal.azure.cn)中导航到经典存储帐户并单击“删除”时，会看到以下消息： 
+当用户在 [Azure 门户](https://portal.azure.cn)中导航到经典存储帐户并单击“删除”时，会看到以下消息：  
 
 磁盘“已附加”到虚拟机
 
@@ -93,7 +93,7 @@ ms.locfileid: "65835803"
 #### <a name="azure-powershell"></a>Azure PowerShell 
 如果用户选择使用 PowerShell 进行删除，则会导致以下错误。 
 
-> <span style="color:cyan">**Remove-AzureStorageBlob -Context $context -Container vhds -Blob "classicvm-os-8698.vhd"**</span>
+> <span style="color:cyan">**Remove-AzureStorageBlob -Context $context -Container vhds -Blob "classicvm-os-8698.vhd"** </span>
 > 
 > <span style="color:red">Remove-AzureStorageBlob :远程服务器返回了错误：(412) Blob 中当前包含租约，但请求中未指定任何租约 ID。HTTP 状态代码：412 - HTTP 错误消息：Blob 中当前包含租约，但请求中未指定任何租约 ID。</span>
 

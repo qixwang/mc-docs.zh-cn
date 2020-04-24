@@ -19,10 +19,10 @@ ms.date: 06/10/2019
 ms.author: v-yeche
 ms.custom: ''
 ms.openlocfilehash: 216eb5d97da163504d76d321a174cb77de245ffe
-ms.sourcegitcommit: df1b896faaa87af1d7b1f06f1c04d036d5259cc2
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "66250335"
 ---
 # <a name="filter-network-traffic-with-a-network-security-group-using-the-azure-cli"></a>在 Azure CLI 中使用网络安全组筛选网络流量
@@ -34,11 +34,11 @@ ms.locfileid: "66250335"
 * 将虚拟机 (VM) 部署到子网中
 * 测试流量筛选器
 
-如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial)。
+如果没有 Azure 订阅，可在开始前创建一个 [试用帐户](https://www.azure.cn/pricing/1rmb-trial) 。
 
 [!INCLUDE [azure-cli-2-azurechinacloud-environment-parameter](../../includes/azure-cli-2-azurechinacloud-environment-parameter.md)]
 
-如果选择在本地安装并使用 CLI，本文要求运行 Azure CLI 2.0.28 或更高版本。 若要查找版本，请运行 `az --version`。 如果需要进行安装或升级，请参阅[安装 Azure CLI](https://docs.azure.cn/zh-cn/cli/install-azure-cli?view=azure-cli-latest)。 
+如果选择在本地安装并使用 CLI，本文要求运行 Azure CLI 2.0.28 或更高版本。 要查找版本，请运行 `az --version`。 如果需要进行安装或升级，请参阅[安装 Azure CLI](https://docs.azure.cn/zh-cn/cli/install-azure-cli?view=azure-cli-latest)。 
 
 ## <a name="create-a-network-security-group"></a>创建网络安全组
 
@@ -196,7 +196,7 @@ az vm create \
 
 ## <a name="test-traffic-filters"></a>测试流量筛选器
 
-使用以下命令来与 *myVmMgmt* VM 建立 SSH 会话。 将 \<publicIpAddress>  替换为 VM 的公共 IP 地址。 在上面的示例中，IP 地址为 *13.90.242.231*。
+使用以下命令来与 *myVmMgmt* VM 建立 SSH 会话。 将 *publicIpAddress>\<* 替换为 VM 的公共 IP 地址。 在上面的示例中，IP 地址为 *13.90.242.231*。
 
 ```bash 
 ssh azureuser@<publicIpAddress>
@@ -224,7 +224,7 @@ sudo apt-get -y update
 sudo apt-get -y install nginx
 ```
 
-允许 *myVmWeb* VM 向 Internet 发送出站流量以检索 nginx，因为默认安全规则允许发往 Internet 的所有出站流量。 退出 *myVmWeb* SSH 会话。随即会在 *myVmMgmt* VM 的 `username@myVmMgmt:~$` 提示符下退出。 若要从 *myVmWeb* VM 检索 nginx 欢迎屏幕，请输入以下命令：
+允许 *myVmWeb* VM 向 Internet 发送出站流量以检索 nginx，因为默认安全规则允许发往 Internet 的所有出站流量。 退出 *myVmWeb* SSH 会话。随即会在 `username@myVmMgmt:~$`myVmMgmt*VM 的* 提示符下退出。 若要从 *myVmWeb* VM 检索 nginx 欢迎屏幕，请输入以下命令：
 
 ```bash
 curl myVmWeb

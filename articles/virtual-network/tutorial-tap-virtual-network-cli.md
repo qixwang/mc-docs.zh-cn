@@ -17,10 +17,10 @@ origin.date: 03/18/2018
 ms.date: 06/03/2019
 ms.author: v-yeche
 ms.openlocfilehash: 82393f93825857f99f97f324da86bdabffeed7c1
-ms.sourcegitcommit: df1b896faaa87af1d7b1f06f1c04d036d5259cc2
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "66250567"
 ---
 # <a name="work-with-a-virtual-network-tap-using-the-azure-cli"></a>通过 Azure CLI 使用虚拟网络 TAP

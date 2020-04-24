@@ -17,10 +17,10 @@ ms.date: 08/05/2019
 ms.author: v-junlch
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: eaf67a70061b32ad34f221d1b072c5abeb59cd3e
-ms.sourcegitcommit: 461c7b2e798d0c6f1fe9c43043464080fb8e8246
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "68818619"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-storage-via-access-key"></a>教程：使用 Linux VM 系统分配的托管标识通过访问密钥访问 Azure 存储
@@ -33,7 +33,7 @@ ms.locfileid: "68818619"
 > * 授予 VM 对资源管理器中存储帐户访问密钥的访问权限 
 > * 使用 VM 的标识获取一个访问令牌，并使用它从资源管理器检索存储访问密钥  
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 [!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
 
@@ -44,7 +44,7 @@ ms.locfileid: "68818619"
 1. 单击 Azure 门户左上角的“+/创建新服务”按钮。 
 2. 依次单击“存储”  、“存储帐户”  ，并将显示新的“创建存储帐户”面板。
 3. 输入存储帐户的**名称**，稍后将使用该名称。  
-4. “部署模型”和“帐户类型”应分别设置为“资源管理器”和“通用”。   
+4. **部署模型**和**帐户类型**应分别设置为“资源管理器”和“通用”。 
 5. 确保“订阅”和“资源组”与上一步中创建 VM 时指定的名称匹配。  
 6. 单击“创建”。 
 

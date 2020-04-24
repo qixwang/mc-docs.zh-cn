@@ -10,10 +10,10 @@ ms.date: 08/08/2019
 ms.author: v-junlch
 ms.custom: include file
 ms.openlocfilehash: b970d392902e349a83b607ca6bdc48e38c90d865
-ms.sourcegitcommit: 44548f2ebec1246f6ac799f5b2640ad1b5d7c8a9
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "68973099"
 ---
 ## <a name="create-one-or-more-access-reviews"></a>创建一个或多个访问评审

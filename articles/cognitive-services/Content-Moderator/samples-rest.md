@@ -12,11 +12,11 @@ origin.date: 01/10/2019
 ms.date: 02/20/2019
 ms.author: v-junlch
 ms.openlocfilehash: 1e5fde82f9ae08b97701667f22feca581cd59c3a
-ms.sourcegitcommit: 3ae99942621d28a8439ca1e7a7905caa5a3a10f9
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56582768"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63824867"
 ---
 # <a name="content-moderator-rest-samples-in-c"></a>采用 C# 的内容审查器 REST 示例
 
@@ -28,6 +28,6 @@ ms.locfileid: "56582768"
 - [图像评审](https://github.com/MicrosoftContentModerator/ContentModerator-API-Samples/tree/master/ImageReviews)
 - [图像作业](https://github.com/MicrosoftContentModerator/ContentModerator-API-Samples/tree/master/ImageJob)
 
-有关这些示例的演练，请参阅[按需网络研讨会](https://info.microsoft.com/cognitive-services-content-moderator-ondemand.html)。
+有关这些示例的演练，请观看[点播网络研讨会](https://info.microsoft.com/cognitive-services-content-moderator-ondemand.html)。
 
 <!-- Update_Description: wording update -->

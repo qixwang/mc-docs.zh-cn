@@ -8,10 +8,10 @@ ms.topic: conceptual
 origin.date: 5/6/2019
 ms.date: 05/20/2019
 ms.openlocfilehash: 3e1717f2cc28b765b98712a0d45ec186cda1cd83
-ms.sourcegitcommit: 11d81f0e4350a72d296e5664c2e5dc7e5f350926
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "65732011"
 ---
 # <a name="optimize-autovacuum-on-an-azure-database-for-postgresql---single-server"></a>在 Azure Database for PostgreSQL - 单一服务器中优化 autovacuum
@@ -20,7 +20,7 @@ ms.locfileid: "65732011"
 ## <a name="overview-of-autovacuum"></a>Autovacuum 概述
 PostgreSQL 使用多版本并发控制 (MVCC) 实现更高的数据库并发性。 每次更新都会导致插入和删除，而每次删除都会导致要删除的行被软标记。 软标记用于标识随后要清除的死元组。 为执行这些任务，PostgreSQL 将运行一个清扫作业。
 
-清扫作业可以手动触发或自动触发。 在数据库进行大量更新或删除操作时，死元组会更多。 数据库空闲时，死元组较少。 数据库负载过大时，需要更频繁地运行清扫作业，因此手动运行清扫作业会有所不便。
+清扫作业可以手动触发或自动触发。 在数据库进行大量更新或删除操作时，死元组会更多。 数据库空闲时，死元组较少。 数据库负载过大时，需要更频繁地运行清扫作业，因此手动运行清扫作业会有所不便  。
 
 可以配置 autovacuum 并从优化中获益。 PostgreSQL 附带的默认值尝试确保产品在所有类型的设备上正常运行。 这些设备包括 Raspberry Pi。 理想的配置值取决于：
 - 可用资源总数，例如 SKU 和存储大小。

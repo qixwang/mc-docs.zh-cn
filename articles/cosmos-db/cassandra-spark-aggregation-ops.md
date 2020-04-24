@@ -10,11 +10,11 @@ ms.topic: conceptual
 origin.date: 09/24/2018
 ms.date: 04/15/2019
 ms.openlocfilehash: af06ef96ff141122259a7d8ec6a7912f7251e7db
-ms.sourcegitcommit: f85e05861148b480d6c9ea95ce84a17145872442
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59615145"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63856955"
 ---
 <!--Verify sucessfully-->
 # <a name="aggregate-operations-on-azure-cosmos-db-cassandra-api-tables-from-spark"></a>Spark 上的 Azure Cosmos DB Cassandra API 表聚合操作 

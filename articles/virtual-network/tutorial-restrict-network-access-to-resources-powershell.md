@@ -19,10 +19,10 @@ ms.date: 07/22/2019
 ms.author: v-yeche
 ms.custom: ''
 ms.openlocfilehash: 1d59832ec0e3d8b98613861ce0fbfc036f767e5b
-ms.sourcegitcommit: 021dbf0003a25310a4c8582a998c17729f78ce42
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "68514436"
 ---
 # <a name="restrict-network-access-to-paas-resources-with-virtual-network-service-endpoints-using-powershell"></a>使用 PowerShell 通过虚拟网络服务终结点限制对 PaaS 资源的网络访问
@@ -100,7 +100,7 @@ $virtualNetwork | Set-AzVirtualNetwork
 
 ## <a name="restrict-network-access-for-a-subnet"></a>限制子网的网络访问
 
-使用 [New-AzNetworkSecurityRuleConfig](https://docs.microsoft.com/powershell/module/az.network/new-aznetworksecurityruleconfig) 创建网络安全组安全规则。 以下规则允许对分配给 Azure 存储服务的公用 IP 地址进行出站访问： 
+使用 [New-AzNetworkSecurityRuleConfig](https://docs.microsoft.com/powershell/module/az.network/new-aznetworksecurityruleconfig) 创建网络安全组安全规则。 以下规则允许对分配给 Azure 存储服务的公共 IP 地址进行出站访问： 
 
 ```powershell
 $rule1 = New-AzNetworkSecurityRuleConfig `
@@ -115,7 +115,7 @@ $rule1 = New-AzNetworkSecurityRuleConfig `
   -SourcePortRange *
 ```
 
-以下规则拒绝对所有公用 IP 地址的访问。 上一个规则将替代此规则，因为它的优先级更高，上一个规则允许对 Azure 存储的公用 IP 地址进行访问。
+以下规则拒绝对所有公共 IP 地址的访问。 上一个规则将替代此规则，因为它的优先级更高，上一个规则允许对 Azure 存储的公共 IP 地址进行访问。
 
 ```powershell
 $rule2 = New-AzNetworkSecurityRuleConfig `
@@ -267,7 +267,7 @@ Id     Name            PSJobTypeName   State         HasMoreData     Location   
 1      Long Running... AzureLongRun... Running       True            localhost            New-AzVM     
 ```
 
-### <a name="create-the-second-virtual-machine"></a>创建第二台虚拟机
+### <a name="create-the-second-virtual-machine"></a>创建第二个虚拟机
 
 在 *Private* 子网中创建一台虚拟机：
 
@@ -309,7 +309,7 @@ $credential = New-Object System.Management.Automation.PSCredential -ArgumentList
 New-PSDrive -Name Z -PSProvider FileSystem -Root "\\<storage-account-name>.file.core.chinacloudapi.cn\my-file-share" -Credential $credential
 ```
 
-PowerShell 将返回类似于以下示例输出的输出：
+PowerShell 将返回类似于以下示例的输出：
 
 ```powershell
 Name           Used (GB)     Free (GB) Provider      Root
@@ -319,19 +319,19 @@ Z                                      FileSystem    \\vnt.file.core.chinaclouda
 
 Azure 文件共享已成功映射到驱动器 Z。
 
-确认 VM 没有到任何其他公用 IP 地址的出站连接：
+确认 VM 没有到任何其他公共 IP 地址的出站连接：
 
 ```powershell
 ping bing.com
 ```
 
-不会收到回复，因为除了分配给 Azure 存储服务的地址以外，关联到“专用”子网的网络安全组不允许与其他公共 IP 地址建立出站访问。 
+你不会收到回复，因为除了分配给 Azure 存储服务的地址之外，关联到 *Private* 子网的网络安全组不允许对其他公共 IP 地址的出站访问。
 
 关闭与 *myVmPrivate* VM 建立的远程桌面会话。
 
 ## <a name="confirm-access-is-denied-to-storage-account"></a>确认已拒绝对存储帐户的访问
 
-获取 *myVmPublic* VM 的公用 IP 地址：
+获取 *myVmPublic* VM 的公共 IP 地址：
 
 ```powershell
 Get-AzPublicIpAddress `
@@ -354,7 +354,7 @@ $credential = New-Object System.Management.Automation.PSCredential -ArgumentList
 New-PSDrive -Name Z -PSProvider FileSystem -Root "\\<storage-account-name>.file.core.chinacloudapi.cn\my-file-share" -Credential $credential
 ```
 
-对该共享的访问被拒绝，并且将收到 `New-PSDrive : Access is denied` 错误。 访问被拒绝，因为 *myVmPublic* VM 部署在 *Public* 子网中。 “公共”子网没有为 Azure 存储启用服务终结点，并且存储帐户仅允许来自“专用”子网的网络访问，不允许来自“公共”子网的网络访问。   
+对该共享的访问被拒绝，并且将收到 `New-PSDrive : Access is denied` 错误。 访问被拒绝，因为 *myVmPublic* VM 部署在“公共”子网中。  “公共”子网没有为 Azure 存储启用服务终结点，并且存储帐户仅允许来自“专用”子网的网络访问，不允许来自“公共”子网的网络访问。   
 
 关闭与 *myVmPublic* VM 建立的远程桌面会话。
 

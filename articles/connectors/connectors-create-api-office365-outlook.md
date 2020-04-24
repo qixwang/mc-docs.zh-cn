@@ -13,11 +13,11 @@ ms.reviewer: klam, LADocs
 ms.suite: integration
 tags: connectors
 ms.openlocfilehash: 80c3674e8eea6c98a0020508193439aa368ca072
-ms.sourcegitcommit: d75065296d301f0851f93d6175a508bdd9fd7afc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52646358"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63857428"
 ---
 # <a name="get-started-with-the-office-365-outlook-connector"></a>Office 365 Outlook 连接器入门
 Office 365 Outlook 连接器在 Office 365 中启用与 Outlook 的交互。 使用此连接器创建、编辑和更新联系人和日历项，还可以获取、发送和回复电子邮件。

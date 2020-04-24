@@ -17,11 +17,11 @@ origin.date: 08/30/2017
 ms.date: 02/26/2019
 ms.author: v-junlch
 ms.openlocfilehash: d56d89f7b1f5aa3785822163c83c6a999d091afb
-ms.sourcegitcommit: 1e5ca29cde225ce7bc8ff55275d82382bf957413
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56903183"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63856887"
 ---
 # <a name="get-details-of-an-azure-cache-for-redis"></a>获取 Azure Redis 缓存的详细信息
 
@@ -43,7 +43,7 @@ az redis show --name contosoCache --resource-group contosoGroup
 
 此脚本使用以下命令检索 Azure Redis 缓存实例的详细信息。 表中的每条命令均链接到特定于命令的文档。
 
-| 命令 | 注释 |
+| Command | 说明 |
 |---|---|
 | [az redis show](/cli/redis) | 检索 Azure Redis 缓存实例的详细信息。 |
 

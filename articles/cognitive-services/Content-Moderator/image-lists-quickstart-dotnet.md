@@ -12,10 +12,10 @@ origin.date: 07/03/2019
 ms.date: 07/10/2019
 ms.author: v-junlch
 ms.openlocfilehash: f1e9d16cdb286d853c83f8be27b146bb506a6e69
-ms.sourcegitcommit: 8f49da0084910bc97e4590fc1a8fe48dd4028e34
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "67844942"
 ---
 # <a name="moderate-with-custom-image-lists-in-c"></a>在 C# 中通过自定义图像列表进行审查
@@ -43,7 +43,7 @@ ms.locfileid: "67844942"
 
 ## <a name="create-your-visual-studio-project"></a>创建 Visual Studio 项目
 
-1. 向解决方案添加新的“控制台应用 (.NET Framework)”项目  。
+1. 向解决方案添加新的“控制台应用(.NET Framework)”  项目。
 
    在示例代码中，将项目命名为“ImageLists”  。
 
@@ -599,7 +599,7 @@ private static IList<ImageList> GetAllListIds(ContentModeratorClient client)
 
 ## <a name="add-code-to-simulate-the-use-of-an-image-list"></a>添加代码以模拟使用图像列表
 
-将以下代码添加到 Main 方法  。 此代码将模拟在定义和管理列表以及使用列表来屏蔽图像时执行的诸多操作。 日志记录功能允许你查看通过 SDK 调用内容审查器服务生成的响应对象。
+将以下代码添加到 Main 方法  。 此代码将模拟在定义和管理列表以及使用列表来屏蔽图像时执行的诸多操作。 借助日志记录功能，可以查看通过对内容审查器服务执行 SDK 调用生成的响应对象。
 
 ```csharp
 // Create the text writer to use for logging, and cache a static reference to it.
@@ -669,7 +669,7 @@ Console.WriteLine("Press any key to exit...");
 Console.ReadKey();
 ```
 
-## <a name="run-the-program-and-review-the-output"></a>运行程序并检查输出
+## <a name="run-the-program-and-review-the-output"></a>运行程序并查看输出
 
 列表 ID 和图像内容 ID 在每次运行应用程序时都是不同的。
 由程序写入的日志文件具有以下输出：

@@ -11,11 +11,11 @@ origin.date: 04/17/2018
 ms.date: 10/15/2018
 ms.author: v-jay
 ms.openlocfilehash: f36b1da0169811876b76ca38a4fe9c28ef6852d6
-ms.sourcegitcommit: d75065296d301f0851f93d6175a508bdd9fd7afc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52645762"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63824967"
 ---
 # <a name="using-labels-to-instrument-queries-in-azure-sql-data-warehouse"></a>在 Azure SQL 数据仓库中使用标签检测查询
 有关在开发解决方案时于 Azure SQL 数据仓库中使用标签检测查询的技巧。
@@ -50,6 +50,6 @@ WHERE   r.[label] = 'My Query Label'
 > 
 
 ## <a name="next-steps"></a>后续步骤
-有关更多开发技巧，请参阅 [开发概述](sql-data-warehouse-overview-develop.md)。
+有关更多开发技巧，请参阅[开发概述](sql-data-warehouse-overview-develop.md)。
 
 

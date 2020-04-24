@@ -15,10 +15,10 @@ origin.date: 05/15/2019
 ms.date: 06/13/2019
 ms.author: v-junlch
 ms.openlocfilehash: 922c04cb58e462c43ba33037fe697d1489b93b16
-ms.sourcegitcommit: 4c10e625a71a955a0de69e9b2d10a61cac6fcb06
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "67047013"
 ---
 # <a name="tutorial-grant-a-user-access-to-azure-resources-using-rbac-and-resource-manager-template"></a>教程：使用 RBAC 和 Azure 资源管理器模板授予用户对 Azure 资源的访问权限

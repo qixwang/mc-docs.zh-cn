@@ -10,13 +10,13 @@ ms.date: 05/27/2019
 ms.author: v-jay
 ms.custom: include file
 ms.openlocfilehash: 74611c468ea80bb8edbcfbdcb79617e51d4c8925
-ms.sourcegitcommit: 5a57f99d978b78c1986c251724b1b04178c12d8c
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/24/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "66195355"
 ---
 | **部署模型/方法** | **Azure 门户** | **PowerShell** |
 | --- | --- | --- |
-| Resource Manager |[教程](../articles/vpn-gateway/vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md) |支持 |
+| 资源管理器 |[教程](../articles/vpn-gateway/vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md) |支持 |
 | 经典 | 不支持 | [教程](../articles/vpn-gateway/vpn-gateway-multi-site.md) |

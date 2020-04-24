@@ -10,10 +10,10 @@ origin.date: 06/24/2019
 ms.date: 07/29/2019
 ms.custom: seodec18
 ms.openlocfilehash: 519b5324f41d9a7a1308a61bb2b0ca2961b82a85
-ms.sourcegitcommit: 021dbf0003a25310a4c8582a998c17729f78ce42
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "68514277"
 ---
 <!--Verify sucessfully-->

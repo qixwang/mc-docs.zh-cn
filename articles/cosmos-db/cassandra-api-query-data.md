@@ -11,11 +11,11 @@ origin.date: 09/24/2018
 ms.date: 03/18/2019
 Customer intent: As a developer, I want to build a Java application to query data stored in a Cassandra API account of Azure Cosmos DB so that customers can manage the key/value data and utilize the multiple-region distribution, elastic scaling, multi-master, and other capabilities offered by Azure Cosmos DB.
 ms.openlocfilehash: 7ac38de928aaa7ddfb05759d6a8713aa7ee8f1eb
-ms.sourcegitcommit: 66e360fe2577c9b7ddd96ff78e0ede36c3593b99
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/15/2019
-ms.locfileid: "57988630"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63856958"
 ---
 # <a name="tutorial-query-data-from-a-cassandra-api-account-in-azure-cosmos-db"></a>教程：从 Azure Cosmos DB 中的 Cassandra API 帐户查询数据
 
@@ -25,11 +25,11 @@ ms.locfileid: "57988630"
 
 > [!div class="checklist"]
 > * 从 Cassandra 表查询数据
-> * 运行应用程序
+> * 运行应用
 
-如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial)。
+如果没有 Azure 订阅，可在开始前创建一个 [试用帐户](https://www.azure.cn/pricing/1rmb-trial) 。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * 本文是由多个部分组成的教程。 在开始之前，请务必完成前面的步骤以创建 Cassandra API 帐户、密钥空间、表并[将示例数据加载到表](cassandra-api-load-data.md)。 
 
@@ -37,7 +37,7 @@ ms.locfileid: "57988630"
 
 通过以下步骤从 Cassandra API 帐户查询数据：
 
-1. 打开 `src\main\java\com\azure\cosmosdb\cassandra` 文件夹下的 `UserRepository.java` 文件。 追加以下代码块。 此代码提供三种方法： 
+1. 打开 `UserRepository.java` 文件夹下的 `src\main\java\com\azure\cosmosdb\cassandra` 文件。 追加以下代码块。 此代码提供三种方法： 
 
    * 查询数据库中的所有用户
    * 查询按用户 ID 筛选的特定用户
@@ -78,7 +78,7 @@ ms.locfileid: "57988630"
    }
    ```
 
-2. 打开 `src\main\java\com\azure\cosmosdb\cassandra` 文件夹下的 `UserProfile.java` 文件。 此类包含调用你以前定义的插入数据方法 createKeyspace 和 createTable 的主方法。 现在追加查询所有用户或特定用户的以下代码：
+2. 打开 `UserProfile.java` 文件夹下的 `src\main\java\com\azure\cosmosdb\cassandra` 文件。 此类包含调用你以前定义的插入数据方法 createKeyspace 和 createTable 的主方法。 现在追加查询所有用户或特定用户的以下代码：
 
    ```java
    LOGGER.info("Select all users");
@@ -104,11 +104,11 @@ ms.locfileid: "57988630"
    java -cp target/cosmosdb-cassandra-examples.jar com.azure.cosmosdb.cassandra.examples.UserProfile
    ```
 
-2. 现在，在 Azure 门户中，打开“数据资源管理器”并确认用户表已删除。
+2. 现在，在 Azure 门户中，打开“数据资源管理器”  并确认用户表已删除。
 
 ## <a name="clean-up-resources"></a>清理资源
 
-不再需要资源组、Azure Cosmos 帐户和所有相关的资源时，可将其删除。 为此，请选择虚拟机的资源组，选择“删除”，然后确认要删除的资源组的名称。
+不再需要资源组、Azure Cosmos 帐户和所有相关的资源时，可将其删除。 为此，请选择虚拟机的资源组，选择“删除”  ，然后确认要删除的资源组的名称。
 
 ## <a name="next-steps"></a>后续步骤
 

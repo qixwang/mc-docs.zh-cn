@@ -12,10 +12,10 @@ ms.author: v-junlch
 ms.custom: include file
 manager: douge
 ms.openlocfilehash: 21cc4f73e32a74de3f558fc3644c5c4ff36a3806
-ms.sourcegitcommit: 8f49da0084910bc97e4590fc1a8fe48dd4028e34
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "67844988"
 ---
 ## <a name="install-the-cognitive-services-vsix-extension"></a>安装认知服务 VSIX 扩展

@@ -6,10 +6,10 @@ origin.date: 04/22/2019
 ms.date: 05/20/2019
 ms.author: v-yeche
 ms.openlocfilehash: cbdda6d6ddbac228567e3c48f823e5c574ba3cd9
-ms.sourcegitcommit: 0e83be63445bc68bcf7b9a7ea1cd9a42f3ed2b25
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "67457234"
 ---
 <!--Verify successfully-->

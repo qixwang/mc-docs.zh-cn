@@ -14,11 +14,11 @@ ms.workload: TBD
 ms.date: 07/06/2015
 ms.author: lauraa
 ms.openlocfilehash: 996844f002f9ec9726272750f90c7d92769a309c
-ms.sourcegitcommit: cca72cbb9e0536d9aaddba4b7ce2771679c08824
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58545321"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63848069"
 ---
 以下限制适用于 Azure 站点恢复：
 

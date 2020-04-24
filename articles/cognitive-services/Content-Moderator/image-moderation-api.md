@@ -12,10 +12,10 @@ origin.date: 01/10/2019
 ms.date: 04/22/2019
 ms.author: v-junlch
 ms.openlocfilehash: 3c3e3f6dc856c026a52667fc52b0270c10c3b725
-ms.sourcegitcommit: 9642fa6b5991ee593a326b0e5c4f4f4910f50742
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "64855288"
 ---
 # <a name="learn-image-moderation-concepts"></a>了解图像审查概念
@@ -37,9 +37,9 @@ ms.locfileid: "64855288"
 
 > [!NOTE]
 > 
-> - `isImageAdultClassified` 表示可能存在某些情况下可能被视为色情或成人性质的图像。
-> - `isImageRacyClassified` 表示可能存在某些情况下可能被视为性暗示或过于成熟的图像。
-> - 这些分数介于 0 和 1 之间。 分数越高，模型预测类别可能适用的可能性越高。 此预览版依赖于统计模型，而不是人工编码结果。 我们建议对你自己的内容进行测试，以确定每个类别是否满足你的需求。
+> - `isImageAdultClassified` 表示可能有图像在某些情况下被视为有露骨色情内容或成人内容。
+> - `isImageRacyClassified` 表示可能有图像在某些情况下被视为有性暗示内容或成人内容。
+> - 这些分数介于 0 和 1 之间。 评分越高，模型预测类别可能适用的可能性越高。 此预览版依赖于统计模型，而不是人工编码结果。 我们建议你对自己的内容进行测试，以确定每个类别是否符合要求。
 > - 布尔值为 true 或 false，具体情况取决于内部分数阈值。 客户应评估是使用该值，还是根据他们的内容策略确定自定义阈值。
 
 ## <a name="detecting-text-with-optical-character-recognition-ocr"></a>使用光学字符识别 (OCR) 检测文本
@@ -107,7 +107,7 @@ ms.locfileid: "64855288"
 可以将令人反感的图像添加到阻止内容的自定义列表中，而不是多次审核同一图像。 这样，内容审核系统就会将传入图像与自定义列表进行比较，并停止任何进一步处理。
 
 > [!NOTE]
-> 最大限制为“5 个图像列表”，每个列表“不超过 10,000 个图像”。
+> 最多只能使用 5 个图像列表  ，每个列表中的图像数不得超过 10,000 张  。
 >
 
 内容审查器提供了完整的[图像列表管理 API](try-image-list-api.md)，其中包含用于管理自定义图像列表的操作。 从[图像列表 API 控制台](try-image-list-api.md)开始，使用 REST API 代码示例。 如果熟悉 Visual Studio 和 C#，还请参阅[图像列表 .NET 快速入门](image-lists-quickstart-dotnet.md)。

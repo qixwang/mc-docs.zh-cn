@@ -16,10 +16,10 @@ origin.date: 03/27/2018
 ms.date: 08/05/2019
 ms.author: v-yiso
 ms.openlocfilehash: 61097c9eabee21629f424cf59b8e3382e2204459
-ms.sourcegitcommit: 021dbf0003a25310a4c8582a998c17729f78ce42
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "68514150"
 ---
 # <a name="use-a-webhook-to-configure-health-notifications-for-problem-management-systems"></a>使用 Webhook 为问题管理系统配置运行状况通知
@@ -98,12 +98,12 @@ https<i></i>://app.azure.com/h/0DET-URB/bbadb3
 ```
 
 此示例显示：
-- 澳大利亚东部和东南部的“警报和指标”问题。
+- 澳大利亚东部和澳大利亚东南部的“警报和指标”问题。
 - 澳大利亚东南部的“应用服务”问题。
 
 ## <a name="test-your-webhook-integration-via-an-http-post-request"></a>通过 HTTP POST 请求测试 Webhook 集成
 
-执行以下步骤：
+执行以下步骤:
 
 1. 创建要发送的服务运行状况有效负载。 查看 [Azure 活动日志警报的 Webhook](../azure-monitor/platform/activity-log-alerts-webhook.md) 中的示例服务运行状况 Webhook 有效负载。
 

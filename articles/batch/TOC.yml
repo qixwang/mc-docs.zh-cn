@@ -1,4 +1,4 @@
-- name: Batch 文档
+- name: 批处理文档
   href: index.yml
 - name: 概述
   items:
@@ -49,7 +49,7 @@
       href: batch-quota-limit.md
     - name: 支持的 VM 大小
       href: batch-pool-vm-sizes.md
-- name: 操作指南
+- name: 操作方法指南
   items:
     - name: 管理 Batch 帐户
       items:
@@ -99,7 +99,7 @@
           href: large-number-tasks.md
     - name: 创建资源文件
       href: resource-files.md
-    - name: 持久保存作业和任务输出
+    - name: 持久性作业和任务输出
       href: batch-task-output.md
       items:
         - name: 使用 Batch API 保存输出
@@ -201,7 +201,7 @@
       href: 'https://www.azure.cn/pricing/details/batch/'
     - name: 定价计算器
       href: 'https://www.azure.cn/pricing/calculator/'
-    - name: Resource Manager 模板
+    - name: 资源管理器模板
       href: 'https://docs.microsoft.com/azure/templates/microsoft.batch/batchaccounts'
-    - name: Stack Overflow
+    - name: 堆栈溢出
       href: 'http://stackoverflow.com/questions/tagged/azure-batch'

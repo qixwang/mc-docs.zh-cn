@@ -9,10 +9,10 @@ ms.topic: conceptual
 origin.date: 5/6/2019
 ms.date: 05/20/2019
 ms.openlocfilehash: 13858d4785433eeba0aa73f37394adc21ed3f2bb
-ms.sourcegitcommit: 11d81f0e4350a72d296e5664c2e5dc7e5f350926
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "65731938"
 ---
 # <a name="handling-transient-connectivity-errors-for-azure-database-for-postgresql---single-server"></a>处理 Azure Database for PostgreSQL - 单一服务器的暂时性连接错误

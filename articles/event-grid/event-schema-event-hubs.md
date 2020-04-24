@@ -9,10 +9,10 @@ origin.date: 01/17/2019
 ms.date: 06/03/2019
 ms.author: v-yiso
 ms.openlocfilehash: 0bf39eddcacef4bdeb026f12f82d53aba9d542f3
-ms.sourcegitcommit: 5a57f99d978b78c1986c251724b1b04178c12d8c
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/24/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "66195217"
 ---
 # <a name="azure-event-grid-event-schema-for-event-hubs"></a>事件中心的 Azure 事件网格事件架构
@@ -60,28 +60,28 @@ ms.locfileid: "66195217"
 
 | 属性 | 类型 | 说明 |
 | -------- | ---- | ----------- |
-| 主题 | 字符串 | 事件源的完整资源路径。 此字段不可写入。 事件网格提供此值。 |
-| subject | 字符串 | 事件主题的发布者定义路径。 |
-| eventType | 字符串 | 此事件源的一个注册事件类型。 |
-| EventTime | 字符串 | 基于提供程序 UTC 时间的事件生成时间。 |
-| id | 字符串 | 事件的唯一标识符。 |
+| 主题 | string | 事件源的完整资源路径。 此字段不可写入。 事件网格提供此值。 |
+| subject | string | 事件主题的发布者定义路径。 |
+| eventType | string | 此事件源的一个注册事件类型。 |
+| EventTime | string | 基于提供程序 UTC 时间的事件生成时间。 |
+| id | string | 事件的唯一标识符。 |
 | 数据 | object | 事件中心事件数据。 |
-| dataVersion | 字符串 | 数据对象的架构版本。 发布者定义架构版本。 |
-| metadataVersion | 字符串 | 事件元数据的架构版本。 事件网格定义顶级属性的架构。 事件网格提供此值。 |
+| dataVersion | string | 数据对象的架构版本。 发布者定义架构版本。 |
+| metadataVersion | string | 事件元数据的架构版本。 事件网格定义顶级属性的架构。 事件网格提供此值。 |
 
 数据对象具有以下属性：
 
 | 属性 | 类型 | 说明 |
 | -------- | ---- | ----------- |
-| fileUrl | 字符串 | 捕获文件的路径。 |
-| fileType | 字符串 | 捕获文件的文件类型。 |
-| partitionId | 字符串 | 分片 ID。 |
+| fileUrl | string | 捕获文件的路径。 |
+| fileType | string | 捕获文件的文件类型。 |
+| partitionId | string | 分片 ID。 |
 | sizeInBytes | integer | 文件大小。 |
 | eventCount | integer | 文件中的事件数。 |
 | firstSequenceNumber | integer | 队列中的最小序列号。 |
 | lastSequenceNumber | integer | 队列中的最后一个序列号。 |
-| firstEnqueueTime | 字符串 | 队列中的第一个时间。 |
-| lastEnqueueTime | 字符串 | 队列中的最后一个时间。 |
+| firstEnqueueTime | string | 队列中的第一个时间。 |
+| lastEnqueueTime | string | 队列中的最后一个时间。 |
 
 ## <a name="next-steps"></a>后续步骤
 

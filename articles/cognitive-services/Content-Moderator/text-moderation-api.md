@@ -11,10 +11,10 @@ origin.date: 01/10/2019
 ms.date: 04/22/2019
 ms.author: v-junlch
 ms.openlocfilehash: fde6e5c752d467e6d13f87cd4921eac22c096116
-ms.sourcegitcommit: 9642fa6b5991ee593a326b0e5c4f4f4910f50742
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "64854824"
 ---
 # <a name="learn-text-moderation-concepts"></a>了解文本审查概念
@@ -47,7 +47,7 @@ ms.locfileid: "64854824"
 > [!NOTE]
 > 对于 **language** 参数，请分配 `eng` 或将其留空以查看机器辅助的**分类**响应（预览功能）。 **此功能仅支持英语**。
 >
-> 对于不雅用语检测，请使用本文所列的支持语言的 [ISO 639-3 代码](http://www-01.sil.org/iso639-3/codes.asp)或留空。
+> 对于不雅用语  检测，请使用本文所列的支持语言的 [ISO 639-3 代码](http://www-01.sil.org/iso639-3/codes.asp)或留空。
 
 ## <a name="classification"></a>分类
 
@@ -147,7 +147,7 @@ PII 功能检测可能存在以下信息：
 尽管在默认情况下，全局字词列表能够很好地满足大部分需要，但你可能想要根据自己的具体业务需求筛选字词。 例如，你可能想要从用户的发布内容中，筛选出所有竞争品牌名称。
 
 > [!NOTE]
-> 最多只能使用 5 个术语列表，每个列表中的术语数不得超过 10,000 个。
+> 最多只能使用 5 个术语列表  ，每个列表中的术语数不得超过 10,000 个  。
 >
 
 以下示例显示匹配的列表 ID：

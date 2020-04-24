@@ -13,10 +13,10 @@ ms.date: 05/14/2019
 ms.author: v-junlch
 ms.custom: seodec18
 ms.openlocfilehash: 5ad0300fd8500b8a560021a6a390ff8f0edc1a70
-ms.sourcegitcommit: 9235a1f313393f21b5c42cb7a1626b1b93feb8be
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "65598900"
 ---
 # <a name="generating-smart-cropped-thumbnails-with-computer-vision"></a>使用计算机视觉生成智能裁剪的缩略图
@@ -25,15 +25,15 @@ ms.locfileid: "65598900"
 
 计算机视觉缩略图生成算法的工作原理如下：
 
-1. 从图像中删除让人分散注意力的元素并识别感兴趣区域&mdash;显示主要对象的图像区域。
-1. 基于所识别的感兴趣区域裁剪图像。
+1. 从图像中删除让人分散注意力的元素并识别  感兴趣区域&mdash;显示主要对象的图像区域。
+1. 基于所识别的感兴趣区域裁剪图像。 
 1. 更改纵横比以适应目标缩略图尺寸。
 
 ## <a name="area-of-interest"></a>感兴趣区域
 
-上传图像时，计算机视觉 API 将对图像进行分析，以确定感兴趣区域。 然后它可使用该区域来确定如何裁剪图像。 但是，如果已指定所需的纵横比，则裁剪操作始终会与之匹配。
+上传图像时，计算机视觉 API 将对图像进行分析，以确定感兴趣区域。  然后它可使用该区域来确定如何裁剪图像。 但是，如果已指定所需的纵横比，则裁剪操作始终会与之匹配。
 
-此外，还可改为调用 areaOfInterest API 来获取同一个感兴趣区域的原始边界框坐标。 然后可以使用此信息并根据需要来修改原始图像。
+此外，还可改为调用 areaOfInterest API 来获取同一个感兴趣区域的原始边界框坐标。   然后可以使用此信息并根据需要来修改原始图像。
 
 ## <a name="examples"></a>示例
 

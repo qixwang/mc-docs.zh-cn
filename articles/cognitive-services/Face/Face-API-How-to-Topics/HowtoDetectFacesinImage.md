@@ -12,10 +12,10 @@ origin.date: 04/18/2019
 ms.date: 06/10/2019
 ms.author: v-junlch
 ms.openlocfilehash: d0246481d955e282d5d7f1572edb28ea48230a6c
-ms.sourcegitcommit: 259c97c9322da7add9de9f955eac275d743c9424
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "66830125"
 ---
 # <a name="get-face-detection-data"></a>获取人脸检测数据

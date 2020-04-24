@@ -1,6 +1,6 @@
 ---
 title: Azure Power BI Embedded 文档 - 教程和 API 参考 | Microsoft 文档
-description: 了解如何将 Power BI 数据可视化效果和交互式报表嵌入应用。 教程、API 参考和其他文档。
+description: 了解如何在应用中嵌入 Power BI 数据可视化和交互式报表。 教程、API 参考和其他文档。
 services: power-bi-embedded
 author: markingmyname
 manager: kfile
@@ -14,15 +14,15 @@ origin.date: 09/28/2017
 ms.date: 07/18/2018
 ms.author: v-junlch
 ms.openlocfilehash: c5d5f0f67157162b77ef0c8a9b72e8a1c77b1837
-ms.sourcegitcommit: d75065296d301f0851f93d6175a508bdd9fd7afc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52666514"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63845712"
 ---
 # <a name="power-bi-embedded-documentation"></a>Power BI Embedded 文档
 
-了解如何借助 Power BI Embedded 在应用程序中添加数据可视化效果和交互式报表。 教程、API 参考和其他文档介绍了如何在应用中无缝嵌入 Power BI 报表和仪表板。
+了解如何使用 Power BI Embedded 将数据可视化和交互式报表添加到应用程序。 教程、API 参考和其他文档介绍了如何在应用中无缝嵌入 Power BI 报表和仪表板。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -120,7 +120,7 @@ ms.locfileid: "52666514"
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
-                        <h3>语言</h3>
+                        <h3>Languages</h3>
                         <p><a href="/dotnet/api/microsoft.azure.management.powerbiembedded">.NET</a></p>
                         <p><a href="https://www.nuget.org/packages/Microsoft.PowerBI.Api/">.NET SDK 下载</a></p>
                         <p><a href="https://microsoft.github.io/PowerBI-JavaScript/">JavaScript</a></p>

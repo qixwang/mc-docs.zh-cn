@@ -12,11 +12,11 @@ ms.date: 11/26/2018
 ms.author: v-jay
 ms.reviewer: igorstan
 ms.openlocfilehash: aaeae4367c8ee8d186aa576d5c08466d04b430ee
-ms.sourcegitcommit: bfd0b25b0c51050e51531fedb4fca8c023b1bf5c
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52673332"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63824979"
 ---
 # <a name="sql-data-warehouse-recommendations"></a>SQL 数据仓库的建议
 

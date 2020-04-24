@@ -6,11 +6,11 @@ origin.date: 11/09/2018
 ms.date: 12/03/2018
 ms.author: v-yeche
 ms.openlocfilehash: 4b4979fdcfd2bd33f14a852c2be97c1eaf7a092e
-ms.sourcegitcommit: 59db70ef3ed61538666fd1071dcf8d03864f10a9
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52676164"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63824697"
 ---
 **1.如何向客户通知即将停用的 SDK？**
 

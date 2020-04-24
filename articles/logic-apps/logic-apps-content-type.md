@@ -16,10 +16,10 @@ origin.date: 07/20/2018
 ms.date: 08/26/2018
 ms.author: v-yiso
 ms.openlocfilehash: 20ebd59675ef3342b8cf55e222ec720d124610c2
-ms.sourcegitcommit: d624f006b024131ced8569c62a94494931d66af7
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "69539002"
 ---
 # <a name="handle-content-types-in-azure-logic-apps"></a>在 Azure 逻辑应用中处理内容类型

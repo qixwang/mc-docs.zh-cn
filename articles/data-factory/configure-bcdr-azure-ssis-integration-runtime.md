@@ -15,10 +15,10 @@ ms.author: v-jay
 ms.reviewer: douglasl
 manager: digimobile
 ms.openlocfilehash: 0cfe6a17eb31f592c893442fefe6caa322e6d92e
-ms.sourcegitcommit: 1dac7ad3194357472b9c0d554bf1362c391d1544
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "68308932"
 ---
 # <a name="configure-the-azure-ssis-integration-runtime-with-azure-sql-database-geo-replication-and-failover"></a>针对 Azure SQL 数据库异地复制和故障转移配置 Azure-SSIS Integration Runtime
@@ -31,13 +31,13 @@ ms.locfileid: "68308932"
 
 ## <a name="scenario-1---azure-ssis-ir-is-pointing-to-read-write-listener-endpoint"></a>方案 1 - Azure-SSIS IR 指向读写侦听器终结点
 
-### <a name="conditions"></a>Conditions
+### <a name="conditions"></a>条件
 
 当以下条件成立时本部分内容适用：
 
 - Azure-SSIS IR 指向故障转移组的读写侦听器终结点。
 
-  AND
+  和
 
 - SQL 数据库服务器“未”  配置虚拟网络服务终结点规则。
 
@@ -47,17 +47,17 @@ ms.locfileid: "68308932"
 
 ## <a name="scenario-2---azure-ssis-ir-is-pointing-to-primary-server-endpoint"></a>方案 2 - Azure-SSIS IR 指向主服务器终结点
 
-### <a name="conditions"></a>Conditions
+### <a name="conditions"></a>条件
 
 当以下条件之一成立时本部分内容适用：
 
 - Azure-SSIS IR 指向故障转移组的主服务器终结点。 发生故障转移时，此终结点更改。
 
-  OR
+  或
 
 - Azure SQL 数据库服务器配置了虚拟网络服务终结点规则。
 
-  OR
+  或
 
 - 数据库服务器是配置有虚拟网络的 SQL 数据库托管实例。
 
@@ -73,7 +73,7 @@ ms.locfileid: "68308932"
 
 以下各部分更详细地说明了这些步骤。
 
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>必备条件
 
 - 确保为 Azure SQL 数据库服务器启用灾难恢复，以防该服务器同时发生服务中断。 有关详细信息，请参阅[使用 Azure SQL 数据库确保业务连续性的相关概述](../sql-database/sql-database-business-continuity.md)。
 
@@ -106,7 +106,7 @@ ms.locfileid: "68308932"
 
 在当前区域中发生 ADF 或 Azure-SSIS IR 灾难时，可以使 SSISDB 在新区域中继续使用新的 Azure-SSIS IR。
 
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>必备条件
 
 - 如果在当前区域中使用虚拟网络，则需要在新区域中使用另一个虚拟网络连接到 Azure-SSIS 集成运行时。 有关详细信息，请参阅[将 Azure-SSIS 集成运行时加入虚拟网络](join-azure-ssis-integration-runtime-virtual-network.md)。
 

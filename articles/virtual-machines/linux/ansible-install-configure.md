@@ -10,10 +10,10 @@ ms.author: v-yeche
 origin.date: 04/30/2019
 ms.date: 08/12/2019
 ms.openlocfilehash: 9466f8365470039dffde7d4179c215de6deab900
-ms.sourcegitcommit: 8ac3d22ed9be821c51ee26e786894bf5a8736bfc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "68912917"
 ---
 <!-- Verify successfully-->

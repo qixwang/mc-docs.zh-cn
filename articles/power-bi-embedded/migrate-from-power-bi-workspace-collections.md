@@ -16,11 +16,11 @@ origin.date: 09/28/2017
 ms.date: 07/18/2018
 ms.author: v-junlch
 ms.openlocfilehash: 784d9197f488314a5a86820bb22be31ae7052f81
-ms.sourcegitcommit: b8fb6890caed87831b28c82738d6cecfe50674fd
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58626882"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63844011"
 ---
 # <a name="how-to-migrate-power-bi-workspace-collection-content-to-power-bi-embedded"></a>如何将 Power BI 工作区集合内容迁移到 Power BI Embedded
 
@@ -67,9 +67,9 @@ ms.locfileid: "58626882"
 
     这些用户应根据需要分配给应用工作区。
 
-3. 应用程序主用户帐户或服务帐户。
+3. 应用程序主  用户帐户或服务帐户。
 
-    应用程序后端会存储此帐户的凭据。 使用主帐户获取与 Power BI REST API 一起使用的 Azure AD 令牌。 此帐户用于为应用程序生成嵌入令牌。 主帐户需要是为进行嵌入而创建的应用工作区的管理员。
+    应用程序后端会存储此帐户的凭据。 使用主帐户  获取与 Power BI REST API 一起使用的 Azure AD 令牌。 此帐户用于为应用程序生成嵌入令牌。 主  帐户需要是为进行嵌入而创建的应用工作区的管理员。
 
     **此帐户只是组织中用于嵌入用途的常规用户帐户。**
 
@@ -86,13 +86,13 @@ ms.locfileid: "58626882"
 > [!IMPORTANT]
 > 无法使用个人工作区（“我的工作区”）来利用对客户的嵌入。
 
-需要具有 Pro 许可证的用户才能在 Power BI 中创建应用工作区。 创建应用工作区的 Power BI 用户在默认情况下是该工作区的管理员。 **应用程序主帐户需要是工作区的管理员。**
+需要具有 Pro 许可证的用户才能在 Power BI 中创建应用工作区。 创建应用工作区的 Power BI 用户在默认情况下是该工作区的管理员。 **应用程序主  帐户需要是工作区的管理员。**
 
 ## <a name="content-migration"></a>内容迁移
 
 将内容从工作区集合迁移到 Power BI Embedded 可以与当前解决方案并行进行，无需任何停机时间。
 
-可使用“迁移工具”将内容从 Power BI 工作区集合复制到 Power BI Embedded。 尤其是你具有许多报表时。 有关详细信息，请参阅 [Power BI Embedded 迁移工具](migrate-tool.md)。
+可使用“迁移工具”将内容从 Power BI 工作区集合复制到 Power BI Embedded  。 尤其是你具有许多报表时。 有关详细信息，请参阅 [Power BI Embedded 迁移工具](migrate-tool.md)。
 
 内容迁移主要依靠两个 API。
 
@@ -138,7 +138,7 @@ ms.locfileid: "58626882"
 
 #### <a name="push-dataset-and-report"></a>推送数据集和报表
 
-下载 PBIX 不支持推送 API 数据集。 推送 API 数据集数据无法从 Power BI 工作区集合移植到 Power BI Embedded。
+下载 PBIX 不支持推送 API  数据集。 推送 API 数据集数据无法从 Power BI 工作区集合移植到 Power BI Embedded。
 
 **流**
 
@@ -162,13 +162,13 @@ ms.locfileid: "58626882"
 
 1. 修改应用程序以使用 Power BI REST API 和 powerbi.com 中的报表位置。
 
-2. 使用应用程序的主帐户重新生成身份验证/授权身份验证。 可以使用[嵌入令牌](https://msdn.microsoft.com/library/mt784614.aspx)允许此用户代表其他用户。
+2. 使用应用程序的主  帐户重新生成身份验证/授权身份验证。 可以使用[嵌入令牌](https://msdn.microsoft.com/library/mt784614.aspx)允许此用户代表其他用户。
 
 3. 将报表从 Power BI Embedded 嵌入到应用程序中。 有关详细信息，请参阅[如何嵌入 Power BI 仪表板、报表和磁贴](https://powerbi.microsoft.com/documentation/powerbi-developer-embedding-content/)。
 
 ## <a name="map-your-users-to-a-power-bi-user"></a>将用户映射到 Power BI 用户
 
-在应用程序中，将在应用程序中管理的用户映射到主 Power BI 凭据以用于应用程序。 此 Power BI 主帐户的凭据存储在应用程序中，用于创建嵌入令牌。
+在应用程序中，将在应用程序中管理的用户映射到主  Power BI 凭据以用于应用程序。 此 Power BI 主  帐户的凭据存储在应用程序中，用于创建嵌入令牌。
 
 ## <a name="what-to-do-when-you-are-ready-for-production"></a>准备好进行生产时要执行的操作
 
@@ -195,5 +195,5 @@ ms.locfileid: "58626882"
 
 祝贺。 应用程序现在迁移到 Power BI Embedded。 有关如何嵌入 Power BI 仪表板、报表和数据集的信息，请参阅[如何嵌入 Power BI 仪表板、报表和磁贴](https://powerbi.microsoft.com/documentation/powerbi-developer-embedding-content/)。
 
-有更多问题？ [尝试在 Power BI 社区中提问](http://community.powerbi.com/)
+更多疑问？ [尝试在 Power BI 社区中提问](http://community.powerbi.com/)
 

@@ -13,10 +13,10 @@ author: WenJason
 ms.author: v-jay
 manager: digimobile
 ms.openlocfilehash: 4460a3065d4b85a07dc5c55be3d198104297c963
-ms.sourcegitcommit: 5191c30e72cbbfc65a27af7b6251f7e076ba9c88
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "67570614"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>在 Azure 数据工厂管道中使用自定义活动
@@ -100,7 +100,7 @@ ms.locfileid: "67570614"
 | 属性              | 说明                              | 必须 |
 | :-------------------- | :--------------------------------------- | :------- |
 | name                  | 管道中活动的名称     | 是      |
-| 说明           | 描述活动用途的文本。  | 否       |
+| description           | 描述活动用途的文本。  | 否       |
 | type                  | 对于自定义活动，活动类型为 **Custom**。 | 是      |
 | linkedServiceName     | Azure Batch 的链接服务。 若要了解此链接服务，请参阅[计算链接服务](compute-linked-services.md)一文。  | 是      |
 | command               | 要执行的自定义应用程序的命令。 如果应用程序在 Azure Batch 池节点上已可用，可以跳过 resourceLinkedService 和 folderPath。 例如，可以将命令指定为 `cmd /c dir`，Windows Batch 池节点针对该命令提供了本机支持。 | 是      |
@@ -322,7 +322,7 @@ Activity Error section:
 
 若要从自定义活动访问 *SecureString* 类型的属性，请读取 `activity.json` 文件（该文件与 .EXE 放在同一个文件夹中），反序列化 JSON，然后访问 JSON 属性（extendedProperties => [propertyName] => 值）。
 
-## <a name="compare-v2-v1"></a>比较 v2 自定义活动和版本 1（自定义）DotNet 活动
+## <a name="compare-v2-custom-activity-and-version-1-custom-dotnet-activity"></a><a name="compare-v2-v1"></a>比较 v2 自定义活动和版本 1（自定义）DotNet 活动
 
 在 Azure 数据工厂 V2 自定义活动中，不需要实现 .NET 接口。 现在可以直接运行命令、脚本和自己的已编译为可执行文件的自定义代码。 要配置该实现，请指定 `Command` 属性和 `folderPath` 属性。 自定义活动会将可执行文件及其依赖项上传到 `folderpath`，并执行命令。
 

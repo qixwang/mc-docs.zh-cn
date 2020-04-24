@@ -14,21 +14,21 @@ manager: digimobile
 origin.date: 01/25/2019
 ms.date: 02/25/2019
 ms.openlocfilehash: 47553d1d9882aaacfd3d6001eea28e38684ece94
-ms.sourcegitcommit: 5ea744a50dae041d862425d67548a288757e63d1
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56663734"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63823415"
 ---
 # <a name="monitor-in-memory-oltp-storage"></a>监视内存中 OLTP 存储
 
-使用[内存中 OLTP](sql-database-in-memory.md)时，内存优化表中的数据和表变量驻留在内存中 OLTP 存储内。 每个高级和业务关键服务层都具有最大内存中 OLTP 存储大小。 请参阅[基于 DTU 的资源限制 - 单一数据库](sql-database-dtu-resource-limits-single-databases.md)、[基于 DTU 的资源限制 - 弹性池](sql-database-dtu-resource-limits-elastic-pools.md)、[基于 vCore 的资源限制 - 单一数据库](sql-database-vcore-resource-limits-single-databases.md)和[基于 vCore 的资源限制 - 弹性池](sql-database-vcore-resource-limits-elastic-pools.md)。
+使用[内存中 OLTP](sql-database-in-memory.md) 时，内存优化表中的数据和表变量将驻留在内存中 OLTP 存储内。 每个“高级”和“业务关键”服务层级都具有最大内存中 OLTP 存储大小。 请参阅[基于 DTU 的资源限制 - 单一数据库](sql-database-dtu-resource-limits-single-databases.md)、[基于 DTU 的资源限制 - 弹性池](sql-database-dtu-resource-limits-elastic-pools.md)、[基于 vCore 的资源限制 - 单一数据库](sql-database-vcore-resource-limits-single-databases.md)和[基于 vCore 的资源限制 - 弹性池](sql-database-vcore-resource-limits-elastic-pools.md)。
 
-一旦超过此限制，可能会导致插入和更新操作失败，出现错误 41823（针对单一数据库）和错误 41840（针对弹性池）。 到时，需要删除数据以回收内存，或升级数据库的服务层或计算大小。
+一旦超过此限制，可能会导致插入和更新操作失败，出现错误 41823（针对单一数据库）和错误 41840（针对弹性池）。 到时，需要删除数据以回收内存，或升级数据库的服务层级或计算大小。
 
 ## <a name="determine-whether-data-fits-within-the-in-memory-oltp-storage-cap"></a>确定数据是否在内存中 OLTP 存储容量限制范围内
 
-确定不同服务层的存储上限。 请参阅[基于 DTU 的资源限制 - 单一数据库](sql-database-dtu-resource-limits-single-databases.md)、[基于 DTU 的资源限制 - 弹性池](sql-database-dtu-resource-limits-elastic-pools.md)、[基于 vCore 的资源限制 - 单一数据库](sql-database-vcore-resource-limits-single-databases.md)和[基于 vCore 的资源限制 - 弹性池](sql-database-vcore-resource-limits-elastic-pools.md)。
+确定不同服务层级的存储上限。 请参阅[基于 DTU 的资源限制 - 单一数据库](sql-database-dtu-resource-limits-single-databases.md)、[基于 DTU 的资源限制 - 弹性池](sql-database-dtu-resource-limits-elastic-pools.md)、[基于 vCore 的资源限制 - 单一数据库](sql-database-vcore-resource-limits-single-databases.md)和[基于 vCore 的资源限制 - 弹性池](sql-database-vcore-resource-limits-elastic-pools.md)。
 
 估计内存优化表的内存要求，如同在 Azure SQL 数据库中估计 SQL Server 的内存要求一样。 花费几分钟时间查看 [MSDN](https://msdn.microsoft.com/library/dn282389.aspx) 上的相关文章。
 
@@ -39,7 +39,7 @@ ms.locfileid: "56663734"
 
 1. 在“数据库”边栏选项卡上，找出“资源使用率”框并单击“编辑”。
 2. 选择指标 `In-Memory OLTP Storage percentage`。
-3. 如果要添加警报，请单击“资源使用率”框以打开“度量值”边栏选项卡，并单击“添加警报”。
+3. 要添加警报，请单击“资源使用率”框以打开“度量值”边栏选项卡，并单击“添加警报”。
 
 或者，使用以下查询来显示内存中存储的使用率：
 
@@ -56,7 +56,7 @@ ms.locfileid: "56663734"
 若要解决此错误，请执行以下操作之一：
 
 * 从内存优化表中删除数据，为此，可以将数据卸载到传统的基于磁盘的表；或者，
-* 将服务层升级到具有足够内存中存储的服务层，使保存需要保留在内存优化表中的数据。
+* 将服务层级升级到具有足够内存中存储的服务层级，使保存需要保留在内存优化表中的数据。
 
 > [!NOTE] 
 > 在极少数情况下，错误 41823 和 41840 可能是暂时的，即有足够的可用内存中 OLTP 存储，重试后该操作成功。 因此，我们建议既要监视总体的可用内存中 OLTP 存储，又要在首次遇到错误 41823 或 41840 时重试。 有关重试逻辑的详细信息，请参阅[内存中 OLTP 的冲突检测和重试逻辑](https://docs.microsoft.com/sql/relational-databases/In-memory-oltp/transactions-with-memory-optimized-tables#conflict-detection-and-retry-logic)。

@@ -12,10 +12,10 @@ origin.date: 04/23/2019
 ms.date: 06/10/2019
 ms.author: v-junlch
 ms.openlocfilehash: 360b680006dc2489ee410e839488fa90ef8a16dd
-ms.sourcegitcommit: 259c97c9322da7add9de9f955eac275d743c9424
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "66830037"
 ---
 # <a name="face-recognition-concepts"></a>人脸识别的概念
@@ -26,7 +26,7 @@ ms.locfileid: "66830037"
 
 识别操作主要使用以下数据结构。 这些对象存储在云中，可按其 ID 字符串引用。 ID 字符串在订阅中始终唯一。 名称字段可以重复。
 
-|Name|说明|
+|名称|说明|
 |:--|:--|
 |DetectedFace| 此单个人脸表示形式通过[人脸检测](../Face-API-How-to-Topics/HowtoDetectFacesinImage.md)操作检索。 其 ID 在创建 24 小时后过期。|
 |PersistedFace| 将 DetectedFace 对象添加到某个组（例如 FaceList 或 Person）后，它们将变成 PersistedFace 对象。 它们可以随时[检索](https://dev.cognitive.azure.cn/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039524c)，且不会过期。|
@@ -38,7 +38,7 @@ ms.locfileid: "66830037"
 
 本部分详细说明四项识别操作如何使用上述数据结构。 [概述](../Overview.md)中详细介绍了每项识别操作。
 
-### <a name="verify"></a>验证
+### <a name="verify"></a>Verify
 
 [验证](https://dev.cognitive.azure.cn/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523a)操作采用人脸 ID（来自 DetectedFace 或 PersistedFace）以及另一个人脸 ID 或 Person 对象，并确定它们是否属于同一个人。 如果传入了 Person 对象，可以选择性地传入该 Person 所属的 PersonGroup 以提高性能。
 

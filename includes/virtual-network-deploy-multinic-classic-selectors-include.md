@@ -10,11 +10,11 @@ ms.date: 06/11/2018
 ms.author: v-yeche
 ms.custom: include file
 ms.openlocfilehash: 1dd7df8de3c4eb32f67ee9d5f07a3287c4204795
-ms.sourcegitcommit: d75065296d301f0851f93d6175a508bdd9fd7afc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52665251"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63860482"
 ---
 > [!div class="op_single_selector"]
 > * [PowerShell](../articles/virtual-machines/windows/multiple-nics.md)

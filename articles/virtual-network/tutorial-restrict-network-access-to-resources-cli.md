@@ -19,10 +19,10 @@ ms.date: 06/10/2019
 ms.author: v-yeche
 ms.custom: ''
 ms.openlocfilehash: 836d7e8d78a8dd072796e4fc08edfc3d1830a718
-ms.sourcegitcommit: df1b896faaa87af1d7b1f06f1c04d036d5259cc2
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "66250336"
 ---
 # <a name="restrict-network-access-to-paas-resources-with-virtual-network-service-endpoints-using-the-azure-cli"></a>使用 Azure CLI 通过虚拟网络服务终结点限制对 PaaS 资源的网络访问
@@ -104,7 +104,7 @@ az network vnet subnet update \
   --network-security-group myNsgPrivate
 ```
 
-使用 [az network nsg rule create](https://docs.azure.cn/zh-cn/cli/network/nsg/rule?view=azure-cli-latest#az-network-nsg-rule-create) 创建安全规则。 下面的规则允许对分配给 Azure 存储服务的公用 IP 地址进行出站访问： 
+使用 [az network nsg rule create](https://docs.azure.cn/zh-cn/cli/network/nsg/rule?view=azure-cli-latest#az-network-nsg-rule-create) 创建安全规则。 下面的规则允许对分配给 Azure 存储服务的公共 IP 地址进行出站访问： 
 
 ```azurecli
 az network nsg rule create \
@@ -121,7 +121,7 @@ az network nsg rule create \
   --destination-port-range "*"
 ```
 
-每个网络安全组包含多个[默认安全规则](security-overview.md#default-security-rules)。 以下规则将替代允许对所有公共 IP 地址进行出站访问的默认安全规则。 `destination-address-prefix "Internet"` 选项拒绝对所有公共 IP 地址进行出站访问。 上一个规则将替代此规则，因为它的优先级更高，上一个规则允许对 Azure 存储的公用 IP 地址进行访问。
+每个网络安全组包含多个[默认安全规则](security-overview.md#default-security-rules)。 以下规则将替代允许对所有公共 IP 地址进行出站访问的默认安全规则。 `destination-address-prefix "Internet"` 选项拒绝对所有公共 IP 地址进行出站访问。 上一个规则将替代此规则，因为它的优先级更高，上一个规则允许对 Azure 存储的公共 IP 地址进行访问。
 
 ```azurecli
 az network nsg rule create \
@@ -293,19 +293,19 @@ sudo mount --types cifs //<storage-account-name>.file.core.chinacloudapi.cn/my-f
 
 你将收到 `user@myVmPrivate:~$` 提示。 Azure 文件共享已成功装载到 */mnt/MyAzureFileShare*。
 
-确认 VM 没有到任何其他公用 IP 地址的出站连接：
+确认 VM 没有到任何其他公共 IP 地址的出站连接：
 
 ```bash
 ping bing.com -c 4
 ```
 
-你不会收到回复，因为除了分配给 Azure 存储服务的地址之外，关联到 *Private* 子网的网络安全组不允许对其他公用 IP 地址的出站访问。
+你不会收到回复，因为除了分配给 Azure 存储服务的地址之外，关联到 *Private* 子网的网络安全组不允许对其他公共 IP 地址的出站访问。
 
 退出与 *myVmPrivate* VM 建立的 SSH 会话。
 
 ## <a name="confirm-access-is-denied-to-storage-account"></a>确认已拒绝对存储帐户的访问
 
-使用以下命令来与 *myVmPublic* VM 建立 SSH 会话。 将 `<publicIpAddress>` 替换为 *myVmPublic* VM 的公用 IP 地址： 
+使用以下命令来与 *myVmPublic* VM 建立 SSH 会话。 将 `<publicIpAddress>` 替换为 *myVmPublic* VM 的公共 IP 地址： 
 
 ```bash 
 ssh <publicIpAddress>
@@ -323,7 +323,7 @@ sudo mkdir /mnt/MyAzureFileShare
 sudo mount --types cifs //storage-account-name>.file.core.chinacloudapi.cn/my-file-share /mnt/MyAzureFileShare --options vers=3.0,username=<storage-account-name>,password=<storage-account-key>,dir_mode=0777,file_mode=0777,serverino
 ```
 
-访问被拒绝，并且你将收到一个 `mount error(13): Permission denied` 错误，因为 *myVmPublic* VM 部署在 *Public* 子网内。 *Public* 子网没有为 Azure 存储启用服务终结点，并且存储帐户仅允许来自 *Private* 子网的网络访问，不允许来自 *Public* 子网的网络访问。
+访问被拒绝，并且你将收到一个 `mount error(13): Permission denied` 错误，因为 *myVmPublic* VM 部署在 *Public* 子网内。 “公共”子网没有为 Azure 存储启用服务终结点，并且存储帐户仅允许来自“专用”子网的网络访问，不允许来自“公共”子网的网络访问。   
 
 退出与 *myVmPublic* VM 建立的 SSH 会话。
 

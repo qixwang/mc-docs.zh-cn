@@ -14,27 +14,27 @@ manager: digimobile
 origin.date: 01/25/2019
 ms.date: 02/25/2019
 ms.openlocfilehash: 35c047a42ff1bbf36bc0e12236875a44b27bad6e
-ms.sourcegitcommit: 5ea744a50dae041d862425d67548a288757e63d1
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56663731"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63848578"
 ---
 # <a name="get-started-with-cross-database-queries-vertical-partitioning-preview"></a>跨数据库查询（纵向分区）入门（预览）
 
-Azure SQL 数据库弹性数据库查询（预览版）可让你使用单一连接点运行跨多个数据库的 T-SQL 查询。 本文适用于[垂直分区数据库](sql-database-elastic-query-vertical-partitioning.md)。  
+适用于 Azure SQL 数据库弹性数据库查询（预览版），可让你使用单一连接点运行跨多个数据库的 T-SQL 查询。 本文适用于[垂直分区数据库](sql-database-elastic-query-vertical-partitioning.md)。  
 
 完成时，会：了解如何配置和使用 Azure SQL 数据库执行跨多个相关数据库的查询。
 
 有关弹性数据库查询功能的详细信息，请参阅 [Azure SQL 数据库弹性数据库查询概述](sql-database-elastic-query-overview.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 需要 ALTER ANY EXTERNAL DATA SOURCE 权限。 此权限包含在 ALTER DATABASE 权限中。 引用基础数据源需要 ALTER ANY EXTERNAL DATA SOURCE 权限。
 
 ## <a name="create-the-sample-databases"></a>创建示例数据库
 
-首先，我们在相同或不同 SQL 数据库服务器中创建两个数据库：Customers 和 Orders。
+首先，我们在相同或不同 SQL 数据库服务器中创建两个数据库：Customers  和 Orders  。
 
 在 **Orders** 数据库中执行以下查询以创建 **OrderInformation** 表并输入示例数据。
 

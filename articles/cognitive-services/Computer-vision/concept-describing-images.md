@@ -13,11 +13,11 @@ ms.date: 02/27/2019
 ms.author: v-junlch
 ms.custom: seodec18
 ms.openlocfilehash: 6cd3540464c4e61088e560e249207db194555c4f
-ms.sourcegitcommit: ea33f8dbf7f9e6ac90d328dcd8fb796241f23ff7
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57203985"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63860470"
 ---
 # <a name="describe-images-with-human-readable-language"></a>使用人类可读语言描述图像
 

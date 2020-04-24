@@ -1,6 +1,6 @@
 ---
 title: Azure AD Connect 同步：Synchronization Service Manager UI | Microsoft Docs
-description: 了解适用于 Azure AD Connect 的 Synchronization Service Manager。
+description: 了解 Azure AD Connect 的 Synchronization Service Manager。
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -18,11 +18,11 @@ ms.component: hybrid
 ms.author: v-junlch
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 39cb7cb35074a30345dbe8536daf787249eba999
-ms.sourcegitcommit: 4f91d9bc4c607cf254479a6e5c726849caa95ad8
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53996228"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63824282"
 ---
 # <a name="introduction-to-the-azure-ad-connect-synchronization-service-manager-ui"></a>Azure AD Connect Synchronization Service Manager UI 简介
 
@@ -30,7 +30,7 @@ ms.locfileid: "53996228"
 
 **Synchronization Service Manager** UI 用于配置同步引擎的更高级设置，以及查看该服务的运行情况。
 
-可以从开始菜单启动 **Synchronization Service Manager** UI。 它名为“同步服务”，位于 Azure AD Connect 组中。  
+可以从开始菜单启动 **Synchronization Service Manager** UI。 它名为“同步服务”，可以在 **Azure AD Connect** 组中找到。   
 ![Sync Service Manager](./media/how-to-connect-sync-service-manager-ui/startmenu.png)
 
 ## <a name="next-steps"></a>后续步骤
@@ -39,6 +39,6 @@ ms.locfileid: "53996228"
 
 了解有关 [Azure AD Connect 同步](how-to-connect-sync-whatis.md)配置的详细信息。
 
-了解有关[将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)的详细信息。
+了解有关 [将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)的详细信息。
 
 <!-- Update_Description: wording update -->

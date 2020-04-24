@@ -9,11 +9,11 @@ origin.date: 2/7/2019
 ms.date: 02/25/2019
 ms.author: v-jay
 ms.openlocfilehash: 44f9e80ad4cc04bdd991d9b31a338ee07fbf12a4
-ms.sourcegitcommit: 5ea744a50dae041d862425d67548a288757e63d1
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56663809"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63852649"
 ---
 # <a name="delegate-an-azure-dns-subdomain-using-azure-powershell"></a>使用 Azure PowerShell 委托 Azure DNS 子域
 
@@ -26,7 +26,7 @@ ms.locfileid: "56663809"
 
 如果没有 Azure 订阅，可在开始前创建一个 [1 元人民币试用帐户](https://www.azure.cn/zh-cn/pricing/1rmb-trial-full/?form-type=identityauth)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要委托 Azure DNS 子域，必须先将公共域委托给 Azure DNS。 有关如何为委托配置名称服务器的说明，请参阅[将域委托给 Azure DNS](./dns-delegate-domain-azure-dns.md)。 将域委托给 Azure DNS 区域后，可以委托子域。
 
@@ -46,7 +46,7 @@ ms.locfileid: "56663809"
 
 在 engineering 区域中创建一条 **A** 记录以用于测试。
 
-   `New-AzDnsRecordSet -ZoneName engineering.contoso.com -ResourceGroupName <resource group name> -Name www -RecordType A -ttl 3600 -DnsRecords (New-AzDnsRecordConfig -IPv4Address 10.10.10.10)`。
+   `New-AzDnsRecordSet -ZoneName engineering.contoso.com -ResourceGroupName <resource group name> -Name www -RecordType A -ttl 3600 -DnsRecords (New-AzDnsRecordConfig -IPv4Address 10.10.10.10)` 列中的一个值匹配。
 
 ## <a name="create-an-ns-record"></a>创建 NS 记录
 

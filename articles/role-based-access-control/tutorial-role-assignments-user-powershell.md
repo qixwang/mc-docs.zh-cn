@@ -15,15 +15,15 @@ origin.date: 02/02/2019
 ms.date: 02/26/2019
 ms.author: v-junlch
 ms.openlocfilehash: d7c2aa8c07c47e3ac38d8bbfc22fa2caed93584e
-ms.sourcegitcommit: e9f088bee395a86c285993a3c6915749357c2548
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56836912"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63849836"
 ---
 # <a name="tutorial-grant-a-user-access-to-azure-resources-using-rbac-and-azure-powershell"></a>教程：使用 RBAC 和 Azure PowerShell 授予用户对 Azure 资源的访问权限
 
-可以通过[基于角色的访问控制 (RBAC)](overview.md) 方式管理对 Azure 资源的访问权限。 在本教程中，请授予用户访问权限，以便通过 Azure PowerShell 查看订阅中的所有内容并管理资源组中的一切。
+可以通过[基于角色的访问控制 (RBAC)](overview.md) 管理对 Azure 资源的访问权限。 在本教程中，请授予用户访问权限，以便通过 Azure PowerShell 查看订阅中的所有内容并管理资源组中的一切。
 
 本教程介绍如何执行下列操作：
 
@@ -38,13 +38,13 @@ ms.locfileid: "56836912"
 
 ## <a name="prerequisites"></a>先决条件
 
-要完成本教程，需要：
+若要完成本教程，需要：
 
 - 在 Azure Active Directory 中创建用户的权限（或者有现成的用户）
 
 ## <a name="role-assignments"></a>角色分配
 
-在 RBAC 中，若要授予访问权限，请创建角色分配。 角色分配包含三个元素：安全主体、角色订阅、范围。 下面是两个将要在本教程中执行的角色分配：
+在 RBAC 中，若要授予访问权限，请创建角色分配。 角色分配包含三个要素：安全主体、角色订阅和范围。 下面是两个将要在本教程中执行的角色分配：
 
 | 安全主体 | 角色定义 | 作用域 |
 | --- | --- | --- |
@@ -226,11 +226,11 @@ ms.locfileid: "56836912"
 
 ## <a name="optional-list-access-using-the-azure-portal"></a>（可选）使用 Azure 门户列出访问权限
 
-1. 若要查看角色分配在 Azure 门户中的显示情况，请查看“访问控制(IAM)”边栏选项卡，以了解相关订阅。
+1. 若要查看角色分配在 Azure 门户中的显示情况，请查看“访问控制(IAM)”边栏选项卡，以了解相关订阅。 
 
     ![用户在订阅范围的角色分配](./media/tutorial-role-assignments-user-powershell/role-assignments-subscription-user.png)
 
-1. 查看“访问控制(IAM)”边栏选项卡，了解相关资源组。
+1. 查看“访问控制(IAM)”边栏选项卡，了解相关资源组。 
 
     ![用户在资源组范围的角色分配](./media/tutorial-role-assignments-user-powershell/role-assignments-resource-group-user.png)
 
@@ -270,7 +270,7 @@ ms.locfileid: "56836912"
     [Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"):
     ```
     
-1. 系统要求确认时，请键入“Y”。只需数秒钟即可删除。
+1. 系统要求确认时，请键入“Y”  。只需数秒钟即可删除。
 
 1. 使用 [Remove-AzureADUser](https://docs.microsoft.com/powershell/module/azuread/remove-azureaduser) 命令删除用户。
 

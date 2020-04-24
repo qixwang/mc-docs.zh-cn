@@ -9,24 +9,24 @@ origin.date: 04/15/2019
 ms.date: 05/20/2019
 ms.author: v-junlch
 ms.openlocfilehash: 21fc7be865378de5e086a1c0eb4c8e583b758635
-ms.sourcegitcommit: dc0db00da570f0c57f4a1398797fc158a2c423c5
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "65960885"
 ---
 # <a name="create-an-application-gateway-by-using-the-azure-cli"></a>使用 Azure CLI 创建应用程序网关
 
-Azure 应用程序网关是第 7 层负载均衡器。 它在不同服务器之间提供故障转移和性能路由 HTTP 请求，而不管它们是在云中还是本地。 应用程序网关具有下述与应用程序传送功能：HTTP 负载均衡、基于 Cookie 的会话相关性、安全套接字层 (SSL) 卸载、自定义运行状况探测，以及多站点支持。
+Azure 应用程序网关是第 7 层负载均衡器。 它在不同服务器之间提供故障转移和性能路由 HTTP 请求，而不管它们是在云中还是本地。 应用程序网关具有以下应用程序传递功能：HTTP 负载均衡、基于 Cookie 的会话相关性、安全套接字层 (SSL) 卸载、自定义运行状况探测，以及多站点支持。
 
 ## <a name="prerequisite-install-the-azure-cli"></a>先决条件：安装 Azure CLI
 
 若要执行本文中的步骤，需[安装 Azure CLI](../xplat-cli-install.md) 并[登录 Azure](/cli/authenticate-azure-cli)。 
 
 > [!NOTE]
-> 如果没有 Azure 帐户，则需要注册一个。 请[在此处注册试用版](../active-directory/fundamentals/sign-up-organization.md)。
+> 如果没有 Azure 帐户，则需要注册一个。 请 [在此处注册试用版](../active-directory/fundamentals/sign-up-organization.md)。
 
-## <a name="scenario"></a>方案
+## <a name="scenario"></a>场景
 
 在此方案中，将学习如何使用 Azure 门户创建应用程序网关。
 
@@ -39,7 +39,7 @@ Azure 应用程序网关是第 7 层负载均衡器。 它在不同服务器之�
 > [!NOTE]
 > 针对应用程序网关进行的其他配置（包括自定义运行状况探测、后端池地址以及其他规则）是在对应用程序网关配置以后配置的，不是在初始部署期间配置的。
 
-## <a name="before-you-begin"></a>准备阶段
+## <a name="before-you-begin"></a>开始之前
 
 Azure 应用程序网关需要自己的子网。 在创建虚拟网络时，请确保保留足够的地址空间，以便设置多个子网。 将应用程序网关部署到子网后，只能向该子网添加其他应用程序网关。
 
@@ -51,7 +51,7 @@ Azure 应用程序网关需要自己的子网。 在创建虚拟网络时，请�
 azure login -e AzureChinaCloud
 ```
 
-键入前述示例后，会提供代码。 在浏览器中导航到 https://aka.ms/deviceloginchina，继续登录过程。
+键入前述示例后，将提供代码。 在浏览器中导航到 https://aka.ms/deviceloginchina ，继续登录过程。
 
 ![显示设备登录信息的 cmd][1]
 
@@ -63,7 +63,7 @@ azure login -e AzureChinaCloud
 
 ![已成功登录][3]
 
-## <a name="switch-to-resource-manager-mode"></a>切换到 Resource Manager 模式
+## <a name="switch-to-resource-manager-mode"></a>切换到资源管理器模式
 
 ```azurecli
 azure config mode arm
@@ -127,7 +127,7 @@ azure network application-gateway create `
 ```
 
 > [!NOTE]
-> 如需在创建过程中能够提供的参数的列表，请运行以下命令： **azure network application-gateway create --help**。
+> 如需在创建过程中能够提供的参数的列表，请运行以下命令：**azure network application-gateway create --help**。
 
 此示例会创建基本的应用程序网关，提供的默认设置适用于侦听器、后端池、后端 http 设置以及规则。 预配成功后，即可根据部署修改这些设置。
 如果在之前的步骤中已使用后端池定义 Web 应用程序，则在创建后，负载均衡即会开始。
@@ -136,7 +136,7 @@ azure network application-gateway create `
 
 访问[创建自定义运行状况探测](application-gateway-create-probe-portal.md)，了解如何创建自定义运行状况探测
 
-访问 [配置 SSL 卸载](application-gateway-ssl-arm.md)
+访问[配置 SSL 卸载](application-gateway-ssl-arm.md)，了解如何配置 SSL 卸载并从 Web 服务器中剥离开销较高的 SSL 解密
 
 <!--Image references-->
 

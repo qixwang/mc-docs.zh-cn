@@ -10,10 +10,10 @@ ms.date: 05/27/2019
 ms.author: v-jay
 ms.custom: include file
 ms.openlocfilehash: 40789da97b89e44d76ca2d802ff860b6de6f4568
-ms.sourcegitcommit: bf4afcef846cc82005f06e6dfe8dd3b00f9d49f3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "66004042"
 ---
 在将 RBAC 角色分配到某个安全主体之前，请确定该安全主体应该获取的访问范围。 最佳做法指出，最好是授予尽可能小的范围。

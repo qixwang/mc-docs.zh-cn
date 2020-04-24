@@ -1,3 +1,11 @@
+---
+ms.openlocfilehash: 0b126b2f569614a8ec03b2acf1759432d7b0eee4
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63858623"
+---
 上一示例介绍了标准登录过程，此过程要求在应用每次启动时客户端同时联系标识提供者和后端 Azure 服务。 此方法效率较低，并且许多用户同时启动应用时可能产生使用率相关方面的问题。 更好的方法是缓存 Azure 服务返回的授权令牌，并在使用基于提供者的登录之前首先尝试使用此令牌。
 
 > [!NOTE]

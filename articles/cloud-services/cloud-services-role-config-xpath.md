@@ -14,11 +14,11 @@ origin.date: 04/19/2017
 ms.date: 12/11/2017
 ms.author: v-yiso
 ms.openlocfilehash: 6114928c8f3d127c045b148c2ad34cec0cea322f
-ms.sourcegitcommit: d75065296d301f0851f93d6175a508bdd9fd7afc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52646710"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63852144"
 ---
 # <a name="expose-role-configuration-settings-as-an-environment-variable-with-xpath"></a>使用 XPath 将角色配置设置公共为环境变量
 
@@ -181,5 +181,5 @@ ms.locfileid: "52646710"
 
 创建 [ServicePackage.cspkg](./cloud-services-model-and-package.md#cspkg) 包。
 
-为角色启用 [远程桌面](cloud-services-role-enable-remote-desktop-new-portal.md) 。
+为角色启用[远程桌面](cloud-services-role-enable-remote-desktop-new-portal.md)。
 

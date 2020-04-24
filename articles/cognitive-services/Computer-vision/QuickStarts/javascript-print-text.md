@@ -13,10 +13,10 @@ ms.date: 07/08/2019
 ms.author: v-junlch
 ms.custom: seodec18
 ms.openlocfilehash: 49379c1394483b374a7134dac6b53747b3c1c190
-ms.sourcegitcommit: 8f49da0084910bc97e4590fc1a8fe48dd4028e34
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "67844875"
 ---
 # <a name="quickstart-extract-printed-text-ocr-using-the-computer-vision-rest-api-and-javascript"></a>快速入门：使用计算机视觉 REST API 和 JavaScript 提取印刷体文本 (OCR)
@@ -136,7 +136,7 @@ Image to read:
 
 ## <a name="examine-the-response"></a>检查响应
 
-成功的响应以 JSON 格式返回。 示例网页会在浏览器窗口中分析和显示成功响应，如下例所示：
+成功响应将以 JSON 格式返回。 示例网页会在浏览器窗口中分析和显示成功响应，如下例所示：
 
 ```json
 {

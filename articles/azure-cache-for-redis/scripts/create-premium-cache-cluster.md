@@ -17,11 +17,11 @@ origin.date: 08/30/2017
 ms.date: 02/26/2019
 ms.author: v-junlch
 ms.openlocfilehash: bd233e47350340d13ed62111d1848945cde9cf31
-ms.sourcegitcommit: 1e5ca29cde225ce7bc8ff55275d82382bf957413
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56903196"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63854974"
 ---
 # <a name="create-a-premium-azure-cache-for-redis-with-clustering"></a>通过群集创建高级 Azure Redis 缓存
 
@@ -48,7 +48,7 @@ az redis create --name contosoCache --resource-group contosoGroup --location chi
 
 此脚本使用以下命令创建资源组并通过启用群集创建高级层 Azure Redis 缓存。 表中的每条命令均链接到特定于命令的文档。
 
-| 命令 | 注释 |
+| Command | 说明 |
 |---|---|
 | [az group create](/cli/group) | 创建用于存储所有资源的资源组。 |
 | [az redis create](/cli/redis) | 创建 Azure Redis 缓存实例。 |

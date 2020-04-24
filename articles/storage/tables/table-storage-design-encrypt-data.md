@@ -10,10 +10,10 @@ ms.date: 12/10/2018
 ms.author: v-jay
 ms.component: tables
 ms.openlocfilehash: 18710e440407f0827c0639bfb6d5ec1cc72dc64c
-ms.sourcegitcommit: 5fc46672ae90b6598130069f10efeeb634e9a5af
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "67236589"
 ---
 # <a name="encrypt-table-data"></a>对表数据进行加密

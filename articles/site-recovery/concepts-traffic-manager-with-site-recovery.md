@@ -6,15 +6,15 @@ author: rockboyfor
 manager: digimobile
 ms.service: site-recovery
 ms.topic: conceptual
-origin.date: 11/27/2018
-ms.date: 01/21/2019
+origin.date: 04/08/2019
+ms.date: 04/22/2019
 ms.author: v-yeche
-ms.openlocfilehash: c656420f5993483f1a037d343ef96259bd6caf79
-ms.sourcegitcommit: 26957f1f0cd708f4c9e6f18890861c44eb3f8adf
+ms.openlocfilehash: 203b6cd82fb62cb15bf1521e2e1e970b6622a208
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54363433"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63851919"
 ---
 <!-- Notice: Source location Azure East, China East TO Target location Azure Sourth East, China North-->
 
@@ -65,7 +65,7 @@ Azure 流量管理器的[加权](../traffic-manager/traffic-manager-configure-we
 
 对于此示例，我们假设**公司 C** 的所有应用程序基础结构在 Azure 中运行。 出于业务连续性和法规遵从的原因，**公司 C** 决定使用 Azure Site Recovery 来保护其应用程序。
 
-**公司 C** 使用公共终结点运行应用程序，希望在发生灾难时能够无缝将流量重定向到不同的 Azure 区域。 **公司 C** 客户可以通过[优先级](../traffic-manager/traffic-manager-configure-priority-routing-method.md)流量路由方法来轻松实现此故障转移模式。
+**公司 C** 使用公共终结点运行应用程序，希望在发生灾难时能够无缝将流量重定向到不同的 Azure 区域。 [公司 C](../traffic-manager/traffic-manager-configure-priority-routing-method.md) 客户可以通过**优先级**流量路由方法来轻松实现此故障转移模式。
 
 设置如下：
 - **公司 C** 创建[流量管理器配置文件](../traffic-manager/traffic-manager-create-profile.md)。

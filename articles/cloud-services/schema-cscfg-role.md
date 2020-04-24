@@ -15,11 +15,11 @@ author: ''
 ms.author: adegeo
 manager: timlt
 ms.openlocfilehash: 7ee8dd342f4297619f424cb677306c4ad34e39d6
-ms.sourcegitcommit: d75065296d301f0851f93d6175a508bdd9fd7afc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52654545"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63857659"
 ---
 # <a name="azure-cloud-services-config-role-schema"></a>Azure 云服务配置角色架构
 
@@ -27,7 +27,7 @@ ms.locfileid: "52654545"
 
 有关 Azure 服务配置架构的详细信息，请参阅[云服务（经典）配置架构](schema-cscfg-file.md)。 有关 Azure 服务定义架构的详细信息，请参阅[云服务（经典）定义架构](schema-csdef-file.md)。
 
-##  <a name="Role"></a> Role 元素
+##  <a name="role-element"></a><a name="Role"></a> Role 元素
 下面的示例显示了 `Role` 元素及其子元素。
 
 ```xml 
@@ -46,7 +46,7 @@ ms.locfileid: "52654545"
 
 下表介绍了 `Role` 元素的属性。
 
-| 属性 | 说明 |
+| Attribute | 说明 |
 | --------- | ----------- |
 | name   | 必需。 指定角色的名称。 该名称必须与在服务定义文件中为角色提供的名称匹配。|
 | vmName | 可选。 指定虚拟机的 DNS 名称。 该名称不能超过 10 个字符。|

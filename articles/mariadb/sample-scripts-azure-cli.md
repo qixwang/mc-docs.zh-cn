@@ -10,10 +10,10 @@ ms.custom: mvc
 origin.date: 11/27/2018
 ms.date: 05/27/2019
 ms.openlocfilehash: b1ec67df0a54f03a55e260044f1d6d59d23f8360
-ms.sourcegitcommit: 60169f39663ae62016f918bdfa223c411e249883
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/23/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "66173350"
 ---
 # <a name="azure-cli-samples-for-azure-database-for-mariadb"></a>Azure Database for MariaDB 的 Azure CLI 示例 

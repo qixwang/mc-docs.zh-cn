@@ -10,10 +10,10 @@ origin.date: 01/17/2019
 ms.date: 06/03/2019
 ms.author: v-yiso
 ms.openlocfilehash: 64f2c8e421a9596b3a399e4cd45f2d144f0b74a1
-ms.sourcegitcommit: 5a57f99d978b78c1986c251724b1b04178c12d8c
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/24/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "66195214"
 ---
 # <a name="azure-event-grid-event-schema-for-service-bus"></a>服务总线的 Azure 事件网格事件架构
@@ -83,25 +83,25 @@ ms.locfileid: "66195214"
 
 | 属性 | 类型 | 说明 |
 | -------- | ---- | ----------- |
-| 主题 | 字符串 | 事件源的完整资源路径。 此字段不可写入。 事件网格提供此值。 |
-| subject | 字符串 | 事件主题的发布者定义路径。 |
-| eventType | 字符串 | 此事件源的一个注册事件类型。 |
-| EventTime | 字符串 | 基于提供程序 UTC 时间的事件生成时间。 |
-| id | 字符串 | 事件的唯一标识符。 |
+| 主题 | string | 事件源的完整资源路径。 此字段不可写入。 事件网格提供此值。 |
+| subject | string | 事件主题的发布者定义路径。 |
+| eventType | string | 此事件源的一个注册事件类型。 |
+| EventTime | string | 基于提供程序 UTC 时间的事件生成时间。 |
+| id | string | 事件的唯一标识符。 |
 | 数据 | object | Blob 存储事件数据。 |
-| dataVersion | 字符串 | 数据对象的架构版本。 发布者定义架构版本。 |
-| metadataVersion | 字符串 | 事件元数据的架构版本。 事件网格定义顶级属性的架构。 事件网格提供此值。 |
+| dataVersion | string | 数据对象的架构版本。 发布者定义架构版本。 |
+| metadataVersion | string | 事件元数据的架构版本。 事件网格定义顶级属性的架构。 事件网格提供此值。 |
 
 数据对象具有以下属性：
 
 | 属性 | 类型 | 说明 |
 | -------- | ---- | ----------- |
-| namespaceName | 字符串 | 资源所在的服务总线命名空间。 |
-| requestUri | 字符串 | 发出此事件的特定队列或订阅的 URI。 |
-| entityType | 字符串 | 发出事件的服务总线实体的类型（队列或订阅）。 |
-| queueName | 字符串 | 如果订阅队列，则为包含活动消息的队列。 如果使用主题 / 订阅，则为值 null。 |
-| topicName | 字符串 | 包含活动消息的服务总线订阅所属的主题。 如果使用队列，则值为 null。 |
-| subscriptionName | 字符串 | 包含活动消息的服务总线订阅。 如果使用队列，则值为 null。 |
+| namespaceName | string | 资源所在的服务总线命名空间。 |
+| requestUri | string | 发出此事件的特定队列或订阅的 URI。 |
+| entityType | string | 发出事件的服务总线实体的类型（队列或订阅）。 |
+| queueName | string | 如果订阅队列，则为包含活动消息的队列。 如果使用主题 / 订阅，则为值 null。 |
+| topicName | string | 包含活动消息的服务总线订阅所属的主题。 如果使用队列，则值为 null。 |
+| subscriptionName | string | 包含活动消息的服务总线订阅。 如果使用队列，则值为 null。 |
 
 ## <a name="next-steps"></a>后续步骤
 

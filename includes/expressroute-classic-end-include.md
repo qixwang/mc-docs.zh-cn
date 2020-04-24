@@ -1,10 +1,10 @@
 ---
 ms.openlocfilehash: 96b967aabbb553ca9a673f740b6787adfa68b8eb
-ms.sourcegitcommit: b8fb6890caed87831b28c82738d6cecfe50674fd
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58632970"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63829160"
 ---
 > [!IMPORTANT]
 > 从 2017 年 3 月 1 日开始，将无法在经典部署模型中创建新的 ExpressRoute 线路。

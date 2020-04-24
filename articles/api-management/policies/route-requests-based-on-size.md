@@ -15,11 +15,11 @@ origin.date: 10/13/2017
 ms.date: 02/26/2018
 ms.author: v-yiso
 ms.openlocfilehash: 03a9dce39ad5268bb76c9e804ca013ced5379a79
-ms.sourcegitcommit: d75065296d301f0851f93d6175a508bdd9fd7afc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52661151"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63826432"
 ---
 # <a name="route-the-request-based-on-the-size-of-its-body"></a>基于请求的正文大小路由请求
 
@@ -27,7 +27,7 @@ ms.locfileid: "52661151"
 
 ## <a name="policy"></a>策略
 
-将代码粘贴到“入站”块中。
+将代码粘贴到“入站”块中  。
 
 ```xml
 <!-- The policy defined in this file demonstrates how to route requests based on the size of the message body. -->

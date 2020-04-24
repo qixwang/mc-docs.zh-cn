@@ -9,11 +9,11 @@ origin.date: 08/08/2017
 ms.author: v-yiso
 ms.date: 10/08/2018
 ms.openlocfilehash: 66b5023d8569165f354ce6cdd27ac55307fda0c9
-ms.sourcegitcommit: 0582c93925fb82aaa38737a621f04941e7f9c6c8
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57560470"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63822169"
 ---
 # <a name="configure-iot-hub-file-uploads-using-powershell"></a>使用 PowerShell 配置 IoT 中心文件上传
 
@@ -25,12 +25,12 @@ ms.locfileid: "57560470"
 
 要完成本教程，需要以下各项：
 
-* 有效的 Azure 帐户。 如果没有帐户，可以创建一个[试用帐户][lnk-free-trial]，只需几分钟即可完成。
+* 有效的 Azure 帐户。 若尚无帐户，只需几分钟即可创建一个 [试用帐户][lnk-free-trial] 。
 * [Azure PowerShell cmdlet](https://docs.microsoft.com/powershell/azure/install-Az-ps)。
 
 * Azure IoT 中心。 如果没有 IoT 中心，可以使用 [New-AzIoTHub cmdlet](https://docs.microsoft.com/powershell/module/az.iothub/new-aziothub) 创建一个，或者使用门户[创建一个 IoT 中心](iot-hub-create-through-portal.md)。
 
-* Azure 存储帐户。 如果没有 Azure 存储帐户，可以使用 [Azure 存储 PowerShell cmdlet](https://docs.microsoft.com/powershell/module/az.storage/) 创建一个，或使用门户[创建存储帐户](../storage/common/storage-create-storage-account.md)
+* 一个 Azure 存储帐户。 如果没有 Azure 存储帐户，可以使用 [Azure 存储 PowerShell cmdlet](https://docs.microsoft.com/powershell/module/az.storage/) 创建一个，或使用门户[创建存储帐户](../storage/common/storage-create-storage-account.md)
 
 ## <a name="sign-in-and-set-your-azure-account"></a>登录并设置 Azure 帐户
 
@@ -100,7 +100,7 @@ Get-AzStorageAccountKey `
 
 * **存储容器**：当前 Azure 订阅中要与 IoT 中心关联的 Azure 存储帐户中的 Blob 容器。 检索在上一部分中必要的存储帐户信息。 IoT 中心会自动生成对此 Blob 容器具有写入权限的 SAS URI，以供设备上传文件时使用。
 
-* **接收已上传文件的通知**：启用或禁用文件上传通知。
+* 接收已上传文件的通知：启用或禁用文件上传通知。 
 
 * **SAS TTL**：此设置是 IoT 中心返回给设备的 SAS URI 生存时间。 默认设置为一小时。
 

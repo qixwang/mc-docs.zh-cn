@@ -7,14 +7,14 @@ manager: digimobile
 ms.topic: conceptual
 ms.service: site-recovery
 origin.date: 12/03/2018
-ms.date: 01/21/2019
+ms.date: 04/22/2019
 ms.author: v-yeche
-ms.openlocfilehash: f399f5de9701859ea8d56d85518cf5696ef9bece
-ms.sourcegitcommit: b8fb6890caed87831b28c82738d6cecfe50674fd
+ms.openlocfilehash: 9fa18627e4daed229b32f2baf03a18f5d7fecee7
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58625919"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "63826961"
 ---
 # <a name="upgrade-windows-server-2012-r2-hosts-scvmm-2012-r2-configured-with-azure-site-recovery-to-windows-server-2016--scvmm-2016"></a>将使用 Azure Site Recovery 配置的 Windows Server 2012 R2 主机和 SCVMM 2012 R2 升级到 Windows Server 2016 和 SCVMM 2016
 
@@ -37,14 +37,14 @@ Site Recovery 有助于实现业务连续性和灾难恢复 (BCDR) 策略。 该
 升级之前，请注意以下事项：-
 
 - 如果 Windows Server 2012 R2 主机不受 SCVMM 的管理并采用独立环境设置，则尝试执行升级时，复制将会中断。
-- 如果最初在安装 SCVMM 2012 R2 时选择了“不要在 Active Directory 中的分布式密钥管理下存储我的密钥”，则升级不会成功完成。
+- 如果最初在安装 SCVMM 2012 R2 时选择了“不要在 Active Directory 中的分布式密钥管理下存储我的密钥”，则升级不会成功完成。 
 
 - 如果使用 System Center 2012 R2 VMM， 
 
-    - 请检查 VMM 上的数据库信息：“VMM 控制台” -> “设置” -> “常规” -> “数据库连接”
+    - 请检查 VMM 上的数据库信息：“VMM 控制台” -> “设置” -> “常规” -> “数据库连接”    
     - 检查 System Center Virtual Machine Manager 代理服务正在使用的服务帐户
     - 确保备份 VMM 数据库。
-    - 记下相关 SCVMM 服务器的数据库名称。 为此，可以导航到“VMM 控制台” -> “设置” -> “常规” -> “数据库连接”
+    - 记下相关 SCVMM 服务器的数据库名称。 为此，可以导航到“VMM 控制台” -> “设置” -> “常规” -> “数据库连接”    
     - 记下 2012R2 主要 VMM 服务器和恢复 VMM 服务器的 VMM ID。 可以在注册表项“HKLM:\SOFTWARE\Microsoft\Microsoft System Center Virtual Machine Manager Server\Setup”中找到 VMM ID。
     - 确保添加到群集的新 SCVMM 的名称与以前相同。 
 
@@ -74,12 +74,12 @@ Site Recovery 有助于实现业务连续性和灾难恢复 (BCDR) 策略。 该
 
 1.  导航到“控制面板”->“程序”->“程序和功能”->“Azure Site Recovery”并单击“卸载”，以卸载 ASR 提供程序
 2. [保留 SCVMM 数据库并升级操作系统](https://docs.microsoft.com/zh-cn/system-center/vmm/upgrade-vmm?view=sc-vmm-2016#back-up-and-upgrade-the-operating-system)
-3. 在“添加/删除程序”中，选择“VMM” > “卸载”。 b. 依次选择“删除功能”、“VMM 管理服务器和 VMM 控制台”。 c. 在“数据库选项”中，选择“保留数据库”。 d. 查看摘要，然后单击“卸载”。
+3. 在“添加/删除程序”中，选择“VMM” > “卸载”。    b. 依次选择“删除功能”、“VMM 管理服务器和 VMM 控制台”。   c. 在“数据库选项”中，选择“保留数据库”。   d. 查看摘要，然后单击“卸载”  。
 
 4. [安装 VMM 2016](https://docs.microsoft.com/zh-cn/system-center/vmm/upgrade-vmm?view=sc-vmm-2016#install-vmm-2016)
-5. 启动 SCVMM，在“结构”选项卡下检查每个主机的状态。单击“刷新”获取最新状态。 应当会看到状态为“需要注意”。 
-17. 在 SCVMM 上安装最新的 [Azure Site Recovery 提供程序](http://aka.ms/downloaddra)。
-16. 在群集的每个主机上安装最新的 [Azure 恢复服务 (MARS) 代理](http://aka.ms/latestmarsagent)。 刷新以确保 SCVMM 能够成功查询主机。
+5. 启动 SCVMM，在“结构”选项卡下检查每个主机的状态。  单击“刷新”获取最新状态。  应当会看到状态为“需要注意”。 
+6.  在 SCVMM 上安装最新的 [Azure Site Recovery 提供程序](https://aka.ms/downloaddra)。
+7.  在群集的每个主机上安装最新的 [Azure 恢复服务 (MARS) 代理](https://aka.ms/latestmarsagent)。 刷新以确保 SCVMM 能够成功查询主机。
 
 **将 Windows Server 2012 R2 主机升级到 Windows Server 2016**
 
@@ -95,9 +95,9 @@ Site Recovery 有助于实现业务连续性和灾难恢复 (BCDR) 策略。 该
 
 1.  导航到“控制面板”->“程序”->“程序和功能”->“Azure Site Recovery”并单击“卸载”，以卸载 ASR 提供程序
 2. 根据想要执行的升级模式遵循[此处](https://docs.microsoft.com/zh-cn/system-center/vmm/upgrade-vmm?view=sc-vmm-2016#upgrade-a-standalone-vmm-server)所述的步骤。
-3. 启动 SCVMM 控制台，在“结构”选项卡下检查每个主机的状态。单击“刷新”获取最新状态。 应当会看到状态为“需要注意”。
-4. 在 SCVMM 上安装最新的 [Azure Site Recovery 提供程序](http://aka.ms/downloaddra)。
-5. 在群集的每台主机上更新最新的 [Azure 恢复服务 (MARS) 代理](http://aka.ms/latestmarsagent)。 刷新以确保 SC VMM 能够成功查询主机。
+3. 启动 SCVMM 控制台，在“结构”选项卡下检查每个主机的状态。  单击“刷新”获取最新状态。  应当会看到状态为“需要注意”。
+4. 在 SCVMM 上安装最新的 [Azure Site Recovery 提供程序](https://aka.ms/downloaddra)。
+5. 在群集的每台主机上更新最新的 [Azure 恢复服务 (MARS) 代理](https://aka.ms/latestmarsagent)。 刷新以确保 SC VMM 能够成功查询主机。
 
 **将 Windows Server 2012 R2 主机升级到 Windows Server 2016**
 
@@ -109,5 +109,4 @@ Site Recovery 有助于实现业务连续性和灾难恢复 (BCDR) 策略。 该
 ## <a name="next-steps"></a>后续步骤
 执行主机升级后，可以执行[测试故障转移](tutorial-dr-drill-azure.md)，以测试复制运行状况和灾难恢复状态。
 
-<!-- Update_Description: new articles on upgrade 2012R2 to 2016 -->
-<!--ms.date: 01/21/2019-->
+<!-- Update_Description: wording update -->

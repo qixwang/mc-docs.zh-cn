@@ -15,10 +15,10 @@ origin.date: 11/14/2018
 ms.date: 04/22/2019
 ms.author: v-yiso
 ms.openlocfilehash: 3a81bcad582f03d45181c8e0185c7d48eaa0632c
-ms.sourcegitcommit: 1ebfbb6f29eda7ca7f03af92eee0242ea0b30953
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "66732494"
 ---
 # <a name="subscriptions-in-azure-api-management"></a>Azure API 管理中的订阅
@@ -29,7 +29,7 @@ ms.locfileid: "66732494"
 
 通过 API 管理发布 API 时，使用订阅密钥保护对这些 API 的访问容易且常见。 需要使用已发布 API 的开发人员在调用这些 API 时必须在 HTTP 请求中包括一个有效的订阅密钥。 否则，API 管理网关会立即拒绝调用。 不会将它们转发到后端服务。
 
-若要获取访问 API 所需的订阅密钥，必须有一个订阅。 订阅实质上是一个已命名的容器，该容器包含一对订阅密钥。 需要使用已发布 API 的开发人员可以获取订阅。 不需要 API 发布者批准。 API 发布者也可以直接为 API 使用者创建订阅。
+若要获取访问 API 所需的订阅密钥，必须拥有订阅。 订阅实质上是一个已命名的容器，该容器包含一对订阅密钥。 需要使用已发布 API 的开发人员可以获取订阅。 不需要 API 发布者批准。 API 发布者也可以直接为 API 使用者创建订阅。
 
 > [!TIP]
 > API 管理还支持使用其他机制来保护对 API 的访问，包括以下示例：

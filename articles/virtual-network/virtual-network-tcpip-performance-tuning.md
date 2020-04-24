@@ -16,10 +16,10 @@ origin.date: 04/02/2019
 ms.date: 07/22/2019
 ms.author: v-yeche
 ms.openlocfilehash: 23c96bb11921c2f71359f08232a099e9ecdc8008
-ms.sourcegitcommit: 021dbf0003a25310a4c8582a998c17729f78ce42
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "68514182"
 ---
 # <a name="tcpip-performance-tuning-for-azure-vms"></a>适用于 Azure VM 的 TCP/IP 性能优化
@@ -129,7 +129,7 @@ PMTUD 过程的效率低下，会影响网络性能。 如果发送的数据包�
 
 | | | | |
 |-|-|-|-|
-|Route |**距离**|**单向时间**|**RTT**|
+|**Route**|**距离**|**单向时间**|**RTT**|
 |北京到上海|1,080 公里|5.4 毫秒|10.8 毫秒|
 
 此表显示了两个位置之间的直线距离。 网络中的距离往往大于直线距离。 下面是计算受制于光速的最小 RTT 的简单公式：
@@ -230,7 +230,7 @@ Set-NetTCPSetting
 |受限|4|2^4|窗口大小 * (2^4)|
 |严格限制|2|2^2|窗口大小 * (2^2)|
 |一般|8|2^8|窗口大小 * (2^8)|
-|试验|14|2^14|窗口大小 * (2^14)|
+|实验|14|2^14|窗口大小 * (2^14)|
 
 这些设置很有可能会影响 TCP 性能，但请记住，Internet 中不受 Azure 控制的许多其他因素也可能会影响 TCP 性能。
 
@@ -267,7 +267,7 @@ Set-NetTCPSetting
 
 在 VM 上启用加速网络后，若要获得最佳性能，需要启用 RSS。 RSS 也能够为不使用加速网络的 VM 带来优势。 有关如何确定 RSS 是否已启用及其启用方法的概述，请参阅[优化 Azure 虚拟机的网络吞吐量](/virtual-network/virtual-network-optimize-network-bandwidth/)。
 
-### <a name="tcp-timewait-and-timewait-assassination"></a>TCP TIME_WAIT 和 TIME_WAIT 抹消
+### <a name="tcp-time_wait-and-time_wait-assassination"></a>TCP TIME_WAIT 和 TIME_WAIT 抹消
 
 TCP TIME_WAIT 是影响网络和应用程序性能的另一项常用设置。 在用作客户端或服务器（“源 IP:源端口”+“目标 IP:目标端口”）的、不断打开和关闭多个套接字的繁忙 VM 上，在 TCP 正常运行期间，给定的套接字最终可能会长时间处于 TIME_WAIT 状态。 TIME_WAIT 状态是指在关闭某个套接字之前允许在其上传送任何附加的数据。 因此，TCP/IP 堆栈通常会通过静默丢弃客户端的 TCP SYN 数据包来防止重复使用套接字。
 

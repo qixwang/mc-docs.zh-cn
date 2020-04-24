@@ -11,10 +11,10 @@ origin.date: 01/10/2019
 ms.date: 07/10/2019
 ms.author: v-junlch
 ms.openlocfilehash: 0da358dad57c0fe643e9a695728ba87d38a70ea9
-ms.sourcegitcommit: 8f49da0084910bc97e4590fc1a8fe48dd4028e34
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "67844793"
 ---
 # <a name="content-moderator-net-sdk-samples"></a>内容审查器 .NET SDK 示例

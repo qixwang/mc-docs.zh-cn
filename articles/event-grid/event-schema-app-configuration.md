@@ -9,10 +9,10 @@ origin.date: 05/30/2019
 ms.date: 07/29/2019
 ms.author: v-yiso
 ms.openlocfilehash: 9f2893640b40f677bd4ee4de7a3eb5ec9e5b6322
-ms.sourcegitcommit: 5fea6210f7456215f75a9b093393390d47c3c78d
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "68337611"
 ---
 # <a name="azure-event-grid-event-schema-for-azure-app-configuration"></a>Azure 应用程序配置的 Azure 事件网格事件架构
@@ -74,24 +74,24 @@ Azure 应用程序配置会发出以下事件类型：
 
 事件具有以下顶级数据：
 
-| 属性 | 类型 | 说明 |
+| properties | 类型 | 说明 |
 | -------- | ---- | ----------- |
-| 主题 | string | 事件源的完整资源路径。 此字段不可写入。 事件网格提供此值。 |
-| subject | string | 事件主题的发布者定义路径。 |
-| eventType | string | 此事件源的一个注册事件类型。 |
-| EventTime | string | 基于提供程序 UTC 时间的事件生成时间。 |
-| id | string | 事件的唯一标识符。 |
-| 数据 | object | 应用配置事件数据。 |
-| dataVersion | string | 数据对象的架构版本。 发布者定义架构版本。 |
-| metadataVersion | string | 事件元数据的架构版本。 事件网格定义顶级属性的架构。 事件网格提供此值。 |
+| 主题 | 字符串 | 事件源的完整资源路径。 此字段不可写入。 事件网格提供此值。 |
+| subject | 字符串 | 事件主题的发布者定义路径。 |
+| eventType | 字符串 | 此事件源的一个注册事件类型。 |
+| EventTime | 字符串 | 基于提供程序 UTC 时间的事件生成时间。 |
+| id | 字符串 | 事件的唯一标识符。 |
+| data | 对象 (object) | 应用配置事件数据。 |
+| dataVersion | 字符串 | 数据对象的架构版本。 发布者定义架构版本。 |
+| metadataVersion | 字符串 | 事件元数据的架构版本。 事件网格定义顶级属性的架构。 事件网格提供此值。 |
 
 数据对象具有以下属性：
 
-| 属性 | 类型 | 说明 |
+| properties | 类型 | 说明 |
 | -------- | ---- | ----------- |
-| key | string | 已修改或已删除的键/值的键。 |
-| label | string | 已修改或已删除的键/值的标签（如果有）。 |
-| etag | string | 对于 `KeyValueModified`，为新键/值的 etag。 对于 `KeyValueDeleted`，为已删除的键/值的 etag。 |
+| key | 字符串 | 已修改或已删除的键/值的键。 |
+| label | 字符串 | 已修改或已删除的键/值的标签（如果有）。 |
+| etag | 字符串 | 对于 `KeyValueModified`，为新键/值的 etag。 对于 `KeyValueDeleted`，为已删除的键/值的 etag。 |
  
 ## <a name="next-steps"></a>后续步骤
 
