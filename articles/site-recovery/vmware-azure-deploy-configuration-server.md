@@ -10,10 +10,10 @@ origin.date: 10/15/2019
 ms.date: 01/13/2020
 ms.author: v-yeche
 ms.openlocfilehash: d8f16e08c5ed05c5787c1e65728ee3c46de082b2
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79291356"
 ---
 # <a name="deploy-a-configuration-server"></a>部署配置服务器

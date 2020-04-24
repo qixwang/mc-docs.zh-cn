@@ -16,10 +16,10 @@ ms.date: 02/10/2020
 ms.author: v-yeche
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 36b02cc8affa813b2d60fcecbdeada049ed0f1e6
-ms.sourcegitcommit: ada94ca4685855f58616e4bf1dd5ca757878dfdc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77428323"
 ---
 # <a name="install-nvidia-gpu-drivers-on-n-series-vms-running-windows"></a>在运行 Windows 的 N 系列 VM 上安装 NVIDIA GPU 驱动程序 

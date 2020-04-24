@@ -13,15 +13,15 @@ ms.custom: mvc
 origin.date: 06/29/2018
 ms.date: 11/11/2019
 ms.openlocfilehash: 749f3a4077789060efc1641128dcad7f675aff63
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79291507"
 ---
 # <a name="overview---what-is-azure-logic-apps"></a>概述 - 什么是 Azure 逻辑应用？
 
-[Azure 逻辑应用](/logic-apps)是一项云服务，用于在需要跨企业或组织集成应用、数据、系统和服务时计划、自动执行和协调任务、业务流程和[工作流](#logic-app-concepts)。 逻辑应用可简化可缩放解决方案的设计和构建方式，适用于应用集成、数据集成、系统集成、企业应用程序集成 (EAI) 和企业到企业 (B2B) 通信，不管是在云中还是在本地。
+[Azure 逻辑应用](/logic-apps)是一项云服务，用于在需要跨企业或组织集成应用、数据、系统和服务时计划、自动执行和协调任务、业务流程和[工作流](#logic-app-concepts)。 逻辑应用可简化可缩放解决方案的设计和生成方式，适用于应用集成、数据集成、系统集成、企业应用程序集成 (EAI) 和企业到企业 (B2B) 通信，不管是在云中还是在本地。
 
 例如，下面就是一些可以通过逻辑应用自动完成的工作负荷：
 
@@ -41,11 +41,11 @@ ms.locfileid: "79291507"
 
 ![逻辑应用设计器 - 示例逻辑应用](./media/logic-apps-overview/azure-logic-apps-overview.png)
 
-可以使用逻辑应用设计器直观地构建逻辑应用。该设计器可通过浏览器在 Azure 门户中获取，也可在 Visual Studio 中获取。 若要获取更多的自定义逻辑应用，可以使用“代码视图”编辑器以 JavaScript 对象表示法 (JSON) 创建或编辑逻辑应用定义。 也可对选定的任务使用 Azure PowerShell 命令和 Azure 资源管理器模板。 逻辑应用部署和运行在 Azure 云中。 
+可以使用逻辑应用设计器直观地生成逻辑应用。该设计器可通过浏览器在 Azure 门户中获取，也可在 Visual Studio 中获取。 若要获取更多的自定义逻辑应用，可以使用“代码视图”编辑器以 JavaScript 对象表示法 (JSON) 创建或编辑逻辑应用定义。 也可对选定的任务使用 Azure PowerShell 命令和 Azure 资源管理器模板。 逻辑应用部署和运行在 Azure 云中。 
 
 ## <a name="why-use-logic-apps"></a>为什么使用逻辑应用？
 
-随着企业逐渐转向数字化，逻辑应用应运而生。它可以提供预生成的 API 作为 Microsoft 托管的连接器，从而可以更轻松快捷地连接旧式、新式和前沿的系统。 因此，你可以专注于应用的业务逻辑和功能， 不需担心应用的生成、托管、缩放、管理、维护和监视。 逻辑应用为你解决这一切。 另外，只需根据使用情况付费，具体取决于使用量[定价模型](../logic-apps/logic-apps-pricing.md)。 
+随着企业逐渐转向数字化，逻辑应用应运而生。它可以提供预生成的 API 作为 Microsoft 托管的连接器，从而可以更轻松快捷地连接旧系统和新式、前沿的系统。 因此，你可以专注于应用的业务逻辑和功能， 不需担心应用的生成、托管、缩放、管理、维护和监视。 逻辑应用为你解决这一切。 另外，只需根据使用情况付费，具体取决于使用量[定价模型](../logic-apps/logic-apps-pricing.md)。 
 
 在许多情况下，无需编写代码。 但如果必须编写一些代码，则可使用 [Azure Functions](../azure-functions/functions-overview.md) 创建代码片段，然后通过逻辑应用按需运行该代码。 另外，如果逻辑应用需要与来自 Azure 服务、自定义应用或其他解决方案的事件交互，则可将 [Azure 事件网格](../event-grid/overview.md)与逻辑应用配合使用，以便进行事件监视、路由和发布。
 

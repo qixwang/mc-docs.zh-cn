@@ -16,10 +16,10 @@ origin.date: 11/01/2018
 ms.date: 11/26/2018
 ms.author: v-lingwu
 ms.openlocfilehash: 71e4378b0c937e82163d34f5b9a5288f1f10a9fc
-ms.sourcegitcommit: e0b57f74aeb9022ccd16dc6836e0db2f40a7de39
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75858017"
 ---
 # <a name="get-started-with-relay-hybrid-connections-websockets-in-nodejs"></a>开始在 Node.js 中使用中继混合连接 WebSocket
@@ -60,12 +60,12 @@ ms.locfileid: "75858017"
 ## <a name="run-the-applications"></a>运行应用程序
 
 1. 运行服务器应用程序：在 Node.js 命令提示符处，键入 `node listener.js`。
-2. 运行客户端应用程序：在 Node.js 命令提示符处键入 `node sender.js`，并输入某些文本。
+2. 运行客户端应用程序：在 Node.js 命令提示符处键入 `node sender.js`，然后输入某些文本。
 3. 确保服务器应用程序控制台输出了客户端应用程序中输入的文本。
 
     ![running-applications](./media/relay-hybrid-connections-node-get-started/running-applications.png)
 
-恭喜，现已使用 Node.js 创建端到端混合连接应用程序！
+祝贺你，现已使用 Node.js 创建端到端混合连接应用程序！
 
 ## <a name="next-steps"></a>后续步骤
 在本快速入门中，你创建了 Node.js 客户端和服务器应用程序，此类程序使用 WebSocket 来发送和接收消息。 Azure 中继的混合连接功能也支持使用 HTTP 发送和接收消息。 若要了解如何将 HTTP 与 Azure 中继混合连接配合使用，请参阅 [Node.js HTTP 快速入门](relay-hybrid-connections-http-requests-node-get-started.md)。

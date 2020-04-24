@@ -18,15 +18,15 @@ origin.date: 07/29/2016
 ms.author: v-yiso
 ms.date: 11/11/2019
 ms.openlocfilehash: 7d814a20a2fa839a17c2061a10f8609c52d4c5aa
-ms.sourcegitcommit: 642a4ad454db5631e4d4a43555abd9773cae8891
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "73425967"
 ---
 # <a name="scenario-exception-handling-and-error-logging-for-logic-apps"></a>方案：逻辑应用的异常处理和错误日志记录
 
-本方案介绍如何扩展逻辑应用以更好地支持异常处理。 我们已使用实际的用例回答了以下问题：“Azure 逻辑应用是否支持异常和错误处理？”
+本方案介绍如何扩展逻辑应用以更好地支持异常处理。 我们已经通过一个实际用例回答了“Azure 逻辑应用是否支持异常和错误处理？”的问题
 
 > [!NOTE]
 > 当前的 Azure 逻辑应用架构提供操作响应的标准模板。 此模板包括内部验证以及从 API 应用返回的错误响应。
@@ -43,7 +43,7 @@ ms.locfileid: "73425967"
 * 用于查看工作流中发生的任何错误的一种方式
 
 > [!TIP]
-> 有关本项目的高级视频，请参阅[集成用户组](http://www.integrationusergroup.com/logic-apps-support-error-handling/ "集成用户组")。
+> 有关本项目的高级视频，请参阅[集成用户组](http://www.integrationusergroup.com/logic-apps-support-error-handling/ "Integration User Group")。
 
 ## <a name="how-we-solved-the-problem"></a>我们如何解决问题
 
@@ -132,7 +132,7 @@ ms.locfileid: "73425967"
 
 以下逻辑应用代码示例演示如何处理日志记录。
 
-#### <a name="log-entry"></a>日志条目
+#### <a name="log-entry"></a>日志项
 
 下面是用于插入日志条目的逻辑应用源代码。
 
@@ -478,7 +478,7 @@ Azure Cosmos DB 中的每个文档都必须具有唯一 ID。 我们使用 `Pati
 
 前面代码示例中的表达式检查“Create_NewPatientRecord”  的状态是否为“Failed”  。
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>总结
 
 * 可以在逻辑应用中轻松实现日志记录和错误处理。
 * 可以使用 Azure Cosmos DB 作为日志和错误记录的存储库（文档）。

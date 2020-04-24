@@ -16,10 +16,10 @@ origin.date: 11/06/2018
 ms.author: v-yiso
 ms.date: 05/27/2019
 ms.openlocfilehash: dafa71f6ddd278113374ba2880d9e7564fa73a88
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79292367"
 ---
 # <a name="configure-apache-spark-settings"></a>配置 Apache Spark 设置
@@ -68,7 +68,7 @@ Apache Spark 有三个系统配置位置：
 
 此时会显示 Apache Ambari Web UI，其中的仪表板视图显示了重要的群集资源利用率指标。  Ambari 仪表板显示 Apache Spark 配置，以及安装的其他服务。 仪表板包含“配置历史记录”选项卡，可在其中查看所有已安装服务（包括 Spark）的配置信息。 
 
-若要查看 Apache Spark 的配置值，请依次选择“配置历史记录”、“Spark2”。    选择“配置”选项卡，然后在服务列表中选择 `Spark` 或 `Spark2`（取决于版本）链接。   此时会显示群集的配置值列表：
+若要查看 Apache Spark 的配置值，请依次选择“配置历史记录”、“Spark2”。    选择“配置”选项卡，然后在服务列表中选择 **或**（取决于版本）链接。`Spark``Spark2`  此时会显示群集的配置值列表：
 
 ![Spark 配置](./media/apache-spark-settings/spark-config.png)
 
@@ -87,7 +87,7 @@ Apache Spark 有三个系统配置位置：
 
 ## <a name="configuring-spark-executors"></a>配置 Spark 执行器
 
-下图显示了关键的 Spark 对象：驱动程序及其关联的 Spark 上下文，以及群集管理器及其 *n* 个 工作节点。  每个工作节点包括执行器、缓存和 *n* 个 任务实例。
+下图显示了关键的 Spark 对象：驱动程序及其关联的 Spark 上下文，以及群集管理器及其 *n* 个工作节点。  每个工作节点包括执行器、缓存和 *n* 个任务实例。
 
 ![群集对象](./media/apache-spark-settings/spark-arch.png)
 
@@ -147,7 +147,7 @@ HDInsight 中的 Spark 群集默认包含许多组件。 其中每个组件包�
     {"executorMemory": "3072M", "executorCores": 4, "numExecutors":10}
 ```
 
-## <a name="conclusion"></a>结论
+## <a name="conclusion"></a>结束语
 
 为了确保 Spark 作业以可预测、高性能的方式运行，需要监视和调整大量的核心配置设置。 这些设置可帮助确定特定工作负荷的最佳 Spark 群集配置。  此外，还需要监视长时间运行的和/或消耗大量资源的 Spark 作业执行。  最常见的难题不当的配置（尤其是大小不当的执行器）、长时间运行的操作以及导致笛卡尔操作的任务所造成的内存压力。
 

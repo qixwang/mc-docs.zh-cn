@@ -16,10 +16,10 @@ origin.date: 01/24/2020
 ms.date: 2/6/2020
 ms.author: v-lingwu
 ms.openlocfilehash: 3e916f8a7a3290c5fe05015f42fe6eda05bc6bec
-ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77068005"
 ---
 # <a name="quickstart-how-to-use-service-bus-queues-with-php"></a>快速入门：如何通过 PHP 使用服务总线队列
@@ -27,7 +27,7 @@ ms.locfileid: "77068005"
 
 本教程介绍如何创建 PHP 应用程序，以便向服务总线队列发送消息以及从中接收消息。 
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 1. Azure 订阅。 若要完成本教程，需要一个 Azure 帐户。 可以激活 [MSDN 订阅者权益](https://www.azure.cn/zh-cn/support/legal/offer-rate-plans/)或注册[试用帐户](https://www.azure.cn/zh-cn/pricing/1rmb-trial-full/?form-type=identityauth)。
 2. 如果没有可使用的队列，请遵循[使用 Azure 门户创建服务总线队列](service-bus-quickstart-portal.md)一文来创建队列。
     1. 阅读服务总线**队列**的快速**概述**。 

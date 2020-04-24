@@ -9,10 +9,10 @@ ms.author: v-tawe
 ms.reviewer: dariac
 ms.custom: seodec18
 ms.openlocfilehash: 76c9378f9f4a698e372773a501ab5f93b7695a20
-ms.sourcegitcommit: b2f2bb08ab1b5ccb3c596d84b3b6ddca5bba3903
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80151723"
 ---
 # <a name="local-git-deployment-to-azure-app-service"></a>从本地 Git 部署到 Azure 应用服务

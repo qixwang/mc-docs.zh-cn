@@ -16,10 +16,10 @@ origin.date: 11/01/2018
 ms.date: 11/26/2018
 ms.author: v-lingwu
 ms.openlocfilehash: c0e1d634d14e3dc4f9256c68d1e4e2c64adcc512
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78154985"
 ---
 # <a name="get-started-with-relay-hybrid-connections-http-requests-in-net"></a>开始在 .NET 中使用中继混合连接 HTTP 请求

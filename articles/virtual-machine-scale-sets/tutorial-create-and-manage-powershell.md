@@ -9,10 +9,10 @@ ms.date: 02/10/2020
 ms.author: v-junlch
 ms.custom: mvc
 ms.openlocfilehash: c5b4a0416e5ab64c049235e33b738eae352fc3ec
-ms.sourcegitcommit: 99bd0019c5f01034b8765d7765ad7776c7d5e5ae
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77128832"
 ---
 # <a name="tutorial-create-and-manage-a-virtual-machine-scale-set-with-azure-powershell"></a>教程：使用 Azure PowerShell 创建和管理虚拟机规模集
@@ -130,7 +130,7 @@ IpAddress
 52.168.121.216
 ```
 
-创建连接到第一个 VM 实例所需的远程连接。 指定所需 VM 实例的公共 IP 地址和端口号，如前述命令所示。 出现提示时，输入创建规模集时使用的凭据（在示例命令中，默认为 azureuser 和 P\@ssw0rd!）   。 以下示例连接到 VM 实例 *1*：
+创建连接到第一个 VM 实例所需的远程连接。 指定所需 VM 实例的公共 IP 地址和端口号，如前述命令所示。 出现提示时，输入创建规模集时使用的凭据（在示例命令中，默认为 azureuser 和 P*ssw0rd!）* *\@* 。 以下示例连接到 VM 实例 *1*：
 
 ```powershell
 mstsc /v 52.168.121.216:50001
@@ -199,7 +199,7 @@ VM 实例大小或 *SKU* 决定了可供 VM 实例使用的计算资源（如 CP
 |--------------------------|-------------------|------------------------------------------------------------------------------------------------------------------------------------|
 | [常规用途](../virtual-machines/windows/sizes-general.md)         |Dsv3、Dv3、DSv2、Dv2、DS、D、Av2、A0-7| CPU 与内存之比均衡。 适用于开发/测试、小到中型应用程序和数据解决方案。  |
 | [计算优化](../virtual-machines/windows/sizes-compute.md)   | Fs, F             | 高 CPU 与内存之比。 适用于中等流量的应用程序、网络设备和批处理。        |
-| [内存优化](../virtual-machines/windows/sizes-memory.md)    | Esv3、Ev3、M、DSv2、DS、Dv2、D   | 较高的内存核心比。 适用于关系数据库、中到大型缓存和内存中分析。                 |
+| [内存优化](../virtual-machines/windows/sizes-memory.md)    | Esv3、Ev3、M、DSv2、DS、Dv2、D   | 较高的内存核心比。 适用于关系数据库、中到大型缓存和内存分析。                 |
 | [GPU](../virtual-machines/windows/sizes-gpu.md)          | NV, NC            | 专门针对大量图形绘制和视频编辑的 VM。       |
 
 ### <a name="find-available-vm-instance-sizes"></a>查找可用的 VM 实例大小
@@ -302,7 +302,7 @@ Restart-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet"
 
 
 ## <a name="clean-up-resources"></a>清理资源
-删除资源组时，也会删除其中包含的所有资源，例如 VM 实例、虚拟网络和磁盘。 `-Force` 参数将确认是否希望删除资源，而不会有额外提示。 `-AsJob` 参数会使光标返回提示符处，无需等待操作完成。
+删除资源组时，也会删除其中包含的所有资源，例如 VM 实例、虚拟网络和磁盘。 `-Force` 参数将确认是否希望删除资源，不会显示询问是否删除的额外提示。 `-AsJob` 参数会使光标返回提示符处，不会等待操作完成。
 
 ```azurepowershell
 Remove-AzResourceGroup -Name "myResourceGroup" -Force -AsJob
@@ -322,6 +322,6 @@ Remove-AzResourceGroup -Name "myResourceGroup" -Force -AsJob
 请转到下一教程，了解规模集磁盘。
 
 > [!div class="nextstepaction"]
-> [通过规模集使用数据磁盘](tutorial-use-disks-powershell.md)
+> [将数据磁盘与规模集配合使用](tutorial-use-disks-powershell.md)
 
 <!-- Update_Description: wording update -->

@@ -17,10 +17,10 @@ origin.date: 10/31/2018
 ms.date: 11/11/2019
 ms.author: v-yeche
 ms.openlocfilehash: 8bb6217fb65fa687fe75e4f913f1524a7b9e7d5b
-ms.sourcegitcommit: 1fd822d99b2b487877278a83a9e5b84d9b4a8ce7
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74116959"
 ---
 # <a name="detailed-ssh-troubleshooting-steps-for-issues-connecting-to-a-linux-vm-in-azure"></a>对连接到 Azure 中 Linux VM 时出现的问题进行详细的 SSH 故障排除的步骤
@@ -31,7 +31,7 @@ ms.locfileid: "74116959"
 
 ![显示 SSH 服务组件的图表](./media/detailed-troubleshoot-ssh-connection/ssh-tshoot1.png)
 
-以下步骤将帮助用户查明失败的原因，并得出解决方法或应对措施。
+以下步骤帮助用户查明失败的原因，并得出解决方法或应对措施。
 
 1. 在门户中检查 VM 的状态。
     在 [Azure 门户](https://portal.azure.cn)中，选择“虚拟机” > “VM 名称”。  
@@ -125,7 +125,7 @@ ms.locfileid: "74116959"
 
 尝试从计算机重新建立连接。 如果仍然失败，则可能存在以下问题：
 
-* 目标虚拟机上未运行 SSH 服务。
+* SSH 服务未在目标虚拟机上运行。
 * 未在 TCP 端口 22 上侦听 SSH 服务。 如果要测试，可在本地计算机上安装一个 telnet 客户端，并运行“telnet *cloudServiceName*.chinacloudapp.cn 22”。 此步骤确定虚拟机是否允许与 SSH 终结点进行入站和出站通信。
     
     <!-- cloudapp.net to chinacloudapp.cn is Correct  -->
@@ -134,6 +134,6 @@ ms.locfileid: "74116959"
 * Azure 虚拟机上运行的入侵检测或网络监视软件阻止了 SSH 连接。
 
 ## <a name="additional-resources"></a>其他资源
-有关对应用程序访问进行故障排除的详细信息，请参阅 [Troubleshoot access to an application running on an Azure virtual machine](../linux/troubleshoot-app-connection.md)（对在 Azure 虚拟机上运行的应用程序的访问进行故障排除）
+有关对应用程序访问进行故障排除的详细信息，请参阅 [对在 Azure 虚拟机上运行的应用程序的访问进行故障排除](../linux/troubleshoot-app-connection.md)
 
 <!--Update_Description: update meta properties, wording update -->

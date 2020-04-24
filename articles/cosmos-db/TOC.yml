@@ -12,7 +12,7 @@
       items:
         - name: Azure 门户
           href: create-cosmosdb-resources-portal.md
-        - name: Azure Resource Manager 模板
+        - name: Azure 资源管理器模板
           displayName: ARM
           href: quick-create-template.md
         - name: .NET 应用 - V4 SDK
@@ -41,7 +41,7 @@
               href: sql-api-async-java-get-started.md
             - name: Node.js
               href: sql-api-nodejs-get-started.md
-        - name: 生成 Web 应用
+        - name: 构建 Web 应用
           items:
             - name: .NET
               href: sql-api-dotnet-application.md
@@ -79,7 +79,7 @@
       href: powershell-samples-sql.md
     - name: Azure CLI
       href: cli-samples.md
-    - name: Azure Resource Manager
+    - name: Azure 资源管理器
       href: resource-manager-samples.md
 - name: 概念
   items:
@@ -165,7 +165,7 @@
         - name: 数组和对象
           displayName: 'object and array creation, object and array'
           href: sql-query-object-array.md
-        - name: 关键字
+        - name: Keywords
           displayName: 'keywords, distinct, between, in, top'
           href: sql-query-keywords.md
         - name: 运算符
@@ -253,7 +253,7 @@
                     - name: FLOOR
                       displayName: 'FLOOR, built-in functions'
                       href: sql-query-floor.md
-                    - name: LOG
+                    - name: 日志
                       displayName: 'LOG, logarithm, built-in functions'
                       href: sql-query-log.md
                     - name: LOG10
@@ -532,7 +532,7 @@
   items:
     - name: Cassandra API
       items:
-        - name: 简介
+        - name: 介绍
           href: cassandra-introduction.md
         - name: 线路协议支持
           href: cassandra-support.md
@@ -557,14 +557,14 @@
             - name: 4 - 迁移数据
               displayName: import
               href: cassandra-import-data.md
-        - name: 操作指南
+        - name: 操作方法指南
           items:
             - name: 存储和管理 Spring Data
               href: 'https://docs.azure.cn/java/spring-framework/configure-spring-data-apache-cassandra-with-cosmos-db'
               maintainContext: true
             - name: Cassandra 和 Spark
               items:
-                - name: 简介
+                - name: 介绍
                   href: cassandra-spark-generic.md
                 - name: 使用 HDInsight 进行连接
                   href: cassandra-spark-hdinsight.md
@@ -590,7 +590,7 @@
               href: cli-samples-cassandra.md
     - name: MongoDB API
       items:
-        - name: 简介
+        - name: 介绍
           href: mongodb-introduction.md
         - name: 线路协议支持 (3.2)
           href: mongodb-feature-support.md
@@ -638,7 +638,7 @@
               href: tutorial-query-mongodb.md
             - name: 4 - 多区域分配数据
               href: tutorial-global-distribution-mongodb.md
-        - name: 操作指南
+        - name: 操作方法指南
           items:
             - name: 迁移前指南
               href: mongodb-pre-migration.md
@@ -680,7 +680,7 @@
     - name: Gremlin API
       displayName: 'graph, graph database'
       items:
-        - name: 简介
+        - name: 介绍
           href: graph-introduction.md
         - name: 线路协议支持
           href: gremlin-support.md
@@ -710,7 +710,7 @@
               href: gremlin-limits.md
             - name: 兼容性
               href: gremlin-compatibility.md
-        - name: 操作指南
+        - name: 操作方法指南
           items:
             - name: 图形数据建模
               href: graph-modeling.md
@@ -739,7 +739,7 @@
               href: cli-samples-gremlin.md
     - name: 表 API
       items:
-        - name: 简介
+        - name: 介绍
           href: table-introduction.md
         - name: 快速入门
           items:
@@ -781,7 +781,7 @@
             - name: 'F#'
               href: 'https://docs.azure.cn/dotnet/articles/fsharp/using-fsharp-on-azure/table-storage'
               maintainContext: true
-        - name: 操作指南
+        - name: 操作方法指南
           items:
             - name: 使用表 API 构建应用
               href: table-support.md
@@ -807,7 +807,7 @@
               href: table-sdk-python.md
             - name: 表存储 REST API
               href: 'https://docs.microsoft.com/rest/api/storageservices/table-service-rest-api'
-- name: 操作指南
+- name: 操作方法指南
   items:
     - name: 使用 Azure Cosmos 帐户
       href: how-to-manage-database-account.md
@@ -863,7 +863,7 @@
           href: how-to-manage-indexing-policy.md
         - name: 定义唯一键
           href: how-to-define-unique-keys.md
-    - name: 最佳实践
+    - name: 最佳做法
       items:
         - name: 性能提示
           items:
@@ -1036,7 +1036,7 @@
       href: query-cheat-sheet.md
     - name: SQL 演练
       href: 'https://aka.ms/cosmos-db-playground'
-    - name: 常见问题
+    - name: 常见问题解答
       href: faq.md
     - name: 白皮书
       href: whitepapers.md

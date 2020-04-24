@@ -10,10 +10,10 @@ origin.date: 05/16/2019
 ms.date: 09/23/2019
 ms.author: v-yeche
 ms.openlocfilehash: fd70d924343a7aa4ae5b24ab5879fd07e7bf8b11
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79290824"
 ---
 # <a name="use-gpus-for-compute-intensive-workloads-on-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 上将 GPU 用于计算密集型工作负荷
@@ -42,7 +42,7 @@ ms.locfileid: "79290824"
 <!--MOONCAKE Unique content on 03/28/2019-->
 <!--DONT REMOVE IT-->
 
-## <a name="before-you-begin"></a>准备阶段
+## <a name="before-you-begin"></a>开始之前
 
 本文假定你拥有现有的 AKS 群集，其中包含支持 GPU 的节点。 AKS 群集须运行 Kubernetes 1.10 或更高版本。 如果需要满足这些要求的 AKS 群集，请参阅本文第一部分来[创建 AKS 群集](#create-an-aks-cluster)。
 
@@ -157,7 +157,7 @@ NAME                       STATUS   ROLES   AGE   VERSION
 aks-nodepool1-28993262-0   Ready    agent   13m   v1.12.7
 ```
 
-现在，使用 [kubectl describe node][kubectl-describe] 命令确认 GPU 是可计划的。 在“容量”部分下，GPU 应列为 `nvidia.com/gpu:  1`  。
+现在，使用 [kubectl describe node][kubectl-describe] 命令确认 GPU 是可计划的。 在“容量”部分下，GPU 应列为  `nvidia.com/gpu:  1`。
 
 以下精简示例显示了 GPU 在名为“aks-nodepool1-18821093-0”的节点上可用  ：
 
@@ -223,7 +223,7 @@ kubectl create -f https://raw.githubusercontent.com/andyzhangx/demo/master/linux
 
 ## <a name="run-a-gpu-enabled-workload"></a>运行启用了 GPU 的工作负荷
 
-若要查看 GPU 的运行情况，请通过相应的资源请求计划启用了 GPU 的工作负荷。 在此示例中，我们针对 [MNIST 数据集](http://yann.lecun.com/exdb/mnist/)运行一个 [Tensorflow](https://www.tensorflow.org/) 作业。
+若要查看 GPU 的运行情况，请通过相应的资源请求计划启用了 GPU 的工作负荷。 在此示例中，我们针对 [MNIST 数据集](https://www.tensorflow.org/)运行一个 [Tensorflow](http://yann.lecun.com/exdb/mnist/) 作业。
 
 创建名为“samples-tf-mnist-demo.yaml”的文件并粘贴以下 YAML 清单  。 以下作业清单包括资源限制 `nvidia.com/gpu: 1`：
 
@@ -278,7 +278,7 @@ kubectl create -f https://raw.githubusercontent.com/andyzhangx/demo/master/linux
 
 ## <a name="view-the-status-and-output-of-the-gpu-enabled-workload"></a>查看启用了 GPU 的工作负荷的状态和输出
 
-将 [kubectl get jobs][kubectl-get] 命令与 `--watch` 参数配合使用，监视作业的进度。 先拉取映像并处理数据集可能需要几分钟时间。 当“COMPLETIONS”列显示“1/1”时，作业便已成功完成   。 使用 *Ctrl-C* 退出 `kubetctl --watch` 命令：
+将 [kubectl get jobs][kubectl-get] 命令与 `--watch` 参数配合使用，监视作业的进度。 先拉取映像并处理数据集可能需要几分钟时间。 当“COMPLETIONS”列显示“1/1”时，作业便已成功完成   。 使用 `kubetctl --watch`Ctrl-C*退出* 命令：
 
 ```console
 $ kubectl get jobs samples-tf-mnist-demo --watch

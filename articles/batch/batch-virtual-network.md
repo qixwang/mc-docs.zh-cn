@@ -10,10 +10,10 @@ origin.date: 04/10/2019
 ms.date: 12/04/2019
 ms.author: v-lingwu
 ms.openlocfilehash: 7707da3b4c8f22b4fea3c663d7f69e2c3e6fca89
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79292790"
 ---
 # <a name="create-an-azure-batch-pool-in-a-virtual-network"></a>在虚拟网络中创建 Azure Batch 池
@@ -24,9 +24,9 @@ ms.locfileid: "79292790"
 
 Azure Batch 池具有两个设置来允许计算节点彼此进行通信，例如，来运行多实例任务。 这些设置不需要单独的 VNet。 但是，默认情况下，节点不能与属于 Batch 池的一部分的虚拟机（例如，许可证服务器或文件服务器）进行通信。 若要允许池计算节点安全地与其他虚拟机或本地网络进行通信，可以在 Azure VNet 的子网中预配该池。 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
-* **身份验证**。 若要使用 Azure VNet，Batch 客户端 API 必须使用 Azure Active Directory (AD) 身份验证。 有关 Azure AD 的 Azure Batch 支持，请参阅[使用 Active Directory 对 Batch 服务解决方案进行身份验证](batch-aad-auth.md)。 
+* “身份验证”  。 若要使用 Azure VNet，Batch 客户端 API 必须使用 Azure Active Directory (AD) 身份验证。 有关 Azure AD 的 Azure Batch 支持，请参阅[使用 Active Directory 对 Batch 服务解决方案进行身份验证](batch-aad-auth.md)。 
 
 * **一个 Azure VNet**。 参阅以下部分，了解 VNet 要求和配置。 若要提前准备具有一个或多个子网的 VNet，可以使用 Azure 门户、Azure PowerShell、Azure 命令行接口 (CLI) 或其他方法。  
   * 若要创建基于 Azure 资源管理器的 VNet，请参阅[创建虚拟网络](../virtual-network/manage-virtual-network.md#create-a-virtual-network)。 推荐将基于资源管理器的 VNet 用于新部署，它是采用虚拟机配置的池支持的唯一选项。
@@ -40,7 +40,7 @@ Azure Batch 池具有两个设置来允许计算节点彼此进行通信，例�
 
 在创建 VNet 并将一个子网分配给它后，可以使用该 VNet 创建 Batch 池。 请按照下列步骤在 Azure 门户中创建池： 
 
-1. 导航到 Azure 门户中的 Batch 帐户。 此帐户必须与要使用的 VNet 所在的资源组位于同一订阅和区域中。 
+1. 导航到 Azure 门户中的批处理帐户。 此帐户必须与要使用的 VNet 所在的资源组位于同一订阅和区域中。 
 2. 在左侧的“设置”  窗口中，选择“池”  菜单项。
 3. 在“池”窗口中，选择“添加”命令。  
 4. 在“添加池”窗口中，从“映像类型”下拉列表中选择要使用的选项。   

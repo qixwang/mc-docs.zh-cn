@@ -12,10 +12,10 @@ origin.date: 12/06/2019
 ms.date: 01/20/2020
 ms.author: v-yiso
 ms.openlocfilehash: e773980b122a3ba7d2c20f0598d1bc96baa8de12
-ms.sourcegitcommit: a890a9cca495d332c9f3f53ff3a5259fd5f0c275
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75859582"
 ---
 # <a name="configure-a-virtual-network-gateway-for-expressroute-using-powershell-classic"></a>使用 PowerShell 配置 ExpressRoute 的虚拟网络网关（经典）

@@ -16,10 +16,10 @@ origin.date: 07/17/2017
 ms.date: 10/14/2019
 ms.author: v-yeche
 ms.openlocfilehash: 45bb65c676bce4cd35e573a98d3b5c2114215c84
-ms.sourcegitcommit: c5e012385df740bf4a326eaedabb987314c571a1
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74203650"
 ---
 # <a name="common-powershell-commands-for-azure-virtual-networks"></a>适用于 Azure 虚拟网络的常见 PowerShell 命令
@@ -35,7 +35,7 @@ ms.locfileid: "74203650"
 
 ## <a name="create-network-resources"></a>创建网络资源
 
-| 任务 | 命令 |
+| 任务 | Command |
 | ---- | ------- |
 | 创建子网配置 |$subnet1 = [New-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworksubnetconfig) -Name "mySubnet1" -AddressPrefix XX.X.X.X/XX<br />$subnet2 = New-AzVirtualNetworkSubnetConfig -Name "mySubnet2" -AddressPrefix XX.X.X.X/XX<br /><br />典型的网络可能包含用于[面向 Internet 的负载均衡器](../../load-balancer/load-balancer-internet-overview.md)的子网，以及用于[内部负载均衡器](../../load-balancer/load-balancer-internal-overview.md)的独立子网。 |
 | 创建虚拟网络 |$vnet = [New-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetwork) -Name "myVNet" -ResourceGroupName $myResourceGroup -Location $location -AddressPrefix XX.X.X.X/XX -Subnet $subnet1, $subnet2 |
@@ -51,7 +51,7 @@ ms.locfileid: "74203650"
 
 ## <a name="get-information-about-network-resources"></a>获取有关网络资源的信息
 
-| 任务 | 命令 |
+| 任务 | Command |
 | ---- | ------- |
 | 列出虚拟网络 |[Get-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/get-azvirtualnetwork) -ResourceGroupName $myResourceGroup<br /><br />列出资源组中的所有虚拟网络。 |
 | 获取有关虚拟网络的信息 |Get-AzVirtualNetwork -Name "myVNet" -ResourceGroupName $myResourceGroup |
@@ -65,7 +65,7 @@ ms.locfileid: "74203650"
 
 ## <a name="manage-network-resources"></a>管理网络资源
 
-| 任务 | 命令 |
+| 任务 | Command |
 | ---- | ------- |
 | 将子网添加到虚拟网络 |[Add-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/add-azvirtualnetworksubnetconfig) -AddressPrefix XX.X.X.X/XX -Name "mySubnet1" -VirtualNetwork $vnet<br /><br />将子网添加到现有虚拟网络。 $vnet 值表示 Get-AzVirtualNetwork 返回的对象。 |
 | 删除虚拟网络 |[Remove-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/remove-azvirtualnetwork) -Name "myVNet" -ResourceGroupName $myResourceGroup<br /><br />从资源组中删除指定的虚拟网络。 |

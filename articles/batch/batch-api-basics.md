@@ -16,10 +16,10 @@ ms.date: 09/20/2019
 ms.author: v-lingwu
 ms.custom: seodec18
 ms.openlocfilehash: 79575f400b204005ffd6608806553abde59c5327
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79293058"
 ---
 # <a name="develop-large-scale-parallel-compute-solutions-with-batch"></a>使用 Batch 开发大规模并行计算解决方案
@@ -213,7 +213,7 @@ Azure Batch 池构建在核心 Azure 计算平台的顶层。 它们提供大规
 >
 >
 
-### 网络配置 <a name="pool-network-configuration"></a>
+### <a name="network-configuration"></a>网络配置 <a name="pool-network-configuration"></a>
 
 可以指定应在其中创建池计算节点的 Azure [虚拟网络 (VNet)](../virtual-network/virtual-networks-overview.md) 的子网。 有关详细信息，请参阅“池网络配置”部分。
 

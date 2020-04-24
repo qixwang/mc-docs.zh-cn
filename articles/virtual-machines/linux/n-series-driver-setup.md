@@ -17,10 +17,10 @@ ms.date: 11/11/2019
 ms.author: v-yeche
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 09f37d2d71de406d1ba128b2241d8497cc0ab458
-ms.sourcegitcommit: 5844ad7c1ccb98ff8239369609ea739fb86670a4
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "73831452"
 ---
 # <a name="install-nvidia-gpu-drivers-on-n-series-vms-running-linux"></a>在运行 Linux 的 N 系列 VM 上安装 NVIDIA GPU 驱动程序

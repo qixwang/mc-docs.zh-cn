@@ -8,10 +8,10 @@ origin.date: 09/10/2019
 ms.date: 10/28/2019
 ms.author: v-yeche
 ms.openlocfilehash: d704df2354e85dca61d8354dcaf43064c72e93a7
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79292551"
 ---
 # <a name="indexing-policies-in-azure-cosmos-db"></a>Azure Cosmos DB 中的索引策略
@@ -100,7 +100,7 @@ Azure Cosmos DB 支持两种索引模式：
 
 在索引策略中定义空间路径时，应定义要将哪个索引 ```type``` 应用到该路径。 空间索引的可能类型包括：
 
-* Point
+* 点
 
 * Polygon
 

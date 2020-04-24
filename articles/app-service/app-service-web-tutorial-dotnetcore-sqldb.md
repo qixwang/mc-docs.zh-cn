@@ -8,10 +8,10 @@ ms.date: 03/30/2020
 ms.author: v-tawe
 ms.custom: mvc, cli-validate, seodec18
 ms.openlocfilehash: 7f61164568386c5c7d1772a062ef1b5b35b3ddd5
-ms.sourcegitcommit: 44d3fe59952847e5394bbe6c05bd6f333bb56345
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80522085"
 ---
 # <a name="tutorial-build-an-aspnet-core-and-sql-database-app-in-azure-app-service"></a>教程：在 Azure 应用服务中生成 ASP.NET Core 和 SQL 数据库应用

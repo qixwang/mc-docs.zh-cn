@@ -17,15 +17,15 @@ ms.date: 10/14/2019
 ms.author: v-yeche
 ms.custom: mvc
 ms.openlocfilehash: 9b1e599cfdf0a760e95f5c0b4662b10b4e502866
-ms.sourcegitcommit: c9398f89b1bb6ff0051870159faf8d335afedab3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "72272819"
 ---
 # <a name="tutorial-create-and-manage-windows-vms-with-azure-powershell"></a>教程：使用 Azure PowerShell 创建和管理 Windows VM
 
-Azure 虚拟机提供完全可配置的灵活计算环境。 本教程介绍 Azure 虚拟机 (VM) 的基本部署任务，例如选择 VM 大小、选择 VM 映像和部署 VM。 你将学习如何执行以下操作：
+Azure 虚拟机提供完全可配置的灵活计算环境。 本教程介绍 Azure 虚拟机 (VM) 的基本部署任务，例如选择 VM 大小、选择 VM 映像和部署 VM。 学习如何：
 
 > [!div class="checklist"]
 > * 创建并连接到 VM
@@ -189,7 +189,7 @@ VM 大小决定 VM 可用计算资源（如 CPU、GPU 和内存）的数量。 �
 |--------------------------|-------------------|------------------------------------------------------------------------------------------------------------------------------------|
 | [常规用途](sizes-general.md)         |B、Dsv3、Dv3、DSv2、Dv2、Av2 | CPU 与内存之比均衡。 适用于开发/测试、小到中型应用程序和数据解决方案。  |
 | [计算优化](sizes-compute.md)   | Fsv2          | 高 CPU 与内存之比。 适用于中等流量的应用程序、网络设备和批处理。        |
-| [内存优化](sizes-memory.md)    | Esv3、Ev3、M、DSv2、Dv2  | 较高的内存核心比。 适用于关系数据库、中到大型缓存和内存中分析。                 |
+| [内存优化](sizes-memory.md)    | Esv3、Ev3、M、DSv2、Dv2  | 较高的内存核心比。 适用于关系数据库、中到大型缓存和内存分析。                 |
 | [GPU](sizes-gpu.md)          |  NCv3        | 专门针对大量图形绘制和视频编辑的 VM。       |
 
 <!-- Not Available on DC Series -->
@@ -312,7 +312,7 @@ Remove-AzResourceGroup `
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，你已学习 VM 创建和管理的基本知识，例如如何：
+在本教程中，已学习 VM 创建和管理的基本知识，例如如何：
 
 > [!div class="checklist"]
 > * 创建并连接到 VM

@@ -13,10 +13,10 @@ manager: digimobile
 origin.date: 05/08/2019
 ms.date: 05/20/2019
 ms.openlocfilehash: 8f0e4819c93a36d7acbc382651acdb5d94c5bc67
-ms.sourcegitcommit: 666b43a8f208bbbfd46e50eda7b342b0cd382258
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "67277015"
 ---
 # <a name="use-an-azure-sql-database-managed-instance-securely-with-public-endpoints"></a>在公共终结点中安全使用 Azure SQL 数据库托管实例

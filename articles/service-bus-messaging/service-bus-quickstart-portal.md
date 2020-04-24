@@ -11,10 +11,10 @@ origin.date: 01/16/2020
 ms.date: 2/6/2020
 ms.author: v-lingwu
 ms.openlocfilehash: a9e428173f40b967d27386cb00f72787dff82828
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79291805"
 ---
 # <a name="quickstart-use-azure-portal-to-create-a-service-bus-queue"></a>快速入门：使用 Azure 门户创建服务总线队列

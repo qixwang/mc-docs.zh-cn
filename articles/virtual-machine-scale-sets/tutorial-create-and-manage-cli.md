@@ -9,10 +9,10 @@ ms.date: 03/31/2020
 ms.author: v-junlch
 ms.custom: mvc
 ms.openlocfilehash: e4ddc13621a6eb84fe3abe4166739a2b126d29b8
-ms.sourcegitcommit: 64584c0bf31b4204058ae2b4641356b904ccdd58
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80581629"
 ---
 # <a name="tutorial-create-and-manage-a-virtual-machine-scale-set-with-the-azure-cli"></a>教程：使用 Azure CLI 创建和管理虚拟机规模集

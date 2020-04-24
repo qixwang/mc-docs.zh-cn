@@ -17,10 +17,10 @@ origin.date: 03/29/2018
 ms.date: 10/14/2019
 ms.author: v-yeche
 ms.openlocfilehash: 0e74fa35b8c43ef81ec0d1b889293a8ea8ecaeb4
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79292990"
 ---
 # <a name="complete-the-prerequisites-for-creating-always-on-availability-groups-on-azure-virtual-machines"></a>完成在 Azure 虚拟机中创建 Alwayson 可用性组的先决条件

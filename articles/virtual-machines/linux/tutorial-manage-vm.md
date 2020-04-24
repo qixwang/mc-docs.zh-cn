@@ -17,10 +17,10 @@ ms.date: 11/11/2019
 ms.author: v-yeche
 ms.custom: mvc
 ms.openlocfilehash: 524028ff03df47d7b188432a10c301eae7f48662
-ms.sourcegitcommit: 5844ad7c1ccb98ff8239369609ea739fb86670a4
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "73831381"
 ---
 # <a name="tutorial-create-and-manage-linux-vms-with-the-azure-cli"></a>教程：使用 Azure CLI 创建和管理 Linux VM

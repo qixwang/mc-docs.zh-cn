@@ -15,10 +15,10 @@ origin.date: 02/12/2019
 ms.date: 02/24/2020
 ms.author: v-yeche
 ms.openlocfilehash: c00ea30e501df5cf00c54c83ff6f6183fae64c19
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79292058"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Azure 虚拟网络常见问题 (FAQ)
@@ -47,7 +47,7 @@ Azure 虚拟网络 (VNet) 是你自己的网络在云中的表示形式。 它�
 
 <!--MOONCAKE: CORRECT ON https://market.azure.cn/zh-cn/marketplace/apps?search=wan-->
 
-## <a name="configuration"></a>配置
+## <a name="configuration"></a><a name="configuration"></a>配置
 
 ### <a name="what-tools-do-i-use-to-create-a-vnet"></a>要使用哪些工具创建 VNet？
 可以使用以下工具创建或配置 VNet：
@@ -243,7 +243,7 @@ VNet 相互之间以及与 Azure 基础结构中托管的其他服务之间相�
 - 使用 PowerShell 来管理通过 [Resource Manager](https://docs.microsoft.com/powershell/module/az.network) 和[经典](https://docs.microsoft.com/powershell/module/servicemanagement/azure/?view=azuresmps-3.7.0)部署模型部署的 VNet。
 - 使用 Azure 命令行接口 (CLI) 管理通过[资源管理器](https://docs.azure.cn/cli/network/vnet?view=azure-cli-latest)和[经典](../virtual-machines/azure-cli-arm-commands.md?toc=%2fvirtual-network%2ftoc.json#network-resources)部署模型部署的 VNet。  
 
-## <a name="vnet-peering"></a>VNet 对等互连
+## <a name="vnet-peering"></a><a name="vnet-peering"></a>VNet 对等互连
 
 ### <a name="what-is-vnet-peering"></a>什么是 VNet 对等互连？
 使用 VNet 对等互连（或虚拟网络对等互连）可连接虚拟网络。 使用虚拟网络之间的 VNet 对等互连连接，可通过 IPv4 地址在这些虚拟网络之间私下路由流量。 对等互连的 VNet 中的虚拟机可相互通信，如同它们处于同一网络中一样。 这些虚拟网络可以位于相同区域或不同区域中（也称为全球 VNet 对等互连）。 此外，还可跨 Azure 订阅创建 VNet 对等互连连接。

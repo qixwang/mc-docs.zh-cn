@@ -16,10 +16,10 @@ origin.date: 07/05/2017
 ms.date: 07/15/2019
 ms.author: v-yiso
 ms.openlocfilehash: 585b5cb8d49f8dd939490e6ad46824698f3cf553
-ms.sourcegitcommit: 5191c30e72cbbfc65a27af7b6251f7e076ba9c88
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "67569744"
 ---
 # <a name="configuring-a-custom-domain-name-for-an-azure-cloud-service"></a>为 Azure 云服务配置自定义域名

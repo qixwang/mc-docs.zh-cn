@@ -9,10 +9,10 @@ ms.date: 03/09/2020
 ms.author: v-jay
 ms.subservice: tables
 ms.openlocfilehash: 112c87e777d485ba25049d2a96a0934bd40f1a05
-ms.sourcegitcommit: fbc7584f403417d3af7bd6bbbaed7c13a78c57b9
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78412291"
 ---
 # <a name="perform-azure-table-storage-operations-with-azure-powershell"></a>使用 Azure PowerShell 执行 Azure 表存储操作 
@@ -20,7 +20,7 @@ ms.locfileid: "78412291"
 
 Azure 表存储是一种 NoSQL 数据存储，可用于存储和查询大量的结构化非关系型数据。 该服务的主要组件包括表、实体和属性。 表是实体的集合。 实体是一组属性。 每个实体最多可以有 252 个属性（都是一些名称-值对）。 本文假设用户熟知 Azure 表存储服务的概念。 有关详细信息，请参阅 [Understanding the Table Service Data Model](https://docs.microsoft.com/rest/api/storageservices/Understanding-the-Table-Service-Data-Model)（了解表服务数据模型）和[通过 .NET 开始使用 Azure 表存储](../../cosmos-db/table-storage-how-to-use-dotnet.md)。
 
-此操作指南文章介绍常见的 Azure 表存储操作。 你将学习如何执行以下操作： 
+此操作指南文章介绍常见的 Azure 表存储操作。 学习如何： 
 
 > [!div class="checklist"]
 > * 创建表

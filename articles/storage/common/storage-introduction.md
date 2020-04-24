@@ -10,10 +10,10 @@ ms.date: 03/30/2020
 ms.author: v-jay
 ms.subservice: common
 ms.openlocfilehash: 7883728e800c5f8c69253c9747177d2a72db06ca
-ms.sourcegitcommit: 90d01d08faf8adb20083363a8e4e5aab139cd9b2
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80290377"
 ---
 # <a name="introduction-to-azure-storage"></a>Azure 存储简介
@@ -32,8 +32,8 @@ Azure 存储包括以下数据服务：
 
 - [Azure Blob](../blobs/storage-blobs-introduction.md)：适用于文本和二进制数据的可大规模缩放的对象存储。
 - [Azure 文件](../files/storage-files-introduction.md)：适用于云或本地部署的托管文件共享。
-- [Azure 队列](../queues/storage-queues-introduction.md)：用于在应用程序组件之间进行可靠的消息传送的消息存储。
-- [Azure 表](../tables/table-storage-overview.md)：一种 NoSQL 存储，适合用作结构化数据的无架构存储。
+- [Azure 队列](../queues/storage-queues-introduction.md)：用于在应用程序组件之间进行可靠的消息传送的消息传送存储。
+- [Azure 表](../tables/table-storage-overview.md)：一种 NoSQL 存储，适合用作结构化数据的无模式存储。
 
 对每个服务的访问都通过存储帐户进行。 若要开始使用，请参阅[创建存储帐户](storage-account-create.md)。
 
@@ -104,9 +104,9 @@ Azure 托管磁盘是虚拟硬盘 (VHD)。 可以将其视为本地服务器中�
 - **用于 Blob 和队列数据的 Azure Active Directory (Azure AD) 集成。** Azure 存储支持通过基于角色的访问控制 (RBAC) 使用 Azure AD 为 Blob 和队列服务进行身份验证和授权。 建议使用 Azure AD 进行授权请求，以确保极高的安全性和易用性。 有关详细信息，请参阅[使用 Azure Active Directory 对 Azure Blob 和队列访问进行授权](storage-auth-aad.md)。
 - **通过共享密钥进行授权。** Azure 存储 Blob、队列和表服务以及 Azure 文件存储支持使用共享密钥进行授权。使用共享密钥授权的客户端会随使用存储帐户访问密钥签名的每个请求传递一个标头。 有关详细信息，请参阅[通过共享密钥进行授权](https://docs.microsoft.com/rest/api/storageservices/authorize-with-shared-key)。
 - **使用共享访问签名 (SAS) 进行授权。** 共享访问签名 (SAS) 是一个字符串，其中包含的安全令牌可以追加到存储资源的 URI。 安全令牌封装了各种约束，例如权限、访问时间间隔。 有关详细信息，请参阅[使用共享访问签名 (SAS)](storage-sas-overview.md)。
-- **对容器和 Blob 的匿名访问。** 容器及其 Blob 也许可以公开使用。 指定某个容器或 Blob 为公用的时，任何人都可以匿名读取它，不需要进行身份验证。 有关详细信息，请参阅[管理对容器和 Blob 的匿名读取访问](../blobs/storage-manage-access-to-resources.md)。
+- **对容器和 Blob 的匿名访问。** 容器及其 Blob 也许可以公开使用。 指定某个容器或 Blob 为公用的时，任何人都可以匿名读取它，不需要进行身份验证。 有关详细信息，请参阅[管理对容器和 Blob 的匿名读取访问](../blobs/storage-manage-access-to-resources.md)
 
-## <a name="encryption"></a>Encryption
+## <a name="encryption"></a>加密
 
 有两种适用于存储服务的基本加密类型。 若要详细了解安全性和加密，请参阅 [Azure 存储安全指南](../blobs/security-recommendations.md)。
 

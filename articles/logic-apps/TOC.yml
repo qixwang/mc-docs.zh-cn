@@ -29,7 +29,7 @@
       href: concepts-schedule-automated-recurring-tasks-workflows.md
     - name: Azure 的无服务器体验
       href: logic-apps-serverless-overview.md
-- name: 操作指南
+- name: 操作方法指南
   items:
     - name: 开发
       items:
@@ -149,7 +149,7 @@
           href: ../connectors/connectors-create-api-onedrive.md
         - name: OneDrive for Business
           href: ../connectors/connectors-create-api-onedriveforbusiness.md
-        - name: Oracle 数据库
+        - name: Oracle Database
           href: ../connectors/connectors-create-api-oracledatabase.md
         - name: Outlook.com
           href: ../connectors/connectors-create-api-outlook.md

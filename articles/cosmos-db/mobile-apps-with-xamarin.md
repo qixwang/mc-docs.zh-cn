@@ -9,10 +9,10 @@ origin.date: 11/05/2019
 ms.date: 12/16/2019
 ms.author: v-yeche
 ms.openlocfilehash: 044138f5acadea08199de384a230e3c4d03291b4
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75334770"
 ---
 # <a name="tutorial-build-mobile-applications-with-xamarin-and-azure-cosmos-db"></a>教程：使用 Xamarin 和 Azure Cosmos DB 生成移动应用程序
@@ -82,7 +82,7 @@ Azure Cosmos DB 入门容易。 转到 Azure 门户，并创建新的 Azure Cosm
 
 3. 添加 Azure Cosmos DB 资源令牌代理。 这是一个简单的 Web API，可对用户进行身份验证，并向只有权访问其自己分区中的文档的已登录用户颁发短期生存的令牌。 在此示例中，资源令牌代理托管在应用服务中。
 
-4. 将应用修改为使用 Facebook 对资源令牌代理进行身份验证，请求已登录的 Facebook 用户的资源令牌。 然后，可在 UserItems 集合中访问其数据。  
+4. 将应用修改为使用 Facebook 对资源令牌代理进行身份验证，请求已登录的 Facebook 用户的资源令牌。 然后，可在 UserItems 集合中访问用户的数据。  
 
 可在 [GitHub 上的资源令牌代理](https://aka.ms/documentdb-xamarin-todouser)中找到此模式的完整代码示例。 下图演示了该解决方案：
 

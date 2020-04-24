@@ -10,10 +10,10 @@ ms.topic: conceptual
 origin.date: 11/04/2019
 ms.date: 03/02/2020
 ms.openlocfilehash: 28229335f5cfb7c0d3d2a62d80f2e709d557400c
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78850230"
 ---
 # <a name="configure-a-connection-from-an-azure-cognitive-search-indexer-to-sql-server-on-an-azure-vm"></a>配置从 Azure 认知搜索索引器到 Azure VM 上 SQL Server 的连接

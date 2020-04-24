@@ -13,10 +13,10 @@ ms.service: virtual-machines-windows
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.openlocfilehash: a61aa5d1422d352b586483145aa5f9316d1b98cd
-ms.sourcegitcommit: d624f006b024131ced8569c62a94494931d66af7
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "69539148"
 ---
 # <a name="how-to-enable-nested-virtualization-in-an-azure-vm"></a>如何在 Azure VM 中启用嵌套虚拟化
@@ -25,11 +25,11 @@ ms.locfileid: "69539148"
 
 本文逐步介绍如何在 Azure VM 上启用 Hyper-V，并配置到该来宾虚拟机的 Internet 连接。
 
-## <a name="create-a-nesting-capable-azure-vm"></a>创建支持嵌套的 Azure VM
+## <a name="create-a-nesting-capable-azure-vm"></a>创建一个支持嵌套的 Azure VM
 
-创建新的 Windows Server 2016 Azure VM。  为了快速参考，所有 v3 虚拟机都支持嵌套虚拟化。 有关支持嵌套的虚拟机大小的完整列表，请查看 [Azure 计算单位](acu.md)一文。
+创建新的 Windows Server 2016 Azure VM。  为了快速参考，所有 v3 虚拟机都支持嵌套虚拟化。 有关支持嵌套的虚拟机大小的完整列表，请参阅[Azure 计算单位](acu.md)一文。
 
-请记住选择足够大的 VM 大小来支持来宾虚拟机的需求。 在此示例中，我们将使用 D3_v3 大小的 Azure VM。 
+请记得选择足以支持来宾虚拟机需求的 VM 大小。 在此示例中，我们将使用 D3_v3 大小的 Azure VM。 
 
 可以在[此处](https://www.azure.cn/home/features/products-by-region)查看 Dv3 或 Ev3 系列虚拟机的区域可用性。
 
@@ -41,13 +41,13 @@ ms.locfileid: "69539148"
 
 ## <a name="connect-to-your-azure-vm"></a>连接到 Azure VM
 
-创建与虚拟机的远程桌面连接。
+创建到虚拟机的远程桌面连接。
 
-1. 单击虚拟机属性上的“连接”  按钮。 此时会创建和下载远程桌面协议文件（.rdp 文件）。
+1. 单击虚拟机属性上的“连接”按钮。  此时会创建和下载远程桌面协议文件（.rdp 文件）。
 
 2. 若要连接到 VM，请打开下载的 RDP 文件。 出现提示时，请单击“连接”。  在 Mac 上，需要一个 RDP 客户端，例如 Mac 应用商店提供的这个[远程桌面客户端](https://itunes.apple.com/us/app/microsoft-remote-desktop/id715768417?mt=12)。
 
-3. 输入在创建虚拟机时指定的用户名和密码，并单击“确定”。 
+3. 输入在创建虚拟机时指定的用户名和密码，单击“确定”。 
 
 4. 你可能会在登录过程中收到证书警告。 单击“是”或“继续”继续进行连接。  
 
@@ -55,7 +55,7 @@ ms.locfileid: "69539148"
 你可以手动配置这些设置，或者使用我们提供的 PowerShell 脚本来自动完成配置。
 
 ### <a name="option-1-use-a-powershell-script-to-configure-nested-virtualization"></a>选项 1：使用 PowerShell 脚本配置嵌套虚拟化
-在 [GitHub](https://github.com/charlieding/Virtualization-Documentation/tree/live/hyperv-tools/Nested) 上提供了用于在 Windows Server 2016 主机上启用嵌套虚拟化的 PowerShell 脚本。 该脚本将首先检查先决条件，然后在 Azure VM 上配置嵌套虚拟化。 必须重启 Azure VM 才能完成配置。 此脚本在其他环境中也可以运行，但不能保证。 有关在 Azure 上运行嵌套虚拟化的现场视频演示，请查看 Azure 博客文章！ https://aka.ms/AzureNVblog 。
+在 [GitHub](https://github.com/charlieding/Virtualization-Documentation/tree/live/hyperv-tools/Nested) 上提供了用于在 Windows Server 2016 主机上启用嵌套虚拟化的 PowerShell 脚本。 该脚本将首先检查先决条件，然后在 Azure VM 上配置嵌套虚拟化。 必须重启 Azure VM 才能完成配置。 此脚本在其他环境中也可以运行，但不能保证。 有关在 Azure 上运行嵌套虚拟化的现场视频演示，请查看 Azure 博客文章！ https://aka.ms/AzureNVblog 列中的一个值匹配。
 
 ### <a name="option-2-configure-nested-virtualization-manually"></a>选项 2：手动配置嵌套虚拟化
 

@@ -8,10 +8,10 @@ ms.date: 03/30/2020
 ms.author: v-tawe
 ms.custom: mvc, cli-validate, seodec18
 ms.openlocfilehash: 453d9a86b26e0061b1470d2b414f82ec794d4153
-ms.sourcegitcommit: 44d3fe59952847e5394bbe6c05bd6f333bb56345
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80521987"
 ---
 # <a name="create-a-php-web-app-in-azure"></a>在 Azure 中创建 PHP Web 应用

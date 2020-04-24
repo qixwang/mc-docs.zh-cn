@@ -15,10 +15,10 @@ author: thraka
 ms.author: v-yiso
 manager: timlt
 ms.openlocfilehash: 2c4f0aa9ff7bcb1d768018ee938ecd0978acee0a
-ms.sourcegitcommit: dd0ff08835dd3f8db3cc55301815ad69ff472b13
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "70736647"
 ---
 # <a name="azure-cloud-services-config-networkconfiguration-schema"></a>Azure 云服务的配置 NetworkConfiguration 架构
@@ -32,7 +32,7 @@ ms.locfileid: "70736647"
 - [创建虚拟网络（经典）](../virtual-network/virtual-networks-create-vnet-classic-pportal.md)
 
 ## <a name="networkconfiguration-element"></a>NetworkConfiguration 元素
-下面的示例演示 `NetworkConfiguration` 元素及其子元素。
+下面的示例显示了 `NetworkConfiguration` 元素及其子元素。
 
 ```xml
 <ServiceConfiguration>

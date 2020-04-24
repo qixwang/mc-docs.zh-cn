@@ -12,10 +12,10 @@ ms.author: v-jay
 ms.reviewer: ''
 manager: digimobile
 ms.openlocfilehash: ff99c46844157744ff7e07c22b29b4bbe34f31d3
-ms.sourcegitcommit: 5191c30e72cbbfc65a27af7b6251f7e076ba9c88
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "67569873"
 ---
 # <a name="configure-the-azure-ssis-integration-runtime-for-high-performance"></a>配置高性能 Azure-SSIS Integration Runtime
@@ -119,7 +119,7 @@ AzureSSISNodeNumber 调整 Integration Runtime 的可伸缩性  。 Integration 
 已经在使用强大的辅助角色节点运行包时，增加 AzureSSISMaxParallelExecutionsPerNode 可能增加 Integration Runtime 的整体吞吐量  。 对于 Standard_D1_v2 节点，支持每个节点 1-4 个并行执行。 对于所有其他类型的节点，支持每个节点 1-max(2 x 核心数, 8) 个并行执行。 如果你希望 **AzureSSISMaxParallelExecutionsPerNode** 超出我们支持的最大值，你可以开具支持票证，我们可以为你增加最大值，然后你需要使用 Azure Powershell 更新 **AzureSSISMaxParallelExecutionsPerNode**。
 可以基于包的成本和辅助角色节点的以下配置估计合适的值。 有关详细信息，请参阅[常规用途虚拟机大小](../virtual-machines/windows/sizes-general.md)。
 
-| 大小             | vCPU | 内存：GiB | 临时存储 (SSD) GiB | 最大临时存储吞吐量：IOPS/读取 MBps/写入 MBps | 最大的数据磁盘/吞吐量：IOPS | 最大 NIC 数/预期网络性能 (Mbps) |
+| 大小             | vCPU | 内存：GiB | 临时存储 (SSD) GiB | 临时存储的最大吞吐量：IOPS/读取 MBps/写入 MBps | 最大的数据磁盘/吞吐量：IOPS | 最大 NIC 数/预期网络性能 (Mbps) |
 |------------------|------|-------------|------------------------|------------------------------------------------------------|-----------------------------------|------------------------------------------------|
 | Standard\_D1\_v2 | 1    | 3.5         | 50                     | 3000/46/23                                             | 2/2x500                         | 2 / 750                                        |
 | Standard\_D2\_v2 | 2    | 7           | 100                    | 6000/93/46                                             | 4/4x500                         | 2 / 1500                                       |

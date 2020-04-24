@@ -9,10 +9,10 @@ origin.date: 04/23/2019
 ms.date: 06/10/2019
 ms.author: v-yeche
 ms.openlocfilehash: 0ca1f1ba534a96456fec50a50f3ee643f7f6be40
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79291339"
 ---
 # <a name="scale-with-additional-process-servers"></a>使用额外的进程服务器进行扩展
@@ -42,7 +42,7 @@ ms.locfileid: "79291339"
 
 其中，每台受保护的源计算机配置有 3 个磁盘，每个磁盘 100 GB。
 
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>必备条件
 
 下表中汇总了额外进程服务器的先决条件。
 
@@ -57,7 +57,7 @@ ms.locfileid: "79291339"
 3. 选择配置服务器以向下钻取到配置服务器详细信息。 然后单击“+ 进程服务器”  。
 4. 在“添加进程服务器”   >  “选择要部署进程服务器的位置”  中，选择“在本地部署横向扩展进程服务器”  。
 
-    ![“添加服务器”页](./media/vmware-azure-set-up-process-server-scale/add-process-server.png)
+    ![添加服务器页](./media/vmware-azure-set-up-process-server-scale/add-process-server.png)
 5. 单击“下载 Azure Site Recovery 统一安装程序”。  这会下载最新版本的安装文件。
 
     > [!WARNING]

@@ -18,10 +18,10 @@ ms.date: 11/11/2019
 ms.author: v-yeche
 ms.reviewer: jroth
 ms.openlocfilehash: 0518a7ef0d2d1285a2733109f774bce86db29cf6
-ms.sourcegitcommit: 9597d4da8af58009f9cef148a027ccb7b32ed8cf
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74655299"
 ---
 # <a name="performance-guidelines-for-sql-server-in-azure-virtual-machines"></a>Azure 虚拟机中的 SQL Server 的性能准则
@@ -197,7 +197,7 @@ Azure VM 上有三种主要磁盘类型：
 
 ![取消选中符合条件的存储](media/virtual-machines-windows-sql-performance/uncheck-eligible-cluster-storage.png)
 
-如果正在使用存储空间，且选中了“将所有符合条件的存储添加到群集”  ，Windows 将在群集进程中分离虚拟磁盘。 这样一来，这些虚拟磁盘将不会出现在磁盘管理器或资源管理器之中，除非从群集中删除存储空间，并使用 PowerShell 将其重新附加。 存储空间将多个磁盘集合到存储池中。 有关详细信息，请参阅[存储空间](https://docs.microsoft.com/windows-server/storage/storage-spaces/overview)。
+如果正在使用存储空间，且选中了“将所有符合条件的存储添加到群集”  ，Windows 将在群集进程中分离虚拟磁盘。 这样一来，这些虚拟磁盘不会出现在磁盘管理器或资源管理器之中，除非从群集中删除存储空间，并使用 PowerShell 将其重新附加。 存储空间会将多个磁盘分组到存储池。 有关详细信息，请参阅[存储空间](https://docs.microsoft.com/windows-server/storage/storage-spaces/overview)。
 
 ## <a name="next-steps"></a>后续步骤
 

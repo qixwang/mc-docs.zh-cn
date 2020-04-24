@@ -9,10 +9,10 @@ origin.date: 07/23/2019
 ms.date: 01/20/2020
 ms.reviewer: sngun
 ms.openlocfilehash: be0b3762b78a71c2e72a79be3dac11513c833eac
-ms.sourcegitcommit: 304861faf39689348962127b8b56db8082ece2ef
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "76270024"
 ---
 # <a name="choose-the-right-consistency-level"></a>选择适当的一致性级别 

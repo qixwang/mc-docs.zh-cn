@@ -12,10 +12,10 @@ ms.topic: article
 ms.reviewer: klam, LADocs
 ms.suite: integration
 ms.openlocfilehash: 37b4845a4d12d7a9f16faf3d3169856850a770f0
-ms.sourcegitcommit: 305361c96d1d5288d3dda7e81833820640e2afac
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80109753"
 ---
 # <a name="handle-errors-and-exceptions-in-azure-logic-apps"></a>在 Azure 逻辑应用中处理错误和异常
@@ -32,10 +32,10 @@ ms.locfileid: "80109753"
 
 | 类型 | 说明 | 
 |------|-------------| 
-| **默认** | 此策略可*按指数级增长*间隔发送最多 4 次重试，增幅为 7.5 秒，但范围限定在 5 到 45 秒之间。 | 
+| **Default** | 此策略可*按指数级增长*间隔发送最多 4 次重试，增幅为 7.5 秒，但范围限定在 5 到 45 秒之间。 | 
 | **指数间隔**  | 此策略会等待从指数增长的范围中随机选定的时间间隔，然后再发送下一个请求。 | 
 | **固定间隔**  | 此策略会等待指定的时间间隔，然后再发送下一个请求。 | 
-| **无**  | 不重新发送请求。 | 
+| 无   | 不重新发送请求。 | 
 ||| 
 
 要了解重试策略限制，请参阅[逻辑应用限制和配置](../logic-apps/logic-apps-limits-and-config.md#request-limits)。 
@@ -72,7 +72,7 @@ ms.locfileid: "80109753"
 
 *必需*
 
-| Value | 类型 | 说明 |
+| 值 | 类型 | 说明 |
 |-------|------|-------------|
 | <*retry-policy-type*> | String | 要使用的重试策略类型：`default`、`none`、`fixed` 或 `exponential` | 
 | <*retry-interval*> | String | 其中值必须使用 [ISO 8601 格式](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)的重试时间间隔。 默认的最小时间间隔是 `PT5S`，而最大时间间隔是 `PT1D`。 如果使用指数式时间间隔策略，可更改最小值和最大值。 | 
@@ -81,7 +81,7 @@ ms.locfileid: "80109753"
 
 *可选*
 
-| Value | 类型 | 说明 |
+| 值 | 类型 | 说明 |
 |-------|------|-------------|
 | <*minimum-interval*> | String | 对于指数式时间间隔策略，是指随机选定的时间间隔的最小时间间隔（采用 [ISO 8601 格式](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)） | 
 | <*maximum-interval*> | String | 对于指数式时间间隔策略，是指随机选定的时间间隔的最大时间间隔（采用 [ISO 8601 格式](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)） | 
@@ -119,12 +119,12 @@ ms.locfileid: "80109753"
 <a name="no-retry"></a>
 ### <a name="none"></a>无
 
-要指定操作或触发器不重试失败的请求，请将 <retry-policy-type> 设置为 `none`  。
+要指定操作或触发器不重试失败的请求，请将 <retry-policy-type> 设置为  `none`。
 
 <a name="fixed-retry"></a>
 ### <a name="fixed-interval"></a>固定间隔
 
-要指定操作或触发器在等待指定的时间间隔后再发送下一个请求，请将 <retry-policy-type> 设置为 `fixed`  。
+要指定操作或触发器在等待指定的时间间隔后再发送下一个请求，请将 <retry-policy-type> 设置为  `fixed`。
 
 *示例*
 
@@ -149,7 +149,7 @@ ms.locfileid: "80109753"
 
 ### <a name="exponential-interval"></a>指数间隔
 
-要指定操作或触发器在等待随机的时间间隔后再发送下一个请求，请将 <retry-policy-type> 设置为 `exponential`  。 随机时间间隔选自呈指数增长的范围。 此外，可通过自行指定最小时间间隔和最大时间间隔替代默认的最小和最大时间间隔。
+要指定操作或触发器在等待随机的时间间隔后再发送下一个请求，请将 <retry-policy-type> 设置为  `exponential`。 随机时间间隔选自呈指数增长的范围。 此外，可通过自行指定最小时间间隔和最大时间间隔替代默认的最小和最大时间间隔。
 
 **随机变量范围**
 
@@ -263,7 +263,7 @@ ms.locfileid: "80109753"
 
 默认情况下，当范围的所有操作都成功时，范围的状态将标记为 `Succeeded`。 如果范围内最后一个操作的状态为 `Failed` 或 `Aborted`，则范围的状态将标记为 `Failed`。
 
-若要捕获 `Failed` 范围内的异常并运行用来处理这些错误的操作，可对该 `Failed` 范围使用 `runAfter` 属性。 这样，如果范围内的任何操作失败并且为该范围使用了 `runAfter` 属性，则可以创建单个操作来捕获失败。 
+若要捕获 `Failed` 范围内的异常并运行用来处理这些错误的操作，可对该 `runAfter` 范围使用 `Failed` 属性。 这样，如果范围内的任何操作失败并且为该范围使用了  *属性，则可以创建单个操作来捕获失败。* `runAfter`
 
 有关作用域的限制，请参阅[限制和配置](../logic-apps/logic-apps-limits-and-config.md)。
 
@@ -329,7 +329,7 @@ ms.locfileid: "80109753"
    如果范围中的单个操作失败，For Each 循环中的操作仅运行一次  。 
    如果存在多个失败的操作，则将对每个失败执行一次操作。
 
-4. 针对 For Each 项响应正文（即 `@item()['outputs']['body']` 表达式）发送 HTTP POST  。 
+4. 针对 For Each 项响应正文（即  **表达式）发送 HTTP POST**`@item()['outputs']['body']`。 
 
    `@result()` 项的形状与 `@actions()` 形状相同，可按相同的方式进行分析。
 

@@ -16,10 +16,10 @@ origin.date: 11/01/2018
 ms.date: 09/26/2019
 ms.author: v-lingwu
 ms.openlocfilehash: bdc3be9baae846e1be7cc1c71e0c685fcb38099c
-ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77068246"
 ---
 # <a name="get-started-with-relay-hybrid-connections-websockets-in-net"></a>开始在 .NET 中使用中继混合连接 WebSocket
@@ -35,7 +35,7 @@ ms.locfileid: "77068246"
 4. 编写客户端（发送方）控制台应用程序，用于发送消息。
 5. 运行应用程序。 
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要完成本教程，需要满足以下先决条件：
 
@@ -48,7 +48,7 @@ ms.locfileid: "77068246"
 ## <a name="create-a-hybrid-connection"></a>创建混合连接
 [!INCLUDE [relay-create-hybrid-connection-portal](../../includes/relay-create-hybrid-connection-portal.md)]
 
-## <a name="3-create-a-server-application-listener"></a> 3.创建服务器应用程序（侦听程序）
+## <a name="3-create-a-server-application-listener"></a><a name="3-create-a-server-application-listener"></a> 3.创建服务器应用程序（侦听程序）
 在 Visual Studio 中编写可侦听和接收来自中继的消息的 C# 控制台应用程序。
 
 [!INCLUDE [relay-hybrid-connections-dotnet-get-started-server](../../includes/relay-hybrid-connections-dotnet-get-started-server.md)]

@@ -16,10 +16,10 @@ ms.date: 09/23/2019
 ms.author: v-lingwu
 ms.custom: seodec18
 ms.openlocfilehash: a3ec3b83b2fb14456da2dffd28725a051f0efc01
-ms.sourcegitcommit: 27eaabd82b12ad6a6840f30763034a6360977186
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77497376"
 ---
 # <a name="choose-a-vm-size-for-compute-nodes-in-an-azure-batch-pool"></a>选择 Azure Batch 池中计算节点的 VM 大小
@@ -56,7 +56,7 @@ ms.locfileid: "77497376"
 | HB<sup>1</sup> | 所有大小 |
 | HBv2<sup>1</sup> | 所有大小 |
 | HC<sup>1</sup> | 所有大小 |
-| Ls | 所有大小 |
+| LS | 所有大小 |
 | Lsv2 | 无（尚不可用） |
 | M<sup>1</sup> | 除 M64、M64m、M128、M128m 之外的所有大小 |
 | Mv2 | 无（尚不可用） |

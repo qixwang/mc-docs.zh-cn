@@ -5,10 +5,10 @@ ms.assetid: d8efe41a-bef8-4167-ba97-f3e016fcd39e
 ms.topic: conceptual
 ms.date: 01/13/2020
 ms.openlocfilehash: 93b5d1ad6ee4f636f9c281d0fcce2f0c44b9a2e7
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79291887"
 ---
 # <a name="azure-functions-developers-guide"></a>Azure Functions 开发人员指南
@@ -40,11 +40,11 @@ Function.json 文件定义函数触发器、绑定和其他配置设置。 每�
 
 在 `bindings` 属性配置两个触发器和绑定。 每个绑定共享一些通用设置和一些特定于个别类型的绑定的设置。 每个绑定都需要以下设置：
 
-| 属性 | 值/类型 | 注释 |
+| properties | 值/类型 | 注释 |
 | --- | --- | --- |
-| `type` |string |绑定类型。 例如，`queueTrigger`。 |
+| `type` |字符串 |绑定类型。 例如，`queueTrigger` 。 |
 | `direction` |'in', 'out' |表示绑定是用于接收数据到函数中或是从函数发送数据。 |
-| `name` |string |将用于函数中绑定数据的名称。 对于 C#，它将是参数名称；对于 JavaScript，它是键/值列表中的键。 |
+| `name` |字符串 |将用于函数中绑定数据的名称。 对于 C#，它将是参数名称；对于 JavaScript，它是键/值列表中的键。 |
 
 ## <a name="function-app"></a>函数应用
 函数应用在 Azure 中提供用于运行函数的执行上下文。 因此，它是函数的部署和管理单元。 函数应用由一个或多个共同管理、部署和缩放的独立函数组成。 函数应用中的所有函数共享相同的定价计划、部署方法和运行时版本。 将函数应用视为组织和共同管理函数的一种方法。 若要了解详细信息，请参阅[如何管理函数应用](functions-how-to-use-azure-function-app-settings.md)。 
@@ -58,14 +58,14 @@ Function.json 文件定义函数触发器、绑定和其他配置设置。 每�
 以上是 Function app 的默认（和推荐）文件夹结构。 如果要更改函数代码的文件位置，请修改 function.json 文件的 `scriptFile` 部分  。 我们还建议使用[包部署](deployment-zip-push.md)将项目部署到 Azure 中的函数应用。 
 
 > [!NOTE]
-> 如果手动部署包，请确保将 host.json 文件和函数文件夹直接部署到 `wwwroot` 文件夹  。 请勿在部署中包含 `wwwroot` 文件夹。 否则，最后将得到 `wwwroot\wwwroot` 文件夹。
+> 如果手动部署包，请确保将 host.json 文件和函数文件夹直接部署到  _文件夹_`wwwroot`。 请勿在部署中包含 `wwwroot` 文件夹。 否则，最后将得到 `wwwroot\wwwroot` 文件夹。
 
 #### <a name="use-local-tools-and-publishing"></a>使用本地工具和发布
 可以使用各种工具创作和发布各种函数应用，包括 [Visual Studio](./functions-develop-vs.md)、[Visual Studio Code](functions-create-first-function-vs-code.md)、[IntelliJ](./functions-create-maven-intellij.md)、[Eclipse](./functions-create-maven-eclipse.md) 和 [Azure Functions Core Tools](./functions-develop-local.md)。 有关详细信息，请参阅[在本地对 Azure Functions 进行编码和测试](./functions-develop-local.md)。
 
 <!--NOTE: I've removed documentation on FTP, because it does not sync triggers on the consumption plan --glenga -->
 
-## <a id="fileupdate"></a> 如何编辑 Azure 门户中的函数
+## <a name="how-to-edit-functions-in-the-azure-portal"></a><a id="fileupdate"></a> 如何编辑 Azure 门户中的函数
 通过 Azure 门户中内置的函数编辑器可直接内联更新代码和 function.json 文件  。 建议仅用于小的更改或概念证明 - 最佳做法是使用 VS Code 等本地开发工具。
 
 ## <a name="parallel-execution"></a>并行执行

@@ -128,7 +128,7 @@
               href: ./../scripts/virtual-machines-windows-cli-sample-create-vm-nsg.md
         - name: 安全
           items:
-            - name: 加密 VM 和数据磁盘
+            - name: 对 VM 和数据磁盘进行加密
               href: ./../scripts/virtual-machines-windows-cli-sample-encrypt-vm.md
             - name: 监视
               items:
@@ -136,7 +136,7 @@
                   href: ./../scripts/virtual-machines-windows-cli-sample-create-vm-oms.md
 - name: 概念
   items:
-    - name: Azure Resource Manager
+    - name: Azure 资源管理器
       href: ../../azure-resource-manager/management/overview.md?toc=/virtual-machines/windows/toc.json&bc=/virtual-machines/windows/breadcrumb/toc.json
     - name: 区域
       href: regions.md
@@ -210,7 +210,7 @@
           href: managed-disks-overview.md
         - name: 选择适用于 IaaS VM 的磁盘类型
           href: disks-types.md
-        - name: Encryption
+        - name: 加密
           href: disk-encryption.md
         - name: 为实现高性能而设计
           href: premium-storage-performance.md
@@ -242,7 +242,7 @@
       href: backup-recovery.md
     - name: 基础结构示例
       href: infrastructure-example.md
-- name: 操作指南
+- name: 操作方法指南
   items:
     - name: 创建 VM
       items:
@@ -280,13 +280,13 @@
           href: migration-classic-resource-manager-deep-dive.md
         - name: 规划迁移
           href: migration-classic-resource-manager-plan.md
-        - name: 使用 PowerShell 进行迁移
+        - name: 使用 PowerShell 迁移
           href: migration-classic-resource-manager-ps.md
         - name: 常见的迁移错误
           href: migration-classic-resource-manager-errors.md
         - name: 用于迁移的社区工具
           href: migration-classic-resource-manager-community-tools.md
-        - name: 常见问题
+        - name: 常见问题解答
           href: migration-classic-resource-manager-faq.md
     - name: 保护 VM
       items:
@@ -463,7 +463,7 @@
               href: hpcpack-cluster-active-directory.md
             - name: HPC Pack 2012 R2 头节点
               href: hpcpack-cluster-headnode.md
-            - name: 将本地作业提交到 HPC Pack 2012 R2
+            - name: 将本地将作业提交到 HPC Pack 2012 R2
               href: hpcpack-cluster-submit-jobs.md
     - name: 管理存储
       items:
@@ -539,7 +539,7 @@
           href: /active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm?context=azure/virtual-machines/windows/context/windows-vm-context
         - name: PowerShell
           href: /active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm?context=azure/virtual-machines/windows/context/windows-vm-context
-        - name: Azure Resource Manager 模板
+        - name: Azure 资源管理器模板
           displayName: ARM
           href: /active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm?context=azure/virtual-machines/windows/context/windows-vm-context
         - name: REST
@@ -594,5 +594,5 @@
       href: 'https://status.azure.com/status/'
     - name: 视频
       href: 'https://www.azure.cn/video-center/'
-    - name: 常见问题
+    - name: 常见问题解答
       href: faq.md

@@ -8,10 +8,10 @@ origin.date: 12/02/2019
 ms.date: 02/10/2020
 ms.author: v-yeche
 ms.openlocfilehash: 7d59cfe8af6fae4e462159e46af8a18625fb4800
-ms.sourcegitcommit: 23dc63b6fea451f6a2bd4e8d0fbd7ed082ba0740
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "76980483"
 ---
 # <a name="configure-multi-master-in-your-applications-that-use-azure-cosmos-db"></a>在使用 Azure Cosmos DB 的应用程序配置多主数据库

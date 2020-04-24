@@ -12,10 +12,10 @@ origin.date: 07/01/2019
 ms.date: 08/06/2019
 ms.author: v-junlch
 ms.openlocfilehash: 30052a152fee2e834e24ec71e238f0c9a07e5ee8
-ms.sourcegitcommit: 17cd5461e7d99f40b9b1fc5f1d579f82b2e27be9
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "68818842"
 ---
 # <a name="ephemeral-os-disks-for-vm-instances"></a>用于 VM 实例的临时 OS 磁盘

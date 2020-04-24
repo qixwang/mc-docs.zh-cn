@@ -15,10 +15,10 @@ origin.date: 09/17/2018
 ms.date: 10/14/2019
 ms.author: v-yeche
 ms.openlocfilehash: 864f67cb4ef38c90c1bd72b544151e5754c1ba00
-ms.sourcegitcommit: c9398f89b1bb6ff0051870159faf8d335afedab3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "72272656"
 ---
 # <a name="time-sync-for-windows-vms-in-azure"></a>Azure 中 Windows VM 的时间同步

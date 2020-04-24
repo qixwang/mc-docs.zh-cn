@@ -15,10 +15,10 @@ origin.date: 08/09/2018
 ms.date: 10/14/2019
 ms.author: v-yeche
 ms.openlocfilehash: 99bb09c6bbb91814c804792b1e2b39941cefa347
-ms.sourcegitcommit: c9398f89b1bb6ff0051870159faf8d335afedab3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "72272799"
 ---
 # <a name="virtual-machines-lifecycle-and-states"></a>虚拟机生命周期和状态

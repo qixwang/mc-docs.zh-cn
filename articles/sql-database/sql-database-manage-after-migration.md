@@ -13,10 +13,10 @@ ms.reviewer: sstein
 origin.date: 02/13/2019
 ms.date: 03/30/2020
 ms.openlocfilehash: db9d3ee9c3c78ecda0c9d509b00bc31aeaf14e87
-ms.sourcegitcommit: 90660563b5d65731a64c099b32fb9ec0ce2c51c6
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80341819"
 ---
 # <a name="new-dba-in-the-cloud---managing-your-single-and-pooled-databases-in-azure-sql-database"></a>云中的新 DBA - 管理 Azure SQL 数据库中单一和共用数据库

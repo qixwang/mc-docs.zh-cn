@@ -4,10 +4,10 @@ description: 使用 Kudu 部署服务的 .zip 文件部署功能来发布 Azure 
 ms.topic: conceptual
 ms.date: 01/13/2020
 ms.openlocfilehash: d0ecc6a3305713850a30988cb9ab8712fba0a04e
-ms.sourcegitcommit: 48d51745ca18de7fa05b77501b4a9bf16cea2068
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "76116911"
 ---
 # <a name="zip-deployment-for-azure-functions"></a>Azure Functions 的 Zip 部署
@@ -62,7 +62,7 @@ Azure Functions 具有完整的持续部署范围，以及由 Azure 应用服务
 
 还可从 GitHub 存储库下载 .zip 文件。 在以 .zip 文件形式下载 GitHub 存储库时，GitHub 会为分支添加一个额外的文件夹级别。 此额外的文件夹级别意味着无法直接部署从 GitHub 下载的 .zip 文件。
 
-## <a name="cli"></a>使用 Azure CLI 进行部署
+## <a name="deploy-by-using-azure-cli"></a><a name="cli"></a>使用 Azure CLI 进行部署
 
 可使用 Azure CLI 来触发推送部署。 使用 [az functionapp deployment source config-zip](/cli/functionapp/deployment/source#az-functionapp-deployment-source-config-zip) 命令将 .zip 文件推送部署到函数应用。 要使用此命令，必须使用 Azure CLI 版本 2.0.21 或更高版本。 要查看当前使用的 Azure CLI 版本，请使用 `az --version` 命令。
 

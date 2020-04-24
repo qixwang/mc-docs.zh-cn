@@ -18,10 +18,10 @@ ms.date: 11/25/2019
 ms.author: v-yeche
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: ae6c10829aad4ee8b61b7607c14d8ead95eea969
-ms.sourcegitcommit: 298eab5107c5fb09bf13351efeafab5b18373901
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74658014"
 ---
 # <a name="configure-private-ip-addresses-for-a-virtual-machine-classic-using-powershell"></a>使用 PowerShell 为虚拟机（经典）配置专用 IP 地址
@@ -71,7 +71,7 @@ ms.locfileid: "74658014"
     New-AzureVM          3b99a86d-84f8-04e5-888e-b6fc3c73c4b9 Succeeded  
 
 ## <a name="how-to-retrieve-static-private-ip-address-information-for-a-vm"></a>如何检索 VM 的静态专用 IP 地址信息
-若要查看使用上述脚本创建的 VM 的静态专用 IP 地址信息，请运行以下 PowerShell 命令，然后观察 *IpAddress* 的值：
+要查看使用上述脚本创建的 VM 静态专用 IP 地址信息，请运行以下 PowerShell 命令，并观察 *IpAddress* 的值：
 
     Get-AzureVM -Name DNS01 -ServiceName TestService
 

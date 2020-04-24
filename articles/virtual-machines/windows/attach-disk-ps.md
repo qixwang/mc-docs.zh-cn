@@ -9,10 +9,10 @@ ms.date: 11/11/2019
 ms.author: v-yeche
 ms.subservice: disks
 ms.openlocfilehash: b773e2c7c879b0667954387ff50734ec19c9f7f5
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79291311"
 ---
 # <a name="attach-a-data-disk-to-a-windows-vm-with-powershell"></a>使用 PowerShell 将数据磁盘附加到 Windows VM
@@ -32,7 +32,7 @@ ms.locfileid: "79291311"
 
 ## <a name="add-an-empty-data-disk-to-a-virtual-machine"></a>将空数据磁盘添加到虚拟机
 
-此示例演示了如何将空数据磁盘添加到现有的虚拟机。
+此示例演示了如何将空数据磁盘添加到现有虚拟机。
 
 ### <a name="using-managed-disks"></a>使用托管磁盘
 
@@ -85,7 +85,7 @@ foreach ($disk in $disks) {
 
 ## <a name="attach-an-existing-data-disk-to-a-vm"></a>将现有数据磁盘附加到 VM
 
-可以将现有托管磁盘作为数据磁盘附加到 VM。
+可以将现有的托管磁盘作为数据磁盘附加到虚拟机。
 
 ```powershell
 $rgName = "myResourceGroup"

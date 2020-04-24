@@ -12,10 +12,10 @@ origin.date: 09/03/2019
 ms.date: 03/30/2020
 ms.custom: seoapril2019
 ms.openlocfilehash: 9369bee950a54b5e16eb553846c7cab2b3af18b2
-ms.sourcegitcommit: 90660563b5d65731a64c099b32fb9ec0ce2c51c6
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80341797"
 ---
 # <a name="tutorial-secure-a-single-or-pooled-database"></a>教程：保护单一数据库或共用数据库

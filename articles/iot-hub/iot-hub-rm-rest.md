@@ -16,10 +16,10 @@ origin.date: 08/08/2017
 ms.author: v-yiso
 ms.date: 07/15/2019
 ms.openlocfilehash: 2ebf96942cb8f7113af4f6df906f8095171de627
-ms.sourcegitcommit: a4b88888b83bf080752c3ebf370b8650731b01d1
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74179014"
 ---
 # <a name="create-an-iot-hub-using-the-resource-provider-rest-api-net"></a>使用资源提供程序 REST API 创建 IoT 中心 (.NET)

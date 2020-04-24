@@ -11,10 +11,10 @@ ms.topic: conceptual
 origin.date: 10/09/2019
 ms.date: 12/23/2019
 ms.openlocfilehash: 2c4e8eea71067c858fafeefc25f912cb19be57bf
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75348553"
 ---
 # <a name="selecting-the-right-vm-size-for-your-azure-hdinsight-cluster"></a>为 Azure HDInsight 群集选择适当的 VM 大小

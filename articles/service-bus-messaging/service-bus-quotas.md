@@ -16,10 +16,10 @@ origin.date: 01/24/2020
 ms.date: 2/6/2020
 ms.author: v-lingwu
 ms.openlocfilehash: 1ff648d6bc50f5f4d1a859cfda3e6bbbfb14ecce
-ms.sourcegitcommit: 925c2a0f6c9193c67046b0e67628d15eec5205c3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77068288"
 ---
 # <a name="service-bus-quotas"></a>服务总线配额

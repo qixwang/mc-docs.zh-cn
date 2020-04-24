@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 03/19/2020
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 5d1b73c9c4d44917cecf61dad327c0e5350e22ab
-ms.sourcegitcommit: e500354e2fd8b7ac3dddfae0c825cc543080f476
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79546875"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Azure Functions 的缩放和托管

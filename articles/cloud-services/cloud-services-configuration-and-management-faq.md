@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 03/04/2020
 ms.author: v-junlch
 ms.openlocfilehash: 89de0286624a1541bc1ce7b12040d2ad84ee7c2d
-ms.sourcegitcommit: 1ac138a9e7dc7834b5c0b62a133ca5ce2ea80054
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78266097"
 ---
 # <a name="configuration-and-management-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Azure 云服务配置和管理问题：常见问题 (FAQ)

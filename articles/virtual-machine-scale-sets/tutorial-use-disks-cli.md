@@ -9,10 +9,10 @@ ms.date: 03/31/2020
 ms.author: v-junlch
 ms.custom: mvc
 ms.openlocfilehash: 503f5a3bf69ffd57f12327bdf98cfbd0ed7d3931
-ms.sourcegitcommit: 64584c0bf31b4204058ae2b4641356b904ccdd58
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80581695"
 ---
 # <a name="tutorial-create-and-use-disks-with-virtual-machine-scale-set-with-the-azure-cli"></a>教程：通过 Azure CLI 对虚拟机规模集创建和使用磁盘
@@ -46,7 +46,7 @@ ms.locfileid: "80581695"
 | [GPU](../virtual-machines/linux/sizes-gpu.md) | N 系列 | 1440 |
 
 ## <a name="azure-data-disks"></a>Azure 数据磁盘
-可添加额外的数据磁盘，用于安装应用程序和存储数据。 在任何需要持久和灵敏数据存储的情况下，都应使用数据磁盘。 每个数据磁盘的最大容量为 4 TB。 VM 实例的大小决定可附加的数据磁盘数。 对于每个 VM vCPU，都可以附加两个数据磁盘。
+可添加额外的数据磁盘，用于安装应用程序和存储数据。 在任何需要持久和响应性数据存储的情况下，都应使用数据磁盘。 每个数据磁盘的最大容量为 4 TB。 VM 实例的大小决定可附加的数据磁盘数。 对于每个 VM vCPU，都可以附加两个数据磁盘。
 
 ### <a name="max-data-disks-per-vm"></a>每个 VM 的最大数据磁盘数
 | 类型 | 常见大小 | 每个 VM 的最大数据磁盘数 |
@@ -63,7 +63,7 @@ Azure 提供两种类型的磁盘。
 标准存储受 HDD 支持，可以在确保性能的同时提供经济高效的存储。 标准磁盘适用于经济高效的开发和测试工作负荷。
 
 ### <a name="premium-disk"></a>高级磁盘
-高级磁盘由基于 SSD 的高性能、低延迟磁盘提供支持。 建议对运行生产工作负荷的 VM 使用这些磁盘。 高级存储支持 DS 系列、DSv2 系列、GS 系列和 FS 系列 VM。 选择磁盘大小时，大小值将向上舍入到下一类型。 例如，如果磁盘大小小于 128 GB，则磁盘类型为 P10。 如果磁盘大小介于 129 GB 和 512 GB 之间，则大小为 P20。 如果超过 512 GB，则大小为 P30。
+高级磁盘由基于 SSD 的高性能、低延迟磁盘提供支持。 建议对运行生产工作负荷的 VM 使用这些磁盘。 高级存储支持 DS 系列、DSv2 系列、GS 系列和 FS 系列 VM。 选择磁盘大小时，大小值将舍入为下一类型。 例如，如果磁盘大小小于 128 GB，则磁盘类型为 P10。 如果磁盘大小介于 129 GB 和 512 GB 之间，则大小为 P20。 如果超过 512 GB，则大小为 P30。
 
 ### <a name="premium-disk-performance"></a>高级磁盘性能
 |高级存储磁盘类型 | P4 | P6 | P10 | P20 | P30 | P40 | P50 |
@@ -275,7 +275,7 @@ az vmss disk detach `
 
 
 ## <a name="clean-up-resources"></a>清理资源
-若要删除规模集和磁盘，请使用 [az group delete](/cli/group) 删除资源组及其所有资源。 `--no-wait` 参数会使光标返回提示符处，无需等待操作完成。 `--yes` 参数将确认是否希望删除资源，而不会有额外提示。
+若要删除规模集和磁盘，请使用 [az group delete](/cli/group) 删除资源组及其所有资源。 `--no-wait` 参数会使光标返回提示符处，不会等待操作完成。 `--yes` 参数将确认是否希望删除资源，不会显示询问是否删除的额外提示。
 
 ```azurecli
 az group delete --name myResourceGroup --no-wait --yes
