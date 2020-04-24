@@ -9,10 +9,10 @@ ms.date: 11/25/2019
 ms.author: v-tawe
 ms.custom: include file
 ms.openlocfilehash: 7cbf8713d38e0c45c0dc342d93506a89888983be
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75334861"
 ---
 ## <a name="create-an-azure-signalr-service-instance"></a>创建 Azure SignalR 服务实例

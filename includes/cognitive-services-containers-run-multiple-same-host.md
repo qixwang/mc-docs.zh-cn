@@ -6,10 +6,10 @@ ms.date: 01/13/2020
 ms.service: cognitive-services
 ms.topic: include
 ms.openlocfilehash: ddf7f43e1458aceb5a7eab23465b1ff61037b0b9
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75631698"
 ---
 ### <a name="run-multiple-containers-on-the-same-host"></a>在同一主机上运行多个容器

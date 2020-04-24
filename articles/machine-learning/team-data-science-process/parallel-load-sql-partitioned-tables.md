@@ -12,10 +12,10 @@ ms.date: 11/09/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: bf91831e3e983476675d8efb134c4c44e9983dfa
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75599692"
 ---
 # <a name="build-and-optimize-tables-for-fast-parallel-import-of-data-into-a-sql-server-on-an-azure-vm"></a>生成并优化表以便快速将数据并行导入到 Azure VM 上的 SQL Server
@@ -54,7 +54,7 @@ ms.locfileid: "75599692"
         ( NAME = ''LogFileGroup'', FILENAME = ''' + @data_path + '<log_file_name>.ldf'' , SIZE = 1024KB , FILEGROWTH = 10%)
     ')
 
-## <a name="create-a-partitioned-table"></a>创建分区表
+## <a name="create-a-partitioned-table"></a>创建已分区表
 若要根据映射到在上一步中创建的数据库文件组的数据架构创建分区表，必须先创建分区函数和方案。 将数据批量导入到分区表时，会根据分区方案在文件组之中分布记录，如下所述。
 
 ### <a name="1-create-a-partition-function"></a>1.创建分区函数

@@ -15,17 +15,17 @@ ms.reviewer: elkuzmen
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c4b289cc774e5eaede5f9fcbd3ea0a4e54ad3330
-ms.sourcegitcommit: 9597d4da8af58009f9cef148a027ccb7b32ed8cf
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74655383"
 ---
 # <a name="add-your-custom-domain-name-using-the-azure-active-directory-portal"></a>使用 Azure Active Directory 门户添加自定义域名
 
 每个新的 Azure AD 租户都附带了一个初始域名 *\<domainname>.partner.onmschina.cn*。 无法更改或删除初始域名，但可以添加组织的名称。 添加自定义域名有助于创建用户所熟悉的用户名，例如 *alain\@contoso.com*。
 
-## <a name="before-you-begin"></a>准备阶段
+## <a name="before-you-begin"></a>开始之前
 
 添加自定义域名之前，请在域注册机构处创建域名。 有关认证的域注册机构，请参阅 [ICANN 认证的注册机构](https://www.icann.org/registrar-reports/accredited-list.html)。
 
@@ -51,11 +51,11 @@ ms.locfileid: "74655383"
 
 1. 使用目录的全局管理员帐户登录到 [Azure 门户](https://portal.azure.cn/)。
 
-1. 在任意页面中搜索并选择“Azure Active Directory”。  然后选择“自定义域名” > “添加自定义域”。  
+1. 在任意页面中搜索并选择“Azure Active Directory”。  然后选择“自定义域名” **“添加自定义域”。**  >  
 
     ![“自定义域名”页，其中显示了“添加自定义域”](./media/add-custom-domain/add-custom-domain.png)
 
-1. 在“自定义域名”中，输入组织的新名称（在本示例中为 *contoso.com*）。  选择“添加域”。 
+1. 在“自定义域名”中，输入组织的新名称（在本示例中为 **contoso.com**）。  选择“添加域”。 
 
     ![“自定义域名”页，其中显示了“添加自定义域”页](./media/add-custom-domain/add-custom-domain-blade.png)
 

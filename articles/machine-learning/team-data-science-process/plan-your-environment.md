@@ -12,10 +12,10 @@ ms.date: 11/13/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: c2f3babd51de5a5401a466fefbf965ef1b18f9e6
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75599675"
 ---
 # <a name="how-to-identify-scenarios-and-plan-for-advanced-analytics-data-processing"></a>如何规定高级分析数据处理的方案和计划
@@ -90,7 +90,7 @@ ms.locfileid: "75599675"
 * 数值
 * 分类
 * 字符串
-* 二进制
+* Binary
 
 ### <a name="how-is-your-data-formatted"></a>数据格式是如何设置的？
 
@@ -146,7 +146,7 @@ ms.locfileid: "75599675"
 ### <a name="what-tools-should-you-use-for-data-analysis"></a>应使用什么工具进行数据分析？
 
 * [Microsoft Azure Powershell](/powershell/azure/overview) - 用于管理脚本语言中 Azure 资源的一种脚本语言
-* [Azure Machine Learning Studio](../studio/what-is-ml-studio.md)
+* [Azure 机器学习工作室](../studio/what-is-ml-studio.md)
 * [Revolution Analytics](https://www.microsoft.com/sql-server/machinelearningserver)
 * [RStudio](https://www.rstudio.com)
 * [用于 Visual Studio 的 Python 工具](https://aka.ms/ptvsdocs)

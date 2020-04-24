@@ -12,10 +12,10 @@ ms.custom: seo-dt-2019
 origin.date: 01/22/2018
 ms.date: 01/06/2020
 ms.openlocfilehash: ca03d6b00fd4eb89ad2b081633740f416c4a2e65
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75623852"
 ---
 # <a name="transform-data-in-azure-virtual-network-using-hive-activity-in-azure-data-factory"></a>在 Azure 数据工厂中使用 Hive 活动转换 Azure 虚拟网络中的数据
@@ -33,7 +33,7 @@ ms.locfileid: "75623852"
 
 如果没有 Azure 订阅，可在开始前创建一个 [1 元人民币试用](https://www.azure.cn/zh-cn/pricing/1rmb-trial-full/?form-type=identityauth)帐户。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -41,7 +41,7 @@ ms.locfileid: "75623852"
 - **Azure 虚拟网络**。 如果没有 Azure 虚拟网络，请遵照[这些说明](../virtual-network/quick-create-portal.md)创建虚拟网络。 在本示例中，HDInsight 位于 Azure 虚拟网络中。 下面是 Azure 虚拟网络的示例配置。 
 
     ![创建虚拟网络](media/tutorial-transform-data-using-hive-in-vnet/create-virtual-network.png)
-- **HDInsight 群集**。 创建一个 HDInsight 群集，并按照以下文章中所述，将该群集加入到在前一步骤中创建的虚拟网络：[使用 Azure 虚拟网络扩展 Azure HDInsight](../hdinsight/hdinsight-extend-hadoop-virtual-network.md)。 下面是虚拟网络中 HDInsight 的示例配置。 
+- **HDInsight 群集**。 创建一个 HDInsight 群集，并遵循[使用 Azure 虚拟网络扩展 Azure HDInsight](../hdinsight/hdinsight-extend-hadoop-virtual-network.md) 一文中所述，将该群集加入到在前一步骤中创建的虚拟网络。 下面是虚拟网络中 HDInsight 的示例配置。 
 
     ![虚拟网络中的 HDInsight](media/tutorial-transform-data-using-hive-in-vnet/hdinsight-in-vnet-configuration.png)
 - **Azure PowerShell**。 遵循[如何安装和配置 Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps) 中的说明。
@@ -92,7 +92,7 @@ ms.locfileid: "75623852"
     ```powershell
     $selfHostedIntegrationRuntimeName = "MySelfHostedIR09142017" 
     ```
-2. 启动 **PowerShell**。 在完成本快速入门之前，请将 Azure PowerShell 保持打开状态。 如果将它关闭再重新打开，则需要再次运行下述命令。 若要查看目前提供数据工厂的 Azure 区域的列表，请在以下页面上选择感兴趣的区域，然后展开“分析”  以找到“数据工厂”  ：[各区域的产品可用性](https://azure.microsoft.com/global-infrastructure/services/?regions=china-non-regional,china-east,china-east-2,china-north,china-north-2&products=all)。 数据工厂使用的数据存储（Azure 存储、Azure SQL 数据库，等等）和计算资源（HDInsight 等）可以位于其他区域中。
+2. 启动 **PowerShell**。 在完成本快速入门之前，请将 Azure PowerShell 保持打开状态。 如果将它关闭再重新打开，则需要再次运行下述命令。 若要查看目前提供数据工厂的 Azure 区域的列表，请在以下页面上选择感兴趣的区域，然后展开“分析”  以找到“数据工厂”  ：[可用产品（按区域）](https://azure.microsoft.com/global-infrastructure/services/?regions=china-non-regional,china-east,china-east-2,china-north,china-north-2&products=all)。 数据工厂使用的数据存储（Azure 存储、Azure SQL 数据库，等等）和计算资源（HDInsight 等）可以位于其他区域中。
 
     运行以下命令并输入用于登录 Azure 门户的用户名和密码：
         
@@ -109,7 +109,7 @@ ms.locfileid: "75623852"
     ```powershell
     Select-AzSubscription -SubscriptionId "<SubscriptionId>"    
     ```  
-3. 创建资源组：ADFTutorialResourceGroup（如果在订阅中尚不存在）。 
+3. 创建资源组 ADFTutorialResourceGroup（如果在订阅中尚不存在）。 
 
     ```powershell
     New-AzResourceGroup -Name $resourceGroupName -Location "China East 2" 
@@ -155,9 +155,9 @@ ms.locfileid: "75623852"
 
    ![注册集成运行时](media/tutorial-transform-data-using-hive-in-vnet/register-integration-runtime.png)
 
-   成功注册自我托管的集成运行时后，会看到以下消息：![已成功注册](media/tutorial-transform-data-using-hive-in-vnet/registered-successfully.png)
+   成功注册自我托管的集成运行时后，会看到以下消息：“已成功注册”![](media/tutorial-transform-data-using-hive-in-vnet/registered-successfully.png)
 
-   将节点连接到云服务后，会看到以下页：![节点已连接](media/tutorial-transform-data-using-hive-in-vnet/node-is-connected.png)
+   将节点连接到云服务后，会看到以下页：“节点已连接”![](media/tutorial-transform-data-using-hive-in-vnet/node-is-connected.png)
 
 ## <a name="author-linked-services"></a>创作链接服务
 
@@ -278,8 +278,8 @@ ms.locfileid: "75623852"
 
 请注意以下几点：
 
-- **scriptPath** 指向用于 MyStorageLinkedService 的 Azure 存储帐户中的 Hive 脚本路径。 该路径区分大小写。
-- **Output** 是 Hive 脚本中使用的参数。 使用 `wasb://<Container>@<StorageAccount>.blob.core.chinacloudapi.cn/outputfolder/` 格式指向 Azure 存储中的现有文件夹。 该路径区分大小写。 
+- **scriptPath** 指向用于 MyStorageLinkedService 的 Azure 存储帐户中的 Hive 脚本路径。 此路径区分大小写。
+- **Output** 是 Hive 脚本中使用的参数。 使用 `wasb://<Container>@<StorageAccount>.blob.core.chinacloudapi.cn/outputfolder/` 格式指向 Azure 存储中的现有文件夹。 此路径区分大小写。 
 
 切换到在其中创建了 JSON 文件的文件夹，并运行以下命令部署管道： 
 

@@ -10,10 +10,10 @@ ms.date: 09/10/2019
 ms.author: v-tawe
 ms.custom: include file
 ms.openlocfilehash: 2e4ad3a6e1b4c7ebf407cddd9c9c4ef75191fe3c
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75466454"
 ---
 ## <a name="prepare-your-repository"></a>准备存储库
@@ -29,7 +29,7 @@ ms.locfileid: "75466454"
 | Node.js | server.js、app.js 或具有启动脚本的 package.json    |
 | Python | _\*.py_ 、 _requirements.txt_ 或 _runtime.txt_ |
 | HTML | default.htm、default.html、default.asp、index.htm、index.html 或 iisstart.htm       |
-| Web 作业 | App\_Data/jobs/continuous（适用于连续的 WebJobs）或 App\_Data/jobs/triggered（适用于触发的 WebJobs）下的 \<job_name>/run.\<extension>    。 有关详细信息，请参阅 [Kudu WebJobs 文档](https://github.com/projectkudu/kudu/wiki/WebJobs)。 |
+| Web 作业 | App_Data/jobs/continuous（适用于连续的 WebJobs）或 App\<Data/jobs/triggered（适用于触发的 WebJobs）下的 \<job_name>/run._ extension> _\__ _\__ 。 有关详细信息，请参阅 [Kudu WebJobs 文档](https://github.com/projectkudu/kudu/wiki/WebJobs)。 |
 
 要自定义部署，可以在存储库根路径中添加 .deployment 文件  。 有关详细信息，请参阅[自定义部署](https://github.com/projectkudu/kudu/wiki/Customizing-deployments)和[自定义部署脚本](https://github.com/projectkudu/kudu/wiki/Custom-Deployment-Script)。
 

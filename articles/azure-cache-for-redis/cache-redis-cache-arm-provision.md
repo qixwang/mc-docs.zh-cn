@@ -7,10 +7,10 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 12/30/2019
 ms.openlocfilehash: f01ab161d3d904c6f5fbf5536f1de54395c7a2b6
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75624326"
 ---
 # <a name="create-an-azure-cache-for-redis-using-a-template"></a>使用模板创建 Azure Redis 缓存
@@ -21,7 +21,7 @@ ms.locfileid: "75624326"
 
 目前，对订阅的同一区域中的所有缓存共享诊断设置。 更新区域中的一个缓存会影响该区域中的所有其他缓存。
 
-有关创建模板的详细信息，请参阅[创作 Azure Resource Manager 模板](../azure-resource-manager/resource-group-authoring-templates.md)。 若要了解缓存资源类型的 JSON 语法和属性，请参阅 [Microsoft.Cache 资源类型](https://docs.microsoft.com/azure/templates/microsoft.cache/allversions)。
+有关创建模板的详细信息，请参阅[创作 Azure 资源管理器模板](../azure-resource-manager/resource-group-authoring-templates.md)。 若要了解缓存资源类型的 JSON 语法和属性，请参阅 [Microsoft.Cache 资源类型](https://docs.microsoft.com/azure/templates/microsoft.cache/allversions)。
 
 有关完整的模板，请参阅 [Azure Redis 缓存模板](https://github.com/Azure/azure-quickstart-templates/blob/master/101-redis-cache/azuredeploy.json)。
 
@@ -36,7 +36,7 @@ ms.locfileid: "75624326"
 > 
 > 
 
-## <a name="what-you-will-deploy"></a>要部署的内容
+## <a name="what-you-will-deploy"></a>将部署的内容
 在此模板中，将部署 Azure Redis 缓存，以便使用现有存储帐户保存诊断数据。
 
 若要自动运行部署，请单击以下按钮：
@@ -44,13 +44,13 @@ ms.locfileid: "75624326"
 [![部署到 Azure](./media/cache-redis-cache-arm-provision/deploybutton.png)](https://portal.azure.cn/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-redis-cache%2Fazuredeploy.json)
 
 ## <a name="parameters"></a>parameters
-使用 Azure Resource Manager，可以定义在部署模板时想要指定的值的参数。 该模板具有一个名为 Parameters 的部分，其中包含所有参数值。
-应该为随着要部署的项目或要部署到的环境而变化的值定义参数。 不要为永远保持不变的值定义参数。 每个参数值可在模板中用来定义所部署的资源。 
+使用 Azure 资源管理器，可以定义在部署模板时想要指定的值的参数。 该模板具有一个名为 Parameters 的部分，其中包含所有参数值。
+应该为随着要部署的项目或要部署到的环境而变化的值定义参数。 不要为始终保持不变的值定义参数。 每个参数值可在模板中用来定义所部署的资源。 
 
 [!INCLUDE [app-service-web-deploy-redis-parameters](../../includes/cache-deploy-parameters.md)]
 
 ### <a name="rediscachelocation"></a>redisCacheLocation
-Azure Redis 缓存的位置。 为获得最佳性能，请使用要与缓存配合使用的应用所在的位置。
+Azure Redis 缓存的位置。 为获得最佳性能，请使用要与缓存配合使用的应用所在的同一位置。
 
     "redisCacheLocation": {
       "type": "string"

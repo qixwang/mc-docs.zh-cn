@@ -9,10 +9,10 @@ ms.topic: conceptual
 origin.date: 09/18/2019
 ms.date: 12/23/2019
 ms.openlocfilehash: cca9e22607571965af1b8226d0be6b4193ac2584
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75348517"
 ---
 # <a name="apache-spark-best-practices"></a>Apache Spark 最佳做法
@@ -24,7 +24,7 @@ ms.locfileid: "75348517"
 | 选项 | 文档 |
 |---|---|
 | VSCode | [使用适用于 Visual Studio Code 的 Spark 和 Hive 工具](../hdinsight-for-vscode.md) |
-| Jupyter 笔记本 | [教程：在 Azure HDInsight 中的 Apache Spark 群集上加载数据并运行查询](./apache-spark-load-data-run-query.md) |
+| Jupyter Notebook | [教程：在 Azure HDInsight 中的 Apache Spark 群集上加载数据并运行查询](./apache-spark-load-data-run-query.md) |
 | IntelliJ | [教程：使用 Azure Toolkit for IntelliJ 为 HDInsight 群集创建 Apache Spark 应用程序](./apache-spark-intellij-tool-plugin.md) |
 | IntelliJ | [教程：使用 IntelliJ 在 HDInsight 中创建适用于 Apache Spark 的 Scala Maven 应用程序](./apache-spark-create-standalone-application.md) |
 | Zeppelin 笔记本 | [在 Azure HDInsight 上的 Apache Spark 群集中使用 Apache Zeppelin 笔记本](./apache-spark-zeppelin-notebook.md) |

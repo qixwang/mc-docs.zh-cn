@@ -18,10 +18,10 @@ ms.author: v-tawe
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.openlocfilehash: 3838277d15ef9deed7c1cf2a56f2c32155e72a6d
-ms.sourcegitcommit: cf73284534772acbe7a0b985a86a0202bfcc109e
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74884871"
 ---
 # <a name="register-the-current-user-for-push-notifications-by-using-aspnet"></a>通过使用 ASP.NET 注册推送通知的当前用户
@@ -31,25 +31,25 @@ ms.locfileid: "74884871"
 
 ## <a name="overview"></a>概述
 
-本主题演示在 ASP.NET Web API 执行注册时如何请求向 Azure 通知中心注册推送通知。 本主题是对教程 [使用通知中心通知用户]的扩展。 必须在该教程中已完成创建经过身份验证的移动服务所需的步骤。 有关通知用户方案的详细信息，请参阅 [使用通知中心通知用户]。
+本主题演示在 ASP.NET Web API 执行注册时如何请求向 Azure 通知中心注册推送通知。 本主题是教程[使用通知中心通知用户]的延伸。 必须在该教程中已完成创建经过身份验证的移动服务所需的步骤。 有关通知用户方案的详细信息，请参阅[使用通知中心通知用户]。
 
 ## <a name="update-your-app"></a>更新应用程序
 
 1. 在 MainStoryboard_iPhone.storyboard 中，从对象库添加以下组件：
 
-   * **标签**：“Push to User with Notification Hubs”
-   * **标签**：“InstallationId”
-   * **标签**：“User”
-   * **文本字段**：“User”
-   * **标签**：“Password”
-   * **文本字段**：“Password”
-   * **按钮**：“Login”
+   * **标签**：“使用通知中心推送到用户”
+   * **标签**："InstallationId"
+   * **标签**：“用户”
+   * **文本字段**：“用户”
+   * **标签**：“密码”
+   * **文本字段**：“密码”
+   * **按钮**：“登录”
 
      此时，Storyboard 应与下图类似：
 
      ![][0]
 
-2. 在助手编辑器中，创建所有带开关控件的容器并调用它们，连接文本字段与视图控制器（委派），并创建“登录”按钮的“操作”   。
+2. 在助手编辑器中，创建所有带开关控件的容器并调用它们，连接文本字段与视图控制器（委派），并创建“**登录**”按钮的“**操作**”。
 
     ![][1]
 
@@ -125,7 +125,7 @@ ms.locfileid: "74884871"
     这为请求设置设备标记。
 
    > [!NOTE]
-   > 此时，此方法中不应有任何其他代码。 如果已调用在完成[通知中心入门](notification-hubs-ios-apple-push-notification-apns-get-started.md)教程的学习时添加的 `registerNativeWithDeviceToken` 方法，必须注释掉或删除该调用。
+   > 此时，此方法中不应有任何其他代码。 如果已调用在完成`registerNativeWithDeviceToken`通知中心入门[教程的学习时添加的 ](notification-hubs-ios-apple-push-notification-apns-get-started.md) 方法，必须注释掉或删除该调用。
 
 8. 在 `PushToUserAppDelegate.m` 文件中，添加以下处理程序方法：
 
@@ -139,7 +139,7 @@ ms.locfileid: "74884871"
     }
     ```
 
-    当你的应用程序接收到它正在运行的通知时，此方法会在 UI 中显示一个警报。
+    当应用程序接收到它正在运行的通知时，此方法会在 UI 中显示一个警报。
 
 9. 打开 `PushToUserViewController.m` 文件，并在以下实现中返回键盘：
 
@@ -152,7 +152,7 @@ ms.locfileid: "74884871"
     }
     ```
 
-10. 在 `PushToUserViewController.m` 文件中的 `viewDidLoad` 方法中，如下所示初始化 `installationId` 标签：
+10. 在 `viewDidLoad` 文件中的 `PushToUserViewController.m` 方法中，如下所示初始化 `installationId` 标签：
 
     ```objc
     DeviceInfo* deviceInfo = [(PushToUserAppDelegate*)[[UIApplication sharedApplication]delegate] deviceInfo];
@@ -247,9 +247,9 @@ ms.locfileid: "74884871"
     }];
     ```
 
-    此方法获取一个安装 ID 和用于推送通知的通道并将它与设备类型一起发送到在通知中心创建注册的已经身份验证的 Web API 方法。 此 Web API 已在 [使用通知中心通知用户]中定义。
+    此方法获取一个安装 ID 和用于推送通知的通道并将它与设备类型一起发送到在通知中心创建注册的已经身份验证的 Web API 方法。 此 Web API 已在[使用通知中心通知用户]中定义。
 
-现在客户端应用程序已更新，请返回到 [使用通知中心通知用户] 并更新移动服务以使用通知中心发送通知。
+现在客户端应用程序已更新，请返回到[使用通知中心通知用户]并更新移动服务以使用通知中心发送通知。
 
 <!-- Anchors. -->
 

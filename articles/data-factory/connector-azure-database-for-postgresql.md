@@ -13,10 +13,10 @@ ms.custom: seo-lt-2019
 origin.date: 09/16/2019
 ms.date: 01/06/2020
 ms.openlocfilehash: af2ed158cdd6d26692cfa84010bf2ac4c65fe900
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75624239"
 ---
 # <a name="copy-data-to-and-from-azure-database-for-postgresql-by-using-azure-data-factory"></a>使用 Azure 数据工厂向/从 Azure Database for PostgreSQL 复制数据
@@ -46,7 +46,7 @@ Azure 数据工厂提供内置驱动程序以启用连接。 因此，无需手�
 
 Azure Database for PostgreSQL 链接服务支持以下属性：
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：**AzurePostgreSql**。 | 是 |
 | connectionString | 用于连接到 Azure Database for PostgreSQL 的 ODBC 连接字符串。<br/>还可以将密码放在 Azure 密钥保管库中，并从连接字符串中拉取 `password` 配置。 有关更多详细信息，请参阅以下示例和[在 Azure 密钥保管库中存储凭据](store-credentials-in-key-vault.md)。 | 是 |
@@ -56,8 +56,8 @@ Azure Database for PostgreSQL 链接服务支持以下属性：
 
 | 属性 | 说明 | 选项 | 必须 |
 |:--- |:--- |:--- |:--- |
-| EncryptionMethod (EM)| 驱动程序用于加密在驱动程序和数据库服务器之间发送的数据的方法。 例如 `EncryptionMethod=<0/1/6>;`| 0 (No Encryption) **(Default)** / 1 (SSL) / 6 (RequestSSL) | 否 |
-| ValidateServerCertificate (VSC) | 启用 SSL 加密后，确定驱动程序是否验证数据库服务器发送的证书（加密方法=1）。 例如 `ValidateServerCertificate=<0/1>;`| 0 (Disabled) **(Default)** / 1 (Enabled) | 否 |
+| EncryptionMethod (EM)| 驱动程序用于加密在驱动程序和数据库服务器之间发送的数据的方法。 例如  `EncryptionMethod=<0/1/6>;`| 0 (No Encryption) **(Default)** / 1 (SSL) / 6 (RequestSSL) | 否 |
+| ValidateServerCertificate (VSC) | 启用 SSL 加密后，确定驱动程序是否验证数据库服务器发送的证书（加密方法=1）。 例如  `ValidateServerCertificate=<0/1>;`| 0 (Disabled) **(Default)** / 1 (Enabled) | 否 |
 
 **示例**：
 
@@ -103,7 +103,7 @@ Azure Database for PostgreSQL 链接服务支持以下属性：
 
 要从 Azure Database for PostgreSQL 复制数据，请将数据集的 type 属性设置为 **AzurePostgreSqlTable**。 支持以下属性：
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为 AzurePostgreSqlTable  | 是 |
 | tableName | 表名称 | 否（如果指定了活动源中的“query”） |
@@ -132,10 +132,10 @@ Azure Database for PostgreSQL 链接服务支持以下属性：
 
 要从 Azure Database for PostgreSQL 复制数据，请将复制活动中的源类型设置为 **AzurePostgreSqlSource**。 复制活动**source**部分支持以下属性：
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
 | type | 复制活动源的 type 属性必须设置为 **AzurePostgreSqlSource** | 是 |
-| query | 使用自定义 SQL 查询读取数据。 例如： `"SELECT * FROM MyTable"` | 否（如果指定了数据集中的 tableName 属性） |
+| 查询 | 使用自定义 SQL 查询读取数据。 例如： `"SELECT * FROM MyTable"` | 否（如果指定了数据集中的 tableName 属性） |
 
 **示例**：
 
@@ -173,7 +173,7 @@ Azure Database for PostgreSQL 链接服务支持以下属性：
 
 将数据复制到 Azure Database for PostgreSQL 时，复制活动的 **sink** 节支持以下属性：
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
 | type | 复制活动接收器的 type 属性必须设置为 **AzurePostgreSQLSink**。 | 是 |
 | preCopyScript | 每次运行时将数据写入 Azure Database for PostgreSQL 之前，为要执行的复制活动指定 SQL 查询。 可以使用此属性清除预加载的数据。 | 否 |

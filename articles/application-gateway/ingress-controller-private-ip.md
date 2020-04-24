@@ -9,10 +9,10 @@ origin.date: 11/04/2019
 ms.date: 11/19/2019
 ms.author: v-junlch
 ms.openlocfilehash: 5d3a0e34d0fc949151c7ed28398a096217859f56
-ms.sourcegitcommit: fdbd1b6df618379dfeab03044a18c373b5fbb8ec
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74328438"
 ---
 # <a name="use-private-ip-for-internal-routing-for-an-ingress-endpoint"></a>使用入口终结点的专用 IP 进行内部路由 
@@ -52,7 +52,7 @@ appgw.ingress.kubernetes.io/use-private-ip: "true"
 
 
 ## <a name="assign-globally"></a>全局分配
-如果要求是限制所有入口通过专用 IP 进行公开，请在 `helm` 配置中使用 `appgw.usePrivateIP: true`。
+如果要求是限制所有入口通过专用 IP 进行公开，请在 `appgw.usePrivateIP: true` 配置中使用 `helm`。
 
 ### <a name="usage"></a>使用情况
 ```yaml

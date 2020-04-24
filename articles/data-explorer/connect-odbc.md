@@ -9,10 +9,10 @@ ms.topic: conceptual
 origin.date: 06/30/2019
 ms.date: 11/18/2019
 ms.openlocfilehash: d6ae42e1d14d4c4e4e4e8058deaedfbafa35aba3
-ms.sourcegitcommit: 298eab5107c5fb09bf13351efeafab5b18373901
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74657959"
 ---
 # <a name="connect-to-azure-data-explorer-with-odbc"></a>使用 ODBC 连接到 Azure 数据资源管理器
@@ -29,7 +29,7 @@ ms.locfileid: "74657959"
 
 本文介绍如何使用 SQL Server ODBC 驱动程序，使你能够从任何支持 ODBC 的应用程序连接到 Azure 数据资源管理器。 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 需要满足以下条件：
 
@@ -41,7 +41,7 @@ ms.locfileid: "74657959"
 
 1. 在 Windows 中搜索“ODBC 数据源”，  打开 ODBC 数据源桌面应用。
 
-1. 选择“添加”   。
+1. 选择 **添加** 。
 
     ![添加数据源](media/connect-odbc/add-data-source.png)
 
@@ -49,13 +49,13 @@ ms.locfileid: "74657959"
 
     ![选择驱动程序](media/connect-odbc/select-driver.png)
 
-1. 输入连接的名称和说明以及要连接到的群集，然后选择“下一步”  。 群集 URL 应采用 \<ClusterName\>.\<Region\>.kusto.chinacloudapi.cn  格式。
+1. 输入连接的名称和说明以及要连接到的群集，然后选择“下一步”  。 群集 URL 应采用 *ClusterName\<.\>Region\<.kusto.chinacloudapi.cn\>* 格式。
 
     ![选择服务器](media/connect-odbc/select-server.png)
 
 1. 选择“Active Directory 集成”，然后选择“下一步”。  
 
-    ![Active Directory 集成](media/connect-odbc/active-directory-integrated.png)
+    ![Active Directory 已集成](media/connect-odbc/active-directory-integrated.png)
 
 1. 选择包含示例数据的数据库，然后选择“下一步”。 
 

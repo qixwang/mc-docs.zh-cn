@@ -8,10 +8,10 @@ ms.author: v-yiso
 origin.date: 07/31/2019
 ms.date: 09/23/2019
 ms.openlocfilehash: 902b1ea741b5692d0e69ff1907984ade7ea98206
-ms.sourcegitcommit: 9e92bcf6aa02fc9e7b3a29abadf6b6d1a8ece8c4
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74388941"
 ---
 # <a name="scenario-converting-service-principal-certificate-contents-to-base-64-encoded-string-format-in-azure-hdinsight"></a>方案：在 Azure HDInsight 中将服务主体证书内容转换为 base-64 编码的字符串格式

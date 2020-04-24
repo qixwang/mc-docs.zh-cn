@@ -13,10 +13,10 @@ origin.date: 10/04/2019
 ms.date: 12/05/2019
 ms.author: v-lingwu
 ms.openlocfilehash: 181badddbe1e9a5d84dc8947e3d85e97b3c3ca33
-ms.sourcegitcommit: cf73284534772acbe7a0b985a86a0202bfcc109e
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74884931"
 ---
 # <a name="geographyv2-prebuilt-entity-for-a-luis-app"></a>LUIS 应用的 GeographyV2 预生成实体
@@ -40,7 +40,7 @@ ms.locfileid: "74884931"
 
 `Carol is visiting the sphinx in gizah egypt in africa before heading to texas.`
 
-#### <a name="v3-responsetabv3"></a>[V3 响应](#tab/V3)
+#### <a name="v3-response"></a>[V3 响应](#tab/V3)
 
 以下 JSON 的 `verbose` 参数设置为 `false`：
 
@@ -73,7 +73,7 @@ ms.locfileid: "74884931"
 
 在上述 JSON 中，`poi` 是**兴趣点**的缩写。
 
-#### <a name="v3-verbose-responsetabv3-verbose"></a>[V3 详细响应](#tab/V3-verbose)
+#### <a name="v3-verbose-response"></a>[V3 详细响应](#tab/V3-verbose)
 
 以下 JSON 的 `verbose` 参数设置为 `true`：
 
@@ -162,7 +162,7 @@ ms.locfileid: "74884931"
     }
 }
 ```
-#### <a name="v2-responsetabv2"></a>[V2 响应](#tab/V2)
+#### <a name="v2-response"></a>[V2 响应](#tab/V2)
 
 以下示例显示了 builtin.geographyV2 实体的解析  。
 

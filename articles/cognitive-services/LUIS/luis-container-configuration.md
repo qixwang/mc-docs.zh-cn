@@ -13,10 +13,10 @@ origin.date: 11/07/2019
 ms.date: 12/05/2019
 ms.author: v-lingwu
 ms.openlocfilehash: 7a535235f6b6ba994706b5d923df947142fc7273
-ms.sourcegitcommit: 21b02b730b00a078a76aeb5b78a8fd76ab4d6af2
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74838572"
 ---
 # <a name="configure-language-understanding-docker-containers"></a>配置语言理解 Docker 容器 
@@ -35,7 +35,7 @@ ms.locfileid: "74838572"
 |是|[Eula](#eula-setting)| 表示已接受容器的许可条款。|
 |否|[Fluentd](#fluentd-settings)|将日志和（可选）指标数据写入 Fluentd 服务器。|
 |否|[Http 代理](#http-proxy-credentials-settings)|配置 HTTP 代理以发出出站请求。|
-|否|[Logging](#logging-settings)|为容器提供 ASP.NET Core 日志记录支持。 |
+|否|[日志记录](#logging-settings)|为容器提供 ASP.NET Core 日志记录支持。 |
 |是|[Mounts](#mount-settings)|从主计算机读取数据并将其写入到容器，以及从容器读回数据并将其写回到主计算机。|
 
 > [!IMPORTANT]
@@ -68,7 +68,7 @@ ms.locfileid: "74838572"
 请记住在 URL 中包括 `luis/v2.0` 路由，如下表所示：
 
 
-|必须| Name | 数据类型 | 说明 |
+|必须| 名称 | 数据类型 | 说明 |
 |--|------|-----------|-------------|
 |是| `Billing` | String | 账单终结点 URI<br><br>示例：<br>`Billing=https://chinaeast2.api.cognitive.azure.cn/luis/v2.0/` |
 
@@ -98,7 +98,7 @@ LUIS 容器不使用输入或输出装载来存储训练或服务数据。
 
 下表描述了支持的设置。
 
-|必须| Name | 数据类型 | 说明 |
+|必须| 名称 | 数据类型 | 说明 |
 |-------|------|-----------|-------------|
 |是| `Input` | String | 输入装入点的目标。 默认值为 `/input`。 这是 LUIS 包文件的位置。 <br><br>示例：<br>`--mount type=bind,src=c:\input,target=/input`|
 |否| `Output` | String | 输出装入点的目标。 默认值为 `/output`。 这是日志的位置。 这包括 LUIS 查询日志和容器日志。 <br><br>示例：<br>`--mount type=bind,src=c:\output,target=/output`|

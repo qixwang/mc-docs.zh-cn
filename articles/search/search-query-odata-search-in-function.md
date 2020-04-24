@@ -21,10 +21,10 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: c87e40b49e8ce29f4533c067ac2e266305c0e0aa
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75336498"
 ---
 # <a name="odata-searchin-function-in-azure-cognitive-search"></a>Azure 认知搜索中的 OData `search.in` 函数
@@ -54,13 +54,13 @@ search_in_call ::=
     'search.in(' variable ',' string_literal(',' string_literal)? ')'
 ```
 
-下面还提供了交互式语法图：
+交互式语法图也可用：
 
 > [!div class="nextstepaction"]
 > [Azure 认知搜索的 OData 语法图](https://azuresearch.github.io/odata-syntax-diagram/#search_in_call)
 
 > [!NOTE]
-> 请参阅 [Azure 认知搜索的 OData 表达式语法参考](search-query-odata-syntax-reference.md)以了解完整的 EBNF。
+> 请参阅[适用于 Azure 认知搜索的 OData 表达式语法参考](search-query-odata-syntax-reference.md)以获取完整的 EBNF。
 
 `search.in` 函数测试给定字符串字段或范围变量是否等于给定的值列表之一。 变量与列表中每个值之间的相等性以区分大小写的方式进行确定，这与 `eq` 运算符的方式相同。 因此，`search.in(myfield, 'a, b, c')` 等表达式相当于 `myfield eq 'a' or myfield eq 'b' or myfield eq 'c'`，但 `search.in` 的表现会好得多。
 
@@ -73,7 +73,7 @@ search_in_call ::=
 
 | 参数名称 | 类型 | 说明 |
 | --- | --- | --- |
-| `variable` | `Edm.String` | 字符串字段引用（在 `any` 或 `all` 表达式中使用 `search.in` 的情况下，则为基于字符串集合字段的范围变量）。 |
+| `variable` | `Edm.String` | 字符串字段引用（在 `search.in` 或 `any` 表达式中使用 `all` 的情况下，则为基于字符串集合字段的范围变量）。 |
 | `valueList` | `Edm.String` | 一个字符串，其中包含的分隔列表中的值需要与 `variable` 参数匹配。 如果未指定 `delimiters` 参数，则默认的分隔符为空格和逗号。 |
 | `delimiters` | `Edm.String` | 一个字符串，其中的每个字符在分析 `valueList` 参数时会被视为分隔符。 此参数的默认值为 `' ,'`，这意味着，系统会将其中包含空格和/或逗号的任何值分开。 如果因为值包含空格和逗号而需要使用这些字符以外的分隔符，可以在此参数中指定替代分隔符，例如 `'|'`。 |
 
@@ -85,7 +85,7 @@ search_in_call ::=
 
 ## <a name="examples"></a>示例
 
-查找名称为“Sea View motel”或“Budget hotel”的所有酒店。 包含空格（默认分隔符）的短语。 可以将单引号中的备用分隔符指定为第三个字符串参数：  
+查找名称为“Sea View motel”或“Budget hotel”的所有酒店。 包含空格（默认分隔符）的短语。 可将单引号中的备用分隔符指定为第三个字符串参数：  
 
     search.in(HotelName, 'Sea View motel,Budget hotel', ',')
 

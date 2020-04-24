@@ -11,10 +11,10 @@ origin.date: 01/29/2019
 ms.date: 01/29/2019
 ms.author: v-lingwu
 ms.openlocfilehash: 9a2e9197e86c016b6693309109a47dda7c93faec
-ms.sourcegitcommit: 3a9c13eb4b4bcddd1eabca22507476fb34f89405
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74528359"
 ---
 <div id="main" class="v2">

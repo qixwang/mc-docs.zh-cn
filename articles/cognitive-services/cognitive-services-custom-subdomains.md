@@ -11,10 +11,10 @@ origin.date: 07/24/2019
 ms.date: 10/11/2019
 ms.author: v-tawe
 ms.openlocfilehash: 69f87093789455a823a57b5c180ae013f18fb46f
-ms.sourcegitcommit: 298eab5107c5fb09bf13351efeafab5b18373901
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74658113"
 ---
 # <a name="custom-subdomain-names-for-cognitive-services"></a>认知服务的自定义子域名

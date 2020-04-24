@@ -9,10 +9,10 @@ origin.date: 11/11/2019
 ms.date: 12/02/2019
 ms.author: v-jay
 ms.openlocfilehash: 07a611f4b2d6ea61804b090bd3893c80d311485a
-ms.sourcegitcommit: fac243483f641e1d01646a30197522a60599d837
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74552975"
 ---
 # <a name="advertise-custom-routes-for-p2s-vpn-clients"></a>为 P2S VPN 客户端播发自定义路由

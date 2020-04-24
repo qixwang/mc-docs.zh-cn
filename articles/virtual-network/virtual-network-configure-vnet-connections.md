@@ -16,10 +16,10 @@ origin.date: 11/25/2019
 ms.date: 11/25/2019
 ms.author: v-yeche
 ms.openlocfilehash: 2fa34a19c7fa476d17467e6c71845b17a3f5f81c
-ms.sourcegitcommit: 298eab5107c5fb09bf13351efeafab5b18373901
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74658055"
 ---
 # <a name="configure-and-validate-virtual-network-or-vpn-connections"></a>配置和验证虚拟网络或 VPN 连接

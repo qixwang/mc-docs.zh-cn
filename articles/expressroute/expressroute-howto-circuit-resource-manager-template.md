@@ -10,10 +10,10 @@ ms.date: 12/02/2019
 ms.author: v-yiso
 ms.reviewer: ganesr
 ms.openlocfilehash: 854e20a7e13b6bfb222a2a104df6ace876be1b92
-ms.sourcegitcommit: 9e92bcf6aa02fc9e7b3a29abadf6b6d1a8ece8c4
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74389450"
 ---
 # <a name="create-an-expressroute-circuit-by-using-azure-resource-manager-template"></a>使用 Azure 资源管理器模板创建 ExpressRoute 线路
@@ -32,7 +32,7 @@ ms.locfileid: "74389450"
 
 * 在开始配置之前，请查看[先决条件](expressroute-prerequisites.md)和[工作流](expressroute-workflows.md)。
 * 确保有权创建新的网络资源。 如果没有适当的权限，请与帐户管理员联系。
-## <a name="create"></a>创建和预配 ExpressRoute 线路
+## <a name="create-and-provision-an-expressroute-circuit"></a><a name="create"></a>创建和预配 ExpressRoute 线路
 
 [Azure 快速入门模板](https://azure.microsoft.com/resources/templates/)有许多资源管理器模板。 请使用某个[现有模板](https://azure.microsoft.com/resources/templates/101-expressroute-circuit-create/)来创建 ExpressRoute 线路。
 
@@ -82,7 +82,7 @@ ms.locfileid: "74389450"
 * [使用 Azure CLI](../azure-resource-manager/resource-group-template-deploy-cli.md)。
 * [使用 REST API](../azure-resource-manager/resource-group-template-deploy-rest.md)。
 
-## <a name="delete"></a>取消设置和删除 ExpressRoute 线路
+## <a name="deprovisioning-and-deleting-an-expressroute-circuit"></a><a name="delete"></a>取消设置和删除 ExpressRoute 线路
 
 可以通过选择“删除”  图标来删除 ExpressRoute 线路。 请注意以下信息：
 

@@ -9,10 +9,10 @@ origin.date: 04/11/2019
 ms.date: 08/05/2019
 ms.author: v-yiso
 ms.openlocfilehash: 4cea3d1bc35d6f47877cf599c428b602fecc299f
-ms.sourcegitcommit: fc8a6e0f8eff2ef7b645ae8dc2ac02fdf498086f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74797591"
 ---
 # <a name="order-device-connection-events-from-azure-iot-hub-using-azure-cosmos-db"></a>使用 Azure Cosmos DB 将来自 Azure IoT 中心的设备连接事件排序

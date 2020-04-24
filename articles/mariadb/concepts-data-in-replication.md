@@ -8,10 +8,10 @@ ms.topic: conceptual
 origin.date: 09/13/2019
 ms.date: 11/18/2019
 ms.openlocfilehash: 3d2ff0637f970a95b28ff7340e01a7ad4990148c
-ms.sourcegitcommit: 6a19227dcc0c6e0da5b82c4f69d0227bf38a514a
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74328732"
 ---
 # <a name="replicate-data-into-azure-database-for-mariadb"></a>将数据复制到 Azure Database for MariaDB
@@ -21,13 +21,13 @@ ms.locfileid: "74328732"
 ## <a name="when-to-use-data-in-replication"></a>何时使用配置复制中数据
 可以考虑使用复制中数据的主要场景有：
 
-- **混合数据同步：** 借助数据传入复制，可以在本地服务器和 Azure Database for MariaDB 之间同步数据。 此同步可用于创建混合应用程序。 如果有现有的本地数据库服务器，但想要将数据移到更靠近最终用户的区域，那么此方法很有吸引力。
-- **多云同步：** 对于复杂的云解决方案，使用数据传入复制在 Azure Database for MariaDB 和不同的云服务提供商之间同步数据，包括虚拟机和托管在这些云中的数据库服务。
+- **混合数据同步**：通过数据传入复制，可在本地服务器与 Azure Database for MariaDB 之间同步数据。 此同步可用于创建混合应用程序。 如果有现有的本地数据库服务器，但想要将数据移到更靠近最终用户的区域，那么此方法很有吸引力。
+- **多云同步**：在复杂的云解决方案中，可利用数据传入复制功能在 Azure Database for MariaDB 与不同的云提供程序之间同步数据，包括在虚拟机与这些云中托管的数据库服务之间。
 
 ## <a name="limitations-and-considerations"></a>限制和注意事项
 
 ### <a name="data-not-replicated"></a>不会复制的数据
-不会复制主服务器上的 [mysql 系统数据库](https://mariadb.com/kb/en/library/the-mysql-database-tables/)  。 不会复制对主服务器上的帐户和权限所做的更改。 如果在主服务器上创建帐户，并且此帐户需要访问副本服务器，则在副本服务器上手动创建相同的帐户。 要了解系统数据库中包含哪些表，请参阅 [MariaDB 文档](https://mariadb.com/kb/en/library/the-mysql-database-tables/)。
+不会复制主服务器上的 [mysql 系统数据库  ](https://mariadb.com/kb/en/library/the-mysql-database-tables/)。 不会复制对主服务器上的帐户和权限所做的更改。 如果在主服务器上创建帐户，并且此帐户需要访问副本服务器，则在副本服务器上手动创建相同的帐户。 要了解系统数据库中包含哪些表，请参阅 [MariaDB 文档](https://mariadb.com/kb/en/library/the-mysql-database-tables/)。
 
 ### <a name="requirements"></a>要求
 - 主服务器版本不得低于 MariaDB 10.2 版本。

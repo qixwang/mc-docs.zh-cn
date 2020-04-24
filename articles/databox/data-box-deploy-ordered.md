@@ -10,10 +10,10 @@ origin.date: 04/23/2019
 ms.date: 12/02/2019
 ms.author: v-jay
 ms.openlocfilehash: afa6ffef3db7466c53414fb1567b756ca8875988
-ms.sourcegitcommit: 9597d4da8af58009f9cef148a027ccb7b32ed8cf
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74655416"
 ---
 # <a name="tutorial-order-azure-data-box"></a>教程：订购 Azure Data Box
@@ -28,7 +28,7 @@ Azure Data Box 是一个混合解决方案，可用于快速、方便、可靠�
 > * 跟踪订单
 > * 取消订单
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 请先完成下述适用于 Data Box 服务和设备的配置先决条件，然后部署设备。
 
@@ -46,7 +46,7 @@ Azure Data Box 是一个混合解决方案，可用于快速、方便、可靠�
 
 在开始之前，请确保：
 - 应该将一个主机连接到数据中心网络。 Data Box 会从此计算机复制数据。 主机必须按照 [Azure Data Box 系统要求](data-box-system-requirements.md)中的说明运行支持的操作系统。
-- 数据中心需要有高速网络。 强烈建议你至少使用一个 10 GbE 连接。 如果 10 GbE 连接不可用，则可使用 1 GbE 数据链路，但复制速度会受影响。
+- 数据中心需要有高速网络。 强烈建议你至少建立一个 10 GbE 连接。 如果 10 GbE 连接不可用，则可使用 1 GbE 数据链路，但复制速度会受影响。
 
 
 ## <a name="order-data-box"></a>订购 Data Box
@@ -54,17 +54,17 @@ Azure Data Box 是一个混合解决方案，可用于快速、方便、可靠�
 在 Azure 门户中执行以下步骤以订购设备。
 
 1. 使用 Microsoft Azure 凭据在以下 URL 登录：[https://portal.azure.cn](https://portal.azure.cn)。
-2. 单击“+ 创建资源”并搜索 *Azure Data Box*。  单击“Azure Data Box”。 
+2. 单击“+ 创建资源”并搜索 **Azure Data Box**。  单击“Azure Data Box”。 
     
    [![搜索“Azure Data Box 1”](media/data-box-deploy-ordered/search-azure-data-box1.png)](media/data-box-deploy-ordered/search-azure-data-box1.png#lightbox)
 
-3. 单击**创建**。
+3. 单击“创建”。 
 
 4. 检查 Data Box 服务是否在你的区域可用。 输入或选择以下信息，然后单击“应用”。  
 
-    |设置  |Value  |
+    |设置  |值  |
     |---------|---------|
-    |订阅     | 对于 Data Box 服务，选择一个 EA、CSP 或 Azure 赞助订阅。 <br> 该订阅将链接到计费帐户。       |
+    |订阅     | 对于 Data Box 服务，选择一个 EA、CSP 或 Azure 赞助订阅。 <br> 订阅链接到计费帐户。       |
     |传输类型     | 选择“导入到 Azure”。         |
     |来源国家/地区     |   选择数据当前所在的国家/地区。         |
     |目标 Azure 区域     |     选择要在其中传输数据的 Azure 区域。        |
@@ -77,26 +77,26 @@ Azure Data Box 是一个混合解决方案，可用于快速、方便、可靠�
     
     |设置  |值  |
     |---------|---------|
-    |Name     |  提供友好名称用于跟踪订单。 <br> 名称可以为 3 到 24 个字符，包括字母、数字和连字符。 <br> 名称必须以字母或数字开头和结尾。      |
+    |名称     |  提供友好名称用于跟踪订单。 <br> 名称可以为 3 到 24 个字符，包括字母、数字和连字符。 <br> 名称必须以字母或数字开头和结尾。      |
     |资源组     |   使用现有资源组，或创建新的资源组。 <br> 资源组是可以统一管理或部署的资源的逻辑容器。         |
     |目标 Azure 区域     | 选择存储帐户的区域。 <br> 有关详细信息，请转到[适用区域](data-box-overview.md#region-availability)。        |
-    |存储目标     | 选择存储帐户和/或托管磁盘。 <br> 根据指定的 Azure 区域，从现有存储帐户的筛选列表中选择一个或多个存储帐户。 Data Box 可以与最多 10 个存储帐户链接。 <br> 也可以创建新的**常规用途 v1**、**常规用途 v2** 或 **Blob 存储帐户**。 <br>支持使用虚拟网络的存储帐户。 若要允许 Data Box 服务使用受保护的存储帐户，请在存储帐户网络防火墙设置中启用受信任的服务。 有关详细信息，请参阅如何[将 Azure Data Box 添加为受信任的服务](../storage/common/storage-network-security.md#exceptions)。|
+    |存储目标     | 从存储帐户和/或托管磁盘中进行选择。 <br> 根据指定的 Azure 区域，从现有存储帐户的筛选列表中选择一个或多个存储帐户。 Data Box 可以与最多 10 个存储帐户链接。 <br> 也可以创建新的**常规用途 v1**、**常规用途 v2** 或 **Blob 存储帐户**。 <br>支持使用虚拟网络的存储帐户。 若要允许 Data Box 服务使用受保护的存储帐户，请在存储帐户网络防火墙设置中启用受信任的服务。 有关详细信息，请了解如何[将 Azure Data Box 添加为受信任的服务](../storage/common/storage-network-security.md#exceptions)。|
 
     如果使用存储帐户作为存储目标，则会看到以下屏幕截图：
 
     ![存储帐户的 Data Box 订单](media/data-box-deploy-ordered/order-storage-account.png)
 
-    如果使用 Data Box 从本地 VHD 创建托管磁盘，则还需要提供以下信息：
+    如果使用 Data Box 从本地 VHD 创建托管磁盘，则还需提供以下信息：
 
-    |设置  |Value  |
+    |设置  |值  |
     |---------|---------|
-    |资源组     | 若要从本地 VHD 创建托管磁盘，请创建新的资源组。 当 Data Box 服务创建托管磁盘的 Data Box 订单时，仅当事先已创建资源组，你才可以使用现有的资源组。 <br> 可以指定多个资源组并用分号分隔。 最多支持 10 个资源组。|
+    |资源组     | 若要从本地 VHD 创建托管磁盘，请创建新的资源组。 使用现有资源组的前提是，资源组是在以前由 Data Box 服务为托管磁盘创建 Data Box 订单时创建的。 <br> 指定多个用分号分隔的资源组。 最多支持 10 个资源组。|
 
     ![托管磁盘的 Data Box 订单](media/data-box-deploy-ordered/order-managed-disks.png)
 
-    为托管磁盘指定的存储帐户用作临时存储帐户。 Data Box 服务将 VHD 作为页 Blob 上传到临时存储帐户，然后将其转换为托管磁盘并转移到资源组。 有关详细信息，请参阅[验证 Azure 中的数据上传](data-box-deploy-picked-up.md#verify-data-upload-to-azure)。
+    为托管磁盘指定的存储帐户用作临时存储帐户。 Data Box 服务将 VHD 作为页 Blob 上传到临时存储帐户，然后将其转换为托管磁盘并移到资源组。 有关详细信息，请参阅[验证 Azure 中的数据上传](data-box-deploy-picked-up.md#verify-data-upload-to-azure)。
 
-7. 在“寄送地址”中，提供你的姓名、公司的名称和邮政地址，以及有效的电话号码。  单击“验证地址”。  服务将验证寄送地址，以确定服务是否在该区域可用。 如果服务在指定的寄送地址可用，则会将结果通知给你。 单击“下一步”  。
+7. 在“寄送地址”中，提供你的姓名、公司的名称和邮政地址，以及有效的电话号码。  单击“验证地址”。  服务将验证寄送地址，以确定服务是否在该区域可用。 如果服务在指定的寄送地址可用，则会将结果通知给你。 单击“下一步”。 
 
 8. 在“通知详细信息”中，指定电子邮件地址。  服务会将有关任何订单状态更新的电子邮件通知发送到指定的电子邮件地址。
 

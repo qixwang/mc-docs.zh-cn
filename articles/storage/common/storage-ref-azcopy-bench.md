@@ -10,10 +10,10 @@ ms.author: v-jay
 ms.subservice: common
 ms.reviewer: zezha-msft
 ms.openlocfilehash: 295c2daad16821912e1a2502e9610740cf4886ef
-ms.sourcegitcommit: 99c408fd0f1fc264acaed41f1a77fea4ebbc0e0f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74354351"
 ---
 # <a name="azcopy-bench"></a>azcopy bench

@@ -16,10 +16,10 @@ origin.date: 01/04/2019
 ms.date: 10/08/2019
 ms.author: v-tawe
 ms.openlocfilehash: c62198062542a2d86da6027ef5727fa08f4f98fa
-ms.sourcegitcommit: 298eab5107c5fb09bf13351efeafab5b18373901
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74657974"
 ---
 # <a name="send-cross-platform-notifications-to-users-with-notification-hubs"></a>使用通知中心向用户发送跨平台通知

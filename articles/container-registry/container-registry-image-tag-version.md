@@ -7,10 +7,10 @@ origin.date: 07/10/2019
 ms.author: v-yeche
 ms.date: 12/09/2019
 ms.openlocfilehash: 3bdf5ca84d83ed503f803150ed4b42ccfa407589
-ms.sourcegitcommit: cf73284534772acbe7a0b985a86a0202bfcc109e
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74885019"
 ---
 # <a name="recommendations-for-tagging-and-versioning-container-images"></a>有关对容器映像进行标记和版本控制的建议

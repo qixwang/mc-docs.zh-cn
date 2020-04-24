@@ -11,10 +11,10 @@ services: iot-central
 ms.custom: mvc
 manager: corywink
 ms.openlocfilehash: 35acc6b14a7c33ebca57daa4fd67321181d01247
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75336238"
 ---
 # <a name="create-an-azure-iot-central-application-preview-features"></a>创建 Azure IoT Central 应用程序（预览功能）

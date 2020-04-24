@@ -15,17 +15,17 @@ origin.date: 03/25/2019
 ms.date: 12/09/2019
 ms.author: v-jay
 ms.openlocfilehash: e816fc702ba0801eb07f3a6a7a8aad5194403b5f
-ms.sourcegitcommit: 369038a7d7ee9bbfd26337c07272779c23d0a507
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74807636"
 ---
 # <a name="connect-to-media-services-v3-api---nodejs"></a>连接到媒体服务 v3 API - Node.js
 
 本文介绍如何使用服务主体登录方法连接到 Azure 媒体服务 v3 node.js SDK。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - 安装 [Node.js](https://nodejs.org/en/download/)。
 - [创建媒体服务帐户](create-account-cli-how-to.md)。 请务必记住资源组名称和媒体服务帐户名称。

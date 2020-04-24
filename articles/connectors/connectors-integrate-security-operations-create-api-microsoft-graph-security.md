@@ -12,10 +12,10 @@ origin.date: 01/30/2019
 ms.date: 11/11/2019
 tags: connectors
 ms.openlocfilehash: b9f57f56bf438f14334292d71d11f5a66715d35c
-ms.sourcegitcommit: fc8a6e0f8eff2ef7b645ae8dc2ac02fdf498086f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74797602"
 ---
 # <a name="improve-threat-protection-by-integrating-security-operations-with-microsoft-graph-security--azure-logic-apps"></a>通过将安全操作与 Microsoft Graph 安全性和 Azure 逻辑应用集成，提升威胁防护能力

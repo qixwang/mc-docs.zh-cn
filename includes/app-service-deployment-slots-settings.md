@@ -6,10 +6,10 @@ origin.date: 09/18/2019
 ms.date: 11/25/2019
 ms.author: v-tawe
 ms.openlocfilehash: 15f0079fe46c9731bdad2b538905f7ade47ed1a7
-ms.sourcegitcommit: e7dd37e60d0a4a9f458961b6525f99fa0e372c66
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74555968"
 ---
 从另一个部署槽克隆配置时，可以编辑克隆的配置。 某些配置元素在交换时遵循内容（不特定于槽），而其他配置元素会在交换之后保留在同一个槽（特定于槽）。 以下列表显示交换槽时会更改的设置。
@@ -37,7 +37,7 @@ ms.locfileid: "74555968"
 * 缩放设置
 * Web 作业计划程序
 * IP 限制
-* Always On
+* AlwaysOn
 * 诊断日志设置
 * 跨域资源共享 (CORS)
 

@@ -8,10 +8,10 @@ ms.topic: reference
 ms.date: 12/02/2019
 ms.author: v-yiso
 ms.openlocfilehash: bad3e6ece0d4c06d3a53c479da25c178b9d175e5
-ms.sourcegitcommit: 9e92bcf6aa02fc9e7b3a29abadf6b6d1a8ece8c4
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74389945"
 ---
 # <a name="azure-event-grid-event-schema-for-signalr-service"></a>SignalR 服务的 Azure 事件网格事件架构

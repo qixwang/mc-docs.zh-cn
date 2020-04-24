@@ -10,10 +10,10 @@ ms.date: 07/01/2019
 ms.author: v-yeche
 ms.custom: include file
 ms.openlocfilehash: 4daf4b604293b0669cf973cc60153d4881781b7e
-ms.sourcegitcommit: c5e012385df740bf4a326eaedabb987314c571a1
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74205122"
 ---
 # <a name="regions-and-availability-for-virtual-machines-in-azure"></a>Azure 中虚拟机的区域和可用性
@@ -42,7 +42,7 @@ Azure 在中国的四个数据中心运行。 这些数据中心分组到地理�
 
 区域对的示例包括：
 
-| 主要 | 次要 |
+| 主 | 辅助副本 |
 |:--- |:--- |
 | 中国北部 |中国东部 |
 | 中国北部 2 |中国东部 2 |

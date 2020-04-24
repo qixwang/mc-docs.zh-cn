@@ -14,10 +14,10 @@ manager: digimobile
 origin.date: 03/12/2019
 ms.date: 04/08/2019
 ms.openlocfilehash: bb2cdbe13315481857580e91247212808ed96244
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75334952"
 ---
 # <a name="distributed-transactions-across-cloud-databases"></a>跨云数据库的分布式事务

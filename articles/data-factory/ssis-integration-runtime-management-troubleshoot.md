@@ -13,10 +13,10 @@ ms.custom: seo-lt-2019
 origin.date: 07/08/2019
 ms.date: 01/06/2020
 ms.openlocfilehash: 4fda5d5cb8c8ef7492f1d1b451ce9c6e41d442e0
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75623891"
 ---
 # <a name="troubleshoot-ssis-integration-runtime-management-in-azure-data-factory"></a>在 Azure 数据工厂中排查 SSIS Integration Runtime 管理问题
@@ -164,7 +164,7 @@ SSIS IR 将定期自动更新。 升级期间将创建一个新的 Azure Batch �
 
 除了以上虚拟网络问题之外，你还可以解决与静态公共 IP 地址相关的问题。 请检查以下错误以获得帮助。
 
-### <a name="InvalidPublicIPSpecified"></a>InvalidPublicIPSpecified
+### <a name="invalidpublicipspecified"></a><a name="InvalidPublicIPSpecified"></a>InvalidPublicIPSpecified
 
 启动 Azure-SSIS IR 时可能会由于多种原因而出现此问题：
 

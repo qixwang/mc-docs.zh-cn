@@ -1,29 +1,29 @@
 ---
 title: 部署历史记录
-description: 介绍如何通过门户、PowerShell、Azure CLI 和 REST API 查看 Azure Resource Manager 部署操作。
+description: 介绍如何通过门户、PowerShell、Azure CLI 和 REST API 查看 Azure 资源管理器部署操作。
 tags: top-support-issue
 ms.topic: conceptual
 origin.date: 11/26/2019
 ms.author: v-yeche
 ms.date: 01/06/2020
 ms.openlocfilehash: f2fb405ab1adc8b28cfe22202d7ec1a2a3d38596
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75631395"
 ---
 # <a name="view-deployment-history-with-azure-resource-manager"></a>使用 Azure 资源管理器查看部署历史记录
 
 使用 Azure 资源管理器可以查看部署历史记录并检查过去部署中的特定操作。 你可以查看已部署的资源，并获取有关任何错误的信息。
 
-如需帮助解决特定部署错误，请参阅[解决使用 Azure Resource Manager 将资源部署到 Azure 时的常见错误](common-deployment-errors.md)。
+有关解决特定部署错误的帮助，请参阅[解决使用 Azure 资源管理器将资源部署到 Azure 时的常见错误](common-deployment-errors.md)。
 
 ## <a name="get-deployments-and-correlation-id"></a>获取部署和相关 ID
 
 可通过 Azure 门户、PowerShell、Azure CLI 或 REST API 查看部署详细信息。 每个部署都有一个相关 ID，用于跟踪相关的事件。 与技术支持人员合作排查部署问题时，它非常有用。
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[门户](#tab/azure-portal)
 
 1. 选择要检查的资源组。
 
@@ -39,7 +39,7 @@ ms.locfileid: "75631395"
 
     ![部署摘要](./media/deployment-history/show-correlation-id.png)
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 若要列出一个资源组的所有部署，请使用 [Get-AzResourceGroupDeployment](https://docs.microsoft.com/powershell/module/az.resources/Get-AzResourceGroupDeployment) 命令。
 
@@ -59,7 +59,7 @@ Get-AzResourceGroupDeployment -ResourceGroupName ExampleGroup -DeploymentName Ex
 (Get-AzResourceGroupDeployment -ResourceGroupName ExampleGroup -DeploymentName ExampleDeployment).CorrelationId
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 若要列出某个资源组的部署，请使用 [az group deployment list](https://docs.azure.cn/cli/group/deployment?view=azure-cli-latest#az-group-deployment-list)。
 
@@ -79,7 +79,7 @@ az group deployment show --resource-group ExampleGroup --name ExampleDeployment
 az group deployment show --resource-group ExampleGroup --name ExampleDeployment --query properties.correlationId
 ```
 
-# <a name="httptabhttp"></a>[HTTP](#tab/http)
+# <a name="http"></a>[HTTP](#tab/http)
 
 若要列出某个资源组的部署，请使用以下操作。 如需在请求中使用的最新 API 版本号，请参阅[部署 - 按资源组列出](https://docs.microsoft.com/rest/api/resources/deployments/listbyresourcegroup)。 
 
@@ -115,7 +115,7 @@ GET https://management.chinacloudapi.cn/subscriptions/{subscription-id}/resource
 
 每个部署可能包括多个操作。 若要查看某个部署的更多详细信息，请参阅部署操作。 当部署失败时，部署操作会包含一条错误消息。
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[门户](#tab/azure-portal)
 
 1. 在部署的摘要上，选择“操作详细信息”。 
 
@@ -125,7 +125,7 @@ GET https://management.chinacloudapi.cn/subscriptions/{subscription-id}/resource
 
     ![显示操作详细信息](./media/deployment-history/see-operation-details.png)
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 若要查看部署到某个资源组时的部署操作，请使用 [Get-AzResourceGroupDeploymentOperation](https://docs.microsoft.com/powershell/module/az.resources/get-azdeploymentoperation) 命令。
 
@@ -145,7 +145,7 @@ Get-AzResourceGroupDeploymentOperation -ResourceGroupName ExampleGroup -Deployme
 ((Get-AzResourceGroupDeploymentOperation -ResourceGroupName ExampleGroup -DeploymentName ExampleDeploy ).Properties | Where-Object ProvisioningState -eq Failed).StatusMessage.error
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 若要查看部署到某个资源组时的部署操作，请使用 [az group deployment operation list](https://docs.azure.cn/cli/group/deployment/operation?view=azure-cli-latest#az-group-deployment-operation-list) 命令。
 
@@ -165,7 +165,7 @@ az group deployment operation list --resource-group ExampleGroup --name ExampleD
 az group deployment operation list --resource-group ExampleGroup --name ExampleDeploy --query "[?properties.provisioningState=='Failed'].properties.statusMessage.error"
 ```
 
-# <a name="httptabhttp"></a>[HTTP](#tab/http)
+# <a name="http"></a>[HTTP](#tab/http)
 
 若要获取部署操作，请使用以下操作。 如需在请求中使用的最新 API 版本号，请参阅[部署操作 - 列出](https://docs.microsoft.com/rest/api/resources/deploymentoperations/list)。
 
@@ -211,8 +211,8 @@ GET https://management.chinacloudapi.cn/subscriptions/{subscription-id}/resource
 
 ## <a name="next-steps"></a>后续步骤
 
-* 如需帮助解决特定部署错误，请参阅[解决使用 Azure Resource Manager 将资源部署到 Azure 时的常见错误](common-deployment-errors.md)。
+* 有关解决特定部署错误的帮助，请参阅[解决使用 Azure 资源管理器将资源部署到 Azure 时的常见错误](common-deployment-errors.md)。
 * 若要了解如何使用活动日志监视其他类型的操作，请参阅[通过查看活动日志管理 Azure 资源](../management/view-activity-logs.md)。
-* 若要在执行部署之前验证部署，请参阅[使用 Azure Resource Manager 模板部署资源组](deploy-powershell.md)。
+* 若要在执行部署之前验证部署，请参阅[使用 Azure 资源管理器模板部署资源组](deploy-powershell.md)。
 
 <!-- Update_Description: update meta properties, wording update, update link -->

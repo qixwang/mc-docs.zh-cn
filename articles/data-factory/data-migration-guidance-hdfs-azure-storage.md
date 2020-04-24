@@ -14,10 +14,10 @@ ms.topic: conceptual
 origin.date: 8/30/2019
 ms.date: 12/02/2019
 ms.openlocfilehash: 3caad68ec5bc451fb4ccf985c1cd38fa43f036e4
-ms.sourcegitcommit: 9597d4da8af58009f9cef148a027ccb7b32ed8cf
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74655415"
 ---
 # <a name="use-azure-data-factory-to-migrate-data-from-an-on-premises-hadoop-cluster-to-azure-storage"></a>使用 Azure 数据工厂将数据从本地 Hadoop 群集迁移到 Azure 存储 

@@ -9,13 +9,13 @@ ms.topic: include
 ms.date: 11/20/2019
 ms.author: diberry
 ms.openlocfilehash: 19f22ab3fafc03c5aa02460a693a8e247caa0b15
-ms.sourcegitcommit: 3d27913e9f896e34bd7511601fb428fc0381998b
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74982159"
 ---
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * [Go](https://golang.org/) 编程语言  
 * [Visual Studio Code](https://code.visualstudio.com/)
@@ -83,10 +83,10 @@ ms.locfileid: "74982159"
     }
     ```
 
-1. 替换以下值：
+1. 请替换以下值：
 
     * 将 `YOUR-KEY` 替换为初学者密钥。
-    * 将 `YOUR-ENDPOINT` 替换为终结点。 例如，`chinaeast2.api.cognitive.azure.cn`。
+    * 将 `YOUR-ENDPOINT` 替换为终结点。 例如，`chinaeast2.api.cognitive.azure.cn` 。
 
 1. 在创建该文件的同一目录中，在命令提示符下输入以下命令来编译 Go 文件：
 

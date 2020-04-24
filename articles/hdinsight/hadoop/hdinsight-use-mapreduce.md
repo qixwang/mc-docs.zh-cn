@@ -1,6 +1,6 @@
 ---
 title: 将 MapReduce 与 Hadoop on HDInsight 配合使用 | Azure
-description: 学习如何在 HDInsight 群集中的 Hadoop 上运行 MapReduce 作业。
+description: 学习如何在 Hadoop on HDInsight 群集中运行 MapReduce 作业。
 services: hdinsight
 documentationcenter: ''
 author: Blackmist
@@ -18,21 +18,21 @@ origin.date: 12/06/2019
 ms.date: 01/13/2020
 ms.author: v-yiso
 ms.openlocfilehash: a0b9ab9774e43f5b97211abbc0f103c194a2b514
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75630848"
 ---
 # <a name="use-mapreduce-in-apache-hadoop-on-hdinsight"></a>在 Apache Hadoop on HDInsight 中使用 MapReduce
 
 了解如何在 HDInsight 群集上运行 MapReduce 作业。
 
-## <a id="data"></a>示例数据
+## <a name="example-data"></a><a id="data"></a>示例数据
 
 HDInsight 提供存储在 `/example/data` 和 `/HdiSamples` 目录中的各种示例数据集。 这些目录位于群集的默认存储中。 在本文档中，我们使用 `/example/data/gutenberg/davinci.txt` 文件。 此文件包含 Leonardo Da Vinci 的笔记本。
 
-## <a id="job"></a>MapReduce 示例
+## <a name="example-mapreduce"></a><a id="job"></a>MapReduce 示例
 
 MapReduce 单词计数应用程序示例包含在 HDInsight 群集中。 此示例位于群集默认存储的 `/example/jars/hadoop-mapreduce-examples.jar` 中。
 
@@ -114,17 +114,17 @@ public class WordCount {
 
 * [为 HDInsight 开发 Java MapReduce 应用程序](apache-hadoop-develop-deploy-java-mapreduce-linux.md)
 
-## <a id="run"></a>运行 MapReduce
+## <a name="run-the-mapreduce"></a><a id="run"></a>运行 MapReduce
 
-HDInsight 可以使用各种方法运行 HiveQL 作业。 使用下表来确定哪种方法最适合用户，并访问此链接进行演练。
+HDInsight 可以使用各种方法运行 HiveQL 作业。 使用下表来确定哪种方法最适合，并按链接进行演练。
 
-| **使用此方法**... | **...实现此目的** |  ...从此 **客户端操作系统** |
+| **请使用以下方法**... | **...要执行以下操作** |  ...从此**客户端操作系统** |
 |:--- |:--- |:--- |:--- |
-| [SSH](apache-hadoop-use-mapreduce-ssh.md) |通过 **SSH** |Linux、Unix、Mac OS X 或 Windows |
-| [Curl](apache-hadoop-use-mapreduce-curl.md) |使用 **REST** |Linux、Unix、Mac OS X 或 Windows |
-| [Windows PowerShell](apache-hadoop-use-mapreduce-powershell.md) |使用 **Windows PowerShell**  |Windows |
+| [SSH](apache-hadoop-use-mapreduce-ssh.md) |通过 **SSH** 使用 Hadoop 命令 |Linux、Unix、Mac OS X 或 Windows |
+| [Curl](apache-hadoop-use-mapreduce-curl.md) |使用 **REST** 远程提交作业 |Linux、Unix、Mac OS X 或 Windows |
+| [Windows PowerShell](apache-hadoop-use-mapreduce-powershell.md) |使用 **Windows PowerShell** 远程提交作业  |Windows |
 
-## <a id="nextsteps"></a>后续步骤
+## <a name="next-steps"></a><a id="nextsteps"></a>后续步骤
 
 若要了解如何使用 HDInsight 中的数据的详细信息，请参阅以下文档：
 

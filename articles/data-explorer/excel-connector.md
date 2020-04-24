@@ -9,10 +9,10 @@ ms.topic: conceptual
 origin.date: 08/30/2019
 ms.date: 01/13/2020
 ms.openlocfilehash: 28b60f6f10a6be418da1f4c84e67d4c9a6b85b78
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75630907"
 ---
 # <a name="visualize-data-using-the-azure-data-explorer-connector-for-excel"></a>使用 Excel 的 Azure 数据资源管理器连接器进行数据可视化
@@ -34,8 +34,8 @@ Azure 数据资源管理器 Excel 本机连接器提供将查询结果导出到 
     
     |字段   |说明 |
     |---------|---------|
-    |**群集**   |   群集的名称（必需）      |    
-    |**数据库**     |    数据库的名称      |    
+    |**Cluster**   |   群集的名称（必需）      |    
+    |**Database**     |    数据库的名称      |    
     |**表名或 Azure 数据资源管理器查询**    |     表名或 Azure 数据资源管理器查询    | 
     
     **高级选项：**

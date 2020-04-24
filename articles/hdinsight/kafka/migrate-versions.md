@@ -9,10 +9,10 @@ ms.topic: conceptual
 origin.date: 12/18/2019
 ms.date: 01/13/2020
 ms.openlocfilehash: 3a25b552918241de9869b8a083815a6c14382097
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75631412"
 ---
 # <a name="migrate-apache-kafka-workloads-to-azure-hdinsight-40"></a>将 Apache Kafka 工作负荷迁移到 Azure HDInsight 4.0

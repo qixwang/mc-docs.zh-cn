@@ -13,10 +13,10 @@ origin.date: 08/12/2019
 ms.date: 01/06/2020
 ms.author: v-jay
 ms.openlocfilehash: db2ad71010e27867e6fcd24a40e27f51da3fbb75
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75624231"
 ---
 # <a name="copy-data-from-couchbase-using-azure-data-factory-preview"></a>使用 Azure 数据工厂（预览版）从 Couchbase 复制数据
@@ -51,9 +51,9 @@ Azure 数据工厂提供内置的驱动程序用于启用连接，因此无需�
 
 Couchbase 链接服务支持以下属性：
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
-| type | Type 属性必须设置为：**Couchbase** | 是 |
+| type | type 属性必须设置为：**Couchbase** | 是 |
 | connectionString | 用于连接到 Couchbase 的 ODBC 连接字符串。 <br/>还可以将凭据字符串放在 Azure 密钥保管库中，并从连接字符串中拉取 `credString` 配置。 有关更多详细信息，请参阅以下示例和[在 Azure 密钥保管库中存储凭据](store-credentials-in-key-vault.md)一文。 | 是 |
 | connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 在[先决条件](#prerequisites)部分了解更多信息。 如果未指定，则使用默认 Azure Integration Runtime。 |否 |
 
@@ -107,10 +107,10 @@ Couchbase 链接服务支持以下属性：
 
 要从 Couchbase 复制数据，请将数据集的 type 属性设置为“CouchbaseTable”  。 支持以下属性：
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为：**CouchbaseTable** | 是 |
-| tableName | 表名称。 | 否（如果指定了活动源中的“query”） |
+| tableName | 表的名称。 | 否（如果指定了活动源中的“query”） |
 
 
 **示例**
@@ -138,10 +138,10 @@ Couchbase 链接服务支持以下属性：
 
 要从 Couchbase 复制数据，请将复制活动中的源类型设置为“CouchbaseSource”  。 复制活动**source**部分支持以下属性：
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
-| type | 复制活动源的 type 属性必须设置为：**CouchbaseSource** | 是 |
-| query | 使用自定义 SQL 查询读取数据。 例如：`"SELECT * FROM MyTable"`。 | 否（如果指定了数据集中的“tableName”） |
+| type | 复制活动 source 的 type 属性必须设置为：**CouchbaseSource** | 是 |
+| 查询 | 使用自定义 SQL 查询读取数据。 例如：`"SELECT * FROM MyTable"`。 | 否（如果指定了数据集中的“tableName”） |
 
 **示例：**
 

@@ -11,10 +11,10 @@ origin.date: 02/01/2019
 ms.date: 12/4/2019
 ms.author: b-lingwu
 ms.openlocfilehash: 8827ab3effc15d5a6ce2909021d4bed7791907a7
-ms.sourcegitcommit: 21b02b730b00a078a76aeb5b78a8fd76ab4d6af2
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74838972"
 ---
 # <a name="get-started-with-azure-advisor"></a>Azure 顾问入门
@@ -26,7 +26,7 @@ ms.locfileid: "74838972"
 
 ## <a name="get-recommendations"></a>获取建议
 
-1. 登录到 [Azure 门户](https://portal.azure.cn)。
+1. 登录 [Azure 门户](https://portal.azure.cn)。
 
 2. 在左窗格中，单击“顾问”  。  如果左窗格中未显示“顾问”，请单击“所有服务”  。  在服务菜单窗格中，在“监视和管理”下，单击“顾问”   。
    将显示顾问仪表板。
@@ -35,7 +35,7 @@ ms.locfileid: "74838972"
 
 3. 顾问仪表板将显示针对所有所选订阅的建议的摘要。  可通过订阅筛选器下拉列表，选择要显示建议的订阅。
 
-4. 若要获取特定类别的建议，请单击以下选项卡之一：“高可用性”、“安全”、“性能”或“成本”     。 
+4. 若要获取特定类别的建议，请单击其中一个选项卡：“高可用性”、“安全性”、“性能”或“成本”     。 
 
    ![Azure 顾问仪表板](./media/advisor-overview/advisor-dashboard.png)
 
@@ -90,7 +90,7 @@ ms.locfileid: "74838972"
 
     ![顾问配置资源示例](./media/advisor-get-started/advisor-configure-resources.png)
 
-1. 单击“应用”按钮。 
+1. 单击“应用”  按钮。
 
 ## <a name="configure-low-usage-vm-recommendation"></a>配置低使用率 VM 建议
 

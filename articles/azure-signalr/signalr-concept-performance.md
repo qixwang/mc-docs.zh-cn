@@ -8,10 +8,10 @@ origin.date: 11/13/2019
 ms.date: 12/16/2019
 ms.author: v-tawe
 ms.openlocfilehash: 8bd7e868c7a94ffbd098bb844e45dce8bae6fa95
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75334888"
 ---
 # <a name="performance-guide-for-azure-signalr-service"></a>Azure SignalR 服务性能指南

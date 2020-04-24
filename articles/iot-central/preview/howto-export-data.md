@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.service: iot-central
 manager: corywink
 ms.openlocfilehash: 7c4294256202fa3ec1d2d965ac1d1591b03f36a7
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75335916"
 ---
 # <a name="export-your-azure-iot-central-data-preview-features"></a>导出 Azure IoT Central 数据（预览版功能）
@@ -30,7 +30,7 @@ ms.locfileid: "75335916"
 > [!Note]
 > 启用连续数据导出时，只能获得从那时之后的数据。 目前，关闭连续数据导出后将暂时无法检索数据。 若要保留更多的历史数据，请及早启用连续数据导出。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 你必须是 IoT Central 应用程序中的管理员
 
@@ -81,7 +81,7 @@ ms.locfileid: "75335916"
     > [!Note]
     > 如果在左侧窗格中看不到“数据导出”，则说明你不是应用中的管理员。 请与管理员联系以设置数据导出。
 
-3. 选择右上角的“+ 新建”按钮。  选择某个 **Azure 事件中心**、**Azure 服务总线**或 **Azure Blob 存储**作为导出目标。 每个应用程序的最大导出数目是 5。
+3. 选择右上角的“+ 新建”  按钮。 选择某个 **Azure 事件中心**、**Azure 服务总线**或 **Azure Blob 存储**作为导出目标。 每个应用程序的最大导出数目是 5。
 
     ![创建新的连续数据导出](media/howto-export-data/export-new2.png)
 
@@ -105,7 +105,7 @@ ms.locfileid: "75335916"
 
 7. 在“要导出的数据”下，通过将相应类型设置为“打开”来指定要导出的数据类型。  
 
-8. 若要启用连续数据导出，请确保“数据导出”  开关为“打开”  。 选择“保存”  。
+8. 若要启用连续数据导出，请确保“数据导出”  开关为“打开”  。 选择“保存”。 
 
 9. 几分钟后，数据便会出现在所选目标中。
 
@@ -194,7 +194,7 @@ ms.locfileid: "75335916"
 
 - IoT Central 中设备的 `@id`
 - 设备的 `name`
-- [设备预配服务](../core/howto-connect-nodejs.md?toc=/iot-central/preview/toc.json&bc=/iot-central/preview/breadcrumb/toc.json)中的 `deviceId`
+- `deviceId`设备预配服务[中的 ](../core/howto-connect-nodejs.md?toc=/iot-central/preview/toc.json&bc=/iot-central/preview/breadcrumb/toc.json)
 - 设备模板信息
 - 属性值
 

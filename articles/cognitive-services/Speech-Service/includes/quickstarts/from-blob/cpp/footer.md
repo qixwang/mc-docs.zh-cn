@@ -12,10 +12,10 @@ origin.date: 10/28/2019
 ms.date: 01/13/2020
 ms.author: v-tawe
 ms.openlocfilehash: 7baff46123be4388f35f65eb580b3fe6fbba1348
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75631687"
 ---
 > [!div class="nextstepaction"]

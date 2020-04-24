@@ -10,10 +10,10 @@ ms.service: notification-hubs
 ms.reviewer: jowargo
 ms.lastreviewed: 10/16/2019
 ms.openlocfilehash: 81f4ae652cc1cc4e298cb8875bd8316d7aed9425
-ms.sourcegitcommit: cf73284534772acbe7a0b985a86a0202bfcc109e
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74885121"
 ---
 # <a name="azure-notification-hubs-updates-for-ios-13"></a>适用于 iOS 13 的 Azure 通知中心更新

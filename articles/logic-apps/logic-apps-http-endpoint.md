@@ -18,10 +18,10 @@ origin.date: 11/04/2019
 ms.author: v-yiso
 ms.date: 12/23/2019
 ms.openlocfilehash: 2f69a74c1b45ea00c5fd0a8a238d40062229b938
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75335826"
 ---
 # <a name="call-trigger-or-nest-logic-apps-by-using-http-endpoints-in-azure-logic-apps"></a>在 Azure 逻辑应用中使用 HTTP 终结点调用、触发或嵌套逻辑应用
@@ -201,7 +201,7 @@ ms.locfileid: "75335826"
 
 ## <a name="tokens-generated-from-schema"></a>从架构生成的标记
 
-在“请求”触发器中提供 JSON 架构时，逻辑应用设计器会在该架构中生成属性的标记。 然后，可以使用这些标记通过逻辑应用工作流传递数据。
+在“请求”触发器中提供 JSON 架构时，逻辑应用设计器会在该架构中生成属性的标记。 然后，可以使用这些令牌通过逻辑应用工作流传递数据。
 
 例如，如果将其他属性（例如 `"suite"`）添加到 JSON 架构，则可以在逻辑应用的后续步骤中使用这些属性的标记。 下面是完整的 JSON 架构：
 

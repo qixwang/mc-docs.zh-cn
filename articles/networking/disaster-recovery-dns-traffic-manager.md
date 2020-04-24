@@ -17,10 +17,10 @@ origin.date: 06/08/2018
 ms.date: 12/09/2019
 ms.author: v-tawe
 ms.openlocfilehash: 7122c7a50792d3f41311baad5e33d033a4586feb
-ms.sourcegitcommit: 8c3bae15a8a5bb621300d81adb34ef08532fe739
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74884015"
 ---
 # <a name="disaster-recovery-using-azure-dns-and-traffic-manager"></a>使用 Azure DNS 和流量管理器进行灾难恢复
@@ -28,7 +28,7 @@ ms.locfileid: "74884015"
 灾难恢复侧重于从严重的应用程序功能丧失中恢复。 若要选择灾难恢复解决方案，业务和技术所有者必须先确定必需的灾难期间功能级别，如不可用、精简功能后部分可用、延迟可用或完全可用。
 大多数企业客户选择多区域体系结构，以通过应用程序级或基础结构级故障转移复原。 客户可以选择多种方法，以通过冗余体系结构实现故障转移和高可用性。 下面是一些常用方法：
 
-- **使用冷备用的主动-被动**：在此故障转移解决方案中，在需要故障转移前，VM 和备用区域中运行的其他设备未处于活动状态。 不过，生产环境是以备份、VM 映像或资源管理器模板的形式复制到其他区域。 这种故障转移机制经济高效，但需要较长时间才能完成整个故障转移。
+- **使用冷备用的主动/被动**：在此故障转移解决方案中，在需要故障转移前，VM 和备用区域中运行的其他设备未处于活动状态。 不过，生产环境是以备份、VM 映像或资源管理器模板的形式复制到其他区域。 这种故障转移机制经济高效，但需要较长时间才能完成整个故障转移。
  
     ![使用冷备用的主动/被动](./media/disaster-recovery-dns-traffic-manager/active-passive-with-cold-standby.png)
     
@@ -38,13 +38,13 @@ ms.locfileid: "74884015"
     
     ![使用指示灯的主动/被动](./media/disaster-recovery-dns-traffic-manager/active-passive-with-pilot-light.png)
     
-    *图：* 使用指示灯的主动/被动灾难恢复配置
+    图：使用指示灯的主动/被动灾难恢复配置 
 
 - **使用热备用的主动/被动**：在此故障转移解决方案中，备用区域会进行预热并能处理基础负载，自动缩放已启用，并且所有实例都正常运行。 此解决方案不会通过缩放来处理全部生产负载，但是有用的，且所有服务都正常运行。 此解决方案是指示灯方法的增强型版本。
     
     ![使用热备用的主动/被动](./media/disaster-recovery-dns-traffic-manager/active-passive-with-warm-standby.png)
     
-    *图：* 使用热备用的主动/被动灾难恢复配置
+    图：使用热备用的主动/被动灾难恢复配置 
     
 <!-- To learn more about failover and high availability, see [Disaster Recovery for Azure Applications](https://docs.microsoft.com/azure/architecture/resiliency/disaster-recovery-azure-applications). -->
 
@@ -80,14 +80,14 @@ DNS 是转移网络流量的最高效机制之一，因为 DNS 通常是全局�
 - 创建 DNS 区域记录
 - 更新 CNAME 记录
 
-### <a name="step-1-create-a-dns"></a>步骤 1：创建 DNS
+### <a name="step-1-create-a-dns"></a>第 1 步：创建 DNS
 创建 DNS 区域（例如，www\.contoso.com），如下所示：
 
 ![在 Azure 中创建 DNS 区域](./media/disaster-recovery-dns-traffic-manager/create-dns-zone.png)
 
 图：在 Azure 中创建 DNS 区域 
 
-### <a name="step-2-create-dns-zone-records"></a>步骤 2：创建 DNS 区域记录
+### <a name="step-2-create-dns-zone-records"></a>第 2 步：创建 DNS 区域记录
 
 在此区域内，创建三条记录（例如，www\.contoso.com、prod.contoso.com 和 dr.consoto.com），如下所示。
 
@@ -97,7 +97,7 @@ DNS 是转移网络流量的最高效机制之一，因为 DNS 通常是全局�
 
 在此方案中，站点 www\.contoso.com 的 TTL 为 30 分钟，这远低于规定的 RTO，并且指向生产站点 prod.contoso.com。 此配置适用于常规业务操作。 prod.contoso.com 和 dr.contoso.com 的 TTL 已设置为 300 秒或 5 分钟。 可以使用 Azure 监视服务，如 Azure Monitor、Azure App Insights 或任何合作伙伴监视解决方案（如 Dynatrace）。甚至可以使用自行开发的解决方案来监视或检测应用程序级或虚拟基础结构级故障。
 
-### <a name="step-3-update-the-cname-record"></a>步骤 3：更新 CNAME 记录
+### <a name="step-3-update-the-cname-record"></a>第 3 步：更新 CNAME 记录
 
 检测到故障后，立即将记录值更改为指向 dr.contoso.com，如下所示：
        
@@ -138,14 +138,14 @@ Azure 流量管理器自动故障转移的配置步骤如下：
 2. 在流量管理器配置文件中创建终结点
 3. 设置运行状况检查和故障转移配置
 
-### <a name="step-1-create-a-new-azure-traffic-manager-profile"></a>步骤 1：新建 Azure 流量管理器配置文件
+### <a name="step-1-create-a-new-azure-traffic-manager-profile"></a>第 1 步：新建 Azure 流量管理器配置文件
 新建 Azure 流量管理器配置文件，并命名为“contoso123”，再选择“优先级”作为“路由方法”。 若有要与之关联的现有资源组，可以选择现有资源组，否则新建资源组。
 
 ![创建流量管理器配置文件](./media/disaster-recovery-dns-traffic-manager/create-traffic-manager-profile.png)
 
 *图 - 创建流量管理器配置文件*
 
-### <a name="step-2-create-endpoints-within-the-traffic-manager-profile"></a>步骤 2：在流量管理器配置文件中创建终结点
+### <a name="step-2-create-endpoints-within-the-traffic-manager-profile"></a>第 2 步：在流量管理器配置文件中创建终结点
 
 在这一步，创建指向生产站点和灾难恢复站点的终结点。 此时，选择“类型”  作为外部终结点，但如果资源托管在 Azure 中，也可以选择“Azure 终结点”  。 如果选择“Azure 终结点”  ，请选择 Azure 分配的“应用服务”  或“公共 IP”  作为“目标资源”  。 优先级设置为“1”  ，因为它是区域 1 的主服务。
 同样，也在流量管理器中创建灾难恢复终结点。
@@ -154,7 +154,7 @@ Azure 流量管理器自动故障转移的配置步骤如下：
 
 图：创建灾难恢复终结点 
 
-### <a name="step-3-set-up-health-check-and-failover-configuration"></a>步骤 3：设置运行状况检查和故障转移配置
+### <a name="step-3-set-up-health-check-and-failover-configuration"></a>第 3 步：设置运行状况检查和故障转移配置
 
 在这一步，将 DNS TTL 设置为 10 秒，大多数面向 Internet 的递归解析程序都采用此设置。 此配置意味着，没有 DNS 解析程序会缓存信息超过 10 秒。 对于终结点监视设置，“路径”当前设置为“/”或根路径，但也可以将终结点设置自定义为评估路径（例如，prod.contoso.com/index）。 下面的示例展示了使用 https  作为探测协议。 不过，也可以选用 http  或 tcp  。 协议选择取决于最终应用程序。 “探测时间间隔”设置为 10 秒（可启用快速探测），重试次数设置为 3 次。 因此，如果三个连续时间间隔的记录结果都为故障，流量管理器就会通过故障转移复原到第二个终结点。 自动故障转移总时间的计算公式如下：故障转移时间 = TTL + 重试次数 * 探测时间间隔。在此示例中，值为 10 + 3 * 10 = 40 秒（最大）。
 如果重试次数设置为 1 次，且 TTL 设置为 10 秒，那么故障转移时间为 10 + 1 * 10 = 20 秒。 请将重试次数设置为大于 1  的值，这样就不可能因误报或任何网络小跳点而执行故障转移。 

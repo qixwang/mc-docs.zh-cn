@@ -6,10 +6,10 @@ origin.date: 10/11/2019
 ms.author: v-yeche
 ms.date: 01/06/2020
 ms.openlocfilehash: ebfafd896b8d23b068f8100e7e903bd44412170b
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75631405"
 ---
 # <a name="authenticate-requests-across-tenants"></a>跨租户对请求进行身份验证

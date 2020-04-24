@@ -9,10 +9,10 @@ origin.date: 06/05/2019
 ms.date: 11/11/2019
 ms.custom: seodec18
 ms.openlocfilehash: 33080b07535261e17af97d8bfc58be43728a1cef
-ms.sourcegitcommit: 9597d4da8af58009f9cef148a027ccb7b32ed8cf
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74655437"
 ---
 # <a name="azure-disk-encryption-for-iaas-vms-faq"></a>适用于 IaaS VM 的 Azure 磁盘加密常见问题解答

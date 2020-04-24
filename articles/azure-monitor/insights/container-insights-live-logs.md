@@ -9,10 +9,10 @@ ms.author: v-lingwu
 origin.date: 07/12/2019
 ms.date: 07/19/2019
 ms.openlocfilehash: 0fe768783a2327a9f14247c8b61d236728a4017b
-ms.sourcegitcommit: 3a9c13eb4b4bcddd1eabca22507476fb34f89405
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74528369"
 ---
 # <a name="how-to-view-logs-and-events-in-real-time-preview"></a>如何实时查看日志和事件（预览）

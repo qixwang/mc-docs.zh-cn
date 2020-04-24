@@ -13,10 +13,10 @@ origin.date: 04/02/2019
 ms.date: 07/24/2019
 ms.author: v-lingwu
 ms.openlocfilehash: 2c9fc77f25e2eeb88efcbb6068f628dce74900fd
-ms.sourcegitcommit: 3d27913e9f896e34bd7511601fb428fc0381998b
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74982149"
 ---
 # <a name="export-and-delete-your-customer-data-in-language-understanding-luis-in-cognitive-services"></a>在认知服务中的语言理解 (LUIS) 中导出和删除客户数据
@@ -40,7 +40,7 @@ LUIS 用户具有完全控制权限，可通过 LUIS Web 门户或 LUIS 创作�
 
 | | **用户帐户** | **应用程序** | **示例话语** | **最终用户查询** |
 | --- | --- | --- | --- | --- |
-| **Portal** | [链接](luis-concept-data-storage.md#delete-an-account) | 链接| [链接](luis-concept-data-storage.md#utterances-in-an-intent) | 主动学习话语<br>[记录的话语](luis-concept-data-storage.md#disable-logging-utterances) |
+| **门户** | [链接](luis-concept-data-storage.md#delete-an-account) | 链接| [链接](luis-concept-data-storage.md#utterances-in-an-intent) | 主动学习话语<br>[记录的话语](luis-concept-data-storage.md#disable-logging-utterances) |
 | **API** | [链接](https://{region}.dev.cognitive.azure.cn/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c4c) | [链接](https://{region}.dev.cognitive.azure.cn/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c39) | [链接](https://{region}.dev.cognitive.azure.cn/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c0b) | [链接](https://{region}.dev.cognitive.azure.cn/docs/services/5890b47c39e2bb17b84a55ff/operations/58b6f32139e2bb139ce823c9) |
 
 

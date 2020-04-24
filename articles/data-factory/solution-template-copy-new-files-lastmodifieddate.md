@@ -13,10 +13,10 @@ ms.custom: seo-lt-2019
 origin.date: 3/8/2019
 ms.date: 01/06/2020
 ms.openlocfilehash: 2a78d92b877340bd86e097dec5937fd601daeb02
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75623933"
 ---
 # <a name="copy-new-and-changed-files-by-lastmodifieddate-with-azure-data-factory"></a>使用 Azure 数据工厂根据 LastModifiedDate 复制新的和已更改的文件
@@ -40,7 +40,7 @@ ms.locfileid: "75623933"
 
 ## <a name="how-to-use-this-solution-template"></a>如何使用此解决方案模板
 
-1. 转到模板“仅根据 LastModifiedDate 复制新文件”。  与源存储建立**新的**连接。 源存储是要从中复制文件的存储。
+1. 转到模板“仅根据 LastModifiedDate 复制新文件”。  创建与源存储的**新**连接。 源存储是要从中复制文件的存储。
 
     ![与源建立新的连接](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate1.png)
     

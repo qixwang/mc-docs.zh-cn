@@ -11,10 +11,10 @@ ms.date: 09/24/2019
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: a97d5cb6206900de34dc70ba152554beb69bf681
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75598597"
 ---
 # <a name="project-lead-tasks-in-the-team-data-science-process"></a>Team Data Science Process 中的项目主管任务
@@ -48,9 +48,9 @@ ms.locfileid: "75598597"
 若要克隆存储库并修改其在本地计算机或 Data Science Virtual Machine (DSVM) 上的内容，或者要设置 Azure 文件存储并将其装载到 DSVM，则还需要做好以下准备：
 
 - Azure 订阅。
-- 计算机上安装的 Git。 如果使用的是 DSVM，则 Git 已预装。 否则，请参阅[平台和工具附录](platforms-and-tools.md#appendix)。
-- 若要使用 DSVM，需要在 Azure 中创建并配置 Windows 或 Linux DSVM。 有关详细信息和说明，请参阅 [Data Science Virtual Machine 文档](/machine-learning/data-science-virtual-machine/)。
-- 对于 Windows DSVM，需要在计算机上安装 [Git 凭据管理器 (GCM)](https://github.com/Microsoft/Git-Credential-Manager-for-Windows)。 在 *README.md* 文件中，向下滚动到“下载并安装”部分，然后选择“最新安装程序”   。 从安装程序页下载 *.exe* 安装程序并运行它。 
+- 计算机上安装的 Git。 如果要使用 DSVM，则需预安装 Git。 否则，请参阅[平台和工具附录](platforms-and-tools.md#appendix)。
+- 如果要使用 DSVM，需要在 Azure 中创建和配置 Windows 或 Linux DSVM。 有关详细信息和说明，请参阅 [Data Science Virtual Machine 文档](/machine-learning/data-science-virtual-machine/)。
+- 对于 Windows DSVM，需要在计算机上安装 [Git 凭据管理器 (GCM)](https://github.com/Microsoft/Git-Credential-Manager-for-Windows)。 在 README.md 文件中，向下滚动到“下载并安装”部分，然后选择“最新安装程序”    。 从安装程序页下载 .exe 安装程序并运行它  。 
 - 对于 Linux DSVM，需要在 DSVM 上设置 SSH 公钥，并将其添加到 Azure DevOps 中。 有关详细信息和说明，请参阅[平台和工具附录](platforms-and-tools.md#appendix)中的“创建 SSH 公钥”  部分。 
 
 ## <a name="create-a-project-repository-in-your-team-project"></a>在团队项目中创建项目存储库

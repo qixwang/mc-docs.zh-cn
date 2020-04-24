@@ -9,10 +9,10 @@ origin.date: 09/10/2018
 ms.date: 6/4/2019
 ms.author: v-lingwu
 ms.openlocfilehash: 78ee90de8927743406f2ab5d9ee35a70098ce2ed
-ms.sourcegitcommit: 13431cf4d69142ed7feb8d12d967a502bf9ff346
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75599866"
 ---
 # <a name="workspace-expression-in-azure-monitor-log-query"></a>Azure Monitor 日志查询中的 workspace() 表达式
@@ -22,11 +22,11 @@ ms.locfileid: "75599866"
 
 ## <a name="syntax"></a>语法
 
-`workspace(`标识符`)` 
+`workspace(`标识符  `)`
 
 ## <a name="arguments"></a>参数
 
-- 标识符：  使用下表中的某种格式标识工作区。
+- 标识符：使用下表中的某种格式标识工作区  。
 
 | 标识符 | 说明 | 示例
 |:---|:---|:---|
@@ -36,7 +36,7 @@ ms.locfileid: "75599866"
 | Azure 资源 ID | Azure 资源的标识符 | workspace("/subscriptions/e4227-645-44e-9c67-3b84b5982/resourcegroups/ContosoAzureHQ/providers/Microsoft.OperationalInsights/workspaces/contosoretail") |
 
 
-## <a name="notes"></a>注释
+## <a name="notes"></a>说明
 
 * 你必须具有该工作区的读取权限。
 * 相关的表达式是 `app`，可以在 Application Insights 应用程序上进行查询。

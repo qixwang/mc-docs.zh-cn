@@ -10,10 +10,10 @@ ms.service: iot-central
 services: iot-central
 manager: peterpfr
 ms.openlocfilehash: 071a861aeb8737e5eee5cbc80b835279eb3f080f
-ms.sourcegitcommit: 6ffa4d50cee80c7c0944e215ca917a248f2a4bcd
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74883431"
 ---
 # <a name="tutorial-use-device-groups-to-analyze-device-telemetry-preview-features"></a>教程：使用设备组分析设备遥测数据（预览版功能）

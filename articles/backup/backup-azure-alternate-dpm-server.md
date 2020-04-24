@@ -8,10 +8,10 @@ origin.date: 07/09/2019
 ms.date: 12/04/2019
 ms.author: v-lingwu
 ms.openlocfilehash: ed79397f91278319104d2d25dd286f817608d5f7
-ms.sourcegitcommit: 21b02b730b00a078a76aeb5b78a8fd76ab4d6af2
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74838959"
 ---
 # <a name="recover-data-from-azure-backup-server"></a>从 Azure 备份服务器恢复数据

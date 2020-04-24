@@ -19,10 +19,10 @@ ms.author: v-tawe
 ms.reviewer: jowargo
 ms.lastreviewed: 03/22/2019
 ms.openlocfilehash: 3775125f87c866a5a013acb2998234ffe1e3af66
-ms.sourcegitcommit: cf73284534772acbe7a0b985a86a0202bfcc109e
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74884876"
 ---
 # <a name="tutorial-send-notifications-to-specific-users-by-using-azure-notification-hubs"></a>教程：使用 Azure 通知中心向特定用户发送通知
@@ -67,7 +67,7 @@ ms.locfileid: "74884876"
 5. 在结果列表中单击“System.Net.Http”，然后单击“安装”。   完成安装。
 6. 返回到 NuGet“搜索”框，键入 Json.net   。 安装 **Newtonsoft.json** 包，然后关闭“NuGet 包管理器”窗口。
 7. 在解决方案资源管理器的 **WindowsApp** 项目中双击“MainPage.xaml”，在 Visual Studio 编辑器中打开它。 
-8. 在 `MainPage.xaml` XML 代码中，将 `<Grid>` 节替换为以下代码：此代码将添加用户用来进行身份验证的用户名和密码文本框。 它还会添加通知消息的文本框，以及应接收通知的用户名标记：
+8. 在 `MainPage.xaml` XML 代码中，将 `<Grid>` 节替换为以下代码：此代码添加用户用来进行身份验证的用户名和密码文本框。 它还会添加通知消息的文本框，以及应接收通知的用户名标记：
 
     ```xml
     <Grid>

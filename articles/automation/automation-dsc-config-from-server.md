@@ -12,10 +12,10 @@ ms.date: 12/09/2019
 ms.topic: conceptual
 manager: digimobile
 ms.openlocfilehash: 59e18fe0b7792882b066fcd0ca26fa8fd46624c2
-ms.sourcegitcommit: 8c3bae15a8a5bb621300d81adb34ef08532fe739
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74884000"
 ---
 # <a name="create-configurations-from-existing-servers"></a>从现有服务器创建配置

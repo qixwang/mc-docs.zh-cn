@@ -11,10 +11,10 @@ services: iot-central
 ms.custom: mvc
 manager: peterpr
 ms.openlocfilehash: 21d512d7a2f04712ac934db3924f92fb4b07eab4
-ms.sourcegitcommit: 6ffa4d50cee80c7c0944e215ca917a248f2a4bcd
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74882938"
 ---
 # <a name="tutorial-define-a-new-iot-device-type-in-your-azure-iot-central-application-preview-features"></a>教程：在 Azure IoT Central 应用程序中定义新的 IoT 设备类型（预览版功能）
@@ -125,7 +125,7 @@ IoT Central 可以通过 IoT 即插即用来集成设备，不需要你编写任
 | 字段 | 说明 |
 | ----- | ----------- |
 | 显示名称 | 仪表板和窗体上使用的遥测值的显示名称。 |
-| Name | 遥测消息中字段的名称。 IoT Central 将根据显示名称生成此字段的值，但你可根据需要选择自己的值。 |
+| 名称 | 遥测消息中字段的名称。 IoT Central 将根据显示名称生成此字段的值，但你可根据需要选择自己的值。 |
 | 功能类型 | 遥测。 |
 | 语义类型 | 遥测的语义类型，如温度、状态或事件。 选择的语义类型将决定以下哪些字段可用。 |
 | 架构 | 遥测数据类型，如 double、string 或 vector。 可用的选项取决于语义类型。 架构不可用于事件和状态语义类型。 |
@@ -145,7 +145,7 @@ IoT Central 可以通过 IoT 即插即用来集成设备，不需要你编写任
 | 字段 | 说明 |
 | ----- | ----------- |
 | 显示名称 | 仪表板和窗体上使用的属性值的显示名称。 |
-| Name | 属性的名称。 IoT Central 将根据显示名称生成此字段的值，但你可根据需要选择自己的值。 |
+| 名称 | 属性的名称。 IoT Central 将根据显示名称生成此字段的值，但你可根据需要选择自己的值。 |
 | 功能类型 | 属性。 |
 | 语义类型 | 属性的语义类型，如温度、状态或事件。 选择的语义类型将决定以下哪些字段可用。 |
 | 架构 | 属性数据类型，如 double、string 或 vector。 可用的选项取决于语义类型。 架构不可用于事件和状态语义类型。 |
@@ -166,7 +166,7 @@ IoT Central 可以通过 IoT 即插即用来集成设备，不需要你编写任
 | 字段 | 说明 |
 | ----- | ----------- |
 | 显示名称 | 仪表板和窗体上使用的命令的显示名称。 |
-| Name | 命令的名称。 IoT Central 将根据显示名称生成此字段的值，但你可根据需要选择自己的值。 |
+| 名称 | 命令的名称。 IoT Central 将根据显示名称生成此字段的值，但你可根据需要选择自己的值。 |
 | 功能类型 | 命令。 |
 | 命令 | `SynchronousExecutionType`。 |
 | 注释 | 有关命令功能的任何注释。 |
@@ -189,7 +189,7 @@ IoT Central 可以通过 IoT 即插即用来集成设备，不需要你编写任
 | 字段 | 说明 |
 | ----- | ----------- |
 | 显示名称 | 仪表板和窗体上使用的云属性值的显示名称。 |
-| Name | 云属性的名称。 IoT Central 将根据显示名称生成此字段的值，但你可根据需要选择自己的值。 |
+| 名称 | 云属性的名称。 IoT Central 将根据显示名称生成此字段的值，但你可根据需要选择自己的值。 |
 | 语义类型 | 属性的语义类型，如温度、状态或事件。 选择的语义类型将决定以下哪些字段可用。 |
 | 架构 | 云属性数据类型，如 double、string 或 vector。 可用的选项取决于语义类型。 |
 

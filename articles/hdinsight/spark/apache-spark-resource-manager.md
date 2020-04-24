@@ -11,22 +11,22 @@ origin.date: 12/06/2019
 ms.date: 01/13/2020
 ms.author: v-yiso
 ms.openlocfilehash: 5dcad4f98e087b372a858a84a59518fce811f970
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75631037"
 ---
 # <a name="manage-resources-for-apache-spark-cluster-on-azure-hdinsight"></a>管理 Azure HDInsight 上 Apache Spark 群集的资源 
 
-了解如何访问与 [Apache Spark](https://spark.apache.org/) 群集关联的界面（如 [Apache Ambari](https://ambari.apache.org/) UI、[Apache Hadoop YARN](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html) UI 和 [Spark History Server](./apache-azure-spark-history-server.md)），以及如何优化群集配置以达到最佳性能。
+了解如何访问与 [Apache Spark](https://ambari.apache.org/) 群集关联的界面（如 [Apache Ambari](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html) UI、[Apache Hadoop YARN](./apache-azure-spark-history-server.md) UI 和 [Spark History Server](https://spark.apache.org/)），以及如何优化群集配置以达到最佳性能。
 
 ## <a name="open-the-spark-history-server"></a>打开 Spark History Server
 
 Spark History Server 是已完成和正在运行的 Spark 应用程序的 Web UI。 它是 Spark Web UI 的扩展。 有关完整信息，请参阅 [Spark History Server](./apache-azure-spark-history-server.md)。
 
 ## <a name="open-the-yarn-ui"></a>打开 YARN UI
-可以使用 YARN UI 监视当前正在 Spark 群集上运行的应用程序。
+可以使用 YARN UI 来监视 Spark 群集上当前运行的应用程序。
 
 1. 从 [Azure 门户](https://portal.azure.cn/)打开 Spark 群集。 有关详细信息，请参阅[列出和显示群集](../hdinsight-administer-use-portal-linux.md#showClusters)。
 
@@ -38,12 +38,12 @@ Spark History Server 是已完成和正在运行的 Spark 应用程序的 Web UI
    > 或者，也可以从 Ambari UI 启动 YARN UI。 在 Ambari UI 中，导航到“YARN”   > “快速链接”   > “活动”   >   “资源管理器 UI”。
 
 ## <a name="optimize-clusters-for-spark-applications"></a>针对 Spark 应用程序优化群集
-根据应用程序的要求，可用于 Spark 配置的三个关键参数为 `spark.executor.instances`、`spark.executor.cores` 和 `spark.executor.memory`。 执行器是针对 Spark 应用程序启动的进程。 它在工作节点上运行，负责执行应用程序的任务。 执行器的默认数目和每个群集的执行器大小均根据工作节点数目和工作节点大小计算。 这些信息存储在群集头节点上的 `spark-defaults.conf` 中。
+根据应用程序的要求，可用于 Spark 配置的三个关键参数为 `spark.executor.instances`、`spark.executor.cores` 和 `spark.executor.memory`。 执行器是针对 Spark 应用程序启动的进程。 它在辅助角色节点上运行，负责执行应用程序的任务。 执行器的默认数目和每个群集的执行器大小是根据辅助角色节点数目和辅助角色节点大小计算的。 这些信息存储在群集头节点上的 `spark-defaults.conf` 中。
 
 这三个配置参数可在群集级别配置（适用于群集上运行的所有应用程序），也可以针对每个应用程序指定。
 
 ### <a name="change-the-parameters-using-ambari-ui"></a>使用 Ambari UI 更改参数
-1. 在 Ambari UI 中，导航到“Spark2” > “配置” > “自定义 spark2-defaults”。   
+1. 在 Ambari UI 中，导航到“Spark2” **“配置”** “自定义 spark2-defaults”。 >    >  
 
     ![使用 Ambari 自定义设置参数](./media/apache-spark-resource-manager/ambari-ui-spark2-configs.png "使用 Ambari 自定义设置参数")
 
@@ -56,21 +56,21 @@ Spark History Server 是已完成和正在运行的 Spark 应用程序的 Web UI
     ![重新启动服务](./media/apache-spark-resource-manager/apache-ambari-restart-services.png)
 
 ### <a name="change-the-parameters-for-an-application-running-in-jupyter-notebook"></a>更改 Jupyter 笔记本中运行的应用程序的参数
-对于在 Jupyter 笔记本中运行的应用程序，可以使用 `%%configure` magic 进行配置更改。 理想情况下，必须先在应用程序开头进行此类更改，然后再运行第一个代码单元。 这可以确保在创建 Livy 会话时会配置应用到该会话。 如果想要更改处于应用程序中后面某个阶段的配置，必须使用 `-f` 参数。 但是，这样做会使应用程序中的所有进度丢失。
+对于在 Jupyter 笔记本中运行的应用程序，可以使用 `%%configure` magic 进行配置更改。 理想情况下，必须先在应用程序开头进行此类更改，再运行第一个代码单元。 这可以确保在创建 Livy 会话时会配置应用到该会话。 如果想要更改处于应用程序中后面某个阶段的配置，必须使用 `-f` 参数。 但是，这样做会使应用程序中的所有进度丢失。
 
 以下代码片段演示如何更改 Jupyter 中运行的应用程序的配置。
 
     %%configure
     {"executorMemory": "3072M", "executorCores": 4, "numExecutors":10}
 
-配置参数必须以 JSON 字符串形式传入，并且必须位于 magic 后面的下一行，如示例列中所示。
+配置参数必须以 JSON 字符串传入，并且必须位于 magic 后面的下一行，如示例列中所示。
 
-### <a name="change-the-parameters-for-an-application-submitted-using-spark-submit"></a>更改使用 spark-submit 提交的应用程序的参数
-以下命令示范了如何更改使用 `spark-submit`提交的批处理应用程序的配置参数。
+### <a name="change-the-parameters-for-an-application-submitted-using-spark-submit"></a>使用 spark-submit 更改已提交应用程序的参数
+以下命令示范了如何更改使用 `spark-submit` 提交的批处理应用程序的配置参数。
 
     spark-submit --class <the application class to execute> --executor-memory 3072M --executor-cores 4 --num-executors 10 <location of application jar file> <application parameters>
 
-### <a name="change-the-parameters-for-an-application-submitted-using-curl"></a>更改使用 cURL 提交的应用程序的参数
+### <a name="change-the-parameters-for-an-application-submitted-using-curl"></a>使用 cURL 更改已提交应用程序的参数
 以下命令示范了如何更改使用 cURL 提交的批处理应用程序的配置参数。
 
     curl -k -v -H 'Content-Type: application/json' -X POST -d '{"file":"<location of application jar file>", "className":"<the application class to execute>", "args":[<application parameters>], "numExecutors":10, "executorMemory":"2G", "executorCores":5' localhost:8998/batches
@@ -93,7 +93,7 @@ Spark Thrift 服务器使用 Spark 动态执行器分配，因此未使用 `spar
 
 Spark Thrift 服务器驱动程序内存配置为头节点 RAM 大小的 25%，前提是头节点的 RAM 总大小大于 14 GB。 可以使用 Ambari UI 更改驱动程序内存配置，如以下屏幕截图所示：
 
-在 Ambari UI 中，导航到“Spark2” > “配置” > “高级 spark2-env”。    然后提供 **spark_thrift_cmd_opts** 的值。
+在 Ambari UI 中，导航到“Spark2” **“配置”** “高级 spark2-env”。 >    >   然后提供 **spark_thrift_cmd_opts** 的值。
 
 ## <a name="reclaim-spark-cluster-resources"></a>回收 Spark 群集资源
 由于 Spark 动态分配，因此 Thrift 服务器使用的唯一资源是两个应用程序主机的资源。 若要回收这些资源，必须停止群集上运行的 Thrift 服务器服务。
@@ -108,10 +108,10 @@ Spark Thrift 服务器驱动程序内存配置为头节点 RAM 大小的 25%，�
 
     ![重启 thrift server2](./media/apache-spark-resource-manager/restart-thrift-server-2.png "重启 thrift server2")
 
-4. 下一页列出该头节点上运行的所有服务。 在该列表中，选择 Spark2 Thrift 服务器旁边的下拉按钮，并选择“停止”  。
+4. 下一页将列出该头节点上运行的所有服务。 在该列表中，选择 Spark2 Thrift 服务器旁边的下拉按钮，并选择“停止”  。
 
     ![重启 thrift server3](./media/apache-spark-resource-manager/ambari-ui-spark2-thriftserver-restart.png "重启 thrift server3")
-5. 同时对其他头节点重复上述步骤。
+5. 对其他头节点重复上述步骤。
 
 ## <a name="restart-the-jupyter-service"></a>重新启动 Jupyter 服务
 
@@ -140,8 +140,8 @@ Spark Thrift 服务器驱动程序内存配置为头节点 RAM 大小的 25%，�
 
 ### <a name="for-data-analysts"></a>适用于数据分析师
 
-* [Apache Spark 与机器学习：使用 HDInsight 中的 Spark 来通过 HVAC 数据分析建筑物温度](apache-spark-ipython-notebook-machine-learning.md)
-* [Apache Spark 与机器学习：使用 HDInsight 中的 Spark 预测食品检验结果](apache-spark-machine-learning-mllib-ipython.md)
+* [Apache Spark 和机器学习：使用 HDInsight 中的 Spark 结合 HVAC 数据分析建筑物温度](apache-spark-ipython-notebook-machine-learning.md)
+* [Apache Spark 和机器学习：使用 HDInsight 中的 Spark 预测食品检查结果](apache-spark-machine-learning-mllib-ipython.md)
 * [使用 HDInsight 中的 Apache Spark 分析网站日志](apache-spark-custom-library-website-log-analysis.md)
 * [使用 Caffe on Azure HDInsight Spark 进行分布式深度学习](apache-spark-deep-learning-caffe.md)
 

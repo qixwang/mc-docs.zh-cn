@@ -6,10 +6,10 @@ origin.date: 03/05/2019
 ms.author: v-yeche
 ms.date: 12/09/2019
 ms.openlocfilehash: 2faca075871fd3b14d31736cfd37e2425c15ce49
-ms.sourcegitcommit: cf73284534772acbe7a0b985a86a0202bfcc109e
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74884860"
 ---
 # <a name="azure-container-registry-webhook-reference"></a>Azure 容器注册表 Webhook 参考
@@ -59,7 +59,7 @@ ms.locfileid: "74884860"
 |`tag`|String|映像标记名称。|
 
 <a name="request"></a>
-### <a name="request"></a>request
+### <a name="request"></a>请求
 
 |元素|类型|说明|
 |------------------|----------|-----------|
@@ -92,7 +92,7 @@ ms.locfileid: "74884860"
 }
 ```
 
-触发映像**推送**事件 Webhook 的示例 [Docker CLI](https://docs.docker.com/engine/reference/commandline/cli/) 命令：
+触发映像[推送](https://docs.docker.com/engine/reference/commandline/cli/)事件 Webhook 的示例 **Docker CLI** 命令：
 
 ```bash
 docker push myregistry.azurecr.cn/hello-world:v1
@@ -143,7 +143,7 @@ docker push myregistry.azurecr.cn/hello-world:v1
 }
 ```
 
-触发 **chart_push** 事件 Webhook 的示例 [Azure CLI](https://docs.azure.cn/cli/acr?view=azure-cli-latest) 命令：
+触发 [chart_push](https://docs.azure.cn/cli/acr?view=azure-cli-latest) 事件 Webhook 的示例 **Azure CLI** 命令：
 
 ```azurecli
 az acr helm push wordpress-5.4.0.tgz --name MyRegistry
@@ -173,7 +173,7 @@ az acr helm push wordpress-5.4.0.tgz --name MyRegistry
 |`repository`|String|存储库名称。|
 
 <a name="delete_request"></a>
-### <a name="request"></a>request
+### <a name="request"></a>请求
 
 |元素|类型|说明|
 |------------------|----------|-----------|
@@ -203,7 +203,7 @@ az acr helm push wordpress-5.4.0.tgz --name MyRegistry
   }
 ```
 
-触发 **delete** 事件 Webhook 的示例 [Azure CLI](https://docs.azure.cn/cli/acr?view=azure-cli-latest) 命令：
+触发[删除](https://docs.azure.cn/cli/acr?view=azure-cli-latest)事件 Webhook 的示例 **Azure CLI** 命令：
 
 ```azurecli
 # Delete repository
@@ -258,7 +258,7 @@ az acr repository delete --name MyRegistry --image MyRepository:MyTag
 }
 ```
 
-触发 **chart_delete** 事件 Webhook 的示例 [Azure CLI](https://docs.azure.cn/cli/acr?view=azure-cli-latest) 命令：
+触发 [chart_delete](https://docs.azure.cn/cli/acr?view=azure-cli-latest) 事件 Webhook 的示例 **Azure CLI** 命令：
 
 ```azurecli
 az acr helm delete wordpress --version 5.4.0 --name MyRegistry

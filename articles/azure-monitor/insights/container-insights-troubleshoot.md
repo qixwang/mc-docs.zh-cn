@@ -9,10 +9,10 @@ ms.author: v-lingwu
 origin.date: 10/15/2019
 ms.date: 12/04/2019
 ms.openlocfilehash: c276fef6dcba84a1e4f5cb24caeb35d43cc7793d
-ms.sourcegitcommit: 21b02b730b00a078a76aeb5b78a8fd76ab4d6af2
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74838963"
 ---
 # <a name="troubleshooting-azure-monitor-for-containers"></a>对用于容器的 Azure Monitor 进行故障排除
@@ -26,7 +26,7 @@ ms.locfileid: "74838963"
 
 此外，还可以通过执行以下步骤，在 Azure 门户中手动授予此角色：
 
-1. 登录到 [Azure 门户](https://portal.azure.cn)。 
+1. 登录 [Azure 门户](https://portal.azure.cn)。 
 2. 在 Azure 门户中，单击左上角的“所有服务”  。 在资源列表中，键入 **Kubernetes**。 开始键入时，会根据输入筛选该列表。 选择“Azure Kubernetes”  。
 3. 从 Kubernetes 群集列表中选择一个群集。
 2. 在左侧菜单中，单击“访问控制 (IAM)”  。

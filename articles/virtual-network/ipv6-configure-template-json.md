@@ -14,10 +14,10 @@ origin.date: 06/26/2019
 ms.date: 11/25/2019
 ms.author: v-yeche
 ms.openlocfilehash: 85e9c2caf47efc68d45ccf041a5d55a7ca819f78
-ms.sourcegitcommit: c5e012385df740bf4a326eaedabb987314c571a1
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74203747"
 ---
 # <a name="deploy-an-ipv6-dual-stack-application-with-basic-load-balancer-in-azure---template"></a>在 Azure 中部署使用基本负载均衡器的 IPv6 双堆栈应用程序 - 模板

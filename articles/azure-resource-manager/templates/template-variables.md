@@ -6,10 +6,10 @@ origin.date: 09/05/2019
 ms.author: v-yeche
 ms.date: 01/06/2020
 ms.openlocfilehash: 5009e9755e2d5d340443756fea8f8b1e46f8c099
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75631472"
 ---
 # <a name="variables-in-azure-resource-manager-template"></a>Azure 资源管理器模板中的变量
@@ -20,7 +20,7 @@ ms.locfileid: "75631472"
 
 ## <a name="define-variable"></a>定义变量
 
-以下示例显示了一个变量定义。 它创建适用于存储帐户名称的字符串值。 它使用多个模板函数来获取参数值，并将其连接到唯一字符串。
+以下示例介绍了变量定义。 它为存储帐户名称创建字符串值。 它使用多个模板函数来获取参数值，并将其连接到唯一字符串。
 
 ```json
 "variables": {
@@ -63,7 +63,7 @@ ms.locfileid: "75631472"
 },
 ```
 
-可以在参数中创建一个值，用于指示要使用的配置值。
+在参数中，可以创建一个值，用于指示要使用的配置值。
 
 ```json
 "parameters": {
@@ -90,8 +90,8 @@ ms.locfileid: "75631472"
 |模板  |说明  |
 |---------|---------|
 | [变量定义](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/variables.json) | 演示不同类型的变量。 该模板不部署任何资源。 它构造变量值并返回这些值。 |
-| [配置变量](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/variablesconfigurations.json) | 演示如何使用变量来定义配置值。 该模板不部署任何资源。 它构造变量值并返回这些值。 |
-| [网络安全规则](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.json)和[参数文件](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.parameters.json) | 以正确格式构造一个数组，以便向网络安全组分配安全规则。 |
+| [配置变量](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/variablesconfigurations.json) | 演示如何使用定义配置值的变量。 该模板不部署任何资源。 它构造变量值并返回这些值。 |
+| [网络安全规则](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.json)和[参数文件](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.parameters.json) | 以正确的格式构造数组，以便将安全规则分配给网络安全组。 |
 
 ## <a name="next-steps"></a>后续步骤
 

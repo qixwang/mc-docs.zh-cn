@@ -12,10 +12,10 @@ ms.date: 11/04/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 6049ed7568482839cc866fdd4144a7eecb6a2c51
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75598607"
 ---
 # <a name="move-data-from-an-on-premises-sql-server-to-sql-azure-with-azure-data-factory"></a>使用 Azure 数据工厂将数据从本地 SQL 服务器移到 SQL Azure
@@ -24,7 +24,7 @@ ms.locfileid: "75598607"
 
 有关汇总了用于将数据移到 Azure SQL 数据库的各种选项的表格，请参阅[将数据移到 Azure SQL 数据库进行 Azure 机器学习](move-sql-azure.md)。
 
-## <a name="intro"></a>简介：什么是 ADF 以及它应何时用于迁移数据？
+## <a name="introduction-what-is-adf-and-when-should-it-be-used-to-migrate-data"></a><a name="intro"></a>简介：什么是 ADF 以及它应何时用于迁移数据？
 Azure 数据工厂是一项完全托管、基于云的数据集成服务，可安排并自动化处理数据的移动和转换。 ADF 模型中的关键概念是管道。 管道是活动的逻辑分组，其中每个活动定义对包含在数据集中的数据所执行的操作。 链接服务用于定义数据工厂连接到数据资源所需的信息。
 
 凭借 ADF，可将现有的数据处理服务整合到数据管道中，该数据管道具有高可用性且托管在云中。 可安排这些数据管道用于引入、准备、转换、分析和发布数据，ADF 可管理并安排复杂数据和处理依赖关系。 可在云中快速生成并部署解决方案，连接越来越多的本地和云数据源。
@@ -36,7 +36,7 @@ Azure 数据工厂是一项完全托管、基于云的数据集成服务，可�
 
 ADF 允许使用简单的 JSON 脚本计划和监视作业，JSON 脚本可定期管理数据移动。 ADF 还具有其他功能，例如支持复杂操作。 有关 ADF 的详细信息，请参阅 [Azure 数据工厂 (ADF)](/data-factory/) 中的文档。
 
-## <a name="scenario"></a>方案
+## <a name="the-scenario"></a><a name="scenario"></a>方案
 我们设置了一个由两个数据迁移活动组成的 ADF 管道。 它们可每天共同在本地 SQL 数据库和云中的 Azure SQL 数据库之间移动数据。 这两个活动是：
 
 * 从本地 SQL Server 数据库将数据复制到 Azure Blob 存储帐户
@@ -47,7 +47,7 @@ ADF 允许使用简单的 JSON 脚本计划和监视作业，JSON 脚本可定�
 >
 >
 
-## <a name="prereqs"></a>先决条件
+## <a name="prerequisites"></a><a name="prereqs"></a>先决条件
 本教程假设你拥有：
 
 * 一个 **Azure 订阅**。 如果你没有订阅，则可以注册[试用版](https://www.azure.cn/pricing/1rmb-trial/)。
@@ -60,12 +60,12 @@ ADF 允许使用简单的 JSON 脚本计划和监视作业，JSON 脚本可定�
 >
 >
 
-## <a name="upload-data"></a>将数据上传到本地 SQL Server
-我们使用 [NYC 出租车数据集](https://chriswhong.com/open-data/foil_nyc_taxi/)来演示迁移过程。 该文章所述的 NYC 出租车数据集在 Azure Blob 存储 [NYC 出租车数据](https://www.andresmh.com/nyctaxitrips/)上可用。 该数据具有两个文件，trip_data.csv 文件（包含行程详情）和 trip_far.csv 文件（包含每次行程的费用详情）。 [NYC 出租车行程数据集说明](sql-walkthrough.md#dataset)中介绍了这些文件的示例和说明。
+## <a name="upload-the-data-to-your-on-premises-sql-server"></a><a name="upload-data"></a>将数据上传到本地 SQL Server
+将使用 [NYC 出租车数据集](https://chriswhong.com/open-data/foil_nyc_taxi/)来演示迁移过程。 该文章所述的 NYC 出租车数据集在 Azure Blob 存储 [NYC 出租车数据](https://www.andresmh.com/nyctaxitrips/)上可用。 该数据具有两个文件，trip_data.csv 文件（包含行程详情）和 trip_far.csv 文件（包含每次行程的费用详情）。 [NYC 出租车行程数据集说明](sql-walkthrough.md#dataset)中介绍了这些文件的示例和说明。
 
 可将此处提供的流程调整为自己的一组数据，或者使用 NYC 出租车数据集遵循所述的步骤进行操作。 若要将 NYC 出租车数据集上传到本地 SQL Server 数据库，请按照[将数据批量导入 SQL Server 数据库](sql-walkthrough.md#dbload)中概述的过程进行操作。 这些说明适用于 Azure 虚拟机上的 SQL Server，但是上传到本地 SQL Server 的过程是相同的。
 
-## <a name="create-adf"></a>创建 Azure 数据工厂
+## <a name="create-an-azure-data-factory"></a><a name="create-adf"></a>创建 Azure 数据工厂
 [创建 Azure 数据工厂](../../data-factory/tutorial-hybrid-copy-portal.md#create-a-data-factory)中提供了在 [Azure 门户](https://portal.azure.cn/)中创建新的 Azure 数据工厂和资源组的相关说明。 将新的 ADF 实例命名为 *adfdsp*，将创建的资源组命名为 *adfdsprg*。
 
 ## <a name="install-and-configure-azure-data-factory-integration-runtime"></a>安装和配置 Azure 数据工厂集成运行时
@@ -73,7 +73,7 @@ ADF 允许使用简单的 JSON 脚本计划和监视作业，JSON 脚本可定�
 
 若要进行设置，请[按照有关创建管道的说明进行操作](/data-factory/tutorial-hybrid-copy-portal#create-a-pipeline)
 
-## <a name="adflinkedservices"></a>创建链接服务以连接到数据资源
+## <a name="create-linked-services-to-connect-to-the-data-resources"></a><a name="adflinkedservices"></a>创建链接服务以连接到数据资源
 链接服务定义 Azure 数据工厂连接到数据资源所需的信息。 在此方案中，我们有三个需要链接服务的资源：
 
 1. 本地 SQL Server
@@ -83,7 +83,7 @@ ADF 允许使用简单的 JSON 脚本计划和监视作业，JSON 脚本可定�
 [创建链接服务](../../data-factory/tutorial-hybrid-copy-portal.md#create-a-pipeline)中提供了创建链接服务的分步过程。
 
 
-## <a name="adf-tables"></a>定义和创建表以指定访问数据集的方式
+## <a name="define-and-create-tables-to-specify-how-to-access-the-datasets"></a><a name="adf-tables"></a>定义和创建表以指定访问数据集的方式
 使用以下基于脚本的过程，创建指定数据集的结构、位置和可用性的表。 可使用 JSON 文件定义表。 若要深入了解这些文件的结构，请参阅[数据集](../../data-factory/concepts-datasets-linked-services.md)。
 
 > [!NOTE]
@@ -107,7 +107,7 @@ ADF 允许使用简单的 JSON 脚本计划和监视作业，JSON 脚本可定�
 >
 >
 
-### <a name="adf-table-onprem-sql"></a>SQL 本地表
+### <a name="sql-on-premises-table"></a><a name="adf-table-onprem-sql"></a>SQL 本地表
 本地 SQL Server 的表定义指定在以下的 JSON 文件中：
 
 ```json
@@ -143,7 +143,7 @@ ADF 允许使用简单的 JSON 脚本计划和监视作业，JSON 脚本可定�
     New-AzureDataFactoryTable -ResourceGroupName ADFdsprg -DataFactoryName ADFdsp –File C:\temp\onpremtabledef.json
 
 
-### <a name="adf-table-blob-store"></a>Blob 表
+### <a name="blob-table"></a><a name="adf-table-blob-store"></a>Blob 表
 以下是适用于输出 blob 位置的表的定义（这将引入的数据从本地映射到 Azure blob）：
 
 ```json
@@ -175,7 +175,7 @@ ADF 允许使用简单的 JSON 脚本计划和监视作业，JSON 脚本可定�
 
     New-AzureDataFactoryTable -ResourceGroupName adfdsprg -DataFactoryName adfdsp -File C:\temp\bloboutputtabledef.json
 
-### <a name="adf-table-azure-sql"></a>SQL Azure 表
+### <a name="sql-azure-table"></a><a name="adf-table-azure-sql"></a>SQL Azure 表
 以下是适用于 SQL Azure 输出的表的定义（此架构将映射来自 blob 的数据）：
 
 ```json
@@ -208,7 +208,7 @@ ADF 允许使用简单的 JSON 脚本计划和监视作业，JSON 脚本可定�
     New-AzureDataFactoryTable -ResourceGroupName adfdsprg -DataFactoryName adfdsp -File C:\temp\AzureSqlTable.json
 
 
-## <a name="adf-pipeline"></a>定义和创建管道
+## <a name="define-and-create-the-pipeline"></a><a name="adf-pipeline"></a>定义和创建管道
 使用以下基于脚本的过程，指定属于管道的活动并创建管道。 可使用 JSON 文件定义管道属性。
 
 * 该脚本假设管道名称  是 AMLDSProcessPipeline  。
@@ -293,7 +293,7 @@ ADF 允许使用简单的 JSON 脚本计划和监视作业，JSON 脚本可定�
     New-AzureDataFactoryPipeline  -ResourceGroupName adfdsprg -DataFactoryName adfdsp -File C:\temp\pipelinedef.json
 
 
-## <a name="adf-pipeline-start"></a>启动管道
+## <a name="start-the-pipeline"></a><a name="adf-pipeline-start"></a>启动管道
 现在可使用以下命令来运行管道：
 
     Set-AzureDataFactoryPipelineActivePeriod -ResourceGroupName ADFdsprg -DataFactoryName ADFdsp -StartDateTime startdateZ –EndDateTime enddateZ –Name AMLDSProcessPipeline

@@ -11,10 +11,10 @@ ms.date: 09/24/2019
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: de3f7900d12aff0779380b6d91452da98163af6e
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75598882"
 ---
 # <a name="team-data-science-process-group-manager-tasks"></a>团队数据科学流程组管理员任务
@@ -145,19 +145,19 @@ Azure Repos 可为组托管以下类型的存储库：
 
 1. 在存储库目录结构中，导航到要更改的文件夹或文件。 
    
-   - 要创建新文件夹或文件，请选择“新建”旁边的箭头  。 
+   - 若要创建新的文件夹或文件，请选择“新建”旁边的箭头  。 
      
      ![创建新文件](./media/group-manager-tasks/new-file.png)
      
-   - 要上传文件，请选择“上传文件”  。 
+   - 若要上传文件，请选择“上传文件”  。 
      
      ![上传文件](./media/group-manager-tasks/upload-files.png)
      
-   - 要编辑现有文件，请导航到该文件，然后选择“编辑”  。 
+   - 若要编辑现有文件，请导航到该文件，然后选择“编辑”  。 
      
      ![编辑文件](./media/group-manager-tasks/edit-file.png)
      
-1. 添加或编辑文件后，请选择“提交”  。
+1. 添加或编辑文件后，选择“提交”  。
    
    ![提交更改](./media/group-manager-tasks/commit.png)
 
@@ -248,7 +248,7 @@ git push
    
 1. 在“权限”页上，选择要向其中添加成员的组  。 
    
-1. 在随即出现的页上选择“成员”，然后选择“添加”   。 
+1. 在该组的页面上选择“成员”，然后选择“添加”   。 
    
 1. 在“邀请成员”弹出菜单中，搜索并选择要添加到组的成员，然后选择“保存”   。 
    
@@ -260,4 +260,4 @@ git push
 
 - [数据科学团队的团队主管任务](team-lead-tasks.md)
 - [数据科学团队的项目主管任务](project-lead-tasks.md)
-- [数据科学团队的项目单独参与者任务](project-ic-tasks.md)
+- [数据科学团队的项目个人参与者任务](project-ic-tasks.md)

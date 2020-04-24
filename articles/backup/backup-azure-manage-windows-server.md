@@ -7,15 +7,15 @@ origin.date: 07/08/2019
 ms.date: 09/08/2019
 ms.author: v-lingwu
 ms.openlocfilehash: 9d9571cbb6b245df472a2459cc63bfeaaad752c3
-ms.sourcegitcommit: 21b02b730b00a078a76aeb5b78a8fd76ab4d6af2
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74839064"
 ---
 # <a name="monitor-and-manage-recovery-services-vaults"></a>监视和管理恢复服务保管库
 
-本文介绍如何使用恢复服务保管库的“概述”仪表板来监视和管理恢复服务保管库。  从列表中打开恢复服务保管库时，将打开所选保管库的“概述”仪表板。  仪表板提供有关该保管库的各种详细信息。 其中的磁贴显示：严重和警告性警报的状态、正在进行的和失败的备份作业，以及本地冗余存储 (LRS) 和异地冗余存储 (GRS) 使用量。  如果将 Azure VM 备份到保管库，则[“备份预检查状态”磁贴将显示所有严重或警告项](https://azure.microsoft.com/blog/azure-vm-backup-pre-checks/)。  下图是 **Contoso-vault** 的“概述”仪表板。  “备份项”磁贴显示有九个项已注册到保管库。 
+本文介绍如何使用恢复服务保管库的“概述”仪表板来监视和管理恢复服务保管库。  从列表中打开恢复服务保管库时，将打开所选保管库的“概述”仪表板。  仪表板提供有关该保管库的各种详细信息。 其中的磁贴显示：严重和警告性警报的状态、正在进行的和失败的备份作业，以及本地冗余存储 (LRS) 和异地冗余存储 (GRS) 使用量。  如果将 Azure VM 备份到保管库，则[“备份预检查状态”磁贴将显示所有严重或警告项 **。** ](https://azure.microsoft.com/blog/azure-vm-backup-pre-checks/) 下图是 **Contoso-vault** 的“概述”仪表板。  “备份项”磁贴显示有九个项已注册到保管库。 
 
 ![恢复服务保管库仪表板](./media/backup-azure-manage-windows-server/rs-vault-blade.png)
 
@@ -28,7 +28,7 @@ ms.locfileid: "74839064"
 
 若要监视警报或查看有关某个恢复服务保管库的管理数据，请打开该保管库。
 
-1. 使用 Azure 订阅登录到 [Azure 门户](https://portal.azure.cn/) 。
+1. 使用 Azure 订阅登录到 [Azure 门户](https://portal.azure.cn/)。
 
 2. 在门户中，单击“所有服务”  。
 
@@ -65,7 +65,7 @@ ms.locfileid: "74839064"
 
 ![根据严重警报筛选的“备份警报”菜单](./media/backup-azure-manage-windows-server/critical-backup-alerts.png)
 
-上图中的“备份警报”菜单按以下条件筛选：“状态”为“活动”，“严重性”为“严重”，时间为前 24 小时。
+上图中的“备份警报”菜单已根据以下条件进行筛选：“状态”为“活动”、“严重性”为“严重”、时间为过去 24 小时。
 
 ## <a name="manage-backup-alerts"></a>管理备份警报
 
@@ -83,9 +83,9 @@ ms.locfileid: "74839064"
 
 | 警报级别 | 生成警报的事件 |
 | ----------- | ----------- |
-| 关键 | 出现以下情况时，会收到严重警报：备份作业失败、恢复作业失败，以及在服务器上停止保护但保留了数据时。|
+| 严重 | 出现以下情况时，会收到严重警报：备份作业失败、恢复作业失败，以及在服务器上停止保护但保留了数据时。|
 | 警告 | 出现以下情况时，会收到警告性警报：备份作业完成但出现警告，例如，由于出现损坏问题，有 100 个以下的文件未备份；或者成功备份了 1,000,000 个以上的文件。 |
-| 信息性 | 目前未使用信息性警报。 |
+| 信息 | 目前未使用信息性警报。 |
 
 ### <a name="viewing-alert-details"></a>查看警报详细信息
 
@@ -98,8 +98,8 @@ ms.locfileid: "74839064"
 * 警报
 * 备份项
 * 受保护的服务器
-* severity
-* 持续时间
+* 严重性
+* Duration
 * 创建时间
 * 状态
 * 最近发生时间
@@ -214,14 +214,14 @@ ms.locfileid: "74839064"
 * Azure 存储
 * Azure 工作负荷
 
-#### <a name="operation"></a>操作
+#### <a name="operation"></a>Operation
 
 可以查看一个操作或所有操作。 不能选择两个或三个操作。 可用的操作包括：
 
 * 所有操作
 * 注册
 * 配置备份
-* Backup
+* 备份
 * 还原
 * 禁用备份
 * 删除备份数据
@@ -233,7 +233,7 @@ ms.locfileid: "74839064"
 * 所有状态
 * 已完成
 * 正在进行
-* 已失败
+* 失败
 * 已取消
 * 已完成但出现警告
 

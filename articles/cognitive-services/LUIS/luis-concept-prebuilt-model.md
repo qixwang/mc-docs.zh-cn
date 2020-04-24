@@ -13,10 +13,10 @@ origin.date: 10/10/2019
 ms.date: 12/5/2019
 ms.author: v-lingwu
 ms.openlocfilehash: 3a96f4f6442b484e9c1bca09d5f8ca631935c84c
-ms.sourcegitcommit: cf73284534772acbe7a0b985a86a0202bfcc109e
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74884490"
 ---
 # <a name="prebuilt-models"></a>预生成的模型
@@ -45,7 +45,7 @@ LUIS 提供了三种类型的预生成模型。 可以随时向你的应用中�
 
 ### <a name="changing-the-behavior-of-a-prebuilt-domain-intent"></a>更改预生成域意向的行为
 
-你可能会发现，虽然预生成域中某个意向与你要在 LUIS 应用中使用的意向类似，但你希望它具有不同的行为。 例如，“地点”预生成域提供用于预订餐厅的 `MakeReservation` 意向，但你希望应用使用该意向预订酒店  。 在这种情况下，可以通过在预订酒店的相关意向中添加示例话语来修改该意向的行为，然后重新训练应用。 
+你可能会发现，虽然预生成域中某个意向与你要在 LUIS 应用中使用的意向类似，但你希望它具有不同的行为。 例如，“地点”预生成域提供用于预订餐厅的  **意向，但你希望应用使用该意向预订酒店**`MakeReservation`。 在这种情况下，可以通过在预订酒店的相关意向中添加示例话语来修改该意向的行为，然后重新训练应用。 
 
 可在[预生成域参考](./luis-reference-prebuilt-domains.md)中找到预生成域的完整列表。
 

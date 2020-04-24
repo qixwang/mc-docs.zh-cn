@@ -14,10 +14,10 @@ origin.date: 10/20/2019
 ms.date: 01/06/2020
 ms.author: v-jay
 ms.openlocfilehash: 130f564e86175252de21edc7a120b0c5e62e6e7d
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75623736"
 ---
 # <a name="copy-data-from-office-365-into-azure-using-azure-data-factory"></a>使用 Azure 数据工厂将数据从 Office 365 复制到 Azure
@@ -78,7 +78,7 @@ Azure 数据工厂与 [Microsoft Graph 数据连接](https://docs.microsoft.com/
 
 Office 365 链接服务支持以下属性：
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：**Office365** | 是 |
 | office365TenantId | Office 365 帐户所属的 Azure 租户 ID。 | 是 |
@@ -118,7 +118,7 @@ Office 365 链接服务支持以下属性：
 
 若要从 Office 365 复制数据，支持以下属性：
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为：**Office365Table** | 是 |
 | tableName | 要从 Office 365 中提取的数据集的名称。 有关支持提取的 Office 365 数据集列表，请参阅[此处](https://docs.microsoft.com/graph/data-connect-datasets#datasets)。 | 是 |
@@ -152,7 +152,7 @@ Office 365 链接服务支持以下属性：
 
 为了从 Office 365 复制数据，复制活动的 **source** 节支持以下属性：
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
 | type | 复制活动 source 的 type 属性必须设置为：**Office365Source** | 是 |
 | allowedGroups | 组选择谓词。  可以使用此属性选择最多 10 个将为其检索数据的用户组。  如果未指定任何组，则会为整个组织返回数据。 | 否 |

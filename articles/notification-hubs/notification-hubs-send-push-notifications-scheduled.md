@@ -19,10 +19,10 @@ ms.author: v-tawe
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.openlocfilehash: f96185d0c889b3f42660f2c12d454ad2485fee66
-ms.sourcegitcommit: cf73284534772acbe7a0b985a86a0202bfcc109e
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74884971"
 ---
 # <a name="how-to-send-scheduled-notifications"></a>如何：发送预定通知

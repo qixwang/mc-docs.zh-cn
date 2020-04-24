@@ -12,10 +12,10 @@ ms.date: 11/09/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 56f879c40333cabc916fa05243ae3b12113779b0
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75599652"
 ---
 # <a name="tasks-to-prepare-data-for-enhanced-machine-learning"></a>用于准备数据以进行增强型机器学习的任务
@@ -65,7 +65,7 @@ ms.locfileid: "75599652"
 若要处理缺失值，最好先确定缺少值的原因以更好地解决问题。 通常的缺失值处理方法包括：
 
 * **删除**：删除具有缺失值的记录
-* **虚拟替换**：使用虚拟值替换缺失值：例如，用 unknown 替换分类值，或用 0 替换数值  。
+* **虚拟替换**：使用虚拟值替换缺失值：例如，用 unknown  替换分类值，或用 0 替换数值。
 * **平均值替换**：如果缺失的数据是数字，则使用平均值替换缺失值。
 * **常用项替换**：如果缺失的是分类数据，则使用最常用的项替换缺失值
 * **回归替换**：使用回归方法，将缺失值替换为回归值。  
@@ -73,7 +73,7 @@ ms.locfileid: "75599652"
 ## <a name="how-to-normalize-data"></a>如何规范化数据？
 数据规范化将数值重新调整到指定范围。 常用的数据规范化方法包括：
 
-* **最小 - 最大值规范化**：将数据线性转换到某一范围（例如 0 和 1 之间），这会将最小值缩放为 0，最大值缩放为 1。
+* **最小 - 最大值规范化**：将数据线性转换到某一范围（例如 0 和 1 之间），这会最小值缩放为 0，最大值缩放为 1。
 * **Z 分数规范化**：基于平均值和标准偏差缩放数据：将数据和平均值之间的差除以标准偏差。
 * **小数缩放**：通过移动属性值的小数点缩放数据。  
 
@@ -96,7 +96,7 @@ ms.locfileid: "75599652"
 **数据浏览**支持提前预览数据。 执行该步骤时会发现多个数据问题，可应用相应的方法解决这些问题。  提问非常重要，例如问题的源是什么以及问题是如何引入的。 这还有助于确定需采取哪些数据处理步骤来解决这些问题。 从数据中获得的见解也可用于确定数据处理操作的优先级。
 
 ## <a name="references"></a>参考
-> 《数据挖掘：  概念和技术》，第三版，Morgan Kaufmann 出版社，2011，Jiawei Han、Micheline Kamber 和 Jian Pei
+> 《数据挖掘：概念和技术》  ，第三版，Morgan Kaufmann 出版社，2011，Jiawei Han、Micheline Kamber 和 Jian Pei
 > 
 > 
 

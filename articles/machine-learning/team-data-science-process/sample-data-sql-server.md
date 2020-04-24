@@ -12,13 +12,13 @@ ms.date: 11/13/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: f875b84202a37f1b76ec1e7177d30b00e87aa79b
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75599434"
 ---
-# <a name="heading"></a>对 Azure 上 SQL Server 中的数据进行采样
+# <a name="sample-data-in-sql-server-on-azure"></a><a name="heading"></a>对 Azure 上 SQL Server 中的数据进行采样
 
 本文介绍了如何使用 SQL 或 Python 编程语言对 Azure 上的 SQL Server 中存储的数据进行采样。 还介绍了如何通过将采样数据保存到文件、上传到 Azure blob，然后读取到 Azure 机器学习工作室，将数据移至 Azure 机器学习中。
 
@@ -34,7 +34,7 @@ Python 采样使用要连接到 Azure 上 SQL Server 的 [pyodbc](https://code.g
 
 此采样任务是[团队数据科学流程 (TDSP)](/machine-learning/team-data-science-process/) 中的一个步骤。
 
-## <a name="SQL"></a>使用 SQL
+## <a name="using-sql"></a><a name="SQL"></a>使用 SQL
 本部分介绍了几种使用 SQL 针对数据库中的数据执行简单随机采样的方法。 请根据数据大小及其分发方式选择一种方法。
 
 以下两项显示了如何使用 SQL Server 中的 `newid` 执行采样。 选择的方法取决于想要进行采样的随机程度（假设以下示例代码中的 pk_id 是自动生成的主密钥）。
@@ -59,12 +59,12 @@ Tablesample 也可用于数据采样。 如果数据大小较大（假设不同�
 > 
 > 
 
-### <a name="sql-aml"></a>连接到 Azure 机器学习
+### <a name="connecting-to-azure-machine-learning"></a><a name="sql-aml"></a>连接到 Azure 机器学习
 可直接在 Azure 机器学习[导入数据][import-data]模块中使用上述采样查询，对数据进行联机低采样并将其引入 Azure 机器学习试验。 使用读取器模块读取采样数据的屏幕截图如下所示：
 
 ![读取器 SQL][1]
 
-## <a name="python"></a>使用 Python 编程语言
+## <a name="using-the-python-programming-language"></a><a name="python"></a>使用 Python 编程语言
 本部分演示了如何使用 [pyodbc 库](https://code.google.com/p/pyodbc/)建立 ODBC 与 Python 中 SQL Server 数据库的连接。 数据库连接字符串如下所示：（将 servername、dbname、username 和 password 替换为配置）：
 
     #Set up the SQL Azure connection
@@ -80,7 +80,7 @@ Python 中的 [Pandas](https://pandas.pydata.org/) 库提供一组丰富的数�
 
 现在，可以在 Pandas 数据帧中处理采样的数据。 
 
-### <a name="python-aml"></a>连接到 Azure 机器学习
+### <a name="connecting-to-azure-machine-learning"></a><a name="python-aml"></a>连接到 Azure 机器学习
 可以使用以下示例代码将低采样的数据保存到文件，并将其上传到 Azure blob。 可以使用[导入数据][import-data]模块将 blob 中的数据直接读取到 Azure 机器学习试验。 步骤如下： 
 
 1. 将 Pandas 数据帧写入本地文件

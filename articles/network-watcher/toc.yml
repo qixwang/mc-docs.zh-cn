@@ -41,7 +41,7 @@
       href: network-watcher-security-group-view-overview.md
     - name: 基于角色的访问控制权限
       href: required-rbac-permissions.md
-- name: 操作指南
+- name: 操作方法指南
   items:
     - name: 配置网络观察程序
       href: network-watcher-create.md

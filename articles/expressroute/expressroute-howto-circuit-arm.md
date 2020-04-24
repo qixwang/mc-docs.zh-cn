@@ -11,10 +11,10 @@ origin.date: 11/13/2019
 ms.date: 12/02/2019
 ms.author: v-yiso
 ms.openlocfilehash: 1b2ebc0b52e308c83cb072c3ad2a393ac1ad080f
-ms.sourcegitcommit: 9e92bcf6aa02fc9e7b3a29abadf6b6d1a8ece8c4
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74389455"
 ---
 # <a name="create-and-modify-an-expressroute-circuit-using-powershell"></a>使用 PowerShell 创建和修改 ExpressRoute 线路
@@ -36,9 +36,9 @@ ms.locfileid: "74389455"
 ### <a name="working-with-azure-powershell"></a>使用 Azure PowerShell
 
 [!INCLUDE [updated-for-az](../../includes/hybrid-az-ps.md)]
-## <a name="create"></a>创建和预配 ExpressRoute 线路
-### <a name="1-sign-in-to-your-azure-account-and-select-your-subscription"></a>1.登录到 Azure 帐户，然后选择订阅
-要开始配置，请登录到 Azure 帐户。 使用下面的示例来帮助连接：
+## <a name="create-and-provision-an-expressroute-circuit"></a><a name="create"></a>创建和预配 ExpressRoute 线路
+### <a name="1-sign-in-to-your-azure-account-and-select-your-subscription"></a>1.登录到 Azure 帐户，并选择订阅
+要开始配置，请登录到 Azure 帐户。 使用下面的示例来帮助你连接：
 
 ```powershell
 Login-AzureRmAccount -Environment $(Get-AzureRmEnvironment -Name AzureChinaCloud)
@@ -67,7 +67,7 @@ Get-AzExpressRouteServiceProvider
 
 检查连接服务提供商是否已在该处列出。 请记下以下信息，稍后在创建线路时需要用到：
 
-* Name
+* 名称
 * PeeringLocations
 * BandwidthsOffered
 
@@ -98,7 +98,7 @@ New-AzExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "Exp
 > 
 > 
 
-响应将包含服务密钥。 可以通过运行以下命令获取所有这些参数的详细说明：
+响应包含服务密钥。 可以通过运行以下命令获取所有这些参数的详细说明：
 
 ```azurepowershell
 get-help New-AzExpressRouteCircuit -detailed
@@ -178,12 +178,12 @@ Get-AzExpressRouteCircuit
 
 
 
-当连接服务提供商正在为你启用线路时，线路将更改为以下状态：
+当连接服务提供商正在启用线路时，线路会更改为以下状态：
 
     ServiceProviderProvisioningState : Provisioning
     Status                           : Enabled
 
-只有 ExpressRoute 线路处于以下状态时，才能使用它。
+ExpressRoute 线路必须处于以下状态时才能使用：
 
     ServiceProviderProvisioningState : Provisioned
     CircuitProvisioningState         : Enabled
@@ -231,7 +231,7 @@ Get-AzExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "Exp
 
 ### <a name="8-link-a-virtual-network-to-an-expressroute-circuit"></a>8.将虚拟网络链接到 ExpressRoute 线路
 
-接下来，将虚拟网络链接到 ExpressRoute 线路。 使用资源管理器部署模式时，请参阅[将虚拟网络链接到 ExpressRoute 线路](./expressroute-howto-linkvnet-arm.md)一文。
+接下来，将虚拟网络链接到 ExpressRoute 线路。 使用资源管理器部署模型时，请参阅[将虚拟网络链接到 ExpressRoute 线路](./expressroute-howto-linkvnet-arm.md)一文。
 
 ## <a name="getting-the-status-of-an-expressroute-circuit"></a>获取 ExpressRoute 线路的状态
 可以随时使用 **Get-AzExpressRouteCircuit** cmdlet 检索此信息。 如果调用不带任何参数，则列出所有线路。
@@ -304,7 +304,7 @@ Get-AzExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "Exp
 get-help get-azurededicatedcircuit -detailed
 ```
 
-## <a name="modify"></a>修改 ExpressRoute 线路
+## <a name="modifying-an-expressroute-circuit"></a><a name="modify"></a>修改 ExpressRoute 线路
 
 可以在不影响连接的情况下修改 ExpressRoute 线路的某些属性。
 
@@ -374,7 +374,7 @@ Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
 ```
 
 
-会在 Microsoft 端调整线路的大小。 然后，必须联系连接提供商，让他们在那一边根据此更改更新配置。 在你发出此通知后，我们开始向你计收更新后的带宽选项费用。
+会在 Microsoft 端调整线路的大小。 然后，用户必须联系连接提供商，让他们在那一边根据此更改更新配置。 在你发出此通知后，我们开始向你计收更新后的带宽选项费用。
 
 ### <a name="to-move-the-sku-from-metered-to-unlimited"></a>将 SKU 从按流量计费转为不受限制
 通过使用下面的 PowerShell 代码片段，可以更改 ExpressRoute 线路的 SKU：
@@ -391,7 +391,7 @@ Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
 ### <a name="to-control-access-to-the-classic-and-resource-manager-environments"></a>控制对经典环境和 Resource Manager 环境的访问
 查看[将 ExpressRoute 线路从经典部署模型转移到资源管理器部署模型](expressroute-howto-move-arm.md)中的说明。  
 
-## <a name="delete"></a>取消设置和删除 ExpressRoute 线路
+## <a name="deprovisioning-and-deleting-an-expressroute-circuit"></a><a name="delete"></a>取消设置和删除 ExpressRoute 线路
 请注意以下信息：
 
 * 必须取消所有虚拟网络与 ExpressRoute 线路的链接。 如果此操作失败，请查看是否有虚拟网络链接到了该线路。

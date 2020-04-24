@@ -6,10 +6,10 @@ origin.date: 01/05/2018
 ms.author: v-yeche
 ms.date: 12/09/2019
 ms.openlocfilehash: 58ce739d78fe07fb7b2491817522ef97fee13172
-ms.sourcegitcommit: cf73284534772acbe7a0b985a86a0202bfcc109e
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74885043"
 ---
 # <a name="view-container-registry-repositories-in-the-azure-portal"></a>在 Azure 门户中查看容器注册表存储库

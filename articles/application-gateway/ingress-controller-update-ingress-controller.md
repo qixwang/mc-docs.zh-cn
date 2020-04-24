@@ -9,10 +9,10 @@ origin.date: 11/04/2019
 ms.date: 11/19/2019
 ms.author: v-junlch
 ms.openlocfilehash: 0da31132c4089a4f34383869e7591e57a6aa2b48
-ms.sourcegitcommit: fdbd1b6df618379dfeab03044a18c373b5fbb8ec
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74328440"
 ---
 # <a name="how-to-upgrade-application-gateway-ingress-controller-using-helm"></a>如何使用 Helm 升级应用程序网关入口控制器 

@@ -13,10 +13,10 @@ ms.author: v-jay
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 ms.openlocfilehash: 27ae73bb08a168388fc0060ef9181490b6506f4b
-ms.sourcegitcommit: 369038a7d7ee9bbfd26337c07272779c23d0a507
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74807620"
 ---
 # <a name="troubleshooting-connectivity-issues"></a>排查连接问题

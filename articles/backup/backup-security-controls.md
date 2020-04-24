@@ -7,10 +7,10 @@ origin.date: 09/23/2019
 ms.date: 12/04/2019
 ms.author: v-lingwu
 ms.openlocfilehash: c279562e8996c3594b1015456632f722ba5d2d36
-ms.sourcegitcommit: 21b02b730b00a078a76aeb5b78a8fd76ab4d6af2
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74838884"
 ---
 # <a name="security-controls-for-azure-backup"></a>Azure 备份的安全控制

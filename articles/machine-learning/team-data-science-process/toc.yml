@@ -93,7 +93,7 @@
               href: /azure/hdinsight/spark/apache-spark-jupyter-notebook-kernels?context=azure/machine-learning/team-data-science-process/context/ml-context
             - name: HDInsight 上的 R Server
               href: /azure/hdinsight/r-server/r-server-overview?context=azure/machine-learning/team-data-science-process/context/ml-context
-            - name: HDInsight 上的 R Server 入门
+            - name: 开始使用 R Server on HDInsight
               href: /azure/hdinsight/r-server/r-server-overview?context=azure/machine-learning/team-data-science-process/context/ml-context
         - name: Azure 机器学习工作区
           href: /azure/machine-learning/studio/create-workspace?context=azure/machine-learning/team-data-science-process/context/ml-context
@@ -130,7 +130,7 @@
               href: parallel-load-sql-partitioned-tables.md
             - name: 从本地 SQL 移动
               href: move-sql-azure-adf.md
-        - name: 浏览和可视化数据
+        - name: 浏览并可视化数据
           items:
             - name: 准备数据
               href: prepare-data.md
@@ -144,7 +144,7 @@
                   href: explore-data-sql-server.md
                 - name: 探索 Hive 表
                   href: explore-data-hive-tables.md
-            - name: 样本数据
+            - name: 示例数据
               items:
                 - name: 概述
                   href: sample-data.md
@@ -236,5 +236,5 @@
       items:
         - name: MSDN 论坛
           href: 'https://social.msdn.microsoft.com/forums/azure/home?forum=MachineLearning'
-        - name: Stack Overflow
+        - name: 堆栈溢出
           href: 'https://stackoverflow.com/questions/tagged/azure-machine-learning'

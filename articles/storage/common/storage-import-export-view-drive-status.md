@@ -10,10 +10,10 @@ ms.date: 11/18/2019
 ms.author: v-jay
 ms.subservice: common
 ms.openlocfilehash: e1ebc6c1c9e19b4947390ed8a640f298876a4fe1
-ms.sourcegitcommit: 6a19227dcc0c6e0da5b82c4f69d0227bf38a514a
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74328713"
 ---
 # <a name="view-the-status-of-azure-importexport-jobs"></a>查看 Azure 导入/导出作业的状态

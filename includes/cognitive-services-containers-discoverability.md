@@ -6,10 +6,10 @@ ms.date: 01/13/2020
 ms.service: cognitive-services
 ms.topic: include
 ms.openlocfilehash: facdb3f20b2ba20e14ce801894558e5e0ecfc269
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75631727"
 ---
 ## <a name="blog-posts"></a>博客文章

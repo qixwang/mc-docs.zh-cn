@@ -9,10 +9,10 @@ ms.date: 11/25/2019
 ms.author: v-junlch
 ms.topic: conceptual
 ms.openlocfilehash: 11d4b39da94b91df924b191d2c33b6824b72ef7b
-ms.sourcegitcommit: e74e8aabc1cbd8a43e462f88d07b041e9c4f31eb
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74461690"
 ---
 # <a name="troubleshoot-web-application-firewall-waf-for-azure-application-gateway"></a>排查 Azure 应用程序网关的 Web 应用程序防火墙 (WAF) 问题

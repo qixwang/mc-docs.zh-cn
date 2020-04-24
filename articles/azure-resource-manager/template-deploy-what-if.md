@@ -7,10 +7,10 @@ origin.date: 11/20/2019
 ms.date: 12/09/2019
 ms.author: v-yeche
 ms.openlocfilehash: 65214025b2398ac695561af5e793833b52b63021
-ms.sourcegitcommit: cf73284534772acbe7a0b985a86a0202bfcc109e
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74884912"
 ---
 <!--MOONCAKE: We submit the private preview request on https://aka.ms/armtemplatepreviews-->

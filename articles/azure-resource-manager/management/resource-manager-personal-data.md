@@ -6,10 +6,10 @@ origin.date: 05/14/2018
 ms.author: v-yeche
 ms.date: 01/06/2020
 ms.openlocfilehash: c858d6a463cac1b84beef01608a32191010fbca0
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75631519"
 ---
 # <a name="manage-personal-data-associated-with-azure-resource-manager"></a>管理与 Azure 资源管理器相关联的个人数据

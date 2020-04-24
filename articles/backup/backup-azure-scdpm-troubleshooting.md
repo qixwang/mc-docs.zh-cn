@@ -7,10 +7,10 @@ origin.date: 01/30/2019
 ms.date: 07/06/2019
 ms.author: v-lingwu
 ms.openlocfilehash: 766cb5097c1293543ed5632906a74c293b3136c3
-ms.sourcegitcommit: 21b02b730b00a078a76aeb5b78a8fd76ab4d6af2
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74838616"
 ---
 # <a name="troubleshoot-system-center-data-protection-manager"></a>排查 System Center Data Protection Manager 问题
@@ -61,7 +61,7 @@ ms.locfileid: "74838616"
 
 - 确保使用最新版本的 Azure 备份代理。
 - 确保在 Data Protection Manager 服务器与受保护服务器之间建立连接（网络/防火墙/代理）。
-- 若要保护 SQL 服务器，请确保“登录属性” > “NT AUTHORITY\SYSTEM”属性显示已启用“sysadmin”设置。   
+- 若要保护 SQL 服务器，请确保“登录属性” **“NT AUTHORITY\SYSTEM”属性显示已启用“sysadmin”设置。**  >   
 
 ## <a name="error-server-not-registered-as-specified-in-vault-credential-file"></a>错误：未根据保管库凭据文件中的指定注册服务器
 

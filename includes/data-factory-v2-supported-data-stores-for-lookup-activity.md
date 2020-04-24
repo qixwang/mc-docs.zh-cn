@@ -10,13 +10,13 @@ ms.date: 01/06/2020
 ms.author: v-jay
 ms.custom: include file
 ms.openlocfilehash: 7c608f430a1916fa77d5a2b70599ea9e54f4fc00
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75624222"
 ---
-| Category | 数据存储 |
+| 类别 | 数据存储 |
 |:--- |:--- |
 | **Azure** |[Azure Blob 存储](../articles/data-factory/connector-azure-blob-storage.md) |
 | &nbsp; |[Azure Cosmos DB (SQL API)](../articles/data-factory/connector-azure-cosmos-db.md) |
@@ -30,7 +30,7 @@ ms.locfileid: "75624222"
 | &nbsp; |[Azure SQL 数据库托管实例](../articles/data-factory/connector-azure-sql-database-managed-instance.md) |
 | &nbsp; |[Azure Synapse Analytics（以前称为 SQL 数据仓库）](../articles/data-factory/connector-azure-sql-data-warehouse.md) |
 | &nbsp; |[Azure 表存储](../articles/data-factory/connector-azure-table-storage.md) |
-| **数据库** |[Amazon Redshift](../articles/data-factory/connector-amazon-redshift.md) |
+| **Database** |[Amazon Redshift](../articles/data-factory/connector-amazon-redshift.md) |
 | &nbsp; |[DB2](../articles/data-factory/connector-db2.md) |
 | &nbsp; |[Drill](../articles/data-factory/connector-drill.md) |
 | &nbsp; |[Google BigQuery](../articles/data-factory/connector-google-bigquery.md) |
@@ -58,7 +58,7 @@ ms.locfileid: "75624222"
 | &nbsp; |[Vertica](../articles/data-factory/connector-vertica.md) |
 | **NoSQL** |[Cassandra](../articles/data-factory/connector-cassandra.md) |
 | &nbsp; |[Couchbase（预览）](../articles/data-factory/connector-couchbase.md) |
-| **文件** |[Amazon S3](../articles/data-factory/connector-amazon-simple-storage-service.md) |
+| **File** |[Amazon S3](../articles/data-factory/connector-amazon-simple-storage-service.md) |
 | &nbsp; |[文件系统](../articles/data-factory/connector-file-system.md) |
 | &nbsp; |[FTP](../articles/data-factory/connector-ftp.md) |
 | &nbsp; |[Google Cloud Storage](../articles/data-factory/connector-google-cloud-storage.md) |
@@ -96,4 +96,4 @@ ms.locfileid: "75624222"
 | &nbsp; |[Zoho（预览）](../articles/data-factory/connector-zoho.md) |
 
 > [!NOTE]
-> 连接器标记为“预览”  意味着，可以试用它并向我们提供反馈。 若要在解决方案中使用预览版连接器的依赖项，请联系 [Azure 支持部门](https://support.azure.cn/zh-cn/support/contact/)。
+> 连接器标记为“预览”  意味着，可以试用它并向我们提供反馈。 若要在解决方案中使用预览版连接器的依赖项，请联系 [Azure 客户支持](https://support.azure.cn/zh-cn/support/contact/)。

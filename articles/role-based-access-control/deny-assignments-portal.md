@@ -15,10 +15,10 @@ ms.date: 01/03/2020
 ms.author: v-junlch
 ms.reviewer: bagovind
 ms.openlocfilehash: c5b59294ebf43aea8646993af9f3e90958c9fa23
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75624388"
 ---
 # <a name="list-deny-assignments-for-azure-resources-using-the-azure-portal"></a>使用 Azure 门户列出 Azure 资源的拒绝分配
@@ -28,11 +28,11 @@ ms.locfileid: "75624388"
 > [!NOTE]
 > 不能直接创建自己的拒绝分配。 有关如何创建拒绝分配的详细信息，请参阅[拒绝分配](deny-assignments.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 如要获取拒绝分配的相关信息，必须具有：
 
-- `Microsoft.Authorization/denyAssignments/read` 权限，大多数 [Azure 资源的内置角色](built-in-roles.md)都包含该权限。
+- `Microsoft.Authorization/denyAssignments/read` 权限，在大多数 [Azure 资源的内置角色](built-in-roles.md)都包含该权限。
 
 ## <a name="list-deny-assignments"></a>列出拒绝分配
 
@@ -59,7 +59,7 @@ ms.locfileid: "75624388"
     | **名称** | 拒绝分配的名称。 |
     | **主体类型** | 用户、组、系统定义的组或服务主体。 |
     | **拒绝**  | 包括在拒绝分配中的安全主体的名称。 |
-    | Id  | 拒绝分配的唯一标识符。 |
+    | **Id** | 拒绝分配的唯一标识符。 |
     | **排除的主体** | 是否有排除在拒绝分配之外的安全主体。 |
     | **不适用于儿童** | 是否已将拒绝分配继承到子范围。 |
     | **受系统保护** | 拒绝分配是否由 Azure 托管。 当前始终为“是”。 |

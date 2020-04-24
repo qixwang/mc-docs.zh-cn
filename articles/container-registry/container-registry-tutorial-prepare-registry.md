@@ -6,10 +6,10 @@ ms.author: v-yeche
 ms.date: 12/09/2019
 ms.custom: seodec18, mvc
 ms.openlocfilehash: 0e7e4df5078f8bd0914657597e2abfc11b9d01a0
-ms.sourcegitcommit: cf73284534772acbe7a0b985a86a0202bfcc109e
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74884861"
 ---
 # <a name="tutorial-prepare-a-geo-replicated-azure-container-registry"></a>教程：准备异地复制的 Azure 容器注册表
@@ -28,7 +28,7 @@ Azure 容器注册表是部署在 Azure 中的专用 Docker 注册表，能使�
 
 后续教程将会介绍如何将容器从专用注册表部署到在两个 Azure 区域中运行的 Web 应用。 然后，可以更新应用程序中的代码，通过一条 `docker push` 命令将两个 Web 应用实例更新到注册表。
 
-## <a name="before-you-begin"></a>准备阶段
+## <a name="before-you-begin"></a>开始之前
 
 本教程需要本地安装 Azure CLI 2.0.31 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI](https://docs.azure.cn/cli/install-azure-cli?view=azure-cli-latest)。
 
@@ -40,7 +40,7 @@ Azure 本地 Shell 不包含完成本教程每个步骤所需的 Docker 组件�
 
 ## <a name="create-a-container-registry"></a>创建容器注册表
 
-登录到 [Azure 门户](https://portal.azure.cn)。
+登录 [Azure 门户](https://portal.azure.cn)。
 
 <!--MOONCAKE: CUSTOMIZE-->
 
@@ -74,7 +74,7 @@ Azure 本地 Shell 不包含完成本教程每个步骤所需的 Docker 组件�
 
 在 Azure 门户中导航到新的容器注册表，选择“服务”下面的“复制项”：  
 
-![Azure 门户容器注册表 UI 中的“复制项”][tut-portal-03]
+![Azure 门户容器注册表 UI 中的副本][tut-portal-03]
 
 此时会出现一幅地图，其中显示了绿色的六边形，表示支持异地复制的 Azure 区域：
 
@@ -212,7 +212,7 @@ uniqueregistryname.azurecr.cn/acr-helloworld    v1     01ac48d5c8cf    About a m
 docker push <acrName>.azurecr.cn/acr-helloworld:v1
 ```
 
-由于已经为异地复制配置了注册表，因此，使用这一条 `docker push` 命令，即可将映像自动复制到“中国北部”和“中国东部”区域。  
+由于已经为异地复制配置了注册表，因此，使用这一条  *命令，即可将映像自动复制到“中国北部”和“中国东部”区域。*  `docker push`
 
 ```console
 $ docker push uniqueregistryname.azurecr.cn/acr-helloworld:v1

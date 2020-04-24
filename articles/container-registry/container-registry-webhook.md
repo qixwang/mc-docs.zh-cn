@@ -6,10 +6,10 @@ origin.date: 05/24/2019
 ms.author: v-yeche
 ms.date: 12/09/2019
 ms.openlocfilehash: 151361e05a10dc906c098783caf0c2423af4bf30
-ms.sourcegitcommit: cf73284534772acbe7a0b985a86a0202bfcc109e
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74885012"
 ---
 # <a name="using-azure-container-registry-webhooks"></a>使用 Azure 容器注册表 webhook
@@ -18,20 +18,20 @@ Azure 容器注册表可存储和管理专用 Docker 容器映像，其方式类
 
 有关 Webhook 请求的详细信息，请参阅 [Azure 容器注册表 Webhook 架构参考](container-registry-webhook-reference.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * Azure 容器注册表 - 在 Azure 订阅中创建容器注册表。 例如，使用 [Azure 门户](container-registry-get-started-portal.md)或 [Azure CLI](container-registry-get-started-azure-cli.md)。 [Azure 容器注册表 SKU](container-registry-skus.md) 具有不同的 Webhook 配额。
 * Docker CLI - 要将本地计算机设置为 Docker 主机并访问 Docker CLI 命令，请安装 [Docker 引擎](https://docs.docker.com/engine/installation/)。
 
 ## <a name="create-webhook---azure-portal"></a>创建 Webhook - Azure 门户
 
-1. 登录到 [Azure 门户](https://portal.azure.cn)。
+1. 登录 [Azure 门户](https://portal.azure.cn)。
 1. 导航到要在其中创建 Webhook 的容器注册表。
 1. 在“服务”下  ，选择“Webhook”  。
 1. 在 Webhook 工具栏中选择“添加”  。
 1. 使用以下信息完成“创建 webhook”窗体  ：
 
-| Value | 说明 |
+| 值 | 说明 |
 |---|---|
 | Webhook 名称 | 想要赋予 webhook 的名称。 它只能包含字母和数字，且长度必须为 5-50 个字符。 |
 | 位置 | 对于[异地复制](container-registry-geo-replication.md)注册表，请指定注册表副本的 Azure 区域。 
@@ -39,7 +39,7 @@ Azure 容器注册表可存储和管理专用 Docker 容器映像，其方式类
 | 自定义标头 | 想要随 POST 请求一起传递的标头。 它们的格式应该为：“键: 值”。 |
 | 触发操作 | 触发 webhook 的操作。 操作包括映像推送、映像删除、Helm 图表推送、Helm 图表删除以及映像隔离。 你可以选择一个或多个操作来触发 Webhook。 |
 | 状态 | Webhook 创建后的状态。 默认启用。 |
-| 作用域 | Webhook 的作用域。 如果未指定，则作用域应用于注册表中的所有事件。 可以使用“存储库:标记”格式针对存储库或标记进行指定，或者使用“存储库:*”针对某个存储库下的所有标记进行指定。 |
+| 范围 | Webhook 的作用域。 如果未指定，则作用域应用于注册表中的所有事件。 可以使用“存储库:标记”格式针对存储库或标记进行指定，或者使用“存储库:*”针对某个存储库下的所有标记进行指定。 |
 
 示例 Webhook 窗体：
 

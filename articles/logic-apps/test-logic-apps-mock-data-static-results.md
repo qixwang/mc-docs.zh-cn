@@ -10,10 +10,10 @@ ms.reviewer: estfan, LADocs
 ms.topic: article
 ms.date: 05/13/2019
 ms.openlocfilehash: 1fab0fdd5d3e2388de0499c3bbcd45b4509cfbde
-ms.sourcegitcommit: fc8a6e0f8eff2ef7b645ae8dc2ac02fdf498086f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74797571"
 ---
 # <a name="test-logic-apps-with-mock-data-by-setting-up-static-results"></a>通过设置静态结果来使用模拟数据测试逻辑应用

@@ -10,10 +10,10 @@ ms.date: 11/25/2019
 ms.author: v-tawe
 ms.custom: mvc
 ms.openlocfilehash: b69071b347dad5c294fad44d64f6f07acda18d64
-ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75600577"
 ---
 # <a name="create-a-web-app-that-uses-signalr-service-and-github-authentication"></a>创建使用 SignalR 服务和 GitHub 身份验证的 Web 应用
@@ -104,7 +104,7 @@ az webapp deployment source config-local-git --name $myWebAppName --resource-gro
 
 表中的每条命令均链接到特定于命令的文档。 此脚本使用以下命令：
 
-| 命令 | 注释 |
+| Command | 说明 |
 |---|---|
 | [az group create](/cli/group#az-group-create) | 创建用于存储所有资源的资源组。 |
 | [az signalr create](/cli/signalr#az-signalr-create) | 创建 Azure SignalR 服务资源。 |

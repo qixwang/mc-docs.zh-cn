@@ -11,10 +11,10 @@ origin.date: 10/11/2019
 ms.date: 11/11/2019
 ms.author: v-yiso
 ms.openlocfilehash: 951f312e8f0dc9f81856bb95eb9adf3fc5de2241
-ms.sourcegitcommit: 9e92bcf6aa02fc9e7b3a29abadf6b6d1a8ece8c4
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74389059"
 ---
 # <a name="use-spark--hive-tools-for-visual-studio-code"></a>使用适用于 Visual Studio Code 的 Spark 和 Hive 工具
@@ -25,13 +25,13 @@ ms.locfileid: "74389059"
 
 ## <a name="prerequisites"></a>先决条件
 
-完成本文中的步骤需要具有以下项：
+完成本文中的步骤需要以下各项：
 
 - 一个 Azure HDInsight 群集。 若要创建群集，请参阅 [HDInsight 入门](hadoop/apache-hadoop-linux-create-cluster-get-started-portal.md)。 或使用支持 Apache Livy 终结点的 Spark 和 Hive 群集。
 - [Visual Studio Code](https://code.visualstudio.com/)。
 - [Mono](https://www.mono-project.com/docs/getting-started/install/)。 只有 Linux 和 macOS 需要 Mono。
 - [Visual Studio Code 的 PySpark 交互式环境](set-up-pyspark-interactive-environment.md)。
-- 本地目录。 本文使用 **C:\HD\HDexample**。
+- 本地目录。 本文使用 C:\HD\HDexample  。
 
 ## <a name="install-spark--hive-tools"></a>安装 Spark 和 Hive 工具
 
@@ -39,7 +39,7 @@ ms.locfileid: "74389059"
 
 1. 打开 Visual Studio Code。
 
-2. 在菜单栏中，导航到“视图” > “扩展”。  
+2. 从菜单栏中，导航到“查看” > “扩展”   。
 
 3. 在搜索框中，输入“Spark 和 Hive”。 
 
@@ -54,7 +54,7 @@ ms.locfileid: "74389059"
 
 若要打开工作文件夹并在 Visual Studio Code 中创建文件，请执行以下步骤：
 
-1. 在菜单栏中，导航到“文件” > “打开文件夹...” > “C:\HD\HDexample”，然后选择“选择文件夹”按钮。     该文件夹将显示在左侧的“资源管理器”视图中。 
+1. 在菜单栏中，导航到“文件” > “打开文件夹...” > “C:\HD\HDexample”，然后选择“选择文件夹”按钮。     该文件夹显示在左侧的“资源管理器”视图中  。
 
 2. 在“资源管理器”视图中选择“HDexample”文件夹，然后选择工作文件夹旁边的“新建文件”图标：   
 
@@ -89,7 +89,7 @@ ms.locfileid: "74389059"
 
 可以使用 [Apache Ambari](https://ambari.apache.org/) 管理的用户名链接标准群集，也可以使用域用户名（例如：`user1@contoso.com`）链接 Enterprise Security Pack 安全 Hadoop 群集。
 
-1. 在菜单栏中，导航到“视图” > “命令面板...”，然后输入“Spark/Hive:    链接群集”。
+1. 在菜单栏中，导航到“视图” > “命令面板...”，然后输入“Spark/Hive:    Link a Cluster”。
 
    ![命令面板链接群集命令](./media/hdinsight-for-vscode/link-cluster-command.png)
 
@@ -105,7 +105,7 @@ ms.locfileid: "74389059"
 
 7. 设置群集的显示名称（可选）。
 
-8. 查看“输出”视图以进行验证。 
+8. 查看“输出”视图以进行验证  。
 
    > [!NOTE]  
    > 如果群集已登录到 Azure 订阅中并且已链接群集，则使用链接用户名和密码。  
@@ -113,7 +113,7 @@ ms.locfileid: "74389059"
 
 ### <a name="link-generic-livy-endpoint"></a>链接：通用 Livy 终结点
 
-1. 在菜单栏中，导航到“视图” > “命令面板...”，然后输入“Spark/Hive:    链接群集”。
+1. 在菜单栏中，导航到“视图” > “命令面板...”，然后输入“Spark/Hive:    Link a Cluster”。
 
 2. 选择链接的群集类型“通用 Livy 终结点”。 
 
@@ -123,15 +123,15 @@ ms.locfileid: "74389059"
     &emsp;a. 输入 Ambari 用户名，默认为 **admin**。  
     &emsp;b. 输入 Ambari 密码。
 
-5. 查看“输出”视图以进行验证。 
+5. 查看“输出”视图以进行验证  。
 
 ## <a name="list-clusters"></a>列出群集
 
-1. 在菜单栏中，导航到“视图” > “命令面板...”，然后输入“Spark/Hive:   **List Cluster**。
+1. 在菜单栏中，导航到“视图” > “命令面板...”，然后输入“Spark/Hive:    List Cluster”。
 
 2. 选择所需的订阅。
 
-3. 查看“输出”视图。  此视图显示你的链接群集（或多个群集），以及你的 Azure 订阅下的所有群集：
+3. 检查“输出”视图  。 此视图显示你的链接群集（或多个群集），以及你的 Azure 订阅下的所有群集：
 
     ![设置默认群集配置](./media/hdinsight-for-vscode/list-cluster-result1.png)
 
@@ -141,7 +141,7 @@ ms.locfileid: "74389059"
 
 2. 选择[前面](#open-a-work-folder)创建的 **HelloWorld.hql** 文件。 它将在脚本编辑器中打开。
 
-3. 右键单击脚本编辑器，然后选择“Spark/ Hive:  设置默认群集”。  
+3. 右键单击脚本编辑器，然后选择“Spark/ Hive:  Set Default Cluster”。  
 
 4. [连接](#connect-to-an-azure-account)到 Azure 帐户或链接某个群集（如果尚未这样做）。
 
@@ -263,9 +263,9 @@ ms.locfileid: "74389059"
 
 6. 选择要将 PySpark 作业提交到的群集：
 
-   ![提交 python 作业结果](./media/hdinsight-for-vscode/submit-pythonjob-result.png) 
+   ![提交 Python 作业结果](./media/hdinsight-for-vscode/submit-pythonjob-result.png) 
 
-提交 Python 作业后，提交日志会显示在 Visual Studio Code 的“输出”窗口中。  同时还会显示 Spark UI URL 和 Yarn UI URL。 可以在 Web 浏览器中打开 URL 来跟踪作业状态。
+提交 Python 作业后，提交日志将显示在 Visual Studio Code 的“输出”窗口中  。 同时还会显示 Spark UI URL 和 Yarn UI URL。 你可以在 Web 浏览器中打开 URL 以跟踪作业状态。
 
 ## <a name="apache-livy-configuration"></a>Apache Livy 配置
 
@@ -274,9 +274,9 @@ ms.locfileid: "74389059"
 <a id="triggerlivyconf"></a>**如何触发 Livy 配置**
 
 方法 1  
-1. 在菜单栏中，导航到“文件” > “首选项” > “设置”。   
-2. 在“搜索设置”框中，输入“HDInsight 作业提交:   Livy 配置”。  
-3. 在相关搜索结果中选择“在 settings.json 中编辑”。 
+1. 从菜单栏中，导航到“文件” > “首选项” > “设置”    。
+2. 在“搜索设置”框中，输入“HDInsight 作业提交:   Livy Conf”。  
+3. 选择“在 settings.json 中编辑”以获取相关搜索结果  。
 
 方法 2   
 提交一个文件，然后观察 .vscode 文件夹是否已自动添加到工作文件夹。 可以通过选择“.vscode\settings.json”来查看 Livy 配置。 
@@ -293,21 +293,21 @@ ms.locfileid: "74389059"
     **POST /batches**   
     请求正文
 
-    | name | 说明 | type | 
+    | name | description | type | 
     | :- | :- | :- | 
     | file | 包含要执行的应用程序的文件 | Path（必需） |
     | proxyUser | 运行作业时要模拟的用户 | String |
-    | className | 应用程序 Java/Spark main 类 | String |
+    | className | 应用程序 Java/Spark 主类 | String |
     | args | 应用程序的命令行参数 | 字符串列表 |
     | jars | 此会话中要使用的 Jar | 字符串列表 | 
-    | pyFiles | 此会话中要使用的 Python 文件 | 字符串列表 |
-    | 文件 | 此会话中要使用的文件 | 字符串列表 |
-    | driverMemory | 要用于驱动程序进程的内存量 | String |
-    | driverCores | 要用于驱动程序进程的内核数 | int |
-    | executorMemory | 每个执行程序进程要使用的内存量 | String |
-    | executorCores | 用于每个执行程序的内核数 | int |
-    | numExecutors | 为此会话启动的执行程序数量 | int |
-    | archives | 此会话中要使用的存档 | 字符串列表 |
+    | pyFiles | 将在本次会话中使用的 Python 文件 | 字符串列表 |
+    | files | 此会话中要使用的文件 | 字符串列表 |
+    | driverMemory | 用于驱动程序进程的内存量 | String |
+    | driverCores | 用于驱动程序进程的内核数 | int |
+    | executorMemory | 每个执行程序进程使用的内存量 | String |
+    | executorCores | 每个执行程序使用的内核数 | int |
+    | numExecutors | 为此会话启动的执行程序数 | int |
+    | archives | 将在本次会话中使用的存档 | 字符串列表 |
     | 队列 | 要提交到的 YARN 队列的名称| String |
     | name | 此会话的名称 | String |
     | conf | Spark 配置属性 | key=val 的映射 |
@@ -315,7 +315,7 @@ ms.locfileid: "74389059"
     响应正文   
     创建的批处理对象。
 
-    | name | 说明 | type |
+    | name | description | type |
     | :- | :- | :- | 
     | id | 会话 ID | int | 
     | appId | 此会话的应用程序 ID | String |
@@ -416,7 +416,7 @@ ms.locfileid: "74389059"
 
 ## <a name="unlink-cluster"></a>取消链接群集
 
-1. 在菜单栏中，转到“视图” > “命令面板”，然后输入“Spark/Hive:   **Unlink a Cluster**。  
+1. 在菜单栏中，转到“视图” > “命令面板”，然后输入“Spark/Hive:    Unlink a Cluster”。  
 
 2. 选择要取消链接的群集。  
 

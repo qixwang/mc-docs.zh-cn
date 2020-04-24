@@ -9,10 +9,10 @@ ms.date: 12/09/2019
 ms.author: v-yeche
 ms.topic: article
 ms.openlocfilehash: 278d1433a0a05143b40c1d942ee716fce48847cc
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75335363"
 ---
 # <a name="deploy-and-configure-azure-firewall-using-azure-cli"></a>使用 Azure CLI 部署和配置 Azure 防火墙
@@ -26,7 +26,7 @@ ms.locfileid: "75335363"
 
 将网络流量路由到用作子网默认网关的防火墙时，网络流量受到配置的防火墙规则的控制。
 
-在本文中，你将创建一个包含三个子网的简化 VNet，以便于部署。 对于生产部署，建议使用[中心辐射模型](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke)。 防火墙位于其自身的 VNet 中。 工作负荷服务器在包含一个或多个子网的同一区域中的对等 VNet 内。
+在本文中，你将创建一个包含三个子网的简化 VNet，以便于部署。 对于生产部署，我们建议使用[中心辐射模型](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke)。 防火墙位于其自身的 VNet 中。 工作负荷服务器在包含一个或多个子网的同一区域中的对等 VNet 内。
 
 * **AzureFirewallSubnet** - 防火墙在此子网中。
 * **Workload-SN** - 工作负荷服务器在此子网中。 此子网的网络流量通过防火墙。
@@ -46,11 +46,11 @@ ms.locfileid: "75335363"
 
 如果你愿意，可以使用 [Azure 门户](tutorial-firewall-deploy-portal.md)或 [Azure PowerShell](deploy-ps.md) 完成此过程。
 
-如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial)。
+如果没有 Azure 订阅，可在开始前创建一个 [试用帐户](https://www.azure.cn/pricing/1rmb-trial) 。
 
 [!INCLUDE [azure-cli-2-azurechinacloud-environment-parameter](../../includes/azure-cli-2-azurechinacloud-environment-parameter.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 ### <a name="azure-cli"></a>Azure CLI
 

@@ -13,10 +13,10 @@ ms.date: 01/13/2020
 ms.author: v-tawe
 zone_pivot_groups: programming-languages-set-two
 ms.openlocfilehash: 0674b49fd68cbd5e7193d533ace385c4368815d3
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75631699"
 ---
 [!INCLUDE [dotnet](./dotnet.md)]

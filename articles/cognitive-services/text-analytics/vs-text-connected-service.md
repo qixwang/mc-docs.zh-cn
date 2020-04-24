@@ -12,10 +12,10 @@ origin.date: 07/24/2019
 ms.date: 07/12/2019
 ms.author: v-lingwu
 ms.openlocfilehash: 5488a30eed0f36edbd9496534b24129ca0e0c39b
-ms.sourcegitcommit: cf73284534772acbe7a0b985a86a0202bfcc109e
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74884508"
 ---
 # <a name="tutorial-connect-to-the-text-analytics-service-with-connected-services-in-visual-studio"></a>教程：使用 Visual Studio 中连接服务连接到文本分析服务
@@ -52,7 +52,7 @@ ms.locfileid: "74884508"
 
    ![资源组和定价层字段的屏幕截图](./media/vs-text-connected-service/Cog-Text-Connected-Service-2.PNG)
 
-   请单击链接，查看定价层的详细信息。
+   有关定价层的详细信息，请访问链接。
 
 1. 选择“添加”以添加对连接服务的支持  。
    Visual Studio 会修改项目来添加 NuGet 包、配置文件条目和其他更改，以支持与文本分析服务的连接。 “输出窗口”显示项目发生情况的日志  。 会看到下面这样的内容：

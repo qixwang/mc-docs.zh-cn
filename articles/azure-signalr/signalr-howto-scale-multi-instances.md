@@ -8,10 +8,10 @@ origin.date: 03/27/2019
 ms.date: 12/16/2019
 ms.author: v-tawe
 ms.openlocfilehash: ed65ec9e818b77c36cb28339c467118d84e5dc5e
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75334873"
 ---
 # <a name="how-to-scale-signalr-service-with-multiple-instances"></a>如何使用多个实例扩展 SignalR 服务？
@@ -216,17 +216,17 @@ app.MapAzureSignalR(GetType().FullName, hub, options => {
 
 ## <a name="configuration-in-cross-region-scenarios"></a>跨区域方案中的配置
 
-`ServiceEndpoint` 对象包含值为 `primary` 或 `secondary` 的 `EndpointType` 属性。
+`ServiceEndpoint` 对象包含值为 `EndpointType` 或 `primary` 的 `secondary` 属性。
 
 `primary` 终结点是接收客户端流量的首选终结点，我们认为其网络连接更可靠；`secondary` 终结点的网络连接被认为较不可靠，仅用于接收从服务器到客户端的流量（例如广播消息），而不用于接收客户端到服务器的流量。
 
-在跨区域案例中，网络可能不稳定。 对于位于“中国东部”的某个应用服务器，可将同样位于“中国东部”区域的 SignalR 服务终结点配置为 `primary`，并将其他区域中的终结点标记为 `secondary`。   在此配置中，其他区域中的服务终结点可以**接收**来自此“中国东部”应用服务器的消息，但不会将任何**跨区域**客户端路由到此应用服务器。  下图显示了体系结构：
+在跨区域案例中，网络可能不稳定。 对于位于“中国东部”的某个应用服务器，可将同样位于“中国东部”区域的 SignalR 服务终结点配置为 *，并将其他区域中的终结点标记为* 。  `primary``secondary` 在此配置中，其他区域中的服务终结点可以**接收**来自此“中国东部”应用服务器的消息，但不会将任何*跨区域*客户端路由到此应用服务器。  下图显示了体系结构：
 
 ![跨地域基础结构](./media/signalr-howto-scale-multi-instances/cross_geo_infra.png)
 
-当客户端尝试使用默认路由器通过 `/negotiate` 来与应用服务器协商时，SDK 会从可用的 `primary` 终结点集内**随机选择**一个终结点。 当主终结点不可用时，SDK 会从所有可用的 `secondary` 终结点中**随机选择**。 当服务器与服务终结点之间的连接处于活动状态时，终结点将标记为**可用**。
+当客户端尝试使用默认路由器通过 `/negotiate` 来与应用服务器协商时，SDK 会从可用的  **终结点集内**随机选择`primary`一个终结点。 当主终结点不可用时，SDK 会从所有可用的  **终结点中**随机选择`secondary`。 当服务器与服务终结点之间的连接处于活动状态时，终结点将标记为**可用**。
 
-在跨区域方案中，如果客户端尝试通过 `/negotiate` 来与“中国东部”的应用服务器协商，则默认情况下，始终会返回位于同一区域中的 `primary` 终结点。  当“中国东部”的所有终结点都不可用时，客户端将重定向到其他区域中的终结点。  以下故障转移部分详细介绍了该方案。
+在跨区域方案中，如果客户端尝试通过 `/negotiate` 来与“中国东部”的应用服务器协商，则默认情况下，始终会返回位于同一区域中的  *终结点。* `primary` 当“中国东部”的所有终结点都不可用时，客户端将重定向到其他区域中的终结点。  以下故障转移部分详细介绍了该方案。
 
 ![正常协商](./media/signalr-howto-scale-multi-instances/normal_negotiate.png)
 

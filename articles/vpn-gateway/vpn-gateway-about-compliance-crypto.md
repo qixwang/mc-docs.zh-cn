@@ -9,10 +9,10 @@ origin.date: 10/17/2019
 ms.date: 12/16/2019
 ms.author: v-jay
 ms.openlocfilehash: 9a444ab92ccd74b5d338175aabfb8f3d311b7d32
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75336055"
 ---
 # <a name="about-cryptographic-requirements-and-azure-vpn-gateways"></a>关于加密要求和 Azure VPN 网关
@@ -52,7 +52,7 @@ Azure VPN 网关现支持根据连接自定义 IPsec/IKE 策略。 对于站点�
 1. 为连接拓扑创建虚拟网络、VPN 网关或本地网络网关，如其他操作文档所述
 2. 创建 IPsec/IKE 策略
 3. 可在创建 S2S 或 VNet 到 VNet 连接时应用该策略
-4. 如已创建连接，可对现有连接应用或更新策略
+4. 如果已创建连接，则可以在现有连接上应用或更新策略
 
 ## <a name="ipsecike-policy-faq"></a>IPsec/IKE 策略常见问题解答
 

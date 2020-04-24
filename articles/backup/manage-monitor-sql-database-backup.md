@@ -7,10 +7,10 @@ origin.date: 09/11/2019
 ms.date: 11/14/2019
 ms.author: v-lingwu
 ms.openlocfilehash: 2a0d188309d46a57b31207080fc58cdb9e6bc7a6
-ms.sourcegitcommit: 21b02b730b00a078a76aeb5b78a8fd76ab4d6af2
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74838877"
 ---
 # <a name="manage-and-monitor-backed-up-sql-server-databases"></a>管理和监视已备份的 SQL Server 数据库
@@ -41,7 +41,7 @@ Azure 备份在“备份作业”门户中显示所有手动触发的作业。  
 
 若要监视数据库备份警报：
 
-1. 登录到 [Azure 门户](https://portal.azure.cn)。
+1. 登录 [Azure 门户](https://portal.azure.cn)。
 
 2. 在保管库仪表板中，选择“警报和事件”。 
 
@@ -58,11 +58,11 @@ Azure 备份在“备份作业”门户中显示所有手动触发的作业。  
 - 停止所有将来的备份作业，并删除所有恢复点。
 - 停止所有将来的备份作业，但将恢复点保留不变。
 
-如果选择保留恢复点，请注意以下细节：
+如果选择保留恢复点，请记住以下详细内容：
 
-- 所有恢复点永远保留不变，在停止保护时所有修剪操作都会停止，但会保留数据。
+- 所有恢复点都将永久保持不变，所有删除操作都应在停止保护时停止，并保留数据。
 - 需要为受保护的实例和消耗的存储空间付费。 有关详细信息，请参阅 [Azure 备份定价](https://www.azure.cn/zh-cn/pricing/details/backup/)。
-- 如果在不停止备份的情况下删除数据源，则新备份将会失败。
+- 如果在不停止备份的情况下删除数据源，则新备份会失败。
 
 停止数据库的保护：
 
@@ -145,7 +145,7 @@ Azure 备份在“备份作业”门户中显示所有手动触发的作业。  
 > [!NOTE]
 > 在保留期内进行的任何更改将应用到新恢复点，并以追溯方式应用到所有旧恢复点。
 
-在保管库仪表板中，转到“管理” > “备份策略”，然后选择要编辑的策略。  
+在保管库仪表板中，转到“管理” **“备份策略”，然后选择要编辑的策略。**  >  
 
   ![管理备份策略](./media/backup-azure-sql-database/modify-backup-policy.png)
 

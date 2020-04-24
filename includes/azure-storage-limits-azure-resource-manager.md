@@ -10,10 +10,10 @@ ms.author: v-yeche
 ms.date: 01/06/2020
 ms.custom: include file
 ms.openlocfilehash: 73735036cbb30565fa5fed3ceeba48af63abf783
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75630846"
 ---
 仅当使用 Azure 资源管理器对 Azure 存储执行管理操作时，以下限制才适用。

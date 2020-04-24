@@ -13,15 +13,15 @@ origin.date: 11/20/2019
 ms.date: 12/04/2019
 ms.author: v-lingwu
 ms.openlocfilehash: c8dcb8dda4115f3cc0d1a644a113073d9923f034
-ms.sourcegitcommit: cf73284534772acbe7a0b985a86a0202bfcc109e
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74884624"
 ---
 # <a name="plan-your-luis-app-schema-with-subject-domain-and-data-extraction"></a>使用主题域和数据提取规划 LUIS 应用架构
 
-LUIS 应用架构包含与主题 [域](luis-glossary.md#domain)相关的[意向](luis-glossary.md#intent)和[实体](luis-glossary.md#entity)。 意向对用户[言语](luis-glossary.md#utterance)分类，实体从用户言语中提取数据。
+LUIS 应用架构包含与主题 [域](luis-glossary.md#intent)相关的[意向](luis-glossary.md#entity)和[实体](luis-glossary.md#domain)。 意向对用户[言语](luis-glossary.md#utterance)分类，实体从用户言语中提取数据。
 
 ## <a name="identify-your-domain"></a>标识域
 

@@ -9,10 +9,10 @@ origin.date: 07/26/2019
 ms.date: 12/16/2019
 ms.reviewer: sngun
 ms.openlocfilehash: 7de1381a9c95fda9d9484d0ff42f2c981df3596c
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75336091"
 ---
 # <a name="time-to-live-ttl-in-azure-cosmos-db"></a>Azure Cosmos DB 中的生存时间 (TTL) 

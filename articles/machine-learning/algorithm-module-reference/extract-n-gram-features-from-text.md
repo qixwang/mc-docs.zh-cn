@@ -10,10 +10,10 @@ author: xiaoharper
 ms.author: zhanxia
 ms.date: 09/01/2019
 ms.openlocfilehash: 0b7b89ff8b80430d6432ca0918756a24beb08f06
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75598002"
 ---
 # <a name="extract-n-gram-features-from-text-module-reference"></a>“从文本中提取 N 元语法特征”模块参考

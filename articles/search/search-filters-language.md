@@ -10,10 +10,10 @@ ms.topic: conceptual
 origin.date: 11/04/2019
 ms.date: 12/16/2019
 ms.openlocfilehash: c257ffdcb7561fa2c34facf901974fe2fffa98f5
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75335857"
 ---
 # <a name="how-to-filter-by-language-in-azure-cognitive-search"></a>如何在 Azure 认知搜索中按语言筛选 

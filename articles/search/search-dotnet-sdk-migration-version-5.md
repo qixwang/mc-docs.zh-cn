@@ -11,10 +11,10 @@ ms.topic: conceptual
 origin.date: 11/04/2019
 ms.date: 12/16/2019
 ms.openlocfilehash: 4df14f0f82d8b39ba018d0aa3cfcf5dd62f3eba3
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75335459"
 ---
 # <a name="upgrade-to-azure-search-net-sdk-version-5"></a>升级到 Azure 搜索 .NET SDK 版本 5
@@ -36,7 +36,7 @@ Azure 搜索 .NET SDK 的版本 5 包含了某些针对早期版本进行的更�
 Azure 搜索 .NET SDK 的版本 5 针对 Azure 搜索 REST API 的最新正式发布版本，具体来说就是 2017-11-11。 这使得可在 .NET 应用程序中使用 Azure 搜索的新功能，如下所示：
 
 * [同义词](search-synonyms.md)
-* 现可以编程方式访问索引器执行历史记录中的警告（有关更多详细信息，请参阅 [.NET 引用](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexerexecutionresult?view=azure-dotnet)中 `IndexerExecutionResult` 的 `Warning` 属性）。
+* 现可以编程方式访问索引器执行历史记录中的警告（有关更多详细信息，请参阅 `Warning`.NET 引用`IndexerExecutionResult`中 [ 的 ](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexerexecutionresult?view=azure-dotnet) 属性）。
 * 支持 .NET Core 2。
 * 新的包结构支持使用仅需要的 SDK 的部件（有关详细信息，请参阅[版本 5 中的重大更改](#ListOfChanges)）。
 
@@ -78,7 +78,7 @@ Azure 搜索 .NET SDK 的版本 5 针对 Azure 搜索 REST API 的最新正式�
 
 ### <a name="change-to-suggesters"></a>对建议器的更改 
 
-`Suggester` 构造函数不再为 `SuggesterSearchMode` 提供 `enum` 参数。 此枚举只有一个值，因此是多余的。 如果因此看到生成错误，只需删除对 `SuggesterSearchMode` 参数的引用即可。
+`Suggester` 构造函数不再为 `enum` 提供 `SuggesterSearchMode` 参数。 此枚举只有一个值，因此是多余的。 如果因此看到生成错误，只需删除对 `SuggesterSearchMode` 参数的引用即可。
 
 ### <a name="removed-obsolete-members"></a>删除了过时成员
 
@@ -96,7 +96,7 @@ Azure 搜索 .NET SDK 的版本 5 针对 Azure 搜索 REST API 的最新正式�
 
 如果应用程序硬依赖于这些功能，则将无法升级到 Azure 搜索 .NET SDK 的版本 5。 可继续使用版本 4.0-preview。 但是，请记住，**我们不建议在生产应用程序中使用预览版 SDK**。 预览功能仅用于评估，并且可能会更改。
 
-## <a name="conclusion"></a>结论
+## <a name="conclusion"></a>结束语
 如果需要有关如何使用 Azure 搜索 .NET SDK 的更多详细信息，请参阅 [.NET 操作指南](search-howto-dotnet-sdk.md)。
 
 我们欢迎你对 SDK 提供反馈。 如果遇到问题，请随时通过 [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-search) 向我们寻求帮助。 如果找到 Bug，可以在 [Azure .NET SDK GitHub 存储库](https://github.com/Azure/azure-sdk-for-net/issues)中提出问题。 务必在问题标题上加前缀“[Azure 搜索]”。

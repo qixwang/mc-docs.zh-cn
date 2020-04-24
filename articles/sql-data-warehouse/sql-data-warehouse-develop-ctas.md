@@ -13,10 +13,10 @@ ms.author: v-jay
 ms.reviewer: igorstan
 ms.custom: seoapril2019
 ms.openlocfilehash: f807f129945cc063b6be95d8d934c8eb0a0acc1e
-ms.sourcegitcommit: 369038a7d7ee9bbfd26337c07272779c23d0a507
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74807612"
 ---
 # <a name="create-table-as-select-ctas-in-azure-sql-data-warehouse"></a>Azure SQL 数据仓库中的 CREATE TABLE AS SELECT (CTAS)

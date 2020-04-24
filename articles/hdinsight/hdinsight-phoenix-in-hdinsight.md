@@ -11,10 +11,10 @@ origin.date: 12/17/2019
 ms.date: 01/13/2020
 ms.author: v-yiso
 ms.openlocfilehash: 0eacb796f468e90ec340c550e455a5a757fdecf5
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75631100"
 ---
 # <a name="apache-phoenix-in-azure-hdinsight"></a>Azure HDInsight 中的 Apache Phoenix
@@ -83,7 +83,7 @@ WHERE metric_type = 'm';
 
 若要启用 Phoenix 事务，请参阅[Apache Phoenix 事务文档](https://phoenix.apache.org/transactions.html)。
 
-若要创建启用事务的新表，请在 `CREATE` 语句中将 `TRANSACTIONAL` 属性设置为 `true`：
+若要创建启用事务的新表，请在 `TRANSACTIONAL` 语句中将 `true` 属性设置为 `CREATE`：
 
 ```sql
 CREATE TABLE my_table (k BIGINT PRIMARY KEY, v VARCHAR) TRANSACTIONAL=true;

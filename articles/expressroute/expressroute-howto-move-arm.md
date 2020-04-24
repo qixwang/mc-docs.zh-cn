@@ -12,10 +12,10 @@ origin.date: 02/25/2019
 ms.date: 12/02/2019
 ms.author: v-yiso
 ms.openlocfilehash: d050a246240bb353c91be3d46a148e87c4be4be6
-ms.sourcegitcommit: 9e92bcf6aa02fc9e7b3a29abadf6b6d1a8ece8c4
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74389447"
 ---
 # <a name="move-expressroute-circuits-from-classic-to-resource-manager-deployment-model-using-powershell"></a>使用 PowerShell 将 ExpressRoute 线路从经典部署模型转移到资源管理器部署模型
@@ -43,7 +43,7 @@ ms.locfileid: "74389447"
    Add-AzureAccount
    ```
 
-2. 选择适当的 Azure 订阅。
+2. 选择相应的 Azure 订阅。
 
    ```powershell
    Select-AzureSubscription "<Enter Subscription Name here>"

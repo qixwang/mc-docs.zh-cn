@@ -9,10 +9,10 @@ ms.author: v-lingwu
 origin.date: 11/11/2019
 ms.date: 11/18/2019
 ms.openlocfilehash: 9e1d4bc7a43d25db14f6447c889aeda4eefdc368
-ms.sourcegitcommit: 21b02b730b00a078a76aeb5b78a8fd76ab4d6af2
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74838965"
 ---
 # <a name="how-to-update-azure-monitor-for-containers-to-enable-metrics"></a>如何更新用于容器的 Azure Monitor 以启用指标
@@ -34,7 +34,7 @@ ms.locfileid: "74838965"
 
 上述任一过程会将“监视指标发布者”角色分配到群集的服务主体，以便可将代理收集的数据发布到群集资源。  监视指标发布者仅有权向资源推送指标，而无法更改任何状态、更新资源或读取任何数据。 有关角色的更多信息，请参阅[“监视指标发布者”角色](../../role-based-access-control/built-in-roles.md#monitoring-metrics-publisher)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 在开始之前，请确认以下事项：
 
@@ -71,7 +71,7 @@ ms.locfileid: "74838965"
 ## <a name="upgrade-per-cluster-using-azure-cli"></a>使用 Azure CLI 升级每个群集
 执行以下步骤，使用 Azure CLI 更新订阅中的特定群集。
 
-1. 使用 Azure CLI 运行以下命令。 使用 AKS 群集的“AKS 概述”页中的值编辑 **subscriptionId**、**resourceGroupName** 和 **clusterName** 的值。   运行命令 `az aks show` 后会返回 **clientIdOfSPN** 的值，如以下示例所示。
+1. 使用 Azure CLI 运行以下命令。 使用 AKS 群集的“AKS 概述”页中的值编辑 **subscriptionId**、**resourceGroupName** 和 **clusterName** 的值。   运行命令 **后会返回**clientIdOfSPN`az aks show` 的值，如以下示例所示。
 
     ```azurecli
     az login

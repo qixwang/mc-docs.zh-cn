@@ -11,10 +11,10 @@ ms.date: 12/09/2019
 ms.author: v-jay
 ms.localizationpriority: high
 ms.openlocfilehash: 73455ed9ee5df24b314a56a531bf90725a4572bd
-ms.sourcegitcommit: 8c3bae15a8a5bb621300d81adb34ef08532fe739
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74884044"
 ---
 ::: zone target = "docs"
@@ -35,7 +35,7 @@ ms.locfileid: "74884044"
 
 - 设备可以通过所有入口通道。 设备规格：宽度26 英寸，长度48 英寸，高度28 英寸。
 - 如果你打算在第一层以外的楼层上安装设备，必须能够通过升降机或活动梯来接触设备。
-- 安排两名人员来搬运设备。 设备重约 500 磅， 并配备滚轮。
+- 安排两名人员来搬运设备。 设备重约 500 磅。 并配备滚轮。
 - 在数据中心内的平坦场地上操作，该场地靠近可用的网络连接，并能够放得下 Data Box Heavy 大小的设备。
 
 ### <a name="for-service"></a>对于服务
@@ -64,7 +64,7 @@ ms.locfileid: "74884044"
 
 在 [https://portal.azure.cn](https://portal.azure.cn) 中登录 Azure 门户。
 
-## <a name="order"></a>顺序
+## <a name="order"></a>订单
 
 此步骤大约需要 5 分钟。
 

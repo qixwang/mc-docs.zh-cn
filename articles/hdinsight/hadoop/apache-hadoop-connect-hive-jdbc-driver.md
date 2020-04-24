@@ -13,10 +13,10 @@ origin.date: 10/24/2019
 ms.date: 12/23/2019
 ms.author: v-yiso
 ms.openlocfilehash: df3f87bcc38c1ecb2f76da6d1bdbd0f363e645c8
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75335970"
 ---
 # <a name="query-apache-hive-through-the-jdbc-driver-in-hdinsight"></a>在 HDInsight 中通过 JDBC 驱动程序查询 Apache Hive
@@ -140,7 +140,7 @@ at java.util.concurrent.FutureTas...(FutureTask.java:122)
 at java.util.concurrent.FutureTask.get(FutureTask.java:206)
 ```
 
-**原因**：此错误由 SQuirreL 随附的较旧版本 commons-codec.jar 文件引起。
+**原因：** 此错误由 SQuirreL 随附的较旧版本 commons-codec.jar 文件引起。
 
 **解决方法**：若要解决此错误，请使用以下步骤：
 

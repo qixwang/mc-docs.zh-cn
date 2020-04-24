@@ -18,13 +18,13 @@ ms.date: 12/16/2019
 ms.author: v-yeche
 ms.custom: include file
 ms.openlocfilehash: 855a023557f963c319bfc85884d162b504b90d56
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75334552"
 ---
-可以使用 URI 为 `https://localhost:8081` 的 [Azure Cosmos DB 模拟器](/cosmos-db/local-emulator)。 有关在模拟器中使用的密钥，请参阅[对请求进行身份验证](../articles/cosmos-db/local-emulator.md#authenticating-requests)。
+可以使用 URI 为 [ 的 ](/cosmos-db/local-emulator)Azure Cosmos DB 模拟器`https://localhost:8081`。 有关在模拟器中使用的密钥，请参阅[对请求进行身份验证](../articles/cosmos-db/local-emulator.md#authenticating-requests)。
 
 <!--Not Available on [Try Azure Cosmos DB for free](https://www.azure.cn/try/cosmosdb/)-->
 <!-- Update_Description: update meta properties, wording update, update link -->

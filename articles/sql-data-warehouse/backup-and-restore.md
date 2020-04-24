@@ -12,10 +12,10 @@ ms.author: v-jay
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019"
 ms.openlocfilehash: a5044e1116458b6104021e7ea889ec5e0212dd9e
-ms.sourcegitcommit: 369038a7d7ee9bbfd26337c07272779c23d0a507
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74807647"
 ---
 # <a name="backup-and-restore-in-azure-sql-data-warehouse"></a>Azure SQL 数据仓库中的备份和还原
@@ -30,9 +30,9 @@ ms.locfileid: "74807647"
 
 ## <a name="automatic-restore-points"></a>自动还原点
 
-快照是创建还原点的服务的内置功能。 无需启用此功能。 但是，数据仓库应该处于活动状态，以便创建还原点。 如果数据仓库经常暂停，则可能不会创建自动还原点，因此请确保在暂停数据仓库之前创建用户定义的还原点。 用户目前无法删除自动还原点，因为服务使用这些还原点来维护 SLA 以进行恢复。
+快照是创建还原点的服务的内置功能。 不需要启用此功能。 但是，数据仓库应该处于活动状态，以便创建还原点。 如果数据仓库经常暂停，则可能不会创建自动还原点，因此请确保在暂停数据仓库之前创建用户定义的还原点。 用户目前无法删除自动还原点，因为服务使用这些还原点来维护 SLA 以进行恢复。
 
-SQL 数据仓库全天捕获数据仓库的快照，创建可以使用七天的还原点。 无法更改此保留期。 SQL 数据仓库支持八小时恢复点目标 (RPO)。 可以根据过去七天捕获的任意一个快照，还原主要区域中的数据仓库。
+SQL 数据仓库为数据仓库创建全天快照，并创建可用 7 天的还原点。 无法更改此保留期。 SQL 数据仓库支持八小时恢复点目标 (RPO)。 可从过去 7 天创建的任一快照还原主要区域中的数据仓库。
 
 若要查看上一个快照的启动时间，可对联机 SQL 数据仓库运行以下查询。
 
@@ -45,7 +45,7 @@ order by run_id desc
 
 ## <a name="user-defined-restore-points"></a>用户定义的还原点
 
-使用此功能，可以在大型修改之前和之后手动触发快照，以便创建数据仓库的还原点。 此功能可确保在出现工作负荷中断或用户错误的情况下，还原点在逻辑上是一致的，这样可以提供额外的数据保护，缩短恢复时间。 用户定义的还原点可以使用七天，然后系统会替你将它自动删除。 无法更改用户定义的还原点的保留期。 无论在任何时间点，均会保证 **42 个用户定义的还原点**，因此，它们必须在创建另一个还原点之前[删除](https://go.microsoft.com/fwlink/?linkid=875299)。 可以通过 [PowerShell](https://docs.microsoft.com/powershell/module/az.sql/new-azsqldatabaserestorepoint#examples) 或 Azure 门户触发快照来创建用户定义的还原点。
+使用此功能，可以在大型修改之前和之后手动触发快照，以便创建数据仓库的还原点。 此功能可确保在出现工作负荷中断或用户错误的情况下，还原点在逻辑上是一致的，这样可以提供额外的数据保护，缩短恢复时间。 用户定义的还原点可用 7 天，7 天后系统会自动将其删除。 无法更改用户定义的还原点的保留期。 无论在任何时间点，均会保证 **42 个用户定义的还原点**，因此，它们必须在创建另一个还原点之前[删除](https://go.microsoft.com/fwlink/?linkid=875299)。 可以通过 [PowerShell](https://docs.microsoft.com/powershell/module/az.sql/new-azsqldatabaserestorepoint#examples) 或 Azure 门户触发快照来创建用户定义的还原点。
 
 ### <a name="restore-point-retention"></a>还原点保留期
 
@@ -82,7 +82,7 @@ Azure 帐单上将列出存储的明细项目，以及灾难恢复存储的明�
 
 ## <a name="restoring-from-restore-points"></a>从还原点还原
 
-每个快照创建一个代表快照开始时间的还原点。 如果要还原数据仓库，请选择一个还原点，并发出还原命令。  
+每个快照创建一个代表快照开始时间的还原点。 要还原数据仓库，请选择一个还原点，并发出还原命令。  
 
 可以保留还原的数据仓库和当前的数据仓库，也可以删除其中一个。 如果希望使用已还原数据仓库替换当前数据仓库，可使用 [ALTER DATABASE（Azure SQL 数据仓库）](https://docs.microsoft.com/sql/t-sql/statements/alter-database-azure-sql-data-warehouse)的“修改名称”选项对其进行重命名。
 

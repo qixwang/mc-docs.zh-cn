@@ -8,10 +8,10 @@ ms.author: v-tawe
 ms.reviewer: yutlin
 ms.custom: seodec18
 ms.openlocfilehash: d79090d9845d7f2ea2545a7546ad7d87c72a6804
-ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75600496"
 ---
 # <a name="use-an-ssl-certificate-in-your-code-in-azure-app-service"></a>在 Azure 应用服务的代码中使用 SSL 证书

@@ -1,6 +1,6 @@
 ### YamlMime:Landing
 title: ExpressRoute 文档
-summary: 了解如何使用 ExpressRoute 设置快速的专用连接，从本地基础结构或共置设施连接到 Microsoft 云服务。
+summary: 了解如何通过本地基础结构或共同租用设施，使用 ExpressRoute 来与 Microsoft 云服务建立快速专用连接。
 metadata:
   title: ExpressRoute 文档
   description: 了解 ExpressRoute
@@ -12,10 +12,10 @@ metadata:
   origin.date: 08/27/2019
   ms.date: 12/23/2019
   ms.openlocfilehash: 02a48ba7d6eb045b633942e26954e98b6f5c3c11
-  ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+  ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 12/25/2019
+  ms.lasthandoff: 04/17/2020
   ms.locfileid: "75335777"
 landingContent:
 - title: 关于 ExpressRoute
@@ -26,7 +26,7 @@ landingContent:
       url: expressroute-introduction.md
   - linkListType: concept
     links:
-    - text: 常见问题
+    - text: 常见问题解答
       url: expressroute-faqs.md
 - title: 入门
   linkLists:

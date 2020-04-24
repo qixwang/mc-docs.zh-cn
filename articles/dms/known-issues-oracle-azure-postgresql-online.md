@@ -13,10 +13,10 @@ ms.topic: article
 origin.date: 11/05/2019
 ms.date: 12/02/2019
 ms.openlocfilehash: e83a3e1f3c2515bca2ee7da5f2d31d89eb2b50dd
-ms.sourcegitcommit: 9597d4da8af58009f9cef148a027ccb7b32ed8cf
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74655460"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-from-oracle-to-azure-db-for-postgresql-single-server"></a>从 Oracle 联机迁移到 Azure DB for PostgreSQL（单一服务器）时存在的已知问题/迁移限制
@@ -47,8 +47,8 @@ Azure 数据库迁移服务支持迁移到 Azure Database for PostgreSQL（单�
 - ANYDATA
 - SDO_GEOMETRY
 - 嵌套表
-- 用户定义的数据类型
-- 注释
+- 用户定义数据类型
+- 说明
 - 虚拟列
 - 基于 ROWID 列的具体化视图
 

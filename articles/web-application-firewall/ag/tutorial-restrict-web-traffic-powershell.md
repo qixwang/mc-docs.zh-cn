@@ -10,10 +10,10 @@ ms.date: 11/25/2019
 ms.author: v-junlch
 ms.topic: conceptual
 ms.openlocfilehash: 8ee97a50bc31326fd01939029c309bb622791ae4
-ms.sourcegitcommit: e74e8aabc1cbd8a43e462f88d07b041e9c4f31eb
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74461700"
 ---
 # <a name="enable-web-application-firewall-using-azure-powershell"></a>使用 Azure PowerShell 启用 Web 应用程序防火墙

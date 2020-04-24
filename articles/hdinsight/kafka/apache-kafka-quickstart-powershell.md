@@ -16,10 +16,10 @@ origin.date: 06/12/2019
 ms.date: 12/09/2019
 ms.author: larryfr
 ms.openlocfilehash: 6e89d5dc87075221277555a7ad3fff620ffbdd2f
-ms.sourcegitcommit: 298eab5107c5fb09bf13351efeafab5b18373901
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74657940"
 ---
 # <a name="quickstart-create-apache-kafka-cluster-in-azure-hdinsight-using-powershell"></a>快速入门：使用 PowerShell 在 Azure HDInsight 中创建 Apache Kafka 群集
@@ -183,7 +183,7 @@ Welcome to Kafka on HDInsight.
 Last login: Thu Mar 29 13:25:27 2018 from 108.252.109.241
 ```
 
-## <a id="getkafkainfo"></a>获取 Apache Zookeeper 主机和代理主机信息
+## <a name="get-the-apache-zookeeper-and-broker-host-information"></a><a id="getkafkainfo"></a>获取 Apache Zookeeper 主机和代理主机信息
 
 使用 Kafka 时，必须了解 Apache Zookeeper 和代理主机   。 Kafka API 以及 Kafka 随附的许多实用工具都使用这些主机。
 
@@ -298,7 +298,7 @@ Kafka 在主题中存储数据流  。 可以使用 `kafka-topics.sh` 实用工�
 
 ## <a name="produce-and-consume-records"></a>生成和使用记录
 
-Kafka 将记录  存储在主题中。 记录由生成者  生成，由使用者  使用。 生产者与使用者通过 Kafka 代理服务通信  。 HDInsight 群集中的每个工作节点都是 Kafka 代理主机。
+Kafka 将*记录*存储在主题中。 记录由*生成者*生成，由*使用者*使用。 生产者与使用者通过 Kafka 代理服务通信  。 HDInsight 群集中的每个工作节点都是 Kafka 代理主机。
 
 若要将记录存储到之前创建的测试主题，并通过使用者对其进行读取，请使用以下步骤：
 
@@ -318,11 +318,11 @@ Kafka 将记录  存储在主题中。 记录由生成者  生成，由使用者
     /usr/hdp/current/kafka-broker/bin/kafka-console-consumer.sh --bootstrap-server $KAFKABROKERS --topic test --from-beginning
     ```
    
-    此命令从主题中检索并显示记录。 使用 `--from-beginning` 告知使用者从流的开头开始，以检索所有记录。
+    此命令从主题中检索并显示记录。 使用 `--from-beginning` 告知使用者要从流的开头开始读取，以便检索所有记录。
 
     如果使用的是较旧版本的 Kafka，请将 `--bootstrap-server $KAFKABROKERS` 替换为 `--zookeeper $KAFKAZKHOSTS`。
 
-4. 使用 __Ctrl + C__ 阻止使用者。
+4. 使用 __Ctrl + C__ 停止使用者。
 
 还可以以编程方式创建生产者和使用者。 有关如何使用此 API 的示例，请参阅[将 Apache Kafka 生产者和使用者 API 与 HDInsight 配合使用](apache-kafka-producer-consumer-api.md)文档。
 
@@ -335,7 +335,7 @@ Remove-AzResourceGroup -Name $resourceGroup
 ```
 
 > [!WARNING]
-> HDInsight 群集计费在创建群集之后便会开始，删除群集后才会停止。 群集以每分钟按比例收费，因此无需再使用群集时，应始终将其删除。
+> HDInsight 群集计费在创建群集之后便会开始，删除群集后才会停止。 HDInsight 群集按分钟收费，因此不再需要使用群集时，应将其删除。
 > 
 > 删除 Kafka on HDInsight 群集会删除存储在 Kafka 中的任何数据。
 

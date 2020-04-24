@@ -9,19 +9,19 @@ ms.topic: tutorial
 origin.date: 09/24/2018
 ms.date: 05/01/2019
 ms.openlocfilehash: 59c257d33ad10aecf50d486528e0a5029b75d088
-ms.sourcegitcommit: 298eab5107c5fb09bf13351efeafab5b18373901
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74657671"
 ---
 # <a name="tutorial-visualize-data-from-azure-data-explorer-in-power-bi"></a>教程：在 Power BI 中可视化 Azure 数据资源管理器中的数据
 
 Azure 数据资源管理器是一项快速且高度可缩放的数据探索服务，适用于日志和遥测数据。 Power BI 是一种业务分析解决方案，可以用来可视化数据，并在组织内共享结果。 在本教程中，首先了解 Azure 数据资源管理器中视觉对象的呈现方式。 然后使用 Power BI 连接到 Azure 数据资源管理器，生成基于示例数据的报表，并将报表发布到 Power BI 服务。
 
-如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial)。 如果没有注册 Power BI Pro，请在开始之前[注册免费试用版](https://app.powerbi.com/signupredirect?pbi_source=web)。
+如果没有 Azure 订阅，可在开始前创建一个 [试用帐户](https://www.azure.cn/pricing/1rmb-trial) 。 如果没有注册 Power BI Pro，请在开始之前[注册免费试用版](https://app.powerbi.com/signupredirect?pbi_source=web)。
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 在 Azure 数据资源管理器中呈现视觉对象
@@ -30,7 +30,7 @@ Azure 数据资源管理器是一项快速且高度可缩放的数据探索服�
 > * 使用视觉对象创建报表
 > * 发布和共享报表
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 除了 Azure 和 Power BI 订阅，需要以下条件才能完成本教程：
 

@@ -1,13 +1,13 @@
 ---
 ms.openlocfilehash: 2a152d9f313468af52d3a0d31a09ac6041941310
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75466880"
 ---
 ## <a name="obtain-an-azure-resource-manager-token"></a>获取 Azure 资源管理器令牌
-Azure Active Directory 必须使用 Azure Resource Manager 来验证所有针对资源执行的任务。 此处显示的示例使用密码身份验证。有关其他方法，请参阅[对 Azure 资源管理器请求进行身份验证][lnk-authenticate-arm]。
+Azure Active Directory 必须使用 Azure 资源管理器来验证所有针对资源执行的任务。 此处显示的示例使用密码身份验证。有关其他方法，请参阅[对 Azure 资源管理器请求进行身份验证][lnk-authenticate-arm]。
 
 1. 将以下代码添加到 Program.cs 中的 **Main** 方法，以使用应用程序 ID 和密码从 Azure AD 中检索令牌。
    
@@ -33,7 +33,7 @@ Azure Active Directory 必须使用 Azure Resource Manager 来验证所有针对
     client.SubscriptionId = subscriptionId;
     ```
 
-3. 创建或获取对你使用的资源组的引用：
+3. 创建或获取对正在使用的资源组的引用：
    
     ```csharp
     var rgResponse = client.ResourceGroups.CreateOrUpdate(rgName,

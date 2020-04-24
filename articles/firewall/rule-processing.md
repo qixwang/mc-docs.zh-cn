@@ -9,10 +9,10 @@ origin.date: 11/19/2018
 ms.date: 12/09/2019
 ms.author: v-yeche
 ms.openlocfilehash: a9f9a6d5797b58da4d6b40f0b89e914fc7516cdc
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75336117"
 ---
 # <a name="azure-firewall-rule-processing-logic"></a>Azure 防火墙规则处理逻辑

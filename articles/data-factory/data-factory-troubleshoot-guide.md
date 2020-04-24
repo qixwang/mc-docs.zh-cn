@@ -10,10 +10,10 @@ ms.date: 01/06/2020
 ms.author: v-jay
 ms.reviewer: craigg
 ms.openlocfilehash: f3fdd5cf34ba61371a99dc47138d2fc1cf5ee46b
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75624072"
 ---
 # <a name="troubleshoot-azure-data-factory"></a>排查 Azure 数据工厂问题
@@ -106,7 +106,7 @@ ms.locfileid: "75624072"
 
 - **建议**：请检查输入的 AzureFunction 活动 JSON 定义是否包含链接服务详细信息。
 
-## <a name="common"></a>常见
+## <a name="common"></a>通用
 
 ### <a name="error-code--2103"></a>错误代码：2103
 

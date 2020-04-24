@@ -9,10 +9,10 @@ origin.date: 11/19/2019
 ms.date: 12/09/2019
 ms.author: v-yeche
 ms.openlocfilehash: e4806def0bc08d5aca66ab76cfadd74737d8e4fa
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75336115"
 ---
 # <a name="azure-firewall-service-tags"></a>Azure 防火墙服务标记

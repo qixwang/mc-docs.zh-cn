@@ -6,10 +6,10 @@ origin.date: 12/12/2019
 ms.author: v-yeche
 ms.date: 01/06/2020
 ms.openlocfilehash: 61daf06d2534647b6f4a80d763463057b22b7865
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75631351"
 ---
 # <a name="single-and-multi-resource-export-to-a-template-in-azure-portal"></a>在 Azure 门户中将单资源和多资源导出到模板
@@ -66,7 +66,7 @@ ms.locfileid: "75631351"
     ![导出所有资源](./media/export-template-portal/select-all-resources.png)
 
     在屏幕截图中，只选择了存储帐户。
-1. 选择“导出模板”  。
+1. 选择“导出模板”。 
 
 1. 此时将显示导出的模板，并可供下载和部署。
 
@@ -86,7 +86,7 @@ ms.locfileid: "75631351"
 
     ![导出资源](./media/export-template-portal/export-single-resource.png)
 
-1. 此时将显示导出的模板，并且该模板可供下载和部署。 模板只包含单个资源。  “包括参数”默认情况下已选中。  如果选中，生成模板时将包括所有模板参数。 如果希望创作自己的参数，请将此复选框切换为不包括参数。
+1. 此时将显示导出的模板，并可供下载和部署。 模板只包含单个资源。  “包括参数”默认情况下已选中。  如果选中，生成模板时将包括所有模板参数。 如果希望创作自己的参数，请将此复选框切换为不包括参数。
 
 ## <a name="export-template-before-deployment"></a>在部署之前导出模板
 

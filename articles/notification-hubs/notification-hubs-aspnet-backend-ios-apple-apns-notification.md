@@ -18,10 +18,10 @@ ms.author: v-tawe
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.openlocfilehash: 7ead37d90127d3b3ddea3a4c8f407f2572263e97
-ms.sourcegitcommit: cf73284534772acbe7a0b985a86a0202bfcc109e
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74885034"
 ---
 # <a name="tutorial-send-push-notifications-to-specific-users-using-azure-notification-hubs"></a>教程：使用 Azure 通知中心向特定用户发送推送通知
@@ -488,7 +488,7 @@ ms.locfileid: "74885034"
     ![显示的 iOS 测试通知][3]
 
 4. 在“*收件人用户名标记”文本字段中，输入用于从另一台设备注册的用户名标记  。
-5. 输入通知消息，并单击“**发送通知**”。 只有使用该用户名标记注册的设备才会收到通知消息。 该消息将只发送给那些用户。
+5. 输入通知消息，并单击“发送通知”  。 只有使用该用户名标记注册的设备才会收到通知消息。 该消息将只发送给那些用户。
 
     ![iOS 测试带标记的通知][4]
 

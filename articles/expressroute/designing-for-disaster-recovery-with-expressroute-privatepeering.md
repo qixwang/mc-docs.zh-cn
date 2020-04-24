@@ -12,10 +12,10 @@ origin.date: 05/25/2019
 ms.author: v-yiso
 ms.date: 08/05/2019
 ms.openlocfilehash: f20c2dd27ea0f1fce6e9c4747ac6868cb930ac68
-ms.sourcegitcommit: 9e92bcf6aa02fc9e7b3a29abadf6b6d1a8ece8c4
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74389364"
 ---
 # <a name="designing-for-disaster-recovery-with-expressroute-private-peering"></a>使用 ExpressRoute 专用对等互连进行灾难恢复设计

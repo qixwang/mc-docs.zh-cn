@@ -12,10 +12,10 @@ origin.date: 07/23/2019
 ms.date: 01/13/2020
 ms.author: v-tawe
 ms.openlocfilehash: 5b7e71a4031051b9a728de6128a5243520ee7ea1
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75630983"
 ---
 # <a name="troubleshoot-the-speech-sdk"></a>排查语音 SDK 问题
@@ -26,7 +26,7 @@ ms.locfileid: "75630983"
 
 你的区域或服务可能有错误的终结点。 请检查 URI 以确保它正确无误。
 
-此外，你的订阅密钥或授权令牌可能有问题。 有关详细信息，请参阅下一部分。
+此外，你的订阅密钥或授权令牌可能有问题。 有关详细信息，请参阅下一节。
 
 ## <a name="error-http-403-forbidden-or-http-401-unauthorized"></a>错误：HTTP 403 禁止访问或 HTTP 401 未授权
 

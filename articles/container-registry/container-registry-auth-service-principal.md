@@ -6,10 +6,10 @@ origin.date: 10/04/2019
 ms.author: v-yeche
 ms.date: 12/09/2019
 ms.openlocfilehash: 94de093464e4069728fd4a34f0ba0ab1be67d960
-ms.sourcegitcommit: cf73284534772acbe7a0b985a86a0202bfcc109e
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74885033"
 ---
 # <a name="azure-container-registry-authentication-with-service-principals"></a>使用服务主体的 Azure 容器注册表身份验证
@@ -36,7 +36,7 @@ Azure AD“服务主体”  提供对订阅中的 Azure 资源的访问权限。
     
     <!--Not Available on , [Azure Container Instances](container-registry-auth-aci.md)-->
     
-* *推送*：构建容器映像并使用持续集成和部署解决方案（例如 Azure Pipelines 或 Jenkins）将它们推送到注册表。
+* *Push*：构建容器映像并使用持续集成和部署解决方案（例如 Azure Pipelines 或 Jenkins）将它们推送到注册表。
 
 若要对注册表进行个人访问，例如手动将容器映像拉取到开发工作站时，我们建议改用你自己的 [Azure AD 标识](container-registry-authentication.md#individual-login-with-azure-ad)进行注册表访问（例如使用 [az acr login][az-acr-login]）。
 

@@ -12,10 +12,10 @@ ms.date: 12/30/2019
 ms.author: v-junlch
 ms.subservice: B2C
 ms.openlocfilehash: 653dc03a53eacde9fe4fd5a5d01471676daafb16
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75623603"
 ---
 # <a name="buildingblocks"></a>BuildingBlocks

@@ -6,22 +6,22 @@ origin.date: 08/23/2018
 ms.date: 12/16/2019
 ms.author: v-tawe
 ms.openlocfilehash: 2997fe05133ba66d4bef3a8df37c1b68fa76feec
-ms.sourcegitcommit: d468b4e0c3288555b1ac5aec43c228328f49b60c
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75334628"
 ---
 **Objective-C**：
 
-1. 在 QSAppDelegate.m 中，导入 iOS SDK 和 QSTodoService.h   ：
+1. 在 **QSAppDelegate.m** 中，导入 iOS SDK 和 **QSTodoService.h**：
 
     ```objc
     #import <MicrosoftAzureMobile/MicrosoftAzureMobile.h>
     #import "QSTodoService.h"
     ```
 
-2. 在 QSAppDelegate.m 中的 `didFinishLaunchingWithOptions` 内，紧靠 `return YES;` 前方插入以下行  ：
+2. 在 `didFinishLaunchingWithOptions`QSAppDelegate.m**中的** 内，紧靠在 `return YES;` 的前面插入以下行：
 
     ```objc
     UIUserNotificationSettings* notificationSettings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeSound categories:nil];
@@ -29,7 +29,7 @@ ms.locfileid: "75334628"
     [[UIApplication sharedApplication] registerForRemoteNotifications];
     ```
 
-3. 在“QSAppDelegate.m”  中，添加以下处理程序方法。 应用现已更新，可支持推送通知。 
+3. 在 **QSAppDelegate.m** 中，添加以下处理程序方法。 应用现已更新，可支持推送通知。 
 
     ```objc
     // Registration with APNs is successful
@@ -100,7 +100,7 @@ ms.locfileid: "75334628"
 
 **Swift**：
 
-1. 将文件“ClientManager.swift”  与以下内容一起添加。 用 Azure 移动应用后端的 URL 替换“%AppUrl%”  。
+1. 将文件“ClientManager.swift”与以下内容一起添加。  用 Azure 移动应用后端的 URL 替换 *%AppUrl%* 。
 
     ```swift
     class ClientManager {
@@ -108,13 +108,13 @@ ms.locfileid: "75334628"
     }
     ```
 
-2. 在 ToDoTableViewController.swift 中，用以下行替换用于初始化 `MSClient` 的 `let client` 行  ：
+2. 在 **ToDoTableViewController.swift** 中，用以下行替换用于初始化 `let client` 的 `MSClient` 行：
 
     ```swift
     let client = ClientManager.sharedClient
     ```
 
-3. 在 AppDelegate.swift 中，如下所示替换 `func application` 的正文  ：
+3. 在 **AppDelegate.swift** 中，如下所示替换 `func application` 的正文：
 
     ```swift
     func application(application: UIApplication,
@@ -127,7 +127,7 @@ ms.locfileid: "75334628"
     }
     ```
 
-4. 在“AppDelegate.swift”  中，添加以下处理程序方法。 应用现已更新，可支持推送通知。
+4. 在 **AppDelegate.swift** 中，添加以下处理程序方法。 应用现已更新，可支持推送通知。
 
     ```swift
     func application(application: UIApplication,

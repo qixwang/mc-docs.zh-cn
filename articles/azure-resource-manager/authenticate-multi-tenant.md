@@ -5,10 +5,10 @@ ms.topic: conceptual
 origin.date: 10/11/2019
 ms.date: 11/25/2019
 ms.openlocfilehash: f9fbc31fd3c46d21433b56bed0c21d9fbc9ace5d
-ms.sourcegitcommit: 9e92bcf6aa02fc9e7b3a29abadf6b6d1a8ece8c4
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74388972"
 ---
 # <a name="authenticate-requests-across-tenants"></a>跨租户对请求进行身份验证

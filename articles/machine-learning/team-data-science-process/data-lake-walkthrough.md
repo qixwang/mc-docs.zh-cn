@@ -12,13 +12,13 @@ ms.date: 11/13/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: aa8192cbd1c17b470aec6e43c391e59943d69ab7
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75599316"
 ---
-# <a name="scalable-data-science-with-azure-data-lake-an-end-to-end-walkthrough"></a>Azure Data Lake 中可缩放的数据科学：端到端演练
+# <a name="scalable-data-science-with-azure-data-lake-an-end-to-end-walkthrough"></a>Azure Data Lake 中可缩放的数据科研：端到端演练
 此演练介绍如何使用 Azure Data Lake 对 NYC 出租车行程和车费数据集的示例进行数据浏览和二进制分类任务，以预测小费是否是按车费所支付的。 它指导端到端完成 [Team Data Science Process](/machine-learning/team-data-science-process/) 的步骤，从数据采集到模型训练，再到部署发布模型的 Web 服务。
 
 ### <a name="azure-data-lake-analytics"></a>Azure Data Lake Analytics
@@ -38,9 +38,9 @@ Data Lake Analytics 也是 Cortana Analytics 套件的重要部分，可与 Azur
 Azure 机器学习工作室（经典版）用于生成和部署预测模型。 有两种方法可完成此操作：在 HDInsight (Hadoop) 群集上使用 Python 脚本或使用 Hive 表。
 
 ### <a name="scripts"></a>脚本
-本演练中仅概述了主要步骤。 可从 [GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/AzureDataLakeWalkthrough) 下载完整的 **U-SQL 脚本**和 **Jupyter Notebook**。
+本演练中仅概述了主要步骤。 可从 **GitHub** 下载完整的 **U-SQL 脚本**和 [Jupyter Notebook](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/AzureDataLakeWalkthrough)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 在开始阅读这些主题前，必须具有：
 
 * Azure 订阅。 
@@ -133,7 +133,7 @@ Azure 机器学习工作室（经典版）用于生成和部署预测模型。 �
 * [数据采样](#sample)
 * [运行 U-SQL 作业](#run)
 
-此处所述的 U-SQL 脚本将提供在单独的文件中。 可从 [GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/AzureDataLakeWalkthrough) 下载完整的 **U-SQL 脚本**。
+此处所述的 U-SQL 脚本将提供在单独的文件中。 可从 **GitHub** 下载完整的 [U-SQL 脚本](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/AzureDataLakeWalkthrough)。
 
 要执行 U-SQL，请打开 Visual Studio，单击“文件”-->“新建”-->“项目”  ，选择“U-SQL 项目”  ，对其进行命名，并将其保存到文件夹。
 
@@ -146,7 +146,7 @@ Azure 机器学习工作室（经典版）用于生成和部署预测模型。 �
 
 ![9](./media/data-lake-walkthrough/9-portal-submit-job.PNG)
 
-### <a name="ingest"></a>数据引入：从公共 Blob 读入数据
+### <a name="data-ingestion-read-in-data-from-public-blob"></a><a name="ingest"></a>数据引入：从公共 blob 读入数据
 
 将 Azure blob 中数据的位置引用为 **wasb://container\_name\@blob\_storage\_account\_name.blob.core.windows.net/blob_name**，且可以使用 **Extractors.Csv()** 进行提取。 将以下脚本的 wasb 地址中的 container\_name\@blob\_storage\_account\_name 替换为自己的容器名和存储帐户名。 由于文件名的格式都相同，因此可使用 **trip\_data\_\{\*\}.csv** 读入所有 12 个行程文件。
 
@@ -205,11 +205,11 @@ Azure 机器学习工作室（经典版）用于生成和部署预测模型。 �
 
 同样，可以读入费用数据集。 右键单击 Azure Data Lake Store，可在“Azure 门户”-->“数据资源管理器”  或 Visual Studio 中的“文件资源管理器”  中，选择查看数据。
 
- ![10 个](./media/data-lake-walkthrough/10-data-in-ADL-VS.PNG)
+ ![10](./media/data-lake-walkthrough/10-data-in-ADL-VS.PNG)
 
  ![11](./media/data-lake-walkthrough/11-data-in-ADL.PNG)
 
-### <a name="quality"></a>数据质量检查
+### <a name="data-quality-checks"></a><a name="quality"></a>数据质量检查
 读入行程和费用表之后，可按以下方式完成数据质量检查。 可将生成的 CSV 文件输出到 Azure Blob 存储或 Azure Data Lake Store。
 
 查找徽章的数量以及唯一的徽章数量：
@@ -281,7 +281,7 @@ Azure 机器学习工作室（经典版）用于生成和部署预测模型。 �
 
 
 
-### <a name="explore"></a>数据浏览
+### <a name="data-exploration"></a><a name="explore"></a>数据浏览
 使用以下脚本对数据进行浏览可更好地了解数据。
 
 了解已付小费和未付小费的行程分布：
@@ -348,7 +348,7 @@ Azure 机器学习工作室（经典版）用于生成和部署预测模型。 �
     USING Outputters.Csv();
 
 
-### <a name="join"></a>联接行程和费用表
+### <a name="join-trip-and-fare-tables"></a><a name="join"></a>联接行程和费用表
 可通过徽章、hack_license 和 pickup_time 联接行程和费用表。
 
     //join trip and fare table
@@ -390,7 +390,7 @@ Azure 机器学习工作室（经典版）用于生成和部署预测模型。 �
     USING Outputters.Csv();
 
 
-### <a name="sample"></a>数据采样
+### <a name="data-sampling"></a><a name="sample"></a>数据采样
 首先随机从联接表中选择 0.1% 的数据：
 
     //random select 1/1000 data for modeling purpose
@@ -430,7 +430,7 @@ Azure 机器学习工作室（经典版）用于生成和部署预测模型。 �
     USING Outputters.Csv();
 
 
-### <a name="run"></a>运行 U-SQL 作业
+### <a name="run-u-sql-jobs"></a><a name="run"></a>运行 U-SQL 作业
 完成 U-SQL 脚本编辑后，可使用 Azure Data Lake Analytics 帐户将其提交到服务器。 依次单击“Data Lake”  、“提交作业”  ，选择你的“Analytics 帐户”  ，并选择“并行度”  ，最后单击“提交”  按钮。
 
  ![12](./media/data-lake-walkthrough/12-submit-USQL.PNG)
@@ -597,7 +597,7 @@ Azure 机器学习工作室（经典版）用于生成和部署预测模型。 �
 Azure 机器学习工作室（经典版）可直接从 Azure Data Lake Store 中读取数据，然后将其用于创建和部署模型。 此方法使用指向 Azure Data Lake Store 的 Hive 表。 使用此方法需要预配单独的 Azure HDInsight 群集，并在其中创建 Hive 表。 以下部分介绍了如何执行该操作。
 
 ### <a name="create-an-hdinsight-linux-cluster"></a>创建 HDInsight Linux 群集
-从 [Azure 门户](https://portal.azure.cn)创建 HDInsight 群集 (Linux)。 有关详细信息，请参阅[使用 Azure 门户创建包含 Data Lake Store 的 HDInsight 群集](../../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md)中的**创建具有 Azure Data Lake Store 访问权限的 HDInsight 群集**部分。
+从 [Azure 门户](https://portal.azure.cn)创建 HDInsight 群集 (Linux)。 有关详细信息，请参阅**使用 Azure 门户创建包含 Data Lake Store 的 HDInsight 群集**中的[创建具有 Azure Data Lake Store 访问权限的 HDInsight 群集](../../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md)部分。
 
  ![18](./media/data-lake-walkthrough/18-create_HDI_cluster.PNG)
 
@@ -608,7 +608,7 @@ Azure 机器学习工作室（经典版）可直接从 Azure Data Lake Store 中
 
 然后单击“设置”  按钮旁的“仪表板”  ，随即会弹出一个窗口。 在页面的右上角，单击“Hive 视图”  ，然后会看到“查询编辑器”  。
 
- ![20 个](./media/data-lake-walkthrough/20-HDI-dashboard.PNG)
+ ![20](./media/data-lake-walkthrough/20-HDI-dashboard.PNG)
 
  ![21](./media/data-lake-walkthrough/21-Hive-Query-Editor-v2.PNG)
 
@@ -677,10 +677,10 @@ Azure 机器学习工作室（经典版）可直接从 Azure Data Lake Store 中
 
  ![27](./media/data-lake-walkthrough/27-AML-web-api.PNG)
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>总结
 当完成此演练时，就已在 Azure Data Lake 中创建了用于生成可缩放的端到端解决方案的数据科学环境。 此环境用于分析大型公共数据集，可在从数据采集到模型定型，再到将模型部署为 Web 服务的 Data Science Process 的规范步骤中使用。 U-SQL 可用于数据的处理、浏览和采样。 将 Python 和 Hive 与 Azure 机器学习工作室（经典版）配合使用，可生成和部署预测模型。
 
-## <a name="whats-next"></a>后续步骤
+## <a name="whats-next"></a>下一步是什么？
 [Team Data Science Process (TDSP)](/machine-learning/team-data-science-process/) 的学习路径提供了主题的链接，这些主题描述了高级分析过程中的每个步骤。 [Team Data Science Process 演练](walkthroughs.md)页中详细列举了一系列演练，演示如何在各种预测分析方案中使用资源和服务：
 
 * [运行中的 Team Data Science Process：使用 SQL 数据仓库 ](sqldw-walkthrough.md)

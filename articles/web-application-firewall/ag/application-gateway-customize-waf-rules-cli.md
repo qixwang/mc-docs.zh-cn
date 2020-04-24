@@ -9,10 +9,10 @@ ms.date: 11/25/2019
 ms.author: v-junlch
 ms.topic: article
 ms.openlocfilehash: eda5ac27c917fb6ad58211c3cd92972597a4b92a
-ms.sourcegitcommit: e74e8aabc1cbd8a43e462f88d07b041e9c4f31eb
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74461684"
 ---
 # <a name="customize-web-application-firewall-rules-using-the-azure-cli"></a>使用 Azure CLI 自定义 Web 应用程序防火墙规则

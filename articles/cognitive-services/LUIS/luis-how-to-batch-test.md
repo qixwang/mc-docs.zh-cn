@@ -13,10 +13,10 @@ origin.date: 10/25/2019
 ms.date: 09/23/2019
 ms.author: v-lingwu
 ms.openlocfilehash: 971eee85ff386398df6b4df5d9f72f752fb5d5d5
-ms.sourcegitcommit: cf73284534772acbe7a0b985a86a0202bfcc109e
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74884619"
 ---
 # <a name="batch-testing-with-a-set-of-example-utterances"></a>使用一组示例话语进行批处理测试

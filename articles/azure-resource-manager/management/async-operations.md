@@ -7,10 +7,10 @@ ms.author: v-yeche
 ms.date: 01/06/2020
 ms.custom: seodec18
 ms.openlocfilehash: 62e786c63e1e176f544a0f914d45c8c70bfa44d2
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75631408"
 ---
 # <a name="track-asynchronous-azure-operations"></a>跟踪异步 Azure 操作
@@ -38,7 +38,7 @@ ms.locfileid: "75631408"
 
 但是，并非每个异步操作都会返回所有这些值。 例如，可能需要对一个操作计算 Azure-AsyncOperation 标头值，对另一个操作计算 Location 标头值。 
 
-检索这些标头值与检索请求的任何标头值一样。 例如，在 C# 中，可以使用以下代码从名为 `response` 的 `HttpWebResponse` 对象检索标头值：
+检索这些标头值与检索请求的任何标头值一样。 例如，在 C# 中，可以使用以下代码从名为 `HttpWebResponse` 的 `response` 对象检索标头值：
 
 ```cs
 response.Headers.GetValues("Azure-AsyncOperation").GetValue(0)
@@ -68,14 +68,14 @@ response.Headers.GetValues("Azure-AsyncOperation").GetValue(0)
 }
 ```
 
-所有响应都只返回 `status` 。 当状态为“已失败”或“已取消”时，返回错误对象。 所有其他值都是可选的；因此，收到的响应看起来可能不同于示例。
+所有响应都只返回 `status`。 当状态为“已失败”或“已取消”时，返回错误对象。 所有其他值都是可选的；因此，收到的响应看起来可能不同于示例。
 
 ## <a name="provisioningstate-values"></a>provisioningState 值
 
-用于创建、更新或删除（PUT、PATCH、DELETE）资源的操作通常返回 `provisioningState` 值。 完成操作后，返回以下三个值之一： 
+用于创建、更新或删除（PUT、PATCH、DELETE）资源的操作通常返回 `provisioningState` 值。 完成操作后，将返回以下三个值之一： 
 
 * 已成功
-* 已失败
+* 失败
 * 已取消
 
 所有其他值表示该操作仍在运行。 资源提供程序可以返回自定义的值，用于指示其状态。 例如，当请求已收到且正在运行时，用户会收到“已接受”  。

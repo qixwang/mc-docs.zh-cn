@@ -12,10 +12,10 @@ ms.topic: conceptual
 origin.date: 11/25/2019
 ms.date: 01/06/2020
 ms.openlocfilehash: 2851571d3973d95cb4f559b5938e95561e73a8f0
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75624306"
 ---
 # <a name="expressions-and-functions-in-azure-data-factory"></a>Azure 数据工厂中的表达式和函数
@@ -256,7 +256,7 @@ ms.locfileid: "75624306"
 | [addHours](control-flow-expression-language-functions.md#addHours) | 将小时数加到时间戳。 |
 | [addMinutes](control-flow-expression-language-functions.md#addMinutes) | 将分钟数加到时间戳。 |
 | [addSeconds](control-flow-expression-language-functions.md#addSeconds) | 将秒数加到时间戳。 |
-| [addToTime](control-flow-expression-language-functions.md#addToTime) | 将时间单位数加到时间戳。 另请参阅 [getFutureTime](control-flow-expression-language-functions.md#getFutureTime)。 |
+| [addToTime](control-flow-expression-language-functions.md#addToTime) | 将一定数目的时间单位加到时间戳。 另请参阅 [getFutureTime](control-flow-expression-language-functions.md#getFutureTime)。 |
 | [convertFromUtc](control-flow-expression-language-functions.md#convertFromUtc) | 将时间戳从协调世界时 (UTC) 转换为目标时区。 |
 | [convertTimeZone](control-flow-expression-language-functions.md#convertTimeZone) | 将时间戳从源时区转换为目标时区。 |
 | [convertToUtc](control-flow-expression-language-functions.md#convertToUtc) | 将时间戳从源时区转换为协调世界时 (UTC)。 |
@@ -266,10 +266,10 @@ ms.locfileid: "75624306"
 | [formatDateTime](control-flow-expression-language-functions.md#formatDateTime) | 返回时间戳中的日期。 |
 | [getFutureTime](control-flow-expression-language-functions.md#getFutureTime) | 返回当前时间戳加上指定的时间单位。 另请参阅 [addToTime](control-flow-expression-language-functions.md#addToTime)。 |
 | [getPastTime](control-flow-expression-language-functions.md#getPastTime) | 返回当前时间戳减去指定的时间单位。 另请参阅 [subtractFromTime](control-flow-expression-language-functions.md#subtractFromTime)。 |
-| [startOfDay](control-flow-expression-language-functions.md#startOfDay) | 返回时间戳的日期起始位置。 |
-| [startOfHour](control-flow-expression-language-functions.md#startOfHour) | 返回时间戳的小时起始位置。 |
-| [startOfMonth](control-flow-expression-language-functions.md#startOfMonth) | 返回时间戳的月份起始位置。 |
-| [subtractFromTime](control-flow-expression-language-functions.md#subtractFromTime) | 从时间戳中减去时间单位数。 另请参阅 [getPastTime](control-flow-expression-language-functions.md#getPastTime)。 |
+| [startOfDay](control-flow-expression-language-functions.md#startOfDay) | 返回时间戳中的天的开始时间。 |
+| [startOfHour](control-flow-expression-language-functions.md#startOfHour) | 返回时间戳中的小时的开始时间。 |
+| [startOfMonth](control-flow-expression-language-functions.md#startOfMonth) | 返回时间戳中的月份的开始时间。 |
+| [subtractFromTime](control-flow-expression-language-functions.md#subtractFromTime) | 从时间戳中减去一定数目的时间单位。 另请参阅 [getPastTime](control-flow-expression-language-functions.md#getPastTime)。 |
 | [ticks](control-flow-expression-language-functions.md#ticks) | 返回指定时间戳的 `ticks` 属性值。 |
 | [utcNow](control-flow-expression-language-functions.md#utcNow) | 返回字符串形式的当前时间戳。 |
 
@@ -1477,7 +1477,7 @@ equals('<object1>', '<object2>')
 
 | 参数 | 必须 | 类型 | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*object1*>, <*object2*> | 是 | 各种 | 要比较的值、表达式或对象 |
+| <*object1*>, <*object2*> | 是 | 各种各样 | 要比较的值、表达式或对象 |
 |||||
 
 | 返回值 | 类型 | 说明 |

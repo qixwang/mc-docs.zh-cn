@@ -1,5 +1,5 @@
 ---
-title: '向 ExpressRoute 的 VNet 添加虚拟网络网关：PowerShell：Azure '
+title: '将虚拟网络网关添加到 ExpressRoute 的 VNet：PowerShell：Azure '
 description: 本文指导将 VPN 网关添加到已为 ExpressRoute 创建的资源管理器 VNet 中。
 documentationcenter: na
 services: expressroute
@@ -17,10 +17,10 @@ origin.date: 02/21/2019
 ms.author: v-yiso
 ms.date: 12/02/2019
 ms.openlocfilehash: 6988dbd19bedfe0f639fe521b6c058a511b84019
-ms.sourcegitcommit: 9e92bcf6aa02fc9e7b3a29abadf6b6d1a8ece8c4
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74389456"
 ---
 # <a name="configure-a-virtual-network-gateway-for-expressroute-using-powershell"></a>使用 PowerShell 配置 ExpressRoute 的虚拟网络网关

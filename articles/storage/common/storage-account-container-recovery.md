@@ -8,10 +8,10 @@ origin.date: 10/30/2019
 ms.date: 12/02/2019
 ms.service: storage
 ms.openlocfilehash: 4bcb11dbf5e0c068f9dbf6882f79261861b4ec3d
-ms.sourcegitcommit: 9597d4da8af58009f9cef148a027ccb7b32ed8cf
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74655455"
 ---
 # <a name="storage-account-container-recovery"></a>存储帐户容器恢复

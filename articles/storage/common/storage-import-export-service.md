@@ -10,10 +10,10 @@ ms.date: 10/28/2019
 ms.author: v-jay
 ms.subservice: common
 ms.openlocfilehash: 4342521d473b405d3fa799044ca0b4ee7d657254
-ms.sourcegitcommit: 6a19227dcc0c6e0da5b82c4f69d0227bf38a514a
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74328714"
 ---
 # <a name="use-the-azure-importexport-service-to-transfer-data-to-azure-storage"></a>使用 Azure 导入/导出服务将数据传输到 Azure 存储
@@ -247,11 +247,11 @@ Azure 导入/导出服务支持将数据复制到所有公共 Azure 存储帐户
 |:--- |:--- |
 | Specified | 对于导入作业，在 Azure 门户中创建作业时，驱动器的初始状态为 Specified。 对于导出作业，由于在创建该作业时未指定驱动器，因此驱动器的初始状态为 Received。 |
 | Received | 导入/导出服务操作员为导入作业处理从货运公司收到的驱动器后，驱动器转换为 Received 状态。 对于导出作业，初始驱动器状态为 Received。 |
-| NeverReceived | 当作业的包裹已送达但包裹不包含驱动器时，驱动器将转换为 NeverReceived 状态。 如果在服务收到发货信息后的两周内包裹未送达数据中心，驱动器也会转换为此状态。 |
+| NeverReceived | 当作业的包裹已送达但包裹不包含驱动器时，驱动器会转换为 NeverReceived 状态。 如果在服务收到发货信息后的两周内包裹未送达数据中心，驱动器也会转换为此状态。 |
 | 转移 | 服务开始将数据从驱动器传输到 Azure 存储时，驱动器会转为 Transferring 状态。 |
 | 已完成 | 服务成功传输所有数据且未出错时，驱动器会转换为 Completed 状态。
 | CompletedMoreInfo | 如果服务在从驱动器中复制数据或将数据复制到驱动器时遇到一些问题，驱动器会转为 CompletedMoreInfo 状态。 信息可以包含有关覆盖 Blob 的错误、警告或信息性消息。
-| ShippedBack | 驱动器从数据中心寄送到回邮地址后，驱动器将转换为 ShippedBack 状态。 |
+| ShippedBack | 驱动器从数据中心寄送到回邮地址后，驱动器会转换为 ShippedBack 状态。 |
 
 Azure 门户中的此映像会显示示例作业的驱动器状态：
 
@@ -276,7 +276,7 @@ Azure 门户中的此映像会显示示例作业的驱动器状态：
 
 将驱动器寄送到 Azure 时，需要向快递商支付寄送费用。 当 Microsoft 将驱动器寄回给你时，寄送费用由你在创建作业时提供的快递商帐户支付。
 
-**事务成本**
+**事务费用**
 
 将数据导入 Azure 存储时，除标准存储事务成本外没有任何事务成本。 将数据从 Blob 存储导出时，需支付标准的传出费用。 有关事务费用的更多详细信息，请参阅 [数据传输定价](https://www.azure.cn/pricing/details/data-transfer/)
 
@@ -465,7 +465,7 @@ Azure 数据中心会将不符合支持要求的驱动器返还给你。 如果�
 
 **是否可为导入/导出作业从 21Vianet 购买驱动器？**
 
-否。 对于导入和导出作业，用户将需要装运自己的驱动器。
+否。 对于导入和导出作业，需要装运自己的驱动器。
 
 **如何才能访问此服务导入的数据？**
 
@@ -480,7 +480,7 @@ Azure 数据中心会将不符合支持要求的驱动器返还给你。 如果�
 准备驱动器时，可以使用数据集 CSV 文件中名为 /Disposition:<rename|no-overwrite|overwrite> 的字段指定是否应覆盖或忽略目标文件。 默认情况下，该服务会将新文件重命名，而不是覆盖现有 Blob 或文件。
 
 **WAImportExport 工具是否与 32 位操作系统兼容？**
-不是。 WAImportExport 工具仅与 64 位 Windows 操作系统兼容。 有关受支持的 OS 版本的完整列表，请参阅 [先决条件](#prerequisites) 中的“操作系统”部分。
+否。 WAImportExport 工具仅与 64 位 Windows 操作系统兼容。 有关受支持的 OS 版本的完整列表，请参阅 [先决条件](#prerequisites) 中的“操作系统”部分。
 
 **是否应该在包裹中添加除硬盘驱动器之外的其他东西？**
 

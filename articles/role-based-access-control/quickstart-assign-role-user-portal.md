@@ -14,15 +14,15 @@ ms.workload: identity
 ms.date: 12/04/2019
 ms.author: v-junlch
 ms.openlocfilehash: b8a493594e6b5e872e27683dacf2535e0ce9f6a6
-ms.sourcegitcommit: cf73284534772acbe7a0b985a86a0202bfcc109e
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74884920"
 ---
 # <a name="tutorial-grant-a-user-access-to-azure-resources-using-rbac-and-the-azure-portal"></a>教程：使用 RBAC 和 Azure 门户授予用户对 Azure 资源的访问权限
 
-可以通过[基于角色的访问控制 (RBAC)](overview.md) 方式管理对 Azure 资源的访问权限。 在本教程中，你将授权用户在某个资源组中创建和管理虚拟机。
+可以通过[基于角色的访问控制 (RBAC)](overview.md) 管理对 Azure 资源的访问权限。 在本教程中，你将授权用户在某个资源组中创建和管理虚拟机。
 
 本教程介绍如何执行下列操作：
 
@@ -76,7 +76,7 @@ ms.locfileid: "74884920"
 
    ![“添加角色分配”窗格](./media/quickstart-assign-role-user-portal/add-role-assignment.png)
 
-1. 在“角色”下拉列表中，选择“虚拟机参与者”。  
+1. 在“角色”下拉列表中选择“虚拟机参与者”。  
 
 1. 在“选择”  列表中，选择你自己或另一用户。
 

@@ -17,10 +17,10 @@ origin.date: 05/29/2018
 ms.date: 11/22/2019
 ms.author: v-junlch
 ms.openlocfilehash: acaf4acd2e484372aeca9cff333ebc9626d78aed
-ms.sourcegitcommit: e74e8aabc1cbd8a43e462f88d07b041e9c4f31eb
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74461643"
 ---
 # <a name="deploy-your-application-on-virtual-machine-scale-sets"></a>在虚拟机规模集上部署应用程序
@@ -37,7 +37,7 @@ ms.locfileid: "74461643"
 - [Azure PowerShell](tutorial-use-custom-image-powershell.md)
 
 
-## <a name="already-provisioned"></a>使用自定义脚本扩展安装应用
+## <a name="install-an-app-with-the-custom-script-extension"></a><a name="already-provisioned"></a>使用自定义脚本扩展安装应用
 自定义脚本扩展在 Azure VM 上下载和执行脚本。 此扩展适用于部署后配置、软件安装或其他任何配置/管理任务。 可以从 Azure 存储或 GitHub 下载脚本，或者在扩展运行时将脚本提供给 Azure 门户。 若要详细了解如何使用自定义脚本扩展安装应用，请参阅以下教程：
 
 - [Azure CLI](tutorial-install-apps-cli.md)

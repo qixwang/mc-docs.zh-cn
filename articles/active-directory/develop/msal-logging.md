@@ -19,10 +19,10 @@ ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e9038ff1d74312fc20407c503598b735ae725e26
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75335286"
 ---
 # <a name="logging-in-msal-applications"></a>MSAL 应用程序中的日志记录
@@ -44,7 +44,7 @@ MSAL 提供多个日志记录详细级别：
 
 若要详细了解特定语言的 MSAL 日志记录，请选择与你的语言匹配的选项卡：
 
-## <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
+## <a name="net"></a>[.NET](#tab/dotnet)
 
 ## <a name="logging-in-msalnet"></a>在 MSAL.NET 中进行日志记录
 
@@ -85,7 +85,7 @@ class Program
  }
  ```
 
-## <a name="androidtabandroid"></a>[Android](#tab/android)
+## <a name="android"></a>[Android](#tab/android)
 
 ## <a name="logging-in-msal-for-android-using-java"></a>使用 Java 的 MSAL for Android 中的日志记录
 
@@ -129,7 +129,7 @@ Logger.getInstance().setEnablePII(false);
 Logger.getInstance().setEnableLogcatLog(true);
 ```
 
-## <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+## <a name="javascript"></a>[JavaScript](#tab/javascript)
 
  可以在 MSAL.js (JavaScript) 中启用日志记录，方法是在配置过程中传递一个记录器对象，以便创建 `UserAgentApplication` 实例。 此记录器对象具有以下属性：
 
@@ -161,7 +161,7 @@ var msalConfig = {
 var UserAgentApplication = new Msal.UserAgentApplication(msalConfig);
 ```
 
-## <a name="objective-ctabobjc"></a>[Objective-C](#tab/objc)
+## <a name="objective-c"></a>[Objective-C](#tab/objc)
 
 ## <a name="msal-for-ios-and-macos-logging-objc"></a>适用于 iOS 和 macOS 的 MSAL 日志记录 - ObjC
 
@@ -239,7 +239,7 @@ MSAL 日志消息的消息部分采用 `TID = <thread_id> MSAL <sdk_ver> <OS> <O
 
 提供关联 ID 和时间戳有助于跟踪问题。 时间戳和关联 ID 信息在日志消息中提供。 只能从 MSAL 日志记录消息中可靠地检索这些信息。
 
-## <a name="swifttabswift"></a>[Swift](#tab/swift)
+## <a name="swift"></a>[Swift](#tab/swift)
 
 ## <a name="msal-for-ios-and-macos-logging-swift"></a>适用于 iOS 和 macOS 的 MSAL 日志记录 - Swift
 
@@ -316,7 +316,7 @@ MSAL 日志消息的消息部分采用 `TID = <thread_id> MSAL <sdk_ver> <OS> <O
 
 提供关联 ID 和时间戳有助于跟踪问题。 时间戳和关联 ID 信息在日志消息中提供。 只能从 MSAL 日志记录消息中可靠地检索这些信息。
 
-## <a name="javatabjava"></a>[Java](#tab/java)
+## <a name="java"></a>[Java](#tab/java)
 
 ## <a name="msal-for-java-logging"></a>适用于 Java 的 MSAL 日志记录
 
@@ -366,7 +366,7 @@ PublicClientApplication app2 = PublicClientApplication.builder(PUBLIC_CLIENT_ID)
         .build();
 ```
 
-## <a name="pythontabpython"></a>[Python](#tab/python)
+## <a name="python"></a>[Python](#tab/python)
 
 ## <a name="msal-for-python-logging"></a>适用于 Python 的 MSAL 日志记录
 

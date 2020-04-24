@@ -12,10 +12,10 @@ ms.date: 03/14/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=garyericson, previous-ms.author=garye
 ms.openlocfilehash: 0a19300f1148b96b75d82c8d9b38b9445031bced
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75598521"
 ---
 # <a name="cheat-sheet-for-an-automated-data-pipeline-for-azure-machine-learning-predictions"></a>Azure 机器学习预测中自动化数据管道的速查表
@@ -27,7 +27,7 @@ ms.locfileid: "75598521"
 ## <a name="download-the-machine-learning-automated-data-pipeline-cheat-sheet"></a>下载机器学习自动化数据管道的速查表
 下载速查表后，可将其打印为 A3 大小（11 x 17 英寸）。
 
-在此下载备忘单： **[Microsoft Azure 机器学习自动化数据管道速查表](https://download.microsoft.com/download/C/C/7/CC726F8B-2E6F-4C20-9B6F-AFBEE8253023/microsoft-machine-learning-operationalization-cheat-sheet_v1.pdf)**
+在此处下载速查表： **[Microsoft Azure 机器学习自动化数据管道的速查表](https://download.microsoft.com/download/C/C/7/CC726F8B-2E6F-4C20-9B6F-AFBEE8253023/microsoft-machine-learning-operationalization-cheat-sheet_v1.pdf)**
 
 ![Microsoft Azure 机器学习工作室（经典）功能概述][op-cheat-sheet]
 

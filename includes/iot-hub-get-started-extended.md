@@ -1,16 +1,16 @@
 ---
 ms.openlocfilehash: b3a2f3532a01acedf8b613b67f360b29b4e5601d
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75468394"
 ---
 ## <a name="extended-iot-scenarios"></a>扩展的 IoT 方案
 
 使用其他 Azure 服务和工具。 将设备连接到 IoT 中心后，可以浏览使用其他 Azure 工具和服务的其他方案：
 
-| 方案                                                   | Azure 服务或工具              |
+| 场景                                                   | Azure 服务或工具              |
 |----------------------------------------------------------- |------------------------------------|
 | [管理 IoT 中心消息](~/articles/iot-hub/iot-hub-vscode-iot-toolkit-cloud-device-messaging.md)                  | VS Code Azure IoT 中心工具包扩展|
 | [管理 IoT 设备](~/articles/iot-hub/iot-hub-device-management-iot-extension-azure-cli-2-0.md)                        | Azure CLI 和 IoT 扩展    |

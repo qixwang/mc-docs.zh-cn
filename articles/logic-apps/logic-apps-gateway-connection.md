@@ -11,10 +11,10 @@ ms.topic: article
 origin.date: 11/06/2019
 ms.date: 12/23/2019
 ms.openlocfilehash: 4f29ab1c9d7583c6cc1c6f7cfa7d7fc699b11ca7
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75336197"
 ---
 # <a name="connect-to-on-premises-data-sources-from-azure-logic-apps"></a>从 Azure 逻辑应用连接到本地数据源

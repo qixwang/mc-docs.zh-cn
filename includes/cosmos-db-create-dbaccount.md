@@ -10,10 +10,10 @@ ms.date: 12/16/2019
 ms.author: v-yeche
 ms.custom: include file
 ms.openlocfilehash: 959e15927c34ce0be36d294cc459b369f4c4efb5
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75334551"
 ---
 1. 转到 [Azure 门户](https://portal.azure.cn/)以创建 Azure Cosmos DB 帐户。 搜索“Azure Cosmos DB”，然后选择它。  。
@@ -23,7 +23,7 @@ ms.locfileid: "75334551"
 1. 选择“添加”   。
 1. 在“创建 Azure Cosmos DB 帐户”页上，输入新 Azure Cosmos 帐户的基本设置  。 
 
-    |设置|值|Description |
+    |设置|Value|说明 |
     |---|---|---|
     |订阅|订阅名称|选择要用于此 Azure Cosmos 帐户的 Azure 订阅。 |
     |资源组|资源组名称|选择一个资源组，或者选择“新建”，然后输入新资源组的唯一名称。  |

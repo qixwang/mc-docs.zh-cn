@@ -20,10 +20,10 @@ ms.author: v-tawe
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.openlocfilehash: 320bd50ef8f5a1af7cdbf7547f5c7d2b46d78163
-ms.sourcegitcommit: cf73284534772acbe7a0b985a86a0202bfcc109e
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74884969"
 ---
 # <a name="tutorial-push-notifications-to-windows-phone-apps-by-using-azure-notification-hubs"></a>教程：使用 Azure 通知中心向 Windows Phone 应用推送通知
@@ -32,19 +32,19 @@ ms.locfileid: "74884969"
 
 本教程演示如何使用 Azure 通知中心将推送通知发送到 Windows Phone 8 或 Windows Phone 8.1 Silverlight 应用程序。 如果要以 Windows Phone 8.1（非 Silverlight）为目标，请参阅本教程的 [Windows Universal](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md) 版本。
 
-在本教程中，你将创建一个空白 Windows Phone 8 应用，它使用 Microsoft 推送通知服务 (MPNS) 接收推送通知。 创建应用后，请使用通知中心将推送通知广播到运行应用的所有设备。
+在本教程中，将创建一个空白 Windows Phone 8 应用，它使用 Microsoft 推送通知服务 (MPNS) 接收推送通知。 创建应用后，请使用通知中心将推送通知广播到运行应用的所有设备。
 
 > [!NOTE]
-> 通知中心 Windows Phone SDK 不支持将 Windows 推送通知服务 (WNS) 与 Windows Phone 8.1 Silverlight 应用配合使用。 若要将 WNS（而不是 MPNS）与 Windows Phone 8.1 Silverlight 应用配合使用，请遵循使用 REST API 的 [通知中心 - Windows Phone Silverlight 教程]。
+> 通知中心 Windows Phone SDK 不支持将 Windows 推送通知服务 (WNS) 与 Windows Phone 8.1 Silverlight 应用配合使用。 要将 WNS（而不是 MPNS）与 Windows Phone 8.1 Silverlight 应用配合使用，请遵循使用 REST API 的 [通知中心 - Windows Phone Silverlight 教程]。
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 创建通知中心
 > * 创建 Windows Phone 应用程序
 > * 测试性发送通知
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * **Azure 订阅**。 如果没有 Azure 订阅，请在开始前[创建一个试用 Azure 帐户](https://www.azure.cn/pricing/1rmb-trial/)。
 * [包含移动开发组件的 Visual Studio 2015 Express](https://www.visualstudio.com/vs/older-downloads/)
@@ -79,15 +79,15 @@ ms.locfileid: "74884969"
     在 Visual Studio 2013 Update 2 或更高版本中，必须改为创建 Windows Phone Silverlight 应用程序。
 
     ![Visual Studio - 新建项目 - 空白应用 - Windows Phone Silverlight][11]
-2. 在 Visual Studio 中，右键单击该解决方案，然后单击“管理 NuGet 包”  。
-3. 搜索 `WindowsAzure.Messaging.Managed`，单击“安装”，然后接受使用条款  。
+2. 在 Visual Studio 中，右键单击该解决方案，并单击“管理 NuGet 包”。 
+3. 搜索 `WindowsAzure.Messaging.Managed`，单击“安装”，并接受使用条款。 
 
     ![Visual Studio - NuGet 包管理器][20]
 4. 打开文件 App.xaml.cs 并添加以下 `using` 语句：
 
         using Microsoft.Phone.Notification;
         using Microsoft.WindowsAzure.Messaging;
-5. 在 `App.xaml.cs` 中的 `Application_Launching` 方法顶部添加以下代码：
+5. 在 `Application_Launching` 中的 `App.xaml.cs` 方法顶部添加以下代码：
 
     ```csharp
     private void Application_Launching(object sender, LaunchingEventArgs e)
@@ -118,12 +118,12 @@ ms.locfileid: "74884969"
    > 值 `MyPushChannel` 是用于查找 [HttpNotificationChannel](https://msdn.microsoft.com/library/windows/apps/microsoft.phone.notification.httpnotificationchannel.aspx) 集合中现有通道的索引。 如果不存在，则使用该名称创建新条目。
 
     插入中心名称以及在前一部分记下的名为 `DefaultListenSharedAccessSignature` 的连接字符串。
-    此代码从 MPNS 检索应用的通道 URI，并将该通道 URI 注册到用户的通知中心。 它还保证每次启动应用程序时都在通知中心注册通道 URI。
+    此代码从 MPNS 检索应用的通道 URI，然后将该通道 URI 注册到通知中心。 它还保证每次启动应用程序时都在通知中心注册通道 URI。
 
    > [!NOTE]
-   > 本教程将一个 toast 通知发送到设备。 发送磁贴通知时，必须在通道上调用 `BindToShellTile` 方法。 若要同时支持 toast 通知和磁贴通知，请同时调用 `BindToShellTile` 和 `BindToShellToast`。
+   > 本教程会一个 toast 通知发送到设备。 发送磁贴通知时，必须在通道上调用 `BindToShellTile` 方法。 若要同时支持 toast 通知和磁贴通知，请同时调用 `BindToShellTile` 和 `BindToShellToast`。
 
-6. 在解决方案资源管理器中，展开“属性”，打开 `WMAppManifest.xml` 文件，单击“功能”选项卡并确保选中 **ID_CAP_PUSH_NOTIFICATION** 功能   。 应用现在可以接收推送通知了。
+6. 在解决方案资源管理器中，展开“属性”，打开 **文件，单击“功能”选项卡并确保选中**ID_CAP_PUSH_NOTIFICATION`WMAppManifest.xml` 功能。   应用现在可以接收推送通知了。
 
     ![Visual Studio - Windows Phone 应用功能][14]
 7. 按 `F5` 键以运行应用。 随后应用中会显示注册消息。

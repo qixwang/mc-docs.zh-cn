@@ -10,15 +10,15 @@ ms.date: 12/02/2019
 ms.author: v-jay
 ms.custom: include file
 ms.openlocfilehash: 013c8fc85ff30c946b4c86df3d7cffb30025b825
-ms.sourcegitcommit: fac243483f641e1d01646a30197522a60599d837
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74552989"
 ---
 创建虚拟网络网关时，需要指定要使用的网关 SKU。 请根据工作负荷、吞吐量、功能和 SLA 的类型，选择满足需求的 SKU。
 
-###  <a name="benchmark"></a>按隧道、连接和吞吐量列出的网关 SKU
+###  <a name="gateway-skus-by-tunnel-connection-and-throughput"></a><a name="benchmark"></a>按隧道、连接和吞吐量列出的网关 SKU
 
 [!INCLUDE [Aggregated throughput by SKU](./vpn-gateway-table-gwtype-aggtput-include.md)]
 
@@ -28,7 +28,7 @@ ms.locfileid: "74552989"
 >  * 如需 ExpressRoute 网关 SKU，请参阅[适用于 ExpressRoute 的虚拟网络网关](../articles/expressroute/expressroute-about-virtual-network-gateways.md)。
 >
 
-###  <a name="feature"></a>按功能集列出的网关 SKU
+###  <a name="gateway-skus-by-feature-set"></a><a name="feature"></a>按功能集列出的网关 SKU
 
 新 VPN 网关 SKU 简化了网关上提供的功能集：
 
@@ -42,7 +42,7 @@ ms.locfileid: "74552989"
 
 (\*\*) 基本 SKU 被视为旧版 SKU。 基本 SKU 具有某些功能限制。 使用基本 SKU 的网关无法调整为新网关 SKU 中的一种，必须更改为新的 SKU，这就需要删除并新建 VPN 网关。
 
-###  <a name="workloads"></a>网关 SKU - 生产与开发-测试工作负荷
+###  <a name="gateway-skus---production-vs-dev-test-workloads"></a><a name="workloads"></a>网关 SKU - 生产与开发-测试工作负荷
 
 由于 SLA 和功能集的差异，建议使用以下 SKU 比较生产与开发-测试：
 

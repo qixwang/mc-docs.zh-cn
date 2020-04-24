@@ -10,10 +10,10 @@ ms.date: 11/25/2019
 ms.author: v-junlch
 ms.topic: article
 ms.openlocfilehash: 8dc0420f51bde236471e1a835f1935662edd9cdd
-ms.sourcegitcommit: e74e8aabc1cbd8a43e462f88d07b041e9c4f31eb
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74461646"
 ---
 # <a name="customize-web-application-firewall-rules-using-powershell"></a>使用 PowerShell 自定义 Web 应用程序防火墙规则

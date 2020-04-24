@@ -13,10 +13,10 @@ ms.author: v-jay
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 ms.openlocfilehash: 807649bfe2a6db7c35457036d4e572fa62708082
-ms.sourcegitcommit: 369038a7d7ee9bbfd26337c07272779c23d0a507
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74807618"
 ---
 # <a name="quickstart-pause-and-resume-compute-for-an-azure-sql-data-warehouse-in-the-azure-portal"></a>快速入门：在 Azure 门户中暂停和恢复 Azure SQL 数据仓库的计算
@@ -40,7 +40,7 @@ ms.locfileid: "74807618"
 执行以下步骤，暂停 SQL 数据仓库。
 
 1. 在 Azure 门户的左侧页面中，单击“SQL 数据库”  。
-2. 从“SQL 数据库”页中选择“mySampleDataWarehouse”   。 此操作将打开数据仓库。 
+2. 从“SQL 数据库”页中选择“mySampleDataWarehouse”   。 此操作打开数据仓库。 
 3. 在“mySampleDataWarehouse”页中，可看到“状态”显示为“联机”    。
 
     ![联机计算](media/pause-and-resume-compute-portal/compute-online.png)
@@ -62,7 +62,7 @@ ms.locfileid: "74807618"
 执行以下步骤，恢复 SQL 数据仓库。
 
 1. 在 Azure 门户的左侧页面中，单击“SQL 数据库”  。
-2. 从“SQL 数据库”页中选择“mySampleDataWarehouse”   。 此操作将打开数据仓库。 
+2. 从“SQL 数据库”页中选择“mySampleDataWarehouse”   。 此操作打开数据仓库。 
 3. 在“mySampleDataWarehouse”页中，可看到“状态”显示为“已暂停”    。
 
     ![脱机计算](media/pause-and-resume-compute-portal/compute-offline.png)

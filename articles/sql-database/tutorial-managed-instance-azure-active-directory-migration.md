@@ -12,10 +12,10 @@ ms.reviewer: vanto
 origin.date: 10/30/2019
 ms.date: 12/16/2019
 ms.openlocfilehash: ccccb68297c3f8883bbd834120d312edc997b5b9
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75348512"
 ---
 # <a name="tutorial-migrate-sql-server-on-premises-windows-users-and-groups-to-azure-sql-database-managed-instance-using-t-sql-ddl-syntax"></a>教程：使用 T-SQL DDL 语法将 SQL Server 本地 Windows 用户和组迁移到 Azure SQL 数据库托管实例

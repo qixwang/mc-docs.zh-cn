@@ -8,10 +8,10 @@ origin.date: 03/01/2019
 ms.date: 01/13/2020
 ms.author: v-tawe
 ms.openlocfilehash: 6bf89d2cd42980930b527e05a8d463a091c9ded5
-ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75600576"
 ---
 # <a name="messages-and-connections-in-azure-signalr-service"></a>Azure SignalR 服务中的消息和连接

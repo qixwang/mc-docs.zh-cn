@@ -9,10 +9,10 @@ origin.date: 11/04/2019
 ms.date: 11/19/2019
 ms.author: v-junlch
 ms.openlocfilehash: 8d5258f882ccae7975d3c26945de27ab70bfaff6
-ms.sourcegitcommit: fdbd1b6df618379dfeab03044a18c373b5fbb8ec
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74328444"
 ---
 # <a name="troubleshoot-common-questions-or-issues-with-ingress-controller"></a>排查入口控制器的常见问题

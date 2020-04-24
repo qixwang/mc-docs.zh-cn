@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/06/2019
 ms.author: larryfr
 ms.openlocfilehash: f9f57322c989f04928875fe22ef7fc5ab71f9c5a
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75599395"
 ---
 `deploymentconfig.json` 文档中的条目对应于 [AksWebservice.deploy_configuration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aks.aksservicedeploymentconfiguration?view=azure-ml-py) 的参数。 下表描述了 JSON 文档中的实体与方法参数之间的映射：

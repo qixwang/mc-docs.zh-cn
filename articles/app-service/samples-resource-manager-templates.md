@@ -9,10 +9,10 @@ ms.date: 01/13/2020
 ms.author: v-tawe
 ms.custom: mvc
 ms.openlocfilehash: 4d412bde8beed84a971e8dc30fb319695c9e6d3b
-ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75600396"
 ---
 # <a name="azure-resource-manager-templates-for-app-service"></a>应用服务的 Azure 资源管理器模板

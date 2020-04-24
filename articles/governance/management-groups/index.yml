@@ -12,10 +12,10 @@ metadata:
   origin.date: 09/26/2019
   ms.date: 12/02/2019
   ms.openlocfilehash: 4eb342c9edd45708dd2b75b7d7d180665e64e99e
-  ms.sourcegitcommit: 298eab5107c5fb09bf13351efeafab5b18373901
+  ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 11/29/2019
+  ms.lasthandoff: 04/17/2020
   ms.locfileid: "74658182"
 landingContent:
 - title: 关于 Azure 治理

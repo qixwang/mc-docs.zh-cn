@@ -9,10 +9,10 @@ ms.date: 01/13/2020
 ms.author: v-tawe
 ms.custom: seodec18
 ms.openlocfilehash: 03a54d40c9865dd279379d167fadc98e8fc38250
-ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75600473"
 ---
 # <a name="app-service-environment-management-addresses"></a>应用服务环境管理地址

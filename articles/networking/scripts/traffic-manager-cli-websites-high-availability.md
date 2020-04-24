@@ -14,10 +14,10 @@ origin.date: 06/26/2018
 ms.date: 12/09/2019
 ms.author: v-tawe
 ms.openlocfilehash: d67c9c1061d7326eb1ab50a8b350a10aa1e1f10c
-ms.sourcegitcommit: 8c3bae15a8a5bb621300d81adb34ef08532fe739
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74884069"
 ---
 # <a name="route-traffic-for-high-availability-of-applications---azure-cli"></a>为实现应用程序的高可用性路由流量 - Azure CLI
@@ -135,7 +135,7 @@ az group delete --name myResourceGroup2 --yes
 
 此脚本使用以下命令创建资源组、Web 应用、流量管理器配置文件和所有相关资源。 表中的每条命令均链接到特定于命令的文档。
 
-| 命令 | 注释 |
+| Command | 说明 |
 |---|---|
 | [az group create](https://docs.azure.cn/cli/group) | 创建用于存储所有资源的资源组。 |
 | [az appservice plan create](https://docs.azure.cn/cli/appservice/plan) | 创建应用服务计划。 这与 Azure Web 应用的服务器场类似。 |

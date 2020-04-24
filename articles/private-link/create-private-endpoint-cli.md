@@ -9,10 +9,10 @@ origin.date: 09/16/2019
 ms.date: 01/06/2020
 ms.author: v-yeche
 ms.openlocfilehash: 1c5cc47870f7d0d843e35f25d272bbeba040ad1f
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75631400"
 ---
 # <a name="quickstart-create-a-private-endpoint-using-azure-cli"></a>快速入门：使用 Azure CLI 创建专用终结点

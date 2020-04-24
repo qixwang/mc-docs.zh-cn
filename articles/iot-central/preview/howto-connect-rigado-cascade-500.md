@@ -12,10 +12,10 @@ author: avneet723
 origin.date: 10/19/2019
 ms.date: 12/16/2019
 ms.openlocfilehash: b2dbcc362f790fab36716521767027a244040f77
-ms.sourcegitcommit: 6ffa4d50cee80c7c0944e215ca917a248f2a4bcd
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74883057"
 ---
 # <a name="connect-a-rigado-cascade-500-gateway-device-to-your-azure-iot-central-application"></a>如何将 Rigado Cascade 500 网关设备连接到 Azure IoT Central 应用程序
@@ -44,7 +44,7 @@ Cascade 500 已预先通过 Azure IoT 即插即用 (PnP) 认证，使我们的�
 1. 在左侧窗格中导航到“设备模板”选项卡，选择“+ 新建”：  ![创建新设备模板](./media/howto-connect-rigado-cascade500/device-template-new.png)
 1. 页面中提供了“创建自定义模板”或“使用预配置的设备模板”选项
 1. 按如下所示，从预配置的设备模板列表中选择 C500 设备模板：![选择 C500 设备模板](./media/howto-connect-rigado-cascade500/device-template-preconfigured.png)
-1. 选择“下一步:自定义”以继续执行下一步。 
+1. 在完成时选择“下一步:自定义”以继续执行下一步。 
 1. 在下一个屏幕上，选择“创建”以将 C500 设备模板加入到 IoT Central 应用程序中。
 
 ## <a name="retrieve-application-connection-details"></a>检索应用程序连接详细信息

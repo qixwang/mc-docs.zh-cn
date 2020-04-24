@@ -11,10 +11,10 @@ ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 05/08/2018
 ms.openlocfilehash: d444bf4001ef77e18afad37f0786f9374cf91fdd
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75599042"
 ---
 # <a name="set-up-a-common-identity-on-a-data-science-virtual-machine"></a>在数据科学虚拟机上设置通用标识
@@ -70,7 +70,7 @@ Azure AD DS 在 Azure 上提供完全托管的服务，简化了标识管理。 
    sudo mount -t cifs //[STORAGEACCT].file.core.windows.net/workspace [Your mount point] -o vers=3.0,username=[STORAGEACCT],password=[Access Key or SAS],dir_mode=0777,file_mode=0777,sec=ntlmssp
    ```
 1. 例如，假设已将共享 Azure 文件装载在 /data/workspace 中。 现在，为共享中的每个用户创建目录：/data/workspace/user1、/data/workspace/user2，依次类推。 在每个用户的工作区中创建 `notebooks` 目录。 
-1. 在 `$HOME/userx/notebooks/remote` 中为 `notebooks` 创建符号链接。   
+1. 在 `notebooks` 中为 `$HOME/userx/notebooks/remote` 创建符号链接。   
 
 现在，这些用户已在 Azure 中托管的 Active Directory 实例中。 通过使用 Active Directory 凭据，用户可以登录到已加入 Azure AD DS 的任何 DSVM（SSH 或 JupyterHub）。 由于用户工作区位于共享 Azure 文件上，因此用户在使用 JupyterHub 时，可以访问其笔记本以及 DSVM 中的任何其他工作。
 

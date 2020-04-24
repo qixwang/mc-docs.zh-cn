@@ -14,10 +14,10 @@ origin.date: 10/31/2019
 ms.date: 12/09/2019
 ms.author: v-yiso
 ms.openlocfilehash: b358ff71f2d9190986439365fc2900d515594a44
-ms.sourcegitcommit: 298eab5107c5fb09bf13351efeafab5b18373901
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74658134"
 ---
 # <a name="provision-a-self-hosted-gateway-in-azure-api-management"></a>在 Azure API 管理中预配自承载网关
@@ -25,11 +25,11 @@ ms.locfileid: "74658134"
 在 Azure API 管理实例中预配网关资源是部署自承载网关的先决条件。 本文详细介绍如何通过相关步骤在 API 管理中预配网关资源。
 
 > [!NOTE]
-> 自承载网关功能为预览版。 在预览期间，自承载网关仅在“开发人员”层和“高级”层提供，不额外收费。 “开发人员”层仅限单个自承载网关部署。
+> 自承载网关功能目前以预览版提供。 在预览期间，自承载网关仅在“开发人员”层和“高级”层提供，不额外收费。 “开发人员”层仅限单个自承载网关部署。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
-完成以下快速入门：[创建一个 Azure API 管理实例](get-started-create-service-instance.md)
+完成以下快速入门：[创建 Azure API 管理实例](get-started-create-service-instance.md)
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
@@ -42,7 +42,7 @@ ms.locfileid: "74658134"
 > “区域”指定将要与此网关资源关联的网关节点的预期位置。  它在语义上等效于一个与任何 Azure 资源关联的类似属性，但我们可以为其分配任意字符串值。
 
 4. （可选）输入网关资源的“说明”  。
-5. （可选）在“API”下选择“+”  ，  将一个或多个 API 与此网关资源相关联。
+5. （可选）在“API”下选择“ **”+** ，  将一个或多个 API 与此网关资源相关联。
 > [!TIP]
 > 可以在某个 API 的“设置”选项卡中关联该 API，以及将其从网关中删除。 
 

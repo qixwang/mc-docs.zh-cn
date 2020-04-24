@@ -6,15 +6,15 @@ ms.date: 01/13/2020
 ms.service: cognitive-services
 ms.topic: include
 ms.openlocfilehash: 089345f994d6c00a71d442108fda0fb280a8b888
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75631673"
 ---
 此容器具有以下配置设置：
 
-|必须|设置|目的|
+|必选|设置|目的|
 |--|--|--|
 |是|[ApiKey](#apikey-configuration-setting)|跟踪账单信息。|
 |是|[Billing](#billing-configuration-setting)|指定 Azure 上服务资源的终结点 URI。|

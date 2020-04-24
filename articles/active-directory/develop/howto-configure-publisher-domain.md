@@ -20,10 +20,10 @@ ms.reviewer: lenalepa, sureshja, zachowd
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 89e0cec7d9e814c1169a4790c83f0c1d7a906da7
-ms.sourcegitcommit: 9597d4da8af58009f9cef148a027ccb7b32ed8cf
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74655255"
 ---
 # <a name="how-to-configure-an-applications-publisher-domain"></a>如何：配置应用程序的发布者域

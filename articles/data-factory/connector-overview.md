@@ -11,10 +11,10 @@ ms.date: 01/06/2020
 ms.author: v-jay
 ms.reviewer: craigg
 ms.openlocfilehash: e49a20af4ccf879972a553ac3949907efab24805
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75624311"
 ---
 # <a name="azure-data-factory-connector-overview"></a>Azure 数据工厂连接器概述

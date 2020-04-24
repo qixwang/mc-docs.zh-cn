@@ -12,10 +12,10 @@ ms.date: 03/15/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 5b61ab09a2a635fae118c10339be8638e761731d
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75599276"
 ---
 # <a name="operationalize-spark-built-machine-learning-models"></a>操作 Spark 构建的机器学习模型
@@ -32,7 +32,7 @@ ms.locfileid: "75599276"
 要修改适用于 Spark 1.6 的 Jupyter 笔记本以用于 HDInsight Spark 2.0 群集，请将 Python 代码文件替换为[此文件](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/Python/Spark2.0_ConsumeRFCV_NYCReg.py)。 此代码演示如何使用在 Spark 2.0 中创建的模型。
 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 1. 需要一个 Azure 帐户和一个 Spark 1.6（或 Spark 2.0）HDInsight 群集来完成本演练。 有关如何满足这些要求的说明，请参阅[在 Azure HDInsight 上使用 Spark 的数据科学的概述](spark-overview.md)。 该主题还包含此处使用的 NYC 2013 出租车数据的说明以及有关如何在 Spark 群集上执行来自 Jupyter 笔记本的代码的说明。 
 2. 还必须在此处通过演练针对 Spark 1.6 群集或 Spark 2.0 笔记本的[使用 Spark 进行数据探索和建模](spark-data-exploration-modeling.md)主题，来创建要评分的机器学习模型。 
@@ -120,7 +120,7 @@ PySpark 内核提供一些预定义的“magic”，这是可以结合 %% 调用
 ## <a name="ingest-data-and-create-a-cleaned-data-frame"></a>引入数据并创建已清理的数据帧
 本部分包含引入要评分的数据所需的一系列任务的代码。 读入出租车行程和车费文件（存储为 .tsv 文件）的已加入的 0.1% 样本，并创建干净的数据帧。
 
-根据以下主题中提供的过程联接了出租车行程和车费文件：[运行中的 Team Data Science Process：使用 HDInsight Hadoop 群集](hive-walkthrough.md)。
+基于以下主题中提供的过程加入了出租车行程和车费文件：[运行中的 Team Data Science Process：使用 HDInsight Hadoop 群集](hive-walkthrough.md)主题。
 
     # INGEST DATA AND CREATE A CLEANED DATA FRAME
 
@@ -511,23 +511,23 @@ PySpark 内核提供一些预定义的“magic”，这是可以结合 %% 调用
 
 **输出：**
 
-logisticRegFileLoc:LogisticRegressionWithLBFGS_2016-05-0317_22_38.953814.txt
+logisticRegFileLoc：LogisticRegressionWithLBFGS_2016-05-0317_22_38.953814.txt
 
-linearRegFileLoc:LinearRegressionWithSGD_2016-05-0317_22_58.878949
+linearRegFileLoc：LinearRegressionWithSGD_2016-05-0317_22_58.878949
 
-randomForestClassificationFileLoc:RandomForestClassification_2016-05-0317_23_15.939247.txt
+randomForestClassificationFileLoc：RandomForestClassification_2016-05-0317_23_15.939247.txt
 
-randomForestRegFileLoc:RandomForestRegression_2016-05-0317_23_31.459140.txt
+randomForestRegFileLoc：RandomForestRegression_2016-05-0317_23_31.459140.txt
 
-BoostedTreeClassificationFileLoc:GradientBoostingTreeClassification_2016-05-0317_23_49.648334.txt
+BoostedTreeClassificationFileLoc：GradientBoostingTreeClassification_2016-05-0317_23_49.648334.txt
 
-BoostedTreeRegressionFileLoc:GradientBoostingTreeRegression_2016-05-0317_23_56.860740.txt
+BoostedTreeRegressionFileLoc：GradientBoostingTreeRegression_2016-05-0317_23_56.860740.txt
 
 ## <a name="consume-spark-models-through-a-web-interface"></a>通过 Web 界面使用 Spark 模型
 Spark 提供使用名为 Livy 的组件通过 REST 界面远程提交批处理作业或交互式查询的机制。 Livy 在 HDInsight Spark 群集上默认处于启用状态。 有关 Livy 的详细信息，请参阅：[使用 Livy 远程提交 Spark 作业](../../hdinsight/spark/apache-spark-livy-rest-interface.md)。 
 
 可使用 Livy 远程提交一个作业，该作业批处理评分存储在 Azure Blob 中的文件，然后将结果写入另一个 blob。 要执行此操作，将 Python 脚本从  
-[Github](https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/Spark/Python/ConsumeGBNYCReg.py) 上传到 Spark 群集的 blob。 可使用 **Microsoft Azure 存储资源管理器**或 **AzCopy** 将脚本复制到群集 blob。 在本例中，我们将脚本上传到了 ***wasb:///example/python/ConsumeGBNYCReg.py***。   
+[GitHub](https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/Spark/Python/ConsumeGBNYCReg.py) 上载到 Spark 群集的 blob。 可使用 **Microsoft Azure 存储资源管理器**或 **AzCopy** 将脚本复制到群集 blob。 在本例中，我们将脚本上传到了 ***wasb:///example/python/ConsumeGBNYCReg.py***。   
 
 > [!NOTE]
 > 可在与 Spark 群集相关联的存储帐户的门户上找到所需的访问密钥。 
@@ -586,6 +586,6 @@ Spark 提供使用名为 Livy 的组件通过 REST 界面远程提交批处理�
 
 ![逻辑应用设计器](./media/spark-model-consumption/spark-logica-app-client.png)
 
-## <a name="whats-next"></a>后续步骤
-**交叉验证和超参数扫描**：参阅[使用 Spark 进行高级数据探索和建模](spark-advanced-data-exploration-modeling.md)，了解如何使用交叉验证和超参数扫描训练模型。
+## <a name="whats-next"></a>下一步是什么？
+**交叉验证和超参数扫描**：请参阅[使用 Spark 进行高级数据探索和建模](spark-advanced-data-exploration-modeling.md)了解如何使用交叉验证和超参数扫描训练模型。
 

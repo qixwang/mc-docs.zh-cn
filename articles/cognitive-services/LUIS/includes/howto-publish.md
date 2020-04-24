@@ -11,10 +11,10 @@ ms.topic: include
 ms.date: 11/05/2019
 ms.author: diberry
 ms.openlocfilehash: 9fca6e41b0f89d331b91bc3113c268208a0f385d
-ms.sourcegitcommit: cf73284534772acbe7a0b985a86a0202bfcc109e
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74884470"
 ---
 若要在聊天机器人或其他客户端应用程序中接收 LUIS 预测，需要将应用发布到终结点。 

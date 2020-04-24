@@ -8,10 +8,10 @@ ms.author: v-yiso
 origin.date: 07/29/2019
 ms.date: 12/23/2019
 ms.openlocfilehash: 1a67d7d6927c8a58747ccaa32e40bbea4c9a90e0
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75336155"
 ---
 # <a name="nativeazurefilesystemrequestbodytoolarge-appear-in-apache-spark-streaming-app-log-in-hdinsight"></a>“NativeAzureFileSystem...RequestBodyTooLarge”出现在 HDInsight 的 Apache Spark 流式处理应用日志中

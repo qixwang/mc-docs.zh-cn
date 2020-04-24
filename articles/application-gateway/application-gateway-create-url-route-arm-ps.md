@@ -10,10 +10,10 @@ origin.date: 11/14/2019
 ms.date: 11/21/2019
 ms.author: v-junlch
 ms.openlocfilehash: 0a19cecb643e3cc477e6951cefb69aa5f6a35301
-ms.sourcegitcommit: fdbd1b6df618379dfeab03044a18c373b5fbb8ec
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74326513"
 ---
 # <a name="create-an-application-gateway-with-url-path-based-routing-rules-using-azure-powershell"></a>通过 Azure PowerShell 使用基于 URL 路径的路由规则创建应用程序网关
@@ -370,6 +370,6 @@ Get-AzPublicIPAddress -ResourceGroupName myResourceGroupAG -Name myAGPublicIPAdd
 > * 使用 URL 映射创建应用程序网关
 > * 使用后端池创建虚拟机规模集
 
-若要了解有关应用程序网关及其关联资源的详细信息，请继续阅读操作指南文章。
+若要详细了解应用程序网关及其关联的资源，请继续阅读操作指南文章。
 
 <!-- Update_Description: update metedata properties -->

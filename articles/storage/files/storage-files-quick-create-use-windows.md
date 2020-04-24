@@ -9,13 +9,13 @@ ms.date: 01/06/2020
 ms.author: v-jay
 ms.subservice: files
 ms.openlocfilehash: 6c2bea2f7df85ad9a330ba318c0d84f9b4488fd7
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75624324"
 ---
-# <a name="quickstart-create-and-manage-azure-files-share-with-windows-virtual-machines"></a>快速入门：使用 Windows 虚拟机创建和管理 Azure 文件存储共享
+# <a name="quickstart-create-and-manage-azure-files-share-with-windows-virtual-machines"></a>快速入门：通过 Windows 虚拟机创建和管理 Azure 文件共享
 
 本文演示创建和使用 Azure 文件存储共享的基本步骤。 本快速入门重点介绍如何快速设置 Azure 文件存储共享，以便可以体验该服务的工作原理。 如需有关在自己环境中创建和使用 Azure 文件共享的更多详细说明，请参阅[在 Windows 中使用 Azure 文件共享](storage-how-to-use-files-windows.md)。
 
@@ -86,7 +86,7 @@ ms.locfileid: "75624324"
 
    ![从门户连接到 Azure VM](./media/storage-files-quick-create-use-windows/connect-vm.png)
 
-1. 在“连接到虚拟机”页中保留默认选项，以使用 **IP 地址**通过**端口号** *3389* 进行连接，然后选择“下载 RDP 文件”。  
+1. 在“连接到虚拟机”页面中，保留默认选项，以使用 IP 地址通过端口号 3389 进行连接，然后选择“下载 RDP 文件”      。
 1. 打开下载的 RDP 文件，然后在出现提示时选择“连接”  。
 1. 在“Windows 安全性”  窗口中，依次选择“更多选择”  、“使用其他帐户”  。 以 *localhost\username* 格式键入用户名，其中，&lt;username&gt; 是为虚拟机创建的 VM 管理员用户名。 输入针对虚拟机创建的密码，然后选择“确定”。 
 

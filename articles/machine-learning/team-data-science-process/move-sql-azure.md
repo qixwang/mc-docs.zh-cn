@@ -12,10 +12,10 @@ ms.date: 05/04/2018
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 96be77a4c4fbb1e2594fc56f6e6768ce12b98636
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75599708"
 ---
 # <a name="move-data-to-an-azure-sql-database-for-azure-machine-learning"></a>将数据转移到 Azure SQL 数据库以便在 Azure 机器学习中处理
@@ -31,7 +31,7 @@ ms.locfileid: "75599708"
 | <b>平面文件（CSV 或 TSV 格式）</b> |[批量插入 SQL 查询](#bulk-insert-sql-query) |
 | <b>本地 SQL Server</b> |1. [导出到平面文件](#export-flat-file)<br> 2.[SQL 数据库迁移向导](#insert-tables-bcp)<br> 3.[数据库备份和还原](#db-migration)<br> 4.[Azure 数据工厂](#adf) |
 
-## <a name="prereqs"></a>先决条件
+## <a name="prerequisites"></a><a name="prereqs"></a>先决条件
 此处所述的过程要求具有：
 
 * 一个 **Azure 订阅**。 如果你没有订阅，则可以注册[试用版](https://www.azure.cn/pricing/1rmb-trial/)。
@@ -39,17 +39,17 @@ ms.locfileid: "75599708"
 * 访问 **Azure SQL 数据库**。 如果必须设置 Azure SQL 数据库，可在 [Microsoft Azure SQL 数据库入门](../../sql-database/sql-database-get-started.md)中找到相关信息，了解如何设置 Azure SQL 数据库的新实例。
 * 已在本地安装和配置 **Azure PowerShell**。 有关说明，请参阅[如何安装和配置 Azure PowerShell](/powershell/azure/overview)。
 
-**数据**：使用 [NYC 出租车数据集](https://chriswhong.com/open-data/foil_nyc_taxi/)演示迁移过程。 NYC 出租车数据集包含行程数据和费用的相关信息，且可用于 Azure Blob 存储：[NYC 出租车数据](https://www.andresmh.com/nyctaxitrips/)。 [NYC 出租车行程数据集说明](sql-walkthrough.md#dataset)中介绍了这些文件的示例和说明。
+**Data**：使用 [NYC 出租车数据集](https://chriswhong.com/open-data/foil_nyc_taxi/)演示迁移过程。 NYC 出租车数据集包含行程数据和费用的相关信息，且可用于 Azure Blob 存储：[NYC 出租车数据](https://www.andresmh.com/nyctaxitrips/)。 [NYC 出租车行程数据集说明](sql-walkthrough.md#dataset)中介绍了这些文件的示例和说明。
 
 可将此处描述的流程调整为一组自己的数据，或者通过使用 NYC 出租车数据集来按照所述的步骤进行操作。 若要将 NYC 出租车数据集上传到本地 SQL Server 数据库，请按照[将数据批量导入 SQL Server 数据库](sql-walkthrough.md#dbload)中概述的过程进行操作。 这些说明适用于 Azure 虚拟机上的 SQL Server，但是上传到本地 SQL Server 的过程是相同的。
 
-## <a name="file-to-azure-sql-database"></a>将数据从平面文件源移动到 Azure SQL 数据库
+## <a name="moving-data-from-a-flat-file-source-to-an-azure-sql-database"></a><a name="file-to-azure-sql-database"></a>将数据从平面文件源移动到 Azure SQL 数据库
 可以使用批量插入 SQL 查询将平面文件（CSV 或 TSV 格式）中的数据移动到 Azure SQL 数据库。
 
-### <a name="bulk-insert-sql-query"></a>批量插入 SQL 查询
+### <a name="bulk-insert-sql-query"></a><a name="bulk-insert-sql-query"></a>批量插入 SQL 查询
 使用批量插入 SQL 查询过程的步骤类似于将数据从平面文件源移到 Azure VM 上的 SQL Server 部分中所述的步骤。 有关详细信息，请参阅[批量插入 SQL 查询](move-sql-server-virtual-machine.md#insert-tables-bulkquery)。
 
-## <a name="sql-on-prem-to-sazure-sql-database"></a>将数据从本地 SQL Server 移动到 Azure SQL 数据库
+## <a name="moving-data-from-on-premises-sql-server-to-an-azure-sql-database"></a><a name="sql-on-prem-to-sazure-sql-database"></a>将数据从本地 SQL Server 移动到 Azure SQL 数据库
 如果源数据存储在本地 SQL Server 中，则有多种方式可将数据移动到 Azure SQL 数据库：
 
 1. [导出到平面文件](#export-flat-file)
@@ -59,16 +59,16 @@ ms.locfileid: "75599708"
 
 前三种方式的步骤非常类似于[将数据移动到 Azure 虚拟机上的 SQL Server](move-sql-server-virtual-machine.md) 中涵盖相同过程的部分中所述的步骤。 以下说明提供了该主题中相应部分的链接。
 
-### <a name="export-flat-file"></a>导出到平面文件
+### <a name="export-to-flat-file"></a><a name="export-flat-file"></a>导出到平面文件
 导出到平面文件的此步骤类似于[导出到平面文件](move-sql-server-virtual-machine.md#export-flat-file)中所述的步骤。
 
-### <a name="insert-tables-bcp"></a>SQL 数据库迁移向导
+### <a name="sql-database-migration-wizard"></a><a name="insert-tables-bcp"></a>SQL 数据库迁移向导
 使用 SQL 数据库迁移向导的步骤类似于 [SQL 数据库迁移向导](move-sql-server-virtual-machine.md#sql-migration)中所述的步骤。
 
-### <a name="db-migration"></a>数据库备份和还原
+### <a name="database-back-up-and-restore"></a><a name="db-migration"></a>数据库备份和还原
 使用数据库备份和恢复的步骤类似于[数据库备份和恢复](move-sql-server-virtual-machine.md#sql-backup)中所述的步骤。
 
-### <a name="adf"></a>Azure 数据工厂
+### <a name="azure-data-factory"></a><a name="adf"></a>Azure 数据工厂
 有关使用 Azure 数据工厂 (ADF) 将数据移动到 Azure SQL 数据库的过程，可参阅[使用 Azure 数据工厂将数据从本地 SQL 服务器移动到 SQL Azure](move-sql-azure-adf.md) 主题。 本主题演示如何使用 ADF，通过 Azure Blob 存储将数据从本地 SQL Server 数据库移动到 Azure SQL 数据库。
 
 请在以下情况考虑使用 ADF：在可访问本地和云资源的混合方案中，需要连续迁移数据；需要处理或修改数据；或者已在迁移期间添加业务逻辑。 ADF 允许使用简单的 JSON 脚本计划和监视作业，JSON 脚本可定期管理数据移动。 ADF 还具有其他功能，例如支持复杂操作。

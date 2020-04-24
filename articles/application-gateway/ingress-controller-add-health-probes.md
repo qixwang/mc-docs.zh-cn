@@ -9,10 +9,10 @@ origin.date: 11/04/2019
 ms.date: 11/19/2019
 ms.author: v-junlch
 ms.openlocfilehash: bc50ae98f5074a348a80ac6e389d7b070f3bc181
-ms.sourcegitcommit: fdbd1b6df618379dfeab03044a18c373b5fbb8ec
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74328433"
 ---
 # <a name="add-health-probes-to-your-service"></a>向服务添加运行状况探测
@@ -51,12 +51,12 @@ Kubernetes API 参考：
 * [HttpGet 操作](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.14/#httpgetaction-v1-core)
 
 > [!NOTE]
-> * 配置了 `httpGet` 时，支持 `readinessProbe` 和 `livenessProbe`。
+> * 配置了 `readinessProbe` 时，支持 `livenessProbe` 和 `httpGet`。
 > * 当前不支持对 Pod 上公开的端口以外的端口进行探测。
 > * 不支持 `HttpHeaders`、`InitialDelaySeconds`、`SuccessThreshold`。
 
 ##  <a name="without-readinessprobe-or-livenessprobe"></a>不使用 `readinessProbe` 或 `livenessProbe`
-如果未提供上述探测，则入口控制器假设在为 `backend-path-prefix` 注释指定的 `Path` 上或在服务的 `ingress` 定义中指定的 `path` 上可以访问该服务。
+如果未提供上述探测，则入口控制器假设在为 `Path` 注释指定的 `backend-path-prefix` 上或在服务的 `path` 定义中指定的 `ingress` 上可以访问该服务。
 
 ## <a name="default-values-for-health-probe"></a>运行状况探测的默认值
 对于就绪情况/运行情况探测无法推断的任何属性，将设置默认值。

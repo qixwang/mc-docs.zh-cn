@@ -4,10 +4,10 @@ description: 了解支持哪些语言 (GA) 以及哪些语言是实验性的或�
 ms.topic: conceptual
 ms.date: 12/31/2019
 ms.openlocfilehash: b782b416714533a69613032e083883285e206518
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75624303"
 ---
 # <a name="supported-languages-in-azure-functions"></a>Azure Functions 中支持的语言

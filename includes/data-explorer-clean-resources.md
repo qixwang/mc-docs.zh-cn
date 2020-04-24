@@ -6,10 +6,10 @@ origin.date: 11/28/2019
 ms.date: 01/13/2020
 ms.author: v-tawe
 ms.openlocfilehash: a3c5ef31420bede251779b0b3eeffb2ac3ebabe6
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75631276"
 ---
 ## <a name="clean-up-resources"></a>清理资源

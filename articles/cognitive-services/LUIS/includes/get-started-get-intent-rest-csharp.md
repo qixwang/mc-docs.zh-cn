@@ -9,13 +9,13 @@ ms.topic: include
 ms.date: 11/20/2019
 ms.author: diberry
 ms.openlocfilehash: dec70a634fb9460499068767e5801c7bb7bcf9e6
-ms.sourcegitcommit: 3d27913e9f896e34bd7511601fb428fc0381998b
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74982160"
 ---
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * [.NET Core V2.2+](https://dotnet.microsoft.com/download)
 * [Visual Studio Code](https://code.visualstudio.com/)
@@ -102,10 +102,10 @@ ms.locfileid: "74982160"
 
    ```
 
-1. 替换以下值：
+1. 请替换以下值：
 
     * 将 `YOUR-KEY` 替换为初学者密钥。
-    * 将 `YOUR-ENDPOINT` 替换为终结点。 例如，`chinaeast2.api.cognitive.azure.cn`。
+    * 将 `YOUR-ENDPOINT` 替换为终结点。 例如，`chinaeast2.api.cognitive.azure.cn` 。
 
 1. 使用以下命令生成控制台应用程序： 
 

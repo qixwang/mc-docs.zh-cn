@@ -9,10 +9,10 @@ ms.topic: conceptual
 origin.date: 12/16/2019
 ms.date: 01/13/2020
 ms.openlocfilehash: c700a6e0b2c5340559abad4d50ebbbdcfb1ac111
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75631222"
 ---
 # <a name="tls-10-and-11-deprecation-in-iot-hub-and-device-provisioning-service"></a>在 IoT 中心和设备预配服务中弃用 TLS 1.0 和 1.1

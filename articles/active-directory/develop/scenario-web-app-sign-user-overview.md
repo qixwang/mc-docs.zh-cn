@@ -16,10 +16,10 @@ ms.author: v-junlch
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: daf578012dfd3f602d7ae69d13a74b5e91acb5c8
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75335397"
 ---
 # <a name="scenario-web-app-that-signs-in-users"></a>方案：用于登录用户的 Web 应用
@@ -32,28 +32,28 @@ ms.locfileid: "75335397"
 
 ## <a name="getting-started"></a>入门
 
-# <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
+# <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
 如果需要创建第一个可移植 (ASP.NET Core) Web 应用来登录用户，请按以下快速入门操作：
 
 > [!div class="nextstepaction"]
 > [快速入门：用于登录用户的 ASP.NET Core Web 应用](quickstart-v2-aspnet-core-webapp.md)
 
-# <a name="aspnettabaspnet"></a>[ASP.NET](#tab/aspnet)
+# <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
 如果想了解如何向现有 ASP.NET Web 应用程序添加登录，请尝试以下快速入门：
 
 > [!div class="nextstepaction"]
 > [快速入门：用于登录用户的 ASP.NET Web 应用](quickstart-v2-aspnet-webapp.md)
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 如果是 Java 开发人员，请尝试以下快速入门：
 
 > [!div class="nextstepaction"]
 > [快速入门：向 Java Web 应用添加 Microsoft 登录功能](quickstart-v2-java-webapp.md)
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 如果使用 Python 进行开发，请尝试以下快速入门：
 
@@ -83,22 +83,22 @@ Web 应用可对 Web 浏览器中的用户进行身份验证。 在此方案中�
 
 ## <a name="next-steps"></a>后续步骤
 
-# <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
+# <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
 > [!div class="nextstepaction"]
 > [应用注册](/active-directory/develop/scenario-web-app-sign-user-app-registration?tabs=aspnetcore)
 
-# <a name="aspnettabaspnet"></a>[ASP.NET](#tab/aspnet)
+# <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
 > [!div class="nextstepaction"]
 > [应用注册](/active-directory/develop/scenario-web-app-sign-user-app-registration?tabs=aspnet)
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 > [!div class="nextstepaction"]
 > [应用注册](/active-directory/develop/scenario-web-app-sign-user-app-registration?tabs=java)
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 > [!div class="nextstepaction"]
 > [应用注册](/active-directory/develop/scenario-web-app-sign-user-app-registration?tabs=python)

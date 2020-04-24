@@ -13,10 +13,10 @@ ms.author: v-jay
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 ms.openlocfilehash: 4fc75822bb1c49b74581114cc22ddecc28fc2346
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75623689"
 ---
 # <a name="using-identity-to-create-surrogate-keys-in-azure-sql-data-warehouse"></a>使用 IDENTITY 在 Azure SQL 数据仓库中创建代理键
@@ -29,7 +29,7 @@ ms.locfileid: "75623689"
 
 ## <a name="creating-a-table-with-an-identity-column"></a>创建包含 IDENTITY 列的表
 
-IDENTITY 属性设计为能够在数据仓库的所有分布区中扩展，不会影响负载性能。 因此，IDENTITY 的实现旨在实现这些目标。
+IDENTITY 属性设计为能够在数据仓库的所有分发中扩展，而不会影响负载性能。 因此，IDENTITY 的实现旨在实现这些目标。
 
 在首次使用类似以下语句的语法创建表时，可以将表定义为具有 IDENTITY 属性：
 
@@ -53,7 +53,7 @@ WITH
 
 IDENTITY 属性不保证分配代理值的顺序，这反映了 SQL Server 和 Azure SQL 数据库的行为。 但是，在 Azure SQL 数据仓库中，保证的缺乏更为明显。
 
-以下示例对此做了演示：
+下面的示例进行了说明：
 
 ```sql
 CREATE TABLE dbo.T1
@@ -78,22 +78,22 @@ FROM dbo.T1;
 DBCC PDW_SHOWSPACEUSED('dbo.T1');
 ```
 
-在前面的示例中，两行位于分布 1 中。 第一行在列 `C1` 中包含代理值 1，且第二行包含代理值 61。 这两个值均由 IDENTITY 属性生成。 但是，值的分配不是连续的。 此行为是设计使然。
+在前面的示例中，两行位于分布 1 中。 第一行在列 `C1` 中包含代理值 1，且第二行包含代理值 61。 这两个值均由 IDENTITY 属性生成。 但是，值的分配是不连续的。 这是设计的行为。
 
-### <a name="skewed-data"></a>倾斜的数据
+### <a name="skewed-data"></a>偏斜数据
 
-数据类型的值范围在各个分布区之间是均匀分配的。 如果分布式表受偏斜数据的影响，则可用于数据类型的值范围可能会过早耗尽。 例如，如果所有数据最终都会处于单个分发中，则表实际上只能访问六十分之一的数据类型值。 出于此原因，IDENTITY 属性仅限用于 `INT` 和 `BIGINT` 数据类型。
+数据类型的值范围跨分发均匀分配。 如果分布式表受偏斜数据的影响，则可用于数据类型的值范围可能会过早耗尽。 例如，如果所有数据最终都会处于单个分发中，则表实际上只能访问六十分之一的数据类型值。 为此，IDENTITY 属性仅限于 `INT` 和 `BIGINT` 数据类型。
 
 ### <a name="selectinto"></a>SELECT..INTO
 
 在将现有的 IDENTITY 列选入新表时，新列将继承该 IDENTITY 属性，除非下列条件之一为 true：
 
-- SELECT 语句包含联接。
-- 使用 UNION 联接多个 SELECT 语句。
+- SELECT 语句包含一个联接。
+- 多个 SELECT 语句由 UNION 联接。
 - IDENTITY 列在 SELECT 列表中多次列出。
 - IDENTITY 列是表达式的一部分。
 
-如果其中的任一条件为 true，则创建属性为 NOT NULL 的列，而不继承 IDENTITY 属性。
+如果这些条件中的一个为真，列将被创建为 NOT NULL 而不继承 IDENTITY 属性。
 
 ### <a name="create-table-as-select"></a>CREATE TABLE AS SELECT
 
@@ -101,7 +101,7 @@ CREATE TABLE AS SELECT (CTAS) 遵循 SELECT..INTO 中记录的相同 SQL Server 
 
 ## <a name="explicitly-inserting-values-into-an-identity-column"></a>将值显式插入到 IDENTITY 列
 
-SQL 数据仓库支持 `SET IDENTITY_INSERT <your table> ON|OFF` 语法。 可以使用此语法显式将值插入到 IDENTITY 列中。
+SQL 数据仓库支持 `SET IDENTITY_INSERT <your table> ON|OFF` 语法。 可以使用此语法将值显式插入 IDENTITY 列。
 
 许多数据建模者喜欢在其维度中为某些行使用预定义的负值。 例如，-1 或“未知成员”行。
 
@@ -211,9 +211,9 @@ SQL 数据仓库中不支持以下相关函数：
 
 在以下所有任务中，列 C1 是 IDENTITY。
 
-### <a name="find-the-highest-allocated-value-for-a-table"></a>查找表的最高已分配值
+### <a name="find-the-highest-allocated-value-for-a-table"></a>查找表的最大分配值
 
-可以使用 `MAX()` 函数来确定为分布式表分配的最高值：
+使用 `MAX()` 函数来确定分布式表的最大分配值：
 
 ```sql
 SELECT MAX(C1)

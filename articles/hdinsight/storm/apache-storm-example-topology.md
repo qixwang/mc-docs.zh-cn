@@ -18,10 +18,10 @@ origin.date: 12/27/2019
 ms.date: 01/13/2020
 ms.author: v-yiso
 ms.openlocfilehash: 217c675018f074e6f689bf9abe6c53450b19dfd9
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75631084"
 ---
 # <a name="example-apache-storm-topologies-and-components-for-apache-storm-on-hdinsight"></a>Apache Storm on HDInsight 的示例 Apache Storm 拓扑和组件

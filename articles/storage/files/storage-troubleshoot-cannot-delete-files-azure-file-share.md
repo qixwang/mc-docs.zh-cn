@@ -9,10 +9,10 @@ ms.date: 11/25/2019
 ms.service: storage
 ms.subservice: common
 ms.openlocfilehash: a01945f4521169197554579fc230e71d8a8cf7d8
-ms.sourcegitcommit: 6a19227dcc0c6e0da5b82c4f69d0227bf38a514a
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74328780"
 ---
 # <a name="azure-file-share--failed-to-delete-files-from-azure-file-share"></a>Azure 文件共享 - 无法从 Azure 文件共享中删除文件
@@ -70,7 +70,7 @@ $Context = New-AzStorageContext -StorageAccountName "StorageAccountName" -Storag
 
 ## <a name="example-result"></a>示例结果：
 
-|HandleId|`Path`|ClientIp|ClientPort|OpenTime|LastReconnectTime|FileId|ParentId|SessionId|
+|HandleId|路径|ClientIp|ClientPort|OpenTime|LastReconnectTime|FileId|ParentId|SessionId|
 |---|---|---|---|---|---|---|---|---|
 |259101229083|---|10.222.10.123|62758|2019-10-05|12:16:50Z|0|0|9507758546259807489|
 |259101229131|---|10.222.10.123|62758|2019-10-05|12:36:20Z|0|0|9507758546259807489|

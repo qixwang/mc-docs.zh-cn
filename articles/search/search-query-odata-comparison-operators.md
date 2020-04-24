@@ -21,10 +21,10 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: e962d571515a192e23b7feca22849ae209355d3c
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75336504"
 ---
 # <a name="odata-comparison-operators-in-azure-cognitive-search---eq-ne-gt-lt-ge-and-le"></a>Azure 认知搜索中的 OData 比较运算符 - `eq`、`ne`、`gt`、`lt`、`ge` 和 `le`

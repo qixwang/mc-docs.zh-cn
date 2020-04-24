@@ -7,10 +7,10 @@ ms.author: v-lingwu
 origin.date: 10/15/2019
 ms.date: 11/30/2019
 ms.openlocfilehash: 169ef6f669712419c59d852f235d77cbc3b783f3
-ms.sourcegitcommit: 13431cf4d69142ed7feb8d12d967a502bf9ff346
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75599932"
 ---
 # <a name="azure-monitor-for-containers-frequently-asked-questions"></a>用于容器的 Azure Monitor 常见问题解答

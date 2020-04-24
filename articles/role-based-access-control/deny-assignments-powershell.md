@@ -14,10 +14,10 @@ ms.date: 01/03/2020
 ms.author: v-junlch
 ms.reviewer: bagovind
 ms.openlocfilehash: 136e26232bd7979caaebad72159925578cd06d20
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75624387"
 ---
 # <a name="list-deny-assignments-for-azure-resources-using-azure-powershell"></a>使用 Azure PowerShell 列出 Azure 资源的拒绝分配
@@ -27,9 +27,9 @@ ms.locfileid: "75624387"
 > [!NOTE]
 > 不能直接创建自己的拒绝分配。 有关如何创建拒绝分配的详细信息，请参阅[拒绝分配](deny-assignments.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
-若要获取拒绝分配的相关信息，必须具有：
+如要获取拒绝分配的相关信息，必须具有：
 
 - `Microsoft.Authorization/denyAssignments/read` 权限，其包括在大多数 [Azure 资源的内置角色](built-in-roles.md)中
 - [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps)

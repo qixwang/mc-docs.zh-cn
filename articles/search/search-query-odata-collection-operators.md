@@ -21,10 +21,10 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: f957ff5cb384d0f5dad4959ac9ef2602ee549ca1
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75336505"
 ---
 # <a name="odata-collection-operators-in-azure-cognitive-search---any-and-all"></a>Azure 认知搜索中的 OData 集合运算符 - `any` 和 `all`
@@ -46,7 +46,7 @@ collection_filter_expression ::=
 lambda_expression ::= identifier ':' boolean_expression
 ```
 
-下面还提供了交互式语法图：
+交互式语法图也可用：
 
 > [!div class="nextstepaction"]
 > [Azure 认知搜索的 OData 语法图](https://azuresearch.github.io/odata-syntax-diagram/#collection_filter_expression)

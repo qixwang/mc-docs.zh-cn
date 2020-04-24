@@ -18,10 +18,10 @@ ms.date: 01/06/2020
 ms.author: v-yeche
 ms.custom: ''
 ms.openlocfilehash: 5cce624fde791b740d80fa3b582c6badb06f4eac
-ms.sourcegitcommit: 13431cf4d69142ed7feb8d12d967a502bf9ff346
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75599748"
 ---
 # <a name="azure-kubernetes-network-policies-overview"></a>Azure Kubernetes 网络策略概述
@@ -43,7 +43,7 @@ ACS-Engine 是一项工具，可以生成 Azure 资源管理器模板，以便�
 
 若要在使用 acs-engine 部署的群集上启用策略，请在群集定义文件中将 networkPolicy 设置的值指定为“azure”。
 
-#### <a name="example-configuration"></a>示例配置
+#### <a name="example-configuration"></a>配置示例
 
 下面的 JSON 示例配置使用 Azure CNI 创建了一个新的虚拟网络和子网，并在其中部署了 Kubernetes 群集。 我们建议你使用“记事本”来编辑此 JSON 文件。 
 ```json

@@ -8,7 +8,7 @@
       href: overview.md
     - name: 什么是 Geo AI DSVM？
       href: geo-ai-dsvm-overview.md
-    - name: DSVM 上包含的工具
+    - name: DSVM 中包含的工具
       href: tools-included.md
 - name: 快速入门
   expanded: true
@@ -41,7 +41,7 @@
       href: dsvm-enterprise-overview.md
 - name: 示例
   href: dsvm-samples-and-walkthroughs.md
-- name: 操作指南
+- name: 操作方法指南
   items:
     - name: 使用 Windows DSVM
       href: vm-do-ten-things.md
@@ -59,7 +59,7 @@
   items:
     - name: MSDN 论坛
       href: 'https://social.microsoft.com/Forums/home?forum=dsvm'
-    - name: Stack Overflow
+    - name: 堆栈溢出
       href: 'https://stackoverflow.com/search?q=dsvm'
     - name: R 开发人员指南
       href: 'https://docs.microsoft.com/azure/architecture/data-guide/technology-choices/r-developers-guide?context=azure/machine-learning/data-science-virtual-machine/context/ml-context'

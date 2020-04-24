@@ -17,10 +17,10 @@ origin.date: 04/08/2019
 ms.date: 12/09/2019
 ms.author: v-yiso
 ms.openlocfilehash: 805f53a68e7ca7b1d3be00d4aaff43e593c4f25a
-ms.sourcegitcommit: 298eab5107c5fb09bf13351efeafab5b18373901
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74658071"
 ---
 #    <a name="workflow-of-windows-azure-classic-vm-architecture"></a>Windows Azure 经典 VM 体系结构的工作流 

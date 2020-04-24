@@ -9,10 +9,10 @@ ms.date: 11/07/2018
 ms.author: v-yeche
 ms.custom: include file
 ms.openlocfilehash: 01e90bfb9c20b6b53df2b007f03833bea46f1383
-ms.sourcegitcommit: 73715ebbaeb96e80046142b8fe5bbc117d85b317
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74655484"
 ---
 ## <a name="shared-image-management"></a>共享映像管理 

@@ -6,10 +6,10 @@ origin.date: 08/23/2018
 ms.date: 01/07/2019
 ms.author: v-tawe
 ms.openlocfilehash: 2bd40593757a5fd8102aa828d250c4d6ca6d1e78
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75334624"
 ---
 首先，需要在标识提供者站点上注册应用，然后在移动应用后端设置提供者生成的凭据。

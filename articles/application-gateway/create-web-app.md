@@ -10,10 +10,10 @@ origin.date: 11/15/2019
 ms.date: 11/21/2019
 ms.author: v-junlch
 ms.openlocfilehash: 3ac341e7963de411fbdb3eee722f1b4445e4fbe1
-ms.sourcegitcommit: fdbd1b6df618379dfeab03044a18c373b5fbb8ec
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74327230"
 ---
 # <a name="configure-app-service-with-application-gateway-using-powershell"></a>使用 PowerShell 通过应用程序网关配置应用服务
@@ -131,7 +131,7 @@ $appgw = New-AzApplicationGateway -Name ContosoAppGateway -ResourceGroupName $rg
 
 ## <a name="get-application-gateway-dns-name"></a>获取应用程序网关 DNS 名称
 
-创建网关后，下一步是配置用于通信的前端。 使用公共 IP 时，应用程序网关需要动态分配的 DNS 名称，这会造成不方便。 若要确保最终用户能够访问应用程序网关，可以使用 CNAME 记录指向应用程序网关的公共终结点。 若要创建别名，可使用附加到应用程序网关的 PublicIPAddress 元素检索应用程序网关及其关联的 IP/DNS 名称的详细信息。 这可通过 Azure DNS 或其他 DNS 提供程序完成，方法是创建指向[公共 IP 地址](../dns/dns-custom-domain.md#public-ip-address)的 CNAME 记录。 不建议使用 A 记录，因为重新启动应用程序网关后 VIP 可能会变化。
+创建网关后，下一步是配置前端以进行通信。 使用公共 IP 时，应用程序网关需要动态分配的 DNS 名称，这会造成不方便。 若要确保最终用户能够访问应用程序网关，可以使用 CNAME 记录指向应用程序网关的公共终结点。 若要创建别名，可使用附加到应用程序网关的 PublicIPAddress 元素检索应用程序网关及其关联的 IP/DNS 名称的详细信息。 这可通过 Azure DNS 或其他 DNS 提供程序完成，方法是创建指向[公共 IP 地址](../dns/dns-custom-domain.md#public-ip-address)的 CNAME 记录。 不建议使用 A 记录，因为重新启动应用程序网关后 VIP 可能会变化。
 
 ```powershell
 Get-AzPublicIpAddress -ResourceGroupName ContosoRG -Name publicIP01
@@ -167,6 +167,6 @@ DnsSettings              : {
 
 ## <a name="next-steps"></a>后续步骤
 
-了解如何配置重定向，请访问：[使用 PowerShell 在应用程序网关上配置重定向](redirect-overview.md)。
+若要了解如何配置重定向，请访问：[使用 PowerShell 在应用程序网关上配置重定向](redirect-overview.md)。
 
 <!-- Update_Description: wording update -->

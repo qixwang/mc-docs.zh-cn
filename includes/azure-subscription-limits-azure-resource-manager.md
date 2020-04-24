@@ -10,10 +10,10 @@ ms.date: 01/06/2020
 ms.author: v-yeche
 ms.custom: include file
 ms.openlocfilehash: 492974fee354dfd2feffa57e598d9794108c7c2a
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75631723"
 ---
 <!--MOONCAKE: CORRECT ON https://www.azure.cn/pricing-->
@@ -22,8 +22,8 @@ ms.locfileid: "75631723"
 | 资源 | 默认限制 | 最大限制 |
 | --- | --- | --- |
 | 每个[订阅](https://www.azure.cn/pricing)的 VM 数 |每个区域 25,000 个<sup>1</sup>。 |每个区域 25,000 个。 |
-| 每个[订阅](https://www.azure.cn/pricing)的 VM 核心总数 |每个区域 20 个<sup>1</sup> | 请联系支持人员。 |
-| VM 系列（例如 Dv2 和 F）、每个[订阅](https://www.azure.cn/pricing)的核心数 |每个区域 20 个<sup>1</sup> | 请联系支持人员。 |
+| 每个[订阅](https://www.azure.cn/pricing)的 VM 核心总数 |每个区域 20 个<sup>1</sup> | 联系支持人员。 |
+| VM 系列（例如 Dv2 和 F）、每个[订阅](https://www.azure.cn/pricing)的核心数 |每个区域 20 个<sup>1</sup> | 联系支持人员。 |
 | 每个订阅的[协同管理员数](/billing/billing-add-change-azure-subscription-administrator/) |不受限制。 |不受限制。 |
 | 每个订阅在每个区域中的[存储帐户数](../articles/storage/common/storage-quickstart-create-account.md) |250 |250 |
 | 每个订阅的[资源组数](../articles/azure-resource-manager/resource-group-overview.md) |980 |980 |

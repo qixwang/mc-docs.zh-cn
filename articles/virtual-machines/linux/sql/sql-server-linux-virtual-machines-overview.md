@@ -14,10 +14,10 @@ ms.date: 10/14/2019
 ms.author: v-yeche
 ms.reviewer: jroth
 ms.openlocfilehash: 710e5d5c1d71ed995185cefe9855125ac3490f03
-ms.sourcegitcommit: c5e012385df740bf4a326eaedabb987314c571a1
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74203667"
 ---
 # <a name="overview-of-sql-server-on-azure-virtual-machines-linux"></a>Azure 虚拟机 (Linux) 上的 SQL Server 概述
@@ -53,7 +53,7 @@ Azure 虚拟机在中国许多不同的[地理区域](https://status.azure.com/s
 > 若要查看可用的 Windows SQL Server 虚拟机映像，请参阅 [Azure 虚拟机上的 SQL Server 概述 (Windows)](../../windows/sql/virtual-machines-windows-sql-server-iaas-overview.md)。
 
 <a name="packages"></a>
-## <a name="installed-packages"></a>已安装程序包
+## <a name="installed-packages"></a>已安装的包
 
 在 Linux 上配置 SQL Server 时，请先安装数据库引擎包，然后根据需要安装多个可选包。 用于 SQL Server 的 Linux 虚拟机自动安装大多数包。 下表显示为每个分发安装了哪些包。
 

@@ -10,10 +10,10 @@ ms.service: iot-central
 services: iot-central
 manager: philmea
 ms.openlocfilehash: da3b922b1d074fad5d861186419c9874f3df5ffb
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75335914"
 ---
 # <a name="export-your-application-preview-features"></a>导出应用程序（预览版功能）

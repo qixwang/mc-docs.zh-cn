@@ -18,10 +18,10 @@ ms.reviewer: shoatman
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 578eb213bda62137db347b9f4c0edc0987366f5b
-ms.sourcegitcommit: 9597d4da8af58009f9cef148a027ccb7b32ed8cf
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74655366"
 ---
 # <a name="adal-to-msal-migration-guide-for-android"></a>适用于 Android 的 ADAL 到 MSAL 迁移指南
@@ -30,7 +30,7 @@ ms.locfileid: "74655366"
 
 ## <a name="difference-highlights"></a>差异重点说明
 
-ADAL 适用于 Azure Active Directory v1.0 终结点。 Microsoft 身份验证库 (MSAL) 适用于 Microsoft 标识平台--前称为 Azure Active Directory v2.0 终结点。 Microsoft 标识平台与 Azure Active Directory v1.0 的不同之处在于：
+ADAL 适用于 Azure Active Directory v1.0 终结点。 Microsoft 身份验证库 (MSAL) 适用于 Microsoft 标识平台（前称为 Azure Active Directory v2.0 终结点）。 Microsoft 标识平台与 Azure Active Directory v1.0 的不同之处在于：
 
 支持：
   - 组织标识 (Azure Active Directory)

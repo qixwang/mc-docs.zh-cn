@@ -8,10 +8,10 @@ origin.date: 09/24/2018
 ms.date: 6/4/2019
 ms.author: v-lingwu
 ms.openlocfilehash: d205881152a12f1abd624af75cc6d6cfe0c9ff89
-ms.sourcegitcommit: 13431cf4d69142ed7feb8d12d967a502bf9ff346
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75599902"
 ---
 # <a name="overview-of-autoscale-in-21vianet-azure-virtual-machines-cloud-services-and-web-apps"></a>世纪互联 Azure 虚拟机、云服务和 Web 应用自动缩放概述
@@ -37,7 +37,7 @@ Azure Monitor 自动缩放仅适用于[虚拟机规模集](/virtual-machine-scal
 
 ## <a name="resource-metrics"></a>资源指标
 资源会发出指标，这些指标随后通过规则进行处理。 指标通过不同方法发出。
-虚拟机规模集使用 Azure 诊断代理提供的遥测数据，而 Web 应用和云服务的遥测则直接来自 Azure 基础结构。 一些常用的统计信息包括：CPU 使用率、内存使用情况、线程计数、队列长度和磁盘使用情况。 如需可用遥测数据的列表，请参阅[自动缩放常用指标](../../azure-monitor/platform/autoscale-common-metrics.md)。
+虚拟机规模集使用 Azure 诊断代理提供的遥测数据，而 Web 应用和云服务的遥测则直接来自 Azure 基础结构。 一些常用的统计信息包括：CPU 使用率、内存使用情况、线程计数、队列长度和磁盘使用情况。 如需可用遥测数据的列表，请参阅 [自动缩放常用指标](../../azure-monitor/platform/autoscale-common-metrics.md)。
 
 ## <a name="custom-metrics"></a>自定义指标
 还可以利用应用程序可以发出的自己的自定义指标。 如果已将应用程序配置为向 Application Insights 发送指标，则可以利用这些指标来决定是否要进行缩放。
@@ -69,7 +69,7 @@ Azure Monitor 自动缩放仅适用于[虚拟机规模集](/virtual-machine-scal
 
     - **容量设置**：表示实例数的最小值、最大值和默认值。
     - **规则集**，其中的每个规则都包括一个触发器（时间或指标）和一个缩放操作（增加或缩减）。
-    - **定期**：表示自动缩放应在何时使此配置文件生效。
+    - **定期**：表示自动缩放应在何时执行此配置文件。
 
       可以有多个配置文件，以应对不同的互相重叠的要求。 例如，可以针对一天中的不同时间或者一周中的不同日期设置不同的自动缩放配置文件。
 
@@ -78,7 +78,7 @@ Azure Monitor 自动缩放仅适用于[虚拟机规模集](/virtual-machine-scal
 
 ![Azure 自动缩放设置、配置文件和规则结构](./media/autoscale-overview/AzureResourceManagerRuleStructure3.png)
 
-[自动缩放 REST API](https://msdn.microsoft.com/library/dn931928.aspx) 中提供了可配置字段和说明的完整列表。
+[Autoscale REST API](https://msdn.microsoft.com/library/dn931928.aspx)中提供了可配置字段和说明的完整列表。
 
 有关代码示例，请参阅
 
@@ -86,7 +86,7 @@ Azure Monitor 自动缩放仅适用于[虚拟机规模集](/virtual-machine-scal
 * [自动缩放 REST API](https://msdn.microsoft.com/library/dn931953.aspx)
 
 ## <a name="horizontal-vs-vertical-scaling"></a>水平缩放和垂直缩放
-自动缩放仅以横向方式调整资源的规模，即只增加（“放”）或减少（“缩”）VM 实例的数目。  横向缩放在使用云服务的情况下更为灵活，因为这样可以运行数千个处理负载的 VM。
+自动缩放仅以横向方式调整资源的规模，即只增加（“放”）或减少（“缩”）VM 实例的数目。  水平缩放在使用云服务的情况下更为灵活，因为这样可以运行数千个处理负载的 VM。
 
 纵向缩放与此不同。 它保持 VM 数量不变，但会增强（“提高”）或削弱（“降低”）VM 的功能。 功能按内存、CPU 速度、磁盘空间等指标衡量。垂直缩放有更多的限制。 具体取决于更大型硬件的可用性，此可用性会快速达到上限，并因区域而异。 纵向缩放通常还需要停止和重新启动 VM。
 
@@ -113,8 +113,8 @@ Azure Monitor 自动缩放仅适用于[虚拟机规模集](/virtual-machine-scal
 ## <a name="next-steps"></a>后续步骤
 若要详细了解自动缩放，请使用前面列出的自动缩放演练，或参阅以下资源：
 
-* [Azure 监视器自动缩放常用指标](../../azure-monitor/platform/autoscale-common-metrics.md)
-* [Azure 监视器自动缩放的最佳做法](../../azure-monitor/platform/autoscale-best-practices.md)
-* [使用自动缩放操作发送电子邮件和 webhook 警报通知](../../azure-monitor/platform/autoscale-webhook-email.md)
+* [Azure Monitor 自动缩放常用指标](../../azure-monitor/platform/autoscale-common-metrics.md)
+* [Azure Monitor自动缩放最佳做法](../../azure-monitor/platform/autoscale-best-practices.md)
+* [Use autoscale actions to send email and webhook alert notifications（使用自动缩放操作发送电子邮件和 webhook 警报通知）](../../azure-monitor/platform/autoscale-webhook-email.md)
 * [自动缩放 REST API](https://msdn.microsoft.com/library/dn931953.aspx)
-* [虚拟机规模集自动缩放疑难解答](../../virtual-machine-scale-sets/virtual-machine-scale-sets-troubleshoot.md)
+* [Troubleshooting Virtual Machine Scale Sets Autoscale（虚拟机规模集自动缩放疑难解答）](../../virtual-machine-scale-sets/virtual-machine-scale-sets-troubleshoot.md)

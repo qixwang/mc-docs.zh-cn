@@ -13,10 +13,10 @@ ms.author: v-jay
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 ms.openlocfilehash: 37e046d98c55aed395a74143350b1a8142dc651b
-ms.sourcegitcommit: 369038a7d7ee9bbfd26337c07272779c23d0a507
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74807546"
 ---
 # <a name="get-started-quickly-with-fivetran-and-sql-data-warehouse"></a>快速开始使用 Fivetran 和 SQL 数据仓库

@@ -18,10 +18,10 @@ ms.reviewer: asteen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2442a05b76c74bb97a6cc7a2d084a78539ebf210
-ms.sourcegitcommit: 9597d4da8af58009f9cef148a027ccb7b32ed8cf
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74655403"
 ---
 # <a name="disable-user-sign-ins-for-an-enterprise-app-in-azure-active-directory"></a>在 Azure Active Directory 中对企业应用禁用用户登录
@@ -30,7 +30,7 @@ ms.locfileid: "74655403"
 
 ## <a name="how-do-i-disable-user-sign-ins"></a>如何禁用用户登录？
 
-1. 使用目录全局管理员的帐户登录到 [Azure 门户](https://portal.azure.cn) 。
+1. 使用目录全局管理员的帐户登录到 [Azure 门户](https://portal.azure.cn)。
 1. 选择“所有服务”  ，在文本框中输入 **Azure Active Directory**，并选择“Enter”  。
 1. 在“Azure Active Directory   -  目录名”窗格（即，正在管理的目录的 Azure AD 窗格）中，选择“企业应用程序”  。
 1. 在“企业应用程序 - 所有应用程序”  窗格上，你会看到你可以管理的应用的列表。 选择一个应用。
@@ -62,6 +62,6 @@ if ($servicePrincipal) {
 * [查看所有组](../fundamentals/active-directory-groups-view-azure-portal.md)
 * [向企业应用分配用户](assign-user-or-group-access-portal.md)
 * [删除企业应用的用户分配](remove-user-or-group-access-portal.md)
-* [Change the name or logo of an enterprise app](change-name-or-logo-portal.md)
+* [更改企业应用的名称或徽标](change-name-or-logo-portal.md)
 
 <!-- Update_Description: wording update -->

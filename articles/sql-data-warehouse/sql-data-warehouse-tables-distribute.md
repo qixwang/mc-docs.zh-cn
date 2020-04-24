@@ -13,10 +13,10 @@ ms.author: v-jay
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 ms.openlocfilehash: 8481426b834089bb955a105a8ab097531b36823f
-ms.sourcegitcommit: 369038a7d7ee9bbfd26337c07272779c23d0a507
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74807606"
 ---
 # <a name="guidance-for-designing-distributed-tables-in-azure-sql-data-warehouse"></a>有关如何在 Azure SQL 数据仓库中设计分布式表的指南
@@ -50,7 +50,7 @@ ms.locfileid: "74807606"
 在以下情况下，考虑使用哈希分布表：
 
 - 磁盘上的表大小超过 2 GB。
-- 对表进行频繁的插入、更新和删除操作。 
+- 表具有频繁的插入、更新和删除操作。 
 
 ### <a name="round-robin-distributed"></a>轮循机制分布
 轮循机制分布表将表行均衡分布在所有分布区中。 将行分配到分布区的过程是随机的。 与哈希分布表不同的是，值相等的行不一定分配到相同的分布区。 
@@ -160,7 +160,7 @@ order by two_part_name, row_count
 
 若要避免在联接过程中移动数据，应遵循以下做法：
 
-- 参与联接的列的相关表必须哈希分布在**一个**联接列中。
+- 参与联接的列的相关表必须哈希分布在 **一个** 联接列中。
 - 两个表之间联接列的数据类型必须匹配。
 - 必须使用 equals 运算符联接列。
 - 联接类型不能是 `CROSS JOIN`。
@@ -218,7 +218,7 @@ RENAME OBJECT [dbo].[FactInternetSales_CustomerKey] TO [FactInternetSales];
 
 若要创建分布式表，请使用以下语句之一：
 
-- [CREATE TABLE (Azure SQL Data Warehouse)](https://docs.microsoft.com/sql/t-sql/statements/create-table-azure-sql-data-warehouse)（创建表（Azure SQL 数据仓库））
+- [CREATE TABLE（Azure SQL 数据仓库）](https://docs.microsoft.com/sql/t-sql/statements/create-table-azure-sql-data-warehouse)
 - [CREATE TABLE AS SELECT（Azure SQL 数据仓库）](https://docs.microsoft.com/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse)
 
 

@@ -8,10 +8,10 @@ origin.date: 11/13/2019
 ms.date: 12/16/2019
 ms.author: v-tawe
 ms.openlocfilehash: 6c8b918364ff02c7f76fc9fa01b3cb3b18ecdf94
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75336053"
 ---
 # <a name="azure-signalr-service-authentication"></a>Azure SignalR 服务身份验证
@@ -32,7 +32,7 @@ ms.locfileid: "75336053"
 
 ![托管在 Azure 中的 OAuth 完成](media/signalr-concept-authenticate-oauth/signalr-oauth-complete-azure.png)
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 使用 GitHub 帐户注册新的 OAuth 应用
@@ -41,7 +41,7 @@ ms.locfileid: "75336053"
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要完成本教程，必须满意以下先决条件：
 
@@ -54,7 +54,7 @@ ms.locfileid: "75336053"
 
 1. 打开 web 浏览器，导航到 `https://github.com` 并登录帐户。
 
-2. 对于帐户，导航到“设置” > “开发人员设置”，然后单击“注册新应用程序”或“OAuth 应用”下的“新建 OAuth 应用”      。
+2. 对于帐户，导航到“设置” **“开发人员设置”，然后单击“注册新应用程序”或“OAuth 应用”下的“新建 OAuth 应用”**  >      。
 
 3. 为新 OAuth 应用使用以下设置，然后单击“注册应用程序”  ：
 
@@ -80,7 +80,7 @@ ms.locfileid: "75336053"
         dotnet add package AspNet.Security.OAuth.GitHub -v 2.0.0-rc2-final
         dotnet restore
 
-1. 打开 Startup.cs，并为以下命名空间添加 `using` 语句  ：
+1. 打开 Startup.cs，并为以下命名空间添加  *语句*`using`：
 
     ```csharp
     using System.Net.Http;
@@ -318,7 +318,7 @@ ms.locfileid: "75336053"
     }
     ```
 
-4. 在 index.html 底部，更新 `connection.start()` 的错误处理程序（如下所示），提示用户进行登录  。
+4. 在 index.html 底部，更新  *的错误处理程序（如下所示），提示用户进行登录*`connection.start()`。
 
     ```javascript
     connection.start()
@@ -415,7 +415,7 @@ az webapp create --name $WebAppName --resource-group $ResourceGroupName \
 | -------------------- | --------------- |
 | ResourceGroupName | 这是之前教程中建议的资源组名称。 将所有教程资源聚集在一起是一个好办法。 使用在之前教程中使用的相同资源组。 |
 | WebAppPlan | 输入一个新的、唯一的应用服务计划名称。 |
-| WebAppName | 这将是新 Web 应用的名称，也是 URL 的一部分。 使用唯一名称。 例如，signalrtestwebapp22665120。   |
+| WebAppName | 这将是新 Web 应用的名称，也是 URL 的一部分。 请使用唯一的名称。 例如，signalrtestwebapp22665120。   |
 
 ### <a name="add-app-settings-to-the-web-app"></a>将应用设置添加到 Web 应用
 
@@ -538,7 +538,7 @@ az webapp deployment source config-local-git --name $WebAppName \
 
 需要执行的最后一步是更新 GitHub OAuth 应用的“主页 URL”和“授权回调 URL”，指向新的托管应用   。
 
-1. 在浏览器中打开 [https://github.com](https://github.com) 并导航到帐户的“设置” > “开发人员设置” > “Oauth 应用”    。
+1. 在浏览器中打开 [https://github.com](https://github.com) 并导航到帐户的“设置” **“开发人员设置”** “Oauth 应用” >    >   。
 
 2. 单击身份验证应用并更新“主页 URL”和“授权回调 URL”，如下所示   ：
 
@@ -555,7 +555,7 @@ az webapp deployment source config-local-git --name $WebAppName \
 
 如果还将继续下一教程，可保留此快速入门中创建的资源，并在下一教程中重复使用。
 
-否则，如果已完成快速入门示例应用程序，则可删除此快速入门中创建的 Azure 资源，避免产生费用。
+如果已完成快速入门示例应用程序，可以删除本快速入门中创建的 Azure 资源，以免产生费用。
 
 > [!IMPORTANT]
 > 删除资源组的操作不可逆，资源组以及其中的所有资源将被永久删除。 请确保不会意外删除错误的资源组或资源。 如果在现有资源组（其中包含要保留的资源）中为托管此示例而创建了相关资源，可从各自的边栏选项卡逐个删除这些资源，而不要删除资源组。

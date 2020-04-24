@@ -14,10 +14,10 @@ origin.date: 10/25/2019
 ms.date: 01/06/2020
 ms.author: v-jay
 ms.openlocfilehash: 43efec957e4fbeeef83fde048e685f0c5ad4c679
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75623714"
 ---
 # <a name="copy-data-from-xero-using-azure-data-factory"></a>使用 Azure 数据工厂从 Xero 复制数据
@@ -50,7 +50,7 @@ Azure 数据工厂提供内置的驱动程序用于启用连接，因此无需�
 
 Xero 链接服务支持以下属性：
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：**Xero** | 是 |
 | host | Xero 服务器的终结点 (`api.xero.com`)。  | 是 |
@@ -96,10 +96,10 @@ Xero 链接服务支持以下属性：
 
 要从 Xero 复制数据，请将数据集的 type 属性设置为“XeroObject”  。 支持以下属性：
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为：**XeroObject** | 是 |
-| tableName | 表名称。 | 否（如果指定了活动源中的“query”） |
+| tableName | 表的名称。 | 否（如果指定了活动源中的“query”） |
 
 **示例**
 
@@ -126,10 +126,10 @@ Xero 链接服务支持以下属性：
 
 要从 Xero 复制数据，请将复制活动中的源类型设置为“XeroSource”  。 复制活动**source**部分支持以下属性：
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
-| type | 复制活动源的 type 属性必须设置为：**XeroSource** | 是 |
-| query | 使用自定义 SQL 查询读取数据。 例如：`"SELECT * FROM Contacts"`。 | 否（如果指定了数据集中的“tableName”） |
+| type | 复制活动 source 的 type 属性必须设置为：**XeroSource** | 是 |
+| 查询 | 使用自定义 SQL 查询读取数据。 例如：`"SELECT * FROM Contacts"`。 | 否（如果指定了数据集中的“tableName”） |
 
 **示例：**
 

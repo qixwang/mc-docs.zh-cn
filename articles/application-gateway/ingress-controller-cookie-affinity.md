@@ -9,10 +9,10 @@ origin.date: 11/04/2019
 ms.date: 11/19/2019
 ms.author: v-junlch
 ms.openlocfilehash: e56c31be76faf4513a22b9731183630b2fe0f155
-ms.sourcegitcommit: fdbd1b6df618379dfeab03044a18c373b5fbb8ec
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74328434"
 ---
 # <a name="enable-cookie-based-affinity-with-an-application-gateway"></a>使用应用程序网关启用基于 Cookie 的相关性

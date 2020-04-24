@@ -12,10 +12,10 @@ ms.date: 11/04/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 470eeeac0e702d75fb76838a090a34102c886c93
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75598451"
 ---
 # <a name="modeling-stage-of-the-team-data-science-process-lifecycle"></a>Team Data Science Process 生命周期建模阶段
@@ -41,7 +41,7 @@ ms.locfileid: "75598451"
 ## <a name="how-to-do-it"></a>如何执行
 在此阶段中解决了三个主要任务：
 
-  * **特征工程**：从原始数据创建数据特征，以实现模型定型。
+  * **功能设计**：从原始数据创建数据功能，以实现模型定型。
   * **模型定型**：通过比较模型的成功指标，找出最能准确回答问题的模型。
   * 确定模型是否适用于生产。 
 

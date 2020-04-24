@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.author: v-lingwu
 ms.openlocfilehash: 1a7756313dc4bb91acdc32d193cd6848335f20c5
-ms.sourcegitcommit: 21b02b730b00a078a76aeb5b78a8fd76ab4d6af2
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74838585"
 ---
 # <a name="use-azure-portal-to-back-up-multiple-virtual-machines"></a>使用 Azure 门户备份多个虚拟机
@@ -27,13 +27,13 @@ ms.locfileid: "74838585"
 
 ## <a name="sign-in-to-the-azure-portal"></a>登录到 Azure 门户
 
-登录到 [Azure 门户](https://portal.azure.cn/)。
+登录 [Azure 门户](https://portal.azure.cn/)。
 
 ## <a name="create-a-recovery-services-vault"></a>创建恢复服务保管库
 
 恢复服务保管库包含备份数据和应用于受保护虚拟机的备份策略。 备份虚拟机是在本地完成的过程。 无法将某个位置的虚拟机备份到另一个位置的恢复服务保管库。 因此，每个包含要备份的虚拟机的 Azure 位置中必须至少存在一个恢复服务保管库。
 
-1. 在左侧菜单上，选择“所有服务”，然后在服务列表中键入“恢复服务”   。 键入时，系统会筛选出资源列表。 看见列表中的恢复服务保管库时，请将其选中以打开“恢复服务保管库”菜单。
+1. 在左侧菜单上，选择“所有服务”，然后在服务列表中键入“恢复服务”   。 键入时，系统将筛选出资源列表。 看见列表中的恢复服务保管库时，请将其选中以打开“恢复服务保管库”菜单。
 
     ![打开“恢复服务保管库”菜单](./media/tutorial-backup-vm-at-scale/full-browser-open-rs-vault.png)
 

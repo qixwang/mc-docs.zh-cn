@@ -8,10 +8,10 @@ origin.date: 10/31/2019
 ms.date: 12/16/2019
 ms.author: v-yeche
 ms.openlocfilehash: 318baedb9e16a557b89f28053c05f48aed9d4e03
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75335818"
 ---
 # <a name="configure-ip-firewall-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中配置 IP 防火墙
@@ -87,7 +87,7 @@ ms.locfileid: "75335818"
 
 如以下屏幕截图所示，可以在 Azure 门户中检索虚拟机的 IP 地址：
 
-![显示在 Azure 门户中显示的虚拟机的公共 IP 地址的屏幕截图](./media/how-to-configure-firewall/public-ip-addresses-dns.png)
+![该屏幕截图显示在 Azure 门户中显示的虚拟机的公共 IP 地址](./media/how-to-configure-firewall/public-ip-addresses-dns.png)
 
 将虚拟机实例添加到组时，这些实例会自动获得 Azure Cosmos DB 帐户的访问权限。
 

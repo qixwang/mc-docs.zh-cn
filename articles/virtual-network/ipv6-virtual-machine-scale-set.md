@@ -15,10 +15,10 @@ origin.date: 10/29/2019
 ms.date: 11/25/2019
 ms.author: v-yeche
 ms.openlocfilehash: 074bf7218fa039852f879d7a7d7388ae51f974c8
-ms.sourcegitcommit: 298eab5107c5fb09bf13351efeafab5b18373901
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74657811"
 ---
 # <a name="deploy-virtual-machine-scale-sets-with-ipv6-in-azure"></a>在 Azure 中部署使用 IPv6 的虚拟机规模集

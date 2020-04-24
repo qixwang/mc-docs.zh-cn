@@ -13,10 +13,10 @@ origin.date: 11/14/2019
 ms.date: 12/05/2019
 ms.author: v-lingwu
 ms.openlocfilehash: 3b405bf140bf4d6ceaed794cc20f179c157befc9
-ms.sourcegitcommit: cf73284534772acbe7a0b985a86a0202bfcc109e
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74884617"
 ---
 # <a name="use-descriptors-to-boost-signal-of-word-list"></a>使用描述符来增强字词列表的信号
@@ -33,7 +33,7 @@ ms.locfileid: "74884617"
 
 1. 在“描述符”页上，单击“+ 添加描述符”   。 
  
-1. 在“创建新短语列表描述符”  对话框中，输入描述符的名称（例如 `Cities`）。 在“值”框中，键入描述符的值，例如 `Seattle`。  可以一次键入一个值或者用逗号分隔的一组值，然后按 Enter  。
+1. 在“创建新短语列表描述符”  对话框中，输入描述符的名称（例如 `Cities`）。 在“值”框中，键入描述符的值，例如 **。** `Seattle` 可以一次键入一个值或者用逗号分隔的一组值，然后按 Enter  。
 
     > [!div class="mx-imgBorder"]
     > ![添加描述符“Cities”](./media/luis-add-features/add-phrase-list-cities.png)

@@ -9,13 +9,13 @@ ms.topic: include
 ms.date: 10/18/2019
 ms.author: diberry
 ms.openlocfilehash: e21eecc1806ed01d466ae23cd7eace0e09745978
-ms.sourcegitcommit: 3d27913e9f896e34bd7511601fb428fc0381998b
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75002675"
 ---
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * 初学者密钥。
 * 从 cognitive-services-language-understanding GitHub 存储库中导入 [TravelAgent](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/quickstarts/change-model/TravelAgent.json) 应用。
@@ -170,10 +170,10 @@ ms.locfileid: "75002675"
     }
     ```
 
-1. 替换以下值：
+1. 请替换以下值：
 
     * 将 `YOUR-KEY` 替换为初学者密钥
-    * `YOUR-ENDPOINT` 替换为终结点，例如 `chinaeast2.api.cognitive.azure.cn`
+    * 将 `YOUR-ENDPOINT` 替换为终结点，例如 `chinaeast2.api.cognitive.azure.cn`
     * `YOUR-APP-ID` 替换为应用 ID
 
 1. 生成控制台应用程序。 

@@ -14,10 +14,10 @@ metadata:
   origin.date: 08/27/2019
   ms.date: 09/30/2019
   ms.openlocfilehash: 7fae4670834999cd9407f7f25f49f8ec57b5ff3d
-  ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+  ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 01/03/2020
+  ms.lasthandoff: 04/17/2020
   ms.locfileid: "75624099"
 landingContent:
 - title: 关于 Azure 队列

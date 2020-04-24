@@ -11,10 +11,10 @@ ms.date: 01/06/2020
 ms.author: v-jay
 ms.reviewer: stewu
 ms.openlocfilehash: f8902345af7410edfb6ab61f313aabe3a6ff5d0c
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75623597"
 ---
 # <a name="tune-performance-spark-hdinsight--azure-data-lake-storage-gen2"></a>调整性能：Spark、HDInsight 和 Azure Data Lake Storage Gen2

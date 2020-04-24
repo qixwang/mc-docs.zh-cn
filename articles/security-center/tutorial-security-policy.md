@@ -16,10 +16,10 @@ origin.date: 11/04/2019
 ms.date: 11/18/2019
 ms.author: v-lingwu
 ms.openlocfilehash: f3d8417b72591dc3cc4e169bd7c489f29e466190
-ms.sourcegitcommit: 3a9c13eb4b4bcddd1eabca22507476fb34f89405
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74528296"
 ---
 # <a name="working-with-security-policies"></a>使用安全策略

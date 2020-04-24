@@ -10,10 +10,10 @@ ms.service: iot-central
 services: iot-central
 manager: corywink
 ms.openlocfilehash: 4081bdf2d7b51f011855d092e33bac4e8e131f67
-ms.sourcegitcommit: 6ffa4d50cee80c7c0944e215ca917a248f2a4bcd
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74883670"
 ---
 # <a name="monitor-device-connectivity-using-azure-cli-preview-features"></a>使用 Azure CLI（预览版功能）监视设备连接
@@ -24,7 +24,7 @@ ms.locfileid: "74883670"
 
 [如需更多详细信息，请访问 Azure CLI 扩展参考](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/central)
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 + Azure CLI 已安装且版本为 2.0.7 或更高。 通过运行 `az --version` 检查 Azure CLI 的版本。 通过 [Azure CLI 文档](/cli/install-azure-cli)了解如何进行安装和更新
 + Azure 中的工作或学校帐户，在 IoT Central 应用程序中作为用户添加。

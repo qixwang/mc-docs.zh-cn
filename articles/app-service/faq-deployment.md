@@ -11,10 +11,10 @@ ms.date: 01/13/2020
 ms.author: v-tawe
 ms.custom: seodec18
 ms.openlocfilehash: 51c82058fed8e7e3bf90eee9ab2b5e081f30a811
-ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75600468"
 ---
 # <a name="deployment-faqs-for-web-apps-in-azure"></a>Azure 中 Web 应用的部署常见问题解答

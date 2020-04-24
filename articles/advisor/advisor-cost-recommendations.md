@@ -10,10 +10,10 @@ origin.date: 01/29/2019
 ms.date: 12/04/2019
 ms.author: lingliw
 ms.openlocfilehash: 7036fa74747e2d6c898dae158c4d372fdc28efbf
-ms.sourcegitcommit: 21b02b730b00a078a76aeb5b78a8fd76ab4d6af2
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74838973"
 ---
 # <a name="reduce-service-costs-using-azure-advisor"></a>使用 Azure 顾问降低服务成本

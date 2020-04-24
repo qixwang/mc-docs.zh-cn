@@ -13,10 +13,10 @@ origin.date: 10/10/2019
 ms.date: 12/05/2019
 ms.author: v-lingwu
 ms.openlocfilehash: 62c1ae019f0a056d692a7c14d9844bb03b793992
-ms.sourcegitcommit: cf73284534772acbe7a0b985a86a0202bfcc109e
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74884485"
 ---
 # <a name="testing-example-utterances-in-luis"></a>在 LUIS 中测试示例话语

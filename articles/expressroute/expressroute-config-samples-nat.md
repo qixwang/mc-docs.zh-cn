@@ -9,10 +9,10 @@ origin.date: 12/06/2018
 ms.date: 12/02/2019
 ms.author: v-yiso
 ms.openlocfilehash: 99892d5583ee3a935d26e2f0a8d0e5ef8d917679
-ms.sourcegitcommit: 9e92bcf6aa02fc9e7b3a29abadf6b6d1a8ece8c4
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74389998"
 ---
 # <a name="router-configuration-samples-to-set-up-and-manage-nat"></a>用于设置和管理 NAT 的路由器配置示例

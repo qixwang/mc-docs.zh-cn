@@ -8,31 +8,31 @@ ms.topic: conceptual
 ms.date: 12/30/2019
 ms.author: v-junlch
 ms.openlocfilehash: 1aceb37758710df1988c75eb69694f080ef0d338
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75624323"
 ---
 # <a name="create-a-web-app-plus-azure-cache-for-redis-using-a-template"></a>使用模板创建 Web 应用和 Azure Redis 缓存
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-本主题介绍如何创建 Azure 资源管理器模板来部署包含 Azure Redis 缓存的 Azure Web 应用。 了解如何定义要部署的资源以及如何定义执行部署时指定的参数。 可将此模板用于自己的部署，或自定义此模板以满足要求。
+本主题介绍如何创建 Azure 资源管理器模板来部署包含 Azure Redis 缓存的 Azure Web 应用。 将了解如何定义要部署的资源以及如何定义执行部署时指定的参数。 可将此模板用于自己的部署，或自定义此模板以满足要求。
 
-有关创建模板的详细信息，请参阅[创作 Azure Resource Manager 模板](../azure-resource-manager/resource-group-authoring-templates.md)。 若要了解缓存资源类型的 JSON 语法和属性，请参阅 [Microsoft.Cache 资源类型](https://docs.microsoft.com/azure/templates/microsoft.cache/allversions)。
+有关创建模板的详细信息，请参阅[创作 Azure 资源管理器模板](../azure-resource-manager/resource-group-authoring-templates.md)。 若要了解缓存资源类型的 JSON 语法和属性，请参阅 [Microsoft.Cache 资源类型](https://docs.microsoft.com/azure/templates/microsoft.cache/allversions)。
 
 有关完整的模板，请参阅[包含 Azure Redis 缓存的 Web 应用模板](https://github.com/Azure/azure-quickstart-templates/blob/master/201-web-app-with-redis-cache/azuredeploy.json)。
 
-## <a name="what-you-will-deploy"></a>要部署的内容
-在此模板中，你将部署：
+## <a name="what-you-will-deploy"></a>将部署的内容
+在此模板中，将部署：
 
 * Azure Web 应用
 * 用于 Redis 的 Azure 缓存
 
 若要自动运行部署，请单击以下按钮：
 
-[![“部署到 Azure”](./media/cache-web-app-arm-with-redis-cache-provision/deploybutton.png)](https://portal.azure.cn/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-web-app-with-redis-cache%2Fazuredeploy.json)
+[![部署到 Azure](./media/cache-web-app-arm-with-redis-cache-provision/deploybutton.png)](https://portal.azure.cn/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-web-app-with-redis-cache%2Fazuredeploy.json)
 
 ## <a name="parameters-to-specify"></a>要指定的参数
 [!INCLUDE [app-service-web-deploy-web-parameters](../../includes/app-service-web-deploy-web-parameters.md)]
@@ -55,7 +55,7 @@ ms.locfileid: "75624323"
 ### <a name="azure-cache-for-redis"></a>用于 Redis 的 Azure 缓存
 创建用于 Web 应用的 Azure Redis 缓存。 缓存的名称在 **cacheName** 变量中指定。
 
-该模板在资源组所在的同一位置中创建缓存。
+该模板会在资源组所在的同一位置中创建缓存。
 
     {
       "name": "[variables('cacheName')]",

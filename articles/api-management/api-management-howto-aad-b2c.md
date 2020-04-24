@@ -14,17 +14,17 @@ origin.date: 11/04/2019
 ms.date: 12/16/2019
 ms.author: v-yiso
 ms.openlocfilehash: aad6c4140b18b0dd1f308773be2b0a4b739d5724
-ms.sourcegitcommit: cf73284534772acbe7a0b985a86a0202bfcc109e
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74885094"
 ---
 # <a name="how-to-authorize-developer-accounts-by-using-azure-active-directory-b2c-in-azure-api-management"></a>如何在 Azure API 管理中使用 Azure Active Directory B2C 为开发人员帐户授权
 
 ## <a name="overview"></a>概述
 
-Azure Active Directory B2C 是一种云标识管理解决方案，适用于消费型 Web 和移动应用程序。 可以使用它来管理对开发人员门户的访问。 本指南说明为了与 Azure Active Directory B2C 集成，需要在 API 管理服务中完成哪些配置。 有关使用经典 Azure Active Directory 启用对开发人员门户的访问的信息，请参阅[如何使用 Azure Active Directory 为开发人员帐户授权]。
+Azure Active Directory B2C 是一种云标识管理解决方案，适用于消费型 Web 和移动应用程序。 可以使用它来管理对开发人员门户的访问。 本指南说明为了与 Azure Active Directory B2C 集成，需要在 API 管理中完成哪些配置。 有关使用经典 Azure Active Directory 启用对开发人员门户的访问的信息，请参阅[如何使用 Azure Active Directory 为开发人员帐户授权]。
 
 > [!NOTE]
 > 若要完成本指南中的步骤，必须先获取一个可在其中创建应用程序的 Azure Active Directory B2C 租户。 此外，需要准备好注册和登录策略。 有关详细信息，请参阅 [Azure Active Directory B2C 概述]。
@@ -36,7 +36,7 @@ Azure Active Directory B2C 是一种云标识管理解决方案，适用于消�
 1. 若要开始，请登录到 [Azure 门户](https://portal.azure.cn)并找到你的 API 管理实例。
 
    > [!NOTE]
-   > 如果尚未创建 API 管理服务实例，请参阅 [Azure API 管理入门教程][Get started with Azure API Management]中的[创建 API 管理服务实例][Create an API Management service instance]。
+   > 如果尚未创建 API 管理服务实例，请参阅 [Azure API 管理入门教程][Create an API Management service instance]中的[创建 API 管理服务实例][Get started with Azure API Management]。
 
 2. 在“标识”  下。 单击顶部的“+添加”  。
 
@@ -116,14 +116,14 @@ Azure Active Directory B2C 是一种云标识管理解决方案，适用于消�
 
    ![开发人员门户][api-management-howto-aad-b2c-dev-portal-b2c-options]
 
-   注册完成后，将重定向回开发人员门户。 现已登录到 API 管理服务实例的开发人员门户。
+   注册完成后，将重定向回到开发人员门户。 现已登录到 API 管理服务实例的开发人员门户。
 
     ![注册完成][api-management-registration-complete]
 
 ## <a name="next-steps"></a>后续步骤
 
 *  [Azure Active Directory B2C 概述]
-*  [Azure Active Directory B2C：可扩展策略框架]
+*  [Azure Active Directory B2C：可扩展的策略框架]
 *  [将 Microsoft 帐户用作 Azure Active Directory B2C 中的标识提供者]
 *  [将 Google 帐户用作 Azure Active Directory B2C 中的标识提供者]
 *  [将 LinkedIn 帐户用作 Azure Active Directory B2C 中的标识提供者]
@@ -193,7 +193,7 @@ Azure Active Directory B2C 是一种云标识管理解决方案，适用于消�
 [Accessing the Graph API]: https://msdn.microsoft.com/library/azure/dn132599.aspx#BKMK_Graph
 [Azure Active Directory B2C 概述]: https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-overview
 [如何使用 Azure Active Directory 为开发人员帐户授权]: https://docs.microsoft.com/azure/api-management/api-management-howto-aad
-[Azure Active Directory B2C：可扩展策略框架]: https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-policies
+[Azure Active Directory B2C：可扩展的策略框架]: https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-policies
 [将 Microsoft 帐户用作 Azure Active Directory B2C 中的标识提供者]: https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-setup-msa-app
 [将 Google 帐户用作 Azure Active Directory B2C 中的标识提供者]: https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-setup-goog-app
 [将 Facebook 帐户用作 Azure Active Directory B2C 中的标识提供者]: https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-setup-fb-app

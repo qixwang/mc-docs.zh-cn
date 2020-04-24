@@ -14,10 +14,10 @@ metadata:
   ms.date: 11/11/2019
   monikerRange: ''
   ms.openlocfilehash: 8c5b80b59f13bffd3bf31439e8c909014158eb0c
-  ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+  ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 01/03/2020
+  ms.lasthandoff: 04/17/2020
   ms.locfileid: "75624173"
 landingContent:
 - title: 关于 Azure 数据工厂
@@ -128,7 +128,7 @@ landingContent:
       url: /data-factory/monitor-using-azure-monitor
     - text: 使用 SDK 进行监视
       url: /data-factory/monitor-programmatically
-- title: 语言
+- title: Languages
   linkLists:
   - linkListType: reference
     links:
@@ -140,5 +140,5 @@ landingContent:
       url: https://docs.microsoft.com/python/api/overview/azure/datafactory?view=azure-python
     - text: REST
       url: https://docs.microsoft.com/rest/api/datafactory/
-    - text: Resource Manager 模板
+    - text: 资源管理器模板
       url: https://docs.microsoft.com/azure/templates/microsoft.datafactory/allversions

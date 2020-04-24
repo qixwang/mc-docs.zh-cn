@@ -10,10 +10,10 @@ ms.author: v-jay
 ms.subservice: common
 ms.reviewer: zezha-msft
 ms.openlocfilehash: e7b516735c8b257323d7ba98c913e460f2790dde
-ms.sourcegitcommit: 99c408fd0f1fc264acaed41f1a77fea4ebbc0e0f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74354355"
 ---
 # <a name="azcopy-logout"></a>azcopy logout
@@ -45,8 +45,8 @@ azcopy logout [flags]
 
 |选项|说明|
 |---|---|
-|--cap-mbps uint32|以兆位/秒为单位限制传输速率。 瞬间的吞吐量可能会与上限有所不同。 如果此选项设置为零，或者省略，则吞吐量不受限制。|
-|--output-type 字符串|命令输出的格式。 选项包括：text、json。 默认值为“text”。|
+|--cap-mbps uint32|以兆位/秒为单位限制传输速率。 瞬间吞吐量可能与上限略有不同。 如果此选项设置为零，或者省略，则吞吐量不受限制。|
+|--output-type string|命令输出的格式。 选项包括：text、json。 默认值为“text”。|
 
 ## <a name="see-also"></a>另请参阅
 

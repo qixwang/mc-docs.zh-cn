@@ -7,10 +7,10 @@ ms.date: 01/13/2020
 ms.author: v-tawe
 ms.custom: seodec18
 ms.openlocfilehash: e208625254fa110e2fcf45ce35aab34c1800e6ef
-ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75600462"
 ---
 # <a name="how-to-prepare-for-an-inbound-ip-address-change"></a>如何为入站 IP 地址更改做准备

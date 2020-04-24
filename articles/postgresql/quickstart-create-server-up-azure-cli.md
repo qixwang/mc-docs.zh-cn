@@ -9,10 +9,10 @@ ms.topic: quickstart
 origin.date: 05/06/2019
 ms.date: 01/06/2020
 ms.openlocfilehash: 15de27d8cd9365e536394d7dd3f562d0225a9e41
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75624168"
 ---
 # <a name="quickstart-use-an-azure-cli-command-az-postgres-up-preview-to-create-an-azure-database-for-postgresql---single-server"></a>快速入门：使用 Azure CLI 命令、az postgres up（预览版）创建 Azure Database for PostgreSQL - 单一服务器

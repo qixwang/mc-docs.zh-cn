@@ -10,10 +10,10 @@ origin.date: 10/24/2018
 ms.date: 12/02/2019
 ms.author: v-jay
 ms.openlocfilehash: 33f08fef81c6e24aeece71fbbb4950564b7dd17b
-ms.sourcegitcommit: 481542df432d52b7d4823811cef94772e4e0f192
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74530625"
 ---
 # <a name="cabling-options-for-your-azure-data-box"></a>Azure Data Box 的布线选项

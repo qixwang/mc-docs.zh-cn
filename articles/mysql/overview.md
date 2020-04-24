@@ -9,10 +9,10 @@ ms.topic: overview
 origin.date: 11/25/2019
 ms.date: 12/09/2019
 ms.openlocfilehash: 48055cfa52cd113e393e835fd8a894ba224ef015
-ms.sourcegitcommit: 21b02b730b00a078a76aeb5b78a8fd76ab4d6af2
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74839037"
 ---
 # <a name="what-is-azure-database-for-mysql"></a>什么是用于 MySQL 的 Azure 数据库？
@@ -60,6 +60,6 @@ Azure 数据库沿袭了 Azure Database for MySQL 的若干数据安全性功能
 ## <a name="next-steps"></a>后续步骤
 现在，已阅读了 Azure Database for MySQL 的简介并回答了“什么是 Azure Database for MySQL？”这个问题， 因此可以继续完成以下内容：
 
-- 有关成本比较和计算器，请参阅定价页。 [价格](https://azure.cn/pricing/details/mysql/)
+- 有关成本比较和计算器，请参阅定价页。 [定价](https://azure.cn/pricing/details/mysql/)
 - 从创建第一个服务器开始。 [使用 Azure 门户创建用于 MySQL 服务器的 Azure 数据库](quickstart-create-mysql-server-database-using-azure-portal.md)
-- 使用首选语言构建第一个应用：[Python](./connect-python.md) | [Node.JS](./connect-nodejs.md) | [Java](./connect-java.md) | [Ruby](./connect-ruby.md) | [PHP](./connect-php.md) | [.NET (C#)](./connect-csharp.md) | [Go](./connect-go.md)
+- 使用首选语言生成首个 应用：[Python](./connect-python.md) | [Node.JS](./connect-nodejs.md) | [Java](./connect-java.md) | [Ruby](./connect-ruby.md) | [PHP](./connect-php.md) | [.NET (C#)](./connect-csharp.md) | [Go](./connect-go.md)

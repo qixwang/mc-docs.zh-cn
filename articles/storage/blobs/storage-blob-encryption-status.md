@@ -11,10 +11,10 @@ ms.author: v-jay
 ms.reviewer: cbrooks
 ms.subservice: common
 ms.openlocfilehash: b9afc7a6164211e16de2238d2dacf4901c3689c9
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75624439"
 ---
 # <a name="check-the-encryption-status-of-a-blob"></a>检查 blob 的加密状态
@@ -27,7 +27,7 @@ ms.locfileid: "75624439"
 
 使用 Azure 门户、PowerShell 或 Azure CLI 来确定某个 blob 是否在不使用代码的情况下进行了加密。
 
-### <a name="azure-portaltabportal"></a>[Azure 门户](#tab/portal)
+### <a name="azure-portal"></a>[Azure 门户](#tab/portal)
 
 若要使用 Azure 门户来检查 blob 是否已加密，请执行以下步骤：
 
@@ -38,7 +38,7 @@ ms.locfileid: "75624439"
 
     ![屏幕截图显示如何在 Azure 门户中查看“加密的服务器”属性](media/storage-blob-encryption-status/blob-encryption-property-portal.png)
 
-### <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+### <a name="powershell"></a>[PowerShell](#tab/powershell)
 
 若要使用 PowerShell 检查 blob 是否已加密，请检查 blob 的“IsServerEncrypted”  属性。 请务必将尖括号中的占位符值替换为你自己的值：
 
@@ -57,7 +57,7 @@ $blob.ICloudBlob.Properties.IsServerEncrypted
 $blob.ICloudBlob.Properties.IsServerEncrypted
 ```
 
-### <a name="azure-clitabcli"></a>[Azure CLI](#tab/cli)
+### <a name="azure-cli"></a>[Azure CLI](#tab/cli)
 
 若要使用 Azure CLI 检查 blob 是否已加密，请检查 blob 的“IsServerEncrypted”  属性。 请务必将尖括号中的占位符值替换为你自己的值：
 

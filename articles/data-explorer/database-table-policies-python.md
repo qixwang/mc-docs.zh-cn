@@ -9,10 +9,10 @@ ms.topic: conceptual
 origin.date: 09/24/2019
 ms.date: 01/13/2020
 ms.openlocfilehash: 850ba5adab2325368a1c851cfd0240649cbe6be4
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75630821"
 ---
 # <a name="create-database-and-table-policies-for-azure-data-explorer-by-using-python"></a>使用 Python 为 Azure 数据资源管理器创建数据库和表策略
@@ -24,7 +24,7 @@ ms.locfileid: "75630821"
 
 Azure 数据资源管理器是一项快速且高度可缩放的数据探索服务，适用于日志和遥测数据。 在本文中，你将使用 Python 为 Azure 数据资源管理器创建数据库和表策略。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * 如果没有 Azure 订阅，请在开始前创建一个[试用 Azure 帐户](https://www.azure.cn/pricing/1rmb-trial/)。
 * [测试群集和数据库](create-cluster-database-python.md)
@@ -38,7 +38,7 @@ pip install azure-mgmt-kusto
 pip install azure-kusto-data (Optional, for changing table's policies)
 ```
 
-## <a name="authentication"></a>身份验证
+## <a name="authentication"></a>Authentication
 为了运行本文中的示例，我们需要可以访问资源的 Azure AD 应用程序和服务主体。 可以使用相同的 Azure AD 应用程序通过[测试群集和数据库](create-cluster-database-csharp.md#authentication)进行身份验证。 如果要使用其他 Azure AD 应用程序，请参阅[创建 Azure AD 应用程序](https://docs.azure.cn/active-directory/develop/howto-create-service-principal-portal)以创建免费的 Azure AD 应用程序并在订阅范围内添加角色分配。 它还演示如何获取 `Directory (tenant) ID`、`Application ID` 和 `Client Secret`。 可能需要将新的 Azure AD 应用程序添加为数据库中的主体，请参阅[管理 Azure 数据资源管理器数据库权限](https://docs.azure.cn/data-explorer/manage-database-permissions)。    
 
 ## <a name="alter-database-retention-policy"></a>更改数据库保留策略

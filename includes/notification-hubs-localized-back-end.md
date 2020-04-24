@@ -10,10 +10,10 @@ ms.date: 12/09/2018
 ms.author: v-tawe
 ms.custom: include file
 ms.openlocfilehash: ed4e5265922a685bd0ebdf48e4fbb04aeb9d3124
-ms.sourcegitcommit: cf73284534772acbe7a0b985a86a0202bfcc109e
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74884949"
 ---
 发送模板通知时，只需提供一组属性。 在此方案中，这组属性包含当前新闻的本地化版本。

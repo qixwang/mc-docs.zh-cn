@@ -14,10 +14,10 @@ origin.date: 11/20/2018
 ms.date: 11/25/2019
 ms.author: v-yeche
 ms.openlocfilehash: 40da890160e7a632eb1b0de0de287bcbbcfe345f
-ms.sourcegitcommit: 298eab5107c5fb09bf13351efeafab5b18373901
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74658058"
 ---
 # <a name="troubleshoot-outbound-smtp-connectivity-issues-in-azure"></a>在 Azure 中排查出站 SMTP 连接问题

@@ -13,10 +13,10 @@ ms.reviewer: ''
 origin.date: 03/25/2019
 ms.date: 12/16/2019
 ms.openlocfilehash: 95d31127a880c4290b6f6c7d3e701a2833a4d30d
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75336130"
 ---
 # <a name="azure-powershell-samples-for-azure-sql-database"></a>适用于 Azure SQL 数据库的 Azure PowerShell 示例
@@ -25,16 +25,16 @@ Azure SQL 数据库允许你使用 Azure PowerShell 配置数据库、实例和�
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-可以在本地安装并使用 PowerShell，本教程需要 AZ PowerShell 1.4.0 或更高版本。 如果需要进行升级，请参阅 [Install Azure PowerShell module](https://docs.microsoft.com/powershell/azure/install-az-ps)（安装 Azure PowerShell 模块）。 如果在本地运行 PowerShell，则还需运行 `Connect-AzAccount -Environment AzureChinaCloud` 来创建与 Azure 的连接。
+可以在本地安装并使用 PowerShell，本教程需要 AZ PowerShell 1.4.0 或更高版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-az-ps)。 如果在本地运行 PowerShell，则还需运行 `Connect-AzAccount -Environment AzureChinaCloud` 来创建与 Azure 的连接。
 
-## <a name="single-database-and-elastic-poolstabsingle-database"></a>[单一数据库和弹性池](#tab/single-database)
+## <a name="single-database-and-elastic-pools"></a>[单一数据库和弹性池](#tab/single-database)
 
 下表包括了适用于 Azure SQL 数据库的示例 Azure PowerShell 脚本的链接。
 
 | |  |
 |---|---|
 |**创建和配置单一数据库和弹性池**||
-| [创建单一数据库和配置数据库服务器防火墙规则](scripts/sql-database-create-and-configure-database-powershell.md) | 此 PowerShell 脚本创建单一 Azure SQL 数据库，并配置服务器级防火墙规则。 |
+| [创建单一数据库和配置数据库服务器防火墙规则](scripts/sql-database-create-and-configure-database-powershell.md) | 此 PowerShell 脚本创建单个 Azure SQL 数据库，并配置服务器级防火墙规则。 |
 | [创建弹性池并移动共用数据库](scripts/sql-database-move-database-between-pools-powershell.md) | 此 PowerShell 脚本创建 Azure SQL 数据库弹性池，移动共用数据库并更改计算大小。|
 |**配置异地复制和故障转移**||
 | [配置单一数据库并使用活动异地复制对其进行故障转移](scripts/sql-database-setup-geodr-and-failover-database-powershell.md)| 此 PowerShell 脚本为单个 Azure SQL 数据库配置活动异地复制，并将其故障转移到次要副本。 |
@@ -48,7 +48,7 @@ Azure SQL 数据库允许你使用 Azure PowerShell 配置数据库、实例和�
 | **审核和威胁检测** |
 | [配置审核和威胁检测](scripts/sql-database-auditing-and-threat-detection-powershell.md)| 此 PowerShell 脚本为 Azure SQL 数据库配置审核和威胁检测策略。 |
 | **还原、复制和导入数据库**||
-| [还原数据库](scripts/sql-database-restore-database-powershell.md)| 此 PowerShell 脚本从异地冗余备份还原 Azure SQL 数据库，并根据最新备份还原已删除的 Azure SQL 数据库。 |
+| [还原数据库](scripts/sql-database-restore-database-powershell.md)| 此 PowerShell 脚本从异地冗余备份还原 Azure SQL 数据库，并将已删除的 Azure SQL 数据库还原到最新备份。 |
 | [将数据库复制到新服务器](scripts/sql-database-copy-database-to-new-server-powershell.md)| 此 PowerShell 脚本在新的 Azure SQL 服务器中创建现有 Azure SQL 数据库的副本。 |
 | [从 bacpac 文件导入数据库](scripts/sql-database-import-from-bacpac-powershell.md)| 此 PowerShell 脚本将数据库从 bacpac 文件导入到 Azure SQL 服务器。 |
 | **在数据库之间同步数据**||
@@ -59,7 +59,7 @@ Azure SQL 数据库允许你使用 Azure PowerShell 配置数据库、实例和�
 
 详细了解[单一数据库 Azure PowerShell API](sql-database-single-databases-manage.md#powershell-manage-sql-database-servers-and-single-databases)。
 
-## <a name="managed-instancetabmanaged-instance"></a>[托管实例](#tab/managed-instance)
+## <a name="managed-instance"></a>[托管实例](#tab/managed-instance)
 
 下表包括了适用于 Azure SQL 数据库 - 托管实例的示例 Azure PowerShell 脚本的链接。
 

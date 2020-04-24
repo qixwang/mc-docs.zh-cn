@@ -9,13 +9,13 @@ ms.topic: include
 ms.date: 11/20/2019
 ms.author: diberry
 ms.openlocfilehash: 93f2dd60feb08d26db760ce4e24f23ba8c668e86
-ms.sourcegitcommit: 3d27913e9f896e34bd7511601fb428fc0381998b
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74982158"
 ---
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * [Node.js](https://nodejs.org/) 编程语言 
 * [Visual Studio Code](https://code.visualstudio.com/)
@@ -76,10 +76,10 @@ ms.locfileid: "74982158"
     getPrediction().then(()=>console.log("done")).catch((err)=>console.log(err));
     ```
 
-1. 替换以下值：
+1. 请替换以下值：
 
     * 将 `YOUR-KEY` 替换为初学者密钥。
-    * 将 `YOUR-ENDPOINT` 替换为终结点 URL。 例如，`chinaeast2.api.cognitive.azure.cn`。
+    * 将 `YOUR-ENDPOINT` 替换为终结点 URL。 例如，`chinaeast2.api.cognitive.azure.cn` 。
 
 1. 使用以下命令安装 `request`、`request-promise` 和 `querystring` 依赖项： 
 

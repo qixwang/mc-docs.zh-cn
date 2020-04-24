@@ -13,10 +13,10 @@ origin.date: 10/14/2019
 ms.date: 12/04/2019
 ms.author: v-lingwu
 ms.openlocfilehash: f2c6da428c80844423317132b1a5810e36abe7b5
-ms.sourcegitcommit: cf73284534772acbe7a0b985a86a0202bfcc109e
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74884935"
 ---
 # <a name="dimension-prebuilt-entity-for-a-luis-app"></a>LUIS 应用的维度预生成实体
@@ -32,7 +32,7 @@ ms.locfileid: "74884935"
 
 `10 1/2 miles of cable`
 
-#### <a name="v3-responsetabv3"></a>[V3 响应](#tab/V3)
+#### <a name="v3-response"></a>[V3 响应](#tab/V3)
 
 以下 JSON 的 `verbose` 参数设置为 `false`：
 
@@ -46,7 +46,7 @@ ms.locfileid: "74884935"
     ]
 }
 ```
-#### <a name="v3-verbose-responsetabv3-verbose"></a>[V3 详细响应](#tab/V3-verbose)
+#### <a name="v3-verbose-response"></a>[V3 详细响应](#tab/V3-verbose)
 以下 JSON 的 `verbose` 参数设置为 `true`：
 
 ```json
@@ -75,7 +75,7 @@ ms.locfileid: "74884935"
 }
 ```
 
-#### <a name="v2-responsetabv2"></a>[V2 响应](#tab/V2)
+#### <a name="v2-response"></a>[V2 响应](#tab/V2)
 
 以下示例显示了 **builtin.dimension** 实体的解析。
 

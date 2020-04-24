@@ -10,10 +10,10 @@ origin.date: 11/14/2019
 ms.date: 11/21/2019
 ms.author: v-junlch
 ms.openlocfilehash: d2d603c1c98b4140fe15b97c86470bb19103ad99
-ms.sourcegitcommit: fdbd1b6df618379dfeab03044a18c373b5fbb8ec
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74326642"
 ---
 # <a name="create-an-application-gateway-with-internal-redirection-using-the-azure-cli"></a>使用 Azure CLI 创建支持内部重定向的应用程序网关
@@ -31,7 +31,7 @@ ms.locfileid: "74326642"
 
 如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial/?WT.mc_id=A261C142F)。
 
-如果选择在本地安装并使用 CLI，此快速入门教程要求运行 Azure CLI 2.0.4 版或更高版本。 若要查找版本，请运行 `az --version`。 如果需要进行安装或升级，请参阅[安装 Azure CLI](/cli/install-azure-cli)。
+如果选择在本地安装并使用 CLI，此快速入门教程要求运行 Azure CLI 2.0.4 版或更高版本。 要查找版本，请运行 `az --version`。 如果需要进行安装或升级，请参阅[安装 Azure CLI](/cli/install-azure-cli)。
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
@@ -45,7 +45,7 @@ az group create --name myResourceGroupAG --location chinanorth
 
 ## <a name="create-network-resources"></a>创建网络资源 
 
-使用 [az network vnet create](/cli/network/vnet) 创建名为 *myVNet* 的虚拟网络和名为 *myAGSubnet* 的子网。 然后，可以使用 [az network vnet subnet create](/cli/network/vnet/subnet) 添加后端服务器池所需的名为 *myBackendSubnet* 的子网。 使用 [az network public-ip create](/cli/network/public-ip#az-network-public-ip-create) 创建名为 *myAGPublicIPAddress* 的公共 IP 地址。
+使用 *az network vnet create* 创建名为 *myVNet* 的虚拟网络和名为 [myAGSubnet](/cli/network/vnet) 的子网。 然后，可以使用 *az network vnet subnet create* 添加后端服务器池所需的名为 [myBackendSubnet](/cli/network/vnet/subnet) 的子网。 使用 *az network public-ip create* 创建名为 [myAGPublicIPAddress](/cli/network/public-ip#az-network-public-ip-create) 的公共 IP 地址。
 
 ```azurecli
 az network vnet create `
@@ -119,7 +119,7 @@ az network application-gateway http-listener create `
 
 ### <a name="add-the-redirection-configuration"></a>添加重定向配置
 
-使用 [az network application-gateway redirect-config create](/cli/network/application-gateway/redirect-config#az-network-application-gateway-redirect-config-create) 在应用程序网关中添加从 *www\.consoto.org* 将流量发送到 *www\.contoso.com* 的侦听器的重定向配置。
+使用 *az network application-gateway redirect-config create\. 在应用程序网关中添加从* www*consoto.org\. 将流量发送到* www[contoso.com](/cli/network/application-gateway/redirect-config#az-network-application-gateway-redirect-config-create) 的侦听器的重定向配置。
 
 ```azurecli
 az network application-gateway redirect-config create `
@@ -216,7 +216,7 @@ az network public-ip show `
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，你已学习了如何执行以下操作：
+在本教程中，你了解了如何执行以下操作：
 
 > * 设置网络
 > * 创建应用程序网关

@@ -13,10 +13,10 @@ origin.date: 10/25/2019
 ms.date: 12/05/2019
 ms.author: diberry
 ms.openlocfilehash: bb4a7dcad2b978c1de073001edec1238e779005c
-ms.sourcegitcommit: 3d27913e9f896e34bd7511601fb428fc0381998b
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74982152"
 ---
 # <a name="prediction-endpoint-changes-for-v3"></a>V3 的预测终结点更改

@@ -9,17 +9,17 @@ ms.topic: conceptual
 origin.date: 08/30/2019
 ms.date: 01/13/2020
 ms.openlocfilehash: 030adf9a5f213545b121d855c7d989c40341e3a4
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75630908"
 ---
 # <a name="visualize-data-using-an-azure-data-explorer-kusto-query-imported-into-microsoft-excel"></a>使用导入到 Microsoft Excel 中的 Azure 数据资源管理器 Kusto 查询进行数据可视化
 
 Azure 数据资源管理器提供两个可以在 Excel 中连接到数据的选项：使用本机连接器或从 Azure 数据资源管理器导入查询。 本文介绍如何将查询从 Azure 数据资源管理器导入 Excel 以实现数据可视化。 将 Kusto 查询添加为 Excel 数据源，以便对数据进行其他计算或可视化操作。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * 如果没有 Azure 订阅，请在开始前创建一个[试用 Azure 帐户](https://www.azure.cn/pricing/1rmb-trial/)。
 * 一个属于 Azure Active Directory 的组织电子邮件帐户，以便连接到 [Azure 数据资源管理器帮助群集](https://dataexplorer.azure.cn/clusters/help/databases/Samples) 

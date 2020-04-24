@@ -18,10 +18,10 @@ origin.date: 11/28/2019
 ms.date: 01/13/2020
 ms.author: v-yiso
 ms.openlocfilehash: 899aa282d7c526fc551cf2e131a78b9f0edf4bb7
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75631097"
 ---
 # <a name="fix-an-apache-hive-out-of-memory-error-in-azure-hdinsight"></a>解决 Azure HDInsight 中的 Apache Hive 内存不足错误
@@ -61,7 +61,7 @@ Hive 查询在 24 节点 A3 HDInsight 群集上用了 26 分钟才完成。 客�
     Warning: Map Join MAPJOIN[428][bigTable=?] in task 'Stage-21:MAPRED' is a cross product
     Warning: Shuffle Join JOIN[8][tables = [t1933775, t1932766]] in Stage 'Stage-4:MAPRED' is a cross product
 
-通过使用 Apache Tez 执行引擎， 相同的查询运行了 15 分钟，然后引发以下错误：
+通过使用 Apache Tez 执行引擎， 相同的查询运行了 15 分钟，并引发以下错误：
 
     Status: Failed
     Vertex failed, vertexName=Map 5, vertexId=vertex_1443634917922_0008_1_05, diagnostics=[Task failed, taskId=task_1443634917922_0008_1_05_000006, diagnostics=[TaskAttempt 0 failed, info=[Error: Failure while running task:java.lang.RuntimeException: java.lang.OutOfMemoryError: Java heap space
@@ -95,7 +95,7 @@ Hive 查询在 24 节点 A3 HDInsight 群集上用了 26 分钟才完成。 客�
 
     When hive.auto.convert.join.noconditionaltask = true we check noconditionaltask.size and if the sum  of tables sizes in the map join is less than noconditionaltask.size the plan would generate a Map join, the issue with this is that the calculation doesn't take into account the overhead introduced by different HashTable implementation as results if the sum of input sizes is smaller than the noconditionaltask size by a small margin queries will hit OOM.
 
-hive-site.xml 文件中的 **hive.auto.convert.join.noconditionaltask** 已设置为 **true**：
+hive-site.xml 文件中的 **Hive.auto.convert.join.noconditionaltask** 已设置为 **true**：
 
 ```xml
 <property>

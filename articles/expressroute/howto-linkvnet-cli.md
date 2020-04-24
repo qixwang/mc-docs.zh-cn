@@ -1,6 +1,6 @@
 ---
 title: 将虚拟网络链接到 ExpressRoute 线路：CLI：Azure
-description: 本文档概述了如何使用资源管理器部署模型和 CLI 将虚拟网络 (VNet) 链接到 ExpressRoute 线路。
+description: 本文档概述如何使用资源管理器部署模型和 CLI 将虚拟网络 (VNet) 链接到 ExpressRoute 线路。
 services: expressroute
 documentationcenter: na
 author: cherylmc
@@ -17,15 +17,15 @@ origin.date: 05/21/2019
 ms.author: v-yiso
 ms.date: 08/12/2019
 ms.openlocfilehash: 521cdaeef578e5782a4c2a3be3b5d455b2a45f84
-ms.sourcegitcommit: 9e92bcf6aa02fc9e7b3a29abadf6b6d1a8ece8c4
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74389436"
 ---
 # <a name="connect-a-virtual-network-to-an-expressroute-circuit-using-cli"></a>使用 CLI 将虚拟网络连接到 ExpressRoute 线路
 
-本文介绍了如何使用 CLI 将虚拟网络 (VNet) 链接到 Azure ExpressRoute 线路。 若要使用 Azure CLI 进行链接，必须使用资源管理器部署模型创建虚拟网络。 它们可以在同一个订阅中，也可以属于另一个订阅。 如果想使用不同的方法将 VNet 连接到 ExpressRoute 线路，请从以下列表中选择一篇文章进行参阅：
+本文介绍如何使用 CLI 将虚拟网络 (VNet) 链接到 Azure ExpressRoute 线路。 若要使用 Azure CLI 进行链接，必须使用资源管理器部署模型创建虚拟网络。 它们可以在同一个订阅中，也可以属于另一个订阅。 如果想使用不同的方法将 VNet 连接到 ExpressRoute 线路，请从以下列表中选择一篇文章进行参阅：
 
 > [!div class="op_single_selector"]
 > * [Azure 门户](expressroute-howto-linkvnet-portal-resource-manager.md)
@@ -40,11 +40,11 @@ ms.locfileid: "74389436"
 * 在开始配置之前，需要查看[先决条件](expressroute-prerequisites.md)、[路由要求](expressroute-routing.md)和[工作流](expressroute-workflows.md)。
 * 必须有一个活动的 ExpressRoute 线路。 
   * 请按说明[创建 ExpressRoute 线路](howto-circuit-cli.md)，并通过连接提供商启用该线路。 
-  * 确保为线路配置 Azure 专用对等互连。 有关路由说明，请参阅[配置路由](howto-routing-cli.md)一文。 
+  * 请确保为线路配置 Azure 专用对等互连。 有关路由说明，请参阅[配置路由](howto-routing-cli.md)一文。 
   * 请确保已配置 Azure 专用对等互连。 必须运行网络和 Microsoft 之间的 BGP 对等互连，使你能够启用端到端的连接。
   * 确保已创建并完全预配一个虚拟网络和一个虚拟网络网关。 请按照说明[为 ExpressRoute 配置虚拟网络网关](/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli)。 请务必使用 `--gateway-type ExpressRoute`。
 
-* 最多可以将 10 个虚拟网络链接到一条标准 ExpressRoute 线路。 使用标准 ExpressRoute 线路时，所有虚拟网络都必须位于同一地缘政治区域。 
+* 最多可以将 10 个虚拟网络链接到一条标准 ExpressRoute 线路。 使用标准 ExpressRoute 线路时，所有虚拟网络必须都位于同一地缘政治区域。 
 
 * 单个 VNet 可最多连接到 4 条 ExpressRoute 线路。 通过以下流程为正在连接的每条 ExpressRoute 线路创建新的连接对象。 ExpressRoute 线路可在同一订阅、不同订阅或两者兼有。
 
@@ -58,11 +58,11 @@ ms.locfileid: "74389436"
 az network vpn-connection create --name ERConnection --resource-group ExpressRouteResourceGroup --vnet-gateway1 VNet1GW --express-route-circuit2 MyCircuit
 ```
 
-## <a name="connect-a-virtual-network-in-a-different-subscription-to-a-circuit"></a>将不同订阅中的虚拟网络连接到线路
+## <a name="connect-a-virtual-network-in-a-different-subscription-to-a-circuit"></a>将另一订阅中的虚拟网络连接到线路
 
 用户可以在多个订阅之间共享 ExpressRoute 线路。 下图是在多个订阅之间共享 ExpressRoute 线路的简单示意图。
 
-大型云中的每个较小云用于表示属于组织中不同部门的订阅。 组织内的每个部门可以使用自己的订阅部署其服务，但可以共享单个 ExpressRoute 线路以连接回本地网络。 一个部门（此示例中为：IT 部门）可以拥有 ExpressRoute 线路。 组织内的其他订阅可以使用 ExpressRoute 线路。
+大型云中的每个较小云用于表示属于组织中不同部门的订阅。 组织内的每个部门可以使用自己的订阅部署其服务，但可以共享单个 ExpressRoute 线路以连接回本地网络。 单个部门（在此示例中为 IT 部门）可以拥有 ExpressRoute 线路。 组织内的其他订阅可以使用 ExpressRoute 线路。
 
 > [!NOTE]
 > 专用线路的连接和带宽费用将应用于 ExpressRoute 线路所有者。 所有虚拟网络共享相同的带宽。
@@ -79,7 +79,7 @@ az network vpn-connection create --name ERConnection --resource-group ExpressRou
 
 ### <a name="circuit-owner-operations"></a>线路所有者操作
 
-**创建授权**
+**若要创建授权**
 
 线路所有者创建一个授权，这将创建一个授权密钥，供线路用户用于将其虚拟网络网关连接到 ExpressRoute 线路。 一个授权只可用于一个连接。
 
@@ -109,7 +109,7 @@ az network express-route auth create --circuit-name MyCircuit -g ExpressRouteRes
 az network express-route auth list --circuit-name MyCircuit -g ExpressRouteResourceGroup
 ```
 
-**添加授权**
+**若要添加授权**
 
 线路所有者可以使用以下示例来添加授权：
 
@@ -117,7 +117,7 @@ az network express-route auth list --circuit-name MyCircuit -g ExpressRouteResou
 az network express-route auth create --circuit-name MyCircuit -g ExpressRouteResourceGroup -n MyAuthorization1
 ```
 
-**删除授权**
+**若要删除授权**
 
 线路所有者可以运行以下示例来撤销/删除对用户的授权：
 
@@ -141,16 +141,16 @@ Get-AzExpressRouteCircuit -Name "MyCircuit" -ResourceGroupName "MyRG"
 az network vpn-connection create --name ERConnection --resource-group ExpressRouteResourceGroup --vnet-gateway1 VNet1GW --express-route-circuit2 MyCircuit --authorization-key "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^"
 ```
 
-**释放连接授权**
+**若要释放连接授权**
 
 可以通过删除 ExpressRoute 线路与虚拟网络之间的连接释放授权。
 
 ## <a name="modify-a-virtual-network-connection"></a>修改虚拟网络连接
 可以更新虚拟网络连接的某些属性。 
 
-**更新连接权重**
+**若要更新连接权重**
 
-虚拟网络可以连接到多条 ExpressRoute 线路。 可以从多条 ExpressRoute 线路收到相同的前缀。 若要选择使用哪个连接发送目标为此前缀的流量，可以更改连接的 *RoutingWeight*。 会在具有最高 *RoutingWeight* 的连接上发送流量。
+虚拟网络可以连接到多条 ExpressRoute 线路。 可以从多条 ExpressRoute 线路收到相同的前缀。 若要选择使用哪个连接发送目标为此前缀的流量，可以更改连接的 *RoutingWeight*。 将在具有最高 *RoutingWeight* 的连接上发送流量。
 
 ```azurecli
 az network vpn-connection update --name ERConnection --resource-group ExpressRouteResourceGroup --routing-weight 100

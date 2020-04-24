@@ -10,10 +10,10 @@ origin.date: 11/14/2019
 ms.date: 11/21/2019
 ms.author: v-junlch
 ms.openlocfilehash: b6f702009e7ddb02fb1d46178c83f8c1593bcaff
-ms.sourcegitcommit: fdbd1b6df618379dfeab03044a18c373b5fbb8ec
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74327422"
 ---
 # <a name="troubleshoot-azure-application-gateway-session-affinity-issues"></a>排查 Azure 应用程序网关会话相关性问题

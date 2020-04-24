@@ -7,10 +7,10 @@ origin.date: 11/05/2019
 ms.date: 12/02/2019
 ms.author: v-jay
 ms.openlocfilehash: d4b8b912e8d9cdf5899b76bfe63ea3ca40e1c372
-ms.sourcegitcommit: 481542df432d52b7d4823811cef94772e4e0f192
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74530601"
 ---
 - 不要直接将文件复制到任何预创建的共享。 需要在共享下创建文件夹，然后将文件复制到该文件夹。

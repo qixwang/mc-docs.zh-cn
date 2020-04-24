@@ -10,10 +10,10 @@ origin.date: 05/02/2019
 ms.date: 12/16/2019
 ms.author: v-tawe
 ms.openlocfilehash: e9652972d2cd7342269326897d91cadb3eddcade
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75335436"
 ---
 # <a name="example-multi-level-facets-in-azure-cognitive-search"></a>示例：Azure 认知搜索中的多层分面

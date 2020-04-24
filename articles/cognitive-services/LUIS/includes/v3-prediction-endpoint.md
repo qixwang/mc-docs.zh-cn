@@ -9,10 +9,10 @@ ms.topic: include
 ms.date: 10/14/2019
 ms.author: diberry
 ms.openlocfilehash: e05106d43ba70f61a08a9762c357052783e41c34
-ms.sourcegitcommit: 3d27913e9f896e34bd7511601fb428fc0381998b
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75002680"
 ---
 1. 在 LUIS 门户中，在“管理”部分（右上方菜单）的“密钥和终结点”页（左侧菜单）上，选择页面底部的“终结点 URL”。

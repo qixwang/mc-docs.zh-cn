@@ -14,10 +14,10 @@ origin.date: 10/31/2019
 ms.date: 12/09/2019
 ms.author: v-yiso
 ms.openlocfilehash: 1104ac501d75c8ab363581c424d55c471bcccff2
-ms.sourcegitcommit: 298eab5107c5fb09bf13351efeafab5b18373901
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74658146"
 ---
 # <a name="self-hosted-api-management-gateway-overview"></a>自承载 API 管理网关概述

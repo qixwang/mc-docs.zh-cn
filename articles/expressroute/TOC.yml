@@ -28,7 +28,7 @@
           href: expressroute-locations.md
     - name: 关于虚拟网络网关
       href: expressroute-about-virtual-network-gateways.md
-    - name: 先决条件
+    - name: 必备条件
       href: expressroute-prerequisites.md
     - name: 工作流
       href: expressroute-workflows.md
@@ -58,7 +58,7 @@
       items:
         - name: 专用对等互连
           href: designing-for-disaster-recovery-with-expressroute-privatepeering.md
-- name: 操作指南
+- name: 操作方法指南
   items:
     - name: 创建和修改线路
       items:
@@ -68,7 +68,7 @@
           href: expressroute-howto-circuit-arm.md
         - name: Azure CLI
           href: howto-circuit-cli.md
-        - name: Azure Resource Manager 模板
+        - name: Azure 资源管理器模板
           displayName: 'ARM,resource manager template'
           href: expressroute-howto-circuit-resource-manager-template.md
     - name: 创建和修改对等配置
@@ -153,7 +153,7 @@
           href: expressroute-troubleshooting-arp-resource-manager.md
         - name: 获取 ARP 表（经典）
           href: expressroute-troubleshooting-arp-classic.md
-- name: 引用
+- name: 参考
   items:
     - name: Azure PowerShell
       href: 'https://docs.microsoft.com/en-us/powershell/module/azurerm.network#expressroute'

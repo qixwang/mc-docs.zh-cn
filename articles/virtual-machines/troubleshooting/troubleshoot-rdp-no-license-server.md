@@ -14,10 +14,10 @@ origin.date: 10/23/2018
 ms.date: 11/11/2019
 ms.author: v-yeche
 ms.openlocfilehash: 99db001a06f0be63047e8c702b8b00a7ebfc4c5c
-ms.sourcegitcommit: 73715ebbaeb96e80046142b8fe5bbc117d85b317
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74594046"
 ---
 # <a name="remote-desktop-license-server-isnt-available-when-you-connect-to-an-azure-vm"></a>连接到 Azure VM 时，远程桌面许可证服务器不可用

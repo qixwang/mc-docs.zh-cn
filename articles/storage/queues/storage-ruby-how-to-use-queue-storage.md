@@ -10,10 +10,10 @@ ms.subservice: queues
 ms.topic: conceptual
 ms.reviewer: cbrooks
 ms.openlocfilehash: c1cd9353982a03980a0ddf0c30e036844fa844ee
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75624140"
 ---
 # <a name="how-to-use-queue-storage-from-ruby"></a>如何通过 Ruby 使用队列存储
@@ -33,7 +33,7 @@ ms.locfileid: "75624140"
 创建 Ruby 应用程序。
 
 ## <a name="configure-your-application-to-access-storage"></a>配置应用程序以访问存储
-要使用 Azure 存储，需下载和使用 Ruby Azure 包，其中包括与存储 REST 服务进行通信的一组方便的库。
+要使用 Azure 存储，需要下载和使用 Ruby azure 包，其中包括一组便于与存储 REST 服务进行通信的库。
 
 ### <a name="use-rubygems-to-obtain-the-package"></a>使用 RubyGems 获取该程序包
 1. 使用命令行接口，例如 **PowerShell** (Windows)、**Terminal** (Mac) 或 **Bash** (Unix)。
@@ -59,11 +59,11 @@ Azure.config.storage_access_key = "<your Azure storage access key>"
 1. 登录到 [Azure 门户](https://portal.azure.cn)。
 2. 导航到要使用的存储帐户。
 3. 在右侧的“设置”边栏选项卡中，单击“访问密钥”  。
-4. 在显示的“访问密钥”边栏选项卡中，可看到访问密钥 1 和访问密钥 2。 可以使用其中任意一个密钥。 
-5. 单击复制图标以将密钥复制到剪贴板。 
+4. 在出现的“访问密钥”边栏选项卡中，将看到访问密钥 1 和访问密钥 2。 可以使用其中任意一个。 
+5. 单击复制图标以将键复制到剪贴板。 
 
 ## <a name="how-to-create-a-queue"></a>如何：创建队列
-以下代码创建 **Azure::QueueService** 对象，可用于队列。
+以下代码将创建一个 **Azure::QueueService** 对象，用于处理队列。
 
 ```ruby
 azure_queue_service = Azure::QueueService.new
@@ -80,7 +80,7 @@ end
 ```
 
 ## <a name="how-to-insert-a-message-into-a-queue"></a>如何：在队列中插入消息
-若要在队列中插入消息，可使用 **create_message()** 方法创建一条新消息并将其添加到队列中。
+要在队列中插入消息，可使用 **create_message()** 方法创建一条新消息并将其添加到队列中。
 
 ```ruby
 azure_queue_service.create_message("test-queue", "test message")
@@ -97,7 +97,7 @@ result = azure_queue_service.peek_messages("test-queue",
 ## <a name="how-to-dequeue-the-next-message"></a>如何：取消对下一条消息的排队
 可通过两个步骤从队列中删除消息。
 
-1. 在调用 **list\_messages()** 时，默认情况下会获取队列中的下一条消息。 也可以指定要获取的消息数。 从 **list\_messages()** 返回的消息变得对从此队列读取消息的任何其他代码不可见。 以参数形式传入可见性超时秒数。
+1. 在调用 **list\_messages()** 时，默认情况下会获取队列中的下一条消息。 也可以指定要获取的消息数。 从 **list\_messages()** 返回的消息变得对从此队列读取消息的任何其他代码不可见。 将传递以秒为单位的可见性超时值作为参数。
 2. 还必须调用 **delete_message()** ，才能完成队列消息删除操作。
 
 此删除消息的两步过程可确保当代码因硬件或软件故障而无法处理消息时，其他代码实例可以获取同一消息并重试。 代码在处理消息后会立即调用 **delete\_message()** 。
@@ -109,7 +109,7 @@ azure_queue_service.delete_message("test-queue",
 ```
 
 ## <a name="how-to-change-the-contents-of-a-queued-message"></a>如何：更改已排队消息的内容
-可以更改队列中现有消息的内容。 以下代码使用 **update_message()** 方法来更新消息。 该方法返回一个元组，其中包含队列消息的 POP 接收方，以及一个 UTC 日期时间值，表示队列中显示消息的时间。
+可以更改队列中现有消息的内容。 以下代码使用 **update_message()** 方法来更新消息。 该方法将返回一个元组，其中包含队列消息的 pop 接收方，以及一个 UTC 日期时间值，表示消息会在队列中可见的时间。
 
 ```ruby
 message = azure_queue_service.list_messages("test-queue", 30)
@@ -118,10 +118,10 @@ pop_receipt, time_next_visible = azure_queue_service.update_message(
   30)
 ```
 
-## <a name="how-to-additional-options-for-dequeuing-messages"></a>如何：用于取消对消息进行排队的其他选项
-可通过两种方式自定义队列中消息的检索。
+## <a name="how-to-additional-options-for-dequeuing-messages"></a>如何：用于对消息取消排队的其他选项
+可以通过两种方式自定义队列中的消息检索。
 
-1. 可获取一批消息。
+1. 可以获取一批消息。
 2. 可以设置更长或更短的不可见超时时间，从而允许代码使用更多或更少的时间来完全处理每个消息。
 
 以下代码示例使用 **list\_messages()** 方法通过一次调用获取 15 条消息。 然后，它打印并删除每条消息。 它还将每条消息的不可见超时时间设置为 5 分钟。
@@ -135,7 +135,7 @@ end
 ```
 
 ## <a name="how-to-get-the-queue-length"></a>如何：获取队列长度
-可获取队列中消息数的估计值。 **get\_queue\_metadata()** 方法要求队列服务返回有关队列的大概消息数和元数据。
+可以获取队列中消息数的估计值。 **get\_queue\_metadata()** 方法要求队列服务返回有关队列的大概消息数和元数据。
 
 ```ruby
 message_count, metadata = azure_queue_service.get_queue_metadata(
@@ -150,9 +150,9 @@ azure_queue_service.delete_queue("test-queue")
 ```
 
 ## <a name="next-steps"></a>后续步骤
-既已了解有关队列存储的基础知识，可单击以下链接以了解更复杂的存储任务。
+现在，已了解有关队列存储的基础知识，可单击下面的链接来了解更复杂的存储任务。
 
-* 访问 [Azure 存储团队博客](https://blogs.msdn.com/b/windowsazurestorage/)
+* 访问 [Azure Storage Team Blog](https://blogs.msdn.com/b/windowsazurestorage/)（Azure 存储团队博客）
 * 访问 GitHub 上的 [Azure SDK for Ruby](https://github.com/WindowsAzure/azure-sdk-for-ruby) 存储库
 
 若要了解 Azure 队列服务（本文所述）和 Azure 服务总线队列（[如何使用服务总线队列](/service-bus-messaging/service-bus-ruby-how-to-use-queues)文章中所述）之间的比较，请参阅 [Azure 队列和服务总线队列 - 比较与对照](../../service-bus-messaging/service-bus-azure-and-service-bus-queues-compared-contrasted.md)

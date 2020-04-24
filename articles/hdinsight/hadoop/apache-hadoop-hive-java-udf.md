@@ -1,6 +1,6 @@
 ---
 title: 将 Java 用户定义函数 (UDF) 与 HDInsight 中的 Apache Hive 配合使用 - Azure
-description: 了解如何创建可用于 Apache Hive 的基于 Java 的用户定义函数 (UDF)。 此示例 UDF 将文本字符串表转换为小写。
+description: 了解如何创建可用于 Apache Hive 的基于 Java 的用户定义函数 (UDF)。 此 UDF 示例将表中的文本字符串转换为小写。
 services: hdinsight
 documentationcenter: ''
 author: Blackmist
@@ -17,21 +17,21 @@ origin.date: 11/20/2019
 ms.date: 12/23/2019
 ms.author: v-yiso
 ms.openlocfilehash: 863194746f27fe4b3e0b09eec1b0d0e51ff778b6
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75335347"
 ---
 # <a name="use-a-java-udf-with-apache-hive-in-hdinsight"></a>将 Java UDF 与 HDInsight 中的 Apache Hive 配合使用
 
-了解如何创建可用于 Apache Hive 的基于 Java 的用户定义函数 (UDF)。 此示例中的 Java UDF 将文本字符串表转换为全小写字符。
+了解如何创建可用于 Apache Hive 的基于 Java 的用户定义函数 (UDF)。 此示例中的 Java UDF 将表中的文本字符串转换为全小写字符。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * HDInsight 上的 Hadoop 群集。 请参阅 [Linux 上的 HDInsight 入门](./apache-hadoop-linux-tutorial-get-started.md)。
 * [Java 开发人员工具包 (JDK) 版本 8](https://aka.ms/azure-jdks)
-* 根据 Apache 要求正确[安装](https://maven.apache.org/install.html)的 [Apache Maven](https://maven.apache.org/download.cgi)。  Maven 是 Java 项目的项目生成系统。
+* 根据 Apache 要求正确[安装](https://maven.apache.org/download.cgi)的 [Apache Maven](https://maven.apache.org/install.html)。  Maven 是 Java 项目的项目生成系统。
 * 群集主存储的 [URI 方案](../hdinsight-hadoop-linux-information.md#URI-and-scheme)。 对于 Azure 存储，此值为 wasb://；对于Azure Data Lake Storage Gen2，此值为 abfs://；对于 Azure Data Lake Storage Gen1，此值为 adl://。 如果为 Azure 存储或 Data Lake Storage Gen2 启用了安全传输，则 URI 分别是 wasbs:// 或 abfss://。另请参阅[安全传输](../../storage/common/storage-require-secure-transfer.md)。
 
 * 文本编辑器或 Java IDE
@@ -49,7 +49,7 @@ IF NOT EXIST C:\HDI MKDIR C:\HDI
 cd C:\HDI
 ```
 
-## <a name="create-an-example-java-udf"></a>创建示例 Java UDF
+## <a name="create-an-example-java-udf"></a>创建 Java UDF 示例
 
 1. 输入以下命令，新建 Maven 项目：
 
@@ -93,7 +93,7 @@ cd C:\HDI
 
     这些条目指定了 HDInsight 3.6 中包含的 Hadoop 和 Hive 版本。 可以在 [HDInsight 组件版本控制](../hdinsight-component-versioning.md)文档中找到 HDInsight 提供的 Hadoop 和 Hive 的版本信息。
 
-    在文件末尾的 `</project>` 行之前添加 `<build>` 部分。 该部分应包含以下 XML：
+    在文件末尾的 `<build>` 行之前添加 `</project>` 部分。 本部分应包含以下 XML：
 
     ```xml
     <build>
@@ -147,7 +147,7 @@ cd C:\HDI
     </build>
     ```
 
-    这些条目用于定义如何生成项目。 具体而言，项目使用的 Java 版本以及如何生成部署到群集的 uberjar。
+    这些条目定义如何生成项目。 具体而言，包括项目使用的 Java 版本以及如何生成 uberjar 以部署到群集。
 
     一旦进行了更改，请保存该文件。
 
@@ -184,7 +184,7 @@ cd C:\HDI
     }
     ```
 
-    该代码实现接受一个字符串值，并返回该字符串的小写形式的 UDF。
+    该代码将实现接受一个字符串值，并返回该字符串的小写形式的 UDF。
 
 ## <a name="build-and-install-the-udf"></a>生成并安装 UDF
 
@@ -196,7 +196,7 @@ cd C:\HDI
     mvn compile package
     ```
 
-    此命令生成 UDF 并将其打包到 `exampleudf/target/ExampleUDF-1.0-SNAPSHOT.jar` 文件中。
+    此命令生成 UDF 并将其打包到 `exampleudf/target/ExampleUDF-1.0-SNAPSHOT.jar` 文件。
 
 2. 使用 `scp` 命令将文件复制到 HDInsight 群集，只需输入以下命令即可：
 
@@ -224,9 +224,9 @@ cd C:\HDI
     beeline -u 'jdbc:hive2://localhost:10001/;transportMode=http'
     ```
 
-    该命令假定你使用默认的群集登录帐户 **admin**。
+    该命令假定使用默认的群集登录帐户 **admin**。
 
-2. 显示 `jdbc:hive2://localhost:10001/>` 提示符后，输入以下代码将 UDF 添加到 Hive，并将其作为函数公开。
+2. 当到达 `jdbc:hive2://localhost:10001/>` 提示符时，输入以下代码将 UDF 添加到 Hive，并将其作为函数公开。
 
     ```hiveql
     ADD JAR wasbs:///example/jars/ExampleUDF-1.0-SNAPSHOT.jar;
@@ -264,7 +264,7 @@ cd C:\HDI
 
 此问题可能是由 Python 文件中的行尾结束符号导致的。 许多 Windows 编辑器默认为使用 CRLF 作为行尾结束符号，但 Linux 应用程序通常应使用 LF。
 
-可以使用以下 PowerShell 语句删除 CR 字符，此后再将文件上传到 HDInsight：
+可以使用 PowerShell 语句删除 CR 字符，然后再将文件上传到 HDInsight：
 
 ```PowerShell
 # Set $original_file to the python file path

@@ -7,10 +7,10 @@ origin.date: 11/20/2019
 ms.date: 01/06/2020
 ms.author: v-yeche
 ms.openlocfilehash: 6b8dc82d6c8dd53205913283bf06fa089261ccf7
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75631334"
 ---
 <!--PRIVATE VIEW NOT SUIT FOR OUTSIDE OF MICROSOFT-->

@@ -8,10 +8,10 @@ ms.date: 6/4/2019
 ms.author: v-lingwu
 ms.subservice: autoscale
 ms.openlocfilehash: 53c30d8238f6a2a8f4f10c4fdfacc645ee271d6d
-ms.sourcegitcommit: 13431cf4d69142ed7feb8d12d967a502bf9ff346
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75599906"
 ---
 # <a name="get-started-with-autoscale-in-azure"></a>Azure 中的自动缩放入门
@@ -32,9 +32,9 @@ Azure Monitor 自动缩放仅适用于[虚拟机规模集](/virtual-machine-scal
 
 对于每个资源，将会看到其当前实例计数和自动缩放状态。 自动缩放状态可以是：
 
-- **未配置**：尚未对此资源启用自动缩放功能。
-- **已启用**：已对此资源启用自动缩放功能。
-- **已禁用**：已对此资源禁用自动缩放功能。
+- 未配置：尚未对此资源启用自动缩放功能。 
+- 已启用：已对此资源启用自动缩放功能。 
+- 已禁用：已对此资源禁用自动缩放功能。 
 
 ## <a name="create-your-first-autoscale-setting"></a>创建第一个自动缩放设置
 
@@ -59,7 +59,7 @@ Azure Monitor 自动缩放仅适用于[虚拟机规模集](/virtual-machine-scal
    ![基于 CPU 进行缩放][8]
 1. 单击“保存”  。
 
-祝贺！ 现已成功创建第一个缩放设置，用于根据 CPU 使用率自动缩放 Web 应用。
+祝贺你！ 现已成功创建第一个缩放设置，用于根据 CPU 使用率自动缩放 Web 应用。
 
 > [!NOTE]
 > 若要开始使用虚拟机规模集或云服务角色，才可采用相同步骤操作。

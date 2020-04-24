@@ -10,10 +10,10 @@ ms.date: 01/06/2020
 ms.author: v-jay
 ms.reviewer: stewu
 ms.openlocfilehash: 693677d5ae60ce7634af6c2de61ff08c929d3920
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75624349"
 ---
 # <a name="tune-performance-storm-hdinsight--azure-data-lake-storage-gen2"></a>优化性能：Storm、HDInsight 和 Azure Data Lake Storage Gen2
@@ -26,7 +26,7 @@ ms.locfileid: "75624349"
 * Azure Data Lake Storage Gen2 帐户  。 有关如何创建帐户的说明，请参阅[快速入门：创建用于分析的存储帐户](data-lake-storage-quickstart-create-account.md)。
 * 具有 Data Lake Storage Gen2 帐户访问权限的 Azure HDInsight 群集  。 请参阅[配合使用 Azure Data Lake Storage Gen2 和 Azure HDInsight 群集](/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2)。 请确保对该群集启用远程桌面。
 * **在 Data Lake Storage Gen2 中运行 Storm 群集**。 有关详细信息，请参阅 [Storm on HDInsight](/hdinsight/hdinsight-storm-overview)。
-* **Data Lake Storage Gen2 的性能优化指南**。  有关一般的性能概念，请参阅 [Data Lake Storage Gen2 性能优化指南](data-lake-storage-performance-tuning-guidance.md)。   
+* Data Lake Storage Gen2 的性能优化指南  。  有关一般的性能概念，请参阅 [Data Lake Storage Gen2 性能优化指南](data-lake-storage-performance-tuning-guidance.md)。   
 
 ## <a name="tune-the-parallelism-of-the-topology"></a>优化拓扑的并行度
 

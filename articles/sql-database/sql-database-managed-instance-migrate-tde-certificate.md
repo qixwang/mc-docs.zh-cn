@@ -13,10 +13,10 @@ ms.reviewer: carlrab, jovanpop
 origin.date: 04/25/2019
 ms.date: 12/16/2019
 ms.openlocfilehash: fd1e3199944246c5acbb7a1220dd7b5c744fa76c
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75336187"
 ---
 # <a name="migrate-certificate-of-tde-protected-database-to-azure-sql-database-managed-instance"></a>将 TDE 保护的数据库的证书迁移到 Azure SQL 数据库托管实例
@@ -33,16 +33,16 @@ ms.locfileid: "75336187"
 > [!IMPORTANT]
 > 迁移的证书仅用于还原 TDE 保护的数据库。 还原后不久，迁移的证书即会替换为不同的保护程序，可能是服务托管证书，也可能是密钥保管库中的非对称密钥，具体取决于在实例上设置的透明数据加密类型。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要完成本文中的步骤，需要符合以下先决条件：
 
 - 已在本地服务器上，或者有权访问导出为文件的证书的计算机上，安装了 [Pvk2Pfx](https://docs.microsoft.com/windows-hardware/drivers/devtest/pvk2pfx) 命令行工具。 Pvk2Pfx 工具是[企业 Windows 驱动程序工具包](https://docs.microsoft.com/windows-hardware/drivers/download-the-wdk)（一个独立的自包含性命令行环境）的一部分。
 - 已安装 [Windows PowerShell](https://docs.microsoft.com/powershell/scripting/install/installing-windows-powershell) 5.0 或更高版本。
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-确保具有以下内容：
+确保做好以下准备：
 
 - [已安装并更新](https://docs.microsoft.com/powershell/azure/install-az-ps) Azure PowerShell 模块。
 - [Az.Sql 模块](https://www.powershellgallery.com/packages/Az.Sql)。
@@ -59,7 +59,7 @@ Install-Module -Name Az.Sql
 Update-Module -Name Az.Sql
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 如需进行安装或升级，请参阅[安装 Azure CLI](/cli/install-azure-cli)。
 
@@ -130,7 +130,7 @@ Update-Module -Name Az.Sql
 
 ## <a name="upload-certificate-to-azure-sql-database-managed-instance-using-azure-powershell-cmdlet"></a>使用 Azure PowerShell cmdlet 将证书上传到 Azure SQL 数据库托管实例
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 1. 在 PowerShell 中开始准备步骤：
 
@@ -157,9 +157,9 @@ Update-Module -Name Az.Sql
        -ManagedInstanceName "<managedInstanceName>" -PrivateBlob $securePrivateBlob -Password $securePassword
    ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-首先需要使用 *.pfx* 文件[设置 Azure Key Vault](/key-vault/key-vault-manage-with-cli2)。
+首先需要使用 [.pfx](/key-vault/key-vault-manage-with-cli2) 文件*设置 Azure Key Vault*。
 
 1. 在 PowerShell 中开始准备步骤：
 

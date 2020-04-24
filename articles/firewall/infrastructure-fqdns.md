@@ -9,10 +9,10 @@ origin.date: 11/19/2019
 ms.date: 12/09/2019
 ms.author: v-yeche
 ms.openlocfilehash: fc2160ab457608a668b8b013e648035555a24aaa
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75334996"
 ---
 # <a name="infrastructure-fqdns"></a>基础结构 FQDN

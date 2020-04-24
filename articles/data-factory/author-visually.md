@@ -12,10 +12,10 @@ manager: digimobile
 origin.date: 12/19/2019
 ms.date: 01/06/2020
 ms.openlocfilehash: 29cdc2d4f81e26999b0ab9d5eae5891cf2d66675
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75624314"
 ---
 # <a name="visual-authoring-in-azure-data-factory"></a>Azure 数据工厂中的视觉对象创作

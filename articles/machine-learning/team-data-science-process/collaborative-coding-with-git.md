@@ -11,17 +11,17 @@ ms.date: 08/23/2019
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: e44f753c739e2912db257d5d2d9d57a9e9ba680d
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75598508"
 ---
 # <a name="collaborative-coding-with-git"></a>使用 Git 进行协作编程
 
 本文介绍如何将 Git 作为数据科学项目的协作代码开发框架来使用。 本文介绍如何将 Azure Repos 中的代码链接到 Azure Boards 中的[敏捷开发](agile-development.md)工作项、如何执行代码评审以及如何创建和合并请求进行更改的拉取请求。
 
-## <a name='Linkaworkitemwithagitbranch-1'></a>将工作项链接到某个 Azure Repos 分支 
+## <a name="link-a-work-item-to-an-azure-repos-branch"></a><a name='Linkaworkitemwithagitbranch-1'></a>将工作项链接到某个 Azure Repos 分支 
 
 使用 Azure DevOps 可以轻松地将 Azure Boards“用户情景”或“任务”工作项与 Azure Repos Git 存储库分支连接起来。 可以将用户情景或任务直接链接到与之关联的代码。 
 
@@ -59,7 +59,7 @@ git checkout <working branch name>
 
 ![4](./media/collaborative-coding-with-git/4-link-to-an-existing-branch.png)
 
-## <a name='WorkonaBranchandCommittheChanges-2'></a>在分支上工作并提交更改 
+## <a name="work-on-the-branch-and-commit-changes"></a><a name='WorkonaBranchandCommittheChanges-2'></a>在分支上工作并提交更改 
 
 对工作项进行更改（如向本地计算机的 `script` 分支添加 R 脚本文件）后，可以使用以下 Git bash 命令将本地分支中的更改提交到上游工作分支：
 
@@ -72,7 +72,7 @@ git push origin script
 
 ![5](./media/collaborative-coding-with-git/5-sprint-push-to-branch.png)
 
-## <a name='CreateapullrequestonVSTS-3'></a>创建拉取请求
+## <a name="create-a-pull-request"></a><a name='CreateapullrequestonVSTS-3'></a>创建拉取请求
 
 在执行了一个或多个提交和推送后，如果已准备好将当前工作分支合并到它的基分支中时，可以在 Azure Repos 中创建并提交一个拉取请求  。 
 
@@ -84,7 +84,7 @@ git push origin script
 
 ![7](./media/collaborative-coding-with-git/7-spring-send-pull-request.png)
 
-## <a name='ReviewandMerge-4'></a>评审及合并
+## <a name="review-and-merge"></a><a name='ReviewandMerge-4'></a>评审及合并
 
 创建此拉取请求后，审阅者将收到通知他们评审此拉取请求的电子邮件通知。 审阅者测试更改是否有效，如果可能，会与请求者核实更改。 审阅者可以给予评论、请求更改，并根据其评估批准或拒绝此拉取请求。 
 
@@ -92,7 +92,7 @@ git push origin script
 
 审阅者批准更改后，你或具有合并权限的其他人可以将工作分支合并到它的基分支中。 选择“完成”  ，然后在“完成拉取请求”  对话框中选择“完成合并”  。 可选择在合并完此工作分支后将其删除。 
 
-![10 个](./media/collaborative-coding-with-git/10-spring-complete-pullrequest.png)
+![10](./media/collaborative-coding-with-git/10-spring-complete-pullrequest.png)
 
 确认该请求已被标记为“已完成”  。 
 
@@ -116,5 +116,5 @@ git branch -d script
 
 [执行数据科学任务](execute-data-science-tasks.md)介绍了如何使用实用工具来完成一些常见的数据科学任务，例如交互式数据探索、数据分析、报告和建模。
 
-[示例演练](walkthroughs.md)一文列出了特定方案的演练，并提供链接和缩略图描述。 链接的方案展示了如何将云、本地工具以及服务结合到工作流或管道中，用于创建智能应用程序。 
+[示例演练](walkthroughs.md)一文列出了特定方案的演练，并提供链接和缩略图描述。 链接的方案展示了如何将云、本地工具以及服务合并到工作流或管道中，以此创建智能应用程序。 
 

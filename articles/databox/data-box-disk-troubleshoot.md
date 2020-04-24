@@ -10,10 +10,10 @@ origin.date: 06/14/2019
 ms.date: 07/22/2019
 ms.author: v-jay
 ms.openlocfilehash: d900479614ad9589f0269fc8ea9f5152e3e7f380
-ms.sourcegitcommit: 481542df432d52b7d4823811cef94772e4e0f192
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74530606"
 ---
 # <a name="use-logs-to-troubleshoot-validation-issues-in-azure-data-box-disk"></a>使用日志排查 Azure Data Box Disk 中的验证问题
@@ -76,7 +76,7 @@ ms.locfileid: "74530606"
 
 | 错误代码| 说明                       | 建议的操作               |
 |------------|--------------------------|-----------------------------------|
-| `None` | 已成功验证数据。 | 因此不需要执行任何操作。 |
+| `None` | 已成功验证数据。 | 不需要执行任何操作。 |
 | `InvalidXmlCharsInPath` |无法创建清单文件，因为文件路径包含无效字符。 | 请删除这些字符以继续。  |
 | `OpenFileForReadFailed`| 无法处理文件。 原因可能是出现访问问题或文件系统损坏。|由于出错，无法读取文件。 错误详细信息已显示在异常中。 |
 | `Not512Aligned` | 此文件的格式无效，无法上传到 PageBlob 文件夹。| 请仅将 512 字节对齐的数据上传到 `PageBlob` 文件夹。 从 PageBlob 文件夹中删除该文件，或将其移到 BlockBlob 文件夹。 重试验证。|

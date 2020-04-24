@@ -11,10 +11,10 @@ ms.date: 12/02/2019
 ms.author: robinsh
 ms.custom: mvc
 ms.openlocfilehash: c7ffc31fffcdb56e59ea61981d0298b586d6e7e9
-ms.sourcegitcommit: 9e92bcf6aa02fc9e7b3a29abadf6b6d1a8ece8c4
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74389061"
 ---
 # <a name="tutorial-part-2---view-the-routed-messages"></a>教程：第 2 部分 - 查看路由的消息

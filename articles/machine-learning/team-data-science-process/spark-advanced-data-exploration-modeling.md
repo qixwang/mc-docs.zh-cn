@@ -12,15 +12,15 @@ ms.date: 02/15/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: e3448ad420044a3ae0147cb9ea54e7eb899a55ba
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75599293"
 ---
 # <a name="advanced-data-exploration-and-modeling-with-spark"></a>使用 Spark 进行高级数据探索和建模
 
-此演练对 NYC 出租车行程和车费 2013 数据的样本使用 HDInsight Spark 进行数据探索，并使用交叉验证和超参数优化训练二元分类和回归模型。 它端到端演练[数据科学过程](/machine-learning/team-data-science-process/)的步骤，使用 HDInsight Spark 群集进行处理并使用 Azure Blob 存储数据和模型。 此过程探索并可视化从 Azure 存储 Blob 引入的数据，并使数据为生成预测模型做好准备。 已使用 Python 编写解决方案并显示相关绘图。 这些模型使用 Spark MLlib 工具包生成，用于执行二元分类和回归建模任务。 
+此演练对 NYC 出租车行程和车费 2013 数据的样本使用 HDInsight Spark 进行数据探索，并使用交叉验证和超参数优化训练二元分类和回归模型。 它端到端演练[数据科学过程](/machine-learning/team-data-science-process/)的步骤，使用 HDInsight Spark 群集进行处理并使用 Azure blob 存储数据和模型。 此过程探索并可视化从 Azure 存储 Blob 引入的数据，并使数据为生成预测模型做好准备。 已使用 Python 编写解决方案并显示相关绘图。 这些模型使用 Spark MLlib 工具包生成，用于执行二元分类和回归建模任务。 
 
 * **二元分类**任务用于预测某个行程是否会支付小费。 
 * **回归**任务用于根据其他小费特征预测小费的金额。 
@@ -52,7 +52,7 @@ ms.locfileid: "75599293"
 
 ### <a name="spark-16-notebooks"></a>Spark 1.6 笔记本
 
-[pySpark-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/pySpark-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb)：包括笔记本 #1 中的主题，以及使用超参数优化和交叉验证的模型开发。
+[pySpark-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/pySpark-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb)：包含笔记本 #1 中的主题，以及使用超参数优化和交叉验证进行模型开发的说明。
 
 ### <a name="spark-20-notebooks"></a>Spark 2.0 笔记本
 
@@ -82,7 +82,7 @@ Spark 能够读取和写入 Azure 存储 Blob（也称为 WASB）。 因此，�
     import datetime
     datetime.datetime.now()
 
-**输出**
+**OUTPUT**
 
 datetime.datetime(2016, 4, 18, 17, 36, 27, 832799)
 
@@ -185,7 +185,7 @@ PySpark 内核提供一些预定义的“magic”，这是可以结合 %% 调用
     print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
 
-**输出**
+**OUTPUT**
 
 执行以上单元格所花的时间：276.62 秒
 
@@ -196,7 +196,7 @@ PySpark 内核提供一些预定义的“magic”，这是可以结合 %% 调用
 此代码和后续代码段使用 SQL magic 查询样本，使用本地 magic 绘制数据。
 
 * **SQL magic (`%%sql`)** HDInsight PySpark 内核支持针对 sqlContext 的轻松内联 HiveQL 查询。 (-o VARIABLE_NAME) 参数在 Jupyter 服务器上将 SQL 查询的输出保留为 Pandas 数据帧。 这意味着它在本地模式下可用。
-* **`%%local` magic** 用于在 Jupyter 服务器上本地运行代码，该服务器是 HDInsight 群集的头节点。 通常，在将 `%%sql -o` magic 用于运行查询后，使用 `%%local` magic。 -o 参数会在本地保留 SQL 查询的输出。 然后，`%%local` magic 触发下一组代码片段，以在本地针对已保留在本地的 SQL 查询输出运行。 该输出在运行代码后自动可视化。
+* **`%%local` magic** 用于在 Jupyter 服务器上本地运行代码，该服务器是 HDInsight 群集的头节点。 通常，在将 `%%local` magic 用于运行查询后，使用 `%%sql -o` magic。 -o 参数会在本地保留 SQL 查询的输出。 然后，`%%local` magic 触发下一组代码片段，以在本地针对已保留在本地的 SQL 查询输出运行。 该输出在运行代码后自动可视化。
 
 此查询通过乘客数检索行程。 
 
@@ -237,11 +237,11 @@ PySpark 内核提供一些预定义的“magic”，这是可以结合 %% 调用
     fig.set_ylabel('Trip counts')
     plt.show()
 
-**输出**
+**OUTPUT**
 
 ![按乘客数的行程频率](./media/spark-advanced-data-exploration-modeling/frequency-of-trips-by-passenger-count.png)
 
-可通过使用笔记本中的“类型”  菜单按钮从多个不同类型的可视化（表、饼图、行、区域或栏）中选择。 此处显示了条形图。
+可通过使用笔记本中的“类型”  菜单按钮从多个不同类型的可视化（表、饼图、线图、面积图或条形图）中选择。 此处显示了条形图。
 
 ### <a name="plot-a-histogram-of-tip-amounts-and-how-tip-amount-varies-by-passenger-count-and-fare-amounts"></a>绘制小费金额以及小费金额如何随乘客数和车费金额变化的直方图。
 使用 SQL 查询为数据采样。
@@ -330,7 +330,7 @@ PySpark 内核提供一些预定义的“magic”，这是可以结合 %% 调用
     taxi_df_train_with_newFeatures.cache()
     taxi_df_train_with_newFeatures.count()
 
-**输出**
+**OUTPUT**
 
 126050
 
@@ -381,7 +381,7 @@ PySpark 内核提供一些预定义的“magic”，这是可以结合 %% 调用
     print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
 
-**输出**
+**OUTPUT**
 
 执行以上单元格所花的时间：3.14 秒
 
@@ -474,7 +474,7 @@ PySpark 内核提供一些预定义的“magic”，这是可以结合 %% 调用
     timedelta = round((timeend-timestart).total_seconds(), 2) 
     print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
-**输出**
+**OUTPUT**
 
 执行以上单元格所花的时间：0.31 秒
 
@@ -515,7 +515,7 @@ PySpark 内核提供一些预定义的“magic”，这是可以结合 %% 调用
     timedelta = round((timeend-timestart).total_seconds(), 2) 
     print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
-**输出**
+**OUTPUT**
 
 执行以上单元格所花的时间：11.67 秒
 
@@ -546,7 +546,7 @@ PySpark 内核提供一些预定义的“magic”，这是可以结合 %% 调用
     timedelta = round((timeend-timestart).total_seconds(), 2) 
     print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
-**输出** 
+**OUTPUT** 
 
 执行以上单元格所花的时间：0.13 秒
 
@@ -661,7 +661,7 @@ PySpark 内核提供一些预定义的“magic”，这是可以结合 %% 调用
     print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
 
-**输出**
+**OUTPUT**
 
 系数：[0.0082065285375, -0.0223675576104, -0.0183812028036, -3.48124578069e-05, -0.00247646947233, -0.00165897881503, 0.0675394837328, -0.111823113101, -0.324609912762, -0.204549780032, -1.36499216354, 0.591088507921, -0.664263411392, -1.00439726852, 3.46567827545, -3.51025855172, -0.0471341112232, -0.043521833294, 0.000243375810385, 0.054518719222]
 
@@ -714,7 +714,7 @@ PySpark 内核提供一些预定义的“magic”，这是可以结合 %% 调用
     print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
 
-**输出**
+**OUTPUT**
 
 PR = 0.985336538462 下的面积
 
@@ -767,7 +767,7 @@ F1 分数 = 0.984174341679
     plt.show()
 
 
-**输出**
+**OUTPUT**
 
 ![泛型方法的逻辑回归 ROC 曲线](./media/spark-advanced-data-exploration-modeling/logistic-regression-roc-curve.png)
 
@@ -794,7 +794,7 @@ F1 分数 = 0.984174341679
     print "Time taken to execute above cell: " + str(timedelta) + " seconds";
 
 
-**输出**
+**OUTPUT**
 
 执行以上单元格所花的时间：34.57 秒
 
@@ -850,7 +850,7 @@ F1 分数 = 0.984174341679
     timedelta = round((timeend-timestart).total_seconds(), 2) 
     print "Time taken to execute above cell: " + str(timedelta) + " seconds";
 
-**输出**
+**OUTPUT**
 
 执行以上单元格所花的时间：107.98 秒
 
@@ -886,7 +886,7 @@ F1 分数 = 0.984174341679
     plt.show()
 
 
-**输出**
+**OUTPUT**
 
 ![使用 MLlib 的 CrossValidator 的逻辑回归 ROC 曲线](./media/spark-advanced-data-exploration-modeling/mllib-crossvalidator-roc-curve.png)
 
@@ -935,7 +935,7 @@ F1 分数 = 0.984174341679
     print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
 
-**输出**
+**OUTPUT**
 
 ROC = 0.985336538462 下的面积
 
@@ -979,7 +979,7 @@ ROC = 0.985336538462 下的面积
     timedelta = round((timeend-timestart).total_seconds(), 2) 
     print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
-**输出**
+**OUTPUT**
 
 ROC = 0.985336538462 下的面积
 
@@ -998,9 +998,9 @@ ROC = 0.985336538462 下的面积
 2. 测试数据集上的使用指标的**模型评估**
 3. 在 blob 中**保存模型**以供将来使用   
 
-> Azure 备注：交叉验证在本部分中不与三个回归模型一起使用，因为已针对逻辑回归模型详细显示此操作。 本主题的附录中提供了显示如何将 CV 和弹性网络一起用于线性回归的示例。
+> AZURE 备注：交叉验证在本部分中不与三个回归模型一起使用，因为已针对逻辑回归模型详细显示此操作。 本主题的附录中提供了显示如何将 CV 和弹性网络一起用于线性回归的示例。
 > 
-> Azure 备注：根据我们的经验，LinearRegressionWithSGD 模型的收敛可能出现问题，需要仔细更改/优化参数以获取有效的模型。 变量的缩放对收敛帮助很大。 还可使用本主题的附录中显示的弹性网络回归代替 LinearRegressionWithSGD。
+> AZURE 备注：在我们的经验中，LinearRegressionWithSGD 模型的收敛可能出现问题，需要仔细更改/优化参数以获取有效的模型。 变量的缩放对收敛帮助很大。 还可使用本主题的附录中显示的弹性网络回归代替 LinearRegressionWithSGD。
 > 
 > 
 
@@ -1050,7 +1050,7 @@ ROC = 0.985336538462 下的面积
     timedelta = round((timeend-timestart).total_seconds(), 2) 
     print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
-**输出**
+**OUTPUT**
 
 系数：[0.0141707753435, -0.0252930927087, -0.0231442517137, 0.247070902996, 0.312544147152, 0.360296120645, 0.0122079566092, -0.00456498588241, -0.0898228505177, 0.0714046248793, 0.102171263868, 0.100022455632, -0.00289545676449, -0.00791124681938, 0.54396316518, -0.536293513569, 0.0119076553369, -0.0173039244582, 0.0119632796147, 0.00146764882502]
 
@@ -1110,7 +1110,7 @@ R-sqr = 0.597963951127
     timedelta = round((timeend-timestart).total_seconds(), 2) 
     print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
-**输出**
+**OUTPUT**
 
 RMSE = 0.931981967875
 
@@ -1161,7 +1161,7 @@ R-sqr = 0.733445485802
     print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
 
-**输出**
+**OUTPUT**
 
 RMSE = 0.928172197114
 
@@ -1258,7 +1258,7 @@ R-sqr = 0.732680354389
     print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
 
-**输出**
+**OUTPUT**
 
 执行以上单元格所花的时间：161.21 秒
 
@@ -1283,7 +1283,7 @@ R-sqr = 0.732680354389
     print("R-sqr = %s" % r2)
 
 
-**输出**
+**OUTPUT**
 
 R-sqr = 0.619184907088
 
@@ -1370,7 +1370,7 @@ R-sqr = 0.619184907088
     print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
 
-**输出**
+**OUTPUT**
 
 RMSE = 0.906972198262
 
@@ -1406,9 +1406,9 @@ R-sqr = 0.740751197012
     oneHotTESTregScaled.unpersist()
 
 
-**输出**
+**OUTPUT**
 
-PythonRDD[122] at RDD at PythonRDD.scala:43
+PythonRDD[122] at RDD at PythonRDD.scala: 43
 
 **打印输出要在使用笔记本中使用的模型文件的路径。 **若要使用独立数据集和为其评分，则需要在“使用笔记本”中复制并粘贴这些文件名。
 
@@ -1421,7 +1421,7 @@ PythonRDD[122] at RDD at PythonRDD.scala:43
     print "BoostedTreeRegressionFileLoc = modelDir + \"" + btregressionfilename + "\"";
 
 
-**输出**
+**OUTPUT**
 
 logisticRegFileLoc = modelDir + "LogisticRegressionWithLBFGS_2016-05-0316_47_30.096528"
 
@@ -1435,8 +1435,8 @@ BoostedTreeClassificationFileLoc = modelDir + "GradientBoostingTreeClassificatio
 
 BoostedTreeRegressionFileLoc = modelDir + "GradientBoostingTreeRegression_2016-05-0316_52_18.827237"
 
-## <a name="whats-next"></a>后续步骤
+## <a name="whats-next"></a>下一步是什么？
 现在已使用 Spark MlLib 创建了回归和分类模型，可了解如何评分和评估这些模型。
 
-**使用模型：** 若要了解如何评分和评估在本主题中创建的分类和回归模型，请参阅[评分和评估 Spark 构建的机器学习模型](spark-model-consumption.md)。
+**模型使用：** 若要了解如何评分和评估在本主题中创建的分类和回归模型，请参阅[评分和评估 Spark 构建的机器学习模型](spark-model-consumption.md)。
 

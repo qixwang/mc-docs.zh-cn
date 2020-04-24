@@ -6,10 +6,10 @@ origin.date: 08/23/2018
 ms.date: 06/17/2019
 ms.author: v-tawe
 ms.openlocfilehash: 099020ea7fb824dfc880c12e3d44404220e57a2a
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75335765"
 ---
 1. 使用 Xcode 打开下载的客户端项目。
@@ -38,8 +38,8 @@ ms.locfileid: "75335765"
 
 7. 按“运行”  按钮生成项目，并在 iOS 模拟器中启动应用。
 
-8. 在应用中，  单击加号 (+) 图标，键入有意义的文本（例如 Complete the tutorial）  ，然后单击“保存”按钮。 这会将一个 POST 请求发送到之前部署的 Azure 后端。 后端将请求中的数据插入到 TodoItem SQL 表中，并将有关新存储的项的信息返回给移动应用。 移动应用会在列表中显示此数据。
+8. 在应用中， **+单击加号 (** ) 图标，键入有意义的文本（例如 Complete the tutorial）  ，然后单击“保存”按钮。 这会将一个 POST 请求发送到之前部署的 Azure 后端。 后端将请求中的数据插入到 TodoItem SQL 表中，并将有关新存储的项的信息返回给移动应用。 移动应用会在列表中显示此数据。
 
-   ![在 iOS 上运行的快速启动应用](./media/app-service-mobile-ios-quickstart/mobile-quickstart-startup-ios.png)
+   ![在 iOS 上运行的快速入门应用](./media/app-service-mobile-ios-quickstart/mobile-quickstart-startup-ios.png)
 
 [Azure portal]: https://portal.azure.cn/

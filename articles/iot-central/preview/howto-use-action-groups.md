@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.service: iot-central
 manager: philmea
 ms.openlocfilehash: a7fbd6eb226dca6aeeae26406aa42831c71eda7d
-ms.sourcegitcommit: 6ffa4d50cee80c7c0944e215ca917a248f2a4bcd
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74883127"
 ---
 # <a name="group-multiple-actions-to-run-from-one-or-more-rules-preview-features"></a>将从一个或多个规则运行的多个操作分组（预览版功能）

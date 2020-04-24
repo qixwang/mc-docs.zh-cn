@@ -11,10 +11,10 @@ ms.topic: conceptual
 origin.date: 11/04/2019
 ms.date: 12/16/2019
 ms.openlocfilehash: 89ffd5a001653abdb8c7e2161ac8e3dc167d1ecb
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75335447"
 ---
 # <a name="upgrade-to-azure-search-net-sdk-version-3"></a>升级到 Azure 搜索 .NET SDK 版本 3
@@ -72,7 +72,7 @@ the data source API will no longer return in the response of any REST operation,
 除重新生成应用程序之外，版本 3 中只有少量可能需要更改代码的重大更改。
 
 ### <a name="indexesgetclient-return-type"></a>Indexes.GetClient 返回类型
-`Indexes.GetClient` 方法具有新的返回类型。 以前，它返回 `SearchIndexClient`，但在版本 2.0-preview 中已将此项更改为 `ISearchIndexClient`，而该更改将传递给版本 3。 这是为了支持想要通过返回 `ISearchIndexClient` 的模拟实现，来模拟测试单元的 `GetClient` 方法的客户。
+`Indexes.GetClient` 方法具有新的返回类型。 以前，它返回 `SearchIndexClient`，但在版本 2.0-preview 中已将此项更改为 `ISearchIndexClient`，而该更改将传递给版本 3。 这是为了支持想要通过返回 `GetClient` 的模拟实现，来模拟测试单元的 `ISearchIndexClient` 方法的客户。
 
 #### <a name="example"></a>示例
 如果代码如下所示：
@@ -145,7 +145,7 @@ index.Analyzers = new Analyzer[]
 
 如果应用程序硬依赖于这些功能，则将不能升级到版本 3 的 Azure 搜索 .NET SDK。 可以继续使用版本 2.0-preview。 但是，请记住，**我们不建议在生产应用程序中使用预览版 SDK**。 预览功能仅用于评估，并且可能会更改。
 
-## <a name="conclusion"></a>结论
+## <a name="conclusion"></a>结束语
 如果需要有关如何使用 Azure 搜索 .NET SDK 的更多详细信息，请参阅 [.NET 操作指南](search-howto-dotnet-sdk.md)。
 
 我们欢迎你对 SDK 提供反馈。 如果遇到问题，请随时通过 [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-search) 向我们寻求帮助。 如果找到 Bug，可以在 [Azure .NET SDK GitHub 存储库](https://github.com/Azure/azure-sdk-for-net/issues)中提出问题。 务必在问题标题上加前缀“[Azure 搜索]”。

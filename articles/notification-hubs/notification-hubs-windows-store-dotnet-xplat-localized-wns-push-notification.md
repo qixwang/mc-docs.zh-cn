@@ -19,10 +19,10 @@ ms.author: v-tawe
 ms.reviewer: jowargo
 ms.lastreviewed: 03/22/2019
 ms.openlocfilehash: 35004d0ba89dbe825e11403933aac2e6834ed9dd
-ms.sourcegitcommit: cf73284534772acbe7a0b985a86a0202bfcc109e
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74884963"
 ---
 # <a name="tutorial-send-localized-push-notifications-to-windows-apps-using-azure-notification-hubs"></a>教程：使用 Azure 通知中心向 Windows 应用发送本地化推送通知
@@ -49,7 +49,7 @@ ms.locfileid: "74884963"
 
 ## <a name="prerequisites"></a>先决条件
 
-完成[教程：向特定设备（通用 Windows 平台）发送通知](notification-hubs-windows-phone-push-xplat-segmented-mpns-notification.md)。
+在开始本教程之前完成[教程：向特定设备（通用 Windows 平台）发送通知](notification-hubs-windows-phone-push-xplat-segmented-mpns-notification.md)创建的 Visual Studio 解决方案。
 
 在[教程：向特定设备（通用 Windows 平台）发送通知](notification-hubs-windows-phone-push-xplat-segmented-mpns-notification.md)中，已开发一个使用**标记**订阅不同新闻**类别**通知的应用。 在本教程中，请使用通知中心的**模板**功能轻松传递**本地化**突发新闻通知。
 

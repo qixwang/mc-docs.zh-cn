@@ -21,7 +21,7 @@
         - name: 条件性访问
           tocHref: /active-directory/conditional-access/
           topicHref: /active-directory/conditional-access/
-        - name: 身份验证
+        - name: Authentication
           tocHref: /active-directory/authentication/
           topicHref: /active-directory/authentication/
         - name: 开发
@@ -102,7 +102,7 @@
     - name: 应用程序网关
       tocHref: /application-gateway/
       topicHref: /application-gateway/
-    - name: 适用于 IoT 的 ASC
+    - name: ASC for IoT
       tocHref: /asc-for-iot/
       topicHref: /asc-for-iot/
     - name: 自动化
@@ -164,7 +164,7 @@
     - name: Azure NetApp 文件
       tocHref: /azure-netapp-files/
       topicHref: /azure-netapp-files/
-    - name: CloudSimple 提供的 Azure VMware 解决方案
+    - name: Azure VMware Solution by CloudSimple
       tocHref: /vmware-cloudsimple/
       topicHref: /vmware-cloudsimple/
     - name: Azure 门户自定义
@@ -199,7 +199,7 @@
         - name: Azure Maps
           tocHref: /azure-maps/
           topicHref: /azure-maps/
-    - name: Resource Manager
+    - name: 资源管理器
       tocHref: /azure-resource-manager/
       topicHref: /azure-resource-manager/
     - name: SignalR 服务
@@ -381,7 +381,7 @@
         - name: DC/OS 和 Swarm
           tocHref: /container-service/dcos-swarm/
           topicHref: /container-service/dcos-swarm/
-        - name: kubernetes
+        - name: Kubernetes
           tocHref: /container-service/kubernetes/
           topicHref: /container-service/kubernetes/
     - name: Bastion
@@ -495,7 +495,7 @@
     - name: Jenkins
       tocHref: /jenkins/
       topicHref: /jenkins/
-    - name: 密钥保管库
+    - name: Key Vault
       tocHref: /key-vault/
       topicHref: /key-vault/
     - name: Azure Kinect DK
@@ -574,7 +574,7 @@
     - name: 网络
       tocHref: /networking/
       topicHref: /networking/networking-overview
-    - name: Notebooks
+    - name: 笔记本
       tocHref: /notebooks/
       topicHref: /notebooks/azure-notebooks-overview
     - name: 通知中心
@@ -650,7 +650,7 @@
     - name: Service Fabric 网格
       tocHref: /service-fabric-mesh/
       topicHref: /service-fabric-mesh/
-    - name: 站点恢复
+    - name: Site Recovery
       tocHref: /site-recovery/
       topicHref: /site-recovery/
     - name: SQL 数据仓库

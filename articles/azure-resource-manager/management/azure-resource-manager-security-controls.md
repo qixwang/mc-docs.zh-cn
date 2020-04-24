@@ -6,10 +6,10 @@ origin.date: 09/04/2019
 ms.author: v-yeche
 ms.date: 01/06/2020
 ms.openlocfilehash: 663683ed8e34499633ba1837dbe1a26678ff4879
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75631406"
 ---
 <!--Verify successfully-->
@@ -25,7 +25,7 @@ ms.locfileid: "75631406"
 |---|---|--|
 | 服务器端静态加密：Azure 托管的密钥 | 是 |  |
 | 传输中加密（例如 ExpressRoute 加密、VNet 中加密，以及 VNet-VNet 加密）| 是 | HTTPS/TLS。 |
-| 服务器端静态加密：客户管理的密钥 (BYOK) | 不适用 | Azure 资源管理器不存储客户内容，仅存储控制数据。 |
+| 服务器端静态加密：客户管理的密钥 (BYOK) | 空值 | Azure 资源管理器不存储客户内容，仅存储控制数据。 |
 | 列级加密（Azure 数据服务）| 是 | |
 | 加密的 API 调用| 是 | |
 

@@ -13,10 +13,10 @@ ms.reviewer: ''
 origin.date: 01/25/2019
 ms.date: 12/16/2019
 ms.openlocfilehash: a40e3e02bcb061db1cd385e6e28bddbb7f303039
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75335428"
 ---
 # <a name="migrate-existing-databases-to-scale-out"></a>迁移要扩展的现有数据库

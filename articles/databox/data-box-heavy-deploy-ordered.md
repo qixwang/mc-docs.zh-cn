@@ -11,10 +11,10 @@ ms.date: 12/02/2019
 ms.author: v-jay
 ms.localizationpriority: high
 ms.openlocfilehash: 01345411315764a8d451367cd9cbc2675fa395de
-ms.sourcegitcommit: 8c3bae15a8a5bb621300d81adb34ef08532fe739
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74884059"
 ---
 # <a name="tutorial-order-azure-data-box-heavy"></a>教程：订购 Azure Data Box Heavy
@@ -95,9 +95,9 @@ Azure Data Box Heavy 是一个混合解决方案，可以快速、方便、可�
 
 6. 在“订单”中指定“订单详细信息”。   输入或选择以下信息，然后选择“下一步”。 
     
-    |设置  |值  |
+    |设置  |Value  |
     |---------|---------|
-    |Name     | 提供友好名称用于跟踪订单。 <br> 名称可以为 3 到 24 个字符，包括字母、数字和连字符。 <br> 名称必须以字母或数字开头和结尾。      |
+    |名称     | 提供友好名称用于跟踪订单。 <br> 名称可以为 3 到 24 个字符，包括字母、数字和连字符。 <br> 名称必须以字母或数字开头和结尾。      |
     |资源组     | 使用现有资源组，或创建新的资源组。 <br> 资源组是可以统一管理或部署的资源的逻辑容器。         |
     |目标 Azure 区域     | 选择存储帐户的区域。        |
     |存储目标     | 选择存储帐户和/或托管磁盘。 <br> 根据指定的 Azure 区域，从现有存储帐户的筛选列表中选择一个或多个存储帐户。 <br>Data Box Heavy 可以与最多 10 个存储帐户关联。 <br> 也可以创建新的**常规用途 v1**、**常规用途 v2** 或 **Blob 存储帐户**。 <br> 不支持 Azure Data Lake Storage Gen 2 帐户。 请参阅[设备支持的存储帐户](data-box-heavy-system-requirements.md#supported-storage-accounts)。 <br>支持使用虚拟网络的存储帐户。 若要允许 Data Box 服务使用受保护的存储帐户，请在存储帐户网络防火墙设置中启用受信任的服务。 有关详细信息，请了解如何[将 Azure Data Box 服务添加为受信任的服务](../storage/common/storage-network-security.md#exceptions)。|

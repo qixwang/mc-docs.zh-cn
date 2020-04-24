@@ -10,10 +10,10 @@ author: xiaoharper
 ms.author: zhanxia
 ms.date: 11/19/2019
 ms.openlocfilehash: 7fd159f58bf6bea94253985de1e9b9b5f2ebd741
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75598429"
 ---
 # <a name="multiclass-boosted-decision-tree"></a>多类提升决策树
@@ -24,7 +24,7 @@ ms.locfileid: "75598429"
 
 提升决策树是一种集成学习方法，在此方法中，第二个树将针对第一个树的误差进行纠正，第三个树将针对第一个和第二个树的误差进行纠正，依此类推。 预测基于树的集合。
 
-## <a name="how-to-configure"></a>如何配置 
+## <a name="how-to-configure"></a>配置方式 
 
 此模块创建一个未训练的分类模型。 由于分类是一种监督式学习方法，所以，你需要一个标记的数据集，其中包含一个标签列，该列在所有行中都有一个值  。
 
@@ -43,7 +43,7 @@ ms.locfileid: "75598429"
   
     * “每个叶节点的最少样本数”指示在树中创建任何终端节点（叶）所需的事例数  。  
 
-         通过增加此值，可以增加用于创建新规则的阈值。 例如，默认值为 1 时，即使是单个案例也可能导致创建新规则。 如果将值增加到 5，则训练数据将必须包含至少五个满足相同条件的案例。
+         通过增加此值，可以增加用于创建新规则的阈值。 例如，使用默认值 1 时，即使是单个事例也可以导致创建新规则。 如果将值增加到 5，则训练数据将必须包含至少五个满足相同条件的案例。
 
     * “学习速率”定义学习时的步幅  。 请输入介于 0 到 1 之间的数字。
 

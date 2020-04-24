@@ -14,10 +14,10 @@ origin.date: 01/29/2019
 ms.date: 01/29/2019
 ms.author: v-lingwu
 ms.openlocfilehash: 47f7ac09c97aafce7d00382bc0fae2777d4a2534
-ms.sourcegitcommit: 21b02b730b00a078a76aeb5b78a8fd76ab4d6af2
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74838801"
 ---
 # <a name="make-resources-more-secure-with-azure-advisor"></a>使用 Azure 顾问提高资源的安全性

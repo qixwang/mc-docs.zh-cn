@@ -18,10 +18,10 @@ origin.date: 11/29/2019
 ms.author: v-yiso
 ms.date: 01/13/2020
 ms.openlocfilehash: 4302a4403f1dd155415bc17623e74fde0d0fb3f2
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75631099"
 ---
 # <a name="create-high-availability-apache-spark-streaming-jobs-with-yarn"></a>使用 YARN 创建高可用性 Apache Spark 流式处理作业
@@ -76,7 +76,7 @@ RDD 包含多个属性，可帮助创建高可用性且容错的 Spark 流作业
 
 如果**执行器**发生故障，其任务和接收器将由 Spark 自动重启，因此无需进行配置更改。
 
-但是，如果**驱动程序**发生故障，则其所有关联的执行器都会发生故障，并且所有已收到的块和计算结果都会丢失。 若要在发生驱动程序故障后进行恢复，可以根据[创建支持“恰好一次”事件处理的 Spark 流作业](apache-spark-streaming-exactly-once.md#use-checkpoints-for-drivers)使用 *DStream 检查点*。 DStream 检查点会定期将 DStreams 的有向无环图 (DAG) 保存到 Azure 存储等容错存储中。   检查点可让 Spark 结构化流根据检查点信息重启有故障的驱动程序。  重启此驱动程序会启动新的执行器，同时重启接收器。
+但是，如果**驱动程序**发生故障，则其所有关联的执行器都会发生故障，并且所有已收到的块和计算结果都会丢失。 若要在发生驱动程序故障后进行恢复，可以根据*创建支持“恰好一次”事件处理的 Spark 流作业*使用 [DStream 检查点](apache-spark-streaming-exactly-once.md#use-checkpoints-for-drivers)。 DStream 检查点会定期将 DStreams 的有向无环图 (DAG) 保存到 Azure 存储等容错存储中。   检查点可让 Spark 结构化流根据检查点信息重启有故障的驱动程序。  重启此驱动程序会启动新的执行器，同时重启接收器。
 
 使用 DStream 检查点恢复驱动程序：
 
@@ -119,7 +119,7 @@ RDD 包含多个属性，可帮助创建高可用性且容错的 Spark 流作业
 
 * 应将长时间运行的作业分段。  将 Spark 流应用程序提交到群集后，必须定义运行作业的 YARN 队列。 可以使用 [YARN 容量计划程序](https://hadoop.apache.org/docs/stable/hadoop-yarn/hadoop-yarn-site/CapacityScheduler.html)将长时间运行的作业提交到单独的队列。
 
-* 正常关闭流应用程序。 如果偏移量是已知的，并且所有应用程序状态存储在外部，则可以在适当的位置以编程方式停止流应用程序。 一种方法是使用 Spark 中的“线程挂钩”，每隔 *n* 秒检查外部标志。 也可以在启动应用程序时使用 HDFS 中创建的标记文件，然后在想要停止应用程序时删除该文件。  对于标记文件方法，可以在 Spark 应用程序中使用一个单独的线程，用于调用如下所示的代码：
+* 正常关闭流应用程序。 如果偏移量是已知的，并且所有应用程序状态存储在外部，则可以在适当的位置以编程方式停止流应用程序。 一种方法是通过每隔 *n* 秒检查一次外部标志，来使用 Spark 中的“线程挂钩”。 也可以在启动应用程序时使用 HDFS 中创建的标记文件，然后在想要停止应用程序时删除该文件。  对于标记文件方法，可以在 Spark 应用程序中使用一个单独的线程，用于调用如下所示的代码：
 
     ```scala
     streamingContext.stop(stopSparkContext = true, stopGracefully = true)

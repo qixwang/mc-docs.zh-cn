@@ -10,11 +10,11 @@
       href: what-is-a-data-warehouse-unit-dwu-cdwu.md
     - name: 备忘单
       href: cheat-sheet.md
-    - name: 最佳实践
+    - name: 最佳做法
       href: sql-data-warehouse-best-practices.md
     - name: 容量限制
       href: sql-data-warehouse-service-capacity-limits.md
-    - name: 常见问题
+    - name: 常见问题解答
       href: sql-data-warehouse-overview-faq.md
 - name: 发行说明
   items:
@@ -71,13 +71,13 @@
               href: ../sql-database/sql-database-threat-detection-overview.md?toc=/sql-data-warehouse/toc.json&bc=/sql-data-warehouse/breadcrumb/toc.json
         - name: 审核
           href: ../sql-database/sql-database-auditing.md?toc=/sql-data-warehouse/toc.json&bc=/sql-data-warehouse/breadcrumb/toc.json
-        - name: 网络安全性
+        - name: 网络安全
           items:
             - name: 防火墙规则
               href: ../sql-database/sql-database-firewall-configure.md?toc=/sql-data-warehouse/toc.json&bc=/sql-data-warehouse/breadcrumb/toc.json
             - name: 虚拟网络服务终结点
               href: ../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=/sql-data-warehouse/toc.json&bc=/sql-data-warehouse/breadcrumb/toc.json
-        - name: 身份验证
+        - name: Authentication
           items:
             - name: 概述
               href: sql-data-warehouse-authentication.md
@@ -93,11 +93,11 @@
               href: ../sql-database/sql-database-control-access.md?toc=/sql-data-warehouse/toc.json&bc=/sql-data-warehouse/breadcrumb/toc.json
             - name: 行级别安全性
               href: column-level-security.md
-            - name: 行级别安全性
+            - name: 行级安全性
               href: 'https://docs.microsoft.com/sql/relational-databases/security/row-level-security?toc=/sql-data-warehouse/toc.json&bc=/sql-data-warehouse/breadcrumb/toc.json'
         - name: 数据保护
           items:
-            - name: 动态数据屏蔽
+            - name: 动态数据掩码
               href: ../sql-database/sql-database-dynamic-data-masking-get-started.md?toc=/sql-data-warehouse/toc.json&bc=/sql-data-warehouse/breadcrumb/toc.json
             - name: 透明数据加密 (TDE) 概述
               href: ../sql-database/transparent-data-encryption-azure-sql.md?toc=/sql-data-warehouse/toc.json&bc=/sql-data-warehouse/breadcrumb/toc.json
@@ -107,7 +107,7 @@
       items:
         - name: 概述
           href: design-elt-data-loading.md
-        - name: 最佳实践
+        - name: 最佳做法
           href: guidance-for-loading-data.md
         - name: 列存储压缩
           href: sql-data-warehouse-memory-optimizations-for-columnstore-compression.md
@@ -115,7 +115,7 @@
       items:
         - name: 概述
           href: sql-data-warehouse-overview-develop.md
-        - name: 最佳实践
+        - name: 最佳做法
           href: sql-data-warehouse-best-practices-development.md
         - name: JSON
           items:
@@ -179,7 +179,7 @@
               href: sql-data-warehouse-tables-index.md
             - name: 标识
               href: sql-data-warehouse-tables-identity.md
-            - name: 分区
+            - name: “度量值组”
               href: sql-data-warehouse-tables-partition.md
             - name: 复制表
               href: design-guidance-for-replicated-tables.md
@@ -245,7 +245,7 @@
       items:
         - name: 概述
           href: sql-data-warehouse-overview-integrate.md
-- name: 操作指南
+- name: 操作方法指南
   items:
     - name: 安全
       items:

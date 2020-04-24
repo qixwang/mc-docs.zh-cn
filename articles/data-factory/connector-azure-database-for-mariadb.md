@@ -13,10 +13,10 @@ ms.custom: seo-lt-2019
 origin.date: 09/04/2019
 ms.date: 01/06/2020
 ms.openlocfilehash: 67be0f331e20b37a133b2c80aca0d1cc4eab661d
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75624241"
 ---
 # <a name="copy-data-from-azure-database-for-mariadb-using-azure-data-factory"></a>使用 Azure 数据工厂从 Azure Database for MariaDB 复制数据 
@@ -44,10 +44,10 @@ Azure 数据工厂提供内置的驱动程序用于启用连接，因此无需�
 
 Azure Database for MariaDB 链接服务支持以下属性：
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：**AzureMariaDB** | 是 |
-| connectionString | 连接到 Azure Database for MariaDB 的连接字符串。 可以从“Azure 门户”->“Azure Database for MariaDB”->“连接字符串”->“ADO.NET”中找到它。 <br/> 还可以将密码放在 Azure 密钥保管库中，并从连接字符串中拉取 `pwd` 配置。 有关更多详细信息，请参阅以下示例和[将凭据存储在 Azure 密钥保管库中](store-credentials-in-key-vault.md)一文。 | 是 |
+| connectionString | 连接到 Azure Database for MariaDB 的连接字符串。 可以从“Azure 门户”->“Azure Database for MariaDB”->“连接字符串”->“ADO.NET”中找到它。 <br/> 还可以将密码放在 Azure 密钥保管库中，并从连接字符串中拉取 `pwd` 配置。 有关更多详细信息，请参阅以下示例和[在 Azure 密钥保管库中存储凭据](store-credentials-in-key-vault.md)一文。 | 是 |
 | connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 如果未指定，则使用默认 Azure Integration Runtime。 |否 |
 
 **示例：**
@@ -100,10 +100,10 @@ Azure Database for MariaDB 链接服务支持以下属性：
 
 若要从 Azure Database for MariaDB 复制数据，需要支持以下属性：
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为：**AzureMariaDBTable** | 是 |
-| tableName | 表名称。 | 否（如果指定了活动源中的“query”） |
+| tableName | 表的名称。 | 否（如果指定了活动源中的“query”） |
 
 **示例**
 
@@ -130,10 +130,10 @@ Azure Database for MariaDB 链接服务支持以下属性：
 
 若要从 Azure Database for MariaDB 复制数据，复制活动的 **source** 节需要支持以下属性：
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
 | type | 复制活动 source 的 type 属性必须设置为：**AzureMariaDBSource** | 是 |
-| query | 使用自定义 SQL 查询读取数据。 例如：`"SELECT * FROM MyTable"`。 | 否（如果指定了数据集中的“tableName”） |
+| 查询 | 使用自定义 SQL 查询读取数据。 例如：`"SELECT * FROM MyTable"`。 | 否（如果指定了数据集中的“tableName”） |
 
 **示例：**
 

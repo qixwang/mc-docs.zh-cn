@@ -11,10 +11,10 @@ ms.date: 09/24/2019
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 3567f11dd90f823d83e2709b808c898bba7fe4f5
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75598021"
 ---
 # <a name="tasks-for-an-individual-contributor-in-the-team-data-science-process"></a>Team Data Science Process 中单个参与者的任务

@@ -8,10 +8,10 @@ ms.author: v-yiso
 origin.date: 07/29/2019
 ms.date: 12/09/2019
 ms.openlocfilehash: 11172e72e11b7be58e2000a427d9aabaa73981e6
-ms.sourcegitcommit: 298eab5107c5fb09bf13351efeafab5b18373901
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74657996"
 ---
 # <a name="apache-spark-job-fails-with-invalidclassexception-class-version-mismatch-in-azure-hdinsight"></a>在 Azure HDInsight 中，Apache Spark 作业因 InvalidClassException（类版本不匹配）而失败

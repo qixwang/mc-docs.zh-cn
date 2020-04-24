@@ -9,10 +9,10 @@ ms.date: 01/13/2020
 ms.author: v-tawe
 ms.custom: seodec18
 ms.openlocfilehash: eefa6891e272e14779a16a398465a04d5d33f789
-ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75600611"
 ---
 # <a name="high-density-hosting-on-azure-app-service-using-per-app-scaling"></a>在 Azure 应用服务上使用按应用缩放进行高密度托管
@@ -21,7 +21,7 @@ ms.locfileid: "75600611"
 
 使用应用服务时，可以通过缩放应用服务应用在其中运行的[应用服务计划](overview-hosting-plans.md)来缩放应用。 当多个应用在同一个应用服务计划中运行时，每个横向扩展实例会在计划中运行所有应用。
 
-可在应用服务计划级别启用按应用缩放  ，以便在独立于托管应用的应用服务计划的情况下缩放应用。 这样，可以将一个应用服务计划扩展到 10 个实例，而将一个应用设置为仅使用 5 个实例。
+可在应用服务计划级别启用按应用缩放  ，以便在独立于托管应用的应用服务计划的情况下缩放应用。 这样，可以将一个应用服务计划扩展到 10 个实例，而将一个应用设置为仅用 5 个。
 
 > [!NOTE]
 > 按应用缩放仅适用于标准  、高级  、高级 V2  和独立  定价层。
@@ -31,7 +31,7 @@ ms.locfileid: "75600611"
 
 平台不依赖于指标来决定辅助角色分配。 仅当在应用服务计划中添加或删除实例时，应用程序才重新平衡。
 
-## <a name="per-app-scaling-using-powershell"></a>使用 PowerShell 进行按应用缩放
+## <a name="per-app-scaling-using-powershell"></a>使用 PowerShell 的按应用缩放
 
 通过将 ```-PerSiteScaling $true``` 参数传入 ```New-AzAppServicePlan``` cmdlet，创建按应用缩放的计划。
 
@@ -52,7 +52,7 @@ Set-AzAppServicePlan -ResourceGroupName $ResourceGroup `
 
 在应用级别，配置应用可以在应用服务计划中使用的实例数。
 
-在以下示例中，无论基础应用服务计划横向扩展到多少个实例，应用都被限制为两个实例。
+在以下示例中，无论基础应用服务计划扩展到多少个实例，应用都被限制为两个实例。
 
 ```powershell
 # Get the app we want to configure to use "PerSiteScaling"
@@ -73,9 +73,9 @@ Set-AzWebApp $newapp
 以下 Azure 资源管理器模板创建：
 
 - 扩展到 10 个实例的应用服务计划
-- 已配置为最多可扩展到 5 个实例的应用。
+- 配置为最多扩展到 5 个实例的应用。
 
-应用服务计划将 **PerSiteScaling** 属性设置为 true `"perSiteScaling": true`。 应用将要使用的**辅助角色数量**设置为 5 `"properties": { "numberOfWorkers": "5" }`。
+应用服务计划将 **PerSiteScaling** 属性设置为 true `"perSiteScaling": true`。 应用将要使用的**辅助角色数量** 设置为 5 `"properties": { "numberOfWorkers": "5" }`。
 
 ```json
 {

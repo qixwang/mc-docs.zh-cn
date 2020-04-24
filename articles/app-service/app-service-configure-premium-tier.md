@@ -9,17 +9,17 @@ ms.date: 01/13/2020
 ms.author: v-tawe
 ms.custom: seodec18
 ms.openlocfilehash: f796cb2573e868288fe41d4ea857e5976dadf47d
-ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75600529"
 ---
 # <a name="configure-premiumv2-tier-for-azure-app-service"></a>为 Azure 应用服务配置 PremiumV2 层
 
 与现有定价层相比，新的 PremiumV2 定价层提供更快的处理器和 SSD 存储以及双倍的内存-内核比  。 借助性能优势，可以通过在更少的实例上运行应用来节省资金。 在本文中，你将了解如何在 **PremiumV2** 层中创建应用或者将应用纵向扩展到 **PremiumV2** 层。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要将应用纵向扩展到 **PremiumV2**，需要有一个 Azure 应用服务应用，该应用在低于 **PremiumV2** 的定价层中运行，并且必须在支持 PremiumV2 的应用服务部署中运行。
 
@@ -87,9 +87,9 @@ az appservice list-locations --sku P1V2
 
     在“克隆应用”页中，可以在所需的区域中创建使用 **PremiumV2** 的应用服务计划，并指定要克隆的应用设置和配置。 
 
-## <a name="automate-with-scripts"></a>使用脚本自动执行
+## <a name="automate-with-scripts"></a>使用脚本自动化
 
-可以使用 [Azure CLI](/cli/install-azure-cli) 或 [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) 通过脚本在 **PremiumV2** 层中自动执行应用创建。
+可以使用 **Azure CLI** 或 [Azure PowerShell](/cli/install-azure-cli) 通过脚本在 [PremiumV2](https://docs.microsoft.com/powershell/azure/overview) 层中自动执行应用创建。
 
 ### <a name="azure-cli"></a>Azure CLI
 

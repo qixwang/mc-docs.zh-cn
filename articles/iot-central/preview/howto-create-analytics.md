@@ -10,10 +10,10 @@ ms.service: iot-central
 services: iot-central
 manager: abjork
 ms.openlocfilehash: e5f2a5a2eb187374a7aee6926dd27ed49efea835
-ms.sourcegitcommit: 6ffa4d50cee80c7c0944e215ca917a248f2a4bcd
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74883044"
 ---
 # <a name="how-to-use-analytics-to-analyze-device-data"></a>如何使用分析功能来分析设备数据

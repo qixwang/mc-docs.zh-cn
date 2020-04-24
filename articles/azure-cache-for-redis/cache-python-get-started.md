@@ -12,10 +12,10 @@ ms.custom:
 - mvc
 - seo-python-october2019
 ms.openlocfilehash: 2fb4e0ec39b083987a73d9011fc614ab5d673550
-ms.sourcegitcommit: e74e8aabc1cbd8a43e462f88d07b041e9c4f31eb
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74461636"
 ---
 # <a name="quickstart-create-a-python-app-that-uses-azure-cache-for-redis"></a>快速入门：创建使用 Azure Redis 缓存的 Python 应用

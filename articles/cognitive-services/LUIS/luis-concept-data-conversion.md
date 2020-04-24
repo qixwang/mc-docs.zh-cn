@@ -13,10 +13,10 @@ origin.date: 07/29/2019
 ms.date: 09/23/2019
 ms.author: v-lingwu
 ms.openlocfilehash: c5e3f529dab40a801b4efaeeba24b498d51f353e
-ms.sourcegitcommit: cf73284534772acbe7a0b985a86a0202bfcc109e
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74884497"
 ---
 # <a name="convert-data-format-of-utterances"></a>转换话语的数据格式

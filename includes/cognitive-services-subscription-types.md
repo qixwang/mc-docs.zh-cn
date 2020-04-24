@@ -6,10 +6,10 @@ origin.date: 06/24/2019
 ms.date: 10/11/2019
 ms.author: v-tawe
 ms.openlocfilehash: 692463ebfe0ba2cfbabc9637bae488dd79d71a48
-ms.sourcegitcommit: 9e92bcf6aa02fc9e7b3a29abadf6b6d1a8ece8c4
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74389494"
 ---
 <!-- > [!NOTE]

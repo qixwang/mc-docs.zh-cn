@@ -12,16 +12,16 @@ ms.date: 12/02/2019
 ms.author: v-tawe
 ms.topic: conceptual
 ms.openlocfilehash: 59035317a05b18bfb529598f8b47f569e84a6525
-ms.sourcegitcommit: 298eab5107c5fb09bf13351efeafab5b18373901
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74658110"
 ---
 <!--Verify successfully-->
 # <a name="create-management-groups-for-resource-organization-and-management"></a>创建用来组织和管理资源的管理组
 
-管理组是一些容器，可以帮助你跨多个订阅管理访问权限、策略和符合性。 可以创建这些容器来构建可以与 [Azure Policy](../policy/overview.md) 和 [Azure 基于角色的访问控制](../../role-based-access-control/overview.md)配合使用的有效且高效的层次结构。 若要详细了解管理组，请参阅[使用 Azure 管理组整理资源](overview.md)。
+管理组是一些容器，可以帮助跨多个订阅管理访问权限、策略和符合性。 可以创建这些容器来构建可以与 [Azure Policy](../policy/overview.md) 和 [Azure 基于角色的访问控制](../../role-based-access-control/overview.md)配合使用的有效且高效的层次结构。 若要详细了解管理组，请参阅[使用 Azure 管理组整理资源](overview.md)。
 
 在目录中创建的第一个管理组可能需要最多 15 分钟才能完成。 一些进程会首次运行以在 Azure 中为目录设置管理组服务。 在进程完成后将显示通知。
 
@@ -33,7 +33,7 @@ ms.locfileid: "74658110"
 
 1. 登录到 [Azure 门户](http://portal.azure.cn)。
 
-1. 选择“所有服务” > “管理 + 治理”   。
+1. 选择“所有服务” **“管理 + 治理”**  >   。
 
 1. 选择“成本管理 + 计费” 
 
@@ -50,7 +50,7 @@ ms.locfileid: "74658110"
 
    ![用于创建新管理组的“选项”窗格](./media/create_context_menu.png)  
 
-1. 选择“保存”  。
+1. 选择“保存”。 
 
 ### <a name="create-in-powershell"></a>在 PowerShell 中创建
 

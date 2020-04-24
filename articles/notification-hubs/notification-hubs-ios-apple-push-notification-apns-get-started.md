@@ -20,10 +20,10 @@ ms.author: v-tawe
 ms.reviewer: jowargo
 ms.lastreviewed: 05/21/2019
 ms.openlocfilehash: 19b202e20de55024f6c1ac2a4c2040c6cadd2cf3
-ms.sourcegitcommit: cf73284534772acbe7a0b985a86a0202bfcc109e
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74884814"
 ---
 # <a name="tutorial-send-push-notifications-to-ios-apps-using-azure-notification-hubs"></a>教程：使用 Azure 通知中心向 iOS 应用发送推送通知
@@ -34,7 +34,7 @@ ms.locfileid: "74884814"
 
 在本教程中，你将使用 Azure 通知中心向 iOS 应用程序发送推送通知。 你将创建一个空白 iOS 应用，它使用 [Apple Push Notification 服务 (APNs)](https://developer.apple.com/library/content/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/APNSOverview.html#//apple_ref/doc/uid/TP40008194-CH8-SW1) 接收推送通知。
 
-在本教程中，你将执行以下步骤：
+在本教程中，我们将执行以下步骤：
 
 > [!div class="checklist"]
 > * 生成证书签名请求文件

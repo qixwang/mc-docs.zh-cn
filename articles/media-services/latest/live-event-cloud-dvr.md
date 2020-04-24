@@ -16,10 +16,10 @@ origin.date: 08/27/2019
 ms.date: 12/09/2019
 ms.author: v-jay
 ms.openlocfilehash: 3f6ed730c1f5fb19f4fa5a8586ee1b62fa2534e1
-ms.sourcegitcommit: 369038a7d7ee9bbfd26337c07272779c23d0a507
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74807545"
 ---
 # <a name="use-time-shifting-and-live-outputs-to-create-on-demand-video-playback"></a>使用时移和实时输出创建点播视频

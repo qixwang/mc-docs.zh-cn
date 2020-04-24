@@ -13,10 +13,10 @@ ms.reviewer: carlrab
 origin.date: 07/16/2019
 ms.date: 12/16/2019
 ms.openlocfilehash: 033c96334263443d2d300f46818e05ae3c4dea13
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75348503"
 ---
 # <a name="use-powershell-to-add-an-azure-sql-database-managed-instance-to-a-failover-group"></a>使用 PowerShell 将 Azure SQL 数据库托管实例添加到故障转移组 
@@ -26,7 +26,7 @@ ms.locfileid: "75348503"
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-本教程需要 AZ PowerShell 1.4.0 或更高版本。 如果需要进行升级，请参阅 [Install Azure PowerShell module](https://docs.microsoft.com/powershell/azure/install-az-ps)（安装 Azure PowerShell 模块）。 此外，还需要运行 `Connect-AzAccount -Environment AzureChinaCloud` 以创建与 Azure 的连接。
+本教程需要 AZ PowerShell 1.4.0 或更高版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-az-ps)。 此外，还需要运行 `Connect-AzAccount -Environment AzureChinaCloud` 以创建与 Azure 的连接。
 
 ## <a name="sample-scripts"></a>示例脚本
 
@@ -709,7 +709,7 @@ Remove-AzResourceGroup -ResourceGroupName $resourceGroupName
 
 此脚本使用以下命令。 表中的每条命令均链接到特定于命令的文档。
 
-| 命令 | 注释 |
+| Command | 说明 |
 |---|---|
 | [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) | 创建 Azure 资源组。  |
 | [New-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetwork) | 创建虚拟网络。  |

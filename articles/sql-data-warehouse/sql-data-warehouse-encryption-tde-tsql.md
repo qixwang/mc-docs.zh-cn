@@ -12,22 +12,22 @@ ms.date: 03/25/2019
 ms.author: v-jay
 ms.reviewer: igorstan
 ms.openlocfilehash: 4c05d3201d1ca03c4127379fe998d9a808d8f97e
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75624343"
 ---
 # <a name="get-started-with-transparent-data-encryption-tde"></a>透明数据加密 (TDE) 入门
 > [!div class="op_single_selector"]
-> * [安全性概述](sql-data-warehouse-overview-manage-security.md)
+> * [安全概述](sql-data-warehouse-overview-manage-security.md)
 > * [身份验证](sql-data-warehouse-authentication.md)
 > * [加密（门户）](sql-data-warehouse-encryption-tde.md)
 > * [加密 (T-SQL)](sql-data-warehouse-encryption-tde-tsql.md)
 > 
 > 
 
-## <a name="required-permissions"></a>所需权限
+## <a name="required-permissions"></a>所需的权限
 若要启用透明数据加密 (TDE)，用户必须是管理员或 dbmanager 角色的成员。
 
 ## <a name="enabling-encryption"></a>启用加密
@@ -43,7 +43,7 @@ ALTER DATABASE [AdventureWorks] SET ENCRYPTION ON;
 ## <a name="disabling-encryption"></a>禁用加密
 执行以下步骤，对 SQL 数据仓库禁用 TDE：
 
-1. 使用在 master 数据库中充当管理员或 **dbmanager** 角色成员的登录名，连接到 *master* 数据库
+1. 使用在 master 数据库中充当管理员或 *dbmanager* 角色成员的登录名，连接到 **master** 数据库
 2. 执行以下语句来加密数据库。
 
 ```sql

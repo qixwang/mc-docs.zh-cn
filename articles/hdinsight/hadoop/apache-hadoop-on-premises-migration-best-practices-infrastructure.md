@@ -11,10 +11,10 @@ origin.date: 12/06/2019
 ms.date: 01/13/2020
 ms.author: v-yiso
 ms.openlocfilehash: 6fb9ea95be8616e11df89f40c27b06dd4baa8863
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75630864"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---infrastructure-best-practices"></a>将本地 Apache Hadoop 群集迁移到 Azure HDInsight - 基础结构最佳做法
@@ -153,7 +153,7 @@ New—AzHDInsightCluster `
 
 ## <a name="use-scale-up-and-scale-down-feature-of-clusters"></a>使用群集的纵向扩展和缩减功能
 
-HDInsight 提供弹性，可让你选择扩展和缩减群集中的工作节点数。 使用此功能可在若干小时后或者在周末收缩群集，或者在业务高峰期扩展群集。 有关详细信息，请参阅：
+HDInsight 提供弹性，可让你选择纵向扩展和纵向缩减群集中的工作节点数。 使用此功能可在若干小时后或者在周末收缩群集，或者在业务高峰期扩展群集。 有关详细信息，请参阅：
 
 * [缩放 HDInsight 群集](../hdinsight-scaling-best-practices.md)。
 * [缩放群集](../hdinsight-administer-use-portal-linux.md#scale-clusters)。

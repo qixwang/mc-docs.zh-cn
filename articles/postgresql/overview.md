@@ -9,10 +9,10 @@ ms.topic: overview
 origin.date: 11/25/2019
 ms.date: 12/09/2019
 ms.openlocfilehash: 2b74aa81acfe1dcaa2060d5ee65ea6385e37142a
-ms.sourcegitcommit: 21b02b730b00a078a76aeb5b78a8fd76ab4d6af2
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74838567"
 ---
 # <a name="what-is-azure-database-for-postgresql"></a>什么是用于 PostgreSQL 的 Azure 数据库？

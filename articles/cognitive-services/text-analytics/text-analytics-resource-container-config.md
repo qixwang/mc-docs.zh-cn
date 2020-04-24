@@ -13,10 +13,10 @@ origin.date: 11/07/2019
 ms.date: 12/05/2019
 ms.author: v-lingwu
 ms.openlocfilehash: abf52e9caef6757d3dcb07e81d9acf1aa09c2505
-ms.sourcegitcommit: cf73284534772acbe7a0b985a86a0202bfcc109e
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74884941"
 ---
 # <a name="configure-text-analytics-docker-containers"></a>配置文本分析 docker 容器
@@ -50,7 +50,7 @@ ms.locfileid: "74884941"
 
 * Azure 门户：**文本分析**概述，标记为 `Endpoint`
 
-|必须| Name | 数据类型 | 说明 |
+|必须| 名称 | 数据类型 | 说明 |
 |--|------|-----------|-------------|
 |是| `Billing` | String | 账单终结点 URI<br><br>示例：<br>`Billing=https://chinaeast2.api.cognitive.azure.cn/text/analytics/v2.1` |
 
@@ -78,7 +78,7 @@ ms.locfileid: "74884941"
 
 主机确切语法的安装位置因主机操作系统不同而异。 此外，由于 docker 服务帐户使用的权限与主机安装位置权限之间的冲突，可能无法访问[主计算机](how-tos/text-analytics-how-to-install-containers.md#the-host-computer)的装载位置。 
 
-|可选| Name | 数据类型 | 说明 |
+|可选| 名称 | 数据类型 | 说明 |
 |-------|------|-----------|-------------|
 |不允许| `Input` | String | 文本分析容器不使用此项。|
 |可选| `Output` | String | 输出装入点的目标。 默认值为 `/output`。 这是日志的位置。 这包括容器日志。 <br><br>示例：<br>`--mount type=bind,src=c:\output,target=/output`|

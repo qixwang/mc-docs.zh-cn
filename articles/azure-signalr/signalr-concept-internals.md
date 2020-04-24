@@ -8,10 +8,10 @@ origin.date: 11/13/2019
 ms.date: 12/16/2019
 ms.author: v-tawe
 ms.openlocfilehash: a5a9c25f7c3990272772b2030685f31814a84af1
-ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75600583"
 ---
 # <a name="azure-signalr-service-internals"></a>Azure SignalR 服务内部

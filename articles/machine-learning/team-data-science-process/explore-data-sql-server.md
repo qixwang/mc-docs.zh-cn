@@ -12,10 +12,10 @@ ms.date: 11/09/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 6f71727fadd4723e990b4d097eb841fc802e2020
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75599147"
 ---
 # <a name="explore-data-in-sql-server-virtual-machine-on-azure"></a>浏览 Azure 上 SQL Server 虚拟机中的数据
@@ -29,7 +29,7 @@ ms.locfileid: "75599147"
 > 
 > 
 
-## <a name="sql-dataexploration"></a>使用 SQL 脚本浏览 SQL 数据
+## <a name="explore-sql-data-with-sql-scripts"></a><a name="sql-dataexploration"></a>使用 SQL 脚本浏览 SQL 数据
 以下是几个可用于浏览存储在 SQL Server 中的数据的示例 SQL 脚本。
 
 1. 获取每个工作日观测值的计数
@@ -50,7 +50,7 @@ ms.locfileid: "75599147"
 > 
 > 
 
-## <a name="python"></a>使用 Python 浏览 SQL 数据
+## <a name="explore-sql-data-with-python"></a><a name="python"></a>使用 Python 浏览 SQL 数据
 如果数据位于 SQL Server 中，使用 Python 浏览数据和生成功能类似于使用 Python处理 Azure blob 中的数据，如[处理数据科学环境中的 Azure Blob 数据](data-blob.md)中所述。 数据需要从数据库加载到 pandas 数据帧，才可以进行进一步的处理。 在本部分中，我们记录连接到数据库并将数据加载到数据帧的过程。
 
 以下连接字符串格式可用于使用 pyodbc 从 Python 连接到 SQL Server 数据库（具有特定值的替换服务器名、dbname、用户名和密码）：

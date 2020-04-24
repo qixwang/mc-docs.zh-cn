@@ -16,10 +16,10 @@ ms.date: 09/07/2018
 ms.author: v-lingwu
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 15c86ab7ffb0de835466c4a66c89cd08e9ae3ec7
-ms.sourcegitcommit: 21b02b730b00a078a76aeb5b78a8fd76ab4d6af2
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74838628"
 ---
 # <a name="use-visual-studio-project-templates-to-jump-start-batch-solutions"></a>使用 Visual Studio 项目模板快速启动 Batch 解决方案

@@ -12,10 +12,10 @@ ms.date: 12/09/2019
 ms.author: v-yiso
 ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017
 ms.openlocfilehash: 5585f4705ecc6647f5b7feb2e312ea7f9370f2b4
-ms.sourcegitcommit: 298eab5107c5fb09bf13351efeafab5b18373901
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74658096"
 ---
 # <a name="create-an-apache-storm-topology-in-java"></a>以 Java 语言创建 Apache Storm 拓扑
@@ -79,7 +79,7 @@ DEL src\test\java\com\microsoft\example\AppTest.java
 notepad pom.xml
 ```
 
-然后，在 `<url> https://maven.apache.org</url>` 行的后面添加以下 XML：
+然后，在 `<url>https://maven.apache.org</url>` 行的后面添加以下 XML：
 
 ```xml
 <repositories>

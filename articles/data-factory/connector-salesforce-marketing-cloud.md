@@ -14,10 +14,10 @@ origin.date: 10/25/2019
 ms.date: 01/06/2020
 ms.author: v-jay
 ms.openlocfilehash: 7074ce3213aae19937c50c4b9d4f5ef4ca6ee75f
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75624307"
 ---
 # <a name="copy-data-from-salesforce-marketing-cloud-using-azure-data-factory"></a>使用 Azure 数据工厂从 Salesforce Marketing Cloud 复制数据
@@ -48,7 +48,7 @@ Salesforce Marketing Cloud 连接器支持 OAuth 2 身份验证。 它在 [Sales
 
 Salesforce Marketing Cloud 链接的服务支持以下属性：
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：**SalesforceMarketingCloud** | 是 |
 | clientId | 与 Salesforce Marketing Cloud 应用程序关联的客户端 ID。  | 是 |
@@ -85,10 +85,10 @@ Salesforce Marketing Cloud 链接的服务支持以下属性：
 
 要从 Salesforce Marketing Cloud 复制数据，请将数据集的 type 属性设置为 SalesforceMarketingCloudObject  。 支持以下属性：
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为：**SalesforceMarketingCloudObject** | 是 |
-| tableName | 表名称。 | 否（如果指定了活动源中的“query”） |
+| tableName | 表的名称。 | 否（如果指定了活动源中的“query”） |
 
 **示例**
 
@@ -115,10 +115,10 @@ Salesforce Marketing Cloud 链接的服务支持以下属性：
 
 要从 Salesforce Marketing Cloud 复制数据，请将复制活动中的源类型设置为 SalesforceMarketingCloudSource  。 复制活动**source**部分支持以下属性：
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
-| type | 复制活动源的 type 属性必须设置为：**SalesforceMarketingCloudSource** | 是 |
-| query | 使用自定义 SQL 查询读取数据。 例如：`"SELECT * FROM MyTable"`。 | 否（如果指定了数据集中的“tableName”） |
+| type | 复制活动 source 的 type 属性必须设置为：**SalesforceMarketingCloudSource** | 是 |
+| 查询 | 使用自定义 SQL 查询读取数据。 例如：`"SELECT * FROM MyTable"`。 | 否（如果指定了数据集中的“tableName”） |
 
 **示例：**
 

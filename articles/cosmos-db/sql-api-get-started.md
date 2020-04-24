@@ -10,10 +10,10 @@ origin.date: 11/05/2019
 ms.date: 12/16/2019
 ms.author: v-yeche
 ms.openlocfilehash: cfe1ffe7f2736933832ef51b88a7599274999a9b
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75336396"
 ---
 # <a name="tutorial-build-a-net-console-app-to-manage-data-in-azure-cosmos-db-sql-api-account"></a>教程：生成一个用于在 Azure Cosmos DB SQL API 帐户中管理数据的 .NET 控制台应用
@@ -802,7 +802,7 @@ End of demo, press any key to exit.
 
 ## <a name="next-steps"></a>后续步骤
 
-* 需要更复杂的 ASP.NET MVC 教程？ 有关分步说明，请参阅[教程：通过 .NET SDK 开发使用 Azure Cosmos DB 的 ASP.NET Core MVC Web 应用程序](sql-api-dotnet-application.md)。
+* 需要更复杂的 ASP.NET MVC 教程？ 请参阅[教程：通过 .NET SDK 开发使用 Azure Cosmos DB 的 ASP.NET Core MVC Web 应用程序](sql-api-dotnet-application.md)。
 * 需要执行 Azure Cosmos DB 缩放和性能测试？ 请参阅 [Azure Cosmos DB 的性能和缩放测试](performance-testing.md)。
 * 若要了解如何监视 Azure Cosmos DB 请求、使用情况和存储，请参阅[监视 Azure Cosmos DB 中的性能和存储指标](monitor-accounts.md)。
 * 若要对示例数据集运行查询，请参阅[查询操场](https://www.documentdb.com/sql/demo)。

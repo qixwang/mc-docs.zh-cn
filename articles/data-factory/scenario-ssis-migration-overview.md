@@ -14,10 +14,10 @@ ms.topic: conceptual
 origin.date: 9/3/2019
 ms.date: 01/06/2020
 ms.openlocfilehash: 754e899e34dfc6ac56f6e27df55d4a9e312bc088
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75623942"
 ---
 # <a name="migrate-on-premises-ssis-workloads-to-ssis-in-adf"></a>将本地 SSIS 工作负荷迁移到 ADF 中的 SSIS

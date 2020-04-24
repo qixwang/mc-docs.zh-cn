@@ -8,10 +8,10 @@ origin.date: 07/05/2019
 ms.date: 9/23/2019
 ms.author: v-lingwu
 ms.openlocfilehash: c2158d5492de320fda2ab372544a68b8fc7cd0cd
-ms.sourcegitcommit: 21b02b730b00a078a76aeb5b78a8fd76ab4d6af2
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74839026"
 ---
 # <a name="troubleshoot-slow-backup-of-files-and-folders-in-azure-backup"></a>排查在 Azure 备份中备份文件和文件夹时速度缓慢的问题
@@ -23,7 +23,7 @@ ms.locfileid: "74839026"
 * [备份代理在 Azure 虚拟机 (VM) 上运行。](#cause3)  
 * [正在备份大量的（数百万个）文件。](#cause4)
 
-在开始排查问题之前，建议下载并安装[最新的 Azure 备份代理](https://aka.ms/azurebackup_agent)。 我们经常更新备份代理，以修复各种问题、添加功能和改善性能。
+在开始排查问题之前，建议下载并安装 [最新的 Azure 备份代理](https://aka.ms/azurebackup_agent)。 我们经常更新备份代理，以修复各种问题、添加功能和改善性能。
 
 此外，我们强烈建议查看 [Azure Backup service FAQ](backup-azure-backup-faq.md)（Azure 备份服务常见问题），确保所遇到的问题并非任何常见配置问题。
 

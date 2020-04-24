@@ -9,10 +9,10 @@ origin.date: 11/18/2019
 ms.date: 12/23/2019
 ms.author: v-yiso
 ms.openlocfilehash: 5547fbcd7da7050fae4983898f9f35e96f3ded8b
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75348565"
 ---
 # <a name="publish-events-to-azure-active-directory-protected-endpoints"></a>将事件发布到受 Azure Active Directory 保护的终结点

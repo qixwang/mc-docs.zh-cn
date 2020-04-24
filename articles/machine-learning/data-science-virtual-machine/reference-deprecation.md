@@ -8,10 +8,10 @@ ms.author: gopalv
 ms.date: 10/14/2019
 ms.topic: reference
 ms.openlocfilehash: 4b48e09674fc81cbc04f8a2cbcd4d395062fd1ab
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75597992"
 ---
 # <a name="reference-deprecation-of-dsvm-images"></a>参考：DSVM 映像的弃用

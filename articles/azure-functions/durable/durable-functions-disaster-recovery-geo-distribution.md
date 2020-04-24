@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 12/31/2019
 ms.author: v-junlch
 ms.openlocfilehash: 16374e7fb436c353f47d041897817db2702167ff
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75624275"
 ---
 # <a name="disaster-recovery-and-geo-distribution-in-azure-durable-functions"></a>Azure Durable Functions 中的灾难恢复和异地分布

@@ -17,10 +17,10 @@ origin.date: 12/06/2018
 ms.date: 12/02/2019
 ms.author: v-tawe
 ms.openlocfilehash: 49b942d669608fa88617ac4b99e215a299e1a307
-ms.sourcegitcommit: 298eab5107c5fb09bf13351efeafab5b18373901
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74657848"
 ---
 # <a name="automatically-scale-up-azure-event-hubs-throughput-units"></a>自动增加 Azure 事件中心吞吐量单位
@@ -75,7 +75,7 @@ Azure 事件中心是高度可缩放的数据流式处理平台。 因此，开�
 
 ### <a name="enable-auto-inflate-using-an-azure-resource-manager-template"></a>使用 Azure 资源管理器模板启用自动膨胀
 
-可在 Azure 资源管理器模板部署期间启用自动膨胀。 例如，将 `isAutoInflateEnabled` 属性设置为“true”并将 `maximumThroughputUnits` 设置为 10  。 例如：
+可在 Azure 资源管理器模板部署期间启用自动膨胀。 例如，将 `isAutoInflateEnabled` 属性设置为“true”并将  **设置为 10**`maximumThroughputUnits`。 例如：
 
 ```json
 "resources": [

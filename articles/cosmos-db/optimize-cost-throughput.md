@@ -8,10 +8,10 @@ ms.topic: conceptual
 origin.date: 08/26/2019
 ms.date: 12/16/2019
 ms.openlocfilehash: 32754ee8da556e9efe2237230995ce322f7ddb8a
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75335847"
 ---
 # <a name="optimize-provisioned-throughput-cost-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中优化预配的吞吐量成本
@@ -59,7 +59,7 @@ ms.locfileid: "75335847"
 |SQL API|数据库|容器|
 |Azure Cosmos DB 的用于 MongoDB 的 API|数据库|集合|
 |Cassandra API|密钥空间|表|
-|Gremlin API|数据库帐户|Graph|
+|Gremlin API|数据库帐户|图形|
 |表 API|数据库帐户|表|
 
 在不同的级别预配吞吐量可以根据工作负荷特征优化成本。 如前所述，随时能够以编程方式针对单个容器或者同时针对一组容器增加或减少预配的吞吐量。 根据工作负荷的变化弹性缩放吞吐量，只需为配置的吞吐量付费。 如果单个容器或一组容器分布在多个区域之间，则所有区域都能保证提供针对这些容器配置的吞吐量。
@@ -182,7 +182,7 @@ connectionPolicy.RetryOptions.MaxRetryWaitTimeInSeconds = 60;
 接下来，可通过以下文章详细了解 Azure Cosmos DB 中的成本优化：
 
 * 详细了解[开发和测试优化](optimize-dev-test.md)
-* 详细了解 [Azure Cosmos DB 帐单](understand-your-bill.md)
+* 详细了解[了解 Azure Cosmos DB 帐单](understand-your-bill.md)
 * 详细了解如何[优化存储成本](optimize-cost-storage.md)
 * 详细了解如何[优化读取和写入成本](optimize-cost-reads-writes.md)
 * 详细了解如何[优化查询成本](optimize-cost-queries.md)

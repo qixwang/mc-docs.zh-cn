@@ -12,10 +12,10 @@ ms.date: 12/09/2019
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: d66509ef79b76059009303acc10708ce0f3b39e6
-ms.sourcegitcommit: 8c3bae15a8a5bb621300d81adb34ef08532fe739
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74884002"
 ---
 # <a name="configuration-data-at-scale"></a>大规模配置数据

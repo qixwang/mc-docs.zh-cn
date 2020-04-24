@@ -13,10 +13,10 @@ origin.date: 10/25/2019
 ms.date: 01/06/2020
 ms.author: v-jay
 ms.openlocfilehash: 2212708b8f6a6f0ba76b1beba6d28c3393983f61
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75624230"
 ---
 # <a name="copy-data-from-drill-using-azure-data-factory"></a>使用 Azure 数据工厂从 Drill 复制数据
@@ -48,10 +48,10 @@ Azure 数据工厂提供内置的驱动程序用于启用连接，因此无需�
 
 Drill 链接服务支持以下属性：
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：**Drill** | 是 |
-| connectionString | 用于连接到 Drill 的 ODBC 连接字符串。 <br/>还可以将密码放在 Azure 密钥保管库中，并从连接字符串中拉取 `pwd` 配置。 有关更多详细信息，请参阅以下示例和[将凭据存储在 Azure 密钥保管库中](store-credentials-in-key-vault.md)一文。 | 是 |
+| connectionString | 用于连接到 Drill 的 ODBC 连接字符串。 <br/>还可以将密码放在 Azure 密钥保管库中，并从连接字符串中拉取 `pwd` 配置。 有关更多详细信息，请参阅以下示例和[在 Azure 密钥保管库中存储凭据](store-credentials-in-key-vault.md)一文。 | 是 |
 | connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 在[先决条件](#prerequisites)部分了解更多信息。 如果未指定，则使用默认 Azure Integration Runtime。 |否 |
 
 **示例：**
@@ -105,11 +105,11 @@ Drill 链接服务支持以下属性：
 
 要从 Drill 复制数据，请将数据集的 type 属性设置为“DrillTable”  。 支持以下属性：
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为：**DrillTable** | 是 |
-| schema | 架构的名称。 |否（如果指定了活动源中的“query”）  |
-| 表 | 表名称。 |否（如果指定了活动源中的“query”）  |
+| 架构 | 架构的名称。 |否（如果指定了活动源中的“query”）  |
+| 表 | 表的名称。 |否（如果指定了活动源中的“query”）  |
 | tableName | 具有架构的表的名称。 支持此属性是为了向后兼容。 对于新的工作负荷，请使用 `schema` 和 `table`。 | 否（如果指定了活动源中的“query”） |
 
 **示例**
@@ -137,10 +137,10 @@ Drill 链接服务支持以下属性：
 
 要从 Drill 复制数据，请将复制活动中的源类型设置为“DrillSource”  。 复制活动**source**部分支持以下属性：
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
-| type | 复制活动源的 type 属性必须设置为：**DrillSource** | 是 |
-| query | 使用自定义 SQL 查询读取数据。 例如：`"SELECT * FROM MyTable"`。 | 否（如果指定了数据集中的“tableName”） |
+| type | 复制活动 source 的 type 属性必须设置为：**DrillSource** | 是 |
+| 查询 | 使用自定义 SQL 查询读取数据。 例如：`"SELECT * FROM MyTable"`。 | 否（如果指定了数据集中的“tableName”） |
 
 **示例：**
 

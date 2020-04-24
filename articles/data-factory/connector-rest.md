@@ -14,10 +14,10 @@ origin.date: 11/20/2019
 ms.date: 01/06/2020
 ms.author: v-jay
 ms.openlocfilehash: ca6cc0dc26b053e719f8d29693b1ad79d636b985
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75624309"
 ---
 # <a name="copy-data-from-a-rest-endpoint-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 REST 终结点复制数据
@@ -58,7 +58,7 @@ ms.locfileid: "75624309"
 
 REST 链接服务支持以下属性：
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为 **RestService**  。 | 是 |
 | url | REST 服务的基 URL。 | 是 |
@@ -136,7 +136,7 @@ REST 链接服务支持以下属性：
 }
 ```
 
-### <a name="managed-identity"></a>使用托管标识进行 Azure 资源身份验证
+### <a name="use-managed-identities-for-azure-resources-authentication"></a><a name="managed-identity"></a>使用托管标识进行 Azure 资源身份验证
 
 将 **authenticationType** 属性设置为 **ManagedServiceIdentity**。 除了前面部分所述的通用属性，还指定以下属性：
 
@@ -172,7 +172,7 @@ REST 链接服务支持以下属性：
 
 若要从 REST 复制数据，支持以下属性：
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
 | type | 数据集的 **type** 属性必须设置为 **RestResource**。 | 是 |
 | relativeUrl | 包含数据的资源的相对 URL。 未指定此属性时，仅使用链接服务定义中指定的 URL。 HTTP 连接器从以下组合 URL 复制数据：`[URL specified in linked service]/[relative URL specified in dataset]`。 | 否 |
@@ -208,7 +208,7 @@ REST 链接服务支持以下属性：
 
 复制活动**source**部分支持以下属性：
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
 | type | 复制活动源的 **type** 属性必须设置为 **RestSource**。 | 是 |
 | requestMethod | HTTP 方法。 允许的值为 Get（默认值）和 Post   。 | 否 |

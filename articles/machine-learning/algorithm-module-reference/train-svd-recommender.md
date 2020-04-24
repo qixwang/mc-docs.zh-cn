@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
 ms.openlocfilehash: 83eb01c8f6547108ec50305a6d687daafe801922
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75598383"
 ---
 # <a name="train-svd-recommender"></a>训练 SVD 推荐器
@@ -57,7 +57,7 @@ Azure 机器学习设计器中的**餐馆评级**数据集（依次选择“已�
 
 在此示例中，你可以看到单个用户对两个单独的餐馆进行了评级。 
 
-### <a name="train-the-model"></a>训练模型
+### <a name="train-the-model"></a>定型模型
 
 1.  在设计器中将“训练 SVD 推荐器”模块添加到你的管道，并将其连接到训练数据。  
    

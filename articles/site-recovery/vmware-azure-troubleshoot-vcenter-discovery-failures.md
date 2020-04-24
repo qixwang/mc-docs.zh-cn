@@ -9,10 +9,10 @@ origin.date: 10/29/2019
 ms.date: 12/16/2019
 ms.author: v-yeche
 ms.openlocfilehash: 4bb5c173eb3d2aabbd9096042b3694bec937aa1b
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75336087"
 ---
 # <a name="troubleshoot-vcenter-server-discovery-failures"></a>排查 vCenter Server 发现失败问题

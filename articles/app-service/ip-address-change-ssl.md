@@ -7,10 +7,10 @@ ms.date: 01/13/2020
 ms.author: v-tawe
 ms.custom: seodec18
 ms.openlocfilehash: d89b1e0f40c0e272deb137f9beb5d8171320a193
-ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75600456"
 ---
 # <a name="how-to-prepare-for-an-ssl-ip-address-change"></a>如何为 SSL IP 地址更改做好准备

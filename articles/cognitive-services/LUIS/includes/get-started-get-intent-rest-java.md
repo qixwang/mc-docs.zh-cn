@@ -9,13 +9,13 @@ ms.topic: include
 ms.date: 11/20/2019
 ms.author: diberry
 ms.openlocfilehash: 1b86d7bfa1a82feeb9c9d7f6aef8839866fe15cb
-ms.sourcegitcommit: 3d27913e9f896e34bd7511601fb428fc0381998b
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74982162"
 ---
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * [JDK SE](https://aka.ms/azure-jdks)（Java 开发工具包，标准版）
 * [Visual Studio Code](https://code.visualstudio.com/) 或你喜欢用的 IDE
@@ -104,10 +104,10 @@ ms.locfileid: "74982162"
     }    
     ```
 
-1. 替换以下值：
+1. 请替换以下值：
 
     * 将 `YOUR-KEY` 替换为初学者密钥
-    * 将 `YOUR-ENDPOINT` 替换为终结点。 例如，`chinaeast2.api.cognitive.azure.cn`。
+    * 将 `YOUR-ENDPOINT` 替换为终结点。 例如，`chinaeast2.api.cognitive.azure.cn` 。
 
 
 1. 通过命令行编译 Java 程序： 

@@ -21,10 +21,10 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: 6aeac796c978fd41f73ef58870c4cf8932ef506f
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75336497"
 ---
 # <a name="odata-searchscore-function-in-azure-cognitive-search"></a>Azure 认知搜索中的 OData `search.score` 函数
@@ -33,7 +33,7 @@ ms.locfileid: "75336497"
 
 ## <a name="syntax"></a>语法
 
-**$orderby** 中 `search.score` 的语法为 `search.score()`。 `search.score` 函数不接受任何参数。 它可以与 `asc` 或 `desc` 排序顺序说明符一起使用，就像 **$orderby** 参数中的任何其他子句一样。 它可以出现在排序条件列表中的任何位置。
+`search.score`$orderby**中** 的语法为 `search.score()`。 `search.score` 函数不接受任何参数。 它可以与 `asc` 或 `desc` 排序顺序说明符一起使用，就像 **$orderby** 参数中的任何其他子句一样。 它可以出现在排序条件列表中的任何位置。
 
 ## <a name="example"></a>示例
 

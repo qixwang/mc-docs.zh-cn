@@ -11,10 +11,10 @@ ms.date: 11/28/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 34a6dbd5f1481bbc689c562c3afaeee5127dcf35
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75598984"
 ---
 # <a name="execute-data-science-tasks-exploration-modeling-and-deployment"></a>执行数据科学任务：探索、建模和部署
@@ -26,7 +26,7 @@ ms.locfileid: "75598984"
 - [Microsoft Machine Learning Server](https://docs.microsoft.com/machine-learning-server/what-is-machine-learning-server)
 
 
-## 1.<a name='DataQualityReportUtility-1'></a>浏览 
+## <a name="1--exploration"></a>1.<a name='DataQualityReportUtility-1'></a>浏览 
 
 数据科学家可通过各种方法执行探索和报告：使用适用于 Python 的库和包（例如 matplotlib）或使用 R（例如 ggplot 或 lattice）。 数据科学家可以自定义此类代码，以满足特定方案中数据探索的需要。 结构化数据与非结构化数据（例如文本或图像）的处理需求有所不同。 
 
@@ -41,7 +41,7 @@ Azure 机器学习等产品还提供了[高级数据准备](../service/how-to-tr
 目前，此工具仅适用于内存中的数据帧。 需要使用 YAML 文件指定要探索的数据集的参数。 有关详细信息，请参阅 [TDSP 数据科学实用程序中的 IDEAR](https://github.com/Azure/Azure-TDSP-Utilities/tree/master/DataScienceUtilities/DataReport-Utils)。
 
 
-## 2.<a name='ModelingUtility-2'></a>建模
+## <a name="2--modeling"></a>2.<a name='ModelingUtility-2'></a>建模
 
 有大量的工具包和程序包可用于训练各种语言的模型。 只要符合相关业务用例和生产方案的性能、准确度和延迟要求，数据科学家就可以任意使用他们顺手的工具。
 
@@ -78,7 +78,7 @@ YAML 文件用于指定：
 3. [用作模型管理系统的 SQL-Server](https://blogs.technet.microsoft.com/dataplatforminsider/2016/10/17/sql-server-as-a-machine-learning-model-management-system/)
 4. [Microsoft Machine Learning Server](https://docs.microsoft.com/sql/advanced-analytics/r/r-server-standalone)
 
-## 3.<a name='Deployment-3'></a>部署
+## <a name="3--deployment"></a>3.<a name='Deployment-3'></a>部署
 
 生产部署可让模型在企业中发挥积极作用。 所部署模型提供的预测可用于业务决策。
 

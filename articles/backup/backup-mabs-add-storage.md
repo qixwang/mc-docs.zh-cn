@@ -7,10 +7,10 @@ origin.date: 11/13/2018
 ms.date: 11/26/2018
 ms.author: v-lingwu
 ms.openlocfilehash: 9b90278fe797cbd526cf85f33e31d951b851f828
-ms.sourcegitcommit: 21b02b730b00a078a76aeb5b78a8fd76ab4d6af2
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74838897"
 ---
 # <a name="add-storage-to-azure-backup-server"></a>将存储添加到 Azure 备份服务器
@@ -23,7 +23,7 @@ Azure 备份服务器 V2 及更高版本支持新式备份存储，后者可提�
 
 ## <a name="volumes-in-backup-server"></a>备份服务器中的卷
 
-备份服务器 V2 或更高版本可接受存储卷。 添加卷时，备份服务器会将卷格式化为 Modern Backup Storage 所需的复原文件系统 (ReFS)。 若要添加卷以及以后在需要时扩展它，建议使用以下工作流：
+备份服务器 V2 或更高版本可接受存储卷。 添加卷时，备份服务器会将卷格式化为新式备份存储所需的复原文件系统 (ReFS)。 若要添加卷以及以后在需要时扩展它，建议使用以下工作流：
 
 1. 在 VM 上设置备份服务器。
 2. 在存储池中的虚拟磁盘上创建卷：
@@ -31,9 +31,9 @@ Azure 备份服务器 V2 及更高版本支持新式备份存储，后者可提�
     2. 添加任何其他磁盘，然后扩展虚拟磁盘。
     3. 在虚拟磁盘上创建卷。
 3. 将卷添加到备份服务器。
-4. 配置可感知工作负荷的存储。
+4. 配置可感知工作负载的存储。
 
-## <a name="create-a-volume-for-modern-backup-storage"></a>为 Modern Backup Storage 创建卷
+## <a name="create-a-volume-for-modern-backup-storage"></a>为新式备份存储创建卷
 
 使用具有卷的备份服务器 V2 或更高版本作为磁盘存储可以帮助维护对存储的控制权。 卷可以是单个磁盘。 但是，如果要在将来扩展存储，请通过使用存储空间创建的磁盘来创建卷。 如果要为备份存储扩展卷，这可能有所帮助。 本部分提供有关使用此设置创建卷的最佳做法。
 
@@ -68,13 +68,13 @@ Azure 备份服务器 V2 及更高版本支持新式备份存储，后者可提�
 > - 仅将一个磁盘添加到池，使列计数保持为 1。 然后，可以根据需要添加磁盘。
 > - 如果一次将多个磁盘添加到存储池，则磁盘数将存储为列数。 添加更多磁盘时，它们只能是列数的倍数。
 
-若要将卷添加到备份服务器，请在“管理”  窗格中，重新扫描存储，然后选择“添加”  。 可用于为备份服务器存储添加的所有卷的列表随即出现。 将可用卷添加到所选卷的列表之后，可以为它们提供友好名称以帮助管理它们。 若要将这些卷格式化为 ReFS 以便备份服务器可以利用 Modern Backup Storage 的优点，请选择“确定”  。
+若要将卷添加到备份服务器，请在“管理”  窗格中，重新扫描存储，然后选择“添加”  。 可用于为备份服务器存储添加的所有卷的列表随即出现。 将可用卷添加到所选卷的列表之后，可以为它们提供友好名称以帮助管理它们。 若要将这些卷格式化为 ReFS 以便备份服务器可以利用新式备份存储的优点，请选择“确定”  。
 
 ![添加可用卷](./media/backup-mabs-add-storage/mabs-add-storage-7.png)
 
-## <a name="set-up-workload-aware-storage"></a>设置可感知工作负荷的存储
+## <a name="set-up-workload-aware-storage"></a>设置可感知工作负载的存储
 
-借助可感知工作负荷的存储，可以选择优先存储某些类型的工作负荷的卷。 例如，可以将支持较高每秒输入/输出操作次数 (IOPS) 的昂贵卷设置为仅存储需要频繁的高容量备份的工作负荷。 一个示例是具有事务日志的 SQL Server。 可以将备份频率较低的其他工作负荷（如 VM）备份到低成本卷。
+借助可感知工作负载的存储，可以选择优先存储某些类型的工作负载的卷。 例如，可以将支持较高每秒输入/输出操作次数 (IOPS) 的昂贵卷设置为仅存储需要频繁的高容量备份的工作负载。 一个示例是具有事务日志的 SQL Server。 可以将备份频率较低的其他工作负载（如 VM）备份到低成本卷。
 
 ### <a name="update-dpmdiskstorage"></a>Update-DPMDiskStorage
 
@@ -88,7 +88,7 @@ Azure 备份服务器 V2 及更高版本支持新式备份存储，后者可提�
 Update-DPMDiskStorage [-Volume] <Volume> [[-FriendlyName] <String> ] [[-DatasourceType] <VolumeTag[]> ] [-Confirm] [-WhatIf] [ <CommonParameters>]
 ```
 
-以下屏幕截图显示 PowerShell 窗口中的 Update-DPMDiskStorage cmdlet。
+下面的屏幕截图显示 PowerShell 窗口中的 Update-DPMDiskStorage cmdlet。
 
 ![PowerShell 窗口中的 Update-DPMDiskStorage 命令](./media/backup-mabs-add-storage/mabs-add-storage-8.png)
 
@@ -100,19 +100,19 @@ Update-DPMDiskStorage [-Volume] <Volume> [[-FriendlyName] <String> ] [[-Datasour
 
 升级到或安装备份服务器 V2 并将操作系统升级到 Windows Server 2016 之后，可更新保护组以使用新式备份存储。 默认情况下，保护组不会进行更改。 它们会继续按照初始设置运行。
 
-可以选择更新保护组以使用 Modern Backup Storage。 若要更新保护组，请使用“保留数据”选项停止所有数据源的保护。 然后，将数据源添加到新保护组。
+可以选择更新保护组以使用新式备份存储。 若要更新保护组，请使用保留数据选项停止所有数据源的保护。 然后，将数据源添加到新保护组。
 
 1. 在管理员控制台中，选择“保护”  功能。 在“保护组成员”  列表中，右键单击成员，然后选择“停止保护成员”  。
 
    ![停止保护成员](https://docs.microsoft.com/system-center/dpm/media/upgrade-to-dpm-2016/dpm-2016-stop-protection1.png)
 
-2. 在“从组中删除”  对话框中，查看存储池的已用磁盘空间和可用空闲空间。 默认设置是在磁盘上保留恢复点，并让它们可以按照关联的保留策略过期。 单击 **“确定”** 。
+2. 在“从组中删除”  对话框中，检查存储池的已用磁盘空间和可用空闲空间。 默认设置是在磁盘上保留恢复点，并让它们可以按照关联保留策略过期。 单击“确定”。 
 
-   如果要立即将已用磁盘空间返回到可用存储池，请选中“删除磁盘上的副本”  复选框以删除与成员关联的备份数据（和恢复点）。
+   如果要立即将已用磁盘空间返回到可用存储池，则选中“删除磁盘上的副本”  复选框以删除与成员关联的备份数据（和恢复点）。
 
    ![“从组中删除”对话框](https://docs.microsoft.com/system-center/dpm/media/upgrade-to-dpm-2016/dpm-2016-retain-data.png)
 
-3. 创建一个使用 Modern Backup Storage 的保护组。 包括未受保护的数据源。
+3. 创建一个使用新式备份存储的保护组。 包括未受保护的数据源。
 
 ## <a name="add-disks-to-increase-legacy-storage"></a>添加磁盘以增大旧存储
 
@@ -126,12 +126,12 @@ Update-DPMDiskStorage [-Volume] <Volume> [[-FriendlyName] <String> ] [[-Datasour
 
 2. 在“添加磁盘存储”  对话框中，选择“添加磁盘”  。
 
-3. 在可用磁盘的列表中，依次选择要添加的磁盘、“添加”  、“确定”  。
+3. 在可用磁盘的列表中，选择要添加的磁盘，选择“添加”  ，然后选择“确定”  。
 
 ## <a name="next-steps"></a>后续步骤
-安装备份服务器之后，了解如何准备服务器或开始保护工作负荷。
+安装备份服务器之后，了解如何准备服务器或开始保护工作负载。
 
-- [准备备份服务器工作负荷](backup-azure-microsoft-azure-backup.md)
+- [准备备份服务器工作负载](backup-azure-microsoft-azure-backup.md)
 - [使用备份服务器备份 VMware 服务器](backup-azure-backup-server-vmware.md)
 - [使用备份服务器备份 SQL Server](backup-azure-sql-mabs.md)
 

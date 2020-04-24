@@ -62,7 +62,7 @@ sections:
         items:
           - title: 命令行
             html: '<p><a href="https://docs.microsoft.com/powershell/resourcemanager/azurerm.backup/v2.3.0/azurerm.backup">Azure PowerShell</a></p><p><a href="/cli/backup?view=azure-cli-latest">Azure CLI</a></p>'
-          - title: 语言
+          - title: Languages
             html: '<p><a href="https://docs.azure.cn/zh-cn/dotnet/api/microsoft.azure.management.backupservices">.NET</a></p>'
           - title: REST
             html: '<p><a href="https://docs.microsoft.com/rest/api/backup/">Azure 备份 API 参考</a></p>'

@@ -12,10 +12,10 @@ ms.date: 11/09/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 35002b0718ef4587394aef6c936ed252f9cc443a
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75599153"
 ---
 # <a name="explore-data-in-azure-blob-storage-with-pandas"></a>使用 pandas 浏览 Azure blob 存储中的数据
@@ -24,7 +24,7 @@ ms.locfileid: "75599153"
 
 此任务是[团队数据科学过程](overview.md)中的一个步骤。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 本文假设用户具备以下条件：
 
 * 已创建 Azure 存储帐户。 如果需要说明，请参阅[创建 Azure 存储帐户](../../storage/common/storage-quickstart-create-account.md)
@@ -62,7 +62,7 @@ dataframe_blobdata = pd.read_csv(LOCALFILE)
 
 现在可以准备浏览数据并在此数据集上生成功能了。
 
-## <a name="blob-dataexploration"></a>使用 pandas 浏览数据的示例
+## <a name="examples-of-data-exploration-using-pandas"></a><a name="blob-dataexploration"></a>使用 pandas 浏览数据的示例
 下方举例说明了如何使用 pandas 浏览数据：
 
 1. 检查**行数和列数**

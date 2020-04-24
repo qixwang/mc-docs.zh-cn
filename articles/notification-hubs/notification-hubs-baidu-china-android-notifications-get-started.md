@@ -16,10 +16,10 @@ ms.author: v-tawe
 ms.reviewer: jowargo
 ms.lastreviewed: 06/19/2019
 ms.openlocfilehash: 0ca91a6c25eaf66a4d965240325cd455abf73078
-ms.sourcegitcommit: cf73284534772acbe7a0b985a86a0202bfcc109e
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74884821"
 ---
 # <a name="get-started-with-notification-hubs-using-baidu"></a>通过百度开始使用通知中心
@@ -35,7 +35,7 @@ ms.locfileid: "74884821"
 
 由于 Google Play 和 FCM (Firebase Cloud Messaging) 在中国不可用，必须使用其他的应用商店和推送服务。 百度就是其中的一个，也是通知中心目前所使用的。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 本教程需要：
 
@@ -43,13 +43,13 @@ ms.locfileid: "74884821"
 * [百度推送 Android SDK]
 
 > [!NOTE]
-> 要完成本教程，必须有一个有效的 Azure 帐户。 如果没有帐户，可以创建一个试用帐户，只需几分钟即可完成。 有关详细信息，请参阅 [Azure 1 元试用](https://www.azure.cn/pricing/1rmb-trial/)。
+> 要完成本教程，必须有一个有效的 Azure 帐户。 如果没有帐户，可以在几分钟内创建一个试用帐户。 有关详细信息，请参阅 [Azure 1 元试用](https://www.azure.cn/pricing/1rmb-trial/)。
 
 ## <a name="create-a-baidu-account"></a>创建百度帐户
 
 要使用百度，必须有一个百度帐户。 如果已有帐户，请登录 [百度门户]，并跳到下一步。 否则请参阅以下说明创建百度帐户。  
 
-1. 转到[百度门户]并单击“登录”链接   。 单击“立即注册”(Register Now) 以启动帐户注册过程。  
+1. 转到[百度门户]并单击“登录”链接。   单击“立即注册”(Register Now) 以启动帐户注册过程。  
 
     ![百度注册](./media/notification-hubs-baidu-get-started/BaiduRegistration.png)
 
@@ -61,7 +61,7 @@ ms.locfileid: "74884821"
 
     ![百度注册确认](./media/notification-hubs-baidu-get-started/BaiduConfirmation.png)
 
-4. 登录到用户的电子邮件帐户，打开百度激活邮件，并单击激活链接以激活用户的百度帐号。
+4. 登录到电子邮件帐户，打开百度激活邮件，并单击激活链接以激活百度帐号。
 
     ![百度激活电子邮件](./media/notification-hubs-baidu-get-started/BaiduActivationEmail.png)
 
@@ -71,7 +71,7 @@ ms.locfileid: "74884821"
 
 在创建百度云推送项目时，将收到应用程序 ID、API 密钥和密钥。
 
-1. 登录到[百度门户]后，请单击“更多>>”   。
+1. 登录到[百度门户]后，请单击“更多>>”。  
 
     ![注册 - 更多内容](./media/notification-hubs-baidu-get-started/BaiduRegistrationMore.png)
 
@@ -125,7 +125,7 @@ ms.locfileid: "74884821"
 
     ![Azure 通知中心 - 百度“新建项目”](./media/notification-hubs-baidu-get-started/AndroidNewProject.png)
 
-2. 输入应用程序名称，并确保将要求的最低 SDK 版本设为“API 16:Android 4.1”。 **另请确保应用包名与百度云推送门户中的相同**
+2. 输入应用程序名称，并确保将要求的最低 SDK 版本设为“API 16: Android 4.1”。 **另请确保应用包名与百度云推送门户中的相同**
 
     ![Azure 通知中心 - 百度 Min SDK1](./media/notification-hubs-baidu-get-started/AndroidMinSDK.png) ![Azure 通知中心 - 百度 Min SDK2](./media/notification-hubs-baidu-get-started/AndroidMinSDK2.png)
 
@@ -167,7 +167,7 @@ ms.locfileid: "74884821"
         tools:replace="android:allowBackup,icon,theme,label">
     ```
 
-6. 下载并解压缩[百度推送 Android SDK](https://push.baidu.com/doc/android/api)。 复制 libs 文件夹中的 `pushservice-x.y.z jar` 文件。 然后复制 Android 应用程序的 `src/main/jniLibs`（创建新文件夹）文件夹中的 `.so` 文件。
+6. 下载并解压缩[百度推送 Android SDK](https://push.baidu.com/doc/android/api)。 复制 libs 文件夹中的 `pushservice-x.y.z jar` 文件。 然后复制 Android 应用程序的 `.so`（创建新文件夹）文件夹中的 `src/main/jniLibs` 文件。
 
     ![Azure 通知中心 - 百度 SDK Libs](./media/notification-hubs-baidu-get-started/BaiduSDKLib.png)
 
@@ -290,7 +290,7 @@ ms.locfileid: "74884821"
 
     使用百度云项目中的 API_KEY 设置 `API_KEY` 字符串的值。
 
-    使用 [Azure 门户]中的通知中心名称设置 `NotificationHubName` 字符串的值，然后使用 [Azure 门户]中的 `DefaultListenSharedAccessSignature` 设置 `NotificationHubConnectionString` 的值。
+    使用 `NotificationHubName`Azure 门户[Azure 门户] 字符串的值，然后使用 `NotificationHubConnectionString`Azure 门户`DefaultListenSharedAccessSignature`中的 [Azure 门户] 的值。
 
 11. 打开 MainActivity.java，并将以下内容添加到 onCreate 方法中：
 
@@ -484,7 +484,7 @@ ms.locfileid: "74884821"
 下面是用于发送通知的不同方法：
 
 * **REST 接口**：可以使用 [REST 接口](https://msdn.microsoft.com/library/windowsazure/dn223264.aspx)在任何后端平台上支持通知。
-* **Azure 通知中心 .NET SDK**：在 Visual Studio 的 NuGet 包管理器中，运行 [Install-Package Microsoft.Azure.NotificationHubs](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)。
+* **Azure 通知中心 .NET SDK**：在 Visual Studio 的 Nuget 包管理器中，运行 [Install-Package Microsoft.Azure.NotificationHubs](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)。
 * **Node.js**：[如何通过 Node.js 使用通知中心](notification-hubs-nodejs-push-notification-tutorial.md)。
 * **移动应用**：有关如何从通知中心集成的 Azure 应用服务移动应用后端发送通知的示例，请参阅[将推送通知添加到移动应用](../app-service-mobile/app-service-mobile-windows-store-dotnet-get-started-push.md)。
 * **Java/PHP**：有关如何使用 REST API 发送通知的示例，请参阅“如何通过 Java/PHP 使用通知中心”([Java](notification-hubs-java-push-notification-tutorial.md) | [PHP](notification-hubs-php-push-notification-tutorial.md))。
@@ -531,9 +531,9 @@ ms.locfileid: "74884821"
     Console.ReadLine();
     ```
 
-## <a name="test-your-app"></a>测试应用程序
+## <a name="test-your-app"></a>测试应用
 
-要使用实际的手机测试此应用，只需使用 USB 电缆将该手机连接到你的计算机。 此操作会将应用加载到连接的手机中。
+要使用实际的手机测试此应用，只需使用 USB 电缆将该手机连接到计算机。 此操作会将应用加载到连接的手机中。
 
 若要使用模拟器测试此应用，请在 Android Studio 顶部工具栏中单击“运行”，然后选择用于启动模拟器、加载和运行应用的应用。 
 

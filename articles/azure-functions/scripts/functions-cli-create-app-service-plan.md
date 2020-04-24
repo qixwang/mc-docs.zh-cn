@@ -7,17 +7,17 @@ ms.date: 12/05/2019
 ms.custom: mvc
 ms.author: v-junlch
 ms.openlocfilehash: 737f366e7b0c68c18b0fa098b1bfb970f5da6cbc
-ms.sourcegitcommit: cf73284534772acbe7a0b985a86a0202bfcc109e
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74885042"
 ---
 # <a name="create-a-function-app-in-an-app-service-plan"></a>在应用服务计划中创建 Function App
 
 此 Azure Functions 示例脚本将创建一个函数应用，作为函数的容器。 创建的函数应用使用专用应用服务计划，这意味着服务器资源将始终启用。
 
-如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial)。
+如果没有 Azure 订阅，可在开始前创建一个 [试用帐户](https://www.azure.cn/pricing/1rmb-trial) 。
 
 如果选择在本地安装并使用 CLI，本文要求使用 Azure CLI 2.0 或更高版本。 运行 `az --version` 即可查找版本。 如需进行安装或升级，请参阅[安装 Azure CLI](/cli/install-azure-cli)。 
 
@@ -60,7 +60,7 @@ az functionapp create `
 
 表中的每条命令均链接到特定于命令的文档。 此脚本使用以下命令：
 
-| 命令 | 注释 |
+| Command | 说明 |
 |---|---|
 | [az group create](/cli/group#az-group-create) | 创建用于存储所有资源的资源组。 |
 | [az storage account create](/cli/storage/account#az-storage-account-create) | 创建 Azure 存储帐户。 |

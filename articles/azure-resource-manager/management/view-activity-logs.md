@@ -6,10 +6,10 @@ origin.date: 05/13/2019
 ms.author: v-yeche
 ms.date: 01/06/2020
 ms.openlocfilehash: ad89a43e8c50d141a3a800b576653a6d4a0a400c
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75631202"
 ---
 # <a name="view-activity-logs-to-monitor-actions-on-resources"></a>查看活动日志以监视对资源的操作
@@ -179,7 +179,7 @@ az monitor activity-log list -g ExampleGroup --offset 1d --query "[?operationNam
 
 ## <a name="rest-api"></a>REST API
 
-用于处理活动日志的 REST 操作是 [Insights REST API](https://docs.microsoft.com/rest/api/monitor/)的一部分。 若要检索活动日志事件，请参阅 [列出订阅中的管理事件](https://docs.microsoft.com/rest/api/monitor/activitylogs)。
+用于处理活动日志的 REST 操作是 [Insights REST API](https://docs.microsoft.com/rest/api/monitor/) 的一部分。 若要检索活动日志事件，请参阅[列出订阅中的管理事件](https://docs.microsoft.com/rest/api/monitor/activitylogs)。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -188,8 +188,8 @@ az monitor activity-log list -g ExampleGroup --offset 1d --query "[?operationNam
     
     <!--Not Available on * To view more details about the changes to your applications from the infrastructure layer all the way to application deployment, see [Use Application Change Analysis in Azure Monitor](../azure-monitor/app/change-analysis.md)-->
     
-* 若要了解用于查看部署操作的命令，请参阅[查看部署操作](../templates/deployment-history.md)。
-* 若要了解如何防止对所有用户的资源执行删除操作，请参阅[使用 Azure Resource Manager 锁定资源](lock-resources.md)。
+* 若要了解查看部署操作的命令，请参阅[查看部署操作](../templates/deployment-history.md)。
+* 若要了解如何防止对所有用户的资源执行删除操作，请参阅[使用 Azure 资源管理器锁定资源](lock-resources.md)。
 * 若要查看可用于每个 Azure 资源管理器提供程序的操作的列表，请参阅 [Azure 资源管理器资源提供程序操作](../../role-based-access-control/resource-provider-operations.md)
 
 <!-- Update_Description: update meta properties, wording update, update link -->

@@ -9,10 +9,10 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.openlocfilehash: 6935ebc1771ecb57fa615c5abbf8308c5033592e
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75624086"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v11-for-net"></a>快速入门：适用于 .NET 的 Azure Blob 存储客户端库 v11

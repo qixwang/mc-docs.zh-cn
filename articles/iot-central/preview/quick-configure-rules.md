@@ -11,10 +11,10 @@ services: iot-central
 ms.custom: mvc
 manager: philmea
 ms.openlocfilehash: a9c80ac903201e4fc31a856920d5c1f5f10fc6b2
-ms.sourcegitcommit: 6ffa4d50cee80c7c0944e215ca917a248f2a4bcd
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74883786"
 ---
 # <a name="quickstart-configure-rules-and-actions-for-your-device-in-azure-iot-central-preview-features"></a>快速入门：在 Azure IoT Central 中配置用于设备的规则和操作（预览功能）

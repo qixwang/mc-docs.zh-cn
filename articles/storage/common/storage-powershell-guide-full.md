@@ -10,17 +10,17 @@ ms.date: 01/06/2020
 ms.author: v-jay
 ms.subservice: common
 ms.openlocfilehash: a2c6764d80cea708739c84ea98e21136b093d9cf
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75624123"
 ---
 # <a name="using-azure-powershell-with-azure-storage"></a>对 Azure 存储 使用 Azure PowerShell
 
 Azure PowerShell 用于从 PowerShell 命令行或脚本创建和管理 Azure 资源。 针对 Azure 存储，将这些 cmdlet 划分为两个类别 -- 控制平面和数据平面。 控制平面 cmdlet 用于管理存储帐户，即创建存储帐户、设置属性、删除存储帐户、轮换访问密钥等。 数据平面 cmdlet 用于管理存储帐户中  存储的数据。 例如，上传 blob、创建文件共享以及将消息添加到队列。
 
-本操作说明文章介绍了使用管理平面 cmdlet 管理存储帐户的常见操作。 你将学习如何执行以下操作：
+本操作说明文章介绍了使用管理平面 cmdlet 管理存储帐户的常见操作。 学习如何：
 
 > [!div class="checklist"]
 > * 列出存储器帐户
@@ -204,7 +204,7 @@ Remove-AzStorageAccount -ResourceGroup $resourceGroup -AccountName $storageAccou
 
 * 若要了解如何使用 PowerShell 启用和检索存储日志记录数据，请参阅[如何使用 PowerShell 启用存储日志记录](https://docs.microsoft.com/rest/api/storageservices/Enabling-Storage-Logging-and-Accessing-Log-Data)和[查找存储日志记录的日志数据](https://docs.microsoft.com/rest/api/storageservices/Enabling-Storage-Logging-and-Accessing-Log-Data)。
 
-* 有关使用“存储指标”和“存储日志记录”排查存储问题的详细信息，请参阅[对 Azure 存储进行监视、诊断和故障排除](storage-monitoring-diagnosing-troubleshooting.md)。
+* 有关使用“存储度量值”和“存储日志记录”排查存储问题的详细信息，请参阅 [对 Azure 存储进行监视、诊断和故障排除](storage-monitoring-diagnosing-troubleshooting.md)。
 
 ## <a name="manage-the-data-in-the-storage-account"></a>管理存储帐户中的数据
 
@@ -238,7 +238,7 @@ Remove-AzResourceGroup -Name $resourceGroup
 ```
 ## <a name="next-steps"></a>后续步骤
 
-本操作说明文章介绍了使用管理平面 cmdlet 管理存储帐户的常见操作。 你已了解如何：
+本操作说明文章介绍了使用管理平面 cmdlet 管理存储帐户的常见操作。 你已了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 列出存储器帐户

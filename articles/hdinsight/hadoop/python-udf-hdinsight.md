@@ -11,35 +11,35 @@ origin.date: 11/15/2019
 ms.date: 12/23/2019
 ms.custom: H1Hack27Feb2017,hdinsightactive
 ms.openlocfilehash: fb1b29bb9cb41bc6712cb0d8fddeb8a893182d88
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75335879"
 ---
 # <a name="use-python-user-defined-functions-udf-with-apache-hive-and-apache-pig-in-hdinsight"></a>在 HDInsight 中通过 Apache Hive 和 Apache Pig 使用 Python 用户定义函数 (UDF)
 
 了解如何在 Azure HDInsight 上的 Apache Hadoop 中通过 Apache Hive 和 Apache Pig 使用 Python 用户定义函数 (UDF)。
 
-## <a name="python"></a>HDInsight 上的 Python
+## <a name="python-on-hdinsight"></a><a name="python"></a>Python on HDInsight
 
-默认情况下，Python2.7 安装在 HDInsight 3.0 和更高版本上。 可将 Apache Hive 与此版 Python 配合使用以进行流式处理。 流式处理使用 STDOUT 和 STDIN 在 Hive 与 UDF 之间传递数据。
+Python2.7 默认安装在 HDInsight 3.0 和更高版本上。 可以结合此 Python 版本使用 Apache Hive 进行流式处理。 流式处理使用 STDOUT 和 STDIN 在 Hive 与 UDF 之间传递数据。
 
-HDInsight 还包含 Jython，后者是用 Java 编写的 Python 实现。 Jython 在 Java 虚拟机上直接运行，不使用流式处理。 将 Python 与 Pig 配合使用时，建议使用 Jython 作为 Python 解释器。
+HDInsight 还包含 Jython，后者是用 Java 编写的 Python 实现。 Jython 直接在 Java 虚拟机上运行，不使用流式处理。 将 Python 与 Pig 配合使用时，我们建议将 Jython 用作 Python 解释器。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * **HDInsight 上的 Hadoop 群集**。 请参阅 [Linux 上的 HDInsight 入门](apache-hadoop-linux-tutorial-get-started.md)。
 * **SSH 客户端**。 有关详细信息，请参阅[使用 SSH 连接到 HDInsight (Apache Hadoop)](../hdinsight-hadoop-linux-use-ssh-unix.md)。
 * 群集主存储的 [URI 方案](../hdinsight-hadoop-linux-information.md#URI-and-scheme)。 对于 Azure 存储，此值为 wasb://；对于Azure Data Lake Storage Gen2，此值为 abfs://；对于 Azure Data Lake Storage Gen1，此值为 adl://。 如果为 Azure 存储或 Data Lake Storage Gen2 启用了安全传输，则 URI 分别是 wasbs:// 或 abfss://。另请参阅[安全传输](../../storage/common/storage-require-secure-transfer.md)。
-* **对存储配置所做的可能更改。**  如果使用 `BlobStorage` 类型的存储帐户，请参阅[存储配置](#storage-configuration)。
+* **对存储配置所做的可能更改。**  如果使用 [ 类型的存储帐户，请参阅](#storage-configuration)存储配置`BlobStorage`。
 * 可选。  如果计划使用 PowerShell，则需要安装 [AZ 模块](https://docs.microsoft.com/powershell/azure/new-azureps-module-az)。
 
 > [!NOTE]  
 > 本文中使用的存储帐户是启用了[安全传输](../../storage/common/storage-require-secure-transfer.md)的 Azure 存储，因此，本文通篇使用 `wasbs`。
 
 ## <a name="storage-configuration"></a>存储配置
-如果使用 `Storage (general purpose v1)` 或 `StorageV2 (general purpose v2)` 类型的存储帐户，则不需要执行任何操作。  本文中的过程至少向 `/tezstaging` 生成输出。  默认的 Hadoop 配置将在 `core-site.xml` 中的 `fs.azure.page.blob.dir` 配置变量内包含服务 `HDFS` 的 `/tezstaging`。  此配置会导致将页 Blob 输出到目录，而 `BlobStorage` 类型的存储帐户不支持页 Blob。  若要在本文中使用 `BlobStorage`，请删除 `fs.azure.page.blob.dir` 配置变量中的 `/tezstaging`。  可以通过 [Ambari UI](../hdinsight-hadoop-manage-ambari.md) 访问配置。  否则，会收到错误消息：`Page blob is not supported for this account type.`
+如果使用 `Storage (general purpose v1)` 或 `StorageV2 (general purpose v2)` 类型的存储帐户，则不需要执行任何操作。  本文中的过程至少向 `/tezstaging` 生成输出。  默认的 Hadoop 配置将在 `/tezstaging` 中的 `fs.azure.page.blob.dir` 配置变量内包含服务 `core-site.xml` 的 `HDFS`。  此配置会导致将页 Blob 输出到目录，而 `BlobStorage` 类型的存储帐户不支持页 Blob。  若要在本文中使用 `BlobStorage`，请删除 `/tezstaging` 配置变量中的 `fs.azure.page.blob.dir`。  可以通过 [Ambari UI](../hdinsight-hadoop-manage-ambari.md) 访问配置。  否则，会收到错误消息：`Page blob is not supported for this account type.`
 
 > [!WARNING]  
 > 本文档中的步骤基于以下假设：  
@@ -47,9 +47,9 @@ HDInsight 还包含 Jython，后者是用 Java 编写的 Python 实现。 Jython
 > * 在本地开发环境中创建 Python 脚本。
 > * 使用 `scp` 命令或使用提供的 PowerShell 脚本将脚本上传到 HDInsight。
 
-## <a name="hivepython"></a>Apache Hive UDF
+## <a name="apache-hive-udf"></a><a name="hivepython"></a>Apache Hive UDF
 
-可以通过 HiveQL `TRANSFORM` 语句将 Python 用作 Hive 中的 UDF。 例如，以下 HiveQL 调用群集默认 Azure 存储帐户中存储的 `hiveudf.py` 文件。
+可通过 HiveQL `TRANSFORM` 语句将 Python 用作 Hive 中的 UDF。 例如，以下 HiveQL 调用群集的默认 Azure 存储帐户中存储的 `hiveudf.py` 文件。
 
 ```hiveql
 add file wasbs:///hiveudf.py;
@@ -93,10 +93,10 @@ while True:
 此脚本可执行以下操作：
 
 1. 从 STDIN 读取一行数据。
-2. 尾随的换行符使用 `string.strip(line, "\n ")`删除。
-3. 执行流式处理时，一个行就包含了所有值，每两个值之间有一个制表符。 因此， `string.split(line, "\t")` 可用于在每个制表符处拆分输入，并只返回字段。
-4. 在处理完成后，必须将输出以单行形式写入到 STDOUT，并在每两个字段之间提供一个制表符。 例如，`print "\t".join([clientid, phone_label, hashlib.md5(phone_label).hexdigest()])`。
-5. `while` 循环一直重复到没有 `line` 可以读取。
+2. 可以使用 `string.strip(line, "\n ")` 删除尾随的换行符。
+3. 执行流式处理时，一个行就包含了所有值，每两个值之间有一个制表符。 因此，`string.split(line, "\t")` 可用于在每个制表符处拆分输入，并只返回字段。
+4. 在处理完成后，必须将输出以单行形式写入到 STDOUT，并在每两个字段之间提供一个制表符。 例如，`print "\t".join([clientid, phone_label, hashlib.md5(phone_label).hexdigest()])` 。
+5. `while` 循环会一直重复到无法读取 `line`。
 
 脚本输出是 `devicemake` 和 `devicemodel` 的输入值的连接，并且是连接值的哈希。
 
@@ -142,7 +142,7 @@ while True:
    ORDER BY clientid LIMIT 50;
    ```
 
-3. 在输入最后一行后，该作业应该启动。 在作业完成后，会返回类似于以下示例的输出：
+3. 在输入最后一行后，该作业应该启动。 作业完成后，其返回的输出类似于以下示例：
 
         100041    RIM 9650    d476f3687700442549a83fac4560c51c
         100041    RIM 9650    d476f3687700442549a83fac4560c51c
@@ -284,9 +284,9 @@ Get-AzHDInsightJobOutput `
     100042    Apple iPhone 4.2.x    375ad9a0ddc4351536804f1d5d0ea9b9
 
 
-## <a name="pigpython"></a>Apache Pig UDF
+## <a name="apache-pig-udf"></a><a name="pigpython"></a>Apache Pig UDF
 
-在整个 `GENERATE` 语句中，Python 脚本可用作 Pig 中的 UDF。 可以使用 Jython 或 C Python 运行此脚本。
+在整个 `GENERATE` 语句中，Python 脚本可用作 Pig 中的 UDF。 可以使用 Jython 或 C Python 运行脚本。
 
 * Jython 在 JVM 上运行，并且原本就能从 Pig 调用。
 * C Python 是外部进程，因此，JVM 上的 Pig 中的数据将发送到 Python 进程中运行的脚本。 Python 脚本的输出将发回到 Pig 中。
@@ -312,8 +312,8 @@ DUMP DETAILS;
 
 1. 第一行代码将示例数据文件 `sample.log` 加载到 `LOGS` 中。 它还将每个记录定义为 `chararray`。
 2. 第二行代码筛选出所有 null 值，并将操作结果存储在 `LOG` 中。
-3. 接下来，它将循环访问 `LOG` 中的记录，并使用 `GENERATE` 来调用作为 `myfuncs` 加载的 Python/Jython 脚本中包含的 `create_structure` 方法。 `LINE` 用于将当前记录传递给函数。
-4. 最后，使用 `DUMP` 命令将输出转储到 STDOUT。 操作完成后，此命令会显示结果。
+3. 接下来，它将循环访问 `LOG` 中的记录，并使用 `GENERATE` 来调用作为 `create_structure` 加载的 Python/Jython 脚本中包含的 `myfuncs` 方法。 `LINE` 用于将当前记录传递给函数。
+4. 最后，使用 `DUMP` 命令将输出转储到 STDOUT。 在操作完成后，此命令会显示结果。
 
 ### <a name="create-file"></a>创建文件
 
@@ -343,11 +343,11 @@ def create_structure(input):
    * level - 日志级别
    * detail - 日志条目的详细信息
 
-2. 接下来，`def create_structure(input)` 定义一个函数，以便 Pig 将行项传递到其中。
+2. 接下来，`def create_structure(input)` 将定义一个函数，以便 Pig 将行项传递到其中。
 
-3. 示例数据 `sample.log` 基本上符合日期、时间、类名、级别和详细信息架构。 但是，它还包含了一些以字符串 `*java.lang.Exception*` 开头的行。 我们需要修改这些行，使之与架构匹配。 `if` 语句会检查这些行，然后调整输入数据以将 `*java.lang.Exception*` 字符串移到末尾，使数据与预期的输出架构相一致。
+3. 示例数据 `sample.log` 基本上符合日期、时间、类名、级别和详细信息架构。 但是，它包含以 `*java.lang.Exception*` 开头的几个行。 必须修改这些行，使之与架构匹配。 `if` 语句会检查这些行，然后调整输入数据以将 `*java.lang.Exception*` 字符串移到末尾，使数据与预期的输出架构相一致。
 
-4. 接下来，使用 `split` 命令在前四个空格字符处拆分数据。 输出将分配到 `date`、`time`、`classname`、`level` 和 `detail`。
+4. 接下来，使用 `split` 命令在前四个空格字符处拆分数据。 输出会分配到 `date`、`time`、`classname`、`level` 和 `detail` 中。
 
 5. 最后，将值返回到 Pig。
 
@@ -396,7 +396,7 @@ def create_structure(input):
    DUMP DETAILS;
    ```
 
-3. 输入以下行后，应会启动作业。 作业完成后，其返回的输出类似于以下数据：
+3. 在输入以下行后，作业应会启动。 作业完成后，其返回的输出类似于以下数据：
 
         ((2012-02-03,20:11:56,SampleClass5,[TRACE],verbose detail for id 990982084))
         ((2012-02-03,20:11:56,SampleClass7,[TRACE],verbose detail for id 1560323914))
@@ -410,7 +410,7 @@ def create_structure(input):
     nano pigudf.py
     ```
 
-5. 进入编辑器后，删除行开头的 `#` 字符以取消注释以下行：
+5. 进入编辑器后，通过删除行开头的 `#` 字符来取消注释以下行：
 
     ```bash
     #from pig_util import outputSchema
@@ -555,17 +555,17 @@ Get-AzHDInsightJobOutput `
     ((2012-02-03,20:11:56,SampleClass3,[TRACE],verbose detail for id 1718828806))
     ((2012-02-03,20:11:56,SampleClass3,[INFO],everything normal for id 530537821))
 
-## <a name="troubleshooting"></a>故障排除
+## <a name="troubleshooting"></a><a name="troubleshooting"></a>故障排除
 
 ### <a name="errors-when-running-jobs"></a>运行作业时出现错误
 
-运行 hive 作业时，可能会遇到类似于以下文本的错误：
+运行 Hive 作业时，可能会遇到类似于以下文本的错误：
 
     Caused by: org.apache.hadoop.hive.ql.metadata.HiveException: [Error 20001]: An error occurred while reading or writing to your custom script. It may have crashed with an error.
 
 此问题可能是由 Python 文件中的行尾结束符号导致的。 许多 Windows 编辑器默认为使用 CRLF 作为行尾结束符号，但 Linux 应用程序通常应使用 LF。
 
-可以使用以下 PowerShell 语句删除 CR 字符，此后再将文件上传到 HDInsight：
+可以使用 PowerShell 语句删除 CR 字符，然后再将文件上传到 HDInsight：
 
 <!--[!code-powershell[main](../../../powershell_scripts/hdinsight/run-python-udf/run-python-udf.ps1?range=148-150)]-->
 
@@ -575,18 +575,18 @@ Get-AzHDInsightJobOutput `
 
 <!--[!code-powershell[main](../../../powershell_scripts/hdinsight/run-python-udf/run-python-udf.ps1?range=135-139)]-->
 
-错误信息 (STDERR) 和作业的结果 (STDOUT) 也记录到 HDInsight 存储中。
+错误信息 (STDERR) 和作业的结果 (STDOUT) 也记录到 HDInsight 存储。
 
 | 对于此作业... | 在 Blob 容器中查看这些文件 |
 | --- | --- |
 | Hive |/HivePython/stderr<p>/HivePython/stdout |
 | Pig |/PigPython/stderr<p>/PigPython/stdout |
 
-## <a name="next"></a>后续步骤
+## <a name="next-steps"></a><a name="next"></a>后续步骤
 
-如果需要加载默认情况下未提供的 Python 模块，请参阅 [How to deploy a module to Azure HDInsight](https://blogs.msdn.com/b/benjguin/archive/2014/03/03/how-to-deploy-a-python-module-to-windows-azure-hdinsight.aspx)（如何将模块部署到 Azure HDInsight）。
+如果需要加载默认情况下未提供的 Python 模块，请参阅[如何将模块部署到 Azure HDInsight](https://blogs.msdn.com/b/benjguin/archive/2014/03/03/how-to-deploy-a-python-module-to-windows-azure-hdinsight.aspx)。
 
-若要了解使用 Pig 和 Hive 的其他方式以及如何使用 MapReduce，请参阅以下文档：
+若要了解使用 Pig、Hive 的其他方式以及如何使用 MapReduce，请参阅以下文档：
 
 * [将 Apache Hive 和 HDInsight 配合使用](hdinsight-use-hive.md)
 * [将 Apache Pig 和 HDInsight 配合使用](hdinsight-use-pig.md)

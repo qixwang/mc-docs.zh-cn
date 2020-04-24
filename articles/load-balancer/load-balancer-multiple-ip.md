@@ -15,16 +15,16 @@ origin.date: 09/25/2017
 ms.date: 12/02/2019
 ms.author: v-jay
 ms.openlocfilehash: 677b2ccab6df21b531d6a27dcf47acd459de1a43
-ms.sourcegitcommit: 481542df432d52b7d4823811cef94772e4e0f192
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74530646"
 ---
 # <a name="load-balancing-on-multiple-ip-configurations-by-using-the-azure-portal"></a>使用 Azure 门户对多个 IP 配置进行负载均衡
 
 > [!div class="op_single_selector"]
-> * [Portal](load-balancer-multiple-ip.md)
+> * [门户](load-balancer-multiple-ip.md)
 > * [PowerShell](load-balancer-multiple-ip-powershell.md)
 > * [CLI](load-balancer-multiple-ip-cli.md)
 
@@ -43,7 +43,7 @@ ms.locfileid: "74530646"
 - Azure 负载均衡器用于公开两个前端 IP 地址，每个地址对应于一个网站。 前端地址用于将流量分配到每个网站的相应 IP 配置。
 - 前端 IP 地址和后端池 IP 地址使用相同的端口号。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 方案示例假设已创建名为 **contosofabrikam** 的资源组，该资源组的配置如下：
 
@@ -173,7 +173,7 @@ ms.locfileid: "74530646"
 
 针对每个网站（contoso.com 和 fabrikam.com），请配置负载均衡规则：
     
-1. <a name="step6-1"></a>在“设置”下，选择“负载均衡规则”   。 在下一个窗格中的顶部附近，选择“添加”。  
+1. <a name="step6-1"></a>在“设置”  下，选择“负载均衡规则”  。 在下一个窗格中的顶部附近，选择“添加”。  
 
 2. 对于“名称”，请键入负载均衡规则的名称（例如，为 contoso.com 键入 **HTTPc**，为 fabrikam.com 键入 **HTTPf**）。 
 

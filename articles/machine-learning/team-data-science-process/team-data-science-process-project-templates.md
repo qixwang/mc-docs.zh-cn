@@ -12,10 +12,10 @@ ms.date: 11/27/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: d72aa8b57e68319343c6a0ca8416cd442d78b9a1
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75599207"
 ---
 # <a name="team-data-science-process-project-planning"></a>Team Data Science Process 项目规划
@@ -48,7 +48,7 @@ Team Data Science Process (TDSP) 提供用于构建数据科学项目开发的�
 
 ## <a name="excel-template"></a>Excel 模板
 
-如果无权访问 Microsoft Project，也可在此处下载具有完全相同数据的 Excel 工作表：[Excel 模板](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Team-Data-Science-Process/Project-Planning-and-Governance/Advanced%20Analytics%20Microsoft%20Project%20Plan.xlsx)你可以将其拖到想要使用的任何工具。
+如果无权访问 Microsoft Project，也可在此处下载具有完全相同数据的 Excel 工作表：[Excel 模板](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Team-Data-Science-Process/Project-Planning-and-Governance/Advanced%20Analytics%20Microsoft%20Project%20Plan.xlsx)。可以将此模板拖到任何你想要使用的工具中。
 
 请自行承担使用这些模板的风险。 [常规的免责声明](https://www.gnu.org/licenses/gpl-3.0.en.html)适用于这些模板。
 

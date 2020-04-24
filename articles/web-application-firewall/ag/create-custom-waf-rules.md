@@ -10,10 +10,10 @@ origin.date: 11/14/2019
 ms.date: 11/25/2019
 ms.author: v-junlch
 ms.openlocfilehash: 5220d03980313b168791b19f2f296b64ef074507
-ms.sourcegitcommit: e74e8aabc1cbd8a43e462f88d07b041e9c4f31eb
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74461658"
 ---
 # <a name="create-and-use-web-application-firewall-v2-custom-rules-on-application-gateway"></a>在应用程序网关上创建和使用 Web 应用程序防火墙 v2 自定义规则

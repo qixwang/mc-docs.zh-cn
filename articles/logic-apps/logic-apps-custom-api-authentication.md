@@ -14,10 +14,10 @@ origin.date: 09/22/2017
 ms.date: 12/23/2019
 ms.author: v-yiso
 ms.openlocfilehash: ab0ac44b91d889f7094a45edd6eea82db6df6a0a
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75336288"
 ---
 # <a name="secure-calls-to-custom-apis-from-azure-logic-apps"></a>通过 Azure 逻辑应用保护对自定义 API 的调用
@@ -58,9 +58,9 @@ ms.locfileid: "75336288"
 2. 确认所在目录与 Web 应用或 API 应用相同。
 
    > [!TIP]
-   > 要切换目录，请选择配置文件，然后选择其他目录。 还可以选择“概述” > “切换目录”   。
+   > 要切换目录，请选择配置文件，然后选择其他目录。 还可以选择“概述” **“切换目录”**  >   。
 
-3. 在目录菜单的“管理”下，选择“应用注册” > “新建应用程序注册”    。
+3. 在目录菜单的“管理”下，选择“应用注册” **“新建应用程序注册”**   >   。
 
    > [!TIP]
    > 默认情况下，应用注册列表显示目录中的所有应用注册。 若要仅查看应用注册，请在搜索框旁选择“我的应用”  。 
@@ -158,7 +158,7 @@ ms.locfileid: "75336288"
 
 还需要为 Web 应用或 API 应用创建 Azure AD 应用程序标识，该标识不能与逻辑应用的应用标识相同。 若要创建应用程序标识，请在 Azure 门户中按照先前在第 2 部分中的步骤操作。 
 
-也可以按照第 1 部分的步骤操作，但对于“登录 URL”和“应用 ID URI”，请确保使用 Web 应用或 API 应用的实际 `https://{URL}`   。 执行这些步骤时，请务必保存客户端 ID 和租户 ID，以便在应用的部署模板和第 3 部分使用。
+也可以按照第 1 部分的步骤操作，但对于“登录 URL”和“应用 ID URI”，请确保使用 Web 应用或 API 应用的实际 `https://{URL}`  。 执行这些步骤时，请务必保存客户端 ID 和租户 ID，以便在应用的部署模板和第 3 部分使用。
 
 > [!NOTE]
 > 为 Web 应用或 API 应用创建 Azure AD 应用程序标识时，必须使用 Azure 门户，而不是 PowerShell。 PowerShell commandlet 没有设置可让用户登录到网站的必需权限。
@@ -185,7 +185,7 @@ ms.locfileid: "75336288"
 
 若要使用 Azure Active Directory 身份验证自动同时部署空白 Web 应用和逻辑应用，请[在此处查看完整模板](https://github.com/Azure/azure-quickstart-templates/tree/master/201-logic-app-custom-api/azuredeploy.json)或单击此处的“部署到 Azure”  ：
 
-[![“部署到 Azure”](media/logic-apps-custom-api-authentication/deploybutton.png)](https://portal.azure.cn/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-logic-app-custom-api%2Fazuredeploy.json)
+[![部署到 Azure](media/logic-apps-custom-api-authentication/deploybutton.png)](https://portal.azure.cn/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-logic-app-custom-api%2Fazuredeploy.json)
 
 #### <a name="part-3-populate-the-authorization-section-in-your-logic-app"></a>第 3 部分：填充逻辑应用中的授权部分
 
@@ -203,10 +203,10 @@ ms.locfileid: "75336288"
 }
 ```
 
-| 属性 | 必须 | 说明 | 
+| properties | 必选 | 说明 | 
 | -------- | -------- | ----------- | 
 | tenant | 是 | Azure AD 租户的 GUID | 
-| 受众 | 是 | 想要访问的目标资源的 GUID - Web 应用或 API 应用的应用程序标识中的客户端 ID | 
+| audience | 是 | 想要访问的目标资源的 GUID - Web 应用或 API 应用的应用程序标识中的客户端 ID | 
 | clientId | 是 | 请求访问权限的客户端的 GUID - 逻辑应用的应用程序标识中的客户端 ID | 
 | secret | 是 | 请求访问令牌的客户端的应用程序标识中的密钥或密码 | 
 | type | 是 | 身份验证类型。 对于 ActiveDirectoryOAuth 身份验证，该值为 `ActiveDirectoryOAuth`。 | 
@@ -254,7 +254,7 @@ ms.locfileid: "75336288"
 } 
 ```
 
-| 属性 | 必须 | 说明 |
+| properties | 必选 | 说明 |
 | -------- | -------- | ----------- |
 | `type` | 是 | 身份验证类型。 对于 SSL 客户端证书，该值必须为 `ClientCertificate`。 |
 | `password` | 否 | 用于访问客户端证书（PFX 文件）的密码 |
@@ -277,7 +277,7 @@ ms.locfileid: "75336288"
 }
 ```
 
-| 属性 | 必须 | 说明 | 
+| properties | 必选 | 说明 | 
 | -------- | -------- | ----------- | 
 | type | 是 | 要使用的身份验证类型。 对于基本身份验证，该值必须是 `Basic`。 | 
 | username | 是 | 要用于身份验证的用户名 | 

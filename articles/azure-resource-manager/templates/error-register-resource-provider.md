@@ -6,13 +6,13 @@ origin.date: 02/15/2019
 ms.author: v-yeche
 ms.date: 01/06/2020
 ms.openlocfilehash: 1454166dfad6a7aa8f1db9c5d0c9c880968ed79a
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75631369"
 ---
-# <a name="resolve-errors-for-resource-provider-registration"></a>解决资源提供程序注册错误
+# <a name="resolve-errors-for-resource-provider-registration"></a>解决资源提供程序注册的错误
 
 本文介绍使用之前未在订阅中使用过的资源提供程序时可能遇到的错误。
 
@@ -87,13 +87,13 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.Cdn
 az provider list
 ```
 
-若要注册资源提供程序，请使用 `az provider register` 命令，并指定要注册的 *命名空间* 。
+若要注册资源提供程序，请使用 `az provider register` 命令，并指定要注册的*命名空间*。
 
 ```azurecli
 az provider register --namespace Microsoft.Cdn
 ```
 
-若要查看资源类型支持的位置和 API 版本，请使用：
+若要查看支持用于某个资源类型的位置和 API 版本，请使用：
 
 ```azurecli
 az provider show -n Microsoft.Web --query "resourceTypes[?resourceType=='sites'].locations"

@@ -13,10 +13,10 @@ ms.reviewer: carlrab
 origin.date: 11/14/2018
 ms.date: 12/16/2019
 ms.openlocfilehash: 43245b038c77a513ac16af7e892f229b037a12cd
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75336410"
 ---
 # <a name="automate-the-replication-of-schema-changes-in-azure-sql-data-sync"></a>在 Azure SQL 数据同步中自动复制架构更改
@@ -172,7 +172,7 @@ END
 
 对于其他类型的架构更改 - 例如，创建存储过程或删除索引 - 不需要更新同步架构。
 
-## <a name="troubleshoot"></a>排查自动架构更改复制问题
+## <a name="troubleshoot-automated-schema-change-replication"></a><a name="troubleshoot"></a>排查自动架构更改复制问题
 
 在某些情况下，本文所述的复制逻辑会停止工作 - 例如，如果在 Azure SQL 数据库不支持的本地数据库中进行架构更改。 在这种情况下，同步架构更改跟踪表会失败。 需要手动解决此问题：
 
@@ -200,7 +200,7 @@ END
 
 如果想要清理架构更改跟踪表中的记录，请使用 DELETE 而不是 TRUNCATE。 切勿使用 DBCC CHECKIDENT 在架构更改跟踪表中重新植入标识列。 如果需要重新植入，可以创建新的架构更改跟踪表，并更新 DDL 触发器中的表名称。
 
-## <a name="other"></a>其他注意事项
+## <a name="other-considerations"></a><a name="other"></a>其他注意事项
 
 -   配置中心和成员数据库的数据库用户需有足够的权限才能执行架构更改命令。
 

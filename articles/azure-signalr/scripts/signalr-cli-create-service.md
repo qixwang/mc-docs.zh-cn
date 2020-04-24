@@ -10,10 +10,10 @@ ms.date: 11/25/2019
 ms.author: v-tawe
 ms.custom: mvc
 ms.openlocfilehash: 1a8817082753d836e8ce470997eac427a6fdbb59
-ms.sourcegitcommit: cebee33429c25996658d322d337dd05ad1439f89
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75600578"
 ---
 # <a name="create-a-signalr-service"></a>创建 SignalR 服务 
@@ -66,7 +66,7 @@ echo "$primaryConnectionString"
 
 表中的每条命令均链接到特定于命令的文档。 此脚本使用以下命令：
 
-| 命令 | 注释 |
+| Command | 说明 |
 |---|---|
 | [az group create](/cli/group#az-group-create) | 创建用于存储所有资源的资源组。 |
 | [az signalr create](/cli/signalr#az-signalr-create) | 创建 Azure SignalR 服务资源。 |

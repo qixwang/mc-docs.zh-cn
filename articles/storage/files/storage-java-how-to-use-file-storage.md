@@ -9,10 +9,10 @@ ms.date: 11/25/2019
 ms.author: v-jay
 ms.subservice: files
 ms.openlocfilehash: a1586b02b54d7182ce1c544fea16334227a23cbf
-ms.sourcegitcommit: 6a19227dcc0c6e0da5b82c4f69d0227bf38a514a
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74328741"
 ---
 # <a name="develop-for-azure-files-with-java"></a>使用 Java 针对 Azure 文件进行开发
@@ -44,7 +44,7 @@ import com.microsoft.azure.storage.file.*;
 ```
 
 ## <a name="set-up-an-azure-storage-connection-string"></a>设置 Azure 存储连接字符串
-要使用 Azure 文件，需要连接到 Azure 存储帐户。 第一步是配置连接字符串，该字符串用于连接到存储帐户。 为此，我们需要定义一个静态变量。
+要使用 Azure 文件，需要连接到 Azure 存储帐户。 第一步是配置连接字符串，我们会使用该字符串连接到存储帐户。 为此，我们需要定义一个静态变量。
 
 ```java
 // Configure the connection-string with your values
@@ -61,7 +61,7 @@ public static final String storageConnectionString =
 > 
 
 ## <a name="connecting-to-an-azure-storage-account"></a>连接到 Azure 存储帐户
-若要连接到存储帐户，需要使用 CloudStorageAccount  对象，将连接字符串传递到其 parse  方法。
+要连接到存储帐户，则需要使用 **CloudStorageAccount** 对象，以便将连接字符串传递到 **parse** 方法。
 
 ```java
 // Use the CloudStorageAccount object to connect to your storage account
@@ -72,7 +72,7 @@ try {
 }
 ```
 
-**CloudStorageAccount.parse** 会引发 InvalidKeyException，因此恤将其置于 try/catch 块内。
+**CloudStorageAccount.parse** 会引发 InvalidKeyException，因此需将其置于 try/catch 块内。
 
 ## <a name="create-an-azure-file-share"></a>创建 Azure 文件共享
 Azure 文件中的所有文件和目录都位于名为 Share 的容器内  。 存储帐户可以拥有无数的共享，只要帐户容量允许。 要获得共享及其内容的访问权限，需要使用 Azure 文件客户端。
@@ -89,7 +89,7 @@ CloudFileClient fileClient = storageAccount.createCloudFileClient();
 CloudFileShare share = fileClient.getShareReference("sampleshare");
 ```
 
-实际创建共享时，请使用 CloudFileShare 对象的 **createIfNotExists** 方法。
+实际创建共享时，请使用 CloudFileShare 对象的 **createIfNotExists**方法。
 
 ```java
 if (share.createIfNotExists()) {
@@ -97,7 +97,7 @@ if (share.createIfNotExists()) {
 }
 ```
 
-而在目前，share  保留对名为 sampleshare  的共享的引用。
+而在目前，**share** 保留对名为 **sampleshare** 的共享的引用。
 
 ## <a name="delete-an-azure-file-share"></a>删除 Azure 文件共享
 删除共享时，可针对 CloudFileShare 对象调用 **deleteIfExists** 方法。 以下是具有此类功能的示例代码。
@@ -156,7 +156,7 @@ if ( containerDir.deleteIfExists() ) {
 ```
 
 ## <a name="enumerate-files-and-directories-in-an-azure-file-share"></a>枚举 Azure 文件共享中的文件和目录
-可以轻松获取共享中文件和目录的列表，只需针对 CloudFileDirectory 引用调用 **listFilesAndDirectories** 即可。 该方法会返回可以对其进行循环访问的 ListFileItem 对象的列表。 例如，下面的代码列出根目录中的文件和目录。
+可以轻松获取共享中文件和目录的列表，只需针对 CloudFileDirectory 引用调用 **listFilesAndDirectories** 即可。 该方法将返回可以对其进行循环访问的 ListFileItem 对象的列表。 例如，下面的代码将列出根目录中的文件和目录。
 
 ```java
 //Get a reference to the root directory for the share.
@@ -168,7 +168,7 @@ for ( ListFileItem fileItem : rootDir.listFilesAndDirectories() ) {
 ```
 
 ## <a name="upload-a-file"></a>上传文件
-本部分会介绍如何将文件从本地存储上传到共享所在的根目录。
+在本部分，学习如何将文件从本地存储上传到共享所在的根目录。
 
 上传文件的第一步是获取对文件所在的目录的引用。 为此，需要调用共享对象的 **getRootDirectoryReference** 方法。
 
@@ -177,7 +177,7 @@ for ( ListFileItem fileItem : rootDir.listFilesAndDirectories() ) {
 CloudFileDirectory rootDir = share.getRootDirectoryReference();
 ```
 
-现在，已经有了共享所在的根目录的引用，因此可以使用以下代码来上传文件。
+现在，你已经有了共享所在的根目录的引用，因此可以使用以下代码来上传文件。
 
 ```java
         // Define the path to a local file.
@@ -205,7 +205,7 @@ System.out.println(file.downloadText());
 ```
 
 ## <a name="delete-a-file"></a>删除文件
-另一项常见的 Azure 文件操作是删除文件。 下面的代码会删除名为 SampleFile.txt 的文件，该文件存储在名为 **sampledir**的目录中。
+另一项常见的 Azure 文件操作是删除文件。 下面的代码会删除名为 SampleFile.txt 的文件，该文件存储在名为 **sampledir** 的目录中。
 
 ```java
 // Get a reference to the root directory for the share.
@@ -227,10 +227,10 @@ if ( file.deleteIfExists() ) {
 如果还想更多地了解其他 Azure 存储 API，请点击以下链接。
 
 * [面向 Java 开发人员的 Azure](https://docs.azure.cn/zh-cn/java/)
-* [Azure Storage SDK for Java](https://github.com/azure/azure-storage-java)
-* [Azure Storage SDK for Android](https://github.com/azure/azure-storage-android)
+* [用于 Java 的 Azure 存储 SDK](https://github.com/azure/azure-storage-java)
+* [用于 Android 的 Azure 存储 SDK](https://github.com/azure/azure-storage-android)
 * [Azure 存储客户端 SDK 参考](https://javadoc.io/doc/com.microsoft.azure/azure-core/0.8.0/index.html)
-* [Azure Storage Services REST API（Azure 存储服务 REST API）](https://msdn.microsoft.com/library/azure/dd179355.aspx)
+* [Azure 存储空间服务 REST API](https://msdn.microsoft.com/library/azure/dd179355.aspx)
 * [Azure 存储团队博客](https://blogs.msdn.com/b/windowsazurestorage/)
-* [使用 AzCopy 命令行实用程序传输数据](../common/storage-use-azcopy.md)
+* [使用 AzCopy 命令行实用工具传输数据](../common/storage-use-azcopy.md)
 * [排查 Azure 文件问题 - Windows](storage-troubleshoot-windows-file-connection-problems.md)

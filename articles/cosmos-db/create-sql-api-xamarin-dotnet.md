@@ -10,10 +10,10 @@ origin.date: 05/30/2018
 ms.date: 12/16/2019
 ms.author: v-yeche
 ms.openlocfilehash: 9d16aff5590dcc5f20b6d9c42310608083a891d8
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75336403"
 ---
 # <a name="quickstart-build-a-todo-app-with-xamarin-using-azure-cosmos-db-sql-api-account"></a>快速入门：使用 Azure Cosmos DB SQL API 帐户通过 Xamarin 构建待办事项应用
@@ -39,7 +39,7 @@ Azure Cosmos DB 是世纪互联提供的多区域分布式多模型数据库服�
 
 如果是在 Windows 上进行开发，且尚未安装 Visual Studio 2019，可以下载并使用**免费的** [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/)。 在安装 Visual Studio 的过程中，请确保启用“Azure 开发”和“使用 .NET 进行移动开发”工作负荷。  
 
-如果使用 Mac，可以下载**免费的** [Visual Studio for Mac](https://www.visualstudio.com/vs/mac/)。
+如果使用的是 Mac，则可以下载**免费的** [Visual Studio for Mac](https://www.visualstudio.com/vs/mac/)。
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
@@ -76,7 +76,7 @@ Azure Cosmos DB 是世纪互联提供的多区域分布式多模型数据库服�
     cd "C:\git-samples"
     ```
 
-3. 运行下列命令以克隆示例存储库。 此命令在计算机上创建示例应用程序的副本。
+3. 运行下列命令，克隆示例存储库。 此命令在计算机上创建示例应用程序的副本。
 
     ```bash
     git clone https://github.com/Azure-Samples/azure-cosmos-db-sql-xamarin-getting-started.git

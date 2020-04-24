@@ -13,10 +13,10 @@ ms.topic: conceptual
 origin.date: 01/10/2018
 ms.date: 01/06/2020
 ms.openlocfilehash: 5c27cc654696fe36ef9210b1606377014a969075
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75624305"
 ---
 # <a name="if-condition-activity-in-azure-data-factory"></a>Azure 数据工厂中的 If Condition 活动
@@ -64,11 +64,11 @@ If Condition 活动可提供 if 语句在编程语言中提供相同的功能。
 
 ## <a name="type-properties"></a>Type 属性
 
-属性 | 说明 | 允许的值 | 必须
+properties | 说明 | 允许的值 | 必选
 -------- | ----------- | -------------- | --------
 name | if-condition 活动名称。 | String | 是
 type | 必须设置为“IfCondition”  | String | 是
-expression | 计算结果必须为 true 或 false 的表达式 | 具有结果类型布尔的表达式 | 是
+表达式 | 计算结果必须为 true 或 false 的表达式 | 具有结果类型布尔的表达式 | 是
 ifTrueActivities | 表达式计算结果为 `true` 时将执行的活动集。 | Array | 是
 ifFalseActivities | 表达式计算结果为 `false` 时将执行的活动集。 | Array | 是
 

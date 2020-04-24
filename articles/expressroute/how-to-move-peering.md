@@ -10,10 +10,10 @@ ms.date: 10/01/2019
 ms.author: v-yiso
 ms.custom: seodec18
 ms.openlocfilehash: 431af03c9cb371b5720e942527d39c9c39f1fc5e
-ms.sourcegitcommit: 9e92bcf6aa02fc9e7b3a29abadf6b6d1a8ece8c4
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74389438"
 ---
 # <a name="move-a-public-peering-to-microsoft-peering"></a>将公共对等互连移动到 Microsoft 对等互连
@@ -24,7 +24,7 @@ Azure 公共对等互连有 1 个 NAT IP 地址与每个 BGP 会话相关联。 
 
 启用公共对等互连后，可以连接到所有 Azure 服务。 我们不允许选择要将路由播发到的服务。 Microsoft 对等连接是一种双向连接，可以从 Microsoft Azure 服务以及 WAN 发起其连接。 有关路由域和对等互连的详细信息，请参阅 [ExpressRoute 线路和路由域](expressroute-circuit-peerings.md)。
 
-## <a name="before"></a>准备工作
+## <a name="before-you-begin"></a><a name="before"></a>准备工作
 
 若要连接到 Microsoft 对等互连，你需要设置和管理 NAT。 连接服务提供商可以将 NAT 作为托管服务进行设置和管理。 如果计划在 Microsoft 对等互连上访问 Azure PaaS 和 Azure SaaS 服务，请务必正确设置 NAT IP 池大小。 通过 Azure ExpressRoute（Microsoft 对等互连）连接到 Microsoft 时，你有多条链路连接到 Microsoft。 一条链路是现有的 Internet 连接，另一条是通过 ExpressRoute 连接。 一些流量可能通过 Internet 流入 Microsoft，却通过 ExpressRoute 返回，反之亦然。
 
@@ -38,7 +38,7 @@ Azure 公共对等互连有 1 个 NAT IP 地址与每个 BGP 会话相关联。 
 * 如果使用公共对等互连，并且当前为用于访问 [Azure 存储](../storage/common/storage-network-security.md)或 [Azure SQL 数据库](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md)的公共 IP 地址设置了 IP 网络规则，则需要确保配置了 Microsoft 对等互连的 NAT IP 池包含在 Azure 存储帐户或 Azure SQL 帐户的公共 IP 地址列表中。<br>
 * 若要移动到 Microsoft 对等互连而不停机，则需按本文介绍的顺序使用这些步骤。
 
-## <a name="create"></a>1.创建 Microsoft 对等互连
+## <a name="1-create-microsoft-peering"></a><a name="create"></a>1.创建 Microsoft 对等互连
 
 如果尚未创建 Microsoft 对等互连，请使用以下任意文章创建 Microsoft 对等互连。 如果连接服务提供商提供第 3 层托管服务，则可以请求连接服务提供商为你的线路启用 Microsoft 对等互连。
 
@@ -60,7 +60,7 @@ Azure 公共对等互连有 1 个 NAT IP 地址与每个 BGP 会话相关联。 
 * [使用 Azure Powershell 创建 Microsoft 对等互连](expressroute-howto-routing-arm.md#msft)<br>
 * [使用 Azure CLI 创建 Microsoft 对等互连](howto-routing-cli.md#msft)
 
-## <a name="validate"></a>2.验证 Microsoft 对等互连已启用
+## <a name="2-validate-microsoft-peering-is-enabled"></a><a name="validate"></a>2.验证 Microsoft 对等互连已启用
 
 验证 Microsoft 对等互连已启用，且播发的公用前缀处于已配置状态。
 
@@ -68,7 +68,7 @@ Azure 公共对等互连有 1 个 NAT IP 地址与每个 BGP 会话相关联。 
 * [Azure PowerShell](expressroute-howto-routing-arm.md#getmsft)<br>
 * [Azure CLI](howto-routing-cli.md#getmsft)
 
-## <a name="routefilter"></a>3.配置路由筛选器并连接到线路
+## <a name="3-configure-and-attach-a-route-filter-to-the-circuit"></a><a name="routefilter"></a>3.配置路由筛选器并连接到线路
 
 默认情况下，新的 Microsoft 对等互连不播发任何前缀，直至路由筛选器附加到线路。 创建路由筛选器规则时，可以为要用于 Azure PaaS 服务的 Azure 区域指定服务社区列表。 这为你提供了根据需求筛选路由的灵活性，如以下屏幕截图所示：
 
@@ -80,7 +80,7 @@ Azure 公共对等互连有 1 个 NAT IP 地址与每个 BGP 会话相关联。 
 * [使用 Azure PowerShell 为 Microsoft 对等互连配置路由筛选器](how-to-routefilter-powershell.md)<br>
 * [使用 Azure CLI 为 Microsoft 对等互连配置路由筛选器](how-to-routefilter-cli.md)
 
-## <a name="delete"></a>4.删除公共对等互连
+## <a name="4-delete-the-public-peering"></a><a name="delete"></a>4.删除公共对等互连
 
 在验证 Microsoft 对等互连已配置且你要使用的前缀已在 Microsoft 对等互连上正确播发之后，随后即可删除公共对等互连。 若要删除公共对等互连，请使用以下任一文章：
 
@@ -88,7 +88,7 @@ Azure 公共对等互连有 1 个 NAT IP 地址与每个 BGP 会话相关联。 
 * [使用 Azure PowerShell 删除 Azure 公共对等互连](expressroute-howto-routing-arm.md#deletepublic)<br>
 * [使用 CLI 删除 Azure 公共对等互连](howto-routing-cli.md#deletepublic)
   
-## <a name="view"></a>5.查看对等互连
+## <a name="5-view-peerings"></a><a name="view"></a>5.查看对等互连
   
 在 Azure 门户中可以看到所有 ExpressRoute 线路和对等互连的列表。 有关详细信息，请参阅[查看 Microsoft 对等互连详细信息](expressroute-howto-routing-portal-resource-manager.md#getmsft)。
 

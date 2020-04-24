@@ -13,10 +13,10 @@ ms.reviwer: sstein
 origin.date: 03/13/2019
 ms.date: 12/16/2019
 ms.openlocfilehash: 4348d6e65d3e01a981e835dbb7f76bb9edeb376f
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75336080"
 ---
 # <a name="create-an-elastic-job-agent-using-powershell"></a>使用 PowerShell 创建弹性作业代理
@@ -35,7 +35,7 @@ ms.locfileid: "75336080"
 > * 开始执行作业
 > * 监视作业
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 弹性数据库作业的升级版本有一组新的 PowerShell cmdlet，可在迁移期间使用。 这些新的 cmdlet 将所有现有的作业凭据、目标（包括数据库、服务器、自定义集合）、作业触发器、作业计划、作业内容和作业转移到新的弹性作业代理。
 

@@ -13,10 +13,10 @@ ms.author: v-junlch
 ms.custom: aaddev, vs-azure
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 596d86f63272d5552acce74b72cb5845c26dad40
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75335247"
 ---
 # <a name="diagnosing-errors-with-the-azure-active-directory-connected-service"></a>使用 Azure Active Directory 连接服务诊断错误
@@ -54,7 +54,7 @@ ms.locfileid: "75335247"
 * 单个用户帐户
 * 组织帐户
 
-为了检测 MVC 项目中的 Windows 身份验证，连接服务将在 `web.config` 文件中查找 `authentication` 元素。
+为了检测 MVC 项目中的 Windows 身份验证，连接服务将在 `authentication` 文件中查找 `web.config` 元素。
 
 ```xml
 <configuration>
@@ -64,7 +64,7 @@ ms.locfileid: "75335247"
 </configuration>
 ```
 
-为了检测 Web API 项目中的 Windows 身份验证，连接服务将在项目的 `.csproj` 文件中查找 `IISExpressWindowsAuthentication` 元素：
+为了检测 Web API 项目中的 Windows 身份验证，连接服务将在项目的 `IISExpressWindowsAuthentication` 文件中查找 `.csproj` 元素：
 
 ```xml
 <Project>

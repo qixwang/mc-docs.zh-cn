@@ -15,10 +15,10 @@ ms.custom: seo-lt-2019
 origin.date: 11/20/2019
 ms.date: 01/06/2020
 ms.openlocfilehash: 8e451f529e879469a588ef8536b9c2a9943aedc7
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75624228"
 ---
 # <a name="copy-data-from-and-to-dynamics-365-common-data-service-or-dynamics-crm-by-using-azure-data-factory"></a>使用 Azure 数据工厂从/向 Dynamics 365 (Common Data Service) 或 Dynamics CRM 复制数据
@@ -74,7 +74,7 @@ Dynamics 链接服务支持以下属性。
 
 ### <a name="dynamics-365-and-dynamics-crm-online"></a>Dynamics 365 和 Dynamics CRM Online
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
 | type | 类型属性必须设置为 **Dynamics**、**DynamicsCrm** 或 **CommonDataServiceForApps**。 | 是 |
 | deploymentType | Dynamics 实例的部署类型。 Dynamics Online 必须为 **"Online"** 。 | 是 |
@@ -171,7 +171,7 @@ Dynamics 链接服务支持以下属性。
 
 与 Dynamics 联机进行对比的其他属性是“hostName”和“port”。 
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
 | type | 类型属性必须设置为 **Dynamics**、**DynamicsCrm** 或 **CommonDataServiceForApps**。 | 是 |
 | deploymentType | Dynamics 实例的部署类型。 带有 IFD 的本地 Dynamics 必须为 **"OnPremisesWithIfd"** 。| 是 |
@@ -217,7 +217,7 @@ Dynamics 链接服务支持以下属性。
 
 支持使用以下属性从/向 Dynamics 复制数据。
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
 | type | 数据集的类型属性必须设置为 **DynamicsEntity**、**DynamicsCrmEntity** 或 **CommonDataServiceForAppsEntity**。 |是 |
 | entityName | 要检索的实体的逻辑名称。 | 源为“No”（如果指定了活动源中的“query”），接收器为“Yes” |
@@ -249,7 +249,7 @@ Dynamics 链接服务支持以下属性。
 
 若要从 Dynamics 复制数据，复制活动的 **source** 节需要支持以下属性。
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
 | type | 复制活动源的 type 属性必须设置为 **DynamicsSource**、**DynamicsCrmSource** 或 **CommonDataServiceForAppsSource**。 | 是 |
 | 查询 | FetchXML 是在 Dynamics（联机和本地）中使用的专属查询语言。 请参阅以下示例。 若要了解详细信息，请参阅[使用 FetchXML 生成查询](https://msdn.microsoft.com/library/gg328332.aspx)。 | 否（如果指定了数据集中的“entityName”） |
@@ -317,7 +317,7 @@ Dynamics 链接服务支持以下属性。
 
 若要将数据复制到 Dynamics，复制活动的 **sink** 节需要支持以下属性。
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
 | type | 复制活动接收器的 type 属性必须设置为 **DynamicsSink**、**DynamicsCrmSink** 或 **CommonDataServiceForAppsSink**。 | 是 |
 | writeBehavior | 操作的写入行为。<br/>允许的值为 **"Upsert"** 。 | 是 |

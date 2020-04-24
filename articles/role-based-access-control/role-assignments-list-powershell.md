@@ -15,10 +15,10 @@ ms.date: 01/02/2020
 ms.author: v-junlch
 ms.reviewer: bagovind
 ms.openlocfilehash: f33449e74f88b4a33e3f13e638e6bd2b5b54c5dd
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75624405"
 ---
 # <a name="list-role-assignments-using-azure-rbac-and-azure-powershell"></a>使用 Azure RBAC 和 Azure PowerShell 列出角色分配
@@ -27,7 +27,7 @@ ms.locfileid: "75624405"
 
 [!INCLUDE [az-powershell-update](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps)
 
@@ -77,7 +77,7 @@ Get-AzRoleAssignment -Scope /subscriptions/<subscription_id>
 PS C:\> Get-AzRoleAssignment -Scope /subscriptions/00000000-0000-0000-0000-000000000000
 ```
 
-## <a name="list-role-assignments-for-a-user"></a>列出用户的角色分配
+## <a name="list-role-assignments-for-a-user"></a>为用户列出角色分配
 
 若要列出分配给指定用户的所有角色，请使用 [Get-AzRoleAssignment](https://docs.microsoft.com/powershell/module/az.resources/get-azroleassignment)。
 

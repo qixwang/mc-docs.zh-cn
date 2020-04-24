@@ -14,10 +14,10 @@ origin.date: 10/31/2018
 ms.date: 11/11/2019
 ms.author: v-yeche
 ms.openlocfilehash: 124b15e22d015b1675e4034eb4431af673287d7c
-ms.sourcegitcommit: 73715ebbaeb96e80046142b8fe5bbc117d85b317
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74594045"
 ---
 # <a name="troubleshoot-an-rdp-general-error-in-azure-vm"></a>排查 Azure VM 的常规 RDP 错误

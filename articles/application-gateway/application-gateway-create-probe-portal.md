@@ -10,17 +10,17 @@ origin.date: 11/14/2019
 ms.date: 11/21/2019
 ms.author: v-junlch
 ms.openlocfilehash: acd89787ca6ef0a7426e567bd620e239c416a996
-ms.sourcegitcommit: fdbd1b6df618379dfeab03044a18c373b5fbb8ec
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74326475"
 ---
 # <a name="create-a-custom-probe-for-application-gateway-by-using-the-portal"></a>使用门户创建应用程序网关的自定义探测
 
 > [!div class="op_single_selector"]
 > * [Azure 门户](application-gateway-create-probe-portal.md)
-> * [Azure 资源管理器 PowerShell](application-gateway-create-probe-ps.md)
+> * [Azure Resource Manager PowerShell](application-gateway-create-probe-ps.md)
 > * [Azure 经典 PowerShell](application-gateway-create-probe-classic-ps.md)
 
 本文介绍如何通过 Azure 门户向现有应用程序网关添加自定义运行状况探测。 Azure 应用程序网关使用运行状况探测来监视后端池中资源的运行状况。
@@ -33,7 +33,7 @@ ms.locfileid: "74326475"
 
 可通过门户分两步配置探测。 第一个步骤是输入探测配置所需的值。 第二个步骤使用此探测配置测试后端运行状况，然后保存探测。 
 
-### <a name="createprobe"></a>输入探测属性
+### <a name="enter-probe-properties"></a><a name="createprobe"></a>输入探测属性
 
 1. 登录到 [Azure 门户](https://portal.azure.cn)。 如果还没有帐户，可以注册 [1 元试用版](https://www.azure.cn/pricing/1rmb-trial)
 
@@ -82,7 +82,7 @@ ms.locfileid: "74326475"
 
 可通过门户分两步配置探测。 第一步是创建探测。 第二步是将探测添加到应用程序网关的后端 http 设置。
 
-### <a name="createprobe"></a>创建探测
+### <a name="create-the-probe"></a><a name="createprobe"></a>创建探测
 
 1. 登录到 [Azure 门户](https://portal.azure.cn)。 如果还没有帐户，可以注册 [1 元试用版](https://www.azure.cn/pricing/1rmb-trial)
 

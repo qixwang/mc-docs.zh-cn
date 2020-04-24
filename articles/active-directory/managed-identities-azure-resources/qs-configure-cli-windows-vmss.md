@@ -16,10 +16,10 @@ ms.date: 12/10/2019
 ms.author: v-junlch
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0ad7804078dea42e046aadcebf04397acce33c56
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75335562"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-a-virtual-machine-scale-set-using-azure-cli"></a>使用 Azure CLI 在虚拟机规模集上配置 Azure 资源托管标识
@@ -119,7 +119,7 @@ az vmss update -n myVM -g myResourceGroup --set identity.type="none"
 
 本部分介绍如何创建虚拟机规模集以及向虚拟机规模集分配用户分配托管标识。 如果已有要使用的虚拟机规模集，请跳过此部分，转到下一部分。
 
-1. 如果已有要使用的资源组，可跳过此步骤。 使用 [az group create](/cli/group/#az-group-create) 创建用于包含和部署用户分配托管标识的[资源组](/azure-resource-manager/resource-group-overview#terminology)。 请务必将 `<RESOURCE GROUP>` 和 `<LOCATION>` 参数值替换为自己的值。 :
+1. 如果已有要使用的资源组，可跳过此步骤。 使用 [az group create](/cli/group/#az-group-create) 创建用于包含和部署用户分配托管标识的[资源组](/azure-resource-manager/resource-group-overview#terminology)。 请务必将 `<RESOURCE GROUP>` 和 `<LOCATION>` 参数值替换为自己的值。 解码的字符：
 
    ```azurecli 
    az group create --name <RESOURCE GROUP> --location <LOCATION>

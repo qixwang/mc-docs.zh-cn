@@ -12,10 +12,10 @@ ms.date: 12/09/2019
 ms.author: v-jay
 ms.reviewer: igorstan
 ms.openlocfilehash: e1a3176dc7d3cd4feab76602d31fa916804af983
-ms.sourcegitcommit: cf73284534772acbe7a0b985a86a0202bfcc109e
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74884643"
 ---
 # <a name="best-practices-for-sql-analytics-in-azure-synapse-analytics-formerly-sql-dw"></a>有关 Azure Synapse Analytics 中的 SQL Analytics（前称为 SQL DW）的最佳做法
@@ -44,7 +44,7 @@ SQL Analytics 有多个 DMV 可用于监视查询执行。  以下监视相关�
 - [通过结果集缓存进行性能优化](/sql-data-warehouse/performance-tuning-result-set-caching)
 
 ## <a name="group-insert-statements-into-batches"></a>将 INSERT 语句分组为批
-使用 INSERT 语句一次性载入小型表、甚至定期重新加载查找，可能与使用类似于 `INSERT INTO MyLookup VALUES (1, 'Type 1')`的语句一样正常执行。  但是，如果一整天都要加载数千或数百万个行，可能发现单个 INSERT 跟不上要求。  请开发自己的可写入文件的进程，并开发另一个进程定期处理并加载此文件。
+使用 INSERT 语句一次性载入小型表、甚至定期重新加载查找，可能与使用类似于 `INSERT INTO MyLookup VALUES (1, 'Type 1')` 的语句一样正常执行。  但是，如果一整天都要加载数千或数百万个行，可能发现单个 INSERT 跟不上要求。  请开发自己的可写入文件的进程，并开发另一个进程定期处理并加载此文件。
 
 另请参阅 [INSERT][INSERT]
 
@@ -68,7 +68,7 @@ SQL Analytics 有多个 DMV 可用于监视查询执行。  以下监视相关�
 ## <a name="hash-distribute-large-tables"></a>哈希分布大型表
 默认情况下，表是以轮循机制分布的。  这可让用户更容易开始创建表，而不必确定应该如何分布其表。  轮循机制表在某些工作负荷中执行良好，但大多数情况下，选择分布列的执行性能将更好。  按列分布表的性能远远高于轮循机制表的最常见例子是联接两个大型事实表。  
 
-例如，如果有一个依 order_id 分布的订单表，以及一个也是依 order_id 分布的事务表，如果将订单数据联接到事务表上的 order_id，此查询将变成传递查询，也就是数据移动操作将被消除。  减少步骤意味着加快查询速度。  更少的数据移动也会让查询更快。  
+例如，如果有一个依 order_id 分布的订单表，以及一个也是依 order_id 分布的事务表，如果将订单数据联接到事务表上的 order_id，此查询将变成传递查询，也就是数据移动操作会被消除。  减少步骤意味着加快查询速度。  更少的数据移动也将让查询更快。  
 
 加载分布的表时，请确保传入数据的分布键没有排序，因为这会拖慢加载速度。  有关选择分布列如何能提升性能，以及如何在 CREATE TABLE 语句的 WITH 子句中定义分布表的详细信息，请参阅以下链接。
 
@@ -112,17 +112,17 @@ SQL Analytics 有多个 DMV 可用于监视查询执行。  以下监视相关�
 ## <a name="optimize-clustered-columnstore-tables"></a>优化聚集列存储表
 聚集列存储索引是将数据存储在 SQL Analytics 中最有效率的方式之一。  默认情况下，SQL Analytics 中的表会创建为聚集列存储。  为了让列存储表的查询获得最佳性能，良好的分段质量很重要。  
 
-当行在内存不足的状态下写入列存储表时，列存储分段质量可能降低。  压缩行组中的行数可以测量分段质量。  有关检测和改善聚集列存储表分段质量的分步说明，请参阅[表索引][Table indexes]一文中的[列存储索引质量不佳的原因][Causes of poor columnstore index quality]。  
+当行在内存不足的状态下写入列存储表时，列存储分段质量可能降低。  压缩行组中的行数可以测量分段质量。  有关检测和改善聚集列存储表分段质量的分步说明，请参阅[表索引][Causes of poor columnstore index quality]一文中的[列存储索引质量不佳的原因][Table indexes]。  
 
 由于高质量列存储段很重要，因此可以考虑使用用来加载数据的中型或大型资源类中的用户 ID。 使用较低的[数据仓库单位](what-is-a-data-warehouse-unit-dwu-cdwu.md)值意味着需要向加载用户分配较大的资源类。
 
 由于列存储表通常要等到每个表有超过 1 百万个行之后才会数据推送到压缩的列存储区段，并且每个 SQL Analytics 表分区成 60 个表，根据经验法则，列存储表对于查询没有好处，除非表有超过 6 千万行。  小于 6 千万列的表使用列存储索引似乎不太合理，  但也无伤大雅。  
 
-此外，如果要进行数据分区，则要考虑的是每个分区必须有 1 百万个行，使用聚集列存储索引才有益。  如果表有 100 个分区，则它至少必须拥有 60 亿个行才将受益于聚集列存储（60 个分布区 * 100 个分区 * 1 百万行）。  
+此外，如果将分区，则要考虑的是每个分区必须有 1 百万个行，使用聚集列存储索引才有益。  如果表有 100 个分区，则它至少必须拥有 60 亿个行才将受益于聚集列存储（60 个分布区 * 100 个分区 * 1 百万行）。  
 
 如果表在本示例中并没有 60 亿个行，请减少分区数目，或考虑改用堆表。  使用辅助索引配合堆表而不是列存储表，也可能是值得进行的实验，看看是否可以获得较佳的性能。
 
-查询列存储表时，如果只选择需要的列，查询运行速度更快。  
+查询列存储表时，如果只选择需要的列，查询运行将更快速。  
 
 另请参阅[表索引][Table indexes]、[列存储索引指南][Columnstore indexes guide]、[重新生成列存储索引][Rebuilding columnstore indexes]
 

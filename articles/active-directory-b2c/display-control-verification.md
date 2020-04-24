@@ -12,10 +12,10 @@ ms.date: 12/30/2019
 ms.author: v-junlch
 ms.subservice: B2C
 ms.openlocfilehash: 4429301ff04676547fcdf7f73ea05a2035a7c9d4
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75624375"
 ---
 # <a name="verification-display-control"></a>验证显示控件

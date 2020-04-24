@@ -10,10 +10,10 @@ ms.topic: conceptual
 origin.date: 11/04/2019
 ms.date: 12/16/2019
 ms.openlocfilehash: b90664eded1782704adaf4113896f0e7ce3a536b
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75336486"
 ---
 # <a name="set-rbac-roles-for-administrative-access-to-azure-cognitive-search"></a>为针对 Azure 认知搜索的管理访问权限设置 RBAC 角色
@@ -29,7 +29,7 @@ ms.locfileid: "75336486"
 
 | 角色 | 任务 |
 | --- | --- |
-| 所有者 |创建或删除服务或者服务上的任何对象，包括 API 密钥、索引、索引器、索引器数据源和索引器计划。<p>查看服务状态，包括计数和存储大小。<p>添加或删除角色成员身份（仅所有者才能管理角色成员身份）。<p>订阅管理员和服务所有者拥有所有者角色的自动成员身份。 |
+| “所有者” |创建或删除服务或者服务上的任何对象，包括 API 密钥、索引、索引器、索引器数据源和索引器计划。<p>查看服务状态，包括计数和存储大小。<p>添加或删除角色成员身份（仅所有者才能管理角色成员身份）。<p>订阅管理员和服务所有者拥有所有者角色的自动成员身份。 |
 | 参与者 |访问级别与所有者的访问级别相同，不包括 RBAC 角色管理。 例如，参与者可创建或删除对象，或查看和重新生成 [API 密钥](search-security-api-keys.md)，但不能修改角色成员身份。 |
 | [搜索服务参与者内置角色](https://docs.azure.cn/role-based-access-control/built-in-roles#search-service-contributor) | 等效于参与者角色。 |
 | 读取器 |查看服务概要和指标。 此角色的成员无法查看索引、索引器、数据源或密钥信息。  |
@@ -38,6 +38,6 @@ ms.locfileid: "75336486"
 
 ## <a name="see-also"></a>另请参阅
 
-+ [使用 PowerShell 管理](search-manage-powershell.md) 
++ [使用 PowerShell 进行管理](search-manage-powershell.md) 
 + [Azure 认知搜索中的性能和优化](search-performance-optimization.md)
 + [Azure 门户中基于角色的访问控制入门](../role-based-access-control/overview.md)。

@@ -12,10 +12,10 @@ ms.date: 12/09/2019
 ms.author: v-jay
 ms.reviewer: jrasnick
 ms.openlocfilehash: f87b3ca69af73cb47106f2ea1c908ceda2dff85c
-ms.sourcegitcommit: cf73284534772acbe7a0b985a86a0202bfcc109e
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74884944"
 ---
 # <a name="use-maintenance-schedules-to-manage-service-updates-and-maintenance"></a>使用维护计划管理服务更新和维护
@@ -56,7 +56,7 @@ ms.locfileid: "74884944"
 
 若要查看已应用于你的数据仓库的维护计划，请完成以下步骤：
 
-1. 登录到 [Azure 门户](https://portal.azure.cn/)。
+1. 登录 [Azure 门户](https://portal.azure.cn/)。
 2. 选择要查看的数据仓库。 
 3. 所选的数据仓库将在“概述”边栏选项卡上打开。 应用于该数据仓库的维护计划将显示在“维护计划”下方。 
 
@@ -72,7 +72,7 @@ ms.locfileid: "74884944"
 主要和辅助时段必须包含不同的日期范围。 例如，主要时段为星期二到星期四，辅助时段为星期六到星期日。
 
 若要更改数据仓库的维护计划，请完成以下步骤：
-1. 登录到 [Azure 门户](https://portal.azure.cn/)。
+1. 登录 [Azure 门户](https://portal.azure.cn/)。
 2. 选择要更新的数据仓库。 页面将在概述边栏选项卡上打开。 
 3. 在概述边栏选项卡上选择“维护计划(预览版)摘要”链接，打开维护计划设置的页面。  或者，选择左侧资源菜单中的“维护计划”选项。   
 
@@ -83,13 +83,13 @@ ms.locfileid: "74884944"
    ![维护设置边栏选项卡](media/sql-data-warehouse-maintenance-scheduling/maintenance-settings-page.png)
 
 5. 使用下拉列表框选择首选的主要和辅助维护时段：
-   - **日**：在所选时段内执行维护的首选日期。
+   - **日期**：在所选时段内执行维护的首选日期。
    - **开始时间**：维护时段的首选开始时间。
    - **时间范围**：时间范围的首选持续时间。
 
    边栏选项卡底部的“计划摘要”区域将根据所选的值更新。  
   
-6. 选择“保存”  。 此时会显示一条消息，确认新计划现已处于活动状态。 
+6. 选择“保存”。  此时会显示一条消息，确认新计划现已处于活动状态。 
 
    如果要在不支持维护计划的区域中保存计划，则会显示以下消息。 当此功能在所选区域中可用时，设置将会保存并且变为活动状态。    
 

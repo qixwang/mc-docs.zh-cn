@@ -15,10 +15,10 @@ ms.date: 12/12/2019
 ms.author: v-junlch
 ms.custom: include file
 ms.openlocfilehash: b94b2ef3ae9406b417e93352234a3205b1c77ea4
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75335398"
 ---
 在阅读本文之前，应熟悉以下概念：

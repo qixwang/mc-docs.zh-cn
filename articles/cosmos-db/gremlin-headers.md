@@ -9,14 +9,14 @@ ms.date: 12/16/2019
 author: rockboyfor
 ms.author: v-yeche
 ms.openlocfilehash: 9a665cbe1eefadeae78febf0c2ecfe733c3543d5
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75336093"
 ---
 # <a name="azure-cosmos-db-gremlin-server-response-headers"></a>Azure Cosmos DB Gremlin 服务器响应标头
-本文介绍在执行请求后由 Cosmos DB Gremlin 服务器返回给调用方的标头。 这些标头可用于排查请求性能问题，构建原生可与 Cosmos DB 服务集成的应用程序，以及简化客户支持。
+本文介绍了执行请求时 Cosmos DB Gremlin 服务器返回给调用方的标头。 这些标头可用于排查请求性能问题，生成与 Cosmos DB 服务进行本机集成的应用程序，以及简化客户支持。
 
 请记住，如果依赖这些标头，应用程序到其他 Gremlin 实现的可移植性将会受到限制。 好处是能够与 Cosmos DB Gremlin 更紧密地集成。 这些标头不属于 TinkerPop 标准。
 
@@ -24,10 +24,10 @@ ms.locfileid: "75336093"
 
 | 标头 | 类型 | 示例值 | 如果包含 | 说明 |
 | --- | --- | --- | --- | --- |
-| **x-ms-request-charge** | Double | 11.3243 | Success 和 Failure | 部分响应消息使用的集合量或数据库吞吐量，以[请求单位数（RU/秒或 RU）](request-units.md)表示。 此标头存在于具有多个块的请求的每次延续中。 它反映特定响应区块的费用。 仅对于由单个响应区块的请求而言，此标头将与遍历的总成本相匹配。 但对于大多数复杂的遍历而言，此值表示部分成本。 |
-| **x-ms-total-request-charge** | Double | 423.987 | Success 和 Failure | 整个请求使用的集合量或数据库吞吐量，以[请求单位数（RU/秒或 RU）](request-units.md)表示。 此标头存在于具有多个块的请求的每次延续中。 它表示自请求开始后的累积费用。 最后一个区块中此标头的值表示完整请求费用。 |
-| **x-ms-server-time-ms** | Double | 13.75 | Success 和 Failure | 此标头用于延迟故障排除目的。 它表示 Cosmos DB Gremlin 服务器执行并生成部分响应消息所花费的时间（以毫秒为单位）。 应用程序可以使用此标头的值并将其与整体请求延迟进行比较来计算网络延迟开销。 |
-| **x-ms-total-server-time-ms** | Double | 130.512 | Success 和 Failure | Cosmos DB Gremlin 服务器执行整个遍历所花费的总时间（以毫秒为单位）。 此标头包含在每个部分响应中。 它表示自请求开始后的累积执行时间。 最后一个响应表示总执行时间。 此标头可用于区分作为延迟来源的客户端和服务器。 可将客户端上的遍历执行时间与此标头的值进行比较。 |
+| **x-ms-request-charge** | double | 11.3243 | Success 和 Failure | 部分响应消息使用的集合量或数据库吞吐量，以[请求单位数（RU/秒或 RU）](request-units.md)表示。 此标头存在于具有多个块的请求的每次延续中。 它反映特定响应区块的费用。 仅对于由单个响应区块的请求而言，此标头将与遍历的总成本相匹配。 但对于大多数复杂的遍历而言，此值表示部分成本。 |
+| **x-ms-total-request-charge** | double | 423.987 | Success 和 Failure | 整个请求使用的集合量或数据库吞吐量，以[请求单位数（RU/秒或 RU）](request-units.md)表示。 此标头存在于具有多个块的请求的每次延续中。 它表示自请求开始后的累积费用。 最后一个区块中此标头的值表示完整请求费用。 |
+| **x-ms-server-time-ms** | double | 13.75 | Success 和 Failure | 此标头用于延迟故障排除目的。 它表示 Cosmos DB Gremlin 服务器执行并生成部分响应消息所花费的时间（以毫秒为单位）。 应用程序可以使用此标头的值并将其与整体请求延迟进行比较来计算网络延迟开销。 |
+| **x-ms-total-server-time-ms** | double | 130.512 | Success 和 Failure | Cosmos DB Gremlin 服务器执行整个遍历所花费的总时间（以毫秒为单位）。 此标头包含在每个部分响应中。 它表示自请求开始后的累积执行时间。 最后一个响应表示总执行时间。 此标头可用于区分作为延迟来源的客户端和服务器。 可将客户端上的遍历执行时间与此标头的值进行比较。 |
 | **x-ms-status-code** | long | 200 | Success 和 Failure | 标头表示请求完成或终止的内部原因。 建议在应用程序中检查此标头的值并采取纠正措施。 |
 | **x-ms-substatus-code** | long | 1003 | 仅限故障 | Cosmos DB 是在统一存储层之上构建的多模型数据库。 此标头包含当高可用性堆栈的较低层中发生故障时有关故障原因的其他见解。 建议在应用程序中存储此标头，并在联系 Cosmos DB 客户支持人员时使用此标头。 Cosmos DB 工程师可以使用此标头的值快速进行故障排除。 |
 | **x-ms-retry-after-ms** | 字符串 (TimeSpan) | "00:00:03.9500000" | 仅限故障 | 此标头是 .NET [TimeSpan](https://docs.microsoft.com/dotnet/api/system.timespan) 类型的字符串表示形式。 此值仅包含在由于耗尽预配吞吐量而失败的请求中。 在指定的时间段后，应用程序应再次重新提交遍历。 |

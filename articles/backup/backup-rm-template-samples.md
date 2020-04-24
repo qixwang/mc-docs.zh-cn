@@ -1,5 +1,5 @@
 ---
-title: Azure Resource Manager 模板
+title: Azure 资源管理器模板
 description: 用于恢复服务保管库和 Azure 备份功能的 Azure 资源管理器模板
 ms.topic: sample
 author: lingliw
@@ -7,10 +7,10 @@ ms.date: 01/31/2019
 ms.author: v-lingwu
 ms.custom: mvc
 ms.openlocfilehash: 5a937decd55946dc4d875b447355835fd83c9726
-ms.sourcegitcommit: 21b02b730b00a078a76aeb5b78a8fd76ab4d6af2
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74838885"
 ---
 # <a name="azure-resource-manager-templates-for-azure-backup"></a>用于 Azure 备份的 Azure 资源管理器模板

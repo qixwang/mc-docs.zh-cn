@@ -13,10 +13,10 @@ ms.author: v-jay
 ms.reviewer: nibruno; jrasnick
 ms.custom: seo-lt-2019
 ms.openlocfilehash: d210e91a6a50cb9179e5903eb893220ca1f7fab6
-ms.sourcegitcommit: 369038a7d7ee9bbfd26337c07272779c23d0a507
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74808063"
 ---
 # <a name="performance-tuning-with-ordered-clustered-columnstore-index"></a>使用有序聚集列存储索引优化性能  

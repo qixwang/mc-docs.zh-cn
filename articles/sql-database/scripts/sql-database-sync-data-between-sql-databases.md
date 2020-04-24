@@ -13,10 +13,10 @@ ms.reviewer: carlrab
 origin.date: 03/12/2019
 ms.date: 12/16/2019
 ms.openlocfilehash: 4d1549c1467384ef195f89989df9d50cf3c5f2e6
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75334606"
 ---
 # <a name="use-powershell-to-sync-between-multiple-sql-databases"></a>使用 PowerShell 在多个 SQL 数据库之间进行同步
@@ -26,14 +26,14 @@ ms.locfileid: "75334606"
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-本教程需要 AZ PowerShell 1.4.0 或更高版本。 如果需要进行升级，请参阅 [Install Azure PowerShell module](https://docs.microsoft.com/powershell/azure/install-az-ps)（安装 Azure PowerShell 模块）。 此外，还需要运行 `Connect-AzAccount -EnvironmentName AzureChinaCloud` 以创建与 Azure 的连接。
+本教程需要 AZ PowerShell 1.4.0 或更高版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-az-ps)。 此外，还需要运行 `Connect-AzAccount -EnvironmentName AzureChinaCloud` 以创建与 Azure 的连接。
 
 有关 SQL 数据同步的概述，请参阅[使用 Azure SQL 数据同步跨多个云和本地数据库同步数据](../sql-database-sync-data.md)。
 
 > [!IMPORTANT]
 > 目前，Azure SQL 数据同步不支持 Azure SQL 数据库托管实例。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - 使用 AdventureWorksLT 示例数据库创建 Azure SQL 数据库作为中心数据库
 - 在同步数据库所在的相同区域中创建 Azure SQL 数据库
@@ -271,9 +271,9 @@ Remove-AzResourceGroup -ResourceGroupName $SyncDatabaseResourceGroupName
 
 ## <a name="script-explanation"></a>脚本说明
 
-此脚本使用以下命令。 表中的每条命令链接到特定于命令的文档。
+此脚本使用以下命令。 表中的每条命令均链接到特定于命令的文档。
 
-| 命令 | 注释 |
+| Command | 说明 |
 |---|---|
 | [New-AzSqlSyncAgent](https://docs.microsoft.com/powershell/module/az.sql/New-azSqlSyncAgent) |  新建同步代理 |
 | [New-AzSqlSyncAgentKey](https://docs.microsoft.com/powershell/module/az.sql/New-azSqlSyncAgentKey) |  生成与同步代理关联的代理密钥 |

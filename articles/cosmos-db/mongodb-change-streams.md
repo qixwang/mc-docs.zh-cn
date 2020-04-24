@@ -9,10 +9,10 @@ origin.date: 11/16/2019
 ms.author: v-yeche
 ms.date: 12/16/2019
 ms.openlocfilehash: c659775c81ba531c98d10c08b26104adae6ca418
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75348533"
 ---
 # <a name="change-streams-in-azure-cosmos-dbs-api-for-mongodb"></a>Azure Cosmos DB's API for MongoDB 中的更改流
@@ -70,7 +70,7 @@ var cursor = db.coll.watch(
 
 * **HTTP 错误代码 429** - 当更改流受到限制时，它将返回一个空页。
 
-* **NamespaceNotFound (OperationType 失效)** - 如果对不存在的集合运行更改流，或删除了集合，则会返回 `NamespaceNotFound` 错误。 由于 `operationType` 属性无法在输出文档中返回，因此会返回 `NamespaceNotFound` 错误，而不是 `operationType Invalidate` 错误。
+* **NamespaceNotFound (OperationType 失效)** - 如果对不存在的集合运行更改流，或删除了集合，则会返回 `NamespaceNotFound` 错误。 由于 `operationType` 属性无法在输出文档中返回，因此会返回 `operationType Invalidate` 错误，而不是 `NamespaceNotFound` 错误。
 
 ## <a name="next-steps"></a>后续步骤
 

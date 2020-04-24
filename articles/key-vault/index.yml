@@ -13,17 +13,17 @@ metadata:
   origin.date: 09/19/2019
   ms.date: 12/09/2019
   ms.openlocfilehash: 0c4ab0f0fe51aee82341d372f82e6662c26343ac
-  ms.sourcegitcommit: 21b02b730b00a078a76aeb5b78a8fd76ab4d6af2
+  ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 12/05/2019
+  ms.lasthandoff: 04/17/2020
   ms.locfileid: "74838981"
 landingContent:
 - title: 关于 Azure Key Vault
   linkLists:
   - linkListType: overview
     links:
-    - text: 什么是 Azure 密钥保管库？
+    - text: 什么是 Azure Key Vault？
       url: key-vault-overview.md
   - linkListType: concept
     links:

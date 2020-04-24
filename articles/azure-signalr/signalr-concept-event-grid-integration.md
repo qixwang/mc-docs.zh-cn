@@ -10,10 +10,10 @@ ms.date: 12/16/2019
 ms.topic: conceptual
 ms.service: signalr
 ms.openlocfilehash: d430a2fefb0ba9afba77ff748c1b91df7903dfdb
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75336049"
 ---
 # <a name="reacting-to-azure-signalr-service-events"></a>响应 Azure SignalR 服务事件

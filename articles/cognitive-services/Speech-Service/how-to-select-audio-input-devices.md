@@ -12,10 +12,10 @@ origin.date: 07/05/2019
 ms.date: 01/13/2020
 ms.author: v-tawe
 ms.openlocfilehash: 85275a4af0d661e83ff05ac5770fe5243fa18f6e
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75630981"
 ---
 # <a name="how-to-select-an-audio-input-device-with-the-speech-sdk"></a>如何：使用语音 SDK 选择音频输入设备

@@ -11,10 +11,10 @@ origin.date: 10/31/2019
 ms.author: v-yiso
 ms.date: 12/02/2019
 ms.openlocfilehash: 4be10114e53f98fec28b1a0c22d23cdd02a33024
-ms.sourcegitcommit: 9e92bcf6aa02fc9e7b3a29abadf6b6d1a8ece8c4
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74389442"
 ---
 # <a name="verifying-expressroute-connectivity"></a>验证 ExpressRoute 连接
@@ -207,7 +207,7 @@ Get-AzExpressRouteCircuitPeeringConfig -Name "AzurePrivatePeering" -ExpressRoute
     $ckt = Get-AzExpressRouteCircuit -ResourceGroupName "Test-ER-RG" -Name "Test-ER-Ckt"
      Get-AzExpressRouteCircuitPeeringConfig -Name "MicrosoftPeering" -ExpressRouteCircuit $ckt
 
-如果未配置对等互连，则会出现错误信息。 当所述对等互连（本示例中为 Azure 公共对等互连）未在线路中配置时，示例的响应如下：
+如果未配置对等互连，则会出现错误消息。 当所述对等互连（本示例中为 Azure 公共对等互连）未在线路中配置时，示例的响应如下：
 
 ```
     Get-AzExpressRouteCircuitPeeringConfig : Sequence contains no matching element
@@ -310,7 +310,7 @@ PrimaryBytesIn PrimaryBytesOut SecondaryBytesIn SecondaryBytesOut
 
 <!--Image References-->
 [1]: ./media/expressroute-troubleshooting-expressroute-overview/expressroute-logical-diagram.png "逻辑 ExpressRoute 连接"
-[2]: ./media/expressroute-troubleshooting-expressroute-overview/portal-all-resources.png "“所有资源”图标"
+[2]: ./media/expressroute-troubleshooting-expressroute-overview/portal-all-resources.png "所有资源图标"
 [3]: ./media/expressroute-troubleshooting-expressroute-overview/portal-overview.png "概述图标"
 [4]: ./media/expressroute-troubleshooting-expressroute-overview/portal-circuit-status.png "ExpressRoute 概要示例屏幕截图"
 [5]: ./media/expressroute-troubleshooting-expressroute-overview/portal-private-peering.png "ExpressRoute 概要示例屏幕截图"

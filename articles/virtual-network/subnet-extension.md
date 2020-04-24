@@ -17,10 +17,10 @@ origin.date: 10/31/2019
 ms.date: 01/06/2020
 ms.author: v-yeche
 ms.openlocfilehash: 27cf5c0385c5bf844d1f1a5d858bc0a2a29f0ee9
-ms.sourcegitcommit: 13431cf4d69142ed7feb8d12d967a502bf9ff346
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75599830"
 ---
 # <a name="subnet-extension"></a>子网扩展

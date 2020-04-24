@@ -16,10 +16,10 @@ ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c07e97ecae1c2da239801272464d3879441da11e
-ms.sourcegitcommit: 9597d4da8af58009f9cef148a027ccb7b32ed8cf
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74655422"
 ---
 # <a name="azure-active-directory-version-2-cmdlets-for-group-management"></a>用于组管理的 Azure Active Directory 版本 2 cmdlet
@@ -143,7 +143,7 @@ ms.locfileid: "74655422"
 
 ## <a name="update-groups"></a>更新组
 
-若要更新现有组，请使用 Set-AzureADGroup cmdlet。 在此示例中，我们将更改“Intune 管理员”组的 DisplayName 属性。 首先，我们发现使用 Get-AzureADGroup cmdlet 的组和使用 DisplayName 属性的筛选器：
+若要更新现有组，请使用 Set-AzureADGroup cmdlet。 在此示例中，我们将更改“Intune 管理员”组的 DisplayName 属性。 首先，我们将使用 Get-AzureADGroup cmdlet 查找该组，然后使用 DisplayName 属性进行筛选：
 
 ```powershell
     PS C:\Windows\system32> Get-AzureADGroup -Filter "DisplayName eq 'Intune Administrators'"
@@ -313,7 +313,7 @@ ObjectId 参数是要将成员添加到的组的 ObjectID，-RefObjectId 是要�
   
 * abuse
 * admin
-* administrator
+* 主要区域中的
 * hostmaster
 * majordomo
 * postmaster

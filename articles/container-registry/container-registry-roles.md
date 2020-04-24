@@ -6,10 +6,10 @@ origin.date: 03/20/2019
 ms.author: v-yeche
 ms.date: 12/09/2019
 ms.openlocfilehash: 77caac9ba62b409a75803feb31a9d094e4277837
-ms.sourcegitcommit: cf73284534772acbe7a0b985a86a0202bfcc109e
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74885018"
 ---
 <!--Verify successfully-->
@@ -19,7 +19,7 @@ Azure 容器注册表服务支持一组 Azure 角色，这些角色提供访问 
 
 | 角色/权限       | [访问资源管理器](#access-resource-manager) | [创建/删除注册表](#create-and-delete-registry) | [推送映像](#push-image) | [拉取映像](#pull-image) | [删除映像数据](#delete-image-data) | [更改策略](#change-policies) |   [对映像签名](#sign-images)  |
 | ---------| --------- | --------- | --------- | --------- | --------- | --------- | --------- |
-| 所有者 | X | X | X | X | X | X |  |  
+| “所有者” | X | X | X | X | X | X |  |  
 | 参与者 | X | X | X |  X | X | X |  |  
 | 读取器 | X |  |  | X |  |  |  |
 | AcrPush |  |  | X | X | |  |  |  

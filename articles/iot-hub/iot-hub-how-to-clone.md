@@ -10,10 +10,10 @@ origin.date: 12/09/2019
 ms.date: 01/13/2020
 ms.author: v-yiso
 ms.openlocfilehash: b7ed820c4a6765f2c81cebaa99cbbb368b4f7a5d
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75630916"
 ---
 # <a name="how-to-clone-an-azure-iot-hub-to-another-region"></a>如何将 Azure IoT 中心克隆到另一个区域

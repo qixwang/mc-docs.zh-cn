@@ -10,10 +10,10 @@ origin.date: 01/29/2019
 ms.date: 04/12/2019
 ms.author: lingliw
 ms.openlocfilehash: 3029ca27540dfe879dc7ce848db789cdbfcb676b
-ms.sourcegitcommit: 21b02b730b00a078a76aeb5b78a8fd76ab4d6af2
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74838970"
 ---
 # <a name="improve-performance-of-azure-applications-with-azure-advisor"></a>使用 Azure 顾问提高 Azure 应用程序的性能

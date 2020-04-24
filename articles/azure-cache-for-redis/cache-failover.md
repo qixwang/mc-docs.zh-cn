@@ -8,10 +8,10 @@ origin.date: 10/18/2019
 ms.date: 11/22/2019
 ms.author: v-junlch
 ms.openlocfilehash: 029e502c8e3bff6821ba9ddcab6032044aa05800
-ms.sourcegitcommit: e74e8aabc1cbd8a43e462f88d07b041e9c4f31eb
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74461641"
 ---
 # <a name="failover-and-patching-for-azure-cache-for-redis"></a>Azure Cache for Redis 的故障转移和修补

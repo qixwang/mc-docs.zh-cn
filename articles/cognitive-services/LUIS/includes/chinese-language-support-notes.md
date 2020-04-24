@@ -8,10 +8,10 @@ ms.topic: include
 ms.date: 10/07/2019
 ms.author: dapine
 ms.openlocfilehash: 55f52ced4092106fff58043c100c4c2687a20072
-ms.sourcegitcommit: cf73284534772acbe7a0b985a86a0202bfcc109e
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75858143"
 ---
 ### <a name="chinese-support-notes"></a>*中文支持说明

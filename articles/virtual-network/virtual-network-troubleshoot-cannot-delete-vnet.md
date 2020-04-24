@@ -16,15 +16,15 @@ origin.date: 10/31/2018
 ms.date: 11/25/2019
 ms.author: v-yeche
 ms.openlocfilehash: 4fc119aabdc5425c5dba0cb238e1e3bf42231cfb
-ms.sourcegitcommit: 298eab5107c5fb09bf13351efeafab5b18373901
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74658038"
 ---
 # <a name="troubleshooting-failed-to-delete-a-virtual-network-in-azure"></a>故障排除：无法在 Azure 中删除虚拟网络
 
-尝试在 Azure 中删除虚拟网络时，可能会收到错误。 本文提供解决此问题的故障排除步骤。 
+尝试在 Microsoft Azure 中删除虚拟网络时，可能会收到错误。 本文提供解决此问题的故障排除步骤。 
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
@@ -94,6 +94,6 @@ ms.locfileid: "74658038"
 ## <a name="next-steps"></a>后续步骤
 
 - [Azure 虚拟网络](virtual-networks-overview.md)
-- [Azure 虚拟网络常见问题解答 (FAQ)](virtual-networks-faq.md)
+- [Azure 虚拟网络常见问题 (FAQ)](virtual-networks-faq.md)
 
 <!--Update_Description: update meta properties  -->

@@ -10,10 +10,10 @@ origin.date: 11/04/2019
 ms.date: 12/02/2019
 ms.author: v-jay
 ms.openlocfilehash: 195d152b9f8b7c4b4f8eb9cf78441515d078d78b
-ms.sourcegitcommit: 481542df432d52b7d4823811cef94772e4e0f192
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74530614"
 ---
 # <a name="azure-data-box-disk-security-and-data-protection"></a>Azure Data Box Disk 安全性和数据保护

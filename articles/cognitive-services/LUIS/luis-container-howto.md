@@ -13,10 +13,10 @@ origin.date: 11/08/2019
 ms.date: 12/04/2019
 ms.author: v-lingwu
 ms.openlocfilehash: 3bb695ca1e84b44b742b5be71a27ac10f6cc5585
-ms.sourcegitcommit: 3d27913e9f896e34bd7511601fb428fc0381998b
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74982060"
 ---
 # <a name="install-and-run-luis-docker-containers"></a>安装并运行 LUIS docker 容器
@@ -220,17 +220,17 @@ ApiKey={API_KEY}
 
 [!INCLUDE [Running multiple containers on the same host](../../../includes/cognitive-services-containers-run-multiple-same-host.md)]
 
-## 容器支持的终结点 API <a name="query-the-containers-prediction-endpoint"></a>
+## <a name="endpoint-apis-supported-by-the-container"></a>容器支持的终结点 API <a name="query-the-containers-prediction-endpoint"></a>
 
 容器同时提供了 V2 和 [V3](luis-migration-api-v3.md) 版 API。 
 
-## 查询容器的预测终结点 <a name="gathering-required-parameters"></a>
+## <a name="query-the-containers-prediction-endpoint"></a>查询容器的预测终结点 <a name="gathering-required-parameters"></a>
 
 容器提供了基于 REST 的查询预测终结点 API。 已发布（过渡或生产）应用的终结点包含的路由与已进行版本控制的应用的终结点不同  。
 
 使用主机 `http://localhost:5000`，以获得容器 API。
 
-# <a name="v3-prediction-endpointtabv3"></a>[V3 预测终结点](#tab/v3)
+# <a name="v3-prediction-endpoint"></a>[V3 预测终结点](#tab/v3)
 
 |包类型|HTTP 谓词|路由|查询参数|
 |--|--|--|--|
@@ -246,7 +246,7 @@ ApiKey={API_KEY}
 |`log`|boolean|记录查询，以便以后用于主动学习。 默认值为 false。|
 |`show-all-intents`|boolean|一个布尔值，表示是返回所有意向，还是只返回打分最高的意向。 默认值为 false。|
 
-# <a name="v2-prediction-endpointtabv2"></a>[V2 预测终结点](#tab/v2)
+# <a name="v2-prediction-endpoint"></a>[V2 预测终结点](#tab/v2)
 
 |包类型|HTTP 谓词|路由|查询参数|
 |--|--|--|--|
@@ -269,7 +269,7 @@ ApiKey={API_KEY}
 
 用于查询已发布应用的容器的示例 CURL 命令是：
 
-# <a name="v3-prediction-endpointtabv3"></a>[V3 预测终结点](#tab/v3)
+# <a name="v3-prediction-endpoint"></a>[V3 预测终结点](#tab/v3)
 
 若要查询槽中的模型，请使用以下 API：
 
@@ -295,7 +295,7 @@ curl -G \
 "http://localhost:5000/luis/v3.0/apps/{APP_ID}/versions/{APP_VERSION}/predict"
 ```
 
-# <a name="v2-prediction-endpointtabv2"></a>[V2 预测终结点](#tab/v2)
+# <a name="v2-prediction-endpoint"></a>[V2 预测终结点](#tab/v2)
 
 若要查询槽中的模型，请使用以下 API：
 

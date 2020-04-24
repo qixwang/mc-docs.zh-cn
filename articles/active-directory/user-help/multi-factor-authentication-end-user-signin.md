@@ -15,19 +15,19 @@ ms.reviewer: librown
 ms.custom: end-user, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 53363f35b21462fae72b61a2697be93cad121ed5
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75336021"
 ---
 # <a name="sign-in-to-your-work-or-school-account-using-your-two-factor-verification-method"></a>使用双重验证方法登录到工作或学校帐户
 
 > [!NOTE]
-> 本文旨在逐步讲解典型的登录体验。 有关登录的帮助或者要排查问题，请参阅[使用 Azure 多重身份验证时遇到问题](multi-factor-authentication-end-user-troubleshoot.md)。
+> 本文的目的是了解典型的登录体验。 有关登录的帮助或者要排查问题，请参阅[使用 Azure 多重身份验证时遇到问题](multi-factor-authentication-end-user-troubleshoot.md)。
 
 ## <a name="what-will-your-sign-in-experience-be"></a>登录体验是怎样的？
-根据所选择的第二重验证因素（拨打电话、身份验证应用或短信），你的登录体验有所不同。 请选择最适当地描述了活动的选项：
+根据所选择的第二重验证因素（拨打电话、身份验证应用或短信），登录体验将有所不同。 请选择最适当地描述了活动的选项：
 
 | 如何登录？ |
 | --- |
@@ -35,23 +35,23 @@ ms.locfileid: "75336021"
 | [通过向我的手机发送短信](#signing-in-with-a-text-message)
 | [使用来自 Microsoft 验证器应用的通知](#to-sign-in-with-a-notification-from-the-microsoft-authenticator-app) |
 | 使用来自 Microsoft Authenticator 应用的验证码
-| [使用备用方法，因为我暂时无法使用首选方法](#signing-in-with-an-alternate-method) |
+| [使用备用方法，因为我现在无法使用首选方法](#signing-in-with-an-alternate-method) |
 
-## 电话登录 <a name="signing-in-with-a-phone-call"></a>
+## <a name="signing-in-with-a-phone-call"></a>电话登录 <a name="signing-in-with-a-phone-call"></a>
 以下信息介绍通过拨打手机或办公电话进行双重验证的体验。
 
 1. 使用用户名和密码登录到 Office 365 等应用程序或服务。  
 2. Microsoft 会向你拨打电话。  
 3. 请接听电话并按 # 键。  
 
-## 短信登录 <a name="signing-in-with-a-text-message"></a>
+## <a name="signing-in-with-a-text-message"></a>短信登录 <a name="signing-in-with-a-text-message"></a>
 以下信息介绍通过向手机发送短信进行双重验证的体验：
 
 1. 使用用户名和密码登录到 Office 365 等应用程序或服务。
 2. Microsoft 会向你发送一条包含数字代码的短信。
 3. 在登录页面上提供的框中输入代码。
 
-## 使用 Microsoft 验证器应用登录 <a name="signing-in-with-the-microsoft-authenticator-app-using-notification"></a>
+## <a name="signing-in-with-the-microsoft-authenticator-app"></a>使用 Microsoft 验证器应用登录 <a name="signing-in-with-the-microsoft-authenticator-app-using-notification"></a>
 以下信息介绍使用 Microsoft Authenticator 应用进行双重验证的体验。 使用应用有两种不同方式。 可以在设备上接收推送通知，也可以打开应用以获取验证代码。
 
 ### <a name="to-sign-in-with-a-notification-from-the-microsoft-authenticator-app"></a>使用来自 Microsoft 验证器应用的通知登录
@@ -61,25 +61,25 @@ ms.locfileid: "75336021"
    ![Microsoft 发送通知](./media/multi-factor-authentication-end-user-signin/notify.png)
 
 3. 打开手机上的通知，选择“验证”  键。 如果公司需要 PIN，请在此处输入。
-4. 现在，应该已登录。
+4. 现在你应已登录。
 
 ### <a name="to-sign-in-using-a-verification-code-with-the-microsoft-authenticator-app"></a>使用验证码通过 Microsoft Authenticator 应用登录
 
-如果使用 Microsoft Authenticator 应用获取验证码，则打开应用时会在帐户名称下看到一个数字。 此数字每隔 30 秒更改一次，以便不会使用同一数字两次。 当系统请求提供验证代码时，请打开应用，并使用当前显示的数字。
+如果使用 Microsoft Authenticator 应用获取验证码，则打开应用时会在帐户名称下看到一个数字。 此数字每隔 30 秒更改一次，以便不会使用同一数字两次。 当系统提示你输入验证码时，请打开应用，并使用当前显示的数字。
 
 1. 使用用户名和密码登录到 Office 365 等应用程序或服务。
 2. Microsoft 会提示输入验证码。
 
    ![输入验证码](./media/multi-factor-authentication-end-user-signin/verify3.png)
 
-3. 在手机上打开 Microsoft Authenticator 应用，并在登录框中输入验证码。
+3. 打开手机上的 Microsoft Authenticator 应用，并在登录框中输入该代码。
 
-## 使用替代方法登录 <a name="signing-in-with-an-alternate-method"></a>
-有时，没有将手机或设备设置为首选验证方法。 由于会有这种情况，因此我们建议为帐户设置备用方法。 以下部分介绍当主要方法不可用时如何使用替代方法进行登录。
+## <a name="signing-in-with-an-alternate-method"></a>使用替代方法登录 <a name="signing-in-with-an-alternate-method"></a>
+有时，没有设为首选验证方法的手机或设备。 由于会有这种情况，因此我们建议为帐户设置备用方法。 以下部分介绍当主要方法不可用时如何使用替代方法进行登录。
 
 1. 使用用户名和密码登录到 Office 365 等应用程序或服务。
 2. 选择“使用其他验证选项”  。 此时会显示不同的验证选项，具体将取决于设置了多少个选项。
-3. 选择替代方法并登录。
+3. 选择一种替代方法并登录。
 
    ![使用替代方法](./media/multi-factor-authentication-end-user-signin/alt.png)
 

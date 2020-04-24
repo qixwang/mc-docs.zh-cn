@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.author: v-yeche
 ms.custom: seodec18
 ms.openlocfilehash: 388207a0687ca98bbc61ab48ae7a3e3fbab699b4
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75631597"
 ---
 # <a name="tutorial-utilize-the-azure-resource-manager-template-reference"></a>教程：利用 Azure 资源管理器模板参考

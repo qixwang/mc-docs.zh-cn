@@ -12,13 +12,13 @@ ms.date: 11/13/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 736071140cb12a5a63b5e6b531fe4962dff12625
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75598906"
 ---
-# <a name="heading"></a>使用高级分析处理 Azure Blob 数据
+# <a name="process-azure-blob-data-with-advanced-analytics"></a><a name="heading"></a>使用高级分析处理 Azure Blob 数据
 本文档介绍了如何浏览数据，以及如何从 Azure Blob 存储中存储的数据生成功能。 
 
 ## <a name="load-the-data-into-a-pandas-data-frame"></a>将数据加载到 Pandas 数据帧
@@ -48,7 +48,7 @@ ms.locfileid: "75598906"
 
 现在可以准备浏览数据并在此数据集上生成功能了。
 
-## <a name="blob-dataexploration"></a>数据浏览
+## <a name="data-exploration"></a><a name="blob-dataexploration"></a>数据浏览
 下方为如何使用 Pandas 浏览数据的几个示例：
 
 1. 检查行数和列数 
@@ -94,10 +94,10 @@ ms.locfileid: "75598906"
         #correlation between column_a and column_b
         dataframe_blobdata[['<column_a>', '<column_b>']].corr()
 
-## <a name="blob-featuregen"></a>功能生成
+## <a name="feature-generation"></a><a name="blob-featuregen"></a>功能生成
 可按如下所示使用 Python 生成功能：
 
-### <a name="blob-countfeature"></a>基于指示器值生成功能
+### <a name="indicator-value-based-feature-generation"></a><a name="blob-countfeature"></a>基于指示器值生成功能
 可以按如下方式创建分类功能：
 
 1. 检查分类列的分布：
@@ -116,7 +116,7 @@ ms.locfileid: "75598906"
         #Remove the original column rate_code in df1_with_dummy
         dataframe_blobdata_with_identity.drop('<categorical_column>', axis=1, inplace=True)
 
-### <a name="blob-binningfeature"></a>生成装箱功能
+### <a name="binning-feature-generation"></a><a name="blob-binningfeature"></a>生成装箱功能
 要生成装箱功能，请按如下所示操作：
 
 1. 添加一系列的列，量化数字列
@@ -130,7 +130,7 @@ ms.locfileid: "75598906"
    
         dataframe_blobdata_with_bin_bool = dataframe_blobdata.join(dataframe_blobdata_bin_bool)    
 
-## <a name="sql-featuregen"></a>将数据写回 Azure blob 并在 Azure 机器学习中使用
+## <a name="writing-data-back-to-azure-blob-and-consuming-in-azure-machine-learning"></a><a name="sql-featuregen"></a>将数据写回 Azure blob 并在 Azure 机器学习中使用
 探索过数据并创建必要功能后，可将数据（已采样或已特征化）上传至 Azure blob 并在 Azure 机器学习中使用数据，操作步骤如下：请注意，也可在 Azure 机器学习工作室（经典）中创建其他特征。 
 
 1. 将数据帧写入本地文件

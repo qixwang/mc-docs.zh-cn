@@ -7,10 +7,10 @@ origin.date: 08/16/2019
 ms.author: v-yeche
 ms.date: 12/09/2019
 ms.openlocfilehash: 6cf8ab5d1f0514773af53a99abfadb74dbcc6697
-ms.sourcegitcommit: cf73284534772acbe7a0b985a86a0202bfcc109e
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74885028"
 ---
 # <a name="geo-replication-in-azure-container-registry"></a>Azure 容器注册表中的异地复制
@@ -68,7 +68,7 @@ docker push contosochinaeast.azurecr.cn/public/products/web:1.2
 
 <!--MOONCAKE: CORRECT THE DEPLOYMENT-->
 
-[![“部署到 Azure”](http://azuredeploy.net/deploybutton.png)](https://portal.azure.cn/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-container-registry-geo-replication%2Fazuredeploy.json)
+[![部署到 Azure](http://azuredeploy.net/deploybutton.png)](https://portal.azure.cn/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-container-registry-geo-replication%2Fazuredeploy.json)
 
 <!--MOONCAKE: CORRECT THE DEPLOYMENT-->
 

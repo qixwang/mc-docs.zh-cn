@@ -7,10 +7,10 @@ origin.date: 01/31/2019
 ms.date: 09/23/2019
 ms.author: v-lingwu
 ms.openlocfilehash: 3da9510b73f7cc5dd26f7f73b61ff031cfeeb48c
-ms.sourcegitcommit: 21b02b730b00a078a76aeb5b78a8fd76ab4d6af2
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74839043"
 ---
 # <a name="install-azure-backup-server-on-azure-stack"></a>在 Azure Stack 上安装 Azure 备份服务器
@@ -326,7 +326,7 @@ Azure 备份服务器需要连接到 Azure 备份服务才能成功运行。 若
 | 连接状态 | Azure 订阅 | 备份到 Azure | 备份到磁盘 | 从 Azure 还原 | 从磁盘还原 |
 | --- | --- | --- | --- | --- | --- |
 | 已连接 |活动 |允许 |允许 |允许 |允许 |
-| 已连接 |已过期 |已停止 |已停止 |允许 |允许 |
+| 已连接 |Expired |已停止 |已停止 |允许 |允许 |
 | 已连接 |已取消预配 |已停止 |已停止 |已停止且已删除 Azure 恢复点 |已停止 |
 | 连接断开超过 15 天 |活动 |已停止 |已停止 |允许 |允许 |
 | 连接断开超过 15 天 |Expired |已停止 |已停止 |允许 |允许 |

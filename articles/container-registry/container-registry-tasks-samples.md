@@ -5,15 +5,15 @@ ms.topic: article
 origin.date: 11/14/2019
 ms.date: 12/09/2019
 ms.openlocfilehash: 4ab804a7d863e07571ec70eb22a62d2fa6d26015
-ms.sourcegitcommit: cf73284534772acbe7a0b985a86a0202bfcc109e
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74885123"
 ---
 # <a name="acr-tasks-samples"></a>ACR 任务示例
 
-本文链接到几个 [Azure 容器注册表任务](container-registry-tasks-overview.md)（ACR 任务）方案的示例 `task.yaml` 文件和关联的 Dockerfile。 
+本文链接到几个 `task.yaml`Azure 容器注册表任务[（ACR 任务）方案的示例 ](container-registry-tasks-overview.md) 文件和关联的 Dockerfile。 
 
 有关其他示例，请参阅 [Azure 示例][task-examples]存储库。
 

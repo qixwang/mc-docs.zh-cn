@@ -10,10 +10,10 @@ origin.date: 07/18/2019
 ms.date: 12/02/2019
 ms.author: v-jay
 ms.openlocfilehash: f855e4b93aa448f27f88e38324c5997a2785948f
-ms.sourcegitcommit: 481542df432d52b7d4823811cef94772e4e0f192
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74530604"
 ---
 # <a name="use-the-azure-data-box-heavy-to-migrate-your-file-share-content-to-sharepoint-online"></a>使用 Azure Data Box Heavy 将文件共享内容迁移到 SharePoint Online

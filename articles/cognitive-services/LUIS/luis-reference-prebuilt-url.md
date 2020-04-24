@@ -13,10 +13,10 @@ origin.date: 10/04/2019
 ms.date: 10/27/2019
 ms.author: v-lingwu
 ms.openlocfilehash: 35cca5028568925fe92ae9d034b1e88eb2852d7b
-ms.sourcegitcommit: 676e2c676414ded74b980a1da9eb0de30817afbe
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/27/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75500364"
 ---
 # <a name="url-prebuilt-entity-for-a-luis-app"></a>LUIS 应用的 URL 预生成实体
@@ -31,7 +31,7 @@ URL 托管在 [Recognizers-text](https://github.com/Microsoft/Recognizers-Text/b
 
 `https://luis.azure.cn is a great cognitive services example of artificial intelligence`
 
-#### <a name="v3-responsetabv3"></a>[V3 响应](#tab/V3)
+#### <a name="v3-response"></a>[V3 响应](#tab/V3)
 
 以下 JSON 的 `verbose` 参数设置为 `false`：
 
@@ -42,7 +42,7 @@ URL 托管在 [Recognizers-text](https://github.com/Microsoft/Recognizers-Text/b
     ]
 }
 ```
-#### <a name="v3-verbose-responsetabv3-verbose"></a>[V3 详细响应](#tab/V3-verbose)
+#### <a name="v3-verbose-response"></a>[V3 详细响应](#tab/V3-verbose)
 
 以下 JSON 的 `verbose` 参数设置为 `true`：
 
@@ -68,7 +68,7 @@ URL 托管在 [Recognizers-text](https://github.com/Microsoft/Recognizers-Text/b
     }
 }
 ```
-#### <a name="v2-responsetabv2"></a>[V2 响应](#tab/V2)
+#### <a name="v2-response"></a>[V2 响应](#tab/V2)
 
 以下示例显示了 https://luis.azure.cn 的解析是人工智能的一个良好认知服务示例
 

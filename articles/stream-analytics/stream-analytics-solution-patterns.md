@@ -9,10 +9,10 @@ ms.topic: conceptual
 origin.date: 06/21/2019
 ms.date: 08/09/2019
 ms.openlocfilehash: e94dab1037dfcb1ee6d7cd6543b247019fb7d6bb
-ms.sourcegitcommit: 3a9c13eb4b4bcddd1eabca22507476fb34f89405
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74528425"
 ---
 # <a name="azure-stream-analytics-solution-patterns"></a>Azure 流分析解决方案模式

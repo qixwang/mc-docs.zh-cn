@@ -10,10 +10,10 @@ origin.date: 04/08/2019
 ms.date: 08/26/2019
 ms.author: v-yeche
 ms.openlocfilehash: dcdd8dd77425ee8267052e3b65ada15b9ca15955
-ms.sourcegitcommit: 734ab3eff1b4d8e87659a3d32a8e5a05d2e381ae
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74528626"
 ---
 <!-- NOTICE:  THIS ARTICLE CHANGE ASIA EAST TO CHINA EAST REGION AND HONG KONG TO GUANG ZHOU-->
@@ -34,7 +34,7 @@ Site Recovery 通过将 Azure VM 数据复制到 Azure 来实现 Azure VM 的灾
 - **在 Azure 区域之间进行复制期间**：Azure VM 灾难恢复的复制流量仅存在于 Azure 中，无需 ExpressRoute 或不使用 ExpressRoute 进行复制。 但是，如果从本地站点连接到主要 Azure 站点中的 Azure VM，则在为这些 Azure VM 设置灾难恢复时，需要注意许多问题。
 - **Azure 区域之间的故障转移**：在服务发生中断时，可将 Azure VM 从主要 Azure 区域故障转移到次要 Azure 区域。 在故障转移到次要区域后，要使用 ExpressRoute 访问次要区域中的 Azure VM，需执行多个步骤。
 
-## <a name="before-you-begin"></a>准备阶段
+## <a name="before-you-begin"></a>开始之前
 
 在开始之前，请确保了解以下概念：
 
@@ -90,7 +90,7 @@ Site Recovery 通过将 Azure VM 数据复制到 Azure 来实现 Azure VM 的灾
     - **源 vNet1**：10.1.0.0/24。
     - **源 vNet2**：10.2.0.0/24。
     - 每个分支虚拟网络都连接到“中心 vNet”  。
-- **中心 vNet**。 有一个中心 vNet **源中心 vNet**：10.10.10.0/24。
+- **中心 vNet**。 中心 vNet“源中心 vNet”：10.10.10.0/24  。
     - 此中心 vNet 充当网关守卫。
     - 跨子网的所有通信都通过此中心进行。
         - **中心 vNet 子网**。 中心 vNet 具有两个子网：
@@ -106,22 +106,22 @@ Site Recovery 通过将 Azure VM 数据复制到 Azure 来实现 Azure VM 的灾
 
 #### <a name="spoke-to-hub"></a>分支到中心
 
-**Direction** | **设置** | **State**
+**方向** | **设置** | **State**
 --- | --- | ---
-分支到中心 | 允许虚拟网络地址 | Enabled
-分支到中心 | 允许转发流量 | Enabled
+分支到中心 | 允许虚拟网络地址 | 已启用
+分支到中心 | 允许转发流量 | 已启用
 分支到中心 | 允许网关传输 | 已禁用
-分支到中心 | 使用删除网关 | Enabled
+分支到中心 | 使用删除网关 | 已启用
 
  ![分支到中心对等互连配置](./media/azure-vm-disaster-recovery-with-expressroute/spoke-to-hub-peering-configuration.png)
 
 #### <a name="hub-to-spoke"></a>中心到分支
 
-**Direction** | **设置** | **State**
+**方向** | **设置** | **State**
 --- | --- | ---
-中心到分支 | 允许虚拟网络地址 | Enabled
-中心到分支 | 允许转发流量 | Enabled
-中心到分支 | 允许网关传输 | Enabled
+中心到分支 | 允许虚拟网络地址 | 已启用
+中心到分支 | 允许转发流量 | 已启用
+中心到分支 | 允许网关传输 | 已启用
 中心到分支 | 使用删除网关 | 已禁用
 
  ![中心到分支对等互连配置](./media/azure-vm-disaster-recovery-with-expressroute/hub-to-spoke-peering-configuration.png)

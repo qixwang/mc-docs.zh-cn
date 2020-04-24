@@ -13,10 +13,10 @@ ms.custom: seo-lt-2019
 origin.date: 08/25/2019
 ms.date: 01/06/2020
 ms.openlocfilehash: a9de6778eb7a6ff5953fc47490cd2e7527b25232
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75624240"
 ---
 # <a name="copy-data-to-and-from-azure-database-for-mysql-using-azure-data-factory"></a>使用 Azure 数据工厂向/从 Azure Database for MySQL 复制数据
@@ -46,10 +46,10 @@ Azure 数据工厂提供内置的驱动程序用于启用连接，因此无需�
 
 Azure Database for MySQL 链接服务支持以下属性：
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：**AzureMySql** | 是 |
-| connectionString | 指定连接到 Azure Database for MySQL 实例所需的连接信息。 <br/> 还可以将密码放在 Azure 密钥保管库中，并从连接字符串中拉取 `password` 配置。 有关更多详细信息，请参阅以下示例和[将凭据存储在 Azure 密钥保管库中](store-credentials-in-key-vault.md)一文。 | 是 |
+| connectionString | 指定连接到 Azure Database for MySQL 实例所需的连接信息。 <br/> 还可以将密码放在 Azure 密钥保管库中，并从连接字符串中拉取 `password` 配置。 有关更多详细信息，请参阅以下示例和[在 Azure 密钥保管库中存储凭据](store-credentials-in-key-vault.md)一文。 | 是 |
 | connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 如果数据存储位于专用网络，则可以使用 Azure Integration Runtime 或自承载集成运行时。 如果未指定，则使用默认 Azure Integration Runtime。 |否 |
 
 典型的连接字符串为 `Server=<server>.mysql.database.chinacloudapi.cn;Port=<port>;Database=<database>;UID=<username>;PWD=<password>`。 你可以根据自己的情况设置更多属性：
@@ -109,7 +109,7 @@ Azure Database for MySQL 链接服务支持以下属性：
 
 要从 Azure Database for MySQL 复制数据，请将数据集的 type 属性设置为 **AzureMySqlTable**。 支持以下属性：
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为：**AzureMySqlTable** | 是 |
 | tableName | MySQL 数据库中的表名。 | 否（如果指定了活动源中的“query”） |
@@ -140,10 +140,10 @@ Azure Database for MySQL 链接服务支持以下属性：
 
 若要从 Azure Database for MySQL 复制数据，复制活动的 **source** 节需要支持以下属性：
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
 | type | 复制活动 source 的 type 属性必须设置为：**AzureMySqlSource** | 是 |
-| query | 使用自定义 SQL 查询读取数据。 例如：`"SELECT * FROM MyTable"`。 | 否（如果指定了数据集中的“tableName”） |
+| 查询 | 使用自定义 SQL 查询读取数据。 例如：`"SELECT * FROM MyTable"`。 | 否（如果指定了数据集中的“tableName”） |
 | queryCommandTimeout | 查询请求超时前的等待时间。默认值为 120 分钟 (02:00:00) | 否 |
 
 **示例：**
@@ -182,7 +182,7 @@ Azure Database for MySQL 链接服务支持以下属性：
 
 将数据复制到 Azure Database for MySQL 时，复制活动的 **sink** 节支持以下属性：
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
 | type | 复制活动接收器的 type 属性必须设置为：**AzureMySqlSink** | 是 |
 | preCopyScript | 每次运行时将数据写入 Azure Database for MySQL 之前，为要执行的复制活动指定 SQL 查询。 可以使用此属性清除预加载的数据。 | 否 |

@@ -14,10 +14,10 @@ origin.date: 08/26/2019
 ms.date: 10/21/2019
 ms.author: apimpm
 ms.openlocfilehash: d1e8e94c206ea946cbe7a6e5452aaaa319b7a08c
-ms.sourcegitcommit: 9e92bcf6aa02fc9e7b3a29abadf6b6d1a8ece8c4
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74389064"
 ---
 # <a name="how-to-migrate-azure-api-management-across-regions"></a>如何跨区域迁移 Azure API 管理
@@ -45,6 +45,6 @@ ms.locfileid: "74389064"
 1. 将在步骤 1 中创建的备份还原到目标区域中的新 API 管理实例。  
 
 
-## <a name="next-steps"></a>后续步骤
+## <a name="next-steps"></a><a name="next-steps"> </a>后续步骤
 * 有关备份和还原功能的详细信息，请参阅[如何实现灾难恢复](api-management-howto-disaster-recovery-backup-restore.md)。
 * 若要了解如何迁移 Azure 资源，请参阅 [Azure 跨区域迁移指南](https://github.com/Azure/Azure-Migration-Guidance)。

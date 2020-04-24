@@ -17,10 +17,10 @@ origin.date: 07/15/2019
 ms.date: 11/25/2019
 ms.author: v-yeche
 ms.openlocfilehash: 3c6b2c0dfea04d312e0f47b9802df2740e0a96c8
-ms.sourcegitcommit: 298eab5107c5fb09bf13351efeafab5b18373901
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74657911"
 ---
 # <a name="azure-powershell-samples-for-virtual-network"></a>适用于虚拟网络的 Azure PowerShell 示例

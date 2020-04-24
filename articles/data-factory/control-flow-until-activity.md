@@ -13,10 +13,10 @@ ms.topic: conceptual
 origin.date: 01/10/2018
 ms.date: 01/06/2020
 ms.openlocfilehash: df2b67c2067308b2908f0a7419a4a7d3b2b0361e
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75624219"
 ---
 # <a name="until-activity-in-azure-data-factory"></a>Azure 数据工厂中的 Until 活动
@@ -52,12 +52,12 @@ Until 活动提供的功能与 do-until 循环结构以编程语言提供的功�
 
 ## <a name="type-properties"></a>Type 属性
 
-属性 | 说明 | 允许的值 | 必须
+properties | 说明 | 允许的值 | 必选
 -------- | ----------- | -------------- | --------
 name | `Until` 活动的名称。 | String | 是
 type | 必须设置为 Until  。 | String | 是
-expression | 计算结果必须为 true 或 false 的表达式 | 表达式。  | 是
-timeout | 此处在指定的时间之后 do-until 循环超时。 | 字符串。 `d.hh:mm:ss` 或 `hh:mm:ss` 默认值为 7 天。 最大值为：90 天。 | 否
+表达式 | 计算结果必须为 true 或 false 的表达式 | 表达式。  | 是
+timeout | 此处在指定的时间之后 do-until 循环超时。 | 字符串。 `d.hh:mm:ss` 或 `hh:mm:ss` 默认值为 7 天。 最大值为 90 天。 | 否
 活动 | 在表达式计算结果为 `true` 前将执行的活动集。 | 活动数组 |  是
 
 ## <a name="example-1"></a>示例 1
@@ -66,7 +66,7 @@ timeout | 此处在指定的时间之后 do-until 循环超时。 | 字符串。
 > 本部分提供运行管道的 JSON 定义和示例 PowerShell 命令。 有关使用 Azure PowerShell 和 JSON 定义创建数据工厂管道的分步说明演练，请参阅[教程：使用 Azure PowerShell 创建数据工厂](quickstart-create-data-factory-powershell.md)。
 
 ### <a name="pipeline-with-until-activity"></a>包含 Until 活动的管道
-在此示例中，管道包含两个活动：**Until** 和 **Wait**。 在循环中运行 Web 活动之前，Wait 活动会等待指定的期间。 若要了解数据工厂中的表达式和函数，请参阅[表达式语言和函数](control-flow-expression-language-functions.md)。 
+在此示例中，管道具有两个活动：**Until** 和 **Wait**。 在循环中运行 Web 活动之前，Wait 活动会等待指定的期间。 若要了解数据工厂中的表达式和函数，请参阅[表达式语言和函数](control-flow-expression-language-functions.md)。 
 
 ```json
 {

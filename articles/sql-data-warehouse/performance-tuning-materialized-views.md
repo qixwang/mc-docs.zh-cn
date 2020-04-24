@@ -13,10 +13,10 @@ ms.author: v-jay
 ms.reviewer: nibruno; jrasnick
 ms.custom: seo-lt-2019
 ms.openlocfilehash: 978e09839ef90c5e8ee9ddc0bd7d8222c9941bbf
-ms.sourcegitcommit: 369038a7d7ee9bbfd26337c07272779c23d0a507
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74808062"
 ---
 # <a name="performance-tuning-with-materialized-views"></a>使用具体化视图优化性能 
@@ -36,10 +36,10 @@ Azure SQL 数据仓库支持标准视图和具体化视图。  两者都是使�
 
 | 比较                     | 查看                                         | 具体化视图             
 |:-------------------------------|:---------------------------------------------|:--------------------------------------------------------------| 
-|视图定义                 | 存储在 Azure 数据仓库中。              | 存储在 Azure 数据仓库中。    
+|查看定义                 | 存储在 Azure 数据仓库中。              | 存储在 Azure 数据仓库中。    
 |视图内容                    | 每次使用视图时生成。   | 在创建视图期间经过预处理并存储在 Azure 数据仓库中。 随着在基础表中添加数据而不断更新。                                             
 |数据刷新                    | 始终更新                               | 始终更新                          
-|从复杂查询检索视图数据的速度     | 较慢                                         | 快速  
+|从复杂查询检索视图数据的速度     | 较慢                                         | Fast  
 |额外的存储                   | 否                                           | 是                             
 |语法                          | CREATE VIEW                                  | CREATE MATERIALIZED VIEW AS SELECT           
      
@@ -57,7 +57,7 @@ Azure SQL 数据仓库支持标准视图和具体化视图。  两者都是使�
  
 与其他数据仓库提供程序相比，在 Azure SQL 数据仓库中实现的具体化视图还提供以下附加优势： 
 
-- 使用基表中的数据更改以同步方式自动刷新数据。 不需要用户操作。 
+- 使用基表中的数据更改以同步方式自动刷新数据。 不需要任何用户操作。 
 - 广泛的聚合函数支持。 请参阅 [CREATE MATERIALIZED VIEW AS SELECT (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?view=azure-sqldw-latest)。
 - 支持特定于查询的具体化视图建议。  请参阅 [EXPLAIN (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/queries/explain-transact-sql?view=azure-sqldw-latest)。
 

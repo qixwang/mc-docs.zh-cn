@@ -17,10 +17,10 @@ origin.date: 02/22/2017
 ms.date: 11/26/2018
 ms.author: v-lingwu
 ms.openlocfilehash: 354786e8b0aaffb7c78828191b880a6f5240e766
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75336391"
 ---
 # <a name="perform-network-intrusion-detection-with-network-watcher-and-open-source-tools"></a>使用网络观察程序和开源工具执行网络入侵检测
@@ -29,7 +29,7 @@ ms.locfileid: "75336391"
 
 Suricata 就是这样的一种开源工具，它是一个 IDS 引擎，可使用规则集来监视网络流量，每当出现可疑事件时，它会触发警报。 Suricata 提供多线程引擎，意味着它能够以更高的速度和效率执行网络流量分析。 有关 Suricata 及其功能的更多详细信息，请访问其网站 https://suricata-ids.org/ 。
 
-## <a name="scenario"></a>方案
+## <a name="scenario"></a>场景
 
 本文介绍如何将环境设置为使用网络观察程序、Suricata 和 Elastic Stack 执行网络入侵检测。 网络观察程序提供用于执行网络入侵检测的数据包捕获。 Suricata 处理数据包捕获，并根据与其给定威胁规则集匹配的数据包触发警报。 这些警报存储在本地计算机上的某个日志文件中。 使用 Elastic Stack 可为 Suricata 生成的日志编制索引，并使用这些日志创建 Kibana 仪表板，提供日志的可视化形式，同时，提供潜在网络漏洞的见解。  
 
@@ -243,7 +243,7 @@ tail -f /var/log/suricata/fast.log
 
 ### <a name="create-a-kibana-dashboard"></a>创建 Kibana 仪表板
 
-在本文中，我们提供了一个示例仪表板用于查看警报中的趋势和详细信息。
+在本文中，我们提供了一个示例仪表板，用于查看警报中的趋势和详细信息。
 
 1. 在[此处](https://aka.ms/networkwatchersuricatadashboard)下载仪表板文件，在[此处](https://aka.ms/networkwatchersuricatavisualization)下载可视化效果文件，在[此处](https://aka.ms/networkwatchersuricatasavedsearch)下载已保存的搜索文件。
 
@@ -279,7 +279,7 @@ tail -f /var/log/suricata/fast.log
 
 有关创建自定义可视化效果和仪表板的更多文档，请参阅 [Kibana 的正式文档](https://www.elastic.co/guide/en/kibana/current/introduction.html)。
 
-## <a name="conclusion"></a>结论
+## <a name="conclusion"></a>结束语
 
 通过将网络观察程序提供的数据包捕获与 Suricata 等开源 IDS 工具相结合，可以针对各种威胁执行网络入侵检测。 使用这些仪表板可以快速探查网络中的趋势和异常，以及挖掘数据来发现恶意用户代理或有漏洞的端口触发警报的根本原因。 使用这些提取的数据，可以在如何抵御网络中的任何有害入侵企图方面做出明智的决策，并创建规则来防范网络中将来发生入侵。
 

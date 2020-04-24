@@ -10,10 +10,10 @@ author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
 ms.openlocfilehash: db46a6eb2c1283841ac5a2685388c1620e13cc66
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75598364"
 ---
 # <a name="two-class-logistic-regression-module"></a>双类逻辑回归模块
@@ -30,7 +30,7 @@ ms.locfileid: "75598364"
   
 在此模块中，分类算法针对二分变量或二元变量进行了优化。 如果需要对多个结果进行分类，请使用[多类逻辑回归](./multiclass-logistic-regression.md)模块。
 
-##  <a name="how-to-configure"></a>如何配置  
+##  <a name="how-to-configure"></a>配置方式  
 
 若要训练此模型，必须提供一个包含标签或分类列的数据集。 因为此模块专用于解决双类问题，所以标签或分类列必须包含恰好两个值。 
 

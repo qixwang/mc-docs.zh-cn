@@ -12,10 +12,10 @@ ms.date: 10/15/2018
 ms.author: v-jay
 ms.reviewer: igorstan
 ms.openlocfilehash: 3763d65cfad305ae57e629bbbb045b0f580f95a4
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75624338"
 ---
 # <a name="t-sql-language-elements-supported-in-azure-sql-data-warehouse"></a>Azure SQL 数据仓库中支持的 T-SQL 语言元素
@@ -53,7 +53,7 @@ ms.locfileid: "75624338"
 * [-（负）](https://msdn.microsoft.com/library/ms189480.aspx)
 * [-（减）](https://msdn.microsoft.com/library/ms189518.aspx)
 * [*（乘）](https://msdn.microsoft.com/library/ms176019.aspx)
-* [/（除）](https://msdn.microsoft.com/library/ms175009.aspx)
+* [/ (Divide)](https://msdn.microsoft.com/library/ms175009.aspx)
 * [取模](https://msdn.microsoft.com/library/ms190279.aspx)
 
 ## <a name="wildcard-characters-to-match"></a>要匹配的通配符
@@ -71,7 +71,7 @@ ms.locfileid: "75624338"
 * [IS [NOT] NULL](https://msdn.microsoft.com/library/ms188795.aspx)
 * [LIKE](https://msdn.microsoft.com/library/ms179859.aspx)
 * [NOT](https://msdn.microsoft.com/library/ms189455.aspx)
-* [或](https://msdn.microsoft.com/library/ms188361.aspx)
+* [OR](https://msdn.microsoft.com/library/ms188361.aspx)
 
 ### <a name="bitwise-operators"></a>位运算符
 * [&（位与）](https://msdn.microsoft.com/library/ms174965.aspx)

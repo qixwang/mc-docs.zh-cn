@@ -10,10 +10,10 @@ ms.author: lazzeri
 author: FrancescaLazzeri
 ms.date: 11/04/2019
 ms.openlocfilehash: 7373e92f29aa54772abdee52d012e9737e698161
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75599088"
 ---
 # <a name="deep-learning-vs-machine-learning"></a>深度学习与机器学习

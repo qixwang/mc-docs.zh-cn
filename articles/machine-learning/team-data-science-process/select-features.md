@@ -12,10 +12,10 @@ ms.date: 11/21/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: ceba45669cd62124bb753c6fa47b56187975789b
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75599295"
 ---
 # <a name="feature-selection-in-the-team-data-science-process-tdsp"></a>Team Data Science Process (TDSP) 中的功能选择
@@ -24,7 +24,7 @@ ms.locfileid: "75599295"
 特征的工程设计和选择是 [Team Data Science Process (TDSP) 是什么？](overview.md)一文中所述的 Team Data Science Process (TDSP) 的一部分。 特征工程和选择是 TDSP 的**开发特征**步骤的一部分。
 
 * **特征工程**：该过程尝试从数据中的现有原始特征创建其他相关特征，并提高学习算法的预测能力。
-* **特性选择**：该过程选择原始数据特征的关键子集，试图降低定型问题的维度。
+* **特征选择**：该过程选择原始数据特征的关键子集，试图降低定型问题的维度。
 
 通常，首先应用**特征工程**生成其他特征，然后执行**特征选择**步骤，消除不相关、冗余或高度相关的特征。
 
@@ -58,7 +58,7 @@ ms.locfileid: "75599295"
 
 通过应用此[基于筛选器的特征选择][filter-based-feature-selection]模块，将从256 个特征中选出 50 个，因为它们基于评分方法“皮尔逊相关”具有与目标变量“Col1”最相关的特征。
 
-## <a name="conclusion"></a>结论
+## <a name="conclusion"></a>结束语
 特征工程和特征选择是两个常见的工程和选择的特征，用于提高定型过程的效率，此过程尝试提取数据中包含的关键信息。 它们还提高了这些模型准确分类输入数据以及更加可靠地预测感兴趣的结果的能力。 特征工程和选择也可以结合起来使用，以使学习在计算上更易处理。 它通过增加然后减少校准或定型模型所需的特征数量来实现这一目标。 从数学上来说，所选的定型模型的特征是一组最小的独立变量，它们解释数据中的模式，并成功预测结果。
 
 并不总是必须执行特征工程或特征选择。 根据收集的数据、选择的算法以及实验的目的决定是否需要。

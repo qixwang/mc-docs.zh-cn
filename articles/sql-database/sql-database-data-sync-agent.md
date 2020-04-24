@@ -13,10 +13,10 @@ ms.reviewer: carlrab
 origin.date: 12/20/2018
 ms.date: 12/16/2019
 ms.openlocfilehash: e6c99fb48c255d5e14d2cb355ede23bbddda4625
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75336066"
 ---
 # <a name="data-sync-agent-for-azure-sql-data-sync"></a>Azure SQL 数据同步的 Data Sync Agent
@@ -24,7 +24,7 @@ ms.locfileid: "75336066"
 通过安装并配置 Azure SQL 数据同步的 Data Sync Agent 来将数据与本地 SQL Server 数据库进行同步。有关 SQL 数据同步的详细信息，请参阅[使用 SQL 数据同步跨多个云和本地数据库同步数据](sql-database-sync-data.md)。
 
 > [!IMPORTANT]
-> 目前，Azure SQL 数据同步**不**支持 Azure SQL 数据库托管实例。
+> 目前，Azure SQL 数据同步不支持 Azure SQL 数据库托管实例  。
 
 ## <a name="download-and-install"></a>下载并安装
 
@@ -48,7 +48,7 @@ msiexec /i "SQLDataSyncAgent-2.0-x86-ENU.msi" TARGETDIR="C:\Program Files (x86)\
 
 若要配置 Data Sync Agent 以便可以将数据与一个或多个本地 SQL Server 数据库进行同步，请参阅[添加本地 SQL Server 数据库](sql-database-get-started-sql-data-sync.md#add-on-prem)。
 
-## <a name="agent-faq"></a> Data Sync Agent 常见问题解答
+## <a name="data-sync-agent-faq"></a><a name="agent-faq"></a> Data Sync Agent 常见问题解答
 
 ### <a name="why-do-i-need-a-client-agent"></a>为什么需要客户端代理
 
@@ -80,7 +80,7 @@ SQL 数据同步服务通过客户端代理与 SQL Server 数据库进行通信�
 4. 客户端代理下载以前已注册的本地数据库列表时，请稍候。
 5. 为显示为无法访问的所有数据库提供数据库凭据。 这些数据库必须可从安装代理的新计算机上访问。
 
-## <a name="agent-tshoot"></a> 解决 Data Sync Agent 问题
+## <a name="troubleshoot-data-sync-agent-issues"></a><a name="agent-tshoot"></a> 解决 Data Sync Agent 问题
 
 - [客户端代理安装、卸载或修复失败](#agent-install)
 
@@ -96,7 +96,7 @@ SQL 数据同步服务通过客户端代理与 SQL Server 数据库进行通信�
 
 - [本地同步代理应用无法连接到本地同步服务](#agent-connect)
 
-### <a name="agent-install"></a>客户端代理安装、卸载或修复失败
+### <a name="the-client-agent-install-uninstall-or-repair-fails"></a><a name="agent-install"></a>客户端代理安装、卸载或修复失败
 
 - **原因**。 许多情况会导致这种失败。 若要确定具体原因，请查看日志。
 
@@ -107,7 +107,7 @@ SQL 数据同步服务通过客户端代理与 SQL Server 数据库进行通信�
 
     也可以对 Windows Installer 执行的所有安装启用日志记录。 Microsoft 知识库文章[如何启用 Windows Installer 日志记录](https://support.microsoft.com/help/223300/how-to-enable-windows-installer-logging)提供了启用 Windows Installer 的日志记录的一键式解决方案。 此外它还提供了日志的位置。
 
-### <a name="agent-uninstall"></a>取消卸载后，客户端代理无法正常运行
+### <a name="the-client-agent-doesnt-work-after-i-cancel-the-uninstall"></a><a name="agent-uninstall"></a>取消卸载后，客户端代理无法正常运行
 
 即使取消卸载，客户端代理仍然无法正常运行。
 
@@ -118,7 +118,7 @@ SQL 数据同步服务通过客户端代理与 SQL Server 数据库进行通信�
     -   使用 services.msc 重新输入客户端代理的凭据。
     -   卸载此客户端代理并安装新代理。 从[下载中心](https://www.microsoft.com/download/details.aspx?id=27693)下载和安装最新的客户端代理。
 
-### <a name="agent-list"></a>代理列表中未列出我的数据库
+### <a name="my-database-isnt-listed-in-the-agent-list"></a><a name="agent-list"></a>代理列表中未列出我的数据库
 
 尝试将现有 SQL Server 数据库添加到同步组时，代理列表中未显示该数据库。
 
@@ -137,7 +137,7 @@ SQL 数据同步服务通过客户端代理与 SQL Server 数据库进行通信�
 
     本地代理仅在首次提交代理密钥时下载关联的数据库列表。 以后提交代理密钥时，它不会下载关联的数据库列表。 在代理移动期间注册的数据库不会显示在原始代理实例中。
 
-### <a name="agent-start"></a>客户端代理未启动（错误 1069）
+### <a name="client-agent-doesnt-start-error-1069"></a><a name="agent-start"></a>客户端代理未启动（错误 1069）
 
 发现代理未在托管 SQL Server 的计算机上运行。 尝试手动启动代理时出现一个对话框，其中显示消息“错误 1069: 由于登录失败，服务未启动。”
 
@@ -148,7 +148,7 @@ SQL 数据同步服务通过客户端代理与 SQL Server 数据库进行通信�
 - **解决方法**。 将代理的密码更新为当前服务器密码：
 
   1. 找到 SQL 数据同步客户端代理服务。  
-    a. 选择“启动”。   
+    a. 选择“开始”  。  
     b. 在搜索框中输入 **services.msc**。  
     c. 在搜索结果中，选择“服务”。   
     d. 在“服务”  窗口中，滚动到 **SQL Data Sync Agent** 所对应的条目。  
@@ -161,7 +161,7 @@ SQL 数据同步服务通过客户端代理与 SQL Server 数据库进行通信�
   1. 在“服务”窗口中，右键单击“SQL Data Sync Agent”服务并单击“启动”。   
   1. 关闭“服务”  窗口。
 
-### <a name="agent-key"></a>无法提交代理密钥
+### <a name="i-cant-submit-the-agent-key"></a><a name="agent-key"></a>无法提交代理密钥
 
 创建或重新创建代理密钥后，尝试通过 SqlAzureDataSyncAgent 应用程序提交该密钥时， 提交过程无法完成。
 
@@ -197,7 +197,7 @@ SQL 数据同步服务通过客户端代理与 SQL Server 数据库进行通信�
   1. 选择“确定”  。
   1. 关闭程序。
 
-### <a name="agent-delete"></a>如果与客户端代理关联的本地数据库不可访问，则无法从门户删除该客户端代理
+### <a name="the-client-agent-cant-be-deleted-from-the-portal-if-its-associated-on-premises-database-is-unreachable"></a><a name="agent-delete"></a>如果与客户端代理关联的本地数据库不可访问，则无法从门户删除该客户端代理
 
 如果注册到 SQL 数据同步客户端代理的本地终结点（即数据库）不可访问，则无法将该客户端代理删除。
 
@@ -208,7 +208,7 @@ SQL 数据同步服务通过客户端代理与 SQL Server 数据库进行通信�
 > [!NOTE]
 > 如果在执行“强制删除”后，同步元数据表仍然存在，请使用 `deprovisioningutil.exe` 将其清除。
 
-### <a name="agent-connect"></a>本地同步代理应用无法连接到本地同步服务
+### <a name="local-sync-agent-app-cant-connect-to-the-local-sync-service"></a><a name="agent-connect"></a>本地同步代理应用无法连接到本地同步服务
 
 - **解决方法**。 请尝试以下步骤：
 

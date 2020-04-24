@@ -10,10 +10,10 @@ origin.date: 05/24/2019
 ms.date: 12/02/2019
 ms.author: v-jay
 ms.openlocfilehash: 3caaf724c148170f052e713e3b3d624d44219437
-ms.sourcegitcommit: 9597d4da8af58009f9cef148a027ccb7b32ed8cf
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74655226"
 ---
 # <a name="use-azure-data-box-or-azure-data-box-heavy-to-send-data-to-appropriate-azure-storage-blob-tier"></a>使用 Azure Data Box 或 Azure Data Box Heavy 将数据发送到合适的 Azure 存储 Blob 层
@@ -55,7 +55,7 @@ Data Box 设备中的数据上传到默认层后，可能需要将数据移到�
 
 以下步骤介绍如何使用 Azure PowerShell 脚本将 Blob 层设置为存档存储层。
 
-1. 打开已提升的 Windows PowerShell 会话。 请确保运行的是 PowerShell 5.0 或更高版本。 键入：
+1. 打开提升的 Windows PowerShell 会话。 请确保运行的是 PowerShell 5.0 或更高版本。 键入：
 
    `$PSVersionTable.PSVersion`     
 

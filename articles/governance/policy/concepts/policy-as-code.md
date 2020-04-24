@@ -7,10 +7,10 @@ ms.date: 12/16/2019
 ms.service: azure-policy
 ms.topic: conceptual
 ms.openlocfilehash: 533a03e12945740019b565fa59ef3fdc9a134736
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75335810"
 ---
 # <a name="design-policy-as-code-workflows"></a>将策略设计为代码工作流

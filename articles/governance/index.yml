@@ -13,10 +13,10 @@ metadata:
   origin.date: 09/10/2019
   ms.date: 12/18/2019
   ms.openlocfilehash: ba4f1e0eb1ad5e9d49c2ff2c8e2d0010ec0c48d0
-  ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+  ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 12/25/2019
+  ms.lasthandoff: 04/17/2020
   ms.locfileid: "75336341"
 highlightedContent:
   items:
@@ -116,7 +116,7 @@ additionalContent:
       - text: REST
         url: https://docs.microsoft.com/rest/api/guestconfiguration/
         note: （来宾配置）
-      - text: Resource Manager 模板
+      - text: 资源管理器模板
         url: https://docs.microsoft.com/azure/templates/microsoft.authorization/allversions
     - title: Azure Resource Graph
       links:
@@ -156,6 +156,6 @@ additionalContent:
       - text: REST
         url: https://docs.microsoft.com/rest/api/consumption
         note: （消耗）
-      - text: Resource Manager 模板
+      - text: 资源管理器模板
         url: https://docs.microsoft.com/azure/templates/microsoft.consumption/budgets
   footer: '[Azure 支持](https://support.azure.cn/support/support-azure/)'

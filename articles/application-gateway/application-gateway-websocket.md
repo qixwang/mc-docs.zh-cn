@@ -9,10 +9,10 @@ ms.topic: conceptual
 origin.date: 11/16/2019
 ms.date: 11/21/2019
 ms.openlocfilehash: afce35b7472b909bb568a0513b76c5c90ccaa96f
-ms.sourcegitcommit: fdbd1b6df618379dfeab03044a18c373b5fbb8ec
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74327231"
 ---
 # <a name="overview-of-websocket-support-in-application-gateway"></a>应用程序网关中的 WebSocket 支持概述
@@ -21,7 +21,7 @@ ms.locfileid: "74327231"
 
 以 [RFC6455](https://tools.ietf.org/html/rfc6455) 进行标准化的 WebSocket 协议通过长时间运行的 TCP 连接，让服务器和客户端之间实现全双工通信。 此功能让 Web 服务器和客户端之间能够进行交互性更强的通信。这种通信可以是双向的，而且不像基于 HTTP 的实现那样需要轮询。 不同于 HTTP，WebSocket 的开销很低，并且可以对多个请求/响应重复使用同一 TCP 连接，进而提高资源利用率。 WebSocket 协议设计为通过传统 HTTP 端口 80 和 443 运行。
 
-可以在端口 80 或 443 上继续使用标准 HTTP 侦听器来接收 WebSocket 流量。 随后会使用应用程序网关规则中指定的相应后端池，将 WebSocket 流量定向到已启用 WebSocket 的后端服务器。 后端服务器必须响应应用程序网关探测，如[运行状况探测概述](application-gateway-probe-overview.md)部分中所述。 应用程序网关运行状况探测仅适用于 HTTP/HTTPS。 每个后端服务器必须响应 HTTP 探测，这样，应用程序网关才能将 WebSocket 流量路由到服务器。
+可以在端口 80 或 443 上继续使用标准 HTTP 侦听器来接收 WebSocket 流量。 随后会使用应用程序网关规则中指定的相应后端池，将 WebSocket 流量定向到已启用 WebSocket 的后端服务器。 后端服务器必须响应应用程序网关探测，如[运行状况探测概述](application-gateway-probe-overview.md)部分中所述。 应用程序网关运行状况探测仅适用于 HTTP/HTTPS。 每个后端服务器都必须响应 HTTP 探测器，以便应用程序网关将 WebSocket 流量路由到服务器。
 
 它用在受益于快速实时通信的应用（例如聊天、仪表板和游戏应用）中。
 
@@ -69,7 +69,7 @@ ms.locfileid: "74327231"
 
 ## <a name="backendaddresspool-backendhttpsetting-and-routing-rule-configuration"></a>BackendAddressPool、BackendHttpSetting 和路由规则配置
 
-如果后端池具有已启用 WebSocket 的服务器，那么应使用 BackendAddressPool 对其进行定义。 backendHttpSetting 是使用后端端口 80 和 443 定义的。 HTTP 设置中的请求超时值也适用于 WebSocket 会话。 不需要对路由规则进行更改，可使用路由规则将适当的侦听器绑定到相应的后端地址池。 
+如果后端池具有已启用 WebSocket 的服务器，那么使用 BackendAddressPool 对其进行定义。 使用后端端口 80 和 443 定义 BackendHttpSetting。 HTTP 设置中的请求超时值也适用于 WebSocket 会话。 不需要对路由规则进行更改，可使用路由规则将适当的侦听器绑定到相应的后端地址池。 
 
 ```json
 "requestRoutingRules": [{
@@ -107,7 +107,7 @@ ms.locfileid: "74327231"
 
 ## <a name="websocket-enabled-backend"></a>已启用 WebSocket 的后端
 
-后端必须具有在已配置端口（通常为 80/443）上运行的 HTTP/HTTPS Web 服务器，WebSocket 才能运行。 之所以提出此要求，是因为 WebSocket 协议要求初始握手是 HTTP，且标头字段为升级到 WebSocket 协议。 下面是一个标头示例：
+后端必须具有在已配置端口（通常为 80/443）上运行的 HTTP/HTTPS Web 服务器，WebSocket 才能运行。 此要求是因为 WebSocket 协议要求初始握手是 HTTP，且标头字段为升级到 WebSocket 协议。 下面是一个标头示例：
 
 ```
     GET /chat HTTP/1.1
@@ -120,7 +120,7 @@ ms.locfileid: "74327231"
     Sec-WebSocket-Version: 13
 ```
 
-另一个原因是该应用程序网关后端运行状况探测仅支持 HTTP 和 HTTPS 协议。 如果后端服务器未响应 HTTP 或 HTTPS 探测，会将它从后端池中排除。
+另一个原因是该应用程序网关后端运行状况探测仅支持 HTTP 和 HTTPS 协议。 如果后端服务器未响应 HTTP 或 HTTPS 探测器，则将其从后端池中除去。
 
 ## <a name="next-steps"></a>后续步骤
 

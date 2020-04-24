@@ -13,10 +13,10 @@ origin.date: 03/04/2019
 ms.date: 09/04/2019
 ms.author: v-lingwu
 ms.openlocfilehash: 3e9f7f5c8eced9b38e1925aab082ffdbe6b08265
-ms.sourcegitcommit: 3d27913e9f896e34bd7511601fb428fc0381998b
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74982151"
 ---
 # <a name="common-api-response-codes-and-their-meaning"></a>常见的 API 响应代码及其含义
@@ -36,9 +36,9 @@ ms.locfileid: "74982151"
 |401|创作|你不是所有者或协作者|
 |401|创作|API 调用的顺序无效|
 |403|创作、终结点|超出了每月密钥配额总限制|
-|409|终结点|应用程序仍在加载|
-|410|终结点|需要重新训练和重新发布应用程序|
-|414|终结点|查询超过最大字符限制|
+|409|端点|应用程序仍在加载|
+|410|端点|需要重新训练和重新发布应用程序|
+|414|端点|查询超过最大字符限制|
 |429|创作、终结点|超出速率限制（请求数/秒）|
 
 ## <a name="next-steps"></a>后续步骤

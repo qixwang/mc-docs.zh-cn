@@ -8,10 +8,10 @@ origin.date: 09/20/2019
 ms.date: 11/20/2019
 ms.author: v-lingwu
 ms.openlocfilehash: a9a1d6e7c8d2588bae22031bd6ccdedd441c63a9
-ms.sourcegitcommit: 21b02b730b00a078a76aeb5b78a8fd76ab4d6af2
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74838660"
 ---
 # <a name="azure-backup-server-and-dpm---faq"></a>Azure 备份服务器和 DPM - 常见问题解答
@@ -26,16 +26,16 @@ ms.locfileid: "74838660"
 
 ### <a name="can-i-register-the-server-to-multiple-vaults"></a>是否可以向多个保管库注册服务器？
 
-否。 一个 DPM 或 Azure 备份服务器只能注册到一个保管库。
+不是。 一个 DPM 或 Azure 备份服务器只能注册到一个保管库。
 
 ### <a name="can-i-use-dpm-to-back-up-apps-in-azure-stack"></a>可以使用 DPM 来备份 Azure Stack 中的应用吗？
-否。 可以使用 Azure 备份来保护 Azure Stack，但 Azure 备份不支持使用 DPM 来备份 Azure Stack 中的应用。
+不是。 可以使用 Azure 备份来保护 Azure Stack，但 Azure 备份不支持使用 DPM 来备份 Azure Stack 中的应用。
 
 ### <a name="if-ive-installed-azure-backup-agent-to-protect-my-files-and-folders-can-i-install-system-center-dpm-to-back-up-on-premises-workloads-to-azure"></a>如果已经安装 Azure 备份代理来保护我的文件和文件夹，是否可以安装 System Center DPM 将本地工作负载备份到 Azure？
 是的。 但应首先设置 DPM，然后再安装 Azure 备份代理。  按此顺序安装组件可以确保 Azure 备份代理能够与 DPM 一起工作。 不建议也不支持在安装 DPM 之前安装代理。
 
 ### <a name="why-cant-i-add-an-external-dpm-server-after-installing-ur7-and-latest-azure-backup-agent"></a>在安装 UR7 以及最新 Azure 备份代理之后，为何无法添加外部 DPM 服务器？
-对于通过云对数据源进行保护的 DPM 服务器（使用 Update Rollup 7 之前的更新汇总），必须在安装 UR7 及最新 Azure 备份代理之后等待至少一天，然后才能开始**添加外部 DPM 服务器**。 需要一天的时间才能将 DPM 保护组的元数据上传到 Azure。 首次上传保护组元数据时通过一个每晚执行的作业实现。
+对于通过云对数据源进行保护的 DPM 服务器（使用 Update Rollup 7 之前的更新汇总），必须在安装 UR7 及最新 Azure 备份代理之后等待至少一天，然后才能开始“添加外部 DPM 服务器”  。 需要一天的时间才能将 DPM 保护组的元数据上传到 Azure。 首次上传保护组元数据时通过一个每晚执行的作业实现。
 
 ## <a name="vmware-and-hyper-v-backup"></a>VMware 和 Hyper-V 备份
 
@@ -54,11 +54,11 @@ ms.locfileid: "74838660"
 
 ## <a name="sharepoint"></a>SharePoint
 
-### <a name="can-i-recover-a-sharepoint-item-to-the-original-location-if-sharepoint-is-configured-by-using-sql-alwayson-with-protection-on-disk"></a>如果使用 SQL AlwaysOn（使用磁盘上保护）配置了 SharePoint，我是否能将 SharePoint 项恢复到原始位置？
+### <a name="can-i-recover-a-sharepoint-item-to-the-original-location-if-sharepoint-is-configured-by-using-sql-alwayson-with-protection-on-disk"></a>如果使用 SQL AlwaysOn（使用磁盘上保护）配置了 SharePoint，我能否将 SharePoint 项恢复到原始位置？
 可以，该项可以恢复到原始 SharePoint 站点。
 
-### <a name="can-i-recover-a-sharepoint-database-to-the-original-location-if-sharepoint-is-configured-by-using-sql-alwayson"></a>如果使用 SQL AlwaysOn 配置了 SharePoint，我是否能将 SharePoint 数据库恢复到原始位置？
-由于 SharePoint 数据库是在 SQL AlwaysOn 中配置的，因此除非删除可用性组，否则无法修改它们。 因此，DPM 无法将数据库还原到原始位置。 可以将 SQL Server 数据库恢复到另一个 SQL Server 实例。
+### <a name="can-i-recover-a-sharepoint-database-to-the-original-location-if-sharepoint-is-configured-by-using-sql-alwayson"></a>如果使用 SQL AlwaysOn 配置了 SharePoint，我能否将 SharePoint 数据库恢复到原始位置？
+由于 SharePoint 数据库是在 SQL AlwaysOn 中配置的，因此，除非删除可用性组，否则无法修改它们。 因此，DPM 无法将数据库还原到原始位置。 可以将 SQL Server 数据库恢复到另一个 SQL Server 实例。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -13,17 +13,17 @@ origin.date: 11/12/2019
 ms.date: 12/05/2019
 ms.author: v-lingwu
 ms.openlocfilehash: a690fbb807e0fa81d8004d20fed9dbfea2065b61
-ms.sourcegitcommit: 3d27913e9f896e34bd7511601fb428fc0381998b
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74982043"
 ---
 # <a name="application-settings"></a>应用程序设置
 
 这些应用程序设置存储在[导出的](https://{region}.dev.cognitive.azure.cn/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c40)应用中，并使用 REST API 进行[更新](https://{region}.dev.cognitive.azure.cn/docs/services/5890b47c39e2bb17b84a55ff/operations/versions-update-application-version-settings)。 更改应用版本设置会将应用训练状态重置为“未训练”。
 
-|设置|默认值|注释|
+|设置|默认值|说明|
 |--|--|--|
 |NormalizePunctuation|True|删除标点。|
 |NormalizeDiacritics|True|删除音调符号。|

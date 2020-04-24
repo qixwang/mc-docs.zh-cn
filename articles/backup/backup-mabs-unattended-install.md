@@ -7,10 +7,10 @@ origin.date: 11/13/2018
 ms.date: 11/26/2018
 ms.author: v-lingwu
 ms.openlocfilehash: ccfaabbb27049dfc000e6d09b03fe7895170e557
-ms.sourcegitcommit: 21b02b730b00a078a76aeb5b78a8fd76ab4d6af2
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74838890"
 ---
 # <a name="run-an-unattended-installation-of-azure-backup-server"></a>运行 Azure 备份服务器的无人参与安装

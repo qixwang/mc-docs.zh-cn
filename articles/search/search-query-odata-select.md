@@ -21,10 +21,10 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: 5dae620c13e295997328f499f06f0439de15f3af
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75336496"
 ---
 # <a name="odata-select-syntax-in-azure-cognitive-search"></a>Azure 认知搜索中的 OData $select 语法
@@ -43,7 +43,7 @@ select_expression ::= '*' | field_path(',' field_path)*
 field_path ::= identifier('/'identifier)*
 ```
 
-下面还提供了交互式语法图：
+交互式语法图也可用：
 
 > [!div class="nextstepaction"]
 > [Azure 认知搜索的 OData 语法图](https://azuresearch.github.io/odata-syntax-diagram/#select_expression)
@@ -58,11 +58,11 @@ field_path ::= identifier('/'identifier)*
 
 使用第二种形式时，只能在列表中指定可检索字段。
 
-如果列出一个复杂字段而未显式指定其子字段，则所有可检索的子字段都将包含在查询结果集中。 例如，假设索引有一个 `Address` 字段，其中 `Street`、`City` 和 `Country` 子字段都是可检索的。 如果在 **$select** 中指定 `Address`，查询结果将包括所有三个子字段。
+如果列出一个复杂字段而未显式指定其子字段，则所有可检索的子字段都将包含在查询结果集中。 例如，假设索引有一个 `Address` 字段，其中 `Street`、`City` 和 `Country` 子字段都是可检索的。 如果在 `Address`$select**中指定**，查询结果将包括所有三个子字段。
 
 ## <a name="examples"></a>示例
 
-在结果中包括 `HotelId`、`HotelName` 和 `Rating` 顶级字段，以及 `Address` 的 `City` 子字段：
+在结果中包括 `HotelId`、`HotelName` 和 `Rating` 顶级字段，以及 `City` 的 `Address` 子字段：
 
     $select=HotelId, HotelName, Rating, Address/City
 
@@ -79,7 +79,7 @@ field_path ::= identifier('/'identifier)*
 }
 ```
 
-在结果中包括 `HotelName` 顶级字段，以及 `Address` 的所有子字段，以及 `Rooms` 集合中每个对象的 `Type` 和 `BaseRate` 子字段：
+在结果中包括 `HotelName` 顶级字段，以及 `Address` 的所有子字段，以及 `Type` 集合中每个对象的 `BaseRate` 和 `Rooms` 子字段：
 
     $select=HotelName, Address, Rooms/Type, Rooms/BaseRate
 

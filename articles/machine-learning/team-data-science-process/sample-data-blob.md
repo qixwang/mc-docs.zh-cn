@@ -12,13 +12,13 @@ ms.date: 11/13/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 61caa8b66531d9fbda051eaa7f185bf890eae65b
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75599439"
 ---
-# <a name="heading"></a>对 Azure blob 存储中的数据采样
+# <a name="sample-data-in-azure-blob-storage"></a><a name="heading"></a>对 Azure blob 存储中的数据采样
 
 本文介绍对在 Azure blob 存储中数据进行采样的方法：通过以编程方式下载数据，并使用以 Python 编写的过程对其进行采样。
 
@@ -63,7 +63,7 @@ ms.locfileid: "75599439"
 
 现在可以使用上述具有 1% 样本的数据框架，执行进一步的研究和功能生成。
 
-## <a name="heading"></a>上传数据并读入 Azure 机器学习
+## <a name="upload-data-and-read-it-into-azure-machine-learning"></a><a name="heading"></a>上传数据并读入 Azure 机器学习
 可以使用以下示例代码向下采样数据，并直接在 Azure 机器学习中使用：
 
 1. 将数据帧写入本地文件

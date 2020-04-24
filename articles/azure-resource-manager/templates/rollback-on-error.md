@@ -6,10 +6,10 @@ origin.date: 10/04/2019
 ms.author: v-yeche
 ms.date: 01/06/2020
 ms.openlocfilehash: 259c0ce3fb418c635476ff610d4fa9b2e090c71f
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75631344"
 ---
 # <a name="rollback-on-error-to-successful-deployment"></a>出错时回退以成功部署
@@ -120,7 +120,7 @@ az group deployment create \
 <!--Not Available on [Azure Deployment Manager](deployment-manager-overview.md)-->
 
 - 若要指定如何处理存在于资源组中但未在模板中定义的资源，请参阅 [Azure 资源管理器部署模式](deployment-modes.md)。
-- 若要了解如何在模板中定义参数，请参阅[了解 Azure Resource Manager 模板的结构和语法](template-syntax.md)。
+- 若要了解如何在模板中定义参数，请参阅[了解 Azure 资源管理器模板的结构和语法](template-syntax.md)。
 - 有关部署需要 SAS 令牌的模板的信息，请参阅[使用 SAS 令牌部署专用模板](secure-template-with-sas-token.md)。
 
 <!-- Update_Description: new article about rollback on error -->

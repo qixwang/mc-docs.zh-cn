@@ -9,10 +9,10 @@ origin.date: 11/14/2019
 ms.date: 11/25/2019
 ms.author: v-junlch
 ms.openlocfilehash: 9ac59c9f625db712cdaa0698c3c43f51c1205155
-ms.sourcegitcommit: e74e8aabc1cbd8a43e462f88d07b041e9c4f31eb
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74461661"
 ---
 # <a name="tutorial-create-an-application-gateway-with-a-web-application-firewall-using-the-azure-portal"></a>教程：使用 Azure 门户创建具有 Web 应用程序防火墙的应用程序网关
@@ -248,7 +248,7 @@ Azure 需要一个虚拟网络才能在资源之间通信。 可以创建新的�
 
 1. 在应用程序网关的“概述”页上找到其公共 IP 地址。  ![记下应用程序网关的公共 IP 地址](../media/application-gateway-web-application-firewall-portal/application-gateway-record-ag-address.png) 
 
-   或者，可选择“所有资源”，在搜索框中输入“myAGPublicIPAddress”  ，然后在搜索结果中将其选中。  Azure 会在“概览”页上显示公共 IP 地址。 
+   或者，可以选择“所有资源”，在搜索框中输入“myAGPublicIPAddress”  ，然后在搜索结果中将其选中  。 Azure 会在“概览”页上显示公共 IP 地址。 
 1. 复制该公共 IP 地址，并将其粘贴到浏览器的地址栏。
 1. 检查响应。 有效响应验证应用程序网关是否已成功创建，以及是否能够成功连接后端。
 

@@ -12,10 +12,10 @@ ms.date: 11/13/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: eb253cbee7f270be85306349a181f79202fe5944
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75599436"
 ---
 # <a name="sample-data-in-azure-hdinsight-hive-tables"></a>对 Azure HDInsight Hive 表中的数据进行采样
@@ -33,10 +33,10 @@ ms.locfileid: "75599436"
 ## <a name="how-to-submit-hive-queries"></a>如何提交 Hive 查询
 可从 Hadoop 群集头节点上的 Hadoop 命令行控制台中提交 Hive 查询。 要执行此操作，可登录到 Hadoop 群集的头节点，打开 Hadoop 命令行控制台，并从那里提交 Hive 查询。 有关在 Hadoop 命令行控制台中提交 Hive 查询的说明，请参阅[如何提交 Hive 查询](move-hive-tables.md#submit)。
 
-## <a name="uniform"></a>统一随机采样
+## <a name="uniform-random-sampling"></a><a name="uniform"></a>统一随机采样
 统一随机采样意味着数据集中的每一行都具有相同的采样机会。 通过将额外字段 rand() 添加到内部“select”查询中以及以该随机字段为条件的外部“select”查询中的数据集，可实现它。
 
-示例查询如下：
+下面是一个示例查询：
 
     SET sampleRate=<sample rate, 0-1>;
     select
@@ -51,7 +51,7 @@ ms.locfileid: "75599436"
 
 此处，`<sample rate, 0-1>` 指定用户要采样的记录部分。
 
-## <a name="group"></a>按组随机采样
+## <a name="random-sampling-by-groups"></a><a name="group"></a>按组随机采样
 采样分类数据时，建议包括或排除分类变量的某些值的所有实例。 这一类采样称为“按组采样”。 例如，如果有一个分类变量“State”，其包含值例如 NY、MA、CA、NJ 和 PA，无论是否进行采样，都希望相同州的记录在一起  。
 
 下面是按组采样的示例查询：
@@ -80,10 +80,10 @@ ms.locfileid: "75599436"
         )c
     on b.catfield=c.catfield
 
-## <a name="stratified"></a>分层采样
-如果获取的样本具有的分类值与父填充中该分类值所呈现的比率相同，则针对分类变量对随机采样进行分层。 使用与上面相同的示例，假设数据按状态具有以下观察值：NJ 具有 100 个观察值，NY 具有 60 个观察值，WA 具有 300 个观察值。 如果指定分层采样率为 0.5，那么获取的 NJ、NY 和 WA 的样本应该分别具有大约 50、30 和 150 个观察值。
+## <a name="stratified-sampling"></a><a name="stratified"></a>分层采样
+如果获取的样本具有的分类值与父填充中该分类值所呈现的比率相同，则针对分类变量对随机采样进行分层。 同样使用与上述示例，假设数据具有按州分组的以下观察值：NJ 具有 100 个观察值，NY 具有 60 个观察值，WA 具有 300 个观察值。 如果指定分层采样率为 0.5，那么获取的 NJ、NY 和 WA 的样本应该分别具有大约 50、30 和 150 个观察值。
 
-示例查询如下：
+下面是一个示例查询：
 
     SET sampleRate=<sample rate, 0-1>;
     select

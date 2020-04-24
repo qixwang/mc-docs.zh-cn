@@ -14,10 +14,10 @@ ms.custom: seo-lt-2019
 origin.date: 12/24/2018
 ms.date: 01/06/2020
 ms.openlocfilehash: 80052b04542a56b370dbf6726a8e4623aeb8005e
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75623912"
 ---
 # <a name="delta-copy-from-a-database-with-a-control-table"></a>使用控制表从数据库执行增量复制

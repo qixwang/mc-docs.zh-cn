@@ -11,10 +11,10 @@ services: iot-central
 ms.custom: mvc
 manager: corywink
 ms.openlocfilehash: 2c8e1122116f2fa1e0506f71adebaffc2a33b7ec
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75336241"
 ---
 # <a name="take-a-tour-of-the-azure-iot-central-ui-preview-features"></a>浏览 Azure IoT Central UI（预览功能）

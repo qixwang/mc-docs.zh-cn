@@ -13,10 +13,10 @@ ms.custom: seo-lt-2019
 origin.date: 05/22/2019
 ms.date: 01/06/2020
 ms.openlocfilehash: baeafb3879fbbb698508c9aa22b5f71afd486661
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75624184"
 ---
 # <a name="copy-data-from-sap-business-warehouse-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 SAP Business Warehouse 复制数据

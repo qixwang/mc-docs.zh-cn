@@ -10,13 +10,13 @@ ms.date: 06/17/2019
 ms.author: v-tawe
 ms.custom: include file
 ms.openlocfilehash: 3c554ebb64b4e806d53e44025166c81b13df2d42
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75334637"
 ---
-1. 登录到 [Azure 门户]。
+1. 登录 [Azure 门户]。
 
 2. 单击“创建资源”  。
 
@@ -27,9 +27,9 @@ ms.locfileid: "75334637"
 5. 选择 Web 应用的唯一**名称**。
 
 6. 选择**订阅**。
-7. 在**资源组**下，选择现有资源组，_或_创建新组（使用与应用相同的名称）。
+7. 在“资源组”下  ，选择现有资源组，_或_创建新组（使用与应用相同的名称）。
 8. 选择适当的**应用服务计划/位置**_或_创建一个新的应用服务计划/位置。 
-9. 单击**创建**。 稍等几分钟，等服务部署成功后再继续。 查看门户标题中的通知（铃铛）图标以获取状态更新。
+9. 单击“创建”。  稍等几分钟，等服务部署成功后再继续。 查看门户标题中的通知（铃铛）图标以获取状态更新。
 
 10. 部署完成后，单击“通知(铃声)”图标，然后单击“转到资源”  按钮。 它将导航到刚刚创建的应用服务 Web 应用。 
 

@@ -9,10 +9,10 @@ ms.topic: include
 ms.date: 10/14/2019
 ms.author: diberry
 ms.openlocfilehash: 2b6065ed8f3407ff0b151aede23018ebbcf993b4
-ms.sourcegitcommit: cf73284534772acbe7a0b985a86a0202bfcc109e
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74884539"
 ---
 > [!Caution]

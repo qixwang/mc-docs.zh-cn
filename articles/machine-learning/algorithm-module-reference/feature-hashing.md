@@ -10,10 +10,10 @@ author: xiaoharper
 ms.author: zhanxia
 ms.date: 09/01/2019
 ms.openlocfilehash: 7378e6246c0419d93f9d93f9edfb0d4ccb1d49e6
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75599588"
 ---
 # <a name="feature-hashing-module-reference"></a>“特征哈希处理”模块参考
@@ -111,7 +111,7 @@ ms.locfileid: "75599588"
 
 创建转换的数据集后，可将其用作“训练模型”模块的输入。
  
-### <a name="best-practices"></a>最佳实践
+### <a name="best-practices"></a>最佳做法
 
 以下最佳做法可帮助你充分利用“特征哈希处理”模块：
 

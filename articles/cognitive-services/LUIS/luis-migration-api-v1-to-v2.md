@@ -13,10 +13,10 @@ origin.date: 09/04/2019
 ms.date: 04/02/2019
 ms.author: v-lingwu
 ms.openlocfilehash: eb22104c589392f6490176cc587e319699c2c9c1
-ms.sourcegitcommit: cf73284534772acbe7a0b985a86a0202bfcc109e
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74884582"
 ---
 # <a name="api-v1-to-v2-migration-guide-for-luis-apps"></a>LUIS 应用的 API v1 到 v2 迁移指南
@@ -113,7 +113,7 @@ v2 终结点成功响应：
 |1|/luis/v1.0/prog/subscriptions|
 |1|/luis/v1.0/prog/subscriptions/{subscriptionKey}|
 
-在 Azure 门户中生成了 Azure [终结点密钥](luis-how-to-azure-subscription.md)。 可在[发布](luis-how-to-azure-subscription.md)页上将密钥分配至 LUIS 应用  。 不需要知道实际的密钥值。 LUIS 使用订阅名称来进行分配。 
+在 Azure 门户中生成了 Azure [终结点密钥](luis-how-to-azure-subscription.md)。 可在**发布[页上将密钥分配至 LUIS 应用](luis-how-to-azure-subscription.md)** 。 不需要知道实际的密钥值。 LUIS 使用订阅名称来进行分配。 
 
 ## <a name="new-versioning-route"></a>新的版本控制路由
 [版本](luis-how-to-manage-versions.md)中现包含 v2 模型。 版本名称是路由中的 10 个字符。 默认版本为“0.1”。

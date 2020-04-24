@@ -10,10 +10,10 @@ ms.date: 01/06/2020
 ms.author: v-jay
 ms.subservice: blobs
 ms.openlocfilehash: 55693218e6547adae4ec71e20e609108c5f10be8
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75624141"
 ---
 # <a name="create-or-delete-a-container-in-azure-storage-with-net"></a>使用 .NET 在 Azure 存储中创建或删除容器

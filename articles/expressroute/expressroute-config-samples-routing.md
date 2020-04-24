@@ -16,10 +16,10 @@ origin.date: 12/06/2018
 ms.author: v-yiso
 ms.date: 12/02/2019
 ms.openlocfilehash: d5c2e5990e110bded2a270d624dc940462587106
-ms.sourcegitcommit: 9e92bcf6aa02fc9e7b3a29abadf6b6d1a8ece8c4
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74389459"
 ---
 # <a name="router-configuration-samples-to-setup-and-manage-routing"></a>用于设置和管理路由的路由器配置示例

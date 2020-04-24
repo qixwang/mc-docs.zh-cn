@@ -12,10 +12,10 @@ origin.date: 08/29/2018
 ms.author: v-yiso
 ms.date: 10/15/2018
 ms.openlocfilehash: e53bd0b9f266cf3a68fbf70107adfe19afe20cb6
-ms.sourcegitcommit: 9e92bcf6aa02fc9e7b3a29abadf6b6d1a8ece8c4
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74389441"
 ---
 # <a name="expressroute-workflows-for-circuit-provisioning-and-circuit-states"></a>ExpressRoute 线路预配工作流和线路状态
@@ -31,7 +31,7 @@ ms.locfileid: "74389441"
 
 3. 通过 PowerShell 验证 ExpressRoute 线路预配状态，以确保线路预配成功。 
 
-4. 配置路由域。 如果连接服务提供商管理第 3 层，他们将为你的线路配置路由。 如果连接服务提供商只提供第 2 层服务，必须根据[路由要求](./expressroute-routing.md)和[路由配置](./expressroute-howto-routing-classic.md)页中所述的每条指导原则来配置路由。
+4. 配置路由域 如果连接服务提供商管理第 3 层，则他们将为线路配置路由。 如果连接服务提供商只提供第 2 层服务，必须根据[路由要求](./expressroute-routing.md)和[路由配置](./expressroute-howto-routing-classic.md)页中所述的每条指导原则来配置路由。
 
    * 启用 Azure 专用对等互连 - 启用此对等互连以连接到部署在虚拟网络中的 VM/云服务。
      >[!IMPORTANT]
@@ -40,7 +40,7 @@ ms.locfileid: "74389441"
      > 
      ![](./media/expressroute-workflows/routing-workflow.png)
 
-5. 将虚拟网络链接到 ExpressRoute 线路 - 可以将虚拟网络链接到 ExpressRoute 线路。 请按照说明[将 VNet 链接](./expressroute-howto-linkvnet-arm.md)到你的线路。 这些 VNet 可以位于 ExpressRoute 线路所在的同一 Azure 订阅中，也可以位于不同的订阅中。
+5. 将虚拟网络链接到 ExpressRoute 线路 - 可以将虚拟网络链接到 ExpressRoute 线路。 请按照说明[将 VNet 链接](./expressroute-howto-linkvnet-arm.md)到用户的线路。 这些 VNet 可以位于 ExpressRoute 线路所在的同一 Azure 订阅中，也可以位于不同的订阅中。
 
 ## <a name="expressroute-circuit-provisioning-states"></a>ExpressRoute 线路预配状态
 
@@ -51,7 +51,7 @@ ms.locfileid: "74389441"
 
 “状态”表示 Microsoft 的预配状态。 创建 Expressroute 线路时，此属性设置为 Enabled
 
-连接服务提供商预配状态表示连接服务提供商一端的状态。 该状态可能是“NotProvisioned”  、“Provisioning”  或“Provisioned”  。 ExpressRoute 线路必须处于 Provisioned 状态才可供使用。
+连接服务提供商预配状态表示连接服务提供商一端的状态。 该状态可能是 NotProvisioned  、Provisioning  或 Provisioned  。 ExpressRoute 线路必须处于 Provisioned 状态才可供使用。
 
 ### <a name="possible-states-of-an-expressroute-circuit"></a>ExpressRoute 线路的可能状态
 
@@ -84,7 +84,7 @@ ms.locfileid: "74389441"
 
 **连接服务提供商正在取消预配线路时**
 
-如果已请求服务提供商取消预配 ExpressRoute 线路，当服务提供商完成取消预配过程后，会看到线路已设置为以下状态。
+如果已请求服务提供商取消预配 ExpressRoute 线路，当服务提供商完成取消预配过程后，将看到线路已设置为以下状态。
 
     ServiceProviderProvisioningState : NotProvisioned
     Status                           : Enabled
@@ -93,7 +93,7 @@ ms.locfileid: "74389441"
 如果需要，可以选择重新启用线路，或运行 PowerShell cmdlet 删除线路。  
 
 >[!IMPORTANT]
-> 当 ServiceProviderProvisioningState 为 Provisioning 或 Provisioned 时，如果运行该 PowerShell cmdlet 来删除线路，操作会失败。 请先让连接服务提供商取消 ExpressRoute 线路，然后删除线路。 在运行 PowerShell cmdlet 删除线路之前，Microsoft 会持续收取线路费用。
+> 当 ServiceProviderProvisioningState 为 Provisioning 或 Provisioned 时，如果运行该 PowerShell cmdlet 来删除线路，操作会失败。 请先让连接服务提供商取消设置 ExpressRoute 线路，然后删除该线路。 在运行 PowerShell cmdlet 删除线路之前，Microsoft 会持续收取线路费用。
 > 
 > 
 
@@ -101,9 +101,9 @@ ms.locfileid: "74389441"
 
 BGP 预配状态可让你知道 Microsoft 边缘是否已启用 BGP 会话。 必须处于已启用状态才能使用对等互连。
 
-必须特意检查 Microsoft 对等互连的 BGP 会话状态。 除了 BGP 预配状态，还有另一个状态称为 *播发的公共前缀状态*。 播发的公共前缀状态必须是 *已配置* 状态，BGP 会话才能启动，才能进行端到端的路由。 
+必须特意检查 Microsoft 对等互连的 BGP 会话状态。 除了 BGP 预配状态，还有另一个状态称为播发的公共前缀状态  。 播发的公共前缀状态必须是已配置  状态，BGP 会话才能启动，才能进行端到端的路由。 
 
-如果播发的公共前缀状态设置为 *需要验证* 状态，则不会启用 BGP 会话，因为播发的前缀不符合任何路由注册表中的 AS 编号。 
+如果播发的公共前缀状态设置为需要验证  状态，则不会启用 BGP 会话，因为播发的前缀不符合任何路由注册表中的 AS 编号。 
 
 >[!IMPORTANT]
 > 如果播发的公共前缀状态是手动验证  状态，则必须向 [Microsoft 支持](https://portal.azure.cn/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)开具支持票证，并提供拥有播发 IP 地址的证明以及相关的自治系统编号。

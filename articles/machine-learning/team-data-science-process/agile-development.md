@@ -11,10 +11,10 @@ ms.date: 09/05/2019
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 7c8cf5e6fc7db594719e4b9bcb3fbb7d41d02af3
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75598552"
 ---
 # <a name="agile-development-of-data-science-projects"></a>数据科学项目的敏捷开发
@@ -33,7 +33,7 @@ ms.locfileid: "75598552"
 
 ![Team Data Science Process](./media/agile-development/1-project-execute.png)
 
-##  <a name='Terminology-1'></a>工作项类型
+##  <a name="work-item-types"></a><a name='Terminology-1'></a>工作项类型
 
 在 TDSP 冲刺 (sprint) 规划框架中，有四种频繁使用的工作项类型  ：功能、用户情景、任务和 Bug     。 所有工作项的积压工作 (backlog) 都处于项目级别，而不是 Git 存储库级别。 
 
@@ -60,7 +60,7 @@ ms.locfileid: "75598552"
 > [!NOTE]
 > TDSP 借用了软件代码管理 (SCM) 中的功能、用户情景、任务和 Bug 概念。 TDSP 概念可能与其传统意义上的 SCM 定义略有不同。
 
-## <a name='SprintPlanning-2'></a>计划冲刺 (sprint)
+## <a name="plan-sprints"></a><a name='SprintPlanning-2'></a>计划冲刺 (sprint)
 
 许多数据科学家同时参与了多个项目，每个项目可能都需要数月才能完成，并且进度不同。 冲刺规划有助于设置项目优先级、进行资源规划和分配。 在 Azure Boards 中，你可以轻松创建、管理和跟踪项目的工作项，并执行冲刺 (sprint) 规划来确保项目按预期进行。
 
@@ -68,7 +68,7 @@ ms.locfileid: "75598552"
 
 有关 Azure Boards 中的冲刺 (sprint) 规划的详细信息，请参阅[将积压工作项分配给冲刺 (sprint)](https://docs.microsoft.com/azure/devops/boards/sprints/assign-work-sprint)。 
 
-## <a name='AddFeature-3'></a>向积压工作 (backlog) 添加功能 
+## <a name="add-a-feature-to-the-backlog"></a><a name='AddFeature-3'></a>向积压工作 (backlog) 添加功能 
 
 创建项目和项目代码存储库后，可以将功能添加到积压工作 (backlog) 来表示项目的工作。
 
@@ -90,7 +90,7 @@ ms.locfileid: "75598552"
    
    ![编辑功能并选择“保存并关闭”](./media/agile-development/3a-add-link-repo.png)
 
-## <a name='AddStoryunderfeature-4'></a>向功能添加用户情景 
+## <a name="add-a-user-story-to-the-feature"></a><a name='AddStoryunderfeature-4'></a>向功能添加用户情景 
 
 可以在“功能”下添加用户情景来描述完成项目所需的主要步骤。 
 
@@ -108,7 +108,7 @@ ms.locfileid: "75598552"
    
 1. 编辑用户情景后，选择“保存并关闭”  。 
 
-## <a name='AddTaskunderstory-5'></a>向用户情景添加任务 
+## <a name="add-a-task-to-a-user-story"></a><a name='AddTaskunderstory-5'></a>向用户情景添加任务 
 
 任务是完成各个用户情景所需的特定详细步骤。 完成一个用户情景的所有任务后，此用户情景应也已完成。 
 
@@ -122,7 +122,7 @@ ms.locfileid: "75598552"
 
 ![版块视图](./media/agile-development/8a-sprint-board-view.png)
 
-## <a name='set-up-agile-dsp-6'></a>使用敏捷 TDSP 工作模板
+## <a name="use-an-agile-tdsp-work-template"></a><a name='set-up-agile-dsp-6'></a>使用敏捷 TDSP 工作模板
 
 数据科学家可能更习惯于使用敏捷模板，该模板将功能、用户情景和任务替换为 TDSP 生命周期阶段和子阶段。 在 Azure Boards 中，可以创建一个敏捷派生模板，该模板使用 TDSP 生命周期阶段来创建和跟踪工作项。 以下步骤将引导你设置特定于数据科学的敏捷过程模板，并基于该模板创建数据科学工作项。
 

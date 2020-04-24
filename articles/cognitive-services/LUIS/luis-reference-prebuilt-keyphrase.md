@@ -13,14 +13,14 @@ origin.date: 09/27/2019
 ms.date: 10/31/2019
 ms.author: v-lingwu
 ms.openlocfilehash: 23d7032e75207350c9b81eeb80097d1dc03e37c2
-ms.sourcegitcommit: cf73284534772acbe7a0b985a86a0202bfcc109e
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74884934"
 ---
 # <a name="keyphrase-prebuilt-entity-for-a-luis-app"></a>LUIS 应用的 keyPhrase 预构建实体
-keyPhrase 实体从话语中提取各种关键短语。 不需要将包含 keyPhrase 的示例话语添加到应用程序。 keyPhrase 实体作为[文本分析](../text-analytics/overview.md)功能的一部分，在[许多区域性](luis-language-support.md#languages-supported)中都受支持。 
+keyPhrase 实体从话语中提取各种关键短语。 不需要将包含 keyPhrase 的示例话语添加到应用程序。 keyPhrase 实体作为[文本分析](luis-language-support.md#languages-supported)功能的一部分，在[许多区域性](../text-analytics/overview.md)中都受支持。 
 
 ## <a name="resolution-for-prebuilt-keyphrase-entity"></a>预构建 keyPhrase 实体的解析
 
@@ -28,7 +28,7 @@ keyPhrase 实体从话语中提取各种关键短语。 不需要将包含 keyPh
 
 `where is the educational requirements form for the development and engineering group`
 
-#### <a name="v3-responsetabv3"></a>[V3 响应](#tab/V3)
+#### <a name="v3-response"></a>[V3 响应](#tab/V3)
 
 以下 JSON 的 `verbose` 参数设置为 `false`：
 
@@ -40,7 +40,7 @@ keyPhrase 实体从话语中提取各种关键短语。 不需要将包含 keyPh
     ]
 }
 ```
-#### <a name="v3-verbose-responsetabv3-verbose"></a>[V3 详细响应](#tab/V3-verbose)
+#### <a name="v3-verbose-response"></a>[V3 详细响应](#tab/V3-verbose)
 以下 JSON 的 `verbose` 参数设置为 `true`：
 
 ```json
@@ -77,7 +77,7 @@ keyPhrase 实体从话语中提取各种关键短语。 不需要将包含 keyPh
     }
 }
 ```
-#### <a name="v2-responsetabv2"></a>[V2 响应](#tab/V2)
+#### <a name="v2-response"></a>[V2 响应](#tab/V2)
 
 以下示例显示了 **builtin.keyPhrase** 实体的解析。
 

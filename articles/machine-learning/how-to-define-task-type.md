@@ -11,10 +11,10 @@ ms.subservice: core
 ms.topic: how-to
 ms.date: 11/04/2019
 ms.openlocfilehash: 58dadd36d8a9bf951ba6763b64edf715c2466cdf
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75599600"
 ---
 # <a name="how-to-define-a-machine-learning-task"></a>如何定义机器学习任务 
@@ -23,7 +23,7 @@ ms.locfileid: "75599600"
 本文介绍支持的机器学习任务，以及如何为自动化机器学习（自动化 ML）试验运行定义这些任务。
 
 
-## <a name="What is a machine learning task?"></a> 什么是机器学习任务？
+## <a name="what-is-a-machine-learning-task"></a><a name="What is a machine learning task?"></a> 什么是机器学习任务？
 
 机器学习任务通过创建预测模型来表示要解决的问题的类型。 自动化 ML 支持三种不同类型的任务，其中包括分类、回归和时序预测。
 
@@ -56,7 +56,7 @@ ms.locfileid: "75599600"
 ### <a name="set-the-task-type"></a>设置任务类型
 可以通过 SDK 或 Azure 机器学习工作室为自动化 ML 试验设置任务类型。
 
-使用 `AutoMLConfig` 构造函数中的 `task` 参数来指定试验类型。
+使用 `task` 构造函数中的 `AutoMLConfig` 参数来指定试验类型。
 
 ```python
 from azureml.train.automl import AutoMLConfig
@@ -75,7 +75,7 @@ automl_config = AutoMLConfig(task="classification")
 ## <a name="next-steps"></a>后续步骤
 
 + 详细了解 Azure 机器学习中的[自动化机器学习](concept-automated-ml.md)。
-+ 详细了解如何在 Azure 机器学习中](how-to-auto-train-forecast.md)自动训练时序预测模型[
++ 详细了解如何在 Azure 机器学习中[自动训练时序预测模型](how-to-auto-train-forecast.md)
 + 尝试[自动化机器学习分类](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning/model-explanation)教程。
 + 尝试[自动化机器学习回归](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning/model-explanation)示例笔记本。
 

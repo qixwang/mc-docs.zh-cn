@@ -12,10 +12,10 @@ ms.date: 11/22/2019
 ms.author: v-junlch
 ms.subservice: B2C
 ms.openlocfilehash: e35bc44e1839f5b77ffe4c9e197b07f587f08b9d
-ms.sourcegitcommit: e74e8aabc1cbd8a43e462f88d07b041e9c4f31eb
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74461609"
 ---
 # <a name="secure-an-azure-api-management-api-with-azure-ad-b2c"></a>使用 Azure AD B2C 保护 Azure API 管理 API
@@ -38,7 +38,7 @@ ms.locfileid: "74461609"
 
 可以使用当前**应用程序**体验获取应用程序 ID。
 
-#### <a name="applicationstabapplications"></a>[应用程序](#tab/applications/)
+#### <a name="applications"></a>[应用程序](#tab/applications/)
 
 1. 登录到 [Azure 门户](https://portal.azure.cn)。
 1. 在顶部菜单中选择“目录 + 订阅”  筛选器，然后选择包含Azure AD B2C 租户的目录。
@@ -136,7 +136,7 @@ https://yourb2ctenant.b2clogin.cn/99999999-0000-0000-0000-999999999999/v2.0/
 调用已发布 API 的客户端应用程序（在本例中为 Postman）必须在其对该 API 发出的 HTTP 请求中包含有效的 API 管理订阅密钥。 若要获取 Postman HTTP 请求中包含的订阅密钥：
 
 1. 在 [Azure 门户](https://portal.azure.cn)中浏览到你的 Azure API 管理服务实例。
-1. 选择 **订阅**。
+1. 选择“订阅”。 
 1. 选择“产品:  无限制”旁边的省略号，然后选择“显示/隐藏密钥”。 
 1. 记下产品的“主密钥”。  此密钥将用于 Postman 的 HTTP 请求中的 `Ocp-Apim-Subscription-Key` 标头。
 

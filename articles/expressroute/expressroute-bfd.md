@@ -15,10 +15,10 @@ origin.date: 11/01/2018
 ms.date: 12/23/2019
 ms.author: v-yiso
 ms.openlocfilehash: 12930cb5a960b8e1d675f0f256d7242264101190
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75334765"
 ---
 # <a name="configure-bfd-over-expressroute"></a>配置基于 ExpressRoute 的 BFD

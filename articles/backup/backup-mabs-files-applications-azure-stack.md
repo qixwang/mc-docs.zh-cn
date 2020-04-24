@@ -7,10 +7,10 @@ origin.date: 06/05/2018
 ms.date: 08/23/2018
 ms.author: v-lingwu
 ms.openlocfilehash: 80fcb63ef98a961868e6e3011c641766f98f82bf
-ms.sourcegitcommit: 21b02b730b00a078a76aeb5b78a8fd76ab4d6af2
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74838896"
 ---
 # <a name="back-up-files-and-applications-on-azure-stack"></a>在 Azure Stack 上备份文件和应用程序
@@ -44,19 +44,19 @@ ms.locfileid: "74838896"
 
     ![“新建保护组”向导打开](./media/backup-mabs-files-applications-azure-stack/4-opening-screen-choose-servers.png)
 
-3. 在“选择组成员”屏幕中，单击 **+** 展开子项列表。  选中想要保护的所有项对应的复选框。 选择所有项后，单击“下一步”。 
+3. 在“选择组成员”屏幕中，单击  **展开子项列表。+** 选中想要保护的所有项对应的复选框。 选择所有项后，单击“下一步”。 
 
     ![“新建保护组”向导打开](./media/backup-mabs-files-applications-azure-stack/5-select-group-members.png)
 
     Microsoft 建议将共用保护策略的所有数据放入同一个保护组。 有关规划和部署保护组的完整信息，请参阅 System Center DPM 文章[部署保护组](https://docs.microsoft.com/system-center/dpm/create-dpm-protection-groups?view=sc-dpm-1801)。
 
-4. 在“选择数据保护方法”屏幕中，键入保护组的名称。  选中“我想使用以下介质进行短期保护:”和“我需要在线保护”对应的复选框。   单击“下一步”  。
+4. 在“选择数据保护方法”屏幕中，键入保护组的名称。  选中“我想使用以下介质进行短期保护:”和“我需要在线保护”对应的复选框。   单击“下一步”。 
 
     ![“新建保护组”向导打开](./media/backup-mabs-files-applications-azure-stack/6-select-data-protection-method.png)
 
-    若要选择“我需要在线保护”  ，必须先选中“我想使用以下介质进行短期保护: 磁盘”  。 由于 Azure 备份服务器不保护磁带，因此磁盘是短期保护的唯一选项。
+    若要选择“我需要在线保护”，必须先选中“我想使用以下介质进行短期保护: 磁盘”。   由于 Azure 备份服务器不保护磁带，因此磁盘是短期保护的唯一选项。
 
-5. 在“指定短期目标”屏幕中，选择要在磁盘中保存恢复点的时间长短，以及何时保存增量备份。  单击“下一步”  。
+5. 在“指定短期目标”屏幕中，选择要在磁盘中保存恢复点的时间长短，以及何时保存增量备份。  单击“下一步”。 
 
     > [!IMPORTANT]
     > **不**应在 Azure 备份服务器附加的磁盘上保留操作恢复（备份）数据超过 5 天。

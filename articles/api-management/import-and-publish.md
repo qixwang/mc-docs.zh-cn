@@ -16,10 +16,10 @@ origin.date: 02/24/2019
 ms.date: 12/09/2019
 ms.author: v-yiso
 ms.openlocfilehash: d2baf89c07545decd4b5578074badb0021fa700e
-ms.sourcegitcommit: 298eab5107c5fb09bf13351efeafab5b18373901
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74657621"
 ---
 # <a name="import-and-publish-your-first-api"></a>导入和发布第一个 API 
@@ -44,7 +44,7 @@ ms.locfileid: "74657621"
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
-## <a name="create-api"> </a>导入和发布后端 API
+## <a name="import-and-publish-a-backend-api"></a><a name="create-api"> </a>导入和发布后端 API
 
 This section shows how to import and publish an ''OpenAPI specification'' backend API.
  
@@ -57,7 +57,7 @@ This section shows how to import and publish an ''OpenAPI specification'' backen
 
     使用下表中的值创建第一个 API。
 
-    | 设置                   | 值                                              | 说明                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+    | 设置                   | Value                                              | 说明                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
     |---------------------------|----------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
     | **OpenAPI 规范** | https://conferenceapi.azurewebsites.net?format=json | 引用实现 API 的服务。 API 管理将请求转发到此地址。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
     | **显示名称**          | Demo Conference API                               | 如果在输入服务 URL 后按 Tab 键，APIM 将根据 json 中的内容填充此字段。 <br/>此名称显示在开发人员门户中。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
@@ -90,7 +90,7 @@ This section shows how to import and publish an ''OpenAPI specification'' backen
 
     后端以“200 正常”和某些数据做出响应  。
 
-## <a name="next-steps"></a>后续步骤
+## <a name="next-steps"></a><a name="next-steps"> </a>后续步骤
 
 在本教程中，你已学习了如何执行以下操作：
 

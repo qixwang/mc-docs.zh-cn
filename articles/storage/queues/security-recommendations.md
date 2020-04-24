@@ -11,10 +11,10 @@ ms.date: 01/06/2020
 ms.author: v-jay
 ms.custom: security-recommendations
 ms.openlocfilehash: 0e03a3fddcf7f3ee5742bac4c18aee3e62d11df5
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75624432"
 ---
 # <a name="security-recommendations-for-queue-storage"></a>适用于队列存储的安全建议
@@ -37,7 +37,7 @@ Azure 安全中心会定期分析 Azure 资源的安全状态，以识别潜在�
 
 | 建议 | 注释 | 安全中心 |
 |-|----|--|
-| 使用 Azure Active Directory (Azure AD) 授权对队列数据的访问 | 与用于授权对队列存储的请求的共享密钥相比，Azure AD 提供了卓越的安全性和易用性。 有关详细信息，请参阅[使用 Azure Active Directory 授予对 Azure Blob 和队列的访问权限](../common/storage-auth-aad.md)。 | - |
+| 使用 Azure Active Directory (Azure AD) 授权对队列数据的访问 | 与用于授权对队列存储的请求的共享密钥相比，Azure AD 提供了卓越的安全性和易用性。 有关详细信息，请参阅[使用 Azure Active Directory 对 Azure Blob 和队列访问进行授权](../common/storage-auth-aad.md)。 | - |
 | 通过 RBAC 向 Azure AD 安全主体分配权限时，请记住最低权限原则 | 将角色分配给用户、组或应用程序时，只向该安全主体授予执行任务所需的权限。 限制对资源的访问有助于防止意外和恶意滥用数据。 | - |
 | 使用 Azure Key Vault 保护帐户访问密钥 | Azure 建议使用 Azure AD 对 Azure 存储的请求进行授权。 但是，如果必须使用共享密钥授权，请使用 Azure Key Vault 保护帐户密钥。 可以在运行时从密钥保管库检索密钥，而不是将其与应用程序一起保存。 | - |
 | 定期重新生成帐户密钥 | 定期轮换帐户密钥可以降低向恶意参与者公开数据的风险。 | - |

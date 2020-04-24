@@ -9,10 +9,10 @@ origin.date: 04/22/2019
 ms.date: 12/02/2019
 ms.author: v-jay
 ms.openlocfilehash: 9f64f9d948d7c655c5d4c754b120a7d277549e47
-ms.sourcegitcommit: 9597d4da8af58009f9cef148a027ccb7b32ed8cf
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74655458"
 ---
 # <a name="set-up-alerts-on-vpn-gateway-metrics"></a>基于 VPN 网关指标设置警报
@@ -34,7 +34,7 @@ ms.locfileid: "74655458"
 |**TunnelIngressPacketDropTSMismatch** | 计数 | 5 分钟 | 隧道中因流量选择器不匹配导致的被丢弃传入数据包的计数。 |
 
 
-## <a name="setup"></a>使用 Azure 门户基于指标设置 Azure Monitor 警报
+## <a name="set-up-azure-monitor-alerts-based-on-metrics-by-using-the-azure-portal"></a><a name="setup"></a>使用 Azure 门户基于指标设置 Azure Monitor 警报
 
 以下示例步骤将在网关上针对以下项创建一个警报：
 

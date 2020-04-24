@@ -10,10 +10,10 @@ ms.topic: article
 origin.date: 01/29/2019
 ms.date: 04/12/2019
 ms.openlocfilehash: f31e98b5ad1f1d06b7cadabaf8e35fd110ae5e01
-ms.sourcegitcommit: 21b02b730b00a078a76aeb5b78a8fd76ab4d6af2
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74838971"
 ---
 # <a name="improve-availability-of-your-application-with-azure-advisor"></a>使用 Azure 顾问提高应用程序的可用性

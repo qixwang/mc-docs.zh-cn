@@ -12,13 +12,13 @@ ms.date: 11/13/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 819c9f8843ccb537202c29da052f1ce749a0c8cd
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75599432"
 ---
-# <a name="heading"></a>对 Azure Blob 容器、SQL Server 和 Hive 表中的数据采样
+# <a name="sample-data-in-azure-blob-containers-sql-server-and-hive-tables"></a><a name="heading"></a>对 Azure Blob 容器、SQL Server 和 Hive 表中的数据采样
 
 以下文章介绍了如何对存储在三个不同 Azure 位置之一的数据进行采样：
 

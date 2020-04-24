@@ -9,10 +9,10 @@ ms.date: 12/16/2019
 author: rockboyfor
 ms.author: v-yeche
 ms.openlocfilehash: 5f531ac93355402f942f92c75a644f1cb3965e71
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75336229"
 ---
 # <a name="system-document-properties"></a>系统文档属性

@@ -6,10 +6,10 @@ ms.topic: reference
 ms.date: 12/04/2019
 ms.author: v-junlch
 ms.openlocfilehash: d62b2ca10a6f9ac76ee53dec241c2c725fcbd9e4
-ms.sourcegitcommit: cf73284534772acbe7a0b985a86a0202bfcc109e
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74884936"
 ---
 # <a name="using-the-azure-function-return-value"></a>使用 Azure 函数返回值
@@ -20,13 +20,13 @@ ms.locfileid: "74884936"
 
 * 在 C# 类库，请将输出绑定特性应用到方法返回值。
 * 在 Java 中，将输出绑定注释应用于函数方法。
-* 在其他语言中，请将 *function.json* 中的 `name` 属性设置为 `$return`。
+* 在其他语言中，请将 `name`function.json*中的* 属性设置为 `$return`。
 
 如果有多个输出绑定，请只使用其中一个绑定的返回值。
 
 在 C# 和 C# 脚本中，将数据发送到输出绑定的替代方法是使用 `out` 参数和[收集器对象](functions-reference-csharp.md#writing-multiple-output-values)。
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 以下 C# 代码使用输出绑定的返回值，后接异步示例：
 
@@ -52,7 +52,7 @@ public static Task<string> Run([QueueTrigger("inputqueue")]WorkItem input, ILogg
 }
 ```
 
-# <a name="c-scripttabcsharp-script"></a>[C# 脚本](#tab/csharp-script)
+# <a name="c-script"></a>[C# 脚本](#tab/csharp-script)
 
 下面是 *function.json* 文件中的输出绑定：
 
@@ -85,7 +85,7 @@ public static Task<string> Run(WorkItem input, ILogger log)
 }
 ```
 
-# <a name="ftabfsharp"></a>[F#](#tab/fsharp)
+# <a name="f"></a>[F#](#tab/fsharp)
 
 下面是 *function.json* 文件中的输出绑定：
 
@@ -107,7 +107,7 @@ let Run(input: WorkItem, log: ILogger) =
     json
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 下面是 *function.json* 文件中的输出绑定：
 
@@ -130,7 +130,7 @@ module.exports = function (context, input) {
 }
 ```
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 以下 Java 代码使用输出绑定的返回值：
 

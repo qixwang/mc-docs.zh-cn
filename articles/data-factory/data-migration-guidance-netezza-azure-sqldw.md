@@ -14,10 +14,10 @@ ms.topic: conceptual
 origin.date: 9/03/2019
 ms.date: 01/06/2020
 ms.openlocfilehash: 63d381e2f7256e233febb7ca6dd6768b0a9efa01
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75624073"
 ---
 # <a name="use-azure-data-factory-to-migrate-data-from-an-on-premises-netezza-server-to-azure"></a>使用 Azure 数据工厂将数据从本地 Netezza 服务器迁移到 Azure 
@@ -29,7 +29,7 @@ Azure 数据工厂提供高性能、稳健且经济高效的机制用于将数�
 > [!div class="checklist"]
 > * 性能 
 > * 复制复原能力
-> * 网络安全性
+> * 网络安全
 > * 高级解决方案体系结构 
 > * 有关实现的最佳做法  
 
@@ -55,7 +55,7 @@ Azure 数据工厂提供一个可在不同级别实现并行度的无服务器�
 
 使用 Azure 数据工厂复制活动在源与接收器数据存储之间复制数据时，可通过两种方式处理不兼容的行。 可以中止复制活动并使其失败，或者可以通过跳过不兼容的数据行来继续复制剩余的数据。 此外，若要了解失败的原因，可以在 Azure Blob 存储中记录不兼容的行，修复数据源中的数据，并重试复制活动。
 
-## <a name="network-security"></a>网络安全性 
+## <a name="network-security"></a>网络安全 
 
 默认情况下，Azure 数据工厂通过安全超文本传输协议 (HTTPS) 使用加密的连接将数据从本地 Netezza 服务器传输到 Azure 存储帐户或 Azure SQL 数据仓库数据库。 HTTPS 提供传输中数据加密，并可防止窃听和中间人攻击。
 

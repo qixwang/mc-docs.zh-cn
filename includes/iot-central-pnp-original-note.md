@@ -9,10 +9,10 @@ ms.date: 07/01/2019
 ms.author: dobett
 ms.custom: include file
 ms.openlocfilehash: a3cf36030c4c1a043d0c640fce462a4aabc799fb
-ms.sourcegitcommit: 6ffa4d50cee80c7c0944e215ca917a248f2a4bcd
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74882908"
 ---
 > [!NOTE]

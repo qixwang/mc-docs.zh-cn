@@ -10,10 +10,10 @@ ms.author: v-jay
 ms.reviewer: seguler
 ms.subservice: common
 ms.openlocfilehash: 054e0b08c029a293af7fb885704aa2a1eba61cac
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75624214"
 ---
 #  <a name="tutorial-migrate-on-premises-data-to-cloud-storage-with-azcopy"></a>教程：使用 AzCopy 将本地数据迁移到云存储空间
@@ -122,11 +122,11 @@ azcopy sync "<local-folder-path>" "https://<storage-account-name>.blob.core.chin
 > [!NOTE]
 > Linux 示例将追加 SAS 令牌。 你需要在命令中提供一个。 当前版本的 AzCopy V10 不支持 cron 作业中的 Azure AD 授权。
 
-# <a name="linuxtablinux"></a>[Linux](#tab/linux)
+# <a name="linux"></a>[Linux](#tab/linux)
 
     azcopy sync "/mnt/myfiles" "https://mystorageaccount.blob.core.chinacloudapi.cn/mycontainer?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-05-30T06:57:40Z&st=2019-05-29T22:57:40Z&spr=https&sig=BXHippZxxx54hQn%2F4tBY%2BE2JHGCTRv52445rtoyqgFBUo%3D" --recursive=true
 
-# <a name="windowstabwindows"></a>[Windows](#tab/windows)
+# <a name="windows"></a>[Windows](#tab/windows)
 
     azcopy sync "C:\myFolder" "https://mystorageaccount.blob.core.chinacloudapi.cn/mycontainer" --recursive=true
 
@@ -136,7 +136,7 @@ azcopy sync "<local-folder-path>" "https://<storage-account-name>.blob.core.chin
 
  使用 Schtasks  ，管理员能够在本地或远程计算机上创建、删除、查询、更改、运行和结束计划的任务。 使用 Cron  ，Linux 和 Unix 用户能够使用 [cron 表达式](https://en.wikipedia.org/wiki/Cron#CRON_expression)在指定日期和时间运行命令或脚本。
 
-# <a name="linuxtablinux"></a>[Linux](#tab/linux)
+# <a name="linux"></a>[Linux](#tab/linux)
 
 若要在 Linux 上创建 cron 作业，请在终端上输入以下命令：
 
@@ -147,7 +147,7 @@ crontab -e
 
 在命令中指定 cron 表达式 `*/5 * * * *` 可指示 shell 脚本 `script.sh` 应每隔五分钟运行一次。 可计划让脚本在每日、每月或每年的特定时间运行。 若要了解有关设置作业执行日期和时间的详细信息，请参阅 [cron 表达式](https://en.wikipedia.org/wiki/Cron#CRON_expression)。
 
-# <a name="windowstabwindows"></a>[Windows](#tab/windows)
+# <a name="windows"></a>[Windows](#tab/windows)
 
 若要在 Windows 上创建计划任务，请在命令提示符下或在 PowerShell 中输入以下命令：
 

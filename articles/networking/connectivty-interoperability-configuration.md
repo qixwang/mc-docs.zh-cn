@@ -12,10 +12,10 @@ origin.date: 10/18/2018
 ms.date: 10/17/2019
 ms.author: v-tawe
 ms.openlocfilehash: 2837e8a95e435f668e8bd9905cdc870baa3bae63
-ms.sourcegitcommit: 855ac08e4d9518ea5fd3277b07a1bcdb0b3e46cc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74233570"
 ---
 # <a name="interoperability-in-azure-back-end-connectivity-features-test-configuration-details"></a>Azure 后端连接功能中的互操作性：测试配置详细信息

@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 12/09/2019
 ms.author: v-tawe
 ms.openlocfilehash: 549da6f62afb1c8c47f7ea3f2db02b5f5adde176
-ms.sourcegitcommit: cf73284534772acbe7a0b985a86a0202bfcc109e
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74884975"
 ---
 > [!div class="op_single_selector"]

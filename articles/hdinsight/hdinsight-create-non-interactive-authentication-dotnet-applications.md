@@ -11,10 +11,10 @@ origin.date: 12/23/2019
 ms.date: 01/13/2020
 ms.author: v-yiso
 ms.openlocfilehash: 43bcdd4df0ebbfec83ae3610eefad5b2ede7a5a3
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75630801"
 ---
 # <a name="create-a-non-interactive-authentication-net-hdinsight-application"></a>创建非交互式身份验证 .NET HDInsight 应用程序

@@ -13,10 +13,10 @@ ms.author: v-jay
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 ms.openlocfilehash: 62aefaccb547a05c07dcc2cf585a4c90c553ac31
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75624264"
 ---
 # <a name="data-warehouse-units-dwus"></a>数据仓库单位 (DWU)
@@ -108,7 +108,7 @@ JOIN    sys.databases                     AS db ON ds.database_id = db.database_
 
 2. 在“缩放”下，向左或向右移动滑块，以更改 DWU 设置  。
 
-3. 单击“保存”  。 此时会显示确认消息。 单击“是”  确认，或者单击“否”  取消。
+3. 单击“保存”  。 此时会显示确认消息。 单击“是”  以确认或“否”  以取消。
 
 ### <a name="powershell"></a>PowerShell
 

@@ -6,10 +6,10 @@ ms.date: 12/16/2019
 ms.author: v-yiso
 ms.topic: tutorial
 ms.openlocfilehash: 7b2888f80a07312db47a83b79acb8fb535aa0909
-ms.sourcegitcommit: cf73284534772acbe7a0b985a86a0202bfcc109e
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74885111"
 ---
 # <a name="tutorial-create-and-share-an-azure-resource-graph-query-in-the-azure-portal"></a>教程：在 Azure 门户中创建和共享 Azure Resource Graph 查询

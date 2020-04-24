@@ -13,10 +13,10 @@ metadata:
   ms.author: v-yeche
   ms.date: 12/09/2019
   ms.openlocfilehash: f9a02d710dd039ba96560e5f116146a30e2316c1
-  ms.sourcegitcommit: cf73284534772acbe7a0b985a86a0202bfcc109e
+  ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 12/06/2019
+  ms.lasthandoff: 04/17/2020
   ms.locfileid: "74884859"
 landingContent:
 - title: 关于 Azure 容器注册表
@@ -65,11 +65,11 @@ landingContent:
     links:
     - text: 异地复制
       url: container-registry-geo-replication.md
-    - text: 身份验证
+    - text: Authentication
       url: container-registry-authentication.md
-    - text: 最佳实践
+    - text: 最佳做法
       url: container-registry-best-practices.md
-    - text: 常见问题
+    - text: 常见问题解答
       url: container-registry-faq.md
 - title: ACR 任务
   linkLists:

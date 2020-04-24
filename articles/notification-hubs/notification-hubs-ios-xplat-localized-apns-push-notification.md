@@ -18,10 +18,10 @@ ms.author: v-tawe
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.openlocfilehash: dfbb59da8ef6b973305ab851145cb1723f4c51c8
-ms.sourcegitcommit: cf73284534772acbe7a0b985a86a0202bfcc109e
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74884948"
 ---
 # <a name="tutorial-send-localized-push-notifications-to-ios-using-azure-notification-hubs"></a>教程：使用 Azure 通知中心向 iOS 发送本地化推送通知
@@ -37,7 +37,7 @@ ms.locfileid: "74884948"
 * iOS 应用程序允许客户端设备指定一种语言并订阅不同的突发新闻类别；
 * 后端使用 Azure 通知中心的“标记”和“模板”功能广播通知   。
 
-在本教程中，会执行以下步骤：
+在本教程中，我们将执行以下步骤：
 
 > [!div class="checklist"]
 > * 更新应用用户界面
@@ -83,7 +83,7 @@ ms.locfileid: "74884948"
 
 本部分会修改在[使用通知中心发送突发新闻]主题中创建的“突发新闻”应用，以便使用模板发送本地化突发新闻。
 
-在 `MainStoryboard_iPhone.storyboard` 中，使用以下三种语言添加分段控件：英语、法语和国语。
+在 `MainStoryboard_iPhone.storyboard` 中，使用以下三种语言添加分段控件：英语、法语和汉语。
 
 ![创建 iOS UI 情节提要][13]
 

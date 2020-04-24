@@ -14,10 +14,10 @@ origin.date: 09/04/2019
 ms.date: 11/11/2019
 ms.author: v-jay
 ms.openlocfilehash: 502e49151e41a703a9e8bffe989b37d5b60f83dc
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75623633"
 ---
 # <a name="copy-data-from-google-bigquery-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 Google BigQuery 复制数据
@@ -48,12 +48,12 @@ ms.locfileid: "75623633"
 
 Google BigQuery 链接服务支持以下属性。
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为 **GoogleBigQuery**。 | 是 |
 | project | 针对其查询的默认 BigQuery 项目的项目 ID。  | 是 |
 | additionalProjects | 要访问的公共 BigQuery 项目的项目 ID 逗号分隔列表。  | 否 |
-| requestGoogleDriveScope | 是否要请求访问 Google Drive。 允许 Google Drive 访问可支持将 BigQuery 数据与 Google Drive 中的数据组合的联合表。 默认值为 **false**。  | 否 |
+| requestGoogleDriveScope | 是否要请求访问 Google Drive。 允许 Google Drive 访问可支持将 BigQuery 数据与 Google Drive 中的数据组合的联合表。 默认值是 **false**秒。  | 否 |
 | authenticationType | 用于身份验证的 OAuth 2.0 身份验证机制。 ServiceAuthentication 只能在自承载集成运行时上使用。 <br/>允许的值为 **UserAuthentication** 和 **ServiceAuthentication**。 有关这些身份验证类型的其他属性和 JSON 示例，请分别参阅此表格下面的部分。 | 是 |
 
 ### <a name="using-user-authentication"></a>使用用户身份验证
@@ -101,7 +101,7 @@ Google BigQuery 链接服务支持以下属性。
 | 电子邮件 | 用于 ServiceAuthentication 的服务帐户电子邮件 ID。 它只能在自承载集成运行时上使用。  | 否 |
 | keyFilePath | .p12 密钥文件的完整路径，该文件用于对服务帐户电子邮件地址进行身份验证。 | 否 |
 | trustedCertPath | 包含受信任 CA 证书（通过 SSL 进行连接时用于验证服务器）的 .pem 文件的完整路径。 仅当在自承载集成运行时上使用 SSL 时，才能设置此属性。 默认值是随集成运行时一起安装的 cacerts.pem 文件。  | 否 |
-| useSystemTrustStore | 指定是使用系统信任存储中的 CA 证书还是使用指定 .pem 文件中的 CA 证书。 默认值为 **false**。  | 否 |
+| useSystemTrustStore | 指定是使用系统信任存储中的 CA 证书还是使用指定 .pem 文件中的 CA 证书。 默认值是 **false**秒。  | 否 |
 
 **示例：**
 
@@ -131,12 +131,12 @@ Google BigQuery 链接服务支持以下属性。
 
 要从 Google BigQuery 复制数据，请将数据集的 type 属性设置为 **GoogleBigQueryObject**。 支持以下属性：
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为：**GoogleBigQueryObject** | 是 |
 | dataset | Google BigQuery 数据集的名称。 |否（如果指定了活动源中的“query”）  |
-| 表 | 表名称。 |否（如果指定了活动源中的“query”）  |
-| tableName | 表名称。 支持此属性是为了向后兼容。 对于新的工作负荷，请使用 `dataset` 和 `table`。 | 否（如果指定了活动源中的“query”） |
+| 表 | 表的名称。 |否（如果指定了活动源中的“query”）  |
+| tableName | 表的名称。 支持此属性是为了向后兼容。 对于新的工作负荷，请使用 `dataset` 和 `table`。 | 否（如果指定了活动源中的“query”） |
 
 **示例**
 
@@ -163,10 +163,10 @@ Google BigQuery 链接服务支持以下属性。
 
 要从 Google BigQuery 复制数据，请将复制活动中的源类型设置为“GoogleBigQuerySource”  。 复制活动的 **source** 节支持以下属性。
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
 | type | 复制活动源的 type 属性必须设置为 **GoogleBigQuerySource**。 | 是 |
-| query | 使用自定义 SQL 查询读取数据。 例如 `"SELECT * FROM MyTable"`。 | 否（如果指定了数据集中的“tableName”） |
+| 查询 | 使用自定义 SQL 查询读取数据。 例如 `"SELECT * FROM MyTable"`。 | 否（如果指定了数据集中的“tableName”） |
 
 **示例：**
 

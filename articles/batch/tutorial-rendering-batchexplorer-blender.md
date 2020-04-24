@@ -9,24 +9,24 @@ ms.date: 10/19/2018
 ms.author: v-lingwu
 ms.topic: tutorial
 ms.openlocfilehash: d34d93e868d446434102f0a3226a7e67206abe17
-ms.sourcegitcommit: 21b02b730b00a078a76aeb5b78a8fd76ab4d6af2
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74838987"
 ---
 # <a name="tutorial-render-a-blender-scene-using-batch-explorer"></a>教程：使用 Batch Explorer 渲染 Blender 场景
 
 本教程介绍如何渲染 Blender 演示场景的多个帧。 本教程使用 Blender 是因为它免费（不管是客户端还是渲染 VM），但如果使用其他应用程序（例如 Maya 或 3ds Max），则过程十分类似。
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 > [!div class="checklist"]
 > * 将 Blender 场景上传到 Azure 存储
 > * 创建包含多个节点的 Batch 池，以便执行渲染操作
 > * 渲染多个帧
 > * 查看并下载渲染的帧文件
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 需要有一个具有关联的存储帐户的 Azure Batch 帐户。  请参阅任何 Batch 快速入门文章（例如 [CLI 文章](/batch/quick-create-cli)），了解如何创建 Batch 帐户。
 

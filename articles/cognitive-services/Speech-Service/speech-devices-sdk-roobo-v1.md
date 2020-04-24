@@ -12,10 +12,10 @@ origin.date: 07/05/2019
 ms.date: 01/13/2020
 ms.author: v-tawe
 ms.openlocfilehash: 6c9c5633379f8914b7977f918ff59f21ad274094
-ms.sourcegitcommit: 6fb55092f9e99cf7b27324c61f5fab7f579c37dc
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75630778"
 ---
 # <a name="device-roobo-smart-audio-dev-kit"></a>设备：Roobo 智能音频开发工具包

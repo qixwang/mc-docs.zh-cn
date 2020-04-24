@@ -7,10 +7,10 @@ origin.date: 04/26/2019
 ms.date: 08/22/2019
 ms.author: v-lingwu
 ms.openlocfilehash: f071d408716e96a0e3c6fd7ceeb34e0b879b5d16
-ms.sourcegitcommit: 13431cf4d69142ed7feb8d12d967a502bf9ff346
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75599935"
 ---
 # <a name="how-to-set-up-alerts-for-performance-problems-in-azure-monitor-for-containers"></a>如何在用于容器的 Azure Monitor 中针对性能问题设置警报

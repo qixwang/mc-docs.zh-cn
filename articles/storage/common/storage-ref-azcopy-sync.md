@@ -10,10 +10,10 @@ ms.author: v-jay
 ms.subservice: common
 ms.reviewer: zezha-msft
 ms.openlocfilehash: 73b71a1a41ff4a1c8d6846447350f899ec634760
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75624333"
 ---
 # <a name="azcopy-sync"></a>azcopy sync

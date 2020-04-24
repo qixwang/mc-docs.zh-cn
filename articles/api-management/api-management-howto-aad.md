@@ -15,10 +15,10 @@ origin.date: 11/04/2019
 ms.author: v-yiso
 ms.date: 12/16/2019
 ms.openlocfilehash: 0890df9076abbc3893b5fe6789e03818672423fa
-ms.sourcegitcommit: cf73284534772acbe7a0b985a86a0202bfcc109e
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74884742"
 ---
 # <a name="authorize-developer-accounts-by-using-azure-active-directory-in-azure-api-management"></a>在 Azure API 管理中使用 Azure Active Directory 授权开发人员帐户
@@ -27,7 +27,7 @@ ms.locfileid: "74884742"
 
 ## <a name="prerequisites"></a>先决条件
 
-- 请完成以下快速入门：[创建一个 Azure API 管理实例](get-started-create-service-instance.md)。
+- 完成以下快速入门：[创建一个 Azure API 管理实例](get-started-create-service-instance.md)。
 - 导入并发布 Azure API 管理实例。 有关详细信息，请参阅[导入和发布](import-and-publish.md)。
 
 [!INCLUDE [premium-dev-standard.md](../../includes/api-management-availability-premium-dev-standard.md)]
@@ -107,7 +107,7 @@ ms.locfileid: "74884742"
  
 配置的 Azure AD 实例中的用户现在可以登录开发人员门户。 他们可以查看和订阅可见的任何组。
 
-## <a name="a-idlog_in_to_dev_portal-developer-portal---add-azure-ad-account-authentication"></a><a id="log_in_to_dev_portal"/> 开发人员门户 - 添加 Azure AD 帐户身份验证
+## <a name="developer-portal---add-azure-ad-account-authentication"></a><a id="log_in_to_dev_portal"/> 开发人员门户 - 添加 Azure AD 帐户身份验证
 
 在开发人员门户中，可以使用“OAuth 按钮”  小组件通过 AAD 登录。 此小组件已包括在默认开发人员门户内容的登录页上。
 

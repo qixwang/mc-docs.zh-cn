@@ -18,10 +18,10 @@ ms.date: 11/25/2019
 ms.author: v-yeche
 ms.custom: ''
 ms.openlocfilehash: 78164cf90bccde9e8f81493b10dadc0826814fbb
-ms.sourcegitcommit: 298eab5107c5fb09bf13351efeafab5b18373901
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/29/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74657838"
 ---
 # <a name="deploy-the-azure-virtual-network-container-network-interface-plug-in"></a>部署 Azure 虚拟网络容器网络接口插件
@@ -42,7 +42,7 @@ ACS-Engine 使用 Azure 资源管理器模板部署 Kubernetes 群集。 群集�
   | vnetCidr                             | 在其中部署集群的虚拟网络的 CIDR                                                             |
   | kubeletConfig 下的 max-Pod         | 每个代理虚拟机上的 Pod 的最大数量。 对于插件，默认值为 30。 最多可以指定 250 个  |
 
-### <a name="example-configuration"></a>示例配置
+### <a name="example-configuration"></a>配置示例
 
 下面的 json 示例适用于具有以下属性的群集：
 - 1 个主节点和 2 个代理节点 

@@ -7,10 +7,10 @@ ms.date: 12/31/2019
 ms.author: v-junlch
 ms.reviewer: glenga
 ms.openlocfilehash: f837399763e5344cb19f203f9c5e9b4b69fb4842
-ms.sourcegitcommit: 6a8bf63f55c925e0e735e830d67029743d2c7c0a
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75624124"
 ---
 # <a name="frequently-asked-questions-about-networking-in-azure-functions"></a>有关 Azure Functions 中的网络的常见问题解答

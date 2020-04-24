@@ -12,10 +12,10 @@ ms.date: 03/15/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 81afcda44fca2b8ee578ca0efb244f5e5786ed20
-ms.sourcegitcommit: 623d64ef33e80d5f84b6dcf6d1ef4120fe4b8c08
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75599278"
 ---
 # <a name="data-exploration-and-modeling-with-spark"></a>使用 Spark 进行数据探索和建模
@@ -39,7 +39,7 @@ ms.locfileid: "75599278"
 > 
 > 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 需要一个 Azure 帐户和一个 Spark 1.6（或 Spark 2.0）HDInsight 群集来完成本演练。 有关如何满足这些要求的说明，请参阅[在 Azure HDInsight 上使用 Spark 的数据科学的概述](spark-overview.md)。 该主题还包含此处使用的 NYC 2013 出租车数据的说明以及有关如何在 Spark 群集上执行来自 Jupyter 笔记本的代码的说明。 
 
 ## <a name="spark-clusters-and-notebooks"></a>Spark 群集和笔记本
@@ -47,7 +47,7 @@ ms.locfileid: "75599278"
 
 ### <a name="spark-16-notebooks"></a>Spark 1.6 笔记本
 
-[pySpark-machine-learning-data-science-spark-data-exploration-modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark1.6/pySpark-machine-learning-data-science-spark-data-exploration-modeling.ipynb)：提供有关如何使用多种不同算法执行数据探索、建模和评分的信息。
+[pySpark-machine-learning-data-science-spark-data-exploration-modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark1.6/pySpark-machine-learning-data-science-spark-data-exploration-modeling.ipynb)：提供有关如何执行数据探索、建模和评分与多种不同算法的信息。
 
 ### <a name="spark-20-notebooks"></a>Spark 2.0 笔记本
 使用 Spark 2.0 群集实现的回归和分类任务在单独的笔记本中，并且分类笔记本使用不同的数据集：
@@ -70,7 +70,7 @@ ms.locfileid: "75599278"
 <!-- -->
 
 > [!NOTE]
-> 有关 NYC 出租车和飞机航班延迟数据集的 Spark 2.0 笔记本可能需要 10 分钟或更长时间运行（具体取决于 HDI 群集大小）。 以上列表中的第一个笔记本全面显示了数据探索、可视化和 ML 模型训练的许多方面，该笔记本使用下采样的 NYC 数据集（其中已预先联接出租车和费用文件）运行时所花费的时间更短：[Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb) 此笔记本完成运行的时间短得多（2-3 分钟），对于实现快速浏览我们为 Spark 2.0 提供的代码这一目的，此笔记本可能是一个很好的起点。 
+> 有关 NYC 出租车和飞机航班延迟数据集的 Spark 2.0 笔记本可能需要 10 分钟或更长时间运行（具体取决于 HDI 群集大小）。 以上列表中的第一个笔记本显示了一个笔记本中数据浏览、可视化和 ML 模型训练的许多方面，该笔记本使用向下采样的 NYC 数据集（其中已预先联接出租车和费用文件）运行，其运行所花费的时间更短：[Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb) 此笔记本完成运行的时间短得多（2-3 分钟），对于快速浏览我们为 Spark 2.0 提供的代码而言，此笔记本可能是一个很好的起点。 
 
 <!-- -->
 
@@ -1080,7 +1080,7 @@ R-sqr = 0.753835096681
     print "BoostedTreeRegressionFileLoc = modelDir + \"" + btregressionfilename + "\"";
 
 
-**输出**
+**OUTPUT**
 
 logisticRegFileLoc = modelDir + "LogisticRegressionWithLBFGS_2016-05-0317_03_23.516568"
 
@@ -1094,10 +1094,10 @@ BoostedTreeClassificationFileLoc = modelDir + "GradientBoostingTreeClassificatio
 
 BoostedTreeRegressionFileLoc = modelDir + "GradientBoostingTreeRegression_2016-05-0317_06_51.737282"
 
-## <a name="whats-next"></a>后续步骤
+## <a name="whats-next"></a>下一步是什么？
 现在已使用 Spark MlLib 创建了回归和分类模型，可了解如何评分和评估这些模型。 高级数据浏览和建模笔记本深入探讨到包括交叉验证、超参数扫描和模型评估。 
 
-**使用模型：** 若要了解如何评分和评估在本主题中创建的分类和回归模型，请参阅[评分和评估 Spark 构建的机器学习模型](spark-model-consumption.md)。
+**模型使用：** 若要了解如何评分和评估在本主题中创建的分类和回归模型，请参阅[评分和评估 Spark 构建的机器学习模型](spark-model-consumption.md)。
 
 **交叉验证和超参数扫描**：请参阅[使用 Spark 进行高级数据探索和建模](spark-advanced-data-exploration-modeling.md)，了解如何使用交叉验证和超参数扫描训练模型
 

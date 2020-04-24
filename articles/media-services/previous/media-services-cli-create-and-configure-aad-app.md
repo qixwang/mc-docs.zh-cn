@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure CLI 创建 Azure AD 应用，并将它配置为访问 Azure 媒体服务 API | Microsoft Docs
+title: 使用 Azure CLI 创建 Azure AD 应用并配置为访问 Azure 媒体服务 API | Microsoft Docs
 description: 本主题展示了如何使用 Azure CLI 创建 Azure AD 应用，并将它配置为访问 Azure 媒体服务 API。
 services: media-services
 documentationcenter: ''
@@ -15,10 +15,10 @@ origin.date: 08/26/2019
 ms.date: 12/02/2019
 ms.author: v-jay
 ms.openlocfilehash: aac4ec9695ba6fff05e0c050b9cda5e7e670da4b
-ms.sourcegitcommit: 9597d4da8af58009f9cef148a027ccb7b32ed8cf
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74655441"
 ---
 # <a name="use-azure-cli-to-create-an-azure-ad-app-and-configure-it-to-access-media-services-api"></a>使用 Azure CLI 创建 Azure AD 应用并将其配置为访问媒体服务 API 
@@ -28,16 +28,16 @@ ms.locfileid: "74655441"
 
 本主题展示了如何使用 Azure CLI 创建 Azure Active Directory (Azure AD) 应用程序和服务主体，以便访问 Azure 媒体服务资源。 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - 一个 Azure 帐户。 有关详细信息，请参阅 [Azure 试用](https://www.azure.cn/pricing/1rmb-trial/)。
-- 一个媒体服务帐户。 有关详细信息，请参阅[通过使用 Azure 门户创建 Azure 媒体服务帐户](media-services-portal-create-account.md)。
+- 一个媒体服务帐户。 有关详细信息，请参阅[利用 Azure 门户创建 Azure 媒体服务帐户](media-services-portal-create-account.md)。
 
 ## <a name="use-the-powershell"></a>使用 PowerShell
 
-登录到 [Azure 门户](https://portal.azure.cn/)。
+登录 [Azure 门户](https://portal.azure.cn/)。
 
-## <a name="create-an-azure-ad-app-and-configure-access-to-the-media-account-with-azure-cli"></a>使用 Azure CLI 创建 Azure AD 应用并配置对媒体帐户的访问权限
+## <a name="create-an-azure-ad-app-and-configure-access-to-the-media-account-with-azure-cli"></a>使用 Azure CLI 创建 Azure AD 应用并配置为访问媒体帐户
  
 ```azurecli
 az login
@@ -51,7 +51,7 @@ az role assignment create --assignee < user/app id> --role Contributor --scope <
 az role assignment create --assignee a3e068fa-f739-44e5-ba4d-ad57866e25a1 --role Contributor --scope /subscriptions/0b65e280-7917-4874-9fed-1307f2615ea2/resourceGroups/Default-AzureBatch-SouthCentralUS/providers/microsoft.media/mediaservices/sbbash
 ```
 
-在此示例中，作用域  是媒体服务帐户的完整资源路径。 不过，作用域  可以为任何级别。
+在此示例中，作用域  是媒体服务帐户的完整资源路径。 不过，作用域  可以为任意级别。
 
 例如，作用域可以为下列级别之一：
  

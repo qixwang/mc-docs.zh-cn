@@ -9,10 +9,10 @@ origin.date: 11/19/2019
 ms.date: 12/09/2019
 ms.author: v-yeche
 ms.openlocfilehash: 9351480342a5d30f4ec05bfe70dd4b96dea7274f
-ms.sourcegitcommit: 4a09701b1cbc1d9ccee46d282e592aec26998bff
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "75335004"
 ---
 # <a name="fqdn-tags-overview"></a>FQDN 标记概述

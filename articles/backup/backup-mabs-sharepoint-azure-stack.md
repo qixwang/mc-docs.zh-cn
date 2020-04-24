@@ -7,10 +7,10 @@ origin.date: 06/08/2018
 ms.date: 09/25/2018
 ms.author: v-lingwu
 ms.openlocfilehash: fab8cef13ed591389d9ae9078f95a192eb0de7ec
-ms.sourcegitcommit: 21b02b730b00a078a76aeb5b78a8fd76ab4d6af2
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "74838895"
 ---
 # <a name="back-up-a-sharepoint-farm-on-azure-stack"></a>在 Azure Stack 上备份 SharePoint 场
@@ -26,7 +26,7 @@ MABS 的 Azure 备份支持以下方案：
 ## <a name="before-you-start"></a>开始之前
 在将 SharePoint 场备份到 Azure 之前，需要确保满足几个条件。
 
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>必备条件
 在继续之前，请确保已[安装并准备好 Azure 备份服务器](backup-mabs-install-azure-stack.md)来保护工作负荷。
 
 ### <a name="protection-agent"></a>保护代理
@@ -45,9 +45,9 @@ Azure 备份服务器以 LocalSystem 帐户的身份运行。 若要备份 SQL S
 * MABS 不提供横向扩展文件服务器 (SOFS) 共享托管的 SharePoint SQL Server 数据库备份。
 
 ## <a name="configure-sharepoint-protection"></a>配置 SharePoint 保护
-必须使用 **ConfigureSharePoint.exe** 配置 SharePoint VSS 写入器服务（WSS 写入器服务），才能使用 MABS 保护 SharePoint。
+必须使用 ConfigureSharePoint.exe 配置 SharePoint VSS 写入器服务（WSS 写入器服务），才能使用 MABS 保护 SharePoint  。
 
-可以在前端 Web 服务器的 [MABS 安装路径]\bin 文件夹中找到 **ConfigureSharePoint.exe**。 此工具可将 SharePoint 场的凭据提供给保护代理。 应在单个 WFE 服务器上运行该工具。 如果有多个 WFE 服务器，在配置保护组时，请只选择其中一个。
+可以在前端 Web 服务器的 [MABS 安装路径]\bin 文件夹中找到 ConfigureSharePoint.exe  。 此工具可将 SharePoint 场的凭据提供给保护代理。 应在单个 WFE 服务器上运行该工具。 如果有多个 WFE 服务器，在配置保护组时，请只选择其中一个。
 
 ### <a name="to-configure-the-sharepoint-vss-writer-service"></a>配置 SharePoint VSS 写入器服务
 
@@ -104,7 +104,7 @@ Azure 备份服务器以 LocalSystem 帐户的身份运行。 若要备份 SQL S
    > 若要确保不会影响网络流量，请选择生产时段之外的时间。
    >
    >
-8. MABS 可对副本执行一致性检查，以确保数据完整性。 有两个可用的选项。 可以定义运行一致性检查的计划，或在副本变得不一致时，让 DPM 自动运行一致性检查。 选择用户偏好的选项，并单击“下一步”  。
+8. MABS 可对副本执行一致性检查，以确保数据完整性。 有两个可用的选项。 可以定义运行一致性检查的计划，或在副本变得不一致时，让 DPM 自动运行一致性检查。 选择偏好的选项，并单击“下一步”  。
 
     ![一致性检查](./media/backup-azure-backup-sharepoint/consistency-check.png)
 9. 在“指定联机保护数据”页上，选择要保护的 SharePoint 场，然后单击“下一步”   。
@@ -118,7 +118,7 @@ Azure 备份服务器以 LocalSystem 帐户的身份运行。 若要备份 SQL S
     > MABS 从当时可用的最新磁盘备份点为 Azure 最多提供两个每日备份。 Azure 备份还可以使用 [Azure 备份网络限制](https://azure.microsoft.com/documentation/articles/backup-configure-vault/#enable-network-throttling)，来控制高峰期和非高峰期用于备份的 WAN 带宽量。
     >
     >
-11. 根据选择的备份计划，在“**指定联机保留策略**”页上，选择每日、每周、每月和每年备份点的保留策略。
+11. 根据选择的备份计划，在“指定联机保留策略”页上，选择每日、每周、每月和每年备份点的保留策略  。
 
     ![Online_retention_policy](./media/backup-azure-backup-sharepoint/specify-online-retention.png)
 
@@ -131,20 +131,20 @@ Azure 备份服务器以 LocalSystem 帐户的身份运行。 若要备份 SQL S
     ![Online_replica](./media/backup-azure-backup-sharepoint/online-replication.png)
 13. 在“摘要”页上复查选择的设置，并单击“创建组”   。 创建保护组之后，会看到成功消息。
 
-    ![摘要](./media/backup-azure-backup-sharepoint/summary.png)
+    ![总结](./media/backup-azure-backup-sharepoint/summary.png)
 
 ## <a name="restore-a-sharepoint-item-from-disk-by-using-mabs"></a>使用 MABS 从磁盘还原 SharePoint 项
 
-在以下示例中，“*恢复 SharePoint 项*”被意外删除，需要恢复。
+在以下示例中，“恢复 SharePoint 项”被意外删除，需要恢复  。
 ![MABS SharePoint 保护 4](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection5.png)
 
-1. 打开“**DPM 管理员控制台**”。 DPM 保护的所有 SharePoint 场都在“**保护**”选项卡中显示。
+1. 打开“DPM 管理员控制台”  。 DPM 保护的所有 SharePoint 场都在“保护”选项卡中显示  。
 
     ![MABS SharePoint 保护 3](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection4.png)
-2. 若要开始恢复该项，请选择“**恢复**”选项卡。
+2. 若要开始恢复该项，请选择“恢复”选项卡  。
 
     ![MABS SharePoint 保护 5](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection6.png)
-3. 可以通过在恢复点范围内执行基于通配符的搜索，在 SharePoint 中搜索“*恢复 SharePoint 项*”。
+3. 可以通过在恢复点范围内执行基于通配符的搜索，在 SharePoint 中搜索“恢复 SharePoint 项”  。
 
     ![MABS SharePoint 保护 6](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection7.png)
 4. 从搜索结果中选择相应的恢复点，右键单击该项，并选择“恢复”  。
@@ -154,7 +154,7 @@ Azure 备份服务器以 LocalSystem 帐户的身份运行。 若要备份 SQL S
 6. 右键单击该项，并选择“恢复”打开“恢复向导”   。 单击“下一步”。 
 
     ![复查恢复选择](./media/backup-azure-backup-sharepoint/review-recovery-selection.png)
-7. 选择用户要执行的恢复类型，并单击“下一步”  。
+7. 选择要执行的恢复类型，然后单击“下一步”  。
 
     ![恢复类型](./media/backup-azure-backup-sharepoint/select-recovery-type.png)
 
@@ -203,10 +203,10 @@ Azure 备份服务器以 LocalSystem 帐户的身份运行。 若要备份 SQL S
 2. 双击 SharePoint 恢复点以显示可用的 SharePoint 目录信息。
 
    > [!NOTE]
-   > 由于 SharePoint 场在 Azure 中受长期保留保护，因此 MABS 上没有可用的目录信息（元数据）。 因此，每当需要恢复时间点 SharePoint 内容数据库时，都需要重新编录 SharePoint 场。
+   > 由于 SharePoint 场在 Azure 中受长期保留保护，MABS 上没有可用的目录信息（元数据）。 因此，每当需要恢复时间点 SharePoint 内容数据库时，都需要重新编录 SharePoint 场。
    >
    >
-3. 单击“**重新编目**”。
+3. 单击“重新编录”  。
 
     ![MABS SharePoint 保护 10](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection12.png)
 
@@ -222,7 +222,7 @@ Azure 备份服务器以 LocalSystem 帐户的身份运行。 若要备份 SQL S
     ![MABS SharePoint 保护 13](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection15.png)
 5. 此时，请按照本文前面介绍的恢复步骤，从磁盘恢复 Sharepoint 内容数据库。
 
-## <a name="faqs"></a>常见问题
+## <a name="faqs"></a>常见问题解答
 
 问：如果使用 SQL AlwaysOn（使用磁盘上保护）配置了 SharePoint，我是否能将 SharePoint 项恢复到原始位置？<br>
 答：可以，该项可以恢复到原始 SharePoint 站点。
