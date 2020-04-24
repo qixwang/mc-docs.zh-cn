@@ -9,10 +9,10 @@ ms.author: v-jay
 ms.reviewer: anwestg
 ms.lastreviewed: 01/13/2019
 ms.openlocfilehash: bdeb7a8eeea1ff62d0586b5cf92ea16d040013ee
-ms.sourcegitcommit: e500354e2fd8b7ac3dddfae0c825cc543080f476
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79546852"
 ---
 # <a name="deploy-azure-app-service-in-an-offline-environment-in-azure-stack-hub"></a>在 Azure Stack Hub 离线环境中部署 Azure 应用服务

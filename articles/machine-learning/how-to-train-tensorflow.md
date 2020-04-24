@@ -12,10 +12,10 @@ origin.date: 08/20/2019
 ms.date: 03/16/2020
 ms.custom: seodec18
 ms.openlocfilehash: 8eff532bde36328dc55dec02e9e01b512a65f1c3
-ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80343366"
 ---
 # <a name="build-a-tensorflow-deep-learning-model-at-scale-with-azure-machine-learning"></a>使用 Azure 机器学习大规模构建 TensorFlow 深度学习模型

@@ -13,10 +13,10 @@ origin.date: 02/13/2020
 ms.date: 03/23/2020
 ms.author: v-jay
 ms.openlocfilehash: 6d12822093a5e3f68807a37aae354de0b0da932e
-ms.sourcegitcommit: 71a386ca0d0ecb79a123399b6ab6b8c70ea2aa78
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79497266"
 ---
 # <a name="copy-data-from-and-to-oracle-by-using-azure-data-factory"></a>使用 Azure 数据工厂从/向 Oracle 复制数据

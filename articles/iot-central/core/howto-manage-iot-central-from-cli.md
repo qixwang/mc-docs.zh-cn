@@ -9,10 +9,10 @@ ms.date: 02/11/2020
 ms.topic: conceptual
 manager: philmea
 ms.openlocfilehash: 1ab69a061928de74fc755a2d0a387e2872b94692
-ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80343182"
 ---
 # <a name="manage-iot-central-from-azure-cli"></a>从 Azure CLI 管理 IoT Central
@@ -21,9 +21,9 @@ ms.locfileid: "80343182"
 
 如果不在 [Azure IoT Central 应用程序管理器](https://aka.ms/iotcentral)网站上创建和管理 IoT Central 应用程序，可以使用 [Azure CLI](/cli/) 来管理应用程序。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
-如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial)。
+如果没有 Azure 订阅，可在开始前创建一个 [试用帐户](https://www.azure.cn/pricing/1rmb-trial) 。
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 

@@ -10,10 +10,10 @@ ms.date: 03/30/2020
 ms.author: v-jay
 ms.subservice: blobs
 ms.openlocfilehash: 63a834657d1798a93d701235fa219590ae16db66
-ms.sourcegitcommit: 90d01d08faf8adb20083363a8e4e5aab139cd9b2
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80290449"
 ---
 # <a name="soft-delete-for-azure-storage-blobs"></a>Azure 存储 Blob 的软删除

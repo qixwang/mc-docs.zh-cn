@@ -6,20 +6,20 @@ origin.date: 03/29/2019
 ms.date: 03/16/2020
 ms.author: v-tawe
 ms.openlocfilehash: 54fd4c7b7fcd0fbffff8b6dde31f59f8f3f0f6e4
-ms.sourcegitcommit: b2f2bb08ab1b5ccb3c596d84b3b6ddca5bba3903
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80151535"
 ---
-## <a name="authentication"></a>身份验证
+## <a name="authentication"></a>Authentication
 
 每个请求都需要一个授权标头。 下表列出了每个服务支持的标头：
 
 | 支持的授权标头 | 语音转文本 | 文本转语音 |
 |------------------------|----------------|----------------|
 | Ocp-Apim-Subscription-Key | 是 | 否 |
-| Authorization:持有者 | 是 | 是 |
+| 授权：持有者 | 是 | 是 |
 
 使用 `Ocp-Apim-Subscription-Key` 标头时，只需提供订阅密钥。 例如：
 
@@ -31,7 +31,7 @@ ms.locfileid: "80151535"
 
 ### <a name="how-to-get-an-access-token"></a>如何获取访问令牌
 
-若要获取访问令牌，需使用 `Ocp-Apim-Subscription-Key` 和订阅密钥向 `issueToken` 终结点发出请求。
+若要获取访问令牌，需使用 `issueToken` 和订阅密钥向 `Ocp-Apim-Subscription-Key` 终结点发出请求。
 
 `issueToken` 终结点具有以下格式：
 

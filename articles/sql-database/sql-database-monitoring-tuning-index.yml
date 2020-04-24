@@ -13,10 +13,10 @@ metadata:
   origin.date: 03/10/2020
   ms.date: 03/30/2020
   ms.openlocfilehash: 147a72f4595ef34b8d1eb35ecc23c9630baa9646
-  ms.sourcegitcommit: 90660563b5d65731a64c099b32fb9ec0ce2c51c6
+  ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 03/27/2020
+  ms.lasthandoff: 04/17/2020
   ms.locfileid: "80341807"
 landingContent:
 - title: 关于监视和性能优化
@@ -37,7 +37,7 @@ landingContent:
       url: sql-database-advisor.md
     - text: 自动优化
       url: sql-database-automatic-tuning.md
-    - text: Query Performance Insight
+    - text: 查询性能见解
       url: sql-database-query-performance.md
 - title: 资源限制
   linkLists:

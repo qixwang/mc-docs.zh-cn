@@ -11,10 +11,10 @@ ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 06/02/2017
 ms.openlocfilehash: e9ee75573b954beb8a80a92d9674bf88c34df533
-ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80343214"
 ---
 # <a name="how-to-consume-an-azure-machine-learning-studio-classic-web-service"></a>如何使用 Azure 机器学习工作室（经典版）Web 服务

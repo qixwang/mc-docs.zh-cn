@@ -7,10 +7,10 @@ origin.date: 04/04/2019
 ms.date: 03/30/2020
 ms.topic: conceptual
 ms.openlocfilehash: ec410c7e4958f874e60abdb29d3ebd5a29154e61
-ms.sourcegitcommit: 90d01d08faf8adb20083363a8e4e5aab139cd9b2
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80290353"
 ---
 # <a name="runbook-execution-in-azure-automation"></a>在 Azure 自动化中执行 Runbook
@@ -37,7 +37,7 @@ Azure 自动化中的 Runbook 可以在 Azure 沙盒上运行，也可以在[混
 
 下表列出了一些 Runbook 执行任务，以及每个任务的建议执行环境。
 
-|任务|最佳选择|注释|
+|任务|最佳选择|说明|
 |---|---|---|
 |与 Azure 资源集成|Azure 沙盒|托管在 Azure 中，身份验证更为简单。 如果使用的是 Azure VM 上的混合 Runbook 辅助角色，则可使用 [Azure 资源的托管标识](automation-hrw-run-runbooks.md#managed-identities-for-azure-resources)。|
 |管理 Azure 资源时可以获得最佳性能|Azure 沙盒|脚本在同一环境中运行，因此延迟更低。|
@@ -46,7 +46,7 @@ Azure 自动化中的 Runbook 可以在 Azure 沙盒上运行，也可以在[混
 |与本地服务交互|混合 Runbook 辅助角色|可以直接访问主机。|
 |需要第三方软件和可执行文件|混合 Runbook 辅助角色|由你管理操作系统，可以安装软件。|
 |运行资源密集型脚本|混合 Runbook 辅助角色| Azure 沙盒[对资源施加限制](../azure-resource-manager/management/azure-subscription-service-limits.md#automation-limits)。|
-|使用存在特定要求的模块| 混合 Runbook 辅助角色|下面是一些示例：</br> WinSCP - winscp.exe 上的依赖项 </br> IISAdministration - 依赖于启用 IIS。|
+|使用存在特定要求的模块| 混合 Runbook 辅助角色|一些示例如下：</br> WinSCP - winscp.exe 上的依赖项 </br> IISAdministration - 依赖于启用 IIS。|
 |使用安装程序安装模块|混合 Runbook 辅助角色|沙盒的模块必须支持复制。|
 |使用需要不同于 4.7.2 版本的 .NET Framework 的 Runbook 或模块|混合 Runbook 辅助角色|自动化沙盒使用 .NET Framework 4.7.2，无法升级 .NET Framework。|
 |运行需要提升权限的脚本|混合 Runbook 辅助角色|沙盒不允许提升权限。 使用混合 Runbook 辅助角色可以关闭 UAC，并在运行需要提升权限的命令时使用 **Invoke-Command**。|
@@ -154,7 +154,7 @@ Start-AzureRmAutomationRunbook `
 
 [ErrorActionPreference](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_preference_variables#erroractionpreference) 变量确定 PowerShell 如何对非终止性错误做出响应。 终止性错误始终会终止，不受 *ErrorActionPreference* 影响。
 
-当 Runbook 使用 `ErrorActionPreference` 时，正常的非终止性错误（例如 `Get-ChildItem` cmdlet 返回的 **PathNotFound**）会阻止 Runbook 完成。 以下示例演示了如何使用 `ErrorActionPreference`。 由于脚本将会停止，因此最终的 `Write-Output` 命令永远不会执行。
+当 Runbook 使用 `ErrorActionPreference` 时，正常的非终止性错误（例如 **cmdlet 返回的**PathNotFound`Get-ChildItem`）会阻止 Runbook 完成。 以下示例演示了如何使用 `ErrorActionPreference`。 由于脚本将会停止，因此最终的 `Write-Output` 命令永远不会执行。
 
 ```powershell
 $ErrorActionPreference = 'Stop'
@@ -223,16 +223,16 @@ Runbook 必须能够处理错误。 PowerShell 具有两种类型的错误：终
 | 状态 | 说明 |
 |:--- |:--- |
 | 已完成 |作业已成功完成。 |
-| 已失败 |图形 Runbook 或 PowerShell 工作流 Runbook 无法编译。 PowerShell 脚本 Runbook 无法启动，或作业出现异常。 请参阅 [Azure 自动化 Runbook 类型](automation-runbook-types.md)。|
-| 失败，正在等待资源 |作业失败，因为它已达到 [公平份额](#fair-share) 限制三次，并且每次都已从同一个检查点或 Runbook 开始处启动。 |
+| 失败 |图形 Runbook 或 PowerShell 工作流 Runbook 无法编译。 PowerShell 脚本 Runbook 无法启动，或作业出现异常。 请参阅 [Azure 自动化 Runbook 类型](automation-runbook-types.md)。|
+| 失败，正在等待资源 |作业失败，因为它已达到[公平份额](#fair-share)限制三次，并且每次都从同一个检查点或 Runbook 开始处启动。 |
 | 已排队 |作业正在等待提供自动化工作线程的资源，以便能够启动。 |
 | 正在启动 |作业已分配给辅助角色，并且系统正在将它启动。 |
 | 正在恢复 |系统正在恢复已暂停的作业。 |
 | 正在运行 |作业正在运行。 |
-| 正在运行，正在等待资源 |作业已卸载，因为它已达到公平份额限制。 片刻之后，它会从其上一个检查点恢复。 |
+| 正在运行，正在等待资源 |作业已卸载，因为它已达到公平份额限制。 片刻之后，它将从其上一个检查点恢复。 |
 | 已停止 |作业在完成之前已被用户停止。 |
 | 正在停止 |系统正在停止作业。 |
-| 已挂起 |仅适用于[图形 Runbook 和 PowerShell 工作流 Runbook](automation-runbook-types.md)。 作业已被用户、系统或 Runbook 中的命令暂停。 如果 Runbook 没有检查点，它将从头开始启动。 如果它有检查点，它将重新启动并从其上一个检查点继续。 仅当发生异常时，系统才会挂起 Runbook。 默认情况下，`ErrorActionPreference` 变量设置为 Continue，表示出错时作业会保持运行。 如果该首选项变量设置为 Stop，则出错时作业会挂起。  |
+| Suspended |仅适用于[图形 Runbook 和 PowerShell 工作流 Runbook](automation-runbook-types.md)。 作业已被用户、系统或 Runbook 中的命令暂停。 如果 Runbook 没有检查点，它将从头开始启动。 如果它有检查点，它将重新启动并从其上一个检查点继续。 仅当发生异常时，系统才会挂起 Runbook。 默认情况下，`ErrorActionPreference` 变量设置为 Continue，表示出错时作业会保持运行。 如果该首选项变量设置为 Stop，则出错时作业会挂起。  |
 | 正在暂停 |仅适用于[图形 Runbook 和 PowerShell 工作流 Runbook](automation-runbook-types.md)。 系统正在尝试按用户请求暂停作业。 Runbook 只有在达到其下一个检查点后才能挂起。 如果 Runbook 越过了最后一个检查点，则只有在完成后才能挂起。 |
 
 ### <a name="viewing-job-status-from-the-azure-portal"></a>从 Azure 门户查看作业状态

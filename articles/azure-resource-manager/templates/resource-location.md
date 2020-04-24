@@ -6,10 +6,10 @@ origin.date: 09/04/2019
 ms.date: 03/23/2020
 ms.author: v-yeche
 ms.openlocfilehash: 3128a24d06137ed1de116b5a7cb4a544f322657d
-ms.sourcegitcommit: 1436f1851342ca5631eb25342eed954adb707af0
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79543896"
 ---
 <!--Verify successfully-->
@@ -19,7 +19,7 @@ ms.locfileid: "79543896"
 
 ## <a name="get-available-locations"></a>获取可用位置
 
-不同位置支持的资源类型不一样。 若要获取资源类型支持的位置，请使用 Azure PowerShell 或 Azure CLI。
+不同的位置中支持不同的资源类型。 若要获取资源类型支持的位置，请使用 Azure PowerShell 或 Azure CLI。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -99,7 +99,7 @@ az provider show \
 
 ## <a name="next-steps"></a>后续步骤
 
-* 有关模板函数的完整列表，请参阅 [Azure Resource Manager 模板函数](template-functions.md)。
+* 有关模板函数的完整列表，请参阅 [Azure 资源管理器模板函数](template-functions.md)。
 * 有关模板文件的详细信息，请参阅[了解 Azure 资源管理器模板的结构和语法](template-syntax.md)。
 
 <!-- Update_Description: update meta properties, wording update, update link -->

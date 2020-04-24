@@ -9,10 +9,10 @@ ms.date: 08/23/2019
 ms.topic: conceptual
 manager: philmea
 ms.openlocfilehash: be98369ff51eb969dba3a670bb312074bfc94498
-ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80343771"
 ---
 # <a name="create-and-manage-an-azure-iot-central-application-from-the-csp-portal"></a>从 CSP 门户创建和管理 Azure IoT Central 应用程序
@@ -57,7 +57,7 @@ Azure IoT Central 将列为可用于管理的服务。 选择页面上的 Azure 
 
 输入应用程序的名称时，系统会自动创建应用程序 URL。 可以根据需要为应用程序选择另一个 URL。 每个 Azure IoT Central URL 在 Azure IoT Central 中必须唯一。 如果所选 URL 已被使用，则会看到一条错误消息。
 
-## <a name="directory"></a>Directory
+## <a name="directory"></a>目录
 
 由于 Azure IoT Central 有你用于管理已在 Microsoft 合作伙伴门户中选择的客户的上下文，因此在“目录”字段中只显示该客户的 Azure Active Directory 租户。 
 

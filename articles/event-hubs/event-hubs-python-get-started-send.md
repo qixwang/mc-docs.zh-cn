@@ -11,10 +11,10 @@ origin.date: 01/15/2020
 ms.date: 03/16/2020
 ms.author: v-tawe
 ms.openlocfilehash: 11b3ee6ea4572d8462fc7ea41569ac5a94ba8fbb
-ms.sourcegitcommit: 1d3d8dfdaf6281f06640cbee7124a1e8bf102c50
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80243921"
 ---
 # <a name="quickstart-send-and-receive-events-with-event-hubs-using-python-azure-eventhub-version-1"></a>快速入门：使用 Python（azure-eventhub 版本 1）向/从事件中心发送/接收事件

@@ -6,10 +6,10 @@ origin.date: 01/17/2020
 ms.date: 03/23/2020
 ms.author: v-yeche
 ms.openlocfilehash: 3a7ac216bcf2ff538187487808a04590285b9479
-ms.sourcegitcommit: 1436f1851342ca5631eb25342eed954adb707af0
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79543818"
 ---
 # <a name="azure-resource-manager-deployment-modes"></a>Azure 资源管理器部署模式
@@ -123,8 +123,8 @@ az group deployment create \
 
 ## <a name="next-steps"></a>后续步骤
 
-* 若要了解如何创建 Resource Manager 模板，请参阅[创作 Azure Resource Manager 模板](template-syntax.md)。
-* 若要了解如何部署资源，请参阅[使用 Azure Resource Manager 模板部署应用程序](deploy-powershell.md)。
+* 若要了解如何创建资源管理器模板，请参阅[创作 Azure 资源管理器模板](template-syntax.md)。
+* 若要了解如何部署资源，请参阅[使用 Azure 资源管理器模板部署应用程序](deploy-powershell.md)。
 * 若要查看资源提供程序的操作，请参阅 [Azure REST API](https://docs.microsoft.com/rest/api/)。
 
 <!-- Update_Description: update meta properties, wording update, update link -->

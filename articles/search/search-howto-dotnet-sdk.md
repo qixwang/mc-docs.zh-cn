@@ -11,10 +11,10 @@ ms.topic: conceptual
 origin.date: 11/04/2019
 ms.date: 03/16/2020
 ms.openlocfilehash: 264f3500c9994040e0dcf50d8879782ef7493e32
-ms.sourcegitcommit: 1d3d8dfdaf6281f06640cbee7124a1e8bf102c50
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80243707"
 ---
 # <a name="how-to-use-azure-cognitive-search-from-a-net-application"></a>如何通过 .NET 应用程序使用 Azure 认知搜索

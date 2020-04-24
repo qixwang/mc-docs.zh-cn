@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 03/16/2020
 ms.author: v-junlch
 ms.openlocfilehash: edcaf320b619b7c8c9f5b4a0fc46fc4a125674e1
-ms.sourcegitcommit: 71a386ca0d0ecb79a123399b6ab6b8c70ea2aa78
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79497115"
 ---
 # <a name="expose-a-websocket-server-to-application-gateway"></a>向应用程序网关公开 WebSocket 服务器

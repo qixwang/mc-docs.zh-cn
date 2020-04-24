@@ -10,10 +10,10 @@ ms.date: 03/30/2020
 ms.author: v-yeche
 ms.custom: include file
 ms.openlocfilehash: abaf38938e9a50c0d29ea97079a84987f91c4b3a
-ms.sourcegitcommit: 4810b75d1e1db78d9747e99735468a6ab861be2d
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80291297"
 ---
 1. 选择“连接 VPN 站点”来打开“连接站点”页   。

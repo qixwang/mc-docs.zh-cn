@@ -7,10 +7,10 @@ origin.date: 03/04/2020
 ms.date: 03/16/2020
 ms.author: v-tawe
 ms.openlocfilehash: 72202a6621bfaa029b2ae9b1de59ca1dbc5597dd
-ms.sourcegitcommit: e500354e2fd8b7ac3dddfae0c825cc543080f476
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79546974"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>设置 Azure 应用服务中的过渡环境

@@ -11,10 +11,10 @@ ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/12/2019
 ms.openlocfilehash: da9b98744c4f16df42b0fb1c03d0b99da0282401
-ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80343815"
 ---
 # <a name="data-platforms-supported-on-the-data-science-virtual-machine"></a>Data Science Virtual Machine 支持的数据平台
@@ -45,7 +45,7 @@ DSVM 支持以下数据平台工具。
 
         (Replace %COMPUTERNAME% with your VM name.)
        
-若要运行 SQL Server Management Studio，可在程序列表中搜索“SQL Server Management Studio”，或使用 Windows 搜索来查找并运行它。 系统提示输入凭据时，请选择“Windows 身份验证”，然后使用计算机名称或 SQL Server 名称字段中的 ```localhost```   。
+若要运行 SQL Server Management Studio，可在程序列表中搜索“SQL Server Management Studio”，或使用 Windows 搜索来查找并运行它。 系统提示输入凭据时，请选择“Windows 身份验证”，然后使用计算机名称或 SQL Server 名称字段中的 ```localhost```  。
 
 ### <a name="how-to-use-and-run-it"></a>如何使用和运行它
 

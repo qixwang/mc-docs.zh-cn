@@ -10,10 +10,10 @@ ms.date: 03/16/2020
 ms.author: v-tawe
 ms.custom: include file
 ms.openlocfilehash: 815729f2ef9ce4083fee7f0a9865dda48d70f097
-ms.sourcegitcommit: 1d3d8dfdaf6281f06640cbee7124a1e8bf102c50
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80272694"
 ---
 在 `myAppServicePlan` 应用服务计划中创建一个 Web 应用。 

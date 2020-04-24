@@ -9,10 +9,10 @@ ms.date: 02/14/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 1949c55546b8bb63b89cbf9ebec497650f5a7164
-ms.sourcegitcommit: 4810b75d1e1db78d9747e99735468a6ab861be2d
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80291309"
 ---
 在“Azure VPN - 属性”  页面上，配置登录设置。

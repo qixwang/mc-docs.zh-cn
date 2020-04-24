@@ -10,10 +10,10 @@ ms.topic: overview
 origin.date: 02/27/2020
 ms.date: 03/23/2020
 ms.openlocfilehash: 330941ac9698698dd9cb3d318a3379998d8e3e35
-ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80343566"
 ---
 # <a name="what-is-azure-hdinsight"></a>什么是 Azure HDInsight？

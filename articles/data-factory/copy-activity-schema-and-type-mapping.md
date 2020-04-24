@@ -13,10 +13,10 @@ origin.date: 02/13/2020
 ms.date: 03/23/2020
 ms.author: v-jay
 ms.openlocfilehash: 1bc7d1ef6b5a474bef81d8acaba0fe9e01af5945
-ms.sourcegitcommit: 71a386ca0d0ecb79a123399b6ab6b8c70ea2aa78
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79497360"
 ---
 # <a name="schema-mapping-in-copy-activity"></a>复制活动中的架构映射

@@ -6,10 +6,10 @@ origin.date: 03/09/2020
 ms.date: 03/23/2020
 ms.author: v-yeche
 ms.openlocfilehash: b16e3849ca249e36cb0fd6580200a01ce4c7f7cd
-ms.sourcegitcommit: 1436f1851342ca5631eb25342eed954adb707af0
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79543808"
 ---
 # <a name="create-resource-groups-and-resources-at-the-subscription-level"></a>在订阅级别创建资源组和资源

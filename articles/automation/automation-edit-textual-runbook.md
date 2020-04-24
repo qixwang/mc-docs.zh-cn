@@ -1,6 +1,6 @@
 ---
 title: 在 Azure 自动化中编辑文本 Runbook
-description: 本文提供的不同过程适用于在 Azure 自动化中通过文本编辑器来处理 PowerShell 和 PowerShell 工作流 Runbook。
+description: 本文提供的不同过程适用于在 Azure 自动化中通过文本编辑器来处理 PowerShell Runbook 和 PowerShell 工作流 Runbook。
 services: automation
 ms.service: automation
 ms.subservice: process-automation
@@ -11,10 +11,10 @@ ms.date: 03/30/2020
 ms.topic: conceptual
 manager: digimobile
 ms.openlocfilehash: 9fe5350466f35a0e2121094c1de18cae8a324fe6
-ms.sourcegitcommit: 90d01d08faf8adb20083363a8e4e5aab139cd9b2
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80290356"
 ---
 # <a name="editing-textual-runbooks-in-azure-automation"></a>在 Azure 自动化中编辑文本 Runbook
@@ -23,7 +23,7 @@ Azure 自动化中的文本编辑器可以用来编辑 [PowerShell Runbook](auto
 
 该文本编辑器包含的一项功能是将 cmdlet、资产和子 Runbook 的代码插入 Runbook 中。 用户不需亲自键入代码，只需从可用资源列表中进行选择，由编辑器将相应代码插入 Runbook 中。
 
-Azure 自动化中的每个 Runbook 都有两个版本：草稿版和已发布版。 用户先对 Runbook 的草稿版进行编辑，并将其发布，这样便可以执行了。 无法编辑已发布版本。 有关详细信息，请参阅 [发布 runbook](manage-runbooks.md#publish-a-runbook)。
+Azure 自动化中的每个 Runbook 都有两个版本：草稿版和已发布版。 先对 Runbook 的草稿版进行编辑，然后将其发布，这样便可以执行了。 无法编辑已发布版本。 有关详细信息，请参阅 [发布 runbook](manage-runbooks.md#publish-a-runbook)。
 
 本文提供了使用该编辑器执行不同功能的详细步骤。 这些步骤不适用于[图 Runbook](automation-runbook-types.md#graphical-runbooks)。 若要使用这些 Runbook，请参阅 [Azure 自动化中的图形创作](automation-graphical-authoring-intro.md)。
 
@@ -102,7 +102,7 @@ Publish-AzAutomationRunbook -Name $runbookName -AutomationAccountName $automatio
 * [在 Azure 自动化中管理 runbook](manage-runbooks.md)
 * [了解 PowerShell 工作流](automation-powershell-workflow.md)
 * [Azure 自动化中的图形创作](automation-graphical-authoring-intro.md)
-* [Certificates](automation-certificates.md)
+* [证书](automation-certificates.md)
 * [连接](automation-connections.md)
 * [凭据](automation-credentials.md)
 * [计划](automation-schedules.md)

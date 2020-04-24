@@ -11,10 +11,10 @@ ms.author: v-jay
 ms.reviewer: cbrooks
 ms.subservice: common
 ms.openlocfilehash: cc72cae125a4b378bba3b246b385a51aa21b3625
-ms.sourcegitcommit: 90d01d08faf8adb20083363a8e4e5aab139cd9b2
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80290346"
 ---
 # <a name="azure-storage-encryption-for-data-at-rest"></a>静态数据的 Azure 存储加密

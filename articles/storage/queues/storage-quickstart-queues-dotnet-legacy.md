@@ -10,10 +10,10 @@ ms.subservice: queues
 ms.topic: quickstart
 ms.reviewer: cbrooks
 ms.openlocfilehash: 96edc3f05bab9a5e56af7c4ab205a69dcf2923d7
-ms.sourcegitcommit: 90d01d08faf8adb20083363a8e4e5aab139cd9b2
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80290347"
 ---
 # <a name="quickstart-use-the-azure-storage-sdk-v11-for-net-to-manage-a-queue"></a>快速入门：使用适用于 .NET 的 Azure 存储 SDK v11 管理队列

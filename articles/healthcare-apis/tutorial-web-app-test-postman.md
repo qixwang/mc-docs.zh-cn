@@ -10,10 +10,10 @@ ms.author: cavoeg
 author: caitlinv39
 ms.date: 01/03/2020
 ms.openlocfilehash: 42dd1e11c7b49c97b7d741e4756bdad2800e4ab8
-ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80343680"
 ---
 # <a name="testing-the-fhir-api"></a>测试 FHIR API
@@ -36,7 +36,7 @@ ms.locfileid: "80343680"
 1. 选择“获取新访问令牌” 
 1. 填写字段，然后选择“请求令牌”。  在下面可以看到本教程中所述每个字段的值。
 
-|字段                |Value                                                               |
+|字段                |值                                                               |
 |---------------------|--------------------------------------------------------------------|
 |令牌名称           |令牌的名称                                               |
 |授权类型           |授权代码                                                  |
@@ -45,7 +45,7 @@ ms.locfileid: "80343680"
 |访问令牌 URL     |https://login.microsoftonline.com/\<AZURE-AD-TENANT-ID>/oauth2/token|
 |客户端 ID            |在前面步骤中复制的客户端 ID             |
 |客户端机密        |\<BLANK>                                                            |
-|作用域                |\<BLANK>                                                            |
+|范围                |\<BLANK>                                                            |
 |状态                |1234                                                                |
 |客户端身份验证|在正文中发送客户端凭据                                     |
 

@@ -14,10 +14,10 @@ ms.topic: article
 origin.date: 02/17/2020
 ms.date: 03/30/2020
 ms.openlocfilehash: fdda0357b4d2e248bab4a1e7127cdcd022a37a37
-ms.sourcegitcommit: 90660563b5d65731a64c099b32fb9ec0ce2c51c6
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80341727"
 ---
 # <a name="tutorial-migrate-rds-postgresql-to-azure-db-for-postgresql-online-using-dms"></a>教程：使用 DMS 将 RDS PostgreSQL 联机迁移到 Azure DB for PostgreSQL

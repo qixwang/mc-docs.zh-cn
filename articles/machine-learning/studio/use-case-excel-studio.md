@@ -11,10 +11,10 @@ ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/20/2017
 ms.openlocfilehash: cab72a3f956f4483adba0d092ab257ae4e160c4b
-ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80343328"
 ---
 # <a name="migrate-analytics-from-excel-to-azure-machine-learning-studio-classic"></a>将 Excel 中的分析信息迁移到 Azure 机器学习工作室（经典）
@@ -56,8 +56,8 @@ ms.locfileid: "80343328"
 |  | Excel | 工作室（经典版） |
 | --- |:---:|:---:|
 | 性能 | | |
-| <ul style="list-style-type: none;"><li>调整 R 平方</li></ul> |0.96 |不适用 |
-| <ul style="list-style-type: none;"><li>决定 <br />系数</li></ul> |不适用 |0.78<br />（低准确性） |
+| <ul style="list-style-type: none;"><li>调整 R 平方</li></ul> |0.96 |空值 |
+| <ul style="list-style-type: none;"><li>决定 <br />系数</li></ul> |空值 |0.78<br />（低准确性） |
 | 平均绝对误差 |$9.5M |$ 19.4 M |
 | 平均绝对误差 (%) |6.03% |12.2% |
 
@@ -75,13 +75,13 @@ ms.locfileid: "80343328"
 | --- |:---:|:---:|:---:|
 | 有标签的值 |实际值（数值） |相同 |相同 |
 | 学习器 |Excel -> 数据分析 -> 回归 |线性回归。 |线性回归 |
-| 学习器选项 |不适用 |默认值 |普通最小二乘法<br />L2 = 0.005 |
+| 学习器选项 |空值 |默认值 |普通最小二乘法<br />L2 = 0.005 |
 | 数据集 |26 行、3 个功能、1 个标签。 所有数字。 |相同 |相同 |
-| 拆分：定型 |Excel 在前 18 行进行训练，在最后 8 行进行测试。 |相同 |相同 |
+| 拆分：训练 |Excel 在前 18 行进行训练，在最后 8 行进行测试。 |相同 |相同 |
 | 拆分：测试 |Excel 回归公式应用于最后 8 行 |相同 |相同 |
 | **“性能”** | | | |
 | 调整 R 平方 |0.96 |空值 | |
-| 决定系数 |不适用 |0.78 |0.952049 |
+| 决定系数 |空值 |0.78 |0.952049 |
 | 平均绝对误差 |$9.5M |$ 19.4 M |$9.5M |
 | 平均绝对误差 (%) |<span style="background-color: 00FF00;"> 6.03%</span> |12.2% |<span style="background-color: 00FF00;"> 6.03%</span> |
 
@@ -117,14 +117,14 @@ ms.locfileid: "80343328"
 
 如果要实验回归，能源效率回归示例数据集即是可用于尝试的好的数据集，其中包含很多数值属性。 此数据集是作为工作室（经典）中的示例数据集的一部分提供的。 可以使用各种学习模块来预测加热负载或冷却负载。 下表是针对目标变量冷却负载预测的能源效率数据集的不同回归学习的性能比较： 
 
-| 型号 | 平均绝对误差 | 均方根误差 | 相对绝对误差 | 相对平方误差 | 决定系数 |
+| “模型” | 平均绝对误差 | 均方根误差 | 相对绝对误差 | 相对平方误差 | 决定系数 |
 | --- | --- | --- | --- | --- | --- |
 | 提升决策树 |0.930113 |1.4239 |0.106647 |0.021662 |0.978338 |
 | 线性回归（梯度下降） |2.035693 |2.98006 |0.233414 |0.094881 |0.905119 |
 | 神经网络回归 |1.548195 |2.114617 |0.177517 |0.047774 |0.952226 |
 | 线性回归（普通最小二乘法） |1.428273 |1.984461 |0.163767 |0.042074 |0.957926 |
 
-## <a name="key-takeaways"></a>关键点
+## <a name="key-takeaways"></a>要点
 通过并行运行 Excel 回归和工作室（经典）试验，我们学到了很多。 在 Excel 中创建基线模型，并将它与使用机器学习[线性回归][linear-regression]的模型进行比较，帮助我们了解了工作室（经典），并且我们发现了改进数据选择和模型性能的机会。 
 
 我们还发现，最好使用[基于筛选器的特征选择][filter-based-feature-selection]来加快将来的预测项目。 通过对数据应用特征选择，可以在工作室（经典）中创建改进的模型，以获得更好的总体性能。 
@@ -136,7 +136,7 @@ ms.locfileid: "80343328"
 
 * Excel 中的回归。 如果从未尝试在 Excel 中使用回归，可参阅本教程轻松完成操作：[https://www.excel-easy.com/examples/regression.html](https://www.excel-easy.com/examples/regression.html)
 * 回归与预测。 Tyler Chessman 撰写的博客文章，介绍了如何在 Excel 中进行时序预测，其中包含适合初学者的线性回归说明。 [https://www.itprotoday.com/sql-server/understanding-time-series-forecasting-concepts](https://www.itprotoday.com/sql-server/understanding-time-series-forecasting-concepts) 
-* 普通最小二乘法（线性回归）：缺陷、问题和陷阱。 有关回归的简介和讨论：[https://www.clockbackward.com/2009/06/18/ordinary-least-squares-linear-regression-flaws-problems-and-pitfalls/ ](https://www.clockbackward.com/2009/06/18/ordinary-least-squares-linear-regression-flaws-problems-and-pitfalls/)
+* 普通最小二乘法线性回归：缺陷、问题和陷阱。 有关回归的简介和讨论：[https://www.clockbackward.com/2009/06/18/ordinary-least-squares-linear-regression-flaws-problems-and-pitfalls/ ](https://www.clockbackward.com/2009/06/18/ordinary-least-squares-linear-regression-flaws-problems-and-pitfalls/)
 
 <!-- Module References -->
 [bayesian-linear-regression]: https://msdn.microsoft.com/library/azure/ee12de50-2b34-4145-aec0-23e0485da308/

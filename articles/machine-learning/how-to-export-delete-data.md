@@ -12,10 +12,10 @@ ms.author: laobri
 ms.date: 11/04/2019
 ms.custom: seodec18
 ms.openlocfilehash: 911ffe754c7fad73eeb484e97bd28e69d285fd7a
-ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80343386"
 ---
 # <a name="export-or-delete-your-machine-learning-service-workspace-data"></a>导出或删除机器学习服务工作区数据 
@@ -243,7 +243,7 @@ ms.locfileid: "80343386"
 
 1. 在列表中，选择要删除的单个管道草案。
 
-1. 选择“删除”  。
+1. 选择“删除”。 
 
 ### <a name="delete-datasets-in-the-designer"></a>在设计器中删除数据集
 

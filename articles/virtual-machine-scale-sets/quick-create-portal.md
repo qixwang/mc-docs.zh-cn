@@ -11,10 +11,10 @@ ms.custom: H1Hack27Feb2017
 ms.date: 03/18/2020
 ms.author: v-junlch
 ms.openlocfilehash: b3f909847a09f422be397b3dbcb72f4ffe84e1bd
-ms.sourcegitcommit: e500354e2fd8b7ac3dddfae0c825cc543080f476
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79547021"
 ---
 # <a name="quickstart-create-a-virtual-machine-scale-set-in-the-azure-portal"></a>快速入门：在 Azure 门户中创建虚拟机规模集
@@ -25,7 +25,7 @@ ms.locfileid: "79547021"
 
 
 ## <a name="log-in-to-azure"></a>登录 Azure
-在 https://portal.azure.cn 登录 Azure 门户。
+通过 https://portal.azure.cn 登录到 Azure 门户。
 
 ## <a name="create-a-load-balancer"></a>创建负载均衡器
 
@@ -36,7 +36,7 @@ Azure [负载均衡器](../load-balancer/load-balancer-overview.md)在运行正�
 1. 在搜索框中，键入“负载均衡器”  。 在搜索结果中的“市场”下，选取“负载均衡器”   。
 1. 在“创建负载均衡器”页的“基本信息”选项卡中，输入或选择以下信息   ：
 
-    | 设置                 | Value   |
+    | 设置                 | 值   |
     | ---| ---|
     | 订阅  | 选择订阅。    |    
     | 资源组 | 选择“新建”并在文本框中键入 myVMSSResourceGroup   。|
@@ -57,7 +57,7 @@ Azure [负载均衡器](../load-balancer/load-balancer-overview.md)在运行正�
 可使用 Windows Server 映像或 Linux 映像（如 RHEL、CentOS、Ubuntu 或 SLES）部署规模集。
 
 1. 在搜索框中键入“规模集”  。 在结果中的“市场”下，选择“虚拟机规模集”   。 将打开“创建虚拟机规模集”页  。 
-1. 在“基本信息”  标签页中的“项目详细信息”  下，确保选择了正确的订阅，然后选择“新建资源组”  。 键入 myVMSSResourceGroup 作为名称，然后选择“确定”   。 
+1. 在“基本信息”  选项卡中的“项目详细信息”  下，确保选择了正确的订阅，然后选择**新建**资源组。 键入 myVMSSResourceGroup 作为名称，然后选择“确定”   。 
 1. 键入 myScaleSet 作为规模集的名称  。
 1. 在“区域”中，选择离你近的区域  。
 1. 保留业务流程协调程序的规模集 VM 的默认值   。

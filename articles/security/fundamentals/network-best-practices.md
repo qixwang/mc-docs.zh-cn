@@ -16,10 +16,10 @@ origin.date: 10/02/2019
 ms.date: 03/02/2020
 ms.author: v-lingwu
 ms.openlocfilehash: 8be6716caa6583f6228bf9351648990dafae5c25
-ms.sourcegitcommit: 303a16c7117b6f3495ef0493b4ae8ccb67d7dbba
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80342343"
 ---
 # <a name="azure-best-practices-for-network-security"></a>Azure 网络安全最佳做法

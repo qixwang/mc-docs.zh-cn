@@ -13,10 +13,10 @@ ms.author: v-junlch
 ms.reviwer: lenalepa, sureshja
 ms.custom: aaddev
 ms.openlocfilehash: 5a0b21f6e2a14b72e44d5f49c00391b6cdc9f2a2
-ms.sourcegitcommit: 6568c59433d7e80ab06e9fe76d4791f761ed6775
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80243156"
 ---
 # <a name="how-to-configure-terms-of-service-and-privacy-statement-for-an-app"></a>如何：配置应用的服务条款和隐私声明

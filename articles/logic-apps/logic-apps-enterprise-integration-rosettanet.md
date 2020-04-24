@@ -10,10 +10,10 @@ origin.date: 06/22/2019
 ms.date: 03/30/2020
 ms.author: v-yeche
 ms.openlocfilehash: 9decd6917e46a7be6ce3ed194e6c76ab3e059ec2
-ms.sourcegitcommit: 2b084933215d0e7702456730f168d97e00c882a0
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80243451"
 ---
 # <a name="exchange-rosettanet-messages-for-b2b-enterprise-integration-in-azure-logic-apps"></a>在 Azure 逻辑应用中交换 RosettaNet 消息以实现 B2B 企业集成
@@ -80,7 +80,7 @@ ms.locfileid: "80243451"
 
     ![添加 RosettaNet PIP 详细信息](media/logic-apps-enterprise-integration-rosettanet/add-rosettanet-pip.png)
 
-    | 属性 | 必需 | 说明 |
+    | 属性 | 必须 | 说明 |
     |----------|----------|-------------|
     | **名称** | 是 | PIP 名称 |
     | **PIP 代码** | 是 | PIP 三位数代码。 有关详细信息，请参阅 [RosettaNet PIP](https://docs.microsoft.com/biztalk/adapters-and-accelerators/accelerator-rosettanet/rosettanet-pips)。 |
@@ -115,7 +115,7 @@ ms.locfileid: "80243451"
     |----------|----------|-------------|
     | **名称** | 是 | 协议的名称 |
     | **协议类型** | 是 | 选择“RosettaNet”。  |
-    | **主方合作伙伴** | 是 | 协议需要有主方和客方合作伙伴。 主方合作伙伴代表配置协议的组织。 |
+    | **主方合作伙伴** | 是 | 协议需要有主机和来宾合作伙伴。 宿主合作伙伴代表配置协议的组织。 |
     | **主方标识** | 是 | 管理方的标识符 |
     | **客方合作伙伴** | 是 | 协议需要有主机和来宾合作伙伴。 托管方代表与管理方进行交易的组织。 |
     | **客方标识** | 是 | 托管方的标识符 |

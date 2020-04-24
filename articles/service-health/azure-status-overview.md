@@ -4,10 +4,10 @@ description: Azure 服务运行状况的全局视图
 ms.topic: overview
 ms.date: 03/17/2020
 ms.openlocfilehash: 6c07129c0ac73ca202b8b1e3822c26c983c75965
-ms.sourcegitcommit: 71a386ca0d0ecb79a123399b6ab6b8c70ea2aa78
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79497091"
 ---
 # <a name="azure-status-overview"></a>Azure 状态概述
@@ -18,7 +18,7 @@ ms.locfileid: "79497091"
 
 ## <a name="azure-status-updates"></a>Azure 状态更新
 
-Azure 状态页会根据 Azure 服务运行状况的变化而实时更新。 如果保持 Azure 状态页处于打开状态，则可控制页面上新数据的刷新频率。 在顶部，你可查看页面上次更新时间。
+Azure 状态页会根据 Azure 服务的更改而实时更新。 如果保持 Azure 状态页处于打开状态，则可控制页面上新数据的刷新频率。 在顶部，你可查看页面上次更新时间。
 
 ![Azure 状态刷新](./media/azure-status-overview/update.PNG)
 

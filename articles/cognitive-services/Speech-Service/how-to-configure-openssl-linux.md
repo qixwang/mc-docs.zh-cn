@@ -12,10 +12,10 @@ origin.date: 01/16/2020
 ms.date: 03/16/2020
 ms.author: v-tawe
 ms.openlocfilehash: 825a6bac9f5c54036413b2d9eb2192abc2be9414
-ms.sourcegitcommit: b2f2bb08ab1b5ccb3c596d84b3b6ddca5bba3903
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80151706"
 ---
 # <a name="configure-openssl-for-linux"></a>为 Linux 配置 OpenSSL

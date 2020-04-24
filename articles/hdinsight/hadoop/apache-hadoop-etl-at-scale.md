@@ -16,10 +16,10 @@ origin.date: 03/03/2020
 ms.date: 04/06/2020
 ms.author: v-yiso
 ms.openlocfilehash: ec2c1716a2fca7990a56c4b57932e84c9e284dc4
-ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80343098"
 ---
 # <a name="extract-transform-and-load-etl-at-scale"></a>大规模提取、转换和加载 (ETL)
@@ -72,7 +72,7 @@ Azure 存储还为 Blob 存储提供一个 WebHDFS API 层。  HDInsight 中的�
 
 通常使用 PowerShell、Azure 存储 SDK 或 AZCopy 将数据引入 Azure 存储。
 
-### <a name="azure-data-lake-storage"></a>Azure Data Lake Storage
+### <a name="azure-data-lake-storage"></a>Azure Data Lake 存储
 
 Azure Data Lake Storage (ADLS) 是一个托管的超大规模存储库，用于分析与 HDFS 兼容的数据。  ADLS 使用类似于 HDFS 的设计范例，并在总容量及单个文件的大小方面提供无限可伸缩性。 ADLS 非常适合与大型文件配合运行，因为大型文件可以跨多个节点存储。  ADLS 中的数据分区在幕后执行。  通过数以千计的并发执行程序，可高效读取和写入数百 TB 的数据，从而可获得极大的吞吐量来运行分析作业。
 
@@ -98,7 +98,7 @@ Azure SQL 数据仓库 (SQL DW) 是已针对分析工作负荷进行优化的关
 
 Apache HBase 是 Azure HDInsight 中提供的键/值存储。  Apache HBase 是一种开源 NoSQL 数据库，它构建于 Hadoop 基础之上，并基于 Google BigTable 模型化。 HBase 针对按列系列组织的无架构数据库中的大量非结构化和结构化数据提供高性能的随机访问和强一致性。
 
-数据存储在表的各行中，行中的数据按列系列分组。 HBase 是无架构数据库，也就是说，不必在使用其中数据前定义列和列中所存储数据类型。 开放源代码可进行线性伸缩，以处理上千节点上数 PB 的数据。 HBase 可依赖数据冗余、批处理以及 Hadoop 生态系统中的分布式应用程序提供的其他功能。   
+数据存储在表的各行中，行中的数据按列系列分组。 HBase 是无架构数据库，也就是说，在使用其数据前，不必定义列以及列中存储的数据类型。 开放源代码可进行线性伸缩，以处理上千节点上数 PB 的数据。 HBase 可依赖数据冗余、批处理以及 Hadoop 生态系统中的分布式应用程序提供的其他功能。   
 
 HBase 是供将来分析的传感器和日志数据的绝佳目标。
 

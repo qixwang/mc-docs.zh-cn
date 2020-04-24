@@ -7,10 +7,10 @@ ms.topic: article
 origin.date: 03/05/2020
 ms.date: 03/23/2020
 ms.openlocfilehash: cb748f7922cd73a0d2c0253722a98d66c2e0be79
-ms.sourcegitcommit: e500354e2fd8b7ac3dddfae0c825cc543080f476
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79547133"
 ---
 # <a name="deleting-volumes-in-azure-stack-hci"></a>在 Azure Stack HCI 中删除卷

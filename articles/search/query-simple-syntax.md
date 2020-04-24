@@ -21,10 +21,10 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: ff81aa06bc46b496d823e8b8dda491c731cc8906
-ms.sourcegitcommit: 1d3d8dfdaf6281f06640cbee7124a1e8bf102c50
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80243715"
 ---
 # <a name="simple-query-syntax-in-azure-cognitive-search"></a>Azure 认知搜索中的简单查询语法

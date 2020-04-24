@@ -15,10 +15,10 @@ origin.date: 05/21/2019
 ms.date: 02/24/2020
 ms.author: v-yiso
 ms.openlocfilehash: 062202d92cbdd77fda746c8be30ef10dec3461ab
-ms.sourcegitcommit: 7f8acc663bf3429b391c2c615bed0d1b2107fd7e
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80290094"
 ---
 # <a name="protect-an-api-by-using-oauth-20-with-azure-active-directory-and-api-management"></a>结合 Azure Active Directory 和 API 管理使用 OAuth 2.0 保护 API
@@ -28,7 +28,7 @@ ms.locfileid: "80290094"
 > [!NOTE]
 > 此功能在 API 管理的“开发人员”  、“标准”  和“高级”  层中可用。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 若要执行本文中的步骤，必须提供：
 * API 管理实例
 * 使用 API 管理实例发布的 API
@@ -108,7 +108,7 @@ ms.locfileid: "80290094"
 
 1. 在“委托的权限”下，选择对 backend-app 的适当权限，然后选择“添加权限”。  
 
-1. （可选）在“API 权限”页上，选择“授予对\<你的租户名称>的管理员许可”，以代表此目录中的所有用户授予许可。   
+1. （可选）在“API 权限”页上，选择“授予对**你的租户名称>的管理员许可”，以代表此目录中的所有用户授予许可。** **\<** 
 
 ## <a name="enable-oauth-20-user-authorization-in-the-developer-console"></a>在开发人员门户中启用 OAuth 2.0 用户授权
 
@@ -118,11 +118,11 @@ ms.locfileid: "80290094"
 
 1. 在 Azure 门户中，浏览找到你的 API 管理实例。
 
-1. 选择“OAuth 2.0” > “添加”。  
+1. 选择“OAuth 2.0” **“添加”。**  >  
 
 1. 提供“显示名称”和“说明”。  
 
-1. 对于“客户端注册页 URL”，请输入占位符值，如 `http://localhost`。  “客户端注册页 URL”指向供用户针对 OAuth 2.0 提供程序创建和配置其自己的帐户的页面。  在此示例中，用户不创建和配置自己的帐户，因此使用了占位符。
+1. 对于“客户端注册页 URL”，请输入占位符值，如 **。** `http://localhost` “客户端注册页 URL”指向供用户针对 OAuth 2.0 提供程序创建和配置其自己的帐户的页面。  在此示例中，用户不创建和配置自己的帐户，因此使用了占位符。
 
 1. 选择“授权代码”作为“授权类型”。  
 
@@ -140,11 +140,11 @@ ms.locfileid: "80290094"
 
 1. 如果使用 **v2** 终结点，请在“默认范围”字段中使用为后端应用创建的范围。 
 
-1. 接下来，指定客户端凭据。 这些是 client-app 的凭据。
+1. 接下来，指定客户端凭据。 这是客户端应用的凭据。
 
 1. 对于“客户端 ID”，请使用客户端应用的“应用程序 ID”。  
 
-1. 对于“客户端机密”，请使用前面为 client-app 创建的密钥。  
+1. 对于“客户端机密”，请使用前面为客户端应用创建的密钥。  
 
 1. 紧接在客户端机密的后面，是授权代码授权类型的 **redirect_url**。 记下此 URL。
 
@@ -166,7 +166,7 @@ ms.locfileid: "80290094"
 
 4. 在“安全性”下，选择“OAuth 2.0”并选择前面配置的 OAuth 2.0 服务器。   
 
-5. 选择“保存”  。
+5. 选择“保存”。 
 
 ## <a name="successfully-call-the-api-from-the-developer-portal"></a>从开发人员门户成功调用 API
 
@@ -190,13 +190,13 @@ ms.locfileid: "80290094"
 5. 选择“发送”，然后即可成功调用 API。 
 
 
-## <a name="configure-a-jwt-validation-policy-to-pre-authorize-requests"></a>配置 JWT 验证策略，对请求进行预授权
+## <a name="configure-a-jwt-validation-policy-to-pre-authorize-requests"></a>配置 JWT 验证策略以对请求进行预授权
 
 此时，当用户尝试从开发人员控制台发出调用时，系统会提示其登录。 开发人员控制台将代表用户获取访问令牌，并在对 API 发出的请求中包含该令牌。
 
 但是，如果有人调用我们的 API 但未提供令牌或者提供无效的令牌，会发生什么情况？ 例如，如果在不使用 `Authorization` 标头的情况下尝试调用 API，调用仍将继续。 原因是 API 管理暂时不会验证访问令牌。 它只是将 `Authorization` 标头传递给后端 API。
 
-可以使用[验证 JWT](api-management-access-restriction-policies.md#ValidateJWT) 策略通过验证每个传入请求的访问令牌，对 API 管理中的请求进行预授权。 如果某个请求没有有效的令牌，API 管理会阻止该请求。 例如，在 `Echo API` 的 `<inbound>` 策略部分中添加以下策略。 它会检查访问令牌中的受众声明，如果令牌无效，则会返回一条错误消息。 有关如何配置策略的信息，请参阅[设置或编辑策略](set-edit-policies.md)。
+可以使用[验证 JWT](api-management-access-restriction-policies.md#ValidateJWT) 策略通过验证每个传入请求的访问令牌，对 API 管理中的请求进行预授权。 如果某个请求没有有效的令牌，API 管理会阻止该请求。 例如，在 `<inbound>` 的 `Echo API` 策略部分中添加以下策略。 它会检查访问令牌中的受众声明，如果令牌无效，则会返回一条错误消息。 有关如何配置策略的信息，请参阅[设置或编辑策略](set-edit-policies.md)。
 
 ```xml
 <validate-jwt header-name="Authorization" failed-validation-httpcode="401" failed-validation-error-message="Unauthorized. Access token is missing or invalid.">

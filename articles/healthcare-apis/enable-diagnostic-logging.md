@@ -10,20 +10,20 @@ ms.author: cavoeg
 author: CaitlinV39
 ms.date: 11/01/2019
 ms.openlocfilehash: adfc1d8c7fb3990728dc13acc7e4d43cf8f95203
-ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80343858"
 ---
 # <a name="enable-diagnostic-logging-in-azure-api-for-fhir"></a>在 Azure API for FHIR® 中启用诊断日志记录
 
-本文介绍如何在 Azure API for FHIR® 中启用诊断日志记录，以及如何查看这些日志的一些示例查询。 对于必须符合法规与管制要求的任何医疗保健服务（例如 HIPAA）而言，访问诊断日志是必不可少的。 Azure API for FHIR® 中用于启用诊断日志的功能是 Azure 门户中的[诊断](https://docs.azure.cn/azure-monitor/platform/diagnostic-settings)设置。  
+本文介绍如何在 Azure API for FHIR® 中启用诊断日志记录，以及如何查看这些日志的一些示例查询。 对于必须符合法规与管制要求的任何医疗保健服务（例如 HIPAA）而言，访问诊断日志是必不可少的。 Azure API for FHIR® 中用于启用诊断日志的功能是 Azure 门户中的[诊断**设置。** ](https://docs.azure.cn/azure-monitor/platform/diagnostic-settings) 
 
 ## <a name="enable-audit-logs"></a>启用审核日志
 1. 若要在 Azure API for FHIR® 中启用诊断日志记录，请在 Azure 门户中选择你的 Azure API for FHIR® 服务 
-2. 导航到“诊断设置” 
-![诊断设置](media/diagnostic-logging/diagnostic-settings-screen.png) **** 
+2. 导航到“诊断设置” **** 诊断设置 
+![](media/diagnostic-logging/diagnostic-settings-screen.png) 
 
 3. 选择“+ 添加诊断设置” 
 
@@ -37,7 +37,7 @@ ms.locfileid: "80343858"
 
 6. 选择“AuditLogs”以及要捕获的任何指标 
 
-7. 点击“保存”(Save)
+7. 点击“保存”
 
 > [!Note] 
 > 最初的几条日志最长可能需要在 15 分钟后才会显示在 Log Analytics 中。  
@@ -47,7 +47,7 @@ ms.locfileid: "80343858"
 ## <a name="audit-log-details"></a>审核日志详细信息
 此时，Azure API for FHIR® 服务将在审核日志中返回以下字段： 
 
-|字段名称  |类型  |注释  |
+|字段名称  |类型  |说明  |
 |---------|---------|---------|
 |CallerIdentity|动态|包含标识信息的泛型属性包
 |CallerIdentityIssuer|String|颁发者 
@@ -57,11 +57,11 @@ ms.locfileid: "80343858"
 |FhirResourceType|String|对其执行了操作的资源类型
 |LogCategory|String|日志类别（目前返回“AuditLogs”LogCategory）
 |位置|String|处理请求的服务器所在的位置（例如“美国中南部”）
-|OperationDuration|int|完成此请求所花费的时间（秒）
+|OperationDuration|Int|完成此请求所花费的时间（秒）
 |OperationName|String| 描述操作类型（例如更新、搜索类型）
 |RequestUri|String|请求 URI 
 |ResultType|String|当前可用值为 Started、Succeeded 或 Failed   
-|StatusCode|int|HTTP 状态代码。 （例如 200） 
+|StatusCode|Int|HTTP 状态代码。 （例如 200） 
 |TimeGenerated|DateTime|事件的日期和时间|
 |属性|String| 描述 fhirResourceType 的属性
 |SourceSystem|String| 源系统（在本例中始终为“Azure”）
@@ -94,7 +94,7 @@ MicrosoftHealthcareApisAuditLogs
 | where ResultType == "Failed" 
 ```
 
-## <a name="conclusion"></a>结论 
+## <a name="conclusion"></a>结束语 
 访问诊断日志对于监视服务和提供合规性报告至关重要。 Azure API for FHIR® 允许通过诊断日志执行这些操作。 
  
 FHIR® 是 HL7 的注册商标，在 HL7 的许可下使用。

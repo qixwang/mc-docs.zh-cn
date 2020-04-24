@@ -11,10 +11,10 @@ ms.date: 03/30/2020
 ms.topic: conceptual
 manager: digimobile
 ms.openlocfilehash: 94f546441535305141ee953e855ce30a4450b32a
-ms.sourcegitcommit: 90d01d08faf8adb20083363a8e4e5aab139cd9b2
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80290418"
 ---
 # <a name="variable-assets-in-azure-automation"></a>Azure 自动化中的变量资产
@@ -45,7 +45,7 @@ Azure 自动化会安全存储每个加密的变量。 无法使用 Azure PowerS
 * Boolean
 * Null
 
-该变量并不局限于指定的数据类型。 如果想要指定不同类型的值，则必须使用 Windows PowerShell 设置该变量。 如果指定“未定义”，则该变量的值将设置为 Null，并且必须使用 [Set-AzAutomationVariable](https://docs.microsoft.com/powershell/module/az.automation/set-azautomationvariable?view=azps-3.5.0) cmdlet 或 `Set-AutomationVariable` 活动来设置该值。 
+该变量并不局限于指定的数据类型。 如果想要指定不同类型的值，则必须使用 Windows PowerShell 设置该变量。 如果指定“未定义”，则该变量的值将设置为 Null，并且必须使用 **Set-AzAutomationVariable** cmdlet 或 [ 活动来设置该值。](https://docs.microsoft.com/powershell/module/az.automation/set-azautomationvariable?view=azps-3.5.0)`Set-AutomationVariable`
 
 无法使用门户创建或更改复杂变量类型的值。 但是，可以使用 Windows PowerShell 提供任何类型的值。 复杂类型将作为 [PSCustomObject](https://docs.microsoft.com/dotnet/api/system.management.automation.pscustomobject) 检索。
 
@@ -72,7 +72,7 @@ Azure 自动化会安全存储每个加密的变量。 无法使用 Azure PowerS
 |`Set-AutomationVariable`|设置现有变量的值。|
 
 > [!NOTE]
-> 避免在 Runbook 或 DSC 配置中的 `Get-AutomationVariable` 的 `Name` 参数中使用变量。 使用此参数可能会使设计时发现 Runbook 或 DSC 配置与自动化变量之间的依赖关系变得复杂。
+> 避免在 Runbook 或 DSC 配置中的 `Name` 的 `Get-AutomationVariable` 参数中使用变量。 使用此参数可能会使设计时发现 Runbook 或 DSC 配置与自动化变量之间的依赖关系变得复杂。
 
 下表中的函数用于在 Python2 Runbook 中访问和检索变量。
 

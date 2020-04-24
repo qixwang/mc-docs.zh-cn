@@ -12,10 +12,10 @@ ms.subservice: studio
 ms.topic: conceptual
 ms.date: 06/15/2017
 ms.openlocfilehash: ecc712a41b362bd51ea39d8337ace8fc8e76bee8
-ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80343322"
 ---
 # <a name="enable-logging-for-azure-machine-learning-studio-classic-web-services"></a>为 Azure 机器学习工作室（经典版）Web 服务启用日志记录
@@ -54,7 +54,7 @@ ms.locfileid: "80343322"
 
    2. 单击“Blob 服务”下的“容器”   。
 
-   3. 如果容器“ml-diagnostics”不存在，请单击“+容器”，将容器命名为“ml-diagnostics”，然后选择“访问类型”作为“Blob”    。 单击 **“确定”** 。
+   3. 如果容器“ml-diagnostics”不存在，请单击“+容器”，将容器命名为“ml-diagnostics”，然后选择“访问类型”作为“Blob”    。 单击“确定”。 
 
       ![创建用来存储诊断日志的新容器](./media/web-services-logging/create-ml-diagnostics-container.png)
 
@@ -83,7 +83,7 @@ ms.locfileid: "80343322"
 
 其中“日志类型”是以下值之一  ：  
 
-* 或批处理  
+* 批处理  
 * score/requests  
 * score/init  
 

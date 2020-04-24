@@ -9,10 +9,10 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/17/2020
 ms.openlocfilehash: 90ca79b5ba44fe588b136d0d69377a439fca9f27
-ms.sourcegitcommit: 71a386ca0d0ecb79a123399b6ab6b8c70ea2aa78
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79497174"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-a-net-framework-application"></a>快速入门：将 Azure Redis 缓存与 .NET Framework 应用程序配合使用

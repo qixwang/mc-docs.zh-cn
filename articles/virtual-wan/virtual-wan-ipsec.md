@@ -9,10 +9,10 @@ origin.date: 10/07/2019
 ms.date: 03/30/2020
 ms.author: v-yeche
 ms.openlocfilehash: f76b616682634148ffcbbca0bc37b4432520c111
-ms.sourcegitcommit: 4810b75d1e1db78d9747e99735468a6ab861be2d
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80291279"
 ---
 # <a name="virtual-wan-default-policies-for-ipsec-connectivity"></a>用于 IPsec 连接的虚拟 WAN 默认策略

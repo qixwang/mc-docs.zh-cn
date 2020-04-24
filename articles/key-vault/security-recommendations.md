@@ -1,5 +1,5 @@
 ---
-title: 适用于 Azure Key Vault 的安全建议
+title: Azure Key Vault 安全建议
 description: 适用于 Azure Key Vault 的安全建议。 实施此指南将有助于你履行我们的共享职责模型中描述的安全职责
 services: key-vault
 author: barclayn
@@ -12,13 +12,13 @@ ms.date: 03/16/2020
 ms.author: v-tawe
 ms.custom: security-recommendations
 ms.openlocfilehash: 6035ea0cfd92d5930450105619ff7ad25235b728
-ms.sourcegitcommit: 764b3d26aedce2de0e1948468a706fd3204a3d5e
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79543368"
 ---
-# <a name="security-recommendations-for-azure-key-vault"></a>适用于 Azure Key Vault 的安全建议
+# <a name="security-recommendations-for-azure-key-vault"></a>Azure Key Vault 安全建议
 
 本文包含适用于 Azure Key Vault 的安全建议。 实施执行建议将有助于你履行我们的共享职责模型中描述的安全职责。 若要详细了解 Microsoft 采取哪些措施来履行服务提供商责任，请阅读[云计算的责任分担](https://gallery.technet.microsoft.com/Shared-Responsibilities-81d0ff91)。
 

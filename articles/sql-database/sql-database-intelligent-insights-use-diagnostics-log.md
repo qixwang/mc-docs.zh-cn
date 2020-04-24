@@ -13,10 +13,10 @@ ms.reviewer: jrasnik, carlrab
 origin.date: 03/10/2020
 ms.date: 03/30/2020
 ms.openlocfilehash: a5b1055a1cdb0b4ead3d6283993a413cca747faa
-ms.sourcegitcommit: 90660563b5d65731a64c099b32fb9ec0ce2c51c6
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80341822"
 ---
 # <a name="use-the-intelligent-insights-azure-sql-database-performance-diagnostics-log"></a>使用 Intelligent Insights Azure SQL 数据库性能诊断日志
@@ -102,7 +102,7 @@ Intelligent Insights 性能日志的下一部分包括通过内置人工智能�
 
 Intelligent Insights 日志的下一部分提供关于受检测到的性能问题影响的特定查询信息。 此信息公开为嵌入 impact_s 属性的一组对象。 影响属性包含实体和指标。 实体引用特定查询（类型：Query）。 唯一的查询哈希值在值 (Value) 属性下公开。 此外，每个公开的查询后跟指标和值，指示检测到的性能问题。
 
-在以下日志示例中，使用哈希 0x9102EXZ4 的查询被检测到其执行持续时间延长（指标：DurationIncreaseSeconds）。 值 110 秒表示此特定查询的执行时间延长 110 秒。 因为可以检测到多个查询，所以此特定日志部分可能包含多个查询条目。
+在以下日志示例中，使用哈希 0x9102EXZ4 的 查询被检测到其执行持续时间延长（指标：DurationIncreaseSeconds）。 值 110 秒表示此特定查询的执行时间延长 110 秒。 因为可以检测到多个查询，所以此特定日志部分可能包含多个查询条目。
 
 ```json
 "impact" : [{
@@ -114,7 +114,7 @@ Intelligent Insights 日志的下一部分提供关于受检测到的性能问�
 }]
 ```
 
-### <a name="metrics"></a>指标
+### <a name="metrics"></a>度量值
 
 每个报告的指标的测量单位在指标 (metric) 属性下提供，可能的值有：秒、数字和百分比。 测量的指标值在值 (value) 属性中报告。
 

@@ -9,10 +9,10 @@ ms.topic: conceptual
 origin.date: 11/21/2019
 ms.date: 04/06/2020
 ms.openlocfilehash: 09afae4ba014d7cc487f426e33c89b6c997c0c1e
-ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80343572"
 ---
 # <a name="iot-hub-ip-addresses"></a>IoT 中心 IP 地址
@@ -31,7 +31,7 @@ IoT 中心公共终结点的 IP 地址前缀在 _AzureIoTHub_ [服务标记](../
 | 确保 IoT 中心设备终结点仅接收来自你的设备和网络资产的连接 | [设备到云](./iot-hub-devguide-messaging.md)和[云到设备](./iot-hub-devguide-messages-c2d.md)的消息传送、[直接方法](./iot-hub-devguide-direct-methods.md)、[设备和模块孪生](./iot-hub-devguide-device-twins.md)以及[设备流](./iot-hub-device-streams-overview.md) | 使用 IoT 中心 [IP 筛选功能](iot-hub-ip-filtering.md)允许来自你的设备和网络资产 IP 地址的连接（参阅[限制](#limitations-and-workarounds)部分）。 | 
 | 确保只能从你的网络资产访问路由的自定义终结点资源（存储帐户、服务总线和事件中心） | [消息路由](./iot-hub-devguide-messages-d2c.md) | 遵循有关限制连接的资源指导（例如，通过[防火墙规则](../storage/common/storage-network-security.md)、[专用链接](../private-link/private-endpoint-overview.md)或[服务终结点](../virtual-network/virtual-network-service-endpoints-overview.md)进行限制）；使用 _AzureIoTHub_ 服务标记发现 IoT 中心 IP 地址前缀，并在资源的防火墙配置中为这些 IP 前缀添加“允许”规则（参阅[限制](#limitations-and-workarounds)部分）。 |
 
-## <a name="best-practices"></a>最佳实践
+## <a name="best-practices"></a>最佳做法
 
 * 在设备的防火墙配置中添加“允许”规则时，最好是提供[适用协议使用的特定端口](./iot-hub-devguide-protocols.md#port-numbers)。
 

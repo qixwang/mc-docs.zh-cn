@@ -10,10 +10,10 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.date: 04/25/2019
 ms.openlocfilehash: 1a93f23305c40d0a2a9804b4eb5b49a36390aef7
-ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80343454"
 ---
 # <a name="powershell-modules-for-azure-machine-learning-studio-classic"></a>Azure 机器学习工作室（经典）PowerShell 模块
@@ -55,7 +55,7 @@ PowerShell 经典版可与 Az 或 AzureRM 一起安装，以处理新的和经�
 
 | | **Az** |  **PowerShell 经典** |
 | --- | --- | --- |
-| 创建/删除工作区 | [Resource Manager 模板](/machine-learning/studio/deploy-with-resource-manager-template) |  |
+| 创建/删除工作区 | [资源管理器模板](/machine-learning/studio/deploy-with-resource-manager-template) |  |
 | 管理工作区承诺计划 | [New-AzMlCommitmentPlan](https://docs.microsoft.com/powershell/module/az.machinelearning/new-azmlcommitmentplan) | |
 | 管理工作区用户 |  | [Add-AmlWorkspaceUsers](https://github.com/hning86/azuremlps#add-amlworkspaceusers)|
 | 管理 Web 服务 | [New-AzMlWebService](https://docs.microsoft.com/powershell/module/az.machinelearning/new-azmlwebservice) <br>（新 Web 服务）|| [New-AmlWebService](https://github.com/hning86/azuremlps#manage-classic-web-service) <br>（经典 Web 服务） |

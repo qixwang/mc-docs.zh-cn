@@ -9,10 +9,10 @@ ms.author: v-jay
 ms.reviewer: thoroet
 ms.lastreviewed: 11/21/2019
 ms.openlocfilehash: 0b66a73066fdea24acf4f1dd7be77c6e336f7f7b
-ms.sourcegitcommit: e500354e2fd8b7ac3dddfae0c825cc543080f476
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79547058"
 ---
 # <a name="monitor-azure-stack-hub-hardware-components"></a>监视 Azure Stack Hub 硬件组件

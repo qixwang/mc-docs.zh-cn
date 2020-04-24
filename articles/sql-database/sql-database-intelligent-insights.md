@@ -13,10 +13,10 @@ ms.reviewer: jrasnik, carlrab
 origin.date: 03/10/2020
 ms.date: 03/30/2020
 ms.openlocfilehash: 3f91dc2af5fd9209385893565215152fcbc68716
-ms.sourcegitcommit: 90660563b5d65731a64c099b32fb9ec0ce2c51c6
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80341820"
 ---
 # <a name="intelligent-insights-using-ai-to-monitor-and-troubleshoot-database-performance-preview"></a>智能见解：使用 AI 监视数据库性能并对其进行故障排除（预览）
@@ -49,7 +49,7 @@ Intelligent Insights 可分析数据库性能，方法是比较前一个小时�
 
 识别的 SQL 数据库性能降低问题记录在 SQLInsights 日志中，包含由以下属性组成的智能项：
 
-| 属性 | 详细信息 |
+| properties | 详细信息 |
 | :------------------- | ------------------- |
 | 数据库信息 | 关于在其上检测到见解的数据库的元数据，例如资源 URI。 |
 | 观察的时间范围 | 检测到的见解时段的开始和结束时间。 |

@@ -14,7 +14,7 @@
   items:
     - name: 概念、术语和实体
       href: scheduler-concepts-terms.md
-- name: 操作指南
+- name: 操作方法指南
   items:
     - name: 规划和设计
       items:
@@ -40,7 +40,7 @@
       href: 'https://docs.microsoft.com/powershell/module/azurerm.scheduler'
     - name: REST API
       href: 'https://docs.microsoft.com/rest/api/scheduler'
-    - name: Resource Manager 模板
+    - name: 资源管理器模板
       href: 'https://docs.microsoft.com/azure/templates/microsoft.scheduler/allversions'
 - name: 资源
   items:

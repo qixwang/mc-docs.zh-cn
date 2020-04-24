@@ -12,10 +12,10 @@ origin.date: 02/01/2019
 ms.date: 06/11/2019
 ms.author: v-junlch
 ms.openlocfilehash: 0d1ae58fe317f7cf8093fda307dbb62b45f5a743
-ms.sourcegitcommit: 303a16c7117b6f3495ef0493b4ae8ccb67d7dbba
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80342398"
 ---
 # <a name="translator-text-api-30-languages"></a>文本翻译 API 3.0：语言
@@ -49,7 +49,7 @@ https://api.translator.azure.cn/languages?api-version=3.0
 请求标头为：
 
 <table width="100%">
-  <th width="20%">头文件</th>
+  <th width="20%">标头</th>
   <th>说明</th>
   <tr>
     <td>Accept-Language</td>
@@ -225,16 +225,16 @@ https://api.translator.azure.cn/languages?api-version=3.0
 
 在不更改 API 版本的情况下，响应对象的结构不会更改。 对于相同的 API 版本，可用语言的列表可能会不断变化，因为 Microsoft Translator 在不断扩展其服务支持的语言列表。
 
-支持的语言列表不会频繁变化。 若要节省网络带宽并提高响应能力，客户端应用程序应考虑缓存语言资源和相应的实体标记 (`ETag`)。 然后，客户端应用程序可以定期（例如，每隔 24 小时）查询服务，以提取最新的受支持语言集。 在 `If-None-Match` 标头字段中传递当前的 `ETag` 值可让服务优化响应。 如果未修改资源，则服务将返回状态代码 304 和空响应正文。
+支持的语言列表不会频繁变化。 若要节省网络带宽并提高响应能力，客户端应用程序应考虑缓存语言资源和相应的实体标记 (`ETag`)。 然后，客户端应用程序可以定期（例如，每隔 24 小时）查询服务，以提取最新的受支持语言集。 在 `ETag` 标头字段中传递当前的 `If-None-Match` 值可让服务优化响应。 如果未修改资源，则服务将返回状态代码 304 和空响应正文。
 
 ## <a name="response-headers"></a>响应标头
 
 <table width="100%">
-  <th width="20%">头文件</th>
+  <th width="20%">标头</th>
   <th>说明</th>
   <tr>
     <td>ETag</td>
-    <td>所请求的受支持语言组的实体标记的当前值。 若要提高后续请求的效率，客户端可在 <code>If-None-Match</code> 标头字段中发送 <code>ETag</code> 值。
+    <td>所请求的受支持语言组的实体标记的当前值。 若要提高后续请求的效率，客户端可在 <code>ETag</code> 标头字段中发送 <code>If-None-Match</code> 值。
     </td>
   </tr>
   <tr>

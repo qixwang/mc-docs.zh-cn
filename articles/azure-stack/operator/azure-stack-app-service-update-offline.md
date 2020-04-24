@@ -8,10 +8,10 @@ ms.date: 03/23/2020
 ms.author: v-jay
 ms.reviewer: anwe
 ms.openlocfilehash: 3acb6c03bb3bda2b0d2619ca71780fb88df3ad27
-ms.sourcegitcommit: e500354e2fd8b7ac3dddfae0c825cc543080f476
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79547069"
 ---
 # <a name="offline-update-of-azure-app-service-on-azure-stack-hub"></a>离线更新 Azure Stack Hub 上的 Azure 应用服务
@@ -82,13 +82,13 @@ ms.locfileid: "79547069"
 
     ![Azure Stack Hub 云信息][3]
 
-7. 在下一页上执行以下操作：
+7. 在下一页上：
 
    1. 选择要使用的连接方法 - “凭据”或“服务主体”  
         - **凭据**
             - 如果使用 Azure Active Directory (Azure AD)，请输入在部署 Azure Stack Hub 时提供的 Azure AD 管理员帐户和密码。 选择“连接”  。
-            - 如果使用 Active Directory 联合身份验证服务 (AD FS)，请提供管理员帐户。 例如，cloudadmin@azurestack.local。 输入密码，然后选择“连接”  。
-        - **服务主体**
+            - 如果使用 Active Directory 联合身份验证服务 (AD FS)，请提供管理员帐户。 例如，cloudadmin@azurestack.local 。 输入密码，然后选择“连接”  。
+        - **Service Principal**
             - 使用的服务主体必须对“默认提供程序订阅”拥有“所有者”权限   
             - 提供“服务主体 ID”、“证书文件”和“密码”，然后选择“连接”。    
 

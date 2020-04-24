@@ -13,17 +13,17 @@ origin.date: 09/03/2019
 ms.date: 03/16/2020
 ms.author: v-tawe
 ms.openlocfilehash: e3689241e1039efef55e3a06e88365d90ec63c48
-ms.sourcegitcommit: 764b3d26aedce2de0e1948468a706fd3204a3d5e
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79543353"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-the-azure-portal"></a>快速入门：使用 Azure 门户在 Azure Key Vault 中设置和检索机密
 
 Azure Key Vault 是一项云服务，它为机密提供了安全的存储。 可以安全地存储密钥、密码、证书和其他机密。 可以通过 Azure 门户创建和管理 Azure Key Vault。 在本快速入门中，你将创建一个 Key Vault 并使用它来存储机密。 有关 Key Vault 的详细信息，请参阅[概述](key-vault-overview.md)。
 
-如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial/?WT.mc_id=A261C142F)。
+如果没有 Azure 订阅，可在开始前创建一个 [试用帐户](https://www.azure.cn/pricing/1rmb-trial/?WT.mc_id=A261C142F) 。
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
@@ -37,7 +37,7 @@ Azure Key Vault 是一项云服务，它为机密提供了安全的存储。 可
 4. 在“Key Vault”部分，选择“创建”  。
 5. 在“创建密钥保管库”部分，提供以下信息： 
     - **名称**：必须提供唯一的名称。 对于本快速入门，我们使用 **Contoso-vault2**。 
-    - **订阅**：选择订阅。
+    - **订阅**：选择一个订阅。
     - 在“资源组”  下选择“新建”  ，然后输入资源组名称。
     - 在“位置”下拉菜单中选择一个位置。 
     - 让其他选项保留默认值。
@@ -45,7 +45,7 @@ Azure Key Vault 是一项云服务，它为机密提供了安全的存储。 可
 
 请记下下面列出的两个属性：
 
-* **保管库名称**：在本示例中，此项为 **Contoso-Vault2**。 将在其他步骤中使用此名称。
+* **保管库名称**：在本示例中为 **Contoso-Vault2**。 将在其他步骤中使用此名称。
 * **保管库 URI**：在本示例中，此项为 https://contoso-vault2.vault.azure.cn/ 。 通过其 REST API 使用保管库的应用程序必须使用此 URI。
 
 目前，只有你的 Azure 帐户有权对这个新保管库执行操作。
@@ -62,7 +62,7 @@ Azure Key Vault 是一项云服务，它为机密提供了安全的存储。 可
     - **上传选项**：手动。
     - **名称**：ExamplePassword。
     - **值**：hVFkk965BuUv
-    - 让其他值保留默认设置。 单击**创建**。
+    - 让其他值保留默认设置。 单击“创建”。 
 
 收到机密已成功创建的消息后，即可单击列表中的该机密， 然后就可以看到某些属性。 如果单击当前版本，则可看到在上一步指定的值。
 

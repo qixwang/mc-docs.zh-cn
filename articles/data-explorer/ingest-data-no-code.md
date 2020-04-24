@@ -9,10 +9,10 @@ ms.topic: tutorial
 origin.date: 01/29/2020
 ms.date: 03/16/2020
 ms.openlocfilehash: a9241a0cde51fac9c1e5973355966891531842e5
-ms.sourcegitcommit: 1d3d8dfdaf6281f06640cbee7124a1e8bf102c50
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80243966"
 ---
 # <a name="tutorial-ingest-and-query-monitoring-data-in-azure-data-explorer"></a>教程：在 Azure 数据资源管理器中引入和查询监视数据 

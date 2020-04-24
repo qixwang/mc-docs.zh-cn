@@ -9,10 +9,10 @@ ms.author: v-jay
 ms.reviewer: prchint
 ms.lastreviewed: 11/21/2019
 ms.openlocfilehash: a0e4ea04dcc73a3b9465090f22bb4bc4c9959b51
-ms.sourcegitcommit: e500354e2fd8b7ac3dddfae0c825cc543080f476
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79547075"
 ---
 # <a name="azure-stack-hub-known-issues"></a>Azure Stack Hub 已知问题

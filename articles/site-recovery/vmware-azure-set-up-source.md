@@ -10,10 +10,10 @@ origin.date: 04/14/2019
 ms.date: 06/10/2019
 ms.author: v-yeche
 ms.openlocfilehash: b1ffda1422f18f4efa3f59fb20f1b0006f611e71
-ms.sourcegitcommit: 305361c96d1d5288d3dda7e81833820640e2afac
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80108525"
 ---
 <a name="set-up-the-source-environment"></a>
@@ -21,21 +21,21 @@ ms.locfileid: "80108525"
 
 本文介绍如何设置源本地环境，以便将 VMware VM 复制到 Azure。 它包括以下相关步骤：选择复制方案、将本地计算机设置为 Site Recovery 配置服务器和自动发现本地 VM。 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 本文假设已完成以下操作：
 
 - 借助 [Azure Site Recovery 部署规划器](site-recovery-deployment-planner.md)规划了你的部署。 这可以帮助你根据每日数据更改率分配足够的带宽以满足你需要的恢复点目标 (RPO)。
-- 在 [Azure 门户](https://portal.azure.cn)中[设置资源](tutorial-prepare-azure.md)。
+- 在 [Azure 门户](tutorial-prepare-azure.md)中[设置资源](https://portal.azure.cn)。
 - [设置本地 VMware](vmware-azure-tutorial-prepare-on-premises.md)，包括用于自动发现的专用帐户。
 
 ## <a name="choose-your-protection-goals"></a>选择保护目标
 
 1. 在“恢复服务保管库”  中，选择保管库名称。 我们在此方案中使用 **ContosoVMVault**。
 2. 在“入门”中，选择“Site Recovery”  ， 然后选择“准备基础结构”  。
-3. 在“保护目标”   >   “计算机所在位置”中，选择“本地”。 
+3. 在“保护目标” **“计算机所在位置”中，选择“本地”**  >    。
 4. 在“要将计算机复制到何处?”中，选择“复制到 Azure”   。
-5. 在“计算机是否已虚拟化”中，选择  “是，已使用 VMware vSphere 虚拟机监控程序虚拟化”。  然后选择“确定”。 
+5. 在“你的计算机是否已虚拟化”中，选择“是，带有 VMware vSphere 虚拟机监控程序”   。 然后选择“确定”。 
 
 ## <a name="set-up-the-configuration-server"></a>设置配置服务器
 
@@ -86,7 +86,7 @@ ms.locfileid: "80108525"
 4. C:\ProgramData\ASRSetupLogs
 5. C:\ProgramData\LogUploadServiceLogs
 6. C:\ProgramData\Microsoft Azure Site Recovery
-7. ASR 负载均衡的进程服务器安装目录，示例：C:\Program Files (x86)\Microsoft Azure Site Recovery
+7. ASR 负载均衡流程服务器安装目录，例如：C:\Program Files (x86)\Microsoft Azure Site Recovery
 
 ## <a name="next-steps"></a>后续步骤
 [设置目标环境](./vmware-azure-set-up-target.md)

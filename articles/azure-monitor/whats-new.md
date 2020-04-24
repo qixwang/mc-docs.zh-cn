@@ -9,10 +9,10 @@ origin.date: 03/05/2020
 ms.date: 03/16/2020
 ms.author: v-lingwu
 ms.openlocfilehash: 7aa9f240fda4d99fe419097e2890ce2165f27a1b
-ms.sourcegitcommit: 7f8acc663bf3429b391c2c615bed0d1b2107fd7e
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80290087"
 ---
 # <a name="whats-new-in-azure-monitor-documentation"></a>Azure Monitor 文档中有哪些新增内容？

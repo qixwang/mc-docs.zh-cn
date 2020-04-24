@@ -9,16 +9,16 @@ origin.date: 01/30/2020
 ms.date: 02/17/2020
 ms.author: v-lingwu
 ms.openlocfilehash: 490e793cacc047145d754fd863aefc78af394d0f
-ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/17/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79452588"
 ---
 #  <a name="diagnostic-logs-for-an-azure-event-grid-topic"></a>Azure 事件网格主题的诊断日志
 诊断设置允许事件网格用户在以下位置之一捕获和查看发布和传递失败日志：Azure存储帐户、事件中心或 Log Analytics 工作区。 本文提供了有关如何为事件网格主题启用诊断日志的分步说明。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - 预配的事件网格主题
 - 用于捕获诊断日志的预配目标。 这可以是以下目标之一：
@@ -29,7 +29,7 @@ ms.locfileid: "79452588"
 
 ## <a name="steps-for-enabling-diagnostic-logs-for-a-topic"></a>为主题启用诊断日志的步骤
 
-1. 登录到 [Azure 门户](https://portal.azure.cn)。
+1. 登录 [Azure 门户](https://portal.azure.cn)。
 2. 导航到要为其启用诊断日志设置的事件网格主题。 
 3. 在左侧菜单中的“监视”下，选择“诊断设置”   。
 4. 在“诊断设置”页面上，选择“添加新的诊断设置”。   
@@ -48,7 +48,7 @@ ms.locfileid: "79452588"
         ![发送到 Log Analytics](./media/enable-diagnostic-logs-topic/send-log-analytics.png)
 7. 在“日志”  部分中选择 **DeliveryFailures** 和 **PublishFailures** 选项。 
     ![选择具体的失败](./media/enable-diagnostic-logs-topic/log-failures.png)
-8. 选择“保存”  。 选择右上角的 **X** 以关闭页面。 
+8. 选择“保存”。  选择右上角的 **X** 以关闭页面。 
 9. 现在，返回“诊断设置”  页面，确认在“诊断设置”  表中看到了一个新条目。 
     ![列表中的诊断设置](./media/enable-diagnostic-logs-topic/diagnostic-setting-list.png)
 

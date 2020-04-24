@@ -9,10 +9,10 @@ ms.topic: quickstart
 ms.date: 10/15/2019
 ms.author: mihansen
 ms.openlocfilehash: 7a9065bbcfed3d485f378a7a7b517736a4413709
-ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80343839"
 ---
 # <a name="quickstart-deploy-azure-api-for-fhir-using-azure-cli"></a>快速入门：使用 Azure CLI 部署 Azure API for FHIR

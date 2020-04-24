@@ -11,10 +11,10 @@ ms.author: v-jay
 ms.reviewer: dineshm
 ms.subservice: blobs
 ms.openlocfilehash: e58995f4d176c2246cc0874f29bf0f2589af6353
-ms.sourcegitcommit: 90d01d08faf8adb20083363a8e4e5aab139cd9b2
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80290440"
 ---
 # <a name="map-a-custom-domain-to-an-azure-blob-storage-endpoint"></a>将自定义域映射到 Azure Blob 存储终结点

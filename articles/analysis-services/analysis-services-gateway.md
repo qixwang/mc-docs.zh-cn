@@ -9,10 +9,10 @@ ms.date: 03/23/2020
 ms.author: v-yeche
 ms.reviewer: minewiskan
 ms.openlocfilehash: 9fc5cabc1629469d03b557283a7490cd77180444
-ms.sourcegitcommit: 1436f1851342ca5631eb25342eed954adb707af0
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79543764"
 ---
 # <a name="connecting-to-on-premises-data-sources-with-on-premises-data-gateway"></a>使用本地数据网关连接到本地数据源
@@ -23,7 +23,7 @@ ms.locfileid: "79543764"
 
 就 Azure Analysis Services 来说，首次安装网关的过程由四个部分组成：
 
-- **下载并运行安装程序** - 此步骤在组织中的计算机上安装网关服务。 还在[租户的](https://docs.microsoft.com/previous-versions/azure/azure-services/jj573650(v=azure.100)#what-is-an-azure-ad-tenant) Azure AD 中使用帐户登录到 Azure。 不支持 Azure B2B（来宾）帐户。
+-  下载并运行安装程序 - 这一步会在你组织的计算机上安装网关服务。 还在[租户的](https://docs.microsoft.com/previous-versions/azure/azure-services/jj573650(v=azure.100)#what-is-an-azure-ad-tenant) Azure AD 中使用帐户登录到 Azure。 不支持 Azure B2B（来宾）帐户。
 
 - **注册网关** - 在这一步中，指定网关的名称和恢复密钥，然后选择区域，在网关云服务中注册你的网关。 网关资源可以在任何区域中注册，但是建议将它与 Analysis Services 服务器位于同一区域中。 
 
@@ -32,18 +32,18 @@ ms.locfileid: "79543764"
 - **将服务器连接到网关资源** - 拥有网关资源后，可以开始将服务器连接到该资源。 可以连接多个服务器和其他资源，前提是它们位于同一区域中。
 
 ## <a name="how-it-works"></a><a name="how-it-works"> </a>工作原理
-在组织中的计算机上安装的网关以 Windows 服务（**本地数据网关**）的形式运行。 此本地服务已通过 Azure 服务总线注册到网关云服务。 然后，为 Azure 订阅创建本地数据网关资源。 Azure Analysis Services 服务器随后会连接到 Azure 网关资源。 如果服务器上的模型需要连接到本地数据源以执行查询或处理，查询和数据流会遍历网关资源、Azure 服务总线、本地数据网关服务和数据源。 
+在你组织中的计算机上安装的网关作为 Windows 服务（本地数据网关）  运行。 此本地服务是通过 Azure 服务总线向网关云服务注册的。 然后，为 Azure 订阅创建本地数据网关资源。 Azure Analysis Services 服务器随后会连接到 Azure 网关资源。 当你服务器上的模型需要连接到你的本地数据源进行查询或处理时，查询和数据的流将遍历网关资源、Azure 服务总线、本地数据网关服务，以及你的数据源。 
 
 ![工作原理](./media/analysis-services-gateway/aas-gateway-how-it-works.png)
 
 查询和数据流：
 
-1. 查询是云服务使用本地数据源的加密凭据创建的。 查询随后会发送到队列让网关处理。
+1. 查询是通过使用本地数据源的加密凭据进行创建的。 然后，它将发送到网关队列进行处理。
 2. 网关云服务分析该查询，并将请求推送到 [Azure 服务总线](/service-bus/)。
 3. 本地数据网关会针对挂起的请求轮询 Azure 服务总线。
 4. 网关获取查询，对凭据进行解密，并使用这些凭据连接到数据源。
 5. 网关将查询发送到数据源以便执行。
-6. 结果会从数据源返回到网关，并返回到云服务和服务器。
+6. 结果会从数据源返回到网关，并返回到云服务和你的服务器。
 
 ## <a name="installing"></a>安装
 
@@ -59,7 +59,7 @@ ms.locfileid: "79543764"
 
 | 域名 | 出站端口 | 说明 |
 | --- | --- | --- |
-| *.powerbi.cn |80 |用于下载安装程序的 HTTP。 |
+| *.powerbi.cn |80 |用于下载该安装程序的 HTTP。 |
 | *.powerbi.cn |443 |HTTPS |
 | *.analysis.chinacloudapi.cn |443 |HTTPS |
 | *.login.chinacloudapi.cn, login.live.com, aadcdn.msauth.net |443 |HTTPS |
@@ -75,7 +75,7 @@ ms.locfileid: "79543764"
 <a name="force-https"></a>
 ### <a name="forcing-https-communication-with-azure-service-bus"></a>强制与 Azure 服务总线进行 HTTPS 通信
 
-可以强制网关使用 HTTPS 而非直接 TCP 与 Azure 服务总线进行通信，但此操作可能会显著降低性能。 若要修改 *Microsoft.PowerBI.DataMovement.Pipeline.GatewayCore.dll.config* 文件，可将值从 `AutoDetect` 更改为 `Https`。 此文件通常位于 *C:\Program Files\On-premises data gateway*。
+可以强制网关使用 HTTPS 而非直接 TCP 与 Azure 服务总线进行通信，但此操作可能会显著降低性能。 若要修改 Microsoft.PowerBI.DataMovement.Pipeline.GatewayCore.dll.config 文件  ，可将值从 `AutoDetect` 更改为 `Https`。 通常情况下，此文件位于 *C:\Program Files\On-premises data gateway*。
 
 ```
 <setting name="ServiceBusSystemConnectivityModeString" serializeAs="String">

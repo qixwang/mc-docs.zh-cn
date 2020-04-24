@@ -8,10 +8,10 @@ origin.date: 01/13/2020
 ms.date: 03/30/2020
 ms.author: v-yeche
 ms.openlocfilehash: 74c9eaa8318c283e6be264f2cd2333184ec6fa93
-ms.sourcegitcommit: 303a16c7117b6f3495ef0493b4ae8ccb67d7dbba
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80342363"
 ---
 # <a name="scale-azure-cosmos-db-throughput-by-using-azure-functions-timer-trigger"></a>使用 Azure Functions 计时器触发器缩放 Azure Cosmos DB 吞吐量

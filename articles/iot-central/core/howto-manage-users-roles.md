@@ -9,10 +9,10 @@ ms.service: iot-central
 services: iot-central
 manager: corywink
 ms.openlocfilehash: 041d0425bbf10857c1888ee34a087923f7511be1
-ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80343166"
 ---
 # <a name="manage-users-and-roles-in-your-iot-central-application"></a>管理 IoT Central 应用程序中的用户和角色

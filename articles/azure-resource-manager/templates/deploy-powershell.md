@@ -6,10 +6,10 @@ origin.date: 08/21/2019
 ms.date: 03/23/2020
 ms.author: v-yeche
 ms.openlocfilehash: 988283fcbaaf9d74201d21cf5d6d233457dc3770
-ms.sourcegitcommit: 1436f1851342ca5631eb25342eed954adb707af0
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79543824"
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-azure-powershell"></a>使用 Resource Manager 模板和 Azure PowerShell 部署资源

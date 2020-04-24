@@ -11,10 +11,10 @@ metadata:
   ms.author: v-yiso
   origin.date: 10/25/2019
   ms.openlocfilehash: 29de2e274ac2d51a75f5fb676ab3d65685066cb9
-  ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
+  ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 03/27/2020
+  ms.lasthandoff: 04/17/2020
   ms.locfileid: "80343438"
 highlightedContent:
   items:
@@ -48,7 +48,7 @@ conceptualContent:
       text: 连接 IoT 即插即用（预览版）设备
     footerLink:
       url: ./core/index.yml
-      text: 查看更多
+      text: 查看详细信息
   - title: 保持连接
     links:
     - url: ./core/tutorial-use-device-groups.md
@@ -65,7 +65,7 @@ conceptualContent:
       text: 分析设备数据
     footerLink:
       url: ./core/index.yml
-      text: 查看更多
+      text: 查看详细信息
   - title: 转换
     links:
     - url: ./core/tutorial-create-telemetry-rules.md
@@ -76,7 +76,7 @@ conceptualContent:
       text: 将数据导出到 Azure 中的目标
     footerLink:
       url: ./core/index.yml
-      text: 查看更多
+      text: 查看详细信息
 productDirectory:
   title: 使用行业应用程序模板开始生成
   summary: 是否立即开始生成？ 查看我们为解决方案生成器生成的与行业相关的应用程序模板。

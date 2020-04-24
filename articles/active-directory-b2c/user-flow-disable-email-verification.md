@@ -12,10 +12,10 @@ ms.date: 03/16/2020
 ms.author: v-junlch
 ms.subservice: B2C
 ms.openlocfilehash: 701a85acacdbed378fa3d39fcf0b11c98fc53c18
-ms.sourcegitcommit: 71a386ca0d0ecb79a123399b6ab6b8c70ea2aa78
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79497233"
 ---
 # <a name="disable-email-verification-during-customer-sign-up-in-azure-active-directory-b2c"></a>客户在 Azure Active Directory B2C 中注册期间禁用电子邮件验证
@@ -33,7 +33,7 @@ ms.locfileid: "79497233"
 1. 选择“本地帐户注册页”  。
 1. 在**用户属性**下，选择“电子邮件地址”  。
 1. 在“要求验证”  下拉列表中，选择“否”  。
-1. 选择“保存”  。 现在已为此用户流禁用电子邮件验证。
+1. 选择“保存”。  现在已为此用户流禁用电子邮件验证。
 
 ## <a name="next-steps"></a>后续步骤
 

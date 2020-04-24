@@ -9,10 +9,10 @@ origin.date: 9/25/2018
 ms.date: 03/23/2020
 ms.author: v-jay
 ms.openlocfilehash: 1b8bc117b19ba4d7451330087789837897981efb
-ms.sourcegitcommit: 305361c96d1d5288d3dda7e81833820640e2afac
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80115824"
 ---
 # <a name="tutorial-configure-an-alias-record-to-refer-to-an-azure-public-ip-address"></a>教程：配置表示 Azure 公共 IP 地址的别名记录 

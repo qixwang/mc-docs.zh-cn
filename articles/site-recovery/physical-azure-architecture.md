@@ -6,10 +6,10 @@ origin.date: 02/11/2020
 ms.date: 02/24/2020
 ms.author: v-yeche
 ms.openlocfilehash: 2fcbea89264198c3506d7efb14932d3e6ca6d907
-ms.sourcegitcommit: 305361c96d1d5288d3dda7e81833820640e2afac
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80109764"
 ---
 # <a name="physical-server-to-azure-disaster-recovery-architecture"></a>物理服务器到 Azure 的灾难恢复体系结构

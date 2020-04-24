@@ -10,10 +10,10 @@ ms.topic: conceptual
 origin.date: 11/04/2019
 ms.date: 03/16/2020
 ms.openlocfilehash: 8f335edddcfac01812bff3a2639b64c54eb2f174
-ms.sourcegitcommit: 71a386ca0d0ecb79a123399b6ab6b8c70ea2aa78
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79497194"
 ---
 # <a name="custom-web-api-skill-in-an-azure-cognitive-search-enrichment-pipeline"></a>在 Azure 认知搜索扩充管道中自定义 Web API 技能。

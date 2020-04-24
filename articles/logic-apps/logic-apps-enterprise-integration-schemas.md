@@ -10,10 +10,10 @@ origin.date: 02/06/2019
 ms.date: 03/30/2020
 ms.author: v-yeche
 ms.openlocfilehash: 4f624872aff6fc3d68991998d7fb569ca8c3ed7e
-ms.sourcegitcommit: 2b084933215d0e7702456730f168d97e00c882a0
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80243449"
 ---
 # <a name="validate-xml-with-schemas-in-azure-logic-apps-with-enterprise-integration-pack"></a>在带有 Enterprise Integration Pack 的 Azure 逻辑应用中使用架构验证 XML

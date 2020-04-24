@@ -1,9 +1,9 @@
 ---
 ms.openlocfilehash: f5d93ab22324ddea662bab012fd6200cd38150cb
-ms.sourcegitcommit: b2f2bb08ab1b5ccb3c596d84b3b6ddca5bba3903
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80151755"
 ---
 1. 在 Android Studio 中打开项目。

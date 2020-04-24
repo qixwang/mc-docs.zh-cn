@@ -6,10 +6,10 @@ origin.date: 03/02/2020
 ms.date: 03/16/2020
 ms.topic: overview
 ms.openlocfilehash: 6aa29612213d0d692a666fd794a0d5b230c68916
-ms.sourcegitcommit: 1d3d8dfdaf6281f06640cbee7124a1e8bf102c50
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80243902"
 ---
 # <a name="what-is-azure-resource-graph"></a>什么是 Azure Resource Graph？

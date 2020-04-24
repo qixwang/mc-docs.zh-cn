@@ -14,10 +14,10 @@ ms.topic: article
 origin.date: 02/27/2020
 ms.date: 03/30/2020
 ms.openlocfilehash: 1c07c612112d5ee697497945079b74ced3fa7ed2
-ms.sourcegitcommit: 90660563b5d65731a64c099b32fb9ec0ce2c51c6
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80341715"
 ---
 # <a name="known-issuesmigration-limitations-with-migrations-from-mongodb-to-azure-cosmos-dbs-api-for-mongodb"></a>从 MongoDB 迁移到 Azure Cosmos DB API for MongoDB 时的已知问题/迁移限制

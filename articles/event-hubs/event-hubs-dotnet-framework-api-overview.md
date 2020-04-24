@@ -11,21 +11,21 @@ origin.date: 08/16/2018
 ms.date: 03/16/2020
 ms.author: v-tawe
 ms.openlocfilehash: c571bb273e1732f4211a765bebb76005eb26df25
-ms.sourcegitcommit: 1d3d8dfdaf6281f06640cbee7124a1e8bf102c50
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80243929"
 ---
 # <a name="event-hubs-net-framework-api-overview"></a>事件中心 .NET Framework API 概述
 
-本文汇总了一些重要的 Azure 事件中心 [.NET Framework 客户端 API](https://www.nuget.org/packages/Microsoft.Azure.EventHubs/)。 有两个类别：管理 API 和运行时 API。 运行时 API 包括发送和接收消息所需的全部操作。 借助管理操作，可以通过创建、更新和删除实体来管理事件中心实体状态。
+本文汇总了一些重要的 Azure 事件中心 [.NET Framework 客户端 API](https://www.nuget.org/packages/Microsoft.Azure.EventHubs/)。 有两个类别：管理 API 和运行时 API。 运行时 API 包括发送和接收消息所需的全部操作。 使用管理操作，可以通过创建、更新和删除实体来管理事件中心实体状态。
 
 [监视方案](event-hubs-metrics-azure-monitor.md)跨越管理和运行时。 有关 .NET API 的详细参考文档，请参阅 [.NET Framework](/dotnet/api/microsoft.servicebus.messaging.eventhubclient)、[.NET Standard](/dotnet/api/microsoft.azure.eventhubs) 和 [EventProcessorHost API](/dotnet/api/microsoft.azure.eventhubs.processor) 参考。
 
 ## <a name="management-apis"></a>管理 API
 
-若要执行以下管理操作，必须对事件中心命名空间具有 **管理** 权限：
+若要执行以下管理操作，必须对事件中心命名空间具有**管理**权限：
 
 ### <a name="create"></a>创建
 
@@ -49,7 +49,7 @@ ehd.Authorization.Add(new SharedAccessAuthorizationRule(ruleName, ruleKey, new A
 await namespaceManager.UpdateEventHubAsync(ehd);
 ```
 
-### <a name="delete"></a>Delete
+### <a name="delete"></a>删除
 
 ```csharp
 await namespaceManager.DeleteEventHubAsync("event hub name");

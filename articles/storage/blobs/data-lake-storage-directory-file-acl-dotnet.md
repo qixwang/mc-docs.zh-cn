@@ -10,10 +10,10 @@ ms.topic: article
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
 ms.openlocfilehash: 3dac5dd764c9daab1a6365b76301b3082ea06f76
-ms.sourcegitcommit: 90d01d08faf8adb20083363a8e4e5aab139cd9b2
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80290370"
 ---
 # <a name="use-net-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2-preview"></a>使用 .NET 管理 Azure Data Lake Storage Gen2（预览版）中的目录、文件和 ACL
@@ -25,7 +25,7 @@ ms.locfileid: "80290370"
 
 [包 (NuGet)](https://www.nuget.org/packages/Azure.Storage.Files.DataLake) | [示例](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake) | [API 参考](https://docs.microsoft.com/dotnet/api/azure.storage.files.datalake) | [提供反馈](https://github.com/Azure/azure-sdk-for-net/issues)
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 > [!div class="checklist"]
 > * Azure 订阅。 请参阅[获取 Azure 1 元人民币的试用订阅](https://www.azure.cn/zh-cn/pricing/1rmb-trial-full/?form-type=identityauth)。
@@ -49,7 +49,7 @@ using Azure;
 
 ## <a name="connect-to-the-account"></a>连接到帐户
 
-若要使用本文中的代码片段，需创建一个表示存储帐户的 [DataLakeServiceClient](https://docs.microsoft.com/dotnet/api/azure.storage.files.datalake.datalakeserviceclient) 实例。 若要获得一个实例，最简单的方法是使用帐户密钥。 
+若要使用本文中的代码片段，需创建一个表示存储帐户的 [DataLakeServiceClient](https://docs.microsoft.com/dotnet/api/azure.storage.files.datalake.datalakeserviceclient) 实例。 若要获取一个，最简单的方法是使用帐户密钥。 
 
 此示例使用帐户密钥创建 [DataLakeServiceClient](https://docs.microsoft.com/dotnet/api/azure.storage.files.datalake.datalakeserviceclient?) 的实例。
 
@@ -105,7 +105,7 @@ public async Task<DataLakeDirectoryClient> CreateDirectory
 
 通过调用 [DataLakeDirectoryClient.RenameAsync](https://docs.microsoft.com/dotnet/api/azure.storage.files.datalake.datalakedirectoryclient.renameasync) 方法来重命名或移动目录。 以参数形式传递所需目录的路径。 
 
-此示例将某个子目录重命名为名称 `my-subdirectory-renamed`。
+此示例将子目录重命名为 `my-subdirectory-renamed` 的名称。
 
 ```cs
 public async Task<DataLakeDirectoryClient> 

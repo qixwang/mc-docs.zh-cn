@@ -10,10 +10,10 @@ ms.topic: conceptual
 origin.date: 02/27/2020
 ms.date: 03/16/2020
 ms.openlocfilehash: 8a7f2cab33fa917d343da1246396a62099046023
-ms.sourcegitcommit: 1d3d8dfdaf6281f06640cbee7124a1e8bf102c50
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80243745"
 ---
 # <a name="tutorial-use-c-and-ai-to-generate-searchable-content-from-azure-blobs"></a>教程：使用 C# 和 AI 从 Azure Blob 生成可搜索的内容

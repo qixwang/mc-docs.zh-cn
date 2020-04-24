@@ -11,10 +11,10 @@ origin.date: 01/27/2020
 ms.date: 2/6/2020
 ms.author: v-lingwu
 ms.openlocfilehash: dac96c4dfb6183c3fec1be0f925d4c11977f2ce8
-ms.sourcegitcommit: 305361c96d1d5288d3dda7e81833820640e2afac
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80109777"
 ---
 # <a name="azure-service-bus-metrics-in-azure-monitor"></a>Azure Monitor 中的 Azure 服务总线指标

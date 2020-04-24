@@ -8,10 +8,10 @@ ms.date: 03/23/2020
 ms.author: v-yeche
 ms.custom: seodec18
 ms.openlocfilehash: 7dcf69248c9bd1d26cd0ec413bd54a072a8690c4
-ms.sourcegitcommit: 1436f1851342ca5631eb25342eed954adb707af0
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79543910"
 ---
 # <a name="develop-azure-resource-manager-templates-for-cloud-consistency"></a>开发用于实现云一致性的 Azure 资源管理器模板
@@ -306,7 +306,7 @@ Get-AzureRmResourceProvider | select-object ProviderNamespace -ExpandProperty Re
 
 ### <a name="track-versions-using-api-profiles"></a>使用 API 配置文件跟踪版本
 
-跟踪所有可用资源提供程序和 Azure Stack 中存在的相关 API 版本非常具有挑战性。 例如，在撰写本文时，Azure 中 Microsoft.Compute/availabilitySets 的最新 API 版本为 `2018-04-01`，而 Azure 和 Azure Stack 的通用 API 版本为 `2016-03-30`  。 在所有 Azure 和 Azure Stack 位置之间共享的 Microsoft.Storage/storageAccounts 的通用 API 版本为 `2016-01-01`，而在 Azure 中的最新 API 版本为 `2018-02-01`  。
+跟踪所有可用资源提供程序和 Azure Stack 中存在的相关 API 版本非常具有挑战性。 例如，在撰写本文时，Azure 中 Microsoft.Compute/availabilitySets 的最新 API 版本为 **，而 Azure 和 Azure Stack 的通用 API 版本为** `2018-04-01``2016-03-30`。 在所有 Azure 和 Azure Stack 位置之间共享的 Microsoft.Storage/storageAccounts 的通用 API 版本为 **，而在 Azure 中的最新 API 版本为** `2016-01-01``2018-02-01`。
 
 为此，资源管理器在模板中引入了 API 配置文件的概念。 使用 API 配置文件，模板中的每个资源都配置了 `apiVersion` 元素，用于描述该特定资源的 API 版本。
 
@@ -483,7 +483,7 @@ API 配置文件可确保 API 版本可跨位置使用，因此不需要手动�
 }
 ```
 
-然后，可以使用 `reference` 模板函数中的 `resourceId` 函数检索数据库的属性。 返回对象包含保留完整终结点值的 `fullyQualifiedDomainName` 属性。 该值在运行时检索，并提供特定于云环境的终结点命名空间。 若要在不对终结点命名空间硬编码的情况下定义连接字符串，可以直接引用连接字符串中返回对象的属性，如下所示：
+然后，可以使用 `resourceId` 模板函数中的 `reference` 函数检索数据库的属性。 返回对象包含保留完整终结点值的 `fullyQualifiedDomainName` 属性。 该值在运行时检索，并提供特定于云环境的终结点命名空间。 若要在不对终结点命名空间硬编码的情况下定义连接字符串，可以直接引用连接字符串中返回对象的属性，如下所示：
 
 ```json
 "[concat('Server=tcp:', reference(resourceId('sql', 'Microsoft.Sql/servers', parameters('test')), '2015-05-01-preview').fullyQualifiedDomainName, ',1433;Initial Catalog=', parameters('database'),';User ID=', parameters('username'), ';Password=', parameters('pass'), ';Encrypt=True;')]"

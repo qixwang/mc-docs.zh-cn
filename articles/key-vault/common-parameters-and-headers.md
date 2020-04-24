@@ -12,10 +12,10 @@ origin.date: 01/07/2019
 ms.date: 03/16/2020
 ms.author: v-tawe
 ms.openlocfilehash: b3c3bcdf21d033a0156ddc1b0ee69f04d41e934a
-ms.sourcegitcommit: 764b3d26aedce2de0e1948468a706fd3204a3d5e
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79543292"
 ---
 # <a name="common-parameters-and-headers"></a>常见参数和标头
@@ -43,8 +43,8 @@ ms.locfileid: "79543292"
 
 |元素名称 | 类型 | 说明 |
 |---|---|---|
-| code | string | 发生的错误类型。|
-| message | string | 错误原因说明。 |
+| 代码 | 字符串 | 发生的错误类型。|
+| message | 字符串 | 错误原因说明。 |
 
 
 

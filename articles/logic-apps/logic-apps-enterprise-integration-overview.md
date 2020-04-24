@@ -10,10 +10,10 @@ origin.date: 08/01/2019
 ms.date: 03/30/2020
 ms.author: v-yeche
 ms.openlocfilehash: 8b12d9baa456bc9da46dfe5e894515d9cfb0dace
-ms.sourcegitcommit: 2b084933215d0e7702456730f168d97e00c882a0
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80243448"
 ---
 # <a name="b2b-enterprise-integration-solutions-with-azure-logic-apps-and-enterprise-integration-pack"></a>使用 Azure 逻辑应用和 Enterprise Integration Pack 的 B2B 企业集成解决方案
@@ -33,7 +33,7 @@ ms.locfileid: "80243448"
 
 * 可以使用 Azure 函数为逻辑应用创建自定义代码。
 
-## <a name="how-do-i-get-started"></a>如何开始？
+## <a name="how-do-i-get-started"></a>如何入门？
 
 在使用 EIP 开始构建 B2B 逻辑应用工作流之前，需要准备好以下各项：
 

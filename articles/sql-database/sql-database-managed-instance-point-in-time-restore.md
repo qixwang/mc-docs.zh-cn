@@ -13,10 +13,10 @@ ms.reviewer: sstein, carlrab, mathoma
 origin.date: 08/25/2019
 ms.date: 03/16/2020
 ms.openlocfilehash: 9040b9221dd9c9e76cc45a4a74f231994614f4ed
-ms.sourcegitcommit: 90660563b5d65731a64c099b32fb9ec0ce2c51c6
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80341812"
 ---
 # <a name="restore-a-sql-database-in-a-managed-instance-to-a-previous-point-in-time"></a>将托管实例中的 SQL 数据库还原到以前的某个时间点
@@ -53,7 +53,7 @@ ms.locfileid: "80341812"
 
 使用 Azure 门户、PowerShell 或 Azure CLI 将现有数据库还原到同一个实例。 若要将数据库还原到另一个实例，请使用 PowerShell 或 Azure CLI，以便可以指定目标托管实例和资源组的属性。 如果不指定这些参数，数据库默认将还原到现有实例。 目前不支持通过 Azure 门户还原到另一个实例。
 
-# <a name="portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[门户](#tab/azure-portal)
 
 1. 登录到 [Azure 门户](https://portal.azure.cn)。 
 2. 转到你的托管实例，并选择要还原的数据库。
@@ -131,7 +131,7 @@ az sql midb restore -g mygroupname --mi myinstancename -n mymanageddbname |
 
 ---
 
-## <a name="restore-a-deleted-database"></a>还原已删除的数据库
+## <a name="restore-a-deleted-database"></a>还原已删除数据库
 
 可以使用 PowerShell 或 Azure 门户还原已删除的数据库。 若要将已删除的数据库还原到同一个实例，请使用 Azure 门户或 PowerShell。 若要将已删除的数据库还原到另一个实例，请使用 PowerShell。 
 
@@ -206,7 +206,7 @@ DROP DATABASE WorldWideImporters;
 - [点到站点](/sql-database/sql-database-managed-instance-configure-p2s)
 - [公共终结点](/sql-database/sql-database-managed-instance-public-endpoint-configure)
 
-# <a name="portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[门户](#tab/azure-portal)
 
 在 Azure 门户上选择托管实例中的数据库，然后选择“删除”。 
 

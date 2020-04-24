@@ -9,10 +9,10 @@ ms.date: 03/30/2020
 ms.author: v-jay
 ms.subservice: files
 ms.openlocfilehash: 7f8d9c4647f614cb311fef6f458a5c37835e1739
-ms.sourcegitcommit: 90660563b5d65731a64c099b32fb9ec0ce2c51c6
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80341732"
 ---
 # <a name="azure-files-scalability-and-performance-targets"></a>Azure 文件可伸缩性和性能目标

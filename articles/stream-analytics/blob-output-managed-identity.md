@@ -8,10 +8,10 @@ ms.topic: conceptual
 origin.date: 03/11/2020
 ms.date: 03/20/2020
 ms.openlocfilehash: 086101efc9b4e7bc3af8c9b2003f42c16b15f9bb
-ms.sourcegitcommit: 305361c96d1d5288d3dda7e81833820640e2afac
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80108526"
 ---
 # <a name="use-managed-identity-to-authenticate-your-azure-stream-analytics-job-to-azure-blob-storage-output"></a>使用托管标识在 Azure Blob 存储输出中对 Azure 流分析作业进行身份验证

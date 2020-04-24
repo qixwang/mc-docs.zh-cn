@@ -7,21 +7,21 @@ origin.date: 03/16/2018
 ms.date: 03/30/2020
 ms.topic: conceptual
 ms.openlocfilehash: 72c4a23e7da811b268c3cf792513c19b0035d525
-ms.sourcegitcommit: 90d01d08faf8adb20083363a8e4e5aab139cd9b2
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80290349"
 ---
 # <a name="error-handling-in-azure-automation-graphical-runbooks"></a>Azure 自动化图形 Runbook 中的错误处理
 
-对于 Azure 自动化图形 Runbook，需要考虑的一个关键设计原则是确定 Runbook 在执行期间可能会遇到的问题。 这些情况可能包括：成功、意料之中的错误状态、意料之外的错误条件。
+对于 Azure 自动化图形 Runbook，需要考虑的一个关键设计原则是确定 Runbook 在执行期间可能会遇到的问题。 这些情况可能包括：成功、预计的错误状态，以及意外的错误条件。
 
-通常情况下，如果 Runbook 活动出现的是非终止错误，则 Windows PowerShell 会无视该错误而继续处理后续的任何活动。 该错误可能会生成异常，但下一活动仍可运行。
+通常情况下，如果 Runbook 活动出现的是非终止错误，则 Windows PowerShell 会无视该错误而继续处理后续的任何活动。 该错误可能会生成异常，但下一活动仍允许运行。
 
 图形 Runbook 应包含错误处理代码来处理执行问题。 若要验证某个活动的输出或对错误进行处理，可以使用 PowerShell 代码活动、定义活动的输出链接的条件逻辑，或者应用其他方法。
 
-Azure 自动化图形 Runbook 已经过改进，能够包含错误处理。 用户现在可以将异常转为非终止错误并在活动之间创建错误链接。 此改进的流程使得 runbook 可以捕获错误并管理已实现条件或意外条件。 
+Azure 自动化图形 Runbook 在改进后可以进行错误处理。 用户现在可以将例外变成非终止性错误，并在活动之间创建错误链接。 此改进的流程使得 runbook 可以捕获错误并管理已实现条件或意外条件。 
 
 ## <a name="powershell-error-types"></a>PowerShell 错误类型
 
@@ -52,7 +52,7 @@ Azure 自动化图形 Runbook 已经过改进，能够包含错误处理。 用�
 
 ## <a name="how-to-use-error-handling"></a>如何使用错误处理
 
-Runbook 中的每个活动都有将异常转为非终止错误的配置设置。 默认情况下，此设置已禁用。 建议在 runbook 在其中处理错误的任何活动上启用此设置。 此设置可确保 runbook 使用错误链接将活动中的终止错误和非终止错误都作为非终止错误进行处理。  
+Runbook 中的每个活动都有将异常转为非终止错误的配置设置。 此设置默认已禁用。 建议在 runbook 在其中处理错误的任何活动上启用此设置。 此设置可确保 runbook 使用错误链接将活动中的终止错误和非终止错误都作为非终止错误进行处理。  
 
 在启用此配置设置后，让你的 runbook 创建一个对错误进行处理的活动。 如果活动生成了任何错误，则遵循传出的错误链接。 不会遵循常规链接，即使活动也生成了常规输出。<br><br> ![自动化 Runbook 错误链接示例](media/automation-runbook-graphical-error-handling/error-link-example.png)
 

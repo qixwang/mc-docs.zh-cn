@@ -10,10 +10,10 @@ origin.date: 05/31/2019
 ms.author: v-yiso
 ms.date: 04/06/2020
 ms.openlocfilehash: d7552e612f848eba9d76ab1a6aad40f300a44494
-ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80343482"
 ---
 # <a name="visualize-real-time-sensor-data-from-your-azure-iot-hub-in-a-web-application"></a>在 Web 应用程序中可视化 Azure IoT 中心内的实时传感器数据
@@ -36,7 +36,7 @@ ms.locfileid: "80343482"
 * 打开一个网页，以查看 IoT 中心内的实时温度和湿度数据
 * （可选）使用 Azure CLI 在 Azure 应用服务中托管 Web 应用
 
-## <a name="what-you-need"></a>需要什么
+## <a name="what-you-need"></a>所需条件
 
 * 完成 [Raspberry Pi 联机模拟器](iot-hub-raspberry-pi-web-simulator-get-started.md)教程或其中一个设备教程；例如[将 Raspberry Pi 与 Node.js 配合使用](iot-hub-raspberry-pi-kit-node-get-started.md)。 这包括以下要求：
 
@@ -49,7 +49,7 @@ ms.locfileid: "80343482"
 * 本文中的步骤假设使用 Windows 开发计算机；但是，也可以在 Linux 系统上使用偏好的 shell 轻松执行这些步骤。
 
 
-运行以下命令将用于 Azure CLI 的 Microsoft Azure IoT 扩展添加到 Cloud Shell 实例。 IoT 扩展会将 IoT 中心、IoT Edge 和 IoT 设备预配服务 (DPS) 特定的命令添加到 Azure CLI。
+运行以下命令将用于 Azure CLI 的 Microsoft Azure IoT 扩展添加到 Cloud Shell 实例。 IOT 扩展会将 IoT 中心、IoT Edge 和 IoT 设备预配服务 (DPS) 特定的命令添加到 Azure CLI。
 
 ```azurecli
 az extension add --name azure-iot
@@ -227,7 +227,7 @@ set EventHubConsumerGroup=YourConsumerGroupName
     az webapp show -n <your web app name> -g <your resource group name> --query state
     ```
 
-11. 在浏览器中导航到 `https://<your web app name>.azurewebsites.cn`。 此时会显示一个网页，它类似于在本地运行 Web 应用时所看到的网页。 假设你的设备正在运行且正在发送数据，则应会显示该设备最近发送的 50 个温度和湿度读数的运行图。
+11. 在浏览器中导航至 `https://<your web app name>.azurewebsites.cn` 。 此时会显示一个网页，它类似于在本地运行 Web 应用时所看到的网页。 假设你的设备正在运行且正在发送数据，则应会显示该设备最近发送的 50 个温度和湿度读数的运行图。
 
 ## <a name="troubleshooting"></a>故障排除
 
@@ -251,7 +251,7 @@ set EventHubConsumerGroup=YourConsumerGroupName
 
 * 在 Azure 门户中转到你的 Web 应用。 在左窗格中的“监视”下，选择“应用服务日志”。   启用“应用程序日志记录(文件系统)”，将“级别”设置为“错误”，并选择“保存”。    然后打开“日志流”（在“监视”下）。  
 
-* 在 Azure 门户上的 Web 应用中，在“开发工具”下选择“控制台”，然后使用 `node -v` 和 `npm -v` 验证 node 和 npm 版本。  
+* 在 Azure 门户上的 Web 应用中，在“开发工具”下选择“控制台”，然后使用 **和** 验证 node 和 npm 版本。  `node -v``npm -v`
 
 * 如果看到了有关找不到包的错误，则可能表示步骤的运行顺序不当。 部署站点（使用 `git push`）时，应用服务将会根据当前配置的 node 版本运行 `npm install`。 如果以后在配置中更改此版本，则需要对代码进行无意义的更改，然后再次推送。
 

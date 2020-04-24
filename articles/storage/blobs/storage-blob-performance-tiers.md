@@ -10,10 +10,10 @@ ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: clausjor
 ms.openlocfilehash: f457e20b20337347c83bf0a45c6033d5bf12fabc
-ms.sourcegitcommit: 90d01d08faf8adb20083363a8e4e5aab139cd9b2
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80290496"
 ---
 # <a name="performance-tiers-for-block-blob-storage"></a>块 Blob 存储的性能层
@@ -27,7 +27,7 @@ Azure 块 Blob 存储提供两个不同的性能层：
 
 以下注意事项适用于不同的性能层：
 
-| 区域 |标准性能层  |高级性能层  |
+| 区域 |标准性能  |高级性能层  |
 |---------|---------|---------|
 |上市区域     |   所有区域      | [特定区域](https://azure.microsoft.com/global-infrastructure/services/?regions=china-non-regional,china-east,china-east-2,china-north,china-north-2&products=storage)       |
 |支持的[存储帐户类型](../common/storage-account-overview.md#types-of-storage-accounts)     |     常规用途 v2、Blob 存储、常规用途 v1    |    BlockBlobStorage     |

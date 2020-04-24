@@ -6,10 +6,10 @@ origin.date: 03/07/2020
 ms.date: 03/16/2020
 ms.topic: how-to
 ms.openlocfilehash: 6424e07e28945fddb43b92cc69df00223e16c71c
-ms.sourcegitcommit: 1d3d8dfdaf6281f06640cbee7124a1e8bf102c50
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80243916"
 ---
 # <a name="use-azure-policy-extension-for-visual-studio-code"></a>使用适用于 Visual Studio Code 的 Azure Policy 扩展

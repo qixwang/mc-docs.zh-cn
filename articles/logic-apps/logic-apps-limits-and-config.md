@@ -9,10 +9,10 @@ origin.date: 03/12/2020
 ms.date: 03/30/2020
 ms.author: v-yeche
 ms.openlocfilehash: 6913ee0208b53882925bb467bf953819a5fc8ddb
-ms.sourcegitcommit: 2b084933215d0e7702456730f168d97e00c882a0
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80243257"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Azure 逻辑应用的限制和配置信息

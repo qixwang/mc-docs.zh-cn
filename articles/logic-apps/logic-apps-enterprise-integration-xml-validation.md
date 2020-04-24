@@ -10,19 +10,19 @@ origin.date: 10/21/2019
 ms.date: 03/30/2020
 ms.author: v-yeche
 ms.openlocfilehash: 8e8d3bd352969c0dc50a39b0c49001f02a4575c8
-ms.sourcegitcommit: 2b084933215d0e7702456730f168d97e00c882a0
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80243558"
 ---
 # <a name="validate-xml-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>在带有 Enterprise Integration Pack 的 Azure 逻辑应用中验证用于 B2B 企业集成的 XML
 
 通常在 B2B 方案中，协议中的贸易合作伙伴需确保他们交换的消息有效，才能开始处理数据。 可以使用 XML 验证操作（随 Enterprise Integration Pack 提供）按照预定义的架构验证文档。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
-* Azure 订阅。 如果还没有订阅，可以[注册 Azure 试用帐户](https://www.azure.cn/pricing/1rmb-trial/)。
+* Azure 订阅。 如果你没有订阅，可[注册 Azure 试用帐户](https://www.azure.cn/pricing/1rmb-trial/)。
 
 * 要在其中使用 XML 验证操作的空白或现有逻辑应用。 如果不熟悉逻辑应用，请查看[什么是 Azure 逻辑应用](../logic-apps/logic-apps-overview.md)和[快速入门：创建第一个逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
 
@@ -66,7 +66,7 @@ ms.locfileid: "80243558"
 
 ## <a name="next-steps"></a>后续步骤
 
-* 详细了解 [Enterprise Integration Pack](../logic-apps/logic-apps-enterprise-integration-overview.md)。
+* 详细了解 [Enterprise Integration Pack](../logic-apps/logic-apps-enterprise-integration-overview.md)
 
 <!-- Update_Description: new article about logic apps enterprise integration xml validation -->
 <!--NEW.date: 03/30/2020-->

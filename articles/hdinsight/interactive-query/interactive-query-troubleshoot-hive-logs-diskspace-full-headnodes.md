@@ -9,13 +9,13 @@ ms.reviewer: jasonh
 origin.date: 03/05/2020
 ms.date: 04/06/2020
 ms.openlocfilehash: eaa8b80c441bdbfb963b0068f9eae2ba0094a6b3
-ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80343972"
 ---
-# <a name="scenario-apache-hive-logs-are-filling-up-the-disk-space-on-the-head-nodes-in-azure-hdinsight"></a>场景：Apache Hive 日志即将填满 Azure HDInsight 的头节点的磁盘空间。
+# <a name="scenario-apache-hive-logs-are-filling-up-the-disk-space-on-the-head-nodes-in-azure-hdinsight"></a>方案：Apache Hive 日志即将填满 Azure HDInsight 的头节点的磁盘空间。
 
 本文介绍了与 Azure HDInsight 群集的头节点上的磁盘空间不足相关的问题的故障排除步骤和可能的解决方案。
 

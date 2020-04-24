@@ -11,10 +11,10 @@ ms.reviewer: sashan, moslake, carlrab
 origin.date: 11/27/2019
 ms.date: 03/16/2020
 ms.openlocfilehash: 885e2a919300ff06a4487969fe9de6c7866c3f9b
-ms.sourcegitcommit: 90660563b5d65731a64c099b32fb9ec0ce2c51c6
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80341782"
 ---
 # <a name="vcore-model-overview"></a>vCore 模型概述

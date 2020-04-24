@@ -1,9 +1,9 @@
 ### YamlMime:Landing
 title: Azure 移动应用文档
-summary: 了解如何在 Azure 应用服务中使用移动应用生成和托管本机 iOS、Android 或 Windows 应用，或使用 Xamarin 或 Cordova 的跨平台应用。
+summary: 了解如何使用 Azure 应用服务中的移动应用，通过 Xamarin 或 Cordova 构建和托管本机 iOS、Android 或 Windows 应用，或者跨平台应用。
 metadata:
   title: Azure 移动应用文档
-  description: 了解如何在 Azure 应用服务中使用移动应用生成和托管本机 iOS、Android 或 Windows 应用，或使用 Xamarin 或 Cordova 的跨平台应用。
+  description: 了解如何使用 Azure 应用服务中的移动应用，通过 Xamarin 或 Cordova 构建和托管本机 iOS、Android 或 Windows 应用，或者跨平台应用。
   ms.topic: landing-page
   ms.service: app-service-mobile
   author: georgewallace
@@ -12,10 +12,10 @@ metadata:
   origin.date: 02/19/2020
   ms.date: 03/23/2020
   ms.openlocfilehash: 29255599be0b5718a388795069dd33410f3755f1
-  ms.sourcegitcommit: b2f2bb08ab1b5ccb3c596d84b3b6ddca5bba3903
+  ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 03/24/2020
+  ms.lasthandoff: 04/17/2020
   ms.locfileid: "80151724"
 landingContent:
 - title: 概述

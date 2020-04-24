@@ -11,10 +11,10 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 12/05/2019
 ms.openlocfilehash: 80524cb55f4d7b82985a57efd49a7224d1bb6ca8
-ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80343115"
 ---
 # <a name="understand-automated-machine-learning-results"></a>了解自动化机器学习的结果

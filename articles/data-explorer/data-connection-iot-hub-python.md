@@ -9,23 +9,23 @@ ms.topic: conceptual
 origin.date: 10/07/2019
 ms.date: 03/16/2020
 ms.openlocfilehash: 620a7ca8e02110a25d43363a79efcfeb72c51f7d
-ms.sourcegitcommit: 1d3d8dfdaf6281f06640cbee7124a1e8bf102c50
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80243972"
 ---
 # <a name="create-an-iot-hub-data-connection-for-azure-data-explorer-by-using-python-preview"></a>使用 Python 为 Azure 数据资源管理器创建 IoT 中心数据连接（预览版）
 
 > [!div class="op_single_selector"]
-> * [Portal](ingest-data-iot-hub.md)
+> * [门户](ingest-data-iot-hub.md)
 > * [C#](data-connection-iot-hub-csharp.md)
 > * [Python](data-connection-iot-hub-python.md)
 > * [Azure Resource Manager 模板](data-connection-iot-hub-resource-manager.md)
 
 在本文中，你将使用 Python 为 Azure 数据资源管理器创建 IoT 中心数据连接。 Azure 数据资源管理器是一项快速且高度可缩放的数据探索服务，适用于日志和遥测数据。 Azure 数据资源管理器提供了从事件中心、IoT 中心引入或加载数据，以及将 blob 写入 blob 容器的功能。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * 具有活动订阅的 Azure 帐户。 [创建试用帐户](https://www.azure.cn/pricing/1rmb-trial/)。
 
@@ -100,7 +100,7 @@ poller = kusto_management_client.data_connections.create_or_update(resource_grou
 | table_name | *StormEvents* | 目标数据库中目标表的名称。|
 | mapping_rule_name | *StormEvents_CSV_Mapping* | 与目标表相关的列映射的名称。|
 | data_format | *csv* | 消息的数据格式。|
-| iot_hub_resource_id | *资源 ID* | 包含要引入的数据的 IoT 中心的资源 ID。|
+| iot_hub_resource_id | 资源 ID  | 包含要引入的数据的 IoT 中心的资源 ID。|
 | shared_access_policy_name | *iothubforread* | 共享访问策略的名称，这些策略定义设备与服务连接到 IoT 中心所需的权限。 |
 | consumer_group | *$Default* | 事件中心的使用者组。|
 | location | *中国东部 2* | 数据连接资源的位置。|

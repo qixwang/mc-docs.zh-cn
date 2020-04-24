@@ -14,10 +14,10 @@ ms.subservice: hybrid
 ms.author: v-junlch
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9791c89ba70326716bd9ab54a29cf71c544b9c67
-ms.sourcegitcommit: 6568c59433d7e80ab06e9fe76d4791f761ed6775
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80243065"
 ---
 # <a name="fix-modified-default-rules-in-azure-ad-connect"></a>在 Azure AD Connect 中修复已修改的默认规则

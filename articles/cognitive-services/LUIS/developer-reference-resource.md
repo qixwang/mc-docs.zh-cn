@@ -8,10 +8,10 @@ origin.date: 02/11/2020
 ms.date: 02/25/2020
 ms.author: v-lingwu
 ms.openlocfilehash: 309a93e065b1d04095cf8107d4cfd519ab94664a
-ms.sourcegitcommit: 303a16c7117b6f3495ef0493b4ae8ccb67d7dbba
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80342415"
 ---
 # <a name="sdk-rest-and-cli-developer-resources-for-language-understanding-luis"></a>用于语言理解 (LUIS) 的 SDK、REST 和 CLI 开发人员资源
@@ -60,7 +60,7 @@ LUIS 目前有 2 种类型的终结点：
 * 在训练终结点上进行创作
 * 运行时终结点上的查询预测。
 
-|目的|URL|
+|目的|代码|
 |--|--|
 |在训练终结点上进行创作|`https://{your-resource-name}.api.cognitive.azure.cn/luis/api/v2.0/apps/{appID}/`|
 |V2 运行时 - 运行时终结点上的所有预测|`https://{your-resource-name}.api.cognitive.azure.cn/luis/v2.0/apps/{appId}?q={q}[&timezoneOffset][&verbose][&spellCheck][&staging][&bing-spell-check-subscription-key][&log]`|

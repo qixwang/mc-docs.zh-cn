@@ -10,10 +10,10 @@ services: iot-central
 ms.custom: mvc
 manager: philmea
 ms.openlocfilehash: 4736df5678932fdefdbff68e0cceb449f0cf3459
-ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80343283"
 ---
 # <a name="extend-azure-iot-central-with-custom-rules-using-stream-analytics-azure-functions-and-sendgrid"></a>使用流分析、Azure Functions 和 SendGrid 通过自定义规则扩展 Azure IoT Central
@@ -30,23 +30,23 @@ ms.locfileid: "80343283"
 * 创建一个流分析查询用于检测设备何时已停止发送数据。
 * 使用 Azure Functions 和 SendGrid 服务发送电子邮件通知。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 完成本操作方法指南中的步骤需要有效的 Azure 订阅。
 
-如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial)。
+如果没有 Azure 订阅，可在开始前创建一个 [试用帐户](https://www.azure.cn/pricing/1rmb-trial) 。
 
 ### <a name="iot-central-application"></a>IoT Central 应用程序
 
 在 [Azure IoT Central 应用程序管理器](https://aka.ms/iotcentral)网站上使用以下设置创建一个 IoT Central 应用程序：
 
-| 设置 | Value |
+| 设置 | 值 |
 | ------- | ----- |
-| 定价计划 | 标准 |
+| 定价计划 | Standard |
 | 应用程序模板 | 店内分析 – 条件监视 |
 | 应用程序名称 | 接受默认设置，或选择自己的名称 |
-| URL | 接受默认设置，或选择自己的唯一 URL 前缀 |
-| Directory | Azure Active Directory 租户 |
+| 代码 | 接受默认设置，或选择自己的唯一 URL 前缀 |
+| 目录 | Azure Active Directory 租户 |
 | Azure 订阅 | Azure 订阅 |
 | 区域 | 离你最近的区域 |
 
@@ -62,11 +62,11 @@ ms.locfileid: "80343283"
 
 在 [Azure 门户中使用以下设置创建一个事件中心命名空间](https://portal.azure.cn/#create/Microsoft.EventHub)：
 
-| 设置 | Value |
+| 设置 | 值 |
 | ------- | ----- |
 | 名称    | 选择命名空间名称 |
 | 定价层 | 基本 |
-| 订阅 | 你的订阅 |
+| 订阅 | 订阅 |
 | 资源组 | DetectStoppedDevices |
 | 位置 | 中国东部 |
 | 吞吐量单位 | 1 |
@@ -75,10 +75,10 @@ ms.locfileid: "80343283"
 
 在 [Azure 门户中使用以下设置创建一个流分析作业](https://portal.azure.cn/#create/Microsoft.StreamAnalyticsJob)：
 
-| 设置 | Value |
+| 设置 | 值 |
 | ------- | ----- |
 | 名称    | 选择作业名称 |
-| 订阅 | 你的订阅 |
+| 订阅 | 订阅 |
 | 资源组 | DetectStoppedDevices |
 | 位置 | 中国东部 |
 | 宿主环境 | 云 |
@@ -88,12 +88,12 @@ ms.locfileid: "80343283"
 
 在 [Azure 门户中使用以下设置创建一个函数应用](https://portal.azure.cn/#create/Microsoft.FunctionApp)：
 
-| 设置 | Value |
+| 设置 | 值 |
 | ------- | ----- |
 | 应用程序名称    | 选择函数应用名称 |
-| 订阅 | 你的订阅 |
+| 订阅 | 订阅 |
 | 资源组 | DetectStoppedDevices |
-| 操作系统 | Windows |
+| OS | Windows |
 | 托管计划 | 消耗计划 |
 | 位置 | 中国东部 |
 | 运行时堆栈 | .NET |
@@ -103,11 +103,11 @@ ms.locfileid: "80343283"
 
 在 [Azure 门户中使用以下设置创建一个 SendGrid 帐户](https://portal.azure.cn/#create/Sendgrid.sendgrid)：
 
-| 设置 | Value |
+| 设置 | 值 |
 | ------- | ----- |
 | 名称    | 选择 SendGrid 帐户名称 |
 | 密码 | 创建密码 |
-| 订阅 | 你的订阅 |
+| 订阅 | 订阅 |
 | 资源组 | DetectStoppedDevices |
 | 定价层 | F1 免费 |
 | 联系信息 | 填写所需的信息 |
@@ -244,20 +244,20 @@ test-device-3   2019-05-02T14:24:28.919Z
 1. 在 Azure 门户中导航到你的流分析作业，在“作业拓扑”下，依次选择“输入”、“+ 添加流输入”、“事件中心”。    
 1. 根据下表中的信息使用前面创建的事件中心配置输入，然后选择“保存”： 
 
-    | 设置 | Value |
+    | 设置 | 值 |
     | ------- | ----- |
     | 输入别名 | centraltelemetry |
-    | 订阅 | 你的订阅 |
+    | 订阅 | 订阅 |
     | 事件中心命名空间 | 事件中心命名空间 |
     | 事件中心名称 | 使用现有名称 - **centralexport** |
 
 1. 在“作业拓扑”下，依次选择“输出”、“+ 添加”、“Azure 函数”。    
 1. 使用下表中的信息配置输出，然后选择“保存”： 
 
-    | 设置 | Value |
+    | 设置 | 值 |
     | ------- | ----- |
     | 输出别名 | emailnotification |
-    | 订阅 | 你的订阅 |
+    | 订阅 | 订阅 |
     | 函数应用 | 你的函数应用 |
     | 函数  | HttpTrigger1 |
 
@@ -302,7 +302,7 @@ test-device-3   2019-05-02T14:24:28.919Z
         RightSide.deviceid2 is NULL
     ```
 
-1. 选择“保存”  。
+1. 选择“保存”。 
 1. 若要启动流分析作业，请依次选择“概述”、“启动”、“立即”、“启动”：    
 
     ![流分析](media/howto-create-custom-rules/stream-analytics.png)
@@ -314,10 +314,10 @@ test-device-3   2019-05-02T14:24:28.919Z
 1. 导航到“数据导出”页，依次选择“+ 新建”、“Azure 事件中心”。   
 1. 使用以下设置配置导出，然后选择“保存”： 
 
-    | 设置 | Value |
+    | 设置 | 值 |
     | ------- | ----- |
     | 显示名称 | 导出到事件中心 |
-    | Enabled | 启用 |
+    | 已启用 | 启用 |
     | 事件中心命名空间 | 事件中心命名空间的名称 |
     | 事件中心 | centralexport |
     | 度量 | 启用 |

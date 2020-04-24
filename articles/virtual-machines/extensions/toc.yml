@@ -20,7 +20,7 @@
       href: features-linux.md
     - name: Windows
       href: features-windows.md
-- name: 操作指南
+- name: 操作方法指南
   items:
     - name: Azure 磁盘加密
       items:

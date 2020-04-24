@@ -6,10 +6,10 @@ origin.date: 09/05/2019
 ms.date: 03/23/2020
 ms.author: v-yeche
 ms.openlocfilehash: 9c2240582b0f5eb754e02dd2664348913be52896
-ms.sourcegitcommit: 1436f1851342ca5631eb25342eed954adb707af0
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79543733"
 ---
 # <a name="parameters-in-azure-resource-manager-templates"></a>Azure 资源管理器模板中的参数
@@ -60,7 +60,7 @@ ms.locfileid: "79543733"
 
 ## <a name="template-functions"></a>模板函数
 
-为参数指定默认值时，可以使用大多数模板函数。 可以使用另一个参数值生成默认值。 以下模板演示了如何以默认值的方式使用函数。 如果没有为站点提供名称，它会创建唯一的字符串值并将其追加到 **site**。 如果没有为主机计划提供名称，它会采用站点的值，并追加 **-plan**。
+为参数指定默认值时，可以使用大多数模板函数。 可以使用另一个参数值来生成默认值。 以下模板演示了如何以默认值的方式使用函数。 如果没有为站点提供名称，它会创建唯一的字符串值并将其追加到 **site**。 如果没有为主机计划提供名称，它会采用站点的值，并追加 **-plan**。
 
 ```json
 "parameters": {
@@ -83,9 +83,9 @@ ms.locfileid: "79543733"
 
 不能在 parameters 节中使用 [reference](template-functions-resource.md#reference) 函数或任何 [list](template-functions-resource.md#list) 函数。 在解析参数时，这些函数获取资源的运行时状态，不能在部署之前执行。
 
-## <a name="objects-as-parameters"></a>用作参数的对象
+## <a name="objects-as-parameters"></a>对象作为参数
 
-将相关值作为对象传入可以更轻松地对其进行组织。 此方法还可以减少模板中的参数数目。
+通过将相关值作为对象传入，可以更轻松地对这些值进行组织。 此方式还可以减少模板中的参数的数量。
 
 以下示例显示的参数是一个对象。 默认值显示对象的预期属性。
 
@@ -157,8 +157,8 @@ ms.locfileid: "79543733"
 
 |模板  |说明  |
 |---------|---------|
-|[用于默认值的参数与函数](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/parameterswithfunctions.json) | 演示在定义参数的默认值时如何使用模板函数。 该模板不部署任何资源。 它构造参数值并返回这些值。 |
-|[参数对象](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/parameterobject.json) | 演示如何使用参数的对象。 该模板不部署任何资源。 它构造参数值并返回这些值。 |
+|[包含用于默认值的函数的参数](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/parameterswithfunctions.json) | 演示了为参数定义默认值时如何使用模板函数。 该模板不部署任何资源。 它构造参数值并返回这些值。 |
+|[参数对象](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/parameterobject.json) | 演示了将对象用于参数。 该模板不部署任何资源。 它构造参数值并返回这些值。 |
 
 ## <a name="next-steps"></a>后续步骤
 

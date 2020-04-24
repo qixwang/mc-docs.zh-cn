@@ -14,10 +14,10 @@ origin.date: 03/02/2020
 ms.date: 03/23/2020
 ms.author: v-jay
 ms.openlocfilehash: b04ddb19bd231e57d879ea97e402016612a4df37
-ms.sourcegitcommit: 71a386ca0d0ecb79a123399b6ab6b8c70ea2aa78
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79497239"
 ---
 # <a name="get-metadata-activity-in-azure-data-factory"></a>Azure 数据工厂中的“获取元数据”活动
@@ -135,7 +135,7 @@ ms.locfileid: "79497239"
 
 目前，“获取元数据”活动可以返回以下类型的元数据信息：
 
-属性 | 说明 | 必须
+properties | 说明 | 必选
 -------- | ----------- | --------
 fieldList | 所需元数据信息的类型。 有关支持的元数据的详细信息，请参阅本文的[元数据选项](#metadata-options)部分。 | 是 
 dataset | 引用数据集，其元数据将由“获取元数据”活动检索。 有关支持的连接器的信息，请参阅[功能](#capabilities)部分。 有关数据集语法详细信息，请参阅特定的连接器主题。 | 是

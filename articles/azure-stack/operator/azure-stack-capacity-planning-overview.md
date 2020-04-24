@@ -10,10 +10,10 @@ ms.author: v-jay
 ms.reviewer: prchint
 ms.lastreviewed: 05/31/2019
 ms.openlocfilehash: d8f1e268776f62172df82f84856aab16e8e2ebbc
-ms.sourcegitcommit: e500354e2fd8b7ac3dddfae0c825cc543080f476
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79547071"
 ---
 # <a name="capacity-planning-for-azure-stack-hub-overview"></a>Azure Stack Hub 的容量规划概述

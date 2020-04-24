@@ -10,10 +10,10 @@ origin.date: 08/16/2018
 ms.date: 03/30/2020
 ms.author: v-yeche
 ms.openlocfilehash: a84d99a8b57cb2b4550abe56b101c6af4211a931
-ms.sourcegitcommit: 2b084933215d0e7702456730f168d97e00c882a0
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80243509"
 ---
 # <a name="perform-advanced-json-transformations-with-liquid-templates-in-azure-logic-apps"></a>在 Azure 逻辑应用中使用 Liquid 模板执行高级 JSON 转换
@@ -22,7 +22,7 @@ ms.locfileid: "80243509"
 
 在逻辑应用中执行 Liquid 转换之前，必须先使用 Liquid 模板定义 JSON 到 JSON 的映射，并将该映射存储在集成帐户中。 本文展示了如何创建并使用此 Liquid 模板或映射。 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * Azure 订阅。 如果没有订阅，可以从 [Azure 试用帐户](https://www.azure.cn/pricing/1rmb-trial/)着手。 或者，[注册标准预付费套餐订阅](https://www.azure.cn/pricing/overview/)。
 
@@ -58,7 +58,7 @@ ms.locfileid: "80243509"
    }
    ```
 
-2. 登录到 [Azure 门户](https://portal.azure.cn)。 在 Azure 主菜单中，选择“所有资源”  。 在搜索框中，查找并选择你的集成帐户。
+2. 登录 [Azure 门户](https://portal.azure.cn)。 在 Azure 主菜单中，选择“所有资源”  。 在搜索框中，查找并选择你的集成帐户。
 
    ![选择“集成帐户”](./media/logic-apps-enterprise-integration-liquid-transform/select-integration-account.png)
 
@@ -68,7 +68,7 @@ ms.locfileid: "80243509"
 
 4. 选择“添加”，并为映射提供以下详细信息  ：
 
-   | 属性 | Value | 说明 | 
+   | properties | 值 | 说明 | 
    |----------|-------|-------------|
    | **名称** | JsonToJsonTemplate | 映射的名称，在此示例中为“JsonToJsonTemplate” | 
    | **映射类型** | **liquid** | 你的映射的类型。 对于 JSON 到 JSON 转换，必须选择“liquid”  。 | 
@@ -84,7 +84,7 @@ ms.locfileid: "80243509"
 2. 在逻辑应用设计器中，向逻辑应用中添加[请求触发器](../connectors/connectors-native-reqres.md#add-request)。
 
 3. 在触发器下，选择“新建步骤”。  
-   在搜索框中，输入“liquid”作为筛选器，然后选择以下操作：**将 JSON 转换为 JSON - Liquid**
+   在搜索框中，输入“liquid”作为筛选器，然后选择以下操作：“将 JSON 转换为 JSON-Liquid” 
 
    ![查找并选择 Liquid 操作](./media/logic-apps-enterprise-integration-liquid-transform/search-action-liquid.png)
 

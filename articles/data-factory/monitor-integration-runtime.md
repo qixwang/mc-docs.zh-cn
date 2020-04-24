@@ -12,10 +12,10 @@ author: v-jay
 ms.author: daperlov
 manager: digimobile
 ms.openlocfilehash: d5b36676f7f9e26498a63d8ca345ecb99ad788d7
-ms.sourcegitcommit: 71a386ca0d0ecb79a123399b6ab6b8c70ea2aa78
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79497263"
 ---
 # <a name="monitor-an-integration-runtime-in-azure-data-factory"></a>在 Azure 数据工厂中监视集成运行时  

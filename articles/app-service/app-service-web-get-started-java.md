@@ -11,10 +11,10 @@ ms.date: 03/16/2020
 ms.author: v-tawe
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
 ms.openlocfilehash: 07ce8f3340d9a291b768de2a579d7baf5ed2d4d2
-ms.sourcegitcommit: e500354e2fd8b7ac3dddfae0c825cc543080f476
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79547000"
 ---
 # <a name="quickstart-create-a-java-app-on-azure-app-service-on-windows"></a>快速入门：在 Windows 上的 Azure 应用服务中创建 Java 应用

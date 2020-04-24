@@ -7,10 +7,10 @@ ms.date: 03/16/2020
 ms.author: v-tawe
 ms.custom: subject-moving-resources
 ms.openlocfilehash: 47cacf8cfd0509def39bfb25af6e96d7a26d65c9
-ms.sourcegitcommit: b2f2bb08ab1b5ccb3c596d84b3b6ddca5bba3903
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80151721"
 ---
 # <a name="move-an-app-service-app-to-another-region"></a>将应用服务应用移动到其他区域

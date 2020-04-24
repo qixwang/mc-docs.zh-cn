@@ -10,10 +10,10 @@ origin.date: 01/01/2020
 ms.date: 03/30/2020
 ms.author: v-yeche
 ms.openlocfilehash: 5470df06a4ef58839d18b887e175923822f16da8
-ms.sourcegitcommit: 2b084933215d0e7702456730f168d97e00c882a0
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80243444"
 ---
 # <a name="create-schemas-for-tracking-as2-messages-in-azure-logic-apps"></a>在 Azure 逻辑应用中创建用于跟踪 AS2 消息的架构
@@ -53,7 +53,7 @@ ms.locfileid: "80243444"
 }
 ```
 
-| 属性 | 必须 | 类型 | 说明 |
+| properties | 必选 | 类型 | 说明 |
 |----------|----------|------|-------------|
 | senderPartnerName | 否 | String | AS2 消息发送者的合作伙伴名称 |
 | receiverPartnerName | 否 | String | AS2 消息接收者的合作伙伴名称 |
@@ -64,15 +64,15 @@ ms.locfileid: "80243444"
 | messageId | 否 | String | AS2 消息 ID，来自 AS2 消息的标头 |
 | dispositionType | 否 | String | 消息处置通知 (MDN) 处置类型值 |
 | fileName | 否 | String | 文件名，来自 AS2 消息的标头 |
-| isMessageFailed | 是 | 布尔 | AS2 消息是否已失败 |
-| isMessageSigned | 是 | 布尔 | AS2 消息是否已签名 |
-| isMessageEncrypted | 是 | 布尔 | AS2 消息是否已加密 |
-| isMessageCompressed | 是 | 布尔 | AS2 消息是否已压缩 |
+| isMessageFailed | 是 | Boolean | AS2 消息是否已失败 |
+| isMessageSigned | 是 | Boolean | AS2 消息是否已签名 |
+| isMessageEncrypted | 是 | Boolean | AS2 消息是否已加密 |
+| isMessageCompressed | 是 | Boolean | AS2 消息是否已压缩 |
 | correlationMessageId | 否 | String | AS2 消息 ID，用于将消息与 MDN 相关联 |
 | incomingHeaders | 否 | JToken 字典 | 传入 AS2 消息标头的详细信息 |
 | outgoingHeaders | 否 | JToken 字典 | 传出 AS2 消息标头的详细信息 |
-| isNrrEnabled | 是 | 布尔 | 如果值未知，是否使用默认值 |
-| isMdnExpected | 是 | 布尔 | 如果值未知，是否使用默认值 |
+| isNrrEnabled | 是 | Boolean | 如果值未知，是否使用默认值 |
+| isMdnExpected | 是 | Boolean | 如果值未知，是否使用默认值 |
 | mdnType | 是 | 枚举 | 允许的值：`NotConfigured`、`Sync` 和 `Async` |
 |||||
 
@@ -106,7 +106,7 @@ ms.locfileid: "80243444"
 }
 ```
 
-| 属性 | 必须 | 类型 | 说明 |
+| properties | 必选 | 类型 | 说明 |
 |----------|----------|------|-------------|
 | senderPartnerName | 否 | String | AS2 消息发送者的合作伙伴名称 |
 | receiverPartnerName | 否 | String | AS2 消息接收者的合作伙伴名称 |
@@ -117,9 +117,9 @@ ms.locfileid: "80243444"
 | messageId | 否 | String | AS2 消息 ID |
 | originalMessageId | 否 | String | AS2 原始消息 ID |
 | dispositionType | 否 | String | MDN 处置类型值 |
-| isMessageFailed | 是 | 布尔 | AS2 消息是否已失败 |
-| isMessageSigned | 是 | 布尔 | AS2 消息是否已签名 |
-| isNrrEnabled | 是 | 布尔 | 如果值未知，是否使用默认值 |
+| isMessageFailed | 是 | Boolean | AS2 消息是否已失败 |
+| isMessageSigned | 是 | Boolean | AS2 消息是否已签名 |
+| isNrrEnabled | 是 | Boolean | 如果值未知，是否使用默认值 |
 | statusCode | 是 | 枚举 | 允许的值：`Accepted`、`Rejected` 和 `AcceptedWithErrors` |
 | micVerificationStatus | 是 | 枚举 | 允许的值：`NotApplicable`、`Succeeded` 和 `Failed` |
 | correlationMessageId | 否 | String | 相关 ID，它是配置了 MDN 的原始消息的 ID |

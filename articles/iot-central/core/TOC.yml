@@ -49,7 +49,7 @@
       href: concepts-get-connected.md
     - name: 连接 IoT Edge 设备
       href: concepts-iot-edge.md
-- name: 操作指南
+- name: 操作方法指南
   items:
     - name: 建立连接
       items:

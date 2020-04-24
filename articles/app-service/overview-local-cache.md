@@ -9,10 +9,10 @@ ms.date: 03/16/2020
 ms.author: v-tawe
 ms.custom: seodec18
 ms.openlocfilehash: a000c46291ce9222c49a494635d8e91fa3c3732d
-ms.sourcegitcommit: e500354e2fd8b7ac3dddfae0c825cc543080f476
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79546932"
 ---
 # <a name="azure-app-service-local-cache-overview"></a>Azure 应用服务本地缓存概述
@@ -30,7 +30,7 @@ Azure 应用服务内容存储在 Azure 存储中，作为内容共享持续提�
 
 虽然许多应用使用所有此类功能或其中一项功能，但某些应用只需要高性能的只读内容存储，此类存储可用性高且支持这些应用的运行。 这些应用可以充分利用特定本地缓存的 VM 实例。
 
-Azure 应用服务本地缓存功能允许通过 Web 角色来查看内容。 存储内容是在站点启动后异步创建的，而该内容是对存储内容进行写后即丢弃式缓存的结果。 当缓存就绪时，对站点进行切换，使之在已缓存内容的基础上运行。 在本地缓存上运行的应用具有以下优势：
+Azure 应用服务本地缓存功能允许通过 Web 角色来查看内容。 存储内容是在站点启动后异步创建的，而该内容是对存储内容进行写后即丢弃式缓存的结果。 当缓存就绪时，将对站点进行切换，使之在已缓存内容的基础上运行。 在本地缓存上运行的应用具有以下优势：
 
 * 不受访问 Azure 存储上的内容时出现的延迟的影响。
 * 不受计划内升级/计划外停机以及 Azure 存储出现的任何其他中断事件（发生在提供内容共享服务的服务器上）的影响。
@@ -51,16 +51,16 @@ Azure 应用服务本地缓存功能允许通过 Web 角色来查看内容。 �
 组合使用保留的应用设置即可配置本地缓存。 可以通过以下方法配置这些应用设置：
 
 * [Azure 门户](#Configure-Local-Cache-Portal)
-* [Azure Resource Manager](#Configure-Local-Cache-ARM)
+* [Azure 资源管理器](#Configure-Local-Cache-ARM)
 
 ### <a name="configure-local-cache-by-using-the-azure-portal"></a>通过 Azure 门户配置本地缓存
 <a name="Configure-Local-Cache-Portal"></a>
 
-使用以下应用设置即可在每个 Web 应用的基础上启用本地缓存： `WEBSITE_LOCAL_CACHE_OPTION` = `Always`  
+使用以下应用设置即可对每个 Web 应用启用本地缓存：`WEBSITE_LOCAL_CACHE_OPTION` = `Always`  
 
 ![Azure 门户应用设置：本地缓存](media/app-service-local-cache-overview/app-service-local-cache-configure-portal.png)
 
-### <a name="configure-local-cache-by-using-azure-resource-manager"></a>使用 Azure Resource Manager 配置本地缓存
+### <a name="configure-local-cache-by-using-azure-resource-manager"></a>使用 Azure 资源管理器配置本地缓存
 <a name="Configure-Local-Cache-ARM"></a>
 
 ```json
@@ -90,7 +90,7 @@ Azure 应用服务本地缓存功能允许通过 Web 角色来查看内容。 �
 ## <a name="best-practices-for-using-app-service-local-cache"></a>使用应用服务本地缓存的最佳实践
 建议将本地缓存与[过渡环境](../app-service/deploy-staging-slots.md)功能结合在一起使用。
 
-* 将值为 `Always` 的*粘性*应用设置 `WEBSITE_LOCAL_CACHE_OPTION` 添加到**生产**槽。 如果使用的是 `WEBSITE_LOCAL_CACHE_SIZEINMB`，也可将其作为粘性设置添加到“生产”槽。
+* 将值为  *的*粘性`WEBSITE_LOCAL_CACHE_OPTION`应用设置 `Always` 添加到**生产**槽。 如果使用的是 `WEBSITE_LOCAL_CACHE_SIZEINMB`，也可将其作为粘性设置添加到“生产”槽。
 * 创建**过渡**槽，并发布到过渡槽。 如果获得了生产槽的本地缓存优势，则要想通过无缝的“构建-部署-测试”生命周期进行过渡，通常不需要将过渡槽设置为使用本地缓存。
 * 针对“过渡”槽来测试站点。  
 * 准备就绪以后，在过渡槽和生产槽之间执行[交换操作](../app-service/deploy-staging-slots.md#Swap)。  

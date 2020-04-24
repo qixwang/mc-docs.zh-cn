@@ -13,10 +13,10 @@ metadata:
   origin.date: 02/25/2020
   ms.date: 03/16/2020
   ms.openlocfilehash: 259bd9a31379ca85d19f870962594c45cb42db0b
-  ms.sourcegitcommit: 1d3d8dfdaf6281f06640cbee7124a1e8bf102c50
+  ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 03/25/2020
+  ms.lasthandoff: 04/17/2020
   ms.locfileid: "80243737"
 landingContent:
 - title: 关于认知搜索
@@ -77,7 +77,7 @@ landingContent:
       url: cognitive-search-defining-skillset.md
     - text: 知识存储
       url: knowledge-store-concept-intro.md
-    - text: 投影数
+    - text: 投影
       url: knowledge-store-projections-examples.md
   - linkListType: how-to-guide
     links:
@@ -117,7 +117,7 @@ landingContent:
   linkLists:
   - linkListType: reference
     links:
-    - text: 常见问题
+    - text: 常见问题解答
       url: search-faq-frequently-asked-questions.md
     - text: 在 Stack Overflow 上提出问题
       url: https://stackoverflow.com/questions/tagged/azure-search

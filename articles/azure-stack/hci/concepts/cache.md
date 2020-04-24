@@ -7,10 +7,10 @@ ms.topic: article
 origin.date: 02/28/2020
 ms.date: 03/23/2020
 ms.openlocfilehash: 19fe0a96fc2aa91908bfbac0647ca87bb872d3d4
-ms.sourcegitcommit: e500354e2fd8b7ac3dddfae0c825cc543080f476
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79547146"
 ---
 # <a name="understanding-the-cache-in-azure-stack-hci"></a>了解 Azure Stack HCI 中的缓存

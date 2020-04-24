@@ -10,10 +10,10 @@ ms.date: 03/30/2020
 ms.author: v-yeche
 Customer intent: As someone with a networking background, I want to create a route table using the portal.
 ms.openlocfilehash: 9160db64ade21b89f4edea146777a3c7abcf6d1f
-ms.sourcegitcommit: 4810b75d1e1db78d9747e99735468a6ab861be2d
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80291299"
 ---
 # <a name="create-a-virtual-wan-hub-route-table-for-nvas-azure-portal"></a>创建 NVA 的虚拟 WAN 中心路由表：Azure 门户

@@ -11,10 +11,10 @@ ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 12/07/2017
 ms.openlocfilehash: 231308225f67c2b84824a6c67040d60fa90e323e
-ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80343083"
 ---
 # <a name="create-and-share-an-azure-machine-learning-studio-classic-workspace"></a>创建并共享 Azure 机器学习工作室（经典）工作区

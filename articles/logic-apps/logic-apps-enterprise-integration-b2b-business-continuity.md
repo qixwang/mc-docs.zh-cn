@@ -10,10 +10,10 @@ origin.date: 04/10/2017
 ms.date: 03/30/2020
 ms.author: v-yeche
 ms.openlocfilehash: adfb92c627770a541473c7aa18c1eb7ce67e6be8
-ms.sourcegitcommit: 2b084933215d0e7702456730f168d97e00c882a0
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80243532"
 ---
 # <a name="set-up-cross-region-disaster-recovery-for-integration-accounts-in-azure-logic-apps"></a>为 Azure 逻辑应用中的集成帐户设置跨区域灾难恢复
@@ -220,7 +220,7 @@ EDI EDIFACT 文档的业务连续性基于控制编号。
 
     ![MIC 添加或更新](./media/logic-apps-enterprise-integration-b2b-business-continuity/as2messageid5.png)
 
-7. 要将操作连接到次要区域集成帐户，请选择“更改连接” > “添加新连接”，显示可用集成帐户的列表。   输入连接名称，从列表中选择“次要区域集成帐户”，并选择“创建”   。
+7. 要将操作连接到次要区域集成帐户，请选择“更改连接” **“添加新连接”，显示可用集成帐户的列表。**  >   输入连接名称，从列表中选择“次要区域集成帐户”，并选择“创建”   。
 
     ![次要区域集成帐户名称](./media/logic-apps-enterprise-integration-b2b-business-continuity/as2messageid6.png)
 

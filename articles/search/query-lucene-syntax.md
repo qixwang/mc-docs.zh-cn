@@ -21,10 +21,10 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: dfeb83084223480ddf1a27872fc88c5dcb09d818
-ms.sourcegitcommit: 1d3d8dfdaf6281f06640cbee7124a1e8bf102c50
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80243722"
 ---
 # <a name="lucene-query-syntax-in-azure-cognitive-search"></a>Azure 认知搜索中的 Lucene 查询语法
@@ -118,7 +118,7 @@ NOT 运算符为感叹号或减号。 例如：`wifi !luxury` 将搜索包含“
 
 使用 `searchMode=any` 可以以包含更多结果的方式提高查询的查全率，且默认情况下将解释为“OR NOT”。 例如，`wifi -luxury` 将匹配包含术语“wifi”或不包含术语“luxury”的文档   。
 
-使用 `searchMode=all` 可以以包含更少结果的方式提高查询的精确度，且默认情况下将解释为“AND NOT”。 例如，`wifi -luxury` 将匹配包含术语 `wifi` 或不包含术语 `luxury` 的文档。 这对于 - 运算符来说可能是更直观的行为。 因此，如果希望优化搜索的精确度（而非查全率），且用户在搜索中频繁使用 `-` 运算符，那么应考虑选择 `searchMode=all` 而不是 `searchMode=any`  。
+使用 `searchMode=all` 可以以包含更少结果的方式提高查询的精确度，且默认情况下将解释为“AND NOT”。 例如，`wifi -luxury` 将匹配包含术语 `wifi` 或不包含术语 `luxury` 的文档。 这对于 - 运算符来说可能是更直观的行为。 因此，如果希望优化搜索的精确度（而非查全率），且用户在搜索中频繁使用 `-` 运算符，那么应考虑选择 `searchMode=all` 而不是 `searchMode=any` 。
 
 ##  <a name="query-size-limitations"></a><a name="bkmk_querysizelimits"></a> 查询大小限制  
  存在对可以发送到 Azure 认知搜索的查询大小的限制。 具体而言，最多可以有 1024 条子句（以 AND、OR 等分隔的表达式）。 此外，查询中任何单个术语的大小限制为大约 32 KB。 如果应用程序以编程方式生成搜索查询，则建议将其设计为不会生成无限大小的查询。  

@@ -16,10 +16,10 @@ origin.date: 07/02/2018
 ms.date: 03/16/2020
 ms.author: v-tawe
 ms.openlocfilehash: ed40943ddeb81ca2cb4f0737a1f499a8e85d0888
-ms.sourcegitcommit: 1d3d8dfdaf6281f06640cbee7124a1e8bf102c50
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80243935"
 ---
 # <a name="available-event-hubs-apis"></a>可用的事件中心 API
@@ -28,17 +28,17 @@ ms.locfileid: "80243935"
 
 ## <a name="runtime-apis"></a>运行时 API
 
-以下部分介绍所有当前可用的 Azure 事件中心运行时客户端。 虽然其中某些库也包含受限的管理功能，但也有专用于管理操作的 [特定库](#management-apis) 。 这些库的核心功能是通过事件中心发送和接收消息。
+以下部分介绍所有当前可用的 Azure 事件中心运行时客户端。 虽然其中某些库也包含有限的管理功能，但也有专用于管理操作的[特定库](#management-apis)。 这些库的核心功能是通过事件中心发送和接收消息。
 
 有关每个运行时库的当前状态的详细信息，请参阅[其他信息](#additional-information)。
 
 | 语言/平台 | 客户端程序包 | EventProcessorHost 包 | 存储库 |
 | --- | --- | --- | --- |
 | .NET Standard | [NuGet](https://www.nuget.org/packages/Microsoft.Azure.EventHubs/) | [NuGet](https://www.nuget.org/packages/Microsoft.Azure.EventHubs.Processor/) | [GitHub](https://github.com/azure/azure-event-hubs-dotnet) |
-| .NET framework | [NuGet](https://www.nuget.org/packages/WindowsAzure.ServiceBus/) | [NuGet](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus.EventProcessorHost/) | 不适用 |
+| .NET Framework | [NuGet](https://www.nuget.org/packages/WindowsAzure.ServiceBus/) | [NuGet](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus.EventProcessorHost/) | 空值 |
 | Java | [Maven](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-eventhubs%22) | [Maven](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-eventhubs-eph%22) | [GitHub](https://github.com/Azure/azure-event-hubs-java) |
-| 节点 | [NPM](https://www.npmjs.com/package/azure-event-hubs) | 不适用 | [GitHub](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/eventhub/event-hubs) |
-| C | 不适用 | 空值 | [GitHub](https://github.com/Azure/azure-event-hubs-c) |
+| 节点 | [NPM](https://www.npmjs.com/package/azure-event-hubs) | 空值 | [GitHub](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/eventhub/event-hubs) |
+| C | 空值 | 空值 | [GitHub](https://github.com/Azure/azure-event-hubs-c) |
 
 ### <a name="additional-information"></a>其他信息
 
@@ -48,11 +48,11 @@ ms.locfileid: "80243935"
 
 #### <a name="node"></a>节点
 
-[JavaScript 库](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/eventhub/event-hubs)目前处于预览状态，由 Microsoft 员工和外部参与者作为副项目进行维护。 包括源代码在内的所有贡献都欢迎并会对其进行审查。
+[JavaScript 库](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/eventhub/event-hubs)目前处于预览状态，由 Microsoft 员工和外部参与者作为副项目进行维护。 包括源代码在内的所有贡献都欢迎并将对其进行审查。
 
 ## <a name="management-apis"></a>管理 API
 
-下表列出了所有当前可用的特定于管理的库。 这些库不包含运行时操作，管理事件中心实体是其唯一的用途。
+下表列出了所有当前可用的特定于管理的库。 这些库并非仅包含运行时操作，并且管理事件中心实体不是其唯一目的。
 
 | 语言/平台 | 管理包 | 存储库 |
 | --- | --- | --- |
@@ -63,4 +63,4 @@ ms.locfileid: "80243935"
 
 * [事件中心概述](event-hubs-what-is-event-hubs.md)
 * [创建事件中心](event-hubs-create.md)
-* [事件中心常见问题](event-hubs-faq.md)
+* [事件中心常见问题解答](event-hubs-faq.md)

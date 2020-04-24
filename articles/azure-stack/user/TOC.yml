@@ -23,7 +23,7 @@
   items:
     - name: 订阅产品
       href: azure-stack-subscribe-services.md
-- name: 操作指南
+- name: 操作方法指南
   items:
     - name: 开始为混合云构建解决方案
       items:
@@ -79,7 +79,7 @@
               items:
                 - name: 使用门户进行部署
                   href: azure-stack-deploy-template-portal.md
-                - name: 使用 PowerShell 进行部署
+                - name: 使用 PowerShell 部署
                   href: azure-stack-deploy-template-powershell.md
                 - name: 使用 CLI 进行部署
                   href: azure-stack-deploy-template-command-line.md
@@ -163,7 +163,7 @@
                   href: azure-stack-understanding-dns.md
                 - name: Azure Stack Hub 中的 DNS
                   href: azure-stack-dns.md
-            - name: 密钥保管库
+            - name: Key Vault
               items:
                 - name: 概述
                   href: azure-stack-key-vault-intro.md
@@ -198,7 +198,7 @@
           href: azure-stack-dev-start-howto-vm-dotnet.md
         - name: 将 Web 应用部署到 Linux VM
           items:
-            - name: 部署适用于 Web 应用的 Linux VM
+            - name: 为 Web 应用部署 Linux VM
               href: azure-stack-dev-start-howto-deploy-linux.md
             - name: 部署 Java Web 应用
               href: azure-stack-dev-start-howto-vm-java.md

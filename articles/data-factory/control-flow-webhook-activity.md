@@ -13,10 +13,10 @@ ms.topic: conceptual
 origin.date: 03/25/2019
 ms.date: 03/23/2020
 ms.openlocfilehash: 000101e4f2eacef7cca8f2b99f7dce26efed68ba
-ms.sourcegitcommit: 71a386ca0d0ecb79a123399b6ab6b8c70ea2aa78
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79497321"
 ---
 # <a name="webhook-activity-in-azure-data-factory"></a>Azure 数据工厂中的 Webhook 活动
@@ -52,19 +52,19 @@ Webhook 活动可通过自定义代码控制管道的执行。 使用 Webhook �
 
 ## <a name="type-properties"></a>Type 属性
 
-属性 | 说明 | 允许的值 | 必须
+properties | 说明 | 允许的值 | 必选
 -------- | ----------- | -------------- | --------
-**name** | Webhook 活动的名称。 | String | 是 |
-**type** | 必须设置为“WebHook”。 | String | 是 |
+name  | Webhook 活动的名称。 | String | 是 |
+type  | 必须设置为“WebHook”。 | String | 是 |
 **method** | 目标终结点的 REST API 方法。 | 字符串。 支持的类型为“POST”。 | 是 |
 **url** | 目标终结点和路径。 | 具有字符串的 **resultType** 值的字符串或表达式。 | 是 |
-**headers** | 发送到请求的标头。 下面是一个示例，用于在请求中设置语言和类型：`"headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }`。 | 一个字符串或表达式，其 **resultType** 值为字符串。 | 是的。 需要 `Content-Type` 标题，如 `"headers":{ "Content-Type":"application/json"}`。 |
+**headers** | 发送到请求的标头。 下面是一个示例，用于在请求中设置语言和类型：`"headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }`。 | 具有字符串的 **resultType** 值的字符串或表达式。 | 是的。 需要 `Content-Type` 标题，如 `"headers":{ "Content-Type":"application/json"}`。 |
 **body** | 表示要发送到终结点的有效负载。 | 有效的 JSON，或 **resultType** 值为 JSON 的表达式。 请参阅[请求有效负载架构](/data-factory/control-flow-web-activity#request-payload-schema)，了解请求有效负载的架构。 | 是 |
-**身份验证** | 用于调用该终结点的身份验证方法。 支持的类型为“Basic”和“ClientCertificate”。 有关详细信息，请参阅[身份验证](/data-factory/control-flow-web-activity#authentication)。 如果不需要身份验证，则排除此属性。 | 一个字符串或表达式，其 **resultType** 值为字符串。 | 否 |
+**身份验证** | 用于调用该终结点的身份验证方法。 支持的类型为“Basic”和“ClientCertificate”。 有关详细信息，请参阅[身份验证](/data-factory/control-flow-web-activity#authentication)。 如果不需要身份验证，则排除此属性。 | 具有字符串的 **resultType** 值的字符串或表达式。 | 否 |
 **timeout** | 活动会等待多长时间，以便系统调用 **callBackUri** 所指定的回调。 默认值为 10 分钟（“00:10:00”）。 值的 TimeSpan 格式为 *d*.*hh*:*mm*:*ss*。 | String | 否 |
-**回调时报告状态** | 允许用户报告 Webhook 活动的失败状态。 | 布尔 | 否 |
+**回调时报告状态** | 允许用户报告 Webhook 活动的失败状态。 | Boolean | 否 |
 
-## <a name="authentication"></a>身份验证
+## <a name="authentication"></a>Authentication
 
 Webhook 活动支持以下身份验证类型。
 

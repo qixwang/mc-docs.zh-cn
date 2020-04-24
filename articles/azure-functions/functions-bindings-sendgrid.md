@@ -6,10 +6,10 @@ ms.topic: reference
 ms.date: 03/18/2020
 ms.author: v-junlch
 ms.openlocfilehash: cfb2de3f9d753f7edbf3f984ec3bcd74fdf4cd32
-ms.sourcegitcommit: e500354e2fd8b7ac3dddfae0c825cc543080f476
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79546886"
 ---
 # <a name="azure-functions-sendgrid-bindings"></a>Azure Functions SendGrid 绑定
@@ -203,7 +203,7 @@ module.exports = function (context, input) {
 
 # <a name="java"></a>[Java](#tab/java)
 
-以下示例使用 [Java 函数运行时库](https://docs.microsoft.com/java/api/overview/azure/functions/runtime)中的 `@SendGridOutput` 注释来发送使用 SendGrid 输出绑定的电子邮件。
+以下示例使用 `@SendGridOutput`Java 函数运行时库[中的 ](https://docs.microsoft.com/java/api/overview/azure/functions/runtime) 注释来发送使用 SendGrid 输出绑定的电子邮件。
 
 ```java
 package com.function;
@@ -291,7 +291,7 @@ JavaScript 不支持特性。
 
 ## <a name="configuration"></a>配置
 
-下表列出了在 function.json 文件和 `SendGrid` 特性/注释中可用的绑定配置属性  。
+下表列出了在 function.json 文件和  *特性/注释中可用的绑定配置属性*`SendGrid`。
 
 | function.json 属性  | 特性/注释属性 | 说明 | 可选 |
 |--------------------------|-------------------------------|-------------|----------|
@@ -299,9 +299,9 @@ JavaScript 不支持特性。
 | direction |不适用| 必须设置为 `out`。| 否 |
 | name |不适用| 在请求或请求正文的函数代码中使用的变量名称。 只有一个返回值时，此值为 `$return`。 | 否 |
 | apiKey | ApiKey | 包含 API 密钥的应用设置的名称。 如果未设置，默认应用设置名称为“AzureWebJobsSendGridApiKey”  。| 否 |
-| to| 如果 | 收件人的电子邮件地址。 | 是 |
-| from| 从 | 发件人的电子邮件地址。 |  是 |
-| subject| 使用者 | 电子邮件主题。 | 是 |
+| to| 目标 | 收件人的电子邮件地址。 | 是 |
+| 从| 源 | 发件人的电子邮件地址。 |  是 |
+| subject| 主题 | 电子邮件主题。 | 是 |
 | text| 文本 | 电子邮件内容。 | 是 |
 
 在绑定中可能会定义可选属性的默认值，并以编程方式添加或重写这些值。
@@ -328,9 +328,9 @@ JavaScript 不支持特性。
 }
 ```  
 
-|属性  |默认 | 说明 |
+|properties  |默认 | 说明 |
 |---------|---------|---------| 
-|from|不适用|所有函数的发件人电子邮件地址。| 
+|从|不适用|所有函数的发件人电子邮件地址。| 
 
 
 ## <a name="next-steps"></a>后续步骤

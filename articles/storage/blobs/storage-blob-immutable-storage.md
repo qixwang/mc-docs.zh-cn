@@ -11,10 +11,10 @@ ms.author: v-jay
 ms.reviewer: hux
 ms.subservice: blobs
 ms.openlocfilehash: 8cb6c8dc96f5969791b72067b0fc15f79d9a976d
-ms.sourcegitcommit: 90d01d08faf8adb20083363a8e4e5aab139cd9b2
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80290448"
 ---
 # <a name="store-business-critical-blob-data-with-immutable-storage"></a>使用不可变的存储来存储业务关键型 Blob 数据

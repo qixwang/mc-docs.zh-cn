@@ -9,10 +9,10 @@ origin.date: 11/04/2019
 ms.date: 03/02/2020
 ms.author: v-yeche
 ms.openlocfilehash: 1b524494ef89131f5ba993c1f75b15865fe4bfd8
-ms.sourcegitcommit: 303a16c7117b6f3495ef0493b4ae8ccb67d7dbba
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80342423"
 ---
 <!--Release before CONFIRM-->
@@ -20,7 +20,7 @@ ms.locfileid: "80342423"
 
 可以将不同区域中的 VNet 连接到虚拟 WAN 中心。
 
-## <a name="before-you-begin"></a>准备阶段
+## <a name="before-you-begin"></a>开始之前
 
 验证是否符合以下条件：
 

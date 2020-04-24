@@ -7,10 +7,10 @@ origin.date: 12/10/2019
 ms.date: 03/30/2020
 ms.topic: conceptual
 ms.openlocfilehash: 27e7139e50031a3a2af140442a5cc6f2361e2c55
-ms.sourcegitcommit: 90d01d08faf8adb20083363a8e4e5aab139cd9b2
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80290417"
 ---
 # <a name="source-control-integration-in-azure-automation"></a>Azure 自动化中的源代码管理集成
@@ -30,7 +30,7 @@ Azure 自动化支持三种类型的源代码管理：
 * Azure Repos (Git)
 * Azure Repos (TFVC)
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * 源代码管理存储库（GitHub 或 Azure Repos）
 * 一个[运行方式帐户](manage-runas-account.md)
@@ -56,7 +56,7 @@ Azure 自动化支持三种类型的源代码管理：
 
 4. 在“源代码管理摘要”页上，使用字段填充下面定义的源代码管理属性。 完成后单击“保存”  。 
 
-    |属性  |说明  |
+    |properties  |说明  |
     |---------|---------|
     |源代码管理名称     | 源代码管理的易记名称。 此名称只能包含字母和数字。        |
     |源代码管理类型     | 源代码管理机制的类型。 可用选项包括：</br> * GitHub</br>* Azure Repos (Git)</br> * Azure Repos (TFVC)        |
@@ -106,7 +106,7 @@ New-AzAutomationSourceControl -Name SCReposTFVC -RepoUrl https://<accountname>.v
 
 下表定义了 GitHub 所需的最低 PAT 权限。 有关在 GitHub 中创建 PAT 的详细信息，请参阅[为命令行创建个人访问令牌](https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/)。
 
-|作用域  |说明  |
+|范围  |说明  |
 |---------|---------|
 |**`repo`**     |         |
 |`repo:status`     | 访问提交状态         |
@@ -120,7 +120,7 @@ New-AzAutomationSourceControl -Name SCReposTFVC -RepoUrl https://<accountname>.v
 
 下表列出了 Azure Repos 所需的最低 PAT 权限。 有关在 Azure Repos 中创建 PAT 的详细信息，请参阅[使用个人访问令牌对访问进行身份验证](https://docs.microsoft.com/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate)。
 
-| 作用域  |  访问类型  |
+| 范围  |  访问类型  |
 |---------| ----------|
 | 代码      | 读取  |
 | 项目和团队 | 读取 |

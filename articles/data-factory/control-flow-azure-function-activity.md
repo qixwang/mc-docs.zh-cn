@@ -13,10 +13,10 @@ ms.topic: conceptual
 origin.date: 01/09/2019
 ms.date: 03/23/2020
 ms.openlocfilehash: e822f2c86e8f1b4f230700defb88d68eb204dc6a
-ms.sourcegitcommit: 71a386ca0d0ecb79a123399b6ab6b8c70ea2aa78
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79497240"
 ---
 # <a name="azure-function-activity-in-azure-data-factory"></a>Azure 数据工厂中的 Azure 函数活动

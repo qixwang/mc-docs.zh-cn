@@ -6,10 +6,10 @@ origin.date: 10/16/2019
 ms.date: 03/23/2020
 ms.author: v-yeche
 ms.openlocfilehash: 00e654c2cbf6107d67ac8becbb309b5357ffc980
-ms.sourcegitcommit: 1436f1851342ca5631eb25342eed954adb707af0
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79543839"
 ---
 # <a name="creating-and-deploying-azure-resource-groups-through-visual-studio"></a>通过 Visual Studio 创建和部署 Azure 资源组
@@ -22,7 +22,7 @@ ms.locfileid: "79543839"
 
 在本部分，我们将使用“Web 应用”模板创建 Azure 资源组项目  。
 
-1. 在 Visual Studio 中，选择“文件”  >“新建”  >“项目”  。
+1. 在 Visual Studio 中，选择“文件” **“新建”** “项目”>  >  。
 1. 选择“Azure 资源组”项目模板和“下一步”   。
 
     ![创建项目](./media/create-visual-studio-deployment-project/create-project.png)
@@ -31,7 +31,7 @@ ms.locfileid: "79543839"
 
     ![创建项目](./media/create-visual-studio-deployment-project/name-project.png)
 
-1. 选择要部署到 Azure Resource Manager 的模板。 可以看到，系统根据要部署的项目类型提供了许多不同的选项。 就本文来说，请选择“Web 应用”模板和“确定”   。
+1. 选择要部署到 Azure 资源管理器的模板。 可以看到，系统根据要部署的项目类型提供了许多不同的选项。 就本文来说，请选择“Web 应用”模板和“确定”   。
 
     ![选择模板](./media/create-visual-studio-deployment-project/select-project.png)
 
@@ -46,18 +46,18 @@ ms.locfileid: "79543839"
     | 文件名 | 说明 |
     | --- | --- |
     | Deploy-AzureResourceGroup.ps1 |一个 PowerShell 脚本，运行 PowerShell 命令以部署到 Azure 资源管理器。 Visual Studio 使用此 PowerShell 脚本来部署模板。 |
-    | WebSite.json |Resource Manager 模板，定义要部署到 Azure 的基础结构，以及在部署期间可以提供的参数。 它还定义各资源之间的依赖关系，以便 Resource Manager 按正确的顺序部署资源。 |
+    | WebSite.json |资源管理器模板，定义要部署到 Azure 的基础结构，以及在部署期间可以提供的参数。 它还定义各资源之间的依赖关系，以便资源管理器按正确的顺序部署资源。 |
     | WebSite.parameters.json |包含模板所需值的参数文件。 需要传入这些参数值来自定义每个部署。 |
 
     所有资源组部署项目都包含这些基本文件。 其他项目可能包含其他文件以支持其他功能。
 
 ## <a name="customize-resource-manager-template"></a>自定义资源管理器模板
 
-可以通过修改资源管理器模板（描述要部署的资源）来自定义部署项目。 若要了解 Resource Manager 模板的元素，请参阅[创作 Azure Resource Manager 模板](template-syntax.md)。
+可以通过修改资源管理器模板（描述要部署的资源）来自定义部署项目。 若要了解资源管理器模板的元素，请参阅[创作 Azure 资源管理器模板](template-syntax.md)。
 
 1. 若要使用模板，请打开“WebSite.json”  。
 
-1. Visual Studio 编辑器提供了工具来帮助编辑 Resource Manager 模板。 “JSON 大纲”窗口可让你轻松查看模板中定义的元素  。
+1. Visual Studio 编辑器提供了工具来帮助编辑资源管理器模板。 “JSON 大纲”窗口可让你轻松查看模板中定义的元素  。
 
     ![显示 JSON 大纲](./media/create-visual-studio-deployment-project/show-json-outline.png)
 
@@ -65,11 +65,11 @@ ms.locfileid: "79543839"
 
     ![导航 JSON](./media/create-visual-studio-deployment-project/navigate-json.png)
 
-1. 可以按以下方式添加资源：选择“JSON 大纲”窗口顶部的“添加资源”  按钮，或者右键单击“资源”  并选择“添加新资源”  。
+1. 可以通过选择“JSON 大纲”窗口顶部的“添加资源”  按钮，或右键单击“资源”  ，并选择“添加新资源”  ，来添加资源。
 
     ![添加资源](./media/create-visual-studio-deployment-project/add-resource.png)
 
-1. 选择“存储帐户”  并为其命名。 提供一个长度不超过 11 个字符并且仅包含数字和小写字母的名称。
+1. 选择“存储帐户”  并为其命名。 提供一个名称，该名称不超过 11 个字符，并且只包含数字和小写字母。
 
     ![添加存储](./media/create-visual-studio-deployment-project/add-storage.png)
 
@@ -91,7 +91,7 @@ ms.locfileid: "79543839"
     }
     ```
 
-1. Visual Studio 还提供 intellisense，帮助你了解在编辑模板时可用的属性。 例如，若要编辑应用服务计划的属性，请导航到 **HostingPlan** 资源，并为 **properties** 添加值。 请注意，Intellisense 显示可用的值，并提供该值的描述。
+1. Visual Studio 还提供 intellisense，帮助你了解在编辑模板时可用的属性。 例如，若要编辑应用服务计划的属性，请导航到 **HostingPlan** 资源，并为 **properties** 添加值。 请注意，Intellisense 显示可用的值，并提供该值的说明。
 
     ![显示 Intellisense](./media/create-visual-studio-deployment-project/show-intellisense.png)
 
@@ -146,11 +146,11 @@ Connect-AzAccount -Environment AzureChinaCloud
 
     ![新建部署菜单项](./media/create-visual-studio-deployment-project/deploy.png)
 
-1. 此时显示“部署到资源组”对话框  。 在“资源组”  下拉框中，选择现有资源组或创建新资源组。 选择“部署”。 
+1. 此时会显示“部署到资源组”对话框  。 在“资源组”  下拉框中，选择现有资源组或创建新资源组。 选择“部署”。 
 
     ![部署到资源组对话框](./media/create-visual-studio-deployment-project/show-deployment.png)
 
-1. 在“输出”  窗口中，可以看到部署的状态。 完成部署后，最后一条消息使用类似如下的内容指示部署成功：
+1. 在“输出”  窗口中可查看部署状态。 完成部署后，最后一条消息指示部署成功，其内容与下面的消息类似：
 
     ```output
     18:00:58 - Successfully deployed template 'website.json' to resource group 'ExampleAppDeploy'.
@@ -160,9 +160,9 @@ Connect-AzAccount -Environment AzureChinaCloud
 
 让我们检查结果。
 
-1. 在浏览器中，打开 [Azure 门户](https://portal.azure.cn/)并登录到帐户。 若要查看资源组，请选择“资源组”  ，然后选择已部署到的资源组。
+1. 在浏览器中，打开 [Azure 门户](https://portal.azure.cn/)并登录到帐户。 要查看资源组，请选择“资源组”  ，并选择已部署到的资源组。
 
-1. 可以看到所有已部署的资源。 请注意，存储帐户的名称并不完全是添加资源时指定的名称。 存储帐户必须是唯一的。 模板自动向所提供的名称添加一个字符串，以便创建唯一名称。
+1. 将显示所有已部署的资源。 请注意，存储帐户的名称并不完全是添加资源时指定的名称。 存储帐户必须是唯一的。 模板自动向所提供的名称添加一个字符串，以便创建唯一名称。
 
     ![显示资源](./media/create-visual-studio-deployment-project/show-deployed-resources.png)
 
@@ -186,11 +186,11 @@ Connect-AzAccount -Environment AzureChinaCloud
 
     ![选择 Web 应用程序](./media/create-visual-studio-deployment-project/select-project-type.png)
 
-1. Visual Studio 创建 Web 应用后，会在解决方案中看到这两个项目。
+1. 在 Visual Studio 创建 Web 应用之后，可在解决方案中看到这两个项目。
 
     ![显示项目](./media/create-visual-studio-deployment-project/show-projects.png)
 
-1. 现在，需要确保资源组项目知道存在新项目。 返回到资源组项目 (ExampleAppDeploy)。 右键单击“引用”  ，选择“添加引用”  。
+1. 现在，需要确保资源组项目与此新项目之间建立链接。 返回到资源组项目 (ExampleAppDeploy)。 右键单击“引用”  ，选择“添加引用”  。
 
     ![添加引用](./media/create-visual-studio-deployment-project/add-new-reference.png)
 
@@ -198,7 +198,7 @@ Connect-AzAccount -Environment AzureChinaCloud
 
     ![添加引用](./media/create-visual-studio-deployment-project/add-reference.png)
 
-    通过添加引用，可以将 Web 应用项目链接到资源组项目中，并自动设置一些属性。 可以在“属性”  窗口中看到这些用于引用的属性。 “包含文件路径”  包含创建包所在的路径。 请记下文件夹 (ExampleApp) 和文件 (package.zip)。 用户需要知道这些值，因为在部署应用时需提供这些值作为参数。
+    通过添加引用，可以将 Web 应用项目链接到资源组项目中，并自动设置一些属性。 可以在“属性”  窗口中看到针对该引用的属性。 “包含文件路径”  包含创建包所在的路径。 请记下文件夹 (ExampleApp) 和文件 (package.zip)。 用户需要知道这些值，因为在部署应用时需提供这些值作为参数。
 
     ![查看引用](./media/create-visual-studio-deployment-project/see-reference.png)
 
@@ -206,7 +206,7 @@ Connect-AzAccount -Environment AzureChinaCloud
 
     ![添加资源](./media/create-visual-studio-deployment-project/add-resource-2.png)
 
-1. 这次请选择“适用于 Web 应用的 Web 部署”  。
+1. 这次选择“用于 Web 应用的 Web 部署”  。
 
     ![添加 Web 部署](./media/create-visual-studio-deployment-project/add-web-deploy.png)
 
@@ -248,7 +248,7 @@ Connect-AzAccount -Environment AzureChinaCloud
 "packageUri": "[concat(parameters('_artifactsLocation'), parameters('ExampleAppPackageFolder'), '/', parameters('ExampleAppPackageFileName'), parameters('_artifactsLocationSasToken'))]",
 ```
 
-请注意，在前面的示例中，在 parameters('_artifactsLocation') 和 parameters('ExampleAppPackageFolder') 之间没有 `'/',`   。
+请注意，在前面的示例中，在 parameters('_artifactsLocation') 和 parameters('ExampleAppPackageFolder') 之间没有 `'/',`  。
 
 重新生成项目。 生成项目可确保需部署的文件添加到暂存文件夹中。
 
@@ -272,7 +272,7 @@ Connect-AzAccount -Environment AzureChinaCloud
 
 ## <a name="view-web-app"></a>查看 Web 应用
 
-1. 部署完成后，请在门户中选择 Web 应用。 选择 URL，浏览到站点。
+1. 部署完毕后，请在门户中选择 Web 应用。 选择 URL 以浏览到此站点。
 
     ![浏览站点](./media/create-visual-studio-deployment-project/browse-site.png)
 
@@ -373,7 +373,7 @@ Connect-AzAccount -Environment AzureChinaCloud
 
     ![自定义仪表板](./media/create-visual-studio-deployment-project/Ops-DemoSiteGroup-dashboard.png)
 
-可以使用 RBAC 组管理对仪表板的访问权限。 部署后，还可以自定义仪表板的外观。 但是，如果重新部署资源组，则模板中的仪表板将重置为其默认状态。 有关创建仪表板的详细信息，请参阅[以编程方式创建 Azure 仪表板](../../azure-portal/azure-portal-dashboards-create-programmatically.md)。
+可以使用 RBAC 组管理对仪表板的访问。 部署后，还可以自定义仪表板的外观。 但是，如果重新部署资源组，则模板中的仪表板将重置为其默认状态。 有关创建仪表板的详细信息，请参阅[以编程方式创建 Azure 仪表板](../../azure-portal/azure-portal-dashboards-create-programmatically.md)。
 
 ## <a name="clean-up-resources"></a>清理资源
 

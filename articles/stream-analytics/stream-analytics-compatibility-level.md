@@ -9,10 +9,10 @@ ms.topic: conceptual
 origin.date: 03/10/2020
 ms.date: 03/20/2020
 ms.openlocfilehash: a9fa5014197ca3437072d5c76ea68abac6f97842
-ms.sourcegitcommit: 305361c96d1d5288d3dda7e81833820640e2afac
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80109809"
 ---
 # <a name="compatibility-level-for-azure-stream-analytics-jobs"></a>Azure 流分析作业的兼容性级别

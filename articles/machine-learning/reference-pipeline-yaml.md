@@ -12,10 +12,10 @@ author: sanpil
 origin.date: 11/11/2019
 ms.date: 03/16/2020
 ms.openlocfilehash: 3c52df5775bdd98d53f711fb0867977fad8d702b
-ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80343315"
 ---
 # <a name="define-machine-learning-pipelines-in-yaml"></a>在 YAML 中定义机器学习管道

@@ -13,10 +13,10 @@ ms.reviewer: nibaccam
 origin.date: 02/10/2020
 ms.date: 03/09/2020
 ms.openlocfilehash: bd81284f9fa5c0b093cd317430a4d691ec9f1add
-ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80343557"
 ---
 # <a name="create-azure-machine-learning-datasets"></a>创建 Azure 机器学习数据集

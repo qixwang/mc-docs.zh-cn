@@ -9,18 +9,18 @@ ms.date: 03/23/2020
 ms.author: v-jay
 ms.lastreviewed: 05/10/2019
 ms.openlocfilehash: 08e7fe397a1c20d9d015f075491092aba851018e
-ms.sourcegitcommit: e500354e2fd8b7ac3dddfae0c825cc543080f476
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79547008"
 ---
 # <a name="create-subscriptions-to-offers-in-azure-stack-hub"></a>在 Azure Stack Hub 中创建套餐的订阅
 
-[创建某个套餐](azure-stack-create-offer.md)后，用户需要订阅此套餐才能使用此套餐。 用户可通过两种方式订阅套餐：
+[创建套餐](azure-stack-create-offer.md)后，用户需要订阅该套餐，然后才能使用它。 用户可通过两种方式订阅套餐：
 
-- 云操作员可以从管理员门户内部为用户创建订阅。 创建的订阅可用于公共和专用套餐。
-- 租户用户可以在使用用户门户时订阅公共套餐。  
+- 在管理员门户中以云操作员身份为用户创建订阅。 创建的订阅可以是针对公共套餐的，也可以是针对专用套餐的。
+- 在使用用户门户时以租户用户身份订阅公共套餐。  
 
 ## <a name="create-a-subscription-as-a-cloud-operator"></a>以云操作员的身份创建订阅
 
@@ -33,7 +33,7 @@ ms.locfileid: "79547008"
 ### <a name="to-create-a-subscription-for-a-user"></a>为用户创建订阅
 
 1. 在管理员门户中，转到“用户订阅”。 
-2. 选择“添加”   。 在“新建用户订阅”下，输入以下信息：   
+2. 选择 **添加** 。 在“新建用户订阅”下，输入以下信息：   
 
    - **显示名称** – 用于标识订阅的友好名称，显示为“用户订阅名称”。 
    - **用户** – 从此订阅的可用目录租户中指定一个用户。 用户名显示为“所有者”。   用户名的格式取决于标识解决方案。 例如：

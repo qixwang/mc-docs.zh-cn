@@ -10,10 +10,10 @@ ms.service: iot-central
 services: iot-central
 manager: abjork
 ms.openlocfilehash: e6cae7cd0612ff23f5f78c5ea4ba4aa66d3f75b8
-ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80343505"
 ---
 # <a name="tutorial-create-and-walk-through-the-smart-meter-monitoring-app-template"></a>教程：创建并演练智能计量监视应用模板 

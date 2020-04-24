@@ -10,10 +10,10 @@ origin.date: 06/22/2019
 ms.date: 03/30/2020
 ms.author: v-yeche
 ms.openlocfilehash: 800e512d62087becfe4cbb3f82bb36959975cb8d
-ms.sourcegitcommit: 2b084933215d0e7702456730f168d97e00c882a0
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80243446"
 ---
 # <a name="add-trading-partners-to-integration-accounts-for-azure-logic-apps"></a>向 Azure 逻辑应用的集成帐户添加贸易合作伙伴
@@ -28,7 +28,7 @@ ms.locfileid: "80243446"
 
 在协议中，你从主机合作伙伴的角度详细指定如何处理传入和传出消息。 对于传入消息，可以通过“接收设置”指定主机合作伙伴如何从协议中的来宾合作伙伴处接收消息。  对于传出消息，可以通过“发送设置”  指定主机合作伙伴如何向来宾合作伙伴发送消息。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * Azure 订阅。 如果还没有 Azure 订阅，请[注册一个 Azure 试用帐户](https://www.azure.cn/pricing/1rmb-trial/)。
 
@@ -36,7 +36,7 @@ ms.locfileid: "80243446"
 
 ## <a name="create-partner"></a>创建合作伙伴
 
-1. 登录到 [Azure 门户](https://portal.azure.cn)。
+1. 登录 [Azure 门户](https://portal.azure.cn)。
 
 1. 在 Azure 主菜单中，选择“所有服务”  。 在搜索框中输入“集成”，然后选择“集成帐户”  。
 
@@ -54,7 +54,7 @@ ms.locfileid: "80243446"
 
     ![选择“添加”，提供合作伙伴详细信息](./media/logic-apps-enterprise-integration-partners/add-partners.png)
 
-    | 属性 | 必须 | 说明 |
+    | properties | 必选 | 说明 |
     |----------|----------|-------------|
     | **名称** | 是 | 合作伙伴的名称 |
     | **Qualifier** | 是 | 身份验证正文，用于向组织提供唯一业务标识，例如 **D-U-N-S (Dun & Bradstreet)** 。 <p>合作伙伴可以选择使用双方约定的业务标识。 对于这些方案，请为 EDIFACT 选择“双方约定”，或为 X12 选择“双方约定(X12)”。   <p>对于 RosettaNet，请仅选择“DUNS”  ，这是标准。 |
@@ -85,7 +85,7 @@ ms.locfileid: "80243446"
 
     对于 RosettaNet，可以在“RosettaNet 合作伙伴属性”下指定以下附加信息： 
 
-    | 属性 | 必须 | 说明 |
+    | properties | 必选 | 说明 |
     |----------|----------|-------------|
     | **合作伙伴分类** | 否 | 合作伙伴的组织类型 |
     | **供应链代码** | 否 | 合作伙伴的供应链代码，例如“信息技术”或“电子组件” |

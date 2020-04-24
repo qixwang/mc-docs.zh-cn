@@ -13,10 +13,10 @@ ms.reviewer: jrasnik, carlrab
 origin.date: 03/10/2020
 ms.date: 03/30/2020
 ms.openlocfilehash: e7accd7fff6af1966293284f050a2db1cb59b87c
-ms.sourcegitcommit: 90660563b5d65731a64c099b32fb9ec0ce2c51c6
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80341823"
 ---
 # <a name="troubleshoot-azure-sql-database-performance-issues-with-intelligent-insights"></a>使用 Intelligent Insights 排查 Azure SQL 数据库性能问题

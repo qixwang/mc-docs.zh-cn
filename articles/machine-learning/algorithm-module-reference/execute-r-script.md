@@ -10,10 +10,10 @@ author: likebupt
 ms.author: peterlu
 ms.date: 11/19/2019
 ms.openlocfilehash: 3b7f8320a47d66ada1296105fc2be04546bacb98
-ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80343463"
 ---
 # <a name="execute-r-script"></a>执行 R 脚本
@@ -276,7 +276,7 @@ azureml_main <- function(dataframe1, dataframe2){
 
 1. 添加“执行 R 脚本”模块的第二个实例，并将其连接到以前模块的输出端口  。
 
-1. 在“R 脚本”文本框中键入以下代码，从输入数据表中提取对象 `A`  。 
+1. 在“R 脚本”文本框中键入以下代码，从输入数据表中提取对象 `A` 。 
 
     ```R
     azureml_main <- function(dataframe1, dataframe2){

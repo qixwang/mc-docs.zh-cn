@@ -18,10 +18,10 @@ ms.author: v-junlch
 ms.reviewer: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 97671f30f600251ee933d3f526f3ae4e3922ddba
-ms.sourcegitcommit: 6568c59433d7e80ab06e9fe76d4791f761ed6775
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80243187"
 ---
 # <a name="azure-active-directory-code-samples-v10-endpoint"></a>Azure Active Directory 代码示例（v1.0 终结点）
@@ -74,14 +74,14 @@ ms.locfileid: "80243187"
 
 以下示例演示了以用户的名义访问 Microsoft Graph 或 Web API 的公共客户端应用程序（deskto/pmobile 应用程序）。 根据设备和平台，应用程序可以用不同方式（流/授权）让用户登录：
 
-- 交互方式
+- 交互式
 - 无提示方式（使用 Windows 上集成的 Windows 身份验证或用户名/密码）
 - 通过将交互式登录委托给另一个设备（在不提供 Web 控件的设备上使用的设备代码流）
 
 客户端应用程序 | 平台 | 流/授权 | 调用 Microsoft Graph | 调用 ASP.NET 或 ASP.NET Core 2.x Web API
 ------------------ | -------- | ---------- | -------------------- | -------------------------
 桌面 (WPF)           | ![此图显示了 .NET/C# 徽标](./media/sample-v2-code/logo-net.png)  | 交互 | [dotnet-native-multitarget](https://github.com/azure-samples/active-directory-dotnet-native-multitarget) 的一部分 | [Dotnet-native-desktop](https://github.com/Azure-Samples/active-directory-dotnet-native-desktop) </p> [dotnet-native-aspnetcore](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore/)</p> [dotnet-webapi-manual-jwt-validation](https://github.com/azure-samples/active-directory-dotnet-webapi-manual-jwt-validation)
-移动 (UWP)            | 上获取。![此图显示了 .NET/C#/UWP](./media/sample-v2-code/logo-windows.png)   | 交互 | [dotnet-native-uwp-wam](https://github.com/azure-samples/active-directory-dotnet-native-uwp-wam) </p> 此示例使用 [WAM](https://docs.microsoft.com/windows/uwp/security/web-account-manager)，而不是 [ADAL.NET](https://aka.ms/adalnet)|  [dotnet-windows-store](https://github.com/Azure-Samples/active-directory-dotnet-windows-store)（使用 ADAL.NET 调用单租户 Web API 的 UWP 应用程序） </p> [dotnet-webapi-multite nant-windows-store](https://github.com/Azure-Samples/active-directory-dotnet-webapi-multitenant-windows-store)（使用 ADAL.NET 调用多租户 Web API 的 UWP 应用程序）|
+移动 (UWP)            | 。![此图显示了 .NET/C#/UWP](./media/sample-v2-code/logo-windows.png)   | 交互 | [dotnet-native-uwp-wam](https://github.com/azure-samples/active-directory-dotnet-native-uwp-wam) </p> 此示例使用 [WAM](https://docs.microsoft.com/windows/uwp/security/web-account-manager)，而不是 [ADAL.NET](https://aka.ms/adalnet)|  [dotnet-windows-store](https://github.com/Azure-Samples/active-directory-dotnet-windows-store)（使用 ADAL.NET 调用单租户 Web API 的 UWP 应用程序） </p> [dotnet-webapi-multite nant-windows-store](https://github.com/Azure-Samples/active-directory-dotnet-webapi-multitenant-windows-store)（使用 ADAL.NET 调用多租户 Web API 的 UWP 应用程序）|
 移动（Android、iOS、UWP）   | ![此图显示了 .NET/C# (Xamarin)](./media/sample-v2-code/logo-xamarin.png) | 交互 | [dotnet-native-multitarget](https://github.com/azure-samples/active-directory-dotnet-native-multitarget) |
 移动 (Android)           | ![此图显示了 Android 徽标](./media/sample-v2-code/logo-android.png) | 交互 |   [android](https://github.com/Azure-Samples/active-directory-android) |
 移动 (iOS)           | ![此图显示了 iOS/Objective C 或 Swift](./media/sample-v2-code/logo-ios.png) | 交互 |   [nativeClient-iOS](https://github.com/azureadquickstarts/nativeclient-ios) |

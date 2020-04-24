@@ -9,15 +9,15 @@ ms.topic: conceptual
 origin.date: 11/07/2019
 ms.date: 03/16/2020
 ms.openlocfilehash: fc5a824bb4c9d327f8376fec140e92b82039543a
-ms.sourcegitcommit: 1d3d8dfdaf6281f06640cbee7124a1e8bf102c50
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80243967"
 ---
 # <a name="use-follower-database-to-attach-databases-in-azure-data-explorer"></a>在 Azure 数据资源管理器中使用后继数据库来附加数据库
 
-使用**后继数据库**功能可将另一群集中的数据库附加到 Azure 数据资源管理器群集。 **后继数据库**以只读模式附加，因此可以查看其数据，并针对已引入**先导数据库**的数据运行查询。  后继数据库会同步先导数据库中的更改。 由于同步，需要经过几秒到几分钟的延迟之后，才会提供数据。 具体的延迟时长取决于先导数据库元数据的总体大小。 先导数据库和后继数据库使用相同的存储帐户来提取数据。 存储由先导数据库拥有。 后继数据库无需引入数据即可查看数据。 由于附加的数据库是只读的数据库，因此无法修改数据库中除[缓存策略](#configure-caching-policy)、[主体](#manage-principals)和[权限](#manage-permissions)以外的其他数据、表和策略。 无法删除附加的数据库。 这些数据库必须先由先导数据库或后继数据库分离，然后才能将其删除。 
+使用**后继数据库**功能可将另一群集中的数据库附加到 Azure 数据资源管理器群集。 **后继数据库**以只读模式附加，因此可以查看其数据，并针对已引入*先导数据库*的数据运行查询。  后继数据库会同步先导数据库中的更改。 由于同步，需要经过几秒到几分钟的延迟之后，才会提供数据。 具体的延迟时长取决于先导数据库元数据的总体大小。 先导数据库和后继数据库使用相同的存储帐户来提取数据。 存储由先导数据库拥有。 后继数据库无需引入数据即可查看数据。 由于附加的数据库是只读的数据库，因此无法修改数据库中除[缓存策略](#configure-caching-policy)、[主体](#manage-principals)和[权限](#manage-permissions)以外的其他数据、表和策略。 无法删除附加的数据库。 这些数据库必须先由先导数据库或后继数据库分离，然后才能将其删除。 
 
 使用后继功能将数据库附加到不同群集是在组织与团队之间共享数据的基础结构。 此功能可用于隔离计算资源，以防止将生产环境用于非生产用例。 后继功能还可用于将 Azure 数据资源管理器群集的成本关联到对数据运行查询的一方。
 
@@ -27,11 +27,11 @@ ms.locfileid: "80243967"
 * 单个群集可以后继多个先导群集中的数据库。 
 * 一个群集可以同时包含后继数据库和先导数据库
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 1. 如果没有 Azure 订阅，请在开始前[创建一个试用帐户](https://www.azure.cn/pricing/1rmb-trial/)。
 1. 为先导和后继数据库[创建群集和数据库](/data-explorer/create-cluster-database-portal)。
-1. 使用[引入概述](/data-explorer/ingest-data-overview)中所述的多种方法之一将[数据引入](/data-explorer/ingest-sample-data)先导数据库。
+1. 使用[引入概述](/data-explorer/ingest-sample-data)中所述的多种方法之一将[数据引入](/data-explorer/ingest-data-overview)先导数据库。
 
 ## <a name="attach-a-database"></a>附加数据库
 
@@ -223,7 +223,7 @@ poller = kusto_management_client.attached_database_configurations.create_or_upda
 也可使用以下命令：
 
 1. 导航到先导群集并选择“数据库” 
-2. 检查相关数据库是否标记为“与其他人共享” > “是”  
+2. 检查相关数据库是否标记为“与其他人共享” **“是”**  >  
 
     ![读取和写入附加的数据库](media/follower/read-write-databases-shared.png)
 
@@ -363,9 +363,9 @@ poller = kusto_management_client.clusters.detach_follower_databases(resource_gro
 
 |**种类** |**说明**  |
 |---------|---------|
-|**联合**     |   附加的数据库主体始终包括原始数据库主体，以及添加到后继数据库的其他新主体。      |
-|**将**   |    不会从原始数据库继承主体。 必须为附加的数据库创建新主体。     |
-|**无**   |   附加的数据库主体只包括原始数据库的主体，而不包括其他主体。      |
+|**Union**     |   附加的数据库主体始终包括原始数据库主体，以及添加到后继数据库的其他新主体。      |
+|**替换**   |    不会从原始数据库继承主体。 必须为附加的数据库创建新主体。     |
+|无    |   附加的数据库主体只包括原始数据库的主体，而不包括其他主体。      |
 
 有关使用控制命令配置已授权主体的详细信息，请参阅[用于管理后继群集的控制命令](https://docs.microsoft.com/azure/kusto/management/cluster-follower)。
 

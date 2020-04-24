@@ -11,10 +11,10 @@ ms.author: amlstudiodocs
 ms.custom: seodec18, previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/05/2018
 ms.openlocfilehash: 9a17e38c6625c31a20b752490f3abc8c7a00dbff
-ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80343351"
 ---
 # <a name="create-azure-machine-learning-studio-classic-experiments-from-working-examples-in-azure-ai-gallery"></a>根据 Azure AI 库中的工作示例创建 Azure 机器学习工作室（经典）试验
@@ -25,7 +25,7 @@ ms.locfileid: "80343351"
 
 此库存有 Microsoft Azure 机器学习工作室（经典）团队提供的示例试验，以及由机器学习社区共享的示例。 此外，还可以提出问题或发布有关试验的评论。
 
-若要了解如何使用此库，请观看[适合初学者的数据科学](data-science-for-beginners-the-5-questions-data-science-answers.md)系列中 3 分钟的视频[复制其他人的工作来进行数据科学](data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md)。
+若要了解如何使用此库，请观看[适合初学者的数据科学](data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md)系列中 3 分钟的视频[复制其他人的工作来进行数据科学](data-science-for-beginners-the-5-questions-data-science-answers.md)。
 
 
 
@@ -41,7 +41,7 @@ ms.locfileid: "80343351"
 1. 请单击页面顶部的“ **浏览全部** ”。
 2. 在左侧“类别”部分的“优化依据”  下，选择“试验”   以查看库中的所有试验。
 3. 可以通过多种方式找到满足要求的试验︰
-   * **选择左侧的筛选器。** 例如，若要浏览使用基于 PCA 的异常情况检测算法的试验：请在“类别”下单击“试验”   。 然后，在“所用算法”下单击“全部显示”，并在对话框中选择“基于 PCA 的异常情况检测”。    可能需要滚动才能看到它。<br></br>
+   * **选择左侧的筛选器。** 例如，若要浏览使用基于 PCA 的异常情况检测算法的试验，请在“类别”下单击“试验”   。 然后，在“所用算法”下单击“全部显示”，并在对话框中选择“基于 PCA 的异常情况检测”。    可能需要滚动才能看到它。<br></br>
      ![选择筛选器](./media/sample-experiments/choose-an-algorithm.png)
    * **使用搜索框。** 例如，若要查找由 Microsoft 提供且与使用双类支持向量机算法的数字识别相关的试验，请在搜索框中输入“数字识别”。 然后，选择筛选器“试验”  、“仅限 Microsoft 内容”  和“双类支持向量机”  ：<br></br>
      ![使用搜索框](./media/sample-experiments/search-for-experiments.png)

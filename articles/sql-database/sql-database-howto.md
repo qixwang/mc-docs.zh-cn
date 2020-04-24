@@ -13,10 +13,10 @@ ms.reviewer: sstein
 origin.date: 11/14/2019
 ms.date: 03/30/2020
 ms.openlocfilehash: 9049153acb71de6ca2487b9c9d98479981f9d744
-ms.sourcegitcommit: 90660563b5d65731a64c099b32fb9ec0ce2c51c6
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80341813"
 ---
 # <a name="how-to-use-azure-sql-database"></a>如何使用 Azure SQL 数据库
@@ -50,7 +50,7 @@ ms.locfileid: "80341813"
 
 ### <a name="extended-events"></a>扩展的事件
 
-- [扩展的事件](sql-database-xevent-db-diff-from-svr.md)
+- [扩展事件](sql-database-xevent-db-diff-from-svr.md)
 - [将扩展的事件存储到事件文件](sql-database-xevent-code-event-file.md)
 - [将扩展的事件存储到环形缓冲区](sql-database-xevent-code-ring-buffer.md)
 

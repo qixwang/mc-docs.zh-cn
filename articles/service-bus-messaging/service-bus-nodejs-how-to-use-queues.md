@@ -16,10 +16,10 @@ origin.date: 01/27/2020
 ms.date: 2/6/2020
 ms.author: v-lingwu
 ms.openlocfilehash: 36cf2417cc4cd58ec418e9073729c68a0f7e6ba7
-ms.sourcegitcommit: 305361c96d1d5288d3dda7e81833820640e2afac
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80109768"
 ---
 # <a name="quickstart-use-service-bus-queues-in-azure-with-nodejs-and-the-azure-sb-package"></a>快速入门：通过 Node.js 和 azure-sb 包使用 Azure 中的服务总线队列

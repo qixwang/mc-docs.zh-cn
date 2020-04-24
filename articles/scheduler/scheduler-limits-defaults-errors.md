@@ -10,10 +10,10 @@ ms.topic: article
 origin.date: 08/18/2016
 ms.date: 03/30/2020
 ms.openlocfilehash: 5f979b7db9e7fd25ff1ad4fe4d0b8ad9fee161b3
-ms.sourcegitcommit: 90660563b5d65731a64c099b32fb9ec0ce2c51c6
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80341696"
 ---
 # <a name="limits-quotas-and-throttle-thresholds-in-azure-scheduler"></a>Azure 计划程序中的限制、配额和限制阈值

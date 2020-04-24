@@ -9,23 +9,23 @@ ms.topic: conceptual
 origin.date: 01/08/2020
 ms.date: 03/16/2020
 ms.openlocfilehash: 81215259965a6044ffec66272bb48cf623385ec2
-ms.sourcegitcommit: 1d3d8dfdaf6281f06640cbee7124a1e8bf102c50
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80243971"
 ---
 # <a name="ingest-data-from-iot-hub-into-azure-data-explorer"></a>将数据从 IoT 中心引入到 Azure 数据资源管理器 
 
 > [!div class="op_single_selector"]
-> * [Portal](ingest-data-iot-hub.md)
+> * [门户](ingest-data-iot-hub.md)
 > * [C#](data-connection-iot-hub-csharp.md)
 > * [Python](data-connection-iot-hub-python.md)
 > * [Azure Resource Manager 模板](data-connection-iot-hub-resource-manager.md)
 
 Azure 数据资源管理器是一项快速且高度可缩放的数据探索服务，适用于日志和遥测数据。 Azure 数据资源管理器可从 IoT 中心引入（加载数据），是一个大数据流式处理平台和 IoT 引入服务。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * 如果没有 Azure 订阅，请在开始前创建一个[试用 Azure 帐户](https://www.azure.cn/pricing/1rmb-trial/)。
 * 创建[一个测试群集和数据库](create-cluster-database-portal.md)，所用数据库名称为 *testdb*。
@@ -98,7 +98,7 @@ Azure 数据资源管理器是一项快速且高度可缩放的数据探索服�
     |---|---|---|
     | 表 | TestTable  | 在“testdb”  中创建的表。 |
     | 数据格式 | *JSON* | 支持的格式为 Avro、CSV、JSON、多行 JSON、PSV、SOHSV、SCSV、TSV、TSVE 和 TXT。 |
-    | 列映射 | TestMapping  | 在 **testdb** 中创建的[映射](https://docs.microsoft.com/azure/kusto/management/mappings)将传入的 JSON 数据映射到 **testdb** 的列名称和数据类型。 对于 JSON、多行 JSON 和 AVRO 是必需的，对于其他格式是可选的。|
+    | 列映射 | TestMapping  | 在 [testdb](https://docs.microsoft.com/azure/kusto/management/mappings) 中创建的**映射**将传入的 JSON 数据映射到 **testdb** 的列名称和数据类型。 对于 JSON、多行 JSON 和 AVRO 是必需的，对于其他格式是可选的。|
     | | |
 
     > [!NOTE]
@@ -141,7 +141,7 @@ Azure 数据资源管理器是一项快速且高度可缩放的数据探索服�
 
 1. 在 Azure 门户中的 IoT 中心下，可以看到应用运行时活动的峰值。
 
-    ![IoT 中心度量值](media/ingest-data-iot-hub/iot-hub-metrics.png)
+    ![IoT 中心指标](media/ingest-data-iot-hub/iot-hub-metrics.png)
 
 1. 若要检查到目前为止已向数据库发送的消息数，请在测试数据库中运行以下查询。
 

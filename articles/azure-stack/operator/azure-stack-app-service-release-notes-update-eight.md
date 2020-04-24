@@ -10,10 +10,10 @@ ms.author: v-jay
 ms.reviewer: ''
 ms.lastreviewed: 03/25/2019
 ms.openlocfilehash: 82141aecff2d87c15537ad1b8448bd398917b6a1
-ms.sourcegitcommit: e500354e2fd8b7ac3dddfae0c825cc543080f476
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79547062"
 ---
 # <a name="app-service-on-azure-stack-hub-update-8-release-notes"></a>Azure Stack Hub 上的应用服务 Update 8 发行说明
@@ -27,7 +27,7 @@ ms.locfileid: "79547062"
 
 Azure Stack Hub 上的应用服务 Update 8 的内部版本号为 **86.0.2.13**
 
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>必备条件
 
 在开始部署之前，请参阅[准备工作文档](azure-stack-app-service-before-you-get-started.md)。
 
@@ -38,7 +38,7 @@ Azure Stack Hub 上的应用服务 Update 8 的内部版本号为 **86.0.2.13**
 - 备份应用服务和 Master 数据库：
   - AppService_Hosting；
   - AppService_Metering；
-  - Master
+  - 主设备
 
 - 备份租户应用内容文件共享
 
@@ -93,7 +93,7 @@ Azure Stack Hub 上的 Azure 应用服务的所有新部署将对所有虚拟机
 
 - 从现有的辅助 SQL 节点复制 appservice_hostingAdmin 登录名；
 
-**或者**
+**OR**
 
 - 将 SQL 群集故障转移到前一个活动节点。
 
@@ -107,7 +107,7 @@ Azure Stack Hub 上的 Azure 应用服务的所有新部署将对所有虚拟机
 - 如 Azure Stack 上的 Azure 应用服务部署文档中所述，当应用服务部署在现有虚拟网络中并且文件服务器仅在专用网络上可用时，工作人员将无法访问文件服务器。
 
   如果选择部署到现有虚拟网络和内部 IP 地址以连接到文件服务器，则必须添加出站安全规则，以便在工作子网和文件服务器之间启用 SMB 流量。 转到管理门户中的 WorkersNsg 并添加具有以下属性的出站安全规则：
-  - 源：任意
+  - 源：任何
   - 源端口范围：*
   - 目标：IP 地址
   - 目标 IP 地址范围：文件服务器的 IP 范围
@@ -115,7 +115,7 @@ Azure Stack Hub 上的 Azure 应用服务的所有新部署将对所有虚拟机
   - 协议：TCP
   - 操作：允许
   - 优先级：700
-  - 姓名：Outbound_Allow_SMB445
+  - 名称：Outbound_Allow_SMB445
 
 - Azure Stack Hub 1.8 上新的 Azure 应用服务部署要求将数据库转换为包含的数据库
 

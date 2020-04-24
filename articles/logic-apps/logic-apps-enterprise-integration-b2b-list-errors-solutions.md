@@ -10,10 +10,10 @@ origin.date: 06/02/2017
 ms.date: 03/30/2020
 ms.author: v-yeche
 ms.openlocfilehash: 4867676a42763edb809c0739acba04a955925a46
-ms.sourcegitcommit: 2b084933215d0e7702456730f168d97e00c882a0
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80243515"
 ---
 # <a name="b2b-errors-and-solutions-for-azure-logic-apps"></a>Azure 逻辑应用的 B2B 错误和解决方案
@@ -34,7 +34,7 @@ ms.locfileid: "80243515"
 
 |   |   | 
 |---|---|
-| 错误说明 | 找不到标识为以下项的协议：'AS2Identity'::'Partner1' 和 'AS2Identity'::'Partner3' | 
+| 错误说明 | 没有找到具有标识 'AS2Identity'::'Partner1' and'AS2Identity'::'Partner3' 的协议 | 
 | 用户操作 | 协议配置无效的 AS2-From 或 AS2-To。 <br />更正 AS2 消息和“AS2-From”或“AS2-To”标头或协议，以匹配具有协议配置的 AS2 消息标头中的 AS2 ID。 |
 |   |   |     
 
@@ -145,7 +145,7 @@ ms.locfileid: "80243515"
 
 |   |   | 
 |---|---|
-| 错误说明 | InvalidTemplate。 无法处理第“1”行、第“1902”列的操作“Flat_File_Decoding”的输入中的模板语言表达式:'必需属性 'content' 需要值，但却得到了 null。 路径 ''.'. |
+| 错误说明 | InvalidTemplate。 无法处理操作 "Flat_File_Decoding" 输入中的行 "1" 和列 "1902" 处的模板语言表达式：所需属性“内容”应该有一个值，但为空。 路径 ''.'. |
 | 用户操作 | 此错误表明输入的消息不包含正文。 |
 |   |   |
 

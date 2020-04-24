@@ -10,10 +10,10 @@ origin.date: 01/27/2017
 ms.date: 03/30/2020
 ms.author: v-yeche
 ms.openlocfilehash: 7025fa302b0bb7b8943521b5ba8f34c21824f2f1
-ms.sourcegitcommit: 2b084933215d0e7702456730f168d97e00c882a0
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80243578"
 ---
 # <a name="encode-edifact-messages-for-azure-logic-apps-with-enterprise-integration-pack"></a>为带有 Enterprise Integration Pack 的 Azure 逻辑应用编码 EDIFACT 消息
@@ -46,7 +46,7 @@ ms.locfileid: "80243578"
 
     带有星号的属性必填。
 
-    | 属性 | 详细信息 |
+    | properties | 详细信息 |
     | --- | --- |
     | 连接名称 * |为连接输入任何名称。 |
     | 集成帐户 * |输入集成帐户的名称。 确保集成帐户和逻辑应用位于同一 Azure 位置。 |

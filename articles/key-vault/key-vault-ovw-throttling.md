@@ -11,10 +11,10 @@ origin.date: 12/02/2019
 ms.date: 03/16/2020
 ms.author: v-tawe
 ms.openlocfilehash: f8e513627988686edd2d6d642c3852ec462627c5
-ms.sourcegitcommit: 764b3d26aedce2de0e1948468a706fd3204a3d5e
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79543379"
 ---
 # <a name="azure-key-vault-throttling-guidance"></a>Azure Key Vault 限制指南

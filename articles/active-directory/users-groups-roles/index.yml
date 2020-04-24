@@ -13,10 +13,10 @@ metadata:
   author: curtand
   ms.author: v-junlch
   ms.openlocfilehash: adddaf20291dd612335c6333971a7081356be906
-  ms.sourcegitcommit: 6568c59433d7e80ab06e9fe76d4791f761ed6775
+  ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 03/25/2020
+  ms.lasthandoff: 04/17/2020
   ms.locfileid: "80243184"
 landingContent:
 - title: 关于用户、组、角色和许可证

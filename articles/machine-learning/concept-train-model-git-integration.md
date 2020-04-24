@@ -11,10 +11,10 @@ author: jpe316
 origin.date: 03/05/2020
 ms.date: 03/09/2020
 ms.openlocfilehash: 453b6d52e99fc5e151407f0dd43f08192c54318d
-ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80343219"
 ---
 # <a name="git-integration-for-azure-machine-learning"></a>Azure 机器学习的 Git 集成
@@ -42,7 +42,7 @@ Azure 机器学习为工作区中的所有用户提供了一个共享文件系�
 
 从 Python SDK 或机器学习 CLI 提交训练运行时，训练模型所需的文件将上传到工作区。 如果可在开发环境中使用 `git` 命令，则上传过程会使用该命令检查文件是否存储在 git 存储库中。 如果是，那么 git 存储库中的信息也会作为训练运行的一部分上传。 此信息存储在训练运行的以下属性中：
 
-| 属性 | 用于获取值的 Git 命令 | 说明 |
+| properties | 用于获取值的 Git 命令 | 说明 |
 | ----- | ----- | ----- |
 | `azureml.git.repository_uri` | `git ls-remote --get-url` | 从中克隆存储库的 URI。 |
 | `mlflow.source.git.repoURL` | `git ls-remote --get-url` | 从中克隆存储库的 URI。 |
@@ -74,7 +74,7 @@ Git 信息存储在训练运行的属性中。 可以使用 Azure 门户、Pytho
 1. 在 [Azure 门户](https://portal.azure.cn)中，选择工作区。
 1. 选择“试验”，然后选择一个试验  。
 1. 从“运行号”列中选择一个运行  。
-1. 选择“日志”，然后展开“日志”和“azureml”条目    。 选择以“###\_azure”开头的链接  。
+1. 选择“日志”，然后展开“日志”和“azureml”条目    。 选择以“ __###azure”开头的链接\___ 。
 
     ![门户中的 ###_azure 条目](./media/concept-train-model-git-integration/azure-machine-learning-logs.png)
 

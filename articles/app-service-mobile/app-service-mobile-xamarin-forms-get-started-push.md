@@ -9,10 +9,10 @@ origin.date: 06/25/2019
 md.date: 03/23/2020
 ms.author: v-tawe
 ms.openlocfilehash: f1d3c188dbef87b289063a6b858cba0f4bd803f5
-ms.sourcegitcommit: b2f2bb08ab1b5ccb3c596d84b3b6ddca5bba3903
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80151744"
 ---
 # <a name="add-push-notifications-to-your-xamarinforms-app"></a>向 Xamarin.Forms 应用添加推送通知
@@ -21,13 +21,13 @@ ms.locfileid: "80151744"
 
 ## <a name="overview"></a>概述
 
-本教程会将推送通知添加到由 [Xamarin.Forms 快速入门](app-service-mobile-xamarin-forms-get-started.md)生成的所有项目。 这意味着每次插入一条记录，都会向所有跨平台客户端发送一条推送通知。
+在本教程中，可以将推送通知添加到从 [Xamarin.Forms 快速启动](app-service-mobile-xamarin-forms-get-started.md)生成的所有项目。 这意味着，每次插入一条记录，都会向所有跨平台客户端发送一条推送通知。
 
 如果不使用下载的快速入门服务器项目，则需要推送通知扩展包。 有关详细信息，请参阅[使用用于 Azure 移动应用的 .NET 后端服务器 SDK](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
-对于 iOS，用户需要 [Apple Developer Program 会员资格](https://developer.apple.com/programs/ios/) 和物理 iOS 设备。 [iOS 模拟器不支持推送通知](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/iOS_Simulator_Guide/TestingontheiOSSimulator.html)。
+对于 iOS，用户需要 [Apple 开发人员计划成员身份](https://developer.apple.com/programs/ios/)和物理 iOS 设备。 [iOS 模拟器不支持推送通知](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/iOS_Simulator_Guide/TestingontheiOSSimulator.html)。
 
 ## <a name="configure-a-notification-hub"></a><a name="configure-hub"></a>配置通知中心
 
@@ -126,13 +126,13 @@ ms.locfileid: "80151744"
 #### <a name="test-push-notifications-in-your-ios-app"></a>在 iOS 应用中测试推送通知
 
 1. 右键单击 iOS 项目，并单击“设为启动项目”  。
-2. 在 Visual Studio 中按“运行”  按钮或 **F5** 生成项目并在 iOS 设备中启动应用， 然后单击“确定”  接受推送通知。
+2. 在 Visual Studio 中按“运行”  按钮或 **F5** 生成项目并在 iOS 设备中启动应用， 然后单击“确定”接受推送通知。 
 
    > [!NOTE]
    > 必须显式接受来自应用程序的推送通知。 此请求只会在首次运行应用程序时出现。
 
-3. 在应用中，键入一项任务，然后单击加号 ( **+** ) 图标。
-4. 检查是否已收到通知，并单击“确定”  取消通知。
+3. 在应用中，键入一项任务，并单击加号 ( **+** ) 图标。
+4. 检查是否已收到通知，并单击“确定”以取消通知。 
 
 ## <a name="configure-and-run-windows-projects-optional"></a>配置和运行 Windows 项目（可选）
 
@@ -148,7 +148,7 @@ ms.locfileid: "80151744"
 
 #### <a name="add-push-notifications-to-your-windows-app"></a>向 Windows 应用添加推送通知
 
-1. 在 Visual Studio 中，打开 Windows 项目中的 **App.xaml.cs** ，并添加以下语句。
+1. 在 Visual Studio 中，打开 Windows 项目中的 **App.xaml.cs**，并添加以下语句。
 
     ```csharp
     using Newtonsoft.Json.Linq;
@@ -188,7 +188,7 @@ ms.locfileid: "80151744"
 
     此方法获取推送通知通道，并注册模板以从通知中心接收模板通知。 支持 *messageParam* 的模板通知将传送到此客户端。
 
-3. 在 App.xaml.cs 中，通过添加 `async` 修饰符更新 **OnLaunched** 事件处理程序方法定义。 然后在此方法的末尾添加以下代码行：
+3. 在 App.xaml.cs 中，通过添加 **修饰符更新**OnLaunched`async` 事件处理程序方法定义。 然后，在方法的末尾添加以下代码行：
 
     ```csharp
     await InitNotificationsAsync();
@@ -208,16 +208,16 @@ ms.locfileid: "80151744"
 
 ## <a name="next-steps"></a>后续步骤
 
-深入了解推送通知：
+可以了解有关推送通知的详细信息：
 
 * [从 Azure 移动应用发送推送通知](https://developer.xamarin.com/guides/xamarin-forms/cloud-services/push-notifications/azure/)
 * [使用 Firebase Cloud Messaging 发送远程通知](https://developer.xamarin.com/guides/android/data-and-cloud-services/google-messaging/remote-notifications-with-fcm/)
 * [诊断推送通知问题](../notification-hubs/notification-hubs-push-notification-fixer.md)  
   有多种原因可能导致通知被丢弃或最终未到达设备。 本主题演示如何分析和确定推送通知失败的根本原因。
 
-还可继续学习以下教程之一：
+也可继续学习以下教程之一：
 
-* [向应用程序添加身份验证](app-service-mobile-xamarin-forms-get-started-users.md)  
+* [向应用添加身份验证](app-service-mobile-xamarin-forms-get-started-users.md)  
   了解如何使用标识提供者对应用的用户进行身份验证。
 * [为应用启用脱机同步](app-service-mobile-xamarin-forms-get-started-offline-data.md)  
   了解如何使用移动应用后端向应用添加脱机支持。 使用脱机同步，用户可以与移动应用进行交互&mdash;查看、添加或修改数据&mdash;，即使在没有网络连接时也是如此。

@@ -13,10 +13,10 @@ origin.date: 08/16/2019
 ms.date: 04/06/2020
 ms.author: v-yiso
 ms.openlocfilehash: 09f2a7e4d9005f93853269c0a2a55a690bcad061
-ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80343491"
 ---
 # <a name="schedule-and-broadcast-jobs-nodejs"></a>计划和广播作业 (Node.js)

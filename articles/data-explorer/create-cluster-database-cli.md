@@ -9,16 +9,16 @@ ms.topic: conceptual
 origin.date: 06/03/2019
 ms.date: 03/16/2020
 ms.openlocfilehash: 1169982cf1d8ac9c86e956b8a8d5e63bff6a5863
-ms.sourcegitcommit: 1d3d8dfdaf6281f06640cbee7124a1e8bf102c50
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80243978"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-database-by-using-azure-cli"></a>使用 Azure CLI 创建 Azure 数据资源管理器群集和数据库
 
 > [!div class="op_single_selector"]
-> * [Portal](create-cluster-database-portal.md)
+> * [门户](create-cluster-database-portal.md)
 > * [CLI](create-cluster-database-cli.md)
 > * [PowerShell](create-cluster-database-powershell.md)
 > * [C#](create-cluster-database-csharp.md)
@@ -27,7 +27,7 @@ ms.locfileid: "80243978"
 
 Azure 数据资源管理器是一项快速、完全托管的数据分析服务，用于实时分析从应用程序、网站和 IoT 设备等资源流式传输的海量数据。 若要使用 Azure 数据资源管理器，请先创建群集，再在该群集中创建一个或多个数据库。 然后将数据引入（加载）到数据库，以便对其运行查询。 在本文中，将使用 Azure CLI 创建群集和数据库。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要完成本文，需要 Azure 订阅。 如果没有订阅，请在开始之前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial)。
 
@@ -74,7 +74,7 @@ Azure 数据资源管理器是一项快速、完全托管的数据分析服务�
     az kusto cluster show --name azureclitest --resource-group testrg
     ```
 
-如果结果包含带 `Succeeded` 值的 `provisioningState`，则表示已成功创建群集。
+如果结果包含带 `provisioningState` 值的 `Succeeded`，则表示已成功创建群集。
 
 ## <a name="create-the-database-in-the-azure-data-explorer-cluster"></a>在 Azure 数据资源管理器群集中创建数据库
 

@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e1652344583fb7f84eaf47a30fc20baeb113fafc
-ms.sourcegitcommit: 6568c59433d7e80ab06e9fe76d4791f761ed6775
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80243170"
 ---
 # <a name="building-a-conditional-access-policy"></a>生成条件访问策略
@@ -38,7 +38,7 @@ ms.locfileid: "80243170"
 
 [云应用或操作](concept-conditional-access-cloud-apps.md)可以包括或排除将受该策略约束的云应用程序或用户操作。
 
-### <a name="conditions"></a>Conditions
+### <a name="conditions"></a>条件
 
 一个策略可以包含多个[条件](concept-conditional-access-conditions.md)。
 

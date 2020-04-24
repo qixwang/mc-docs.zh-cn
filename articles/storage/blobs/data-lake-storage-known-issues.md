@@ -10,10 +10,10 @@ ms.date: 03/30/2020
 ms.author: v-jay
 ms.reviewer: jamesbak
 ms.openlocfilehash: 9cef96ffc390984787396967a10313db84832491
-ms.sourcegitcommit: 90d01d08faf8adb20083363a8e4e5aab139cd9b2
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80290432"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 的已知问题
@@ -99,7 +99,7 @@ Azure 存储资源管理器 1.10.x 不能用于查看诊断日志。 若要查�
 
 ## <a name="azure-storage-explorer"></a>Azure 存储资源管理器
 
-只使用 `1.6.0` 或更高版本。当前存在影响版本 `1.11.0` 的存储 Bug，在某些情况下可能会导致身份验证错误。 即将推出存储 bug 的修补程序，但我们建议你使用可供[免费下载](/vs-azure-tools-storage-explorer-relnotes)的版本 `1.10.x` 作为一种解决方法。 `1.10.x` 不受存储 Bug 的影响。
+只使用 `1.6.0` 或更高版本。当前存在影响版本 `1.11.0` 的存储 Bug，在某些情况下可能会导致身份验证错误。 即将推出存储 bug 的修补程序，但我们建议你使用可供`1.10.x`免费下载[的版本 ](/vs-azure-tools-storage-explorer-relnotes) 作为一种解决方法。 `1.10.x` 不受存储 Bug 的影响。
 
 <a id="third-party-apps" />
 

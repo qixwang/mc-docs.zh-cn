@@ -9,10 +9,10 @@ origin.date: 02/07/2019
 ms.date: 03/30/2020
 ms.author: v-yeche
 ms.openlocfilehash: 84dbdd9fbc8646741e8aa7e9db8dbc8d105fe312
-ms.sourcegitcommit: 4810b75d1e1db78d9747e99735468a6ab861be2d
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80291301"
 ---
 # <a name="tutorial-create-a-user-vpn-connection-by-using-azure-virtual-wan"></a>教程：使用 Azure 虚拟 WAN 创建用户 VPN 连接

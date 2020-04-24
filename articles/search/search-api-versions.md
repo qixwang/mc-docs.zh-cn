@@ -10,10 +10,10 @@ ms.topic: conceptual
 origin.date: 11/04/2019
 ms.date: 03/16/2020
 ms.openlocfilehash: 801b4c79a9c25bbeb4490a7e95b87e3f02903d3a
-ms.sourcegitcommit: 1d3d8dfdaf6281f06640cbee7124a1e8bf102c50
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80243706"
 ---
 # <a name="api-versions-in-azure-cognitive-search"></a>Azure 认知搜索中的 API 版本

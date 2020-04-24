@@ -11,10 +11,10 @@ origin.date: 02/26/2020
 ms.date: 03/30/2020
 ms.author: v-jay
 ms.openlocfilehash: 665460bfaf09babda3577361e04bb9b9f482b49c
-ms.sourcegitcommit: 90d01d08faf8adb20083363a8e4e5aab139cd9b2
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80290437"
 ---
 # <a name="quickstart-create-download-and-list-blobs-with-azure-cli"></a>快速入门：使用 Azure CLI 创建、下载和列出 blob

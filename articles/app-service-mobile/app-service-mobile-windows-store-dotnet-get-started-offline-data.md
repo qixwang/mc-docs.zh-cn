@@ -9,10 +9,10 @@ origin.date: 06/25/2019
 md.date: 03/23/2020
 ms.author: v-tawe
 ms.openlocfilehash: 622fdf5731a5f372ee0b5fc0c0ff97a210909b42
-ms.sourcegitcommit: b2f2bb08ab1b5ccb3c596d84b3b6ddca5bba3903
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80151737"
 ---
 # <a name="enable-offline-sync-for-your-windows-app"></a>为 Windows 应用启用脱机同步

@@ -17,10 +17,10 @@ ms.author: v-junlch
 ms.reviewer: agirling, saeeda, benv
 ms.custom: aaddev, identityplatformtop40
 ms.openlocfilehash: 10af8b0eabace235d4d32fcf6e94c23a49aad6e5
-ms.sourcegitcommit: 6568c59433d7e80ab06e9fe76d4791f761ed6775
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80243082"
 ---
 # <a name="microsoft-identity-platform-v20-overview"></a>Microsoft 标识平台 (v2.0) 概述

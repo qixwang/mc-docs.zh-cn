@@ -8,10 +8,10 @@ ms.date: 03/09/2020
 ms.author: v-tawe
 ms.custom: seodec18
 ms.openlocfilehash: 42287e9fde5bba3f65c87dc5744e4245b8256ff3
-ms.sourcegitcommit: b2f2bb08ab1b5ccb3c596d84b3b6ddca5bba3903
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80151722"
 ---
 # <a name="scale-up-an-app-in-azure-app-service"></a>在 Azure 应用服务中纵向扩展应用

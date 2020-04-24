@@ -46,7 +46,7 @@
       href: ../core/concepts-get-connected.md?toc=/iot-central/retail/toc.json&bc=/iot-central/retail/breadcrumb/toc.json
     - name: 什么是应用程序模板？
       href: ../core/concepts-app-templates.md?toc=/iot-central/retail/toc.json&bc=/iot-central/retail/breadcrumb/toc.json
-- name: 操作指南
+- name: 操作方法指南
   items:
     - name: 连接设备
       items:

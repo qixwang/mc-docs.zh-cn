@@ -13,10 +13,10 @@ ms.custom: seo-lt-2019
 origin.date: 04/15/2019
 ms.date: 03/23/2020
 ms.openlocfilehash: d28b3d6b096cc27a2a7df2c54e167e1b280eb707
-ms.sourcegitcommit: 71a386ca0d0ecb79a123399b6ab6b8c70ea2aa78
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79497317"
 ---
 # <a name="troubleshoot-package-execution-in-the-ssis-integration-runtime"></a>排查 SSIS Integration Runtime 中的包执行问题

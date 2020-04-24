@@ -6,16 +6,16 @@ origin.date: 12/03/2019
 ms.date: 03/23/2020
 ms.author: v-yeche
 ms.openlocfilehash: e975f5d0452bc936cd02d97bd86bbdd17615d350
-ms.sourcegitcommit: 1436f1851342ca5631eb25342eed954adb707af0
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79543732"
 ---
 <!--Verify successfully-->
 # <a name="conditional-deployment-in-resource-manager-templates"></a>资源管理器模板中的条件部署
 
-有时，需要有选择地在模板中部署资源。 使用 `condition` 元素指定是否部署资源。 此元素的值将解析为 true 或 false。 如果值为 true，则创建了该资源。 如果值为 false，则未创建该资源。 值只能应用到整个资源。
+有时，需要有选择地在模板中部署资源。 使用 `condition` 元素指定是否部署资源。 此元素的值解析为 true 或 false。 如果值为 true，则创建了该资源。 如果值为 false，则未创建该资源。 值只能应用到整个资源。
 
 ## <a name="new-or-existing-resource"></a>新资源或现有资源
 

@@ -1,24 +1,24 @@
 ---
 title: 模板函数 - 部署
-description: 介绍可在 Azure Resource Manager 模板中使用的用于检索部署信息的函数。
+description: 介绍可在 Azure 资源管理器模板中使用的用于检索部署信息的函数。
 ms.topic: conceptual
 origin.date: 11/27/2019
 ms.date: 03/23/2020
 ms.author: v-yeche
 ms.openlocfilehash: 8589dbed292e098a5b706599b93599ee82424c71
-ms.sourcegitcommit: 1436f1851342ca5631eb25342eed954adb707af0
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79543888"
 ---
-# <a name="deployment-functions-for-azure-resource-manager-templates"></a>用于 Azure Resource Manager 模板的部署函数 
+# <a name="deployment-functions-for-azure-resource-manager-templates"></a>用于 Azure 资源管理器模板的部署函数 
 
 资源管理器提供了以下函数，用于获取与当前部署相关的值：
 
-* [部署](#deployment)
+* [deployment](#deployment)
 * [环境](#environment)
-* [parameters](#parameters)
+* [参数](#parameters)
 * [variables](#variables)
 
 若要从资源、资源组或订阅获取值，请参阅 [Resource functions](template-functions-resource.md)（资源函数）。
@@ -55,7 +55,7 @@ ms.locfileid: "79543888"
 }
 ```
 
-如果对象是以链接形式传递的（例如使用 **-TemplateUri** 参数指向远程文件时），所返回的对象采用以下格式： 
+如果对象是以链接形式传递的（例如使用 **-TemplateUri** 参数指向远程对象时），所返回的对象采用以下格式： 
 
 ```json
 {
@@ -83,7 +83,7 @@ ms.locfileid: "79543888"
 
 ### <a name="remarks"></a>备注
 
-如何根据父模板的 URI，使用 deployment() 链接到另一个模板。
+可以根据父模板的 URI，使用 deployment() 链接到另一个模板。
 
 ```json
 "variables": {  
@@ -111,7 +111,7 @@ ms.locfileid: "79543888"
 }
 ```
 
-前面的示例返回以下对象：
+上面的示例返回下列对象：
 
 ```json
 {
@@ -239,7 +239,7 @@ ms.locfileid: "79543888"
 ```
 <!--Generate the report on 12/04/2019-->
 
-## <a name="parameters"></a>参数
+## <a name="parameters"></a>parameters
 
 `parameters(parameterName)`
 
@@ -247,9 +247,9 @@ ms.locfileid: "79543888"
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必须 | 类型 | 说明 |
+| 参数 | 必选 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
-| parameterName |是 |string |要返回的参数名称。 |
+| parameterName |是 |字符串 |要返回的参数名称。 |
 
 ### <a name="return-value"></a>返回值
 
@@ -257,7 +257,7 @@ ms.locfileid: "79543888"
 
 ### <a name="remarks"></a>备注
 
-通常，使用参数设置资源值。 以下示例将 Web 站点的名称设置为在部署过程中传递的参数值。
+通常情况下，使用参数来设置资源值。 下面的示例将网站的名称设置为部署过程中传递的参数值。
 
 ```json
 "parameters": { 
@@ -332,15 +332,15 @@ ms.locfileid: "79543888"
 }
 ```
 
-上述示例中使用默认值的输出为：
+上面具有默认值的示例的输出为：
 
-| 名称 | 类型 | Value |
+| 名称 | 类型 | 值 |
 | ---- | ---- | ----- |
-| stringOutput | String | 选项 1 |
-| intOutput | int | 1 |
+| stringOutput | String | option 1 |
+| intOutput | Int | 1 |
 | objectOutput | Object | {"one": "a", "two": "b"} |
 | arrayOutput | Array | [1, 2, 3] |
-| crossOutput | String | 选项 1 |
+| crossOutput | String | option 1 |
 
 如需详细了解如何使用参数，请参阅 [Azure 资源管理器模板中的参数](template-parameters.md)。
 
@@ -354,7 +354,7 @@ ms.locfileid: "79543888"
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必须 | 类型 | 说明 |
+| 参数 | 必选 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | variableName |是 |String |要返回的变量名称。 |
 
@@ -364,7 +364,7 @@ ms.locfileid: "79543888"
 
 ### <a name="remarks"></a>备注
 
-通常，使用变量通过只构造一次复杂值来简化模板。 以下示例构造存储帐户的唯一名称。
+通常情况下，使用变量通过仅构造一次复杂值来简化模板。 下面的示例为存储帐户构造唯一的名称。
 
 ```json
 "variables": {
@@ -426,9 +426,9 @@ ms.locfileid: "79543888"
 }
 ```
 
-上述示例中使用默认值的输出为：
+上面具有默认值的示例的输出为：
 
-| 名称 | 类型 | Value |
+| 名称 | 类型 | 值 |
 | ---- | ---- | ----- |
 | exampleOutput1 | String | myVariable |
 | exampleOutput2 | Array | [1, 2, 3, 4] |

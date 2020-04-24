@@ -10,10 +10,10 @@ origin.date: 9/25/2018
 ms.date: 03/23/2020
 ms.author: v-jay
 ms.openlocfilehash: 90e2749a86e98ebb8e9f7a076ee2700f5751652a
-ms.sourcegitcommit: 305361c96d1d5288d3dda7e81833820640e2afac
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80115823"
 ---
 # <a name="tutorial-create-an-alias-record-to-refer-to-a-zone-resource-record"></a>教程：创建别名记录以引用区域资源记录

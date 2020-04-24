@@ -9,10 +9,10 @@ ms.author: v-jay
 ms.reviewer: hectorl
 ms.lastreviewed: 11/05/2019
 ms.openlocfilehash: b9d29c2f0a54e3f6dc7ba7f640876bf08c2eaf02
-ms.sourcegitcommit: e500354e2fd8b7ac3dddfae0c825cc543080f476
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79546848"
 ---
 # <a name="recover-from-catastrophic-data-loss"></a>在发生灾难性数据丢失后进行恢复

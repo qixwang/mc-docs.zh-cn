@@ -9,10 +9,10 @@ ms.author: v-jay
 ms.reviewer: xiaofmao
 ms.lastreviewed: 11/20/2
 ms.openlocfilehash: 4138b31f0f2e31f9b957b65b7f6a97da752deed9
-ms.sourcegitcommit: e500354e2fd8b7ac3dddfae0c825cc543080f476
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79547039"
 ---
 # <a name="remove-the-mysql-resource-provider-in-azure-stack-hub"></a>在 Azure Stack Hub 中删除 MySQL 资源提供程序

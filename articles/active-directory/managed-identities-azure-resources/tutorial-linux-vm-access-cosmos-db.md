@@ -16,10 +16,10 @@ ms.date: 03/24/2020
 ms.author: v-junlch
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0351aac60fcd8a6082db453c21f1a0316eeeae4a
-ms.sourcegitcommit: 6568c59433d7e80ab06e9fe76d4791f761ed6775
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80243039"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-cosmos-db"></a>教程：使用 Linux VM 系统分配托管标识访问 Azure Cosmos DB 
@@ -27,7 +27,7 @@ ms.locfileid: "80243039"
 [!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
 
-本教程介绍如何使用 Linux 虚拟机 (VM) 的系统分配托管标识访问 Azure Cosmos DB。 你将学习如何执行以下操作：
+本教程介绍如何使用 Linux 虚拟机 (VM) 的系统分配托管标识访问 Azure Cosmos DB。 学习如何：
 
 > [!div class="checklist"]
 > * 创建 Cosmos DB 帐户
@@ -37,7 +37,7 @@ ms.locfileid: "80243039"
 > * 获取访问令牌，并使用它调用 Azure 资源管理器
 > * 从 Azure 资源管理器中获取访问密钥，以便进行 Cosmos DB 调用
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 [!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
 
@@ -52,7 +52,7 @@ ms.locfileid: "80243039"
 3. 输入 Cosmos DB 帐户的 **ID**，供以后使用。  
 4. **API** 应设置为“SQL”。 本教程中介绍的方法可以与其他可用的 API 类型配合使用，但本教程中的步骤是针对 SQL API 的。
 5. 确保“订阅”和“资源组”与上一步中创建 VM 时指定的名称匹配。    选择提供 Cosmos DB 的“位置”。 
-6. 单击**创建**。
+6. 单击“创建”。 
 
 ## <a name="create-a-collection-in-the-cosmos-db-account"></a>在 Cosmos DB 帐户中创建集合
 
@@ -85,7 +85,7 @@ az resource show --id /subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE 
 
 Cosmos DB 原本不支持 Azure AD 身份验证。 但是，可以使用托管标识从资源管理器检索 Cosmos DB 访问密钥，然后使用该密钥访问 Cosmos DB。 在此步骤中，将向系统分配托管标识授予对 Cosmos DB 帐户密钥的访问权限。
 
-若要向系统分配托管标识授予在 Azure 资源管理器中使用 Azure CLI 访问 Cosmos DB 帐户的权限，请更新环境的 `<SUBSCRIPTION ID>`、`<RESOURCE GROUP>` 和 `<COSMOS DB ACCOUNT NAME>` 的值。 将 `<MI PRINCIPALID>` 替换为在“检索 Linux VM 的 MI 的 principalID”中由 `az resource show` 命令返回的 `principalId` 属性。  Cosmos DB 在使用访问密钥时支持两种级别的粒度：对帐户的读/写访问权限，以及对帐户的只读访问权限。  如果需要获取帐户的读/写密钥，请分配 `DocumentDB Account Contributor` 角色；如果需要获取帐户的只读密钥，请分配 `Cosmos DB Account Reader Role` 角色：
+若要向系统分配托管标识授予在 Azure 资源管理器中使用 Azure CLI 访问 Cosmos DB 帐户的权限，请更新环境的 `<SUBSCRIPTION ID>`、`<RESOURCE GROUP>` 和 `<COSMOS DB ACCOUNT NAME>` 的值。 将 `<MI PRINCIPALID>` 替换为在“检索 Linux VM 的 MI 的 principalID”中由 `principalId` 命令返回的 `az resource show` 属性。  Cosmos DB 在使用访问密钥时支持两种级别的粒度：对帐户的读/写访问权限，以及对帐户的只读访问权限。  如果需要获取帐户的读/写密钥，请分配 `DocumentDB Account Contributor` 角色；如果需要获取帐户的只读密钥，请分配 `Cosmos DB Account Reader Role` 角色：
 
 ```azurecli
 az role assignment create --assignee <MI PRINCIPALID> --role '<ROLE NAME>' --scope "/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.DocumentDB/databaseAccounts/<COSMODS DB ACCOUNT NAME>"

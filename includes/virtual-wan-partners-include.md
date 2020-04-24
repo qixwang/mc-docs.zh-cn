@@ -10,10 +10,10 @@ ms.date: 03/30/2020
 ms.author: v-yeche
 ms.custom: include file
 ms.openlocfilehash: c904f0dd2d57ba1e31ab4196142cff1820eeee09
-ms.sourcegitcommit: 4810b75d1e1db78d9747e99735468a6ab861be2d
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80291277"
 ---
 你可以查看本部分中的链接，了解有关合作伙伴提供的服务的更多信息。 如果你的分支设备合作伙伴未在下面的部分中列出，请让你的分支设备提供商联系我们。 他们可以通过 [Azure 支持](https://support.azure.cn/support/contact/)联系我们。

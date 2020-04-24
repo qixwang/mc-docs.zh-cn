@@ -8,10 +8,10 @@ ms.date: 03/16/2020
 ms.author: v-tawe
 ms.reviewer: yevbronsh
 ms.openlocfilehash: 2156021c15883c5821d0896fa30459df20707414
-ms.sourcegitcommit: e500354e2fd8b7ac3dddfae0c825cc543080f476
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79546934"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>如何使用应用服务和 Azure Functions 的托管标识
@@ -175,7 +175,7 @@ tenantId 属性标识该标识所属的 AAD 租户。 principalId 是应用程�
 
 Azure 资源管理器模板可以用于自动化 Azure 资源部署。 若要详细了解如何部署到应用服务和 Functions，请参阅[在应用服务中自动执行资源部署](../app-service/deploy-complex-application-predictably.md)和[在 Azure Functions 中自动执行资源部署](../azure-functions/functions-infrastructure-as-code.md)。
 
-通过在资源定义中包含以下块，然后将 `<RESOURCEID>` 替换为所需标识的资源 ID，就可以创建带有标识的任何 `Microsoft.Web/sites` 类型的资源：
+通过在资源定义中包含以下块，然后将 `Microsoft.Web/sites` 替换为所需标识的资源 ID，就可以创建带有标识的任何 `<RESOURCEID>` 类型的资源：
 ```json
 "identity": {
     "type": "UserAssigned",

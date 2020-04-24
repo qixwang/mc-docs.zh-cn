@@ -10,10 +10,10 @@ ms.topic: conceptual
 origin.date: 11/04/2019
 ms.date: 03/16/2020
 ms.openlocfilehash: d88770d5b302b76736157927d06de47dbb52bcff
-ms.sourcegitcommit: 71a386ca0d0ecb79a123399b6ab6b8c70ea2aa78
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79497197"
 ---
 # <a name="built-in-cognitive-skills-for-text-and-image-processing-during-indexing-azure-cognitive-search"></a>在编制索引期间用于文本和图像处理的内置认知技能（Azure 认知搜索）

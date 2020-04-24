@@ -7,10 +7,10 @@ origin.date: 11/01/2019
 ms.date: 03/23/2020
 ms.author: v-yeche
 ms.openlocfilehash: 90a7c537f50293bad2334ac0efb04d5b752e79ce
-ms.sourcegitcommit: 1436f1851342ca5631eb25342eed954adb707af0
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79543877"
 ---
 # <a name="azure-managed-applications-with-notifications"></a>提供通知的 Azure 托管应用程序
@@ -74,11 +74,11 @@ EventType | ProvisioningState | 通知的触发器
 ---|---|---
 PUT | 已接受 | 在应用程序 PUT 之后（启动托管资源组中的部署之前）已成功创建并投影托管资源组。
 PUT | 已成功 | PUT 之后完全预配托管应用程序成功。
-PUT | 已失败 | 在任意时间点 PUT 应用程序实例预配失败。
+PUT | 失败 | 在任意时间点 PUT 应用程序实例预配失败。
 PATCH | 已成功 | 在托管应用程序实例上成功执行 PATCH 以更新标记、JIT 访问策略或托管标识之后发生。
 DELETE | 正在删除 | 在用户启动托管应用程序实例的 DELETE 后立即发生。
 DELETE | Deleted | 在完全成功删除托管应用程序之后发生。
-DELETE | 已失败 | 在取消预配过程中出现任何阻止删除的错误之后发生。
+DELETE | 失败 | 在取消预配过程中出现任何阻止删除的错误之后发生。
 
 ## <a name="notification-schema"></a>通知架构
 在启动 Webhook 终结点来处理通知时，需要分析有效负载，以获取重要属性，然后再处理通知。 服务目录和 Azure 市场托管应用程序通知提供许多相同的属性。 示例后面的表格中概述了两个细微的差异。
@@ -188,7 +188,7 @@ EventTime | 触发通知的事件的时间戳。 （UTC ISO 8601 格式的日期
 provisioningState | 托管应用程序实例的预配状态。 （例如 Succeeded、Failed、Deleting、Deleted。）
 error | 仅当 provisioningState 为 Failed 时指定。  包含导致失败的问题的错误代码、消息和详细信息。
 applicationDefinitionId | 仅为服务目录托管应用程序指定。  表示为其预配了托管应用程序实例的应用程序定义的完全限定资源标识符。
-plan | 仅为 Azure 市场托管应用程序指定。  表示托管应用程序实例的发布者、套餐、SKU 和版本。
+计划 | 仅为 Azure 市场托管应用程序指定。  表示托管应用程序实例的发布者、套餐、SKU 和版本。
 billingDetails | 仅为 Azure 市场托管应用程序指定。  托管应用程序实例的计费详细信息。 包含可用于在 Azure 市场中查询使用情况详细信息的 resourceUsageId。
 
 ## <a name="endpoint-authentication"></a>终结点身份验证

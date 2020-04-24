@@ -8,10 +8,10 @@ ms.date: 6/4/2019
 ms.reviewer: mbullwin
 ms.author: v-lingwu
 ms.openlocfilehash: ba8070945d977a9a2c3e492ca3f9881652962820
-ms.sourcegitcommit: 305361c96d1d5288d3dda7e81833820640e2afac
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80108510"
 ---
 # <a name="application-insights-for-azure-functions-supported-features"></a>适用于 Azure Functions 的 Application Insights 支持功能

@@ -8,10 +8,10 @@ ms.date: 03/18/2020
 ms.custom: mvc, devcenter, seo-java-july2019, seo-java-august2019, seo-java-september2019
 zone_pivot_groups: java-build-tools-set
 ms.openlocfilehash: 0d1995c0397ae52e7dd1f721b8c80da8cc62ef33
-ms.sourcegitcommit: e500354e2fd8b7ac3dddfae0c825cc543080f476
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79546882"
 ---
 # <a name="quickstart-use-java-and-mavengradle-to-create-and-publish-a-function-to-azure"></a>快速入门：使用 Java 和 Maven/Gradle 创建函数并将其发布到 Azure

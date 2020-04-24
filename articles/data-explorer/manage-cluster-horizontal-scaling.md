@@ -9,10 +9,10 @@ ms.topic: conceptual
 origin.date: 12/09/2019
 ms.date: 03/16/2020
 ms.openlocfilehash: 259cd6d43ddf4f62a833c904b52217a91900f5d9
-ms.sourcegitcommit: 1d3d8dfdaf6281f06640cbee7124a1e8bf102c50
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80243959"
 ---
 # <a name="manage-cluster-horizontal-scaling-scale-out-in-azure-data-explorer-to-accommodate-changing-demand"></a>在 Azure 数据资源管理器中管理水平缩放（横向扩展）群集以适应不断变化的需求

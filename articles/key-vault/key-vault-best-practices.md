@@ -12,10 +12,10 @@ origin.date: 03/07/2019
 ms.date: 03/16/2020
 ms.author: v-tawe
 ms.openlocfilehash: fc5650ed69d714ef8987ff60c8f14d310ca2edb8
-ms.sourcegitcommit: 764b3d26aedce2de0e1948468a706fd3204a3d5e
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79543361"
 ---
 # <a name="best-practices-to-use-key-vault"></a>使用密钥保管库的最佳做法
@@ -34,7 +34,7 @@ Azure 密钥保管库是一种云服务，用于保护加密密钥和机密（�
 
 我们的建议是对每个环境（开发环境、预生产环境和生产环境）的每个应用程序使用一个保管库。 这可以帮助你避免在不同环境之间共享机密，并可在出现安全漏洞时降低威胁。
 
-## <a name="backup"></a>Backup
+## <a name="backup"></a>备份
 
 确保在保管库中更新/删除/创建对象时定期执行[保管库](https://blogs.technet.microsoft.com/kv/2018/07/20/announcing-backup-and-restore-of-keys-secrets-and-certificates/)的备份。
 

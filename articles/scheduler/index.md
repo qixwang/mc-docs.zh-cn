@@ -10,10 +10,10 @@ ms.topic: landing-page
 origin.date: 02/23/2020
 ms.date: 03/30/2020
 ms.openlocfilehash: e8ccdaa3a353b9449534e7ef3d99d732590468d7
-ms.sourcegitcommit: 90660563b5d65731a64c099b32fb9ec0ce2c51c6
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80341708"
 ---
 # <a name="scheduler-documentation"></a>计划程序文档

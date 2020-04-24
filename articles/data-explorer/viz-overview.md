@@ -10,10 +10,10 @@ ms.topic: conceptual
 origin.date: 01/30/2020
 ms.date: 03/16/2020
 ms.openlocfilehash: e032013ad8922f8f88972a99e1a4c5d38d873eab
-ms.sourcegitcommit: 1d3d8dfdaf6281f06640cbee7124a1e8bf102c50
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80243944"
 ---
 # <a name="data-visualization-with-azure-data-explorer"></a>使用 Azure 数据资源管理器进行数据可视化 
@@ -38,7 +38,7 @@ Azure 数据资源管理器提供使用各种方法连接到 [Power BI](https://
 
 ## <a name="microsoft-excel"></a>Microsoft Excel
 
-Azure 数据资源管理器提供了使用[内置本机 Excel 连接器](excel-connector.md)连接到 [Microsoft Excel](https://products.office.com/excel)，或者从 Azure 数据资源管理器[导入查询](excel-blank-query.md)到 Excel 的功能。
+Azure 数据资源管理器提供了使用[内置本机 Excel 连接器](https://products.office.com/excel)连接到 [Microsoft Excel](excel-connector.md)，或者从 Azure 数据资源管理器[导入查询](excel-blank-query.md)到 Excel 的功能。
 
 <!-- ## Grafana -->
 
@@ -50,11 +50,11 @@ Azure 数据资源管理器提供了[开放式数据库连接 (ODBC) 连接器](
 
 ## <a name="tableau"></a>Tableau
 
-Azure 数据资源管理器提供使用 [ODBC 连接器](/data-explorer/connect-odbc)连接到 [Tableau](https://www.tableau.com) 的功能，然后可[在 Tableau 中直观显示数据](tableau.md)。
+Azure 数据资源管理器提供使用 [ODBC 连接器](https://www.tableau.com)连接到 [Tableau](/data-explorer/connect-odbc) 的功能，然后可[在 Tableau 中直观显示数据](tableau.md)。
 
 ## <a name="qlik"></a>Qlik
 
-Azure 数据资源管理器提供使用 [ODBC 连接器](/data-explorer/connect-odbc)连接到 [Qlik](https://www.qlik.com) 的功能，然后可创建 Qlik Sense 仪表板并直观显示数据。
+Azure 数据资源管理器提供使用 [ODBC 连接器](https://www.qlik.com)连接到 [Qlik](/data-explorer/connect-odbc) 的功能，然后可创建 Qlik Sense 仪表板并直观显示数据。
 
 
 ## <a name="sisense"></a>Sisense

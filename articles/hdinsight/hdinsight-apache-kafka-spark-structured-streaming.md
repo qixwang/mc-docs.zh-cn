@@ -16,10 +16,10 @@ origin.date: 03/11/2020
 ms.date: 04/06/2020
 ms.author: v-yiso
 ms.openlocfilehash: 89c312d65bdd8e3e8381cc9d14dd3881eb17aaa2
-ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80343581"
 ---
 # <a name="tutorial-use-apache-spark-structured-streaming-with-apache-kafka-on-hdinsight"></a>教程：将 Apache Spark 结构化流式处理与 Apache Kafka on HDInsight 配合使用
@@ -28,15 +28,15 @@ ms.locfileid: "80343581"
 
 Spark 结构化流式处理是建立在 Spark SQL 上的流处理引擎。 这允许以与批量计算相同的方式表达针对静态数据的流式计算。  
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 使用 Azure 资源管理器模板创建群集
 > * 将 Spark 结构化流式处理与 Kafka 配合使用
 
-完成本文档中的步骤后，请记得删除这些群集，避免产生额外费用。
+完成本文档中的步骤后，请记得删除这些群集，避免支付额外费用。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * jq，一个命令行 JSON 处理程序。  请参阅 [https://stedolan.github.io/jq/](https://stedolan.github.io/jq/)。
 
@@ -47,7 +47,7 @@ Spark 结构化流式处理是建立在 Spark SQL 上的流处理引擎。 这�
 * 熟悉 Kafka 主题的创建。 有关详细信息，请参阅 [Apache Kafka on HDInsight 快速入门](kafka/apache-kafka-get-started.md)文档。
 
 > [!IMPORTANT]  
-> 本文档中的步骤需要一个包含 Spark on HDInsight 和 Kafka on HDInsight 群集的 Azure 资源组。 这些群集都位于一个 Azure 虚拟网络中，这样 Spark 群集便可与 Kafka 群集直接通信。
+> 本文档中的步骤需要一个包含 Spark on HDInsight 和 Kafka on HDInsight 群集的 Azure 资源组。 这些群集都位于 Azure 虚拟网络中，允许 Spark 群集直接与 Kafka 群集进行通信。
 > 
 > 为方便起见，本文档链接到了一个模板，该模板可创建所有所需 Azure 资源。 
 >
@@ -93,7 +93,7 @@ kafkaStreamDF.select(from_json(col("value").cast("string"), schema) as "trip")
 
 在这两个代码片段中，从 Kafka 读取数据并写入文件。 示例之间的区别如下：
 
-| 批处理 | 流式处理 |
+| Batch | 流式处理 |
 | --- | --- |
 | `read` | `readStream` |
 | `write` | `writeStream` |
@@ -121,7 +121,7 @@ Apache Kafka on HDInsight 不提供通过公共 Internet 访问 Kafka 中转站�
 
 下图显示通信在 Spark 和 Kafka 之间的流动方式：
 
-![Azure 虚拟网络中的 Spark 和 Kafka 群集的关系图](./media/hdinsight-apache-kafka-spark-structured-streaming/apache-spark-kafka-vnet.png)
+![Azure 虚拟网络中的 Spark 和 Kafka 群集图表](./media/hdinsight-apache-kafka-spark-structured-streaming/apache-spark-kafka-vnet.png)
 
 > [!NOTE]
 > Kafka 服务仅限于虚拟网络内的通信。 通过 Internet 可访问群集上的其他服务，例如 SSH 和 Ambari。 有关可用于 HDInsight 的公共端口的详细信息，请参阅 [HDInsight 使用的端口和 URI](hdinsight-hadoop-port-settings-for-services.md)。
@@ -145,7 +145,7 @@ Apache Kafka on HDInsight 不提供通过公共 Internet 访问 Kafka 中转站�
 
 2. 使用以下信息填充“自定义模板”部分的条目  ：
 
-    | 设置 | Value |
+    | 设置 | 值 |
     | --- | --- |
     | 订阅 | Azure 订阅 |
     | 资源组 | 包含资源的资源组。 |
@@ -183,7 +183,7 @@ Apache Kafka on HDInsight 不提供通过公共 Internet 访问 Kafka 中转站�
     curl -u admin:%PASSWORD% -G "https://%CLUSTERNAME%.azurehdinsight.cn/api/v1/clusters/%CLUSTERNAME%/services/KAFKA/components/KAFKA_BROKER" | C:\HDI\jq-win64.exe -r "["""\(.host_components[].HostRoles.host_name):9092"""] | join(""",""")"
     ```
 
-1. 在 Web 浏览器中，导航到 `https://CLUSTERNAME.azurehdinsight.cn/jupyter`，其中 `CLUSTERNAME` 是群集的名称。 出现提示时，输入创建群集时使用的群集登录名（管理员）和密码。
+1. 在 Web 浏览器中导航到 `https://CLUSTERNAME.azurehdinsight.cn/jupyter`，其中的 `CLUSTERNAME` 是群集的名称。 出现提示时，输入创建群集时使用的群集登录名（管理员）和密码。
 
 1. 选择“新建”>“Spark”，创建一个笔记本。 
 
@@ -330,7 +330,7 @@ Apache Kafka on HDInsight 不提供通过公共 Internet 访问 Kafka 中转站�
 3. 选择“删除资源组”，然后进行确认。 
 
 > [!WARNING]
-> HDInsight 群集计费在创建群集之后便会开始，删除群集后才会停止。 HDInsight 群集按分钟收费，因此不再需要使用群集时，应将其删除。
+> 创建群集后便开始 HDInsight 群集计费，删除群集后停止计费。 群集以每分钟按比例收费，因此无需再使用群集时，应始终将其删除。
 > 
 > 删除 Kafka on HDInsight 群集会删除存储在 Kafka 中的任何数据。
 

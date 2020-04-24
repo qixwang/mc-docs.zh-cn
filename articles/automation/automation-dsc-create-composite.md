@@ -12,10 +12,10 @@ ms.date: 03/30/2020
 ms.topic: conceptual
 manager: digimobile
 ms.openlocfilehash: 1e2447ea0dcd37c077e3e9ca83d5569197a77a99
-ms.sourcegitcommit: 90d01d08faf8adb20083363a8e4e5aab139cd9b2
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80290379"
 ---
 # <a name="convert-configurations-to-composite-resources"></a>将配置转换为复合资源

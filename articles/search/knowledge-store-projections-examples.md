@@ -10,10 +10,10 @@ ms.topic: conceptual
 origin.date: 02/15/2020
 ms.date: 03/16/2020
 ms.openlocfilehash: 021981b7b655fa82e482fdff576b4711799266d8
-ms.sourcegitcommit: 1d3d8dfdaf6281f06640cbee7124a1e8bf102c50
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80243723"
 ---
 # <a name="knowledge-store-projections-how-to-shape-and-export-enrichments"></a>知识存储投影：如何整形和导出扩充内容

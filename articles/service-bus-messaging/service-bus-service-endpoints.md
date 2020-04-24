@@ -13,10 +13,10 @@ origin.date: 12/20/2019
 ms.date: 1/20/2020
 ms.author: v-lingwu
 ms.openlocfilehash: 096e6f9594e1bd25e48f71c17eea7a17f53895db
-ms.sourcegitcommit: 305361c96d1d5288d3dda7e81833820640e2afac
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80109749"
 ---
 # <a name="use-virtual-network-service-endpoints-with-azure-service-bus"></a>使用具有 Azure 服务总线的虚拟网络服务终结点

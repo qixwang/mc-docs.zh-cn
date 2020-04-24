@@ -13,10 +13,10 @@ ms.author: v-junlch
 ms.custom: aaddev
 ms.reviewer: lenalepa, aragra, sureshja
 ms.openlocfilehash: b3dc95843c61f478b8b8009d7a94e155630da35d
-ms.sourcegitcommit: 6568c59433d7e80ab06e9fe76d4791f761ed6775
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80243149"
 ---
 # <a name="quickstart-configure-a-client-application-to-access-web-apis"></a>快速入门：配置客户端应用程序以访问 Web API
@@ -35,7 +35,7 @@ ms.locfileid: "80243149"
 
 1. 使用工作或学校帐户登录到 [Azure 门户](https://portal.azure.cn)。
 1. 如果帐户有权访问多个租户，请在右上角选择该帐户。 将门户会话设置为所需的 Azure AD 租户。
-1. 搜索并选择“Azure Active Directory”  。 在“管理”  下，选择“应用注册”  。
+1. 搜索并选择“Azure Active Directory”  。 在“管理”下，选择“应用注册”。  
 1. 找到并选择要配置的应用程序。 选择应用后，会看到应用程序的“概述”页或主注册页。 
 
 使用以下过程配置应用程序以访问 Web API。

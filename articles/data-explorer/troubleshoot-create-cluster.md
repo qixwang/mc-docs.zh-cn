@@ -9,13 +9,13 @@ ms.topic: conceptual
 origin.date: 09/24/2018
 ms.date: 03/16/2020
 ms.openlocfilehash: ca0872255f971c8462a4f21903c6c99150fd4853
-ms.sourcegitcommit: 1d3d8dfdaf6281f06640cbee7124a1e8bf102c50
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80243947"
 ---
-# <a name="troubleshoot-failed-cluster-creation-of-azure-data-explorer"></a>排除故障：无法完成 Azure 数据资源管理器的群集创建
+# <a name="troubleshoot-failed-cluster-creation-of-azure-data-explorer"></a>疑难解答：无法完成 Azure 数据资源管理器的群集创建
 
 在 Azure 数据资源管理器中，群集创建失败的可能性不大，如出现此情况，请遵循以下步骤。
 

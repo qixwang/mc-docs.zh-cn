@@ -6,16 +6,16 @@ origin.date: 08/21/2019
 ms.date: 03/23/2020
 ms.author: v-yeche
 ms.openlocfilehash: 6118e6f3d4c7f03bda33121196c7637294263071
-ms.sourcegitcommit: 1436f1851342ca5631eb25342eed954adb707af0
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79543874"
 ---
 <!--Verify successfully-->
 # <a name="create-resource-manager-parameter-file"></a>创建资源管理器参数文件
 
-你可能会发现，与在脚本中以内联值的形式传递参数相比，使用包含参数值的 JSON 文件更为容易。 本文介绍如何创建参数文件。
+与在脚本中以内联值的形式传递参数相比，可能会发现使用包含参数值的 JSON 文件更为容易。 本文介绍如何创建参数文件。
 
 ## <a name="parameter-file"></a>参数文件
 
@@ -200,7 +200,7 @@ ms.locfileid: "79543874"
 
 ## <a name="parameter-name-conflicts"></a>参数名冲突
 
-如果模板包括的一个参数与 PowerShell 命令中的某个参数同名，PowerShell 使用后缀 FromTemplate  显示模板的参数。 例如，模板中名为 **ResourceGroupName** 的参数与 [New-AzResourceGroupDeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment) cmdlet 中的 **ResourceGroupName** 参数冲突。 系统会提示你提供 **ResourceGroupNameFromTemplate** 的值。 可以使用未用于部署命令的参数名称来避免这种混淆。
+如果模板包括的一个参数与 PowerShell 命令中的某个参数同名，PowerShell 使用后缀 **FromTemplate** 显示模板的参数。 例如，模板中名为 **ResourceGroupName** 的参数与 **New-AzResourceGroupDeployment** cmdlet 中的 [ResourceGroupName](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment) 参数冲突。 系统会提示你提供 **ResourceGroupNameFromTemplate** 的值。 可以使用未用于部署命令的参数名称来避免这种混淆。
 
 ## <a name="next-steps"></a>后续步骤
 

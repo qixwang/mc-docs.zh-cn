@@ -6,26 +6,26 @@ origin.date: 02/07/2020
 ms.date: 03/23/2020
 ms.author: v-yeche
 ms.openlocfilehash: 84979999860f0311896ec02281644379364215ed
-ms.sourcegitcommit: 1436f1851342ca5631eb25342eed954adb707af0
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79543898"
 ---
-# <a name="lock-resources-to-prevent-unexpected-changes"></a>锁定资源，以防止意外更改
+# <a name="lock-resources-to-prevent-unexpected-changes"></a>锁定资源以防止意外更改
 
-作为管理员，可能需要锁定订阅、资源组或资源，以防止组织中的其他用户意外删除或修改关键资源。 可以将锁定级别设置为 **CanNotDelete** 或 **ReadOnly**。 在门户中，锁定分别称为**删除**和**只读**。
+管理员可能需要锁定订阅、资源组或资源，以防止组织中的其他用户意外删除或修改关键资源。 可以将锁定级别设置为 **CanNotDelete** 或 **ReadOnly**。 在门户中，锁定分别称为**删除**和**只读**。
 
-* **CanNotDelete** 味着经授权的用户仍可读取和修改资源，但不能删除资源。 
-* **ReadOnly** 意味着经授权的用户可以读取资源，但不能删除或更新资源。 应用此锁类似于将所有经授权的用户限制于“读者”  角色授予的权限。
+* **CanNotDelete** 表示经授权的用户仍可读取和修改资源，但不能删除资源。 
+* **ReadOnly** 表示经授权的用户可以读取资源，但不能删除或更新资源。 应用此锁类似于将所有经授权的用户限制于使用“读者”  角色授予的权限。
 
 ## <a name="how-locks-are-applied"></a>锁的应用方式
 
-在父范围应用锁时，该范围内所有资源都会继承相同的锁。 即使是之后添加的资源也会从父作用域继承该锁。 继承中限制性最强的锁优先执行。
+在父范围应用锁时，该范围内所有资源都将继承相同的锁。 即使是之后添加的资源也会从父作用域继承该锁。 继承中限制性最强的锁优先执行。
 
 与基于角色的访问控制不同，可以使用管理锁来对所有用户和角色应用限制。 若要了解如何为用户和角色设置权限，请参阅 [Azure 基于角色的访问控制](../../role-based-access-control/role-assignments-portal.md)。
 
-Resource Manager 锁仅适用于管理平面内发生的操作，包括发送到 `https://management.chinacloudapi.cn`的操作。 这类锁不会限制资源如何执行各自的函数。 资源更改将受到限制，但资源操作不受限制。 例如，SQL 数据库上的 ReadOnly 锁会阻止你删除或修改数据库。 它不会阻止你在数据库中创建、更新或删除数据。 允许数据事务，因为这些操作不会发送到 `https://management.chinacloudapi.cn`。
+Resource Manager 锁仅适用于管理平面内发生的操作，包括发送到 `https://management.chinacloudapi.cn` 的操作。 这类锁不会限制资源如何执行各自的函数。 资源更改将受到限制，但资源操作不受限制。 例如，SQL 数据库上的 ReadOnly 锁会阻止你删除或修改数据库。 它不会阻止你在数据库中创建、更新或删除数据。 允许数据事务，因为这些操作不会发送到 `https://management.chinacloudapi.cn`。
 
 应用 **ReadOnly** 可能导致意外的结果，因为某些似乎不会修改资源的操作实际上需要被锁定阻止的操作。 **ReadOnly** 锁可以应用于资源或包含资源的资源组。 被 **ReadOnly** 锁阻止的操作的一些常见示例包括：
 
@@ -202,13 +202,13 @@ az lock delete --ids $lockid
 ```
 
 ## <a name="rest-api"></a>REST API
-可以使用 [管理锁的 REST API](https://docs.microsoft.com/rest/api/resources/managementlocks)锁定已部署的资源。 REST API 可用于创建和删除锁，并且检索有关现有锁的信息。
+可以使用[管理锁的 REST API](https://docs.microsoft.com/rest/api/resources/managementlocks) 锁定已部署的资源。 REST API 可用于创建和删除锁，并且检索有关现有锁的信息。
 
 若要创建一个锁，请运行：
 
     PUT https://management.chinacloudapi.cn/{scope}/providers/Microsoft.Authorization/locks/{lock-name}?api-version={api-version}
 
-作用域可能是订阅、资源组或资源。 锁名称可以是要对该锁使用的任何称谓。 对于 api 版本，请使用 **2016-09-01**。
+作用域可能是订阅、资源组或资源。 锁名称可以是想要对该锁使用的任何称谓。 对于 api 版本，请使用 **2016-09-01**。
 
 在请求中，包括指定锁属性的 JSON 对象。
 

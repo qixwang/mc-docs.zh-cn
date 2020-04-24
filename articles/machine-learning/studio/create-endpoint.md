@@ -11,10 +11,10 @@ ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 02/15/2019
 ms.openlocfilehash: 6110e1049faff4234f73a618a3bde8e2d11328df
-ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80343088"
 ---
 # <a name="create-endpoints-for-deployed-azure-machine-learning-studio-classic-web-services"></a>为部署的 Azure 机器学习工作室（经典）Web 服务创建终结点
@@ -36,7 +36,7 @@ Web 服务中的每个终结点都是独立处理、限制和托管的。 每个
 
 1. 在机器学习工作室（经典）的左侧导航栏中，单击“Web 服务”。
 2. 在“Web 服务”仪表板的底部，单击“管理终结点”  。 Azure 机器学习 Web 服务门户可打开 Web 服务的终结点页。
-3. 单击“新建”  。
+3. 单击 **“新建”** 。
 4. 键入新终结点的名称及说明。 终结点名称的长度必须少于或等于 24 个字符，并且必须由小写字母或数字组成。 选择日志记录级别以及是否启用示例数据。 有关日志记录的详细信息，请参阅[为机器学习 Web 服务启用日志记录](web-services-logging.md)。
 
 ## <a name="scale-a-web-service-by-adding-additional-endpoints"></a><a id="scaling"></a> 通过添加其他终结点来扩展 Web 服务

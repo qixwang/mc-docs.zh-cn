@@ -7,10 +7,10 @@ origin.date: 01/29/2019
 ms.date: 03/30/2020
 ms.topic: conceptual
 ms.openlocfilehash: 3a4b7a5fea43d4ca31cd1ebcaeb84d554b34a7c2
-ms.sourcegitcommit: 90d01d08faf8adb20083363a8e4e5aab139cd9b2
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80290352"
 ---
 # <a name="running-runbooks-on-a-hybrid-runbook-worker"></a>在混合 Runbook 辅助角色上运行 runbook
@@ -53,7 +53,7 @@ Restart-Computer -ComputerName $Computer -Credential $Cred
 
 使用以下过程为混合 Runbook 辅助角色组指定运行方式帐户。
 
-1. 创建具有本地资源访问权限的 [凭据资产](automation-credentials.md) 。
+1. 创建具有本地资源访问权限的[凭据资产](automation-credentials.md)。
 2. 在 Azure 门户中打开自动化帐户。
 3. 选择“混合辅助角色组”  磁贴，并选择组。
 4. 依次选择“所有设置”、“混合辅助角色组设置”。  
@@ -85,7 +85,7 @@ Azure 虚拟机上的混合 Runbook 辅助角色可以使用 Azure 资源的托�
 ```
 
 > [!NOTE]
-> `Connect-AzureRmAccount -Identity` 适用于使用系统分配标识和单个用户分配标识的混合 Runbook 辅助角色。 如果在混合 Runbook 辅助角色上使用多个用户分配标识，则 Runbook 必须为 `Connect-AzureRmAccount` 指定 *AccountId* 参数，以选择特定的用户分配标识。
+> `Connect-AzureRmAccount -Identity` 适用于使用系统分配标识和单个用户分配标识的混合 Runbook 辅助角色。 如果在混合 Runbook 辅助角色上使用多个用户分配标识，则 Runbook 必须为 *指定*AccountId`Connect-AzureRmAccount` 参数，以选择特定的用户分配标识。
 
 ### <a name="automation-run-as-account"></a><a name="runas-script"></a>自动化运行方式帐户
 
@@ -194,7 +194,7 @@ Start-AzureAutomationRunbook –AutomationAccountName "MyAutomationAccount" –N
 ```
 
 > [!NOTE]
-> 在 Azure PowerShell 版本 0.9.1 中，`Start-AzureAutomationRunbook` 中已添加了 `RunOn` 参数。 如果安装的是旧版，则应 [下载最新版本](https://azure.microsoft.com/downloads/)。 只需在要在其中通过 PowerShell 启动 Runbook 的工作站上安装此版本。 不需要在混合 Runbook 辅助角色计算机上安装它，除非要从该计算机启动 Runbook。
+> 在 Azure PowerShell 版本 0.9.1 中，`RunOn` 中已添加了 `Start-AzureAutomationRunbook` 参数。 如果安装的是旧版，则应[下载最新版本](https://azure.microsoft.com/downloads/)。 只需在要在其中通过 PowerShell 启动 Runbook 的工作站上安装此版本。 不需要在混合 Runbook 辅助角色计算机上安装它，除非要从该计算机启动 Runbook。
 
 ## <a name="working-with-signed-runbooks-on-a-windows-hybrid-runbook-worker"></a>使用 Windows 混合 Runbook 辅助角色上已签名的 Runbook
 

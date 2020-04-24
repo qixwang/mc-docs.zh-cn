@@ -10,10 +10,10 @@ origin.date: 02/27/2020
 ms.date: 03/30/2020
 ms.author: v-yeche
 ms.openlocfilehash: fc49ad88d8d04079d797ed102be153401b675c81
-ms.sourcegitcommit: 305361c96d1d5288d3dda7e81833820640e2afac
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80115817"
 ---
 <!--Verified AS2 Encode/Decode successfully-->

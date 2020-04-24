@@ -15,10 +15,10 @@ ms.author: v-junlch
 ms.reviewer: kkrishna, jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 6ef6f73c685d2e3cc21be9713865846045c8563e
-ms.sourcegitcommit: 6568c59433d7e80ab06e9fe76d4791f761ed6775
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80243158"
 ---
 # <a name="how-to-add-app-roles-in-your-application-and-receive-them-in-the-token"></a>如何：在应用程序中添加应用角色并在令牌中接收它们
@@ -35,7 +35,7 @@ ms.locfileid: "80243158"
 
 ### <a name="declare-app-roles-using-azure-portal"></a>使用 Azure 门户声明应用角色
 
-1. 登录到 [Azure 门户](https://portal.azure.cn)。
+1. 登录 [Azure 门户](https://portal.azure.cn)。
 1. 在门户工具栏中选择“目录 + 订阅”  图标。
 1. 在**收藏夹**或“所有目录”  列表中，选择要将应用程序注册到的 Active Directory 租户。
 1. 在 Azure 门户中，搜索并选择“Azure Active Directory”。 

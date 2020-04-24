@@ -9,10 +9,10 @@ origin.date: 11/07/2019
 ms.date: 03/23/2020
 ms.author: v-jay
 ms.openlocfilehash: 80054b8f958a0d887547c180d31fdade7133a4e1
-ms.sourcegitcommit: 71a386ca0d0ecb79a123399b6ab6b8c70ea2aa78
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79497399"
 ---
 # <a name="troubleshoot-self-hosted-integration-runtime"></a>排查自承载集成运行时问题

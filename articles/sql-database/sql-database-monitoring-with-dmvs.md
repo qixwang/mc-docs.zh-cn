@@ -13,10 +13,10 @@ ms.reviewer: carlrab
 origin.date: 03/10/2020
 ms.date: 03/30/2020
 ms.openlocfilehash: b1d64d68b7d60080b1d7118f8f854b6803c96fbd
-ms.sourcegitcommit: 90660563b5d65731a64c099b32fb9ec0ce2c51c6
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80341808"
 ---
 # <a name="monitoring-performance-azure-sql-database-using-dynamic-management-views"></a>使用动态管理视图监视性能 Azure SQL 数据库
@@ -513,7 +513,7 @@ WHERE c.session_id = @@SPID;
 ```
 
 > [!NOTE]
-> 执行 **sys.dm_exec_requests** 和 **sys.dm_exec_sessions views** 视图时，如果具有对数据库的 **VIEW DATABASE STATE** 权限，将会看到数据库上正在执行的所有会话；否则，只会看到当前会话。
+> 在执行 **sys.dm_exec_requests** 和 **sys.dm_exec_sessions views** 视图时，如果具有对数据库的 **VIEW DATABASE STATE** 权限，会看到数据库上所有正在执行的会话；否则，只会看到当前会话。
 
 ## <a name="monitor-resource-use"></a>监视资源使用情况
 
@@ -547,15 +547,15 @@ FROM sys.dm_db_resource_stats;
 
 ### <a name="sysresource_stats"></a>sys.resource_stats
 
-**master** 数据库中的 [Sys.resource_stats](https://msdn.microsoft.com/library/dn269979.aspx) 视图包含可帮助监视 SQL 数据库在特定服务层级和计算大小的性能。 每 5 分钟收集一次数据，并且会保留大约 14 天。 此视图可用于 SQL 数据库使用资源的方式的长期历史分析。
+[master](https://msdn.microsoft.com/library/dn269979.aspx) 数据库中的 **Sys.resource_stats** 视图包含可帮助监视 SQL 数据库在特定服务层级和计算大小的性能。 每 5 分钟收集一次数据，并且会保留大约 14 天。 此视图可用于 SQL 数据库使用资源的方式的长期历史分析。
 
-下图显示一周内每小时的 P2 计算大小高级数据库的 CPU 资源使用情况。 此图从星期一开始显示，先显示 5 个工作日，然后显示周末，应用程序在周末使用的资源要少得多。
+下图显示一周内每小时的 P2 计算大小高级数据库的 CPU 资源使用情况。 此图形从周一开始，显示 5 个工作日，并显示周末（应用程序上很少发生的情况）。
 
 ![SQL 数据库资源使用情况](./media/sql-database-performance-guidance/sql_db_resource_utilization.png)
 
-从数据而言，此数据库当前有一个峰值 CPU 负载刚好超过相对于 P2 计算大小的 50% CPU 使用率（星期二中午）。 如果 CPU 是应用程序资源配置文件的决定因素，可以决定 P2 是适当的计算大小以保证工作负荷始终适合。 如果预期应用程序的资源使用会随时间而增长，则最好是设置额外的资源缓冲，使应用程序不会达到性能级别限制。 如果增加计算大小，则有助于避免当数据库没有足够能力有效处理请求（尤其是在易受延迟影响的环境中）时向客户显示错误。 例如，如果数据库支持的应用程序根据数据库调用结果绘制网页，则属于这种情况。
+从数据而言，此数据库当前有一个峰值 CPU 负载刚好超过相对于 P2 计算大小的 50% CPU 使用率（星期二中午）。 如果 CPU 是应用程序资源配置文件的决定因素，可以决定 P2 是适当的计算大小以保证工作负荷始终适合。 如果希望应用程序可以随时间增长，最好具有额外的资源缓冲，以便应用程序不会达到性能级别的限制。 如果增加计算大小，则有助于避免当数据库没有足够能力有效处理请求（尤其是在易受延迟影响的环境中）时向客户显示错误。 一个示例是支持应用程序根据数据库调用结果绘制网页的数据库。
 
-其他应用程序类型对同一图形可能有不同的解释。 例如，如果某个应用程序尝试每天处理工资数据并使用相同的图表，则在 P1 计算大小也许就能让此类“批处理作业”模型正常工作。 P1 计算大小有 100 个 DTU，P2 计算大小有 200 个 DTU。 P1 计算大小提供的性能是 P2 计算大小的一半。 因此，P2 级别 50% 的 CPU 使用率相当于 P1 级别 100% 的 CPU 使用率。 如果应用程序没有设置超时，则即使有作业耗时 2 小时或 2.5 小时才完成也无关紧要，只要今天完成即可。 此类别中的应用程序可能使用 P1 计算大小。 一个事实是，白天有几个时段的资源使用率较低，因此可充分利用这一点，将“大高峰”作业分配一部分到当天晚些时候的某个资源使用低谷。 只要作业可以每天按时完成，P1 计算大小就适用于该类型的应用程序（且节省费用）。
+其他应用程序类型可能以不同的方式解释同一图形。 例如，如果某个应用程序尝试每天处理工资数据并使用相同的图表，则在 P1 计算大小也许就能让此类“批处理作业”模型正常工作。 P1 计算大小有 100 个 DTU，P2 计算大小有 200 个 DTU。 P1 计算大小提供的性能是 P2 计算大小的一半。 因此，P2 中 50% 的 CPU 使用率相当于 P1 中 100 % 的 CPU 使用率。 如果应用程序没有超时，则作业耗时 2 小时或 2.5 小时完成并不重要（如果今天完成）。 此类别中的应用程序可能使用 P1 计算大小。 可以充分利用一天之中资源使用率较低的时间段，以便“大峰值”可以溢出到当天稍后的某个低谷。 只要作业可以每天按时完成，P1 计算大小就适用于该类型的应用程序（且节省费用）。
 
 Azure SQL 数据库在每个服务器的 **master** 数据库的 **sys.resource_stats** 视图中，公开每个活动数据库的资源耗用信息。 表中的数据以 5 分钟为间隔收集而得。 对于“基本”、“标准”和“高级”服务层级，数据可能需要再耗费 5 分钟才会出现在表中，以使此数据更有利于历史分析而非接近实时的分析。 查询 **sys.resource_stats** 视图，以查看数据库的最近历史记录和验证你选择的预留是否提供了所需的性能。
 
@@ -573,7 +573,7 @@ ORDER BY start_time DESC
 
 ![sys.resource_stats 目录视图](./media/sql-database-performance-guidance/sys_resource_stats.png)
 
-下面的示例演示可以用不同方式使用 **sys.resource_stats** 目录视图，以获取有关 SQL 数据库如何使用资源的信息：
+下面的示例演示可以用不同方式使用 **sys.resource_stats** 目录视图以获取有关 SQL 数据库使用资源的方式的信息：
 
 1. 若要查看数据库 userdb1 过去一周的资源使用情况，可以运行此查询：
 
@@ -603,11 +603,11 @@ ORDER BY start_time DESC
     WHERE database_name = 'userdb1' AND start_time > DATEADD(day, -7, GETDATE());
     ```
 
-3. 使用每个资源指标的平均值和最大值信息，可以评估工作负荷与所选计算大小的适合程度。 通常情况下，**sys.resource_stats** 中的平均值可提供一个用于目标大小的良好基准。 它应该是主要测量标杆。 例如，你可能正在使用 S2 计算大小的“标准”服务层级。 CPU 和 IO 读写的平均使用百分比低于 40%，平均辅助角色数低于 50，平均会话数低于 200。 工作负荷可能适合 S1 计算大小。 很轻松就能判断数据库是否在辅助进程和会话限制范围内。 若要查看数据库是否适合 CPU 和读写数等更小的计算大小，请将更小计算大小的 DTU 数除以当前计算大小的 DTU 数，并将结果乘以 100：
+3. 使用每个资源指标的平均值和最大值信息，可以评估工作负荷与所选计算大小的适合程度。 通常情况下，**sys.resource_stats** 中的平均值提供了一个用于目标大小的良好基准。 它应该是主要测量标杆。 例如，你可能正在使用 S2 计算大小的“标准”服务层级。 CPU 和 IO 读写的平均使用百分比低于 40%，平均辅助角色数低于 50，平均会话数低于 200。 工作负荷可能适合 S1 计算大小。 很容易查看数据库是否在辅助角色和会话限制内。 若要查看数据库是否适合 CPU 和读写数等更小的计算大小，请将更小计算大小的 DTU 数除以当前计算大小的 DTU 数，并将结果乘以 100：
 
     ```S1 DTU / S2 DTU * 100 = 20 / 50 * 100 = 40```
 
-    结果是以百分比表示的两个计算大小之间的相对性能差异。 如果资源使用不超出此量，则工作负荷可能适合更低的计算大小。 但是，需要查看资源用量值的所有范围，并按百分比确定数据库工作负荷适合更小计算大小的频率。 以下查询会根据以上示例计算得出的阈值 40%，输出每个资源维度的适合性百分比：
+    结果是以百分比表示的两个计算大小之间的相对性能差异。 如果资源使用不超出此量，则工作负荷可能适合更低的计算大小。 但是，需要查看资源用量值的所有范围，并按百分比确定数据库工作负荷适合更小计算大小的频率。 以下查询会根据此示例中计算得出的 40% 阈值，输出每个资源维度的适合百分比：
 
    ```sql
     SELECT
@@ -641,7 +641,7 @@ ORDER BY start_time DESC
 
 4. 本练习还应将未来预计的工作负荷增加考虑在内。
 
-对于弹性池，可以使用本部分中所述的技术来监视池中的单个数据库。 但也可总体监视该池。 有关信息，请参阅[监视和管理弹性池](sql-database-elastic-pool-manage-portal.md)。
+对于弹性池，可以使用本节中所述的方法来监视池中的单个数据库。 但你还可以在总体上监视池。 有关信息，请参阅[监视和管理弹性池](sql-database-elastic-pool-manage-portal.md)。
 
 ### <a name="maximum-concurrent-requests"></a>最大并发请求数
 
@@ -652,7 +652,7 @@ SELECT COUNT(*) AS [Concurrent_Requests]
 FROM sys.dm_exec_requests R;
 ```
 
-若要分析本地 SQL Server 数据库的工作负荷，请修改此查询，针对要分析的特定数据库进行筛选。 例如，如果有一个名为 MyDatabase 的本地数据库，则以下 Transact-SQL 查询返回该数据库中并发请求的计数：
+若要分析本地 SQL Server 数据库的工作负荷，请修改此查询以筛选要分析的特定数据库。 例如，如果有一个名为 MyDatabase 的本地数据库，此 TRANSACT-SQL 查询返回该数据库中的并发请求计数：
 
 ```sql
 SELECT COUNT(*) AS [Concurrent_Requests]
@@ -661,27 +661,27 @@ INNER JOIN sys.databases D ON D.database_id = R.database_id
 AND D.name = 'MyDatabase';
 ```
 
-这只是某一时刻的快照。 若要更好地了解工作负荷和并发请求需求，需在一定时间内收集多个样本。
+这只是某一时刻的快照。 要更好地了解工作负荷和并发请求要求，需要在一段时间内收集多个样本。
 
 ### <a name="maximum-concurrent-logins"></a>最大并发登录数
 
-可以通过分析用户和应用程序模式来了解登录频率。 还可以在测试环境中运行实际负荷，确保不会超过本文所介绍的这样或那样的限制。 无法通过单一查询或动态管理视图 (DMV) 了解并发登录计数或历史记录。
+可以通过分析用户和应用程序模式来了解登录频率。 还可以在测试环境中运行实际负荷，确保不会超过本文所讨论的这样或那样的限制。 无法通过单一查询或动态管理视图 (DMV) 了解并发登录计数或历史记录。
 
-如果多个客户端使用相同的连接字符串，该服务也会对每个登录名进行身份验证。 如果 10 个用户使用相同的用户名和密码同时连接到数据库，则会有 10 个并发登录。 此限制仅针对使用登录名进行身份验证的那段时间。 如果这 10 个用户依次连接到数据库，则并发登录数始终不会超过 1。
+如果多个客户端使用相同的连接字符串，该服务也会对每个登录名进行身份验证。 如果 10 个用户使用相同的用户名和密码同时连接到数据库，将有 10 个并发登录。 此限制仅适用于登录和身份验证期间。 如果相同的 10 个用户按顺序连接到数据库，则并发登录数将不会大于 1。
 
 > [!NOTE]
 > 此限制目前不适用于弹性池中的数据库。
 
 ### <a name="maximum-sessions"></a>最大会话数
 
-若要查看当前的活动会话数，请在 SQL 数据库中运行以下 Transact-SQL 查询：
+若要查看当前活动会话数，请在 SQL 数据库中运行以下 Transact-SQL 查询：
 
 ```sql
 SELECT COUNT(*) AS [Sessions]
 FROM sys.dm_exec_connections
 ```
 
-若要分析本地 SQL Server 工作负荷，可以对查询进行修改，使之专注于特定的数据库。 此查询有助于确定数据库可能的会话需求（如果考虑将其移至 Azure SQL 数据库）。
+如果要分析本地 SQL Server 工作负荷，可以对查询进行修改，使之专注于特定的数据库。 如果考虑将数据库移至 Azure SQL 数据库，此查询可帮助你确定该数据库可能的会话需求。
 
 ```sql
 SELECT COUNT(*) AS [Sessions]
@@ -691,13 +691,13 @@ INNER JOIN sys.databases D ON (D.database_id = S.database_id)
 WHERE D.name = 'MyDatabase'
 ```
 
-同样，这些查询返回时间点计数。 如果在一段时间内收集多个样本，则可更好地了解会话使用情况。
+同样，这些查询将返回时间点计数。 如果在一段时间内收集多个样本，则可更好地了解会话使用情况。
 
 对于 SQL 数据库分析，也可以通过查询 [sys.resource_stats](https://msdn.microsoft.com/library/dn269979.aspx) 视图并查看 **active_session_count** 列获取会话的历史统计信息。
 
 ## <a name="monitoring-query-performance"></a>监视查询性能
 
-缓慢或长时间运行的查询会消耗大量系统资源。 本部分演示如何使用动态管理视图来检测一些常见的查询性能问题。 一个较旧但仍很有帮助的故障排除参考是 Microsoft TechNet 上的 [排查 SQL Server 2008 中的性能问题](https://download.microsoft.com/download/D/B/D/DBDE7972-1EB9-470A-BA18-58849DB3EB3B/TShootPerfProbs2008.docx) 这篇文章。
+缓慢或长时间运行的查询会消耗大量系统资源。 本部分演示如何使用动态管理视图来检测一些常见的查询性能问题。 一个较旧但仍很有帮助的故障排除参考是 Microsoft TechNet 上的[排查 SQL Server 2008 中的性能问题](https://download.microsoft.com/download/D/B/D/DBDE7972-1EB9-470A-BA18-58849DB3EB3B/TShootPerfProbs2008.docx)这篇文章。
 
 ### <a name="finding-top-n-queries"></a>查找前 n 个查询
 
@@ -726,7 +726,7 @@ ORDER BY 2 DESC;
 
 ### <a name="monitoring-query-plans"></a>监视查询计划
 
-低效的查询计划还可能会增加 CPU 占用率。 下面的示例使用 [sys.dm_exec_query_stats](https://msdn.microsoft.com/library/ms189741.aspx) 视图来确定哪一个查询使用最多的 CPU 累计时间。
+低效的查询计划还可能会增加 CPU 占用率。 下面的示例使用 [sys.dm_exec_query_stats](https://msdn.microsoft.com/library/ms189741.aspx) 视图来确定哪一查询累积的 CPU 占用率最高。
 
 ```sql
 SELECT

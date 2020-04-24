@@ -10,10 +10,10 @@ ms.author: cavoeg
 author: caitlinv39
 ms.date: 01/03/2020
 ms.openlocfilehash: 9221a860984ce986df75cf18db54d5bc9e35938c
-ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80343688"
 ---
 # <a name="deploy-javascript-app-to-read-data-from-fhir-service"></a>部署用于从 FHIR 服务读取数据的 JavaScript 应用
@@ -23,7 +23,7 @@ ms.locfileid: "80343688"
 1. 测试对应用程序的访问
 1. 创建用于读取此 FHIR 数据的 Web 应用程序
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 在开始学习本套教程之前，需要准备好以下各项：
 1. Azure 订阅
 1. 一个 Azure Active Directory 租户

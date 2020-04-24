@@ -17,10 +17,10 @@ origin.date: 08/30/2018
 ms.date: 02/10/2020
 ms.author: v-yeche
 ms.openlocfilehash: 48b9c5a4a037ec0138791a66c2eda50891091c12
-ms.sourcegitcommit: 305361c96d1d5288d3dda7e81833820640e2afac
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80108527"
 ---
 # <a name="tutorial-configure-availability-group-on-azure-sql-server-vm-manually"></a>教程：在 Azure SQL Server VM 上手动配置可用性组

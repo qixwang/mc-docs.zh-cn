@@ -1,6 +1,6 @@
 ### YamlMime:Hub
 title: Azure 资源管理器文档
-summary: Azure 资源管理器是 Azure 的部署和管理服务。 使用基础结构即代码可靠地部署和管理 Azure 解决方案。
+summary: Azure 资源管理器是 Azure 的部署和管理服务。 使用基础结构即代码来可靠地部署和管理 Azure 解决方案。
 brand: azure
 metadata:
   title: Azure 资源管理器文档
@@ -13,10 +13,10 @@ metadata:
   ms.date: 03/23/2020
   ms.author: v-yeche
   ms.openlocfilehash: ba26f92db52f17b70e1f739b8ca10a6dc4906122
-  ms.sourcegitcommit: 1436f1851342ca5631eb25342eed954adb707af0
+  ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 03/19/2020
+  ms.lasthandoff: 04/17/2020
   ms.locfileid: "79543816"
 highlightedContent:
   items:
@@ -50,10 +50,10 @@ conceptualContent:
       text: 部署
     - url: templates/template-best-practices.md
       itemType: concept
-      text: 最佳实践
+      text: 最佳做法
     footerLink:
       url: templates/index.yml
-      text: 查看更多
+      text: 查看详细信息
   - title: 管理资源
     links:
     - url: management/overview.md
@@ -76,7 +76,7 @@ conceptualContent:
       text: 订阅和服务限制
     footerLink:
       url: management/index.yml
-      text: 查看更多
+      text: 查看详细信息
   - title: 托管应用程序
     links:
     - url: managed-applications/overview.md
@@ -93,4 +93,4 @@ conceptualContent:
       text: 将应用添加到市场
     footerLink:
       url: managed-applications/index.yml
-      text: 查看更多
+      text: 查看详细信息

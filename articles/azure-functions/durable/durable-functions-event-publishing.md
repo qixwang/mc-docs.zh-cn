@@ -4,10 +4,10 @@ description: 了解如何配置 Durable Functions 的自动 Azure 事件网格�
 ms.topic: conceptual
 ms.date: 03/19/2020
 ms.openlocfilehash: 9ffdf0108175f1bb7b5b50765b158fcc5dfc53cc
-ms.sourcegitcommit: e500354e2fd8b7ac3dddfae0c825cc543080f476
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79546893"
 ---
 # <a name="durable-functions-publishing-to-azure-event-grid-preview"></a>从 Durable Functions 发布到 Azure 事件网格（预览）

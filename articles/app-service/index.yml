@@ -1,6 +1,6 @@
 ### YamlMime:Landing
 title: 应用服务文档
-summary: Azure 应用服务可以让你采用所选编程语言构建和托管 Web 应用、移动后端以及 RESTful API，而无需管理基础结构。 它提供自动缩放和高可用性，支持 Windows 和 Linux，并支持从 GitHub、Azure DevOps 或任何 Git 存储库进行自动部署。 可以参考我们的快速入门、教程和示例来了解如何使用 Azure 应用服务。
+summary: 使用 Azure 应用服务可以采用所选编程语言构建和托管 Web 应用、移动后端以及 RESTful API，而无需管理基础结构。 它提供自动缩放和高可用性，支持 Windows 和 Linux，并支持从 GitHub、Azure DevOps 或任何 Git 存储库进行自动部署。 可以参考我们的快速入门、教程和示例来了解如何使用 Azure 应用服务。
 metadata:
   title: Azure 应用服务文档
   description: 在 Azure 应用服务中托管网站、Web 应用、RESTful API 和移动后端。 查找快速入门、教程和示例，以便帮助你成功使用应用服务。
@@ -10,10 +10,10 @@ metadata:
   ms.date: 03/16/2020
   ms.author: v-tawe
   ms.openlocfilehash: 88fcbd8456324a74f7d3de08174529da416d5584
-  ms.sourcegitcommit: e500354e2fd8b7ac3dddfae0c825cc543080f476
+  ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 03/19/2020
+  ms.lasthandoff: 04/17/2020
   ms.locfileid: "79546949"
 landingContent:
 - title: 关于应用服务
@@ -116,5 +116,5 @@ landingContent:
       url: https://docs.microsoft.com/powershell/module/az.websites/#app_service
     - text: REST API
       url: https://docs.microsoft.com/rest/api/appservice/
-    - text: Resource Manager
+    - text: 资源管理器
       url: https://docs.microsoft.com/azure/templates/microsoft.web/allversions

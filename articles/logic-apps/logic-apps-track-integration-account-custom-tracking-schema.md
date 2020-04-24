@@ -10,10 +10,10 @@ origin.date: 01/01/2020
 ms.date: 03/30/2020
 ms.author: v-yeche
 ms.openlocfilehash: 9d59f14dd3d967cf549bef8f74b0c849af40a5ca
-ms.sourcegitcommit: 2b084933215d0e7702456730f168d97e00c882a0
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80243478"
 ---
 # <a name="create-custom-tracking-schemas-that-monitor-end-to-end-workflows-in-azure-logic-a"></a>创建用于监视 Azure 逻辑应用中的端到端工作流的自定义跟踪架构
@@ -67,7 +67,7 @@ Azure 逻辑应用提供内置跟踪功能，你可以为工作流的各个部�
 | EventLevel | 是 | String | 事件的级别 |
 | EventTime | 是 | DateTime | 事件的时间，采用 UTC 格式：*YYYY-MM-DDTHH:MM:SS.00000Z* |
 | recordType | 是 | String | 跟踪记录的类型，仅允许以下值：`custom` |
-| record | 是 | JToken | 仅采用 JToken 格式的自定义记录类型 |
+| 记录 (record) | 是 | JToken | 仅采用 JToken 格式的自定义记录类型 |
 |||||
 
 ## <a name="b2b-protocol-tracking-schemas"></a>B2B 协议跟踪架构

@@ -7,10 +7,10 @@ origin.date: 10/04/2019
 ms.date: 03/23/2020
 ms.author: v-yeche
 ms.openlocfilehash: 76bb4b61d0a1ff8ace77f0059f18ce9269a9ee38
-ms.sourcegitcommit: 1436f1851342ca5631eb25342eed954adb707af0
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79543812"
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-resource-manager"></a>排查使用 Azure Resource Manager 时的常见 Azure 部署错误

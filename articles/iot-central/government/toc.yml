@@ -20,7 +20,7 @@
       href: concepts-waterconsumptionmonitoring-architecture.md
     - name: 水质检测参考体系结构
       href: concepts-waterqualitymonitoring-architecture.md
-- name: 操作指南
+- name: 操作方法指南
   items:
     - name: 将应用与 Dynamics 365 Field Services 连接
       href: how-to-configure-connected-field-services.md

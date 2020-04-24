@@ -12,13 +12,13 @@ origin.date: 03/20/2020
 ms.date: 03/26/2020
 ms.author: v-lingwu
 ms.openlocfilehash: f55fa3f75495a3a162d92eb6f4ce70b66404c41b
-ms.sourcegitcommit: 303a16c7117b6f3495ef0493b4ae8ccb67d7dbba
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80342396"
 ---
-# <a name="translator-text-api-30-translate"></a>文本翻译 API 3.0：Translate
+# <a name="translator-text-api-30-translate"></a>文本翻译 API 3.0：翻译
 
 翻译文本。
 
@@ -45,7 +45,7 @@ https://api.translator.azure.cn/translate?api-version=3.0
   </tr>
   <tr>
     <td>to</td>
-    <td>必需参数。<br/>指定输出文本的语言。 目标语言必须是 <code>translation</code> 范围中包含的<a href="./v3-0-languages.md">支持的语言</a>之一。 例如，若要翻译为德语，请使用 <code>to=de</code>。<br/>可以在查询字符串中重复使用此参数，这样就可以同时翻译为多种语言。 例如，若要翻译为德语和意大利语，请使用 <code>to=de&to=it</code>。</td>
+    <td>必需参数。<br/>指定输出文本的语言。 目标语言必须是 <a href="./v3-0-languages.md"> 范围中包含的</a>支持的语言<code>translation</code>之一。 例如，若要翻译为德语，请使用 <code>to=de</code>。<br/>可以在查询字符串中重复使用此参数，这样就可以同时翻译为多种语言。 例如，若要翻译为德语和意大利语，请使用 <code>to=de&to=it</code>。</td>
   </tr>
 </table>
 
@@ -55,8 +55,8 @@ https://api.translator.azure.cn/translate?api-version=3.0
   <th width="20%">查询参数</th>
   <th>说明</th>
   <tr>
-    <td>from</td>
-    <td>可选参数。<br/>指定输入文本的语言。 可以使用 <code>translation</code> 范围来查找<a href="./v3-0-languages.md">支持的语言</a>，了解哪些语言可以翻译。 如果未指定 <code>from</code> 参数，则会应用自动语言检测来确定源语言。 <br/><br/>使用<a href="/cognitive-services/translator/dynamic-dictionary">动态字典</a>功能时，必须使用 <code>from</code> 参数而不是自动检测。</td>
+    <td>从</td>
+    <td>可选参数。<br/>指定输入文本的语言。 可以使用 <a href="./v3-0-languages.md"> 范围来查找</a>支持的语言<code>translation</code>，了解哪些语言可以翻译。 如果未指定 <code>from</code> 参数，则会应用自动语言检测来确定源语言。 <br/><br/>使用<code>from</code>动态字典<a href="/cognitive-services/translator/dynamic-dictionary">功能时，必须使用 </a> 参数而不是自动检测。</td>
   </tr>  
   <tr>
     <td>textType</td>
@@ -96,7 +96,7 @@ https://api.translator.azure.cn/translate?api-version=3.0
   </tr>
   <tr>
     <td>allowFallback</td>
-    <td>可选参数。<br/>指定当自定义系统不存在时允许服务回退到一个常规系统。 可能的值为 <code>true</code>（默认）<code>false</code>。<br/><br/><code>allowFallback=false</code> 指定翻译只应使用针对 <code>category</code>（由请求指定）训练的系统。 如果将语言 X 翻译成语言 Y 需要通过枢轴语言 E 进行链接，那么此链中的所有系统（X->E 和 E->Y）需要进行自定义并且需要具有相同的类别。 如果未通过特定类别找到任何系统，此请求会返回 400 状态代码。 <code>allowFallback=true</code> 指定当自定义系统不存在时允许服务回退到一个常规系统。
+    <td>可选参数。<br/>指定当自定义系统不存在时允许服务回退到一个常规系统。 可能的值为 <code>true</code>（默认）<code>false</code>。<br/><br/><code>allowFallback=false</code> 指定翻译应仅使用针对由此请求指定的 <code>category</code> 而训练的系统。 如果将语言 X 翻译成语言 Y 需要通过枢轴语言 E 进行链接，那么此链中的所有系统（X->E 和 E->Y）将需要进行自定义并且具有相同的类别。 如果未通过特定类别找到任何系统，此请求将返回 400 状态代码。 <code>allowFallback=true</code> 指定当自定义系统不存在时允许服务回退到一个常规系统。
 </td>
   </tr>
 </table> 
@@ -104,7 +104,7 @@ https://api.translator.azure.cn/translate?api-version=3.0
 请求标头包括：
 
 <table width="100%">
-  <th width="20%">头文件</th>
+  <th width="20%">标头</th>
   <th>说明</th>
   <tr>
     <td>身份验证标头</td>
@@ -120,7 +120,7 @@ https://api.translator.azure.cn/translate?api-version=3.0
   </tr>
   <tr>
     <td>X-ClientTraceId</td>
-    <td>可选。<br/>客户端生成的 GUID，用于唯一标识请求。 如果在查询字符串中使用名为 <code>ClientTraceId</code> 的查询参数包括了跟踪 ID，则可以省略此标头。</td>
+    <td><em>可选</em>。<br/>客户端生成的 GUID，用于唯一标识请求。 如果在查询字符串中使用名为 <code>ClientTraceId</code> 的查询参数包括了跟踪 ID，则可以省略此标头。</td>
   </tr>
 </table> 
 
@@ -182,7 +182,7 @@ https://api.translator.azure.cn/translate?api-version=3.0
 ## <a name="response-headers"></a>响应标头
 
 <table width="100%">
-  <th width="20%">头文件</th>
+  <th width="20%">标头</th>
   <th>说明</th>
     <tr>
     <td>X-RequestId</td>
@@ -190,7 +190,7 @@ https://api.translator.azure.cn/translate?api-version=3.0
   </tr>
   <tr>
     <td>X-MT-System</td>
-    <td>请求翻译时，对于每种“目标”语言，指定用于翻译的系统类型。 此值是以逗号分隔的字符串列表。 每个字符串指示一个类型：<br/><ul><li>自定义 - 请求包括一个自定义系统。在翻译期间至少使用了一个自定义系统。</li><li>团队 - 所有其他请求</li></td>
+    <td>指定用于将每种语言翻译“到”所请求翻译语言的系统类型。 此值是以逗号分隔的字符串列表。 每个字符串指示一个类型：<br/><ul><li>自定义 - 请求包括一个自定义系统，并且在翻译期间至少使用了一个自定义系统。</li><li>团队 - 所有其他要求</li></td>
   </tr>
 </table> 
 
@@ -219,7 +219,7 @@ https://api.translator.azure.cn/translate?api-version=3.0
   </tr>
   <tr>
     <td>408</td>
-    <td>无法满足请求，因为缺少资源。 请检查详细错误消息。 使用自定义 <code>category</code> 时，这通常指示自定义翻译系统尚不可用于处理请求。 应在等待一段时间（例如 1 分钟）后重试此请求。</td>
+    <td>无法满足请求，因为缺少资源。 请检查详细错误消息。 使用自定义 <code>category</code> 时，这通常指示自定义翻译系统尚不可用于为请求提供服务。 应在等待一段时间（例如 1 分钟）后重试此请求。</td>
   </tr>
   <tr>
     <td>429</td>
@@ -367,7 +367,7 @@ curl -X POST "https://api.translator.azure.cn/translate?api-version=3.0&from=en&
   <th>操作</th>
   <tr>
     <td><code>NoAction</code></td>
-    <td>这是默认行为。 不雅内容会从源传递到目标。<br/><br/>
+    <td>此选项为默认行为。 不雅内容会从源传递到目标。<br/><br/>
     <strong>示例源（日语）</strong>：彼はジャッカスです。<br/>
     <strong>示例翻译（中文）</strong>：他是一个笨蛋。
     </td>
@@ -384,10 +384,10 @@ curl -X POST "https://api.translator.azure.cn/translate?api-version=3.0&from=en&
     <td>不雅词语会在输出中使用标记进行替换。 标记取决于 <code>ProfanityMarker</code> 参数。<br/><br/>
 如果 <code>ProfanityMarker=Asterisk</code>，不雅词语会被替换为 <code>***</code>：<br/>
     <strong>示例源（日语）</strong>：彼はジャッカスです。<br/>
-    <strong>示例翻译（中文）</strong>：他是一个 \*\*\*。<br/><br/>
+    <strong>示例翻译（中文）</strong>：他是一个\*\*\*。<br/><br/>
 如果 <code>ProfanityMarker=Tag</code>，则不雅词语会被括在 XML 标记 &lt;profanity&gt; 和 &lt;/profanity&gt; 中：<br/>
     <strong>示例源（日语）</strong>：彼はジャッカスです。<br/>
-    <strong>示例翻译（中文）</strong>：他是一个 &lt;profanity&gt;笨蛋&lt;/profanity&gt;。
+    <strong>示例翻译（中文）</strong>：他是一个&lt;profanity&gt;笨蛋&lt;/profanity&gt;。
   </tr>
 </table> 
 

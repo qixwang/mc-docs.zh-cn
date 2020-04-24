@@ -6,10 +6,10 @@ origin.date: 12/09/2019
 ms.date: 03/23/2020
 ms.author: v-yeche
 ms.openlocfilehash: 71f8d996ddda441ef149820d26abc38f0c83bfae
-ms.sourcegitcommit: 1436f1851342ca5631eb25342eed954adb707af0
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79543830"
 ---
 # <a name="deploy-azure-resources-to-more-than-one-subscription-or-resource-group"></a>将 Azure 资源部署到多个订阅或资源组
@@ -27,7 +27,7 @@ ms.locfileid: "79543830"
 
 <!-- Not Available on [add guest users from another directory](../active-directory/active-directory-b2b-what-is-azure-ad-b2b.md) -->
 
-若要指定其他资源组和订阅，请使用：
+若要指定不同的资源组和订阅，请使用：
 
 ```json
 "resources": [
@@ -42,7 +42,7 @@ ms.locfileid: "79543830"
 ]
 ```
 
-如果资源组属于同一订阅，则可删除 **subscriptionId** 值。
+如果资源组位于同一订阅中，则可以删除“subscriptionId”值  。
 
 以下示例部署两个存储帐户。 第一个存储帐户部署到部署期间指定的资源组。 第二个存储帐户部署到在 `secondResourceGroup` 和 `secondSubscriptionID` 参数中指定的资源组：
 
@@ -213,11 +213,11 @@ az group deployment create \
 
 下表显示了函数是解析为父资源组，还是解析为嵌入资源组和订阅。
 
-| 模板类型 | 作用域 | 解决方法 |
+| 模板类型 | 范围 | 解决方法 |
 | ------------- | ----- | ---------- |
 | 嵌套        | 外部（默认值） | 父资源组 |
 | 嵌套        | 内部 | 子资源组 |
-| 链接        | 不适用   | 子资源组 |
+| 链接        | 空值   | 子资源组 |
 
 以下[示例模板](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/crossresourcegroupproperties.json)演示：
 
@@ -384,8 +384,8 @@ az group deployment create \
 
 ## <a name="next-steps"></a>后续步骤
 
-* 若要了解如何在模板中定义参数，请参阅[了解 Azure Resource Manager 模板的结构和语法](template-syntax.md)。
-* 有关解决常见部署错误的提示，请参阅[排查使用 Azure Resource Manager 时的常见 Azure 部署错误](common-deployment-errors.md)。
+* 若要了解如何在模板中定义参数，请参阅[了解 Azure 资源管理器模板的结构和语法](template-syntax.md)。
+* 有关解决常见部署错误的提示，请参阅[排查使用 Azure 资源管理器时的常见 Azure 部署错误](common-deployment-errors.md)。
 * 有关部署需要 SAS 令牌的模板的信息，请参阅[使用 SAS 令牌部署专用模板](secure-template-with-sas-token.md)。
 
 <!-- Update_Description: update meta properties, wording update, update link -->

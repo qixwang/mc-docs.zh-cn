@@ -9,10 +9,10 @@ origin.date: 06/15/2019
 ms.date: 03/23/2020
 ms.author: v-jay
 ms.openlocfilehash: 57b47520b6d29f7222b340cfe8202f420ea73271
-ms.sourcegitcommit: 305361c96d1d5288d3dda7e81833820640e2afac
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80109808"
 ---
 # <a name="azure-dns-faq"></a>Azure DNS 常见问题解答
@@ -69,25 +69,25 @@ Azure DNS 仅支持托管静态 DNS 域，其中对某给定的 DNS 记录来说
 
 ### <a name="does-azure-dns-support-domain-name-registration"></a>Azure DNS 是否支持域名注册？
 
-否。 Azure DNS 目前不支持购买域名。 若要购买域，必须使用第三方域名注册机构。 注册机构通常收取小额年费。 然后，可将域托管在 Azure DNS 中用于管理 DNS 记录。 有关详细信息，请参阅 [向 Azure DNS 委派域](dns-domain-delegation.md)。
+不是。 Azure DNS 目前不支持购买域名。 若要购买域，必须使用第三方域名注册机构。 注册机构通常收取小额年费。 然后，可将域托管在 Azure DNS 中用于管理 DNS 记录。 有关详细信息，请参阅 [向 Azure DNS 委派域](dns-domain-delegation.md)。
 
 我们正在 Azure 积压工作中跟踪域购买功能。
 
 ### <a name="does-azure-dns-support-dnssec"></a>Azure DNS 是否支持 DNSSEC？
 
-否。 Azure DNS 目前不支持域名系统安全扩展 (DNSSEC)。
+不是。 Azure DNS 目前不支持域名系统安全扩展 (DNSSEC)。
 
 我们正在 Azure DNS 积压工作中跟踪 DNSSEC 功能。
 
 ### <a name="does-azure-dns-support-zone-transfers-axfrixfr"></a>Azure DNS 是否支持区域传送 (AXFR/IXFR)？
 
-否。 Azure DNS 目前不支持区域传送。 可[使用 Azure CLI 将 DNS 区域导入 Azure DNS](dns-import-export.md)。 然后，可通过 [Azure DNS 管理门户](dns-operations-recordsets-portal.md)、[REST API](https://docs.microsoft.com/powershell/module/az.dns)、[SDK](dns-sdk.md)、[PowerShell cmdlet](dns-operations-recordsets.md) 或 [CLI 工具](dns-operations-recordsets-cli.md)来托管 DNS 记录。
+不是。 Azure DNS 目前不支持区域传送。 可[使用 Azure CLI 将 DNS 区域导入 Azure DNS](dns-import-export.md)。 然后，可通过 [Azure DNS 管理门户](dns-operations-recordsets-portal.md)、[REST API](https://docs.microsoft.com/powershell/module/az.dns)、[SDK](dns-sdk.md)、[PowerShell cmdlet](dns-operations-recordsets.md) 或 [CLI 工具](dns-operations-recordsets-cli.md)来托管 DNS 记录。
 
 我们正在 Azure DNS 积压工作中跟踪区域传送功能。
 
 ### <a name="does-azure-dns-support-url-redirects"></a>Azure DNS 是否支持 URL 重定向？
 
-否。 URL 重定向服务实际并非 DNS 服务。 它们在 HTTP 级别而非 DNS 级别运行。 某些 DNS 提供商会在整体产品/服务中捆绑销售 URL 重定向服务。 Azure DNS 目前不支持此服务。
+不是。 URL 重定向服务实际并非 DNS 服务。 它们在 HTTP 级别而非 DNS 级别运行。 某些 DNS 提供商会在整体产品/服务中捆绑销售 URL 重定向服务。 Azure DNS 目前不支持此服务。
 
 我们正在 Azure DNS 积压工作中跟踪 URL 重定向功能。
 
@@ -188,7 +188,7 @@ Azure DNS 仅支持托管静态 DNS 域，其中对某给定的 DNS 记录来说
 
 ### <a name="do-azure-dns-name-servers-resolve-over-ipv6"></a>Azure DNS 名称服务器是否通过 IPv6 解析？ 
 
-是的。 Azure DNS 名称服务器是双重堆栈。 双重堆栈表示它们具有 IPv4 和 IPv6 地址。 若要查找分配给 DNS 区域的 Azure DNS 名称服务器的 IPv6 地址，请使用 nslookup 等工具。 例如 `nslookup -q=aaaa <Azure DNS Nameserver>`。
+是的。 Azure DNS 名称服务器是双重堆栈。 双重堆栈表示它们具有 IPv4 和 IPv6 地址。 若要查找分配给 DNS 区域的 Azure DNS 名称服务器的 IPv6 地址，请使用 nslookup 等工具。 示例为 `nslookup -q=aaaa <Azure DNS Nameserver>`。
 
 ### <a name="how-do-i-set-up-an-idn-in-azure-dns"></a>如何在 Azure DNS 中设置 IDN？
 

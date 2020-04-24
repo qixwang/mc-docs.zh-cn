@@ -16,10 +16,10 @@ origin.date: 02/12/2020
 ms.date: 03/16/2020
 ms.author: v-tawe
 ms.openlocfilehash: 291ae6fb95b20dc1ecb70bad01f3a890faaf6999
-ms.sourcegitcommit: 1d3d8dfdaf6281f06640cbee7124a1e8bf102c50
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80243933"
 ---
 # <a name="enable-capturing-of-events-streaming-through-azure-event-hubs"></a>启用捕获通过 Azure 事件中心流式处理的事件
@@ -36,9 +36,9 @@ Azure [事件中心捕获][capture-overview]用于自动将事件中心中的流
 
 ## <a name="capture-data-to-azure-storage"></a>将数据捕获到 Azure 存储
 
-创建事件中心以后，即可在“创建事件中心”门户屏幕中单击“启用”按钮，以便启用捕获。   然后在“捕获提供程序”框中单击“Azure 存储”，指定存储帐户和容器。   由于事件中心捕获对存储使用服务到服务身份验证，因此无需指定存储连接字符串。 资源选取器自动为存储帐户选择资源 URI。 如果使用 Azure Resource Manager，必须以字符串形式显式提供此 URI。
+创建事件中心以后，即可在“创建事件中心”门户屏幕中单击“启用”按钮，以便启用捕获。   然后在“捕获提供程序”框中单击“Azure 存储”，指定存储帐户和容器。   由于事件中心捕获对存储使用服务到服务身份验证，因此无需指定存储连接字符串。 资源选取器自动为存储帐户选择资源 URI。 如果使用 Azure 资源管理器，必须以字符串形式显式提供此 URI。
 
-默认时间窗口为 5 分钟。 最小值为 1，最大值为 15。 **大小** 窗口的范围为 10-500 MB。
+默认时间段为 5 分钟。 最小值为 1，最大值为 15。 **大小**窗口的范围为 10-500 MB。
 
 ![捕获的时间范围][1]
 
@@ -66,7 +66,7 @@ Azure [事件中心捕获][capture-overview]用于自动将事件中心中的流
 ## <a name="next-steps"></a>后续步骤
 
 - 阅读[事件中心捕获概述][capture-overview]，详细了解事件中心捕获。
-- 还可以通过 Azure Resource Manager 模板配置事件中心捕获。 有关详细信息，请参阅[通过 Azure 资源管理器模板启用捕获](event-hubs-resource-manager-namespace-event-hub-enable-capture.md)。
+- 还可以通过 Azure 资源管理器模板配置事件中心捕获。 有关详细信息，请参阅[通过 Azure 资源管理器模板启用捕获](event-hubs-resource-manager-namespace-event-hub-enable-capture.md)。
 - [了解如何创建使用事件中心命名空间作为源的 Azure 事件网格订阅](store-captured-data-data-warehouse.md)
 
 <!--Not available - [Get started with Azure Data Lake Store using the Azure portal](../data-lake-store/data-lake-store-get-started-portal.md)-->

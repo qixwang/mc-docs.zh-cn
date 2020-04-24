@@ -13,10 +13,10 @@ ms.reviewer: jrasnik, carlrab
 origin.date: 03/10/2020
 ms.date: 03/30/2020
 ms.openlocfilehash: 2c2bdd903b6e2ba17e924ec15adc3fdbedf03681
-ms.sourcegitcommit: 90660563b5d65731a64c099b32fb9ec0ce2c51c6
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80341841"
 ---
 # <a name="database-advisor-performance-recommendations-for-single-and-pooled-databases"></a>针对单一数据库和共用数据库的数据库顾问性能建议
@@ -29,10 +29,10 @@ Azure SQL 数据库与应用程序一起自行学习和进行适应性调整。 
 
 ![Azure SQL 数据库性能概述](./media/sql-database-performance/performance-overview-annotated.png)
 
-- “建议”磁贴提供数据库的优化建议明细（如果建议超出 3 条，则将显示前 3 条）。  单击此磁贴可转到 **[性能建议选项](sql-database-advisor-portal.md#viewing-recommendations)** 。
-- “优化活动”  磁贴提供正在进行的和已完成的数据库优化操作摘要，可快速查看优化活动的历史记录。 单击此磁贴可转到数据库的完整优化历史记录视图。
+- “建议”  磁贴提供数据库的优化建议明细（如果建议超出 3 条，则将显示前 3 条）。 单击此磁贴可转到 **[性能建议选项](sql-database-advisor-portal.md#viewing-recommendations)** 。
+- “**优化活动**”磁贴提供正在进行的和已完成的数据库优化操作摘要，可快速查看优化活动的历史记录。 单击此磁贴可转到数据库的完整优化历史记录视图。
 - “自动优化”  磁贴显示数据库的 **[自动优化配置](sql-database-automatic-tuning-enable.md)** （已自动应用到数据库的优化选项）。 单击此磁贴可打开自动化配置对话框。
-- “数据库查询”磁贴显示数据库的查询性能摘要（DTU 整体使用情况和排名靠前的资源消耗查询）。  单击此磁贴可转到 **[查询性能见解](sql-database-query-performance.md)** 。
+- “**数据库查询**”磁贴显示数据库的查询性能摘要（DTU 整体使用情况和排名靠前的资源消耗查询）。 单击此磁贴可转到 **[查询性能见解](sql-database-query-performance.md)** 。
 
 ## <a name="performance-recommendation-options"></a>性能建议选项
 
@@ -49,9 +49,9 @@ Azure SQL 数据库中的单一数据库和共用数据库可用的性能建议�
 
 若要应用性能建议，请参阅[应用建议](sql-database-advisor-portal.md#applying-recommendations)。 若要查看建议的状态，请参阅[监视操作](sql-database-advisor-portal.md#monitoring-operations)。
 
-还可以查找有关以前应用的优化操作的完整历史记录。
+还可找到过去应用的优化操作的完整历史记录。
 
-## <a name="create-index-recommendations"></a>创建索引建议
+## <a name="create-index-recommendations"></a>“创建索引”建议
 
 SQL 数据库持续监视正在运行的查询，并发现可以提升性能的索引。 确信缺少特定索引后，便会新建“创建索引”  建议。
 
@@ -69,18 +69,18 @@ Azure SQL 数据库通过估计索引在一段时间内带来的性能提升，�
 
 此过程不断重复，直到没有足够的可用存储来创建索引或不再认为索引有益。
 
-## <a name="drop-index-recommendations"></a>删除索引建议
+## <a name="drop-index-recommendations"></a>“删除索引”建议
 
-除了检测缺少的索引外，SQL 数据库还会持续分析现有索引的性能。 Azure SQL 数据库会建议删除未使用的索引。 在两种情况下会建议删除索引：
+除了检测缺少的索引外，SQL 数据库还会持续分析现有索引的性能。 Azure SQL 数据库会建议删除未使用的索引。 在以下两种情况下，建议删除索引：
 
 - 索引是另一索引的副本（已编入索引且包含的列、分区架构和筛选器都相同）。
 - 长时间（93 天）未使用索引。
 
-删除索引建议在实现后也要进行验证。 如果性能得到提升，则会生成影响力报表。 如果性能下降，则会还原建议。
+也会验证已实现的“删除索引”建议。 如果性能得到提升，则会生成影响力报表。 如果性能下降，则会还原建议。
 
 ## <a name="parameterize-queries-recommendations-preview"></a>“参数化查询”建议（预览版）
 
-*参数化查询* 建议。 这种状态提供了一个应用强制参数化的机会。 而强制参数化允许缓存并在将来重复使用查询计划，从而改善性能和减少资源使用。
+当具有一个或多个正在持续被重新编译但都以相同的查询执行计划结束的查询时，就会出现*参数化查询*建议。 这种状态提供了一个应用强制参数化的机会。 而强制参数化允许缓存并在将来重复使用查询计划，从而改善性能和减少资源使用。
 
 对 SQL Server 发出的每个查询一开始需要进行编译，生成执行计划。 每个生成的计划添加到计划缓存中。 相同查询的后续执行可以重复使用该缓存中的此计划，而无需进一步编译。
 
@@ -103,12 +103,12 @@ Azure SQL 数据库通过估计索引在一段时间内带来的性能提升，�
 
 当 Azure SQL 数据库服务发现 SQL 数据库上架构相关 SQL 错误的数量发生异常时，就会出现“修复架构问题”建议。 下表显示与架构问题相关的错误：
 
-| SQL 错误代码 | Message |
+| SQL 错误代码 | 消息 |
 | --- | --- |
 | 201 |过程或函数“ *”需要参数“* ”，但未提供该参数。 |
 | 207 |列名称“*”无效。 |
 | 208 |对象名“*”无效。 |
-| 213 |列名称或所提供值的数目与表定义不匹配。 |
+| 213 |列名或所提供值的数目与表定义不匹配。 |
 | 2812 |找不到存储过程“*”。 |
 | 8144 |为过程或函数 * 指定了过多的参数。 |
 

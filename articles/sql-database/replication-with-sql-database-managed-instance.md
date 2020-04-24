@@ -13,10 +13,10 @@ ms.reviewer: mathoma
 origin.date: 02/07/2019
 ms.date: 03/30/2020
 ms.openlocfilehash: 20e8ea13a4c07da69326deb6d83a0b51138d29a1
-ms.sourcegitcommit: 90660563b5d65731a64c099b32fb9ec0ce2c51c6
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80341843"
 ---
 # <a name="configure-replication-in-an-azure-sql-database-managed-instance-database"></a>在 Azure SQL 数据库托管实例数据库中配置复制

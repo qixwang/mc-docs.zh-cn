@@ -34,7 +34,7 @@
     - name: Azure 存储静态加密
       href: ../common/storage-service-encryption.md?toc=%2fstorage%2ffiles%2ftoc.json
       items:
-        - name: 客户管理的密钥与 Azure Key Vault
+        - name: 客户管理的密钥和 Azure Key Vault
           href: ../common/encryption-customer-managed-keys.md?toc=%2fstorage%2ffiles%2ftoc.json
     - name: 开发
       items:
@@ -54,9 +54,9 @@
           href: ../common/storage-metrics-migration.md?toc=%2fstorage%2ffiles%2ftoc.json
         - name: 存储分析指标（经典）
           href: ../common/storage-analytics-metrics.md?toc=%2fstorage%2ffiles%2ftoc.json
-    - name: 常见问题
+    - name: 常见问题解答
       href: storage-files-faq.md
-- name: 操作指南
+- name: 操作方法指南
   items:
     - name: 创建
       items:
@@ -172,7 +172,7 @@
       href: 'https://azure.github.io/azure-storage-ios/'
     - name: Android
       href: 'https://azure.github.io/azure-storage-android'
-    - name: Resource Manager 模板
+    - name: 资源管理器模板
       displayName: arm
       href: 'https://docs.microsoft.com/azure/templates/microsoft.storage/allversions'
 - name: 资源

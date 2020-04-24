@@ -1,6 +1,6 @@
 ---
 title: 启用自动优化
-description: 可以轻松地在 Azure SQL 数据库中启用自动优化。
+description: 可轻松对 Azure SQL 数据库启用自动优化。
 services: sql-database
 ms.service: sql-database
 ms.subservice: performance
@@ -13,15 +13,15 @@ ms.reviewer: jrasnik, carlrab
 origin.date: 12/03/2019
 ms.date: 03/30/2020
 ms.openlocfilehash: 80340da0ebd66d2f26cb40879fd8c17189841997
-ms.sourcegitcommit: 90660563b5d65731a64c099b32fb9ec0ce2c51c6
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80341840"
 ---
 # <a name="enable-automatic-tuning-to-monitor-queries-and-improve-workload-performance"></a>启用自动优化以监视查询并提高工作负荷性能
 
-Azure SQL 数据库是一种自动托管的数据服务，它会不断监视查询并识别你可以执行的操作，以提高工作负荷的性能。 可以查看建议并手动应用这些建议，或者让 Azure SQL 数据库自动应用纠正措施 - 这称为**自动优化模式**。
+Azure SQL 数据库是自动托管的数据服务，可持续监视查询并识别可为改善工作负荷性能执行的操作。 可查看建议并手动应用，或让 Azure SQL 数据库自动应用正确的操作 - 这称为“自动优化模式”  。
 
 可以通过 [Azure 门户](sql-database-automatic-tuning-enable.md#azure-portal)、[REST API](sql-database-automatic-tuning-enable.md#rest-api) 调用和 [T-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-current) 命令在服务器或数据库级别启用自动优化。
 
@@ -31,7 +31,7 @@ Azure SQL 数据库是一种自动托管的数据服务，它会不断监视查�
 > [!NOTE]
 > 目前不支持通过 ARM（Azure 资源管理器）模板配置自动优化选项。
 
-## <a name="enable-automatic-tuning-on-server"></a>在服务器上启用自动优化
+## <a name="enable-automatic-tuning-on-server"></a>对服务器启用自动优化
 
 在服务器级别上，可选择从“Azure 默认值”继承自动优化配置，或选择不继承配置。 Azure 默认值为启用 FORCE_LAST_GOOD_PLAN 和 CREATE_INDEX，禁用 DROP_INDEX。
 
@@ -49,7 +49,7 @@ Azure SQL 数据库是一种自动托管的数据服务，它会不断监视查�
 ![服务器](./media/sql-database-automatic-tuning-enable/server.png)
 
 > [!NOTE]
-> 请注意，此时 **DROP_INDEX** 选项与使用分区切换和索引提示的应用程序不兼容，并且不应在这些情况下打开。 高级和业务关键服务层不支持删除未使用的索引。
+> 请注意，此时 DROP_INDEX 选项与使用分区切换和索引提示的应用程序不兼容，并且不应在这些情况下启用  。 高级和业务关键服务层不支持删除未使用的索引。
 >
 
 选择想要启用的自动优化选项，然后选择“应用”  。
@@ -120,6 +120,6 @@ ALTER DATABASE current SET AUTOMATIC_TUNING (FORCE_LAST_GOOD_PLAN = ON, CREATE_I
 
 ## <a name="next-steps"></a>后续步骤
 
-* 请参阅[自动优化文章](sql-database-automatic-tuning.md)，详细了解自动优化以及如何借助它来提高性能。
-* 请参阅[性能建议](sql-database-advisor.md)，获取 Azure SQL 数据库性能建议的概述。
-* 请参阅[查询性能见解](sql-database-query-performance.md)，了解排名靠前的查询的性能影响。
+* 请阅读[自动优化文章](sql-database-automatic-tuning.md)，详细了解自动优化及其如何帮助提高性能。
+* 请参阅[性能建议](sql-database-advisor.md)，了解 Azure SQL 数据库性能建议的概述。
+* 若要了解排名靠前的查询的性能影响，请参阅[查询性能见解](sql-database-query-performance.md)。

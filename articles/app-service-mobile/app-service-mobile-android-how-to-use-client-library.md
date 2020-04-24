@@ -9,10 +9,10 @@ origin.date: 06/25/2019
 md.date: 03/23/2020
 ms.author: v-tawe
 ms.openlocfilehash: 02b4983c843acdd7923581f445b2bfbba1f8781c
-ms.sourcegitcommit: b2f2bb08ab1b5ccb3c596d84b3b6ddca5bba3903
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80151750"
 ---
 # <a name="how-to-use-the-azure-mobile-apps-sdk-for-android"></a>如何使用用于 Android 的 Azure 移动应用 SDK

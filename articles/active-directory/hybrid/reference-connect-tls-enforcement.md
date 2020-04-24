@@ -16,10 +16,10 @@ ms.subservice: hybrid
 ms.author: v-junlch
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 658a33a7f2e023f2eedd13cd543963680f66ea5f
-ms.sourcegitcommit: 6568c59433d7e80ab06e9fe76d4791f761ed6775
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80243058"
 ---
 # <a name="tls-12-enforcement-for-azure-ad-connect"></a>强制 Azure AD Connect 执行 TLS 1.2

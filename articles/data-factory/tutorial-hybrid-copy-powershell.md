@@ -13,10 +13,10 @@ ms.custom: seo-lt-2019; seo-dt-2019
 origin.date: 01/22/2018
 ms.date: 03/23/2020
 ms.openlocfilehash: bb02459d7dc641e1759d30d367480120df87bddb
-ms.sourcegitcommit: 71a386ca0d0ecb79a123399b6ab6b8c70ea2aa78
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79497136"
 ---
 # <a name="tutorial-copy-data-from-an-on-premises-sql-server-database-to-azure-blob-storage"></a>教程：将数据从本地 SQL Server 数据库复制到 Azure Blob 存储
@@ -37,7 +37,7 @@ ms.locfileid: "79497136"
 > * 启动管道运行。
 > * 监视管道运行。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 ### <a name="azure-subscription"></a>Azure 订阅
 如果还没有 Azure 订阅，请在开始前[创建一个 1 元试用帐户](https://www.azure.cn/zh-cn/pricing/1rmb-trial-full/?form-type=identityauth)。
 
@@ -178,7 +178,7 @@ ms.locfileid: "79497136"
 >    The specified data factory name 'ADFv2TutorialDataFactory' is already in use. Data factory names must be globally unique.
 >    ```
 > * 若要创建数据工厂实例，用于登录到 Azure 的用户帐户必须具有  参与者或  所有者角色，或者是 Azure 订阅的  管理员。
-> * 若要查看目前提供数据工厂的 Azure 区域的列表，请在以下页面上选择感兴趣的区域，然后展开“分析”  以找到“数据工厂”  ：[可用产品(按区域)](https://azure.microsoft.com/global-infrastructure/services/?regions=china-non-regional,china-east,china-east-2,china-north,china-north-2&products=all)。 数据工厂使用的数据存储（Azure 存储、Azure SQL 数据库等）和计算资源（Azure HDInsight 等）可以位于其他区域。
+> * 若要查看目前提供数据工厂的 Azure 区域的列表，请在以下页面上选择感兴趣的区域，然后展开“分析”  以找到“数据工厂”  ：[可用产品（按区域）](https://azure.microsoft.com/global-infrastructure/services/?regions=china-non-regional,china-east,china-east-2,china-north,china-north-2&products=all)。 数据工厂使用的数据存储（Azure 存储、Azure SQL 数据库等）和计算资源（Azure HDInsight 等）可以位于其他区域。
 >
 >
 
@@ -300,7 +300,7 @@ ms.locfileid: "79497136"
 
     g. 输入与用户名关联的密码。
 
-    h.如果该值不存在，请单击“添加行”。 若要确认 Integration Runtime 能否连接到 SQL Server，请选择“测试”。   
+    h. 若要确认 Integration Runtime 能否连接到 SQL Server，请选择“测试”。   
     ![连接成功](media/tutorial-hybrid-copy-powershell/config-manager-diagnostics-tab.png)
 
     如果连接成功，则会显示绿色复选图标。 否则，会收到与故障相关的错误消息。 请解决问题，确保 Integration Runtime 可以连接到 SQL Server 实例。
@@ -706,7 +706,7 @@ $runId = Invoke-AzDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -Resou
     ```
 
 ## <a name="verify-the-output"></a>验证输出
-该管道自动在 `adftutorial` Blob 容器中创建名为 *fromonprem* 的输出文件夹。 确认在输出文件夹中看到 *dbo.emp.txt* 文件。
+该管道自动在 *Blob 容器中创建名为*fromonprem`adftutorial` 的输出文件夹。 确认在输出文件夹中看到 *dbo.emp.txt* 文件。
 
 1. 在 Azure 门户的“adftutorial”容器窗口中选择“刷新”，查看输出文件夹。  
 1. 选择文件夹列表中的 `fromonprem`。
@@ -716,7 +716,7 @@ $runId = Invoke-AzDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -Resou
 
 
 ## <a name="next-steps"></a>后续步骤
-此示例中的管道将数据从 Azure Blob 存储中的一个位置复制到另一个位置。 你已了解如何：
+此示例中的管道将数据从 Azure Blob 存储中的一个位置复制到另一个位置。 你已了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 创建数据工厂。

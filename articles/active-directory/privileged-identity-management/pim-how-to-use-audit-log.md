@@ -15,10 +15,10 @@ ms.author: v-junlch
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 88e5f250a9f7bd4033f3de3e1ab13599db894fcd
-ms.sourcegitcommit: 6568c59433d7e80ab06e9fe76d4791f761ed6775
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80243192"
 ---
 # <a name="view-audit-history-for-azure-ad-roles-in-privileged-identity-management"></a>在 Privileged Identity Management 中查看 Azure AD 角色的审核历史记录
@@ -29,7 +29,7 @@ ms.locfileid: "80243192"
 
 从 2019 年 11 月开始，Privileged Identity Management 的 Azure AD 角色部分将更新为与 Azure 资源角色的体验相匹配的新版本。 这将创建附加功能以及[对现有 API 的更改](azure-ad-roles-features.md#api-changes)。 在推出新版本时，本文中遵循的过程取决于当前拥有的 Privileged Identity Management 版本。 按照本部分中的步骤确定所拥有的 Privileged Identity Management 的版本。 了解 Privileged Identity Management 版本之后，可以选择本文中与该版本匹配的过程。
 
-1. 以具有[特权角色管理员](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator)角色的用户身份登录到 [Azure 门户](https://portal.azure.cn/)。
+1. 以具有[特权角色管理员](https://portal.azure.cn/)角色的用户身份登录到 [Azure 门户](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator)。
 1. 打开“Azure AD Privileged Identity Management”。  如果在概述页的顶部有横幅，请按照本文“新版本”选项卡中的说明进行操作  。 否则，请按照“先前版本”选项卡中的说明操作  。
 
     [![Azure AD 角色新版本](./media/pim-how-to-use-audit-log/directory-roles-audit-history.png "选择你的版本对应的选项卡")](./media/pim-how-to-use-audit-log/directory-roles-audit-history.png)
@@ -74,7 +74,7 @@ ms.locfileid: "80243192"
 
 按以下步骤查看 Azure AD 角色的审核历史记录。
 
-1. 使用[特权角色管理员](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator)角色成员用户的身份登录到 [Azure 门户](https://portal.azure.cn/)。
+1. 使用[特权角色管理员](https://portal.azure.cn/)角色成员用户的身份登录到 [Azure 门户](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator)。
 
 1. 打开“Azure AD Privileged Identity Management”。 
 

@@ -13,10 +13,10 @@ author: timlt
 origin.date: 11/12/2019
 ms.date: 04/06/2020
 ms.openlocfilehash: b6fc10df87ec1b134bd26352326c9d9f4bdccca9
-ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80343129"
 ---
 # <a name="tutorial--customize-the-operator-dashboard-and-manage-devices-in-azure-iot-central"></a>教程：在 Azure IoT Central 中自定义操作员仪表板和管理设备
@@ -153,7 +153,7 @@ Azure IoT Central 应用程序仪表板由一个或多个磁贴组成。 磁贴�
 
 1. 选择两个 RuuviTag 传感器之一的“设备实例”  。 在示例 Contoso 商店中，选择 `Zone 1 Ruuvi` 以创建区域 1 的遥测数据磁贴。 
 
-1. 在“遥测数据”列表中选择 `Relative humidity` 和 `temperature`  。 这些是为磁贴上每个区域显示的遥测数据项目。
+1. 在“遥测数据”列表中选择 `Relative humidity` 和 `temperature` 。 这些是为磁贴上每个区域显示的遥测数据项目。
 
 1. 选择“合并”  。 
 

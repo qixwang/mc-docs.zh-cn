@@ -6,10 +6,10 @@ ms.topic: include
 ms.date: 03/16/2020
 ms.author: v-junlch
 ms.openlocfilehash: 7e82bf3ee0559a6b35cd0d052a1f3eae18f9e1a0
-ms.sourcegitcommit: 71a386ca0d0ecb79a123399b6ab6b8c70ea2aa78
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79497232"
 ---
 ## <a name="disable-email-verification"></a>禁用电子邮件验证

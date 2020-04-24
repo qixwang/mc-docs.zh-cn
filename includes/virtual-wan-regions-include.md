@@ -10,10 +10,10 @@ ms.date: 03/30/2020
 ms.author: v-yeche
 ms.custom: include file
 ms.openlocfilehash: 56b4a7a0d2fd7fe500070759d3a42c3d77068a2c
-ms.sourcegitcommit: 4810b75d1e1db78d9747e99735468a6ab861be2d
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80291275"
 ---
 <!--Not Available on ### Azure regions within a geopolitical region-->

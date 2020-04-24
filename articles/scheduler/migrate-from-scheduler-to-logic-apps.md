@@ -11,10 +11,10 @@ ms.topic: article
 origin.date: 02/29/2020
 ms.date: 03/30/2020
 ms.openlocfilehash: bfb59adc518eda31433e03143cee339a5fbcb692
-ms.sourcegitcommit: 90660563b5d65731a64c099b32fb9ec0ce2c51c6
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80341722"
 ---
 # <a name="migrate-azure-scheduler-jobs-to-azure-logic-apps"></a>将 Azure 计划程序作业迁移到 Azure 逻辑应用

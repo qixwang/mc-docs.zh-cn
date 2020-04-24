@@ -10,10 +10,10 @@ ms.topic: conceptual
 origin.date: 02/20/2020
 ms.date: 03/16/2020
 ms.openlocfilehash: 282ed96bbc448e5b957e1103983549dd0de09d7e
-ms.sourcegitcommit: 71a386ca0d0ecb79a123399b6ab6b8c70ea2aa78
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79497196"
 ---
 # <a name="how-to-add-a-custom-skill-to-an-azure-cognitive-search-enrichment-pipeline"></a>如何向 Azure 认知搜索扩充管道添加自定义技能

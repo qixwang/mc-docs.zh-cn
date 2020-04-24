@@ -13,10 +13,10 @@ ms.reviewer: sstein
 origin.date: 12/18/2018
 ms.date: 03/30/2020
 ms.openlocfilehash: a474cf6df2800aa2d9d5ec7ed4a717a68cace921
-ms.sourcegitcommit: 90660563b5d65731a64c099b32fb9ec0ce2c51c6
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80341709"
 ---
 # <a name="create-configure-and-manage-elastic-jobs"></a>创建、配置和管理弹性作业

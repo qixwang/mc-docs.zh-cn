@@ -8,10 +8,10 @@ ms.topic: conceptual
 origin.date: 12/02/2019
 ms.date: 03/30/2020
 ms.openlocfilehash: 5ec9aeb00a4c2f7cded93c3a38ab21d5cb9f54ca
-ms.sourcegitcommit: 303a16c7117b6f3495ef0493b4ae8ccb67d7dbba
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80342337"
 ---
 # <a name="monitoring-in-azure-database-for-mysql"></a>在 Azure Database for MySQL 中进行监视
@@ -21,28 +21,28 @@ ms.locfileid: "80342337"
 
 监视服务器的相关数据有助于排查工作负荷故障及优化工作负荷。 Azure Database for MySQL 提供了各种指标来帮助用户深入了解服务器的行为。
 
-## <a name="metrics"></a>指标
+## <a name="metrics"></a>度量值
 所有 Azure 指标的频率都是一分钟，每个指标提供 30 天的历史记录。 可针对指标配置警报。 有关分步指南，请参阅[如何设置警报](howto-alert-on-metric.md)。 其他任务包括设置自动操作、执行高级分析和存档历史记录。 有关详细信息，请参阅 [Azure 指标概述](../monitoring-and-diagnostics/monitoring-overview-metrics.md)。
 
 ### <a name="list-of-metrics"></a>指标列表
 这些指标适用于 Azure Database for MySQL：
 
-|指标|指标显示名称|计价单位|说明|
+|指标|指标显示名称|单位|说明|
 |---|---|---|---|
 |cpu_percent|CPU 百分比|百分比|使用的 CPU 百分比。|
 |memory_percent|内存百分比|百分比|使用的内存百分比。|
 |io_consumption_percent|IO 百分比|百分比|使用的 IO 百分比。|
 |storage_percent|存储百分比|百分比|所用存储占服务器最大存储的百分比。|
 |storage_used|已用的存储量|字节|使用的存储量。 服务使用的存储可能包括数据库文件、事务日志和服务器日志。|
-|serverlog_storage_percent|服务器日志存储空间百分比|百分比|所用服务器日志存储占服务器最大服务器日志存储的百分比。|
+|serverlog_storage_percent|服务器日志存储空间百分比|百分比|所用的服务器日志存储占服务器的服务器日志最大存储的百分比。|
 |serverlog_storage_usage|服务器日志已用的存储量|字节|使用的服务器日志存储量。|
 |serverlog_storage_limit|服务器存储空间上限|字节|此服务器的最大服务器日志存储。|
 |storage_limit|存储限制|字节|此服务器的最大存储。|
-|active_connections|活动连接数|计数|服务器的活动连接数。|
-|connections_failed|失败的连接数|计数|服务器的失败连接数。|
-|seconds_behind_master|复制延迟（秒）|计数|副本服务器滞后于主服务器的秒数。|
-|network_bytes_egress|网络传出|字节|跨活动连接的网络传出。|
-|network_bytes_ingress|网络传入|字节|跨活动连接的网络传入。|
+|active_connections|活动连接数|Count|服务器的活动连接数。|
+|connections_failed|失败的连接数|Count|服务器的失败连接数。|
+|seconds_behind_master|复制延迟（秒）|Count|副本服务器针对主服务器延迟的秒数。|
+|network_bytes_egress|网络传出|字节|跨活动连接数的网络传出。|
+|network_bytes_ingress|网络传入|字节|跨活动连接数的网络传入。|
 |backup_storage_used|使用的备份存储|字节|已使用的备份存储量。|
 
 ## <a name="server-logs"></a>服务器日志
@@ -51,7 +51,7 @@ ms.locfileid: "80342337"
 ## <a name="query-store"></a>查询存储
 [查询存储](concepts-query-store.md)是一项跟踪一段时间内查询性能（包括查询运行时统计信息和等待事件）的功能。 此功能将查询运行时性能信息保留在 **mysql** 架构中。 你可以通过各种配置旋钮控制数据的收集和存储。
 
-## <a name="query-performance-insight"></a>Query Performance Insight
+## <a name="query-performance-insight"></a>查询性能见解
 [Query Performance Insight](concepts-query-performance-insight.md) 与查询存储协同工作以提供可以从 Azure 门户访问的可视化效果。 这些图表使你能够识别对性能造成影响的关键查询。 可以在 Azure Database for MySQL 服务器门户页的“智能性能”  部分中访问 Query Performance Insight。
 
 ## <a name="performance-recommendations"></a>性能建议

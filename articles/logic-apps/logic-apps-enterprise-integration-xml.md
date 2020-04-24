@@ -10,10 +10,10 @@ origin.date: 02/27/2017
 ms.date: 03/30/2020
 ms.author: v-yeche
 ms.openlocfilehash: 663385b59a512b15c97ce6a884c85ff9873d5cb2
-ms.sourcegitcommit: 2b084933215d0e7702456730f168d97e00c882a0
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80243531"
 ---
 # <a name="xml-messages-and-flat-files-in-azure-logic-apps-with-enterprise-integration-pack"></a>带有 Enterprise Integration Pack 的 Azure 逻辑应用中的 XML 消息和平面文件

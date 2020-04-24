@@ -13,10 +13,10 @@ ms.custom: seo-lt-2019
 origin.date: 8/04/2019
 ms.date: 03/16/2020
 ms.openlocfilehash: e5c926bcb2844aead3fd0c47c00207be82f1bafd
-ms.sourcegitcommit: 71a386ca0d0ecb79a123399b6ab6b8c70ea2aa78
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79497359"
 ---
 # <a name="use-azure-data-factory-to-migrate-data-from-amazon-s3-to-azure-storage"></a>使用 Azure 数据工厂将数据从 Amazon S3 迁移到 Azure 存储 
@@ -26,7 +26,7 @@ Azure 数据工厂提供高性能、稳健且经济高效的机制用于将数�
 > [!div class="checklist"]
 > * 性能 
 > * 复制复原能力
-> * 网络安全性
+> * 网络安全
 > * 高级解决方案体系结构 
 > * 有关实现的最佳做法  
 
@@ -50,7 +50,7 @@ ADF 提供一个可在不同级别实现并行度的无服务器体系结构，�
 
 执行从 S3 到 Blob 以及从 S3 到 ADLS Gen2 的二元复制时，ADF 会自动执行检查点设置。  如果某个复制活动运行失败或超时，在后续重试时，复制将从上一个失败点继续，而不是从头开始。 
 
-## <a name="network-security"></a>网络安全性 
+## <a name="network-security"></a>网络安全 
 
 ADF 默认通过 HTTPS 协议使用加密的连接将数据从 Amazon S3 传输到 Azure Blob 存储或 Azure Data Lake Storage Gen2。  HTTPS 提供传输中数据加密，并可防止窃听和中间人攻击。 
 

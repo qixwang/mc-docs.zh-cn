@@ -12,10 +12,10 @@ ms.author: v-jay
 ms.reviewer: cbrooks
 ms.subservice: common
 ms.openlocfilehash: 9655a8da5ebdc45d1251f176712e8c628e76db69
-ms.sourcegitcommit: 90d01d08faf8adb20083363a8e4e5aab139cd9b2
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80290493"
 ---
 # <a name="provide-an-encryption-key-on-a-request-to-blob-storage-preview"></a>在对 Blob 存储的请求中提供加密密钥（预览版）

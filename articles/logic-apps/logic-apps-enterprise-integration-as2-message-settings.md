@@ -10,10 +10,10 @@ origin.date: 04/22/2019
 ms.date: 03/23/2020
 ms.author: v-yeche
 ms.openlocfilehash: fa1e088e37ae188a8590e8009a6b29579082f8f2
-ms.sourcegitcommit: 305361c96d1d5288d3dda7e81833820640e2afac
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80115833"
 ---
 # <a name="reference-for-as2-message-settings-in-azure-logic-apps-with-enterprise-integration-pack"></a>带 Enterprise Integration Pack 的 Azure 逻辑应用中的 AS2 消息设置参考
@@ -26,7 +26,7 @@ ms.locfileid: "80115833"
 
 ![选择“接收设置”](./media/logic-apps-enterprise-integration-as2-message-settings/receive-settings.png)
 
-| 属性 | 必须 | 说明 |
+| properties | 必选 | 说明 |
 |----------|----------|-------------|
 | **重写消息属性** | 否 | 用属性设置重写传入消息的属性。 |
 | **应对消息进行签名** | 否 | 指定是否必须对所有传入消息进行数字签名。 如果需要签名，请在“证书”列表中，选择现有的来宾合作伙伴公共证书来验证消息的签名。  如果没有证书，请详细了解如何[添加证书](../logic-apps/logic-apps-enterprise-integration-certificates.md)。 |
@@ -45,7 +45,7 @@ ms.locfileid: "80115833"
 
 ![选择“发送设置”](./media/logic-apps-enterprise-integration-as2-message-settings/send-settings.png)
 
-| 属性 | 必须 | 说明 |
+| properties | 必选 | 说明 |
 |----------|----------|-------------|
 | **启用消息签名** | 否 | 指定是否必须对所有传出消息进行数字签名。 如果需要签名，请选择以下值： <p>- 在“签名算法”  列表中，选择用于消息签名的算法。 <br />- 在“证书”列表中，选择现有的宿主合作伙伴专用证书，对消息进行签名。  如果没有证书，请详细了解如何[添加证书](../logic-apps/logic-apps-enterprise-integration-certificates.md)。 |
 | **启用消息加密** | 否 | 指定是否必须对所有传出消息进行加密。 如果需要加密，请选择以下值： <p>- 在“加密算法”列表中选择来宾合作伙伴公共证书算法，用于加密消息。  <br />- 在“证书”列表中，选择现有的来宾合作伙伴专用证书来解密传出的消息。  如果没有证书，请详细了解如何[添加证书](../logic-apps/logic-apps-enterprise-integration-certificates.md)。 |

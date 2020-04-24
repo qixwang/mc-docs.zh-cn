@@ -7,10 +7,10 @@ ms.topic: article
 origin.date: 03/06/2020
 ms.date: 03/23/2020
 ms.openlocfilehash: fd26de425af34ba216086d2ecb54884093792011
-ms.sourcegitcommit: e500354e2fd8b7ac3dddfae0c825cc543080f476
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79547161"
 ---
 # <a name="planning-volumes-in-storage-spaces-direct"></a>规划存储空间直通中的卷

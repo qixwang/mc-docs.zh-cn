@@ -9,10 +9,10 @@ ms.service: iot-central
 services: iot-central
 manager: philmea
 ms.openlocfilehash: a348d1ab4a8ac1bb34bfea92d2d4fa48b4514a83
-ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80343748"
 ---
 # <a name="get-connected-to-azure-iot-central"></a>连接到 Azure IoT Central
@@ -194,7 +194,7 @@ IoT Central 中的重要 IoT 即插即用功能（预览版）之一是在设备
     - 已使用有效凭据建立连接的设备未在“设备”页上手动注册，但注册期间未指定模板 ID。   
 操作员可以在“设备”页上使用“迁移”按钮将设备关联到模板。  
 
-## <a name="best-practices"></a>最佳做法 
+## <a name="best-practices"></a>最佳实践 
 1.  使用 DPS 将设备连接到 IoT Central 时，请确保（IoT 中心）设备连接字符串未持久保存或缓存。 若要重新连接设备，请执行常规 DPS 设备注册流，以获取正确的设备连接字符串。 如果缓存了连接字符串，则当 IoT Central 更新了基础 Azure IoT 中心时，设备软件存在连接字符串过期的风险。 
 
 ## <a name="sdk-support"></a>SDK 支持

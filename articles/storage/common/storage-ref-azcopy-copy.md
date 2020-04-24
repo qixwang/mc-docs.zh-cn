@@ -10,10 +10,10 @@ ms.author: v-jay
 ms.subservice: common
 ms.reviewer: zezha-msft
 ms.openlocfilehash: ae1241bedb7a7ba002701dbb822c225670353e60
-ms.sourcegitcommit: 90d01d08faf8adb20083363a8e4e5aab139cd9b2
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80290428"
 ---
 # <a name="azcopy-copy"></a>azcopy copy

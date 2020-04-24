@@ -16,10 +16,10 @@ ms.author: v-jay
 ms.reviewer: douglasl
 manager: digimobile
 ms.openlocfilehash: 7e00b602f6753ae562efa41507a0befc9e17dccb
-ms.sourcegitcommit: 71a386ca0d0ecb79a123399b6ab6b8c70ea2aa78
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79497135"
 ---
 # <a name="set-up-an-azure-ssis-ir-in-azure-data-factory-by-using-powershell"></a>使用 PowerShell 在 Azure 数据工厂中设置 Azure-SSIS IR

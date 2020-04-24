@@ -9,17 +9,17 @@ ms.topic: conceptual
 origin.date: 06/03/2019
 ms.date: 03/16/2020
 ms.openlocfilehash: 7c6368fa6e624640b903df56080ac2823cca0129
-ms.sourcegitcommit: 1d3d8dfdaf6281f06640cbee7124a1e8bf102c50
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80243949"
 ---
 # <a name="visualize-data-from-azure-data-explorer-in-tableau"></a>在 Tableau 中直观显示来自 Azure 数据资源管理器的数据
 
  [Tableau](https://www.tableau.com/) 是一种商业智能可视化分析平台。 若要从 Tableau 连接到 Azure 数据资源管理器，并从示例群集引入数据，请使用 SQL Server 开放式数据库连接 (ODBC) 驱动程序。 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要完成本文，需要满足以下条件：
 

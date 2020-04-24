@@ -6,10 +6,10 @@ origin.date: 02/27/2020
 ms.date: 03/16/2020
 ms.author: v-tawe
 ms.openlocfilehash: 979085d6b9821fdd402fb5edd81179cf34b5a357
-ms.sourcegitcommit: e500354e2fd8b7ac3dddfae0c825cc543080f476
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79546872"
 ---
 * 支持除独立定价计划以外的全部定价计划的多租户系统

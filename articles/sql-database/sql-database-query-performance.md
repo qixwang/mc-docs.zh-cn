@@ -13,10 +13,10 @@ ms.reviewer: jrasnik, carlrab
 origin.date: 03/10/2020
 ms.date: 03/30/2020
 ms.openlocfilehash: e54ece5ccf5cb1e20686868c211d3e2e03ccba4e
-ms.sourcegitcommit: 90660563b5d65731a64c099b32fb9ec0ce2c51c6
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80341806"
 ---
 # <a name="query-performance-insight-for-azure-sql-database"></a>适用于 Azure SQL 数据库的 Query Performance Insight

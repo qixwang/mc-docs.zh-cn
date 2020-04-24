@@ -4,10 +4,10 @@ description: 通过 Azure 资源运行状况支持的资源类型
 ms.topic: conceptual
 ms.date: 03/17/2020
 ms.openlocfilehash: 359572b3507abbf8927cdafbaf83bcc5894e07e5
-ms.sourcegitcommit: 71a386ca0d0ecb79a123399b6ab6b8c70ea2aa78
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79497090"
 ---
 # <a name="resource-types-and-health-checks-in-azure-resource-health"></a>Azure 资源运行状况中的资源类型和运行状况检查

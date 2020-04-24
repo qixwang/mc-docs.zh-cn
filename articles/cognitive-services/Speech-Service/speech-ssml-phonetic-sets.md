@@ -12,10 +12,10 @@ origin.date: 03/04/2020
 ms.date: 03/16/2020
 ms.author: v-tawe
 ms.openlocfilehash: 5fc8515d85078eac3a640593eb341df82721e243
-ms.sourcegitcommit: b2f2bb08ab1b5ccb3c596d84b3b6ddca5bba3903
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80151763"
 ---
 # <a name="speech-service-phonetic-sets"></a>语音服务音标集

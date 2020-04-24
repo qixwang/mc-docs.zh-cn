@@ -9,10 +9,10 @@ origin.date: 06/25/2019
 md.date: 03/23/2020
 ms.author: v-tawe
 ms.openlocfilehash: 7492625a960dded2ffb81ee30d40b6168052cd37
-ms.sourcegitcommit: b2f2bb08ab1b5ccb3c596d84b3b6ddca5bba3903
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80151725"
 ---
 # <a name="enable-offline-sync-for-your-xamarinios-mobile-app"></a>为 Xamarin.iOS 移动应用启用脱机同步

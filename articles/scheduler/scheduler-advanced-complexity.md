@@ -11,16 +11,16 @@ ms.topic: article
 origin.date: 11/14/2018
 ms.date: 03/30/2019
 ms.openlocfilehash: 834e65781fe4b70a535b73f0bf0b5e9843d064a5
-ms.sourcegitcommit: 90660563b5d65731a64c099b32fb9ec0ce2c51c6
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80341703"
 ---
 # <a name="build-advanced-schedules-and-recurrences-for-jobs-in-azure-scheduler"></a>在 Azure 计划程序中为作业生成高级计划和重复周期
 
 > [!IMPORTANT]
-> [Azure 逻辑应用](../logic-apps/logic-apps-overview.md)将替换[即将停用](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date)的 Azure 计划程序。 若要继续使用在计划程序中设置的作业，请尽快[迁移到 Azure 逻辑应用](../scheduler/migrate-from-scheduler-to-logic-apps.md)。 
+> [Azure 逻辑应用](../logic-apps/logic-apps-overview.md)将替代[即将停用](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date)的 Azure 计划程序。 若要继续使用在计划程序中设置的作业，请尽快[迁移到 Azure 逻辑应用](../scheduler/migrate-from-scheduler-to-logic-apps.md)。 
 >
 > 计划程序在 Azure 门户中不再可用，但 [REST API](https://docs.microsoft.com/rest/api/scheduler) 和 [Azure 计划程序 PowerShell cmdlet](scheduler-powershell-reference.md) 目前仍可用，以便你可以管理作业和作业集合。
 
@@ -43,7 +43,7 @@ ms.locfileid: "80341703"
 * 在特定的日期和时间运行一次。
 * 运行并重复特定的次数。
 * 立即运行，然后重复。
-* 运行并每隔 *n* 分钟、小时、天、周、月在特定的时间开始重复。
+* 运行并每隔 *n* 分钟、小时、天、周或月在特定的时间开始重复。
 * 运行并根据每周或每月的频率重复，不过，只会在特定的星期日期或特定的月份日期重复。
 * 运行并在特定时间段内重复多次。 例如，每月的最后一个星期五和星期一，或每天的上午 5:15 和下午 5:15。
 
@@ -65,14 +65,14 @@ ms.locfileid: "80341703"
 
 此表简要概述了在设置作业的重复周期和计划时可以使用的主要 JSON 元素。 
 
-| 元素 | 必须 | 说明 | 
+| 元素 | 必选 | 说明 | 
 |---------|----------|-------------|
 | **startTime** | 否 | [ISO 8601 格式](https://zh.wikipedia.org/wiki/ISO_8601)的 DateTime 字符串值，用于指定作业在基本计划中首次启动的时间。 <p>对于复杂的计划，作业的启动时间不早于 **startTime**。 | 
 | **recurrence** | 否 | 作业运行时的重复规则。 **recurrence** 对象支持这些元素：**frequency**、**interval**、**schedule**、**count** 和 **endTime**。 <p>如果使用 **recurrence** 元素，则还必须使用 **frequency** 元素，而其他 **recurrence** 元素是可选的。 |
 | **frequency** | 是，当使用 **recurrence** 时 | 两次作业之间的时间单位并支持这些值：“Minute”、“Hour”、“Day”、“Week”、“Month”和“Year” | 
 | **interval** | 否 | 一个正整数，根据 **frequency** 确定两次作业之间的时间单位数。 <p>例如，如果 **interval** 为 10，**frequency** 为“Week”，则作业每隔 10 周重复一次。 <p>下面是每种频率的最大间隔数： <p>- 18 个月 <br>- 78 周 <br>- 548 天 <br>- 对于小时和分钟，范围为 1 <= <*interval*> <= 1000。 | 
 | **schedule** | 否 | 根据指定的分钟标记、小时标记、星期日期和月份日期定义重复周期的更改 | 
-| **count** | 否 | 一个正整数，指定作业在完成之前运行的次数。 <p>例如，当每日作业将 **count** 设置为 7，并且开始日期为星期一时，该作业将在星期日结束运行。 如果已经过了开始日期，则从创建时间开始计算第一次运行。 <p>如果未指定 **endTime** 或 **count**，作业将无限期运行。 不能在同一个作业中同时使用 **count** 和 **endTime**，但首先完成的规则优先。 | 
+| **计数** | 否 | 一个正整数，指定作业在完成之前运行的次数。 <p>例如，当每日作业将 **count** 设置为 7，并且开始日期为星期一时，该作业将在星期日结束运行。 如果已经过了开始日期，则从创建时间开始计算第一次运行。 <p>如果未指定 **endTime** 或 **count**，作业将无限期运行。 不能在同一个作业中同时使用 **count** 和 **endTime**，但首先完成的规则优先。 | 
 | **endTime** | 否 | [ISO 8601 格式](https://zh.wikipedia.org/wiki/ISO_8601)的 Date 或 DateTime 字符串值，用于指定作业何时停止运行。 可为 **endTime** 设置一个过去的值。 <p>如果未指定 **endTime** 或 **count**，作业将无限期运行。 不能在同一个作业中同时使用 **count** 和 **endTime**，但首先完成的规则优先。 |
 |||| 
 
@@ -163,13 +163,13 @@ ms.locfileid: "80341703"
 
 | JSON 名称 | 说明 | 有效值 |
 |:--- |:--- |:--- |
-| **minutes** |运行作业的小时中的分钟。 |整数数组。 |
+| **分钟数** |运行作业的小时中的分钟。 |整数数组。 |
 | **小时数** |运行作业的日期中的小时。 |整数数组。 |
 | **工作日** |运行作业的星期日期。 只能配合每周频率指定。 |包含以下任意值的数组（最大数组大小为 7）：<br />- "Monday"<br />- "Tuesday"<br />- "Wednesday"<br />- "Thursday"<br />- "Friday"<br />- "Saturday"<br />- "Sunday"<br /><br />不区分大小写。 |
 | **monthlyOccurrences** |确定运行作业的月份日期。 只能配合每月频率指定。 |**monthlyOccurrences** 对象的数组：<br /> `{ "day": day, "occurrence": occurrence}`<br /><br /> **day** 是运行作业的星期日期。 例如， *{Sunday}* 表示月份中的每个星期日。 必需。<br /><br />**occurrence** 是月份中重复的日期。 例如， *{Sunday, -1}* 表示月份中的最后一个星期日。 可选。 |
 | **monthDays** |运行作业的月份日期。 只能配合每月频率指定。 |以下值的数组：<br /><= -1 且 >= -31 的任意值<br />>= 1 且 <= 31 的任意值|
 
-## <a name="examples-recurrence-schedules"></a>示例:循环计划
+## <a name="examples-recurrence-schedules"></a>示例：循环计划
 
 以下示例演示各种循环计划。 这些示例着重于计划对象及其子元素。
 

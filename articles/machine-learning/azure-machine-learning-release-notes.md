@@ -11,10 +11,10 @@ author: j-martens
 origin.date: 03/10/2020
 ms.date: 03/30/2020
 ms.openlocfilehash: b5dadda4a866d027e03b07a231edf204fd23c2d6
-ms.sourcegitcommit: 305361c96d1d5288d3dda7e81833820640e2afac
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80109790"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure 机器学习发行说明

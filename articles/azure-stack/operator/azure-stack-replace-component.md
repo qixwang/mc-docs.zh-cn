@@ -10,10 +10,10 @@ ms.author: v-jay
 ms.reviewer: thoroet
 ms.lastreviewed: 07/18/2019
 ms.openlocfilehash: 536a4f35e16f4fc196f604d121d7659aef776ecd
-ms.sourcegitcommit: e500354e2fd8b7ac3dddfae0c825cc543080f476
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79547028"
 ---
 # <a name="replace-a-hardware-component-on-an-azure-stack-hub-scale-unit-node"></a>更换 Azure Stack Hub 缩放单元节点上的硬件组件
@@ -23,12 +23,12 @@ ms.locfileid: "79547028"
 > [!CAUTION]  
 > 固件分级对于本文中所述的操作的成功至关重要。 缺少此步骤可能会导致系统不稳定、性能降低、安全威胁或阻止 Azure Stack Hub 自动化部署操作系统。 更换硬件时，请始终参阅硬件合作伙伴的文档，以确保应用的固件与 [Azure Stack Hub 管理员门户](azure-stack-updates.md)中显示的 OEM 版本匹配。
 
-| 硬件合作伙伴 | 区域 | URL |
+| 硬件合作伙伴 | 区域 | 代码 |
 |------------------|--------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Cisco | 全部 | [适用于 Azure Stack Hub 的 Cisco 集成系统操作指南](https://www.cisco.com/c/en/us/td/docs/unified_computing/ucs/azure-stack/b_Azure_Stack_Operations_Guide_4-0/b_Azure_Stack_Operations_Guide_4-0_chapter_00.html#concept_wks_t1q_wbb)<br><br>[适用于 Azure Stack Hub 的 Cisco 集成系统的发行说明](https://www.cisco.com/c/en/us/support/servers-unified-computing/ucs-c-series-rack-mount-ucs-managed-server-software/products-release-notes-list.html) |
-| Dell EMC | 全部 | [Cloud for Azure Stack Hub 14G（需要帐户和登录）](https://support.emc.com/downloads/44615_Cloud-for-Microsoft-Azure-Stack-14G)<br><br>[Cloud for Azure Stack Hub 13G（需要帐户和登录）](https://support.emc.com/downloads/42238_Cloud-for-Microsoft-Azure-Stack-13G) |
-| HPE | 全部 | [HPE ProLiant for Azure Stack Hub](http://www.hpe.com/info/MASupdates) |
-| Lenovo | 全部 | [ThinkAgile SXM 最佳食谱](https://datacentersupport.lenovo.com/us/en/solutions/ht505122)
+| Cisco | All | [适用于 Azure Stack Hub 的 Cisco 集成系统操作指南](https://www.cisco.com/c/en/us/td/docs/unified_computing/ucs/azure-stack/b_Azure_Stack_Operations_Guide_4-0/b_Azure_Stack_Operations_Guide_4-0_chapter_00.html#concept_wks_t1q_wbb)<br><br>[适用于 Azure Stack Hub 的 Cisco 集成系统的发行说明](https://www.cisco.com/c/en/us/support/servers-unified-computing/ucs-c-series-rack-mount-ucs-managed-server-software/products-release-notes-list.html) |
+| Dell EMC | All | [Cloud for Azure Stack Hub 14G（需要帐户和登录）](https://support.emc.com/downloads/44615_Cloud-for-Microsoft-Azure-Stack-14G)<br><br>[Cloud for Azure Stack Hub 13G（需要帐户和登录）](https://support.emc.com/downloads/42238_Cloud-for-Microsoft-Azure-Stack-13G) |
+| HPE | All | [HPE ProLiant for Azure Stack Hub](http://www.hpe.com/info/MASupdates) |
+| Lenovo | All | [ThinkAgile SXM 最佳食谱](https://datacentersupport.lenovo.com/us/en/solutions/ht505122)
 | Wortmann |  | [OEM/固件包](https://aka.ms/AA6z600)<br>[terra Azure Stack Hub 文档（包括 FRU）](https://aka.ms/aa6zktc)
 
 非热插拔组件包括以下项：

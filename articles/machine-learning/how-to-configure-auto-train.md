@@ -13,10 +13,10 @@ origin.date: 11/04/2019
 ms.date: 03/09/2020
 ms.custom: seodec18
 ms.openlocfilehash: 219dc093260d3eaf2182771511dbc395875b7887
-ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80343561"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>使用 Python 配置自动化 ML 试验

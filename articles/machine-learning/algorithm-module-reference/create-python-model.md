@@ -10,10 +10,10 @@ author: likebupt
 ms.author: zhanxia
 ms.date: 11/19/2019
 ms.openlocfilehash: f69136bd1f80c3a323699b89f69a0012c67c0546
-ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80343467"
 ---
 # <a name="create-python-model"></a>创建 Python 模型

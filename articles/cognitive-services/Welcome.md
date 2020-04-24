@@ -12,10 +12,10 @@ origin.date: 12/19/2019
 ms.date: 02/17/2020
 ms.author: v-tawe
 ms.openlocfilehash: 4276da22f88caa877640930cf4496a50f0ab7392
-ms.sourcegitcommit: 303a16c7117b6f3495ef0493b4ae8ccb67d7dbba
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80342379"
 ---
 # <a name="what-are-azure-cognitive-services"></a>什么是 Azure 认知服务？
@@ -33,7 +33,7 @@ Azure 认知服务是 API、SDK 和服务，可帮助开发人员生成智能应
 
 |服务名称|服务说明|
 |:-----------|:------------------|
-|[语音服务](https://docs.azure.cn/cognitive-services/speech-service/ "语音服务")|语音服务将语音支持功能添加到应用程序。|
+|[语音服务](https://docs.azure.cn/cognitive-services/speech-service/ "语音服务")|语音服务将支持语音的功能添加到应用程序。|
 
 > [!NOTE]
 > 正在查找 [Azure 认知搜索](https://www.azure.cn/searchresults)？ 尽管它对某些任务使用认知服务，但它是一项支持其他方案的不同搜索技术。
@@ -83,13 +83,13 @@ Azure 认知服务是 API、SDK 和服务，可帮助开发人员生成智能应
 <!-- ## Container support -->
 
 
-## <a name="certifications-and-compliance"></a>认证和符合性
+## <a name="certifications-and-compliance"></a>认证和合规性
 
-认知服务已获得多种认证，例如 CSA STAR Certification、FedRAMP Moderate 和 HIPAA BAA。
+认知服务已获得 CSA STAR 认证、FedRAMP 中等 和HIPAA BAA 等认证。
 
-可以[下载](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)认证自行进行审核和安全审查。
+可以[下载](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)认证进行自己的审核和安全评审。
 
-若要了解隐私和数据管理，请转到[信任中心](https://www.trustcenter.cn/)。
+若要了解隐私和数据管理，请访问[信任中心](https://www.trustcenter.cn/)。
 
 ## <a name="support"></a>支持
 

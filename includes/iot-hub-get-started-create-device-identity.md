@@ -1,9 +1,9 @@
 ---
 ms.openlocfilehash: 25e60b5ab7d551e6b26a393d93d2189e45f56ce9
-ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80343490"
 ---
 在本部分中，将使用 Azure CLI 为本文创建设备标识。 设备 ID 区分大小写。

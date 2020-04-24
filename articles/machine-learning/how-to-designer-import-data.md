@@ -11,10 +11,10 @@ ms.author: v-yiso
 origin.date: 01/16/2020
 ms.date: 03/16/2020
 ms.openlocfilehash: d29f3827d329bacce5eb70e379d5122888b899bf
-ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80343391"
 ---
 # <a name="import-your-data-into-azure-machine-learning-designer-preview"></a>将数据导入到 Azure 机器学习设计器（预览版）

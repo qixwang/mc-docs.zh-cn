@@ -1,19 +1,19 @@
 ---
 title: 请求限制
-description: 介绍在达到订阅限制后如何对 Azure Resource Manager 请求进行限制。
+description: 介绍在达到订阅限制时，如何对 Azure 资源管理器请求使用限制。
 ms.topic: conceptual
 origin.date: 10/26/2019
 ms.date: 03/23/2020
 ms.author: v-yeche
 ms.custom: seodec18
 ms.openlocfilehash: 4f5b85da083de61a3e67d3a474e6e2a77a72b9f5
-ms.sourcegitcommit: 1436f1851342ca5631eb25342eed954adb707af0
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79543880"
 ---
-# <a name="throttling-resource-manager-requests"></a>限制 Resource Manager 请求数
+# <a name="throttling-resource-manager-requests"></a>限制 Resource Manager 请求
 
 本文介绍 Azure 资源管理器如何限制请求。 其中介绍了如何在达到限制之前跟踪剩余的请求数，以及在达到限制时如何采取应对措施。
 
@@ -25,19 +25,19 @@ ms.locfileid: "79543880"
 
 ## <a name="subscription-and-tenant-limits"></a>订阅和租户限制
 
-每个订阅级别和租户级别的操作都会受到限制。 订阅请求是需要传递订阅 ID 的请求，例如在订阅中检索资源组。 租户请求不包括订阅 ID，例如，检索有效的 Azure 位置。
+每个订阅级别和租户级别的操作都会受到限制。 订阅请求是需要传递订阅 ID 的请求，例如在订阅中检索资源组。 租户请求（例如，检索有效的 Azure 位置）不包括订阅 ID。
 
 下表显示了每小时的默认限制。
 
-| 作用域 | 操作 | 限制 |
+| 范围 | 操作 | 限制 |
 | ----- | ---------- | ------- |
-| 订阅 | 读取 | 12000 |
+| 订阅 | reads | 12000 |
 | 订阅 | 删除 | 15000 |
-| 订阅 | 写入 | 1200 |
-| 租户 | 读取 | 12000 |
-| 租户 | 写入 | 1200 |
+| 订阅 | Writes | 1200 |
+| 租户 | reads | 12000 |
+| 租户 | Writes | 1200 |
 
-这些限制的范围是发出请求的安全主体（用户或应用程序）和订阅 ID 或租户 ID。 如果请求来自多个安全主体，则对订阅或租户的限制大于每小时 12,000 个和每小时 1,200 个。
+这些限制的范围局限于发出请求的安全主体（用户或应用程序）以及订阅 ID 或租户 ID。 如果请求来自多个安全主体，则对订阅或租户的限制高于每小时 12,000 个和 1,200 个。
 
 这些限制适用于每个 Azure 资源管理器实例。 每个 Azure 区域中有多个实例，Azure 资源管理器将部署到所有 Azure 区域。  因此，实践中的限制要高于这些限制。 来自用户的请求通常由不同的 Azure 资源管理器实例进行处理。
 
@@ -55,7 +55,7 @@ ms.locfileid: "79543880"
 
 Microsoft.Network 资源提供程序应用以下限制：
 
-| 操作 | 限制 |
+| Operation | 限制 |
 | --------- | ----- |
 | 写入/删除 (PUT) | 每 5 分钟 1000 次 |
 | 读取 (GET) | 每 5 分钟 10000 次 |
@@ -76,7 +76,7 @@ Microsoft.Network 资源提供程序应用以下限制：
 
 ## <a name="error-code"></a>错误代码
 
-达到限制时，会收到 HTTP 状态代码“429 请求过多”  。 响应包含 **Retry-After** 值，该值指定在发送下一个请求之前应用程序应该等待（或休眠）的秒数。 如果在尚未达到重试时间值的情况下发送请求，该请求不会得到处理，并会返回一个新的重试时间值。
+达到限制时，会收到 HTTP 状态代码“429 请求过多”。  响应包含 **Retry-After** 值，该值指定在发送下一个请求之前应用程序应该等待（或休眠）的秒数。 如果在尚未达到重试时间值的情况下发送请求，该请求不会得到处理，并会返回一个新的重试时间值。
 
 等待指定的时间后，还可以关闭再重新打开与 Azure 的连接。 通过重置连接，可以连接到 Azure 资源管理器的其他实例。
 
@@ -84,16 +84,16 @@ Microsoft.Network 资源提供程序应用以下限制：
 
 某些资源提供程序返回 429 来报告暂时性问题。 该问题可能是一种过载状态，它不是由你的请求直接造成的。 或者，它可能表示目标资源或依赖资源的状态相关的暂时性错误。 例如，当目标资源被另一个操作锁定时，网络资源提供程序将返回 429 和 **RetryableErrorDueToAnotherOperation** 错误代码。 若要确定错误是由限制还是暂时性的状况造成，请查看响应中的错误详细信息。
 
-## <a name="remaining-requests"></a>剩余请求数
+## <a name="remaining-requests"></a>剩余的请求数
 
-可以通过检查响应标头确定剩余请求数。 读取请求在标头中返回一个值，表示剩余读取请求的数目。 写入请求包含的值表示剩余写入请求的数目。 下表说明了各种响应标头，用户可以检查其中是否存在这些值：
+可以通过检查响应标头来确定剩余的请求数。 读取请求在标头中返回一个值，表示剩余读取请求的数目。 写入请求包含的值表示剩余写入请求的数目。 下表描述了可在其中检查这些值的标头：
 
 | 响应标头 | 说明 |
 | --- | --- |
 | x-ms-ratelimit-remaining-subscription-reads |划归到订阅的剩余读取数。 执行读取操作时返回此值。 |
 | x-ms-ratelimit-remaining-subscription-writes |划归到订阅的剩余写入数。 执行写入操作时返回此值。 |
-| x-ms-ratelimit-remaining-tenant-reads |租户范围的剩余读取数 |
-| x-ms-ratelimit-remaining-tenant-writes |租户范围的剩余写入数 |
+| x-ms-ratelimit-remaining-tenant-reads |划归到租户的剩余读取数 |
+| x-ms-ratelimit-remaining-tenant-writes |划归到租户的剩余写入数 |
 | x-ms-ratelimit-remaining-subscription-resource-requests |划归到订阅的剩余资源类型请求数。<br /><br />仅当服务重写了默认限制时，才返回此标头值。 Resource Manager 将累加此值而不是订阅读取/写入数。 |
 | x-ms-ratelimit-remaining-subscription-resource-entities-read |划归到订阅的剩余资源类型集合请求数。<br /><br />仅当服务重写了默认限制时，才返回此标头值。 此值提供剩余集合请求数（列出资源）。 |
 | x-ms-ratelimit-remaining-tenant-resource-requests |划归到租户的剩余资源类型请求数。<br /><br />仅当服务重写了默认限制时，才为租户级别的请求添加此标头。 Resource Manager 将累加此值而不是租户读取/写入数。 |
@@ -103,7 +103,7 @@ Microsoft.Network 资源提供程序应用以下限制：
 
 ## <a name="retrieving-the-header-values"></a>检索标头值
 
-在代码或脚本中检索这些标头值与检索任何标头值无异。 
+检索代码或脚本中的这些标头值与检索任何标头值没有什么不同。 
 
 例如，在 **C#** 中，可使用以下代码从名为 **response** 的 **HttpWebResponse** 对象中检索标头值：
 
@@ -111,16 +111,16 @@ Microsoft.Network 资源提供程序应用以下限制：
 response.Headers.GetValues("x-ms-ratelimit-remaining-subscription-reads").GetValue(0)
 ```
 
-在 **PowerShell**中，可以通过 Invoke-WebRequest 操作检索标头值。
+在 **PowerShell** 中，可以从 Invoke-WebRequest 操作检索标头值。
 
 ```powershell
 $r = Invoke-WebRequest -Uri https://management.chinacloudapi.cn/subscriptions/{guid}/resourcegroups?api-version=2016-09-01 -Method GET -Headers $authHeaders
 $r.Headers["x-ms-ratelimit-remaining-subscription-reads"]
 ```
 
-有关完整的 PowerShell 示例，请参阅[查看订阅的资源管理器限制](https://github.com/Microsoft/csa-misc-utils/tree/master/psh-GetArmLimitsViaAPI)。
+有关完整 PowerShell 示例的信息，请参阅[检查订阅的资源管理器限制](https://github.com/Microsoft/csa-misc-utils/tree/master/psh-GetArmLimitsViaAPI)。
 
-若要查看剩余请求数以进行调试，可在 **PowerShell** cmdlet 中提供 **-Debug** 参数。
+如果想要查看剩余的调试请求数，可以在“PowerShell”cmdlet 中提供“-Debug”参数   。
 
 ```powershell
 Get-AzResourceGroup -Debug
@@ -158,7 +158,7 @@ Pragma                        : no-cache
 x-ms-ratelimit-remaining-subscription-writes: 1199
 ```
 
-在 **Azure CLI**中，可以使用更详细的选项检索标头值。
+在 **Azure CLI** 中，可以使用更详细的选项检索标头值。
 
 ```azurecli
 az group list --verbose --debug
@@ -199,7 +199,7 @@ msrest.http_logger :     'x-ms-ratelimit-remaining-subscription-writes': '1199'
 
 ## <a name="next-steps"></a>后续步骤
 
-* 有关完整的 PowerShell 示例，请参阅[查看订阅的资源管理器限制](https://github.com/Microsoft/csa-misc-utils/tree/master/psh-GetArmLimitsViaAPI)。
+* 有关完整 PowerShell 示例的信息，请参阅[检查订阅的资源管理器限制](https://github.com/Microsoft/csa-misc-utils/tree/master/psh-GetArmLimitsViaAPI)。
 * 有关限制和配额的详细信息，请参阅 [Azure 订阅和服务限制、配额和约束](../../azure-resource-manager/management/azure-subscription-service-limits.md)。
 * 若要了解如何处理异步 REST 请求，请参阅[跟踪异步 Azure 操作](async-operations.md)。
 

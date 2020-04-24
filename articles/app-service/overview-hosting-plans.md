@@ -9,10 +9,10 @@ ms.date: 02/16/2020
 ms.author: v-tawe
 ms.custom: seodec18
 ms.openlocfilehash: 5abdc8bd3c4292558ee9e23934651db3f55cd7eb
-ms.sourcegitcommit: e500354e2fd8b7ac3dddfae0c825cc543080f476
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79546936"
 ---
 # <a name="azure-app-service-plan-overview"></a>Azure 应用服务计划概述

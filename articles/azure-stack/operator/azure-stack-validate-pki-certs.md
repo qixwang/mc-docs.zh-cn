@@ -12,10 +12,10 @@ ms.author: v-jay
 ms.reviewer: ppacent
 ms.lastreviewed: 01/08/2019
 ms.openlocfilehash: 51ea6a15bedf927f0af05855feb94e28ec7ba203
-ms.sourcegitcommit: e500354e2fd8b7ac3dddfae0c825cc543080f476
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79547077"
 ---
 # <a name="validate-azure-stack-hub-pki-certificates"></a>验证 Azure Stack Hub PKI 证书

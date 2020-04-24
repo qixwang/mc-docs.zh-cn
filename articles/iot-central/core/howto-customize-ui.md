@@ -9,10 +9,10 @@ ms.service: iot-central
 services: iot-central
 manager: philmea
 ms.openlocfilehash: 3e609a5a0b00a604c0e340cd70f9c2ca6edd6f13
-ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80343273"
 ---
 # <a name="customize-the-azure-iot-central-ui"></a>自定义 Azure IoT Central UI
@@ -78,4 +78,4 @@ ms.locfileid: "80343273"
 了解如何在 Azure IoT Central 应用程序中自定义 UI 后，建议接下来学习：
 
 - [管理应用程序](./howto-administer.md)
-- [将磁贴添加到仪表板](howto-add-tiles-to-your-dashboard.md)
+- [向仪表板添加磁贴](howto-add-tiles-to-your-dashboard.md)

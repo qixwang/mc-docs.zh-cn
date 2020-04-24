@@ -13,10 +13,10 @@ origin.date: 02/19/2020
 ms.date: 03/23/2020
 ms.author: v-jay
 ms.openlocfilehash: 6443ca9f9867de28bcbb68cba8ca2453dbb71128
-ms.sourcegitcommit: 71a386ca0d0ecb79a123399b6ab6b8c70ea2aa78
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79497262"
 ---
 # <a name="copy-data-from-postgresql-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 PostgreSQL 复制数据

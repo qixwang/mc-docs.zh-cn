@@ -10,10 +10,10 @@ ms.author: v-jay
 ms.reviewer: avishwan
 ms.lastreviewed: 03/04/2019
 ms.openlocfilehash: 31144d4f95ef56a3cfdccce3789877bc83708e5e
-ms.sourcegitcommit: e500354e2fd8b7ac3dddfae0c825cc543080f476
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79547018"
 ---
 # <a name="register-azure-stack-hub-with-azure"></a>将 Azure Stack Hub 注册到 Azure

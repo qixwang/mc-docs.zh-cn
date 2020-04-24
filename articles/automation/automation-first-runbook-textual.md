@@ -8,10 +8,10 @@ origin.date: 09/24/2018
 ms.date: 03/30/2020
 ms.topic: conceptual
 ms.openlocfilehash: d66b25ca4a02bb7bb8e057e170f0c82d85189a18
-ms.sourcegitcommit: 90d01d08faf8adb20083363a8e4e5aab139cd9b2
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80290380"
 ---
 # <a name="my-first-powershell-workflow-runbook"></a>我的第一个 PowerShell 工作流 Runbook
@@ -24,7 +24,7 @@ ms.locfileid: "80290380"
 
 本教程指导在 Azure 自动化中创建 [PowerShell 工作流 Runbook](automation-runbook-types.md#powershell-workflow-runbooks)。 从一个简单的 Runbook 开始，你将测试和发布该 Runbook，同时了解如何跟踪 Runbook 作业的状态。 然后，通过修改 Runbook 来实际管理 Azure 资源，“启动 Azure 虚拟机”中对此进行了说明。 最后，通过添加 Runbook 参数来使该 Runbook 更稳健。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 要完成本教程，需要：
 
@@ -75,7 +75,7 @@ ms.locfileid: "80290380"
 
 1. 选择“测试窗格”打开“测试”窗格。 
 1. 单击“启动”  以启动测试，并测试唯一启用的选项。
-1. 请注意，已创建了一个 [Runbook 作业](automation-runbook-execution.md)，其状态显示在窗格中。
+1. 请注意已创建一个 [Runbook 作业](automation-runbook-execution.md)，其状态显示在窗格中。
 
    作业状态最初为 `Queued`，表示该作业正在等待云中的 Runbook 辅助角色变为可用状态。 在某个辅助角色认领该作业后，状态将更改为 `Starting`。 最后，在 Runbook 实际开始运行时，状态将变为 `Running`。
 

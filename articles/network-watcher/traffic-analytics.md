@@ -15,10 +15,10 @@ ms.date: 9/29/2019
 ms.author: v-lingwu
 ms.reviewer: vinigam
 ms.openlocfilehash: 9da7903593e73c2759afd0e4a13da279efc9a139
-ms.sourcegitcommit: 305361c96d1d5288d3dda7e81833820640e2afac
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80108529"
 ---
 # <a name="traffic-analytics"></a>流量分析

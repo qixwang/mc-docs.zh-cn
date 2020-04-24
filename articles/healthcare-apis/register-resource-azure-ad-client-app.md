@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 02/07/2019
 ms.author: mihansen
 ms.openlocfilehash: 876c0cbd5e53f5b519aaa52e90d6f354c1670ea2
-ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80343703"
 ---
 # <a name="register-a-resource-application-in-azure-active-directory"></a>在 Azure Active Directory 中注册资源应用程序

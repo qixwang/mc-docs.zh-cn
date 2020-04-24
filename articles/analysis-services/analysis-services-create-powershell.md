@@ -9,21 +9,21 @@ ms.date: 03/23/2020
 ms.author: v-yeche
 ms.reviewer: minewiskan
 ms.openlocfilehash: 52f07801cd8ccdf46cf3f2d4b3a3220397f02177
-ms.sourcegitcommit: 1436f1851342ca5631eb25342eed954adb707af0
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79543785"
 ---
 # <a name="quickstart-create-a-server---powershell"></a>快速入门：创建服务器 - PowerShell
 
 本快速入门介绍如何从命令行使用 PowerShell，以便在 Azure 订阅中创建 Azure Analysis Services 服务器。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-- **Azure 订阅**：访问 [Azure 试用版](https://www.azure.cn/pricing/1rmb-trial-full)来创建一个帐户。
+- **Azure 订阅**：访问 [Azure 试用版](https://www.azure.cn/pricing/1rmb-trial-full)以创建帐户。
 - **Azure Active Directory**：订阅必须与 Azure Active Directory 租户相关联，且该目录中必须有一个帐户。 若要了解详细信息，请参阅[身份验证和用户权限](analysis-services-manage-users.md)。
 - **Azure PowerShell**。 要查找已安装的版本，请运行 `Get-Module -ListAvailable Az`。 若要进行安装或升级，请参阅[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-Az-ps)。
 
@@ -37,7 +37,7 @@ Import-Module Az.AnalysisServices
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
-使用 [Connect-AzAccount -Environment AzureChinaCloud](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount) 命令登录到 Azure 订阅。 按屏幕说明操作。
+使用 [Connect-AzAccount -Environment AzureChinaCloud](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount) 命令登录到 Azure 订阅。 按屏幕指令操作。
 
 ```powershell
 Connect-AzAccount -Environment AzureChinaCloud

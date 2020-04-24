@@ -10,10 +10,10 @@ ms.topic: conceptual
 origin.date: 01/08/2020
 ms.date: 03/23/2020
 ms.openlocfilehash: 698318093a04b8c2f0654424c181e52808170912
-ms.sourcegitcommit: 71a386ca0d0ecb79a123399b6ab6b8c70ea2aa78
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79497401"
 ---
 # <a name="bulk-copy-from-files-to-database"></a>从文件向数据库进行批量复制

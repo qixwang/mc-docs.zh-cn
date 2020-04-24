@@ -7,10 +7,10 @@ ms.topic: article
 origin.date: 02/28/2020
 ms.date: 03/23/2020
 ms.openlocfilehash: 3a150f4f8cea9f066f6bfefbbe8e1a0b7a9d269f
-ms.sourcegitcommit: e500354e2fd8b7ac3dddfae0c825cc543080f476
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79547101"
 ---
 # <a name="fault-tolerance-and-storage-efficiency-in-azure-stack-hci"></a>Azure Stack HCI 中的容错和存储效率

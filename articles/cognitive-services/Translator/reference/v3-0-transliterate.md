@@ -12,10 +12,10 @@ origin.date: 02/01/2019
 ms.date: 06/11/2019
 ms.author: v-junlch
 ms.openlocfilehash: 37b68e7793f6a50f7754e3e2c1263f9e34e90f60
-ms.sourcegitcommit: 303a16c7117b6f3495ef0493b4ae8ccb67d7dbba
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80342394"
 ---
 # <a name="translator-text-api-30-transliterate"></a>文本翻译 API 3.0：Transliterate
@@ -43,22 +43,22 @@ https://api.translator.azure.cn/transliterate?api-version=3.0
   </tr>
   <tr>
     <td>语言</td>
-    <td>必需参数  。<br/>指定要从一个脚本转换为另一个脚本的文本的语言。 通过查询服务的[支持的语言](./v3-0-languages.md)获得的 `transliteration` 范围中列出了可能的语言。</td>
+    <td>必需参数  。<br/>指定要从一个脚本转换为另一个脚本的文本的语言。 通过查询服务的`transliteration`支持的语言[获得的 ](./v3-0-languages.md) 范围中列出了可能的语言。</td>
   </tr>
   <tr>
     <td>fromScript</td>
-    <td>必需参数  。<br/>指定输入文本所使用的脚本。 使用 `transliteration` 范围查找[支持的语言](./v3-0-languages.md)，以找到可用于选定语言的输入脚本。</td>
+    <td>必需参数  。<br/>指定输入文本所使用的脚本。 使用 [ 范围查找](./v3-0-languages.md)支持的语言`transliteration`，以找到可用于选定语言的输入脚本。</td>
   </tr>
   <tr>
     <td>toScript</td>
-    <td>必需参数  。<br/>指定输出脚本。 使用 `transliteration` 范围查找[支持的语言](./v3-0-languages.md)，以找到可用于选定输入语言和输入脚本组合的输出脚本。</td>
+    <td>必需参数  。<br/>指定输出脚本。 使用 [ 范围查找](./v3-0-languages.md)支持的语言`transliteration`，以找到可用于选定输入语言和输入脚本组合的输出脚本。</td>
   </tr>
 </table> 
 
 请求标头包括：
 
 <table width="100%">
-  <th width="20%">头文件</th>
+  <th width="20%">标头</th>
   <th>说明</th>
   <tr>
     <td>身份验证标头</td>
@@ -74,7 +74,7 @@ https://api.translator.azure.cn/transliterate?api-version=3.0
   </tr>
   <tr>
     <td>X-ClientTraceId</td>
-    <td>可选  。<br/>客户端生成的 GUID，用于唯一标识请求。 请注意，如果在查询字符串中使用名为 `ClientTraceId` 的查询参数包括了跟踪 ID，则可以省略此标头。</td>
+    <td>*可选*。<br/>客户端生成的 GUID，用于唯一标识请求。 请注意，如果在查询字符串中使用名为 `ClientTraceId` 的查询参数包括了跟踪 ID，则可以省略此标头。</td>
   </tr>
 </table> 
 
@@ -115,7 +115,7 @@ https://api.translator.azure.cn/transliterate?api-version=3.0
 ## <a name="response-headers"></a>响应标头
 
 <table width="100%">
-  <th width="20%">头文件</th>
+  <th width="20%">标头</th>
   <th>说明</th>
   <tr>
     <td>X-RequestId</td>

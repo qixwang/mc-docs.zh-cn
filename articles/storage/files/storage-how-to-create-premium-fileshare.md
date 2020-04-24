@@ -9,10 +9,10 @@ ms.date: 03/30/2020
 ms.author: v-jay
 ms.subservice: files
 ms.openlocfilehash: 323776756fd34ae711873d41d2ed320c14e80d61
-ms.sourcegitcommit: 90d01d08faf8adb20083363a8e4e5aab139cd9b2
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80290460"
 ---
 # <a name="how-to-create-an-premium-azure-file-share"></a>如何创建高级 Azure 文件共享
@@ -20,7 +20,7 @@ ms.locfileid: "80290460"
 
 本文介绍如何使用 [Azure 门户](https://portal.azure.cn/)、Azure PowerShell 和 Azure CLI 创建此新帐户类型。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要访问包含高级 Azure 文件共享的 Azure 资源，需要一个 Azure 订阅。 如果还没有订阅，则在开始前创建一个 [1 元人民币的试用帐户](https://www.azure.cn/pricing/1rmb-trial-full/?form-type=identityauth)。
 
@@ -28,7 +28,7 @@ ms.locfileid: "80290460"
 
 ### <a name="sign-in-to-azure"></a>登录 Azure
 
-登录到 [Azure 门户](https://portal.azure.cn/)。
+登录 [Azure 门户](https://portal.azure.cn/)。
 
 ### <a name="create-a-filestorage-storage-account"></a>创建 filestorage 存储帐户
 

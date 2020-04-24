@@ -13,10 +13,10 @@ ms.reviewer: carlrab
 origin.date: 03/10/2019
 ms.date: 03/30/2020
 ms.openlocfilehash: 38aaf3ce4a0fbed78a626c775dfec0d0fd67af4c
-ms.sourcegitcommit: 90660563b5d65731a64c099b32fb9ec0ce2c51c6
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80341839"
 ---
 # <a name="automatic-tuning-in-azure-sql-database"></a>Azure SQL 数据库中的自动优化

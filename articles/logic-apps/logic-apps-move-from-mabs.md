@@ -10,17 +10,17 @@ origin.date: 05/30/2017
 ms.date: 03/30/2020
 ms.author: v-yeche
 ms.openlocfilehash: 992c8c8c53ed2dc2703122c866200312cb99b436
-ms.sourcegitcommit: 2b084933215d0e7702456730f168d97e00c882a0
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80243598"
 ---
 # <a name="migrate-your-apps-and-solutions-from-biztalk-services-to-azure-logic-apps"></a>将应用和解决方案从 BizTalk 服务迁移到 Azure 逻辑应用
 
 Microsoft Azure BizTalk 服务 (MABS) 即将停用。 若要将 MABS 集成解决方案移动到 [Azure 逻辑应用](../logic-apps/logic-apps-overview.md)，请使用本文中的指南。 
 
-## <a name="introduction"></a>简介
+## <a name="introduction"></a>介绍
 
 BizTalk 服务由两个子服务组成：
 

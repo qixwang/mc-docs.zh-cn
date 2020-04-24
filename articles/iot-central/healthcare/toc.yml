@@ -16,7 +16,7 @@
       href: ../core/concepts-get-connected.md?toc=/iot-central/healthcare/toc.json&bc=/iot-central/healthcare/breadcrumb/toc.json
     - name: 什么是应用程序模板？
       href: ../core/concepts-app-templates.md?toc=/iot-central/healthcare/toc.json&bc=/iot-central/healthcare/breadcrumb/toc.json
-- name: 操作指南
+- name: 操作方法指南
   items:
     - name: 创建健康状况数据分类仪表板
       href: howto-health-data-triage.md

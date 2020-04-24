@@ -7,23 +7,23 @@ ms.topic: reference
 ms.date: 03/18/2020
 ms.author: v-junlch
 ms.openlocfilehash: 9c45965ad8c225eb2d2a27cb8cf17d2cacfb059d
-ms.sourcegitcommit: e500354e2fd8b7ac3dddfae0c825cc543080f476
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79546885"
 ---
 # <a name="azure-service-bus-trigger-for-azure-functions"></a>Azure Functions 的 Azure 服务总线触发器
 
 使用服务总线触发器响应来自服务总线队列或主题的消息。
 
-有关设置和配置详细信息，请参阅[概述](functions-bindings-service-bus-output.md)。
+若要了解设置和配置详细信息，请参阅[概述](functions-bindings-service-bus-output.md)。
 
 ## <a name="example"></a>示例
 
 # <a name="c"></a>[C#](#tab/csharp)
 
-以下示例演示了读取[消息元数据](#message-metadata)并记录服务总线队列消息的 [C# 函数](functions-dotnet-class-library.md)：
+以下示例演示了读取[消息元数据](functions-dotnet-class-library.md)并记录服务总线队列消息的 [C# 函数](#message-metadata)：
 
 ```cs
 [FunctionName("ServiceBusQueueTriggerCSharp")]                    
@@ -117,7 +117,7 @@ module.exports = function(context, myQueueItem) {
 
 # <a name="java"></a>[Java](#tab/java)
 
-以下 Java 函数使用 [Java 函数运行时库](https://docs.microsoft.com/java/api/overview/azure/functions/runtime)中的 `@ServiceBusQueueTrigger` 注释来说明服务总线队列触发器的配置。 此函数获取放置在队列上的消息，然后将其添加到日志。
+以下 Java 函数使用 `@ServiceBusQueueTrigger`Java 函数运行时库[中的 ](https://docs.microsoft.com/java/api/overview/azure/functions/runtime) 注释来说明服务总线队列触发器的配置。 此函数获取放置在队列上的消息，然后将其添加到日志。
 
 ```java
 @FunctionName("sbprocessor")
@@ -206,7 +206,7 @@ module.exports = function(context, myQueueItem) {
 要使用的服务总线帐户按以下顺序确定：
 
 * `ServiceBusTrigger` 特性的 `Connection` 属性。
-* 作为 `ServiceBusTrigger` 特性应用到同一参数的 `ServiceBusAccount` 特性。
+* 作为 `ServiceBusAccount` 特性应用到同一参数的 `ServiceBusTrigger` 特性。
 * 应用到函数的 `ServiceBusAccount` 特性。
 * 应用到类的 `ServiceBusAccount` 特性。
 * “AzureWebJobsServiceBus”应用设置。
@@ -235,15 +235,15 @@ JavaScript 不支持特性。
 
 |function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
-|**type** | 不适用 | 必须设置为“serviceBusTrigger”。 在 Azure 门户中创建触发器时，会自动设置此属性。|
-|**direction** | 不适用 | 必须设置为“in”。 在 Azure 门户中创建触发器时，会自动设置此属性。 |
-|**name** | 不适用 | 变量的名称，表示函数代码中的队列或主题消息。 |
+|type  | 不适用 | 必须设置为“serviceBusTrigger”。 在 Azure 门户中创建触发器时，会自动设置此属性。|
+|direction  | 不适用 | 必须设置为“in”。 在 Azure 门户中创建触发器时，会自动设置此属性。 |
+|name  | 不适用 | 变量的名称，表示函数代码中的队列或主题消息。 |
 |**queueName**|**QueueName**|要监视的队列的名称。  仅在监视队列的情况下设置，不为主题设置。
 |**topicName**|**TopicName**|要监视的主题的名称。 仅在监视主题的情况下设置，不为队列设置。|
 |**subscriptionName**|**SubscriptionName**|要监视的订阅的名称。 仅在监视主题的情况下设置，不为队列设置。|
 |连接 |**Connection**|应用设置的名称，包含要用于此绑定的服务总线连接字符串。 如果应用设置名称以“AzureWebJobs”开头，则只能指定该名称的余下部分。 例如，如果将 `connection` 设为“MyServiceBus”，Functions 运行时会查找名为“AzureWebJobsMyServiceBus”的应用设置。 如果将 `connection` 留空，函数运行时将使用名为“AzureWebJobsServiceBus”的应用设置中的默认服务总线连接字符串。<br><br>若要获取连接字符串，请执行[获取管理凭据](../service-bus-messaging/service-bus-quickstart-portal.md#get-the-connection-string)中显示的步骤。 必须是服务总线命名空间的连接字符串，不限于特定的队列或主题。 |
 |**accessRights**|**Access**|连接字符串的访问权限。 可用值为 `manage` 和 `listen`。 默认值是 `manage`，其指示 `connection` 具有“管理”  权限。 如果使用不具有“管理”  权限的连接字符串，请将 `accessRights` 设置为“listen”。 否则，Functions 运行时可能会在尝试执行需要管理权限的操作时失败。 在 Azure Functions 版本 2.x 及更高版本中，此属性不可用，因为最新版本的服务总线 SDK 不支持管理操作。|
-|**isSessionsEnabled**|**IsSessionsEnabled**|如果连接到[会话感知](../service-bus-messaging/message-sessions.md)队列或订阅，则为 `true`。 否则为 `false`（默认值）。|
+|**isSessionsEnabled**|**IsSessionsEnabled**|如果连接到`true`会话感知[队列或订阅，则为 ](../service-bus-messaging/message-sessions.md)。 否则为 `false`（默认值）。|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -297,7 +297,7 @@ Functions 运行时以 [PeekLock 模式](../service-bus-messaging/service-bus-pe
 
 服务总线触发器提供了几个[元数据属性](./functions-bindings-expressions-patterns.md#trigger-metadata)。 这些属性可在其他绑定中用作绑定表达式的一部分，或者用作代码中的参数。 以下属性是 [BrokeredMessage](https://docs.azure.cn/zh-cn/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) 类的成员。
 
-|属性|类型|说明|
+|properties|类型|说明|
 |--------|----|-----------|
 |`DeliveryCount`|`Int32`|传递次数。|
 |`DeadLetterSource`|`string`|死信源。|

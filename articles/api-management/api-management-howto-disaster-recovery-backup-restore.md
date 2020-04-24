@@ -15,10 +15,10 @@ origin.date: 02/03/2020
 ms.author: v-lingwu
 ms.date: 2/25/2020
 ms.openlocfilehash: eb896ecfb2f716c2b2112c814a5382fc1ad2afbb
-ms.sourcegitcommit: 7f8acc663bf3429b391c2c615bed0d1b2107fd7e
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80290089"
 ---
 # <a name="how-to-implement-disaster-recovery-using-service-backup-and-restore-in-azure-api-management"></a>如何使用 Azure API 管理中的服务备份和还原实现灾难恢复
@@ -58,7 +58,7 @@ ms.locfileid: "80290089"
 
 ### <a name="create-an-azure-active-directory-application"></a>创建 Azure Active Directory 应用程序
 
-1. 登录到 [Azure 门户](https://portal.azure.cn)。 
+1. 登录 [Azure 门户](https://portal.azure.cn)。 
 2. 使用包含 API 管理服务实例的订阅导航到 Azure Active Directory 中的“应用注册”选项卡（Azure Active Directory > 管理/应用注册）。  
 
     > [!NOTE]
@@ -70,8 +70,8 @@ ms.locfileid: "80290089"
 
 4. 输入应用程序的名称。
 5. 对于应用程序类型，选择“本机”。 
-6. 输入占位符 URL，例如，为“重定向 URI”  输入 `http://resources`，因为它是必填字段，但以后不使用该值。 单击此复选框以保存应用程序。
-7. 单击**创建**。
+6. 输入占位符 URL，例如，为“重定向 URI”`http://resources`**输入** ，因为它是必填字段，但以后不使用该值。 单击此复选框保存应用程序。
+7. 单击“创建”。 
 
 ### <a name="add-an-application"></a>添加应用程序
 
@@ -118,7 +118,7 @@ namespace GetTokenResourceManagerRequests
 
 根据以下说明替换 `{tenant id}`、`{application id}` 和 `{redirect uri}`。
 
-1. 将 `{tenant id}` 替换为已创建的 Azure Active Directory 应用程序的租户 ID。 可通过单击“应用注册” -> “终结点”访问此 ID。  
+1. 将 `{tenant id}` 替换为已创建的 Azure Active Directory 应用程序的租户 ID。 可通过单击“应用注册” **“终结点”访问此 ID。**  ->  
 
     ![终结点][api-management-endpoint]
 
@@ -127,7 +127,7 @@ namespace GetTokenResourceManagerRequests
 
     指定这些值后，代码示例应返回类似于以下示例的令牌：
 
-    ![令牌][api-management-arm-token]
+    ![标记][api-management-arm-token]
 
     > [!NOTE]
     > 该令牌可能在一段时间后过期。 再次执行示例代码以生成新令牌。
@@ -169,7 +169,7 @@ POST https://management.azure.cn/subscriptions/{subscriptionId}/resourceGroups/{
 
 将 `Content-Type` 请求标头的值设置为 `application/json`。
 
-备份是长时间运行的操作，可能需要数分钟才能完成。 如果请求已成功且备份过程已开始，则会收到带有 `Location` 标头的 `202 Accepted` 响应状态代码。 向 `Location` 标头中的 URL 发出“GET”请求以查明操作状态。 当备份正在进行时，将继续收到“202 已接受”状态代码。 响应代码 `200 OK` 指示备份操作成功完成。
+备份是长时间运行的操作，可能需要数分钟才能完成。 如果请求已成功且备份过程已开始，则会收到带有 `202 Accepted` 标头的 `Location` 响应状态代码。 向 `Location` 标头中的 URL 发出“GET”请求以查明操作状态。 当备份正在进行时，将继续收到“202 已接受”状态代码。 响应代码 `200 OK` 指示备份操作成功完成。
 
 发出备份或还原请求时请注意以下限制：
 
@@ -213,7 +213,7 @@ POST https://management.azure.cnsubscriptions/{subscriptionId}/resourceGroups/{r
 
 将 `Content-Type` 请求标头的值设置为 `application/json`。
 
-还原是长时间运行的操作，可能需要长达 30 分钟或更长时间才能完成。 如果请求已成功且还原过程已开始，则会收到带有 `Location` 标头的 `202 Accepted` 响应状态代码。 向 `Location` 标头中的 URL 发出“GET”请求以查明操作状态。 当还原正在进行时，将继续收到“202 已接受”状态代码。 响应代码 `200 OK` 指示还原操作成功完成。
+还原是长时间运行的操作，可能需要长达 30 分钟或更长时间才能完成。 如果请求已成功且还原过程已开始，则会收到带有 `202 Accepted` 标头的 `Location` 响应状态代码。 向 `Location` 标头中的 URL 发出“GET”请求以查明操作状态。 当还原正在进行时，将继续收到“202 已接受”状态代码。 响应代码 `200 OK` 指示还原操作成功完成。
 
 > [!IMPORTANT]
 > 要还原到的服务的 **SKU** 必须与正在还原的已备份服务的 SKU **匹配**。

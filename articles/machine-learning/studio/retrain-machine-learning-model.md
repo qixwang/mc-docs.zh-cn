@@ -11,10 +11,10 @@ ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 02/14/2019
 ms.openlocfilehash: df6dd2d46f4a4867648d66d26b3f5c27f52da334
-ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80343354"
 ---
 # <a name="retrain-and-deploy-a-machine-learning-model"></a>重新训练和部署机器学习模型
@@ -61,7 +61,7 @@ ms.locfileid: "80343354"
 
 使用以下步骤来调用重新训练 API：
 
-1. 在 Visual Studio 中创建 C# 控制台应用程序：“新建” > “项目” > “Visual C#” > “Windows 经典桌面” > “控制台应用(.NET Framework)”      。
+1. 在 Visual Studio 中创建 C# 控制台应用程序：“新建”   > “项目”   > “Visual C#”   > “Windows 经典桌面”   > “控制台应用(.NET Framework)”  。
 1. 登录“机器学习 Web 服务”门户。
 1. 单击正在使用的 Web 服务。
 1. 单击“**使用**”。

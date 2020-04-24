@@ -9,10 +9,10 @@ ms.topic: conceptual
 origin.date: 08/30/2019
 ms.date: 03/16/2020
 ms.openlocfilehash: 1c6383af5de86c9ad545fc431dab13128a286432
-ms.sourcegitcommit: 1d3d8dfdaf6281f06640cbee7124a1e8bf102c50
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80243964"
 ---
 # <a name="streaming-ingestion-preview"></a>流式引入（预览版）
@@ -21,7 +21,7 @@ ms.locfileid: "80243964"
 
 当每个表的数据量增大到每秒 1 MB 以上时，请使用批量引入而不是流式引入。 请阅读[数据引入概述](/azure/data-explorer/ingest-data-overview)来详细了解各种引入方法。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * 如果没有 Azure 订阅，请在开始前创建一个[试用 Azure 帐户](https://www.azure.cn/pricing/1rmb-trial/)。
 * 登录到 [Web UI](https://dataexplorer.azure.cn/)。
@@ -34,7 +34,7 @@ ms.locfileid: "80243964"
 
 1. 在 Azure 门户中，转到 Azure 数据资源管理器群集。 在“设置”中选择“配置”。   
 1. 在“配置”窗格中，选择“打开”以启用“流式引入”。   
-1. 选择“保存”  。
+1. 选择“保存”。 
  
     ![打开流式引入](media/ingest-data-streaming/streaming-ingestion-on.png)
  
@@ -67,7 +67,7 @@ ms.locfileid: "80243964"
 1. 从所有相关表和数据库中删除[流式引入策略](https://docs.microsoft.com/azure/kusto/management/streamingingestionpolicy)。 删除流式引入策略会触发将流式引入数据从初始存储移到列存储中的永久存储（盘区或分片）的行为。 数据移动的持续时间从几秒钟到几小时不等，具体取决于初始存储中的数据量，以及群集使用 CPU 和内存的方式。
 1. 在 Azure 门户中，转到 Azure 数据资源管理器群集。 在“设置”中选择“配置”。   
 1. 在“配置”窗格中，选择“关闭”以禁用“流式引入”。   
-1. 选择“保存”  。
+1. 选择“保存”。 
 
     ![关闭流式引入](media/ingest-data-streaming/streaming-ingestion-off.png)
 

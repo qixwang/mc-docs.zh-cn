@@ -10,10 +10,10 @@ origin.date: 05/29/2019
 ms.date: 03/30/2020
 ms.subservice: blobs
 ms.openlocfilehash: df3a378e9feea129fc38b83e8886610070c1c79c
-ms.sourcegitcommit: 90d01d08faf8adb20083363a8e4e5aab139cd9b2
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80290444"
 ---
 # <a name="static-website-hosting-in-azure-storage"></a>Azure 存储中的静态网站托管
@@ -45,7 +45,7 @@ ms.locfileid: "80290444"
 > * [Azure CLI](storage-blob-static-website-how-to.md#cli)
 > * [Azure PowerShell 模块](storage-blob-static-website-how-to.md#powershell)
 > * [AzCopy](../common/storage-use-azcopy-v10.md)
-> * [Azure 存储资源管理器](https://azure.microsoft.com/features/storage-explorer/)
+> * [Azure 存储浏览器](https://azure.microsoft.com/features/storage-explorer/)
 > * [Azure Pipelines](https://azure.microsoft.com/services/devops/pipelines/)
 > * [Visual Studio Code 扩展](https://docs.microsoft.com/azure/javascript/tutorial-vscode-static-website-node-01)
 
@@ -97,7 +97,7 @@ ms.locfileid: "80290444"
 
 可以免费启用静态网站托管。 只会针对你的站点利用的 blob 存储和运营成本进行计费。 如需详细了解 Azure Blob 存储价格，请参阅 [Azure Blob 存储定价页](https://azure.cn/pricing/details/storage/blobs/)。
 
-## <a name="metrics"></a>指标
+## <a name="metrics"></a>度量值
 
 可以在静态网站页面上启用指标。 启用指标后，指标仪表板会报告有关 $web 容器中的文件的流量统计信息  。
 

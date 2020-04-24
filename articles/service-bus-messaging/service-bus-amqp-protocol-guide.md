@@ -16,10 +16,10 @@ origin.date: 01/23/2019
 ms.date: 09/23/2019
 ms.author: v-lingwu
 ms.openlocfilehash: 7226b96f0753782540781a58b994f18ec500e6ea
-ms.sourcegitcommit: 305361c96d1d5288d3dda7e81833820640e2afac
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80109778"
 ---
 # <a name="amqp-10-in-azure-service-bus-and-event-hubs-protocol-guide"></a>Azure 服务总线和事件中心内的 AMQP 1.0 协议指南

@@ -10,15 +10,15 @@ ms.date: 03/16/2020
 ms.author: v-tawe
 ms.custom: seodec18
 ms.openlocfilehash: 654e3f963a64e6997fe2323b617f803f189fb0ef
-ms.sourcegitcommit: 1d3d8dfdaf6281f06640cbee7124a1e8bf102c50
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80243981"
 ---
 # <a name="configure-php-in-azure-app-service"></a>在 Azure 应用服务中配置 PHP
 
-## <a name="introduction"></a>简介
+## <a name="introduction"></a>介绍
 
 本指南演示如何执行以下操作：在 [Azure 应用服务](app-service-web-overview.md)中配置 Web 应用、移动后端和 API 应用的内置 PHP 运行时，提供自定义 PHP 运行时，并启用扩展。 若要使用应用服务，请注册 [1 元人民币的试用订阅]。 要充分利用本指南，应先在应用服务中创建一个 PHP 应用。
 
@@ -45,7 +45,7 @@ PHP 7.0 和 PHP 7.2 也可用，但它们在默认情况下不启用。 若要�
         az cloud set -n AzureChinaCloud
         az login
 
-1. 检查受支持运行时的列表。
+1. 选中查看受支持运行时的列表。
 
         az webapp list-runtimes
 
@@ -53,7 +53,7 @@ PHP 7.0 和 PHP 7.2 也可用，但它们在默认情况下不启用。 若要�
 
         az webapp config set --php-version {5.6 | 7.0 | 7.1 | 7.2} --name {app-name} --resource-group {resource-group-name}
 
-3. 现已设置 PHP 版本。 可以确认这些设置：
+3. 现已设置 PHP 版本。 可以确认以下设置：
 
         az webapp show --name {app-name} --resource-group {resource-group-name}
 
@@ -64,7 +64,7 @@ PHP 7.0 和 PHP 7.2 也可用，但它们在默认情况下不启用。 若要�
 ### <a name="changing-php_ini_user-php_ini_perdir-php_ini_all-configuration-settings"></a>更改 PHP\_INI\_USER、PHP\_INI\_PERDIR、PHP\_INI\_ALL 配置设置
 
 1. 将 [.user.ini] 文件添加到根目录。
-1. 使用会在 `php.ini` 文件中使用的语法，将配置设置添加到 `.user.ini` 文件。 例如，如果希望启用 `display_errors` 设置，并将 `upload_max_filesize` 设置设为 10 分钟，则 `.user.ini` 文件应包含以下文本：
+1. 使用会在 `.user.ini` 文件中使用的语法，将配置设置添加到 `php.ini` 文件。 例如，如果希望启用 `display_errors` 设置，并将 `upload_max_filesize` 设置设为 10 分钟，则 `.user.ini` 文件应包含以下文本：
 
         ; Example Settings
         display_errors=On
@@ -80,8 +80,8 @@ PHP 7.0 和 PHP 7.2 也可用，但它们在默认情况下不启用。 若要�
 ### <a name="changing-php_ini_system-configuration-settings"></a>更改 PHP\_INI\_SYSTEM 配置设置
 
 1. 向应用添加一个键为 `PHP_INI_SCAN_DIR` 且值为 `d:\home\site\ini` 的应用设置
-1. 使用 Kudu 控制器 (http://&lt;site-name&gt;.scm.azurewebsite.net) 在 `d:\home\site\ini` 目录中创建一个 `settings.ini` 文件。
-1. 使用会在 `php.ini` 文件中使用的语法，将配置设置添加到 `settings.ini` 文件。 例如，如果希望将 `curl.cainfo` 设置指向 `*.crt` 文件并将“wincache.maxfilesize”设置为 512K，则 `settings.ini` 文件应包含以下文本：
+1. 使用 Kudu 控制器 (http://`settings.ini`site-name&lt;.scm.azurewebsite.net) 在 &gt; 目录中创建一个 `d:\home\site\ini` 文件。
+1. 使用会在 `settings.ini` 文件中使用的语法，将配置设置添加到 `php.ini` 文件。 例如，如果希望将 `curl.cainfo` 设置指向 `*.crt` 文件并将“wincache.maxfilesize”设置为 512K，则 `settings.ini` 文件应包含以下文本：
 
         ; Example Settings
         curl.cainfo="%ProgramFiles(x86)%\Git\bin\curl-ca-bundle.crt"
@@ -97,8 +97,8 @@ PHP 7.0 和 PHP 7.2 也可用，但它们在默认情况下不启用。 若要�
 1. 将 `ext` 目录添加到 `d:\home\site` 目录。
 1. 将 `.dll` 扩展文件置于 `ext` 目录中（例如 `php_xdebug.dll`）。 确保扩展与默认版本的 PHP兼容，并且是 VC9 版本且与非线程安全 (nts) 兼容。
 1. 向应用添加一个键为 `PHP_INI_SCAN_DIR` 且值为 `d:\home\site\ini` 的应用设置
-1. 在 `d:\home\site\ini` 中创建名为 `extensions.ini` 的 `ini` 文件。
-1. 使用会在 `php.ini` 文件中使用的语法，将配置设置添加到 `extensions.ini` 文件。 例如，如果你想要启用 MongoDB 和 XDebug 扩展，则 `extensions.ini` 文件包含此文本：
+1. 在 `ini` 中创建名为 `d:\home\site\ini` 的 `extensions.ini` 文件。
+1. 使用会在 `extensions.ini` 文件中使用的语法，将配置设置添加到 `php.ini` 文件。 例如，如果想要启用 MongoDB 和 XDebug 扩展，则 `extensions.ini` 文件应包含以下文本：
 
         ; Enable Extensions
         extension=d:\home\site\ext\php_mongo.dll
@@ -112,14 +112,14 @@ PHP 7.0 和 PHP 7.2 也可用，但它们在默认情况下不启用。 若要�
 3. 部署应用。
 4. 在 Azure 门户中浏览到你的应用，并单击位于“设置”部分下方的“配置”。  
 5. 从“配置”  边栏选项卡上，选择“应用程序设置”。 
-6. 在“应用程序设置”  部分中，单击“+ 新建应用程序设置”  并创建一个 **PHP_EXTENSIONS** 密钥。 此键的值会是相对于网站根目录的一个路径：**bin\your-ext-file**。
+6. 在“应用程序设置”  部分中，单击“+ 新建应用程序设置”  并创建一个 **PHP_EXTENSIONS** 密钥。 此键的值将是相对于网站根目录的一个路径：**bin\your-ext-file**。
 7. 单击底部的“更新”  按钮，然后单击“应用程序设置”选项卡上方的“保存”。  
 
 通过使用 **PHP_ZENDEXTENSIONS** 键，还可以支持 Zend 扩展。 若要启用多个扩展，请包括应用设置值的 `.dll` 文件的逗号分隔列表。
 
 ## <a name="how-to-use-a-custom-php-runtime"></a>如何：使用自定义 PHP 运行时
 
-应用服务可以使用提供的 PHP 运行时（而非默认 PHP 运行时）来执行 PHP 脚本。 提供的运行时可由 `php.ini` 文件（也是你提供的）配置。 要在应用服务中使用自定义 PHP 运行时，请执行下列步骤。
+应用服务可以使用提供的 PHP 运行时（而非默认 PHP 运行时）来执行 PHP 脚本。 提供的运行时可由提供的 `php.ini` 文件配置。 要在应用服务中使用自定义 PHP 运行时，请执行下列步骤。
 
 1. 获取非线程安全、VC9 或 VC11 兼容版本的 PHP for Windows。 可在此处找到 PHP for Windows 最新版本：[https://windows.php.net/download/]。 可在此处的存档中找到旧版本：[https://windows.php.net/downloads/releases/archives/]。
 2. 修改运行时的 `php.ini` 文件。 应用服务将忽略作为任何仅在系统级别使用的指令的配置设置。 （有关仅在系统级别使用的指令的信息，请参阅 [php.ini 指令的列表]）。
@@ -136,19 +136,19 @@ PHP 7.0 和 PHP 7.2 也可用，但它们在默认情况下不启用。 若要�
 
 ## <a name="how-to-enable-composer-automation-in-azure"></a>如何：在 Azure 中启用编辑器自动化
 
-默认情况下，应用服务与 composer.json（如果 PHP 项目中有）不相关。 如果使用 [Git 部署](deploy-local-git.md)，则可以通过在 `git push` 期间启用编辑器扩展来启用 composer.json 处理。
+默认情况下，如果 PHP 项目中有 composer.json，则应用服务与其不相关。 如果使用 [Git 部署](deploy-local-git.md)，则可以通过在 `git push` 期间启用编辑器扩展来启用 composer.json 处理。
 
 > [!NOTE]
-> 可以 [在这里为应用服务中的一流编辑器支持投票](https://feedback.azure.com/forums/169385-web-apps-formerly-websites/suggestions/6477437-first-class-support-for-composer-and-pip)！
+> 可以[在此处针对应用服务中的一流编辑器支持进行投票](https://feedback.azure.com/forums/169385-web-apps-formerly-websites/suggestions/6477437-first-class-support-for-composer-and-pip)！
 >
 
-1. 在 [Azure 门户](https://portal.azure.cn)的 PHP 应用的边栏选项卡中，单击“工具” > “扩展”   。
+1. 在 [Azure 门户](https://portal.azure.cn)的 PHP 应用的边栏选项卡中，单击“工具” **“扩展”**  >   。
 
     ![Azure 门户设置边栏选项卡，用于在 Azure 中启用编辑器自动化](./media/web-sites-php-configure/composer-extension-settings.png)
 2. 单击“添加”，并单击“编辑器”。  
 
     ![添加编辑器扩展，以在 Azure 中启用编辑器自动化](./media/web-sites-php-configure/composer-extension-add.png)
-3. 单击“确定”  接受法律条款。 再次单击“确定”  以添加该扩展。
+3. 单击“确定”以接受法律条款。  再次单击“确定”以添加扩展。 
 
     “已安装扩展”边栏选项卡将显示编辑器扩展  。
     ![接受法律条款以在 Azure 中启用编辑器自动化](./media/web-sites-php-configure/composer-extension-view.png)

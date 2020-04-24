@@ -24,7 +24,7 @@
           href: quickstarts/python.md
         - name: Ruby
           href: quickstarts/ruby.md
-    - name: SDK
+    - name: SDK 中 IsInRole 中的声明
       items:
         - name: Go
           href: quickstarts/go-sdk.md
@@ -37,7 +37,7 @@
     - name: 使用 Flask 翻译文本、分析情绪以及合成语音
       maintainContext: true
       href: /cognitive-services/translator/tutorial-build-flask-app-translation-synthesis
-- name: 操作指南
+- name: 操作方法指南
   items:
     - name: 调用文本分析 API
       href: How-tos/text-analytics-how-to-call-api.md
@@ -81,7 +81,7 @@
   items:
     - name: 使用 MS Flow 识别 Yammer 组中的评论情绪
       href: 'https://docs.microsoft.com/Yammer/integrate-yammer-with-other-apps/sentiment-analysis-flow-azure'
-    - name: 常见问题
+    - name: 常见问题解答
       href: text-analytics-resource-faq.md
     - name: 语言和区域支持
       href: language-support.md
@@ -89,7 +89,7 @@
       href: 'https://www.azure.cn/pricing/details/cognitive-services/'
     - name: 区域可用性
       href: 'https://azure.microsoft.com/global-infrastructure/services/?products=all&regions=china-non-regional,china-north,china-north-2,china-east,china-east-2'
-    - name: Stack Overflow
+    - name: 堆栈溢出
       href: 'https://stackoverflow.com/questions/tagged/text-analytics-api'
     - name: 试试看！
       href: 'https://www.azure.cn/home/features/cognitive-services/text-analytics/'

@@ -17,10 +17,10 @@ origin.date: 05/06/2019
 ms.date: 03/02/2020
 ms.author: v-lingwu
 ms.openlocfilehash: fbfab1f215cd004ff2baebb771ea3b718625678b
-ms.sourcegitcommit: 7f8acc663bf3429b391c2c615bed0d1b2107fd7e
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80290085"
 ---
 # <a name="azure-data-security-and-encryption-best-practices"></a>Azure 数据安全与加密最佳做法

@@ -6,10 +6,10 @@ origin.date: 02/25/2020
 ms.date: 03/23/2020
 ms.author: v-yeche
 ms.openlocfilehash: b3ac152a5d4e1f13545c8356d0841fb2ff8f4f21
-ms.sourcegitcommit: 1436f1851342ca5631eb25342eed954adb707af0
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79543866"
 ---
 # <a name="understand-the-structure-and-syntax-of-azure-resource-manager-templates"></a>了解 Azure Resource Manager 模板的结构和语法

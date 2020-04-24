@@ -13,10 +13,10 @@ ms.author: v-junlch
 ms.reviewer: agirling, saeeda, benv
 ms.custom: aaddev
 ms.openlocfilehash: 474be3d43cec09bfce0a0462cb721456a550846d
-ms.sourcegitcommit: 6568c59433d7e80ab06e9fe76d4791f761ed6775
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80243167"
 ---
 # <a name="evolution-of-microsoft-identity-platform"></a>Microsoft 标识平台的发展

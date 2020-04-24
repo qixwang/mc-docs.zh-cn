@@ -18,7 +18,7 @@
       href: concept-iot-central-solar-panel-app.md
     - name: 什么是应用程序模板？
       href: ../core/concepts-app-templates.md?toc=/iot-central/energy/toc.json&bc=/iot-central/energy/breadcrumb/toc.json
-- name: 操作指南
+- name: 操作方法指南
   items:
     - name: 连接设备
       items:

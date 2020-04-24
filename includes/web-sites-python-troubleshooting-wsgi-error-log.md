@@ -10,10 +10,10 @@ ms.date: 03/16/2020
 ms.author: v-tawe
 ms.custom: include file
 ms.openlocfilehash: d409c28b68a84dab92460c34a209e40ecc2a0eb0
-ms.sourcegitcommit: e500354e2fd8b7ac3dddfae0c825cc543080f476
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79549608"
 ---
 如果 Python 在启动应用程序时遇到错误，只只会返回简单的错误页（例如“由于发生内部服务器错误，无法显示该页。”）。

@@ -13,10 +13,10 @@ ms.reviewer: carlrab
 origin.date: 02/24/2020
 ms.date: 03/30/2020
 ms.openlocfilehash: fec4f0da93dea01b8df65399bd3d18c439f9bc9c
-ms.sourcegitcommit: 90660563b5d65731a64c099b32fb9ec0ce2c51c6
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80341833"
 ---
 # <a name="copy-a-transactionally-consistent-copy-of-an-azure-sql-database"></a>复制 Azure SQL 数据库的事务一致性副本

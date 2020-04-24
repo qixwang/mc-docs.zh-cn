@@ -7,15 +7,15 @@ origin.date: 01/30/2019
 ms.date: 03/23/2020
 ms.author: v-yeche
 ms.openlocfilehash: fda013686140d5ff110b5349aa1a29c10d6f9238
-ms.sourcegitcommit: 1436f1851342ca5631eb25342eed954adb707af0
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79543872"
 ---
 # <a name="access-key-vault-secret-when-deploying-azure-managed-applications"></a>部署 Azure 托管应用程序时访问 Key Vault 机密
 
-在部署过程中，需要将安全值（例如密码）作为参数传递时，可从 [Azure Key Vault](../../key-vault/key-vault-overview.md) 检索值。 若要在部署托管应用程序时访问 Key Vault，必须授予对**设备资源提供程序**服务主体的访问权限。 托管应用程序服务使用此标识来运行操作。 若要在部署过程中从密钥保管库成功检索某个值，服务主体必须能够访问密钥保管库。
+在部署过程中，需要将安全值（例如密码）作为参数传递时，可从 [Azure 密钥保管库](../../key-vault/key-vault-overview.md)检索值。 若要在部署托管应用程序时访问 Key Vault，必须授予对**设备资源提供程序**服务主体的访问权限。 托管应用程序服务使用此标识来运行操作。 若要在部署过程中从密钥保管库成功检索某个值，服务主体必须能够访问密钥保管库。
 
 本文介绍如何配置 Key Vault 以与托管应用程序一起使用。
 
@@ -31,13 +31,13 @@ ms.locfileid: "79543872"
 
     ![显示高级访问策略](./media/key-vault-access/advanced.png)
 
-1. 选择“启用对 Azure 资源管理器的访问以进行模板部署”  。 Then, select <bpt id="p1">**</bpt>Save<ept id="p1">**</ept>.
+1. 选择“启用对 Azure 资源管理器的访问以进行模板部署”  。 然后选择“保存”  。
 
     ![启用模板部署](./media/key-vault-access/enable-template.png)
 
 ## <a name="add-service-as-contributor"></a>将服务添加为参与者
 
-1. 选择“访问控制(IAM)”  。
+1. 选择“访问控制 (IAM)”  。
 
     ![选择访问控制](./media/key-vault-access/access-control.png)
 
@@ -49,7 +49,7 @@ ms.locfileid: "79543872"
 
     ![搜索提供程序](./media/key-vault-access/search-provider.png)
 
-1. 选择“保存”  。
+1. 选择“保存”。 
 
 ## <a name="reference-key-vault-secret"></a>引用 Key Vault 机密
 

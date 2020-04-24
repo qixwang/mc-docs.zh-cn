@@ -12,10 +12,10 @@ ms.date: 03/16/2020
 ms.author: v-junlch
 ms.subservice: B2C
 ms.openlocfilehash: 87fe62ba1c92a82070bd963d64a5293b2ee74042
-ms.sourcegitcommit: 71a386ca0d0ecb79a123399b6ab6b8c70ea2aa78
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79497189"
 ---
 # <a name="single-page-sign-in-using-the-oauth-20-implicit-flow-in-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 中的 OAuth 2.0 隐式流的单页登录

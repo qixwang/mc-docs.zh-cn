@@ -10,10 +10,10 @@ ms.date: 03/30/2020
 ms.author: v-jay
 ms.subservice: blobs
 ms.openlocfilehash: 7ca8563d3c961d4e7bfebc6eeb05280245c510b4
-ms.sourcegitcommit: 90d01d08faf8adb20083363a8e4e5aab139cd9b2
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80290487"
 ---
 # <a name="create-a-blockblobstorage-account"></a>创建 BlockBlobStorage 帐户
@@ -24,11 +24,11 @@ BlockBlobStorage 帐户类型允许创建具有高级性能特征的块 Blob。 
 
 有关 BlockBlobStorage 帐户的详细信息，请参阅 [Azure 存储帐户概述](/storage/common/storage-account-overview)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 如果没有 Azure 订阅，可在开始前创建一个 [1 元人民币试用帐户](https://wd.azure.cn/pricing/1rmb-trial-full)。
 
-# <a name="portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[门户](#tab/azure-portal)
 
 无。
 
@@ -48,9 +48,9 @@ BlockBlobStorage 帐户类型允许创建具有高级性能特征的块 Blob。 
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
-# <a name="portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[门户](#tab/azure-portal)
 
-登录到 [Azure 门户](https://portal.azure.cn)。
+登录 [Azure 门户](https://portal.azure.cn)。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -74,7 +74,7 @@ az login
 
 ## <a name="create-a-blockblobstorage-account"></a>创建 BlockBlobStorage 帐户
 
-## <a name="portal"></a>[Portal](#tab/azure-portal)
+## <a name="portal"></a>[门户](#tab/azure-portal)
 若要在 Azure 门户中创建 BlockBlobStorage 帐户，请执行以下步骤：
 
 1. 在 Azure 门户中选择“所有服务”>“存储”类别 >“存储帐户”    。
@@ -95,10 +95,10 @@ az login
 
 1. 对于其余设置，请配置以下各项：
 
-   |字段     |Value  |
+   |字段     |值  |
    |---------|---------|
    |**“性能”**    |  选择“高级”  。   |
-   | 帐户类型    | 选择“BlockBlobStorage”。       |
+   |**帐户种类**    | 选择“BlockBlobStorage”。       |
    |**复制**    |  保留默认设置“本地冗余存储(LRS)”  。      |
 
    ![显示用于创建块 Blob 存储帐户的门户 UI](media/storage-blob-create-account-block-blob/create-block-blob-storage-account.png)

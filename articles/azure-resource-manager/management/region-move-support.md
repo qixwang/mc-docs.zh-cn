@@ -8,10 +8,10 @@ origin.date: 01/20/2020
 ms.date: 03/23/2020
 ms.author: v-yeche
 ms.openlocfilehash: beecc066da24f34371fda8804d0537a687511205
-ms.sourcegitcommit: 1436f1851342ca5631eb25342eed954adb707af0
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79543801"
 ---
 # <a name="support-for-moving-azure-resources-across-regions"></a>跨区域移动 Azure 资源的支持
@@ -595,7 +595,7 @@ ms.locfileid: "79543801"
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 区域移动 | 
 > | ------------- | ----------- |
-> | vaults | 否。 为 Site Recovery [禁用保管库并进行重新创建](/site-recovery/move-vaults-across-regions)  | 
+> | vaults | 不是。 为 Site Recovery [禁用保管库并进行重新创建](/site-recovery/move-vaults-across-regions)  | 
 
 ## <a name="microsoftrelay"></a>Microsoft.Relay
 
@@ -650,7 +650,7 @@ ms.locfileid: "79543801"
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 区域移动 | 
 > | ------------- | ----------- |
-> | applications | 否 | 
+> | 服务 | 否 | 
 > | clusters |  否 | 
 > | clusters/applications | 否 | 
 > | containergroups | 否 | 
@@ -677,7 +677,7 @@ ms.locfileid: "79543801"
 > | appliancedefinitions | 否 | 
 > | appliances | 否 | 
 > | applicationdefinitions | 否 | 
-> | applications | 否 | 
+> | 服务 | 否 | 
 > | jitrequests | 否 | 
 
 ## <a name="microsoftsql"></a>Microsoft.Sql
@@ -753,6 +753,6 @@ ms.locfileid: "79543801"
 
 ## <a name="third-party-services"></a>第三方服务
 
-第三方服务目前不支持移动操作。
+第三方服务当前不支持移动操作。
 
 <!-- Update_Description: update meta properties, wording update, update link -->

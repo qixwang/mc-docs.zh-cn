@@ -9,10 +9,10 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.date: 03/12/2020
 ms.openlocfilehash: 811c991bc3fb6969c21bd16cad8383f55328225c
-ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80343753"
 ---
 # <a name="download-notebookspreview-data"></a>下载笔记本（预览版）数据

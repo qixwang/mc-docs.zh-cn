@@ -11,10 +11,10 @@ origin.date: 10/01/2019
 ms.date: 10/23/2019
 ms.reviewer: klam, LADocs
 ms.openlocfilehash: aa39cab2ed8b4cf3e5d5ca8dedce2551aea697cf
-ms.sourcegitcommit: 305361c96d1d5288d3dda7e81833820640e2afac
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80109789"
 ---
 # <a name="call-azure-functions-from-azure-logic-apps"></a>从 Azure 逻辑应用调用 Azure 函数

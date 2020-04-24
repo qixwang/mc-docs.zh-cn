@@ -12,10 +12,10 @@ metadata:
   origin.date: 11/04/2019
   ms.date: 03/23/2019
   ms.openlocfilehash: eafc932520a154174180b5ad1d67dcfd0d79f490
-  ms.sourcegitcommit: e500354e2fd8b7ac3dddfae0c825cc543080f476
+  ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 03/19/2020
+  ms.lasthandoff: 04/17/2020
   ms.locfileid: "79547052"
 highlightedContent:
   items:
@@ -75,7 +75,7 @@ additionalContent:
   sections:
   - title: Azure Stack Hub
     items:
-    - title: 运算符
+    - title: 操作员
       links:
       - url: /azure-stack/operator/azure-stack-manage-portals
         text: 使用管理员门户
@@ -85,7 +85,7 @@ additionalContent:
         text: Azure Stack Hub 服务策略
       - url: /azure-stack/operator/azure-stack-create-service-principals
         text: 使用应用标识访问资源
-    - title: User
+    - title: 用户
       links:
       - url: /azure-stack/user/azure-stack-quick-windows-portal
         text: 部署 VM

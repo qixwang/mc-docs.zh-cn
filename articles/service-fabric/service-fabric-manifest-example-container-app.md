@@ -7,26 +7,26 @@ origin.date: 06/08/2018
 ms.date: 02/24/2020
 ms.author: v-yeche
 ms.openlocfilehash: 09fa4c5ec21a847f2afa4c22947d0a321f81932e
-ms.sourcegitcommit: 305361c96d1d5288d3dda7e81833820640e2afac
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80108521"
 ---
 # <a name="multi-container-application-and-service-manifest-examples"></a>多容器应用程序和服务清单示例
-下面以示例方式说明了多容器 Service Fabric 应用程序的应用程序和服务清单。 这些示例的目的是说明什么设置可用以及如何使用它们。 这些应用程序和服务清单基于 [Windows Server 2016 容器示例](https://github.com/Azure-Samples/service-fabric-containers/tree/master/Windows)清单。
+下面是多容器 Service Fabric 应用程序的应用程序和服务清单示例。 这些示例的用途是展示有哪些设置可用以及如何使用它们。 这些应用程序和服务清单基于 [Windows Server 2016 容器示例](https://github.com/Azure-Samples/service-fabric-containers/tree/master/Windows)清单。
 
-以下功能会显示：
+展示了以下功能：
 
 |清单|功能|
 |---|---|
-|[应用程序清单](#application-manifest)| [重写环境变量](service-fabric-get-started-containers.md#configure-and-set-environment-variables)、[配置容器端口到主机的映射](service-fabric-get-started-containers.md#configure-container-port-to-host-port-mapping-and-container-to-container-discovery)、[配置容器注册表身份验证](service-fabric-get-started-containers.md)、[资源调控](service-fabric-resource-governance.md)、[设置隔离模式](service-fabric-get-started-containers.md#configure-isolation-mode)、[指定特定于 OS 内部版本的容器映像](service-fabric-get-started-containers.md#specify-os-build-specific-container-images)| 
-|[FrontEndService 服务清单](#frontendservice-service-manifest)| [设置环境变量](service-fabric-get-started-containers.md#configure-and-set-environment-variables)、[配置终结点](service-fabric-get-started-containers.md#configure-communication)、向容器传递命令、[将证书导入到容器中](service-fabric-securing-containers.md)| 
+|[应用程序清单](#application-manifest)| [替代环境变量](service-fabric-get-started-containers.md#configure-and-set-environment-variables)、[配置容器端口到主机映射](service-fabric-get-started-containers.md#configure-container-port-to-host-port-mapping-and-container-to-container-discovery)、[配置容器注册表身份验证](service-fabric-get-started-containers.md)、[资源调控](service-fabric-resource-governance.md)、[设置隔离模式](service-fabric-get-started-containers.md#configure-isolation-mode)、[指定 OS 内部版本特定的容器映像](service-fabric-get-started-containers.md#specify-os-build-specific-container-images)| 
+|[FrontEndService 服务清单](#frontendservice-service-manifest)| [设置环境变量](service-fabric-get-started-containers.md#configure-and-set-environment-variables)、[配置终结点](service-fabric-get-started-containers.md#configure-communication)、将命令传递给容器、[将证书导入到容器中](service-fabric-securing-containers.md)| 
 |[BackEndService 服务清单](#backendservice-service-manifest)|[设置环境变量](service-fabric-get-started-containers.md#configure-and-set-environment-variables)、[配置终结点](service-fabric-get-started-containers.md#configure-communication)、[配置卷驱动程序](service-fabric-containers-volume-logging-drivers.md)| 
 
 <!--Not Available on ##configure-container-repository-authentication-->
 
-请参阅[应用程序清单元素](#application-manifest-elements)、[FrontEndService 服务清单元素](#frontendservice-service-manifest-elements)和 [BackEndService 服务清单元素](#backendservice-service-manifest-elements)，详细了解特定的 XML 元素。
+有关特定 XML 元素的详细信息，请参阅[应用程序清单元素](#application-manifest-elements)、[FrontEndService 服务清单元素](#frontendservice-service-manifest-elements)和 [BackEndService 服务清单元素](#backendservice-service-manifest-elements)。
 
 ## <a name="application-manifest"></a>应用程序清单
 
@@ -353,7 +353,7 @@ EntryPoint 指定的可执行文件通常是长时间运行的服务主机。 �
 环境变量。 有关详细信息，请参阅 [EnvironmentVariable 元素](service-fabric-service-model-schema-elements.md#EnvironmentVariableElementEnvironmentVariableOverrideTypeComplexTypeDefinedInEnvironmentOverridesTypecomplexType)
 
 ### <a name="configpackage-element"></a>ConfigPackage 元素
-声明一个由 Name 属性命名的文件夹，该文件夹中包含 Settings.xml 文件。 此文件包含进程用户定义的键值对设置，进程可在运行时读回这些设置。 升级期间，如果仅更改了 ConfigPackage 版本，则不重启正在运行的进程。 相反，一个回调会告知进程配置设置已更改，以便动态重新加载。 有关详细信息，请参阅 [ConfigPackage 元素](service-fabric-service-model-schema-elements.md#ConfigPackageElementConfigPackageTypeComplexTypeDefinedInServiceManifestTypecomplexTypeDefinedInDigestedConfigPackageelement)
+声明一个由 Name 属性命名的文件夹，该文件夹中包含 Settings.xml 文件。 此文件包含进程用户定义的键值对设置，进程可在运行时读回这些设置。 升级期间，如果仅更改了 ConfigPackage 版本，则不重启正在运行的进程。 相反，回调会向进程通知配置设置已更改，以便可以重新动态加载这些设置。 有关详细信息，请参阅 [ConfigPackage 元素](service-fabric-service-model-schema-elements.md#ConfigPackageElementConfigPackageTypeComplexTypeDefinedInServiceManifestTypecomplexTypeDefinedInDigestedConfigPackageelement)
 
 ### <a name="datapackage-element"></a>DataPackage 元素
 声明一个由 Name 属性命名的文件夹，该文件夹中包含静态数据文件。 升级服务清单中所列的任何数据包时，Service Fabric 会回收主机和支持包中指定的所有 EXE 和 DLLHOST。 有关详细信息，请参阅 [DataPackage 元素](service-fabric-service-model-schema-elements.md#DataPackageElementDataPackageTypeComplexTypeDefinedInServiceManifestTypecomplexTypeDefinedInDigestedDataPackageelement)
@@ -399,7 +399,7 @@ EntryPoint 指定的可执行文件通常是长时间运行的服务主机。 �
 环境变量。 有关详细信息，请参阅 [EnvironmentVariable 元素](service-fabric-service-model-schema-elements.md#EnvironmentVariableElementEnvironmentVariableOverrideTypeComplexTypeDefinedInEnvironmentOverridesTypecomplexType)
 
 ### <a name="configpackage-element"></a>ConfigPackage 元素
-声明一个由 Name 属性命名的文件夹，该文件夹中包含 Settings.xml 文件。 此文件包含进程用户定义的键值对设置，进程可在运行时读回这些设置。 升级期间，如果仅更改了 ConfigPackage 版本，则不重启正在运行的进程。 相反，一个回调会告知进程配置设置已更改，以便动态重新加载。 有关详细信息，请参阅 [ConfigPackage 元素](service-fabric-service-model-schema-elements.md#ConfigPackageElementConfigPackageTypeComplexTypeDefinedInServiceManifestTypecomplexTypeDefinedInDigestedConfigPackageelement)
+声明一个由 Name 属性命名的文件夹，该文件夹中包含 Settings.xml 文件。 此文件包含进程用户定义的键值对设置，进程可在运行时读回这些设置。 升级期间，如果仅更改了 ConfigPackage 版本，则不重启正在运行的进程。 相反，回调会向进程通知配置设置已更改，以便可以重新动态加载这些设置。 有关详细信息，请参阅 [ConfigPackage 元素](service-fabric-service-model-schema-elements.md#ConfigPackageElementConfigPackageTypeComplexTypeDefinedInServiceManifestTypecomplexTypeDefinedInDigestedConfigPackageelement)
 
 ### <a name="resources-element"></a>Resources 元素
 描述此服务使用的资源，可以在不修改已编译代码的情况下声明，并可以在部署服务时更改。 通过应用程序清单的 Principals 和 Policies 节控制对这些资源的访问。 有关详细信息，请参阅 [Resources 元素](service-fabric-service-model-schema-elements.md#ResourcesElementResourcesTypeComplexTypeDefinedInServiceManifestTypecomplexType)

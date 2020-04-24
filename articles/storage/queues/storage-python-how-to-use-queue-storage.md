@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.reviewer: cbrooks
 ms.custom: seo-javascript-october2019
 ms.openlocfilehash: 4199a193c7205284ef23966ce4c2e5a6e6d81008
-ms.sourcegitcommit: 90d01d08faf8adb20083363a8e4e5aab139cd9b2
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80290348"
 ---
 # <a name="how-to-use-azure-queue-storage-v21-from-python"></a>如何通过 Python 使用 Azure 队列存储 v2.1

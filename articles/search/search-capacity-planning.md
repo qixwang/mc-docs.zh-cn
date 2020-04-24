@@ -10,10 +10,10 @@ ms.topic: conceptual
 origin.date: 02/14/2020
 ms.date: 03/16/2020
 ms.openlocfilehash: 3b6c2ad51432f06038217731f1e09c3eeca084eb
-ms.sourcegitcommit: 1d3d8dfdaf6281f06640cbee7124a1e8bf102c50
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80243713"
 ---
 # <a name="adjust-capacity-in-azure-cognitive-search"></a>在 Azure 认知搜索中调整容量
@@ -86,7 +86,7 @@ ms.locfileid: "80243713"
 | **1 个副本** |1 个 SU |2 SU |3 SU |4 SU |6 SU |12 SU |
 | **2 个副本** |2 SU |4 SU |6 SU |8 SU |12 SU |24 SU |
 | **3 个副本** |3 SU |6 SU |9 SU |12 SU |18 SU |36 个 SU |
-| **4 个副本** |4 SU |8 SU |12 SU |16 SU |24 SU |不适用 |
+| **4 个副本** |4 SU |8 SU |12 SU |16 SU |24 SU |空值 |
 | **5 副本** |5 SU |10 SU |15 SU |20 SU |30 SU |空值 |
 | **6 个副本** |6 SU |12 SU |18 SU |24 SU |36 个 SU |空值 |
 | **12 副本** |12 SU |24 SU |36 个 SU |空值 |空值 |空值 |

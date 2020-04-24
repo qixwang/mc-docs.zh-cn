@@ -10,10 +10,10 @@ origin.date: 06/22/2019
 ms.date: 03/30/2020
 ms.author: v-yeche
 ms.openlocfilehash: dc10863520509a910a11c5cacc21aaa85375e325
-ms.sourcegitcommit: 2b084933215d0e7702456730f168d97e00c882a0
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80243533"
 ---
 # <a name="create-and-manage-trading-partner-agreements-in-azure-logic-apps"></a>在 Azure 逻辑应用中创建并管理贸易合作伙伴协议

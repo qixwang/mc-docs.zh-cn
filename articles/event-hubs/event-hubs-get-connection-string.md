@@ -11,10 +11,10 @@ origin.date: 02/19/2019
 ms.date: 03/16/2020
 ms.author: v-tawe
 ms.openlocfilehash: 3c57a94b74ed68fcc84788f99c2a91138d9b221a
-ms.sourcegitcommit: 1d3d8dfdaf6281f06640cbee7124a1e8bf102c50
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80243928"
 ---
 # <a name="get-an-event-hubs-connection-string"></a>获取事件中心连接字符串

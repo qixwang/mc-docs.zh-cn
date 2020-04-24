@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 03/19/2020
 ms.custom: 80e4ff38-5174-43
 ms.openlocfilehash: 2b6d49d8c384f9eb1dfeb327b9949fde36498a38
-ms.sourcegitcommit: e500354e2fd8b7ac3dddfae0c825cc543080f476
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79546878"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>使用 Azure Functions Core Tools

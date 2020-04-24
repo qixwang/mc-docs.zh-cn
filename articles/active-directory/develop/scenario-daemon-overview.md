@@ -16,10 +16,10 @@ ms.date: 03/23/2020
 ms.author: v-junlch
 ms.custom: aaddev, identityplatformtop40
 ms.openlocfilehash: 50743c7df9e539c925057b068f5f202607948f8b
-ms.sourcegitcommit: 6568c59433d7e80ab06e9fe76d4791f761ed6775
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80243105"
 ---
 # <a name="scenario-daemon-application-that-calls-web-apis"></a>方案：用于调用 Web API 的守护程序应用程序

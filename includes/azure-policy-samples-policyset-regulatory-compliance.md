@@ -6,10 +6,10 @@ origin.date: 03/12/2020
 ms.date: 03/16/2020
 ms.author: v-tawe
 ms.openlocfilehash: 8db917588c0dae1e00d579505b2ded7b671c984e
-ms.sourcegitcommit: 1d3d8dfdaf6281f06640cbee7124a1e8bf102c50
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80272715"
 ---
 |名称 |说明 |策略 |版本 |

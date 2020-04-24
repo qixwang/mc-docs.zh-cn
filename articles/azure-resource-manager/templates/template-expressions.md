@@ -6,10 +6,10 @@ origin.date: 02/13/2020
 ms.date: 03/23/2020
 ms.author: v-yeche
 ms.openlocfilehash: d8bcb55e8acaefd12839c332c50ac714bf725b90
-ms.sourcegitcommit: 1436f1851342ca5631eb25342eed954adb707af0
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79543894"
 ---
 # <a name="syntax-and-expressions-in-azure-resource-manager-templates"></a>Azure 资源管理器模板中的语法和表达式
@@ -33,7 +33,7 @@ Azure 资源管理器提供了可在模板中使用的[函数](template-function
 
 在该表达式中，语法 `resourceGroup()` 调用资源管理器提供的、在模板中使用的某个函数。 在本例中，它是 [resourceGroup](template-functions-resource.md#resourcegroup) 函数。 如同在 JavaScript 中一样，函数调用的格式为 `functionName(arg1,arg2,arg3)`。 语法 `.location` 从该函数返回的对象中检索一个属性。
 
-模板函数及其参数不区分大小写。 例如，资源管理器将 **variables('var1')** 和 **VARIABLES('VAR1')** 解析为相同内容。 在求值时，除非函数明确修改大小写（例如，使用 toUpper 或 toLower 进行修改），否则函数保留大小写。 某些资源类型可能有独立于函数求值方式的大小写要求。
+模板函数及其参数不区分大小写。 例如，Resource Manager 将 **variables('var1')** 和 **VARIABLES('VAR1')** 视为相同。 在求值时，除非函数明确修改大小写（例如，使用 toUpper 或 toLower 进行修改），否则函数将保留大小写。 某些资源类型可能有独立于函数求值方式的大小写要求。
 
 若要将字符串值作为参数传递给函数，请使用单引号。
 
@@ -75,7 +75,7 @@ Azure 资源管理器提供了可在模板中使用的[函数](template-function
 
 ## <a name="null-values"></a>Null 值
 
-若要将属性设置为 null，可以使用 **null** 或 **[json('null')]** 。 将 `null` 作为参数提供时，[json 函数](template-functions-array.md#json)返回空对象。 在这两种情况下，资源管理器模板都会按照属性不存在的情况进行处理。
+若要将属性设置为 null，可以使用 **null** 或 **[json('null')]** 。 将 [ 作为参数提供时，](template-functions-array.md#json)json 函数`null`返回空对象。 在这两种情况下，资源管理器模板都会按照属性不存在的情况进行处理。
 
 ```json
 "stringValue": null,
@@ -84,7 +84,7 @@ Azure 资源管理器提供了可在模板中使用的[函数](template-function
 
 ## <a name="next-steps"></a>后续步骤
 
-* 有关模板函数的完整列表，请参阅 [Azure Resource Manager 模板函数](template-functions.md)。
+* 有关模板函数的完整列表，请参阅 [Azure 资源管理器模板函数](template-functions.md)。
 * 有关模板文件的详细信息，请参阅[了解 Azure 资源管理器模板的结构和语法](template-syntax.md)。
 
 <!-- Update_Description: update meta properties, wording update, update link -->

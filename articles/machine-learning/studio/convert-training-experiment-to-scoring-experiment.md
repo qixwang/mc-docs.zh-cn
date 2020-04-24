@@ -10,10 +10,10 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.date: 03/28/2017
 ms.openlocfilehash: 6063f261809d3028f8ca86ad6d307e8d32d988d9
-ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80343092"
 ---
 # <a name="how-to-prepare-your-model-for-deployment-in-azure-machine-learning-studio-classic"></a>如何准备在 Azure 机器学习工作室（经典版）中部署的模型

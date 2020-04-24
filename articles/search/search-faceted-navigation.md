@@ -10,10 +10,10 @@ ms.topic: conceptual
 origin.date: 11/04/2019
 ms.date: 03/16/2020
 ms.openlocfilehash: 650c93b5c52fa0da55e83c9467acd9b9b801a220
-ms.sourcegitcommit: 1d3d8dfdaf6281f06640cbee7124a1e8bf102c50
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80243711"
 ---
 # <a name="how-to-implement-faceted-navigation-in-azure-cognitive-search"></a>如何在 Azure 认知搜索中实现分面导航
@@ -378,7 +378,7 @@ Azure 认知搜索作业门户演示包含本文中参考的示例。
 
 处理搜索结果时，观看“查询构造中的更改”的 URL。 此应用程序在选择每个分面时，将分面追加到 URI。
 
-1. 若要使用该演示应用的地图功能，请从[必应地图开发人员中心](https://www.bingmapsportal.com/)获取必应地图密钥。 请粘贴该密钥并覆盖 `index.cshtml` 页面中的现有密钥。 不使用 `Web.config` 文件中的 `BingApiKey` 设置。 
+1. 若要使用该演示应用的地图功能，请从[必应地图开发人员中心](https://www.bingmapsportal.com/)获取必应地图密钥。 请粘贴该密钥并覆盖 `index.cshtml` 页面中的现有密钥。 不使用 `BingApiKey` 文件中的 `Web.config` 设置。 
 
 2. 运行应用程序。 学习可选的教程，或关闭该对话框。
    

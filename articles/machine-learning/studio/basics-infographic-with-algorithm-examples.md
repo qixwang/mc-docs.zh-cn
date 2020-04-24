@@ -11,13 +11,13 @@ ms.author: amlstudiodocs
 ms.custom: seodc18
 ms.date: 03/04/2019
 ms.openlocfilehash: c3a2f9d1775cdd7c11f637492e87a9b5a142e80e
-ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80343218"
 ---
-# <a name="downloadable-infographic-machine-learning-basics-with-algorithm-examples"></a>可下载信息图：包含算法示例的机器学习基础知识
+# <a name="downloadable-infographic-machine-learning-basics-with-algorithm-examples"></a>可下载的信息图：具有算法示例的机器学习基础知识
 
 [!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
@@ -31,7 +31,7 @@ ms.locfileid: "80343218"
 
 **[下载：具有链接到算法示例的机器学习基础知识的信息图 (PDF)](https://download.microsoft.com/download/0/5/A/05AE6B94-E688-403E-90A5-6035DBE9EEC5/machine-learning-basics-infographic-with-algorithm-examples.pdf)**
 
-![信息图：包含算法示例的机器学习基础知识。 常用算法。 适合初学者的机器学习。](./media/basics-infographic-with-algorithm-examples/machine-learning-basics-infographic-with-algorithm-examples.png)
+![信息图：具有算法示例的机器学习基础知识。 常用算法。 适合初学者的机器学习。](./media/basics-infographic-with-algorithm-examples/machine-learning-basics-infographic-with-algorithm-examples.png)
 
 ## <a name="more-help-with-algorithms-for-beginners-and-advanced-users"></a>为初学者和高级用户提供的关于算法的更多帮助
 

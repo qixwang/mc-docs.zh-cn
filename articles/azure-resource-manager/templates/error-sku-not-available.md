@@ -6,15 +6,15 @@ origin.date: 02/18/2020
 ms.date: 03/23/2020
 ms.author: v-yeche
 ms.openlocfilehash: 5634597465817208ca20c265a67e58e8636f0d0b
-ms.sourcegitcommit: 1436f1851342ca5631eb25342eed954adb707af0
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79543914"
 ---
-# <a name="resolve-errors-for-sku-not-available"></a>解决 SKU 不可用错误
+# <a name="resolve-errors-for-sku-not-available"></a>解决 SKU 不可用的错误
 
-本文介绍如何解决 **SkuNotAvailable** 错误。 如果在该区域或满足业务需求的备用区域中找不到合适的 SKU，请将 [SKU 请求](https://support.azure.cn/support/support-azure/)提交到 Azure 支持。
+本文介绍如何解决 SkuNotAvailable 错误  。 如果在该区域或满足业务需求的备用区域中找不到合适的 SKU，请将 [SKU 请求](https://support.azure.cn/support/support-azure/)提交到 Azure 支持。
 
 <!--Not Available on zone-->
 
@@ -22,7 +22,7 @@ ms.locfileid: "79543914"
 
 ## <a name="symptom"></a>症状
 
-部署资源（通常为虚拟机）时，会收到以下错误代码和错误消息：
+在部署资源（通常为虚拟机）时，收到以下错误代码和错误消息：
 
 ```
 Code: SkuNotAvailable
@@ -38,7 +38,7 @@ for subscription '<subscriptionID>'. Please try another tier or deploy to a diff
 
 ## <a name="solution-1---powershell"></a>解决方案 1 - PowerShell
 
-要确定区域中可用的 SKU，请使用 [Get-AzComputeResourceSku](https://docs.microsoft.com/powershell/module/az.compute/get-azcomputeresourcesku) 命令。 按位置对结果进行筛选。 必须安装最新版本 PowerShell 才能运行此命令。
+要确定区域中可用的 SKU，请使用 [Get-AzComputeResourceSku](https://docs.microsoft.com/powershell/module/az.compute/get-azcomputeresourcesku) 命令。 按位置筛选结果。 必须拥有最新版本 PowerShell 才能运行此命令。
 
 <!--Not Available on zone-->
 
@@ -100,7 +100,7 @@ virtualMachines  chinaeast  Standard_F4                ...             None
 
 要确定区域中可用的 SKU，请使用[资源 Sku - 列表](https://docs.microsoft.com/rest/api/compute/resourceskus/list)操作。
 
-它会用以下格式返回可用的 SKU 和区域：
+它会以下列格式返回可用 SKU 和区域：
 
 ```json
 {

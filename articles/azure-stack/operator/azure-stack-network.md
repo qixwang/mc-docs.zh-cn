@@ -9,10 +9,10 @@ ms.author: v-jay
 ms.reviewer: wamota
 ms.lastreviewed: 06/04/2019
 ms.openlocfilehash: c080d767045fb5ab484a96072400299ba5de3e14
-ms.sourcegitcommit: e500354e2fd8b7ac3dddfae0c825cc543080f476
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79547035"
 ---
 # <a name="network-integration-planning-for-azure-stack"></a>Azure Stack 的网络集成规划

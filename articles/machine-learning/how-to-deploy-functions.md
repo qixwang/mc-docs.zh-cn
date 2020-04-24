@@ -12,10 +12,10 @@ ms.reviewer: larryfr
 origin.date: 03/06/2020
 ms.date: 03/09/2020
 ms.openlocfilehash: 4393048e85c3cf60f23f3d79a46a15695aae7dd0
-ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80343569"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-functions-preview"></a>将机器学习模型部署到 Azure Functions（预览版）
@@ -28,7 +28,7 @@ ms.locfileid: "80343569"
 
 使用 Azure 机器学习，可通过经过训练的机器学习模型创建 Docker 映像。 Azure 机器学习现在提供了将这些机器学习模型生成到函数应用中的预览功能，而这些函数应用可[部署到 Azure Functions](/azure-functions/functions-deployment-technologies#docker-container) 中。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * Azure 机器学习工作区。 有关详细信息，请参阅[创建工作区](how-to-manage-workspace.md)一文。
 * [Azure CLI](/cli/install-azure-cli?view=azure-cli-latest)。
@@ -62,7 +62,7 @@ ms.locfileid: "80343569"
 这些实体被封装到推理配置中  。 推理配置引用入口脚本和其他依赖项。
 
 > [!IMPORTANT]
-> 创建用于 Azure Functions 的推理配置时，需要使用 [Environment](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment%28class%29?view=azure-ml-py) 对象。 请注意，如果要定义自定义环境，需要将版本不低于 1.0.45 的 azureml-defaults 添加为 Pip 依赖项。 此包包含将模型作为 Web 服务托管时所需的功能。 下面的示例演示如何创建环境对象并将其用于推理配置：
+> 创建用于 Azure Functions 的推理配置时，需要使用 [Environment](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment%28class%29?view=azure-ml-py) 对象。 请注意，如果要定义自定义环境，需要将版本不低于 1.0.45 的 azureml-defaults 添加为 Pip 依赖项。 此包包含将模型托管为 Web 服务所需的功能。 下面的示例演示如何创建环境对象并将其用于推理配置：
 >
 > ```python
 > from azureml.core.environment import Environment
@@ -155,7 +155,7 @@ print(blob.location)
     此示例使用了“Linux 基本”  定价层级 (`--sku B1`)。
 
     > [!IMPORTANT]
-    > Azure 机器学习创建的映像使用 Linux，因此必须使用 `--is-linux` 参数。
+    > Azure 机器学习创建的映像使用 Linux，因此需要使用 `--is-linux` 参数。
 
 1. 创建要用于 Web 作业存储的存储帐户并获取其连接字符串。 将 `<webjobStorage>` 替换为要使用的名称。
 

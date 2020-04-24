@@ -11,10 +11,10 @@ ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/12/2019
 ms.openlocfilehash: 969eb74e31cdfe1632a40694897e562745343855
-ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80343811"
 ---
 # <a name="deep-learning-and-ai-frameworks-for-the-azure-data-science-vm"></a>适用于 Azure Data Science VM 的深度学习和人工智能框架
@@ -109,7 +109,7 @@ ms.locfileid: "80343811"
 | 支持的 DSVM 版本      | Windows 和 Linux   |
 | 用途 | 用于查询 GPU 活动的 NVIDIA 工具 |
 | 如何在 DSVM 上配置/安装它？  | `nvidia-smi` 位于系统路径上。 |
-| 运行方式      | 在具有 GPU 的虚拟机上，打开命令提示符（在 Windows 上）或终端（在 Linux 上），然后运行 `nvidia-smi`  。 |
+| 运行方式      | 在具有 GPU 的虚拟机上，打开命令提示符（在 Windows 上）或终端（在 Linux 上），然后运行 `nvidia-smi` 。 |
 
 ## <a name="pytorch"></a>[PyTorch](https://pytorch.org/)
 

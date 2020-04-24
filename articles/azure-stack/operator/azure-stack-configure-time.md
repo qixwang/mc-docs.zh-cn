@@ -9,10 +9,10 @@ ms.author: v-jay
 ms.reviewer: thoroet
 ms.lastreviewed: 10/10/2019
 ms.openlocfilehash: a1dc3948c0fa0aa0c58bf12ef5d5487572e8c3ad
-ms.sourcegitcommit: e500354e2fd8b7ac3dddfae0c825cc543080f476
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79547061"
 ---
 # <a name="configure-the-time-server-for-azure-stack-hub"></a>配置 Azure Stack Hub 的时间服务器

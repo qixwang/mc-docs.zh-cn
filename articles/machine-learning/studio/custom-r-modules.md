@@ -11,10 +11,10 @@ ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 11/29/2017
 ms.openlocfilehash: da50ad0d12e0acaef7981a138e30ca70a60904bc
-ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80343084"
 ---
 # <a name="define-custom-r-modules-for-azure-machine-learning-studio-classic"></a>定义 Azure 机器学习工作室（经典版）的自定义 R 模块

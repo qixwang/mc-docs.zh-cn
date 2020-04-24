@@ -7,15 +7,15 @@ origin.date: 12/04/2018
 ms.date: 03/30/2020
 ms.topic: conceptual
 ms.openlocfilehash: c63c75be87105163272c1cb7e166b4348e53c7e8
-ms.sourcegitcommit: 90d01d08faf8adb20083363a8e4e5aab139cd9b2
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80290350"
 ---
 # <a name="runbook-output-and-messages-in-azure-automation"></a>Azure 自动化中的 Runbook 输出和消息
 
-大多数 Azure 自动化 runbook 都有某种形式的输出。 此输出可能是发给用户的错误消息，也可能是要用于另一个 Runbook 的复杂对象。 Windows PowerShell 提供 [多个流](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_redirection) ，以便从脚本或工作流发送输出。 Azure 自动化以不同方式处理每个流。 在创建 Runbook 时，应遵循有关使用流的最佳做法。
+大多数 Azure 自动化 runbook 都有某种形式的输出。 此输出可能是发给用户的错误消息，也可能是要用于另一个 Runbook 的复杂对象。 Windows PowerShell 提供[多个流](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_redirection)，以便从脚本或工作流发送输出。 Azure 自动化以不同方式处理每个流。 在创建 Runbook 时，应遵循有关使用流的最佳做法。
 
 下表简要描述了已发布 Runbook 以及在[测试 Runbook](automation-testing-runbook.md) 期间的每个流及其在 Azure 门户中的行为。 输出流是用于 Runbook 之间的通信的主要流。 其他流分类为消息流，旨在将信息传达给用户。 
 
@@ -25,7 +25,7 @@ ms.locfileid: "80290350"
 | 调试 |面向交互式用户的消息。 不应在 Runbook 中使用。 |不会写入作业历史记录 |不会显示在“测试”输出窗格中 |
 | 输出 |对象旨在由其他 Runbook 使用。 |写入作业历史记录 |显示在“测试”输出窗格中 |
 | 进度 |完成 Runbook 中每个活动之前和之后自动生成的记录。 由于 Runbook 面向交互式用户，因此不应尝试创建其自身的进度记录。 |仅当为 Runbook 启用了进度日志记录时，才写入作业历史记录 |不会显示在“测试”输出窗格中 |
-| 详细 |提供一般信息或调试信息的消息。 |仅当为 Runbook 启用了详细日志记录时，才写入作业历史记录 |仅当 Runbook 中的 `VerbosePreference` 变量设置为 Continue 时，才显示在“测试”输出窗格中 |
+| “详细” |提供一般信息或调试信息的消息。 |仅当为 Runbook 启用了详细日志记录时，才写入作业历史记录 |仅当 Runbook 中的 `VerbosePreference` 变量设置为 Continue 时，才显示在“测试”输出窗格中 |
 | 警告 |面向用户的警告消息。 |写入作业历史记录 |显示在“测试”输出窗格中 |
 
 >[!NOTE]
@@ -47,7 +47,7 @@ $object
 
 ### <a name="handling-output-from-a-function"></a>处理函数的输出
 
-当 Runbook 函数写入输出流时，输出将传回到 Runbook。 如果 Runbook 将该输出分配给某个变量，则不会将输出写入输出流。 向函数内部的任何其他流写入数据会向 Runbook 的相应流写入数据。 请考虑以下示例 PowerShell 工作流 Runbook。
+当 Runbook 函数写入输出流时，输出将传回到 Runbook。 如果 Runbook 将该输出分配给某个变量，则不会将输出写入输出流。 从函数内部向其他任何流写入数据会写入到 Runbook 相应的流。 请考虑以下示例 PowerShell 工作流 Runbook。
 
 ```powershell
 Workflow Test-Runbook
@@ -94,7 +94,7 @@ Verbose inside of function
 
 工作流使用 [OutputType 属性](https://technet.microsoft.com/library/hh847785.aspx)指定其输出的数据类型。 此属性在运行时不起作用，但在设计时，它会指示 Runbook 的预期输出。 随着 Runbook 工具集的持续发展，在设计时声明输出数据类型的重要性也在不断提升。 因此，最佳做法是在创建的所有 Runbook 中包含此声明。
 
-以下示例 Runbook 输出一个字符串对象，并包含其输出类型的声明。 如果 Runbook 输出了特定类型的数组，则你仍应该指定相对于该类型数组的类型。
+以下示例 Runbook 将输出一个字符串对象，并包含其输出类型的声明。 如果 Runbook 输出了特定类型的数组，则仍应该指定相对于该类型数组的类型。
 
 ```powershell
 Workflow Test-Runbook
@@ -184,11 +184,11 @@ Write-Verbose -Message "This is a verbose message."
 |:--- |:--- |:--- |
 | `WarningPreference` |继续 |停止<br>继续<br>SilentlyContinue |
 | `ErrorActionPreference` |继续 |停止<br>继续<br>SilentlyContinue |
-| `VerbosePreference` |SilentlyContinue |Stop<br>继续<br>SilentlyContinue |
+| `VerbosePreference` |SilentlyContinue |停止<br>继续<br>SilentlyContinue |
 
 下表列出了在 Runbook 中有效的 preference 变量值的行为。
 
-| Value | 行为 |
+| 值 | 行为 |
 |:--- |:--- |
 | 继续 |记录消息并继续执行 Runbook。 |
 | SilentlyContinue |继续执行 Runbook 但不记录消息。 该值会导致忽略消息。 |
@@ -204,7 +204,7 @@ Write-Verbose -Message "This is a verbose message."
 
 在 Windows PowerShell 中，可以使用 [Get-AzureAutomationJobOutput](https://docs.microsoft.com/powershell/module/servicemanagement/azure/get-azureautomationjoboutput) cmdlet 检索 Runbook 的输出和消息。 此 cmdlet 需要作业的 ID，并具有一个名为 `Stream` 的参数，在其中可以指定要检索的流。 可为此参数指定 Any 值，以检索作业的所有流。
 
-以下示例将启动一个示例 Runbook，并等待该 Runbook 完成。 Runbook 执行完成后，脚本将从作业收集 Runbook 输出流。
+以下示例将启动一个示例 Runbook，然后等待该 Runbook 完成。 Runbook 执行完成后，脚本将从作业收集 Runbook 输出流。
 
 ```powershell
 $job = Start-AzAutomationRunbook -ResourceGroupName "ResourceGroup01" `

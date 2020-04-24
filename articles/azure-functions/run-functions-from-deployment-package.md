@@ -4,10 +4,10 @@ description: 通过装载包含函数应用项目文件的部署包文件，让 
 ms.topic: conceptual
 ms.date: 03/19/2020
 ms.openlocfilehash: 7ee1437a19f66ad7d477ffefb6732e9aaeb683da
-ms.sourcegitcommit: e500354e2fd8b7ac3dddfae0c825cc543080f476
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79546854"
 ---
 # <a name="run-your-azure-functions-from-a-package-file"></a>从包文件运行 Azure Functions
@@ -24,7 +24,7 @@ ms.locfileid: "79546854"
 + 可部署到生产应用（需重启）。
 + 可以确定哪些文件在应用中运行。
 + 提高 [Azure 资源管理器部署](functions-infrastructure-as-code.md)的性能。
-+ 可以减少冷启动时间，特别适用于具有大型 npm 包树的 JavaScript 函数。
++ 可以减少冷启动时间，特别是对于具有大型 npm 包树的 JavaScript 函数。
 
 有关详细信息，请参阅[此公告](https://github.com/Azure/app-service-announcements/issues/84)。
 
@@ -32,7 +32,7 @@ ms.locfileid: "79546854"
 
 若要使函数应用从包运行，只需将 `WEBSITE_RUN_FROM_PACKAGE` 设置添加到函数应用设置。 `WEBSITE_RUN_FROM_PACKAGE` 设置可以使用以下值之一：
 
-| Value  | 说明  |
+| 值  | 说明  |
 |---------|---------|
 | **`1`**  | 建议用于在 Windows 上运行的函数应用。 从函数应用的 `d:\home\data\SitePackages` 文件夹中的某个包文件运行。 如果不[使用 zip deploy 进行部署](#integration-with-zip-deployment)，则此选项要求该文件夹同时包含名为 `packagename.txt` 的文件。 此文件仅包含文件夹中包文件的名称（没有任何空白字符）。 |
 |**`<URL>`**  | 要运行的特定包文件的位置。 使用 Blob 存储时，应通过[共享访问签名 (SAS)](../vs-azure-tools-storage-manage-with-storage-explorer.md#generate-a-sas-in-storage-explorer) 使用专用容器，使 Functions 运行时能够访问包。 可以使用 [Azure 存储资源管理器](../vs-azure-tools-storage-manage-with-storage-explorer.md)将包文件上传到 Blob 存储帐户。 指定 URL 时，还必须在发布更新的包后[同步触发器](functions-deployment-technologies.md#trigger-syncing)。 |

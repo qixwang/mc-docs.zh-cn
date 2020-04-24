@@ -9,10 +9,10 @@ ms.date: 03/23/2020
 ms.author: v-yeche
 ms.reviewer: minewiskan
 ms.openlocfilehash: c04891910c6d79e60a58e5717d9d6e16e05dbc82
-ms.sourcegitcommit: 1436f1851342ca5631eb25342eed954adb707af0
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79543781"
 ---
 # <a name="client-libraries-for-connecting-to-analysis-services"></a>用于连接到 Analysis Services 的客户端库

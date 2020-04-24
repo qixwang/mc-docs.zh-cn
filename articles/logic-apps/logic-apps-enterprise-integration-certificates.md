@@ -10,10 +10,10 @@ origin.date: 08/17/2018
 ms.date: 03/23/2020
 ms.author: v-yeche
 ms.openlocfilehash: 293c24998aa7155595b4fcebec9dfd1bb120445c
-ms.sourcegitcommit: 305361c96d1d5288d3dda7e81833820640e2afac
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80115816"
 ---
 # <a name="improve-security-for-b2b-messages-by-using-certificates"></a>使用证书提高 B2B 消息的安全性
@@ -35,7 +35,7 @@ ms.locfileid: "80115816"
 
 要在具有 B2B 功能的逻辑应用中使用“公用证书”  ，必须首先将证书上传到集成帐户中。 在你创建的[协议](logic-apps-enterprise-integration-agreements.md)中定义属性后，可以使用证书来帮助你保护 B2B 消息。
 
-1. 登录到 [Azure 门户](https://portal.azure.cn)。 在 Azure 主菜单中，选择“所有资源”  。 在搜索框中，输入你的集成帐户名称，然后选择所需的集成帐户。
+1. 登录 [Azure 门户](https://portal.azure.cn)。 在 Azure 主菜单中，选择“所有资源”  。 在搜索框中，输入你的集成帐户名称，然后选择所需的集成帐户。
 
    ![查找并选择你的集成帐户](media/logic-apps-enterprise-integration-certificates/select-integration-account.png)  
 
@@ -45,7 +45,7 @@ ms.locfileid: "80115816"
 
 3. 在“证书”下，选择“添加”。   在“添加证书”  下，提供证书的这些详细信息。 完成后，选择“确定”  。
 
-   | 属性 | Value | 说明 | 
+   | properties | 值 | 说明 | 
    |----------|-------|-------------|
    | **名称** | <*证书名称*> | 你的证书的名称，在本例中为“publicCert” | 
    | **证书类型** | 公共 | 你的证书的类型 |
@@ -74,7 +74,7 @@ ms.locfileid: "80115816"
    `Set-AzKeyVaultAccessPolicy -VaultName 'TestcertKeyVault' -ServicePrincipalName 
    '7cd684f4-8a78-49b0-91ec-6a35d38739ba' -PermissionsToKeys decrypt, sign, get, list`
  
-3. 登录到 [Azure 门户](https://portal.azure.com)。 在 Azure 主菜单中，选择“所有资源”  。 在搜索框中，输入你的集成帐户名称，然后选择所需的集成帐户。
+3. 登录 [Azure 门户](https://portal.azure.com)。 在 Azure 主菜单中，选择“所有资源”  。 在搜索框中，输入你的集成帐户名称，然后选择所需的集成帐户。
 
    ![查找集成帐户](media/logic-apps-enterprise-integration-certificates/select-integration-account.png) 
 
@@ -84,13 +84,13 @@ ms.locfileid: "80115816"
 
 5. 在“证书”下，选择“添加”。   在“添加证书”  下，提供证书的这些详细信息。 完成后，选择“确定”  。
 
-   | 属性 | Value | 说明 | 
+   | properties | 值 | 说明 | 
    |----------|-------|-------------|
    | **名称** | <*证书名称*> | 你的证书的名称，在本例中为“privateCert” | 
    | **证书类型** | 专用 | 你的证书的类型 |
    | **证书** | <*证书文件名*> | 若要查找并选择要上传的证书文件，请选择“证书”框旁边的文件夹图标。  使用密钥保管库保存私钥时，上传的文件将是公共证书。 | 
    | **资源组** | <*集成帐户资源组*> | 你的集成帐户的资源组，在本例中为“MyResourceGroup” | 
-   | **密钥保管库** | <*密钥保管库名称*> | 你的 Azure 密钥保管库的名称 |
+   | **Key Vault** | <*密钥保管库名称*> | 你的 Azure 密钥保管库的名称 |
    | **密钥名称** | <*key-name*> | 你的密钥的名称 |
    ||||
 

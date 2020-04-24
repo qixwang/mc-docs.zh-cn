@@ -7,10 +7,10 @@ author: lingliw
 ms.date: 6/4/2019
 ms.author: v-lingwu
 ms.openlocfilehash: 5da7969afdb4967345dfd32fa1d6f1cbdbf17d6b
-ms.sourcegitcommit: 305361c96d1d5288d3dda7e81833820640e2afac
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80109796"
 ---
 # <a name="application-insights-for-aspnet-core-applications"></a>适用于 ASP.NET Core 应用程序的 Application Insights

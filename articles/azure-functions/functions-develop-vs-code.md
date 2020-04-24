@@ -4,10 +4,10 @@ description: 了解如何使用 Visual Studio Code 的 Azure Functions 扩展开
 ms.topic: conceptual
 ms.date: 03/19/2020
 ms.openlocfilehash: f2beed59feee380f55f14a08998dd4fe7552424a
-ms.sourcegitcommit: e500354e2fd8b7ac3dddfae0c825cc543080f476
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79546883"
 ---
 # <a name="develop-azure-functions-by-using-visual-studio-code"></a>使用 Visual Studio 开发 Azure Functions

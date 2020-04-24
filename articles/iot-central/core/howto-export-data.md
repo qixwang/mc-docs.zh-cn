@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.service: iot-central
 manager: corywink
 ms.openlocfilehash: f31030f7ba869e487a987066b4c5aa5fa6e71bf5
-ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80343678"
 ---
 # <a name="export-iot-data-to-destinations-in-azure"></a>将 IoT 数据导出到 Azure 中的目标
@@ -27,7 +27,7 @@ ms.locfileid: "80343678"
 > [!Note]
 > 启用连续数据导出时，只能获得从那时之后的数据。 目前，关闭连续数据导出后将暂时无法检索数据。 若要保留更多的历史数据，请及早启用连续数据导出。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 你必须是 IoT Central 应用程序中的管理员，或者有“数据导出”权限。
 
@@ -64,10 +64,10 @@ ms.locfileid: "80343678"
 
     |性能层|帐户类型|
     |-|-|
-    |标准|常规用途 V2|
-    |标准|常规用途 V1|
-    |标准|Blob 存储|
-    |高级|块 Blob 存储|
+    |Standard|常规用途 V2|
+    |Standard|常规用途 V1|
+    |Standard|Blob 存储|
+    |Premium|块 Blob 存储|
 
 2. 在存储帐户中创建容器。 转到存储帐户。 在“Blob 服务”下选择“浏览 Blob”   。 选择顶部的“+ 容器”以创建新容器。 
 
@@ -82,7 +82,7 @@ ms.locfileid: "80343678"
     > [!Note]
     > 如果左窗格中未显示“数据导出”，则表示你没有权限在应用中配置数据导出。 请与管理员联系以设置数据导出。
 
-3. 选择右上角的“+ 新建”按钮。  选择某个 **Azure 事件中心**、**Azure 服务总线**或 **Azure Blob 存储**作为导出目标。 每个应用程序的最大导出数目是 5。
+3. 选择右上角的“+ 新建”  按钮。 选择某个 **Azure 事件中心**、**Azure 服务总线**或 **Azure Blob 存储**作为导出目标。 每个应用程序的最大导出数目是 5。
 
     ![创建新的连续数据导出](media/howto-export-data/new-export-definition.png)
 
@@ -106,7 +106,7 @@ ms.locfileid: "80343678"
 
 7. 在“要导出的数据”下，通过将相应类型设置为“打开”来指定要导出的数据类型。  
 
-8. 若要启用连续数据导出，请确保“启用”  开关为“打开”  。 选择“保存”  。
+8. 若要启用连续数据导出，请确保“启用”  开关为“打开”  。 选择“保存”。 
 
 9. 几分钟后，数据便会出现在所选目标中。
 

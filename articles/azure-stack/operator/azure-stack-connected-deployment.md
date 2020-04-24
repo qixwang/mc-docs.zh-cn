@@ -9,10 +9,10 @@ ms.author: v-jay
 ms.reviewer: wfayed
 ms.lastreviewed: 11/05/2019
 ms.openlocfilehash: df6046f86a4bd482b8025f829a90be4d64ef127d
-ms.sourcegitcommit: e500354e2fd8b7ac3dddfae0c825cc543080f476
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79547072"
 ---
 # <a name="azure-connected-deployment-planning-decisions-for-azure-stack-hub-integrated-systems"></a>Azure Stack Hub 集成系统的 Azure 联网部署规划决策

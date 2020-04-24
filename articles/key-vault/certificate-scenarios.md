@@ -12,10 +12,10 @@ origin.date: 01/07/2019
 ms.date: 03/16/2020
 ms.author: v-tawe
 ms.openlocfilehash: 4c487bfa5d6d07135b8145dadcc84b7ce7e21855
-ms.sourcegitcommit: 764b3d26aedce2de0e1948468a706fd3204a3d5e
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79543303"
 ---
 # <a name="get-started-with-key-vault-certificates"></a>Key Vault 证书入门

@@ -12,10 +12,10 @@ origin.date: 09/04/2019
 ms.date: 03/16/2019
 ms.author: v-tawe
 ms.openlocfilehash: a2f0be46ec77ba63c0a34e9a96e2a2e875102c3d
-ms.sourcegitcommit: 764b3d26aedce2de0e1948468a706fd3204a3d5e
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79543386"
 ---
 # <a name="about-keys-secrets-and-certificates"></a>关于密钥、机密和证书
@@ -363,10 +363,10 @@ Key Vault 证书具有以下属性：
 |X.509 密钥使用情况标记 |Key Vault 密钥的操作 |默认行为 |
 |----------|--------|--------|
 |DataEncipherment|加密、解密| 空值 |
-|DecipherOnly|解密| 空值  |
+|DecipherOnly|解密| 不适用  |
 |DigitalSignature|签名、验证| Key Vault 在创建证书时默认为无使用规范 | 
 |EncipherOnly|encrypt| 不适用 |
-|KeyCertSign|签名、验证|不适用|
+|KeyCertSign|签名、验证|空值|
 |KeyEncipherment|包装密钥、解包密钥| Key Vault 在创建证书时默认为无使用规范 | 
 |NonRepudiation|签名、验证| 不适用 |
 |crlsign|签名、验证| 空值 |

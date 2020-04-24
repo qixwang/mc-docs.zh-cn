@@ -9,10 +9,10 @@ ms.date: 03/23/2020
 ms.author: v-yeche
 ms.reviewer: minewiskan
 ms.openlocfilehash: bf6540b6ae69c6e996bdaecb5dc86e0a7c4efb96
-ms.sourcegitcommit: 1436f1851342ca5631eb25342eed954adb707af0
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79543774"
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>Azure Analysis Services 中支持的数据源
@@ -21,7 +21,7 @@ ms.locfileid: "79543774"
 
 ## <a name="azure-data-sources"></a>Azure 数据源
 
-|数据源  |内存中  |直接连接  |注释 |
+|数据源  |内存中  |DirectQuery  |说明 |
 |---------|---------|---------|---------|
 |Azure SQL 数据库      |   是      |    是      |<sup>[2](#azprovider)</sup>、<sup>[3](#azsqlmanaged)</sup>|
 |Azure Synapse Analytics（SQL 数据仓库）      |   是      |   是       |<sup>[2](#azprovider)</sup>|
@@ -45,7 +45,7 @@ ms.locfileid: "79543774"
 
 ## <a name="other-data-sources"></a>其他数据源
 
-|数据源 | 内存中 | 直接连接 |注释   |
+|数据源 | 内存中 | DirectQuery |说明   |
 |  --- | --- | --- | --- |
 |Access 数据库     |  是 | 否 |  |
 |Active Directory     |  是 | 否 | <sup>[6](#tab1400b)</sup>  |
@@ -55,7 +55,7 @@ ms.locfileid: "79543774"
 |Dynamics 365     |  是 | 否 | <sup>[6](#tab1400b)</sup> |
 |Excel 工作簿     |  是 | 否 |  |
 |Exchange      |  是 | 否 | <sup>[6](#tab1400b)</sup> |
-|文件夹      |是 | 否 | <sup>[6](#tab1400b)</sup> |
+|Folder      |是 | 否 | <sup>[6](#tab1400b)</sup> |
 |IBM Informix  |是 | 否 |  |
 |JSON 文档      |  是 | 否 | <sup>[6](#tab1400b)</sup> |
 |二进制文件中的行      | 是 | 否 | <sup>[6](#tab1400b)</sup> |
@@ -96,7 +96,7 @@ ms.locfileid: "79543774"
 
 ### <a name="specify-provider-data-sources-in-tabular-1400-and-higher-model-projects"></a>在表格 1400 和更高版本的模型项目中指定提供程序数据源
 
-若要启用提供程序数据源，请在 Visual Studio 中单击“工具” > “选项” > “Analysis Services 表格” > “数据导入”，然后选择“启用旧数据源”。     
+若要启用提供程序数据源，请在 Visual Studio 中单击“工具” **“选项”** “Analysis Services 表格” > “数据导入”，然后选择“启用旧数据源”。   >    >   
 
 ![启用旧数据源](media/analysis-services-datasource/aas-enable-legacy-datasources.png)
 

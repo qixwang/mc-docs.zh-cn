@@ -9,10 +9,10 @@ ms.author: v-jay
 ms.reviewer: anwestg
 ms.lastreviewed: 01/13/2019
 ms.openlocfilehash: 6c70782e4d771bb95d7da3ca9a2041a0f339d098
-ms.sourcegitcommit: e500354e2fd8b7ac3dddfae0c825cc543080f476
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79546849"
 ---
 # <a name="prerequisites-for-deploying-app-service-on-azure-stack-hub"></a>在 Azure Stack Hub 上部署应用服务的先决条件

@@ -10,10 +10,10 @@ manager: rkarlin
 origin.date: 09/10/2019
 ms.date: 03/16/2020
 ms.openlocfilehash: 04050ea2b0f3552c46743cb922fc8b1329cd8e09
-ms.sourcegitcommit: 764b3d26aedce2de0e1948468a706fd3204a3d5e
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79543374"
 ---
 # <a name="fetch-shared-access-signature-tokens-in-code"></a>通过编写代码提取共享访问签名令牌

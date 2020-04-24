@@ -10,15 +10,15 @@ ms.subservice: queues
 ms.topic: conceptual
 ms.reviewer: cbrooks
 ms.openlocfilehash: 17ffbc2c53b1d9ab3b949ee9f00dbcd98a865d71
-ms.sourcegitcommit: 90d01d08faf8adb20083363a8e4e5aab139cd9b2
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80290457"
 ---
 # <a name="perform-azure-queue-storage-operations-with-azure-powershell"></a>使用 Azure PowerShell 执行 Azure 队列存储操作
 
-Azure 队列存储是一项可存储大量消息的服务，用户可以通过 HTTP 或 HTTPS 从世界任何地方访问这些消息。 有关详细信息，请参阅 [Azure 队列简介](storage-queues-introduction.md)。 此操作指南文章介绍常见的队列存储操作。 你将学习如何执行以下操作：
+Azure 队列存储是一项可存储大量消息的服务，用户可以通过 HTTP 或 HTTPS 从世界任何地方访问这些消息。 有关详细信息，请参阅 [Azure 队列简介](storage-queues-introduction.md)。 此操作指南文章介绍常见的队列存储操作。 学习如何：
 
 > [!div class="checklist"]
 >
@@ -29,7 +29,7 @@ Azure 队列存储是一项可存储大量消息的服务，用户可以通过 H
 > * 删除消息
 > * 删除队列
 
-本操作指南需要 Azure PowerShell 模块 Az 0.7 或更高版本。 运行 `Get-Module -ListAvailable Az` 即可查找版本。 如果需要进行升级，请参阅 [Install Azure PowerShell module](https://docs.microsoft.com/powershell/azure/install-Az-ps)（安装 Azure PowerShell 模块）。
+本操作指南需要 Azure PowerShell 模块 Az 0.7 或更高版本。 运行 `Get-Module -ListAvailable Az` 即可查找版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-Az-ps)。
 
 队列的数据平面没有相应的 PowerShell cmdlet。 若要执行数据平面操作（如添加消息、读取消息和删除消息），必须使用 PowerShell 中公开的 .NET 存储客户端库。 创建消息对象，然后可以使用命令（例如 AddMessage）对该消息执行操作。 本文介绍如何执行该操作。
 

@@ -16,10 +16,10 @@ origin.date: 01/16/2020
 ms.date: 2/6/2020
 ms.author: aschhab
 ms.openlocfilehash: cef08b55af89f8ab9a9f31e9a44b7d93631a7433
-ms.sourcegitcommit: 305361c96d1d5288d3dda7e81833820640e2afac
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80109763"
 ---
 # <a name="quickstart-how-to-use-service-bus-topics-and-subscriptions-with-nodejs-and-the-azureservice-bus-package"></a>快速入门：如何将服务总线主题和订阅与 Node.js 和 azure/service-bus 包配合使用

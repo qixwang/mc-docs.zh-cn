@@ -13,10 +13,10 @@ ms.custom: seo-lt-2019
 origin.date: 03/12/2020
 ms.date: 03/23/2020
 ms.openlocfilehash: 2cd8626250ee9a02ba42e33ca75706e81755afe0
-ms.sourcegitcommit: 71a386ca0d0ecb79a123399b6ab6b8c70ea2aa78
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79497355"
 ---
 # <a name="copy-and-transform-data-in-azure-synapse-analytics-formerly-azure-sql-data-warehouse-by-using-azure-data-factory"></a>使用 Azure 数据工厂在 Azure Synapse Analytics（前称为 Azure SQL 数据仓库）中复制和转换数据 

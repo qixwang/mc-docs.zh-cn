@@ -134,7 +134,7 @@
       href: pricing-concepts.md
     - name: 命名规则
       href: naming-rules.md
-- name: 操作指南
+- name: 操作方法指南
   items:
     - name: 作者
       items:
@@ -547,7 +547,7 @@
       href: 'https://docs.microsoft.com/powershell/module/az.datafactory/'
     - name: REST API
       href: 'https://docs.microsoft.com/rest/api/datafactory'
-    - name: Resource Manager 模板
+    - name: 资源管理器模板
       href: 'https://docs.microsoft.com/azure/templates/microsoft.datafactory/allversions'
     - name: Python
       href: 'https://docs.microsoft.com/python/api/overview/azure/datafactory?view=azure-python'
@@ -555,7 +555,7 @@
   items:
     - name: 白皮书
       href: whitepapers.md
-    - name: 常见问题
+    - name: 常见问题解答
       href: frequently-asked-questions.md
     - name: 提出问题 - MSDN 论坛
       href: 'https://social.msdn.microsoft.com/Forums/zh-CN/home'

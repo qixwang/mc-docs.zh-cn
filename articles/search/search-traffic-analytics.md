@@ -10,10 +10,10 @@ ms.topic: conceptual
 origin.date: 12/11/2019
 ms.date: 03/16/2020
 ms.openlocfilehash: b30d725e1b9b4050c650f7814a92ee6a4c686691
-ms.sourcegitcommit: 1d3d8dfdaf6281f06640cbee7124a1e8bf102c50
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80243696"
 ---
 # <a name="implement-search-traffic-analytics-in-azure-cognitive-search"></a>在 Azure 认知搜索中实现搜索流量分析

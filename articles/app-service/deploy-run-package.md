@@ -6,10 +6,10 @@ origin.date: 01/14/2020
 ms.date: 03/16/2020
 ms.author: v-tawe
 ms.openlocfilehash: ac9fe029edf00fb4a7b412d7877fb7ca0125b78f
-ms.sourcegitcommit: e500354e2fd8b7ac3dddfae0c825cc543080f476
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79546971"
 ---
 # <a name="run-your-app-in-azure-app-service-directly-from-a-zip-package"></a>直接从 ZIP 包运行 Azure 应用服务中的应用
@@ -24,7 +24,7 @@ ms.locfileid: "79546971"
 - 确保在任意时候只运行完全部署的应用。
 - 可部署到生产应用（需重启）。
 - 改善 Azure 资源管理器部署的性能。
-- 可以减少冷启动时间，特别适用于具有大型 npm 包树的 JavaScript 函数。
+- 可以减少冷启动时间，特别是对于具有大型 npm 包树的 JavaScript 函数。
 
 > [!NOTE]
 > 目前仅支持 ZIP 包文件。

@@ -9,10 +9,10 @@ ms.topic: quickstart
 ms.date: 02/07/2019
 ms.author: mihansen
 ms.openlocfilehash: 64e443d860ddf5999dc3c91f62e2f55c9e0066f3
-ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80343841"
 ---
 # <a name="quickstart-deploy-open-source-fhir-server-using-azure-portal"></a>快速入门：使用 Azure 门户部署开源 FHIR 服务器

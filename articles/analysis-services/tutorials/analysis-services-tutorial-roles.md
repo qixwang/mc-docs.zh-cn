@@ -9,10 +9,10 @@ ms.date: 03/23/2020
 ms.author: v-yeche
 ms.reviewer: owend
 ms.openlocfilehash: c31b54b870c70854682668ac35988527359c1327
-ms.sourcegitcommit: 1436f1851342ca5631eb25342eed954adb707af0
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79543739"
 ---
 <!--Notice: Verify successfully-->
@@ -29,7 +29,7 @@ ms.locfileid: "79543739"
 
 若要详细了解 Azure Analysis Services 中的用户安全性，请参阅[身份验证和用户权限](../analysis-services-manage-users.md)。 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - 订阅中的一个 Azure Active Directory。
 - 已在订阅中创建 [Azure Analysis Services 服务器](../analysis-services-create-server.md)。
@@ -105,7 +105,7 @@ ms.locfileid: "79543739"
 
 在此任务中，请使用 TMSL 脚本中的 [Create](https://docs.microsoft.com/analysis-services/tmsl/create-command-tmsl) 命令创建一个新的 Internet 销售全局角色，为该角色指定读取  权限，然后从 Azure AD 添加用户或组帐户。
 
-1. 在“对象资源管理器”中右键单击“adventureworks”，然后单击“新建查询”   >   “XMLA”。   
+1. 在“对象资源管理器”中右键单击“adventureworks”，然后单击“新建查询”   **“XMLA”。**  >   
 2. 将以下 TMSL 脚本复制并粘贴到查询编辑器中：
 
     ```JSON
@@ -135,7 +135,7 @@ ms.locfileid: "79543739"
 ## <a name="verify-your-changes"></a>验证所做的更改
 
 1. 在“对象资源管理器”中单击服务器名，然后单击“刷新”或按 **F5**。  
-2. 展开“数据库” > “adventureworks” > “角色”。    验证在前述任务中添加的用户帐户和新角色更改是否显示。   
+2. 展开“数据库” **“adventureworks”** “角色”。 >    >   验证在前述任务中添加的用户帐户和新角色更改是否显示。   
 
     ![在对象资源管理器中验证](./media/analysis-services-tutorial-roles/aas-connect-ssms-verify.png)
 

@@ -8,10 +8,10 @@ origin.date: 01/13/2020
 ms.date: 03/30/2020
 ms.author: v-yeche
 ms.openlocfilehash: 3538a6f8c5ca6d7d690f756c41dae6dcf0ebf196
-ms.sourcegitcommit: 303a16c7117b6f3495ef0493b4ae8ccb67d7dbba
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80342369"
 ---
 # <a name="elastically-scale-an-azure-cosmos-db-cassandra-api-account"></a>弹性缩放 Azure Cosmos DB Cassandra API 帐户
@@ -24,7 +24,7 @@ ms.locfileid: "80342369"
 
 如果客户端消耗的资源（RU/秒）超过了预配的量，Azure Cosmos DB 将返回速率限制 (429) 错误。 Azure Cosmos DB 中的 Cassandra API 在 Cassandra 本机协议中将这些异常解释为过载错误。 
 
-如果系统对延迟不敏感，使用重试可能就足以应对吞吐量速率限制。 请参阅 [Java 代码示例](https://github.com/Azure-Samples/azure-cosmos-cassandra-java-retry-sample)，了解如何通过 Java 使用用于 [Cassandra 重试策略](https://docs.datastax.com/en/developer/java-driver/4.4/manual/core/retries/)的 [Azure Cosmos DB 扩展](https://github.com/Azure/azure-cosmos-cassandra-extensions)，从而以透明方式处理速率限制。 还可以使用 [Spark 扩展](https://mvnrepository.com/artifact/com.microsoft.azure.cosmosdb/azure-cosmos-cassandra-spark-helper)来处理速率限制。
+如果系统对延迟不敏感，使用重试可能就足以应对吞吐量速率限制。 请参阅 [Java 代码示例](https://github.com/Azure-Samples/azure-cosmos-cassandra-java-retry-sample)，了解如何通过 Java 使用用于 [Cassandra 重试策略](https://github.com/Azure/azure-cosmos-cassandra-extensions)的 [Azure Cosmos DB 扩展](https://docs.datastax.com/en/developer/java-driver/4.4/manual/core/retries/)，从而以透明方式处理速率限制。 还可以使用 [Spark 扩展](https://mvnrepository.com/artifact/com.microsoft.azure.cosmosdb/azure-cosmos-cassandra-spark-helper)来处理速率限制。
 
 ## <a name="manage-scaling"></a>管理缩放
 

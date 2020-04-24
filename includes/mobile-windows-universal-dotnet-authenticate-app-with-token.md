@@ -1,9 +1,9 @@
 ---
 ms.openlocfilehash: 583c8431125a29f9f6f8062721055acbf096cf86
-ms.sourcegitcommit: b2f2bb08ab1b5ccb3c596d84b3b6ddca5bba3903
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80151736"
 ---
 
@@ -80,7 +80,7 @@ ms.locfileid: "80151736"
             return success;
         }
    
-    在此版本的 **AuthenticateAsync** 中，应用将尝试使用存储在 **PasswordVault** 中的凭据来访问服务。 没有存储任何凭据时，也执行常规登录。
+    在此版本的 **AuthenticateAsync** 中，应用将尝试使用存储在 **PasswordVault** 中的凭据来访问服务。 没有存储任何凭证时，也执行常规登录。
    
    > [!NOTE]
    > 缓存的令牌可能已过期，正在使用应用时，在身份验证之后也可能会发生令牌到期。 若要了解如何确定令牌是否已过期，请参阅[检查过期的身份验证令牌](https://docs.microsoft.com/archive/blogs/)。 有关用于处理到期令牌相关的授权错误的解决方案，请参阅文章[在 Azure 移动服务托管 SDK 中缓存和处理到期令牌](http://blogs.msdn.com/b/carlosfigueira/archive/2014/03/13/caching-and-handling-expired-tokens-in-azure-mobile-services-managed-sdk.aspx)。 
@@ -88,5 +88,5 @@ ms.locfileid: "80151736"
    > 
 3. 两次重新启动此应用。
    
-    请注意，在第一次启动时，再次需要使用此提供程序进行登录。 但是，在第二次重新启动时，将使用缓存的凭据，而绕过登录。 
+    请注意，在第一次启动时，再次需要使用此提供商进行登录。 但是，在第二次重新启动时，将使用缓存的凭证，而绕过登录。 
 

@@ -35,7 +35,7 @@
       href: ../common/storage-samples-java.md?toc=%2fstorage%2fqueues%2ftoc.json
     - name: Python
       href: ../common/storage-samples-python.md?toc=%2fstorage%2fqueues%2ftoc.json
-    - name: Javascript
+    - name: JavaScript
       href: ../common/storage-samples-javascript.md?toc=%2fstorage%2fqueues%2ftoc.json
 - name: 概念
   items:
@@ -81,7 +81,7 @@
           href: ../common/storage-e2e-troubleshooting.md?toc=%2fstorage%2fqueues%2ftoc.json
         - name: 监视、诊断和故障排除
           href: ../common/storage-monitoring-diagnosing-troubleshooting.md?toc=%2fstorage%2fqueues%2ftoc.json
-        - name: 在 Azure 门户中进行监视
+        - name: 在 Azure 门户中监视
           href: ../common/storage-monitor-storage-account.md??toc=%2fstorage%2fqueues%2ftoc.json
         - name: 指标和日志记录
           items:
@@ -244,7 +244,7 @@
       href: 'https://azure.github.io/azure-storage-ios/'
     - name: Android
       href: 'https://azure.github.io/azure-storage-android'
-    - name: Resource Manager 模板
+    - name: 资源管理器模板
       displayName: ARM
       href: 'https://docs.microsoft.com/azure/templates/microsoft.storage/allversions'
 - name: 资源

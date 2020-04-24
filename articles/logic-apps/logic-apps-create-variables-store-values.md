@@ -9,10 +9,10 @@ origin.date: 09/20/2019
 ms.date: 03/23/2020
 ms.author: v-yeche
 ms.openlocfilehash: 9821743fa56c5d3c91c39c7fb2309a08be5fca99
-ms.sourcegitcommit: 305361c96d1d5288d3dda7e81833820640e2afac
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80109751"
 ---
 # <a name="store-and-manage-values-by-using-variables-in-azure-logic-apps"></a>在 Azure 逻辑应用中使用变量来存储和管理值

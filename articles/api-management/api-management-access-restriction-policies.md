@@ -16,10 +16,10 @@ origin.date: 01/10/2020
 ms.author: v-yiso
 ms.date: 02/24/2020
 ms.openlocfilehash: 40758ced16c3e821761eb52e041c4cee68025e0a
-ms.sourcegitcommit: 7f8acc663bf3429b391c2c615bed0d1b2107fd7e
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80290086"
 ---
 # <a name="api-management-access-restriction-policies"></a>API 管理访问限制策略
@@ -74,7 +74,7 @@ ms.locfileid: "80290086"
 | failed-check-error-message | 在标头不存在或其值无效的情况下，需要在 HTTP 响应正文中返回的错误消息。 此消息必须对任何特殊字符正确地进行转义。 | 是      | 不适用     |
 | failed-check-httpcode      | 在标头不存在或其值无效时需返回的 HTTP 状态代码。                                                                                        | 是      | 不适用     |
 | header-name                | 要检查的 HTTP 标头的名称。                                                                                                                                  | 是      | 不适用     |
-| ignore-case                | 可以设置为 True 或 False。 如果设置为 True，则在将标头值与一组可接受的值进行比较时，会忽略大小写。                                    | 是      | 不适用     |
+| ignore-case                | 可以设置为 True 或 False。 如果设置为 True，则在将标头值与一组可接受的值进行比较时，会忽略大小写。                                    | 是      | 空值     |
 
 ### <a name="usage"></a>使用情况
 
@@ -132,7 +132,7 @@ ms.locfileid: "80290086"
 
 | 名称           | 说明                                                                                           | 必须 | 默认 |
 | -------------- | ----------------------------------------------------------------------------------------------------- | -------- | ------- |
-| name           | 要对其应用速率限制的 API 的名称。                                                | 是      | 不适用     |
+| name           | 要对其应用速率限制的 API 的名称。                                                | 是      | 空值     |
 | calls          | 在 `renewal-period` 所指定的时间间隔内允许的最大总调用数。 | 是      | 不适用     |
 | renewal-period | 在重置配额之前等待的时间长度，以秒为单位。                                              | 是      | 不适用     |
 
@@ -198,7 +198,7 @@ ms.locfileid: "80290086"
 | calls               | 在 `renewal-period` 所指定的时间间隔内允许的最大总调用数。 | 是      | 不适用     |
 | counter-key         | 用于速率限制策略的密钥。                                                             | 是      | 空值     |
 | increment-condition | 一个布尔表达式，指定在判断请求数是否达到配额时是否应计入该请求 (`true`)。        | 否       | 不适用     |
-| renewal-period      | 在重置配额之前等待的时间长度，以秒为单位。                                              | 是      | 空值     |
+| renewal-period      | 在重置配额之前等待的时间长度，以秒为单位。                                              | 是      | 不适用     |
 
 ### <a name="usage"></a>使用情况
 
@@ -244,8 +244,8 @@ ms.locfileid: "80290086"
 
 | 名称                                      | 说明                                                                                 | 必须                                           | 默认 |
 | ----------------------------------------- | ------------------------------------------------------------------------------------------- | -------------------------------------------------- | ------- |
-| address-range from="address" to="address" | 允许或拒绝其访问的某个 IP 地址范围。                                        | 使用 `address-range` 元素时必需。 | 不适用     |
-| ip-filter action="allow &#124; forbid"    | 指定是否应允许指定的 IP 地址和范围执行调用。 | 是                                                | 不适用     |
+| address-range from="address" to="address" | 允许或拒绝其访问的某个 IP 地址范围。                                        | 使用 `address-range` 元素时必需。 | 空值     |
+| ip-filter action="allow &#124; forbid"    | 指定是否应允许指定的 IP 地址和范围执行调用。 | 是                                                | 空值     |
 
 ### <a name="usage"></a>使用情况
 
@@ -299,10 +299,10 @@ ms.locfileid: "80290086"
 
 | 名称           | 说明                                                                                               | 必须                                                         | 默认 |
 | -------------- | --------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------- | ------- |
-| name           | 要向其应用配额的 API 或操作的名称。                                             | 是                                                              | 不适用     |
-| bandwidth      | 在 `renewal-period` 所指定的时间间隔内允许的最大总字节数（千字节）。 | 必须指定 `calls` 和/或 `bandwidth`。 | 空值     |
+| name           | 要向其应用配额的 API 或操作的名称。                                             | 是                                                              | 空值     |
+| bandwidth      | 在 `renewal-period` 所指定的时间间隔内允许的最大总字节数（千字节）。 | 必须指定 `calls` 和/或 `bandwidth`。 | 不适用     |
 | calls          | 在 `renewal-period` 所指定的时间间隔内允许的最大总调用数。     | 必须指定 `calls` 和/或 `bandwidth`。 | 不适用     |
-| renewal-period | 在重置配额之前等待的时间长度，以秒为单位。                                                  | 是                                                              | 不适用     |
+| renewal-period | 在重置配额之前等待的时间长度，以秒为单位。                                                  | 是                                                              | 空值     |
 
 ### <a name="usage"></a>使用情况
 
@@ -359,11 +359,11 @@ ms.locfileid: "80290086"
 
 | 名称                | 说明                                                                                               | 必须                                                         | 默认 |
 | ------------------- | --------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------- | ------- |
-| bandwidth           | 在 `renewal-period` 所指定的时间间隔内允许的最大总字节数（千字节）。 | 必须指定 `calls` 和/或 `bandwidth`。 | 空值     |
-| calls               | 在 `renewal-period` 所指定的时间间隔内允许的最大总调用数。     | 必须指定 `calls` 和/或 `bandwidth`。 | 空值     |
-| counter-key         | 用于配额策略的密钥。                                                                      | 是                                                              | 空值     |
-| increment-condition | 一个布尔表达式，指定在判断请求数是否达到配额时是否应计入该请求 (`true`)             | 否                                                               | 不适用     |
-| renewal-period      | 在重置配额之前等待的时间长度，以秒为单位。                                                  | 是                                                              | 空值     |
+| bandwidth           | 在 `renewal-period` 所指定的时间间隔内允许的最大总字节数（千字节）。 | 必须指定 `calls` 和/或 `bandwidth`。 | 不适用     |
+| calls               | 在 `renewal-period` 所指定的时间间隔内允许的最大总调用数。     | 必须指定 `calls` 和/或 `bandwidth`。 | 不适用     |
+| counter-key         | 用于配额策略的密钥。                                                                      | 是                                                              | 不适用     |
+| increment-condition | 一个布尔表达式，指定在判断请求数是否达到配额时是否应计入该请求 (`true`)             | 否                                                               | 空值     |
+| renewal-period      | 在重置配额之前等待的时间长度，以秒为单位。                                                  | 是                                                              | 不适用     |
 
 ### <a name="usage"></a>使用情况
 
@@ -525,14 +525,14 @@ ms.locfileid: "80290086"
 | failed-validation-httpcode      | JWT 未通过验证时会返回的 HTTP 状态代码。                                                                                                                                                                                                                                                                                                                                                                                         | 否                                                                               | 401                                                                               |
 | header-name                     | 包含令牌的 HTTP 标头的名称。                                                                                                                                                                                                                                                                                                                                                                                                         | 必须指定 `header-name`、`query-parameter-name`、`token-value` 中的一个。 | 不适用                                                                               |
 | query-parameter-name            | 包含令牌的查询参数的名称。                                                                                                                                                                                                                                                                                                                                                                                                     | 必须指定 `header-name`、`query-parameter-name`、`token-value` 中的一个。 | 不适用                                                                               |
-| token-value                     | 一个表达式，返回的字符串包含 JWT 令牌                                                                                                                                                                                                                                                                                                                                                                                                     | 必须指定 `header-name`、`query-parameter-name`、`token-value` 中的一个。 | 不适用                                                                               |
+| token-value                     | 一个表达式，返回的字符串包含 JWT 令牌                                                                                                                                                                                                                                                                                                                                                                                                     | 必须指定 `header-name`、`query-parameter-name`、`token-value` 中的一个。 | 空值                                                                               |
 | id                              | 使用 `key` 元素的 `id` 属性可以指定一个字符串，该字符串将与令牌中的 `kid` 声明（如果存在）进行比较，以便找出进行签名验证时需要使用的适当密钥。                                                                                                                                                                                                                                           | 否                                                                               | 不适用                                                                               |
 | match                           | `claim` 元素的 `match` 属性用于指定：是否策略中的每个声明值都必须存在于令牌中才会使验证成功。 可能的值包括：<br /><br /> - `all` - 策略中的每个声明值都必须存在于令牌中才会使验证成功。<br /><br /> - `any` - 至少一个声明值必须存在于令牌中才会使验证成功。                                                       | 否                                                                               | all                                                                               |
 | require-expiration-time         | 布尔值。 指定令牌中是否需要到期声明。                                                                                                                                                                                                                                                                                                                                                                               | 否                                                                               | 是                                                                              |
 | require-scheme                  | 令牌方案的名称，例如“Bearer”。 设置了此属性时，策略将确保 Authorization 标头值中存在指定的方案。                                                                                                                                                                                                                                                                                    | 否                                                                               | 不适用                                                                               |
 | require-signed-tokens           | 布尔值。 指定令牌是否需要签名。                                                                                                                                                                                                                                                                                                                                                                                           | 否                                                                               | 是                                                                              |
 | separator                       | 字符串。 指定要用于从多值声明中提取一组值的分隔符（例如 ","）。                                                                                                                                                                                                                                                                                                                                          | 否                                                                               | 不适用                                                                               |
-| url                             | Open ID 配置终结点 URL，从中可以获取 Open ID 配置元数据。 响应应符合以下 URL 中定义的规范：`https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata`。 对于 Azure Active Directory，请使用以下 URL：`https://login.partner.microsoftonline.cn/{tenant-name}/.well-known/openid-configuration`，将其中的 {tenant-name} 替换为你的目录租户名称，例如 `contoso.onmicrosoft.com`。 | 是                                                                              | 不适用                                                                               |
+| url                             | Open ID 配置终结点 URL，从中可以获取 Open ID 配置元数据。 响应应符合以下 URL 中定义的规范：`https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata`。 对于 Azure Active Directory，请使用以下 URL：`https://login.partner.microsoftonline.cn/{tenant-name}/.well-known/openid-configuration`，将其中的 {tenant-name} 替换为你的目录租户名称，例如 `contoso.onmicrosoft.com`。 | 是                                                                              | 空值                                                                               |
 | output-token-variable-name      | 字符串。 成功进行令牌验证后，将作为 [`Jwt`](api-management-policy-expressions.md) 类型的对象接收令牌值的上下文变量的名称                                                                                                                                                                                                                                                                                     | 否                                                                               | 不适用                                                                               |
 
 ### <a name="usage"></a>使用情况

@@ -7,10 +7,10 @@ ms.date: 03/23/2020
 ms.topic: tutorial
 ms.author: v-yeche
 ms.openlocfilehash: 27e50ea383a406d8885d5f1ef82a5aecb22daf54
-ms.sourcegitcommit: 1436f1851342ca5631eb25342eed954adb707af0
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79543883"
 ---
 # <a name="tutorial-create-azure-resource-manager-templates-with-dependent-resources"></a>教程：使用依赖的资源创建 Azure 资源管理器模板
@@ -32,7 +32,7 @@ ms.locfileid: "79543883"
 
 如果没有 Azure 订阅，请在开始前[创建一个试用帐户](https://www.azure.cn/pricing/1rmb-trial/)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要完成本文，需要做好以下准备：
 
@@ -48,14 +48,14 @@ ms.locfileid: "79543883"
 
 Azure 快速入门模板是资源管理器模板的存储库。 无需从头开始创建模板，只需找到一个示例模板并对其自定义即可。 本教程中使用的模板称为[部署简单的 Windows VM](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows/)。
 
-1. 在 Visual Studio Code 中，选择“文件”>“打开文件”。  
+1. 在 Visual Studio Code 中，选择“文件” **“打开文件”。** > 
 2. 在“文件名”中粘贴以下 URL： 
 
     ```url
     https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-simple-windows/azuredeploy.json
     ```
 3. 选择“打开”以打开该文件。 
-4. 选择“文件”>“另存为”，将该文件的副本保存到名为 **azuredeploy.json** 的本地计算机。  
+4. 选择“文件” **“另存为”，将该文件的副本保存到名为** azuredeploy.json> 的本地计算机。  
 
 ## <a name="explore-the-template"></a>浏览模板
 
@@ -72,11 +72,11 @@ Azure 快速入门模板是资源管理器模板的存储库。 无需从头开�
 
     有五个通过此模板定义的资源：
 
-    * `Microsoft.Storage/storageAccounts`。
-    * `Microsoft.Network/publicIPAddresses`。
-    * `Microsoft.Network/virtualNetworks`。
-    * `Microsoft.Network/networkInterfaces`。
-    * `Microsoft.Compute/virtualMachines`。
+    * `Microsoft.Storage/storageAccounts` 列中的一个值匹配。
+    * `Microsoft.Network/publicIPAddresses` 列中的一个值匹配。
+    * `Microsoft.Network/virtualNetworks` 列中的一个值匹配。
+    * `Microsoft.Network/networkInterfaces` 列中的一个值匹配。
+    * `Microsoft.Compute/virtualMachines` 列中的一个值匹配。
     
      <!-- Not Available on template -->
      

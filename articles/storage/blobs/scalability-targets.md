@@ -11,10 +11,10 @@ ms.date: 03/30/2020
 ms.author: v-jay
 ms.subservice: common
 ms.openlocfilehash: 67ec7e50fcf6c842aea1b4bfaded578383b44442
-ms.sourcegitcommit: 90d01d08faf8adb20083363a8e4e5aab139cd9b2
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80290451"
 ---
 # <a name="scalability-and-performance-targets-for-blob-storage"></a>Blob 存储的可伸缩性和性能目标

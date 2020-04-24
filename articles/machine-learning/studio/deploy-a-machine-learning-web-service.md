@@ -11,10 +11,10 @@ ms.author: amlstudiodocs
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 01/06/2017
 ms.openlocfilehash: 3438c877d1f20f2f083179c23f6019762cbc22b2
-ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80343090"
 ---
 # <a name="deploy-an-azure-machine-learning-studio-classic-web-service"></a>部署 Azure 机器学习工作室（经典）Web 服务

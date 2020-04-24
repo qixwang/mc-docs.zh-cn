@@ -33,7 +33,7 @@
       href: concepts-built-in-policy.md
     - name: 角色定义项目
       href: concepts-custom-role-definition.md
-- name: 操作指南
+- name: 操作方法指南
   items:
     - name: 发布者
       items:

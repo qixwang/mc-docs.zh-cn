@@ -10,10 +10,10 @@ ms.topic: conceptual
 origin.date: 02/25/2020
 ms.date: 03/16/2020
 ms.openlocfilehash: c88f7921b348d39b7bef9d129cf5f6e5fc65bafa
-ms.sourcegitcommit: 71a386ca0d0ecb79a123399b6ab6b8c70ea2aa78
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79497195"
 ---
 # <a name="documentation-resources-for-ai-enrichment-in-azure-cognitive-search"></a>Azure 认知搜索中的 AI 扩充文档资源

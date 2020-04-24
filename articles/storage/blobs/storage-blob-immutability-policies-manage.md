@@ -10,10 +10,10 @@ ms.date: 03/30/2020
 ms.author: v-jay
 ms.subservice: blobs
 ms.openlocfilehash: 08083d0dda8678f246a4648d5c5c69970dc266ec
-ms.sourcegitcommit: 90d01d08faf8adb20083363a8e4e5aab139cd9b2
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80290454"
 ---
 # <a name="set-and-manage-immutability-policies-for-blob-storage"></a>为 Blob 存储设置和管理不可变性策略
@@ -24,7 +24,7 @@ Azure Blob 存储的不可变存储可让用户以 WORM（一次写入，多次�
 
 ## <a name="set-retention-policies-and-legal-holds"></a>设置保留策略和合法保留
 
-### <a name="portal"></a>[Portal](#tab/azure-portal)
+### <a name="portal"></a>[门户](#tab/azure-portal)
 
 1. 请创建新的容器或选择现有容器，以便存储需要保持不可变状态的 Blob。 容器必须位于常规用途 v2 或 Blob 存储帐户中。
 
@@ -169,7 +169,7 @@ Remove-AzRmStorageContainerImmutabilityPolicy -ImmutabilityPolicy $policy
 
 ## <a name="enabling-allow-protected-append-blobs-writes"></a>允许受保护的追加 Blob 写入
 
-### <a name="portal"></a>[Portal](#tab/azure-portal)
+### <a name="portal"></a>[门户](#tab/azure-portal)
 
 ![允许其他追加写入](media/storage-blob-immutability-policies-manage/immutable-allow-additional-append-writes.png)
 
@@ -189,4 +189,4 @@ Set-AzRmStorageContainerImmutabilityPolicy -ResourceGroupName $resourceGroup `
 
 ## <a name="next-steps"></a>后续步骤
 
-[使用不可变的存储来存储业务关键型 Blob 数据](storage-blob-immutable-storage.md)
+[使用不可变存储存储业务关键型 Blob 数据](storage-blob-immutable-storage.md)

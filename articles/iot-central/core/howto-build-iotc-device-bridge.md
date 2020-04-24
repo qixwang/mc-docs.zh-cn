@@ -9,10 +9,10 @@ ms.date: 07/09/2019
 ms.topic: conceptual
 manager: peterpr
 ms.openlocfilehash: bdd62cc024843ea17d7a88189eff03da6e44c080
-ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80343229"
 ---
 # <a name="build-the-iot-central-device-bridge-to-connect-other-iot-clouds-to-iot-central"></a>构建 IoT Central 设备网桥以将其他 IoT 云连接到 IoT Central

@@ -10,10 +10,10 @@ origin.date: 02/12/2020
 ms.date: 03/16/2020
 ms.author: v-tawe
 ms.openlocfilehash: bbc90909f189a4017143315fc1f12da3267c5896
-ms.sourcegitcommit: 1d3d8dfdaf6281f06640cbee7124a1e8bf102c50
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80243936"
 ---
 # <a name="authorize-access-to-azure-event-hubs"></a>授予对 Azure 事件中心的访问权限

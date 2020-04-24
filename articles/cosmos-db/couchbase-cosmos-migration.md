@@ -8,10 +8,10 @@ ms.date: 03/30/2020
 ms.author: v-yeche
 author: rockboyfor
 ms.openlocfilehash: 2ce421d31e8f9280ddabbec4bacdd181a0fa4584
-ms.sourcegitcommit: 303a16c7117b6f3495ef0493b4ae8ccb67d7dbba
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80342373"
 ---
 # <a name="migrate-from-couchbase-to-azure-cosmos-db-sql-api"></a>从 CouchBase 迁移到 Azure Cosmos DB SQL API

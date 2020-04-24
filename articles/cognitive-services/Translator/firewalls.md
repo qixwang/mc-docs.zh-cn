@@ -12,10 +12,10 @@ origin.date: 06/04/2019
 ms.date: 06/11/2019
 ms.author: v-junlch
 ms.openlocfilehash: b233788f1a03d078f1add5c4c4b11c102f5f1a27
-ms.sourcegitcommit: 303a16c7117b6f3495ef0493b4ae8ccb67d7dbba
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80342412"
 ---
 # <a name="how-to-translate-behind-ip-firewalls-with-the-translator-text-api"></a>如何使用文本翻译 API 在防火墙后面翻译

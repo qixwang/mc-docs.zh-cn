@@ -7,10 +7,10 @@ origin.date: 03/16/2018
 ms.date: 03/30/2020
 ms.topic: conceptual
 ms.openlocfilehash: 9270469c2ec5477a28d6df119b48004e67b4cec1
-ms.sourcegitcommit: 90d01d08faf8adb20083363a8e4e5aab139cd9b2
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80290358"
 ---
 # <a name="graphical-authoring-in-azure-automation"></a>Azure 自动化中的图形创作

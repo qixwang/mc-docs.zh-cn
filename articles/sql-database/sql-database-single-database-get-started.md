@@ -13,10 +13,10 @@ ms.reviewer: carlrab, sstein, vanto
 origin.date: 03/10/2020
 ms.date: 03/30/2020
 ms.openlocfilehash: bc24579dd03584725561abb1f6a6dee5f928be9a
-ms.sourcegitcommit: 90660563b5d65731a64c099b32fb9ec0ce2c51c6
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80341774"
 ---
 # <a name="quickstart-create-an-azure-sql-database-single-database"></a>快速入门：创建 Azure SQL 数据库单一数据库

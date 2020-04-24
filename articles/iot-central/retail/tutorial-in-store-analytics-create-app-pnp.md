@@ -13,10 +13,10 @@ author: timlt
 origin.date: 11/12/2019
 ms.date: 12/16/2019
 ms.openlocfilehash: b5fe94b0790471b61d6d313ccbd884b9b79da37b
-ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80343132"
 ---
 # <a name="tutorial-create-an-in-store-analytics-application-in-azure-iot-central"></a>教程：在 Azure IoT Central 中创建店内分析应用程序

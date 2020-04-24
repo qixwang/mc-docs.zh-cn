@@ -4,15 +4,15 @@ description: 有关当前和将来的 Azure 服务问题及维护对 Azure 应�
 ms.topic: conceptual
 ms.date: 03/17/2020
 ms.openlocfilehash: 4a5b4c2144285e98d0eee4d35f498faefbf6594d
-ms.sourcegitcommit: 71a386ca0d0ecb79a123399b6ab6b8c70ea2aa78
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79497177"
 ---
 # <a name="service-health-overview"></a>服务运行状况概述
 
-服务运行状况提供可定制的仪表板，用于跟踪 Azure 服务在使用区域中的运行状况。 在此仪表板中，可跟踪活动事件，例如正在处理的服务问题、即将开始的计划内维护或相关运行状况公告。 当事件转变为非活动状态时，将在运行状况历史记录中保留最多 90 天。 最后，可使用服务运行状况仪表板创建和管理服务运行状况警报，在服务问题影响到自己时提前获得通知。
+服务运行状况提供可定制的仪表板，用于跟踪 Azure 服务在使用区域中的运行状况。 在此仪表板中，可跟踪活动事件，例如正在处理的服务问题、即将开始的计划内维护或相关运行状况公告。 当事件转变为非活动状态时，将在运行状况历史记录中保留最多 90 天。 最后，可使用服务运行状况仪表板创建和管理服务运行状况警报，受服务问题影响时会主动发出通知。
 
 ## <a name="service-health-events"></a>服务运行状况事件
 

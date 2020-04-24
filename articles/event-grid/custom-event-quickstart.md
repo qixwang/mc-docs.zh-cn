@@ -14,10 +14,10 @@ ms.custom:
 - seo-javascript-september2019
 - seo-python-october2019
 ms.openlocfilehash: 74e4407aded9be7304039a9eb2af2e96471070fa
-ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/17/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79452600"
 ---
 # <a name="quickstart-route-custom-events-to-web-endpoint-with-azure-cli-and-event-grid"></a>快速入门：使用 Azure CLI 和事件网格将自定义事件路由到 Web 终结点

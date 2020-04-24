@@ -10,10 +10,10 @@ origin.date: 01/27/2017
 ms.date: 03/30/2020
 ms.author: v-yeche
 ms.openlocfilehash: 25e1dc1d47ecf542ef70e75a02b4a68b8def89c8
-ms.sourcegitcommit: 2b084933215d0e7702456730f168d97e00c882a0
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80243570"
 ---
 # <a name="encode-x12-messages-in-azure-logic-apps-with-enterprise-integration-pack"></a>在带有 Enterprise Integration Pack 的 Azure 逻辑应用中编码 X12 消息
@@ -46,7 +46,7 @@ ms.locfileid: "80243570"
 
     带有星号的属性必填。
 
-    | 属性 | 详细信息 |
+    | properties | 详细信息 |
     | --- | --- |
     | 连接名称 * |为连接输入任何名称。 |
     | 集成帐户 * |输入集成帐户的名称。 确保集成帐户和逻辑应用位于同一 Azure 位置。 |

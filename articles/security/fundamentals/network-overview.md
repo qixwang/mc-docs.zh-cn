@@ -17,10 +17,10 @@ origin.date: 10/29/2018
 ms.date: 03/02/2020
 ms.author: v-lingwu
 ms.openlocfilehash: ece0c5b53da3c9b032e929dc5d3e3df7e1349282
-ms.sourcegitcommit: 303a16c7117b6f3495ef0493b4ae8ccb67d7dbba
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80342336"
 ---
 # <a name="azure-network-security-overview"></a>Azure 网络安全概述

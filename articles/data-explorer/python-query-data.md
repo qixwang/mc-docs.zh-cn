@@ -9,10 +9,10 @@ ms.topic: conceptual
 origin.date: 08/05/2019
 ms.date: 03/23/2020
 ms.openlocfilehash: 8da032b4ef25f95a06bb93053f2de76d533d0acf
-ms.sourcegitcommit: 764b3d26aedce2de0e1948468a706fd3204a3d5e
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79543302"
 ---
 # <a name="query-data-using-the-azure-data-explorer-python-library"></a>使用 Azure 数据资源管理器 Python 库查询数据
@@ -23,7 +23,7 @@ Azure 数据资源管理器提供[适用于 Python 的数据客户端库](https:
 
 本文同时也以 [Azure Notebook](https://notebooks.azure.com/ManojRaheja/libraries/KustoPythonSamples/html/QueryKusto.ipynb) 的形式提供。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * [Python 3.4+](https://www.python.org/downloads/)
 
@@ -39,7 +39,7 @@ pip install azure-kusto-data
 
 > [!NOTE]
 > 请将终结点从  
-> `CLOUD_LOGIN_URL = "https://login.microsoftonline.com/"` 更改为 `CLOUD_LOGIN_URL = "https://login.partner.microsoftonline.cn"`  
+> `CLOUD_LOGIN_URL = "https://login.microsoftonline.com/"` 到 `CLOUD_LOGIN_URL = "https://login.partner.microsoftonline.cn"`  
 > （在下载的库文件 `<YourPythonInstallPath>\Lib\site-packages\azure\kusto\data\security.py` 中），使其可在 Azure 中国内运行。
 
 ## <a name="add-import-statements-and-constants"></a>添加导入语句和常量
@@ -59,7 +59,7 @@ Azure 数据资源管理器使用 AAD 租户 ID，以对应用程序进行身份
 https://login.chinacloudapi.cn/<YourDomain>/.well-known/openid-configuration/
 ```
 
-例如，如果域名为 contoso.com，则该 URL 将是：[https://login.chinacloudapi.cn/contoso.com/.well-known/openid-configuration/](https://login.chinacloudapi.cn/contoso.com/.well-known/openid-configuration/)  。 单击此 URL 以查看结果；第一行如下所示。
+例如，如果域名为 contoso.com，则该 URL 将是：  [https://login.chinacloudapi.cn/contoso.com/.well-known/openid-configuration/](https://login.chinacloudapi.cn/contoso.com/.well-known/openid-configuration/)。 单击此 URL 以查看结果；第一行如下所示。
 
 ```
 "authorization_endpoint":"https://login.chinacloudapi.cn/6babcaad-604b-40ac-a9d7-9fd97c0b779f/oauth2/authorize"
@@ -83,7 +83,7 @@ KCSB.authority_id = AAD_TENANT_ID
 
 ## <a name="connect-to-azure-data-explorer-and-execute-a-query"></a>连接到Azure 数据资源管理器并执行查询
 
-针对群集执行查询，并将输出存储在数据帧中。 运行此代码时，它会返回如下消息：若要登录，请使用 Web 浏览器打开页面 https://microsoft.com/devicelogin ，然后输入代码 F3W4VWZDM 进行身份验证  。 按照步骤登录，然后返回以运行下一个代码块。
+针对群集执行查询，并将输出存储在数据帧中。 此代码运行时，它将返回如下消息：要登录，请使用 Web 浏览器打开页面 *，并输入代码 F3W4VWZDM 进行身份验证 https://microsoft.com/devicelogin* 。 按照步骤登录，然后返回以运行下一个代码块。
 
 ```python
 KUSTO_CLIENT = KustoClient(KCSB)

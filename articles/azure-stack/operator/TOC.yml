@@ -23,7 +23,7 @@
   items:
     - name: 向用户提供服务
       href: tutorial-offer-services.md
-    - name: 测试服务产品
+    - name: 测试服务套餐
       href: tutorial-test-offer.md
 - name: 概念
   items:
@@ -114,7 +114,7 @@
               href: azure-stack-integrate-security.md
             - name: 设备审核
               href: azure-stack-integrate-physical-device-auditing.md
-- name: 操作指南
+- name: 操作方法指南
   items:
     - name: 管理 Azure Stack Hub
       items:
@@ -286,7 +286,7 @@
               href: azure-stack-app-service-overview.md
             - name: 应用服务容量规划
               href: azure-stack-app-service-capacity-planning.md
-            - name: 准备工作
+            - name: 开始操作之前
               href: azure-stack-app-service-before-you-get-started.md
             - name: 部署应用服务
               href: azure-stack-app-service-deploy.md
@@ -379,7 +379,7 @@
     - name: 使用情况和计费
       href: azure-stack-billing-and-chargeback.md
       items:
-        - name: 以 CSP 身份管理使用情况和计费
+        - name: 以 CSP 身份管理用量和计费
           href: azure-stack-add-manage-billing-as-a-csp.md
           items:
             - name: 添加租户以获取用量和计费信息
@@ -436,7 +436,7 @@
                   items:
                     - name: 配置自动收集
                       href: azure-stack-configure-automatic-diagnostic-log-collection.md
-                    - name: 最佳实践
+                    - name: 最佳做法
                       href: azure-stack-best-practices-automatic-diagnostic-log-collection.md
                 - name: 按需收集
                   href: azure-stack-configure-on-demand-diagnostic-log-collection.md

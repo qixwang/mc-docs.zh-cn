@@ -12,10 +12,10 @@ ms.custom: seodec18
 ms.date: 05/25/2018
 ms.reviewer: jmartens, mldocs
 ms.openlocfilehash: 2c26d4574b6ac791884d16ec1ce59786935ff69f
-ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80343313"
 ---
 # <a name="view-and-delete-in-product-user-data-from-azure-ai-gallery"></a>从 Azure AI 库中查看和删除产品内用户数据

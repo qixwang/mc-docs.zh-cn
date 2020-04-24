@@ -11,10 +11,10 @@ ms.author: peterlu
 origin.date: 12/17/2019
 ms.date: 03/09/2020
 ms.openlocfilehash: 422664cbc7dfff8e9bafba14d1e8fa334c15e4e7
-ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80343553"
 ---
 # <a name="algorithm--module-reference-for-azure-machine-learning-designer-preview"></a>Azure 机器学习设计器（预览版）的算法和模块参考

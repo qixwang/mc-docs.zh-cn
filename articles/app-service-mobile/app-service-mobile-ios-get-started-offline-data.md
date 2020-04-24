@@ -9,10 +9,10 @@ origin.date: 06/25/2019
 md.date: 03/23/2020
 ms.author: v-tawe
 ms.openlocfilehash: d58a9e087014ae04412f53d672449e0ae26ae4b9
-ms.sourcegitcommit: b2f2bb08ab1b5ccb3c596d84b3b6ddca5bba3903
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80151740"
 ---
 # <a name="enable-offline-syncing-with-ios-mobile-apps"></a>启用 iOS 移动应用的脱机同步功能
@@ -141,7 +141,7 @@ ms.locfileid: "80151740"
   * TodoItem：存储待办事项。 系统列 createdAt、updatedAt 和 version 都是可选的系统属性    。
 
 > [!NOTE]
-> 移动应用 SDK 会保留以“``  ”开头的列名称。 请不要在系统列以外的其他列中使用此前缀。 否则，列名称会在使用远程后端时被修改。
+> 移动应用 SDK 会保留以“`` ”开头的列名称。 请不要在系统列以外的其他列中使用此前缀。 否则，列名称会在使用远程后端时被修改。
 >
 >
 

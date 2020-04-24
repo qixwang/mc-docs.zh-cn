@@ -10,10 +10,10 @@ ms.date: 03/30/2020
 ms.author: v-jay
 ms.subservice: files
 ms.openlocfilehash: 7f281c8960d97ee8590a545d632443331cf2328c
-ms.sourcegitcommit: 90d01d08faf8adb20083363a8e4e5aab139cd9b2
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80290462"
 ---
 # <a name="develop-for-azure-files-with-net"></a>使用 .NET 针对 Azure 文件进行开发
@@ -37,7 +37,7 @@ ms.locfileid: "80290462"
 
 Azure 文件为客户端应用程序提供两个主要方法：服务器消息块 (SMB) 和 REST。 在 .NET 中，`System.IO` 和 `WindowsAzure.Storage` API 将抽象化这些方法。
 
-API | 何时使用 | 注释
+API | 何时使用 | 说明
 ----|-------------|------
 [System.IO](https://docs.microsoft.com/dotnet/api/system.io) | 应用程序： <ul><li>需要使用 SMB 读取/写入文件</li><li>是否在可以通过端口 445 访问 Azure 文件帐户的设备上运行</li><li>不需要管理文件共享的任何管理设置</li></ul> | 一般情况下，通过 SMB 使用 Azure 文件存储实现的文件 I/O 与使用任何网络文件共享或本地存储设备实现的 I/O 相同。 有关 .NET 中的许多功能（包括文件 I/O）的简介，请参阅[控制台应用程序](https://docs.microsoft.com/dotnet/csharp/tutorials/console-teleprompter)教程。
 [Microsoft.Azure.Storage.File](/dotnet/api/overview/storage#client-library) | 应用程序： <ul><li>由于防火墙或 ISP 约束，无法使用 SMB 在端口 445 上访问 Azure 文件存储</li><li>需要管理功能，例如能够设置文件共享的配额或创建共享访问签名</li></ul> | 本文演示如何通过 REST（而不是 SMB）将 `Microsoft.Azure.Storage.File` 用于文件 I/O 以及如何管理文件共享。
@@ -50,7 +50,7 @@ API | 何时使用 | 注释
 1. 在“创建新项目”  中，选择用于 C# 的“控制台应用(.NET Framework)”  ，然后选择“下一步”  。
 1. 在“配置新项目”中输入应用的名称，然后选择“创建”。  
 
-可将本教程中的所有代码示例添加到控制台应用程序的 `Program.cs` 文件中的 `Main()` 方法。
+可将本教程中的所有代码示例添加到控制台应用程序的 `Main()` 文件中的 `Program.cs` 方法。
 
 可以在任意类型的 .NET 应用程序中使用 Azure 存储客户端库。 这些类型包括 Azure 云服务或 Web 应用，以及桌面和移动应用程序。 为简单起见，我们在本指南中使用控制台应用程序。
 
@@ -71,7 +71,7 @@ API | 何时使用 | 注释
 
   此包提供用于分析配置文件中连接字符串的类，而不管应用程序在何处运行。
 
-可以使用 NuGet 获取这两个包。 执行以下步骤：
+可以使用 NuGet 获取这两个包。 执行以下步骤:
 
 1. 在“解决方案资源管理器”中，右键单击你的项目并选择“管理 NuGet 包”   。
 1. 在“NuGet 包管理器”中选择“浏览”。   搜索并选择“Microsoft.Azure.Storage.Blob”，然后选择“安装”。  
@@ -85,7 +85,7 @@ API | 何时使用 | 注释
 
 ## <a name="save-your-storage-account-credentials-to-the-appconfig-file"></a>将存储帐户凭据保存到 App.config 文件
 
-接下来，将凭据保存到项目的 `App.config` 文件中。 在“解决方案资源管理器”中，双击 `App.config` 并编辑该文件，使其类似于以下示例。  请将 `myaccount` 替换为你的存储帐户名，将 `mykey` 替换为你的存储帐户密钥。
+接下来，将凭据保存到项目的 `App.config` 文件中。 在“解决方案资源管理器”中，双击  **并编辑该文件，使其类似于以下示例。** `App.config` 请将 `myaccount` 替换为你的存储帐户名，将 `mykey` 替换为你的存储帐户密钥。
 
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>
@@ -104,7 +104,7 @@ API | 何时使用 | 注释
 
 ## <a name="add-using-directives"></a>添加 using 指令
 
-在“解决方案资源管理器”中打开 `Program.cs` 文件，并在该文件顶部添加以下 using 指令。 
+在“解决方案资源管理器”中打开  **文件，并在该文件顶部添加以下 using 指令。** `Program.cs`
 
 ```csharp
 using Microsoft.Azure; // Namespace for Azure Configuration Manager
@@ -250,7 +250,7 @@ if (share.Exists())
 还可以使用 AzCopy 将一个文件复制到另一个文件或将一个 Blob 复制到一个文件，反之亦然。 请参阅 [AzCopy 入门](../common/storage-use-azcopy.md?toc=%2fstorage%2ffiles%2ftoc.json)。
 
 > [!NOTE]
-> 如果将一个 Blob 复制到一个文件，或将一个文件复制到一个 Blob，必须使用共享访问签名 (SAS) 来授权访问源对象，即使在同一存储帐户内进行复制。
+> 如果将一个 Blob 复制到一个文件，或将一个文件复制到一个 Blob，必须使用共享访问签名 (SAS) 授予对源对象的访问权限，即使是在同一存储帐户内进行复制。
 >
 
 ### <a name="copy-a-file-to-another-file"></a>将一个文件复制到另一个文件
@@ -301,7 +301,7 @@ if (share.Exists())
 
 ### <a name="copy-a-file-to-a-blob"></a>将文件复制到 Blob
 
-以下示例创建一个文件并将其复制到同一存储帐户中的某个 blob。 该示例为源文件创建一个 SAS，服务在复制操作期间使用该 SAS 授权对源文件的访问。
+以下示例创建一个文件并将其复制到同一存储帐户中的某个 blob。 该示例为源文件创建一个 SAS，服务在复制操作期间使用该 SAS 授予对源文件的访问权限。
 
 ```csharp
 // Parse the connection string for the storage account.
@@ -347,7 +347,7 @@ Console.WriteLine("Source file contents: {0}", sourceFile.DownloadText());
 Console.WriteLine("Destination blob contents: {0}", destBlob.DownloadText());
 ```
 
-可以用相同的方式将一个 Blob 复制到一个文件。 如果源对象是一个 Blob，则创建一个 SAS 以复制操作期间授权对该 Blob 的访问。
+可以用相同的方式将一个 Blob 复制到一个文件。 如果源对象是一个 Blob，则创建一个 SAS，以便在复制操作期间授予对该 Blob 的访问权限。
 
 ## <a name="share-snapshots"></a>共享快照
 
@@ -436,7 +436,7 @@ using Microsoft.Azure.Storage.File.Protocol;
 using Microsoft.Azure.Storage.Shared.Protocol;
 ```
 
-尽管 Azure Blob、Azure 表和 Azure 队列使用 `Microsoft.Azure.Storage.Shared.Protocol` 命名空间中的共享 `ServiceProperties` 类型，但 Azure 文件存储使用其自身的类型，即 `Microsoft.Azure.Storage.File.Protocol` 命名空间中的 `FileServiceProperties` 类型。 但是，必须在代码中引用这两个命名空间才能编译后续代码。
+尽管 Azure Blob、Azure 表和 Azure 队列使用 `ServiceProperties` 命名空间中的共享 `Microsoft.Azure.Storage.Shared.Protocol` 类型，但 Azure 文件存储使用其自身的类型，即 `FileServiceProperties` 命名空间中的 `Microsoft.Azure.Storage.File.Protocol` 类型。 但是，必须在代码中引用这两个命名空间才能编译后续代码。
 
 ```csharp
 // Parse your storage connection string from your application's configuration file.

@@ -6,21 +6,21 @@ origin.date: 12/03/2019
 ms.date: 03/23/2020
 ms.author: v-yeche
 ms.openlocfilehash: 80e4a018c3c21d38ba97381481183dd9cc5d5943
-ms.sourcegitcommit: 1436f1851342ca5631eb25342eed954adb707af0
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79543795"
 ---
-# <a name="define-the-order-for-deploying-resources-in-azure-resource-manager-templates"></a>定义在 Azure Resource Manager 模板中部署资源的顺序
+# <a name="define-the-order-for-deploying-resources-in-azure-resource-manager-templates"></a>定义 Azure 资源管理器模板中部署资源的顺序
 
 部署资源时，可能需要确保其他资源在部署之前存在。 例如，在部署 SQL 数据库之前，需要 SQL Server。 可通过将一个资源标记为依赖于其他资源来定义此关系。 使用 **dependsOn** 元素或 **reference** 函数定义依赖项。
 
-Resource Manager 将评估资源之间的依赖关系，并根据其依赖顺序进行部署。 如果资源互不依赖，资源管理器将以并行方式部署资源。 只需为部署在同一模板中的资源定义依赖关系。
+Resource Manager 将评估资源之间的依赖关系，并根据其依赖顺序进行部署。 如果资源互不依赖，资源管理器将以并行方式部署资源。 只需为在同一模板中部署的资源定义依赖关系。
 
 ## <a name="dependson"></a>dependsOn
 
-在模板中，dependsOn 元素可让你将一个资源定义为与一个或多个资源相依赖。 它的值是逗号分隔的资源名称列表。 该列表可以包括[有条件部署](conditional-resource-deployment.md)的资源。 条件资源未部署时，Azure 资源管理器会自动将其从所需依赖项中删除。
+在模板中，使用 dependsOn 元素可将一个资源定义为与一个或多个资源相依赖。 它的值是逗号分隔的资源名称列表。 该列表可以包括[有条件部署](conditional-resource-deployment.md)的资源。 条件资源未部署时，Azure 资源管理器会自动将其从所需依赖项中删除。
 
 以下示例显示了一个虚拟机规模集，该集依赖于负载均衡器、虚拟网络以及创建多个存储帐户的循环。 下面的示例中未显示其他这些资源，但它们需要存在于模板的其他位置。
 
@@ -42,9 +42,9 @@ Resource Manager 将评估资源之间的依赖关系，并根据其依赖顺序
 }
 ```
 
-在前面的示例中，通过复制名为 **storageLoop**的循环创建的资源包含依赖关系。 有关示例，请参阅 [在 Azure Resource Manager 中创建多个资源实例](copy-resources.md)。
+在前面的示例中，通过名为 **storageLoop** 的复制循环创建的资源上包含一个依赖关系。 有关示例，请参阅[在 Azure 资源管理器中创建多个资源实例](copy-resources.md)。
 
-定义依赖关系时，可以包含资源提供程序命名空间和资源类型，以避免多义性。 例如，为明确表示可能与其他资源同名的负载均衡器和虚拟网络，可使用以下格式：
+定义依赖关系时，可以包括资源提供程序命名空间和资源类型，以避免模糊。 例如，为明确表示可能与其他资源同名的负载均衡器和虚拟网络，可使用以下格式：
 
 ```json
 "dependsOn": [
@@ -59,7 +59,7 @@ Resource Manager 将评估资源之间的依赖关系，并根据其依赖顺序
 
 资源属性允许指定与所定义的资源相关的子资源。 子资源总共只能定义五级。 请务必注意子资源和父资源之间不能创建隐式部署依赖关系。 如果要在父级资源后部署子资源，则必须使用 dependsOn 属性明确声明该依赖关系。
 
-每个父资源仅接受特定的资源类型作为子资源。 可接受的资源类型在父资源的 [模板架构](https://github.com/Azure/azure-resource-manager-schemas) 中指定。 子资源类型的名称包含父资源类型的名称，例如 **Microsoft.Web/sites/config** 和 **Microsoft.Web/sites/extensions** 都是 **Microsoft.Web/sites** 的子资源。
+每个父资源仅接受特定的资源类型作为子资源。 可接受的资源类型在父资源的[模板架构](https://github.com/Azure/azure-resource-manager-schemas)中指定。 子资源类型的名称包含父资源类型的名称，例如 **Microsoft.Web/sites/config** 和 **Microsoft.Web/sites/extensions** 都是 **Microsoft.Web/sites** 的子资源。
 
 以下示例演示了 SQL 服务器和 SQL 数据库。 请注意，在 SQL 数据库与 SQL 服务器之间定义了显式依赖关系，尽管数据库是服务器的子级。
 
@@ -153,8 +153,8 @@ Resource Manager 可在模板验证过程中确定循环依赖项。 如果收�
 
 * 相关教程，请参阅[教程：使用从属资源创建 Azure 资源管理器模板](template-tutorial-create-templates-with-dependent-resources.md)。
 * 有关设置依赖项的建议，请参阅 [Azure 资源管理器模板的最佳做法](template-best-practices.md)。
-* 若要了解如何在部署期间排查依赖项故障，请参阅[排查使用 Azure Resource Manager 时的常见 Azure 部署错误](common-deployment-errors.md)。
-* 若要了解有关创建 Azure Resource Manager模板的信息，请参阅[创作模板](template-syntax.md)。
-* 有关模板中的可用函数列表，请参阅[模板函数](template-functions.md)。
+* 若要了解如何在部署期间排查依赖项故障，请参阅[排查使用 Azure 资源管理器时的常见 Azure 部署错误](common-deployment-errors.md)。
+* 若要了解有关创建 Azure 资源管理器模板的信息，请参阅[创作模板](template-syntax.md)。
+* 有关模板的可用函数列表，请参阅[模板函数](template-functions.md)。
 
 <!-- Update_Description: update meta properties, wording update, update link -->

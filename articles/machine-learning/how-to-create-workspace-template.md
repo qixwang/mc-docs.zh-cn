@@ -12,10 +12,10 @@ origin.date: 11/04/2019
 ms.date: 03/09/2020
 ms.custom: seoapril2019
 ms.openlocfilehash: 42ba993da2ec819f19e4d46205e027362f09bbfc
-ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80343556"
 ---
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]

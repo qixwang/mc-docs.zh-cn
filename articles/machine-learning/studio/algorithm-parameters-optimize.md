@@ -11,10 +11,10 @@ ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 11/29/2017
 ms.openlocfilehash: 78f1e8e6bf4c81837bbfe0dbcd2da22b9f95ab6d
-ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80343317"
 ---
 # <a name="choose-parameters-to-optimize-your-algorithms-in-azure-machine-learning-studio-classic"></a>选择参数优化 Azure 机器学习工作室（经典）中的算法
@@ -31,7 +31,7 @@ ms.locfileid: "80343317"
 
 1. **定义参数空间**：对于算法，首先决定要考虑的确切参数值。
 2. **定义交叉验证设置**：决定如何为数据集选择交叉验证折叠。
-3. **定义指标**：决定用于确定最佳参数集的指标，例如准确性、均方根误差、精度、召回率或 F 分数。
+3. **定义指标**：决定用于确定最佳参数集的指标，例如准确性、均方根误差、精度、撤销率或 F 分数。
 4. **训练、评估和比较**：对于每个独一无二的参数值组合，交叉验证基于定义的误差指标进行执行。 评估和比较后，可选择最佳模型。
 
 下图说明了如何在 Azure 机器学习工作室（经典）中执行此操作。
@@ -39,7 +39,7 @@ ms.locfileid: "80343317"
 ![查找最佳参数集](./media/algorithm-parameters-optimize/fig1.png)
 
 ## <a name="define-the-parameter-space"></a>定义参数空间
-可在模型初始化步骤中定义参数集。 所有机器学习算法的参数窗格具有两个训练模式：单个参数  和参数范围  。 选择参数范围模式。 在参数范围模式下，可为每个参数输入多个值。 可在文本框中输入以逗号分隔的值。
+可在模型初始化步骤中定义参数集。 所有机器学习算法的参数窗格中具有两个训练模式：单个参数  和参数范围  。 选择参数范围模式。 在参数范围模式下，可为每个参数输入多个值。 可在文本框中输入以逗号分隔的值。
 
 ![双类提升决策树，单个参数](./media/algorithm-parameters-optimize/fig2.png)
 

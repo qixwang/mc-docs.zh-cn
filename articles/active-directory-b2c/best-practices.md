@@ -12,10 +12,10 @@ ms.date: 03/16/2020
 ms.author: v-junlch
 ms.subservice: B2C
 ms.openlocfilehash: f6f4643dfe687297c405c42bf4be16a07470f7d2
-ms.sourcegitcommit: 71a386ca0d0ecb79a123399b6ab6b8c70ea2aa78
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79497385"
 ---
 # <a name="recommendations-and-best-practices-for-azure-active-directory-b2c"></a>适用于 Azure Active Directory B2C 的建议和最佳做法
@@ -45,7 +45,7 @@ ms.locfileid: "79497385"
 | 将本地依赖项转移到云中 | 为了帮助确保解决方案具有复原能力，请考虑将现有的应用程序依赖项转移到云中。 |
 | 将现有应用迁移到 b2clogin.cn | 2020 年 12 月 4 日，适用于所有 Azure AD B2C 租户的 login.partner.microsoftonline.cn 将正式弃用。 [了解详细信息](b2clogin.md)。 |
 
-## <a name="implementation"></a>实施
+## <a name="implementation"></a>实现
 
 在实施阶段，请考虑以下建议。
 
@@ -89,6 +89,6 @@ ms.locfileid: "79497385"
 |  |  |
 |--|--|
 | [服务更新](https://azure.microsoft.com/updates/?product=active-directory-b2c) |  随时关注 Azure AD B2C 产品更新和公告。 |
-| [Microsoft 支持部门](support-options.md) | 遇到 Azure AD B2C 技术问题时请提出支持请求。 计费和订阅管理支持免费提供。 |
+| [Microsoft 支持](support-options.md) | 遇到 Azure AD B2C 技术问题时请提出支持请求。 计费和订阅管理支持免费提供。 |
 | [Azure 状态](https://status.azure.com/status) | 查看所有 Azure 服务的当前运行状况。 |
 

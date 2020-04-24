@@ -13,10 +13,10 @@ ms.author: v-junlch
 ms.reviewer: paulgarn, hirsin, keyam
 ms.custom: aaddev
 ms.openlocfilehash: ba03f747deb3a4166d73327f00686af847e55093
-ms.sourcegitcommit: 6568c59433d7e80ab06e9fe76d4791f761ed6775
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80243165"
 ---
 # <a name="how-to-provide-optional-claims-to-your-azure-ad-app"></a>如何：向 Azure AD 应用提供可选声明

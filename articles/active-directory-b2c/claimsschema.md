@@ -11,10 +11,10 @@ ms.date: 03/16/2020
 ms.author: v-junlch
 ms.subservice: B2C
 ms.openlocfilehash: ada205b119cb9ab2e26b4038b47270ca3fc55918
-ms.sourcegitcommit: 71a386ca0d0ecb79a123399b6ab6b8c70ea2aa78
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79497137"
 ---
 # <a name="claimsschema"></a>ClaimsSchema

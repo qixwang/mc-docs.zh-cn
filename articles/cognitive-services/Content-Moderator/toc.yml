@@ -25,7 +25,7 @@
       href: image-moderation-api.md
     - name: 文本审查
       href: text-moderation-api.md
-- name: 操作指南
+- name: 操作方法指南
   items:
     - name: 审查内容
       items:
@@ -89,7 +89,7 @@
       href: 'https://cognitive.uservoice.com/knowledgebase/topics/132073-content-moderator'
     - name: 语言支持
       href: language-support.md
-    - name: Stack Overflow
+    - name: 堆栈溢出
       href: 'https://stackoverflow.com/questions/tagged/microsoft-cognitive'
     - name: 区域可用性
       href: 'https://azure.microsoft.com/global-infrastructure/services/?products=all&regions=china-non-regional,china-north,china-north-2,china-east,china-east-2'

@@ -14,10 +14,10 @@ origin.date: 12/05/2019
 ms.date: 03/16/2020
 ms.custom: seodec18
 ms.openlocfilehash: a1c180268020aa78dabf480c71a19989a8f41499
-ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80343375"
 ---
 # <a name="monitor-azure-ml-experiment-runs-and-metrics"></a>监视 Azure ML 试验运行和指标
@@ -29,13 +29,13 @@ ms.locfileid: "80343375"
 > Azure 机器学习还可以在训练期间记录其他来源的信息，例如自动化机器学习运行或运行训练作业的 Docker 容器。 本文不介绍此类日志。 如果遇到问题且联系了 Microsoft 支持部门，他们可以在排除故障时使用这些日志。
 
 > [!TIP]
-> 本文档中的信息主要是为希望监视模型训练过程的数据科学家和开发人员提供的。 如果你是一名管理员，希望监视 Azure 机器学习的资源使用情况和事件，例如配额、已完成的训练运行或已完成的模型部署，请参阅[监视 Azure 机器学习](monitor-azure-machine-learning.md)。
+> 本文档中的信息主要是为希望监视模型训练过程的数据科学家和开发人员提供的。 如果您是一名管理员，希望监视 Azure 机器学习的资源使用情况和事件，例如配额、已完成的训练运行或已完成的模型部署，请参阅[监视 Azure 机器学习](monitor-azure-machine-learning.md)。
 
 ## <a name="available-metrics-to-track"></a>可跟踪的指标
 
 训练实验时可将以下指标添加到运行中。 若要查看可在运行中跟踪的内容的更详细列表，请参阅 [Run 类参考文档](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py)。
 
-|类型| Python 函数 | 注释|
+|类型| Python 函数 | 说明|
 |----|:----|:----|
 |标量值 |函数：<br>`run.log(name, value, description='')`<br><br>示例：<br>run.log("accuracy", 0.95) |使用给定名称将数值或字符串值记录到运行中。 在运行中记录某个指标会导致在试验中的运行记录中存储该指标。  可在一次运行中多次记录同一指标，其结果被视为该指标的一个矢量。|
 |列表|函数：<br>`run.log_list(name, value, description='')`<br><br>示例：<br>run.log_list("accuracies", [0.6, 0.7, 0.87]) | 使用给定名称将值列表记录到运行中。|
@@ -135,7 +135,7 @@ ms.locfileid: "80343375"
 
 ## <a name="option-2-use-scriptrunconfig"></a>选项 2：使用 ScriptRunConfig
 
-[ScriptRunConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py) 是用于设置脚本运行配置的一个类  。 使用此选项，可添加监视代码，在运行完成时发出通知，或让视觉小组件执行监视操作。
+[ScriptRunConfig **是用于设置脚本运行配置的一个类**](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py)。 使用此选项，可添加监视代码，在运行完成时发出通知，或让视觉小组件执行监视操作。
 
 此示例在上面的基本 sklearn 岭模型的基础上进行扩展。 它会对模型的 alpha 值执行简单的参数扫描以捕获指标，并通过在实验中运行来训练模型。 该示例在一个用户管理的环境中执行本地运行。 
 

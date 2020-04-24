@@ -15,10 +15,10 @@ origin.date: 02/06/2020
 ms.date: 03/16/2020
 tags: azure-synapse
 ms.openlocfilehash: 1b82309b3c61c4040dcf36a22441cfcba3e710c5
-ms.sourcegitcommit: 90660563b5d65731a64c099b32fb9ec0ce2c51c6
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80341753"
 ---
 # <a name="using-multi-factor-aad-authentication-with-azure-sql-database-and-azure-synapse-analytics-ssms-support-for-mfa"></a>在 Azure SQL 数据库和 Azure Synapse Analytics 中使用多重 AAD 身份验证（SSMS 支持 MFA）
@@ -27,7 +27,7 @@ Azure SQL 数据库和 Azure Synapse 支持使用 *Active Directory 通用身份
 **下载最新 SSMS** - 在客户端计算机上，从[下载 SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/mt238290.aspx) 下载最新版本的 SSMS。 
 
 
-对于本文中讨论的所有功能，请至少使用 2017 年 7 月的版本 17.2。  最新的连接对话框应与下图类似：
+对于本文中讨论的所有功能，请至少使用 2017 年 7 月的版本 17.2。  最新连接对话框的外观应类似于下图：
  
   ![1mfa-universal-connect](./media/sql-database-ssms-mfa-auth/1mfa-universal-connect.png "填写“用户名”框。")  
 

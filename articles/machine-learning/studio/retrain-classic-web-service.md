@@ -11,10 +11,10 @@ ms.author: amlstudiodocs
 ms.custom: seodec18, previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 02/14/2019
 ms.openlocfilehash: 8008764ed3ac70a78d4c2bfd5153e775bc0e158c
-ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80343355"
 ---
 # <a name="retrain-and-deploy-a-classic-studio-classic-web-service"></a>重新训练和部署经典工作室（经典）Web 服务

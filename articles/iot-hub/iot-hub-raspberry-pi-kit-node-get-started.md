@@ -13,10 +13,10 @@ ms.author: v-yiso
 ms.custom: H1Hack27Feb2017
 ms.date: 04/06/2020
 ms.openlocfilehash: 75273607d8aa2f1237d117ba6a9928b2247632bc
-ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80343579"
 ---
 # <a name="connect-raspberry-pi-to-azure-iot-hub-nodejs"></a>将 Raspberry Pi 连接到 Azure IoT 中心 (Node.js)

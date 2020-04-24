@@ -13,10 +13,10 @@ origin.date: 08/26/2019
 ms.date: 03/09/2020
 ms.author: v-yiso
 ms.openlocfilehash: 6d52b3d26d9a107b592edfe9e665e52db264e897
-ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80343582"
 ---
 # <a name="get-started-with-device-twins-python"></a>设备孪生入门 (Python)
@@ -29,7 +29,7 @@ ms.locfileid: "80343582"
 
 [!INCLUDE [iot-hub-include-python-sdk-note](../../includes/iot-hub-include-python-sdk-note.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 [!INCLUDE [iot-hub-include-python-v2-installation-notes](../../includes/iot-hub-include-python-v2-installation-notes.md)]
 
@@ -127,7 +127,7 @@ ms.locfileid: "80343582"
         iothub_service_sample_run()
     ```
 
-1. 使用以下内容运行应用程序：
+1. 使用以下方法运行应用程序：
    
     ```cmd/sh
     python AddTagsAndQuery.py
@@ -137,7 +137,7 @@ ms.locfileid: "80343582"
 
     ![第一个显示 Redmond 中所有设备的查询](./media/iot-hub-python-twin-getstarted/service-1.png)
 
-在下一部分中，创建的设备应用会报告连接信息，并更改上一部分中查询的结果。
+在下一部分中，创建的设备应用将报告连接信息，并更改上一部分中查询的结果。
 
 ## <a name="create-the-device-app"></a>创建设备应用
 在本部分中，将创建一个 Python 控制台应用，该应用以你的 **{Device Id}** 身份连接到中心，然后更新其设备孪生的报告属性，来说明它是使用手机网络进行连接的。
@@ -219,7 +219,7 @@ ms.locfileid: "80343582"
 
     ![从设备应用更新报告属性](./media/iot-hub-python-twin-getstarted/device-1.png)
 
-8. 现在设备报告了其连接信息，应出现在两个查询中。 回过头来再次运行查询：
+8. 既然设备报告其连接的信息，该信息应显示在两个查询中。 回过头来再次运行查询：
 
     ```cmd/sh
     python AddTagsAndQuery.py
@@ -234,9 +234,9 @@ ms.locfileid: "80343582"
     ![在设备应用上接收所需属性](./media/iot-hub-python-twin-getstarted/device-2.png)
 
 ## <a name="next-steps"></a>后续步骤
-本教程中，在 Azure 门户中配置了新的 IoT 中心，并在 IoT 中心的标识注册表中创建了设备标识。 已从后端应用以标记形式添加了设备元数据，并编写了模拟的设备应用，用于报告设备孪生中的设备连接信息。 你还学习了如何使用注册表查询此信息。
+在本教程中，你已在 Azure 门户中配置了新的 IoT 中心，并在 IoT 中心的标识注册表中创建了设备标识。 已从后端应用以标记形式添加了设备元数据，并编写了模拟的设备应用，用于报告设备孪生中的设备连接信息。 你还学习了如何使用注册表查询此信息。
 
-充分利用以下资源：
+使用下列资源了解如何执行以下操作：
 
 * 通过 [IoT 中心入门](quickstart-send-telemetry-python.md)教程学习如何从设备发送遥测数据。
 

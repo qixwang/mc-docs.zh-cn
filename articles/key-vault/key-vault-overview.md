@@ -13,13 +13,13 @@ origin.date: 01/07/2019
 ms.date: 03/16/2020
 ms.author: v-tawe
 ms.openlocfilehash: 8dab33ada0a1f5068f304b47307080918842f0dc
-ms.sourcegitcommit: 764b3d26aedce2de0e1948468a706fd3204a3d5e
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79543333"
 ---
-# <a name="what-is-azure-key-vault"></a>什么是 Azure 密钥保管库？
+# <a name="what-is-azure-key-vault"></a>什么是 Azure Key Vault？
 
 Azure Key Vault 有助于解决以下问题：
 

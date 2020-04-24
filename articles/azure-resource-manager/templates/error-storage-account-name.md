@@ -6,10 +6,10 @@ origin.date: 03/09/2018
 ms.date: 03/23/2020
 ms.author: v-yeche
 ms.openlocfilehash: 035422f38f315a1e7067a271c28163fef7e2098c
-ms.sourcegitcommit: 1436f1851342ca5631eb25342eed954adb707af0
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79543856"
 ---
 # <a name="resolve-errors-for-storage-account-names"></a>解决存储帐户名称错误
@@ -26,18 +26,18 @@ Message=S!torageckrexph7isnoc is not a valid storage account name. Storage accou
 between 3 and 24 characters in length and use numbers and lower-case letters only.
 ```
 
-对于存储帐户，必须提供在 Azure 中唯一的资源名称。 如果不提供唯一名称，会出现类似于下面的错误：
+对于存储帐户，必须为此资源提供一个在 Azure 中唯一的名称。 如果不提供唯一名称，则会收到如下所示的错误：
 
 ```
 Code=StorageAccountAlreadyTaken
 Message=The storage account named mystorage is already taken.
 ```
 
-如果部署的存储帐户与订阅中某个现有存储帐户的名称相同，但提供的位置不同，会出现一条错误消息，指出不同的位置已存在该存储帐户。 请删除现有存储帐户，或者提供与现有存储帐户相同的位置。
+如果部署的存储帐户与订阅中的现有存储帐户名称相同，但提供一个不同的位置，则会收到一个错误消息，指示该存储帐户已存在于其他位置。 请删除现有存储帐户，或提供与现有存储帐户相同的位置。
 
 ## <a name="cause"></a>原因
 
-存储帐户名称必须为 3 到 24 个字符，只能使用数字和小写字母。 此名称必须唯一。
+存储帐户名称长度必须为 3 到 24 个字符，并且只能使用数字和小写字母。 该名称必须是唯一的。
 
 ## <a name="solution"></a>解决方案
 

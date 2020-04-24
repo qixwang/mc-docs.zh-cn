@@ -9,10 +9,10 @@ ms.author: v-jay
 ms.reviewer: anajod
 ms.lastreviewed: 11/05/2019
 ms.openlocfilehash: cfb3fea44f045c36a0512a89b72fa55410a59810
-ms.sourcegitcommit: e500354e2fd8b7ac3dddfae0c825cc543080f476
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79547055"
 ---
 # <a name="configure-hybrid-cloud-identity-for-azure-and-azure-stack-hub-applications"></a>为 Azure 和 Azure Stack Hub 应用程序配置混合云标识
@@ -57,7 +57,7 @@ ms.locfileid: "79547055"
 
 [在 Azure Stack Hub 中使用 PowerShell 启动并运行](../operator/azure-stack-powershell-install.md)快速入门演练了安装 Azure PowerShell 并连接到 Azure Stack Hub 安装所要执行的步骤。
 
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>必备条件
 
 需要一个通过你可以访问的订阅连接到 Azure Active Directory 的 Azure Stack Hub 安装。 如果没有 Azure Stack Hub 安装，可以使用这些说明来安装 [Azure Stack 开发工具包](../asdk/asdk-install.md)。
 

@@ -10,10 +10,10 @@ origin.date: 07/08/2016
 ms.date: 03/30/2020
 ms.author: v-yeche
 ms.openlocfilehash: 8d09c9e82c7752a0257758d99cd158178d324400
-ms.sourcegitcommit: 2b084933215d0e7702456730f168d97e00c882a0
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80243574"
 ---
 # <a name="create-maps-that-transform-xml-between-formats-in-azure-logic-apps-with-enterprise-integration-pack"></a>在带有 Enterprise Integration Pack 的 Azure 逻辑应用中创建用于在格式之间转换 XML 的映射
@@ -31,7 +31,7 @@ ms.locfileid: "80243574"
 
 **下面是使用转换的步骤**：
 
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>必备条件
 
 * 创建集成帐户并向其中添加映射  
 
@@ -109,7 +109,7 @@ ms.locfileid: "80243574"
     ```
 
 ### <a name="byte-order-mark"></a>字节顺序标记
-默认情况下，转换的响应会以字节顺序标记 (BOM) 开头。 仅在“代码视图”编辑器中工作时，才可访问此功能。 若要禁用此功能，请为 `transformOptions` 属性指定 `disableByteOrderMark`：
+默认情况下，转换的响应会以字节顺序标记 (BOM) 开头。 仅在“代码视图”编辑器中工作时，才可访问此功能。 若要禁用此功能，请为 `disableByteOrderMark` 属性指定 `transformOptions`：
 
 ```json
 "Transform_XML": {

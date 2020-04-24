@@ -10,10 +10,10 @@ origin.date: 01/27/2017
 ms.date: 03/30/2020
 ms.author: v-yeche
 ms.openlocfilehash: 1caaf3fee35e6c243e6183e2a1f8255bebfd598b
-ms.sourcegitcommit: 2b084933215d0e7702456730f168d97e00c882a0
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80243579"
 ---
 # <a name="decode-edifact-messages-for-azure-logic-apps-with-the-enterprise-integration-pack"></a>使用 Enterprise Integration Pack 为 Azure 逻辑应用解码 EDIFACT 消息
@@ -45,7 +45,7 @@ ms.locfileid: "80243579"
 
     带有星号的属性必填。
 
-    | 属性 | 详细信息 |
+    | properties | 详细信息 |
     | --- | --- |
     | 连接名称 * |为连接输入任何名称。 |
     | 集成帐户 * |输入集成帐户的名称。 确保集成帐户和逻辑应用位于同一 Azure 位置。 |
@@ -80,13 +80,13 @@ ms.locfileid: "80243579"
   * 针对交换中的其他组控制编号检查组控制编号。 
   * 针对该组中的其他事务集控制编号检查事务集控制编号。
 * 将交换拆分为事务集，或保留整个交换：
-  * 将交换拆分为事务集 - 出错时暂停事务集：将交换拆分为事务集并分析每个事务集。 
+  * 将交换拆分为交易集 - 出错时暂停交易集：将交换拆分为交易集并分析每个交易集。 
   X12 解码操作仅将未通过验证的事务集输出到 `badMessages`，并将剩余事务集输出到 `goodMessages`。
-  * 将交换拆分为事务集 - 出错时暂停交换：将交换拆分为事务集并分析每个事务集。 
+  * 将交换拆分为交易集 - 出错时暂停交换：将交换拆分为交易集并分析每个交易集。 
   如果交换中的一个或多个交易集未能通过验证，X12 解码操作会将该交换中的所有交易集输出到 `badMessages`。
-  * 保留交换 - 出错时暂停事务集：保留交换并处理整个批量交换。 
+  * 保留交换 - 出错时暂停交易集：保留交换并处理整个批量交换。 
   X12 解码操作仅将未通过验证的事务集输出到 `badMessages`，并将剩余事务集输出到 `goodMessages`。
-  * 保留交换 - 出错时暂停交换：保留交换并处理整个批量交换。 
+  * 保留交换 - 出错时暂停交易集：保留交换并处理整个批量交换。 
   如果交换中的一个或多个交易集未能通过验证，X12 解码操作会将该交换中的所有交易集输出到 `badMessages`。
 * 生成技术（控制）和/或功能确认（如果已配置）。
   * 技术确认或 CONTRL ACK 报告收到的完整交换的语法检查结果。

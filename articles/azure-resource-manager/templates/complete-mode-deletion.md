@@ -6,10 +6,10 @@ origin.date: 02/26/2020
 ms.date: 03/23/2020
 ms.author: v-yeche
 ms.openlocfilehash: 27ce16f7ba4eb4e5aa26c53f0e53dd3eb90f4d0b
-ms.sourcegitcommit: 1436f1851342ca5631eb25342eed954adb707af0
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79543720"
 ---
 # <a name="deletion-of-azure-resources-for-complete-mode-deployments"></a>针对完全模式部署的 Azure 资源删除

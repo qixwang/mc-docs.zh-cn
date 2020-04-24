@@ -12,10 +12,10 @@ manager: davete
 ms.reviewer: larryfr
 ms.date: 03/01/2020
 ms.openlocfilehash: 377359fecf4ebee5545c02158aa95fc09898cab8
-ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80343757"
 ---
 # <a name="data-ingestion-with-azure-data-factory"></a>使用 Azure 数据工厂进行数据引入

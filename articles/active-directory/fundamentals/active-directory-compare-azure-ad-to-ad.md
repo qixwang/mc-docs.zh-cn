@@ -12,10 +12,10 @@ ms.subservice: fundamentals
 ms.date: 03/24/2020
 ms.author: v-junlch
 ms.openlocfilehash: cc06802bfea510ab2297fd827708ef671781985f
-ms.sourcegitcommit: 6568c59433d7e80ab06e9fe76d4791f761ed6775
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80243063"
 ---
 # <a name="compare-active-directory-to-azure-active-directory"></a>将 Active Directory 与 Azure Active Directory 进行比较
@@ -37,7 +37,7 @@ Azure Active Directory 是适用于云的标识和访问管理解决方案的下
 | 采用新式身份验证的业务线 (LOB) 应用|组织可以将 AD FS 与 Active Directory 配合使用来支持需要新式身份验证的 LOB 应用。| 需要新式身份验证的 LOB 应用可以配置为使用 Azure AD 进行身份验证。 |
 | 中间层级/守护程序服务|在本地环境中运行的服务通常使用 AD 服务帐户或组托管服务帐户 (gMSA) 来运行。 然后，这些应用将继承服务帐户的权限。| Azure AD 提供[托管标识](/active-directory/managed-identities-azure-resources/index)，以在云中运行其他工作负荷。 这些标识的生命周期由 Azure AD 管理，并绑定到资源提供程序，无法用于其他目的以获得后门访问。|
 | **设备**|||
-| 移动|在没有第三方解决方案的情况下，Active Directory 本身不支持移动设备。| Microsoft 的移动设备管理解决方案 Microsoft Intune 集成了 Azure AD。 Microsoft Intune 向标识系统提供在身份验证期间要评估的设备状态信息。 |
+| 移动型|在没有第三方解决方案的情况下，Active Directory 本身不支持移动设备。| Microsoft 的移动设备管理解决方案 Microsoft Intune 集成了 Azure AD。 Microsoft Intune 向标识系统提供在身份验证期间要评估的设备状态信息。 |
 | Windows 服务器| Active Directory 为使用组策略或其他管理解决方案的本地 Windows 服务器提供了强大的管理功能。| 当 VM 需要访问标识系统目录或资源时，可以使用[托管标识](/active-directory/managed-identities-azure-resources/index)。|
 | Linux/Unix 工作负荷|尽管 Linux 计算机可以配置为向 Active Directory（作为 Kerberos 领域）进行身份验证，但 Active Directory 在没有第三方解决方案的情况下本身不支持非 Windows。|Linux/Unix VM 可以使用[托管标识](/active-directory/managed-identities-azure-resources/index)来访问标识系统或资源。 某些组织将这些工作负荷迁移到云容器技术，这些技术也可以使用托管标识。|
 

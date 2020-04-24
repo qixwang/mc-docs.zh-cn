@@ -14,10 +14,10 @@ ms.topic: article
 origin.date: 02/17/2020
 ms.date: 03/30/2020
 ms.openlocfilehash: a40bbdc2864bf0f0fdc053c85b38260bddfd7032
-ms.sourcegitcommit: 90660563b5d65731a64c099b32fb9ec0ce2c51c6
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80341714"
 ---
 # <a name="tutorial-migrate-postgresql-to-azure-db-for-postgresql-online-using-dms-via-the-azure-cli"></a>教程：通过 Azure CLI 使用 DMS 将 PostgreSQL 联机迁移到 Azure DB for PostgreSQL

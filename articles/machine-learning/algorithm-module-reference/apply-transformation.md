@@ -11,10 +11,10 @@ ms.author: v-yiso
 ms.date: 04/06/2020
 origin.date: 03/05/2020
 ms.openlocfilehash: 7699e0757f5b6a429167fe9384553c947f5d1842
-ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80343560"
 ---
 # <a name="apply-transformation-module"></a>“应用转换”模块

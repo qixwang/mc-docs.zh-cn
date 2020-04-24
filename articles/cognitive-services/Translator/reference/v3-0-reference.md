@@ -12,15 +12,15 @@ origin.date: 3/13/2020
 ms.date: 03/26/2020
 ms.author: v-junlch
 ms.openlocfilehash: 9c85a56a5e1f2686c18feed28c8a5429390a6bb2
-ms.sourcegitcommit: 303a16c7117b6f3495ef0493b4ae8ccb67d7dbba
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80342397"
 ---
 # <a name="translator-text-api-v30"></a>文本翻译 API v3.0
 
-## <a name="whats-new"></a>新增功能？
+## <a name="whats-new"></a>新增功能
 
 文本翻译 API 版本 3 提供了基于 JSON 的新型 Web API。 它通过将现有功能合并到更少的操作中来提高可用性和性能，并提供新功能。
 

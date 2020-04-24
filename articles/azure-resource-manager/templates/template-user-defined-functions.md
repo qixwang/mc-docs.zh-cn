@@ -6,10 +6,10 @@ origin.date: 03/09/2020
 ms.date: 03/23/2020
 ms.author: v-yeche
 ms.openlocfilehash: 890c9a141e2ef054859d5f6a8c1fd8b777e2637a
-ms.sourcegitcommit: 1436f1851342ca5631eb25342eed954adb707af0
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79543919"
 ---
 # <a name="user-defined-functions-in-azure-resource-manager-template"></a>Azure 资源管理器模板中的用户定义函数

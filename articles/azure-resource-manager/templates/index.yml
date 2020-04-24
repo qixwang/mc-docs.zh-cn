@@ -14,10 +14,10 @@ metadata:
   ms.date: 03/23/2020
   ms.author: v-yeche
   ms.openlocfilehash: f7d3726c987edc8dddd7a52077506b1e7e25f8d1
-  ms.sourcegitcommit: 1436f1851342ca5631eb25342eed954adb707af0
+  ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 03/19/2020
+  ms.lasthandoff: 04/17/2020
   ms.locfileid: "79543918"
 landingContent:
 - title: 关于 ARM 模板
@@ -28,11 +28,11 @@ landingContent:
       url: overview.md
   - linkListType: concept
     links:
-    - text: 最佳实践
+    - text: 最佳做法
       url: template-best-practices.md
     - text: 部署模式
       url: deployment-modes.md
-    - text: 链接的模板
+    - text: 链接模板
       url: linked-templates.md
 - title: 入门
   linkLists:

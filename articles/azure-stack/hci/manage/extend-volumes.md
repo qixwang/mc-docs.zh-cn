@@ -7,10 +7,10 @@ ms.topic: article
 origin.date: 03/10/2020
 ms.date: 03/23/2020
 ms.openlocfilehash: 75a2404388714e58893e868af8dffd76c38e60e0
-ms.sourcegitcommit: e500354e2fd8b7ac3dddfae0c825cc543080f476
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79547117"
 ---
 # <a name="extending-volumes-in-storage-spaces-direct"></a>扩展存储空间直通中的卷
@@ -140,6 +140,6 @@ $Partition | Resize-Partition -Size ($Partition | Get-PartitionSupportedSize).Si
 
 如需其他重要的存储管理任务的分步说明，另请参阅：
 
-- [规划存储空间直通中的卷](https://docs.microsoft.com/windows-server/storage/storage-spaces/plan-volumes)
+- [在存储空间直通中规划卷](https://docs.microsoft.com/windows-server/storage/storage-spaces/plan-volumes)
 - [在存储空间直通中创建卷](https://docs.microsoft.com/windows-server/storage/storage-spaces/create-volumes)
 - [删除存储空间直通中的卷](https://docs.microsoft.com/windows-server/storage/storage-spaces/delete-volumes)

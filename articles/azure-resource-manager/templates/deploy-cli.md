@@ -6,15 +6,15 @@ origin.date: 10/09/2019
 ms.date: 03/23/2020
 ms.author: v-yeche
 ms.openlocfilehash: a096ad12cbf36947bc94fd141198b78fa589150d
-ms.sourcegitcommit: 1436f1851342ca5631eb25342eed954adb707af0
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79543827"
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-azure-cli"></a>使用 Resource Manager 模板和 Azure CLI 部署资源
 
-本文介绍了如何将 Azure CLI 与资源管理器模板配合使用将资源部署到 Azure。 如果不熟悉部署和管理 Azure 解决方案的概念，请参阅[模版部署概述](overview.md)。
+本文介绍如何将 Azure CLI 与资源管理器模板配合使用将资源部署到 Azure。 如果不熟悉部署和管理 Azure 解决方案的概念，请参阅[模版部署概述](overview.md)。
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
 
@@ -22,7 +22,7 @@ ms.locfileid: "79543827"
 
 ## <a name="deployment-scope"></a>部署范围
 
-可将部署目标设定为 Azure 订阅或订阅中的资源组。 大多数情况下，我们会将以资源组指定为部署目标。 可以使用订阅部署在整个订阅中应用策略和角色分配。 还可以使用订阅部署创建资源组并向其部署资源。 根据部署范围使用不同的命令。
+可将部署目标设定为 Azure 订阅或订阅中的资源组。 大多数情况下，我们会将以资源组指定为部署目标。 可以使用订阅部署在整个订阅中应用策略和角色分配。 还可以使用订阅部署创建资源组并向其部署资源。 你将根据部署范围使用不同的命令。
 
 若要部署到**资源组**，请使用 [az group deployment create](https://docs.azure.cn/cli/group/deployment?view=azure-cli-latest#az-group-deployment-create)：
 
@@ -65,7 +65,7 @@ az group deployment create \
   --parameters storageAccountType=Standard_GRS
 ```
 
-部署可能需要几分钟才能完成。 完成之后，会看到一条包含以下结果的消息：
+部署可能需要几分钟才能完成。 完成后，会看到一条包含结果的消息：
 
 ```output
 "provisioningState": "Succeeded",
@@ -73,7 +73,7 @@ az group deployment create \
 
 ## <a name="deploy-remote-template"></a>部署远程模板
 
-你可能更愿意将 Resource Manager 模板存储在外部位置，而不是存储在本地计算机上。 可以将模板存储在源控件存储库（例如 GitHub）中。 另外，还可以将其存储在 Azure 存储帐户中，以便在组织中共享访问。
+可能更愿意将 Resource Manager 模板存储在外部位置，而不是将它们存储在本地计算机上。 可以将模板存储在源控件存储库（例如 GitHub）中。 另外，还可以将其存储在 Azure 存储帐户中，以便在组织中共享访问。
 
 若要部署外部模板，请使用 **template-uri** 参数。 使用示例中的 URI 从 GitHub 部署示例模板。
 
@@ -86,7 +86,7 @@ az group deployment create \
   --parameters storageAccountType=Standard_GRS
 ```
 
-前面的示例要求模板的 URI 可公开访问，它适用于大多数情况，因为模板应该不会包含敏感数据。 如果需要指定敏感数据（如管理员密码），请以安全参数的形式传递该值。 但是，如果不希望模板可公开访问，可以通过将其存储在专用存储容器中来保护它。 若要了解如何部署需要共享访问签名 (SAS) 令牌的模板，请参阅[部署具有 SAS 令牌的专用模板](secure-template-with-sas-token.md)。
+前面的示例要求模板的 URI 可公开访问，它适用于大多数情况，因为模板应该不会包含敏感数据。 如果需要指定敏感数据（如管理员密码），请以安全参数的形式传递该值。 但是，如果不希望模板可公开访问，可以通过将其存储在专用存储容器中来保护它。 有关部署需要共享访问签名 (SAS) 令牌的模板的信息，请参阅[部署具有 SAS 令牌的专用模板](secure-template-with-sas-token.md)。
 
 <!--MOONCAKE: Not Available on Cloud Shell and corresponding code -->
 <!--Not Available on [!INCLUDE [resource-manager-cloud-shell-deploy.md](../../includes/resource-manager-cloud-shell-deploy.md)]-->
@@ -130,7 +130,7 @@ arrayContent.json 格式为：
 
 ### <a name="parameter-files"></a>参数文件
 
-你可能会发现，与在脚本中以内联值的形式传递参数相比，使用包含参数值的 JSON 文件更为容易。 参数文件必须是本地文件。 Azure CLI 不支持外部参数文件。
+与在脚本中以内联值的形式传递参数相比，可能会发现使用包含参数值的 JSON 文件更为容易。 参数文件必须是本地文件。 Azure CLI 不支持外部参数文件。
 
 有关参数文件的详细信息，请参阅[创建资源管理器参数文件](parameter-files.md)。
 
@@ -219,10 +219,10 @@ az group deployment validate \
 
 ## <a name="next-steps"></a>后续步骤
 
-- 若要在出错时回退到成功的部署，请参阅[出错时回退到成功的部署](rollback-on-error.md)。
+- 若要在出错时回滚到成功的部署，请参阅[出错时回滚到成功的部署](rollback-on-error.md)。
 - 若要指定如何处理存在于资源组中但未在模板中定义的资源，请参阅 [Azure 资源管理器部署模式](deployment-modes.md)。
-- 若要了解如何在模板中定义参数，请参阅[了解 Azure Resource Manager 模板的结构和语法](template-syntax.md)。
-- 有关解决常见部署错误的提示，请参阅[排查使用 Azure Resource Manager 时的常见 Azure 部署错误](common-deployment-errors.md)。
+- 若要了解如何在模板中定义参数，请参阅[了解 Azure 资源管理器模板的结构和语法](template-syntax.md)。
+- 有关解决常见部署错误的提示，请参阅[排查使用 Azure 资源管理器时的常见 Azure 部署错误](common-deployment-errors.md)。
 - 有关部署需要 SAS 令牌的模板的信息，请参阅[使用 SAS 令牌部署专用模板](secure-template-with-sas-token.md)。
 
 <!-- Not Available on [Azure Deployment Manager](deployment-manager-overview.md)-->

@@ -11,10 +11,10 @@ ms.topic: conceptual
 origin.date: 09/18/2019
 ms.date: 03/09/2020
 ms.openlocfilehash: cab0fb34f276efcc08ad464f5756607ccf1ef305
-ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80343300"
 ---
 # <a name="train-models-with-azure-machine-learning"></a>使用 Azure 机器学习训练模型

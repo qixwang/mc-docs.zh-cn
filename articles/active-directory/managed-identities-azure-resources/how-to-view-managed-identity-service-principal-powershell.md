@@ -16,10 +16,10 @@ ms.date: 03/24/2020
 ms.author: v-junlch
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2209517a1e11149e96ca0a680fefddb3266363d7
-ms.sourcegitcommit: 6568c59433d7e80ab06e9fe76d4791f761ed6775
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80243054"
 ---
 # <a name="view-the-service-principal-of-a-managed-identity-using-powershell"></a>使用 PowerShell 查看托管标识的服务主体
@@ -30,7 +30,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
 [!INCLUDE [az-powershell-update](../../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - 如果不熟悉 Azure 资源的托管标识，请查阅[概述部分](overview.md)。
 - 如果还没有 Azure 帐户，请注册[试用帐户](https://www.azure.cn/pricing/1rmb-trial/)。

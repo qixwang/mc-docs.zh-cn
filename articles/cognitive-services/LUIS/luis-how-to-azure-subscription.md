@@ -13,10 +13,10 @@ origin.date: 11/19/2019
 ms.date: 12/05/2019
 ms.author: v-lingwu
 ms.openlocfilehash: 90f33ebbc89f2a9dc0549bd0c372f25c8be5caa2
-ms.sourcegitcommit: 303a16c7117b6f3495ef0493b4ae8ccb67d7dbba
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80342417"
 ---
 # <a name="using-authoring-and-runtime-resource-keys"></a>使用创作和运行时资源密钥
@@ -61,12 +61,12 @@ ms.locfileid: "80342417"
     |名称|目的|
     |--|--|
     |资源名称| 你选择的自定义名称，用作创作和预测终结点查询的 URL 的一部分。|
-    |订阅名称| 将对其收取资源费用的订阅。|
+    |订阅名称| 将对资源计费的订阅。|
     |资源组| 你选择或创建的自定义资源组名称。 可以使用资源组将 Azure 资源分组，以便在同一区域进行访问和管理。|
     |创作位置|与模型关联的区域。|
-    |创作定价层|定价层决定了每秒和每月的最大事务数。|
-    |运行时位置|与发布的预测终结点运行时相关联的区域。|
-    |运行时定价层|定价层决定了每秒和每月的最大事务数。|
+    |创作定价层|定价层确定每秒和每月的最大事务数。|
+    |运行时位置|与已发布的预测终结点运行时关联的区域。|
+    |运行时定价层|定价层确定每秒和每月的最大事务数。|
 
     创建这两项资源后，请在 LUIS 门户中分配资源。
 
@@ -88,13 +88,13 @@ ms.locfileid: "80342417"
 
     此时会打开一个浏览器，让你可以选择正确的帐户并提供身份验证。
 
-1. 在名为 `my-resource-group` 的现有资源组中为 `China East` 区域创建一个类型为 `LUIS.Authoring`、名称为 `my-luis-authoring-resource` 的 **LUIS 创作资源**。  
+1. 在名为 **的现有资源组中为** 区域创建一个类型为 `LUIS.Authoring`、名称为 `my-luis-authoring-resource` 的 _LUIS 创作资源_。`my-resource-group``China East` 
 
     ```console
     az cognitiveservices account create -n my-luis-authoring-resource -g my-resource-group --kind LUIS.Authoring --sku F0 -l chinaeast --yes
     ```
 
-1. 在名为 `my-resource-group` 的现有资源组中为 `chinaeast` 区域创建一个类型为 `LUIS`、名称为 `my-luis-prediction-resource` 的 **LUIS 预测终结点资源**。  如果需要比免费层更高的吞吐量，请将 `F0` 更改为 `S0`。 详细了解[定价层和吞吐量](luis-boundaries.md#key-limits)。
+1. 在名为 **的现有资源组中为** 区域创建一个类型为 `LUIS`、名称为 `my-luis-prediction-resource` 的 _LUIS 预测终结点资源_。`my-resource-group``chinaeast` 如果需要比免费层更高的吞吐量，请将 `F0` 更改为 `S0`。 详细了解[定价层和吞吐量](luis-boundaries.md#key-limits)。
 
     ```console
     az cognitiveservices account create -n my-luis-prediction-resource -g my-resource-group --kind LUIS --sku F0 -l chinaeast --yes
@@ -109,7 +109,7 @@ ms.locfileid: "80342417"
 
 1. 登录到 [LUIS 门户](https://luis.azure.cn)。
 1. 在右上角的导航栏中选择用户帐户，然后选择“设置”。 
-1. 在“用户设置”页上选择“添加创作资源”，然后选择现有的创作资源。   选择“保存”  。 
+1. 在“用户设置”页上选择“添加创作资源”，然后选择现有的创作资源。   选择“保存”。  
 
 ## <a name="assign-a-resource-to-an-app"></a>将资源分配给应用
 
@@ -135,7 +135,7 @@ ms.locfileid: "80342417"
 
     此 POST API 需要以下设置：
 
-    |标头|Value|
+    |标头|值|
     |--|--|
     |`Authorization`|`Authorization` 的值为 `Bearer {token}`。 请注意，单词 `Bearer` 和空格前面必须是令牌值。| 
     |`Ocp-Apim-Subscription-Key`|你的创作密钥。|
@@ -146,13 +146,13 @@ ms.locfileid: "80342417"
 
     此 POST API 需要以下设置：
 
-    |类型|设置|Value|
+    |类型|设置|值|
     |--|--|--|
     |标头|`Authorization`|`Authorization` 的值为 `Bearer {token}`。 请注意，单词 `Bearer` 和空格前面必须是令牌值。|
     |标头|`Ocp-Apim-Subscription-Key`|你的创作密钥。|
     |标头|`Content-type`|`application/json`|
     |Querystring|`appid`|LUIS 应用 ID。 
-    |正文||{"AzureSubscriptionId":"ddda2925-af7f-4b05-9ba1-2155c5fe8a8e",<br>"ResourceGroup": "resourcegroup-2",<br>"AccountName": "luis-uswest-S0-2"}|
+    |Body||{"AzureSubscriptionId":"ddda2925-af7f-4b05-9ba1-2155c5fe8a8e",<br>"ResourceGroup": "resourcegroup-2",<br>"AccountName": "luis-uswest-S0-2"}|
 
     此 API 成功时，将返回“201 - 已创建状态”。 
 

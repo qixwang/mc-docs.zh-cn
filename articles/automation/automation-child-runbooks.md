@@ -7,10 +7,10 @@ origin.date: 01/17/2019
 ms.date: 03/30/2020
 ms.topic: conceptual
 ms.openlocfilehash: a3fda3cd7d8c6a5463e4a4f799364d151975c65d
-ms.sourcegitcommit: 90d01d08faf8adb20083363a8e4e5aab139cd9b2
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80290357"
 ---
 # <a name="child-runbooks-in-azure-automation"></a>Azure 自动化中的子 Runbook

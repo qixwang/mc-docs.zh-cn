@@ -9,10 +9,10 @@ ms.topic: tutorial
 origin.date: 03/01/2020
 ms.date: 03/09/2020
 ms.openlocfilehash: 11ded270adce6a37c648d404129d0ec9b925d27e
-ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80343558"
 ---
 # <a name="create-a-data-labeling-project-and-export-labels"></a>创建数据标记项目并导出标签 

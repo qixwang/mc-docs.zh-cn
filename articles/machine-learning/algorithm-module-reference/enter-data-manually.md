@@ -11,10 +11,10 @@ ms.author: v-yiso
 origin.date: 02/22/2020
 ms.date: 04/06/2020
 ms.openlocfilehash: 98b37ccdc45ed98dda798e9f8856e54194ffdac8
-ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80343465"
 ---
 # <a name="enter-data-manually-module"></a>“手动输入数据”模块

@@ -8,10 +8,10 @@ origin.date: 10/30/2019
 ms.date: 03/23/2020
 ms.author: v-yeche
 ms.openlocfilehash: 3bef78d9cc58a18ea22fca6ac4fa71ecdbd4a5e8
-ms.sourcegitcommit: 1436f1851342ca5631eb25342eed954adb707af0
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79543758"
 ---
 # <a name="refresh-with-logic-apps"></a>使用逻辑应用进行刷新
@@ -20,7 +20,7 @@ ms.locfileid: "79543758"
 
 若要详细了解如何将 REST API 与 Azure Analysis Services 配合使用，请参阅[使用 REST API 执行异步刷新](analysis-services-async-refresh.md)。
 
-## <a name="authentication"></a>身份验证
+## <a name="authentication"></a>Authentication
 
 所有调用必须使用有效的 Azure Active Directory (OAuth 2) 令牌进行身份验证。  本文中的示例将使用服务主体 (SPN) 对 Azure Analysis Services 进行身份验证。 有关详细信息，请参阅[使用 Azure 门户创建服务主体](../active-directory/develop/howto-create-service-principal-portal.md)。
 
@@ -29,7 +29,7 @@ ms.locfileid: "79543758"
 > [!IMPORTANT]
 > 以下示例假设已禁用 Azure Analysis Services 防火墙。 如果启用了防火墙，则必须将请求发起程序的公共 IP 地址加入 Azure Analysis Services 防火墙的允许列表。 若要详细了解每个区域的 Azure 逻辑应用 IP 范围，请参阅 [Azure 逻辑应用的限制和配置信息](../logic-apps/logic-apps-limits-and-config.md#configuration)。
 
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>必备条件
 
 #### <a name="create-a-service-principal-spn"></a>创建服务主体 (SPN)
 
@@ -63,17 +63,17 @@ ms.locfileid: "79543758"
 
 按如下所示配置 HTTP 活动：
 
-|属性  |Value  |
+|properties  |值  |
 |---------|---------|
 |**方法** |POST         |
 |**URI** | https://服务器区域  /servers/aas 服务器名称  /models/数据库名称  /refreshes <br /> <br /> 例如：https:\//chinanorth.asazure.chinacloudapi.cn/servers/myserver/models/AdventureWorks/refreshes|
-|**标头** |   Content-Type、application/json <br /> <br />  ![头文件](./media/analysis-services-async-refresh-logic-app/6.png)    |
+|**标头** |   Content-Type、application/json <br /> <br />  ![标头](./media/analysis-services-async-refresh-logic-app/6.png)    |
 |**正文** |   若要详细了解如何构建请求正文，请参阅[使用 REST API - POST /refreshes 执行异步刷新](analysis-services-async-refresh.md#post-refreshes)。 |
 |**身份验证** |Active Directory OAuth         |
 |**租户** |填写你的 Azure Active Directory 租户 ID         |
 |**受众** |https://*.asazure.chinacloudapi.cn         |
 |**客户端 ID** |输入你的服务主体名称客户端 ID         |
-|**凭据类型** |Secret         |
+|**凭据类型** |机密         |
 |**机密** |输入你的服务主体名称机密         |
 
 示例：

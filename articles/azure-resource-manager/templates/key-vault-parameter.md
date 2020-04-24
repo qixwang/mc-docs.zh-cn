@@ -6,10 +6,10 @@ origin.date: 01/06/2020
 ms.date: 03/23/2020
 ms.author: v-yeche
 ms.openlocfilehash: 78aa63f2bf1510f893d2cfad80a91a339ecb2d15
-ms.sourcegitcommit: 1436f1851342ca5631eb25342eed954adb707af0
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79543902"
 ---
 # <a name="use-azure-key-vault-to-pass-secure-parameter-value-during-deployment"></a>在部署过程中使用 Azure Key Vault 传递安全参数值

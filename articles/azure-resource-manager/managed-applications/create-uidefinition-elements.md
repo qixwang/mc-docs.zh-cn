@@ -7,10 +7,10 @@ origin.date: 02/06/2020
 ms.date: 03/23/2020
 ms.author: v-yeche
 ms.openlocfilehash: efd39cb1af2e1ed8a2a50a7aecb45da407f3877b
-ms.sourcegitcommit: 1436f1851342ca5631eb25342eed954adb707af0
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79543867"
 ---
 # <a name="createuidefinition-elements"></a>CreateUiDefinition 元素
@@ -34,7 +34,7 @@ ms.locfileid: "79543867"
 }
 ```
 
-| 属性 | 必须 | 说明 |
+| properties | 必选 | 说明 |
 | -------- | -------- | ----------- |
 | name | 是 | 一个内部标识符，用于引用元素的特定实例。 元素名称最常用于 `outputs` 中，其中指定元素的输出值映射到模板的参数。 还可以使用它将元素的输出值绑定到其他元素的 `defaultValue`。 |
 | type | 是 | 要为元素呈现的 UI 控件。 有关支持的类型的列表，请参阅[元素](#elements)。 |
@@ -42,8 +42,8 @@ ms.locfileid: "79543867"
 | defaultValue | 否 | 元素的默认值。 某些元素类型支持复杂的默认值，因此，值可能是对象。 |
 | toolTip | 否 | 要在元素的工具提示中显示的文本。 与 `label` 类似，某些元素支持多个工具提示字符串。 可以使用 Markdown 语法嵌入内联链接。
 | constraints | 否 | 用来自定义元素的验证行为的一个或多个属性。 constraints 支持的属性因元素类型而异。 某些元素类型不支持自定义验证行为，因此没有 constraints 属性。 |
-| options | 否 | 用于自定义元素行为的其他属性。 与 `constraints` 类似，支持的属性因元素类型而异。 |
-| visible | 否 | 指示是否显示此元素。 如果为 `true`，则会显示此元素及其相应的子元素。 默认值为 `true`。 可使用[逻辑函数](create-uidefinition-functions.md#logical-functions)动态控制此属性的值。
+| 选项 | 否 | 用于自定义元素行为的其他属性。 与 `constraints` 类似，支持的属性因元素类型而异。 |
+| visible | 否 | 指示是否显示此元素。 如果为 `true`，则会显示此元素及其相应的子元素。 默认值是 `true`。 可使用[逻辑函数](create-uidefinition-functions.md#logical-functions)动态控制此属性的值。
 
 ## <a name="elements"></a>元素
 

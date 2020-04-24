@@ -14,7 +14,7 @@
       items:
         - name: API 如何对字符计数
           href: character-counts.md
-    - name: 操作指南
+    - name: 操作方法指南
       items:
         - name: 注册文本翻译 API
           href: translator-text-how-to-signup.md
@@ -49,7 +49,7 @@
         - name: v3 文本翻译 API 参考
           href: reference/v3-0-reference.md
           items:
-            - name: 语言
+            - name: Languages
               href: reference/v3-0-languages.md
             - name: Translate
               href: reference/v3-0-translate.md
@@ -67,7 +67,7 @@
       items:
         - name: GitHub 上的代码示例
           href: 'https://aka.ms/TranslatorGitHub'
-        - name: 常见问题
+        - name: 常见问题解答
           href: 'https://www.microsoft.com/translator/faq.aspx'
         - name: 知识库
           href: 'https://cognitive.uservoice.com/knowledgebase/topics/132647-translator'
@@ -79,7 +79,7 @@
           href: 'https://azure.microsoft.com/global-infrastructure/services/?products=all&regions=china-non-regional,china-north,china-north-2,china-east,china-east-2'
         - name: 请求限制
           href: request-limits.md
-        - name: Stack Overflow
+        - name: 堆栈溢出
           href: 'https://stackoverflow.com/questions/tagged/microsoft-translator'
         - name: UserVoice
           href: 'https://cognitive.uservoice.com/forums/558796-translator'

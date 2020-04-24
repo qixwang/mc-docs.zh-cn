@@ -10,10 +10,10 @@ ms.date: 03/16/2020
 ms.author: v-tawe
 ms.custom: include file
 ms.openlocfilehash: 8e58cafdb1a0831948dfad1ef18daafc2b136384
-ms.sourcegitcommit: e500354e2fd8b7ac3dddfae0c825cc543080f476
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79546927"
 ---
 1. **在“解决方案资源管理器”** 中，右键单击该项目并选择“发布”  。

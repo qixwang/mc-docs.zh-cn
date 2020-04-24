@@ -1,15 +1,15 @@
 ---
 title: 用于部署的链接模板
-description: 介绍如何使用 Azure Resource Manager 模板中的链接模板创建一个模块化的模板的解决方案。 演示如何传递参数值、指定参数文件和动态创建的 URL。
+description: 介绍如何使用 Azure 资源管理器模板中的链接模板创建一个模块化的模板的解决方案。 演示如何传递参数值、指定参数文件和动态创建的 URL。
 ms.topic: conceptual
 origin.date: 12/11/2019
 ms.date: 03/23/2020
 ms.author: v-yeche
 ms.openlocfilehash: a7aea7c826adca409402939b09d5f7df9c2938a9
-ms.sourcegitcommit: 1436f1851342ca5631eb25342eed954adb707af0
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79543882"
 ---
 # <a name="using-linked-and-nested-templates-when-deploying-azure-resources"></a>部署 Azure 资源时使用链接模版和嵌套模版
@@ -165,7 +165,7 @@ ms.locfileid: "79543882"
 
 此变量的值会根据作用域而变化。 下表显示了这两个作用域的结果。
 
-| 作用域 | 输出 |
+| 范围 | 输出 |
 | ----- | ------ |
 | 内部 | from nested template |
 | outer（或默认值） | from parent template |
@@ -284,7 +284,7 @@ ms.locfileid: "79543882"
 >
 > 当作用域设置为 `outer` 时，对于已在嵌套模板中部署的资源，无法在嵌套模板的 outputs 节中使用 `reference` 函数。 若要返回嵌套模板中部署的资源的值，请使用 inner 作用域或将嵌套模板转换为链接模板。
 
-## <a name="linked-template"></a>链接的模板
+## <a name="linked-template"></a>链接模板
 
 若要链接某个模板，请向主模板中添加一个部署资源。 在 **templateLink** 属性中，指定要包括的模板的 URI。 以下示例链接到部署新存储帐户的模板。
 
@@ -315,7 +315,7 @@ ms.locfileid: "79543882"
 }
 ```
 
-不能指定本地文件，或者只能在本地网络中使用的文件。 只能提供包含 **http** 或 **https** 的 URI 值。 资源管理器必须能够访问模板。 一种做法是将链接模板放入存储帐户，并对该项使用 URI。
+不能指定本地文件，或者只能在本地网络中使用的文件。 只能提供包含 **http** 或 **https** 的 URI 值。 资源管理器必须能够访问该模板。 一种做法是将链接模板放入存储帐户，并对该项使用 URI。
 
 无需为模板或参数提供 `contentVersion` 属性。 如果未提供内容版本值，将部署模板的当前版本。 如果提供内容版本值，它必须与链接的模板中的版本相匹配；否则，部署失败并产生错误。
 
@@ -495,7 +495,7 @@ ms.locfileid: "79543882"
 }
 ```
 
-链接模板与其他资源类型相似，也可在它与其他资源之间设置依赖关系。 当其他资源需要链接模板的输出值时，请确保在部署这些资源之前部署链接模板。 或者，当链接模板依赖于其他资源时，请确保在部署链接模板之前部署其他资源。
+与其他资源类型一样，可在链接的模板和其他资源间设置依赖关系。 当其他资源需要链接模板的输出值时，请确保在部署这些资源之前部署链接模板。 或者，当链接模板依赖于其他资源时，请确保在部署链接模板之前部署其他资源。
 
 以下示例演示一个部署公共 IP 地址并返回资源 ID 的模板：
 
@@ -702,7 +702,7 @@ done
 
 ## <a name="securing-an-external-template"></a>保护外部模板
 
-尽管链接模板必须可从外部使用，但它无需向公众正式发布。 可以将模板添加到只有存储帐户所有者可以访问的专用存储帐户。 然后，在部署期间创建共享访问签名 (SAS) 令牌来启用访问。 将该 SAS 令牌添加到链接模板的 URI。 即使令牌作为安全字符串传入，链接模板的 URI（包括 SAS 令牌）也会记录在部署操作中。 若要限制公开，请设置令牌的到期时间。
+尽管链接模板必须可从外部使用，但它无需向公众正式发布。 可以将模板添加到只有存储帐户所有者可以访问的专用存储帐户。 然后，在部署期间创建共享访问签名 (SAS) 令牌，用于启用访问。 将该 SAS 令牌添加到链接模板的 URI。 即使令牌作为安全字符串传入，链接模板的 URI（包括 SAS 令牌）也将记录在部署操作中。 若要限制公开，请设置令牌的到期时间。
 
 也可将参数文件限制为通过 SAS 令牌进行访问。
 
@@ -772,13 +772,13 @@ az group deployment create --resource-group ExampleGroup --template-uri $url?$to
 
 ## <a name="example-templates"></a>示例模板
 
-下面的示例展示了链接的模板的常见用途。
+以下示例演示了链接模板的常见用法。
 
-|主模板  |链接的模板 |说明  |
+|主模板  |链接模板 |说明  |
 |---------|---------| ---------|
-|[Hello World](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/helloworldparent.json) |[链接的模板](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/helloworld.json) | 从链接的模板返回字符串。 |
-|[使用公共 IP 地址的负载均衡器](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip-parentloadbalancer.json) |[链接的模板](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip.json) |从链接的模板返回公共 IP 地址并在负载均衡器中设置该值。 |
-|[多个 IP 地址](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/static-public-ip-parent.json) | [链接的模板](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/static-public-ip.json) |在链接模板中创建多个公共 IP 地址。  |
+|[Hello World](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/helloworldparent.json) |[链接模板](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/helloworld.json) | 从链接模板返回字符串。 |
+|[使用公共 IP 地址的负载均衡器](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip-parentloadbalancer.json) |[链接模板](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip.json) |从链接模板返回公共 IP 地址，并在负载均衡器中设置该值。 |
+|[多个 IP 地址](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/static-public-ip-parent.json) | [链接模板](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/static-public-ip.json) |在链接模板中创建多个公共 IP 地址。  |
 
 ## <a name="next-steps"></a>后续步骤
 

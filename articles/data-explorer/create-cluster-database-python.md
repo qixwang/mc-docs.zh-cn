@@ -9,16 +9,16 @@ ms.topic: conceptual
 origin.date: 06/03/2019
 ms.date: 03/16/2020
 ms.openlocfilehash: 26e0f955c10bc5523984aac082e47702777c513d
-ms.sourcegitcommit: 1d3d8dfdaf6281f06640cbee7124a1e8bf102c50
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80243973"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-database-by-using-python"></a>使用 Python 创建 Azure 数据资源管理器群集和数据库
 
 > [!div class="op_single_selector"]
-> * [Portal](create-cluster-database-portal.md)
+> * [门户](create-cluster-database-portal.md)
 > * [CLI](create-cluster-database-cli.md)
 > * [PowerShell](create-cluster-database-powershell.md)
 > * [C#](create-cluster-database-csharp.md)
@@ -27,9 +27,9 @@ ms.locfileid: "80243973"
 
 本文将使用 Python 创建 Azure 数据资源管理器群集和数据库。 Azure 数据资源管理器是一项快速、完全托管的数据分析服务，用于实时分析从应用程序、网站和 IoT 设备等资源流式传输的海量数据。 若要使用 Azure 数据资源管理器，请先创建一个群集，并在该群集中创建一个或多个数据库。 然后将数据引入或加载到数据库，以便针对其运行查询。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
-如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial)。
+如果没有 Azure 订阅，可在开始前创建一个 [试用帐户](https://www.azure.cn/pricing/1rmb-trial) 。
 
 * [Python 3.4+](https://www.python.org/downloads/)。
 
@@ -43,7 +43,7 @@ ms.locfileid: "80243973"
 pip install azure-common
 pip install azure-mgmt-kusto
 ```
-## <a name="authentication"></a>身份验证
+## <a name="authentication"></a>Authentication
 为了运行本文中的示例，我们需要可以访问资源的 Azure AD 应用程序和服务主体。 查看[创建 Azure AD 应用程序](https://docs.azure.cn/active-directory/develop/howto-create-service-principal-portal)以创建免费的 Azure AD 应用程序，并在订阅范围内添加角色分配。 它还演示如何获取 `Directory (tenant) ID`、`Application ID` 和 `Client Secret`。
 
 ## <a name="create-the-azure-data-explorer-cluster"></a>创建 Azure 数据资源管理器群集
@@ -87,7 +87,7 @@ pip install azure-mgmt-kusto
    |---|---|---|
    | cluster_name | mykustocluster  | 所需的群集名称。|
    | sku_name | *Standard_D13_v2* | 将用于群集的 SKU。 |
-   | 层 | *标准* | SKU 层。 |
+   | 层 | *Standard* | SKU 层。 |
    | 容量 | *数字* | 群集实例的数目。 |
    | resource_group_name | *testrg* | 将在其中创建群集的资源组名称。 |
 
@@ -100,7 +100,7 @@ pip install azure-mgmt-kusto
     cluster_operations.get(resource_group_name = resource_group_name, cluster_name= clusterName, custom_headers=None, raw=False)
     ```
 
-如果结果包含带 `Succeeded` 值的 `provisioningState`，则表示已成功创建群集。
+如果结果包含带 `provisioningState` 值的 `Succeeded`，则表示已成功创建群集。
 
 ## <a name="create-the-database-in-the-azure-data-explorer-cluster"></a>在 Azure 数据资源管理器群集中创建数据库
 

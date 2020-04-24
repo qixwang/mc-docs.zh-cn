@@ -10,10 +10,10 @@ ms.date: 03/30/2020
 ms.author: v-yeche
 Customer intent: As someone with a networking background, I want to read more details about Virtual WAN in a FAQ format.
 ms.openlocfilehash: fd4d3b8af64903e076e373c4daa7c40f1772aefc
-ms.sourcegitcommit: 4810b75d1e1db78d9747e99735468a6ab861be2d
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80291273"
 ---
 # <a name="virtual-wan-faq"></a>虚拟 WAN 常见问题解答

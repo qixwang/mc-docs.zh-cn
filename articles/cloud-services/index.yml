@@ -1,6 +1,6 @@
 ### YamlMime:Landing
 title: Azure 云服务文档
-summary: 了解如何使用云服务托管和运行高度可用和可伸缩的云应用程序和 API。 说明如何管理虚拟机主机以及如何配置、修补和安装软件。
+summary: 了解如何使用云服务来托管和运行高度可用、可缩放的云应用程序和 API。 说明如何管理虚拟机主机以及如何配置、修补和安装软件。
 metadata:
   title: Azure 云服务文档
   description: 介绍如何使用云服务来托管和运行高度可用、可缩放的云应用程序和 API。
@@ -11,10 +11,10 @@ metadata:
   ms.author: v-junlch
   ms.date: 03/17/2020
   ms.openlocfilehash: 0ffc1edcabbce46031d98728720e5172174b499c
-  ms.sourcegitcommit: 71a386ca0d0ecb79a123399b6ab6b8c70ea2aa78
+  ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 03/18/2020
+  ms.lasthandoff: 04/17/2020
   ms.locfileid: "79497409"
 landingContent:
 - title: 关于云服务

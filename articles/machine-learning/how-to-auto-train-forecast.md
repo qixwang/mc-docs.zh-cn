@@ -12,10 +12,10 @@ ms.topic: conceptual
 origin.date: 11/04/2019
 ms.date: 03/09/2020
 ms.openlocfilehash: fe5807ca96add3638e92bc6912ee03d1397e43bf
-ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80343559"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>自动训练时序预测模型
@@ -58,7 +58,7 @@ ms.locfileid: "80343559"
 
 自动回归集成移动平均 (ARIMA) 是时序预测的常用统计方法。 此预测技术通常用于数据中显示出趋势证据（如循环）的短期预测方案，而这些趋势可能不可预知、很难建模或预测。 Auto-ARIMA 将数据转换为静态数据，以获得一致、可靠的结果。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * Azure 机器学习工作区。 若要创建工作区，请参阅[创建 Azure 机器学习工作区](how-to-manage-workspace.md)。
 * 本文假设读者基本熟悉如何设置自动化机器学习试验。 遵循[教程](tutorial-auto-train-models.md)或[操作方法](how-to-configure-auto-train.md)，了解基本的自动化机器学习试验设计模式。
@@ -114,7 +114,7 @@ test_labels = test_data.pop(label).values
 
 [`AutoMLConfig`](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py) 对象定义自动化机器学习任务所需的设置和数据。 与回归问题类似，需定义标准训练参数，如任务类型、迭代数、训练数据和交叉验证次数。 对于预测任务，还必须设置对试验有影响的其他参数。 下表阐释了每个参数及其用途。
 
-| 参数&nbsp;名称 | 说明 | 必须 |
+| 参数&nbsp;名称 | 说明 | 必选 |
 |-------|-------|-------|
 |`time_column_name`|用于指定输入数据中用于生成时序的日期时间列并推断其频率。|✓|
 |`grain_column_names`|定义输入数据中各个序列组的名称。 如果未定义粒度，则假定数据集为一个时序。||
@@ -213,7 +213,7 @@ actual_labels = test_labels.flatten()
 
 或者，可以使用 `forecast()` 函数而不使用 `predict()`，这将允许指定预测开始时间。 在下面的示例中，首先将 `y_pred` 中的所有值替换为 `NaN`。 在本例中，预测原点将位于训练数据的末尾，这是使用 `predict()` 时的常态。 但是，如果只将 `y_pred` 的后半部分替换为 `NaN`，则函数不会修改前半部分的数值，而会在后半部分预测 `NaN` 值。 函数将返回预测值和对齐的特征。
 
-还可以在 `forecast()` 函数中使用 `forecast_destination` 参数，预测到指定日期为止的值。
+还可以在 `forecast_destination` 函数中使用 `forecast()` 参数，预测到指定日期为止的值。
 
 ```python
 label_query = test_labels.copy().astype(np.float)

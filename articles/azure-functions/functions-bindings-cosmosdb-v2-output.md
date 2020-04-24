@@ -6,17 +6,17 @@ ms.topic: reference
 ms.date: 03/18/2020
 ms.author: v-junlch
 ms.openlocfilehash: f536b956ecdc2d4fc443cb43c4288c9a2d1b7e66
-ms.sourcegitcommit: e500354e2fd8b7ac3dddfae0c825cc543080f476
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79546888"
 ---
 # <a name="azure-cosmos-db-output-binding-for-azure-functions-2x"></a>适用于 Azure Functions 2.x 的 Azure Cosmos DB 输出绑定
 
 Azure Cosmos DB 输出绑定允许使用 SQL API 将新文档写入 Azure Cosmos DB 数据库。
 
-有关设置和配置详细信息，请参阅[概述](./functions-bindings-cosmosdb-v2.md)。
+若要了解设置和配置详细信息，请参阅[概述](./functions-bindings-cosmosdb-v2.md)。
 
 <a id="example" name="example"></a>
 
@@ -374,7 +374,7 @@ public String cosmosDbQueryById(
 
 ### <a name="http-trigger-save-one-document-to-database-via-outputbinding"></a>HTTP 触发器，通过 OutputBinding 将一个文档保存到数据库
 
-以下示例显示了 Java 函数，该函数通过 ```OutputBinding<T>``` 输出参数将文档写入 CosmosDB。 在此示例中，需要使用 ```@CosmosDBOutput``` 为 ```outputItem``` 参数提供注释，而不要使用函数签名。 使用 ```OutputBinding<T>```，让函数可以利用绑定将文档写入 CosmosDB，同时还可向函数调用者返回不同的值，例如 JSON 或 XML 文档。
+以下示例显示了 Java 函数，该函数通过 ```OutputBinding<T>``` 输出参数将文档写入 CosmosDB。 在此示例中，需要使用 ```outputItem``` 为 ```@CosmosDBOutput``` 参数提供注释，而不要使用函数签名。 使用 ```OutputBinding<T>```，让函数可以利用绑定将文档写入 CosmosDB，同时还可向函数调用者返回不同的值，例如 JSON 或 XML 文档。
 
 ```java
     @FunctionName("WriteOneDocOutputBinding")
@@ -420,7 +420,7 @@ public String cosmosDbQueryById(
 
 ### <a name="http-trigger-save-multiple-documents-to-database-via-outputbinding"></a>HTTP 触发器，通过 OutputBinding 将多个文档保存到数据库
 
-以下示例显示了 Java 函数，该函数通过 ```OutputBinding<T>``` 输出参数将多个文档写入 CosmosDB。 在此示例中，需使用 ```@CosmosDBOutput``` 为 ```outputItem``` 参数提供注释，而不要使用函数签名。 输出参数 ```outputItem``` 有一个 ```ToDoItem``` 对象列表作为其模板参数类型。 使用 ```OutputBinding<T>```，让函数可以利用绑定将文档写入 CosmosDB，同时还可向函数调用者返回不同的值，例如 JSON 或 XML 文档。
+以下示例显示了 Java 函数，该函数通过 ```OutputBinding<T>``` 输出参数将多个文档写入 CosmosDB。 在此示例中，需使用 ```outputItem``` 为 ```@CosmosDBOutput``` 参数提供注释，而不要使用函数签名。 输出参数 ```outputItem``` 有一个 ```ToDoItem``` 对象列表作为其模板参数类型。 使用 ```OutputBinding<T>```，让函数可以利用绑定将文档写入 CosmosDB，同时还可向函数调用者返回不同的值，例如 JSON 或 XML 文档。
 
 ```java
     @FunctionName("WriteMultipleDocsOutputBinding")
@@ -509,9 +509,9 @@ JavaScript 不支持特性。
 
 |function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
-|**type**     | 不适用 | 必须设置为 `cosmosDB`。        |
-|**direction**     | 不适用 | 必须设置为 `out`。         |
-|**name**     | 不适用 | 表示函数中的文档的绑定参数的名称。  |
+|type      | 不适用 | 必须设置为 `cosmosDB`。        |
+|direction      | 不适用 | 必须设置为 `out`。         |
+|name      | 不适用 | 表示函数中的文档的绑定参数的名称。  |
 |**databaseName** | **DatabaseName**|包含在其中创建文档的集合的数据库。     |
 |**collectionName** |**CollectionName**  | 包含在其中创建文档的集合的名称。 |
 |**createIfNotExists**  |**CreateIfNotExists**    | 一个用于指示是否创建集合（如果不存在）的布尔值。 默认值为 *false*，因为新集合是使用保留的吞吐量创建的，具有成本方面的隐含意义。 有关详细信息，请参阅[定价页](https://www.azure.cn/pricing/details/cosmos-db/)。  |
@@ -519,7 +519,7 @@ JavaScript 不支持特性。
 |**collectionThroughput**|**CollectionThroughput**| 当 `CreateIfNotExists` 为 true 时，将定义所创建集合的[吞吐量](../cosmos-db/set-throughput.md)。|
 |**connectionStringSetting**    |**ConnectionStringSetting** |内含 Azure Cosmos DB 连接字符串的应用设置的名称。        |
 |**preferredLocations**| **PreferredLocations**| （可选）为 Azure Cosmos DB 服务中的异地复制数据库帐户定义首选位置（区域）。 值应以逗号分隔。 |
-|**useMultipleWriteLocations**| **UseMultipleWriteLocations**| （可选）与 `PreferredLocations` 一起设置为 `true` 时，它可以利用 Azure Cosmos DB 服务中的[多区域写入](../cosmos-db/how-to-manage-database-account.md#configure-multiple-write-regions)。 |
+|**useMultipleWriteLocations**| **UseMultipleWriteLocations**| （可选）与 `true` 一起设置为 `PreferredLocations` 时，它可以利用 Azure Cosmos DB 服务中的[多区域写入](../cosmos-db/how-to-manage-database-account.md#configure-multiple-write-regions)。 |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -557,7 +557,7 @@ JavaScript 不支持特性。
 }
 ```
 
-|属性  |默认 | 说明 |
+|properties  |默认 | 说明 |
 |---------|---------|---------|
 |GatewayMode|网关|连接到 Azure Cosmos DB 服务时该函数使用的连接模式。 选项为 `Direct` 和 `Gateway`|
 |协议|Https|连接到 Azure Cosmos DB 服务时该函数使用的连接协议。  参阅[此处，了解两种模式的说明](../cosmos-db/performance-tips.md#networking)|

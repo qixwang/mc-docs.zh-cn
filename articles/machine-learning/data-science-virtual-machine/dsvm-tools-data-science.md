@@ -11,10 +11,10 @@ ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/12/2019
 ms.openlocfilehash: 5f73e05d5c035d73f1c97bf84d18ad6390ac3161
-ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80343816"
 ---
 # <a name="machine-learning-and-data-science-tools-on-azure-data-science-virtual-machines"></a>Azure Data Science Virtual Machine 上的机器学习和数据科学工具
@@ -29,10 +29,10 @@ Azure Data Science Virtual Machine (DSVM) 拥有丰富的用于机器学习的�
 |    |           |
 | ------------- | ------------- |
 | 它是什么？   |   Azure 机器学习是一款可用于开发和部署机器学习模型的云服务。 可以在使用 Python SDK 构建、训练、缩放和管理模型时跟踪模型。 将模型部署为容器，并在云中、在本地或在 Azure IoT Edge 上运行它们。   |
-| 支持的版本     | Windows（conda 环境：AzureML），Linux（conda 环境：py36）    |
+| 支持的版本     | Windows（conda 环境：AzureML）、Linux（conda 环境：py36）    |
 | 典型用途      | 常规机器学习平台      |
 | 如何配置或安装它？      |  使用 GPU 支持安装   |
-| 如何使用或运行它      | 作为 Python SDK 在 Azure CLI 中使用。 激活到 Windows 版本上的 conda 环境 `AzureML` 或 Linux 版本上的 `py36`。       |
+| 如何使用或运行它      | 作为 Python SDK 在 Azure CLI 中使用。 激活到 Windows 版本上的 conda 环境 `AzureML` 或 Linux 版本上的 *。* `py36`      |
 | 指向示例的链接      | Notebook 下的 `AzureML` 目录中包含了示例 Jupyter Notebook。  |
 | 相关工具      | Visual Studio Code、Jupyter   |
 
@@ -89,7 +89,7 @@ DSVM 上还有其他几个机器学习库，如适用于 DSVM 的 Anaconda Pytho
 | 它是什么？   |  适用于数据挖掘任务的机器学习算法的集合。 这些算法可以直接应用于数据集，也可以从你自己的 Java 代码中调用。 Weka 包含用于数据预处理、分类、回归、群集、关联规则和可视化的工具。 |
 | 支持的版本     | Windows、Linux     |
 | 典型用途      | 常规机器学习工具     |
-| 如何使用或运行它      | 在 Windows 上，在“开始”菜单中搜索 Weka  。 在 Linux 上，使用 X2Go 进行登录，然后转到“应用程序” > “开发” > “Weka”。    |
+| 如何使用或运行它      | 在 Windows 上，在“开始”菜单中搜索 Weka  。 在 Linux 上，使用 X2Go 进行登录，然后转到“应用程序” **“开发”** “Weka”。 >    >   |
 | 指向示例的链接      | [Weka 示例](https://www.cs.waikato.ac.nz/ml/weka/documentation.html) |
 | 相关工具      |LightGBM、Rattle、XGBoost   |
 

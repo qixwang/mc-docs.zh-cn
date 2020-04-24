@@ -12,10 +12,10 @@ origin.date: 03/17/2020
 ms.date: 03/26/2020
 ms.author: v-junlch
 ms.openlocfilehash: 41b82a600a8fc5b797d83059b293153d1ec08f6c
-ms.sourcegitcommit: 303a16c7117b6f3495ef0493b4ae8ccb67d7dbba
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80342393"
 ---
 # <a name="request-limits-for-translator-text"></a>文本翻译的请求限制
@@ -28,14 +28,14 @@ ms.locfileid: "80342393"
 
 下表列出了文本翻译 API 的每个操作的数组元素和字符限制。
 
-| 操作 | 数组元素的最大大小 |   最大数组元素数 |  最大请求大小（字符数） |
+| Operation | 数组元素的最大大小 |   最大数组元素数 |  最大请求大小（字符数） |
 |:----|:----|:----|:----|
 | Translate | 5,000 | 100   | 5,000 |
-| Transliterate | 5,000 | 10 个    | 5,000 |
+| Transliterate | 5,000 | 10    | 5,000 |
 | Detect | 10,000 | 100 |   50,000 |
 | BreakSentence | 10,000    | 100 | 50,000 |
-| 字典查找| 100 |  10 个  | 1,000 |
-| 字典示例 | 100 个用于文本，100 个用于翻译（总共 200 个）| 10 个|   2,000 |
+| 字典查找| 100 |  10  | 1,000 |
+| 字典示例 | 100 个用于文本，100 个用于翻译（总共 200 个）| 10|   2,000 |
 
 ## <a name="character-limits-per-hour"></a>每小时的字符限制
 
@@ -81,7 +81,7 @@ ms.locfileid: "80342393"
 
 ## <a name="next-steps"></a>后续步骤
 
-* [价格](https://www.azure.cn/pricing/details/cognitive-services/)
+* [定价](https://www.azure.cn/pricing/details/cognitive-services/)
 * [区域可用性](https://azure.microsoft.com/global-infrastructure/services/?products=all&regions=china-non-regional,china-north,china-north-2,china-east,china-east-2)
 * [v3 文本翻译 API 参考](/cognitive-services/translator/reference/v3-0-reference)
 

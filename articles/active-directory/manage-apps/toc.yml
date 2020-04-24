@@ -5,7 +5,7 @@
   items:
     - name: 查看租户应用 - 门户
       href: view-applications-portal.md
-- name: 操作指南
+- name: 操作方法指南
   items:
     - name: 云应用集成
       items:
@@ -49,5 +49,5 @@
       href: 'https://www.azure.cn/pricing/calculator'
     - name: 服务更新
       href: 'https://azure.microsoft.com/updates/?product=active-directory'
-    - name: Stack Overflow
+    - name: 堆栈溢出
       href: 'https://stackoverflow.com/questions/tagged/azure-active-directory'

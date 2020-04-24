@@ -15,10 +15,10 @@ origin.date: 01/24/2020
 ms.date: 2/6/2020
 ms.author: v-lingwu
 ms.openlocfilehash: 70eb03f68077c46bb1c789e2f624fa70b66f652a
-ms.sourcegitcommit: 305361c96d1d5288d3dda7e81833820640e2afac
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80108501"
 ---
 # <a name="message-sessions"></a>消息会话
@@ -79,7 +79,7 @@ ms.locfileid: "80108501"
 
 只要不清除会话状态，会话状态将保留（返回 **null**），即使会话中的所有消息都已使用，也是如此。
 
-可以使用 Java API 中的 SessionBrowser  方法、[QueueClient](/dotnet/api/microsoft.azure.servicebus.queueclient) 上的 [GetMessageSessions](/dotnet/api/microsoft.servicebus.messaging.queueclient.getmessagesessions#Microsoft_ServiceBus_Messaging_QueueClient_GetMessageSessions) 以及 .NET 客户端中的 [SubscriptionClient](/dotnet/api/microsoft.azure.servicebus.subscriptionclient)，枚举队列或订阅中的所有现有会话。
+可以使用 Java API 中的 SessionBrowser  方法、[QueueClient](/dotnet/api/microsoft.servicebus.messaging.queueclient.getmessagesessions#Microsoft_ServiceBus_Messaging_QueueClient_GetMessageSessions) 上的 [GetMessageSessions](/dotnet/api/microsoft.azure.servicebus.queueclient) 以及 .NET 客户端中的 [SubscriptionClient](/dotnet/api/microsoft.azure.servicebus.subscriptionclient)，枚举队列或订阅中的所有现有会话。
 
 队列或订阅中保留的会话状态计入相应实体的存储配额。 因此，当应用程序完成会话时，建议应用程序清理保留的状态，以杜绝外部管理成本。
 
@@ -87,7 +87,7 @@ ms.locfileid: "80108501"
 
 在会话上下文中，每条消息的传递计数的定义与在没有会话的情况下的定义略有不同。 下面的表总结了传递计数何时递增。
 
-| 方案 | 消息的传递计数是否递增 |
+| 场景 | 消息的传递计数是否递增 |
 |----------|---------------------------------------------|
 | 接受会话，但会话锁已过期（由于超时） | 是 |
 | 接受会话，会话中的消息未完成（即使它们已锁定），并且会话已关闭 | 否 |

@@ -7,10 +7,10 @@ ms.date: 03/23/2020
 ms.topic: tutorial
 ms.author: v-yeche
 ms.openlocfilehash: 94224c3c6ceef78aa6db34bb5b3afe8e67a003c7
-ms.sourcegitcommit: 1436f1851342ca5631eb25342eed954adb707af0
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79543845"
 ---
 <!--Verify sucessfully-->

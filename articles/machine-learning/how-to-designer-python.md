@@ -10,10 +10,10 @@ author: peterclu
 ms.author: peterlu
 ms.date: 02/28/2020
 ms.openlocfilehash: f095d119e8e20d702ee4aec09421673f0faa7d43
-ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80343808"
 ---
 # <a name="execute-python-code-in-azure-machine-learning-designer"></a>在 Azure 机器学习设计器中执行 Python 代码

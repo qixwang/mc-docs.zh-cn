@@ -13,10 +13,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/12/2017
 ms.openlocfilehash: 8919cb99bad62e8ad06d8639c8575ea2d2d48fd9
-ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80343321"
 ---
 # <a name="use-azure-machine-learning-studio-classic-web-service-parameters"></a>使用 Azure 机器学习工作室（经典）Web 服务参数

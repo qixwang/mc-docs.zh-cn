@@ -11,10 +11,10 @@ author: nibaccam
 ms.author: nibaccam
 ms.date: 03/15/2020
 ms.openlocfilehash: 8201fe105d2b8a166bf09821c12949bf6834be15
-ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80343570"
 ---
 # <a name="data-access-in-azure-machine-learning"></a>Azure 机器学习中的数据访问
@@ -28,7 +28,7 @@ ms.locfileid: "80343570"
 3. 通过以下任一方式在机器学习试验中使用该数据集： 
     1. 将该数据集装载到试验的计算目标以进行模型训练
 
-        **或者** 
+        **OR** 
 
     1. 在自动化机器学习（自动化 ML）试验运行、机器学习管道和 [Azure 机器学习设计器](concept-designer.md)等 Azure 机器学习解决方案中直接使用该数据集。
 4. 针对模型输出数据集创建数据集监视器以检测数据偏移。 

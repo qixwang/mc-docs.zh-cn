@@ -6,10 +6,10 @@ origin.date: 06/04/2019
 ms.date: 03/23/2020
 ms.author: v-yeche
 ms.openlocfilehash: 5daa36282c23d0ba52472922b382ff9c4450b3f3
-ms.sourcegitcommit: 1436f1851342ca5631eb25342eed954adb707af0
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79543731"
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-resource-manager-rest-api"></a>使用 Resource Manager 模板和 Resource Manager REST API 部署资源
@@ -48,9 +48,9 @@ PUT https://management.chinacloudapi.cn/providers/Microsoft.Management/managemen
 
 ## <a name="deploy-with-the-rest-api"></a>使用 REST API 进行部署
 
-1. 设置 [常见参数和标头](https://docs.microsoft.com/rest/api/azure/)，包括身份验证令牌。
+1. 设置[常见参数和标头](https://docs.microsoft.com/rest/api/azure/)，包括身份验证令牌。
 
-1. 如果目前没有资源组，请创建资源组。 提供订阅 ID、新资源组的名称，以及解决方案所需的位置。 有关详细信息，请参阅 [创建资源组](https://docs.microsoft.com/rest/api/resources/resourcegroups/createorupdate)。
+1. 如果目前没有资源组，请创建资源组。 提供订阅 ID、新资源组的名称，以及解决方案所需的位置。 有关详细信息，请参阅[创建资源组](https://docs.microsoft.com/rest/api/resources/resourcegroups/createorupdate)。
 
     ```HTTP
     PUT https://management.chinacloudapi.cn/subscriptions/<YourSubscriptionId>/resourcegroups/<YourResourceGroupName>?api-version=2019-05-01
@@ -192,7 +192,7 @@ PUT https://management.chinacloudapi.cn/providers/Microsoft.Management/managemen
 
 ## <a name="next-steps"></a>后续步骤
 
-- 若要在出错时回退到成功的部署，请参阅[出错时回退到成功的部署](rollback-on-error.md)。
+- 若要在出错时回滚到成功的部署，请参阅[出错时回滚到成功的部署](rollback-on-error.md)。
 - 若要指定如何处理存在于资源组中但未在模板中定义的资源，请参阅 [Azure 资源管理器部署模式](deployment-modes.md)。
 - 若要了解如何处理异步 REST 操作，请参阅[跟踪异步 Azure 操作](../management/async-operations.md)。
 - 若要详细了解模板，请参阅[了解 Azure 资源管理器模板的结构和语法](template-syntax.md)。

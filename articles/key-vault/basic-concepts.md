@@ -12,10 +12,10 @@ origin.date: 01/18/2019
 ms.date: 03/16/2020
 ms.author: v-tawe
 ms.openlocfilehash: b8ce3e44b2679c773ec351415deafabc06a09124
-ms.sourcegitcommit: 764b3d26aedce2de0e1948468a706fd3204a3d5e
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79543376"
 ---
 # <a name="azure-key-vault-basic-concepts"></a>Azure Key Vault 基本概念

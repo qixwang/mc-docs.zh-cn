@@ -12,10 +12,10 @@ ms.reviewer: trbye
 origin.date: 10/25/2019
 ms.date: 03/16/2020
 ms.openlocfilehash: 03cb67b4b3f2602159f60e49ef953b1ce2de2898
-ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80343379"
 ---
 # <a name="model-interpretability-in-automated-machine-learning"></a>自动化机器学习中的模型可解释性
@@ -24,7 +24,7 @@ ms.locfileid: "80343379"
 
 本文介绍如何在 Azure 机器学习中启用自动机器学习 (ML) 的可解释性功能。 自动化 ML 可帮助你了解工程特征重要性。 
 
-默认情况下，1.0.85 之后的所有 SDK 版本设置 `model_explainability=True`。 在 SDK 版本 1.0.85 及更早版本中，用户需要在 `AutoMLConfig` 对象中设置 `model_explainability=True`，才能使用模型可解释性。 
+默认情况下，1.0.85 之后的所有 SDK 版本设置 `model_explainability=True`。 在 SDK 版本 1.0.85 及更早版本中，用户需要在 `model_explainability=True` 对象中设置 `AutoMLConfig`，才能使用模型可解释性。 
 
 在本文中，学习如何：
 
@@ -32,7 +32,7 @@ ms.locfileid: "80343379"
 - 启用可视化效果，以帮助查看数据和解释中的模式。
 - 在推理或评分过程中实现可解释性。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - 可解释性特征。 运行 `pip install azureml-interpret azureml-contrib-interpret` 获取所需的包。
 - 生成自动化 ML 试验的知识。 有关如何使用 Azure 机器学习 SDK 的详细信息，请完成此[回归模型教程](tutorial-auto-train-models.md)，或参阅如何[配置自动化 ML 试验](how-to-configure-auto-train.md)。

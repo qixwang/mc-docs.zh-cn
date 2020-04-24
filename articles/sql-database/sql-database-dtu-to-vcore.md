@@ -11,10 +11,10 @@ ms.reviewer: sashan, moslake, carlrab
 origin.date: 03/09/2020
 ms.date: 03/30/2020
 ms.openlocfilehash: 5dc30c3b4a3f3fbb53fd92e91b8f8d7407b684ee
-ms.sourcegitcommit: 90660563b5d65731a64c099b32fb9ec0ce2c51c6
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80341831"
 ---
 # <a name="migrate-from-the-dtu-based-model-to-the-vcore-based-model"></a>从基于 DTU 的模型迁移到基于 vCore 的模型
@@ -36,12 +36,12 @@ ms.locfileid: "80341831"
 
 |当前服务层级|目标服务层级|迁移类型|用户操作|
 |---|---|---|---|
-|标准|常规用途|横向|可按任意顺序迁移，但需确保 vCore 大小适当*|
-|高级|业务关键|横向|可按任意顺序迁移，但需确保 vCore 大小适当*|
-|标准|业务关键|升级|必须先迁移辅助数据库|
-|业务关键|标准|降级|必须先迁移主数据库|
-|高级|常规用途|降级|必须先迁移主数据库|
-|常规用途|高级|升级|必须先迁移辅助数据库|
+|Standard|常规用途|横向|可按任意顺序迁移，但需确保 vCore 大小适当*|
+|Premium|业务关键|横向|可按任意顺序迁移，但需确保 vCore 大小适当*|
+|Standard|业务关键|升级|必须先迁移辅助数据库|
+|业务关键|Standard|降级|必须先迁移主数据库|
+|Premium|常规用途|降级|必须先迁移主数据库|
+|常规用途|Premium|升级|必须先迁移辅助数据库|
 |业务关键|常规用途|降级|必须先迁移主数据库|
 |常规用途|业务关键|升级|必须先迁移辅助数据库|
 ||||

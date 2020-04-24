@@ -10,24 +10,24 @@ origin.date: 01/01/2020
 ms.date: 03/30/2020
 ms.author: v-yeche
 ms.openlocfilehash: e55214e6f8cb759b9e3cdbc8ba9cae4cf02d3090
-ms.sourcegitcommit: 2b084933215d0e7702456730f168d97e00c882a0
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80243445"
 ---
 # <a name="create-schemas-for-tracking-x12-messages-in-azure-logic-apps"></a>在 Azure 逻辑应用中创建用于跟踪 X12 消息的架构
 
 若要帮助你监视企业到企业 (B2B) 事务的成功、错误和消息属性，可以在集成帐户中使用以下 X12 跟踪架构：
 
-* X12 交易集跟踪架构
+* X12 事务集跟踪架构
 * X12 交易集确认跟踪架构
 * X12 交换跟踪架构
 * X12 交换确认跟踪架构
 * X12 功能组跟踪架构
 * X12 功能组确认跟踪架构
 
-## <a name="x12-transaction-set-tracking-schema"></a>X12 交易集跟踪架构
+## <a name="x12-transaction-set-tracking-schema"></a>X12 事务集跟踪架构
 
 ```json
 {
@@ -56,7 +56,7 @@ ms.locfileid: "80243445"
 }
 ```
 
-| 属性 | 必须 | 类型 | 说明 |
+| properties | 必选 | 类型 | 说明 |
 |----------|----------|------|-------------|
 | senderPartnerName | 否 | String | X12 消息发送者的合作伙伴名称 |
 | receiverPartnerName | 否 | String | X12 消息接收者的合作伙伴名称 |
@@ -71,10 +71,10 @@ ms.locfileid: "80243445"
 | transactionSetControlNumber | 否 | String | 交易集控制编号 |
 | CorrelationMessageId | 否 | String | 关联消息 ID，{AgreementName}{GroupControlNumber}{TransactionSetControlNumber} 的组合  |
 | messageType | 否 | String | 交易集或文档类型 |
-| isMessageFailed | 是 | 布尔 | X12 消息是否失败 |
-| isTechnicalAcknowledgmentExpected | 是 | 布尔 | 是否已在 X12 协议中配置了技术确认 |
-| isFunctionalAcknowledgmentExpected | 是 | 布尔 | 是否已在 X12 协议中配置了功能确认 |
-| needAk2LoopForValidMessages | 是 | 布尔 | 有效的消息是否需要 AK2 循环 |
+| isMessageFailed | 是 | Boolean | X12 消息是否失败 |
+| isTechnicalAcknowledgmentExpected | 是 | Boolean | 是否已在 X12 协议中配置了技术确认 |
+| isFunctionalAcknowledgmentExpected | 是 | Boolean | 是否已在 X12 协议中配置了功能确认 |
+| needAk2LoopForValidMessages | 是 | Boolean | 有效的消息是否需要 AK2 循环 |
 | segmentsCount | 否 | Integer | X12 交易集中的段数 |
 |||||
 
@@ -112,7 +112,7 @@ ms.locfileid: "80243445"
 }
 ```
 
-| 属性 | 必须 | 类型 | 说明 |
+| properties | 必选 | 类型 | 说明 |
 |----------|----------|------|-------------|
 | senderPartnerName | 否 | String | X12 消息发送者的合作伙伴名称 |
 | receiverPartnerName | 否 | String | X12 消息接收者的合作伙伴名称 |
@@ -130,11 +130,11 @@ ms.locfileid: "80243445"
 | respondingFunctionalGroupId | 否 | String | 确认中映射到 AK101 的响应功能组 ID |
 | respondingtransactionSetControlNumber | 否 | String | 响应交易集控制编号 |
 | respondingTransactionSetId | 否 | String | 确认中映射到 AK201 的响应交易集 ID |
-| statusCode | 是 | 布尔 | 交易集确认状态代码 |
+| statusCode | 是 | Boolean | 交易集确认状态代码 |
 | segmentsCount | 是 | 枚举 | 确认状态代码，其允许值为：`Accepted`、`Rejected` 和 `AcceptedWithErrors` |
 | processingStatus | 是 | 枚举 | 确认的处理状态，其允许值为：`Received`、`Generated` 和 `Sent` |
 | CorrelationMessageId | 否 | String | 关联消息 ID，{AgreementName}{GroupControlNumber}{TransactionSetControlNumber} 的组合  |
-| isMessageFailed | 是 | 布尔 | X12 消息是否失败 |
+| isMessageFailed | 是 | Boolean | X12 消息是否失败 |
 | ak2Segment | 否 | String | 对接收的功能组内的交易集的确认 |
 | ak3Segment | 否 | String | 报告数据段中的错误 |
 | ak5Segment | 否 | String | 报告是否接受或拒绝 AK2 段中标识的交易集及其原因 |
@@ -170,7 +170,7 @@ ms.locfileid: "80243445"
 }
 ```
 
-| 属性 | 必须 | 类型 | 说明 |
+| properties | 必选 | 类型 | 说明 |
 |----------|----------|------|-------------|
 | senderPartnerName | 否 | String | X12 消息发送者的合作伙伴名称 |
 | receiverPartnerName | 否 | String | X12 消息接收者的合作伙伴名称 |
@@ -182,8 +182,8 @@ ms.locfileid: "80243445"
 | direction | 是 | 枚举 | 消息流的方向，`receive` 或 `send` |
 | interchangeControlNumber | 否 | String | 交换控制编号 |
 | isaSegment | 否 | String | 消息 ISA 段 |
-| isTechnicalAcknowledgmentExpected | 布尔 | 是否已在 X12 协议中配置了技术确认  |
-| isMessageFailed | 是 | 布尔 | X12 消息是否失败 |
+| isTechnicalAcknowledgmentExpected | Boolean | 是否已在 X12 协议中配置了技术确认  |
+| isMessageFailed | 是 | Boolean | X12 消息是否失败 |
 | isa09 | 否 | String | X12 文档交换日期 |
 | isa10 | 否 | String | X12 文档交换时间 |
 | isa11 | 否 | String | X12 交换控制标准标识符 |
@@ -221,7 +221,7 @@ ms.locfileid: "80243445"
 }
 ```
 
-| 属性 | 必须 | 类型 | 说明 |
+| properties | 必选 | 类型 | 说明 |
 |----------|----------|------|-------------|
 | senderPartnerName | 否 | String | X12 消息发送者的合作伙伴名称 |
 | receiverPartnerName | 否 | String | X12 消息接收者的合作伙伴名称 |
@@ -234,7 +234,7 @@ ms.locfileid: "80243445"
 | interchangeControlNumber | 否 | String | 从合作伙伴收到的技术确认的交换控制编号 |
 | isaSegment | 否 | String | 从合作伙伴收到的技术确认的 ISA 段 |
 | respondingInterchangeControlNumber | 否 | String | 从合作伙伴收到的技术确认的交换控制编号 |
-| isMessageFailed | 是 | 布尔 | X12 消息是否失败 |
+| isMessageFailed | 是 | Boolean | X12 消息是否失败 |
 | statusCode | 是 | 枚举 | 交换确认状态代码，其允许值为：`Accepted`、`Rejected` 和 `AcceptedWithErrors` |
 | processingStatus | 是 | 枚举 | 确认状态，其允许值为：`Received`、`Generated` 和 `Sent` |
 | ta102 | 否 | String | 交换日期 |
@@ -274,7 +274,7 @@ ms.locfileid: "80243445"
 }
 ```
 
-| 属性 | 必须 | 类型 | 说明 |
+| properties | 必选 | 类型 | 说明 |
 |----------|----------|------|-------------|
 | senderPartnerName | 否 | String | X12 消息发送者的合作伙伴名称 |
 | receiverPartnerName | 否 | String | X12 消息接收者的合作伙伴名称 |
@@ -287,9 +287,9 @@ ms.locfileid: "80243445"
 | interchangeControlNumber | 否 | String | 交换控制编号 |
 | functionalGroupControlNumber | 否 | String | 功能控制编号 |
 | gsSegment | 否 | String | 消息 GS 段 |
-| isTechnicalAcknowledgmentExpected | 是 | 布尔 | 是否已在 X12 协议中配置了技术确认 |
-| isFunctionalAcknowledgmentExpected | 是 | 布尔 | 是否已在 X12 协议中配置了功能确认 |
-| isMessageFailed | 是 | 布尔 | X12 消息是否失败 |
+| isTechnicalAcknowledgmentExpected | 是 | Boolean | 是否已在 X12 协议中配置了技术确认 |
+| isFunctionalAcknowledgmentExpected | 是 | Boolean | 是否已在 X12 协议中配置了功能确认 |
+| isMessageFailed | 是 | Boolean | X12 消息是否失败 |
 | gs01 | 否 | String | 功能标识符代码 |
 | gs02 | 否 | String | 应用程序发送者的代码 |
 | gs03 | 否 | String | 应用程序接收者的代码 |
@@ -330,7 +330,7 @@ ms.locfileid: "80243445"
 }
 ```
 
-| 属性 | 必须 | 类型 | 说明 |
+| properties | 必选 | 类型 | 说明 |
 |----------|----------|------|-------------|
 | senderPartnerName | 否 | String | X12 消息发送者的合作伙伴名称 |
 | receiverPartnerName | 否 | String | X12 消息接收者的合作伙伴名称 |
@@ -346,7 +346,7 @@ ms.locfileid: "80243445"
 | gsSegment | 否 | String | 与功能组控制编号相同，但仅在特定情况下填充 |
 | respondingfunctionalGroupControlNumber | 否 | String | 原始功能组的控制编号 |
 | respondingFunctionalGroupId | 否 | String | 在确认功能组 ID 中映射到 AK101 |
-| isMessageFailed | 布尔 | X12 消息是否失败 |
+| isMessageFailed | Boolean | X12 消息是否失败 |
 | statusCode | 是 | 枚举 | 确认状态代码，其允许值为：`Accepted`、`Rejected` 和 `AcceptedWithErrors` |
 | processingStatus | 是 | 枚举 | 确认的处理状态，其允许值为：`Received`、`Generated` 和 `Sent` |
 | ak903 | 否 | String | 收到的交易集的数量 |

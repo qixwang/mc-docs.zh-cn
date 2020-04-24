@@ -7,17 +7,17 @@ origin.date: 08/06/2019
 ms.date: 03/23/2020
 ms.author: v-yeche
 ms.openlocfilehash: ad1103d2beccb5699627d63c866123fd2905882e
-ms.sourcegitcommit: 1436f1851342ca5631eb25342eed954adb707af0
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79543878"
 ---
 # <a name="test-your-portal-interface-for-azure-managed-applications"></a>测试 Azure 托管应用程序的门户接口
 
 为托管应用程序[创建 createUiDefinition.json 文件](create-uidefinition-overview.md)之后，需要测试用户体验。 为了简化测试，请使用一个可在门户中加载文件的沙盒环境。 不需要真正部署该托管应用程序。 沙盒在当前的全屏门户体验中提供用户界面。 也可使用脚本来测试接口。 本文对这两种方法都进行了介绍。 建议使用沙盒来预览接口。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * 一个 **createUiDefinition.json** 文件。 如果没有此文件，请复制[示例文件](https://github.com/Azure/azure-quickstart-templates/blob/master/100-marketplace-sample/createUiDefinition.json)。
 
@@ -29,7 +29,7 @@ ms.locfileid: "79543878"
 
     ![显示沙盒](./media/test-createuidefinition/show-sandbox.png)
 
-1. 将空定义替换为 createUiDefinition.json 文件的内容。 选择“预览”。 
+1. 将空定义替换为 createUiDefinition.json 文件的内容。 选择“预览”  。
 
     ![选择“预览”](./media/test-createuidefinition/select-preview.png)
 

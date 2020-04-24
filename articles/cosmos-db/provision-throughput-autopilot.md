@@ -8,10 +8,10 @@ origin.date: 11/04/2019
 ms.date: 03/30/2020
 ms.author: v-yeche
 ms.openlocfilehash: 95bcaae3b9132bbcb490013a86d1b5bd601c109b
-ms.sourcegitcommit: 303a16c7117b6f3495ef0493b4ae8ccb67d7dbba
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80342368"
 ---
 <!--Verified successfully-->

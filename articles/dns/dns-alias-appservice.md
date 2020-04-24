@@ -9,10 +9,10 @@ origin.date: 08/10/2019
 ms.date: 03/23/2020
 ms.author: v-jay
 ms.openlocfilehash: 966f5ed32999eca0e55184cdcb5ab14192d321fe
-ms.sourcegitcommit: 305361c96d1d5288d3dda7e81833820640e2afac
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80115838"
 ---
 # <a name="host-load-balanced-azure-web-apps-at-the-zone-apex"></a>在区域顶点托管负载均衡的 Azure Web 应用
@@ -27,7 +27,7 @@ DNS 协议可防止分配区域顶点的 A 或 AAAA 记录之外的任何内容�
 
 如果没有 Azure 订阅，可在开始前创建一个 [1 元人民币试用帐户](https://wd.azure.cn/pricing/1rmb-trial-full)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 必须具有可用于在 Azure DNS 中托管以供测试的域名。 必须能够完全控制此域。 完全控制包括能够为域设置名称服务器 (NS) 记录。
 
@@ -85,7 +85,7 @@ DNS 协议可防止分配区域顶点的 A 或 AAAA 记录之外的任何内容�
 
 1. 打开你的资源组，并选择你的流量管理器配置文件。
 2. 在左栏中选择“终结点”。 
-3. 选择“添加”   。
+3. 选择 **添加** 。
 4. 参考下表配置终结点：
 
    |类型  |名称  |目标  |位置  |自定义标头设置|
@@ -157,8 +157,8 @@ DNS 协议可防止分配区域顶点的 A 或 AAAA 记录之外的任何内容�
 
 若要详细了解别名记录，请参阅以下文章：
 
-- [教程：配置表示 Azure 公共 IP 地址的别名记录](tutorial-alias-pip.md)
-- [教程：配置别名记录来支持为流量管理器使用顶点域名](tutorial-alias-tm.md)
+- [教程：配置引用 Azure 公共 IP 地址的别名记录](tutorial-alias-pip.md)
+- [教程：使用流量管理器支持顶点域名的别名记录](tutorial-alias-tm.md)
 - [DNS 常见问题](/dns/dns-faq#alias-records)
 
 若要了解如何迁移活动 DNS 名称，请参阅[将活动 DNS 名称迁移到 Azure 应用服务](../app-service/manage-custom-dns-migrate-domain.md)。

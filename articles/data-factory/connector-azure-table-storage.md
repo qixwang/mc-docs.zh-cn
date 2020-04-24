@@ -13,10 +13,10 @@ ms.custom: seo-lt-2019
 origin.date: 08/27/2019
 ms.date: 03/23/2020
 ms.openlocfilehash: 66d6773e8c423488740bad56810729c0bfbacb39
-ms.sourcegitcommit: 71a386ca0d0ecb79a123399b6ab6b8c70ea2aa78
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79497253"
 ---
 # <a name="copy-data-to-and-from-azure-table-storage-by-using-azure-data-factory"></a>使用 Azure 数据工厂向/从 Azure 表存储复制数据
@@ -48,7 +48,7 @@ ms.locfileid: "79497253"
 
 可以使用帐户密钥创建 Azure 存储链接服务。 该链接服务将存储的全局访问权限提供给数据工厂。 支持以下属性。
 
-| 属性 | 说明 | 必须 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为 **AzureTableStorage**。 |是 |
 | connectionString | 为 connectionString 属性指定连接到存储所需的信息。 <br/>还可以将帐户密钥放在 Azure 密钥保管库中，并从连接字符串中拉取 `accountKey` 配置。 有关更多详细信息，请参阅以下示例和[在 Azure 密钥保管库中存储凭据](store-credentials-in-key-vault.md)一文。 |是 |
@@ -117,7 +117,7 @@ ms.locfileid: "79497253"
 
 若要使用共享访问签名身份验证，需支持以下属性。
 
-| 属性 | 说明 | 必须 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为 **AzureTableStorage**。 |是 |
 | sasUri | 向表指定共享访问签名 URI 的 SAS URI。 <br/>将此字段标记为 SecureString，以便安全地将其存储在数据工厂中。 还可以将 SAS 令牌放在 Azure 密钥保管库中，以利用自动轮换以及删除令牌部分。 有关更多详细信息，请参阅以下示例和[在 Azure 密钥保管库中存储凭据](store-credentials-in-key-vault.md)一文。 | 是 |
@@ -188,7 +188,7 @@ ms.locfileid: "79497253"
 
 要向/从 Azure 表复制数据，请将数据集的 type 属性设置为 **AzureTable**。 支持以下属性。
 
-| 属性 | 说明 | 必须 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为 **AzureTable**。 |是 |
 | tableName |链接服务引用的表存储数据库实例中表的名称。 |是 |
@@ -228,7 +228,7 @@ ms.locfileid: "79497253"
 
 要从 Azure 表复制数据，请将复制活动中的源类型设置为“AzureTableSource”  。 复制活动的 **source** 节支持以下属性。
 
-| 属性 | 说明 | 必须 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 复制活动源的 type 属性必须设置为 **AzureTableSource**。 |是 |
 | azureTableSourceQuery |使用自定义表存储查询读取数据。 请参阅以下部分中的示例。 |否 |
@@ -257,7 +257,7 @@ ms.locfileid: "79497253"
 
 若要将数据复制到 Azure 表，请将复制活动中的接收器类型设置为“AzureTableSink”  。 复制活动 **sink** 节支持以下属性。
 
-| 属性 | 说明 | 必须 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 复制活动接收器的 type 属性必须设置为 **AzureTableSink**。 |是 |
 | azureTableDefaultPartitionKeyValue |接收器可以使用的默认分区键值。 |否 |
@@ -333,7 +333,7 @@ ms.locfileid: "79497253"
 | Edm.Binary |byte[] |一个字节数组，最大 64 KB。 |
 | Edm.Boolean |bool |一个布尔值。 |
 | Edm.DateTime |DateTime |一个 64 位值，用协调世界时 (UTC) 表示。 支持的 DateTime 范围从 UTC 公元 (C.E.) 1601 年 1 月 1 日 午夜 12:00 开始。 该范围到 9999 年 12 月 31 日结束。 |
-| Edm.Double |Double |64 位浮点值。 |
+| Edm.Double |double |64 位浮点值。 |
 | Edm.Guid |Guid |128 位全局唯一标识符。 |
 | Edm.Int32 |Int32 |32 位整数。 |
 | Edm.Int64 |Int64 |64 位整数。 |

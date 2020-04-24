@@ -18,7 +18,7 @@
       href: pim-email-notifications.md
     - name: Microsoft 图形 API
       href: pim-apis.md
-- name: 操作指南
+- name: 操作方法指南
   expanded: true
   items:
     - name: 部署 PIM

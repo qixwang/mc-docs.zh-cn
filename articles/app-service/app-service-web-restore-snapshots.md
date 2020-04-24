@@ -9,10 +9,10 @@ ms.author: v-tawe
 ms.reviewer: nicking
 ms.custom: seodec18
 ms.openlocfilehash: 56211f5cd8dbc9cf4c83727604360ae2f585db98
-ms.sourcegitcommit: e500354e2fd8b7ac3dddfae0c825cc543080f476
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79546997"
 ---
 # <a name="restore-an-app-in-azure-from-a-snapshot"></a>在 Azure 中从快照还原应用

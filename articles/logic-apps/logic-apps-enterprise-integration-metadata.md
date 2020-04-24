@@ -10,10 +10,10 @@ origin.date: 01/17/2019
 ms.date: 03/30/2020
 ms.author: v-yeche
 ms.openlocfilehash: 4bee8e57c73dd77b85add31373638da2ada4d126
-ms.sourcegitcommit: 2b084933215d0e7702456730f168d97e00c882a0
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80243447"
 ---
 # <a name="manage-artifact-metadata-in-integration-accounts-with-azure-logic-apps-and-enterprise-integration-pack"></a>使用 Azure 逻辑应用和 Enterprise Integration Pack 管理集成帐户中的项目元数据

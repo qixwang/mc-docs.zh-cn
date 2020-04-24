@@ -9,10 +9,10 @@ ms.topic: conceptual
 origin.date: 03/12/2020
 ms.date: 03/16/2020
 ms.openlocfilehash: 6ae642e5f37603e087bb6ccb9e541653f01de56e
-ms.sourcegitcommit: 1d3d8dfdaf6281f06640cbee7124a1e8bf102c50
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80243984"
 ---
 # <a name="iot-hub-dps-ip-addresses"></a>IoT 中心 DPS IP 地址
@@ -27,7 +27,7 @@ IoT 中心设备预配服务 (DPS) 的公共终结点的 IP 地址前缀定期�
 
 
 
-## <a name="best-practices"></a>最佳实践
+## <a name="best-practices"></a>最佳做法
 
 * 在设备的防火墙配置中添加“允许”规则时，最好是提供[适用协议使用的特定端口](../iot-hub/iot-hub-devguide-protocols.md#port-numbers)。
 

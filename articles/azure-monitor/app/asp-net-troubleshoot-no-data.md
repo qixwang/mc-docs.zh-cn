@@ -7,10 +7,10 @@ ms.date: 6/4/2019
 ms.author: v-lingwu
 author: lingliw
 ms.openlocfilehash: a4ced7b214bf141fc62dc88c1b4ffce351434955
-ms.sourcegitcommit: 305361c96d1d5288d3dda7e81833820640e2afac
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80109781"
 ---
 # <a name="troubleshooting-no-data---application-insights-for-netnet-core"></a>排查无数据问题 - 用于 .NET/.NET Core 的 Application Insights

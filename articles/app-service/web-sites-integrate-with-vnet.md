@@ -9,10 +9,10 @@ ms.date: 03/16/2020
 ms.author: v-tawe
 ms.custom: seodec18
 ms.openlocfilehash: 11d54a67e700aa02c68035455e3b6d9eab456ad0
-ms.sourcegitcommit: e500354e2fd8b7ac3dddfae0c825cc543080f476
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79546921"
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>将应用与 Azure 虚拟网络进行集成

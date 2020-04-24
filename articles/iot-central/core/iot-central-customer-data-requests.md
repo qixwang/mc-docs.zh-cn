@@ -9,10 +9,10 @@ ms.service: iot-central
 services: iot-central
 manager: timlt
 ms.openlocfilehash: ede46e38c39c4518d1d8019fb2cbc541eb09a5c4
-ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80343143"
 ---
 # <a name="summary-of-customer-data-request-features"></a>客户数据请求功能摘要

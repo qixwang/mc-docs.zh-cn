@@ -10,23 +10,23 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: eab77f47eac7a6faa7c6ddefbf9f9a1d7c0d15a5
-ms.sourcegitcommit: 1d3d8dfdaf6281f06640cbee7124a1e8bf102c50
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80243892"
 ---
 # <a name="understand-how-azure-iot-edge-uses-certificates"></a>了解 Azure IoT Edge 如何使用证书
 
-模块和下游 IoT 设备使用 IoT Edge 证书来验证 [IoT Edge 中心](iot-edge-runtime.md#iot-edge-hub)运行时模块的身份和合法性。 这些验证可实现运行时、模块和 IoT 设备之间的 TLS（传输层安全性）安全连接。 与 IoT 中心本身一样，IoT Edge 需要来自 IoT 下游（或叶）设备和 IoT Edge 模块的安全加密连接。 为了建立安全的 TLS 连接，IoT Edge 中心模块将为连接客户端提供服务器证书链，让它们验证身份。
+模块和下游 IoT 设备使用 IoT Edge 证书来验证 [IoT Edge 中心](iot-edge-runtime.md#iot-edge-hub)运行时模块的身份和合法性。 这些验证可实现运行时、模块和 IoT 设备之间的 TLS（传输层安全性）安全连接。 与 IoT 中心本身一样，IoT Edge 需要来自 IoT 下游（或叶）设备和 IoT Edge 模块的安全加密连接。 为了建立安全的 TLS 连接，IoT Edge 中心模块为连接客户端提供服务器证书链，以便它们验证其身份。
 
-本文介绍 IoT Edge 证书在生产、开发和测试方案中的工作原理。 虽然脚本不同（Powershell 与 bash），但 Linux 和 Windows 之间的概念是相同的。
+本文介绍了 IoT Edge 证书如何在生产、开发和测试方案中工作。 虽然脚本不同（Powershell 与 bash），但 Linux 和 Windows 之间的概念是相同的。
 
 ## <a name="iot-edge-certificates"></a>IoT Edge 证书
 
-通常，制造商不是 IoT Edge 设备的最终用户。 有时，两者之间的唯一关系是最终用户（或运营商）购买制造商制造的常规设备。 其他时候，制造商根据合同为运营商制造自定义设备。 IoT Edge 证书设计尝试考虑这两种情况。
+通常，制造商不是 IoT Edge 设备的最终用户。 有时，两者之间的唯一关系是最终用户或操作员购买制造商生产的通用设备。 其他时候，制造商根据合同为运营商制造自定义设备。 IoT Edge 证书设计尝试考虑这两种情况。
 
-下图说明了 IoT Edge 证书使用情况。 根 CA 证书与设备 CA 证书之间可能存在零个、一个或多个中间签名证书，具体取决于涉及的实体数目。 下面演示了一个用例。
+下图说明了 IoT Edge 证书使用情况。 根 CA 证书和设备 CA 证书之间可能存在零个、一个或多个中间签名证书，具体取决于所涉及的实体数量。 下面介绍一个用例。
 
 ![典型证书关系图](./media/iot-edge-certs/edgeCerts-general.png)
 
@@ -36,11 +36,11 @@ ms.locfileid: "80243892"
 
 ### <a name="root-ca-certificate"></a>根 CA 证书
 
-根 CA 证书是整个过程的信任根。 在生产方案中，此 CA 证书通常是从受信任的商业证书颁发机构（例如 Baltimore、Verisign 或 DigiCert）购买的。 如果可以完全控制连接到 IoT Edge 设备的设备，则可使用企业级的证书颁发机构。 在任一情况下，IoT Edge 中心的整个证书链都会汇集在一起，因此叶 IoT 设备必须信任根证书。 可将根 CA 证书存储在受信任的根证书颁发机构存储中，或者在应用程序代码中提供证书详细信息。
+根 CA 证书是整个过程的信任根。 在生产方案中，此 CA 证书通常从受信任的商业证书颁发机构（如 Baltimore、Verisign 或 DigiCert）购买。 如果可完全控制连接到 IoT Edge 设备的设备，即可使用公司级证书颁发机构。 在任一情况下，IoT Edge 中心的整个证书链都会汇集在一起，因此叶 IoT 设备必须信任根证书。 可将根 CA 证书存储在受信任的根证书颁发机构存储中，也可以在应用程序代码中提供证书详细信息。
 
 ### <a name="intermediate-certificates"></a>中间证书
 
-在创建安全设备的典型制造过程中，很少直接使用根 CA 证书，这主要是因为存在泄漏或暴露的风险。 根 CA 证书创建一个或多个中间 CA 证书并对其进行数字签名。 可能只有一个中间证书，也可能存在中间证书链。 需要中间证书链的情景包括：
+在创建安全设备的典型制造过程中，很少直接使用根 CA 证书，这主要是因为存在泄漏或暴露的风险。 根 CA 证书创建并对一个或多个中间 CA 证书进行数字签名。 可能只有一个中间证书，也可能存在中间证书链。 需要中间证书链的情景包括：
 
 * 制造商各部门的层次结构。
 
@@ -52,27 +52,27 @@ ms.locfileid: "80243892"
 
 ### <a name="device-ca-certificate"></a>设备 CA 证书
 
-设备 CA 证书由流程中的最终中间 CA 证书生成并签名。 此证书安装在 IoT Edge 设备本身上，最好是安装在硬件安全模块 (HSM) 等安全存储中。 此外，设备 CA 证书可唯一标识 IoT Edge 设备。 设备 CA 证书可以对其他证书签名。
+设备 CA 证书由流程中的最终中间 CA 证书生成并签名。 此证书安装在 IoT Edge 设备上，最好安装在硬件安全模块 (HSM) 的安全存储中。 此外，设备 CA 证书可唯一标识 IoT Edge 设备。 设备 CA 证书可以对其他证书签名。
 
 ### <a name="iot-edge-workload-ca"></a>IoT Edge 工作负载 CA
 
-当 IoT Edge 首次启动时，[IoT Edge 安全管理器](iot-edge-security-manager.md)会生成工作负荷 CA 证书，这是流程中“运营商”端的第一个证书。 此证书由“设备 CA 证书”生成并签名。 此证书只是另一个中间签名证书，用于生成 IoT Edge 运行时使用的任何其他证书并对其签名。 目前这主要是 IoT Edge 中心服务器证书，下一部分将对此进行介绍，但是，将来可能会包括用于对 IoT Edge 组件进行身份验证的其他证书。
+IoT Edge 首次启动时，[IoT Edge 安全管理器](iot-edge-security-manager.md)会生成工作负载 CA 证书，这是流程“操作员”端的第一个证书。 此证书由“设备 CA 证书”生成并签名。 此证书只是另一个中间签名证书，用于生成 IoT Edge 运行时使用的任何其他证书并对其签名。 今天，下一节主要讨论 IoT Edge 中心服务器证书，但将来可能涵盖用于对 IoT Edge 组件进行身份验证的其他证书。
 
 ### <a name="iot-edge-hub-server-certificate"></a>IoT Edge 中心服务器证书
 
-IoT Edge 中心服务器证书是向叶设备和模块提供的实际证书，用于在建立 IoT Edge 所需的 TLS 连接期间进行身份验证。 此证书提供完整的签名证书链，用于将其生成到叶 IoT 设备必须信任的根 CA 证书。 由 IoT Edge 安全管理器生成后，此 IoT Edge 中心证书的公用名 (CN) 在转换为小写后将设置为 config.yaml 文件中的“hostname”属性。 此配置是与 IoT Edge 混淆的常见原因。
+IoT Edge 中心服务器证书是向设备和模块提供的实际证书，用于在建立 IoT Edge 所需的 TLS 连接期间进行身份验证。 此证书提供完整的签名证书链，用于将其生成到叶 IoT 设备必须信任的根 CA 证书。 由 IoT Edge 安全管理器生成时，此 IoT Edge 中心证书的公用名 (CN) 在转换为小写后将设置为 config.yaml 文件中的“hostname”属性。 此配置是与 IoT Edge 混淆的常见原因。
 
 ## <a name="production-implications"></a>生产影响
 
-一个合理的问题可能是“为什么 IoT Edge 需要‘工作负载 CA’额外的证书？ 难道不能使用设备 CA 证书直接生成 IoT Edge 中心服务器证书吗？” 从技术上讲，它可以。 但是，此“工作负载”中间证书的目的是分离设备制造商和设备操作员之间的关注点。 想象一个场景，销售 IoT Edge 设备或将其从一个客户或转移给另一个客户。 你可能希望制造商提供的设备 CA 证书是不可变的。 但是，应该擦除并重新创建特定于设备操作的“工作负载”证书以用于新部署。
+一个合理的问题可能是“为什么 IoT Edge 需要‘工作负载 CA’额外的证书？ 它无法使用设备 CA 证书直接生成 IoT Edge 中心服务器证书吗？”。 从技术上讲，它可以。 但是，此“工作负载”中间证书的目的是分离设备制造商和设备操作员之间的关注点。 想象一个场景，销售 IoT Edge 设备或将其从一个客户或转移给另一个客户。 你可能希望制造商提供的设备 CA 证书是不可变的。 但是，应该擦除并重新创建特定于设备操作的“工作负载”证书以用于新部署。
 
-由于制造和运营流程是分开的，因此，在准备生产设备时，请考虑以下影响：
+由于生产和操作过程是分开的，因此在准备生产设备时请考虑以下含义：
 
 * 对于任何基于证书的流程，在推出 IoT Edge 设备的整个过程中，应保护和监视根 CA 证书和所有中间 CA 证书。 IoT Edge 设备制造商应制定可靠的流程来正确存储和使用其中间证书。 此外，设备 CA 证书应存储在设备上尽可能安全的存储中，最好是硬件安全模块。
 
-* IoT Edge 中心服务器证书由 IoT Edge 中心提供给连接客户端设备和模块。 设备 CA 证书的公用名 (CN) **不得**与要在 IoT Edge 设备上的 config.yaml 中使用的“hostname”相同。 客户端用于连接到 IoT Edge（例如，通过连接字符串的 GatewayHostName 参数或 MQTT 中的 CONNECT 命令）的名称不能  与设备 CA 证书中使用的公用名相同。 之所以实施此限制，是因为 IoT Edge 中心提供其整个证书链让客户端验证。 如果 IoT Edge 中心服务器证书和设备 CA 证书具有相同的 CN，则会陷入验证循环，并且证书将会失效。
+* IoT Edge 中心服务器证书由 IoT Edge 中心提供给连接的客户端设备和模块。 设备 CA 证书的公用名 (CN) 不得与将在 IoT Edge 设备上 config.yaml 中使用的“主机名”相同  。 客户端用于连接到 IoT Edge（例如，通过连接字符串的 GatewayHostName 参数或 MQTT 中的 CONNECT 命令）的名称不能  与设备 CA 证书中使用的公用名相同。 此限制是因为 IoT Edge 中心提供其整个证书链以供客户端验证。 若 IoT Edge 中心服务器证书和设备 CA 证书具有相同的 CN，则会进入验证循环，证书将失效。
 
-* 由于 IoT Edge 安全守护程序使用设备 CA 证书生成最终的 IoT Edge 证书，因此它本身必须是签名证书，这意味着它具有证书签名功能。 将“V3 基本约束 CA:True”应用到设备 CA 证书会自动设置所需的密钥用法属性。
+* 由于 IoT Edge 安全守护程序使用设备 CA 证书生成最终的 IoT Edge 证书，因此它本身必须是签名证书，这意味着它具有证书签名功能。 将“V3 基本约束 CA:True”应用于设备 CA 证书可自动设置所需的密钥用法属性。
 
 >[!Tip]
 > 若已使用我们的“便利脚本”（参阅下一节）在开发/测试方案中将 IoT Edge 设置为透明网关，并在创建设备 CA 证书时使用与 config.yaml 中的主机名相同的主机名，你可能想知道它的工作原理。 为了简化开发人员体验，便利脚本在传递给脚本的名称末尾追加“.ca”。 因此，若使用“mygateway”作为脚本中的设备名称和 config.yaml 中的主机名，则在用作设备 CA 证书的 CN 之前，前者将转换为 mygateway.ca。
@@ -86,7 +86,7 @@ IoT Edge 中心服务器证书是向叶设备和模块提供的实际证书，�
 
 ## <a name="example-of-iot-edge-certificate-hierarchy"></a>IoT Edge 证书层次结构示例
 
-为举例说明此证书路径，以下屏幕截图来自正在运行的设置为透明网关的 IoT Edge 设备。 OpenSSL 用于连接到 IoT Edge 中心，以及验证和转储证书。
+为举例说明此证书路径，以下屏幕截图来自正在运行的设置为透明网关的 IoT Edge 设备。 OpenSSL 用于连接到 IoT Edge 中心，验证和转储证书。
 
 ![每个级别的证书层次结构的屏幕截图](./media/iot-edge-certs/iotedge-cert-chain.png)
 

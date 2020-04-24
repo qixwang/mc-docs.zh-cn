@@ -14,10 +14,10 @@ origin.date: 08/26/2019
 ms.date: 02/24/2020
 ms.author: apimpm
 ms.openlocfilehash: c8709221922e06489efe2df1b008ad6425f748f5
-ms.sourcegitcommit: 7f8acc663bf3429b391c2c615bed0d1b2107fd7e
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80290082"
 ---
 # <a name="ip-addresses-of-azure-api-management"></a>Azure API 管理的 IP 地址
@@ -102,8 +102,8 @@ API 管理对 VPN 外部的连接使用公共 IP 地址，对 VPN 内的连接�
 
 在 API 管理的“开发人员”、“基本”、“标准”和“高级”层中，公共 IP 地址 (VIP) 在服务的整个生存期内是静态的，但存在以下例外情况：
 
-* 服务被删除并重新创建。
-* 服务订阅被[暂停](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/subscription-lifecycle-api-reference.md#subscription-states)或[警告](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/subscription-lifecycle-api-reference.md#subscription-states)（例如，由于未付款），然后被恢复。
+* 服务被删除，然后重新创建。
+* 服务订阅被[暂停](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/subscription-lifecycle-api-reference.md#subscription-states)或[警告](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/subscription-lifecycle-api-reference.md#subscription-states)（例如，由于未付款），然后恢复。
 * 在该服务中添加或删除 Azure 虚拟网络。
 * 切换 API 管理服务的“外部”和“内部”VNet 部署模式。
 

@@ -6,10 +6,10 @@ origin.date: 01/30/2020
 ms.date: 03/23/2020
 ms.author: v-yeche
 ms.openlocfilehash: 188e638df3d797b02dcc0365af16f079f19de141
-ms.sourcegitcommit: 1436f1851342ca5631eb25342eed954adb707af0
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79543884"
 ---
 # <a name="resources-not-limited-to-800-instances-per-resource-group"></a>没有每个资源组 800 个实例限制的资源

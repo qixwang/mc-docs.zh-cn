@@ -7,10 +7,10 @@ ms.date: 03/23/2020
 ms.topic: tutorial
 ms.author: v-yeche
 ms.openlocfilehash: fdbdfec4f8c719101653dfb58039bbf378cef2a1
-ms.sourcegitcommit: 1436f1851342ca5631eb25342eed954adb707af0
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79543847"
 ---
 # <a name="tutorial-add-a-resource-to-your-resource-manager-template"></a>教程：将资源添加到资源管理器模板

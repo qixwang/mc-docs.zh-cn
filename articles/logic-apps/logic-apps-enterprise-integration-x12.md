@@ -10,10 +10,10 @@ origin.date: 01/31/2017
 ms.date: 03/30/2020
 ms.author: v-yeche
 ms.openlocfilehash: 784f5a77144f532fe8cfe703785496d164b7a337
-ms.sourcegitcommit: 2b084933215d0e7702456730f168d97e00c882a0
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80243567"
 ---
 # <a name="exchange-x12-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>在带有 Enterprise Integration Pack 的 Azure 逻辑应用中交换 X12 消息以实现 B2B 企业集成

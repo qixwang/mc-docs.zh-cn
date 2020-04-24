@@ -9,10 +9,10 @@ ms.service: iot-central
 services: iot-central
 manager: philmea
 ms.openlocfilehash: dee4a21118b7bc15895d5a91ee0a4eff9c3d58f0
-ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80343732"
 ---
 # <a name="configure-rules"></a>配置规则
@@ -27,7 +27,7 @@ IoT Central 中的规则充当一种可自定义的响应手段，它们是基�
 
 使用“目标设备”部分选择要对哪种类型的设备应用此规则。 使用筛选器可以进一步具体化要包含的设备。 筛选器使用设备模板中的属性来筛选设备集。 筛选器本身不会触发操作。 在以下屏幕截图中，目标设备的设备模板类型为“冰箱”。  该筛选器指出，规则只能包含“制造地所在州”属性为“华盛顿”的“冰箱”。   
 
-![Conditions](media/howto-configure-rules/filters.png)
+![条件](media/howto-configure-rules/filters.png)
 
 ## <a name="use-multiple-conditions"></a>使用多个条件
 
@@ -35,7 +35,7 @@ IoT Central 中的规则充当一种可自定义的响应手段，它们是基�
 
 在以下屏幕截图中，条件将检查是否温度大于 70&deg; F 且湿度小于 10。 如果这两个语句均为 true，则规则将评估为 true 并触发操作。
 
-![Conditions](media/howto-configure-rules/conditions.png)
+![条件](media/howto-configure-rules/conditions.png)
 
 ## <a name="use-aggregate-windowing"></a>使用聚合开窗
 

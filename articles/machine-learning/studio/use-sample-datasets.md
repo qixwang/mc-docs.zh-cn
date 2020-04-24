@@ -11,10 +11,10 @@ ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/19/2018
 ms.openlocfilehash: ec8800b210474dfeceb108a5451f005b99eb9b82
-ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80343326"
 ---
 # <a name="use-the-sample-datasets-in-azure-machine-learning-studio-classic"></a>在 Azure 机器学习工作室（经典）中使用示例数据集

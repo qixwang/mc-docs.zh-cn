@@ -9,10 +9,10 @@ ms.author: v-jay
 ms.reviewer: kivenkat
 ms.lastreviewed: 3/9/2020
 ms.openlocfilehash: 62fd19af8bce4ad9a03d96f10f9b2a81b074c7d7
-ms.sourcegitcommit: e500354e2fd8b7ac3dddfae0c825cc543080f476
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79547060"
 ---
 # <a name="run-a-windows-virtual-machine-on-azure-stack-hub"></a>在 Azure Stack Hub 上运行 Windows 虚拟机
@@ -57,11 +57,11 @@ OS 磁盘是存储在 Azure Stack Hub blob 存储中的 VHD，因此即使主机
 
 -   如果需要不会更改的固定 IP 地址 — 例如，如果需要创建 DNS 'A' 记录或将 IP 地址添加到安全列表，请保留[静态 IP 地址](/virtual-network/virtual-networks-reserved-public-ip)。
 
--   还可以为 IP 地址创建完全限定的域名 (FQDN)。 然后，可以在 DNS 中注册指向 FQDN 的 [CNAME 记录](https://en.wikipedia.org/wiki/CNAME_record)。 有关详细信息，请参阅[在 Azure 门户中创建完全限定的域名](/virtual-machines/virtual-machines-windows-portal-create-fqdn)。
+-   还可以为 IP 地址创建完全限定域名 (FQDN)。 然后，可以在 DNS 中注册指向 FQDN 的 [CNAME 记录](https://en.wikipedia.org/wiki/CNAME_record)。 有关详细信息，请参阅[在 Azure 门户中创建完全限定的域名](/virtual-machines/virtual-machines-windows-portal-create-fqdn)。
 
 -   **网络安全组 (NSG)** 。 NSG 用于允许或拒绝流向 VM 的网络流量。 NSG 可与子网或单个 VM 实例相关联。
 
-所有 NSG 都包含一组[默认规则](/virtual-network/security-overview#default-security-rules)，其中包括阻止所有入站 Internet 流量的规则。 无法删除默认规则，但其他规则可以覆盖它们。 若要启用 Internet 流量，请创建允许特定端口入站流量的规则 — 例如，将端口 80 用于 HTTP。 若要启用 RDP，请添加允许 TCP 端口 3389 的入站流量的 NSG 规则。
+所有 NSG 都包含一组[默认规则](/virtual-network/security-overview#default-security-rules)，其中包括阻止所有入站 Internet 流量的规则。 无法删除默认规则，但其他规则可以覆盖它们。 若要启用 Internet 流量，请创建允许特定端口的入站流量的规则 — 例如，将端口 80 用于 HTTP。 若要启用 RDP，请添加允许 TCP 端口 3389 的入站流量的 NSG 规则。
 
 ## <a name="operations"></a>操作
 
@@ -78,9 +78,9 @@ OS 磁盘是存储在 Azure Stack Hub blob 存储中的 VHD，因此即使主机
 
 **备份** 有关保护 Azure Stack Hub IaaS VM 的建议，请参阅[保护在 Azure Stack Hub 上部署的 VM](azure-stack-manage-vm-protect.md)。
 
-**停止 VM**。 Azure 对“已停止”和“已解除分配”状态进行了区分。 VM 状态为“已停止”时，将计费，但 VM 为“已解除分配”状态时，则不计费。 在 Azure Stack Hub 门户中，“停止”  按钮可解除分配 VM。 如果在已登录时通过 OS 关闭，VM 会停止，但  不会解除分配，因此仍会产生费用。
+**停止 VM**。 Azure 对“已停止”和“已解除分配”状态做了区分。 当 VM 状态为已停止时（而不是当 VM 已解除分配时）将向你收费。 在 Azure Stack Hub 门户中，“停止”  按钮可解除分配 VM。 如果在已登录时通过 OS 关闭，VM 会停止，但  不会解除分配，因此仍会产生费用。
 
-**删除 VM**。 如果删除 VM，不会删除 VM 磁盘。 这意味着可以安全地删除 VM，而不会丢失数据。 但是，仍将收取存储费用。 若要删除 VM 磁盘，请删除托管磁盘对象。 若要防止意外删除，请使用*资源锁*锁定整个资源组或锁定单个资源（如 VM）。
+**删除 VM**。 如果删除 VM，不会删除 VM 磁盘。 这意味着可以安全地删除 VM，而不会丢失数据。 但是，仍将向你收取存储费用。 若要删除 VM 磁盘，请删除托管磁盘对象。 若要防止意外删除，请使用*资源锁*锁定整个资源组或锁定单个资源（如 VM）。
 
 ## <a name="security-considerations"></a>安全注意事项
 
@@ -88,9 +88,9 @@ OS 磁盘是存储在 Azure Stack Hub blob 存储中的 VHD，因此即使主机
 
 **修补程序管理**。 在 VM 上配置修补程序管理。 如果启用，安全中心会检查是否缺少任何安全更新和关键更新。 使用 VM 上的[组策略设置](https://docs.microsoft.com/windows-server/administration/windows-server-update-services/deploy/4-configure-group-policy-settings-for-automatic-updates)可启用自动系统更新。
 
-**反恶意软件**。 如果启用，安全中心将检查是否已安装反恶意软件。 还可以使用安全中心从 Azure 门户中安装反恶意软件。
+**反恶意软件**。 如果启用，安全中心会检查是否已安装反恶意软件。 还可以使用安全中心从 Azure 门户中安装反恶意软件。
 
-**访问控制**。 使用[基于角色的访问控制 (RBAC)](/active-directory/role-based-access-control-what-is) 来控制对 Azure 资源的访问。 RBAC 允许你将授权角色分配给开发运营团队的成员。 例如，“读者”角色可以查看 Azure 资源，但不能创建、管理或删除这些资源。 某些权限特定于 Azure 资源类型。 例如，“虚拟机参与者”角色可以执行重启或解除分配 VM、重置管理员密码、创建新的 VM 等操作。 可能对此体系结构有用的其他[内置 RBAC 角色](/active-directory/role-based-access-built-in-roles)包括[开发测试实验室用户](/active-directory/role-based-access-built-in-roles#devtest-labs-user)和[网络参与者](/active-directory/role-based-access-built-in-roles#network-contributor)。
+**访问控制**。 使用[基于角色的访问控制 (RBAC)](/active-directory/role-based-access-control-what-is) 来控制对 Azure 资源的访问。 RBAC 允许将授权角色分配给开发运营团队的成员。 例如，“读者”角色可以查看 Azure 资源，但不能创建、管理或删除这些资源。 某些权限特定于 Azure 资源类型。 例如，“虚拟机参与者”角色可以执行重启或解除分配 VM、重置管理员密码、创建新的 VM 等操作。 可能对此体系结构有用的其他[内置 RBAC 角色](/active-directory/role-based-access-built-in-roles)包括[开发测试实验室用户](/active-directory/role-based-access-built-in-roles#devtest-labs-user)和[网络参与者](/active-directory/role-based-access-built-in-roles#network-contributor)。
 
 > [!Note]  
 > RBAC 不限制已登录到 VM 的用户可以执行的操作。 这些权限由来宾 OS 上的帐户类型决定。

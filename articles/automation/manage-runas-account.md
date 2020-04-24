@@ -7,10 +7,10 @@ origin.date: 05/24/2019
 ms.date: 03/30/2020
 ms.topic: conceptual
 ms.openlocfilehash: b4c59cd32284ae84241a8331a0ba906bd5d8b77f
-ms.sourcegitcommit: 90d01d08faf8adb20083363a8e4e5aab139cd9b2
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80290381"
 ---
 # <a name="manage-azure-automation-run-as-accounts"></a>管理 Azure 自动化运行方式帐户
@@ -447,7 +447,7 @@ $roleDefinition | Set-AzureRMRoleDefinition
 
 ### <a name="add-permissions-to-key-vault"></a>将权限添加到 Key Vault
 
-可以允许 Azure 自动化验证 Key Vault 和运行方式帐户服务主体是否正在使用自定义角色定义。 必须具备以下条件：
+可以允许 Azure 自动化验证 Key Vault 和运行方式帐户服务主体是否正在使用自定义角色定义。 必须：
 
 * 授予对 Key Vault 的权限。
 * 设置访问策略。

@@ -9,10 +9,10 @@ origin.date: 08/09/2019
 ms.date: 03/23/2020
 ms.author: v-jay
 ms.openlocfilehash: 18bc090ce5c4fac9d877f8d07976816c8f433902
-ms.sourcegitcommit: 305361c96d1d5288d3dda7e81833820640e2afac
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80115837"
 ---
 # <a name="azure-dns-alias-records-overview"></a>Azure DNS 别名记录概述
@@ -78,6 +78,6 @@ DNS 协议会阻止在区域顶点分配 CNAME 记录。 例如，如果你的�
 
 若要详细了解别名记录，请参阅以下文章：
 
-- [教程：配置表示 Azure 公共 IP 地址的别名记录](tutorial-alias-pip.md)
-- [教程：配置别名记录来支持为流量管理器使用顶点域名](tutorial-alias-tm.md)
+- [教程：配置引用 Azure 公共 IP 地址的别名记录](tutorial-alias-pip.md)
+- [教程：使用流量管理器支持顶点域名的别名记录](tutorial-alias-tm.md)
 - [DNS 常见问题](/dns/dns-faq#alias-records)

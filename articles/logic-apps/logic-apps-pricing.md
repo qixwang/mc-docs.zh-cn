@@ -10,10 +10,10 @@ origin.date: 07/19/2019
 ms.date: 03/30/2020
 ms.author: v-yeche
 ms.openlocfilehash: 85046cfd57d2a53ca3a8887a522b7c3c07229131
-ms.sourcegitcommit: 2b084933215d0e7702456730f168d97e00c882a0
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80243258"
 ---
 # <a name="pricing-model-for-azure-logic-apps"></a>Azure 逻辑应用的定价模型

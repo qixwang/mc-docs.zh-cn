@@ -6,10 +6,10 @@ origin.date: 03/09/2020
 ms.date: 03/23/2020
 ms.author: v-yeche
 ms.openlocfilehash: b94938848d94f111b100448b3290aee0b4e6939e
-ms.sourcegitcommit: 1436f1851342ca5631eb25342eed954adb707af0
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79543722"
 ---
 # <a name="create-resources-at-the-management-group-level"></a>在管理组级别创建资源
@@ -79,7 +79,7 @@ New-AzManagementGroupDeployment `
 对于管理组部署，在使用模板函数时有一些重要注意事项：
 
 * 不支持 [resourceGroup()](template-functions-resource.md#resourcegroup) 函数。 
-* **不**支持 [subscription()](template-functions-resource.md#subscription) 函数。
+* [不](template-functions-resource.md#subscription)支持 **subscription()** 函数。
 * 支持 [reference()](template-functions-resource.md#reference) 和 [list()](template-functions-resource.md#list) 函数。
 * 支持 [resourceId()](template-functions-resource.md#resourceid) 函数。 可以使用它获取在管理组级别部署中使用的资源的资源 ID。 不要为资源组参数提供值。
 

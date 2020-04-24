@@ -17,7 +17,7 @@
               href: QuickStarts/go-analyze.md
             - name: Java
               href: QuickStarts/java-analyze.md
-            - name: Javascript
+            - name: JavaScript
               href: QuickStarts/javascript-analyze.md
             - name: Node.js
               href: QuickStarts/node-analyze.md
@@ -43,7 +43,7 @@
               href: QuickStarts/go-thumb.md
             - name: Java
               href: QuickStarts/java-thumb.md
-            - name: Javascript
+            - name: JavaScript
               href: QuickStarts/javascript-thumb.md
             - name: Node.js
               href: QuickStarts/node-thumb.md
@@ -63,7 +63,7 @@
               href: QuickStarts/go-print-text.md
             - name: Java
               href: QuickStarts/java-print-text.md
-            - name: Javascript
+            - name: JavaScript
               href: QuickStarts/javascript-print-text.md
             - name: Node.js
               href: QuickStarts/node-print-text.md
@@ -79,7 +79,7 @@
               href: QuickStarts/CSharp-hand-text.md
             - name: Java
               href: QuickStarts/java-hand-text.md
-            - name: Javascript
+            - name: JavaScript
               href: QuickStarts/javascript-hand-text.md
             - name: Python
               href: QuickStarts/python-hand-text.md
@@ -127,13 +127,13 @@
       href: concept-recognizing-text.md
     - name: 检测成人和不雅内容
       href: concept-detecting-adult-content.md
-- name: 操作指南
+- name: 操作方法指南
   items:
     - name: 使用计算机视觉
       items:
         - name: Java
           href: Tutorials/java-tutorial.md
-        - name: Javascript
+        - name: JavaScript
           href: Tutorials/javascript-tutorial.md
         - name: Python
           href: Tutorials/PythonTutorial.md
@@ -167,7 +167,7 @@
       items:
         - name: 探索图像处理应用
           href: Tutorials/CSharpTutorial.md
-    - name: 常见问题
+    - name: 常见问题解答
       href: FAQ.md
     - name: 类别分类
       href: Category-Taxonomy.md
@@ -177,7 +177,7 @@
       href: 'https://www.azure.cn/pricing/details/cognitive-services/'
     - name: UserVoice
       href: 'https://support.azure.cn/zh-cn/support/contact/'
-    - name: Stack Overflow
+    - name: 堆栈溢出
       href: 'https://stackoverflow.com/questions/tagged/microsoft-cognitive'
     - name: 区域可用性
       href: 'https://azure.microsoft.com/global-infrastructure/services/?products=all&regions=china-non-regional,china-north,china-north-2,china-east,china-east-2'

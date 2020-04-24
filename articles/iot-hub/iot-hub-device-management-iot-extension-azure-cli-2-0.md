@@ -15,10 +15,10 @@ origin.date: 01/16/2018
 ms.date: 04/06/2019
 ms.author: v-yiso
 ms.openlocfilehash: ed780e56020703398c42a344a05bb55765a2eb4a
-ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80343576"
 ---
 # <a name="use-the-iot-extension-for-azure-cli-for-azure-iot-hub-device-management"></a>针对 Azure IoT 中心设备管理，使用适用于 Azure CLI 的 IoT 扩展
@@ -52,7 +52,7 @@ ms.locfileid: "80343576"
 
 使用各种管理选项运行 Azure CLI 和适用于 Azure CLI 的 IoT 扩展。
 
-## <a name="what-you-need"></a>需要什么
+## <a name="what-you-need"></a>所需条件
 
 * 完成 [Raspberry Pi 联机模拟器](iot-hub-raspberry-pi-web-simulator-get-started.md)教程或其中一个设备教程；例如[将 Raspberry Pi 与 Node.js 配合使用](iot-hub-raspberry-pi-kit-node-get-started.md)。 这些项包括以下要求：
 

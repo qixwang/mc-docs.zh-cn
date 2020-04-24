@@ -12,10 +12,10 @@ origin.date: 07/17/2019
 ms.date: 03/16/2020
 ms.author: v-tawe
 ms.openlocfilehash: 1fdbc7b2ebc4444f18488598c866e0dfdbcf9fe6
-ms.sourcegitcommit: 764b3d26aedce2de0e1948468a706fd3204a3d5e
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79543347"
 ---
 # <a name="securely-save-secret-application-settings-for-a-web-application"></a>安全地保存 Web 应用的密钥应用程序设置

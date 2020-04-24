@@ -11,10 +11,10 @@ ms.author: amlstudiodocs
 ms.custom: seodec18, previous-title='Dedicated capacity for batch execution service jobs - Azure Machine Learning Studio (classic) | Microsoft Docs'
 ms.date: 04/19/2017
 ms.openlocfilehash: 1efd8618be5f11b15343963c71a31711bbf0f43e
-ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80343077"
 ---
 # <a name="azure-batch-service-for-azure-machine-learning-studio-classic-jobs"></a>适用于 Azure 机器学习工作室（经典）作业的 Azure Batch 服务
@@ -113,4 +113,4 @@ https://ussouthcentral.services.azureml.net/subscriptions/80c77c7674ba4c8c82294c
 
 | **使用批处理池处理的时机**    | **使用经典批处理的时机**  |
 |---|---|
-|需要运行大量作业<br>或<br/>需要确定作业将立即运行<br/>或<br/>需要吞吐量保证。 例如，需要在给定时段内运行多项作业，且需按需求扩大计算资源。    | 只运行数项作业<br/>和<br/> 不需立即运行作业 |
+|需要运行大量作业<br>或<br/>需要确定作业将立即运行<br/>或<br/>需要吞吐量保证。 例如，需要在给定时段内运行多项作业，且需按需求扩大计算资源。    | 只运行数项作业<br/>And<br/> 不需立即运行作业 |

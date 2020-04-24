@@ -17,10 +17,10 @@ origin.date: 02/12/2020
 ms.date: 03/16/2020
 ms.author: v-tawe
 ms.openlocfilehash: b67ed9b2314bd0adf1df6749493d942787db199d
-ms.sourcegitcommit: 1d3d8dfdaf6281f06640cbee7124a1e8bf102c50
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80243932"
 ---
 # <a name="capture-events-through-azure-event-hubs-in-azure-blob-storage"></a>通过 Azure 事件中心将事件捕获到 Azure Blob 存储中
@@ -168,4 +168,4 @@ Apache Avro 针对 [Java][Java] 和 [Python][Python] 提供了完整的快速入
 [HDInsight: Address files in Azure storage]:https://docs.azure.cn/hdinsight/hdinsight-hadoop-use-blob-storage#address-files-in-azure-storage
 [Azure Databricks: Azure Blob Storage]:https://docs.databricks.com/spark/latest/data-sources/azure/azure-storage.html
 [Apache Drill: Azure Blob Storage Plugin]:https://drill.apache.org/docs/azure-blob-storage-plugin/
-[大规模流式处理：事件中心捕获]: https://github.com/yorek/streaming-at-scale/tree/master/event-hubs-capture
+[大规模流式处理：事件中心捕获]:https://github.com/yorek/streaming-at-scale/tree/master/event-hubs-capture

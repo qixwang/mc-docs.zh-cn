@@ -13,10 +13,10 @@ ms.reviewer: ''
 origin.date: 12/03/2018
 ms.date: 03/30/2020
 ms.openlocfilehash: 598c89277bfc33bd46e06e5525f0f35240cb81c5
-ms.sourcegitcommit: 90660563b5d65731a64c099b32fb9ec0ce2c51c6
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80341743"
 ---
 # <a name="resolving-transact-sql-differences-during-migration-to-sql-database"></a>解析迁移到 SQL 数据库的过程中的 Transact-SQL 差异
@@ -29,7 +29,7 @@ SQL Server 和 Azure SQL 数据库都完全支持应用程序使用的大多数 
 
 此外，还有一些功能和语法根本不受支持，因为 Azure SQL 数据库旨在将功能与 master 数据库和操作系统的依赖项隔离。 因此，大多数服务器级活动不适用于 SQL 数据库。 T-SQL 语句和选项在配置服务器级选项、操作系统组件或指定文件系统配置时不可用。 需要此类功能时，通常是以某种其他方式从 SQL 数据库或从其他 Azure 功能或服务获取相应的替代项。
 
-例如，高可用性已内置于使用类似于 [Always On 可用性组](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server)的技术的 Azure SQL 数据库中。 SQL 数据库不支持与可用性组相关的 T-SQL 语句，也不支持与 Always On 可用性组相关的动态管理视图。
+例如，高可用性通过类似于 [Always On 可用性组](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server)的技术内置于 Azure SQL 数据库中。 SQL 数据库不支持与可用性组相关的 T-SQL 语句，也不支持与 Always On 可用性组相关的动态管理视图。
 
 有关 SQL 数据库支持和不支持的功能的列表，请参阅  [Azure SQL 数据库功能比较](sql-database-features.md)。 此页上的列表对该“准则和功能”一文进行了补充，并重点介绍了 Transact-SQL 语句。
 
@@ -46,13 +46,13 @@ SQL Server 和 Azure SQL 数据库都完全支持应用程序使用的大多数 
 除了与  [Azure SQL 数据库功能比较](sql-database-features.md)中所述的不支持功能相关的 Transact-SQL 语句外，也不支持以下语句和语句组。 因此，如果要迁移的数据库使用以下任一功能，请重新设计 T-SQL 以消除这些 T-SQL 功能和语句。
 
 - 系统对象的排序规则
-- 相关连接：终结点语句。 SQL 数据库不支持 Windows 身份验证，但支持类似的 Azure Active Directory 身份验证。 某些身份验证类型要求使用最新版本的 SSMS。 有关详细信息，请参阅[使用 Azure Active Directory 身份验证连接到 SQL 数据库或 SQL 数据仓库](sql-database-aad-authentication.md)。
+- 相关的连接：终结点语句。 SQL 数据库不支持 Windows 身份验证，但支持类似的 Azure Active Directory 身份验证。 某些身份验证类型要求使用最新版本的 SSMS。 有关详细信息，请参阅 [使用 Azure Active Directory 身份验证连接到 SQL 数据库或 SQL 数据仓库](sql-database-aad-authentication.md)。
 - 使用三个或四个部分名称的跨数据库查询。 （使用[弹性数据库查询](sql-database-elastic-query-overview.md)支持只读跨数据库查询。）
 - 跨数据库所有权链接, `TRUSTWORTHY` 设置
 - `EXECUTE AS LOGIN` 改用“EXECUTE AS USER”。
 - 支持加密，但可扩展密钥管理除外
 - 事件：事件、事件通知、查询通知
-- 文件位置：与数据库文件定位、大小以及 Azure 自动管理的数据库文件相关的语法。
+- 文件定位：与数据库文件定位、大小以及 Azure 自动管理的数据库文件相关的语法。
 - 高可用性：与通过 Azure 帐户管理的高可用性相关的语法。 这包括备份、还原、Always On、数据库镜像、日志传送、恢复模式的语法。
 - 日志读取器：依赖于在 SQL 数据库上不可用的日志读取器的语法：推送复制、更改数据捕获。 SQL 数据库可以是推送复制项目的订阅服务器。
 - 函数：`fn_get_sql`、`fn_virtualfilestats`、`fn_virtualservernodes`
@@ -62,7 +62,7 @@ SQL Server 和 Azure SQL 数据库都完全支持应用程序使用的大多数 
 - .NET Framework：CLR 与 SQL Server 集成
 - 语义搜索
 - 服务器凭据：改用[数据库范围的凭据](https://msdn.microsoft.com/library/mt270260.aspx)。
-- 服务器级别项：服务器角色，`sys.login_token`。 `GRANT`、`REVOKE` 和 `DENY` 的服务器级权限不可用，某些权限已替换为数据库级权限。 一些有用的服务器级 DMV 具有等效的数据库级 DMV。
+- 服务器级项目：服务器角色、`sys.login_token`。 `GRANT`、`REVOKE` 和 `DENY` 的服务器级权限不可用，某些权限已替换为数据库级权限。 一些有用的服务器级 DMV 具有等效的数据库级 DMV。
 - `SET REMOTE_PROC_TRANSACTIONS`
 - `SHUTDOWN`
 - `sp_addmessage`

@@ -9,10 +9,10 @@ ms.date: 03/17/2020
 ms.author: v-junlch
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
 ms.openlocfilehash: ccb1c5d549f211915ff0d42dbf900e7cccb38d6e
-ms.sourcegitcommit: 71a386ca0d0ecb79a123399b6ab6b8c70ea2aa78
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79497170"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-nodejs"></a>快速入门：将 Azure Redis 缓存与 Node.js 配合使用

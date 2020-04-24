@@ -9,10 +9,10 @@ ms.author: v-jay
 ms.reviewer: avishwan
 ms.lastreviewed: 12/23/2019
 ms.openlocfilehash: 943d0ad2fd45ba2a566a4da6d8e87e02a34fd017
-ms.sourcegitcommit: e500354e2fd8b7ac3dddfae0c825cc543080f476
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79547057"
 ---
 # <a name="download-marketplace-items-to-azure-stack-hub"></a>将市场项下载到 Azure Stack Hub 

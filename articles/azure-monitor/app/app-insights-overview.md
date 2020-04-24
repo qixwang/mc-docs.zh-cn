@@ -8,10 +8,10 @@ origin.date: 06/03/2019
 ms.date: 3/17/2020
 ms.author: v-lingwu
 ms.openlocfilehash: 7fad55c63684bf64f15ecd1a1f87d612536b128e
-ms.sourcegitcommit: 305361c96d1d5288d3dda7e81833820640e2afac
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80108515"
 ---
 # <a name="what-is-application-insights"></a>什么是 Application Insights？
@@ -56,14 +56,14 @@ Application Insights 主要面向开发团队，旨在帮助用户了解应用�
 | [**应用程序映射**](../../azure-monitor/app/app-map.md)<br/>应用的组件，包含关键指标和警报。 |![应用程序映射](./media/app-insights-overview/appmap-tn.png)  |
 | [**使用情况分析**](../../azure-monitor/app/usage-overview.md)<br/>分析用户细分和保留情况。|![留存情况工具](./media/app-insights-overview/retention.png) |
 | [**实例数据的诊断搜索**](../../azure-monitor/app/diagnostic-search.md)<br/>搜索和筛选事件，例如请求、异常、依赖项调用、日志跟踪和页面视图。  |![搜索遥测](./media/app-insights-overview/search-tn.png) |
-| [**聚合数据的指标资源管理器**](../../azure-monitor/app/metrics-explorer.md)<br/>浏览、筛选和细分聚合的数据，例如请求率、故障率和异常率；响应时间、页面加载时间。 |![指标](./media/app-insights-overview/metrics-tn.png) |
+| [**聚合数据的指标资源管理器**](../../azure-monitor/app/metrics-explorer.md)<br/>浏览、筛选和细分聚合的数据，例如请求率、故障率和异常率；响应时间、页面加载时间。 |![度量值](./media/app-insights-overview/metrics-tn.png) |
 | [**仪表板**](../../azure-monitor/app/overview-dashboard.md)<br/>混合使用来自多个资源的数据并与他人共享。 对于多组件应用程序和在团队聊天室中连续显示很有用。 |![仪表板示例](./media/app-insights-overview/dashboard-tn.png) |
 | [**实时指标流**](../../azure-monitor/app/live-stream.md)<br/>部署新的生成时，观看这些准实时性能指示器，确保一切按预期工作。 |![实时指标示例](./media/app-insights-overview/live-metrics-tn.png) |
 | [**分析**](../../azure-monitor/log-query/log-query-overview.md)<br/>使用此功能强大的查询语言，回答有关应用的性能和使用情况的疑难问题。 |![分析示例](./media/app-insights-overview/analytics-tn.png) |
 | [**Visual Studio**](../../azure-monitor/app/visual-studio.md)<br/>查看代码中的性能数据。 从堆栈跟踪转到代码。|![Visual Studio](./media/app-insights-overview/visual-studio-tn.png) |
 | [**快照调试器**](../../azure-monitor/app/snapshot-debugger.md)<br/>使用参数值调试从实时操作采样的快照。|![Visual Studio](./media/app-insights-overview/snapshot.png) |
 | [**REST API**](https://dev.applicationinsights.io/)<br/>编写代码以对指标和原始数据运行查询。| ![REST API](./media/app-insights-overview/rest-tn.png) |
-| [**连续导出**](../../azure-monitor/app/export-telemetry.md)<br/>原始数据到达后，立即将其批量导出到存储。 |![导出](./media/app-insights-overview/export-tn.png) |
+| [**连续导出**](../../azure-monitor/app/export-telemetry.md)<br/>原始数据到达后，立即将其批量导出到存储。 |![Export](./media/app-insights-overview/export-tn.png) |
 
 ## <a name="how-do-i-use-application-insights"></a>如何使用 Application Insights？
 
@@ -95,8 +95,8 @@ Application Insights 是世纪互联 Azure 中托管的众多服务之一，遥�
 
 * **运行时：检测服务器上的 Web 应用。** 非常适合已部署的应用程序。 避免任何代码更新。
   * [**在 Azure Web 应用中托管的 ASP.NET 或 ASP.NET Core 应用程序**](../../azure-monitor/app/azure-web-apps.md)
-  * [在 Azure VM 或 Azure 虚拟机规模集的 IIS 中托管的 ASP.NET 应用程序](../../azure-monitor/app/azure-vm-vmss-apps.md) 
-  * [在 VM 的 IIS 中托管的 ASP.NET 应用程序](../../azure-monitor/app/monitor-performance-live-website-now.md) 
+  * [在 Azure VM 或 Azure 虚拟机规模集的 IIS 中托管的 ASP.NET 应用程序  ](../../azure-monitor/app/azure-vm-vmss-apps.md)
+  * [在 VM 的 IIS 中托管的 ASP.NET 应用程序  ](../../azure-monitor/app/monitor-performance-live-website-now.md)
 * **开发时：将 Application Insights 添加到代码。** 可以自定义遥测数据收集和发送其他遥测数据。
   * [ASP.NET 应用程序](../../azure-monitor/app/asp-net.md)
   * [ASP.NET Core 应用程序](../../azure-monitor/app/asp-net-core.md)

@@ -12,10 +12,10 @@ ms.author: v-yiso
 author: dominicbetts
 origin.date: 11/12/2019
 ms.openlocfilehash: 2eba821758937b691a152a2c7e89e9b0c129e43d
-ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80343128"
 ---
 # <a name="tutorial-export-data-from-azure-iot-central-and-visualize-insights-in-power-bi"></a>教程：从 Azure IoT Central 导出数据，并在 Power BI 中可视化见解
@@ -476,7 +476,7 @@ Power BI 仪表板将显示零售监视应用程序中的数据。 在此解决�
 | ------- | ------- | ------- | ------- | ------- |
 | 数据集 | 占用传感器 | 占用传感器 | 占用传感器 | 占用传感器 |
 | 可视化类型 | 簇状柱形图 | 簇状柱形图 | 仪表 | 仪表 |
-| 轴    | Timestamp | Timestamp | 不适用 | 不适用 |
+| 轴    | Timestamp | Timestamp | 不适用 | 空值 |
 | Value | 停留时间 1 | 停留时间 2 | 队列长度 1 | 队列长度 2 |
 | 时间范围 | 60 分钟 | 60 分钟 |  不适用 | 空值 |
 | 标题 | 停留时间 | 停留时间 | 队列长度 | 队列长度 |

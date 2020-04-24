@@ -14,10 +14,10 @@ ms.reviewer: mathoma, carlrab
 origin.date: 06/25/2019
 ms.date: 03/30/2020
 ms.openlocfilehash: 62afebcca2701021d625a6161680e0dc796ea1ad
-ms.sourcegitcommit: 90660563b5d65731a64c099b32fb9ec0ce2c51c6
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80341837"
 ---
 # <a name="overview-of-business-continuity-with-azure-sql-database"></a>使用 Azure SQL 数据库确保业务连续性的相关概述
@@ -28,7 +28,7 @@ Azure SQL 数据库中的**业务连续性**是指在遇到中断（尤其是计
 - 恶意攻击者成功删除了数据或数据库。
 - 地震导致断电和暂时性的数据中心停运。
 
-本概述介绍 Azure SQL 数据库针对业务连续性和灾难恢复所提供的功能。 了解用于从干扰性事件恢复的选项、建议和教程，这些事件可能导致数据丢失或者数据库和应用程序无法使用。 了解对一些情况的处理方式，包括用户或应用程序错误影响数据完整性、Azure 区域发生服务中断，或者应用程序需要维护。
+本概述介绍 Azure SQL 数据库针对业务连续性和灾难恢复所提供的功能。 了解用于从干扰性事件恢复的选项、建议和教程，这些事件可能导致数据丢失或者数据库和应用程序无法使用。 了解对一些情况的处理方式，包括用户或应用程序错误影响数据完整性、Azure 区域服务中断，或者应用程序需要维护。
 
 ## <a name="sql-database-features-that-you-can-use-to-provide-business-continuity"></a>有利于业务连续性的 SQL 数据库功能
 
@@ -47,7 +47,7 @@ SQL 数据库还提供多种业务连续性功能，用于缓解各种计划外�
 
 - 使用[时态表](sql-database-temporal-tables.md)可以从任意时间点还原行版本。
 - 使用[内置自动备份](sql-database-automated-backups.md)和[时间点还原](sql-database-recovery-using-backups.md#point-in-time-restore)可将整个数据库还原到已配置保留期（最长为 35 天）内的某个时间点。
-- 如果 **SQL 数据库服务器尚未删除**，可将[已删除的数据库还原](sql-database-recovery-using-backups.md#deleted-database-restore)到删除时的时间点。
+- 如果 [SQL 数据库服务器尚未删除](sql-database-recovery-using-backups.md#deleted-database-restore)，可将**已删除的数据库还原**到删除时的时间点。
 - 使用[长期备份保留](sql-database-long-term-retention.md)可将备份保留长达 10 年之久。
 - 使用[活动异地复制](sql-database-active-geo-replication.md)，可以创建可读取的副本，并且在发生数据中心中断或应用程序升级期间手动故障转移到任何副本。
 - 发生数据中心中断时，应用程序可以通过[自动故障转移组](sql-database-auto-failover-group.md#auto-failover-group-terminology-and-capabilities)自动恢复。
@@ -64,7 +64,7 @@ SQL 数据库还提供多种业务连续性功能，用于缓解各种计划外�
 
 |                                              | 异地复制 | 故障转移组  |
 |:---------------------------------------------| :-------------- | :----------------|
-| 自动故障转移                           |     否          |      是         |
+| 自动故障转移 (automatic failover)                           |     否          |      是         |
 | 同时故障转移多个数据库  |     否          |      是         |
 | 用户必须在故障转移后更新连接字符串      |     是         |      否          |
 | 支持托管实例                   |     否          |      是         |
@@ -131,7 +131,7 @@ Azure 数据中心会罕见地发生中断。 发生中断时，业务可能仅�
 如果要将自动备份用于异地冗余存储（默认情况下已启用），则可以使用[异地还原](sql-database-disaster-recovery.md#recover-using-geo-restore)恢复数据库。 恢复通常在 12 小时内进行 - 最多丢失 1 小时的数据，具体取决于上次日志备份的执行和复制时间。 在恢复完成之前，数据库无法记录任何事务或响应任何查询。 请注意，异地还原仅将数据库还原到上一个可用时间点。
 
 > [!NOTE]
-> 如果数据中心在应用程序切换到恢复的数据库之前就重新联机，可以取消恢复。
+> 如果数据中心在应用程序切换到恢复的数据库之前就重新联机，只要取消恢复即可。
 
 ### <a name="perform-post-failover--recovery-tasks"></a>执行故障转移/恢复后任务
 

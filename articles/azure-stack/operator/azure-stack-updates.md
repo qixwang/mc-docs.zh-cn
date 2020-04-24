@@ -9,10 +9,10 @@ ms.author: v-jay
 ms.lastreviewed: 09/10/2019
 ms.reviewer: ppacent
 ms.openlocfilehash: a250248e6949a31561f6977b3e6cb50cbed9e2a4
-ms.sourcegitcommit: e500354e2fd8b7ac3dddfae0c825cc543080f476
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79546847"
 ---
 # <a name="manage-updates-in-azure-stack-hub"></a>在 Azure Stack Hub 中管理更新

@@ -18,10 +18,10 @@ ms.author: v-tawe
 ms.reviewer: jowargo
 ms.lastreviewed: 04/04/2019
 ms.openlocfilehash: 824d6dd91709df2a41c0df38549f30be0b89a80f
-ms.sourcegitcommit: 303a16c7117b6f3495ef0493b4ae8ccb67d7dbba
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80342425"
 ---
 # <a name="diagnose-dropped-notifications-in-azure-notification-hubs"></a>诊断 Azure 通知中心内删除通知的问题

@@ -6,10 +6,10 @@ origin.date: 08/01/2018
 ms.date: 03/23/2020
 ms.author: v-yeche
 ms.openlocfilehash: 225393b85639283016ebd54922d2fe2a9e29bb3a
-ms.sourcegitcommit: 1436f1851342ca5631eb25342eed954adb707af0
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79543909"
 ---
 # <a name="resolve-errors-for-parent-resources"></a>解决父资源的错误

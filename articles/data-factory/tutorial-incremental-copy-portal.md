@@ -13,10 +13,10 @@ ms.custom: seo-dt-2019
 origin.date: 01/11/2018
 ms.date: 03/23/2020
 ms.openlocfilehash: d7af47df7e230c2678e293208c60e2e8e23a00ea
-ms.sourcegitcommit: 71a386ca0d0ecb79a123399b6ab6b8c70ea2aa78
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79497249"
 ---
 # <a name="incrementally-load-data-from-an-azure-sql-database-to-azure-blob-storage-using-the-azure-portal"></a>使用 Azure 门户以增量方式将 Azure SQL 数据库中的数据加载到 Azure Blob 存储

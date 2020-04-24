@@ -9,10 +9,10 @@ ms.author: v-jay
 ms.reviewer: xiaofmao
 ms.lastreviewed: 11/11/2019
 ms.openlocfilehash: d6035d7293ee555631183fc1f34084a76ea6897e
-ms.sourcegitcommit: e500354e2fd8b7ac3dddfae0c825cc543080f476
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79547087"
 ---
 # <a name="connect-storage-explorer-to-an-azure-stack-hub-subscription-or-a-storage-account"></a>将存储资源管理器连接到 Azure Stack Hub 订阅或存储帐户
@@ -99,13 +99,13 @@ ms.locfileid: "79547087"
 
     ![添加帐户 - 存储资源管理器](media/azure-stack-storage-connect-se/add-an-account.png)
 
-3. 选择“**下一步**”。 在“连接到 Azure 存储”对话框中的“Azure 环境”下，选择“使用自定义环境”，然后单击“下一步”。   
+3. 选择“**下一页**”。 在“连接到 Azure 存储”对话框中的“Azure 环境”下，选择“使用自定义环境”，然后单击“下一步”。   
 
     ![连接到 Azure 存储](media/azure-stack-storage-connect-se/connect-to-azure-storage.png)
 
 4. 输入 Azure Stack Hub 自定义环境的所需信息。 
 
-    | 字段 | 注释 |
+    | 字段 | 说明 |
     | ---   | ---   |
     | 环境名称 | 用户可以自定义此字段。 |
     | Azure 资源管理器终结点 | Azure Stack 开发工具包的 Azure 资源管理器资源终结点示例。<br>对于运营商： https://adminmanagement.local.azurestack.external <br> 对于用户： https://management.local.azurestack.external |

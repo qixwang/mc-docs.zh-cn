@@ -10,10 +10,10 @@ ms.service: iot-central
 services: iot-central
 manager: philmea
 ms.openlocfilehash: b9ac2f80d7985d9ea1b8c8e2fcbe731afda38eab
-ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80343257"
 ---
 # <a name="azure-iot-central-architecture"></a>Azure IoT Central 体系结构
@@ -120,7 +120,7 @@ Azure IoT Central 在云中存储应用程序数据。 存储的应用程序数�
 
 Azure IoT Central 将时序存储用于从设备发送的度量数据。 设备提供的时序数据供分析服务使用。
 
-## <a name="analytics"></a>分析
+## <a name="analytics"></a>Analytics
 
 分析服务负责生成应用程序显示的自定义报告数据。 操作员可以[自定义在应用程序中显示的分析](howto-create-analytics.md)。 分析服务在 [Azure 时序见解](https://azure.microsoft.com/services/time-series-insights/)基础上构建，可以处理从设备发送的度量数据。
 
@@ -153,7 +153,7 @@ Azure IoT Central 将时序存储用于从设备发送的度量数据。 设备�
 
 ## <a name="role-based-access-control-rbac"></a>基于角色的访问控制 (RBAC)
 
-管理员可以使用预定义角色之一或通过创建自定义角色来为 Azure IoT Central 应用程序[定义访问规则](howto-manage-users-roles.md)。 角色确定用户有权访问的应用程序区域以及可执行的操作。
+管理员可以使用预定义角色之一或通过创建自定义角色来为 Azure IoT Central 应用程序[定义访问规则](howto-manage-users-roles.md)。 角色决定了用户有权访问哪些应用程序区域以及可执行哪些操作。
 
 ## <a name="security"></a>安全性
 

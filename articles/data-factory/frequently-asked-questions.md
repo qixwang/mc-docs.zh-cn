@@ -11,10 +11,10 @@ ms.topic: conceptual
 origin.date: 02/10/2020
 ms.date: 03/23/2020
 ms.openlocfilehash: 61f0513a5c02caf14ee625ffd9b9eff99c25c36f
-ms.sourcegitcommit: 71a386ca0d0ecb79a123399b6ab6b8c70ea2aa78
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79497349"
 ---
 # <a name="azure-data-factory-faq"></a>Azure 数据工厂常见问题解答

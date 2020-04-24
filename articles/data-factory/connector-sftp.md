@@ -14,10 +14,10 @@ ms.custom: seo-lt-2019
 origin.date: 03/02/2020
 ms.date: 03/23/2020
 ms.openlocfilehash: e614c12f4701b4bfd6396026d3882ad74ba946a5
-ms.sourcegitcommit: 71a386ca0d0ecb79a123399b6ab6b8c70ea2aa78
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79497352"
 ---
 # <a name="copy-data-from-and-to-sftp-server-using-azure-data-factory"></a>使用 Azure 数据工厂从/向 SFTP 服务器复制数据

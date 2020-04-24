@@ -10,10 +10,10 @@ ms.author: v-jay
 ms.reviewer: xiaofmao
 ms.lastreviewed: 11/11/2019
 ms.openlocfilehash: 7502ee727fad8b3538dc741a222e247d26714355
-ms.sourcegitcommit: e500354e2fd8b7ac3dddfae0c825cc543080f476
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79547050"
 ---
 # <a name="update-the-sql-resource-provider"></a>更新 SQL 资源提供程序

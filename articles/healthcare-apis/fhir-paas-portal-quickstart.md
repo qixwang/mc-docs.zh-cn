@@ -9,10 +9,10 @@ ms.topic: quickstart
 ms.date: 02/07/2019
 ms.author: mihansen
 ms.openlocfilehash: 022c131058609e8d65d7b1699caf7bf0c44ac363
-ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80343836"
 ---
 # <a name="quickstart-deploy-azure-api-for-fhir-using-azure-portal"></a>快速入门：使用 Azure 门户部署 Azure API for FHIR

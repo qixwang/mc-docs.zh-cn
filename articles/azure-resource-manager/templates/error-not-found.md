@@ -6,13 +6,13 @@ origin.date: 01/21/2020
 ms.date: 03/23/2020
 ms.author: v-yeche
 ms.openlocfilehash: b8a3e778ae46eef15debc793bd4149d8a309e4c8
-ms.sourcegitcommit: 1436f1851342ca5631eb25342eed954adb707af0
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79543911"
 ---
-# <a name="resolve-not-found-errors-for-azure-resources"></a>解决 Azure 资源找不到错误
+# <a name="resolve-not-found-errors-for-azure-resources"></a>解决找不到 Azure 资源的错误
 
 本文介绍部署过程中找不到资源时可能看到的错误。
 
@@ -39,7 +39,7 @@ group {resource group name} was not found.
 
 ## <a name="solution-1---set-dependencies"></a>解决方案 1 - 设置依赖关系
 
-如果尝试在模板中部署缺少的资源，请检查是否需要添加依赖关系。 如果可能，Resource Manager 会通过并行创建资源来优化部署。 如果一个资源必须在另一个资源之后部署，则需在模板中使用 dependsOn 元素  。 例如，在部署 Web 应用时，应用服务计划必须存在。 如果未指定该 Web 应用与应用服务计划的依赖关系，则 Resource Manager 会同时创建这两个资源。 会收到一条错误消息，指出未能找到应用服务计划资源，因为尝试在 Web 应用上设置属性时它尚不存在。 在 Web 应用中设置依赖关系可避免此错误。
+如果尝试在模板中部署缺少的资源，请检查是否需要添加依赖关系。 如果可能，Resource Manager 将通过并行创建资源来优化部署。 如果一个资源必须在另一个资源之后部署，则需在模板中使用 dependsOn 元素  。 例如，在部署 Web 应用时，应用服务计划必须存在。 如果未指定该 Web 应用与应用服务计划的依赖关系，则 Resource Manager 会同时创建这两个资源。 会收到一条错误消息，指出未能找到应用服务计划资源，因为尝试在 Web 应用上设置属性时它尚不存在。 通过在 Web 应用中设置依赖关系可避免此错误。
 
 ```json
 {
@@ -74,7 +74,7 @@ group {resource group name} was not found.
 
 ## <a name="solution-2---get-resource-from-different-resource-group"></a>解决方案 2 - 从其他资源组获取资源
 
-当资源未存在于要部署到的资源组中时，请使用 [resourceId 函数](template-functions-resource.md#resourceid)获取资源的完全限定名称。
+如果资源所在的资源组与要向其部署资源的资源组不同，请使用 [resourceId 函数](template-functions-resource.md#resourceid)获取资源的完全限定名。
 
 ```json
 "properties": {
@@ -85,7 +85,7 @@ group {resource group name} was not found.
 
 ## <a name="solution-3---check-reference-function"></a>解决方案 3 - 检查引用函数
 
-查找包含 [reference](template-functions-resource.md#reference) 函数的表达式。 提供的值因资源是否位于同一模板、资源组和订阅中而有所不同。 再次确认为方案提供的是所需的参数值。 如果资源位于不同的资源组中，请提供完整的资源 ID。 例如，若要引用另一个资源组中的存储帐户，请使用：
+查找包含 [reference](template-functions-resource.md#reference) 函数的表达式。 提供的值根据资源是否位于相同的模板、资源组和订阅而有所不同。 再次确认为方案提供的是所需的参数值。 如果资源位于另一资源组，请提供完整的资源 ID。 例如，要引用另一资源组中的存储帐户，请使用：
 
 ```json
 "[reference(resourceId('exampleResourceGroup', 'Microsoft.Storage/storageAccounts', 'myStorage'), '2017-06-01')]"

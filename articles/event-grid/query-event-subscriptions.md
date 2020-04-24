@@ -9,10 +9,10 @@ origin.date: 01/23/2020
 ms.date: 3/16/2020
 ms.author: v-lingwu
 ms.openlocfilehash: 0912ad56a69cffd827749fb2cdc199afa92d379b
-ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/17/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79452595"
 ---
 # <a name="query-event-grid-subscriptions"></a>查询事件网格订阅 

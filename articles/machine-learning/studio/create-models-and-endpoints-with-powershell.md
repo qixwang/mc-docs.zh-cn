@@ -11,17 +11,17 @@ ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 04/04/2017
 ms.openlocfilehash: 1b3f2cf66fbc378c75954ad1e8777de99f6f8d45
-ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80343085"
 ---
 # <a name="use-powershell-to-create-studio-classic-models-and-web-service-endpoints-from-one-experiment"></a>使用 PowerShell 从一个试验创建多个工作室（经典）模型和 Web 服务终结点
 
 [!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
-这是一个常见的机器学习问题：你需要创建具有相同训练工作流并使用相同算法的多个模型， 但是需要它们使用不同的训练数据集作为输入。 本文演示如何仅使用单个试验在 Azure 机器学习工作室（经典）中大规模地执行此操作。
+这是常见的机器学习问题：你需要创建具有相同训练工作流并使用相同算法的多个模型， 但是需要它们使用不同的训练数据集作为输入。 本文演示如何仅使用单个试验在 Azure 机器学习工作室（经典）中大规模地执行此操作。
 
 例如，假设用户拥有全球自行车租赁特许经营业务。 想要生成回归模型以预测基于历史数据的租赁需求。 你在全世界有 1,000 个租赁位置，并为每个位置收集了一个数据集。 它们包括特定于每个位置的重要功能，例如日期、时间、天气、交通。
 
@@ -37,7 +37,7 @@ ms.locfileid: "80343085"
 > 
 
 ## <a name="set-up-the-training-experiment"></a>设置训练实验
-请使用 [Cortana Intelligence 库](https://gallery.azure.ai)中的示例[训练实验](https://gallery.azure.ai/Experiment/Bike-Rental-Training-Experiment-1)。 在 [Azure 机器学习工作室（经典）](https://studio.azureml.net)工作区中打开此实验。
+请使用 [Cortana Intelligence 库](https://gallery.azure.ai/Experiment/Bike-Rental-Training-Experiment-1)中的示例[训练实验](https://gallery.azure.ai)。 在 [Azure 机器学习工作室（经典）](https://studio.azureml.net)工作区中打开此实验。
 
 > [!NOTE]
 > 为了遵循此示例，可能需要使用标准工作区而不是免费工作区。 请为每个客户创建一个终结点（总共 10 个终结点），这需要一个标准工作区，因为免费工作区中最多只能有 3 个终结点。
@@ -96,7 +96,7 @@ ms.locfileid: "80343085"
 ## <a name="update-the-endpoints-to-use-separate-training-datasets-using-powershell"></a>更新终结点以通过 PowerShell 使用单独的训练数据集
 下一步是使用在每个客户单独数据上唯一训练的模型来更新终结点。 但是，首先需要从**自行车租赁训练** Web 服务中生成这些模型。 让我们回到**自行车租赁训练** Web 服务。 需要使用 10 个不同的训练数据集调用其 BES 终结点 10 次，以便生成 10 个不同的模型。 请使用 **InovkeAmlWebServiceBESEndpoint** PowerShell cmdlet 来执行此操作。
 
-还需要将 Blob 存储帐户的凭据提供到 `$configContent` 中。 也即提供到 `AccountName`、`AccountKey` 和 `RelativeLocation` 字段中。 `AccountName` 可以是帐户名称的一个，如 **Azure 门户**（“存储”  选项卡）中所示。 单击存储帐户之后，可通过按底部的“管理访问键”  按钮和复制“主访问键”  来查找其 `AccountKey`。 `RelativeLocation`是相对于存储（其中存储了新模型）的路径。 例如，以下脚本中的 `hai/retrain/bike_rental/` 路径指向名为 `hai` 的容器，`/retrain/bike_rental/` 是子文件夹。 目前，不能通过门户 UI 创建子文件夹，但是有[几个 Azure 存储资源管理器](../../storage/common/storage-explorers.md)可允许这样做。 建议在存储中创建新的容器以存储新的训练模型（.iLearner 文件），如下所示：在存储页中，单击底部的“添加”  按钮并将其命名为 `retrain`。 总之，对以下脚本进行的必要更改包括 `AccountName`、`AccountKey` 和 `RelativeLocation` (:`"retrain/model' + $seq + '.ilearner"`)。
+还需要将 Blob 存储帐户的凭据提供到 `$configContent` 中。 也即提供到 `AccountName`、`AccountKey` 和 `RelativeLocation` 字段中。 `AccountName` 可以是帐户名称的一个，如 **Azure 门户**（“存储”  选项卡）中所示。 单击存储帐户之后，可通过按底部的“管理访问键”`AccountKey`**按钮和复制“主访问键”** *来查找其* 。 `RelativeLocation`是相对于存储（其中存储了新模型）的路径。 例如，以下脚本中的 `hai/retrain/bike_rental/` 路径指向名为 `hai` 的容器，`/retrain/bike_rental/` 是子文件夹。 目前，不能通过门户 UI 创建子文件夹，但是有[几个 Azure 存储资源管理器](../../storage/common/storage-explorers.md)可允许这样做。 建议在存储中创建新的容器以存储新的训练模型（.iLearner 文件），如下所示：在存储页中，单击底部的“添加”  按钮并将其命名为 `retrain`。 总之，对以下脚本进行的必要更改包括 `AccountName`、`AccountKey` 和 `RelativeLocation` (:`"retrain/model' + $seq + '.ilearner"`)。
 
     # Invoke the retraining API 10 times
     # This is the default (and the only) endpoint on the training web service
@@ -116,7 +116,7 @@ ms.locfileid: "80343085"
 > 
 > 
 
-如上所示，与其构造 10 个不同的 BES 作业配置 json 文件，不如动态创建配置字符串， 然后将其馈送到 **InvokeAmlWebServceBESEndpoint** cmdlet 的 *jobConfigString* 参数。 确实无需在磁盘上保留副本。
+如上所示，与其构造 10 个不同的 BES 作业配置 json 文件，不如动态创建配置字符串， 然后将其馈送到 *InvokeAmlWebServceBESEndpoint* cmdlet 的 **jobConfigString** 参数。 确实无需在磁盘上保留副本。
 
 如果一切顺利，一段时间后应该能在 Azure 存储帐户中看到 10 个 .iLearner 文件（从 *model001.ilearner* 到 *model010.ilearner*）。 现在已准备好使用 **Patch-AmlWebServiceEndpoint** PowerShell cmdlet 通过这些模型更新 10 个评分 Web 服务终结点。 再次提醒，只能修补之前以编程方式创建的非默认终结点。
 

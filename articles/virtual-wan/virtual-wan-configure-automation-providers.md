@@ -9,10 +9,10 @@ origin.date: 02/12/2020
 ms.date: 02/24/2020
 ms.author: v-yeche
 ms.openlocfilehash: 77a10b9d88116ec7ee319e7bbc52f91f52b0e7d5
-ms.sourcegitcommit: 4810b75d1e1db78d9747e99735468a6ab861be2d
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80291302"
 ---
 # <a name="automation-guidelines-for-virtual-wan-partners"></a>适用于虚拟 WAN 合作伙伴的自动化指南

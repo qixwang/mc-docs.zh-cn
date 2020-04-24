@@ -6,10 +6,10 @@ origin.date: 02/25/2020
 ms.date: 03/23/2020
 ms.author: v-yeche
 ms.openlocfilehash: 1a5df2d26565649fb7c01b8de3396c39365c843f
-ms.sourcegitcommit: 1436f1851342ca5631eb25342eed954adb707af0
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79543729"
 ---
 # <a name="outputs-in-azure-resource-manager-template"></a>Azure 资源管理器模板中的输出
@@ -18,7 +18,7 @@ ms.locfileid: "79543729"
 
 ## <a name="define-output-values"></a>定义输出值
 
-以下示例显示如何返回公共 IP 地址的资源 ID：
+以下示例演示如何返回公共 IP 地址的资源 ID：
 
 ```json
 "outputs": {
@@ -63,7 +63,7 @@ ms.locfileid: "79543729"
 
 有关详细信息，请参阅 [Azure 资源管理器模板中的输出迭代](copy-outputs.md)。
 
-## <a name="linked-templates"></a>链接的模板
+## <a name="linked-templates"></a>链接模板
 
 若要从链接模板中检索输出值，请在父模板中使用 [reference](template-functions-resource.md#reference) 函数。 父模板中的语法为：
 
@@ -81,7 +81,7 @@ ms.locfileid: "79543729"
 }
 ```
 
-不能在[嵌套模板](linked-templates.md#nested-template)的 outputs 节中使用 `reference` 函数。 若要返回嵌套模板中部署的资源的值，请将嵌套模板转换为链接模板。
+不能在`reference`嵌套模板[的 outputs 节中使用 ](linked-templates.md#nested-template) 函数。 若要返回嵌套模板中部署的资源的值，请将嵌套模板转换为链接模板。
 
 ## <a name="get-output-values"></a>获取输出值
 
@@ -114,9 +114,9 @@ az group deployment show \
 
 |模板  |说明  |
 |---------|---------|
-|[复制变量](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copyvariables.json) | 创建复杂变量并输出这些值。 不部署任何资源。 |
+|[复制变量](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copyvariables.json) | 创建复杂变量，并输出这些值。 不部署任何资源。 |
 |[公共 IP 地址](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip.json) | 创建公共 IP 地址并输出资源 ID。 |
-|[负载均衡器](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip-parentloadbalancer.json) | 链接到前面的模板。 创建负载平衡器时，使用输出中的资源 ID。 |
+|[负载均衡器](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip-parentloadbalancer.json) | 链接到前面的模板。 创建负载均衡器时，请使用输出中的资源 ID。 |
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -12,10 +12,10 @@ ms.date: 03/16/2020
 ms.author: v-tawe
 ms.custom: mvc
 ms.openlocfilehash: a3f62187eb22039139a6d5b61e30228773e7a7b7
-ms.sourcegitcommit: 764b3d26aedce2de0e1948468a706fd3204a3d5e
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79543373"
 ---
 # <a name="tutorial-use-azure-key-vault-with-an-azure-web-app-in-net"></a>教程：如何将 Azure Key Vault 与 .NET Azure Web 应用配合使用

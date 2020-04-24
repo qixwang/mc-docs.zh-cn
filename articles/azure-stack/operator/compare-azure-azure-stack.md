@@ -10,10 +10,10 @@ ms.author: v-jay
 ms.reviewer: unknown
 ms.lastreviewed: 03/29/2019
 ms.openlocfilehash: 99716e8a9f6d310bf0a95c0f3eb27acef4bef1aa
-ms.sourcegitcommit: e500354e2fd8b7ac3dddfae0c825cc543080f476
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79547081"
 ---
 # <a name="differences-between-azure-azure-stack-hub-and-azure-stack-hci"></a>Azure、Azure Stack Hub 与 Azure Stack HCI 之间的差异
@@ -39,7 +39,7 @@ Azure Stack Hub 是 Azure 的扩展，它将云计算的敏捷性和创新引入
 - 适用于 Windows 和 Linux 的 Azure VM
 - Azure Web 应用和 Functions
 - Azure Key Vault
-- Azure Resource Manager
+- Azure 资源管理器
 - Azure 市场
 - 容器
 - 管理工具（计划、套餐、RBAC 等）

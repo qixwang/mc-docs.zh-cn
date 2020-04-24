@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: v-junlch
 ms.openlocfilehash: d4ed8d5c2dd138eb2bcc3dd77a35e3d5208064e9
-ms.sourcegitcommit: 71a386ca0d0ecb79a123399b6ab6b8c70ea2aa78
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79497388"
 ---
 # <a name="azure-application-gateway-features"></a>Azure 应用程序网关功能

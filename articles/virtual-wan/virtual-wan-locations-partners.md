@@ -10,10 +10,10 @@ ms.date: 03/30/2020
 ms.author: v-yeche
 Customer intent: As someone with a networking background, I want to find a Virtual WAN partner
 ms.openlocfilehash: f2bdbaa58224bc54bc1dd94778d9f83604b4b27a
-ms.sourcegitcommit: 4810b75d1e1db78d9747e99735468a6ab861be2d
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80291276"
 ---
 # <a name="virtual-wan-partners-and-virtual-hub-locations"></a>虚拟 WAN 合作伙伴和虚拟中心位置

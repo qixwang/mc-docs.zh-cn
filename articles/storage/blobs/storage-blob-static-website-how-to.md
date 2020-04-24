@@ -9,10 +9,10 @@ ms.author: v-jay
 origin.date: 03/04/2020
 ms.date: 03/30/2020
 ms.openlocfilehash: 3926a8694f500047a21e6e4278468c95f29eef96
-ms.sourcegitcommit: 90d01d08faf8adb20083363a8e4e5aab139cd9b2
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80290343"
 ---
 # <a name="host-a-static-website-in-azure-storage"></a>在 Azure 存储中托管静态网站
@@ -131,7 +131,7 @@ ms.locfileid: "80290343"
 
 ## <a name="upload-files"></a>上传文件 
 
-### <a name="portal"></a>[门户](#tab/azure-portal)
+### <a name="portal"></a>[Portal](#tab/azure-portal)
 
 这些说明展示了如何使用存储资源管理器上传文件。 可以使用 [AzCopy](../common/storage-use-azcopy-v10.md)、PowerShell、CLI 或可将文件上传到帐户的 **$web** 容器的任何自定义应用程序。 有关使用 Visual Studio Code 上传文件的分步教程，请参阅[教程：在 Blob 存储上托管静态网站](/storage/blobs/storage-blob-static-website-host)。
 
@@ -188,7 +188,7 @@ set-AzStorageblobcontent -File "<path-to-file>" `
 
 可以在浏览器中使用网站的公共 URL 来查看网站的页面。
 
-### <a name="portal"></a>[门户](#tab/azure-portal)
+### <a name="portal"></a>[Portal](#tab/azure-portal)
 
 <a id="portal-find-url" />
 

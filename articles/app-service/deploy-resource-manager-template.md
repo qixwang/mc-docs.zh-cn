@@ -8,28 +8,28 @@ ms.date: 03/16/2020
 ms.author: v-tawe
 ms.custom: seodec18
 ms.openlocfilehash: 28cd8b0ab8c2d41071c05e40a91f88115be0146f
-ms.sourcegitcommit: e500354e2fd8b7ac3dddfae0c825cc543080f476
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79546981"
 ---
-# <a name="guidance-on-deploying-web-apps-by-using-azure-resource-manager-templates"></a>有关使用 Azure 资源管理器模板部署 Web 应用的指南
+# <a name="guidance-on-deploying-web-apps-by-using-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板部署 Web 应用的指南
 
-本文提供创建 Azure 资源管理器模板以部署 Azure 应用服务解决方案的建议。 这些建议可帮助你避免常见问题。
+本文提供创建 Azure 资源管理器模板以部署 Azure 应用服务解决方案的建议。 这些建议可以帮助你避免常见问题。
 
-## <a name="define-dependencies"></a>定义依赖关系
+## <a name="define-dependencies"></a>定义依赖项
 
 为 Web 应用定义依赖项需要了解 Web 应用中的资源如何进行交互。 如果以错误的顺序指定依赖项，则可能会导致部署错误或者创建造成停止部署的争用条件。
 
 > [!WARNING]
-> 如果在模板中包括了 MSDeploy 站点扩展，则必须将任何配置资源设置为依赖于 MSDeploy 资源。 配置更改会导致站点以异步方式重启。 通过使配置资源依赖于 MSDeploy，可确保 MSDeploy 在站点重启前完成。 如果没有这些依赖关系，则站点可能会在 MSDeploy 的部署过程中重启。 有关示例模板，请参阅[具有 Web 部署依赖项的 WordPress 模板](https://github.com/davidebbo/AzureWebsitesSamples/blob/master/ARMTemplates/WordpressTemplateWebDeployDependency.json)。
+> 如果在模板中包括了 MSDeploy 站点扩展，则必须将任何配置资源设置为依赖于 MSDeploy 资源。 配置更改会导致站点以异步方式重新启动。 通过使配置资源依赖于 MSDeploy，可确保 MSDeploy 在站点重新启动前完成。 如果没有这些依赖关系，则站点可能会在 MSDeploy 的部署过程中重新启动。 有关示例模板，请参阅[具有 Web 部署依赖项的 WordPress 模板](https://github.com/davidebbo/AzureWebsitesSamples/blob/master/ARMTemplates/WordpressTemplateWebDeployDependency.json)。
 
 下图显示了各种应用服务资源的依赖顺序：
 
-![Web 应用依赖关系](media/web-sites-rm-template-guidance/web-dependencies.png)
+![Web 应用依赖项](media/web-sites-rm-template-guidance/web-dependencies.png)
 
-按以下顺序部署资源：
+请按以下顺序部署资源：
 
 **第 1 层**
 * 应用服务计划。
@@ -52,9 +52,9 @@ ms.locfileid: "79546981"
 * 主机名绑定 - 依赖于如果存在的证书； 若不存在，则依赖于较高级别的资源。
 * 站点扩展 - 依赖于存在的配置设置； 若不存在，则依赖于较高级别的资源。
 
-通常，解决方案仅包括上述某些资源和层。 对于缺少的层，请将较低的资源映射到下一个较高的层。
+通常，你的解决方案仅包括这些资源和层中的一部分。 对于缺少的层，请将较低的资源映射到下一个较高的层。
 
-以下示例显示了模板的一部分。 连接字符串配置值依赖于 MSDeploy 扩展。 MSDeploy 扩展依赖于 Web 应用和数据库。 
+下面的示例显示了模板的一部分。 连接字符串配置值依赖于 MSDeploy 扩展。 MSDeploy 扩展依赖于 Web 应用和数据库。 
 
 ```json
 {

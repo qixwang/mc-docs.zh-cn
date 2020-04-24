@@ -9,10 +9,10 @@ ms.author: v-jay
 ms.reviewer: sijuman
 ms.lastreviewed: 05/16/2019
 ms.openlocfilehash: f1a7b89352144a703becf762c7f342635163cfbb
-ms.sourcegitcommit: e500354e2fd8b7ac3dddfae0c825cc543080f476
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79547085"
 ---
 # <a name="use-api-version-profiles-with-java-in-azure-stack-hub"></a>在 Azure Stack Hub 中将 API 版本配置文件与 Java 配合使用

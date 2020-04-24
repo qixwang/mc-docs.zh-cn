@@ -27,7 +27,7 @@
       href: search-get-started-java.md
     - name: Node.js
       href: search-get-started-nodejs.md
-    - name: postman
+    - name: Postman
       href: search-get-started-postman.md
     - name: PowerShell
       href: search-get-started-powershell.md
@@ -95,11 +95,11 @@
       href: cognitive-search-working-with-skillsets.md
     - name: 知识存储
       href: knowledge-store-concept-intro.md
-    - name: 投影数
+    - name: 投影
       href: knowledge-store-projection-overview.md
     - name: 增量扩充
       href: cognitive-search-incremental-indexing-conceptual.md
-- name: 操作指南
+- name: 操作方法指南
   items:
     - name: 创建索引和构造
       items:
@@ -243,7 +243,7 @@
               href: query-lucene-syntax.md
             - name: moreLikeThis（预览版）
               href: search-more-like-this.md
-    - name: 筛选器
+    - name: “筛选器”
       items:
         - name: 筛选器概述
           href: search-filters.md
@@ -265,7 +265,7 @@
           href: index-add-scoring-profiles.md
     - name: 计划
       items:
-        - name: 选择层级
+        - name: 选择层
           href: search-sku-tier.md
         - name: 服务限制
           href: search-limits-quotas-capacity.md
@@ -341,7 +341,7 @@
       href: /cli/search?view=azure-cli-latest
     - name: Azure PowerShell
       href: 'https://docs.microsoft.com/powershell/module/az.search'
-    - name: Resource Manager 模板
+    - name: 资源管理器模板
       href: 'https://docs.microsoft.com/azure/templates/microsoft.search/searchservices'
     - name: .NET
       items:
@@ -450,7 +450,7 @@
           href: 'https://aka.ms/azjobsdemo'
         - name: 搜索用例
           href: 'https://searchsamples.azurewebsites.net/'
-    - name: 常见问题
+    - name: 常见问题解答
       href: search-faq-frequently-asked-questions.md
     - name: 定价
       href: 'https://www.azure.cn/pricing/details/search/'

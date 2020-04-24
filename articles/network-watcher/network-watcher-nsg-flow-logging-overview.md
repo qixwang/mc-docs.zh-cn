@@ -15,10 +15,10 @@ origin.date: 02/22/2017
 ms.date: 3/20/2020
 ms.author: v-lingwu
 ms.openlocfilehash: ed5e044d9f71fa511e0eefd6e9e3248e61385d86
-ms.sourcegitcommit: 305361c96d1d5288d3dda7e81833820640e2afac
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80109782"
 ---
 # <a name="introduction-to-flow-logging-for-network-security-groups"></a>针对网络安全组进行流日志记录简介

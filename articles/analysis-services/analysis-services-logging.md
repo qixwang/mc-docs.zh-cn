@@ -9,10 +9,10 @@ ms.date: 03/23/2020
 ms.author: v-yeche
 ms.reviewer: minewiskan
 ms.openlocfilehash: 13f419c58939371e38e51f9b049583e9863737d8
-ms.sourcegitcommit: 1436f1851342ca5631eb25342eed954adb707af0
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79543767"
 ---
 <!--Verify successfully-->
@@ -82,7 +82,7 @@ ms.locfileid: "79543767"
 
 2. 在“诊断设置”  中，指定以下选项： 
 
-    * **Name**。 为要创建的日志输入名称。
+    * **名称**。 为要创建的日志输入名称。
 
     * **存档到存储帐户**。 要使用此选项，需要一个可连接到的现有存储帐户。 请参阅[创建存储帐户](../storage/common/storage-create-storage-account.md)。 按照说明创建一个资源管理器常规用途帐户，然后返回到门户中的此页面来选择存储帐户。 新创建的存储帐户可能几分钟后才会显示在下拉菜单中。
     * **流式传输到事件中心**。 要使用此选项，需要一个可连接到的现有事件中心命名空间和事件中心。 若要了解详细信息，请参阅[使用 Azure 门户创建事件中心命名空间和事件中心](../event-hubs/event-hubs-create.md)。 然后在门户中返回到此页，选择事件中心命名空间和策略名称。
@@ -96,7 +96,7 @@ ms.locfileid: "79543767"
 
 3. 单击“保存”  。
 
-    如果收到一个错误，指出“无法更新 \<工作区名称> 的诊断。 订阅 \<订阅 ID> 未注册，无法使用 microsoft.insights。”， 请按 [Azure 诊断故障排除](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-storage)说明注册帐户，然后重试此过程。
+    如果收到错误，指出“无法更新诊断 \<工作区名称> 的诊断。 订阅 \<订阅 ID> 未注册为使用 microsoft.insights”， 请遵照[排查 Azure 诊断问题](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-storage)中的说明注册帐户，然后重试此过程。
 
     若要更改在将来的任意时间点保存诊断日志的方式，可以随时返回此页以修改设置。
 
@@ -138,13 +138,13 @@ ms.locfileid: "79543767"
     (Get-AzOperationalInsightsWorkspace).ResourceId
     ```
 
-可以结合这些参数启用多个输出选项。
+可以组合这些参数以启用多个输出选项。
 
 ### <a name="rest-api"></a>REST API
 
 了解如何[使用 Azure Monitor REST API 更改诊断设置](https://docs.microsoft.com/rest/api/monitor/)。 
 
-### <a name="resource-manager-template"></a>Resource Manager 模板
+### <a name="resource-manager-template"></a>资源管理器模板
 
 了解如何[在创建资源时使用资源管理器模板启用诊断设置](../azure-monitor/platform/diagnostic-settings-template.md)。 
 
@@ -162,9 +162,9 @@ ms.locfileid: "79543767"
 
 若要查看诊断数据，请从 Log Analytics 工作区的左侧菜单中打开“日志”  。
 
-![Azure 门户中的日志搜索选项](./media/analysis-services-logging/aas-logging-open-log-search.png)
+![Azure 门户中的“日志搜索”选项](./media/analysis-services-logging/aas-logging-open-log-search.png)
 
-在查询生成器中，展开 LogManagement > AzureDiagnostics   。 AzureDiagnostics 包括引擎和服务事件。 注意即时创建了一个查询。 EventClass\_s 字段包含 xEvent 名称，如果使用 Xevent 进行本地日志记录，你可能觉得该名称很眼熟。 单击“EventClass\_s”或某个事件名称，Log Analytics 工作区将继续构造查询  。 请务必保存查询以便稍后重复使用。
+在查询生成器中，展开 LogManagement**AzureDiagnostics** >   。 AzureDiagnostics 包括引擎和服务事件。 注意即时创建了一个查询。 EventClass\_s 字段包含 xEvent 名称，如果使用 Xevent 进行本地日志记录，你可能觉得该名称很眼熟。 单击“EventClass**s”或某个事件名称，Log Analytics 工作区将继续构造查询\_** 。 请务必保存查询以便稍后重复使用。
 
 ### <a name="example-queries"></a>查询示例
 
@@ -221,20 +221,20 @@ window
 
 在此快速教程中，你将在 Analysis Services 服务器所在订阅和资源组中创建存储帐户。 然后使用 Set-AzDiagnosticSetting 启用诊断日志记录，将输出发送到新的存储帐户。
 
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>必备条件
 要完成本教程，必须备好以下资源：
 
 * 现有 Azure Analysis Services 服务器。 有关创建服务器资源的说明，请参阅[在 Azure 门户中创建服务器](analysis-services-create-server.md)或[使用 PowerShell 创建 Azure Analysis Services 服务器](analysis-services-create-powershell.md)。
 
 ### <a name="connect-to-your-subscriptions"></a>连接到订阅
 
-启动 Azure PowerShell 会话，并使用以下命令登录用户的 Azure 帐户：  
+启动 Azure PowerShell 会话，并使用以下命令登录 Azure 帐户：  
 
 ```powershell
 Connect-AzAccount -Environment AzureChinaCloud
 ```
 
-在弹出的浏览器窗口中，输入 Azure 帐户用户名和密码。 Azure PowerShell 获取与此帐户关联的所有订阅，并按默认使用第一个订阅。
+在弹出的浏览器窗口中，输入 Azure 帐户用户名和密码。 Azure PowerShell 会获取与此帐户关联的所有订阅，并按默认使用第一个订阅。
 
 如果有多个订阅，可能需要指定用来创建 Azure 密钥保管库的特定订阅。 键入以下命令查看帐户的订阅：
 

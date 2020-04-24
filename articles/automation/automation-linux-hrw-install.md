@@ -7,10 +7,10 @@ origin.date: 03/02/2020
 ms.date: 03/30/2020
 ms.topic: conceptual
 ms.openlocfilehash: 09c96510ce8823d4226cf56dc5482fdcaaf51a8f
-ms.sourcegitcommit: 90d01d08faf8adb20083363a8e4e5aab139cd9b2
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80290351"
 ---
 # <a name="deploy-a-linux-hybrid-runbook-worker"></a>部署 Linux 混合 Runbook 辅助角色

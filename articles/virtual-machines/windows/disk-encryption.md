@@ -9,10 +9,10 @@ ms.author: v-yeche
 ms.service: virtual-machines-windows
 ms.subservice: disks
 ms.openlocfilehash: 6c85b3554e4d377504e464b9d6795e93d1b91b31
-ms.sourcegitcommit: 305361c96d1d5288d3dda7e81833820640e2afac
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80109739"
 ---
 # <a name="server-side-encryption-of-azure-managed-disks"></a>Azure 托管磁盘的服务器端加密

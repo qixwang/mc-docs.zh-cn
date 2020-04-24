@@ -11,10 +11,10 @@ origin.date: 02/11/2020
 ms.date: 03/16/2020
 ms.author: v-tawe
 ms.openlocfilehash: fa36b134affc6c4a74cda97fc781524444856ba7
-ms.sourcegitcommit: 1d3d8dfdaf6281f06640cbee7124a1e8bf102c50
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80243934"
 ---
 # <a name="quickstart-create-an-event-hub-using-azure-portal"></a>快速入门：使用 Azure 门户创建事件中心
@@ -22,7 +22,7 @@ Azure 事件中心是一个大数据流式处理平台和事件引入服务，�
 
 在本快速入门中，请使用 [Azure 门户](https://portal.azure.cn)创建事件中心。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要完成本快速入门，请确保具备以下项：
 
@@ -34,8 +34,8 @@ Azure 事件中心是一个大数据流式处理平台和事件引入服务，�
 
 资源组是 Azure 资源的逻辑集合。 所有资源在资源组中进行部署和管理。 创建资源组：
 
-1. 登录到 [Azure 门户](https://portal.azure.cn)。
-2. 在左侧导航栏中，单击“资源组”  。  。
+1. 登录 [Azure 门户](https://portal.azure.cn)。
+2. 在左侧导航栏中，单击“资源组”  。 然后单击“添加”  。
 
    ![资源组 -“添加”按钮](./media/event-hubs-quickstart-portal/resource-groups1.png)
 
@@ -52,7 +52,7 @@ Azure 事件中心是一个大数据流式处理平台和事件引入服务，�
 事件中心命名空间提供唯一的范围容器，可以通过其完全限定的域名进行引用，而在该容器中，可以创建一个或多个事件中心。 若要使用门户在资源组中创建命名空间，请执行以下操作：
 
 1. 在 Azure 门户中，单击屏幕左上角的“创建资源”。 
-2. 在左侧菜单中选择“所有服务”，然后在“分析”类别中的“事件中心”旁边选择**星号 (`*`)** 。    确认“事件中心”已添加到左侧导航菜单中的“收藏夹”。   
+2. 在左侧菜单中选择“所有服务”，然后在“分析”类别中的“事件中心”旁边选择**星号 (** ) **。`*`**   确认“事件中心”已添加到左侧导航菜单中的“收藏夹”。   
     
    ![搜索事件中心](./media/event-hubs-quickstart-portal/select-event-hubs-menu.png)
 3. 选择左侧导航菜单中“收藏夹”下的“事件中心”，然后选择工具栏上的“添加”。   
@@ -82,14 +82,14 @@ Azure 事件中心是一个大数据流式处理平台和事件引入服务，�
 1. 在窗口顶部，单击“+ 事件中心”  。
    
     ![添加事件中心 - 按钮](./media/event-hubs-quickstart-portal/create-event-hub4.png)
-1. 为事件中心键入名称，然后单击“创建”  。
+1. 为事件中心键入名称，并单击“创建”  。
    
     ![创建事件中心](./media/event-hubs-quickstart-portal/create-event-hub5.png)
 4. 可以在警报中检查事件中心的创建状态。 创建事件中心后，事件中心列表中会显示该事件中心，如下图所示：
 
     ![已创建事件中心](./media/event-hubs-quickstart-portal/event-hub-created.png)
 
-祝贺！ 现已使用门户创建了一个事件中心命名空间，并在该命名空间中创建了一个事件中心。 
+祝贺你！ 现已使用门户创建了一个事件中心命名空间，并在该命名空间中创建了一个事件中心。 
 
 ## <a name="next-steps"></a>后续步骤
 

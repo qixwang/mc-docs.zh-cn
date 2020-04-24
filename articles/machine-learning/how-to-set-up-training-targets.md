@@ -13,10 +13,10 @@ origin.date: 01/16/2020
 ms.date: 03/16/2020
 ms.custom: seodec18
 ms.openlocfilehash: cdd8758efdb158d6146ec73ff1da529279db5264
-ms.sourcegitcommit: 6ddc26f9b27acec207b887531bea942b413046ad
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "80343378"
 ---
 # <a name="set-up-and-use-compute-targets-for-model-training"></a>设置并使用模型训练的计算目标 

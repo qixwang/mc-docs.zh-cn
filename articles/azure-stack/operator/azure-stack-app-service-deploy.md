@@ -9,10 +9,10 @@ ms.author: v-jay
 ms.reviewer: anwestg
 ms.lastreviewed: 01/13/2019
 ms.openlocfilehash: ca951baa6b0a70ad81e77afb300bfb15498acb08
-ms.sourcegitcommit: e500354e2fd8b7ac3dddfae0c825cc543080f476
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79547064"
 ---
 # <a name="deploy-app-service-in-azure-stack-hub"></a>在 Azure Stack Hub 中部署应用服务

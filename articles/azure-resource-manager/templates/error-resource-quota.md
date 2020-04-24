@@ -6,21 +6,21 @@ origin.date: 03/09/2018
 ms.date: 01/20/2020
 ms.author: v-yeche
 ms.openlocfilehash: f1561d9ae9968c887b108e487ff7672f11738c2f
-ms.sourcegitcommit: 1436f1851342ca5631eb25342eed954adb707af0
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79543873"
 ---
 # <a name="resolve-errors-for-resource-quotas"></a>解决资源配额错误
 
-本文介绍部署资源时可能遇到的配额错误。
+本文介绍了部署资源时可能遇到的配额错误。
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="symptom"></a>症状
 
-如果部署一个创建超过 Azure 配额的资源的模板，则会收到如下所示的部署错误：
+如果部署的模板创建的资源超出 Azure 配额，则会收到如下所示的部署错误消息：
 
 ```
 Code=OperationNotAllowed
@@ -28,7 +28,7 @@ Message=Operation results in exceeding quota limits of Core.
 Maximum allowed: 4, Current in use: 4, Additional requested: 2.
 ```
 
-或者，可能会看到：
+或者，你可能看到：
 
 ```
 Code=ResourceQuotaExceeded
@@ -39,20 +39,20 @@ please delete some resources of this type before creating a new one.
 
 ## <a name="cause"></a>原因
 
-按每个资源组、订阅、帐户和其他作用域应用配额。 例如，订阅可能配置为限制某个区域的核心数目。 如果尝试部署超过允许核心数目的虚拟机，将收到指出超过配额的错误消息。
+已按资源组、订阅、帐户和其他范围应用配额。 例如，订阅可能配置为限制某个区域的核心数目。 如果尝试部署超过允许核心数目的虚拟机，则会收到指出超过配额的错误消息。
 有关完整的配额信息，请参阅 [Azure 订阅和服务限制、配额与约束](../../azure-resource-manager/management/azure-subscription-service-limits.md)。
 
 ## <a name="troubleshooting"></a>故障排除
 
 ### <a name="azure-cli"></a>Azure CLI
 
-对于 Azure CLI，使用 `az vm list-usage` 命令查找虚拟机配额。
+对于 Azure CLI，可使用 `az vm list-usage` 命令查找虚拟机配额。
 
 ```azurecli
 az vm list-usage --location "China East"
 ```
 
-返回：
+将返回：
 
 ```output
 [
@@ -76,7 +76,7 @@ az vm list-usage --location "China East"
 Get-AzVMUsage -Location "China East"
 ```
 
-返回：
+将返回：
 
 ```output
 Name                             Current Value Limit  Unit
@@ -91,13 +91,13 @@ Virtual Machines                             0 10000 Count
 若要请求增加配额，请转到门户并提出支持问题。 在支持问题中，为你想要在其中进行部署的区域请求增加配额。
 
 > [!NOTE]
-> 请记住，对于资源组，配额针对每个单独的区域，而不是针对整个订阅。 如果需要在中国北部部署 30 个核心，则必须在中国北部寻求 30 个 Resource Manager 核心。 如果需要在有权访问的任何区域内部署总共 30 个核心，则应在所有区域内请求总共 30 个 Resource Manager 核心。
+> 请记住，对于资源组，配额针对每个单独的区域，而不是针对整个订阅。 如果需要在中国北部部署 30 个核心，则必须在中国北部寻求 30 个 Resource Manager 核心。 如果需要在有权访问的任何区域内部署 30 个核心，则应在所有区域内请求 30 个 Resource Manager 核心。
 >
 >
 
-1. 选择“订阅”。 
+1. 选择 **订阅**。
 
-    ![订阅](./media/error-resource-quota/subscriptions.png)
+    ![Subscriptions](./media/error-resource-quota/subscriptions.png)
 
 2. 选择需要增加配额的订阅。
 

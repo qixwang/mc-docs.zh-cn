@@ -9,10 +9,10 @@ origin.date: 01/23/2020
 ms.date: 3/16/2020
 ms.author: v-lingwu
 ms.openlocfilehash: 55ee9fc5222c450dac2406e343943960ce63f9fe
-ms.sourcegitcommit: 7995ca87e9e10388948f714f94c61d66880f3bb3
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/17/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79452590"
 ---
 # <a name="event-grid-subscription-schema"></a>事件网格订阅架构
@@ -23,7 +23,7 @@ ms.locfileid: "79452590"
 PUT /subscriptions/{subscription-id}/resourceGroups/{group-name}/providers/{resource-provider}/{resource-type}/{resource-name}/Microsoft.EventGrid/eventSubscriptions/{event-type-definitions}?api-version=2018-01-01
 ``` 
 
-例如，若要在名为 `examplegroup` 的资源组中创建名为 `examplestorage` 的存储帐户的事件订阅，请使用以下格式：
+例如，若要在名为 `examplestorage` 的资源组中创建名为 `examplegroup` 的存储帐户的事件订阅，请使用以下格式：
 
 ```HTTP
 PUT /subscriptions/{subscription-id}/resourceGroups/examplegroup/providers/Microsoft.Storage/storageaccounts/examplestorage/Microsoft.EventGrid/eventSubscriptions/{event-type-definitions}?api-version=2018-01-01
@@ -33,26 +33,26 @@ PUT /subscriptions/{subscription-id}/resourceGroups/examplegroup/providers/Micro
  
 ## <a name="event-subscription-properties"></a>事件订阅属性
 
-| 属性 | 类型 | 说明 |
+| properties | 类型 | 说明 |
 | -------- | ---- | ----------- |
-| 目标 | object | 定义终结点的对象。 |
-| filter | object | 用于筛选事件类型的可选字段。 |
+| 目标 | 对象 (object) | 定义终结点的对象。 |
+| filter | 对象 (object) | 用于筛选事件类型的可选字段。 |
 
 ### <a name="destination-object"></a>目标对象
 
-| 属性 | 类型 | 说明 |
+| properties | 类型 | 说明 |
 | -------- | ---- | ----------- |
-| endpointType | string | 订阅（webhook/HTTP、事件中心或队列）的终结点类型。 | 
-| endpointUrl | string | 此事件订阅中的事件的目标 URL。 | 
+| endpointType | 字符串 | 订阅（webhook/HTTP、事件中心或队列）的终结点类型。 | 
+| endpointUrl | 字符串 | 此事件订阅中的事件的目标 URL。 | 
 
 ### <a name="filter-object"></a>筛选器对象
 
-| 属性 | 类型 | 说明 |
+| properties | 类型 | 说明 |
 | -------- | ---- | ----------- |
 | includedEventTypes | array | 当事件消息中的事件类型与这些事件类型名称之一完全匹配时匹配。 当事件名称与事件源的已注册事件类型名称不匹配时，将引发错误。 默认匹配所有事件类型。 |
-| subjectBeginsWith | string | 事件消息中使用者字段的前缀匹配筛选器。 默认或空字符串匹配所有类型。 | 
-| subjectEndsWith | string | 事件消息中使用者字段的后缀匹配筛选器。 默认或空字符串匹配所有类型。 |
-| isSubjectCaseSensitive | string | 用于筛选器的区分大小写匹配的控件。 |
+| subjectBeginsWith | 字符串 | 事件消息中使用者字段的前缀匹配筛选器。 默认或空字符串匹配所有类型。 | 
+| subjectEndsWith | 字符串 | 事件消息中使用者字段的后缀匹配筛选器。 默认或空字符串匹配所有类型。 |
+| isSubjectCaseSensitive | 字符串 | 用于筛选器的区分大小写匹配的控件。 |
 
 
 ## <a name="example-subscription-schema"></a>订阅架构示例

@@ -1,22 +1,22 @@
 ---
 title: 为逻辑组织标记资源
-description: 演示如何应用标记来组织 Azure 资源进行计费和管理。
+description: 演示如何应用标记来整理 Azure 资源以便进行计费和管理。
 ms.topic: conceptual
 origin.date: 01/03/2020
 ms.date: 03/23/2020
 ms.author: v-yeche
 ms.openlocfilehash: 620ea602842277a765fff9506df65a39566a4a9d
-ms.sourcegitcommit: 1436f1851342ca5631eb25342eed954adb707af0
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79543893"
 ---
 # <a name="use-tags-to-organize-your-azure-resources"></a>使用标记整理 Azure 资源
 
-可将标记应用于 Azure 资源，以便按逻辑将这些资源组织到分类中。 每个标记均由名称和值对组成。 例如，可以对生产中的所有资源应用名称“Environment”和值“Production”。
+可将标记应用于 Azure 资源，以便按逻辑将这些资源组织到分类中。 每个标记由名称和值对组成。 例如，可以对生产中的所有资源应用名称“Environment”和值“Production”。
 
-应用标记以后，即可使用该标记名称和值检索订阅中的所有资源。 使用标记可以从不同资源组中检索相关资源。 需要为计费或管理目的组织资源时，此方法可能很有用。
+应用标记以后，即可使用该标记名称和值检索订阅中的所有资源。 使用标记可以从不同资源组中检索相关资源。 需要为计费或管理目的组织资源时，此方法十分有用。
 
 除了自动标记策略之外，分类还应考虑自助式元数据标记策略，以减轻用户负担并提高准确性。
 
@@ -190,7 +190,7 @@ az group show -n examplegroup --query tags
 }
 ```
 
-或者，若要查看具有指定名称、类型和资源组的资源的现有标记，请使用： 
+若要查看具有指定名称、类型和资源组的资源的现有标记，请使用： 
 
 ```azurecli
 az resource show -n examplevnet -g examplegroup --resource-type "Microsoft.Network/virtualNetworks" --query tags
@@ -289,7 +289,7 @@ IFS=$origIFS
 
 ### <a name="apply-a-literal-value-to-the-tag-name"></a>将文本值应用到标记名称
 
-以下示例显示了具有设置为文本值的两个标记（`Dept` 和 `Environment`）的存储帐户：
+以下示例显示了一个带两个标记（`Dept` 和 `Environment`）的存储帐户，这两个标记设置为文本值：
 
 ```json
 {
@@ -325,7 +325,7 @@ IFS=$origIFS
 
 ### <a name="apply-an-object-to-the-tag-element"></a>将对象应用到标记元素
 
-可以定义一个存储多个标记的对象参数，并将该对象应用于标记元素。 对象中的每个属性会成为资源的单独标记。 以下示例有一个名为 `tagValues` 的参数，该标记应用于标记元素。
+可以定义一个对象参数，用于存储多个标记，并将该对象应用于标记元素。 对象中的每个属性将成为该资源的单独标记。 以下示例有一个名为 `tagValues` 的参数，应用于标记元素。
 
 ```json
 {
@@ -363,7 +363,7 @@ IFS=$origIFS
 
 ### <a name="apply-a-json-string-to-the-tag-name"></a>将 JSON 字符串应用到标记名称
 
-要将多个值存储在单个标记中，请应用表示这些值的 JSON 字符串。 整个 JSON 字符串存储为一个标记，该标记不能超过 256 个字符。 以下示例有一个名为 `CostCenter` 的标记，其中包含 JSON 字符串中的多个值：  
+要将多个值存储在单个标记中，请应用表示值的 JSON 字符串。 整个 JSON 字符串存储为一个标记，该标记不能超过 256 个字符。 以下示例有一个名为 `CostCenter` 的标记，其中包含 JSON 字符串中的几个值：  
 
 ```json
 {
@@ -438,7 +438,7 @@ Azure 门户和 PowerShell 均在后台使用[资源管理器 REST API](https://
 
 ## <a name="tags-and-billing"></a>标记和计费
 
-可使用标记对计费数据进行分组。 例如，如果针对不同组织运行多个 VM，可以使用标记根据成本中心对使用情况进行分组。 还可使用标记根据运行时环境（例如，在生产环境中运行的 VM 的计费使用情况）对成本进行分类。
+可使用标记对计费数据进行分组。 例如，如果针对不同组织运行多个 VM，可以使用标记根据成本中心对使用情况进行分组。 还可使用标记根据运行时环境对成本进行分类；例如，在生产环境中运行的虚拟机的计费使用情况。
 
 可以通过使用情况逗号分隔值 (CSV) 文件检索有关标记的信息。 可以从 [Azure 帐户门户](https://account.windowsazure.cn/Subscriptions)下载使用情况文件。
 
