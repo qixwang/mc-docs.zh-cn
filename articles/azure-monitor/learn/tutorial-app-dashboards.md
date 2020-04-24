@@ -9,15 +9,15 @@ origin.date: 07/3/2019
 ms.date: 07/10/2019
 ms.custom: mvc
 ms.openlocfilehash: 18b40bb0384d4aab9da6b202893964d0eb2c2a23
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78850292"
 ---
 # <a name="create-custom-kpi-dashboards-using-azure-application-insights"></a>使用 Azure Application Insights 创建自定义 KPI 仪表板
 
-你可以在 Azure 门户中创建多个仪表板，每个仪表板都包含跨不同资源组和订阅可视化多个 Azure 资源数据的磁贴。  你可以从 Azure Application Insights 中固定不同的图表和视图，以创建自定义仪表板，为你提供应用程序运行状况和性能的完整画面。 本教程将引导你完成自定义仪表板的创建，其中包括来自 Azure Application Insights 的多种类型的数据和可视化内容。  你将学习如何执行以下操作：
+你可以在 Azure 门户中创建多个仪表板，每个仪表板都包含跨不同资源组和订阅可视化多个 Azure 资源数据的磁贴。  你可以从 Azure Application Insights 中固定不同的图表和视图，以创建自定义仪表板，为你提供应用程序运行状况和性能的完整画面。 本教程将引导你完成自定义仪表板的创建，其中包括来自 Azure Application Insights 的多种类型的数据和可视化内容。  学习如何：
 
 > [!div class="checklist"]
 > * 在 Azure 中创建自定义仪表板
@@ -28,7 +28,7 @@ ms.locfileid: "78850292"
 
 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 完成本教程：
 
@@ -89,7 +89,7 @@ Azure Application Insights 日志（分析）提供了丰富的查询语言，�
 
     ![发布仪表板](media/tutorial-app-dashboards/8dashboard-share.png)
 
-2. 保持“仪表板名称”  不变，并选择“订阅名称”  以共享仪表板。  单击“发布”。   仪表板现在可用于其他服务和订阅。  你可以定义具有仪表板访问权限的特定用户（可选）。
+2. 保持“仪表板名称”  不变，并选择“订阅名称”  以共享仪表板。  单击“发布”  。  仪表板现在可用于其他服务和订阅。  你可以定义具有仪表板访问权限的特定用户（可选）。
 1. 在主屏幕中选择你的 **Application Insights** 资源。
 2. 单击左侧“监视”下的“日志(分析)”  打开日志（分析）门户。
 3. 键入以下查询，将返回前 10 个请求最多的页面及其请求次数：

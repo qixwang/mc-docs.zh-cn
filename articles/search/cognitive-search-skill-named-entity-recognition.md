@@ -10,10 +10,10 @@ ms.topic: conceptual
 origin.date: 11/04/2019
 ms.date: 03/16/2020
 ms.openlocfilehash: a325c4f85c89938de3063e60a95e08bd6d9604dc
-ms.sourcegitcommit: d5eca3c6b03b206e441b599e5b138bd687a91361
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78934846"
 ---
 #    <a name="named-entity-recognition-cognitive-skill"></a>命名实体识别认知技能
@@ -41,7 +41,7 @@ Microsoft.Skills.Text.NamedEntityRecognitionSkill
 
 | 参数名称     | 说明 |
 |--------------------|-------------|
-| Categories    | 应提取的类别的数组。  可能类别类型有：`"Person"`、`"Location"`、`"Organization"`。 如果不提供类别，则返回所有类型。|
+| categories    | 应提取的类别的数组。  可能类别类型有：`"Person"`、`"Location"`、`"Organization"`。 如果不提供类别，则返回所有类型。|
 |defaultLanguageCode |  输入文本的语言代码。 支持以下语言：`de, en, es, fr, it`|
 | minimumPrecision  | 介于 0 和 1 之间的数字。 如果精度低于此值，则不会返回该实体。 默认值为 0。|
 
@@ -49,7 +49,7 @@ Microsoft.Skills.Text.NamedEntityRecognitionSkill
 
 | 输入名称      | 说明                   |
 |---------------|-------------------------------|
-| languageCode  | 可选。 默认值为 `"en"`。  |
+| languageCode  | 可选。 默认为 `"en"`。  |
 | text          | 要分析的文本。          |
 
 ## <a name="skill-outputs"></a>技能输出
@@ -57,7 +57,7 @@ Microsoft.Skills.Text.NamedEntityRecognitionSkill
 | 输出名称     | 说明                   |
 |---------------|-------------------------------|
 | 人员      | 一个字符串数组，其中，一个字符串表示一个人员名称。 |
-| locations  | 一个字符串数组，其中，一个字符串表示一个位置。 |
+| 位置  | 一个字符串数组，其中，一个字符串表示一个位置。 |
 | 组织  | 一个字符串数组，其中，一个字符串表示一个组织。 |
 | 实体 | 一个复杂类型数组。 每个复杂类型都包含以下字段： <ul><li>类别（`"person"`、`"organization"` 或 `"location"`）</li> <li>值（实际实体名称）</li><li>偏移（在文本中找到它的位置）</li><li>置信度（一个介于 0 和 1 之间的值，表示值是实际实体的置信度）</li></ul> |
 

@@ -7,10 +7,10 @@ ms.date: 01/15/2020
 ms.author: v-yeche
 ms.custom: mvc
 ms.openlocfilehash: 360a5f79924f97fab8cd72f38fec87c2b55b47d5
-ms.sourcegitcommit: 2b4507745b98b45f1ce3f3d30f397521148ef35a
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78213743"
 ---
 # <a name="troubleshoot-common-issues-in-azure-container-instances"></a>排查 Azure 容器实例中的常见问题

@@ -9,13 +9,13 @@ origin.date: 03/07/2019
 ms.date: 6/4/2019
 ms.author: v-lingwu
 ms.openlocfilehash: 614d22bb9b91e036f43a13929f23fe1918b661ef
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78850372"
 ---
-# <a id="troubleshooting"></a> 排查启用 Application Insights Snapshot Debugger 或查看快照时遇到的问题
+# <a name="troubleshoot-problems-enabling-application-insights-snapshot-debugger-or-viewing-snapshots"></a><a id="troubleshooting"></a> 排查启用 Application Insights Snapshot Debugger 或查看快照时遇到的问题
 如果为应用程序启用了 Application Insights 快照调试器，但未看到出现异常的快照，则可以使用以下说明进行故障排除。 可能有许多不同的原因导致未生成快照。 可以运行快照运行状况检查以确定一些可能的常见原因。
 
 ## <a name="use-the-snapshot-health-check"></a>使用快照运行状况检查
@@ -202,7 +202,7 @@ SnapshotUploader.exe Information: 0 : Deleted PDB scan marker : D:\local\Temp\Du
 创建快照后，出现的异常标记有快照 ID。 向 Application Insights 报告异常遥测时，该快照 ID 作为自定义属性包含在内。 通过 Application Insights 中的“搜索”  ，可借助 `ai.snapshot.id` 自定义属性找到所有遥测。
 
 1. 在 Azure 门户中浏览到 Application Insights 资源。
-2. 单击“搜索”。 
+2. 单击 **“搜索”** 。
 3. 在“搜索”文本框中输入 `ai.snapshot.id`，然后按 Enter。
 
 ![在门户中使用快照 ID 搜索遥测](./media/snapshot-debugger/search-snapshot-portal.png)

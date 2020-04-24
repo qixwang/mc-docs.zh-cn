@@ -12,10 +12,10 @@ ms.date: 03/02/2020
 ms.author: v-jay
 ms.reviewer: igorstan
 ms.openlocfilehash: f18a26f8b9048c06fc612a581f731503b4ff5478
-ms.sourcegitcommit: 892137d117bcaf9d88aec0eb7ca756fe39613344
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78154396"
 ---
 # <a name="cheat-sheet-for-azure-synapse-analytics-formerly-sql-dw"></a>Azure Synapse Analytics（以前称为 SQL DW）的速查表
@@ -42,7 +42,7 @@ ms.locfileid: "78154396"
 
 | 设计 | 建议 |
 |:--- |:--- |
-| 分发 | 轮循机制 |
+| 分发 | 循环 |
 | 索引 | 堆 |
 | 分区 | 无 |
 | 资源类 | largerc 或 xlargerc |

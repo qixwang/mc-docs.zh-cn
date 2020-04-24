@@ -11,10 +11,10 @@ ms.author: v-yiso
 origin.date: 02/11/2020
 ms.date: 03/09/2020
 ms.openlocfilehash: f4c0a2dbe076180f194b4347144a394dd6dd7805
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78155029"
 ---
 # <a name="score-model-module"></a>“评分模型”模块

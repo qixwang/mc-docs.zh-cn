@@ -11,10 +11,10 @@ ms.date: 03/09/2020
 ms.author: v-jay
 ms.reviewer: dineshm
 ms.openlocfilehash: 29676cbce05050f45bc21c520b3648a86a86563b
-ms.sourcegitcommit: fbc7584f403417d3af7bd6bbbaed7c13a78c57b9
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78412260"
 ---
 # <a name="move-an-azure-storage-account-to-another-region"></a>将 Azure 存储帐户移到另一个区域

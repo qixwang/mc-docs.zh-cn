@@ -9,17 +9,17 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 ms.openlocfilehash: f929857070d7e4d249b5c348dd6541520c09f4c0
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78850226"
 ---
 # <a name="iot-hub-device-reprovisioning-concepts"></a>IoT 中心设备重新预配概念
 
 在 IoT 解决方案的生命周期中，设备在 IoT 中心之间频繁移动。 此项移动的原因可能包括以下情况：
 
-* **地理位置/GeoLatency**：当设备在两位置之间移动时，通过将设备迁移到更近的 IoT 中心来改善网络延迟。
+* **地理位置/地理延迟**：当设备在两位置之间移动时，通过将设备迁移到更近的 IoT 中心来改善网络延迟。
 
 * **多租户**：可以在同一 IoT 解决方案中使用设备并将其重新分配给新客户或客户站点。 可使用不同的 IoT 中心为这位新客户提供服务。
 
@@ -51,7 +51,7 @@ ms.locfileid: "78850226"
 
 根据具体情况，设备通常会在重启时向预配服务实例发送请求。 还支持按需手动触发预配的方法。 注册项上的重新预配策略将确定设备预配服务实例处理这些预配请求的方式。 该策略还确定是否应在重新预配期间迁移设备状态数据。 单个注册和注册组可使用相同的策略：
 
-* **重新预配并迁移数据**：此策略是新注册项的默认策略。 当与注册项关联的设备提交新的请求时，此策略将执行操作 (1)。 根据注册项配置，可将设备重新分配给其他 IoT 中心。 如果设备正在更改 IoT 中心，则将删除初始 IoT 中心内的设备注册。 来自该初始 IoT 中心的已更新设备状态信息将迁移到新的 IoT 中心 (2)。 迁移期间，设备的状态将报告为“正在分配”  。
+* **重新预配和迁移数据**：此策略是新注册项的默认策略。 当与注册项关联的设备提交新的请求时，此策略将执行操作 (1)。 根据注册项配置，可将设备重新分配给其他 IoT 中心。 如果设备正在更改 IoT 中心，则将删除初始 IoT 中心内的设备注册。 来自该初始 IoT 中心的已更新设备状态信息将迁移到新的 IoT 中心 (2)。 迁移期间，设备的状态将报告为“正在分配”  。
 
     ![使用设备预配服务进行预配](./media/concepts-device-reprovisioning/dps-reprovisioning-migrate.png)
 

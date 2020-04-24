@@ -6,10 +6,10 @@ ms.topic: reference
 ms.date: 03/03/2020
 ms.author: v-junlch
 ms.openlocfilehash: b28f77376f5b3c5ed9ce04aa1de6f4420240de3b
-ms.sourcegitcommit: 1ac138a9e7dc7834b5c0b62a133ca5ce2ea80054
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78266041"
 ---
 # <a name="signalr-service-bindings-for-azure-functions"></a>Azure Functions 的 SignalR Service 绑定
@@ -25,7 +25,7 @@ ms.locfileid: "78266041"
 
 ### <a name="functions-2x-and-higher"></a>Functions 2.x 及更高版本
 
-使用触发器和绑定需要引用相应的程序包。 NuGet 包用于 .NET 类库，而扩展捆绑包用于其他所有应用程序类型。
+使用触发器和绑定需要引用相应的包。 NuGet 包用于 .NET 类库，而扩展捆绑包用于其他所有应用程序类型。
 
 | 语言                                        | 添加方式...                                   | 备注 
 |-------------------------------------------------|---------------------------------------------|-------------|

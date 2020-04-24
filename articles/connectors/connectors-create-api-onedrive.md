@@ -10,10 +10,10 @@ ms.date: 03/09/2020
 ms.author: v-yeche
 tags: connectors
 ms.openlocfilehash: 77b212c16d39592ce35ab7e886abfa21303ec859
-ms.sourcegitcommit: 1ac138a9e7dc7834b5c0b62a133ca5ce2ea80054
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78304686"
 ---
 # <a name="access-and-manage-files-in-onedrive-connector-by-using-azure-logic-apps"></a>使用 Azure 逻辑应用访问和管理 OneDrive 连接器中的文件
@@ -62,7 +62,7 @@ ms.locfileid: "78304686"
 
 操作是指在逻辑应用中定义的工作流所执行的操作。 [了解有关操作的详细信息](../logic-apps/logic-apps-overview.md#logic-app-concepts)。
 
-1. 选择加号。 会显示几个选项：“添加操作”  、“添加条件”  或“更多”  选项之一。
+1. 选择加号。 可看到多个选项：“添加操作”  、“添加条件”  或“更多”  选项之一。
 
     ![](./media/connectors-create-api-onedrive/add-action.png)
 

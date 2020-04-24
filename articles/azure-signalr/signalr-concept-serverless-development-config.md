@@ -8,10 +8,10 @@ origin.date: 03/01/2019
 ms.date: 03/23/2020
 ms.author: v-tawe
 ms.openlocfilehash: eb4668ce8b362757d0a4215842c3ff2ff0253739
-ms.sourcegitcommit: e94ed1c9eff4e88be2ca389909e60b14cc0d92f8
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79084493"
 ---
 # <a name="azure-functions-development-and-configuration-with-azure-signalr-service"></a>使用 Azure SignalR 服务进行 Azure Functions 开发和配置
@@ -30,9 +30,9 @@ Azure Functions 应用程序可以利用 [Azure SignalR 服务绑定](../azure-f
 
 ## <a name="azure-functions-development"></a>Azure Functions 开发
 
-使用 Azure Functions 和 Azure SignalR 服务构建的无服务器实时应用程序通常需要两个 Azure 函数：
+使用 Azure Functions 和 Azure SignalR 服务构建的无服务器实时应用程序通常需要两个 Azure Functions：
 
-* “negotiate”函数：客户端调用该函数来获取有效的 SignalR 服务访问令牌和服务终结点 URL
+* 一个“negotiate”函数，客户端调用该函数可获取有效的 SignalR 服务访问令牌和服务终结点 URL
 * 一个或多个用于发送消息或管理组成员身份的函数
 
 ### <a name="negotiate-function"></a>negotiate 函数

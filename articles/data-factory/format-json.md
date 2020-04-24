@@ -11,10 +11,10 @@ origin.date: 02/05/2020
 ms.date: 03/02/2020
 ms.author: v-jay
 ms.openlocfilehash: 1de014a36bbd36638011ce69fbf1d45b9eb105ee
-ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77653499"
 ---
 # <a name="json-format-in-azure-data-factory"></a>Azure 数据工厂中的 JSON 格式

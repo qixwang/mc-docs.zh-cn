@@ -6,10 +6,10 @@ origin.date: 10/01/2016
 md.date: 03/23/2020
 ms.author: v-tawe
 ms.openlocfilehash: d115ca88f9fcc3edee8723310ecea958652633ba
-ms.sourcegitcommit: e94ed1c9eff4e88be2ca389909e60b14cc0d92f8
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79084428"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service-for-mobile-apps"></a>Azure 应用服务中针对移动应用的身份验证和授权
@@ -42,18 +42,18 @@ ms.locfileid: "79084428"
 
 如果不希望设置提供者 SDK，可以利用 Azure 应用服务的移动应用功能进行登录。 移动应用客户端 SDK 会针对所选提供者打开一个 Web 视图，方便用户登录。 在博客和论坛上，此过程有时也被称为“服务器流”或“服务器定向流”，因为服务器管理用户登录过程，而客户端 SDK 从来不会收到提供者令牌。
 
-启动此流程的代码包括在每个平台的身份验证教程中。 在流程结束时，客户端 SDK 拥有一个应用服务令牌，该令牌自动附加到针对应用程序后端的所有请求。
+启动此流程的代码包括在每个平台的身份验证教程中。 在流程结束时，客户端 SDK 将拥有一个应用服务令牌，该令牌自动附加到针对应用程序后端的所有请求。
 
 有关身份验证流的详细信息，请参阅[应用服务身份验证流](../app-service/overview-authentication-authorization.md#authentication-flow)。 
 ## <a name="more-resources"></a>更多资源
 
 以下教程展示了如何通过[服务器定向流](../app-service/overview-authentication-authorization.md#authentication-flow)向移动客户端添加身份验证：
 
-* [Add authentication to your iOS app][iOS]
+* [将身份验证添加到 iOS 应用][iOS]
 * [向 Android 应用添加身份验证][Android]
-* [Add Authentication to your Windows app][Windows]
-* [Add authentication to your Xamarin.iOS app][Xamarin.iOS]
-* [Add authentication to your Xamarin.Android app][Xamarin.Android]
+* [将身份验证添加到 Windows 应用][Windows]
+* [将身份验证添加到 Xamarin.iOS 应用][Xamarin.iOS]
+* [将身份验证添加到 Xamarin.Android 应用][Xamarin.Android]
 * [向 Xamarin.Forms 应用添加身份验证][Xamarin.Forms]
 * [向 Cordova 应用添加身份验证][Cordova]
 

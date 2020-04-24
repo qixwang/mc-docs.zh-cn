@@ -13,10 +13,10 @@ origin.date: 12/10/2019
 ms.date: 03/02/2020
 ms.author: v-jay
 ms.openlocfilehash: 54e527e9626f9fd042ab94d604e3b2f5c91bcc65
-ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77653533"
 ---
 # <a name="copy-data-to-or-from-a-file-system-by-using-azure-data-factory"></a>使用 Azure 数据工厂向/从文件系统复制数据

@@ -10,10 +10,10 @@ origin.date: 12/07/2018
 ms.date: 08/07/2019
 ms.custom: seodec18
 ms.openlocfilehash: 1273cee9d8584927b4cd410980836e309defc0d2
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78155127"
 ---
 # <a name="troubleshoot-input-connections"></a>排查输入连接问题
@@ -66,7 +66,7 @@ Could not deserialize the input event(s) from resource <blob URI> as json.
 当接收器的数量超出了最大数量时显示的错误为：`The streaming job failed: Stream Analytics job has validation errors: Job will exceed the maximum amount of Event Hub Receivers.`
 
 > [!NOTE]
-> 当读取器的数量在作业升级期间发生更改时，暂时性警告会被写入到审核日志中。 在发生这些暂时性问题后，流分析作业会自动恢复。
+> 当读取器的数量在作业升级期间发生更改时，暂时性警告会被写入到审核日志中。 流分析作业会自动从这些暂时性问题中恢复。
 
 ### <a name="add-a-consumer-group-in-event-hubs"></a>在事件中心内添加使用者组
 若要在事件中心实例内添加新的使用者组，请执行以下步骤：
@@ -93,9 +93,9 @@ Could not deserialize the input event(s) from resource <blob URI> as json.
 
 每个分区的读取器数超过数据中心限制（5 个）的情况如下：
 
-* 多个 SELECT 语句：如果使用引用“同一个”事件中心输入的多个 SELECT 语句，则每个 SELECT 语句都将导致新建一个接收器  。
-* UNION：使用 UNION 时，可能存在引用“同一个”事件中心或使用者组的多个输入  。
-* SELF JOIN：使用 SELF JOIN 操作时，可能会多次引用“同一个”事件中心  。
+* 多个 SELECT 语句：如果使用引用同一个  事件中心输入的多个 SELECT 语句，则每个 SELECT 语句都将导致新建一个接收器。
+* UNION：使用 UNION 时，可能存在引用同一个  事件中心或使用者组的多个输入。
+* SELF JOIN：使用 SELF JOIN 操作时，可能会多次引用同一个  事件中心。
 
 下列最佳做法可帮助缓解每个分区的读取器数超过数据中心限制（5 个）的情况。
 
@@ -103,7 +103,7 @@ Could not deserialize the input event(s) from resource <blob URI> as json.
 
 WITH 子句将指定可由查询中的 FROM 子句引用的临时命名结果集。 在单个 SELECT 语句的执行范围内定义 WITH 子句。
 
-例如，与其使用此查询：
+例如，与使用此查询相比：
 
 ```SQL
 SELECT foo 
@@ -116,7 +116,7 @@ FROM inputEventHub
 …
 ```
 
-不如使用此查询：
+请使用此查询：
 
 ```SQL
 WITH data AS (
@@ -135,11 +135,11 @@ FROM data
 
 ### <a name="ensure-that-inputs-bind-to-different-consumer-groups"></a>确保输入绑定到不同的使用者组
 
-对于有三个或三个以上输入连接到同一事件中心的查询，请创建单独的使用者组。 这需要创建额外的流分析输入。
+对于其中具有三个或以上的输入连接到同一事件中心的查询，请创建单独的使用者组。 这需要创建额外的流分析输入。
 
 ## <a name="get-help"></a>获取帮助
 
-如需进一步的帮助，请尝试我们的 [Azure 流分析论坛](https://www.azure.cn/support/contact/)。
+如需进一步的帮助，请试用我们的 [Azure 流分析论坛](https://www.azure.cn/support/contact/)。
 
 ## <a name="next-steps"></a>后续步骤
 

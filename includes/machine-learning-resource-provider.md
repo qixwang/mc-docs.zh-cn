@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 01/09/2020
 ms.author: larryfr
 ms.openlocfilehash: 5ffeb3f2dad402bc8fbd363308116f67082ac9b9
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78155012"
 ---
 创建 Azure 机器学习工作区或工作区使用的资源时，可能会收到类似于以下消息的错误：

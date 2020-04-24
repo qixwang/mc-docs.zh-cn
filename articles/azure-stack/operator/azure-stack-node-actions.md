@@ -9,10 +9,10 @@ ms.author: v-jay
 ms.reviewer: thoroet
 ms.lastreviewed: 11/11/2019
 ms.openlocfilehash: b7e723e1d07399b4bcad414e6976b2744b415727
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79291156"
 ---
 # <a name="scale-unit-node-actions-in-azure-stack-hub"></a>Azure Stack Hub 中的缩放单元节点操作
@@ -26,7 +26,7 @@ ms.locfileid: "79291156"
 
 在管理员门户中，可以查看缩放单元及其关联节点的状态。
 
-查看缩放单元的状态：
+若要查看缩放单元的状态，请执行以下操作：
 
 1. 在“区域管理”磁贴中选择区域。 
 2. 在左侧的“基础结构资源”下，选择“缩放单元”。  
@@ -128,18 +128,18 @@ ms.locfileid: "79291156"
 
 有关详细信息，请参阅 [Enable-AzsScaleUnitNode](https://docs.microsoft.com/powershell/module/azs.fabric.admin/enable-azsscaleunitnode)。
 
-## <a name="repair"></a>修复
+## <a name="repair"></a>Repair
 
 > [!CAUTION]  
 > 固件分级对于本文中所述的操作的成功至关重要。 当 Azure Stack Hub 自动化部署操作系统时，缺少此步骤可能会导致系统不稳定、性能降低、安全威胁或失败。 更换硬件时，请始终参阅硬件合作伙伴的文档，以确保应用的固件与 [Azure Stack Hub 管理员门户](azure-stack-updates.md)中显示的 OEM 版本匹配。<br><br>
 有关详细信息和合作伙伴文档的链接，请参阅[更换硬件组件](azure-stack-replace-component.md)。
 
-| 硬件合作伙伴 | 区域 | URL |
+| 硬件合作伙伴 | 区域 | 代码 |
 |------------------|--------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Cisco | 全部 | [适用于 Azure Stack Hub 的 Cisco 集成系统操作指南](https://www.cisco.com/c/en/us/td/docs/unified_computing/ucs/azure-stack/b_Azure_Stack_Operations_Guide_4-0/b_Azure_Stack_Operations_Guide_4-0_chapter_00.html#concept_wks_t1q_wbb)<br><br>[适用于 Azure Stack Hub 的 Cisco 集成系统的发行说明](https://www.cisco.com/c/en/us/support/servers-unified-computing/ucs-c-series-rack-mount-ucs-managed-server-software/products-release-notes-list.html) |
-| Dell EMC | 全部 | [Cloud for Azure Stack Hub 14G（需要帐户和登录）](https://support.emc.com/downloads/44615_Cloud-for-Microsoft-Azure-Stack-14G)<br><br>[Cloud for Azure Stack Hub 13G（需要帐户和登录）](https://support.emc.com/downloads/42238_Cloud-for-Microsoft-Azure-Stack-13G) |
-| HPE | 全部 | [HPE ProLiant for Azure Stack Hub](http://www.hpe.com/info/MASupdates) |
-| Lenovo | 全部 | [ThinkAgile SXM 最佳食谱](https://datacentersupport.lenovo.com/us/en/solutions/ht505122) |
+| Cisco | All | [适用于 Azure Stack Hub 的 Cisco 集成系统操作指南](https://www.cisco.com/c/en/us/td/docs/unified_computing/ucs/azure-stack/b_Azure_Stack_Operations_Guide_4-0/b_Azure_Stack_Operations_Guide_4-0_chapter_00.html#concept_wks_t1q_wbb)<br><br>[适用于 Azure Stack Hub 的 Cisco 集成系统的发行说明](https://www.cisco.com/c/en/us/support/servers-unified-computing/ucs-c-series-rack-mount-ucs-managed-server-software/products-release-notes-list.html) |
+| Dell EMC | All | [Cloud for Azure Stack Hub 14G（需要帐户和登录）](https://support.emc.com/downloads/44615_Cloud-for-Microsoft-Azure-Stack-14G)<br><br>[Cloud for Azure Stack Hub 13G（需要帐户和登录）](https://support.emc.com/downloads/42238_Cloud-for-Microsoft-Azure-Stack-13G) |
+| HPE | All | [HPE ProLiant for Azure Stack Hub](http://www.hpe.com/info/MASupdates) |
+| Lenovo | All | [ThinkAgile SXM 最佳食谱](https://datacentersupport.lenovo.com/us/en/solutions/ht505122) |
 
 “修复”操作可修复节点。  请只在出现以下情况时才使用此操作：
 
@@ -157,7 +157,7 @@ ms.locfileid: "79291156"
   Repair-AzsScaleUnitNode -Location <RegionName> -Name <NodeName> -BMCIPv4Address <BMCIPv4Address>
   ```
 
-## <a name="shutdown"></a>Shutdown
+## <a name="shutdown"></a>关机
 
 “关闭”  操作会先将所有活动工作负荷移到同一缩放单元中的其余节点。 然后该操作会正常关闭缩放单元节点。
 

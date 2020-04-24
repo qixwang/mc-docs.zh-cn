@@ -10,10 +10,10 @@ ms.topic: conceptual
 origin.date: 01/30/2020
 ms.date: 03/16/2020
 ms.openlocfilehash: 8503ec28a772ad28e7e78bb3654f42c24ec74e98
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78850614"
 ---
 # <a name="choose-a-pricing-tier-for-azure-cognitive-search"></a>选择 Azure 认知搜索的定价层

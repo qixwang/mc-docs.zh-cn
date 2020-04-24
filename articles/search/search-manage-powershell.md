@@ -11,15 +11,15 @@ ms.topic: conceptual
 origin.date: 02/11/2020
 ms.date: 03/16/2020
 ms.openlocfilehash: 01eed22e07c85b25fe464be517def274c7ac9411
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78850511"
 ---
 # <a name="manage-your-azure-cognitive-search-service-with-powershell"></a>使用 PowerShell 管理 Azure 认知搜索服务
 > [!div class="op_single_selector"]
-> * [Portal](search-manage.md)
+> * [门户](search-manage.md)
 > * [PowerShell](search-manage-powershell.md)
 > * [REST API](https://docs.microsoft.com/rest/api/searchmanagement/)
 > * [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.search)
@@ -105,7 +105,7 @@ Get-AzResource -ResourceType Microsoft.Search/searchServices | ft
 Get-AzResource -ResourceName <service-name>
 ```
 
-结果应类似于以下输出。
+结果应如以下输出所示。
 
 ```
 Name              : my-demo-searchapp
@@ -131,7 +131,7 @@ Install-Module -Name Az.Search
 Get-Command -Module Az.Search
 ```
 
-结果应类似于以下输出。
+结果应如以下输出所示。
 
 ```
 CommandType     Name                                Version    Source
@@ -155,7 +155,7 @@ Cmdlet          Set-AzSearchService                 0.7.1      Az.Search
 Get-AzSearchService -ResourceGroupName <resource-group-name>
 ```
 
-结果应类似于以下输出。
+结果应如以下输出所示。
 
 ```
 Name              : my-demo-searchapp
@@ -176,7 +176,7 @@ ResourceId        : /subscriptions/<alphanumeric-subscription-ID>/resourceGroups
 ```powershell
 New-AzSearchService -ResourceGroupName "demo-chinaeast2" -Name "my-demo-searchapp" -Sku "Standard" -Location "China East 2" -PartitionCount 3 -ReplicaCount 3
 ``` 
-结果应类似于以下输出。
+结果应如以下输出所示。
 
 ```
 ResourceGroupName : demo-chinaeast2
@@ -204,7 +204,7 @@ API 密钥的值由服务生成。 无法提供自定义密钥供 Azure 认知�
 New-AzSearchAdminKey -ResourceGroupName <resource-group-name> -ServiceName <search-service-name> -KeyKind Primary
 ```
 
-结果应类似于以下输出。 即使每次只更改一个，也会同时返回两个密钥。
+结果应如以下输出所示。 即使每次只更改一个，也会同时返回两个密钥。
 
 ```
 Primary                    Secondary
@@ -236,7 +236,7 @@ New-AzSearchQueryKey -ResourceGroupName <resource-group-name> -ServiceName <sear
 Set-AzSearchService -ResourceGroupName <resource-group-name> -Name <search-service-name> -PartitionCount 6 -ReplicaCount 6
 ```
 
-结果应类似于以下输出。
+结果应如以下输出所示。
 
 ```
 ResourceGroupName : demo-chinaeast2

@@ -10,10 +10,10 @@ origin.date: 10/15/2019
 ms.date: 02/26/2020
 ms.author: dapine
 ms.openlocfilehash: 6520f6e452737afce0a76da610b090e327f9584c
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78154664"
 ---
 ## <a name="gathering-required-parameters"></a>收集必需参数
@@ -22,13 +22,13 @@ ms.locfileid: "78154664"
 
 ### <a name="endpoint-uri-endpoint_uri"></a>终结点 URI `{ENDPOINT_URI}`
 
-在相应的认知服务资源的 Azure 门户“概览”  页上提供**终结点** URI 值。 导航到“概览”  页，将鼠标悬停在“终结点”上就会显示一个 `Copy to clipboard` <span class="docon docon-edit-copy x-hidden-focus"></span> 图标。 复制后在需要时使用。
+在相应的认知服务资源的 Azure 门户“概览”  页上提供*终结点* URI 值。 导航到“概览”  页，将鼠标悬停在“终结点”上就会显示一个 `Copy to clipboard` <span class="docon docon-edit-copy x-hidden-focus"></span> 图标。 复制后在需要时使用。
 
 ![收集终结点 URI 供以后使用](../media/overview-endpoint-uri.png)
 
 ### <a name="keys-api_key"></a>密钥 `{API_KEY}`
 
-此密钥用于启动容器，可以从相应认知服务资源的 Azure 门户的“密钥”页获取。 导航到“密钥”页并单击 `Copy to clipboard` <span class="docon docon-edit-copy x-hidden-focus"></span> 图标。 
+此密钥用于启动容器，可以从相应认知服务资源的 Azure 门户的“密钥”页获取。 导航到“密钥”页并单击  `Copy to clipboard` 图标。<span class="docon docon-edit-copy x-hidden-focus"></span>
 
 ![获取两个密钥中的一个供以后使用](../media/keys-copy-api-key.png)
 

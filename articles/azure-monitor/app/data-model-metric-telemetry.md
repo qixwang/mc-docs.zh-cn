@@ -8,10 +8,10 @@ ms.date: 6/4/2019
 ms.reviewer: sergkanz
 ms.author: v-lingwu
 ms.openlocfilehash: 9e4c45dfa2725a586dcc6185baf70a9af0e79460
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78850436"
 ---
 # <a name="metric-telemetry-application-insights-data-model"></a>指标遥测：Application Insights 数据模型
@@ -40,11 +40,11 @@ Application Insights 支持几个已知的指标名称。 这些指标已放入 
 
 想要在 Application Insights 门户和 UI 中看到的指标的名称。 
 
-## <a name="value"></a>Value
+## <a name="value"></a>值
 
 度量的单个值。 要聚合的各个度量值的总和。
 
-## <a name="count"></a>计数
+## <a name="count"></a>Count
 
 聚合指标的指标权重。 不应为度量设置。
 

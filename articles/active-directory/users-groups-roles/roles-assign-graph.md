@@ -14,10 +14,10 @@ ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f8b539ad54b0290fc3a113cc357b481a8d42576c
-ms.sourcegitcommit: 4ba6d7c8bed5398f37eb37cf5e2acafcdcc28791
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79133973"
 ---
 # <a name="assign-custom-admin-roles-using-the-microsoft-graph-api-in-azure-active-directory"></a>使用 Microsoft Graph API 在 Azure Active Directory 中分配自定义管理员角色 
@@ -39,7 +39,7 @@ POST https://microsoftgraph.chinacloudapi.cn/beta/roleManagement/directory/roleA
 Content-type: application/json
 ```
 
-正文
+Body
 
 ``` HTTP
 {
@@ -63,7 +63,7 @@ POST
 https://microsoftgraph.chinacloudapi.cn/beta/roleManagement/directory/roleAssignments
 ```
 
-正文
+Body
 
 ``` HTTP
 {
@@ -90,7 +90,7 @@ POST
 https://microsoftgraph.chinacloudapi.cn/beta/roleManagement/directory/roleAssignments
 ```
 
-正文
+Body
 
 ``` HTTP
 {

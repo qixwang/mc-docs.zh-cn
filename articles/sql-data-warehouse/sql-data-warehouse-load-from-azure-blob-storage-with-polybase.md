@@ -13,10 +13,10 @@ ms.author: v-jay
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 ms.openlocfilehash: 1facdc478d17aa756b3c08630cf28c69c323d1da
-ms.sourcegitcommit: 892137d117bcaf9d88aec0eb7ca756fe39613344
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78154383"
 ---
 # <a name="load-contoso-retail-data-to-a-sql-analytics-data-warehouse"></a>将 Contoso 零售数据加载到 SQL Analytics 数据仓库

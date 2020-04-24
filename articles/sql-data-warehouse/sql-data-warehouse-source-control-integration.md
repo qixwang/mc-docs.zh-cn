@@ -12,17 +12,17 @@ ms.date: 12/09/2019
 ms.author: v-jay
 ms.reviewer: igorstan
 ms.openlocfilehash: 85437f83d6e70e8a56ef62548bf6767d50b3a020
-ms.sourcegitcommit: 892137d117bcaf9d88aec0eb7ca756fe39613344
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78154413"
 ---
 # <a name="source-control-integration-for-azure-sql-data-warehouse"></a>Azure SQL 数据仓库的源代码管理集成
 
 本教程概述了如何将 SQL Server Data tools (SSDT) 数据库项目与源代码管理集成。  源代码管理集成是使用 SQL 数据仓库构建持续集成和部署管道的第一步。 
 
-## <a name="before-you-begin"></a>准备阶段
+## <a name="before-you-begin"></a>开始之前
 
 - 注册一个 [Azure DevOps 组织](https://azure.microsoft.com/services/devops/)
 - 完成[创建和连接](/sql-data-warehouse/create-data-warehouse-portal)教程
@@ -56,7 +56,7 @@ ms.locfileid: "78154413"
 
 3. 在 Visual Studio 的团队资源管理器中，将所有更改提交到本地 Git 存储库 
 
-   ![提交](media/sql-data-warehouse-source-control-integration/6.5-commit-push-changes.png "提交")  
+   ![提交](media/sql-data-warehouse-source-control-integration/6.5-commit-push-changes.png "Commit")  
 
 4. 既然已在克隆的存储库中本地提交了更改，请将更改同步并推送到 Azure DevOps 项目中的 Azure Repo 存储库。
 

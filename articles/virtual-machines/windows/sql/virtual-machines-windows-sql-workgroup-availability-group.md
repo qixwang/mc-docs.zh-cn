@@ -15,10 +15,10 @@ origin.date: 01/29/2020
 ms.date: 03/09/2020
 ms.author: v-yeche
 ms.openlocfilehash: 4d181dad87a4b3466f60bc57e1b8aa8a58a32413
-ms.sourcegitcommit: e94ed1c9eff4e88be2ca389909e60b14cc0d92f8
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79084522"
 ---
 # <a name="configure-a-workgroup-availability-group"></a>配置工作组可用性组 

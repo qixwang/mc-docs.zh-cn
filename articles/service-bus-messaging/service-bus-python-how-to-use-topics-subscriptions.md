@@ -16,10 +16,10 @@ origin.date: 01/27/2020
 ms.date: 2/6/2020
 ms.author: v-lingwu
 ms.openlocfilehash: 5a694cd5727c43d731ce4c3d1d75441a53bc3a07
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78154973"
 ---
 # <a name="quickstart-use-service-bus-topics-and-subscriptions-with-python"></a>快速入门：通过 Python 使用服务总线主题和订阅

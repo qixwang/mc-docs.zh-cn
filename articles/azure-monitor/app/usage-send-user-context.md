@@ -9,10 +9,10 @@ ms.date: 6/4/2019
 ms.reviewer: abgreg;mbullwin
 ms.author: v-lingwu
 ms.openlocfilehash: ca9125983da65cc728d799a1a979ea471d2fa0e9
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78850344"
 ---
 # <a name="send-user-context-ids-to-enable-usage-experiences-in-azure-application-insights"></a>发送用户上下文 ID 以启用 Azure Application Insights 中的使用体验
@@ -135,7 +135,7 @@ namespace MvcWebRole.Telemetry
     - [使用情况概述](usage-overview.md)
     - [用户、会话和事件](usage-segmentation.md)
     - [漏斗图](usage-funnels.md)
-    - [保留期](usage-retention.md)
+    - [保留](usage-retention.md)
     - [工作簿](../../azure-monitor/app/usage-workbooks.md)
 
 

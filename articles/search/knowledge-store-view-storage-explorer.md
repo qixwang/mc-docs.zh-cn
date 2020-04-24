@@ -10,10 +10,10 @@ ms.topic: conceptual
 origin.date: 12/30/2019
 ms.date: 03/16/2020
 ms.openlocfilehash: f3d6ae2d2638ccf76fa0a4edd6c37edbb185c991
-ms.sourcegitcommit: d5eca3c6b03b206e441b599e5b138bd687a91361
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78934784"
 ---
 # <a name="view-a-knowledge-store-with-storage-explorer"></a>使用存储资源管理器查看知识存储
@@ -24,7 +24,7 @@ ms.locfileid: "78934784"
 
 在本文中，你将通过示例来了解如何使用 Azure 门户中的存储资源管理器来连接和浏览知识存储。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 + 按照[在 Azure 门户中创建知识存储](knowledge-store-create-portal.md)中的步骤创建本演练中使用的示例知识存储。
 
@@ -50,7 +50,7 @@ ms.locfileid: "78934784"
 
    ![在存储资源管理器中查询表](media/knowledge-store-view-storage-explorer/storage-explorer-query-table.png "在存储资源管理器中查询表")
 
-## <a name="clean-up"></a>清理
+## <a name="clean-up"></a>清除
 
 在自己的订阅中操作时，最好在项目结束时确定是否仍需要已创建的资源。 持续运行资源可能会产生费用。 可以逐个删除资源，也可以删除资源组以删除整个资源集。
 

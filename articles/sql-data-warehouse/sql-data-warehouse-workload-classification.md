@@ -13,10 +13,10 @@ ms.author: v-jay
 ms.reviewer: jrasnick
 ms.custom: seo-lt-2019
 ms.openlocfilehash: ce4e5da51e5b65ce30fd048a77b5e0d32c5bacdc
-ms.sourcegitcommit: 892137d117bcaf9d88aec0eb7ca756fe39613344
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78154411"
 ---
 # <a name="azure-sql-data-warehouse-workload-classification"></a>Azure SQL 数据仓库工作负荷分类
@@ -54,7 +54,7 @@ ms.locfileid: "78154411"
 
 `membername` 参数是必需的。  但是，如果指定的 membername 是数据库用户而不是数据库角色，用户的权重更高，因此选择该分类器。
 
-如果某个用户是多个角色的成员，并且这些角色分配有不同的资源类或者在多个分类器中相匹配，则会为该用户分配最高的资源类。  此行为与现有的资源类分配行为保持一致。
+如果用户是具有在多个分类器中分配或匹配的不同资源类的多个角色的成员，则会授予此用户最高的资源类分配。  此行为与现有的资源类分配行为保持一致。
 
 ## <a name="system-classifiers"></a>系统分类器
 
@@ -68,7 +68,7 @@ SELECT * FROM sys.workload_management_workload_classifiers where classifier_id <
 
 使用自动创建的系统分类器能够轻松迁移到工作负荷分类。 开始创建具有重要性的新分类器时，使用具有分类优先顺序的资源类角色映射可能会导致错误分类。
 
-假设出现了下面这种情景：
+请考虑下列方案：
 
 - 某个现有的数据仓库包含已分配到 largerc 资源类角色的数据库用户 DBAUser。 资源类分配是使用 sp_addrolemember 进行的。
 - 现已使用工作负荷管理更新该数据仓库。

@@ -7,10 +7,10 @@ ms.author: v-lingwu
 origin.date: 12/06/2018
 ms.date: 12/30/2019
 ms.openlocfilehash: dbede380bbcb5c14635ce32f1aaad25aacbb8ffc
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79290892"
 ---
 # <a name="how-to-manage-the-azure-monitor-for-containers-agent"></a>如何管理用于容器的 Azure Monitor 代理

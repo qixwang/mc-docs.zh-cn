@@ -10,10 +10,10 @@ ms.date: 03/09/2020
 ms.author: v-yeche
 tags: connectors
 ms.openlocfilehash: 31f0be1469f71e15f1a1c37336586eb54bf27a9e
-ms.sourcegitcommit: 1ac138a9e7dc7834b5c0b62a133ca5ce2ea80054
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78304663"
 ---
 # <a name="delay-running-the-next-action-in-azure-logic-apps"></a>在 Azure 逻辑应用中延迟运行下一操作

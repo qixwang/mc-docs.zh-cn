@@ -9,10 +9,10 @@ origin.date: 02/03/2020
 ms.date: 03/09/2020
 ms.author: v-yeche
 ms.openlocfilehash: bab485818559d58c62b7b43e40f53987b3c035da
-ms.sourcegitcommit: e94ed1c9eff4e88be2ca389909e60b14cc0d92f8
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79084519"
 ---
 # <a name="ncv3-series"></a>NCv3 系列

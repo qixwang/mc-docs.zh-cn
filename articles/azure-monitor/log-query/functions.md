@@ -9,10 +9,10 @@ origin.date: 11/15/2018
 ms.date: 01/21/2019
 ms.author: v-lingwu
 ms.openlocfilehash: 73cd8bf9ea4b583a92ebf6ec9f696f35829acf01
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78850276"
 ---
 # <a name="using-functions-in-azure-monitor-log-queries"></a>在 Azure Monitor 日志查询中使用函数
@@ -28,7 +28,7 @@ ms.locfileid: "78850276"
 | 名称           | 查询资源管理器中查询的显示名称  。 |
 | 另存为        | 函数 |
 | 函数别名 | 在其他查询中使用该函数的短名称。 不可包含空格，必须唯一。 |
-| Category       | 用于在查询资源管理器中整理已保存的查询和函数的类别  。 |
+| 类别       | 用于在查询资源管理器中整理已保存的查询和函数的类别  。 |
 
 > [!NOTE]
 > Azure Monitor 中的函数不能包含其他函数。

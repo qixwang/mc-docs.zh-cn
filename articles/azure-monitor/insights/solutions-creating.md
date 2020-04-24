@@ -8,10 +8,10 @@ origin.date: 03/20/2017
 ms.date: 07/12/2019
 ms.author: v-lingwu
 ms.openlocfilehash: 757410429b38cb76b5d36e3637d4c7f8f4132a16
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78850314"
 ---
 # <a name="design-and-build-a-management-solution-in-azure-preview"></a>在 Azure 中设计和生成管理解决方案（预览）

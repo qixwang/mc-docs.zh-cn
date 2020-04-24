@@ -6,10 +6,10 @@ origin.date: 01/08/2020
 ms.date: 01/15/2020
 ms.author: v-yeche
 ms.openlocfilehash: 23515d7aaff401f877cc184c93c4d3bb6d7ea189
-ms.sourcegitcommit: 2b4507745b98b45f1ce3f3d30f397521148ef35a
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78213752"
 ---
 # <a name="container-group-and-instance-logging-with-azure-monitor-logs"></a>使用 Azure Monitor 日志进行容器组和实例日志记录

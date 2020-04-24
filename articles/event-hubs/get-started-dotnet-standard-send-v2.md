@@ -15,10 +15,10 @@ origin.date: 02/11/2020
 ms.date: 03/23/2020
 ms.author: v-tawe
 ms.openlocfilehash: 2c5b08d7d233a9c2f17b2e65ef33da2ed33ce7f8
-ms.sourcegitcommit: 4ba6d7c8bed5398f37eb37cf5e2acafcdcc28791
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79133852"
 ---
 # <a name="send-events-to-and-receive-events-from-azure-event-hubs---net-core-azuremessagingeventhubs"></a>向/从 Azure 事件中心发送/接收事件 - .NET Core (Azure.Messaging.EventHubs) 

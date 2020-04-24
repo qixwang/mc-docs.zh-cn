@@ -9,10 +9,10 @@ origin.date: 01/24/2018
 ms.date: 11/30/2019
 ms.author: v-lingwu
 ms.openlocfilehash: fed43cb8c9f7f0b02f283c74d163a65f82f5b7cf
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78850336"
 ---
 # <a name="monitor-active-directory-replication-status-with-azure-monitor"></a>使用 Azure Monitor 监视 Active Directory 复制状态

@@ -14,10 +14,10 @@ origin.date: 01/13/2020
 ms.date: 02/24/2020
 ms.author: v-lingwu
 ms.openlocfilehash: fd8c9781ee4e297e53df575fa6657c5466cb6eb0
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78155099"
 ---
 # <a name="configure-a-custom-domain-name"></a>配置自定义域名 
@@ -32,7 +32,7 @@ ms.locfileid: "78155099"
 >
 >
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要执行本文中所述的步骤，必须具有：
 
@@ -65,7 +65,7 @@ ms.locfileid: "78155099"
 1. 选择要更新的终结点。
 1. 在右侧窗口中，单击“自定义”  。
 
-    - 在“自定义域名”  中，指定要使用的名称。 例如，`api.contoso.com`。
+    - 在“自定义域名”  中，指定要使用的名称。 例如，`api.contoso.com` 。
     - 在**证书**中，从密钥保管库中选择证书。 如果证书受密码保护，你还可以上传有效的 .PFX 文件并提供其**密码**。
 
     > [!TIP]

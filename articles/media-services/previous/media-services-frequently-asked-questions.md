@@ -15,10 +15,10 @@ origin.date: 03/18/2019
 ms.date: 02/24/2020
 ms.author: v-jay
 ms.openlocfilehash: 85237d4ba9ed64da2c36629253cdca588224a76d
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78850561"
 ---
 # <a name="media-services-v2-frequently-asked-questions"></a>媒体服务 v2 常见问题解答

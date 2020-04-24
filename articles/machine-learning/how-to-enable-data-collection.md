@@ -13,10 +13,10 @@ origin.date: 11/12/2019
 ms.date: 03/16/2020
 ms.custom: seodec18
 ms.openlocfilehash: 3aef99ea8c76f8e86a974340f531cdb00fe43d66
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78850595"
 ---
 # <a name="collect-data-for-models-in-production"></a>为生产环境中的模型收集数据
@@ -59,9 +59,9 @@ Blob 中输出数据的路径遵循以下语法：
 >[!NOTE]
 > 在低于 0.1.0a16 的适用于 Python 的 Azure 机器学习 SDK 版本中，`designation` 参数命名为 `identifier`。 如果使用早期版本开发代码，则需要相应地更新此名称。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
-- 如果没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://aka.ms/AMLFree)。
+- 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://aka.ms/AMLFree)。
 
 - 必须安装一个 Azure 机器学习工作区、一个包含脚本的本地目录以及适用于 Python 的 Azure 机器学习 SDK。 若要了解如何安装，请参阅[如何配置开发环境](how-to-configure-environment.md)。
 
@@ -106,7 +106,7 @@ Blob 中输出数据的路径遵循以下语法：
     prediction_dc.collect(result) #this call is saving our input data into Azure Blob
     ```
 
-1. 在 AKS 中部署服务时，数据收集不会自动设置为 **true**。  如以下示例所示更新配置文件：
+1. 在 AKS 中部署服务时，数据收集不会自动设置为 *true*。  如以下示例所示更新配置文件：
 
     ```python
     aks_config = AksWebservice.deploy_configuration(collect_model_data=True)
@@ -192,11 +192,11 @@ Blob 中输出数据的路径遵循以下语法：
 
 1. 下载并打开 [Power BI Desktop](https://www.powerbi.com)。
 
-1. 选择“获取数据”，然后选择“[Azure Blob 存储](https://docs.microsoft.com/power-bi/desktop-data-sources)”。  
+1. 选择“获取数据”，然后选择“**Azure Blob 存储**”。[  ](https://docs.microsoft.com/power-bi/desktop-data-sources)
 
     [![Power BI Blob 设置](./media/how-to-enable-data-collection/PBIBlob.png)](././media/how-to-enable-data-collection/PBIBlob.png#lightbox)
 
-1. 添加存储帐户名称并输入存储密钥。 可以通过在 Blob 中选择“设置” > “访问密钥”找到此信息。  
+1. 添加存储帐户名称并输入存储密钥。 可以通过在 Blob 中选择“设置” **“访问密钥”找到此信息。**  >  
 
 1. 选择“模型数据”容器，然后选择“编辑”。  
 

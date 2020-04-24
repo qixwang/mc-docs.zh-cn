@@ -9,10 +9,10 @@ ms.date: 6/4/2019
 ms.reviewer: sdash
 ms.author: v-lingwu
 ms.openlocfilehash: c184fa779c07536bc4dab40f5de9dfe25a39e0e8
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78850355"
 ---
 # <a name="unified-cross-component-transaction-diagnostics"></a>统一的跨组件事务诊断

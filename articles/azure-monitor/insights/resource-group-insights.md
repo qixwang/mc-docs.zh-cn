@@ -8,10 +8,10 @@ origin.date: 09/19/2018
 ms.date: 09/19/2019
 ms.author: v-lingwu
 ms.openlocfilehash: f8dc72c0ed519a8b6188693a75c84117a930ac2d
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78850322"
 ---
 # <a name="monitor-resource-groups-with-azure-monitor-preview"></a>使用 Azure Monitor（预览版）监视资源组

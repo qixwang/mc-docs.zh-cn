@@ -9,10 +9,10 @@ ms.date: 03/09/2020
 ms.author: v-yeche
 ms.custom: seodec18
 ms.openlocfilehash: 8889797ee182fcce1d89fce0b95a2c6449430b2e
-ms.sourcegitcommit: e94ed1c9eff4e88be2ca389909e60b14cc0d92f8
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79084450"
 ---
 # <a name="azure-disk-encryption-on-an-isolated-network"></a>隔离网络上的 Azure 磁盘加密

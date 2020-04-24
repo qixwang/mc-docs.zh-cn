@@ -10,10 +10,10 @@ ms.date: 03/09/2020
 ms.author: v-yeche
 tags: connectors
 ms.openlocfilehash: 44b6d860b7191ff979d694d787077a2d38047fce
-ms.sourcegitcommit: 1ac138a9e7dc7834b5c0b62a133ca5ce2ea80054
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78304692"
 ---
 # <a name="manage-excel-online-data-with-azure-logic-apps"></a>使用 Azure 逻辑应用管理 Excel Online 数据
@@ -31,7 +31,7 @@ ms.locfileid: "78304692"
 > [!NOTE]
 > [Excel Online for Business](https://docs.microsoft.com/connectors/excelonlinebusiness/) 和 [Excel Online for OneDrive](https://docs.microsoft.com/connectors/excelonline/) 连接器可以与 Azure 逻辑应用一起工作，不同于[适用于 PowerApps 的 Excel 连接器](https://docs.microsoft.com/connectors/excel/)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * Azure 订阅。 如果没有 Azure 订阅，请[注册一个 Azure 试用帐户](https://www.azure.cn/pricing/1rmb-trial/)。
 

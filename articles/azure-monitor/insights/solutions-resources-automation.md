@@ -9,10 +9,10 @@ ms.date: 01/21/2019
 ms.author: v-lingwu
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 760c738666951703a413436c6e54cb1aa8015130
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78850310"
 ---
 # <a name="adding-azure-automation-resources-to-a-management-solution-preview"></a>将 Azure 自动化资源添加到管理解决方案（预览版）
@@ -26,7 +26,7 @@ ms.locfileid: "78850310"
 > 本文中的示例使用管理解决方案需要或通用的参数和变量，[在 Azure 中设计和开发解决方案]( solutions-creating.md)中对它们进行了介绍 
 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 本文假设已熟悉以下信息。
 
 - 如何[创建管理解决方案]( solutions-creating.md)。
@@ -69,7 +69,7 @@ Azure 自动化中的所有资源都包含在[自动化帐户](../../automation/
 
 下表介绍了 runbook 的属性。
 
-| 属性 | 说明 |
+| properties | 说明 |
 |:--- |:--- |
 | runbookType |指定 Runbook 的类型。 <br><br> 脚本 - PowerShell 脚本 <br>PowerShell - PowerShell 工作流 <br> GraphPowerShell - 图形 PowerShell 脚本 Runbook <br> GraphPowerShellWorkflow - 图形 PowerShell 工作流 Runbook |
 | logProgress |指定是否应为 Runbook 生成[进度记录](../../automation/automation-runbook-output-and-messages.md)。 |
@@ -105,10 +105,10 @@ Azure 自动化中的所有资源都包含在[自动化帐户](../../automation/
 
 下表介绍了自动化作业的属性。
 
-| 属性 | 说明 |
+| properties | 说明 |
 |:--- |:--- |
 | Runbook |包含要启动的 Runbook 名称的单个 name 实体。 |
-| 参数 |Runbook 所需的每个参数值的实体。 |
+| parameters |Runbook 所需的每个参数值的实体。 |
 
 作业包括 Runbook 名称和发送到 Runbook 的任何参数值。  作业应[依赖于]( solutions-solution-file.md#resources)自必须在作业之前创建 Runbook 以来启动的 Runbook。  如果有多个应启动的 runbook，则可以通过让一个作业依赖于任何其他应先运行的作业来定义其顺序。
 
@@ -136,7 +136,7 @@ Azure 自动化中的所有资源都包含在[自动化帐户](../../automation/
 
 下表介绍了证书资源的属性。
 
-| 属性 | 说明 |
+| properties | 说明 |
 |:--- |:--- |
 | base64Value |证书的 Base 64 值。 |
 | thumbprint |证书的指纹。 |
@@ -163,7 +163,7 @@ Azure 自动化中的所有资源都包含在[自动化帐户](../../automation/
 
 下表介绍了凭据资源的属性。
 
-| 属性 | 说明 |
+| properties | 说明 |
 |:--- |:--- |
 | userName |凭据的用户名。 |
 | password |凭据的密码。 |
@@ -191,13 +191,13 @@ Azure 自动化中的所有资源都包含在[自动化帐户](../../automation/
 
 下表介绍了计划资源的属性。
 
-| 属性 | 说明 |
+| properties | 说明 |
 |:--- |:--- |
 | description |计划的可选说明。 |
 | startTime |指定计划的开始时间作为 DateTime 对象。 如果它可以转换为有效的 DateTime，则可以提供一个字符串。 |
 | isEnabled |指定是否启用计划。 |
 | interval |计划的间隔类型。<br><br>day<br>hour |
-| frequency |计划应在数天或数小时内触发的频率。 |
+| 频率 |计划应在数天或数小时内触发的频率。 |
 
 计划的开始时间值必须晚于当前时间。  不能通过变量来提供此值，因为无法知道何时要安装。
 
@@ -234,7 +234,7 @@ Azure 自动化中的所有资源都包含在[自动化帐户](../../automation/
 
 下表介绍了作业计划的属性。
 
-| 属性 | 说明 |
+| properties | 说明 |
 |:--- |:--- |
 | 计划名称 |包含计划名称的单个 **name** 实体。 |
 | runbook 名称  |包含 Runbook 名称的单个 **name** 实体。  |
@@ -261,12 +261,12 @@ Azure 自动化中的所有资源都包含在[自动化帐户](../../automation/
 
 下表介绍了变量资源的属性。
 
-| 属性 | 说明 |
+| properties | 说明 |
 |:--- |:--- |
 | description | 变量的可选说明。 |
 | isEncrypted | 指定是否应加密变量。 |
 | type | 当前此属性无效。  初始值决定该变量的数据类型。 |
-| value | 变量的值。 |
+| 值 | 变量的值。 |
 
 > [!NOTE]
 > 当前，“类型”  属性对正在创建的变量无效。  变量的数据类型由值决定。  
@@ -275,9 +275,9 @@ Azure 自动化中的所有资源都包含在[自动化帐户](../../automation/
 
 | 数据类型 | 说明 | 示例 | 解析为 |
 |:--|:--|:--|:--|
-| string   | 将值括在双引号中。  | "\"Hello world\"" | "Hello world" |
-| numeric  | 用单引号将数字值括起来。| "64" | 64 |
-| boolean  | 引号中的“true”  或“false”  。  请注意，此值必须为小写。 | "true" | 是 |
+| 字符串   | 将值括在双引号中。  | “\"Hello world\"” | “Hello world” |
+| numeric  | 用单引号将数字值括起来。| “64” | 64 |
+| boolean  | 引号中的“true”  或“false”  。  请注意，此值必须为小写。 | "true" | true |
 | datetime | 序列化日期值。<br>可以在 PowerShell 中使用 ConvertTo-Json cmdlet 为特定日期生成此值。<br>示例：get-date "5/24/2017 13:14:57" \| ConvertTo-Json | "\\/Date(1495656897378)\\/" | 2017-05-24 13:14:57 |
 
 ## <a name="modules"></a>模块
@@ -301,7 +301,7 @@ Azure 自动化中的所有资源都包含在[自动化帐户](../../automation/
 
 下表介绍了模块资源的属性。
 
-| 属性 | 说明 |
+| properties | 说明 |
 |:--- |:--- |
 | contentLink |指定模块的内容。 <br><br>uri - 模块内容的 URI。  这会是 PowerShell 和脚本 Runbook 的 .ps1 文件，以及为图形 Runbook 导出的图形 Runbook 文件。  <br> version - 自己跟踪的模块版本。 |
 

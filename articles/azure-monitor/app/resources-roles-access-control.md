@@ -8,15 +8,15 @@ origin.date: 02/14/2019
 ms.date: 6/4/2019
 ms.author: v-lingwu
 ms.openlocfilehash: 1a8294846e268f29a04d9179f9015f5ea8d1c686
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78850378"
 ---
 # <a name="resources-roles-and-access-control-in-application-insights"></a>Application Insights 中的资源、角色和访问控制
 
-通过使用[世纪互联 Azure 中基于角色的访问控制](../../role-based-access-control/role-assignments-portal.md)，可以控制哪些用户对 Azure [Application Insights][start] 中的数据具有读取和更新访问权限。
+通过使用[世纪互联 Azure 中基于角色的访问控制][start]，可以控制哪些用户对 Azure [Application Insights](../../role-based-access-control/role-assignments-portal.md) 中的数据具有读取和更新访问权限。
 
 > [!IMPORTANT]
 > 将访问权限分配给应用程序资源所属**资源组或订阅**中的用户（并非资源本身）。 分配 **Application Insights 组件参与者**角色。 这可确保对 Web 测试和警报及应用程序资源的访问实现统一控制。 [了解详细信息](#access)。
@@ -82,7 +82,7 @@ ms.locfileid: "78850378"
 | [所有者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner) |可以更改任何内容，包括用户访问权限。 |
 | [参与者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#contributor) |可以编辑任何内容，包括所有资源。 |
 | [Application Insights 组件参与者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#application-insights-component-contributor) |可以编辑 Application Insights 资源、Web 测试和警报。 |
-| [读者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#reader) |可以查看但无法更改任何内容。 |
+| [读取者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#reader) |可以查看但无法更改任何内容。 |
 | [Application Insights 快照调试器](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#application-insights-snapshot-debugger) | 授予用户使用 Application Insights 快照调试器功能的权限。 请注意，此角色既不包含在所有者角色中，也不包含在参与者角色中。 |
 | Azure 服务部署版本管理参与者 | 通过 Azure 服务部署进行部署的服务的参与者角色。 |
 | [数据清除程序](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#data-purger) | 清除个人数据的特殊角色。 有关更多信息，请参阅我们的[个人数据指南](/azure-monitor/platform/personal-data-mgmt)。   |
@@ -92,7 +92,7 @@ ms.locfileid: "78850378"
 | masterreader | 允许用户查看所有内容，但不能进行更改。 |
 | [监视参与者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor) | 允许读取所有监视数据并更新监视设置。 |
 | [监视指标发布者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-metrics-publisher) | 允许针对 Azure 资源发布指标。 |
-| [监视读取者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-reader) | 可以读取所有监视数据。 |
+| [监视查阅者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-reader) | 可以读取所有监视数据。 |
 | 资源策略参与者（预览） | 通过 EA 回填的用户，具有创建/修改资源策略、创建支持票证和读取资源/层次结构的权限。  |
 | [用户访问管理员](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#user-access-administrator) | 允许用户管理其他用户对 Azure 资源的访问。|
 | [网站参与者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#website-contributor) | 允许管理网站（而非 Web 计划），但不允许访问这些网站。|

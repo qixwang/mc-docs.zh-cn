@@ -10,10 +10,10 @@ ms.topic: conceptual
 origin.date: 02/28/2020
 ms.date: 03/16/2020
 ms.openlocfilehash: bf0b5ff8379eb844a63ac2f7d54a0d67ea761514
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78850612"
 ---
 # <a name="synonyms-in-azure-cognitive-search"></a>Azure 认知搜索中的同义词

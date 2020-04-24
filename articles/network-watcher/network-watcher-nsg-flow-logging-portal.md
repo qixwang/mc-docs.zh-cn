@@ -18,15 +18,15 @@ ms.date: 11/26/2018
 ms.author: v-lingwu
 ms.custom: mvc
 ms.openlocfilehash: 9e32593208130fb555ee4a8b3e0f0f9cf3640abe
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78154935"
 ---
 # <a name="tutorial-log-network-traffic-to-and-from-a-virtual-machine-using-the-azure-portal"></a>教程：使用 Azure 门户记录出入虚拟机的网络流量
 
-可以通过网络安全组 (NSG) 筛选虚拟机 (VM) 的入站和出站流量。 可以使用网络观察程序的 NSG 流日志功能记录流经 NSG 的网络流量。 本教程介绍如何执行下列操作：
+可以通过网络安全组 (NSG) 筛选虚拟机 (VM) 的入站和出站流量。 可以使用网络观察程序的 NSG 流日志功能记录流经 NSG 的网络流量。 在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 通过网络安全组创建 VM
@@ -35,7 +35,7 @@ ms.locfileid: "78154935"
 > * 下载记录的数据
 > * 查看记录的数据
 
-如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.azure.cn/zh-cn/pricing/1rmb-trial-full/?form-type=identityauth)。
+如果没有 Azure 订阅，可在开始前创建一个 [试用帐户](https://www.azure.cn/zh-cn/pricing/1rmb-trial-full/?form-type=identityauth) 。
 
 ## <a name="create-a-vm"></a>创建 VM
 
@@ -43,7 +43,7 @@ ms.locfileid: "78154935"
 2. 选择“计算”，然后选择“Windows Server 2016 Datacenter”或某一版本的“Ubuntu Server”。   
 3. 输入或选择以下信息，保留剩下的默认设置，然后选择“确定”  ：
 
-    |设置|Value|
+    |设置|值|
     |---|---|
     |名称|myVm|
     |用户名| 输入所选用户名。|
@@ -86,7 +86,7 @@ NSG 流日志记录要求使用 **Microsoft.Insights** 提供程序。 若要注
 2. 选择“存储”，然后选择“存储帐户 - Blob、文件、表、队列”   。
 3. 输入或选择以下信息，接受剩下的默认设置，然后选择“创建”  。
 
-    | 设置        | Value                                                        |
+    | 设置        | 值                                                        |
     | ---            | ---   |
     | 名称           | 长度为 3-24 个字符，只能包含小写字母和数字，且必须在所有 Azure 存储帐户中唯一。                                                               |
     | 位置       | 选择“中国东部 2”                                            |
@@ -207,7 +207,7 @@ NSG 流日志记录要求使用 **Microsoft.Insights** 提供程序。 若要注
 | T            | 协议               | 流的协议是 TCP (T) 还是 UDP (U)。                                  |
 | O            | 方向              | 流是入站 (I) 还是出站 (O)。                                     |
 | A            | 操作                 | 是允许 (A) 流还是拒绝 (D) 流。  
-| C            | 流状态**仅限版本 2** | 捕获流的状态。 可能的状态包括 **B**：创建流时开始。 未提供统计信息。 **C**：继续执行正在进行的流。 以 5 分钟的时间间隔提供统计信息。 **E**：在流终止时结束。 已提供统计信息。 |
+| C            | 流状态**仅限版本 2** | 捕获流的状态。 可能的状态为 **B**：开始（创建流时）。 未提供统计信息。 C：继续执行正在进行的流  。 以 5 分钟的时间间隔提供统计信息。 E：终止流时结束  。 已提供统计信息。 |
 | 30 | 发送的数据包数 - 源到目标**仅限版本 2** | 自上次更新以来，从源发送到目标的 TCP 或 UDP 数据包的总数。 |
 | 16978 | 发送的字节数 - 源到目标**仅限版本 2** | 自上次更新以来，从源发送到目标的 TCP 或 UDP 数据包字节的总数。 数据包字节包括数据包标头和有效负载。 |
 | 24 | 发送的数据包数 - 目标到源**仅限版本 2** | 自上次更新以来，从目标发送到源的 TCP 或 UDP 数据包的总数。 |

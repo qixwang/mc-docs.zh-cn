@@ -12,10 +12,10 @@ origin.date: 01/16/2020
 ms.date: 03/02/2020
 ms.author: v-jay
 ms.openlocfilehash: 0d9231680ab71b5b4ffd008cb00902b573c6c5a4
-ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77653577"
 ---
 # <a name="store-credential-in-azure-key-vault"></a>在 Azure Key Vault 中存储凭据
@@ -24,7 +24,7 @@ ms.locfileid: "77653577"
 
 目前，除自定义活动之外的所有活动类型都支持此功能。 具体而言，对于连接器配置，请查阅[每个连接器主题](copy-activity-overview.md#supported-data-stores-and-formats)中的“链接服务属性”部分了解详细信息。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 此功能依赖于数据工厂托管标识。 从[数据工厂的托管标识](data-factory-service-identity.md)了解其工作原理，并确保数据工厂具有关联的托管标识。
 
@@ -41,14 +41,14 @@ ms.locfileid: "77653577"
 
 Azure Key Vault 链接服务支持以下属性：
 
-| 属性 | 说明 | 必须 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：**AzureKeyVault**。 | 是 |
 | baseUrl | 指定 Azure Key Vault URL。 | 是 |
 
 **使用创作 UI：**
 
-单击“连接” -> “链接服务” -> “+新建”，然后搜索“Azure Key Vault”    ：
+单击“连接” **“链接服务”** “+新建”，然后搜索“Azure Key Vault” ->    ->   ：
 
 ![搜索 AKV](media/store-credentials-in-key-vault/search-akv.png)
 
@@ -74,7 +74,7 @@ Azure Key Vault 链接服务支持以下属性：
 
 在引用密钥保管库机密的链接服务中配置字段时，支持以下属性：
 
-| 属性 | 说明 | 必须 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 字段的 type 属性必须设置为：**AzureKeyVaultSecret**。 | 是 |
 | secretName | Azure Key Vault 中机密的名称。 | 是 |

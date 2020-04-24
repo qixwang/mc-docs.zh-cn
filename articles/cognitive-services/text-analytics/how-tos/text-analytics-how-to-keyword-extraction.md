@@ -12,10 +12,10 @@ origin.date: 07/29/2019
 ms.date: 02/25/2020
 ms.author: v-lingwu
 ms.openlocfilehash: 4fb1be545943541fe5ebe1ff36135c48e6bc1cc4
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78154673"
 ---
 # <a name="example-how-to-extract-key-phrases-using-text-analytics"></a>示例：如何使用文本分析提取关键短语

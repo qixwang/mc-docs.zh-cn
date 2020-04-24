@@ -12,10 +12,10 @@ ms.date: 02/24/2020
 ms.author: v-junlch
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7439c001a22b53825a1677fffbbf14e7d5157679
-ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77653679"
 ---
 # <a name="cloud-app-visibility-and-control"></a>云应用可见性和控制

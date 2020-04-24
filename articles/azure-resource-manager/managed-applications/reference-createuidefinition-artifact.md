@@ -7,10 +7,10 @@ origin.date: 07/11/2019
 ms.date: 01/20/2020
 ms.author: v-yeche
 ms.openlocfilehash: 23871cc6296a457e943b3213db8023932731a533
-ms.sourcegitcommit: 69cadf1fa0ed81751c48fbce919a6bb44b1053ce
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78209154"
 ---
 # <a name="reference-user-interface-elements-artifact"></a>参考：用户界面元素项目

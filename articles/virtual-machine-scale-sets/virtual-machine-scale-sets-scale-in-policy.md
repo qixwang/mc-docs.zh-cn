@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 03/10/2020
 ms.author: v-junlch
 ms.openlocfilehash: 00f0c3affabc488d3482e07ec536be39ceeb1b5a
-ms.sourcegitcommit: 4ba6d7c8bed5398f37eb37cf5e2acafcdcc28791
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79133871"
 ---
 # <a name="use-custom-scale-in-policies-with-azure-virtual-machine-scale-sets"></a>对 Azure 虚拟机规模集使用自定义横向缩减策略
@@ -230,7 +230,7 @@ az vmss update `
 | 横向缩减              | 3、4、5、***10***      | 2、6、9                | 1、7、8                | 选择区域 1，因为它包含的 VM 比其他两个区域要多。 删除区域 1 中的 VM10，因为它是该区域中的最新 VM。          |
 | 横向缩减              | 3、4、5                | 2、6、***9***          | 1、7、8                | 区域已均衡。 删除区域 2 中的 VM9，因为它是规模集中的最新 VM。                                                |
 | 横向缩减              | 3、4、5                | 2、6                   | 1、7、***8***          | 在区域 1 和区域 3 之间选择。 删除区域 3 中的 VM8，因为它是该区域中的最新 VM。                                      |
-| 横向缩减              | 3、4、***5***          | 2、6                   | 1、7                   | 尽管区域 3 包含最新的 VM，但仍会选择区域 1。 删除区域 1 中的 VM5，因为它是该区域中的最新 VM。                    |
+| 横向缩减              | 3、4、***5***          | 2、6                   | 1, 7                   | 尽管区域 3 包含最新的 VM，但仍会选择区域 1。 删除区域 1 中的 VM5，因为它是该区域中的最新 VM。                    |
 | 横向缩减              | 3、4                   | 2、6                   | 1、***7***             | 区域已均衡。 删除区域 3 中的 VM7，因为它是规模集中的最新 VM。                                                |
 
 对于非区域性虚拟机规模集，策略会选择删除整个规模集中的最新 VM。 将跳过任何“受保护”VM 的删除。 

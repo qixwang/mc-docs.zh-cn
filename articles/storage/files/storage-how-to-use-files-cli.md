@@ -9,10 +9,10 @@ ms.date: 03/09/2020
 ms.author: v-jay
 ms.subservice: files
 ms.openlocfilehash: e8300d66426c3a7209af631269d3acd00aca87d6
-ms.sourcegitcommit: fbc7584f403417d3af7bd6bbbaed7c13a78c57b9
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78412598"
 ---
 # <a name="quickstart-create-and-manage-azure-file-shares-using-azure-cli"></a>快速入门：使用 Azure CLI 创建和管理 Azure 文件共享
@@ -274,7 +274,7 @@ az storage file copy start \
 ```
 
 ### <a name="delete-a-share-snapshot"></a>删除共享快照
-可以使用 [`az storage share delete`](https://docs.azure.cn/cli/storage/share) 命令删除共享快照。 所使用的变量包含对 `--snapshot` 参数的 `$SNAPSHOT` 引用：
+可以使用 [`az storage share delete`](https://docs.azure.cn/cli/storage/share) 命令删除共享快照。 所使用的变量包含对 `$SNAPSHOT` 参数的 `--snapshot` 引用：
 
 ```azurecli
 az storage share delete \

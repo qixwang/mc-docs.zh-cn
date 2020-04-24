@@ -12,17 +12,17 @@ ms.date: 03/04/2020
 ms.author: v-junlch
 ms.subservice: B2C
 ms.openlocfilehash: a2bc48c740b04a557420dcffd4a1ae1525302798
-ms.sourcegitcommit: 1ac138a9e7dc7834b5c0b62a133ca5ce2ea80054
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78265942"
 ---
 # <a name="application-types-that-can-be-used-in-active-directory-b2c"></a>可在 Azure Active Directory B2C 中使用的应用程序类型
 
 Azure Active Directory B2C (Azure AD B2C) 支持各种新式应用程序体系结构的身份验证。 所有这些体系结构都以行业标准协议 [OAuth 2.0](protocols-overview.md) 或 [OpenID Connect](protocols-overview.md) 为基础。 本文介绍可独立于首选语言或平台构建的应用程序类型。 在开始构建应用程序之前，不妨从中了解一些高级方案。
 
-必须通过 [Azure 门户](https://portal.azure.cn/)将使用 Azure AD B2C 的每个应用程序注册到 [Azure AD B2C 租户](tutorial-create-tenant.md)中。 应用程序注册过程将收集和分配一些值，例如：
+必须通过 [Azure 门户](tutorial-create-tenant.md)将使用 Azure AD B2C 的每个应用程序注册到 [Azure AD B2C 租户](https://portal.azure.cn/)中。 应用程序注册过程将收集和分配一些值，例如：
 
 * 用于唯一标识应用程序的应用程序 ID  。
 * 可用于将响应定向回应用程序的**回复 URL**。

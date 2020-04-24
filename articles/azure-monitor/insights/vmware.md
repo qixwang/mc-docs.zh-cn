@@ -9,10 +9,10 @@ origin.date: 05/04/2018
 ms.date: 07/02/2019
 ms.author: v-lingwu
 ms.openlocfilehash: 251f7cff5746fd9f20e490191465bc7833e784f4
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78850307"
 ---
 # <a name="vmware-monitoring-deprecated-solution-in-azure-monitor"></a>Azure Monitor 中的 VMware 监视（已弃用）解决方案
@@ -165,7 +165,7 @@ VMware 磁贴显示在 Log Analytics 工作区中。 它提供任何失败的高
 解决方案使用转发机制的本机 ESXi 主机 Syslog。 无需在 ESXi 主机上安装任何其他的 Microsoft 软件，便可捕获日志。 它对现有环境应该不会造成大的影响。 但是，需要设置 syslog 转发这一 ESXI 功能。
 
 ### <a name="do-i-need-to-restart-my-esxi-host"></a>是否需要重启 ESXi 主机？
-否。 此执行过程不需要重启主机。 有时，vSphere 不会正确更新 syslog。 这种情况下，请登录到 ESXi 主机并重新加载 syslog。 同样，无需重启主机，使该过程不会造成环境中断。
+不是。 此执行过程不需要重启主机。 有时，vSphere 不会正确更新 syslog。 这种情况下，请登录到 ESXi 主机并重新加载 syslog。 同样，无需重启主机，使该过程不会造成环境中断。
 
 ### <a name="can-i-increase-or-decrease-the-volume-of-log-data-sent-to-log-analytics"></a>是否可以增减发送到 Log Analytics 的日志数据量？
 可以。 可以在 vSphere 中使用 ESXi 主机日志级别设置。 日志集合基于 *info* 级别。 因此，如果想要审核 VM 创建或删除，则需在 Hostd 上保持 *info* 级别。 有关详细信息，请参阅 [VMware 知识库](https://kb.vmware.com/selfservice/microsites/search.do?&cmd=displayKC&externalId=1017658)。

@@ -13,10 +13,10 @@ origin.date: 03/08/2018
 ms.date: 02/27/2020
 ms.author: v-lingwu
 ms.openlocfilehash: 889627930ec1253f49774afaa1ac1f27ff708d4b
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78155093"
 ---
 # <a name="traffic-analytics-frequently-asked-questions"></a>流量分析常见问题解答

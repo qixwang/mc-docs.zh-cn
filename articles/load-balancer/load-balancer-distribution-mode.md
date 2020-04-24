@@ -15,10 +15,10 @@ origin.date: 11/19/2019
 ms.date: 02/24/2020
 ms.author: v-jay
 ms.openlocfilehash: f72e50ab554b6a432b1cebf3965b1abe0f668b72
-ms.sourcegitcommit: e94ed1c9eff4e88be2ca389909e60b14cc0d92f8
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79084494"
 ---
 # <a name="configure-the-distribution-mode-for-azure-load-balancer"></a>配置 Azure 负载均衡器的分配模式

@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: nigu
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f786028dd4cf7cc89f7c1e4666f8170cd01a37ae
-ms.sourcegitcommit: 4ba6d7c8bed5398f37eb37cf5e2acafcdcc28791
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79133835"
 ---
 # <a name="troubleshoot-using-the-what-if-tool-in-conditional-access"></a>在条件访问中使用 What If 工具进行故障排除
@@ -44,7 +44,7 @@ ms.locfileid: "79133835"
 
 ## <a name="running-the-tool"></a>运行此工具
 
-可以在 Azure 门户中的“[条件访问 - 策略](https://portal.azure.cn/#blade/Microsoft_AAD_IAM/ConditionalAccessBlade/Policies)  ”页上找到 **What If** 工具。
+可以在 Azure 门户中的“**条件访问 - 策略** **[”页上找到 ](https://portal.azure.cn/#blade/Microsoft_AAD_IAM/ConditionalAccessBlade/Policies)What If** 工具。
 
 若要启动此工具，请在策略列表顶部的工具栏中单击 **What If**。
 
@@ -58,7 +58,7 @@ ms.locfileid: "79133835"
 
 ![What If](./media/what-if-tool/02.png)
 
-### <a name="user"></a>User
+### <a name="user"></a>用户
 
 仅可选择一个用户。 这是唯一的必填字段。
 

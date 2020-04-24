@@ -9,10 +9,10 @@ origin.date: 09/10/2019
 ms.date: 11/04/2019
 ms.author: v-lingwu
 ms.openlocfilehash: 2097fd62a8f8998e5d3d6ddb375036ce688acb12
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78850335"
 ---
 # <a name="optimize-your-active-directory-environment-with-the-active-directory-health-check-solution-in-azure-monitor"></a>使用 Azure Monitor 中的 Active Directory 运行状况检查解决方案优化 Active Directory 环境
@@ -35,7 +35,7 @@ ms.locfileid: "78850335"
 
 ![AD 运行状况检查仪表板的图像](./media/ad-assessment/ad-healthcheck-dashboard-01.png)
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * Active Directory 运行状况检查解决方案要求在每台安装了适用于 Windows 的 Log Analytics 代理（也称为 Microsoft Monitoring Agent (MMA)）的计算机上安装受支持的 .NET Framework 4.6.2 或更高版本。  该代理由 System Center 2016 - Operations Manager、Operations Manager 2012 R2 和 Azure Monitor 使用。
 * 该解决方案支持运行 Windows Server 2008 和 2008 R2、Windows Server 2012 和 2012 R2 以及 Windows Server 2016 的域控制器。
@@ -59,7 +59,7 @@ Active Directory 运行状况检查使用已启用的代理收集以下来源的
 
 - 注册表
 - LDAP
-- .NET framework
+- .NET Framework
 - 事件日志
 - Active Directory 服务接口 (ADSI)
 - Windows PowerShell
@@ -164,7 +164,7 @@ ADAssessmentRecommendation | where RecommendationResult == "Failed" | sort by Co
 
 是否有某种方法可配置运行状况检查的运行频率？ 
 
-* 目前没有。
+* 现在不行。
 
 如果添加运行状况检查解决方案后发现另一台服务器，那么它是否会被检查？ 
 
@@ -184,7 +184,7 @@ ADAssessmentRecommendation | where RecommendationResult == "Failed" | sort by Co
 
 *是否有某种方法来配置收集数据的时间？*
 
-* 目前没有。
+* 现在不行。
 
 *仅显示前 10 条建议的原因*
 

@@ -7,10 +7,10 @@ origin.date: 10/15/2019
 ms.date: 12/30/2019
 ms.author: v-lingwu
 ms.openlocfilehash: f196bd8c438007c1480e576a8bf1063b27691abf
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79290898"
 ---
 # <a name="how-to-query-logs-from-azure-monitor-for-containers"></a>如何从用于容器的 Azure Monitor 查询日志
@@ -110,7 +110,7 @@ InsightsMetrics
 KubeMonAgentEvents | where Level != "Info" 
 ```
 
-输出将显示类似于以下内容的结果：
+输出将显示与以下内容类似的结果：
 
 ![通过代理记录信息性事件的查询结果](./media/container-insights-log-search/log-query-example-kubeagent-events.png)
 

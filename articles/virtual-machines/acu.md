@@ -15,10 +15,10 @@ origin.date: 02/03/2020
 ms.date: 03/09/2020
 ms.author: v-yeche
 ms.openlocfilehash: e665f6f1bb5217b9b3b9279794b178eb6db45c6f
-ms.sourcegitcommit: e94ed1c9eff4e88be2ca389909e60b14cc0d92f8
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79084453"
 ---
 <!--Verified successfully-->
@@ -31,7 +31,7 @@ Azure 计算单位 (ACU) 这一概念提供一种比较 Azure SKU 的计算 (CPU
 > ACU 只是一种规则。 工作负荷的结果可能会有所不同。
 <br />
 
-| SKU 系列 | ACU\vCPU | vCPU：核心 |
+| SKU 系列 | ACU \ vCPU | vCPU：核心 |
 | --- | --- |---|
 | [A0](sizes-previous-gen.md) |50 | 1:1 |
 | [A1 - A4](sizes-previous-gen.md) |100 | 1:1 |

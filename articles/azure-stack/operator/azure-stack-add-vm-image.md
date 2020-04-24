@@ -9,10 +9,10 @@ ms.author: v-jay
 ms.reviewer: kivenkat
 ms.lastreviewed: 06/08/2018
 ms.openlocfilehash: 5ad99d4a91eb0ed4986a5c9589d626cc4fe6a0af
-ms.sourcegitcommit: e94ed1c9eff4e88be2ca389909e60b14cc0d92f8
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79084505"
 ---
 # <a name="add-a-custom-vm-image-to-azure-stack-hub"></a>将自定义 VM 映像添加到 Azure Stack Hub

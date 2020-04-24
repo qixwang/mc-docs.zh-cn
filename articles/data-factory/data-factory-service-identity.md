@@ -12,10 +12,10 @@ origin.date: 01/16/2020
 ms.date: 03/02/2020
 ms.author: v-jay
 ms.openlocfilehash: bb956224b308280407438110422f7ae78cb008dc
-ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77653507"
 ---
 # <a name="managed-identity-for-data-factory"></a>数据工厂的托管标识
@@ -78,7 +78,7 @@ ProvisioningState : Succeeded
 PATCH https://management.chinacloudapi.cn/subscriptions/<subsID>/resourceGroups/<resourceGroupName>/providers/Microsoft.DataFactory/factories/<data factory name>?api-version=2018-06-01
 ```
 
-**请求正文**：add "identity": { "type":"SystemAssigned" }。
+**请求正文**：添加 "identity": { "type": "SystemAssigned" }。
 
 ```json
 {
@@ -116,7 +116,7 @@ PATCH https://management.chinacloudapi.cn/subscriptions/<subsID>/resourceGroups/
 
 ### <a name="generate-managed-identity-using-an-azure-resource-manager-template"></a>使用 Azure 资源管理器模板生成托管标识
 
-**模板**：add "identity": { "type":"SystemAssigned" }。
+**模版**：添加 "identity": { "type": "SystemAssigned" }。
 
 ```json
 {

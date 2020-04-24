@@ -30,7 +30,7 @@
   items:
     - name: 适用于 Azure 资源的 PIM
       href: pim-azure-resource.md
-- name: 操作指南
+- name: 操作方法指南
   items:
     - name: 列出角色定义
       items:
@@ -104,7 +104,7 @@
       href: /cli/role?view=azure-cli-latest
     - name: REST API
       href: 'https://docs.microsoft.com/rest/api/authorization/'
-    - name: Resource Manager 模板
+    - name: 资源管理器模板
       displayName: ARM
       items:
         - name: 角色分配

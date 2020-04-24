@@ -9,10 +9,10 @@ ms.date: 06/25/2019
 ms.reviewer: sdash
 ms.author: v-lingwu
 ms.openlocfilehash: f9dd64f78fa2970c814ef0e637476705fe64cab3
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78850394"
 ---
 # <a name="performance-testing"></a>性能测试

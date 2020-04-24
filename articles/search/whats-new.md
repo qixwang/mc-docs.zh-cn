@@ -1,7 +1,7 @@
 ---
-title: 新功能公告
+title: 新增功能通告
 titleSuffix: Azure Cognitive Search
-description: 公告新的和增强的功能，包括将 Azure 搜索这项服务重命名为 Azure 认知搜索。
+description: 新增功能和增强功能的通告，包括 Azure 搜索服务已重命名为 Azure 认知搜索。
 manager: nitinme
 author: HeidiSteen
 ms.author: v-tawe
@@ -10,21 +10,21 @@ ms.topic: overview
 origin.date: 01/30/2020
 ms.date: 03/16/2020
 ms.openlocfilehash: 0f3804abd610dfae6210d5a098ce00dd4946bfde
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79291140"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Azure 认知搜索中的新增功能
 
-了解该服务中的新增功能。 请将本页加入书签，以随时了解该服务的最新信息。
+了解服务中的新增功能。 请将本页加入书签，以随时了解该服务的最新信息。
 
 <a name="new-service-name"></a>
 
 ## <a name="new-service-name"></a>新服务名称
 
-Azure 搜索现已重命名为 **Azure 认知搜索**，这样可以反映认知技能的扩展（仍为可选）使用以及在核心操作中进行的 AI 处理。 API 版本、NuGet 包、命名空间和终结点未更改。 新的和现有的搜索解决方案不受服务名称更改的影响。
+Azure 搜索现已重命名为 **Azure 认知搜索**，以反映认知技能和 AI 处理在核心操作中的更广泛用途（但仍为可选）。 API 版本、NuGet 包、命名空间和终结点未有变化。 新的和现有的搜索解决方案不受服务名称更改的影响。
 
 ## <a name="feature-announcements"></a>功能增强
 
@@ -36,21 +36,21 @@ Azure 搜索现已重命名为 **Azure 认知搜索**，这样可以反映认知
 
 ### <a name="january-2020"></a>2020 年 1 月
 
-+ [客户托管的加密密钥](search-security-manage-encryption-keys.md)现已正式发布。 如果使用 REST，则可使用 `api-version=2019-05-06` 访问该功能。 对于托管代码，正确的包仍为 [.NET SDK 8.0-preview 版](search-dotnet-sdk-migration-version-9.md)，即使该功能不是预览版。 
++ [客户管理的加密密钥](search-security-manage-encryption-keys.md)现已推出正式版。 如果使用 REST，可以通过 `api-version=2019-05-06` 访问该功能。 对于托管代码，即使该功能现在不再以预览版提供，但正确的包仍是 [.NET SDK 版本 8.0-preview](search-dotnet-sdk-migration-version-9.md)。 
 
-+ 可以通过两种机制（当前均为预览版）提供对搜索服务的专用访问权限：
++ 可以通过两种机制（两者的功能目前以预览版提供）对搜索服务进行私密访问：
 
-  + 可以使用管理 REST API `api-version=2019-10-01-Preview` 来创建服务，限制对特定 IP 地址的访问。 预览版 API 在 [CreateOrUpdate API](https://docs.microsoft.com/rest/api/searchmanagement/services/createorupdate) 中有新的 **IpRule** 和 **NetworkRuleSet** 属性。 此预览功能在所选区域中提供。 有关详细信息，请参阅[如何使用管理 REST API](https://docs.microsoft.com/rest/api/searchmanagement/search-howto-management-rest-api)。
+  + 可以使用管理 REST API `api-version=2019-10-01-Preview` 创建服务，来仅限特定的 IP 地址进行访问。 预览版 API 在 **CreateOrUpdate API** 中提供 **IpRule** 和 [NetworkRuleSet](https://docs.microsoft.com/rest/api/searchmanagement/services/createorupdate) 属性。 此预览版功能可在选定的区域中使用。 有关详细信息，请参阅[如何使用管理 REST API](https://docs.microsoft.com/rest/api/searchmanagement/search-howto-management-rest-api)。
 
   <!-- + Currently available through a limited-access preview, you can provision an Azure Search service that supports Azure Private Endpoint for connections from clients on the same virtual network. For more information, see [Create a Private Endpoint for a secure connection](service-create-private-endpoint.md). -->
 
 ### <a name="december-2019"></a>2019 年 12 月
 
-+ [创建应用（预览版）](search-create-app-portal.md)是门户中用于生成可下载 HTML 文件的新向导。 该文件附带嵌入式脚本，此脚本呈现可运行的“localhost”样式 Web 应用（已绑定到搜索服务中的索引）。 页面在向导中可配置，并且可以包含搜索栏、结果区域、边栏导航和自动提示查询支持。 可以脱机修改 HTML，以便扩展或自定义工作流或外观。
++ [创建应用（预览版）](search-create-app-portal.md)是门户中用于生成可下载 HTML 文件的新向导。 文件附带了嵌入式脚本，用于呈现可正常运行的“localhost”式 Web 应用，该应用绑定到搜索服务中的索引。 页面在向导中可配置，可以包含搜索栏、结果区域、边栏导航和自动提示查询支持。 可以脱机修改 HTML 以扩展或者自定义工作流或外观。
 
 <!-- + [Create a private endpoint for secure connections (preview)](service-create-private-endpoint.md) explains how to set up a Private Link for secure connections to your search service. This preview feature is available upon request and uses [Azure Private Link](../private-link/private-link-overview.md) and [Azure Virtual Network](../virtual-network/virtual-networks-overview.md) as part of the solution. -->
 
-### <a name="november-2019---ignite-conference"></a>2019 年 11 月 - Ignite 大会
+### <a name="november-2019---ignite-conference"></a>2019 年 11 月- Ignite 大会
 
 + [增量扩充（预览版）](cognitive-search-incremental-indexing-conceptual.md)将缓存和有状态性添加到了扩充管道，使你能够处理特定的步骤或阶段，且不丢失已处理的内容。 以前，对扩充管道进行任何更改都需要重新生成整个管道。 使用增量扩充时，会保留高开销分析（尤其是图像分析）的输出。
 
@@ -63,7 +63,7 @@ Azure 搜索现已重命名为 **Azure 认知搜索**，这样可以反映认知
 
 + [Power BI 模板](https://github.com/Azure-Samples/cognitive-search-templates/blob/master/README.md)可以在 Power BI Desktop 中立即开始可视化和分析知识存储中的扩充内容。 此模板适用于通过[导入数据向导](knowledge-store-create-portal.md)创建的 Azure 表投影。
 
-+ 索引器现在支持 [Azure Data Lake Storage Gen2（预览版）](search-howto-index-azure-data-lake-storage.md)、[Cosmos DB Gremlin API（预览版）](search-howto-index-cosmosdb.md)和 [Cosmos DB Cassandra API（预览版）](search-howto-index-cosmosdb.md)。 可以使用[此窗体](https://aka.ms/azure-cognitive-search/indexer-preview)登录。 获允加入预览计划以后，你会收到确认电子邮件。
++ 索引器现在支持 [Azure Data Lake Storage Gen2（预览版）](search-howto-index-azure-data-lake-storage.md)、[Cosmos DB Gremlin API（预览版）](search-howto-index-cosmosdb.md)和 [Cosmos DB Cassandra API（预览版）](search-howto-index-cosmosdb.md)。 可以使用[此表单](https://aka.ms/azure-cognitive-search/indexer-preview)进行注册。 在我们同意你参与预览计划后，你会收到确认电子邮件。
 
 <!-- ### July 2019 -->
 
@@ -71,4 +71,4 @@ Azure 搜索现已重命名为 **Azure 认知搜索**，这样可以反映认知
 
 ## <a name="service-updates"></a>服务更新
 
-Azure 认知搜索的[服务更新公告](https://updates.azure.cn)可以在 Azure 网站上找到。
+在 Azure 网站上可以找到 Azure 认知搜索的[服务更新通告](https://updates.azure.cn)。

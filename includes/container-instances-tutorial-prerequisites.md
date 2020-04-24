@@ -10,10 +10,10 @@ ms.date: 03/02/2020
 ms.author: v-yeche
 ms.custom: include file
 ms.openlocfilehash: 4f370149b2fb7d02549abc09b63a0a6c8e0ff5a7
-ms.sourcegitcommit: 2b4507745b98b45f1ce3f3d30f397521148ef35a
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78213842"
 ---
 必须满足以下要求才能完成本教程：

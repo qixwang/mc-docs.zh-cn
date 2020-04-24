@@ -11,10 +11,10 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 11/06/2019
 ms.openlocfilehash: 87b5993a6b8e1d7334dd7153eb030f0ee6e1a66b
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78155057"
 ---
 # <a name="use-an-existing-model-with-azure-machine-learning"></a>通过 Azure 机器学习使用现有模型
@@ -31,7 +31,7 @@ ms.locfileid: "78155057"
 >
 > 有关部署流程的一般信息，请参阅[使用 Azure 机器学习部署模型](how-to-deploy-and-where.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * Azure 机器学习工作区。 有关详细信息，请参阅[创建工作区](how-to-manage-workspace.md)。
 
@@ -271,7 +271,7 @@ print("scoring URI: " + service.scoring_uri)
 
 有关详细信息，请参阅 [Model.deploy()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) 参考。
 
-若要从 CLI 部署模型，请使用以下命令。 此命令使用存储在 `inferenceConfig.json` 和 `deploymentConfig.json` 文件中的推理配置和部署配置来部署已注册模型 (`sentiment:1`) 的版本 1：
+若要从 CLI 部署模型，请使用以下命令。 此命令使用存储在 `sentiment:1` 和 `inferenceConfig.json` 文件中的推理配置和部署配置来部署已注册模型 (`deploymentConfig.json`) 的版本 1：
 
 ```azurecli
 az ml model deploy -n myservice -m sentiment:1 --ic inferenceConfig.json --dc deploymentConfig.json

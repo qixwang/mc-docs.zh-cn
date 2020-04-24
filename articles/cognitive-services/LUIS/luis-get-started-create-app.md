@@ -13,13 +13,13 @@ origin.date: 12/17/2019
 ms.date: 1/2/2020
 ms.author: v-lingwu
 ms.openlocfilehash: f85e7ffa8e9dbe3b6ad8912b8642f078f57abf38
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78154559"
 ---
-# <a name="quickstart-use-prebuilt-home-automation-app"></a>快速入门：使用预构建的家庭自动化应用
+# <a name="quickstart-use-prebuilt-home-automation-app"></a>快速入门：使用预生成的家庭自动化应用
 
 在本快速入门中，请使用预生成的域 `HomeAutomation` 来创建 LUIS 应用，以便打开和关闭灯和设备。 此预生成的域为你提供意向、实体和示例话语。 完成本教程后，你会有一个在云中运行的 LUIS 终结点。
 
@@ -66,7 +66,7 @@ ms.locfileid: "78154559"
 
 [!INCLUDE [LUIS How to Train steps](includes/howto-train.md)]
 
-## <a name="test-your-app"></a>测试应用程序
+## <a name="test-your-app"></a>测试应用
 训练完应用以后，即可测试它。 选择“测试”。  在“交互式测试”窗格中键入 `Turn off the lights` 之类的测试言语，然后按 Enter。
 
 ```

@@ -7,10 +7,10 @@ origin.date: 01/07/2020
 ms.date: 01/15/2020
 ms.author: v-yeche
 ms.openlocfilehash: cf9ba563ce1277f8540f5a3d24b46b80f86cb0aa
-ms.sourcegitcommit: 2b4507745b98b45f1ce3f3d30f397521148ef35a
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78213741"
 ---
 # <a name="frequently-asked-questions-about-azure-container-instances"></a>有关 Azure 容器实例的常见问题解答

@@ -10,10 +10,10 @@ ms.topic: conceptual
 origin.date: 12/17/2019
 ms.date: 03/02/2020
 ms.openlocfilehash: 2e74bd3a6620baf1bb38c366565e11733f8ecec4
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78850571"
 ---
 # <a name="how-to-index-large-data-sets-in-azure-cognitive-search"></a>如何在 Azure 认知搜索中为大型数据集编制索引

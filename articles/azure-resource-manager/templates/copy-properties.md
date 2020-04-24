@@ -6,10 +6,10 @@ origin.date: 02/13/2020
 ms.date: 03/09/2020
 ms.author: v-yeche
 ms.openlocfilehash: 364f77eb3147eb8b4299f35400903607e2698274
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78850587"
 ---
 <!--Verified successfully-->
@@ -37,7 +37,7 @@ copy 元素采用以下常规格式：
 
 **input** 属性指定要重复的属性。 你将创建一个由 **input** 属性中的值构造的元素数组。
 
-以下示例演示如何将 `copy` 应用到虚拟机上的 dataDisks 属性：
+以下示例演示了如何将 `copy` 应用于虚拟机上的 dataDisks 属性：
 
 ```json
 {
@@ -87,7 +87,7 @@ copy 元素采用以下常规格式：
 > 属性迭代还支持 offset 参数。 偏移量必须在迭代名称之后，例如 copyIndex('dataDisks', 1)。
 >
 
-Resource Manager 在部署期间会扩展 `copy` 数组。 该数组的名称将成为属性的名称。 输入值将成为对象属性。 已部署的模板将成为：
+Resource Manager 在部署期间扩展 `copy` 数组。 数组的名称将成为属性的名称。 输入值将成为对象属性。 已部署的模板将成为：
 
 ```json
 {
@@ -144,7 +144,7 @@ copy 元素是一个数组，因此，可以为资源指定多个属性。
 }
 ```
 
-可将资源迭代和属性迭代结合使用。 按名称引用属性迭代。
+可将资源和属性迭代一起使用。 按名称引用属性迭代。
 
 ```json
 {
@@ -190,7 +190,7 @@ count 不能为负数。 如果使用 Azure PowerShell 2.6 或更高版本、Azu
 
 |模板  |说明  |
 |---------|---------|
-|[数据磁盘数可变的 VM 部署](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-windows-copy-datadisks) |通过虚拟机部署多个数据磁盘。 |
+|[部署数据磁盘数量不定的 VM](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-windows-copy-datadisks) |通过虚拟机部署多个数据磁盘。 |
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -199,8 +199,8 @@ count 不能为负数。 如果使用 Azure PowerShell 2.6 或更高版本、Azu
     * [Azure 资源管理器模板中的资源迭代](copy-resources.md)
     * [Azure 资源管理器模板中的变量迭代](copy-variables.md)
     * [Azure 资源管理器模板中的输出迭代](copy-outputs.md)
-* 若要了解有关模板区段的信息，请参阅[创作 Azure Resource Manager 模板](template-syntax.md)。
-* 若要了解如何部署模板，请参阅 [使用 Azure Resource Manager 模板部署应用程序](deploy-powershell.md)。
+* 若要了解有关模板区段的信息，请参阅[创作 Azure 资源管理器模板](template-syntax.md)。
+* 若要了解如何部署模板，请参阅[使用 Azure 资源管理器模板部署应用程序](deploy-powershell.md)。
 
 <!-- Update_Description: new article about copy properties -->
 <!--NEW.date: 03/09/2020-->

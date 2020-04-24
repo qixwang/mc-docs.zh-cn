@@ -6,6 +6,6 @@
       tocHref: /active-directory/
       topicHref: /active-directory/index
       items:
-        - name: 条件访问
+        - name: 条件性访问
           tocHref: /active-directory/conditional-access/
           topicHref: /active-directory/authentication/index

@@ -11,10 +11,10 @@ ms.date: 03/04/2020
 ms.author: v-junlch
 ms.subservice: B2C
 ms.openlocfilehash: 9d2e2e6d8a79e64da1c7218e68c7deb4528dc081
-ms.sourcegitcommit: 1ac138a9e7dc7834b5c0b62a133ca5ce2ea80054
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78266105"
 ---
 # <a name="manage-azure-ad-b2c-custom-policies-with-azure-powershell"></a>使用 Azure PowerShell 管理 Azure AD B2C 自定义策略
@@ -27,7 +27,7 @@ Azure PowerShell 提供了多个 cmdlet 来基于命令行和脚本对 Azure AD 
 * 将新策略上传到 Azure AD B2C 租户
 * 从租户中删除自定义策略
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * [Azure AD B2C 租户](tutorial-create-tenant.md)，以及目录中具有 [B2C IEF 策略管理员](../active-directory/users-groups-roles/directory-assign-admin-roles.md#b2c-ief-policy-administrator)角色的用户的凭据
 * 已上传到租户的自定义策略

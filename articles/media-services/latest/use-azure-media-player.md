@@ -13,10 +13,10 @@ origin.date: 07/17/2019
 ms.date: 03/04/2020
 ms.author: v-jay
 ms.openlocfilehash: 06339391fa74aa953b1c2adc101c7e5d35866da7
-ms.sourcegitcommit: fbc7584f403417d3af7bd6bbbaed7c13a78c57b9
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78412502"
 ---
 # <a name="azure-media-player-overview"></a>Azure Media Player 概述
@@ -24,7 +24,7 @@ ms.locfileid: "78412502"
 > [!NOTE]
 > Google Widevine 内容保护服务目前在 Azure 中国区域不可用。
 
-Azure Media Player 是一种 Web 视频播放器，用于在各种浏览器和设备上播放来自 Azure 媒体服务的媒体内容。 Azure Media Player 采用行业标准（如 HTML5、媒体源扩展 (MSE) 和加密媒体扩展插件 (EME)）来提供更丰富的自适应流式处理体验。 如果无法在设备或浏览器中提供这些标准，Azure 媒体播放器会采用 Flash 和 Silverlight 作为回退技术。 如果不考虑所使用的播放技术，开发人员将有一个统一的 JavaScript 接口来访问 API。 这使 Azure 媒体服务提供的内容无需其他措施便可在各种设备和浏览中轻松播放。
+Azure Media Player 是一种 Web 视频播放器，用于在各种浏览器和设备上播放来自 Azure 媒体服务的媒体内容。 Azure 媒体播放器采用行业标准（如 HTML5、媒体源扩展 (MSE) 和加密媒体扩展插件 (EME)）来提供更丰富的自适应流式处理体验。 如果无法在设备或浏览器中提供这些标准，Azure 媒体播放器会采用 Flash 和 Silverlight 作为回退技术。 如果不考虑所使用的播放技术，开发人员将有一个统一的 JavaScript 接口来访问 API。 这使 Azure 媒体服务提供的内容无需其他措施便可在各种设备和浏览中轻松播放。
 
 Azure 媒体服务允许播放使用 HLS、DASH、平滑流式处理流格式提供的内容。 Azure 媒体播放器会考虑这些不同的格式并基于平台/浏览器功能自动播放最佳链接。 媒体服务还允许使用 PlayReady 加密或 AES 128 位信封加密对资产进行动态加密。 Azure 媒体播放器在合理配置时允许对 PlayReady 和 AES-128 位加密的内容进行解密。 
 

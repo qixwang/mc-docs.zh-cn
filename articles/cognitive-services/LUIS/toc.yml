@@ -31,7 +31,7 @@
       href: 'https://github.com/Azure-Samples/cognitive-services-language-understanding'
 - name: 概念
   items:
-    - name: 最佳实践
+    - name: 最佳做法
       href: luis-concept-best-practices.md
       displayName: 'phrase list, pattern, intent, utterance, version, do, don''t, example utterances, iteration, cycle, correct, right'
     - name: 规划应用
@@ -274,7 +274,7 @@
       displayName: 'FAQ, import'
     - name: 定价和限制
       href: 'https://www.azure.cn/zh-cn/pricing/details/cognitive-services'
-    - name: Stack Overflow
+    - name: 堆栈溢出
       href: 'https://stackoverflow.com/questions/tagged/LUIS'
     - name: UserVoice
       href: 'https://cognitive.uservoice.com/forums/551524-luis'

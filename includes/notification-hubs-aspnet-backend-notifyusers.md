@@ -10,10 +10,10 @@ ms.date: 03/09/2020
 ms.author: v-tawe
 ms.custom: include file
 ms.openlocfilehash: 01a3dd1751b94c3f1bd965bf3ee83037fe1c6fe2
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78155412"
 ---
 ## <a name="create-the-webapi-project"></a>创建 WebAPI 项目
@@ -22,7 +22,7 @@ ms.locfileid: "78155412"
 
 - **对客户端进行身份验证**：添加消息处理程序，以便对客户端请求进行身份验证，并将用户与请求相关联。
 - **使用 WebAPI 后端注册通知**：添加一个控制器来处理新的注册，使客户端设备能够接收通知。 经过身份验证的用户名将作为[标记](../articles/notification-hubs/notification-hubs-tags-segment-push-message.md)自动添加到注册。
-- **将通知发送到客户端**：添加一个控制器，以便用户触发安全推送，将内容推送到与标记关联的设备和客户端。
+- **将通知发送到客户端**：添加一个控制器，以便用户触发安全推送到与标记关联的设备和客户端。
 
 通过执行以下操作创建新的 ASP.NET WebAPI 后端：
 
@@ -84,7 +84,7 @@ ms.locfileid: "78155412"
     当以下三个条件都成立时，此处理程序授权请求：
 
    * 请求包含 *Authorization* 标头。
-   * 请求使用基本身份验证  。
+   * 请求使用*基本*身份验证。
    * 用户名字符串和密码字符串是相同的字符串。
 
    否则，会拒绝该请求。 此身份验证不是真正的身份验证和授权方法。 它只是本教程中一个简单的示例。
@@ -142,7 +142,7 @@ ms.locfileid: "78155412"
 
     > [!NOTE]
     > 安全说明：`AuthenticationTestHandler` 类不提供真正的身份验证。 它仅用于模拟基本身份验证并且是不安全的。 必须在生产应用程序和服务中实现安全的身份验证机制。
-5. 若要注册消息处理程序，请在 **App_Start/WebApiConfig.cs** 类中 `Register` 方法的末尾添加以下代码：
+5. 若要注册消息处理程序，请在 `Register`App_Start/WebApiConfig.cs**类中** 方法的末尾添加以下代码：
 
     ```csharp
     config.MessageHandlers.Add(new AuthenticationTestHandler());
@@ -208,7 +208,7 @@ ms.locfileid: "78155412"
     using System.Threading.Tasks;
     using System.Web;
     ```
-11. 在 `RegisterController` 类定义中添加以下代码： 在此代码中，将为已附加到 HttpContext 的用户添加用户标记。 添加的消息筛选器 `AuthenticationTestHandler` 将对该用户进行身份验证并将其附加到 HttpContext。 还可以通过添加可选复选框来验证用户是否有权注册以获取请求标记。
+11. 在 `RegisterController` 类定义中添加以下代码。 在此代码中，将为已附加到 HttpContext 的用户添加用户标记。 添加的消息筛选器 `AuthenticationTestHandler` 将对该用户进行身份验证并将其附加到 HttpContext。 还可以通过添加可选复选框来验证用户是否有权注册以获取请求标记。
 
     ```csharp
     private NotificationHubClient hub;
@@ -329,7 +329,7 @@ ms.locfileid: "78155412"
     ```
 3. 在 **NotificationsController** 类中添加以下方法：
 
-    此代码会发送基于平台通知服务 (PNS) `pns` 参数的通知类型。 `to_tag` 的值用于设置消息中的 username 标记  。 此标记必须与活动的通知中心注册的用户名标记相匹配。 将从 POST 请求正文提取通知消息，并根据目标 PNS 将其格式化。
+    此代码会发送基于平台通知服务 (PNS) `pns` 参数的通知类型。 `to_tag` 的值用于设置消息中的 *username* 标记。 此标记必须与活动的通知中心注册的用户名标记相匹配。 将从 POST 请求正文提取通知消息，并根据目标 PNS 将其格式化。
 
     通知受多种格式支持，具体取决于受支持设备用来接收通知的 PNS。 例如，在 Windows 设备上，可能会将 [toast 通知与其他 PNS 不直接支持的 WNS 配合使用](https://msdn.microsoft.com/library/windows/apps/br230849.aspx)。 在这种情况下，后端需要将通知格式化为打算使用的设备 PNS 所支持的通知。 然后针对 [NotificationHubClient 类](https://msdn.microsoft.com/library/azure/microsoft.azure.notificationhubs.notificationhubclient_methods.aspx)使用相应的发送 API。
 

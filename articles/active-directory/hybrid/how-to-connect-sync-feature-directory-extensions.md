@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: v-junlch
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 26829595f7e78df35bac76c19472aad2100580ef
-ms.sourcegitcommit: 4ba6d7c8bed5398f37eb37cf5e2acafcdcc28791
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79133811"
 ---
 # <a name="azure-ad-connect-sync-directory-extensions"></a>Azure AD Connect 同步：目录扩展
@@ -59,7 +59,7 @@ Azure AD 中的对象最多可以有 100 个目录扩展属性。 最大长度�
 
 请确保选择“所有应用程序”  以查看此应用。
 
-这些属性的前面带有扩展名 \_{ApplicationId}\_ 前缀  。 对于 Azure AD 租户中的所有属性，ApplicationId 具有相同的值。 本主题中的所有其他方案都需要此值。
+这些属性的前面带有扩展名 **{ApplicationId}\_ 前缀\_** 。 对于 Azure AD 租户中的所有属性，ApplicationId 具有相同的值。 本主题中的所有其他方案都需要此值。
 
 ## <a name="viewing-attributes-using-the-microsoft-graph-api"></a>使用 Microsoft Graph API 查看属性
 
@@ -68,11 +68,11 @@ Azure AD 中的对象最多可以有 100 个目录扩展属性。 最大长度�
 >[!NOTE]
 > 在 Microsoft Graph API 中，你需要请求要返回的属性。 按以下所示显式选择属性：`https://microsoftgraph.chinacloudapi.cn/beta/users/abbie.spencer@fabrikamonline.com?$select=extension_9d98ed114c4840d298fad781915f27e4_employeeID,extension_9d98ed114c4840d298fad781915f27e4_division`。
 >
-> 有关详细信息，请参阅 [Microsoft Graph：使用查询参数](https://developer.microsoft.com/graph/docs/concepts/query_parameters#select-parameter)。
+> 有关详细信息，请参阅 [Microsoft Graph: Use query parameters](https://developer.microsoft.com/graph/docs/concepts/query_parameters#select-parameter)（Microsoft Graph：使用查询参数）。
 
 ## <a name="next-steps"></a>后续步骤
 了解有关 [Azure AD Connect 同步](how-to-connect-sync-whatis.md)配置的详细信息。
 
-了解有关[将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)的详细信息。
+了解有关 [将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)的详细信息。
 
 <!-- Update_Description: wording update -->

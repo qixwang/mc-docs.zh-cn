@@ -11,10 +11,10 @@ origin.date: 09/12/2019
 ms.date: 02/25/2020
 ms.author: v-lingwu
 ms.openlocfilehash: 1eadad45c95ba5ae344f9a186d8b7b37f0310bda
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78155325"
 ---
 ### <a name="verify-the-sentiment-analysis-container-instance"></a>验证情绪分析容器实例

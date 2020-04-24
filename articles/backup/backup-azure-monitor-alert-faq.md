@@ -8,17 +8,17 @@ origin.date: 07/08/2019
 ms.date: 03/06/2020
 ms.author: v-lingwu
 ms.openlocfilehash: 64fde6064ca127374852ab4d3f9aad38c6170624
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78850263"
 ---
 # <a name="azure-backup-monitoring-alert---faq"></a>Azure 备份监视警报 - 常见问题解答
 
 本文解答了有关 Azure 备份监视和报告的常见问题。
 
-## <a name="configure-azure-backup-reports"></a>配置 Azure 备份报告
+## <a name="configure-azure-backup-reports"></a>配置 Azure 备份报表
 
 ### <a name="how-do-i-check-if-reporting-data-has-started-flowing-into-a-log-analytics-la-workspace"></a>如何确定报告数据是否已开始流向 Log Analytics (LA) 工作区？
 
@@ -41,12 +41,12 @@ ms.locfileid: "78850263"
 
 ### <a name="will-i-see-all-my-data-in-reports-after-i-configure-the-la-workspace"></a>配置 LA 工作区后，报告中是否会显示我的所有数据？
 
- 在你配置诊断设置后生成的所有数据都会推送到 LA 工作区，并会显示在报告中。 不会为报告推送正在进行的作业。 作业完成或失败后，会将其发送到报告。
+ 在你配置诊断设置后生成的所有数据都会推送到 LA 工作区，并会显示在报告中。 不会为报表推送正在进行的作业。 作业完成或失败后，会将其发送到报告。
 
-### <a name="can-i-view-reports-across-vaults-and-subscriptions"></a>能否跨保管库和订阅查看报告？
+### <a name="can-i-view-reports-across-vaults-and-subscriptions"></a>能否跨保管库和订阅查看报表？
 
 能，你可以跨保管库、订阅以及区域查看报告。 你的数据可能驻留在单个 LA 工作区或一组 LA 工作区中。
-能，可以跨各种保管库配置同一存储帐户，以便跨保管库查看报告。 此外，还可以跨订阅为保管库配置同一存储帐户。 然后，可以在连接到 Power BI 中的 Azure 备份内容包时使用此存储帐户来查看报告。 所选存储帐户必须位于恢复服务保管库所在的区域。
+能，可以跨各种保管库配置同一存储帐户，以便跨保管库查看报表。 此外，还可以跨订阅为保管库配置同一存储帐户。 然后，可以在连接到 Power BI 中的 Azure 备份内容包时使用此存储帐户来查看报表。 所选存储帐户必须位于与恢复服务保管库相同的区域。
 
 ### <a name="how-long-does-it-take-for-the-azure-backup-agent-job-status-to-reflect-in-the-portal"></a>多长时间后，门户中会反映 Azure 备份代理作业状态？
 

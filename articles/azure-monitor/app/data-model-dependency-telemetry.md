@@ -8,10 +8,10 @@ ms.date: 6/4/2019
 ms.reviewer: sergkanz
 ms.author: v-lingwu
 ms.openlocfilehash: f452095dc4a7249b33474ecd37def37b885f63dd
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78850439"
 ---
 # <a name="dependency-telemetry-application-insights-data-model"></a>依赖项遥测：Application Insights 数据模型
@@ -26,7 +26,7 @@ ms.locfileid: "78850439"
 
 依赖项调用实例的标识符。 用于与此依赖项调用所对应的请求遥测项关联。 有关详细信息，请参阅[关联](../../azure-monitor/app/correlation.md)页。
 
-## <a name="data"></a>数据
+## <a name="data"></a>data
 
 此依赖项调用启动的命令。 示例包括使用所有查询参数的 SQL 语句和 HTTP URL。
 
@@ -38,7 +38,7 @@ ms.locfileid: "78850439"
 
 依赖项调用的目标站点。 示例包括服务器名称、主机地址。 有关详细信息，请参阅[关联](../../azure-monitor/app/correlation.md)页。
 
-## <a name="duration"></a>持续时间
+## <a name="duration"></a>Duration
 
 请求持续时间，格式为：`DD.HH:MM:SS.MMMMMM`。 必须小于 `1000` 天。
 

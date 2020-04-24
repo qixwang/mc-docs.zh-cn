@@ -12,10 +12,10 @@ origin.date: 09/05/2019
 ms.date: 09/23/2019
 ms.author: v-lingwu
 ms.openlocfilehash: 10d7371c693ab52ae2066e586cd434b0e0d9e14d
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78154862"
 ---
 # <a name="use-a-list-entity-to-increase-entity-detection"></a>使用列表实体提升实体检测 
@@ -30,7 +30,7 @@ ms.locfileid: "78154862"
 > * 添加规范化值和同义词
 > * 验证改进后的实体标识
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 > [!div class="checklist"]
 > * 最新版 [Node.js](https://nodejs.org)
@@ -475,7 +475,7 @@ node train.js
 
 尝试其他两个陈述，看看它们是否也作为“恒温调节器”返回。 
 
-|#|话语|实体|type|value|
+|#|话语|实体|type|值|
 |--|--|--|--|--|
 |1|turn on the ac（打开空调）| ac（空调） | DevicesList | 恒温调节器|
 |2|turn up the heat（打开供热）|heat（供热）| DevicesList |恒温调节器|

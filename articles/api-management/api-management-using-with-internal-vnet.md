@@ -16,10 +16,10 @@ origin.date: 07/31/2019
 ms.author: v-yiso
 ms.date: 02/24/2020
 ms.openlocfilehash: fd4cbc8c3c1783d4117fd2bf04df4a880e1f87c6
-ms.sourcegitcommit: 2b4507745b98b45f1ce3f3d30f397521148ef35a
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78213720"
 ---
 # <a name="using-azure-api-management-service-with-an-internal-virtual-network"></a>在内部虚拟网络中使用 Azure API 管理服务
@@ -50,7 +50,7 @@ ms.locfileid: "78213720"
 + **一个 Azure API 管理实例**。 有关详细信息，请参阅[创建 Azure API 管理实例](get-started-create-service-instance.md)。
 + 当 API 管理服务部署在虚拟网络中时，将使用[列表中的端口](./api-management-using-with-vnet.md#required-ports)并且需要重新打开它们。 
 
-## <a name="enable-vpn"> </a>在内部虚拟网络中创建 API 管理
+## <a name="creating-an-api-management-in-an-internal-virtual-network"></a><a name="enable-vpn"> </a>在内部虚拟网络中创建 API 管理
 内部虚拟网络中的 API 管理服务托管在[内部负载均衡器（经典）](/load-balancer/load-balancer-get-started-ilb-classic-cloud)后面。 这是唯一可用的选项，不能更改。
 
 ### <a name="enable-a-virtual-network-connection-using-the-azure-portal"></a>使用 Azure 门户启用虚拟网络连接
@@ -80,7 +80,7 @@ ms.locfileid: "78213720"
 
 * 在虚拟网络中更新 API 管理服务的现有部署：使用 cmdlet [Update-AzApiManagementRegion](https://docs.microsoft.com/powershell/module/az.apimanagement/update-azapimanagementregion) 将现有 API 管理服务移到虚拟网络内，并将其配置为使用内部虚拟网络类型。
 
-## <a name="apim-dns-configuration"></a>DNS 配置
+## <a name="dns-configuration"></a><a name="apim-dns-configuration"></a>DNS 配置
 如果 API 管理采用外部虚拟网络模式，则 DNS 由 Azure 管理。 使用内部虚拟网络模式时，必须管理自己的路由。
 
 > [!NOTE]
@@ -121,7 +121,7 @@ ms.locfileid: "78213720"
 
 2. 然后即可在用于访问终结点的 DNS 服务器中创建记录，这些终结点只能从虚拟网络内部访问。
 
-## <a name="routing"> </a> 路由
+## <a name="routing"></a><a name="routing"> </a> 路由
 
 * 子网范围内的负载均衡*专用*虚拟 IP 地址将被保留，并用于从虚拟网络中访问 API 管理服务终结点。 可以在 Azure 门户中用于服务的“概述”边栏选项卡上找到*专用* IP 地址。 此地址必须注册到虚拟网络使用的 DNS 服务器。
 * 负载均衡*公共* IP 地址 (VIP) 也将被保留，以提供通过端口 3443 对管理服务终结点的访问。 可以在 Azure 门户中用于服务的“概述”边栏选项卡上找到*公共* IP 地址。 *公共* IP 地址仅用于通过端口 3443 发往 `management` 终结点的控制平面流量，并且可以锁定到 [ApiManagement][ServiceTags] servicetag。
@@ -129,7 +129,7 @@ ms.locfileid: "78213720"
 * 可以在 Azure 门户中的“概述”边栏选项卡上找到负载均衡公共 IP 地址和专用 IP 地址。
 * 如果服务从虚拟网络中删除，然后又重新添加回虚拟网络，则为公共和专用访问分配的 IP 地址可能会发生更改。 如果发生这种情况，可能需要更新虚拟网络中的 DNS 注册、路由规则和 IP 限制列表。
 
-## <a name="related-content"> </a>相关内容
+## <a name="related-content"></a><a name="related-content"> </a>相关内容
 要了解更多信息，请参阅下列文章：
 * [在虚拟网络中设置 Azure API 管理时常见的网络配置问题][Common network configuration problems]
 * [虚拟网络常见问题解答](../virtual-network/virtual-networks-faq.md)

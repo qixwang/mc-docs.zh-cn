@@ -8,10 +8,10 @@ origin.date: 12/13/2018
 ms.date: 11/04/2019
 ms.author: v-lingwu
 ms.openlocfilehash: 46d25d67c4d51d72a5bd2fd7a3ac92607a57d2bb
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78850395"
 ---
 # <a name="system-performance-counters-in-application-insights"></a>Application Insights 中的系统性能计数器
@@ -92,7 +92,7 @@ Windows 提供了各种[性能计数器](https://docs.microsoft.com/windows/desk
 
 ### <a name="collecting-performance-counters-in-code-for-aspnet-core-web-applications"></a>在 ASP.NET Core Web 应用程序的代码中收集性能计数器
 
-修改 `Startup.cs` 类中的 `ConfigureServices` 方法，如下所示。
+修改 `ConfigureServices` 类中的 `Startup.cs` 方法，如下所示。
 
 ```csharp
 using Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector;
@@ -144,7 +144,7 @@ using Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector;
 对 ASP.NET Core 中的性能计数器的支持受到限制：
 
 * 如果应用程序在 Azure Web 应用 (Windows) 中运行，则 [SDK](https://nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore) 2.4.1 版和更高版本将收集性能计数器。
-* 如果应用程序在 Windows 中运行，并且面向 `NETSTANDARD2.0` 或更高版本，则 SDK 2.7.1 版和更高版本将收集性能计数器。
+* 如果应用程序在 Windows 中运行，并且面向 `NETSTANDARD2.0` 或更高版本，则 SDK 2.7.1 和更高版本将收集性能计数器。
 * 对于面向 .NET Framework 的应用程序，所有版本的 SDK 都支持性能计数器。
 * SDK 2.8.0 版和更高版本支持 Linux 中的 cpu/内存计数器。 Linux 不支持其他计数器。 
 

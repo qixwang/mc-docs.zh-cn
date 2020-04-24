@@ -9,10 +9,10 @@ origin.date: 06/25/2019
 md.date: 03/23/2020
 ms.author: v-tawe
 ms.openlocfilehash: c0f5d00149990d8d2a9f07f0797cb4e403475597
-ms.sourcegitcommit: e94ed1c9eff4e88be2ca389909e60b14cc0d92f8
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79084408"
 ---
 # <a name="create-a-xamarinandroid-app"></a>创建 Xamarin.Android 应用
@@ -27,14 +27,14 @@ ms.locfileid: "79084408"
 
 只有在完成本教程后，才可以学习有关 Xamarin Android 应用的所有其他移动应用教程。
 
-## <a name="prerequisites"></a>先决条件
-若要完成本教程，需要满足以下先决条件：
+## <a name="prerequisites"></a>必备条件
+若要完成本教程，需要具备以下先决条件：
 
 * 有效的 Azure 帐户。 如果没有帐户，可以注册 Azure 试用版并获取多达 10 个免费的移动应用。 有关详细信息，请参阅 [Azure 1 元试用](https://www.azure.cn/pricing/1rmb-trial/)。
 * Visual Studio with Xamarin。 有关说明，请参阅 [设置和安装 Visual Studio 和 Xamarin](https://docs.microsoft.com/visualstudio/cross-platform/setup-and-install) 。
 
 ## <a name="create-an-azure-mobile-app-backend"></a>创建 Azure 移动应用后端
-按照下列步骤创建移动应用后端。
+按照这些步骤创建移动应用后端。
 
 [!INCLUDE [app-service-mobile-dotnet-backend-create-new-service](../../includes/app-service-mobile-dotnet-backend-create-new-service.md)]
 
@@ -60,7 +60,7 @@ ms.locfileid: "79084408"
     
 5. 按 F5 键部署并运行应用。
 
-6. 在应用中键入有意义的文本（例如“完成教程”  ），然后单击“添加”  按钮。
+6. 在应用中键入有意义的文本（例如“完成教程”  ），并单击“添加”图标  。
 
     ![][10]
 

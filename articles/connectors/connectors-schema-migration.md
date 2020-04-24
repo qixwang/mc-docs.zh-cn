@@ -9,10 +9,10 @@ origin.date: 08/25/2018
 ms.date: 03/09/2020
 ms.author: v-yeche
 ms.openlocfilehash: ea637b78dbdcea1c2aeb0543070cfc06c5e95d04
-ms.sourcegitcommit: 1ac138a9e7dc7834b5c0b62a133ca5ce2ea80054
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78304647"
 ---
 # <a name="migrate-logic-apps-to-latest-schema-version"></a>将逻辑应用迁移到最新架构版本
@@ -30,7 +30,7 @@ ms.locfileid: "78304647"
 
     此时将显示“更新架构”页，并显示指向描述新架构中的改进的文档的链接。
 
-## <a name="best-practices"></a>最佳实践
+## <a name="best-practices"></a>最佳做法
 
 下面是将逻辑应用迁移到最新架构版本的一些最佳做法：
 

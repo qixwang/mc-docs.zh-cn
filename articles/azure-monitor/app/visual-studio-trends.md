@@ -9,10 +9,10 @@ ms.date: 6/4/2019
 ms.reviewer: mbullwin
 ms.author: v-lingwu
 ms.openlocfilehash: 375cac0cf6c93e83cf906d150a0633689399c74d
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78850342"
 ---
 # <a name="analyzing-trends-in-visual-studio"></a>在 Visual Studio 中分析趋势

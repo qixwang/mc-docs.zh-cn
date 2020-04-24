@@ -10,10 +10,10 @@ origin.date: 06/15/2018
 ms.date: 03/09/2020
 ms.author: v-yeche
 ms.openlocfilehash: fcd4be95e8c4e360f40d52820595ea3b9e0bdaa7
-ms.sourcegitcommit: e94ed1c9eff4e88be2ca389909e60b14cc0d92f8
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79084502"
 ---
 # <a name="supportability-of-adding-azure-vms-to-an-existing-availability-set"></a>将 Azure VM 添加到现有可用性集的可支持性

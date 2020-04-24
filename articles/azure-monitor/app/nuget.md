@@ -8,10 +8,10 @@ origin.date: 10/16/2018
 ms.date: 12/30/2019
 ms.author: v-lingwu
 ms.openlocfilehash: 16dc2c278aee65e28ae9e4874f3db747dcc7f634
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78850400"
 ---
 # <a name="application-insights-nuget-packages"></a>Application Insights NuGet 包

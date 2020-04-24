@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 03/02/2020
 ms.author: v-junlch
 ms.openlocfilehash: 8fe2c23be9eba7b4a01f05061710a81b220bd74d
-ms.sourcegitcommit: 1ac138a9e7dc7834b5c0b62a133ca5ce2ea80054
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78266052"
 ---
 # <a name="azure-functions-error-handling"></a>Azure Functions 错误处理

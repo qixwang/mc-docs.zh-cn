@@ -14,10 +14,10 @@ origin.date: 01/30/2020
 ms.date: 03/09/2020
 ms.author: v-tawe
 ms.openlocfilehash: ec3b77d957365ae7d4a642909a62c7d50c55f4be
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78155112"
 ---
 # <a name="capture-event-hubs-data-in-azure-storage-and-read-it-by-using-python-azure-eventhub-version-5"></a>使用 Python 在 Azure 存储中捕获事件中心数据并读取该数据（azure-eventhub 版本 5）
@@ -38,7 +38,7 @@ ms.locfileid: "78155112"
 > * 使用 Python 脚本将数据发送到事件中心。
 > * 使用另一个 Python 脚本通过事件中心捕获功能读取并处理文件。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - Python 2.7、3.5 或更高版本，已安装 PIP 并已更新。  
 - Azure 订阅。 如果没有订阅，请在开始之前[创建一个试用帐户](https://www.azure.cn/pricing/1rmb-trial/)。  
@@ -56,7 +56,7 @@ ms.locfileid: "78155112"
 在本部分，你将创建一个向事件中心发送 200 个事件（10 个设备 * 20 个事件）的 Python 脚本。 这些事件是以 JSON 格式发送的示例环境读数。 
 
 1. 打开常用的 Python 编辑器，如 [Visual Studio Code][Visual Studio Code]。
-2. 创建名为 *sender.py*的脚本。 
+2. 创建名为 *sender.py* 的脚本。 
 3. 将以下代码粘贴到 *sender.py* 中。 
    
     ```python

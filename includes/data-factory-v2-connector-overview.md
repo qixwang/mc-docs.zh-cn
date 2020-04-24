@@ -6,13 +6,13 @@ origin.date: 12/13/2019
 ms.date: 03/02/2020
 ms.author: v-jay
 ms.openlocfilehash: ea3067b6ec31ef1dced188f805085fe0bbe00aac
-ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77780765"
 ---
-| Category              | 数据存储                                                   | [Copy 活动](../articles/data-factory/copy-activity-overview.md)（源/接收器） | [Lookup 活动](../articles/data-factory/control-flow-lookup-activity.md) | [Get Metadata 活动](../articles/data-factory/control-flow-get-metadata-activity.md) | [删除活动](../articles/data-factory/delete-activity.md) |
+| 类别              | 数据存储                                                   | [Copy 活动](../articles/data-factory/copy-activity-overview.md)（源/接收器） | [Lookup 活动](../articles/data-factory/control-flow-lookup-activity.md) | [Get Metadata 活动](../articles/data-factory/control-flow-get-metadata-activity.md) | [删除活动](../articles/data-factory/delete-activity.md) |
 | :-------------------- | :----------------------------------------------------------- | :----------------------------------------------------------- | :----------------------------------------------------------- | ------------------------------------------------------------ | :----------------------------------------------------------- |
 | **Azure**             | [Azure Blob 存储](../articles/data-factory/connector-azure-blob-storage.md) | ✓/✓                                                          | ✓                                                            | ✓                                                            | ✓                                                            |
 | &nbsp;                | [Azure 认知搜索索引](../articles/data-factory/connector-azure-search.md) | −/✓                                                          |                                                              |                                                              |                                                              |
@@ -57,7 +57,7 @@ ms.locfileid: "77780765"
 | **NoSQL**             | [Cassandra](../articles/data-factory/connector-cassandra.md) | ✓/−                                                          | ✓                                                            |                                                              |                                                              |
 | &nbsp;                | [Couchbase（预览）](../articles/data-factory/connector-couchbase.md) | ✓/−                                                          | ✓                                                            |                                                              |                                                              |
 | &nbsp;                | [MongoDB](../articles/data-factory/connector-mongodb.md)     | ✓/−                                                          |                                                              |                                                              |                                                              |
-| **文件**              | [Amazon S3](../articles/data-factory/connector-amazon-simple-storage-service.md) | ✓/−                                                          | ✓                                                            | ✓                                                            | ✓                                                            |
+| **File**              | [Amazon S3](../articles/data-factory/connector-amazon-simple-storage-service.md) | ✓/−                                                          | ✓                                                            | ✓                                                            | ✓                                                            |
 | &nbsp;                | [文件系统](../articles/data-factory/connector-file-system.md) | ✓/✓                                                          | ✓                                                            | ✓                                                            | ✓                                                            |
 | &nbsp;                | [FTP](../articles/data-factory/connector-ftp.md)             | ✓/−                                                          | ✓                                                            | ✓                                                            | ✓                                                            |
 | &nbsp;                | [Google Cloud Storage](../articles/data-factory/connector-google-cloud-storage.md) | ✓/−                                                          | ✓                                                            | ✓                                                            | ✓                                                            |

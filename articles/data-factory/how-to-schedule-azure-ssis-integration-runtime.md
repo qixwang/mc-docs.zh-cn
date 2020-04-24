@@ -15,10 +15,10 @@ ms.author: v-jay
 ms.reviewer: douglasl
 manager: digimobile
 ms.openlocfilehash: a9b4cac25af238e50a95a3b663dcf1b991abd935
-ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77653502"
 ---
 # <a name="how-to-start-and-stop-azure-ssis-integration-runtime-on-a-schedule"></a>如何按计划启动和停止 Azure-SSIS Integration Runtime
@@ -96,13 +96,13 @@ ms.locfileid: "77653502"
     2. 对于“方法”，请选择“POST”。   
     3. 对于“正文”，请输入 `{"message":"Start my IR"}`。  
     4. 对于“身份验证”  ，请选择 **MSI** 以使用 ADF 的托管标识，有关详细信息，请参阅[数据工厂的托管标识](/data-factory/data-factory-service-identity)一文。
-    5. 对于“资源”，请输入 `https://management.chinacloudapi.cn/`  。
+    5. 对于“资源”，请输入 `https://management.chinacloudapi.cn/` 。
     
        ![ADFWeb 活动计划 SSIS IR](./media/how-to-schedule-azure-ssis-integration-runtime/adf-web-activity-schedule-ssis-ir.png)
   
 3. 克隆第一个管道以创建第二个管道，将活动名称更改为 stopMyIR 并替换以下属性  。
 
-    1. 对于“URL”，请为停止 Azure-SSIS IR 的 REST API 输入以下 URL，将 `{subscriptionId}`、`{resourceGroupName}`、`{factoryName}` 和 `{integrationRuntimeName}` 替换为 IR 的实际值`https://management.chinacloudapi.cn/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/integrationRuntimes/{integrationRuntimeName}/stop?api-version=2018-06-01`  ：
+    1. 对于“URL”，请为停止 Azure-SSIS IR 的 REST API 输入以下 URL，将 `{subscriptionId}`、`{resourceGroupName}`、`{factoryName}` 和 `{integrationRuntimeName}` 替换为 IR 的实际值`https://management.chinacloudapi.cn/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/integrationRuntimes/{integrationRuntimeName}/stop?api-version=2018-06-01` ：
     
     2. 对于“正文”，请输入 `{"message":"Stop my IR"}`。  
 

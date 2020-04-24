@@ -9,10 +9,10 @@ origin.date: 01/11/2019
 ms.date: 01/21/2019
 ms.author: v-lingwu
 ms.openlocfilehash: 23187e21a38ca54d18f869dbc3d45d4b48d27b47
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78850268"
 ---
 # <a name="azure-monitor-log-queries"></a>Azure Monitor 日志查询
@@ -60,7 +60,7 @@ Azure Monitor 日志在 Azure 数据资源管理器之上构建，Azure Monitor 
  
 ## <a name="next-steps"></a>后续步骤
 
-- 访问完整的 [Kusto 查询语言参考文档](https://docs.microsoft.com/azure/kusto/query/)。
+- 访问完整的 [Kusto 查询语言的参考文档](https://docs.microsoft.com/azure/kusto/query/)。
 
 
 

@@ -9,10 +9,10 @@ ms.topic: conceptual
 origin.date: 06/21/2019
 ms.date: 12/12/2019
 ms.openlocfilehash: 3ac030c0f5e8ad2f6f8220c87a27f750e30d21dc
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78155026"
 ---
 # <a name="azure-stream-analytics-data-errors"></a>Azure 流分析数据错误

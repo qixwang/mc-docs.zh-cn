@@ -15,10 +15,10 @@ origin.date: 01/22/2019
 ms.date: 02/24/2020
 ms.author: v-yeche
 ms.openlocfilehash: 91dded9cca7f4ca7fb63d49efeeb698db179a0cc
-ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77653488"
 ---
 # <a name="tutorial-route-network-traffic-with-a-route-table-using-the-azure-portal"></a>教程：使用 Azure 门户通过路由表路由网络流量
@@ -142,7 +142,7 @@ ms.locfileid: "77653488"
 
 <a name="create-a-network-virtual-appliance"></a>
 
-## <a name="create-an-nva"></a>创建 NVA
+## <a name="create-an-nva"></a><a name="create-an-nva"></a>创建 NVA
 
 NVA 是帮助实现网络功能（例如路由和防火墙优化）的 VM。 如果需要，可以选择不同的操作系统。 本教程假设使用 **Windows Server 2016 Datacenter**。
 
@@ -211,7 +211,7 @@ NVA 是帮助实现网络功能（例如路由和防火墙优化）的 VM。 如
 
 1. VM 准备就绪后，选择“转到资源”。 
 
-## <a name="turn-on-ip-forwarding"></a>启用 IP 转发
+## <a name="turn-on-ip-forwarding"></a><a name="turn-on-ip-forwarding"></a>启用 IP 转发
 
 为 *myVmNva* 启用 IP 转发。 当 Azure 向 *myVmNva* 发送网络流量时，如果流量发往不同的 IP 地址，则 IP 转发会将流量发送到正确的位置。
 

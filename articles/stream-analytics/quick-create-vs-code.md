@@ -10,10 +10,10 @@ origin.date: 01/18/2020
 ms.date: 2/27/2020
 ms.custom: mvc
 ms.openlocfilehash: 3b5f5db5c1ced1339807c7b17d946ca2264cf5a6
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78154638"
 ---
 # <a name="quickstart-create-an-azure-stream-analytics-job-in-visual-studio-code-preview"></a>快速入门：在 Visual Studio Code 中创建 Azure 流分析作业（预览）

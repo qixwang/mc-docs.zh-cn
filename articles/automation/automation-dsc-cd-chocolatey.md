@@ -7,10 +7,10 @@ origin.date: 08/08/2018
 ms.date: 03/02/2020
 ms.topic: conceptual
 ms.openlocfilehash: 23668f0ee042cc69baf6a0b5d425b926d3485606
-ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77653550"
 ---
 # <a name="usage-example-continuous-deployment-to-virtual-machines-using-automation-state-configuration-and-chocolatey"></a>使用情况示例：使用 Automation State Configuration 和 Chocolatey 持续部署到虚拟机

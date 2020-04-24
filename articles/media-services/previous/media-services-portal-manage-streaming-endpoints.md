@@ -17,20 +17,20 @@ origin.date: 03/19/2019
 ms.date: 09/23/2019
 ms.author: v-jay
 ms.openlocfilehash: 20b46dda702d9bfc2da8da2927dba55bea39afe8
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78850225"
 ---
 # <a name="manage-streaming-endpoints-with-the-azure-portal"></a>使用 Azure 门户管理流式处理终结点 
 
-本文说明了如何使用 Azure 门户管理流式处理终结点。 
+本文说明如何使用 Azure 门户管理流式处理终结点。 
 
 >[!NOTE]
 >请确保查看[概述](media-services-streaming-endpoints-overview.md)一文。 
 
-有关如何缩放流式处理终结点的信息，请参阅[此](media-services-portal-scale-streaming-endpoints.md)文章。
+有关如何缩放流式处理终结点的信息，请参阅[这篇文章](media-services-portal-scale-streaming-endpoints.md)。
 
 ## <a name="start-managing-streaming-endpoints"></a>开始管理流式处理终结点 
 
@@ -58,8 +58,8 @@ ms.locfileid: "78850225"
     ![流式处理终结点](./media/media-services-portal-manage-streaming-endpoints/media-services-manage-streaming-endpoints2.png)
 
 
-## <a id="configure_streaming_endpoints"></a>配置流式处理终结点
-通过流式处理终结点可以配置以下属性：
+## <a name="configuring-the-streaming-endpoint"></a><a id="configure_streaming_endpoints"></a>配置流式处理终结点
+使用流式处理终结点可以配置以下属性：
 
 * 访问控制
 * 缓存控制
@@ -77,12 +77,12 @@ ms.locfileid: "78850225"
 ![流式处理终结点](./media/media-services-portal-manage-streaming-endpoints/media-services-manage-streaming-endpoints4.png)
 
 1. 最大缓存策略：用于为资产配置通过此流式处理终结点提供的缓存生存期。 如果未设置任何值，则使用默认值。 也可直接在 Azure 存储中定义默认值。
-2. 允许的 IP 地址：用于指定允许连接到发布的流式处理终结点的 IP 地址。 如果未指定 IP 地址，则任何 IP 地址都可以连接。 IP 地址可以指定为单个 IP 地址（例如“10.0.0.1”）、使用一个 IP 地址和 CIDR 子网掩码的 IP 范围（例如“10.0.0.1/22”）或使用一个 IP 地址和点分十进制子网掩码的 IP 范围（例如“10.0.0.1(255.255.255.0)”）。
+2. 允许的 IP 地址：用于指定将允许连接到发布的流式处理终结点的 IP 地址。 如果未指定 IP 地址，则任何 IP 地址都可以连接。 IP 地址可以指定为单个 IP 地址（例如“10.0.0.1”）、使用一个 IP 地址和 CIDR 子网掩码的 IP 范围（例如“10.0.0.1/22”）或使用一个 IP 地址和点分十进制子网掩码的 IP 范围（例如“10.0.0.1(255.255.255.0)”）。
 3. Akamai 签名标头身份验证的配置：用于指定如何配置 Akamai 服务器发出的签名标头身份验证请求。 到期日期以 UTC 时间表示。
 
 ## <a name="scale-your-premium-streaming-endpoint"></a>缩放高级流式处理终结点
 
-有关详细信息，请参阅[本文](media-services-portal-scale-streaming-endpoints.md)。
+有关详细信息，请参阅[此](media-services-portal-scale-streaming-endpoints.md)文章。
 <!--Update_Description: wording update-->
 ## <a name="next-steps"></a>后续步骤
 查看媒体服务学习路径。

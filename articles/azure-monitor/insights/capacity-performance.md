@@ -9,10 +9,10 @@ origin.date: 07/13/2017
 ms.date: 01/21/2019
 ms.author: v-lingwu
 ms.openlocfilehash: e39f48334d9fe10ceecb7567b152ca5953d9250a
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78850332"
 ---
 # <a name="plan-hyper-v-virtual-machine-capacity-with-the-capacity-and-performance-solution-deprecated"></a>使用容量和性能解决方案（已弃用）规划 Hyper-V 虚拟机容量
@@ -47,7 +47,7 @@ ms.locfileid: "78850332"
 | [Linux 代理](../../azure-monitor/learn/quick-collect-linux-computer.md) | 否    | 解决方案不从直接 Linux 代理收集容量和性能数据信息。|
 | [Azure 存储帐户](../../azure-monitor/platform/resource-logs-collect-workspace.md) | 否 | Azure 存储不包括容量和性能数据。|
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - 必须在 Windows Server 2012 或更高版本的 Hyper-V 主机而非虚拟机上安装 Windows 或 Operations Manager 代理。
 

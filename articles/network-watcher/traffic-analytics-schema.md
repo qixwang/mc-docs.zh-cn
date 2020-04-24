@@ -14,10 +14,10 @@ origin.date: 02/26/2019
 ms.date: 02/27/2020
 ms.author: v-lingwu
 ms.openlocfilehash: 4b318cb15e61690dc48b2b6df93784a3539de5a4
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78155092"
 ---
 # <a name="schema-and-data-aggregation-in-traffic-analytics"></a>流量分析中的架构和数据聚合

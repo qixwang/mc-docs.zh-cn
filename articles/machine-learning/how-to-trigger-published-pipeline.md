@@ -12,17 +12,17 @@ ms.topic: conceptual
 origin.date: 02/07/2020
 ms.date: 03/16/2020
 ms.openlocfilehash: ebb80a543d3a851d22f7e172cf72a5c14395ed75
-ms.sourcegitcommit: d5eca3c6b03b206e441b599e5b138bd687a91361
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78934876"
 ---
 # <a name="trigger-a-run-of-a-machine-learning-pipeline-from-a-logic-app"></a>从逻辑应用触发机器学习管道的运行
 
 在新数据出现时触发 Azure 机器学习管道的运行。 例如，你可能想要在 blob 存储帐户中出现新数据时触发管道来训练新模型。 使用 [Azure 逻辑应用](../logic-apps/logic-apps-overview.md)设置触发器。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * Azure 机器学习工作区。 有关详细信息，请参阅[创建 Azure 机器学习工作区](how-to-manage-workspace.md)。
 
@@ -90,6 +90,6 @@ ms.locfileid: "78934876"
     将已添加到工作区的 `DataStoreName` 用作[先决条件](#prerequisites)。
      
     > [!div class="mx-imgBorder"]
-    > ![HTTP 设置](media/how-to-trigger-published-pipeline/http-settings.png)
+    > HTTP 设置![](media/how-to-trigger-published-pipeline/http-settings.png)
 
 1. 选择“保存”  ，你的计划现已准备就绪。

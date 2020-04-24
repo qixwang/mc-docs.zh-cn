@@ -8,13 +8,13 @@
 ## [渗透测试](/security/fundamentals/pen-testing)
 ## [安全与合规性博客](http://blogs.msdn.com/b/azuresecurity/)
 
-## 网络安全性
+## 网络安全
 ### [概述](/security/fundamentals/network-overview)
-### [网络安全最佳做法](/security/fundamentals/data-encryption-best-practices)
+### [网络安全最佳实践](/security/fundamentals/data-encryption-best-practices)
 
 ## 存储安全
 ### [概述](security-storage-overview.md)
-### [数据安全与加密最佳做法](/security/fundamentals/data-encryption-best-practices)
+### [数据安全与加密最佳实践](/security/fundamentals/data-encryption-best-practices)
 ### [存储安全指南](../storage/storage-security-guide.md)
 
 ## 计算安全

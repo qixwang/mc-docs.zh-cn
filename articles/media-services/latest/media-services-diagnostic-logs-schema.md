@@ -15,10 +15,10 @@ origin.date: 01/20/2019
 ms.date: 03/04/2020
 ms.author: v-jay
 ms.openlocfilehash: d68b5ce8d756d36ceb9443ffcf1fca3f0923264b
-ms.sourcegitcommit: fbc7584f403417d3af7bd6bbbaed7c13a78c57b9
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78411395"
 ---
 # <a name="diagnostic-logs-schemas"></a>诊断日志架构

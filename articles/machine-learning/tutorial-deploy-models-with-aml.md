@@ -12,10 +12,10 @@ origin.date: 08/26/2019
 ms.date: 03/16/2020
 ms.custom: seodec18
 ms.openlocfilehash: 1fd3567ddc6d3e47a8360f3b9c876c623f002231
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78849869"
 ---
 # <a name="tutorial-deploy-an-image-classification-model-in-azure-container-instances"></a>教程：在 Azure 容器实例中部署映像分类模型
@@ -51,7 +51,7 @@ ms.locfileid: "78849869"
 > 如果要在运行代码时继续阅读，请立即切换到 Jupyter 笔记本。
 > 若要在笔记本中运行单个代码单元，请单击代码单元，然后按 **Shift+Enter**。 或者，通过从顶部工具栏中选择“全部运行”  来运行整个笔记本。
 
-## <a name="start"></a>设置环境
+## <a name="set-up-the-environment"></a><a name="start"></a>设置环境
 
 首先，设置测试环境。
 

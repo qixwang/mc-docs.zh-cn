@@ -12,10 +12,10 @@ origin.date: 07/30/2019
 ms.date: 02/25/2020
 ms.author: v-lingwu
 ms.openlocfilehash: 2f29478d952c6b3da8d8c5c09d71577c45a96af4
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78154652"
 ---
 # <a name="example-detect-language-with-text-analytics"></a>示例：通过文本分析检测语言

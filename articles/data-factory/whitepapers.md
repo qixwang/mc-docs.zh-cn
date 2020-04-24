@@ -14,10 +14,10 @@ ms.topic: conceptual
 origin.date: 09/04/2019
 ms.date: 03/02/2020
 ms.openlocfilehash: b75d3c98f6199e91e4d248d2254e630fc12dc0f2
-ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77653558"
 ---
 # <a name="azure-data-factory-whitepapers"></a>Azure 数据工厂白皮书 

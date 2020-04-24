@@ -9,10 +9,10 @@ ms.topic: conceptual
 origin.date: 06/21/2019
 ms.date: 07/12/2019
 ms.openlocfilehash: 06ef7b7f4593e71f4460c6e15a6626e758cdecb8
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78155025"
 ---
 # <a name="azure-stream-analytics-job-states"></a>Azure 流分析作业状态

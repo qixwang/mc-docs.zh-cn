@@ -8,10 +8,10 @@ origin.date: 06/03/2019
 ms.date: 6/4/2019
 ms.author: v-lingwu
 ms.openlocfilehash: 30da2205bb56e9218fa46be44824e7268886fe79
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78850396"
 ---
 # <a name="application-insights-overview-dashboard"></a>Application Insights 概述仪表板
@@ -62,7 +62,7 @@ Application Insights 一直都有一个总览窗格，可让用户快速、直�
 ## <a name="next-steps"></a>后续步骤
 
 - [漏斗图](../../azure-monitor/app/usage-funnels.md)
-- [保留期](../../azure-monitor/app/usage-retention.md)
+- [保留](../../azure-monitor/app/usage-retention.md)
 - [用户流](../../azure-monitor/app/usage-flows.md)
 
 

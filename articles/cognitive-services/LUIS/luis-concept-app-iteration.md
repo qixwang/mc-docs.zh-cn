@@ -13,10 +13,10 @@ origin.date: 11/20/2019
 ms.date: 12/25/2019
 ms.author: v-lingwu
 ms.openlocfilehash: 112c14e6793bdffb3ab4b9d27f7f921f722a85c2
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78154858"
 ---
 # <a name="iterative-app-design-for-luis"></a>LUIS 的迭代应用设计
@@ -112,7 +112,7 @@ LUIS 需要在每个**意向**中添加几个示例言语。 示例言语需要�
 
 可以在应用级别导入版本。 该版本将成为活动版本，并使用应用文件的 `versionId` 属性中的版本 ID。 也可以在版本级别导入到现有应用。 新版本将成为活动版本。 
 
-也可以在应用或版本级别导出版本。 唯一的区别是应用级别导出的版本是当前活动版本，而在版本级别，可以在“[设置](luis-how-to-manage-versions.md)”页上选择任意要导出的版本  。 
+也可以在应用或版本级别导出版本。 唯一的区别是应用级别导出的版本是当前活动版本，而在版本级别，可以在“**设置[”页上选择任意要导出的版本](luis-how-to-manage-versions.md)** 。 
 
 导出的文件**不**包含：
 

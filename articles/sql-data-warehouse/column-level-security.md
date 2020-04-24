@@ -13,10 +13,10 @@ ms.author: v-jay
 ms.reviewer: igorstan, carlrab
 ms.custom: seo-lt-2019
 ms.openlocfilehash: 37e8d0d1424d3a83df4ef9d12a9a4e3bac1ad17f
-ms.sourcegitcommit: 892137d117bcaf9d88aec0eb7ca756fe39613344
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78154395"
 ---
 # <a name="column-level-security"></a>列级别安全性
@@ -50,7 +50,7 @@ GRANT <permission> [ ,...n ] ON
 ```
 
 ## <a name="example"></a>示例
-下面的示例展示了如何限制 `TestUser` 访问 `Membership` 表的 `SSN` 列：
+下面的示例展示了如何限制 `TestUser` 访问 `SSN` 表的 `Membership` 列：
 
 创建 `Membership` 表，其中包含用于存储社会安全号码的“SSN”列：
 

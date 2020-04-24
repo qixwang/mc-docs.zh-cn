@@ -15,10 +15,10 @@ origin.date: 06/04/2018
 ms.date: 02/24/2020
 ms.author: v-yeche
 ms.openlocfilehash: 084ba81c5e9d1a5526acb3d7e62044f6355f63f3
-ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77653478"
 ---
 <!--NOT SUITABLE TO AZURE CHINA CLOUD-->

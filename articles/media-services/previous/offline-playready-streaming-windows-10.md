@@ -16,10 +16,10 @@ origin.date: 04/16/2019
 ms.date: 03/04/2020
 ms.author: v-jay
 ms.openlocfilehash: 9737d2ff17f8938193270fdb1cf5a8e6555dfe74
-ms.sourcegitcommit: fbc7584f403417d3af7bd6bbbaed7c13a78c57b9
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78412376"
 ---
 # <a name="offline-playready-streaming-for-windows-10"></a>适用于 Windows 10 的 PlayReady 脱机流式处理  

@@ -9,10 +9,10 @@ ms.date: 6/4/2019
 ms.reviewer: mbullwin
 ms.author: v-lingwu
 ms.openlocfilehash: 467ced10badf6f98427b6b91d3af9f028566d30c
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78850341"
 ---
 # <a name="application-insights-telemetry-in-visual-studio-codelens"></a>Visual Studio CodeLens 中的 Application Insights 遥测

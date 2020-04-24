@@ -6,10 +6,10 @@ origin.date: 03/07/2019
 ms.date: 01/15/2020
 ms.author: v-yeche
 ms.openlocfilehash: 53dffc9a9eb1f22115eeb6facf6cc46961e3a05e
-ms.sourcegitcommit: 2b4507745b98b45f1ce3f3d30f397521148ef35a
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78213742"
 ---
 # <a name="azure-resource-manager-templates-for-azure-container-instances"></a>适用于 Azure 容器实例的 Azure 资源管理器模板
@@ -28,7 +28,7 @@ ms.locfileid: "78213742"
 | [emptyDir][vol-emptydir] | 部署两个共享 emptyDir 卷的 Linux 容器。 |
 | [gitRepo][vol-gitrepo] | 部署一个克隆 GitHub 存储库的 Linux 容器并将其作为卷装入。 |
 | [secret][vol-secret] | 部署装有 PFX 证书的 Linux 容器作为机密卷。 |
-| **联网** ||
+| **网络** ||
 | [公开 UDP 的容器][net-udp] | 部署公开 UDP 端口的 Windows 或 Linux 容器。 |
 | [具有公共 IP 的 Linux 容器][net-publicip] | 部署可通过公共 IP 访问的单个 Linux 容器。 |
 | [使用虚拟网络部署容器组（预览版）][net-vnet] | 部署新的虚拟网络、子网、网络配置文件和容器组。 |

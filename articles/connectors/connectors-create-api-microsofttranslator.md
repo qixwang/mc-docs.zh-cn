@@ -18,10 +18,10 @@ origin.date: 11/07/2016
 ms.author: v-yiso
 ms.date: 03/26/2018
 ms.openlocfilehash: 4e1ce34177c2a0f7b44c4eb5eefa289630d81f11
-ms.sourcegitcommit: 1ac138a9e7dc7834b5c0b62a133ca5ce2ea80054
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78304693"
 ---
 # <a name="get-started-with-the-microsoft-translator-connector"></a>Microsoft Translator 连接器入门

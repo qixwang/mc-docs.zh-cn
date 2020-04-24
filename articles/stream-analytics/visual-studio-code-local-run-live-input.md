@@ -8,10 +8,10 @@ ms.date: 2/6/2020
 ms.author: v-lingwu
 ms.topic: conceptual
 ms.openlocfilehash: 9d263fb0bbd74b4081acf769e037e463323f3b42
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78155121"
 ---
 # <a name="test-stream-analytics-queries-locally-against-live-stream-input-by-using-visual-studio-code"></a>使用 Visual Studio Code 通过实时流输入在本地测试流分析查询

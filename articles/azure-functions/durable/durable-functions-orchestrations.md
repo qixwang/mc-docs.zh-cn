@@ -6,10 +6,10 @@ ms.topic: overview
 ms.date: 02/14/2020
 ms.author: v-junlch
 ms.openlocfilehash: c9d7c6b30e5f94b11fb89d5e634cb43d54f9b8d5
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79291004"
 ---
 # <a name="durable-orchestrations"></a>持久业务流程
@@ -41,11 +41,11 @@ Durable Functions 是 [Azure Functions](../functions-overview.md) 的一个扩�
 
 ## <a name="reliability"></a>可靠性
 
-业务流程协调程序函数使用事件溯源设计模式可靠维护其执行状态。 Durable Task Framework 使用仅限追加的存储来记录函数业务流程执行的一系列完整操作，而不是直接存储业务流程的当前状态。 与“转储”完整的运行时状态相比，仅限追加的存储具有诸多优势。 优势包括提升性能、可伸缩性和响应能力。 此外，还可以确保事务数据的最终一致性，保持完整的审核线索和历史记录。 审核线索支持可靠的补偿操作。
+业务流程协调程序函数使用事件溯源设计模式可靠维护其执行状态。 Durable Task Framework 使用仅限追加的存储来记录函数业务流程执行的一系列完整操作，而不是直接存储业务流程的当前状态。 与“转储”整个运行时状态相比，仅限追加的存储具有很多优点。 优点包括提高性能、可伸缩性和响应能力。 此外，它还提供事务数据的最终一致性，以及完整的审核线索和历史记录。 审核线索支持可靠的补偿操作。
 
 Durable Functions 以透明方式使用事件溯源。 在幕后，业务流程协调程序函数中的 `await` (C#) 或 `yield` (JavaScript) 运算符将对业务流程协调程序线程的控制权让回给 Durable Task Framework 调度程序。 然后，该调度程序向存储提交业务流程协调程序函数计划的任何新操作（如调用一个或多个子函数或计划持久计时器）。 透明的提交操作会追加到业务流程实例的执行历史记录中。 历史记录存储在存储表中。 然后，提交操作向队列添加消息，以计划实际工作。 此时，可从内存中卸载业务流程协调程序函数。
 
-如果业务流程函数需要执行其他工作（例如，收到响应消息或持久计时器过期），业务流程协调程序将唤醒并从头开始重新执行整个函数，以重新生成本地状态。 在重放期间，如果代码尝试调用某个函数（或执行任何其他异步工作），Durable Task Framework 会查询当前业务流程的执行历史记录。 如果该扩展发现[活动函数](durable-functions-types-features-overview.md#activity-functions)已执行并已生成某种结果，则会重放该函数的结果，并且业务流程协调程序代码会继续运行。 在函数代码完成或计划了新的异步工作之前，重放会一直继续。
+如果业务流程函数需要执行其他工作（例如，收到响应消息或持久计时器到期），业务流程协调程序将会唤醒，并从头开始重新执行整个函数，以重新生成本地状态。 在重播过程中，如果代码尝试调用函数（或执行任何其他异步工作），Durable Task Framework 会查询当前业务流程的执行历史记录。 如果该扩展发现[活动函数](durable-functions-types-features-overview.md#activity-functions)已执行并已生成结果，则会回放该函数的结果并且业务流程协调程序代码继续运行。 在函数代码完成或计划了新的异步工作之前，重放会一直继续。
 
 > [!NOTE]
 > 要使重播模式正常可靠工作，业务流程协调程序函数代码必须是确定性的。  有关业务流程协调程序函数的代码限制的详细信息，请参阅[业务流程协调程序函数代码约束](durable-functions-code-constraints.md)主题。
@@ -110,7 +110,7 @@ module.exports = df.orchestrator(function*(context) {
 
 完成后，前面所示的函数历史记录在 Azure 表存储中如下表所示（为方便演示，此处采用了缩写）：
 
-| PartitionKey (InstanceId)                     | EventType             | Timestamp               | 输入 | 名称             | 结果                                                    | 状态 |
+| PartitionKey (InstanceId)                     | EventType             | 时间戳               | 输入 | 名称             | 结果                                                    | 状态 |
 |----------------------------------|-----------------------|----------|--------------------------|-------|------------------|-----------------------------------------------------------|
 | eaee885b | ExecutionStarted      | 2017-05-05T18:45:28.852Z | Null  | E1_HelloSequence |                                                           |                     |
 | eaee885b | OrchestratorStarted   | 2017-05-05T18:45:32.362Z |       |                  |                                                           |                     |
@@ -133,19 +133,19 @@ module.exports = df.orchestrator(function*(context) {
 
 * **PartitionKey**：包含业务流程的实例 ID。
 * **EventType**：表示事件的类型。 可为以下类型之一：
-  * **OrchestrationStarted**：业务流程协调程序函数已从等待状态恢复，或者正首次运行。 `Timestamp` 列用于填充 `CurrentUtcDateTime` (.NET) 和 `currentUtcDateTime` (JavaScript) API 的确定性值。
+  * **OrchestrationStarted**：业务流程协调程序函数已从 await（等待）状态恢复，或者正在首次运行。 `Timestamp` 列用于填充 `CurrentUtcDateTime` (.NET) 和 `currentUtcDateTime` (JavaScript) API 的确定性值。
   * **ExecutionStarted**：业务流程协调程序函数已开始首次执行。 此事件也包含 `Input` 列中输入的函数。
   * **TaskScheduled**：已计划活动函数。 `Name` 列中已捕获该活动函数的名称。
   * **TaskCompleted**：已完成活动函数。 `Result` 列中提供了该函数的结果。
   * **TimerCreated**：已创建持久计时器。 `FireAt` 列包含计时器过期时的 UTC 计划时间。
-  * **TimerFired**：已触发持久计时器。
+  * **TimerFired**：持久计时器已触发。
   * **EventRaised**：已将外部事件发送到业务流程实例。 `Name` 列捕获事件的名称，`Input` 列捕获事件的有效负载。
-  * **OrchestratorCompleted**：处于等待状态的业务流程协调程序函数。
+  * **OrchestratorCompleted**：业务流程协调程序函数处于等待状态。
   * **ContinueAsNew**：业务流程协调程序函数已完成，并已使用新状态重启自身。 `Result` 列包含用作已重启实例中的输入的值。
   * **ExecutionCompleted**：业务流程协调程序函数已运行并已完成（或失败）。 该函数的输出或错误详细信息存储在 `Result` 列中。
-* **时间戳**：历史记录事件的 UTC 时间戳。
-* **名称**：调用的函数的名称。
-* **输入**：函数的 JSON 格式的输入。
+* **Timestamp**：历史记录事件的 UTC 时间戳。
+* **Name**：调用的函数的名称。
+* **Input**：函数的 JSON 格式输入。
 * **Result**：函数的输出，即其返回值。
 
 > [!WARNING]
@@ -159,13 +159,13 @@ module.exports = df.orchestrator(function*(context) {
 
 ### <a name="sub-orchestrations"></a>子业务流程
 
-业务流程协调程序函数可以调用活动函数，但也可以调用其他业务流程协调程序函数。 例如，可以基于业务流程协调程序函数库构建更大的业务流程。 或者，可以并行运行某个业务流程协调程序函数的多个实例。
+业务流程协调程序函数可以调用活动函数，但也可以调用其他业务流程协调程序函数。 例如，可以基于业务流程协调程序函数库构建更大的业务流程。 或者，你可以并行运行某个业务流程协调程序函数的多个实例。
 
 有关详细信息和示例，请参阅[子业务流程](durable-functions-sub-orchestrations.md)一文。
 
 ### <a name="durable-timers"></a>持久计时器
 
-业务流程可以计划持久计时器来实现延迟或设置处理异步操作时的超时。  在业务流程协调程序函数中应使用持久计时器，而不要使用 `Thread.Sleep` 和 `Task.Delay` (C#) 或 `setTimeout()` 和 `setInterval()` (JavaScript)。
+业务流程可以计划持久计时器来实现延迟或设置处理异步操作时的超时。  请在业务流程协调程序函数中使用持久计时器，而不要使用 `Thread.Sleep` 和 `Task.Delay` (C#) 或 `setTimeout()` 和 `setInterval()` (JavaScript)。
 
 有关详细信息和示例，请参阅[持久计时器](durable-functions-timers.md)一文。
 
@@ -188,7 +188,7 @@ module.exports = df.orchestrator(function*(context) {
 
 ### <a name="critical-sections-durable-functions-2x-currently-net-only"></a>关键节（Durable Functions 2.x，当前仅限 .NET）
 
-业务流程实例是单线程的，因此无需考虑业务流程内部的争用情况。  但是，当业务流程与外部系统交互时，可能会出现争用情况。 若要在与外部系统交互时缓解争用情况，业务流程协调程序函数可以使用 .NET 中的 `LockAsync` 方法定义关键节。 
+业务流程实例是单线程的，因此无需考虑业务流程内部的争用情况。  但是，当业务流程与外部系统交互时，可能会出现争用情况。 若要在与外部系统交互时缓解争用情况，业务流程协调程序函数可以使用 .NET 中的  *方法定义关键节。* `LockAsync`
 
 以下示例代码演示了一个定义关键节的业务流程协调程序函数。 它使用 `LockAsync` 方法进入关键节。 此方法要求向某个持久管理锁状态的[持久实体](durable-functions-entities.md)传递一个或多个引用。 此业务流程的单个实例每次只能执行关键节中的代码。
 
@@ -267,7 +267,7 @@ module.exports = df.orchestrator(function*(context) {
 
 # <a name="c"></a>[C#](#tab/csharp)
 
-在 .NET 中，还可以使用 [ValueTuples](https://docs.microsoft.com/dotnet/csharp/tuples) 对象。 以下示例使用了 [C# 7](https://docs.microsoft.com/dotnet/csharp/whats-new/csharp-7#tuples) 添加的 [ValueTuples](https://docs.microsoft.com/dotnet/csharp/tuples) 的新功能：
+在 .NET 中，还可以使用 [ValueTuples](https://docs.microsoft.com/dotnet/csharp/tuples) 对象。 以下示例使用了 [C# 7](https://docs.microsoft.com/dotnet/csharp/tuples) 添加的 [ValueTuples](https://docs.microsoft.com/dotnet/csharp/whats-new/csharp-7#tuples) 的新功能：
 
 ```csharp
 [FunctionName("GetCourseRecommendations")]

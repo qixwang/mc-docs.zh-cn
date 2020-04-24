@@ -10,10 +10,10 @@ ms.topic: conceptual
 origin.date: 11/04/2019
 ms.date: 12/16/2019
 ms.openlocfilehash: f80dd105be77b533b4b2eedc8228aad6f4fbbef7
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78850246"
 ---
 # <a name="create-a-simple-query-in-azure-cognitive-search"></a>在 Azure 认知搜索中创建简单的查询
@@ -32,9 +32,9 @@ ms.locfileid: "78850246"
 
 ### <a name="set-the-request-header"></a>设置请求标头
 
-1. 在请求标头中，将“Content-Type”设为 `application/json`  。
+1. 在请求标头中，将“Content-Type”设为 `application/json` 。
 
-2. 添加 api-key，并将其设为此字符串：`252044BE3886FE4A8E3BAA4F595114BB`  。 它是托管“纽约工作岗位”索引的沙盒搜索服务的查询密钥。
+2. 添加 api-key，并将其设为此字符串：`252044BE3886FE4A8E3BAA4F595114BB` 。 它是托管“纽约工作岗位”索引的沙盒搜索服务的查询密钥。
 
 指定请求标头后，只需更改“search=”字符串即可在本文中的各项查询中重复使用  。 
 

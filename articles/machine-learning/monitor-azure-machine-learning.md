@@ -11,10 +11,10 @@ author: aashishb
 origin.date: 11/04/2019
 ms.date: 03/16/2020
 ms.openlocfilehash: 42eea36cb29e00aa352ad8cd2e287a52bf51a409
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78850633"
 ---
 # <a name="monitoring-azure-machine-learning"></a>监视 Azure 机器学习

@@ -9,10 +9,10 @@ ms.date: 09/20/2019
 ms.reviewer: sdash
 ms.author: v-lingwu
 ms.openlocfilehash: 25481489bc68643f8e5f05df20b733567f0b4c9b
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78850403"
 ---
 # <a name="monitor-the-availability-of-any-website"></a>监视任意网站的可用性

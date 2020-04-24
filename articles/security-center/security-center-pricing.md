@@ -15,10 +15,10 @@ origin.date: 12/13/2019
 ms.date: 1/9/2020
 ms.author: v-lingwu
 ms.openlocfilehash: a9df5a2e8c58a61c241658f148e1b712dfc38168
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78155005"
 ---
 # <a name="upgrade-to-standard-tier-for-enhanced-security"></a>升级到标准层以增强安全性

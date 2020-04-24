@@ -8,10 +8,10 @@ ms.author: v-lingwu
 origin.date: 08/22/2019
 ms.date: 01/16/2018
 ms.openlocfilehash: d3af42bfe922486538640b2fb960e8294b009425
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78850309"
 ---
 # <a name="views-in-management-solutions-preview"></a>管理解决方案（预览版）中的视图
@@ -26,11 +26,11 @@ ms.locfileid: "78850309"
 >
 >
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 本文假设已经熟悉如何[创建管理解决方案](solutions-creating.md)及解决方案文件的结构。
 
 ## <a name="overview"></a>概述
-若要在管理解决方案中包含视图，则需要在[解决方案文件](solutions-creating.md)中为其创建**资源**。  描述视图详细配置的 JSON 通常很复杂，普通的解决方案作者无法手动进行创建。  最常见方法是使用 [视图设计器](../../azure-monitor/platform/view-designer.md)创建视图，并将其导出，然后再将其详细配置添加到解决方案。
+若要在管理解决方案中包含视图，则需要在**解决方案文件**中为其创建[资源](solutions-creating.md)。  描述视图详细配置的 JSON 通常很复杂，普通的解决方案作者无法手动进行创建。  最常见方法是使用 [视图设计器](../../azure-monitor/platform/view-designer.md)创建视图，并将其导出，然后再将其详细配置添加到解决方案。
 
 将视图添加到解决方案的基本步骤如下所示。  每个步骤都在后续相应部分进行了详细介绍。
 

@@ -9,10 +9,10 @@ origin.date: 06/25/2019
 md.date: 03/23/2020
 ms.author: v-tawe
 ms.openlocfilehash: 6a0763d5bcdda147aaf024a856e34d03823891b9
-ms.sourcegitcommit: e94ed1c9eff4e88be2ca389909e60b14cc0d92f8
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79084532"
 ---
 # <a name="create-a-windows-app-with-an-azure-backend"></a>通过 Azure 后端创建 Windows 应用
@@ -21,13 +21,13 @@ ms.locfileid: "79084532"
 
 ## <a name="overview"></a>概述
 
-本教程说明如何向通用 Windows 平台 (UWP) 应用添加基于云的后端服务。 有关详细信息，请参阅 [什么是移动应用](app-service-mobile-value-prop.md)。 以下是已完成应用的截屏：
+本教程说明如何向通用 Windows 平台 (UWP) 应用添加基于云的后端服务。 有关详细信息，请参阅 [什么是移动应用](app-service-mobile-value-prop.md)。 以下是完整应用的截屏：
 
 ![已完成的桌面应用](./media/app-service-mobile-windows-store-dotnet-get-started/mobile-quickstart-completed-desktop.png)
 
 只有在完成本教程后，才可以学习有关 UWP 应用的所有其他移动应用教程。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 要完成本教程，需要以下各项：
 
@@ -63,8 +63,8 @@ ms.locfileid: "79084532"
 
 5. 按 F5 键部署并运行应用。
 
-6. 在应用的“插入待办事项”  文本框中键入有意义的文本（例如“完成教程”  ），然后单击“保存”  。
+6. 在应用的“插入待办事项”文本框中键入有意义的文本（例如“完成教程”  ），并单击“保存”   。
 
     ![Windows 快速入门完整桌面](./media/app-service-mobile-windows-store-dotnet-get-started/mobile-quickstart-startup.png)
 
-    这样可向 Azure 中托管的新移动应用后端发送 POST 请求。
+    这样可向在 Azure 中托管的新移动应用后端发送 POST 请求。

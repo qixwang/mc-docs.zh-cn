@@ -10,10 +10,10 @@ ms.service: iot-central
 services: iot-central
 manager: philmea
 ms.openlocfilehash: 5d85384595aff15ee3a0e0c1b5acbcbe716af5c4
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79290926"
 ---
 # <a name="azure-iot-central-architecture-preview-features"></a>Azure IoT Central 体系结构（预览版功能）
@@ -120,7 +120,7 @@ Azure IoT Central 在云中存储应用程序数据。 存储的应用程序数�
 
 Azure IoT Central 将时序存储用于从设备发送的度量数据。 设备提供的时序数据供分析服务使用。
 
-## <a name="analytics"></a>分析
+## <a name="analytics"></a>Analytics
 
 分析服务负责生成应用程序显示的自定义报告数据。 操作员可以[自定义在应用程序中显示的分析](howto-create-analytics.md)。 分析服务在 [Azure 时序见解](/time-series-insights/)基础上构建，可以处理从设备发送的度量数据。
 

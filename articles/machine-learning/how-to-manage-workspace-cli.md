@@ -11,10 +11,10 @@ author: Blackmist
 origin.date: 11/05/2019
 ms.date: 03/16/2020
 ms.openlocfilehash: 2714872c04d3c9ac560a4c940f5656493ea05882
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78850222"
 ---
 # <a name="create-a-workspace-for-azure-machine-learning-with-azure-cli"></a>使用 Azure CLI 创建 Azure 机器学习工作区
@@ -22,7 +22,7 @@ ms.locfileid: "78850222"
 
 本文介绍如何使用 Azure CLI 创建 Azure 机器学习工作区。 Azure CLI 提供用于管理 Azure 资源的命令。 CLI 的机器学习扩展提供用于处理 Azure 机器学习资源的命令。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * 一个 **Azure 订阅**。 如果没有订阅，可试用 [Azure 机器学习免费版或付费版](https://aka.ms/AMLFree)。
 
@@ -61,7 +61,7 @@ Azure 机器学习工作区依赖于以下 Azure 服务或实体：
 | **Azure 资源组** | `-g <resource-group-name>`
 | **Azure 存储帐户** | `--storage-account <service-id>` |
 | **Azure Application Insights** | `--application-insights <service-id>` |
-| **Azure 密钥保管库** | `--keyvault <service-id>` |
+| **Azure Key Vault** | `--keyvault <service-id>` |
 | **Azure 容器注册表** | `--container-registry <service-id>` |
 
 ### <a name="create-a-resource-group"></a>创建资源组
@@ -98,7 +98,7 @@ az group create --name <resource-group-name> --location <location>
 若要创建新的工作区（将在其中自动创建服务），请使用以下命令： 
 
 > [!TIP]
-> 本部分中的命令创建一个基本版工作区。 若要创建企业版工作区，请在 `az ml workspace create` 命令中使用 `--sku enterprise` 开关。 有关 Azure 机器学习版本的详细信息，请参阅[什么是 Azure 机器学习](overview-what-is-azure-ml.md#sku)。
+> 本部分中的命令创建一个基本版工作区。 若要创建企业版工作区，请在 `--sku enterprise` 命令中使用 `az ml workspace create` 开关。 有关 Azure 机器学习版本的详细信息，请参阅[什么是 Azure 机器学习](overview-what-is-azure-ml.md#sku)。
 
 ```azurecli
 az ml workspace create -w <workspace-name> -g <resource-group-name>
@@ -354,7 +354,7 @@ az group delete -g <resource-group-name>
 
 ### <a name="deleting-the-azure-container-registry"></a>删除 Azure 容器注册表
 
-Azure 机器学习工作区使用 Azure 容器注册表 (ACR) 进行某些操作。 当它第一次需要 ACR 实例时，它会自动创建一个。
+Azure 机器学习工作区使用 Azure 容器注册表 (ACR) 执行某些操作。 首次需要 ACR 实例时，它会自动创建一个。
 
 [!INCLUDE [machine-learning-delete-acr](../../includes/machine-learning-delete-acr.md)]
 

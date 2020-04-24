@@ -9,10 +9,10 @@ ms.date: 03/09/2020
 ms.author: v-jay
 ms.subservice: files
 ms.openlocfilehash: 9ce5911a9fe68ea78c188d8ae73615ed71e71c1f
-ms.sourcegitcommit: fbc7584f403417d3af7bd6bbbaed7c13a78c57b9
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78412599"
 ---
 # <a name="quickstart-create-and-manage-an-azure-file-share-with-azure-powershell"></a>快速入门：使用 Azure PowerShell 创建和管理 Azure 文件共享 
@@ -22,7 +22,7 @@ ms.locfileid: "78412599"
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-本指南需要 Azure PowerShell 模块 Az 版本 0.7 或更高版本。 若要找出正在运行的 Azure PowerShell 模块的版本，请执行 `Get-Module -ListAvailable Az`。 如果需要进行升级，请参阅 [Install Azure PowerShell module](https://docs.microsoft.com/powershell/azure/install-Az-ps)（安装 Azure PowerShell 模块）。 如果在本地运行 PowerShell，则还需运行 `Login-AzAccount -Environment AzureChinaCloud` 以登录到 Azure 帐户。
+本指南需要 Azure PowerShell 模块 Az 版本 0.7 或更高版本。 若要找出正在运行的 Azure PowerShell 模块的版本，请执行 `Get-Module -ListAvailable Az`。 如果需要升级，请参阅[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-Az-ps)。 如果在本地运行 PowerShell，则还需运行 `Login-AzAccount -Environment AzureChinaCloud` 以登录到 Azure 帐户。
 
 ## <a name="create-a-resource-group"></a>创建资源组
 资源组是在其中部署和管理 Azure 资源的逻辑容器。 如果没有 Azure 资源组，可以使用 [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) cmdlet 新建一个。 
@@ -196,7 +196,7 @@ Get-AzStorageFile `
 - 适用于 Linux 系统的[逻辑卷管理器 (LVM)](https://en.wikipedia.org/wiki/Logical_Volume_Manager_(Linux)#Basic_functionality) 快照。
 - 适用于 macOS 的 [Apple 文件系统 (APFS)](https://developer.apple.com/library/content/documentation/FileManagement/Conceptual/APFS_Guide/Features/Features.html) 快照。 
 
-可以在通过 [Get-AzStorageShare](https://docs.microsoft.com/powershell/module/az.storage/Get-AzStorageShare) cmdlet 检索的文件共享的 PowerShell 对象上使用 `Snapshot` 方法来创建某个共享的共享快照。 
+可以在通过 `Snapshot`Get-AzStorageShare[ cmdlet 检索的文件共享的 PowerShell 对象上使用 ](https://docs.microsoft.com/powershell/module/az.storage/Get-AzStorageShare) 方法来创建某个共享的共享快照。 
 
 ```azurepowershell
 $share = Get-AzStorageShare -Context $storageAcct.Context -Name $shareName
@@ -204,7 +204,7 @@ $snapshot = $share.Snapshot()
 ```
 
 ### <a name="browse-share-snapshots"></a>浏览共享快照
-可以浏览共享快照的内容，只需将快照引用 (`$snapshot`) 传递给 `Get-AzStorageFile` cmdlet 的 `-Share` 参数即可。
+可以浏览共享快照的内容，只需将快照引用 (`$snapshot`) 传递给 `-Share` cmdlet 的 `Get-AzStorageFile` 参数即可。
 
 ```azurepowershell
 Get-AzStorageFile -Share $snapshot
@@ -239,7 +239,7 @@ Start-AzStorageFileCopy `
 ```
 
 ### <a name="delete-a-share-snapshot"></a>删除共享快照
-可以使用 [Remove-AzStorageShare](https://docs.microsoft.com/powershell/module/az.storage/Remove-AzStorageShare) cmdlet 删除共享快照，其中的变量包含对 `-Share` 参数的 `$snapshot` 引用。
+可以使用 [Remove-AzStorageShare](https://docs.microsoft.com/powershell/module/az.storage/Remove-AzStorageShare) cmdlet 删除共享快照，其中的变量包含对 `$snapshot` 参数的 `-Share` 引用。
 
 ```azurepowershell
 Remove-AzStorageShare `

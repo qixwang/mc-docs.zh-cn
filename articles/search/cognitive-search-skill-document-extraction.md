@@ -10,10 +10,10 @@ origin.date: 11/04/2019
 ms.date: 03/16/2020
 ms.author: v-tawe
 ms.openlocfilehash: 32a7f4eaaf2b92c8eec456ab623553eb34b17c66
-ms.sourcegitcommit: d5eca3c6b03b206e441b599e5b138bd687a91361
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78934811"
 ---
 # <a name="document-extraction-cognitive-skill"></a>文档提取认知技能
@@ -37,7 +37,7 @@ Microsoft.Skills.Util.DocumentExtractionSkill
 | 输入            | 允许的值 | 说明 |
 |-----------------|----------------|-------------|
 | `parsingMode`   | `default` <br/> `text` <br/> `json`  | 对于从非纯文本或 json 文件进行的文档提取，请设置为 `default`。 若要提高针对纯文本文件的性能，请设置为 `text`。 若要从 json 文件中提取结构化内容，请设置为 `json`。 如果未显式定义 `parsingMode`，则它将设置为 `default`。 |
-| `dataToExtract` | `contentAndMetadata` <br/> `allMetadata` | 若要提取每个文件的所有元数据和文本内容，请设置为 `contentAndMetadata`。 若要仅提取[特定于内容类型的元数据](search-howto-indexing-azure-blob-storage.md#ContentSpecificMetadata)（例如，仅 .png 文件独有的元数据），请设置为 `allMetadata`。 如果未显式定义 `dataToExtract`，则它将设置为 `contentAndMetadata`。 |
+| `dataToExtract` | `contentAndMetadata` <br/> `allMetadata` | 若要提取每个文件的所有元数据和文本内容，请设置为 `contentAndMetadata`。 若要仅提取`allMetadata`特定于内容类型的元数据[（例如，仅 .png 文件独有的元数据），请设置为 ](search-howto-indexing-azure-blob-storage.md#ContentSpecificMetadata)。 如果未显式定义 `dataToExtract`，则它将设置为 `contentAndMetadata`。 |
 | `configuration` | 请参阅下文。 | 可选参数的字典，这些参数用于调整文档提取执行方式。 有关支持的配置属性的说明，请参阅下表。 |
 
 | 配置参数   | 允许的值 | 说明 |

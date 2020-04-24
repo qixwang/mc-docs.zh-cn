@@ -12,10 +12,10 @@ origin.date: 11/22/2019
 ms.date: 12/05/2019
 ms.author: v-lingwu
 ms.openlocfilehash: ee2ab045c602f0bb89221f88d56a577c58c1e5a0
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78155045"
 ---
 # <a name="what-is-language-understanding-luis"></a>什么是语言理解 (LUIS)？
@@ -62,7 +62,7 @@ ms.locfileid: "78155045"
 客户端应用程序向已发布的 LUIS 自然语言处理终结点 [API][endpoint-apis] 发送言语（文本）并将结果作为 JSON 响应接收。 LUIS 的常用客户端应用程序是聊天机器人。
 
 
-![LUIS 使用聊天机器人以通过自然语言理解 (NLP) 预测用户文本的概念图](./media/luis-overview/LUIS-chat-bot-request-response.svg "LUIS 使用聊天机器人以通过自然语言理解 (NLP) 预测用户文本的概念图")
+![LUIS 使用聊天机器人以通过自然语言理解 (NLP) 预测用户文本的概念图](./media/luis-overview/LUIS-chat-bot-request-response.svg "LUIS 使用聊天机器人以通过自然语言理解 (NLP) 预测用户文本的概念图像")
 
 |步骤|操作|
 |:--|:--|
@@ -90,7 +90,7 @@ LUIS 应用从称为 **[意向](luis-concept-intent.md)** 的输入文本类别�
 
 |示例用户话语|Intent|提取的数据|
 |-----------|-----------|-----------|
-|`Book a flight to __Seattle__?`|BookFlight|西雅图|
+|`Book a flight to __Seattle__?`|BookFlight|Seattle|
 |`When does your store __open__?`|店铺营业时间和位置|开门|
 |`Schedule a meeting at __1pm__ with __Bob__ in Distribution`|安排谈话|下午 1 点，何石|
 

@@ -13,10 +13,10 @@ ms.topic: article
 origin.date: 02/20/2020
 ms.date: 03/09/2020
 ms.openlocfilehash: ff61aa71f1a94234c44bc5ab1de9a858deafff93
-ms.sourcegitcommit: df370a03d71b94c876e19294d75d4ff77809da11
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78238540"
 ---
 # <a name="faq-about-using-azure-database-migration-service"></a>有关使用 Azure 数据库迁移服务的常见问题解答

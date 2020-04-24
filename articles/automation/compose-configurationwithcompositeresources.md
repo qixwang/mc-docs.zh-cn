@@ -8,10 +8,10 @@ origin.date: 08/21/2018
 ms.date: 03/02/2020
 ms.topic: conceptual
 ms.openlocfilehash: 03d7b8d4297720560147712e2b135f5a55b60cec
-ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77653542"
 ---
 # <a name="composing-dsc-configurations-in-azure-automation-state-configuration-dsc-using-composite-resources"></a>使用复合资源在 Azure 自动化状态配置 (DSC) 中撰写 DSC 配置

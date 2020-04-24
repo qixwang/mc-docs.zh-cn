@@ -9,10 +9,10 @@ origin.date: 05/17/2018
 ms.date: 03/06/2020
 ms.author: v-lingwu
 ms.openlocfilehash: ed02913e00c4aebd868bdb0e117cbfcd55b6eacf
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78850592"
 ---
 # <a name="offline-backup-workflow-in-azure-backup"></a>Azure 备份中的脱机备份工作流

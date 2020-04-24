@@ -9,10 +9,10 @@ origin.date: 10/15/2019
 ms.date: 03/02/2020
 ms.custom: seodec18
 ms.openlocfilehash: 6d5436ef0d8b7ce4ee652b4590678e3c83c87a6a
-ms.sourcegitcommit: 2b4507745b98b45f1ce3f3d30f397521148ef35a
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78213793"
 ---
 # <a name="azure-disk-encryption-for-virtual-machines-and-virtual-machine-scale-sets"></a>适用于虚拟机和虚拟机规模集的 Azure 磁盘加密
@@ -70,4 +70,4 @@ Azure 磁盘加密可同时适用于 Linux 和 Windows 虚拟机以及虚拟机�
 
 ## <a name="next-steps"></a>后续步骤
 
-- [数据安全与加密最佳做法](data-encryption-best-practices.md)
+- [数据安全与加密最佳实践](data-encryption-best-practices.md)

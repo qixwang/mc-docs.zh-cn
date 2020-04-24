@@ -8,10 +8,10 @@ ms.date: 6/4/2019
 ms.reviewer: sdash
 ms.author: v-lingwu
 ms.openlocfilehash: 59ca21a9035f54fd9004eeacdf5d54a282584ddf
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78850449"
 ---
 # <a name="automate-custom-reports-with-azure-application-insights-data"></a>使用 Azure Application Insights 数据自动化自定义报表
@@ -71,7 +71,7 @@ availabilityResults
 
 ## <a name="application-insights-scheduled-digest-report"></a>Application Insights 计划的摘要报表
 
-1. 在 Azure 门户中，选择“创建资源” > “计算” > “Function App”。   
+1. 在 Azure 门户中，选择“创建资源” **“计算”** “Function App”。 >    >  
 
    ![“创建 Azure 资源函数应用”屏幕截图](./media/automate-custom-reports/function-app-01.png)
 
@@ -98,11 +98,11 @@ availabilityResults
 
    ![“函数设置”屏幕截图](./media/automate-custom-reports/function-app-05.png)
 
-7. 选择你的**函数应用** > “平台功能” > “应用程序设置”。  
+7. 选择你的**函数应用** > “平台功能” **“应用程序设置”。**  >  
 
     ![“Azure 函数应用程序设置”屏幕截图](./media/automate-custom-reports/function-app-07.png)
 
-8. 使用合适的对应值 ``AI_APP_ID``、``AI_APP_KEY`` 和 ``SendGridAPI`` 创建三个新的应用程序设置。 选择“保存”  。
+8. 使用合适的对应值 ``AI_APP_ID``、``AI_APP_KEY`` 和 ``SendGridAPI`` 创建三个新的应用程序设置。 选择“保存”。 
 
      ![“函数集成接口”屏幕截图](./media/automate-custom-reports/function-app-08.png)
     
@@ -143,7 +143,7 @@ availabilityResults
 
      ![“设置 > API 密钥”屏幕截图](./media/automate-custom-reports/function-app-14.png)
 
-3. 这将启动 SendGrid 的站点。 选择“设置” > “API 密钥”。  
+3. 这将启动 SendGrid 的站点。 选择“设置” **“API 密钥”。**  >  
 
      ![“创建并查看 API 密钥应用”屏幕截图](./media/automate-custom-reports/function-app-15.png)
 

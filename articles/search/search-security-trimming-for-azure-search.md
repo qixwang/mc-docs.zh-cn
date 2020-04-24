@@ -10,10 +10,10 @@ ms.topic: conceptual
 origin.date: 11/04/2019
 ms.date: 12/16/2019
 ms.openlocfilehash: 1e968e9d5062235fd0a2ad48498524649668e4b4
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78850618"
 ---
 # <a name="security-filters-for-trimming-results-in-azure-cognitive-search"></a>用于在 Azure 认知搜索中修整结果的安全筛选器
@@ -33,7 +33,7 @@ ms.locfileid: "78850618"
 >[!NOTE]
 > 本文档未介绍检索主体标识符的过程。 应该从标识服务提供程序获取该标识符。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 本文假设读者拥有 [Azure 订阅](https://www.azure.cn/pricing/1rmb-trial/)、[Azure 认知搜索服务](https://docs.azure.cn/search/search-create-service-portal)和 [Azure 认知搜索索引](https://docs.azure.cn/search/search-create-index-portal)。  
 
@@ -41,7 +41,7 @@ ms.locfileid: "78850618"
 
 文档必须包含一个指定哪些组拥有访问权限的字段。 此信息将成为筛选条件，在返回给请求发出者的结果集中选择或拒绝文档时，将以此条件为依据。
 我们假设为受保护的文件创建了一个索引，每个文件可由一组不同的用户访问。
-1. 将字段 `group_ids`（此处可选择任意名称）为 `Collection(Edm.String)`。 确保该字段的 `filterable` 属性设置为 `true`，以便根据用户拥有的访问权限筛选搜索结果。 例如，如果针对 `file_name` 为“secured_file_b”的文档将 `group_ids` 字段设置为 `["group_id1, group_id2"]`，则只有属于组 ID“group_id1”或“group_id2”的用户才对该文件拥有读访问权限。
+1. 将字段 `group_ids`（此处可选择任意名称）为 `Collection(Edm.String)`。 确保该字段的 `filterable` 属性设置为 `true`，以便根据用户拥有的访问权限筛选搜索结果。 例如，如果针对 `group_ids` 为“secured_file_b”的文档将 `["group_id1, group_id2"]` 字段设置为 `file_name`，则只有属于组 ID“group_id1”或“group_id2”的用户才对该文件拥有读访问权限。
    确保字段的 `retrievable` 属性设置为 `false`，以便不会将其返回为搜索请求的一部分。
 2. 此外，针对此示例添加 `file_id` 和 `file_name` 字段。  
 
@@ -150,7 +150,7 @@ api-key: [admin or query key]
  ]
 }
 ```
-## <a name="conclusion"></a>结论
+## <a name="conclusion"></a>结束语
 
 本文介绍了如何基于用户标识和 Azure 认知搜索 `search.in()` 函数筛选结果。 可以使用此函数传入请求用户的主体标识符，以将其与每个目标文档关联的主体标识符进行匹配。 处理搜索请求时，`search.in` 函数会筛选出任何用户主体都对其没有读访问权限的搜索结果。 主体标识符可以表示安全组、角色甚至用户自己的标识等信息。
  

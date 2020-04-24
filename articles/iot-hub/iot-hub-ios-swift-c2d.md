@@ -10,10 +10,10 @@ origin.date: 04/19/2018
 ms.date: 03/09/2020
 ms.author: v-yiso
 ms.openlocfilehash: 4d0bc71bd079148d6d0aac0aa10fce18e542c89d
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78155065"
 ---
 # <a name="send-cloud-to-device-messages-with-iot-hub-ios"></a>使用 IoT 中心发送云到设备消息 (iOS)
@@ -28,7 +28,7 @@ Azure IoT 中心是一项完全托管的服务，有助于在数百万台设备�
 
 * 通过解决方案后端，请求确认收到从 IoT 中心发送到设备的消息（反馈  ）。
 
-可以在 [IoT 中心开发人员指南的“消息”部分](iot-hub-devguide-messaging.md)中找到有关云到设备消息的详细信息。
+可以在 [IoT 中心开发人员指南的消息发送部分](iot-hub-devguide-messaging.md)中找到有关云到设备消息的详细信息。
 
 在本文结束时，运行两个 Swift iOS 项目：
 
@@ -37,9 +37,9 @@ Azure IoT 中心是一项完全托管的服务，有助于在数百万台设备�
 * **sample-service**：通过 IoT 中心将云到设备的消息发送到模拟设备应用，然后接收中心的传送确认。
 
 > [!NOTE]
-> IoT 中心通过 Azure IoT 设备 SDK 对许多设备平台和语言（包括 C、Java、Python 和 Javascript）提供 SDK 支持。 有关如何将设备连接到本教程的代码以及通常如何连接到 Azure IoT 中心的分步说明，请参阅 [Azure IoT 开发人员中心](https://www.azure.com/develop/iot)。
+> IoT 中心通过 Azure IoT 设备 SDK 对许多设备平台和语言（包括 C、Java、Python 和 Javascript）提供 SDK 支持。 有关如何将设备连接到本教程中的代码（通常是连接到 Azure IoT 中心）的逐步说明，请参阅 [Azure IoT 开发人员中心](https://www.azure.com/develop/iot)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 - 有效的 Azure 帐户。 （如果没有帐户，只需花费几分钟就能创建一个 [试用帐户][lnk-free-trial]。）
 - Azure 中的活动 IoT 中心。 
 - [Azure 示例](https://github.com/Azure-Samples/azure-iot-samples-ios/archive/master.zip)中的代码示例。
@@ -73,7 +73,7 @@ pod install
 
 ### <a name="run-the-sample-device-application"></a>运行示例设备应用程序 
 
-1. 检索设备的连接字符串。 可以从 [Azure 门户](https://portal.azure.cn)的设备详细信息边栏选项卡复制此字符串，或者使用以下 CLI 命令检索它： 
+1. 检索设备的连接字符串。 可以从 [Azure 门户](https://portal.azure.cn)中的设备详细信息边栏选项卡复制此字符串，或者使用以下 CLI 命令检索它： 
 
     ```azurecli
     az iot hub device-identity show-connection-string --hub-name {YourIoTHubName} --device-id {YourDeviceID} --output table

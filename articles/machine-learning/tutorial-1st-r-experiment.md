@@ -12,10 +12,10 @@ ms.author: davidsmi
 origin.date: 02/07/2020
 ms.date: 03/16/2020
 ms.openlocfilehash: 93d7e8e431aad3dd986762344f6eb9aaf4158b9f
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78849867"
 ---
 # <a name="tutorial-create-a-logistic-regression-model-in-r-with-azure-machine-learning"></a>教程：通过 Azure 机器学习在 R 中创建逻辑回归模型
@@ -50,7 +50,7 @@ Azure 机器学习工作区是云中的基础资源，用于试验、训练和�
 > 记下你的工作区和订阅   。 你将需要这些项才能确保在正确的位置创建试验。 
 
 
-## <a name="azure"></a>克隆笔记本文件夹
+## <a name="clone-a-notebook-folder"></a><a name="azure"></a>克隆笔记本文件夹
 
 本示例使用工作区中的云笔记本服务器来实现免安装的预配置体验。 如果你希望控制环境、包和依赖项，请使用[自己的环境](https://azure.github.io/azureml-sdk-for-r/articles/installation.html)。
 

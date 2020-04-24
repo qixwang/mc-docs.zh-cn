@@ -10,10 +10,10 @@ origin.date: 08/22/2019
 ms.date: 08/13/2019
 ms.author: v-lingwu
 ms.openlocfilehash: 4dc534c4fb43cf3ef0273a80ed88a12ef90bf157
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78850279"
 ---
 # <a name="azure-monitor-log-query-language-differences"></a>Azure Monitor 日志查询语言差异

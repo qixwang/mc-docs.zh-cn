@@ -11,10 +11,10 @@ ms.date: 03/04/2020
 ms.author: v-junlch
 ms.subservice: B2C
 ms.openlocfilehash: 5df8e8747d8f5639490bcd2d85a883662837f3c7
-ms.sourcegitcommit: 1ac138a9e7dc7834b5c0b62a133ca5ce2ea80054
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78266082"
 ---
 # <a name="overview-of-user-accounts-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 中的用户帐户概述
@@ -32,7 +32,7 @@ ms.locfileid: "78266082"
 
 ## <a name="work-account"></a>工作帐户
 
-基于 Azure AD 的所有租户以相同的方式创建工作帐户。 若要创建工作帐户，可以使用[快速入门：向 Azure Active Directory 添加新用户](../active-directory/fundamentals/add-users-azure-active-directory.md)。 使用 Azure 门户中的“新建用户”  选项创建工作帐户。
+基于 Azure AD 的所有租户以相同的方式创建工作帐户。 若要创建工作帐户，可以使用[快速入门：向 Azure Active Directory 添加新用户](../active-directory/fundamentals/add-users-azure-active-directory.md)中的信息。 使用 Azure 门户中的“新建用户”  选项创建工作帐户。
 
 添加新工作帐户时，需要考虑以下配置设置：
 

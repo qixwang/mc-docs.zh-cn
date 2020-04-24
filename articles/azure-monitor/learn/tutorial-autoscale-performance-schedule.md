@@ -10,10 +10,10 @@ ms.author: v-lingwu
 ms.custom: mvc
 ms.subservice: autoscale
 ms.openlocfilehash: 3d0f086314e8e181a4604b03ad991819480d02c2
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78850290"
 ---
 # <a name="create-an-autoscale-setting-for--azure-resources-based-on-performance-data-or-a-schedule"></a>基于性能数据或调度为 Azure 资源创建自动缩放设置 | Microsoft 文档
@@ -28,7 +28,7 @@ ms.locfileid: "78850290"
 > * 触发缩小操作并监视实例数的减少情况
 > * 清理资源
 
-如果没有 Azure 订阅，请在开始前创建一个[试用帐户](https://www.azure.cn/zh-cn/pricing/1rmb-trial-full/?form-type=identityauth)。
+如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.azure.cn/zh-cn/pricing/1rmb-trial-full/?form-type=identityauth)。
 
 ## <a name="log-in-to-the-azure-portal"></a>登录到 Azure 门户
 
@@ -91,7 +91,7 @@ ms.locfileid: "78850290"
 
 6. 为“操作”选择“增加计数”  ，将“实例计数”  设置为“1”，并将“冷却时间”  设置为“5”分钟。
 
-7. 单击“添加”按钮  。
+7. 单击 **“添加”** 按钮。
 
 此规则将确保当你的 Web 应用在 5 分钟或更短时间内收到的请求超过 10 个时，将向你的应用服务计划再添加一个实例，以托管负载。
 
@@ -112,7 +112,7 @@ ms.locfileid: "78850290"
 
 6. 为“操作”选择“减少计数”  ，将“实例计数”  设置为“1”，并将“冷却时间”  设置为“5”分钟。
 
-7. 单击“添加”按钮  。
+7. 单击 **“添加”** 按钮。
 
     ![创建缩小规则](./media/tutorial-autoscale-performance-schedule/Scale-In-Rule.png)
 

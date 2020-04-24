@@ -10,10 +10,10 @@ ms.date: 03/09/2020
 ms.author: v-jay
 ms.custom: include file
 ms.openlocfilehash: b9cf84846751aecddf60d140015e1c4f6518860b
-ms.sourcegitcommit: fbc7584f403417d3af7bd6bbbaed7c13a78c57b9
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78411256"
 ---
 默认情况下，虽然可将共享限制增加到 100 TiB，但标准文件共享只能跨越最多 5 TiB。 为此，必须在存储帐户级别启用大文件共享  功能。 高级存储帐户没有大文件共享功能标志，因为所有高级文件共享都可以最高可预配到完整的 100 TiB 容量。

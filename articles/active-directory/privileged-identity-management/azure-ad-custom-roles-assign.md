@@ -17,10 +17,10 @@ ms.author: v-junlch
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5b259ebe581ad615de20541cb224004a216df410
-ms.sourcegitcommit: 4ba6d7c8bed5398f37eb37cf5e2acafcdcc28791
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79133897"
 ---
 # <a name="assign-an-azure-ad-custom-role-in-privileged-identity-management"></a>在 Privileged Identity Management 中分配 Azure AD 自定义角色
@@ -74,7 +74,7 @@ Privileged Identity Management 可以管理可在 Azure Active Directory (Azure 
 1. 如果“永久”复选框已显示并且可选（具体取决于角色设置），可以指定该分配是否是永久性的。  选中该复选框可使分配永久符合条件或永久进行分配。 清除该复选框可指定分配持续时间。
 1. 若要创建新的角色分配，请依次单击“保存”、“添加”   。 此时将显示分配过程状态的通知。
 
-若要验证角色分配，请在打开的角色中选择“分配” > “分配”，然后检查角色分配是否正确标识为“符合条件”或“活动”。  
+若要验证角色分配，请在打开的角色中选择“分配” **“分配”，然后检查角色分配是否正确标识为“符合条件”或“活动”。**  >  
 
  ![检查角色分配是否显示为“符合条件”或“活动”](./media/azure-ad-custom-roles-assign/verify-assignments.png)
 

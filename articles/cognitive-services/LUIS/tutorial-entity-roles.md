@@ -13,10 +13,10 @@ origin.date: 12/17/2019
 ms.date: 1/2/2020
 ms.author: diberry
 ms.openlocfilehash: c98db916e7581ae51a4abca6e7acce7262a71ba7
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78155080"
 ---
 # <a name="tutorial-extract-contextually-related-data-from-an-utterance"></a>教程：从陈述中提取上下文相关的数据

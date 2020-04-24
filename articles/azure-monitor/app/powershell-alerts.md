@@ -8,17 +8,17 @@ origin.date: 10/31/2016
 ms.date: 6/4/2019
 ms.author: v-lingwu
 ms.openlocfilehash: a2400849c1be79cb9258fc763ae2759cec74f9c6
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78850392"
 ---
 # <a name="use-powershell-to-set-alerts-in-application-insights"></a>使用 PowerShell 在 Application Insights 中设置警报
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-可以在 [Application Insights](../../azure-monitor/app/app-insights-overview.md) 中自动配置[警报](../../azure-monitor/app/alerts.md)。
+可以在 [Application Insights](../../azure-monitor/app/alerts.md) 中自动配置[警报](../../azure-monitor/app/app-insights-overview.md)。
 
 此外，可以[将 webhook 设置为自动执行对警报的响应](../../azure-monitor/platform/alerts-webhooks.md)。
 

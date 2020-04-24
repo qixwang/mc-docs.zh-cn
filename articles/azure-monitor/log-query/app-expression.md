@@ -9,10 +9,10 @@ origin.date: 01/25/2019
 ms.date: 11/04/2019
 ms.author: v-lingwu
 ms.openlocfilehash: 6298093a64b74d8c204ad21a6499447280a32f09
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78850281"
 ---
 # <a name="app-expression-in-azure-monitor-query"></a>Azure Monitor 查询中的 app() 表达式
@@ -23,12 +23,12 @@ ms.locfileid: "78850281"
 
 ## <a name="syntax"></a>语法
 
-`app(`标识符`)` 
+`app(`标识符  `)`
 
 
 ## <a name="arguments"></a>参数
 
-- 标识符：  使用下表中的某种格式标识应用。
+- 标识符：使用下表中的某种格式标识应用  。
 
 | 标识符 | 说明 | 示例
 |:---|:---|:---|
@@ -38,7 +38,7 @@ ms.locfileid: "78850281"
 | Azure 资源 ID | Azure 资源的标识符 |app("/subscriptions/7293b69-db12-44fc-9a66-9c2005c3051d/resourcegroups/Fabrikam/providers/microsoft.insights/components/fabrikamapp") |
 
 
-## <a name="notes"></a>注释
+## <a name="notes"></a>说明
 
 * 必须具有该应用程序的读取权限。
 * 按应用程序的名称来标识应用程序，即假定该名称在所有可访问订阅中唯一。 如果拥有多个采用指定名称的应用程序，查询将因多义性而失败。 在这种情况下，必须使用一个其他的标识符。

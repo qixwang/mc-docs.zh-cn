@@ -9,10 +9,10 @@ origin.date: 10/08/2019
 ms.date: 11/04/2019
 ms.author: v-lingwu
 ms.openlocfilehash: 2149000384d4d018240ea6629005be7cf1ac275c
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78850551"
 ---
 # <a name="azure-monitor-naming-and-terminology-changes"></a>Azure Monitor 命名和术语更改

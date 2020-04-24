@@ -53,7 +53,7 @@
       items:
         - name: 内置安全控件
           href: api-management-security-controls.md
-    - name: 订阅
+    - name: Subscriptions
       href: api-management-subscriptions.md
     - name: 使用自动化进行管理
       href: automation-manage-api-management.md
@@ -61,7 +61,7 @@
       href: api-management-error-handling-policies.md
     - name: API 导入限制
       href: api-management-api-import-restrictions.md
-- name: 操作指南
+- name: 操作方法指南
   items:
     - name: "定义 API\_"
       items:
@@ -147,7 +147,7 @@
           href: api-management-developer-portal-templates-reference.md
         - name: API
           href: api-management-api-templates.md
-        - name: 产品
+        - name: Products
           href: api-management-product-templates.md
         - name: 应用程序
           href: api-management-application-templates.md
@@ -223,7 +223,7 @@
       href: 'https://docs.microsoft.com/rest/api/apimanagement/ApiManagementREST/api-management-REST'
 - name: 资源
   items:
-    - name: 常见问题
+    - name: 常见问题解答
       href: api-management-faq.md
     - name: 区域可用性
       href: 'https://azure.microsoft.com/regions/services/'

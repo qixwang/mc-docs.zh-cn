@@ -15,10 +15,10 @@ origin.date: 02/24/2017
 ms.date: 09/22/2019
 ms.author: v-lingwu
 ms.openlocfilehash: 7f8526b89d83717178619d79bdbe7049f243ea6e
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78155004"
 ---
 # <a name="azure-security-center-and-azure-virtual-machines"></a>Azure 安全中心与 Azure 虚拟机
@@ -37,7 +37,7 @@ ms.locfileid: "78155004"
 * 威胁检测
 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 要开始使用 Azure 安全中心，需了解并考虑以下问题：
 
 * 必须订阅世纪互联 Azure。 请参阅[安全中心定价](https://www.azure.cn/pricing/details/security-center/)，了解有关安全中心免费层和标准层的详细信息。

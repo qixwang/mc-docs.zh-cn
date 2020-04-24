@@ -13,10 +13,10 @@ origin.date: 10/14/2019
 ms.date: 10/31/2019
 ms.author: v-lingwu
 ms.openlocfilehash: 6b40dcf601116ff3fe562c72cd9dd840a25a52cb
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78154552"
 ---
 # <a name="ordinal-prebuilt-entity-for-a-luis-app"></a>LUIS 应用的序号预生成实体

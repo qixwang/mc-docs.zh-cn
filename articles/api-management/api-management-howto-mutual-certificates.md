@@ -15,10 +15,10 @@ origin.date: 01/08/2020
 ms.author: v-yiso
 ms.date: 02/24/2020
 ms.openlocfilehash: 6204ec34651dbfe76dcab8c5abc22f33d62a4146
-ms.sourcegitcommit: 2b4507745b98b45f1ce3f3d30f397521148ef35a
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78213723"
 ---
 # <a name="how-to-secure-back-end-services-using-client-certificate-authentication-in-azure-api-management"></a>如何使用 Azure API 管理中的客户端证书身份验证确保后端服务安全
@@ -27,13 +27,13 @@ API 管理允许你使用客户端证书保护对 API 后端服务的访问。 �
 
 有关如何使用 API 管理 REST API 来管理证书的信息，请参阅 <a href="https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-certificate-entity">Azure API 管理 REST API 证书实体</a>。
 
-## <a name="prerequisites"> </a>先决条件
+## <a name="prerequisites"></a><a name="prerequisites"> </a>先决条件
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 本指南介绍如何将 API 管理服务实例配置为使用客户端证书身份验证访问 API 的后端服务。 在执行本文中的步骤之前，应该先为客户端证书身份验证配置后端服务（[若要在 Azure 应用服务中配置证书身份验证，请参阅此文][to configure certificate authentication in Azure WebSites refer to this article]）。 你需要访问证书和密码才能将其上传到 API 管理服务。
 
-## <a name="step1"> </a>上传证书
+## <a name="upload-a-certificate"></a><a name="step1"> </a>上传证书
 
 > [!NOTE]
 > 可以使用 [Azure 密钥保管库](/key-vault/)服务中存储的证书来代替上传的证书，如此[示例](https://github.com/galiniliev/api-management-policy-snippets/blob/galin/AkvCert/examples/Look%20up%20Key%20Vault%20certificate%20using%20Managed%20Service%20Identity%20and%20call%20backend.policy.xml)中所示。
@@ -44,12 +44,12 @@ API 管理允许你使用客户端证书保护对 API 后端服务的访问。 �
 
 1. 在 Azure 门户中导航到 Azure API 管理服务实例。
 2. 从菜单中选择“证书”  。
-3. 单击“+ 添加”  按钮。  
+3. 单击“ **+ 添加**”按钮。  
 
     ![添加客户端证书](media/api-management-howto-mutual-certificates/apim-client-cert-add.png)  
     
 4. 浏览证书，提供其 ID 和密码。  
-5. 单击**创建**。
+5. 单击“创建”。 
 
 > [!NOTE]
 > 证书必须采用 **.pfx** 格式。 允许使用自签名证书。
@@ -59,11 +59,11 @@ API 管理允许你使用客户端证书保护对 API 后端服务的访问。 �
 证书上传后显示在“证书”中  。  如果有多个证书，请记下所需证书的指纹，以便[将 API 配置为使用客户端证书进行网关身份验证][Configure an API to use a client certificate for gateway authentication]。
 
 > [!NOTE]
-> 若要在使用某个证书（例如自签名证书）时关闭证书链验证，请执行此常见问题解答[项](api-management-faq.md#can-i-use-a-self-signed-ssl-certificate-for-a-back-end)中所述的步骤。
+> 若要在使用某个证书（例如自签名证书）时关闭证书链验证，请执行此常见问题[项](api-management-faq.md#can-i-use-a-self-signed-ssl-certificate-for-a-back-end)中描述的步骤。
 > 
 > 
 
-## <a name="step1a"> </a>删除客户端证书
+## <a name="delete-a-client-certificate"></a><a name="step1a"> </a>删除客户端证书
 
 若要删除证书，请单击上下文菜单“...”  并选择该证书旁边的“删除”  。
 
@@ -73,7 +73,7 @@ API 管理允许你使用客户端证书保护对 API 后端服务的访问。 �
 
 ![删除客户端证书失败](media/api-management-howto-mutual-certificates/apim-client-cert-delete-failure.png)
 
-## <a name="step2"> </a>将 API 配置为使用客户端证书进行网关身份验证
+## <a name="configure-an-api-to-use-a-client-certificate-for-gateway-authentication"></a><a name="step2"> </a>将 API 配置为使用客户端证书进行网关身份验证
 
 1. 单击左侧“API 管理”  菜单中的“API”  ，然后导航至 API。  
 

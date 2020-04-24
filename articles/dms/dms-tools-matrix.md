@@ -13,10 +13,10 @@ ms.topic: article
 origin.date: 02/20/2020
 ms.date: 03/09/2020
 ms.openlocfilehash: 8aa6c7d4c2c421c4cfd5debfc1cab3dd4cfd30b8
-ms.sourcegitcommit: df370a03d71b94c876e19294d75d4ff77809da11
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78238515"
 ---
 # <a name="services-and-tools-available-for-data-migration-scenarios"></a>可用于数据迁移方案的服务和工具
@@ -30,7 +30,7 @@ ms.locfileid: "78238515"
 
 ## <a name="business-justification-phase"></a>业务论证阶段
 
-| Source | 目标 | 发现 /<br/>清单 | 目标和 SKU<br/>建议 |
+| 源 | 目标 | 发现 /<br/>清单 | 目标和 SKU<br/>建议 |
 | --- | --- | --- | --- |
 | SQL Server | Azure SQL DB | [MAP 工具包](https://msdn.microsoft.com/library/bb977556.aspx)<br/>Azure Migrate<br/>[Cloudamize*](https://www.cloudamize.com/) | [DMA](https://docs.microsoft.com/sql/dma/dma-overview?view=sql-server-2017)<br/>[Cloud Atlas*](https://www.unifycloud.com/cloud-migration-tool/)<br/>[Cloudamize*](https://www.cloudamize.com/) |
 | SQL Server | Azure SQL DB MI | [MAP 工具包](https://msdn.microsoft.com/library/bb977556.aspx)<br/>Azure Migrate<br/>[Cloudamize*](https://www.cloudamize.com/) | [DMA](https://docs.microsoft.com/sql/dma/dma-overview?view=sql-server-2017)<br/>[Cloud Atlas*](https://www.unifycloud.com/cloud-migration-tool/)<br/>[Cloudamize*](https://www.cloudamize.com/) |
@@ -55,7 +55,7 @@ ms.locfileid: "78238515"
 
 ## <a name="pre-migration-phase"></a>迁移前阶段
 
-| Source | 目标 | 应用数据访问<br/>层评估 | 数据库<br/>评估 | 性能<br/>评估 |
+| 源 | 目标 | 应用数据访问<br/>层评估 | 数据库<br/>评估 | 性能<br/>评估 |
 | --- | --- | --- | --- | --- |
 | SQL Server | Azure SQL DB | [DAMT](https://marketplace.visualstudio.com/items?itemName=ms-databasemigration.data-access-migration-toolkit) / [DMA](https://docs.microsoft.com/sql/dma/dma-overview?view=sql-server-2017) | [DMA](https://docs.microsoft.com/sql/dma/dma-overview?view=sql-server-2017)<br/>[Cloud Atlas*](https://www.unifycloud.com/cloud-migration-tool/)<br/>[Cloudamize*](https://www.cloudamize.com/) | [DEA](https://www.microsoft.com/download/details.aspx?id=54090)<br/>[Cloudamize*](https://www.cloudamize.com/) |
 | SQL Server | Azure SQL DB MI | [DAMT](https://marketplace.visualstudio.com/items?itemName=ms-databasemigration.data-access-migration-toolkit) / [DMA](https://docs.microsoft.com/sql/dma/dma-overview?view=sql-server-2017) | [DMA](https://docs.microsoft.com/sql/dma/dma-overview?view=sql-server-2017)<br/>[Cloud Atlas*](https://www.unifycloud.com/cloud-migration-tool/)<br/>[Cloudamize*](https://www.cloudamize.com/) | [DEA](https://www.microsoft.com/download/details.aspx?id=54090)<br/>[Cloudamize*](https://www.cloudamize.com/) |
@@ -80,7 +80,7 @@ ms.locfileid: "78238515"
 
 ## <a name="migration-phase"></a>迁移阶段
 
-| Source | 目标 | 架构 | 数据<br/>（脱机） | 数据<br/>（联机） |
+| 源 | 目标 | 架构 | data<br/>（脱机） | data<br/>（联机） |
 | --- | --- | --- | --- | --- |
 | SQL Server | Azure SQL DB | [DMA](https://docs.microsoft.com/sql/dma/dma-overview?view=sql-server-2017)<br/>[Cloudamize*](https://www.cloudamize.com/) | [DMS](/dms/)<br/>[Cloudamize*](https://www.cloudamize.com/) | [DMS](/dms/)<br/>[Cloudamize*](https://www.cloudamize.com/)<br/>[Attunity*](https://www.attunity.com/products/replicate/)<br/>[Striim*](https://www.striim.com/partners/striim-for-microsoft-azure/) |
 | SQL Server | Azure SQL DB MI | [DMS](/dms/)<br/>[Cloudamize*](https://www.cloudamize.com/) | [DMS](/dms/)<br/>[Cloudamize*](https://www.cloudamize.com/) | [DMS](/dms/)<br/>[Cloudamize*](https://www.cloudamize.com/)<br/>[Attunity*](https://www.attunity.com/products/replicate/)<br/>[Striim*](https://www.striim.com/partners/striim-for-microsoft-azure/) |
@@ -105,7 +105,7 @@ ms.locfileid: "78238515"
 
 ## <a name="post-migration-phase"></a>迁移后阶段
 
-| Source | 目标 | 优化 |
+| 源 | 目标 | 优化 |
 | --- | --- | --- |
 | SQL Server | Azure SQL DB | [Cloud Atlas*](https://www.unifycloud.com/cloud-migration-tool/)<br/>[Cloudamize*](https://www.cloudamize.com/) |
 | SQL Server | Azure SQL DB MI | [Cloud Atlas*](https://www.unifycloud.com/cloud-migration-tool/)<br/>[Cloudamize*](https://www.cloudamize.com/) |

@@ -16,10 +16,10 @@ origin.date: 03/20/2019
 ms.date: 03/04/2020
 ms.author: v-jay
 ms.openlocfilehash: 73a32d39823b4ddd0f3d29f7d3fb23524ae251c9
-ms.sourcegitcommit: fbc7584f403417d3af7bd6bbbaed7c13a78c57b9
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78412406"
 ---
 # <a name="dynamic-encryption-configure-a-content-key-authorization-policy"></a>动态加密：配置内容密钥授权策略  
@@ -34,11 +34,11 @@ ms.locfileid: "78412406"
 
 如果希望媒体服务对某个资产进行加密，则需要将加密密钥（CommonEncryption 或 EnvelopeEncryption）与该资产相关联。 有关详细信息，请参阅[使用 REST 创建内容密钥](media-services-rest-create-contentkey.md)。 还需要配置密钥的授权策略（如本文中所述）。
 
-当播放器请求某个流时，媒体服务将使用 AES 或 PlayReady 加密使用指定的密钥来对内容进行动态加密。 为了解密流，播放器将从密钥传送服务请求密钥。 为了确定用户是否被授权获取密钥，服务将评估你为密钥指定的授权策略。
+当播放器请求某个流时，媒体服务将使用 AES 或 PlayReady 加密使用指定的密钥来对内容进行动态加密。 为解密流，播放器从密钥传送服务请求密钥。 为了确定用户是否被授权获取密钥，服务将评估你为密钥指定的授权策略。
 
 媒体服务支持通过多种方式对发出密钥请求的用户进行身份验证。 通过使用开放或令牌限制，内容密钥授权策略可以实现一种或多种授权限制。 令牌限制策略必须附带由安全令牌服务 (STS) 颁发的令牌。 媒体服务支持采用简单 Web 令牌 ([SWT](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_2)) 格式和 JSON Web 令牌 (JWT) 格式的令牌。
 
-媒体服务不提供 STS。 可以创建自定义 STS 或使用 Azure Active Directory (Azure AD) 来颁发令牌。 必须将 STS 配置为创建令牌，该令牌使用指定密钥以及你在令牌限制配置中指定的颁发声明进行签名（如本文所述）。 如果令牌有效，并且令牌中的声明与为内容密钥配置的声明相匹配，则媒体服务密钥传送服务会将加密密钥返回到客户端。
+媒体服务不提供 STS。 可以创建自定义 STS 或使用 Azure Active Directory (Azure AD) 来颁发令牌。 必须将 STS 配置为创建令牌，该令牌使用指定密钥以及在令牌限制配置中指定的颁发声明进行签名（如本文所述）。 如果令牌有效，并且令牌中的声明与为内容密钥配置的声明相匹配，则媒体服务密钥传送服务会将加密密钥返回到客户端。
 
 有关详细信息，请参阅以下文章：
 - [JWT 令牌身份验证](http://www.gtrifonov.com/2015/01/03/jwt-token-authentication-in-azure-media-services-and-dynamic-encryption/)
@@ -46,7 +46,7 @@ ms.locfileid: "78412406"
 
 ### <a name="some-considerations-apply"></a>需要注意的一些事项
 * 若要使用动态打包和动态加密，需确保要从中流式传输内容的流式处理终结点处于“正在运行”状态。
-* 资产必须包含一组自适应比特率 MP4 或自适应比特率平滑流式处理文件。 有关详细信息，请参阅[对资产进行编码](media-services-encode-asset.md)。
+* 资产必须包含一组自适应比特率 MP4 或自适应比特率平滑流文件。 有关详细信息，请参阅[对资产进行编码](media-services-encode-asset.md)。
 * 使用 AssetCreationOptions.StorageEncrypted 选项上传资产并对其进行编码。
 * 如果打算创建需要相同策略配置的多个内容密钥，建议创建单个授权策略，并将其重复用于多个内容密钥。
 * 密钥传送服务将 ContentKeyAuthorizationPolicy 及其相关对象（策略选项和限制）缓存 15 分钟。 可以创建 ContentKeyAuthorizationPolicy 并指定使用令牌限制，对其进行测试，然后更新策略以开放限制。 在策略切换到策略的开放版本之前，此过程需要花费大约 15 分钟。
@@ -68,7 +68,7 @@ ms.locfileid: "78412406"
 
 以下示例创建开放授权策略，并将其添加到内容密钥。
 
-#### <a id="ContentKeyAuthorizationPolicies"></a>创建 ContentKeyAuthorizationPolicies
+#### <a name="create-contentkeyauthorizationpolicies"></a><a id="ContentKeyAuthorizationPolicies"></a>创建 ContentKeyAuthorizationPolicies
 请求：
 
     POST https://wamsbayclus001rest-hs.chinacloudapp.cn/api/ContentKeyAuthorizationPolicies HTTP/1.1
@@ -104,7 +104,7 @@ ms.locfileid: "78412406"
 
     {"odata.metadata":"https://wamsbayclus001rest-hs.chinacloudapp.cn/api/$metadata#ContentKeyAuthorizationPolicies/@Element","Id":"nb:ckpid:UUID:db4593da-f4d1-4cc5-a92a-d20eacbabee4","Name":"Open Authorization Policy"}
 
-#### <a id="ContentKeyAuthorizationPolicyOptions"></a>创建 ContentKeyAuthorizationPolicyOptions
+#### <a name="create-contentkeyauthorizationpolicyoptions"></a><a id="ContentKeyAuthorizationPolicyOptions"></a>创建 ContentKeyAuthorizationPolicyOptions
 请求：
 
     POST https://wamsbayclus001rest-hs.chinacloudapp.cn/api/ContentKeyAuthorizationPolicyOptions HTTP/1.1
@@ -140,7 +140,7 @@ ms.locfileid: "78412406"
 
     {"odata.metadata":"https://wamsbayclus001rest-hs.chinacloudapp.cn/api/$metadata#ContentKeyAuthorizationPolicyOptions/@Element","Id":"nb:ckpoid:UUID:57829b17-1101-4797-919b-f816f4a007b7","Name":"policy","KeyDeliveryType":2,"KeyDeliveryConfiguration":"","Restrictions":[{"Name":"HLS Open Authorization Policy","KeyRestrictionType":0,"Requirements":null}]}
 
-#### <a id="LinkContentKeyAuthorizationPoliciesWithOptions"></a>将 ContentKeyAuthorizationPolicies 与 Options 相链接
+#### <a name="link-contentkeyauthorizationpolicies-with-options"></a><a id="LinkContentKeyAuthorizationPoliciesWithOptions"></a>将 ContentKeyAuthorizationPolicies 与 Options 相链接
 请求：
 
     POST https://wamsbayclus001rest-hs.chinacloudapp.cn/api/ContentKeyAuthorizationPolicies('nb%3Ackpid%3AUUID%3A0baa438b-8ac2-4c40-a53c-4d4722b78715')/$links/Options HTTP/1.1
@@ -161,7 +161,7 @@ ms.locfileid: "78412406"
 
     HTTP/1.1 204 No Content
 
-#### <a id="AddAuthorizationPolicyToKey"></a>将授权策略添加到内容密钥
+#### <a name="add-an-authorization-policy-to-the-content-key"></a><a id="AddAuthorizationPolicyToKey"></a>将授权策略添加到内容密钥
 请求：
 
     PUT https://wamsbayclus001rest-hs.chinacloudapp.cn/api/ContentKeys('nb%3Akid%3AUUID%3A2e6d36a7-a17c-4e9a-830d-eca23ad1a6f9') HTTP/1.1
@@ -188,7 +188,7 @@ ms.locfileid: "78412406"
 若要配置令牌限制选项，需要使用 XML 来描述令牌的授权要求。 令牌限制配置 XML 必须符合以下 XML 架构：
 
 
-#### <a id="schema"></a>令牌限制架构
+#### <a name="token-restriction-schema"></a><a id="schema"></a>令牌限制架构
     <?xml version="1.0" encoding="utf-8"?>
     <xs:schema xmlns:tns="http://schemas.microsoft.com/Azure/MediaServices/KeyDelivery/TokenRestrictionTemplate/v1" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/Azure/MediaServices/KeyDelivery/TokenRestrictionTemplate/v1" xmlns:xs="https://www.w3.org/2001/XMLSchema">
       <xs:complexType name="TokenClaim">
@@ -236,7 +236,7 @@ ms.locfileid: "78412406"
       <xs:element name="SymmetricVerificationKey" nillable="true" type="tns:SymmetricVerificationKey" />
     </xs:schema>
 
-配置令牌限制策略时，必须指定主验证密钥、颁发者和受众参数。 主验证密钥包含为令牌签名时使用的密钥。 颁发者是颁发令牌的 STS。 受众（有时称为范围）描述该令牌的意图，或者令牌授权访问的资源。 媒体服务密钥传送服务验证令牌中的这些值是否与模板中的值匹配。
+配置令牌限制策略时，必须指定主验证密钥、颁发者和受众参数。 主验证密钥包含为令牌签名时使用的密钥。 颁发者是颁发令牌的 STS。 受众（有时称为范围）描述该令牌的意图，或者令牌授权访问的资源。 媒体服务密钥交付服务会验证令牌中的这些值是否与模板中的值匹配。
 
 以下示例创建包含令牌限制的授权策略。 在此示例中，客户端必须出示令牌，其中包含：签名密钥 (VerificationKey)、令牌颁发者和必需的声明。
 
@@ -295,7 +295,7 @@ ms.locfileid: "78412406"
 
 以下示例创建开放授权策略，并将其添加到内容密钥。
 
-#### <a id="ContentKeyAuthorizationPolicies2"></a>创建 ContentKeyAuthorizationPolicies
+#### <a name="create-contentkeyauthorizationpolicies"></a><a id="ContentKeyAuthorizationPolicies2"></a>创建 ContentKeyAuthorizationPolicies
 请求：
 
     POST https://wamsbayclus001rest-hs.chinacloudapp.cn/api/ContentKeyAuthorizationPolicies HTTP/1.1
@@ -422,8 +422,8 @@ ms.locfileid: "78412406"
 #### <a name="add-an-authorization-policy-to-the-content-key"></a>将授权策略添加到内容密钥
 将 AuthorizationPolicy 添加到 ContentKey，如“[将授权策略添加到内容密钥](#AddAuthorizationPolicyToKey)”部分中所示。
 
-## <a id="types"></a>定义 ContentKeyAuthorizationPolicy 时使用的类型
-### <a id="ContentKeyRestrictionType"></a>ContentKeyRestrictionType
+## <a name="types-used-when-you-define-contentkeyauthorizationpolicy"></a><a id="types"></a>定义 ContentKeyAuthorizationPolicy 时使用的类型
+### <a name="contentkeyrestrictiontype"></a><a id="ContentKeyRestrictionType"></a>ContentKeyRestrictionType
     public enum ContentKeyRestrictionType
     {
         Open = 0,
@@ -436,7 +436,7 @@ ms.locfileid: "78412406"
 > 内容密钥授权策略上的 IP 限制在服务中尚不可用。
 
 
-### <a id="ContentKeyDeliveryType"></a>ContentKeyDeliveryType
+### <a name="contentkeydeliverytype"></a><a id="ContentKeyDeliveryType"></a>ContentKeyDeliveryType
     public enum ContentKeyDeliveryType
     {
         None = 0,

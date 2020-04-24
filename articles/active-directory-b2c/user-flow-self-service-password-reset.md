@@ -11,10 +11,10 @@ ms.date: 03/04/2020
 ms.author: v-junlch
 ms.subservice: B2C
 ms.openlocfilehash: 19d01a8cc377d872a78913f9202168e32f3b95b4
-ms.sourcegitcommit: 1ac138a9e7dc7834b5c0b62a133ca5ce2ea80054
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78266083"
 ---
 # <a name="set-up-self-service-password-reset-for-your-customers"></a>为客户设置自助密码重置

@@ -10,10 +10,10 @@ ms.topic: conceptual
 origin.date: 07/10/2018
 ms.date: 09/30/2018
 ms.openlocfilehash: 74a41eb3314c27d8c8f66916da63c58f6a3d868a
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78155122"
 ---
 # <a name="test-stream-analytics-queries-locally-with-visual-studio"></a>使用 Visual Studio 在本地测试流分析查询
@@ -44,7 +44,7 @@ ms.locfileid: "78155122"
 
 在查询编辑器中选择“本地运行”  。 或者按 F5。
 
-![在本地运行](./media/stream-analytics-vs-tools-local-run/stream-analytics-tools-for-vs-local-run-01.png)
+![本地运行](./media/stream-analytics-vs-tools-local-run/stream-analytics-tools-for-vs-local-run-01.png)
 
 可以直接从 Visual Studio 中以表格形式查看输出。
 
@@ -61,13 +61,13 @@ ms.locfileid: "78155122"
 ### <a name="sample-input"></a>示例输入
 还可以将输入源中的示例输入数据收集到本地文件。 右键单击输入配置文件并选择“示例数据”  。 
 
-![数据采样](./media/stream-analytics-vs-tools-local-run/stream-analytics-tools-for-vs-sample-data-01.png)
+![示例数据](./media/stream-analytics-vs-tools-local-run/stream-analytics-tools-for-vs-sample-data-01.png)
 
 仅可从事件中心或 IoT 中心采样数据流。 其他输入源不受支持。 在弹出对话框中，填写用于保存示例数据的本地路径，然后选择“示例”  。
 
 ![示例数据配置](./media/stream-analytics-vs-tools-local-run/stream-analytics-tools-for-vs-sample-data-02.png)
 
-可在“输出”窗口中查看进度。  
+可在“输出”  窗口中查看进度。 
 
 ![示例数据输出](./media/stream-analytics-vs-tools-local-run/stream-analytics-tools-for-vs-sample-data-03.png)
 

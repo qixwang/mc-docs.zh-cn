@@ -10,10 +10,10 @@ ms.date: 03/09/2020
 ms.author: v-yeche
 tags: connectors
 ms.openlocfilehash: 9e74486492da1a948996b1a3c9570b4137103202
-ms.sourcegitcommit: 1ac138a9e7dc7834b5c0b62a133ca5ce2ea80054
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78304673"
 ---
 # <a name="monitor-and-manage-sharepoint-resources-with-azure-logic-apps"></a>使用 Azure 逻辑应用监视和管理 SharePoint 资源
@@ -35,7 +35,7 @@ ms.locfileid: "78304673"
 可以使用触发器从 SharePoint 获取响应，并使输出可用于其他操作。 可以使用逻辑应用中的操作在 SharePoint 中执行任务。 还可以让其他操作使用 SharePoint 操作的输出。 例如，如果你定期从 SharePoint 提取文件，可以使用 Slack 连接器向团队发送消息。
 如果你不熟悉逻辑应用，请查看[什么是 Azure 逻辑应用？](../logic-apps/logic-apps-overview.md)
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * Azure 订阅。 如果没有 Azure 订阅，请[注册一个 Azure 试用帐户](https://www.azure.cn/pricing/1rmb-trial/)。 
 

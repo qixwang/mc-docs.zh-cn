@@ -11,10 +11,10 @@ ms.date: 03/09/2020
 ms.author: v-yeche
 tags: connectors
 ms.openlocfilehash: d7ebfb946e87b0394bbf02322a386575328ac175
-ms.sourcegitcommit: 1ac138a9e7dc7834b5c0b62a133ca5ce2ea80054
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78304671"
 ---
 # <a name="monitor-create-and-manage-sftp-files-by-using-azure-logic-apps"></a>使用 Azure 逻辑应用监视、创建和管理 SFTP 文件
@@ -35,7 +35,7 @@ ms.locfileid: "78304671"
 
 SFTP 连接器仅处理 *50 MB 或更小*的文件，不支持[消息分块](../logic-apps/logic-apps-handle-large-messages.md)。 对于较大的文件，请使用 [SFTP-SSH 连接器](../connectors/connectors-sftp-ssh.md)。 有关 SFTP 连接器和 SFTP-SSH 连接器之间的差异，请查看 SFTP-SSH 文章中的[比较 SFTP-SSH 与 SFTP](../connectors/connectors-sftp-ssh.md#comparison)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * Azure 订阅。 如果没有 Azure 订阅，请[注册一个 Azure 试用帐户](https://www.azure.cn/pricing/1rmb-trial/)。
 
@@ -59,8 +59,8 @@ SFTP 触发器的工作原理是轮询 SFTP 文件系统并查找自上次轮询
 
 | SFTP 客户端 | 操作 |
 |-------------|--------|
-| Winscp | 转到“选项” > “首选项” > “传输” > “编辑” > “保留时间戳” > “禁用”       |
-| FileZilla | 转到“传输” > “保留已传输文件的时间戳” > “禁用”    |
+| Winscp | 转到“选项” **“首选项”** “传输” > “编辑” **“保留时间戳”** “禁用” >    >    >    >   |
+| FileZilla | 转到“传输” **“保留已传输文件的时间戳”** “禁用” >    >   |
 |||
 
 当触发器找到新文件时，会检查该新文件是否完整，以及是否未部分写入。 例如，当触发器检查文件服务器时，可能正在更改某个文件。 为了避免返回部分写入的文件，该触发器会记录具有最近更改的文件的时间戳，但不会立即返回该文件。 仅当再次轮询服务器时，触发器才会返回该文件。 有时，此行为可能会导致延迟，长达触发器轮询间隔的两倍。

@@ -11,17 +11,17 @@ author: mesameki
 ms.reviewer: trbye
 ms.date: 10/25/2019
 ms.openlocfilehash: cd6bafb44260c74858e740026fcebea5f86eb39e
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78850232"
 ---
 # <a name="model-interpretability-for-local-and-remote-runs"></a>本地和远程运行的模型可解释性
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-本文介绍如何使用 Azure 机器学习 Python SDK 的可解释性包来了解模型做出其预测的原因。 你将学习如何执行以下操作：
+本文介绍如何使用 Azure 机器学习 Python SDK 的可解释性包来了解模型做出其预测的原因。 学习如何：
 
 * 解释在本地和远程计算资源上训练的机器学习模型。
 * 在 Azure 运行历史记录中存储本地和全局解释。
@@ -156,7 +156,7 @@ sorted_local_importance_values = local_explanation.get_ranked_local_values()
 
 1. 可根据需要使用 `pip install azureml-contrib-interpret` 获取所需的包。
 
-1. 在本地 Jupyter 笔记本中创建训练脚本。 例如，`train_explain.py`。
+1. 在本地 Jupyter 笔记本中创建训练脚本。 例如，`train_explain.py` 。
 
     ```python
     from azureml.contrib.interpret.explanation.explanation_client import ExplanationClient

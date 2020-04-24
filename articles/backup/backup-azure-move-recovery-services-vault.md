@@ -8,10 +8,10 @@ origin.date: 04/08/2019
 ms.date: 03/06/2020
 ms.author: v-lingwu
 ms.openlocfilehash: e72ad39ad788b7879c2702eb5ef889fba30ae7f7
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78850260"
 ---
 # <a name="move-a-recovery-services-vault-across-azure-subscriptions-and-resource-groups"></a>跨 Azure 订阅和资源组移动恢复服务保管库
@@ -47,7 +47,7 @@ ms.locfileid: "78850260"
 
 将恢复服务保管库及其关联的资源移到不同的资源组
 
-1. 登录到 [Azure 门户](https://portal.azure.cn/)。
+1. 登录 [Azure 门户](https://portal.azure.cn/)。
 2. 打开“恢复服务保管库”列表，并选择要移动的保管库。  当保管库仪表板打开时，其外观如下图所示。
 
    ![打开恢复服务保管库](./media/backup-azure-move-recovery-services/open-recover-service-vault.png)
@@ -77,7 +77,7 @@ ms.locfileid: "78850260"
 
 可将恢复服务保管库及其关联的资源移到不同的订阅
 
-1. 登录到 [Azure 门户](https://portal.azure.cn/)。
+1. 登录 [Azure 门户](https://portal.azure.cn/)。
 2. 打开“恢复服务保管库”列表，并选择要移动的保管库。 当保管库仪表板打开时，其外观如下图所示。
 
     ![打开恢复服务保管库](./media/backup-azure-move-recovery-services/open-recover-service-vault.png)

@@ -8,27 +8,27 @@ origin.date: 09/15/2018
 ms.date: 6/4/2019
 ms.author: v-lingwu
 ms.openlocfilehash: 9f2f33681d0704d8148ca9c7232b1f037e62a6bd
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78850401"
 ---
 # <a name="collect-distributed-traces-from-go-preview"></a>从 Go（预览版）收集分布式跟踪
 
 Application Insights 现在支持通过与 [OpenCensus](https://opencensus.io) 和我们新的[本地转发器](./opencensus-local-forwarder.md)集成来对 Go 应用程序进行分布式跟踪。 本文将逐步介绍设置 OpenCensus for Go 并将跟踪数据提供给 Application Insights 的过程。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - 需要一个 Azure 订阅。
 - 应该安装 Go，本文使用版本 1.11 [去下载](https://golang.org/dl/)。
 - 按照说明[将本地转发器安装为 Windows 服务](./opencensus-local-forwarder.md)。
 
-如果没有 Azure 订阅，请在开始前创建一个[试用帐户](https://www.azure.cn/zh-cn/pricing/1rmb-trial-full/?form-type=identityauth)。
+如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.azure.cn/zh-cn/pricing/1rmb-trial-full/?form-type=identityauth)。
 
 ## <a name="sign-in-to-the-azure-portal"></a>登录到 Azure 门户
 
-登录到 [Azure 门户](https://portal.azure.cn/)。
+登录 [Azure 门户](https://portal.azure.cn/)。
 
 ## <a name="create-application-insights-resource"></a>创建 Application Insights 资源
 
@@ -43,13 +43,13 @@ Application Insights 现在支持通过与 [OpenCensus](https://opencensus.io) �
 
    此时会显示配置对话框，请使用下表填写输入字段。
 
-    | 设置        | Value           | 说明  |
+    | 设置        | 值           | 说明  |
    | ------------- |:-------------|:-----|
    | **名称**      | 全局唯一值 | 标识所监视的应用的名称 |
-   | **资源组**     | MyResourceGroup      | 用于托管 App Insights 数据的新资源组的名称 |
+   | **资源组**     | myResourceGroup      | 用于托管 App Insights 数据的新资源组的名称 |
    | **位置** | 中国北部| 选择离你近的位置或离托管应用的位置近的位置 |
 
-2. 单击**创建**。
+2. 单击“创建”。 
 
 ## <a name="configure-local-forwarder"></a>配置本地转发器
 

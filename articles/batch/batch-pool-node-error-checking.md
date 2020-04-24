@@ -10,10 +10,10 @@ origin.date: 08/23/2019
 ms.date: 09/23/2019
 ms.topic: conceptual
 ms.openlocfilehash: 16402b05c6d99d23af187b1f532d93c393f1d6b9
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78850621"
 ---
 # <a name="check-for-pool-and-node-errors"></a>检查池和节点错误

@@ -10,10 +10,10 @@ ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: yzheng
 ms.openlocfilehash: ffe2c29c3a3cb4e64ab13ca99bab778bdee7a706
-ms.sourcegitcommit: fbc7584f403417d3af7bd6bbbaed7c13a78c57b9
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78411951"
 ---
 # <a name="manage-the-azure-blob-storage-lifecycle"></a>管理 Azure Blob 存储生命周期
@@ -59,7 +59,7 @@ ms.locfileid: "78411951"
 
 本文介绍如何使用门户和 PowerShell 方法管理策略。  
 
-# <a name="portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[门户](#tab/azure-portal)
 
 可以在 Azure 门户中通过两种方式添加策略。 
 
@@ -68,7 +68,7 @@ ms.locfileid: "78411951"
 
 #### <a name="azure-portal-list-view"></a>Azure 门户列表视图
 
-1. 登录到 [Azure 门户](https://portal.azure.cn)。
+1. 登录 [Azure 门户](https://portal.azure.cn)。
 
 2. 在 Azure 门户中，搜索并选择你的存储帐户。 
 
@@ -89,7 +89,7 @@ ms.locfileid: "78411951"
 9. 选择“添加”以添加新策略。 
 
 #### <a name="azure-portal-code-view"></a>Azure 门户代码视图
-1. 登录到 [Azure 门户](https://portal.azure.cn)。
+1. 登录 [Azure 门户](https://portal.azure.cn)。
 
 2. 在 Azure 门户中，搜索并选择你的存储帐户。
 
@@ -125,11 +125,11 @@ ms.locfileid: "78411951"
    }
    ```
 
-5. 选择“保存”  。
+5. 选择“保存”。 
 
 6. 有关此 JSON 示例的详细信息，请参阅[策略](#policy)和[规则](#rules)部分。
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 使用以下 PowerShell 脚本可将策略添加到存储帐户。 必须使用资源组名称初始化 `$rgname` 变量。 必须使用存储帐户名称初始化 `$accountName` 变量。
 
@@ -227,16 +227,16 @@ $policy = Set-AzStorageAccountManagementPolicy -ResourceGroupName $rgname -Stora
 
 策略是规则的集合：
 
-| 参数名称 | 参数类型 | 注释 |
+| 参数名称 | 参数类型 | 说明 |
 |----------------|----------------|-------|
 | `rules`        | 规则对象的数组 | 一个策略至少需要包含一个规则。 最多可在一个策略中定义 100 个规则。|
 
 策略中的每个规则具有多个参数：
 
-| 参数名称 | 参数类型 | 注释 | 必须 |
+| 参数名称 | 参数类型 | 说明 | 必选 |
 |----------------|----------------|-------|----------|
 | `name`         | String |规则名称最多只能包含 256 个字母数字字符。 规则名称区分大小写。  该名称必须在策略中唯一。 | True |
-| `enabled`      | 布尔 | 一个允许暂时禁用规则的可选布尔值。 如果未设置，则默认值为 true。 | False | 
+| `enabled`      | Boolean | 一个允许暂时禁用规则的可选布尔值。 如果未设置，则默认值为 true。 | False | 
 | `type`         | 枚举值 | 当前的有效类型为 `Lifecycle`。 | True |
 | `definition`   | 定义生命周期规则的对象 | 每个定义均由筛选器集和操作集组成。 | True |
 
@@ -290,7 +290,7 @@ $policy = Set-AzStorageAccountManagementPolicy -ResourceGroupName $rgname -Stora
 
 筛选器包括：
 
-| 筛选器名称 | 筛选器类型 | 注释 | 是否必需 |
+| 筛选器名称 | 筛选器类型 | 说明 | 是否必需 |
 |-------------|-------------|-------|-------------|
 | blobTypes   | 预定义枚举值的数组。 | 当前版本支持 `blockBlob`。 | 是 |
 | prefixMatch | 要匹配的前缀字符串数组。 每个规则最多可定义 10 个前缀。 前缀字符串必须以容器名称开头。 例如，如果要为某个规则匹配 `https://myaccount.blob.core.chinacloudapi.cn/container1/foo/...` 下的所有 Blob，则 prefixMatch 为 `container1/foo`。 | 如果未定义 prefixMatch，规则将应用到存储帐户中的所有 Blob。  | 否 |
@@ -305,7 +305,7 @@ $policy = Set-AzStorageAccountManagementPolicy -ResourceGroupName $rgname -Stora
 |---------------|---------------------------------------------|---------------|
 | tierToCool    | 目前支持位于热层的 Blob         | 不支持 |
 | tierToArchive | 目前支持位于热层或冷层的 Blob | 不支持 |
-| 删除        | 支持                                   | 支持     |
+| delete        | 支持                                   | 支持     |
 
 >[!NOTE]
 >如果在同一 Blob 中定义了多个操作，生命周期管理将对该 Blob 应用开销最低的操作。 例如，操作 `delete` 的开销比 `tierToArchive` 更低。 操作 `tierToArchive` 的开销比 `tierToCool` 更低。
@@ -433,7 +433,7 @@ $policy = Set-AzStorageAccountManagementPolicy -ResourceGroupName $rgname -Stora
 }
 ```
 
-## <a name="faq"></a>常见问题
+## <a name="faq"></a>常见问题解答
 
 **我创建了一个新策略，但操作为什么没有立即运行？**  
 平台每天运行一次生命周期策略。 配置策略后，某些操作可能需要在长达 24 小时之后才能首次运行。  

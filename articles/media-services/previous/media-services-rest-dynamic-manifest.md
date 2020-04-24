@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure 媒体服务 REST API 创建筛选器 | Microsoft Docs
-description: 本主题介绍如何创建筛选器，以便客户端能够使用它们来流式传输流的特定部分。 媒体服务创建动态清单来存档此选择性流。
+description: 本主题介绍如何创建筛选器，以便客户端能够使用它们来流式传输流的特定部分。 媒体服务将创建动态清单来存档此选择性流。
 services: media-services
 documentationcenter: ''
 author: WenJason
@@ -17,10 +17,10 @@ ms.date: 02/24/2020
 ms.author: v-jay
 ms.reviewr: cenkdin
 ms.openlocfilehash: 57826254fbc616e07f4539accbe1aa04946e102a
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78850628"
 ---
 # <a name="creating-filters-with-azure-media-services-rest-api"></a>使用 Azure 媒体服务 REST API 创建筛选器 
@@ -30,16 +30,16 @@ ms.locfileid: "78850628"
 > 
 > 
 
-从 2.17 版开始，可使用媒体服务为资产定义筛选器。 这些筛选器是服务器端规则，可让客户选择运行如下操作：只播放一段视频（而非播放完整视频），或只指定客户设备可以处理的一部分音频和视频再现内容（而非与该资产相关的所有再现内容）。 通过按客户请求创建的动态清单可以实现对资产进行这种筛选，并基于指定的筛选器流式传输视频  。
+从 2.17 版开始，可使用媒体服务为资产定义筛选器。 这些筛选器是服务器端规则，可让客户选择运行如下操作：只播放一段视频（而非播放完整视频），或只指定客户设备可以处理的一部分音频和视频再现内容（而非与该资产相关的所有再现内容）。 通过按客户请求创建的**动态清单**可以实现对资产进行这种筛选，并基于指定的筛选器流式传输视频。
 
 有关与筛选器和动态清单相关的更多详细信息，请参阅[动态清单概述](media-services-dynamic-manifest-overview.md)。
 
 本文介绍如何使用 REST API 创建、更新和删除筛选器。 
 
 ## <a name="types-used-to-create-filters"></a>用于创建筛选器的类型
-创建筛选器时使用以下类型：  
+创建筛选器时会使用以下类型：  
 
-* [Filter](https://docs.microsoft.com/rest/api/media/operations/filter)
+* [筛选器](https://docs.microsoft.com/rest/api/media/operations/filter)
 * [AssetFilter](https://docs.microsoft.com/rest/api/media/operations/assetfilter)
 * [PresentationTimeRange](https://docs.microsoft.com/rest/api/media/operations/presentationtimerange)
 * [FilterTrackSelect 和 FilterTrackPropertyCondition](https://docs.microsoft.com/rest/api/media/operations/filtertrackselect)
@@ -106,8 +106,8 @@ ms.locfileid: "78850628"
 #### <a name="http-response"></a>HTTP 响应
     HTTP/1.1 201 Created 
 
-### <a name="create-local-assetfilters"></a>创建局部 AssetFilter
-若要创建局部 AssetFilter，请使用以下 HTTP 请求：  
+### <a name="create-local-assetfilters"></a>创建本地 AssetFilter
+若要创建本地 AssetFilter，请使用以下 HTTP 请求：  
 
 #### <a name="http-request"></a>HTTP 请求
 请求标头
@@ -159,7 +159,7 @@ ms.locfileid: "78850628"
     . . . 
 
 ## <a name="list-filters"></a>列出筛选器
-### <a name="get-all-global-filters-in-the-ams-account"></a>获取 AMS 帐户中的所有全局 **筛选器**
+### <a name="get-all-global-filters-in-the-ams-account"></a>获取 AMS 帐户中的所有全局**筛选器**
 若要列出筛选器，请使用以下 HTTP 请求： 
 
 #### <a name="http-request"></a>HTTP 请求
@@ -172,7 +172,7 @@ ms.locfileid: "78850628"
     x-ms-version: 2.19 
     Host: media.chinacloudapi.cn
 
-### <a name="get-assetfilters-associated-with-an-asset"></a>获取与资产关联的 **AssetFilter**。
+### <a name="get-assetfilters-associated-with-an-asset"></a>获取与资产关联的 **AssetFilter**
 #### <a name="http-request"></a>HTTP 请求
     GET https://media.chinacloudapi.cn/API/Assets('nb%3Acid%3AUUID%3A536e555d-1500-80c3-92dc-f1e4fdc6c592')/AssetFilters HTTP/1.1 
     DataServiceVersion: 3.0 
@@ -241,8 +241,8 @@ ms.locfileid: "78850628"
        ] 
     } 
 
-### <a name="update-local-assetfilters"></a>更新局部 AssetFilter
-若要更新局部筛选器，请使用以下 HTTP 请求： 
+### <a name="update-local-assetfilters"></a>更新本地 AssetFilter
+若要更新本地筛选器，请使用以下 HTTP 请求： 
 
 #### <a name="http-request"></a>HTTP 请求
 请求标头： 
@@ -296,8 +296,8 @@ ms.locfileid: "78850628"
     Host: media.chinacloudapi.cn
 
 
-### <a name="delete-local-assetfilters"></a>删除局部 AssetFilter
-若要删除局部 AssetFilter，请使用以下 HTTP 请求：
+### <a name="delete-local-assetfilters"></a>删除本地 AssetFilter
+若要删除本地 AssetFilter，请使用以下 HTTP 请求：
 
 #### <a name="http-request"></a>HTTP 请求
     DELETE https://media.chinacloudapi.cn/API/AssetFilters('nb%3Acid%3AUUID%3A536e555d-1500-80c3-92dc-f1e4fdc6c592__%23%23%23__LocalFilter') HTTP/1.1 
@@ -309,10 +309,10 @@ ms.locfileid: "78850628"
     x-ms-version: 2.19 
     Host: media.chinacloudapi.cn 
 
-## <a name="build-streaming-urls-that-use-filters"></a>生成使用筛选器的流式处理 URL
+## <a name="build-streaming-urls-that-use-filters"></a>生成使用筛选器的流 URL
 有关如何发布和传送资产的信息，请参阅[将内容传送到客户概述](media-services-deliver-content-overview.md)。
 
-以下示例演示了如何将筛选器添加到流式处理 URL。
+以下示例演示了如何将筛选器添加到流 URL。
 
 **MPEG DASH** 
 
@@ -326,7 +326,7 @@ ms.locfileid: "78850628"
 
     http://testendpoint-testaccount.streaming.mediaservices.chinacloudapi.cn/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=m3u8-aapl-v3, filter=MyFilter)
 
-**平滑流**
+**平滑流式处理**
 
     http://testendpoint-testaccount.streaming.mediaservices.chinacloudapi.cn/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(filter=MyFilter)
 

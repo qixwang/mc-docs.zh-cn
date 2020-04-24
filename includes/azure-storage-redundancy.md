@@ -10,10 +10,10 @@ ms.date: 03/09/2020
 ms.author: v-jay
 ms.custom: include file
 ms.openlocfilehash: 82a376d618a0871218277c1bc7245be05d0c2472
-ms.sourcegitcommit: fbc7584f403417d3af7bd6bbbaed7c13a78c57b9
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78411283"
 ---
 - [本地冗余存储 (LRS)](../articles/storage/common/storage-redundancy-lrs.md)

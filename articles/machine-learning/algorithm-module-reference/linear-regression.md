@@ -11,10 +11,10 @@ ms.author: v-yiso
 origin.date: 10/22/2019
 ms.date: 03/09/2020
 ms.openlocfilehash: e4e06f637e1a8e9cf8d61385cb010f7904536602
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78154940"
 ---
 # <a name="linear-regression-module"></a>“线性回归”模块
@@ -62,7 +62,7 @@ ms.locfileid: "78154940"
 
     对于小型数据集，最好选择普通最小二乘法。 这会提供类似于 Excel 的结果。
 
-## <a name="bkmk_OrdinaryLeastSquares"></a> 使用普通最小二乘法创建回归模型
+## <a name="create-a-regression-model-using-ordinary-least-squares"></a><a name="bkmk_OrdinaryLeastSquares"></a> 使用普通最小二乘法创建回归模型
 
 1. 将“线性回归模型”模块添加到设计器中的管道。 
 
@@ -95,7 +95,7 @@ ms.locfileid: "78154940"
 + 若要做出预测，请将训练后的模型连同包含新值的数据集一起连接到[评分模型](./score-model.md)模块。 
 
 
-## <a name="bkmk_GradientDescent"></a> 使用在线梯度下降创建回归模型
+## <a name="create-a-regression-model-using-online-gradient-descent"></a><a name="bkmk_GradientDescent"></a> 使用在线梯度下降创建回归模型
 
 1. 将“线性回归模型”模块添加到设计器中的管道。 
 

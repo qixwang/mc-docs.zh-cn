@@ -10,10 +10,10 @@ ms.topic: conceptual
 origin.date: 11/04/2019
 ms.date: 03/16/2020
 ms.openlocfilehash: 3a2be4dd93c61571a693d9835fead9063b9e8f32
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78850637"
 ---
 # <a name="use-search-explorer-in-the-azure-portal-for-querying-documents-in-azure-cognitive-search"></a>使用 Azure 门户中的搜索浏览器在 Azure 认知搜索中查询文档 
@@ -67,7 +67,7 @@ ms.locfileid: "78850637"
 
 ### <a name="example-4---restrict-fields-in-search-results"></a>示例 4 - 限制搜索结果中的字段
 
-添加“$select”将结果限制为显式命名的字段，以便在“搜索资源管理器”中获得可读性更强的输出   。 若要保留搜索字符串“$count=true”，请在参数前面加上 &   。 
+添加“$select”将结果限制为显式命名的字段，以便在“搜索资源管理器”中获得可读性更强的输出   。 若要保留搜索字符串“$count=true”，请在参数前面加上  **&** 。 
 
    ```Input
    search=seattle condo&$select=listingId,beds,baths,description,street,city,price&$count=true

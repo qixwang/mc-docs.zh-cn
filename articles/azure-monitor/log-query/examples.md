@@ -9,14 +9,14 @@ origin.date: 10/01/2019
 ms.date: 10/25/2019
 ms.author: v-lingwu
 ms.openlocfilehash: e6e5af38edd23f1c7a09589f35b22d66f5ef01fc
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78850277"
 ---
 # <a name="azure-monitor-log-query-examples"></a>Azure Monitor 日志查询示例
-本文包含使用 [Kusto 查询语言](https://docs.microsoft.com/azure/kusto/query/)从 Azure Monitor 中检索不同类型的日志数据的各种[查询](log-query-overview.md)示例。 其中使用了不同的方法来合并和分析数据，因此，你可以使用这些示例来识别符合自身要求的不同策略。  
+本文包含使用 [Kusto 查询语言](log-query-overview.md)从 Azure Monitor 中检索不同类型的日志数据的各种[查询](https://docs.microsoft.com/azure/kusto/query/)示例。 其中使用了不同的方法来合并和分析数据，因此，你可以使用这些示例来识别符合自身要求的不同策略。  
 
 有关这些示例中使用的不同关键字的详细信息，请参阅 [Kusto 语言参考](https://docs.microsoft.com/azure/kusto/query/)。 如果你是初次接触 Azure Monitor，请仔细阅读[有关创建查询的课程](get-started-queries.md)。
 
@@ -403,7 +403,7 @@ Usage
 ```
 
 ### <a name="usage-of-specific-computers-today"></a>当天特定计算机的使用情况
-此示例包含字符串 _ContosoFile_ 的计算机名在过去一天的**使用情况**数据。 结果将按 **TimeGenerated** 排序。
+此示例包含字符串 **ContosoFile** 的计算机名在过去一天的_使用情况_数据。 结果将按 **TimeGenerated** 排序。
 
 ```Kusto
 Usage

@@ -13,10 +13,10 @@ ms.topic: conceptual
 origin.date: 10/18/2018
 ms.date: 03/02/2020
 ms.openlocfilehash: 7a45bce1d061bcc264b9201e14758e7a4b68756b
-ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77653681"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-in-response-to-an-event"></a>如何运行管道的触发器来响应事件

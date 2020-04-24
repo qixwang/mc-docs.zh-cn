@@ -8,10 +8,10 @@ origin.date: 03/13/2019
 ms.date: 6/4/2019
 ms.author: v-lingwu
 ms.openlocfilehash: c4b089ec444342cd2755467a15876472a2fd1318
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78850383"
 ---
 # <a name="smart-detection-e-mail-notification-change"></a>智能检测电子邮件通知更改

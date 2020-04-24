@@ -12,10 +12,10 @@ origin.date: 02/10/2020
 ms.date: 02/25/2020
 ms.author: v-lingwu
 ms.openlocfilehash: 8d9c5dfe198d801ba27f2523439af2782c509647
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78155090"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>如何在文本分析中使用命名实体识别

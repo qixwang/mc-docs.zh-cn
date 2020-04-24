@@ -16,10 +16,10 @@ origin.date: 03/18/2019
 ms.date: 02/24/2020
 ms.author: v-jay
 ms.openlocfilehash: e4e4a19152ebaf0681059eb434591badf83b4bf1
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78850557"
 ---
 # <a name="overview-of-live-streaming-using-media-services"></a>使用媒体服务实时传送视频流概述
@@ -138,7 +138,7 @@ ArchiveWindowLength 还决定了客户端能够从当前实时位置按时间向
 >
 >
 
-### <a id="states"></a>通道状态及其如何映射到计费模式
+### <a name="channel-states-and-how-they-map-to-the-billing-mode"></a><a id="states"></a>通道状态及其如何映射到计费模式
 通道的当前状态。 可能的值包括：
 
 * **已停止**。 这是通道在创建后的初始状态（除非在门户中选择了自动启动）。此状态下不会发生计费。 此状态下可以更新通道属性，但不允许进行流式传输。

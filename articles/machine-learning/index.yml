@@ -13,10 +13,10 @@ metadata:
   ms.author: jmartens
   ms.date: 02/16/2020
   ms.openlocfilehash: e8cbf682c79c46f3457dc2f6d55290d5479d7242
-  ms.sourcegitcommit: d5eca3c6b03b206e441b599e5b138bd687a91361
+  ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 03/09/2020
+  ms.lasthandoff: 04/17/2020
   ms.locfileid: "78934874"
 landingContent:
 - title: Azure ML 入门

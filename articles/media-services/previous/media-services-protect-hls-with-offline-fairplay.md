@@ -17,10 +17,10 @@ ms.date: 03/04/2020
 ms.author: v-jay
 ms.reviewer: dwgeo
 ms.openlocfilehash: 79b4587284432db14d2a1d58099a08ad70d48a37
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78850463"
 ---
 # <a name="offline-fairplay-streaming-for-ios"></a>适用于 iOS 的脱机 FairPlay Streaming 

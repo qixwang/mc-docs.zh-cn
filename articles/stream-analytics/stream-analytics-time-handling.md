@@ -9,10 +9,10 @@ ms.topic: conceptual
 origin.date: 03/05/2018
 ms.date: 08/20/2018
 ms.openlocfilehash: 3079952e5288b617c5008cfa76296837b6ee6e8f
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78154593"
 ---
 # <a name="understand-time-handling-in-azure-stream-analytics"></a>了解 Azure 流分析中的时间处理

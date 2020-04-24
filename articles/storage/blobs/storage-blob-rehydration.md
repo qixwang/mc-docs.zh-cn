@@ -11,10 +11,10 @@ ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: hux
 ms.openlocfilehash: 7791d065c29cd07172c19f87e2613d8476be3490
-ms.sourcegitcommit: fbc7584f403417d3af7bd6bbbaed7c13a78c57b9
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78411392"
 ---
 # <a name="rehydrate-blob-data-from-the-archive-tier"></a>从存档层解冻 Blob 数据
@@ -52,8 +52,8 @@ ms.locfileid: "78411392"
 ## <a name="quickstart-scenarios"></a>快速入门方案
 
 ### <a name="rehydrate-an-archive-blob-to-an-online-tier"></a>将存档 Blob 解冻到联机层
-# <a name="portal"></a>[Portal](#tab/azure-portal)
-1. 登录到 [Azure 门户](https://portal.azure.cn)。
+# <a name="portal"></a>[门户](#tab/azure-portal)
+1. 登录 [Azure 门户](https://portal.azure.cn)。
 
 1. 在 Azure 门户中，搜索并选择“所有资源”  。
 
@@ -71,8 +71,8 @@ ms.locfileid: "78411392"
 
 ![更改存储帐户层](media/storage-tiers/blob-access-tier.png)
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
-以下 PowerShell 脚本可用于更改存档 blob 的 blob 层。 必须使用资源组名称初始化 `$rgName` 变量。 必须使用存储帐户名称初始化 `$accountName` 变量。 必须使用容器名称初始化 `$containerName` 变量。 必须使用 Blob 名称初始化 `$blobName` 变量。 
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+以下 PowerShell 脚本可用于更改存档 blob 的 blob 层。 必须使用资源组名称初始化 `$rgName` 变量。 必须使用存储帐户名称初始化 `$accountName` 变量。 必须使用容器名称初始化 `$containerName` 变量。 必须使用 blob 名称初始化 `$blobName` 变量。 
 ```powershell
 #Initialize the following with your resource group, storage account, container, and blob names
 $rgName = ""

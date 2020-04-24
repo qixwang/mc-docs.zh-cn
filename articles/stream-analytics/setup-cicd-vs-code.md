@@ -11,10 +11,10 @@ ms.topic: conceptual
 origin.date: 01/28/2020
 ms.date: 2/6/2020
 ms.openlocfilehash: 7358157bac634ecf877a2b4a6c4c6cf56779c45d
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78154620"
 ---
 # <a name="deploy-an-azure-stream-analytics-job-using-cicd-npm-package"></a>使用 CI/CD npm 包部署 Azure 流分析作业 

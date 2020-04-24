@@ -9,10 +9,10 @@ ms.date: 6/4/2019
 ms.reviewer: mbullwin
 ms.author: v-lingwu
 ms.openlocfilehash: 695d6e04ad605c93f0f66551123f2953d0b01813
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78850351"
 ---
 # <a name="discover-how-customers-are-using-your-application-with-application-insights-funnels"></a>使用 Application Insights 漏斗图了解客户如何使用你的应用程序
@@ -46,7 +46,7 @@ ms.locfileid: "78850351"
 ## <a name="next-steps"></a>后续步骤
   * [使用情况概述](usage-overview.md)
   * [用户、会话和事件](usage-segmentation.md)
-  * [保留期](usage-retention.md)
+  * [保留](usage-retention.md)
   * [工作簿](../../azure-monitor/app/usage-workbooks.md)
   * [添加用户上下文](usage-send-user-context.md)
 

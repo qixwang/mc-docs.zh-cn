@@ -11,10 +11,10 @@ ms.author: v-yiso
 origin.date: 02/11/2020
 ms.date: 03/09/2020
 ms.openlocfilehash: efa0a14d92d5b488e86d46e4fc471408857e05e4
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78154949"
 ---
 # <a name="clean-missing-data-module"></a>“清理缺失数据”模块

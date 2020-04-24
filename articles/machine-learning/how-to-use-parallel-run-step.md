@@ -13,10 +13,10 @@ origin.date: 01/15/2020
 ms.date: 03/16/2020
 ms.custom: Ignite2019
 ms.openlocfilehash: 0266abfb91576375caf0e93b44fbbbc5ca2169ef
-ms.sourcegitcommit: d5eca3c6b03b206e441b599e5b138bd687a91361
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78934881"
 ---
 # <a name="run-batch-inference-on-large-amounts-of-data-by-using-azure-machine-learning"></a>使用 Azure 机器学习对大量数据运行批处理推理

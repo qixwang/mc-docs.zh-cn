@@ -10,13 +10,13 @@ ms.custom: include file
 ms.topic: include
 ms.date: 08/23/2019
 ms.openlocfilehash: 17606d0c69959d2581dc6875bb6fb43acc8faee6
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78849863"
 ---
-| 计算目标 | 用途 | GPU 支持 | FPGA 支持 | 说明 |
+| 计算目标 | 用于 | GPU 支持 | FPGA 支持 | 说明 |
 | ----- | ----- | ----- | ----- | ----- |
 | [本地&nbsp;web&nbsp;服务](../articles/machine-learning/how-to-deploy-and-where.md#local) | 测试/调试 | &nbsp; | &nbsp; | 用于有限的测试和故障排除。 硬件加速依赖于本地系统中库的使用情况。
 | [Azure 机器学习计算实例&nbsp;web&nbsp;服务](../articles/machine-learning/how-to-deploy-and-where.md#notebookvm) | 测试/调试 | &nbsp; | &nbsp; | 用于有限的测试和故障排除。

@@ -13,10 +13,10 @@ ms.custom: seo-lt-2019
 origin.date: 09/13/2019
 ms.date: 03/02/2019
 ms.openlocfilehash: 665d77b4d57469af566243d729a14e0cfd244acb
-ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77653683"
 ---
 # <a name="copy-data-to-an-azure-cognitive-search-index-using-azure-data-factory"></a>使用 Azure 数据工厂将数据复制到 Azure 认知搜索索引
@@ -37,9 +37,9 @@ ms.locfileid: "77653683"
 
 Azure 认知搜索链接的服务支持以下属性：
 
-| 属性 | 说明 | 必须 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
-| type | type 属性必须设置为：**AzureSearch** | 是 |
+| type | type 属性必须设置为：AzureSearch  | 是 |
 | url | 搜索服务的 URL。 | 是 |
 | key | 搜索服务的管理密钥。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 是 |
 | connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 如果数据存储位于专用网络，则可以使用 Azure Integration Runtime 或自承载集成运行时。 如果未指定，则使用默认 Azure Integration Runtime。 |否 |
@@ -75,9 +75,9 @@ Azure 认知搜索链接的服务支持以下属性：
 
 支持以下属性是为了将数据复制到 Azure 认知搜索中：
 
-| 属性 | 说明 | 必须 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
-| type | 数据集的 type 属性必须设置为：**AzureSearchIndex** | 是 |
+| type | 数据集的 type 属性必须设置为：AzureSearchIndex  | 是 |
 | indexName | 搜索索引的名称。 数据工厂不创建索引。 索引必须存在于 Azure 认知搜索中。 | 是 |
 
 **示例：**
@@ -107,10 +107,10 @@ Azure 认知搜索链接的服务支持以下属性：
 
 要将数据复制到 Azure 认知搜索，请将复制活动中的源类型设置为“AzureSearchIndexSink”  。 复制活动接收器部分中支持以下属性  ：
 
-| 属性 | 说明 | 必须 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
-| type | 复制活动 source 的 type 属性必须设置为：**AzureSearchIndexSink** | 是 |
-| writeBehavior | 指定索引中已存在文档时要合并还是替换该文档。 请参阅 [WriteBehavior 属性](#writebehavior-property)。<br/><br/>允许值包括：**Merge**（默认值）和 **Upload**。 | 否 |
+| type | 复制活动源的 type 属性必须设置为：AzureSearchIndexSink  | 是 |
+| writeBehavior | 指定索引中已存在文档时要合并还是替换该文档。 请参阅 [WriteBehavior 属性](#writebehavior-property)。<br/><br/>允许的值为：**Merge**（默认）和**Upload**。 | 否 |
 | writeBatchSize | 缓冲区大小达到 writeBatchSize 时会数据上传到搜索索引。 有关详细信息，请参阅 [WriteBatchSize 属性](#writebatchsize-property)。<br/><br/>允许的值为：整数 1 到 1,000；默认值为 1000。 | 否 |
 
 ### <a name="writebehavior-property"></a>WriteBehavior 属性
@@ -170,7 +170,7 @@ Azure 认知搜索服务支持成批编写文档。 每批次可包含 1 到 1,0
 | Int32 | Y |
 | Int64 | Y |
 | Double | Y |
-| 布尔 | Y |
+| Boolean | Y |
 | DataTimeOffset | Y |
 | String Array | N |
 | GeographyPoint | N |

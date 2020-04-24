@@ -8,10 +8,10 @@ ms.author: v-lingwu
 origin.date: 04/10/2019
 ms.date: 02/19/2020
 ms.openlocfilehash: 67d01b27a2222f2a9cc0aaa69331ad56b40f4518
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78850289"
 ---
 # <a name="tutorial-create-a-metrics-chart-in-azure-monitor"></a>教程：在 Azure Monitor 中创建指标图表

@@ -9,10 +9,10 @@ origin.date: 10/24/2019
 ms.date: 11/4/2019
 ms.author: v-lingwu
 ms.openlocfilehash: 4dc975f84a074b1064e4a98368cb285f6740d444
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78850275"
 ---
 # <a name="get-started-with-log-queries-in-azure-monitor"></a>Azure Monitor 中的日志查询入门
@@ -20,7 +20,7 @@ ms.locfileid: "78850275"
 > [!NOTE]
 > 如果要从至少一台虚拟机收集数据，则可以在自己的环境中完成此练习。 如果没有，请使用[演示环境](https://portal.loganalytics.io/demo)，其中包含大量示例数据。
 
-本教程介绍如何在 Azure Monitor 中编写日志查询。 具体内容包括：
+在本教程中，你将学习在 Azure Monitor 中编写日志查询。 具体内容包括：
 
 - 了解查询结构
 - 将查询结果排序
@@ -31,7 +31,7 @@ ms.locfileid: "78850275"
 - 聚合和分组结果
 
 有关在 Azure 门户中使用 Log Analytics 的教程，请参阅 [Azure Monitor Log Analytics 入门](get-started-portal.md)。<br>
-有关 Azure Monitor 中的日志查询的详细信息，请参阅 [Azure Monitor 中的日志查询概述](log-query-overview.md)。
+有关 Azure Monitor 中日志查询的更多详细信息，请参阅 [Azure Monitor 中的日志查询概述](log-query-overview.md)。
 
 ## <a name="writing-a-new-query"></a>编写新查询
 查询可以从表名或 *search* 命令开始。 首先应从表名开始，因为它为查询定义了明确的范围，并可以改善查询性能和结果的相关性。
@@ -66,7 +66,7 @@ search in (SecurityEvent) "Cryptographic"
 此查询在 *SecurityEvent* 表中搜索包含短语“Cryptographic”的记录。 返回并显示了其中的 10 条记录。 如果省略 `in (SecurityEvent)` 部分并直接运行 `search "Cryptographic"`，则搜索将遍历所有表，因此花费的时间更长且更低效。 
 
 > [!WARNING]
-> 搜索查询通常比基于表的查询慢，因为它们必须处理更多数据。 
+> 搜索查询通常比基于表的查询慢，因为它们必须处理更多的数据。 
 
 ## <a name="sort-and-top"></a>sort 和 top
 虽然 **take** 可用于获取一些记录，但选择和显示的结果不遵循特定的顺序。 若要获取排序的视图，可按首选列**排序**：
@@ -93,7 +93,7 @@ SecurityEvent
 ## <a name="where-filtering-on-a-condition"></a>Where：按条件筛选
 顾名思义，筛选器可按特定的条件筛选数据。 这是将查询结果限制为相关信息的最常用方法。
 
-若要将筛选器添加到查询，请使用 **where** 运算符，后接一个或多个条件。 例如，以下查询只返回 _Level_ 等于 _8_ 的 *SecurityEvent* 记录：
+若要将筛选器添加到查询，请使用 **where** 运算符，后接一个或多个条件。 例如，以下查询只返回 *Level* 等于 _8_ 的 _SecurityEvent_ 记录：
 
 ```Kusto
 SecurityEvent
@@ -173,7 +173,7 @@ SecurityEvent
 | project Computer, TimeGenerated, EventDetails=Activity, EventCode=substring(Activity, 0, 4)
 ```
 
-**extend** 保留结果集中的所有原始列，并定义其他列。 以下查询使用 **extend** 添加 *EventCode* 列。 请注意，此列可能不会显示在表结果的末尾，在这种情况下，你需要展开记录的详细信息才能查看此列。
+**extend** 保留结果集中的所有原始列，并定义其他列。 下面的查询使用 extend 来添加 EventCode 列   。 请注意，此列可能不会显示在表结果的末尾，在这种情况下，需要展开记录的详细信息才能查看它。
 
 ```Kusto
 SecurityEvent
@@ -218,7 +218,7 @@ Perf
 ### <a name="summarize-by-a-time-column"></a>按时间列汇总
 此外，分组结果可以基于时间列或其他连续值。 不过，只是汇总 `by TimeGenerated` 会针对时间范围内的每一毫秒创建组，因为这些值是唯一的。 
 
-若要创建基于连续值的组，最好是使用 **bin** 将范围划分为可管理的单位。 以下查询分析 *Perf* 记录，这些记录度量特定计算机上的可用内存 (*Available MBytes*)。 它计算过去 7 天内每 1 小时时段的平均值：
+若要创建基于连续值的组，最好是使用 **bin** 将范围划分为可管理的单位。 以下查询分析 *Perf* 记录，这些记录度量特定计算机上的可用内存 (*Available MBytes*)。 它计算过去 7 天中每 1 小时时段的平均值：
 
 ```Kusto
 Perf 

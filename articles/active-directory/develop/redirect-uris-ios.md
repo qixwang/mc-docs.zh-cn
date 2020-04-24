@@ -19,10 +19,10 @@ ms.reviewer: jak
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a8eff9fa4b401743c3cb80ead5c86d5a142435bb
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79291054"
 ---
 # <a name="using-redirect-uris-with-the-microsoft-authentication-library-for-ios-and-macos"></a>将重定向 URI 与用于 iOS 和 macOS 的 Microsoft 身份验证库配合使用
@@ -41,7 +41,7 @@ Microsoft 身份验证库 (MSAL) 要求重定向 URI 按特定格式注册到 Az
 
 如果希望 Microsoft 标识平台跨应用共享令牌，每个应用都需要有相同的客户端 ID 或应用程序 ID。 这是在门户中注册应用时系统提供的唯一标识符（不是按应用注册到 Apple 时的应用程序捆绑 ID）。
 
-每个 iOS 应用的重定向 URI 必须是不同的。 这样 Microsoft 标识服务才能唯一标识共享某个应用程序 ID 的不同应用。 每个应用程序可以在 Azure 门户中注册多个重定向 URI。 套件中的每个应用都具有不同的重定向 URI。 例如：
+每个 iOS 应用的重定向 URI 必须是不同的。 这样 Microsoft 标识服务才能唯一标识共享某个应用程序 ID 的不同应用。 每个应用程序可以在 Azure 门户中注册多个重定向 URI。 套件中的每个应用程序具有不同的重定向 URI。 例如：
 
 在 Azure 门户中进行以下应用程序注册时：
 
@@ -79,7 +79,7 @@ App1 使用重定向 `msauth.com.contoso.app1://auth`，App2 使用 `msauth.com.
 
 MSAL 会验证重定向 URI 是否已正确注册，否则会返回错误。
     
-* 若要将通用链接用作重定向 URI，`<scheme>` 必须为 `https`，不需在 `CFBundleURLSchemes` 中声明。 只需在通过通用链接打开应用程序后，按照[开发人员的通用链接](https://developer.apple.com/ios/universal-links/)中 Apple 的说明配置应用和域，然后调用 `MSALPublicClientApplication` 的 `handleMSALResponse:sourceApplication:` 方法即可。
+* 若要将通用链接用作重定向 URI，`<scheme>` 必须为 `https`，不需在 `CFBundleURLSchemes` 中声明。 只需在通过通用链接打开应用程序后，按照[开发人员的通用链接](https://developer.apple.com/ios/universal-links/)中 Apple 的说明配置应用和域，然后调用 `handleMSALResponse:sourceApplication:` 的 `MSALPublicClientApplication` 方法即可。
 
 ## <a name="use-a-custom-redirect-uri"></a>使用自定义重定向 URI
 
@@ -115,7 +115,7 @@ do {
 
 ## <a name="handle-the-url-opened-event"></a>处理“URL 已打开”事件
 
-应用程序在通过 URL 方案或通用链接收到任何响应时，应调用 MSAL。 当应用程序打开后，调用 `MSALPublicClientApplication` 的 `handleMSALResponse:sourceApplication:` 方法。 下面是自定义方案的一个示例：
+应用程序在通过 URL 方案或通用链接收到任何响应时，应调用 MSAL。 当应用程序打开后，调用 `handleMSALResponse:sourceApplication:` 的 `MSALPublicClientApplication` 方法。 下面是自定义方案的一个示例：
 
 Objective-C：
 

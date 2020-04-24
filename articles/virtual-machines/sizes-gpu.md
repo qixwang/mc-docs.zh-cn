@@ -16,10 +16,10 @@ origin.date: 02/03/2020
 ms.date: 03/09/2020
 ms.author: v-yeche
 ms.openlocfilehash: 819d0f7d0284cc35b7d8e49d16cb7e3f40cc6163
-ms.sourcegitcommit: e94ed1c9eff4e88be2ca389909e60b14cc0d92f8
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79084514"
 ---
 # <a name="gpu-optimized-virtual-machine-sizes"></a>GPU 优化虚拟机大小
@@ -61,7 +61,7 @@ GPU 优化 VM 大小是具有单个或多个 NVIDIA GPU 的专用虚拟机。 �
     
 - 如果需要部署的 N 系列 VM 较多，请考虑使用标准预付费套餐订阅或其他购买选项。 如果使用的是 [Azure 试用帐户](https://www.azure.cn/pricing/1rmb-trial/)，则仅可使用有限数量的 Azure 计算核心。
 
-- 可能需要提高 Azure 订阅中的核心配额（按区域）以及单独针对 NCv3 核心的配额。 若要请求增加配额，可免费 [建立联机客户支持请求](https://support.azure.cn/support/support-azure/) 。 默认限制可能因订阅类别而异。
+- 可能需要提高 Azure 订阅中的核心配额（按区域）以及单独针对 NCv3 核心的配额。 若要请求提高配额，可免费[提出在线客户支持请求](https://support.azure.cn/support/support-azure/)。 默认限制可能因订阅类别而异。
     
     <!--Not Available on NC, NCv2, ND, NDv2, NV, or NVv2-->
     <!--CORRECT ON https://support.azure.cn/support/support-azure/-->
@@ -81,7 +81,7 @@ GPU 优化 VM 大小是具有单个或多个 NVIDIA GPU 的专用虚拟机。 �
 
 ## <a name="next-steps"></a>后续步骤
 
-了解有关 [Azure 计算单元 (ACU)](acu.md) 如何帮助跨 Azure SKU 比较计算性能的详细信息。
+了解有关 [Azure 计算单元 (ACU)](acu.md) 如何帮助你跨 Azure SKU 比较计算性能的详细信息。
 
 <!-- Update_Description: new article about sizes gpu -->
 <!--NEW.date: 03/09/2020-->

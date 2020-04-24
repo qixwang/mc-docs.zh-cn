@@ -10,10 +10,10 @@ ms.topic: conceptual
 origin.date: 01/29/2019
 ms.date: 02/27/2020
 ms.openlocfilehash: 3ef10018da07a146d947fa8cfd5c3aa6b86e5dda
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78155054"
 ---
 # <a name="use-reference-data-from-a-sql-database-for-an-azure-stream-analytics-job"></a>将 SQL 数据库中的参考数据用于 Azure 流分析作业
@@ -129,7 +129,7 @@ create table chemicals(Id Bigint,Name Nvarchar(max),FullName Nvarchar(max));
 
 将作业部署到 Azure 之前，可在本地针对实时输入数据测试查询逻辑。 有关此功能的详细信息，请参阅[使用用于 Visual Studio 的 Azure 流分析工具在本地测试实时数据（预览）](stream-analytics-live-data-local-testing.md)。 完成测试后，单击“提交到 Azure”。  请参考[使用用于 Visual Studio 的 Azure 流分析工具创建流分析](stream-analytics-quick-create-vs.md)快速入门来了解如何启动作业。
 
-## 增量查询 <a name="delta-query"></a>
+## <a name="delta-query"></a>增量查询 <a name="delta-query"></a>
 
 使用增量查询时，建议使用 [Azure SQL 数据库中的时态表](../sql-database/sql-database-temporal-tables.md)。
 

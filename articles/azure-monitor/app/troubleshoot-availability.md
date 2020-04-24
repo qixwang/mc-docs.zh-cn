@@ -9,10 +9,10 @@ ms.date: 09/20/2019
 ms.reviewer: sdash
 ms.author: v-lingwu
 ms.openlocfilehash: 634618c2e7cd2aceb760066243823f4e0cd17beb
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78850353"
 ---
 # <a name="troubleshooting"></a>故障排除

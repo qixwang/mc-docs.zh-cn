@@ -11,10 +11,10 @@ ms.author: v-yiso
 origin.date: 02/11/2020
 ms.date: 03/09/2020
 ms.openlocfilehash: 0453cf7aa53ea1b0092c1834d4a05cbd07652669
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78155074"
 ---
 # <a name="train-model-module"></a>“定型模型”模块
@@ -65,7 +65,7 @@ ms.locfileid: "78155074"
   
 5.  运行管道。 如果有大量数据，则可能需要一段时间。
 
-## <a name="bkmk_results"></a> 结果
+## <a name="results"></a><a name="bkmk_results"></a> 结果
 
 在对模型进行训练后：
 

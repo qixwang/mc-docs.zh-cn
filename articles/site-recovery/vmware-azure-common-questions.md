@@ -9,10 +9,10 @@ ms.date: 02/24/2020
 ms.topic: conceptual
 ms.author: v-yeche
 ms.openlocfilehash: 5070c651cf14959f92d0f984c619305eb6ad66bd
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79291128"
 ---
 # <a name="common-questions-about-vmware-to-azure-replication"></a>有关 VMware 到 Azure 的复制的常见问题
@@ -70,7 +70,7 @@ Site Recovery 需要访问 VMware 服务器，才能够：
 
 ### <a name="is-replication-data-sent-to-site-recovery"></a>复制数据是否会发送到 Site Recovery？
 
-不会。Site Recovery 不会拦截复制的数据，也没有 VM 上运行的组件的任何相关信息。 复制数据在 VMware 虚拟机监控程序与 Azure 存储之间交换。 站点恢复并不具有拦截该数据的能力。 只有协调复制与故障转移所需的元数据会发送到站点恢复服务。  
+不会。Site Recovery 不会拦截复制的数据，也没有 VM 上运行的组件的任何相关信息。 复制数据在 VMware 虚拟机监控程序与 Azure 存储之间交换。 站点恢复并不具有拦截该数据的能力。 只有协调复制与故障转移所需的元数据将发送到站点恢复服务。  
 
 Site Recovery 已通过 ISO 27001:2013、27018、HIPAA 和 DPA 认证， 目前正在接受 SOC2 和 FedRAMP JAB 评估。
 
@@ -88,7 +88,7 @@ Site Recovery 已通过 ISO 27001:2013、27018、HIPAA 和 DPA 认证， 目前�
 
 ### <a name="is-there-any-difference-in-cost-when-replicating-to-general-purpose-v2-storage-account"></a>复制到常规用途 v2 存储帐户时，开销是否有什么不同？
 
-你通常会发现 GPv2 存储帐户产生的事务成本增加，因为 Azure Site Recovery 的事务量很大。 [详细了解](../storage/common/storage-account-upgrade.md#pricing-and-billing)如何估算费用。
+你通常会发现 GPv2 存储帐户产生的事务成本增加，因为 Azure Site Recovery 的事务量很大。 [阅读更多信息](../storage/common/storage-account-upgrade.md#pricing-and-billing)以估计更改。
 
 ## <a name="mobility-service"></a>移动服务
 
@@ -117,7 +117,7 @@ Site Recovery 将本地 VMware VM 和物理服务器复制到 Azure 中的托管
 
 ### <a name="can-i-replicate-new-machines-to-storage-accounts"></a>是否可将新计算机复制到存储帐户？
 
-否。 从 2019 年 3 月开始，在 Azure 门户中只能复制到 Azure 托管磁盘。
+不是。 从 2019 年 3 月开始，在 Azure 门户中只能复制到 Azure 托管磁盘。
 
 只能使用 PowerShell 或 REST API（版本 2018-01-10 或 2016-08-10）将新 VM 复制到存储帐户。
 
@@ -136,7 +136,7 @@ Site Recovery 将本地 VMware VM 和物理服务器复制到 Azure 中的托管
 
 ### <a name="can-i-switch-replication-from-managed-disks-to-unmanaged-disks"></a>是否可将复制目标从托管磁盘切换为非托管磁盘？
 
-否。 不支持从托管磁盘切换为非托管磁盘。
+不是。 不支持从托管磁盘切换为非托管磁盘。
 
 ## <a name="replication"></a>复制
 
@@ -170,7 +170,7 @@ Site Recovery 将本地 VMware VM 和物理服务器复制到 Azure 中的托管
 
 ### <a name="can-i-replicate-vms-that-have-dynamic-disks"></a>是否可以复制包含动态磁盘的 VM？
 
-可以复制动态磁盘。 操作系统磁盘必须是基本磁盘。
+可以复制动态磁盘。 操作系统磁盘必须为基本磁盘。
 
 ### <a name="if-i-use-replication-groups-for-multi-vm-consistency-can-i-add-a-new-vm-to-an-existing-replication-group"></a>如果我使用复制组实现多 VM 一致性，是否可以将新 VM 添加到现有复制组？
 
@@ -185,7 +185,7 @@ Site Recovery 将本地 VMware VM 和物理服务器复制到 Azure 中的托管
 
 ### <a name="can-i-migrate-on-premises-machines-to-a-new-vcenter-server-without-impacting-ongoing-replication"></a>是否可以在不影响进行中复制的情况下将本地计算机迁移到新的 vCenter Server？
 
-否。 更改 VMware Vcenter 或迁移将影响正在进行的复制。 对新的 vCenter Server 设置 Site Recovery，并为计算机重新启用复制。
+不是。 更改 VMware Vcenter 或迁移将影响正在进行的复制。 对新的 vCenter Server 设置 Site Recovery，并为计算机重新启用复制。
 
 ### <a name="can-i-replicate-to-a-cache-or-target-storage-account-that-has-a-virtual-network-with-azure-firewalls-configured-on-it"></a>是否可以复制到在其上配置了虚拟网络（具有 Azure 防火墙）的缓存或目标存储帐户？
 
@@ -240,7 +240,7 @@ Site Recovery 遵循 N-4 支持模型。 [详细了解](../site-recovery/service
 
 ### <a name="can-a-configuration-server-replicate-to-more-than-one-region"></a>是否可将配置服务器复制到多个区域？
 
-否。 若要复制到多个区域，需在每个区域中设置一个配置服务器。
+不是。 若要复制到多个区域，需在每个区域中设置一个配置服务器。
 
 ### <a name="can-i-host-a-configuration-server-in-azure"></a>是否可以在 Azure 中托管配置服务器？
 
@@ -272,15 +272,15 @@ Site Recovery 遵循 N-4 支持模型。 [详细了解](../site-recovery/service
 
 ### <a name="can-i-use-the-configuration-server-vm-for-anything-else"></a>是否可以将配置服务器 VM 用于任何其他项？
 
-否。 请仅将 VM 用于配置服务器。
+不是。 请仅将 VM 用于配置服务器。
 
 ### <a name="can-i-clone-a-configuration-server-and-use-it-for-orchestration"></a>是否可以克隆配置服务器并将其用于业务流程？
 
-否。 请设置新配置服务器以避免注册问题。
+不是。 请设置新配置服务器以避免注册问题。
 
 ### <a name="can-i-change-the-vault-in-which-the-configuration-server-is-registered"></a>是否可以更改配置服务器注册到的保管库？
 
-否。 将某个保管库关联到配置服务器后，无法更改该保管库。 [了解](vmware-azure-manage-configuration-server.md#register-a-configuration-server-with-a-different-vault)如何将配置服务器注册到不同的保管库。
+不是。 将某个保管库关联到配置服务器后，无法更改该保管库。 [了解](vmware-azure-manage-configuration-server.md#register-a-configuration-server-with-a-different-vault)如何将配置服务器注册到不同的保管库。
 
 ### <a name="can-i-use-the-same-configuration-server-for-disaster-recovery-of-both-vmware-vms-and-physical-servers"></a>是否可以将同一配置服务器同时用于 VMware VM 和物理服务器的灾难恢复？
 
@@ -292,7 +292,7 @@ Site Recovery 遵循 N-4 支持模型。 [详细了解](../site-recovery/service
 
 ### <a name="where-can-i-download-vault-registration-keys"></a>在哪里可以下载保管库注册密钥？
 
-在“恢复服务保管库”中，选择“Site Recovery 基础结构” > “管理”中的“配置服务器”。    然后在“服务器”中，选择“下载注册密钥”以下载保管库凭据文件。  
+在“恢复服务保管库”中，选择“Site Recovery 基础结构” **“管理”中的“配置服务器”。**   >   然后在“服务器”中，选择“下载注册密钥”以下载保管库凭据文件。  
 
 ### <a name="can-a-single-configuration-server-be-used-to-protect-multiple-vcenter-instances"></a>是否可以使用单个配置服务器来保护多个 vCenter 实例？
 

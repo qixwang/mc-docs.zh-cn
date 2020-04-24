@@ -13,10 +13,10 @@ ms.custom: seo-lt-2019; seo-dt-2019
 origin.date: 9/27/2019
 ms.date: 03/02/2020
 ms.openlocfilehash: de54e5c3693d0a033215d001ef925ece283e814c
-ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77653575"
 ---
 # <a name="branching-and-chaining-activities-in-a-data-factory-pipeline"></a>数据工厂管道中的分支和链接活动
@@ -67,7 +67,7 @@ ms.locfileid: "77653575"
 1. 打开 Azure 存储资源管理器。 展开你的存储帐户。 右键单击“Blob 容器”，并选择“创建 Blob 容器”。  
 1. 将新容器命名为 *adfv2branch*，然后选择“上传”将 *input.txt* 文件添加到该容器。 
 
-## 创建 Visual Studio 项目<a name="create-visual-studio-project"></a>
+## <a name="create-visual-studio-project"></a>创建 Visual Studio 项目<a name="create-visual-studio-project"></a>
 
 创建一个 C# .NET 控制台应用程序：
 

@@ -8,10 +8,10 @@ ms.topic: conceptual
 origin.date: 12/02/2019
 ms.date: 03/02/2020
 ms.openlocfilehash: ff3d4fbcfeb2267a6defd9b41e90d3cc0d6a9ae4
-ms.sourcegitcommit: 892137d117bcaf9d88aec0eb7ca756fe39613344
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78154348"
 ---
 # <a name="monitor-azure-database-for-mysql-performance-with-query-store"></a>使用查询存储监视 Azure Database for MySQL 的性能

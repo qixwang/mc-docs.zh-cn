@@ -10,10 +10,10 @@ ms.date: 03/09/2020
 ms.author: v-jay
 ms.reviewer: stewu
 ms.openlocfilehash: b7b1e42a6d23ea96f7673dd9bb2e6bbb1d17231c
-ms.sourcegitcommit: fbc7584f403417d3af7bd6bbbaed7c13a78c57b9
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78412544"
 ---
 # <a name="azure-services-that-support-azure-data-lake-storage-gen2"></a>支持 Azure Data Lake Storage Gen2 的 Azure 服务

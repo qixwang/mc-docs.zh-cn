@@ -8,10 +8,10 @@ ms.topic: conceptual
 origin.date: 12/02/2019
 ms.date: 03/02/2020
 ms.openlocfilehash: b377593a7a8f1420fbd3ca5411bf978eb3491655
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78155328"
 ---
 # <a name="query-performance-insight-in-azure-database-for-mariadb"></a>Azure Database for MariaDB 中的 Query Performance Insight
@@ -48,7 +48,7 @@ Azure 门户中的 [Query Performance Insight](concepts-query-performance-insigh
 
 ### <a name="long-running-queries"></a>长时间运行的查询
 
-“长时间运行查询”  选项卡按平均每次执行持续时间显示前 5 个查询，每隔 15 分钟聚合一次。 可以通过从“查询数量”  下拉列表中进行选择来查看更多查询。 执行此操作时，特定查询 ID 的图表颜色可能会更改。
+“长时间运行的查询”  选项卡按每次执行平均持续时间显示前 5 个查询，每隔 15 分钟聚合一次。 可以通过从“查询数量”  下拉列表中进行选择来查看更多查询。 执行此操作时，特定查询 ID 的图表颜色可能会更改。
 
 可以在图表中单击并拖动以缩小到特定的时间窗口。 或者，使用放大和缩小图标分别查看更短或更长的时间段。
 
@@ -57,7 +57,7 @@ Azure 门户中的 [Query Performance Insight](concepts-query-performance-insigh
 ### <a name="wait-statistics"></a>等待统计信息 
 
 > [!NOTE]
-> 等待统计信息用于排查查询性能问题。 建议仅出于故障排除目的启用此功能。 <br>如果在 Azure 门户中查看等待统计信息时收到错误消息“*遇到了针对 "Microsoft.DBforMariaDB" 的问题; 无法完成请求。如果此问题仍然存在或者出现异常，请联系支持人员并提供此信息。* ” ，请使用较短的时间段。
+> 等待统计信息用于排查查询性能问题。 建议仅出于故障排除目的启用此功能。 <br>如果在 Azure 门户中查看等待统计信息时收到错误消息“*遇到了针对 "Microsoft.DBforMariaDB" 的问题; 无法完成请求。如果此问题仍然存在或者出现异常，请联系支持人员并提供此信息。* ” ，请使用更短的时间段。
 
 等待统计信息提供执行特定查询期间发生的等待事件的视图。 在 [MySQL 引擎文档](https://go.microsoft.com/fwlink/?linkid=2098206)中了解有关等待事件类型的详细信息。
 

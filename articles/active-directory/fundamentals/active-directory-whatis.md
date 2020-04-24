@@ -12,15 +12,15 @@ ms.author: v-junlch
 ms.custom: it-pro, seodec18, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 133c07c1aa3a1ebb8d214dd6e862da44ca81d142
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79291016"
 ---
 # <a name="what-is-azure-active-directory"></a>什么是 Azure Active Directory？
 
-Azure Active Directory (Azure AD) is Microsoft’s cloud-based identity and access management service, which helps your employees sign in and access resources in Azure:
+Azure Active Directory (Azure AD) 是 Microsoft 推出的基于云的标识和访问管理服务，可帮助员工登录及访问以下位置的资源：
 
 ## <a name="who-uses-azure-ad"></a>谁在使用 Azure AD？
 
@@ -50,7 +50,7 @@ Microsoft Online 业务服务（例如 Office 365 或 Azure）要求通过 Azure
 
 - **“即用即付”功能许可证。** 也可获取其他功能许可证，例如 Azure Active Directory 企业对客户 (B2C) 许可证。 可以通过 B2C 为面向客户的应用提供标识和访问管理解决方案。 有关详细信息，请参阅 [Azure Active Directory B2C 文档](../../active-directory-b2c/index.yml)。
 
-有关将 Azure 订阅关联到 Azure AD 的详细信息，请参阅[如何：将 Azure 订阅关联或添加到 Azure Active Directory](active-directory-how-subscriptions-associated-directory.md)以及有关将许可证分配给用户的详细信息，请参阅[如何：分配或删除 Azure Active Directory 许可证](license-users-groups.md)。
+若要详细了解如何将 Azure 订阅关联到 Azure AD，请参阅[如何：将 Azure 订阅关联或添加到 Azure Active Directory](active-directory-how-subscriptions-associated-directory.md)；若要详细了解如何为用户分配许可证，请参阅[如何：分配或删除 Azure Active Directory 许可证](license-users-groups.md)。
 
 ## <a name="terminology"></a>术语
 
@@ -69,7 +69,7 @@ Microsoft Online 业务服务（例如 Office 365 或 Azure）要求通过 Azure
 |自定义域|每个新的 Azure AD 目录都附带了一个初始域名 domainname.partner.onmschina.cn。 除了该初始名称，还可以向列表添加组织的域名，其中包括用来开展业务的名称以及用户用来访问组织资源的名称。 添加自定义域名有助于创建用户所熟悉的用户名，例如 alain@contoso.com。|
 |帐户管理员|从概念上讲，此经典订阅管理员角色是订阅的账单所有者。 此角色可以访问 [Azure 帐户中心](https://account.windowsazure.cn/Subscriptions)，用于管理一个帐户中的所有订阅。 有关详细信息，请参阅[经典订阅管理员角色、Azure 基于角色的访问控制 (RBAC) 角色和 Azure AD 管理员角色](../../role-based-access-control/rbac-and-directory-admin-roles.md)。|
 |服务管理员|此经典订阅管理员角色用于管理所有 Azure 资源，包括访问权限。 此角色拥有在订阅范围内分配有“所有者”角色的用户的等效访问权限。 有关详细信息，请参阅[经典订阅管理员角色、Azure RBAC 角色和 Azure AD 管理员角色](../../role-based-access-control/rbac-and-directory-admin-roles.md)。|
-|所有者|此角色有助于管理所有 Azure 资源，包括访问权限。 此角色在称为基于角色的访问控制 (RBAC) 的较新授权系统上构建，该系统可提供对 Azure 资源的精细访问管理。 有关详细信息，请参阅[经典订阅管理员角色、Azure RBAC 角色和 Azure AD 管理员角色](../../role-based-access-control/rbac-and-directory-admin-roles.md)。|
+|“所有者”|此角色有助于管理所有 Azure 资源，包括访问权限。 此角色在称为基于角色的访问控制 (RBAC) 的较新授权系统上构建，该系统可提供对 Azure 资源的精细访问管理。 有关详细信息，请参阅[经典订阅管理员角色、Azure RBAC 角色和 Azure AD 管理员角色](../../role-based-access-control/rbac-and-directory-admin-roles.md)。|
 |Azure AD 全局管理员|此管理员角色自动分配给创建 Azure AD 租户的人员。 全局管理员可以执行 Azure AD 以及与 Azure AD 联合的任意服务（例如 Exchange Online、SharePoint Online 和 Skype for Business Online）的所有管理功能。 可以有多个全局管理员，但只有全局管理员才能向用户分配管理员角色（包括分配其他全局管理员）。<br><br>**注意**<br>此管理员角色在 Azure 门户中称为“全局管理员”，但在 Microsoft Graph API 和 Azure AD PowerShell 中称为“公司管理员”。 <br><br>有关各种管理员角色的详细信息，请参阅 [Azure Active Directory 中的管理员角色权限](../users-groups-roles/directory-assign-admin-roles.md)。|
 
 ## <a name="next-steps"></a>后续步骤

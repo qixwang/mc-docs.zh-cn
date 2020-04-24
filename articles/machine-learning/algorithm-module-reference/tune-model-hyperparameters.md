@@ -11,10 +11,10 @@ ms.author: v-yiso
 origin.date: 02/11/2020
 ms.date: 03/02/2020
 ms.openlocfilehash: 4100d97d8acd33ea2b5fdfc4819ef4bb74f6a316
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78155073"
 ---
 # <a name="tune-model-hyperparameters"></a>优化模型超参数

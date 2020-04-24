@@ -11,10 +11,10 @@ author: sdgilley
 origin.date: 12/27/2019
 ms.date: 03/09/2020
 ms.openlocfilehash: 39991850add1d0d24899be948dc90390c9f3239d
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78154520"
 ---
 # <a name="what-is-an-azure-machine-learning-workspace"></a>什么是 Azure 机器学习工作区？
@@ -79,7 +79,7 @@ ms.locfileid: "78154520"
 | 创建和管理计算资源    | **&check;**   | **&check;** | **&check;** |  **&check;**   |
 | 创建笔记本 VM |   | **&check;** | |     |
 
-## <a name='create-workspace'></a> 创建工作区
+## <a name="create-a-workspace"></a><a name='create-workspace'></a> 创建工作区
 
 创建工作区时，可以选择使用[基本版或企业版](overview-what-is-azure-ml.md#sku)来创建工作区。 版本确定工作区中可用的功能。 企业版的突出功能包括可以访问 [Azure 机器学习设计器](concept-designer.md)和提供工作室版本的[自动机器学习试验](tutorial-first-experiment-automated-ml.md)构建功能。  有关详细信息和定价信息，请参阅 [Azure 机器学习定价](https://www.azure.cn/pricing/details/machine-learning/)。
 
@@ -93,11 +93,11 @@ ms.locfileid: "78154520"
 > [!NOTE]
 > 工作区名称不区分大小写。
 
-## <a name="upgrade"></a> 升级到企业版
+## <a name="upgrade-to-enterprise-edition"></a><a name="upgrade"></a> 升级到企业版
 
 可使用 Azure 门户将[工作区从基本版升级到企业版](how-to-manage-workspace.md#upgrade)。 不能将企业版工作区降级为基本版工作区。 
 
-## <a name="resources"></a> 关联的资源
+## <a name="associated-resources"></a><a name="resources"></a> 关联的资源
 
 创建新工作区时，它会自动创建工作区使用的几个 Azure 资源：
 

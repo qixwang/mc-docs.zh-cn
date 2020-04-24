@@ -12,10 +12,10 @@ ms.topic: conceptual
 origin.date: 11/04/2019
 ms.date: 03/16/2020
 ms.openlocfilehash: afbc089a5c1c304d4cc0ca7852e912d7f201925d
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78850630"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning"></a>Azure 机器学习的已知问题和故障排除
@@ -32,7 +32,7 @@ ms.locfileid: "78850630"
 pip install --upgrade azureml-sdk[notebooks,automl] --ignore-installed PyYAML
 ```
 
-错误消息：`ERROR: No matching distribution found for azureml-dataprep-native` 
+错误消息：`ERROR: No matching distribution found for azureml-dataprep-native`
 
 Anaconda Python 3.7.4 分发版中的一个 bug 会中断 azureml-sdk 的安装。 [此 GitHub 问题](https://github.com/ContinuumIO/anaconda-issues/issues/11195)中讨论了此问题。可以使用以下命令创建新 Conda 环境来解决此问题：
 ```bash

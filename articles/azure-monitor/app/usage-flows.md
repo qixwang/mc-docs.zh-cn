@@ -9,10 +9,10 @@ ms.date: 6/4/2019
 ms.reviewer: mbullwin
 ms.author: v-lingwu
 ms.openlocfilehash: a348c27ab669f995546cc7c169641db464f70d9d
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78850352"
 ---
 # <a name="analyze-user-navigation-patterns-with-user-flows-in-application-insights"></a>使用 Application Insights 中的用户流分析用户导航模式
@@ -93,7 +93,7 @@ ms.locfileid: "78850352"
 
 * [使用情况概述](usage-overview.md)
 * [用户、会话和事件](usage-segmentation.md)
-* [保留期](usage-retention.md)
+* [保留](usage-retention.md)
 * [向应用添加自定义事件](../../azure-monitor/app/api-custom-events-metrics.md)
 
 

@@ -12,10 +12,10 @@ ms.reviewer: larryfr
 origin.date: 01/16/2020
 ms.date: 03/09/2020
 ms.openlocfilehash: 0c54d1074c18e2e9ba8aecf876f0ad5b8e298741
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78850459"
 ---
 # <a name="deploy-a-model-to-an-azure-kubernetes-service-cluster"></a>将模型部署到 Azure Kubernetes 服务群集

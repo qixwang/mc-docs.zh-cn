@@ -11,10 +11,10 @@ ms.topic: conceptual
 origin.date: 02/14/2020
 ms.date: 02/27/2020
 ms.openlocfilehash: 6b0912311cbd647d0398fb270ca0c46c04e16532
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78155133"
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>了解 Azure 流分析的输出
@@ -244,7 +244,7 @@ Azure 流分析通过 HTTP 触发器调用 Azure Functions。 提供具有以下
 
 ![事件自定义属性](./media/stream-analytics-define-outputs/09-stream-analytics-custom-properties.png)
 
-## 服务总线队列和主题输出的系统属性 <a name="system-properties-for-service-bus-queue-and-topic-outputs"></a>
+## <a name="system-properties-for-service-bus-queue-and-topic-outputs"></a>服务总线队列和主题输出的系统属性 <a name="system-properties-for-service-bus-queue-and-topic-outputs"></a>
 可将查询列作为[系统属性](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage?view=azure-dotnet#properties)附加到传出的服务总线队列或主题消息。 这些列不会进入有效负载，而是将查询列值填充到相应的 BrokeredMessage [系统属性](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage?view=azure-dotnet#properties)中。
 支持这些系统属性 - `MessageId, ContentType, Label, PartitionKey, ReplyTo, SessionId, CorrelationId, To, ForcePersistence, TimeToLive, ScheduledEnqueueTimeUtc`。
 这些列的字符串值将分析成相应的系统属性值类型，任何分析失败将被视为数据错误。

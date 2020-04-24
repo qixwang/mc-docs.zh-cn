@@ -10,10 +10,10 @@ ms.topic: conceptual
 origin.date: 02/14/2020
 ms.date: 02/27/2020
 ms.openlocfilehash: 0dce8fe5ea6e3a8905440b6d2439fa5e18649611
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78155130"
 ---
 # <a name="azure-stream-analytics-on-iot-edge"></a>Azure IoT Edge 流分析
@@ -26,9 +26,9 @@ IoT Edge 上的 Azure 流分析在 [Azure IoT Edge](https://azure.microsoft.com/
 ![IoT Edge 的高级别关系图](media/stream-analytics-edge/ASAedge-highlevel-diagram.png)
 
 * **低延迟命令和控制**：例如，生产安全系统时必须以超低的延迟响应运行数据。 借助 IoT Edge 上的 ASA，可以近乎实时地分析传感器数据，并在检测到异常情况时发出命令，从而停止计算机或触发警报。
-*   **与云的连接受限**：任务关键型系统（如远程采矿设备、连接的船舶或海上钻井）需要分析数据并对数据做出反应，即使云连接是间歇性的也是如此。 使用 ASA，流式处理逻辑可独立于网络连接运行，你可以选择发送到云以作进一步处理或存储的内容。
-* **有限的带宽**：由喷气引擎或联网汽车生成的数据量可能非常大，因此，在将数据发送到云之前必须对数据进行筛选或预处理。 使用 ASA，可以筛选或聚合需要发送到云的数据。
-* **符合性**：监管符合性可能需要在将一些数据发送到云之前对其进行本地匿名或聚合处理。
+*   **与云的受限连接**：任务关键型系统（如远程采矿设备、连接的船舶或海上钻井）需要分析数据并对数据做出反应，即使云连接是间歇性的也是如此。 使用 ASA，流式处理逻辑可独立于网络连接运行，你可以选择发送到云以作进一步处理或存储的内容。
+*  有限的带宽：由喷气引擎或车联网生成的数据量可能非常大，因此，在将数据发送到云之前必须对数据进行筛选或预处理。 使用 ASA，可以筛选或聚合需要发送到云的数据。
+*  符合性：监管符合性可能需要在将一些数据发送到云之前对其进行本地匿名或聚合处理。
 
 ## <a name="edge-jobs-in-azure-stream-analytics"></a>Azure 流分析作业中的 Edge 作业
 ### <a name="what-is-an-edge-job"></a>什么是“Edge”作业？
@@ -45,7 +45,7 @@ ASA 使用 IoT 中心将 Edge 作业部署到设备。 [可在此处查看有关
 ### <a name="installation-instructions"></a>安装说明
 下表描述了高级步骤： 下面的部分将进行详细说明。
 
-|      |步骤   | 注释   |
+|      |步骤   | 说明   |
 | ---   | ---   |  ---      |
 | 1   | 创建存储容器    | 存储容器用于保存作业定义，IoT 设备可在其中进行访问它们。 <br>  你可以重用任何现有的存储容器。     |
 | 2   | 创建 ASA 边缘作业    |  创建新的作业，选择“Edge”  作为“宿主环境”  。 <br> 这些作业从云创建/管理，并在你自己的 IoT Edge 设备上运行。     |

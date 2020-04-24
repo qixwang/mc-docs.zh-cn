@@ -8,10 +8,10 @@ origin.date: 10/12/2018
 ms.date: 04/12/2019
 ms.author: v-lingwu
 ms.openlocfilehash: 270c2147fe60c6077c95b18002c77204b615f3db
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78850327"
 ---
 # <a name="network-performance-monitor-solution-faq"></a>网络性能监视器解决方案常见问题解答

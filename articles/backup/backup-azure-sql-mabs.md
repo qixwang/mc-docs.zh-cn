@@ -7,10 +7,10 @@ origin.date: 03/24/2017
 ms.date: 03/06/2020
 ms.author: v-lingwu
 ms.openlocfilehash: 6091f674a1e68f5e6ad51dfde36490698f9ae82a
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78850256"
 ---
 # <a name="back-up-sql-server-to-azure-by-using-azure-backup-server"></a>使用 Azure 备份服务器将 SQL Server 备份到 Azure
@@ -39,7 +39,7 @@ ms.locfileid: "78850256"
 1. 对于保护组类型，请选择“服务器”。 
 
     ![选择“服务器”保护组类型](./media/backup-azure-backup-sql/pg-servers.png)
-1. 展开要备份的数据库所在的 SQL Server 计算机。 将会看到可从该服务器备份的数据源。 展开“所有 SQL 共享”，然后选择要备份的数据库。  此示例选择了 ReportServer$MSDPM2012 和 ReportServer$MSDPM2012TempDB。 选择“**下一步**”。
+1. 展开要备份的数据库所在的 SQL Server 计算机。 将会看到可从该服务器备份的数据源。 展开“所有 SQL 共享”，然后选择要备份的数据库。  此示例选择了 ReportServer$MSDPM2012 和 ReportServer$MSDPM2012TempDB。 选择“**下一页**”。
 
     ![选择 SQL Server 数据库](./media/backup-azure-backup-sql/pg-databases.png)
 1. 为保护组命名，然后选择“我需要在线保护”。 
@@ -52,11 +52,11 @@ ms.locfileid: "78850256"
     ![设置备份保护的短期目标](./media/backup-azure-backup-sql/pg-shortterm.png)
 
    > [!NOTE]
-   > 在此示例中，将在每天晚上 8:00 创建一个备份点。 自前一天晚上 8:00 的备份点以来修改了的数据将被传输。 此过程称为 **快速完整备份**。 尽管事务日志每隔 15 分钟同步一次，但如果需要在晚上 9:00 恢复数据库，则会重播自上一个快速完整备份点（在本示例中为晚上 8:00）以来的日志，从而创建备份点。
+   > 在此示例中，将在每天晚上 8:00 创建一个备份点。 自前一天晚上 8:00 的备份点以来修改了的数据将被传输。 此过程称为“**快速完整备份**”。 尽管事务日志每隔 15 分钟同步一次，但如果需要在晚上 9:00 恢复数据库，则会重播自上一个快速完整备份点（在本示例中为晚上 8:00）以来的日志，从而创建备份点。
    >
    >
 
-1. 选择“**下一步**”。 MABS 将显示可用的总存储空间。 它还显示潜在的磁盘空间利用率。
+1. 选择“**下一页**”。 MABS 将显示可用的总存储空间。 它还显示潜在的磁盘空间利用率。
 
     ![在 MABS 中设置磁盘分配](./media/backup-azure-backup-sql/pg-storage.png)
 
@@ -139,7 +139,7 @@ ms.locfileid: "78850256"
 1. 右键单击数据库名称并选择“恢复”。 
 
     ![从 Azure 恢复数据库](./media/backup-azure-backup-sql/sqlbackup-recover.png)
-1. DPM 会显示恢复点的详细信息。 选择“**下一步**”。 选择恢复类型“**恢复到 SQL Server 的原始实例**”。 然后，选择“下一步”  。
+1. DPM 会显示恢复点的详细信息。 选择“**下一页**”。 选择恢复类型“**恢复到 SQL Server 的原始实例**”。 然后，选择“下一步”  。
 
     ![将数据库恢复到其原始位置](./media/backup-azure-backup-sql/sqlbackup-recoveroriginal.png)
 

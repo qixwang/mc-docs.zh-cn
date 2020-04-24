@@ -13,10 +13,10 @@ ms.custom: seo-lt-2019
 origin.date: 04/09/2018
 ms.date: 03/02/2020
 ms.openlocfilehash: c2bf18b1ab454216adbb25679bc18b36f706ce41
-ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77653570"
 ---
 # <a name="copy-data-from-an-on-premises-sql-server-database-to-azure-blob-storage-by-using-the-copy-data-tool"></a>使用“复制数据”工具将数据从本地 SQL Server 数据库复制到 Azure Blob 存储
@@ -33,7 +33,7 @@ ms.locfileid: "77653570"
 > * 使用“复制数据”工具创建管道。
 > * 监视管道和活动运行。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 ### <a name="azure-subscription"></a>Azure 订阅
 如果还没有 Azure 订阅，请在开始前[创建一个 1 元试用帐户](https://www.azure.cn/zh-cn/pricing/1rmb-trial-full/?form-type=identityauth)。
 
@@ -198,7 +198,7 @@ ms.locfileid: "77653570"
 
    c. 在“存储帐户名称”下的下拉列表中选择自己的存储帐户。 
 
-   d. 选择“完成”。 
+   d. 选择“完成”  。
 
 1. 在“目标数据存储”  对话框中，确保选择了“Azure Blob 存储”  。 然后，选择“下一步”  。
 
@@ -229,7 +229,7 @@ ms.locfileid: "77653570"
 
 
 ## <a name="next-steps"></a>后续步骤
-此示例中的管道可将数据从本地 SQL Server 数据库复制到 Blob 存储。 你已了解如何：
+此示例中的管道可将数据从本地 SQL Server 数据库复制到 Blob 存储。 你已了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 创建数据工厂。

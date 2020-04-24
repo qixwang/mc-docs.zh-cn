@@ -9,10 +9,10 @@ origin.date: 06/25/2019
 md.date: 03/23/2020
 ms.author: v-tawe
 ms.openlocfilehash: a4bec29723d126140b1f2b57f550091247f6ce99
-ms.sourcegitcommit: e94ed1c9eff4e88be2ca389909e60b14cc0d92f8
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79084501"
 ---
 # <a name="create-a-xamarinforms-app-with-azure"></a>使用 Azure 创建 Xamarin.Forms 应用
@@ -22,9 +22,9 @@ ms.locfileid: "79084501"
 ## <a name="overview"></a>概述
 本教程说明如何使用作为后端的 Azure 应用服务的移动应用功能，向 Xamarin.Forms 移动应用添加基于云的后端服务。 请创建一个新的移动应用后端和一个简单的待办事项列表 Xamarin.Forms 应用，此应用将应用数据存储在 Azure 中。
 
-只有在完成本教程后，才可学习有关 Xamarin.Forms 的所有其他移动应用教程。
+只有在完成本教程后，才可以学习有关 Xamarin.Forms 的所有其他移动应用教程。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 要完成本教程，需要以下各项：
 
@@ -80,7 +80,7 @@ ms.locfileid: "79084501"
 
 2. 若要生成项目，并在 Android 模拟器中启动应用，请选择“运行”菜单，然后选择“开始调试”   。
 
-在应用中键入有意义的文本（例如“Learn Xamarin”  ），然后选择加号 (+  )。
+在应用中键入有意义的文本（例如“Learn Xamarin”  ），然后选择加号 ( **+** )。
 
 ![Android 待办事项应用][11]
 
@@ -110,7 +110,7 @@ ms.locfileid: "79084501"
 
 2. 在“运行”菜单上，选择“开始调试”以生成项目，并在 iPhone 模拟器中启动应用   。
 
-在应用中键入有意义的文本（例如“Learn Xamarin”  ），然后选择加号 (+  )。
+在应用中键入有意义的文本（例如“Learn Xamarin”  ），然后选择加号 ( **+** )。
 
 ![iOS 待办事项应用][10]
 
@@ -137,7 +137,7 @@ ms.locfileid: "79084501"
 > [!NOTE]
 > Windows 项目不能在 macOS 上运行。
 
-在应用中键入有意义的文本（例如“Learn Xamarin”  ），然后选择加号 (+  )。
+在应用中键入有意义的文本（例如“Learn Xamarin”  ），然后选择加号 ( **+** )。
 
 此操作向在 Azure 中托管的新移动应用后端发送 post 请求。 来自请求的数据插入到 TodoItem 表。 存储在表中的项由移动应用后端返回，数据显示在列表中。
 

@@ -12,10 +12,10 @@ ms.date: 03/04/2020
 ms.author: v-junlch
 ms.subservice: B2C
 ms.openlocfilehash: 5222d8ae21a4ac67019c2ac8a7d214f46cec72ae
-ms.sourcegitcommit: 1ac138a9e7dc7834b5c0b62a133ca5ce2ea80054
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78266104"
 ---
 # <a name="manage-azure-ad-b2c-with-microsoft-graph"></a>使用 Microsoft Graph 管理 Azure AD B2C
@@ -69,8 +69,8 @@ ms.locfileid: "78266104"
 1. 在“管理”下，选择“角色和管理员”。  
 1. 选择“用户管理员”角色。 
 1. 选择“添加分配”  。
-1. 在“选择”文本框中，输入前面注册的应用程序的名称，例如 *managementapp1*。  该应用程序显示在搜索结果中后，请将它选中。
-1. 选择“添加”   。 可能需要几分钟才能完全传播权限。
+1. 在“选择”文本框中，输入前面注册的应用程序的名称，例如 **managementapp1**。  该应用程序显示在搜索结果中后，请将它选中。
+1. 选择 **添加** 。 可能需要几分钟才能完全传播权限。
 
 ## <a name="next-steps"></a>后续步骤
 

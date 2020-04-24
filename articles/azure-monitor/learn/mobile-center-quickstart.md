@@ -10,19 +10,19 @@ ms.date: 06/26/2019
 ms.reviewer: daviste
 ms.custom: mvc
 ms.openlocfilehash: 8e86769c508ff8bf7ab1512006d7b64c75c01649
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78850301"
 ---
 # <a name="start-analyzing-your-mobile-app-with-app-center-and-application-insights"></a>开始使用 App Center 和 Application Insights 分析移动应用
 
 本快速入门将指导你完成将应用的 App Center 实例连接到 Application Insights 的整个过程。 与 App Center 的[分析](https://docs.microsoft.com/mobile-center/analytics/)服务提供的工具相比，Application Insights 的功能更为强大，可让你对遥测数据进行更准确的查询、分段、筛选和分析。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
-若要完成本快速入门，需要以下项：
+若要完成本快速入门，你需要：
 
 - Azure 订阅。
 - iOS、Android、Xamarin、通用 Windows 或 React 本机应用。
@@ -65,7 +65,7 @@ Analytics.trackEvent("Video clicked")
 
 在应用发送自定义事件，并且 App Center 收到这些事件后，需要在 Azure 门户中创建 App Center 类型的 Application Insights 资源：
 
-1. 登录到 [Azure 门户](https://portal.azure.cn/)。
+1. 登录 [Azure 门户](https://portal.azure.cn/)。
 2. 选择“创建资源”   >   “开发人员工具” >   “Application Insights”。
 
     > [!NOTE]
@@ -73,13 +73,13 @@ Analytics.trackEvent("Video clicked")
 
     随后会显示一个配置对话框。 请使用下表填写输入字段。
 
-    | 设置        |  Value           | 说明  |
+    | 设置        |  值           | 说明  |
    | ------------- |:-------------|:-----|
    | **名称**      | 某些全局唯一值，如“myApp-iOS” | 标识所监视的应用的名称 |
      | **资源组**     | 一个新资源组或菜单中的一个现有资源组 | 在其中创建新 Application Insights 资源的资源组 |
    | **位置** | 菜单中的某个位置 | 选择离你近的位置或离托管应用的位置近的位置 |
 
-3. 单击**创建**。
+3. 单击“创建”。 
 
 如果应用支持多个平台（iOS、Android 等），则最好创建单独的 Application Insights 资源，每个平台使用一个资源。
 

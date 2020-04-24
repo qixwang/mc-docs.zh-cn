@@ -15,10 +15,10 @@ origin.date: 02/22/2017
 ms.date: 11/26/2018
 ms.author: v-lingwu
 ms.openlocfilehash: ec3ae138f04d7eb1133ad79f1b722b097d5db42b
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78154735"
 ---
 # <a name="configuring-network-security-group-flow-logs-with-azure-cli"></a>使用 Azure CLI 配置网络安全组流日志

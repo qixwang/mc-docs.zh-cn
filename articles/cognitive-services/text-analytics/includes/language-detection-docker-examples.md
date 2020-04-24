@@ -11,10 +11,10 @@ origin.date: 09/19/2019
 ms.date: 02/25/2020
 ms.author: v-lingwu
 ms.openlocfilehash: f5613fb7c6fda520d6e61d4bf0ecefccf297046e
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78155465"
 ---
 ### <a name="language-detection-container-docker-examples"></a>语言检测容器 docker 示例

@@ -13,10 +13,10 @@ ms.author: v-jay
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 ms.openlocfilehash: 89fb8a1ca44bee46f8a56a8772439439e909fd3b
-ms.sourcegitcommit: 892137d117bcaf9d88aec0eb7ca756fe39613344
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78154327"
 ---
 # <a name="monitoring-resource-utilization-and-query-activity-in-azure-sql-data-warehouse"></a>监视 Azure SQL 数据仓库中的资源利用率和查询活动
@@ -26,13 +26,13 @@ Azure SQL 数据仓库在 Azure 门户中提供丰富的监视体验用于洞察
 Azure 门户中提供了以下可用于 SQL 数据仓库的指标。 这些指标通过 [Azure Monitor](/azure-monitor/platform/data-collection#metrics) 显示。
 
 
-| 指标名称             | 说明                                                  | 聚合类型 |
+| 标准名称             | 说明                                                  | 聚合类型 |
 | ----------------------- | ------------------------------------------------------------ | ---------------- |
 | CPU 百分比          | 数据仓库所有节点的 CPU 利用率      | Avg、Min、Max    |
 | 数据 IO 百分比      | 数据仓库所有节点的 IO 利用率       | Avg、Min、Max    |
 | 内存百分比       | 数据仓库所有节点的内存利用率 (SQL Server) | Avg、Min、Max   |
-| 活动查询数          | 正在系统上执行的活动查询数             | Sum              |
-| 排队的查询数          | 等待开始执行的排队查询数          | Sum              |
+| 活动查询数          | 正在系统上执行的活动查询数             | SUM              |
+| 排队的查询数          | 等待开始执行的排队查询数          | SUM              |
 | 成功的连接数  | 数据的成功连接数                 | Sum、Count       |
 | 失败的连接数      | 数据仓库的失败连接数           | Sum、Count       |
 | 被防火墙阻止     | 登录数据仓库受阻次数     | Sum、Count       |

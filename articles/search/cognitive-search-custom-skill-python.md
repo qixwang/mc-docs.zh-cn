@@ -10,10 +10,10 @@ ms.topic: conceptual
 origin.date: 01/15/2020
 ms.date: 03/16/2020
 ms.openlocfilehash: 1c1aefbda9eb6c9a1654aad883498b5931a63645
-ms.sourcegitcommit: d5eca3c6b03b206e441b599e5b138bd687a91361
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78934873"
 ---
 # <a name="example-create-a-custom-skill-using-python"></a>示例：使用 Python 创建自定义技能

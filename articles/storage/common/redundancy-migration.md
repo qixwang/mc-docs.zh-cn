@@ -12,15 +12,15 @@ ms.author: v-jay
 ms.reviewer: artek
 ms.subservice: common
 ms.openlocfilehash: e5edf050adfb8ef5b5bfaa8160e6959ff5c4b7ac
-ms.sourcegitcommit: fbc7584f403417d3af7bd6bbbaed7c13a78c57b9
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78412548"
 ---
 # <a name="change-how-a-storage-account-is-replicated"></a>更改存储帐户的复制方式
 
-Azure 存储始终会存储数据的多个副本，以防范各种计划内和计划外的事件，包括暂时性的硬件故障、网络中断或断电、大范围自然灾害等。 即使面临故障时，冗余也可确保存储帐户满足 [Azure 存储的服务级别协议 (SLA)](https://www.azure.cn/support/sla/storage/index.html)的要求。
+Azure 存储始终会存储数据的多个副本，以防范各种计划内和计划外的事件，包括暂时性的硬件故障、网络中断或断电、大范围自然灾害等。 即使面临故障时，冗余也可确保存储帐户满足 [Azure 存储的服务级别协议 (SLA)](https://www.azure.cn/support/sla/storage/index.html) 的要求。
 
 Azure 存储提供以下类型的复制：
 
@@ -37,8 +37,8 @@ Azure 存储提供以下类型的复制：
 
 | 切换 | …到 LRS | …到 GRS/RA-GRS |
 |--------------------|----------------------------------------------------|---------------------------------------------------------------------|
-| <b>…从 LRS</b> | 不适用 | 使用 Azure 门户、PowerShell 或 CLI 更改复制设置<sup>1</sup> |
-| <b>…从 GRS/RA-GRS</b> | 使用 Azure 门户、PowerShell 或 CLI 更改复制设置 | 不适用 |
+| <b>…从 LRS</b> | 空值 | 使用 Azure 门户、PowerShell 或 CLI 更改复制设置<sup>1</sup> |
+| <b>…从 GRS/RA-GRS</b> | 使用 Azure 门户、PowerShell 或 CLI 更改复制设置 | 空值 |
 
 <sup>1</sup> 会产生一次性出口费用。
 

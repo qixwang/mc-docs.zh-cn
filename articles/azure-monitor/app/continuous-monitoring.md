@@ -8,10 +8,10 @@ originate.date: 07/16/2019
 ms.date: 6/4/2019
 manager: digimobile
 ms.openlocfilehash: e7cb330a4705ffc5004e93d08813b71b5d7ef913
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78850443"
 ---
 # <a name="add-continuous-monitoring-to-your-release-pipeline"></a>向发布管道添加连续监视

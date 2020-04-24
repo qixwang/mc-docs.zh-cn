@@ -18,16 +18,16 @@ ms.subservice: hybrid
 ms.author: v-junlch
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b21e345ceadc217e7c270c0f9862f55410c94397
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79290990"
 ---
 # <a name="azure-ad-connect-staging-server-and-disaster-recovery"></a>Azure AD Connect：暂存服务器和灾难恢复
 当服务器处于暂存模式时，可以在激活服务器之前更改配置并预览更改。 它还允许运行完全导入和完全同步，以便在生产环境中应用所有更改之前验证这些更改是否符合预期。
 
-## 暂存模式 <a name="staging-mode"></a>
+## <a name="staging-mode"></a>暂存模式 <a name="staging-mode"></a>
 暂存模式可以用于许多方案，包括：
 
 * 高可用性。
@@ -56,15 +56,15 @@ ms.locfileid: "79290990"
 4. [验证](#verify)
 5. [切换活动服务器](#switch-active-server)
 
-#### 准备 <a name="prepare"></a>
+#### <a name="prepare"></a>准备 <a name="prepare"></a>
 1. 安装 Azure AD Connect，选择“暂存模式”，然后取消选择安装向导中最后一页上的“启动同步”。   此模式允许手动运行同步引擎。
    ![ReadyToConfigure](./media/how-to-connect-sync-staging-server/readytoconfigure.png)
 2. 注销/登录并从“开始”菜单选择“同步服务”。 
 
-#### 配置 <a name="configuration"></a>
+#### <a name="configuration"></a>配置 <a name="configuration"></a>
 如果对主服务器进行了自定义更改并希望比较配置和临时服务器，则使用 [Azure AD Connect 配置文档管理器](https://github.com/Microsoft/AADConnectConfigDocumenter)。
 
-#### 导入和同步 <a name="import-and-synchronize"></a>
+#### <a name="import-and-synchronize"></a>导入和同步 <a name="import-and-synchronize"></a>
 1. 选择“连接器”，并选择第一个 Active Directory 域服务类型的连接器。   单击“运行”，然后依次选择“完全导入”和“确定”。    针对此类型的所有连接器执行这些步骤。
 2. 选择 Azure Active Directory (Microsoft) 类型的连接器。  单击“运行”，然后依次选择“完全导入”和“确定”。   
 3. 确保“连接器”选项卡仍处于选中状态。 针对每个 Active Directory 域服务类型的连接器，单击“运行”，然后依次选择“增量同步”和“确定”。    
@@ -72,7 +72,7 @@ ms.locfileid: "79290990"
 
 现在，已将导出更改暂存到 Azure AD 和本地 AD（如果你正在使用 Exchange 混合部署）。 后续步骤可让你在实际开始导出到目录之前，检查将要更改的内容。
 
-#### 验证 <a name="verify"></a>
+#### <a name="verify"></a>验证 <a name="verify"></a>
 1. 启动 cmd 提示符并转到 `%ProgramFiles%\Azure AD Sync\bin`
 2. 运行：`csexport "Name of Connector" %temp%\export.xml /f:x` 连接器名称可以在同步服务中找到。 它的名称类似于“contoso.com - AAD”（表示 Azure AD）。
 3. 运行：`CSExportAnalyzer %temp%\export.xml > %temp%\export.csv` %temp% 中已有名为 export.csv 的文件，可在 Microsoft Excel 中检查。 此文件包含要导出的所有更改。
@@ -88,7 +88,7 @@ ms.locfileid: "79290990"
 3. 运行：`.\csanalyzer.ps1 -xmltoimport %temp%\export.xml`。
 4. 现在已有名为 **processedusers1.csv** 的文件，可在 Microsoft Excel 中检查。 请注意，该文件提供从 DN 属性到通用标识符（如 displayName 和 userPrincipalName 等）的映射。 当前尚不包括要导出的实际属性更改。
 
-#### 切换活动服务器 <a name="switch-active-server"></a>
+#### <a name="switch-active-server"></a>切换活动服务器 <a name="switch-active-server"></a>
 1. 在当前处于活动状态的服务器上，关闭服务器 (DirSync/FIM/Azure AD Sync)，使它不会导出到 Azure AD，或将它设为暂存模式 (Azure AD Connect)。
 2. 在处于“暂存模式”的服务器上运行安装向导，然后禁用“暂存模式”。  
    ![ReadyToConfigure](./media/how-to-connect-sync-staging-server/additionaltasks.png)
@@ -120,12 +120,12 @@ ms.locfileid: "79290990"
 ### <a name="use-virtual-machines"></a>使用虚拟机
 常用的受支持方法是在虚拟机中运行同步引擎。 如果主机有问题，可将包含同步引擎服务器的映像迁移到另一个服务器。
 
-### SQL 高可用性 <a name="sql-high-availability"></a>
+### <a name="sql-high-availability"></a>SQL 高可用性 <a name="sql-high-availability"></a>
 如果未使用 Azure AD Connect 随附的 SQL Server Express，还应考虑 SQL Server 的高可用性。 支持的高可用性解决方案包括 SQL 群集和 AOA（Always On 可用性组）。 不支持的解决方案包括镜像。
 
 Azure AD Connect 版本 1.1.524.0 中添加了对 SQL AOA 的支持。 安装 Azure AD Connect 之前，必须启用 SQL AOA。 在安装期间，Azure AD Connect 会检测是否已为提供的 SQL 实例启用 SQL AOA。 如果启用了 SQL AOA，Azure AD Connect 会进一步判断 SQL AOA 是配置为使用同步复制还是异步复制。 设置可用性组侦听器时，我们建议将 RegisterAllProvidersIP 属性设置为 0。 这是因为，Azure AD Connect 目前使用 SQL Native Client 连接到 SQL，而 SQL Native Client 不支持使用 MultiSubNetFailover 属性。
 
-## 附录 CSAnalyzer <a name="appendix-csanalyzer"></a>
+## <a name="appendix-csanalyzer"></a>附录 CSAnalyzer <a name="appendix-csanalyzer"></a>
 有关如何使用此脚本的信息，请参阅[验证](#verify)部分。
 
 ```

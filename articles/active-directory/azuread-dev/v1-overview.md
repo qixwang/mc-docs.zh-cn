@@ -17,10 +17,10 @@ ms.author: v-junlch
 ms.reviewer: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: f6e39f313a8bb5b85d573e81570bf9bf2e0e2674
-ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77653612"
 ---
 # <a name="azure-active-directory-for-developers-v10-overview"></a>适用于开发人员的 Azure Active Directory (v1.0) 概述
@@ -37,9 +37,9 @@ Azure Active Directory (Azure AD) 是一个云标识服务，开发人员可以�
 
 ## <a name="get-started"></a>入门
 
-v1.0 快速入门和教程将逐步讲解如何使用 Azure AD 身份验证库 (ADAL) SDK 在偏好的平台上生成应用。 若要开始使用，请参阅 [Microsoft 标识平台（面向开发人员的 Azure Active Directory）](index.yml)中的 **v1.0 快速入门**和 **v1.0 教程**。
+v1.0 快速入门和教程将逐步讲解如何使用 Azure AD 身份验证库 (ADAL) SDK 在偏好的平台上生成应用。 若要开始使用，请参阅 **Microsoft 标识平台（面向开发人员的 Azure Active Directory）** 中的 **v1.0 快速入门**和 [v1.0 教程](index.yml)。
 
-## <a name="how-to-guides"></a>操作指南
+## <a name="how-to-guides"></a>操作方法指南
 
 有关 Azure AD 中最常见任务的详细信息和演练，请参阅 **v1.0 操作指南**。
 
@@ -50,7 +50,7 @@ v1.0 快速入门和教程将逐步讲解如何使用 Azure AD 身份验证库 (
 |                                                                                   | |
 | ----------------------------------------------------------------------------------| --- |
 | [身份验证库 (ADAL)](active-directory-authentication-libraries.md)   | Azure AD 提供的库和 SDK 的概述。 |
-| [代码示例](sample-v1-code.md)                                  | 所有 Azure AD 代码示例的列表。 |
+| [示例代码](sample-v1-code.md)                                  | 所有 Azure AD 代码示例的列表。 |
 | [术语表](../develop/developer-glossary.md?toc=/active-directory/azuread-dev/toc.json&bc=/active-directory/azuread-dev/breadcrumb/toc.json)                                      | 本文档通篇使用的术语和单词定义。 |
 |  |  |
 

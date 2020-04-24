@@ -8,10 +8,10 @@ ms.date: 6/4/2019
 ms.reviewer: yalavi
 ms.author: v-lingwu
 ms.openlocfilehash: 6e5028725ffb946ce2913af1e4011a28f2c7dd21
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78850384"
 ---
 # <a name="smart-detection---failure-anomalies"></a>智能检测 - 失败异常

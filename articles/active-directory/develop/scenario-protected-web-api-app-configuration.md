@@ -17,10 +17,10 @@ ms.date: 03/10/2020
 ms.author: v-junlch
 ms.custom: aaddev
 ms.openlocfilehash: 78d6710d009b09c63c2cf2bbcb8e7afa0434abda
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79291041"
 ---
 # <a name="protected-web-api-code-configuration"></a>受保护的 Web API：代码配置

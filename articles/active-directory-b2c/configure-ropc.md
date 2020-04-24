@@ -12,10 +12,10 @@ ms.date: 03/04/2020
 ms.author: v-junlch
 ms.subservice: B2C
 ms.openlocfilehash: 4f25640b5a525bce61239131d3392bf8923ebbac
-ms.sourcegitcommit: 1ac138a9e7dc7834b5c0b62a133ca5ce2ea80054
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78265948"
 ---
 # <a name="configure-the-resource-owner-password-credentials-flow-in-azure-ad-b2c"></a>在 Azure AD B2C 中配置资源所有者密码凭据流
@@ -56,7 +56,7 @@ ms.locfileid: "78265948"
 
 `https://yourtenant.b2clogin.cn/<yourtenant.partner.onmschina.cn>/oauth2/v2.0/token?p=B2C_1_ROPC_Auth`
 
-| 键 | Value |
+| 密钥 | 值 |
 | --- | ----- |
 | username | leadiocl@outlook.com |
 | password | Passxword1 |
@@ -96,7 +96,7 @@ username=leadiocl%40trashmail.ws&password=Passxword1&grant_type=password&scope=o
 
 `https://yourtenant.b2clogin.cn/<yourtenant.partner.onmschina.cn>/oauth2/v2.0/token?p=B2C_1_ROPC_Auth`
 
-| 键 | Value |
+| 密钥 | 值 |
 | --- | ----- |
 | grant_type | refresh_token |
 | response_type | id_token |

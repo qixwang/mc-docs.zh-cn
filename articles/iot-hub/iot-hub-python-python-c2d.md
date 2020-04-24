@@ -13,10 +13,10 @@ origin.date: 07/30/2019
 ms.date: 03/09/2020
 ms.author: v-yiso
 ms.openlocfilehash: ed738ce2a222f4c93907f793815deb39a4f8d31c
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78155083"
 ---
 # <a name="send-cloud-to-device-messages-with-iot-hub-python"></a>使用 IoT 中心发送云到设备消息 (Python)
@@ -42,18 +42,18 @@ Azure IoT 中心是一项完全托管的服务，有助于在数百万台设备�
 
 [!INCLUDE [iot-hub-include-python-sdk-note](../../includes/iot-hub-include-python-sdk-note.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 [!INCLUDE [iot-hub-include-python-installation-notes](../../includes/iot-hub-include-python-installation-notes.md)]
 
 * 确保已在防火墙中打开端口 8883。 本文中的设备示例使用 MQTT 协议，该协议通过端口 8883 进行通信。 在某些公司和教育网络环境中，此端口可能被阻止。 有关解决此问题的更多信息和方法，请参阅[连接到 IoT 中心(MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)。
 
-## <a name="receive-messages-in-the-simulated-device-app"></a>在模拟设备应用上接收消息
+## <a name="receive-messages-in-the-simulated-device-app"></a>在模拟设备应用中接收消息
 在本部分中，将创建一个 Python 控制台应用来模拟设备并从 IoT 中心接收云到设备消息。
 
 1. 使用文本编辑器，创建一个 **SimulatedDevice.py** 文件。
 
-2. 在 **SimulatedDevice.py** 文件的开头添加以下 `import` 语句和变量：
+2. 在 `import`SimulatedDevice.py**文件的开头添加以下** 语句和变量：
 
    ```python
     import threading
@@ -124,7 +124,7 @@ Azure IoT 中心是一项完全托管的服务，有助于在数百万台设备�
 
 1. 使用文本编辑器，创建一个 **SendCloudToDeviceMessage.py** 文件。
 
-1. 在 **SendCloudToDeviceMessage.py** 文件的开头添加以下 `import` 语句和变量：
+1. 在 `import`SendCloudToDeviceMessage.py**文件的开头添加以下** 语句和变量：
    
     ```python
     import random
@@ -158,7 +158,7 @@ Azure IoT 中心是一项完全托管的服务，有助于在数百万台设备�
         print ( 'messagingResult : {0}'.format(messaging_result) )
     ```
 
-1. 添加以下代码，以便将消息发送到设备并在设备确认收到云到设备的消息时处理反馈消息：
+1. 添加以下代码，以便在设备确认收到云到设备的消息时会消息发送到设备，并处理反馈消息：
    
     ```python
     def iothub_messaging_sample_run():

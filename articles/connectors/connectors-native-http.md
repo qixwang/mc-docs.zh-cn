@@ -10,10 +10,10 @@ ms.date: 03/09/2020
 ms.author: v-yeche
 tags: connectors
 ms.openlocfilehash: 0f82bfd4a2339fb1abfeb08be9f0d16b88a73146
-ms.sourcegitcommit: 1ac138a9e7dc7834b5c0b62a133ca5ce2ea80054
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78304656"
 ---
 # <a name="send-outgoing-calls-to-http-or-https-endpoints-by-using-azure-logic-apps"></a>使用 Azure 逻辑应用将传出呼叫发送到 HTTP 或 HTTPS 终结点
@@ -28,7 +28,7 @@ ms.locfileid: "78304656"
 
 根据目标终结点的功能，HTTP 连接器支持传输层安全性 (TLS) 版本 1.0、1.1 和 1.2。 逻辑应用通过使用可能支持的最高版本与终结点协商。 因此，例如，如果终结点支持 1.2 版，则连接器首先使用 1.2 版。 否则，连接器将使用下一个受支持的最高版本。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * Azure 订阅。 如果没有 Azure 订阅，请[注册一个 Azure 试用帐户](https://www.azure.cn/pricing/1rmb-trial/)。
 
@@ -42,7 +42,7 @@ ms.locfileid: "78304656"
 
 此内置触发器对终结点的指定 URL 发出 HTTP 调用，并返回响应。
 
-1. 登录到 [Azure 门户](https://portal.azure.cn)。 在逻辑应用设计器中打开空白逻辑应用。
+1. 登录 [Azure 门户](https://portal.azure.cn)。 在逻辑应用设计器中打开空白逻辑应用。
 
 1. 在“选择操作”  下的搜索框中，输入“http”作为筛选器。 在“触发器”列表中，选择“HTTP”触发器。  
 
@@ -65,13 +65,13 @@ ms.locfileid: "78304656"
 
 1. 继续使用触发器激发时运行的操作生成逻辑应用的工作流。
 
-1. 完成后，请记得保存逻辑应用。 在设计器工具栏上选择“保存”。 
+1. 完成后，请记得保存逻辑应用。 在设计器工具栏上，选择“保存”  。
 
 ## <a name="add-an-http-action"></a>添加 HTTP 操作
 
 此内置操作对终结点的指定 URL 发出 HTTP 调用，并返回响应。
 
-1. 登录到 [Azure 门户](https://portal.azure.cn)。 在逻辑应用设计器中打开逻辑应用。
+1. 登录 [Azure 门户](https://portal.azure.cn)。 在逻辑应用设计器中打开逻辑应用。
 
     此示例的第一步是使用 HTTP 触发器。
 
@@ -98,7 +98,7 @@ ms.locfileid: "78304656"
 
 1. 若要添加其他可用参数，请打开“添加新参数”列表，并选择所需的参数。 
 
-1. 完成后，请记得保存逻辑应用。 在设计器工具栏上选择“保存”。 
+1. 完成后，请记得保存逻辑应用。 在设计器工具栏上，选择“保存”  。
 
 ## <a name="content-with-multipartform-data-type"></a>具有多部分/表单数据类型的内容
 
@@ -159,8 +159,8 @@ ms.locfileid: "78304656"
 
 | 属性名称 | 类型 | 说明 |
 |---------------|------|-------------|
-| headers | object | 请求中的标头 |
-| body | object | JSON 对象 | 包含请求中正文内容的对象 |
+| headers | 对象 (object) | 请求中的标头 |
+| body | 对象 (object) | JSON 对象 | 包含请求中正文内容的对象 |
 | 状态代码 | int | 请求中的状态代码 |
 |||
 

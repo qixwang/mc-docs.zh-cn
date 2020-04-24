@@ -13,10 +13,10 @@ origin.date: 08/06/2019
 ms.date: 01/06/2020
 ms.author: v-jay
 ms.openlocfilehash: cf9b7fca9de52d6fa6db96cb3730de4eb52458b1
-ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77653526"
 ---
 # <a name="copy-data-from-and-to-ibm-informix-data-stores-using-azure-data-factory"></a>使用 Azure 数据工厂从/向 IBM Informix 数据存储复制数据

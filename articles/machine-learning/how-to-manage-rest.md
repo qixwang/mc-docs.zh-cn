@@ -11,10 +11,10 @@ ms.topic: conceptual
 origin.date: 01/31/2020
 ms.date: 03/16/2020
 ms.openlocfilehash: 375f03ca186e59c10de9ac03650165a158426cef
-ms.sourcegitcommit: d5eca3c6b03b206e441b599e5b138bd687a91361
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78934895"
 ---
 # <a name="create-run-and-delete-azure-ml-resources-using-rest"></a>使用 REST 创建、运行和删除 Azure ML 资源
@@ -33,12 +33,12 @@ ms.locfileid: "78934895"
 > * 使用 DELETE 请求清理资源 
 > * 使用基于密钥的授权来为部署的模型评分
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - 你对其拥有管理权限的 **Azure 订阅**。 如果没有此类订阅，请尝试注册[免费或付费的个人订阅](https://aka.ms/AMLFree)
 - 一个 [Azure 机器学习工作区](/machine-learning/how-to-manage-workspace)
 - 管理 REST 请求使用服务主体身份验证。 遵循[为 Azure 机器学习资源和工作流设置身份验证](/machine-learning/how-to-setup-authentication#set-up-service-principal-authentication)中的步骤在工作区中创建服务主体
-- **curl** 实用工具。 在[适用于 Linux 的 Windows 子系统](https://aka.ms/wslinstall/)或任何 UNIX 分发版中均已提供了 **curl** 程序。 在 PowerShell 中，**curl** 是 **Invoke-WebRequest** 的别名，并且 `curl -d "key=val" -X POST uri` 变成了 `Invoke-WebRequest -Body "key=val" -Method POST -Uri uri`。 
+- **curl** 实用工具。 在**适用于 Linux 的 Windows 子系统**或任何 UNIX 分发版中均已提供了 [curl](https://aka.ms/wslinstall/) 程序。 在 PowerShell 中，**curl** 是 **Invoke-WebRequest** 的别名，并且 `curl -d "key=val" -X POST uri` 变成了 `Invoke-WebRequest -Body "key=val" -Method POST -Uri uri`。 
 
 ## <a name="retrieve-a-service-principal-authentication-token"></a>检索服务主体身份验证令牌
 
@@ -188,12 +188,12 @@ providers/Microsoft.MachineLearningServices/workspaces/{your-workspace-name}/mod
 
 请注意，若要列出试验，路径需以 `history/v1.0` 开头；若要列出模型，路径需以 `modelmanagement/v1.0` 开头。 REST API 划分为多个操作组，每个操作组具有不同的路径。 以下链接中的 API 参考文档列出了各项操作及其参数和响应代码。
 
-|区域|`Path`|参考|
+|区域|路径|参考|
 |-|-|-|
 |项目|artifact/v2.0/|[REST API 参考](https://docs.microsoft.com/rest/api/azureml/artifacts)|
 |数据存储|datastore/v1.0/|[REST API 参考](https://docs.microsoft.com/rest/api/azureml/datastores)|
 |超参数优化|hyperdrive/v1.0/|[REST API 参考](https://docs.microsoft.com/rest/api/azureml/hyperparametertuning)|
-|模型|modelmanagement/v1.0/|[REST API 参考](https://docs.microsoft.com/rest/api/azureml/modelsanddeployments/mlmodels)|
+|Models|modelmanagement/v1.0/|[REST API 参考](https://docs.microsoft.com/rest/api/azureml/modelsanddeployments/mlmodels)|
 |运行历史记录|execution/v1.0/ and history/v1.0/|[REST API 参考](https://docs.microsoft.com/rest/api/azureml/runs)|
 
 可以使用以下常规模式浏览 REST API：
@@ -398,7 +398,7 @@ providers/Microsoft.Storage/storageAccounts/{your-storage-account-name}"
 ### <a name="moving-the-workspace"></a>移动工作区
 
 > [!WARNING]
-> 不支持将 Azure 机器学习工作区移到另一个订阅，或将拥有的订阅移到新租户。 这样做可能会导致错误。
+> 不支持将 Azure 机器学习工作区移动到另一个订阅，或将拥有的订阅移到新租户。 这样做可能会导致错误。
 
 ### <a name="deleting-the-azure-container-registry"></a>删除 Azure 容器注册表
 

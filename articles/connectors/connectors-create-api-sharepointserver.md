@@ -17,10 +17,10 @@ origin.date: 08/18/2016
 ms.author: v-yiso
 ms.date: 04/23/2018
 ms.openlocfilehash: 2caafe42695002c4272745b0ded602688434d9f3
-ms.sourcegitcommit: 1ac138a9e7dc7834b5c0b62a133ca5ce2ea80054
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78304678"
 ---
 # <a name="get-started-with-the-sharepoint-connector"></a>SharePoint 连接器入门
@@ -31,9 +31,9 @@ SharePoint 连接器提供在 SharePoint 上处理列表的方法。
 ## <a name="create-a-connection-to-sharepoint"></a>创建到 SharePoint 的连接
 要使用 SharePoint 连接器，首先创建**连接**，然后提供以下属性的详细信息： 
 
-| 属性 | 必须 | 说明 |
+| properties | 必选 | 说明 |
 | --- | --- | --- |
-| 令牌 |是 |提供 SharePoint 凭据 |
+| 标记 |是 |提供 SharePoint 凭据 |
 
 若要连接到 **SharePoint**，需要输入自己的标识（用户名和密码、智能卡凭据等）。 经过身份验证后，可以继续在逻辑应用中使用 SharePoint 连接器。 
 

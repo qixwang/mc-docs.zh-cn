@@ -3,7 +3,7 @@ documentType: LandingData
 title: Azure 存储文档
 metadata:
   title: Azure 存储文档 - 教程和 API 参考 | Microsoft 文档
-  description: Azure 存储是 Microsoft 托管的云服务，其所提供存储的可用性、安全性、持久性、可伸缩性和冗余性都很高。 Azure 存储包括 Azure Blob、Azure Data Lake Storage Gen2、Azure 文件、Azure 队列和 Azure 表。
+  description: Azure 存储是 Microsoft 托管的云服务，其提供的存储的可用性、安全性、持久性、可伸缩性和冗余性都很高。 Azure 存储包括 Azure Blob、Azure Data Lake Storage Gen2、Azure 文件、Azure 队列和 Azure 表。
   services: storage
   author: WenJason
   manager: digimobile

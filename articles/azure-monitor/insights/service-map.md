@@ -8,10 +8,10 @@ origin.date: 07/24/2019
 ms.date: 08/24/2019
 ms.author: v-lingwu
 ms.openlocfilehash: e5e76ba832228c3e65818d343955dd3e5531027e
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78850319"
 ---
 # <a name="using-service-map-solution-in-azure"></a>使用 Azure 中的服务映射解决方案

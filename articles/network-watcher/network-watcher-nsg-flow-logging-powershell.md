@@ -15,10 +15,10 @@ origin.date: 02/22/2017
 ms.date: 01/21/2019
 ms.author: v-lingwu
 ms.openlocfilehash: 54ba7f7176249c65ef6293780e5c3820b163d20e
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78154928"
 ---
 # <a name="configuring-network-security-group-flow-logs-with-powershell"></a>使用 PowerShell 配置网络安全组流日志

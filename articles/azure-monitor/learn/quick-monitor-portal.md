@@ -9,10 +9,10 @@ origin.date: 06/26/2019
 ms.date: 09/23/2019
 ms.custom: mvc
 ms.openlocfilehash: b2c59c7128b04bcdaea6d71eb89d96196919ffbd
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78850296"
 ---
 # <a name="start-monitoring-your-aspnet-web-application"></a>开始监视 ASP.NET Web 应用程序
@@ -21,15 +21,15 @@ ms.locfileid: "78850296"
 
 本快速入门演示如何将 Application Insights 添加到现有 ASP.NET Web 应用程序并开始分析实时统计信息，这只是可用来分析应用程序的各种方法之一。 如果没有 ASP.NET Web 应用程序，则可以按照[创建 ASP.NET Web 应用快速入门](../../app-service/app-service-web-get-started-dotnet-framework.md)创建一个。
 
-## <a name="prerequisites"></a>先决条件
-若要完成本快速入门教程，需先执行以下操作：
+## <a name="prerequisites"></a>必备条件
+完成本快速入门教程需要：
 
 - 使用以下工作负荷安装 [Visual Studio 2019](https://www.visualstudio.com/downloads/)：
     - ASP.NET 和 Web 开发
     - Azure 开发
 
 
-如果没有 Azure 订阅，请在开始前创建一个[试用帐户](https://www.azure.cn/zh-cn/pricing/1rmb-trial-full/?form-type=identityauth)。
+如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.azure.cn/zh-cn/pricing/1rmb-trial-full/?form-type=identityauth)。
 
 ## <a name="enable-application-insights"></a>启用 Application Insights
 
@@ -45,7 +45,7 @@ ms.locfileid: "78850296"
 
 4. 选择订阅并单击“注册”  。
 
-5. 选择“项目” > “管理 NuGet 包” > “包源: nuget.org” > “更新”，将 Application Insights SDK 包更新到最新稳定版本     。
+5. 选择“项目” **“管理 NuGet 包”** “包源: nuget.org” > “更新”，将 Application Insights SDK 包更新到最新稳定版本   >    >   。
 
 6. 通过从“调试”  菜单中选择“启动调试”  或通过按 F5 键来运行应用程序。
 
@@ -69,9 +69,9 @@ Application Insights 收集应用程序的遥测数据，而不考虑应用程�
 
     ![应用程序地图](media/quick-monitor-portal/05-appmap.png)
 
-3. 单击其中一个应用程序组件上的“应用分析”  图标 ![应用程序地图](media/quick-monitor-portal/app-viewinlogs-icon.png)“在日志(分析)中查看”  。 这将打开“日志(分析)”  ，该软件提供丰富的查询语言，可用于分析 Application Insights 收集的所有数据。 在本示例中，将生成以图表形式呈现请求计数的查询。 可以编写自己的查询来分析其他数据。
+3. 单击其中一个应用程序组件上的“应用分析”  图标 ![应用程序映射](media/quick-monitor-portal/app-viewinlogs-icon.png)“在日志(分析)中查看”  。 这将打开“日志(分析)”  ，该软件提供丰富的查询语言，可用于分析 Application Insights 收集的所有数据。 在本示例中，将生成以图表形式呈现请求计数的查询。 可以编写自己的查询来分析其他数据。
 
-    ![分析](media/quick-monitor-portal/6viewanalytics.png)
+    ![Analytics](media/quick-monitor-portal/6viewanalytics.png)
 
 4. 在“调查”下，单击左侧的“实时指标流”。  这将显示有关正在运行的应用程序的实时统计信息。 这包括传入请求数、这些请求的持续时间和发生的任何故障等信息。 还可以检查处理器和内存等关键性能指标。
 

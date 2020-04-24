@@ -7,10 +7,10 @@ origin.date: 05/25/2019
 ms.date: 07/26/2019
 ms.author: v-lingwu
 ms.openlocfilehash: 327e9d157572e364ccaf013f7a0f43c798a7b48d
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78850440"
 ---
 # <a name="application-insights-overriding-default-endpoints"></a>替代默认终结点的 Application Insights
@@ -57,7 +57,7 @@ ms.locfileid: "78850440"
   }
 ```
 
-实时指标和配置文件查询终结点的值只能通过代码设置。 若要通过代码替代所有终结点值的默认值，请在 `Startup.cs` 文件的 `ConfigureServices` 方法中进行以下更改：
+实时指标和配置文件查询终结点的值只能通过代码设置。 若要通过代码替代所有终结点值的默认值，请在 `ConfigureServices` 文件的 `Startup.cs` 方法中进行以下更改：
 
 ```csharp
 using Microsoft.ApplicationInsights.Extensibility.Implementation.ApplicationId;
@@ -177,7 +177,7 @@ Profile Endpoint: "Profile_Query_Endpoint_address"
 Live Metrics Endpoint: "QuickPulse_Endpoint_Address"
 ```
 
-### <a name="javascript"></a>Javascript
+### <a name="javascript"></a>JavaScript
 
 ```javascript
 <script type="text/javascript">
@@ -194,7 +194,7 @@ Live Metrics Endpoint: "QuickPulse_Endpoint_Address"
 
 目前唯一需要修改终结点的区域是 [Azure 政府](https://docs.microsoft.com/azure/azure-government/documentation-government-services-monitoringandmanagement#application-insights)和 [Azure 中国](https://docs.microsoft.com/azure/china/resources-developer-guide)。
 
-|区域 |  终结点名称 | Value |
+|区域 |  终结点名称 | 值 |
 |-----------------|:------------|:-------------|
 | Azure 中国 | 遥测通道 | `https://dc.applicationinsights.azure.cn/v2/track` |
 | Azure 中国 | QuickPulse（实时指标） |`https://quickpulse.applicationinsights.azure.cn/QuickPulseService.svc` |
@@ -206,7 +206,7 @@ Live Metrics Endpoint: "QuickPulse_Endpoint_Address"
 如果当前使用的是 [Application Insights REST API](https://dev.applicationinsights.io/
 )（通常通过“api.applicationinsights.io”访问），则需要使用你所在地区的本地终结点：
 
-|区域 |  终结点名称 | Value |
+|区域 |  终结点名称 | 值 |
 |-----------------|:------------|:-------------|
 | Azure 中国 | REST API | `api.applicationinsights.azure.cn` |
 > [!NOTE]

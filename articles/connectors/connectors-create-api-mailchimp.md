@@ -17,10 +17,10 @@ origin.date: 08/18/2016
 ms.author: v-yiso
 ms.date: 03/26/2018
 ms.openlocfilehash: 0170358bf4fe53da0d9fe054a1668a72ab78f61a
-ms.sourcegitcommit: 1ac138a9e7dc7834b5c0b62a133ca5ce2ea80054
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78304695"
 ---
 # <a name="get-started-with-the-mailchimp-connector"></a>MailChimp 连接器入门
@@ -31,9 +31,9 @@ MailChimp 是 SaaS 服务，允许企业管理和自动化电子邮件市场营�
 ## <a name="create-a-connection-to-mailchimp"></a>创建到 MailChimp 的连接
 要使用 MailChimp 创建逻辑应用，必须先创建**连接**，然后提供以下属性的详细信息：
 
-| 属性 | 必须 | 说明 |
+| properties | 必选 | 说明 |
 | --- | --- | --- |
-| 令牌 |是 |提供 MailChimp 凭据 |
+| 标记 |是 |提供 MailChimp 凭据 |
 
 > [!INCLUDE [Steps to create a connection to MailChimp](../../includes/connectors-create-api-mailchimp.md)]
 > 

@@ -12,10 +12,10 @@ ms.date: 03/04/2020
 ms.author: v-junlch
 ms.subservice: B2C
 ms.openlocfilehash: fb7da9d988588e8bb97b8da1c8e65e3ac11230f2
-ms.sourcegitcommit: 1ac138a9e7dc7834b5c0b62a133ca5ce2ea80054
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78265992"
 ---
 # <a name="predicates-and-predicatevalidations"></a>Predicates 和 PredicateValidations
@@ -32,7 +32,7 @@ Predicates  和 PredicateValidations  元素可用于执行验证过程，以确
 
 Predicate  元素定义基本验证，用以检查声明类型的值并返回 `true` 或 `false`。 可通过使用指定的 Method  元素和一组与该方法相关的 Parameter  元素来完成验证。 例如，谓词可以检查字符串声明值的长度是否在指定的最小和最大参数范围内，或者字符串声明值是否包含字符集。 如果检查失败，UserHelpText  元素将为用户提供一条错误消息。 UserHelpText  元素的值可以使用[语言自定义](localization.md)进行本地化。
 
-**Predicates** 元素必须紧跟在 [BuildingBlocks](buildingblocks.md) 元素中的 **ClaimsSchema** 元素之后。
+**Predicates** 元素必须紧跟在 **BuildingBlocks** 元素中的 [ClaimsSchema](buildingblocks.md) 元素之后。
 
 Predicates  元素包含以下元素：
 
@@ -42,10 +42,10 @@ Predicates  元素包含以下元素：
 
 Predicate  元素包含以下属性：
 
-| 属性 | 必须 | 说明 |
+| Attribute | 必选 | 说明 |
 | --------- | -------- | ----------- |
 | ID | 是 | 用于谓词的标识符。 其他元素可以在策略中使用此标识符。 |
-| 方法 | 是 | 用于验证的方法类型。 可能的值：IsLengthRange、MatchesRegex、IncludesCharacters 或 IsDateRange     。 IsLengthRange  值检查字符串声明值的长度是否在指定的最小和最大参数的范围内。 MatchesRegex  值检查字符串声明值是否与正则表达式相匹配。 IncludesCharacters  值检查字符串声明值是否包含字符集。 IsDateRange  值检查日期声明值是否在指定的最小和最大参数范围内。 |
+| 方法 | 是 | 用于验证的方法类型。 可能的值为：IsLengthRange  、MatchesRegex  、IncludesCharacters  或 IsDateRange  。 IsLengthRange  值检查字符串声明值的长度是否在指定的最小和最大参数的范围内。 MatchesRegex  值检查字符串声明值是否与正则表达式相匹配。 IncludesCharacters  值检查字符串声明值是否包含字符集。 IsDateRange  值检查日期声明值是否在指定的最小和最大参数范围内。 |
 | HelpText | 否 | 检查失败时向用户发送的错误消息。 此字符串可以使用[语言自定义](localization.md)进行本地化 |
 
 Predicate  元素包含以下元素：
@@ -113,7 +113,7 @@ Parameter  元素包含以下属性：
 
 尽管谓词定义了根据声明类型进行检查的验证，但是 PredicateValidations  会对一组谓词进行分组，以构成可应用于声明类型的用户输入验证。 每个 PredicateValidation  元素均包含一组 PredicateGroup  元素，其中包含一组指向 Predicate  的 PredicateReference  元素。 为了通过验证，声明的值应通过所有 PredicateGroup  下的任何谓词的全部测试，及其包含的一组 PredicateReference  元素。
 
-**PredicateValidations** 元素必须紧跟在 [BuildingBlocks](buildingblocks.md) 元素中的 **Predicates** 元素之后。
+**PredicateValidations** 元素必须紧跟在 **BuildingBlocks** 元素中的 [Predicates](buildingblocks.md) 元素之后。
 
 ```XML
 <PredicateValidations>
@@ -141,7 +141,7 @@ PredicateValidations  元素包含以下元素：
 
 PredicateValidation  元素包含以下属性：
 
-| 属性 | 必须 | 说明 |
+| Attribute | 必选 | 说明 |
 | --------- | -------- | ----------- |
 | ID | 是 | 用于谓词验证的标识符。 ClaimType  元素可以在策略中使用此标识符。 |
 
@@ -159,7 +159,7 @@ PredicateGroups  元素包含以下元素：
 
 PredicateGroup  元素包含以下属性：
 
-| 属性 | 必须 | 说明 |
+| Attribute | 必选 | 说明 |
 | --------- | -------- | ----------- |
 | ID | 是 | 用于谓词组的标识符。  |
 
@@ -172,7 +172,7 @@ PredicateGroup  元素包含以下元素：
 
 PredicateReferences  元素包含以下属性：
 
-| 属性 | 必须 | 说明 |
+| Attribute | 必选 | 说明 |
 | --------- | -------- | ----------- |
 | MatchAtLeast | 否 | 指定该值针对要接受的输入必须至少匹配多个谓词定义。 如果未指定，则该值必须与所有谓词定义匹配。 |
 
@@ -184,7 +184,7 @@ PredicateReferences  元素包含以下元素：
 
 PredicateReference  元素包含以下属性：
 
-| 属性 | 必须 | 说明 |
+| Attribute | 必选 | 说明 |
 | --------- | -------- | ----------- |
 | ID | 是 | 用于谓词验证的标识符。  |
 
@@ -347,7 +347,7 @@ PredicateReference  元素包含以下属性：
 
 ## <a name="configure-a-date-range"></a>配置日期范围
 
-借助 Predicates  和 PredicateValidations  元素，你可以通过使用 `DateTimeDropdown` 来控制 UserInputType  的最小和最大日期值。 如下例所示，可使用 `IsDateRange` 方法创建 Predicate  并提供最小和最大参数。
+借助 Predicates  和 PredicateValidations  元素，你可以通过使用  **来控制 UserInputType**`DateTimeDropdown` 的最小和最大日期值。 如下例所示，可使用  **方法创建 Predicate**`IsDateRange` 并提供最小和最大参数。
 
 ```XML
 <Predicates>
@@ -360,7 +360,7 @@ PredicateReference  元素包含以下属性：
 </Predicates>
 ```
 
-添加引用 `DateRange` 谓词的 PredicateValidation  。
+添加引用  **谓词的 PredicateValidation**`DateRange`。
 
 ```XML
 <PredicateValidations>

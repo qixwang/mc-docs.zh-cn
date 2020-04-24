@@ -11,10 +11,10 @@ ms.date: 03/04/2020
 ms.author: v-junlch
 ms.subservice: B2C
 ms.openlocfilehash: c87645808bf226bfbe544819c6272ca450ef43d4
-ms.sourcegitcommit: 1ac138a9e7dc7834b5c0b62a133ca5ce2ea80054
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78265951"
 ---
 # <a name="billing-model-for-azure-active-directory-b2c"></a>Azure Active Directory B2C 的计费模型
@@ -82,7 +82,7 @@ Azure Active Directory B2C (Azure AD B2C) 产生的使用费将从 Azure 订阅�
 
 链接到 Azure AD B2C 租户的订阅可用于对 Azure AD B2C 使用情况或其他 Azure 资源（包括其他 Azure AD B2C 资源）进行计费。 不能使用该订阅在 Azure AD B2C 租户中添加其他基于 Azure 许可证的服务或 Office 365 许可证。
 
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>必备条件
 
 * [Azure 订阅](https://www.azure.cn/pricing/1rmb-trial/)
 * 要链接到订阅的 [Azure AD B2C 租户](tutorial-create-tenant.md)
@@ -91,9 +91,9 @@ Azure Active Directory B2C (Azure AD B2C) 产生的使用费将从 Azure 订阅�
 
 ### <a name="create-the-link"></a>创建链接
 
-1. 登录到 [Azure 门户](https://portal.azure.cn)。
+1. 登录 [Azure 门户](https://portal.azure.cn)。
 1. 在顶部菜单中选择“目录 + 订阅”筛选器，然后选择包含要使用的 Azure 订阅的目录（不是包含 Azure AD B2C 租户的目录）。  
-1. 选择“创建资源”，在“搜索市场”字段中输入 `Active Directory B2C`，然后选择“Azure Active Directory B2C”。   
+1. 选择“创建资源”，在“搜索市场”字段中输入 **，然后选择“Azure Active Directory B2C”。** `Active Directory B2C` 
 1. 选择“创建” 
 1. 选择“将现有 Azure AD B2C 租户链接到我的 Azure 订阅”。 
 1. 从下拉列表中选择一个 **Azure AD B2C 租户**。 下拉列表中只显示你是其全局管理员且尚未链接到订阅的租户。 “Azure AD B2C 资源名称”字段中已预先填充所选 Azure AD B2C 租户的域名。 

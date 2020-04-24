@@ -8,10 +8,10 @@ origin.date: 07/25/2019
 ms.date: 09/20/2019
 ms.author: v-lingwu
 ms.openlocfilehash: 3e364edb7aef7a36ad3ada706289dcc2b4ddf694
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78850426"
 ---
 # <a name="export-telemetry-from-application-insights"></a>从 Application Insights 导出遥测数据
@@ -37,7 +37,7 @@ ms.locfileid: "78850426"
 
 * [Azure Data Lake Storage Gen2](/storage/blobs/data-lake-storage-introduction)。
 
-## <a name="setup"></a> 创建连续导出
+## <a name="create-a-continuous-export"></a><a name="setup"></a> 创建连续导出
 
 1. 在左侧“配置”下应用的 Application Insights 资源中，打开“连续导出”，并选择“添加”  ：
 
@@ -69,7 +69,7 @@ ms.locfileid: "78850426"
 ### <a name="cant-add-or-change-an-export"></a>无法添加或更改导出？
 * 若要添加或更改导出，需要“所有者”、“参与者”或“Application Insights 参与者”访问权限。 [了解角色][roles]。
 
-## <a name="analyze"></a> 获取哪些事件？
+## <a name="what-events-do-you-get"></a><a name="analyze"></a> 获取哪些事件？
 导出的数据是从应用程序接收的原始遥测数据，只不过我们添加了从客户端 IP 地址计算的位置数据。
 
 被[采样](../../azure-monitor/app/sampling.md)丢弃的数据不会包含在导出的数据中。
@@ -83,7 +83,7 @@ ms.locfileid: "78850426"
 >
 >
 
-## <a name="get"></a> 检查数据
+## <a name="inspect-the-data"></a><a name="get"></a> 检查数据
 可以直接在门户中检查存储。 单击最左侧菜单中的“主页”，在顶部显示“Azure 服务”的位置选择“存储帐户”  ，选择存储帐户名称，在“概述”页上选择“服务”下的“Blob”  ，最后选择容器名称。
 
 若要在 Visual Studio 中检查 Azure 存储，请依次打开“视图”、“Cloud Explorer”。   （如果没有此菜单命令，则需要安装 Azure SDK：打开“新建项目”  对话框，展开 Visual C#/云/并选择“用于 .NET 的 Microsoft Azure SDK”  。）
@@ -103,7 +103,7 @@ Where
 * `blobCreationTimeUtc` 是在内部暂存存储中创建 Blob 的时间
 * `blobDeliveryTimeUtc` 是将 Blob 复制到导出目标存储的时间
 
-## <a name="format"></a> 数据格式
+## <a name="data-format"></a><a name="format"></a> 数据格式
 * 每个 Blob 是一个文本文件，其中包含多个以“\n”分隔的行。 它包含大约半分钟时间内处理的遥测数据。
 * 每行代表遥测数据点，例如请求或页面视图。
 * 每行是未设置格式的 JSON 文档。 如果想要琢磨该文档，请在 Visual Studio 中打开它，并依次选择“编辑”、“高级”、“设置文件格式”：

@@ -10,10 +10,10 @@ ms.author: v-jay
 ms.subservice: common
 ms.reviewer: dineshm
 ms.openlocfilehash: 1fa50524cad7917e570884b02fa757d715c884a3
-ms.sourcegitcommit: fbc7584f403417d3af7bd6bbbaed7c13a78c57b9
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78412240"
 ---
 # <a name="configure-optimize-and-troubleshoot-azcopy"></a>对 AzCopy 进行配置、优化和故障排除
@@ -31,7 +31,7 @@ AzCopy 是一个命令行实用工具，可用于向/从存储帐户复制 Blob 
 
 若要为 AzCopy 配置代理设置，请设置 `https_proxy` 环境变量。 如果在 Windows 中运行 AzCopy，AzCopy 会自动检测代理设置，因此你无需在 Windows 中使用此设置。 如果在 Windows 中选择使用此设置，此设置会替代自动检测。
 
-| 操作系统 | 命令  |
+| 操作系统 | Command  |
 |--------|-----------|
 | **Windows** | 在命令提示符处使用 `set https_proxy=<proxy IP>:<proxy port>`<br> 在 PowerShell 中使用 `$env:https_proxy="<proxy IP>:<proxy port>"`|
 | **Linux** | `export https_proxy=<proxy IP>:<proxy port>` |
@@ -86,7 +86,7 @@ azcopy jobs resume <job-id> --cap-mbps 10
 
 如果计算机中的 CPU 少于 5 个，则此变量的值将设置为 `32`。 否则，默认值等于 16 乘以 CPU 数。 此变量的最大默认值为 `3000`，但可以手动增大或减小此值。 
 
-| 操作系统 | 命令  |
+| 操作系统 | Command  |
 |--------|-----------|
 | **Windows** | `set AZCOPY_CONCURRENCY_VALUE=<value>` |
 | **Linux** | `export AZCOPY_CONCURRENCY_VALUE=<value>` |
@@ -101,7 +101,7 @@ azcopy jobs resume <job-id> --cap-mbps 10
 设置 `AZCOPY_BUFFER_GB` 环境变量，以指定 AzCopy 在下载和上传文件时要使用的最大系统内存量。
 请以 GB 表示此值。
 
-| 操作系统 | 命令  |
+| 操作系统 | Command  |
 |--------|-----------|
 | **Windows** | `set AZCOPY_BUFFER_GB=<value>` |
 | **Linux** | `export AZCOPY_BUFFER_GB=<value>` |
@@ -130,7 +130,7 @@ AzCopy 为每个作业创建日志和计划文件。 可以使用日志调查并
 
 ### <a name="review-the-logs-for-errors"></a>查看日志中的错误
 
-以下命令从 `04dc9ca9-158f-7945-5933-564021086c79` 日志中获取 `UPLOADFAILED` 状态的所有错误：
+以下命令从 `UPLOADFAILED` 日志中获取 `04dc9ca9-158f-7945-5933-564021086c79` 状态的所有错误：
 
 **Windows (PowerShell)**
 
@@ -184,7 +184,7 @@ azcopy jobs resume <job-id> --destination-sas="<sas-token>"
 
 使用以下任何命令。
 
-| 操作系统 | 命令  |
+| 操作系统 | Command  |
 |--------|-----------|
 | **Windows** | `set AZCOPY_JOB_PLAN_LOCATION=<value>` |
 | **Linux** | `export AZCOPY_JOB_PLAN_LOCATION=<value>` |
@@ -196,7 +196,7 @@ azcopy jobs resume <job-id> --destination-sas="<sas-token>"
 
 使用以下任何命令。
 
-| 操作系统 | 命令  |
+| 操作系统 | Command  |
 |--------|-----------|
 | **Windows** | `set AZCOPY_LOG_LOCATION=<value>` |
 | **Linux** | `export AZCOPY_LOG_LOCATION=<value>` |

@@ -10,10 +10,10 @@ origin.date: 12/04/2018
 ms.date: 04/12/2019
 ms.author: v-lingwu
 ms.openlocfilehash: 949019bc5ce1456d112a4fdfe677246000a2e91c
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78850269"
 ---
 # <a name="parse-text-data-in-azure-monitor-logs"></a>分析 Azure Monitor 日志中的文本数据
@@ -168,7 +168,7 @@ SecurityEvent
 | summarize count() by PreAuthType
 ```
 
-## 使用函数模拟表 <a name="Use-function-to-simulate-a-table"></a>
+## <a name="use-function-to-simulate-a-table"></a>使用函数模拟表 <a name="Use-function-to-simulate-a-table"></a>
 可能具有对特定表执行相同分析的多个查询。 在这种情况下，[创建一个函数](functions.md)以返回经过分析的数据，而不是在每个查询中复制分析逻辑。 随后可以在其他查询中使用函数别名来代替原始表。
 
 请考虑上面的以逗号分隔的自定义日志示例。 若要在多个查询中使用经过分析的数据，请使用以下查询插件函数，并使用别名 _MyCustomCSVLog_ 保存它。

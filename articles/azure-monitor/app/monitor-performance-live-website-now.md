@@ -8,10 +8,10 @@ origin.date: 08/26/2019
 ms.date: 11/4/2019
 ms.author: v-lingwu
 ms.openlocfilehash: b633bdee41161c9e1e7d9a1a7ffb3b454d57c0a7
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78850405"
 ---
 # <a name="instrument-web-apps-at-runtime-with-application-insights-codeless-attach"></a>在运行时使用 Application Insights 无代码附加检测 Web 应用

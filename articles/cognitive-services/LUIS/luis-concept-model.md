@@ -13,10 +13,10 @@ origin.date: 10/25/2019
 ms.date: 11/18/2019
 ms.author: v-lingwu
 ms.openlocfilehash: eeb03fe3fe29ca0078a280b98cf1f11ae9896d77
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78154818"
 ---
 # <a name="design-with-intent-and-entity-models"></a>使用意向和实体模型进行设计 
@@ -50,7 +50,7 @@ LUIS 支持使用 V2 创作 API 的复合实体。 此功能提供类似的模�
 
 假设某个应用需要确定用户的预订意向，另一个应用需要客户的交货地址。 此应用具有两个意向：`OrderBook` 和 `ShippingLocation`。
 
-以下言语是 `OrderBook` 意向的**积极示例**，以及 `ShippingLocation` 和 `None` 意向的**消极示例**： 
+以下言语是  **意向的**积极示例`OrderBook`，以及 **和** 意向的`ShippingLocation`消极示例`None`： 
 
 `Buy the top-rated book on bot architecture.`
 

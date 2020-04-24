@@ -12,10 +12,10 @@ origin.date: 02/24/2020
 ms.date: 03/16/2020
 ms.custom: Ignite2019
 ms.openlocfilehash: f17975ff76510fd670306a8de274a82ba07b3af5
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78850212"
 ---
 # <a name="run-batch-predictions-using-azure-machine-learning-designer-preview"></a>使用 Azure 机器学习设计器运行批量预测（预览版）
@@ -32,7 +32,7 @@ ms.locfileid: "78850212"
 
 若要了解如何使用 SDK 设置批量评分服务，请参阅随附的[操作指南](how-to-run-batch-predictions.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 本操作指南假设已有了一个训练管道。 有关设计器的引导式介绍，请参阅[设计器教程的第一部分](tutorial-designer-automobile-price-train-score.md)。 
 

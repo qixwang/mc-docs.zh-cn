@@ -12,10 +12,10 @@ ms.topic: conceptual
 origin.date: 11/19/2018
 ms.date: 03/02/2020
 ms.openlocfilehash: 21ec501e17b11da5a92d6625ce0c11b87b832156
-ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77653591"
 ---
 # <a name="visually-monitor-azure-data-factory"></a>以可视化方式监视 Azure 数据工厂

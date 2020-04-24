@@ -1,5 +1,5 @@
 ---
-title: 使用 .NET SDK 管理流式处理终结点 | Microsoft Docs
+title: 使用 .NET SDK 管理流式处理终结点。 | Microsoft Docs
 description: 本文说明如何使用 Azure 门户管理流式处理终结点。
 services: media-services
 documentationcenter: ''
@@ -17,18 +17,18 @@ origin.date: 03/18/2019
 ms.date: 09/23/2019
 ms.author: v-jay
 ms.openlocfilehash: 58360b70cf7d6a70be640d9485609f2aea7c0b92
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78850563"
 ---
 # <a name="manage-streaming-endpoints-with-net-sdk"></a>使用 .NET SDK 管理流式处理终结点  
 
 >[!NOTE]
->请确保查看[概述](media-services-streaming-endpoints-overview.md)一文。 另请查看 [StreamingEndpoint](https://docs.microsoft.com/rest/api/media/operations/streamingendpoint)。
+>请确保查看[概述](media-services-streaming-endpoints-overview.md)一文。 此外，请查看 [StreamingEndpoint](https://docs.microsoft.com/rest/api/media/operations/streamingendpoint)。
 
-本文中的代码演示了如何使用 Azure 媒体服务 .NET SDK 执行以下任务：
+本文中的代码演示如何使用 Azure 媒体服务 .NET SDK 执行以下任务：
 
 - 检查默认的流式处理终结点。
 - 创建/添加新的流式处理终结点。
@@ -45,11 +45,11 @@ ms.locfileid: "78850563"
     >[!NOTE]
     >无法删除默认流式处理终结点。
 
-有关如何缩放流式处理终结点的信息，请参阅[此](media-services-portal-scale-streaming-endpoints.md)文章。
+有关如何缩放流式处理终结点的信息，请参阅[这篇文章](media-services-portal-scale-streaming-endpoints.md)。
 
 ## <a name="create-and-configure-a-visual-studio-project"></a>创建和配置 Visual Studio 项目
 
-设置开发环境，并在 app.config 文件中填充连接信息，如[使用 .NET 进行媒体服务开发](media-services-dotnet-how-to-use.md)中所述。 
+设置开发环境，并根据[使用 .NET 进行媒体服务开发](media-services-dotnet-how-to-use.md)中所述，在 app.config 文件中填充连接信息。 
 
 ## <a name="add-code-that-manages-streaming-endpoints"></a>添加管理流式处理终结点的代码
     

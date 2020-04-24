@@ -7,10 +7,10 @@ ms.topic: reference
 ms.date: 03/02/2020
 ms.author: v-junlch
 ms.openlocfilehash: 9db733adb21b77cbf13a460d4a5e4fb268c26328
-ms.sourcegitcommit: 590844334d9e57a8742777235c2c3de8f25f20ab
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/10/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78964220"
 ---
 # <a name="azure-event-hubs-trigger-and-bindings-for-azure-functions"></a>Azure Functions 的 Azure 事件中心触发器和绑定

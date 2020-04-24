@@ -13,10 +13,10 @@ ms.reviewer: jrasnick
 manager: digimobile
 ms.custom: seo-lt-2019
 ms.openlocfilehash: d539f4af8246dd2913bc7b5909464ec67c063333
-ms.sourcegitcommit: 892137d117bcaf9d88aec0eb7ca756fe39613344
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78154345"
 ---
 # <a name="azure-sql-data-warehouse-release-notes"></a>Azure SQL 数据仓库发行说明

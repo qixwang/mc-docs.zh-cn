@@ -14,10 +14,10 @@ ms.custom: seo-lt-2019
 origin.date: 02/14/2020
 ms.date: 03/02/2020
 ms.openlocfilehash: 647386ddd14a563ac9b23fa462492f1f575ec938
-ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77653506"
 ---
 # <a name="customize-the-setup-for-an-azure-ssis-integration-runtime"></a>自定义 Azure-SSIS Integration Runtime 的安装
@@ -122,7 +122,7 @@ Azure-SQL Server Integration Services Integration Runtime (Azure-SSIS IR) 的自
 
      * 如果选择“oh22 的 HEDDA.IO”组件，可在购买 oh22 服务后，在 Azure-SSIS IR 上安装 oh22 的 [HEDDA.IO](https://hedda.io/ssis-component/) 数据质量/清理组件  。 当前的集成版本是 1.0.13  。
 
-     * 如果选择“oh22 的 SQLPhonetics.NET”组件，可通过在“许可证密钥”框中输入从 oh22 购买的产品许可证密钥，在 Azure-SSIS IR 上安装 oh22 的 [SQLPhonetics.NET](https://sqlphonetics.oh22.is/sqlphonetics-net-for-microsoft-ssis/) 数据质量/匹配组件。   当前的集成版本是 **1.0.43**。
+     * 如果选择“oh22 的 SQLPhonetics.NET”组件，可通过在“许可证密钥”框中输入从 oh22 购买的产品许可证密钥，在 Azure-SSIS IR 上安装 oh22 的 [SQLPhonetics.NET](https://sqlphonetics.oh22.is/sqlphonetics-net-for-microsoft-ssis/) 数据质量/匹配组件。   当前的集成版本是 1.0.43  。
 
      * 如果选择“KingswaySoft 的 SSIS Integration Toolkit”组件，可以通过在“许可密钥”框中输入从 KingswaySoft 购买的产品许可密钥，在 Azure-SSIS IR 上安装适用于 KingswaySoft 所提供的 CRM/ERP/营销/协作应用（例如 Microsoft Dynamics/SharePoint/Project Server、Oracle/Salesforce Marketing Cloud 等）的 [SSIS Integration Toolkit](https://www.kingswaysoft.com/products/ssis-integration-toolkit-for-microsoft-dynamics-365) 套件。   当前的集成版本是 **2019.2**。
 

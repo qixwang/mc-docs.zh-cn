@@ -10,10 +10,10 @@ ms.date: 03/09/2020
 ms.author: v-yeche
 tags: connectors
 ms.openlocfilehash: b7243a8bc683d6812c5bd6f36b002546da1a544c
-ms.sourcegitcommit: 1ac138a9e7dc7834b5c0b62a133ca5ce2ea80054
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78304681"
 ---
 # <a name="get-started-with-the-onedrive-for-business-connector"></a>OneDrive for Business 连接器入门
@@ -24,9 +24,9 @@ ms.locfileid: "78304681"
 ## <a name="create-a-connection-to-onedrive-for-business"></a>创建到 OneDrive for Business 的连接
 要使用 OneDrive for Business 创建逻辑应用，必须先创建**连接**，然后提供以下属性的详细信息：
 
-| 属性 | 必须 | 说明 |
+| properties | 必选 | 说明 |
 | --- | --- | --- |
-| 令牌 |是 |提供 OneDrive for Business 凭据 |
+| 标记 |是 |提供 OneDrive for Business 凭据 |
 
 创建连接后，可使用它执行操作并侦听触发器，如本文所述。
 

@@ -8,10 +8,10 @@ ms.topic: conceptual
 origin.date: 10/14/2019
 ms.date: 03/02/2020
 ms.openlocfilehash: a3aeb63f9f98998bfc8239b009d9a854022541c5
-ms.sourcegitcommit: 892137d117bcaf9d88aec0eb7ca756fe39613344
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78154402"
 ---
 # <a name="monitor-performance-with-the-query-store"></a>使用查询存储监视性能

@@ -8,10 +8,10 @@ origin.date: 02/10/2020
 ms.date: 03/09/2020
 ms.author: v-yeche
 ms.openlocfilehash: 2dd6beccf1fde1f59796f7233d1a25679c06c15b
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78850480"
 ---
 # <a name="pull-images-from-an-azure-container-registry-to-a-kubernetes-cluster"></a>将映像从 Azure 容器注册表拉取到 Kubernetes 群集

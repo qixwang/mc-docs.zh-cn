@@ -11,10 +11,10 @@ author: maxluk
 ms.reviewer: sdgilley
 ms.date: 08/02/2019
 ms.openlocfilehash: 73c86e10b900fa79d0feec2169a9bdbec5389da7
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78850209"
 ---
 # <a name="train-and-register-chainer-models-at-scale-with-azure-machine-learning"></a>使用 Azure 机器学习大规模训练并注册 Chainer 模型

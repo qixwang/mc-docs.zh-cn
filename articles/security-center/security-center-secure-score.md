@@ -15,10 +15,10 @@ origin.date: 1/15/2019
 ms.date: 09/22/2019
 ms.author: v-lingwu
 ms.openlocfilehash: a483d664eebf3707af8fd354ac7748745aac464c
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78155006"
 ---
 # <a name="improve-your-secure-score-in-azure-security-center"></a>提高 Azure 安全中心的安全评分

@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/06/2019
 ms.author: larryfr
 ms.openlocfilehash: c3d39c2cdf52464306786eb3e5fded41a5eb1ce8
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78849891"
 ---
 `inferenceconfig.json` 文档中的条目映射到 [InferenceConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.inferenceconfig?view=azure-ml-py) 类的参数。 下表描述了 JSON 文档中的实体与方法参数之间的映射：
@@ -20,7 +20,7 @@ ms.locfileid: "78849891"
 | `condaFile` | `conda_file` | 可选。 包含要用于映像的 Conda 环境定义的本地文件路径。  如果设置 `environment`，则会忽略此项。 |
 | `extraDockerFileSteps` | `extra_docker_file_steps` | 可选。 包含设置映像时要运行的附加 Docker 步骤的本地文件路径。  如果设置 `environment`，则会忽略此项。|
 | `sourceDirectory` | `source_directory` | 可选。 包含用于创建映像的所有文件的文件夹路径，因此可以轻松地访问此文件夹或子文件夹中的任何文件。 可以从本地计算机上传整个文件夹，作为 Webservice 的依赖项。 注意：entry_script、conda_file 和 extra_docker_file_steps 路径是 source_directory 路径的相对路径。 |
-| `enableGpu` | `enable_gpu` | 可选。 是否在映像中启用 GPU 支持。 GPU 映像必须在 Azure 服务上运行，如 Azure 容器实例。 例如，Azure 机器学习计算、Azure 虚拟机和 Azure Kubernetes 服务。 默认为 False。 如果设置 `environment`，则会忽略此项。|
+| `enableGpu` | `enable_gpu` | 可选。 是否在映像中启用 GPU 支持。 GPU 映像必须在 Azure 服务上运行，如 Azure 容器实例。 例如，Azure 机器学习计算、Azure 虚拟机和 Azure Kubernetes 服务。 默认值为 False。 如果设置 `environment`，则会忽略此项。|
 | `baseImage` | `base_image` | 可选。 要用作基础映像的自定义映像。 如果未提供基础映像，则该映像将基于提供的运行时参数。 如果设置 `environment`，则会忽略此项。 |
 | `baseImageRegistry` | `base_image_registry` | 可选。 包含基础映像的映像注册表。 如果设置 `environment`，则会忽略此项。|
 | `cudaVersion` | `cuda_version` | 可选。 要为需要 GPU 支持的映像安装的 CUDA 版本。 必须在 Azure 服务上使用 GPU 映像。 例如，Azure 容器实例、Azure 机器学习计算、Azure 虚拟机和 Azure Kubernetes 服务。 支持的版本为 9.0、9.1 和 10.0。 如果设置 `enable_gpu`，则默认为 9.1。 如果设置 `environment`，则会忽略此项。 |

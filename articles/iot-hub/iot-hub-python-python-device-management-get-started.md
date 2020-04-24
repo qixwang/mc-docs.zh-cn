@@ -12,10 +12,10 @@ origin.date: 01/17/2020
 ms.date: 03/09/2020
 ms.author: v-yiso
 ms.openlocfilehash: d2d65c6a749a09d7ff34b0bf06ee820226fe512c
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78155002"
 ---
 # <a name="get-started-with-device-management-python"></a>设备管理入门 (Python)
@@ -36,7 +36,7 @@ ms.locfileid: "78155002"
 
 [!INCLUDE [iot-hub-include-python-sdk-note](../../includes/iot-hub-include-python-sdk-note.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 [!INCLUDE [iot-hub-include-python-installation-notes](../../includes/iot-hub-include-python-v2-installation-notes.md)]
 
@@ -56,7 +56,7 @@ ms.locfileid: "78155002"
 
 * 创建一个 Python 控制台应用，用于响应通过云调用的直接方法
 * 模拟设备重新启动
-* 使用报告属性，允许通过设备孪生查询标识设备及其上次重启的时间
+* 通过报告的属性，设备孪生查询可标识设备及设备上次重新启动的时间
 
 1. 在命令提示符处，运行以下命令以安装 **azure-iot-device** 包：
 
@@ -66,7 +66,7 @@ ms.locfileid: "78155002"
 
 2. 使用文本编辑器，在工作目录中创建名为 **dmpatterns_getstarted_device.py** 的文件。
 
-3. 在 **dmpatterns_getstarted_device.py** 文件开头添加以下 `import` 语句。
+3. 在 `import`dmpatterns_getstarted_device.py**文件开头添加以下** 语句。
 
     ```python
     import threading
@@ -158,7 +158,7 @@ ms.locfileid: "78155002"
 
 2. 使用文本编辑器，在工作目录中创建名为 **dmpatterns_getstarted_service.py** 的文件。
 
-3. 在 **dmpatterns_getstarted_service.py** 文件开头添加以下 `import` 语句。
+3. 在 `import`dmpatterns_getstarted_service.py**文件开头添加以下** 语句。
 
     ```python
     import sys, time

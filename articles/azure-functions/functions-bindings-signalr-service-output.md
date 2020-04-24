@@ -6,10 +6,10 @@ ms.topic: reference
 ms.date: 03/02/2020
 ms.author: v-junlch
 ms.openlocfilehash: 732bde1ba58b63a98c2d6c24b3183c1bcaf5312e
-ms.sourcegitcommit: 1ac138a9e7dc7834b5c0b62a133ca5ce2ea80054
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78266112"
 ---
 # <a name="signalr-service-output-binding-for-azure-functions"></a>Azure Functions 的 SignalR 服务输出绑定
@@ -21,7 +21,7 @@ ms.locfileid: "78266112"
 
 输出绑定还允许管理组。
 
-有关设置和配置详细信息，请参阅[概述](functions-bindings-signalr-service.md)。
+若要了解设置和配置详细信息，请参阅[概述](functions-bindings-signalr-service.md)。
 
 ## <a name="broadcast-to-all-clients"></a>广播到所有客户端
 
@@ -588,9 +588,9 @@ public SignalRGroupAction removeFromGroup(
 
 |function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
-|**type**| 不适用 | 必须设置为 `signalRConnectionInfo`。|
-|**direction**| 不适用 | 必须设置为 `in`。|
-|**name**| 不适用 | 变量名称，在连接信息对象的函数代码中使用。 |
+|type | 不适用 | 必须设置为 `signalRConnectionInfo`。|
+|direction | 不适用 | 必须设置为 `in`。|
+|name | 不适用 | 变量名称，在连接信息对象的函数代码中使用。 |
 |**hubName**|**HubName**| 此值必须设置为 SignalR 中心（将为其生成连接信息）的名称。|
 |**userId**|**UserId**| 可选：将要在访问密钥令牌中设置的用户标识符声明的值。 |
 |**connectionStringSetting**|**ConnectionStringSetting**| 应用设置的名称，该设置包含 SignalR 服务连接字符串（默认为“AzureSignalRConnectionString”） |
@@ -601,9 +601,9 @@ public SignalRGroupAction removeFromGroup(
 
 |function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
-|**type**| 不适用 | 必须设置为 `signalR`。|
-|**direction**| 不适用 | 必须设置为 `out`。|
-|**name**| 不适用 | 变量名称，在连接信息对象的函数代码中使用。 |
+|type | 不适用 | 必须设置为 `signalR`。|
+|direction | 不适用 | 必须设置为 `out`。|
+|name | 不适用 | 变量名称，在连接信息对象的函数代码中使用。 |
 |**hubName**|**HubName**| 此值必须设置为 SignalR 中心（将为其生成连接信息）的名称。|
 |**connectionStringSetting**|**ConnectionStringSetting**| 应用设置的名称，该设置包含 SignalR 服务连接字符串（默认为“AzureSignalRConnectionString”） |
 

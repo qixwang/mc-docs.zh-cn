@@ -11,10 +11,10 @@ ms.author: keli19
 origin.date: 02/11/2020
 ms.date: 03/09/2020
 ms.openlocfilehash: 4a01466e2c16a1cfdbade34693ea15ca8c42445e
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78154944"
 ---
 # <a name="evaluate-model-module"></a>“评估模型”模块
@@ -84,7 +84,7 @@ ms.locfileid: "78154944"
 + [分类模型](#bkmk_classification)
 + [回归模型](#bkmk_regression)
 
-###  <a name="bkmk_classification"></a> 分类模型的指标
+###  <a name="metrics-for-classification-models"></a><a name="bkmk_classification"></a> 分类模型的指标
 
 评估分类模型时，将报告以下指标。 如果比较模型，将按选择用于评估的指标为这些模型排名。  
   
@@ -102,7 +102,7 @@ ms.locfileid: "78154944"
   
 - “训练对数损失”是表示分类器相比随机预测的优势的单个评分。  对数损失通过将模型输出的概率与标签中的已知值（真实值）进行比较，来度量模型的不确定性。 我们希望最大程度地减小整个模型的对数损失。
 
-###  <a name="bkmk_regression"></a> 回归模型的指标
+###  <a name="metrics-for-regression-models"></a><a name="bkmk_regression"></a> 回归模型的指标
  
 针对回归模型返回的指标旨在估计误差量。  如果观测值与预测值之间的差很小，则认为模型能够很好地拟合数据。 不过，查看残差模式（任何一个预测点与其对应实际值之间的差）可以很好地判断模型中的潜在偏差。  
   

@@ -16,10 +16,10 @@ origin.date: 03/18/2019
 ms.date: 09/23/2019
 ms.author: v-jay
 ms.openlocfilehash: 5cc9d0926c885ff235e4cd2238cb43a75be4e6a2
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78850562"
 ---
 # <a name="filters-and-dynamic-manifests"></a>筛选器和动态清单
@@ -99,7 +99,7 @@ ms.locfileid: "78850562"
 > 
 > 
 
-### <a id="filters"></a>筛选器
+### <a name="filters"></a><a id="filters"></a>筛选器
 有两种类型的资产筛选器： 
 
 * 全局筛选器（可以应用到 Azure 媒体服务帐户中所有的资产，拥有帐户的生存期）和 
@@ -107,7 +107,7 @@ ms.locfileid: "78850562"
 
 全局和本地筛选器类型具有完全相同的属性。 两者的主要差异在于它们更适合哪些方案。 全局筛选器通常适用于设备配置文件（再现内容筛选），而本地筛选器可用于修剪特定的资产。
 
-## <a id="scenarios"></a>常见方案
+## <a name="common-scenarios"></a><a id="scenarios"></a>常见方案
 如前所述，在将内容传送到客户（流式传输直播活动或视频点播）时，目标就是：将优质视频传递到处于不同网络条件下的各种设备。 此外，可能在筛选资产与使用**动态清单**方面具有其他的要求。 以下部分提供了不同筛选方案的简要概述。
 
 * 仅指定某些设备可以处理的音频和视频再现内容子集（而不是与该资产关联的所有再现内容）。 

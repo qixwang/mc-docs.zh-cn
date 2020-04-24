@@ -8,24 +8,24 @@ origin.date: 10/11/2019
 ms.date: 2/18/2020
 ms.author: v-lingwu
 ms.openlocfilehash: e5169df130372c178a30458b1abb649a7b8a0932
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78850398"
 ---
 # <a name="set-up-azure-monitor-for-your-python-application-preview"></a>为 Python 应用程序设置 Azure Monitor（预览版）
 
 Azure Monitor 通过与 [OpenCensus](https://opencensus.io) 集成，来支持 Python 应用程序的分布式跟踪、指标收集和日志记录。 本文将逐步介绍设置 OpenCensus for Python 并将监视数据发送到 Azure Monitor 的过程。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
-- Azure 订阅。 如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.azure.cn/zh-cn/pricing/1rmb-trial-full/?form-type=identityauth)。
+- Azure 订阅。 如果没有 Azure 订阅，可在开始前创建一个 [试用帐户](https://www.azure.cn/zh-cn/pricing/1rmb-trial-full/?form-type=identityauth) 。
 - Python 安装。 本文使用 [Python 3.7.0](https://www.python.org/downloads/)，不过更低的版本在经过轻微的更改后也可能适用。
 
 ## <a name="sign-in-to-the-azure-portal"></a>登录到 Azure 门户
 
-登录到 [Azure 门户](https://portal.azure.cn/)。
+登录 [Azure 门户](https://portal.azure.cn/)。
 
 ## <a name="create-an-application-insights-resource-in-azure-monitor"></a>在 Azure Monitor 中创建 Application Insights 资源
 
@@ -37,10 +37,10 @@ Azure Monitor 通过与 [OpenCensus](https://opencensus.io) 集成，来支持 P
 
 1. 此时会显示一个配置框。 参考下表填写输入字段。
 
-   | 设置        | Value           | 说明  |
+   | 设置        | 值           | 说明  |
    | ------------- |:-------------|:-----|
-   | **名称**      | 全局唯一值 | 用于标识所监视的应用的名称 |
-   | **资源组**     | MyResourceGroup      | 用于托管 Application Insights 数据的新资源组的名称 |
+   | **名称**      | 全局唯一值 | 标识所监视的应用的名称 |
+   | **资源组**     | myResourceGroup      | 用于托管 Application Insights 数据的新资源组的名称 |
    | **位置** | 中国东部 | 离你较近的位置或离托管应用的位置较近的位置 |
 
 1. 选择“创建”  。
@@ -142,7 +142,7 @@ SDK 使用三个 Azure Monitor 导出程序将不同类型的遥测数据发送�
 
 有关在将跟踪的遥测发送到 Azure Monitor 之前如何对其进行修改的详细信息，请参阅 OpenCensus Python [遥测处理器](https://docs.microsoft.com/azure/azure-monitor/app/api-filtering-sampling#opencensus-python-telemetry-processors)。
 
-### <a name="metrics"></a>指标
+### <a name="metrics"></a>度量值
 
 1. 首先，让我们生成一些本地指标数据。 我们将创建一个简单的指标，用于跟踪用户按 Enter 的次数。
 
@@ -335,7 +335,7 @@ SDK 使用三个 Azure Monitor 导出程序将不同类型的遥测数据发送�
 > [!NOTE]
 > 此上下文中的 `traces` 不同于 `Tracing`。 `traces` 是指使用 `AzureLogHandler` 时 Azure Monitor 中会出现的遥测类型。 `Tracing` 是指 OpenCensus 中的一种概念，与[分布式跟踪](https://docs.microsoft.com/azure/azure-monitor/app/distributed-tracing)相关。
 
-5. 若要设置日志消息的格式，可以使用内置 Python [日志记录 API](https://docs.python.org/3/library/logging.html#formatter-objects) 中的 `formatters`。
+5. 若要设置日志消息的格式，可以使用内置 Python `formatters`日志记录 API[ 中的 ](https://docs.python.org/3/library/logging.html#formatter-objects)。
 
     ```python
     import logging

@@ -10,10 +10,10 @@ metadata:
   ms.service: dms
   ms.topic: landing-page
   ms.openlocfilehash: 9016f3181884911272a88d50e58fec65753b80a5
-  ms.sourcegitcommit: df370a03d71b94c876e19294d75d4ff77809da11
+  ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 03/03/2020
+  ms.lasthandoff: 04/17/2020
   ms.locfileid: "78238522"
 landingContent:
 - title: 关于 Azure 数据库迁移服务

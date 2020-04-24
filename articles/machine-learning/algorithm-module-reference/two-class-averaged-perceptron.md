@@ -11,10 +11,10 @@ ms.author: v-yiso
 origin.date: 10/22/2019
 ms.date: 03/09/2020
 ms.openlocfilehash: 0ffcaf6a4719ba6e06df0643a4a862b34ae73587
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78154937"
 ---
 # <a name="two-class-averaged-perceptron-module"></a>双类平均感知器模块

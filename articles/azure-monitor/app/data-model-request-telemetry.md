@@ -8,10 +8,10 @@ ms.date: 6/4/2019
 ms.reviewer: sergkanz
 ms.author: v-lingwu
 ms.openlocfilehash: c29cad0b1c873f3a611c1e868c9523a1d1b31d9a
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78850435"
 ---
 # <a name="request-telemetry-application-insights-data-model"></a>请求遥测：Application Insights 数据模型
@@ -22,7 +22,7 @@ ms.locfileid: "78850435"
 
 ## <a name="name"></a>名称
 
-请求的名称表示用于处理该请求的代码路径。 较小的基数值对请求分组更有利。 对于 HTTP 请求，该名称表示 HTTP 方法和 URL 路径模板，例如，不带实际 `id` 值的 `GET /values/{id}`。
+请求的名称表示用于处理该请求的代码路径。 较小的基数值对请求分组更有利。 对于 HTTP 请求，该名称表示 HTTP 方法和 URL 路径模板，例如，不带实际 `GET /values/{id}` 值的 `id`。
 
 在字母大小写方面，Application Insights Web SDK 会“按原样”发送请求名称。 UI 上的分组区分大小写，因此 `GET /Home/Index` 被视为不同于 `GET /home/INDEX`，即使两者通常生成相同的控制器和操作执行。 原因在于，URL 往往[区分大小写](https://www.w3.org/TR/WD-html40-970708/htmlweb.html)。 可能想要确定所有 `404` 是否发生在以大写形式键入的 URL 上。 可在该[博客文章](https://apmtips.com/blog/2015/02/23/request-name-and-url/)中详细了解 ASP.NET Web SDK 如何处理请求名称集合。
 
@@ -34,19 +34,19 @@ ms.locfileid: "78850435"
 
 最大长度：128 个字符
 
-## <a name="url"></a>Url
+## <a name="url"></a>URL
 
 包含所有查询字符串参数的请求 URL。
 
 最大长度：2048 个字符
 
-## <a name="source"></a>Source
+## <a name="source"></a>源
 
 请求的源。 示例包括调用方的检测密钥或调用方的 IP 地址。 有关详细信息，请参阅[关联](../../azure-monitor/app/correlation.md)页。
 
 最大长度：1024 个字符
 
-## <a name="duration"></a>持续时间
+## <a name="duration"></a>Duration
 
 请求持续时间，格式为：`DD.HH:MM:SS.MMMMMM`。 必须是正数且小于 `1000` 天。 此字段是必填的，因为请求遥测表示具有开始和结束时间的操作。
 

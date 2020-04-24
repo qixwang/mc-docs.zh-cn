@@ -15,17 +15,17 @@ origin.date: 06/19/2017
 ms.date: 04/30/2018
 ms.author: v-lingwu
 ms.openlocfilehash: 80801b14cb84475fb9cd3644280822ef0bd37a37
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78154567"
 ---
 # <a name="introduction-to-resource-troubleshooting-in-azure-network-watcher"></a>在 Azure 网络观察程序中进行资源故障排除简介
 
 虚拟网关在 Azure 中的本地资源和其他虚拟网络之间提供连接。 监视网关及其连接对于确保通信不中断至关重要。 网络观察程序提供对网关和连接进行故障排除的功能。 可通过门户、PowerShell、Azure CLI 或 REST API 调用该功能。 调用后，网络观察程序将对网关或连接的运行状况进行诊断，并返回相应的结果。 该请求是一个长时间运行的事务。 诊断完成后，将返回结果。
 
-![门户][2]
+![portal][2]
 
 ## <a name="results"></a>结果
 
@@ -49,7 +49,7 @@ ms.locfileid: "78154567"
 
 ### <a name="gateway"></a>网关
 
-| 错误类型 | Reason | 日志|
+| 错误类型 | 原因 | 日志|
 |---|---|---|
 | NoFault | 未检测到任何错误 |是|
 | GatewayNotFound | 无法找到网关，或未预配网关 |否|
@@ -64,7 +64,7 @@ ms.locfileid: "78154567"
 
 ### <a name="connection"></a>连接
 
-| 错误类型 | Reason | 日志|
+| 错误类型 | 原因 | 日志|
 |---|---|---|
 | NoFault | 未检测到任何错误 |是|
 | GatewayNotFound | 无法找到网关，或未预配网关 |否|
@@ -75,7 +75,7 @@ ms.locfileid: "78154567"
 | ConnectionIsMarkedDisconnected | 连接标记为“断开连接” |否|
 | ConnectionNotConfiguredOnGateway | 未在基础服务上配置连接。 | 是 |
 | ConnectionMarkedStandby | 底层服务标记为备用。| 是|
-| 身份验证 | 预共享密钥不匹配 | 是|
+| Authentication | 预共享密钥不匹配 | 是|
 | PeerReachability | 无法访问对等网关。 | 是|
 | IkePolicyMismatch | 对等网关中的 IKE 策略不受 Azure 支持。 | 是|
 | WfpParse Error | 分析 WFP 日志时出错。 |是|

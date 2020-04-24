@@ -10,10 +10,10 @@ ms.topic: conceptual
 origin.date: 1/27/2020
 ms.date: 03/16/2020
 ms.openlocfilehash: f09fa6b21f9624dad083faa1506b30e1b07f279e
-ms.sourcegitcommit: d5eca3c6b03b206e441b599e5b138bd687a91361
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78934845"
 ---
 #   <a name="pii-detection-cognitive-skill"></a>PII 检测认知技能

@@ -8,10 +8,10 @@ origin.date: 05/15/2017
 ms.date: 6/4/2019
 ms.author: v-lingwu
 ms.openlocfilehash: b9fb645f3667534307f2c5758bcd33b5e45ae33e
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78850377"
 ---
 # <a name="separating-telemetry-from-development-test-and-production"></a>分隔开发、测试和生产阶段的遥测

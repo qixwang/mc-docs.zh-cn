@@ -12,10 +12,10 @@ ms.reviewer: cgronlun
 origin.date: 01/21/2020
 ms.date: 03/16/2020
 ms.openlocfilehash: ca8befe2654513292165c93a00b28c171521b4d7
-ms.sourcegitcommit: d5eca3c6b03b206e441b599e5b138bd687a91361
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78934884"
 ---
 # <a name="how-to-select-algorithms-for-azure-machine-learning"></a>如何选择 Azure 机器学习的算法
@@ -109,7 +109,7 @@ ms.locfileid: "78934884"
 
 虽然这是确保跨越参数空间的好方法，但训练模型所需的时间随参数数量呈指数增长。 优点是通常情况下，参数较多说明算法具有更大的灵活性。 只要你能提供正确的参数设置组合，它通常能达到很好的精度。
 
-## <a name="number-of-features"></a>特征数目
+## <a name="number-of-features"></a>特征数量
 
 在机器学习中，特征是你要尝试分析的现象的可量化变量。 对于某些类型的数据，相较于数据点的数量，特征的数量可能非常大。 这通常出现在遗传学或文本数据的情况下。 
 

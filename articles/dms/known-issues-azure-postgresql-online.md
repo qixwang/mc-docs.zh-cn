@@ -16,10 +16,10 @@ ms.topic: article
 origin.date: 02/20/2020
 ms.date: 03/09/2020
 ms.openlocfilehash: ee5d306a365cc3cd2b67b3312dd04722def6e6ff
-ms.sourcegitcommit: df370a03d71b94c876e19294d75d4ff77809da11
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78238513"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-from-postgresql-to-azure-db-for-postgresql"></a>从 PostgreSQL 联机迁移到 Azure DB for PostgreSQL 时的已知问题/迁移限制

@@ -9,10 +9,10 @@ ms.author: v-jay
 ms.reviewer: thoroet
 ms.lastreviewed: 09/19/2019
 ms.openlocfilehash: b854b1425f8e17b0c49f97745132dbd75591ed55
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79291149"
 ---
 # <a name="install-powershell-for-azure-stack-hub"></a>安装适用于 Azure Stack Hub 的 PowerShell

@@ -12,10 +12,10 @@ origin.date: 05/23/2019
 ms.date: 06/10/2019
 ms.author: v-junlch
 ms.openlocfilehash: f764f676f486c0d34fcf68379899294dc980eeed
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78154509"
 ---
 # <a name="quickstart-call-the-text-analytics-service-using-the-go-sdk"></a>快速入门：使用 Go SDK 调用文本分析服务 

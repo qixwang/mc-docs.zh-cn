@@ -7,10 +7,10 @@ origin.date: 05/15/2017
 ms.date: 03/06/2020
 ms.author: v-lingwu
 ms.openlocfilehash: 27ebb7f38670438b801257f1eb2c509d57441676
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78850639"
 ---
 # <a name="back-up-system-state-and-restore-to-bare-metal-by-using-azure-backup-server"></a>使用 Azure 备份服务器备份系统状态并将计算机还原成裸机

@@ -8,10 +8,10 @@ origin.date: 08/18/2017
 ms.date: 11/26/2018
 ms.author: v-lingwu
 ms.openlocfilehash: 696fccaff42e6ad3ac3a7055d65f85aa4b5df2ea
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78850258"
 ---
 # <a name="restore-system-state-to-windows-server"></a>将系统状态还原为 Windows Server
@@ -29,13 +29,13 @@ ms.locfileid: "78850258"
 
 1. 打开“Azure 备份”  管理单元。 如果不知道该管理单元的安装位置，请在计算机或服务器中搜索“Azure 备份”  。
 
-    该桌面应用应会显示在搜索结果中。
+    该桌面应用应该会显示在搜索结果中。
 
-2. 单击“恢复数据”  启动向导。
+2. 单击“恢复数据”启动向导。 
 
     ![恢复数据](./media/backup-azure-restore-windows-server/recover.png)
 
-3. 若要将数据还原到同一台服务器或计算机，请在“开始”窗格中选择“此服务器(`<server name>`)”，然后单击“下一步”。   
+3. 要将数据还原到同一台服务器或计算机，请在“开始”窗格中选择“此服务器( **)”，然后单击“下一步”。** **`<server name>`** 
 
     ![选择“此服务器”选项将数据还原到同一台计算机](./media/backup-azure-restore-system-state/samemachine.png)
 
@@ -45,7 +45,7 @@ ms.locfileid: "78850258"
 
 5. 在“选择卷和日期”窗格的日历中，选择一个恢复点  。
 
-    可从任意恢复时间点还原。 以 **粗体** 显示的日期表示至少有一个可用的恢复点。 选择日期后，如果有多个恢复点可用，请从“时间”  下拉菜单中选择特定的恢复点。
+    可从任意恢复时间点还原。 以**粗体**显示的日期指示至少有一个可用的恢复点。 选择日期后，如果有多个恢复点可用，请从“时间”下拉菜单中选择特定的恢复点。 
 
     ![卷和日期](./media/backup-azure-restore-system-state/select-date.png)
 
@@ -82,7 +82,7 @@ ms.locfileid: "78850258"
 1. 在“目标计算机”中打开“Azure 备份”管理单元。  
 2. 确保“*目标计算机*”和“*源计算机*”已还原到同一个恢复服务保管库。
 3. 单击“**恢复数据**”以启动工作流。
-4. 选择“另一台服务器” 
+4. 选择“**另一台服务器**”
 
     ![另一台服务器](./media/backup-azure-restore-system-state/anotherserver.png)
 
@@ -93,7 +93,7 @@ ms.locfileid: "78850258"
 
     ![搜索](./media/backup-azure-restore-system-state/recover-type-selection.png)
 
-8. 在“选择卷和日期”窗格的日历中，选择一个恢复点  。 可从任意恢复时间点还原。 以 **粗体** 显示的日期表示至少有一个可用的恢复点。 选择日期后，如果有多个恢复点可用，请从“时间”下拉菜单中选择特定的恢复点  。
+8. 在“选择卷和日期”窗格的日历中，选择一个恢复点  。 可从任意恢复时间点还原。 以**粗体**显示的日期指示至少有一个可用的恢复点。 选择日期后，如果有多个恢复点可用，请从“时间”下拉菜单中选择特定的恢复点  。
 
     ![搜索项](./media/backup-azure-restore-system-state/select-date.png)
 
@@ -101,7 +101,7 @@ ms.locfileid: "78850258"
 
 10. 在“选择系统状态恢复模式”窗格中，指定要在其中恢复系统状态文件的目标，然后单击“下一步”   。
 
-    ![Encryption](./media/backup-azure-restore-system-state/recover-as-files.png)
+    ![加密](./media/backup-azure-restore-system-state/recover-as-files.png)
 
     “创建副本以便具有两个版本”选项将创建现有系统状态文件存档中各个文件的副本，而不是创建整个系统状态存档的副本  。
 
@@ -109,7 +109,7 @@ ms.locfileid: "78850258"
 
     ![单击“恢复”按钮确认恢复过程](./media/backup-azure-restore-system-state/confirm-recovery.png)
 
-12. 将 WindowsImageBackup 目录复制到服务器的非关键卷（如 D:\)）  。 通常，Windows OS 卷是关键卷。
+12. 将 WindowsImageBackup 目录复制到服务器的非关键卷（如 D: *）* \)。 通常，Windows OS 卷是关键卷。
 
 13. 若要完成恢复过程，请使用下面的[对 Windows 服务器应用已恢复的系统状态文件](#apply-restored-system-state-on-a-windows-server)部分。
 
@@ -206,7 +206,7 @@ ms.locfileid: "78850258"
 
 ## <a name="next-steps"></a>后续步骤
 
-* 恢复文件和文件夹后，可 [管理备份](backup-azure-manage-windows-server.md)。
+* 恢复文件和文件夹后，可以[管理备份](backup-azure-manage-windows-server.md)。
 
 
 <!-- Update_Description: update metedata properties -->

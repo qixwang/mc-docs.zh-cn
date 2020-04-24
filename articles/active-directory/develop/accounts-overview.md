@@ -14,10 +14,10 @@ ms.author: v-junlch
 ms.custom: aaddev
 ms.reviewer: shoatman
 ms.openlocfilehash: d81684e093fa2dcc7f2f5c497e15c26ff07b8a78
-ms.sourcegitcommit: 4ba6d7c8bed5398f37eb37cf5e2acafcdcc28791
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79133833"
 ---
 # <a name="accounts--tenant-profiles-android"></a>帐户和租户配置文件 (Android)

@@ -13,10 +13,10 @@ origin.date: 10/25/2019
 ms.date: 12/04/2019
 ms.author: v-lingwu
 ms.openlocfilehash: 17387eb1213ba31699d167c508d7439bbe52ed2e
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78154832"
 ---
 # <a name="best-practices-for-building-a-language-understanding-luis-app"></a>有关生成语言理解 (LUIS) 应用的最佳做法
@@ -37,7 +37,7 @@ ms.locfileid: "78154832"
 ## <a name="do-and-dont"></a>注意事项
 下面的列表包含 LUIS 应用的最佳做法：
 
-|要|不要|
+|要求事项|禁止事项|
 |--|--|
 |[应定义不同的意向](#do-define-distinct-intents)<br>[将描述符添加到意向](#do-add-descriptors-to-intents) |[将许多话语示例添加到意向](#dont-add-many-example-utterances-to-intents)<br>[使用少量或简单实体](#dont-use-few-or-simple-entities) |
 |[每个意向需采用合适的详细程度](#do-find-sweet-spot-for-intents)|[将 LUIS 用作培训平台](#dont-use-luis-as-a-training-platform)|

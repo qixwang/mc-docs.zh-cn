@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 03/02/2020
 ms.author: v-yeche
 ms.openlocfilehash: 1d6e3e7bc7b5088088a947887c00d436a491b5f9
-ms.sourcegitcommit: 2b4507745b98b45f1ce3f3d30f397521148ef35a
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78213754"
 ---
 ### <a name="resource-availability"></a>资源可用性
 
-| 操作系统 | GPU SKU | GPU 计数 | 最大 CPU | 最大内存 (GB) | 存储器 (GB) |
+| OS | GPU SKU | GPU 计数 | 最大 CPU | 最大内存 (GB) | 存储器 (GB) |
 | --- | --- | --- | --- | --- | --- |
 | Linux | V100 | 1 | 6 | 112 | 50 |
 | Linux | V100 | 2 | 12 | 224 | 50 |

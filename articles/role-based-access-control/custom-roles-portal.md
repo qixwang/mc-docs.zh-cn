@@ -13,10 +13,10 @@ ms.workload: identity
 ms.date: 03/04/2020
 ms.author: v-junlch
 ms.openlocfilehash: bb64dd4a54e87f71c8cdf9c1f2e1799015353a71
-ms.sourcegitcommit: 1ac138a9e7dc7834b5c0b62a133ca5ce2ea80054
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78266146"
 ---
 # <a name="create-or-update-azure-custom-roles-using-the-azure-portal-preview"></a>使用 Azure 门户创建 Azure 自定义角色（预览版）
@@ -41,7 +41,7 @@ Azure 具有数千个权限，你可将这些权限包含在自定义角色中�
 | 方法 | 说明 |
 | --- | --- |
 | 查看现有角色 | 可以查看现有的角色，以了解正在使用哪些权限。 有关详细信息，请参阅 [Azure 内置角色](built-in-roles.md)。 |
-| 按关键字搜索权限 | 使用 Azure 门户创建自定义角色时，可以按关键字搜索权限。 例如，可以搜索“虚拟机”或“计费”权限。   有关此搜索功能的介绍，请参阅后面的[步骤 4：权限](#step-4-permissions)。 |
+| 按关键字搜索权限 | 使用 Azure 门户创建自定义角色时，可以按关键字搜索权限。 例如，可以搜索“虚拟机”或“计费”权限。   有关此搜索功能的介绍，请参阅后面的[步骤 4：](#step-4-permissions)权限”。 |
 | 下载所有权限 | 使用 Azure 门户创建自定义角色时，可将所有权限作为 CSV 文件下载，然后搜索此文件。 在“添加权限”窗格中，单击“下载所有权限”按钮下载所有权限。   有关“添加权限”窗格的详细信息，请参阅[步骤 4：](#step-4-permissions)权限”。 |
 | 查看文档中的权限 | 可以在 [Azure 资源管理器资源提供程序操作](resource-provider-operations.md)中查看可用的权限。 |
 

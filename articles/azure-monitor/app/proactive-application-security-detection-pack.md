@@ -7,10 +7,10 @@ origin.date: 12/12/2017
 ms.date: 08/22/2019
 ms.author: v-lingwu
 ms.openlocfilehash: 0d09e2665723296b235edf5c1d2a24af89aefcf0
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78850390"
 ---
 # <a name="application-security-detection-pack-preview"></a>应用程序安全检测包（预览版）

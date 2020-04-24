@@ -10,10 +10,10 @@ metadata:
   ms.service: postgresql
   ms.topic: landing-page
   ms.openlocfilehash: 16166cc9bdcd94f35f17df90025705324829eb53
-  ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+  ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 02/28/2020
+  ms.lasthandoff: 04/17/2020
   ms.locfileid: "78154981"
 landingContent:
 - title: 关于 Azure Database for PostgreSQL
@@ -86,7 +86,7 @@ landingContent:
       url: https://docs.microsoft.com/rest/api/postgresql/
     - text: REST API 开发人员参考
       url: /cli/postgres
-    - text: Azure Resource Manager 模板
+    - text: Azure 资源管理器模板
       url: https://docs.microsoft.com/azure/templates/microsoft.dbforpostgresql/allversions
 - title: 备份和迁移数据
   linkLists:

@@ -11,10 +11,10 @@ origin.date: 01/06/2020
 ms.date: 2/3/2020
 ms.author: v-lingwu
 ms.openlocfilehash: f71d557ccd0f6084df70ebd159a97adbb6ea6d0b
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78155420"
 ---
 ## <a name="create-an-azure-container-instance-resource-from-the-azure-cli"></a>在 Azure CLI 中创建 Azure 容器实例资源

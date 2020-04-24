@@ -11,10 +11,10 @@ ms.author: v-yiso
 origin.date: 10/22/2019
 ms.date: 03/09/2020
 ms.openlocfilehash: d418192aeb4a98b43a4bb6a7cfe2d7f756a16062
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78155036"
 ---
 # <a name="export-data-module"></a>导出数据模块

@@ -12,10 +12,10 @@ ms.author: v-jay
 ms.reviewer: artek
 ms.subservice: common
 ms.openlocfilehash: 4e66b2ba71daf7c086a88b2981152e95c31849d2
-ms.sourcegitcommit: fbc7584f403417d3af7bd6bbbaed7c13a78c57b9
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78412538"
 ---
 # <a name="check-the-last-sync-time-property-for-a-storage-account"></a>检查存储帐户的“上次同步时间”属性

@@ -10,10 +10,10 @@ ms.topic: conceptual
 origin.date: 11/04/2019
 ms.date: 03/16/2020
 ms.openlocfilehash: e64fdad982f32c4657ef72bb85652fae25c90168
-ms.sourcegitcommit: d5eca3c6b03b206e441b599e5b138bd687a91361
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78934810"
 ---
 #   <a name="entity-recognition-cognitive-skill"></a>实体识别认知技能
@@ -38,7 +38,7 @@ Microsoft.Skills.Text.EntityRecognitionSkill
 
 | 参数名称     | 说明 |
 |--------------------|-------------|
-| Categories    | 应提取的类别的数组。  可能的类别类型有：`"Person"`、`"Location"`、`"Organization"`、`"Quantity"`、`"Datetime"`、`"URL"`、`"Email"`。 如果不提供类别，则返回所有类型。|
+| categories    | 应提取的类别的数组。  可能的类别类型有：`"Person"`、`"Location"`、`"Organization"`、`"Quantity"`、`"Datetime"`、`"URL"`、`"Email"`。 如果不提供类别，则返回所有类型。|
 |defaultLanguageCode |  输入文本的语言代码。 支持以下语言：`ar, cs, da, de, en, es, fi, fr, hu, it, ja, ko, nl, no, pl, pt-BR, pt-PT, ru, sv, tr, zh-hans`。 并非所有实体类别都支持所有语言；请参阅下文中的说明。|
 |minimumPrecision | 一个介于 0 和 1 之间的值。 如果置信度分数（在 `namedEntities` 输出中）低于此值，则不会返回该实体。 默认值为 0。 |
 |includeTypelessEntities | 如果要识别不符合当前类别的已知实体，请设置为 `true`。 识别出的实体将在 `entities` 复杂输出字段中返回。 例如，“Windows 10”是一个众所周知的实体（产品），但由于“产品”不是受支持的类别，因此，此实体将包含在实体输出字段中。 默认为 `false` |
@@ -48,7 +48,7 @@ Microsoft.Skills.Text.EntityRecognitionSkill
 
 | 输入名称      | 说明                   |
 |---------------|-------------------------------|
-| languageCode  | 可选。 默认值为 `"en"`。  |
+| languageCode  | 可选。 默认为 `"en"`。  |
 | text          | 要分析的文本。          |
 
 ## <a name="skill-outputs"></a>技能输出
@@ -59,7 +59,7 @@ Microsoft.Skills.Text.EntityRecognitionSkill
 | 输出名称     | 说明                   |
 |---------------|-------------------------------|
 | 人员      | 一个字符串数组，其中，一个字符串表示一个人员名称。 |
-| locations  | 一个字符串数组，其中，一个字符串表示一个位置。 |
+| 位置  | 一个字符串数组，其中，一个字符串表示一个位置。 |
 | 组织  | 一个字符串数组，其中，一个字符串表示一个组织。 |
 | quantities  | 一个字符串数组，其中，每个字符串都表示一个数量。 |
 | dateTimes  | 一个字符串数组，其中，每个字符串都表示一个日期时间（因为它以文本形式显示）值。 |

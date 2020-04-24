@@ -14,10 +14,10 @@ ms.date: 03/04/2020
 ms.author: v-jay
 ms.custom: seodec18
 ms.openlocfilehash: 6d4bea10359bdeaa14d3c6eb712a1e2d10d39798
-ms.sourcegitcommit: fbc7584f403417d3af7bd6bbbaed7c13a78c57b9
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78411997"
 ---
 # <a name="content-key-policies"></a>内容密钥策略

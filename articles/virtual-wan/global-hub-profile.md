@@ -9,10 +9,10 @@ origin.date: 01/31/2020
 ms.date: 02/24/2020
 ms.author: v-yeche
 ms.openlocfilehash: 0eda00268624e35f5aaf90a4fe960cbbcada5636
-ms.sourcegitcommit: 69cadf1fa0ed81751c48fbce919a6bb44b1053ce
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78209224"
 ---
 # <a name="download-a-global-or-hub-based-profile-for-user-vpn-clients"></a>为用户 VPN 客户端下载全局或基于中心的配置文件

@@ -11,10 +11,10 @@ origin.date: 09/04/2019
 ms.date: 03/09/2020
 ms.author: v-jay
 ms.openlocfilehash: 9198be3f8fa89a1e5c9adfe7a5824baeb86488fd
-ms.sourcegitcommit: fbc7584f403417d3af7bd6bbbaed7c13a78c57b9
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78412245"
 ---
 # <a name="security-controls-for-azure-storage"></a>Azure 存储的安全控制
@@ -29,7 +29,7 @@ ms.locfileid: "78412245"
 |---|---|--|
 | 服务器端静态加密：Microsoft 管理的密钥 | 是 |  |
 | 服务器端静态加密：客户管理的密钥 (BYOK) | 是 | 请参阅[在 Azure Key Vault 中使用客户托管密钥进行存储服务加密](storage-service-encryption-customer-managed-keys.md?toc=%2fstorage%2fblobs%2ftoc.json)。|
-| 列级加密（Azure 数据服务）| 不适用 |  |
+| 列级加密（Azure 数据服务）| 空值 |  |
 | 传输中加密（例如 ExpressRoute 加密、VNet 中加密，以及 VNet-VNet 加密）| 是 | 支持标准的 HTTPS/TLS 机制。  用户也可以先加密数据，然后再将其传输到服务。 |
 | 加密的 API 调用| 是 |  |
 
@@ -40,7 +40,7 @@ ms.locfileid: "78412245"
 | 服务终结点支持| 是 |  |
 | VNet 注入支持| 不适用 |  |
 | 网络隔离和防火墙支持| 是 | |
-| 强制隧道支持| 不适用 |  |
+| 强制隧道支持| 空值 |  |
 
 ## <a name="monitoring--logging"></a>监视和日志记录
 

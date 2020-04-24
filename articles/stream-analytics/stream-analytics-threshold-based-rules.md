@@ -9,10 +9,10 @@ ms.topic: conceptual
 origin.date: 04/30/2018
 ms.date: 08/20/2018
 ms.openlocfilehash: 69ab9e16061df69d3652ce7a3f2b88f8b8b9ecd9
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78155134"
 ---
 # <a name="process-configurable-threshold-based-rules-in-azure-stream-analytics"></a>处理 Azure 流分析中基于可配置阈值的规则
@@ -42,7 +42,7 @@ ms.locfileid: "78155134"
 此示例参考数据显示基于阈值的规则的表示形式。 JSON 文件保存参考数据并保存在 Azure blob 存储中，该 blob 存储容器用作名为“rules”的参考数据输入  。 随着时间的推移，用户可以覆盖此 JSON 文件并替换规则配置，而无需停止或启动流式处理作业。
 
 - 示例规则用于表示在 CPU 超出（平均数大于或等于）`90`% 时的可调整警报。 `value` 字段可根据需要进行配置。
-- 注意，规则有“operator”字段，稍后将在有关 `AVGGREATEROREQUAL` 上的查询语法中动态阐释  。 
+- 注意，规则有“operator”字段，稍后将在有关  **上的查询语法中动态阐释**`AVGGREATEROREQUAL`。 
 - 规则筛选键/值对为 `2`/`C1` 的特定维度的数据。 其他字段为空字符串，指示不会按这些事件字段筛选输入流。 用户可以设置其他 CPU 规则来根据需要筛选其他匹配字段。
 - 并非所有列都包含在输出警报事件中。 在本例中，`includedDim` 键号 `2` 打开为 `TRUE`，表示流中事件数据的字段号 2 将包含在符合条件的输出事件中。 其他字段不包含在警报输出中，但可以调整字段列表。
 

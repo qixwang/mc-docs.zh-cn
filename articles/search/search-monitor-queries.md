@@ -10,10 +10,10 @@ ms.topic: conceptual
 origin.date: 02/18/2020
 ms.date: 03/16/2020
 ms.openlocfilehash: 9f59735ad1423206b2abdb5e98204e4819466492
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78850510"
 ---
 # <a name="monitor-query-requests-in-azure-cognitive-search"></a>监视 Azure 认知搜索中的查询请求

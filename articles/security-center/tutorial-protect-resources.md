@@ -16,13 +16,13 @@ origin.date: 12/3/2018
 ms.date: 09/22/2019
 ms.author: v-lingwu
 ms.openlocfilehash: ad25461e32abb4ed969fd73f91036f9d9f2624a0
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78155003"
 ---
-# <a name="tutorial-protect-your-resources-with-azure-security-center"></a>教程：使用 Azure 安全中心来保护资源
+# <a name="tutorial-protect-your-resources-with-azure-security-center"></a>教程：使用 Azure 安装中心来保护资源
 安全中心使用访问控制和应用程序控制来阻止恶意活动，限制威胁所造成的危害。 可以通过实时 (JIT) 虚拟机 (VM) 访问拒绝对 VM 的永久性访问，减少自己遭受攻击的可能性。 仅在需要的情况下，才提供对 VM 的受控且经过审核的访问权限。 自适应应用程序控制可以对哪些应用程序能够在 VM 上运行进行控制，从而强化 VM 对抗恶意软件的能力。 安全中心使用机器学习来分析在 VM 中运行的进程，帮助你运用此智能来应用允许列表规则。
 
 本教程介绍如何执行下列操作：
@@ -31,7 +31,7 @@ ms.locfileid: "78155003"
 > * 配置实时 VM 访问策略
 > * 配置应用程序控制策略
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 若要逐步执行本教程中介绍的功能，你必须位于安全中心的“标准”定价层。 可以免费试用安全中心标准版。 若要了解详细信息，请参阅[定价页](https://www.azure.cn/pricing/details/security-center/)。 快速入门教程“[将 Azure 订阅载入到安全中心标准版](security-center-get-started.md)”详细介绍了如何升级到标准版。
 
 ## <a name="manage-vm-access"></a>管理 VM 访问权限
@@ -78,7 +78,7 @@ JIT VM 访问可以用来锁定发往 Azure VM 的入站流量，降低遭受攻
    “资源组”部分包含三个选项卡： 
 
    - **已配置**：所含 VM 已配置了应用程序控制的资源组的列表。
-   - **建议**：建议对其实施应用程序控制的资源组的列表。
+   - **已建议**：建议对其实施应用程序控制的资源组的列表。
    - **无建议**：所含 VM 没有任何应用程序控制建议的资源组的列表。 例如，其上的应用程序始终变化，尚未达到稳定状态的 VM。
 
 2. 选择“已建议”选项卡会出现一个列表，其中包含的资源组带有应用程序控制建议  。
@@ -101,14 +101,14 @@ JIT VM 访问可以用来锁定发往 Azure VM 的入站流量，降低遭受攻
 2. 选择要返回到“免费”层的订阅或策略。 此时会打开“安全策略”。 
 3. 在“策略组件”  下选择“定价层”  。
 4. 选择“免费”，将订阅从“标准”层更改为“免费”层。 
-5. 选择“保存”  。
+5. 选择“保存”。 
 
 如果希望禁用自动预配，请执行以下操作：
 
 1. 返回到安全中心主菜单，选择“安全策略”。 
 2. 选择希望禁用自动设置的订阅。
 3. 在“安全策略 - 数据收集”  下的“载入”  下选择“关闭”  ，禁用自动预配。
-4. 选择“保存”  。
+4. 选择“保存”。 
 
 >[!NOTE]
 > 禁用自动设置不会从已预配代理的 Azure VM 中删除 Microsoft Monitoring Agent。 禁用自动设置会限制对资源的安全监视。

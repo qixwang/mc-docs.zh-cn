@@ -16,10 +16,10 @@ origin.date: 06/21/2019
 ms.date: 09/21/2019
 ms.author: v-lingwu
 ms.openlocfilehash: bd55eb0542c07ba6742e147cc792fe413b7651c7
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78154990"
 ---
 # <a name="create-a-service-bus-namespace-by-using-an-azure-resource-manager-template"></a>使用 Azure 资源管理器模板创建服务总线命名空间
@@ -39,7 +39,7 @@ ms.locfileid: "78154990"
 
 ## <a name="create-a-service-bus-namespace"></a>创建服务总线命名空间
 
-在本快速入门中，使用 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/)中的[现有资源管理器模板](https://github.com/Azure/azure-quickstart-templates/blob/master/101-servicebus-create-namespace/azuredeploy.json)：
+在本快速入门中，使用 [Azure 快速启动模板](https://github.com/Azure/azure-quickstart-templates/blob/master/101-servicebus-create-namespace/azuredeploy.json)中的[现有资源管理器模板](https://azure.microsoft.com/resources/templates/)：
 
 ```
 {
@@ -101,7 +101,7 @@ ms.locfileid: "78154990"
 }
 ```
 
-若要查找更多模板示例，请参阅 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Servicebus&pageNumber=1&sort=Popular)。
+若要查找更多模板示例，请参阅 [Azure 快速入门模板](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Servicebus&pageNumber=1&sort=Popular)。
 
 若要通过部署模板创建服务总线命名空间，请执行以下操作：
 
@@ -122,9 +122,9 @@ ms.locfileid: "78154990"
     资源组名称是追加了 **rg** 的服务总线命名空间名称。
 
 2. 选择“复制”以复制 PowerShell 脚本。 
-3. 右键单击 shell 控制台，然后选择“粘贴”  。
+3. 右键单击 shell 控制台并选择“粘贴”  。
 
-创建事件中心需要一些时间。
+创建事件中心需要花费片刻时间。
 
 ## <a name="verify-the-deployment"></a>验证部署
 

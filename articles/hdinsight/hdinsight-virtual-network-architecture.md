@@ -9,10 +9,10 @@ origin.date: 10/31/2020
 ms.date: 02/24/2020
 ms.author: v-yiso
 ms.openlocfilehash: 43a2f16d639a7d3866270dccd88631e110a39a8b
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79290912"
 ---
 # <a name="azure-hdinsight-virtual-network-architecture"></a>Azure HDInsight 虚拟网络体系结构

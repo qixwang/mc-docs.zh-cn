@@ -11,10 +11,10 @@ ms.date: 03/04/2020
 ms.author: v-junlch
 ms.subservice: B2C
 ms.openlocfilehash: 234433267b5f83e7be6d5dd6120c03b205f82f28
-ms.sourcegitcommit: 1ac138a9e7dc7834b5c0b62a133ca5ce2ea80054
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78265970"
 ---
 # <a name="enable-keep-me-signed-in-kmsi-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中启用“使我保持登录状态 (KMSI)”
@@ -27,7 +27,7 @@ ms.locfileid: "78265970"
 
 ![显示“使我保持登录状态”复选框的示例注册登录页](./media/custom-policy-keep-me-signed-in/kmsi.PNG)
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - 配置为允许本地帐户登录的 Azure AD B2C 租户。 外部标识提供者帐户不支持 KMSI。
 
@@ -35,7 +35,7 @@ ms.locfileid: "78265970"
 
 若要启用 KMSI，请将内容定义 `DataUri` 元素设置为[页面标识符](contentdefinitions.md#datauri) `unifiedssp` 并将[页面版本](page-layout.md)设置为 *1.1.0* 或更高版本。
 
-1. 打开策略的扩展文件。 例如<em>`SocialAndLocalAccounts/` **`TrustFrameworkExtensions.xml`** </em>。 此扩展文件是自定义策略初学者包中包含的策略文件之一，你在先决条件“自定义策略入门”中应该已获取了该包。
+1. 打开策略的扩展文件。 例如<em>`SocialAndLocalAccounts/`**`TrustFrameworkExtensions.xml`**</em>。 此扩展文件是自定义策略初学者包中包含的策略文件之一，你在先决条件“自定义策略入门”中应该已获取了该包。
 1. 搜索 BuildingBlocks  元素。 如果该元素不存在，请添加该元素。
 1. 将 **ContentDefinitions** 元素添加到策略的 **BuildingBlocks** 元素。
 

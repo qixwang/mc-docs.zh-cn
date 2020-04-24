@@ -9,10 +9,10 @@ origin.date: 03/12/2019
 ms.date: 02/19/2020
 ms.author: v-lingwu
 ms.openlocfilehash: b35b9ac500cb61197c46c304ccd7d965bb2badcb
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78850295"
 ---
 # <a name="create-a-log-analytics-workspace-in-the-azure-portal"></a>在 Azure 门户中创建 Log Analytics 工作区
@@ -29,7 +29,7 @@ ms.locfileid: "78850295"
 *  [从混合 Linux 计算机收集数据](../learn/quick-collect-linux-computer.md)
 *  [从混合 Windows 计算机收集数据](quick-collect-windows-computer.md)
 
-如果没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://www.azure.cn/zh-cn/pricing/1rmb-trial-full/?form-type=identityauth?WT.mc_id=A261C142F)。
+如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://www.azure.cn/zh-cn/pricing/1rmb-trial-full/?form-type=identityauth?WT.mc_id=A261C142F)。
 
 ## <a name="sign-in-to-azure-portal"></a>登录到 Azure 门户
 在 [https://portal.azure.cn](https://portal.azure.cn) 中登录 Azure 门户。 
@@ -41,7 +41,7 @@ ms.locfileid: "78850295"
   
 2. 单击“添加”，然后为以下各项选择选项  ：
 
-   * 为新的 Log Analytics 工作区  提供名称，如 DefaultLAWorkspace  。 此名称在所有 Azure Monitor 订阅中必须全局唯一。
+   * 为新的 Log Analytics 工作区  提供名称，如 DefaultLAWorkspace  。 此名称在所有 Azure Monitor 订阅中必须是全局唯一的。
    * 如果选择的默认值不合适，请从下拉列表中选择要链接到的**订阅**。
    * 对于**资源组**，选择要使用已设置的现有资源组，还是要创建一个新资源组。  
    * 选择可用**位置**。  有关详细信息，请参阅[提供 Log Analytics 的区域](/home/features/products-by-region)，然后在“搜索产品”字段中搜索“Azure Monitor”。   

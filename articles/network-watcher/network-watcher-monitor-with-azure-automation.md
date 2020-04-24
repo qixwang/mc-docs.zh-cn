@@ -15,17 +15,17 @@ origin.date: 02/22/2017
 ms.date: 02/27/2020
 ms.author: v-lingwu
 ms.openlocfilehash: 0c9f411838596a44ce80252339bc4f345ac52d7e
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78154500"
 ---
 # <a name="monitor-vpn-gateways-with-network-watcher-troubleshooting"></a>使用网络观察程序故障排除功能监视 VPN 网关
 
 若要向客户提供可靠的服务，获取网络性能的深入见解至关重要。 因此，必须能够快速检测网络中断状态，并采取纠正措施来缓解中断状态。 在 Azure 自动化中，可以通过 Runbook 以编程方式实施和运行任务。 使用 Azure 自动化可以创建完美的脚本来执行连续、主动的网络监视和警报。
 
-## <a name="scenario"></a>方案
+## <a name="scenario"></a>场景
 
 下图中的方案是一个多层应用程序，其中使用 VPN 网关和隧道建立了本地连接。 确保 VPN 网关正常运行对于应用程序的性能至关重要。
 
@@ -38,7 +38,7 @@ ms.locfileid: "78154500"
 - 创建一个可以调用 `Start-AzureRmNetworkWatcherResourceTroubleshooting` cmdlet 来排查连接状态的 Runbook
 - 将计划链接到 Runbook
 
-## <a name="before-you-begin"></a>准备阶段
+## <a name="before-you-begin"></a>开始之前
 
 在开始学习本方案之前，必须满足以下先决条件：
 

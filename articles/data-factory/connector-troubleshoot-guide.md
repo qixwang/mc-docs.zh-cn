@@ -10,10 +10,10 @@ ms.date: 03/02/2020
 ms.author: v-jay
 ms.reviewer: craigg
 ms.openlocfilehash: 7413d76f14b9cf153e548012f6c1a3e793180a08
-ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77653516"
 ---
 # <a name="troubleshoot-azure-data-factory-connectors"></a>排查 Azure 数据工厂连接器问题

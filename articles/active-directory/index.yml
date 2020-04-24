@@ -13,10 +13,10 @@ metadata:
   manager: daveba
   ms.date: 10/28/2019
   ms.openlocfilehash: fb424c3148c144ed6774b51b694b14c81a071240
-  ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
+  ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 02/27/2020
+  ms.lasthandoff: 04/17/2020
   ms.locfileid: "77653465"
 highlightedContent:
   items:
@@ -34,7 +34,7 @@ highlightedContent:
     url: ./fundamentals/active-directory-how-subscriptions-associated-directory.md
 conceptualContent:
   items:
-  - title: 身份验证
+  - title: Authentication
     links:
     - url: ./authentication/overview-authentication.md
       itemType: concept
@@ -44,7 +44,7 @@ conceptualContent:
       text: 启用自助式密码重置
     footerLink:
       url: ./authentication/index.yml
-      text: 查看更多
+      text: 查看详细信息
   - title: 企业对客户 (B2C)
     links:
     - url: ../active-directory-b2c/overview.md
@@ -55,7 +55,7 @@ conceptualContent:
       text: 创建 Azure AD B2C 租户
     footerLink:
       url: ../active-directory-b2c/index.yml
-      text: 查看更多
+      text: 查看详细信息
   - title: 开发人员
     links:
     - url: ./develop/about-microsoft-identity-platform.md
@@ -69,7 +69,7 @@ conceptualContent:
       text: 将应用注册到 Microsoft 标识平台
     footerLink:
       url: ./develop/index.yml
-      text: 查看更多
+      text: 查看详细信息
   - title: 企业用户
     links:
     - url: ./users-groups-roles/groups-settings-v2-cmdlets.md
@@ -80,7 +80,7 @@ conceptualContent:
       text: Azure AD 服务限制和局限性
     footerLink:
       url: ./users-groups-roles/index.yml
-      text: 查看更多
+      text: 查看详细信息
   - title: 混合标识
     links:
     - url: ./hybrid/whatis-hybrid-identity.md
@@ -91,7 +91,7 @@ conceptualContent:
       text: Azure AD Connect 自定义安装
     footerLink:
       url: ./hybrid/index.yml
-      text: 查看更多
+      text: 查看详细信息
   - title: Azure 资源的托管标识
     links:
     - url: ./managed-identities-azure-resources/tutorial-windows-vm-access-sql.md
@@ -105,7 +105,7 @@ conceptualContent:
       text: 支持托管标识的服务
     footerLink:
       url: ./managed-identities-azure-resources/index.yml
-      text: 查看更多
+      text: 查看详细信息
   - title: Privileged Identity Management (PIM)
     links:
     - url: ./privileged-identity-management/pim-getting-started.md
@@ -119,7 +119,7 @@ conceptualContent:
       text: 分配目录角色
     footerLink:
       url: ./privileged-identity-management/index.yml
-      text: 查看更多
+      text: 查看详细信息
   - title: 报表和监视
     links:
     - url: ./reports-monitoring/concept-audit-logs.md
@@ -133,7 +133,7 @@ conceptualContent:
       text: 登录错误代码参考
     footerLink:
       url: ./reports-monitoring/index.yml
-      text: 查看更多
+      text: 查看详细信息
 additionalContent:
   sections:
   - items:

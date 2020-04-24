@@ -8,10 +8,10 @@ origin.date: 02/20/2020
 ms.date: 03/09/2020
 ms.author: v-yeche
 ms.openlocfilehash: 600be95cbab939be6cd32219d454acfd81404766
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78850473"
 ---
 <!--Verified successfully-->
@@ -22,11 +22,11 @@ ms.locfileid: "78850473"
 
 * 如何在 Azure Cosmos DB 中存储空间数据？
 * 如何使用 SQL 和 LINQ 查询 Azure Cosmos DB 中的地理空间数据？
-* 如何在Azure Cosmos DB 中启用或禁用空间索引？
+* 如何在 Azure Cosmos DB 中启用或禁用空间索引？
 
 ## <a name="introduction-to-spatial-data"></a>空间数据简介
 
-空间数据用于描述空间中对象的位置和形状。 在大部分应用程序中，这些会对应于地球上的对象，也就是地理空间数据。 空间数据可以用来表示人、名胜古迹、城市边界或湖泊所处的位置。 常见用例通常涉及邻近查询，例如“寻找我目前位置附近的所有咖啡厅”。
+空间数据用于描述空间中对象的位置和形状。 在大部分应用程序中，这些会对应于地球上的对象和地理空间数据。 空间数据可以用来表示人、名胜古迹、城市边界或湖泊所处的位置。 常见用例通常涉及邻近查询，例如“寻找我目前位置附近的所有咖啡厅”。
 
 Azure Cosmos DB 的 SQL API 支持 **geography** 数据类型。 **Geography** 类型表示圆形地球坐标系中的数据。
 
@@ -43,7 +43,7 @@ Azure Cosmos DB 支持以下空间数据类型：
 
 ### <a name="points"></a>点
 
-**点** 代表空间中的单一位置。 在地理空间数据中，某个点所代表的确切位置可能是杂货店、电话亭、汽车或城市的街道地址。  点使用其坐标对或经纬度，以 GeoJSON 格式（和 Azure Cosmos DB）表示。
+**点**代表空间中的单一位置。 在地理空间数据中，某个点所代表的确切位置可能是杂货店、电话亭、汽车或城市的街道地址。  点使用其坐标对或经纬度，以 GeoJSON 格式（和 Azure Cosmos DB）表示。
 
 以下是点的 JSON 示例：
 
@@ -95,7 +95,7 @@ Azure Cosmos DB 会将坐标解释为按照 WGS-84 参考系统表示。 有关�
 
 ### <a name="polygons"></a>多边形
 
-**多边形** 是形成闭合的 LineString 的相连接的点的边界。 多边形通常用来表示自然构成物（例如湖泊），或表示政治管辖权（例如省/市/自治区）。 下面是 Azure Cosmos DB 中的一个多边形示例：
+**多边形**是由相连接的点组成的边界，并形成闭合的 LineString。 多边形通常用来表示自然构成物（例如湖泊），或表示政治管辖权（例如省/市/自治区）。 下面是 Azure Cosmos DB 中的一个多边形示例：
 
 GeoJSON 中的多边形 
 
@@ -170,7 +170,7 @@ client.createDocument(`dbs/${databaseName}/colls/${collectionName}`, userProfile
 });
 ```
 
-如果使用 SQL API，则可以在 `Microsoft.Azure.Cosmos.Spatial` 命名空间中使用 `Point`、`LineString`、`Polygon` 和 `MultiPolygon` 类，将位置信息嵌入应用程序对象中。 这些类有助于简化将空间数据序列化和反序列化为 GeoJSON 的过程。
+如果使用 SQL API，则可以在 `Point` 命名空间中使用 `LineString`、`Polygon`、`MultiPolygon` 和 `Microsoft.Azure.Cosmos.Spatial` 类，将位置信息嵌入应用程序对象中。 这些类有助于简化将空间数据序列化和反序列化为 GeoJSON 的过程。
 
 **在 .NET 中创建包含地理空间数据的文档**
 
@@ -201,7 +201,7 @@ await container.CreateItemAsync( new UserProfile
 
 已经学会如何开始使用 Azure Cosmos DB 中的地理空间支持，下一步现在可以：
 
-* 详细了解 [Azure Cosmos DB 查询](sql-query-getting-started.md)
+* 深入了解 [Azure Cosmos DB 查询](sql-query-getting-started.md)
 * 详细了解如何[使用 Azure Cosmos DB 查询空间数据](sql-query-geospatial-query.md)
 * 详细了解如何[使用 Azure Cosmos DB 为空间数据编制索引](sql-query-geospatial-index.md)
 

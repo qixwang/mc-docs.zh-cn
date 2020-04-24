@@ -9,10 +9,10 @@ ms.date: 03/09/2020
 ms.author: v-jay
 ms.subservice: files
 ms.openlocfilehash: bd341ecd992926bb5da7de861b92347a36ec4442
-ms.sourcegitcommit: fbc7584f403417d3af7bd6bbbaed7c13a78c57b9
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78412307"
 ---
 # <a name="azure-files-networking-considerations"></a>Azure 文件存储的网络注意事项 

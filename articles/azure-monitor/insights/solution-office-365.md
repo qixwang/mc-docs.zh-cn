@@ -9,10 +9,10 @@ origin.date: 12/27/2019
 ms.date: 2/18/2020
 ms.author: v-lingwu
 ms.openlocfilehash: 5909982fbd69643bb095e69b09d830e59990d422
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78850318"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Azure 中的 Office 365 管理解决方案（预览版）

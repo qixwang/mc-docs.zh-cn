@@ -17,10 +17,10 @@ ms.date: 03/04/2020
 ms.author: v-jay
 ms.reviewer: juliako
 ms.openlocfilehash: dbbbf499f4d4a26ad4e99620e58f8083f8a43960
-ms.sourcegitcommit: fbc7584f403417d3af7bd6bbbaed7c13a78c57b9
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78412457"
 ---
 # <a name="hybrid-design-of-drm-subsystems"></a>DRM 子系统的混合设计 
@@ -70,8 +70,8 @@ DRM 支持包括 DRM 加密（动态加密）和许可证传送，其中的 Azur
 
 ### <a name="drm-license-delivery"></a>DRM 许可证传送
 
-* AMS：DRM 许可证由 AMS 许可证传送服务提供。
-* 第三方：DRM 许可证由 AMS 外部的第三方 DRM 许可证服务器提供。
+* AMS：DRM 许可证由 AMS 许可证传送服务传送。
+* 第三方：DRM 许可证由 AMS 外部的第三方 DRM 许可证服务器传送。
 
 ## <a name="configure-based-on-your-hybrid-scenario"></a>根据混合方案进行配置
 
@@ -127,7 +127,7 @@ DRM 支持包括 DRM 加密（动态加密）和许可证传送，其中的 Azur
 * 源 URL： https://willzhanmswest.streaming.mediaservices.windows.net/7c085a59-ae9a-411e-842c-ef10f96c3f89/20150807-bridges-2500.ism/manifest 
 * PlayReady LA_URL（DASH 和平滑流式处理）： https://willzhan12.cloudapp.net/playready/rightsmanager.asmx 
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>总结
 
 总而言之，Azure 媒体服务 DRM 组件非常灵活，只需根据本主题中所述适当配置内容密钥和资产传送策略，即可在混合方案中使用这些组件。
 

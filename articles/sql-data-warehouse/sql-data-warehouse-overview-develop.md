@@ -12,10 +12,10 @@ ms.date: 03/02/2020
 ms.author: v-jay
 ms.reviewer: igorstan
 ms.openlocfilehash: 2a3dab6ff9d610635ad5770b750291a091b8f9ee
-ms.sourcegitcommit: 892137d117bcaf9d88aec0eb7ca756fe39613344
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78154378"
 ---
 # <a name="design-decisions-and-coding-techniques-for-a-data-warehouse-in-azure-synapse-analytics"></a>Azure Synapse Analytics 中数据仓库的设计决策和编码技术 

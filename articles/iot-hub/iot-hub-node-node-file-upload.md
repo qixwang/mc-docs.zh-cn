@@ -11,10 +11,10 @@ origin.date: 06/28/2017
 ms.date: 03/09/2020
 ms.author: v-yiso
 ms.openlocfilehash: 241242dcb55fba333c33d874658ae78484ad421c
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78154496"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-nodejs"></a>使用 IoT 中心将文件从设备上传到云 (Node.js)
@@ -23,9 +23,9 @@ ms.locfileid: "78154496"
 
 本教程的内容基于[使用 IoT 中心发送云到设备的消息](iot-hub-node-node-c2d.md)教程中所述的代码，介绍如何使用 [IoT 中心的文件上传功能](iot-hub-devguide-file-upload.md)将文件上传到 [Azure Blob 存储](../storage/index.yml)。 本教程介绍如何：
 
-* 安全地为设备提供用于上传文件的 Azure Blob URI。
+* 安全提供具有 Azure blob URI 的设备，用于上传文件。
 
-* 使用 IoT 中心文件上传通知在应用后端中触发对文件的处理。
+* 使用 IoT 中心文件上传通知触发处理应用后端中的文件。
 
 [从设备将遥测数据发送到 IoT 中心](quickstart-send-telemetry-node.md)快速入门演示了 IoT 中心基本的设备到云的消息传送功能。 但是，在某些情况下，无法轻松地将设备发送的数据映射为 IoT 中心接受的相对较小的设备到云消息。 例如：
 
@@ -44,7 +44,7 @@ ms.locfileid: "78154496"
 > [!NOTE]
 > IoT 中心通过 Azure IoT 设备 SDK 来支持许多设备平台和语言（包括 C、.NET、Javascript、Python 和 Java）。 有关如何将设备连接到 Azure IoT 中心的分步说明，请参阅 [Azure IoT 开发人员中心]。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * Node.js 版本 10.0.x 或更高版本。 [准备开发环境](https://github.com/Azure/azure-iot-sdk-node/tree/master/doc/node-devbox-setup.md)介绍了如何在 Windows 或 Linux 上安装本教程所用的 Node.js。
 
@@ -70,9 +70,9 @@ ms.locfileid: "78154496"
     npm install azure-iot-device azure-iot-device-mqtt --save
     ```
 
-1. 在 `simulateddevice` 文件夹中，利用文本编辑器创建  SimulatedDevice.js 文件。
+1. 在 **文件夹中，利用文本编辑器创建**`simulateddevice`SimulatedDevice.js 文件。
 
-1. 在 **SimulatedDevice.js** 文件的开头添加以下 `require` 语句：
+1. 在 `require`SimulatedDevice.js**文件的开头添加以下** 语句：
 
     ```javascript
     'use strict';
@@ -143,9 +143,9 @@ ms.locfileid: "78154496"
     npm install azure-iothub --save
     ```
 
-1. 使用文本编辑器在 `fileuploadnotification` 文件夹中创建 **FileUploadNotification.js** 文件。
+1. 使用文本编辑器在 **文件夹中创建**FileUploadNotification.js`fileuploadnotification` 文件。
 
-1. 在 **FileUploadNotification.js** 文件的开头添加以下 `require` 语句：
+1. 在 `require`FileUploadNotification.js**文件的开头添加以下** 语句：
 
     ```javascript
     'use strict';
@@ -222,7 +222,7 @@ node SimulatedDevice.js
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，已学习了如何使用 IoT 中心的文件上传功能来简化从设备进行的文件上传。 可以使用以下文章继续探索 IoT 中心功能和方案：
+在本教程中，你已学习了如何使用 IoT 中心的文件上传功能来简化从设备进行的文件上传。 可以使用以下文章继续探索 IoT 中心功能和方案：
 
 * [以编程方式创建 IoT 中心][lnk-create-hub]
 * [C SDK 简介][lnk-c-sdk]

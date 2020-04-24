@@ -11,10 +11,10 @@ ms.date: 03/04/2020
 ms.author: v-junlch
 ms.subservice: B2C
 ms.openlocfilehash: d3a7d96ebbd02449af2ab78231be8947c49dd69b
-ms.sourcegitcommit: 1ac138a9e7dc7834b5c0b62a133ca5ce2ea80054
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78266088"
 ---
 # <a name="define-custom-attributes-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中定义自定义属性
@@ -39,7 +39,7 @@ ms.locfileid: "78266088"
 5. 提供自定义属性的“名称”  （例如，“ShoeSize”）
 6. 选择“数据类型”  。 仅“String”  、“Boolean”  和“Int”  可供选择。
 7. （可选）输入“说明”  以供参考。
-8. 单击**创建**。
+8. 单击“创建”。 
 
 现在自定义属性在“用户属性”  列表中显示，以便在用户流中使用。 自定义属性只有在任何用户流中第一次使用时才创建，而不是将其添加到“用户属性”  列表时创建。
 

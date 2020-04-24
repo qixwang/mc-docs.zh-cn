@@ -16,10 +16,10 @@ ms.author: v-junlch
 ms.reviewer: bagovind
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: fff1f2d6a0cd2218986a22ed2b14fd64bdfa2e67
-ms.sourcegitcommit: 1ac138a9e7dc7834b5c0b62a133ca5ce2ea80054
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78266094"
 ---
 # <a name="view-activity-logs-for-azure-rbac-changes"></a>查看 Azure RBAC 更改的活动日志
@@ -43,10 +43,10 @@ ms.locfileid: "78266094"
 
 门户中的活动日志有多个筛选器。 下面是与 Azure RBAC 相关的筛选器：
 
-| 筛选器 | Value |
+| “筛选器” | 值 |
 | --------- | --------- |
 | 事件类别 | <ul><li>管理</li></ul> |
-| 操作 | <ul><li>创建角色分配</li><li>删除角色分配</li><li>创建或更新自定义角色定义</li><li>删除自定义角色定义</li></ul> |
+| Operation | <ul><li>创建角色分配</li><li>删除角色分配</li><li>创建或更新自定义角色定义</li><li>删除自定义角色定义</li></ul> |
 
 有关活动日志的更多信息，请参阅[查看活动日志以监视对资源的操作](/azure-resource-manager/resource-group-audit?toc=%2fazure%2fmonitoring-and-diagnostics%2ftoc.json)。
 

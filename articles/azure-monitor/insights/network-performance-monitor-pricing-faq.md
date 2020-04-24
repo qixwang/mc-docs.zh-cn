@@ -9,10 +9,10 @@ origin.date: 04/02/2018
 ms.date: 04/12/2019
 ms.author: v-lingwu
 ms.openlocfilehash: 80aaf19caeef6756a7f59189716e38a724b3c0fc
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78850325"
 ---
 # <a name="pricing-changes-for-azure-network-performance-monitor"></a>Azure 网络性能监视器的定价变化

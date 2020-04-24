@@ -13,10 +13,10 @@ ms.topic: article
 origin.date: 02/25/2020
 ms.date: 03/09/2020
 ms.openlocfilehash: 1fe77e5bfd8980bd724f5d0105e3fc11034e1a88
-ms.sourcegitcommit: df370a03d71b94c876e19294d75d4ff77809da11
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78238539"
 ---
 # <a name="overview-of-prerequisites-for-using-the-azure-database-migration-service"></a>使用 Azure 数据库迁移服务的先决条件概述

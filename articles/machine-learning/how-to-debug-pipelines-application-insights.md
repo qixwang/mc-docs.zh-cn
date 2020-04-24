@@ -13,10 +13,10 @@ origin.date: 01/16/2020
 ms.date: 03/09/2020
 ms.custom: seodec18
 ms.openlocfilehash: 17457ce0b803eb46588a84df2a10aafba4c48ecd
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78155349"
 ---
 # <a name="debug-and-troubleshoot-machine-learning-pipelines-in-application-insights"></a>对 Application Insights 中的机器学习管道进行调试和故障排除
@@ -26,7 +26,7 @@ ms.locfileid: "78155349"
 
 将日志放在一个位置可以提供异常和错误消息的历史记录。 由于 Application Insights 与 Azure 警报相集成，因此你还可以基于 Application Insights 查询创建警报。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * 遵循相应的步骤创建 [Azure 机器学习](./how-to-manage-workspace.md)工作区并[创建第一个管道](./how-to-create-your-first-pipeline.md)
 * [配置开发环境](./how-to-configure-environment.md)以安装 Azure 机器学习 SDK。
@@ -157,7 +157,7 @@ Application Insights 中的结果将显示日志消息和级别、文件路径�
 
 以下某些查询使用“customDimensions.Level”。 这些严重性级别对应于最初发送 Python 日志时所用的级别。 有关其他查询信息，请参阅 [Azure Monitor 日志查询](/azure-monitor/log-query/query-language)。
 
-| 使用案例                                                               | 查询                                                                                              |
+| 用例                                                               | 查询                                                                                              |
 |------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------|
 | 特定自定义维度（例如“parent_run_id”）的日志结果 | <pre>traces \| <br>where customDimensions.parent_run_id == '931024c2-3720-11ea-b247-c49deda841c1</pre> |
 | 过去 7 天内所有训练运行的日志结果                     | <pre>traces \| <br>where timestamp > ago(7d) <br>and customDimensions.run_type == 'training'</pre>           |

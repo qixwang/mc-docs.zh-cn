@@ -10,10 +10,10 @@ ms.topic: tutorial
 origin.date: 11/04/2019
 ms.date: 03/16/2020
 ms.openlocfilehash: 01de93811a677e33d22453e6de73bf6eea4122eb
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78850240"
 ---
 # <a name="tutorial-use-c-to-index-data-from-sql-databases-in-azure-cognitive-search"></a>教程：在 Azure 认知搜索中使用 C# 为 SQL 数据库中的数据编制索引

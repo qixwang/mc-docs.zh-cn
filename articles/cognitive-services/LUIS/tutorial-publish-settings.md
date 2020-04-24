@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 12/13/2019
 ms.author: diberry
 ms.openlocfilehash: 46473673e5d4dae0a1094336a86c9224d6ca19c2
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78155353"
 ---
 # <a name="tutorial--add-sentiment-analysis-as-a-publishing-setting"></a>教程：将情绪分析添加为发布设置

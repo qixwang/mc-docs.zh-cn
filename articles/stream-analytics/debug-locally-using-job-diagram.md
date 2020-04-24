@@ -9,10 +9,10 @@ ms.topic: conceptual
 origin.date: 01/23/2020
 ms.date: 02/27/2020
 ms.openlocfilehash: b35ce0e9b7b0462e7d72c834d1799cd85e599cd6
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78155383"
 ---
 # <a name="debug-azure-stream-analytics-queries-locally-using-job-diagram-in-visual-studio"></a>在 Visual Studio 中使用作业关系图在本地调试 Azure 流分析查询
@@ -59,7 +59,7 @@ ms.locfileid: "78155383"
 |**事件中心** | 输入源类型。|
 |**事件**|读取的事件数。|
 |**积压的事件源数**|还需要读取事件中心和 IoT 中心的其他多少条消息。|
-|**事件(以字节为单位)**|读取的字节数。|
+|**事件(以字节为单位)**|已读取的字节数。|
 | **降级的事件数**|出现了问题、但该问题不是反序列化问题的事件计数。|
 |**前期事件数**| 应用程序时间戳在高水位线之前的事件数。|
 |**后期事件数**| 应用程序时间戳在高水位线之后的事件数。|

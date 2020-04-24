@@ -7,10 +7,10 @@ origin.date: 11/27/2017
 ms.date: 6/4/2019
 ms.author: v-lingwu
 ms.openlocfilehash: 7e2d7a90961737c6602fab26215ae4eed8d76535
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78850380"
 ---
 # <a name="degradation-in-trace-severity-ratio-preview"></a>跟踪严重性比下降（预览）

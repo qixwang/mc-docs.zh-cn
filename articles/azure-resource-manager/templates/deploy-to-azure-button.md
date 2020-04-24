@@ -6,10 +6,10 @@ origin.date: 02/07/2020
 ms.date: 03/09/2020
 ms.author: v-yeche
 ms.openlocfilehash: 7fb3f1199ddaa9d501abe640c6d86ab0d5378531
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78850491"
 ---
 <!--Verified successfully-->
@@ -85,7 +85,7 @@ https://portal.azure.cn/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubu
 
 若要测试整个解决方案，请选择以下按钮：
 
-[![“部署到 Azure”](https://aka.ms/deploytoazurebutton)](https://portal.azure.cn/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-storage-account-create%2Fazuredeploy.json)
+[![部署到 Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.cn/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-storage-account-create%2Fazuredeploy.json)
 
 门户会显示一个窗格，你可以在其中轻松地提供参数值。 这些参数预先填充了来自模板的默认值。
 

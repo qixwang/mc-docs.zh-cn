@@ -6,10 +6,10 @@ ms.topic: reference
 ms.date: 03/02/2020
 ms.author: v-junlch
 ms.openlocfilehash: 2420b840adcca88e3d740f092e0593885f8afbf1
-ms.sourcegitcommit: 1ac138a9e7dc7834b5c0b62a133ca5ce2ea80054
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78266048"
 ---
 # <a name="azure-iot-hub-bindings-for-azure-functions"></a>适用于 Azure Functions 的 Azure IoT 中心绑定

@@ -10,10 +10,10 @@ origin.date: 08/25/2017
 ms.date: 03/09/2020
 ms.author: v-yiso
 ms.openlocfilehash: c56047db686de07b89f475af29328d09c82dd46d
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78154502"
 ---
 # <a name="get-started-with-device-management-nodejs"></a>设备管理入门 (Node.js)
@@ -26,13 +26,13 @@ ms.locfileid: "78154502"
 * 创建包含重新启动该设备的直接方法的模拟设备应用。 直接方法是从云中调用的。
 * 创建一个 Node.js 控制台应用，其通过 IoT 中心直接重启模拟设备应用。
 
-本教程结束时，会创建两个 Node.js 控制台应用：
+在本教程结束时，会创建两个 Node.js 控制台应用：
 
 * **dmpatterns_getstarted_device.js**，它使用先前创建的设备标识连接到 IoT 中心，接收重新启动直接方法，模拟物理重新启动，并报告上次重新启动的时间。
 
 * **dmpatterns_getstarted_service.js**，它调用模拟设备应用中的直接方法，显示响应，并显示更新后的报告属性。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * Node.js 版本 10.0.x 或更高版本。 [准备开发环境](https://github.com/Azure/azure-iot-sdk-node/tree/master/doc/node-devbox-setup.md)介绍了如何在 Windows 或 Linux 上安装本教程所用的 Node.js。
 
@@ -52,7 +52,7 @@ ms.locfileid: "78154502"
 本部分的操作：
 
 * 创建一个 Node.js 控制台应用，用于响应通过云调用的直接方法
-* 触发模拟的设备重启
+* 触发模拟设备重新启动
 * 通过报告的属性，设备孪生查询可标识设备及设备上次重新启动的时间
 
 1. 创建名为 **manageddevice** 的空文件夹。  在 **manageddevice** 文件夹的命令提示符处，使用以下命令创建 package.json 文件。  接受所有默认值：
@@ -149,7 +149,7 @@ ms.locfileid: "78154502"
 [!INCLUDE [iot-hub-include-find-service-connection-string](../../includes/iot-hub-include-find-service-connection-string.md)]
 
 ## <a name="trigger-a-remote-reboot-on-the-device-using-a-direct-method"></a>使用直接方法在设备上触发远程重新启动
-本部分中会创建一个 Node.js 控制台应用，该应用使用直接方法在设备上初始化远程重启。 该应用使用设备孪生查询来搜索该设备的上次重新启动时间。
+此部分将创建一个 Node.js 控制台应用，此应用直接对设备进行远程重启。 该应用使用设备孪生查询来搜索该设备的上次重新启动时间。
 
 1. 创建一个名为 **triggerrebootondevice** 的空文件夹。  在 **triggerrebootondevice** 文件夹的命令提示符处，使用以下命令创建 package.json 文件。  接受所有默认值：
 
@@ -242,7 +242,7 @@ ms.locfileid: "78154502"
     node dmpatterns_getstarted_device.js
     ```
 
-2. 在 **triggerrebootondevice** 文件夹的命令提示符处运行以下命令，以便触发远程重启并查询设备孪生了解上次重启时间。
+2. 在 **triggerrebootondevice** 文件夹的命令提示符处，运行以下命令以触发远程重新启动并查询设备孪生以查找上次重新启动时间。
 
     ```cmd/sh
     node dmpatterns_getstarted_service.js

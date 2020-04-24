@@ -9,10 +9,10 @@ ms.date: 07/07/2017
 ms.reviewer: mbullwin
 ms.author: v-lingwu
 ms.openlocfilehash: 6b90ffacd22ed52b3491d17ecdb196a555e915c1
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78850343"
 ---
 # <a name="debug-your-applications-with-azure-application-insights-in-visual-studio"></a>在 Visual Studio 中使用 Azure Application Insights 调试应用程序

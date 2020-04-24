@@ -16,10 +16,10 @@ origin.date: 02/20/2020
 ms.date: 03/09/2020
 ms.author: v-yeche
 ms.openlocfilehash: a048c3092a3de752744c41b5e81d027790cdb6af
-ms.sourcegitcommit: e94ed1c9eff4e88be2ca389909e60b14cc0d92f8
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79084515"
 ---
 <!--Verified successfully-->
@@ -56,7 +56,7 @@ ms.locfileid: "79084515"
 
 ## <a name="next-steps"></a>后续步骤
 
-了解有关 [Azure 计算单元 (ACU)](acu.md) 如何帮助跨 Azure SKU 比较计算性能的详细信息。
+了解有关 [Azure 计算单元 (ACU)](acu.md) 如何帮助你跨 Azure SKU 比较计算性能的详细信息。
 
 <!-- Update_Description: new article about sizes general -->
 <!--NEW.date: 03/09/2020-->

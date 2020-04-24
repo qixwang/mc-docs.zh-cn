@@ -9,10 +9,10 @@ ms.date: 6/4/2019
 ms.reviewer: nimolnar
 ms.author: v-lingwu
 ms.openlocfilehash: 8d526f787f0840c816a8cd0a81a91dcb752d44be
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78850399"
 ---
 # <a name="local-forwarder-preview"></a>本地转发器（预览版）
@@ -55,7 +55,7 @@ https://www.microsoft.com/net/download/dotnet-framework-runtime/net472?utm_sourc
 
 3. **右键单击**新的本地转发器并选择“启动”。  现在，该服务将进入运行状态。
 
-4. 默认情况下，创建的服务不提供任何恢复操作。 可以**单击右键**，并选择“属性” > “恢复”来配置发生服务故障时的自动响应方式。  
+4. 默认情况下，创建的服务不提供任何恢复操作。 可以**单击右键**，并选择“属性” **“恢复”来配置发生服务故障时的自动响应方式。**  >  
 
     或者，如果你偏向于以编程方式设置发生故障时的自动恢复选项，可以使用：
 

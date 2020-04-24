@@ -17,10 +17,10 @@ ms.author: v-yeche
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
 ms.openlocfilehash: 168696d66dde5e5410bd58b389d41b4a70035104
-ms.sourcegitcommit: 2b4507745b98b45f1ce3f3d30f397521148ef35a
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78237489"
 ---
 # <a name="pricing-guidance-for-azure-sql-server-vms"></a>Azure SQL Server VM 的定价指南

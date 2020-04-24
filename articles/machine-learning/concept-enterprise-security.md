@@ -12,10 +12,10 @@ ms.reviewer: larryfr
 origin.date: 01/09/2020
 ms.date: 03/09/2020
 ms.openlocfilehash: 7f6932d3e29f0f8e58bbd5ad23a25807950b2466
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78154572"
 ---
 # <a name="enterprise-security-for-azure-machine-learning"></a>Azure 机器学习的企业安全性
@@ -27,7 +27,7 @@ ms.locfileid: "78154572"
 > [!NOTE]
 > 本文中的信息适用于 Azure 机器学习 Python SDK 1.0.83.1 或更高版本。
 
-## <a name="authentication"></a>身份验证
+## <a name="authentication"></a>Authentication
 
 如果 Azure Active Directory (Azure AD) 已配置为使用多重身份验证，则支持多重身份验证。 下面是身份验证过程：
 
@@ -45,8 +45,8 @@ ms.locfileid: "78154572"
 
 |身份验证方法|说明|Azure 容器实例|AKS|
 |---|---|---|---|
-|键|密钥是静态的，无需刷新。 可以手动重新生成密钥。|默认已禁用| 默认已启用|
-|令牌|令牌会在指定的时限后过期，需要刷新。| 不可用| 默认已禁用 |
+|密钥|密钥是静态的，无需刷新。 可以手动重新生成密钥。|默认已禁用| 默认已启用|
+|标记|令牌会在指定的时限后过期，需要刷新。| 不可用| 默认已禁用 |
 
 有关代码示例，请参阅 [Web 服务身份验证](how-to-setup-authentication.md#web-service-authentication)部分。
 
@@ -54,13 +54,13 @@ ms.locfileid: "78154572"
 
 你可以创建多个工作区，并且每个工作区可由多个用户共享。 共享工作区时，可通过向用户分配以下角色来控制对该工作区的访问：
 
-* 所有者
+* “所有者”
 * 参与者
 * 读取器
 
 下表列出了一些主要 Azure 机器学习操作，以及可执行这些操作的角色：
 
-| Azure 机器学习操作 | 所有者 | 参与者 | 读取器 |
+| Azure 机器学习操作 | “所有者” | 参与者 | 读取器 |
 | ---- |:----:|:----:|:----:|
 | 创建工作区 | ✓ | ✓ | |
 | 共享工作区 | ✓ | |  |
@@ -99,7 +99,7 @@ ms.locfileid: "78154572"
 
 对于每个工作区区域，Azure 机器学习将在订阅中创建一个拥有参与者级别访问权限的附加应用程序（名称以 `aml-` 或 `Microsoft-AzureML-Support-App-` 开头）。 例如，如果你在“美国东部”有一个工作区，在“北欧”的相同订阅中有另一个工作区，则会看到其中的两个应用程序。 Azure 机器学习可以通过这些应用程序来帮助你管理计算资源。
 
-## <a name="network-security"></a>网络安全性
+## <a name="network-security"></a>网络安全
 
 Azure 机器学习依赖于其他 Azure 服务提供计算资源。 计算资源（计算目标）用于训练和部署模型。 可以在虚拟网络中创建这些计算目标。 例如，可以使用 Azure Data Science Virtual Machine 来训练模型，然后将该模型部署到 AKS。  
 
@@ -192,7 +192,7 @@ Microsoft 可能会出于诊断目的而收集非用户身份信息，例如资�
 
 ## <a name="monitoring"></a>监视
 
-### <a name="metrics"></a>指标
+### <a name="metrics"></a>度量值
 
 可以使用 Azure Monitor 指标来查看和监视 Azure 机器学习工作区的指标。 在 [Azure 门户](https://portal.azure.cn)中选择你的工作区，然后选择“指标”： 
 
@@ -218,7 +218,7 @@ Microsoft 可能会出于诊断目的而收集非用户身份信息，例如资�
 * RequestUrl
 * StatusCode
 * RequestId
-* 持续时间
+* Duration
 
 > [!IMPORTANT]
 > Azure 机器学习工作区中的某些操作不会将信息记录到活动日志。 例如，不会记录训练运行的启动和模型的注册。

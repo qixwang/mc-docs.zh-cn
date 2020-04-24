@@ -13,10 +13,10 @@ origin.date: 11/21/2019
 ms.date: 02/25/2020
 ms.author: v-lingwu
 ms.openlocfilehash: e4fd49e670a4043b8752582ee6086bb9cf14a908
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78154663"
 ---
 # <a name="install-and-run-text-analytics-containers"></a>安装和运行文本分析容器

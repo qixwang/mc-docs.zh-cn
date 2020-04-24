@@ -16,10 +16,10 @@ origin.date: 02/20/2020
 ms.date: 03/09/2020
 ms.author: v-yeche
 ms.openlocfilehash: a0f5f9132e1e85b8cf95887c0cb2f9c0e1c69d4b
-ms.sourcegitcommit: e94ed1c9eff4e88be2ca389909e60b14cc0d92f8
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79084512"
 ---
 # <a name="previous-generations-of-virtual-machine-sizes"></a>前几代虚拟机大小

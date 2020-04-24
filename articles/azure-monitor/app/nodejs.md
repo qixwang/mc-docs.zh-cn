@@ -8,10 +8,10 @@ origin.date: 03/14/2019
 ms.date: 6/4/2019
 ms.author: v-lingwu
 ms.openlocfilehash: 3dd455acbbe740ac5cd6f432b5cd7297de12d166
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78850402"
 ---
 # <a name="monitor-your-nodejs-services-and-apps-with-application-insights"></a>使用 Application Insights 监视 Node.js 服务和应用
@@ -28,7 +28,7 @@ Node.js SDK 可以自动监视传入和传出的 HTTP 请求、异常和某些�
 
 请完成以下任务，为应用或服务设置监视。
 
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>必备条件
 
 开始之前，请确保拥有 Azure 订阅，否则请[获取一个新的试用版][azure-free-offer]。 如果组织已经拥有 Azure 订阅，管理员可以按照[这些说明][add-aad-user]将你添加到该订阅。
 
@@ -40,7 +40,7 @@ Node.js SDK 可以自动监视传入和传出的 HTTP 请求、异常和某些�
 ###  <a name="set-up-an-application-insights-resource"></a>设置 Application Insights 资源
 
 
-1. 登录到 [Azure 门户][portal]。
+1. 登录 [Azure 门户][portal]。
 2. 选择“创建资源”   >   “开发人员工具” >   “Application Insights”。 该资源包括用于接收遥测数据的终结点、用于该数据的存储、保存的报告和仪表板、规则和警报配置等。
 
 3. 在资源创建页的“应用程序类型”框中选择“Node.js 应用程序”。   应用类型决定了创建的默认仪表板和报告。 （任何 Application Insights 资源都可以收集任何语言和平台的数据。）

@@ -10,10 +10,10 @@ ms.topic: conceptual
 origin.date: 04/12/2019
 ms.date: 1/6/2020
 ms.openlocfilehash: 6e5bb3294e0812583202eb0026ddc6c319b49d5f
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78155129"
 ---
 # <a name="monitor-and-manage-stream-analytics-jobs-with-azure-powershell-cmdlets"></a>使用 Azure PowerShell cmdlet 监视和管理流分析作业
@@ -22,7 +22,7 @@ ms.locfileid: "78155129"
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites-for-running-azure-powershell-cmdlets-for-stream-analytics"></a>针对流分析运行 Azure PowerShell cmdlet 的先决条件
-* 在订阅中创建 Azure 资源组。 下面是 Azure PowerShell 脚本示例。 有关 Azure PowerShell 的信息，请参阅 [安装和配置 Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview)；  
+* 在订阅中创建 Azure 资源组。 下面是 Azure PowerShell 脚本示例。 有关 Azure PowerShell 的信息，请参阅[安装和配置 Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview)；  
 
 Azure PowerShell 0.9.8：  
 
@@ -77,7 +77,7 @@ Azure PowerShell 1.0：
 Get-AzStreamAnalyticsJob
 ```
 
-此 PowerShell 命令返回 Azure 订阅中所有关于流分析作业的信息。
+此 PowerShell 命令返回有关在 Azure 订阅中所有流分析作业的信息。
 
 **示例 2**
 
@@ -228,7 +228,7 @@ Get-AzStreamAnalyticsTransformation -ResourceGroupName StreamAnalytics-Default-E
 
 如果指定了 -Force 参数，同时又指定了一个现有的输入名称，则会在不进行确认的情况下替换该输入。
 
-有关 JSON 文件结构和内容的详细信息，请参阅[流分析管理 REST API 参考库][stream.analytics.rest.api.reference]的[创建输入（Azure 流分析）][msdn-rest-api-create-stream-analytics-input]部分。
+有关 JSON 文件结构和内容的详细信息，请参阅[流分析管理 REST API 参考库][msdn-rest-api-create-stream-analytics-input]的[创建输入（Azure 流分析）][stream.analytics.rest.api.reference]部分。
 
 **示例 1**
 
@@ -287,7 +287,7 @@ Azure PowerShell 1.0：
 
 如果指定了 -Force 参数，同时又指定了一个现有的作业名称，则会在不进行确认的情况下替换作业定义。
 
-有关 JSON 文件结构和内容的详细信息，请参阅[流分析管理 REST API 参考库][stream.analytics.rest.api.reference]的[创建流分析作业][msdn-rest-api-create-stream-analytics-job]部分。
+有关 JSON 文件结构和内容的详细信息，请参阅[流分析管理 REST API 参考库][msdn-rest-api-create-stream-analytics-job]的[创建流分析作业][stream.analytics.rest.api.reference]部分。
 
 **示例 1**
 
@@ -328,7 +328,7 @@ Azure PowerShell 1.0：
 
 如果指定了 -Force 参数，同时又指定了一个现有的输出名称，则会在不进行确认的情况下替换该输出。
 
-有关 JSON 文件结构和内容的详细信息，请参阅[流分析管理 REST API 参考库][stream.analytics.rest.api.reference]的[创建输出（Azure 流分析）][msdn-rest-api-create-stream-analytics-output]部分。
+有关 JSON 文件结构和内容的详细信息，请参阅[流分析管理 REST API 参考库][msdn-rest-api-create-stream-analytics-output]的[创建输出（Azure 流分析）][stream.analytics.rest.api.reference]部分。
 
 **示例 1**
 
@@ -371,7 +371,7 @@ Azure PowerShell 1.0：
 
 如果指定了 -Force 参数，同时又指定了一个现有的转换名称，则会在不进行确认的情况下替换转换。
 
-有关 JSON 文件结构和内容的详细信息，请参阅[流分析管理 REST API 参考库][stream.analytics.rest.api.reference]的[创建转换（Azure 流分析）][msdn-rest-api-create-stream-analytics-transformation]部分。
+有关 JSON 文件结构和内容的详细信息，请参阅[流分析管理 REST API 参考库][msdn-rest-api-create-stream-analytics-transformation]的[创建转换（Azure 流分析）][stream.analytics.rest.api.reference]部分。
 
 **示例 1**
 
@@ -522,7 +522,7 @@ Azure PowerShell 1.0：
 此 PowerShell 命令测试 StreamingJob 中输出 Output 的连接状态。  
 
 ## <a name="get-support"></a>获取支持
-如需更多帮助，请尝试访问我们的 [Azure 流分析论坛](https://www.azure.cn/support/contact/)。 
+如需进一步的帮助，请试用我们的 [Azure 流分析论坛](https://www.azure.cn/support/contact/)。 
 
 ## <a name="next-steps"></a>后续步骤
 * [Azure 流分析简介](stream-analytics-introduction.md)

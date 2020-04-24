@@ -11,10 +11,10 @@ origin.date: 08/16/2019
 ms.author: v-yiso
 ms.date: 03/09/2020
 ms.openlocfilehash: 4908f254fb1d42c6e151673ab486b936c731b7fb
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78155067"
 ---
 # <a name="schedule-and-broadcast-jobs-java"></a>计划和广播作业 (Java)
@@ -27,7 +27,7 @@ ms.locfileid: "78155067"
 * 更新标记
 * 调用直接方法
 
-作业包装上述一项操作，并跟踪一组设备中的执行情况。 设备孪生查询定义作业执行的一组设备。 例如，后端应用可以使用作业在 10,000 台设备上调用直接方法来重启设备。 使用设备孪生查询指定设备集，并将作业计划为在以后运行。 每个设备接收和执行 reboot 直接方法时，该作业会跟踪进度。
+作业包装上述一项操作，并跟踪一组设备中的执行情况。 设备孪生查询定义作业执行的一组设备。 例如，后端应用可以使用作业在 10,000 台设备上调用直接方法来重启设备。 使用设备孪生查询指定设备集，并将作业计划为在以后运行。 每个设备接收和执行“重新启动”直接方法时，该作业会跟踪进度。
 
 若要详细了解其中的每项功能，请参阅：
 
@@ -39,7 +39,7 @@ ms.locfileid: "78155067"
 本教程演示如何：
 
 * 创建设备应用，用于实现名为 lockDoor 的直接方法  。 该设备应用还从后端应用接收所需的属性更改。
-* 创建一个后端应用，该应用创建一个作业以在多台设备上调用 **lockDoor** 直接方法。 另一个作业将所需的属性更新发送到多台设备。
+* 创建一个后端应用，用于创建一个作业在多个设备上调用 **lockDoor** 直接方法。 另一个作业将所需的属性更新发送到多个设备。
 
 本教程结束时，将有一个 java 控制台设备应用，以及一个 java 控制台后端应用：
 
@@ -50,7 +50,7 @@ schedule-jobs：使用作业来调用 lockDoor 直接方法，并在多个设备
 > [!NOTE]
 > [Azure IoT SDK](iot-hub-devguide-sdks.md) 一文介绍了可用于构建设备和后端应用的 Azure IoT SDK。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * [Java SE 开发工具包 8](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable)。 请确保在“长期支持”  下选择“Java 8”  以获取 JDK 8 的下载。
 
@@ -106,7 +106,7 @@ schedule-jobs：使用作业来调用 lockDoor 直接方法，并在多个设备
     ```
 
     > [!NOTE]
-    > 可以使用 [Maven 搜索](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22iot-service-client%22%20g%3A%22com.microsoft.azure.sdk.iot%22)检查是否有最新版本的 **iot-service-client**。
+    > 可以使用 **Maven 搜索**检查是否有最新版本的 [iot-service-client](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22iot-service-client%22%20g%3A%22com.microsoft.azure.sdk.iot%22)。
 
 5. 在 **dependencies** 节点后添加以下 **build** 节点。 此配置指示 Maven 使用 Java 1.8 来生成应用：
 
@@ -126,7 +126,7 @@ schedule-jobs：使用作业来调用 lockDoor 直接方法，并在多个设备
     </build>
     ```
 
-6. 保存并关闭 **pom.xml** 文件。
+6. 保存并关闭 pom.xml 文件  。
 
 7. 使用文本编辑器打开 schedule-jobs\src\main\java\com\mycompany\app\App.java  文件。
 
@@ -310,7 +310,7 @@ schedule-jobs：使用作业来调用 lockDoor 直接方法，并在多个设备
 
 2. 在命令提示符下，导航到 **simulated-device** 文件夹。
 
-3. 使用文本编辑器，打开 **simulated-device** 文件夹中的 **pom.xml** 文件，并将以下依赖项添加到 **dependencies** 节点。 通过此依赖项可以使用应用中的 **iot-device-client** 包来与 IoT 中心进行通信：
+3. 使用文本编辑器，打开 **simulated-device** 文件夹中的 **pom.xml** 文件，并在 **dependencies** 节点中添加以下依赖项。 通过此依赖项可以使用应用中的 **iot-device-client** 包来与 IoT 中心进行通信：
 
     ```xml
     <dependency>
@@ -321,9 +321,9 @@ schedule-jobs：使用作业来调用 lockDoor 直接方法，并在多个设备
     ```
 
     > [!NOTE]
-    > 可以使用 [Maven 搜索](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22iot-device-client%22%20g%3A%22com.microsoft.azure.sdk.iot%22)检查是否有最新版本的 **iot-device-client**。
+    > 可以使用 **Maven 搜索**检查是否有最新版本的 [iot-device-client](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22iot-device-client%22%20g%3A%22com.microsoft.azure.sdk.iot%22)。
 
-4. 将以下依赖项添加到 **dependencies** 节点。 此依赖项为 Apache [SLF4J](https://www.slf4j.org/) 日志记录外观配置 NOP，设备客户端 SDK 使用它来实现日志记录。 此配置是可选的，但如果省略此配置，则在运行应用时，可能会在控制台中看到一条警告。 有关设备客户端 SDK 中的日志记录的详细信息，请参阅*适用于 Java 的 Azure IoT 设备 SDK 的示例*自述文件中的[日志记录](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-samples/readme.md#logging)。
+4. 将以下依赖项添加到 **dependencies** 节点。 此依赖项为 Apache [SLF4J](https://www.slf4j.org/) 日志记录外观配置 NOP，设备客户端 SDK 使用它来实现日志记录。 此配置是可选的，但如果省略此配置，则在运行应用时，可能会在控制台中看到一条警告。 有关设备客户端 SDK 中的日志记录的详细信息，请参阅[适用于 Java 的 Azure IoT 设备 SDK 的示例](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-samples/readme.md#logging)自述文件中的*日志记录*。
 
     ```xml
     <dependency>
@@ -351,7 +351,7 @@ schedule-jobs：使用作业来调用 lockDoor 直接方法，并在多个设备
     </build>
     ```
 
-6. 保存并关闭 **pom.xml** 文件。
+6. 保存并关闭 pom.xml 文件  。
 
 7. 使用文本编辑器打开 **simulated-device\src\main\java\com\mycompany\app\App.java** 文件。
 
@@ -514,7 +514,7 @@ schedule-jobs：使用作业来调用 lockDoor 直接方法，并在多个设备
 
 在本教程中，使用了作业来安排用于设备的直接方法以及设备孪生属性的更新。
 
-充分利用以下资源：
+使用下列资源了解如何执行以下操作：
 
 * 通过 [IoT 中心入门](quickstart-send-telemetry-java.md)教程学习如何从设备发送遥测数据。
 * 通过[使用直接方法](quickstart-control-device-java.md)教程学习如何以交互方式控制设备（例如从用户控制的应用打开风扇）。

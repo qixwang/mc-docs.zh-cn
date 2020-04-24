@@ -6,17 +6,17 @@ origin.date: 11/09/2018
 ms.date: 03/23/2020
 ms.author: v-tawe
 ms.openlocfilehash: c417f31cf315966d14b64542e2ac1754e389d744
-ms.sourcegitcommit: 4ba6d7c8bed5398f37eb37cf5e2acafcdcc28791
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79133788"
 ---
 下表列出了适用于 Azure IoT 中心设备预配服务资源的限制。
 
 | 资源 | 限制 |
 | --- | --- |
-| 每个 Azure 订阅的最大设备预配服务数 | 10 个 |
+| 每个 Azure 订阅的最大设备预配服务数 | 10 |
 | 最大登记数 | 1,000,000 |
 | 最大注册数 | 1,000,000 |
 | 最大登记组数 | 100 |

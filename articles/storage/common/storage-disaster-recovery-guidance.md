@@ -12,10 +12,10 @@ ms.author: v-jay
 ms.reviewer: artek
 ms.subservice: common
 ms.openlocfilehash: 9694ecb4d00f783bf9bc420486ad4e73e0de46c1
-ms.sourcegitcommit: fbc7584f403417d3af7bd6bbbaed7c13a78c57b9
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78412622"
 ---
 # <a name="disaster-recovery-and-account-failover-preview"></a>灾难恢复和帐户故障转移（预览版）

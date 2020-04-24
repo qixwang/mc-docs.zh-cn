@@ -15,10 +15,10 @@ origin.date: 04/22/2018
 ms.date: 02/10/2020
 ms.author: v-yeche
 ms.openlocfilehash: 1402a71c1908ae74744a28807329167a834890eb
-ms.sourcegitcommit: 2b4507745b98b45f1ce3f3d30f397521148ef35a
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78237485"
 ---
 # <a name="azure-hybrid-benefit-for-windows-server"></a>Windows Server 的 Azure 混合权益

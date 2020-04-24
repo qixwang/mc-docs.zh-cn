@@ -13,10 +13,10 @@ ms.author: v-jay
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 ms.openlocfilehash: 407edf40c5f5961c99a825d5618e4c68b9e0731e
-ms.sourcegitcommit: 892137d117bcaf9d88aec0eb7ca756fe39613344
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78154407"
 ---
 # <a name="system-views-supported-in-azure-sql-data-warehouse"></a>Azure SQL 数据仓库支持的系统视图
@@ -147,7 +147,7 @@ ms.locfileid: "78154407"
 * [sys.views](https://msdn.microsoft.com/library/ms190334.aspx)
 
 ## <a name="sql-server-dmvs-available-in-sql-data-warehouse"></a>SQL 数据仓库中提供的 SQL Server DMV
-SQL 数据仓库公开许多 SQL Server 动态管理视图 (DMV)。 在 SQL 数据仓库中查询这些视图时，它们会报告分布区上运行的 SQL 数据库的状态。
+SQL 数据仓库公开许多 SQL Server 动态管理视图 (DMV)。 在 SQL 数据仓库中查询这些视图时，它们将报告分布区上运行的 SQL 数据库的状态。
 
 SQL 数据仓库和分析平台系统的并行数据仓库 (PDW) 使用相同的系统视图。 每个 DMV 都有名为 pdw_node_id（它是计算节点的标识符）的列。 
 
@@ -234,7 +234,7 @@ SQL 数据仓库和分析平台系统的并行数据仓库 (PDW) 使用相同的
 
 ## <a name="sql-server-information_schema-views"></a>SQL Server INFORMATION_SCHEMA 视图
 * [CHECK_CONSTRAINTS](https://msdn.microsoft.com/library/ms189772.aspx)
-* [列](https://msdn.microsoft.com/library/ms188348.aspx)
+* [COLUMNS](https://msdn.microsoft.com/library/ms188348.aspx)
 * [PARAMETERS](https://msdn.microsoft.com/library/ms173796.aspx)
 * [ROUTINES](https://msdn.microsoft.com/library/ms188757.aspx)
 * [SCHEMATA](https://msdn.microsoft.com/library/ms182642.aspx)

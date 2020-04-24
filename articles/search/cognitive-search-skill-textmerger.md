@@ -10,10 +10,10 @@ ms.topic: conceptual
 origin.date: 11/04/2019
 ms.date: 03/16/2020
 ms.openlocfilehash: 8a1a1b83aab5d083d1d69ef8d1692e52235a1f9a
-ms.sourcegitcommit: d5eca3c6b03b206e441b599e5b138bd687a91361
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78934807"
 ---
 #   <a name="text-merge-cognitive-skill"></a>文本合并认知技能
@@ -32,8 +32,8 @@ Microsoft.Skills.Text.MergeSkill
 
 | 参数名称     | 说明 |
 |--------------------|-------------|
-| insertPreTag  | 每次插入之前要包含的字符串。 默认值为 `" "`。 要忽略空格，请将值设置为 `""`。  |
-| insertPostTag | 每次插入后要包含的字符串。 默认值为 `" "`。 要忽略空格，请将值设置为 `""`。  |
+| insertPreTag  | 每次插入之前要包含的字符串。 默认值是 `" "`。 要忽略空格，请将值设置为 `""`。  |
+| insertPostTag | 每次插入后要包含的字符串。 默认值是 `" "`。 要忽略空格，请将值设置为 `""`。  |
 
 
 ##  <a name="sample-input"></a>示例输入

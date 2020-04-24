@@ -8,17 +8,17 @@ ms.date: 6/4/2019
 ms.reviewer: sergkanz
 ms.author: v-lingwu
 ms.openlocfilehash: 0e8c4e2725a252493b2d0b2a1676e27249b13aea
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78850434"
 ---
 # <a name="trace-telemetry-application-insights-data-model"></a>跟踪遥测：Application Insights 数据模型
 
 [Application Insights](../../azure-monitor/app/app-insights-overview.md) 中的跟踪遥测表示搜索文本的 `printf` 样式跟踪语句。 `Log4Net`、`NLog` 和其他基于文本的日志文件条目将转换成此类型的实例。 跟踪没有作为可扩展性的度量。
 
-## <a name="message"></a>Message
+## <a name="message"></a>消息
 
 跟踪消息。
 

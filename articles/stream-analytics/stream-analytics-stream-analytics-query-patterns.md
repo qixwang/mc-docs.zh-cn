@@ -10,10 +10,10 @@ ms.topic: conceptual
 origin.date: 12/18/2019
 ms.date: 2/6/2020
 ms.openlocfilehash: 40f4a484f0adc10253a5fa184f7501c1fa354b4a
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78154590"
 ---
 # <a name="common-query-patterns-in-azure-stream-analytics"></a>Azure 流分析中的常见查询模式

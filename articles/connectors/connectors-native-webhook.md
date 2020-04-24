@@ -10,10 +10,10 @@ ms.date: 03/09/2020
 ms.author: v-yeche
 tags: connectors
 ms.openlocfilehash: a50b6101b4f4194e0702816e4abde74df6e6a69a
-ms.sourcegitcommit: 1ac138a9e7dc7834b5c0b62a133ca5ce2ea80054
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78304650"
 ---
 # <a name="create-and-run-automated-event-based-workflows-by-using-http-webhooks-in-azure-logic-apps"></a>在 Azure 逻辑应用中使用 HTTP Webhook 创建和运行基于事件的自动化工作流
@@ -55,7 +55,7 @@ HTTP Webhook 操作也基于事件，它会通过将一个回调 URL 注册到�
 * [Webhook 和订阅](../logic-apps/logic-apps-workflow-actions-triggers.md#webhooks-and-subscriptions)
 * [创建支持 Webhook 的自定义 API](../logic-apps/logic-apps-create-api-app.md)
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * Azure 订阅。 如果没有 Azure 订阅，请[注册一个 Azure 试用帐户](https://www.azure.cn/pricing/1rmb-trial/)。
 
@@ -69,7 +69,7 @@ HTTP Webhook 操作也基于事件，它会通过将一个回调 URL 注册到�
 
 此内置触发器将一个回调 URL 注册到指定的服务，并等待该服务向该 URL 发送 HTTP POST 请求。 发生此事件时，触发器将会激发，并立即运行逻辑应用。
 
-1. 登录到 [Azure 门户](https://portal.azure.cn)。 在逻辑应用设计器中打开空白逻辑应用。
+1. 登录 [Azure 门户](https://portal.azure.cn)。 在逻辑应用设计器中打开空白逻辑应用。
 
 1. 在设计器的搜索框中，输入“http webhook”作为筛选器。 在“触发器”列表中选择“HTTP Webhook”触发器。  
 
@@ -87,7 +87,7 @@ HTTP Webhook 操作也基于事件，它会通过将一个回调 URL 注册到�
 
 1. 继续使用触发器激发时运行的操作生成逻辑应用的工作流。
 
-1. 完成后，请记得保存逻辑应用。 在设计器工具栏上选择“保存”。 
+1. 完成后，请记得保存逻辑应用。 在设计器工具栏上，选择“保存”  。
 
     保存逻辑应用会调用订阅终结点，并注册用于触发此逻辑应用的回调 URL。
 
@@ -97,7 +97,7 @@ HTTP Webhook 操作也基于事件，它会通过将一个回调 URL 注册到�
 
 此内置操作将一个回调 URL 注册到指定的服务，暂停逻辑应用的工作流，并等待该服务向该 URL 发送 HTTP POST 请求。 发生此事件时，该操作将继续运行逻辑应用。
 
-1. 登录到 [Azure 门户](https://portal.azure.cn)。 在逻辑应用设计器中打开逻辑应用。
+1. 登录 [Azure 门户](https://portal.azure.cn)。 在逻辑应用设计器中打开逻辑应用。
 
     此示例的第一步是使用 HTTP Webhook 触发器。
 
@@ -121,7 +121,7 @@ HTTP Webhook 操作也基于事件，它会通过将一个回调 URL 注册到�
 
     有关 HTTP Webhook 可用的身份验证类型的详细信息，请参阅[向出站调用添加身份验证](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)。
 
-1. 完成后，请记得保存逻辑应用。 在设计器工具栏上选择“保存”。 
+1. 完成后，请记得保存逻辑应用。 在设计器工具栏上，选择“保存”  。
 
 ## <a name="connector-reference"></a>连接器参考
 
@@ -133,8 +133,8 @@ HTTP Webhook 操作也基于事件，它会通过将一个回调 URL 注册到�
 
 | 属性名称 | 类型 | 说明 |
 |---------------|------|-------------|
-| headers | object | 请求中的标头 |
-| body | object | JSON 对象 | 包含请求中正文内容的对象 |
+| headers | 对象 (object) | 请求中的标头 |
+| body | 对象 (object) | JSON 对象 | 包含请求中正文内容的对象 |
 | 状态代码 | int | 请求中的状态代码 |
 |||
 

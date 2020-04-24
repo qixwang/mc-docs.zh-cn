@@ -9,10 +9,10 @@ origin.date: 08/06/2018
 ms.date: 09/23/2019
 ms.author: v-lingwu
 ms.openlocfilehash: 6c39b45f197273fcf2e5a517f2f2b1ab50473770
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78850267"
 ---
 # <a name="search-queries-in-azure-monitor-logs"></a>Azure Monitor 日志中的搜索查询
@@ -31,7 +31,7 @@ search "error"
 如上所示的无范围查询尽管用法简单，但并不高效，且可能返回大量不相关的结果。 更好的做法是在相关表甚至特定的列中执行搜索。
 
 ### <a name="table-scoping"></a>表范围限定
-若要在特定的表中搜索某个词语，请紧靠在 **search** 运算符的后面添加 `in (table-name)`：
+若要在特定的表中搜索某个词语，请紧靠在 `in (table-name)`search**运算符的后面添加**：
 
 ```Kusto
 search in (Event) "error"

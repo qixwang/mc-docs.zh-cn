@@ -15,10 +15,10 @@ origin.date: 01/22/2018
 ms.date: 03/02/2020
 ms.author: v-jay
 ms.openlocfilehash: 2f76c26d5356a3a13db08c9286310be526eb3f9a
-ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77653585"
 ---
 # <a name="quickstart-create-an-azure-data-factory-using-powershell"></a>快速入门：使用 PowerShell 创建 Azure 数据工厂

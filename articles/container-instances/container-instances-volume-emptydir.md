@@ -6,10 +6,10 @@ origin.date: 02/08/2018
 ms.date: 01/15/2020
 ms.author: v-yeche
 ms.openlocfilehash: fc0dd283d592e4b7faa9bd543d484314d87778d9
-ms.sourcegitcommit: 2b4507745b98b45f1ce3f3d30f397521148ef35a
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78213735"
 ---
 <!--Verified successfully-->
@@ -40,7 +40,7 @@ ms.locfileid: "78213735"
 
 <!--Not Available on [Azure Resource Manager template](https://docs.microsoft.com/azure/templates/microsoft.containerinstance/containergroups)-->
 
-首先，在模板的容器组 `properties` 节中填充 `volumes` 数组。 接下来，针对容器组中希望装载 *emptyDir* 卷的每个容器，在容器定义的 `properties` 节中填充 `volumeMounts` 数组。
+首先，在模板的容器组 `volumes` 节中填充 `properties` 数组。 接下来，针对容器组中希望装载 *emptyDir* 卷的每个容器，在容器定义的 `volumeMounts` 节中填充 `properties` 数组。
 
 例如，以下资源管理器模板创建了一个包含两个容器的容器组，每个容器均装载了 *emptyDir* 卷：
 

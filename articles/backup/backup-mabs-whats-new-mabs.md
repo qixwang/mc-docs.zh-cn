@@ -7,10 +7,10 @@ origin.date: 11/13/2018
 ms.date: 12/04/2019
 ms.author: v-lingwu
 ms.openlocfilehash: 4b7fe24937f2e85db8e7255f00088557d3296eff
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78850638"
 ---
 # <a name="whats-new-in-microsoft-azure-backup-server"></a>Microsoft Azure 备份服务器中的新增功能
@@ -63,10 +63,10 @@ MABS V3 是完整发行版，可直接安装在 Windows Server 2016、Windows Se
 
 ## <a name="next-steps"></a>后续步骤
 
-了解如何准备服务器或开始保护工作负荷：
+了解如何准备服务器或开始保护工作负载：
 
 - [MABS V3 中的已知问题](backup-mabs-release-notes-v3.md)
-- [准备备份服务器工作负荷](backup-azure-microsoft-azure-backup.md)
+- [准备备份服务器工作负载](backup-azure-microsoft-azure-backup.md)
 - [使用备份服务器备份 VMware 服务器](backup-azure-backup-server-vmware.md)
 - [使用备份服务器备份 SQL Server](backup-azure-sql-mabs.md)
-- [将 Modern Backup Storage 与备份服务器配合使用](backup-mabs-add-storage.md)
+- [将新式备份存储与备份服务器一起使用](backup-mabs-add-storage.md)

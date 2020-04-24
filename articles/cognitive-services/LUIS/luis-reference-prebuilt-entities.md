@@ -13,17 +13,17 @@ origin.date: 10/03/2019
 ms.date: 12/05/2019
 ms.author: v-lingwu
 ms.openlocfilehash: 93fcea0423c68e697c2a9546c6941aa1b3aa193c
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78154545"
 ---
 # <a name="entities-per-culture-in-your-luis-model"></a>LUIS 模型中每个区域性的实体
 
 语言理解 (LUIS) 提供了预构建的实体。 当应用程序中包括预构建实体时，LUIS 会在终结点响应中包括对应的实体预测。 所有陈述示例都标记有实体。 **无法**修改预构建实体的行为。 除非另行说明，预构建实体在所有 LUIS 应用程序区域设置（语言区域）中都可用。 下表显示了每个语言区域支持的预构建实体。
 
-|环境|子区域性|注释|
+|环境|子区域性|说明|
 |--|--|--|
 |中文|[zh-CN](#chinese-entity-support)||
 

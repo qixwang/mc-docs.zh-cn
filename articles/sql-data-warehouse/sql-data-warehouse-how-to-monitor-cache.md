@@ -12,10 +12,10 @@ ms.date: 03/02/2020
 ms.author: v-jay
 ms.reviewer: igorstan
 ms.openlocfilehash: f402254966523ffab6a1c50ea31a200d4b8d6e11
-ms.sourcegitcommit: 892137d117bcaf9d88aec0eb7ca756fe39613344
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78154405"
 ---
 # <a name="how-to-monitor-the-gen2-cache"></a>如何监视 Gen2 缓存
@@ -42,7 +42,7 @@ Gen2 存储体系结构自动将最常查询的列存储段归类到特定的缓
 
 **场景 1：** 你的缓存使用已优化。 [排查](sql-data-warehouse-manage-monitor.md)可能导致查询速度变慢的其他方面的情况。
 
-**场景 2：** 当前工作数据集不适合放置在缓存中，这会因物理读取导致缓存命中百分比低。 考虑提升性能级别并重新运行工作负荷，以便填充缓存。
+**场景 2：** 当前工作数据集不适合放置在缓存中，引发物理读取困难，导致缓存命中百分比低。 考虑提升性能级别并重新运行工作负荷，以便填充缓存。
 
 **场景 3：** 查询运行速度慢的原因可能与缓存无关。 [排查](sql-data-warehouse-manage-monitor.md)可能导致查询速度变慢的其他方面的情况。 也可以考虑[缩减实例](sql-data-warehouse-manage-monitor.md)，通过缩减缓存大小来节省成本。 
 

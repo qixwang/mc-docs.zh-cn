@@ -11,10 +11,10 @@ author: peterclu
 origin.date: 01/09/2020
 ms.date: 03/09/2020
 ms.openlocfilehash: 2a0b28d12136df04558a1cdfdb297f8792c85a6c
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78155341"
 ---
 # <a name="use-a-keyboard-to-use-azure-machine-learning-designer-preview"></a>通过键盘使用 Azure 机器学习设计器（预览版）

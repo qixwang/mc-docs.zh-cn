@@ -13,10 +13,10 @@ ms.reviewer: nibaccam
 origin.date: 11/04/2019
 ms.date: 03/16/2020
 ms.openlocfilehash: ba8ea24a9ed87615bcb312b747a7c5c7a731a8e5
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78850214"
 ---
 # <a name="start-monitor-and-cancel-training-runs-in-python"></a>在 Python 中启动、监视和取消训练运行
@@ -31,13 +31,13 @@ ms.locfileid: "78850214"
 * 创建子运行。
 * 标记和查找运行。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 需要准备好以下各项：
 
 * Azure 订阅。 如果没有 Azure 订阅，请在开始之前创建一个免费帐户。 立即试用[免费版或付费版 Azure 机器学习](https://aka.ms/AMLFree)。
 
-* 一个 [Azure 机器学习工作区](how-to-manage-workspace.md)。
+* [Azure 机器学习工作区](how-to-manage-workspace.md)。
 
 * 适用于 Python 的 Azure 机器学习 SDK（1.0.21 或更高版本）。 若要安装或更新到最新版本的 SDK，请参阅[安装或更新 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)。
 
@@ -53,7 +53,7 @@ ms.locfileid: "78850214"
 
 ### <a name="using-the-sdk"></a>使用 SDK
 
-通过从 [azureml.core](https://docs.microsoft.com/python/api/azureml-core/azureml.core?view=azure-ml-py) 包导入 [Workspace](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py)、[Experiment](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment.experiment?view=azure-ml-py)、[Run](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py) 和 [ScriptRunConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py) 类来设置试验。
+通过从 [azureml.core](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py) 包导入 [Workspace](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment.experiment?view=azure-ml-py)、[Experiment](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py)、[Run](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py) 和 [ScriptRunConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core?view=azure-ml-py) 类来设置试验。
 
 ```python
 import azureml.core
@@ -81,7 +81,7 @@ notebook_run.log(name="message", value="Hello from run!")
     az login
     ```
 
-1. 将工作区配置附加到包含训练脚本的文件夹。 请将 `myworkspace` 替换为你的 Azure 机器学习工作区。 请将 `myresourcegroup` 替换为包含你的工作区的 Azure 资源组：
+1. 将工作区配置附加到包含训练脚本的文件夹。 请将 `myworkspace` 替换为你的 Azure 机器学习工作区。 将 `myresourcegroup` 替换为包含工作区的 Azure 资源组：
 
     ```azurecli
     az ml folder attach -w myworkspace -g myresourcegroup

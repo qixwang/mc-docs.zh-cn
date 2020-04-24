@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
 ms.openlocfilehash: 94812a468011f3eb0121813e89116421f42ee721
-ms.sourcegitcommit: fbc7584f403417d3af7bd6bbbaed7c13a78c57b9
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78412527"
 ---
 # <a name="use-javascript-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2-preview"></a>使用 JavaScript 管理 Azure Data Lake Storage Gen2（预览版）中的目录、文件和 ACL
@@ -25,7 +25,7 @@ ms.locfileid: "78412527"
 
 “[包(节点包管理器)](https://www.npmjs.com/package/@azure/storage-file-datalake)” | ”[示例](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-file-datalake/samples)” | ”[提供反馈](https://github.com/Azure/azure-sdk-for-java/issues)”
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 > [!div class="checklist"]
 > * Azure 订阅。 请参阅[获取 Azure 1 元人民币的试用订阅](https://wd.azure.cn/zh-cn/pricing/1rmb-trial-full)。
@@ -48,7 +48,7 @@ const AzureStorageDataLake = require("@azure/storage-file-datalake");
 
 ## <a name="connect-to-the-account"></a>连接到帐户 
 
-若要使用本文中的代码片段，需创建一个表示存储帐户的 **DataLakeServiceClient** 实例。 若要获得一个实例，最简单的方法是使用帐户密钥。 
+若要使用本文中的代码片段，需创建一个表示存储帐户的 **DataLakeServiceClient** 实例。 若要获取一个，最简单的方法是使用帐户密钥。 
 
 此示例使用帐户密钥创建 **DataLakeServiceClient** 的实例。
 
@@ -107,7 +107,7 @@ async function CreateDirectory(fileSystemClient) {
 
 可以通过调用 **DirectoryClient.rename** 方法来重命名或移动目录。 以参数形式传递所需目录的路径。 
 
-此示例将某个子目录重命名为名称 `my-directory-renamed`。
+此示例将子目录重命名为 `my-directory-renamed` 的名称。
 
 ```javascript
 async function RenameDirectory(fileSystemClient) {

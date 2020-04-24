@@ -10,10 +10,10 @@ ms.date: 03/09/2020
 ms.author: v-yeche
 tags: connectors
 ms.openlocfilehash: fdcd5aaa70ef4a329c5acffe578508d7d20a794e
-ms.sourcegitcommit: 1ac138a9e7dc7834b5c0b62a133ca5ce2ea80054
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78304674"
 ---
 # <a name="exchange-messages-in-the-cloud-by-using-azure-logic-apps-and-azure-service-bus"></a>使用 Azure 逻辑应用和 Azure 服务总线在云中交换消息
@@ -31,7 +31,7 @@ ms.locfileid: "78304674"
 
 [!INCLUDE [Warning about creating infinite loops](../../includes/connectors-infinite-loops.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * Azure 订阅。 如果没有 Azure 订阅，请[注册一个 Azure 试用帐户](https://www.azure.cn/pricing/1rmb-trial/)。
 
@@ -47,7 +47,7 @@ ms.locfileid: "78304674"
 
 确认逻辑应用有权访问服务总线命名空间。
 
-1. 登录到 [Azure 门户](https://portal.azure.cn)。
+1. 登录 [Azure 门户](https://portal.azure.cn)。
 
 1. 转到服务总线的命名空间。  在命名空间页上的“设置”下，选择“共享访问策略”。   在“声明”下，检查你是否有该命名空间的“管理”权限。  
 
@@ -152,7 +152,7 @@ ms.locfileid: "78304674"
 
     例如，可以添加一个操作来发送电子邮件，确认消息已发送。
 
-1. 保存逻辑应用。 在设计器工具栏上选择“保存”。 
+1. 保存逻辑应用。 在设计器工具栏上，选择“保存”  。
 
 ## <a name="connector-reference"></a>连接器参考
 

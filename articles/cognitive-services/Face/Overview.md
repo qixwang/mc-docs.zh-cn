@@ -11,10 +11,10 @@ origin.date: 07/03/2019
 ms.date: 07/11/2019
 ms.author: v-junlch
 ms.openlocfilehash: 430d6c955541aea2bf4eb0bb7ee955a75544de10
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78155091"
 ---
 # <a name="what-is-the-azure-face-api"></a>什么是 Azure 人脸 API？

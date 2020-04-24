@@ -8,16 +8,16 @@ origin.date: 07/02/2019
 ms.date: 07/12/2019
 ms.author: v-lingwu
 ms.openlocfilehash: 201a69874566308d95edf9be6bf8ace56a5995e6
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78850317"
 ---
 #  <a name="agent-health-solution-in-azure-monitor"></a>Azure Monitor 中的代理运行状况解决方案
 Azure 中的代理运行状况解决方案有助于你了解，在所有直接向 Azure Monitor 中的 Log Analytics 工作区报告或向连接到 Azure Monitor 的 System Center Operations Manager 管理组报告的代理中，哪些不响应且提交的是操作数据。  也可跟踪所部署代理的数目及其地理分布情况，并通过执行其他查询来不断了解在 Azure 或其他云环境中或本地部署的代理的分布情况。    
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 在部署此解决方案之前，请确认当前支持向 Log Analytics 工作区报告的 Windows 代理。    
 
 ## <a name="solution-components"></a>解决方案组件
@@ -66,7 +66,7 @@ Azure 中的代理运行状况解决方案有助于你了解，在所有直接�
 ### <a name="heartbeat-records"></a>检测信号记录
 创建的是“Heartbeat”类型的记录。   这些记录的属性在下表中列出。  
 
-| 属性 | 说明 |
+| properties | 说明 |
 | --- | --- |
 | `Type` | Heartbeat |
 | `Category` | 值为“Direct Agent”、“SCOM Agent”或“SCOM Management Server”。   |

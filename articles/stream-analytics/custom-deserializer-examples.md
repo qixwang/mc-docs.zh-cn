@@ -9,10 +9,10 @@ ms.topic: conceptual
 origin.date: 1/28/2020
 ms.date: 02/27/2020
 ms.openlocfilehash: 0e400f5ce3690d585b7348fa61784729a2513efb
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78154525"
 ---
 # <a name="read-input-in-any-format-using-net-custom-deserializers"></a>使用 .NET 自定义反序列化程序读取任何格式的输入
@@ -34,7 +34,7 @@ Azure 流分析作业可以通过自定义的 .NET 反序列化程序来读取�
 
 以下代码片段是流数据的反序列化。 
 
-可跳过的错误应使用通过 `UserDefinedOperator` 的 Initialize 方法传递的 `IStreamingDiagnostics` 来发出。 将所有异常视为错误，并重新创建反序列化程序。 出现特定数量的错误后，该作业将进入失败状态。
+可跳过的错误应使用通过 `IStreamingDiagnostics` 的 Initialize 方法传递的 `UserDefinedOperator` 来发出。 将所有异常视为错误，并重新创建反序列化程序。 出现特定数量的错误后，该作业将进入失败状态。
 
 `StreamDeserializer<T>` 将流反序列化为 `T` 类型的对象。 必须满足以下条件：
 
@@ -113,7 +113,7 @@ message MessageBodyProto {
 }
 ```
 
-从 **Google.Protobuf.Tools** NuGet 运行 `protoc.exe` 会生成一个包含定义的 .cs 文件。 此处未显示生成的文件。
+从 `protoc.exe`Google.Protobuf.Tools**NuGet 运行** 会生成一个包含定义的 .cs 文件。 此处未显示生成的文件。
 
 以下代码片段是反序列化程序的实现，它假设生成的文件已包含在项目中。 此实现只是基于生成的文件的精简包装器。
 
@@ -222,7 +222,7 @@ namespace ExampleCustomCode.Serialization
 
 `serializationClassName` 应是实现 `StreamDeserializer<T>` 的类。 以下部分对此做了介绍。
 
-## 区域支持 <a name="region-support"></a>
+## <a name="region-support"></a>区域支持 <a name="region-support"></a>
 
 此功能已在以下区域推出：
 
@@ -238,7 +238,7 @@ namespace ExampleCustomCode.Serialization
 此功能已在 [1 个区域](#region-support)中推出。
 ### <a name="can-i-access-metadatapropertyvalue-from-my-inputs-similar-to-getmetadatapropertyvalue-function"></a>是否可以从类似于 GetMetadataPropertyValue 函数的输入访问 MetadataPropertyValue？
 
-不支持此功能。 如果需要此功能，可以在 [UserVoice](https://feedback.azure.com/forums/270577-stream-analytics/suggestions/38779801-accessing-input-metadata-properties-in-custom-dese) 上为此请求投票。
+现在不支持此功能。 如果需要此功能，可以在 [UserVoice](https://feedback.azure.com/forums/270577-stream-analytics/suggestions/38779801-accessing-input-metadata-properties-in-custom-dese) 上为此请求投票。
 
 ### <a name="can-i-share-my-deserializer-implementation-with-the-community-so-that-others-can-benefit"></a>是否可以在社区中分享我的反序列化程序实现，使其他人能够受益？
 

@@ -19,10 +19,10 @@ ms.reviewer: negoe,CelesteDG
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1f6a6b8ab68453c4e10378dbf82e9a2203f5862b
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79291083"
 ---
 # <a name="national-clouds"></a>国家云
@@ -68,7 +68,7 @@ ms.locfileid: "79291083"
   - 授权常用终结点为 `https://login.microsoftonline.de/common/oauth2/authorize`。
   - 令牌常用终结点为 `https://login.microsoftonline.de/common/oauth2/token`。
 
-对于单租户应用程序，请将先前 URL 中的“common”替换为你的租户 ID 或名称。 例如 `https://login.microsoftonline.de/contoso.com`。
+对于单租户应用程序，请将先前 URL 中的“common”替换为你的租户 ID 或名称。 示例为 `https://login.microsoftonline.de/contoso.com`。
 
 ## <a name="microsoft-graph-api"></a>Microsoft Graph API
 

@@ -7,10 +7,10 @@ origin.date: 10/30/2019
 ms.date: 03/06/2020
 ms.author: v-lingwu
 ms.openlocfilehash: 9ca69e08f483d7c0b3331796e8b7c4eca4bc7e22
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78850259"
 ---
 # <a name="data-model-for-azure-backup-diagnostics-events"></a>Azure 备份诊断事件的数据模型
@@ -81,13 +81,13 @@ ms.locfileid: "78850259"
 | AlertRaisedOn                  | 文本          | 对其引发警报的实体的类型                        |
 | AlertSeverity                  | 文本          | 警报的严重性。 例如 Critical                 |
 | AlertStatus                    | 文本          | 警报的状态。 例如 Active                     |
-| AlertTimeToResolveInMinutes    | 数字        | 解决某个警报所花费的时间。 对于活动警报为空白。     |
+| AlertTimeToResolveInMinutes    | Number        | 解决某个警报所花费的时间。 对于活动警报为空白。     |
 | AlertType                      | 文本          | 警报类型。 例如 Backup                           |
 | AlertUniqueId                  | 文本          | 生成的警报的唯一标识符                    |
 | BackupItemUniqueId             | 文本          | 与警报关联的备份项的唯一标识符 |
 | BackupManagementServerUniqueId | 文本          | 用于唯一标识保护备份项所用的备份管理服务器的字段（如果适用） |
 | BackupManagementType           | 文本          | 服务器正在对其执行备份作业的提供程序类型，例如 IaaSVM、FileFolder |
-| CountOfAlertsConsolidated      | 数字        | 合并的警报数目（如果为合并的警报）  |
+| CountOfAlertsConsolidated      | Number        | 合并的警报数目（如果为合并的警报）  |
 | ProtectedContainerUniqueId     | 文本          | 与警报关联的受保护服务器的唯一标识符 |
 | RecommendedAction              | 文本          | 建议用于解决警报的操作                      |
 | schemaVersion                  | 文本          | 架构的当前版本，例如 **V2**            |
@@ -128,8 +128,8 @@ ms.locfileid: "78850259"
 | BackupItemUniqueId             | 文本          | 用于标识与存储实体相关的备份项的唯一 ID |
 | BackupManagementServerUniqueId | 文本          | 用于标识与存储实体相关的备份管理服务器的唯一 ID |
 | BackupManagementType           | 文本          | 执行备份的提供程序类型，例如此警报所属的 IaaSVM、FileFolder |
-| DataTransferredInMB            | 数字        | 此作业传输的数据量，以 MB 为单位                          |
-| JobDurationInSecs              | 数字        | 作业的总持续时间，以秒为单位                                |
+| DataTransferredInMB            | Number        | 此作业传输的数据量，以 MB 为单位                          |
+| JobDurationInSecs              | Number        | 作业的总持续时间，以秒为单位                                |
 | JobFailureCode                 | 文本          | 导致作业失败的故障代码字符串    |
 | JobOperation                   | 文本          | 为其运行作业的操作，例如备份、还原、配置备份 |
 | JobOperationSubType            | 文本          | 作业操作的子类型。 例如，如果是日志备份作业，则为“Log” |
@@ -180,7 +180,7 @@ ms.locfileid: "78850259"
 | RetentionDuration               | 文本           | 所配置备份的保留持续时间                    |
 | RetentionType                   | 文本           | 保留类型                                            |
 | schemaVersion                   | 文本           | 此字段表示架构的当前版本，值为 **V2** |
-| State                           | 文本           | 策略对象的当前状态。 例如 Active、Deleted |
+| 状态                           | 文本           | 策略对象的当前状态。 例如 Active、Deleted |
 | SynchronisationFrequencyPerDay  | 整数   | 一天中同步 SC DPM 和 MABS 文件备份的次数 |
 | VaultUniqueId                   | 文本           | 此策略所属的保管库的唯一 ID          |
 | WeeklyRetentionDaysOfTheWeek    | 文本           | 选择进行每周保留的日期（星期几）               |
@@ -211,8 +211,8 @@ ms.locfileid: "78850259"
 | ProtectedContainerUniqueId     | 文本          | 与警报关联的受保护服务器的唯一标识符 |
 | schemaVersion                  | 文本          | 架构的版本。 例如 **V2**                   |
 | 状态                          | 文本          | 备份项对象的状态。 例如 Active、Deleted |
-| StorageAllocatedInMBs          | 数字        | 磁盘类型的相应存储中相应备份项分配的存储大小 |
-| StorageConsumedInMBs           | 数字        | 相应存储中相应备份项占用的存储大小 |
+| StorageAllocatedInMBs          | Number        | 磁盘类型的相应存储中相应备份项分配的存储大小 |
+| StorageConsumedInMBs           | Number        | 相应存储中相应备份项占用的存储大小 |
 | StorageName                    | 文本          | 存储实体的名称。 例如 E:\                      |
 | StorageTotalSizeInGBs          | 文本          | 存储实体占用的存储总大小 (GB)     |
 | StorageType                    | 文本          | 存储类型，例如 Cloud、Volume、Disk             |

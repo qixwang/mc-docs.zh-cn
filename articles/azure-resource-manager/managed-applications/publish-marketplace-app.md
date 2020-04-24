@@ -7,10 +7,10 @@ origin.date: 07/17/2019
 ms.date: 01/20/2020
 ms.author: v-yeche
 ms.openlocfilehash: c7503cad7f6e4f281b1b2316cf1479ba9b8e12ed
-ms.sourcegitcommit: 69cadf1fa0ed81751c48fbce919a6bb44b1053ce
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78209155"
 ---
 # <a name="azure-managed-applications-in-the-marketplace"></a>市场中的 Azure 托管应用程序

@@ -13,10 +13,10 @@ ms.custom: seo-lt-2019
 origin.date: 08/27/2019
 ms.date: 01/06/2020
 ms.openlocfilehash: c37bc063fb8dd834f3d8cc6ad7ed0372ef813955
-ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77653524"
 ---
 # <a name="copy-data-from-and-to-microsoft-access-data-stores-using-azure-data-factory"></a>使用 Azure 数据工厂从/向 Microsoft Access 数据存储复制数据

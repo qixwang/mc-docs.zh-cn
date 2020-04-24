@@ -9,10 +9,10 @@ origin.date: 03/28/2019
 ms.date: 04/12/2019
 ms.author: v-lingwu
 ms.openlocfilehash: 55efad95c3597624343b35da4cac9c121a2daea0
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78850308"
 ---
 # <a name="optimize-your-sql-environment-with-the-sql-server-health-check-solution-in-azure-monitor"></a>使用 Azure Monitor 中的 SQL Server 运行状况检查解决方案优化 SQL 环境
@@ -33,7 +33,7 @@ ms.locfileid: "78850308"
 
 ![SQL 运行状况检查仪表板的图像](./media/sql-assessment/sql-healthcheck-dashboard-01.png)
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * SQL 运行状况检查解决方案要求在每台装有 Microsoft Monitoring Agent (MMA) 的计算机上安装受支持版本的 .NET Framework 4.6.2。  MMA 代理由 System Center 2016 - Operations Manager 和 Operations Manager 2012 R2 以及 Azure Monitor 使用。  
 * 该解决方案支持 SQL Server 版本 2012、2014 和 2016。
@@ -216,7 +216,7 @@ SQLAssessmentRecommendation
 
 是否有某种方法可配置检查的运行频率？ 
 
-* 目前没有。
+* 现在不行。
 
 如果添加 SQL 运行状况检查解决方案后发现另一台服务器，那么它是否会被检查？ 
 
@@ -244,7 +244,7 @@ SQLAssessmentRecommendation
 
 *是否有某种方法来配置收集数据的时间？*
 
-* 目前没有。
+* 现在不行。
 
 *为何需要配置运行方式帐户？*
 

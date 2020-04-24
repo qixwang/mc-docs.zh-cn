@@ -13,18 +13,18 @@ origin.date: 07/29/2019
 ms.date: 02/25/2020
 ms.author: v-lingwu
 ms.openlocfilehash: 1de5652639213da322e22256d10bcf79afea3eba
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78154546"
 ---
 # <a name="deprecated-prebuilt-entities-in-a-luis-app"></a>LUIS 应用中已弃用的预生成实体
 以下预构建实体已被弃用，不能添加到新的 LUIS 应用中。
 
-* **Datetime**：使用 datetime  的现有 LUIS 应用应当迁移到 datetimeV2  ，虽然 datetime 实体在使用它的现存应用中可以继续工作。
-* **Geography**：使用 geography  的现有 LUIS 应用在 2018 年 12 月之前一直受支持。
-* **Encyclopedia**：使用 encyclopedia  的现有 LUIS 应用在 2018 年 12 月之前一直受支持。
+* **Datetime**：使用 **datetime** 的现有 LUIS 应用应当迁移到 **datetimeV2**，虽然 datetime 实体在使用它的现存应用中可以继续工作。
+* **Geography**：使用 **geography** 的现有 LUIS 应用在 2018 年 12 月之前一直受支持。
+* **Encyclopedia**：使用 **encyclopedia** 的现有 LUIS 应用在 2018 年 12 月之前一直受支持。
 
 ## <a name="geography-culture"></a>Geography 语言区域
 **Geography** 仅在 `en-us` 区域设置中可用。
@@ -33,7 +33,7 @@ ms.locfileid: "78154546"
 **Encyclopedia** 仅在 `en-US` 区域设置中可用。
 
 #### <a name="encyclopedia-subtypes"></a>Encyclopedia 子类型
-Encyclopedia 内置实体包括下表中的 100 多个子类型：此外，encyclopedia 实体经常映射到多种类型。 例如，查询 Ronald Reagan 产生以下项： 
+Encyclopedia 内置实体包括下表中的 100 多个子类型；此外，encyclopedia 实体通常映射到多个类型。 例如，查询 Ronald Reagan 产生以下项： 
 
 ```json
 {

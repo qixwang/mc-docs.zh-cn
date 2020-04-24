@@ -9,10 +9,10 @@ origin.date: 08/16/2018
 ms.date: 01/21/2019
 ms.author: v-lingwu
 ms.openlocfilehash: 05731d5fdaa74826e89ac9fdab99fad99b369c37
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78850274"
 ---
 # <a name="joins-in-azure-monitor-log-queries"></a>Azure Monitor 日志查询中的联接
@@ -41,7 +41,7 @@ SecurityEvent
 
 在本例中，第一个数据集筛选所有登录事件。 这与筛选所有注销事件的第二个数据集进行联接。 投影列包括计算机、帐户、TargetLogonId 和 TimeGenerated     。 数据集由共享列 TargetLogonId 进行关联  。 输出实为具有登录时间和注销时间的记录，每个关联对应一条记录。
 
-如果这两个数据集具有名称相同的列，则右侧数据集的列将附加索引号，因此本例中，结果显示为 TargetLogonId 具有左侧表的值，而 TargetLogonId1 具有右侧表的值   。 在此情况下，已使用 `project-away` 运算符删除第二个 _TargetLogonId1_。
+如果这两个数据集具有名称相同的列，则右侧数据集的列将附加索引号，因此本例中，结果显示为 TargetLogonId 具有左侧表的值，而 TargetLogonId1 具有右侧表的值   。 在此情况下，已使用 _运算符删除第二个_TargetLogonId1`project-away`。
 
 > [!NOTE]
 > 为提高性能，请使用 `project` 运算符仅保留已联接的数据集的相关列。
@@ -90,7 +90,7 @@ SecurityEvent
 | leftsemi | 结果中包含左表中具有右表匹配项的记录。 结果表只包含左表中的列。 |
 
 
-## <a name="best-practices"></a>最佳实践
+## <a name="best-practices"></a>最佳做法
 
 要实现最佳性能，请注意以下几点：
 

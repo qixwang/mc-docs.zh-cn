@@ -10,10 +10,10 @@ ms.date: 09/30/2019
 ms.author: v-yeche
 ms.custom: MVC
 ms.openlocfilehash: 7ee00e5b30e5b5c394328d21bc49ff9d4333e402
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79291124"
 ---
 # <a name="prepare-azure-resources-for-disaster-recovery-of-on-premises-machines"></a>准备 Azure 资源，以便对本地计算机进行灾难恢复
@@ -22,7 +22,7 @@ ms.locfileid: "79291124"
 
 本文是此系列的第一个教程，演示如何为本地 VM 设置灾难恢复。 
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 验证 Azure 帐户是否拥有复制权限。
@@ -37,7 +37,7 @@ ms.locfileid: "79291124"
 - 查看 [VMware](vmware-azure-architecture.md)、[Hyper-V](hyper-v-azure-architecture.md) 和[物理服务器](physical-azure-architecture.md)灾难恢复的体系结构。
 - 阅读有关 [VMware](vmware-azure-common-questions.md) 和 [Hyper-V](hyper-v-azure-common-questions.md) 的常见问题
 
-如果没有 Azure 订阅，可在开始前创建一个[试用帐户](https://www.azure.cn/pricing/1rmb-trial/)。 然后登录到 [Azure 门户](https://portal.azure.cn)。
+如果没有 Azure 订阅，可在开始前创建一个 [试用帐户](https://www.azure.cn/pricing/1rmb-trial/) 。 然后登录到 [Azure 门户](https://portal.azure.cn)。
 
 ## <a name="verify-account-permissions"></a>验证帐户权限
 
@@ -52,7 +52,7 @@ ms.locfileid: "79291124"
 
 ## <a name="create-a-recovery-services-vault"></a>创建恢复服务保管库
 
-1. 在 Azure 门户中，选择“+ 创建资源” > “监视 + 管理” > “备份和站点恢复 (OMS)”。   
+1. 在 Azure 门户中，选择“+ 创建资源” **“监视 + 管理”** “备份和站点恢复 (OMS)”。 >    >  
     
     <!--Submenu is correct on **Monitoring + Management**-->
     
@@ -70,7 +70,7 @@ ms.locfileid: "79291124"
 
 本地计算机将复制到 Azure 托管磁盘。 故障转移时，Azure VM 将从这些托管磁盘创建，并加入到在此过程中指定的 Azure 网络。
 
-1. 在 [Azure 门户](https://portal.azure.cn)中，选择“创建资源”   >   “网络” >   “虚拟网络”。
+1. 在 [Azure 门户](https://portal.azure.cn)中，选择 **“创建资源”**  >  **“网络”**  >  **“虚拟网络”** 。
 2. 选择“资源管理器”作为部署模型  。
 3. 在“名称”中  ，输入网络名称。 名称在 Azure 资源组中必须唯一。 在本教程中我们将使用 **ContosoASRnet**。
 4. 指定将在其中创建网络的资源组。 我们将使用现有资源组 contosoRG  。
@@ -80,7 +80,7 @@ ms.locfileid: "79291124"
     
     <!-- Not Available on basic DDoS protection -->
     
-8. 单击**创建**。
+8. 单击“创建”。 
 
     ![创建虚拟网络](media/tutorial-prepare-azure/create-network.png)
 

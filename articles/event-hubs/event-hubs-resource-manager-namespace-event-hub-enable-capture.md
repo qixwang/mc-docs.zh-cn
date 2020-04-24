@@ -16,10 +16,10 @@ origin.date: 02/12/2020
 ms.date: 03/09/2020
 ms.author: v-tawe
 ms.openlocfilehash: 1cd1d39a8b47e7575153733cb16564d7ceb148e0
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78155118"
 ---
 # <a name="create-a-namespace-with-event-hub-and-enable-capture-using-a-template"></a>使用模板通过事件中心创建一个命名空间并启用捕获
@@ -47,7 +47,7 @@ ms.locfileid: "78155118"
 
 借助此模板，可以部署包含事件中心的事件中心命名空间并启用[事件中心捕获](event-hubs-capture-overview.md)。 通过事件中心捕获，可以在所选的指定时间或大小间隔内，将事件中心的流数据自动传送到 Azure Blob 存储。 单击以下按钮，允许事件中心捕获将事件捕获到 Azure 存储中：
 
-[![“部署到 Azure”](./media/event-hubs-resource-manager-namespace-event-hub/deploybutton.png)](https://portal.azure.cn/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-eventhubs-create-namespace-and-enable-capture%2Fazuredeploy.json)
+[![部署到 Azure](./media/event-hubs-resource-manager-namespace-event-hub/deploybutton.png)](https://portal.azure.cn/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-eventhubs-create-namespace-and-enable-capture%2Fazuredeploy.json)
 
 <!--Not Available on Azure Data Lake Store-->
 
@@ -55,7 +55,7 @@ ms.locfileid: "78155118"
 
 ## <a name="parameters"></a>parameters
 
-使用 Azure Resource Manager，可以定义在部署模板时想要指定的值的参数。 该模板具有一个名为 `Parameters` 的部分，其中包含所有参数值。 应该为随着要部署的项目或要部署到的环境而变化的值定义参数。 不要为永远保持不变的值定义参数。 每个参数值可在模板中用来定义所部署的资源。
+使用 Azure 资源管理器，可以定义在部署模板时想要指定的值的参数。 模板包含名为 `Parameters` 的部分，其中包含所有参数值。 应该为随着要部署的项目或要部署到的环境而变化的值定义参数。 不要为始终保持不变的值定义参数。 每个参数值可在模板中用来定义所部署的资源。
 
 模板定义以下参数。
 
@@ -87,7 +87,7 @@ ms.locfileid: "78155118"
 
 ### <a name="messageretentionindays"></a>messageRetentionInDays
 
-要在事件中心内保留消息的天数。 
+事件中心内消息的保留天数。 
 
 ```json
 "messageRetentionInDays":{
@@ -103,7 +103,7 @@ ms.locfileid: "78155118"
 
 ### <a name="partitioncount"></a>partitionCount
 
-要在事件中心内创建的分区数。
+事件中心内创建的分区数。
 
 ```json
 "partitionCount":{
@@ -339,7 +339,7 @@ azure group deployment create \<my-resource-group\> \<my-deployment-name\> --tem
 
 * [事件中心概述](event-hubs-what-is-event-hubs.md)
 * [创建事件中心](event-hubs-create.md)
-* [事件中心常见问题](event-hubs-faq.md)
+* [事件中心常见问题解答](event-hubs-faq.md)
 
 [Authoring Azure Resource Manager templates]: ../azure-resource-manager/templates/template-syntax.md
 [Azure Quickstart Templates]:  https://azure.microsoft.com/documentation/templates/?term=event+hubs

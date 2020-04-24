@@ -10,10 +10,10 @@ ms.service: iot-central
 services: iot-central
 manager: corywink
 ms.openlocfilehash: 5a848b5df571dc437bbb6fdf131b8adb9d438495
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79290928"
 ---
 # <a name="create-webhook-actions-on-rules-in-azure-iot-central-preview-features"></a>在 Azure IoT Central 中基于规则创建 Webhook 操作（预览功能）

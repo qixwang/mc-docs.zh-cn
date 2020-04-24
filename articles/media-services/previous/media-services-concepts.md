@@ -15,10 +15,10 @@ origin.date: 03/14/2019
 ms.date: 03/04/2020
 ms.author: v-jay
 ms.openlocfilehash: 59bdb6447389d0ba5fb34577048f4b3506db6008
-ms.sourcegitcommit: fbc7584f403417d3af7bd6bbbaed7c13a78c57b9
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78412455"
 ---
 # <a name="azure-media-services-concepts"></a>Azure 媒体服务概念 
@@ -31,7 +31,7 @@ ms.locfileid: "78412455"
 
 本部分概述最重要的媒体服务概念。
 
-## <a name="a-idassetsassets-and-storage"></a><a id="assets"/>资产和存储
+## <a name="assets-and-storage"></a><a id="assets"/>资产和存储
 ### <a name="assets"></a>资产
 [资产](https://docs.microsoft.com/rest/api/media/operations/asset)包含数字文件（包括视频、音频、图像、缩略图集合、文本轨道和隐藏式字幕文件）以及这些文件的相关元数据。 数字文件在上传到资产中后，即可用于媒体服务编码和流式处理工作流。
 
@@ -79,7 +79,7 @@ ms.locfileid: "78412455"
 > 
 > 
 
-### <a name="a-idlocatorslocators"></a><a id="locators"/>定位符
+### <a name="locators"></a><a id="locators"/>定位符
 [定位符](https://docs.microsoft.com/rest/api/media/operations/locator)提供访问资产中包含的文件的入口点。 访问策略用于定义客户端对给定资产具有的访问权限和持续时间。 定位符与访问策略的关系可以为多对一的关系，因此，不同定位符可以向不同客户端提供不同的开始时间和连接类型，而全部使用相同的权限和持续时间设置；但是，由于 Azure 存储服务设置的共享访问策略限制，一项给定的资产一次最多只能与五个唯一的定位符相关联。 
 
 媒体服务支持两种类型的定位符：OnDemandOrigin 定位符，用于对媒体进行流式处理（例如，MPEG DASH、HLS 或平滑流式处理）；渐进式下载媒体和 SAS URL 定位符，用于与 Azure 存储相互上传或下载媒体文件。 
@@ -95,7 +95,7 @@ ms.locfileid: "78412455"
 
 作业包含有关要执行的处理的元数据。 每个作业包含一个或多个 [任务](https://docs.microsoft.com/rest/api/media/operations/task)，这些任务指定一个原子处理任务、该任务的输入资产和输出资产、一个媒体处理器及其关联的设置。 作业中的各个任务可连接在一起，其中一个任务的输出资产指定为下一任务的输入资产。 因此，一个作业可以包含播放媒体所必需的全部处理过程。
 
-## <a id="encoding"></a>编码
+## <a name="encoding"></a><a id="encoding"></a>编码
 Azure 媒体服务提供了多个用于在云中对媒体进行编码的选项。
 
 开始使用媒体服务时，了解编解码器与文件格式之间的区别很重要。
@@ -164,7 +164,7 @@ ArchiveWindowLength 还决定了客户端能够从当前实时位置按时间向
 - [使用 PlayReady 进行保护](media-services-protect-with-playready-widevine.md)
 
 ## <a name="delivering"></a>传送
-### <a name="a-iddynamic_packagingdynamic-packaging"></a><a id="dynamic_packaging"/>动态打包
+### <a name="dynamic-packaging"></a><a id="dynamic_packaging"/>动态打包
 使用媒体服务时，建议始终将夹层文件编码为自适应比特率 MP4 集，并使用[动态打包](media-services-dynamic-packaging-overview.md)将该集转换为所需格式。
 
 ### <a name="streaming-endpoint"></a>流式处理终结点

@@ -13,10 +13,10 @@ origin.date: 07/30/2019
 ms.date: 03/09/2020
 ms.author: v-yiso
 ms.openlocfilehash: d2098e97783cc2c09cd55cb038639779ea606099
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78154998"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-python"></a>使用 IoT 中心将文件从设备上传到云 (Python)
@@ -42,7 +42,7 @@ ms.locfileid: "78154998"
 > [!NOTE]
 > 本指南使用已弃用的 V1 Python SDK，因为新的 V2 SDK 中尚未实现“文件上传”功能。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 [!INCLUDE [iot-hub-include-python-installation-notes](../../includes/iot-hub-include-python-installation-notes.md)]
 
@@ -156,7 +156,7 @@ ms.locfileid: "78154998"
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，已学习了如何使用 IoT 中心的文件上传功能来简化从设备进行的文件上传。 可以使用以下文章继续探索 IoT 中心功能和方案：
+在本教程中，你已学习了如何使用 IoT 中心的文件上传功能来简化从设备进行的文件上传。 可以使用以下文章继续探索 IoT 中心功能和方案：
 
 * [以编程方式创建 IoT 中心][lnk-create-hub]
 * [C SDK 简介][lnk-c-sdk]

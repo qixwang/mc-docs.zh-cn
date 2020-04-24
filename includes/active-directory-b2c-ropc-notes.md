@@ -6,10 +6,10 @@ ms.topic: include
 ms.date: 03/04/2020
 ms.author: v-junlch
 ms.openlocfilehash: 1aaf7fabbf4e854138e3e9448bb4d78cb49fa498
-ms.sourcegitcommit: 1ac138a9e7dc7834b5c0b62a133ca5ce2ea80054
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78265949"
 ---
 ## <a name="ropc-flow-notes"></a>ROPC 流说明

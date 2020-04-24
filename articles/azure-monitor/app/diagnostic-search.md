@@ -7,10 +7,10 @@ origin.date: 07/30/2019
 ms.date: 08/20/2019
 ms.author: v-lingwu
 ms.openlocfilehash: a2e36abad0b8b461ab9275fb97a0b4a82acca18e
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78850432"
 ---
 # <a name="using-search-in-application-insights"></a>使用 Application Insights 中的搜索
@@ -98,7 +98,7 @@ ms.locfileid: "78850432"
 | String |  未找到 | 已找到 |
 | --- | --- | --- |
 | HomeController.About |`home`<br/>`controller`<br/>`out` | `homecontroller`<br/>`about`<br/>`"homecontroller.about"`|
-|美国|`Uni`<br/>`ted`|`united`<br/>`states`<br/>`united AND states`<br/>`"China"`
+|United States|`Uni`<br/>`ted`|`united`<br/>`states`<br/>`united AND states`<br/>`"China"`
 
 下面是可以使用的搜索表达式：
 
@@ -136,16 +136,16 @@ ms.locfileid: "78850432"
 
 [了解如何向 Application Insights 发送日志和自定义的遥测数据](../../azure-monitor/app/asp-net-trace-logs.md)。
 
-## <a name="questions"></a>问题解答
+## <a name="q--a"></a><a name="questions"></a>问题解答
 
-### <a name="limits"></a>保留多少数据？
+### <a name="how-much-data-is-retained"></a><a name="limits"></a>保留多少数据？
 
 请参阅[限制摘要](../../azure-monitor/app/pricing.md#limits-summary)。
 
 ### <a name="how-can-i-see-post-data-in-my-server-requests"></a>如何查看服务器请求中的 POST 数据？
 我们不自动记录 POST 数据，但可以使用 [TrackTrace 或日志调用](../../azure-monitor/app/asp-net-trace-logs.md)。 POST 数据放在消息参数中。 无法像筛选属性一样筛选消息，但消息的大小限制更大。
 
-## <a name="add"></a>后续步骤
+## <a name="next-steps"></a><a name="add"></a>后续步骤
 
 * [在 Analytics 中编写复杂查询](../../azure-monitor/log-query/get-started-portal.md)
 * [向 Application Insights 发送日志和自定义的遥测数据](../../azure-monitor/app/asp-net-trace-logs.md)

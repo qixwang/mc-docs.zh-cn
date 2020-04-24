@@ -1,6 +1,6 @@
 ---
 title: 渗透测试 | Microsoft Docs
-description: 本文概述了渗透测试（简称 pentest）过程，以及如何对运行在 Azure 基础结构中的应用进行渗透测试。
+description: 本文概述了渗透测试 (pentest) 过程，以及如何针对 Azure 基础结构中运行的应用执行 pentest。
 services: security
 documentationcenter: na
 author: lingliw
@@ -17,16 +17,16 @@ origin.date: 08/13/2018
 ms.date: 03/02/2020
 ms.author: v-lingwu
 ms.openlocfilehash: 795287c22a03253e3fecd17ae6f4fc7b713ab411
-ms.sourcegitcommit: 2b4507745b98b45f1ce3f3d30f397521148ef35a
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78213787"
 ---
 # <a name="penetration-testing"></a>渗透测试
-使用 Azure 进行应用程序测试和部署的一个优点是可快速创建环境。 用户不需担心如何请求、获取和安装自己的本地硬件。
+使用 Azure 进行应用程序测试和部署的一个优点是可快速创建环境。 不必为请求、获取以及“搭架和堆叠”本地硬件担心。
 
-此功能很有用，但用户仍需确保执行正常的安全防护措施。 你可能想要做的事情之一就是对部署在 Azure 中的应用程序进行渗透测试。
+这太棒了，但仍需要确保进行常规安全审慎调查。 你可能想要做的事情之一就是对部署在 Azure 中的应用程序进行渗透测试。
 
 用户可能已经知道，Microsoft 将执行[对 Azure 环境的渗透测试](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e)。 这有助于改进 Azure。
 
@@ -43,7 +43,7 @@ ms.locfileid: "78213787"
 * 终结点的[模糊测试](https://cloudblogs.microsoft.com/microsoftsecure/2007/09/20/fuzz-testing-at-microsoft-and-the-triage-process/)
 * 终结点的[端口扫描](https://en.wikipedia.org/wiki/Port_scanner)
 
-用户不能执行的一类测试是任何类型的 [拒绝服务 (DoS)](https://en.wikipedia.org/wiki/Denial-of-service_attack) 攻击。 其中包括：发起 DoS 攻击，或者执行相关的测试，以便确定、演示或模拟任何类型的 DoS 攻击。
+用户不能执行的一类测试是任何类型的[拒绝服务 (DoS)](https://en.wikipedia.org/wiki/Denial-of-service_attack) 攻击。 其中包括：发起 DoS 攻击，或者执行相关的测试，以便确定、演示或模拟任何类型的 DoS 攻击。
 
 ## <a name="next-steps"></a>后续步骤
 

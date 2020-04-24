@@ -9,10 +9,10 @@ ms.topic: conceptual
 origin.date: 01/29/2020
 ms.date: 2/6/2020
 ms.openlocfilehash: ca7a7dac0266a2540d6db2aee191d65fc1854a5f
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78155132"
 ---
 # <a name="parse-json-and-avro-data-in-azure-stream-analytics"></a>在 Azure 流分析中分析 JSON 和 Avro 数据

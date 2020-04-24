@@ -8,15 +8,15 @@ origin.date: 02/11/2020
 ms.date: 02/21/2020
 ms.author: diberry
 ms.openlocfilehash: f2e0e12eb05847353621f6ae1ff1ace244b7d307
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78155044"
 ---
 # <a name="whats-new-in-language-understanding"></a>语言理解中的新增功能
 
-了解该服务中的新增功能。 这些项包括发行说明、视频、博客文章和其他类型的信息。 将此页添加为书签，以便及时了解该服务。
+了解服务中的新增功能。 这些项包括发行说明、视频、博客文章和其他类型的信息。 将此页加入书签，以随时了解服务的最新信息。
 
 ## <a name="release-notes"></a>发行说明
 
@@ -72,4 +72,4 @@ ms.locfileid: "78155044"
 
 ## <a name="service-updates"></a>服务更新
 
-[有关认知服务的 Azure 更新公告](https://www.azure.cn/zh-cn/what-is-new/)
+[认知服务的 Azure 更新公告](https://www.azure.cn/zh-cn/what-is-new/)

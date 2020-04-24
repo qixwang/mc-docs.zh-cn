@@ -9,17 +9,17 @@ ms.date: 03/04/2020
 ms.author: v-junlch
 ms.subservice: diagnostic-extension
 ms.openlocfilehash: db8d0214e53efc740942faa306656a54f2c3550d
-ms.sourcegitcommit: 1ac138a9e7dc7834b5c0b62a133ca5ce2ea80054
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78266142"
 ---
 # <a name="store-and-view-diagnostic-data-in-azure-storage"></a>在 Azure 存储中存储和查看诊断数据
-诊断数据不会永久存储，除非将其传输到 Azure 存储模拟器或 Azure 存储。 如果诊断数据位于存储中，可以使用提供的工具之一进行查看。
+诊断数据不会永久存储，除非将其传输到 Azure 存储模拟器或 Azure 存储。 一旦位于存储空间中，诊断数据就可以使用提供的工具之一进行查看。
 
 ## <a name="specify-a-storage-account"></a>指定存储帐户
-指定要在 ServiceConfiguration.cscfg 文件中使用的存储帐户。 将帐户信息定义为配置设置中的连接字符串。 以下示例显示的是在 Visual Studio 中针对新的云服务项目创建的默认连接字符串：
+指定要在 ServiceConfiguration.cscfg 文件中使用的存储帐户。 帐户信息被定义为配置设置中的连接字符串。 以下示例显示的是在 Visual Studio 中针对新的云服务项目创建的默认连接字符串：
 
 ```
     <ConfigurationSettings>
@@ -29,7 +29,7 @@ ms.locfileid: "78266142"
 
 可以更改此连接字符串，为 Azure 存储帐户提供帐户信息。
 
-根据收集的诊断数据类型，Azure 诊断使用 Blob 服务或表服务。 下表显示了保留的数据源及其格式。
+根据所要收集的诊断数据的类型，Azure 诊断使用 Blob 服务或表服务。 下表显示保留的数据源及其格式。
 
 | 数据源 | 存储格式 |
 | --- | --- |
@@ -43,12 +43,12 @@ ms.locfileid: "78266142"
 | 自定义错误日志 |Blob |
 
 ## <a name="transfer-diagnostic-data"></a>传输诊断数据
-对于 SDK 2.5 及更高版本，可以请求通过配置文件传输诊断数据。 可以按照配置中指定的计划时间间隔传输诊断数据。
+对于 SDK 2.5 及更高版本，可以通过配置文件来请求传输诊断数据。 可以根据配置中的指定，按计划的时间间隔来传输诊断数据。
 
-对于 SDK 2.4 及更低版本，可以请求通过配置文件以及编程方式传输诊断数据。 编程方式还可以进行按需传输。
+对于 SDK 2.4 及更低版本，可以请求通过配置文件来传输诊断数据，也可以通过编程方式来进行。 编程方式还可以进行按需传输。
 
 > [!IMPORTANT]
-> 将诊断数据传输到 Azure 存储帐户时会产生费用，具体取决于诊断数据使用的存储资源。
+> 将诊断数据传输到 Azure 存储帐户时会产生费用，具体取决于诊断数据所使用的存储资源。
 > 
 > 
 
@@ -59,7 +59,7 @@ ms.locfileid: "78266142"
 
 * **WadLogsTable** - 使用跟踪侦听器以代码编写的日志。
 * **WADDiagnosticInfrastructureLogsTable** - 诊断监视器和配置更改。
-* **WADDirectoriesTable** - 诊断监视器监视的目录。  这包括 IIS 日志、IIS 失败请求日志和自定义目录。  在“容器”字段中指定 blob 日志文件的位置，在 RelativePath 字段中指定 blob 的名称。  AbsolutePath 字段指示文件的位置和名称，就像文件存在于 Azure 虚拟机上一样。
+* **WADDirectoriesTable** - 诊断监视器监视的目录。  这包括 IIS 日志、IIS 失败请求日志和自定义目录。  在“容器”字段中指定 blob 日志文件的位置，在 RelativePath 字段中指定 blob 的名称。  AbsolutePath 字段指示文件的位置和名称，就像文件是存在于 Azure 虚拟机上一样。
 * **WADPerformanceCountersTable** - 性能计数器。
 * **WADWindowsEventLogsTable** - Windows 事件日志。
 
@@ -68,14 +68,14 @@ ms.locfileid: "78266142"
 * **wad-control-container** -（仅适用于 SDK 2.4 及更低版本）包含用于控制 Azure 诊断的 XML 配置文件。
 * **wad-iis-failedreqlogfiles** - 包含 IIS 失败请求日志中的信息。
 * **wad-iis-logfiles** - 包含有关 IIS 日志的信息。
-* **"custom"** - 自定义容器，基于配置由诊断监视器监视的目录。  此 blob 容器的名称在 WADDirectoriesTable 中指定。
+* **"custom"** - 自定义容器，基于配置由诊断监视器监视的目录。  此 blob 容器的名称会在 WADDirectoriesTable 中指定。
 
 ## <a name="tools-to-view-diagnostic-data"></a>用于查看诊断数据的工具
-将数据传输到存储后，可以使用多个工具进行查看。 例如：
+将数据传输到存储空间以后，可以使用多个工具来查看这些数据。 例如：
 
-* Visual Studio 中的服务器资源管理器 - 如果已安装 Azure Tools for Microsoft Visual Studio，则可以在服务器资源管理器中使用“Azure 存储”节点从 Azure 存储帐户查看只读 Blob 和表数据。 既可以从本地存储模拟器帐户显示数据，也可以从为 Azure 创建的存储帐户显示数据。 
+* Visual Studio 中的服务器资源管理器 - 如果安装了 Azure Tools for Microsoft Visual Studio，则可以在服务器资源管理器中使用“Azure 存储”节点从 Azure 存储帐户查看只读 Blob 和表数据。 既可以从本地存储模拟器帐户显示数据，也可以从为 Azure 创建的存储帐户显示数据。 
 * [Azure 存储资源管理器](../vs-azure-tools-storage-manage-with-storage-explorer.md)是一款独立应用，可用于在 Windows、OSX 和 Linux 上轻松处理 Azure 存储数据。
-* [Azure Management Studio](https://www.cerebrata.com/products/azure-management-studio/introduction) 随附 Azure 诊断管理器，可用于查看、下载和管理 Azure 中运行的应用程序收集的诊断数据。
+* [Azure Management Studio](https://www.cerebrata.com/products/azure-management-studio/introduction) 包括 Azure 诊断管理器，该诊断管理器用于查看、下载和管理在 Azure 上运行的应用程序收集的诊断数据。
 
 ## <a name="next-steps"></a>后续步骤
 [使用 Azure 诊断跟踪云服务应用程序中的流](../cloud-services/cloud-services-dotnet-diagnostics-trace-flow.md)

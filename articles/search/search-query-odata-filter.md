@@ -21,10 +21,10 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: aa9b4a9b6e7d7f86dc9e579cd66178826de0df7b
-ms.sourcegitcommit: 3c98f52b6ccca469e598d327cd537caab2fde83f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "79290931"
 ---
 # <a name="odata-filter-syntax-in-azure-cognitive-search"></a>Azure 认知搜索中的 OData $filter 语法
@@ -51,7 +51,7 @@ boolean_expression ::=
 variable ::= identifier | field_path
 ```
 
-下面还提供了交互式语法图：
+交互式语法图也可用：
 
 > [!div class="nextstepaction"]
 > [Azure 认知搜索的 OData 语法图](https://azuresearch.github.io/odata-syntax-diagram/#boolean_expression)
@@ -96,7 +96,7 @@ variable ::= identifier | field_path
 
     Invalid expression: A unary operator with an incompatible type was detected. Found operand type 'Edm.Int32' for operator kind 'Not'.
 
-发生此错误的原因是，运算符仅与 `Edm.Int32` 类型的 `Rating` 字段相关联，而不与整个比较表达式相关联。 解决方法是将 `not` 的操作数括在括号中：
+发生此错误的原因是，运算符仅与 `Rating` 类型的 `Edm.Int32` 字段相关联，而不与整个比较表达式相关联。 解决方法是将 `not` 的操作数括在括号中：
 
     not (Rating gt 5)
 
@@ -175,7 +175,7 @@ variable ::= identifier | field_path
 
     $filter=Rooms/any(room: room/Tags/any(tag: search.in(tag, 'heated towel racks,hairdryer included', ','))
 
-查找包含“waterfront”一词的文档。 此筛选器查询与包含 `search=waterfront` 的[搜索请求](https://docs.microsoft.com/rest/api/searchservice/search-documents)相同。
+查找包含“waterfront”一词的文档。 此筛选器查询与包含 [ 的](https://docs.microsoft.com/rest/api/searchservice/search-documents)搜索请求`search=waterfront`相同。
 
     $filter=search.ismatchscoring('waterfront')
 

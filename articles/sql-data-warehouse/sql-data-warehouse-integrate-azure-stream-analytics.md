@@ -13,10 +13,10 @@ ms.author: v-jay
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 ms.openlocfilehash: 94adaa0bca205ace99922520d99937859b9044df
-ms.sourcegitcommit: 892137d117bcaf9d88aec0eb7ca756fe39613344
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78154404"
 ---
 # <a name="use-azure-stream-analytics-with-azure-synapse-analytics"></a>将 Azure 流分析与 Azure Synapse Analytics 配合使用
@@ -24,7 +24,7 @@ Azure 流分析是一种完全托管的服务，可以在云中通过流式数�
 
 本文介绍如何使用数据仓库数据库作为流分析作业的输出接收器。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 首先，完整运行[开始使用 Azure 流分析](../stream-analytics/stream-analytics-real-time-fraud-detection.md)教程中的以下步骤。  
 
 1. 创建事件中心输入
@@ -44,7 +44,7 @@ Azure 流分析是一种完全托管的服务，可以在云中通过流式数�
 ### <a name="step-3"></a>步骤 3
 在下一页输入以下值：
 
-*  输出别名：输入此作业输出的友好名称。
+* *输出别名*：输入此作业输出的友好名称。
 * *订阅*：
   * 如果 SQL 数据仓库数据库与此流分析作业位于同一订阅中，请选择“使用当前订阅中的 SQL 数据库”。
   * 如果数据库在不同的订阅中，请选择“使用其他订阅中的 SQL 数据库”。
@@ -55,7 +55,7 @@ Azure 流分析是一种完全托管的服务，可以在云中通过流式数�
 
 * *用户名*：指定具有数据库写入访问权限的帐户的用户名。
 * *密码*：提供指定的用户帐户的密码。
-* *Table*：指定数据库中目标表的名称。
+* *表*：指定数据库中目标表的名称。
 
 ![](./media/sql-data-warehouse-integrate-azure-stream-analytics/add-database.png)
 

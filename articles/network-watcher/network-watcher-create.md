@@ -15,10 +15,10 @@ origin.date: 02/22/2017
 ms.date: 11/26/2018
 ms.author: v-lingwu
 ms.openlocfilehash: 671dd9e6944d75ab162058332cbefe65e8da9340
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78154969"
 ---
 # <a name="create-an-azure-network-watcher-instance"></a>创建 Azure 网络观察程序实例

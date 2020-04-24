@@ -12,10 +12,10 @@ author: lostmygithubaccount
 origin.date: 11/04/2019
 ms.date: 03/16/2020
 ms.openlocfilehash: d71bf5d029a1369d9b7e97575e4fa5958fe36753
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78850219"
 ---
 # <a name="detect-data-drift-preview-on-datasets"></a>检测数据集中的数据偏移（预览版）

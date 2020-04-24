@@ -12,10 +12,10 @@ ms.subservice: hybrid
 ms.author: v-junlch
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a030d21c0a1c48c5967ef2007a8ee69f46ee6281
-ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77653455"
 ---
 # <a name="move-azure-ad-connect-database-from-sql-server-express-to-sql-server"></a>将 Azure AD Connect 数据库从 SQL Server Express 移到 SQL Server 
@@ -36,7 +36,7 @@ ms.locfileid: "77653455"
 4. 转到“控制面板”>“程序”>“程序和功能”，以便卸载 Azure AD Connect。  选择“Azure AD Connect”，然后单击顶部的“卸载”。
 5. 在远程 SQL Server 上，打开 SQL Server Management Studio。
 6. 在“数据库”上右键单击，然后选择“附加”。
-7. 在“附加数据库”屏幕上单击“添加”，导航到 ADSync.mdf 文件。    单击 **“确定”** 。
+7. 在“附加数据库”屏幕上单击“添加”，导航到 ADSync.mdf 文件。    单击“确定”。 
    ![附加数据库](./media/how-to-connect-install-move-db/move2.png)
 
 8. 附加数据库以后，请返回到 Azure AD Connect 服务器并安装 Azure AD Connect。
@@ -49,7 +49,7 @@ ms.locfileid: "77653455"
 12. 在“安装所需组件”屏幕上，“使用现有 SQL Server”选项已启用   。 指定托管 ADSync 数据库的 SQL Server 的名称。 如果用于托管 ADSync 数据库的 SQL 引擎实例不是 SQL Server 上的默认实例，则必须指定 SQL 引擎实例名称。 此外，如果没有启用 SQL 浏览，还必须指定 SQL 引擎实例端口号。 例如：         
     ![欢迎使用](./media/how-to-connect-install-move-db/db4.png)           
 
-13. 在“连接到 Azure AD”屏幕上，必须提供 Azure AD 目录的全局管理员凭据  。 建议使用默认 partner.onmschina.cn 域中的帐户。 此帐户只用于在 Azure AD 中创建服务帐户，向导完成后不会使用。
+13. 在“连接到 Azure AD”屏幕上，必须提供 Azure AD 目录的全局管理员凭据  。 建议使用默认 partner.onmschina.cn 域中的帐户。 此帐户仅用于在 Azure AD 中创建服务帐户，在向导完成后将不会使用。
     ![“连接”](./media/how-to-connect-install-move-db/db5.png)
  
 14. 在“连接目录”屏幕上，为目录同步配置的现有 AD 林旁边显示有红色十字图标  。 若要同步本地 AD 林中的更改，需要 AD DS 帐户。 Azure AD Connect 向导无法检索存储在 ADSync 数据库中的 AD DS 帐户凭据，因为凭据已加密，只能由先前的 Azure AD Connect 服务器进行解密。 单击“更改凭据”为 AD 林指定 AD DS 帐户  。
@@ -60,7 +60,7 @@ ms.locfileid: "77653455"
     ![欢迎使用](./media/how-to-connect-install-move-db/db7.png)
  
  
-16. 提供凭据后，红色十字图标将被替换为绿色钩号图标。 单击“下一步”  。
+16. 提供凭据后，红色十字图标将被替换为绿色钩号图标。 单击“下一步”。 
     ![欢迎使用](./media/how-to-connect-install-move-db/db8.png)
  
  
@@ -72,7 +72,7 @@ ms.locfileid: "77653455"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解有关[将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)的详细信息。
+- 了解有关 [将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)的详细信息。
 - [使用现有 ADSync 数据库安装 Azure AD Connect](how-to-connect-install-existing-database.md)
 - [使用 SQL 委派的管理员权限安装 Azure AD Connect](how-to-connect-install-sql-delegation.md)
 

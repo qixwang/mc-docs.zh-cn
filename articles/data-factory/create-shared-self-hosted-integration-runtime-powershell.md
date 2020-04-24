@@ -13,10 +13,10 @@ ms.custom: seo-lt-2019
 origin.date: 10/31/2018
 ms.date: 03/02/2020
 ms.openlocfilehash: 7eb4a01735fb7d663660e7b277c6750ccc356767
-ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77653508"
 ---
 # <a name="create-a-shared-self-hosted-integration-runtime-in-azure-data-factory"></a>在 Azure 数据工厂中创建共享自承载集成运行时
@@ -52,7 +52,7 @@ ms.locfileid: "77653508"
 1. 创建链接的集成运行时。
 1. 撤消共享。
 
-### <a name="prerequisites"></a>先决条件 
+### <a name="prerequisites"></a>必备条件 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -100,7 +100,7 @@ ms.locfileid: "77653508"
     > [!NOTE]  
     > 此步骤是可选的。 若已有数据工厂，请跳过此步骤。 
 
-    使用 [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) 命令创建 [Azure 资源组](../azure-resource-manager/management/overview.md)。 资源组是在其中以组的形式部署和管理 Azure 资源的逻辑容器。 以下示例在 ChinaEast2 位置创建名为 `myResourceGroup` 的资源组： 
+    使用 [New-AzResourceGroup](../azure-resource-manager/management/overview.md) 命令创建 [Azure 资源组](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup)。 资源组是在其中以组的形式部署和管理 Azure 资源的逻辑容器。 以下示例在 ChinaEast2 位置创建名为 `myResourceGroup` 的资源组： 
 
     ```powershell
     New-AzResourceGroup -Location $DataFactoryLocation -Name $ResourceGroupName

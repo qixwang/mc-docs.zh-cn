@@ -12,10 +12,10 @@ ms.author: v-junlch
 ms.subservice: B2C
 ms.custom: fasttrack-edit
 ms.openlocfilehash: e54cb963d46aefe1f5dcf80282fef5d26d69a969
-ms.sourcegitcommit: 1ac138a9e7dc7834b5c0b62a133ca5ce2ea80054
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78265971"
 ---
 # <a name="manage-user-data-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中管理用户数据
@@ -48,7 +48,7 @@ Azure AD B2C 中的每个用户都分配有一个对象 ID。 对象 ID 可为�
 Azure AD B2C 用户数据仅限于：
 
 - **存储在 Azure Active Directory 中的数据**：可使用对象 ID 或任何登录名（如电子邮件地址或用户名）在 Azure AD B2C 身份验证用户旅程中检索数据。
-- **特定于用户的审核事件报表**：可使用对象 ID 为数据编制索引。
+- **特定于用户的审核事件报告** - 可使用对象 ID 对数据编制索引。
 
 在下面的导出数据流示例中，由应用程序执行的所述步骤也能由目录中的后端进程或具有管理员角色的用户执行：
 

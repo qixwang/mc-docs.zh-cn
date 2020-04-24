@@ -11,10 +11,10 @@ ms.topic: tutorial
 origin.date: 12/06/2018
 ms.date: 08/06/2019
 ms.openlocfilehash: 826d4039fc53490c84af1bc47b3b7bfabff44733
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78155051"
 ---
 # <a name="tutorial-write-a-c-user-defined-function-for-azure-stream-analytics-job-preview"></a>教程：为 Azure 流分析作业编写 C# 用户定义函数（预览）

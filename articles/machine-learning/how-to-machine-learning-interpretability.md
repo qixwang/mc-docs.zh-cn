@@ -12,10 +12,10 @@ ms.reviewer: trbye
 origin.date: 10/25/2019
 ms.date: 03/16/2020
 ms.openlocfilehash: 3a94729e3bb28ff1256513594d5b90eebd9ebfdd
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78850224"
 ---
 # <a name="model-interpretability-in-azure-machine-learning"></a>Azure 机器学习中的模型可解释性

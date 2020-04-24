@@ -12,10 +12,10 @@ origin.date: 1/27/2019
 ms.date: 06/22/2019
 ms.author: v-lingwu
 ms.openlocfilehash: f9b92c78ccf71d5779471fbebc01e119e5251f71
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78155007"
 ---
 # <a name="protect-your-azure-app-service-web-apps-and-apis"></a>保护 Azure 应用服务 Web 应用和 API

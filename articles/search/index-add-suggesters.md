@@ -21,15 +21,15 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: 751b5a75f4e96e664ec45bf6fe93df2676f95b47
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78850516"
 ---
 # <a name="add-suggesters-to-an-index-for-typeahead-in-azure-cognitive-search"></a>将建议器添加到 Azure 认知搜索中的自动提示索引
 
-在 Azure 认知搜索中，“一边键入，一边搜索”或自动提示功能基于添加到[搜索索引](search-what-is-an-index.md)的**建议器**构造。 该构造是你要对其启用自动提示的一个或多个字段的列表。
+在 Azure 认知搜索中，“一边键入，一边搜索”或自动提示功能基于添加到**搜索索引**的[建议器](search-what-is-an-index.md)构造。 该构造是你要对其启用自动提示的一个或多个字段的列表。
 
 建议器支持两种自动提示变体：自动完成 - 完成你正在键入的字词或短语；建议 - 返回匹配文档的简短列表。    
 
@@ -106,7 +106,7 @@ private static void CreateHotelsIndex(SearchServiceClient serviceClient)
 
 ### <a name="property-reference"></a>属性参考
 
-|属性      |说明      |
+|properties      |说明      |
 |--------------|-----------------|
 |`name`        |建议器的名称。|
 |`searchMode`  |用于搜索候选短语的策略。 当前唯一受支持的模式是 `analyzingInfixMatching`，此模式在句子开头或中间执行短语的灵活匹配。|
@@ -139,7 +139,7 @@ api-key: [admin or query key]
 
 如果未在索引中定义建议器，对自动完成或建议的调用将会失败。
 
-## <a name="sample-code"></a>代码示例
+## <a name="sample-code"></a>示例代码
 
 + [在 C# 中创建第一个应用](tutorial-csharp-type-ahead-and-suggestions.md)示例演示了建议器的构造、建议的查询、自动完成和分面导航。 此代码示例在沙盒 Azure 认知搜索服务中运行，并使用预先加载的酒店索引，因此，只需按 F5 即可运行应用程序。 无需订阅或登录。
 

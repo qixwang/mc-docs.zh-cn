@@ -13,10 +13,10 @@ ms.custom: seo-lt-2019; seo-dt-2019
 origin.date: 01/20/2018
 ms.date: 03/02/2020
 ms.openlocfilehash: ec5c87e6fb875af69f8dfb8e5e7b02506a627a9b
-ms.sourcegitcommit: f06e1486873cc993c111056283d04e25d05e324f
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "77653565"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-an-azure-sql-database"></a>以增量方式将数据从 SQL Server 中的多个表加载到 Azure SQL 数据库
@@ -66,7 +66,7 @@ ms.locfileid: "77653565"
 
 如果没有 Azure 订阅，可在开始前创建一个 [1 元人民币试用](https://www.azure.cn/zh-cn/pricing/1rmb-trial-full/?form-type=identityauth)帐户。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 * **SQL Server**。 在本教程中，请将本地 SQL Server 数据库用作源数据存储。 
 * **Azure SQL 数据库**。 使用 SQL 数据库作为接收器数据存储。 如果没有 SQL 数据库，请参阅[创建 Azure SQL 数据库](../sql-database/sql-database-get-started-portal.md)，了解创建该数据库的步骤。 
 
@@ -250,7 +250,7 @@ END
     若要了解有关资源组的详细信息，请参阅 [使用资源组管理 Azure 资源](../azure-resource-manager/management/overview.md)。  
 6. 选择“V2”  作为“版本”  。
 7. 选择数据工厂的**位置**。 下拉列表中仅显示支持的位置。 数据工厂使用的数据存储（Azure 存储、Azure SQL 数据库，等等）和计算资源（HDInsight 等）可以位于其他区域中。
-8. 单击**创建**。      
+8. 单击“创建”。       
 9. 创建完成后，可以看到图中所示的“数据工厂”页。 
    
    ![数据工厂主页](./media/doc-common-process/data-factory-home-page.png)
@@ -268,7 +268,7 @@ END
 1. 选择“自承载”，然后单击“继续”。   
 1. 在“名称”中输入 **MySelfHostedIR**，然后单击“创建”。   
 
-1. 在“选项 1: 快速安装”部分中单击“单击此处对此计算机启动快速安装”   。 
+1. 在“选项 1: 快速安装”部分单击“单击此处对此计算机启动快速安装”。   
 
    ![单击“快速安装”链接](./media/tutorial-incremental-copy-multiple-tables-portal/click-express-setup.png)
 1. 在“集成运行时(自承载)快速安装”窗口中，单击“关闭”。   
@@ -296,7 +296,7 @@ END
     1. 对于“服务器名称”  ，请输入装有 SQL Server 数据库的计算机的名称。
     1. 对于“数据库名称”，请输入 SQL Server 中包含源数据的数据库的名称。  已按照先决条件创建一个表并将数据插入到此数据库中。 
     1. 对于“身份验证类型”，请选择需要用于连接到数据库的**身份验证的类型**。  
-    1. 至于“用户名”  ，请输入能够访问 SQL Server 数据库的用户的名称。 如需在用户帐户或服务器名称中使用斜杠字符 (`\`)，请使用转义字符 (`\`)。 例如 `mydomain\\myuser`。
+    1. 至于“用户名”  ，请输入能够访问 SQL Server 数据库的用户的名称。 如需在用户帐户或服务器名称中使用斜杠字符 (`\`)，请使用转义字符 (`\`)。 示例为 `mydomain\\myuser`。
     1. 至于“密码”，请输入用户的**密码**。  
     1. 若要测试数据工厂是否可以连接到 SQL Server 数据库，请单击“测试连接”  。 修复任何错误，直到连接成功。 
     1. 若要保存链接服务，请单击“完成”。 
@@ -447,10 +447,10 @@ END
         ![复制活动 - 源设置](./media/tutorial-incremental-copy-multiple-tables-portal/copy-source-settings.png)
 1. 切换到“接收器”选项卡，然后选择“SinkDataset”作为“接收器数据集”。    
         
-1. 执行以下步骤：
+1. 请执行以下步骤：
 
-    1. 在“数据集”属性中，  输入 `@{item().TABLE_NAME}` 作为 **SinkTableName** 参数。
-    1. 至于“存储过程名称”属性，请输入 `@{item().StoredProcedureNameForMergeOperation}`。 
+    1. 在“数据集”属性中，  输入 **作为**SinkTableName`@{item().TABLE_NAME}` 参数。
+    1. 至于“存储过程名称”属性，请输入 **。** `@{item().StoredProcedureNameForMergeOperation}`
     1. 至于“表类型”属性，  请输入 `@{item().TableType}`。
     1. 至于“表类型参数名称”，  请输入 `@{item().TABLE_NAME}`。
 
@@ -468,7 +468,7 @@ END
     1. 选择“导入参数”  。 
     1. 指定以下参数值： 
 
-        | 名称 | 类型 | Value | 
+        | 名称 | 类型 | 值 | 
         | ---- | ---- | ----- |
         | LastModifiedtime | DateTime | `@{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue}` |
         | TableName | String | `@{activity('LookupOldWaterMarkActivity').output.firstRow.TableName}` |

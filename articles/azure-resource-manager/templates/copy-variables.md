@@ -6,10 +6,10 @@ origin.date: 02/13/2020
 ms.date: 03/09/2020
 ms.author: v-yeche
 ms.openlocfilehash: 076403a37e84b59db35289f584a2112af4269670
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78850585"
 ---
 # <a name="variable-iteration-in-azure-resource-manager-templates"></a>Azure 资源管理器模板中的变量迭代
@@ -309,8 +309,8 @@ count 不能为负数。 如果使用 Azure PowerShell 2.6 或更高版本、Azu
 
 |模板  |说明  |
 |---------|---------|
-|[复制变量](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copyvariables.json) |演示循环访问变量的不同方式。 |
-|[多项安全规则](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.json) |将多个安全规则部署到网络安全组。 它从参数构造安全规则。 有关参数，请参阅[多个 NSG 参数文件](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.parameters.json)。 |
+|[复制变量](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copyvariables.json) |演示对变量进行迭代的不同方法。 |
+|[多个安全规则](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.json) |将多个安全规则部署到网络安全组。 这会从参数构造安全规则。 有关参数，请参阅[多个 NSG 参数文件](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.parameters.json)。 |
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -319,8 +319,8 @@ count 不能为负数。 如果使用 Azure PowerShell 2.6 或更高版本、Azu
     * [Azure 资源管理器模板中的资源迭代](copy-resources.md)
     * [Azure 资源管理器模板中的属性迭代](copy-properties.md)
     * [Azure 资源管理器模板中的输出迭代](copy-outputs.md)
-* 若要了解有关模板区段的信息，请参阅[创作 Azure Resource Manager 模板](template-syntax.md)。
-* 若要了解如何部署模板，请参阅 [使用 Azure Resource Manager 模板部署应用程序](deploy-powershell.md)。
+* 若要了解有关模板区段的信息，请参阅[创作 Azure 资源管理器模板](template-syntax.md)。
+* 若要了解如何部署模板，请参阅[使用 Azure 资源管理器模板部署应用程序](deploy-powershell.md)。
 
 <!-- Update_Description: new article about copy variables -->
 <!--NEW.date: 03/09/2020-->

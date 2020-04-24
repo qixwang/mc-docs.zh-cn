@@ -10,10 +10,10 @@ origin.date: 01/30/2020
 ms.date: 03/09/2020
 ms.author: v-yiso
 ms.openlocfilehash: 906373ba32dc9d5a541a983b347d4021d6e3f2d9
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78154564"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-disconnects-with-azure-iot-hub"></a>监视、诊断和排查 Azure IoT 中心的连接断开问题
@@ -28,11 +28,11 @@ ms.locfileid: "78154564"
 
 若要记录设备连接事件和错误，请为 IoT 中心启用诊断。 建议尽早启用这些日志，因为如果未启用诊断日志，则当设备断开连接时，你将不会有任何信息可用来排查问题。
 
-1. 登录到 [Azure 门户](https://portal.azure.cn)。
+1. 登录 [Azure 门户](https://portal.azure.cn)。
 
 2. 浏览到 IoT 中心。
 
-3. 选择“诊断设置”。 
+3. 选择“诊断设置”  。
 
 4. 选择“启用诊断”  。
 
@@ -48,7 +48,7 @@ ms.locfileid: "78154564"
 
 若要在设备断开连接时获取警报，请针对“联网设备(预览版)”指标配置警报  。
 
-1. 登录到 [Azure 门户](https://portal.azure.cn)。
+1. 登录 [Azure 门户](https://portal.azure.cn)。
 
 2. 浏览到 IoT 中心。
 
@@ -70,7 +70,7 @@ ms.locfileid: "78154564"
 
 为联网设备启用诊断日志和警报后，如果出错，则会收到警报。 本部分介绍了如何在收到警报时查找常见问题。 以下步骤假设已经在 Azure Monitor 日志中设置了诊断日志。
 
-1. 登录到 [Azure 门户](https://portal.azure.cn)。
+1. 登录 [Azure 门户](https://portal.azure.cn)。
 
 1. 浏览到 IoT 中心。
 

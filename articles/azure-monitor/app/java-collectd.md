@@ -8,10 +8,10 @@ origin.date: 03/14/2019
 ms.date: 6/4/2019
 ms.author: v-lingwu
 ms.openlocfilehash: 6d19b416fb3da1f441f0310c4e82b75f6d9a4ba9
-ms.sourcegitcommit: b7fe28ec2de92b5befe61985f76c8d0216f23430
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78850415"
 ---
 # <a name="collectd-linux-performance-metrics-in-application-insights"></a>collectd：Application Insights 中的 Linux 性能指标

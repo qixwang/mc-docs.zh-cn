@@ -10,10 +10,10 @@ ms.date: 03/09/2020
 ms.author: v-yeche
 tags: connectors
 ms.openlocfilehash: e7de579be5285859976045c88daeb6d259f15f3a
-ms.sourcegitcommit: 1ac138a9e7dc7834b5c0b62a133ca5ce2ea80054
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78304652"
 ---
 # <a name="receive-and-respond-to-incoming-https-calls-by-using-azure-logic-apps"></a>使用 Azure 逻辑应用接收和响应传入的 HTTPS 调用
@@ -38,7 +38,7 @@ ms.locfileid: "78304652"
 > * TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384
 > * TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * Azure 订阅。 如果没有订阅，可以[注册 Azure 试用帐户](https://www.azure.cn/pricing/1rmb-trial/)。
 
@@ -50,7 +50,7 @@ ms.locfileid: "78304652"
 
 此内置触发器创建可手动调用的 HTTPS 终结点，该终结点只能接收  传入的 HTTPS 请求。 发生此事件时，该触发器将会激发，并运行逻辑应用。 有关此触发器的基础 JSON 定义以及如何调用此触发器的详细信息，请参阅[“请求”触发器类型](../logic-apps/logic-apps-workflow-actions-triggers.md#request-trigger)，以及[在 Azure 逻辑应用中使用 HTTP 终结点调用、触发或嵌套工作流](../logic-apps/logic-apps-http-endpoint.md)。
 
-1. 登录到 [Azure 门户](https://portal.azure.cn)。 创建空白逻辑应用。
+1. 登录 [Azure 门户](https://portal.azure.cn)。 创建空白逻辑应用。
 
 1. 逻辑应用设计器打开后，在搜索框中输入“http 请求”作为筛选器。 在触发器列表中，选择“收到 HTTP 请求时”触发器（逻辑应用工作流中的第一个步骤）。 
 
@@ -60,7 +60,7 @@ ms.locfileid: "78304652"
 
     ![请求触发器](./media/connectors-native-reqres/request-trigger.png)
 
-    | 属性名称 | JSON 属性名称 | 必须 | 说明 |
+    | 属性名称 | JSON 属性名称 | 必选 | 说明 |
     |---------------|--------------------|----------|-------------|
     | **HTTP POST URL** | {无} | 是 | 保存逻辑应用后生成的终结点 URL，用于调用逻辑应用 |
     | **请求正文 JSON 架构** | `schema` | 否 | 描述传入请求正文中的属性和值的 JSON 架构 |
@@ -159,7 +159,7 @@ ms.locfileid: "78304652"
 
 1. 若要添加其他属性，请打开“添加新参数”列表，并选择要添加的参数。 
 
-    | 属性名称 | JSON 属性名称 | 必须 | 说明 |
+    | 属性名称 | JSON 属性名称 | 必选 | 说明 |
     |---------------|--------------------|----------|-------------|
     | **方法** | `method` | 否 | 传入的请求在调用逻辑应用时必须使用的方法 |
     | **相对路径** | `relativePath` | 否 | 逻辑应用终结点 URL 可接受的参数的相对路径 |
@@ -179,7 +179,7 @@ ms.locfileid: "78304652"
 
     逻辑应用只会使传入的请求保持打开一分钟。 假设逻辑应用工作流包含“响应”操作，如果在这段时间后逻辑应用未返回响应，则逻辑应用会向调用方返回 `504 GATEWAY TIMEOUT`。 否则，如果逻辑应用不包含“响应”操作，则逻辑应用会立即向调用方返回 `202 ACCEPTED` 响应。
 
-1. 完成后，保存逻辑应用。 在设计器工具栏上选择“保存”。  
+1. 完成后，保存逻辑应用。 在设计器工具栏上，选择“保存”  。 
 
     此步骤生成一个 URL，用于发送触发逻辑应用的请求。 若要复制此 URL，请选择 URL 旁边的复制图标。
 
@@ -223,7 +223,7 @@ ms.locfileid: "78304652"
 
     单击某些字段中的框会打开动态内容列表。 然后，可以从工作流中的前面步骤选择表示可用输出的标记。 在上述示例中指定的架构内的属性现在会显示在动态内容列表中。
 
-    例如，对于“标头”框，请包含 `Content-Type` 作为键名称，并将键值设置为 `application/json`，如本主题前面所述。  对于“正文”框，可以从动态内容列表中选择触发器正文输出。 
+    例如，对于“标头”框，请包含 **作为键名称，并将键值设置为**，如本主题前面所述。`Content-Type``application/json` 对于“正文”框，可以从动态内容列表中选择触发器正文输出。 
 
     ![“响应”操作详细信息](./media/connectors-native-reqres/response-details.png)
 
@@ -233,7 +233,7 @@ ms.locfileid: "78304652"
 
     下面是有关可在“响应”操作中设置的属性的详细信息。 
 
-    | 属性名称 | JSON 属性名称 | 必须 | 说明 |
+    | 属性名称 | JSON 属性名称 | 必选 | 说明 |
     |---------------|--------------------|----------|-------------|
     | **状态代码** | `statusCode` | 是 | 要在响应中返回的状态代码 |
     | **标头** | `headers` | 否 | 一个 JSON 对象，描述要包含在响应中的一个或多个标头 |
@@ -242,7 +242,7 @@ ms.locfileid: "78304652"
 
 1. 若要添加其他属性，例如响应正文的 JSON 架构，请打开“添加新参数”列表，并选择要添加的参数。 
 
-1. 完成后，保存逻辑应用。 在设计器工具栏上选择“保存”。  
+1. 完成后，保存逻辑应用。 在设计器工具栏上，选择“保存”  。 
 
 ## <a name="next-steps"></a>后续步骤
 

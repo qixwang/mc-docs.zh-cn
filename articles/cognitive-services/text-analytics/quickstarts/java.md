@@ -12,20 +12,20 @@ origin.date: 04/16/2019
 ms.date: 05/15/2019
 ms.author: v-junlch
 ms.openlocfilehash: 957e96600a128a0db5414468395678283cd9c71e
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78154779"
 ---
 # <a name="quickstart-using-java-to-call-the-text-analytics-cognitive-service"></a>快速入门：使用 Java 调用文本分析认知服务
 <a name="HOLTop"></a>
 
-本文展示了如何将 [文本分析 API](https://www.azure.cn/zh-cn/home/features/cognitive-services/text-analytics/) 与 Java 配合使用来[检测语言](#Detect)、[分析情绪](#SentimentAnalysis)、[提取关键短语](#KeyPhraseExtraction)以及[识别链接的实体](#Entities)。
+本文展示了如何将[文本分析 API](#Detect)[与 Java 配合使用来](#SentimentAnalysis)检测语言[、](#KeyPhraseExtraction)分析情绪[、](#Entities)提取关键短语 [以及](https://www.azure.cn/zh-cn/home/features/cognitive-services/text-analytics/)识别链接的实体 。
 
 有关 API 的技术文档，请参阅 [API 定义](https://dev.cognitive.azure.cn/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 [!INCLUDE [cognitive-services-text-analytics-signup-requirements](../../../../includes/cognitive-services-text-analytics-signup-requirements.md)]
 

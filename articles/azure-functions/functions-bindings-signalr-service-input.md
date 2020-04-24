@@ -6,10 +6,10 @@ ms.topic: reference
 ms.date: 03/02/2020
 ms.author: v-junlch
 ms.openlocfilehash: a6d05917b068e8c0afbba932423e3466dde11ebf
-ms.sourcegitcommit: 1ac138a9e7dc7834b5c0b62a133ca5ce2ea80054
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78266113"
 ---
 # <a name="signalr-service-input-binding-for-azure-functions"></a>Azure Functions 的 SignalR 服务输入绑定

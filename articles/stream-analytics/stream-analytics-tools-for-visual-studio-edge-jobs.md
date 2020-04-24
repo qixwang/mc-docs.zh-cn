@@ -9,27 +9,27 @@ ms.topic: conceptual
 origin.date: 12/07/2018
 ms.date: 11/19/2019
 ms.openlocfilehash: 5dbecfea3618065ec4f7b9d4337d4f17dfffebe6
-ms.sourcegitcommit: d202f6fe068455461c8756b50e52acd4caf2d095
+ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 04/17/2020
 ms.locfileid: "78154597"
 ---
 # <a name="develop-stream-analytics-edge-jobs-using-visual-studio-tools"></a>使用 Visual Studio 工具开发流分析 Edge 作业
 
 本教程介绍如何使用适用于 Visual Studio 的流分析工具。 了解如何创作、调试和创建流分析 Edge 作业。 创建并测试作业后，可以转到 Azure 门户，将该作业部署到设备中。 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要完成本教程，需要具备以下先决条件：
 
-* 安装 [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)、[Visual Studio 2015](https://www.visualstudio.com/vs/older-downloads/) 或 [Visual Studio 2013 Update 4](https://www.microsoft.com/download/details.aspx?id=45326)。 支持 Enterprise (Ultimate/Premium)、Professional 和 Community 版本。 不支持 Express 版本。  
+* 安装 [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)、[Visual Studio 2015](https://www.visualstudio.com/vs/older-downloads/) 或 [Visual Studio 2013 Update 4](https://www.microsoft.com/download/details.aspx?id=45326)。 支持 Enterprise (Ultimate/Premium)、Professional、Community 版本。 不支持 Express 版本。  
 
 * 请按照[安装说明](stream-analytics-tools-for-visual-studio-edge-jobs.md)安装用于 Visual Studio 的流分析工具。
  
 ## <a name="create-a-stream-analytics-edge-project"></a>创建流分析 Edge 项目 
 
-在 Visual Studio 中，选择“文件”   > “新建”   > “项目”  。 导航到左侧的“模板”列表，展开“Azure 流分析” > “流分析 Edge” > “Azure 流分析 Edge 应用程序”。     提供项目的名称、位置和解决方案名称，选择“确定”。 
+在 Visual Studio 中，选择“文件”   > “新建”   > “项目”  。 导航到左侧的“模板”列表，展开“Azure 流分析” **“流分析 Edge”** “Azure 流分析 Edge 应用程序”。   >    >   提供项目的名称、位置和解决方案名称，选择“确定”。 
 
 ![Visual Studio 中的新流分析 Edge 项目](./media/stream-analytics-tools-for-visual-studio-edge-jobs/new-stream-analytics-edge-project.png)
 
