@@ -1,9 +1,9 @@
 ---
-title: 使用 Azure CLI 在 Azure 市场中查找 Linux VM 映像 | Azure
+title: 使用 Azure CLI 在 Azure 市场中查找 Linux VM 映像
 description: 了解如何使用 Azure CLI 确定发布服务器、产品/服务、SKU 和市场 VM 映像的版本。
 services: virtual-machines-linux
 documentationcenter: ''
-author: rockboyfor
+author: Johnnytechn
 manager: digimobile
 editor: ''
 tags: azure-resource-manager
@@ -14,15 +14,15 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 origin.date: 01/25/2019
-ms.date: 11/11/2019
-ms.author: v-yeche
+ms.date: 04/13/2020
+ms.author: v-johya
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f527d0f0462a3ef6821471a1b962ba9b99520886
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: aa64c1eec38ad2d5d773ee1033494d07b0c6208e
+ms.sourcegitcommit: ebedf9e489f5218d4dda7468b669a601b3c02ae5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79292206"
+ms.lasthandoff: 04/26/2020
+ms.locfileid: "82159121"
 ---
 # <a name="find-linux-vm-images-in-the-azure-marketplace-with-the-azure-cli"></a>使用 Azure CLI 在 Azure 市场中查找 Linux VM 映像
 
@@ -116,7 +116,7 @@ Debian             credativ     8                    credativ:Debian:8:8.0.20190
 ...
 ```
 
-通过 `--location`、`--publisher` 和 `--sku` 选项应用类似的筛选器。 可以在筛选器上执行部分匹配，如搜索 `--offer Deb` 可查找所有 Debian 映像。
+通过 `--location`、`--publisher` 和 `--sku` 选项应用类似的筛选器。 可以在筛选器上执行部分匹配，如搜索 `--offer Deb` 以查找所有 Debian 映像。
 
 如果没有使用 `--location` 选项指定一个特定位置，则将返回默认位置的值。 （通过运行 `az configure --defaults location=<location>` 设置不同默认位置。）
 
@@ -285,7 +285,7 @@ UbuntuServer  Canonical    18.04-LTS  Canonical:UbuntuServer:18.04-LTS:18.04.201
 ...
 ```
 
-现在，可通过记下 URN 值准确地选择想要使用的映像。 通过 `--image`az vm create[ 命令创建 VM 时，可将此值与 ](https://docs.azure.cn/cli/vm?view=azure-cli-latest#az-vm-create) 参数一起传递。 记住，可选择将 URN 中的版本号替换为“latest”。 此版本始终是映像的最新版本。 
+现在，可通过记下 URN 值准确地选择想要使用的映像。 通过 [az vm create](https://docs.azure.cn/cli/vm?view=azure-cli-latest#az-vm-create) 命令创建 VM 时，可将此值与 `--image` 参数一起传递。 记住，可选择将 URN 中的版本号替换为“latest”。 此版本始终是映像的最新版本。 
 
 如果使用资源管理器模板部署 VM，请在 `imageReference` 属性中单独设置映像参数。
 

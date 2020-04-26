@@ -3,26 +3,25 @@ title: 为 Azure 准备 SLES 或 openSUSE 虚拟机
 description: 了解如何创建和上传包含 SUSE Linux 操作系统的 Azure 虚拟硬盘 (VHD)。
 services: virtual-machines-linux
 documentationcenter: ''
-author: rockboyfor
-manager: digimobile
-editor: tysonn
+author: Johnnytechn
+manager: gwallace
 tags: azure-resource-manager,azure-service-management
 ms.assetid: 066d01a6-2a54-4718-bcd0-90fe7a5303a1
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
-origin.date: 03/12/2018
-ms.date: 02/10/2020
-ms.author: v-yeche
-ms.openlocfilehash: 36b09de619bf744a4ab633285df3b91e65ee8c2c
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 04/20/2020
+ms.author: v-johya
+ms.openlocfilehash: 8e1e690cfd10e684de847bf2ddb5e89a2607b24d
+ms.sourcegitcommit: ebedf9e489f5218d4dda7468b669a601b3c02ae5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77428352"
+ms.lasthandoff: 04/26/2020
+ms.locfileid: "82159207"
 ---
 # <a name="prepare-a-sles-or-opensuse-virtual-machine-for-azure"></a>为 Azure 准备 SLES 或 openSUSE 虚拟机
+
 
 本文假定已在虚拟硬盘中安装了 SUSE 或 openSUSE Linux 操作系统。 存在多个用于创建 .vhd 文件的工具，例如 Hyper-V 等虚拟化解决方案。 有关说明，请参阅[安装 Hyper-V 角色和配置虚拟机](https://technet.microsoft.com/library/hh846766.aspx)。
 
@@ -36,7 +35,7 @@ ms.locfileid: "77428352"
 ## <a name="use-suse-studio"></a>使用 SUSE Studio
 [SUSE Studio](http://www.susestudio.com) 可以轻松地创建和管理 Azure 和 Hyper-V 的 SLES 和 openSUSE 映像。 这是自定义用户自己的 SUSE 和 openSUSE 映像的推荐方法。
 
-作为构建用户自己的 VHD 的替代方法，SUSE 也会为 [VMDepot](https://www.microsoft.com/research/wp-content/uploads/2016/04/using-and-contributing-vms-to-vm-depot.pdf) 中的 SLES 发布 BYOS（自带订阅）映像。
+作为构建用户自己的 VHD 的替代方法，SUSE 也会为 [VMDepot](https://www.microsoft.com/en-us/research/wp-content/uploads/2016/04/using-and-contributing-vms-to-vm-depot.pdf) 中的 SLES 发布 BYOS（自带订阅）映像。
 
 ## <a name="prepare-suse-linux-enterprise-server-11-sp4"></a>准备 SUSE Linux Enterprise Server 11 SP4
 1. 在 Hyper-V 管理器的中间窗格中，选择虚拟机。
@@ -82,10 +81,11 @@ ms.locfileid: "77428352"
 
         DHCLIENT_SET_HOSTNAME="no"
 12. 在“/etc/sudoers”中，注释掉或删除以下行（如果存在）：
-
-        Defaults targetpw   # ask for the password of the target user i.e. root
-        ALL    ALL=(ALL) ALL   # WARNING! Only use this together with 'Defaults targetpw'!
-        
+    
+    ```
+     Defaults targetpw   # ask for the password of the target user i.e. root
+     ALL    ALL=(ALL) ALL   # WARNING! Only use this together with 'Defaults targetpw'!
+     ```
 13. 请确保已安装 SSH 服务器且已将其配置为在引导时启动。  这通常是默认设置。
 14. 不要在 OS 磁盘上创建交换空间。
 
@@ -149,10 +149,12 @@ ms.locfileid: "77428352"
         DHCLIENT_SET_HOSTNAME="no"
         
 8. **重要提示：** 在“/etc/sudoers”中，注释掉或删除以下行（如果存在）：
+     
+     ```
+     Defaults targetpw   # ask for the password of the target user i.e. root
+     ALL    ALL=(ALL) ALL   # WARNING! Only use this together with 'Defaults targetpw'!
+     ```
 
-        Defaults targetpw   # ask for the password of the target user i.e. root
-        ALL    ALL=(ALL) ALL   # WARNING! Only use this together with 'Defaults targetpw'!
-        
 9. 请确保已安装 SSH 服务器且已将其配置为在引导时启动。  这通常是默认设置。
 10. 不要在 OS 磁盘上创建交换空间。
 

@@ -1,9 +1,9 @@
 ---
-title: 使用 SMB 在 Linux VM 上装载 Azure 文件存储 | Azure
+title: 使用 SMB 在 Linux VM 上装载 Azure 文件存储
 description: 如何通过 Azure CLI 使用 SMB 在 Linux VM 上装载 Azure 文件存储
 services: virtual-machines-linux
 documentationcenter: virtual-machines-linux
-author: rockboyfor
+author: Johnnytechn
 manager: digimobile
 editor: ''
 ms.assetid: ''
@@ -12,14 +12,14 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 origin.date: 06/28/2018
-ms.date: 11/11/2019
-ms.author: v-yeche
-ms.openlocfilehash: 1b8593cf12c136adb6a511f16384a3d0df80f785
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 04/13/2020
+ms.author: v-johya
+ms.openlocfilehash: 9f0fb99aad53c074c9f6dfe5a268ff6ac26703e7
+ms.sourcegitcommit: ebedf9e489f5218d4dda7468b669a601b3c02ae5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "73831217"
+ms.lasthandoff: 04/26/2020
+ms.locfileid: "82159095"
 ---
 <!--Notice: Verify successfully on bash cmdlet-->
 # <a name="mount-azure-file-storage-on-linux-vms-using-smb"></a>使用 SMB 在 Linux VM 上装载 Azure 文件存储
@@ -36,7 +36,7 @@ ms.locfileid: "73831217"
 
 在“中国东部”位置创建名为 *myResourceGroup* 的资源组。 
 
-```bash
+```azurecli
 az group create --name myResourceGroup --location chinaeast
 ```
 
@@ -44,7 +44,7 @@ az group create --name myResourceGroup --location chinaeast
 
 使用 [az storage account create](https://docs.azure.cn/cli/storage/account?view=azure-cli-latest#az-storage-account-create) 在创建的资源组中创建一个新存储帐户。 此示例创建一个名为 *mySTORAGEACCT\<random number>* 的存储帐户，然后将该存储帐户的名称置于变量 **STORAGEACCT** 中。 存储帐户名称必须唯一，请使用 `$RANDOM` 将一个数字追加到名称末尾，使之变得唯一。
 
-```bash
+```azurecli
 STORAGEACCT=$(az storage account create \
     --resource-group "myResourceGroup" \
     --name "mystorageacct$RANDOM" \
@@ -55,11 +55,11 @@ STORAGEACCT=$(az storage account create \
 
 ## <a name="get-the-storage-key"></a>获取存储密钥
 
-创建存储帐户时，帐户密钥是成对创建的，这样是为了不中断任何服务就可轮换密钥。 轮换到密钥对中的第二个密钥后，将创建新的密钥对。 新的存储帐户密钥始终成对创建，因此始终至少有一个未使用的存储帐户密钥可以切换到。
+创建存储帐户时，帐户密钥是成对创建的，这样是为了不中断任何服务就可轮换密钥。 轮换到密钥对中的第二个密钥后，创建新的密钥对。 新的存储帐户密钥始终成对创建，因此始终至少有一个未使用的存储帐户密钥可以切换到。
 
 使用 [az storage account keys list](https://docs.azure.cn/cli/storage/account/keys?view=azure-cli-latest#az-storage-account-keys-list) 查看存储帐户密钥。 此示例将密钥 1 的值存储在 **STORAGEKEY** 变量中。
 
-```bash
+```azurecli
 STORAGEKEY=$(az storage account keys list \
     --resource-group "myResourceGroup" \
     --account-name $STORAGEACCT \
@@ -74,7 +74,7 @@ STORAGEKEY=$(az storage account keys list \
 
 此示例创建名为 *myshare* 且具有 10-GiB 配额的共享。 
 
-```bash
+```azurecli
 az storage share create --name myshare \
     --quota 10 \
     --account-name $STORAGEACCT \

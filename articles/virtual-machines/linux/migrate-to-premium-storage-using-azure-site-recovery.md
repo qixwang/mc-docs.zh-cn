@@ -1,26 +1,26 @@
 ---
-title: 使用 Azure Site Recovery 将 Linux VM 迁移到 Azure 高级存储 | Azure
+title: 使用 Azure Site Recovery 迁移到高级存储
 description: 使用 Site Recovery 将现有虚拟机迁移到 Azure 高级存储。 高级存储为 Azure 虚拟机上运行的 I/O 密集型工作负载提供高性能、低延迟的磁盘支持。
 services: virtual-machines-linux,storage
 cloud: Azure
-author: rockboyfor
+author: Johnnytechn
 ms.service: virtual-machines-linux
 ms.tgt_pltfrm: linux
 ms.topic: article
 origin.date: 08/15/2017
-ms.date: 02/18/2019
-ms.author: v-yeche
+ms.date: 04/13/2020
+ms.author: v-johya
 ms.subservice: disks
-ms.openlocfilehash: 4b5c969546ca08fbba131672ab0aa34df03dd034
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: c97dc39cb1d46ede38634ccc5231fd8c44e3a1d9
+ms.sourcegitcommit: ebedf9e489f5218d4dda7468b669a601b3c02ae5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "63848500"
+ms.lasthandoff: 04/26/2020
+ms.locfileid: "82159199"
 ---
 # <a name="migrate-to-premium-storage-by-using-azure-site-recovery"></a>使用 Azure Site Recovery 迁移到高级存储
 
-[Azure 高级存储](premium-storage.md)为运行 I/O 密集型工作负荷的虚拟机 (VM) 提供高性能、低延迟的磁盘支持。 本指南帮助用户使用 [Azure Site Recovery](../../site-recovery/site-recovery-overview.md) 将其 VM 磁盘从标准存储帐户迁移到高级存储帐户。
+[Azure 高级 SSD](disks-types.md) 为运行 I/O 密集型工作负荷的虚拟机 (VM) 提供高性能、低延迟的磁盘支持。 本指南帮助用户使用 [Azure Site Recovery](../../site-recovery/site-recovery-overview.md) 将其 VM 磁盘从标准存储帐户迁移到高级存储帐户。
 
 Site Recovery 是一个 Azure 服务，可通过协调从本地物理服务器和 VM 到云 (Azure) 或辅助数据中心的复制，来为业务连续性和灾难恢复策略提供辅助。 当主要位置发生故障时，可以故障转移到辅助位置，使应用程序和工作负荷保持可用。 当主要位置恢复正常时，可以故障转移回到主要位置。 
 
@@ -218,13 +218,13 @@ Site Recovery 会创建类型与支持高级存储的 VM 相同或类似的 VM �
 * [Migrate Azure Virtual Machines between Storage Accounts（在存储帐户之间迁移 Azure 虚拟机）](https://azure.microsoft.com/blog/2014/10/22/migrate-azure-virtual-machines-between-storage-accounts/)
 * [上传 Linux 虚拟硬盘](upload-vhd.md)
 
-<!--Not Available on * [Migrating Virtual Machines from Amazon AWS to Azure](http://channel9.msdn.com/Series/Migrating-Virtual-Machines-from-Amazon-AWS-to-Microsoft-Azure)-->
+<!--Not Available on * [Migrating Virtual Machines from Amazon AWS to Azure](https://channel9.msdn.com/Series/Migrating-Virtual-Machines-from-Amazon-AWS-to-Microsoft-Azure)-->
 
 另请参阅以下资源，深入了解 Azure 存储和 Azure 虚拟机：
 
 * [Azure 存储](/storage/)
 * [Azure 虚拟机](/virtual-machines/)
-* [高级存储：适用于 Azure 虚拟机工作负载的高性能存储](premium-storage.md)
+* [选择适用于 IaaS VM 的磁盘类型](disks-types.md)
 
 [1]:./media/migrate-to-premium-storage-using-azure-site-recovery/migrate-to-premium-storage-using-azure-site-recovery-1.png
 [2]:./media/migrate-to-premium-storage-using-azure-site-recovery/migrate-to-premium-storage-using-azure-site-recovery-2.png

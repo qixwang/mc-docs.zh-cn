@@ -1,10 +1,10 @@
 ---
-title: 使用 Azure 资源管理器向 Linux VM 应用策略 | Azure
-description: 如何将策略应用到 Azure 资源管理器 Linux 虚拟机
+title: 使用 Azure 资源管理器向 Linux VM 应用策略
+description: 如何向 Azure Resource Manager Linux 虚拟机应用策略
 services: virtual-machines-linux
 documentationcenter: ''
-author: rockboyfor
-manager: digimobile
+author: Johnnytechn
+manager: vashan
 editor: ''
 tags: azure-resource-manager
 ms.assetid: 06778ab4-f8ff-4eed-ae10-26a276fc3faa
@@ -12,18 +12,17 @@ ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
-origin.date: 08/02/2017
-ms.date: 10/14/2019
-ms.author: v-yeche
-ms.openlocfilehash: 9767e46f96a8444500bf4b4830ba9c4d0601a8e6
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 04/20/2020
+ms.author: v-johya
+ms.openlocfilehash: bdb10a5d150946961c6a4c45f0ddb166135dd68e
+ms.sourcegitcommit: ebedf9e489f5218d4dda7468b669a601b3c02ae5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "72272579"
+ms.lasthandoff: 04/26/2020
+ms.locfileid: "82159083"
 ---
 # <a name="apply-policies-to-linux-vms-with-azure-resource-manager"></a>使用 Azure 资源管理器向 Linux VM 应用策略
-通过使用策略，组织可以在整个企业中强制实施各种约定和规则。 强制实施所需行为有助于消除风险，同时为组织的成功做出贡献。 本文将介绍如何使用 Azure 资源管理器策略，为组织中的虚拟机定义相应行为。
+通过使用策略，组织可以在整个企业中强制实施各种约定和规则。 强制实施所需行为有助于消除风险，同时为组织的成功做出贡献。 本文介绍如何使用 Azure 资源管理器策略，为组织中的虚拟机定义所需的行为。
 
 有关策略的简介，请参阅[什么是 Azure Policy？](../../governance/policy/overview.md)。
 
@@ -89,7 +88,7 @@ ms.locfileid: "72272579"
 }
 ```
 
-若要了解策略字段，请参阅[策略别名](../../governance/policy/concepts/definition-structure.md#aliases)。
+有关策略字段的信息，请参阅[策略别名](../../governance/policy/concepts/definition-structure.md#aliases)。
 
 ## <a name="managed-disks"></a>托管磁盘
 
@@ -141,7 +140,7 @@ ms.locfileid: "72272579"
 
 ## <a name="images-for-virtual-machines"></a>虚拟机映像
 
-出于安全考虑，可要求在环境中部署仅已批准的自定义映像。 可以指定包含已批准映像的资源组，或特定已批准映像。
+出于安全考虑，可要求仅在环境中部署已批准的自定义映像。 可以指定包含已批准映像的资源组，或特定已批准映像。
 
 下例需要来自已批准资源组的映像：
 
@@ -181,7 +180,7 @@ ms.locfileid: "72272579"
 
 ## <a name="virtual-machine-extensions"></a>虚拟机扩展
 
-建议禁止某些扩展类型的使用情况。 例如，扩展名可能与某些自定义虚拟机映像不兼容。 下例演示如何阻止特定扩展。 该示例使用发布者和类型来确定要阻止的扩展。
+可能想要禁止使用某些类型的扩展。 例如，扩展名可能与某些自定义虚拟机映像不兼容。 下例演示如何阻止特定扩展。 该示例使用发布者和类型来确定要阻止的扩展。
 
 ```json
 {
@@ -211,6 +210,6 @@ ms.locfileid: "72272579"
 ## <a name="next-steps"></a>后续步骤
 * 定义策略规则后（如上述示例所示），需要创建策略定义并将其分配给作用域。 作用域可以是订阅、资源组或资源。 若要分配策略，请参阅[使用 Azure 门户分配和管理资源策略](../../governance/policy/assign-policy-portal.md)、[使用 PowerShell 分配策略](../../governance/policy/assign-policy-powershell.md)或[使用 Azure CLI 分配策略](../../governance/policy/assign-policy-azurecli.md)。
 * 有关资源策略的简介，请参阅[什么是 Azure Policy？](../../governance/policy/overview.md)。
-* 有关企业可如何使用 Resource Manager 有效管理订阅的指南，请参阅 [Azure 企业基架 - 出于合规目的监管订阅](https://docs.microsoft.com/azure/architecture/cloud-adoption-guide/subscription-governance)。
+* 有关企业可如何使用 Resource Manager 有效管理订阅的指南，请参阅 [Azure 企业基架 - 出于合规目的监管订阅](/azure/architecture/cloud-adoption-guide/subscription-governance)。
 
 <!--Update_Description: update meta properties -->

@@ -3,7 +3,7 @@ title: 在 Azure 中使用 cloud-init 设置 Linux VM 的主机名 | Azure
 description: 如何通过 Azure CLI 使用 cloud-init 在创建期间自定义 Linux VM
 services: virtual-machines-linux
 documentationcenter: ''
-author: rockboyfor
+author: Johnnytechn
 manager: digimobile
 editor: ''
 tags: azure-resource-manager
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.topic: article
 origin.date: 11/29/2017
-ms.date: 08/12/2019
-ms.author: v-yeche
-ms.openlocfilehash: b8b6b0ab72317eed71d579dadf6512cbeec5f606
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 04/13/2020
+ms.author: v-johya
+ms.openlocfilehash: bfae2f798b15e4c1f0853dc9dda1c234c81b8afb
+ms.sourcegitcommit: ebedf9e489f5218d4dda7468b669a601b3c02ae5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "68912985"
+ms.lasthandoff: 04/26/2020
+ms.locfileid: "82159157"
 ---
 # <a name="use-cloud-init-to-set-hostname-for-a-linux-vm-in-azure"></a>在 Azure 中使用 cloud-init 设置 Linux VM 的主机名
 本文演示如何在 Azure 中使用 [cloud-init](https://cloudinit.readthedocs.io) 在预配时间配置虚拟机 (VM) 或虚拟机规模集 (VMSS) 上特定的主机名。 Azure 预配资源后，这些 cloud-init 脚本即会在第一次启动时运行。 有关 cloud-init 如何在 Azure 以及受支持的 Linux 发行版中本机工作的详细信息，请参阅 [cloud-init 概述](using-cloud-init.md)
@@ -28,7 +28,7 @@ ms.locfileid: "68912985"
 ## <a name="set-the-hostname-with-cloud-init"></a>使用 cloud-init 设置主机名称
 默认情况下，在 Azure 中创建新的虚拟机时，主机名和 VM 名称相同。  如果希望在 Azure 中使用 [az vm create](https://docs.azure.cn/cli/vm?view=azure-cli-latest#az-vm-create) 创建 VM 时通过运行 cloud-init 脚本来更改默认主机名，请通过 `--custom-data` 开关指定 cloud-init 文件。  
 
-要查看操作中的升级进程，请在本地 shell 中创建一个名为“cloud_init_hostname.txt”的文件并粘贴下面的配置  。 对于此示例，请在本地计算机中创建文件。 可使用任何想要使用的编辑器。 输入 `sensible-editor cloud_init_hostname.txt` 以创建文件并查看可用编辑器的列表。 选择 #1 以使用 nano 编辑器  。 请确保已正确复制整个 cloud-init 文件，尤其是第一行。  
+要查看操作中的升级进程，请在当前 shell 中创建一个名为“cloud_init_hostname.txt”的文件并粘贴下面的配置  。 对于此示例，请在本地计算机中创建文件。 可使用任何想要使用的编辑器。 输入 `sensible-editor cloud_init_hostname.txt` 以创建文件并查看可用编辑器的列表。 选择 #1 以使用 nano 编辑器  。 请确保已正确复制整个 cloud-init 文件，尤其是第一行。  
 
 <!-- Not Available on Cloud Shell -->
 

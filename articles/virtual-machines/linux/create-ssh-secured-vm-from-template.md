@@ -1,9 +1,9 @@
 ---
-title: 使用模板在 Azure 中创建 Linux VM
+title: 如何使用 Azure Resource Manager 模板创建 Linux 虚拟机
 description: 如何使用 Azure CLI 基于资源管理器模板创建 Linux VM
 services: virtual-machines-linux
 documentationcenter: ''
-author: rockboyfor
+author: Johnnytechn
 manager: digimobile
 editor: ''
 tags: azure-resource-manager
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.topic: article
 origin.date: 03/22/2019
-ms.date: 02/10/2020
-ms.author: v-yeche
+ms.date: 04/13/2020
+ms.author: v-johya
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 43543a1b3b751299f4c81e8a172a4f6c33b65921
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 90df28664e80b719222989b087b19db7de4627e0
+ms.sourcegitcommit: ebedf9e489f5218d4dda7468b669a601b3c02ae5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77428674"
+ms.lasthandoff: 04/26/2020
+ms.locfileid: "82159101"
 ---
 # <a name="how-to-create-a-linux-virtual-machine-with-azure-resource-manager-templates"></a>如何使用 Azure Resource Manager 模板创建 Linux 虚拟机
 
@@ -45,7 +45,7 @@ Azure Resource Manager 模板是 JSON 文件，其中定义了 Azure 解决方�
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "projectName": {
@@ -82,7 +82,8 @@ Azure Resource Manager 模板是 JSON 文件，其中定义了 Azure 解决方�
     "vmName": "[concat(parameters('projectName'), '-vm')]",
     "publicIPAddressName": "[concat(parameters('projectName'), '-ip')]",
     "networkInterfaceName": "[concat(parameters('projectName'), '-nic')]",
-    "networkSecurityGroupName": "[concat(parameters('projectName'), '-nsg')]"
+    "networkSecurityGroupName": "[concat(parameters('projectName'), '-nsg')]",
+    "networkSecurityGroupName2": "[concat(variables('vNetSubnetName'), '-nsg')]"
   },
   "resources": [
     {
@@ -122,10 +123,37 @@ Azure Resource Manager 模板是 JSON 文件，其中定义了 Azure 解决方�
       }
     },
     {
+      "comments": "Simple Network Security Group for subnet [variables('vNetSubnetName')]",
+      "type": "Microsoft.Network/networkSecurityGroups",
+      "apiVersion": "2019-08-01",
+      "name": "[variables('networkSecurityGroupName2')]",
+      "location": "[parameters('location')]",
+      "properties": {
+        "securityRules": [
+          {
+            "name": "default-allow-22",
+            "properties": {
+              "priority": 1000,
+              "access": "Allow",
+              "direction": "Inbound",
+              "destinationPortRange": "22",
+              "protocol": "Tcp",
+              "sourceAddressPrefix": "*",
+              "sourcePortRange": "*",
+              "destinationAddressPrefix": "*"
+            }
+          }
+        ]
+      }
+    },
+    {
       "type": "Microsoft.Network/virtualNetworks",
       "apiVersion": "2018-11-01",
       "name": "[variables('vNetName')]",
       "location": "[parameters('location')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.Network/networkSecurityGroups', variables('networkSecurityGroupName2'))]"
+      ],
       "properties": {
         "addressSpace": {
           "addressPrefixes": [
@@ -136,7 +164,10 @@ Azure Resource Manager 模板是 JSON 文件，其中定义了 Azure 解决方�
           {
             "name": "[variables('vNetSubnetName')]",
             "properties": {
-              "addressPrefix": "[variables('vNetSubnetAddressPrefix')]"
+              "addressPrefix": "[variables('vNetSubnetAddressPrefix')]",
+              "networkSecurityGroup": {
+                "id": "[resourceId('Microsoft.Network/networkSecurityGroups', variables('networkSecurityGroupName2'))]"
+              }
             }
           }
         ]
@@ -256,7 +287,7 @@ az vm show --resource-group $resourceGroupName --name "$projectName-vm" --show-d
 
 - 若要了解如何开发资源管理器模板，请参阅 [Azure 资源管理器文档](/azure-resource-manager/)。
     
-    <!--Not Available on [Azure template reference](https://docs.microsoft.com/zh-cn/azure/templates/microsoft.compute/allversions)-->
+    <!--Not Available on [Azure template reference](https://docs.microsoft.com/azure/templates/microsoft.compute/allversions)-->
 
 - 若要查看更多的虚拟机模板示例，请参阅 [Azure 快速入门模板](https://github.com/Azure/azure-quickstart-templates/?resourceType=Microsoft.Compute&pageNumber=1&sort=Popular)。
 
@@ -273,10 +304,10 @@ ssh <adminUsername>@<ipAddress>
 在此示例中，创建了一个基本的 Linux VM。 如需更多包含应用程序框架（或者可以用来创建更复杂环境）的资源管理器模板，请浏览 [Azure 快速入门模板](https://github.com/Azure/azure-quickstart-templates/?resourceType=Microsoft.Compute&pageNumber=1&sort=Popular)。
 
 
-<!--Not Available on - [Microsoft.Network/networkSecurityGroups](https://docs.microsoft.com/zh-cn/azure/templates/microsoft.network/networksecuritygroups)-->
-<!--Not Available on - - [Microsoft.Network/publicIPAddresses](https://docs.microsoft.com/zh-cn/azure/templates/microsoft.network/publicipaddresses)-->
-<!--Not Available on - - [Microsoft.Network/virtualNetworks](https://docs.microsoft.com/zh-cn/azure/templates/microsoft.network/virtualnetworks)-->
-<!--Not Available on - - [Microsoft.Network/networkInterfaces](https://docs.microsoft.com/zh-cn/azure/templates/microsoft.network/networkinterfaces)-->
-<!--Not Available on - - [Microsoft.Compute/virtualMachines](https://docs.microsoft.com/zh-cn/azure/templates/microsoft.compute/virtualmachines)-->
+<!--Not Available on - [Microsoft.Network/networkSecurityGroups](https://docs.microsoft.com/azure/templates/microsoft.network/networksecuritygroups)-->
+<!--Not Available on - - [Microsoft.Network/publicIPAddresses](https://docs.microsoft.com/azure/templates/microsoft.network/publicipaddresses)-->
+<!--Not Available on - - [Microsoft.Network/virtualNetworks](https://docs.microsoft.com/azure/templates/microsoft.network/virtualnetworks)-->
+<!--Not Available on - - [Microsoft.Network/networkInterfaces](https://docs.microsoft.com/azure/templates/microsoft.network/networkinterfaces)-->
+<!--Not Available on - - [Microsoft.Compute/virtualMachines](https://docs.microsoft.com/azure/templates/microsoft.compute/virtualmachines)-->
 
 <!--Update_Description: update meta properties -->

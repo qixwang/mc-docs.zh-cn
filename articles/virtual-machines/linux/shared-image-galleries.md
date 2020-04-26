@@ -3,30 +3,29 @@ title: 共享映像库概述
 description: 了解如何使用共享映像库在整个组织中共享 VM 映像。
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: rockboyfor
-manager: digimobile
-editor: tysonn
+author: Johnnytechn
+manager: gwallace
 tags: azure-resource-manager
 ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-origin.date: 11/02/2019
-ms.date: 02/10/2020
-ms.author: v-yeche
+ms.date: 04/20/2020
+ms.author: v-johya
 ms.reviewer: cynthn
 ms.custom: ''
-ms.openlocfilehash: c2e2ca12eaf264433a9efb35798fd00767cfb2e1
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 83a0f8a246dcc8cb7f835a84e0a6e9b12083dd84
+ms.sourcegitcommit: ebedf9e489f5218d4dda7468b669a601b3c02ae5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79292801"
+ms.lasthandoff: 04/26/2020
+ms.locfileid: "82159212"
 ---
 <!--Verify Successfully-->
 # <a name="shared-image-galleries-overview"></a>共享映像库概述
 
 [!INCLUDE [virtual-machines-common-shared-image-galleries](../../../includes/virtual-machines-common-shared-image-galleries.md)]
+
 
 ## <a name="next-steps"></a>后续步骤
 

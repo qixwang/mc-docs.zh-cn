@@ -3,7 +3,7 @@ title: 在 Azure 中的开发虚拟机上部署 Elasticsearch
 description: 教程 - 在 Azure 中的开发 Linux VM 上安装 Elastic Stack
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: rockboyfor
+author: Johnnytechn
 manager: digimobile
 tags: azure-resource-manager
 ms.service: virtual-machines-linux
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.topic: tutorial
 origin.date: 10/11/2017
-ms.date: 02/18/2019
-ms.author: v-yeche
-ms.openlocfilehash: 3603e7fac283c6bfca142e102d48fd35ed967456
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 04/13/2020
+ms.author: v-johya
+ms.openlocfilehash: 7c5b84f7d1eb40b74d1d9d67ad387a864eb23f1b
+ms.sourcegitcommit: ebedf9e489f5218d4dda7468b669a601b3c02ae5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "63854960"
+ms.lasthandoff: 04/26/2020
+ms.locfileid: "82159179"
 ---
 # <a name="install-the-elastic-stack-on-an-azure-vm"></a>在 Azure VM 上安装 Elastic Stack
 
@@ -66,7 +66,7 @@ az vm create \
 
 创建 VM 后，Azure CLI 显示类似于以下示例的信息。 记下 `publicIpAddress`。 此地址用于访问 VM。
 
-```azurecli 
+```output
 {
   "fqdns": "",
   "id": "/subscriptions/<subscription ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM",

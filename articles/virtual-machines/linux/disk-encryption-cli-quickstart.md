@@ -1,18 +1,18 @@
 ---
 title: 使用 Azure CLI 创建和加密 Linux VM
 description: 本快速入门介绍如何使用 Azure CLI 创建和加密 Linux 虚拟机
-author: rockboyfor
-ms.author: v-yeche
+author: Johnnytechn
+ms.author: v-johya
 ms.service: security
 ms.topic: quickstart
 origin.date: 05/17/2019
-ms.date: 02/10/2020
-ms.openlocfilehash: 4b0bfe3660d926bd3f43a9a2bb790f6f8c8d56c1
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 04/13/2020
+ms.openlocfilehash: 6871600d43a2383726382611a6dc573a1e9898e7
+ms.sourcegitcommit: ebedf9e489f5218d4dda7468b669a601b3c02ae5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77428876"
+ms.lasthandoff: 04/26/2020
+ms.locfileid: "82159063"
 ---
 <!--Verfied successfully-->
 # <a name="quickstart-create-and-encrypt-a-linux-vm-with-the-azure-cli"></a>快速入门：使用 Azure CLI 创建和加密 Linux VM
@@ -23,7 +23,7 @@ Azure CLI 用于从命令行或脚本创建和管理 Azure 资源。 本快速�
 
 [!INCLUDE [azure-cli-2-azurechinacloud-environment-parameter](../../../includes/azure-cli-2-azurechinacloud-environment-parameter.md)]
 
-如果选择在本地安装并使用 CLI，本快速入门要求运行 Azure CLI 2.0.30 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI](https://docs.azure.cn/cli/install-azure-cli?view=azure-cli-latest)。
+如果选择在本地安装并使用 Azure CLI，本快速入门要求运行 Azure CLI 2.0.30 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI](https://docs.azure.cn/cli/install-azure-cli?view=azure-cli-latest)。
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
@@ -48,7 +48,7 @@ az vm create \
 
 创建 VM 和支持资源需要几分钟时间。 以下示例输出表明 VM 创建操作已成功。
 
-```azurecli
+```
 {
   "fqdns": "",
   "id": "/subscriptions/<guid>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM",
@@ -88,7 +88,7 @@ az vm show --name "myVM" -g "MyResourceGroup"
 
 启用加密后，你将在返回的输出中看到以下内容：
 
-```azurecli
+```
 "EncryptionOperation": "EnableEncryption"
 ```
 

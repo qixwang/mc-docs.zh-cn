@@ -3,7 +3,7 @@ title: 使用 Azure CLI 创建完整的 Linux 虚拟机 | Azure
 description: 使用 Azure CLI 从头开始创建存储、Linux VM、虚拟网络和子网、负载均衡器、NIC、公共 IP 和网络安全组。
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: rockboyfor
+author: Johnnytechn
 manager: digimobile
 editor: ''
 tags: azure-resource-manager
@@ -14,14 +14,14 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 origin.date: 12/14/2017
-ms.date: 08/12/2019
-ms.author: v-yeche
-ms.openlocfilehash: b8e22015ef45cdcee67269ce789426acfd623777
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 04/13/2020
+ms.author: v-johya
+ms.openlocfilehash: 4de3ab6036daf89f2ffe17cfa89ea58a412c0ed3
+ms.sourcegitcommit: ebedf9e489f5218d4dda7468b669a601b3c02ae5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "68912861"
+ms.lasthandoff: 04/26/2020
+ms.locfileid: "82159107"
 ---
 # <a name="create-a-complete-linux-virtual-machine-with-the-azure-cli"></a>使用 Azure CLI 创建完整的 Linux 虚拟机
 若要在 Azure 中快速创建虚拟机 (VM)，可使用单个使用默认值的 Azure CLI 命令创建任何所需的支持资源。 虚拟网络、公共 IP 地址和网络安全组规则等资源均会自动创建。 为了在生产使用中更好地控制环境，可提前创建这些资源，然后将 VM 添加到其中。 本文将逐步介绍如何创建 VM 和每个支持资源。
@@ -39,9 +39,7 @@ Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。 创建
 az group create --name myResourceGroup --location chinaeast
 ```
 
-默认情况下，Azure CLI 命令的输出采用 JSON（JavaScript 对象表示法）格式。 若要更改列表或表的默认输出，请使用 [az configure --output](https://docs.azure.cn/cli/reference-index?view=azure-cli-latest#az-configure)。 还可以向任何命令添加 `--output` 来对输出格式进行一次性更改。 以下示例显示了来自 `az group create` 命令的 JSON 输出：
-
-<!--MOONCAKE: Not ---output in az-config cmdlet-->
+默认情况下，Azure CLI 命令的输出采用 JSON（JavaScript 对象表示法）格式。 若要更改列表或表的默认输出，请使用 [az configure --output](https://docs.azure.cn/cli/reference-index?view=azure-cli-latest#az-configure---output)。 还可以向任何命令添加 `--output` 来对输出格式进行一次性更改。 以下示例显示了来自 `az group create` 命令的 JSON 输出：
 
 ```json                       
 {

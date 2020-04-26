@@ -1,19 +1,19 @@
 ---
-title: 适用于 Linux VM 的 Azure 磁盘存储概述
+title: Azure 托管磁盘简介
 description: 概述了 Azure 托管磁盘，该磁盘在使用 Linux VM 时处理存储帐户
-author: rockboyfor
+author: Johnnytechn
 ms.service: virtual-machines-linux
 ms.topic: overview
 origin.date: 12/02/2019
-ms.date: 02/10/2020
-ms.author: v-yeche
+ms.date: 04/13/2020
+ms.author: v-johya
 ms.subservice: disks
-ms.openlocfilehash: c45dfc6bbbb378135e4106418fa6b3203862ec8f
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 284e531408786aa6e31f93ba0a5f6944d049aabe
+ms.sourcegitcommit: ebedf9e489f5218d4dda7468b669a601b3c02ae5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77428795"
+ms.lasthandoff: 04/26/2020
+ms.locfileid: "82159068"
 ---
 # <a name="introduction-to-azure-managed-disks"></a>Azure 托管磁盘简介
 

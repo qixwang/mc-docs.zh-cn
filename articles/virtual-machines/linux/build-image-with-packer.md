@@ -3,7 +3,7 @@ title: 如何使用 Packer 在 Azure 中创建 Linux 虚拟机映像 | Azure
 description: 了解如何使用 Packer 在 Azure 中创建 Linux 虚拟机映像
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: rockboyfor
+author: Johnnytechn
 manager: digimobile
 editor: tysonn
 tags: azure-resource-manager
@@ -14,14 +14,14 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 origin.date: 05/07/2019
-ms.date: 08/12/2019
-ms.author: v-yeche
-ms.openlocfilehash: 32528994f4afd596afa3485cd3150033cd54ecfa
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 04/13/2020
+ms.author: v-johya
+ms.openlocfilehash: 8d14fd9eef9357c0df9820089fcdccf37b14b77f
+ms.sourcegitcommit: ebedf9e489f5218d4dda7468b669a601b3c02ae5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "68912767"
+ms.lasthandoff: 04/26/2020
+ms.locfileid: "82159166"
 ---
 # <a name="how-to-use-packer-to-create-linux-virtual-machine-images-in-azure"></a>如何使用 Packer 在 Azure 中创建 Linux 虚拟机映像
 Azure 中的每个虚拟机 (VM) 都创建至定义 Linux 分发和 OS 版本的映像。 映像可包括预安装的应用程序和配置。 Azure 市场为最常见的分发和应用程序环境提供许多第一和第三方映像，或者也可创建满足自身需求的自定义映像。 本文详细介绍了如何使用开源工具 [Packer](https://www.packer.io/) 在 Azure 中定义和生成自定义映像。
@@ -50,7 +50,7 @@ az ad sp create-for-rbac --query "{ client_id: appId, client_secret: password, t
 
 前述命令的输出示例如下所示：
 
-```azurecli
+```output
 {
     "client_id": "f5b6a5cf-fbdf-4a9f-b3b8-3c2cd00225a4",
     "client_secret": "0e760437-bf34-4aad-9f8d-870be799c55d",
@@ -143,7 +143,7 @@ az account show --query "{ subscription_id: id }"
 
 前述命令的输出示例如下所示：
 
-```bash
+```output
 azure-arm output will be in this color.
 
 ==> azure-arm: Running builder ...

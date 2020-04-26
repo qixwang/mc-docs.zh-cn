@@ -3,26 +3,24 @@ title: 教程 - 使用 Azure CLI 管理 Azure 磁盘
 description: 本教程介绍如何使用 Azure CLI 为虚拟机创建和管理 Azure 磁盘
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: rockboyfor
-manager: digimobile
-editor: tysonn
+author: Johnnytechn
+manager: gwallace
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-origin.date: 11/14/2018
-ms.date: 02/10/2020
-ms.author: v-yeche
+ms.date: 04/20/2020
+ms.author: v-johya
 ms.custom: mvc
 ms.subservice: disks
-ms.openlocfilehash: 6808651f62f73056cbd9258a5728fc489e10e7e2
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 29412d6c4056f06cfe280f765c2bc73c55397a42
+ms.sourcegitcommit: ebedf9e489f5218d4dda7468b669a601b3c02ae5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79293482"
+ms.lasthandoff: 04/26/2020
+ms.locfileid: "82159174"
 ---
 # <a name="tutorial---manage-azure-disks-with-the-azure-cli"></a>教程 - 使用 Azure CLI 管理 Azure 磁盘
 
@@ -36,6 +34,7 @@ Azure 虚拟机 (VM) 使用磁盘来存储操作系统、应用程序和数据�
 > * 附加和准备数据磁盘
 > * 调整磁盘大小
 > * 磁盘快照
+
 
 ## <a name="default-azure-disks"></a>默认 Azure 磁盘
 
@@ -118,9 +117,10 @@ az vm disk attach \
 
 将磁盘附加到虚拟机后，需要将操作系统配置为使用该磁盘。 以下示例演示如何手动配置磁盘。 还可使用 cloud-init 自动执行此过程，[后面的教程](./tutorial-automate-vm-deployment.md)对此进行了介绍。
 
+
 创建与虚拟机的 SSH 连接。 将示例 IP 地址替换为虚拟机的公共 IP 地址。
 
-```azurecli
+```console
 ssh 10.101.10.10
 ```
 

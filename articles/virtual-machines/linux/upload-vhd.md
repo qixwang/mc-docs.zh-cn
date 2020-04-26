@@ -3,9 +3,8 @@ title: 使用 Azure CLI 从自定义磁盘创建 Linux VM
 description: 使用资源管理器部署模型和 Azure CLI 上传或复制自定义的虚拟机
 services: virtual-machines-linux
 documentationcenter: ''
-author: rockboyfor
-manager: digimobile
-editor: tysonn
+author: Johnnytechn
+manager: gwallace
 tags: azure-resource-manager
 ms.assetid: a8c7818f-eb65-409e-aa91-ce5ae975c564
 ms.service: virtual-machines-linux
@@ -13,15 +12,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.topic: article
-origin.date: 10/10/2019
-ms.date: 11/11/2019
-ms.author: v-yeche
-ms.openlocfilehash: 2614eb25b71ab097323607c37761b1384983d1b4
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 04/20/2020
+ms.author: v-johya
+ms.openlocfilehash: fc610e0eb6ad5ee8a2d69dbc1a7b1de50a2447a1
+ms.sourcegitcommit: ebedf9e489f5218d4dda7468b669a601b3c02ae5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79291971"
+ms.lasthandoff: 04/26/2020
+ms.locfileid: "82159167"
 ---
 # <a name="create-a-linux-vm-from-a-custom-disk-with-the-azure-cli"></a>使用 Azure CLI 从自定义磁盘创建 Linux VM
 
@@ -34,6 +32,7 @@ ms.locfileid: "79291971"
 可使用两个选项创建自定义磁盘：
 * 上传 VHD
 * 复制现有的 Azure VM
+
 
 ## <a name="requirements"></a>要求
 若要完成以下步骤，需要：
@@ -75,7 +74,6 @@ Azure 支持各种 Linux 分发（请参阅[认可的分发](endorsed-distros.md
 > 
 > 
 
-<a name="option-1-upload-a-specialized-vhd"></a>
 ## <a name="option-1-upload-a-vhd"></a>选项 1：上传 VHD
 
 现在可以直接将 VHD 上传到托管磁盘中。 有关说明，请参阅[使用 Azure CLI 将 VHD 上传到 Azure](disks-upload-vhd-to-managed-disk-cli.md)。
@@ -92,26 +90,26 @@ Azure 支持各种 Linux 分发（请参阅[认可的分发](endorsed-distros.md
 
 此示例在资源组 *myResourceGroup* 中创建名为 *myVM* 的 VM 的快照，并创建名为 *osDiskSnapshot* 的快照。
 
-```azure-cli
+```azurecli
 osDiskId=$(az vm show -g myResourceGroup -n myVM --query "storageProfile.osDisk.managedDisk.id" -o tsv)
 az snapshot create \
     -g myResourceGroup \
     --source "$osDiskId" \
     --name osDiskSnapshot
 ```
-### <a name="create-the-managed-disk"></a>创建托管磁盘
+###  <a name="create-the-managed-disk"></a>创建托管磁盘
 
 从快照创建新的托管磁盘。
 
 获取快照的 ID。 在此示例中，快照名为 *osDiskSnapshot*，位于 *myResourceGroup* 资源组中。
 
-```azure-cli
+```azurecli
 snapshotId=$(az snapshot show --name osDiskSnapshot --resource-group myResourceGroup --query [id] -o tsv)
 ```
 
 创建托管磁盘。 此示例将从快照创建名为 *myManagedDisk* 的托管磁盘，该磁盘位于标准存储中，大小为 128 GB。
 
-```azure-cli
+```azurecli
 az disk create \
     --resource-group myResourceGroup \
     --name myManagedDisk \

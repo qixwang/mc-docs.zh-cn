@@ -1,19 +1,19 @@
 ---
 title: 使用 Azure AD 创建和配置用于 Azure 磁盘加密的密钥保管库（以前版本）
 description: 本文提供了对 IaaS VM 使用 Azure 磁盘加密所要满足的先决条件。
-author: rockboyfor
-ms.service: security
+author: Johnnytechn
+ms.service: virtual-machines-linux
+ms.subservice: security
 ms.topic: article
-ms.author: v-yeche
-origin.date: 03/15/2019
-ms.date: 11/11/2019
+ms.author: v-johya
+ms.date: 04/20/2020
 ms.custom: seodec18
-ms.openlocfilehash: 642bcccf8ee978c8240db6c0faa89effef79ad5e
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 330e9014382b9ae72a90e236a20d233bd5fe182f
+ms.sourcegitcommit: ebedf9e489f5218d4dda7468b669a601b3c02ae5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "73730632"
+ms.lasthandoff: 04/26/2020
+ms.locfileid: "82159060"
 ---
 # <a name="creating-and-configuring-a-key-vault-for-azure-disk-encryption-with-azure-ad-previous-release"></a>使用 Azure AD 创建和配置用于 Azure 磁盘加密的密钥保管库（以前版本）
 
@@ -27,7 +27,7 @@ Azure 磁盘加密使用 Azure 密钥保管库来控制和管理磁盘加密密�
 2. 设置 Azure AD 应用程序和服务主体。
 3. 为 Azure AD 应用设置 Key Vault 访问策略。
 4. 设置 Key Vault 高级访问策略。
-
+ 
 还可以根据需要生成或导入密钥加密密钥 (KEK)。
 
 有关如何[安装工具并连接到 Azure](disk-encryption-key-vault.md#install-tools-and-connect-to-azure) 的步骤，请参阅主要的[创建和配置用于 Azure 磁盘加密的密钥保管库](disk-encryption-key-vault.md)一文。
@@ -35,8 +35,10 @@ Azure 磁盘加密使用 Azure 密钥保管库来控制和管理磁盘加密密�
 > [!Note]
 > 本文中的步骤在 [Azure 磁盘加密先决条件 CLI 脚本](https://github.com/ejarvi/ade-cli-getting-started)和 [Azure 磁盘加密先决条件 PowerShell 脚本](https://github.com/Azure/azure-powershell/tree/master/src/Compute/Compute/Extension/AzureDiskEncryption/Scripts)中自动执行。
 
+
 ## <a name="create-a-key-vault"></a>创建密钥保管库 
-Azure 磁盘加密与 [Azure Key Vault](/key-vault/) 集成，帮助你控制和管理 Key Vault 订阅中的磁盘加密密钥与机密。 可为 Azure 磁盘加密创建 Key Vault，或使用现有的 Key Vault。 有关 Key Vault 的详细信息，请参阅 [Azure Key Vault 入门](../../key-vault/key-vault-get-started.md)和[保护 Key Vault](../../key-vault/key-vault-secure-your-key-vault.md)。 可以使用资源管理器模板、Azure PowerShell 或 Azure CLI 创建 Key Vault。 
+Azure 磁盘加密与 [Azure Key Vault](https://docs.azure.cn/zh-cn/key-vault/) 集成，帮助你控制和管理 Key Vault 订阅中的磁盘加密密钥与机密。 可为 Azure 磁盘加密创建 Key Vault，或使用现有的 Key Vault。 有关 Key Vault 的详细信息，请参阅 [Azure Key Vault 入门](../../key-vault/key-vault-get-started.md)和[保护 Key Vault](../../key-vault/key-vault-secure-your-key-vault.md)。 可以使用资源管理器模板、Azure PowerShell 或 Azure CLI 创建 Key Vault。 
+
 
 >[!WARNING]
 >为确保加密机密不会跨过区域边界，Azure 磁盘加密需要将密钥保管库和 VM 共置在同一区域。 在要加密的 VM 所在的同一区域中创建并使用 Key Vault。 
@@ -47,36 +49,36 @@ Azure 磁盘加密与 [Azure Key Vault](/key-vault/) 集成，帮助你控制和
 可以在 Azure PowerShell 中使用 [New-AzKeyVault](https://docs.microsoft.com/powershell/module/az.keyvault/New-azKeyVault) cmdlet 创建 Key Vault。 有关适用于 Key Vault 的更多 cmdlet，请参阅 [Az.KeyVault](https://docs.microsoft.com/powershell/module/az.keyvault/)。 
 
 1. 根据需要，使用 [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.Resources/New-azResourceGroup) 创建新资源组。  若要列出数据中心位置，请使用 [Get-AzLocation](https://docs.microsoft.com/powershell/module/az.resources/get-azlocation)。 
-
-    ```powershell
-    # Get-AzLocation 
-    New-AzResourceGroup -Name 'MyKeyVaultResourceGroup' -Location 'China East'
-    ```
+     
+     ```azurepowershell
+     # Get-AzLocation 
+     New-AzResourceGroup -Name 'MyKeyVaultResourceGroup' -Location 'China North'
+     ```
 
 1. 使用 [New-AzKeyVault](https://docs.microsoft.com/powershell/module/az.keyvault/New-azKeyVault) 创建新的 Key Vault
-
-    ```powershell
-    New-AzKeyVault -VaultName 'MySecureVault' -ResourceGroupName 'MyKeyVaultResourceGroup' -Location 'China East'
-    ```
+    
+      ```azurepowershell
+     New-AzKeyVault -VaultName 'MySecureVault' -ResourceGroupName 'MyKeyVaultResourceGroup' -Location 'China North'
+     ```
 
 4. 记下返回的“保管库名称”、“资源组名称”、“资源 ID”、“保管库 URI”和“对象 ID”，以便稍后在加密磁盘时使用。      
 
 <a name="bkmk_KVCLI"></a>
 ### <a name="create-a-key-vault-with-azure-cli"></a>使用 Azure CLI 创建密钥保管库
-可以在 Azure CLI 中使用 [az keyvault](https://docs.azure.cn/cli/keyvault?view=azure-cli-latest#commands) 命令管理 Key Vault。 若要创建 Key Vault，请使用 [az keyvault create](https://docs.azure.cn/cli/keyvault?view=azure-cli-latest#az-keyvault-create)。
+可以在 Azure CLI 中使用 [az keyvault](/cli/keyvault#commands) 命令管理 Key Vault。 若要创建 Key Vault，请使用 [az keyvault create](/cli/keyvault#az-keyvault-create)。
 
-1. 根据需要，使用 [az group create](https://docs.azure.cn/cli/group?view=azure-cli-latest#az-group-create) 创建新资源组。 若要列出位置，请使用 [az account list-locations](https://docs.azure.cn/cli/account?view=azure-cli-latest#az-account-list) 
+1. 根据需要，使用 [az group create](/cli/group#az-group-create) 创建新资源组。 若要列出位置，请使用 [az account list-locations](/cli/account#az-account-list) 
+     
+     ```azurecli
+     # To list locations: az account list-locations --output table
+     az group create -n "MyKeyVaultResourceGroup" -l "China North"
+     ```
 
-    ```azurecli
-    # To list locations: az account list-locations --output table
-    az group create -n "MyKeyVaultResourceGroup" -l "China East"
-    ```
-
-3. 使用 [az keyvault create](https://docs.azure.cn/cli/keyvault?view=azure-cli-latest#az-keyvault-create) 创建新 Key Vault。
-
-    ```azurecli
-    az keyvault create --name "MySecureVault" --resource-group "MyKeyVaultResourceGroup" --location "China East"
-    ```
+3. 使用 [az keyvault create](/cli/keyvault#az-keyvault-create) 创建新 Key Vault。
+    
+     ```azurecli
+     az keyvault create --name "MySecureVault" --resource-group "MyKeyVaultResourceGroup" --location "China North"
+     ```
 
 4. 记下返回的“保管库名称”(name)、“资源组名称”、“资源 ID”(ID)、“保管库 URI”和“对象 ID”，以便稍后使用。      
 
@@ -98,19 +100,19 @@ Azure 磁盘加密与 [Azure Key Vault](/key-vault/) 集成，帮助你控制和
 
 1. 使用 [New-AzADApplication](https://docs.microsoft.com/powershell/module/az.resources/new-azadapplication) PowerShell cmdlet 创建 Azure AD 应用程序。 MyApplicationHomePage 和 MyApplicationUri 可以是所需的任意值。
 
-    ```azurepowershell
-    $aadClientSecret = "My AAD client secret"
-    $aadClientSecretSec = ConvertTo-SecureString -String $aadClientSecret -AsPlainText -Force
-    $azureAdApplication = New-AzADApplication -DisplayName "My Application Display Name" -HomePage "https://MyApplicationHomePage" -IdentifierUris "https://MyApplicationUri" -Password $aadClientSecretSec
-    $servicePrincipal = New-AzADServicePrincipal -ApplicationId $azureAdApplication.ApplicationId
-    ```
+     ```azurepowershell
+     $aadClientSecret = "My AAD client secret"
+     $aadClientSecretSec = ConvertTo-SecureString -String $aadClientSecret -AsPlainText -Force
+     $azureAdApplication = New-AzADApplication -DisplayName "My Application Display Name" -HomePage "https://MyApplicationHomePage" -IdentifierUris "https://MyApplicationUri" -Password $aadClientSecretSec
+     $servicePrincipal = New-AzADServicePrincipal -ApplicationId $azureAdApplication.ApplicationId
+     ```
 
 3. $azureAdApplication.ApplicationId 是 Azure AD ClientID，$aadClientSecret 是稍后启用 Azure 磁盘加密时要使用的客户端机密。 请妥善保存 Azure AD 客户端机密。 运行 `$azureAdApplication.ApplicationId` 会显示 ApplicationID。
 
 <a name="bkmk_ADappCLI"></a>
 ### <a name="set-up-an-azure-ad-app-and-service-principal-with-azure-cli"></a>使用 Azure CLI 设置 Azure AD 应用和服务主体
 
-可以在 Azure CLI 中使用 [az ad sp](https://docs.azure.cn/cli/ad/sp?view=azure-cli-latest#az-ad-sp) 命令来管理服务主体。 有关详细信息，请参阅[创建 Azure 服务主体](https://docs.azure.cn/cli/create-an-azure-service-principal-azure-cli?view=azure-cli-latest)。
+可以在 Azure CLI 中使用 [az ad sp](/cli/ad/sp) 命令来管理服务主体。 有关详细信息，请参阅[创建 Azure 服务主体](/cli/create-an-azure-service-principal-azure-cli)。
 
 1. 创建新服务主体。
 
@@ -125,11 +127,11 @@ Azure 磁盘加密与 [Azure Key Vault](/key-vault/) 集成，帮助你控制和
 
 1. [验证所需的权限](../../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)
 2. [创建 Azure Active Directory 应用程序](../../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application) 
-    - 创建应用程序时，可以使用任意所需的名称和登录 URL。
+     - 创建应用程序时，可以使用任意所需的名称和登录 URL。
 3. [获取应用程序 ID 和身份验证密钥](../../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in)。 
-    - 身份验证密钥是客户端密码，用作 Set-AzVMDiskEncryptionExtension 的 AadClientSecret。 
+     - 身份验证密钥是客户端密码，用作 Set-AzVMDiskEncryptionExtension 的 AadClientSecret。 
         - 应用程序使用身份验证密钥作为凭据登录到 Azure AD。 在 Azure 门户中，此机密称为密钥，但与 Key Vault 没有任何关系。 请适当地保护此机密。 
-    - 稍后，应用程序 ID 将用作 Set-AzVMDiskEncryptionExtension 的 AadClientId，以及 Set-AzKeyVaultAccessPolicy 的 ServicePrincipalName。 
+     - 稍后，应用程序 ID 将用作 Set-AzVMDiskEncryptionExtension 的 AadClientId，以及 Set-AzKeyVaultAccessPolicy 的 ServicePrincipalName。 
 
 <a name="bkmk_KVAP"></a>
 ## <a name="set-the-key-vault-access-policy-for-the-azure-ad-app"></a>为 Azure AD 应用设置密钥保管库访问策略
@@ -144,16 +146,16 @@ Azure AD 应用程序需有访问保管库中密钥或机密的权限。 使用 
 
 1. 使用 PowerShell 为 AD 应用程序设置 Key Vault 访问策略。
 
-    ```azurepowershell
-    $keyVaultName = 'MySecureVault'
-    $aadClientID = 'MyAadAppClientID'
-    $KVRGname = 'MyKeyVaultResourceGroup'
-    Set-AzKeyVaultAccessPolicy -VaultName $keyVaultName -ServicePrincipalName $aadClientID -PermissionsToKeys 'WrapKey' -PermissionsToSecrets 'Set' -ResourceGroupName $KVRGname
-    ```
+     ```azurepowershell
+     $keyVaultName = 'MySecureVault'
+     $aadClientID = 'MyAadAppClientID'
+     $KVRGname = 'MyKeyVaultResourceGroup'
+     Set-AzKeyVaultAccessPolicy -VaultName $keyVaultName -ServicePrincipalName $aadClientID -PermissionsToKeys 'WrapKey' -PermissionsToSecrets 'Set' -ResourceGroupName $KVRGname
+     ```
 
 <a name="bkmk_KVAPCLI"></a>
 ### <a name="set-the-key-vault-access-policy-for-the-azure-ad-app-with-azure-cli"></a>使用 Azure CLI 为 Azure AD 应用设置密钥保管库访问策略
-使用 [az keyvault set-policy](https://docs.azure.cn/cli/keyvault?view=azure-cli-latest#az-keyvault-set-policy) 设置访问策略。 有关详细信息，请参阅[使用 CLI 2.0 管理 Key Vault](../../key-vault/key-vault-manage-with-cli2.md#authorizing-an-application-to-use-a-key-or-secret)。
+使用 [az keyvault set-policy](/cli/keyvault#az-keyvault-set-policy) 设置访问策略。 有关详细信息，请参阅[使用 CLI 2.0 管理 Key Vault](../../key-vault/key-vault-manage-with-cli2.md#authorizing-an-application-to-use-a-key-or-secret)。
 
 使用以下命令，为通过 Azure CLI 创建的服务主体授予获取机密和包装密钥的访问权限：
 
@@ -183,27 +185,27 @@ Azure 平台需要访问 Key Vault 中的加密密钥或机密，才能使这些
 ### <a name="set-key-vault-advanced-access-policies-with-azure-powershell"></a>使用 Azure PowerShell 设置密钥保管库高级访问策略
  使用 Key Vault PowerShell cmdlet [Set-AzKeyVaultAccessPolicy](https://docs.microsoft.com/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy) 为 Key Vault 启用磁盘加密。
 
-- **为磁盘加密启用 Key Vault：** 若要启用 Azure 磁盘加密，需要使用 EnabledForDiskEncryption。
+  - **为磁盘加密启用 Key Vault：** 若要启用 Azure 磁盘加密，需要使用 EnabledForDiskEncryption。
+      
+     ```azurepowershell 
+     Set-AzKeyVaultAccessPolicy -VaultName 'MySecureVault' -ResourceGroupName 'MyKeyVaultResourceGroup' -EnabledForDiskEncryption
+     ```
 
-    ```powershell 
-    Set-AzKeyVaultAccessPolicy -VaultName 'MySecureVault' -ResourceGroupName 'MyKeyVaultResourceGroup' -EnabledForDiskEncryption
-    ```
+  - **根据需要为部署启用 Key Vault：** 在资源创建操作中引用此 Key Vault（例如，创建虚拟机）时，使 Microsoft.Compute 资源提供程序能够从此 Key Vault 中检索机密。
 
-- **根据需要为部署启用 Key Vault：** 在资源创建操作中引用此 Key Vault（例如，创建虚拟机）时，使 Microsoft.Compute 资源提供程序能够从此 Key Vault 中检索机密。
+     ```azurepowershell
+      Set-AzKeyVaultAccessPolicy -VaultName 'MySecureVault' -ResourceGroupName 'MyKeyVaultResourceGroup' -EnabledForDeployment
+     ```
 
-    ```powershell
-    Set-AzKeyVaultAccessPolicy -VaultName 'MySecureVault' -ResourceGroupName 'MyKeyVaultResourceGroup' -EnabledForDeployment
-    ```
+  - **根据需要为模板部署启用 Key Vault：** 在模板部署中引用此 Key Vault 时，使 Azure 资源管理器能够从此 Key Vault 中获取机密。
 
-- **根据需要为模板部署启用 Key Vault：** 在模板部署中引用此 Key Vault 时，使 Azure 资源管理器能够从此 Key Vault 中获取机密。
-
-    ```powershell             
-    Set-AzKeyVaultAccessPolicy -VaultName 'MySecureVault' -ResourceGroupName 'MyKeyVaultResourceGroup' -EnabledForTemplateDeployment
-    ```
+     ```azurepowershell             
+     Set-AzKeyVaultAccessPolicy -VaultName 'MySecureVault' -ResourceGroupName 'MyKeyVaultResourceGroup' -EnabledForTemplateDeployment
+     ```
 
 <a name="bkmk_KVperCLI"></a>
 ### <a name="set-key-vault-advanced-access-policies-using-the-azure-cli"></a>使用 Azure CLI 设置密钥保管库高级访问策略
-使用 [az keyvault update](https://docs.azure.cn/cli/keyvault?view=azure-cli-latest#az-keyvault-update) 为 Key Vault 启用磁盘加密。 
+使用 [az keyvault update](/cli/keyvault#az-keyvault-update) 为 Key Vault 启用磁盘加密。 
 
  - **为磁盘加密启用 Key Vault：** 需要使用 Enabled-for-disk-encryption。 
 
@@ -229,7 +231,7 @@ Azure 平台需要访问 Key Vault 中的加密密钥或机密，才能使这些
 3. 根据需要选择“启用对 Azure 虚拟机的访问以进行部署”和/或“启用对 Azure 资源管理器的访问以进行模板部署”。   
 4. 单击“保存”  。
 
-    ![Azure Key Vault 高级访问策略](./media/disk-encryption/keyvault-portal-fig4.png)
+![Azure Key Vault 高级访问策略](./media/disk-encryption/keyvault-portal-fig4.png)
 
 <a name="bkmk_KEK"></a>
 ## <a name="set-up-a-key-encryption-key-optional"></a>设置密钥加密密钥（可选）
@@ -242,24 +244,24 @@ Azure 平台需要访问 Key Vault 中的加密密钥或机密，才能使这些
 
 * Key Vault 机密和 KEK URL 必须已设置版本。 Azure 会强制实施这项版本控制限制。 有关有效的机密和 KEK URL，请参阅以下示例：
 
-    * 有效机密 URL 的示例：   *https://contosovault.vault.azure.cn/secrets/EncryptionSecretWithKek/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*
-    * 有效 KEK URL 的示例：   *https://contosovault.vault.azure.cn/keys/diskencryptionkek/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*
+  * 有效机密 URL 的示例：   *https://contosovault.vault.azure.cn/secrets/EncryptionSecretWithKek/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*
+  * 有效 KEK URL 的示例：   *https://contosovault.vault.azure.cn/keys/diskencryptionkek/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*
 
 * Azure 磁盘加密不支持将端口号指定为 Key Vault 机密和 KEK URL 的一部分。 有关不支持和支持的 Key Vault URL 的示例，请参阅以下示例：
 
-    * 无法接受的密钥保管库 URL   *https://contosovault.vault.azure.cn:443/secrets/contososecret/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*
-    * 可接受的密钥保管库 URL：   *https://contosovault.vault.azure.cn/secrets/contososecret/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*
+  * 无法接受的密钥保管库 URL：   *https://contosovault.vault.azure.cn:443/secrets/contososecret/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*
+  * 可接受的密钥保管库 URL：   *https://contosovault.vault.azure.cn/secrets/contososecret/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*
 
 <a name="bkmk_KEKPSH"></a>
 ### <a name="set-up-a-key-encryption-key-with-azure-powershell"></a>使用 Azure PowerShell 设置密钥加密密钥 
 在使用 PowerShell 脚本之前，应熟悉 Azure 磁盘加密必备组件，以了解脚本中的步骤。 可能需要根据环境更改示例脚本。 此脚本创建所有 Azure 磁盘加密必备组件、加密现有 IaaS VM，并使用密钥加密密钥来包装磁盘加密密钥。 
 
-```powershell
+ ```powershell
  # Step 1: Create a new resource group and key vault in the same location.
      # Fill in 'MyLocation', 'MyKeyVaultResourceGroup', and 'MySecureVault' with your values.
      # Use Get-AzLocation to get available locations and use the DisplayName.
      # To use an existing resource group, comment out the line for New-AzResourceGroup
-
+     
      $Loc = 'MyLocation';
      $KVRGname = 'MyKeyVaultResourceGroup';
      $KeyVaultName = 'MySecureVault'; 
@@ -268,32 +270,32 @@ Azure 平台需要访问 Key Vault 中的加密密钥或机密，才能使这些
      $KeyVault = Get-AzKeyVault -VaultName $KeyVaultName -ResourceGroupName  $KVRGname;
      $KeyVaultResourceId = (Get-AzKeyVault -VaultName $KeyVaultName -ResourceGroupName  $KVRGname).ResourceId;
      $diskEncryptionKeyVaultUrl = (Get-AzKeyVault -VaultName $KeyVaultName -ResourceGroupName  $KVRGname).VaultUri;
-
+     
  # Step 2: Create the AD application and service principal.
      # Fill in 'MyAADClientSecret', "<My Application Display Name>", "<https://MyApplicationHomePage>", and "<https://MyApplicationUri>" with your values.
      # MyApplicationHomePage and the MyApplicationUri can be any values you wish.
-
+     
      $aadClientSecret =  'MyAADClientSecret';
      $aadClientSecretSec = ConvertTo-SecureString -String $aadClientSecret -AsPlainText -Force;
      $azureAdApplication = New-AzADApplication -DisplayName "<My Application Display Name>" -HomePage "<https://MyApplicationHomePage>" -IdentifierUris "<https://MyApplicationUri>" -Password $aadClientSecretSec
      $servicePrincipal = New-AzADServicePrincipal -ApplicationId $azureAdApplication.ApplicationId;
      $aadClientID = $azureAdApplication.ApplicationId;
-
+     
  #Step 3: Enable the vault for disk encryption and set the access policy for the Azure AD application.
-
+     
      Set-AzKeyVaultAccessPolicy -VaultName $KeyVaultName -ResourceGroupName $KVRGname -EnabledForDiskEncryption;
      Set-AzKeyVaultAccessPolicy -VaultName $keyVaultName -ServicePrincipalName $aadClientID -PermissionsToKeys 'WrapKey' -PermissionsToSecrets 'Set' -ResourceGroupName  $KVRGname;
-
+     
  #Step 4: Create a new key in the key vault with the Add-AzKeyVaultKey cmdlet.
      # Fill in 'MyKeyEncryptionKey' with your value.
-
+     
      $keyEncryptionKeyName = 'MyKeyEncryptionKey';
      Add-AzKeyVaultKey -VaultName $KeyVaultName -Name $keyEncryptionKeyName -Destination 'Software';
      $keyEncryptionKeyUrl = (Get-AzKeyVaultKey -VaultName $KeyVaultName -Name $keyEncryptionKeyName).Key.kid;
-
+     
  #Step 5: Encrypt the disks of an existing IaaS VM
      # Fill in 'MySecureVM' and 'MyVirtualMachineResourceGroup' with your values. 
-
+     
      $VMName = 'MySecureVM';
       $VMRGName = 'MyVirtualMachineResourceGroup';
      Set-AzVMDiskEncryptionExtension -ResourceGroupName $VMRGName -VMName $vmName -AadClientID $aadClientID -AadClientSecret $aadClientSecret -DiskEncryptionKeyVaultUrl $diskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $KeyVaultResourceId -KeyEncryptionKeyUrl $keyEncryptionKeyUrl -KeyEncryptionKeyVaultId $KeyVaultResourceId;
@@ -303,7 +305,8 @@ Azure 平台需要访问 Key Vault 中的加密密钥或机密，才能使这些
 ## <a name="certificate-based-authentication-optional"></a>基于证书的身份验证（可选）
 若要使用证书身份验证，可将一个证书上传到 Key Vault，并将其部署到客户端。 在使用 PowerShell 脚本之前，应熟悉 Azure 磁盘加密必备组件，以了解脚本中的步骤。 可能需要根据环境更改示例脚本。
 
-```powershell
+     
+ ```powershell
 
  # Fill in "MyKeyVaultResourceGroup", "MySecureVault", and 'MyLocation' ('My location' only if needed)
 
@@ -338,7 +341,7 @@ Azure 平台需要访问 Key Vault 中的加密密钥或机密，才能使这些
    $aadClientCertThumbprint= $cert.Thumbprint
 
    Set-AzKeyVaultAccessPolicy -VaultName $keyVaultName -ServicePrincipalName $aadClientID -PermissionsToKeys 'WrapKey' -PermissionsToSecrets 'Set' -ResourceGroupName $KVRGname
-
+   
    # Upload the pfx file to the key vault. 
    # Fill in "MyAADCert".  
 
@@ -386,7 +389,10 @@ Azure 平台需要访问 Key Vault 中的加密密钥或机密，才能使这些
 > [!IMPORTANT]
 > Linux VM 当前不支持 Azure AD 基于证书的身份验证。
 
-```powershell
+
+
+     
+ ```powershell
 # Fill in 'MyKeyVaultResourceGroup', 'MySecureVault', and 'MyLocation' (if needed)
 
    $KVRGname = 'MyKeyVaultResourceGroup'
@@ -442,13 +448,15 @@ Azure 平台需要访问 Key Vault 中的加密密钥或机密，才能使这些
 
    #Setting some variables with the key vault information and generating a KEK 
    # FIll in 'KEKName'
-
+   
    $KEKName ='KEKName'
    $KeyVault = Get-AzKeyVault -VaultName $KeyVaultName -ResourceGroupName $KVRGname
    $DiskEncryptionKeyVaultUrl = $KeyVault.VaultUri
    $KeyVaultResourceId = $KeyVault.ResourceId
    $KEK = Add-AzKeyVaultKey -VaultName $KeyVaultName -Name $KEKName -Destination "Software"
    $KeyEncryptionKeyUrl = $KEK.Key.kid
+
+
 
    # Deploy the certificate to the VM
    # Fill in 'MySecureVM' and 'MyVirtualMachineResourceGroup' with your values.
@@ -466,6 +474,7 @@ Azure 平台需要访问 Key Vault 中的加密密钥或机密，才能使这些
    Set-AzVMDiskEncryptionExtension -ResourceGroupName $VMRGName -VMName $VMName -AadClientID $AADClientID -AadClientCertThumbprint $AADClientCertThumbprint -DiskEncryptionKeyVaultUrl $DiskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $KeyVaultResourceId -KeyEncryptionKeyUrl $keyEncryptionKeyUrl -KeyEncryptionKeyVaultId $KeyVaultResourceId
 ```
 
+ 
 ## <a name="next-steps"></a>后续步骤
 
 [在 Linux VM 上使用 Azure AD 启用 Azure 磁盘加密（以前版本）](disk-encryption-linux-aad.md)

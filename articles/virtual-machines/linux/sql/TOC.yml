@@ -20,7 +20,7 @@
       href: 'https://docs.microsoft.com/rest/api/'
 - name: 资源
   items:
-    - name: 常见问题解答
+    - name: 常见问题
       href: sql-server-linux-faq.md
     - name: “Linux 上的 SQL Server”文档
       href: 'https://docs.microsoft.com/sql/linux/sql-server-linux-overview'
@@ -34,5 +34,5 @@
       href: 'https://docs.microsoft.com/sql/tools/overview-sql-tools'
     - name: Azure 路线图
       href: 'https://www.azure.cn/roadmap/?category=compute'
-    - name: 堆栈溢出
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/search?q=%5Bazure-virtual-machine%5D+sql+server'

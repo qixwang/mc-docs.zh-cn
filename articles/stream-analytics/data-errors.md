@@ -1,19 +1,17 @@
 ---
 title: Azure 流分析诊断日志数据错误
 description: 本文解释使用 Azure 流分析时可能出现的不同输入和输出数据错误。
-services: stream-analytics
-author: lingliw
-ms.author: v-lingwu
+author: Johnnytechn
+ms.author: v-johya
 ms.service: stream-analytics
 ms.topic: conceptual
-origin.date: 06/21/2019
-ms.date: 12/12/2019
-ms.openlocfilehash: 3ac030c0f5e8ad2f6f8220c87a27f750e30d21dc
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 04/23/2020
+ms.openlocfilehash: a3c843aec850502374969cd18befc1abb56531f9
+ms.sourcegitcommit: ebedf9e489f5218d4dda7468b669a601b3c02ae5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "78155026"
+ms.lasthandoff: 04/26/2020
+ms.locfileid: "82159185"
 ---
 # <a name="azure-stream-analytics-data-errors"></a>Azure 流分析数据错误
 
@@ -175,6 +173,7 @@ ms.locfileid: "78155026"
    * 应用程序时间和抵达时间。 
    * 最大若干 KB 的实际有效负载。
 
+<!-- 404 on https://docs.azure.cn/zh-cn/stream-analytics-query/time-skew-policies-azure-stream-analytics -->
 **错误消息**
 
 ```json
@@ -219,7 +218,7 @@ ms.locfileid: "78155026"
 * 原因：输出所需的列不存在。 例如，定义为 Azure 表 PartitionKey 的列不存在。
 * 提供的门户通知：是
 * 诊断日志级别：警告
-* 影响：将会根据[输出数据策略](/stream-analytics/stream-analytics-output-error-policy)设置处理所有输出数据转换错误，包括缺少必需的列。
+* 影响：将会根据[输出数据策略](https://docs.azure.cn/zh-cn/stream-analytics/stream-analytics-output-error-policy)设置处理所有输出数据转换错误，包括缺少必需的列。
 * 日志详细信息
    * 列名称，以及记录标识符或记录部分。
 
@@ -234,7 +233,7 @@ ms.locfileid: "78155026"
 * 原因：列值不符合输出。 例如，列名称不是有效的 Azure 表列。
 * 提供的门户通知：是
 * 诊断日志级别：警告
-* 影响：将会根据[输出数据策略](/stream-analytics/stream-analytics-output-error-policy)设置处理所有输出数据转换错误，包括无效的列名称。
+* 影响：将会根据[输出数据策略](https://docs.azure.cn/zh-cn/stream-analytics/stream-analytics-output-error-policy)设置处理所有输出数据转换错误，包括无效的列名称。
 * 日志详细信息
    * 列名称，以及记录标识符或记录部分。
 
@@ -249,7 +248,7 @@ ms.locfileid: "78155026"
 * 原因：列无法转换为输出中的有效类型。 例如，列的值与 SQL 表中定义的约束或类型不兼容。
 * 提供的门户通知：是
 * 诊断日志级别：警告
-* 影响：将会根据[输出数据策略](/stream-analytics/stream-analytics-output-error-policy)设置处理所有输出数据转换错误，包括类型转换错误。
+* 影响：将会根据[输出数据策略](https://docs.azure.cn/zh-cn/stream-analytics/stream-analytics-output-error-policy)设置处理所有输出数据转换错误，包括类型转换错误。
 * 日志详细信息
    * 列的名称。
    * 记录标识符或记录部分。
@@ -265,7 +264,7 @@ ms.locfileid: "78155026"
 * 原因：消息的值大于支持的输出大小。 例如，事件中心输出的记录大于 1 MB。
 * 提供的门户通知：是
 * 诊断日志级别：警告
-* 影响：将会根据[输出数据策略](/stream-analytics/stream-analytics-output-error-policy)设置处理所有输出数据转换错误，包括记录超过大小限制。
+* 影响：将会根据[输出数据策略](https://docs.azure.cn/zh-cn/stream-analytics/stream-analytics-output-error-policy)设置处理所有输出数据转换错误，包括记录超过大小限制。
 * 日志详细信息
    * 记录标识符或记录部分。
 
@@ -280,7 +279,7 @@ ms.locfileid: "78155026"
 * 原因：记录中已包含与 System 列同名的列。 例如，CosmosDB 输出中包含一个名为 ID 的列，而另外还有一个 ID 列。
 * 提供的门户通知：是
 * 诊断日志级别：警告
-* 影响：将会根据[输出数据策略](/stream-analytics/stream-analytics-output-error-policy)设置处理所有输出数据转换错误，包括重复的键。
+* 影响：将会根据[输出数据策略](https://docs.azure.cn/zh-cn/stream-analytics/stream-analytics-output-error-policy)设置处理所有输出数据转换错误，包括重复的键。
 * 日志详细信息
    * 列的名称。
    * 记录标识符或记录部分。
@@ -294,3 +293,4 @@ ms.locfileid: "78155026"
 * [使用诊断日志对 Azure 流分析进行故障排除](stream-analytics-job-diagnostic-logs.md)
 
 * [了解流分析作业监视以及如何监视查询](stream-analytics-monitoring.md)
+

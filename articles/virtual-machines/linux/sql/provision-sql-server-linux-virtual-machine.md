@@ -1,23 +1,23 @@
 ---
-title: 在 Azure 门户中预配 Linux SQL Server 虚拟机 | Azure
+title: 在 Azure 门户中预配 Linux SQL Server 虚拟机
 description: 本教程介绍如何在 Azure 门户中创建 Linux SQL Server 2019 虚拟机。
 services: virtual-machines-linux
-author: rockboyfor
+author: Johnnytechn
 manager: digimobile
 origin.date: 10/22/2019
-ms.date: 11/11/2019
-ms.topic: conceptual
+ms.date: 04/13/2020
 tags: azure-service-management
+ms.topic: conceptual
 ms.service: virtual-machines-sql
 ms.workload: iaas-sql-server
-ms.author: v-yeche
+ms.author: v-johya
 ms.reviewer: jroth
-ms.openlocfilehash: 97432e667ec5b29cbaebcb616a19dfe714480b56
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 4373cb5a5c610b44c563e3d11d7ac7d9f3c8d816
+ms.sourcegitcommit: ebedf9e489f5218d4dda7468b669a601b3c02ae5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "73831424"
+ms.lasthandoff: 04/26/2020
+ms.locfileid: "82159209"
 ---
 # <a name="provision-a-linux-sql-server-virtual-machine-in-the-azure-portal"></a>在 Azure 门户中预配 Linux SQL Server 虚拟机
 

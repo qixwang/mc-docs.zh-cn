@@ -3,7 +3,7 @@ title: 准备与 cloud-init 配合使用的 Azure VM 映像 | Azure
 description: 如何准备一个与 cloud-init 配合用来完成部署的现有 Azure VM 映像
 services: virtual-machines-linux
 documentationcenter: ''
-author: rockboyfor
+author: Johnnytechn
 manager: digimobile
 editor: ''
 tags: azure-resource-manager
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.topic: article
 origin.date: 06/24/2019
-ms.date: 08/12/2019
-ms.author: v-yeche
-ms.openlocfilehash: cda630683899cd129296d27706e42f76eea119f3
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 04/13/2020
+ms.author: v-johya
+ms.openlocfilehash: c7cb64a4f1bc28d67ed26dd720d21ff519094f88
+ms.sourcegitcommit: ebedf9e489f5218d4dda7468b669a601b3c02ae5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "68912986"
+ms.lasthandoff: 04/26/2020
+ms.locfileid: "82159116"
 ---
 # <a name="prepare-an-existing-linux-azure-vm-image-for-use-with-cloud-init"></a>准备与 cloud-init 配合使用的现有 Linux Azure VM 映像
 本文介绍如何选择一个现有的 Azure 虚拟机，使其准备好重新部署并可使用 cloud-init。 生成的映像可用于部署新的虚拟机或虚拟机规模集 - 然后，可以在部署时通过 cloud-init 进一步对其进行自定义。  Azure 预配资源后，这些 cloud-init 脚本即会在第一次启动时运行。 有关 cloud-init 如何在 Azure 以及受支持的 Linux 发行版中本机工作的详细信息，请参阅 [cloud-init 概述](using-cloud-init.md)
@@ -63,7 +63,9 @@ cloud_init_modules:
  - users-groups
  - ssh
 ```
-需要在 `/etc/waagent.conf` 中更新一些与预配和处理临时磁盘相关的任务。 运行以下命令更新相应的设置。 
+
+需要在 `/etc/waagent.conf` 中更新一些与预配和处理临时磁盘相关的任务。 运行以下命令更新相应的设置。
+
 ```bash
 sed -i 's/Provisioning.Enabled=y/Provisioning.Enabled=n/g' /etc/waagent.conf
 sed -i 's/Provisioning.UseCloudInit=n/Provisioning.UseCloudInit=y/g' /etc/waagent.conf
@@ -89,7 +91,8 @@ sudo swapoff /mnt/resource/swapfile
 ```
 
 确保从 `/etc/fstab` 中删除交换文件引用 - 应返回如下所示的输出：
-```text
+
+```output
 # /etc/fstab
 # Accessible filesystems, by reference, are maintained under '/dev/disk'
 # See man pages fstab(5), findfs(8), mount(8) and/or blkid(8) for more info
@@ -99,9 +102,11 @@ UUID=7c473048-a4e7-4908-bad3-a9be22e9d37d /boot xfs defaults 0 0
 ```
 
 若要节省空间并删除交换文件，可运行以下命令：
+
 ```bash
 rm /mnt/resource/swapfile
 ```
+
 ## <a name="extra-step-for-cloud-init-prepared-image"></a>针对 cloud-init 准备的映像的附加步骤
 > [!NOTE]
 > 如果映像是事先已由 **cloud-init** 准备且配置的映像，则需要执行以下步骤。
@@ -124,7 +129,7 @@ sudo waagent -deprovision+user -force
 
 退出 SSH 会话，然后从 bash shell 运行以下 AzureCLI 命令，以解除分配、通用化并创建新的 Azure VM 映像。  请将 `myResourceGroup` 和 `sourceVmName` 替换为反映源 VM 的相应信息。
 
-```bash
+```azurecli
 az vm deallocate --resource-group myResourceGroup --name sourceVmName
 az vm generalize --resource-group myResourceGroup --name sourceVmName
 az image create --resource-group myResourceGroup --name myCloudInitImage --source sourceVmName

@@ -1,19 +1,19 @@
 ---
 title: 隔离网络上的 Azure 磁盘加密
 description: 本文提供适用于 Linux VM 的 Azure 磁盘加密的故障排除提示。
-author: rockboyfor
-ms.service: security
+author: Johnnytechn
+ms.service: virtual-machines-linux
+ms.subservice: security
 ms.topic: article
-origin.date: 02/27/2020
-ms.date: 03/09/2020
-ms.author: v-yeche
+ms.author: v-johya
+ms.date: 04/20/2020
 ms.custom: seodec18
-ms.openlocfilehash: 8889797ee182fcce1d89fce0b95a2c6449430b2e
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.openlocfilehash: 523b148ba3d6a75159293a481715514f2443400a
+ms.sourcegitcommit: ebedf9e489f5218d4dda7468b669a601b3c02ae5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "79084450"
+ms.lasthandoff: 04/26/2020
+ms.locfileid: "82159056"
 ---
 # <a name="azure-disk-encryption-on-an-isolated-network"></a>隔离网络上的 Azure 磁盘加密
 
@@ -45,7 +45,7 @@ Azure 磁盘加密取决于多个组件，这些组件通常在启用 ADE 的过
 
 如果[对 Azure AD（以前的版本）使用 Azure 磁盘加密](disk-encryption-overview-aad.md)，则除了适用于此发行版的包（如[上面所列](#package-management)）外，还需为所有发行版手动安装 [Azure Active Directory 库](../../active-directory/azuread-dev/active-directory-authentication-libraries.md)。
 
-使用 [Azure AD 凭据](disk-encryption-linux-aad.md)启用加密时，目标 VM 必须允许连接到 Azure Active Directory 终结点和密钥保管库终结点。 当前 Azure Active Directory 身份验证终结点在 [Office 365 URL 和 IP 地址范围](https://docs.microsoft.com/office365/enterprise/urls-and-ip-address-ranges-21vianet)文档中的第 56 和 59 节中进行维护。 在有关如何[访问防火墙保护下的 Azure 密钥保管库](../../key-vault/key-vault-access-behind-firewall.md)的文档中提供了密钥保管库说明。
+使用 [Azure AD 凭据](disk-encryption-linux-aad.md)启用加密时，目标 VM 必须允许连接到 Azure Active Directory 终结点和密钥保管库终结点。 当前 Azure Active Directory 身份验证终结点在 [Office 365 URL 和 IP 地址范围](https://docs.microsoft.com/office365/enterprise/urls-and-ip-address-ranges)文档中的第 56 和 59 节中进行维护。 在有关如何[访问防火墙保护下的 Azure 密钥保管库](../../key-vault/key-vault-access-behind-firewall.md)的文档中提供了密钥保管库说明。
 
 ### <a name="azure-instance-metadata-service"></a>Azure 实例元数据服务 
 

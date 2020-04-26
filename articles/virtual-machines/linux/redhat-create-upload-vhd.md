@@ -3,24 +3,22 @@ title: 为 Azure 准备基于 Red Hat 的虚拟机
 description: 了解如何创建和上传包含 Red Hat Linux 操作系统的 Azure 虚拟硬盘 (VHD)。
 services: virtual-machines-linux
 documentationcenter: ''
-author: rockboyfor
-manager: digimobile
-editor: tysonn
+author: gbowerman
+manager: gwallace
 tags: azure-resource-manager,azure-service-management
 ms.assetid: 6c6b8f72-32d3-47fa-be94-6cb54537c69f
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
-origin.date: 05/17/2019
-ms.date: 02/10/2020
-ms.author: v-yeche
-ms.openlocfilehash: c686c79b16197ff98f7ec0c23e7272c6cfe71a81
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 04/20/2020
+ms.author: v-johya
+ms.openlocfilehash: 4f7037311d99c952596285c8ec80e27e052e680b
+ms.sourcegitcommit: ebedf9e489f5218d4dda7468b669a601b3c02ae5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "77428434"
+ms.lasthandoff: 04/26/2020
+ms.locfileid: "82159208"
 ---
 # <a name="prepare-a-red-hat-based-virtual-machine-for-azure"></a>为 Azure 准备基于 Red Hat 的虚拟机
 在本文中，将了解如何准备 Red Hat Enterprise Linux (RHEL) 虚拟机，以供在 Azure 中使用。 本文介绍的 RHEL 版本为 6.7+ 和 7.1+。 本文所述的用于准备工作的虚拟机监控程序为 Hyper-V、基于内核的虚拟机 (KVM) 和 VMware。 有关参与 Red Hat 云访问计划的资格要求的详细信息，请参阅 [Red Hat 的云访问网站](https://www.redhat.com/en/technologies/cloud-computing/cloud-access)和[在 Azure 上运行 RHEL](https://access.redhat.com/ecosystem/ccsp/microsoft-azure)。
@@ -135,6 +133,7 @@ ms.locfileid: "77428434"
 
 1. 在 Hyper-V 管理器中单击“操作”   > “关闭”  。 Linux VHD 现已准备好上传到 Azure。
 
+
 ### <a name="prepare-a-rhel-7-virtual-machine-from-hyper-v-manager"></a>从 Hyper-V 管理器准备 RHEL 7 虚拟机
 
 1. 在 Hyper-V 管理器中，选择虚拟机。
@@ -219,6 +218,7 @@ ms.locfileid: "77428434"
         # logout
 
 1. 在 Hyper-V 管理器中单击“操作”   > “关闭”  。 Linux VHD 现已准备好上传到 Azure。
+
 
 ## <a name="prepare-a-red-hat-based-virtual-machine-from-kvm"></a>从 KVM 准备基于 Red Hat 的虚拟机
 ### <a name="prepare-a-rhel-6-virtual-machine-from-kvm"></a>从 KVM 准备 RHEL 6 虚拟机
@@ -347,6 +347,7 @@ ms.locfileid: "77428434"
     > [!NOTE]
     > qemu-img 版本（>=2.2.1）中有一个已知 bug，会导致 VHD 格式不正确。 QEMU 2.6 中已修复此问题。 建议使用 qemu-img 2.2.0 或更低版本，或者更新到 2.6 或更高版本。 参考： https://bugs.launchpad.net/qemu/+bug/1490611 。
     >
+
 
     首先将此映像转换为原始格式：
 
@@ -498,6 +499,7 @@ ms.locfileid: "77428434"
     > qemu-img 版本（>=2.2.1）中有一个已知 bug，会导致 VHD 格式不正确。 QEMU 2.6 中已修复此问题。 建议使用 qemu-img 2.2.0 或更低版本，或者更新到 2.6 或更高版本。 参考： https://bugs.launchpad.net/qemu/+bug/1490611 。
     >
 
+
     首先将此映像转换为原始格式：
 
         # qemu-img convert -f qcow2 -O raw rhel-7.4.qcow2 rhel-7.4.raw
@@ -518,6 +520,7 @@ ms.locfileid: "77428434"
     或者，对于 qemu 版本 **2.6+** ，包括 `force_size` 选项：
 
         # qemu-img convert -f raw -o subformat=fixed,force_size -O vpc rhel-7.4.raw rhel-7.4.vhd
+
 
 ## <a name="prepare-a-red-hat-based-virtual-machine-from-vmware"></a>从 VMware 准备基于 Red Hat 的虚拟机
 ### <a name="prerequisites"></a>必备条件
@@ -740,6 +743,7 @@ ms.locfileid: "77428434"
     > qemu-img 版本（>=2.2.1）中有一个已知 bug，会导致 VHD 格式不正确。 QEMU 2.6 中已修复此问题。 建议使用 qemu-img 2.2.0 或更低版本，或者更新到 2.6 或更高版本。 参考： https://bugs.launchpad.net/qemu/+bug/1490611 。
     >
 
+
     首先将此映像转换为原始格式：
 
         # qemu-img convert -f vmdk -O raw rhel-7.4.vmdk rhel-7.4.raw
@@ -761,10 +765,11 @@ ms.locfileid: "77428434"
 
         # qemu-img convert -f raw -o subformat=fixed,force_size -O vpc rhel-7.4.raw rhel-7.4.vhd
 
+
 ## <a name="prepare-a-red-hat-based-virtual-machine-from-an-iso-by-using-a-kickstart-file-automatically"></a>使用 kickstart 文件自动从 ISO 准备基于 Red Hat 的虚拟机
 ### <a name="prepare-a-rhel-7-virtual-machine-from-a-kickstart-file"></a>从 kickstart 文件准备 RHEL 7 虚拟机
 
-1. 创建包括以下内容的 kickstart 文件，并保存该文件。 有关 kickstart 安装的详细信息，请参阅 [Kickstart 安装指南](https://access.redhat.com/documentation/Red_Hat_Enterprise_Linux/7/html/Installation_Guide/chap-kickstart-installations.html)。
+1.  创建包括以下内容的 kickstart 文件，并保存该文件。 有关 kickstart 安装的详细信息，请参阅 [Kickstart 安装指南](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/Installation_Guide/chap-kickstart-installations.html)。
 
         # Kickstart for provisioning a RHEL 7 Azure VM
 

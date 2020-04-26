@@ -3,7 +3,7 @@ title: 如何使用 Docker Machine 在 Azure 中创建主机 | Azure
 description: 介绍如何使用 Docker Machine 在 Azure 中创建 Docker 主机。
 services: virtual-machines-linux
 documentationcenter: ''
-author: rockboyfor
+author: Johnnytechn
 manager: digimobile
 editor: tysonn
 ms.assetid: 164b47de-6b17-4e29-8b7d-4996fa65bea4
@@ -13,14 +13,14 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 origin.date: 12/15/2017
-ms.date: 08/12/2019
-ms.author: v-yeche
-ms.openlocfilehash: 4201e9a3805090d3911fdf3d35f1480293e51065
-ms.sourcegitcommit: c1ba5a62f30ac0a3acb337fb77431de6493e6096
+ms.date: 04/13/2020
+ms.author: v-johya
+ms.openlocfilehash: 56caec282ed76e3a989c48b07d6d26325ce78246
+ms.sourcegitcommit: ebedf9e489f5218d4dda7468b669a601b3c02ae5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "68913028"
+ms.lasthandoff: 04/26/2020
+ms.locfileid: "82159082"
 ---
 # <a name="how-to-use-docker-machine-to-create-hosts-in-azure"></a>如何使用 Docker Machine 在 Azure 中创建主机
 本文详细介绍如何使用 [Docker Machine](https://docs.docker.com/machine/) 在 Azure 中创建主机。 `docker-machine` 命令在 Azure 中创建一个 Linux 虚拟机 (VM)，然后安装 Docker。 然后，可以使用相同的本地工具和工作流来管理 Azure 中的 Docker 主机。 若要在 Windows 10 中使用 docker-machine，必须使用 Linux bash。
@@ -86,6 +86,7 @@ Checking connection to Docker...
 Docker is up and running!
 To see how to connect your Docker Client to the Docker Engine running on this virtual machine, run: docker-machine env myvm
 ```
+<!--MOONCAKE: only can see UbuntuServer:16.04-LTS not UbuntuServer:16.04.0-LTS-->
 
 ## <a name="configure-your-docker-shell"></a>配置 Docker 外壳
 若要连接到 Azure 中的 Docker 主机，请定义适当的连接设置。 如输出的结尾所示，查看 Docker 主机的连接信息，如下所示： 
